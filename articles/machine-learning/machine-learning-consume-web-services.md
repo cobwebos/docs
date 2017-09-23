@@ -20,7 +20,6 @@ ms.openlocfilehash: eec9f637b4b2306ab4a888dbd5ef5b9a021bcac5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>如何使用 Azure 机器学习 Web 服务
 

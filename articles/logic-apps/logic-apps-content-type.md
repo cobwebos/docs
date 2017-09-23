@@ -20,7 +20,6 @@ ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="handle-content-types-in-logic-apps"></a>在逻辑应用中处理内容类型
 

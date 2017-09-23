@@ -21,7 +21,6 @@ ms.openlocfilehash: 2482dade7d17d05b2fc90fbf22b0466227a5983b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 
 # <a name="internet-of-things-security-architecture"></a>物联网安全体系结构

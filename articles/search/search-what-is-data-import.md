@@ -21,7 +21,6 @@ ms.openlocfilehash: 5a601b75ec67824e72d8736bc3c45f8e1231ca86
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="upload-data-to-azure-search"></a>将数据上载到 Azure 搜索
 > [!div class="op_single_selector"]

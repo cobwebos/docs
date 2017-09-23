@@ -20,7 +20,6 @@ ms.openlocfilehash: c059fd74854813615754e67547497b7ededbe4dd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="storsimple-8000-series-update-03-release-notes---february-2015"></a>StorSimple 8000 系列 Update 0.3 发行说明 - 2015 年 2月
 ## <a name="overview"></a>概述

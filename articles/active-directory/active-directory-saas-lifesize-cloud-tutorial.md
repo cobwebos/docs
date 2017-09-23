@@ -19,7 +19,6 @@ ms.openlocfilehash: 7542360f9c75786bf400553090ba0a891d9c2fcc
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>教程：Azure Active Directory 与 Lifesize Cloud 的集成
 

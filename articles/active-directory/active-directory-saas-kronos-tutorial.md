@@ -19,7 +19,6 @@ ms.openlocfilehash: eb61ec0a7d3e992a285b1af3d4a7fbe1feb8d991
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kronos"></a>教程：Azure Active Directory 与 Kronos 集成
 

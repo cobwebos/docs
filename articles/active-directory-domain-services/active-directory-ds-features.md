@@ -20,7 +20,6 @@ ms.openlocfilehash: 8005be7ded6ea005af086aeaf594963a5f2d4ac2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
-
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD 域服务
 ## <a name="features"></a>功能

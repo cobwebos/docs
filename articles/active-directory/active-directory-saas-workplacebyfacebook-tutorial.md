@@ -19,7 +19,6 @@ ms.openlocfilehash: 1590a66f215f0c093d24ff602c0ad951ba1e1eea
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 与 Workplace by Facebook 集成
 

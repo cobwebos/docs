@@ -20,10 +20,8 @@ ms.openlocfilehash: 3cd87ebe9827249d32f15b5de0ad8521d0282c47
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
-# Subscribe to an offer
-<a id="subscribe-to-an-offer" class="xliff"></a>
+# <a name="subscribe-to-an-offer"></a>Subscribe to an offer
 Now that you've [created an offer](azure-stack-create-offer.md), test that your tenants can create a subscription.
 
 1. [Sign in](azure-stack-connect-azure-stack.md) to the Azure Stack tenant portal (https://portal.local.azurestack.external) and click **Get a Subscription**.
@@ -36,8 +34,7 @@ Now that you've [created an offer](azure-stack-create-offer.md), test that your 
 
 After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
 
-## Subscribe to an add-on plan
-<a id="subscribe-to-an-add-on-plan" class="xliff"></a>
+## <a name="subscribe-to-an-add-on-plan"></a>Subscribe to an add-on plan
 If the offer has an add-on plan, tenants can add them to their subscription at any time.  
 
 1. In the tenant portal, select **More services** > **Subscriptions**.
@@ -46,7 +43,6 @@ If the offer has an add-on plan, tenants can add them to their subscription at a
 
 
 
-## Next steps
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Next steps
 [Provision a virtual machine](azure-stack-provision-vm.md)
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
 
-
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>在 Log Analytics 中收集 Linux 应用程序的性能计数器 
 本文提供了有关对[用于 Linux 的 OMS 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)进行配置以收集特定应用程序的性能计数器的详细信息。  本文中包括的应用程序有：  

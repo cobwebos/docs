@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: f4886b1d78dfa87cf25737fb46c12b5963034f27
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 
@@ -124,10 +125,5 @@ URL 查询通配符 | 将指定值与请求的查询字符串比较。
 * [规则引擎条件表达式](cdn-rules-engine-reference-conditional-expressions.md)
 * [规则引擎功能](cdn-rules-engine-reference-features.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

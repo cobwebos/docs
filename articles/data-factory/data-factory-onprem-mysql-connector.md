@@ -20,7 +20,6 @@ ms.openlocfilehash: 05159bfd98977d0b57b43fbc02e4579439f7ce4c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 MySQL 数据库移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。

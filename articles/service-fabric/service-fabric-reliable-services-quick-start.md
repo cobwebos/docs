@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 813021d6239ae3cf79bb84b78f77e39c9e0783f6
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/10/2017
-
 
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门

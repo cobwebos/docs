@@ -19,7 +19,6 @@ ms.openlocfilehash: 93acbd90bbe5f0a40bf3f56edb766a0fdd30f68f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>教程：Azure Active Directory 与 Beeline 集成
 

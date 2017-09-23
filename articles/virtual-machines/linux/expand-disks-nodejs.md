@@ -20,22 +20,18 @@ ms.openlocfilehash: 0aedcd70b54c2ed47ec327ccf0529a48351353c0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/11/2017
 
-
 ---
 
-# 结合使用 Azure CLI 和 Azure CLI 1.0 扩展 Linux VM 上的 OS 磁盘
-<a id="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10" class="xliff"></a>
+# <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>结合使用 Azure CLI 和 Azure CLI 1.0 扩展 Linux VM 上的 OS 磁盘
 在 Azure 的 Linux 虚拟机 (VM) 上，操作系统 (OS) 的默认虚拟硬盘大小通常为 30 GB。 可以通过[添加数据磁盘](add-disk.md)来扩充存储空间，也可扩展 OS 磁盘。 本文详述如何使用 Azure CLI 1.0 为使用非托管磁盘的 Linux VM 扩展 OS 磁盘。
 
-## 用于完成任务的 CLI 版本
-<a id="cli-versions-to-complete-the-task" class="xliff"></a>
+## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 可以使用以下 CLI 版本之一完成任务：
 
 - [Azure CLI 1.0](#prerequisites) – 用于经典部署模型和资源管理部署模型（本文）的 CLI
 - [Azure CLI 2.0](expand-disks.md) - 适用于资源管理部署模型的下一代 CLI
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 需要安装[最新的 Azure CLI 1.0](../../cli-install-nodejs.md)，然后按如下所示，使用 Resource Manager 模式登录 [Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：
 
 ```azurecli
@@ -44,8 +40,7 @@ azure config mode arm
 
 在以下示例中，请将示例参数名称替换为你自己的值。 示例参数名称包括 myResourceGroup 和 myVM。
 
-## 扩展 OS 磁盘
-<a id="expand-os-disk" class="xliff"></a>
+## <a name="expand-os-disk"></a>扩展 OS 磁盘
 
 1. 当 VM 正在运行时，无法执行虚拟硬盘上的操作。 以下示例在名为 myResourceGroup 的资源组中停止和释放名为 myVM 的 VM：
 
@@ -80,7 +75,6 @@ azure config mode arm
     /dev/sda1        49G  1.3G   48G   3% /
     ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 如需更多存储，也可[向 Linux VM 添加数据磁盘](add-disk.md)。 有关磁盘加密的详细信息，请参阅[使用 Azure CLI 加密 Linux VM 上的磁盘](encrypt-disks.md)。
 

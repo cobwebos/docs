@@ -1,7 +1,6 @@
 <!--author=SharS last changed: 06/22/2016-->
 
-### 配置和注册设备
-<a id="to-configure-and-register-the-device" class="xliff"></a>
+### <a name="to-configure-and-register-the-device"></a>配置和注册设备
 1. 访问 StorSimple 设备串行控制台上的 Windows PowerShell 接口。 有关说明，请参阅 [使用 PuTTY 连接到设备串行控制台](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 。 **请务必严格遵照该步骤，否则将无法访问控制台。**
 2. 在打开的会话中，按一次 **Enter** 以启动命令提示符。
 3. 系统将提示你选择要为设备设置的语言。 指定语言，然后按 **Enter**。

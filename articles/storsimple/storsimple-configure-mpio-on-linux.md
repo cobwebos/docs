@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/01/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aa0193e741b1a84c03230b2458eec96b5504f031
 ms.openlocfilehash: add539351066f9ff94febeebfd5334773b360e8f
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/16/2017
 
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
@@ -446,10 +447,5 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 
 * [Setting up MPIO on CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)（在 CentOS 上设置 MPIO）
 * [Linux Training Guide](http://linux-training.be/files/books/LinuxAdm.pdf)（Linux 培训指南）
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

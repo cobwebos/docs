@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: 7fbf3bfedca8fa57a5e9428c9399558992b4acbd
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/30/2017
 
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>将数据载入存储环境以进行分析
@@ -28,10 +29,5 @@ ms.openlocfilehash: 7fbf3bfedca8fa57a5e9428c9399558992b4acbd
 此**菜单**链接到介绍如何将数据引入这些目标环境中的主题，数据是在这些目标环境中进行存储和处理的。
 
 技术和业务需求，以及初始位置、你的数据的格式和大小，将确定需要将数据引入其中以实现分析的目标的目标环境。 要求数据在多个环境之间移动以实现构建预测模型所需的各种任务，这样的方案是不常见的。 例如，此系列任务可能包括数据浏览、预处理、清理、向下采样和模型定型。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

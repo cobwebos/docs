@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 649cc1a78f3a9f343533cb18fb7d763e4f9ea196
 ms.openlocfilehash: 89fa04a1107b6abb49aefd68066443717ac9b731
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/04/2017
 
 ---
 
@@ -146,9 +147,4 @@ docker info
     ```
 1. 打开 Visual Studio。
 1. 再次尝试该方案。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

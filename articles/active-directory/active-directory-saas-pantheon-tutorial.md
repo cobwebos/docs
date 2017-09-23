@@ -19,7 +19,6 @@ ms.openlocfilehash: 3f4ac1db2ee83d9f9fcb375d0fb7c40ad21c4688
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pantheon"></a>教程：Azure Active Directory 与 Pantheon 集成
 

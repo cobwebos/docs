@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/22/2017
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 99b76e3bc2939c65654cbf606fda6f8a45e0c44b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/21/2017
-
 
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set-update-2"></a>从备份集中还原 StorSimple 卷（更新 2）
@@ -53,7 +53,7 @@ ms.lasthandoff: 04/21/2017
 仅对分层卷启用基于热度地图的跟踪，不支持本地固定卷。 将卷克隆到其他设备时也不支持基于热度地图的还原。 如果设备上存在就地还原和要还原卷的本地快照，则不解除冻结（因为数据已在本地可用）。 默认情况下，将在还原时启动解除冻结作业，以根据热度地图主动解除冻结数据。 在 Update 4 中，可使用 Windows PowerShell cmdlet 查询正在运行的解除冻结作业、取消解除冻结作业，并获取解除冻结作业的状态。
 
 * `Get-HcsRehydrationJob` - 此 cmdlet 用于获取解除冻结作业的状态。 对一个卷触发单个解除冻结作业。
-* `Set-HcsRehydrationJob` - 使用此 cmdlet 可在解除冻结过程中暂停、停止、恢复解除冻结作业。    
+* `Set-HcsRehydrationJob` - 使用此 cmdlet 可在解除冻结过程中暂停、停止、恢复解除冻结作业。 
 
 有关解除冻结 cmdlet 的详细信息，请转到[适用于 StorSimple 的 Windows PowerShell cmdlet 参考](https://technet.microsoft.com/library/dn688168.aspx)。
 

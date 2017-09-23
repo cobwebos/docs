@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: c06be7a2d17b655c958c4ba4618739f5b218b8d7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 ---

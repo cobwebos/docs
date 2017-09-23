@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2016
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 596431b7279b753ca4da838eb028cdde2022ce02
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="use-the-storsimple-manager-service-dashboard"></a>使用 StorSimple Manager 服务仪表板
@@ -68,10 +69,5 @@ StorSimple Manager 服务仪表板显示以下信息：
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [排除 StorSimple 设备故障](storsimple-troubleshoot-operational-device.md)。
 * 了解如何使用 [StorSimple Manager 服务以管理 StorSimple 设备](storsimple-manager-service-administration.md) 的详细内容。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

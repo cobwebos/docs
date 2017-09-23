@@ -19,7 +19,6 @@ ms.openlocfilehash: 0ebed0c2605862426384c0e219e52c9d626b6246
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/23/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 与 ScaleX Enterprise 的集成
 
@@ -135,7 +134,7 @@ ms.lasthandoff: 05/23/2017
 
     b. 单击“emailaddress”属性以打开“编辑属性”窗口。 将其值从“user.mail”更改为“user.userprincipalname”并单击“确定”。
 
-    ![配置单一登录](./media/active-directory-saas-scalexenterprise-tutorial/edit_email_attribute.png)    
+    ![配置单一登录](./media/active-directory-saas-scalexenterprise-tutorial/edit_email_attribute.png)   
     
 5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
 

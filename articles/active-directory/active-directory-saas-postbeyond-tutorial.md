@@ -19,7 +19,6 @@ ms.openlocfilehash: 80b920dc99619795cbc86e8cb2e3ac2a78a71932
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a>教程：Azure Active Directory 与 PostBeyond 的集成
 

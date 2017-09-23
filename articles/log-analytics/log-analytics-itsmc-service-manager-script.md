@@ -20,7 +20,6 @@ ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 
 # <a name="create-service-manager-web-app-using-the-automated-script-preview"></a>使用自动化脚本创建 Service Manager Web 应用（预览版）

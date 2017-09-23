@@ -21,7 +21,6 @@ ms.openlocfilehash: b315a37f72f34d45bb55c2bbe6be20cca8c42424
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk"></a>从专用磁盘创建 Windows VM
 

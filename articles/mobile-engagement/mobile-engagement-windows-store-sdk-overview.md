@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a>适用于 Azure Mobile Engagement 的 Windows Universal SDK 集成
@@ -73,10 +74,5 @@ ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
 
 ### <a name="upgrade-from-older-versions"></a>从较旧版本升级
 请参阅[升级过程](mobile-engagement-windows-store-upgrade-procedure.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

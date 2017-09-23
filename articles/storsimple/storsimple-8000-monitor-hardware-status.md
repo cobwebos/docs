@@ -20,7 +20,6 @@ ms.openlocfilehash: 90724099842eac513c39dccf113ad1c0a63983f2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple 设备管理器服务监视硬件组件和状态
 ## <a name="overview"></a>概述

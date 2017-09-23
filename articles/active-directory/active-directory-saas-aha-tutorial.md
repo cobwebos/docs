@@ -19,7 +19,6 @@ ms.openlocfilehash: 7723864b2e1ab2d5b69d86f0fa18416b9d3f9aa3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>教程：Azure Active Directory 与 Aha! 集成
 

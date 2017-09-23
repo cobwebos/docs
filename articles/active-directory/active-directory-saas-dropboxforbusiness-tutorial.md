@@ -19,7 +19,6 @@ ms.openlocfilehash: a56a5af171eaca259db29f25fee4331a77313420
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>教程：Azure Active Directory 与 Dropbox for Business 的集成
 

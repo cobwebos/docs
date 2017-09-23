@@ -21,7 +21,6 @@ ms.openlocfilehash: 385102662ef46d7eca51d6e5e10ed7aa77bb1a43
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="create-a-custom-virtual-machine-running-linux"></a>创建运行 Linux 的自定义虚拟机
 > [!IMPORTANT] 

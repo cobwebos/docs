@@ -23,18 +23,15 @@ ms.lasthandoff: 05/11/2017
 
 ---
 
-# 向 Azure 规模集模板添加自定义映像
-<a id="add-a-custom-image-to-an-azure-scale-set-template" class="xliff"></a>
+# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>向 Azure 规模集模板添加自定义映像
 
 本文介绍如何修改[最小可行规模集模板](./virtual-machine-scale-sets-mvss-start.md) 以通过自定义映像部署。
 
-## 更改模板定义
-<a id="change-the-template-definition" class="xliff"></a>
+## <a name="change-the-template-definition"></a>更改模板定义
 
 可在[此处](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)查看最小可行规模集模板，在[此处](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json)查看用于从自定义映像部署规模集的模板。 让我们逐一查看创建此模板 (`git diff minimum-viable-scale-set custom-image`) 时使用的差异内容：
 
-### 创建托管磁盘映像
-<a id="creating-a-managed-disk-image" class="xliff"></a>
+### <a name="creating-a-managed-disk-image"></a>创建托管磁盘映像
 
 如果已有自定义托管磁盘映像（类型为 `Microsoft.Compute/images` 的资源），可跳过此部分。
 
@@ -98,8 +95,7 @@ ms.lasthandoff: 05/11/2017
 
 ```
 
-### 更改规模集属性以使用托管磁盘映像
-<a id="changing-scale-set-properties-to-use-the-managed-disk-image" class="xliff"></a>
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>更改规模集属性以使用托管磁盘映像
 
 在规模集 `storageProfile` 的 `imageReference` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `Microsoft.Compute/images` 资源的 `id`：
 
@@ -120,8 +116,7 @@ ms.lasthandoff: 05/11/2017
 本示例中，使用 `resourceId` 函数获取在同一模板中创建的映像的资源 ID。 如果事先创建了托管磁盘映像，应提供映像的 ID。 此 ID 必须采用以下格式：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`。
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
 

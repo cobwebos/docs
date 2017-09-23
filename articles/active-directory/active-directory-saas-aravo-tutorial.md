@@ -19,7 +19,6 @@ ms.openlocfilehash: 2b6da25a22463619180f635954660e6efeef62ce
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>教程：Azure Active Directory 与 Aravo 集成
 

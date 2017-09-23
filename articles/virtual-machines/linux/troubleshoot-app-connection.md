@@ -22,7 +22,6 @@ ms.openlocfilehash: ac9ab3178dba0e356d409cad24aec1afbe81e9f8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
 
-
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-a-linux-virtual-machine-in-azure"></a>排查在 Azure 中的 Linux 虚拟机上的应用程序连接问题
 [!INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../../includes/virtual-machines-common-troubleshoot-app-connection.md)]

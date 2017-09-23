@@ -19,7 +19,6 @@ ms.openlocfilehash: 03bf65852b8d3cf14aebf155891a028db86e78d0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 

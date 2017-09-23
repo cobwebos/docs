@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3a47ff1eed220cede820e8698c3384300e94688d
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-device"></a>修改 StorSimple 设备上的 DATA 0 网络接口设置
@@ -68,10 +69,5 @@ DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向�
 ## <a name="next-steps"></a>后续步骤
 * 若要配置 DATA 0 之外的网络接口，可以使用 [Azure 经典门户中的“配置”页](storsimple-modify-device-config.md)。 
 * 如果在配置网络接口时遇到任何问题，请参阅[排除部署问题](storsimple-troubleshoot-deployment.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

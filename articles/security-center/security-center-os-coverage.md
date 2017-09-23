@@ -20,7 +20,6 @@ ms.openlocfilehash: c33e132037d95fa92fd59a8243a9a8a351ae0224
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure 安全中心支持的平台
 使用经典部署模式和 Resource Manager 部署模式创建的虚拟机 (VM) 支持安全状态监视和建议。

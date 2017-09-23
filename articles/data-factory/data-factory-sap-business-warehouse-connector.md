@@ -19,7 +19,6 @@ ms.openlocfilehash: 220ccc8b94797880d335385046001c5f3b17c862
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
 
-
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 SAP Business Warehouse (BW) 移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
@@ -284,7 +283,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 ABAP 字典中的数据类型 | .Net 数据类型
 -------------------------------- | --------------
-ACCP |    int
+ACCP |  int
 CHAR | String
 CLNT | String
 CURR | 小数

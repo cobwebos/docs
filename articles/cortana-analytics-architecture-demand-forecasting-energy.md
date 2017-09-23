@@ -21,7 +21,6 @@ ms.openlocfilehash: 87a27dbe9042973dcfa7e9a5a438773d1bbab4d3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板体系结构
 下图提供了[用于能源需求预测的 Cortana Intelligence 解决方案模板](cortana-analytics-playbook-demand-forecasting-energy.md)的体系结构概述。

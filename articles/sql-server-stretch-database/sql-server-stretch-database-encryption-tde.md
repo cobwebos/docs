@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
 ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE)
@@ -58,9 +59,4 @@ TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的�
 
 
 <!--Link references-->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

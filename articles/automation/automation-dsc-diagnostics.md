@@ -19,7 +19,6 @@ ms.openlocfilehash: 316031c5297a0201c8db4a9e177298c78962c673
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
 
-
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>将 Azure Automation DSC 报告数据转发到 OMS Log Analytics
 

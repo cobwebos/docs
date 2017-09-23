@@ -20,7 +20,6 @@ ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/05/2017
 
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>用于 DMZ 的示例应用程序
@@ -202,9 +203,4 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

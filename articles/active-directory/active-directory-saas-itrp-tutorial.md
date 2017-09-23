@@ -19,7 +19,6 @@ ms.openlocfilehash: fae1c7b6b0e04c1e23123d3aee7913cb3131e645
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 

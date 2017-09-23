@@ -20,7 +20,6 @@ ms.openlocfilehash: 39761f94efc530452a41ef9f2130976803cff711
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>部署 Azure 机器学习 Web 服务
 Azure 机器学习让用户能够生成、测试和部署预测分析解决方案。

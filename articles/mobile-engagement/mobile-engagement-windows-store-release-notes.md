@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: dc5529a9e8f4eba867732f719ca8fff718c00d5a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="windows-universal-apps-sdk-release-notes"></a>Windows 通用应用 SDK 发行说明
@@ -63,10 +64,5 @@ ms.openlocfilehash: dc5529a9e8f4eba867732f719ca8fff718c00d5a
 * Azure Mobile Engagement 的初始版本
 * appId/sdkKey 配置将替换为连接字符串配置。
 * 安全性改进。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

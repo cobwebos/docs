@@ -20,7 +20,6 @@ ms.openlocfilehash: b34c67ecc1bd50157ded790948ac7b88a5807ddb
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure Key Vault 服务限制
 以下是 Azure 密钥保管库的服务限制。

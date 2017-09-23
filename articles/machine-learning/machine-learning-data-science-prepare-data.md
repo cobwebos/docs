@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/30/2017
 
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
@@ -102,10 +103,5 @@ ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
 > 《数据挖掘：概念和技术》，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -22,7 +22,6 @@ ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 

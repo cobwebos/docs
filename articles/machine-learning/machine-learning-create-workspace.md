@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: garye;bradsev;ahgyger
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 613cf7e34d69afa21b1808ffe57af9a8b64944f5
 ms.openlocfilehash: 182a34822e71d63f4d7229548ae3f59d9f195337
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>创建并共享 Azure 机器学习工作区

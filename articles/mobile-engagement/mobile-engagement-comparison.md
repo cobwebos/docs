@@ -20,7 +20,6 @@ ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>比较 Azure Mobile Engagement 和其他相似的 Azure 服务
 Microsoft Azure 提供的服务列表在不断扩展，有时你可能会疑惑 Azure Mobile Engagement 与你刚刚看到或听说过的其他服务有何不同。 本文试图消除这种疑惑，并指导用户在最佳使用时机选择 Azure Mobile Engagement。 

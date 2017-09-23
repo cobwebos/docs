@@ -23,7 +23,6 @@ ms.openlocfilehash: b48df78df9f53ac7bf0804f55a8d36a2fe2f86b4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置

@@ -20,7 +20,6 @@ ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 1dfaa7ade664e43dcb9aa788b0197ca17e6ec4cc
 ms.contentlocale: zh-cn
 
-
 ---
 
 ## <a name="create-an-application-express"></a>创建应用程序（快速）

@@ -20,10 +20,8 @@ ms.openlocfilehash: 8072a863fab0b304ccbbba639aa56b403e8f37c7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
-# 教程：使用 Azure 门户创建用于复制数据的数据工厂管道
-<a id="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data" class="xliff"></a> 
+# <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 门户创建用于复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -45,12 +43,10 @@ ms.lasthandoff: 07/11/2017
 > [!NOTE] 
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 执行本教程之前，请完成[教程先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一文中列出的先决条件步骤。
 
-## 步骤
-<a id="steps" class="xliff"></a>
+## <a name="steps"></a>步骤
 下面是本教程中要执行的步骤：
 
 1. 创建 Azure **数据工厂**。 本步骤创建名为 ADFTutorialDataFactory 的数据工厂。 
@@ -69,8 +65,7 @@ ms.lasthandoff: 07/11/2017
     复制活动将数据从 Azure Blob 存储中的 Blob 复制到 Azure SQL 数据库中的表。 可以通过管道中的复制活动，将数据从任何支持的源复制到任何支持的目标。 有关支持的数据存储的列表，请参阅[数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文。 
 5. 监视管道。 本步骤使用 Azure 门户**监视**输入和输出数据集的切片。 
 
-## 创建数据工厂
-<a id="create-data-factory" class="xliff"></a>
+## <a name="create-data-factory"></a>创建数据工厂
 > [!IMPORTANT]
 > 完成[本教程的先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（如果尚未这样做）。   
 
@@ -114,8 +109,7 @@ ms.lasthandoff: 07/11/2017
    
    ![数据工厂主页](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-home-page.png)
 
-## 创建链接服务
-<a id="create-linked-services" class="xliff"></a>
+## <a name="create-linked-services"></a>创建链接服务
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本教程中，请不要使用任何计算服务，例如 Azure HDInsight 或 Azure Data Lake Analytics。 可以使用两个数据存储，其类型为 Azure 存储（源）和 Azure SQL 数据库（目标）。 
 
 因此，请创建两个名为 AzureStorageLinkedService 和 AzureSqlLinkedService 的链接服务，其类型为 AzureStorage 和 AzureSqlDatabase。  
@@ -124,8 +118,7 @@ AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 �
 
 AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob 存储复制的数据存储在该数据库中。 你根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)在该数据库中创建了 emp 表。  
 
-### 创建 Azure 存储链接服务
-<a id="create-azure-storage-linked-service" class="xliff"></a>
+### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 本步骤将 Azure 存储帐户链接到数据工厂。 在本部分中指定 Azure 存储帐户的名称和密钥。  
 
 1. 在“数据工厂”边栏选项卡中，单击“编写和部署”磁贴。
@@ -146,8 +139,7 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
 
     有关链接服务定义中 JSON 属性的详细信息，请参阅 [Azure Blob 存储连接器](data-factory-azure-blob-connector.md#linked-service-properties)一文。
 
-### 为 Azure SQL 数据库创建链接服务
-<a id="create-a-linked-service-for-the-azure-sql-database" class="xliff"></a>
+### <a name="create-a-linked-service-for-the-azure-sql-database"></a>为 Azure SQL 数据库创建链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。 在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 
 
 1. 在“数据工厂编辑器”中，单击工具栏上的“新建数据存储”按钮，然后从下拉菜单中选择“Azure SQL 数据库”。 在右窗格中，应会看到用于创建 Azure SQL 链接服务的 JSON 模板。
@@ -157,16 +149,14 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
 
     有关这些 JSON 属性的详细信息，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md#linked-service-properties)。
 
-## 创建数据集
-<a id="create-datasets" class="xliff"></a>
+## <a name="create-datasets"></a>创建数据集
 在上一步骤中，已创建用于将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂的链接服务。 本步骤定义两个名为 InputDataset 和 OutputDataset 的数据集，表示存储在数据存储中的输入和输出数据，这些数据存储分别由 AzureStorageLinkedService 和 AzureSqlLinkedService 引用。
 
 Azure 存储链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure 存储帐户。 输入 Blob 数据集 (InputDataset) 指定容器以及包含输入数据的文件夹。  
 
 类似地，Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure SQL 数据库。 输出 SQL 表数据集 (OututDataset) 在数据库中指定一个表，数据将从 Blob 存储复制到该表中。 
 
-### 创建输入数据集
-<a id="create-input-dataset" class="xliff"></a>
+### <a name="create-input-dataset"></a>创建输入数据集
 本步骤在 AzureStorageLinkedService 链接服务代表的 Azure 存储中创建名为 InputDataset 的数据集，该数据集指向 Blob 容器 (adftutorial) 根文件夹中的 Blob 文件 (emp.txt)。 如果不指定 fileName 的值（或者跳过此步骤），则会将输入文件夹中的所有 Blob 复制到目标。 在本教程中，请为 fileName 指定一个值。 
 
 1. 在数据工厂的“编辑器”中，单击命令栏上的“......更多”、“新建数据集”、“Azure Blob 存储”。 
@@ -223,8 +213,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     有关这些 JSON 属性的详细信息，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md#dataset-properties)一文。      
 3. 单击工具栏上的“部署”，创建并部署 **InputDataset** 数据集。 确认树视图中显示了 **InputDataset**。
 
-### 创建输出数据集
-<a id="create-output-dataset" class="xliff"></a>
+### <a name="create-output-dataset"></a>创建输出数据集
 Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure SQL 数据库。 在此步骤中创建的输出 SQL 表数据集 (OututDataset) 在数据库中指定一个表，数据将从 Blob 存储复制到该表中。
 
 1. 在数据工厂的“编辑器”中，依次单击下拉菜单中的“......更多”、“新建数据集”、“Azure SQL”。 
@@ -271,8 +260,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     有关这些 JSON 属性的详细信息，请参阅 [Azure SQL 连接器](data-factory-azure-sql-connector.md#dataset-properties)一文。
 3. 单击工具栏上的“部署”，创建并部署 **OutputDataset** 数据集。 确认在树视图中的“数据集”下显示了 **OutputDataset**。 
 
-## 创建管道
-<a id="create-pipeline" class="xliff"></a>
+## <a name="create-pipeline"></a>创建管道
 本步骤创建管道，其中包含使用 **InputDataset** 作为输入和使用 **OutputDataset** 作为输出的**复制活动**。
 
 目前，输出数据集驱动计划。 在本教程中，输出数据集配置为每小时生成一个切片。 管道的开始时间和结束时间相差一天，即 24 小时。 因此，管道会生成 24 个输出数据集切片。 
@@ -339,12 +327,10 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
 **祝贺你！** 现已成功创建 Azure 数据工厂，可以使用管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库了。 
 
 
-## 监视管道
-<a id="monitor-pipeline" class="xliff"></a>
+## <a name="monitor-pipeline"></a>监视管道
 本步骤使用 Azure 门户监视 Azure 数据工厂的运行情形。    
 
-### 使用“监视和管理”应用来监视管道
-<a id="monitor-pipeline-using-monitor--manage-app" class="xliff"></a>
+### <a name="monitor-pipeline-using-monitor--manage-app"></a>使用“监视和管理”应用来监视管道
 以下步骤演示了如何通过“监视和管理”应用程序监视数据工厂中的管道： 
 
 1. 在数据工厂的主页上单击“监视和管理”磁贴。
@@ -372,8 +358,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
 
 有关使用此应用程序的详细信息，请参阅 [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md)（使用监视和管理应用程序来监视和管理 Azure 数据工厂管道）。
 
-### 使用图示视图监视管道
-<a id="monitor-pipeline-using-diagram-view" class="xliff"></a>
+### <a name="monitor-pipeline-using-diagram-view"></a>使用图示视图监视管道
 也可使用图示视图监视数据管道。  
 
 1. 在“数据工厂”边栏选项卡中，单击“图示”。
@@ -412,8 +397,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     ![SQL 查询结果](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-sql-query-results.png)
 
 
-## 摘要
-<a id="summary" class="xliff"></a>
+## <a name="summary"></a>摘要
 本教程创建了一个 Azure 数据工厂，用于将数据从 Azure Blob 复制到 Azure SQL 数据库。 已使用 Azure 门户创建了数据工厂、链接服务、数据集和管道。 下面是本教程中执行的高级步骤：  
 
 1. 创建了 Azure **数据工厂**。
@@ -423,8 +407,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
 3. 创建了 **数据集** ，用于描述管道的输入和输出数据。
 4. 创建了包含**复制活动**的**管道**，其中 **BlobSource** 为源，**SqlSink** 为接收器。  
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 在本教程中，你在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]

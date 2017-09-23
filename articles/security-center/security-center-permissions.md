@@ -20,7 +20,6 @@ ms.openlocfilehash: 0aaa99dda44d2020afd3e841e84020eb4ff87a85
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/15/2017
 
-
 ---
 
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限

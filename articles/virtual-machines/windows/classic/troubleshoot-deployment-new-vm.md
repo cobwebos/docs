@@ -21,7 +21,6 @@ ms.openlocfilehash: 990914e3d9541e8574ce6ba0bf6c996cb394470a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
-
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>排查在 Azure 中新建 Windows 虚拟机时遇到的经典部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-selectors-include.md)]

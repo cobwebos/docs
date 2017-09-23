@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/09/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ba37cbfc8c92d00cf0ec02dd7b1ea9795946bcd
 ms.openlocfilehash: 100eed4694d2017333ef25eca86034d17cce78d1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/09/2016
 
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
@@ -189,10 +191,5 @@ StorSimple 数据保护功能支持创建按需备份。 此外，默认备份�
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[准备虚拟阵列门户](storsimple-virtual-array-deploy1-portal-prep.md)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

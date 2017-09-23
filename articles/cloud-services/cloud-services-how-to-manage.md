@@ -20,7 +20,6 @@ ms.openlocfilehash: e66a3390c08b66e0f2f38725425cd78a36004118
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
 > [!div class="op_single_selector"]

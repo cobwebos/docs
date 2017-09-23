@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/05/2017
 
 ---
 # <a name="manage-nsgs-using-the-portal"></a>使用门户创建 NSG
@@ -199,9 +200,4 @@ ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
 
 ## <a name="next-steps"></a>后续步骤
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

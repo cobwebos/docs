@@ -21,7 +21,6 @@ ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
-
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL 数据仓库中的 Group By 选项
 [GROUP BY][GROUP BY] 子句用于将数据聚合成摘要行集。 它还具有一些扩展其功能的选项，但这些选项需要经过处理，因为 Azure SQL 数据仓库不直接支持这些选项。

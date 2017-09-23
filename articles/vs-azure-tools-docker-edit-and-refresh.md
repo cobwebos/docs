@@ -20,12 +20,9 @@ ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/11/2017
 
-
 ---
-# 在本地 Docker 容器中调试应用
-<a id="debugging-apps-in-a-local-docker-container" class="xliff"></a>
-## 概述
-<a id="overview" class="xliff"></a>
+# <a name="debugging-apps-in-a-local-docker-container"></a>在本地 Docker 容器中调试应用
+## <a name="overview"></a>概述
 Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发和验证应用程序的一致性方法。
 每次进行代码更改后，不需要重新启动该容器。
 本文将演示如何使用“编辑和刷新”功能在本地 Docker 容器中启动 ASP.NET Core Web 应用，进行任何必要的更改，然后刷新浏览器查看这些更改。
@@ -36,8 +33,7 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 >
 >
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 必须安装以下工具。
 
 * [最新版本的 Visual Studio](https://www.visualstudio.com/downloads/)
@@ -48,16 +44,13 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 
 如果使用 Docker 工具箱，则需要[配置 Docker 客户端](vs-azure-tools-docker-setup.md)
 
-## 1.创建 Web 应用
-<a id="1-create-a-web-app" class="xliff"></a>
+## <a name="1-create-a-web-app"></a>1.创建 Web 应用
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## 2.添加 Docker 支持
-<a id="2-add-docker-support" class="xliff"></a>
+## <a name="2-add-docker-support"></a>2.添加 Docker 支持
 [!INCLUDE [Add docker support](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
-## 3.编辑代码并刷新
-<a id="3-edit-your-code-and-refresh" class="xliff"></a>
+## <a name="3-edit-your-code-and-refresh"></a>3.编辑代码并刷新
 若要快速重复更改，可以在容器中启动应用程序，并继续进行更改，然后就像使用 IIS Express 一样查看这些更改。
 
 1. 将解决方案配置设置为 `Debug`，并按 **&lt;CTRL + F5>** 以生成 docker 映像并在本地运行它。
@@ -79,8 +72,7 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
    ```
 6. 你的更改已应用！
 
-## 4.使用断点进行调试
-<a id="4-debug-with-breakpoints" class="xliff"></a>
+## <a name="4-debug-with-breakpoints"></a>4.使用断点进行调试
 通常，更改将需要利用 Visual Studio 的调试功能进行进一步检查。
 
 1. 返回到 Visual Studio 并打开 `Controllers\HomeController.cs`
@@ -97,16 +89,13 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 
    ![][2]
 
-## 摘要
-<a id="summary" class="xliff"></a>
+## <a name="summary"></a>摘要
 使用 [Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)，可以通过在 Docker 容器内开发的生产真实性，获得在本地工作的生产效率。
 
-## 故障排除
-<a id="troubleshooting" class="xliff"></a>
+## <a name="troubleshooting"></a>故障排除
 [Visual Studio Docker 开发故障排除](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
-## 提供有关在 Visual Studio、Windows 和 Azure 中使用 Docker 的更多信息
-<a id="more-about-docker-with-visual-studio-windows-and-azure" class="xliff"></a>
+## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>提供有关在 Visual Studio、Windows 和 Azure 中使用 Docker 的更多信息
 * [Docker Tools for Visual Studio](http://aka.ms/dockertoolsforvs) - 在容器中开发 .NET Core 代码
 * [Docker Tools for Visual Studio Team Services](http://aka.ms/dockertoolsforvsts) - 生成和部署 docker 容器
 * [Docker Tools for Visual Studio Code](http://aka.ms/dockertoolsforvscode) - 用于编辑 docker 文件的语言服务，随后将推出更多 e2e 方案
@@ -114,16 +103,13 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 * [Azure 容器服务](https://azure.microsoft.com/services/container-service/) - [Azure 容器服务内容](http://aka.ms/AzureContainerService)
 * 有关使用 Docker 的更多示例，请参阅 [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [演示](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)中的 [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker)（使用 Docker）。 有关 HealthClinic.biz 演示的多个快速入门，请参阅 [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)（Azure 开发人员工具快速入门）。
 
-## 各种 Docker 工具
-<a id="various-docker-tools" class="xliff"></a>
+## <a name="various-docker-tools"></a>各种 Docker 工具
 [一些好用的 docker 工具（Steve Lasker 的博客）](https://blogs.msdn.microsoft.com/stevelasker/2016/03/25/some-great-docker-tools/)
 
-## 优秀文章
-<a id="good-articles" class="xliff"></a>
+## <a name="good-articles"></a>优秀文章
 [NGINX 中的微服务简介](https://www.nginx.com/blog/introduction-to-microservices/)
 
-## 演示文稿
-<a id="presentations" class="xliff"></a>
+## <a name="presentations"></a>演示文稿
 * [Steve Lasker：VS Live Las Vegas 2016 - Docker e2e](https://github.com/SteveLasker/Presentations/blob/master/VSLive2016/Vegas/)
 * [ASP.NET Core @ build 2016 简介 -“你在哪里”演示](https://channel9.msdn.com/Events/Build/2016/B810)
 * [在容器中开发 .NET 应用，第 9 频道](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)

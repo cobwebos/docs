@@ -21,7 +21,6 @@ ms.openlocfilehash: 7e48c60eb7305a1044db88489cad1f1b7fb3d522
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-box-connector"></a>Box 连接器入门
 连接到 Box，创建文件、删除文件等。 通过 Box，你可以：

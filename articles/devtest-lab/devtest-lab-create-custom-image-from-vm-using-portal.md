@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 38d70ed302eeab912ce4fe33272f85e96f1b1eda
 ms.openlocfilehash: 9d2dcf7164985508d691e8a0c123efaf3b8aa19a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/11/2017
 
 ---
 
@@ -61,9 +62,4 @@ ms.openlocfilehash: 9d2dcf7164985508d691e8a0c123efaf3b8aa19a
 ##<a name="next-steps"></a>后续步骤
 
 - [将 VM 添加到实验室](./devtest-lab-add-vm-with-artifacts.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

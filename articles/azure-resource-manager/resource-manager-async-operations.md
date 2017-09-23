@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5590ced0e7d2a68fd525178ee21590b0897b58d7
 ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/13/2017
 
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
@@ -196,8 +197,3 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 * 有关每个 REST 操作的文档，请参阅 [REST API 文档](/rest/api/)。
 * 有关通过 Resource Manager REST API 管理资源的信息，请参阅[使用 Resource Manager REST API](resource-manager-rest-api.md)。
 * 有关通过 Resource Manager REST API 部署模板的信息，请参阅[使用 Resource Manager 模板和 Resource Manager REST API 部署资源](resource-group-template-deploy-rest.md)。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

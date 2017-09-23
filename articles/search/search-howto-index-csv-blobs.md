@@ -20,7 +20,6 @@ ms.openlocfilehash: af9da85c37211d2436c23cc05400031c661ef51e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 CSV blob 编制索引
 默认情况下，[Azure 搜索 Blob 索引器](search-howto-indexing-azure-blob-storage.md)会将分隔的文本 blob 分析为单个文本块。 但在 blob 含有 CSV 数据的情况下，你通常希望将 blob 中的每一行视为一个单独文档。 例如，以如下分隔文本为例： 

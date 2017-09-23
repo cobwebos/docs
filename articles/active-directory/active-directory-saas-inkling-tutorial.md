@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a2beec313c0dfcd9cf7f7c1ad716223dcaf453b7
 ms.openlocfilehash: 7b0639c6515298731f88346c2e4ca82664653a2b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/11/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>教程：Azure Active Directory 与 Inkling 集成
@@ -124,7 +125,7 @@ ms.openlocfilehash: 7b0639c6515298731f88346c2e4ca82664653a2b
 
 4. 在“SAML 签名证书”部分中，单击“创建新证书”。
 
-    ![配置单一登录](./media/active-directory-saas-inkling-tutorial/tutorial_general_400.png)     
+    ![配置单一登录](./media/active-directory-saas-inkling-tutorial/tutorial_general_400.png)    
 
 5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
 
@@ -242,8 +243,3 @@ ms.openlocfilehash: 7b0639c6515298731f88346c2e4ca82664653a2b
 [201]: ./media/active-directory-saas-inkling-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-inkling-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-inkling-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Feb17_HO2-->
-
-

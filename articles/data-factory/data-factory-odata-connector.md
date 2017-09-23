@@ -20,7 +20,6 @@ ms.openlocfilehash: 624b6c8f317477d83539392c6c2f15c2dc69d401
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/06/2017
 
-
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 本文介绍如何使用 Azure 数据工厂中的复制活动从 OData 源移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。

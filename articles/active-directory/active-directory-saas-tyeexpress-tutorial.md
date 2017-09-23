@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 869e5284c71904fcc817ceee0f39d94fab1bc6f3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>教程：Azure Active Directory 与 T&E Express 的集成
@@ -136,7 +136,7 @@ ms.lasthandoff: 04/07/2017
 
     ![配置单一登录](./media/active-directory-saas-tyeexpress-tutorial/tyeAdmin.png)
 
-11. 单击“Guardar(Save)”按钮保存设置。    
+11. 单击“Guardar(Save)”按钮保存设置。 
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户

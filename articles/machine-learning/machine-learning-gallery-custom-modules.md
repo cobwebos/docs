@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: roopalik;garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: 56c308643ad6d20170174725f76f6ddbc76b3e22
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/15/2017
-
 
 ---
 # <a name="discover-custom-machine-learning-modules-in-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现自定义机器学习模块

@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 9691408bcd80afb6eba534f26749b76dd3bfe315
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
 
 ---
@@ -29,12 +30,12 @@ ms.lasthandoff: 03/21/2017
 
 在开始之前，请确保具备以下条件：
 
-*    已安装 Azure PowerShell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
-*    用于初始化数据转换作业的配置设置（用于获取这些设置的说明在此处提供）。
-*    已在资源组中的混合数据资源中正确配置的作业定义。
-*    从 GitHub 存储库下载 `DataTransformationApp.zip` [zip](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) 文件。
-*    从 GitHub 存储库下载 `Get-ConfigurationParams.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Get-ConfigurationParams.ps1)。
-*    从 GitHub 存储库下载 `Trigger-DataTransformation-Job.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)。
+*   已安装 Azure PowerShell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*   用于初始化数据转换作业的配置设置（用于获取这些设置的说明在此处提供）。
+*   已在资源组中的混合数据资源中正确配置的作业定义。
+*   从 GitHub 存储库下载 `DataTransformationApp.zip` [zip](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) 文件。
+*   从 GitHub 存储库下载 `Get-ConfigurationParams.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Get-ConfigurationParams.ps1)。
+*   从 GitHub 存储库下载 `Trigger-DataTransformation-Job.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)。
 
 ## <a name="step-by-step"></a>分步指南
 

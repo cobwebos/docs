@@ -22,7 +22,6 @@ ms.openlocfilehash: 863a15d716161bfa9d3e041174504b73a2956e8d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-bing-search-connector"></a>必应搜索连接器入门
 连接到必应搜索，搜索资讯、视频等。 通过必应搜索，你可以： 

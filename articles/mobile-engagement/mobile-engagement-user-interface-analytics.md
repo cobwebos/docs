@@ -20,7 +20,6 @@ ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
 
-
 ---
 # <a name="how-to-analyze-historical-data-about-your-application"></a>如何分析有关应用程序的历史记录数据
 本文介绍了 **Mobile Engagement** 门户的“**分析**”选项卡。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，若要开始使用该门户，你首先需要创建 **Azure Mobile Engagement** 帐户。

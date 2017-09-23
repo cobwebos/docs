@@ -19,7 +19,6 @@ ms.openlocfilehash: 9b22679c304248ed7ba7a6bd9eaf82b64f7143cf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>教程：配置 Workplace by Facebook 以进行用户预配
 

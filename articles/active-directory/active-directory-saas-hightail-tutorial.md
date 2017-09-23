@@ -19,7 +19,6 @@ ms.openlocfilehash: ba55f9b62d274aa3eb91723c62b53f54de0891b5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>教程：Azure Active Directory 与 Hightail 集成
 

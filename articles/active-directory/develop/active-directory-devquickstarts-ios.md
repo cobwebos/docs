@@ -21,7 +21,6 @@ ms.openlocfilehash: 57f465df99ac234466459b8031f61805d8334b59
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="integrate-azure-ad-into-an-ios-app"></a>将 Azure AD 集成到 iOS 应用中
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]

@@ -20,7 +20,6 @@ ms.openlocfilehash: c16bcf30ab96f79e59404a41852e4cd227e28b08
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 

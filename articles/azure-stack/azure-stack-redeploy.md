@@ -20,7 +20,6 @@ ms.openlocfilehash: 891cde9b16bbbb51729129b6ad7a0f3794307baa
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="redeploy-azure-stack"></a>Redeploy Azure Stack
 To redeploy Azure Stack, you must start over from scratch as described below.

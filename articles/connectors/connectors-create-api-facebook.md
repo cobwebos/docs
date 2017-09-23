@@ -21,7 +21,6 @@ ms.openlocfilehash: e10a30ccef3e81cb3d7749696453d82b8958d076
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-facebook-connector"></a>Facebook 连接器入门
 连接到 Facebook，发布到时间线、获取页面源等。 通过 Facebook，你可以：

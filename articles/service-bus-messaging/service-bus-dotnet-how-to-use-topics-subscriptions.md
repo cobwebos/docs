@@ -20,15 +20,12 @@ ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
-# 服务总线主题入门
-<a id="get-started-with-service-bus-topics" class="xliff"></a>
+# <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-## 将要完成的任务
-<a id="what-will-be-accomplished" class="xliff"></a>
+## <a name="what-will-be-accomplished"></a>将要完成的任务
 
 本教程涵盖以下步骤：
 
@@ -38,23 +35,20 @@ ms.lasthandoff: 07/01/2017
 4. 编写一个控制台应用程序，用于向主题发送消息。
 5. 编写一个控制台应用程序，用于从订阅接收该消息。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 1. [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## 1.使用 Azure 门户创建命名空间
-<a id="1-create-a-namespace-using-the-azure-portal" class="xliff"></a>
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.使用 Azure 门户创建命名空间
 
 如果已创建服务总线消息传递命名空间，请跳转到[使用 Azure 门户创建主题](#2-create-a-topic-using-the-azure-portal)部分。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## 2.使用 Azure 门户创建主题
-<a id="2-create-a-topic-using-the-azure-portal" class="xliff"></a>
+## <a name="2-create-a-topic-using-the-azure-portal"></a>2.使用 Azure 门户创建主题
 
 1. 登录到 [Azure 门户][azure-portal]。
 2. 在门户的左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“更多服务”）。
@@ -69,8 +63,7 @@ ms.lasthandoff: 07/01/2017
     ![选择“新建”][createtopic3]
 6. 单击边栏选项卡底部的“创建” 。
 
-## 3.创建主题的订阅
-<a id="3-create-a-subscription-to-the-topic" class="xliff"></a>
+## <a name="3-create-a-subscription-to-the-topic"></a>3.创建主题的订阅
 
 1. 在门户资源窗格中，单击在步骤 1 中创建的命名空间，然后单击在步骤 2 中创建的主题的名称。
 2. 在概览窗格顶部单击“订阅”旁边的加号，以便添加该主题的订阅。
@@ -79,26 +72,22 @@ ms.lasthandoff: 07/01/2017
 
 3. 输入订阅的名称。 将其他选项保留默认值。
 
-## 4.将消息发送到主题
-<a id="4-send-messages-to-the-topic" class="xliff"></a>
+## <a name="4-send-messages-to-the-topic"></a>4.将消息发送到主题
 
 为了将消息发送到主题中，我们使用 Visual Studio 编写了一个 C# 控制台应用程序。
 
-### 创建控制台应用程序
-<a id="create-a-console-application" class="xliff"></a>
+### <a name="create-a-console-application"></a>创建控制台应用程序
 
 启动 Visual Studio 并创建新的控制台应用 (.NET Framework) 项目。
 
-### 添加服务总线 NuGet 包
-<a id="add-the-service-bus-nuget-package" class="xliff"></a>
+### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
 1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
 2. 单击“浏览”选项卡，搜索“Microsoft Azure 服务总线”，然后选择“WindowsAzure.ServiceBus”项。 单击“安装”以完成安装，然后关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
-### 编写一些代码以向主题发送消息
-<a id="write-some-code-to-send-a-message-to-the-topic" class="xliff"></a>
+### <a name="write-some-code-to-send-a-message-to-the-topic"></a>编写一些代码以向主题发送消息
 
 1. 在 Program.cs 文件顶部添加以下 `using` 语句。
    
@@ -160,8 +149,7 @@ ms.lasthandoff: 07/01/2017
    
       ![消息大小][topic-message]
 
-## 5.从订阅接收消息
-<a id="5-receive-messages-from-the-subscription" class="xliff"></a>
+## <a name="5-receive-messages-from-the-subscription"></a>5.从订阅接收消息
 
 1. 若要接收刚发送的一个或多个消息，请创建新的控制台应用程序并添加对服务总线 NuGet 包的引用，类似于前面的发件人应用程序。
 2. 在 Program.cs 文件顶部添加以下 `using` 语句。
@@ -222,8 +210,7 @@ ms.lasthandoff: 07/01/2017
 
 祝贺你！ 你现在已创建主题和订阅，发送了一条消息并接收了该消息。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 查看 [GitHub 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples)中的示例，了解服务总线消息传送的一些更高级的功能。
 

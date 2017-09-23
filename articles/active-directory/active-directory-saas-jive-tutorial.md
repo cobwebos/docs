@@ -19,7 +19,6 @@ ms.openlocfilehash: 6d2d4b777d7afd74598d2eba4a7e3571a8a18d6f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>教程：Azure Active Directory 与 Jive 集成
 

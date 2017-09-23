@@ -21,7 +21,6 @@ ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>升级虚拟机规模集
 本文介绍了如何在不停机的情况下为 Azure 虚拟机规模集推出 OS 更新。 在此上下文中，OS 更新涉及到更改 OS 的版本或 SKU，或者更改自定义映像的 URI。 在不停机的情况下更新意味着一次只更新一台虚拟机或分组更新（如一次更新一个容错域），而不是一次更新所有虚拟机。 这样做能使没有进行升级的虚拟机继续运行。

@@ -21,7 +21,6 @@ ms.openlocfilehash: a7a6daad34525683579e25b9591ed28f2bf29c04
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/11/2017
 
-
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation"></a>在创建期间使用 cloud-init 自定义 Linux VM
 本文说明如何使用 Azure CLI 2.0 制作 cloud-init 脚本来设置主机名、更新已安装的包及管理用户帐户。 创建虚拟机 (VM) 时将从 Azure CLI 调用 cloud-init 脚本。 若要深入了解如何安装应用程序、编写配置文件以及从 Key Vault 注入密钥，请参阅[本教程](tutorial-automate-vm-deployment.md)。 还可以使用 [Azure CLI 1.0](using-cloud-init-nodejs.md) 执行这些步骤。

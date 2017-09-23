@@ -21,7 +21,6 @@ ms.openlocfilehash: 08bb5140bb35bbd120aaa506afeab8ad247f81e1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据

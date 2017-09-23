@@ -21,7 +21,6 @@ ms.openlocfilehash: 526a14710f24ee4a4b61a11873aa6caa0b47dc10
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-trello-connector"></a>Trello 连接器入门
 利用 Trello，不管是在工作还是在家，你随时都可以掌管自己的所有项目。  这是一款简单灵活而又免费的工具，可让你以可视化方式的管理项目和安排一些事务。  连接到 Trello 以管理你的看板、列表和卡片。

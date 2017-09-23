@@ -20,7 +20,6 @@ ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 

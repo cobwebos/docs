@@ -21,7 +21,6 @@ ms.openlocfilehash: 13317b016f9ff3955f376b858645c42668b0de42
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/21/2017
 
-
 ---
 # <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Node.js Web 应用登录和注销
 此处，我们使用 Passport 进行以下操作：

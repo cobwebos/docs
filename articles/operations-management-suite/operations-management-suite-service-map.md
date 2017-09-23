@@ -20,7 +20,6 @@ ms.openlocfilehash: 2e5475a0563549ddfaa2c146e4acf94c019841ec
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/14/2017
 
-
 ---
 
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>使用 Operations Management Suite 中的服务映射解决方案

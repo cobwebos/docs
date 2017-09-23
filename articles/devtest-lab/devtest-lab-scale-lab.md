@@ -20,7 +20,6 @@ ms.openlocfilehash: f11ed42b474e4f208eac92689bfa33fb188d15a1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/17/2017
 
-
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>开发测试实验室中的缩放配额和限制
 在开发测试实验室中工作时，你可能会注意到，某些 Azure 资源存在某些默认的限制，这可能会影响开发测试实验室服务。 这些限制称为“配额”。

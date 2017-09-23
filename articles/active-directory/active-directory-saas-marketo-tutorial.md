@@ -19,7 +19,6 @@ ms.openlocfilehash: e146fd5a8075bc9c7ba049b25e5f301fc2645ed9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>教程：Azure Active Directory 与 Marketo 的集成
 

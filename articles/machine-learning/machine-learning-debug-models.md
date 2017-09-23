@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bradsev;garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: d4cc94a6395ea45bccf65d9a9f3118ec98cb258d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/17/2017
-
 
 ---
 # <a name="debug-your-model-in-azure-machine-learning"></a>在 Azure 机器学习中调试模型

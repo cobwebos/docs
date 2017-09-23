@@ -20,7 +20,6 @@ ms.openlocfilehash: 72a966bdc271f86b9568d3310d2e22d83b447594
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/21/2017
 
-
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
 本文提供 Azure 数据工厂支持的函数和变量的相关信息。

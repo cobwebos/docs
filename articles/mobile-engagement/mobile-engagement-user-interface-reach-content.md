@@ -20,7 +20,6 @@ ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
 
-
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>如何管理不同类型的推送通知活动的独特内容
 你可以使用新的市场宣传活动的内容部分修改公告、投票、数据推送和磁贴（仅 Windows Phone）的内容。 推送活动的内容设置是与活动类型相关的。 

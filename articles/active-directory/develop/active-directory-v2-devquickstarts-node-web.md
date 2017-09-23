@@ -21,7 +21,6 @@ ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="add-sign-in-to-a-nodejs-web-app"></a>向 Node.js Web 应用添加登录
 

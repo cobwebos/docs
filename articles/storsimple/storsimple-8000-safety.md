@@ -20,7 +20,6 @@ ms.openlocfilehash: e45b09a62f33fd9811714febd63a74149784980d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行你的 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)

@@ -20,7 +20,6 @@ ms.openlocfilehash: 7841fcf0b5f4dcb409abf8bfb804c2e03dad6d3a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis 缓存示例
 本主题提供 Azure Redis 缓存示例的列表，包括连接到缓存、从缓存读取数据和将数据写入缓存，以及使用 ASP.NET Redis 缓存提供程序等方案。 有些示例是可下载的项目，有些示例提供了分步指南并包含代码片段但没有链接到可下载的项目。

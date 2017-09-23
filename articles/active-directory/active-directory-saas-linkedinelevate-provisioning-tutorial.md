@@ -48,9 +48,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>将用户分配到 LinkedIn Elevate 的重要提示
 
-*    建议将单个 Azure AD 用户分配到 LinkedIn Elevate 来测试预配配置。 其他用户和/或组可以稍后分配。
+*   建议将单个 Azure AD 用户分配到 LinkedIn Elevate 来测试预配配置。 其他用户和/或组可以稍后分配。
 
-*    将用户分配到 LinkedIn Elevate 时，必须在分配对话框中选择**用户**角色。 “默认访问权限”角色不可用于预配。
+*   将用户分配到 LinkedIn Elevate 时，必须在分配对话框中选择**用户**角色。 “默认访问权限”角色不可用于预配。
 
 
 ## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>配置 LinkedIn Elevate 的用户预配
@@ -92,9 +92,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 8) 如果已为 LinkedIn Elevate 配置了单一登录，请使用搜索字段搜索 LinkedIn Elevate 实例。 否则，请选择“添加”并在应用程序库中搜索“LinkedIn Elevate”。 从搜索结果中选择 LinkedIn Elevate，并将其添加到应用程序列表。
 
-9)    选择 LinkedIn Elevate 实例，然后选择“预配”选项卡。
+9)  选择 LinkedIn Elevate 实例，然后选择“预配”选项卡。
 
-10)    将“预配模式”设置为“自动”。
+10) 将“预配模式”设置为“自动”。
 
 ![LinkedIn Elevate 预配](./media/active-directory-saas-linkedin-elevate-provisioning-tutorial/linkedin_elevate3.PNG)
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 02/08/2017
 
-
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>查看 Azure 开发测试实验室中月评估成本趋势
 开发测试实验室的成本管理功能有助于追踪实验室成本。 本文将演示如何使用**月评估成本趋势**图表，查看当前日历月中截止目前的成本以及当前日历月截止月底的预估成本。 通过本文可以了解如何在 Azure 门户中查看月评估成本趋势图表。

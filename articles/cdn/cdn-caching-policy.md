@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fba5384acae53ac416d91ae30840c6cfa04e7c68
 ms.openlocfilehash: 0c479a58f4158bb1a72dc43432507160f65d2791
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/06/2017
 
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>在 Azure 媒体服务中管理 Azure CDN 缓存策略
@@ -45,10 +46,5 @@ Azure 媒体服务为流式处理终结点提供[集成 CDN](https://azure.micro
 1. Azure 媒体服务配置的缓存值将覆盖默认值。
 2. 如果没有进行手动配置，将应用默认值。
 3. 默认情况下，不管 Azure 媒体或 Azure 存储空间的配置如何，缓存 2 秒的标头适用于实时流式处理清单（播放列表），无法覆盖此值。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

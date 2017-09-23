@@ -21,7 +21,6 @@ ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>将 Azure 自动化资源添加到 OMS 管理解决方案（预览版）
 > [!NOTE]

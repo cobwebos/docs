@@ -21,7 +21,6 @@ ms.openlocfilehash: f0e49cd8a64a48c53f5b6104703164a597c797f0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
 
-
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动缩放公式
 

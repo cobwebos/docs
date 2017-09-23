@@ -20,7 +20,6 @@ ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/23/2017
 
-
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>将 ASP.NET 容器部署到远程 Docker 主机
 ## <a name="overview"></a>概述

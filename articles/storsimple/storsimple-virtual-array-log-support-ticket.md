@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务记录 StorSimple 虚拟阵列的支持请求
@@ -66,10 +68,5 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[诊断并解决与 StorSimple 虚拟阵列相关的问题](storsimple-virtual-array-diagnose-problems.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

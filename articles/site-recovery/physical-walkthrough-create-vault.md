@@ -20,7 +20,6 @@ ms.openlocfilehash: deb5ad0495edc969b374795eeb2698326dd4ff4d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="step-6-set-up-a-vault-for-physical-server-replication-to-azure"></a>步骤 6：设置保管库以将物理服务器复制到 Azure
 

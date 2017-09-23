@@ -20,7 +20,6 @@ ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
 
-
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>使用 Log Analytics 中的警报规则
 警报通过警报规则创建，警报规则定期自动运行日志搜索。  如果结果符合特定的条件，警报规则将创建警报记录。  然后，该规则可自动运行一个或多个操作来主动向你通知警报或调用另一个进程。   

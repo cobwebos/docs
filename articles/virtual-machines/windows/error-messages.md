@@ -21,7 +21,6 @@ ms.openlocfilehash: 42025586a437f19e4a752ac502588fd59ad2139a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
 
-
 ---
 # <a name="understand-common-error-messages-when-you-manage-windows-virtual-machines-in-azure"></a>了解在 Azure 中管理 Windows 虚拟机时遇到的常见错误消息
 

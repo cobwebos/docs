@@ -20,7 +20,6 @@ ms.openlocfilehash: acc8929dc3476e9590e8e4d9526b38b7c0719570
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>将 StorSimple 物理设备故障转移到同一设备
 

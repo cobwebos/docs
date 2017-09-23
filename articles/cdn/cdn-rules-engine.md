@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: abfe283476206b181018d187675b47112dc5ad2f
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>使用 Azure CDN 规则引擎重写 HTTP 行为
@@ -85,8 +86,3 @@ ms.openlocfilehash: abfe283476206b181018d187675b47112dc5ad2f
 * [规则引擎功能](cdn-rules-engine-reference-features.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)
 * [Azure Fridays: Azure CDN's powerful new Premium Features](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/)（Azure 星期五：Azure CDN 强大的新高级功能）（视频）
-
-
-<!--HONumber=Jan17_HO4-->
-
-

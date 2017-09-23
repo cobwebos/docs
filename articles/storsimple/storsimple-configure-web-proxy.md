@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 66ee6ce15e51b14366eac0512c899d1c425c6092
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
@@ -139,10 +140,5 @@ Web 代理设置是通过 Windows PowerShell 界面配置的，无法在经典�
 ## <a name="next-steps"></a>后续步骤
 * 如果在部署设备或配置 Web 代理设置时遇到任何问题，请参阅[排查 StorSimple 设备的部署问题](storsimple-troubleshoot-deployment.md)。
 * 若要了解如何使用 StorSimple Manager 服务，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -19,7 +19,6 @@ ms.openlocfilehash: 624eff0a0da8f548877e4a4346b21df89cd37b67
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>教程：Azure Active Directory 与 SD Elements 集成
 

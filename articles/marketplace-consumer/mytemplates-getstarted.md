@@ -22,7 +22,6 @@ ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
 ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
-
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure 门户中的专用模板入门
 [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) 模板是声明性模板，用于定义部署。 可以定义要为解决方案部署的资源，以及指定可让用户根据不同的环境输入值的参数和变量。 模板中包含可用于构造部署值的 JSON 和表达式。

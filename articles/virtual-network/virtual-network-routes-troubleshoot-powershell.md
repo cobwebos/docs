@@ -21,7 +21,6 @@ ms.openlocfilehash: 6efe6de6cc6d6d4c9788549048c5b50b03b3de42
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
-
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>使用 Azure PowerShell 排查路由问题
 > [!div class="op_single_selector"]

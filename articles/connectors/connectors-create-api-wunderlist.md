@@ -21,7 +21,6 @@ ms.openlocfilehash: 899110992cc52ca5edf1706320fd5570473de784
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-wunderlist-connector"></a>Wunderlist 连接器入门
 Wunderlist 提供待办事项列表和任务管理器，帮助人们完成他们的事务。  无论是与爱人共享购物单、处理某个项目还是计划度假，Wunderlist 都可使捕获、共享和完成待办事项更轻松。 Wunderlist 在手机、平板电脑和计算机之间即时同步，以便你从任意位置访问所有任务。

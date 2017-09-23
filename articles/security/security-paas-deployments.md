@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: f218fe7e59e46683b544fd83bfea505b7cbe2d59
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署

@@ -19,7 +19,6 @@ ms.openlocfilehash: 4e9da524ef9dfa2d5b7150bc6a888536a1435dfd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Use MySQL databases on Microsoft Azure Stack

@@ -21,7 +21,6 @@ ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
 
-
 ---
 
 # <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB：如何使用表 API（预览版）查询表数据？

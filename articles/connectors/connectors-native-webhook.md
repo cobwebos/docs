@@ -21,7 +21,6 @@ ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/10/2017
 
-
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Webhook 连接器入门
 

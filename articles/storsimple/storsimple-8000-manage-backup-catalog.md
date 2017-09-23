@@ -20,7 +20,6 @@ ms.openlocfilehash: ac2577c6cd350d6d437d55e61ec73d954cb24893
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>使用 StorSimple 设备管理器服务管理备份目录
 ## <a name="overview"></a>概述

@@ -20,7 +20,6 @@ ms.openlocfilehash: 794117b6f383bdd1851681864e99b3c1ef077f86
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答

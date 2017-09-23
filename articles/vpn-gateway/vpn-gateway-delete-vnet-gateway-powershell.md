@@ -21,7 +21,6 @@ ms.openlocfilehash: 4d0f085423d5bd60b24d88649ee1d77bcd1d009f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/21/2017
 
-
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
 > [!div class="op_single_selector"]

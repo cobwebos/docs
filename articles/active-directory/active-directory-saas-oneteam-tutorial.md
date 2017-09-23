@@ -19,7 +19,6 @@ ms.openlocfilehash: c4381ca3166bd75bda1179b9a67b2224ba58ae68
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>教程：Azure Active Directory 与 Oneteam 的集成
 

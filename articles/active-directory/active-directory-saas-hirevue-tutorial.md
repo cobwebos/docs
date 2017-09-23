@@ -19,7 +19,6 @@ ms.openlocfilehash: 682d88d3010f5781948a9adde0e1351471608a5e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>教程：Azure Active Directory 与 HireVue 的集成
 

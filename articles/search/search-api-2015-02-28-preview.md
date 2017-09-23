@@ -20,7 +20,6 @@ ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="azure-search-service-rest-api-version-2015-02-28-preview"></a>Azure 搜索服务 REST API：版本 2015-02-28-预览版
 本文是 `api-version=2015-02-28-Preview` 的参考文档。 此预览版通过提供以下实验功能扩展了当前公开发布的版本 [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx)：

@@ -20,7 +20,6 @@ ms.openlocfilehash: 5ddc02905fbb7f9f7c5deb9b970101788d824642
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API

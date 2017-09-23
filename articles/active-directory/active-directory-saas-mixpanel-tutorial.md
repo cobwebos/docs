@@ -19,7 +19,6 @@ ms.openlocfilehash: 3dd11b3477de1329c1c8e45a6dbf212b1635fd95
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>教程：Azure Active Directory 与 Mixpanel 的集成
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 1164fc24355657af22b6befaad74685ebbc2b5cb
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
 
-
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN 网关从经典部署模型迁移到 Resource Manager 部署模型
 VPN 网关现可从经典部署模型迁移到 Resource Manager 部署模型。 你可以阅读有关 Azure Resource Manager [功能和优点](../azure-resource-manager/resource-group-overview.md)的更多内容。 在本文中，我们将详细介绍如何从经典部署模型迁移到更新的基于 Resource Manager 的部署模型。 

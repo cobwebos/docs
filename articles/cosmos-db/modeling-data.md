@@ -21,7 +21,6 @@ ms.openlocfilehash: 16c387fe574243544cf54cf283c7713ddcaa1942
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
 
-
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL 数据库的文档数据建模
 尽管无架构的数据库（如 Azure Cosmos DB）能够非常容易地接受对数据模型的更改，但你仍需花一些时间来研究数据。 

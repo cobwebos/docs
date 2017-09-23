@@ -22,7 +22,6 @@ ms.openlocfilehash: 93b54c3fc4397573f77b2e157c6f1866786690da
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 # Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流
 可通过 [OAuth 2.0 客户端凭据授予](http://tools.ietf.org/html/rfc6749#section-4.4)（有时称为双重 OAuth），使用应用程序标识来访问 Web 托管的资源。 这种授予通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 此类应用程序通常称为守护程序或服务帐户。

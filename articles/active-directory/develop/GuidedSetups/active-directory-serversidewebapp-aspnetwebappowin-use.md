@@ -20,18 +20,17 @@ ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3b7d29e48c91f40e8782a5e32a52998b815fe331
 ms.contentlocale: zh-cn
 
-
 ---
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>添加控制器来处理登录和注销请求
 
 此步骤演示如何创建新控制器来公开登录和注销方法。
 
-1.    右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
-2.    选择 `MVC (.NET version) Controller – Empty`。
-3.    单击“添加”
-4.    将其命名为 `HomeController`，然后单击“添加”
-5.    向该类添加 OWIN 引用：
+1.  右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
+2.  选择 `MVC (.NET version) Controller – Empty`。
+3.  单击“添加”
+4.  将其命名为 `HomeController`，然后单击“添加”
+5.  向该类添加 OWIN 引用：
 
 ```csharp
 using Microsoft.Owin.Security;
@@ -75,9 +74,9 @@ public void SignOut()
 
 在 Visual Studio 中，创建新视图来添加登录按钮并在身份验证后显示用户信息：
 
-1.    右键单击 `Views\Home` 文件夹，然后选择`Add View`
-2.    将它命名为 `Index`。
-3.    向文件添加以下 HTML，其中包括登录按钮：
+1.  右键单击 `Views\Home` 文件夹，然后选择`Add View`
+2.  将它命名为 `Index`。
+3.  向文件添加以下 HTML，其中包括登录按钮：
 
 ```html
 <html>
@@ -124,11 +123,11 @@ else
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
 此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 下面的代码使用该属性来显示作为登录的一部分被检索的用户声明。
 
-1.    右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
-2.    选择 `MVC {version} Controller – Empty`。
-3.    单击“添加”
-4.    将其命名为 `ClaimsController`
-5.    将控制器类的代码替换为下面的代码，这将 `[Authorize]` 属性添加到类：
+1.  右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
+2.  选择 `MVC {version} Controller – Empty`。
+3.  单击“添加”
+4.  将其命名为 `ClaimsController`
+5.  将控制器类的代码替换为下面的代码，这将 `[Authorize]` 属性添加到类：
 
 ```csharp
 [Authorize]
@@ -167,9 +166,9 @@ public class ClaimsController : Controller
 
 在 Visual Studio 中创建新视图，以在网页上显示用户的声明：
 
-1.    右键单击 `Views\Claims` 文件夹，然后选择`Add View`
-2.    将它命名为 `Index`。
-3.    将以下 HTML 添加到文件：
+1.  右键单击 `Views\Claims` 文件夹，然后选择`Add View`
+2.  将它命名为 `Index`。
+3.  将以下 HTML 添加到文件：
 
 ```html
 <html>

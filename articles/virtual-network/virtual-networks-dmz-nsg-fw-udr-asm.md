@@ -20,7 +20,6 @@ ms.openlocfilehash: fdb3c5cbd3acee90386352c6f180a71aa81f54fe
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>示例 3 – 构建外围网络以通过防火墙、UDR 和 NSG 保护网络
 [返回安全边界最佳实践页面][HOME]

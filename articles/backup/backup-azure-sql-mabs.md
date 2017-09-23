@@ -20,7 +20,6 @@ ms.openlocfilehash: 2af9ebaa8f52690ed63406cbd85b77544d2d900d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
-
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 本文将引导你使用 Microsoft Azure 备份服务器 (MABS) 来完成 SQL Server 数据库的备份配置步骤。

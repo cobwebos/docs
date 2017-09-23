@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
 ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/03/2017
-
 
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapse 媒体文件与 Azure Media Hyperlapse
@@ -36,7 +36,7 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
 ## <a name="hyperlapse-an-asset"></a>将资产进行 Hyperlapse 处理
 首先，请将所需的输入文件上载到 Azure 媒体服务。  若要深入了解有关上传和管理内容的概念，请阅读[内容管理文章](media-services-portal-vod-get-started.md)。
 
-### <a name="a-idconfigurationaconfiguration-preset-for-hyperlapse"></a><a id="configuration"></a>Hyperlapse 的配置预设
+### <a id="configuration"></a>Hyperlapse 的配置预设
 将内容上载到媒体服务帐户后，需要构造你的配置预设。  下表说明了用户指定的字段：
 
 | 字段 | 说明 |
@@ -75,7 +75,7 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
         }
     }
 
-### <a name="a-idsamplecodea-microsoft-hyperlapse-with-the-ams-net-sdk"></a><a id="sample_code"></a>包含 AMS .NET SDK 的 Microsoft Hyperlapse
+### <a id="sample_code"></a>包含 AMS .NET SDK 的 Microsoft Hyperlapse
 以下方法将媒体文件上载为资产，然后使用 Azure Media Hyperlapse 媒体处理器来创建作业。
 
 > [!NOTE]
@@ -199,7 +199,7 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
         return processor;
     }
 
-### <a name="a-idfiletypesasupported-file-types"></a><a id="file_types"></a>支持的文件类型
+### <a id="file_types"></a>支持的文件类型
 * MP4
 * MOV
 * WMV

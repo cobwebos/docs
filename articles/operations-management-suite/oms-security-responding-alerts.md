@@ -21,7 +21,6 @@ ms.openlocfilehash: 0cf9b83d7023641ec445a59a5e61d3da038695fa
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="monitoring-and-responding-to-security-alerts-in-operations-management-suite-security-and-audit-solution"></a>监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报
 本文档有助于使用 OMS 安全和审核中的威胁智能选项监视和响应安全警报。

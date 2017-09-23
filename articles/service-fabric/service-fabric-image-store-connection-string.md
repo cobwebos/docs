@@ -20,7 +20,6 @@ ms.openlocfilehash: f497006a8ba48da0032b82113702d8014952ca20
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>了解 ImageStoreConnectionString 设置
 

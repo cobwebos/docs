@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: ad895004cc2972f2ded81566186325a16d401151
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/14/2017
 
 ---

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
 ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在经典部署模型中获取 ARP 表
@@ -168,10 +169,5 @@ ARP 表可帮助验证第 2 层配置，并可针对第 2 层的基本连接问�
   * 获取路由表以确定哪些前缀跨 ExpressRoute 播发。
 * 通过查看输入/输出中的字节数来验证数据传输。
 * 如果仍然遇到问题，请使用 [Microsoft Azure 帮助+支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)建立支持请求。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

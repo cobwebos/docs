@@ -19,7 +19,6 @@ ms.openlocfilehash: ab3891e11eb33b4d233e4fc967a40c7df06e4f4e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>教程：Azure Active Directory 与 Igloo Software 集成
 

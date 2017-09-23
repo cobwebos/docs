@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 174546d59124296711731de6c8d8929bada56baf
 ms.openlocfilehash: 00b715507a7c3a4d784b800e7bf0c700f6ea6ff1
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/18/2016
 
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>保护 Azure 安全中心中的网络
@@ -45,9 +46,4 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [Azure 安全中心常见问题](security-center-faq.md) - 查找有关使用服务的常见问题。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

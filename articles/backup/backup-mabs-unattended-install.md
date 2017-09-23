@@ -18,7 +18,6 @@ ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>运行 Azure 备份服务器 v2 的无人参与安装
 

@@ -19,7 +19,6 @@ ms.openlocfilehash: b1b27918bb5fcff1d19f4711ea70fe46a5697933
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>教程：Azure Active Directory 与 TiViTz 集成
 

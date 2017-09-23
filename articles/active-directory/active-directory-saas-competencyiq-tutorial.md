@@ -19,7 +19,6 @@ ms.openlocfilehash: ad3cec3de9034ddab2161952620d31540ae51978
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-competencyiq"></a>教程：Azure Active Directory 与 CompetencyIQ 的集成
 

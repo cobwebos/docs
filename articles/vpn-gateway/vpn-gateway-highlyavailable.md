@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨界连接与 VNet 到 VNet 连接
 本文概述使用 Azure VPN 网关的跨界连接和 VNet 到 VNet 连接的高可用性配置选项。
 
-## <a name="a-name-activestandbyaabout-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>关于 Azure VPN 网关冗余
+## <a name = "activestandby"></a>关于 Azure VPN 网关冗余
 每个 Azure VPN 网关由两个采用主动-待机配置的实例组成。 当主动实例发生任何计划内维护或计划外中断时，待机实例将自动接管负载（故障转移），恢复 S2S VPN 连接或 VNet 到 VNet 连接。 这种交接会造成短暂的中断。 发生计划内维护时，10 到 15 秒内应可恢复连接。 发生计划外的问题时，恢复连接所需的时间更长，在最糟的情况下大约需要 1 到 1.5 分钟。 为使 P2S VPN 客户端与网关建立连接，需要先断开 P2S 连接，然后，用户必须从客户端计算机重新连接。
 
 ![主动-待机](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -36,7 +37,7 @@ ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
 * 主动-主动 Azure VPN 网关
 * 两者的组合
 
-### <a name="a-name-activeactiveonpremamultiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>多个本地 VPN 设备
+### <a name = "activeactiveonprem"></a>多个本地 VPN 设备
 可以使用本地网络中的多个 VPN 设备连接到 Azure VPN 网关，如下图所示：
 
 ![多个本地 VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)
@@ -83,10 +84,5 @@ ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
 
 ## <a name="next-steps"></a>后续步骤
 有关配置主动-主动跨界连接和 VNet 到 VNet 连接的步骤，请参阅[为跨界连接和 VNet 到 VNet 连接配置主动-主动 VPN 网关](vpn-gateway-activeactive-rm-powershell.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

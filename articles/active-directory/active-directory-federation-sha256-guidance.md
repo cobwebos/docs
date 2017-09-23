@@ -21,7 +21,6 @@ ms.openlocfilehash: c581b1468630a9f28204592c936360b72f42f0d8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/21/2017
 
-
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述

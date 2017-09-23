@@ -20,7 +20,6 @@ ms.openlocfilehash: 4001ca908ff00b1a40829d687589080e9b07b18a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="troubleshoot-cloud-services-using-application-insights"></a>使用 Application Insights 排查云服务问题
 你可以使用 [Azure SDK 2.8](https://azure.microsoft.com/downloads/) 和 Azure 诊断扩展模块 1.5，将云服务的 Azure 诊断数据直接发送到 Application Insights。 可以将由 Azure 诊断收集的日志（&mdash;包括应用程序日志、Windows 事件日志、ETW 日志和性能计数器&mdash;）发送到 Application Insights。 然后，你可以在 Application Insights 门户 UI 中可视化此信息。 接着，你可以使用 Application Insights SDK 深入分析来自应用程序和系统的指标与日志，以及来自 Azure 诊断的基础结构级别的数据。

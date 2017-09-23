@@ -21,7 +21,6 @@ ms.openlocfilehash: 0b5f7a2c3fd16ac32b0bc382616ca6600d378bb8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
 
-
 ---
 # <a name="what-is-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded 是什么？
 通过 **Power BI Embedded**，可以将 Power BI 报表集成到 Web 或移动应用程序。

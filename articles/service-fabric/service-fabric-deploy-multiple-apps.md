@@ -20,7 +20,6 @@ ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
 本文介绍了如何将多个来宾可执行文件打包并部署到 Azure Service Fabric。 若要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。

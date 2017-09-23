@@ -19,7 +19,6 @@ ms.openlocfilehash: 6ee3316a8258ee27e4fa4ec22badbf4fe047a844
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>教程：Azure Active Directory 与 Chromeriver 的集成
 

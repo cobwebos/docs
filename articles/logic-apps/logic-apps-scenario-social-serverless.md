@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
 ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/04/2017
 
 ---

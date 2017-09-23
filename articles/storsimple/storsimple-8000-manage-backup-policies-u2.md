@@ -20,7 +20,6 @@ ms.openlocfilehash: 569dbfdeb7dcd526cb5a54b487ea1bfb59b13cc6
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>在 Azure 门户中使用 StorSimple 设备管理器服务管理备份策略
 

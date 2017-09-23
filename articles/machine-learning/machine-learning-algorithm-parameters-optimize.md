@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: b3be7f31ac31c656744fb809e3972af0ac4ad4f1
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/30/2017
 
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>选择参数优化 Azure 机器学习中的算法
@@ -76,9 +77,4 @@ ms.openlocfilehash: b3be7f31ac31c656744fb809e3972af0ac4ad4f1
 <!-- Module References -->
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
 [tune-model-hyperparameters]: https://msdn.microsoft.com/library/azure/038d91b6-c2f2-42a1-9215-1f2c20ed1b40/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

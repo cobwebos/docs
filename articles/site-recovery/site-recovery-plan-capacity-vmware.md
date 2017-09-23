@@ -20,7 +20,6 @@ ms.openlocfilehash: 8b580ac239bfb6d7b633fb03d4cfb91b168b0610
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
 
-
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>通过 Azure Site Recovery，针对 VMware 复制规划容量和缩放
 

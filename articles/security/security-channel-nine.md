@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
 ms.openlocfilehash: 35e3f4ee07414927cd93e3fbe54d7c96f4681ba4
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/30/2017
 
 ---
 # <a name="azure-security-videos-on-channel-9"></a>第 9 频道上的 Azure 安全视频
@@ -78,9 +79,4 @@ Azure Active Directory (AD) Privileged Identity Management 是一项高级功能
 [Amit Bapat 与 Azure 密钥保管库](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
 
 Amit Bapat 将 Scott 引入 Azure 密钥保管库中。 借助 Azure 密钥保管库，你可以通过使用硬件安全模块 (HSM) 中存储的密钥对密钥和小密文密码（如密码）进行加密。 这是 Microsoft Azure 基于云的、基于硬件的密钥管理！
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

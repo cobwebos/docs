@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>StorSimple 设备的故障转移和灾难恢复
@@ -178,10 +179,5 @@ ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
 ## <a name="next-steps"></a>后续步骤
 * 执行故障转移后，可能需要[停用或删除 StorSimple 设备](storsimple-deactivate-and-delete-device.md)。
 * 有关如何使用 StorSimple Manager 服务的信息，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

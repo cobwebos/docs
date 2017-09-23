@@ -20,7 +20,6 @@ ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="scheduler-outbound-authentication"></a>计划程序出站身份验证
 计划程序作业可能需要调用要求进行身份验证的服务。 这样，被调用的服务可以确定计划程序作业是否可以访问其资源。 其中的某些服务包括其他 Azure 服务、Salesforce.com、Facebook 和安全的自定义网站。

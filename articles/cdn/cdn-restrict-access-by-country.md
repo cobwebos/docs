@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>按国家/地区限制 Azure CDN 内容
@@ -62,15 +63,10 @@ ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
 ### <a name="country-codes"></a>国家/地区代码
 “地区筛选”功能使用国家/地区代码来定义相关国家/地区，这样系统就可以允许或阻止这些国家/地区发出的针对受保护目录的请求。 可在 [Azure CDN 国家/地区代码](https://msdn.microsoft.com/library/mt761717.aspx)中找到这些国家/地区代码。 
 
-## <a name="a-idconsiderationsaconsiderations"></a><a id="considerations"></a>注意事项
+## <a id="considerations"></a>注意事项
 * 对国家/地区筛选配置的更改生效的时间不同：Verizon 可能需要长达 90 分钟的时间，而 Akamai 则需要几分钟时间。
 * 此功能不支持通配符（例如“*”）。
 * 与相对路径关联的地区筛选配置将以递归方式应用于该路径。
 * 只能将一条规则应用于同一相对路径（不能创建多个指向同一相对路径的国家/地区筛选器）。 但是，一个文件夹可以有多个国家/地区筛选器。 这是因为国家/地区筛选器的递归性质。 换言之，即使某个文件夹此前已配置过，你也可以向该文件夹的子文件夹分配其他国家/地区筛选器。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

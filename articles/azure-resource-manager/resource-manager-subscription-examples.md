@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c75d95ed554a78a02e5469915c21491e65edd8c2
 ms.openlocfilehash: 14ec59087b0aede76a18034f5aa93cb6ecd67a7e
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>实施 Azure 企业基架的示例
@@ -196,10 +197,5 @@ Contoso IT 服务管理部门需要快速识别和处理威胁。 他们还希�
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何创建 Resource Manager 模板，请参阅 [Best practices for creating Azure Resource Manager templates](resource-manager-template-best-practices.md)（创建 Azure Resource Manager 模板的最佳实践）。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

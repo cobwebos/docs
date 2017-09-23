@@ -19,7 +19,6 @@ ms.openlocfilehash: 6656c9abf8483ee98c0cb1a16c06d078e32240f2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>教程：Azure Active Directory 与 Kantega SSO for Bitbucket 集成
 

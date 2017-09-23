@@ -21,7 +21,6 @@ ms.openlocfilehash: 16cb5a1e16a59200f0e731622398efcf24c3f777
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="monitoring-an-azure-search-service"></a>监视 Azure 搜索服务
 

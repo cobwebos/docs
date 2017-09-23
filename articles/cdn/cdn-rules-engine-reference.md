@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: c10145661a8c575381493c9aaa901c3ef92c2e81
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="azure-cdn-rules-engine"></a>Azure CDN 规则引擎
@@ -80,9 +81,4 @@ Character | 说明
 * [规则引擎功能](cdn-rules-engine-reference-features.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)
 * [Azure CDN 概述](cdn-overview.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

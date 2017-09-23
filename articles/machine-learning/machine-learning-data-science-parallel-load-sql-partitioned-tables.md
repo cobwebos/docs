@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/30/2017
 
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据
@@ -179,10 +180,5 @@ ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>操作示例中的高级分析流程和技术
 有关 Cortana Analytics 过程中使用公用数据集的端到端演练示例，请参阅[操作中的 Cortana Analytics 过程：SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

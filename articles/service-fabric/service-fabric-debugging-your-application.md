@@ -20,7 +20,6 @@ ms.openlocfilehash: 2459025899a7f5ffebf44fa104ed112c0eb99dfa
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
 > [!div class="op_single_selector"]

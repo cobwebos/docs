@@ -19,7 +19,6 @@ ms.openlocfilehash: 62429643a108665544e42001d264046b5db1ec97
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>教程：Azure Active Directory 与 Pluralsight 的集成
 
