@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心设备孪生入门 (.NET/Node) | Microsoft Docs"
-description: "如何使用 Azure IoT 中心设备孪生添加标记，然后使用 IoT 中心查询。 使用适用于 Node.js 的 Azure IoT 设备 SDK 实现模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现可添加标记并运行 IoT 中心查询的服务应用。"
+description: "如何使用 Azure IoT 中心设备孪生添加标记，并使用 IoT 中心查询。 使用适用于 Node.js 的 Azure IoT 设备 SDK 实现模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现可添加标记并运行 IoT 中心查询的服务应用。"
 services: iot-hub
 documentationcenter: node
 author: fsautomata
@@ -12,19 +12,19 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 09/07/2017
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 07797b9159c9b926e9eb47d8864c63048951931a
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 4cf607e8e0ccd3aab06be54d715c2bf3777caeb0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="get-started-with-device-twins-netnode"></a>设备孪生入门 (.NET/Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-在本教程结束时，你将拥有一个 .NET 控制台应用和一个 Node.js 控制台应用：
+在本教程结束时，将拥有一个 .NET 控制台应用和一个 Node.js 控制台应用：
 
 * **AddTagsAndQuery.sln**，一个 .NET 后端应用，用于添加标记并查询设备孪生。
 * **TwinSimulatedDevice.js**，它是 Node.js 应用程序，用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/03/2017
 若要完成本教程，需要满足以下条件：
 
 * Visual Studio 2015 或 Visual Studio 2017。
-* Node.js 版本 0.10.x 或更高版本。
+* Node.js 版本 4.0.x 或更高版本。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -50,8 +50,8 @@ ms.lasthandoff: 04/03/2017
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **AddTagsAndQuery**。
    
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
-1. 在“解决方案资源管理器”中，右键单击“AddTagsAndQuery”项目，然后单击“管理 NuGet 包...”。
-1. 在“NuGet 包管理器”窗口中，选择“浏览”，然后搜索“microsoft.azure.devices”。 选择“安装”以安装“Microsoft.Azure.Devices”包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+1. 在“解决方案资源管理器”中，右键单击“AddTagsAndQuery”项目，并单击“管理 NuGet 包...”。
+1. 在“NuGet 包管理器”窗口中，选择“浏览”，并搜索“microsoft.azure.devices”。 选择“安装”以安装“Microsoft.Azure.Devices”包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
    
     ![“NuGet 包管理器”窗口][img-servicenuget]
 1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -86,11 +86,12 @@ ms.lasthandoff: 04/03/2017
             Console.WriteLine("Devices in Redmond43 using cellular network: {0}", string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
         }
    
-    **RegistryManager** 类公开从该服务与设备孪生交互所需的所有方法。 上面的代码首先初始化 **registryManager** 对象，然后检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
+    **RegistryManager** 类公开从该服务与设备孪生交互所需的所有方法。 上面的代码首先初始化 **registryManager** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
    
     在更新后，它将执行两个查询：第一个仅选择位于 **Redmond43** 工厂的设备的设备孪生，第二个将查询细化为仅选择还要通过移动电话网络连接的设备。
    
-    请注意上面的代码，当它创建 **query** 对象时，会指定返回的最大文档数。 **query** 对象包含 **HasMoreResults** 布尔值属性，你可以使用它多次调用 **GetNextAsTwinAsync** 方法来检索所有结果。 名为 **GetNextAsJson** 的方法可用于非设备孪生的结果（例如聚合查询的结果）。
+    请注意上面的代码，当它创建 **query** 对象时，会指定返回的最大文档数。 
+            **query** 对象包含 **HasMoreResults** 布尔值属性，可以使用它多次调用 **GetNextAsTwinAsync** 方法来检索所有结果。 名为 **GetNextAsJson** 的方法可用于非设备孪生的结果（例如聚合查询的结果）。
 1. 最后，在 **Main** 方法中添加以下行：
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
@@ -99,14 +100,14 @@ ms.lasthandoff: 04/03/2017
         Console.ReadLine();
 
 1. 在“解决方案资源管理器”中，打开“设置启动项目...”，并确保 **AddTagsAndQuery** 项目的“操作”为“启动”。 生成解决方案。
-1. 右键单击 **AddTagsAndQuery** 项目并选择“调试”，然后选择“启动新实例”来运行此应用程序。 在查询位于 **Redmond43** 的所有设备的查询结果中，你应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
+1. 右键单击 **AddTagsAndQuery** 项目并选择“调试”，选择“启动新实例”来运行此应用程序。 在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
    
     ![在窗口中查询结果][img-addtagapp]
 
 在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
 ## <a name="create-the-device-app"></a>创建设备应用
-在本部分中，会创建一个 Node.js 控制台应用，该应用以 **myDeviceId** 连接到你的中心，然后更新其已报告属性，以包含使用移动电话网络连接它的信息。
+在本部分中，会创建一个 Node.js 控制台应用，该应用以 **myDeviceId** 连接到中心，然后更新其已报告属性，以包含使用移动电话网络连接它的信息。
 
 1. 新建名为 **reportconnectivity** 的空文件夹。 在 **reportconnectivity** 文件夹中，在命令提示符下使用以下命令创建新的 package.json 文件。 接受所有默认值。
    
@@ -119,7 +120,7 @@ ms.lasthandoff: 04/03/2017
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 1. 使用文本编辑器，在 **reportconnectivity** 文件夹中创建一个新的 **ReportConnectivity.js** 文件。
-1. 将以下代码添加到 **ReportConnectivity.js** 文件中，并将设备连接字符串的占位符替换为你在创建 **myDeviceId** 设备标识时复制的连接字符串：
+1. 将以下代码添加到 **ReportConnectivity.js** 文件中，并将设备连接字符串的占位符替换成在创建 **myDeviceId** 设备标识时复制的连接字符串：
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -162,13 +163,13 @@ ms.lasthandoff: 04/03/2017
    
         node ReportConnectivity.js
    
-    你应该看到消息 `twin state reported`。
+    应该看到消息 `twin state reported`。
 1. 既然设备报告其连接的信息，该信息应显示在两个查询中。 运行 .NET **AddTagsAndQuery** 应用，以再次运行查询。 这一次 **myDeviceId** 应显示在两个查询结果中。
    
     ![][img-addtagapp2]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 你还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询此信息。
+在本教程中，已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询此信息。
 
 使用下列资源了解如何执行以下操作：
 

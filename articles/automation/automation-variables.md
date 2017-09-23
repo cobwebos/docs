@@ -15,11 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: dc00e1e5fa8df5cb55e7e2672137d1df44133773
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 43a08898abecb220f3df892473dddfb2729f0561
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
@@ -41,9 +40,9 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="variable-types"></a>变量类型
 
-当使用 Azure 门户创建变量时，必须通过下拉列表指定一个数据类型，以便门户可以显示用于输入变量值的相应控件。 该变量并不局限于此数据类型，但如果您想要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定为“未定义”，则该变量的值将设置为 **$null**，并且必须使用 [Set-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913767.aspx) cmdlet 或 **Set-AutomationVariable** 活动来设置该值。  无法在该门户中创建或更改复杂变量类型的值，但您可以使用 Windows PowerShell 提供任何类型的值。 复杂类型将作为 [PSCustomObject](http://msdn.microsoft.com/library/system.management.automation.pscustomobject.aspx) 返回。
+当使用 Azure 门户创建变量时，必须通过下拉列表指定一个数据类型，以便门户可以显示用于输入变量值的相应控件。 该变量并不局限于此数据类型，但如果要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定为“未定义”，则该变量的值将设置为 **$null**，并且必须使用 [Set-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913767.aspx) cmdlet 或 **Set-AutomationVariable** 活动来设置该值。  无法在该门户中创建或更改复杂变量类型的值，但可以使用 Windows PowerShell 提供任何类型的值。 复杂类型将作为 [PSCustomObject](http://msdn.microsoft.com/library/system.management.automation.pscustomobject.aspx) 返回。
 
-您可以通过创建一个数组或哈希表并将其保存到变量，来将多个值存储到单一变量。
+可以通过创建一个数组或哈希表并将其保存到变量，来将多个值存储到单一变量。
 
 以下列出自动化中的可用变量类型：
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 * 布尔
 * Null
 
-## <a name="cmdlets-and-workflow-activities"></a>Cmdlet 和工作流活动
+## <a name="scripting-the-creation-and-management-of-variables"></a>编写用于创建和管理变量的脚本
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化变量。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](../powershell-install-configure.md)已随附了这些 cmdlet。
 
@@ -74,6 +73,16 @@ ms.lasthandoff: 07/11/2017
 > [!NOTE] 
 > 应避免在 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 的 –Name 参数中使用变量，因为这可能会使设计时发现 Runbook 或 DSC 配置与自动化变量之间的依赖关系变得复杂化。
 
+下表中的函数用于在 Python2 Runbook 中访问和检索变量。 
+
+|Python2 函数|说明|
+|:---|:---|
+|automationassets.get_automation_variable|检索现有变量的值。 |
+|automationassets.set_automation_variable|设置现有变量的值。 |
+
+> [!NOTE] 
+> 必须在 Python Runbook 顶部导入“automationassets”模块才能访问资产函数。
+
 ## <a name="creating-a-new-automation-variable"></a>创建新的自动化变量
 
 ### <a name="to-create-a-new-variable-with-the-azure-portal"></a>使用 Azure 门户创建新变量
@@ -86,7 +95,7 @@ ms.lasthandoff: 07/11/2017
 
 [New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx) cmdlet 创建一个新的变量并设置其初始值。 可以使用 [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx) 检索该值。 如果该值为简单类型，则返回相同的类型。 如果其为复杂类型，则返回 **PSCustomObject**。
 
-下面的示例命令演示如何创建字符串类型的变量，然后返回其值。
+下面的示例命令演示如何创建字符串类型的变量，并返回其值。
 
     New-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" 
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable' `
@@ -94,7 +103,7 @@ ms.lasthandoff: 07/11/2017
     $string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" `
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 
-下面的示例命令演示如何创建复杂类型的变量，然后返回其属性。 在这种情况下，会使用来自 **Get-AzureRmVm** 的虚拟机对象。
+下面的示例命令演示如何创建复杂类型的变量，并返回其属性。 在这种情况下，会使用来自 **Get-AzureRmVm** 的虚拟机对象。
 
     $vm = Get-AzureRmVm -ResourceGroupName "ResourceGroup01" –Name "VM01"
     New-AzureRmAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
@@ -108,7 +117,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>使用 Runbook 或 DSC 配置中的变量
 
-使用 **Set-AutomationVariable** 活动设置 Runbook 或 DSC 配置中自动化变量的值，并使用 **Get-AutomationVariable** 来检索该值。  不应在 Runbook 或 DSC 配置中使用 **Set-AzureAutomationVariable** 或 **Get-AzureAutomationVariable** cmdlet，因为它们的效率低于工作流活动。  也不能使用 **Get-AzureAutomationVariable** 来检索安全变量的值。  从 Runbook 或 DSC 配置中创建新变量的唯一方法是使用 [New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx) cmdlet。
+使用 Set-AutomationVariable 活动设置 PowerShell Runbook 或 DSC 配置中自动化变量的值，并使用 Get-AutomationVariable 来检索该值。  不应在 Runbook 或 DSC 配置中使用 **Set-AzureAutomationVariable** 或 **Get-AzureAutomationVariable** cmdlet，因为它们的效率低于工作流活动。  也不能使用 **Get-AzureAutomationVariable** 来检索安全变量的值。  从 Runbook 或 DSC 配置中创建新变量的唯一方法是使用 [New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx) cmdlet。
 
 
 ### <a name="textual-runbook-samples"></a>文本 Runbook 示例
@@ -135,7 +144,6 @@ ms.lasthandoff: 07/11/2017
     $vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
     Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
 
-
 在下面的代码中，从该变量检索值并将其用于启动虚拟机。
 
     $vmObject = Get-AutomationVariable -Name "MyComplexVariable"
@@ -160,6 +168,27 @@ ms.lasthandoff: 07/11/2017
           Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
        }
     }
+    
+#### <a name="setting-and-retrieving-a-variable-in-python2"></a>在 Python2 中设置和检索变量
+以下代码示例演示了如何在 Python2 Runbook 中使用变量、设置变量以及处理关于不存在的变量的异常。
+
+    import automationassets
+    from automationassets import AutomationAssetNotFound
+
+    # get a variable
+    value = automationassets.get_automation_variable("test-variable")
+    print value
+
+    # set a variable (value can be int/bool/string)
+    automationassets.set_automation_variable("test-variable", True)
+    automationassets.set_automation_variable("test-variable", 4)
+    automationassets.set_automation_variable("test-variable", "test-string")
+
+    # handle a non-existent variable exception
+    try:
+        value = automationassets.get_automation_variable("non-existing variable")
+    except AutomationAssetNotFound:
+        print "variable not found"
 
 
 ### <a name="graphical-runbook-samples"></a>图形 Runbook 示例
@@ -175,7 +204,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关在图形创作中将活动连接在一起的详细信息，请参阅[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)
+* 要了解有关在图形创作中将活动连接在一起的详细信息，请参阅[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md) 
 
 

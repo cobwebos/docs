@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 24793b83ca284fe9510fe21bc2d13b0589209d36
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 4744405b2c294be564dedee308b4cba95cfcc3c6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>通过本地数据网关，从逻辑应用访问本地数据源
 
-若要从逻辑应用访问本地数据源，请设置一个本地数据网关，以便逻辑应用将其与支持的连接器配合使用。 该网关充当一个桥梁，在本地数据源和逻辑应用之间进行快速的数据传输和加密。 网关通过 Azure 服务总线中继来自加密频道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 详细了解[数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。 
+要从逻辑应用访问本地数据源，请设置一个本地数据网关，以便逻辑应用将其与支持的连接器配合使用。 该网关充当一个桥梁，在本地数据源和逻辑应用之间进行快速的数据传输和加密。 网关通过 Azure 服务总线中继来自加密频道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 详细了解[数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。 
 
 网关支持连接到以下本地数据源：
 
@@ -85,19 +85,19 @@ ms.lasthandoff: 07/14/2017
    
       默认订阅取决于用来登录的 Azure 帐户。
 
-    * 资源组：创建资源组或选择现有资源组，以便部署网关资源。 
+    * **资源组**：创建资源组或选择现有资源组，以便部署网关资源。 
     资源组用于将相关的 Azure 资产作为集合管理。
 
-    * 位置：Azure 对此位置进行了限制，要求其是在[网关安装](logic-apps-gateway-install.md)期间为网关云服务选择的区域。 
+    * **位置**：根据 Azure 限制，此位置必须是在[网关安装](logic-apps-gateway-install.md)期间为网关云服务选择的同一区域。 
 
       > [!NOTE]
       > 请确保网关资源位置与网关云服务位置相符。 否则，网关安装可能不会显示在已安装网关列表中，因此无法在下一步中选择。
       > 
       > 可以为网关资源和逻辑应用使用不同的区域。
 
-    * 安装名称：如果尚未选择网关安装，请选择之前安装的网关。 
+    * **安装名称**：如果尚未选择网关安装，请选择之前安装的网关。 
 
-    若要将网关资源添加到 Azure 仪表板中，请选择“固定到仪表板”。 
+    要将网关资源添加到 Azure 仪表板中，请选择“固定到仪表板”。 
     完成后，选择“创建”。
 
     例如：
@@ -120,14 +120,14 @@ ms.lasthandoff: 07/14/2017
 
 2. 添加支持本地连接的连接器，例如 SQL Server。
 
-3. 按照显示的顺序，选择“通过本地数据网关连接”，提供唯一的连接名称和必填信息，然后选择要使用的数据网关资源。 完成后，选择“创建”。
+3. 按照显示的顺序，选择“通过本地数据网关连接”，提供唯一的连接名称和必填信息，并选择要使用的数据网关资源。 完成后，选择“创建”。
 
    > [!TIP]
    > 唯一的连接名称有助于在以后轻松标识该连接，尤其是在创建多个连接的时候。 另请包括用户名的限定域（如果适用）。 
 
    ![在逻辑应用和数据网关之间创建连接](./media/logic-apps-gateway-connection/blankconnection.png)
 
-恭喜，你的网关连接现在已准备就绪，可供逻辑应用使用了。
+恭喜，网关连接现在已准备就绪，可供逻辑应用使用了。
 
 ## <a name="edit-your-gateway-connection-settings"></a>编辑网关连接设置
 
@@ -141,23 +141,23 @@ ms.lasthandoff: 07/14/2017
 
      ![转到逻辑应用，选择“API 连接”。](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * 或者，从 Azure 左主菜单转到“更多服务”>“Web 和移动服务”>“API 连接”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。 
+   * 或者，从 Azure 左侧主菜单依次转到“更多服务”>“Web + 移动”>“API 连接”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。 
 
    * 或者，在 Azure 左主菜单上转到“所有资源”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。
 
-2. 选择要查看或编辑的网关连接，然后选择“编辑 API 连接”。
+2. 选择要查看或编辑的网关连接，并选择“编辑 API 连接”。
 
    > [!TIP]
-   > 如果更新未生效，请尝试[停止网关 Windows 服务，然后重新启动该服务](./logic-apps-gateway-install.md#restart-gateway)。
+   > 如果更新未生效，请尝试[停止网关 Windows 服务，并重新启动该服务](./logic-apps-gateway-install.md#restart-gateway)。
 
 <a name="change-delete-gateway-resource"></a>
 ## <a name="switch-or-delete-your-on-premises-data-gateway-resource"></a>切换或删除本地数据网关资源
 
-若要创建其他网关资源、将网关与其他资源相关联，或者移除网关资源，则可删除网关资源，不影响网关安装。 
+要创建其他网关资源、将网关与其他资源相关联，或者移除网关资源，则可删除网关资源，不影响网关安装。 
 
 1. 从 Azure 左主菜单中，转到“所有资源”。 
 2. 找到并选择数据网关资源。
-3. 选择“本地数据网关”，然后在资源工具栏上，选择“删除”。
+3. 选择“本地数据网关”，并在资源工具栏上，选择“删除”。
 
 <a name="faq"></a>
 ## <a name="frequently-asked-questions"></a>常见问题

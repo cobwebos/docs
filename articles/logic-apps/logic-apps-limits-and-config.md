@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 3a8a661f65923476c89763580a98ea240642db99
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 5d905d410e70c5b635a3f6221e7e0c0bda7ad140
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="logic-app-limits-and-configuration"></a>逻辑应用限制和配置
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/30/2017
 
 ### <a name="integration-account-limits"></a>集成帐户限制
 
-以下是对添加到集成帐户的项目的限制
+下面介绍了可添加到集成帐户的项目所要遵循的限制。
 
 |名称|限制|说明|
 |----|----|----|
@@ -123,6 +123,21 @@ ms.lasthandoff: 08/30/2017
 |运行时终结点调用每 5 分钟调用一次 |45,000|可以根据需要在多个帐户之间分配工作负荷|
 |运行时终结点每 5 分钟的跟踪调用数 |45,000|可以根据需要在多个帐户之间分配工作负荷|
 |阻止并发调用的运行时终结点 |~1,000|减少并发请求数，或根据需要减少持续时间|
+
+下面介绍了可添加到集成帐户的项目的数量限制。
+
+免费定价层
+
+|名称|限制|说明|
+|----|----|----|
+|协议|10||
+|其他项目类型|25|类型包括合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。|
+
+标准定价层
+
+|名称|限制|说明|
+|----|----|----|
+|任何类型的项目|500|类型包括协议、合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B 协议（AS2、X12、EDIFACT）消息大小
 
