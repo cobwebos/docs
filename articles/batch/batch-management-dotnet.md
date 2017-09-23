@@ -22,7 +22,6 @@ ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/28/2017
 
-
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
 

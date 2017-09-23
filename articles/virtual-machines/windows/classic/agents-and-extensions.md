@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: c94332314668dc7e58ed84b20945a548c0443f84
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="about-the-virtual-machine-agent-and-extensions-for-windows-vms"></a>关于适用于 Windows VM 的虚拟机代理和扩展

@@ -20,7 +20,6 @@ ms.openlocfilehash: 7ea4b87e723c2ce194186af39ba8e6f0f593347a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
-
 ---
 # <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>设置 Azure PowerShell 以便为 Azure Marketplace 创建产品/服务
 有关如何在 Azure 中设置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 一个简单的方法是使用证书方法，这将下载并导入身份验证所需的证书。 若要获取所需的证书，请使用 **Get-AzurePublishSettingsFile** cmdlet。 在出现提示时，保存文件。 若要将证书导入 PowerShell 会话中，请使用 **Import-AzurePublishSettingsFile** cmdlet。

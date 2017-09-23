@@ -20,7 +20,6 @@ ms.openlocfilehash: 008952b4fee6bffe1e20259dc86fd6d5122777ec
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习模型如何从实验逐步变为运营 Web 服务
 Azure 机器学习工作室提供交互式画布，允许你开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：

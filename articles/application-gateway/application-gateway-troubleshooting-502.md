@@ -21,7 +21,6 @@ ms.openlocfilehash: cbf9c552c4818b3925f449081539f1db6d61918e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误

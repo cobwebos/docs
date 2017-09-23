@@ -20,7 +20,6 @@ ms.openlocfilehash: 3f447e049ccd33c77f422e8aa703ad6646f9ffa2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]

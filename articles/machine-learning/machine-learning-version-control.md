@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: haining
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bce4c5bb16f505d2f2f0fc388bdfbeb214a2f8fe
 ms.openlocfilehash: 7dc337c5aa03a9a609b4ca5d811442c99c75878f
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/09/2016
 
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的应用程序生命周期管理
@@ -100,9 +101,4 @@ ALM 的一个重要方面是能够自动化应用程序的执行和部署过程�
 * 下载 [Azure 机器学习工作室 PowerShell](http://aka.ms/amlps) 模块，并开始自动执行 ALM 任务。
 * 了解如何通过 PowerShell 和重新训练 API，[只使用单个实验创建和管理大量 ML 模型](machine-learning-create-models-and-endpoints-with-powershell.md)。
 * 详细了解如何[部署 Azure 机器学习 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

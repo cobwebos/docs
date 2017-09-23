@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
 ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/06/2016
 
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
@@ -162,10 +163,5 @@ else
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

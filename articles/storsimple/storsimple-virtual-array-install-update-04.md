@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a0c56eb55f81a30924835290acb59b7e7d7e3480
 ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/08/2017
 
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 0.4
@@ -107,10 +109,5 @@ ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
 ## <a name="next-steps"></a>后续步骤
 
 详细了解如何[管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

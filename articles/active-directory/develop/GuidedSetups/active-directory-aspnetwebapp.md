@@ -21,7 +21,6 @@ ms.openlocfilehash: 7a97cc9d1f13034de41f55399442061fbb4873c2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 
 [!INCLUDE [1. Introduction](active-directory-serversidewebapp-aspnetwebappowin-introduction.md)]

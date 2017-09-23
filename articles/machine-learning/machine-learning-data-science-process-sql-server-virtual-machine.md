@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: fashah;garye;bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0813611f581a68efb8f09a1e041cfbe429bf0c5c
 ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 ---
-# <a name="a-nameheadingaprocess-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
+# <a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
 本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。
 
 > [!NOTE]
@@ -28,13 +29,13 @@ ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
 > 
 > 
 
-## <a name="a-namesqlausing-sql"></a><a name="SQL"></a>使用 SQL
+## <a name="SQL"></a>使用 SQL
 我们介绍本部分中使用 SQL 的以下数据整理任务：
 
 1. [数据浏览](#sql-dataexploration)
 2. [功能生成](#sql-featuregen)
 
-### <a name="a-namesql-dataexplorationadata-exploration"></a><a name="sql-dataexploration"></a>数据浏览
+### <a name="sql-dataexploration"></a>数据浏览
 以下是几个可用于浏览存储在 SQL Server 中的数据的示例 SQL 脚本。
 
 > [!NOTE]
@@ -55,7 +56,7 @@ ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-### <a name="a-namesql-featuregenafeature-generation"></a><a name="sql-featuregen"></a>生成功能
+### <a name="sql-featuregen"></a>生成功能
 在本部分中，将介绍使用 SQL 生成功能的方法：  
 
 1. [生成基于计数的功能](#sql-countfeature)
@@ -67,7 +68,7 @@ ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
 > 
 > 
 
-### <a name="a-namesql-countfeatureacount-based-feature-generation"></a><a name="sql-countfeature"></a>生成基于计数的功能
+### <a name="sql-countfeature"></a>生成基于计数的功能
 以下示例演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 之后这些新表格可与原始表结合（使用主键列），使其具有原始数据的计数功能。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
@@ -75,13 +76,13 @@ ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="a-namesql-binningfeatureabinning-feature-generation"></a><a name="sql-binningfeature"></a>生成装箱功能
+### <a name="sql-binningfeature"></a>生成装箱功能
 下面的示例演示如何通过将可用作函数的数值列装箱（使用&5; 箱），从而生成装箱函数：
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="a-namesql-featurerolloutarolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>从单个列推出函数
+### <a name="sql-featurerollout"></a>从单个列推出函数
 在此部分中，将演示如何在表格中推出单列以生成其他功能。 该示例假定用户尝试在其中生成功能的表中，具有一个纬度或经度列。
 
 下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源[如何测量纬度和经度的准确性？](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)）。 在特征化位置字段之前，了解以上知识会很有用：
@@ -117,12 +118,12 @@ ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
 > 
 > 
 
-### <a name="a-namesql-amlaconnecting-to-azure-machine-learning"></a><a name="sql-aml"></a>连接到 Azure 机器学习
+### <a name="sql-aml"></a>连接到 Azure 机器学习
 新生成的功能可作为列添加到现有表或存储在新表中，也可与原始表结合以进行机器学习。 如果已经创建，可使用 Azure 机器学习中的[导入数据][import-data]模块生成或访问功能，如下所示：
 
 ![azureml 读取器][1] 
 
-## <a name="a-namepythonausing-a-programming-language-like-python"></a><a name="python"></a>使用 Python 等编程语言
+## <a name="python"></a>使用 Python 等编程语言
 如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](machine-learning-data-science-process-data-blob.md)中所述。 需要将数据从数据库加载到 pandas 数据帧，然后才可以进行进一步的处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
@@ -146,10 +147,5 @@ Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -21,7 +21,6 @@ ms.openlocfilehash: e222645509640b104410f87e4bcd22834c8d9ec1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="connect-linux-virtual-machines-created-with-the-classic-deployment-model-with-a-virtual-network-or-cloud-service"></a>将使用经典部署模型创建的 Linux 虚拟机连接到虚拟网络或云服务
 > [!IMPORTANT]

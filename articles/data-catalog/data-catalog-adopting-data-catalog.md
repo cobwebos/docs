@@ -21,14 +21,11 @@ ms.openlocfilehash: 5fc5c74c7671f64bd1312ad6939e629c0277110c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/21/2017
 
-
 ---
-# 采用 Azure 数据目录的方法和过程
-<a id="approach-and-process-for-adopting-azure-data-catalog" class="xliff"></a>
+# <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
 本文介绍如何在组织中采用 **Azure 数据目录**。 若要成功采用 **Azure 数据目录**，请将重点放在三个要点上：定义愿景、找到组织内的重要业务用例，以及选择试运行项目。
 
-## Azure 数据目录简介
-<a id="introducing-the-azure-data-catalog" class="xliff"></a>
+## <a name="introducing-the-azure-data-catalog"></a>Azure 数据目录简介
 对于要如何在职场内找到有关数据资产的专家信息，人们的期望已经改变。 今天，由于人们普遍在职场内使用 Yammer 等社交媒体工具，他们无不期望能够快速获取关于各种主题的帮助与建议。 **Azure 数据目录**帮助企业和团队在中心存储库中合并有关企业数据资产的信息。 数据使用者可以发现这些数据资产，并获得行业专家提供的知识。
 
 本文介绍如何使用 **Azure 数据目录**来开始这一切的方法。 本文将以 Adventure Works 这家虚构公司描述典型的数据目录采用方案。
@@ -37,8 +34,7 @@ ms.lasthandoff: 06/21/2017
 
 **Azure 数据目录** 是 Azure 中一项完全托管的服务以及用于自助发现数据源的企业范围信息（元数据）目录。 使用数据目录，可以注册、发现、批注和连接到数据资产。 数据目录旨在管理不同的信息资产，以便查找数据资产、了解它们，然后连接到其中。 它可以减少从可用数据进行洞察的时间，提高其对组织的价值。 有关详细信息，请参阅 [Microsoft Azure Data Catalog](https://azure.microsoft.com/services/data-catalog/)（Microsoft Azure 数据目录）。
 
-## Azure 数据目录采用计划
-<a id="azure-data-catalog-adoption-plan" class="xliff"></a>
+## <a name="azure-data-catalog-adoption-plan"></a>Azure 数据目录采用计划
 **Azure 数据目录**采用计划描述如何将使用服务的好处传达给项目关系人和用户，以及要向用户提供怎样的培训。 想要成功促成数据目录采用，其中一个关键要素是能否有效地将此服务的价值传达给用户和项目关系人。 采用方案一开始的主要对象是服务的用户。 无论项目关系人有多么同意此计划，如果数据目录服务的用户或客户没有将计划融入他们的使用环境，就无法成功地采用计划。 因此，本文假设项目关系人已同意此计划，并且将重心放在为用户创建数据目录采用计划。
 有效的采用计划能成功地让人们注意数据目录的可行目标，并提供他们想要实现此目标所需要的信息和指导。 用户需要了解数据目录能提供什么价值来帮助他们成功完成作业。 当人们看到数据目录如何帮助他们从数据中获取更多成果时，采用数据目录的价值便清楚浮现。 要让人们改变并不容易，因此有效的计划必须将改变所伴随而来的挑战纳入考虑。
 
@@ -51,8 +47,7 @@ ms.lasthandoff: 06/21/2017
 
 下面是有关定义 **Azure 数据目录** 采用计划的一些提示。
 
-## 定义数据目录的项目愿景
-<a id="define-your-data-catalog-project-vision" class="xliff"></a>
+## <a name="define-your-data-catalog-project-vision"></a>定义数据目录的项目愿景
 定义 **Azure 数据目录** 采用计划的第一个步骤是编写所尝试完成的成就的说明。 最好是让愿景声明既广博又不失简洁，使其足以定义特定的短期和长期目标。
 
 下面是帮助定义愿景的一些提示：
@@ -68,8 +63,7 @@ ms.lasthandoff: 06/21/2017
 
 拥有简洁的愿景声明后，应该找到适合数据目录使用的试运行项目。 一般而言，数据目录有好几个适用计划，因此下部分提供一些用于找到相关使用计划的提示。
 
-## 识别数据目录的业务用例
-<a id="identify-data-catalog-business-use-cases" class="xliff"></a>
+## <a name="identify-data-catalog-business-use-cases"></a>识别数据目录的业务用例
 若要找到与数据目录相关的用例，请与各业务单位的专家洽谈，来找到相关的用例和要解决的业务问题。 查看人们在找到和了解数据资产时所遇到的现有挑战。 例如，在仅询问组织内拥有相关数据源的几个人后，团队是否已了解数据资产？
 
 最好选择容易实现的用例：也就是既重要，且使用数据目录来解决时成功可能性很高的计划。
@@ -83,8 +77,7 @@ ms.lasthandoff: 06/21/2017
 
 下面是与数据目录有关的一些示例用例：
 
-### 示例用例：
-<a id="example-use-cases" class="xliff"></a>
+### <a name="example-use-cases"></a>示例用例：
 * **注册高价值的中心数据源** - IT 部门负责管理组织内使用的数据源。 通过注册和批注一般的企业数据源，IT 部门可以开始使用数据目录。
 * **注册以团队基于的数据源** -不同的团队拥有有用的业务线数据源。 通过识别和注册许多不同团队使用的关键数据源开始使用 **Azure 数据目录**，并在 **Azure 数据目录**批注中捕获团队的封闭知识。
 * **自助式商业智能** - 团队花了很多时间来结合多个源的数据。 在集中位置注册和批注数据源可以免除手动发现数据源的过程。
@@ -93,18 +86,15 @@ ms.lasthandoff: 06/21/2017
 
 识别数据目录的用例后，常见方案应该就会浮现。 下一部分介绍如何根据用例识别第一个试运行项目。
 
-## 选择数据目录的试运行项目
-<a id="choose-a-data-catalog-pilot-project" class="xliff"></a>
+## <a name="choose-a-data-catalog-pilot-project"></a>选择数据目录的试运行项目
 成功的关键因素是简化，并且从小规模着手。 范围受限且具有完善定义的试运行有助于让项目不断进展下去，而不因项目太过复杂或有太多的参与者而导致进度停滞不前。 尽管如此，但也务必要包含各种用户，无论是早期采用者或对项目有所怀疑的用户。 欣然接受解决计划的用户将能帮助改善将来的通信和小道消息计划。 对项目有所怀疑的用户则能帮助找到并解决造成阻碍的问题。 随着对项目有所怀疑的用户获得成功，可以使用他们的反馈来找到促成成功的要素。
 
 试运行计划应该分阶段导入想要使用数据目录实现的业务目标。 从初始试运行学习到经验后，就可以扩大用户群体。 已经结束的初始试运行很适合用于创建能够测量的成就，但我们的最终目标是要能够自然而然地或爆炸性成长。 数据目录若是自然而然地成长，用户就能控制他们自己的数据使用情形，并能影响和鼓励其他人采用目录和对目录有所贡献。
 
-### 锁定合适的团队
-<a id="target-the-right-team" class="xliff"></a>
+### <a name="target-the-right-team"></a>锁定合适的团队
 在选择试运行项目时，请选择其计划最引人注目且能解决现有业务问题的团队。 例如，某位业务分析师要从 SQL Server 数据库创建报表。 问题在于她只是跟几个同事交谈后就以为已经知道数据源。 最后，在浪费时间尝试查找要使用哪些数据源后，她找到一个 Excel 工作簿，其中包含每个数据源的说明。 尽管 Excel 工作簿已充分说明其所需的表，但如果这些数据源已在 **Azure 数据目录**中进行注册并加上批注，就能快速找到这些数据源。
 
-### 识别数据英雄
-<a id="identify-data-heroes" class="xliff"></a>
+### <a name="identify-data-heroes"></a>识别数据英雄
 第一个试运行项目中应该要有几个人负责生成数据和使用数据，这样才是最平衡的团队代表。
 
 **数据生成者** 是具有数据源方面的专业知识的个人。 例如，另一个团队中的 David 就广泛地使用关键的 Adventure Works 数据源。 在采用 **Azure 数据目录**之前，David 已经创建 Excel 活页簿来捕获有关 Adventure Works 数据源的信息。
@@ -116,16 +106,14 @@ ms.lasthandoff: 06/21/2017
 * 有关如何注册数据源的详细信息，请参阅 [Register data sources](data-catalog-get-started.md)（注册数据源）。
 * 有关如何发现数据源的详细信息，请参阅 [Search data sources](data-catalog-get-started.md)（搜索数据源）。
 
-### 从小规模着手并保持专注
-<a id="start-small-and-focused" class="xliff"></a>
+### <a name="start-small-and-focused"></a>从小规模着手并保持专注
 对于大多数的企业试运行项目而言，应该在目录中植入高价值的数据源，让业务用户可以快速看到数据目录的价值。 IT 部门很适合用于作为试运行团队感兴趣的一般数据源的查找起点。 对于支持的数据源（例如 SQL Server），建议使用 **Azure 数据目录** 数据源注册工具。 使用数据源注册工具可以注册各种数据源，包括 SQL Server 和 Oracle 数据库以及 SQL Server Reporting Services 报表。 有关最新数据源的完整列表，请参阅 [Azure Data Catalog supported data sources](data-catalog-dsr.md)（Azure 数据目录支持的数据源）。
 
 识别并注册关键数据源后，还可以导入存储在其他位置的数据源说明。 数据目录 API 可让开发人员从另一个位置（例如 David 创建和维护的 Excel 工作簿）加载说明和批注。
 
 下一部分说明来自 Adventure Works 公司的示例项目。
 
-### 示例项目
-<a id="an-example-project" class="xliff"></a>
+### <a name="an-example-project"></a>示例项目
 在本示例中，业务分析师 Nancy 使用 SQL Server Database 中的数据为其团队创建报告。 问题在于她只是跟几个同事交谈后就以为已经知道数据源。 如果她在 **Azure 数据目录**之类的集中位置注册这些数据源并为其加上批注，就能很快找到这些数据源。
 
 为了说明 Nancy 和她的团队可以多么轻松地找到高价值的数据，将使用数据源注册工具来为目录填充数据源的相关信息（元数据）。 通过这种方式，数据库的相关信息就可提供给团队和企业使用，而不只是少数个人。 在数据目录中注册数据源后，Nancy 及其团队便可以轻松使用这些数据源。 结果是更为全面且与她的团队和企业相关的数据目录。 当更多团队采用数据目录时，业务数据源就变得更容易找到和使用；因此，可以营造更多以数据为中心的文化，从数据中获得更多好处。
@@ -141,8 +129,7 @@ ms.lasthandoff: 06/21/2017
 
 在准备好试运行项目后，可以开始执行数据目录采用计划。
 
-### 执行
-<a id="execute" class="xliff"></a>
+### <a name="execute"></a>执行
 此时已识别数据目录的用例，并识别第一个项目。 此外，已注册关键的 Adventure Works 数据源，并使用 IT 部门创建的工具从现有 Excel 工作簿添加信息。 现在可以与试运行团队合作，开始数据目录采用过程。
 
 下面是一些入门提示：
@@ -155,28 +142,24 @@ ms.lasthandoff: 06/21/2017
 
 在试运行团队开始使用数据目录之前安排启动会议，介绍对于试运行项目的期望，并提供初始培训。
 
-### 设立期望
-<a id="set-expectations" class="xliff"></a>
+### <a name="set-expectations"></a>设立期望
 设立期望和目标可帮助业务用户专注于特定交付成果上。 若要让项目如期展开，请分配（例如：每天或每周，根据试运行的范围和期间而定）家庭作业。 数据目录的其中一个最有价值的功能是将数据资产众包，使业务用户可以受益于企业数据的知识。 对于每个试运行团队成员而言，注册至少一个他们使用的数据源并为其加上批注，便是绝佳的家庭作业。 请参阅[注册数据源](data-catalog-get-started.md)和[如何批注数据源](data-catalog-get-started.md)。
 
 定期与团队碰面，评审其中的一些批注。 好的数据源批注是成功采用数据目录的关键，因为它们可以在集中位置提供有意义的数据源见解。 如果没有良好的批注，整个企业中关于数据源的知识就杂乱无章。 请参阅 [How to annotate data sources](data-catalog-get-started.md)（如何批注数据源）。
 
 项目的最终测试是用户是否可以发现并了解他们需要使用的数据源。 试运行用户应定期测试目录，确保其日常工作中使用的数据源具有相关性。 当所需的数据源丢失或未正确批注时，可以将它当作注册其他数据源或提供其他批注的提醒。 这种做法不仅能增加试运行工作的价值，而且还能养成有效的习惯，在试运行完成后带到其他团队。
 
-### 提供培训
-<a id="provide-training" class="xliff"></a>
+### <a name="provide-training"></a>提供培训
 培训内容应该足以让用户入门，并且专门针对试运行团队成员的特定目标和经验水平。 若要开始培训，可以遵循 [Get started with Azure Data Catalog](data-catalog-get-started.md) （Azure 数据目录入门）一文中的步骤。 此外，可以下载 [Azure 数据目录试运行项目培训演示文稿](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/blob/master/Azure%20Data%20Catalog%20Training.pptx?raw=true)。 借助此 PowerPoint 演示文稿可以开始将数据目录介绍给试运行团队成员。
 
-## 结束语
-<a id="conclusion" class="xliff"></a>
+## <a name="conclusion"></a>结束语
 当试运行团队的运行相当顺畅并且已达到最初目标时，将数据目录的采用范围扩展到其他团队。 应用和精简从试运行项目学到的经验，将数据目录扩展到整个组织。
 
 参与试运行的早期采用者适合作为数据目录采用好处的宣传者。 他们可以和其他团队分享数据目录是如何帮助他们的团队解决业务问题、更轻松地发现数据源，以及分享有关他们使用的数据源的见解。 例如，Adventure Works 试运行团队的早期采用者可以向其他人展示要找到以前难以发现和了解的 Adventure Works 数据资产的相关信息是有多么容易。
 
 本文内容涉及如何在组织中开始使用 **Azure 数据目录** 。 我们希望能够启动数据目录的试运行项目，并将数据目录扩展到整个组织。
 
-## 有关 Azure 数据目录的详细信息
-<a id="more-information-about-azure-data-catalog" class="xliff"></a>
+## <a name="more-information-about-azure-data-catalog"></a>有关 Azure 数据目录的详细信息
 * [Azure 数据目录产品页](https://azure.microsoft.com/services/data-catalog/)
 * [Azure 数据目录文档](https://azure.microsoft.com/documentation/services/data-catalog/)
 * [Azure Data Catalog common scenarios](data-catalog-common-scenarios.md)

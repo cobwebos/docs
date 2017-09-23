@@ -20,7 +20,6 @@ ms.openlocfilehash: 08998340afb2f242b9a268331607b0d1ddb9b0c6
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 > [!div class="op_single_selector"]

@@ -20,7 +20,6 @@ ms.openlocfilehash: 61e0877187759d76b6f7efcef0a5ed8bec8500fe
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>为 StorSimple 设备配置 CHAP
 

@@ -19,7 +19,6 @@ ms.openlocfilehash: bae5f05a161b2730bf662bcb47f20ab3e1799951
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>教程：适用于 Microsoft Azure 的 Azure Active Directory 与云管理门户的集成
 

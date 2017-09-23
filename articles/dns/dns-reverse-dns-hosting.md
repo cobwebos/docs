@@ -119,7 +119,7 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 
 以下示例指导用户在 Azure DNS 的反向 DNS 区域中创建 PTR 记录。 若要了解其他记录类型并修改现有记录，请参阅[使用 Azure 门户管理 DNS 记录和记录集](dns-operations-recordsets-portal.md)。
 
-1.    在“DNS 区域”边栏选项卡顶部，选择“+ 记录集”以打开“添加记录集”边栏选项卡。
+1.  在“DNS 区域”边栏选项卡顶部，选择“+ 记录集”以打开“添加记录集”边栏选项卡。
 
  ![DNS 区域](./media/dns-reverse-dns-hosting/figure4.png)
 

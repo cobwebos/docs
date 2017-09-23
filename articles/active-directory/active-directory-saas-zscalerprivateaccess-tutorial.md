@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c81f23603cfbbc916c148c61bd3de52ef1db36ac
 ms.openlocfilehash: 5c598bfa5b6725d21a89df54dbcb3314cc631d80
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/15/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>教程：Azure Active Directory 与 Zscaler Private Access (ZPA) 集成
@@ -125,7 +125,7 @@ ms.lasthandoff: 02/15/2017
 
 4. 在“SAML 签名证书”部分中，单击“创建新证书”。
 
-    ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)     
+    ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)   
 
 5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
 

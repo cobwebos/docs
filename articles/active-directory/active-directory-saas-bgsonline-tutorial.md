@@ -19,7 +19,6 @@ ms.openlocfilehash: d1abd3f8e2980e03fc092613183a261880fbce38
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>教程：Azure Active Directory 与 BGS Online 集成
 

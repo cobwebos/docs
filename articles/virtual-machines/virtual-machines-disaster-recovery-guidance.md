@@ -21,7 +21,6 @@ ms.openlocfilehash: fb986a41e33501ee71c93a48457ac4114e33c671
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>发生影响 Azure VM 的 Azure 服务中断事件时该怎么办
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供你需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。

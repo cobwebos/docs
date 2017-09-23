@@ -19,7 +19,6 @@ ms.openlocfilehash: b1a468caa22159ad603dbec1ef530e7e0e24f96d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>教程：Azure Active Directory 与 Reward Gateway 集成
 

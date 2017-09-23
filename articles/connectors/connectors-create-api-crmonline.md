@@ -38,27 +38,27 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="create-a-task-when-a-new-lead-is-created-in-dynamics-365"></a>在 Dynamics 365 中创建一个新潜在客户时创建任务
 
-1.    [登录 Azure](https://portal.azure.com)。
+1.  [登录 Azure](https://portal.azure.com)。
 
-2.    在 Azure 搜索框中，键入“`Logic apps`”，然后按 Enter。
+2.  在 Azure 搜索框中，键入“`Logic apps`”，然后按 Enter。
 
       ![查找逻辑应用](./media/connectors-create-api-crmonline/find-logic-apps.png)
 
-3.    在“逻辑应用”下，单击“添加”。
+3.  在“逻辑应用”下，单击“添加”。
 
       ![添加逻辑应用](./media/connectors-create-api-crmonline/add-logic-app.png)
 
-4.    若要创建逻辑应用，完成“名称”、“订阅”、“资源组”和“位置”字段，然后单击“创建”。
+4.  若要创建逻辑应用，完成“名称”、“订阅”、“资源组”和“位置”字段，然后单击“创建”。
 
-5.    选择新的逻辑应用。 收到“部署成功”通知后，请单击“刷新”。
+5.  选择新的逻辑应用。 收到“部署成功”通知后，请单击“刷新”。
 
-6.    在“开发工具”下，单击“逻辑应用设计器”。 在模板列表中，单击“空白逻辑应用”。
+6.  在“开发工具”下，单击“逻辑应用设计器”。 在模板列表中，单击“空白逻辑应用”。
 
-7.    在搜索框中，键入“`Dynamics 365`”。 从 Dynamics 365 触发器列表中选择“Dynamics 365 – 创建记录时”。
+7.  在搜索框中，键入“`Dynamics 365`”。 从 Dynamics 365 触发器列表中选择“Dynamics 365 – 创建记录时”。
 
-8.    如果系统提示登录 Dynamics 365，请立即登录。
+8.  如果系统提示登录 Dynamics 365，请立即登录。
 
-9.    在触发器详细信息中，输入以下信息：
+9.  在触发器详细信息中，输入以下信息：
 
   * **组织名称**。 选择要让逻辑应用侦听的 Dynamics 365 实例。
 

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 638e3e59f91202d55347c830542801ccead1b90f
 ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/01/2016
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
@@ -76,10 +78,5 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Web UI 以及如何使用它的信息，请转到[使用 StorSimple Web UI 管理你的 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

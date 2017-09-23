@@ -21,7 +21,6 @@ ms.openlocfilehash: fc5fc128efe01bd0727e3ff30d8938918e89ac3a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-slack-connector"></a>Slack 连接器入门
 Slack 是一款团队通信工具，可将所有团队通信归于一处，可即时搜索，并且随时随地可用。 

@@ -19,7 +19,6 @@ ms.openlocfilehash: e5e847c12cba3611ce7ea2c3e956dbd55b1e0cac
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/24/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>教程：Azure Active Directory 与 Kintone 的集成
 

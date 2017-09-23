@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: c851b88fc1067e65044266d07775717c028e75d9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="how-to-import-the-definition-of-an-api-with-operations-in-azure-api-management"></a>如何通过 Azure API 管理中的操作导入 API 的定义
@@ -93,9 +95,4 @@ API 创建并导入操作后，您可以查看和配置任何其他设置，将 
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create APIs]: api-management-howto-create-apis.md
 [How to configure API settings]: api-management-howto-create-apis.md#configure-api-settings
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

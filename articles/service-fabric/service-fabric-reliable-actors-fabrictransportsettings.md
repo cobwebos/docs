@@ -20,7 +20,6 @@ ms.openlocfilehash: 75bdd4644f4ccc583271b9169c50a375e2cd6629
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/29/2017
 
-
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>配置 Reliable Actors 的 FabricTransport 设置
 

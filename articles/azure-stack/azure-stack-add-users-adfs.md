@@ -19,7 +19,6 @@ ms.openlocfilehash: 5ff45235cffead8c665d5c8610edca3c787ac267
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="add-users-in-the-azure-stack-development-kit"></a>Add users in the Azure Stack Development Kit
 

@@ -19,7 +19,6 @@ ms.openlocfilehash: 6523ee3179dafd79528093b856b0ec10fafb4f7b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
 

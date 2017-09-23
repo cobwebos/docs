@@ -3,8 +3,7 @@
 > [!NOTE] 
 > 在创建卷容器后，无法修改与其关联的加密设置和存储帐户凭据。
 
-#### 修改卷容器
-<a id="to-modify-a-volume-container" class="xliff"></a>
+#### <a name="to-modify-a-volume-container"></a>修改卷容器
 
 1. 转到 StorSimple Device Manager 服务，然后导航到“管理”>“卷容器”。
 

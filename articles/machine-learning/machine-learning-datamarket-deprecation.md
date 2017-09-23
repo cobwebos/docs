@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: LuisCa
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: e40b69f97878a6072a64912f017f8e5621ba6e71
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 ---

@@ -20,7 +20,6 @@ ms.openlocfilehash: 1f2dcd9a91bb6e883cbef06373c1acd98bf8d45f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]

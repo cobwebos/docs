@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: feac309db1ffce0945012e293bfc1df417aed876
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="advanced-reporting-with-the-windows-universal-apps-engagement-sdk"></a>使用 Windows 通用应用 Engagement SDK 的高级报告
@@ -160,10 +161,5 @@ Engagement 配置集中在项目的 `Resources\EngagementConfiguration.xml` 文�
 根据需要，你可能要报告应用程序特定事件、错误和作业，为此，可使用在 `EngagementAgent` 类中找到的其他方法。 Engagement API 允许使用的所有 Engagement 高级功能。
 
 要了解更多信息，请参阅[如何在 Windows 通用应用中使用高级的 Mobile Engagement 标记 API](mobile-engagement-windows-store-use-engagement-api.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

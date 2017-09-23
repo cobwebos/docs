@@ -20,7 +20,6 @@ ms.openlocfilehash: 337a7adfd93c76882a749685702bea6d1524c96a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>在 Azure 安全中心启用 VM 代理
 必须在虚拟机 (VM) 上安装 VM 代理以便[启用数据收集](security-center-enable-data-collection.md)。  使用 Azure 安全中心，可以查看需要 VM 代理的 VM，并建议在这些 VM 上启用 VM 代理。

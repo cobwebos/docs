@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 1cde5b9ee4c716af07d427d4d0eb3f0775d456ac
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="row-level-security-with-power-bi-embedded"></a>Power BI Embedded 的行级别安全性

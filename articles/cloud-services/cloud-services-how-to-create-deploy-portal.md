@@ -20,7 +20,6 @@ ms.openlocfilehash: e5ce666f1d826c7901c9fd5e7fafe6171139c3ad
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/22/2017
 
-
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 > [!div class="op_single_selector"]

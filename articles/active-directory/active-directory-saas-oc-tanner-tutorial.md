@@ -19,7 +19,6 @@ ms.openlocfilehash: 9af12372b30d9ee1575e46be3b4144fc3b73ec69
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>教程：Azure Active Directory 与 O.C. Tanner - AppreciateHub
 

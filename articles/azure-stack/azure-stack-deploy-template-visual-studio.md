@@ -20,7 +20,6 @@ ms.openlocfilehash: e9b467f47f166198d9790f19dbdd3d1d0fd79947
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Deploy templates in Azure Stack using Visual Studio
 

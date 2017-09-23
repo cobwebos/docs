@@ -20,7 +20,6 @@ ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
 
-
 ---
 
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中某个实验室的基本策略

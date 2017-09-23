@@ -21,7 +21,6 @@ ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-twitter-connector"></a>Twitter 连接器入门
 借助 Twitter 连接器，可以：

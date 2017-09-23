@@ -22,7 +22,6 @@ ms.openlocfilehash: c066a10b33e172eb5f16eede43ec407794000c90
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-google-drive-connector"></a>Google Drive 连接器入门
 连接到 Google Drive，创建文件、获取行等。 通过 Google Drive，你可以： 

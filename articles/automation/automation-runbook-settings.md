@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ac8b5372aa06eac8c9a701f0621dbb675fbb565c
 ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="runbook-settings"></a>Runbook 设置
@@ -58,10 +59,5 @@ Azure 自动化中的每个 Runbook 都提供了多个设置用于帮助标识�
 ## <a name="next-steps"></a>后续步骤
 * 若要学习如何创建输出和错误消息以及从 Runbook 检索此类消息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md) 
 * 若要了解如何添加已由社区或其他源开发的 Runbook，或创建自己的 Runbook，请参阅[创建或导入 Runbook](automation-creating-importing-runbook.md) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

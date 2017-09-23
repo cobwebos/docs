@@ -15,10 +15,10 @@ ms.date: 08/11/2017
 ms.author: helaw
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 019d743b0b3104e16a6690f438e7841fa63f09d0
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 2a87753a20375fe06b0de54d93437bbb2cee66ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -41,7 +41,7 @@ This topic also assumes that you have some knowledge of Azure and Azure Stack. I
 
 ### <a name="azure"></a>Azure
  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
- - Create a [Web App](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md), and configure it for [FTP publishing](../app-service-web/app-service-deploy-ftp.md).  Make note of the new Web App URL, as it is used later.
+ - Create a [Web App](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md), and configure it for [FTP publishing](../app-service/app-service-deploy-ftp.md).  Make note of the new Web App URL, as it is used later.
 
 
 ### <a name="azure-stack"></a>Azure Stack

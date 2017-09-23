@@ -20,7 +20,6 @@ ms.openlocfilehash: 00d030a502cf70ea9a5dea767f560cdf2919573e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
 
-
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics 中的数据源
 Log Analytics 从 OMS 工作区中已连接的源收集数据并将其存储在 OMS 存储库中。  从每个源收集的数据由你配置的数据源定义。  OMS 存储库中的数据作为一组记录进行存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。

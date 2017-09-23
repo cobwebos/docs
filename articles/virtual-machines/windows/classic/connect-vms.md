@@ -21,7 +21,6 @@ ms.openlocfilehash: 0c7a21461e5bb111c4359df8e949d48382b591c1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="connect-windows-virtual-machines-created-with-the-classic-deployment-model-with-a-virtual-network-or-cloud-service"></a>将使用经典部署模型创建的 Windows 虚拟机连接到虚拟网络或云服务
 > [!IMPORTANT]

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
 ms.openlocfilehash: c3bbef8fee018dc54e7d3edb86e3f9434999bdae
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/16/2017
 
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
@@ -239,9 +240,4 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
 
 ## <a name="acknowledgements"></a>**致谢**
 本文由 Microsoft 数据科研人员 Yijing Chen 与软件工程师 Qiu Min 共同撰写。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

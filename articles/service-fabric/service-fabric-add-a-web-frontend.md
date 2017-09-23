@@ -20,7 +20,6 @@ ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/10/2017
 
-
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>使用 ASP.NET Core 生成应用程序的 Web 服务前端
 默认情况下，Azure Service Fabric 服务不提供用于访问 Web 的公共接口。 若要向 HTTP 客户端公开应用程序的功能，需要创建一个 Web 项目作为入口点，然后从该处与单个服务进行通信。

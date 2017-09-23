@@ -14,10 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Azure Mobile Engagement Web SDK 升级过程
@@ -120,10 +121,5 @@ Mobile Engagement 使用连接字符串来配置 SDK 标识符，例如应用程
 全局 JavaScript 对象 `window.capptain` 已重命名为 `window.azureEngagement`，但你可以将 `window.engagement` 别名用于 API 调用。 不能将此别名用于定义 SDK 配置。
 
 例如，`capptain.deviceId` 变成 `engagement.deviceId`，`capptain.agent.startActivity` 变成 `engagement.agent.startActivity`，依此类推。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

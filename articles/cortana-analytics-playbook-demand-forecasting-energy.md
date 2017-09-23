@@ -20,7 +20,6 @@ ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册
 ## <a name="executive-summary"></a>执行摘要

@@ -21,7 +21,6 @@ ms.openlocfilehash: b2d702ecdd5e1fca342e7c84c6e75339097f0bcd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>验证 VPN 网关连接
 

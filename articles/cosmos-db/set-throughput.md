@@ -20,7 +20,6 @@ ms.openlocfilehash: d541bb19ba7e5ecb44c9fe91b1e232d4d9c2170e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>为 Azure Cosmos DB 容器设置吞吐量

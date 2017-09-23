@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ec33268915a1888509834ce6a5b2bc782a12ce4a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>在虚拟网络配置文件中指定 DNS 设置
@@ -67,10 +68,5 @@ ms.openlocfilehash: ec33268915a1888509834ce6a5b2bc782a12ce4a
 * 了解 [Azure 虚拟网络配置架构](http://go.microsoft.com/fwlink/?LinkId=248093)。
 * 了解 [Azure 服务配置架构](https://msdn.microsoft.com/library/windowsazure/ee758710)。
 * [使用网络配置文件配置虚拟网络](virtual-networks-using-network-configuration-file.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

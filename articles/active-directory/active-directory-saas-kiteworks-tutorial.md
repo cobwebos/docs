@@ -19,7 +19,6 @@ ms.openlocfilehash: 2fd9b346cb6d838069ef94ee9c2a8d113f22779c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/24/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>教程：Azure Active Directory 与 Kiteworks 的集成
 

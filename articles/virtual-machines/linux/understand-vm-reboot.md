@@ -20,7 +20,6 @@ ms.openlocfilehash: 002968895d2ed2c6c3ed6dee052b0fdfcdf42d80
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/14/2017
 
-
 ---
 
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启

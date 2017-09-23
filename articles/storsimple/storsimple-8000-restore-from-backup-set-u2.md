@@ -20,7 +20,6 @@ ms.openlocfilehash: aff0710ead4f76bb80c38e2d88fe9cd3ce6a7b48
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 

@@ -14,10 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
 ms.openlocfilehash: 0301f71c76872714aa1bf727a6c21dd7a63db036
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Azure Mobile Engagement Android SDK 的高级配置
@@ -117,9 +118,4 @@ Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字
       android:title="Use Engagement"
       android:summaryOn="Engagement is enabled."
       android:summaryOff="Engagement is disabled." />
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

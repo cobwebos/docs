@@ -19,7 +19,6 @@ ms.openlocfilehash: 6cce8fc839e60eb6498ab48bf68e9906c98889a2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atomic-learning"></a>教程：Azure Active Directory 与 Atomic Learning 的集成
 

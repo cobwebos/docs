@@ -20,7 +20,6 @@ ms.openlocfilehash: f164ac68ba6ec650bb3996b4aa870e1b98533a23
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 
 # <a name="step-4-plan-networking-for-vmware-to-azure-replication"></a>步骤 4：为 VMware 到 Azure 的复制规划网络

@@ -20,7 +20,6 @@ ms.openlocfilehash: 53bf33f6027f1f365bd92251490d5c851fb83f8b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Data Lake Store 和 Azure SQL 数据库之间复制数据
 了解如何使用 Apache Sqoop 在 Azure SQL 数据库和 Data Lake Store 之间导入和导出数据。

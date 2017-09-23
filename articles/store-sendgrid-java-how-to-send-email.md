@@ -14,10 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/16/2017
 
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
@@ -194,9 +195,4 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程�
 [http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
 [基于云的电子邮件服务]: https://sendgrid.com/email-solutions
 [事务电子邮件传递]: https://sendgrid.com/transactional-email
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

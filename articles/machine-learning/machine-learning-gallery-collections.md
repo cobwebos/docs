@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: 03f423fff9f4105bdb3a53b245514bde506b9743
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/15/2017
-
 
 ---
 # <a name="discover-and-share-collections-in-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现并共享收藏

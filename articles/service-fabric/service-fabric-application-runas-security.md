@@ -20,7 +20,6 @@ ms.openlocfilehash: e673b45a43a06d18040c3437caf8765704d5c36a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="configure-security-policies-for-your-application"></a>配置应用程序的安全策略
 使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 Service Fabric 还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。

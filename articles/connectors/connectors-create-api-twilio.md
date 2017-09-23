@@ -21,7 +21,6 @@ ms.openlocfilehash: a790ac51b0fea7e3fa379d20e0e094e7ce0d7696
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-twilio-connector"></a>Twilio 连接器入门
 连接到 Twilio 以发送和接收全球短信、彩信和 IP 消息。 借助 Twilio，可以：

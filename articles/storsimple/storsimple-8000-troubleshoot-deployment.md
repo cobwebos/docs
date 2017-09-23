@@ -20,7 +20,6 @@ ms.openlocfilehash: d6642231bf9d012b0015902c82d2bfde3b86285c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
 ## <a name="overview"></a>概述

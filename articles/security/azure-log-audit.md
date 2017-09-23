@@ -1,5 +1,4 @@
 ---
-
 title: "Azure 日志记录和审核 | Microsoft Docs"
 description: "了解如何利用日志记录数据深入了解应用程序的情况。"
 services: security
@@ -21,7 +20,6 @@ ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/12/2017
 
-
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 ## <a name="introduction"></a>介绍
@@ -31,11 +29,11 @@ ms.lasthandoff: 05/12/2017
 Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。
 
 例如，你可以：
--    使用 Docker 集成运行 Linux 容器。
+-   使用 Docker 集成运行 Linux 容器。
 
--    使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用
+-   使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用
 
--    生成适用于 iOS、Android 和 Windows 设备的后端。
+-   生成适用于 iOS、Android 和 Windows 设备的后端。
 
 Azure 公有云服务支持数百万开发人员和 IT 专业人士已经有所依赖并信任的相同技术。
 
@@ -59,25 +57,25 @@ Microsoft Azure 日志数据可导出到安全事件和事件管理 (SIEM) 系�
 云应用程序很复杂，包含很多移动部件。 日志可以为用户提供数据，确保应用程序始终处于正常运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以使用日志记录数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
 Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下主要类型进行分类：
--    控制/管理日志，使 Azure Resource Manager 的 CREATE、UPDATE 和 DELETE 操作可见。 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)就是此类日志的示例。
+-   控制/管理日志，使 Azure Resource Manager 的 CREATE、UPDATE 和 DELETE 操作可见。 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)就是此类日志的示例。
 
--    数据平面日志，使作为 Azure 资源的使用情况的一部分引发的事件可见。 此类日志的示例是虚拟机中的 Windows 事件系统、安全性、应用程序日志以及通过 Azure Monitor 配置的[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+-   数据平面日志，使作为 Azure 资源的使用情况的一部分引发的事件可见。 此类日志的示例是虚拟机中的 Windows 事件系统、安全性、应用程序日志以及通过 Azure Monitor 配置的[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 
 
--    已处理事件，提供已以用户名义处理的分析事件/警报的相关信息。 此类日志的示例是 [Azure 安全中心警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)，[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)已处理和分析了订阅，并提供简明的安全警报
+-   已处理事件，提供已以用户名义处理的分析事件/警报的相关信息。 此类日志的示例是 [Azure 安全中心警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)，[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)已处理和分析了订阅，并提供简明的安全警报
 
 下表列出了 Azure 中最重要的日志类型。
 
 | 日志类别 | 日志类型 | 用途 | 集成 |
 | ------------ | -------- | ------ | ----------- |
-|[活动日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager 资源上的控制平面事件|    提供相关信息，方便用户了解对订阅中的资源执行的操作。|    Rest API 和 [Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
-|[Azure 诊断日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|关于订阅中 Azure Resource Manager 资源操作频繁生成的数据|    提供相关信息，以便深入了解资源本身执行的操作| Azure Monitor，[Stream](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
+|[活动日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager 资源上的控制平面事件| 提供相关信息，方便用户了解对订阅中的资源执行的操作。| Rest API 和 [Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
+|[Azure 诊断日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|关于订阅中 Azure Resource Manager 资源操作频繁生成的数据|   提供相关信息，以便深入了解资源本身执行的操作| Azure Monitor，[Stream](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD 报告](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-azure-portal)|日志和报告|关于用户和组管理的用户登录活动和系统活动信息|[Graph API](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[虚拟机和云服务](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows 事件日志和 Linux Syslog|    在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|    Azure Monitor 中使用 [WAD](https://docs.microsoft.com/en-us/azure/azure-diagnostics)（Windows Azure 诊断存储）的 Windows 和 Linux|
-|[存储分析](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|    REST API 或[客户端库](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
+|[虚拟机和云服务](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows 事件日志和 Linux Syslog|  在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中使用 [WAD](https://docs.microsoft.com/en-us/azure/azure-diagnostics)（Windows Azure 诊断存储）的 Windows 和 Linux|
+|[存储分析](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|  REST API 或[客户端库](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
 |[NSG（网络安全组）流日志](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|采用 JSON 格式，并根据规则显示出站和入站流|查看有关通过网络安全组的入口和出口 IP 流量的信息|[网络观察程序](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)|
-|[Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|    多个平台上面向 Web 开发人员的应用程序性能管理 (APM) 服务。|    REST API，[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
-|处理数据/安全警报|    Azure 安全中心警报，OMS 警报|    安全信息和警报。|     REST API，JSON|
+|[Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|  多个平台上面向 Web 开发人员的应用程序性能管理 (APM) 服务。| REST API，[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
+|处理数据/安全警报| Azure 安全中心警报，OMS 警报| 安全信息和警报。|   REST API，JSON|
 
 ### <a name="activity-log"></a>活动日志
 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供相关信息，方便用户了解对订阅中的资源执行的操作。 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的[控制平面事件](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/)。 通过活动日志，可确定订阅中对资源执行的任何写入操作（PUT、POST、DELETE）的“内容、执行者和时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作。
@@ -90,19 +88,19 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 可以使用 Azure 门户、[CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)、PowerShell cmdlet 和 [Azure Monitor REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) 从活动日志检索事件。 活动日志的数据保留期为 19 天。
 
 集成方案
--    [创建触发活动日志事件的电子邮件或 webhook 警报。](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-auditlog-to-webhook-email)
+-   [创建触发活动日志事件的电子邮件或 webhook 警报。](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-auditlog-to-webhook-email)
 
--    [将活动日志流式传输到事件中心](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
+-   [将活动日志流式传输到事件中心](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
 
--    在 PowerBI 中使用 [PowerBI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
+-   在 PowerBI 中使用 [PowerBI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
 
--    [将活动日志保存到存储帐户进行存档或手动检查。](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-activity-log) 可以使用“日志配置文件”指定保留时间（天）。
+-   [将活动日志保存到存储帐户进行存档或手动检查。](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-activity-log) 可以使用“日志配置文件”指定保留时间（天）。
 
--    在 Azure 门户中查询和查看活动日志。
+-   在 Azure 门户中查询和查看活动日志。
 
--    通过 PowerShell Cmdlet、CLI 或 REST API 查询活动日志。
+-   通过 PowerShell Cmdlet、CLI 或 REST API 查询活动日志。
 
--    使用“日志配置文件”将活动日志导出到 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)。
+-   使用“日志配置文件”将活动日志导出到 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)。
 
 可以使用与发出日志的订阅不同的订阅中的存储帐户或[事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)。 配置此设置的用户必须对两个订阅都具有合适的 [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 访问权限
 ### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
@@ -113,19 +111,19 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 Azure 诊断日志提供了多个配置选项，即 Azure 门户可使用 PowerShell、命令行接口 (CLI) 和 REST API。
 
 集成方案
--    将诊断日志保存到[存储帐户](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs)进行审核或手动检查。 可以使用“诊断设置”指定保留时间（天）。
+-   将诊断日志保存到[存储帐户](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs)进行审核或手动检查。 可以使用“诊断设置”指定保留时间（天）。
 
--    [将诊断日志流式传输到事件中心](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs)，方便第三方服务或自定义分析解决方案（例如 [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)）引入。
+-   [将诊断日志流式传输到事件中心](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs)，方便第三方服务或自定义分析解决方案（例如 [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)）引入。
 
--    使用 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 对诊断日志进行分析。
+-   使用 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 对诊断日志进行分析。
 
 诊断日志支持的服务和架构以及每种资源类型支持的日志类别
 
 
 | 服务 | 架构和文档 | 资源类型 | 类别 |
 | ------- | ------------- | ------------- | -------- |
-|负载均衡器| [用于 Azure 负载均衡器的 Log Analytics（预览版）](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent|
-|||Microsoft.Network/loadBalancers|    LoadBalancerProbeHealthStatus
+|负载均衡器| [用于 Azure 负载均衡器的 Log Analytics（预览版）](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers|  LoadBalancerAlertEvent|
+|||Microsoft.Network/loadBalancers| LoadBalancerProbeHealthStatus
 |网络安全组|[网络安全组 (NSG) 的 Log Analytics](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-nsg-manage-log)|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|
 |||Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|
 |应用程序网关|[应用程序网关的诊断日志记录](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-diagnostics)|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|
@@ -155,13 +153,13 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 
 | 安全报表 | 活动报表 | 审核报表 |
 | :--------------- | :--------------- | :------------ |
-|从未知源登录|    应用程序使用情况：摘要|    目录审核报表|
-|多次失败后登录|    应用程序使用情况：详细信息||
+|从未知源登录| 应用程序使用情况：摘要| 目录审核报表|
+|多次失败后登录|  应用程序使用情况：详细信息||
 |从多个地理区域登录|    应用程序仪表板||
-|从具有可疑活动的 IP 地址登录|    帐户设置错误||
+|从具有可疑活动的 IP 地址登录|   帐户设置错误||
 |异常登录活动|    单个用户设备||
-|从可能受感染的设备登录|    单个用户活动||
-|具有异常登录活动的用户|    组活动报表||
+|从可能受感染的设备登录|   单个用户活动||
+|具有异常登录活动的用户| 组活动报表||
 ||密码重置注册活动报表||
 ||密码重置活动|||
 
@@ -183,13 +181,13 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 可以通过以下方式在虚拟机上启用 Azure 诊断：
 
--    使用 Visual Studio，请参阅[使用 Visual Studio 跟踪 Azure 虚拟机](https://docs.microsoft.com/azure/vs-azure-tools-debug-cloud-services-virtual-machines)
+-   使用 Visual Studio，请参阅[使用 Visual Studio 跟踪 Azure 虚拟机](https://docs.microsoft.com/azure/vs-azure-tools-debug-cloud-services-virtual-machines)
 
--    [在 Azure 虚拟机上远程设置 Azure 诊断](https://docs.microsoft.com/azure/virtual-machines-dotnet-diagnostics)
+-   [在 Azure 虚拟机上远程设置 Azure 诊断](https://docs.microsoft.com/azure/virtual-machines-dotnet-diagnostics)
 
--    [使用 PowerShell 在 Azure 虚拟机上设置诊断](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-extensions-diagnostics?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+-   [使用 PowerShell 在 Azure 虚拟机上设置诊断](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-extensions-diagnostics?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
--    [使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+-   [使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="storage-analytics"></a>存储分析
 [Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析日志记录可用于 [Blob、队列和表服务](https://docs.microsoft.com/azure/storage/storage-introduction)。 存储分析记录成功和失败的存储服务请求的详细信息。
@@ -217,15 +215,15 @@ Azure AD 审核报告中的事件将保留 180 天。
 | 成功的请求 | 成功的请求 |
 |失败的请求，包括超时、限制、网络、授权和其他错误 | 使用共享访问签名 (SAS) 的请求，包括失败和成功的请求 |
 | 使用共享访问签名 (SAS) 的请求，包括失败和成功的请求 |客户端和服务器的超时错误 |
-|     分析数据请求 |     失败的 GET 请求，错误代码为 304（未修改） |
+|   分析数据请求 |    失败的 GET 请求，错误代码为 304（未修改） |
 | 不会记录存储分析本身发出的请求，如创建或删除日志。 [存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)及[存储分析日志格式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)主题中提供了所记录数据的完整列表。 | 不会记录所有其他失败的匿名请求。 若要查看所记录数据的完整列表，请参阅 [Storage Analytics Logged Operations and Status Messages](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)（存储分析记录的操作和状态消息）和 [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)（存储分析日志格式）。 |
 
 ### <a name="azure-networking-logs"></a>Azure 网络日志
 Azure 中的网络日志记录和监视是一个综合性的功能，包括两大类别：
 
--    [网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) - 网络观察程序中的功能提供基于方案的网络监视。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
+-   [网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) - 网络观察程序中的功能提供基于方案的网络监视。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
 
--    [资源监视](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring) - 资源级监视包括四项功能：诊断日志、指标、故障排除和资源运行状况。 所有这些功能都在网络资源级别构建。
+-   [资源监视](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring) - 资源级监视包括四项功能：诊断日志、指标、故障排除和资源运行状况。 所有这些功能都在网络资源级别构建。
 
 ![Azure 网络日志](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -257,15 +255,15 @@ NSG 流日志记录 - 使用网络安全组的流日志可以捕获被组中的�
 
 - [可变数据包捕获](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) - 捕获传入和传出虚拟机的数据包数据。 高级筛选选项和精细控制（例如设置时间与大小限制）提供了多样性。数据包数据可以存储在 Blob 存储中，或者以 .cap 格式存储在本地磁盘上。
 
--    [IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) - 根据流信息 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果数据包被安全组拒绝，则返回拒绝数据包的规则和组。
+-   [IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) - 根据流信息 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果数据包被安全组拒绝，则返回拒绝数据包的规则和组。
 
--    [下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) - 确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何错误配置的用户定义路由。
+-   [下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) - 确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何错误配置的用户定义路由。
 
--    [安全组视图](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) - 获取在 VM 上应用的有效安全规则。
+-   [安全组视图](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) - 获取在 VM 上应用的有效安全规则。
 
--    [虚拟网络网关和连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) - 提供排查虚拟网络网关和连接问题的功能。
+-   [虚拟网络网关和连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) - 提供排查虚拟网络网关和连接问题的功能。
 
--    [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits) - 用于查看网络资源用量与限制。
+-   [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits) - 用于查看网络资源用量与限制。
 
 ### <a name="application-insight"></a>Application Insights
 
@@ -279,25 +277,25 @@ NSG 流日志记录 - 使用网络安全组的流日志可以捕获被组中的�
 
 Application Insights 主要面向开发团队，旨在帮助用户了解应用的运行性能和使用方式。 监视：
 
--    **请求率、响应时间和失败率** - 了解最受欢迎的页面、时段以及用户的位置。 查看哪些页面效果最好。 当有较多请求时，如果响应时间长且失败率高，则可能存在资源问题。
+-   **请求率、响应时间和失败率** - 了解最受欢迎的页面、时段以及用户的位置。 查看哪些页面效果最好。 当有较多请求时，如果响应时间长且失败率高，则可能存在资源问题。
 
--    **依赖项速率、响应时间和失败率** - 了解外部服务是否正拖慢你的速度。
+-   **依赖项速率、响应时间和失败率** - 了解外部服务是否正拖慢你的速度。
 
--    异常 - 分析聚合的统计信息，或选择特定实例并钻取堆栈跟踪和相关请求。 报告服务器和浏览器异常。
+-   异常 - 分析聚合的统计信息，或选择特定实例并钻取堆栈跟踪和相关请求。 报告服务器和浏览器异常。
 
--    **页面查看次数和负载性能** - 由用户的浏览器报告。
+-   **页面查看次数和负载性能** - 由用户的浏览器报告。
 
--    **AJAX 调用**（从网页） - 速率、响应时间和失败率。
+-   **AJAX 调用**（从网页） - 速率、响应时间和失败率。
 
--    **用户和会话计数**。
+-   **用户和会话计数**。
 
--    Windows 或 Linux 服务器计算机中的**性能计数器**，例如 CPU、内存和网络使用情况。
+-   Windows 或 Linux 服务器计算机中的**性能计数器**，例如 CPU、内存和网络使用情况。
 
--    Docker 或 Azure 中的**主机诊断**。
+-   Docker 或 Azure 中的**主机诊断**。
 
--    应用中的**诊断跟踪日志**- 可以将跟踪事件与请求相关联。
+-   应用中的**诊断跟踪日志**- 可以将跟踪事件与请求相关联。
 
--    在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
+-   在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
 
 集成方案和说明列表：
 
@@ -324,11 +322,11 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 可以应用大型数据和[机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)技术的突破跨整个云结构对事件进行评估，检测那些使用手动方式不可能发现的威胁，并预测攻击的发展方式。 此类安全分析包括：
 
--    集成威胁智能：应用 Microsoft 产品和服务、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 以及外部源提供的全球威胁智能，搜寻已知的行为不端的攻击者。
+-   集成威胁智能：应用 Microsoft 产品和服务、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 以及外部源提供的全球威胁智能，搜寻已知的行为不端的攻击者。
 
--    行为分析：运用已知模式发现恶意行为。
+-   行为分析：运用已知模式发现恶意行为。
 
--    异常检测：使用统计分析生成历史基线。 如果出现与已知基线偏离的情况，并且这些情况符合潜在攻击载体的行为，则会发出警报。
+-   异常检测：使用统计分析生成历史基线。 如果出现与已知基线偏离的情况，并且这些情况符合潜在攻击载体的行为，则会发出警报。
 
 
 许多安全操作和事件响应团队依靠安全信息和事件管理 (SIEM) 解决方案作为会审和调查安全警报的起始点。 使用 Azure 日志集成，客户可以近实时地同步通过 Azure 诊断和 Azure 审核日志收集的安全中心警报和虚拟机安全事件，以及其日志分析或 SIEM 解决方案。
@@ -347,44 +345,44 @@ Log Analytics 的中心是托管在 Azure 云中的 OMS 存储库。 通过配�
 [数据源](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources) 是从各个连接的源中收集的各种数据。 除 [IIS 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-iis-logs)和[自定义文本日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-custom-logs)等源外，还包括 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events) 和 Linux 代理中的事件和[性能数据](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)。 你可以配置要收集的各个数据源，配置将自动传递到各个连接的源。
 
 可通过四种不同方式[收集 Azure 服务的日志和指标：](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)
-1.    将 Azure 诊断定向到 Log Analytics（下表中的诊断）
+1.  将 Azure 诊断定向到 Log Analytics（下表中的诊断）
 
-2.    将 Azure 诊断定向到 Log Analytics 的 Azure 存储（下表中的存储）
+2.  将 Azure 诊断定向到 Log Analytics 的 Azure 存储（下表中的存储）
 
-3.    Azure 服务的连接器（下表中的连接器）
+3.  Azure 服务的连接器（下表中的连接器）
 
-4.    使用脚本收集，然后将数据放入 Log Analytics 中（下表中的空白，用于未列出的服务）
+4.  使用脚本收集，然后将数据放入 Log Analytics 中（下表中的空白，用于未列出的服务）
 
 | 服务 | 资源类型 | 日志 | 度量值 | 解决方案 |
 | :------ | :------------ | :--- | :------ | :------- |
-|应用程序网关数|    Microsoft.Network/<br>applicationGateways|    诊断|诊断|    [Azure 应用程序](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)[网关分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
-|Application insights||         连接器|    连接器|    [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [连接器（预览版）](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
-|自动化帐户|    Microsoft.Automation/<br>AutomationAccounts|    诊断||         [详细信息](https://docs.microsoft.com/en-us/azure/automation/automation-manage-send-joblogs-log-analytics)|
-|批处理帐户|    Microsoft.Batch/<br>batchAccounts|    诊断|    诊断||
-|经典云服务||         存储||         [详细信息](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage-iis-table)|
-|认知服务|    Microsoft.CognitiveServices/<br>accounts|         诊断|||
-|Data Lake Analytics|    Microsoft.DataLakeAnalytics/<br>accounts|    诊断|||
-|Data Lake Store|    Microsoft.DataLakeStore/<br>accounts|    诊断|||
-|事件中心命名空间|    Microsoft.EventHub/<br>namespaces|    诊断|    诊断||
-|IoT 中心|    Microsoft.Devices/<br>IotHubs||         诊断||
-|密钥保管库|    Microsoft.KeyVault/<br>vaults|    诊断     ||    [密钥保管库分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-key-vault)|
+|应用程序网关数|  Microsoft.Network/<br>applicationGateways|  诊断|诊断|    [Azure 应用程序](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)[网关分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|Application insights||     连接器|  连接器|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [连接器（预览版）](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
+|自动化帐户|   Microsoft.Automation/<br>AutomationAccounts|    诊断||       [详细信息](https://docs.microsoft.com/en-us/azure/automation/automation-manage-send-joblogs-log-analytics)|
+|批处理帐户|    Microsoft.Batch/<br>batchAccounts|  诊断|    诊断||
+|经典云服务||       存储||       [详细信息](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage-iis-table)|
+|认知服务|    Microsoft.CognitiveServices/<br>accounts|       诊断|||
+|Data Lake Analytics|   Microsoft.DataLakeAnalytics/<br>accounts|   诊断|||
+|Data Lake Store|   Microsoft.DataLakeStore/<br>accounts|   诊断|||
+|事件中心命名空间|   Microsoft.EventHub/<br>namespaces|  诊断|    诊断||
+|IoT 中心|  Microsoft.Devices/<br>IotHubs||     诊断||
+|密钥保管库| Microsoft.KeyVault/<br>vaults|  诊断  || [密钥保管库分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-key-vault)|
 |负载均衡器|    Microsoft.Network/<br>loadBalancers|    诊断|||
-|逻辑应用|    Microsoft.Logic/<br>workflows|     诊断|    诊断||
+|逻辑应用|    Microsoft.Logic/<br>workflows|  诊断|    诊断||
 ||Microsoft.Logic/<br>integrationAccounts||||
-|网络安全组|    Microsoft.Network/<br>networksecuritygroups|诊断||     [Azure 网络安全组分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
-|恢复保管库|    Microsoft.RecoveryServices/<br>vaults|||[Azure 恢复服务分析（预览版）](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
-|搜索服务|    Microsoft.Search/<br>searchServices|    诊断|    诊断||
-|服务总线命名空间|    Microsoft.ServiceBus/<br>namespaces|    诊断|诊断|    [Service Fabric 分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-|Service Fabric||         存储||     [Service Fabric 分析（预览版）](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-service-fabric)|
-|SQL (v12)|    Microsoft.Sql/<br>servers/<br>数据库||          诊断||
+|网络安全组|   Microsoft.Network/<br>networksecuritygroups|诊断||   [Azure 网络安全组分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
+|恢复保管库|   Microsoft.RecoveryServices/<br>vaults|||[Azure 恢复服务分析（预览版）](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
+|搜索服务|   Microsoft.Search/<br>searchServices|    诊断|    诊断||
+|服务总线命名空间| Microsoft.ServiceBus/<br>namespaces|    诊断|诊断|    [Service Fabric 分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+|Service Fabric||       存储||    [Service Fabric 分析（预览版）](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-service-fabric)|
+|SQL (v12)| Microsoft.Sql/<br>servers/<br>数据库||       诊断||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
-|存储|||              脚本|    [Azure 存储分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|虚拟机|    Microsoft.Compute/<br>virtualMachines|    分机|    分机||
+|存储|||         脚本| [Azure 存储分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
+|虚拟机|  Microsoft.Compute/<br>virtualMachines|  分机|  分机||
 ||||诊断||
-|虚拟机规模集|    Microsoft.Compute/<br>virtualMachines      ||诊断||
+|虚拟机规模集|   Microsoft.Compute/<br>virtualMachines    ||诊断||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||
-|Web 服务器场|Microsoft.Web/<br>serverfarms||     诊断
-|网站|    Microsoft.Web/<br>sites ||         诊断|    [详细信息](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
+|Web 服务器场|Microsoft.Web/<br>serverfarms||   诊断
+|网站| Microsoft.Web/<br>sites ||      诊断|    [详细信息](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>sites/<br>slots|||||
 
 
@@ -402,10 +400,10 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 | 日志类型 | 支持 JSON（Splunk、ArcSight、Qradar）的 Log Analytics |
 | :------- | :-------------------------------------------------------- |
 |AAD 审核日志|    是|
-|活动日志|    是|
-|ASC 警报    |是|
-|诊断日志（资源日志）|    是|
-|VM 日志|    通过 Forwarded 事件，则为是；通过 JSON，则为否|
+|活动日志| 是|
+|ASC 警报 |是|
+|诊断日志（资源日志）|  是|
+|VM 日志|   通过 Forwarded 事件，则为是；通过 JSON，则为否|
 
 
 下表介绍了日志类别和 SIEM 集成详细信息。
@@ -414,11 +412,11 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 
 集成方案
 
--    [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) - 此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。
+-   [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) - 此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。
 
--    [Azure 日志集成常见问题解答 (FAQ)](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq) - 此常见问题解答回答了有关 Azure 日志集成的问题。
+-   [Azure 日志集成常见问题解答 (FAQ)](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq) - 此常见问题解答回答了有关 Azure 日志集成的问题。
 
--    [集成安全中心警报与 Azure 日志集成](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与你的日志分析或 SIEM 解决方案同步。
+-   [集成安全中心警报与 Azure 日志集成](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与你的日志分析或 SIEM 解决方案同步。
 
 ## <a name="next-steps"></a>后续步骤
 

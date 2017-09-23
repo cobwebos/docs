@@ -22,7 +22,6 @@ ms.openlocfilehash: f36cd801a0572d671977e2e48a7f1e743e38e768
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>Microsoft Translator 连接器入门
 连接到 Microsoft Translator，翻译文本、检测语言等。 通过 Microsoft Translator，你可以： 

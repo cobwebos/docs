@@ -19,7 +19,6 @@ ms.openlocfilehash: 2dea669f03c893632c08d30feeb3173efc2d8243
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/24/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>教程：Azure Active Directory 与 Lucidchart 的集成
 

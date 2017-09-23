@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
-
 
 ---
 # <a name="create-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户创建网络安全组

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 551b977b90612ddbfa1514a9c2358ebf8179c385
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/29/2017
-
 
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure 机器学习新增功能

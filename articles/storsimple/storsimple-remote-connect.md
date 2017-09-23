@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5760c4a381a10fd1619b0239dd38e41d88f495e5
 ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
-
 
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备

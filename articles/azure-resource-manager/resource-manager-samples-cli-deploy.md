@@ -20,7 +20,6 @@ ms.openlocfilehash: 974230f349aec46fde58e69658e05a13bff4296f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="azure-resource-manager-template-deployment---azure-cli-script"></a>Azure Resource Manager 模板部署 - Azure CLI 脚本
 

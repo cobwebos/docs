@@ -21,7 +21,6 @@ ms.openlocfilehash: 771b9456e66b8a1e41f72340b695b19e2adaf793
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
 
-
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>将解决方案迁移到 Azure SQL 数据仓库
 请参阅将现有数据库解决方案迁移到 Azure SQL 数据仓库所涉及的内容。 

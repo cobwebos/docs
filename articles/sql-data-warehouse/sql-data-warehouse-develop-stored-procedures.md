@@ -21,7 +21,6 @@ ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
-
 ---
 # <a name="stored-procedures-in-sql-data-warehouse"></a>SQL 数据仓库中的存储过程
 SQL 数据仓库支持 SQL Server 中提供的许多 Transact-SQL 功能。 更重要的是，我们可以利用特定的扩大功能将解决方案的性能最大化。

@@ -20,7 +20,6 @@ ms.openlocfilehash: bca66bbdd9da9b3e4099d0d961f42c9368a17f5e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="apply-resource-policies-to-network-resources"></a>向网络资源应用资源策略
 本文展示了可应用于 Azure 虚拟网关[资源策略](resource-manager-policy.md)示例。 此策略可确保组织中部署的网关的一致性。 

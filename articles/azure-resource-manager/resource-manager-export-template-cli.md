@@ -19,7 +19,6 @@ ms.openlocfilehash: 617664129a5353e25da1e90c742c4b009db172ef
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
 
-
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>使用 Azure CLI 导出 Azure Resource Manager 模板
 

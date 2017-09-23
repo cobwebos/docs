@@ -20,7 +20,6 @@ ms.openlocfilehash: 8fbf201343f6710d2781a4b56ae54833ed4c06cf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
 
-
 ---
 # <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>在 Azure Marketplace 中发布和管理产品/服务
 本文旨在帮助开发人员创建、部署和管理在 Azure Marketplace 中列出的解决方案，以便其他 Azure 客户和合作伙伴可进行购买和使用。

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: v-sharos
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 43eb76f2d51c586f3cd44d4d34b307257a655182
 ms.openlocfilehash: 38c197c7bc57110b29b1d8cb789d5b7310823da2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
-
 
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
 ms.openlocfilehash: 2dfbc046674b2da692f30c945aee3ea25ae524eb
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>使用 Azure CDN 高级 HTTP 报告分析使用情况统计信息
@@ -203,10 +204,5 @@ ms.openlocfilehash: 2dfbc046674b2da692f30c945aee3ea25ae524eb
 * [Microsoft Azure CDN 中的实时统计信息](cdn-real-time-stats.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)
 * [分析边缘性能](cdn-edge-performance.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

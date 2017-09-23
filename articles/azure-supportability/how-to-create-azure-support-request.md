@@ -20,7 +20,6 @@ ms.openlocfilehash: 70a4762383d64dc8d568c628cf260ebd8f2d179d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
 ## <a name="summary"></a>摘要

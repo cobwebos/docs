@@ -21,7 +21,6 @@ ms.openlocfilehash: 31253d8daee1581167a96a20ba8ad529a04b3e92
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-sftp-connector"></a>SFTP 连接器入门
 使用 SFTP 连接器访问 SFTP 帐户以发送和接收文件。 你可以执行各种操作，如创建、更新、获取或删除文件。  

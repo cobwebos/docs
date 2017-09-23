@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 5325f3cca00167e6b7b687509ce43435447ad2f4
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>教程：Azure Active Directory 与 Velpic SAML 集成
@@ -217,7 +217,7 @@ ms.lasthandoff: 04/07/2017
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 其余信息为可选，可根据需要填写。
     
-    f. 单击“保存”。    
+    f. 单击“保存”。  
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

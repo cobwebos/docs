@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c0bb99976277405cfd79c37ebd754311c3c6004e
 ms.openlocfilehash: 3cddd5b9508159089bf344dbb3882d462799747c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/23/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>教程：Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 的集成
@@ -121,7 +121,7 @@ ms.lasthandoff: 02/23/2017
 
 4. 在“SAML 签名证书”部分中，单击“创建新证书”。
 
-    ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_03.png)     
+    ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_03.png)   
 
 5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
 

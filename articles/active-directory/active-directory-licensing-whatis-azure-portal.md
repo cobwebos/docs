@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory 中基于组的许可是什么？ | Microsoft Docs"
 description: "Azure Active Directory 基于组的许可、其工作原理和最佳做法的说明"
 services: active-directory
@@ -23,7 +22,6 @@ ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 52dd48ce4e4acaf48f31edc51bbb657f8cd249cd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
-
 
 ---
 

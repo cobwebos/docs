@@ -19,7 +19,6 @@ ms.openlocfilehash: 17bc0082e3721b50269cb4b17884c0e4a4cbcb5d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>教程：Azure Active Directory 与 Asset Bank 集成
 

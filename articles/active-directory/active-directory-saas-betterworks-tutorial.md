@@ -19,7 +19,6 @@ ms.openlocfilehash: d6a5b167c0befbd0fe2c65bdd16abc35ed0a659c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>教程：Azure Active Directory 与 BetterWorks 集成
 

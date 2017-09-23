@@ -20,7 +20,6 @@ ms.openlocfilehash: 3178a09dab1cb972a3460d54dc9908fb95cce68b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
 
-
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。

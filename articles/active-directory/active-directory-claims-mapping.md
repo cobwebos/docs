@@ -17,7 +17,6 @@ ms.openlocfilehash: 78dbbe085fca26ad529c6262ba852f3c06ace404
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的声明映射（公共预览版）

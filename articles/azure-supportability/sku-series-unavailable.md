@@ -20,7 +20,6 @@ ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="sku-series-unavailable"></a>SKU 系列不可用
 在某些地区，某些 SKU 未自动在新订阅上可用。  当[某个区域中引入更强大的 SKU 而传统 SKU 的受欢迎程度下降](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/)时，可能会出现这种情况。

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 2a35efb04d7fe22abc6894c149caf090666ce016
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>教程：Azure Active Directory 与 Teamphoria 集成
@@ -158,7 +158,7 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
     d. **入口点**：粘贴之前从 Azure 门户中复制的“SAML 单一登录服务 URL”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将选项切换为“打开”，然后单击“保存”。    
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将选项切换为“打开”，然后单击“保存”。   
 
 <!--### Next steps
 
@@ -218,11 +218,11 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 
 3. 单击“手动邀请”选项。
 
-    ![邀请人员](./media/active-directory-saas-teamphoria-tutorial/admin_manage_add_users.png)    
+    ![邀请人员](./media/active-directory-saas-teamphoria-tutorial/admin_manage_add_users.png)  
 
 4. 在此页上，执行以下操作。 
     
-    ![邀请人员](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)    
+    ![邀请人员](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)  
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件地址”文本框中，键入 Britta Simon 的“电子邮件地址”。
 

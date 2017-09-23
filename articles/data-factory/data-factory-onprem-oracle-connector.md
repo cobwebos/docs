@@ -20,7 +20,6 @@ ms.openlocfilehash: bb6af719fe6f1a30c5933ce4342a4c0c072f3ff4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/10/2017
 
-
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂向/从本地 Oracle 复制数据
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 Oracle 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。

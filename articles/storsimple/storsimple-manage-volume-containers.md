@@ -20,7 +20,6 @@ ms.openlocfilehash: bb55a7a4bff0fd4319de6f6ce958686ad8a4142b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-storsimple-volume-containers"></a>使用 StorSimple Manager 服务管理 StorSimple 卷容器
 ## <a name="overview"></a>概述

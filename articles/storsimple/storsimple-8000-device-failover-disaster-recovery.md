@@ -20,7 +20,6 @@ ms.openlocfilehash: 5dc4a98bf889d38c62c76364289c2d58c14d771e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
 

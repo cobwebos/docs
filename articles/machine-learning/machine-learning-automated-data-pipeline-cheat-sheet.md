@@ -20,7 +20,6 @@ ms.openlocfilehash: e212b2c935eb0ae64ed1cd2e6dc1564f8fcd503b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure 机器学习预测中自动化数据管道的速查表
 **Microsoft Azure 机器学习自动化数据管道速查表**帮助你浏览各项技术，这些技术可用来将你的数据移到预测分析模型可对其进行评分的机器学习 Web 服务中。

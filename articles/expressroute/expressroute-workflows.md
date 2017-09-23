@@ -20,7 +20,6 @@ ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导你完成服务预配和路由配置工作流。

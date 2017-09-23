@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
 ms.openlocfilehash: a8835da0947ce2a365b57356960541cb997e73b3
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="microsoft-trust-center"></a>Microsoft 信任中心
@@ -39,9 +40,4 @@ Azure.com 上的 Azure 安全信息站点可提供所需的信息，用于规划
 * [资源](https://aka.ms/tcresources) – 查看有关 Microsoft 受信任云的白皮书、视频和案例研究
 
 通过 [ Microsoft 信任中心](https://www.microsoft.com/trustcenter)，了解我们对保护 Microsoft 云所做的努力。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

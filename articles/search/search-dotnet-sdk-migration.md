@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3e2ad6b466ba4885ae14576b83d4c0f3010bab67
 ms.openlocfilehash: 9782454e3bfc697b63cde8aa28a14be0c393c36b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/17/2017
 
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
@@ -482,10 +483,5 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 由于此原因，最佳做法仍建议在模型类中使用可以为 null 的类型。
 
 有关此 Bug 和修复的更多详细信息，请参阅 [GitHub 上的此问题](https://github.com/Azure/azure-sdk-for-net/issues/1063)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

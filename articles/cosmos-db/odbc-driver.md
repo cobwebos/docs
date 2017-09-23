@@ -21,7 +21,6 @@ ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
 
-
 ---
 
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB

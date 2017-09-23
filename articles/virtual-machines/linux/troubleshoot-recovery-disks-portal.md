@@ -1,5 +1,4 @@
 ---
-
 title: "在 Azure 门户中使用 Linux 故障排除 VM | Microsoft Docs"
 description: "了解如何通过使用 Azure 门户将 OS 磁盘连接到恢复 VM 来排查 Linux 虚拟机问题"
 services: virtual-machines-linux
@@ -19,7 +18,6 @@ ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
 ms.openlocfilehash: c96ff625c3e83f6fc9057f1163c877e8e0aed5e3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/13/2017
-
 
 ---
 

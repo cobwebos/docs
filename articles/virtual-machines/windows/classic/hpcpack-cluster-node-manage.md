@@ -21,7 +21,6 @@ ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
-
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>管理 Azure 的 HPC Pack 群集中计算节点的数量和可用性
 如果在 Azure VM 中创建了一个 HPC Pack 2012 R2 群集，你可能希望有轻松添加、删除、启动（预配）或停止（取消预配）群集中一些计算节点 VM 的方法。 若要执行这些任务，请运行头节点 VM 中安装的 Azure PowerShell 脚本。 这些脚本可帮助你控制 HPC Pack 群集资源的数量和可用性，以便你可以控制成本。

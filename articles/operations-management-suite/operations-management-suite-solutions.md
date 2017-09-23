@@ -21,7 +21,6 @@ ms.openlocfilehash: 2443dd73fdf441721bd6f6f340da515d9f5a22a2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
 
-
 ---
 # <a name="working-with-management-solutions-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中使用管理解决方案（预览版）
 > [!NOTE]

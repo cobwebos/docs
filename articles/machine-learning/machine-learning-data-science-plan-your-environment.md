@@ -20,7 +20,6 @@ ms.openlocfilehash: 9297b241c047bf9feb68ced8da467c62e7f5acca
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 将环境设置为对数据集执行高级分析处理时，应计划包括哪些资源？ 本文为一系列提出的问题提供建议，有助于确定与用户情况相关的任务和资源。 [什么是 Team Data Science Process (TDSP)？](data-science-process-overview.md)中概述了预测分析的高级步骤顺序。 每个步骤都需要与用户特定情况相关的任务特定资源。 确定方案的关键问题涉及数据物流、特征、数据集的质量以及执行分析要使用的工具和语言。

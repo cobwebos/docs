@@ -21,7 +21,6 @@ ms.openlocfilehash: 35b8ae033425e16fb53cc3127f300e1fb919a2f2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
-
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的经典部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]

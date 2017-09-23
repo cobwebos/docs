@@ -20,7 +20,6 @@ ms.openlocfilehash: df3ae8bf775370432b3648459a7c942afe69fb17
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates"></a>使用 StorSimple Manager 服务管理 StorSimple 带宽模板
 ## <a name="overview"></a>概述

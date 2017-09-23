@@ -52,8 +52,8 @@ Data Lake Store 提供两种管理主加密密钥 (MEK) 的模式。 现在，�
 
 管理主加密密钥的两种模式如下：
 
-*    服务管理的密钥
-*    客户管理的密钥
+*   服务管理的密钥
+*   客户管理的密钥
 
 两种模式都是将主加密密钥存储在 Azure Key Vault 中进行保护。 Key Vault 是 Azure 上的安全度很高的完全托管式服务，可以用来保护加密密钥的安全。 有关详细信息，请参阅 [Key Vault](https://azure.microsoft.com/services/key-vault)。
 
@@ -74,8 +74,8 @@ Data Lake Store 提供两种管理主加密密钥 (MEK) 的模式。 现在，�
 
 选择主加密密钥的模式时，请务必记住以下几点：
 
-*    预配 Data Lake Store 帐户时，可以选择使用客户管理的密钥或服务管理的密钥。
-*    预配 Data Lake Store 帐户以后，将无法更改模式。
+*   预配 Data Lake Store 帐户时，可以选择使用客户管理的密钥或服务管理的密钥。
+*   预配 Data Lake Store 帐户以后，将无法更改模式。
 
 ### <a name="encryption-and-decryption-of-data"></a>加密和解密数据
 
@@ -92,20 +92,20 @@ Data Lake Store 提供两种管理主加密密钥 (MEK) 的模式。 现在，�
 ![用于数据加密的密钥](./media/data-lake-store-encryption/fig2.png)
 
 #### <a name="pseudo-algorithm-when-a-file-is-to-be-decrypted"></a>解密文件时所使用的伪算法：
-1.    检查 Data Lake Store 帐户的 DEK 是否已缓存并可供使用。
+1.  检查 Data Lake Store 帐户的 DEK 是否已缓存并可供使用。
     - 否则，请从永久性存储读取加密的 DEK，然后将其发送到 Key Vault 进行解密。 将解密的 DEK 缓存在内存中。 现可供使用。
-2.    对于文件中的每个数据块，请执行以下操作：
+2.  对于文件中的每个数据块，请执行以下操作：
     - 从永久性存储读取加密的数据块。
     - 根据 DEK 和加密的数据块生成 BEK。
     - 使用 BEK 解密数据。
 
 
 #### <a name="pseudo-algorithm-when-a-block-of-data-is-to-be-encrypted"></a>加密数据块时使用的伪算法：
-1.    检查 Data Lake Store 帐户的 DEK 是否已缓存并可供使用。
+1.  检查 Data Lake Store 帐户的 DEK 是否已缓存并可供使用。
     - 否则，请从永久性存储读取加密的 DEK，然后将其发送到 Key Vault 进行解密。 将解密的 DEK 缓存在内存中。 现可供使用。
-2.    根据 DEK 为数据块生成唯一 BEK。
-3.    使用 AES-256 加密通过 BEK 加密数据块。
-4.    将加密的数据块存储在永久性存储上。
+2.  根据 DEK 为数据块生成唯一 BEK。
+3.  使用 AES-256 加密通过 BEK 加密数据块。
+4.  将加密的数据块存储在永久性存储上。
 
 > [!NOTE] 
 > 出于性能原因，会将明文形式的 DEK 短时缓存在内存中，操作完毕会立即将其清除。 在永久性介质上，该密钥始终由 MEK 进行加密存储。
@@ -127,15 +127,15 @@ Data Lake Store 提供两种管理主加密密钥 (MEK) 的模式。 现在，�
 
     ![Key Vault 的屏幕截图](./media/data-lake-store-encryption/keyvault.png)
 
-3.    选择与 Data Lake Store 帐户关联的密钥，然后创建一个新版的该密钥。 请注意，Data Lake Store 目前仅支持将密钥轮换成新版的密钥， 不支持轮换成其他密钥。
+3.  选择与 Data Lake Store 帐户关联的密钥，然后创建一个新版的该密钥。 请注意，Data Lake Store 目前仅支持将密钥轮换成新版的密钥， 不支持轮换成其他密钥。
 
    ![“密钥”窗口的屏幕截图，突出显示“新版”](./media/data-lake-store-encryption/keynewversion.png)
 
-4.    浏览到 Data Lake Store 存储帐户，然后选择“加密”。
+4.  浏览到 Data Lake Store 存储帐户，然后选择“加密”。
 
     ![Data Lake Store 存储帐户窗口的屏幕截图，突出显示“加密”](./media/data-lake-store-encryption/select-encryption.png)
 
-5.    系统会通过消息通知你，新版密钥已可使用。 单击“轮换密钥”即可将密钥更新为新版密钥。
+5.  系统会通过消息通知你，新版密钥已可使用。 单击“轮换密钥”即可将密钥更新为新版密钥。
 
     ![Data Lake Store 窗口的屏幕截图，突出显示消息和“轮换密钥”](./media/data-lake-store-encryption/rotatekey.png)
 

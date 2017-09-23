@@ -20,7 +20,6 @@ ms.openlocfilehash: eb6e67dc4707b2b999efcceec1c55dc950c5996e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Deploy templates using the Azure Stack portal
 Use the portal to deploy Azure Resource Manager templates to the Azure Stack development kit.

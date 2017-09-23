@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: d34bb4a285f77f5c21a4af2d544bda3221d59e8d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 ---

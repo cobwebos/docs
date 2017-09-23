@@ -20,8 +20,6 @@ ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
-
-
 ---
 # <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中创建管理解决方案（预览版）的最佳做法
 > [!NOTE]

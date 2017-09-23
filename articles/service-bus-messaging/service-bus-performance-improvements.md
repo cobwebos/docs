@@ -20,7 +20,6 @@ ms.openlocfilehash: e6a0e480f7748f12f5e566cf4059b5b2c4242c09
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 

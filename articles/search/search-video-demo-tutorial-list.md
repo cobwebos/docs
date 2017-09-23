@@ -21,7 +21,6 @@ ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure 搜索：代码示例、演示、视频和教程
 借助以下视频、演示、教程和示例应用更快入门。

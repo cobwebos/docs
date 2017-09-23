@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb66627b170c9010414b24266fdae608e67f5c61
 ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/20/2017
 
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
@@ -109,9 +110,4 @@ ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
 * 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
 * [管理云服务](cloud-services-how-to-manage-portal.md)。
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

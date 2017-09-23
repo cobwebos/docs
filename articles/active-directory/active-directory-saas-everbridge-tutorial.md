@@ -19,7 +19,6 @@ ms.openlocfilehash: f5a97fc8df978dd55a73ae53516a82f884c14bec
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教程：Azure Active Directory 与 EverBridge 集成
 

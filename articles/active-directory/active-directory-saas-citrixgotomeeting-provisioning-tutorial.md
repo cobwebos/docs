@@ -19,7 +19,6 @@ ms.openlocfilehash: 1ddfcd991431a11e5c3e306bd5905003d094ac18
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-configuring-citrix-gotomeeting-for-automatic-user-provisioning"></a>教程：为 Citrix GoToMeeting 配置自动用户预配
 

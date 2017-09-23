@@ -20,7 +20,6 @@ ms.openlocfilehash: aa393f884b564cee81fcf75cc2eff895efea9471
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>排除本地开发群集安装的故障
 如果你在与本地 Azure Service Fabric 开发群集交互时遇到问题，请查看以下建议以获得可能的解决方案。

@@ -21,7 +21,6 @@ ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
-
 ---
 # <a name="all-topics-for-azure-sql-data-warehouse-service"></a>有关 Azure SQL 数据仓库服务的所有主题
 本主题列出的每个主题都可以直接应用于 Azure **SQL 数据仓库**服务。 可使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。

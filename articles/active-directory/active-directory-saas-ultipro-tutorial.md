@@ -19,7 +19,6 @@ ms.openlocfilehash: ab60bda1be7101d5bd0c51f5499a820db40375bf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>教程：Azure Active Directory 与 UltiPro 集成
 

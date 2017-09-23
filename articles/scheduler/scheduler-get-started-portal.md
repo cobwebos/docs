@@ -20,7 +20,6 @@ ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 12/08/2016
 
-
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Azure 门户中的 Azure 计划程序入门
 在 Azure 计划程序中创建计划的作业很简单。 在本教程中，你将了解如何创建作业。 还将学习计划程序的监视和管理功能。

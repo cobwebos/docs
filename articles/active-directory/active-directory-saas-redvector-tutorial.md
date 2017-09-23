@@ -19,7 +19,6 @@ ms.openlocfilehash: d7aedd360ba1d4c11da210f8fae7be6035007c22
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>教程：Azure Active Directory 与 RedVector 集成
 

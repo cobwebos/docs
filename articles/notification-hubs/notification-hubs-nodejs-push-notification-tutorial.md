@@ -21,7 +21,6 @@ ms.openlocfilehash: dc4987b16b2e930641c6c90eff8b65c1bf8d573c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
 
-
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]

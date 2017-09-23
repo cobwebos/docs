@@ -19,7 +19,6 @@ ms.openlocfilehash: 90de7b6a82d88f9407a35fbfebe8a652928d76cd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>教程：Azure Active Directory 与 Mindflash 的集成
 

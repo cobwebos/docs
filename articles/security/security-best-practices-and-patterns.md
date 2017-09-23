@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 1cc0d2d1e9a62ff8531f963413ff573713d508ad
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/07/2017
-
 
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全最佳实践和模式

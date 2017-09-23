@@ -20,7 +20,6 @@ ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/15/2017
 
-
 ---
 # <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>使用 Azure 门户对 Azure Data Lake Analytics 作业进行疑难解答
 了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。

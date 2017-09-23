@@ -20,7 +20,6 @@ ms.openlocfilehash: 1462079c1aac9031e8ea195282555c0707480ec8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="manage-updates-in-azure-stack"></a>Manage updates in Azure Stack
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
 
-
 ---
 # <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 中的 B2B 功能在逻辑应用中接收数据
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 05/25/2017
     现在，添加相应步骤解码从贸易合作伙伴收到的 X12 数据，并在 JSON 对象中输出项目。 
     若要通知合作伙伴已收到数据，可以在 HTTP 响应操作中发送回包含 AS2 消息处置通知 (MDN) 的响应。
 
-12.    若要添加“响应”操作，请选择“添加操作”。
+12. 若要添加“响应”操作，请选择“添加操作”。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 

@@ -21,7 +21,6 @@ ms.openlocfilehash: 5e83171846517496e221f0a84565cdf7b77514df
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 
 ## <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息

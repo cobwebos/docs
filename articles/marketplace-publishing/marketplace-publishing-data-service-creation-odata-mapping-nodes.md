@@ -20,7 +20,6 @@ ms.openlocfilehash: 8ff76ea21ba684ae2a2afcb74d66b4912d7be053
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>了解通过 CSDL 将现有 Web 服务映射到 OData 的节点架构
 > [!IMPORTANT]

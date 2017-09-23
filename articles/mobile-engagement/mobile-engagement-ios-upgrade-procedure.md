@@ -14,10 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c4b5b8bc05365ddc63b0d7a6a3c63eaee31af957
 ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/14/2016
 
 ---
 # <a name="upgrade-procedures"></a>升级过程
@@ -214,10 +215,5 @@ AEPushDelegate.h 接口已弃用，你需要移除所有引用。 这包括从�
 * 类 `CapptainTableViewController` 已重命名为 `EngagementTableViewController`。
 * 类 `CapptainUtils` 已重命名为 `EngagementUtils`。
 * 类 `CapptainViewController` 已重命名为 `EngagementViewController`。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

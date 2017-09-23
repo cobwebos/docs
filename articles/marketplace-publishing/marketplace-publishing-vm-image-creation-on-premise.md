@@ -20,7 +20,6 @@ ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
-
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  

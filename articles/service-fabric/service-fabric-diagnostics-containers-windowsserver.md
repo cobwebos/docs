@@ -20,7 +20,6 @@ ms.openlocfilehash: 874c1a5c4b399ff2254072b7282f05d83a005cc3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/11/2017
 
-
 ---
 
 # <a name="monitoring-windows-server-containers-with-oms"></a>使用 OMS 监视 Windows Server 容器

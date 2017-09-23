@@ -23,7 +23,6 @@ ms.openlocfilehash: fbc12a52555b190d43b5e953fd4d19923a25b0ed
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 
 # <a name="what-is-azure-ad-b2b-collaboration"></a>什么是 Azure AD B2B 协作？

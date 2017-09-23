@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d5e4a19ddb2b60a6796ba48c864d443164de86c1
 ms.openlocfilehash: 8a67d9a9d345682e9e6c8f5c7779204a038f5f6a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/23/2016
 
 ---
 # <a name="log-analytics-features-for-service-providers"></a>适用于服务提供商的 Log Analytics 功能
@@ -82,10 +83,5 @@ Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软
 * 使用 [PowerShell](log-analytics-powershell-workspace-configuration.md) 自动创建工作区 
 * 使用[警报](log-analytics-alerts.md)以便与现有系统集成
 * 使用 [PowerBI](log-analytics-powerbi.md) 生成摘要报告
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

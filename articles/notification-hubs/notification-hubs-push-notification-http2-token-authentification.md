@@ -19,7 +19,6 @@ ms.openlocfilehash: 5a21bcd9f12fc3f96b17a556ba15526c35ababe2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS 的基于令牌的 (HTTP/2) 身份验证
 ## <a name="overview"></a>概述

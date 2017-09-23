@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 182d7b2bd4d9f663b545684f2bc2a02d06952b61
 ms.openlocfilehash: 0d8035b9608ca3bac3d4822c7c755b81c96d481e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
-
 
 ---
 # <a name="use-the-device-dashboard-in-storsimple-manager-service"></a>在 StorSimple Manager 服务中使用设备仪表板  

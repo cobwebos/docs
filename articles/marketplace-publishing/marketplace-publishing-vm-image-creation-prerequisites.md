@@ -20,7 +20,6 @@ ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
-
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 创建虚拟机映像的技术先决条件
 在开始之前，请仔细阅读过程，并了解执行每个步骤的位置和原因。 在开始产品/服务创建过程前，应尽可能多地准备公司信息和其他数据、下载必需的工具和/或创建技术组件。 通过查看本文，应该清楚了解这些项目。  

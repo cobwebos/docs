@@ -19,7 +19,6 @@ ms.openlocfilehash: 1f67682111de0bea1b18fd97d739492661ebbfd9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>教程：Azure Active Directory 与 Alcumus Info Exchange 集成
 

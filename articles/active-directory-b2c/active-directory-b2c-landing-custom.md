@@ -20,7 +20,6 @@ ms.openlocfilehash: cb7a9f01e43d41eb7315cb37a41e69f044ce5566
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略在应用程序中注册用户和让用户登录
 自定义策略是定义 Azure AD B2C 租户行为的配置文件。 标识开发人员可以完全编辑自定义策略来完成数量几乎不受限制的任务。

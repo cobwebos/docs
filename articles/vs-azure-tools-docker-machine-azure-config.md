@@ -20,7 +20,6 @@ ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>使用 Docker-Machine 在 Azure 中创建 Docker 主机
 运行 [Docker](https://www.docker.com/) 容器时需要使用运行 Docker 守护程序的主机 VM。

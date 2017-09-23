@@ -19,7 +19,6 @@ ms.openlocfilehash: 59d4019545d39ec76bf401696338140f430630c9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>教程：Azure Active Directory 与 Huddle 集成
 

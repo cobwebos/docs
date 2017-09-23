@@ -20,7 +20,6 @@ ms.openlocfilehash: b97753e6f1b67e3c8d247281c5e5208033a56eca
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 管理备份目录
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 8ca42ef8f5314866301f5c9e93caa90dc837a66e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/25/2017
-
 
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>演练步骤 1：创建机器学习工作区

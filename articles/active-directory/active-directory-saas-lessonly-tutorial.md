@@ -19,7 +19,6 @@ ms.openlocfilehash: fc1e1b2de0a138dbe88d794f802b002321948ab8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>教程：Azure Active Directory 与 Lesson.ly 的集成
 

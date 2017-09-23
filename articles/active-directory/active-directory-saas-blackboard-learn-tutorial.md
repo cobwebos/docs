@@ -19,7 +19,6 @@ ms.openlocfilehash: c2b7638e99fa46ff41a7f2202bdf0e7a2b017c19
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>教程：Azure Active Directory 与 Blackboard Learn 的集成
 

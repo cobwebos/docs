@@ -19,7 +19,6 @@ ms.openlocfilehash: fda06c340430d19bea035a2cab2f318fe8a5998c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>教程：Azure Active Directory 与 Pacific Timesheet 的集成
 

@@ -19,7 +19,6 @@ ms.openlocfilehash: eab1d25abc2fccdeffdf2706269bfd078eb5a09f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>教程：Azure Active Directory 与 Condeco 的集成
 

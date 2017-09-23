@@ -21,7 +21,6 @@ ms.openlocfilehash: 46de91881f84183d0359755f49a115e712a7033b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>MailChimp 连接器入门
 MailChimp 是 SaaS 服务，允许企业管理和自动化电子邮件市场营销活动，包括发送市场营销电子邮件、自动化消息和有针对性的市场活动。

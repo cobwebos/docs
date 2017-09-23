@@ -20,7 +20,6 @@ ms.openlocfilehash: d309f6c4749a80c81859b693a2bd5927e8fe0e54
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>演练步骤 6：访问 Azure 机器学习 Web 服务
 

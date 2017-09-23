@@ -20,7 +20,6 @@ ms.openlocfilehash: dca95ad46b8de587140c3573ba6ed5702a122032
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="step-7-set-up-a-vault-for-vmware-replication-to-azure"></a>第 7 步：创建保管库以便将 VMware VM 复制到 Azure
 

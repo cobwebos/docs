@@ -20,7 +20,6 @@ ms.openlocfilehash: b085091ea7bfd601efb0eee84144ddd091422d6e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自动增加 Azure 事件中心吞吐量单位

@@ -19,7 +19,6 @@ ms.openlocfilehash: 26a8bb17dad5a01b401ce7f9b484f09822825cbf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>教程：Azure Active Directory 与 RFPIO 集成
 

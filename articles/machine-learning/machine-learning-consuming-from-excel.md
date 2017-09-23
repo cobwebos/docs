@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/13/2017
 ms.author: tedway
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 156e2f01e6a010ddab06dbb8e4746dceb54a413a
 ms.openlocfilehash: 9f1aac04d54221888ee9374317be339400dcf085
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/14/2017
 
 ---
 # <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>使用 Excel 中的 Azure 机器学习 Web 服务
@@ -73,9 +74,4 @@ ms.openlocfilehash: 9f1aac04d54221888ee9374317be339400dcf085
 [2]: ./media/machine-learning-consuming-from-excel/enableeditting.png
 [3]: ./media/machine-learning-consuming-from-excel/enablecontent.png
 [4]: ./media/machine-learning-consuming-from-excel/sampletable.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

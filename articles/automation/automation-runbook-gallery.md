@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e6033f089152c27713f98f12634c53012f5ff070
 ms.openlocfilehash: 04cfafc9e7a037d915f63723fd0b67a07954460b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/16/2016
 
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
@@ -121,10 +122,5 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 ## <a name="next-steps"></a>后续步骤
 * 若要开始使用 Runbook，请参阅[在 Azure 自动化中创建或导入 Runbook](automation-creating-importing-runbook.md)
 * 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅[了解 PowerShell 工作流](automation-powershell-workflow.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

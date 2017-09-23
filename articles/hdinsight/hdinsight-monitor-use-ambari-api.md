@@ -22,7 +22,6 @@ ms.openlocfilehash: b6fc2098027690eb76b69b1427f0e9541b8a7a69
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/10/2017
 
-
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>使用 Ambari API 在 HDInsight 中监视 Hadoop 群集
 学习如何使用 Ambari API 监视 HDInsight 群集。

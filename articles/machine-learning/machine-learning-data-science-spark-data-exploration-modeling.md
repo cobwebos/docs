@@ -20,7 +20,6 @@ ms.openlocfilehash: 711407f7dd9e6d442e3f04a23962487f4808e8e2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/17/2017
 
-
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]

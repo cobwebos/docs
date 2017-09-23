@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0bbde6828ed556eef8063a56a35b325fee1865c
 ms.openlocfilehash: d06c924f384a2684b5a91c202039c581796c1091
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/05/2017
 
 ---
 
@@ -68,9 +70,4 @@ Azure Resource Manager cmdlet、命令行工具和 REST API 入门
 还可以[开始创建面向 Internet 的负载平衡器](load-balancer-get-started-internet-arm-ps.md)，并配置适合特定负载平衡器网络流量行为的[分发模式](load-balancer-distribution-mode.md)类型。
 
 了解如何管理[负载平衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)。 应用程序对于负载均衡器后的服务器需要使连接保持活动状态时，这非常重要。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

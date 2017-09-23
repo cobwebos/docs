@@ -21,7 +21,6 @@ ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户排查网络安全组问题
 > [!div class="op_single_selector"]

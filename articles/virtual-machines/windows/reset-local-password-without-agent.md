@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/07/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: 880f5e5967298401fc2522124af3746d9906ffa8
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/10/2017
-
 
 ---
 # <a name="how-to-reset-local-windows-password-for-azure-vm"></a>如何重置 Azure VM 的本地 Windows 密码

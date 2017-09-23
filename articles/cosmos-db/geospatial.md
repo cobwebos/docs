@@ -21,7 +21,6 @@ ms.openlocfilehash: d5785c81fb597e7d30eb7d3a880e7194d8358ed5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
 本文介绍 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中的地理空间功能。 在阅读本文之后，你将能够回答以下问题：

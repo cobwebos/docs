@@ -20,7 +20,6 @@ ms.openlocfilehash: 0ad10564e631f9079b2544a6888c1d0dc467d7ef
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="tenant-resource-usage-api"></a>Tenant Resource Usage API
 A tenant can use the Tenant API to view the tenant’s own resource usage data. This API is consistent with the Azure Usage API (currently in private preview).

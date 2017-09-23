@@ -20,7 +20,6 @@ ms.openlocfilehash: 5c039a80b24feda61da0793fa64b48cb4783c3f1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="nat-for-expressroute"></a>用于 ExpressRoute 的 NAT
 

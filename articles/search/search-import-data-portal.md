@@ -21,7 +21,6 @@ ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>使用门户将数据导入到 Azure 搜索中
 Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导，用于将数据加载到索引中。 

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: jonatul
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bae6cf7f5025936deba301dc4fd05f6fd5fd8fa6
 ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/20/2017
 
 ---
 
@@ -104,10 +106,5 @@ Azure DNS 以记录集方式管理记录，记录集是具有相同名称和类�
 * 了解 [ Azure DNS 区域和记录](dns-zones-records.md)
 * 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)和[创建 DNS 记录](dns-getstarted-create-recordset-portal.md)。
 * 若要迁移现有 DNS 区域，请了解如何[导入和导出 DNS 区域文件](dns-import-export.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

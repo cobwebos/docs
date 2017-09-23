@@ -19,7 +19,6 @@ ms.openlocfilehash: 88099e942319f16dd721da83e4e69b8fcb836c0d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
 

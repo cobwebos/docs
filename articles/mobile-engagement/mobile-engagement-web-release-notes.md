@@ -14,10 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: dc90620d284bdcae888b990f55191be18b29d6f5
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="azure-mobile-engagement-web-sdk-release-notes"></a>Azure Mobile Engagement Web SDK 发行说明
@@ -38,10 +39,5 @@ ms.openlocfilehash: dc90620d284bdcae888b990f55191be18b29d6f5
 * 删除了在设备之间发送和接收消息的 API。
 * 删除了与弃用的 XMPP 连接相关的回调。
 * 删除了对市场宣传功能的支持。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -21,7 +21,6 @@ ms.openlocfilehash: c7a213343b4fb2b5a89a5052a459061b404a431c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Yammer 连接器入门
 连接到 Yammer 以在企业网络中访问对话。 借助 Yammer，可以：

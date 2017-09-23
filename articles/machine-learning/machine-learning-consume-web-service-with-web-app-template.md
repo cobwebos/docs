@@ -21,7 +21,6 @@ ms.openlocfilehash: 95aa1fa23d83ec0dcd00870179167e803bafbd16
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="consume-an-azure-machine-learning-web-service-with-a-web-app-template"></a>使用 Azure 机器学习 web 服务与 web 应用模板
 

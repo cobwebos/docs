@@ -19,7 +19,6 @@ ms.openlocfilehash: 7af33cae7448a212734d327570b5082d0278fa0d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>教程：Azure Active Directory 与 Convercent 的集成
 

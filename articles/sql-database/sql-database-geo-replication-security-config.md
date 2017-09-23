@@ -21,7 +21,6 @@ ms.openlocfilehash: de5e1732dab570b80692efcdd08e4ed2d8c98800
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性 
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 053a7bca76362035e428fc11806b3e4f83d00946
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/12/2017
 
-
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本章节提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见的问题。

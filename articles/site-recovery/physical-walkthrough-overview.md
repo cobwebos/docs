@@ -20,7 +20,6 @@ ms.openlocfilehash: 0a09b35e98dc0b2f5283c2a707a3a2b8ac9a39f2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="replicate-physical-servers-to-azure-with-site-recovery"></a>使用 Site Recovery 将物理服务器复制到 Azure
 

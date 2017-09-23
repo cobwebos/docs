@@ -20,7 +20,6 @@ ms.openlocfilehash: 031b492df1f186087e7b91102cbb44f552999293
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="mydriving-iot-system-quick-start"></a>MyDriving IoT 系统：快速入门
 MyDriving 是用于演示典型[物联网](iot-suite-overview.md) (IoT) 解决方案的设计和实现的系统，可收集来自设备收集遥测、在云中处理收集的数据，并应用机器学习来提供自适应响应。 通过使用你的移动电话中的数据和从你的汽车控制系统中收集信息的适配器中的数据，此演示记录有关你的汽车行程的数据。 它使用此数据来提供有关你相较于其他用户的驾驶方式的反馈。

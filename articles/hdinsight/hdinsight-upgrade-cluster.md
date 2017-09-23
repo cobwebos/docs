@@ -21,7 +21,6 @@ ms.openlocfilehash: fa2e37bd922690322ccc3d8f68128180d013b701
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集升级到更新版本
 若要利用最新的 HDInsight 功能，我们建议将 HDInsight 群集升级到最新版本。 遵循以下准则升级 HDInsight 群集版本。
@@ -44,11 +43,11 @@ ms.lasthandoff: 05/18/2017
 
 验证一切都按预期工作后，请为迁移安排停机时间。 在此停机期间，请执行以下操作：
 
-1.    备份所有存储在本地群集节点上的暂时性数据。 例如，如果你的数据直接存储在头节点上。
-2.    删除现有的群集。
-3.    使用前一群集使用的同一默认数据存储在具有最新（或支持）的 HDI 版本的同一 VNET 子网中创建群集。 这样，新群集便可针对现有生产数据继续运行。
-4.    导入任何已备份的暂时性数据。
-5.    使用新群集启动作业/继续处理。
+1.  备份所有存储在本地群集节点上的暂时性数据。 例如，如果你的数据直接存储在头节点上。
+2.  删除现有的群集。
+3.  使用前一群集使用的同一默认数据存储在具有最新（或支持）的 HDI 版本的同一 VNET 子网中创建群集。 这样，新群集便可针对现有生产数据继续运行。
+4.  导入任何已备份的暂时性数据。
+5.  使用新群集启动作业/继续处理。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)

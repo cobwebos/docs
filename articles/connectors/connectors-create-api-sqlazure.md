@@ -21,7 +21,6 @@ ms.openlocfilehash: a3d5cb909dbfcb00f3fbfa0165bb6cd58eb18688
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-azure-sql-database-connector"></a>Azure SQL 数据库连接器入门
 使用 Azure SQL 数据库连接器，为管理表中数据的组织创建工作流。 

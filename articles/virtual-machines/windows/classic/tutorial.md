@@ -21,7 +21,6 @@ ms.openlocfilehash: 0981872ff819fdf49a9cc97afce3c212013ce76b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>在 Azure 门户中创建运行 Windows 的虚拟机
 > [!div class="op_single_selector"]

@@ -18,7 +18,6 @@ ms.openlocfilehash: ca7092a06a9ffce8383ca8bc9f70ce312cdf9de4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="service-fabric-hosting-model"></a>Service Fabric 托管模型
 本文概述 Service Fabric 提供的应用程序托管模型，并介绍共享进程模型和独占进程模型之间的差异。 本文说明已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。

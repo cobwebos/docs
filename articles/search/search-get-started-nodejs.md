@@ -20,7 +20,6 @@ ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
-
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
 > [!div class="op_single_selector"]

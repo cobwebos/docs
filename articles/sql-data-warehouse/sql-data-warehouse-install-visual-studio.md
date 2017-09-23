@@ -21,7 +21,6 @@ ms.openlocfilehash: f7023b78c241a7bc8014276cd0bfa455165b42cc
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
 
-
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT
 若要开发 SQL 数据仓库的应用程序，建议使用最新版本的 Visual Studio，并结合最新版本的 SQL Server Data Tools (SSDT)。  向后兼容也支持装有 SSDT 的 Visual Studio 2013 Update 5。  

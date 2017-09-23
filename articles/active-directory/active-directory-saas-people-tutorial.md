@@ -19,7 +19,6 @@ ms.openlocfilehash: caa287a2ed8774965ef722685e4e950336e5e0ea
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-people"></a>教程：Azure Active Directory 与 People 的集成
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: a3866a91bf2656990c40ead20cedb67fc47a87fd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="paas-services-for-azure-stack"></a>PaaS services for Azure Stack
 

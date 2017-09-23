@@ -20,7 +20,6 @@ ms.openlocfilehash: 1b70fc3d199d7f1521acb534dafec8fb3e69500e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 # <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
 

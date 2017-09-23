@@ -14,9 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/05/2017
 ms.author: betorres
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
 
 ---
@@ -176,11 +177,11 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 
 Power BI Desktop 模板中包括的指标：
 
-*    单击率 (CTR)：单击特定文档的用户占总搜索次数的比率。
-*    无单击的搜索：查询次数最多但未记录任何单击的词
-*    单击次数最多的文档：过去24 小时、7 天和 30 天内单击次数最多的文档，按 ID 显示。
-*    常用术语-文档对：导致同一文档被单击的词，按单击次数排序。
-*    时间 - 单击：自搜索查询以来按时间存储的单击次数
+*   单击率 (CTR)：单击特定文档的用户占总搜索次数的比率。
+*   无单击的搜索：查询次数最多但未记录任何单击的词
+*   单击次数最多的文档：过去24 小时、7 天和 30 天内单击次数最多的文档，按 ID 显示。
+*   常用术语-文档对：导致同一文档被单击的词，按单击次数排序。
+*   时间 - 单击：自搜索查询以来按时间存储的单击次数
 
 ![用于从 Application Insights 进行读取的 Power BI 模板][3]
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP 操作入门

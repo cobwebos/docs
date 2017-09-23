@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: nickfloyd@newrelic.com
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f4f13c909a6ff640d403f5264004176c087925dd
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="new-relic-application-performance-management-on-azure"></a>Azure 中的 New Relic 应用程序性能管理
@@ -51,10 +52,5 @@ New Relic 可与 Azure Web 角色和辅助角色无缝集成。 可以直接从 
 * [New Relic for the Microsoft Azure Cloud platform](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/azure-cloud-services)（适用于 Microsoft Azure 云平台的 New Relic）
 * [New Relic for the Microsoft Azure App Services](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/azure-portal)（适用于 Microsoft Azure 应用服务的 New Relic）
 * [New Relic/Azure troubleshooting](https://docs.newrelic.com/docs/agents/net-agent/azure-troubleshooting)（New Relic/Azure 故障排除）
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

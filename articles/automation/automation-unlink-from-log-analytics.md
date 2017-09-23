@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 02/07/2017
 ms.author: magoedte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7cd65cd34846122ff14f6d5df61e4f61a7c1ac4f
 ms.openlocfilehash: 56b09c2cfc14813b5efcb364c580787fec1bf639
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/08/2017
 
 ---
 
@@ -53,8 +55,3 @@ Azure 自动化与 Log Analytics 集成，以便不仅支持对所有自动化�
 ## <a name="next-steps"></a>后续步骤
 
 若要将自动化帐户重新配置为与 OMS Log Analytics 集成，请参阅[将作业状态和作业流从自动化转发到 Log Analytics (OMS)](automation-manage-send-joblogs-log-analytics.md)。 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

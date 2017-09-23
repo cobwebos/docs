@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1796f7a7cd174d7ed6582878d72c59995aac41cb
 ms.openlocfilehash: 4f2f66288428aa0aa41abb40ce0e43c4848543ff
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/08/2017
 
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>设置在团队数据科学过程中使用的数据科学环境
@@ -31,10 +32,5 @@ ms.openlocfilehash: 4f2f66288428aa0aa41abb40ce0e43c4848543ff
 [!INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
 **Microsoft 数据科学虚拟机 (DSVM)** 同时也可用作 Azure 虚拟机 (VM) 映像。 此 VM 使用几种常用工具（通常用于数据分析和机器学习）进行预安装和配置。 Windows 和 Linux 上均可使用 DSVM。 有关详细信息，请参阅[适用于 Linux 和 Windows 的基于云的数据科学虚拟机简介](machine-learning-data-science-virtual-machine-overview.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

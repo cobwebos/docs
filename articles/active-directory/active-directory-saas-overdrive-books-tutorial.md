@@ -19,7 +19,6 @@ ms.openlocfilehash: 515dd397c46df7c8c82afab9b50051e34db69d7a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>教程：Azure Active Directory 与 Overdrive 的集成 
 

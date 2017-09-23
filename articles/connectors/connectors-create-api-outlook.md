@@ -21,7 +21,6 @@ ms.openlocfilehash: bde1629504c97cf6706b42219570ffa6243073dd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-outlookcom-connector"></a>Outlook.com 连接器入门
 Outlook.com 连接器允许你管理邮件、日历和联系人。 你可以执行各种操作，例如发送邮件、安排会议、添加联系人等。

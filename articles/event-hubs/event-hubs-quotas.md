@@ -20,7 +20,6 @@ ms.openlocfilehash: c1c9217cf51cef450837bdd255f8c44c14a74ac0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="event-hubs-quotas"></a>事件中心配额
 本部分列出了 Azure 事件中心的基本配额和限制。

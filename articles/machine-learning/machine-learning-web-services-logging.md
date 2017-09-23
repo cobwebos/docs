@@ -20,7 +20,6 @@ ms.openlocfilehash: 7d0b2db01427430d6b0a317cdfefc265dd4b06e2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>为机器学习 Web 服务启用日志记录
 本文档提供有关机器学习 Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习 API 进行故障排除。  

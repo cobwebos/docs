@@ -20,7 +20,6 @@ ms.openlocfilehash: 6dde832fe6b4679bd36575ca6aa3c274fed84f0c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="azure-stack-usage-api-faqs"></a>Azure Stack Usage API FAQs
 This article answers some frequently asked questions about the Azure Stack Usage API.

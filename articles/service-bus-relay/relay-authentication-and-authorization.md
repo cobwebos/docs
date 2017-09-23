@@ -20,7 +20,6 @@ ms.openlocfilehash: 95589ca169926362fa77f0e307afd449014c8402
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure 中继身份验证和授权
 应用程序可以使用共享访问签名 (SAS) 身份验证对 Azure 中继进行身份验证。 与[服务总线消息传送](../service-bus-messaging/service-bus-authentication-and-authorization.md)类似，通过 SAS 身份验证，应用程序能够使用在中继命名空间上配置的访问密钥向 Azure 中继服务进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向中继服务进行身份验证。

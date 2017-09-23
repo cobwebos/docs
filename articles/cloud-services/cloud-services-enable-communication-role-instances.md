@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7b1b50f71158e62da6b8ceb741a5b8cf9795e3a4
 ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/20/2016
 
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
@@ -371,10 +372,5 @@ namespace WorkerRole1
 
 ## <a name="next-steps"></a>后续步骤
 阅读有关云服务[模型](cloud-services-model-and-package.md)的详细信息。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

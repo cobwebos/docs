@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
 ms.openlocfilehash: 18010864160ceb2d76aea37196e6944bbe426457
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>将硬盘驱动器上某个文件中的训练数据导入机器学习工作室

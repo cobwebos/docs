@@ -20,7 +20,6 @@ ms.openlocfilehash: 060680fd4a7ce6e0cde406cc4a8f6f3a21d3c588
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager 与经典部署：了解部署模型和资源状态
 本主题介绍 Azure Resource Manager 和经典部署模型、资源的状态，以及使用不同模型来部署资源的原因。 Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 通过两个不同的 API 集来处理它们，且部署的资源可能包含重要差异。 这两个模型相互不完全兼容。 本主题将介绍这些差异。

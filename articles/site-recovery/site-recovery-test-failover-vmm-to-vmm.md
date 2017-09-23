@@ -20,7 +20,6 @@ ms.openlocfilehash: afc4790d5714ce7145c8f4291a05acc2e9882a9b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="test-failover-vmm-to-vmm-in-site-recovery"></a>Site Recovery 中的测试故障转移（VMM 到 VMM）
 

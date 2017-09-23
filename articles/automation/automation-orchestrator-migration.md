@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
 ms.openlocfilehash: 457888b4d38875b912ad87d44e96ab727e3ee3ee
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>从 Orchestrator 迁移到 Azure 自动化 (Beta)
@@ -135,9 +136,4 @@ Orchestrator 中的 Runbook 使用**调用 Runbook** 活动来启动其他 Runbo
 * [混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)
 * [Orchestrator 标准活动](http://technet.microsoft.com/library/hh403832.aspx)
 * [下载 System Center Orchestrator 迁移工具包](https://www.microsoft.com/en-us/download/details.aspx?id=47323)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

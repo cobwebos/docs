@@ -19,7 +19,6 @@ ms.openlocfilehash: c1ac144c4fa43312ec26fce03cd0ee1bfcf73d4b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-gotomeeting"></a>教程：Azure Active Directory 与 Citrix GoToMeeting 的集成
 

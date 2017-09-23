@@ -19,7 +19,6 @@ ms.openlocfilehash: b50e10be54b1fc413be10bee5b58631790629335
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>教程：Azure Active Directory 与 Insperity ExpensAble 的集成
 

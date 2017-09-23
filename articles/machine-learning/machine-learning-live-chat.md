@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: f8e624b54578009e55921606a9e37f884faf50c7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
-
 
 ---
 # <a name="get-help-from-machine-learning-live-chat-support"></a>获得机器学习实时聊天支持人员的帮助

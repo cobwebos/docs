@@ -20,7 +20,6 @@ ms.openlocfilehash: 9ce23382001b54e7b9b7a58b8dd9aa61b400826d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="step-8-set-up-a-replication-policy-for-physical-server-replication-to-azure"></a>第 8 步：创建复制策略以便将物理服务器复制到 Azure
 

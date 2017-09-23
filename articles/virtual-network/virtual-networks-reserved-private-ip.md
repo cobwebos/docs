@@ -20,7 +20,6 @@ ms.openlocfilehash: cf9ee59ca4e44ed01836c2efb1f4df5f073bf6e0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>如何使用 PowerShell（经典）设置静态内部专用 IP
 大多数情况下，不需要指定虚拟机的静态内部 IP 地址。 虚拟网络中的 VM 将自动从指定的范围接收内部 IP 地址。 但在某些情况下，需要为特定 VM 指定静态 IP 地址。 例如，在你的 VM 需要运行 DNS 或将要成为域控制器的情况下。 静态内部 IP 地址会始终与 VM 关联在一起，即使经历“停止/取消预配”状态变化。 

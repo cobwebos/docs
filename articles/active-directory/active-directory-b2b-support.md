@@ -1,5 +1,4 @@
 ---
-
 title: "获取对Azure Active Directory B2B 协作的支持 | Microsoft Docs"
 description: "什么是 Azure Active Directory B2B 协作的支持体验？"
 services: active-directory
@@ -21,7 +20,6 @@ ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: ce4731966baefa76b72e5a1a065c06379fac065d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
-
 
 ---
 

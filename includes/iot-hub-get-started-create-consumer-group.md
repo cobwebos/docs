@@ -1,5 +1,4 @@
-## 将使用者组添加到 IoT 中心
-<a id="add-a-consumer-group-to-your-iot-hub" class="xliff"></a>
+## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
 
 应用程序使用使用者组从 Azure IoT 中心提取数据。 在本教程中，你将创建一个使用者组，供即将到来的 Azure 服务用来从 IoT 中心读取数据。
 

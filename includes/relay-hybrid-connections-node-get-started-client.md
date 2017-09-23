@@ -1,15 +1,12 @@
-### 创建 Node.js 应用程序
-<a id="create-a-nodejs-application" class="xliff"></a>
+### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
 创建一个名为 `sender.js` 的新 JavaScript 文件。
 
-### 添加中继 NPM 包
-<a id="add-the-relay-npm-package" class="xliff"></a>
+### <a name="add-the-relay-npm-package"></a>添加中继 NPM 包
 
 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
-### 编写一些代码来发送消息
-<a id="write-some-code-to-send-messages" class="xliff"></a>
+### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
 
 1. 在 `sender.js` 文件的顶部，添加以下`constants`。
    

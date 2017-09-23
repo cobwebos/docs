@@ -19,7 +19,6 @@ ms.openlocfilehash: b65a33989a045a3e0b57fda522a9bc3b0770c7f3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>教程：Azure Active Directory 与 Gigya 集成
 

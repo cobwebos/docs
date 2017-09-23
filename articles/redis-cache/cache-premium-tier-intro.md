@@ -20,7 +20,6 @@ ms.openlocfilehash: c7a70e74f8b275ed9e10118b0ae9e81309f97ba3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Azure Redis 缓存高级层简介
 Azure Redis 缓存是一种分布式托管缓存，可通过提供对数据的超高速访问权限来帮助你构建高度可缩放且响应灵敏的应用程序。 

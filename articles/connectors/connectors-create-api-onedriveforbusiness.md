@@ -21,7 +21,6 @@ ms.openlocfilehash: 783d6a640d9626508bcabc5f991dc5b6fc22eaf4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business 连接器入门
 连接到 OneDrive for Business 管理你的文件。 你可以执行各种操作，例如上传、更新、获取和删除文件。

@@ -19,7 +19,6 @@ ms.openlocfilehash: 277c393536615fc8bfe8af0bc6d487115f04776c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教程：为 Netsuite 配置自动用户预配
 
