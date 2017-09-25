@@ -3,7 +3,7 @@ title: "为 Azure 云服务创建面向 Internet 的负载均衡器 | Microsoft 
 description: "了解如何在经典部署模型中为云服务创建面向 Internet 的负载平衡器"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756

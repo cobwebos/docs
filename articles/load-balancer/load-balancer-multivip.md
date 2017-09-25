@@ -3,7 +3,7 @@ title: "云服务的多个 VIP"
 description: "概述 MultiVIP，以及如何在云服务上设置多个 VIP"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 ms.assetid: 85f6d26a-3df5-4b8e-96a1-92b2793b5284
 ms.service: load-balancer
@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
@@ -22,6 +22,8 @@ ms.lasthandoff: 07/06/2017
 ---
 
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>为云服务配置多个 VIP
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 你可以使用 Azure 提供的 IP 地址通过公共 Internet 访问 Azure 云服务。 此公共 IP 地址称为 VIP（虚拟 IP），因为它链接到 Azure 负载均衡器，而不是云服务中的虚拟机 (VM) 实例。 你可以使用单个 VIP 访问云服务中的任何 VM 实例。
 

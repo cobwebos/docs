@@ -3,7 +3,7 @@ title: "Linux 上的 Azure Service Fabric |Microsoft 文档"
 description: "Service Fabric 群集支持 Linux 和 Java，这意味着，可以在 Linux 上部署和托管以 Java 和 C# 编写的 Service Fabric 应用程序。"
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 459afade-145d-4ee6-b72b-ddf380ccd1bf
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: SubramaR
+ms.author: ryanwi
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: dddc9f698d9776999d406117b46285a0f90d9620

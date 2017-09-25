@@ -3,7 +3,7 @@ title: "为 Azure 云服务创建内部负载均衡器 | Microsoft 文档"
 description: "了解如何在经典部署模型中使用 PowerShell 创建内部负载均衡器"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d

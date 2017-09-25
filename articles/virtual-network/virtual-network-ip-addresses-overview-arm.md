@@ -147,4 +147,3 @@ Azure 中的[网络限制](../azure-subscription-service-limits.md#networking-li
 * [使用 Azure 门户通过静态公共 IP 部署 VM](virtual-network-deploy-static-pip-arm-portal.md)
 * [使用模板通过静态公共 IP 部署 VM](virtual-network-deploy-static-pip-arm-template.md)
 * [通过 Azure 门户使用静态专用 IP 地址部署 VM](virtual-networks-static-private-ip-arm-pportal.md)
-
