@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 5/31/2017
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
 ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
@@ -23,6 +23,8 @@ ms.lasthandoff: 07/13/2017
 ---
 
 # <a name="understanding-outbound-connections-in-azure"></a>了解 Azure 中的出站连接
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure 中的虚拟机 (VM) 可以与 Azure 外部的公用 IP 地址空间中的终结点进行通信。 当 VM 启动到公共 IP 地址空间中的目标的出站流时，Azure 将 VM 的专用 IP 地址映射到公共 IP 地址，并允许返回流量来访问 VM。
 

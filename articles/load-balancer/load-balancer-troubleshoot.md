@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
 ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
@@ -23,6 +23,8 @@ ms.lasthandoff: 07/12/2017
 ---
 
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 此页介绍有关 Azure 负载均衡器常见问题的疑难解答信息。 当负载均衡器连接不可用时，最常见的症状如下： 
 - 负载均衡器后端的 VM 不响应运行状况探测 

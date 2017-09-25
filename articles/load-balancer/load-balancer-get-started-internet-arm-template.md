@@ -3,7 +3,7 @@ title: "创建面向 Internet 的负载均衡器 - Azure 模板 | Microsoft 文�
 description: "了解如何使用模板在 Resource Manager 中创建面向 Internet 的负载均衡器"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: b24f4729-4559-4458-8527-71009d242647
@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
@@ -29,6 +29,8 @@ ms.lasthandoff: 04/27/2017
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 

@@ -3,7 +3,7 @@ title: "创建面向 Internet 的负载均衡器 - Azure 门户（经典）| Mic
 description: "了解如何使用 Azure 经典门户在经典部署模型中创建面向 Internet 的负载均衡器"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
