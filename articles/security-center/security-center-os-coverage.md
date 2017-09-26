@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/20/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: c33e132037d95fa92fd59a8243a9a8a351ae0224
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c80e78b39b3fba4dcd9523e1e679822758822805
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure 安全中心支持的平台
@@ -38,12 +38,6 @@ ms.lasthandoff: 06/17/2017
 * Windows Server 2012 R2
 * Windows Server 2016
 
-> [!NOTE]
->
-* Windows Server 2016 暂不支持 OS 漏洞评估。
-* 只有 Windows Server 2012 和 Windows Server 2012 R2 支持故障分析检测。
->
->
 
 ## <a name="supported-platforms-for-linux-vms"></a>适用于 Linux VM 的支持的平台
 支持的 Linux 操作系统：

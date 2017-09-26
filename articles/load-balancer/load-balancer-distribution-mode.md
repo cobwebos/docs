@@ -1,9 +1,9 @@
 ---
-title: "配置负载平衡器分发模式 | Microsoft Docs"
+title: "配置负载均衡器分发模式 | Microsoft Docs"
 description: "如何配置 Azure 负载均衡器分发模式以支持源 IP 关联"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 ms.assetid: 7df27a4d-67a8-47d6-b73e-32c0c6206e6e
 ms.service: load-balancer
@@ -11,15 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 664e668d6660fae956d4b6bdf0179abf67d743b1
-ms.openlocfilehash: 1bc28b6f2979f47284a27a5a25becb8599b2ffab
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 5c08b1361dfd2d13e0e7ca2ce6f9a2cf357a8dff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="configure-the-distribution-mode-for-load-balancer"></a>配置负载均衡器的分发模式
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 ## <a name="hash-based-distribution-mode"></a>基于哈希的分发模式
 
@@ -31,7 +35,7 @@ ms.openlocfilehash: 1bc28b6f2979f47284a27a5a25becb8599b2ffab
 
 ## <a name="source-ip-affinity-mode"></a>源 IP 关联模式
 
-我们拥有名为“源 IP 关联”（也称为会话关联或客户端 IP 关联）的另一种分发模式。 可将 Azure Load Balancer 配置为使用 2 个元组（源 IP、目标 IP）或 3 个元组（源 IP、目标 IP、协议）来将流量映射到可用的服务器。 通过使用源 IP 关联，从同一客户端计算机发起的连接将进入同一个 DIP 终结点。
+我们拥有名为“源 IP 关联”（也称为会话关联或客户端 IP 关联）的另一种分发模式。 可将 Azure 负载均衡器配置为使用 2 个元组（源 IP、目标 IP）或 3 个元组（源 IP、目标 IP、协议）来将流量映射到可用的服务器。 通过使用源 IP 关联，从同一客户端计算机发起的连接将进入同一个 DIP 终结点。
 
 下图演示 2 元组配置。 请注意 2 元组如何从负载均衡器运行到虚拟机 1 (VM1)，VM1 随后由 VM2 和 VM3 备份。
 
@@ -39,12 +43,12 @@ ms.openlocfilehash: 1bc28b6f2979f47284a27a5a25becb8599b2ffab
 
 图 2 - 2 元组分发
 
-源 IP 关联解决 Azure Load Balancer 与远程桌面 (RD) 网关之间的不兼容问题。 现在，可以在单个云服务中生成 RD 网关场。
+源 IP 关联解决 Azure 负载均衡器与远程桌面 (RD) 网关之间的不兼容问题。 现在，可以在单个云服务中生成 RD 网关场。
 
 另一种使用方案是媒体上传，此时通过 UDP 上传数据，但通过 TCP 实现控制平面：
 
-* 客户端首先与负载平衡的公共地址发起 TCP 会话，然后定向到特定 DIP，此通道将保持活动状态以监视连接运行状况
-* 来自同一客户端计算机的新 UDP 会话在同一个负载平衡公共终结点中发起，我们希望此连接像以前的 TCP 连接一样被定向到同一个 DIP 终结点，以便能够以高吞吐量执行媒体上载，同时通过 TCP 维护控制通道。
+* 客户端首先与负载均衡的公共地址发起 TCP 会话，然后定向到特定 DIP，此通道将保持活动状态以监视连接运行状况
+* 来自同一客户端计算机的新 UDP 会话在同一个负载均衡公共终结点中发起，我们希望此连接像以前的 TCP 连接一样被定向到同一个 DIP 终结点，以便能够以高吞吐量执行媒体上传，同时通过 TCP 维护控制通道。
 
 > [!NOTE]
 > 如果负载均衡集发生更改（删除或添加虚拟机），则会重新计算客户端请求的分发。 无法确保现有客户端的新连接最终都会抵达同一台服务器。 此外，使用源 IP 关联分发模式可能导致流量的不均衡分发。 在代理后面运行的客户端可被视为唯一的客户端应用程序。
@@ -59,7 +63,7 @@ ms.openlocfilehash: 1bc28b6f2979f47284a27a5a25becb8599b2ffab
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-LoadBalancerDistribution 可以设置为 sourceIP（用于 2 元组（源 IP、目标 IP）负载平衡）、sourceIPProtocol（用于 3 元组（源 IP、目标 IP、协议）负载平衡）或 none（如果想要使用 5 元组负载平衡的默认行为）。
+LoadBalancerDistribution 可以设置为 sourceIP（用于 2 元组（源 IP、目标 IP）负载均衡）、sourceIPProtocol（用于 3 元组（源 IP、目标 IP、协议）负载均衡）或 none（如果想要使用 5 元组负载均衡的默认行为）。
 
 使用以下命令检索终结点负载均衡器分发模式配置：
 
@@ -83,11 +87,11 @@ LoadBalancerDistribution 可以设置为 sourceIP（用于 2 元组（源 IP、�
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-如果 LoadBalancerDistribution 元素不存在，则 Azure Load balancer 使用默认的 5 元组算法。
+如果 LoadBalancerDistribution 元素不存在，则 Azure 负载均衡器使用默认的 5 元组算法。
 
-### <a name="set-the-distribution-mode-on-a-load-balanced-endpoint-set"></a>在负载平衡终结点集上设置分发模式
+### <a name="set-the-distribution-mode-on-a-load-balanced-endpoint-set"></a>在负载均衡终结点集上设置分发模式
 
-如果终结点是负载平衡终结点集的一部分，则必须在负载平衡终结点集上设置分发模式：
+如果终结点是负载均衡终结点集的一部分，则必须在负载均衡终结点集上设置分发模式：
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
@@ -120,7 +124,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
 
 可使用服务管理 API 配置负载均衡器分发。 确保添加设置为版本 `2014-09-01` 或更高版本的 `x-ms-version` 标头。
 
-### <a name="update-the-configuration-of-the-specified-load-balanced-set-in-a-deployment"></a>更新部署中指定的负载平衡集配置
+### <a name="update-the-configuration-of-the-specified-load-balanced-set-in-a-deployment"></a>更新部署中指定的负载均衡集配置
 
 #### <a name="request-example"></a>请求示例
 
@@ -159,14 +163,9 @@ LoadBalancerDistribution 的值可以是 sourceIP（用于 2 元组关联）、s
 
 ## <a name="next-steps"></a>后续步骤
 
-[内部负载平衡器概述](load-balancer-internal-overview.md)
+[内部负载均衡器概述](load-balancer-internal-overview.md)
 
-[开始配置面向 Internet 的负载平衡器](load-balancer-get-started-internet-arm-ps.md)
+[开始配置面向 Internet 的负载均衡器](load-balancer-get-started-internet-arm-ps.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

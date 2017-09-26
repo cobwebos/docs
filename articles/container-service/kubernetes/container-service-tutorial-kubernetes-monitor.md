@@ -18,10 +18,10 @@ ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 65556049d33c84848f015a095acf9c1f69348c6d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ebf35877dcd6f980af75f46b437070a6a29b7c54
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -140,7 +140,7 @@ omsagent   3         3         3         0            3           <none>        
 
 同样，在 Azure 门户中，转到“Log Analytics”并选择工作区名称。 若要查看“容器”摘要磁贴，请单击“解决方案” > “容器”。 若要查看详细信息，请单击该磁贴。
 
-有关查询和分析监视数据的详细指南，请参阅 [Azure Log Analytics 文档](../../log-analytics/index.md)。
+有关查询和分析监视数据的详细指南，请参阅 [Azure Log Analytics 文档](../../log-analytics/index.yml)。
 
 ## <a name="next-steps"></a>后续步骤
 

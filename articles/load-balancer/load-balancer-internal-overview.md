@@ -3,7 +3,7 @@ title: "内部负载均衡器概述 | Microsoft Docs"
 description: "内部负载均衡器及其功能的概述。Azure 的负载均衡器的工作原理，以及配置内部终结点的可能方案"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: tysonn
 ms.assetid: 36065bfe-0ef1-46f9-a9e1-80b229105c85
@@ -12,17 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: d324aaf8ec2c8766d5cf11452158d14c19cba4d9
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ec07c77119c2da408da21fbdc7877d0b43d16556
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="internal-load-balancer-overview"></a>Internal load balancer overview（内部负载均衡器概述）
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 与面向 Internet 的负载均衡器不同，内部负载均衡器 (ILB) 仅将流量定向到云服务内的资源，或使用 VPN 来访问 Azure 基础结构。 该基础结构限制了对云服务或虚拟网络的负载均衡虚拟 IP 地址 (VIP) 的访问，不会直接将这些地址公开给 Internet 终结点。 这让内部业务线 (LOB) 应用程序能够在 Azure 中运行，并可实现在云内或从本地资源访问这些应用程序。
 
@@ -32,9 +34,9 @@ Azure 内部负载均衡 (ILB) 可在驻留在云服务或虚拟网络（具有�
 
 ILB 允许进行以下类型的负载均衡：
 
-* 在云服务中，从虚拟机负载平衡到驻留在同一云服务中的一组虚拟机（见图 1）。
-* 在虚拟网络中，从该虚拟网络中的虚拟机负载平衡到驻留在该虚拟网络的同一云服务中的一组虚拟机（见图 2）。
-* 对于跨界虚拟网络，从本地计算机负载平衡到驻留在该虚拟网络的同一云服务中的一组虚拟机（见图 3）。
+* 在云服务中，从虚拟机负载均衡到驻留在同一云服务中的一组虚拟机（见图 1）。
+* 在虚拟网络中，从该虚拟网络中的虚拟机负载均衡到驻留在该虚拟网络的同一云服务中的一组虚拟机（见图 2）。
+* 对于跨界虚拟网络，从本地计算机负载均衡到驻留在该虚拟网络的同一云服务中的一组虚拟机（见图 3）。
 * 面向 Internet 的多层应用程序，其中的后端层不面向 Internet，但需要针对面向 Internet 的层发出的流量进行负载均衡。
 * 使托管在 Azure 中的 LOB 应用程序实现负载均衡，而无需其他负载均衡器硬件或软件。 将本地服务器包含在一组流量已实现负载均衡的计算机中。
 
@@ -76,7 +78,7 @@ LOB 的另一方案是通过站点到站点 VPN 连接到在其中配置了 ILB 
 
 ## <a name="limitations"></a>限制
 
-内部负载均衡器配置不支持 SNAT。 在本文档的上下文中，SNAT 指的是端口虚拟源网络地址转换。  这适用于以下方案：负载均衡器池中的 VM 需要访问各自内部负载均衡器的前端 IP 地址。 内部负载均衡器不支持此方案。 当流负载均衡到发出流的 VM 时，连接将失败。 必须为此类方案使用代理样式的负载均衡器。
+内部负载均衡器配置不支持 SNAT。 在本文档的上下文中，SNAT 指的是端口虚拟源网络地址转换。  这适用于以下方案：负载均衡器池中的 VM 需要访问各自内部负载均衡器的前端 IP 地址。 内部负载均衡器不支持此方案。 当流负载均衡到发出流的 VM 时，连接会失败。 必须为此类方案使用代理样式的负载均衡器。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,16 +16,16 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 12a35213e07ff16bdc1c27be106792bcc032ac80
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>使用数据工厂将数据载入 SQL 数据仓库
 
-可以使用 Azure 数据工厂将数据从任何[支持的源数据存储](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)载入 Azure SQL 数据仓库。 例如，可以使用数据工厂将数据从 Azure SQL 数据库或 Oracle 数据库载入 SQL 数据仓库。 本文中的教程介绍如何将数据从本地 SQL Server 数据库载入 SQL 数据仓库。
+可以使用 Azure 数据工厂将数据从任何[支持的源数据存储](../data-factory/copy-activity-overview.md)载入 Azure SQL 数据仓库。 例如，可以使用数据工厂将数据从 Azure SQL 数据库或 Oracle 数据库载入 SQL 数据仓库。 本文中的教程介绍如何将数据从本地 SQL Server 数据库载入 SQL 数据仓库。
 
 **估计所需时间**：如果满足先决条件，完成本教程大约需要 10-15 分钟。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/22/2017
     > [!NOTE]
     > 如果源数据存储位于本地或者 Azure IaaS 虚拟机中，则需要数据管理网关。 网关与数据工厂之间存在一一对应的关系。 不能从另一个数据工厂使用不对应的网关，但是，一个网关可由同一数据工厂中的多个数据加载任务使用。 运行数据加载任务时，可以使用网关连接到多个数据存储。
     >
-    > 有关网关的详细信息，请参阅[数据管理网关](../data-factory/data-factory-data-management-gateway.md)一文。
+    > 有关网关的详细信息，请参阅[数据管理网关](../data-factory/v1/data-factory-data-management-gateway.md)一文。
 
 3. 此时会显示“创建网关”对话框。 在“名称”中输入 **GatewayForDWLoading**，并单击“创建”。
 
@@ -154,9 +154,9 @@ ms.lasthandoff: 08/22/2017
 
 若要详细了解 Azure 数据工厂及其数据移动功能，请参阅以下文章：
 
-- [Azure 数据工厂简介](../data-factory/data-factory-introduction.md)
-- [使用复制活动移动数据](../data-factory/data-factory-data-movement-activities.md)
-- [使用 Azure 数据工厂将数据移出或移入 Azure SQL 数据仓库](../data-factory/data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure 数据工厂简介](../data-factory/introduction.md)
+- [使用复制活动移动数据](../data-factory/copy-activity-overview.md)
+- [使用 Azure 数据工厂将数据移出或移入 Azure SQL 数据仓库](../data-factory/connector-azure-sql-data-warehouse.md)
 
 若要浏览 SQL 数据仓库中的数据，请参阅以下文章：
 

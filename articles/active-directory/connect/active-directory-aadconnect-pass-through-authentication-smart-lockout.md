@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: c84b2406e6373701c83c509342129bd6d7d4034b
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 9a33e83c7453d5b80043599acca3ac4310446562
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -79,7 +79,7 @@ Azure AD 可防止密码搜索攻击，并防止在 Office 365 和 SaaS 应用�
 1. 以所在租户的全局管理员身份登录 Graph 浏览器。 出现提示时，授予访问所需权限的权限。
 2. 单击“修改权限”并选择“Directory.ReadWrite.All”权限。
 3. 配置图形 API 请求，如下所示：将版本设置为“BETA 版本”，将请求类型设置为“POST”并将 URL 设置为 `https://graph.microsoft.com/beta/<your-tenant-domain>/settings`。
-4. 将以下 JSON 请求复制并粘贴到“请求正文”字段。 适当更改智能锁定值，并使用 `templateId` 的随机 GUID。
+4. 将以下 JSON 请求复制并粘贴到“请求正文”字段。
 5. 单击“运行查询”，设置租户的智能锁定值。
 
 ```
@@ -148,5 +148,5 @@ Azure AD 可防止密码搜索攻击，并防止在 Office 365 和 SaaS 应用�
 确保已使用[这些步骤](#read-smart-lockout-values)正确更新了租户的智能锁定值。
 
 ## <a name="next-steps"></a>后续步骤
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 

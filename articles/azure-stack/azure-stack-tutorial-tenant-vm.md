@@ -11,18 +11,21 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 8/22/2017
+ms.topic: tutorial
+ms.date: 9/25/2017
 ms.author: victorh
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: d2f38bc1c0b97e408f619f3ea2f704725e3bb460
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: afeec92c40262903e6cfd3c6d75a595fead616e3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Make virtual machines available to your Azure Stack users
+
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+
 As an Azure Stack cloud administrator, you can create offers that your users (sometimes referred to as tenants) can subscribe to. Using their subscription, users can then consume Azure Stack services.
 
 This article shows you how to create an offer, and then test it. For the test, you will log in to the portal as a user, subscribe to the offer, and then create a virtual machine using the subscription.
@@ -112,7 +115,9 @@ Now that you’ve created an offer, you can test it. Log in as a user and subscr
 
    Now you can log in to the portal as a user to subscribe to an offer.
 
-   a. On the Azure Stack Deployment Kit computer, log in to `https://portal.local.azurestack.external` as a user and click **Get a Subscription**.
+   a. Log in to the user portal as a user and click **Get a Subscription**.
+   - For an integrated system, the URL varies based on your operator’s region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
+   - If you’re using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
 
    ![Get a subscription](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
@@ -128,7 +133,9 @@ Now that you’ve created an offer, you can test it. Log in as a user and subscr
 
    Now you can log in to the portal as a user to provision a virtual machine using the subscription. 
 
-   a. On the Azure Stack Deployment Kit computer, log in to `https://portal.local.azurestack.external` as a user, and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval**.  
+   a. Log in to the user portal as a user, and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval**.
+      - For an integrated system, the URL varies based on your operator’s region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
+   - If you’re using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
 
    b. In the **Basics** section, type a **Name**, **User name**, and **Password**. For **VM disk type**, choose **HDD**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, and then click **OK**.  
 

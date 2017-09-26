@@ -12,17 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 9e82cf367bdc03aaafe1050078194cc3bd746bac
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 2bd93faf01c5d1790989a0231020ce8340eff57d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit release notes
+
+*Applies to: Azure Stack Development Kit*
+
 These release notes provide information on new features and known issues.
 
 ## <a name="release-build-201706271"></a>Release Build 20170627.1

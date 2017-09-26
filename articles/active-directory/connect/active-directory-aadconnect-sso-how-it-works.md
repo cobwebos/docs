@@ -12,22 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: f0bcbdb03fbb70ff91ac3a56974a88eb1b26c245
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 38b107513e72635fd034bb86d0d866bcb0fcb8e4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
 本文从技术层面详细介绍了 Azure Active Directory 无缝单一登录（无缝 SSO）功能的工作原理。
-
->[!IMPORTANT]
->无缝 SSO 功能目前处于预览状态。
 
 ## <a name="how-does-seamless-sso-work"></a>无缝 SSO 的工作原理
 
@@ -38,15 +35,15 @@ ms.lasthandoff: 08/04/2017
 ### <a name="how-does-set-up-work"></a>如何进行设置？
 
 可使用 Azure AD Connect 启用无缝 SSO，如[此处](active-directory-aadconnect-sso-quick-start.md)所示。 启用该功能时，请执行以下步骤：
-- 在本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACCT` 的计算机帐户（表示 Azure AD）。
+- 在本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。
 - 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。
 - 此外，创建两个 Kerberos 服务主体名称 (SPN) 来表示 Azure AD 登录期间使用的两个 URL。
 
 >[!NOTE]
-> 在与 Azure AD 同步（使用 Azure AD Connect）且要为其用户启用无缝 SSO 的每个 AD 林中创建计算机帐户和 Kerberos SPN。 将 `AZUREADSSOACCT` 计算机帐户移动到在其中存储其他计算机帐户的组织单位 (OU)，确保以相同的方式对该帐户进行管理，并确保它不会被删除。
+> 在与 Azure AD 同步（使用 Azure AD Connect）且要为其用户启用无缝 SSO 的每个 AD 林中创建计算机帐户和 Kerberos SPN。 将 `AZUREADSSOACC` 计算机帐户移动到在其中存储其他计算机帐户的组织单位 (OU)，确保以相同的方式对该帐户进行管理，并确保它不会被删除。
 
 >[!IMPORTANT]
->我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACCT` 计算机帐户的 [Kerberos 解密密钥](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account)。
+>我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。
 
 ### <a name="how-does-sign-in-with-seamless-sso-work"></a>如何使用无缝 SSO 进行登录？
 
@@ -60,7 +57,7 @@ ms.lasthandoff: 08/04/2017
 
 3. 用户在 Azure AD 登录页键入其用户名。
 4. Azure AD 在后台使用 JavaScript，通过“401 未授权”响应质询浏览器，以提供 Kerberos 票证。
-5. 然后，浏览器请求从 Active Directory 获取用于 `AZUREADSSOACCT` 计算机帐户（表示 Azure AD）的票证。
+5. 然后，浏览器请求从 Active Directory 获取用于 `AZUREADSSOACC` 计算机帐户（表示 Azure AD）的票证。
 6. Active Directory 查找计算机帐户，然后将使用计算机帐户机密加密的 Kerberos 票证返回给浏览器。
 7. 浏览器将它从 Active Directory 获取的 Kerberos 票证转发给 Azure AD（在其中一个[之前添加到浏览器 Intranet 区域设置的 Azure AD URL](active-directory-aadconnect-sso-quick-start.md#step-3-roll-out-the-feature) 上）。
 8. Azure AD 使用以前共享的密钥对 Kerberos 票证进行解密，其中包括登录到企业设备的用户的标识。
