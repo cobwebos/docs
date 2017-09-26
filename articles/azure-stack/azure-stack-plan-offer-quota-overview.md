@@ -15,15 +15,17 @@ ms.topic: get-started-article
 ms.date: 8/22/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9f19d4ea53fb07bff97a5cd06d10af74f605bf1c
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bfed4c557a420eda14cafe5b1cf8ad11476e2d79
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Plan, offer, quota, and subscription overview
 
-Azure Stack lets you deliver a wide variety of services, like virtual machines, SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a cloud operator, you configure and deliver such services in Azure Stack by using plans, offers, and quotas.
+*Applies to: Azure Stack Development Kit*
+
+[Azure Stack](azure-stack-poc.md) lets you deliver a wide variety of services, like virtual machines, SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a cloud operator, you configure and deliver such services in Azure Stack by using plans, offers, and quotas.
 
 Offers contain one or more plans, and each plan includes one or more services. By creating plans and combining them into different offers, you control
 - which services and resources users can access

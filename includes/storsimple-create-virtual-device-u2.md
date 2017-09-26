@@ -21,7 +21,7 @@
       > 
    7. 单击勾号表示已了解虚拟设备中存储的数据将托管在 Microsoft 数据中心。 仅使用物理设备时，加密密钥将保存在设备中，因此 Microsoft 无法解密。 
       
-       使用虚拟设备时，加密密钥和解密密钥都存储在 Microsoft Azure 中。 有关详细信息，请参阅 [使用虚拟设备的安全注意事项](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security)。
+       使用虚拟设备时，加密密钥和解密密钥都存储在 Microsoft Azure 中。 有关详细信息，请参阅 [使用虚拟设备的安全注意事项](../articles/storsimple/storsimple-security.md)。
    8. 单击勾号图标创建虚拟设备。 设备可能需要 30 分钟左右的时间来预配。
       
       ![StorSimple 虚拟设备创建阶段](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)

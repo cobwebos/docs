@@ -15,14 +15,17 @@ ms.topic: get-started-article
 ms.date: 07/11/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: e4e2293149b64056d1ec9d1900119e9f4f511d06
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4a53065f76cef7b711f4a656b437cbefaf47c5d0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack deployment prerequisites
-Before you deploy Azure Stack [Development Kit](azure-stack-poc.md), make sure your computer meets the following requirements:
+
+*Applies to: Azure Stack Development Kit*
+
+Before you deploy [Azure Stack Development Kit](azure-stack-poc.md), make sure your computer meets the following requirements:
 
 
 ## <a name="hardware"></a>Hardware

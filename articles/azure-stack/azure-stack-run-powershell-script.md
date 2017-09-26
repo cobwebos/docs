@@ -15,14 +15,17 @@ ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ce2978d345262b68b177a38a978133a71da2806f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 530a9558df2323e1aa49d9f4b974c142ee5ecf37
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Deploy the Azure Stack Development Kit
-To deploy the development kit, you must complete the following steps:
+
+*Applies to: Azure Stack Development Kit*
+
+To deploy the [Azure Stack Development Kit](azure-stack-poc.md), you must complete the following steps:
 
 1. [Download the deployment package](https://azure.microsoft.com/overview/azure-stack/try/?v=try) to get the Cloudbuilder.vhdx.
 2. [Prepare the cloudbuilder.vhdx](#prepare-the-development-kit-host) by running the asdk-installer.ps1 script to configure the computer (the development kit host) on which you want to install development kit. After this step, the development kit host will boot to the Cloudbuilder.vhdx.

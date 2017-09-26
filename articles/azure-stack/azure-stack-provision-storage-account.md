@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: victorh
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: de32c0ce79e8357274cc19cd1ea4ec23b85b918f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 41c9ee37c43d4ad41c51ea2ed023d3b47d460dd1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Storage accounts in Azure Stack
@@ -35,7 +35,7 @@ Storage accounts include Blob and Table services, and the unique namespace for y
     ![](media/azure-stack-provision-storage-account/image03.png)
 
 ### <a name="next-steps"></a>Next steps
-[Use Azure Resource Manager templates](azure-stack-arm-templates.md)
+[Use Azure Resource Manager templates](user/azure-stack-arm-templates.md)
 
 [Learn about Azure storage accounts](../storage/common/storage-create-storage-account.md)
 
