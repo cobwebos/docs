@@ -15,7 +15,7 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: a05711357d345267647c02e42336fd37c09e1bff
 ms.contentlocale: zh-cn
@@ -25,7 +25,7 @@ ms.lasthandoff: 06/20/2017
 
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure Marketplace 库映像部署 Oracle 12c 数据库。 
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure 应用商店库映像部署 Oracle 12c 数据库。 
 
 本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。
 
@@ -172,7 +172,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 
-使用以下命令创建与虚拟机的 SSH 会话。 将 IP 地址替换为你的虚拟机的 `publicIpAddress`。
+使用以下命令创建与虚拟机的 SSH 会话。 将 IP 地址替换为虚拟机的 `publicIpAddress`。
 
 ```bash 
 ssh <publicIpAddress>
@@ -180,7 +180,7 @@ ssh <publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>在 myVM1（主）上创建数据库
 
-Oracle 软件已在 Marketplace 映像上安装，因此下一步是安装数据库。 
+Oracle 软件已在应用商店映像上安装，因此下一步是安装数据库。 
 
 以“oracle”超级用户身份运行软件：
 
@@ -394,7 +394,7 @@ SQL> EXIT;
   - 若要生成密钥，请选择“生成”按钮。
   - 复制密钥的内容 (**Ctrl+C**)。
   - 选择“保存私钥”按钮。
-  - 忽略显示的警告，然后选择“确定”。
+  - 忽略显示的警告，并选择“确定”。
 
     ![PuTTY 密钥生成器页屏幕截图](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -412,7 +412,7 @@ SQL> EXIT;
   > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
   >  
 
-6. 启动 PuTTY。 在“类别”窗格中，选择“连接” > “SSH” > “身份验证”。 在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
+6. 启动 PuTTY。 在“类别”窗格中，选择“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
 
   ![“设置私钥”页屏幕截图](./media/oracle-golden-gate/setprivatekey.png)
 
@@ -420,7 +420,7 @@ SQL> EXIT;
 
   ![“启用 X11”页屏幕截图](./media/oracle-golden-gate/enablex11.png)
 
-8. 在“类别”窗格中，转到“会话”。 输入主机信息，然后选择“打开”。
+8. 在“类别”窗格中，转到“会话”。 输入主机信息，并选择“打开”。
 
   ![会话页屏幕截图](./media/oracle-golden-gate/puttysession.png)
 

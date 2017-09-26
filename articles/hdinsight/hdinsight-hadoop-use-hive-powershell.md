@@ -62,7 +62,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
-2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改为 **hivejob.ps1** 文件的所在位置，然后使用以下命令来运行脚本：
+2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改为 **hivejob.ps1** 文件的所在位置，并使用以下命令来运行脚本：
 
         .\hivejob.ps1
 
@@ -94,7 +94,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果作业完成时未返回任何信息，请查看错误日志。 要查看此作业的错误信息，请将以下内容添加到 **hivejob.ps1** 文件的末尾，保存，然后重新运行该文件。
+如果作业完成时未返回任何信息，请查看错误日志。 要查看此作业的错误信息，请将以下内容添加到 **hivejob.ps1** 文件的末尾，保存，并重新运行该文件。
 
 ```powershell
 # Print the output of the Hive job.
@@ -109,7 +109,7 @@ Get-AzureRmHDInsightJobOutput `
 
 ## <a name="summary"></a>摘要
 
-如你所见，Azure PowerShell 提供了简单的方法，可在 HDInsight 群集中运行 Hive 查询，监视作业状态，以及检索输出。
+如你所见，Azure PowerShell 提供了简单的方法让你在 HDInsight 群集上运行 Hive 查询，监视作业状态，以及检索输出。
 
 ## <a name="next-steps"></a>后续步骤
 

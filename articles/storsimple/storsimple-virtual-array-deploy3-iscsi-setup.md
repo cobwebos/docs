@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: d72ff7449a87dfa9223b7c5e77446de23502eb84
 ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="overview"></a>概述
 
-本部署教程适用于 Microsoft Azure StorSimple 虚拟阵列。 本教程介绍如何进行初始安装、注册 StorSimple iSCSI 服务器、完成设备设置，然后创建、装载、初始化和格式化配置为 iSCSI 服务器的 StorSimple 虚拟阵列上的卷。 
+本部署教程适用于 Microsoft Azure StorSimple 虚拟阵列。 本教程介绍如何进行初始安装、注册 StorSimple iSCSI 服务器、完成设备设置，并创建、装载、初始化和格式化配置为 iSCSI 服务器的 StorSimple 虚拟阵列上的卷。 
 
 完成此处所述过程大约需要 30 分钟到 1 小时。 本文发布的信息仅适用于 StorSimple 虚拟阵列。
 
@@ -66,7 +67,7 @@ ms.lasthandoff: 03/01/2017
     ![主页](./media/storsimple-virtual-array-deploy3-iscsi-setup/image5.png)
 4. 在“网络接口”下的“网络设置”页上，系统会自动为用户配置 DATA 0。 每个网络接口均默认设置为自动获取 IP 地址 (DHCP)。 因此，系统会自动分配 IP 地址、子网和网关（适用于 IPv4 和 IPv6）。
    
-    由于你计划将设备部署为 iSCSI 服务器（目的是预配块存储），因此建议禁用“自动获取 IP 地址”选项并配置静态 IP 地址。
+    由于计划将设备部署为 iSCSI 服务器（目的是预配块存储），因此建议禁用“自动获取 IP 地址”选项并配置静态 IP 地址。
    
     ![“网络设置”页](./media/storsimple-virtual-array-deploy3-iscsi-setup/image6.png)
    
@@ -81,7 +82,7 @@ ms.lasthandoff: 03/01/2017
    2. 选择要创建的设备的“类型”时，请单击“iSCSI 服务器”图标 ![iSCSI 服务器图标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png)。 iSCSI 服务器会允许用户预配块存储。
    3. 指定是否希望此设备加入域。 如果设备是 iSCSI 服务器，则可选择加入域。 如果决定不将 iSCSI 服务器加入域，请单击“应用”，等待系统应用设置，然后跳到下一步。
       
-       若要将设备加入域， 请输入“域名”，然后单击“应用”。
+       要将设备加入域， 请输入“域名”，并单击“应用”。
       
       > [!NOTE]
       > 如果将 iSCSI 服务器加入域，请确保虚拟阵列采用其自身的适用于 Microsoft Azure Active Directory 的组织单位 (OU)，没有对其应用任何组策略对象 (GPO)。
@@ -108,7 +109,7 @@ ms.lasthandoff: 03/01/2017
     在“时间设置”页上：
    
    1. 根据部署设备的地理位置，从下拉列表中选择相应的“时区” 。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
-   2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。 确保网络允许 NTP 流量从数据中心传递到 Internet。
+   2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。确保网络允许 NTP 流量从数据中心传递到 Internet。
    3. （可选）为设备指定“辅助 NTP 服务器”。
    4. 单击“应用” 。 此时会验证并应用配置的时间设置。
 9. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
@@ -119,7 +120,7 @@ ms.lasthandoff: 03/01/2017
       
       ![注册设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. 返回到 Azure 门户。
-11. 导航到服务的“设备”边栏选项卡。 如果你有大量资源，请单击“所有资源”，单击服务名称（必要时可搜索），然后单击“设备”。
+11. 导航到服务的“设备”边栏选项卡。 如果有大量资源，请单击“所有资源”，单击服务名称（必要时可搜索），然后单击“设备”。
 12. 在“设备”边栏选项卡上，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“已准备好设置”。
     
     ![注册设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
@@ -130,13 +131,13 @@ ms.lasthandoff: 03/01/2017
 
 #### <a name="to-configure-the-device-as-iscsi-server"></a>将设备配置为 iSCSI 服务器
 
-1. 转到 StorSimple Device Manager 服务，然后转到“管理”>“设备”。 在“设备”边栏选项卡中，选择刚创建的设备。 此设备将显示为“已准备好设置”。
+1. 转到 StorSimple Device Manager 服务，并转到“管理”>“设备”。 在“设备”边栏选项卡中，选择刚创建的设备。 此设备会显示为“已准备好设置”。
    
     ![将设备配置为 iSCSI 服务器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
-2. 单击设备，将显示横幅消息，指示该设备已准备好设置。
+2. 单击设备，会显示横幅消息，指示该设备已准备好设置。
    
     ![将设备配置为 iSCSI 服务器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
-3. 在设备命令栏中，单击“配置”。 此时将打开“配置”边栏选项卡。 在“配置”边栏选项卡中，执行以下操作：
+3. 在设备命令栏中，单击“配置”。 此时会打开“配置”边栏选项卡。 在“配置”边栏选项卡中，执行以下操作：
    
    * 将自动填充 iSCSI 服务器名称。
    * 确保云存储加密已设置为“启用”。 这可确保从设备发送到云的数据已加密。
@@ -153,7 +154,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="step-3-add-a-volume"></a>步骤 3：添加卷
 
-1. 在“设备”边栏选项卡中，选择刚配置为 iSCSI 服务器的设备。 单击“...”（或者在此行中右键单击），然后从上下文菜单中选择“添加卷”。 也可以在命令栏中单击“+ 添加卷”。 此时将打开“添加卷”边栏选项卡。
+1. 在“设备”边栏选项卡中，选择刚配置为 iSCSI 服务器的设备。 单击“...”（或者在此行中右键单击），并从上下文菜单中选择“添加卷”。 也可以在命令栏中单击“+ 添加卷”。 此时会打开“添加卷”边栏选项卡。
    
     ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis10m.png)
 2. 在“添加卷”边栏选项卡中，执行以下操作：
@@ -167,11 +168,11 @@ ms.lasthandoff: 03/01/2017
      分层卷则是进行精简预配。 创建分层卷时，大约 10% 的空间预配在本地层，90% 的空间预配在云中。 例如，如果预配 1 TB 的卷，则当数据分层时，100 GB 会驻留在本地空间，900 GB 会在云中使用。 反过来说，这意味着，如果用光了设备上的所有本地空间，则无法预配分层共享（因为该 10% 的空间不可用）。
      
      ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
-   * 单击“已连接主机”，选择要连接到此卷的 iSCSI 发起程序所对应的访问控制记录 (ACR)，然后单击“选择”。 <br><br> 
-3. 若要添加新连接的主机，请单击“新增”，输入主机的名称及其 iSCSI 限定名称 (IQN)，然后单击“添加”。 如果没有 IQN，请转到[附录 A：获取 Windows Server 主机的 IQN](#appendix-a-get-the-iqn-of-a-windows-server-host)。
+   * 单击“已连接主机”，选择要连接到此卷的 iSCSI 发起程序所对应的访问控制记录 (ACR)，并单击“选择”。 <br><br> 
+3. 要添加新连接的主机，请单击“新增”，输入主机的名称及其 iSCSI 限定名称 (IQN)，并单击“添加”。 如果没有 IQN，请转到[附录 A：获取 Windows Server 主机的 IQN](#appendix-a-get-the-iqn-of-a-windows-server-host)。
    
       ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
-4. 完成配置卷后，单击“确定”。 此时将使用指定的设置创建卷，你将看到一条通知。。 默认情况下，将为卷启用监视和备份功能。
+4. 完成配置卷后，单击“确定”。 此时会使用指定的设置创建卷，会看到一条通知。 默认情况下，将为卷启用监视和备份功能。
    
      ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. 若要确认已成功创建卷，请转到“卷”边栏选项卡。 此时会看到列出的卷。
@@ -188,40 +189,40 @@ ms.lasthandoff: 03/01/2017
 2. 在“iSCSI 发起程序属性”窗口中的“发现”选项卡上，单击“发现门户”。
    
     ![发现门户](./media/storsimple-virtual-array-deploy3-iscsi-setup/image22.png)
-3. 在“发现目标门户”对话框中，提供支持 iSCSI 网络接口的 IP 地址，然后单击“确定”。
+3. 在“发现目标门户”对话框中，提供支持 iSCSI 网络接口的 IP 地址，并单击“确定”。
    
     ![IP 地址](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
 4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”。 （每个卷都可以是已发现的目标。）设备状态应显示为 **非活动**。
    
     ![已发现的目标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
-5. 选择目标设备，然后单击“连接”。 设备连接后，状态应更改为 **已连接**。 （有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft iSCSI 发起程序][1]。
+5. 选择目标设备，并单击“连接”。 设备连接后，状态应更改为 **已连接**。 （有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft iSCSI 发起程序][1]。
    
     ![选择目标设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/image25.png)
-6. 在 Windows 主机上，按 Windows 徽标键 + X，然后单击“ **运行**”。
-7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中将显示在主机上的卷。
-8. 在“ **磁盘管理** ”窗口中，已装载的卷将显示在以下所示的插图中。 右键单击“发现的卷”（单击磁盘名称），然后单击“ **联机**”。
+6. 在 Windows 主机上，按 Windows 徽标键 + X，并单击“ **运行**”。
+7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中会显示在主机上的卷。
+8. 在“ **磁盘管理** ”窗口中，已装载的卷会显示在以下所示的插图中。 右键单击“发现的卷”（单击磁盘名称），并单击“ **联机**”。
    
     ![磁盘管理](./media/storsimple-virtual-array-deploy3-iscsi-setup/image26.png)
-9. 右键单击，然后选择“初始化磁盘”。
+9. 右键单击，并选择“初始化磁盘”。
    
     ![初始化磁盘 1](./media/storsimple-virtual-array-deploy3-iscsi-setup/image27.png)
-10. 在对话框中选择要初始化的磁盘，然后单击“确定”。
+10. 在对话框中选择要初始化的磁盘，并单击“确定”。
     
     ![初始化磁盘 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image28.png)
-11. 此时会启动新建简单卷向导。 选择磁盘大小，然后单击“下一步”。
+11. 此时会启动新建简单卷向导。 选择磁盘大小，并单击“下一步”。
     
     ![新建卷向导 1](./media/storsimple-virtual-array-deploy3-iscsi-setup/image29.png)
-12. 为卷分配驱动器号，然后单击“下一步”。
+12. 为卷分配驱动器号，并单击“下一步”。
     
     ![新建卷向导 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
 13. 输入对卷进行格式化的参数。 **Windows Server 仅支持 NTFS。** 将分配单元大小设置为 64 K。 为卷提供一个标签。 根据最佳做法，建议将此名称设置为在 StorSimple 虚拟阵列上提供的卷名。 单击“下一步”。
     
     ![新建卷向导 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
-14. 查看卷的值，然后单击“完成”。
+14. 查看卷的值，并单击“完成”。
     
     ![新建卷向导 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/image32.png)
     
-    这些卷将在“磁盘管理”页上显示为“联机”。
+    这些卷会在“磁盘管理”页上显示为“联机”。
     
     ![联机卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/image33.png)
 

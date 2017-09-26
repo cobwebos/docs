@@ -37,7 +37,7 @@ ms.lasthandoff: 09/09/2017
 
 此示例创建 Azure Function app，并将存储连接字符串添加到应用设置。
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "将 Function App 集成到 Azure 存储帐户中")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "Integrate Function App into Azure Storage Account")]
 
 
 ## <a name="clean-up-deployment"></a>清理部署

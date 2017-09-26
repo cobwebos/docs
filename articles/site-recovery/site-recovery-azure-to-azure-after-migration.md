@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: 2aee0fb8d1ba1ff1584bee91b4d1cc34b654d97f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
-
 
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>在迁移到 Azure 后，使用 Azure Site Recovery 将 Azure VM 复制到另一个区域
@@ -49,7 +48,7 @@ ms.lasthandoff: 06/20/2017
 若要设置复制并将本地 Hyper-V、VMware 和物理工作负荷迁移到 Azure，请按照[使用 Azure Site Recovery 在 Azure 区域之间迁移 Azure IaaS 虚拟机](site-recovery-migrate-to-azure.md)一文中的步骤执行操作。 
 
 迁移后，无需提交或删除故障转移。 相反，对于想要迁移的每台计算机，可选择“完成迁移”选项：
-1. 在“复制的项”中，右键单击 VM，然后单击“完成迁移”。 单击“确定”完成本步骤。 若要在 VM 属性中跟踪进度，可在“Site Recovery 作业”中监视“完成迁移”作业。
+1. 在“复制的项”中，右键单击 VM，并单击“完成迁移”。 单击“确定”完成本步骤。 若要在 VM 属性中跟踪进度，可在“Site Recovery 作业”中监视“完成迁移”作业。
 2. “完成迁移”操作会完成迁移过程、删除计算机复制设置及让计算机不再产生 Site Recovery 费用。
 
    ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
@@ -65,7 +64,7 @@ ms.lasthandoff: 06/20/2017
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | 安装 VM 代理 |下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要管理员权限才能完成安装。 |安装最新的 [Linux 代理](../virtual-machines/linux/agent-user-guide.md)。 需要管理员权限才能完成安装。 我们建议从分发存储库安装代理。 我们*不建议*直接从 GitHub 安装 Linux VM 代理。  |
-| 验证 VM 代理安装 |1.浏览到 Azure VM 中的 C:\WindowsAzure\Packages 文件夹。 此时应看到 WaAppAgent.exe 文件。 <br>2.右键单击该文件，转到“**属性**”，然后选择“**详细信息**”选项卡。 “产品版本”字段应为 2.6.1198.718 或更高版本。 |不适用 |
+| 验证 VM 代理安装 |1.浏览到 Azure VM 中的 C:\WindowsAzure\Packages 文件夹。 此时应看到 WaAppAgent.exe 文件。 <br>2.右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。“产品版本”字段应为 2.6.1198.718 或更高版本。 |不适用 |
 
 
 ### <a name="step-3-remove-the-mobility-service-from-the-migrated-virtual-machine"></a>步骤 3：从迁移的虚拟机中删除移动服务
@@ -80,7 +79,7 @@ ms.lasthandoff: 06/20/2017
 
 ##### <a name="uninstall-by-using-the-windows-ui"></a>使用 Windows UI 卸载
 1. 在“控制面板”中，选择“程序”。
-2. 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器”，然后单击“卸装”。
+2. 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器”，并单击“卸装”。
 
 ##### <a name="uninstall-at-a-command-prompt"></a>在命令提示符下卸载
 1. 以管理员身份打开“命令提示符”窗口。

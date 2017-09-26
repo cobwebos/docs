@@ -146,7 +146,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-让我们来按分区键和 ID 读取项目，更新该项目，最后按分区键和 ID 将其删除。 请注意，读取包括 PartitionKey 值（对应 REST API 中的 `x-ms-documentdb-partitionkey` 请求标头）。
+让我们来按分区键和 ID 读取项目，更新该项目，最后按分区键和 ID 将其删除。请注意，读取包括 PartitionKey 值（对应 REST API 中的 `x-ms-documentdb-partitionkey` 请求标头）。
 
 ```csharp
 // Read document. Needs the partition key and the ID to be specified

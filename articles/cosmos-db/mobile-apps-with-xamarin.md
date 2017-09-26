@@ -43,7 +43,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 以下教程介绍如何使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序。 可在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 中找到该教程的完整源代码。
 
 ### <a name="get-started"></a>入门
-入门 Azure Cosmos DB 非常简单。 转到 Azure 门户，并创建新的 Azure Cosmos DB 帐户。 单击“快速入门”选项卡。 下载已连接到 Azure Cosmos DB 帐户的 Xamarin Forms 待办事项列表示例。 
+入门 Azure Cosmos DB 非常简单。 转到 Azure 门户，并创建新的 Azure Cosmos DB 帐户。 单击“快速入门”选项卡。下载已连接到 Azure Cosmos DB 帐户的 Xamarin Forms 待办事项列表示例。 
 
 ![适用于移动应用的 Azure Cosmos DB 快速入门](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 

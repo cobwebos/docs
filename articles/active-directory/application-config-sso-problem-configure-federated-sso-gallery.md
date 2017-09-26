@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: b8c189865c27566e3265f14eb54cb5ea4a005dc5
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 290ca66048281de5e031b0404919bed84ab19ffa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 06/20/2017
 
 若要了解应用程序预配置的模式，请执行以下操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 06/20/2017
 
    * 在应用程序的教程中，还可以获得受支持的模式的信息。 在“配置 Azure AD 单一登录”部分下。 转到该步骤下，在“域和 URL”部分下找到已配置的值。
 
-如果此值与 Azure AD 上预配置的模式不匹配。 你可以：
+如果此值与 Azure AD 上预配置的模式不匹配。 可以：
 
 -   与应用程序供应商沟通以获取与 Azure AD 上预配置的模式匹配的值
 
@@ -101,7 +101,7 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  转到“SAML 签名证书”部分，然后单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
+8.  转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
 Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文件进行检索。
 

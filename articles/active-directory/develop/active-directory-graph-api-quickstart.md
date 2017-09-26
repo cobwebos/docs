@@ -16,12 +16,11 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: viviali
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: adefef44d9d3d8e986b26ebe813ecd5d3a6c6f3f
+ms.translationtype: HT
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: fad5c315a247673b7a2ad52b4a78b49c567a997a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="quickstart-for-the-azure-ad-graph-api"></a>Azure AD 图形 API 快速入门
@@ -36,15 +35,15 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 在图形 API 中，若要访问要对其执行 CRUD 操作的目录数据和对象（即资源或实体），可以使用基于开放数据 (OData) 协议的 URL。 在图形 API 中使用的 URL 包括四个主要部分：服务根、租户标识符、资源路径和查询字符串选项：`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`。 以下面的 URL 为例：`https://graph.windows.net/contoso.com/groups?api-version=1.6`。
 
 * **服务根**：在 Azure AD 图形 API 中，服务根始终是 https://graph.windows.net。
-* **租户标识符**：此部分可以是已验证（注册）的域名，在前面示例中为 contoso.com。 也可以是租户对象 ID 或者“myorganization”或“me”别名。 有关详细信息，请参阅[对图形 API 中的实体和操作进行寻址](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
-* **资源路径**：URL 的此部分标识要交互的资源（用户、组、特定用户或特定组，等等）。在上面示例中，它是用于对资源集寻址的顶级“组”。 你也可以对特定的实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
+* **租户标识符**：此部分可以是已验证（注册）的域名，在前面示例中为 contoso.com。也可以是租户对象 ID 或者“myorganization”或“me”别名。 有关详细信息，请参阅[对图形 API 中的实体和操作进行寻址](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
+* **资源路径**：URL 的此部分标识要交互的资源（用户、组、特定用户或特定组，等等）。在上面示例中，它是用于对资源集寻址的顶级“组”。 也可以对特定的实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
 * **查询参数**：问号 (?) 用于分隔资源路径部分与查询参数部分。 需要对图形 API 中的所有请求提供“Api 版本”查询参数。 图形 API 还支持以下 OData 查询选项：**$filter**、**$orderby**、**$expand**、**$top** 和 **$format**。 当前不支持以下查询选项：**$count**、**$inlinecount** 和 **$skip**。 有关详细信息，请参阅 [Azure AD 图形 API 支持的查询、筛选和分页选项](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
 
 ## <a name="graph-api-versions"></a>图形 API 版本
 可以在 api-version 查询参数中指定图形 API 请求的版本。 对于版本 1.5 及更高版本，使用数字版本值：api-version=1.6。 对于早期版本，使用遵循 YYYY-MM-DD 格式的日期字符串；例如，api-version=2013-11-08。 对于预览功能，可使用字符串“beta”；例如，api-version=beta。 有关图形 API 版本之间的差异的详细信息，请参阅 [Azure AD 图形 API 版本控制](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning)。
 
 ## <a name="graph-api-metadata"></a>图形 API 元数据
-若要返回 Graph API 元数据文件，请在 URL 中的租户标识符后面添加“$metadata”段。例如，以下 URL 将返回演示公司元数据：`https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`。 可以在 Web 浏览器的地址栏中输入此 URL 来查看元数据。 返回的 CSDL 元数据文档描述了实体和复杂类型及其属性，以及你请求的图形 API 版本公开的函数和操作。 省略 api-version 参数会返回最新版本的元数据。
+要返回 Graph API 元数据文件，请在 URL 中的租户标识符后面添加“$metadata”段。例如，以下 URL 将返回演示公司元数据：`https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`。 可以在 Web 浏览器的地址栏中输入此 URL 来查看元数据。 返回的 CSDL 元数据文档描述了实体和复杂类型及其属性，以及请求的图形 API 版本公开的函数和操作。 省略 api-version 参数会返回最新版本的元数据。
 
 ## <a name="common-queries"></a>常见查询
 [Azure AD 图形 API 常见查询](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries)列出了可与 Azure AD Graph 配合使用的常见查询，包括可用于访问目录中的顶层资源的查询，以及用于在目录中执行操作的查询。
@@ -60,14 +59,15 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 
 ![Azure AD 图形 API 资源管理器](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**加载 Graph 浏览器**：若要加载该工具，请导航到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。 单击“登录”，并使用 Azure AD 帐户凭据登录，以针对租户运行 Graph 浏览器。 如果你针对自己的租户运行 Graph 资源资源器，则你或管理员需要在登录期间表示同意。 如果拥有 Office 365 订阅，则会自动拥有 Azure AD 租户。 用于登录 Office 365 的凭据事实上就是 Azure AD 帐户，你可以在图形资源资源器上使用这些凭据。
+**加载 Graph 浏览器**：若要加载该工具，请导航到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。 单击“登录”，并使用 Azure AD 帐户凭据登录，以针对租户运行 Graph 浏览器。 如果针对自己的租户运行 Graph 资源资源器，则你或管理员需要在登录期间表示同意。 如果拥有 Office 365 订阅，则会自动拥有 Azure AD 租户。 用于登录 Office 365 的凭据事实上就是 Azure AD 帐户，可以在图形资源资源器上使用这些凭据。
 
-**运行查询**：若要运行查询，请在请求文本框中键入你的查询，然后单击“获取”或单击 **Enter** 键。 结果将显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
+
+            **运行查询**：要运行查询，请在请求文本框中键入查询，然后单击“获取”****或单击 **Enter** 键。 结果会显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
 
 请注意，图形资源管理器具有以下功能与限制：
 
 * 对资源集的自动完成功能。 若要查看此功能，请单击请求文本框（公司 URL 出现的位置）。 可以从下拉列表中选择资源集。
-* 支持“me”和“myorganization”寻址别名。 例如，你可以使用 `https://graph.windows.net/me?api-version=1.6` 来返回登录用户的用户对象，或者使用 `https://graph.windows.net/myorganization/users?api-version=1.6` 来返回当前目录中的所有用户。
+* 支持“me”和“myorganization”寻址别名。 例如，可以使用 `https://graph.windows.net/me?api-version=1.6` 来返回登录用户的用户对象，或者使用 `https://graph.windows.net/myorganization/users?api-version=1.6` 来返回当前目录中的所有用户。
 * 响应标头部分。 此部分可用来帮助排查运行查询时所发生的问题。
 * 具有展开和折叠功能的 JSON 响应查看器。
 * 不支持显示缩略图照片。
@@ -82,11 +82,11 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 **编写和运行查询**：请完成以下步骤：
 
 1. 打开 Fiddler Web 调试器并切换到“编辑器”选项卡。
-2. 由于你要创建新的安全组，因此请从下拉菜单中选择“发布”作为 HTTP 方法。 有关对组对象的操作和权限的详细信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)中的[组](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#GroupEntity)。
+2. 由于要创建新的安全组，因此请从下拉菜单中选择“发布”作为 HTTP 方法。 有关对组对象的操作和权限的详细信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)中的[组](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#GroupEntity)。
 3. 在“发布”旁边的字段中，键入以下内容作为请求 URL：`https://graph.windows.net/mytenantdomain/groups?api-version=1.6`。
    
    > [!NOTE]
-   > 必须将 mytenantdomain 替换为你自己的 Azure AD 目录的域名。
+   > 必须将 mytenantdomain 替换成自己的 Azure AD 目录的域名。
    > 
    > 
 4. 在紧靠在“发布”下拉列表下面的字段中，键入以下内容：
@@ -98,7 +98,7 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
    ```
    
    > [!NOTE]
-   > 将 &lt;your access token&gt; 替换为你的 Azure AD 目录的访问令牌。
+   > 将 &lt;your access token&gt; 替换为 Azure AD 目录的访问令牌。
    > 
    > 
 5. 在“请求正文”字段中键入以下内容：

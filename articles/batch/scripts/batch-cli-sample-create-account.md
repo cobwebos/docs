@@ -34,14 +34,14 @@ ms.lasthandoff: 09/09/2017
 
 创建批处理帐户时，默认情况下，其计算节点由批处理服务在内部分配。 分配的计算节点受到单独的核心配额的限制。可以通过共享密钥凭据或 Azure Active Dirctory 令牌对帐户进行身份验证。
 
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account.sh "创建帐户")]
+[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account.sh "Create Account")]
 
 ## <a name="batch-account-using-user-subscription-sample-script"></a>使用用户订阅创建批处理帐户的示例脚本
 
 也可以选择让批处理在自己的 Azure 订阅中创建其计算节点。
 用于将计算节点分配到订阅的帐户必须通过 Azure Active Directory 令牌进行身份验证，分配的计算节点数将计入订阅配额。 若要在此模式下创建帐户，必须在创建帐户时指定 Key Vault 引用。
 
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "使用用户订阅创建帐户")]
+[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "Create Account using User Subscription")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

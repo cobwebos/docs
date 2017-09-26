@@ -37,7 +37,7 @@ ms.lasthandoff: 08/11/2017
 1. 用户输入 URL，通过应用程序代理访问本地应用程序。
 2. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
 3. 用户将令牌传递给应用程序代理。
-4. 应用程序代理验证令牌并从中检索用户主体名称 (UPN)，然后通过双重身份验证安全通道，将请求、UPN 和服务主体名称 (SPN) 发送到连接器。
+4. 应用程序代理验证令牌并从中检索用户主体名称 (UPN)，通过双重身份验证安全通道，将请求、UPN 和服务主体名称 (SPN) 发送到连接器。
 5. 连接器与本地 AD 执行 Kerberos 约束委托 (KCD) 协商，模拟用户将 Kerberos 令牌发送到应用程序。
 6. Active Directory 将应用程序的 Kerberos 令牌发送到连接器。
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
@@ -79,7 +79,7 @@ Sharepointserviceaccount 可以是 SPS 计算机帐户，或者是用于运行 S
 1. 根据[使用应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)中的说明发布应用程序。 请务必选择“Azure Active Directory”作为“预身份验证方法”。
 2. 应用程序显示在企业应用程序列表中之后，选择该应用程序并单击“单一登录”。
 3. 将单一登录模式设置为“集成 Windows 身份验证”。  
-4. 输入应用程序服务器的**内部应用程序 SPN**。 在本示例中，已发布应用程序的 SPN 为 http/www.contoso.com。 此 SPN 需要位于连接器可以向其提供委派的凭据的服务列表中。 
+4. 输入应用程序服务器的**内部应用程序 SPN**。 在本示例中，已发布应用程序的 SPN 为 http/www.contoso.com。此 SPN 需要位于连接器可以向其提供委派的凭据的服务列表中。 
 5. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。 有关详细信息，请参阅[使用不同的本地标识和云标识](#Working-with-different-on-premises-and-cloud-identities)
 
    ![高级应用程序配置](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)  

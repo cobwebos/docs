@@ -26,7 +26,7 @@ ms.lasthandoff: 07/28/2017
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>对 Azure 虚拟机的远程桌面连接进行故障排除
 与基于 Windows 的 Azure 虚拟机 (VM) 的远程桌面协议 (RDP) 连接可能会因各种原因而失败，使用户无法访问 VM。 问题可能出在 VM 上的远程桌面服务、网络连接或主计算机上的远程桌面客户端。 本文介绍解决 RDP 连接问题的一些最常见方法。 
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
 <a id="quickfixrdp"></a>
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 07/28/2017
     ![在 Azure 门户中重置用户凭据](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **重新启动 VM**。 此故障排除步骤可以更正 VM 本身具有的任何基础问题。
    
-    在 Azure 门户中选择 VM，并单击“概述”选项卡。 单击“重新启动”按钮：
+    在 Azure 门户中选择 VM，并单击“概述”选项卡。单击“重新启动”按钮：
    
     ![在 Azure 门户中重新启动 VM](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **重新部署 VM**。 此故障排除步骤将 VM 重新部署到 Azure 内的另一台主机，以更正任何基础平台或网络问题。
@@ -216,7 +216,7 @@ ms.lasthandoff: 07/28/2017
     ![在 Azure 门户中重置用户凭据](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **重新启动 VM**。 此故障排除步骤可以更正 VM 本身具有的任何基础问题。
    
-    在 Azure 门户中选择 VM，并单击“概述”选项卡。 单击“重新启动”按钮：
+    在 Azure 门户中选择 VM，并单击“概述”选项卡。单击“重新启动”按钮：
    
     ![在 Azure 门户中重新启动 VM](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 

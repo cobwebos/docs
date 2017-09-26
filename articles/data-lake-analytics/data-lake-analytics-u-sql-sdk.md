@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
-
 
 ---
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="install-azure-data-lake-u-sql-sdk"></a>安装 Azure Data Lake U-SQL SDK
 
-可从 Nuget.org 上的[此处](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)获取 Azure Data Lake U-SQL SDK。 在使用它之前，需要确保拥有以下依赖项。
+可从 Nuget.org 上的[此处](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)获取 Azure Data Lake U-SQL SDK。在使用它之前，需要确保拥有以下依赖项。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -69,7 +68,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 
 ### <a name="working-directory"></a>工作目录
 
-本地运行 U-SQL 脚本时，在编译期间，将在当前运行目录下创建一个工作目录。 除编译输出外，本地执行所需的运行时文件也将以卷影形式复制到此工作目录。 工作目录根文件夹名为“ScopeWorkDir”，该工作目录下的文件如下所示：
+本地运行 U-SQL 脚本时，在编译期间，会在当前运行目录下创建一个工作目录。 除编译输出外，本地执行所需的运行时文件也以卷影形式复制到此工作目录。 工作目录根文件夹名为“ScopeWorkDir”，该工作目录下的文件如下所示：
 
 |目录/文件|目录/文件|目录/文件|定义|说明|
 |--------------|--------------|--------------|----------|-----------|
@@ -138,7 +137,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 #### <a name="compile-and-run"></a>编译和运行
 
-**run** 命令用于编译脚本，然后执行编译的结果。 其命令行参数是 **compile** 和 **execute** 命令的参数组合。
+**run** 命令用于编译脚本，并执行编译的结果。 其命令行参数是 **compile** 和 **execute** 命令的参数组合。
 
     LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 

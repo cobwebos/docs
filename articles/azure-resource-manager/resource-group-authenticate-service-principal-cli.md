@@ -23,12 +23,12 @@ ms.lasthandoff: 07/21/2017
 ---
 # <a name="use-azure-cli-to-create-a-service-principal-to-access-resources"></a>使用 Azure CLI 创建服务主体来访问资源
 
-当有应用或脚本需访问资源时，可以为应用设置一个标识，然后使用其自己的凭据对应用进行身份验证。 此标识称为服务主体。 使用此方法能够：
+当有应用或脚本需访问资源时，可以为应用设置一个标识，并使用其自己的凭据对应用进行身份验证。 此标识称为服务主体。 使用此方法能够：
 
-* 将权限分配给应用标识，这些权限不同于你自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。
+* 将权限分配给应用标识，这些权限不同于自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。
 * 执行无人参与的脚本时，使用证书进行身份验证。
 
-本文介绍如何使用 [Azure CLI 1.0](../cli-install-nodejs.md) 对应用程序进行设置，使之能够使用自己的凭据和标识运行。 安装最新版本的 [Azure CLI 1.0](../cli-install-nodejs.md) 以确保你的环境满足本文中的示例。
+本文介绍如何使用 [Azure CLI 1.0](../cli-install-nodejs.md) 对应用程序进行设置，使之能够使用自己的凭据和标识运行。 安装最新版本的 [Azure CLI 1.0](../cli-install-nodejs.md) 以确保环境满足本文中的示例。
 
 ## <a name="required-permissions"></a>所需的权限
 若要完成本主题，必须在 Azure Active Directory 和 Azure 订阅中均具有足够的权限。 具体而言，必须能够在 Azure Active Directory 中创建应用并向角色分配服务主体。 
@@ -38,9 +38,9 @@ ms.lasthandoff: 07/21/2017
 现在转到[密码](#create-service-principal-with-password)或[证书](#create-service-principal-with-certificate)身份验证部分。
 
 ## <a name="create-service-principal-with-password"></a>使用密码创建服务主体
-在本部分中，你将执行以下步骤，创建包含密码的 AD 应用程序并“读取者”角色分配到服务主体。
+在本部分中，会执行以下步骤，创建包含密码的 AD 应用程序并“读取者”角色分配到服务主体。
 
-1. 登录到你的帐户。
+1. 登录到帐户。
    
    ```azurecli
    azure login
@@ -51,7 +51,7 @@ ms.lasthandoff: 07/21/2017
    azure ad sp create -n exampleapp -p {your-password}
    ```
      
-   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为 `Client ID`。 
+   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。在示例应用程序中，此值称为 `Client ID`。 
      
    ```azurecli
    info:    Executing command ad sp create
@@ -128,7 +128,7 @@ ms.lasthandoff: 07/21/2017
    azure login -u 7132aca4-1bdb-4238-ad81-996ff91d8db4 --service-principal --tenant {tenant-id}
    ```
    
-    系统将提示输入密码。 提供在创建 AD 应用程序时指定的密码。
+    系统会提示输入密码。 提供在创建 AD 应用程序时指定的密码。
    
    ```azurecli
    info:    Executing command login
@@ -162,7 +162,7 @@ ms.lasthandoff: 07/21/2017
 
 3. 打开 **examplecert.pem** 文件并找到 **-----BEGIN CERTIFICATE-----** 与 **-----END CERTIFICATE-----** 之间的长字符序列。 复制证书数据。 创建服务主体时将此数据作为参数传递。
 
-4. 登录到你的帐户。
+4. 登录到帐户。
 
    ```azurecli
    azure login
@@ -173,7 +173,7 @@ ms.lasthandoff: 07/21/2017
    azure ad sp create -n exampleapp --cert-value {certificate data}
    ```
      
-   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为“客户端 ID”。 
+   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。在示例应用程序中，此值称为“客户端 ID”。 
      
    ```azurecli
    info:    Executing command ad sp create
@@ -257,7 +257,7 @@ ms.lasthandoff: 07/21/2017
    azure login --service-principal --tenant {tenant-id} -u 4fd39843-c338-417d-b549-a545f584a745 --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
    ```
 
-现在，你已作为所创建 Azure Active Directory 应用程序的服务主体进行身份验证。
+现在，已作为所创建 Azure Active Directory 应用程序的服务主体进行身份验证。
 
 ## <a name="change-credentials"></a>更改凭据
 
@@ -279,9 +279,9 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 创建服务主体时，可能会遇到以下错误：
 
-* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。 请要求管理员向你分配管理员角色，或让用户能够注册应用。
+* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。请要求管理员向你分配管理员角色，或让用户能够注册应用。
 
-* 你的帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。 - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员将你添加到用户访问管理员角色。
+* 帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。 - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员你将添加到用户访问管理员角色。
 
 ## <a name="sample-applications"></a>示例应用程序
 有关在不同平台上通过应用程序登录的信息，请参阅：

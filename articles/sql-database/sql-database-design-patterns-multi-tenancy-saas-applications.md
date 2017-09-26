@@ -16,12 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
 ms.date: 02/01/2017
 ms.author: srinia
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
 ms.openlocfilehash: 0f6ba62a01f3211ccaae6b6c48f72e0de54aad78
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
-
 
 ---
 # <a name="design-patterns-for-multi-tenant-saas-applications-and-azure-sql-database"></a>多租户 SaaS 应用程序与 Azure SQL 数据库的设计模式
@@ -41,7 +40,7 @@ ms.lasthandoff: 06/09/2017
 * 直接面向客户的应用程序
 * 面向员工的企业应用程序
 
-专为云设计的 SaaS 应用程序，以及以合作伙伴数据库应用程序为根基的应用程序通常是多租户应用程序。 这些 SaaS 应用程序提供专用的软件应用程序即服务给其租户。 租户可以访问应用程序服务，对于随应用程序一起存储的关联数据有完全的所有权。 但是，为了享受 SaaS 的优点，租户在其本身的数据上必须让出一定程度的控制权。 他们信任 SaaS 供应商妥善保管数据，并与其他租户的数据隔离。 这种多租户 SaaS 应用程序的例子包括 MYOB、SnelStart 和 Salesforce.com。 每个应用程序可以根据租户边界分区，支持本文中所述的应用程序设计模式。
+专为云设计的 SaaS 应用程序，以及以合作伙伴数据库应用程序为根基的应用程序通常是多租户应用程序。 这些 SaaS 应用程序提供专用的软件应用程序即服务给其租户。 租户可以访问应用程序服务，对于随应用程序一起存储的关联数据有完全的所有权。 但是，为了享受 SaaS 的优点，租户在其本身的数据上必须让出一定程度的控制权。 他们信任 SaaS 供应商妥善保管数据，并与其他租户的数据隔离。 这种多租户 SaaS 应用程序的例子包括 MYOB、SnelStart 和 Salesforce.com。每个应用程序可以根据租户边界分区，支持本文中所述的应用程序设计模式。
 
 直接向客户或组织内员工（通常称为用户，而不是租户）提供服务的应用程序在多租户应用程序范畴内形成另一种类别。 客户只订阅服务，而不拥有服务提供程序所收集和存储的数据。 除非基于政府强制规定的隐私法规，服务提供程序不严格请求隔离客户彼此的数据。 这种面向客户的多租户应用程序示例包括 Netflix、Spotify 和 Xbox LIVE 等媒体内容提供程序。 还有其他可轻松分区的应用程序例子，包括面向客户的 Internet 级应用程序，或物联网 (IoT) 应用程序，其中，每个客户或设备都可充当分区。 可在不同的用户或设备之间划出分区边界。
 

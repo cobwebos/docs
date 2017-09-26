@@ -15,17 +15,16 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: juanpere
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 16603cc7f2d8743037da22466312f228f4319716
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 940be2b50fb08d5ed8fb709d979e609152628645
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>使用设备管理启动设备固件更新 (.NET/Node)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-## <a name="introduction"></a>介绍
-在[设备管理入门][lnk-dm-getstarted]教程中，已了解如何使用[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]基元来远程重新启动设备。 本教程使用相同的 IoT 中心基元，并演示如何进行端到端模拟固件更新。  此模式用于 [Raspberry Pi 设备实现示例][lnk-rpi-implementation]的固件更新实现。
+在[设备管理入门][lnk-dm-getstarted]教程中，已了解了如何使用[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]基元来远程重新启动设备。 本教程使用相同的 IoT 中心基元，并演示如何进行端到端模拟固件更新。  此模式用于 [Raspberry Pi 设备实现示例][lnk-rpi-implementation]的固件更新实现。
 
 本教程演示如何：
 

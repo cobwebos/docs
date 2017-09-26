@@ -536,7 +536,7 @@ PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyDat
 ```
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
-为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) cmdlet 来完成。 在本示例中，我们假设要将文件还原到 *C:\temp*。 此外，我们假设要跳过目标文件夹 *C:\temp* 中已存在的文件。 若要创建此类恢复选项，请使用以下命令：
+为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) cmdlet 来完成。 在本示例中，我们假设要将文件还原到 *C:\temp*。此外，我们假设要跳过目标文件夹 *C:\temp* 中已存在的文件。若要创建此类恢复选项，请使用以下命令：
 
 ```
 PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip

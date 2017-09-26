@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory B2B 协作邀请兑换 | Microsoft 文档"
 description: "Azure Active Directory B2B 协作邀请兑换体验"
 services: active-directory
@@ -16,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/24/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: aea802af038786c58d9640333458ad88fe8f90bd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
-
 
 ---
 

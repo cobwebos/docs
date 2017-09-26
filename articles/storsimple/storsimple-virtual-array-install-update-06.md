@@ -14,7 +14,7 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
 ms.openlocfilehash: 111976cd684561f5bc63b92f09a20470fe3036d7
 ms.contentlocale: zh-cn
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/22/2017
 >
 > - 如果要运行 Update 0.2 或更高版本，建议通过 Azure 门户安装更新。 如果正在运行 Update 0.1 或 GA 软件版本，必须使用修补程序方法通过本地 Web UI 安装 Update 0.6。
 >
-> - 请记住，安装更新或修补程序会重新启动你的设备。 假定 StorSimple Virtual Array 是单节点设备，任何正在进行的 I/O 都将中断，你的设备也会停机。
+> - 请记住，安装更新或修补程序会重新启动设备。 假定 StorSimple Virtual Array 是单节点设备，任何正在进行的 I/O 都将中断，设备也会停机。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/22/2017
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-完成安装后，转到 StorSimple Device Manager 服务。 选择“设备”，然后选择并单击刚刚更新的设备。 转到“设置”>“管理”>“设备更新”。 显示的软件版本应为 10.0.10293.0。
+完成安装后，转到 StorSimple Device Manager 服务。 选择“设备”，并选择并单击刚刚更新的设备。 转到“设置”>“管理”>“设备更新”。 显示的软件版本应为 10.0.10293.0。
 
 ## <a name="use-the-local-web-ui"></a>使用本地 Web UI
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 05/22/2017
 
     可看到：
     -  Microsoft 更新独立程序包文件 `WindowsTH-KB3011067-x64`。 此文件用于更新设备软件。
-    - Geneva 监视代理程序包文件 `GenevaMonitoringAgentPackageInstaller`。 此文件用于更新监视和诊断服务 (MDS) 代理。 双击 cab 文件。 随即显示一个 .msi 文件。 选择该文件，右键单击然后“提取”该文件。 使用该 .msi 文件来更新代理。
+    - Geneva 监视代理程序包文件 `GenevaMonitoringAgentPackageInstaller`。 此文件用于更新监视和诊断服务 (MDS) 代理。 双击 cab 文件。 随即显示一个 .msi 文件。 选择该文件，右键单击并“提取”该文件。 使用该 .msi 文件来更新代理。
 
         ![提取 MDS 代理更新文件](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 05/22/2017
 
 ### <a name="install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-在安装更新或修补程序之前，确保更新或修补程序已本地下载到你的主机上，或可通过网络共享访问。
+在安装更新或修补程序之前，确保更新或修补程序已本地下载到主机上，或可通过网络共享访问。
 
 使用此方法，在运行 GA 或 Update 0.1 软件版本的设备上安装更新。 完成此过程大约需 12 分钟。 执行以下步骤，安装更新或修补程序。
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 05/22/2017
    
     ![更新设备](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. 在“更新文件路径”中，输入更新或修补程序的文件名。 你也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用” 。
+2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用” 。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 05/22/2017
    
     ![更新设备](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. 重新启动完成后，你将转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 Update 0.6 显示的软件版本应为 10.0.0.0.0.10293。
+5. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 Update 0.6 显示的软件版本应为 10.0.0.0.0.10293。
    
    > [!NOTE]
    > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 10.0.0.0.0.10293，而 Azure 门户则报告 10.0.10293.0。

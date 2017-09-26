@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: e8a6db7963203d747b1f506d0cfae8b3e98d58d3
-ms.openlocfilehash: 4b5c9e4c62fbcf548aad1dbe242e2df0f2f5d41f
-ms.lasthandoff: 11/18/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: e109e92d8add47315f483a3ba027912f4b2ee1fd
+ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 03/15/2017
 
 ---
  
@@ -37,48 +37,48 @@ ms.lasthandoff: 11/18/2016
 | ---------- |--------------|
 | BadParameterValue | 提供的参数值不满足参数中的参数规则 |
 | BadSubscriptionId | 用于评分的订阅 ID 不是资源中的 ID。 |
-| BadVersionCall | API 调用期间传递了无效的版本参数: {0}。 请查看 API 帮助页传递正确的版本，然后重试。 |
-| BatchJobInputsNotSpecified | 未在请求中指定以下必需输入: {0}。 请确保指定所有输入数据，然后重试。 |
-| BatchJobInputsTooManySpecified | 请求指定的输入数目超过了服务中定义的数目。 接受的输入列表: {0}。 请确保正确指定所有输入数据，然后重试。 |
-| BlobNameTooLong | 为诊断输出提供的 Azure Blob 存储路径太长: {0}。 请缩短路径，然后重试。 |
+| BadVersionCall | API 调用期间传递了无效的版本参数: {0}。 请查看 API 帮助页传递正确的版本，并重试。 |
+| BatchJobInputsNotSpecified | 未在请求中指定以下必需输入: {0}。 请确保指定所有输入数据，并重试。 |
+| BatchJobInputsTooManySpecified | 请求指定的输入数目超过了服务中定义的数目。 接受的输入列表: {0}。 请确保正确指定所有输入数据，并重试。 |
+| BlobNameTooLong | 为诊断输出提供的 Azure Blob 存储路径太长: {0}。 请缩短路径，并重试。 |
 | BlobNotFound | 无法访问提供的 Azure Blob - {0}。  Azure 错误消息: {1}。 |
-| ContainerIsEmpty | 未提供 Azure 存储容器名称。 请提供有效的容器名称，然后重试。 |
-| ContainerSegmentInvalid | 容器名称无效。 请提供有效的容器名称，然后重试。 |
+| ContainerIsEmpty | 未提供 Azure 存储容器名称。 请提供有效的容器名称，并重试。 |
+| ContainerSegmentInvalid | 容器名称无效。 请提供有效的容器名称，并重试。 |
 | ContainerValidationFailed | Blob 容器验证失败并出现以下错误: {0}。 |
-| DataTypeNotSupported | 提供了不支持的数据类型。 请提供有效的数据类型，然后重试。 |
-| DuplicateInputInBatchCall | 批处理请求无效。 不能同时指定单输入和多输入。 请从请求中删除这些项中的一个，然后重试。 |
-| ExpiryTimeInThePast | 提供的过期时间已过去: {0}。 请提供将来的过期时间(UTC)，然后重试。 若要设置为永不过期，请将过期时间设置为 NULL。 |
+| DataTypeNotSupported | 提供了不支持的数据类型。 请提供有效的数据类型，并重试。 |
+| DuplicateInputInBatchCall | 批处理请求无效。 不能同时指定单输入和多输入。 请从请求中删除这些项中的一个，并重试。 |
+| ExpiryTimeInThePast | 提供的过期时间已过去: {0}。 请提供将来的过期时间(UTC)，然后重试。 要设置为永不过期，请将过期时间设置为 NULL。 |
 | IncompleteSettings | 诊断设置不完整。 |
-| InputBlobRelativeLocationInvalid | 未提供 Azure 存储 Blob 名称。 请提供有效的 Blob 名称，然后重试。 |
-| InvalidBlob | Blob 的 Blob 规范无效: {0}。 请检查连接字符串/相对路径或 SAS 令牌规范是否正确，然后重试。 |
-| InvalidBlobConnectionString | 为某个输入/输出 Blob 指定的连接字符串无效: {0}。 请更正此问题，然后重试。 |
+| InputBlobRelativeLocationInvalid | 未提供 Azure 存储 Blob 名称。 请提供有效的 Blob 名称，并重试。 |
+| InvalidBlob | Blob 的 Blob 规范无效: {0}。 请检查连接字符串/相对路径或 SAS 令牌规范是否正确，并重试。 |
+| InvalidBlobConnectionString | 为某个输入/输出 Blob 指定的连接字符串无效: {0}。 请更正此问题，并重试。 |
 | InvalidBlobExtension | Blob 引用: {0} 的某个文件扩展名无效或缺失。 此输出类型支持的文件扩展名为: "{1}"。 |
 | InvalidInputNames | 在请求中指定了无效的服务输入名称: {0}。 请将输入数据映射到正确的服务输入，然后重试。 |
 | InvalidOutputOverrideName | 输出重写名称无效: {0}。 服务中没有任何输出节点使用此名称。 请向重写传入正确的输出节点名称(区分大小写)。 |
 | InvalidQueryParameter | 查询参数“{0}”无效。 {1} |
-| MissingInputBlobInformation | 缺少 Azure 存储 Blob 信息。 请提供有效的连接字符串和相对路径或 URI，然后重试。 |
-| MissingJobId | 未提供作业 ID。 首次提交作业时会返回作业 ID。 请检查作业 ID 是否正确，然后重试。 |
+| MissingInputBlobInformation | 缺少 Azure 存储 Blob 信息。 请提供有效的连接字符串和相对路径或 URI，并重试。 |
+| MissingJobId | 未提供作业 ID。 首次提交作业时会返回作业 ID。 请检查作业 ID 是否正确，并重试。 |
 | MissingKeys | 未提供任何密钥，或者未提供某个主密钥或辅助密钥。 |
-| MissingModelPackage | 未提供模型包 ID 或模型包。 请提供有效的模型包 ID 或模型包，然后重试。 |
+| MissingModelPackage | 未提供模型包 ID 或模型包。 请提供有效的模型包 ID 或模型包，并重试。 |
 | MissingOutputOverrideSpecification | 请求中缺少输出重写 {0} 的 Blob 规范。 请在请求中指定有效的 Blob 位置；如果不需要位置重写，请删除输出规范。 |
-| MissingRequestInput | Web 服务要求提供输入，但未提供任何输入。 请确保根据模型中发布的输入端口提供有效输入，然后重试。 |
-| MissingRequiredGlobalParameters | 未提供所有必需的 Web 服务参数。 请检查模块所需的参数是否正确，然后重试。 |
+| MissingRequestInput | Web 服务要求提供输入，但未提供任何输入。 请确保根据模型中发布的输入端口提供有效输入，并重试。 |
+| MissingRequiredGlobalParameters | 未提供所有必需的 Web 服务参数。 请检查模块所需的参数是否正确，并重试。 |
 | MissingRequiredOutputOverrides | 调用加密的服务终结点时，必须为服务的所有输出传入输出重写。 以下输出目前缺少重写: {0} |
-| MissingWebServiceGroupId | 未提供 Web 服务组 ID。 请提供有效的 Web 服务组 ID，然后重试。 |
-| MissingWebServiceId | 未提供 Web 服务 ID。 请提供有效的 Web 服务 ID，然后重试。 |
-| MissingWebServicePackage | 未提供 Web 服务包。 请提供有效的 Web 服务包，然后重试。 |
-| MissingWorkspaceId | 未提供工作区 ID。 请提供有效的工作区 ID，然后重试。 |
-| ModelConfigurationInvalid | 模型包中的模型配置无效。 请确保模型配置包含输出终结点定义、std 错误终结点和 std out 终结点，然后重试。 |
-| ModelPackageIdInvalid | 模型包 ID 无效。 请检查模型包 ID 是否正确，然后重试。 |
+| MissingWebServiceGroupId | 未提供 Web 服务组 ID。 请提供有效的 Web 服务组 ID，并重试。 |
+| MissingWebServiceId | 未提供 Web 服务 ID。 请提供有效的 Web 服务 ID，并重试。 |
+| MissingWebServicePackage | 未提供 Web 服务包。 请提供有效的 Web 服务包，并重试。 |
+| MissingWorkspaceId | 未提供工作区 ID。 请提供有效的工作区 ID，并重试。 |
+| ModelConfigurationInvalid | 模型包中的模型配置无效。 请确保模型配置包含输出终结点定义、std 错误终结点和 std out 终结点，并重试。 |
+| ModelPackageIdInvalid | 模型包 ID 无效。请检查模型包 ID 是否正确，并重试。 |
 | RequestBodyInvalid | 未提供请求正文，或者反序列化请求正文时出错。 |
-| RequestIsEmpty | 未提供请求。 请提供有效请求，然后重试。 |
-| UnexpectedParameter | 提供了意外的参数。 请检查所有参数名称是否拼写正确，只传递所需的参数，然后重试。 |
+| RequestIsEmpty | 未提供请求。 请提供有效请求，并重试。 |
+| UnexpectedParameter | 提供了意外的参数。 请检查所有参数名称是否拼写正确，只传递所需的参数，并重试。 |
 | UnknownError | 未知错误。 |
 | UserParameterInvalid | {0} |
 | WebServiceConcurrentRequestRequirementInvalid | 无法更改 {0} Web 服务的并发请求要求。 |
 | WebServiceIdInvalid | 提供的 Web 服务 ID 无效。 Web 服务 ID 应是有效的 GUID。 |
 | WebServiceTooManyConcurrentRequestRequirement | 无法将并发请求要求设置为超过 {0}。 |
-| WebServiceTypeInvalid | 提供的 Web 服务类型无效。 请检查 Web 服务类型是否正确，然后重试。 有效的 Web 服务类型: {0}。 |
+| WebServiceTypeInvalid | 提供的 Web 服务类型无效。 请检查 Web 服务类型是否正确，并重试。 有效的 Web 服务类型: {0}。 |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument（HTTP 状态代码 400）
  
@@ -88,8 +88,8 @@ ms.lasthandoff: 11/18/2016
 | ---------- |--------------|
 | InputMismatchError | 输入数据与输入端口架构不匹配。 |
 | InputParseError | 分析输入向量失败。  请检查输入向量是否包含正确的列数和数据类型。  其他详细信息: {0}。 |
-| MissingRequiredGlobalParameters | 缺少 Web 服务所需的参数。 请检查 Web 服务的所有必需参数是否正确，然后重试。 |
-| UnexpectedParameter | 请检查是否已传递 Web 服务的所有必需参数，然后重试。 |
+| MissingRequiredGlobalParameters | 缺少 Web 服务所需的参数。 请检查 Web 服务的所有必需参数是否正确，并重试。 |
+| UnexpectedParameter | 请检查是否已传递 Web 服务的所有必需参数，并重试。 |
 | UserParameterInvalid | {0} |
  
 ## <a name="invalidoperation-http-status-code-400"></a>InvalidOperation（HTTP 状态代码 400）
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/18/2016
  
 ## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError（HTTP 状态代码 400）
  
-Web 服务包无效。 请检查提供的 Web 服务包是否正确，然后重试。
+Web 服务包无效。 请检查提供的 Web 服务包是否正确，并重试。
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|
@@ -138,10 +138,10 @@ Web 服务包无效。 请检查提供的 Web 服务包是否正确，然后重�
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|
-| ModelPackageNotFound | 找不到模型包。 请检查模型包 ID 是否正确，然后重试。 |
-| WebServiceIdNotFoundInWorkspace | 在此工作区下找不到 Web 服务。 webServiceId 与 workspaceId 之间不匹配。 请检查提供的 Web 服务是否属于该工作区，然后重试。 |
-| WebServiceNotFound | 找不到 Web 服务。 请检查 Web 服务 ID 是否正确，然后重试。 |
-| WorkspaceNotFound | 找不到工作区。 请检查工作区 ID 是否正确，然后重试。 |
+| ModelPackageNotFound | 找不到模型包。 请检查模型包 ID 是否正确，并重试。 |
+| WebServiceIdNotFoundInWorkspace | 在此工作区下找不到 Web 服务。 webServiceId 与 workspaceId 之间不匹配。 请检查提供的 Web 服务是否属于该工作区，并重试。 |
+| WebServiceNotFound | 找不到 Web 服务。 请检查 Web 服务 ID 是否正确，并重试。 |
+| WorkspaceNotFound | 找不到工作区。 请检查工作区 ID 是否正确，并重试。 |
  
 ## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout（HTTP 状态代码 408）
  
@@ -189,7 +189,7 @@ Web 服务包无效。 请检查提供的 Web 服务包是否正确，然后重�
 | InvalidResourceCacheConfiguration |  |
 | InvalidResourceDownloadConfiguration |  |
 | InvalidWebServiceResources |  |
-| MissingTaskInstance | 未提供参数。 请检查是否传递了有效参数，然后重试。 |
+| MissingTaskInstance | 未提供参数。 请检查是否传递了有效参数，并重试。 |
 | ModelPackageInvalid |  |
 | ModuleExecutionFailed |  |
 | ModuleLoadFailed |  |
@@ -218,12 +218,12 @@ Web 服务包无效。 请检查提供的 Web 服务包是否正确，然后重�
  
 ## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError（HTTP 状态代码 500）
  
-模型包无效。 请检查提供的模型包是否正确，然后重试。
+模型包无效。 请检查提供的模型包是否正确，并重试。
  
  
 ## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError（HTTP 状态代码 500）
  
-Web 服务包无效。 请检查提供的 Web 包是否正确，然后重试。
+Web 服务包无效。 请检查提供的 Web 包是否正确，并重试。
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|

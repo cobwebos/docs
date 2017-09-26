@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: f98d769542f5a52d659f561e970f0a7e9dce9fd9
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: adb454e56378a800c671614735aec78b6851aeb2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 流式处理配合使用
@@ -150,29 +150,29 @@ namespace reducer
 
 创建该应用程序后，生成它以在项目目录中生成 `/bin/Debug/reducer.exe` 文件。
 
-## <a name="upload-to-storage"></a>上载到存储
+## <a name="upload-to-storage"></a>上传到存储
 
 1. 在 Visual Studio 中，打开“服务器资源管理器”。
 
 2. 依次展开“Azure”和“HDInsight”。
 
-3. 如果出现提示，请输入 Azure 订阅凭据，然后单击“登录”。
+3. 如果出现提示，请输入 Azure 订阅凭据，并单击“登录”。
 
 4. 展开要将此应用程序部署到的 HDInsight 群集。 将列出带有文本“（默认存储帐户）”的条目。
 
     ![显示群集存储帐户的服务器资源管理器](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请展开该条目，然后双击“（默认容器）”。
+    * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”。
 
     * 如果此条目无法展开，则在使用 __Azure Data Lake Store__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
 
 5. 若要上传 .exe 文件，请使用以下方法之一：
 
-    * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，然后浏览到“mapper” 项目的“bin\debug”文件夹。 最后，选择“mapper.exe”文件，然后单击“确定”。
+    * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，并浏览到“mapper” 项目的“bin\debug”文件夹。 最后，选择“mapper.exe”文件，并单击“确定”。
 
-        ![上载图标](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+        ![上传图标](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * 如果使用的是 __Azure Data Lake Store__，请右键单击文件列表中的空白区域，然后选择“上传”。 最后，选择“mapper.exe”文件，然后单击“打开”。
+    * 如果使用的是 __Azure Data Lake Store__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“mapper.exe”文件，并单击“打开”。
 
     上传“mapper.exe”完成后，请为“reducer.exe”文件重复该上传过程。
 
@@ -227,7 +227,7 @@ namespace reducer
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-此脚本将提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 完成作业后，输出将下载到从中运行脚本的目录的 `output.txt` 文件。 以下文本是 `output.txt` 文件中数据的示例：
+此脚本会提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 完成作业后，输出将下载到从中运行脚本的目录的 `output.txt` 文件。 以下文本是 `output.txt` 文件中数据的示例：
 
     you     1128
     young   38

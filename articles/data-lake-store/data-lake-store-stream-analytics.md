@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4ecf4f8594f7a274bec231fb74c4caa22c3cc354
-ms.openlocfilehash: b5f2ae124ca3276e15e0d1f75d655ec346bf8ee8
+ms.translationtype: HT
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 90104aaacf24a5a7156900fc3848a27f60329814
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/06/2017
-
+ms.lasthandoff: 07/01/2017
 
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>使用 Azure Stream Analytics 从 Azure 存储 Blob 流处理数据到 Data Lake Store
@@ -31,7 +30,7 @@ ms.lasthandoff: 01/06/2017
 >
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
+在开始阅读本教程前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 01/06/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在左窗格中，单击“流分析作业”，然后单击“添加”。
+2. 在左窗格中，单击“流分析作业”，并单击“添加”。
 
     ![创建流分析作业](./media/data-lake-store-stream-analytics/create.job.png "创建流分析作业")
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 01/06/2017
 
 ## <a name="create-a-blob-input-for-the-job"></a>创建作业的 Blob 输入
 
-1. 打开流分析作业页，在左窗格中单击“输入”选项卡，然后单击“添加”。
+1. 打开流分析作业页，在左窗格中单击“输入”选项卡，并单击“添加”。
 
     ![为作业添加输入](./media/data-lake-store-stream-analytics/create.input.1.png "为作业添加输入")
 
@@ -77,7 +76,7 @@ ms.lasthandoff: 01/06/2017
 
 ## <a name="create-a-data-lake-store-output-for-the-job"></a>创建作业的 Data Lake Store 输出
 
-1. 打开流分析作业页，单击“输出”选项卡，然后单击“添加”。
+1. 打开流分析作业页，单击“输出”选项卡，并单击“添加”。
 
     ![为作业添加输出](./media/data-lake-store-stream-analytics/create.output.1.png "为作业添加输出")
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 01/06/2017
 
     * 对于“输出别名”，输入此作业输出的唯一名称。 该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Store。
     * 对于“接收器”，选择“Data Lake Store”。
-    * 系统将会提示你授权访问 Data Lake Store 帐户。 单击“授权”。
+    * 系统会提示授权访问 Data Lake Store 帐户。 单击“授权”。
 
 3. 在“新建输出”边栏选项卡中，继续提供以下值。
 
@@ -105,17 +104,17 @@ ms.lasthandoff: 01/06/2017
     
 ## <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-1. 若要运行流分析作业，必须从“查询”选项卡运行查询。 对于本教程，通过将占位符替换为作业输入和输出别名，可运行示例查询，如下面的屏幕截图所示。
+1. 若要运行流分析作业，必须从“查询”选项卡运行查询。对于本教程，通过将占位符替换为作业输入和输出别名，可运行示例查询，如下面的屏幕截图所示。
 
     ![运行查询](./media/data-lake-store-stream-analytics/run.query.png "运行查询")
 
-2. 单击屏幕顶部的“保存”，然后在“概述”选项卡上，单击“启动”。 从对话框中选择“自定义时间”，然后设置当前日期和时间。
+2. 单击屏幕顶部的“保存”，并在“概述”选项卡上，单击“启动”。 从对话框中选择“自定义时间”，并设置当前日期和时间。
 
     ![设置作业时间](./media/data-lake-store-stream-analytics/run.query.2.png "设置作业时间")
 
     单击“启动”以启动作业。 启动作业可能会占用几分钟。
 
-3. 若要触发作业以从 blob 中选取数据，请将示例数据文件复制到 blob 容器。 可以从 [存储库](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)获取示例数据文件。 在本教程中，让我们复制文件 **vehicle1_09142014.csv**。 可以使用各种客户端（如 [Azure 存储资源管理器](http://storageexplorer.com/)将数据上传到 blob 容器。
+3. 要触发作业以从 blob 中选取数据，请将示例数据文件复制到 blob 容器。 可以从 [存储库](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)获取示例数据文件。 在本教程中，让我们复制文件 **vehicle1_09142014.csv**。 可以使用各种客户端（[Azure 存储资源管理器](http://storageexplorer.com/)将数据上传到 blob 容器。
 
 4. 在“概述”选项卡上的“监视”下，查看如何处理数据。
 

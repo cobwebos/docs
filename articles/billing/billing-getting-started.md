@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: tonguyen
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 474550e5b9ebb0a2741c66f92a13cd78ae4a0e5c
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: d74f649a8b5f35ffe16479576959e5ebb2857bf1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
@@ -164,7 +164,7 @@ ms.lasthandoff: 09/15/2017
 
 ### <a name="check-your-subscription-and-access"></a>查看订阅和访问权限
 
-查看成本需要[对计费信息具有订阅级别访问权限](billing-manage-access.md)，但只有帐户管理员可以访问[帐户中心](https://account.windowsazure.com/Home/Index)、更改计费信息和管理订阅。 帐户管理员是完成注册过程的人员。 有关详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
+查看成本需要[对计费信息具有订阅级别访问权限](billing-manage-access.md)，但只有帐户管理员可以访问[帐户中心](https://account.azure.com/Subscriptions)、更改计费信息和管理订阅。 帐户管理员是完成注册过程的人员。 有关详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
 
 要查看你是否是帐户管理员，请转到 [Azure 门户中的订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，并查看你有权访问的订阅列表。 在“我的角色”下查看。 如果显示*帐户管理员*，则可以进行操作。 如果显示所有者等其他信息，则表示没有完全权限。
 

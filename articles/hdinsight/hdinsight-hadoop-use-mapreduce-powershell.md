@@ -60,7 +60,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改为 **mapreducejob.ps1** 文件所在位置，然后使用以下命令来运行脚本：
+2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改为 **mapreducejob.ps1** 文件所在位置，并使用以下命令来运行脚本：
 
         .\mapreducejob.ps1
 
@@ -94,7 +94,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 ## <a id="troubleshooting"></a>故障排除
 
-如果作业完成时未返回任何信息，请查看该作业的错误。 要查看此作业的错误信息，请将以下命令添加到 **mapreducejob.ps1** 文件的末尾，保存，然后重新运行该文件。
+如果作业完成时未返回任何信息，请查看该作业的错误。 要查看此作业的错误信息，请将以下命令添加到 **mapreducejob.ps1** 文件的末尾，保存，并重新运行该文件。
 
 ```powershell
 # Print the output of the WordCount job.
@@ -110,7 +110,7 @@ Get-AzureRmHDInsightJobOutput `
 
 ## <a id="summary"></a>摘要
 
-如你所见，Azure PowerShell 提供了简单的方法，可在 HDInsight 群集上运行 MapReduce 作业、监视作业状态，以及检索输出。
+如你所见，Azure PowerShell 提供了简单的方法让你在 HDInsight 群集上运行 MapReduce 作业、监视作业状态，以及检索输出。
 
 ## <a id="nextsteps"></a>后续步骤
 

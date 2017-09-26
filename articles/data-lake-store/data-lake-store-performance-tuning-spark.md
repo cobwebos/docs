@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 29d4a361f98c63dab30155855d603a809eb804c8
 ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/14/2017
 
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>Spark on HDInsight 和 Azure Data Lake Store 性能优化指南
@@ -65,7 +66,7 @@ ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
     executor-cores = 4
 增加执行器核心数可以提高并行度，这样可以体验不同执行器核心数带来的效果。  对于执行较复杂操作的作业，应减少每个执行器的核心数。  如果执行器核心数设置为 4 以上，则垃圾回收可能会变得低效，并且性能会下降。
 
-**步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看“配置”选项卡即可。  YARN 内存量将显示在此窗口中。  
+**步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看“配置”选项卡即可。YARN 内存量会显示在此窗口中。  
 注意：在该窗口中操作时，还可以查看默认的 YARN 容器大小。  YARN 容器大小与每个执行器的内存量参数相同。
 
     Total YARN memory = nodes * YARN memory per node
@@ -85,9 +86,10 @@ ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
 
 ## <a name="example-calculation"></a>示例计算
 
-假设当前的某个群集由 8 个 D4v2 节点构成，该群集正在运行 2 个应用，包括你要运行的应用。  
+假设当前的某个群集由 8 个 D4v2 节点构成，该群集正在运行 2 个应用，包括要运行的应用。  
 
-**步骤 1：确定群集中运行的应用数目** – 已知群集中正在运行 2 个应用，包括你要运行的应用。  
+
+            **步骤 1：确定群集中运行的应用数目** – 已知群集中正在运行 2 个应用，包括要运行的应用。  
 
 **步骤 2：设置执行器内存** – 对于本示例，我们确定 6GB 执行器内存对于 I/O 密集型作业已足够。  
 
@@ -118,10 +120,5 @@ ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)
     num-executors = 16    
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
