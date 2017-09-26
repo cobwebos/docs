@@ -20,10 +20,8 @@ ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
-# Manage Storage Accounts in Azure Stack
-<a id="manage-storage-accounts-in-azure-stack" class="xliff"></a>
+# <a name="manage-storage-accounts-in-azure-stack"></a>Manage Storage Accounts in Azure Stack
 Learn how to manage storage accounts in Azure Stack to find, recover, and reclaim storage capacity based on business needs.
 
 ## <a name="find"></a>Find a storage account
@@ -67,14 +65,12 @@ You can use free text here to help find the account you are interested in.
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
-## Look at account details
-<a id="look-at-account-details" class="xliff"></a>
+## <a name="look-at-account-details"></a>Look at account details
 Once you have located the accounts you are interested in viewing, you can click the particular account to view certain details. A new blade opens with the account details such as: the type of the account, creation time, location, etc.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
-## Recover a deleted account
-<a id="recover-a-deleted-account" class="xliff"></a>
+## <a name="recover-a-deleted-account"></a>Recover a deleted account
 You may be in a situation where you need to recover a deleted account.
 
 In Azure Stack there is a very simple way to do that:
@@ -94,8 +90,7 @@ In Azure Stack there is a very simple way to do that:
    
    Once the recovered account is successfully synchronized, it can be used again.
 
-### Some Gotchas
-<a id="some-gotchas" class="xliff"></a>
+### <a name="some-gotchas"></a>Some Gotchas
 * Your deleted account shows state as **out of retention**.
   
   This means that the deleted account has exceeded the retention period and may not be recoverable.
@@ -103,8 +98,7 @@ In Azure Stack there is a very simple way to do that:
   
   This could mean that the deleted account has already been garbage collected. In this case it cannot be recovered. See [Reclaim capacity](#reclaim) in this topic.
 
-## Set the retention period
-<a id="set-the-retention-period" class="xliff"></a>
+## <a name="set-the-retention-period"></a>Set the retention period
 The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 15 days. Setting the value to “0” means that any deleted account is immediately out of retention and marked for periodic garbage collection.
 
 **To change the retention period:**
@@ -157,8 +151,7 @@ You can also use PowerShell to explicitly override the retention period and imme
 For more details, refer to [Azure Stack powershell documentation.](https://msdn.microsoft.com/library/mt637964.aspx)
  
 
-## Migrate a container
-<a id="migrate-a-container" class="xliff"></a>
+## <a name="migrate-a-container"></a>Migrate a container
 Due to uneven storage use by tenants, an cloud operator may find one or more underlying tenant shares using more space than others. If this occurs, the cloud operator can attempt to free up some space on the stressed share by manually migrating some blob containers to another share. 
 
 You must use PowerShell to migrate containers.
