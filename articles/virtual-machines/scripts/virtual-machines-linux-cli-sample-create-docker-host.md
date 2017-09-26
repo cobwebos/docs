@@ -34,7 +34,7 @@ ms.lasthandoff: 09/09/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-docker-host/create-docker-host.sh "Docker 主机")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-docker-host/create-docker-host.sh "Docker Host")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 

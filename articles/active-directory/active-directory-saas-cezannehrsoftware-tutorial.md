@@ -161,7 +161,7 @@ ms.lasthandoff: 08/10/2017
     ![“保存”按钮](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 > [!TIP]
-> 设置应用时，可以在 [Azure 门户](https://portal.azure.com)中阅读前述教程的简洁版本。 从“Active Directory” > “企业应用程序”部分添加应用后，请选择“单一登录”选项卡。 然后从“配置”部分访问嵌入式文档。 
+> 设置应用时，可以在 [Azure 门户](https://portal.azure.com)中阅读前述教程的简洁版本。 从“Active Directory” > “企业应用程序”部分添加应用后，请选择“单一登录”选项卡。然后从“配置”部分访问嵌入式文档。 
 
 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)。
 > 

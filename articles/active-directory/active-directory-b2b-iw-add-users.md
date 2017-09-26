@@ -1,5 +1,4 @@
 ---
-
 title: "信息工作者如何将 B2B 协作用户添加到 Azure Active Directory？ | Microsoft 文档"
 description: "B2B 协作允许信息工作者将其组织的用户添加到 Azure AD 以便进行访问 | Microsoft Docs"
 services: active-directory
@@ -16,7 +15,7 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: c6ca561d1a02e283c7932f08f53b8dd590208835
 ms.contentlocale: zh-cn

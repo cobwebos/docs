@@ -18,10 +18,10 @@ ms.date: 08/15/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: e918e2863384d44533efaee25d3fea3cceedba77
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 15c6d3b8a335be068ead512c9b9d93940086c9ab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
@@ -104,7 +104,7 @@ ms.lasthandoff: 08/31/2017
 
 ### <a name="whoisaa"></a> 谁是订阅的帐户管理员？
 
-帐户管理员是注册或购买 Azure 订阅的人员。 他们有权访问[帐户中心](https://account.windowsazure.com/Home/Index)并执行各种管理任务，例如创建订阅、取消订阅、更改订阅的计费信息，或者更改服务管理员。 如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
+帐户管理员是注册或购买 Azure 订阅的人员。 他们有权访问[帐户中心](https://account.azure.com/Subscriptions)并执行各种管理任务，例如创建订阅、取消订阅、更改订阅的计费信息，或者更改服务管理员。 如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
 
 1. 请访问 [Azure 门户中的订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 1. 选择要检查的订阅，并关注“设置”下的信息。

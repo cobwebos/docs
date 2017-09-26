@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 25b5e377d8d0d504860ab9a8c4dac49c9ca5b104
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>教程：Azure Active Directory 与 Moxi Engage 集成
@@ -117,7 +116,7 @@ ms.lasthandoff: 05/27/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [Moxi Engage 客户端支持团队](mailto:support@moxiworks.com)联系。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-moxiengage-tutorial/tutorial_moxiengage_certificate.png) 
 
@@ -154,7 +153,7 @@ ms.lasthandoff: 05/27/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-moxiengage-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -174,7 +173,7 @@ ms.lasthandoff: 05/27/2017
 
 若要将 Britta Simon 分配到 Moxi Engage，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

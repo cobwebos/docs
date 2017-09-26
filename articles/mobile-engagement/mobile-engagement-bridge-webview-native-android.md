@@ -14,10 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>使用原生 Mobile Engagement Android SDK 桥接 Android WebView
@@ -27,7 +28,7 @@ ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
 > 
 > 
 
-一些移动应用被设计为混合应用，其中应用本身是使用原生 Android 开发所开发的，但一些或者甚至所有的屏幕都会在 Android WebView 中呈现。 仍然可以在这些应用中使用 Mobile Engagement Android SDK，本教程将介绍如何进行此操作。 以下代码示例基于[此处](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)的 Android 文档。 本文档介绍了如何使用这种文档化的方法来实现 Mobile Engagement Android SDK 的常用方法，以便在通过 Android SDK 发送事件、作业、错误和应用信息时，混合应用的 Webview 也可以发起跟踪它们的请求。 
+一些移动应用被设计为混合应用，其中应用本身是使用原生 Android 开发所开发的，但一些或者甚至所有的屏幕都会在 Android WebView 中呈现。 仍然可以在这些应用中使用 Mobile Engagement Android SDK，本教程介绍如何进行此操作。 以下代码示例基于[此处](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)的 Android 文档。 本文档介绍了如何使用这种文档化的方法来实现 Mobile Engagement Android SDK 的常用方法，以便在通过 Android SDK 发送事件、作业、错误和应用信息时，混合应用的 Webview 也可以发起跟踪它们的请求。 
 
 1. 首先，需要确保已完成我们的[入门教程](mobile-engagement-android-get-started.md)，以便在混合应用中集成 Mobile Engagement Android SDK。 完成入门教程后，`OnCreate` 方法将如下所示。  
    
@@ -40,7 +41,7 @@ ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
             engagementConfiguration.setConnectionString("<Mobile Engagement Conn String>");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
         }
-2. 现在请确保你的混合应用有一个包含 Web 视图的屏幕。 其代码将类似于以下内容，我们将在屏幕的 `onCreate` 方法的 Webview 中加载本地 HTML 文件 **Sample.html**。 
+2. 现在请确保混合应用有一个包含 Web 视图的屏幕。 其代码将类似于以下内容，我们会在屏幕的 `onCreate` 方法的 Webview 中加载本地 HTML 文件 **Sample.html**。 
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -199,23 +200,18 @@ ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
         </html>
 7. 关于上述 HTML 文件，请注意以下几点：
    
-   * 它包含一组输入框，你可以在其中提供要用作事件、作业、错误和应用信息的名称的数据。 在单击它旁边的按钮时，将调用 Javascript，最终调用桥接文件中的方法将此调用传递到 Mobile Engagement Android SDK。 
+   * 它包含一组输入框，可以在其中提供要用作事件、作业、错误和应用信息的名称的数据。 在单击它旁边的按钮时，将调用 Javascript，最终调用桥接文件中的方法将此调用传递到 Mobile Engagement Android SDK。 
    * 我们对事件、作业和甚至是错误标记某些静态额外信息，以演示这是如何完成的。 如果查看 `WebAppInterface` 文件，此额外信息会以 JSON 字符串形式发送，JSON 字符串会经过解析并放入 Android `Bundle`中，并在发送事件、作业和错误时一起传递。 
-   * 启动一个 Mobile Engagement 作业，名称为你在输入框中指定的名称，运行 10 秒并关闭。 
-   * 系统会传递 Mobile Engagement 应用信息或标记，以“customer name”作为静态密钥，并将你在输入框中输入的值作为标记的值。 
-8. 运行该应用，你将看到以下内容。 现在为测试事件提供一些名称，如下所示，然后单击其下方的“**发送**”。 
+   * 启动一个 Mobile Engagement 作业，名称在输入框中指定的名称，运行 10 秒并关闭。 
+   * 系统会传递 Mobile Engagement 应用信息或标记，以“customer name”作为静态密钥，并会在输入框中输入的值作为标记的值。 
+8. 运行该应用，会看到以下内容。 现在为测试事件提供一些名称，如下所示，并单击其下方的“**发送**”。 
    
     ![][1]
-9. 如果你现在转到应用的“**监视器**”选项卡，查看“**事件 -> 详细信息**”，你将看到此事件以及我们发送的静态应用信息。 
+9. 如果现在转到应用的“**监视器**”选项卡，查看“**事件 -> 详细信息**”，会看到此事件以及我们发送的静态应用信息。 
    
    ![][2]
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-bridge-webview-native-android/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-android/event-output.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

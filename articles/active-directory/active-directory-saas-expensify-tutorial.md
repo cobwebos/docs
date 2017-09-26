@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: e45576fd92706881121469ccd82150b3d48059cd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>教程：Azure Active Directory 与 Expensify 的集成
@@ -55,7 +54,7 @@ ms.lasthandoff: 06/16/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-expensify-from-the-gallery"></a>从库中添加 Expensify
-若要配置 Expensify 与 Azure AD 的集成，需要从库中将 Expensify 添加到托管 SaaS 应用列表。
+要配置 Expensify 与 Azure AD 的集成，需要从库中将 Expensify 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Expensify，请执行以下步骤：**
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 06/16/2017
 
 若要配置并测试 Expensify 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Expensify 测试用户](#creating-an-expensify-test-user) - 在 Expensify 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -114,12 +113,12 @@ ms.lasthandoff: 06/16/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.expensify.com/authentication/saml/login`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符 URL”文本框中，使用以下模式键入 URL： `https://www.<companyname>.expensify.com/` 
+    b. 在“标识符 URL”文本框中，使用以下模式键入 URL：`https://www.<companyname>.expensify.com/` 
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的登录 URL 和标识符 URL 更新这些值。 请联系 [Expensify 客户端支持团队](mailto:help@expensify.com)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-expensify-tutorial/tutorial_expensify_certificate.png) 
 
@@ -139,7 +138,7 @@ ms.lasthandoff: 06/16/2017
     
     d. 单击已验证的域名。
     
-    e. 在左面板中，单击“SAML”，然后选择“启用”。
+    e. 在左面板中，单击“SAML”，并选择“启用”。
     
     f. 在记事本中打开来自 Azure AD 的已下载联合元数据，然后复制其内容并粘贴到“标识提供者元数据”文本框。
 
@@ -170,7 +169,7 @@ ms.lasthandoff: 06/16/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-expensify-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -180,7 +179,7 @@ ms.lasthandoff: 06/16/2017
  
 ### <a name="creating-an-expensify-test-user"></a>创建 Expensify 测试用户
 
-在本部分中，将在 Expensify 中创建一个名为 Britta Simon 的用户。 若要在 Expensify 平台中添加用户，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。
+在本部分中，会在 Expensify 中创建一个名为 Britta Simon 的用户。 若要在 Expensify 平台中添加用户，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -188,9 +187,9 @@ ms.lasthandoff: 06/16/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Expensify，请执行以下步骤：**
+**要将 Britta Simon 分配到 Expensify，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

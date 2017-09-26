@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: f5d6bb7ccbf15424e9940ccda2fac668a2af5a57
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
 
 ---
@@ -56,7 +57,7 @@ ms.lasthandoff: 04/12/2017
 ![启用 Git][api-management-enable-git]
 
 > [!IMPORTANT]
-> 未定义为属性的任何机密都将保存在存储库中，并将保留在其历史记录中，直到你禁用并重新启用 Git 访问。 属性提供了管理所有 API 配置和策略的常量字符串值（包括机密）的安全位置，因此无需将它们直接存储在策略声明中。 有关详细信息，请参阅[如何在 Azure API 管理策略中使用属性](api-management-howto-properties.md)。
+> 未定义为属性的任何机密都将保存在存储库中，并将保留在其历史记录中，直到禁用并重新启用 Git 访问。 属性提供了管理所有 API 配置和策略的常量字符串值（包括机密）的安全位置，因此无需将它们直接存储在策略声明中。 有关详细信息，请参阅[如何在 Azure API 管理策略中使用属性](api-management-howto-properties.md)。
 > 
 > 
 
@@ -67,7 +68,7 @@ ms.lasthandoff: 04/12/2017
 
 ![保存配置][api-management-save-configuration]
 
-在确认屏幕上进行任何所需的更改，然后单击“确定”保存。
+在确认屏幕上进行任何所需的更改，并单击“确定”保存。
 
 ![保存配置][api-management-save-configuration-confirm]
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 04/12/2017
 
 ![生成密码][api-management-generate-password]
 
-若要生成密码，先确保“到期”设置为所需的到期日期和时间，然后单击“生成令牌”。
+要生成密码，先确保“到期”设置为所需的到期日期和时间，并单击“生成令牌”。
 
 ![密码][api-management-password]
 
@@ -97,7 +98,7 @@ ms.lasthandoff: 04/12/2017
 > 
 > 
 
-以下示例使用 [Git for Windows](http://www.git-scm.com/downloads) 中的 Git Bash 工具，但你可以使用你熟悉的任何 Git 工具。
+以下示例使用 [Git for Windows](http://www.git-scm.com/downloads) 中的 Git Bash 工具，但可以使用熟悉的任何 Git 工具。
 
 使用发布者门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令以将 Git 存储库克隆到本地计算机。
 
@@ -113,7 +114,7 @@ git clone https://bugbashdev4.scm.azure-api.net/
 git clone https://username:password@bugbashdev4.scm.azure-api.net/
 ```
 
-如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，然后在“即时窗口”中发出以下命令。 若要打开“即使窗口”，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），然后从“调试”菜单中依次选择“Windows”、“即时”。
+如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”中发出以下命令。 要打开“即使窗口”，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”菜单中依次选择“Windows”、“即时”。
 
 ```
 ?System.NetWebUtility.UrlEncode("password from publisher portal")
@@ -128,7 +129,7 @@ git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 克隆存储库后，可在本地文件系统中查看和处理它。 有关详细信息，请参阅[本地 Git 存储库的文件和文件夹结构参考](#file-and-folder-structure-reference-of-local-git-repository)。
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新服务实例配置更新本地存储库
-如果在发布者门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用更新更改更新本地存储库。 若要执行此操作，请单击发布者门户中的“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
+如果在发布者门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用更新更改更新本地存储库。 要执行此操作，请单击发布者门户中的“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
 
 ```
 git pull
@@ -141,14 +142,14 @@ cd bugbashdev4.scm.azure-api.net/
 ```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>将更改从本地存储库推送到服务器存储器
-若要将更改从本地存储库推送到服务器存储库，必须提交更改，然后将它们推送到服务器存储库。 若要提交更改，请打开 Git 命令工具、切换到本地存储库的目录，然后发出以下命令。
+要将更改从本地存储库推送到服务器存储库，必须提交更改，然后将它们推送到服务器存储库。 要提交更改，请打开 Git 命令工具、切换到本地存储库的目录，并发出以下命令。
 
 ```
 git add --all
 git commit -m "Description of your changes"
 ```
 
-若要将所有提交推送到服务器，请运行以下命令。
+要将所有提交推送到服务器，请运行以下命令。
 
 ```
 git push
@@ -241,14 +242,14 @@ git push
 ### <a name="apis-folder"></a>apis 文件夹
 `apis` 文件夹针对服务实例中的每个 API 都包含一个文件夹，该文件夹包含以下项目。
 
-* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) 时将返回的相同信息。
+* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) 时会返回的相同信息。
 * `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 [API 实体](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties)的 `description` 属性。
 * `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中[操作实体](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)的 `description` 属性。
 
 ### <a name="groups-folder"></a>groups 文件夹
 `groups` 文件夹针对服务实例中定义的每个组都包含一个文件夹。
 
-* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup)操作时将返回的相同信息。
+* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup)操作时会返回的相同信息。
 * `groups\<group name>\description.html` - 这是组的说明，对应于[组实体](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties)的 `description` 属性。
 
 ### <a name="policies-folder"></a>policies 文件夹
@@ -268,7 +269,7 @@ git push
 ### <a name="products-folder"></a>products 文件夹
 `products` 文件夹针对服务实例中定义的每个产品都包含一个文件夹。
 
-* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct)操作时将返回的相同信息。
+* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct)操作时会返回的相同信息。
 * `products\<product name>\product.description.html` - 这是产品的说明，对应于 REST API 中[产品实体](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product)的 `description` 属性。
 
 ### <a name="templates"></a>模板

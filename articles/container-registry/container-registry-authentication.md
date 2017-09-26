@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: aa2a6bf3d7d9ec22020036851fc0f2bca37e31bf
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 75c5f00255e1a55dd84ba0cf17dbef56b0253334
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
@@ -53,7 +53,7 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 可将多个服务主体分配到注册表中，这样就可为不同的用户或应用程序定义访问权限。 服务主体也在开发人员或 DevOps 方案中启用到注册表的“无外设”连接，如以下示例所示：
 
-  * 从注册表到业务流程系统的容器部署（包括 DC/OS、Docker Swarm 和 Kubernetes）。 还可将容器注册表拉取到相关 Azure 服务，例如[容器服务](../container-service/index.yml)、[应用服务](../app-service/index.md)、[批处理](../batch/index.md)和 [Service Fabric](/azure/service-fabric/) 等。
+  * 从注册表到业务流程系统的容器部署（包括 DC/OS、Docker Swarm 和 Kubernetes）。 还可将容器注册表拉取到相关 Azure 服务，例如[容器服务](../container-service/index.yml)、[应用服务](../app-service/index.yml)、[批处理](../batch/index.md)和 [Service Fabric](/azure/service-fabric/) 等。
 
   * 构建容器映像并将它们推送到注册表的持续集成和部署解决方案（例如 Visual Studio Team Services 或 Jenkins）。
 
@@ -62,7 +62,7 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 
 ## <a name="admin-account"></a>管理员帐户
-每创建一个注册表，将自动创建一个管理员帐户。 默认情况下，帐户已禁用，但可通过[门户](container-registry-get-started-portal.md#manage-registry-settings)或使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md#manage-admin-credentials)等启用它并管理凭据。 每个管理员帐户有两个密码，这两个密码都可以再生成。 使用这两个密码，可以在再生成一个密码时使用另一个密码保持与注册表的连接。 如果帐户已启用，则可将用户名和/或密码传递到 `docker login` 命令，以对注册表进行基本身份验证。 例如：
+每创建一个注册表，会自动创建一个管理员帐户。 默认情况下，帐户已禁用，但可通过[门户](container-registry-get-started-portal.md#manage-registry-settings)或使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md#manage-admin-credentials)等启用它并管理凭据。 每个管理员帐户有两个密码，这两个密码都可以再生成。 使用这两个密码，可以在再生成一个密码时使用另一个密码保持与注册表的连接。 如果帐户已启用，则可将用户名和/或密码传递到 `docker login` 命令，以对注册表进行基本身份验证。 例如：
 
 ```
 docker login myregistry.azurecr.io -u myAdminName -p myPassword1

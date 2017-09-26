@@ -20,7 +20,6 @@ ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
@@ -37,7 +36,7 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
   * 方案：使用 Microsoft 帐户（如 user@live.com）注册 BizTalk 服务部署。 在此方案中，仅 Microsoft 帐户用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用组织帐户。  
   * **方案**：使用 Azure Active Directory 中的组织帐户（如 user@fabrikam.com 或 user@contoso.com）注册 BizTalk 服务部署。 在此方案中，仅同一组织内的 Azure Active Directory 用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用 Microsoft 帐户。  
 * 在 Azure 经典门户中创建 BizTalk 服务时，会在 BizTalk 服务门户中自动注册。
-  * **方案**：首次登录 Azure 经典门户、创建 BizTalk 服务，然后选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
+  * **方案**：首次登录 Azure 经典门户、创建 BizTalk 服务，并选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
     请参阅[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](https://msdn.microsoft.com/library/azure/hh689837.aspx)。  
 
 ### <a name="august-14-update"></a>8 月 14 日更新
@@ -69,25 +68,25 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
   
   * 重启 Visual Studio，或者
   * 重启解决方案。 然后，只对解决方案执行“生成”操作。  
-* 如未安装 [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305)，请打开任务管理器，然后依次单击“进程”选项卡、“MSBuild.exe”进程和“结束进程”按钮。  
+* 如未安装 [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305)，请打开任务管理器，并依次单击“进程”选项卡、“MSBuild.exe”进程和“结束进程”按钮。  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>如果将不可打印字符升级为 HTTP 标头，则不可从网桥和 BizTalk 服务门户路由到 BasicHttpRelay 终结点
 如果使用不可打印字符作为已升级消息属性的一部分，则无法将这些消息路由到使用 BasicHttpRelay 绑定的中继目标。 另外，可用作跟踪内容的已升级属性会对 blob 进行 URL 编码，并对目标取消编码。  
 
 ### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>即使取消选中“发送异步 MDN”选项，仍会按异步方式发送 MDN
 请考虑此方案 - 如果选择“发送异步 MDN”复选框并指定要将异步 MDN 发送到的 URL，然后再取消选中“发送异步 MDN”复选框，则即使此时未选择“发送异步 MDN”选项，仍会将 MDN 发送到指定 URL。  
-解决方法是，取消选中“发送异步 MDN”复选框之前，必须清除指定 URL，然后部署 AS2 协议。  
+解决方法是，取消选中“发送异步 MDN”复选框之前，必须清除指定 URL，并部署 AS2 协议。  
 
 ### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>超出有效交换的空格字符会导致向挂起终结点发送空消息
 如果有空格超出了 IEA 段，拆装器会将此情况视为当前交换结束，并查找代表下一条消息的下一组空格。 由于这不是有效交换，因此可能看到有一条成功消息已发送到路由目标，同时一条空消息已发送到挂起终结点。  
 
 ### <a name="tracking-in-biztalk-services-portal"></a>在 BizTalk 服务门户中跟踪
-在 EDI 消息处理和任何关联中捕获跟踪事件。 如果消息处理在“协议”阶段之外失败，“跟踪”将显示为处理成功。 此情况下，请参阅“跟踪”中“详细信息”列下面的“日志”部分，了解错误详细信息。
+在 EDI 消息处理和任何关联中捕获跟踪事件。 如果消息处理在“协议”阶段之外失败，“跟踪”会显示为处理成功。 此情况下，请参阅“跟踪”中“详细信息”列下面的“日志”部分，了解错误详细信息。
 有关协议阶段的相关信息，请参阅 X12 接收和发送设置（[在 Azure BizTalk 服务中创建 X12 协议](https://msdn.microsoft.com/library/azure/hh689847.aspx)）。  
 
 ### <a name="update-agreement"></a>更新协议
 配置协议时，可使用 BizTalk 服务门户修改标识限定符。 这可能导致属性不一致。 例如，有协议使用 ZZ:1234567 和 ZZ:7654321 作为限定符。 在 BizTalk 服务门户配置文件设置中，将 ZZ:1234567 更改为 01:ChangedValue。 打开协议时，显示 01:ChangedValue 而不是 ZZ:1234567。
-若要修改标识限定符，请删除协议，更新合作伙伴配置文件中的**标识**，然后重新创建该协议。  
+要修改标识限定符，请删除协议，更新合作伙伴配置文件中的**标识**，并重新创建该协议。  
 
 > AZURE.WARNING 此行为会影响 X12 和 AS2。  
 > 
@@ -97,7 +96,7 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 发送或接收设置中不支持 AS2 消息的附件。 具体而言，系统以无提示方式忽略附件，并将消息正文作为普通 AS2 消息处理。  
 
 ### <a name="resources-remembering-path"></a>资源：记住路径
-添加“资源”时，对话框窗口可能不记得之前用于添加资源的路径。 若要记住以前使用的路径，请尝试将 BizTalk 服务门户网站添加到 Internet Explorer 的“受信任的站点”中。  
+添加“资源”时，对话框窗口可能不记得之前用于添加资源的路径。 要记住以前使用的路径，请尝试将 BizTalk 服务门户网站添加到 Internet Explorer 的“受信任的站点”中。  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>如果重命名网桥的实体名称，并关闭项目而不保存更改，则再次打开该实体会导致出错
 请考虑按以下顺序执行操作的方案：  
@@ -106,7 +105,7 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 * 通过指定“实体名称”属性的值重命名该网桥。 这会使用指定的名称重命名关联的 .bridgeconfig 文件。  
 * 关闭 .bcs 文件（在 Visual Studio 中关闭相应选项卡）且不保存更改。  
 * 从解决方案资源管理器中再次打开该 .bcs 文件。  
-  你将注意到，尽管关联的 .bridgeconfig 文件使用指定的新名称，但设计图面上的实体名仍是旧名称。 如果尝试通过双击网桥组件打开网桥配置，会出现以下错误：  
+  将注意到，尽管关联的 .bridgeconfig 文件使用指定的新名称，但设计图面上的实体名仍是旧名称。 如果尝试通过双击网桥组件打开网桥配置，会出现以下错误：  
   `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` 为避免出现此情况，请确保在 BizTalk 服务项目中重命名实体后保存更改。  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>即使从 Visual Studio 项目中排除某项目，BizTalk 服务项目仍可成功生成
@@ -144,7 +143,7 @@ BizTalk 适配器服务功能中的 BizTalk 适配器包适配器可利用用户
 如果停止后再启动应用程序，系统不会接受用于自动启动应用程序的配置。 因此，停止 **BAService** 后，必须始终改为重启 **BizTalk 适配器服务**网站。 请勿启动或停止 **BAService** 应用程序。
 
 ### <a name="special-characters-should-not-be-used-for-address-and-entity-names-of-lob-components"></a>不应在 LOB 组件的地址和实体名称中使用特殊字符
-不应在 LOB 组件的地址和实体名称中使用特殊字符。 否则，部署 BizTalk 服务项目时将收到错误。 使用某些字符（例如“%”）时，BizTalk 适配器服务网站可能进入停止状态，此时必须手动启动此网站。
+不应在 LOB 组件的地址和实体名称中使用特殊字符。 否则，部署 BizTalk 服务项目时会收到错误。 使用某些字符（例如“%”）时，BizTalk 适配器服务网站可能进入停止状态，此时必须手动启动此网站。
 
 ### <a name="test-map-with-get-context-property"></a>使用“获取上下文属性”测试映射
 如果转换包含“获取上下文属性”映射操作，**测试映射**将失败。 临时解决方法是，将“获取上下文属性”映射操作替换为包含虚拟数据的字符串连接映射操作。 这会填充目标架构，并允许测试其他转换功能。
@@ -153,11 +152,11 @@ BizTalk 适配器服务功能中的 BizTalk 适配器包适配器可利用用户
 Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和“解决方案资源管理器”窗口未同时停靠，可能会出现此问题。 若要解决此问题，请停靠“属性”窗口和“解决方案资源管理器”窗口。  
 
 ### <a name="datetime-reformat-drop-down-is-grayed-out"></a>“重新设置日期时间格式”下拉列表呈灰显
-将“重新设置日期时间格式”映射操作添加到设计图面并对其进行配置后，“格式”下拉列表可能灰显。 如果计算机“显示”设置为“中等 - 125%”或“较大 - 150%”，则可能发生此情况。 若要解决此问题，请按照以下步骤将显示大小设置为“较小 - 100% (默认)”：  
+将“重新设置日期时间格式”映射操作添加到设计图面并对其进行配置后，“格式”下拉列表可能灰显。如果计算机“显示”设置为“中等 - 125%”或“较大 - 150%”，则可能发生此情况。 要解决此问题，请按照以下步骤会显示大小设置为“较小 - 100% (默认)”：  
 
-1. 打开“控制面板”，然后单击“外观和个性化”。
+1. 打开“控制面板”，并单击“外观和个性化”。
 2. 单击“显示”。
-3. 单击“较小 - 100% (默认)”，然后单击“应用”。
+3. 单击“较小 - 100% (默认)”，并单击“应用”。
 
 “格式”下拉列表现应按预期方式工作。
 
@@ -177,13 +176,13 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 **方案 1：使用基于指纹的证书保护从网桥到服务终结点的消息传输**  
 请考虑在 BizTalk 服务项目中使用基于指纹的证书的方案。 在 BizTalk 服务门户中使用相同名称但不同指纹更新了证书，但未更新相应的 BizTalk 服务项目。 在此情况下，网桥可能继续处理消息，因为旧证书数据可能仍在通道缓存中。 随后，消息处理失败。  
 
-**解决方法**：更新 BizTalk 服务项目中的证书，然后重新部署该项目。  
+**解决方法**：更新 BizTalk 服务项目中的证书，并重新部署该项目。  
 
 **方案 2：使用基于名称的行为识别用于保护从网桥到服务终结点的消息传输的证书**
 
 请考虑在 BizTalk 服务项目中使用基于名称的行为来识别证书的方案。 在 BizTalk 服务门户中更新了证书，但未更新相应 BizTalk 服务项目。 在此情况下，网桥可能继续处理消息，因为旧证书数据可能仍在通道缓存中。 随后，消息处理失败。  
 
-**解决方法**：更新 BizTalk 服务项目中的证书，然后重新部署该项目。  
+**解决方法**：更新 BizTalk 服务项目中的证书，并重新部署该项目。  
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>即使 SQL 数据库处于离线状态，网桥也会继续处理消息
 即使 Microsoft Azure SQL 数据库（用于存储运行中信息，例如已部署的项目和管道）处于离线状态，BizTalk 服务桥在一段时间内仍会继续处理消息。 这是因为 BizTalk 服务使用缓存的项目和网桥配置。
@@ -213,7 +212,7 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 
 本功能在此版本的 Microsoft Azure BizTalk 服务中不可用。 若要使用这些功能，请切换到适当版本。  
 
-**解决方法**：退出该门户，关闭再打开浏览器，然后登录到门户。  
+**解决方法**：退出该门户，关闭再打开浏览器，并登录到门户。  
 
 ### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>升级：将 BizTalk 服务升级到 GA 后不显示新的跟踪数据
 假设存在这种情况：你在 BizTalk 服务预览版订阅中部署了一个 XML 桥。 向该桥发送消息时，BizTalk 服务门户中提供相应的跟踪数据。 现在，如果将 BizTalk 服务门户和 BizTalk 服务运行时位升级到 GA，再向以前部署的同一桥终结点发送消息，则不显示升级后发送的消息的跟踪数据。  

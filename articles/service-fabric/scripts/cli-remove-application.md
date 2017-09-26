@@ -16,10 +16,10 @@ ms.date: 08/22/2017
 ms.author: adegeo
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 6ea52da6698647bb21d8f4c9a47a73bd5eef2a29
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 0b9beb4801d3554d332925456f8df640bf3ffc0b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/24/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-sh[main](../../../cli_scripts/service-fabric/remove-application/remove-application.sh "从群集中删除应用程序")]
+[!code-sh[main](../../../cli_scripts/service-fabric/remove-application/remove-application.sh "Remove an application from a cluster")]
 
 ## <a name="next-steps"></a>后续步骤
 

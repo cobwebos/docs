@@ -38,7 +38,7 @@ ms.lasthandoff: 09/09/2017
 
 此脚本使用[消耗计划](../functions-scale.md#consumption-plan)创建 Azure Function app。
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "根据消耗计划创建 Azure Function")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a consumption plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 

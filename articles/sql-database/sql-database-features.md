@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 09/22/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 968a7d3611d050d15ee398f9c3c5830d5c8e85fb
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 75575fec0047dd653dca86df1daf234676859600
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
@@ -120,7 +120,6 @@ Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级�
 | [表分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | 是 - 仅限主文件组 |
 | [临时表](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | 仅限本地和数据库范围的全局临时表 |
 | [临时表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | 是 |
-| [Transactions](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | 否 |
 | [变量](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | 是 | 
 | [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | 是 |
 | [Windows Server 故障转移群集](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | 否 - 请参阅[故障转移组和活动异地复制](sql-database-geo-replication-overview.md) |

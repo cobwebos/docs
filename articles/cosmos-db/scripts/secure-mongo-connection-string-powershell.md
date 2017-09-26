@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5dd4ab4b70cf7f33e2adf2f74bf95a3828ba8b20
+ms.translationtype: HT
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: e44e35cc7d11db48cd82e470ce8226b3c8cc220a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[主要](../../../powershell_scripts/cosmosdb/get-mongodb-connection-string/get-mongodb-connection-string.ps1?highlight=37-41 "从 Azure Cosmos DB 帐户获取 MongoDB 连接字符串")]
+[!code-powershell[main](../../../powershell_scripts/cosmosdb/get-mongodb-connection-string/get-mongodb-connection-string.ps1?highlight=37-41 "Get the MongoDB connection string from an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

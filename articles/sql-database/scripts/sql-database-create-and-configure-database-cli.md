@@ -16,7 +16,7 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 908898ca691d2b53b9f54afa60c41e091163bd50
 ms.contentlocale: zh-cn
@@ -36,7 +36,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "创建 SQL 数据库")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

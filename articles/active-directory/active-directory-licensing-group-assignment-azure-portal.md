@@ -1,5 +1,4 @@
 ---
-
 title: "将许可证分配到 Azure Active Directory 中的组 | Microsoft 文档"
 description: "如何通过 Azure Active Directory 组许可分配许可证"
 services: active-directory
@@ -23,7 +22,6 @@ ms.openlocfilehash: 42b18eab9cb419e6ada72ba72dc8be8d7f7b2eed
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
@@ -41,15 +39,15 @@ ms.lasthandoff: 07/10/2017
 
 1. 使用管理员帐户登录到 [**Azure 门户**](https://portal.azure.com)。 若要管理许可证，该帐户必须是全局管理员角色或用户帐户管理员。
 
-2. 在左侧导航窗格中选择“更多服务”，然后选择“Azure Active Directory”。 可以将此边栏选项卡添加到收藏夹，也可以将它固定到门户仪表板。
+2. 在左侧导航窗格中选择“更多服务”，并选择“Azure Active Directory”。 可以将此边栏选项卡添加到收藏夹，也可以将它固定到门户仪表板。
 
-3. 在“Azure Active Directory”边栏选项卡中，选择“许可证”。 此时将打开一个边栏选项卡，可在其中查看和管理租户中所有可许可的产品。
+3. 在“Azure Active Directory”边栏选项卡中，选择“许可证”。 此时会打开一个边栏选项卡，可在其中查看和管理租户中所有可许可的产品。
 
 4. 在“所有产品”，通过选择产品名称选中 Office 365 企业版 E3 和企业移动性 + 安全性。 若要开始分配，请在边栏选项卡顶部选择“分配”。
 
    ![所有产品, 分配许可证](media/active-directory-licensing-group-assignment-azure-portal/all-products-assign.png)
 
-5. 在“分配许可证”边栏选项卡中，单击“用户和组”打开“用户和组”边栏选项卡。 搜索组名称“人力资源部”，选择该组，然后请务必在边栏选项卡底部单击“选择”确认操作。
+5. 在“分配许可证”边栏选项卡中，单击“用户和组”打开“用户和组”边栏选项卡。 搜索组名称“人力资源部”，选择该组，请务必在边栏选项卡底部单击“选择”确认操作。
 
    ![选择组](media/active-directory-licensing-group-assignment-azure-portal/select-a-group.png)
 
@@ -64,7 +62,7 @@ ms.lasthandoff: 07/10/2017
 现在，我们已为“HR Department”组指定一个许可证模板。 Azure AD 中已启动一个后台进程来处理该组的所有现有成员。 这项初始操作可能需要花费一段时间，具体时间取决于组的当前大小。 在下一步骤中，我们介绍如何验证该过程是否完成，并确定是否需要采取进一步的措施来解决问题。
 
 > [!NOTE]
-> 也可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。 单击边栏选项卡顶部的“分配”按钮会打开许可证分配边栏选项卡。
+> 也可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。单击边栏选项卡顶部的“分配”按钮会打开许可证分配边栏选项卡。
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>步骤 2：验证初始分配是否已完成
 

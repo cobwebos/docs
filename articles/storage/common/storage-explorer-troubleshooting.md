@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/08/2017
 ms.author: delhan
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 9b3a8b964ec2f75c53c03b5099dc1e1eb7d77c65
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: ba8a02e2faaa0affd68feebd2ae5efe64cded93f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -30,7 +30,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 ## <a name="sign-in-issues"></a>登录问题
 
-继续之前，请尝试重新启动应用程序，看问题是否能够解决。
+仅支持 Azure Active Directory (AAD) 帐户。 如果使用 ADFS 帐户，预计将无法正常登录存储资源管理器。 继续之前，请尝试重新启动应用程序，看问题是否能够解决。
 
 ### <a name="error-self-signed-certificate-in-certificate-chain"></a>错误：证书链中的自签名证书
 

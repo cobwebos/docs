@@ -16,7 +16,7 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
 ms.author: mimig
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
 ms.openlocfilehash: 28f99d56404e47adcd375d9f3106cc234469cbfd
 ms.contentlocale: zh-cn
@@ -34,7 +34,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "创建 Azure Cosmos DB DocumentDB API 帐户、数据库和集合")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB DocumentDB API account, database, and collection")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

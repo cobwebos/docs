@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 0fcddfd7e224fc763616573e5cd8b3345cc46ded
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 0c891aa55384e88177af1388cc30f71824bea8dd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="sample-scripts"></a>示例脚本
 
-[!code-powershell[主要](../../../powershell_scripts/sql-database/setup-geodr-and-failover-database/setup-geodr-and-failover-database-failover-group.ps1?highlight=19-22 "为单一数据库设置故障转移组")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-database/setup-geodr-and-failover-database-failover-group.ps1?highlight=19-22 "Set up failover group for single database")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

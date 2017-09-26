@@ -51,7 +51,7 @@ ms.lasthandoff: 07/17/2017
 在本文中，我们将使用 REST API 创建**索引器**和**数据源**。
 
 ## <a name="when-to-use-azure-sql-indexer"></a>何时使用 Azure SQL 索引器
-根据与你的数据相关的多个因素，可能适合也可能不适合使用 Azure SQL 索引器。 如果数据符合以下要求，可以使用 Azure SQL 索引器。
+根据与数据相关的多个因素，可能适合也可能不适合使用 Azure SQL 索引器。 如果数据符合以下要求，可以使用 Azure SQL 索引器。
 
 | 条件 | 详细信息 |
 |----------|---------|
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/17/2017
 
    可从 [Azure 门户](https://portal.azure.com)获取连接字符串；请使用 `ADO.NET connection string` 选项。
 
-2. 创建目标 Azure 搜索索引（如果还没有）。 可以使用[门户](https://portal.azure.com)或[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) 创建索引。 确保你的目标索引的架构与源表的架构兼容 - 请参阅 [SQL 和 Azure 搜索数据类型之间的映射](#TypeMapping)。
+2. 创建目标 Azure 搜索索引（如果还没有）。 可以使用[门户](https://portal.azure.com)或[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) 创建索引。 确保目标索引的架构与源表的架构兼容 - 请参阅 [SQL 和 Azure 搜索数据类型之间的映射](#TypeMapping)。
 
 3. 通过为索引器命名并引用数据源和目标索引创建索引器：
 
@@ -95,14 +95,14 @@ ms.lasthandoff: 07/17/2017
     }
     ```
 
-通过此方式创建的索引器不包含计划。 它将在创建后自动运行一次。 可使用**运行索引器**请求随时再次运行：
+通过此方式创建的索引器不包含计划。 它会在创建后自动运行一次。 可使用**运行索引器**请求随时再次运行：
 
     POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2016-09-01
     api-key: admin-key
 
 可自定义索引器行为的几个方面，例如批大小和可在索引器执行失败前跳过的文档数。 有关详细信息，请参阅[创建索引器 API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
 
-你可能需要允许 Azure 服务连接到你的数据库。 有关如何执行该操作的说明，请参阅[从 Azure 连接](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)。
+可能需要允许 Azure 服务连接到数据库。 有关如何执行该操作的说明，请参阅[从 Azure 连接](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)。
 
 若要监视索引器状态和执行历史记录（已编制索引的项目数、失败数等），请使用**索引器状态**请求：
 
@@ -185,13 +185,13 @@ ms.lasthandoff: 07/17/2017
 Azure 搜索使用**增量索引编制**来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 搜索提供了两个更改检测策略来支持增量索引编制。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 集成的更改跟踪策略
-如果你的 SQL 数据库支持[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 搜索标识删除的行，无需向你的表中添加显式“软删除”列。
+如果 SQL 数据库支持[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 搜索标识删除的行，无需向表中添加显式“软删除”列。
 
 #### <a name="requirements"></a>要求 
 
 + 数据库版本要求：
   * SQL Server 2012 SP3 及更高版本，如果使用的是 Azure VM 上的 SQL Server。
-  * Azure SQL 数据库 V12，如果你使用的是 Azure SQL 数据库。
+  * Azure SQL 数据库 V12，如果使用的是 Azure SQL 数据库。
 + 只有表（无视图）。 
 + 在数据库上，为表[启用更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + 表上没有组合主键（包含多个列的主键）。  
@@ -244,11 +244,11 @@ Azure 搜索使用**增量索引编制**来避免索引器每次运行时都必�
     }
 
 > [!WARNING]
-> 如果源表在高使用标记列上没有索引，SQL 索引器使用的查询可能会超时。 特别是，当表中包含多个行时，`ORDER BY [High Water Mark Column]` 子句需要索引才能有效运行。
+> 如果源表在高使用标记列上没有索引，SQL 索引器使用的查询可能会超时。特别是，当表中包含多个行时，`ORDER BY [High Water Mark Column]` 子句需要索引才能有效运行。
 >
 >
 
-如果遇到超时错误，可以使用 `queryTimeout` 索引器配置设置，将查询超时值设置为高于 5 分钟超时的默认值。 例如，若要将超时设置为 10 分钟，请使用以下配置创建或更新索引器：
+如果遇到超时错误，可以使用 `queryTimeout` 索引器配置设置，查询超时值设置为高于 5 分钟超时的默认值。 例如，要将超时设置为 10 分钟，请使用以下配置创建或更新索引器：
 
     {
       ... other indexer definition properties
@@ -265,7 +265,7 @@ Azure 搜索使用**增量索引编制**来避免索引器每次运行时都必�
     }
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>软删除列删除检测策略
-从源表中删除行时，你可能还希望从搜索索引中删除这些行。 如果使用 SQL 集成的更改跟踪策略，此操作将自动完成。 但是，高使用标记更改跟踪策略不会帮助你处理删除的行。 怎么办？
+从源表中删除行时，可能还希望从搜索索引中删除这些行。 如果使用 SQL 集成的更改跟踪策略，此操作会自动完成。 但是，高使用标记更改跟踪策略不会帮助你处理删除的行。 怎么办？
 
 如果以物理方式从表中删除行，Azure 搜索无法推断出不再存在的记录是否存在。  但是，可使用“软删除”技术以逻辑方式删除行，无需从表中删除它们。 将列添加到表或视图，并使用该列将行标记为已删除。
 
@@ -280,7 +280,7 @@ Azure 搜索使用**增量索引编制**来避免索引器每次运行时都必�
         }
     }
 
-**SoftDeleteMarkerValue** 必须是字符串 - 使用实际值的字符串表示形式。 例如，如果你有一个整数列（使用值 1 标记删除的行），则使用 `"1"`。 如果你有一个 BIT 列（使用布尔值 true 标记删除的行），则使用 `"True"`。
+**SoftDeleteMarkerValue** 必须是字符串 - 使用实际值的字符串表示形式。 例如，如果有一个整数列（使用值 1 标记删除的行），则使用 `"1"`。 如果有一个 BIT 列（使用布尔值 true 标记删除的行），则使用 `"True"`。
 
 <a name="TypeMapping"></a>
 
@@ -307,7 +307,7 @@ SQL 索引器公开多个配置设置：
 | queryTimeout |字符串 |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
 | disableOrderByHighWaterMarkColumn |bool |导致高使用标记策略使用的 SQL 查询省略 ORDER BY 子句。 请参阅[高使用标记策略](#HighWaterMarkPolicy) |false |
 
-在索引器定义的 `parameters.configuration` 对象中使用这些设置。 例如，若要将查询超时设置为 10 分钟，请使用以下配置创建或更新索引器：
+在索引器定义的 `parameters.configuration` 对象中使用这些设置。 例如，要将查询超时设置为 10 分钟，请使用以下配置创建或更新索引器：
 
     {
       ... other indexer definition properties
@@ -319,7 +319,7 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS VM 上运行的 SQL 数据库配合使用？**
 
-可以。 但是，你需要允许搜索服务连接到你的数据库。 有关详细信息，请参阅[配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
+可以。 但是，需要允许搜索服务连接到数据库。 有关详细信息，请参阅[配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
 
 **问：是否可以将 Azure SQL 索引器与在本地运行的 SQL 数据库配合使用？**
 
@@ -331,11 +331,11 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以创建多个按计划运行的索引器？**
 
-是的。 但是，一次只能在一个节点上运行一个索引器。 如果你需要同时运行多个索引器，请考虑将你的搜索服务扩展到多个搜索单位。
+是的。 但是，一次只能在一个节点上运行一个索引器。 如果需要同时运行多个索引器，请考虑将搜索服务扩展到多个搜索单位。
 
 **问：运行索引器是否会影响我的查询工作负荷？**
 
-是的。 索引器在你的搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑[纵向扩展搜索服务](search-capacity-planning.md)。
+是的。 索引器在搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑[纵向扩展搜索服务](search-capacity-planning.md)。
 
 **问：是否可以将[故障转移群集](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)中的辅助副本用作数据源？**
 

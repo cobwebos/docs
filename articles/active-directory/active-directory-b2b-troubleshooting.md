@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 42229b338063634480551f26896963d8add5e071
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
-
 
 ---
 
@@ -45,7 +44,7 @@ ms.lasthandoff: 05/27/2017
 
 ![](media/active-directory-b2b-troubleshooting/external-user-settings.png)
 
-如果你最近修改了这些设置或为用户分配了“来宾邀请者”角色，可能有 15-60 分钟的延迟更改才生效。
+如果最近修改了这些设置或为用户分配了“来宾邀请者”角色，可能有 15-60 分钟的延迟更改才生效。
 
 ## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>我邀请的用户在兑换过程中收到错误
 
@@ -61,11 +60,11 @@ ms.lasthandoff: 05/27/2017
 
 如果使用联合身份验证，并且用户在 Azure Active Directory 中不存在，则无法邀请该用户。
 
-若要解决此问题，外部用户的管理员必须将该用户的帐户同步到 Azure Active Directory。
+要解决此问题，外部用户的管理员必须将该用户的帐户同步到 Azure Active Directory。
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>“\#”（这通常不是有效字符）如何与 Azure AD 进行同步？
 
-由于受邀帐户 user@contoso.com 变为 user_contoso.com#EXT@fabrikam.onmicrosoft.com，“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符。 因此，不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。 
+由于受邀帐户 user@contoso.com 变为 user_contoso.com#EXT@fabrikam.onmicrosoft.com，“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符。因此，不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>我将外部用户添加到同步组时，收到错误
 

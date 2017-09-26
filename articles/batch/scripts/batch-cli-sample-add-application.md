@@ -33,7 +33,7 @@ ms.lasthandoff: 09/09/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[main](../../../cli_scripts/batch/add-application/add-application.sh "添加应用程序")]
+[!code-azurecli[main](../../../cli_scripts/batch/add-application/add-application.sh "Add Application")]
 
 ## <a name="clean-up-application"></a>清除应用程序
 

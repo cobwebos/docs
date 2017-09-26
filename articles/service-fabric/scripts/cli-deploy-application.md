@@ -16,10 +16,10 @@ ms.date: 08/22/2017
 ms.author: adegeo
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 74d54b314e81dc260e800e32d6c3edd5215c82b4
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: f376be776f4de00bc317d8de2be8384e80d6f4b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/24/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-sh[main](../../../cli_scripts/service-fabric/deploy-application/deploy-application.sh "将应用程序部署到群集")]
+[!code-sh[main](../../../cli_scripts/service-fabric/deploy-application/deploy-application.sh "Deploy an application to a cluster")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

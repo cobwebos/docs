@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 6536158d4fc2e2c8fbb4e78305d28d063eb12696
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: dd8f868fa5e25c166354e9d0e64ecf4e2e2154a4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "监视和缩放单个 SQL 数据库")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "Monitor and scale single SQL Database")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

@@ -32,10 +32,10 @@ ms.lasthandoff: 07/20/2017
 
 | 计数器类别 | 计数器名称 |
 | --- | --- |
-| PhysicalDisk(per Disk) | 平均 磁盘读取队列长度 |
-| PhysicalDisk(per Disk) | 平均 磁盘写入队列长度 |
-| PhysicalDisk(per Disk) | 平均 磁盘秒数/读取 |
-| PhysicalDisk(per Disk) | 平均 磁盘秒数/写入 |
+| PhysicalDisk(per Disk) | 平均磁盘读取队列长度 |
+| PhysicalDisk(per Disk) | 平均磁盘写入队列长度 |
+| PhysicalDisk(per Disk) | 平均磁盘秒数/读取 |
+| PhysicalDisk(per Disk) | 平均磁盘秒数/写入 |
 | PhysicalDisk(per Disk) | 磁盘读取数/秒 |
 | PhysicalDisk(per Disk) | 磁盘读取字节数/秒 |
 | PhysicalDisk(per Disk) | 磁盘写入数/秒 |

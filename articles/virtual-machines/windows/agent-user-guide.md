@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 6cf561b269c4d873a894b47265e39a057cc415c3
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
@@ -77,13 +78,8 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>手动检测
 
-登录到 Microsoft Azure VM 后，可以使用任务管理器检查正在运行的进程。 若要查看 Azure VM 代理，请打开任务管理器 > 单击详细信息选项卡，然后查找名为 `WindowsAzureGuestAgent.exe` 的进程。 存在该进程表示 VM 代理已安装。
+登录到 Microsoft Azure VM 后，可以使用任务管理器检查正在运行的进程。 要查看 Azure VM 代理，请打开任务管理器 > 单击详细信息选项卡，并查找名为 `WindowsAzureGuestAgent.exe` 的进程。 存在该进程表示 VM 代理已安装。
 
 ## <a name="upgrade-the-vm-agent"></a>升级 VM 代理
 
 适用于 Windows 的 Azure VM 代理会自动升级。 新虚拟机在部署到 Azure 后会获得最新 VM 代理。 应手动更新自定义 VM 映像，使之包括新的 VM 代理。
-
-
-<!--HONumber=Dec16_HO1-->
-
-

@@ -399,7 +399,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 可在以下位置获取本文中所述的示例方案的 Azure Resource Manager 模板：
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure 应用商店映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
 * [使用托管磁盘的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
@@ -492,7 +492,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 可从以下位置获取适用于此部署方案的 Azure Resource Manager 模板：
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure 应用商店映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
 * [使用托管磁盘的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
@@ -524,7 +524,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
   -  **系统可用性**。 选择“HA”。
   -  **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
   -  **新的或现有的子网**。 设置是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择**现有**虚拟网络。
-  -  **子网 ID**。 设置虚拟机应连接到的子网的 ID。 选择用于将虚拟机连接到本地网络的虚拟专用网络 (VPN) 或 ExpressRoute 虚拟网络的子网。 ID 通常类似于：
+  -  **子网 ID**。设置虚拟机应连接到的子网的 ID。 选择用于将虚拟机连接到本地网络的虚拟专用网络 (VPN) 或 ExpressRoute 虚拟网络的子网。 ID 通常类似于：
 
    /subscriptions/<*订阅 ID*>/resourceGroups/<*资源组名称*>/providers/Microsoft.Network/virtualNetworks/<*虚拟网络名称*>/subnets/<*子网名称*>
 
@@ -554,7 +554,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 若要设置数据库多 SID 模板，请在[数据库多 SID 模板][sap-templates-3-tier-multisid-db-marketplace-image]或[使用托管磁盘的数据库多 SID 模板][sap-templates-3-tier-multisid-db-marketplace-image-md]中，输入以下参数的值：
 
-  -  **SAP 系统 ID**。 输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
+  -  **SAP 系统 ID**。输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
   -  **OS 类型**。 选择虚拟机的操作系统。
   -  **Dbtype**。 选择要在群集上安装的数据库的类型。 若要安装 Microsoft SQL Server，请选择“SQL”。 若要在虚拟机上安装 SAP HANA，请选择“HANA”。 请确保选择正确的操作系统类型：对于 SQL，请选择“Windows”；对于 HANA，请选择一个 Linux 分发版。 连接到虚拟机的 Azure 负载均衡器将配置为支持所选的数据库类型：
     * **SQL**。 负载均衡器将对端口 1433 进行负载均衡。 对于 SQL Server Always On 设置，请确保使用此端口。
@@ -563,7 +563,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
   -  **SAP 系统大小**。 设置新系统将提供的 SAPS 数目。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
   -  **系统可用性**。 选择“HA”。
   -  **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
-  -  **子网 ID**。 输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
+  -  **子网 ID**。输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
 
 #### <a name="application-servers-template"></a>应用程序服务器模板
 
@@ -571,12 +571,12 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 若要设置应用程序服务器多 SID 模板，请在[应用程序服务器多 SID 模板][sap-templates-3-tier-multisid-apps-marketplace-image]或[使用托管磁盘的应用程序服务器多 SID 模板][sap-templates-3-tier-multisid-apps-marketplace-image-md]中，输入以下参数的值：
 
-  -  **SAP 系统 ID**。 输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
+  -  **SAP 系统 ID**。输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
   -  **OS 类型**。 选择虚拟机的操作系统。
   -  **SAP 系统大小**。 新系统将提供的 SAPS 数目。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
   -  **系统可用性**。 选择“HA”。
   -  **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
-  -  **子网 ID**。 输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
+  -  **子网 ID**。输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
 
 
 ### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Azure 虚拟网络
@@ -792,7 +792,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
 **若要应用更改，请重新启动两个群集节点。**
 
-### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>为 ASCS/SCS 实例设置 Windows Server 故障转移群集
+### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>为 SAP ASCS/SCS 实例设置 Windows Server 故障转移群集
 
 为 SAP ASCS/SCS 实例设置 Windows Server故障转移群集的过程包括以下任务：
 
@@ -1152,7 +1152,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
   图 57：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址__
 
-#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 第一个群集节点
+#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 的第一个群集节点
 
 1.  在群集节点 A 上执行第一个群集节点选项。例如，在 **pr1-ascs-0** 主机上。
 2.  若要保留 Azure 内部负载均衡器的默认端口，请选择：

@@ -37,7 +37,7 @@ ms.lasthandoff: 09/09/2017
 
 此示例创建 Azure Function app，并将 Cosmos DB 终结点和访问密钥添加到应用设置。
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "创建用于连接到 Azure Cosmos DB 的 Azure Function")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "Create an Azure Function that connects to an Azure Cosmos DB")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

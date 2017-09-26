@@ -18,14 +18,14 @@ ms.date: 04/25/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: f6fc297790b8a8b3ae8edea2e37bb7daf40ed3bb
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 4160b9ef6cda1efd6c76ce1b283c78b4d43a5187
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
-可以从 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)下载发票，也可通过电子邮件发送发票。 若要下载每日使用情况，请转到 [Azure 帐户中心](https://account.windowsazure.com)。 只有特定角色有权获取帐单发票和使用情况信息，如帐户管理员。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。
+可以从 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)下载发票，也可通过电子邮件发送发票。 若要下载每日使用情况，请转到 [Azure 帐户中心](https://account.azure.com/Subscriptions)。 只有特定角色有权获取帐单发票和使用情况信息，如帐户管理员。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。
 
 >[!NOTE]
 >本文不适用于企业协议 (EA) 客户。 对于 EA 客户，发票将直接发送给注册管理员。

@@ -11,7 +11,7 @@ ms.devlang: azure-cli
 ms.custom: mvc
 ms.topic: sample
 ms.date: 05/31/2017
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
 ms.openlocfilehash: 201db294ce362ef3e09cbe62f48bd51c8ea94dbb
 ms.contentlocale: zh-cn
@@ -28,11 +28,11 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="sample-script"></a>示例脚本
 在此示例脚本中，编辑突出显示的行，以自定义管理员用户名和密码。
-[!code-azurecli-interactive[主要](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/create-mysql-server-and-firewall-rule.sh?highlight=15-16 "创建 Azure Database for MySQL 和服务器级防火墙规则。")]
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/create-mysql-server-and-firewall-rule.sh?highlight=15-16 "Create an Azure Database for MySQL, and server-level firewall rule.")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
-[!code-azurecli-interactive[主要](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/delete-mysql.sh "删除资源组。")]
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/delete-mysql.sh "Delete the resource group.")]
 
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。

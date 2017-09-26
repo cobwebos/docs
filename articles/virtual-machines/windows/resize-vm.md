@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 742efd1496de9ce76b1e5636297ef30f546bd108
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="resize-a-windows-vm"></a>调整 Windows VM 大小
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/31/2017
     $vm.HardwareProfile.VmSize = "<newVMsize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
-3. 如果未列出所需大小，运行以下命令即可解除分配 VM、调整其大小，然后重新启动 VM。
+3. 如果未列出所需大小，运行以下命令即可解除分配 VM、调整其大小，并重新启动 VM。
    
     ```powershell
     $rgname = "<resourceGroupName>"
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/31/2017
     $vm.HardwareProfile.VmSize = "<newVmSize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
-3. 如果未列出所需大小，继续执行以下步骤即可解除分配可用性集中的所有 VM、调整 VM 大小，然后重新启动它们。
+3. 如果未列出所需大小，继续执行以下步骤即可解除分配可用性集中的所有 VM、调整 VM 大小，并重新启动它们。
 4. 停止可用性集中的所有 VM。
    
    ```powershell
@@ -103,6 +103,6 @@ ms.lasthandoff: 03/31/2017
    ```
 
 ## <a name="next-steps"></a>后续步骤
-* 若要提高可缩放性，请运行多个 VM 实例并进行横向扩展。 有关详细信息，请参阅[自动缩放虚拟机规模集中的 Windows 计算机](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)。
+* 若要提高伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅[自动缩放虚拟机规模集中的 Windows 计算机](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)。
 
 

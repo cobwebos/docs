@@ -68,7 +68,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>创建注册或登录策略
 
-此策略通过单一配置处理使用者注册和登录体验。 根据上下文，使用者被引导至正确的路径（注册或登录）。 它还描述了应用程序在成功注册或登录时会接收到的令牌的内容。  注册或登录策略的代码示例[在此处可用](active-directory-b2c-devquickstarts-web-dotnet-susi.md)。  我们建议使用此策略，而不是注册策略和登录策略。  
+此策略通过单一配置处理使用者注册和登录体验。 根据上下文，使用者被引导至正确的路径（注册或登录）。 它还描述了应用程序在成功注册或登录时会接收到的令牌的内容。注册或登录策略的代码示例[在此处可用](active-directory-b2c-devquickstarts-web-dotnet-susi.md)。  我们建议使用此策略，而不是注册策略和登录策略。  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 

@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 05dede26c870ccda35b1cb8c392ad4abeedde4ac
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 1d44f66327f51d305849dccef7d94694972ccf08
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/05/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/move-database-between-pools-and-standalone/move-database-between-pools-and-standalone.ps1?highlight=17-18 "在池之间移动数据库")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/move-database-between-pools-and-standalone/move-database-between-pools-and-standalone.ps1?highlight=17-18 "Move database between pools")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

@@ -17,22 +17,22 @@ ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: b9d022c780b618825bb2416f3834e4ada280092f
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 227cdc87f3e2c8ed393145f4bbde7f74606bdf3b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
 # <a name="questions-about-the-azure-backup-agent"></a>有关 Azure 备份代理的问题
-本文提供常见问题的解答，有助于快速了解 Azure 备份代理组件。 某些答案提供内含全面信息的文章的链接。 你也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
+本文提供常见问题的解答，有助于快速了解 Azure 备份代理组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 
 ## <a name="configure-backup"></a>配置备份
 ### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>我可以在哪里下载最新的 Azure 备份代理？ <br/>
-可以从 [此处](http://aka.ms/azurebackup_agent)下载最新的代理，用于备份 Windows Server、System Center DPM 或 Windows 客户端。 如果你想要备份虚拟机，请使用 VM 代理（会自动安装适当的扩展）。 从 Azure 资源库创建的虚拟机上已有 VM 代理。
+可以从 [此处](http://aka.ms/azurebackup_agent)下载最新的代理，用于备份 Windows Server、System Center DPM 或 Windows 客户端。 如果想要备份虚拟机，请使用 VM 代理（会自动安装适当的扩展）。 从 Azure 资源库创建的虚拟机上已有 VM 代理。
 
 ### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>在配置 Azure 备份代理时，系统提示我输入保管库凭据。 保管库凭据会过期吗？
-是的，保管库凭据在 48 小时后过期。 如果文件过期，请登录 Azure 门户，然后从保管库下载保管库凭据文件。
+是的，保管库凭据在 48 小时后过期。 如果文件过期，请登录 Azure 门户，并从保管库下载保管库凭据文件。
 
 ### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>可以从哪些类型的驱动器备份文件和文件夹？ <br/>
 无法备份以下驱动器/卷：
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/20/2017
 * 只读卷：为使卷影复制服务 (VSS) 起作用，卷必须是可写的。
 * 脱机卷：为使 VSS 起作用，卷必须是联机的。
 * 网络共享：若要使用联机备份进行备份，卷对于服务器而言必须是本地的。
-* Bitlocker 保护的卷：必须先解锁卷，然后才能备份。
+* Bitlocker 保护的卷：必须先解锁卷，才能备份。
 * 文件系统标识：NTFS 是受支持的唯一文件系统。
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>可以从我的服务器备份哪些文件和文件夹类型？<br/>
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/20/2017
 绝对是。 Azure 备份使用 VM 扩展为 Azure VM 提供 VM 级别备份。 若要保护来宾 OS 上的文件和文件夹，请在来宾 Windows OS 上安装 Azure 备份代理。
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>可以在 Azure VM 上安装 Azure 备份代理来备份 Azure VM 提供的临时存储中存在的文件和文件夹吗？ <br/>
-是的。 可以在来宾 Windows OS 上安装 Azure 备份代理，并将文件和文件夹备份到临时存储。 擦除临时存储数据后，备份作业将会失败。 此外，如果临时存储数据已被删除，则你只能还原到非易失性存储。
+是的。 可以在来宾 Windows OS 上安装 Azure 备份代理，并将文件和文件夹备份到临时存储。 擦除临时存储数据后，备份作业会失败。此外，如果临时存储数据已被删除，则你只能还原到非易失性存储。
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>针对缓存文件夹的最小大小要求是什么？ <br/>
 缓存文件夹的大小由你正在备份的数据量确定。 缓存文件夹应是数据存储所需空间的 5%。
@@ -70,7 +70,7 @@ ms.lasthandoff: 07/20/2017
 备份数据会发送到它所注册到的保管库的数据中心。 更改数据中心的最简便方法是卸载代理，然后将代理安装并注册到属于所需数据中心的新保管库。
 
 ### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Azure 备份代理是否适用于使用 Windows Server 2012 删除重复功能的服务器？ <br/>
-是的。 代理服务在准备备份操作时将消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，然后将已加密的数据发送到联机备份服务。
+是的。 代理服务在准备备份操作时会消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，并将已加密的数据发送到联机备份服务。
 
 ## <a name="backup"></a>备份
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>如何更改为 Azure 备份代理指定的缓存位置？<br/>
@@ -117,7 +117,7 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="manage-backups"></a>管理备份
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>如果重命名了用于将数据备份到 Azure 的 Windows 服务器，会发生什么情况？<br/>
-当你重命名服务器时，所有当前配置的备份都将停止。
+重命名服务器时，所有当前配置的备份都将停止。
 将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的[**其他服务器**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)选项。
 
 ### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>可以使用 Azure 备份代理在备份策略中指定的文件路径的最大长度是多少？ <br/>
@@ -127,5 +127,5 @@ Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限�
  Azure 备份代理依赖于 NTFS。 允许使用 [NTFS 支持的字符](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) 作为文件规范的一部分。 
  
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>即使配置了备份策略，仍会显示警告“尚未为此服务器配置 Azure 备份” <br/>
-在本地服务器上存储的备份计划设置与备份保管库中存储的设置不同时，可能会出现此警告。 服务器或设置恢复为已知良好状态后，备份计划可能会失去同步。 如果收到此警告，请 [重新配置备份策略](backup-azure-manage-windows-server.md) ，然后 **立即运行备份** ，以便将本地服务器与 Azure 重新同步。
+在本地服务器上存储的备份计划设置与备份保管库中存储的设置不同时，可能会出现此警告。 服务器或设置恢复为已知良好状态后，备份计划可能会失去同步。 如果收到此警告，请 [重新配置备份策略](backup-azure-manage-windows-server.md) ，并 **立即运行备份** ，以便将本地服务器与 Azure 重新同步。
 

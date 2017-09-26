@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: f7ba8d4895474de0da0e04da5f31959963ae65ff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>教程：Azure Active Directory 与 Workfront 的集成
@@ -139,7 +138,7 @@ ms.lasthandoff: 05/27/2017
     
     ![配置单一登录][23]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“类型”，选择“SAML 2.0”。
+    a. 对于“类型”，选择“SAML 2.0”。
    
     b. 选择“服务提供商 ID”。
    
@@ -177,7 +176,7 @@ ms.lasthandoff: 05/27/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-workfront-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -198,7 +197,7 @@ ms.lasthandoff: 05/27/2017
    
     ![创建 Workfront 测试用户][21] 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。
+    a. 在“名字”文本框中，键入“Britta”。
    
     b. 在“姓氏”文本框中，键入“Simon”。
    
@@ -214,7 +213,7 @@ ms.lasthandoff: 05/27/2017
 
 若要将 Britta Simon 分配到 Workfront，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

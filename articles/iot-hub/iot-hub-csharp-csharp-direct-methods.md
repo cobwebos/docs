@@ -34,7 +34,7 @@ ms.lasthandoff: 07/20/2017
 > 
 > 
 
-若要完成本教程，你需要：
+要完成本教程，需要：
 
 * Visual Studio 2015 或 Visual Studio 2017。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
@@ -103,7 +103,7 @@ ms.lasthandoff: 07/20/2017
             Console.WriteLine("Error in sample: {0}", ex.Message);
         }
         
-1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，然后单击“设置启动项目...”。 选择“单个启动项目”，并在下拉菜单中选择“SimulateDeviceMethods”项目。        
+1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。选择“单个启动项目”，并在下拉菜单中选择“SimulateDeviceMethods”项目。        
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按 MSDN 文章 [暂时性故障处理][lnk-transient-faults]中所述实施重试策略（例如连接重试）。
@@ -111,13 +111,13 @@ ms.lasthandoff: 07/20/2017
 > 
 
 ## <a name="call-a-direct-method-on-a-device"></a>在设备上调用直接方法
-在本部分中，用户需创建一个 .NET 控制台应用，以便调用模拟设备应用中的方法，然后显示响应。
+在本部分中，用户需创建一个 .NET 控制台应用，以便调用模拟设备应用中的方法，并显示响应。
 
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **CallMethodOnDevice**。
    
     ![新的 Visual C# Windows 经典桌面项目][img-createserviceapp]
-2. 在“解决方案资源管理器”中，右键单击“CallMethodOnDevice”项目，然后单击“管理 NuGet 包...”。
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+2. 在“解决方案资源管理器”中，右键单击“CallMethodOnDevice”项目，并单击“管理 NuGet 包...”。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
    
     ![“NuGet 包管理器”窗口][img-servicenuget]
 
@@ -150,10 +150,10 @@ ms.lasthandoff: 07/20/2017
         Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，然后单击“设置启动项目...”。 选择“单个启动项目”，然后在下拉菜单中选择“CallMethodOnDevice”项目。
+1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。选择“单个启动项目”，并在下拉菜单中选择“CallMethodOnDevice”项目。
 
 ## <a name="run-the-applications"></a>运行应用程序
-现在，你已准备就绪，可以运行应用程序了。
+现在，已准备就绪，可以运行应用程序了。
 
 1. 运行 .NET 设备应用 **SimulateDeviceMethods**。 它应开始侦听来自 IoT 中心的方法调用： 
 
@@ -166,7 +166,7 @@ ms.lasthandoff: 07/20/2017
     ![在设备上调用的直接方法][img-directmethodinvoked]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 你已通过此设备标识启用模拟设备应用的相关功能，使之能够响应通过云调用的方法。 你还创建了一个应用，用于调用设备上的方法并显示来自设备的响应。 
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已通过此设备标识启用模拟设备应用的相关功能，使之能够响应通过云调用的方法。 还创建了一个应用，用于调用设备上的方法并显示来自设备的响应。 
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 

@@ -16,10 +16,10 @@ ms.date: 08/23/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 43c1c0d38d12a36c39a3962a3399d9c05937e8b1
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: e86b1bea4dab98292053571f72962e7aa3f8cfa1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/24/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../powershell_scripts/service-fabric/upgrade-application/upgrade-application.ps1 "升级应用程序")]
+[!code-powershell[main](../../../powershell_scripts/service-fabric/upgrade-application/upgrade-application.ps1 "Upgrade an application")]
 
 ## <a name="script-explanation"></a>脚本说明
 

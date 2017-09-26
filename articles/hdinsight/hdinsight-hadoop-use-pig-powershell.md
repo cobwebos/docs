@@ -61,11 +61,11 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
 
-1. 打开新的 Windows PowerShell 命令提示符。 将目录更改为 **pigjob.ps1** 文件的所在位置，然后使用以下命令来运行脚本：
+1. 打开新的 Windows PowerShell 命令提示符。 将目录更改为 **pigjob.ps1** 文件的所在位置，并使用以下命令来运行脚本：
 
         .\pigjob.ps1
 
-    系统会提示用户登录到 Azure 订阅。 然后，需要输入 HDInsight 群集的 HTTPs/Admin 帐户名和密码。
+    系统会提示用户登录到 Azure 订阅。 然后，要求输入 HDInsight 群集的 HTTPs/Admin 帐户名和密码。
 
 2. 在作业完成时，它应返回类似于以下文本的信息：
 
@@ -81,7 +81,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
 ## <a id="troubleshooting"></a>故障排除
 
-如果作业完成时未返回任何信息，请查看错误日志。 要查看此作业的错误信息，请将以下命令添加到 **pigjob.ps1** 文件的末尾，保存，然后重新运行该文件。
+如果作业完成时未返回任何信息，请查看错误日志。 要查看此作业的错误信息，请将以下命令添加到 **pigjob.ps1** 文件的末尾，保存，并重新运行该文件。
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
@@ -94,7 +94,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 作业处理期间，此 cmdlet 返回写入到 STDERR 中的信息。
 
 ## <a id="summary"></a>摘要
-如你所见，Azure PowerShell 提供了简单的方法，可在 HDInsight 群集上运行 Pig 作业、监视作业状态，以及检索输出。
+如你所见，Azure PowerShell 提供了简单的方法让你在 HDInsight 群集上运行 Pig 作业、监视作业状态，以及检索输出。
 
 ## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Pig 的一般信息：

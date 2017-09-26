@@ -25,9 +25,9 @@ ms.lasthandoff: 07/20/2017
 
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 
-本指南详述了如何使用 Azure CLI 通过从 [Oracle Marketplace 库映像](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)部署 Azure 虚拟机来创建 Oracle 12c 数据库。 部署服务器后，若要配置 Oracle 数据库，请先通过 SSH 进行连接。 
+本指南详述了如何使用 Azure CLI 通过从 [Oracle 应用商店库映像](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)部署 Azure 虚拟机来创建 Oracle 12c 数据库。 部署服务器后，若要配置 Oracle 数据库，请先通过 SSH 进行连接。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -58,7 +58,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-创建 VM 后，Azure CLI 将显示类似于以下示例的信息。 请记下 `publicIpAddress` 的值。 需要使用此地址来访问 VM。
+创建 VM 后，Azure CLI 会显示类似于以下示例的信息。 请记下 `publicIpAddress` 的值。 需要使用此地址来访问 VM。
 
 ```azurecli
 {
@@ -75,7 +75,7 @@ az vm create \
 
 ## <a name="connect-to-the-vm"></a>连接到 VM
 
-若要与 VM 建立 SSH 会话，请使用以下命令。 请将 IP 地址替换为你的 VM 的 `publicIpAddress` 值。
+若要与 VM 建立 SSH 会话，请使用以下命令。 请将 IP 地址替换为 VM 的 `publicIpAddress` 值。
 
 ```bash 
 ssh <publicIpAddress>
@@ -83,7 +83,7 @@ ssh <publicIpAddress>
 
 ## <a name="create-the-database"></a>创建数据库
 
-该 Oracle 软件已安装在 Marketplace 映像中。 如下所述创建一个示例数据库。 
+该 Oracle 软件已安装在应用商店映像中。 如下所述创建一个示例数据库。 
 
 1.  切换到 *oracle* 超级用户，然后初始化用于日志记录的侦听器：
 
@@ -152,7 +152,7 @@ ssh <publicIpAddress>
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这将保存环境变量供将来登录时使用。 使用所选编辑器确认下列语句是否已被添加至 `~/.bashrc` 文件。
+还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这会保存环境变量供将来登录时使用。使用所选编辑器确认下列语句是否已被添加至 `~/.bashrc` 文件。
 
 ```bash
 # Add ORACLE_HOME. 

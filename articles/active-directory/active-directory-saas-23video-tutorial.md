@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: ffcd665506c21e25c84367af5b6a3afb8e319af7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>教程：Azure Active Directory 与 23 Video 的集成
@@ -55,7 +54,7 @@ ms.lasthandoff: 06/01/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-23-video-from-the-gallery"></a>从库中添加 23 Video
-若要配置 23 Video 与 Azure AD 的集成，需要从库中将 23 Video 添加到托管 SaaS 应用列表。
+要配置 23 Video 与 Azure AD 的集成，需要从库中将 23 Video 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 23 Video，请执行以下步骤：**
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 06/01/2017
 
 若要配置和测试 23 Video 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 23 Video 测试用户](#creating-a-23-video-test-user) - 在 23 Video 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -119,7 +118,7 @@ ms.lasthandoff: 06/01/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [23 Video 客户端支持团队](mailto:support@23company.com)来获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-23video-tutorial/tutorial_23video_certificate.png) 
 
@@ -160,7 +159,7 @@ ms.lasthandoff: 06/01/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-23video-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -190,9 +189,9 @@ ms.lasthandoff: 06/01/2017
    
     ![分配用户][402]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件地址”文本框中，键入 Britta Simon 在 Azure AD 中的电子邮件地址。  
+    a. 在“电子邮件地址”文本框中，键入 Britta Simon 在 Azure AD 中的电子邮件地址。  
  
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“添加用户”。   
+    b. 单击“添加用户”。   
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -200,9 +199,9 @@ ms.lasthandoff: 06/01/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 23 Video，请执行以下步骤：**
+**要将 Britta Simon 分配到 23 Video，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

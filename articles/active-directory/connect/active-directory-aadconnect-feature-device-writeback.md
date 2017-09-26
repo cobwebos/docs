@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 310dcb176c2e1556af4ed0e0f50ea77c4644ec98
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 3b14013894b7fabdd4658a64f8fdfd29216ba268
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
@@ -48,7 +48,7 @@ ms.lasthandoff: 07/06/2017
    
    `Add-WindowsFeature RSAT-AD-PowerShell`
 3. 如果尚未安装 Azure Active Directory PowerShell 模块，请从 [用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)下载并安装该模块。 此组件依赖于随 Azure AD Connect 一起安装的登录助手。
-4. 使用企业管理员凭据运行以下命令，然后退出 PowerShell。
+4. 使用企业管理员凭据运行以下命令，并退出 PowerShell。
    
    `Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
    
@@ -60,22 +60,22 @@ ms.lasthandoff: 07/06/2017
 
 说明:
 
-* 该命令将在 CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] 下创建并配置新的容器和对象（如果不存在）。
-* 该命令将在 CN=RegisteredDevices,[domain-dn] 下创建并配置新的容器和对象（如果不存在）。 将在此容器中创建设备对象。
+* 该命令会在 CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] 下创建并配置新的容器和对象（如果不存在）。
+* 该命令会在 CN=RegisteredDevices,[domain-dn] 下创建并配置新的容器和对象（如果不存在）。 将在此容器中创建设备对象。
 * 在 Azure AD 连接器帐户中设置必要的权限，以便管理 Active Directory 上的设备。
 * 即使 Azure AD Connect 安装在多个林中，也只需要在一个林中运行。
 
 参数：
 
-* DomainName：将在其中创建设备对象的 Active Directory 域。 注意：给定的 Active Directory 林的所有设备都在单个域中创建。
+* DomainName：会在其中创建设备对象的 Active Directory 域。 注意：给定的 Active Directory 林的所有设备都在单个域中创建。
 * AdConnectorAccount：Azure AD Connect 使用此 Active Directory 帐户来管理目录中的对象。 这是 Azure AD Connect 同步用来连接 AD 的帐户。 如果 Azure AD Connect 是使用快速设置安装的，则该帐户是带有 MSOL_ 前缀的帐户。
 
 ## <a name="part-3-enable-device-writeback-in-azure-ad-connect"></a>第 3 部分：在 Azure AD Connect 中启用设备写回
 使用以下过程在 Azure AD Connect 中启用设备写回。
 
-1. 再次运行安装向导。 从“其他任务”页中选择自定义同步选项，然后单击“下一步”。
+1. 再次运行安装向导。 从“其他任务”页中选择自定义同步选项，并单击“下一步”。
    ![自定义安装 - 自定义同步选项](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
-2. 在“可选功能”页中，设备写回不再灰显。 请注意，如果 Azure AD Connect 准备步骤未完成，“可选功能”页中的设备写回将会灰显。 选中设备写回对应的框并单击“下一步”。 如果该复选框仍已禁用，请参阅[疑难解答部分](#the-writeback-checkbox-is-still-disabled)。
+2. 在“可选功能”页中，设备写回不再灰显。请注意，如果 Azure AD Connect 准备步骤未完成，“可选功能”页中的设备写回会灰显。 选中设备写回对应的框并单击“下一步”。 如果该复选框仍已禁用，请参阅[疑难解答部分](#the-writeback-checkbox-is-still-disabled)。
    ![自定义安装 - 设备写回可选功能](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
 3. 在写回页中，会看到提供的域是默认的设备写回林。
    ![自定义安装 - 设备写回目标林](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
@@ -90,17 +90,17 @@ ms.lasthandoff: 07/06/2017
 1. 启动 Active Directory 管理中心。
 2. 在要联合的域中展开 RegisteredDevices。
    ![Active Directory 管理中心 - 已注册的设备](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
-3. 其中将会列出当前已注册的设备。
+3. 其中会列出当前已注册的设备。
    ![Active Directory 管理中心 - 已注册的设备列表](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>写回复选框仍处于禁用状态
-如果未启用设备写回复选框，即使已遵循上述步骤，以下步骤还是会在启用此框之前引导你完成安装向导正在验证的程序。
+如果未启用设备写回复选框，即使已遵循上述步骤，以下步骤还是会在启用此框之前引导完成安装向导正在验证的程序。
 
 首先：
 
 * 确保至少有一个林具有 Windows Server 2012R2。 设备对象类型必须存在。
-* 如果安装向导已在运行，则不会检测到任何更改。 在此情况下，请先完成安装向导，然后再试一次。
+* 如果安装向导已在运行，则不会检测到任何更改。 在此情况下，请先完成安装向导，再试一次。
 * 确保在初始化脚本中提供的帐户是 Active Directory 连接器实际使用的正确用户。 若要验证，请执行以下步骤：
   * 从“开始”菜单打开“同步服务”。
   * 打开“连接器”选项卡。

@@ -18,10 +18,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: bcb4a7a7d0b712ebe35a5a5bb063124be5095148
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: bd5c81435c091d25bc14710589b7c043e9f56a25
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -75,8 +75,7 @@ Microsoft Operations Management (OMS) 是 Microsoft 基于云的 IT 管理解决
 ## <a name="installing-oms-on-kubernetes"></a>在 Kubernetes 上安装 OMS
 
 ### <a name="obtain-your-workspace-id-and-key"></a>获取工作区 ID 和密钥
-为了使 OMS 代理与服务通信，需要为其配置工作区 ID 和工作区密钥。 若要获取工作区 ID 和密钥，需在 <https://mms.microsoft.com> 创建 OMS 帐户。
-请按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取工作区 ID 和密钥，如下所示。
+为了使 OMS 代理与服务通信，需要为其配置工作区 ID 和工作区密钥。 若要获取工作区 ID 和密钥，需在 <https://mms.microsoft.com> 创建 OMS 帐户。请按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取工作区 ID 和密钥，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 

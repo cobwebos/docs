@@ -37,7 +37,7 @@ ms.lasthandoff: 09/09/2017
 
 此脚本使用专用[应用服务计划](../functions-scale.md#app-service-plan)创建 Azure Function App。
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "在应用服务计划中创建 Azure Function")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "Create an Azure Function on an App Service plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 

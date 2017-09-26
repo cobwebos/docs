@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0cb1b04bcfab1f1864ae0ce867be02a8bf8c827c
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: db9b1578a235be9018fc1985cc75a0a05ee47b3a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="implement-password-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码同步
@@ -37,15 +37,15 @@ ms.lasthandoff: 04/12/2017
 * 提升用户的生产力。
 * 减少技术支持成本。  
 
-此外，如果你决定[使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)，则可以选择性地设置密码同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。
+此外，如果决定[使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)，则可以选择性地设置密码同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。
 
-密码同步是由 Azure AD Connect Sync 实现的目录同步功能的扩展。 若要在环境中使用密码同步，需要：
+密码同步是由 Azure AD Connect Sync 实现的目录同步功能的扩展。若要在环境中使用密码同步，需要：
 
 * 安装 Azure AD Connect。  
 * 配置本地 Azure Active Directory 实例与 Azure Active Directory 实例之间的目录同步。
 * 启用密码同步。
 
-有关详细信息，请参阅 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
+有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
 
 > [!NOTE]
 > 有关为 FIPS 和密码同步配置的 Azure Active Directory 域服务的更多详细信息，请参阅本文后面的“密码同步和 FIPS”。
@@ -61,11 +61,11 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 首次启用密码同步功能时，它将对范围内的所有用户执行初始密码同步。 无法显式定义一部分要同步的用户密码。
 
-当你更改本地密码时，更新后的密码将会同步，此操作基本上在几分钟内就可完成。
+更改本地密码时，更新后的密码会同步，此操作基本上在几分钟内就可完成。
 密码同步功能会自动重试失败的同步尝试。 如果尝试同步密码期间出现错误，该错误会被记录在事件查看器中。
 
 同步密码对当前登录的用户没有任何影响。
-当前的云服务会话不会立即受到已同步密码更改的影响，而是在你登录云服务时才受到影响。 但是，当云服务要求你再次身份验证时，就需要提供新的密码。
+当前的云服务会话不会立即受到已同步密码更改的影响，而是在登录云服务时才受到影响。 但是，当云服务要求再次身份验证时，就需要提供新的密码。
 
 无论用户是否已登录到其公司网络，都必须第二次输入其公司凭据，以便向 Azure AD 进行身份验证。 但是，如果用户在登录时选中了“使我保持登录状态(KMSI)”复选框，则可以最大限度地避开这些模式。 这样选择可设置会话 Cookie 以在短时间内绕过身份验证。 Azure AD 管理员可以启用或禁用 KMSI 行为。
 
@@ -79,7 +79,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 
 1. 每隔两分钟，AD Connect 服务器上的密码同步代理都会通过用于同步 DC 之间数据的标准 [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) 复制协议，从 DC 请求存储的密码哈希（unicodePwd 属性）。 服务帐户必须具有“复制目录更改”和“复制所有目录更改”AD 权限（默认情况下，在安装时授予），才能获取密码哈希。
-2. 在发送前，DC 将使用密钥（即 RPC 会话密钥的 [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) 哈希）和 salt 对 MD4 密码哈希进行加密。 然后，它通过 RPC 将结果发送到密码同步代理。 DC 还使用 DC 复制协议将 salt 传递给同步代理，因此该代理将能够解密信封。
+2. 在发送前，DC 将使用密钥（即 RPC 会话密钥的 [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) 哈希）和 salt 对 MD4 密码哈希进行加密。 然后，它通过 RPC 将结果发送到密码同步代理。 DC 还使用 DC 复制协议将 salt 传递给同步代理，因此该代理能够解密信封。
 3.  密码同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码同步代理无需有权访问明文密码。 密码同步代理使用 MD5 完全是为了实现与 DC 的复制协议兼容性，并仅在本地 的 DC 和密码同步代理之间使用。
 4.  密码同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
 5.  密码同步代理通过将 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
@@ -96,7 +96,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 ### <a name="security-considerations"></a>安全注意事项
 同步密码时，纯文本版本的密码既不能向密码同步功能公开，也不能向 Azure AD 或任何相关联的服务公开。
 
-用户身份验证针对 Azure AD（而不是针对组织自己的 Active Directory 实例）进行。 如果你的组织对以任何形式离开本地的数据有任何顾虑，请考虑到这样一个事实：存储在 Azure AD 中的 SHA256 密码数据（原始 MD4 哈希的哈希）比 Active Directory 中存储的数据要安全得多。 而且，由于此 SHA256 哈希无法解密，因此无法将其带回到组织的 Active Directory 环境，并且在“传递哈希”攻击中显示为有效的用户密码。
+用户身份验证针对 Azure AD（而不是针对组织自己的 Active Directory 实例）进行。 如果组织对以任何形式离开本地的数据有任何顾虑，请考虑到这样一个事实：存储在 Azure AD 中的 SHA256 密码数据（原始 MD4 哈希的哈希）比 Active Directory 中存储的数据要安全得多。 而且，由于此 SHA256 哈希无法解密，因此无法将其带回到组织的 Active Directory 环境，并且在“传递哈希”攻击中显示为有效的用户密码。
 
 
 
@@ -117,10 +117,10 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 #### <a name="password-expiration-policy"></a>密码过期策略  
 如果用户属于密码同步的范围，云帐户密码则设置为“永不过期”。
 
-可以继续使用在本地环境中过期的同步密码来登录云服务。 下次当你在本地环境中更改密码时，云密码将会更新。
+可以继续使用在本地环境中过期的同步密码来登录云服务。 下次在本地环境中更改密码时，云密码会更新。
 
 #### <a name="account-expiration"></a>帐户过期
-如果你的组织在用户帐户管理中使用了 accountExpires 属性，请注意，此属性不会同步到 Azure AD。 因此，环境中为密码同步配置的过期 Active Directory 帐户仍将在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户。 相反，在启用帐户后，Azure AD 实例应该开启。
+如果组织在用户帐户管理中使用了 accountExpires 属性，请注意，此属性不会同步到 Azure AD。 因此，环境中为密码同步配置的过期 Active Directory 帐户仍会在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户。 相反，在启用帐户后，Azure AD 实例应该开启。
 
 ### <a name="overwrite-synchronized-passwords"></a>覆盖已同步的密码
 管理员可以使用 Windows PowerShell 手动重置密码。
@@ -129,7 +129,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 如果再次更改本地密码，新密码则会同步到云，并会手动覆盖更新的密码。
 
-同步密码对登录的 Azure 用户没有任何影响。 当前的云服务会话不会立即受到已同步密码更改的影响，而是在你登录云服务时才受到影响。 KMSI 会延长此差异的持续时间。 当云服务要求你再次身份验证时，你需要提供新的密码。
+同步密码对登录的 Azure 用户没有任何影响。 当前的云服务会话不会立即受到已同步密码更改的影响，而是在登录云服务时才受到影响。 KMSI 会延长此差异的持续时间。 当云服务要求再次身份验证时，需要提供新的密码。
 
 ### <a name="additional-advantages"></a>其他优点
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: f96b9b212b9322d0677e49ff95184d0feccca2df
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: be2e8fe12dee88ccf81faaa114056a29e03881bd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>在 Windows 10 上使用 PowerShell 为点到站点连接生成并导出证书
@@ -130,11 +130,11 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 
 ## <a name="install"></a>安装已导出的客户端证书
 
-[!INCLUDE [Install client certificate](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
+若要安装客户端证书，请参阅[为点到站点连接安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-继续使用点到站点配置。 
+继续使用点到站点配置。
 
-* 有关 **Resource Manager** 部署模型步骤，请参阅 [Configure a Point-to-Site connection to a VNet](vpn-gateway-howto-point-to-site-resource-manager-portal.md)（配置与 VNet 的点到站点连接）。 
+* 有关**资源管理器**部署模型步骤，请参阅[使用本机 Azure 证书身份验证配置 P2S](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。 
 * 有关**经典**部署模型步骤，请参阅 [Configure a Point-to-Site VPN connection to a VNet (classic)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)（配置与 VNet 的点到站点 VPN 连接（经典））。

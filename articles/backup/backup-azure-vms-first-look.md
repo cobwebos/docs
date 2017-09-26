@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 8/2/2017
 ms.author: markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 1a0e738cfac01d90e91959412b1ad5591705f617
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: fc31d7654e455ec5b4e4bb9af4cf1a166f1661ee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="first-look-backing-up-azure-virtual-machines"></a>先睹为快：备份 Azure 虚拟机
@@ -48,8 +48,8 @@ ms.lasthandoff: 08/03/2017
 
 > [!IMPORTANT]
 > 从 2017 年 3 月开始，无法再使用经典门户来创建备份保管库。
-> 可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，不能使用 PowerShell 创建备份保管库。 到 2017 年 11 月 1 日 为止：
->- 剩余的所有备份保管库都将自动升级到恢复服务保管库。
+> 可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 2017 年 11 月 1 日之前：
+>- 其余所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/03/2017
 6. 单击页面底部的“**发现**”。
     ![发现按钮](./media/backup-azure-vms/discover-button-only.png)
 
-    发现过程可能会需要几分钟，将以表格显示虚拟机。 屏幕底部有一个通知，让你知道系统正在运行发现过程。
+    发现过程可能会需要几分钟，以表格显示虚拟机。 屏幕底部有一个通知，让你知道系统正在运行发现过程。
 
     ![发现 VM](./media/backup-azure-vms/discovering-vms.png)
 
@@ -143,7 +143,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 
     现在已创建策略，接下来请转到下一步骤，运行初始备份。
 
 ## <a name="initial-backup"></a>初始备份
-在虚拟机受到策略保护后，可以在“ **受保护的项** ”选项卡上查看该关系。 在执行初始备份之前，“保护状态”会显示为“受保护 - (等待初始备份)”。 默认情况下，第一个计划的备份是 *初始备份*。
+在虚拟机受到策略保护后，可以在“ **受保护的项** ”选项卡上查看该关系。在执行初始备份之前，“保护状态”会显示为“受保护 - (等待初始备份)”。 默认情况下，第一个计划的备份是 *初始备份*。
 
 ![等待中的备份](./media/backup-azure-vms-first-look/protection-pending-border.png)
 

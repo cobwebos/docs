@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 014eaff14974bb6cd551b6fe53409ede6a6dfea1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>教程：Azure Active Directory 与 eKincare 的集成
@@ -112,7 +111,7 @@ ms.lasthandoff: 05/31/2017
 
     ![配置单一登录](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/hul/saml`
 
@@ -125,7 +124,7 @@ ms.lasthandoff: 05/31/2017
     
     ![配置单一登录](./media/active-directory-saas-ekincare-tutorial/attribute.png)
     
-5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，然后执行以下步骤：
+5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ---------------| --------------- |    
@@ -133,7 +132,7 @@ ms.lasthandoff: 05/31/2017
     | organizationid | "uniquevalue" |
     | organizationname | user.companyname |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/active-directory-saas-ekincare-tutorial/04.png)
 
@@ -145,7 +144,7 @@ ms.lasthandoff: 05/31/2017
     
     d. 单击“确定”
 
-6. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-ekincare-tutorial/tutorial_ekincare_certificate.png) 
 
@@ -182,7 +181,7 @@ ms.lasthandoff: 05/31/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ekincare-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -192,7 +191,7 @@ ms.lasthandoff: 05/31/2017
  
 ### <a name="creating-a-ekincare-test-user"></a>创建 eKincare 测试用户
 
-应用程序支持实时用户预配，且进行身份验证后，将在应用程序中自动创建用户。
+应用程序支持实时用户预配，且进行身份验证后，会在应用程序中自动创建用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -202,7 +201,7 @@ ms.lasthandoff: 05/31/2017
 
 若要将 Britta Simon 分配到 eKincare，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

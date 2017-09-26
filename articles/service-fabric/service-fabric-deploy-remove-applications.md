@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: c7e8d7a53623219864dc2d5c9ace86f36f3db889
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>部署和删除使用 PowerShell 的应用程序
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/08/2017
 
 [打包应用程序类型][10]后，即可部署到 Azure Service Fabric 群集中。 部署涉及以下三个步骤：
 
-1. 将应用程序包上载到映像存储
+1. 将应用程序包上传到映像存储
 2. 注册应用程序类型
 3. 创建应用程序实例
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 07/08/2017
 2. 如果不再需要该应用程序类型，则将其取消注册
 3. 从映像存储中删除应用程序包
 
-如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md) 本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。 
+如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md) 本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
 在运行本文中的任何 PowerShell 命令之前，请始终先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) 连接到 Service Fabric 群集。 若要连接到本地部署群集，请运行以下命令：
@@ -102,7 +101,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 附带作用是加快注册和注销应用程序类型。 上传时间目前可能会降低，尤其是当包含压缩包的时间时。 
 
 若要压缩包，请使用同一 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令。 可以使用 `SkipCopy` 标记独立于上传进行压缩，也可以与上传操作配合使用进行压缩。 对压缩包应用压缩不会执行任何操作。
-若要解压缩压缩包，请将同一 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令与 `UncompressPackage` 切换配合使用。
+要解压缩压缩包，请将同一 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令与 `UncompressPackage` 切换配合使用。
 
 以下 cmdlet 可压缩包，而不会将包复制到映像存储区。 此包中现在包括 `Code` 包和 `Config` 包的压缩文件。 不会压缩应用程序和服务清单，因为许多内部操作均需要使用它们（例如，包共享、应用程序类型名称和某些验证的版本提取）。 压缩清单会使这些操作无效。
 
@@ -167,7 +166,7 @@ Register application type succeeded
 
 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 命令只有在系统成功注册应用程序包后才会返回。 注册花费的时间取决于应用程序包的大小和内容。 如果需要，**-TimeoutSec** 参数可用于提供更长的超时（默认超时为 60 秒）。
 
-如果在处理大型应用程序包，或者遇到超时，请使用 **-Async** 参数。 该命令会在群集接受注册命令时返回，然后根据需要继续进行处理。
+如果在处理大型应用程序包，或者遇到超时，请使用 **-Async** 参数。 该命令会在群集接受注册命令时返回，并根据需要继续进行处理。
 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell
@@ -216,7 +215,7 @@ HealthState            : Ok
 ```
 
 ## <a name="remove-an-application"></a>删除应用程序
-当不再需要某个应用程序实例时，可以使用 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) cmdlet 通过指定其名称将其删除。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) 还将自动删除属于该应用程序的所有服务，永久删除所有服务状态。 
+当不再需要某个应用程序实例时，可以使用 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) cmdlet 通过指定其名称将其删除。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) 还会自动删除属于该应用程序的所有服务，永久删除所有服务状态。 
 
 > [!WARNING]
 > 此操作无法撤消，并且无法恢复应用程序状态。
@@ -297,8 +296,7 @@ ImageStoreConnectionString 可在群集清单中找到：
 如果客户端计算机位于另一个区域，而不在此群集中，请考虑使用此群集的邻近区域或同区域中的客户端计算机。
 - 检查是否已达到外部限制。 例如，将映像存储配置为使用 Azure 存储时，可能会限制上传。
 
-问题：已成功完成上传包，但 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 超时。
-请尝试：
+问题：已成功完成上传包，但 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 超时。请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。
 压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会变慢（尤其是包括压缩时间时），但注册和注销应用程序类型会加快。
 - 通过 `TimeoutSec` 参数为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定更长的超时。

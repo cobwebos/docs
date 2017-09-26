@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 7322570c90b3c83fc79d428a7ac0b57ecb2e4b75
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: e1b2ead77cb4a2ac517e69879923060214adcf5c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/15/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "创建 Service Fabric 群集")]
+[!code-powershell[main](../../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
