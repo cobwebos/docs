@@ -14,7 +14,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 09/22/2017
 ms.author: nitinme
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
@@ -66,6 +66,7 @@ ms.lasthandoff: 07/25/2017
 
 5. 将以下代码粘贴到一个空单元格中，并按 **SHIFT + ENTER** 来运行这些代码。 这些代码会导入此方案所需的类型：
 
+        from pyspark.sql import *
         from pyspark.sql.types import *
 
     使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。
