@@ -16,7 +16,7 @@
 
 <sup>2</sup> 按需 HDInsight 核心数从包含数据工厂的订阅中分配。 因此，上述限制是数据工厂针对按需 HDInsight 核心强制实施的核心限制，不同于与 Azure 订阅关联的核心限制。
 
-<sup>3</sup> 云数据移动单位 (DMU) 用于云到云复制操作。 它是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 就某些方案来说，使用更多 DMU 可以提高复制吞吐量。 有关详细信息，请参阅[云数据移动单位](../articles/data-factory/data-factory-copy-activity-performance.md#cloud-data-movement-units)部分。
+<sup>3</sup> 云数据移动单位 (DMU) 用于云到云复制操作。 它是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 就某些方案来说，使用更多 DMU 可以提高复制吞吐量。 有关详细信息，请参阅[云数据移动单位](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units)部分。
 
 | **资源** | **默认下限** | **最小限制** |
 | --- | --- | --- |

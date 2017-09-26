@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f9a9ff81913dda1457123525fe509d194798db14
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>在 Azure 中部署和管理 StorSimple 虚拟设备
@@ -64,7 +64,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 | **服务数据加密密钥** |在物理设备上重新生成密钥，并使用新密钥更新虚拟设备。 |无法从虚拟设备重新生成。 |
 
 ## <a name="prerequisites-for-the-virtual-device"></a>虚拟设备先决条件
-以下部分说明 StorSimple 虚拟设备的配置先决条件。 在部署虚拟设备之前，请查看 [有关使用虚拟设备的安全注意事项](storsimple-security.md#storsimple-virtual-device-security)。
+以下部分说明 StorSimple 虚拟设备的配置先决条件。 在部署虚拟设备之前，请查看 [有关使用虚拟设备的安全注意事项](storsimple-security.md)。
 
 #### <a name="azure-requirements"></a>Azure 要求
 预配虚拟设备之前，需要在 Azure 环境中做好以下准备：
