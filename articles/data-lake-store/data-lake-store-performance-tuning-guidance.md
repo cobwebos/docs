@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: e7ea83465328bd4c7479dec4093cd94700463854
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 900447ab931f15e4d27aedd525eba7881ba813b2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>优化 Azure Data Lake Store 性能
@@ -54,7 +54,7 @@ Azure Data Lake Store 可进行缩放，以便为所有分析方案提供必要�
 | Powershell       | PerFileThreadCount、ConcurrentFileCount |  [链接](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell)   |
 | AdlCopy    | Azure Data Lake Analytics 单元  |   [链接](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -m (mapper)   | [链接](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure 数据工厂| parallelCopies    | [链接](../data-factory/data-factory-copy-activity-performance.md)                          |
+| Azure 数据工厂| parallelCopies    | [链接](../data-factory/copy-activity-performance.md)                          |
 | Sqoop           | fs.azure.block.size, -m (mapper)    |   [链接](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
 ## <a name="structure-your-data-set"></a>调整数据集结构

@@ -11,16 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b3992b296d5a999601eb69b071559f9d37dacf8f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 5787b25fb1dd7331e561798152678ed187e24d54
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Provide applications access to Azure Stack
+
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+
 When an application needs access to deploy or configure resources through Azure Resource Manager in Azure Stack, you create a service principal, which is a credential for your application.  You can then delegate only the necessary permissions to that service principal.  
 
 As an example, you may have a configuration management tool that uses Azure Resource Manager to inventory Azure resources.  In this scenario, you can create a service principal, grant the reader role to that service principal, and limit the configuration management tool to read-only access. 

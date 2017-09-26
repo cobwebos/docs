@@ -11,17 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ed1d9d20c06ea0478a439775020fd35941b3d640
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3a90057b43e3f2074e72f3d0f896b35b4884368b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Enable multi-tenancy in Azure Stack
+
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 You can configure Azure Stack to support users from multiple Azure Active Directory (Azure AD) tenants to use services in Azure Stack. As an example, consider the following scenario:
 

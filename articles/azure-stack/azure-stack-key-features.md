@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c361d5b47a22689e7bf6749067a39e12df25c84a
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4d5dc523886ea1b03fdb2d1cafce4dcf3fef2576
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Key features and concepts in Azure Stack
+
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+
 If you’re new to Microsoft Azure Stack, these terms and feature descriptions might be helpful.
 
 ## <a name="personas"></a>Personas

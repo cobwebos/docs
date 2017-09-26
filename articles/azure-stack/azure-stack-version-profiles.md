@@ -12,17 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 09/25/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 70ee29b9145c3a92f5d219cf71f33dd783f45bc3
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b9a010409dc7f49333ab188b89280f3ad54816c1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Manage API version profiles in Azure Stack
+
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack supports a specific dated profile version such as  **2017-03-09-profile**, and Azure supports the **latest** API version profile. When you install a profile, the AzureRM PowerShell modules that correspond to the specified profile are installed.
 
@@ -114,5 +116,5 @@ Uninstall-AzureRmProfile -Profile 2017-03-09-profile
 
 ## <a name="next-steps"></a>Next steps
 * [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
-* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  
+* [Configure the Azure Stack user's PowerShell environment](user/azure-stack-powershell-configure-user.md)  
 

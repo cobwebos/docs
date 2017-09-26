@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 0abc33bb5b0ffe46397baa5a2d53637bc3f2984c
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bd8957f1257a5fdd867658be9c708bbdc8717f36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>存储资源管理器（预览版）入门
@@ -68,7 +68,7 @@ Azure 存储资源管理器（预览版）是一款独立应用，可用于在 W
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>连接到 Azure Stack 订阅
 
-有关连接到 Azure Stack 订阅的信息，请参阅[将存储资源管理器连接到 Azure Stack 订阅](azure-stack/azure-stack-storage-connect-se.md)。
+有关连接到 Azure Stack 订阅的信息，请参阅[将存储资源管理器连接到 Azure Stack 订阅](azure-stack/user/azure-stack-storage-connect-se.md)。
 
 ## <a name="work-with-local-development-storage"></a>使用本地开发存储
 使用存储资源管理器（预览版），可以通过 Azure 存储模拟器对本地存储进行操作。 有了此方法，不需要在 Azure 上部署存储帐户就可以针对存储编写代码并对存储进行测试，因为存储帐户是通过 Azure 存储模拟器进行模拟的。

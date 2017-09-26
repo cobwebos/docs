@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b7cc8bc2b39e544a5807a2f6f9ff86ba73c54564
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b432426cb5cc5401fa2e8f7aaa6bc0955aff0931
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>高性价比标准存储以及非托管和托管 Azure VM 磁盘
@@ -48,7 +48,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 让我们看一下标准存储的一些功能。 有关详细信息，请参阅 [Azure 存储简介](../storage-introduction.md)。
 
-**标准存储**：Azure 标准存储支持 Azure 磁盘、Azure Blob、Azure 文件存储、Azure 表和 Azure 队列。 要使用标准存储服务，请从[创建 Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)开始。
+**标准存储**：Azure 标准存储支持 Azure 磁盘、Azure Blob、Azure 文件、Azure 表和 Azure 队列。 要使用标准存储服务，请从[创建 Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)开始。
 
 **标准存储磁盘：**可将标准存储磁盘附加到所有 Azure VM，包括与高级存储配合使用的 VM 系列，如 DSv2 和 GS 系列。 标准存储磁盘只能附加到一个 VM。 但可以将一个或多个此类磁盘附加到 VM，最多为该 VM 大小定义的最大磁盘计数。 在下一部分讲述标准存储的伸缩性和性能目标时会详细介绍规范。 
 
@@ -93,7 +93,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 ## <a name="snapshots-and-copy-blob"></a>快照和复制 Blob
 
-对于存储服务而言，VHD 文件是页 blob。 可以拍摄页 blob 的快照，然后将其复制到其他位置，例如其他存储帐户。
+对于存储服务而言，VHD 文件是页 blob。 可以拍摄页 blob 的快照，并将其复制到其他位置，例如其他存储帐户。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 

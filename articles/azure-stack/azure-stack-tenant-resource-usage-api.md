@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/10/2016
 ms.author: alfredop
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 0ad10564e631f9079b2544a6888c1d0dc467d7ef
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f2eaf1c766d6c86741cf0fd561c131eacb34d782
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="tenant-resource-usage-api"></a>Tenant Resource Usage API
@@ -37,7 +37,7 @@ The request gets consumption details for the requested subscriptions and for the
 ### <a name="arguments"></a>Arguments
 | **Argument** | **Description** |
 | --- | --- |
-| *Armendpoint* |Azure Resource Manager endpoint of your Azure Stack environment. The Azure Stack convention is that the name of Azure Resource Manager endpoint is in the format `https://management.{domain-name}`. For example, if the domain name is local.azurestack.external, then the Resource Manager  endpoint is `https://management.local.azurestack.external`. |
+| *Armendpoint* |Azure Resource Manager endpoint of your Azure Stack environment. The Azure Stack convention is that the name of Azure Resource Manager endpoint is in the format `https://management.{domain-name}`. For example, for the development kit, the domain name is local.azurestack.external, then the Resource Manager  endpoint is `https://management.local.azurestack.external`. |
 | *subId* |Subscription ID of the user who is making the call. You can use this API only to query for a single subscription’s usage. Providers can use the Provider Resource Usage API to query usage for all tenants. |
 | *reportedStartTime* |Start time of the query. The value for *DateTime* should be in UTC and at the beginning of the hour, for example, 13:00. For daily aggregation, set this value to UTC midnight. The format is *escaped* ISO 8601, for example, 2015-06-16T18%3a53%3a11%2b00%3a00Z, where colon is escaped to %3a and plus is escaped to %2b so that it is URI friendly. |
 | *reportedEndTime* |End time of the query. The constraints that apply to *reportedStartTime* also apply to this argument. The value for *reportedEndTime* cannot be in the future. |
@@ -48,37 +48,29 @@ The request gets consumption details for the requested subscriptions and for the
 ### <a name="response"></a>Response
 GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&api-version=1.0
 
+```json
+{
+"value": [
 {
 
-"value": \[
-
-{
-
-"id": "/subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregate/sub1-meterID1",
-
+"id":
+"/subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregate/sub1-meterID1",
 "name": "sub1-meterID1",
-
 "type": "Microsoft.Commerce/UsageAggregate",
 
 "properties": {
-
 "subscriptionId":"sub1",
-
 "usageStartTime": "2015-03-03T00:00:00+00:00",
-
 "usageEndTime": "2015-03-04T00:00:00+00:00",
-
-"instanceData":"{\\"Microsoft.Resources\\":{\\"resourceUri\\":\\"resourceUri1\\",\\"location\\":\\"Alaska\\",\\"tags\\":null,\\"additionalInfo\\":null}}",
-
+"instanceData":"{\"Microsoft.Resources\":{\"resourceUri\":\"resourceUri1\",\"location\":\"Alaska\",\"tags\":null,\"additionalInfo\":null}}",
 "quantity":2.4000000000,
-
 "meterId":"meterID1"
 
 }
-
 },
 
 …
+```
 
 ### <a name="response-details"></a>Response details
 | **Argument** | **Description** |

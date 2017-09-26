@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b469c0ebe9838a1ea986cff3043e3008941e9aa9
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 1309b44ea99af6d20a4d0f730dd68969f3c3082b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Store
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>将数据从 Azure 存储 blob 复制到 Azure Data Lake Store
 导入作业状态显示已完成后，可验证此数据在先前指定的 Azure 存储 Blob 中是否可用。 然后可使用多种方法从 Blob 将数据移动到 Azure Data Lake Store。 有关上传数据的所有可用选项，请参阅[引入数据到 Data Lake Store](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store)。
 
-本部分提供 JSON 定义，此定义可用于创建进行复制数据的 Azure 数据工厂管道。 可从 [Azure 门户](../data-factory/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](../data-factory/data-factory-copy-activity-tutorial-using-powershell.md) 使用这些 JSON 定义。
+本部分提供 JSON 定义，此定义可用于创建进行复制数据的 Azure 数据工厂管道。 可从 [Azure 门户](../data-factory/v1/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](../data-factory/v1/data-factory-copy-activity-tutorial-using-powershell.md) 使用这些 JSON 定义。
 
 ### <a name="source-linked-service-azure-storage-blob"></a>源链接服务（Azure 存储 Blob）
 ````
@@ -188,7 +188,7 @@ ms.lasthandoff: 08/22/2017
     }
 }
 ````
-有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Data Lake Store](../data-factory/data-factory-azure-datalake-connector.md)。
+有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Data Lake Store](../data-factory/connector-azure-data-lake-store.md)。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>重新构造 Azure Data Lake Store 中的数据文件
 以 319GB 大小的文件开始，将其拆分为多个更小的文件，以便可使用 Azure 导入/导出服务进行传输。 此数据已在 Azure Data Lake Store 中，因此现在可将文件重构为其原始大小。 为此，可使用以下 Azure PowerShell cmldt。

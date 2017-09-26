@@ -12,19 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/25/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 34e3a52a7b26db2d1d713efd69719a253cef2d2d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 7e912dcbfd1c745df2a0fc8717a075c0476e8d60
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="configure-the-azure-stack-operators-powershell-environment"></a>Configure the Azure Stack operator's PowerShell environment
 
-As an Azure Stack operator, you can configure your Azure Stack Development Kit's PowerShell environment. After you configure, you can use PowerShell to manage Azure Stack resources such as creating offers, plans, quotas, managing alerts, etc. This topic is scoped to use with the cloud operator environments only, if you want to set up PowerShell for the user environment, refer to [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md) topic. 
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+
+As an Azure Stack operator, you can configure your Azure Stack Development Kit's PowerShell environment. After you configure, you can use PowerShell to manage Azure Stack resources such as creating offers, plans, quotas, managing alerts, etc. This topic is scoped to use with the cloud operator environments only, if you want to set up PowerShell for the user environment, refer to [Configure the Azure Stack user's PowerShell environment](user/azure-stack-powershell-configure-user.md) topic. 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -35,7 +37,7 @@ Run the following prerequisites either from the [development kit](azure-stack-co
 
 ## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Configure the operator environment and sign in to Azure Stack
 
-Based on the type of deployment (Azure AD or AD FS), run one of the following script to configure the Azure Stack operator environment with PowerShell:
+Based on the type of deployment (Azure AD or AD FS), run one of the following script to configure the Azure Stack operator environment with PowerShell (Make sure to replace the AAD tenantName, GraphAudience endpoint and ArmEndpoint values as per your environment configuration):
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Azure Active Directory (AAD) based deployments
        
@@ -44,15 +46,21 @@ Based on the type of deployment (Azure AD or AD FS), run one of the following sc
   Set-ExecutionPolicy RemoteSigned
   Import-Module .\Connect\AzureStack.Connect.psm1
 
+  # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+  # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+  $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
   # Register an AzureRM environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
-    -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+    -ArmEndpoint $ArmEndpoint
 
   # Set the GraphEndpointResourceId value
   Set-AzureRmEnvironment `
     -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.windows.net/"
+    -GraphAudience $GraphAudience
 
   # Get the Active Directory tenantId that is used to deploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `
@@ -72,15 +80,21 @@ Based on the type of deployment (Azure AD or AD FS), run one of the following sc
   Set-ExecutionPolicy RemoteSigned
   Import-Module .\Connect\AzureStack.Connect.psm1
 
+  # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+  # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+  $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
   # Register an AzureRM environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
-    -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+    -ArmEndpoint $ArmEndpoint
 
   # Set the GraphEndpointResourceId value
   Set-AzureRmEnvironment `
     -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.local.azurestack.external/" `
+    -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
   # Get the Active Directory tenantId that is used to deploy Azure Stack     
@@ -103,5 +117,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>Next steps
-* [Develop templates for Azure Stack](azure-stack-develop-templates.md)
-* [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
+* [Develop templates for Azure Stack](user/azure-stack-develop-templates.md)
+* [Deploy templates with PowerShell](user/azure-stack-deploy-template-powershell.md)

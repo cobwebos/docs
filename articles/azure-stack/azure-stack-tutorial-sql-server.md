@@ -11,15 +11,15 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: bba8257bc4477f985d1a9399e65a1338d237f134
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f774888ba3921d0688feddac669ed1dca4667441
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Make SQL databases available to your Azure Stack users
@@ -35,9 +35,9 @@ As an Azure Stack cloud administrator, you can create offers that let your users
 
 The deployment process is described in detail in the [Use SQL databases on Azure Stack article](azure-stack-sql-resource-provider-deploy.md), and is comprised of the following primary steps:
 
-1.  [Deploy the SQL resource provider]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
-2.  [Verify the deployment]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
-3.  [Provide capacity by connecting to a hosting SQL server]( azure-stack-sql-resource-provider-deploy.md#provide-capacity-by-connecting-to-a-hosting-sql-server).
+1. [Deploy the SQL resource provider]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
+2. [Verify the deployment]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
+3. Provide capacity by connecting to a hosting SQL server.
 
 ## <a name="create-an-offer"></a>Create an offer
 
@@ -73,6 +73,8 @@ Now that you've deployed the SQL Server resource provider and created an offer, 
 3. Click **Login Settings**, enter credentials for the database, and then click **OK**.
 4. Click **SKU** > select the SQL SKU that you created for the SQL Hosting Server > **OK**.
 5. Click **Create**.
+
+## <a name="next-steps"></a>Next steps
 
 In this tutorial, you learned how to:
 

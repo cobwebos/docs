@@ -1,6 +1,6 @@
 ---
-title: Manage updates in Azure Stack | Microsoft Docs
-description: Learn how to manage updates in Azure Stack
+title: Manage updates in Azure Stack overview | Microsoft Docs
+description: Learn about update management for Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -12,33 +12,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: twooley
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 1462079c1aac9031e8ea195282555c0707480ec8
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3d0d5ea6cc3f3cc7bc0550b83dabbf0ae6af8a27
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="manage-updates-in-azure-stack"></a>Manage updates in Azure Stack
+# <a name="manage-updates-in-azure-stack-overview"></a>Manage updates in Azure Stack overview
 
-In the Azure Stack Development Kit, you can preview the experience for managing Azure Stack updates in a multi-node environment. Because virtual machines are not highly available in the development kit, you cannot apply updates through the **Updates** tile.
+*Applies to: Azure Stack integrated systems*
 
-In the Azure Stack administrator portal, you can determine the current version (or build number) of Azure Stack.
+Microsoft will release update packages for Azure Stack integrated systems on a regular basis. Each release of Microsoft software updates is bundled as a single update package. As an Azure Stack operator, you can easily import, install, and monitor the installation progress of these update packages from the administrator portal. 
 
+Your original equipment manufacturer (OEM) hardware vendor will also release updates, such as driver and firmware updates. These updates are delivered as separate packages by your OEM hardware vendor, and are managed separately from Microsoft updates.
+
+To keep your system under support, you must keep Azure Stack updated to a specific version level. Make sure that you review the [Azure Stack servicing policy](azure-stack-servicing-policy.md).
+
+> [!NOTE]
+> You can't apply Azure Stack update packages to Azure Stack Development Kit. The update packages are designed for integrated systems.
+
+## <a name="the-update-resource-provider"></a>The Update resource provider
+
+Azure Stack includes an Update resource provider that orchestrates the application of Microsoft software updates. This resource provider ensures that updates are applied across all physical hosts, Service Fabric applications and runtimes, and all infrastructure virtual machines and their associated services.
+
+As updates install, you can easily view high-level status as the update process targets the various subsystems in Azure Stack (for example, physical hosts, and infrastructure virtual machines).
+
+## <a name="plan-for-updates"></a>Plan for updates
+
+We strongly recommend that you notify users of any maintenance operations, and that you schedule normal maintenance windows during non-business hours as much as possible. Maintenance operations may affect both tenant workloads and portal operations.
+
+## <a name="using-the-update-tile-to-manage-updates"></a>Using the Update tile to manage updates
+Managing updates from the administrator portal is a simple process. An Azure Stack operator can navigate to the Update tile in the dashboard to:
+
+- view important information such as the current version.
+- install updates, and monitor progress.
+- review update history for previously installed updates.
+ 
 ## <a name="determine-the-current-version"></a>Determine the current version
 
-To determine the current version of Azure Stack, do either of the following in the administrator portal:
+The Update tile shows the current version of Azure Stack. You can get to the Update tile by using either of the following methods in the administrator portal:
 
-- On the dashboard, view the current version in the **Updates** tile.
-- On the **Region management** tile, click the region name (such as **local**). View the current version in the **Updates** tile.
-
+- On the dashboard, view the current version in the **Update** tile.
+ 
    ![Updates tile on default dashboard](./media/azure-stack-updates/image1.png)
+ 
+- On the **Region management** tile, click the region name. View the current version in the **Update** tile.
 
 ## <a name="next-steps"></a>Next steps
 
-* [Region management in Azure Stack](azure-stack-region-management.md)     
+- [Azure Stack servicing policy](azure-stack-servicing-policy.md) 
+- [Region management in Azure Stack](azure-stack-region-management.md)     
 
 
 
