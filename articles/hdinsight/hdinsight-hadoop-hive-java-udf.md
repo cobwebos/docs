@@ -13,7 +13,7 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 09/26/2017
 ms.author: larryfr
 ms.translationtype: HT
 ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
@@ -206,7 +206,7 @@ ms.lasthandoff: 07/28/2017
 1. 使用以下命令在 SSH 会话中启动 Beeline 客户端。
 
     ```bash
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
     该命令假定使用默认的群集登录帐户 **admin**。
