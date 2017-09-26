@@ -1,5 +1,4 @@
 ---
-
 title: "在 Azure Active Directory 中解决组的许可证问题 | Microsoft 文档"
 description: "使用基于 Azure Active Directory 组的许可时，如何识别和解决许可证分配问题"
 services: active-directory
@@ -22,7 +21,6 @@ ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 

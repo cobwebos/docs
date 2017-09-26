@@ -1,5 +1,4 @@
 ---
-
 title: "将 Azure Active Directory B2B 协作用户添加到角色 | Microsoft 文档"
 description: "在 Azure Active Directory 中将来宾用户添加到某个角色"
 services: active-directory
@@ -17,11 +16,11 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/17/2017
-
 
 ---
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0fba2ea06827aff29a7a092933edb8120d668b29
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>在服务配置文件中指定 DNS 设置
@@ -45,10 +46,5 @@ ms.openlocfilehash: 0fba2ea06827aff29a7a092933edb8120d668b29
 [使用网络配置文件配置虚拟网络](http://go.microsoft.com/fwlink/?LinkId=248094)
 
 [关于管理门户中的虚拟网络设置](http://go.microsoft.com/fwlink/?LinkId=248092)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

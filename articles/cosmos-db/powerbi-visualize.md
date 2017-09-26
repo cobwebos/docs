@@ -23,8 +23,7 @@ ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 的 Power BI 教程：使用 Power BI 连接器可视化数据
-
-            [PowerBI.com](https://powerbi.microsoft.com/) 是一个在线服务，在此处可以创建和共享包含对你和组织来说很重要的数据的仪表板和报表。  Power BI Desktop 是一个专用的报表创作工具，使你能够从各种数据源检索数据、合并和转换数据、创建功能强大的报表和可视化效果以及将报表发布到 Power BI。  使用最新版本的 Power BI Desktop，现在可以通过 Power BI 的 Cosmos DB 连接器连接到 Cosmos DB 帐户。   
+[PowerBI.com](https://powerbi.microsoft.com/) 是一个在线服务，在此处可以创建和共享包含对你和组织来说很重要的数据的仪表板和报表。  Power BI Desktop 是一个专用的报表创作工具，使你能够从各种数据源检索数据、合并和转换数据、创建功能强大的报表和可视化效果以及将报表发布到 Power BI。  使用最新版本的 Power BI Desktop，现在可以通过 Power BI 的 Cosmos DB 连接器连接到 Cosmos DB 帐户。   
 
 在此 Power BI 教程中，我们将逐步讲解各步骤 - 在 Power BI Desktop 中连接到 Cosmos DB 帐户、使用导航器导航至我们想要在其中提取数据的集合、使用 Power BI Desktop 查询编辑器将 JSON 数据转换为表格格式、以及生成报表并将其发布到 PowerBI.com。
 

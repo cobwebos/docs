@@ -20,7 +20,6 @@ ms.openlocfilehash: 70004cfd83360ac4c66fd4c90632d341709d2e6f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostics tools
  

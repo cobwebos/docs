@@ -9,11 +9,11 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: a7da42f4b84b77ad0a82004a56f7712c31567449
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: cb123107178f5e7c0207524c19331a6fa4658739
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -21,13 +21,16 @@ ms.lasthandoff: 06/29/2017
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
-本快速入门演示如何使用以 [Golang](https://golang.org/) 编写的现有 [MongoDB](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) 应用，并将其连接到支持 MongoDB 客户端连接的 Azure Cosmos DB 数据库。
+本快速入门演示如何使用以 [Golang](https://golang.org/) 编写的现有 [MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) 应用，并将其连接到支持 MongoDB 客户端连接的 Azure Cosmos DB 数据库。
 
 换而言之，Golang 应用程序仅知道它要使用 MongoDB API 连接到某个数据库。 应用程序完全知道数据存储在 Azure Cosmos DB 中。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。
+- Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。 
+
+  [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+
 - [Go](https://golang.org/dl/) 以及 [Go](https://golang.org/) 语言的基础知识。
 - IDE — [Gogland](https://www.jetbrains.com/go/)（由 Jetbrains 推出）、[Visual Studio Code](https://code.visualstudio.com/)（由 Microsoft 推出）或 [Atom](https://atom.io/)。 在本教程中，我将使用 Goglang。
 
@@ -159,7 +162,7 @@ if err != nil {
 
 ### <a name="query-or-read-a-document"></a>查询或读取文档
 
-Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行各种查询。 下面的示例代码演示你可针对集合中文档运行的查询。
+Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行各种查询。 下面的示例代码演示了一个针对集合中文档运行的查询。
 
 ```go
 // Get a Document from the collection
@@ -235,8 +238,8 @@ if err != nil {
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

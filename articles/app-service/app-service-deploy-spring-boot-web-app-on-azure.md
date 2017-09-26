@@ -1,6 +1,6 @@
 ---
-title: "将 Spring Boot 应用程序部署到 Azure App Service | Microsoft Docs"
-description: "本教程会为开发者介绍将 Spring Boot 入门 Web 应用部署到 Azure App Service 的步骤。"
+title: "将 Spring Boot 应用程序部署到 Azure 应用服务 | Microsoft Docs"
+description: "本教程会为开发者介绍将 Spring Boot 入门 Web 应用部署到 Azure 应用服务的步骤。"
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 0c388862d927a1492745832225c686670c071f86
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 8776142d5452bf5057990702c89aa1a541382ffc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="deploy-a-spring-boot-application-to-the-azure-app-service"></a>将 Spring Boot 应用程序部署到 Azure App Service
+# <a name="deploy-a-spring-boot-application-to-the-azure-app-service"></a>将 Spring Boot 应用程序部署到 Azure 应用服务
 
 [Spring Framework] 是一种开源解决方案，帮助 Java 开发者创建企业级应用程序，在该平台上构建的较常见的项目之一是 [Spring Boot]，它为创建独立的 Java 应用程序提供了一种简化的方法。
 
-本教程将介绍如何创建 Spring Boot 入门 Web 应用示例，以及如何将其部署到 [Azure App Service]。
+本教程将介绍如何创建 Spring Boot 入门 Web 应用示例，以及如何将其部署到 [Azure 应用服务]。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -89,11 +89,11 @@ ms.lasthandoff: 08/10/2017
 
 1. 浏览到 [Azure 门户]并登录。
 
-1. 登录 Azure 门户的帐户后，请单击“应用程序服务”的菜单图标：
+1. 登录 Azure 门户的帐户后，请单击“应用服务”的菜单图标：
    
    ![Azure 门户][AZ01]
 
-1. 显示“应用程序服务”页面时，请单击“+ 添加”以创建新的应用程序服务。
+1. 显示“应用服务”页面时，请单击“+ 添加”以创建新的应用服务。
 
    ![创建应用服务][AZ02]
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 08/10/2017
 
    ![创建 Web 应用设置][AZ05]
 
-1. 创建 Web 应用后，单击“应用程序服务”的菜单图标，然后单击新创建的 Web 应用：
+1. 创建 Web 应用后，单击“应用服务”的菜单图标，然后单击新创建的 Web 应用：
 
    ![列出 Web 应用][AZ06]
 
@@ -202,22 +202,22 @@ ms.lasthandoff: 08/10/2017
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]和[用于 Visual Studio Team Services 的 Java 工具]。
 
-有关使用 FTP 将 Web 应用部署到 Azure 的其他信息，请参阅[使用 FTP/S 将应用部署到 Azure App Service]。
+有关使用 FTP 将 Web 应用部署到 Azure 的其他信息，请参阅[使用 FTP/S 将应用部署到 Azure 应用服务]。
 
-有关 Spring Boot 示例项目的详细信息，请参阅 [Spring Boot 启动入门]。
+有关 Spring Boot 示例项目的详细信息，请参阅 [Spring Boot 入门]。
 
 若要获取 Spring Boot 应用程序入门的相关帮助，请参阅 https://start.spring.io/ 中的“Spring Initializr”。
 
-有关配置 Web 应用的其他设置的详细信息，请参阅[在 Azure App Service 中配置 Web 应用]。
+有关配置 Web 应用的其他设置的详细信息，请参阅[在 Azure 应用服务中配置 Web 应用]。
 
 <!-- URL List -->
 
-[Azure App Service]: https://azure.microsoft.com/services/app-service/
+[Azure 应用服务]: https://azure.microsoft.com/services/app-service/
 [Azure Container Service]: https://azure.microsoft.com/services/container-service/
 [Azure Java 开发人员中心]: https://azure.microsoft.com/develop/java/
 [Azure 门户]: https://portal.azure.com/
-[在 Azure App Service 中配置 Web 应用]: /azure/app-service-web/web-sites-configure
-[使用 FTP/S 将应用部署到 Azure App Service]: https://docs.microsoft.com/azure/app-service-web/app-service-deploy-ftp
+[在 Azure 应用服务中配置 Web 应用]: /azure/app-service/web-sites-configure
+[使用 FTP/S 将应用部署到 Azure 应用服务]: https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp
 [免费 Azure 帐户]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: https://github.com/
 [Java 开发人员工具包 (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
@@ -225,7 +225,7 @@ ms.lasthandoff: 08/10/2017
 [Maven]: http://maven.apache.org/
 [MSDN 订阅者权益]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Spring Boot 启动入门]: https://github.com/spring-guides/gs-spring-boot
+[Spring Boot 入门]: https://github.com/spring-guides/gs-spring-boot
 [Spring Framework]: https://spring.io/
 
 <!-- IMG List -->

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 1cce449a87571fdabd0dbf76f764f442b2990ffe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>云中的 Azure 多重身份验证入门

@@ -1,6 +1,6 @@
 ---
-title: "示例配置 - 连接到 Azure VPN 网关的 Cisco ASA 设备 | Microsoft Docs"
-description: "本文提供连接到 Azure VPN 网关的 Cisco ASA 设备的示例配置。"
+title: "将 Cisco ASA 设备连接到 Azure VPN 网关的示例配置 | Microsoft Docs"
+description: "本文提供将 Cisco ASA 设备连接到 Azure VPN 网关的示例配置。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -16,117 +16,121 @@ ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 10466b8928e2cd687f7961a2956b6d60823b82be
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 080f83a67674ab059404870f6ec0e7470cfcceff
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>示例配置：Cisco ASA 设备（IKEv2/无 BGP）
-本文提供连接到 Azure VPN 网关的 Cisco ASA 设备的示例配置。
+本文提供将 Cisco 自适应安全 (ASA) 设备连接到 Azure VPN 网关的示例配置。 该示例适用于运行 IKEv2 而不使用边界网关协议 (BGP) 的 Cisco ASA 设备。 
 
 ## <a name="device-at-a-glance"></a>设备概览
 
 |                        |                                   |
 | ---                    | ---                               |
 | 设备供应商          | Cisco                             |
-| 设备型号           | ASA（自适应安全设备） |
-| 目标版本         | 8.4+                              |
+| 设备型号           | ASA                               |
+| 目标版本         | 8.4 及更高版本                     |
 | 测试的模型           | ASA 5505                          |
 | 测试的版本         | 9.2                               |
-| IKE 版本            | **IKEv2**                         |
-| BGP                    | **否**                            |
-| Azure VPN 网关类型 | **基于路由**的 VPN 网关       |
+| IKE 版本            | IKEv2                             |
+| BGP                    | 否                                |
+| Azure VPN 网关类型 | 基于路由的 VPN 网关           |
 |                        |                                   |
 
 > [!NOTE]
-> 1. 以下配置根据[此文](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述，结合“UserPolicyBasedTrafficSelectors”选项使用自定义 IPsec/IKE 策略将 Cisco ASA 设备连接到 Azure **基于路由**的 VPN 网关。
-> 2. 它要求 ASA 设备中的 **IKEv2** 使用基于访问列表的配置，而不是基于 VTI 的配置。
-> 3. 请查阅 VPN 设备供应商规范，确保本地 VPN 设备支持该策略。
+> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。 连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
+>
+> 示例要求 ASA 设备中的“IKEv2”策略使用基于访问列表的配置，而不是基于 VTI 的配置。 请查阅 VPN 设备供应商规范，验证本地 VPN 设备是否支持 IKEv2 策略。
+
 
 ## <a name="vpn-device-requirements"></a>VPN 设备要求
-Azure VPN 网关使用标准 IPsec/IKE 协议套件建立 S2S VPN 隧道。 请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)，了解 Azure VPN 网关的详细 IPsec/IKE 协议参数和默认加密算法。 （可选）可以根据[关于加密要求](vpn-gateway-about-compliance-crypto.md)中所述，为特定的连接准确指定加密算法与密钥长度的组合。 如果选择加密算法与密钥强度的特定组合，请确保在 VPN 设备上使用相应的规范。
+Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) VPN 隧道。 若要了解 Azure VPN 网关的详细 IPsec/IKE 协议参数和默认加密算法，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
+
+> [!NOTE]
+> （可选）可以根据[关于加密要求](vpn-gateway-about-compliance-crypto.md)中所述，为特定的连接准确指定加密算法与密钥长度的组合。 如果准确指定了算法与密钥强度的组合，请确保在 VPN 设备上使用相应的规范。
 
 ## <a name="single-vpn-tunnel"></a>单一 VPN 隧道
-此拓扑由 Azure VPN 网关与本地 VPN 设备之间的单个 S2S VPN 隧道构成。 （可选）可以配置跨 VPN 隧道的 BGP。
+此配置由 Azure VPN 网关与本地 VPN 设备之间的单个 S2S VPN 隧道构成。 （可选）可以配置 [跨 VPN 隧道的 BGP](#bgp)。
 
-![单一隧道](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
+![单一 S2S VPN 隧道](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-请参阅[单一隧道设置](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)，获取有关构建 Azure 配置的详细分步说明。
+若要获取有关构建 Azure 配置的详细分步说明，请参阅[单一隧道设置](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)。
 
-### <a name="network-and-vpn-gateway-information"></a>网络和 VPN 网关信息
-本部分列出本示例的参数。
+### <a name="virtual-network-and-vpn-gateway-information"></a>虚拟网络和 VPN 网关信息
+本部分列出示例的参数。
 
 | **Parameter**                | **值**                    |
 | ---                          | ---                          |
-| VNet 地址前缀        | 10.11.0.0/16<br>10.12.0.0/16 |
+| 虚拟网络地址前缀        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 网关 IP         | Azure_Gateway_Public_IP      |
 | 本地地址前缀 | 10.51.0.0/16<br>10.52.0.0/16 |
 | 本地 VPN 设备 IP    | OnPrem_Device_Public_IP     |
-| * VNet BGP ASN                | 65010                        |
-| *Azure BGP 对等 IP           | 10.12.255.30                 |
-| *本地 BGP ASN         | 65050                        |
-| *本地 BGP 对等 IP     | 10.52.255.254                |
+| * 虚拟网络 BGP ASN                | 65010                        |
+| * Azure BGP 对等 IP           | 10.12.255.30                 |
+| * 本地 BGP ASN         | 65050                        |
+| * 本地 BGP 对等 IP     | 10.52.255.254                |
 |                              |                              |
 
-* (*) 仅适用于 BGP 的可选参数。
+\* 仅适用于 BGP 的可选参数。
 
-### <a name="ipsecike-policy--parameters"></a>IPsec/IKE 策略和参数
-
-下表列出本示例中使用的 IPsec/IKE 算法和参数。 请查阅 VPN 设备规范，确保 VPN 设备型号和固件版本支持上面列出的所有算法。
+### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE 策略和参数
+下表列出本示例中使用的 IPsec/IKE 算法和参数。 请查阅 VPN 设备规范，验证 VPN 设备型号和固件版本支持的算法。
 
 | IPsec/IKEv2  | **值**                            |
 | ---              | ---                                  |
 | IKEv2 加密 | AES256                               |
 | IKEv2 完整性  | SHA384                               |
 | DH 组         | DHGroup24                            |
-| IPsec 加密 | AES256                               |
-| IPsec 完整性  | SHA1                                 |
+| * IPsec 加密 | AES256                               |
+| * IPsec 完整性  | SHA1                                 |
 | PFS 组        | PFS24                                |
-| QM SA 生存期   | 7200 秒                         |
+| QM SA 生存期   | 7,200 秒                         |
 | 流量选择器 | UsePolicyBasedTrafficSelectors $True |
 | 预共享密钥   | PreSharedKey                         |
 |                  |                                      |
 
-- (*) 在某些设备上，如果 GCM-AES 用作 IPsec 加密算法，则 IPsec 完整性必须为“null”。
+\* 在某些设备上，IPsec 加密算法是 AES GCM 时，IPsec 完整性必须为 null 值。
 
-### <a name="device-notes"></a>设备说明
+### <a name="asa-device-support"></a>ASA 设备支持
 
->[!NOTE]
->
-> 1. IKEv2 支持需要 ASA 8.4 和更高版本。
-> 2. 更高的 DH 和 PFS 组支持（组超过 5 个）需要 ASA 版本 9.x。
-> 3. IPsec 加密为 AES-GCM 且 IPsec 完整性为 SHA-256、SHA-384、SHA-512 的支持需要在较新的 ASA 硬件上安装 ASA 版本 9.x；**不**支持 ASA 5505、5510、5520、5540、5550、5580 （请查看供应商规范来确认是否受支持。）
->
+* IKEv2 支持需要 ASA 8.4 和更高版本。
+
+* DH 和超过 5 个组的 PFS 组支持需要 ASA 版本 9.x。
+
+* 需要 ASA 9.x 版本，才能使用 AES GCM 实现 IPsec 加密，并使用 SHA-256、SHA-384 或 SHA-512 实现 IPsec 完整性。 此支持要求适用于较新的 ASA 设备。
+
+    > [!NOTE]
+    > 不支持的 ASA 设备型号：5505、5510、5520、5540、5550 和 5580。 请查阅 VPN 设备规范，验证 VPN 设备型号和固件版本支持的算法。
 
 
-### <a name="sample-device-configurations"></a>示例设备配置
-以下脚本基于上面列出的拓扑和参数提供示例配置。 S2S VPN 隧道配置由以下部分组成：
+### <a name="sample-device-configuration"></a>示例设备配置
+此脚本提供基于前几节所述配置和参数的示例。 S2S VPN 隧道配置由以下部分组成：
 
 1. 接口和路由
 2. 访问列表
 3. IKE 策略和参数（第 1 阶段或主模式）
 4. IPsec 策略和参数（第 2 阶段或快速模式）
-5. 其他参数（TCP MSS 钳位等）
+5. 其他参数（如 TCP MSS 钳位）
 
->[!IMPORTANT] 
->请确保完成下面列出的附加配置，并将占位符替换为实际值：
-> 
-> - 内部和外部接口的接口配置
-> - 内部/专用和外部/公共网络的路由
-> - 确保所有名称和策略编号在设备上唯一
-> - 确保设备支持加密算法
-> - 将以下占位符替换为实际值
->   - 外部接口名称："outside"
->   - Azure_Gateway_Public_IP
->   - OnPrem_Device_Public_IP
->   - IKE Pre_Shared_Key
->   - VNet 和本地网络网关名称（VNetName、LNGName）
->   - VNet 和本地网络地址前缀
->   - 正确的网络掩码
+> [!IMPORTANT]
+> 在使用示例脚本之前，请完成以下步骤。 将脚本中的占位符值替换为你置配的设备设置。
 
-#### <a name="sample-configuration"></a>示例配置
+* 指定内部和外部接口的接口配置。
+* 标识内部/专用和外部/公共网络的路由。
+* 确保所有名称和策略编号在设备上唯一。
+* 确保设备支持加密算法。
+* 将以下“占位符值”替换为你配置的实际值：
+  - 外部接口名称："outside"
+  - Azure_Gateway_Public_IP
+  - OnPrem_Device_Public_IP
+  - IKE：IKE Pre_Shared_Key
+  - 虚拟网络和本地网络网关名称："VNetName" 和 "LNGName"
+  - 虚拟网络和本地网络地址前缀
+  - 正确的网络掩码
+
+#### <a name="sample-script"></a>示例脚本
 
 ```
 ! Sample ASA configuration for connecting to Azure VPN gateway
@@ -281,19 +285,32 @@ sysopt connection tcpmss 1350
 
 ## <a name="simple-debugging-commands"></a>简单调试命令
 
-下面是用于调试的一些 ASA 命令：
+使用以下用于调试的 ASA 命令：
 
-1. 显示 IPsec 和 IKE SA
-    - "show crypto ipsec sa"
-    - "show crypto ikev2 sa"
-2. 进入调试模式 - 这可能会在控制台上产生很大的噪声
-    - "debug crypto ikev2 platform <level>"
-    - "debug crypto ikev2 protocol <level>"
-3. 列出当前配置
-    - "show run" - 显示设备上的当前配置；可以使用不同的子命令列出特定的配置部分。 例如，"show run crypto"、"show run access-list"、"show run tunnel-group"，等等。
+* 显示 IPsec 或 IKE 安全关联 (SA)：
+    ```
+    show crypto ipsec sa
+    show crypto ikev2 sa
+    ```
 
+* 进入“调试模式”：
+    ```
+    debug crypto ikev2 platform <level>
+    debug crypto ikev2 protocol <level>
+    ```
+    `debug` 命令可在控制台上生成大量输出。
+
+* 在设备上显示当前配置：
+    ```
+    show run
+    ```
+    使用 `show` 子命令列出设备配置的特定部分，例如：
+    ```
+    show run crypto
+    show run access-list
+    show run tunnel-group
+    ```
 
 ## <a name="next-steps"></a>后续步骤
-有关配置主动-主动跨界连接和 VNet 到 VNet 连接的步骤，请参阅[为跨界连接和 VNet 到 VNet 连接配置主动-主动 VPN 网关](vpn-gateway-activeactive-rm-powershell.md)。
-
+若要配置主动-主动跨界和 VNet 到 VNet 连接，请参阅[配置主动-主动 VPN 网关](vpn-gateway-activeactive-rm-powershell.md)。
 

@@ -19,7 +19,6 @@ ms.openlocfilehash: 3887cf8c085c30eb01ac769944da2fcfe3df81f3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakopolis"></a>教程：Azure Active Directory 与 Trakopolis 集成
 

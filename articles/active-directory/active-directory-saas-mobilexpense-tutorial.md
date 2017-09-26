@@ -19,7 +19,6 @@ ms.openlocfilehash: 030a1fc9f36d6fcfa607552d85ce232e36eaa64b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobilexpense"></a>教程：Azure Active Directory 与 MobileXpense 的集成
 

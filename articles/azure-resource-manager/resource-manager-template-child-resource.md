@@ -20,7 +20,6 @@ ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>在 Resource Manager 模板中设置子资源的名称和类型
 创建模板时，通常需要包括与父资源相关的子资源。 例如，模板可以包括 SQL Server 和数据库。 SQL Server 是父资源，数据库是子资源。 

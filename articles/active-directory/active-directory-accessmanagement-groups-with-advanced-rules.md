@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ae2a2e477137bc117111b147e1f088d528a55de5
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: b136d3841243ad7aa88786f76b2d31e5dfae9079
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
@@ -271,10 +271,10 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 | displayName             | 任意字符串值                | (device.displayName -eq "Rob Iphone”)                       |
 | deviceOSType            | 任意字符串值                | (device.deviceOSType -eq "IOS")                             |
 | deviceOSVersion         | 任意字符串值                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | 任意字符串值                | (device.deviceCategory -eq "")                              |
+| deviceCategory          | 有效的设备类别名称    | (device.deviceCategory -eq "BYOD")                          |
 | deviceManufacturer      | 任意字符串值                | (device.deviceManufacturer -eq "Microsoft")                 |
 | deviceModel             | 任意字符串值                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | 任意字符串值                | (device.deviceOwnership -eq "")                             |
+| deviceOwnership         | 个人、公司               | (device.deviceOwnership -eq "Company")                      |
 | domainName              | 任意字符串值                | (device.domainName -eq "contoso.com")                       |
 | enrollmentProfileName   | 任意字符串值                | (device.enrollmentProfileName -eq "")                       |
 | isRooted                | true false                      | (device.deviceOSType -eq true)                              |

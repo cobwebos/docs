@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: dd4e4282d774c2c336889b1df887806bfe512c10
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: cc41bdb12cf11e60489e104af2df4dd0720dd91b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -146,25 +146,25 @@ HTTP 触发器将轮询指定的终结点并检查响应，确定是否应执行
 |headers|否|表示要发送到请求的每个标头的对象。 例如，若要在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|对象|  
 |body|否|表示要发送到终结点的有效负载的对象。|对象|  
 |retryPolicy|否|用于针对 4xx 或 5xx 错误自定义重试行为的对象。|对象|  
-|authentication|否|表示应该对请求执行的身份验证方法。 有关此对象的详细信息，请参阅[计划程序出站身份验证](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)。 除了计划程序以外，还有另一个受支持的属性：`authority`。如果未指定此值，则它默认为 `https://login.windows.net`，但你可以使用不同的受众，例如 `https://login.windows\-ppe.net`|对象|  
+|authentication|否|表示应该对请求执行的身份验证方法。 有关此对象的详细信息，请参阅[计划程序出站身份验证](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)。 除了计划程序以外，还有另一个受支持的属性：`authority`。如果未指定此值，则它默认为 `https://login.windows.net`，但可以使用不同的受众，例如 `https://login.windows\-ppe.net`|对象|  
   
-HTTP 触发器要求 HTTP API 符合特定的模式，这样它才能与逻辑应用正常配合工作。 必须填写以下字段：  
+HTTP 触发器要求 HTTP API 符合特定的模式，这样它才能与逻辑应用正常配合工作。 它识别以下属性：  
   
-|响应|说明|  
-|------------|---------------|  
-|状态代码|状态代码为 200 \(OK\) 则运行。 其他任何状态代码均不能引发运行。|  
-|Retry\-after 标头|逻辑应用再次轮询终结点之前所要经过的秒数。|  
-|Location 标头|在下一个轮询间隔要调用的 URL。 如果未指定，将使用原始 URL。|  
+|响应|必选|说明|  
+|------------|------------|---------------|  
+|状态代码|是|状态代码为 200 \(OK\) 则运行。 其他任何状态代码均不能引发运行。|  
+|Retry\-after 标头|否|逻辑应用再次轮询终结点之前所要经过的秒数。|  
+|Location 标头|否|在下一个轮询间隔要调用的 URL。 如果未指定，将使用原始 URL。|  
   
 下面是不同类型的请求的不同行为的一些示例：  
   
 |响应代码|Retry\-After|行为|  
 |-----------------|----------------|------------|  
-|200|\(无\)|不是有效的触发器。必须指定 Retry\-After，否则引擎永远不会轮询下一个请求。|  
-|202|60|不会触发工作流。 下一次尝试将在一分钟后发生。|  
+|200|\(无\)|运行工作流，并按定义的重复周期再次检查是否有其他内容。|  
 |200|10|运行工作流，并在 10 秒后再次检查是否有其他内容。|  
-|400|\(无\)|错误的请求，不会运行工作流。 如果未定义**重试策略**，将使用默认策略。 达到重试次数后，触发器将不再有效。|  
-|500|\(无\)|服务器错误，不会运行工作流。  如果未定义**重试策略**，将使用默认策略。 达到重试次数后，触发器将不再有效。|  
+|202|60|不会触发工作流。 下一次尝试将在一分钟后发生，也需要遵循定义的重复周期。 如果定义的重复周期不到一分钟，重试间隔标头优先。 否则，将遵循定义的重复周期。|  
+|400|\(无\)|错误的请求，不会运行工作流。 如果未定义**重试策略**，将使用默认策略。 在达到重试次数后，触发器便会按定义的重复周期再次检查是否有内容。|  
+|500|\(无\)|服务器错误，不会运行工作流。  如果未定义**重试策略**，将使用默认策略。 在达到重试次数后，触发器便会按定义的重复周期再次检查是否有内容。|  
   
 HTTP 触发器的输出如以下示例所示：  
   
@@ -276,7 +276,7 @@ Webhook 的属性如下所示：
   
     -   删除或禁用订阅时  
   
-    逻辑应用将自动调用取消订阅操作。 此函数的参数与 HTTP 触发器相同。  
+    逻辑应用会自动调用取消订阅操作。 此函数的参数与 HTTP 触发器相同。  
   
     HTTPWebhook 触发器的输出为传入请求的内容：  
   
@@ -340,7 +340,7 @@ Webhook 的属性如下所示：
 }
 ```
   
-逻辑应用只需要 Rows 的内容，因此，你可以按以下示例所示构造触发器：  
+逻辑应用只需要 Rows 的内容，因此，可以按以下示例所示构造触发器：  
   
 ```json
 "mysplitter" : {
@@ -435,7 +435,7 @@ HTTP 操作调用指定的终结点并检查响应，确定是否应运行工作
 |body|否|对象|表示要发送到终结点的有效负载。|  
 |retryPolicy|否|对象|用于针对 4xx 或 5xx 错误自定义重试行为。|  
 |operationsOptions|否|String|定义要重写的特殊行为集。|  
-|authentication|否|对象|表示应该对请求执行的身份验证方法。 有关此对象的详细信息，请参阅[计划程序出站身份验证](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)。 除了计划程序以外，还有另一个受支持的属性：`authority`。 如果未指定此值，则它默认为 `https://login.windows.net`，但你可以使用不同的受众，例如 `https://login.windows\-ppe.net`|  
+|authentication|否|对象|表示应该对请求执行的身份验证方法。 有关此对象的详细信息，请参阅[计划程序出站身份验证](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)。 除了计划程序以外，还有另一个受支持的属性：`authority`。 如果未指定此值，则它默认为 `https://login.windows.net`，但可以使用不同的受众，例如 `https://login.windows\-ppe.net`|  
   
 HTTP 操作\(和 API 连接\)操作支持重试策略。 重试策略适用于具有 HTTP 状态代码 408、429 和 5xx 特征的间歇性失败，以及任何连接异常。 此策略是使用定义的 *retryPolicy* 对象描述的，如下所示：
   
@@ -447,7 +447,7 @@ HTTP 操作\(和 API 连接\)操作支持重试策略。 重试策略适用于�
 }
 ```
   
-重试间隔以 ISO 8601 格式指定。 此间隔的最小值（也是默认值）为 20 秒，最大值为 1 小时。 最大重试计数（默认值）为 4 小时。 如果未指定重试策略定义，将为默认重试计数和间隔值使用 `fixed` 策略。 若要禁用重试策略，请将其类型设置为 `None`。  
+重试间隔以 ISO 8601 格式指定。 此间隔的最小值（也是默认值）为 20 秒，最大值为 1 小时。 最大重试计数（默认值）为 4 小时。 如果未指定重试策略定义，将为默认重试计数和间隔值使用 `fixed` 策略。 要禁用重试策略，请将其类型设置为 `None`。  
   
 例如，以下操作重试提取最新的新闻两次，如果发生间歇性失败，则总共执行三次，每次尝试之前延迟 30 秒：  
   
@@ -593,7 +593,7 @@ response 操作包含一些不适用于其他操作的特殊限制。 具体而�
   
 -   Response 操作不能在定义中并存，因为对于传入的请求必须提供确定性的响应。  
   
--   如果 response 操作出现在传入的请求收到响应后，该操作将被视为失败\(冲突\)，运行将因此`Failed`。  
+-   如果 response 操作出现在传入的请求收到响应后，该操作会被视为失败\(冲突\)，运行将因此`Failed`。  
   
 -   使用 Response 操作的工作流不能在其触发器中包含 `splitOn`，因为一次调用会导致多次运行。 因此，当流量为 PUT 并导致“错误的请求”时，应验证此工作流。  
   
@@ -664,7 +664,7 @@ response 操作包含一些不适用于其他操作的特殊限制。 具体而�
 ## <a name="select-action"></a>选择操作
 
 通过 `select` 操作，可以将数组的每个元素投影到一个新值。
-例如，若要将数字数组转换为对象数组，可以使用：
+例如，要将数字数组转换为对象数组，可以使用：
 
 ```json
 "SelectNumbers" : {
@@ -828,7 +828,7 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
     }
 ```
   
-将在工作流中（\(更具体地说，是触发器中\)）执行访问检查，这意味着，你需要访问工作流。  
+将在工作流中（\(更具体地说，是触发器中\)）执行访问检查，这意味着，需要访问工作流。  
   
 `workflow` 操作的输出基于在子工作流的 `response` 操作中定义的设置。 如果未定义任何 `response` 操作，则输出为空。  
 
@@ -866,12 +866,12 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
 ```
 
 保存逻辑应用时，我们会对所引用的函数执行一些检查：
--   你需要有权访问该函数。
+-   需要有权访问该函数。
 -   仅允许使用标准 HTTP 触发器或泛型 JSON webhook 触发器。
 -   它不应定义任何路由。
 -   仅允许“函数”和“匿名”授权级别。
 
-在运行时检索、缓存和使用触发器 URL。 因此，如果任何操作使缓存的 URL 失效，则此操作将在运行时失败。 若要解决此问题，请重新保存逻辑应用，这将导致逻辑应用重新检索并缓存触发器 URL。
+在运行时检索、缓存和使用触发器 URL。 因此，如果任何操作使缓存的 URL 失效，则此操作会在运行时失败。 要解决此问题，请重新保存逻辑应用，这会导致逻辑应用重新检索并缓存触发器 URL。
 
 ## <a name="collection-actions-scopes-and-loops"></a>集合操作（范围和循环）
 
@@ -1017,13 +1017,13 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
   
 |JSON 值|结果|  
 |--------------|----------|  
-|`"expression": "@parameters('hasSpecialAction')"`|计算为 true 的任何值会导致满足此条件。 仅支持布尔值表达式。 若要将其他类型转换为布尔值，请使用函数 `empty`、`equals`。|  
+|`"expression": "@parameters('hasSpecialAction')"`|计算为 true 的任何值会导致满足此条件。 仅支持布尔值表达式。 要将其他类型转换为布尔值，请使用函数 `empty`、`equals`。|  
 |`"expression": "@greater(actions('act1').output.value, parameters('threshold'))"`|支持比较函数。 在本示例中，仅当 act1 的输出大于阈值时，才执行该操作。|  
 |`"expression": "@or(greater(actions('act1').output.value, parameters('threshold')), less(actions('act1').output.value, 100))"`|还支持使用逻辑函数来创建嵌套的布尔值表达式。 在本例中，当 act1 的输出高于阈值或低于 100 时，将执行该操作。|  
 |`"expression": "@equals(length(actions('act1').outputs.errors), 0))"`|可以使用数组函数来检查某个数组是否包含任何项。 在本例中，当 errors 数组为空时，将执行该操作。| 
 |`"expression": "parameters('hasSpecialAction')"`|错误 - 条件无效，因为条件需要 @。|  
   
-如果某个条件评估成功，该条件将标记为 `Succeeded`。 `actions` 或 `else` 对象中的操作在执行并成功后将评估为 `Succeeded`；在执行但失败后将评估为 `Failed`；未执行分支时将评估为 `Skipped`。
+如果某个条件评估成功，该条件将标记为 `Succeeded`。 `actions` 或 `else` 对象中的操作在执行并成功后将评估为 `Succeeded`；在执行但失败后将评估为 `Failed`；未执行分支时会评估为 `Skipped`。
 
 ## <a name="next-steps"></a>后续步骤
 

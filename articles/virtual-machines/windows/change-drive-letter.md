@@ -21,7 +21,6 @@ ms.openlocfilehash: 7667175c01be2421bfc3badd83b1d8aaeb29bfde
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
 如果应用程序需要使用 D 盘存储数据，请按照以下说明使用其他驱动器号作为临时磁盘。 切勿使用临时磁盘来存储需要保存的数据。

@@ -21,7 +21,6 @@ ms.openlocfilehash: a0be56d91f6c5fcfaf721c58250b066b7d4e0dad
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]

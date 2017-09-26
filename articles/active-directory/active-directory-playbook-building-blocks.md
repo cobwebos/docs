@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 671f2d386aca23bc5c02d0e0ab23e6d9d79a8693
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: bdbdebe069b3150bed4aa26f1f6e677a66f75f32
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
@@ -174,7 +174,7 @@ ms.lasthandoff: 08/16/2017
 
 | 先决条件 | 资源 |
 | --- | --- |
-| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | [Microsoft Azure Marketplace 上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Microsoft Azure Marketplace 上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
+| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | [Microsoft Azure 应用商店上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Microsoft Azure 应用商店上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | 应用程序的测试帐户。 | [注册 Twitter](https://twitter.com/signup?lang=en)<br/>[免费注册：HipChat](https://www.hipchat.com/sign_up) |
 | 要分配应用程序的目标用户群。 建议使用包含用户的安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
@@ -209,7 +209,7 @@ ms.lasthandoff: 08/16/2017
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure Marketplace 上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
+| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure 应用商店上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
 | 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码滚动更新现在提供预览版！ - 企业移动性和安全性博客] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
@@ -340,7 +340,7 @@ ms.lasthandoff: 08/16/2017
 | 步骤 | 资源 |
 | --- | --- |
 | 从向其分配应用的组中删除用户 | [在 Azure Active Directory 租户中管理用户的组成员身份](active-directory-groups-members-azure-portal.md) |
-| 请稍等几分钟等待取消预配 | [Azure AD 中的自动化 SaaS 应用用户预配：自动化预配的工作原理](active-directory-saas-app-provisioning.md#how-does-automated-provisioning-work) |
+| 请稍等几分钟等待取消预配 | [Azure AD 中的自动化 SaaS 应用用户预配：自动化预配的工作原理](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | 在单独的浏览器会话中，以信息辅助角色身份登录到“我的应用”门户，并确认磁贴缺失 | http://myapps.microsoft.com |
 
 

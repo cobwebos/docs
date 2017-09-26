@@ -20,7 +20,6 @@ ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 01/06/2017
 
-
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 本文介绍成为 Azure Marketplace 的批准 Microsoft 开发人员的必要帐户创建和注册过程。

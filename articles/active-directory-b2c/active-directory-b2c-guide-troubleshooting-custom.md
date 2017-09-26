@@ -20,7 +20,6 @@ ms.openlocfilehash: 023390ba36a74217503ff8b3076ad17978fe3fb8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C 自定义策略和标识体验框架故障排除
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 75a85407f7b17ed165253c1145fe92c36cf7168d
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 82733e2a3025f932961122bad9d70c26896837b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用 Resource Manager 模板在 HDInsight 中创建 Hadoop 群集
@@ -54,12 +54,12 @@ ms.lasthandoff: 07/01/2017
 
 ## <a name="generate-templates"></a>生成模板
 
-通过使用 Azure 门户，可配置群集的所有属性，然后保存模板再进行部署。 可重复使用模板。
+通过使用 Azure 门户，可配置群集的所有属性，并保存模板再进行部署。 可重复使用模板。
 
 **使用 Azure 门户生成模板**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中单击“新建”，然后依次单击“智能+分析”和“HDInsight”。
+2. 在左侧菜单中单击“新建”，并依次单击“智能+分析”和“HDInsight”。
 3. 按照说明输入属性。 可使用“快速创建”或“自定义”选项。
 4. 在“摘要”选项卡上，单击“下载模板和参数”：
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/01/2017
 
     可从此处下载模板、将其保存到模板库中或部署该模板。
 
-    若要访问库中的模板，请从左侧菜单中单击“更多服务”，然后在“其他”类别下单击“模板”。
+    要访问库中的模板，请从左侧菜单中单击“更多服务”，并在“其他”类别下单击“模板”。
 
     > [!Note]
     > 模板和参数文件必须一起使用。 否则，可能收到意外结果。 例如，无论在下载模板前指定了何值，默认 **clusterKind** 属性值始终为 **hadoop**。
@@ -134,7 +134,7 @@ ms.lasthandoff: 07/01/2017
         # List cluster
         Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
 
-    PowerShell 脚本仅配置群集名称。 存储帐户名称在模板中进行硬编码。 系统提示输入群集用户密码。 （默认用户名为 **admin**。）系统还将提示输入 SSH 用户密码。 （默认 SSH 用户名为 **sshuser**。）  
+    PowerShell 脚本仅配置群集名称。 存储帐户名称在模板中进行硬编码。 系统提示输入群集用户密码。 （默认用户名为 **admin**。）系统还会提示输入 SSH 用户密码。 （默认 SSH 用户名为 **sshuser**。）  
 
 有关详细信息，请参阅[使用 PowerShell 进行部署](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template)。
 
@@ -168,10 +168,10 @@ ms.lasthandoff: 07/01/2017
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已经学习了几种创建 HDInsight 群集的方法。 若要了解更多信息，请参阅下列文章：
+在本文中，已经学习了几种创建 HDInsight 群集的方法。 若要了解更多信息，请参阅下列文章：
 
 * 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service-web/app-service-deploy-complex-application-predictably.md)。
+* 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service/app-service-deploy-complex-application-predictably.md)。
 * 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](../solution-dev-test-environments.md)。
 * 若要了解 Azure Resource Manager 模板的节，请参阅[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 * 有关可在 Azure Resource Manager 模板中使用的函数列表，请参阅[模板函数](../azure-resource-manager/resource-group-template-functions.md)。

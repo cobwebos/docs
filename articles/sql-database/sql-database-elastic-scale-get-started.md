@@ -21,7 +21,6 @@ ms.openlocfilehash: 637463399593f4bc9ff5bfcbf67bf93b816efc7f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 本文档通过帮助运行示例应用向你介绍开发人员体验。 此示例将创建一个简单的分片应用程序，并探讨弹性数据库工具的主要功能。 此示例演示[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的功能。

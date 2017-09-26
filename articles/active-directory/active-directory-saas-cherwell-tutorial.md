@@ -19,7 +19,6 @@ ms.openlocfilehash: 27fedb9caa1ef27693b2267df285d62aab78bc24
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>教程：Azure Active Directory 与 Cherwell 集成
 

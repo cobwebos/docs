@@ -21,7 +21,6 @@ ms.openlocfilehash: 4b59c8aa3dea3e8fba692ab66420295a09210d3b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 > [!NOTE]

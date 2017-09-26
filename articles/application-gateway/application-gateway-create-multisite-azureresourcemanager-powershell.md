@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: amsriva
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: d42efa7d359f5c87c14afbfd138328b37c8ae6c2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/20/2017
-
 
 ---
 # <a name="create-an-application-gateway-for-hosting-multiple-web-applications"></a>创建托管多个 Web 应用程序的应用程序网关

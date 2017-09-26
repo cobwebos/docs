@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 85b125ab19671b61d2541af6378c95feb88bf952
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
-
 
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>使用 HPC Pack IaaS 部署脚本创建 Windows 高性能计算 (HPC) 群集

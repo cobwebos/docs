@@ -20,7 +20,6 @@ ms.openlocfilehash: a3eedacac5efb53f82e46a56285713dece56ffe8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述

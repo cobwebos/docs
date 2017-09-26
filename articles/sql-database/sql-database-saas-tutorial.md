@@ -1,11 +1,11 @@
 ---
-title: "部署和浏览使用 Azure SQL 数据库的多租户 Wingtip SaaS 应用程序 | Microsoft Docs"
+title: "部署和浏览使用 Azure SQL 数据库的多租户 SaaS 应用程序 | Microsoft Docs"
 description: "部署和浏览 Wingtip SaaS 多租户应用程序，演示使用 Azure SQL 数据库的 SaaS 模式。"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: b09bfa8a5bc22a092e963f351e99c16d0e9a57ba
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 14d2fd007e88c9cb20cf2b4a24262e2bebc42d63
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="deploy-and-explore-a-multi-tenant-application-that-uses-azure-sql-database---wingtip-saas"></a>部署和浏览使用 Azure SQL 数据库的多租户 Wingtip 应用程序 - Wingtip SaaS

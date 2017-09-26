@@ -17,10 +17,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: end-user
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 9dbe88a59b68bfb424c43dd89acf55d8c73fdf39
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助

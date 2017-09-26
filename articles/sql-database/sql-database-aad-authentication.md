@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/11/2017
+ms.date: 09/12/2017
 ms.author: rickbyh
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: c83d482eaf476388a174dfb02ae6ef53ebe921bc
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 246c89be85a4ccd2e8f7fab0ae8128e7285123a1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-or-sql-data-warehouse"></a>将 Azure Active Directory 身份验证与 SQL 数据库或 SQL 数据仓库结合使用
@@ -69,7 +69,7 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
 ## <a name="permissions"></a>权限
 若要新建用户，必须具有数据库中的 `ALTER ANY USER` 权限。 `ALTER ANY USER` 权限可以授予任何数据库用户。 `ALTER ANY USER` 权限还由服务器管理员帐户、具有该数据库的 `CONTROL ON DATABASE` 或 `ALTER ON DATABASE` 权限的数据库用户以及 `db_owner` 数据库角色的成员拥有。
 
-若要在 Azure SQL 数据库或 SQL 数据仓库中创建一个包含的数据库用户，必须使用 Azure AD 标识连接到数据库。 若要创建第一个包含数据库用户，必须通过使用 Azure AD 管理员（其是数据库的所有者）连接到数据库。 在下面的步骤 4 和 5 中演示了此操作。 只有为 Azure SQL 数据库或 SQL 数据仓库服务器创建 Azure AD 管理员之后，才有可能进行任何 Azure AD 身份验证。 如果已从服务器删除 Azure Active Directory 管理员，先前在 SQL Server 内创建的现有 Azure Active Directory 用户便无法再使用其 Azure Active Directory 凭据连接到数据库。
+若要在 Azure SQL 数据库或 SQL 数据仓库中创建一个包含的数据库用户，必须使用 Azure AD 标识连接到数据库。 若要创建第一个包含数据库用户，必须通过使用 Azure AD 管理员（其是数据库的所有者）连接到数据库。 有关详细信息，请参阅[使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)。 只有为 Azure SQL 数据库或 SQL 数据仓库服务器创建 Azure AD 管理员之后，才有可能进行任何 Azure AD 身份验证。 如果已从服务器删除 Azure Active Directory 管理员，先前在 SQL Server 内创建的现有 Azure Active Directory 用户便无法再使用其 Azure Active Directory 凭据连接到数据库。
 
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD 功能和限制
 可以在 Azure SQL Server 或 SQL 数据仓库中预配以下 Azure AD 成员：
@@ -79,7 +79,6 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
 * 作为本机或联合域成员从其他 Azure AD 导入的成员。
 * 以安全组形式创建的 Active Directory 组。
 
-不支持 Microsoft 帐户（例如 outlook.com、hotmail.com、live.com）或其他来宾帐户（例如 gmail.com、yahoo.com）。 如果可以使用帐户和密码登录到 [https://login.live.com](https://login.live.com)，则使用的是 Microsoft 帐户，Azure SQL 数据库或 Azure SQL 数据仓库的 Azure AD 身份验证不支持此类帐户。
 
 ## <a name="connecting-using-azure-ad-identities"></a>使用 Azure AD 标识进行连接
 

@@ -1,7 +1,6 @@
 ---
-
 title: "Azure Active Directory 管理员如何添加 B2B 协作用户？ | Microsoft 文档"
-description: "管理员可使用 Azure Active Directory B2B 协作将来宾用户从合作伙伴组织添加到你的 Azure AD。"
+description: "管理员可使用 Azure Active Directory B2B 协作将来宾用户从合作伙伴组织添加到 Azure AD。"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -16,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/17/2017
-
 
 ---
 

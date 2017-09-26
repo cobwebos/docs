@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/18/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 6eadfb0c3f91c1f2c7783d70604b45d5dc9912a3
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 85ae54f76fff47b16d7a365ccee87866d0424f82
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/19/2017
 若要创建或更新自动化帐户，必须具有完成本主题所需的下述特定权限。   
  
 * 若要创建自动化帐户，需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的所有者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文所述。  
-* Azure AD 租户中的非管理员用户可以 注册 [AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions) ，前提是“应用注册设置”已设置为 **“是”** 。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
+* Azure AD 租户中的非管理员用户可以 [注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是应用注册设置已设置为 **是**。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
 
 如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 
@@ -47,7 +47,8 @@ ms.lasthandoff: 08/19/2017
 2. 单击“新建” 。<br><br> ![在 Azure 门户中选择“新建”选项](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 3. 搜索“自动化”，并在搜索结果中选择“自动化与控制”*。<br><br> ![从应用商店搜索并选择“自动化”](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
 3. 在“自动化帐户”边栏选项卡中，单击“添加”。<br><br>![添加自动化帐户](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
-   
+
+
    > [!NOTE]
    > 如果在“添加自动化帐户”边栏选项卡中看到以下警告，是因为帐户不是订阅管理员角色成员和订阅共同管理员。<br><br>![添加自动化帐户警告](media/automation-create-standalone-account/create-account-without-perms.png)
    > 
@@ -72,6 +73,7 @@ ms.lasthandoff: 08/19/2017
 | --- | --- |
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
+| AzureAutomationTutorialPython2 Runbook |一个示例 python runbook，演示如何使用运行方式帐户进行身份验证，然后列出指定订阅中存在的资源组。 |
 | AzureRunAsCertificate |在创建自动化帐户期间自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的证书资产。  使用此证书，可以向 Azure 进行身份验证，以便通过 Runbook 管理 Azure Resource Manager 资源。  此证书有一年的有效期。 |
 | AzureRunAsConnection |在创建自动化帐户期间自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的连接资产。 |
 
@@ -89,3 +91,5 @@ ms.lasthandoff: 08/19/2017
 * 若要了解有关图形创作的详细信息，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
 * 若要开始使用 PowerShell Runbook，请参阅[我的第一个 PowerShell Runbook](automation-first-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)。
+* 若要开始使用 Python2 runbook，请参阅[第一个 Python2 runbook](automation-first-runbook-textual-python2.md)。
+

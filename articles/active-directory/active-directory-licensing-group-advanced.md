@@ -17,10 +17,10 @@ ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 55e2e095138842f8e2d31a4f79ffb22b81d18dba
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 87cc66752dae1f4bd0903607d8a8ae9bd9125b11
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/21/2017
 
 ![企业移动性 + 安全性许可的用户屏幕截图](media/active-directory-licensing-group-advanced/o365-e5-licensed-users.png)
 
-如果希望用户具有两种许可证，则修改一个用户并将其 extensionAttribute1 值设置为 `EMS;E5_baseservices;`。 可在本地执行此项修改。 将更改与云同步后，该用户将自动添加到这两个组，然后获得了许可证。
+如果希望用户具有两种许可证，则修改一个用户并将其 extensionAttribute1 值设置为 `EMS;E5_baseservices;`。 可在本地执行此项修改。 将更改与云同步后，该用户会自动添加到这两个组，然后获得了许可证。
 
 ![显示如何设置用户的 extensionAttribute1 的屏幕截图](media/active-directory-licensing-group-advanced/user-set-extensionAttribute1.png)
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 07/21/2017
 
 3. 转到 [“Azure Active Directory”>“许可证”>“所有产品”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)边栏选项卡，选择“Office 365 企业版 E5”，然后选择“许可的组”以查看具有该产品的所有组的列表。
 
-4. 单击要查看的组（此处为 O365 E5 - Exchange only）。 随后将打开“许可证”选项卡。 单击 E5 许可证会打开一个列出所有已启用服务的边栏选项卡。
+4. 单击要查看的组（此处为 O365 E5 - Exchange only）。 随后将打开“许可证”选项卡。单击 E5 许可证会打开一个列出所有已启用服务的边栏选项卡。
 > [!NOTE]
 > 除了 Exchange Online 服务外，Microsoft Stream 服务也已自动添加到此组中并已启用：
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 07/21/2017
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>使用 PowerShell 查看谁拥有继承的许可证和直接许可证
 可以使用 PowerShell 脚本来检查用户是具有直接分配的许可证还是具有从组继承的许可证。
 
-1. 运行 `connect-msolservice` cmdlet 进行身份验证并连接到你的租户。
+1. 运行 `connect-msolservice` cmdlet 进行身份验证并连接到租户。
 
 2. 可以使用 `Get-MsolAccountSku` 来发现该租户中所有已预配的产品许可证。
 
@@ -208,15 +208,17 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 
 - 该功能仅可用于安全组。 目前不支持 Office 组，无法在许可证分配过程中使用它们。
 
-- [Office 365 管理门户](https://portal.office.com )目前不支持基于组的许可。 如果用户从组继承许可证，此许可证将在 Office 管理门户中显示为普通的用户许可证。 如果尝试修改该许可证或尝试删除它，门户会返回错误消息。 无法直接修改用户的继承的组许可证。
+- [Office 365 管理门户](https://portal.office.com )目前不支持基于组的许可。 如果用户从组继承许可证，此许可证会在 Office 管理门户中显示为普通的用户许可证。 如果尝试修改该许可证或尝试删除它，门户会返回错误消息。 无法直接修改用户的继承的组许可证。
 
 - 如果从组中删除某个用户，导致其丢失许可证，则该许可证中的服务计划（例如 SharePoint Online）设置为“挂起”状态。 服务计划不会设置为最终已禁用状态。 这项预防措施可避免管理员在执行组成员身份管理期间由于失误而意外删除用户数据。
 
 - 如果针对大型组（例如，100,000 个用户）分配或修改许可证，则可能会影响性能。 具体而言，Azure AD 自动化生成的大量更改可能会对 Azure AD 与本地系统之间的目录同步性能产生负面影响。
 
-- 许可证管理自动化不会自动根据环境中的所有更改类型做出反应。 例如，你可能会用完许可证，导致某些用户进入错误状态。 若要释放可用的许可座席计数，可以删除其他用户的某些直接分配的许可证。 但是，系统不会自动对此项更改做出反应，也不会修复处于该错误状态的用户。
+- 在某些高负载情况下，许可证处理可能会延迟，一些更改（例如，添加/删除组许可证或在组中添加/删除用户）可能需要很长时间才能处理。 如果发现处理更改所需时间超过 24 小时，请[开具支持票证](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest)，以便让我们调查。 在此功能*正式发布*之前，我们将改进此功能的性能特性。
 
-  此类限制的解决方法之一是转到 Azure AD 中的“组”边栏选项卡，然后单击“重新处理”。 在可能的情况下，此命令会处理该组中的所有用户并修复错误状态。
+- 许可证管理自动化不会自动根据环境中的所有更改类型做出反应。 例如，可能会用完许可证，导致某些用户进入错误状态。 若要释放可用的许可座席计数，可以删除其他用户的某些直接分配的许可证。 但是，系统不会自动对此项更改做出反应，也不会修复处于该错误状态的用户。
+
+  此类限制的解决方法之一是转到 Azure AD 中的“组”边栏选项卡，并单击“重新处理”。 在可能的情况下，此命令会处理该组中的所有用户并修复错误状态。
 
 - 由于 Exchange Online 中包含重复的代理地址配置，导致无法将许可证分配给用户时，基于组的许可不会记录错误；在许可证分配期间会跳过这些用户。 有关如何识别和解决此问题的详细信息，请参阅[本节](./active-directory-licensing-group-problem-resolution-azure-portal.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online)。
 

@@ -16,17 +16,17 @@ ms.workload: big-data
 ms.date: 07/13/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 2e8ebbdab2be7bed224a67facec798820615bb22
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: db278f2ecd025257a969e3a9f05f5269a659999d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-java"></a>使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)
 
 了解如何将 Azure 事件中心与 Storm on HDInsight 配合使用。 此示例使用基于 Java 的组件在 Azure 事件中心中读取和写入数据。
 
-Azure 事件中心可让你处理网站、应用程序和设备中的大量数据。 借助事件中心 Spout，你可以轻松使用 Apache Storm on HDInsight 实时分析这些数据。 你还可以使用事件中心 Bolt 从 Storm 向事件中心写入数据。
+Azure 事件中心可让你处理网站、应用程序和设备中的大量数据。 借助事件中心 Spout，可以轻松使用 Apache Storm on HDInsight 实时分析这些数据。 还可以使用事件中心 Bolt 从 Storm 向事件中心写入数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +44,7 @@ Azure 事件中心可让你处理网站、应用程序和设备中的大量数�
 * 文本编辑器或集成开发环境 (IDE)。
 
     > [!NOTE]
-    > 你的编辑器或 IDE 可能具有处理 Maven 的特定功能，但本文档中未提供说明。 有关环境编辑功能的详细信息，请参阅所使用产品的文档。
+    > 编辑器或 IDE 可能具有处理 Maven 的特定功能，但本文档中未提供说明。 有关环境编辑功能的详细信息，请参阅所使用产品的文档。
 
     * SSH 客户端。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
@@ -68,7 +68,7 @@ Azure 事件中心可让你处理网站、应用程序和设备中的大量数�
 
 #### <a name="event-hub-components"></a>事件中心组件
 
-读取和写入 Azure 事件中心的组件位于 [HDInsight 存储库](https://github.com/hdinsight/mvn-rep)。 `POM.xml` 文件中的以下节从此存储库加载组件
+读取和写入 Azure 事件中心的组件位于 [HDInsight 存储库](https://github.com/hdinsight/mvn-repo)。 `POM.xml` 文件中的以下节从此存储库加载组件
 
 ```xml
 <repositories>
@@ -270,7 +270,7 @@ eventhub.partitions: 2
 
 ## <a name="configure-environment-variables"></a>配置环境变量
 
-可以在开发工作站上安装 Java 和 JDK 时设置以下环境变量。 不过，你应该检查它们是否存在并且包含系统的正确值。
+可以在开发工作站上安装 Java 和 JDK 时设置以下环境变量。 不过，应该检查它们是否存在并且包含系统的正确值。
 
 * **JAVA_HOME** - 应该指向已安装 Java 运行时环境 (JRE) 的目录。 例如，在 Unix 或 Linux 分发版中，它的值应该类似于 `/usr/lib/jvm/java-7-oracle`。 在 Windows 中，它的值类似于 `c:\Program Files (x86)\Java\jre1.7`
 * **PATH** - 应该包含以下路径：
@@ -285,7 +285,7 @@ eventhub.partitions: 2
 
 1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“新建” > “服务总线” > “事件中心” > “自定义创建”。
 
-2. 在“添加新事件中心”屏幕中，输入**事件中心名称**。 选择要在其中创建中心的**区域**，然后创建一个命名空间或选择现有命名空间。 最后，单击**箭头**以继续。
+2. 在“添加新事件中心”屏幕中，输入**事件中心名称**。 选择要在其中创建中心的**区域**，并创建一个命名空间或选择现有命名空间。 最后，单击**箭头**以继续。
 
     ![向导页 1](./media/hdinsight-storm-develop-csharp-event-hub-topology/wiz1.png)
 
@@ -296,8 +296,8 @@ eventhub.partitions: 2
 
     ![向导页 2](./media/hdinsight-storm-develop-csharp-event-hub-topology/wiz2.png)
 
-4. 创建事件中心之后，请选择命名空间、“事件中心”，然后选择前面创建的事件中心。
-5. 选择“配置”，然后使用以下信息创建两个新的访问策略：
+4. 创建事件中心之后，请选择命名空间、“事件中心”，并选择前面创建的事件中心。
+5. 选择“配置”，并使用以下信息创建两个新的访问策略：
 
     <table>
     <tr><th>Name</th><th>权限</th></tr>
@@ -321,7 +321,7 @@ eventhub.partitions: 2
 
         mvn package
 
-    此命令下载所需的依赖项，进行生成，然后打包项目。 输出将作为 **EventHubExample-1.0-SNAPSHOT.jar** 存储在 **/target** 目录中。
+    此命令下载所需的依赖项，进行生成，并打包项目。 输出将作为 **EventHubExample-1.0-SNAPSHOT.jar** 存储在 **/target** 目录中。
 
 ## <a name="test-locally"></a>本地测试
 
@@ -348,7 +348,7 @@ eventhub.partitions: 2
 
         scp ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
 
-    如果使用了 SSH 帐户密码，则系统将提示输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 例如： `scp -i ~/.ssh/id_rsa ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
+    如果使用了 SSH 帐户密码，则系统会提示输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 例如： `scp -i ~/.ssh/id_rsa ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
 
     此命令会将文件复制到群集上 SSH 用户的主目录。
 
@@ -357,7 +357,7 @@ eventhub.partitions: 2
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
     > [!NOTE]
-    > 如果使用了 SSH 帐户的密码，则系统将提示输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例从 `~/.ssh/id_rsa` 加载私钥：
+    > 如果使用了 SSH 帐户密码，则系统会提示输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例从 `~/.ssh/id_rsa` 加载私钥：
     >
     > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
 

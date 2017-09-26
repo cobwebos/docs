@@ -19,7 +19,6 @@ ms.openlocfilehash: cd35b6e2dc3171e9cffdb820bbc5b0d45ff58e07
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-configuring-concur-for-user-provisioning"></a>教程：配置 Concur 以便进行用户预配
 

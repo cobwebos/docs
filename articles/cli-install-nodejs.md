@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: f07b3116d062d5089446fb66d8683aae7024327f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="install-the-azure-cli-10"></a>安装 Azure CLI 1.0

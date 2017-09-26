@@ -20,7 +20,6 @@ ms.openlocfilehash: 4401de010dec808f080f5460298bb738ddd39312
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Add a new Azure Stack tenant account in Azure Active Directory
 After [deploying the Azure Stack Development Kit](azure-stack-run-powershell-script.md), you'll need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account by [using the Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) or by [using PowerShell](#create-an-azure-stack-tenant-account-using-powershell).

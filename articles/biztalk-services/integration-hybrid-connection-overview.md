@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 9367d6f57e694c8a438781004ef29a09de77aaa8
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 8584c74f86b72679c3d6c287a7dbf3ea8bcf7149
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="hybrid-connections-overview"></a>混合连接概述
@@ -93,17 +92,12 @@ ms.lasthandoff: 06/03/2017
 
 ## <a name="next-steps"></a>后续步骤
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
-[将 Azure Web 应用连接到本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
-[从 Azure Web 应用连接到本地 SQL Server](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/>
 
 ## <a name="see-also"></a>另请参阅
 [REST API for Managing BizTalk Services on Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)（用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API）
 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)<br/>
 [使用 Azure 门户创建 BizTalk 服务](biztalk-provision-services.md)<br/>
-[BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+[Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
-[HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
-[HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
-[HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 

@@ -17,15 +17,15 @@ ms.date: 07/26/2017
 ms.author: jdial
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: a31f0524a6fa1de45498f340a27b863a3c627e04
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: f82a95ec9543b2d53ef28bf7f15315e23cf4893a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets"></a>创建包含多个子网的虚拟网络
 
-本教程介绍如何创建包含独立公共和私有子网的基本 Azure 虚拟网络。 可在子网中创建虚拟机、应用服务环境、虚拟机规模集、Azure HDInsight 和云服务等 Azure 资源。 虚拟网络中的资源可以彼此通信，并可以与连接到虚拟网络的其他网络中的资源通信。
+本教程介绍如何创建包含独立公共和私有子网的基本 Azure 虚拟网络。 虚拟网络中的资源可以彼此通信，并可以与连接到虚拟网络的其他网络中的资源通信。 可在虚拟网络中相同或不同的子网中创建 Azure 资源，如虚拟机、应用服务环境、虚拟机规模集、Azure HDInsight 和云服务。 通过在不同的子网中创建资源，可以筛选出[网络安全组](virtual-networks-create-nsg-arm-pportal.md)以外的进出子网的网络流量，还可通过网络虚拟设备（如防火墙）[路由子网之间的流量](virtual-network-create-udr-arm-ps.md)（如果选择这样做）。 
 
 以下部分提供了使用 [Azure 门户](#portal)、Azure 命令行接口 ([Azure CLI](#azure-cli))、[Azure PowerShell](#powershell) 和 [Azure 资源管理器模板](#resource-manager-template)创建虚拟网络的步骤。 不管使用哪种工具来创建虚拟网络，结果都是一样的。 单击工具链接，转到教程中该工具的对应部分。 详细了解所有[虚拟网络](virtual-network-manage-network.md)和[子网](virtual-network-manage-subnet.md)设置。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/01/2017
 
     |设置|值|
     |---|---|
-    |Name|myVnet|
+    |名称|myVnet|
     |地址空间|10.0.0.0/16|
     |子网名称|公共|
     |子网地址范围|10.0.0.0/24|
@@ -52,13 +52,14 @@ ms.lasthandoff: 08/01/2017
 6. 在“myVnet - 子网”边栏选项卡中单击“+子网”。
 7. 在“添加子网”边栏选项卡中，在“名称”处输入“私有”。 在“地址范围”处输入“10.0.1.0/24”。  单击 **“确定”**。
 8. 在“myVnet - 子网”边栏选项卡中查看子网。 可以看到已创建的“公共”和“私有”子网。
-9. 可选：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-portal)中所述步骤。
+9. 可选：完成[后续步骤](#next-steps)下列出的其他教程，以便使用网络安全组筛选出进出每个子网的网络流量，以及通过网络虚拟设备路由子网之间的流量，或将虚拟网络连接到其他虚拟网络或本地网络。
+10. 可选：若要删除在本教程中创建的资源，请完成[删除资源](#delete-portal)中所述的步骤。
 
 ## <a name="azure-cli"></a>Azure CLI
 
 无论是从 Windows、 Linux 还是 macOS 执行命令，Azure CLI 命令都相同。 不过在操作系统 shell 之间存在脚本差异。 以下步骤中的脚本在 Bash shell 中执行。 
 
-1. [安装并配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 无需安装 CLI 及其必备组件，而可以使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的“Cloud Shell”(**>_**) 按钮，或者在后面的步骤中单击“试用”按钮。 
+1. [安装并配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的“Cloud Shell”(**>_**) 按钮，或者在后面的步骤中单击“试用”按钮。 
 2. 如果在本地运行 CLI，请使用 `az login` 命令登录到 Azure。 如果使用的是 Cloud Shell，则已经登录。
 3. 查看以下脚本及其注释。 在浏览器中，复制该脚本并将其粘贴到 CLI 会话中：
 
@@ -90,7 +91,8 @@ ms.lasthandoff: 08/01/2017
     az network vnet subnet list --resource-group myResourceGroup --vnet-name myVnet --output table
     ```
 
-5. 可选：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-cli)中所述的步骤。
+5. 可选：完成[后续步骤](#next-steps)下列出的其他教程，以便使用网络安全组筛选出进出每个子网的网络流量，以及通过网络虚拟设备路由子网之间的流量，或将虚拟网络连接到其他虚拟网络或本地网络。
+6. 可选：若要删除在本教程中创建的资源，请完成[删除资源](#delete-cli)中所述的步骤。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -128,13 +130,17 @@ ms.lasthandoff: 08/01/2017
     $Vnet.subnets | Format-Table Name, AddressPrefix
     ```
 
-5. 可选：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-powershell)中所述的步骤。
+5. 可选：完成[后续步骤](#next-steps)下列出的其他教程，以便使用网络安全组筛选出进出每个子网的网络流量，以及通过网络虚拟设备路由子网之间的流量，或将虚拟网络连接到其他虚拟网络或本地网络。
+6. 可选：若要删除在本教程中创建的资源，请完成[删除资源](#delete-powershell)中所述的步骤。
 
 ## <a name="resource-manager-template"></a>资源管理器模板
 
 可使用 Azure 资源管理器模板部署虚拟网络。 若要详细了解模板，请参阅[什么是资源管理器](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#template-deployment)。 若要访问模板并了解其参数，请参阅[创建包含两个子网的虚拟网络](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/)模板。 可以使用[门户](#template-portal)、[Azure CLI](#template-cli) 或 [PowerShell](#template-powershell) 部署模板。
 
-可选：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete)任何子节中所述的步骤。
+部署模板后可选择执行的步骤：
+
+1. 完成[后续步骤](#next-steps)下列出的其他教程，以便使用网络安全组筛选出进出每个子网的网络流量，以及通过网络虚拟设备路由子网之间的流量，或将虚拟网络连接到其他虚拟网络或本地网络。
+2. 若要删除在本教程中创建的资源，请完成[删除资源](#delete)任何子节中的步骤。
 
 ### <a name="template-portal"></a>Azure 门户
 
@@ -159,7 +165,7 @@ ms.lasthandoff: 08/01/2017
 
 ### <a name="template-cli"></a>Azure CLI
 
-1. [安装并配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 无需安装 CLI 及其必备组件，而可以使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的“Cloud Shell”**>_** 按钮，或者在后面的步骤中单击“试用”按钮。 
+1. [安装并配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的“Cloud Shell”**>_** 按钮，或者在后面的步骤中单击“试用”按钮。 
 2. 如果在本地运行 CLI，请使用 `az login` 命令登录到 Azure。 如果使用的是 Cloud Shell，则已经登录。
 3. 若要为虚拟网络创建资源组，请复制以下命令，并将其粘贴到 CLI 会话中：
 
@@ -227,8 +233,9 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解有关所有虚拟网络和子网设置的信息，请参阅[管理虚拟网络](virtual-network-manage-network.md#view-vnet)和[管理虚拟网络子网](virtual-network-manage-subnet.md#create-subnet)。 在生产环境中有使用虚拟网络和子网的多种选项，以满足不同的要求。
-- 若要筛选入站和出站子网流量，请创建[网络安全组](virtual-networks-nsg.md)并将其应用到子网。
-- 创建 [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机，并将其连接到现有的虚拟网络。
-- 若要在同一 Azure 位置连接两个虚拟网络，请在虚拟网络之间创建[虚拟网络对等互连](virtual-network-peering-overview.md)。
+- 创建[网络安全组](virtual-networks-nsg.md)并将其应用到子网，然后筛选入站和出站子网流量。
+- 创建[用户定义的路由](virtual-network-create-udr-arm-ps.md)并将路由应用到每个子网，然后通过网络虚拟设备路由子网之间的流量。
+- 在现有虚拟网络中创建 [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机。
+- 在虚拟网路之间创建[虚拟网络对等](virtual-network-peering-overview.md)，然后连接两个虚拟网络。
 - 使用 [VPN 网关](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或 [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 线路将虚拟网络连接到本地网络。
 

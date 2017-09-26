@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 539212c6abe7738c022d67245f8992516f0899ff
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e8b22dad84e89be6051041e60ca9d72ec4aa3c56
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储
@@ -30,8 +30,7 @@ ms.lasthandoff: 08/22/2017
 
 本主题中的代码示例假定用户已拥有 Node.js 应用程序。 有关如何在 Azure 中创建 Node.js 应用程序的信息，请参阅以下任何主题：
 
-* [在 Azure 应用服务中创建 Node.js Web 应用](../app-service-web/app-service-web-get-started-nodejs.md)
-* [使用 WebMatrix 构建 Node.js Web 应用并将其部署到 Azure](../app-service-web/web-sites-nodejs-use-webmatrix.md)
+* [在 Azure 应用服务中创建 Node.js Web 应用](../app-service/app-service-web-get-started-nodejs.md)
 * [生成 Node.js 应用程序并将其部署到 Azure 云服务](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)（使用 Windows PowerShell）
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -66,8 +65,6 @@ var azure = require('azure-storage');
 
 ## <a name="set-up-an-azure-storage-connection"></a>设置 Azure 存储连接
 Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY，或 AZURE\_STORAGE\_CONNECTION\_STRING 以获取连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **TableService** 时指定帐户信息。
-
-有关在 [Azure 门户](https://portal.azure.com)中为 Azure 网站设置环境变量的示例，请参阅[使用 Azure 表服务的 Node.js Web 应用](../app-service-web/storage-nodejs-use-table-storage-web-site.md)。
 
 ## <a name="create-a-table"></a>创建表
 下面的代码创建 **TableService** 对象并使用它来创建一个新表。 将以下代码添加到 **server.js** 的顶部附近。
@@ -451,6 +448,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 有关详细信息，请参阅以下资源。
 
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
-* GitHub 上的 [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node)存储库。
+* GitHub 上[用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 存储库。
 * [Node.js 开发人员中心](/develop/nodejs/)
-* [创建 Node.js 应用程序并将其部署到 Azure 网站](../app-service-web/app-service-web-get-started-nodejs.md)
+* [创建 Node.js 应用程序并将其部署到 Azure 网站](../app-service/app-service-web-get-started-nodejs.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 92ff0b4b7664ad2d33b54d02290c55a213d4e610
 ms.openlocfilehash: edd2f9446515531f1147a8abf99295b618b89b25
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/23/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamwork"></a>教程：Azure Active Directory 与 Teamwork 的集成
@@ -121,7 +121,7 @@ ms.lasthandoff: 02/23/2017
 
 4. 在“SAML 签名证书”部分中，单击“创建新证书”。
 
-    ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_03.png)     
+    ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_03.png)   
 
 5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
 

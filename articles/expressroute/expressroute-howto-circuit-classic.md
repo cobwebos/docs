@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 3b12bbb21ebf6a0160227c4a281c420cf192d6f7
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: 93ddc2975db34053c6a776d1c3b931536f3f8ec7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 创建和修改 ExpressRoute 线路（经典）
@@ -58,11 +58,11 @@ ms.lasthandoff: 07/28/2017
 
 3. 如果有多个订阅，请选择要使用的订阅。
 
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+        Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_id"
 
-4. 接下来，使用以下 cmdlet 将 Azure 订阅添加到经典部署模型的 PowerShell。
+4. 确认所选订阅 ID 是否设置为了默认值。
 
-        Add-AzureAccount
+        Get-AzureSubscription -default
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>创建和预配 ExpressRoute 线路
 ### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>步骤 1。 为 ExpressRoute 导入 PowerShell 模块

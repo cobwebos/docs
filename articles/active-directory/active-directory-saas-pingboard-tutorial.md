@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 008c670a8043da0c67ccefde48d5ef721c75d97c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教程：Azure Active Directory 与 Pingboard 集成
@@ -138,7 +138,7 @@ ms.lasthandoff: 04/07/2017
 
     ![配置单一登录](./media/active-directory-saas-pingboard-tutorial/Pingboard_integration.png)
 
-9.    在“集成”页上，找到“Azure Active Directory”磁贴，然后单击它。
+9.  在“集成”页上，找到“Azure Active Directory”磁贴，然后单击它。
 
     ![配置单一登录](./media/active-directory-saas-pingboard-tutorial/Pingboard_aad.png)
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 04/07/2017
 
     d.单击“下一步”。 在“位置”下拉列表中，选择 Britta Simon 的位置。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击 **“添加”**。    
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击 **“添加”**。   
 
 4. 将显示确认屏幕以确认添加用户。
     

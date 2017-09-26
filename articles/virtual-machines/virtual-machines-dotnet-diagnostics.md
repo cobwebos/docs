@@ -20,7 +20,6 @@ ms.openlocfilehash: 8ff6b9825212359617b748aba1c78ed789b130dd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="enabling-diagnostics-in-azure-virtual-machines"></a>在 Azure 虚拟机中启用诊断
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../monitoring-and-diagnostics/azure-diagnostics.md)。

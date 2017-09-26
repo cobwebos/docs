@@ -32,7 +32,7 @@ ms.lasthandoff: 08/08/2017
 3. 提供应用程序的“名称”，单击“创建应用程序”。
    
     ![Microsoft 帐户 — 应用程序名称](./media/active-directory-b2c-setup-msa-app/msa-app-name.png)
-4. 复制“应用程序 Id”的值。 将 Microsoft 帐户配置为租户中的标识提供者时需要此项。
+4. 复制“应用程序 Id”的值。将 Microsoft 帐户配置为租户中的标识提供者时需要此项。
    
     ![Microsoft 帐户 — 应用程序 Id](./media/active-directory-b2c-setup-msa-app/msa-app-id.png)
 5. 单击“添加平台”，并选择“Web”。

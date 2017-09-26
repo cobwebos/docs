@@ -18,11 +18,18 @@
 
 # 如何
 
-## 预防
-### [设置安全策略](security-center-policies.md)
-### [实时访问](security-center-just-in-time.md)
-### [实施安全建议](security-center-recommendations.md)
+## 安全策略
+### [数据收集](security-center-enable-data-collection.md)
+### [安全策略](security-center-policies.md)
+### [电子邮件通知](security-center-provide-security-contact-details.md)
+### [定价层](security-center-pricing.md)
 
+## [载入](security-center-onboarding.md)
+## [事件](security-center-events-dashboard.md)
+## [搜索](security-center-search.md)
+
+## 预防
+### [实施安全建议](security-center-recommendations.md)
 ### [应用程序建议](security-center-application-recommendations.md)
 #### [添加 Web 应用程序防火墙](security-center-add-web-application-firewall.md)
 #### [完成应用程序保护](security-center-add-web-application-firewall.md#finalize-application-protection)
@@ -41,19 +48,17 @@
 ### [虚拟机建议](security-center-virtual-machine-recommendations.md)
 #### [应用磁盘加密](security-center-apply-disk-encryption.md)
 #### [应用系统更新](security-center-apply-system-updates.md)
-#### [启用数据收集](security-center-enable-data-collection.md)
 #### [为存储帐户启用加密](security-center-enable-encryption-for-storage-account.md)
 #### [启用 VM 代理](security-center-enable-vm-agent.md)
 #### [安装终结点保护](security-center-install-endpoint-protection.md)
-#### [提供安全联系人详细信息](security-center-provide-security-contact-details.md)
 #### [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md)
 #### [解决终结点保护运行状况警报](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [更新 OS 版本](security-center-update-os-version.md)
 #### [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md)
-
 ### [监视安全运行状况](security-center-monitoring.md)
 ### [监视合作伙伴解决方案](security-center-partner-solutions.md)
+### [标识和访问](security-center-identity-access.md)
 
 ## 检测和响应
 ### [检测功能](security-center-detection-capabilities.md)
@@ -62,7 +67,16 @@
 ### [警报验证](security-center-alert-validation.md)
 ### [管理安全事件](security-center-incident.md)
 ### [Azure 日志集成](security-center-integrating-alerts-with-log-integration.md)
+### [威胁智能地图](security-center-threat-intel.md)
 ### [威胁智能报告](security-center-threat-report.md)
+### [自定义警报](security-center-custom-alert.md)
+### [调查](security-center-investigation.md)
+
+## 云防御措施
+### [实时访问](security-center-just-in-time.md)
+
+## 自动化和业务流程
+### [演练手册](security-center-playbooks.md)
 
 ## 故障排除
 ### [故障排除指南](security-center-troubleshooting-guide.md)
@@ -76,7 +90,6 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure 安全性、隐私性与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
-## [定价](security-center-pricing.md)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务概述](https://azure.microsoft.com/services/security-center/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=security-center)

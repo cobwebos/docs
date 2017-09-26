@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/28/2016
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务查看 StorSimple 虚拟阵列的作业
@@ -63,10 +65,5 @@ ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
 
 ## <a name="next-steps"></a>后续步骤
 [了解如何使用本地 Web UI 管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

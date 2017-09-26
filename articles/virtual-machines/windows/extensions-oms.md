@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: d933f488fdda0c1d37892be65f2712cf0eb5694e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>适用于 Windows 的 OMS 虚拟机扩展

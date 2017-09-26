@@ -20,7 +20,6 @@ ms.openlocfilehash: 356ceb98106d080d8c24dedc3547bee33750156e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="indexer-operations-azure-search-service-rest-api-2015-02-28-preview"></a>索引器操作（Azure 搜索服务 REST API：2015-02-28-Preview）
 > [!NOTE]

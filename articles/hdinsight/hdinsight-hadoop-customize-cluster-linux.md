@@ -32,7 +32,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 >
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-还可以将脚本操作作为 HDInsight 应用程序发布到 Azure Marketplace。 本文档中的某些示例将演示如何使用 PowerShell 和 .NET SDK 的脚本操作命令来安装 HDInsight 应用程序。 有关 HDInsight 应用程序的详细信息，请参阅[将 HDInsight 应用程序发布到 Azure Marketplace 中](hdinsight-apps-publish-applications.md)。
+还可以将脚本操作作为 HDInsight 应用程序发布到 Azure 应用商店。 本文档中的某些示例将演示如何使用 PowerShell 和 .NET SDK 的脚本操作命令来安装 HDInsight 应用程序。 有关 HDInsight 应用程序的详细信息，请参阅[将 HDInsight 应用程序发布到 Azure 应用商店中](hdinsight-apps-publish-applications.md)。
 
 ## <a name="permissions"></a>权限
 
@@ -139,7 +139,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 > [!IMPORTANT]
 > 即使群集处于“正在运行”状态，失败的脚本也可能已损坏。 例如，脚本无法删除群集所需的文件。
 >
-> 脚本操作以 root 权限运行，因此，应该先确保了解脚本的作用，然后再将它应用到群集。
+> 脚本操作以 root 权限运行，因此应该先确保了解脚本的作用，再将它应用到群集。
 
 将脚本应用到群集时，如果脚本运行成功，群集状态将从“正在运行”更改为“已接受”，再更改为“HDInsight 配置”，最后回到“正在运行”。 脚本状态记录在脚本操作历史记录中，可以使用此信息确定脚本是成功还是失败。 例如，可以使用 `Get-AzureRmHDInsightScriptActionHistory` PowerShell cmdlet 来查看脚本的状态。 它会返回类似于以下文本的信息：
 
@@ -164,12 +164,12 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 | 名称 | 脚本 |
 | --- | --- |
-| **添加 Azure 存储帐户** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh。 请参阅[将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)。 |
-| **安装 Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh。 请参阅[在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
-| **安装 Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh。 请参阅[在 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md)。 |
-| **安装 Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。 请参阅[在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md)。 |
-| **安装 Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh。 请参阅[在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 |
-| **预加载 Hive 库** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。 请参阅[在 HDInsight 群集上添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
+| **添加 Azure 存储帐户** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh。请参阅[将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)。 |
+| **安装 Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh。请参阅[在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
+| **安装 Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh。请参阅[在 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md)。 |
+| **安装 Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。请参阅[在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md)。 |
+| **安装 Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh。请参阅[在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 |
+| **预加载 Hive 库** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。请参阅[在 HDInsight 群集上添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
 | **安装或更新 Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash。 请参阅[在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md)。 |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>在创建群集期间使用脚本操作
@@ -474,7 +474,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
     | 属性 | 值 |
     | --- | --- |
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”。 否则，请选择提供的脚本。 |
-    | Name |指定脚本操作的名称。 |
+    | 名称 |指定脚本操作的名称。 |
     | Bash 脚本 URI |指定要调用来自定义群集的脚本的 URI。 |
     | 头节点/辅助节点/Zookeeper 节点 |指定在其上运行自定义脚本的节点（**头**节点、**辅助角色**节点或 **ZooKeeper** 节点）。 |
     | parameters |根据脚本的需要，指定参数。 |
@@ -617,7 +617,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 > [!WARNING]
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，帮助进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 
 HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上使用组件或安装组件的方式为何，均适用相同级别的支持。 以下列表介绍 HDInsight 群集上最常见的自定义组件用法：
 

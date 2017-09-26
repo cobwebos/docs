@@ -11,17 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
+ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 1ab6a2b949101f60d6eef1ba7603d1c2cf81f90a
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 8b8ab2883234850fe243c4d7473d737c497204b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
+
+
+
+**问：如何注册 macOS 设备？**
+
+**答：**注册 macOS 设备的具体步骤：
+
+1.  [创建符合性策略](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+2.  [定义适用于 macOS 设备的条件访问策略](active-directory-conditional-access-azure-portal.md) 
+
+**备注：**
+
+- 条件访问策略中的用户必须有 [macOS 支持的 Office 版本](active-directory-conditional-access-technical-reference.md#supported-mobile-apps-and-desktop-clients)，才能访问资源。 
+
+- 首次尝试访问期间，用户会看到有关使用公司门户注册设备的提示。
+
+---
 
 **问：我最近注册了设备，但为什么在 Azure 门户中我的用户信息下看不到该设备？**
 
@@ -136,20 +153,10 @@ ms.lasthandoff: 09/05/2017
 
 ---
 
-**问：在哪里可以找到自动注册设备的安装说明？**
+**问：在哪里可以了解如何设置已加入混合 Azure AD 的设备？**
 
-**答：**有关详细说明，请参阅[如何配置已加入域的 Windows 设备的 Azure Active Directory 自动注册](active-directory-conditional-access-automatic-device-registration-setup.md)
+**答：**有关详细说明，请参阅[设置已加入混合 Azure Active Directory 的设备](device-management-hybrid-azuread-joined-devices-setup.md)。
 
----
-
-**问：在哪里可以找到有关自动设备注册的故障排除信息？**
-
-**答：**有关故障排除信息，请参阅：
-
-- [排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 10 和 Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md)
-
-- 请参阅[排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](device-management-troubleshoot-hybrid-join-windows-legacy.md)
- 
 ---
 
 

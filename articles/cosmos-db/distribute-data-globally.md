@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 09/13/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: da2cb358d196e41656bd7f6a06ff77e77c7315c1
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a293ab42591fad2b913971465bc85743bcf05dad
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>如何使用 Azure Cosmos DB 在全球范围内分发数据
@@ -66,9 +66,6 @@ Azure Cosmos DB 允许在任何时间点向数据库帐户添加（关联）或�
 
 ![通过 Azure Cosmos DB 配置故障转移优先级](./media/distribute-data-globally/failover-priorities.png)
 
-### <a id="OfflineRegions"></a>以动态方式使区域“下线”
-Azure Cosmos DB 允许让数据库帐户在特定区域下线，之后再让其重新上线。 标记为“下线”的区域不主动参与复制，且不属于故障转移序列。 这使用户能够在具有潜在风险的升级推出到应用程序之前，在一个读取区域中冻结上一个已知的良好数据库映像。
-
 ### <a id="ConsistencyLevels"></a>用于全局复制数据库的多个定义完善的一致性模型
 Azure Cosmos DB 会公开由 SLA 提供支持的[多个定义完善的一致性级别](consistency-levels.md)。 可根据工作负荷/方案选择特定的一致性模型（从可用的选项列表选择）。 
 
@@ -101,7 +98,7 @@ Azure Cosmos DB 允许使用逻辑（与区域无关）或物理（特定于区�
 ### <a id="TransparentSchemaMigration"></a>透明且一致的数据库架构和索引迁移 
 Azure Cosmos DB 与[架构完全无关](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。 其数据库引擎的特殊设计允许其自动且同步地索引所有其引入的数据，而无需要求用户提供任何架构或辅助索引。 这使用户能够快速地循环访问全局分布式应用程序，而无需担心数据库架构和索引迁移或者协调多阶段应用程序的架构更改推出。 Azure Cosmos DB 保证用户对索引策略进行的所有显式更改都不会导致性能或可用性降低。  
 
-### <a id="ComprehensiveSLAs"></a>综合 SlA（不只是高可用性）
+### <a id="ComprehensiveSLAs"></a>综合 SLA（不只是高可用性）
 作为一种全球分布式数据库服务，无论与数据库关联的区域数量是多少，Azure Cosmos DB 都可为整个数据库提供针对**数据丢失**、**可用性**、**P99 延迟**、**吞吐量**和**一致性**的定义完善的 SLA。  
 
 ## <a id="LatencyGuarantees"></a>延迟保证
@@ -189,7 +186,7 @@ Prof.Daniel Abadi 提出了更全面的 CAP 变体，名为 [PACELC](http://cs-w
 ## <a id="ThroughputGuarantees"></a>吞吐量保证 
 Azure Cosmos DB 允许根据需求，灵活地跨不同区域缩放吞吐量（以及存储）。 
 
-**跨 3 个分片进行分区，然后跨 3 个 Azure 区域进行分布的单个 Azure Cosmos DB 集合**
+**跨 3 个分片进行分区，并跨 3 个 Azure 区域进行分布的单个 Azure Cosmos DB 集合**
 
 ![Azure Cosmos DB 分布集合和分区集合](../cosmos-db/media/introduction/azure-cosmos-db-global-distribution.png)
 

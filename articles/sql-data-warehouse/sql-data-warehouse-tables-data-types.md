@@ -21,7 +21,6 @@ ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/06/2017
 
-
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表定义数据类型的指南
 使用这些建议定义与 SQL 数据仓库兼容的表数据类型。 除兼容性外，最大限度降低数据类型大小将提高查询性能。

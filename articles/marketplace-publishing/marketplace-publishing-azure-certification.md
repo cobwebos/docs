@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>通过 Microsoft Azure 认证计划获得预先批准
@@ -41,9 +42,4 @@ ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
 
 ## <a name="see-also"></a>另请参阅
 * [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Reliable Services 编程模型的高级用法
 Azure Service Fabric 可简化可靠的无状态服务和有状态服务的编写与管理。 本指南讨论 Reliable Services 的高级用法，以便针对服务获得更多控制和灵活性。 阅读本指南之前，你自己应熟悉 [Reliable Services 编程模型](service-fabric-reliable-services-introduction.md)。

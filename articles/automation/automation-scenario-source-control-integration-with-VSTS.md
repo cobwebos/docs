@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f68563587d375dde22fd1ca45591fd49042533d0
 ms.openlocfilehash: 01f9c01c9e04e02dbb548b68cf99684ba6ddd57e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/21/2017
 
 ---

@@ -142,7 +142,6 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
     ```sql
     CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
 3. 现在，请查询 *SQL 数据仓库数据库*，基于创建的登录名创建一个数据库用户，用于访问该数据库以及对它执行操作。

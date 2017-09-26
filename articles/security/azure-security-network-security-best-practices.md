@@ -20,7 +20,6 @@ ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
 
-
 ---
 # <a name="azure-network-security-best-practices"></a>Azure 网络安全最佳实践
 Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从而将它们连接到其他网络设备。 Azure 虚拟网络是一种虚拟网络构造，可让你将虚拟网络接口卡连接到虚拟网络，允许有网络功能的设备之间进行基于 TCP/IP 的通信。 连接到 Azure 虚拟网络的 Azure 虚拟机能够连接到相同 Azure 虚拟网络、不同 Azure 虚拟网络、Internet 甚至你自己的本地网络上的设备。

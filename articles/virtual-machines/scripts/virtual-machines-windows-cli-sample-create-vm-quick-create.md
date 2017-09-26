@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rickstercdn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: f1977bf391a9ced08c66e6dfbb36ac35b536357d
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: d8435900c470a85e7d0d835a8eb52f43c0f62136
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/virtual-machine/create-vm-quick/create-windows-vm-quick.sh "快速创建 VM")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-quick/create-windows-vm-quick.sh "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
@@ -50,9 +50,9 @@ az group delete --name myResourceGroup --yes
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和网络安全组。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和网络安全组。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

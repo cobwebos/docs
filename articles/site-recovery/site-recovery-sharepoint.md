@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/31/2017
 ms.author: sutalasi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 75f00cd18f49d72288d65058a4d8d9c5ace19927
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 55323df68715c80d5e8535199cd739921a3baad9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 SharePoint 应用程序以实现灾难恢复
@@ -84,13 +83,13 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ### <a name="things-to-keep-in-mind"></a>要点
 
-如果使用基于共享磁盘的群集作为应用程序中的任何层，则无法使用 Site Recovery 复制来复制这些虚拟机。 可以使用应用程序提供的本机复制，然后使用[恢复计划](site-recovery-create-recovery-plans.md)来故障转移所有层。
+如果使用基于共享磁盘的群集作为应用程序中的任何层，则无法使用 Site Recovery 复制来复制这些虚拟机。 可以使用应用程序提供的本机复制，并使用[恢复计划](site-recovery-create-recovery-plans.md)来故障转移所有层。
 
 ## <a name="replicating-virtual-machines"></a>复制虚拟机
 
 请遵循[此指南](site-recovery-vmware-to-azure.md)开始将虚拟机复制到 Azure。
 
-* 复制完成后，请务必转到每个层的每个虚拟机，然后在“已复制的项”>“设置”>“属性”>“计算和网络”中选择相同的可用性集。 例如，如果 Web 层包含 3 个 VM，请确保将所有 3 个 VM 配置为属于 Azure 中的同一个可用性集。
+* 复制完成后，请务必转到每个层的每个虚拟机，并在“已复制的项”>“设置”>“属性”>“计算和网络”中选择相同的可用性集。 例如，如果 Web 层包含 3 个 VM，请确保将所有 3 个 VM 配置为属于 Azure 中的同一个可用性集。
 
     ![Set-Availability-Set](./media/site-recovery-sharepoint/select-av-set.png)
 
@@ -176,7 +175,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
     * 此方法假设发生灾难性事件之前已执行搜索服务应用程序的备份，并且 DR 站点上提供了备份。
     * 计划备份（例如，每天一次）并使用复制过程在 DR 站点上放置备份，即可轻松实现此目的。 复制过程可以融入 AzCopy（Azure 复制）等脚本程序，或设置 DFSR（分布式文件服务复制）。
-    * 运行 SharePoint 场后，请在管理中心导航到“备份和还原”，然后选择“还原”。 还原过程将会查询指定的备份位置（可能需要更新该值）。 选择要还原的搜索服务应用程序备份。
+    * 运行 SharePoint 场后，请在管理中心导航到“备份和还原”，并选择“还原”。 还原过程会查询指定的备份位置（可能需要更新该值）。 选择要还原的搜索服务应用程序备份。
     * 随后即会还原搜索应用程序。 请记住，还原过程预期会查找相同的拓扑（相同的服务器数目）以及分配给这些服务器的相同驱动器号。 有关详细信息，请参阅[在 SharePoint 2013 中还原搜索服务应用程序](https://technet.microsoft.com/library/ee748654.aspx)文档。
 
 
@@ -194,7 +193,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 ## <a name="doing-a-test-failover"></a>执行测试故障转移
 遵循[此指南](site-recovery-test-failover-to-azure.md)执行测试故障转移。
 
-1.  转到 Azure 门户并选择你的恢复服务保管库。
+1.  转到 Azure 门户并选择恢复服务保管库。
 2.  单击针对 SharePoint 应用程序创建的恢复计划。
 3.  单击“测试故障转移”。
 4.  选择恢复点和 Azure 虚拟网络开始测试故障转移过程。
@@ -208,7 +207,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 ## <a name="doing-a-failover"></a>执行故障转移
 执行故障转移时，请遵循[此指南](site-recovery-failover.md)。
 
-1.  转到 Azure 门户并选择你的恢复服务保管库。
+1.  转到 Azure 门户并选择恢复服务保管库。
 2.  单击针对 SharePoint 应用程序创建的恢复计划。
 3.  单击“故障转移”。
 4.  选择恢复点开始故障转移过程。

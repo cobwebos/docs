@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ccef224ef1c2919a3e5469c1bbe0980c6963705b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9bc82e628df5e380db84e22e1f5fd25f75929fdc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -28,7 +28,7 @@ Azure 事件网格包含三种类型的身份验证：
 
 Webhook 是从 Azure 事件网格实时接收事件的多种方式之一。
 
-每当新事件准备好进行传送时，事件网格会向 WebHook 发送 HTTP 请求，其中正文中包含该事件。
+每当新事件准备好进行传送时，事件网格会向 WebHook 发送 HTTP 请求，并在正文中包含该事件。
 
 当你向事件网格注册自己的 WebHook 终结点时，事件网格为证明终结点所有权，会向你发送 POST 请求，其中包含简单的验证代码。 应用需要通过回显验证代码，做出响应。 事件网格不会将事件传送到未通过验证的 WebHook 终结点。
  

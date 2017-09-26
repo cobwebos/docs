@@ -98,7 +98,7 @@ ms.lasthandoff: 07/24/2017
 
 1. 浏览到已连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。 按照前面部分的步骤操作，在已连接的工厂门户和 OPC UA 服务器之间建立信任关系。 此步骤会在已连接工厂门户的证书和 OPC UA 服务器的证书间建立相互信任的关系，并创建连接。
 
-1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。 如果你的设置不同，可将节点手动添加到 D:\\docker 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json 文件。
+1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。如果你的设置不同，可将节点手动添加到 D:\\docker 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json 文件。
 
 1. 遥测现从网关设备流入。 可在已连接的工厂门户中“新工厂”下的“工厂位置”视图中查看此遥测。
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 07/24/2017
 
 1. 浏览到已连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。 按照前面部分的步骤操作，在已连接的工厂门户和 OPC UA 服务器之间建立信任关系。 此步骤会在已连接工厂门户的证书和 OPC UA 服务器的证书间建立相互信任的关系，并创建连接。
 
-1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。 如果你的设置不同，可将节点手动添加到 /shared 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json。
+1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。如果你的设置不同，可将节点手动添加到 /shared 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json。
 
 1. 遥测现从网关设备流入。 可在已连接的工厂门户中“新工厂”下的“工厂位置”视图中查看此遥测。
 

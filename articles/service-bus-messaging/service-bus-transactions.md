@@ -20,7 +20,6 @@ ms.openlocfilehash: a88f2d81ab43e38c9363a67aaefc178b47bfb259
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 本文将讨论 Azure 服务总线的事务功能。 很多讨论已在 [Atomic Transactions with Service Bus sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)（服务总线中的原子事务示例）中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式功能，虽然原子事务示例在作用域内更广泛且更复杂。

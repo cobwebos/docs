@@ -19,7 +19,6 @@ ms.openlocfilehash: 7e1dad18ff0ae9a9102b789b2cb32e7b96ed3d38
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 的集成
 
@@ -122,7 +121,7 @@ ms.lasthandoff: 05/09/2017
 4. ServiceChannel 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “NameIdentifier（用户标识符）”是唯一的必需声明，默认值为 **user.userprincipalname**，但是 ServiceChannel 期望通过 **user.mail** 对此项进行映射。 如果打算启用“即时”用户预配，则应当添加以下声明，如下所示。 **Role** 声明需要映射到包含该用户的角色的 **user.assignedroles**。  
 
     有关声明的详细指导，可以参考[此处的](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) ServiceChannel 指南。
-      
+    
     ![配置单一登录](./media/active-directory-saas-servicechannel-tutorial/tutorial_servicechannel_attribute.png)
 
     > [!NOTE] 

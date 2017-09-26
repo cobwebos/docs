@@ -21,7 +21,6 @@ ms.openlocfilehash: cc64441617eb5e7d5e70c1cf5c491a672428bc51
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 

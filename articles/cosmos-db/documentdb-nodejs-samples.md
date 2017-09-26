@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 602615c2434b7ab11ec55f2427c76cf1730b1379
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 2209ff4aaaca93da853281ebf68f3b476aeeb3b6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js 示例
@@ -39,13 +38,16 @@ ms.lasthandoff: 05/31/2017
 
 **先决条件**
 
-1. 你需要一个 Azure 帐户以使用这些 Node.js 示例：
-   * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。 你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
-     * 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
-2. 还需要 [Node.js SDK](documentdb-sdk-node.md)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+- 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
+
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+还需要 [Node.js SDK](documentdb-sdk-node.md)。
    
    > [!NOTE]
-   > 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 因此，这些示例对 [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection) 发出多个调用。 每次执行完此操作，均会按照正在创建的集合的性能层，向你的订阅收取使用 1 小时的费用。
+   > 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 因此，这些示例对 [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection) 发出多个调用。 每次执行完此操作，均会按照正在创建的集合的性能层，向订阅收取使用 1 小时的费用。
    > 
    > 
 
@@ -100,7 +102,7 @@ ms.lasthandoff: 05/31/2017
 | [从索引中排除某些路径](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L427-L450) |[IndexingPolicy.ExcludedPath](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
 | [允许在范围操作期间扫描字符串路径](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L271-L347) |[FeedOptions.EnableScanInQuery](http://azure.github.io/azure-documentdb-node/global.html#FeedOptions) |
 | [在字符串路径上创建范围索引](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L349-L425) |[IndexKind.Range](http://azure.github.io/azure-documentdb-node/global.html#IndexKind)，[IndexingPolicy](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy)，[DocumentClient.queryDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryDocument) |
-| [使用默认 indexPolicy 创建集合，然后联机进行更新](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L519-L614) |[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection)<br> [DocumentClient.replaceCollection#replaceCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) |
+| [使用默认 indexPolicy 创建集合，并联机进行更新](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L519-L614) |[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection)<br> [DocumentClient.replaceCollection#replaceCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) |
 
 有关索引的详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
 

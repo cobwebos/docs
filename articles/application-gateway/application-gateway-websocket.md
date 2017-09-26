@@ -20,7 +20,6 @@ ms.openlocfilehash: 75b06ddd02da231b7813c609c848c75e42116da5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
 

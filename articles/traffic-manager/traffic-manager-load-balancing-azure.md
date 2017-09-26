@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/11/2017
 
 ---

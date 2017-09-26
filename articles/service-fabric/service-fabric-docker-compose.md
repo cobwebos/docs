@@ -12,7 +12,7 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 09/25/2017
 ms.author: subramar
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
@@ -41,19 +41,19 @@ Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义
 通过在 PowerShell 中运行以下命令，根据 docker-compose.yml 文件创建 Service Fabric Compose 应用程序：
 
 ```powershell
-New-ServiceFabricComposeApplication -ApplicationName fabric:/TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
+New-ServiceFabricComposeDeployment -DeploymentName fabric:/TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
 `RegistryUserName` 和 `RegistryPassword` 指容器注册表用户名和密码。 创建完应用程序后，可以使用以下命令检查其状态：
 
 ```powershell
-Get-ServiceFabricComposeApplicationStatus -ApplicationName fabric:/TestContainerApp -GetAllPages
+Get-ServiceFabricComposeDeploymentStatus -DeploymentName fabric:/TestContainerApp -GetAllPages
 ```
 
 若要通过 PowerShell 删除 Compose 应用程序，请使用以下命令：
 
 ```powershell
-Remove-ServiceFabricComposeApplication  -ApplicationName fabric:/TestContainerApp
+Remove-ServiceFabricComposeDeployment  -DeploymentName fabric:/TestContainerApp
 ```
 
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl)

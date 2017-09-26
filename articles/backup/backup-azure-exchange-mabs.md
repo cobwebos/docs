@@ -20,7 +20,6 @@ ms.openlocfilehash: 60b784fd00013c2b9504f8635c6b5c4c592563be
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
-
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure 备份
 本文说明如何配置 Microsoft Azure 备份服务器 (MABS)，将 Microsoft Exchange Server 备份到 Azure。  

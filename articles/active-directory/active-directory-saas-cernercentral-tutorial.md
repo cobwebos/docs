@@ -19,7 +19,6 @@ ms.openlocfilehash: 77b5fb94cdfa5722081198aabc59fbf86229c2b0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>教程：Azure Active Directory 与 Cerner Central 的集成
 

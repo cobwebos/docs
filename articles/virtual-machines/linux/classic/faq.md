@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 132868c00dc039e40b0782aae6da2cf29163706f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="frequently-asked-question-about-azure-linux-virtual-machines-created-with-the-classic-deployment-model"></a>使用经典部署模型创建的 Azure Linux 虚拟机的常见问题

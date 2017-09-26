@@ -4,15 +4,14 @@ hide_bc: true
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: cec37e94b31d08930d7262b2f30dd3e84793af46
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: f1b498499f02b3dd6d83debee6eaaf846ec01839
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1 class="screenReader">Microsoft Azure 文档</h1>
         <ul class="cardsY panelContent featuredContent">
             <li>
                 <a href="/azure/guides/developer/azure-developer-guide">
@@ -68,9 +67,10 @@ ms.lasthandoff: 08/25/2017
                     </div>
                 </a>
             </li>
-        </ul>
+        </ul>             
     </div>
     <div class="container">
+        <h1 class="screenReader">Microsoft Azure 文档</h1>   
         <ul class="pivots">
             <li>
                 <a href="#get-started">入门</a>
@@ -156,7 +156,7 @@ ms.lasthandoff: 08/25/2017
                                                 </ul>
                                                 <h4>NoSQL</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/cosmos-db/">Cosmos DB</a></li>
+                                                    <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
                                                 <h4>AI 和认知服务</h4>
                                                 <ul class="noBullet">
@@ -252,7 +252,7 @@ ms.lasthandoff: 08/25/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/app-service/">
+                                            <a href="/azure/app-service-web/">
                                                 <img src="media/index/app-service-web.svg" alt="" />
                                                 <p>Web 应用</p>
                                             </a>
@@ -311,7 +311,7 @@ ms.lasthandoff: 08/25/2017
                                         <li>
                                             <a href="/azure/cosmos-db/">
                                                 <img src="media/index/cosmosdb.svg" alt="" />
-                                                <p>Cosmos DB</p>
+                                                <p>Azure Cosmos DB</p>
                                             </a>
                                         </li>
                                         <li>
@@ -855,6 +855,12 @@ ms.lasthandoff: 08/25/2017
                                             <a href="/azure/iot-hub/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
                                                 <p>Azure IoT 中心</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/iot-dps/">
+                                                <img src="media/index/dps.svg" alt="" />
+                                                <p>IoT 中心设备预配服务</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1989,8 +1995,8 @@ ms.lasthandoff: 08/25/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cosmos DB</h3>
-                                                    <p>托管的 NoSQL 文档数据库即服务</p>
+                                                    <h3>Azure Cosmos DB</h3>
+                                                    <p>适用于任何规模的全球分布式多模型数据库</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2462,6 +2468,25 @@ ms.lasthandoff: 08/25/2017
                                                 <div class="cardText">
                                                     <h3>Azure IoT 中心</h3>
                                                     <p>连接、监视和控制数十亿 IoT 资产</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/iot-dps/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/dps.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>IoT 中心设备预配服务</h3>
+                                                    <p>Azure IoT 中心的零接触实时预配</p>
                                                 </div>
                                             </div>
                                         </div>

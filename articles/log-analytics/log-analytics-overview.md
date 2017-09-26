@@ -20,7 +20,6 @@ ms.openlocfilehash: 9fcf23f5ff47bd7457e5afa69eb2b9b33e0bf0fe
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="what-is-log-analytics"></a>什么是 Log Analytics？
 Log Analytics 是 [Operations Management Suite \(OMS\)](../operations-management-suite/operations-management-suite-overview.md) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。  它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。  本文简要介绍 Log Analytics 提供的价值及其工作原理的概述，并提供更详细内容的链接帮助你深入了解此产品。

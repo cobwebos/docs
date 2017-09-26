@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017, it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 4dfa56ba6f80193e643965b97b6439c62f7873e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成

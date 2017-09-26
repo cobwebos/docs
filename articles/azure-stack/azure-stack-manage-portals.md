@@ -20,7 +20,6 @@ ms.openlocfilehash: 066de8278d1ef4406cde837da4c7c65304854383
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="using-the-administrator-and-user-portals-in-azure-stack"></a>Using the administrator and user portals in Azure Stack
 

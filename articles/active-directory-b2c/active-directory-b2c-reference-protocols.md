@@ -20,7 +20,6 @@ ms.openlocfilehash: 8e7e7bc7633370057f8dc596ad04a3f1d796a7d2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # Azure AD B2C：身份验证协议
 通过支持两种行业标准协议（OpenID Connect 和 OAuth 2.0），Azure Active Directory B2C (Azure AD B2C) 为应用提供标识即服务。 这是符合标的服务，但这些协议的任意两个实现之间仍然存在微妙的差异。 

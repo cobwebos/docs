@@ -1,6 +1,6 @@
 ---
-title: "使用 Jenkins 插件部署到 Azure App Service | Microsoft Docs"
-description: "了解如何在 Jenkins 中使用 Azure App Service Jenkins 插件将 Java Web 应用部署到 Azure"
+title: "使用 Jenkins 插件部署到 Azure 应用服务 | Microsoft Docs"
+description: "了解如何在 Jenkins 中使用 Azure 应用服务 Jenkins 插件将 Java Web 应用部署到 Azure"
 services: app-service\web
 documentationcenter: 
 author: mlearned
@@ -16,19 +16,19 @@ ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: dfb1abd4eefdb2baea8cdbd497bc8fcc95d200e6
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: bd4e629e522fb9acea5601be8eac7c70ae61d042
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="deploy-to-azure-app-service-with-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
-若要将 Java Web 应用部署到 Azure，可在 [Jenkins 管道](/azure/jenkins/execute-cli-jenkins-pipeline)中使用 Azure CLI，也可使用 [Azure App Service Jenkins 插件](https://plugins.jenkins.io/azure-app-service)。 本教程介绍如何：
+# <a name="deploy-to-azure-app-service-with-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure 应用服务 
+若要将 Java Web 应用部署到 Azure，可在 [Jenkins 管道](/azure/jenkins/execute-cli-jenkins-pipeline)中使用 Azure CLI，也可使用 [Azure 应用服务 Jenkins 插件](https://plugins.jenkins.io/azure-app-service)。 本教程介绍如何：
 
 > [!div class="checklist"]
-> * 配置 Jenkins 以通过 FTP 部署到 Azure App Service 
-> * 配置 Jenkins 以通过 Docker 部署到 Linux 版 Azure App Service 
+> * 配置 Jenkins 以通过 FTP 部署到 Azure 应用服务 
+> * 配置 Jenkins 以通过 Docker 部署到 Linux 版 Azure 应用服务 
 
 ## <a name="create-and-configure-jenkins-instance"></a>创建和配置 Jenkins 实例
 如果还没有 Jenkins Master，请先使用[解决方案模板](install-jenkins-solution-template.md)，其中包含 JDK8 和以下必需插件：
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/04/2017
 * [Jenkins Git 客户端插件](https://plugins.jenkins.io/git-client) v.2.4.6 
 * [Docker Commons 插件](https://plugins.jenkins.io/docker-commons) v.1.4.0
 * [Azure 凭据](https://plugins.jenkins.io/azure-credentials) v.1.2
-* [Azure App Service](https://plugins.jenkins.io/azure-app-server) v.0.1
+* [Azure 应用服务](https://plugins.jenkins.io/azure-app-server) v.0.1
 
 应用服务插件可用于通过 Azure App Service 支持的所有语言（例如 C#、PHP、Java 和 node.js 等）部署 Web 应用。 本教程中使用示例 Java 应用 - [适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)。 要将存储库分叉到自己的 GitHub 帐户，请单击右上角的“分叉”按钮。  
 
@@ -61,9 +61,9 @@ sudo apt-get install -y maven
 <li>单击“添加凭据”，通过填写订阅 ID、客户端 ID、客户端密码和 OAuth 2.0 令牌终结点，添加 Microsoft Azure 服务主体。 提供 ID (mySp) 供后续步骤使用。</li>
 </ol>
 
-## <a name="azure-app-service-plugin"></a>Azure App Service 插件
+## <a name="azure-app-service-plugin"></a>Azure 应用服务插件
 
-Azure App Service 插件 v1.0 支持通过以下条件持续部署到 Azure Web 应用：
+Azure 应用服务插件 v1.0 支持通过以下条件持续部署到 Azure Web 应用：
 
 * Git 和 FTP
 * 适用于 Linux 版 Web 应用的 Docker
@@ -72,11 +72,11 @@ Azure App Service 插件 v1.0 支持通过以下条件持续部署到 Azure Web 
 
 若要将项目部署到 Azure Web 应用，可以使用 Git 或 FTP 上传生成项目（例如，采用 Java 的 .war 文件）。
 
-在 Jenkins 中设置作业前，需要 Azure App Service 计划和 Web 应用，以便运行 Java 作业。
+在 Jenkins 中设置作业前，需要 Azure 应用服务计划和 Web 应用，以便运行 Java 作业。
 
 
 1. 使用 [az appservice plan create](/cli/azure/appservice/plan#create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。
-2. 创建 Web 应用。 可以使用 [Azure 门户](/azure/app-service-web/web-sites-configure)或以下 Az CLI 命令：
+2. 创建 Web 应用。 可以使用 [Azure 门户](/azure/app-service/web-sites-configure)或以下 Az CLI 命令：
 ```azurecli-interactive 
 az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
 ```
@@ -142,7 +142,7 @@ Linux 版 Web 应用还支持 Git 和 FTP 等传统方式，但仅限内置语�
 
 在 Jenkins 中设置作业前，首先需要 Linux 版 Azure App Service。 还需容器注册表来存储与管理专用 Docker 容器映像。 可以使用 DockerHub，而此示例使用 Azure 容器注册表。
 
-* 可按照[此处](/azure/app-service-web/app-service-linux-how-to-create-web-app)的步骤进行操作，创建 Linux 版 Web 应用 
+* 可按照[此处](../app-service/containers/quickstart-nodejs.md)的步骤进行操作，创建 Linux 版 Web 应用 
 * Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注册表] (https://docs.docker.com/registry/) 服务。 有关如何执行此操作的更多指导，请按照 [此处] (/azure/container-registry/container-registry-get-started-azure-cli) 的步骤进行操作。 还可使用 DockerHub。
 
 ### <a name="to-deploy-using-docker"></a>使用 Docker 进行部署：
@@ -165,7 +165,7 @@ az acr update -n <yourRegistry> --admin-enabled true
 az acr credential show -n <yourRegistry>
 ```
 
-9. “高级”选项卡中的 Docker 映像名称和标记是可选的。 默认情况下，映像名称即为 Azure 门户中配置的映像名称（在 Docker 容器设置中）。标志从 $BUILD_NUMBER 生成。 请确保在 Azure 门户中指定映像名称，或在“高级”选项卡中为 Docker 映像提供一个值。 对于此示例，请将“&lt;yourRegistry>.azurecr.io/calculator”作为 Docker 映像并将“Docker 映像标记”留空。
+9. “高级”选项卡中的 Docker 映像名称和标记是可选的。 默认情况下，映像名称即为 Azure 门户中配置的映像名称（在 Docker 容器设置中）。标志从 $BUILD_NUMBER 生成。 请确保在 Azure 门户中指定映像名称，或在“高级”选项卡中为 Docker 映像提供一个值。对于此示例，请将“&lt;yourRegistry>.azurecr.io/calculator”作为 Docker 映像并将“Docker 映像标记”留空。
 10. 请注意，如果使用内置 Docker 映像设置，则部署将失败。 请确保更改 Docker 配置，以在 Azure 门户的 Docker 容器设置中使用自定义映像。 对于内置映像，请使用文件上传方法进行部署。
 11. 与文件上传方法类似，可以选择其他非生产槽。
 12. 保存并生成项目。 可以发现容器映像已推送到注册表，且 Web 应用已部署。
@@ -232,10 +232,10 @@ azureWebAppPublish azureCredentialsId: '<mySp>', publishType: 'docker', resource
     
 ## <a name="next-steps"></a>后续步骤
 
-本教程中使用 Azure App Service 插件部署到 Azure。
+本教程中使用 Azure 应用服务插件部署到 Azure。
 
 你已了解如何：
 
 > [!div class="checklist"]
-> * 配置 Jenkins 以通过 FTP 部署 Azure App Service 
-> * 配置 Jenkins 以通过 Docker 部署到 Linux 版 Azure App Service 
+> * 配置 Jenkins 以通过 FTP 部署 Azure 应用服务 
+> * 配置 Jenkins 以通过 Docker 部署到 Linux 版 Azure 应用服务 

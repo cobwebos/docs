@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 06b802c408ea5d1b2b40d05321e1a0014e99ca8b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>关于适用于 Linux 的虚拟机代理和扩展

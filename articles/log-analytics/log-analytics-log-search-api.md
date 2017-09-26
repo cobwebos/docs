@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 09/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 78afb2f065dde4a3e7a3ab787c939b3c52b72cc6
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 5b51c6fcc69c8dff6579a1a1221e88822eccc1a3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics 日志搜索 REST API
 本指南提供使用 Log Analytics 搜索 REST API 的基本教程，包括示例。 Log Analytics 是 Operations Management Suite (OMS) 的一部分。
 
 > [!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应继续通过日志搜索 API 使用旧查询语言，如本文中所述。  将为已升级的工作区发布新的 API，并在该时间更新文档。 
+> 如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新版本日志搜索 API 文档](https://dev.loganalytics.io/)。
 
 > [!NOTE]
 > Log Analytics 之前称为 Operational Insights（操作见解），这就是在资源提供程序中使用此名称的原因。

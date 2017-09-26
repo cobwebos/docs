@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0046a088f908a8cfdcab2cf6baad62524def6468
 ms.openlocfilehash: 1e034d59d8847f237fa0d4c772344d45cd618576
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/04/2017
 
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>在 Azure 安全中心启用网络安全组
@@ -65,9 +66,4 @@ Azure 安全中心建议启用网络安全组 (NSG)（如果尚未启用）。 N
 [2]:./media/security-center-enable-nsg/configure-nsg-for-subnet.png
 [3]: ./media/security-center-enable-nsg/configure-nsg-for-vm.png
 [4]: ./media/security-center-enable-nsg/choose-nsg.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

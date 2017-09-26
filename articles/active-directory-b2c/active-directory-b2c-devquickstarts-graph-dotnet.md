@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 1e6748f40c7b825615b3f58243afd9d50348214d
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 430063bbc9fab8195e12cd1d3e3966a29bafd404
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C：使用图形 API
@@ -59,6 +59,11 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 5. 最后，返回“所需的权限”菜单，单击“授予权限”按钮。
 
 现在就有了一个有权限从 B2C 租户创建、读取和更新用户的应用程序。
+
+> [!NOTE]
+> 权限授予可能需要几分钟才能完全处理。
+> 
+> 
 
 ## <a name="configure-delete-permissions-for-your-application"></a>为应用程序配置删除权限
 目前，“读取和写入目录数据”权限**不**包括任何删除权限，如删除用户。 如果想要使应用程序能够删除用户，就需要执行涉及 PowerShell 的这些额外步骤，否则，可以跳到下一部分。

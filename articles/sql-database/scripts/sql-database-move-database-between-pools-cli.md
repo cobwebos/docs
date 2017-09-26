@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/05/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 1dc31a0b20f36e28a58896ed63a5e0395ae1d3af
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 946492e1d4b784a2a70b553826b4ec837799ff6d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/sql-database/move-database-between-pools/move-database-between-pools.sh "在池之间移动数据库")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/move-database-between-pools/move-database-between-pools.sh "Move database between pools")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -52,12 +52,12 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#create) | 创建用于托管数据库或弹性池的逻辑服务器。 |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#create) | 在逻辑服务器中创建弹性池。 |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#create) | 在逻辑服务器中创建数据库作为单一数据库或入池数据库。 |
-| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#update) | 更新数据库属性，或者将数据库移入、移出弹性池或在弹性池之间移动。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | 创建用于托管数据库或弹性池的逻辑服务器。 |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) | 在逻辑服务器中创建弹性池。 |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_create) | 在逻辑服务器中创建数据库作为单一数据库或入池数据库。 |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | 更新数据库属性，或者将数据库移入、移出弹性池或在弹性池之间移动。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

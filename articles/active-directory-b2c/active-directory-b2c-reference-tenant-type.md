@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: gsacavdm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: facd66f0324e382ea7609a035de8129ba433846f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
-
 
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：区域可用性和数据驻留

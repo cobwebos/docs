@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: a8f936cd23838759dc30b04688d3c6544e4895cc
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 6cc61144b9e2f776c9039022d32300fd06b67bbd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -69,7 +69,7 @@ AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>检查与虚拟机的连接
 
-此示例通过端口 80 检查与目标虚拟机的连接。
+此示例通过端口 80 检查与目标虚拟机的连接。 此示例要求在包含源 VM 的区域中启用网络观察程序。  
 
 ### <a name="example"></a>示例
 
@@ -80,11 +80,11 @@ $destVMName = "Database0"
 
 $RG = Get-AzureRMResourceGroup -Name $rgName
 
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $RG.Location } 
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
-
 $VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 $VM2 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $destVMName
+
+$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location} 
+$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
@@ -164,7 +164,7 @@ Hops             : [
 
 ## <a name="validate-routing-issues"></a>验证路由问题
 
-该示例检查虚拟机与远程终结点之间的连接。
+该示例检查虚拟机与远程终结点之间的连接。 此示例要求在包含源 VM 的区域中启用网络观察程序。  
 
 ### <a name="example"></a>示例
 
@@ -173,11 +173,10 @@ $rgName = "ContosoRG"
 $sourceVMName = "MultiTierApp0"
 
 $RG = Get-AzureRMResourceGroup -Name $rgName
-
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $RG.Location } 
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
-
 $VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
+
+$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
+$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
@@ -229,7 +228,7 @@ Hops             : [
 
 ## <a name="check-website-latency"></a>检查网站延迟
 
-以下示例检查与网站的连接。
+以下示例检查与网站的连接。 此示例要求在包含源 VM 的区域中启用网络观察程序。  
 
 ### <a name="example"></a>示例
 
@@ -238,11 +237,11 @@ $rgName = "ContosoRG"
 $sourceVMName = "MultiTierApp0"
 
 $RG = Get-AzureRMResourceGroup -Name $rgName
+$VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $RG.Location } 
+$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
-$VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress http://bing.com/
 ```
@@ -282,7 +281,7 @@ Hops             : [
 
 ## <a name="check-connectivity-to-a-storage-endpoint"></a>检查与存储终结点的连接
 
-以下示例测试从虚拟机到博客存储帐户的连接。
+以下示例测试从虚拟机到博客存储帐户的连接。 此示例要求在包含源 VM 的区域中启用网络观察程序。  
 
 ### <a name="example"></a>示例
 
@@ -292,10 +291,10 @@ $sourceVMName = "MultiTierApp0"
 
 $RG = Get-AzureRMResourceGroup -Name $rgName
 
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $RG.Location }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
-
 $VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
+
+$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location }
+$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```

@@ -13,40 +13,40 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/03/2017
+ms.date: 09/07/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 256bc04684ba337fe8a403d977079c96b63ca61d
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1c39b2d9943532c8ccf0a11d3cf4bc8896669cfb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
-这篇文章对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题和业务流程的自动执行：
+本文对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题并自动化业务流程：
 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure 应用服务 WebJobs](../app-service-web/web-sites-create-web-jobs.md)
 
-将分散的系统"粘附"在一起时，所有这些服务很有用。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 但是，每个服务中添加一组唯一的值，对它们进行比较不是“哪个服务最佳？”的问题， 而是“哪个服务最适合于这种情况？”问题。 通常，这些服务的组合是快速构建可扩展、全功能的集成解决方案的最佳方法。
+将分散的系统"粘附"在一起时，所有这些服务很有用。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 但是，每个服务都有其独特的优点，进行比较并不能解决“哪个服务最佳？”的问题， 而是“哪个服务最适合于这种情况？”问题。 通常，这些服务的组合是快速构建可扩展、全功能的集成解决方案的最佳方法。
 
 <a name="flow"></a>
 
-## <a name="flow-vs-logic-apps"></a>Flow vs.Logic Apps
-我们可以一起讨论 Microsoft Flow和 Azure 逻辑应用，因为它们都是首先配置的集成服务，这样易于构建流程和工作流，以及与各种 SaaS 和企业应用程序集成。 
+## <a name="flow-vs-logic-apps"></a>Flow vs.逻辑应用
+Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都是以配置为首的集成服务。 通过它们可轻松构建流程和工作流，并与各种 SaaS 和企业应用程序集成。 
 
 * 流构建在逻辑应用之上
 * 它们具有相同的工作流设计器
 * [连接器](../connectors/apis-list.md)工作，便也可在另一个中工作
 
-流使得任何办公室工作人员可以执行简单的集成（例如获取重要电子邮件的短信），而无需通过开发人员或 IT。 另一方面，逻辑应用可以启用需要企业级 DevOps 和安全做法的高级或任务关键型集成（例如 B2B 进程）。 对于业务工作流，复杂性额外地增长很具有代表性。 相应地，可以先从流开始，然后根据需要将其转换到逻辑应用。
+借助流，任何办公室工作人员都可以执行简单的集成（例如，获取重要电子邮件的短信），而无需通过开发人员或 IT。 另一方面，逻辑应用可启用需要企业级 DevOps 和安全实践的高级或任务关键型集成（例如 B2B 进程）。 对于业务工作流，其典型特征就是复杂性会随时间增长而增加。 相应地，可以先从流开始，然后根据需要将其转换到逻辑应用。
 
 下表有助于确定流或逻辑应用是否最适合给定的集成。
 
-|  | 流向 | Logic Apps |
+|  | 流向 | 逻辑应用 |
 | --- | --- | --- |
 | 目标受众 |办公室工作人员、业务用户 |IT 专业人士、开发人员 |
 | 方案 |自助服务 |关键任务 |
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/04/2017
 ## <a name="functions-vs-webjobs"></a>函数 vs.Web 作业
 我们可以一起讨论 Azure Functions 和 Azure 应用服务 WebJobs，因为它们都是代码优先的集成服务，且是为开发人员设计的。 它们使你能够运行脚本或一段代码以响应各种事件，如[新存储 Blob](functions-bindings-storage.md) 或 [WebHook 请求](functions-bindings-http-webhook.md)。 以下是它们的相似之处： 
 
-* 二者都是在 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md) 上构建的，并享有[源控件](../app-service-web/app-service-continuous-deployment.md)[身份验证](../app-service/app-service-authentication-overview.md) 和 [监视](../app-service-web/web-sites-monitor.md)。
+* 二者都是在 [Azure 应用服务](../app-service/app-service-web-overview.md) 上构建的，并享有[源控件](../app-service/app-service-continuous-deployment.md)[身份验证](../app-service/app-service-authentication-overview.md) 和 [监视](../app-service/web-sites-monitor.md)。
 * 二者均是专门针对开发人员的服务。
 * 二者均支持标准的脚本和编程语言。
 * 二者均具有 NuGet 和 NPM 支持。
@@ -81,9 +81,9 @@ ms.lasthandoff: 08/04/2017
 | 扩展 |无配置缩放 |应用服务计划的缩放 |
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
 | 运行类型 |触发、计划（通过计时器触发器） |触发的、连续的、计划的 |
-| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage.md) |[Azure 存储](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure 服务总线](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
+| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage-blob.md) |[Azure 存储](functions-bindings-storage-blob.md)、[Azure 服务总线](functions-bindings-service-bus.md) |
 | 浏览器开发 |受支持 | 不支持 |
-| Window 脚本 |实验 |受支持 |
+| Windows 脚本（.cmd、.bat） |实验 |受支持 |
 | PowerShell |实验 |受支持 |
 | C# |受支持 |受支持 |
 | F# |受支持 |不支持 |
@@ -92,18 +92,22 @@ ms.lasthandoff: 08/04/2017
 | Python |实验 |受支持 |
 | JavaScript |受支持 |受支持 |
 
-要使用函数，还是要使用 WebJobs，这最终取决于已对应用服务执行何操作。 如果已有想为其运行代码片段的应用服务应用，且想要在同一 DevOps 环境中同时管理它们，则应使用 WebJobs。 如果想要为其他 Azure 服务甚至是第三方应用运行代码片段，或者如果想要从应用服务应用单独管理集成代码片段，或者如果想要从逻辑应用中调用代码片段，则应充分利用函数中的所有改进。  
+要使用函数，还是要使用 WebJobs，这最终取决于已对应用服务执行何操作。 如果已有想为其运行代码片段的应用服务应用，且想要在同一 DevOps 环境中同时管理它们，请使用 WebJobs。 在以下情况下，请使用 Functions。
+
+* 希望为其他 Azure 服务或第三方应用运行代码片段。
+* 希望独立于应用服务应用管理集成代码。
+* 希望从逻辑应用调用代码片段。 
 
 <a name="together"></a>
 
 ## <a name="flow-logic-apps-and-functions-together"></a>一起使用流、逻辑应用和函数
 如前文所述，哪个服务最适合取决于具体情况。 
 
-* 对于简单的业务优化，使用流。
+* 对于简单的业务优化，请使用 Flow。
 * 如果集成方案相对流太过高级，或者需要 DevOps 功能和安全合规性，则使用逻辑应用。
-* 如果集成方案中某个步骤需要高度自定义的转换或专门的代码，则编写一个函数应用，并在逻辑应用中作为一个操作触发函数。
+* 如果集成方案中的某个步骤需要高度自定义的转换或专门的代码，请编写一个函数，并在逻辑应用中作为一个操作触发函数。
 
-可以在流中调用逻辑应用。 也可以在逻辑应用中调用函数，在函数中调用逻辑应用。 随着时间的推移，流、逻辑应用和函数之间的集成将得到进一步改进。 可以在某服务中构建一些项，并将其用于其他服务。 因此，在这三项技术中所做的任何投资都是值得的。
+可以在流中调用逻辑应用。 也可以在逻辑应用中调用函数，在函数中调用逻辑应用。 随着时间的推移，Flow、逻辑应用和 Functions 之间的集成将得到进一步改进。 可以在某服务中构建一些项，并将其用于其他服务。 因此，在这三项技术中所做的任何投资都是值得的。
 
 ## <a name="next-steps"></a>后续步骤
 通过创建第一个流、逻辑应用、函数应用或 WebJob，开始使用每个服务。 单击以下任一链接：
@@ -111,7 +115,7 @@ ms.lasthandoff: 08/04/2017
 * [开始使用 Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)
-* [使用 Visual Studio 部署 WebJobs](../app-service-web/websites-dotnet-deploy-webjobs.md)
+* [使用 Visual Studio 部署 WebJobs](../app-service/websites-dotnet-deploy-webjobs.md)
 
 或者，通过以下链接获取有关这些集成服务的详细信息：
 
@@ -119,6 +123,5 @@ ms.lasthandoff: 08/04/2017
 * [集成简化，来自 Charles Lamanna](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [逻辑应用实时网络广播](http://aka.ms/logicappslive)
 * [Microsoft Flow 的常见问题](https://flow.microsoft.com/documentation/frequently-asked-questions/)
-* [Azure WebJobs 文档资源](../app-service-web/websites-webjobs-resources.md)
 
 

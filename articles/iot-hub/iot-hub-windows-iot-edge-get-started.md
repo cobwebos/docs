@@ -21,7 +21,6 @@ ms.openlocfilehash: 5db39bab8e31a8e7026b34e72b4614b0f6f57772
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="explore-azure-iot-edge-architecture-on-windows"></a>在 Windows 上浏览 Azure IoT Edge 体系结构
 

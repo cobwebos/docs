@@ -21,7 +21,6 @@ ms.openlocfilehash: db23eba9ff8debd5268cd02bc4f37c4e6501bfac
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager

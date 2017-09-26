@@ -171,7 +171,7 @@ $ ssh azureuser@<publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>在 myVM1（主）上创建数据库
 
-Oracle 软件已在 Marketplace 映像上安装，因此下一步是安装数据库。 
+Oracle 软件已在应用商店映像上安装，因此下一步是安装数据库。 
 
 切换到 Oracle 超级用户：
 
@@ -281,7 +281,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-启用闪回（这会使恢复轻松很多）并将 STANDBY\_FILE\_MANAGEMENT 设置为 auto。 此后退出 SQL*Plus。
+启用闪回（这会使恢复轻松很多）并将 STANDBY\_FILE\_MANAGEMENT 设置为 auto。此后退出 SQL*Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;

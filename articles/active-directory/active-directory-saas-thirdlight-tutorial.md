@@ -19,7 +19,6 @@ ms.openlocfilehash: ee7710cfea3a13907c0cc940a98c875bf83607a9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>教程：Azure Active Directory 与 ThirdLight 集成
 

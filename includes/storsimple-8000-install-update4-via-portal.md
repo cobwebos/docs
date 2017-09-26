@@ -1,7 +1,6 @@
 <!--author=alkohli last changed: 07/07/17-->
 
-#### 从 Azure 门户安装更新
-<a id="to-install-an-update-from-the-azure-portal" class="xliff"></a>
+#### <a name="to-install-an-update-from-the-azure-portal"></a>从 Azure 门户安装更新
 
 1. 在“StorSimple 服务”页上，选择你的设备。
 

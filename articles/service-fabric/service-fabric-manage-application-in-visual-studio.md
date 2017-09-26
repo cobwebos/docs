@@ -20,7 +20,6 @@ ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
 你可以通过 Visual Studio 管理 Azure Service Fabric 应用程序和服务。 [设置开发环境](service-fabric-get-started.md)之后，可以使用 Visual Studio 创建 Service Fabric 应用程序、添加服务，或在本地开发群集中打包、注册和部署应用程序。

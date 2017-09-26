@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 6c65427fcd18e41a90dfb872aa9525f758b17b87
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/18/2017
-
 
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook

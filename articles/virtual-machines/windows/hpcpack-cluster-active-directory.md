@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 11/14/2016
 ms.author: danlep
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: c5a06a9c810349b1bcce01c7f73563941a5af0ed
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>使用 Azure Active Directory 在 Azure 中管理 HPC Pack 群集

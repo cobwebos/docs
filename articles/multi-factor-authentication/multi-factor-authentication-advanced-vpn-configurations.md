@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 61cf29acac22d546e1b75604f799993ad6ff9042
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 

@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 04/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 40c3fa6fa6c07d59e4bf55531e116ba50aa92b91
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c7868dda1e00882a944ac61d838c8b8987d5e740
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>在应用服务计划中创建 Function App
@@ -37,7 +37,7 @@ ms.lasthandoff: 06/20/2017
 
 此脚本使用专用[应用服务计划](../functions-scale.md#app-service-plan)创建 Azure Function App。
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "在应用服务计划中创建 Azure Function")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "Create an Azure Function on an App Service plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -47,10 +47,10 @@ ms.lasthandoff: 06/20/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#create) | 创建 Azure 存储帐户。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appserviceplan#create) | 创建应用服务计划。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#delete) | 创建 Azure Function App。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | 创建 Azure 存储帐户。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appserviceplan#az_appserviceplan_create) | 创建应用服务计划。 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_delete) | 创建 Azure Function App。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: d38adc6104337aa6cea9ee0f8042c22434624c9a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建具有静态公共 IP 地址的 VM

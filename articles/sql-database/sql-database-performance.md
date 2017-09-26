@@ -21,7 +21,6 @@ ms.openlocfilehash: 522b932ab055978c52f085dbaa36095bb6b77962
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优化操作和建议来建议可以提高工作负荷性能的操作。

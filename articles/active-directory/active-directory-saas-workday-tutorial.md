@@ -19,7 +19,6 @@ ms.openlocfilehash: 164d5c644f120fa86e2b690649241892764b64b7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 

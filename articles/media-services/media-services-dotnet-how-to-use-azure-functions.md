@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/27/2017
+ms.date: 09/03/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 95379ed04c47a1e62822ae44b9a1f13b234c6282
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
-本主题说明如何开始创建使用媒体服务的 Azure Functions。 本主题中定义的 Azure Function 可监视新 MP4 文件中名为**输入**的存储帐户容器。 将文件放入存储容器后，blob 触发器就会执行此函数。
+本主题说明如何开始创建使用媒体服务的 Azure Functions。 本主题中定义的 Azure Function 可监视新 MP4 文件中名为**输入**的存储帐户容器。 将文件放入存储容器后，blob 触发器就会执行此函数。 要查看 Azure 函数，请参阅 Azure 函数部分的[概述](../azure-functions/functions-overview.md)和其他主题。
 
 如果你想要浏览并部署使用 Azure Media Services 的现有 Azure 功能，请查看[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存储库包含几个示例，示例中将使用媒体服务来演示有关直接从 Blob 存储引入内容、编码以及将内容写回 Blob 存储的工作流。 此存储库还包含演示如何通过 WebHook 和 Azure 队列监视作业通知的示例。 也可根据[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 存储库中的示例进行 Functions 开发。 若要部署此函数，请按“部署到 Azure”按钮。
 
@@ -31,14 +31,7 @@ ms.lasthandoff: 08/29/2017
 
 - 必须先具有有效的 Azure 帐户，然后才能创建第一个函数。 如果还没有 Azure 帐户， [可以使用免费帐户](https://azure.microsoft.com/free/)。
 - 若要创建针对 Azure 媒体服务 (AMS) 帐户执行操作或者侦听媒体服务发送的事件的 Azure Functions，应该根据[此文](media-services-portal-create-account.md)中所述创建一个 AMS 帐户。
-- 了解[如何使用 Azure Functions](../azure-functions/functions-overview.md)。 另请参阅：
-    - [Azure Functions HTTP 和 webhook 绑定](../azure-functions/functions-triggers-bindings.md)
-    - [如何配置 Azure Function App 设置](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
     
-## <a name="considerations"></a>注意事项
-
--  消耗量计划下运行的 Azure Functions 具有 5 分钟超时限制。
-
 ## <a name="create-a-function-app"></a>创建 Function App
 
 1. 转到 [Azure 门户](http://portal.azure.com)，然后使用 Azure 帐户登录。
@@ -50,10 +43,6 @@ ms.lasthandoff: 08/29/2017
 ## <a name="configure-function-app-settings"></a>配置 Function App 设置
 
 开发媒体服务函数时，可随时添加要在整个函数中使用的环境变量。 若要配置应用设置，请单击“配置应用设置”链接。 有关详细信息，请参阅[如何配置 Azure Function App 设置](../azure-functions/functions-how-to-use-azure-function-app-settings.md)。 
-
-例如：
-
-![设置](./media/media-services-azure-functions/media-services-azure-functions001.png)
 
 本文中定义的函数假定应用设置中具备以下环境变量：
 
@@ -83,10 +72,9 @@ ms.lasthandoff: 08/29/2017
 
 4. 单击“创建” 。 
 
-
 ## <a name="files"></a>文件
 
-Azure 函数与代码文件以及本部分所述的其他文件相关联。 默认情况下，函数与 **function.json** 和 **run.csx** (C#) 文件相关联。 需要添加 **project.json** 文件。 本部分的余下内容介绍这些文件的定义。
+Azure 函数与代码文件以及本部分所述的其他文件相关联。 当使用 Azure 门户创建函数时，将为你创建 function.json 和 run.csx。 需要添加或上传 project.json 文件。 本文剩余部分对每个文件进行了简要介绍，并说明其定义。
 
 ![文件](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
@@ -97,7 +85,7 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 >[!NOTE]
 >将 **disabled** 属性设置为“true”，阻止函数执行。 
 
-下面是 **function.json** 文件的示例。
+将现有 function.json 文件的内容替换为以下代码：
 
 ```
 {
@@ -117,6 +105,8 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 ### <a name="projectjson"></a>project.json
 
 project.json 文件包含依赖项。 下面是一个 **project.json** 文件示例，其中包含 Nuget 所需的 .NET Azure 媒体服务包。 请注意，版本号将随包的最新更新而改变，因此应确认最新版本。 
+
+向 project.json 添加以下定义。 
 
 ```
 {
@@ -145,7 +135,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
 
 在实际方案中，很可能需要跟踪作业进度，并发布编码的资产。 有关详细信息，请参阅[使用 Azure WebHook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)。 有关更多示例，请参阅[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。  
 
-定义后，请单击“保存并运行”。
+将现有 run.csx 文件的内容替换为以下代码。 定义后，请单击“保存并运行”。
 
 ```
 #r "Microsoft.WindowsAzure.Storage"
@@ -342,6 +332,14 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 要测试函数，需将 MP4 文件上传到连接字符串中所指定存储帐户的**输入**容器中。  
 
+1. 选择在 StorageConnection 环境变量中指定的存储帐户。
+2. 单击“Blob”。
+3. 单击“+ 容器”。 将容器命名为 input。
+4. 按“上传”并浏览到要上传的 .mp4 文件。
+
+>[!NOTE]
+> 在消耗计划中使用 Blob 触发器时，函数应用处于空闲状态后，处理新 Blob 的过程中可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 有关详细信息，请参阅 [Blob 存储触发器和绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)。
+
 ## <a name="next-steps"></a>后续步骤
 
 现在，可以开始开发媒体服务应用程序了。 
@@ -349,9 +347,6 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 若要更详细了解如何结合使用 Azure 媒体服务以及 Azure Functions 和逻辑应用来创建自定义内容创建工作流，并了解其完整示例/解决方案，请参阅 [GitHub 上的媒体服务 .NET 函数集成示例](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
 另请参阅[使用 Azure WebHook 通过 .NET 监视媒体服务作业通知 ](media-services-dotnet-check-job-progress-with-webhooks.md)。 
-
-## <a name="media-services-learning-paths"></a>媒体服务学习路径
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]

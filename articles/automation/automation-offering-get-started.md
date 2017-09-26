@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/18/2017
+ms.date: 08/31/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 54f137b26bf1c8f966e8ef110dcf3d25abf7ac5b
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -68,7 +68,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 若要创建或更新自动化帐户，必须具有完成本主题所需的下述特定权限。   
  
 * 若要创建自动化帐户，需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的所有者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文所述。  
-* Azure AD 租户中的非管理员用户可以**注册 AD 应用程序**，前提是“应用注册设置”已设置为“是”。[](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
+* Azure AD 租户中的非管理员用户可以 [注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是应用注册设置已设置为 **是**。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
 
 如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 
@@ -170,8 +170,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
    - 指定新 **OMS 工作区**的名称。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”，可以创建资源组，也可以选择现有资源组。  
-   - 选择“位置” 。  目前提供的位置只有“澳大利亚东南部”、“美国东部”、“东南亚”、“美国中西部”和“西欧”。
-   - 选择“定价层” 。  该解决方案提供两种定价层：“免费”层和“按节点 (OMS)”层。  免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。  “按节点 (OMS)”层对每日收集的数据量没有限制。  
+   - 选择“位置” 。  如需其他信息，请参阅[提供 Azure 自动化的区域](https://azure.microsoft.com/regions/services/)。  解决方案提供两种定价层：“免费”层和“按节点(OMS)”层。  免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。  “按节点 (OMS)”层对每日收集的数据量没有限制。  
    - 选择“自动化帐户”。  若要创建新的 OMS 工作区，则还需创建一个与前面指定的新 OMS 工作区相关联的自动化帐户，其中包括 Azure 订阅、资源组和区域。  可以选择“创建自动化帐户”，并在“自动化帐户”边栏选项卡上提供以下信息： 
   - 在“名称”字段中输入自动化帐户的名称。
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 7c93a02f7a290aab3d451da72dabd431f9d40b0c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
@@ -267,7 +267,7 @@ ms.lasthandoff: 04/27/2017
         -AllocationMethod Static
         ```
 
-         若要新建具有静态专用 IP 地址和关联的 myPublicIp3 公共 IP 地址资源的 IP 配置，请输入下面的命令：
+        若要新建具有静态专用 IP 地址和关联的 myPublicIp3 公共 IP 地址资源的 IP 配置，请输入下面的命令：
 
         ```powershell
         Add-AzureRmNetworkInterfaceIpConfig `
@@ -288,7 +288,7 @@ ms.lasthandoff: 04/27/2017
 
         将显示类似于下面的输出：
 
-        ```        
+        ```     
         Name       PrivateIpAddress PublicIpAddress                                           Primary
         
         IPConfig-1 10.0.0.4         Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress    True

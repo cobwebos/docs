@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5abf1d80a62344f93d4c5491adba65a3e7400258
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 7e3837582e2020dc560a2b624352f7326ea87c3d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -49,7 +49,7 @@ trigger-reboot。 此应用：
 > [!NOTE]
 > 有关 SDK 的信息（可以使用这些 SDK 构建在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK][lnk-hub-sdks]。
 
-若要完成本教程，你需要：
+要完成本教程，需要：
 
 * Java SE 8。 <br/> [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Java。
 * Maven 3。  <br/> [准备开发环境][lnk-dev-setup]介绍如何在 Windows 或 Linux 上安装本教程所用的 [Maven][lnk-maven]。
@@ -158,6 +158,12 @@ trigger-reboot。 此应用：
         }
       }
     }
+    ```
+
+1. 将 main 方法签名修改为抛出以下异常：
+
+    ```java
+    public static void main(String[] args) throws IOException
     ```
 
 1. 若要在模拟设备上调用重启直接方法，请将以下代码添加到 main 方法：

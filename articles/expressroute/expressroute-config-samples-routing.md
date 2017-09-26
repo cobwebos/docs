@@ -20,7 +20,6 @@ ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
 本页提供适用于 Cisco IOS XE 和 Juniper MX 系列路由器的接口与路由配置示例。 这些示例仅供指导，不能按原样使用。 你可以与你的供应商合作，以便为你的网络指定适当的配置。 

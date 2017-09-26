@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 52827723477677bc292c645e2390c435fbad3ee4
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="technical-pre-requisites-for-creating-a-data-service-offer-for-the-azure-marketplace"></a>为 Azure 应用商店创建数据服务产品/服务的技术先决条件
@@ -67,9 +68,4 @@ OData 服务无需仅根据后端数据库运行。 OData 支持使用任何种�
 或者，如果要查看整体过程和每个发布阶段的相应文章，请访问文章[入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)。
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

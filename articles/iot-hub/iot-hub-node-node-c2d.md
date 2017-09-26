@@ -20,7 +20,6 @@ ms.openlocfilehash: 4580bda5633f84a7c7af0dc85f3cea4951024836
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>使用 IoT 中心发送云到设备的消息 (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]

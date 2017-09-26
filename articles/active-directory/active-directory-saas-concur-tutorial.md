@@ -19,7 +19,6 @@ ms.openlocfilehash: 0b44437b3dcf69dae3587529da7d12e7809b9f55
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>教程：Azure Active Directory 与 Concur 的集成
 

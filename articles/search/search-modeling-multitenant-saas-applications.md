@@ -19,7 +19,6 @@ ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>多租户 SaaS 应用程序与 Azure 搜索的设计模式
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论的租户隔离策略适用于使用 Azure 搜索生成的多租户应用程序。

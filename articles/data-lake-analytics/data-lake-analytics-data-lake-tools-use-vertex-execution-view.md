@@ -20,7 +20,6 @@ ms.openlocfilehash: b788e7bc8ded86ebd49cc0be73e5b4e1bcbeaba3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>在用于 Visual Studio 的 Data Lake 工具中使用顶点执行视图
 了解如何使用顶点执行视图测试 Data Lake Analytics 作业。

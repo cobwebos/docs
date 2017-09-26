@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
 ms.openlocfilehash: fe32c1d68040ceb9d9de2ad6c4a6dc9ea93f5aef
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成

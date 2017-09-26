@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 768c9a1c906999f4690c9c8f7d075743ab1678ff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>从 StorSimple 虚拟阵列的备份克隆
@@ -136,10 +138,5 @@ ms.openlocfilehash: 768c9a1c906999f4690c9c8f7d075743ab1678ff
 ## <a name="next-steps"></a>后续步骤
 
 了解有关如何[使用本地 Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md) 的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

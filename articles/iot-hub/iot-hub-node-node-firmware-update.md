@@ -12,36 +12,34 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 09/07/2017
 ms.author: juanpere
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4ba60cee8848079935111ed3de480081a4aa58f6
-ms.openlocfilehash: 30a707ec15d592c8a10905e13a75ea2f6e52cccc
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: e169367592b25ea45c3d1017937316a3b3b538b8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/06/2017
-
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>使用设备管理启动设备固件更新 (Node/Node)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-## <a name="introduction"></a>介绍
-在[设备管理入门][lnk-dm-getstarted]教程中，你已了解了如何使用[设备克隆][lnk-devtwin]和[直接方法][lnk-c2dmethod]基元来远程重新启动设备。 本教程使用相同的 IoT 中心基元，提供指南，并演示如何进行端到端模拟固件更新。  此模式在用于 Intel Edison 设备示例的固件更新实现中使用。
+在[设备管理入门][lnk-dm-getstarted]教程中，已了解了如何使用[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]基元来远程重新启动设备。 本教程使用相同的 IoT 中心基元，提供指南，并演示如何进行端到端模拟固件更新。  此模式在用于 Intel Edison 设备示例的固件更新实现中使用。
 
 本教程演示如何：
 
 * 创建一个 Node.js 控制台应用，该应用通过 IoT 中心在模拟设备应用上调用 firmwareUpdate 直接方法。
 * 创建实现 **firmwareUpdate** 直接方法的模拟设备应用。 此方法会启动等待下载固件映像、下载固件映像以及最后应用固件映像的多阶段过程。 在更新的每个阶段中，设备使用报告属性来报告进度。
 
-在本教程结束时，将会创建两个 Node.js 控制台应用：
+在本教程结束时，会创建两个 Node.js 控制台应用：
 
 **dmpatterns_fwupdate_service.js**，它调用模拟设备应用中的直接方法、显示响应并定期（每隔 500 毫秒）显示更新的报告属性。
 
 **dmpatterns_fwupdate_device.js**，它使用早前创建的设备标识连接到 IoT 中心、接收 firmwareUpdate 直接方法、运行一个多状态过程以模拟固件更新，包括：等待映像下载、下载新映像以及最后应用映像。
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
-* Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* Node.js 版本 4.0.x 或更高版本； <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 按照[设备管理入门](iot-hub-node-node-device-management-get-started.md)一文创建 IoT 中心，并获取 IoT 中心连接字符串。
@@ -51,14 +49,14 @@ ms.lasthandoff: 02/06/2017
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程固件更新
-在本部分中，你将创建一个 Node.js 控制台应用以启动设备上的远程固件更新。 该应用使用直接方法来启动更新，并使用设备孪生查询定期获取活动固件更新的状态。
+在本部分中，会创建一个 Node.js 控制台应用以启动设备上的远程固件更新。 该应用使用直接方法来启动更新，并使用设备孪生查询定期获取活动固件更新的状态。
 
 1. 创建一个名为 **triggerfwupdateondevice** 的空文件夹。  在 **triggerfwupdateondevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
    
     ```
     npm init
     ```
-2. 在 **triggerfwupdateondevice** 文件夹的命令提示符处，运行下述命令以安装 **azure-iot-hub** 和 **azure-iot-device-mqtt** 设备 SDK 包：
+2. 在 triggerfwupdateondevice 文件夹中，通过命令提示符运行以下命令，安装 azure-iot-hub 包：
    
     ```
     npm install azure-iothub --save

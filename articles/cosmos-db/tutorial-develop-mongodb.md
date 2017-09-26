@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 47ec9998c68455a90b505c917156d9b6b0fe0f24
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a0598d32b5bad240c0a5d77a6e19285115a9f6b0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB：使用 .NET 连接到 MongoDB 应用
@@ -41,10 +41,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在首先在 Azure 门户中创建 Azure Cosmos DB 帐户。  
 
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+
 > [!TIP]
 > * 已有一个 Azure Cosmos DB 帐户？ 如果有，请跳到[设置 Visual Studio 解决方案](#SetupVS)
-> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，你可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
-> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
+> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
+> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，并直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
 >
 >
 
@@ -59,7 +62,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="set-up-your-mongodb-app"></a>设置 MongoDB 应用
 
-可以参考[在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)教程（需进行少量修改），快速设置一个连接到 MongoDB 帐户的 API 的 MongoDB 应用程序（在本地或发布到 Azure Web 应用）。  
+可以参考[在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用](../app-service/app-service-web-tutorial-nodejs-mongodb-app.md)教程（需进行少量修改），快速设置一个连接到 MongoDB 帐户的 API 的 MongoDB 应用程序（在本地或发布到 Azure Web 应用）。  
 
 1. 请遵循该教程，不过需要做出一项修改。  将 Dal.cs 代码替换为以下内容：
 
@@ -210,8 +213,8 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 如果不打算继续使用此应用，请使用以下步骤删除本教程在 Azure 门户中创建的所有资源。 
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

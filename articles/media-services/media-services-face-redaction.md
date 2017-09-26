@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/03/2017
 ms.author: juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 74f38ae61d4a360cabe8a9fbd33d30a6b0751654
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 0d071129944fb9298e8f0a7b8f3bb1dd2fcc4bd4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
@@ -26,8 +26,6 @@ ms.lasthandoff: 08/09/2017
 **Azure 媒体修订器**是一种 [Azure 媒体分析](media-services-analytics-overview.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-redactor/)博客。
 
 本主题提供有关 **Azure 媒体修订器**的详细信息，并演示如何通过适用于 .NET 的媒体服务 SDK 使用它。
-
-**Azure 媒体修订器** MP 目前提供预览版。 它在所有公共 Azure 区域以及美国政府和中国数据中心中可用。 当前，此预览版免费。 
 
 ## <a name="face-redaction-modes"></a>面部修订模式
 面部修订的工作方式是：检测每一帧视频中的面部，并跟踪之前和之后的面部对象，以便同一个人在其他角度也模糊显示。 自动修订过程非常复杂，并且无法始终产生 100% 符合要求的输出，因此，媒体分析提供了几种修改最终输出的方式。

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: nepeters
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 799a017a241ed3d37bb95344de7d50e1be7d559c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
-
 
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例

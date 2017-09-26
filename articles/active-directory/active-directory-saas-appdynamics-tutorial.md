@@ -19,7 +19,6 @@ ms.openlocfilehash: 634e68bdb937eba68b27b824dc62fe2677e24ffe
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>教程：Azure Active Directory 与 AppDynamics 集成
 

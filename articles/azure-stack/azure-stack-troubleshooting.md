@@ -20,7 +20,6 @@ ms.openlocfilehash: a7309693d8f7971e42768a13d12fa0a8bd81925a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack troubleshooting
 This document provides common troubleshooting information for Azure Stack. 

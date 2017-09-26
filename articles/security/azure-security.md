@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: f5d33b6a36b84589a24108a84636c42043f21c69
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 54bbd7dd1d0ecad79f86e0ab16be3a48854093ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -61,7 +61,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 | :-- | :-- | :-- | :-- |
 | [安全开发周期](https://www.microsoft.com/en-us/sdl/)，内部审核 | [随时进行数据管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [信任中心](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | [强制性安全培训，背景检查](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc) |  [控制数据位置](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](http://azuredatacentermap.azurewebsites.net/)|
-| [渗透测试](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc)，[入侵检测，DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagemen)，[审核和日志记录](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问你的数据](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [渗透测试](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc)，[入侵检测，DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [数据中心状态](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)，物理安全性，[安全网络](https://docs.microsoft.com/en-us/azure/security/security-network-overview) | [响应执法部门](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [服务、位置和行业的符合性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [安全事件响应](http://aka.ms/SecurityResponsepaper)，[共担责任](http://aka.ms/sharedresponsibility) |[严格的隐私标准](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
@@ -96,7 +96,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)）和每个单独的 Azure 资源（[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
 
 ### <a name="log-analytics"></a>Log Analytics
-[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 组件 – 为本地基础结构和第三方基于云的基础结构（例如 AWS），以及 Azure 资源提供 IT 管理解决方案。 可以将来自 Azure Monitor 的数据直接路由到 Log Analytics，因此你可以在一个位置查看整个环境的指标和日志。
+[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 组件 – 为本地基础结构和第三方基于云的基础结构（例如 AWS），以及 Azure 资源提供 IT 管理解决方案。 可以将来自 Azure Monitor 的数据直接路由到 Log Analytics，因此可以在一个位置查看整个环境的指标和日志。
 
 在取证和其他安全分析中，Log Analytics 是非常有用的工具，因为使用该工具能通过灵活的查询方法快速搜索大量与安全相关的条目。 此外，本地[防火墙和代理日志可以导出到 Azure 中，并可以使用 Log Analytics 进行分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)。
 
@@ -111,7 +111,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于应用程序安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="web-application-vulnerability-scanning"></a>Web 应用程序漏洞扫描
-开始对[应用服务应用](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)进行漏洞测试最简单的一种方法是使用[与 Tinfoil Security 的集成](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)对应用执行一键式漏洞扫描。 你可以查看易于理解的报告中的测试结果，并了解如何按照分步说明修复每个安全漏洞。
+开始对[应用服务应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)进行漏洞测试最简单的一种方法是使用[与 Tinfoil Security 的集成](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)对应用执行一键式漏洞扫描。 可以查看易于理解的报告中的测试结果，并了解如何按照分步说明修复每个安全漏洞。
 
 ### <a name="penetration-testing"></a>渗透测试
 如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://security-forms.azure.com/penetration-testing/terms)来进行并获得事先批准才能执行所需的渗透测试。
@@ -123,17 +123,17 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 [应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)是一项功能，方便应用程序登录用户，避免在应用后端更改代码。 该功能可以方便地保护应用程序和处理每个用户的数据。
 
 ### <a name="layered-security-architecture"></a>分层安全体系结构
-由于[应用服务环境](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-intro)提供部署到 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的隔离运行时环境，因此开发人员能够创建分层安全体系结构，针对每个应用层提供不同级别的网络访问权限。 常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。 可以在包含应用服务环境的 Azure 虚拟网络子网上使用[网络安全组 (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)，限制对 API 应用程序的公共访问。
+由于[应用服务环境](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro)提供部署到 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的隔离运行时环境，因此开发人员能够创建分层安全体系结构，针对每个应用层提供不同级别的网络访问权限。 常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。 可以在包含应用服务环境的 Azure 虚拟网络子网上使用[网络安全组 (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)，限制对 API 应用程序的公共访问。
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web 服务器诊断和应用程序诊断
-应用服务 Web 应用为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 这些诊断功能按逻辑分为 [Web 服务器诊断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)和[应用程序诊断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)。 Web 服务器包括诊断和排查站点和应用程序这两大改进方面。
+应用服务 Web 应用为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 这些诊断功能按逻辑分为 [Web 服务器诊断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)和[应用程序诊断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)。 Web 服务器包括诊断和排查站点和应用程序这两大改进方面。
 
 第一个新特点是有关应用程序池、工作进程、站点、应用程序域和运行请求的实时状态信息。 第二个新特点是在整个请求和响应过程中跟踪请求的详细跟踪事件。
 
-若要启用这些跟踪事件的集合，可以将 IIS 7 配置为根据运行时间或错误响应代码自动捕获任何特定请求的完整跟踪日志（采用 XML 格式）。
+要启用这些跟踪事件的集合，可以将 IIS 7 配置为根据运行时间或错误响应代码自动捕获任何特定请求的完整跟踪日志（采用 XML 格式）。
 
 #### <a name="web-server-diagnostics"></a>Web 服务器诊断
-你可以启用或禁用以下种类的日志：
+可以启用或禁用以下种类的日志：
 
 -   详细错误日志记录 - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
 
@@ -142,7 +142,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 -   Web 服务器日志记录 - 使用 W3C 扩展日志文件格式的 HTTP 事务信息。 这在确定整体站点度量值（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 #### <a name="application-diagnostics"></a>应用程序诊断
-[应用程序诊断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)可以捕获由 Web 应用程序生成的信息。 ASP.NET 应用程序可使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) 类将信息记录到应用程序诊断日志。 在应用程序诊断中，有两种主要类型的事件，即与应用程序性能相关的事件以及与应用程序故障和错误相关的事件。 故障和错误可以进一步分为连接性、安全性和故障问题。 故障问题通常与应用程序代码问题相关。
+[应用程序诊断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)可以捕获由 Web 应用程序生成的信息。 ASP.NET 应用程序可使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) 类将信息记录到应用程序诊断日志。 在应用程序诊断中，有两种主要类型的事件，即与应用程序性能相关的事件以及与应用程序故障和错误相关的事件。 故障和错误可以进一步分为连接性、安全性和故障问题。 故障问题通常与应用程序代码问题相关。
 
 在应用程序诊断中，可以查看按以下方式分组的事件：
 
@@ -157,7 +157,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide) 模型访问存储帐户的存储密钥的情况。
 
 ### <a name="shared-access-signature"></a>共享访问签名
-[共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问你的存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
+[共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
 
 ### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
@@ -194,7 +194,7 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 本部分提供了关于 Azure 网络安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="network-layer-controls"></a>网络层控制
-网络访问控制是限制特定设备或子网之间的连接的行为，代表了网络安全的核心。 网络访问控制旨在确保你的虚拟机和服务仅让你指定可访问的用户和设备进行访问。
+网络访问控制是限制特定设备或子网之间的连接的行为，代表了网络安全的核心。 网络访问控制旨在确保虚拟机和服务仅让你指定可访问的用户和设备进行访问。
 
 #### <a name="network-security-groups"></a>网络安全组
 [网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 是基本的静态数据包筛选防火墙，使用户能够基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问权限。 NSG 不提供应用程序层检查或经过身份验证的访问控制。 它们可用于控制在 Azure 虚拟网络中的子网之间移动的流量以及控制 Azure 虚拟网络和 Internet 之间的流量。
@@ -202,20 +202,21 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 #### <a name="route-control-and-forced-tunneling"></a>路由控制和强制隧道
 在 Azure 虚拟网络上控制路由行为的能力是关键的网络安全和访问控制功能。 例如，如果要确保与 Azure 虚拟网络之间的所有流量都通过该虚拟安全设备，则必须能够控制和自定义路由行为。 可以通过在 Azure 中配置用户定义的路由实现此操作。
 
-[用户定义的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)允许用户为进出单个虚拟机或子网的流量自定义入站和出站路径，以确保最安全的路由。 [强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许你的服务启动到 Internet 上的设备的连接。
+[用户定义的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)允许用户为进出单个虚拟机或子网的流量自定义入站和出站路径，以确保最安全的路由。 
+            [强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动到 Internet 上的设备的连接。
 
 这不同于能够接受传入连接然后对其作出响应。 前端 Web 服务器需要响应来自 Internet 主机的请求，因此允许源自 Internet 的流量传入到这些 Web 服务器，而且这些 Web 服务器可以作出响应。
 
 强制隧道通常用于强制到 Internet 的外部流量通过本地安全代理和防火墙。
 
 #### <a name="virtual-network-security-appliances"></a>虚拟网络安全设备
-虽然网络安全组、用户定义的路由和强制隧道在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络层和传输层为用户提供了一定程度的安全性，但有时可能想要启用堆栈的更高级别安全性。 可以使用 Azure 合作伙伴安全设备解决方案访问这些增强的网络安全功能。 通过访问 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
+虽然网络安全组、用户定义的路由和强制隧道在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络层和传输层为用户提供了一定程度的安全性，但有时可能想要启用堆栈的更高级别安全性。 可以使用 Azure 合作伙伴安全设备解决方案访问这些增强的网络安全功能。 通过访问 [Azure 应用商店](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
 ### <a name="azure-virtual-network"></a>Azure 虚拟网络
 
-Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它是对专用于你的订阅的 Azure 网络结构进行的逻辑隔离。 你可以完全控制该网络中的 IP 地址块、DNS 设置、安全策略和路由表。 可以将 VNet 细分成各个子网，并在 Azure 虚拟网络上放置 Azure IaaS 虚拟机 (VM) 和/或[云服务（PaaS 角色实例）](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)。
+Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是对专用于订阅的 Azure 网络结构进行的逻辑隔离。 可以完全控制该网络中的 IP 地址块、DNS 设置、安全策略和路由表。 可以将 VNet 细分成各个子网，并在 Azure 虚拟网络上放置 Azure IaaS 虚拟机 (VM) 和/或[云服务（PaaS 角色实例）](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)。
 
-此外，也可以使用 Azure 中提供的[连接选项](https://docs.microsoft.com/azure/vpn-gateway/)之一，将虚拟网络连接到本地网络。 实际上，你可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
+此外，也可以使用 Azure 中提供的[连接选项](https://docs.microsoft.com/azure/vpn-gateway/)之一，将虚拟网络连接到本地网络。 实际上，可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
 
 Azure 网络支持各种安全远程访问方案。 其中包括：
 
@@ -284,10 +285,10 @@ Web 应用程序防火墙是 [Azure 应用程序网关](https://docs.microsoft.c
 - 将外部流量转发到特定的虚拟机
 
 ### <a name="internal-dns"></a>内部 DNS
-你可以在管理门户或网络配置文件中管理 VNet 中使用的 DNS 服务器列表。 客户最多可以为每个 VNet 添加 12 个 DNS 服务器。 指定 DNS 服务器时，请务必按照客户环境的正确顺序列出客户的 DNS 服务器。 DNS 服务器列表不采用循环机制。 将按指定服务器的顺序使用这些服务器。 如果可访问列表上的第一个 DNS 服务器，则无论该 DNS 服务器是否运行正常，客户端都将使用该服务器。 若要更改客户的虚拟网络的 DNS 服务器顺序，请从列表中删除 DNS 服务器，然后按客户希望的顺序重新添加这些服务器。 DNS 支持“CIA”安全三因素的可用性方面。
+可以在管理门户或网络配置文件中管理 VNet 中使用的 DNS 服务器列表。 客户最多可以为每个 VNet 添加 12 个 DNS 服务器。 指定 DNS 服务器时，请务必按照客户环境的正确顺序列出客户的 DNS 服务器。 DNS 服务器列表不采用循环机制。 将按指定服务器的顺序使用这些服务器。 如果可访问列表上的第一个 DNS 服务器，则无论该 DNS 服务器是否运行正常，客户端都将使用该服务器。 要更改客户的虚拟网络的 DNS 服务器顺序，请从列表中删除 DNS 服务器，并按客户希望的顺序重新添加这些服务器。 DNS 支持“CIA”安全三因素的可用性方面。
 
 ### <a name="azure-dns"></a>Azure DNS
-[域名系统](https://technet.microsoft.com/library/bb629410.aspx)或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管你的域，你可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理你的 DNS 记录。 DNS 支持“CIA”安全三因素的可用性方面。
+[域名系统](https://technet.microsoft.com/library/bb629410.aspx)或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 DNS 支持“CIA”安全三因素的可用性方面。
 ### <a name="log-analytics-nsgs"></a>Log Analytics NSG
 可以为 NSG 启用以下诊断日志类别：
 -   事件：包含根据 MAC 地址向 VM 和实例角色应用的 NSG 规则条目。 每隔 60 秒收集一次这些规则的状态。
@@ -335,7 +336,7 @@ Azure 密钥保管库 (AKV) 服务专用于在一个高度可用的安全位置�
 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)是用于加密 Windows 和 Linux IaaS 虚拟机磁盘的新功能。 它应用 Windows 的行业标准 BitLocker 功能和 Linux 的 DM-Crypt 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure Key Vault 集成，帮助用户控制和管理 Key Vault 订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
 ### <a name="virtual-networking"></a>虚拟网络
-虚拟机需要网络连接。 若要支持该要求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑[ Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
+虚拟机需要网络连接。 要支持该要求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑[ Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
 
 ### <a name="patch-updates"></a>修补程序更新
 修补程序更新可以减少必须在企业中部署的软件更新数目并提高监视符合性的能力，从而提供查找及修复潜在问题的基础并简化软件更新管理过程。
@@ -380,7 +381,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 是一个高度可用的全局性标识管理服务，该服务适用于面向用户且可通过伸缩来处理数以亿计标识的应用程序，并可跨移动平台和 Web 平台集成。 客户可以通过使用现有社交媒体帐户的自定义体验登录所有应用，也可以创建新的独立凭据。
 
-- [Azure Active Directory B2B 协作](https://aka.ms/aad-b2b-collaboration)是一种安全的合作伙伴集成解决方案，可让合作伙伴使用其自行管理的标识有选择性地访问你的企业应用程序和数据，为跨公司合作关系提供支持。
+- [Azure Active Directory B2B 协作](https://aka.ms/aad-b2b-collaboration)是一种安全的合作伙伴集成解决方案，可让合作伙伴使用其自行管理的标识有选择性地访问企业应用程序和数据，为跨公司合作关系提供支持。
 
 - [Azure Active Directory Join](https://azure.microsoft.com/documentation/articles/active-directory-azureadjoin-overview/) 可以将云功能扩展到 Windows 10 设备进行集中管理。 它使用户可以通过 Azure Active Directory 连接到企业或组织云，并简化对应用和资源的访问。
 

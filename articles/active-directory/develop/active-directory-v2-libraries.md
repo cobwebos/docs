@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2017
+ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: c8dc0fab1a4da2bf9ae1463cb5e17fc2c2b12e5c
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 50a1cc0bf9e00cf5b866b88b3e88c62b06a2376b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 身份验证库
-Azure Active Directory (Azure AD) v2.0 终结点支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 可以对 v2.0 终结点使用 Microsoft 和其他组织提供的各种库。
+[Azure Active Directory (Azure AD) v2.0 终结点](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare)支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 可以对 v2.0 终结点使用 Microsoft 和其他组织提供的各种库。
 
 在构建使用 v2.0 终结点的应用程序时，建议使用协议领域的专家根据安全开发生命周期 (SDL) 方法（例如 [Microsoft 遵循的方法][Microsoft-SDL]）编写的库。 如果决定手动编写协议支持，建议遵循 SDL 方法并认真对待每个协议的标准规范中的安全注意事项。
 
+> [!NOTE]
+> 是否在寻找 Azure AD v1.0 库 (ADAL)？ 请查看 [ADAL 库指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries)。 
+> 
+> 
+
 ## <a name="types-of-libraries"></a>库的类型
-Azure AD v2.0 适用于两类库：
+Azure AD v2.0 终结点适用于两种类型的库：
 
 * **客户端库**。 本机客户端和服务器使用客户端库获取用于调用某个资源（例如 Microsoft Graph）的访问令牌。
 * **服务器中间件库**。 Web 应用使用服务器中间件库进行用户登录。 Web API 使用服务器中间件库验证本机客户端或其他服务器发送的令牌。
@@ -48,7 +52,7 @@ Azure AD v2.0 适用于两类库：
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft 支持的客户端库
 
 > [!IMPORTANT]
-> MSAL 预览库适用于生产环境。 我们为这些库提供与当前生产库 (ADAL) 相同的生产级别支持。 在预览期间，我们可能会更改这些库的 MSAL API、内部缓存格式和其他机制，恕不另行通知，你将因此需要使用 bug 修复程序和功能改进。 这可能会影响应用程序。 例如，对缓存格式的更改可能会影响你的用户，例如要求他们重新登录。 API 更改可能要求更新代码。 我们提供通用版时，会要求用户在六个月内更新到通用版，因为使用早期版本库编写的应用程序可能无法再正常运行。
+> MSAL 预览库适用于生产环境。 我们为这些库提供与当前生产库 (ADAL) 相同的生产级别支持。 在预览期间，我们可能会更改这些库的 MSAL API、内部缓存格式和其他机制，恕不另行通知，将因此需要使用 bug 修复程序和功能改进。 这可能会影响应用程序。 例如，对缓存格式的更改可能会影响用户，例如要求他们重新登录。 API 更改可能要求更新代码。 我们提供通用版时，会要求用户在六个月内更新到通用版，因为使用早期版本库编写的应用程序可能无法再正常运行。
 
 | 平台 | 库 | 下载 | 源代码 | 示例 | 引用
 | --- | --- | --- | --- | --- | --- |

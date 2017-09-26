@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: c163c715eb1438a0d6b0ab53cbb43816ca8dbbb4
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: bef7f6ef13f6d31c16d40deb46f168ae52a9e61b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -42,7 +42,7 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建资源组。 
+使用 [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) 命令创建资源组。 
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroupVM”的资源组。 
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroupVM --location eastus
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](https://docs.microsoft.com/cli/azure/vm#create) 命令创建虚拟机。 
+使用 [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) 命令创建虚拟机。 
 
 创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”的运行 Ubuntu Server 的虚拟机。 
 
@@ -62,7 +62,7 @@ az group create --name myResourceGroupVM --location eastus
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-创建 VM 后，Azure CLI 会输出有关 VM 的信息。 请记下 `publicIpAddress`，可以使用此地址访问虚拟机。 
+创建 VM 可能需要几分钟。 创建 VM 后，Azure CLI 会输出有关 VM 的信息。 请记下 `publicIpAddress`，可以使用此地址访问虚拟机。 
 
 ```azurecli-interactive 
 {
@@ -79,13 +79,13 @@ az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --
 
 ## <a name="connect-to-vm"></a>连接到 VM
 
-现在可以使用 SSH 连接到 VM。 将示例 IP 地址替换为上一步骤中记下的 `publicIpAddress`。
+现在可以在 Azure Cloud Shell 中使用 SSH 或从本地计算机连接到 VM。 将示例 IP 地址替换为上一步骤中记下的 `publicIpAddress`。
 
 ```bash
 ssh 52.174.34.95
 ```
 
-使用完 VM 后，请关闭 SSH 会话。 
+登录 VM 后，可以安装和配置应用程序。 完成后，可按正常方式关闭 SSH 会话：
 
 ```bash
 exit
@@ -93,7 +93,7 @@ exit
 
 ## <a name="understand-vm-images"></a>了解 VM 映像
 
-Azure Marketplace 包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在 Marketplace 中搜索 CentOS 映像，此映像稍后将用于部署第二个虚拟机。  
+Azure 应用商店包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在应用商店中搜索 CentOS 映像，此映像稍后用于部署第二个虚拟机。  
 
 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image#list) 命令。
 
@@ -208,7 +208,11 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>调整 VM 的大小
 
-部署 VM 后，可调整其大小以增加或减少资源分配。
+部署 VM 后，可调整其大小以增加或减少资源分配。 可通过 [az vm show](/cli/azure/vm#show) 查看 VM 的当前大小：
+
+```azurecli-interactive
+az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
+```
 
 调整 VM 大小之前，请检查所需的大小在当前 Azure 群集上是否可用。 [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) 命令返回大小列表。 
 
@@ -221,7 +225,7 @@ az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --qu
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-如果所需大小在当前群集上不可用，则需解除分配 VM，然后才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm#deallocate) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
+如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm#deallocate) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
@@ -276,7 +280,7 @@ PowerState/running  VM running       Info
 
 ## <a name="management-tasks"></a>管理任务
 
-在虚拟机生命周期中，你可能需要运行管理任务，例如启动、停止或删除虚拟机。 此外，可能还需要创建脚本来自动执行重复或复杂的任务。 使用 Azure CLI，可从命令行或脚本运行许多常见的管理任务。 
+在虚拟机生命周期中，可能需要运行管理任务，例如启动、停止或删除虚拟机。 此外，可能还需要创建脚本来自动执行重复或复杂的任务。 使用 Azure CLI，可从命令行或脚本运行许多常见的管理任务。 
 
 ### <a name="get-ip-address"></a>获取 IP 地址
 
@@ -300,7 +304,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ### <a name="delete-resource-group"></a>删除资源组
 
-删除资源组会删除其包含的所有资源。
+删除资源组还会删除其包含的所有资源，例如 VM、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupVM --no-wait --yes

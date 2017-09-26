@@ -20,7 +20,6 @@ ms.openlocfilehash: 9bc202fe6aad70cb0f10a2da08e37428f78630d1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 
 # <a name="report-azure-stack-usage-data-to-azure"></a>Report Azure Stack usage data to Azure 

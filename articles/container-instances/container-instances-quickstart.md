@@ -1,5 +1,5 @@
 ---
-title: "创建你的第一个 Azure 容器实例容器 | Azure Docs"
+title: "快速入门 - 创建首个 Azure 容器实例容器"
 description: "Azure 容器实例部署和入门"
 services: container-instances
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 09/12/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ad053391e6b3927ab11faaf4d9e70b610e86f3c3
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 012a48410bb08cb54f42a4f87e952f67ad18c112
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
-可以通过 Azure 容器实例在 Azure 中轻松创建和管理容器。 在此快速入门中，你将在 Azure 中创建一个容器，然后通过公共 IP 地址将其向 Internet 公开。 此操作通过单个命令完成。 只需数秒，就会在浏览器中看到以下图像：
+使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。 在此快速入门教程中，将在 Azure 中创建容器，再通过公共 IP 地址将容器向 Internet 公开。 此操作通过单个命令完成。 短短几秒内，浏览器就会显示如下内容：
 
 ![在浏览器中显示的使用 Azure 容器实例部署的应用][aci-app-browser]
 
@@ -35,17 +35,17 @@ ms.lasthandoff: 07/28/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.12 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.12 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
 Azure 容器实例是 Azure 资源，必须置于 Azure 资源组中，后者是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用 [az group create](/cli/azure/group#create) 命令创建资源组。 
+使用 [az group create](/cli/azure/group#create) 命令创建资源组。
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroup --location eastus
 提供名称、Docker 映像和 Azure 资源组即可创建容器。 可以选择通过公共 IP 地址向 Internet 公开容器。 在本示例中，我将使用容器来托管一个很简单的以 [Node.js](http://nodejs.org) 编写的 Web 应用。
 
 ```azurecli-interactive
-az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public 
+az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public
 ```
 
 在数秒内就会获得请求的响应。 容器一开始将处于“正在创建”状态，但会在数秒内启动。 可以使用 `show` 命令来验证状态：
@@ -81,7 +81,7 @@ az container show --name mycontainer --resource-group myResourceGroup
 ...
 ```
 
-容器转为“已成功”状态后，即可在浏览器中使用所提供的 IP 地址来访问它。 
+在容器的状态变成“成功”后，即可在浏览器中使用所提供的 IP 地址来访问它。
 
 ![在浏览器中显示的使用 Azure 容器实例部署的应用][aci-app-browser]
 

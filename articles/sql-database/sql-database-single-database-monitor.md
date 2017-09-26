@@ -22,7 +22,6 @@ ms.openlocfilehash: e11ed3275413b428523eef78a5a89b537f6a4afc
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>在 Azure SQL 数据库中监视数据库性能
 若要监视 Azure 中的 SQL 数据库的性能，首先需要监视所选数据库性能级别相关的资源利用率。 监视功能可帮助你确定数据库是否超出容量，或者因资源超限而遇到问题，然后确定是否有必要调整数据库的性能级别和 [服务层](sql-database-service-tiers.md)。 你可以使用 [Azure 门户](https://portal.azure.com)中的图形工具或使用 SQL [动态管理视图](https://msdn.microsoft.com/library/ms188754.aspx)来监视数据库。

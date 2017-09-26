@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: a95c534d8f2ad5e8e2c7bdfc2b11405c70312727
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 23170923d7c05c9b7230cf331725250b2a3c0f09
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "创建具有 LAMP 堆栈的虚拟机规模集")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
 ## <a name="connect"></a>连接
 
 使用此代码查看如何连接到 VM 和规模集。
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/how-to-access.sh "访问虚拟机规模集")]
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/how-to-access.sh "Access the virtual machine scale set")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
@@ -54,14 +54,14 @@ az group delete -n myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss#create) | 创建虚拟机规模集 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | 添加负载均衡终结点 |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#set) | 创建对 VM 部署运行自定义脚本的扩展 |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#update-instances) | 在将扩展应用到规模集之前部署的 VM 实例上运行此自定义脚本。 |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#scale) | 通过添加更多 VM 实例来扩大规模集。 部署实例时，在实例上运行此自定义脚本。 |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#list) | 获取示例创建的 VM 的 IP 地址。 |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#show) | 获取负载均衡器使用的前端和后端端口。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az_vmss_create) | 创建虚拟机规模集 |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | 添加负载均衡终结点 |
+| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#az_vmss_extension_set) | 创建对 VM 部署运行自定义脚本的扩展 |
+| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#az_vmss_update_instances) | 在将扩展应用到规模集之前部署的 VM 实例上运行此自定义脚本。 |
+| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) | 通过添加更多 VM 实例来扩大规模集。 部署实例时，在实例上运行此自定义脚本。 |
+| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) | 获取示例创建的 VM 的 IP 地址。 |
+| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_show) | 获取负载均衡器使用的前端和后端端口。 |
 
 ## <a name="next-steps"></a>后续步骤
 

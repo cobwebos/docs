@@ -20,7 +20,6 @@ ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案有助于选择适合的解决方案。

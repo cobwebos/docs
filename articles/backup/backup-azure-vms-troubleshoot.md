@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: dbd70bdbb17d99c5025018e76ea756b1b1528a3e
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: bb058b11d211c4c41ff8f8c3849a4630886c78d5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
@@ -31,6 +31,11 @@ ms.lasthandoff: 08/23/2017
 可以参考下表中所列的信息，排查使用 Azure 备份时遇到的错误。
 
 ## <a name="backup"></a>备份
+
+## <a name="error-the-specified-disk-configuration-is-not-supported"></a>错误：不支持指定的磁盘配置
+
+当前 Azure 备份不支持大于 1023 GB 的磁盘大小。 请拆分磁盘，确保磁盘大小小于此限制。 要拆分磁盘，需要将数据从大于 1023 GB 的磁盘复制到新创建的小于 1023 GB 的磁盘。
+
 | 错误详细信息 | 解决方法 |
 | --- | --- |
 | 无法执行该操作，因为 VM 不再存在。 - 停止保护虚拟机，无需删除备份数据。 在 http://go.microsoft.com/fwlink/?LinkId=808124 获取更多详细信息 |当主 VM 已删除，而备份策略仍继续查找用于备份的 VM 时，会发生这种情况。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）</li><li> 停止保护虚拟机，删除或不删除备份数据。 [更多详细信息](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |

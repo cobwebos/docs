@@ -203,7 +203,7 @@ Azure 备份服务提供两种类型的保管库：备份保管库和恢复服�
 
   ![选择 Windows Server](./media/backup-azure-delete-vault/select-windows-server.png)
 
-6. 在选项卡列表中，单击“**仪表板**”打开该选项卡。 检查是否不再有已注册的服务器，或者在云中受保护的 Azure 虚拟机。 另外，请检查存储中是否没有任何数据。 单击“**删除**”，删除该保管库。
+6. 在选项卡列表中，单击“**仪表板**”打开该选项卡。检查是否不再有已注册的服务器，或者在云中受保护的 Azure 虚拟机。 另外，请检查存储中是否没有任何数据。 单击“**删除**”，删除该保管库。
 
     ![删除备份数据](./media/backup-azure-delete-vault/classic-portal-list-of-tabs-dashboard.png)
 

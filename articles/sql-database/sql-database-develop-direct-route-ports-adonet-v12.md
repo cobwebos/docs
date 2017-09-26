@@ -21,7 +21,6 @@ ms.openlocfilehash: d47ee8c794d1e231507dae6bb4aa88bf19ce6418
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/08/2017
 
-
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 本主题介绍使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为。 

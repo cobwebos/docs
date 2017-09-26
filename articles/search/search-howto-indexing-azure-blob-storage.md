@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/22/2017
 ms.author: eugenesh
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 023c343122f872943fb3ab3eed7b4caedfae9ac4
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 97c1fc602ba27472fed2f11fd634e617ae9c636f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
@@ -28,21 +28,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="supported-document-formats"></a>支持的文档格式
 Blob 索引器可从以下文档格式提取文本：
 
-* PDF
-* Microsoft Office 格式：DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG（Outlook 电子邮件）  
-* HTML
-* XML
-* ZIP
-* EML
-* RTF
-* 纯文本文件（另请参阅[为纯文本编制索引](#IndexingPlainText)）
-* JSON（请参阅[为 JSON blob 编制索引](search-howto-index-json-blobs.md)）
-* CSV（请参阅[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能）
-
-> [!IMPORTANT]
-> 对 CSV 和 JSON 数组的支持目前以预览版提供。 仅当使用 REST API **2016-09-01-Preview** 版本或 .NET SDK 2.x-preview 版本时，才支持这些格式。 请记住，预览版 API 仅供测试和评估，不应在生产环境中使用。
->
->
+[!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="setting-up-blob-indexing"></a>设置 Blob 索引
 可以使用以下方式设置 Azure Blob 存储索引器：

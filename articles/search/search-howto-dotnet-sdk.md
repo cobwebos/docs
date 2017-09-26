@@ -20,7 +20,6 @@ ms.openlocfilehash: 552a7ab193e12d2e72da494166d774e974c85d47
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/22/2017
 
-
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>如何使用 .NET 应用程序中的 Azure 搜索
 文本介绍了如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在你的应用程序中使用 Azure 搜索实现丰富的搜索体验。

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 35413d597c3b6b1c7600241a78572b63f982d175
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>使用已连接到 StorSimple 虚拟阵列的 StorSimple Device Manager 的“设备摘要”边栏选项卡
@@ -54,10 +56,5 @@ StorSimple Device Manager 设备边栏选项卡提供已注册到给定 StorSimp
 - [管理 StorSimple 虚拟阵列上的共享](storsimple-virtual-array-manage-shares.md)
     
 - [管理 StorSimple 虚拟阵列上的卷](storsimple-virtual-array-manage-volumes.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

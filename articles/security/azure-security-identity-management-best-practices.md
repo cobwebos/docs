@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
 ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
@@ -135,9 +136,4 @@ ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
 
 不主动监视其标识系统的组织将面临用户凭据透露的风险。 如果不知道有人正在使用这些凭据实施可疑活动，组织就无法缓解这种类型的威胁。
 有关 Azure 标识保护的详细信息，请阅读 [Azure Active Directory 标识保护](../active-directory/active-directory-identityprotection.md)。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

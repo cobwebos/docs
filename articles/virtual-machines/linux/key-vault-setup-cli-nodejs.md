@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: fed612a354d45f34619f2a66bd40d78740c43ac7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 在 Azure Resource Manager 中为虚拟机设置密钥保管库

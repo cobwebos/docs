@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2015
 ms.author: hascipio; v-divte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>在过渡环境中测试解决方案模板产品/服务
@@ -45,10 +46,5 @@ ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
 > 
 
 有关所有发布者任务的指南，请参阅[入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

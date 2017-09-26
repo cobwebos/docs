@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/18/2016
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c0a113e50fdb78307b8030f9b0d95b696f3f234
 ms.openlocfilehash: 8490110942741b049b6d44ac93697303cef40e8a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新 StorSimple 8000 系列设备
@@ -118,10 +119,5 @@ ms.openlocfilehash: 8490110942741b049b6d44ac93697303cef40e8a
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何[使用 Windows PowerShell for StorSimple 管理 StorSimple 设备](storsimple-windows-powershell-administration.md)。
 * 详细了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

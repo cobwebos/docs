@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 09/20/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 6ef296fb98478be9240f0231c8ad39cd2a0af995
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: d614352a62dc7aca012e9b144473604ae9829af9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
@@ -57,11 +57,7 @@ ms.lasthandoff: 08/24/2017
 
    ![安装位置和许可条款](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
-3. 选择“本地数据网关(推荐)”。 Azure Analysis Services 不支持个人模式。
-
-   ![选择网关类型](media/analysis-services-gateway-install/aas-gateway-installer-shared.png)
-
-4. 输入用于登录 Azure 的帐户。 该帐户必须位于你租户的 Azure Active Directory 中。 该帐户用于网关管理员。 
+3. 输入用于登录 Azure 的帐户。 该帐户必须位于你租户的 Azure Active Directory 中。 该帐户用于网关管理员。 
 
    ![输入用于登录 Azure 的帐户](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
@@ -96,7 +92,7 @@ ms.lasthandoff: 08/24/2017
    
       默认订阅取决于用来登录的 Azure 帐户。
 
-    * 资源组：创建资源组或选择现有资源组。
+    * **资源组**：创建资源组或选择现有资源组。
 
     * 位置： 选择网关的注册区域。
 

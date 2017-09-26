@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
@@ -83,10 +84,5 @@ ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
 
 ## <a name="next-step"></a>后续步骤
 在 StorSimple Virtual Array 上[安装更新](storsimple-ova-install-update-01.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

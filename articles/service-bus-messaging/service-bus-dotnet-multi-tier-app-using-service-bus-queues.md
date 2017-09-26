@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: sethm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
-
 
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序

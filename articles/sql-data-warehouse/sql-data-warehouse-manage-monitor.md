@@ -21,7 +21,6 @@ ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/14/2017
 
-
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 监视工作负荷
 本文介绍如何使用动态管理视图 (DMV) 在 Azure SQL 数据仓库中监视工作负荷及调查查询执行情况。

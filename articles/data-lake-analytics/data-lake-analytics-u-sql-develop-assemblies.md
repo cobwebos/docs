@@ -19,7 +19,6 @@ ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/08/2017
 
-
 ---
 # <a name="develop-u-sql-assemblies-for-azure-data-lake-analytics-jobs"></a>为 Azure Data Lake Analytics 作业开发 U-SQL 程序集
 了解如何将代码隐藏转换为程序集，从而在 Data Lake Analytics 作业中使用和重复使用。 

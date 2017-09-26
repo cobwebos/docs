@@ -20,7 +20,6 @@ ms.openlocfilehash: 27243856d0c6b70c7515b6bde66b99ef6160eb36
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 Microsoft Azure 包括可靠的网络基础结构以支持你的应用程序和服务连接要求。 Azure 中的资源之间、本地资源与 Azure 托管的资源之间以及 Internet 与 Azure 之间都可能存在网络连接。

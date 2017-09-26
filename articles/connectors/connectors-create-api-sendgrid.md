@@ -21,7 +21,6 @@ ms.openlocfilehash: 9ff0591741899d65b8274fb14ab3f3c8db9abe36
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-sendgrid-connector"></a>SendGrid 连接器入门
 SendGrid Connection 提供程序可使你发送电子邮件和管理收件人列表。

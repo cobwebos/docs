@@ -22,7 +22,6 @@ ms.openlocfilehash: 4788fa14a6c49d39b5a3096a69b6738f4a5d8cca
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
 
-
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署 S/4HANA。 若要部署其他基于 SAP HANA 的解决方案（如 BW/4HANA），请按照相同的步骤执行。

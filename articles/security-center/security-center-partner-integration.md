@@ -1,5 +1,5 @@
 ---
-title: "Azure 安全中心的合作伙伴集成 | Microsoft Docs"
+title: "Azure 安全中心的合作伙伴和解决方案集成 | Microsoft Docs"
 description: "了解如何将 Azure 安全中心与合作伙伴集成，以增强 Azure 资源的总体安全性。"
 services: security-center
 documentationcenter: na
@@ -12,22 +12,18 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 09/12/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 44beafeff5cbe58ac8ca37632879f6ffc2b67e53
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 8cc44da0f61362018d2757da58ca4fb3a9a43764
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="partner-integration-in-azure-security-center"></a>Azure 安全中心的合作伙伴集成
+# <a name="partner-and-solutions-integration-in-azure-security-center"></a>Azure 安全中心的合作伙伴和解决方案集成
 
 本文介绍如何将 Azure 安全中心与合作伙伴集成，以增强总体安全性。 安全中心在 Azure 中提供集成体验，并充分利用 Azure 应用商店进行合作伙伴认证和计费。
-
-> [!NOTE] 
-> 自 2017 年 6 月开始，安全中心将使用 Microsoft Monitoring Agent 来收集和存储数据。 有关详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
->
 
 ## <a name="why-deploy-partner-solutions-from-security-center"></a>为什么从安全中心部署合作伙伴的解决方案
 
@@ -41,7 +37,7 @@ ms.lasthandoff: 08/19/2017
 
 ## <a name="partners-that-integrate-with-security-center"></a>与安全中心集成的合作伙伴
 
-安全中心当前与以下解决方案集成：
+当前 Azure Marketplace 中提供的合作伙伴解决方案与安全中心的本机集成包括：
 
 - 终结点保护（[Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec 和[适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)） 
 - Web 应用程序防火墙（[Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets)、[Azure 应用程序网关](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/)） 
@@ -61,13 +57,57 @@ ms.lasthandoff: 08/19/2017
 
 ## <a name="manage-partner-solutions"></a>管理合作伙伴解决方案
 
-部署以后，若要查看有关解决方案运行状况的信息并执行基本的管理任务，请在“安全中心”边栏选项卡中选择“合作伙伴解决方案”选项。 有关管理安全中心的合作伙伴解决方案的详细信息，请参阅[监视 Azure 安全中心的合作伙伴解决方案](security-center-partner-solutions.md)。
+部署后，若要查看有关解决方案运行状况的信息和执行基本管理任务，请在“安全中心”仪表板中选择“合作伙伴解决方案”选项。
 
-![合作伙伴集成](./media/security-center-partner-integration/security-center-partner-integration-fig1-new2.png)
+![合作伙伴解决方案集成](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
+
+打开安全解决方案时看到的内容可能因基础结构而异。 以前面的图像为例，此页包含三个部分：
+
+- **已连接解决方案**：显示已连接到安全中心的解决方案。
+- **已发现解决方案**：显示未连接到安全中心的解决方案。 可以连接这些解决方案，然后这些解决方案将显示在“已连接解决方案”下。  如果安全中心未检测到任何未连接的解决方案，则会隐藏此部分。
+- **添加数据源**：显示可添加到安全中心的 Azure 和非 Azure 数据源。
+
+### <a name="connected-solutions"></a>已连接解决方案
+
+“已连接解决方案”部分显示当前与安全中心连接的所有安全解决方案。 
+
+![已连接解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
+
+在每一项上看到的信息可能会因解决方案而异。 在每个磁贴上提供的信息可能包括：
+
+- 合作伙伴的公司图标。  如果安全中心没有公司图标，则会显示伙伴名称的第一个字符。
+- 解决方案类型。
+- 可能显示计算机名。
+- 运行状况。  如果未发送运行状况指示符，则安全中心将显示上次收到事件的日期和时间以指示设备是否正在报告。 如果安全中心未收到来自特定解决方案的运行状况指示符，此部分将不会显示解决方案磁贴。
 
 > [!NOTE]
-> Symantec 终结点保护支持仅限于发现， 不提供任何运行状况警报。
->
+> “监视安全中心”显示上次收到事件的日期和时间以指示设备是否正在报告。 如果在过去 14 天内发送过警报或事件，未发送运行状况指示符的解决方案会显示为“已连接”。
+>  
+
+上述某些解决方案可能已完全集成到 Azure 中，而其他解决方案可能在本地。 由于安全中心支持[通用事件格式 (CEF)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-connect-products#what-is-cef)，因此它可以与使用 CEF 的解决方案连接，例如支持 CEF 的防火墙。 此解决方案添加到安全中心后，防火墙会将 CEF 格式的日志发送至安全中心，安全中心会将其发送到 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 进行处理。 防火墙是一种非 Azure 资源，它发送事件，但不发送运行状况指示器。  安全中心具有的关于运行状况的唯一信息是此设备上次发送事件的时间。  对于所有非 Azure 资源，安全中心在磁贴的运行状况区域显示上次收到事件的日期和时间，以指示该非 Azure 资源是否仍在报告。
+
+### <a name="discovered-solutions"></a>已发现解决方案
+
+“已发现解决方案”部分显示已通过 Azure 添加、安全中心建议连接到它的所有解决方案。
+
+![已发现解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
+
+安全中心可与内置 Azure 解决方案（如 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)）集成。 如果有 Azure AD Identity Protection 许可证，但它未连接到安全中心，则 Azure AD Identity Protection 将在“已发现解决方案”下列出。 若要将此解决方案与安全中心集成，请单击 **Azure AD Identity Protection** 磁贴上的“连接”，将显示以下页：
+
+![Azure AD Identity Protection](./media/security-center-partner-integration/security-center-partner-integration-fig6.png)
+
+若要完成连接 Azure AD Identity Protection，需要选择要在其中保存数据的工作区。 Azure AD Identity Protection 中的所有数据将从此步骤中选择的工作区区域传递。  将通过工作区选择器选择工作区，数据将从该工作区开始传递。
+
+若要连接到安全中心，必须是全局管理员或安全管理员。如果没有权限，“连接”按钮将禁用，并且如果没有权限，将显示一条消息说明为什么该按钮处于禁用状态。
+
+Azure AD Identity Protection 警报将通过安全中心的检测管道，此管道使你能够从安全中心和 Azure Active Directory Identity Protection 收到警报。 安全中心将合并看起来与创建[安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)相关的所有警报。 安全事件说明将提供有关可疑活动的详细信息。
+
+### <a name="add-data-sources"></a>添加数据源
+
+可以添加要与安全中心集成的 Azure 和非 Azure 计算机。  添加非 Azure 计算机意味着可以添加本地计算机或支持 CEF 的设备。 
+
+![数据源](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
+
 
 ## <a name="see-also"></a>另请参阅
 

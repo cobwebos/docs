@@ -42,6 +42,7 @@
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
+#### [为用户和应用提供使用条款](active-directory-tou.md)
 #### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
 ### [从其他目录添加用户（经典门户）](active-directory-create-users-external.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
@@ -135,9 +136,9 @@
 ### [计划 Azure AD 加入](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
-#### [配置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
-#### [配置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
-#### [配置加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [设置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
+#### [设置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
+#### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
 ### 故障排除
@@ -196,6 +197,8 @@
 #### [删除用户](active-directory-coreapps-remove-assignment-azure-portal.md)
 #### [查看所有应用](active-directory-coreapps-view-azure-portal.md)
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
+#### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
+#### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
@@ -265,38 +268,38 @@
 
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
+## [管理对 Azure 的访问权限](toc.yml)
+
 ## 委托对资源的访问权限
 ### [管理员角色](active-directory-assign-admin-roles.md)
 #### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
 ### [管理单元](active-directory-administrative-units-management.md)
-### [Azure 中的资源访问权限](active-directory-understanding-resource-access.md)
-### [基于角色的访问控制](role-based-access-control-what-is.md)
-#### 管理访问权限分配
-##### [按用户](role-based-access-control-manage-assignments.md)
-##### [按资源](role-based-access-control-configure.md)
-#### [内置角色](role-based-access-built-in-roles.md)
-#### [自定义角色](role-based-access-control-custom-roles.md)
-#### [为内部用户和外部用户分配自定义角色](role-based-access-control-create-custom-roles-for-internal-external-users.md)
-#### [报告](role-based-access-control-access-change-history-report.md)
-#### 管理角色的更多方式
-##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-##### [PowerShell](role-based-access-control-manage-access-powershell.md)
-##### [REST](role-based-access-control-manage-access-rest.md)
-#### [提升租户管理员访问权限](role-based-access-control-tenant-admin-access.md)
-#### [故障排除](role-based-access-control-troubleshooting.md)
-#### [资源提供程序操作](role-based-access-control-resource-provider-operations.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
+
+## 访问评审
+### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)
+### [完成访问评审](active-directory-azure-ad-controls-complete-access-review.md)
+### [创建访问评审](active-directory-azure-ad-controls-create-access-review.md)
+### [如何执行访问评审](active-directory-azure-ad-controls-perform-access-review.md)
+### [如何评审访问权限](active-directory-azure-ad-controls-how-to-review-your-access.md)
+### [使用访问评审的来宾访问](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
+### [通过评审管理用于访问](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+### [管理计划和控件](active-directory-azure-ad-controls-manage-programs-controls.md)
+
 
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
+#### [控制](active-directory-conditional-access-controls.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
-#### [VPN 连接](active-directory-conditional-access-vpn-connectivity-windows10.md)
-#### [移动应用管理](active-directory-conditional-access-mam.md)
+#### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
+#### 任务
+##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
+##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
+##### [设置 VPN 连接](active-directory-conditional-access-vpn-connectivity-windows10.md)
+##### [设置 SharePoint 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
+##### [补救方法](active-directory-conditional-access-device-remediation.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
-#### [了解设备策略](active-directory-conditional-access-device-policies.md)
-#### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
-#### [补救方法](active-directory-conditional-access-device-remediation.md)
 #### [常见问题](active-directory-conditional-faqs.md)
 #### [经典门户](active-directory-conditional-access.md)
 ##### [入门](active-directory-conditional-access-azuread-connected-apps.md)

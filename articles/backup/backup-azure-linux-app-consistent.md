@@ -20,7 +20,6 @@ ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/12/2017
 
-
 ---
 
 # <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Azure Linux VM 的应用程序一致性备份（预览版）
@@ -87,11 +86,11 @@ ms.lasthandoff: 05/12/2017
 
 | 错误 | 错误消息 | 建议的操作 |
 | ------------------------ | -------------- | ------------------ |
-| Pre-ScriptExecutionFailed |操作前脚本返回错误，因此备份可能不具有应用程序一致性。    | 查看脚本的失败日志来解决问题。|  
-|    Post-ScriptExecutionFailed |    操作后脚本返回了可能影响应用程序状态的错误。 |    查看脚本的失败日志来解决问题，并检查应用程序状态。 |
-| Pre-ScriptNotFound |    在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作前脚本。 |    确保配置文件中指定的路径处存在操作前脚本，以保证应用程序一致性备份。|
-| Post-ScriptNotFound |    在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作后脚本。 |    确保配置文件中指定的路径处存在操作后脚本，以保证应用程序一致性备份。|
-| IncorrectPluginhostFile |    VmSnapshotLinux 扩展随附的 Pluginhost 文件已损坏，因此操作前脚本和操作后脚本无法运行，且不会创建应用程序一致性的备份。    | 卸载 VmSnapshotLinux 扩展，下一次备份时会自动重新安装它，这样即可解决问题。 |
+| Pre-ScriptExecutionFailed |操作前脚本返回错误，因此备份可能不具有应用程序一致性。   | 查看脚本的失败日志来解决问题。|  
+|   Post-ScriptExecutionFailed |    操作后脚本返回了可能影响应用程序状态的错误。 |    查看脚本的失败日志来解决问题，并检查应用程序状态。 |
+| Pre-ScriptNotFound |  在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作前脚本。 |   确保配置文件中指定的路径处存在操作前脚本，以保证应用程序一致性备份。|
+| Post-ScriptNotFound | 在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作后脚本。 |   确保配置文件中指定的路径处存在操作后脚本，以保证应用程序一致性备份。|
+| IncorrectPluginhostFile | VmSnapshotLinux 扩展随附的 Pluginhost 文件已损坏，因此操作前脚本和操作后脚本无法运行，且不会创建应用程序一致性的备份。 | 卸载 VmSnapshotLinux 扩展，下一次备份时会自动重新安装它，这样即可解决问题。 |
 | IncorrectJSONConfigFile | VMSnapshotScriptPluginConfig.json 文件不正确，因此操作前脚本和操作后脚本无法运行，且不会创建应用程序一致的备份。 | 从 [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) 下载副本并重新配置该文件。 |
 | InsufficientPermissionforPre-Script | 对于正在运行的脚本，“root”用户应是该文件的所有者，并且应对文件设置“700”权限（即只有“所有者”才拥有“读取”、“写入”和“执行”权限）。 | 确保“root”用户是脚本文件的“所有者”，只有“所有者”才拥有“读取”、“写入”和“执行”权限。 |
 | InsufficientPermissionforPost-Script | 对于正在运行的脚本，root 用户应是该文件的所有者，并且应该对文件设置“700”权限（即，只有“所有者”才拥有“读取”、“写入”和“执行”权限）。 | 确保“root”用户是脚本文件的“所有者”，只有“所有者”才拥有“读取”、“写入”和“执行”权限。 |

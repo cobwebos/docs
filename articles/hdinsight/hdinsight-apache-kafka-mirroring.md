@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/13/2017
+ms.date: 09/07/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: e418cb01e1a9168e3662e8d6242903e052b6047b
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 7628f0120deb3cc5b179c00ec50d967f7b1c1dbf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight-preview"></a>使用 MirrorMaker 通过 Kafka on HDInsight（预览版）复制 Apache Kafka 主题
@@ -97,12 +97,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
 
-创建资源后，会重定向到包含群集和 Web 仪表板的资源组边栏选项卡。
-
-![虚拟网络和群集的“资源组”边栏选项卡](./media/hdinsight-apache-kafka-mirroring/groupblade.png)
-
 > [!IMPORTANT]
-> 请注意，HDInsight 群集的名称为 **source-BASENAME** 和 **dest-BASENAME**，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
+> HDInsight 群集的名称为 source-BASENAME 和 dest-BASENAME，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
 
 ## <a name="create-topics"></a>创建主题
 
@@ -122,13 +118,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     # Install jq if it is not installed
     sudo apt -y install jq
     # get the zookeeper hosts for the source cluster
-    export SOURCE_ZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
-    
-    Replace `$PASSWORD` with the password for the cluster.
+    export SOURCE_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    ```
 
-    Replace `$CLUSTERNAME` with the name of the source cluster.
+    将 `$CLUSTERNAME` 替换为源群集的名称。 出现提示时，输入群集登录（管理员）帐户的密码。
 
-3. To create a topic named `testtopic`, use the following command:
+3. 若要创建名为 `testtopic` 的主题，请使用以下命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
@@ -166,7 +161,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-2. 使用以下命令创建介绍如何与**源**群集通信的 `consumer.properties` 文件：
+2. `consumer.properties` 文件用于配置与源群集的通信。 若要创建文件，请使用以下命令：
 
     ```bash
     nano consumer.properties
@@ -189,19 +184,17 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     ```bash
     sudo apt -y install jq
-    DEST_BROKERHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    DEST_BROKERHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     echo $DEST_BROKERHOSTS
     ```
 
-    将 `$PASSWORD` 替换为群集的登录帐户（管理员）密码。
+    将 `$CLUSTERNAME` 替换为目标群集的名称。 出现提示时，输入群集登录（管理员）帐户的密码。
 
-    将 `$CLUSTERNAME` 替换为目标群集的名称。
-
-    这些命令返回类似于以下的信息：
+    `echo` 命令将返回类似于以下文本的信息：
 
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
-4. 使用以下命令创建描述如何与**目标**群集通信的 `producer.properties` 文件：
+4. `producer.properties` 文件用于与目标群集的通信。 若要创建文件，请使用以下命令：
 
     ```bash
     nano producer.properties
@@ -247,27 +240,23 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 2. 从**源**群集的 SSH 连接开始，使用以下命令启动创建器，并将消息发送到主题：
 
     ```bash
-    SOURCE_BROKERHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    SOURCE_BROKERHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
-    将 `$PASSWORD` 替换为源群集的登录（管理员）密码。
+    将 `$CLUSTERNAME` 替换为源群集的名称。 出现提示时，输入群集登录（管理员）帐户的密码。
 
-    将 `$CLUSTERNAME` 替换为源群集的名称。
+     出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到源群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
 
-     出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**源**群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
-
-3. 从**目标**群集的 SSH 连接开始，使用 **Ctrl + C** 结束 MirrorMaker 进程。 然后使用以下命令验证是否已创建 `testtopic` 主题，以及该主题中的数据是否已复制到此镜像：
+3. 从**目标**群集的 SSH 连接开始，使用 **Ctrl + C** 结束 MirrorMaker 进程。 若要验证是否已将主题和消息复制到目标，请使用以下命令：
 
     ```bash
-    DEST_ZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    DEST_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    将 `$PASSWORD` 替换为目标群集的登录（管理员）密码。
-
-    将 `$CLUSTERNAME` 替换为目标群集的名称。
+    将 `$CLUSTERNAME` 替换为目标群集的名称。 出现提示时，输入群集登录（管理员）帐户的密码。
 
     主题列表现包含 `testtopic`，该条目创建于 MirrorMaster 将主题从源群集镜像到目标时。 从主题检索到的消息与在源群集上输入的消息相同。
 

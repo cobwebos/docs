@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
 ms.openlocfilehash: 8dea36f92b034f8c6cdb6875634848d37f4c6606
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/28/2016
 
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>停用和删除 StorSimple Virtual Array
@@ -89,10 +91,5 @@ ms.openlocfilehash: 8dea36f92b034f8c6cdb6875634848d37f4c6606
 * 有关如何故障转移的信息，请转到 [StorSimple 虚拟阵列的故障转移和灾难恢复](storsimple-virtual-array-failover-dr.md)。
 
 * 若要详细了解如何使用 StorSimple Device Manager 服务，请转到[使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列](storsimple-virtual-array-manager-service-administration.md)。 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

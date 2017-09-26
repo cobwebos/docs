@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 1221f4f50b8b9c4b9f9f88be4d04a65375c36062
+ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
+ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>通过 Azure 内容交付网络实现媒体流式处理优化 
@@ -61,7 +61,7 @@ Akamai 的媒体流式处理优化对于使用个别媒体片段进行交付的�
 如果多个用户请求尚不存在的片段，较短的负缓存时间对于源卸载很有用。 例如，在那一秒无法从源获取实时流的数据包。 较长的缓存间隔时间还有助于从源卸载请求，因为通常不会修改视频内容。
  
 
-|    | 常规<br> Web<br>调试 | 常规<br> 介质<br> 流式处理 | 点播视频 <br>介质<br> 流式处理  
+|   | 常规 Web 传送 | 常规媒体流式处理 | 点播视频媒体流式处理  
 --- | --- | --- | ---
 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
 缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 | 1 秒

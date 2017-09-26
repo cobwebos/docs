@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: c6a392217f84f549f2cae3c68fed85b9f888db77
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 1a2672af6428b9db83f3c916897d25de38035531
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -58,8 +58,8 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#create) | 创建 ACS 群集。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | 创建 ACS 群集。 |
 
 ## <a name="next-steps"></a>后续步骤
 

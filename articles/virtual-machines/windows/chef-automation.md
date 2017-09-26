@@ -21,7 +21,6 @@ ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]

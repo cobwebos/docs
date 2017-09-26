@@ -20,7 +20,6 @@ ms.openlocfilehash: 149dd84d7d8f4ff9cd30f9fc649ced3cb364cfb7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置 IoT 中心文件上传
 

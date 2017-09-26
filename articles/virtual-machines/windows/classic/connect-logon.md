@@ -21,7 +21,6 @@ ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户登录到 Windows 虚拟机
 在 Azure 门户中，使用“连接”按钮启动远程桌面会话，然后登录到 Windows VM。

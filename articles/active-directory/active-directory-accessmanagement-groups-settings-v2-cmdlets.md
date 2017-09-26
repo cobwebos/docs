@@ -20,7 +20,7 @@ ms.translationtype: HT
 ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: f1ce76178baa44428afca5631c749c2739ad779e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
@@ -172,7 +172,7 @@ ms.lasthandoff: 08/10/2017
 
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-#NAME?
+ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要作为成员添加到组的用户的 ObjectID。
 
 若要获取组的现有成员，请使用 Get-AzureADGroupMember cmdlet，如以下示例所示：
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 08/10/2017
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-#NAME?
+ObjectId 参数是要将所有者添加到的组的 ObjectID，-RefObjectId 是要作为组所有者添加的用户的 ObjectID。
 
 若要检索组的所有者，请使用 Get-AzureADGroupOwner cmdlet：
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
-
 ---
 # <a name="get-insights-from-azure-security-center-data-with-power-bi"></a>使用 Power BI 从 Azure 安全中心数据获得见解
 Azure 安全中心的 [Power BI 仪表板](http://aka.ms/azure-security-center-power-bi) 允许用户从包括移动设备在内的任何位置查看、分析和筛选建议和安全警报。 使用 Power BI 仪表板揭示趋势和攻击模式 - 按资源或源 IP 地址查看安全警告，按资源或时间查看未处理的安全风险。

@@ -19,7 +19,6 @@ ms.openlocfilehash: 1321fa71bcd625d6ea754432bfb402d3919e38f3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>教程：Azure Active Directory 与 Syncplicity 集成
 

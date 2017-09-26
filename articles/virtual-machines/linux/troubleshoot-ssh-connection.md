@@ -28,7 +28,7 @@ ms.lasthandoff: 08/09/2017
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](http://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](http://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](http://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](http://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](http://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](http://azure.microsoft.com/support/faq/)。
 
 ## <a name="quick-troubleshooting-steps"></a>快速故障排除步骤
 执行每个故障排除步骤后，请尝试重新连接到 VM。
@@ -99,7 +99,7 @@ az vm user update --resource-group myResourceGroup --name myVM \
 ```
 
 ## <a name="use-the-vmaccess-extension"></a>使用 VMAccess 扩展
-适用于 Linux 的 VM 访问扩展可以读入用于定义待执行操作的 json 文件。 这些操作包括重置 SSHD、重置 SSH 密钥或添加用户。 仍要使用 Azure CLI 调用 VMAccess 扩展，但可以根据需要在多个 VM 上重复使用该 json 文件。 使用这种方法可以创建 json 文件存储库，在给定的方案中可调用这些存储库。
+适用于 Linux 的 VM 访问扩展可以读入用于定义待执行操作的 json 文件。这些操作包括重置 SSHD、重置 SSH 密钥或添加用户。 仍要使用 Azure CLI 调用 VMAccess 扩展，但可以根据需要在多个 VM 上重复使用该 json 文件。 使用这种方法可以创建 json 文件存储库，在给定的方案中可调用这些存储库。
 
 ### <a name="reset-sshd"></a>重置 SSHD
 创建包含以下内容的名为 `settings.json` 的文件：

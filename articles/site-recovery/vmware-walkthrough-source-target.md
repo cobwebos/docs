@@ -20,7 +20,6 @@ ms.openlocfilehash: 94b629a62c3a54eee69ee397b2f27e3f20b753d5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="step-8-set-up-the-source-and-target-for-vmware-replication-to-azure"></a>步骤 8：设置源和目标以便将 VMware 复制到 Azure
 

@@ -64,11 +64,10 @@
 # 相关内容
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
 ## [使用批处理和数据工厂进行数据处理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
+## [Azure 中的 Batch、HPC 和大型计算解决方案](../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
-## [大型计算资源](big-compute-resources.md)
 ## [博客](https://blogs.technet.microsoft.com/windowshpc/)
 ## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)

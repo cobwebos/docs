@@ -21,7 +21,6 @@ ms.openlocfilehash: 4fd8b847b0f60648d1661ce5a8667c641e616ed4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="how-to-set-up-endpoints-on-a-linux-classic-virtual-machine-in-azure"></a>如何在 Azure 中的 Linux 经典虚拟机上设置终结点
 在 Azure 中使用经典部署模型创建的所有 Linux 虚拟机都可以通过专用网络通道与同一云服务或虚拟网络中的其他虚拟机自动通信。 但是，Internet 上的计算机或其他虚拟网络需要终结点才能定向虚拟机的入站网络流量。 本文也适用于 [Windows 虚拟机](../../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。

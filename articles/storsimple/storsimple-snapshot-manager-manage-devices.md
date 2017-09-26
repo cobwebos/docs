@@ -20,7 +20,6 @@ ms.openlocfilehash: f5e3186a4271e0be781f367fa75ada195c58c960
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备
 ## <a name="overview"></a>概述

@@ -21,7 +21,6 @@ ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 

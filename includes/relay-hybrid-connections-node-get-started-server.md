@@ -1,15 +1,12 @@
-### 创建 Node.js 应用程序
-<a id="create-a-nodejs-application" class="xliff"></a>
+### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
 创建一个名为 `listener.js` 的新 JavaScript 文件。
 
-### 添加中继 NPM 包
-<a id="add-the-relay-npm-package" class="xliff"></a>
+### <a name="add-the-relay-npm-package"></a>添加中继 NPM 包
 
 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
-### 编写一些代码来接收消息
-<a id="write-some-code-to-receive-messages" class="xliff"></a>
+### <a name="write-some-code-to-receive-messages"></a>编写一些代码来接收消息
 
 1. 将下面的常量添加到 `listener.js` 文件顶部。
    

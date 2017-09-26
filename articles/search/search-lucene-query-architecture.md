@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 9b7adf78271407963ed1d4b34a7760d707b5fc3a
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
-本文面向需要更深入了解 Azure 搜索中 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 搜索都会顺利地提供预期结果，但你偶尔会收到看上去“不靠谱”的结果。 在这种情况下，如果你对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
+本文面向需要更深入了解 Azure 搜索中 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 搜索都会顺利地提供预期结果，但偶尔也会收到看上去“不靠谱”的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
 
 > [!Note] 
 > Azure 搜索使用 Lucene 进行全文搜索，但 Lucene 集成并不彻底。 我们将有选择地公开和扩展 Lucene 功能，使情景对于 Azure 搜索变得重要。 
@@ -133,7 +133,7 @@ Spacious,||air-condition*+"Ocean view"
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>阶段 2：词法分析 
 
-构造查询树之后，词法分析器将处理*字词查询*和*短语查询*。 分析器接受分析器提供给它的文本输入，处理文本，然后发回标记化的字词，以便在查询树中整合。 
+构造查询树之后，词法分析器将处理*字词查询*和*短语查询*。 分析器接受分析器提供给它的文本输入，处理文本，并发回标记化的字词，以便在查询树中整合。 
 
 词法分析的最常见形式是*语言分析*，这种分析可以根据给定语言特定的规则转换查询词： 
 
@@ -145,7 +145,7 @@ Spacious,||air-condition*+"Ocean view"
 所有这些操作往往会消除用户提供的文本输入与存储在索引中的字词之间的差异。 此类操作超出了文本处理的范围，需要精通语言本身。 为了添加这一层语言认知力，Azure 搜索支持 Lucene 和 Microsoft 提供的众多[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。
 
 > [!Note]
-> 根据具体的情景，分析要求时而简单，时而繁琐。 你可以通过选择某个预定义的分析器或者创建自己的[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)来控制词法分析的复杂性。 可将分析器的分析范围限定为可搜索的字段，并且可将分析器指定为字段定义的一部分。 这样，便可以根据每个字段运行不同的词法分析。 如果未指定分析器，将使用*标准* Lucene 分析器。
+> 根据具体的情景，分析要求时而简单，时而繁琐。 可以通过选择某个预定义的分析器或者创建自己的[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)来控制词法分析的复杂性。 可将分析器的分析范围限定为可搜索的字段，并且可将分析器指定为字段定义的一部分。 这样，便可以根据每个字段运行不同的词法分析。 如果未指定分析器，将使用*标准* Lucene 分析器。
 
 在本示例中，分析之前的初始查询树包含字词“Spacious,”，其中使用了大写的 S 以及一个逗号。查询分析器会将逗号解释为查询字词的一部分（逗号不被视为查询语言运算符）。  
 
@@ -238,7 +238,13 @@ Spacious,||air-condition*+"Ocean view"
 
 了解索引的一些基本知识有助于理解检索。 存储的单位是一个倒排索引，每个可搜索字段对应一个索引。 在倒排索引中，有一个来自所有文档的所有字词的排序列表。 每个字词映射到出现该字词的文档列表，以下示例清晰演示了这种映射。
 
-若要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作。 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作。 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
+要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作：
+
+1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作。 
+2. 令牌是文本分析的输出。
+3. 将词语添加到索引。
+
+我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
 
 > [!Note]
 > Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参数来指定使用不同的分析器执行索引和搜索。 如果未指定，使用设置分析器`analyzer`属性用于索引编制和搜索。  
@@ -294,7 +300,7 @@ Spacious,||air-condition*+"Ocean view"
 
  ![包含已分析字词的布尔查询][4]
 
-在查询执行过程中，将会针对可搜索字段单独执行各个查询。 
+在查询执行过程中，会针对可搜索字段单独执行各个查询。 
 
 + 字词查询“spacious”匹配文档 1 (Hotel Atman)。 
 
@@ -361,7 +367,7 @@ search=Spacious, air-condition* +"Ocean view"
 
 ### <a name="scoring-in-a-distributed-index"></a>在分布式索引评分
 
-Azure 搜索中的所有索引将自动拆分成多个分片，使我们能够在服务扩展或缩减期间，快速地在多个节点之间分配索引。 发出某个搜索请求时，会单独针对每个分片发出该请求。 然后，来自每个分片的结果将会合并，并按评分排序（如果未定义其他排序）。 必须知道，评分函数根据分片中所有文档内的字词反向文档频率为查询字词频率加权，而不是根据所有分片加权！
+Azure 搜索中的所有索引会自动拆分成多个分片，使我们能够在服务扩展或缩减期间，快速地在多个节点之间分配索引。 发出某个搜索请求时，会单独针对每个分片发出该请求。 然后，来自每个分片的结果会合并，并按评分排序（如果未定义其他排序）。 必须知道，评分函数根据分片中所有文档内的字词反向文档频率为查询字词频率加权，而不是根据所有分片加权！
 
 这意味着，如果相同的文档驻留在不同的分片中，其相关性评分*可能*不同。 幸运的是，随着索引中的文档数由于字词分布越来越均匀而不断增多，这种差异往往会消失。 无法预料任意给定文档会放置在哪个分片上。 但是，假设文档键不会更改，该文档始终会分配到同一个分片。
 
@@ -387,15 +393,15 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对特定的字段尽量简化处理或者进行专门处理。
 
-+ 在此演示网站并排[比较标准和英文分析器](http://alice.unearth.ai/)）。 
++ 在此演示网站并排[比较标准和英语分析器](http://alice.unearth.ai/)。 
 
 ## <a name="see-also"></a>另请参阅
 
-[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
+[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
-[简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+[简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[完整 Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+[完整 Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
 [处理搜索结果](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
 

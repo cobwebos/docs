@@ -21,7 +21,6 @@ ms.openlocfilehash: 6b5af18d02fd508a21cdc21b38b1c16e79f07ecb
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/26/2017
 
-
 ---
 # <a name="install-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 的 Windows VM 上安装 MongoDB
 > [!IMPORTANT]

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: cherylmc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 2bd0cf8be87937044ad515a2c6f253b1711bb2bf
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
-
 
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e83ad647f6b7c70f34ef0c69b5bf322da5b6d60d
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 2858d916e935de618e1b0d5078218aa725275aeb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>如何通过 Node.js 使用 Blob 存储
@@ -64,8 +64,6 @@ var azure = require('azure-storage');
 
 ## <a name="set-up-an-azure-storage-connection"></a>设置 Azure 存储连接
 Azure 模块将读取环境变量 `AZURE_STORAGE_ACCOUNT`、`AZURE_STORAGE_ACCESS_KEY` 或 `AZURE_STORAGE_CONNECTION_STRING`，以获取连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，必须在调用 **createBlobService** 时指定帐户信息。
-
-若要了解在 [Azure 门户](https://portal.azure.com)中为 Azure Web 应用设置环境变量的示例，请参阅[使用 Azure 表服务的 Node.js Web 应用](../../app-service-web/storage-nodejs-use-table-storage-web-site.md)。
 
 ## <a name="create-a-container"></a>创建容器
 使用 **BlobService** 对象可以对容器和 Blob 进行操作。 以下代码可创建 **BlobService** 对象。 将以下代码添加到 **server.js** 的顶部附近：
@@ -415,15 +413,18 @@ blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源。
 
-* [用于 Node API 参考的 Azure 存储 SDK][用于 Node API 参考的 Azure 存储 SDK]
-* [Azure 存储团队博客][Azure 存储团队博客]
-* GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 存储库
-* [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)
-* [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [用于 Node API 参考的 Azure 存储 SDK][Azure Storage SDK for Node API Reference]  
+* [Azure 存储团队博客][Azure Storage Team Blog]  
+* GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 存储库  
+* [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)  
+* [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)  
 
-[Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
+[Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node  
 
-[使用 Azure 表服务的 Node.js Web 应用](../../app-service-web/storage-nodejs-use-table-storage-web-site.md)    
-[使用 Web Matrix 构建 Node.js Web 应用并将其部署到 Azure]：https://www.microsoft.com/web/webmatrix/  
-[使用 REST API]：http://msdn.microsoft.com/library/azure/hh264518.aspx [Azure 门户]：https://portal.azure.com [生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) [Azure 存储团队博客]：http://blogs.msdn.com/b/windowsazurestorage/ [用于 Node API 参考的 Azure 存储 SDK]：http://dl.windowsazure.com/nodestoragedocs/index.html
+[Build and deploy a Node.js web app to Azure using Web Matrix]: https://www.microsoft.com/web/webmatrix/  
+[Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx  
+[Azure portal]: https://portal.azure.com  
+[生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)  
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/  
+[Azure Storage SDK for Node API Reference]: http://dl.windowsazure.com/nodestoragedocs/index.html  
 

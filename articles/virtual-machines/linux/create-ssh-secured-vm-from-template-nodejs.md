@@ -22,7 +22,6 @@ ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>如何使用 Azure CLI 1.0 和 Azure Resource Manager 模板创建 Linux VM
 本文说明如何使用 Azure CLI 1.0 和 Azure Resource Manager 模板快速部署 Linux 虚拟机。 本文需要以下条件：

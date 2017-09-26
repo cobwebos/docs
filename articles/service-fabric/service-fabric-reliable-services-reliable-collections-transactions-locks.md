@@ -20,7 +20,6 @@ ms.openlocfilehash: 3452473f5b2f86d29e46339c997193bc6403736a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/04/2017
 
-
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 

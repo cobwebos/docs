@@ -12,10 +12,10 @@ ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f5d0bb05d0e9caebfc6c13d983518d65f7409527
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -37,37 +37,34 @@ ms.lasthandoff: 07/28/2017
 
 默认情况下，HTTP 触发的函数已配置为接受任何 HTTP 方法。 此外，还有一个采用 `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>` 格式的默认 URL。 如果已完成快速入门教程，`<funcname>` 可能类似于“HttpTriggerJS1”。 在本部分，将修改该函数，以便只响应针对 `/api/hello` 路由发出的 GET 请求。 
 
-在 Azure 门户中导航到该函数。 在左侧导航栏中选择“集成”。
+1. 在 Azure 门户中导航到该函数。 在左侧导航栏中选择“集成”。
 
-![自定义 HTTP 函数](./media/functions-create-serverless-api/customizing-http.png)
+    ![自定义 HTTP 函数](./media/functions-create-serverless-api/customizing-http.png)
 
-使用表中指定的 HTTP 触发器设置。
+1. 使用表中指定的 HTTP 触发器设置。
 
-| 字段 | 示例值 | 说明 |
-|---|---|---|
-| 允许的 HTTP 方法 | 选定的方法 | 确定可以使用哪些 HTTP 方法来调用此函数 |
-| 选定的 HTTP 方法 | GET | 只允许使用选定的 HTTP 方法来调用此函数 |
-| 路由模板 | /hello | 确定可以使用哪个路由来调用此函数 |
+    | 字段 | 示例值 | 说明 |
+    |---|---|---|
+    | 允许的 HTTP 方法 | 选定的方法 | 确定可以使用哪些 HTTP 方法来调用此函数 |
+    | 选定的 HTTP 方法 | GET | 只允许使用选定的 HTTP 方法来调用此函数 |
+    | 路由模板 | /hello | 确定可以使用哪个路由来调用此函数 |
+    | 授权级别 | 匿名 | 可选：无需 API 密钥便可访问函数 |
 
-请注意，并未在路由模板中包含 `/api` 基路径前缀，因为此操作由某个全局设置处理。
+    > [!NOTE] 
+    > 请注意，并未在路由模板中包含 `/api` 基路径前缀，因为此操作由某个全局设置处理。
 
-单击“保存” 。
+1. 单击“保存” 。
 
 可以在 [Azure Functions HTTP 和 Webhook 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint)中详细了解如何自定义 HTTP 函数。
 
 ### <a name="test-your-api"></a>测试 API
 
 接下来，请测试函数，确定它是否适用于新的 API 图面。
-
-在左侧导航栏中单击该函数的名称，导航回到开发页。
-
-单击“获取函数 URL”并复制该 URL。 应会看到它现在使用了 `/api/hello` 路由。
-
-将 URL 复制到新的浏览器标签页或偏好的 REST 客户端中。 浏览器默认使用 GET。
-
-运行该函数并确认它是否正常工作。 可能需要提供“name”参数作为查询字符串来配合快速启动代码。
-
-也可以尝试使用其他 HTTP 方法调用终结点，确认是否未执行该函数。 为此，需要使用 REST 客户端，例如 cURL、Postman 或 Fiddler。
+1. 在左侧导航栏中单击该函数的名称，导航回到开发页。
+1. 单击“获取函数 URL”并复制该 URL。 应会看到它现在使用了 `/api/hello` 路由。
+1. 将 URL 复制到新的浏览器标签页或偏好的 REST 客户端中。 浏览器默认使用 GET。
+1. 运行该函数并确认它是否正常工作。 可能需要提供“name”参数作为查询字符串来配合快速启动代码。
+1. 也可以尝试使用其他 HTTP 方法调用终结点，确认是否未执行该函数。 为此，需要使用 REST 客户端，例如 cURL、Postman 或 Fiddler。
 
 ## <a name="proxies-overview"></a>代理概述
 
@@ -75,8 +72,8 @@ ms.lasthandoff: 07/28/2017
 
 代理可以指向任何 HTTP 资源，例如：
 - Azure Functions 
-- [Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)中的 API 应用
-- [Linux 上的应用服务](https://docs.microsoft.com/azure/app-service/app-service-linux-readme)中的 Docker 容器
+- [Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-web-overview)中的 API 应用
+- [Linux 上的应用服务](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)中的 Docker 容器
 - 其他任何托管 API
 
 若要了解有关代理的详细信息，请参阅[使用 Azure Functions 代理（预览版）]。
@@ -87,44 +84,39 @@ ms.lasthandoff: 07/28/2017
 
 ### <a name="setting-up-the-frontend-environment"></a>设置前端环境
 
-重复[创建 Function App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用将充当 API 的前端，之前编辑的 Function App 将充当后端。
+重复[创建 Function App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的 Function App 将充当后端。
 
-在门户中导航到新的前端 Function App。
+1. 在门户中导航到新的前端 Function App。
+1. 选择“设置”。 然后，将“启用 Azure Functions 代理(预览版)”切换为“开”。
+1. 选择“平台设置”，并选择“应用程序设置”。
+1. 向下滚动到“应用设置”，并创建一个包含“HELLO_HOST”键的新设置。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 这是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
 
-选择“设置”。 然后，将“启用 Azure Functions 代理(预览版)”切换为“开”。
+    > [!NOTE] 
+    > 建议在主机配置中使用应用设置，以防止对代理的环境依赖关系进行硬编码。 使用应用设置意味着可以在环境之间移动代理配置，并应用特定于环境的应用设置。
 
-选择“平台设置”，并选择“应用程序设置”。
-
-向下滚动到“应用设置”，并创建一个包含“HELLO_HOST”键的新设置。 将其值设置为后端 Function App 的主机，例如 `<YourApp>.azurewebsites.net`。 这是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
-
-> [!NOTE] 
-> 建议在主机配置中使用应用设置，以防止对代理的环境依赖关系进行硬编码。 使用应用设置意味着可以在环境之间移动代理配置，并应用特定于环境的应用设置。
-
-单击“保存” 。
+1. 单击“保存” 。
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>在前端上创建代理
 
-在门户中导航回到前端 Function App。
+1. 在门户中导航回到前端 Function App。
+1. 在左侧导航栏中，单击“代理(预览版)”旁边的加号“+”。
+    ![创建代理](./media/functions-create-serverless-api/creating-proxy.png)
+1. 使用表中指定的代理设置。 
 
-在左侧导航栏中，单击“代理(预览版)”旁边的加号“+”。
-
-![创建代理](./media/functions-create-serverless-api/creating-proxy.png)
-
-使用表中指定的代理设置。
-
-| 字段 | 示例值 | 说明 |
-|---|---|---|
-| 名称 | HelloProxy | 仅用于管理的友好名称 |
-| 路由模板 | /api/hello | 确定可以使用哪个路由来调用此代理 |
-| 后端 URL | https://%HELLO_HOST%/api/hello | 指定请求应代理的终结点 |
-
-请注意，代理不提供 `/api` 基路径前缀，必须在路由模板中包含此前缀。
-
-`%HELLO_HOST%` 语法将引用前面创建的应用设置。 解析的 URL 将指向原始函数。
-
-单击“创建” 。
-
-可以通过复制代理 URL 或使用偏好的 HTTP 客户端在浏览器中对其进行测试来试验新代理。
+    | 字段 | 示例值 | 说明 |
+    |---|---|---|
+    | 名称 | HelloProxy | 仅用于管理的友好名称 |
+    | 路由模板 | /api/hello | 确定可以使用哪个路由来调用此代理 |
+    | 后端 URL | https://%HELLO_HOST%/api/hello | 指定请求应代理的终结点 |
+    
+1. 请注意，代理不提供 `/api` 基路径前缀，必须在路由模板中包含此前缀。
+1. `%HELLO_HOST%` 语法将引用前面创建的应用设置。 解析的 URL 将指向原始函数。
+1. 单击“创建” 。
+1. 可以通过复制代理 URL 或使用偏好的 HTTP 客户端在浏览器中对其进行测试来试验新代理。
+    1. 对于匿名函数，请使用：
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+    1. 对于具有授权的函数，请使用：
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>创建模拟 API
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 4dba196e1b838f2092b30972fb070514bd2a4b25
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除

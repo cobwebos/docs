@@ -14,12 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 21c42a747a08c5386c65d10190baf0054a7adef8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
-
 
 ---
 
@@ -35,11 +34,11 @@ ms.lasthandoff: 05/26/2017
 > 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Operations Management Suite (OMS) 中创建管理解决方案](operations-management-suite-solutions-creating.md)对此进行了介绍  
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你已经熟悉如何[创建管理解决方案](operations-management-suite-solutions-creating.md)以及 [ARM 模板](../resource-group-authoring-templates.md)和解决方案文件的结构。
+本文假设已经熟悉如何[创建管理解决方案](operations-management-suite-solutions-creating.md)以及 [ARM 模板](../resource-group-authoring-templates.md)和解决方案文件的结构。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装将失败。
+Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
 
 工作区的名称包含在每个 Log Analytics 资源的名称中。  这是在具有 **workspace** 参数的解决方案中完成的，如以下 savedsearch 资源示例所示。
 

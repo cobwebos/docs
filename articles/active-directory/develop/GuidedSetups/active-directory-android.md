@@ -21,7 +21,6 @@ ms.openlocfilehash: 2cf30b1cba4a942df8ac08356cd4f7482d6b7938
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 [!INCLUDE [1. Introduction](active-directory-mobileanddesktopapp-android-introduction.md)]
 [!INCLUDE [2. Setup](active-directory-mobileanddesktopapp-android-setup.md)]

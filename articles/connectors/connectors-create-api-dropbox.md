@@ -21,7 +21,6 @@ ms.openlocfilehash: 0d09580c60fd620811b539147439d0922839fe7e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>Dropbox 连接器入门
 连接到 Dropbox 管理你的文件。 你可以在 Dropbox 中执行各种操作，例如上传、更新、获取和删除文件。

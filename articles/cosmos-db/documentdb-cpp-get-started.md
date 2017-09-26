@@ -14,12 +14,11 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 12/25/2016
 ms.author: aasthan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 4de1f394e0930054f73786ebb59b901d1c91a5dd
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 324b5844362c2712d54fd766eb95e1d9102f757a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-cosmos-db-c-console-application-tutorial-for-the-documentdb-api"></a>Azure Cosmos DB：适用于 DocumentDB API 的 C++ 控制台应用程序教程
@@ -34,9 +33,9 @@ ms.lasthandoff: 05/31/2017
 > 
  
 
-欢迎使用 Azure Cosmos DB DocumentDB API 认可的 C++ SDK 的 C++ 教程！ 完成本教程后，你将获得一个可以创建并查询 Azure Cosmos DB 资源（包括 C++ 数据库）的控制台应用程序。
+欢迎使用 Azure Cosmos DB DocumentDB API 认可的 C++ SDK 的 C++ 教程！ 完成本教程后，会获得一个可以创建并查询 Azure Cosmos DB 资源（包括 C++ 数据库）的控制台应用程序。
 
-我们将介绍：
+我们介绍：
 
 * 创建并连接到 Azure Cosmos DB 帐户
 * 设置应用程序
@@ -52,38 +51,41 @@ ms.lasthandoff: 05/31/2017
 
 完成 C++ 教程后，请使用本页底部的投票按钮向我们提供反馈。 
 
-如果你希望我们直接与你联系，请将你的电子邮件地址附在评论中，或者[通过此途径联系我们](https://www.research.net/r/8BKRJ3Z)。 
+如果希望我们直接与你联系，请将电子邮件地址附在评论中，或者[通过此途径联系我们](https://www.research.net/r/8BKRJ3Z)。 
 
 现在，让我们开始吧！
 
 ## <a name="prerequisites-for-the-c-tutorial"></a>C++ 教程先决条件
-请确保你具有以下内容：
+请确保具有以下内容：
 
-* 有效的 Azure 帐户。 如果你没有，可以注册 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* [Visual Studio](https://www.visualstudio.com/downloads/)，其中已安装 C++ 语言组件。
+* 有效的 Azure 帐户。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/)，其中已安装 C++ 语言组件。 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>步骤 1：创建 Azure Cosmos DB 帐户
-让我们创建一个 Azure Cosmos DB 帐户。 如果已有一个可以使用的帐户，可以直接跳到[设置 C++ 应用程序](#SetupNode)。
+让我们创建一个 Azure Cosmos DB 帐户。 如果已有一个可以使用的帐户，可以直接跳到[设置 C++ 应用程序](#SetupC++)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a id="SetupC++"></a>步骤 2：设置 C++ 应用程序
-1. 打开 Visual Studio，在“文件”菜单中单击“新建”，然后单击“项目”。 
-2. 在“新建项目”窗口中的“已安装”窗格内，展开“Visual C++”，单击“Win32”，然后单击“Win32 控制台应用程序”。 将项目命名为 hellodocumentdb，然后单击“确定”。 
+1. 打开 Visual Studio，在“文件”菜单中单击“新建”，并单击“项目”。 
+2. 在“新建项目”窗口中的“已安装”窗格内，展开“Visual C++”，单击“Win32”，并单击“Win32 控制台应用程序”。 将项目命名为 hellodocumentdb，然后单击“确定”。 
    
     ![“新建项目”向导的屏幕截图](media/documentdb-cpp-get-started/hello.png)
 3. Win32 应用程序向导启动后，请单击“完成”。
-4. 创建项目后，在“解决方案资源管理器”中右键单击“hellodocumentdb”项目，然后单击“管理 NuGet 包”，打开 NuGet 包管理器。 
+4. 创建项目后，在“解决方案资源管理器”中右键单击“hellodocumentdb”项目，并单击“管理 NuGet 包”，打开 NuGet 包管理器。 
    
     ![项目菜单中显示“管理 NuGet 包”的屏幕截图](media/documentdb-cpp-get-started/nuget.png)
-5. 在“NuGet: hellodocumentdb”选项卡中，单击“浏览”，然后搜索 *documentdbcpp*。 在结果中选择“DocumentDbCPP”，如以下屏幕截图中所示。 此包将安装对 C++ REST SDK（DocumentDbCPP 的依赖项）的引用。  
+5. 在“NuGet: hellodocumentdb”选项卡中，单击“浏览”，并搜索 *documentdbcpp*。 在结果中选择“DocumentDbCPP”，如以下屏幕截图中所示。 此包将安装对 C++ REST SDK（DocumentDbCPP 的依赖项）的引用。  
    
     ![突出显示了 DocumentDbCpp 包的屏幕截图](media/documentdb-cpp-get-started/cpp.png)
    
     将包添加到项目后，可以开始编写一些代码。   
 
 ## <a id="Config"></a>步骤 3：从 Azure 门户复制 Azure Cosmos DB 数据库的连接详细信息
-打开 [Azure 门户](https://portal.azure.com)，浏览到你创建的 Azure Cosmos DB 数据库帐户。 在下一步骤中，需要使用 Azure 门户中的 URI 和主密钥从 C++ 代码片段建立连接。 
+打开 [Azure 门户](https://portal.azure.com)，浏览到创建的 Azure Cosmos DB 数据库帐户。 在下一步骤中，需要使用 Azure 门户中的 URI 和主密钥从 C++ 代码片段建立连接。 
 
 ![Azure 门户中的 Azure Cosmos DB URI 和密钥](media/documentdb-cpp-get-started/nosql-tutorial-keys.png)
 
@@ -108,7 +110,7 @@ ms.lasthandoff: 05/31/2017
 ## <a id="CreateDBColl"></a>步骤 5：创建 C++ 数据库和集合
 在执行此步骤之前，让我们为 Azure Cosmos DB 的新手回顾一下数据库、集合与文档之间的交互方式。 [数据库](documentdb-resources.md#databases)是跨集合分区的文档存储的逻辑容器。 [集合](documentdb-resources.md#collections)是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。 可以在 [Azure Cosmos DB 分层资源模型和概念](documentdb-resources.md)中详细了解 Azure Cosmos DB 分层资源模型和概念。
 
-若要创建数据库和相应的集合，请将以下代码添加到 main 函数的末尾。 这会使用上一步骤中声明的客户端配置创建名为“FamilyRegistry”的数据库和名为“FamilyCollection”的集合。
+要创建数据库和相应的集合，请将以下代码添加到 main 函数的末尾。 这会使用上一步骤中声明的客户端配置创建名为“FamilyRegistry”的数据库和名为“FamilyCollection”的集合。
 
     try {
       shared_ptr<Database> db = client.CreateDatabase(L"FamilyRegistry");
@@ -119,7 +121,7 @@ ms.lasthandoff: 05/31/2017
 
 
 ## <a id="CreateDoc"></a>步骤 6：创建文档
-[文档](documentdb-resources.md#documents)是用户定义的（任意）JSON 内容。 现在，你可以将文档插入 Azure Cosmos DB 中。 将以下代码复制到 main 函数的末尾即可创建文档。 
+[文档](documentdb-resources.md#documents)是用户定义的（任意）JSON 内容。 现在，可以将文档插入 Azure Cosmos DB 中。 将以下代码复制到 main 函数的末尾即可创建文档。 
 
     try {
       value document_family;
@@ -143,7 +145,7 @@ ms.lasthandoff: 05/31/2017
 ## <a id="QueryDB"></a>步骤 7：查询 Azure Cosmos DB 资源
 Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行[各种查询](documentdb-sql-query.md)。 以下示例代码演示了一个使用  SQL 语法生成的查询，可以针对上一步骤中创建的文档运行该查询。
 
-函数将会提取数据库、集合以及文档客户端的唯一标识符或资源 ID 作为参数。 请在 main 函数的前面添加此代码。
+函数会提取数据库、集合以及文档客户端的唯一标识符或资源 ID 作为参数。 请在 main 函数的前面添加此代码。
 
     void executesimplequery(const DocumentClient &client,
                             const wstring dbresourceid,
@@ -219,7 +221,7 @@ Azure Cosmos DB 支持删除 JSON 文档，为此，可以复制以下代码并�
       }
     }
 
-## <a id="Run"></a>步骤 11：运行整个 C++ 应用程序！
+## <a id="Run"></a>步骤 11：一起运行所有 C++ 应用程序！
 现在，我们已添加了用于创建、查询、修改和删除不同 Azure Cosmos DB 资源的代码。  接下来，让我们从 hellodocumentdb.cpp 中的 main 函数添加对这些不同函数的调用，配合一些诊断消息来运行整个应用程序。
 
 为此，可将应用程序的 main 函数替换为以下代码。 这会覆写在执行步骤 3 时复制到代码中的 account_configuration_uri 和 primary_key，因此，请保存该代码行，或者再次从门户中复制值。 
@@ -273,11 +275,11 @@ Azure Cosmos DB 支持删除 JSON 文档，为此，可以复制以下代码并�
 
 现在，应该可以在 Visual Studio 中按 F5，或者在终端窗口中找到应用程序并运行相应的可执行文件，来生成并运行这些代码。 
 
-你应该看到已启动应用的输出。 输出应与以下屏幕截图相符。
+应该看到已启动应用的输出。 输出应与以下屏幕截图相符。
 
 ![Azure Cosmos DB C++ 应用程序输出](media/documentdb-cpp-get-started/console.png)
 
-祝贺你！ 你已完成了 C++ 教程并创建了你的第一个 Azure Cosmos DB 控制台应用程序！
+祝贺你！ 已完成了 C++ 教程并创建了第一个 Azure Cosmos DB 控制台应用程序！
 
 ## <a id="GetSolution"></a>获取完整的 C++ 教程解决方案
 若要生成包含本文所有示例的 GetStarted 解决方案，需要做好以下准备：

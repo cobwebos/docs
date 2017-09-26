@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ada8ffbbdc5565a517f5a06cb640a36aaf8879b4
 ms.openlocfilehash: b44b1a5b3e988a51db3325ec8a181651fa84e768
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>教程：Azure Active Directory 与 Cisco Webex 的集成

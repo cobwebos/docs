@@ -20,7 +20,6 @@ ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>非对称路由与多个网络路径
 本文说明当网络源与目标之间有多个路径时，正向和返回网络流量如何选择不同的路由。

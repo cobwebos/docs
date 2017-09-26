@@ -20,7 +20,6 @@ ms.openlocfilehash: 0d44f94719bff0cb58b3727050598e55f4774e66
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
 ## <a name="overview"></a>概述

@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: f76e726c6a67de4b0472c0e97f9e72c31c14c4f2
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 42a87adef740cc2c1d77c9f02eef8aaa5f207258
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
-Azure 多重身份验证提供了几个报告供你和你的组织使用。 可以通过多重身份验证管理门户访问这些报告。 以下是可用报告的列表：
+Azure 多重身份验证提供了几个报告供你和组织使用。 可以通过多重身份验证管理门户访问这些报告。 以下是可用报告的列表：
 
 | 报表 | 说明 |
 |:--- |:--- |
@@ -38,8 +37,8 @@ Azure 多重身份验证提供了几个报告供你和你的组织使用。 可�
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左侧选择“Active Directory”。
 3. 选择这两个选项之一，具体取决于是否使用身份验证提供程序：
-   * **选项 1**：单击“多重身份验证提供程序”选项卡。 选择 MFA 提供程序，然后在底部单击“管理”按钮。
-   * **选项 2**：选择目录，然后转到“配置”选项卡。 在“多重身份验证”部分下，选择“管理服务设置”。 在“MFA 服务设置”页底部，单击“转到门户”链接。
+   * **选项 1**：单击“多重身份验证提供程序”选项卡。选择 MFA 提供程序，并在底部单击“管理”按钮。
+   * **选项 2**：选择目录，并转到“配置”选项卡。在“多重身份验证”部分下，选择“管理服务设置”。 在“MFA 服务设置”页底部，单击“转到门户”链接。
 4. 在 Azure 多重身份验证管理门户中，从左侧导航栏的“查看报告”中选择所需的报告类型。
 
 <center>![云](./media/multi-factor-authentication-manage-reports/report.png)</center>

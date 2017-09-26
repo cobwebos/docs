@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 07/31/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4a19ab310212b93a53495a6fc6c25c77dfb82e79
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f2184f426c0e60ea2b6ce029b80d3d63821794d1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>教程：Azure Active Directory 与 NetSuite 集成
@@ -37,7 +36,7 @@ ms.lasthandoff: 07/08/2017
 
 若要配置 Azure AD 与 Netsuite 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Netsuite 单一登录的订阅
 
 > [!NOTE]
@@ -115,9 +114,9 @@ ms.lasthandoff: 07/08/2017
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.netsuite.com/saml2/acs`、`https://<tenant-name>.na1.netsuite.com/saml2/acs`、`https://<tenant-name>.na2.netsuite.com/saml2/acs`、`https://<tenant-name>.sandbox.netsuite.com/saml2/acs`、`https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs`、`https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
 
     > [!NOTE] 
-    > 此值不是实际值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [Netsuite 支持团队](http://www.netsuite.com/portal/services/support.shtml)联系。
+    > 这些不是实际值。 使用实际回复 URL 更新这些值。 若要获取这些值，请与 [Netsuite 支持团队](http://www.netsuite.com/portal/services/support.shtml)联系。
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_certificate.png) 
 
@@ -129,9 +128,9 @@ ms.lasthandoff: 07/08/2017
 
     ![配置单一登录](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_configure.png) 
 
-7. 在浏览器中打开新选项卡，然后以管理员的身分登录 Netsuite 公司站点。
+7. 在浏览器中打开新选项卡，并以管理员的身分登录 Netsuite 公司站点。
 
-8. 在页面顶部的工具栏上，单击“设置”，然后单击“设置管理员”。
+8. 在页面顶部的工具栏上，单击“设置”，并单击“设置管理员”。
 
     ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
@@ -145,11 +144,11 @@ ms.lasthandoff: 07/08/2017
 
 11. 在“SAML 设置”页上执行以下步骤：
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 从“配置登录”的“快速参考”部分复制“SAML 单一登录服务 URL”值，并将其粘贴到 Netsuite 中的“标识提供者登录页”字段。
+    a. 从“配置登录”的“快速参考”部分复制“SAML 单一登录服务 URL”值，并将其粘贴到 Netsuite 中的“标识提供者登录页”字段。
 
     ![配置单一登录](./media/active-directory-saas-netsuite-tutorial/ns-saml-setup.png)
   
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在 NetSuite 中，选择“主要身份验证方法”。
+    b. 在 NetSuite 中，选择“主要身份验证方法”。
 
     c. 对于标有“SAMLV2 标识提供者元数据”的字段，请选择“上载 IDP 元数据文件”。 然后单击“浏览”，上传从 Azure 门户下载的元数据文件。
 
@@ -161,13 +160,13 @@ ms.lasthandoff: 07/08/2017
 
     ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-attributes.png)
 
-13. 在“属性名称”字段中，键入 `account`。 对于“属性值”字段，键入 Netsuite 帐户 ID。此值为常数，并随帐户更改。 下面提供了有关如何找出帐户 ID 的说明：
+13. 在“属性名称”字段中，键入 `account`。 在“属性值”字段中，键入 NetSuite 帐户 ID。 此值是常量，会随帐户而改变。 下面提供了有关如何找出帐户 ID 的说明：
 
       ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-add-attribute.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在 Netsuite 的顶部导航菜单中单击“设置”。
+    a. 在 Netsuite 的顶部导航菜单中单击“设置”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击左侧导航菜单中的“设置任务”部分，选择“集成”部分，并单击“Web 服务首选项”。
+    b. 单击左侧导航菜单中的“设置任务”部分，选择“集成”部分，并单击“Web 服务首选项”。
 
     c. 复制 NetSuite 帐户 ID 并将它粘贴到 Azure AD 中的“属性值”字段。
 
@@ -175,11 +174,11 @@ ms.lasthandoff: 07/08/2017
 
 14. 在用户能够单一登录到 NetSuite 之前，必须先在 NetSuite 中为他们分配适当的权限。 请按以下说明来分配这些权限。
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在顶部导航菜单中单击“设置”，然后单击“设置管理员”。
+    a. 在顶部导航菜单中单击“设置”，并单击“设置管理员”。
       
       ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在左侧导航菜单中，选择“用户/角色”，然后单击“管理角色”。
+    b. 在左侧导航菜单中，选择“用户/角色”，并单击“管理角色”。
       
       ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-manage-roles.png)
 
@@ -195,15 +194,15 @@ ms.lasthandoff: 07/08/2017
       
        ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-sso.png)
 
-    g. 选择“设置 SAM 单一登录”，然后单击“添加”。
+    g. 选择“设置 SAM 单一登录”，并单击“添加”。
 
     h. 单击“保存” 。
 
-    i. 在顶部导航菜单中单击“设置”，然后单击“设置管理员”。
+    i. 在顶部导航菜单中单击“设置”，并单击“设置管理员”。
       
        ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
-    j. 在左侧导航菜单中，选择“用户/角色”，然后单击“管理用户”。
+    j. 在左侧导航菜单中，选择“用户/角色”，并单击“管理用户”。
       
        ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-manage-users.png)
 
@@ -211,7 +210,7 @@ ms.lasthandoff: 07/08/2017
       
        ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-edit-user.png)
 
-    l. 在“角色”对话框中，选择创建的角色，然后单击“添加”。
+    l. 在“角色”对话框中，选择创建的角色，并单击“添加”。
       
        ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-add-role.png)
 
@@ -244,7 +243,7 @@ ms.lasthandoff: 07/08/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-netsuite-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -266,7 +265,7 @@ ms.lasthandoff: 07/08/2017
 
 若要将 Britta Simon 分配到 Netsuite，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

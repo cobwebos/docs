@@ -1,5 +1,4 @@
 ---
-
 title: "向 Azure Active Directory 添加 B2B 协作用户（无邀请）| Microsoft Docs"
 description: "可允许来宾用户将其他来宾用户添加到 Azure AD，而无需在 Azure Active Directory B2B 协作中兑换邀请。"
 services: active-directory
@@ -16,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 91b9477cdb679851e7d8d2942c06999a05f64e46
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/17/2017
-
 
 ---
 

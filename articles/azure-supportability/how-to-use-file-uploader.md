@@ -21,7 +21,6 @@ ms.openlocfilehash: ba6dafd8d890d88478a5e3213dd023921908f4bf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure 新支持请求“文件上传”实用工具指导原则
 [创建支持请求](https://portal.azure.com/#create/Microsoft.Support)时，“文件上传”实用工具可帮助用户轻松上传诊断文件或任何用户认为与事件相关的其他文件。  

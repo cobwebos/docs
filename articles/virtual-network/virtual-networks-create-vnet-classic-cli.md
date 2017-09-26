@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 457b5a39e3b23497b59558659d7098481aca1e6b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>使用 Azure CLI 创建虚拟网络（经典）
@@ -33,10 +34,5 @@ ms.openlocfilehash: 457b5a39e3b23497b59558659d7098481aca1e6b
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-classic-cli-include](../../includes/virtual-networks-create-vnet-classic-cli-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

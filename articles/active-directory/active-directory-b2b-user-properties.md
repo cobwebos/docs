@@ -21,7 +21,6 @@ ms.openlocfilehash: 6e49cb202ed03bf50fb9ca34d34924cda434829c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
 
-
 ---
 
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性

@@ -22,7 +22,6 @@ ms.openlocfilehash: c7a6fafa90eac66774d564c82c926c662baf784c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 

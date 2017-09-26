@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 43025adeaf954fedfbcee32e636fb30935f2126b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 9f2a3e104df579029da56ba515b2159c18f4eae6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
@@ -106,7 +106,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，�
 
 我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 在获得其中一个列表之后，使用 [IN 运算符](documentdb-sql-query.md#WhereClause) 向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
 
-可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service-web/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/) [队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
+可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/) [队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
@@ -170,7 +170,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，�
 
 中间步骤被称为用户，这是会在 Cosmos DB 上的大多数依赖性能查询上使用的完整数据，也是最常访问和最重要的数据。 它包括由 UserChunk 表示的信息。
 
-最复杂的一步是扩展用户。 它包括所有重要的用户信息以及并不需要快速读取的其他数据，或者它的使用情况就是最终结果（就像登录过程一样）。 此数据可以存储在 Cosmos DB 外、Azure SQL 数据库或 Azure 表存储中。
+最复杂的一步是扩展用户。 它包括所有重要的用户信息以及并不需要快速读取的其他数据，或者它的使用情况就是最终结果（就像登录过程一样）。 此数据可以存储在 Cosmos DB 外、Azure SQL 数据库或 Azure 存储表中。
 
 为什么我们要拆分用户，甚至将此信息存储在不同的位置？ 从性能角度考虑，文档越大，查询成本将越高。 保持文档精简，包含用于对社交网络执行所有依赖性能的查询的适当信息，并为最终方案（例如完整的配置文件编辑、登录名，甚至使用情况分析和大数据方案的数据挖掘）存储其他额外信息。 我们实际上并不关心用于数据分析的数据收集速度是否减慢了，因为它是在 Azure SQL 数据库上运行的，然而我们确实很在意我们的用户是否具有快速和精简的用户体验。 在 Cosmos DB 中存储的用户如下所示：
 
@@ -240,7 +240,7 @@ Cosmos DB 根据给定的分区键（定义为文档中的一个属性）自动�
 
 通过 Cosmos DB，只需单击数次即可通过透明方式[全局复制数据](../cosmos-db/tutorial-global-distribution-documentdb.md)，并从[客户端代码](../cosmos-db/tutorial-global-distribution-documentdb.md)中自动选择可用区域。 这也意味着可以拥有[多个故障转移区域](regional-failover.md)。 
 
-全局复制数据时，需确保客户端可以利用该数据。 如果要使用 Web 前端或从移动客户端访问 API，则可以部署 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)并在所有所需区域克隆 Azure 应用服务（方法是通过使用[性能配置](../app-service-web/web-sites-traffic-manager.md)支持扩展的全球覆盖范围）。 客户端访问前端或 API 时，将被路由到最近的应用服务，而该应用服务将连接到本地的 Cosmos DB 副本。
+全局复制数据时，需确保客户端可以利用该数据。 如果要使用 Web 前端或从移动客户端访问 API，则可以部署 [Microsoft Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)并在所有所需区域克隆 Azure 应用服务（方法是通过使用性能配置支持扩展的全球覆盖范围）。 客户端访问前端或 API 时，将被路由到最近的应用服务，而该应用服务将连接到本地的 Cosmos DB 副本。
 
 ![将全球覆盖范围添加到社交平台](./media/social-media-apps/social-media-apps-global-replicate.png)
 

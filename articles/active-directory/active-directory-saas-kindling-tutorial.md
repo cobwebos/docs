@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 131c2c3f46c60193d512b1779e917c8322732fbc
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kindling"></a>教程：Azure Active Directory 与 Kindling 集成
@@ -55,7 +54,7 @@ ms.lasthandoff: 06/23/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-kindling-from-the-gallery"></a>从库中添加 Kindling
-若要配置 Kindling 与 Azure AD 的集成，需要从库中将 Kindling 添加到托管 SaaS 应用列表。
+要配置 Kindling 与 Azure AD 的集成，需要从库中将 Kindling 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Kindling，请执行以下步骤：**
 
@@ -114,12 +113,12 @@ ms.lasthandoff: 06/23/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.kindlingapp.com`
 
-    b.  在“标识符”文本框中，使用以下模式键入 URL： `https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`
+    b.  在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Kindling 支持团队](mailto:support@kindlingapp.com)获取这些值。
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_certificate.png) 
 
@@ -160,7 +159,7 @@ ms.lasthandoff: 06/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-kindling-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -180,9 +179,9 @@ ms.lasthandoff: 06/23/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Kindling，请执行以下步骤：**
+**要将 Britta Simon 分配到 Kindling，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -208,7 +207,7 @@ ms.lasthandoff: 06/23/2017
 
 在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Kindling 磁贴时，你应自动登录到 Kindling 应用程序。 
+单击访问面板中的 Kindling 磁贴时，应自动登录到 Kindling 应用程序。 
 
 ## <a name="additional-resources"></a>其他资源
 

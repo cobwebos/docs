@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心设备孪生入门 (Java) | Microsoft Docs"
-description: "如何使用 Azure IoT 中心设备孪生添加标记，然后使用 IoT 中心查询。 使用适用于 Java 的 Azure IoT 设备 SDK 实现设备应用，并使用适用于 Java 的 Azure IoT 服务 SDK 实现可添加标记并运行 IoT 中心查询的服务应用。"
+description: "如何使用 Azure IoT 中心设备孪生添加标记，并使用 IoT 中心查询。 使用适用于 Java 的 Azure IoT 设备 SDK 实现设备应用，并使用适用于 Java 的 Azure IoT 服务 SDK 实现可添加标记并运行 IoT 中心查询的服务应用。"
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 07/04/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 3269cb65cfb59258d761f4c60278c598bc251325
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6d306d4742a53789d8e69c80d7fbdfc4e1ade4bf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="get-started-with-device-twins-java"></a>设备孪生入门 (Java)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-在本教程中，你将创建两个 Java 控制台应用：
+在本教程中，将创建两个 Java 控制台应用：
 
 * **add-tags-query**：一个 Java 后端应用，用于添加标记并查询设备孪生。
 * **simulated-device**：一个 Java 设备应用，它连接到 IoT 中心并使用报告属性报告其连接状态。
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/14/2017
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 
-若要完成本教程，你需要：
+要完成本教程，需要：
 
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
@@ -267,7 +267,7 @@ ms.lasthandoff: 07/14/2017
     private static String deviceId = "myDeviceId";
     ```
 
-    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 目前，若要使用设备孪生功能，必须使用 MQTT 协议。
+    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 
 
 1. 将以下代码添加到 **main** 方法，以便：
     * 创建用来与 IoT 中心通信的设备客户端。
@@ -352,7 +352,7 @@ ms.lasthandoff: 07/14/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了一个设备应用用于报告设备孪生中的设备连接信息。 此外，还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询设备孪生信息。
+在本教程中，已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了一个设备应用用于报告设备孪生中的设备连接信息。 此外，还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询设备孪生信息。
 
 使用下列资源了解如何执行以下操作：
 

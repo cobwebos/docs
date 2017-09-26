@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 58f4eab190e40e16ed261c165ffdfc8155eeb434
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
@@ -27,9 +26,9 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 
-[打开免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)并使用免费信用额度试用付费 Azure 服务。 信用额度用完后，请保留帐户并继续使用免费的 Azure 服务，如网站。 除非你显式更改设置并要求付费，否则不会对你的信用卡收取任何费用。
+[打开免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)并使用免费信用额度试用付费 Azure 服务。 信用额度用完后，请保留帐户并继续使用免费的 Azure 服务，如网站。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
 
-你还可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 MSDN 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。 
+还可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 MSDN 订阅每月提供可用来试用付费版 Azure 服务的信用额度。 
 
 ## <a name="find-azure-search"></a>查找 Azure 搜索
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -40,7 +39,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="name-the-service-and-url-endpoint"></a>对服务和 URL 终结点进行命名
 
-服务名称是 URL 终结点的一部分，API 调用针对此终结点发出调用。 在 **URL** 字段中键入你的服务名称。 
+服务名称是 URL 终结点的一部分，API 调用针对此终结点发出调用。 在 **URL** 字段中键入服务名称。 
 
 服务名称要求：
    * 2 到 60 个字符长度
@@ -71,10 +70,11 @@ ms.lasthandoff: 05/10/2017
 
 ![](./media/search-create-service-portal/new-service2.png)
 
-## <a name="scale-your-service"></a>扩展你的服务
-创建服务可能需要几分钟（至少 15 分钟，具体取决于层）。 预配服务后，你可以对其进行扩展以满足你的需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果你已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
+## <a name="scale-your-service"></a>扩展服务
+创建服务可能需要几分钟（至少 15 分钟，具体取决于层）。 预配服务后，可以对其进行扩展以满足需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
 
-***分区***允许你的服务存储和搜索更多文档。
+
+            ***分区***允许服务存储和搜索更多文档。
 
 ***副本***允许服务处理负载更高的搜索查询。
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 05/10/2017
 > 在 Azure 搜索中，无法分离索引工作负荷和查询工作负荷；因此永远无需为分离的工作负荷创建多个服务。 查询索引时，始终是在创建该索引时所在的服务中查询（不能在一个服务中创建索引，然后将其复制到另一个服务）。
 >
 
-无需为实现高可用性添加第二个服务。 在同一服务中使用 2 个或更多个副本，便可实现查询的高可用性。 副本更新是连续的，这意味着当服务更新推出时，至少有一个副本能正常工作。 有关运行时间的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
+无需为实现高可用性添加第二个服务。 在同一服务中使用 2 个或更多个副本，便可实现查询的高可用性。 副本更新是连续的，这意味着当服务更新推出时，至少有一个副本能正常工作。有关运行时间的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
 预配 Azure 搜索服务后，即可[定义索引](search-what-is-an-index.md)，从而上传和搜索数据。

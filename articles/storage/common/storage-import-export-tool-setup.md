@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5b73fec119a88cd86e68537199e7567afa3fdba8
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 6b5febd051d0b956c90cb14c260dda1881adac3f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -40,7 +40,7 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 * 需要准备一台装有 Windows 7、Windows Server 2008 R2 或更高版本的 Windows 操作系统的计算机（“复制计算机”）。
 * 必须在复制计算机上安装 .NET Framework 4。
 * 必须在复制计算机上启用 BitLocker。
-* 需要一个或多个已连接到复制计算机的空 3.5 英寸 SATA 硬盘。
+* 需要一个或多个已连接到复制计算机的空 2.5 英寸或 3.5 英寸 SATA II、III 或 SSD 硬盘。
 * 打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
 若要尝试修复部分失败的导入，需要：

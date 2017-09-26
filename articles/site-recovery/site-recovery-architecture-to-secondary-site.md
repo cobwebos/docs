@@ -20,7 +20,6 @@ ms.openlocfilehash: fca95c63964b955db7ddfbe53250702cc8af122e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/15/2017
 
-
 ---
 # <a name="how-does-on-premises-machine-replication-to-a-secondary-site-work-in-site-recovery"></a>如何使用 Site Recovery 将本地计算机复制到辅助站点？
 

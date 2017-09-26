@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 62ae54f3596c9383cbf3b401fcfdb42ecfdee63c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建在 Azure 上运行的 Linux 虚拟机副本

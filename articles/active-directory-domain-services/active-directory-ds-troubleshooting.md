@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/18/2017
-
 
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
@@ -32,9 +32,10 @@ ms.lasthandoff: 03/18/2017
 | **错误消息** | **解决方法** |
 | --- |:--- |
 | *名称 contoso100.com 已在此网络中使用。指定一个未使用的名称。* |[虚拟网络中的域名冲突](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[域服务对 Azure AD 域服务同步应用程序没有足够的权限](active-directory-ds-troubleshooting.md#inadequate-permissions) |
-| *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[未在租户中正确配置域服务应用程序](active-directory-ds-troubleshooting.md#invalid-configuration) |
-| *无法在此 Azure AD 租户中启用域服务。Microsoft Azure AD 应用程序已在你的 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在你的 Azure AD 租户中禁用](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
+| *无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，并尝试为 Azure AD 租户启用域服务。* |[域服务对 Azure AD 域服务同步应用程序没有足够的权限](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[未在租户中正确配置域服务应用程序](active-directory-ds-troubleshooting.md#invalid-configuration) |
+| *无法在此 Azure AD 租户中启用域服务。Microsoft Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。* |
+            [Microsoft Graph 应用程序已在 Azure AD 租户中禁用](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>域名冲突
 **错误消息：**
@@ -43,14 +44,14 @@ ms.lasthandoff: 03/18/2017
 
 **补救方法：**
 
-确保现有域的名称与该虚拟网络上使用的域名不同。 例如，假设名为“contoso.com”的域已在选定的虚拟网络上使用。 然后，你尝试在该虚拟网络上启用具有相同域名（即“contoso.com”）的 Azure AD 域服务托管域。 尝试启用 Azure AD 域服务将会失败。
+确保现有域的名称与该虚拟网络上使用的域名不同。 例如，假设名为“contoso.com”的域已在选定的虚拟网络上使用。 然后，尝试在该虚拟网络上启用具有相同域名（即“contoso.com”）的 Azure AD 域服务托管域。 尝试启用 Azure AD 域服务会失败。
 
-发生这种失败的原因是该名称与该虚拟网络上的域名冲突。 在此情况下，必须使用不同的名称来设置 Azure AD 域服务托管域。 或者，可以取消预配现有的域，然后继续启用 Azure AD 域服务。
+发生这种失败的原因是该名称与该虚拟网络上的域名冲突。 在此情况下，必须使用不同的名称来设置 Azure AD 域服务托管域。 或者，可以取消预配现有的域，并继续启用 Azure AD 域服务。
 
 ### <a name="inadequate-permissions"></a>权限不足
 **错误消息：**
 
-*无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，然后尝试为 Azure AD 租户启用域服务。*
+*无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，并尝试为 Azure AD 租户启用域服务。*
 
 **补救方法：**
 
@@ -63,13 +64,13 @@ ms.lasthandoff: 03/18/2017
 3. 选择要启用 Azure AD 域服务的 Azure AD 租户（目录）。
 4. 导航到“应用程序”选项卡。
 5. 从下拉列表中选择“我公司拥有的应用程序”选项。
-6. 检查是否存在名为“Azure AD 域服务同步”的应用程序。 如果存在，请将它删除。
+6. 检查是否存在名为“Azure AD 域服务同步”的应用程序。如果存在，请将它删除。
 7. 删除该应用程序后，再次尝试启用 Azure AD 域服务。
 
 ### <a name="invalid-configuration"></a>配置无效
 **错误消息：**
 
-*无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，然后尝试为 Azure AD 租户启用域服务。*
+*无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，并尝试为 Azure AD 租户启用域服务。*
 
 **补救方法：**
 
@@ -118,13 +119,13 @@ if ($sp -ne $null)
 ### <a name="microsoft-graph-disabled"></a>Microsoft Graph 已禁用
 **错误消息：**
 
-无法在此 Azure AD 租户中启用域服务。 Microsoft Azure AD 应用程序已在你的 Azure AD 租户中禁用。 请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，然后尝试为 Azure AD 租户启用域服务。
+无法在此 Azure AD 租户中启用域服务。 Microsoft Azure AD 应用程序已在 Azure AD 租户中禁用。 请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。
 
 **补救方法：**
 
 检查是否已禁用标识符为 00000002-0000-0000-c000-000000000000 的应用程序。 此应用程序是一个 Microsoft Azure AD 应用程序，为图形 API 提供对 Azure AD 租户的访问权限。 需要为 Azure AD 域服务启用此应用程序，才能将 Azure AD 租户同步到托管域。
 
-若要解决此错误，请启用此应用程序，然后尝试为 Azure AD 租户启用域服务。
+要解决此错误，请启用此应用程序，并尝试为 Azure AD 租户启用域服务。
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>用户无法登录 Azure AD 域服务托管域
 如果 Azure AD 租户中有一个或多个用户无法登录到新建的托管域，请执行以下故障排除步骤：
@@ -142,8 +143,8 @@ if ($sp -ne $null)
 
   * 已部署或更新到[最新版本的 Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594)。
   * 已将 Azure AD Connect 配置为[执行完全同步](active-directory-ds-getting-started-password-sync.md)。
-  * 根据目录的大小，可能需要在一段时间后，用户帐户和凭据哈希才可在 Azure AD 域服务中使用。 请务必等待足够长的时间，然后重试身份验证（根据不同的目录大小，可能需要几个小时，大型目录可能需要一两天的时间才能同步）。
-  * 如果在执行上述步骤后问题仍然出现，请尝试重新启动 Microsoft Azure AD 同步服务。 在同步计算机上启动命令提示符，然后执行以下命令：
+  * 根据目录的大小，可能需要在一段时间后，用户帐户和凭据哈希才可在 Azure AD 域服务中使用。 请务必等待足够长的时间，并重试身份验证（根据不同的目录大小，可能需要几个小时，大型目录可能需要一两天的时间才能同步）。
+  * 如果在执行上述步骤后问题仍然出现，请尝试重新启动 Microsoft Azure AD 同步服务。 在同步计算机上启动命令提示符，并执行以下命令：
 
     1. net stop 'Microsoft Azure AD Sync'
     2. net start 'Microsoft Azure AD Sync'

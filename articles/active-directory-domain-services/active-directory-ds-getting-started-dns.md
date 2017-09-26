@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/27/2017
+ms.date: 09/20/2017
 ms.author: maheshu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
@@ -20,13 +20,10 @@ ms.openlocfilehash: c704ee189072ce8ed196d1ef0a23edd528a10025
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
 
-
 ---
-# 启用 Azure Active Directory 域服务（预览版）
-<a id="enable-azure-active-directory-domain-services-preview" class="xliff"></a>
+# <a name="enable-azure-active-directory-domain-services-preview"></a>启用 Azure Active Directory 域服务（预览版）
 
-## 任务 4：更新 Azure 虚拟网络的 DNS 设置
-<a id="task-4-update-dns-settings-for-the-azure-virtual-network" class="xliff"></a>
+## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>任务 4：更新 Azure 虚拟网络的 DNS 设置
 在前面的配置任务中，已成功为你的目录启用 Azure Active Directory 域服务。 下一个任务是确保虚拟网络中的计算机可以连接和使用这些服务。 在本文中，你需要更新虚拟网络的 DNS 服务器设置，使其指向 Azure Active Directory 域服务在虚拟网络上可用的两个 IP 地址。
 
 若要更新已启用 Azure Active Directory 域服务的虚拟网络的 DNS 服务器设置，请完成以下步骤：
@@ -50,7 +47,6 @@ ms.lasthandoff: 06/30/2017
 >
 >
 
-## 后续步骤
-<a id="next-step" class="xliff"></a>
+## <a name="next-step"></a>后续步骤
 [任务 5：允许将密码同步到 Azure Active Directory 域服务](active-directory-ds-getting-started-password-sync.md)
 

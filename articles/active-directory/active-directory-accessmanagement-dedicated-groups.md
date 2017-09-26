@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 09/12/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;oldportal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
-ms.openlocfilehash: 92b9c88ec49424c96c3bd21bc5c4ce390352c17b
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 992f4563064d7a292cf4fdd90a9a3c84cdec91c0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="dedicated-groups-in-azure-active-directory"></a>Azure Active Directory 中的专用组
@@ -36,11 +36,11 @@ ms.lasthandoff: 02/13/2017
 
 **启用专用组**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后打开你的组织的目录。
-2. 选择“组”选项卡，然后打开要编辑的组。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“Active Directory”，然后打开组织的目录。
+2. 选择“组”选项卡，并打开要编辑的组。
 3. 选择“配置”选项卡，然后将“启用专用组”设置为“是”。
 
-一旦将“启用专用组”开关设置为“是”，你就可以通过将“启用‘所有用户’组”开关设置为“是”，来进一步使目录自动创建“所有用户”专用组。 然后，你还可以编辑此专用组的名称，方法是在“‘所有用户’组的显示名称”字段中键入该名称。
+一旦将“启用专用组”开关设置为“是”，便可以通过将“启用‘所有用户’组”开关设置为“是”，来进一步使目录自动创建“所有用户”专用组。 然后，还可以编辑此专用组的名称，方法是在“‘所有用户’组的显示名称”字段中键入该名称。
 
 “所有用户”组可用于向目录中的所有用户分配相同的权限。 例如，可以通过向“所有用户”专用组分配对某个 SaaS 应用程序的访问权限，来授予目录中所有用户对该应用程序的访问权限。
 

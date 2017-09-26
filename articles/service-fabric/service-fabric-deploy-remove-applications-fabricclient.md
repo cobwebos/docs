@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/07/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: ebe8b9f0cace419125bde84a9ff2a912af061156
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>使用 FabricClient 部署和删除应用程序
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/08/2017
 
 [打包应用程序类型][10]后，即可部署到 Azure Service Fabric 群集中。 部署涉及以下三个步骤：
 
-1. 将应用程序包上载到映像存储
+1. 将应用程序包上传到映像存储
 2. 注册应用程序类型
 3. 创建应用程序实例
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 07/08/2017
 2. 如果不再需要该应用程序类型，则将其取消注册
 3. 从映像存储中删除应用程序包
 
-如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md) 本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。 
+如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md) 本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
 在运行本文中的任何代码示例之前，通过创建 [FabricClient](/dotnet/api/system.fabric.fabricclient) 实例连接到群集。 有关连接到本地开发群集、远程群集，或使用 Azure Active Directory、X509 证书或 Windows Active Directory 保护的群集的示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)。 若要连接到本地部署群集，请运行以下命令：
@@ -66,7 +65,7 @@ FabricClient fabricClient = new FabricClient();
 有关映像存储和映像存储连接字符串的补充信息，请参阅[了解映像存储连接字符串](service-fabric-image-store-connection-string.md)。
 
 ## <a name="register-the-application-package"></a>注册应用程序包
-应用程序清单中声明的应用程序类型和版本会在注册应用程序包时可供使用。 系统将读取上一步中上载的程序包，验证此包，处理包的内容，并将已处理的包复制到内部系统位置。  
+应用程序清单中声明的应用程序类型和版本会在注册应用程序包时可供使用。 系统将读取上一步中上传的程序包，验证此包，处理包的内容，并将已处理的包复制到内部系统位置。  
 
 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 可在群集中注册应用程序并使其可供部署。
 
@@ -139,8 +138,7 @@ ImageStoreConnectionString 可在群集清单中找到：
 如果客户端计算机位于另一个区域，而不在此群集中，请考虑使用此群集的邻近区域或同区域中的客户端计算机。
 - 检查是否已达到外部限制。 例如，将映像存储配置为使用 Azure 存储时，可能会限制上传。
 
-问题：上传包已成功完成，但 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 超时。
-请尝试：
+问题：上传包已成功完成，但 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 超时。请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。
 压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会变慢（尤其是包括压缩时间时），但注册和注销应用程序类型会加快。
 - 通过 `timeout` 参数为 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 指定更长的超时时间。

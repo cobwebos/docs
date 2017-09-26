@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 338144eb103c68c7fff407cbeccce11734c1c34b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM 规模集和托管磁盘
@@ -30,7 +30,7 @@ Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)支持具有托管
 
 * 可以将托管的数据磁盘附加到规模集。
 
-* 使用托管磁盘后，规模集的容量可高达 1,000 个 VM（如果基于平台映像）或者 100 个 VM（如果基于自定义映像）。
+* 使用托管磁盘后，规模集的容量可高达 1,000 个 VM（如果基于平台映像）或者 300 个 VM（如果基于自定义映像）。
 
 ## <a name="get-started"></a>入门
 

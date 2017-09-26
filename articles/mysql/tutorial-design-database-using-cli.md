@@ -1,5 +1,5 @@
 ---
-title: "设计你的第一个 Azure Database for MySQL 数据库 - Azure CLI | Microsoft Docs"
+title: "设计第一个 Azure Database for MySQL 数据库 - Azure CLI | Microsoft Docs"
 description: "本教程介绍如何使用 Azure CLI 2.0 从命令行创建和管理 Azure Database for MySQL 服务器。"
 services: mysql
 author: v-chenyh
@@ -10,15 +10,15 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 06/13/2017
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 590cba6cb58d0c0eaedb9f122ac048c33988004d
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 0e6a92eeb9711b086359ab2cd1aea87a57f1fc36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
-# <a name="design-your-first-azure-database-for-mysql-database"></a>设计你的第一个 Azure Database for MySQL 数据库
+# <a name="design-your-first-azure-database-for-mysql-database"></a>设计第一个 Azure Database for MySQL 数据库
 
 Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数据库引擎的一种关系型数据库服务。 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
 
@@ -43,7 +43,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
-使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建 [Azure 资源组](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) 命令创建 [Azure 资源组](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
 以下示例在 `westus` 位置创建名为 `mycliresource` 的资源组。
 

@@ -38,7 +38,8 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 * [Git](https://www.git-scm.com/)
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 

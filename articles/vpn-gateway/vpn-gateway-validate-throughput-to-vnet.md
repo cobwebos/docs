@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/10/2017
+ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2e0347854b5d30c955a50a01d6f7ba08e24f94b6
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 5f1ce4c76aadc5fdfe53b15f0d82da5ce6b43346
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
 通过 VPN 网关连接，可以在 Azure 内的虚拟网络与本地 IT 基础结构之间创建安全的跨界连接。
 
-本文将演示如何验证从本地资源到达 Azure 虚拟机的网络吞吐量， 还会提供故障排除指南。
+本文将演示如何验证从本地资源到达 Azure 虚拟机 (VM) 的网络吞吐量。 还会提供故障排除指南。
 
 >[!NOTE]
 >本文旨在帮助诊断并解决常见的问题。 如果使用以下信息无法解决问题，请[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
@@ -40,7 +40,7 @@ VPN 网关连接涉及以下组件：
 - 本地 VPN 设备（请查看列有[已验证的 VPN 设备](vpn-gateway-about-vpn-devices.md#devicetable)的列表）。
 - 公共 Internet
 - Azure VPN 网关
-- Azure 虚拟机
+- Azure VM
 
 下图显示的是通过 VPN 建立的从本地网络至 Azure 虚拟网络的逻辑连接。
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 9dd74014bf05234a83c7678b67b42b96cd8b8d64
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>使用基于角色的访问控制管理 Azure Site Recovery
 

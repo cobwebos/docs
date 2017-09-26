@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>如何在 Azure 搜索中对搜索结果分页
@@ -115,9 +116,4 @@ ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
 [3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
 [5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png 
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

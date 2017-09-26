@@ -21,7 +21,6 @@ ms.openlocfilehash: 3017165ad58e93b582fb5364d54ca3e64ea9e35d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 
 [!INCLUDE [1. Introduction](active-directory-mobileanddesktopapp-windowsdesktop-introduction.md)]

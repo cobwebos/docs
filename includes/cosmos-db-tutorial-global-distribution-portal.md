@@ -3,7 +3,7 @@
 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
-有关 Cosmos DB 中全局数据库复制工作原理的详细信息，请参阅[使用 Cosmos DB 全局分配数据](../articles/documentdb/documentdb-distribute-data-globally.md)。
+有关 Azure Cosmos DB 中全局数据库复制工作原理的详细信息，请参阅[使用 Cosmos DB 全局分配数据](../articles/cosmos-db/distribute-data-globally.md)。
 
 ## <a id="addregion"></a>使用 Azure 门户添加全局数据库区域
 Azure Cosmos DB 在全球范围的所有 [Azure 区域][azureregions]中推出。 为数据库帐户选择默认的一致性级别后，可以关联一个或多个区域（具体取决于所选的默认一致性级别和全局分发需求）。
@@ -11,7 +11,7 @@ Azure Cosmos DB 在全球范围的所有 [Azure 区域][azureregions]中推出�
 1. 在 [Azure 门户](https://portal.azure.com/)的左侧栏中，单击“Azure Cosmos DB”。
 2. 在“Azure Cosmos DB”边栏选项卡中，选择要修改的数据库帐户。
 3. 在“帐户”边栏选项卡上的菜单中单击“全局复制数据”。
-4. 在“全局复制数据”边栏选项卡中，通过单击地图中的区域选择要添加或删除的区域，然后单击“保存”。 添加区域会产生费用，有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/documentdb/)或[使用 DocumentDB 全局分发数据](../articles/documentdb/documentdb-distribute-data-globally.md)。
+4. 在“全局复制数据”边栏选项卡中，通过单击地图中的区域选择要添加或删除的区域，并单击“保存”。 添加区域会产生费用，有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)或[使用 Azure Cosmos DB 全局分发数据](../articles/cosmos-db/distribute-data-globally.md)。
    
     ![单击图中的区域可以添加或删除区域][1]
     

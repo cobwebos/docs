@@ -34,7 +34,8 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     * [Node.js](https://nodejs.org/en/) 版本 v0.10.29 或更高版本
     * [Git](http://git-scm.com/)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 

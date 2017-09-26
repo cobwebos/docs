@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b5f43156d46b1ab9dd10ff5a93427270c1b839ca
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
@@ -223,7 +223,7 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 
 * **continuationToken** - 继续标记表示列出操作应开始的位置。 如果未提供标记，它将从开头列出 blob。 可以列出任意数目的 blob，从零到最大集。 即使此方法返回零个结果，如果 `results.continuationToken` 不为空，则服务中也可能存在更多 blob 未列出。
 * **prefix** - 可以指定要用于 blob 列出的前缀。 将仅列出以该前缀开头的 blob。
-* **useFlatBlobListing** - 如[命名和引用容器和 blob](#naming-and-referencing-containers-and-blobs) 部分中所述，虽然 Blob 服务是平面存储方案，但可通过命名具有路径信息的 blob 来创建虚拟层次结构。 但是，目前不支持非平面列表。 此功能即将支持。 目前，此值应为 **YES**。
+* **useFlatBlobListing** - 如[命名和引用容器和 blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) 部分中所述，虽然 Blob 服务是平面存储方案，但可通过命名具有路径信息的 blob 来创建虚拟层次结构。 但是，目前不支持非平面列表。 此功能即将支持。 目前，此值应为 **YES**。
 * **blobListingDetails** - 可指定在列出 blob 时要包含哪些项
   * AZSBlobListingDetailsNone：仅列出已提交的 blob，不返回 blob 元数据。
   * AZSBlobListingDetailsSnapshots：列出已提交的 blob 和 blob 快照。

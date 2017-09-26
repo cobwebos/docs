@@ -15,12 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 78091b515c00591a4af8d807945475b6be50188a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 07/08/2017
 ## <a name="sample-script"></a>示例脚本
 
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/route-traffic-through-nva/route-traffic-through-nva.sh "通过网络虚拟设备路由流量")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/route-traffic-through-nva/route-traffic-through-nva.sh "Route traffic through a network virtual appliance")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 

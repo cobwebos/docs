@@ -21,7 +21,6 @@ ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>通过 StorSimple Manager 服务停用和删除 StorSimple 8000 系列设备
 ## <a name="overview"></a>概述

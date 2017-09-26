@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
@@ -95,10 +96,5 @@ CORS 请求有两种类型：简单请求和复杂请求。
 
 ### <a name="azure-cdn-standard"></a>标准 Azure CDN
 在标准 Azure CDN 配置文件中，允许多个源但不使用通配符源的唯一机制是使用[查询字符串缓存](cdn-query-string.md)。  你需要为 CDN 终结点启用查询字符串设置，然后对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

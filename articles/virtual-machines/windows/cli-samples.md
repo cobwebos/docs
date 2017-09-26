@@ -22,7 +22,6 @@ ms.openlocfilehash: f4b2e8a5583855df7472af3fbef01ac641caf6bf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/06/2017
 
-
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure CLI 示例
 

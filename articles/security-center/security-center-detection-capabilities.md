@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: b6a0504f2dd5d23fa135b8afc371e3a9210d7caa
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure 安全中心检测功能

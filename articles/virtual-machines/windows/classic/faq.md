@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: a9565194bc2e4dccfd29ba120ac35e21d43c770a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>有关使用经典部署模型创建的 Azure Windows 虚拟机的常见问题

@@ -21,7 +21,6 @@ ms.openlocfilehash: 1cf96bbf8bd215d7ddb3c99860a5cb4e668be3c2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-smtp-connector"></a>SMTP 连接器入门
 连接到 SMTP 以发送电子邮件。

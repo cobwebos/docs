@@ -1,5 +1,5 @@
 ---
-title: "适用于 Windows Server 和 Windows 客户端的 Azure 混合使用权益 | Microsoft Docs"
+title: "适用于 Windows Server 的 Azure 混合使用权益 | Microsoft Docs"
 description: "了解如何充分利用 Windows 软件保障权益将本地许可证引入到 Azure 中"
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,32 +12,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 5/26/2017
+ms.date: 9/13/2017
 ms.author: xujing
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 46b0895dc33fc13a1296301ed096fd3871b38952
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: f34f65eb1d5375caae8831aedaed8a4b6a9cd098
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="azure-hybrid-use-benefit-for-windows-server-and-windows-client"></a>适用于 Windows Server 和 Windows 客户端的 Azure 混合使用权益
-对于有软件保障的客户，Azure 混合使用权益可让你使用本地 Windows Server 和 Windows 客户端许可证，并以较低的成本在 Azure 中运行Windows 虚拟机。 适用于 Windows Server 的 Azure 混合使用权益包括 Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2 和 Windows Server 2016。 适用于 Windows 客户端的 Azure 混合使用权益包括 Windows 10。 有关详细信息，请参阅 [Azure 混合使用权益许可页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
+# <a name="azure-hybrid-use-benefit-for-windows-server"></a>适用于 Windows Server 的 Azure Hybrid Use Benefit
+对于有软件保障的客户，Azure 混合使用权益可让你使用本地 Windows Server 和 Windows 客户端许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 适用于 Windows Server 的 Azure 混合使用权益包括 Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2 和 Windows Server 2016。 有关详细信息，请参阅 [Azure 混合使用权益许可页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
->[!IMPORTANT]
->适用于 Windows 客户端的 Azure 混合使用权益目前提供预览，在 Azure Marketplace 中使用 Windows 10 映像。 仅适用于：具有按用户分配的 Windows 10 企业版 E3/E5 或按用户分配的 Windows VDA（用户订阅许可证或附加用户订阅许可证，统称为“合格许可证”）的企业客户。
+> [!IMPORTANT]
+> 为 Azure Marketplace 上具有企业协议的客户发布的“[HUB]”Windows Server 映像已从 2017 年 9 月 11 日开始停用，请将标准 Windows Server 与 Azure 混合使用权益的“节约资金”选项结合使用。 有关详细信息，请参阅[此文](https://support.microsoft.com/en-us/help/4036360/retirement-azure-hybrid-use-benefit-images-for-ea-subscriptions)。
 >
+
+> [!NOTE]
+> 本文演示如何实现 Windows Server 映像的许可权益。 还可以对 [Windows 10 桌面版映像](#windows-desktop-multitenant-hosting-deployment)执行这些步骤。
 >
 
 ## <a name="ways-to-use-azure-hybrid-use-benefit"></a>使用 Azure 混合使用权益的方法
 有多种不同方法可使用 Azure 混合使用权益部署 Windows VM：
 
-1. 可以从[特定 Marketplace 映像](#deploy-a-vm-using-the-azure-marketplace)部署 VM，这些映像已通过 Azure 混合使用权益（Windows Server 2016、Windows Server 2012R2、Windows Server 2012 和 Windows Server 2008SP1）进行了预配置。
+1. 可以从 [特定 Marketplace 映像]( 部署 VM
 2. 用户可以[上传自定义 VM](#upload-a-windows-vhd)，并[使用 Resource Manager 模板](#deploy-a-vm-via-resource-manager)或 [Azure PowerShell](#detailed-powershell-deployment-walkthrough) 进行部署。
 
-## <a name="deploy-a-vm-using-the-azure-marketplace"></a>使用 Azure Marketplace 部署 VM
-以下映像可在 Marketplace 中获取，这些映像已通过以下 Azure 混合使用权益进行了预配置：Windows Server 2016、Windows Server 2012R2、Windows Server 2012 和 Windows Server 2008SP1。 这些映像可以直接从 Azure 门户、Resource Manager 模板或 Azure PowerShell 进行部署。
+## <a name="deploy-a-vm-using-the-azure-marketplace"></a>使用 Azure 应用商店部署 VM
+以下映像可在应用商店中获取，这些映像已通过以下 Azure 混合使用权益进行了预配置：Windows Server 2016、Windows Server 2012R2、Windows Server 2012 和 Windows Server 2008SP1。 这些映像可以直接从 Azure 门户、Resource Manager 模板或 Azure PowerShell 进行部署。
 
 可直接从 Azure 门户中部署这些映像。 对于在 Resource Manager 模板中使用和与 Azure PowerShell 一起使用，请查看如下映像列表：
 
@@ -70,7 +72,7 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
 ```
 
 > [!NOTE]
-> Microsoft SQL Server、SharePoint Server 和 Dynamics 还可以利用软件保障许可。 你仍需要准备 Windows Server 映像，方法是安装应用程序组件，并相应地提供许可证密钥，然后将磁盘映像上传到 Azure。 查看使用应用程序运行 Sysprep 的相关文档，例如[使用 Sysprep 安装 SQL Server 的注意事项](https://msdn.microsoft.com/library/ee210754.aspx)或[生成 SharePoint Server 2016 参考映像 (Sysprep)](http://social.technet.microsoft.com/wiki/contents/articles/33789.build-a-sharepoint-server-2016-reference-image-sysprep.aspx)。
+> Microsoft SQL Server、SharePoint Server 和 Dynamics 还可以利用软件保障许可。 仍需要准备 Windows Server 映像，方法是安装应用程序组件，并相应地提供许可证密钥，然后将磁盘映像上传到 Azure。 查看使用应用程序运行 Sysprep 的相关文档，例如[使用 Sysprep 安装 SQL Server 的注意事项](https://msdn.microsoft.com/library/ee210754.aspx)或[生成 SharePoint Server 2016 参考映像 (Sysprep)](http://social.technet.microsoft.com/wiki/contents/articles/33789.build-a-sharepoint-server-2016-reference-image-sysprep.aspx)。
 >
 >
 
@@ -89,7 +91,7 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
    }
 ```
 
-仅针对与 Azure Marketplace 映像配合使用的 Windows 客户端：
+仅针对与 Azure 应用商店映像配合使用的 Windows 客户端：
 ```json
 "properties": {  
    "licenseType": "Windows_Client",
@@ -106,7 +108,7 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
 New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Server"
 ```
 
-仅针对与 Azure Marketplace 映像配合使用的 Windows 客户端：
+仅针对与 Azure 应用商店映像配合使用的 Windows 客户端：
 ```powershell
 New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
@@ -138,7 +140,7 @@ LicenseType              :
 ```
 
 ## <a name="detailed-powershell-deployment-walkthrough"></a>PowerShell 部署详细演练
-以下面详细 PowerShell 步骤演示了 VM 的完整部署。 可以在[使用 Resource Manager 和 PowerShell 创建 Windows VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 中了解更多上下文，包括实际的 cmdlet 和所创建的不同组件。 可逐步执行创建资源组、存储帐户和虚拟网络，然后定义 VM 并完成创建 VM 的整个过程。
+以下面详细 PowerShell 步骤演示了 VM 的完整部署。 可以在[使用 Resource Manager 和 PowerShell 创建 Windows VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 中了解更多上下文，包括实际的 cmdlet 和所创建的不同组件。 可逐步执行创建资源组、存储帐户和虚拟网络，定义 VM 并完成创建 VM 的整个过程。
 
 首先请安全获取凭据，并设置位置和资源组名称：
 

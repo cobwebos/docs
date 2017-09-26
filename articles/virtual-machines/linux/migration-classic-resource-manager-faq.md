@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
 ms.openlocfilehash: d1e7e065da0d6bcbf2f9df40c5d2926954be1bbb
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 

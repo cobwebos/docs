@@ -1,5 +1,4 @@
-#### 删除云设备
-<a id="to-delete-a-cloud-appliance" class="xliff"></a>
+#### <a name="to-delete-a-cloud-appliance"></a>删除云设备
 
 1. 登录到 Azure 门户。
 2. 只能删除不含数据的停用设备。 删除设备上的数据，也可[将卷容器中的数据故障转移到其他设备](../articles/storsimple/storsimple-8000-device-failover-cloud-appliance.md)。 删除数据后，即可停用设备。

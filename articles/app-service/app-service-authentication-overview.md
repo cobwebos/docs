@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service 中的身份验证和授权 | Microsoft Docs"
+title: "Azure 应用服务中的身份验证和授权 | Microsoft Docs"
 description: "概念性参考和概述：Azure 应用服务的身份验证/授权功能"
 services: app-service
 documentationcenter: 
@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-translationtype: Human Translation
-ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
-ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: ea1666007b88cdf45017b0bd91e100dc1218fb2b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
@@ -29,13 +30,12 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 参阅以下教程之一即可立即入门：
 
 * [将身份验证添加到 iOS 应用][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova] 应用）
-* [Azure App Service 中 API 应用的用户身份验证][apia-user]
-* [Azure App Service 入门 - 第 2 部分][web-getstarted]
+* [Azure 应用服务中 API 应用的用户身份验证][apia-user]
 
 ## <a name="how-authentication-works-in-app-service"></a>应用服务中的身份验证机制
 若要使用其中某个标识提供者进行身份验证，首先需对标识提供者进行配置，使之了解应用程序。 然后，标识提供者会提供 ID 和机密，再由用户将其提供给应用服务。 这样即可确立信任关系，使应用服务能够验证标识提供者提供的用户声明，例如身份验证令牌。
 
-若要使用其中某个提供者来登录用户，必须将用户重定向到一个终结点，通过该终结点来登录该提供者的用户。 如果客户使用的是 Web 浏览器，则可让应用服务将所有未经身份验证的用户自动定向到允许用户登录的终结点。 否则需将用户定向到 `{your App Service base URL}/.auth/login/<provider>`，其中 `<provider>` 的值为下列值之一：aad、facebook、google、microsoft 或 twitter。 本文后面部分介绍移动方案和 API 方案。
+要使用其中某个提供者来登录用户，必须将用户重定向到一个终结点，通过该终结点来登录该提供者的用户。 如果客户使用的是 Web 浏览器，则可让应用服务将所有未经身份验证的用户自动定向到允许用户登录的终结点。 否则需将用户定向到 `{your App Service base URL}/.auth/login/<provider>`，其中 `<provider>` 的值为下列值之一：aad、facebook、google、microsoft 或 twitter。 本文后面部分介绍移动方案和 API 方案。
 
 通过 Web 浏览器与应用程序交互的用户会设置一个 Cookie，因此在浏览应用程序时其身份可以保持已验证状态。 对于其他客户端类型，例如移动客户端类型，则会向客户端颁发 JSON Web 令牌 (JWT)，后者应存在于 `X-ZUMO-AUTH` 标头中。 移动应用客户端 SDK 会为用户处理这种情况。 也可以在 `Authorization` 标头中以[持有者令牌](https://tools.ietf.org/html/rfc6750)的形式直接包含 Azure Active Directory 标识令牌或访问令牌。
 
@@ -44,7 +44,7 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 ### <a name="mobile-authentication-with-a-provider-sdk"></a>通过提供者 SDK 进行移动身份验证
 在后端配置完所有项目以后，即可修改移动客户端，通过应用服务进行登录。 可以使用下述两种方式：
 
-* 使用给定标识提供者发布的 SDK 来建立标识，然后即可获得应用服务的访问权限。
+* 使用给定标识提供者发布的 SDK 来建立标识，即可获得应用服务的访问权限。
 * 使用单行代码即可让移动应用客户端 SDK 登录用户。
 
 > [!TIP]
@@ -75,7 +75,7 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 
 从应用服务逻辑应用到 API 应用的服务帐户身份验证是一个特殊情况，该情况在[在逻辑应用中使用在应用服务中托管的自定义 API](../logic-apps/logic-apps-custom-hosted-api.md) 中进行了详细介绍。
 
-## <a name="a-nameauthorizationahow-authorization-works-in-app-service"></a><a name="authorization"></a>应用服务中的授权机制
+## <a name="authorization"></a>应用服务中的授权机制
 用户可以全权控制访问应用程序的请求。 可以为应用服务身份验证/授权配置以下任意行为：
 
 * 只允许经过身份验证的请求访问应用程序。
@@ -90,7 +90,7 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
   
     这种情况下，身份验证/授权功能处于关闭状态。 身份验证和授权任务完全由应用程序代码来完成。
 
-前述行为由 Azure 门户中的“请求未经身份验证时需执行的操作”选项控制。 如果选择“使用提供者名称登录”，则所有请求都需进行身份验证。**“允许请求(无操作)**”将授权决策交由代码进行，但仍提供身份验证信息。** 若要让代码来处理一切，可禁用身份验证/授权功能。
+前述行为由 Azure 门户中的“请求未经身份验证时需执行的操作”选项控制。 如果选择“使用提供者名称登录”，则所有请求都需进行身份验证。 “允许请求（无操作）”将授权决策交由代码进行，但仍提供身份验证信息。 若要让代码来处理一切，可禁用身份验证/授权功能。
 
 ## <a name="working-with-user-identities-in-your-application"></a>处理应用程序中的用户标识
 应用服务通过特殊标头将某些用户信息传递给应用程序。 外部请求禁止这些标头，仅在通过应用服务身份验证/授权进行设置的情况下存在。 部分标头示例如下：
@@ -125,12 +125,12 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 以下教程介绍如何通过服务器定向流向移动客户端添加身份验证：
 
 * [将身份验证添加到 iOS 应用][iOS]
-* [将身份验证添加到 Android 应用] [Android]
-* [将身份验证添加到 Windows 应用] [Windows]
-* [将身份验证添加到 Xamarin.iOS 应用] [Xamarin.iOS]
-* [将身份验证添加到 Xamarin.Android 应用] [Xamarin.Android]
-* [将身份验证添加到 Xamarin.Forms 应用] [Xamarin.Forms]
-* [将身份验证添加到 Cordova 应用] [Cordova]
+* [将身份验证添加到 Android 应用][Android]
+* [将身份验证添加到 Windows 应用][Windows]
+* [将身份验证添加到 Xamarin.iOS 应用][Xamarin.iOS]
+* [将身份验证添加到 Xamarin.Android 应用][Xamarin.Android]
+* [将身份验证添加到 Xamarin.Forms 应用][Xamarin.Forms]
+* [将身份验证添加到 Cordova 应用][Cordova]
 
 若要使用 Azure Active Directory 的客户端定向流，请参阅以下资源：
 
@@ -153,13 +153,11 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 ### <a name="api-applications"></a>API 应用程序
 以下教程介绍了如何保护 API 应用：
 
-* [Azure App Service 中 API 应用的用户身份验证][apia-user]
-* [Azure App Service 中 API 应用的服务主体身份验证][apia-service]
+* [Azure 应用服务中 API 应用的用户身份验证][apia-user]
+* [Azure 应用服务中 API 应用的服务主体身份验证][apia-service]
 
 [apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
 [apia-service]: ../app-service-api/app-service-api-dotnet-service-principal-auth.md
-
-[web-getstarted]: ../app-service-web/app-service-web-get-started-2.md#authenticate-your-users
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
@@ -180,9 +178,4 @@ ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 [ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

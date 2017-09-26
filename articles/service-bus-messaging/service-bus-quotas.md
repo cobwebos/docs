@@ -20,7 +20,6 @@ ms.openlocfilehash: 9a364adad3342b211a647eb743776a47812b75f4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="service-bus-quotas"></a>服务总线配额
 本部分列出了 Microsoft Azure 服务总线消息传送的基本配额和限制阈值。

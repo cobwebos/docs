@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 292115b5603c6f05a5eab3492d4b3e2096b58ed2
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 78cf118dfb9759e1cdbdc023ccad65238853122e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>使用 Azure Cosmos DB 和 DocumentDB API 构建 Java Web 应用程序
@@ -48,11 +48,10 @@ ms.lasthandoff: 08/24/2017
 ## <a id="Prerequisites"></a>此 Java Web 应用程序教程的先决条件
 在开始本应用程序开发教程前，必须具有：
 
-* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)
+*  如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-    或
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-    本地安装的 [Azure Cosmos DB 模拟器](local-emulator.md)。
 * [Java 开发工具包 (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
 * [已启用 Java 运行时环境（例如 Tomcat 或 Jetty）的 Azure 网站。](../app-service-web/web-sites-java-get-started.md)
@@ -95,7 +94,7 @@ ms.lasthandoff: 08/24/2017
 
 1. 在项目资源管理器中右键单击项目，单击“配置”，并单击“转换为 Maven 项目”。
 2. 在“创建新 POM”窗口中，接受默认值，并单击“完成”。
-3. 在“项目资源管理器”中，打开 pom.xml 文件。
+3. 在“项目资源管理器” 中，打开 pom.xml 文件。
 4. 在“依赖项”选项卡上，在“依赖项”窗格中单击“添加”。
 5. 在“选择依赖项”  窗口中，执行以下操作：
    
@@ -721,12 +720,12 @@ ms.lasthandoff: 08/24/2017
 要在 Azure 网站上部署 Java 应用程序，只需将应用程序导出为 WAR 文件，然后通过源控件（例如 Git）或 FTP 上传此文件。
 
 1. 要将应用程序导出为 WAR 文件，请在“项目资源管理器”中右键单击项目，然后依次单击“导出”和“WAR 文件”。
-2. 在“WAR 导出”窗口中，执行以下操作：
+2. 在“WAR 导出”  窗口中，执行以下操作：
    
    * 在“Web 项目”框中，输入 azure-documentdb-java-sample。
    * 在“目标”框中，选择一个目标以保存 WAR 文件。
-   * 单击“完成”。
-3. 现在已经具有 WAR 文件，只需将它上传到 Azure 网站的 **webapps** 目录。 有关上传此文件的说明，请参阅[将 Java 应用程序添加到 Azure 应用服务 Web 应用](../app-service-web/web-sites-java-add-app.md)。
+   * 单击“完成” 。
+3. 现在已经具有 WAR 文件，只需将它上传到 Azure 网站的 **webapps** 目录。 有关上传此文件的说明，请参阅[将 Java 应用程序添加到 Azure 应用服务 Web 应用](../app-service/web-sites-java-add-app.md)。
    
     将 WAR 文件上传到 webapps 目录之后，运行时环境将检测到已经添加了此文件，并会自动加载它。
 4. 若要查看完成的作品，请导航到 http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/，然后开始添加任务！

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 744c420aa0298c59c44e645b95a716ad876752de
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>教程：Azure Active Directory 与 Land Gorilla 客户端的集成

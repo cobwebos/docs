@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 01/25/2017
+ms.date: 09/06/2017
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 6f8d220a64e04b7dfa021aacf68dadf0d55393bf
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: c58aec1ea9bc79b335a115007500d77f8e752850
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>将数据从 Azure Data Lake Store 加载到 SQL 数据仓库中
 本文档提供了使用 PolyBase 从 Azure Data Lake Store (ADLS) 将自己的数据加载到 SQL 数据仓库中所需的所有步骤。
 虽然能够使用外部表对 ADLS 中存储的数据运行即席查询，但最佳做法是，建议将数据导入 SQL 数据仓库。
-估计时间：10 分钟，假定你具备需要完成的先决条件。
-在本教程中，你将了解如何：
+
+在本教程中，将了解如何：
 
 1. 创建要从 Azure Data Lake Store 加载的外部数据库对象。
 2. 连接到 Azure Data Lake Store 目录。
@@ -89,8 +89,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>创建外部数据源
-使用此 [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] 命令存储数据的位置以及数据的类型。
-可以在 Azure 门户和 www.portal.azure.com 中找到 ADL URI。
+使用此 [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] 命令存储数据的位置以及数据的类型。 要在 Azure 门户中查找 ADL URI，请导航到 Azure Data Lake Store，然后查看“概要”面板。
 
 ```sql
 -- C: Create an external data source
@@ -163,18 +162,18 @@ WITH
 ## <a name="external-table-considerations"></a>外部表注意事项
 创建外部表很容易，但有一些细微差别，需要进行讨论。
 
-使用 PolyBase 加载数据时将进行强类型化。 这意味着所引入的每行数据必须满足表架构定义。
-如果某个给定行不符合架构定义，则该行将被拒绝加载。
+使用 PolyBase 加载数据时会进行强类型化。 这意味着所引入的每行数据必须满足表架构定义。
+如果某个给定行不符合架构定义，则该行会被拒绝加载。
 
 使用 REJECT_TYPE 和 REJECT_VALUE 可以定义在最终表中必须存在的数据行数或数据的百分比。
-在加载过程中，如果达到拒绝值，则加载将失败。 行被拒绝的最常见原因是架构定义不匹配。
+在加载过程中，如果达到拒绝值，则加载会失败。 行被拒绝的最常见原因是架构定义不匹配。
 例如，当文件中的数据是字符串时，如果错误地为列指定了 int 的架构，则每一行都将无法加载。
 
 Location 指定要从中读取数据的最顶层目录。
 在此示例中，如果 /DimProduct/ 下有子目录，PolyBase 将导入这些子目录中的所有数据。
 
 ## <a name="load-the-data"></a>加载数据
-若要从 Azure Data Lake Store 加载数据，请使用 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 使用 CTAS 加载时将使用已创建的强类型化外部表。
+若要从 Azure Data Lake Store 加载数据，请使用 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 使用 CTAS 加载时会使用已创建的强类型化外部表。
 
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，则新表将是外部表中的列和数据类型的副本。
 
@@ -204,17 +203,17 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 有关维护列存储索引的详细信息，请参阅[管理列存储索引][manage columnstore indexes]一文。
 
 ## <a name="optimize-statistics"></a>优化统计信息
-最好是在加载之后马上创建单列统计信息。 对于统计信息，可以使用多个选项。 例如，如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 如果你知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。
+最好是在加载之后马上创建单列统计信息。 对于统计信息，可以使用多个选项。 例如，如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。
 
 如果决定针对每个表的每个列创建单列统计信息，可以使用 [统计信息][statistics]一文中的存储过程代码示例 `prc_sqldw_create_stats`。
 
-以下示例是创建统计信息的不错起点。 它会针对维度表中的每个列以及事实表中的每个联接列创建单列统计信息。 以后，你随时可以将单列或多列统计信息添加到其他事实表列。
+以下示例是创建统计信息的不错起点。 它会针对维度表中的每个列以及事实表中的每个联接列创建单列统计信息。 以后，随时可以将单列或多列统计信息添加到其他事实表列。
 
 
 ## <a name="achievement-unlocked"></a>大功告成！
-你已成功地将数据载入 Azure SQL 数据仓库。 干得不错！
+已成功地将数据载入 Azure SQL 数据仓库。 干得不错！
 
-##<a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 加载数据是使用 SQL 数据仓库开发数据仓库解决方案的第一步。 请在[表](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)和 [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops.md) 中查看我们的开发资源。
 
 

@@ -1,6 +1,6 @@
 ---
 title: "规划 Service Fabric 群集容量 | Microsoft 文档"
-description: "Service Fabric 群集容量规划注意事项。 节点类型、耐久性和可靠性层"
+description: "Service Fabric 群集容量规划注意事项。 节点类型、操作、耐久性和可靠性层"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/24/2017
+ms.date: 09/12/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 36b96360fabdcc64ffd2356540c580594637d48e
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 04964175f06675a486fcf252f194f0d790acea4a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
@@ -75,7 +75,7 @@ ms.lasthandoff: 08/23/2017
 * 青铜 - 无权限。 这是默认值。 仅将此持续性级别用于只运行无状态工作负载的节点类型。 
 
 > [!WARNING]
-> 以青铜级持续性运行的节点类型不具有任何特权。 这意味着，不会停止或延迟对无状态工作负载产生影响的基础结构作业。 此类作业仍可能会影响工作负载，从而导致运行中断或其他问题。 对于任何种类的生产工作负载，建议至少以白银级别运行。 
+> 以青铜级持续性运行的节点类型不具有任何特权。 这意味着，不会停止或延迟对无状态工作负载产生影响的基础结构作业。 此类作业仍可能会影响工作负载，从而导致运行中断或其他问题。 对于任何种类的生产工作负载，建议至少以白银级别运行。 对于耐久性为“黄金”或“白银”的任何节点类型，必须至少保留 5 个节点。 
 > 
 
 可以为每个节点类型选择持续性级别。可以为群集中的一个节点类型选择“黄金”持续性级别，为同一群集中的另一个节点类型选择“青铜”持续性级别。对于持续性为“黄金”或“白银”的任何节点类型，必须至少保留 5 个节点。 
@@ -99,14 +99,14 @@ ms.lasthandoff: 08/23/2017
 1. 使群集和应用程序在任何时间都正常工作，并确保应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，生成副本时出现停滞）。
 2. 采用更安全的方式更改 VM SKU（增加/减少）：更改虚拟机规模集的 VM SKU 本质上是一项不安全的操作，如有可能，应尽量避免此操作。 可以遵循以下过程来避免常见问题。
     - 对于非主节点类型：建议创建新的虚拟机规模集，修改服务放置约束以包括新的虚拟机规模集/节点类型，然后将旧的虚拟机规模集实例计数降低到 0，一次一个节点（这是为了确保删除节点不会影响群集的可靠性）。
-    - 对于主节点类型：建议不要更改主节点类型的 VM SKU。 如果要使用新 SKU 的原因是提高容量，则建议添加更多实例，或在可能的情况下创建新群集。 如果别无选择，请对虚拟机规模集模型定义进行修改以反映新 SKU。 如果群集只有一个节点类型，请确保所有有状态应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，在生成副本时出现停滞），并且重新生成服务副本的持续时间小于 5 分钟（适用于“白银”持续性级别）。 
+    - 对于主节点类型：建议不要更改主节点类型的 VM SKU。 不支持更改主节点类型 SKU。 如果使用新 SKU 是为了增大容量，建议添加更多实例。 如果那不可行，请创建新群集并从旧群集[还原应用程序状态](service-fabric-reliable-services-backup-restore.md)（如果适用）。 不需要还原任何系统服务状态，在将应用程序部署到新群集时就已重新创建它们。 如果只在群集上运行无状态应用程序，则只需将应用程序部署到新群集即可，无需还原任何内容。 如果一定要进行不受支持的操作，更改 VM SKU，请修改虚拟机规模集模型定义以反映新的 SKU。 如果群集只有一个节点类型，请确保所有有状态应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，在生成副本时出现停滞），并且重新生成服务副本的持续时间小于 5 分钟（适用于“白银”持续性级别）。 
 
 
 > [!WARNING]
 > 对于存在持续性运行级别低于白银级这种情况的 VM 规模集，不建议更改其 VM SKU 大小。 更改 VM SKU 大小是一种破坏数据的就地基础结构操作。 由于无法延迟或监视此更改，此操作可能会导致有状态服务的数据丢失或其他意外操作问题（甚至可能影响无状态工作负载）。 
 > 
     
-3. 为已启用 MR 的任何虚拟机规模集至少保留五个节点
+3. 为任何已启用“黄金”或“白银”耐久性级别的虚拟机规模集至少保留五个节点
 4. 不要删除随机 VM 实例，请始终使用虚拟机规模集缩减功能。 删除随机 VM 实例可能会造成分布在 UD 和 FD 的 VM 实例失衡。 这一失衡可能会对系统在服务实例/服务副本之间进行适当负载均衡的能力产生负面影响。
 6. 如果使用自动缩放，请设置规则，以便一次只有一个节点执行“缩小规模”操作（删除 VM 实例）。 一次减少多个实例是不安全的。
 7. 如果减少某个主节点类型，则绝不应将其缩减到超出可靠性层允许的数目。
@@ -163,6 +163,9 @@ ms.lasthandoff: 08/23/2017
 - 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
 - 由于性能原因，不支持将标准 A1 SKU 用于生产工作负荷。
 
+> [!WARNING]
+> 目前，不支持更改正在运行的群集上的主节点 VM SKU 大小。 因此请将来的容量需求考虑在内，谨慎选择主节点类型 VM SKU。 此时，将主节点类型移动到新 VM SKU（较小或更大）的唯一支持方法是创建具有正确容量的新群集，向其部署应用程序，然后从取自旧群集中的[最新服务备份](service-fabric-reliable-services-backup-restore.md)还原应用程序状态（如果适用）。 不需要还原任何系统服务状态，在将应用程序部署到新群集时就已重新创建它们。 如果只在群集上运行无状态应用程序，则只需将应用程序部署到新群集即可，无需还原任何内容。
+> 
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>非主节点类型 - 针对有状态工作负荷的容量指导
 
@@ -211,7 +214,7 @@ ms.lasthandoff: 08/23/2017
 完成容量规划并设置群集后，请阅读以下文章：
 
 * [Service Fabric 群集安全性](service-fabric-cluster-security.md)
-* [Service Fabric 运行状况模型简介](service-fabric-health-introduction.md)
+* [灾难恢复规划](service-fabric-disaster-recovery.md)
 * [Nodetype 与虚拟机规模集的关系](service-fabric-cluster-nodetypes.md)
 
 <!--Image references-->

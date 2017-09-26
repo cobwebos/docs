@@ -22,7 +22,6 @@ ms.openlocfilehash: d31ad53525ef75bdb61c42409dc07bba4138fc25
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>使用 Azure PowerShell 配置已加入域的 HDInsight 群集（预览版）
 了解如何使用 Azure PowerShell 通过 Azure Active Directory (Azure AD) 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 设置 Azure HDInsight 群集。 提供 Azure PowerShell 脚本以加快配置速度并降低出错可能性。 仅可在基于 Linux 的群集上配置已加入域的 HDInsight。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](hdinsight-domain-joined-introduction.md)。

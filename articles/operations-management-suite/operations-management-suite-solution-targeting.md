@@ -20,7 +20,6 @@ ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/28/2017
 
-
 ---
 # <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>使用 Operations Management Suite (OMS) 中的解决方案目标来将管理解决方案的应用范围限制为特定的代理（预览）
 向 OMS 中添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 的所有 Windows 和 Linux 代理。  你可能希望管理你的成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用**解决方案目标**，这是一项 OMS 功能，允许向解决方案应用一个范围。

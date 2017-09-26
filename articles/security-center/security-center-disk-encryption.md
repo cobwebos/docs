@@ -20,7 +20,6 @@ ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/17/2017
 
-
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>加密 Azure 虚拟机
 如果用户的虚拟机未加密，Azure 安全中心会向用户发送警报。 这些警报会显示为“高严重级别”，建议加密这些虚拟机。

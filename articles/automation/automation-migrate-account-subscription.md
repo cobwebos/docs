@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: magoedte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
 ms.openlocfilehash: 687da15bdaf854254321b59350f47549781676f5
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/21/2016
 
 ---
 # <a name="migrate-automation-account-and-resources"></a>迁移自动化帐户和资源
@@ -65,9 +66,4 @@ ms.openlocfilehash: 687da15bdaf854254321b59350f47549781676f5
 * 有关 Azure 自动化中基于角色的访问控制的详细信息，请参阅 [Role-Based access control in Azure Automation](automation-role-based-access-control.md)（Azure 自动化中基于角色的访问控制）。
 * 若要了解管理订阅所需的 PowerShell cmdlet，请参阅[将 Azure PowerShell 与 Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 * 若要了解管理订阅所需的门户功能，请参阅[使用 Azure 门户管理资源](../azure-resource-manager/resource-group-portal.md)。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -21,7 +21,6 @@ ms.openlocfilehash: 1b1d65a41a794a566287dcffe3581ac58e2a965f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="performing-disaster-recovery-drill"></a>执行灾难恢复演练
 建议定期对恢复工作流执行应用程序就绪性验证。 验证应用程序的行为以及数据丢失和/或涉及到故障转移的中断所造成的影响，是一种良好的工程实践。 许多行业标准在涉及到业务连续性认证方面也会提出此要求。

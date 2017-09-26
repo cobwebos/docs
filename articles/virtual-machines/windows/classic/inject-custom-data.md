@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: rasquill
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 7836577f16940b618a2912012ba8a8e7160980e8
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="injecting-custom-data-into-an-azure-virtual-machine"></a>将自定义数据注入到 Azure 虚拟机中

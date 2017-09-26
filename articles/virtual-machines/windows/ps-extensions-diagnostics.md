@@ -20,7 +20,6 @@ ms.openlocfilehash: 9d3b4abdd395806b1a53d4f23d45ba8b449978a9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]

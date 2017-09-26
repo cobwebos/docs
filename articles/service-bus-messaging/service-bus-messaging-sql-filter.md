@@ -20,7 +20,6 @@ ms.openlocfilehash: 3aaec8f9b6a3bbcf814f771405c3b589de6f7ae0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法

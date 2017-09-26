@@ -19,7 +19,6 @@ ms.openlocfilehash: 2ceb3c0833edcd4ecd875c5e8006961ed7216c66
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>教程：Azure Active Directory 与 DigiCert 的集成
 

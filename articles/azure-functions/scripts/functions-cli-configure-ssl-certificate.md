@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 04/10/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: ddabb701d7d5615232d1f6163aa6fb166efe5cb0
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 76602f63f8b7fd7adc38353756387484f0af6493
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>将自定义 SSL 证书绑定到 Function App
@@ -40,7 +40,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "将自定义 SSL 证书绑定到 Web 应用")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -50,12 +50,12 @@ ms.lasthandoff: 06/20/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | 创建绑定 SSL 证书所需的应用服务计划。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | 创建绑定 SSL 证书所需的应用服务计划。 |
 | [az functionapp create]() | 创建 Function App。 |
-| [az appservice web config hostname add](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#add) | 将自定义域映射到 Function App。 |
-| [az appservice web config ssl upload](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#upload) | 将 SSL 证书上传到 Function App。 |
-| [az appservice web config ssl bind](https://docs.microsoft.com/en-us/cli/azure/appservice/web/config/ssl#bind) | 将上传的 SSL 证书绑定到 Function App。 |
+| [az appservice web config hostname add](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#az_appservice_web_config_hostname_add) | 将自定义域映射到 Function App。 |
+| [az appservice web config ssl upload](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_upload) | 将 SSL 证书上传到 Function App。 |
+| [az appservice web config ssl bind](https://docs.microsoft.com/en-us/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_bind) | 将上传的 SSL 证书绑定到 Function App。 |
 
 ## <a name="next-steps"></a>后续步骤
 

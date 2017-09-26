@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9e6331df4a8a07c3f2524891caf77bbaab3bff0b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 33cd461c61db5f3f6aa9f68fc655ace94c30611a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -58,7 +58,7 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.micro
 
 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 来分配这些访问权限。 从逻辑上讲，Azure AD 租户是使用安全边界隔离的，这样，任何客户都不能访问或入侵联合租户，而无论其行为是恶意的还是偶然的。 在“裸机”服务器上运行的 Azure AD 是在分隔的网络段中隔离的，主机级别数据包筛选和 Windows 防火墙在该网络段中阻止不需要的连接和流量。
 
-- 访问 Azure AD 中的数据需要通过[安全令牌服务 (STS)](https://docs.microsoft.com/azure/app-service-web/web-sites-authentication-authorization) 进行用户身份验证。 授权系统使用有关用户存在性、已启用状态和角色的信息，确定此用户在此会话中对目标租户的访问请求是否已获授权。
+- 访问 Azure AD 中的数据需要通过安全令牌服务 (STS) 进行用户身份验证。 授权系统使用有关用户存在性、已启用状态和角色的信息，确定此用户在此会话中对目标租户的访问请求是否已获授权。
 
 ![Azure 租户](./media/azure-isolation/azure-isolation-fig1.png)
 
@@ -71,7 +71,7 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.micro
 
 - Azure AD 用户无权访问物理资产或位置，因此他们不可能绕过下述逻辑 RBAC 策略检查。
 
-为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。[有资格管理员](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)应是不时（但不是每天）需要特权访问的用户。 该角色将处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
+为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。[有资格管理员](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)应是不时（但不是每天）需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
 
 ![Azure AD 特权标识管理](./media/azure-isolation/azure-isolation-fig2.png)
 
@@ -309,7 +309,7 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 创建逻辑服务器并注册其 DNS 名称后，该 DNS 名称指向该服务器所在的特定数据中心内所谓的“网关 VIP”地址。
 
 在 VIP（虚拟 IP 地址）后面，有一个无状态网关服务的集合。 通常，多个数据源（主数据库、用户数据库等）之间需要协调时，将涉及到网关。 网关服务可实现以下功能：
--   **TDS 连接代理。** 这包括查找后端群集中的用户数据库，实现登录序列，然后将 TDS 数据包转发到后端并返回。
+-   **TDS 连接代理。** 这包括查找后端群集中的用户数据库，实现登录序列，并将 TDS 数据包转发到后端并返回。
 
 -   **数据库管理。** 这包括采用工作流集合来执行数据库的创建/更改/删除操作。 可通过探查 TDS 数据包或显式 OData API 调用数据库操作。
 

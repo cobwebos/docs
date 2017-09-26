@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
 ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/30/2016
 
 ---
 
@@ -38,9 +40,4 @@ ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
 * [流量管理器路由方法](traffic-manager-routing-methods.md)
 * [流量管理器 - 禁用、启用或删除配置文件](disable-enable-or-delete-a-profile.md)
 * [流量管理器 - 禁用或启用终结点](disable-or-enable-an-endpoint.md)
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 

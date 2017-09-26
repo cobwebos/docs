@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
 ms.openlocfilehash: d67fa257574d6cb4ad4b18521900374fb51da290
 ms.contentlocale: zh-cn
 ms.lasthandoff: 01/12/2017
-
 
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
@@ -46,7 +45,7 @@ ms.lasthandoff: 01/12/2017
 | **VM 基本任务** | | | |
 | 添加和删除自定义映像 |否 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| 将 Azure Marketplace 映像加入允许列表 |否 |是 |是 |
+| Azure 应用商店映像允许列表 |否 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
@@ -57,7 +56,7 @@ ms.lasthandoff: 01/12/2017
 | 应用项目 |是 |是 |是 |
 
 > [!NOTE]
-> 用户创建 VM 时，将自动为该用户分配创建该 VM 的**所有者**角色。
+> 用户创建 VM 时，会自动为该用户分配创建该 VM 的**所有者**角色。
 > 
 > 
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 01/12/2017
 以下步骤介绍在 Azure 开发测试实验室中将所有者或用户添加到实验室的过程：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表中，选择所需的实验室。
 4. 在实验室的边栏选项卡上，选择“配置”。 
 5. 在“配置”边栏选项卡上，选择“用户”。
@@ -84,7 +83,7 @@ ms.lasthandoff: 01/12/2017
 可以从 Azure 门户的实验室边栏选项卡中检索 `subscriptionId`、`labResourceGroup` 和 `labName` 值。
 
 > [!NOTE]
-> 示例脚本假定指定的用户已作为来宾添加到 Active Directory，如果不是这样，则会失败。 若要将不在 Active Directory 中的用户添加到实验室，请使用 Azure 门户将用户分配给角色，如[在实验室级别添加所有者或用户](#add-an-owner-or-user-at-the-lab-level)一节中所示。   
+> 示例脚本假定指定的用户已作为来宾添加到 Active Directory，如果不是这样，则会失败。 要将不在 Active Directory 中的用户添加到实验室，请使用 Azure 门户将用户分配给角色，如[在实验室级别添加所有者或用户](#add-an-owner-or-user-at-the-lab-level)一节中所示。   
 > 
 > 
 
@@ -113,14 +112,14 @@ ms.lasthandoff: 01/12/2017
     New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
 
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>在订阅级别添加所有者或用户
-Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验室的 Azure 订阅的所有者将自动成为这些实验室的所有者。 他们还拥有实验室用户创建的 VM 和其他资源以及 Azure 开发测试实验室服务。 
+Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验室的 Azure 订阅的所有者会自动成为这些实验室的所有者。 他们还拥有实验室用户创建的 VM 和其他资源以及 Azure 开发测试实验室服务。 
 
 可以通过 [Azure门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中的实验室边栏选项卡将其他所有者添加到实验室。 但是，添加的所有者的管理范围比订阅所有者的范围更窄。 例如，添加的所有者无法完全访问测试开发实验室服务在订阅中创建的某些资源。 
 
-若要将所有者添加到 Azure 订阅，请按照下列步骤操作：
+要将所有者添加到 Azure 订阅，请按照下列步骤操作：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，然后从列表中选择“订阅”。
+2. 选择“更多服务”，并从列表中选择“订阅”。
 3. 选择所需的订阅。
 4. 选择“访问”图标。 
    

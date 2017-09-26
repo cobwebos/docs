@@ -20,7 +20,6 @@ ms.openlocfilehash: 40f0e2b1b1b6144b2f9aa5814a4408b4964ede97
 ms.contentlocale: zh-cn
 ms.lasthandoff: 12/22/2016
 
-
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>为 Azure Marketplace 创建解决方案模板的技术先决条件
 在开始之前，请仔细阅读过程，并了解执行每个步骤的位置和原因。 在开始产品/服务创建过程前，应尽可能多地准备公司信息和其他数据、下载必需的工具和/或创建技术组件。  

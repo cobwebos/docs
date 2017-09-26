@@ -52,7 +52,7 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="streaming-mapreduce"></a>流式处理 MapReduce
 
-Hadoop 允许你指定包含作业所用映射和化简逻辑的文件。 映射和化简逻辑的具体要求如下：
+Hadoop 允许指定包含作业所用映射和化简逻辑的文件。 映射和化简逻辑的具体要求如下：
 
 * **输入**：映射和化简组件必须从 STDIN 读取输入数据。
 * **输出**：映射和化简组件必须将输出数据写入到 STDOUT。
@@ -189,7 +189,7 @@ Python 可以使用 `sys` 模块从 STDIN 读取数据，并使用 `print` 输�
 
    * **-output**：输出将写入到的目录。
 
-    当 MapReduce 作业运行时，将以百分比形式显示进程。
+    当 MapReduce 作业运行时，以百分比形式显示进程。
 
         15/02/05 19:01:04 INFO mapreduce.Job:  映射 0% 化简 0%    15/02/05 19:01:16 INFO mapreduce.Job:  映射 100% 化简 0%    15/02/05 19:01:27 INFO mapreduce.Job:  映射 100% 化简 100%
 

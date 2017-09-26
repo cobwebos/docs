@@ -15,10 +15,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1e2ddb613e713972820621d0fa836c41eb61f91
 ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/19/2017
 
 ---
 # <a name="mobile-engagement-export-api-overview"></a>Mobile Engagement 导出 API 概述
@@ -73,10 +74,5 @@ Mobile Engagement 允许其用户收集许多类型的数据，因此，它有�
 创建了作业之后，就立即可以检查其状态以查看它是否仍在运行或者是否已完成。
 
 作业成功之后，生成的数据文件就会立即在提供的存储容器中可用。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

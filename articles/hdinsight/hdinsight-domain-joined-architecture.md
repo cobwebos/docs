@@ -22,7 +22,6 @@ ms.openlocfilehash: 7e34f47f09466a40993b4cc797ff1cad2bdaeafe
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集
 

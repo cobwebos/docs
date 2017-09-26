@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e2d3a6725ee53dc6d6986b185fac143901ba6955
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="what-is-azure-diagnostics"></a>什么是 Azure 诊断
@@ -48,7 +48,7 @@ Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 
 请选择要尝试在哪个服务上收集诊断数据，并使用以下文章来入门。 有关具体任务的参考，请使用一般的 Azure 诊断链接。
 
 ## <a name="web-apps"></a>Web 应用
-请注意，Web Apps 不使用 Azure 诊断。 请在 [Web 应用](../app-service-web/web-sites-enable-diagnostic-log.md)中查找相应的信息
+请注意，Web 应用不使用 Azure 诊断。 请在 [Web 应用](../app-service/web-sites-enable-diagnostic-log.md)中查找相应的信息
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>使用 Azure 诊断的云服务
 * 如果使用 Visual Studio，请参阅[使用 Visual Studio 跟踪云服务应用程序](../vs-azure-tools-debug-cloud-services-virtual-machines.md)帮助自己入门。 否则，请参阅

@@ -1,6 +1,6 @@
 ---
 title: "发布本机客户端应用 - Azure AD | Microsoft Docs"
-description: "介绍如何使本机客户端应用与 Azure AD 应用程序代理连接器通信，以提供本地应用的安全远程访问权限。"
+description: "介绍如何使本机客户端应用与 Azure AD 应用程序代理连接器通信，以提供本地应用的安全远程访问。"
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -11,27 +11,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: bdaa5af6ff5331bc310499586615b48a864c3c5e
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: e1f992aede3af99fa7c2ffa661bccbcac9f52ba9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
-# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本地客户端应用与代理应用程序交互
+# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
 
-除了 Web 应用程序以外，还可以使用 Azure Active Directory 应用程序代理来发布本机客户端应用。 本机客户端应用不同于 Web 应用，因为前者安装在设备上，而后者需通过浏览器进行访问。 
+除了 Web 应用程序以外，还可以使用 Azure Active Directory 应用程序代理来发布已使用 Azure AD 身份验证库 (ADAL) 配置的本机客户端应用。 本机客户端应用不同于 Web 应用，因为前者安装在设备上，而后者需通过浏览器进行访问。 
 
-应用程序代理接受在标准 Authorize HTTP 标头中发送的、由 Azure AD 颁发的令牌，因此支持本机客户端应用。
+应用程序代理接受标头中发送的、由 Azure AD 颁发的令牌，因此支持本机客户端应用。 应用程序代理服务代表用户执行身份验证。 此解决方案不使用应用程序令牌进行身份验证。 
 
 ![最终用户、Azure Active Directory 和已发布应用程序之间的关系](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
-使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。 本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
+使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。 
+
+本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
 
 ## <a name="step-1-publish-your-application"></a>步骤 1：发布应用程序
 像发布任何其他应用程序一样发布代理应用程序，并分配可访问该应用程序的用户。 有关详细信息，请参阅[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
@@ -91,10 +93,11 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 * 可在本机应用程序的“属性”页上找到本机应用的“应用 ID”。
 * 可在本机应用程序的“重定向 URI”页上找到**本机应用的重定向 URI**。
 
+使用这些参数编辑 ADAL 后，用户应能向本机客户端应用进行身份验证，即使他们在企业网络之外也是如此。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 
-有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
+了解如何设置[应用程序代理的单一登录](application-proxy-sso-overview.md)
 

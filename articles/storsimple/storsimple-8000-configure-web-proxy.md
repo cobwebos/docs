@@ -20,7 +20,6 @@ ms.openlocfilehash: 1109e44ed9c6aa8a0f7305b8a50410316711589c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
 

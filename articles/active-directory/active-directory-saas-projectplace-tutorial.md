@@ -19,7 +19,6 @@ ms.openlocfilehash: bb9dd10c887cb0e42e544066d9b0dcfa554e10ce
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>教程：Azure Active Directory 与 Projectplace 的集成
 

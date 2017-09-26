@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 44a756ba437b2ce9f625017998d9ae7d09acae1f
 ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/20/2017
 
 ---
 # <a name="using-connectors-in-a-logic-app"></a>在逻辑应用中使用连接器
@@ -63,9 +64,4 @@ ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
 <!--Image References -->
 [1]: ./media/connectors-overview/addAction.png
 [2]: ./media/connectors-overview/configureAction.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

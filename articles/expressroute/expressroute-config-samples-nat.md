@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b77a20274e22827aaa8aa4d354b62d086a19b206
 ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例
@@ -317,10 +318,5 @@ NAT 命令：
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

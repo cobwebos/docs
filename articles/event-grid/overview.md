@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/11/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 59a834f32793e349d5639baf3c80dbcba274dfa8
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 20c22bdbefe238781242ee26e648a77da02a21d2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/19/2017
 
 ![事件网格功能模型](./media/overview/event-grid-functional-model.png)
 
-目前，Blob 存储尚未公开用作发布服务器。
+目前，Blob 存储尚未公开用作发布服务器。 必须注册预览版本，才能对存储 blob 事件做出响应。 有关详细信息，请参阅[将 Blob 存储事件路由到自定义 Web 终结点（预览）](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 
 ## <a name="concepts"></a>概念
 
@@ -119,7 +119,11 @@ Azure 事件网格使用按事件支付的定价模型，因此，你只需为�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建并订阅自定义事件](custom-event-quickstart.md) 立即开始使用 Azure 事件网格快速入门，以将你自己的自定义事件发送到任何终结点。
-* [作为事件处理程序使用逻辑应用](monitor-virtual-machine-changes-event-grid-logic-app.md) 该教程介绍如何使用逻辑应用生成应用程序，以对事件网格推送的事件作出响应。
+* [创建并订阅自定义事件](custom-event-quickstart.md)  
+  立即开始使用 Azure 事件网格快速入门，将自己的自定义事件发送到任何终结点。
+* [将逻辑应用用作事件处理程序](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+  本教程介绍如何使用逻辑应用生成应用，并对事件网格推送的事件作出响应。
+* [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)  
+  本教程介绍如何使用 Azure Functions 将数据从事件中心流式传输到 SQL 数据仓库。
 * [事件网格 REST API 参考](/rest/api/eventgrid)  
   介绍有个 Azure 事件网格的更多技术信息，以及管理事件订阅、路由和过滤的参考。

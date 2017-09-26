@@ -21,7 +21,6 @@ ms.openlocfilehash: bba8257bc4477f985d1a9399e65a1338d237f134
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Make SQL databases available to your Azure Stack users
 

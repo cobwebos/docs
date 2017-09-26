@@ -19,7 +19,6 @@ ms.openlocfilehash: 1d652d562f4c5caffded18d928e2395e537f59f4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>教程：Azure Active Directory 与 Nomadesk 的集成
 

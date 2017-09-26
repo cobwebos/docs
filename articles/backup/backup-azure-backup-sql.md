@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
 ms.openlocfilehash: c9edc066ea2edc9cd4b8453047d5584a588174dc
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/02/2017
-
 
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷

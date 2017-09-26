@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: e45b07d709927af64cfba28dfb0d8ee9cb8893b3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>请求和响应组件入门

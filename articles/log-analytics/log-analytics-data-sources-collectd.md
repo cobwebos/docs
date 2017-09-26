@@ -20,7 +20,6 @@ ms.openlocfilehash: a63b15ca5126b45451f0694c9ee75d7b67b1ceaf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
 
-
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>在 Linux 代理上将来自 CollectD 的数据收集到 Log Analytics 中
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文提供了与将来自 CollectD 的性能数据收集到 Log Analytics 中相关的信息。

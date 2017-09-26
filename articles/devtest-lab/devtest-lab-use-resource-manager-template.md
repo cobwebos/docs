@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 12cdb61667f77215c894800d5c439235e767a26b
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 0807ab367b91be5acd261f2b58ca2112b2c9e380
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 07/06/2017
 保存 Resource Manager 模板并根据需要对其自定义后，可将该模板用于自动创建 VM。 请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)了解如何使用 Azure PowerShell 和 Resource Manager 模板将资源部署到 Azure。 请参阅[使用 Resource Manager 模板和 Azure CLI 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)了解如何使用 Azure CLI 和 Resource Manager 模板将资源部署到 Azure。
 
 > [!NOTE]
-> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果想要使用 Resource Manager 模板自动创建 VM，并且只具有用户权限，则可以使用 [CLI 中的 az lab vm create 命令](https://docs.microsoft.com/cli/azure/lab/vm#create)。
+> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果想要使用 Resource Manager 模板自动创建 VM，并且只具有用户权限，则可以使用 [CLI 中的 az lab vm create 命令](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create)。
 
 ### <a name="next-steps"></a>后续步骤
 * 了解如何[使用 Resource Manager 模板创建多 VM 环境](devtest-lab-create-environment-from-arm.md)。

@@ -21,7 +21,6 @@ ms.openlocfilehash: a6363fa380d0bab05d7500141cc6019d1d3f68b8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>关于 ExpressRoute 的虚拟网络网关
 虚拟网络网关用于在 Azure 虚拟网络和本地位置之间发送网络流量。 配置 ExpressRoute 连接时，必须创建并配置虚拟网络网关和虚拟网络网关连接。

@@ -175,7 +175,7 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 
 如果使用 [Azure Cosmos DB 的 MongoDB 协议支持](mongodb-introduction.md)，请使用以下连接字符串：
 
-    mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true&3t.sslSelfSignedCerts=true
+    mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
 
 可以通过现有工具（例如 [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio)）连接到 Azure Cosmos DB 模拟器。 还可以通过 [Azure Cosmos DB 数据迁移工具](https://github.com/azure/azure-documentdb-datamigrationtool)在 Azure Cosmos DB 模拟器和 Azure Cosmos DB 服务之间迁移数据。
 

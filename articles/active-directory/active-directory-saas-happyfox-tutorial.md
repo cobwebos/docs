@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
 ms.openlocfilehash: 8b5ad750d7849e4037ed7ee93c48b5645c68e799
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>教程：Azure Active Directory 与 HappyFox 集成
@@ -178,7 +177,7 @@ ms.lasthandoff: 05/18/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-happyfox-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -188,7 +187,7 @@ ms.lasthandoff: 05/18/2017
  
 ### <a name="creating-a-happyfox-test-user"></a>创建 HappyFox 测试用户
 
-应用程序支持实时用户预配，且进行身份验证后，将在应用程序中自动创建用户。
+应用程序支持实时用户预配，且进行身份验证后，会在应用程序中自动创建用户。
         
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -198,7 +197,7 @@ ms.lasthandoff: 05/18/2017
 
 若要将 Britta Simon 分配到 HappyFox，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

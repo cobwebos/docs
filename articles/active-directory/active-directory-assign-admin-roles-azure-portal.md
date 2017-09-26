@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 633e34ec3cdc9cf881978bf513294ea2365145dd
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: bea45d6ad01c92cf05821da9da8069dd1f667d31
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
@@ -30,13 +30,15 @@ ms.lasthandoff: 07/26/2017
 >
 >
 
-使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 这些管理员可以按角色访问 Azure 门户或 Azure 经典门户中的各种功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在你的组织所订阅的所有云服务中拥有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Windows PowerShell 的 Azure AD 模块分配的。
+使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 这些管理员可以按角色访问 Azure 门户或 Azure 经典门户中的各种功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在组织所订阅的所有云服务中拥有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Windows PowerShell 的 Azure AD 模块分配的。
 
 提供以下管理员角色：
 
 * **计费管理员**：进行采购、管理订阅、管理支持票证并监视服务运行状况。
 
 * **合规性管理员**：拥有此角色的用户具有 Office 365 安全与合规中心和 Exchange 管理中心中的管理权限。 有关详细信息，请参阅“[关于 Office 365 管理员角色](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)”。
+
+* **条件访问管理员**具有此角色的用户可以管理 Azure Active Directory 条件访问设置。
 
 * **CRM 服务管理员**：具有此角色的用户在 Microsoft CRM Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
@@ -50,7 +52,7 @@ ms.lasthandoff: 07/26/2017
 
 * **Exchange 服务管理员**：具有此角色的用户在 Microsoft Exchange Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
-* **全局管理员/公司管理员**：与此角色的用户有权访问 Azure Active Directory，以及对 Exchange Online、SharePoint Online 和 Skype for Business Online 等 Azure Active Directory 联合的服务中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 只有全局管理员才能分配其他管理员角色。 你的公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
+* **全局管理员/公司管理员**：与此角色的用户有权访问 Azure Active Directory，以及对 Exchange Online、SharePoint Online 和 Skype for Business Online 等 Azure Active Directory 联合的服务中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 只有全局管理员才能分配其他管理员角色。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
   > [!NOTE]
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“全局管理员”。
@@ -61,7 +63,7 @@ ms.lasthandoff: 07/26/2017
 
 * **Intune 服务管理员**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。
 
-* **邮箱管理员**：此角色仅用作 RIM Blackberry 设备的 Exchange Online 电子邮件支持的一部分。 如果你的组织不在 RIM Blackberry 设备上使用 Exchange Online 电子邮件，请勿使用此角色。
+* **邮箱管理员**：此角色仅用作 RIM Blackberry 设备的 Exchange Online 电子邮件支持的一部分。 如果组织不在 RIM Blackberry 设备上使用 Exchange Online 电子邮件，请勿使用此角色。
 
 * **合作伙伴层 1 支持**：请勿使用。 此角色已弃用，并将从 Azure AD 中删除。 此角色仅供少数 Microsoft 转售合作伙伴使用，不适用于一般用途。
 
@@ -103,11 +105,16 @@ ms.lasthandoff: 07/26/2017
 | --- | --- |
 |<p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>为 Office 产品执行计费和采购操作</p> |<p>重置用户密码</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看审核日志</p>|
 
+### <a name="conditional-access-administrator"></a>条件访问管理员
+
+| 有权执行的操作 | 无权执行的操作 |
+| --- | --- |
+|<p>查看公司信息和用户信息</p><p>管理条件访问设置</p> |<p>重置用户密码</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看审核日志</p>|
+
 ### <a name="global-administrator"></a>全局管理员
 | 有权执行的操作 | 无权执行的操作 |
 | --- | --- |
-| <p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>为 Office 产品执行计费和采购操作</p><p>重置用户密码</p>
-<p>重置其他管理员的密码</p> <p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>启用或禁用多重身份验证</p><p>查看审核日志</p> |不适用 |
+|<p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>为 Office 产品执行计费和采购操作</p><p>重置用户密码</p><p>重置其他管理员的密码</p> <p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>启用或禁用多重身份验证</p><p>查看审核日志</p> |不适用 |
 
 ### <a name="password-administrator"></a>密码管理员
 | 有权执行的操作 | 无权执行的操作 |

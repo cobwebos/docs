@@ -3,7 +3,7 @@ title: "适用于 .NET 应用的 Azure Application Insights 快照调试器 | Mi
 description: "生产 .NET 应用中出现异常时会自动收集调试快照"
 services: application-insights
 documentationcenter: 
-author: qubitron
+author: pharring
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: bb6c93557ea26bed721315dc82da917e4727b5f9
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 0761339dfdaaaed418a1414472393ce8e0f37b9c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
-发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中配置收集参数。 快照显示在 Application Insights 门户中的[异常](app-insights-asp-net-exceptions.md)区域中。
+发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](app-insights-asp-net-exceptions.md)区域中。
 
 可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请[下载用于 Visual Studio 的快照调试程序扩展](https://aka.ms/snapshotdebugger)，在 Visual Studio 2017 Enterprise 中打开快照。
 
@@ -68,26 +68,13 @@ ms.lasthandoff: 08/17/2017
 
 1. 如果尚未启用，请[在 ASP.NET Core Web 应用中启用 Application Insights](app-insights-asp-net-core.md)。
 
+> [!NOTE]
+> 请确保应用程序引用 2.1.1 版或更新版本的 Microsoft.ApplicationInsights.AspNetCore 包。
+
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
-3. 修改应用程序 `Startup` 类中的 `ConfigureServices` 方法，添加快照收集器的遥测处理器。 应添加的代码取决于 Microsoft.ApplicationInsights.ASPNETCore NuGet 包的引用版本。
+3. 修改应用程序 `Startup` 类中的 `ConfigureServices` 方法，添加快照收集器的遥测处理器。
 
-   对于 Microsoft.ApplicationInsights.AspNetCore 2.1.0，添加：
-   ```C#
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   ...
-   class Startup
-   {
-       // This method is called by the runtime. Use it to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           services.AddSingleton<Func<ITelemetryProcessor, ITelemetryProcessor>>(next => new SnapshotCollectorTelemetryProcessor(next));
-           // TODO: Add any other services your application needs here.
-       }
-   }
-   ```
-
-   对于 Microsoft.ApplicationInsights.AspNetCore 2.1.1，添加：
    ```C#
    using Microsoft.ApplicationInsights.SnapshotCollector;
    ...
@@ -175,7 +162,7 @@ Azure 订阅的所有者可以检查快照。 其他用户必须获得所有者�
 
 ## <a name="how-snapshots-work"></a>快照的工作原理
 
-启动应用程序时，将创建一个可在应用程序中监视快照请求的独立快照上传程序进程。 请求快照时，会在大约 10 到 20 分钟内创建运行中进程的影子副本。 然后，将分析该影子进程并创建快照，同时，主进程会继续运行并向用户提供流量。 接下来，将快照连同查看快照所需的任何相关符号文件 (.pdb) 一起上传到 Application Insights。
+启动应用程序时，将创建一个可在应用程序中监视快照请求的独立快照上传程序进程。 请求快照时，会在大约 10 到 20 毫秒内创建运行中进程的影子副本。 然后，将分析该影子进程并创建快照，同时，主进程会继续运行并向用户提供流量。 接下来，将快照连同查看快照所需的任何相关符号文件 (.pdb) 一起上传到 Application Insights。
 
 ## <a name="current-limitations"></a>当前限制
 

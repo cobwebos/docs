@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
 ms.openlocfilehash: 03e0f5b6fa26806083cd7852e123495c898bcf0c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/03/2017
-
 
 ---
 # <a name="operations-management-suite-oms-sdk"></a>Operations Management Suite (OMS) SDK

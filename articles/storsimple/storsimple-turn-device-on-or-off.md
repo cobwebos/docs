@@ -21,7 +21,6 @@ ms.openlocfilehash: 0577c837e0c47ba37a4f586603b0f5b951f1b549
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>打开或关闭 StorSimple 8000 系列设备
 ## <a name="overview"></a>概述

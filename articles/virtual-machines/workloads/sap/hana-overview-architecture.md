@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: bcdcbd9e781dc9686f4be18e16bf046de6981a9d
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 0fa1ac4f9e9711332c568e84f86d132508eb185f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
@@ -52,17 +52,17 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 
 体系结构和技术部署指南中广泛使用了几个常见定义。 注意以下术语及其含义：
 
-- IaaS：基础结构即服务
-- PaaS：平台即服务
-- SaaS：软件即服务
+- **IaaS：**基础结构即服务
+- **PaaS：**平台即服务
+- **SaaS：**软件即服务
 - SAP 组件：单个 SAP 应用程序，例如 ECC、BW、Solution Manager 或 EP。 SAP 组件可以基于传统的 ABAP 或 Java 技术，也可以是不基于 NetWeaver 的应用程序，例如业务对象。
 - SAP 环境：以逻辑方式组合在一起，用于执行开发、QAS、培训、DR 或生产等业务功能的一个或多个 SAP 组件。
 - SAP 布局：表示 IT 布局中所有 SAP 资产的整个格局。 SAP 布局包括所有生产和非生产环境。
-- SAP 系统：SAP ERP 开发系统、SAP BW 测试系统、SAP CRM 生产系统等等的 DBMS 层与应用程序层的组合。Azure 部署不支持在本地与 Azure 之间分割这两个层。 这意味着，某个 SAP 系统要么部署在本地，要么部署在 Azure 中。 但是，可以将 SAP 布局中的不同系统部署到 Azure 或本地。 例如，可以在 Azure 中部署 SAP CRM 开发系统和测试系统，同时在本地部署 SAP CRM 生产系统。 对于 Azure 上的 SAP HANA（大型实例），应该在 Azure VM 中托管 SAP 系统的 SAP 应用程序层，在 HANA 大型实例模具中的某个单元上托管相关的 SAP HANA 实例。
-- 大型实例模具：已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
-- Azure 上的 SAP HANA（大型实例）：用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
+- **SAP 系统：**SAP ERP 开发系统、SAP BW 测试系统、SAP CRM 生产系统等等的 DBMS 层与应用程序层的组合。Azure 部署不支持在本地与 Azure 之间分割这两个层。 这意味着，某个 SAP 系统要么部署在本地，要么部署在 Azure 中。 但是，可以将 SAP 布局中的不同系统部署到 Azure 或本地。 例如，可以在 Azure 中部署 SAP CRM 开发系统和测试系统，同时在本地部署 SAP CRM 生产系统。 对于 Azure 上的 SAP HANA（大型实例），应该在 Azure VM 中托管 SAP 系统的 SAP 应用程序层，在 HANA 大型实例模具中的某个单元上托管相关的 SAP HANA 实例。
+- **大型实例模具：**已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
+- **Azure 上的 SAP HANA（大型实例）：**用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
 - 跨界：描述这样一种方案：将 VM 部署到在本地数据中心与 Azure 之间建立了站点到站点、多站点或 ExpressRoute 连接的 Azure 订阅。 在一般的 Azure 文档中，此类部署也称为跨界方案。 连接的原因是为了将本地域、本地 Active Directory/OpenLDAP 和本地 DNS 扩展到 Azure。 本地布局会扩展到 Azure 订阅的 Azure 资产。 经过这种扩展后，VM 可以成为本地域的一部分。 本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是大多数 SAP 资产的典型部署方案。 有关更多详细信息，请参阅 [VPN 网关的设计和规划](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)和[使用 Azure 门户创建具有站点到站点连接的 VNet](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 指南。
-- 租户：在 HANA 大型实例模具中部署的客户会隔离到“租户”中。 租户在网络、存储和计算层中相互隔离。 因此，分配给不同租户的存储和计算单元在 HANA 大型实例模具级别上无法相互看到或进行通信。 客户可以选择部署到不同的租户中。 即使这样，HANA 大型实例模具级别上的租户之间也不进行通信。
+- **租户：**在 HANA 大型实例模具中部署的客户会隔离到“租户”中。 租户在网络、存储和计算层中相互隔离。 因此，分配给不同租户的存储和计算单元在 HANA 大型实例模具级别上无法相互看到或进行通信。 客户可以选择部署到不同的租户中。 即使这样，HANA 大型实例模具级别上的租户之间也不进行通信。
 
 有关在 Azure 公有云上部署 SAP 工作负荷的主题，已发布的各种其他资源中都有所介绍。 强烈建议由拥有相关经验的人员来规划和执行 Azure 中的 SAP HANA 的部署，他们应该了解 Azure IaaS 的原理，知道如何在 Azure IaaS 上部署 SAP 工作负荷。 在继续学习之前，应该先阅读以下资源，其中提供了更多信息：
 
@@ -102,7 +102,7 @@ Azure 上的 SAP HANA（大型实例）的总体体系结构提供了通过 SAP 
 
 所示体系结构分为三个部分：
 
-- 右侧：在数据中心内运行各种应用程序的本地基础结构，以及访问 LOB 应用程序（例如 SAP）的最终用户。 理想情况下，此本地基础结构使用 Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 连接到 Azure。
+- **右侧：**在数据中心内运行各种应用程序的本地基础结构，以及访问 LOB 应用程序（例如 SAP）的最终用户。 理想情况下，此本地基础结构使用 Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 连接到 Azure。
 
 - 中间：显示了 Azure IaaS，而在本例中，显示了如何使用 Azure VM 来托管 SAP 或其他将 SAP HANA 用作 DBMS 系统的应用程序。 使用由 Azure VM 提供的内存的较小 HANA 实例与其应用程序层一起部署在 Azure VM 中。 了解有关[虚拟机](https://azure.microsoft.com/services/virtual-machines/)的详细信息。
 <br />Azure 网络用于将 SAP 系统以及其他应用程序分组到 Azure 虚拟网络 (VNet)。 这些 Vnet 连接到本地系统以及 Azure 上的 SAP HANA（大型实例）。
@@ -111,13 +111,13 @@ Azure 上的 SAP HANA（大型实例）的总体体系结构提供了通过 SAP 
   -  [在 Windows 虚拟机 (VM) 上使用 SAP](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [在 Microsoft Azure 虚拟机上使用 SAP 解决方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- 左侧：显示了 Azure 大型实例模具中通过 SAP HANA TDI 认证的硬件。 HANA 大型实例单元使用与从本地连接到 Azure 时相同的技术连接到订阅的 Azure VNet。
+- **左侧：**显示了 Azure 大型实例模具中通过 SAP HANA TDI 认证的硬件。 HANA 大型实例单元使用与从本地连接到 Azure 时相同的技术连接到订阅的 Azure VNet。
 
 Azure 大型实例模具本身包含以下组件：
 
 - 计算：基于 Intel Xeon E7-8890v3 或 Intel Xeon E7-8890v4 处理器的服务器，提供必要的计算能力，并通过 SAP HANA 进行认证。
-- 网络：统一的高速网络结构，与计算、存储和 LAN 组件互连。
-- 存储：通过统一网络结构访问的存储基础结构。 根据所部署的特定的 Azure 上的 SAP HANA（大型实例）配置提供特定的存储容量（可以通过每月额外付费的方式获得更多存储容量）。
+- **网络：**统一的高速网络结构，与计算、存储和 LAN 组件互连。
+- **存储：**通过统一网络结构访问的存储基础结构。 根据所部署的特定的 Azure 上的 SAP HANA（大型实例）配置提供特定的存储容量（可以通过每月额外付费的方式获得更多存储容量）。
 
 在大型实例模具的多租户基础结构中，客户被部署为隔离的租户。 在部署租户时，需在 Azure 合约中命名一个 Azure 订阅。 该订阅将会是对 HANA 大型实例收费所依据的 Azure 订阅。 这些租户与 Azure 订阅之间存在 1:1 的对应关系。 在网络级别，可以从属于不同 Azure 订阅的不同 Azure VNet 访问部署在一个 Azure 区域的一个租户中的 HANA 大型实例单位。 但是，这些 Azure 订阅需要属于同一 Azure 合约。 
 
@@ -190,6 +190,18 @@ Azure 大型实例模具本身包含以下组件：
 
 依此类推。 当然还有其他组合变化。 
 
+### <a name="using-sap-hana-data-tiering-and-extension-nodes"></a>使用 SAP HANA 数据分层和扩展节点
+SAP 支持面向不同 SAP NetWeaver 版本和 SAP BW/4HANA 的 SAP BW 的数据分层模型。 有关数据分层模型的详细信息，请参阅本文档及本文档所参考的 SAP 博客：[SAP BW/4HANA AND SAP BW ON HANA WITH SAP HANA EXTENSION NODES](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)（具有 SAP HANA 扩展节点的 SAP BW/4HANA 和 SAP BW-ON-HANA）。
+利用 HANA 大型实例，可以使用 SAP HANA 扩展节点的选项 1 配置（本常见问题解答和 SAP 博客文档中提供详细介绍）。 可使用以下 HANA 大型实例 SKU 配置选项 2 配置：S72m、S192、S192m、S384 和 S384m。  
+阅读文档时，可能不会立刻发现此方法的优点。 但如果深入研究 SAP 大小调整准则，便可能发现使用选项 1 和选项 2 SAP HANA 扩展节点的优点。 下面是一个示例：
+
+- SAP HANA 大小调整准则所需的数据量通常是内存所需的两倍。 因此，运行具有热数据的 SAP HANA 实例时，内存中只会填充 50% 或更少数据。 理想状况下，内存中的剩余空间将保留，供 SAP HANA 执行其工作。
+- 这意味着，如果在拥有 2 TB 内存的 HANA 大型实例 S192 单元中运行 SAP BW 数据库，只能拥有 1 TB 的数据量。
+- 如果仍然运行 S192 HANA 大型实例 SKU，但额外使用选项 1 的其他 SAP HANA 扩展节点，则可获得额外的 2 TB 数据量。 在选项 2 配置中，甚至可获得额外的 4 TB 暖数据量。 与热节点相比，“暖”扩展节点的完整内存容量可供选项 1 用于数据存储，并且选项 2 SAP HANA 扩展节点配置中的数据量可使用双倍内存。
+- 因此，选项 1 最终将获得 3 TB 数据容量，其中热、暖数据比率为 1:2，而选项 2 扩展节点配置中将获得 5 TB 数据容量，其中热、暖数据比率为 1:4。
+
+但是，数据量超出内存量的差值越大，请求的暖数据存储在磁盘存储中的可能性就越大。
+
 
 ## <a name="operations-model-and-responsibilities"></a>操作模型和责任
 
@@ -203,13 +215,13 @@ Azure 上的 SAP HANA（大型实例）提供的服务与 Azure IaaS 服务相�
 
 下表提供了有关每个层和职责的更多详细信息：
 
-网络：运行 SAP HANA 的大型实例模具中所有用于对其存储的访问、实例间的连接（用于扩展和其他功能）、与布局的连接以及与 Azure（其中的 SAP 应用程序层承载在 Azure 虚拟机中）的连接的内部网络。 它还在 Azure 数据中心之间提供了 WAN 连接，以便为数据恢复目的而进行复制。 所有网络都按租户进行分区，并且应用了 QOS。
+**网络：**运行 SAP HANA 的大型实例模具中所有用于对其存储的访问、实例间的连接（用于扩展和其他功能）、与布局的连接以及与 Azure（其中的 SAP 应用程序层承载在 Azure 虚拟机中）的连接的内部网络。 它还在 Azure 数据中心之间提供了 WAN 连接，以便为数据恢复目的而进行复制。 所有网络都按租户进行分区，并且应用了 QOS。
 
-存储：用于 SAP HANA 服务器需要的所有卷的虚拟化已分区存储，以及用于快照的虚拟化已分区存储。 
+**存储：**用于 SAP HANA 服务器需要的所有卷的虚拟化已分区存储，以及用于快照的虚拟化已分区存储。 
 
-服务器：专用物理服务器，用于运行分配给租户的 SAP HANA 数据库。 I 类 SKU 的服务器已进行硬件抽象。 使用这些类型的服务器时，服务器配置是以配置文件方式收集和维护的，可以从一个物理硬件移至另一个物理硬件。 这种通过操作（手动）移动配置文件的方式在某种程度上可以与 Azure 服务修复相比。 II 类 SKU 的服务器不提供此类功能。
+**服务器：**专用物理服务器，用于运行分配给租户的 SAP HANA 数据库。 I 类 SKU 的服务器已进行硬件抽象。 使用这些类型的服务器时，服务器配置是以配置文件方式收集和维护的，可以从一个物理硬件移至另一个物理硬件。 这种通过操作（手动）移动配置文件的方式在某种程度上可以与 Azure 服务修复相比。 II 类 SKU 的服务器不提供此类功能。
 
-SDDC：用来将数据中心作为软件定义的实体进行管理的管理软件。 Microsoft 可以通过它出于规模、可用性和性能原因而创建资源池。
+**SDDC：**用来将数据中心作为软件定义的实体进行管理的管理软件。 Microsoft 可以通过它出于规模、可用性和性能原因而创建资源池。
 
 O/S：你选择的在服务器上运行的 OS（SUSE Linux 或 Red Hat Linux）。 向你提供的 OS 映像是各个 Linux 供应商提供给 Microsoft 用于运行 SAP HANA 的映像。 将要求具有 Linux 供应商的订阅，以便获取 SAP HANA 优化的特定映像。 责任包括向 OS 供应商注册映像。 从 Microsoft 移交的观点来看，还对进一步修补 Linux 操作系统负有责任。 此修补还包括成功安装 SAP HANA 所需的附加包（请参阅 SAP HANA 安装文档和 SAP 说明），而这些包尚未由特定 Linux 供应商在其 SAP HANA 优化型 OS 映像中提供。 客户的责任还包括修补 OS，这与 OS 不正常工作/优化相关，其驱动程序涉及特定服务器硬件。 或对 OS 的任何安全性或功能进行修补。 客户的职责还包括对以下项进行监视和容量规划：
 
@@ -220,17 +232,17 @@ O/S：你选择的在服务器上运行的 OS（SUSE Linux 或 Red Hat Linux）�
 
 HANA 大型实例的底层基础结构提供了用于备份和还原 OS 卷的功能。 使用此功能也是你的责任。
 
-中间件：主要是 SAP HANA 实例。 管理、操作和监视由你负责。 可以通过提供的一项功能使用存储快照进行备份/还原和灾难恢复。 这些功能由基础结构提供。 但是，责任还包括利用这些功能设计高可用性或灾难恢复功能，利用它们，以及监视是否已成功执行存储快照。
+**中间件：**主要是 SAP HANA 实例。 管理、操作和监视由你负责。 可以通过提供的一项功能使用存储快照进行备份/还原和灾难恢复。 这些功能由基础结构提供。 但是，责任还包括利用这些功能设计高可用性或灾难恢复功能，利用它们，以及监视是否已成功执行存储快照。
 
-数据：由 SAP HANA 管理的数据，以及位于卷或文件共享上的其他数据（例如备份文件）。 责任包括监视磁盘可用空间、管理卷上的内容，以及监视磁盘卷备份和存储快照的成功执行。 不过，确保数据成功复制到 DR 站点是 Microsoft 的责任。
+**数据：**由 SAP HANA 管理的数据，以及位于卷或文件共享上的其他数据（例如备份文件）。 责任包括监视磁盘可用空间、管理卷上的内容，以及监视磁盘卷备份和存储快照的成功执行。 不过，确保数据成功复制到 DR 站点是 Microsoft 的责任。
 
-应用程序：SAP 应用程序实例；对于非 SAP 应用程序，则指那些应用程序的应用程序层。 责任包括部署、管理、操作和监视与以下各项的容量规划相关的那些应用程序：CPU 资源消耗、内存消耗、Azure 存储消耗、Azure VNet 内部的网络带宽消耗以及从 Azure VNet 到 Azure 上的 SAP HANA（大型实例）之间的网络带宽消耗。
+**应用程序：**SAP 应用程序实例；对于非 SAP 应用程序，则指那些应用程序的应用程序层。 责任包括部署、管理、操作和监视与以下各项的容量规划相关的那些应用程序：CPU 资源消耗、内存消耗、Azure 存储消耗、Azure VNet 内部的网络带宽消耗以及从 Azure VNet 到 Azure 上的 SAP HANA（大型实例）之间的网络带宽消耗。
 
 WAN：为工作负荷建立的从本地到 Azure 部署的连接。 所有使用 HANA 大型实例的客户都使用 Azure ExpressRoute 进行连接。 此连接不是 Azure 上的 SAP HANA（大型实例）解决方案的一部分，因此需要由你负责设置此连接。
 
 存档：你可能希望使用自己的方法在存储帐户中对数据副本进行存档。 存档涉及到管理、符合性、成本和操作。 负责在 Azure 上生成存档副本和备份并以合规的方式存储它们。
 
-请参阅 [Azure 上的 SAP HANA（大型实例）的 SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/)。
+请参阅[Azure 上的 SAP HANA（大型实例）的 SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/)。
 
 ## <a name="sizing"></a>调整大小
 

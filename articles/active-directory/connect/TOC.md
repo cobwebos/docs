@@ -27,6 +27,7 @@
 ### [如果已有 Azure AD](active-directory-aadconnect-existing-tenant.md)
 ## [管理 Azure AD Connect](active-directory-aadconnect-whats-next.md)
 ### [续订 O365 和 Azure AD 的证书](active-directory-aadconnect-o365-certs.md)
+### [更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书](active-directory-aadconnectfed-ssl-update.md)
 ### [启用设备写回](active-directory-aadconnect-feature-device-writeback.md)
 ### [用户登录选项](active-directory-aadconnect-user-signin.md)
 #### [无缝单一登录](active-directory-aadconnect-sso.md)

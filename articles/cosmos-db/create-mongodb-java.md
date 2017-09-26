@@ -30,11 +30,12 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在运行此示例之前，必须具备以下先决条件：
-   * JDK 1.7+（如果没有 JDK，请运行 `apt-get install default-jdk`）
-   * Maven（如果没有 Maven，请运行 `apt-get install maven`）
+在运行此示例之前，必须具备以下先决条件：
+* JDK 1.7+（如果没有 JDK，请运行 `apt-get install default-jdk`）
+* Maven（如果没有 Maven，请运行 `apt-get install maven`）
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -44,7 +45,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 将新数据库命名为 **db**，将新集合命名为 **coll**。
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)] 
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 

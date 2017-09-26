@@ -19,7 +19,6 @@ ms.openlocfilehash: 46f6facc3c86630a9252340b2e89634368c0263d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>教程：Azure Active Directory 与 Tango Analytics 的集成
 

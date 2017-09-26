@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 51f61901e1b1615e48582690dea701a01a56ebca
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: e34d810b8cf9f290a61e302c6f68781abea14173
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/18/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/secure-cosmosdb-create-firewall/secure-cosmosdb-create-firewall.sh?highlight=38-42 "创建 Azure Cosmos DB 防火墙")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/secure-cosmosdb-create-firewall/secure-cosmosdb-create-firewall.sh?highlight=38-42 "Create an Azure Cosmos DB firewall")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -50,10 +50,10 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#create) | 创建 Azure CosmosDB 帐户。 |
-| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#update) | 更新 Azure CosmosDB 帐户，将防火墙设置加入其中。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_create) | 创建 Azure CosmosDB 帐户。 |
+| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_update) | 更新 Azure CosmosDB 帐户，将防火墙设置加入其中。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

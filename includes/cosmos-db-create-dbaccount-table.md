@@ -19,7 +19,8 @@
     API|表（键/值）|在本文的后面部分中，我们将针对[表 API](../articles/cosmos-db/table-introduction.md) 编程。|
     订阅|用户的订阅|要用于 Azure Cosmos DB 帐户的 Azure 订阅。 
     资源组|*与 ID 相同的值*|帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。 
-    位置|*离用户最近的区域*|要在其中托管 Azure Cosmos DB 帐户的地理位置。 选择离用户最近的位置，使其能够以最快的速度访问数据。   
+    位置|
+            *离用户最近的区域*|要在其中托管 Azure Cosmos DB 帐户的地理位置。 选择离用户最近的位置，使其能够以最快的速度访问数据。   
 
 4. 单击“创建”  以创建帐户。
 5. 在工具栏上，单击“通知”可监视部署过程。
@@ -28,4 +29,4 @@
 
 6.  部署完成后，请从“所有资源”磁贴打开新帐户。 
 
-    ![“所有资源”磁贴中的 DocumentDB 帐户](./media/cosmos-db-create-dbaccount-table/all-resources.png)
+    ![“所有资源”磁贴中的 Azure Cosmos DB 帐户](./media/cosmos-db-create-dbaccount-table/all-resources.png)

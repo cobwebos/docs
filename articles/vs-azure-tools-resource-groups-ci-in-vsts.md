@@ -20,7 +20,6 @@ ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Visual Studio Team Services 中连续集成
 若要部署 Azure 模板，需要在各个阶段执行任务：生成、测试、复制到 Azure（也称为“暂存”）和部署模板。 在 Visual Studio Team Services (VS Team Services) 中可通过两种不同的方法部署模板。 两种方法产生的结果相同，因此请选择最符合工作流的方法。

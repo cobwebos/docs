@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0b28c5e93dc8f53597b1d2fa6f4ae154acf16068
 ms.openlocfilehash: c8cb51093142146fc7d43b51a62d949f6cc38988
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/09/2017
 
 ---
 
@@ -104,9 +106,4 @@ ms.openlocfilehash: c8cb51093142146fc7d43b51a62d949f6cc38988
 
 - 如果对 CSP 中的 StorSimple 有更多问题，请转到 [CSP 中的 StorSimple：常见问题解答](storsimple-partner-csp-faq.md)。
 - 如果已准备好部署 StorSimple，请转到[部署 CSP 中的 StorSimple](storsimple-partner-csp-deploy.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

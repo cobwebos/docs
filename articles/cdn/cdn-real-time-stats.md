@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: e9b9522de6b2c54dc794b00100ffe358296ecfdd
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的实时统计信息
@@ -92,10 +93,5 @@ HTTP 状态代码列表直接显示在图表上方。 此列表指明可纳入�
 * 通过 [Azure CDN 中的实时警报](cdn-real-time-alerts.md)获取通知
 * 更深入地挖掘[高级 HTTP 报表](cdn-advanced-http-reports.md)
 * 分析[使用模式](cdn-analyze-usage-patterns.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

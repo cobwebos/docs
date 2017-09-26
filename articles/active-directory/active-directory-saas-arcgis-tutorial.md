@@ -19,7 +19,6 @@ ms.openlocfilehash: df72270ca6443b456c079b22425f1660aa522389
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 

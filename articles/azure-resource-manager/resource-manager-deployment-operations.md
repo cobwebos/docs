@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
 ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/07/2017
-
 
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>使用 Azure Resource Manager 查看部署操作

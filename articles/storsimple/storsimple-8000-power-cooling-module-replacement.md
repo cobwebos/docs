@@ -20,7 +20,6 @@ ms.openlocfilehash: 7d181e6e434c998573dbea4b541cfacf7a28ee66
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的电源和散热模块
 ## <a name="overview"></a>概述

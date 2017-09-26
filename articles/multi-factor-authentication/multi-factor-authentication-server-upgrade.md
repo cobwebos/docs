@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 

@@ -13,17 +13,26 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/22/2017
+ms.date: 09/06/2017
 ms.author: maroche
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 7ee836b4c0c87fc7d271f59dcb16f3293e68dc9a
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 7259505b68202f3741e64e86555d2e3f968b8951
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
+
+## <a name="whats-new-for-september-2017"></a>2017 年 9 月新增功能 
+截至 2017 年 9 月，已添加到 Azure 数据目录的功能如下：
+
+* 使用数据源注册工具注册相关表时，支持从 DB2 数据源提取联接关系元数据。
+* 支持使用数据源注册工具注册 MongoDB 3.4 版数据源。
+* 从数据目录中删除数据库或其他容器时，支持在单个操作中删除包含对象的所有元数据。
+* 在数据目录门户中优化搜索时，支持查看最多 1,000 个标记、业务术语表术语或其他搜索 Facet。
+
 
 ## <a name="whats-new-for-august-2017"></a>2017 年 8 月新增功能 
 截至 2017 年 8 月，已添加到 Azure 数据目录的功能如下：

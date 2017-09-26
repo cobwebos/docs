@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: ba02fb8385afeefd0162ff79074352bb02275b55
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>使用 Azure PowerShell 管理虚拟机

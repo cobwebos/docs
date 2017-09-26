@@ -21,7 +21,6 @@ ms.openlocfilehash: 96fc1347604c0c6cc2c2463a5dbd83b560183a16
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-sharepoint-online-connector"></a>SharePoint Online 连接器入门
 使用 SharePoint Online 连接器管理 SharePoint 列表。  

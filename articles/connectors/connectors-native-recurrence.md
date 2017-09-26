@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: fe558958c316c8dba42163e277ae01451f712e5a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="get-started-with-the-recurrence-trigger"></a>重复触发器入门

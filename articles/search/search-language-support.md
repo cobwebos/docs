@@ -14,9 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: jlembicz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6feadcc02aa0047dc2028d016687d3ad2859eb44
 ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

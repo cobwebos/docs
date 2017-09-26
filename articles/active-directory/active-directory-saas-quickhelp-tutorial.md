@@ -19,7 +19,6 @@ ms.openlocfilehash: 1c72b0ddee636090129dab7a5c7ec6ffd452434a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>教程：Azure Active Directory 与 QuickHelp 集成
 

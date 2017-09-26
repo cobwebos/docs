@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 74765877e7836d6878284b350a25d8355dc83d7d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>如何使用 VMAccess 扩展重置 Linux VM 密码或 SSH 密钥、修复 SSH 配置，以及检查磁盘一致性

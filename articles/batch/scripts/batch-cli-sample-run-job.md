@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 73d93622d418359be421e043d0af4e4befc6f4b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -31,11 +31,11 @@ ms.lasthandoff: 05/15/2017
 - 按照 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中提供的说明安装 Azure CLI（如果尚未这样做）。
 - 创建 Batch 帐户（如果还没有帐户）。 有关创建帐户的示例脚本，请参阅[使用 Azure CLI 创建 Batch 帐户](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account)。
 - 将应用程序配置为从启动任务运行（如果尚未这样做）。 有关用于创建应用程序并将应用程序包上传到 Azure 的示例脚本，请参阅[使用 Azure CLI 将应用程序添加到 Azure Batch](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application)。
-- 配置将在其中运行作业的池。 有关用于使用云服务配置或虚拟机配置创建池的示例脚本，请参阅[使用 Azure CLI 管理 Azure Batch 池](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool)。
+- 配置会在其中运行作业的池。 有关用于使用云服务配置或虚拟机配置创建池的示例脚本，请参阅[使用 Azure CLI 管理 Azure Batch 池](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool)。
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/batch/run-job/run-job.sh "运行作业")]
+[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
 
 ## <a name="clean-up-job"></a>清除作业
 
@@ -51,13 +51,13 @@ az batch job delete --job-id myjob
 
 | 命令 | 说明 |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | 针对批处理帐户进行身份验证。  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#create) | 创建批处理作业。  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#set) | 更新批处理作业的属性。  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | 检索指定批处理作业的详细信息。  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | 将任务添加到指定的批处理作业。  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | 从指定的批处理作业中检索任务的详细信息。  |
-| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | 列出与指定的作业关联的任务。  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | 针对批处理帐户进行身份验证。  |
+| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | 创建批处理作业。  |
+| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | 更新批处理作业的属性。  |
+| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | 检索指定批处理作业的详细信息。  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | 将任务添加到指定的批处理作业。  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | 从指定的批处理作业中检索任务的详细信息。  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_list) | 列出与指定的作业关联的任务。  |
 
 ## <a name="next-steps"></a>后续步骤
 

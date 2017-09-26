@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/14/2017
 ms.author: tiandert; bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: e0b784006b4933fe986890c09afa965934511784
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/15/2017
-
 
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure 自动化方案 - 预配 AWS 虚拟机

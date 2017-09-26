@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 951c9a014f587ce53450dd705fc478da625b1e6b
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: bf8d012c5f9be4d7324775128a39270d8390d1bb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/15/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../powershell_scripts/service-fabric/remove-application/remove-application.ps1 "从群集中删除应用程序")]
+[!code-powershell[main](../../../powershell_scripts/service-fabric/remove-application/remove-application.ps1 "Remove an application from a cluster")]
 
 ## <a name="script-explanation"></a>脚本说明
 

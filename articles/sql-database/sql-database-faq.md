@@ -21,7 +21,6 @@ ms.openlocfilehash: 6ed02ead07c50b9a49e8868756b6f957d7b49b99
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
-
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
 

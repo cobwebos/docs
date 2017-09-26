@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2017
 ms.author: ccompy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: fef9e7b280387934cb093f51b4c8aa134a3b87e7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/25/2017
-
 
 ---
 

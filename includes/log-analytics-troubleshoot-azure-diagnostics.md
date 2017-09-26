@@ -6,11 +6,11 @@
 
 若要注册资源提供程序，请在 Azure 门户中执行以下步骤：
 
-1.    在左侧导航窗格中，单击“订阅”
-2.    选择在错误消息中标识的订阅
-3.    单击“资源提供程序”
-4.    找到 *Microsoft.insights* 提供程序
-5.    单击“注册”链接
+1.  在左侧导航窗格中，单击“订阅”
+2.  选择在错误消息中标识的订阅
+3.  单击“资源提供程序”
+4.  找到 *Microsoft.insights* 提供程序
+5.  单击“注册”链接
 
 ![注册 microsoft.insights 资源提供程序](./media/log-analytics-troubleshoot-azure-diagnostics/log-analytics-register-microsoft-diagnostics-resource-provider.png)
 

@@ -28,11 +28,11 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="sample-script"></a>示例脚本
 在此示例脚本中，更改突出显示的行，以自定义管理员用户名和密码。
-[!code-azurecli-interactive[main](../../../cli_scripts/mysql/change-server-configurations/change-server-configurations.sh?highlight=15-16 " 列出和更新用于 MySQL 的 Azure 数据库的配置。")]
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/change-server-configurations/change-server-configurations.sh?highlight=15-16 "List and update configurations of Azure Database for MySQL.")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
-[!code-azurecli-interactive[main](../../../cli_scripts/mysql/change-server-configurations/delete-mysql.sh  "删除资源组。")]
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/change-server-configurations/delete-mysql.sh  "Delete the resource group.")]
 
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。

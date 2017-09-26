@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 888d2b7b7c118fede82d39881570a3b3d7b09961
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 5efdabf7258fc678811a0d0f19bc1d5e797ed807
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/05/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "在池之间移动数据库")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "Move database between pools")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -52,12 +52,12 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#create) | 创建用于托管 SQL 数据库的逻辑服务器。 |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#create) | 在逻辑服务器中创建弹性数据库池。 |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#create) | 在逻辑服务器中创建 SQL 数据库。 |
-| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#update) | 更新弹性数据库池，在此示例中更改分配的 eDTU。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | 创建用于托管 SQL 数据库的逻辑服务器。 |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) | 在逻辑服务器中创建弹性数据库池。 |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_create) | 在逻辑服务器中创建 SQL 数据库。 |
+| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update) | 更新弹性数据库池，在此示例中更改分配的 eDTU。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

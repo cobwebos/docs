@@ -21,7 +21,6 @@ ms.openlocfilehash: f0e3613d4a3fd5478787c0365eb7a0bcde886c81
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-office365-video-connector"></a>Office 365 视频连接器入门
 连接到 Office 365 视频，获取有关 Office 365 视频的信息、获取视频列表等。 通过 Office 365 视频，你可以：

@@ -19,7 +19,6 @@ ms.openlocfilehash: 6f7616e47322242f01a13d763f71c93d4ac06a92
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="tutorial-configuring-dropbox-for-business-for-automatic-user-provisioning"></a>教程：配置 Dropbox for Business 以进行自动用户预配
 

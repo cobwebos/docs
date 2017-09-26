@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 16070499b7befca26d55259d845d1dbc14110f2a
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 05476e35488c104a483f52f88540d33c55e5bc3c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
@@ -42,27 +42,23 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 通过 Azure �
 
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-在[前面的教程](./container-service-tutorial-kubernetes-prepare-acr.md)中，创建了名为 myResourceGroup 的资源组。 如果尚未这样做，请立即创建此资源组。
-
-```azurecli-interactive
-az group create --name myResourceGroup --location westeurope
-```
-
 使用 [az acs create](/cli/azure/acs#create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
 
-以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
+下面的示例在 `myResourceGroup` 资源组中创建 `myK8sCluster` 群集。 此资源组是在[上一教程](./container-service-tutorial-kubernetes-prepare-acr.md)中进行创建。
 
 ```azurecli-interactive 
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
-几分钟后，该命令完成并返回有关 ACS 部署的 JSON 格式信息。
+在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#create) 命令中，以减少默认代理计数。 
+
+几分钟后，部署完成并返回有关 ACS 部署的 JSON 格式信息。
 
 ## <a name="install-the-kubectl-cli"></a>安装 kubectl CLI
 
 若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)（Kubernetes 命令行客户端）。 
 
-如果使用 Azure CloudShell，则 `kubectl` 已安装。 如果想在本地安装，请使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) 命令。
+如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果想在本地安装，请使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) 命令。
 
 如果在 Linux 或 macOS 中运行，则可能需要使用 sudo 进行运行。 在 Windows 上，确保以管理员身份运行 shell。
 
@@ -74,7 +70,7 @@ az acs kubernetes install-cli
 
 ## <a name="connect-with-kubectl"></a>连接 kubectl
 
-若要配置 `kubectl` 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。
+若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster

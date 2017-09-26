@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/07/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: b418904f50b772c12bfcdbb95beb9312c8b9fb00
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
-
 
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通信 API

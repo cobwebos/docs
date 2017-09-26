@@ -20,7 +20,6 @@ ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>管理 Azure 虚拟机备份
 > [!div class="op_single_selector"]

@@ -2,8 +2,7 @@
 
 以下使用和显示要求适用于特定内容和关联信息（例如关系、元数据和其他信号）的实现，这些内容和信息是通过调用必应 Web 搜索、图片搜索、视频搜索、新闻搜索和实体搜索 API 以及必应拼写检查 API 和必应自动推荐 API 获取的。 与这些要求相关的实现细节可在特定功能和结果的文档中找到。
 
-## 1.必应拼写检查 API 和必应自动推荐 API。
-<a id="1-bing-spell-check-api-and-bing-autosuggest-api" class="xliff"></a>
+## <a name="1-bing-spell-check-api-and-bing-autosuggest-api"></a>1.必应拼写检查 API 和必应自动推荐 API。
 
 你不得：
 
@@ -11,8 +10,7 @@
   
 •   为了训练、评估或改进你或者第三方可能会提供的新服务或现有服务，而在任何机器学习或类似的算法活动中使用从必应拼写检查或必应自动推荐 API 接收的数据。
 
-## 2.搜索 API
-<a id="2-search-apis" class="xliff"></a>
+## <a name="2-search-apis"></a>2.搜索 API
 
 第 3-7 部分中的要求适用于必应 Web 搜索、图像搜索、视频搜索、新闻搜索 API 和必应实体搜索 API（统称“搜索 API”）。 以下定义适用于第 3-7 部分：
 
@@ -22,8 +20,7 @@
   
 •   “结果”是指答复中的某项信息。 例如，与单篇新闻文章关联的数据集是新闻答复中的结果。
 
-## 3.必应实体搜索 API
-<a id="3-bing-entity-search-api" class="xliff"></a>
+## <a name="3-bing-entity-search-api"></a>3.必应实体搜索 API
 
 从必应实体搜索 API 返回的数据必须符合以下条件：
 
@@ -45,8 +42,7 @@
   
 •   为了训练、评估或改进你或者第三方可能会提供的新服务或现有服务，而在任何机器学习或类似的算法活动中使用从必应实体搜索 API 接收的数据。
 
-## 4.必应 Web 搜索、图片搜索、新闻搜索和视频搜索 API：
-<a id="4-bing-web-search-image-search-news-search-and-video-search-apis" class="xliff"></a>
+## <a name="4-bing-web-search-image-search-news-search-and-video-search-apis"></a>4.必应 Web 搜索、图片搜索、新闻搜索和视频搜索 API：
 
 **Internet 搜索体验。** 在响应中返回的来自 Web、图像、新闻和视频搜索 API 的所有数据只能用于 Internet 搜索体验。 Internet 搜索体验是指在适用情况下，所显示的内容符合以下条件：
 
@@ -84,8 +80,7 @@
 
 品牌。 你需要根据 https://go.microsoft.com/fwlink/?linkid=833278 中的说明，将显示的每个响应（或部分响应）归属于 Microsoft，除非 Microsoft 专门针对你的使用进行了约定。
 
-## 5.传输响应。
-<a id="5-transferring-responses" class="xliff"></a>
+## <a name="5-transferring-responses"></a>5.传输响应。
 
 如果你允许用户通过某种方式将响应从搜索 API 传输给其他用户（例如通过消息应用进行传送，或者通过社交媒体进行发布），则应遵守以下准则：
 
@@ -105,8 +100,7 @@
   
 •   只能允许用户传输那些通过传输其查询获得的响应。
 
-## 6.服务连续性。
-<a id="6-continuity-of-service" class="xliff"></a>
+## <a name="6-continuity-of-service"></a>6.服务连续性。
 
 不得复制、存储或缓存搜索 API 响应中的任何数据。 但是，为了实现服务访问和数据呈现的连续性，可以保留结果，但必须符合以下条件：
 
@@ -134,8 +128,7 @@
   
 •   在指定的时限内删除存储的结果（以及根据需要使用新查询对其进行刷新）。
 
-## 7.非显示 URL 发现。
-<a id="7-non-display-url-discovery" class="xliff"></a>
+## <a name="7-non-display-url-discovery"></a>7.非显示 URL 发现。
 
 你只能在非 Internet 搜索体验中使用搜索响应，且用途仅限于在针对用户或客户的查询进行响应时，发现相关信息源的 URL。 你可以在所提供的报告或类似报告的响应中复制此类 URL，但该报告或响应必须符合以下条件：(i) 只能提供给该用户或客户，作为对特定查询的相应；(ii) 包含与查询相关的重要附加内容。 在上述使用和显示要求中，第 2-6 部分的要求不适用于此非显示使用情形，但以下条款仍适用： 
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 82b7e6662986573d139691bb9e2cc216c1c5a535
+ms.translationtype: HT
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: caad9212649dd3dc47ddb21555b5b8496c3d2da1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../powershell_scripts/cosmosdb/create-firewall/create-firewall.ps1?highlight=35-36,39-43 "为 Azure Cosmos DB 创建防火墙")]
+[!code-powershell[main](../../../powershell_scripts/cosmosdb/create-firewall/create-firewall.ps1?highlight=35-36,39-43 "Create a firewall for Azure Cosmos DB")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

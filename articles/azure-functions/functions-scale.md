@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions 消耗计划和应用服务计划 | Microsoft Docs"
-description: "了解 Azure Functions 如何进行扩展，满足事件驱动工作负荷的需求。"
+title: "Azure Functions 托管计划比较 | Microsoft Docs"
+description: "了解如何在 Azure Functions 消耗量计划和应用服务计划之间进行选择。"
 services: functions
 documentationcenter: na
 author: lindydonna
 manager: cfowler
 editor: 
 tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
+keywords: "Azure Functions, Functions, 消耗量计划, 应用服务计划, 事件处理, webhook, 动态计算, 无服务体系结构"
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -18,13 +18,13 @@ ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 0e677fb35279d155241a95cd5f33b63e8294fad2
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 41ebbe944213373c028b7410baa86e6c55db0d8c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="azure-functions-consumption-and-app-service-plans"></a>Azure Functions 消耗计划和应用服务计划 
+# <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions 托管计划比较
 
 ## <a name="introduction"></a>介绍
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 08/30/2017
 
 ## <a name="app-service-plan"></a>应用服务计划
 
-在应用服务计划中，函数应用在基本、标准或高级 SKU 中的专用 VM 上运行，类似于 Web 应用。 专用 VM 将分配到应用服务应用，这意味着函数主机始终会运行。
+在“应用服务计划”中，Function App 在基本、标准、高级或独立 SKU 中的专用 VM 上运行，类似于 Web 应用。 专用 VM 将分配到应用服务应用，这意味着函数主机始终会运行。
 
 对于以下情况，可以考虑使用应用服务计划：
 - 具有已运行其他应用服务实例的、未充分利用的现成 VM。
@@ -67,7 +67,7 @@ ms.lasthandoff: 08/30/2017
 
 VM 将运行时和内容大小进行成本分离。 因此，支付的费用不会超过分配的 VM 实例的费用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 
-借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。 还可以通过选择不同的应用服务计划来增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service-web/web-sites-scale.md)。 如果计划在应用服务计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-core-app-service-plans)。  
+借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。 还可以通过选择不同的应用服务计划来增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 如果计划在应用服务计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-core-app-service-plans)。  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
@@ -96,7 +96,7 @@ VM 将运行时和内容大小进行成本分离。 因此，支付的费用不�
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
-Azure Functions 使用名为*缩放控制器*的组件来监视事件率以及确定是要扩展还是缩减。 缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
+Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要扩大或缩小。 缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
 
 缩放单位是 Function App。 扩展函数应用时，将分配更多的资源来运行多个 Azure Functions 主机的实例。 相反，计算需求下降时，扩展控制器将删除函数主机实例。 实例数最终会缩减为零，此时 Function App 中没有任何函数运行。
 
@@ -104,7 +104,7 @@ Azure Functions 使用名为*缩放控制器*的组件来监视事件率以及�
 
 ### <a name="billing-model"></a>计费模式
 
-消耗量计划的计费在 [Azure Functions 定价页]中有详细介绍。 使用量在函数应用级别合计得出，仅计算函数代码运行的时间。 以下是计费单位： 
+消耗量计划的计费在 [Azure Functions 定价页]中有详细介绍。 使用量在 Function App 级别聚合，只会统计函数代码的执行时间。 以下是计费单位： 
 * 以千兆字节/秒 (GB-s) 计量的资源消耗量。 根据内存大小和函数应用中所有函数的执行时间组合计算得出。 
 * **执行**。 每当为响应绑定触发的事件而执行函数时统计一次。
 

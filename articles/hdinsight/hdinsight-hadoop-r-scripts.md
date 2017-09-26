@@ -22,7 +22,6 @@ ms.openlocfilehash: 5b9b793d49217acd9f0c6c518596a7afb5600d69
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/10/2017
 
-
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 R
 

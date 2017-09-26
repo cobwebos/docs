@@ -21,7 +21,6 @@ ms.openlocfilehash: 65278e7b352df5651f04151210ccc34a58dd321a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="what-is-azure-stack"></a>What is Azure Stack?
 

@@ -1,0 +1,73 @@
+- name: Azure IoT 中心设备预配服务文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 IoT 设备预配
+      href: about-iot-dps.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 设置自动预配
+      href: quick-setup-auto-provision.md
+    - name: 创建模拟设备
+      href: quick-create-simulated-device.md
+- name: 教程
+  items:
+    - name: 1 - 设置云资源
+      href: tutorial-set-up-cloud.md
+    - name: 2 - 设置设备
+      href: tutorial-set-up-device.md
+    - name: 3 - 将设备预配到 IoT 中心
+      href: tutorial-provision-device-to-hub.md
+    - name: 4 - 将设备预配到多个中心
+      href: tutorial-provision-multiple-hubs.md
+- name: 概念
+  items:
+    - name: 设备概念
+      href: concepts-device.md
+    - name: 服务概念
+      href: concepts-service.md
+    - name: 安全概念
+      href: concepts-security.md
+- name: 操作指南
+  items:
+    - name: 管理设备注册
+      href: how-to-manage-enrollments.md
+    - name: 将 HSM 与 SDK 配合使用
+      href: use-hsm-with-sdk.md
+- name: 引用
+  items:
+    - name: REST
+      href: /rest/api/iot-dps
+- name: 资源
+  items:
+    - name: Azure IoT 中心
+      href: 'https://azure.microsoft.com/services/iot-hub/'
+    - name: Azure IoT 已认证设备目录
+      href: 'https://catalog.azureiotsuite.com/'
+    - name: Azure IoT 开发人员中心
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: 设备资源管理器工具
+      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: iothub-diagnostics 工具
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: iothub-explorer 工具
+      href: 'https://github.com/Azure/iothub-explorer'
+    - name: 学习路径
+      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: 技术案例研究
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

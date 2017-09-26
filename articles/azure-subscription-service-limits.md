@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 09/01/2017
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f9f7449fbfc6a1f2fe96e19dd2b13845e602946d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
@@ -55,7 +55,6 @@ ms.lasthandoff: 08/22/2017
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure 事件网格](#azure-event-grid-limits)
 * [Azure Redis 缓存](#azure-redis-cache-limits)
-* [Azure RemoteApp](#azure-remoteapp-limits)
 * [备份](#backup-limits)
 * [批处理](#batch-limits)
 * [BizTalk 服务](#biztalk-services-limits)
@@ -68,7 +67,8 @@ ms.lasthandoff: 08/22/2017
 * [DNS](#dns-limits)
 * [事件中心](#event-hubs-limits)
 * [IoT 中心](#iot-hub-limits)
-* [密钥保管库](#key-vault-limits)
+* [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
+* [Key Vault](#key-vault-limits)
 * [Log Analytics/操作见解](#log-analytics-limits)
 * [媒体服务](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
@@ -230,6 +230,9 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 ### <a name="iot-hub-limits"></a>IoT 中心限制
 [!INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
 
+### <a name="iot-hub-device-provisioning-service-limits"></a>IoT 中心设备预配服务限制
+[!INCLUDE [azure-iotdps-limits](../includes/iot-dps-limits.md)]
+
 ### <a name="data-factory-limits"></a>数据工厂限制
 [!INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
 
@@ -247,9 +250,6 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 
 ### <a name="azure-event-grid-limits"></a>Azure 事件网格限制
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
-
-### <a name="azure-remoteapp-limits"></a>Azure RemoteApp 限制
-[!INCLUDE [azure-remoteapp-limits](../includes/azure-remoteapp-limits.md)]
 
 ### <a name="storsimple-system-limits"></a>StorSimple 系统限制
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="use-emoji-emoticon-within-push-notifications"></a>如何在推送通知中使用表情符号图标

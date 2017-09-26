@@ -20,7 +20,6 @@ ms.openlocfilehash: dd160ede1189b0de544c8cf5db3b13228d212419
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>更改 StorSimple 设备上的设备模式
 

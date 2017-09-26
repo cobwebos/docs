@@ -14,10 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推送
@@ -154,9 +155,4 @@ ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
 3. 在 iOS 应用 UI 中，单击“登录”。 然后单击“发送推送”。 您应该能看到通知中心中所显示的安全通知。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

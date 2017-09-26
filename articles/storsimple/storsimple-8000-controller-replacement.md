@@ -20,7 +20,6 @@ ms.openlocfilehash: 849eccff114c2fd6d952e44d095d0cc89a238675
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
 ## <a name="overview"></a>概述

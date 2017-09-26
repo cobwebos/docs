@@ -21,7 +21,6 @@ ms.openlocfilehash: 9e7cbf383eff5344f652024606164c9cf264015c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份
 > [!div class="op_single_selector"]

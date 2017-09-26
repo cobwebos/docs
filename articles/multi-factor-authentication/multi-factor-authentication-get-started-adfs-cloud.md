@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/29/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 6cf4ec4f777ea1f2b852945ab82da2547946f378
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: d8f077f6e402b14f7d9134a5633dae58e914bd06
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 06/08/2017
 
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
 
-5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，然后单击“下一步”。
+5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，并单击“下一步”。
 
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
 
@@ -59,18 +59,18 @@ ms.lasthandoff: 06/08/2017
 
 1. 打开“AD FS 管理”。
 2. 在左侧选择“信赖方信任”。
-3. 右键单击 **Microsoft Office 365 标识平台** ，然后选择 **编辑声明规则...**
+3. 右键单击 **Microsoft Office 365 标识平台** ，并选择 **编辑声明规则...**
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
 4. 在“颁发转换规则”上，单击 **添加规则。**
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
-5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，然后单击“下一步”。
+5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，并单击“下一步”。
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
 6. 在“声明规则名称”旁边的框中，为规则指定名称。 例如：InsideCorpNet。
 7. 从“传入声明类型”旁边的下拉列表中，选择“公司网络内部”。
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
 8. 单击“完成” 。
 9. 在“颁发转换规则”上，单击 **添加规则**。
-10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”，然后单击“下一步”。
+10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”，并单击“下一步”。
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”。
 12. 在“自定义规则”框中，输入：
 

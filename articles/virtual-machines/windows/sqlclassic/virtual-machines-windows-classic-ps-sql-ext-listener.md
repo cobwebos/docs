@@ -21,7 +21,6 @@ ms.openlocfilehash: 8e506be42aea4fb3c48c29b771a78dcf694f4518
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
 > [!div class="op_single_selector"]

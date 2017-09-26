@@ -19,7 +19,6 @@ ms.openlocfilehash: 5706ba9f4e7c92de77a0edc5146aa150de379c9f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>教程：Azure Active Directory 与 Collaborative Innovation 集成
 

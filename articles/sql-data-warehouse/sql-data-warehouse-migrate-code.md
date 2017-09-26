@@ -21,7 +21,6 @@ ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
 
-
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>将 SQL 代码迁移到 SQL 数据仓库
 本文介绍了将代码从其他数据库迁移到 SQL 数据仓库时可能需要做出的代码更改。 某些 SQL 数据仓库功能设计为以分布方式运行，因此可以大幅改善性能。 但是，为了保持性能和缩放性，某些功能还无法使用。

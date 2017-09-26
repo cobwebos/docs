@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/30/2017
+ms.date: 09/07/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 265a968f902f53c7561c8c7e937f8eacfdb37167
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9657a4681f6bd9cc126de50883ce7a66357156e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室
@@ -38,21 +38,22 @@ Azure 开发测试实验室中的实验室是包含一组资源（例如，虚�
     ![更多服务菜单选项](./media/devtest-lab-create-lab/more-services-menu-option.png)
 
 1. 从可用服务列表中，选择“开发测试实验室”。
-1. 在“开发测试实验室”边栏选项卡中，选择“添加”。
+1. 在“开发测试实验室”区域中，选择“添加”。
    
     ![添加实验室](./media/devtest-lab-create-lab/add-lab-button.png)
 
-1. 在“创建 开发测试实验室”  边栏选项卡上：
+1. 在“创建开发测试实验室”下：
    
     1. 为新的实验室输入“实验室名称”  。
     2. 选择要与实验室关联的“订阅”  。
     3. 选择用于存储实验室的“位置”  。
-    4. 选择“自动关机”  ，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。 自动关机功能主要是一种节省成本的功能，可以根据需要通过该功能指定何时自动关闭 VM。 可以在创建实验室之后更改自动关机设置，只需按[管理 Azure 开发测试实验室中的某个实验室的所有策略](./devtest-lab-set-lab-policy.md#set-auto-shutdown)一文所述步骤操作即可。
+    4. 选择“自动关机”  ，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。 自动关机功能主要是一种节省成本的功能，可以根据需要通过该功能指定何时自动关闭 VM。 可以在创建实验室之后更改自动关机设置，只需按[管理 Azure 开发测试实验室中某个实验室的所有策略](./devtest-lab-set-lab-policy.md#set-auto-shutdown)一文所述步骤操作即可。
+    1. 如果要创建自定义标记（将添加到要在实验室中创建的每个资源上），请输入**标记**的**名称**和**值**信息。 标记用于帮助你按类别管理和组织实验室资源。 有关标记的详细信息（包括如何在创建实验室中后添加标记），请参阅[将标记添加到实验室](devtest-lab-add-tag.md)。
     5. 如果想要在门户仪表板上显示实验室的快捷方式，请选择“固定到仪表板”。
     6. 请选择“自动化选项”，以便获取适用于配置自动化的 Azure Resource Manager 模板。 
-    7. 选择“创建” 。 选择“创建”后，将会显示“开发测试实验室”边栏选项卡。 可以通过观察“通知”区域来监视实验室创建过程的状态。 完成后，刷新页面即可在实验室列表中查看新创建的实验室。  
+    7. 选择“创建” 。 可以通过观察“通知”区域来监视实验室创建过程的状态。 完成后，刷新页面即可在实验室列表中查看新创建的实验室。  
     
-    ![创建实验室边栏选项卡](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+    ![创建开发测试实验室的实验室部分](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

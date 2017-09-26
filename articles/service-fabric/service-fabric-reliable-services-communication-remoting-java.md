@@ -19,7 +19,6 @@ ms.openlocfilehash: dc4a362b5737bb424ca2c196c85f4c51b6ee5e30
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="service-remoting-with-reliable-services"></a>通过 Reliable Services 进行服务远程处理
 > [!div class="op_single_selector"]

@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: robb
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 35b4a4270846c54a1ca760e803ef7adba60cf03b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>使用 Azure 诊断跟踪云服务应用程序的流
@@ -75,10 +76,5 @@ Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记�
     ```
 3. 添加 Trace 语句，以便捕获有关应用程序状态的信息。 可以使用多种方法来来格式化 Trace 语句的输出。 有关详细信息，请参阅[如何：向应用程序代码添加 Trace 语句](https://msdn.microsoft.com/library/zd83saa2.aspx)。
 4. 保存源文件。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

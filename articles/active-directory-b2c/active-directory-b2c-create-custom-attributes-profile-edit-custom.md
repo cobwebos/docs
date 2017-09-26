@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 67c9f6eca18e2dd77e00b8bc8c7bcc546ea3936e
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f3e4eb6fedf850dbb827fd2a10593249d2f17ef1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中创建和使用自定义属性
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置属性：名字
 
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>创建用于存储扩展属性的新应用程序
 
-1. 打开浏览会话并导航到 [Azure 门户](https://portal.azure.com)，并使用想要配置的 B2C 目录的管理凭据登录。
+1. 打开浏览会话，转到 [Azure 门户](https://portal.azure.com)，并使用要配置的 B2C 目录的管理凭据进行登录。
 1. 在左侧导航菜单中，单击“Azure Active Directory”。 可能需要选择“更多服务>”才能找到该选项。
 1. 选择“应用注册”并单击“新建应用程序注册”
 1. 提供以下建议条目：
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置属性：名字
 1. 选择**创建”。 通知中会出现成功完成消息
 1. 选择新创建的 Web 应用程序：WebApp-GraphAPI-DirectoryExtensions
 1. 选择“设置”：所需的权限
-1. 选择 API：Windows Active Directory
+1. 选择 API“Windows Azure Active Directory”
 1. 在应用程序权限中放置一个选中标记：读取和写入目录数据，并“保存”
 1. 选择“授予权限”，然后单击“是”确认。
 1. 复制到剪贴板，并保存“Web 应用”>“图形 API”>“目录扩展”>“设置”>“属性”中的以下标识符
@@ -235,7 +235,7 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置属性：名字
 
 发回到应用程序的 ID 令牌会将新扩展属性包含为前面带有 extension_loyaltyId 的自定义声明。 请参阅示例。
 
-```
+```json
 {
   "exp": 1493585187,
   "nbf": 1493581587,
@@ -254,8 +254,8 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置属性：名字
 
 ## <a name="next-steps"></a>后续步骤
 
-通过更改列出的技术配置文件，将新的声明添加到社交帐户登录流。 社交/联合帐户登录使用这两个技术配置文件来写入和读取将 alternativeSecurityId 用作用户对象定位符的数据。
-```
+### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>通过更改下面列出的技术配置文件，将新的声明添加到社交帐户登录流。 社交/联合帐户登录使用这两个技术配置文件来写入和读取将 alternativeSecurityId 用作用户对象定位符的数据。
+```xml
   <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
   <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

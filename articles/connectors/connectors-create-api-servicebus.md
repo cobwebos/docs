@@ -21,7 +21,6 @@ ms.openlocfilehash: 1e2ce06f5993280dbdb67121849591e67f7979e9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-azure-service-bus-connector"></a>Azure 服务总线连接器入门
 连接到 Azure 服务总线以发送和接收消息。 可执行发送到队列、发送到主题、从队列接收和从订阅接收等操作。

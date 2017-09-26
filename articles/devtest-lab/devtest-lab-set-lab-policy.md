@@ -21,7 +21,6 @@ ms.openlocfilehash: 328a4d893637d7150807855e118b485a2c3bbfc5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
 
-
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
 

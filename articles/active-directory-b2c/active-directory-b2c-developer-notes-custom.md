@@ -20,7 +20,6 @@ ms.openlocfilehash: a5f222e5b11e05286152a9f1cc55d2c3fc27a9dc
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C 自定义策略公共预览版发行说明
 自定义策略功能集现已推出公共预览版，供所有 Azure Active Directory B2C (Azure AD B2C) 客户评估。 此功能集面向构建最复杂标识解决方案的高级标识开发人员。  

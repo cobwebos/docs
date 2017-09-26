@@ -21,7 +21,6 @@ ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
-
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) 群集：Azure 教程
 > [!IMPORTANT]

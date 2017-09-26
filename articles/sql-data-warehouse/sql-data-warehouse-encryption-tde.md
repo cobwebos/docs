@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: b1db3bdfdfb54bda325c9b971cfcb4dd5efa333a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>SQL 数据仓库中的透明数据加密 (TDE) 入门

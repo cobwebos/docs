@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7db677614c23a3447e3e40ae867711a754b06d0d
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a7a1179f815395028c4d0324e2bfb6fbed77229c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -290,7 +290,7 @@ SQL 数据库威胁检测程序使用以下检测方法之一：
 
 ### <a name="application-gateway-web-application-firewall"></a>应用程序网关 Web 应用程序防火墙
 
-[Web 应用程序防火墙](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)是 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview)的一项功能，它为使用应用程序网关实现标准[应用程序传递控制](https://kemptechnologies.com/in/application-delivery-controllers)功能的 Web 应用程序提供保护。 Web 应用程序防火墙通过保护这些应用程序，免受 [OWASP 前 10 个常见的 Web 漏洞](https://www.owasp.org/index.php/Top_10_2010-Main)中大多数漏洞的威胁，来实现此目的
+[Web 应用程序防火墙](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)是 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview)的一项功能，它为使用应用程序网关实现标准[应用程序传递控制](https://kemptechnologies.com/in/application-delivery-controllers)功能的 Web 应用程序提供保护。 Web 应用程序防火墙通过保护这些应用程序，免受 [OWASP 前 10 个常见的 Web 漏洞](https://www.owasp.org/index.php/Top_10_2010-Main)中大多数漏洞的威胁，来实现此目的
 
 ![应用程序网关 Web 应用程序防火墙](./media/azure-threat-detection/azure-threat-detection-fig13.png)
 

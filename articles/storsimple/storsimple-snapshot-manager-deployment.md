@@ -20,7 +20,6 @@ ms.openlocfilehash: cde355381b0d726a1ab340bc4230b2dc8f6e2c56
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 管理单元
 

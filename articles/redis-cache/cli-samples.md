@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a3debf3380b57faa5b7b30f612698fe6de5b7067
-ms.lasthandoff: 04/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a0f3b294f2a655a5ff891d4fd1be9137080349a6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-cli-samples-for-azure-redis-cache"></a>Azure Redis 缓存的 Azure CLI 示例
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/15/2017
 | [获取缓存的详细信息](./scripts/show-cache.md) | 获取 Azure Redis 缓存实例的详细信息，包括预配状态。 |
 | [获取主机名、端口和密钥](./scripts/cache-keys-ports.md) | 获取 Azure Redis 缓存实例的主机名、端口和密钥。 |
 |**Web 应用和缓存**||
-| [将 Web 应用连接到 Redis 缓存](./../app-service-web/scripts/app-service-cli-app-service-redis.md) | 创建 Azure Web 应用和 Redis 缓存，然后将 Redis 连接详细信息添加到应用设置。 |
+| [将 Web 应用连接到 Redis 缓存](./../app-service/scripts/app-service-cli-app-service-redis.md) | 创建 Azure Web 应用和 Redis 缓存，然后将 Redis 连接详细信息添加到应用设置。 |
 |**删除缓存**||
 | [删除缓存](./scripts/delete-cache.md) | 删除 Azure Redis 缓存实例  |
 | | |

@@ -20,7 +20,6 @@ ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 8062923b6270ec6253dc231a3db4333cf4666b42
 ms.contentlocale: zh-cn
 
-
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 

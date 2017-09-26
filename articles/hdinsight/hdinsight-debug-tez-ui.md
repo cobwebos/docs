@@ -21,7 +21,6 @@ ms.openlocfilehash: 3889fa1c3523eb0330cbe3b7640fd8590a5ceadf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业
 Tez UI 是一个网页，可用于了解和调试在基于 Windows 的 HDInsight 群集上将 Tez 用作执行引擎的作业。 利用 Tez UI，你可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。

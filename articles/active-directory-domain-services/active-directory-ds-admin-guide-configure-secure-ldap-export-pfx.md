@@ -20,7 +20,6 @@ ms.openlocfilehash: 5d46f376d46b8bbf3f93de57a7d4e31abdbcdb2f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/23/2017
+ms.date: 08/23/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: de37c8ffd47a2b8e201d18e3a20b5325d528ad59
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: f6e068e60e8c7b3b095e10cb7e109eb68a483de4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
@@ -39,9 +39,17 @@ ms.lasthandoff: 07/12/2017
 
 ### <a name="solution"></a>解决方案
 
-请确保已在证书存储 (Certmgr.msc) 的以下位置安装客户端证书：
- 
-**Certificates - Current User\Personal\Certificates**
+若要解决该问题，请执行以下步骤：
+
+1. 请确保已正确的位置安装下列证书：
+
+    | 证书 | 位置 |
+    | ------------- | ------------- |
+    | AzureClient.pfx  | Current User\Personal\Certificates |
+    | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
+    | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
+
+2. 转到 Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>，在用户和计算机的存储上手动安装证书（*.cer 文件）。
 
 若要详细了解如何安装客户端证书，请参阅[为点到站点连接生成并导出证书](vpn-gateway-certificates-point-to-site.md)。
 
@@ -82,7 +90,7 @@ ms.lasthandoff: 07/12/2017
     | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
     | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
-2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
+2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 azuregateway-GUID.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
 
 ## <a name="file-download-error-target-uri-is-not-specified"></a>文件下载错误：未指定目标 URI
 
@@ -139,7 +147,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 证书 &lt;*证书 ID*&gt; 的数据无效。**
+无法保存虚拟网络网关 &lt;网关名称&gt;。 证书 &lt;*证书 ID*&gt; 的数据无效。**
 
 ### <a name="cause"></a>原因 
 
@@ -174,7 +182,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效。**
+无法保存虚拟网络网关 &lt;网关名称&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效。**
 
 ### <a name="cause"></a>原因
 

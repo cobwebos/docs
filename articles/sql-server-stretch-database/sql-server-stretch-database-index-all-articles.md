@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: DouglasL
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题
@@ -57,10 +58,5 @@ ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
 | ---:|:--- |:--- |
 | 14 |[备份启用了延伸的数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了延伸的数据库。 |
 | 15 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了延伸的数据库。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

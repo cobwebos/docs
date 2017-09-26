@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 08/17/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 30adc10d01290f14a3e116813b19916fa36ab0bc
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 54db95fd50e5d61d54d0c03a8589cfe8292c012c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
@@ -81,6 +81,22 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   virtualMachines      Standard_A0 southcentralus
   virtualMachines      Standard_A1 southcentralus
   virtualMachines      Standard_A2 southcentralus
+  ```
+
+- 对于 Azure CLI，请使用 `az vm list-skus` 命令。 然后，可以使用 `grep` 或类似的实用工具来筛选输出。
+
+  ```
+  az vm list-skus --output table
+  ResourceType      Locations           Name                    Capabilities                       Tier      Size           Restrictions
+  ----------------  ------------------  ----------------------  ---------------------------------  --------  -------------  ---------------------------
+  availabilitySets  eastus              Classic                 MaximumPlatformFaultDomainCount=3
+  avilabilitySets  eastus              Aligned                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  eastus2             Classic                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  eastus2             Aligned                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  westus              Classic                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  westus              Aligned                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  centralus           Classic                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  centralus           Aligned                 MaximumPlatformFaultDomainCount=3
   ```
 
 - 若要使用[门户](https://portal.azure.com)，请登录到门户并通过界面添加资源。 设置值时，可看到该资源的可用 SKU。 无需完成该部署。

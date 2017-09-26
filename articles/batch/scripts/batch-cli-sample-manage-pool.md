@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 2556b02459886390b803407c5cb828687229a44e
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: ae7eab97c1da1113b0248b74a9dd67de8ce49e36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -39,11 +39,11 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="pool-with-cloud-service-configuration-sample-script"></a>使用云服务配置来配置池的示例脚本
 
-[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "管理云服务池")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "Manage Cloud Services Pools")]
 
 ## <a name="pool-with-virtual-machine-configuration-sample-script"></a>使用虚拟机配置来配置池的示例脚本
 
-[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "管理虚拟机池")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "Manage Virtual Machine Pools")]
 
 ## <a name="clean-up-pools"></a>清理池
 
@@ -60,19 +60,19 @@ az batch pool delete --pool-id mypool-linux
 
 | 命令 | 说明 |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | 针对批处理帐户进行身份验证。  |
-| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#list) | 列出批处理帐户中可用的应用程序。  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#create) | 创建 VM 池。  |
-| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#set) | 更新池的属性。  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#list) | 列出可用节点代理 SKU 和映像信息。  |
-| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#resize) | 调整指定池中正在运行的 VM 数目。  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#show) | 显示池的属性。  |
-| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#delete) | 删除指定的池。  |
-| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#enable) | 对池启用自动缩放并应用公式。  |
-| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#disable) | 对池禁用自动缩放。  |
-| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#list) | 列出指定池中的所有计算节点。  |
-| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#reboot) | 重新启动指定的计算节点。  |
-| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#delete) | 从指定的池中删除列出的节点。  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | 针对批处理帐户进行身份验证。  |
+| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#az_batch_application_summary_list) | 列出批处理帐户中可用的应用程序。  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | 创建 VM 池。  |
+| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_set) | 更新池的属性。  |
+| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az_batch_pool_node_agent_skus_list) | 列出可用节点代理 SKU 和映像信息。  |
+| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_resize) | 调整指定池中正在运行的 VM 数目。  |
+| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_show) | 显示池的属性。  |
+| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_delete) | 删除指定的池。  |
+| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_enable) | 对池启用自动缩放并应用公式。  |
+| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_disable) | 对池禁用自动缩放。  |
+| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_list) | 列出指定池中的所有计算节点。  |
+| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_reboot) | 重新启动指定的计算节点。  |
+| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_delete) | 从指定的池中删除列出的节点。  |
 
 ## <a name="next-steps"></a>后续步骤
 

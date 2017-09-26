@@ -7,16 +7,16 @@ author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 08/22/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: faa592af285569c7423a1597fcd9086311486abc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/23/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 
 ## <a name="create-a-resource-group"></a>创建资源组
@@ -45,7 +45,7 @@ ms.lasthandoff: 08/23/2017
 使用 [az group create](/cli/azure/group#create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源（例如函数应用、数据库和存储帐户）的逻辑容器。
 
 以下示例创建名为 `myResourceGroup` 的资源组。  
-如果不使用云 Shell，则必须先使用 `az login` 登录。
+如果不使用云 Shell，请先使用 `az login` 登录。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -56,7 +56,7 @@ az group create --name myResourceGroup --location westeurope
 
 Functions 使用 Azure 存储帐户来保留状态以及有关函数的其他信息。 使用 [az storage account create](/cli/azure/storage/account#create) 命令在创建的资源组中创建存储帐户。
 
-在以下命令中，请将 `<storage_name>` 占位符替换成自己的全局唯一存储帐户名。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
+在以下命令中，请将 `<storage_name>` 占位符替换成全局唯一存储帐户名。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
@@ -86,7 +86,7 @@ az storage account create --name <storage_name> --location westeurope --resource
 
 必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 使用 [az functionapp create](/cli/azure/functionapp#create) 命令创建 Function App。 
 
-在以下命令中，请将 `<app_name>` 占位符替换成自己的唯一 Function App 名称，将 `<storage_name>` 替换为存储帐户名。 `<app_name>` 将用作 Function App 的默认 DNS 域，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 
+在以下命令中，请将 `<app_name>` 占位符替换成唯一函数应用名称，将 `<storage_name>` 替换为存储帐户名。 `<app_name>` 将用作 Function App 的默认 DNS 域，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \

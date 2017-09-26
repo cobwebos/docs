@@ -21,7 +21,6 @@ ms.openlocfilehash: 4d7b7a17751cc476d0365cbcbff3fcf23dd0c6ff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
 
-
 ---
 # <a name="create-a-custom-virtual-machine-running-windows-using-the-classic-deployment-model"></a>使用经典部署模型创建运行 Windows 的自定义虚拟机
 > [!IMPORTANT]

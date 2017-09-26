@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: cd9adc784bceb0fff5e7c2bbee2be0950c51c8f6
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: aee24e5c478c4453655952cc626d7d6c857e7962
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/15/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/redis-cache/cache-keys-ports/cache-keys-ports.sh "Azure Redis 缓存")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/cache-keys-ports/cache-keys-ports.sh "Azure Redis Cache")]
 
 
 ## <a name="script-explanation"></a>脚本说明
@@ -40,8 +40,8 @@ ms.lasthandoff: 04/15/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis#show) | 检索 Azure Redis 缓存实例的详细信息。 |
-| [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#list-keys) | 检索 Azure Redis 缓存实例的访问密钥。 |
+| [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show) | 检索 Azure Redis 缓存实例的详细信息。 |
+| [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys) | 检索 Azure Redis 缓存实例的访问密钥。 |
 
 
 ## <a name="next-steps"></a>后续步骤

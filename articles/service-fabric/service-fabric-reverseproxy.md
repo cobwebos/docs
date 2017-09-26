@@ -61,7 +61,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
 * **http(s)：**可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 对于 HTTPS 转发，在设置反向代理侦听 HTTPS 后，请参阅[使用反向代理连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)。
-* **群集的完全限定域名 (FQDN) | 内部 IP：**对于外部客户端，可以配置反向代理，以便可以通过群集域（例如 mycluster.eastus.cloudapp.azure.com）访问反向代理。 默认情况下，反向代理在每个节点上运行。 对于内部流量，可在本地主机或任意内部节点 IP（例如 10.0.0.1）上访问反向代理。
+* **群集的完全限定域名 (FQDN) | 内部 IP：**对于外部客户端，可以配置反向代理，以便可以通过群集域（例如 mycluster.eastus.cloudapp.azure.com）访问反向代理。默认情况下，反向代理在每个节点上运行。 对于内部流量，可在本地主机或任意内部节点 IP（例如 10.0.0.1）上访问反向代理。
 * Port：为反向代理指定的端口，例如 19081。
 * **ServiceInstanceName：**在不使用“fabric:/”方案的情况下尝试访问的已部署服务实例的完全限定名称。 例如，若要访问 *fabric:/myapp/myservice/* 服务，可以使用 *myapp/myservice*。
 

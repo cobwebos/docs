@@ -20,7 +20,6 @@ ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 
 # <a name="move-from-biztalk-services-to-logic-apps"></a>从 BizTalk 服务移动到逻辑应用
@@ -31,8 +30,8 @@ Microsoft Azure BizTalk 服务 (MABS) 即将停用。 使用本主题将 MABS �
 
 BizTalk 服务由两个子服务组成：
 
-1.    Microsoft BizTalk 服务混合连接
-2.    基于 EAI 和 EDI 网桥的集成
+1.  Microsoft BizTalk 服务混合连接
+2.  基于 EAI 和 EDI 网桥的集成
 
 如果打算移动混合连接，那么请参阅 [Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)，了解此服务的更改和功能。 Azure 混合连接将替换 BizTalk 服务混合连接。 Azure 混合连接可从 Azure App Service 获得，也可从 Azure 门户中获得。 Azure 混合连接还将提供新的混合连接管理器，管理现有 BizTalk 服务混合连接，以及门户中创建的新混合连接。 Azure App Service 混合连接已正式发布 (GA)。
 

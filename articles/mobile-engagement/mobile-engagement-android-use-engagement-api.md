@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="how-to-use-the-engagement-api-on-android"></a>如何在 Android 上使用 Engagement API
@@ -281,9 +282,4 @@ Engagement API 由 `EngagementAgent` 类提供。 此类的实例可通过调用
 在上一示例中，发送到服务器的 JSON 长度为 44 个字符：
 
             {"expiration":"2016-12-07","status":"premium"}
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

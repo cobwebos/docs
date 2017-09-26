@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: genli
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 220e426be20086841854d89831f6c9d67529867f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
-
 
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
@@ -65,7 +64,7 @@ ms.lasthandoff: 06/28/2017
 2.  选择“视图” > “显示隐藏的设备”。
 3.  选择“网络适配器”。 
 4.  找到名为“Microsoft Hyper-V 网络适配器”的适配器。
-5.  你会看到灰显的不可用适配器。 右键单击该适配器，然后选择“卸载”。
+5.  你会看到灰显的不可用适配器。右键单击该适配器，然后选择“卸载”。
 
     ![NIC 图像](media/reset-network-interface/nicpage.png)
 

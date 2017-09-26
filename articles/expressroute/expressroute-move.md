@@ -20,7 +20,6 @@ ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
 
-
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
 本文概述将 Azure ExpressRoute 线路从经典部署模型转移到 Azure Resource Manager 部署模型的效果。

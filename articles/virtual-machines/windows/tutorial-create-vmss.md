@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 8a5f6e8bf01c8bc38f3fd327acd0ddc8f9cdd7de
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 7fc2e841a193c219822e232fbc994df5e934ddc4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>在 Windows 上创建虚拟机规模集和部署高度可用的应用
-利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 在本教程中，将在 Azure 中部署虚拟机规模集。 你将学习如何：
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在本教程中，会在 Azure 中部署虚拟机规模集。 学习如何：
 
 > [!div class="checklist"]
 > * 使用自定义脚本扩展定义要缩放的 IIS 站点
@@ -34,15 +34,15 @@ ms.lasthandoff: 05/09/2017
 > * 增加或减少规模集中的实例数
 > * 创建自动缩放规则
 
-本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 可以运行 ` Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 
 ## <a name="scale-set-overview"></a>规模集概述
-规模集使用的概念与前一教程中有关[创建高度可用的 VM](tutorial-availability-sets.md) 的概念类似。 规模集中的 VM 分布在容错和更新域之间，就像可用性集中的 VM 那样。
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集中的 VM 将分布在逻辑容错域和更新域的一个或多个*放置组*中。 这些放置组由配置类似的 VM 组成，与[可用性集](tutorial-availability-sets.md)相似。
 
 可以根据需要在规模集中创建 VM。 定义自动缩放规则，以控制如何以及何时在规模集中添加或删除 VM。 这些根据 CPU 负载、内存用量或网络流量等指标触发这些规则。
 
-使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 100 个 VM。
+使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 300 个 VM。
 
 
 ## <a name="create-an-app-to-scale"></a>创建用于缩放的应用
@@ -52,7 +52,7 @@ ms.lasthandoff: 05/09/2017
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location EastUS
 ```
 
-在前面的教程中，你已了解如何使用自定义脚本扩展来[自动执行 VM 配置](tutorial-automate-vm-deployment.md)。 创建规模集配置，然后应用自定义脚本扩展，安装和配置 IIS：
+在前面的教程中，已了解如何使用自定义脚本扩展来[自动执行 VM 配置](tutorial-automate-vm-deployment.md)。 创建规模集配置，并应用自定义脚本扩展，安装和配置 IIS：
 
 ```powershell
 # Create a config object
@@ -234,7 +234,7 @@ Update-AzureRmVmss -ResourceGroupName myResourceGroupScaleSet `
     -VirtualMachineScaleSet $scaleset
 ```
 
-这将花费数分钟来更新规模集中实例的指定数量。
+这会花费数分钟来更新规模集中实例的指定数量。
 
 
 ### <a name="configure-autoscale-rules"></a>配置自动缩放规则
@@ -289,6 +289,8 @@ Add-AzureRmAutoscaleSetting `
   -TargetResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `
   -AutoscaleProfiles $myScaleProfile
 ```
+
+有关使用自动缩放的详细设计信息，请参阅[自动缩放最佳做法](/azure/architecture/best-practices/auto-scaling)。
 
 
 ## <a name="next-steps"></a>后续步骤

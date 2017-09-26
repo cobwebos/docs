@@ -22,7 +22,6 @@ ms.openlocfilehash: 9b56ce6cc5bdd3b8d48d047751e978cad08598e1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="manage-domain-joined-hdinsight-clusters-preview"></a>管理已加入域的 HDInsight 群集（预览版）
 了解已加入域的 HDInsight 中的用户和角色以及如何管理已加入域的 HDInsight 群集。

@@ -21,7 +21,6 @@ ms.openlocfilehash: 63bd33bf4e09b98aa53dcfec9fcc4a0109204952
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive 连接器入门
 连接到 OneDrive 以管理文件（包括上传、获取、删除文件等）。 

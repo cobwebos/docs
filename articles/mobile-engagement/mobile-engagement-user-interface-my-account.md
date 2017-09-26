@@ -14,11 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="how-to-manage-your-account-profile-and-test-devices"></a>如何管理帐户配置文件和测试设备

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 75b0602a6c6a0e252ae0bb5eab41ef5cc5636dc5
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 19b582a0cecd72b9f30283ccf822b74cf400a155
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/07/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/redis-cache/create-cache/create-cache.sh "Azure Redis 缓存")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/create-cache/create-cache.sh "Azure Redis Cache")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/redis-cli-script-clean-up.md)]
 
@@ -41,8 +41,8 @@ ms.lasthandoff: 04/07/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az redis create](https://docs.microsoft.com/cli/azure/redis#create) | 创建 Redis 缓存实例。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az redis create](https://docs.microsoft.com/cli/azure/redis#az_redis_create) | 创建 Redis 缓存实例。 |
 
 
 ## <a name="next-steps"></a>后续步骤

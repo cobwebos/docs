@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: 0a12da52b6e74c721cd25f89e7cde3c07153a396
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/14/2017
-
 
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors 如何使用 Service Fabric 平台

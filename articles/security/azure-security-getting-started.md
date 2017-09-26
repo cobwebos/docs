@@ -20,7 +20,6 @@ ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/25/2017
 
-
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 构建 IT 资产或将其迁移到云提供商处时，需要依赖该组织来保护你的应用程序和数据，并且需要依赖该组织提供的服务和控制机制来管理基于云的资产的安全性。

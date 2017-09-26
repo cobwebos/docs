@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 615361975e2ee15ce80f6efb39f57cae381209e5
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 0b05359938f4da544c4cb2a6fe60cfaf228478e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
@@ -51,7 +51,7 @@ ms.lasthandoff: 08/09/2017
 ## <a name="storage"></a>存储
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>使用 Azure 托管磁盘创建规模集
-可以使用 [Azure 托管磁盘](../storage/storage-managed-disks-overview.md)而不是传统的 Azure 存储帐户创建规模集。 托管磁盘可以提供以下优点：
+可以使用 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)而不是传统的 Azure 存储帐户创建规模集。 托管磁盘可以提供以下优点：
 - 无需为规模集 VM 预先创建一组 Azure 存储帐户。
 - 可以为规模集中的 VM 定义[附加的数据磁盘](virtual-machine-scale-sets-attached-disks.md)。
 - 可以将规模集配置为[在一个规模集中最多支持 1,000 个 VM](virtual-machine-scale-sets-placement-groups.md)。 
@@ -74,7 +74,7 @@ ms.lasthandoff: 08/09/2017
 
 使用用户管理的存储帐户配置的规模集目前限制为 100 个 VM（建议为此规模使用 5 个存储帐户）。
 
-基于自定义映像（用户构建的映像）构建的规模集配置 Azure 托管磁盘后可具有 100 个 VM 的容量。 如果规模集配置了用户管理的存储帐户，则必须在同一存储帐户中创建所有 OS 磁盘 VHD。 因此，基于自定义映像和用户管理的存储构建的规模集中 VM 的最大建议数目为 20。 如果关闭预配过度，最大可为 40。
+基于自定义映像（用户构建的映像）构建的规模集配置 Azure 托管磁盘后最多可拥有 300 个 VM 的容量。 如果规模集配置了用户管理的存储帐户，则必须在同一存储帐户中创建所有 OS 磁盘 VHD。 因此，基于自定义映像和用户管理的存储构建的规模集中 VM 的最大建议数目为 20。 如果关闭预配过度，最大可为 40。
 
 对于高出这些限制所允许的 VM，需要部署多个规模集，如[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)所示。
 

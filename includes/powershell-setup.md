@@ -12,10 +12,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b3fd172d8dc468780d483821d7067c053e39968e
 ms.openlocfilehash: 19c704d965ff3e2fc9ac8c5b623aeb386cb0b974
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/18/2017
 
 ---
 ## <a name="setting-up-powershell"></a>设置 PowerShell
@@ -82,10 +83,5 @@ ms.openlocfilehash: 19c704d965ff3e2fc9ac8c5b623aeb386cb0b974
     Select-AzureSubscription -SubscriptionName $subscr -Current    
 
 有关 Azure 订阅和帐户的详细信息，请参阅[如何：连接到你的订阅](/powershell/azureps-cmdlets-docs#Connect)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

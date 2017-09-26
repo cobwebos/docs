@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 93c8f64ef3561d0fee704940f164f86a032deda9
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
-
 
 ---
 # <a name="list-of-oracle-virtual-machine-images-for-linux"></a>适用于 Linux 的 Oracle 虚拟机映像列表 

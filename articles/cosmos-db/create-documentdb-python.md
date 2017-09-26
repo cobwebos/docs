@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/13/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 26694432663feb0f9cd21573e9114007b2357528
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: a2059aeb0ac147c896a7306f9530a410974a8e9a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB：使用 Python 和 Azure 门户生成 DocumentDB API 应用
@@ -31,11 +31,12 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 ## <a name="prerequisites"></a>先决条件
 
 * 在运行此示例之前，必须具备以下先决条件：
-    * [Visual Studio 2015](http://www.visualstudio.com/) 或更高版本。
+    * 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
     * 来自 [GitHub](http://microsoft.github.io/PTVS/)的 Python Tools for Visual Studio。 本教程使用的是 Python Tools for VS 2015。
     * 来自 [python.org](https://www.python.org/downloads/release/python-2712/) 的 Python 2.7
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -47,7 +48,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在，让我们从 github 克隆 DocumentDB API 应用、设置连接字符串，并运行。 你将看到以编程方式处理数据是多么容易。 
+现在，让我们从 github 克隆 DocumentDB API 应用、设置连接字符串，并运行。 会看到以编程方式处理数据是多么容易。 
 
 1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
 
@@ -123,7 +124,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 `DocumentDBGetStarted.py` 文件中。
+1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，并单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 `DocumentDBGetStarted.py` 文件中。
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-documentdb-dotnet/keys.png)
 
@@ -138,11 +139,11 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     `config.MASTERKEY : "FILLME"`
     
 ## <a name="run-the-app"></a>运行应用程序
-1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的项目，选择当前 Python 环境，然后右键单击。
+1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的项目，选择当前 Python 环境，并右键单击。
 
-2. 选择“安装 Python 包”，然后键入 **pydocumentdb**
+2. 选择“安装 Python 包”，并键入 **pydocumentdb**
 
-3. 按 F5 运行应用程序。 你的应用将显示在浏览器中。 
+3. 按 F5 运行应用程序。 应用会显示在浏览器中。 
 
 现可返回到数据资源管理器，查看查询、修改和处理此新数据。 
 
@@ -154,12 +155,12 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，你已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合和运行应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
+在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合和运行应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
 
 > [!div class="nextstepaction"]
 > [将 DocumentDB API 的数据导入 Azure Cosmos DB](import-data.md)

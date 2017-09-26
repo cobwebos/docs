@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/25/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 34a4970e9b0e99cbbbbc52788b00edab4a197755
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 3794fc03baa6c373aa8dd5d45035c693cca081b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="sample-scripts"></a>示例脚本
 
-[!code-powershell[主要](../../../powershell_scripts/sql-database/setup-geodr-and-failover-pool/setup-geodr-and-failover-pool.ps1?highlight=16-19 "为弹性池设置活动异地复制")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-pool/setup-geodr-and-failover-pool.ps1?highlight=16-19 "Set up active geo-replication for elastic pool")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

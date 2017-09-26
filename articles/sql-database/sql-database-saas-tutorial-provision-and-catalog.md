@@ -1,6 +1,6 @@
 ---
 title: "在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft Docs"
-description: "了解如何在 Wingtip SaaS 应用中预配和编录新租户"
+description: "了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 8fa4c4f95386a92c8c818eef1a5b4de5a086fe07
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: febf9d9f8a32a95ae61734cc2d3632bb74f6c8f5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>预配新租户并将其注册到目录中
+# <a name="learn-how-to-provision-and-catalog-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配和编录新租户并将其注册在目录中
 
 在本教程中，你将学习预配和目录 SaaS 模式，以及如何在 Wingtip SaaS 应用程序中实现它们。 创建并初始化新的租户数据库，并在应用程序的租户目录中注册它们。 目录是一个数据库，用于保留 SaaS 应用程序的许多租户与其数据之间的映射。 对于将应用程序请求定向到正确的数据库，目录起着重要作用。  
 

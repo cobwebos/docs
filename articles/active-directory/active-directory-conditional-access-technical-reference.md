@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2017
+ms.date: 09/01/2017
 ms.author: markvi
-ms.reviewer: calebb
+ms.reviewer: spunukol
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: f96189735512090f993f61c0d64a249f650ea2a2
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: f3d8bdbfc29ca1008006837512c0e6ae8cb8f6fe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件性访问技术参考
@@ -28,7 +28,11 @@ ms.lasthandoff: 08/29/2017
 
 - 云应用分配
 
+- 设备平台条件 
+
 - 客户端应用条件
+
+- 批准的客户端应用要求 
 
 
 
@@ -75,7 +79,27 @@ ms.lasthandoff: 08/29/2017
 - 使用 Azure AD 应用程序代理的应用程序。 
 
 
-## <a name="client-apps-conditions"></a>客户端应用条件 
+## <a name="device-platforms-condition"></a>设备平台条件
+
+在条件性访问策略中，可配置设备平台条件，将策略绑定到客户端上运行的操作系统。
+
+![控制](./media/active-directory-conditional-access-technical-reference/41.png)
+
+Azure AD 条件性访问支持以下设备平台：
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+- Windows
+
+- macOS（预览）
+
+
+
+## <a name="client-apps-condition"></a>客户端应用条件 
 
 当配置条件性访问策略时，可以设置[客户端应用条件](active-directory-conditional-access-azure-portal.md#client-apps)。 客户端应用条件允许你在用户尝试从这些类型的客户端应用进行访问时授予其访问权限或阻止访问：
 
@@ -83,7 +107,6 @@ ms.lasthandoff: 08/29/2017
 - 移动应用和桌面应用
 
 ![控制](./media/active-directory-conditional-access-technical-reference/03.png)
-
 
 ### <a name="supported-browsers"></a>支持的浏览器 
 
@@ -124,11 +147,11 @@ ms.lasthandoff: 08/29/2017
 
 
 | 客户端应用| 目标服务| 平台 |
-| :-- | --- | --- |
+| --- | --- | --- |
 | 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务| Android 和 iOS|
 | Azure 远程应用| Azure 远程应用服务| Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X|
 | Dynamics CRM 应用| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
-| Microsoft Teams 服务 - 这控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、MAC OS X、iOS、Android、WP 和 Web 客户端）的所有服务| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS/Android 和 MAC OSX|
+| Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
 | 邮件/日历/人脉应用、Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）| Office 365 Exchange Online| Windows 10|
 | Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）| Office 365 Exchange Online| Windows 8.1、Windows 7|
 | Outlook 移动应用| Office 365 Exchange Online| iOS|
@@ -143,15 +166,46 @@ ms.lasthandoff: 08/29/2017
 
 
 
+## <a name="approved-client-app-requirement"></a>批准的客户端应用要求 
+
+配置条件性访问策略时，可选择后列要求：仅当批准的客户端应用发出连接请求时，才授予访问权限。 
+
+![控制](./media/active-directory-conditional-access-technical-reference/21.png)
+
+针对此设置批准的客户端应用有：
+
+- Microsoft Excel
+
+- Microsoft OneDrive
+
+- Microsoft Outlook
+
+- Microsoft OneNote
+
+- Microsoft PowerPoint
+
+- Microsoft SharePoint
+
+- Microsoft Skype for Business
+
+- Microsoft Teams
+
+- Microsoft Visio
+
+- Microsoft Word
 
 
+**备注：**
 
+- 这些应用都支持 Microsoft Intune 移动应用程序管理 (MAM)。
 
+- 此要求：
 
+    - 仅支持将 IOS 和 Android 选为[设备平台条件](#device-platforms-condition) 
 
-
-
-
+    - 不支持将浏览器选为[客户端应用条件](#supported-browsers) 
+    
+    - 选中后，会取代移动应用和桌面客户端作为[客户端应用条件](#supported-mobile-apps-and-desktop-clients)  
 
 
 ## <a name="next-steps"></a>后续步骤

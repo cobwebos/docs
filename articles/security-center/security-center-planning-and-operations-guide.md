@@ -20,7 +20,6 @@ ms.openlocfilehash: c502e4363dbaa37455d1aad90d1e9fa855fd09b0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。

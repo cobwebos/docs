@@ -21,7 +21,6 @@ ms.openlocfilehash: f0cf88a06c5470ef173b22e7213419a6c8760723
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>如何在 Azure 门户中将托管数据磁盘附加到 Windows VM
 

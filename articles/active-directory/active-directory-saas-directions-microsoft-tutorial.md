@@ -19,7 +19,6 @@ ms.openlocfilehash: f9c068c71eb00a4c779c91c8ee0f0dc9d6ba85ae
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/24/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>教程：Azure Active Directory 与 Directions on Microsoft 的集成
 

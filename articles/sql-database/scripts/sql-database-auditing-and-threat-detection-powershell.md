@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 09/08/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 228772ff6710596c916165a132db31f449d0a327
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: f5d76fa801e990c03c9a74d1ad0a688ade7b5cd4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[主要](../../../powershell_scripts/sql-database/database-auditing-and-threat-detection/database-auditing-and-threat-detection.ps1?highlight=13-14 "配置审核和威胁检测")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/database-auditing-and-threat-detection/database-auditing-and-threat-detection.ps1?highlight=13-14 "Configure auditing and threat detection")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

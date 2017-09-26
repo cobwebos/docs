@@ -1,5 +1,4 @@
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 启用 Azure 密钥保管库集成之后，可以在 SQL VM 上启用 SQL Server 加密。 首先，需要在密钥保管库内创建一个非对称密钥，并在 VM 上的 SQL Server 中创建一个对称密钥。 然后，你将能够执行的 T-SQL 语句，以启用对数据库和备份的加密。
 
@@ -11,8 +10,7 @@
 
 以下 Transact-SQL 脚本提供针对每种形式的示例。
 
-### 先决条件示例
-<a id="prerequisites-for-examples" class="xliff"></a>
+### <a name="prerequisites-for-examples"></a>先决条件示例
 
 每个示例基于两个先决条件：密钥保管库中名为 **CONTOSO_KEY** 的非对称密钥，以及 AKV 集成功能创建的名为 **Azure_EKM_TDE_cred** 的凭据。 以下 Transact-SQL 命令设置这些运行示例所需的先决条件。
 
@@ -53,8 +51,7 @@ WITH PROVIDER_KEY_NAME = 'keytestvault',  --key name
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### 透明数据加密 (TDE)
-<a id="transparent-data-encryption-tde" class="xliff"></a>
+### <a name="transparent-data-encryption-tde"></a>透明数据加密 (TDE)
 
 1. 创建数据库引擎将用于 TDE 的 SQL Server 登录名，然后向其添加凭据。
 
@@ -91,8 +88,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### 加密备份
-<a id="encrypted-backups" class="xliff"></a>
+### <a name="encrypted-backups"></a>加密备份
 
 1. 创建数据库引擎将用于加密备份的 SQL Server 登录名，然后向其添加凭据。
 
@@ -122,8 +118,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### 列级加密 (CLE)
-<a id="column-level-encryption-cle" class="xliff"></a>
+### <a name="column-level-encryption-cle"></a>列级加密 (CLE)
 
 此脚本创建一个受密钥保管库中的非对称密钥保护的对称密钥，然后使用该对称密钥对数据库中的数据进行加密。
 
@@ -148,8 +143,7 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-## 其他资源
-<a id="additional-resources" class="xliff"></a>
+## <a name="additional-resources"></a>其他资源
 
 有关如何使用这些加密功能的详细信息，请参阅[将 EKM 用于 SQL Server 加密功能](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
 

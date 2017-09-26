@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7fd0ace35cfe0286c874e4a75b733053aa945d39
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 54a4a37d581f023610cd61835bdc76814fbd46e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 虚拟网络和 Windows 虚拟机
 
-Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程介绍了如何在虚拟网络中创建多个虚拟机 (VM)，以及如何在虚拟机之间配置网络连接。 你将学习如何：
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程介绍了如何在虚拟网络中创建多个虚拟机 (VM)，以及如何在虚拟机之间配置网络连接。 学习如何：
 
 > [!div class="checklist"]
 > * 创建虚拟网络
@@ -34,11 +34,11 @@ Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程
 > * 使用网络安全组控制网络流量
 > * 查看正在运行的流量规则
 
-本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 可以运行 ` Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="create-vnet"></a>创建 VNet
 
-VNet 是你自己的网络在云中的表示形式。 VNet 是对专用于你的订阅的 Azure 云进行的逻辑隔离。 在 VNet 中，可发现子网、连接到这些子网的规则，以及从 VM 到子网的连接。
+VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 云进行的逻辑隔离。 在 VNet 中，可发现子网、连接到这些子网的规则，以及从 VM 到子网的连接。
 
 创建任何其他 Azure 资源前，需要使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建一个资源组。 以下示例在“EastUS”位置创建名为 *myRGNetwork* 的资源组：
 
@@ -93,7 +93,7 @@ $frontendNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 上管理员帐户所需的用户名和密码：
+使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 上管理员帐户所需的用户名和密码。 若要使用这些凭据连接到 VM，请执行其他步骤：
 
 ```powershell
 $cred = Get-Credential
@@ -153,7 +153,7 @@ Get-AzureRmPublicIPAddress `
 mstsc /v:<publicIpAddress>
 ``` 
 
-登录 myFrontendVM 后即可使用单行 PowerShell 安装 IIS，并启用本地防火墙规则以允许 Web 流量。 打开 PowerShell 提示符并运行以下命令：
+登录 myFrontendVM 后即可使用单行 PowerShell 安装 IIS，并启用本地防火墙规则以允许 Web 流量。 打开 VM 上 RDP 会话中的 PowerShell 提示符并运行以下命令：
 
 使用 [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) 运行安装 IIS web 服务器的自定义脚本扩展：
 

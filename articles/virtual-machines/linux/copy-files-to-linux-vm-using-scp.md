@@ -57,7 +57,7 @@ SCP 将 SSH 用于传输层。 SSH 处理目标主机上的身份验证，同时
 
 在第一个示例中，我们将 Azure 配置文件向上复制到用于部署自动化的 Linux VM。 由于此文件包含 Azure API 凭据，其中包括机密，因此安全性非常重要。 SSH 提供的加密隧道可保护文件的内容。
 
-以下命令通过 FQDN myserver.eastus.cloudapp.azure.com 将本地 .azure/config 文件复制到 Azure VM。 Azure VM 上的管理员用户名为 azureuser。 该文件指向 /home/azureuser/directory。 在此命令中替换自己的值。
+以下命令通过 FQDN myserver.eastus.cloudapp.azure.com 将本地 .azure/config 文件复制到 Azure VM。Azure VM 上的管理员用户名为 azureuser。 该文件指向 /home/azureuser/directory。 在此命令中替换自己的值。
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config

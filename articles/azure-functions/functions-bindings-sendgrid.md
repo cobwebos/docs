@@ -25,8 +25,7 @@ ms.lasthandoff: 08/29/2017
 
 此文提供适用于 Azure Functions 开发人员的参考信息。 Azure Functions 的新手请从以下资源入手：
 
-
-            [创建第一个 Azure 函数](functions-create-first-azure-function.md)。 
+[创建第一个 Azure 函数](functions-create-first-azure-function.md)。 
 [C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md) 或 [Node](functions-reference-node.md) 开发人员参考。
 
 ## <a name="functionjson-for-sendgrid-bindings"></a>适用于 SendGrid 绑定的 function.json
@@ -102,7 +101,7 @@ public static Mail Run(TraceWriter log, string input, out Mail message)
 module.exports = function (context, input) {    
     var message = {
          "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
-        from: "sender@contoso.com",        
+        from: { email: "sender@contoso.com" },        
         subject: "Azure news",
         content: [{
             type: 'text/plain',

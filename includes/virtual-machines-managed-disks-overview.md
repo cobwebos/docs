@@ -79,7 +79,7 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 若要了解有关如何使用托管磁盘创建快照的详细信息，请查看下列资源：
 
 * [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 
 ## <a name="images"></a>映像

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2016
 ms.author: telmos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b574360cce92350a9bf52c21678bf0e91ceb270e
 ms.openlocfilehash: 479cf8cf358d0b242d8ce030d8639b493e4767d8
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="name-resolution-for-vms-and-role-instances"></a>VM 和角色实例的名称解析
@@ -178,10 +179,5 @@ Resource Manager 部署模型：
 * [Azure 服务配置架构](https://msdn.microsoft.com/library/azure/ee758710)
 * [虚拟网络配置架构](https://msdn.microsoft.com/library/azure/jj157100)
 * [使用网络配置文件配置虚拟网络](virtual-networks-using-network-configuration-file.md) 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

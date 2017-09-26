@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 09/22/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 4ef119d5218c844f3949bf4fc17fb320a7cbf7b4
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 75575fec0047dd653dca86df1daf234676859600
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
@@ -109,7 +109,7 @@ Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级�
 | [SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | 否 - 请参阅 [SQL 数据库审核](sql-database-auditing.md) |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | 否 - 请参阅 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | 是 |
-| SQL Server Profiler | [支持](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | 否 - 请参阅[扩展事件](sql-database-xevent-db-diff-from-svr.md) |
+| [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | 否 - 请参阅[扩展事件](sql-database-xevent-db-diff-from-svr.md) |
 | [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [仅限事务性和快照复制订户](sql-database-cloud-migrate.md) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | 否 |
 | [存储过程](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | 是 |
@@ -120,7 +120,6 @@ Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级�
 | [表分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | 是 - 仅限主文件组 |
 | [临时表](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | 仅限本地和数据库范围的全局临时表 |
 | [临时表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | 是 |
-| [Transactions](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | 否 |
 | [变量](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | 是 | 
 | [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | 是 |
 | [Windows Server 故障转移群集](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | 否 - 请参阅[故障转移组和活动异地复制](sql-database-geo-replication-overview.md) |

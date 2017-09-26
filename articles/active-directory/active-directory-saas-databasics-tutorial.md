@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 09/08/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 26943282701302b61252e17850b71381afb1629b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 3a9776e6d11a54220a3b055d59e89d2eb4161a1a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>教程：Azure Active Directory 与 DATABASICS 的集成
@@ -124,11 +124,14 @@ ms.lasthandoff: 08/29/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-databasics-tutorial/tutorial_general_400.png)
 
-6. 若要在 DATABASICS 端配置单一登录，需将下载的元数据 XML 发送给 [DATABASICS 支持团队](https://www.data-basics.com/support/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+6. 若要在 DATABASICS 端配置单一登录，请使用以下 URL 完成表单。 提交表单后，[DATABASICS 客户端支持团队](https://www.data-basics.com/support/)将与你联系。
+    
+    [https://www.data-basics.com/support/submit-sso-onboarding-request/](https://www.data-basics.com/support/submit-sso-onboarding-request/)
+
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+ 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -201,7 +204,7 @@ ms.lasthandoff: 08/29/2017
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 DATABASICS 磁贴时，应自动登录到 DATABASICS 应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

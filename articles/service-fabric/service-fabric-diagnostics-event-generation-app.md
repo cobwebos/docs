@@ -20,7 +20,6 @@ ms.openlocfilehash: 3c472904641108b7383cd0f1416c47460f8de11a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
 
-
 ---
 
 # <a name="application-and-service-level-event-and-log-generation"></a>应用程序和服务级别事件和日志生成

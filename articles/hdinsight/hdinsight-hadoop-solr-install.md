@@ -22,7 +22,6 @@ ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Solr
 

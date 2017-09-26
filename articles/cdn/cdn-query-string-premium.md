@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
 ms.openlocfilehash: 145067c2ce50b41c4783f4de4052c0e7cb529fc7
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/25/2017
 
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium"></a>使用查询字符串控制 Azure CDN 缓存行为 - 高级
@@ -58,10 +59,5 @@ ms.openlocfilehash: 145067c2ce50b41c4783f4de4052c0e7cb529fc7
 > 设置更改不会立即显示，因为注册通过 CDN 传播需要时间。  对于<b>来自 Verizon 的 Azure CDN</b> 配置文件，传播通常会在 90 分钟内完成，但某些情况下可能更长。
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

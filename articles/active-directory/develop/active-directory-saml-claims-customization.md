@@ -56,7 +56,7 @@ Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成�
 
 ![编辑用户属性][5]
 
-现在还可使用 join() 函数，通过用户标识符值加入已验证域。 在“用户标识符”中选择 join() 函数时，首先选择用户标识符（如电子邮件地址或用户主体名称），然后在第二个下拉列表中选择已验证的域。 如果选择已验证域的电子邮件地址，则 Azure AD 从 joe_smith@contoso.com 的第一个值 joe_smith 中提取用户名，并向该用户名追加 contoso.onmicrosoft.com。 请参阅以下示例：
+现在还可使用 join() 函数，通过用户标识符值加入已验证域。 在“用户标识符”中选择 join() 函数时，首先选择用户标识符（如电子邮件地址或用户主体名称），然后在第二个下拉列表中选择已验证的域。 如果选择已验证域的电子邮件地址，则 Azure AD 从 joe_smith@contoso.com 的第一个值 joe_smith 中提取用户名，并向该用户名追加 contoso.onmicrosoft.com。请参阅以下示例：
 
 ![编辑用户属性][6]
 

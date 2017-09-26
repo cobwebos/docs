@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 9d77b9329116afcf2fdde48d672c95020738138c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置

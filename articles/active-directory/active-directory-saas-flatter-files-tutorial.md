@@ -19,7 +19,6 @@ ms.openlocfilehash: e02150cb27768d7b403bdca191bc1f189821def4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>教程：Azure Active Directory 与 Flatter Files 的集成
 

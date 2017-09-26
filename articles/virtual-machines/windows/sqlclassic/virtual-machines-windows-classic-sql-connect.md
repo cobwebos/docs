@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
+experimental_id: d51f3cc6-753b-4e
 ms.translationtype: Human Translation
 ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: 4218b6d274abbeda542c1507aec998ba56f5c145
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/12/2017
-
 
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>连接到 Azure 上的 SQL Server 虚拟机（经典部署）

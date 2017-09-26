@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
 ms.author: terrylan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
-
 
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>集成 Azure 安全中心警报和 Azure 日志集成

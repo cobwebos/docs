@@ -20,7 +20,6 @@ ms.openlocfilehash: e89bbf5a2c1d71852e49da43d3106a05ebfc28a8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="step-7-set-up-the-source-and-target-for-physical-server-replication-to-azure"></a>第 7 步：设置源和目标以便将物理服务器复制到 Azure
 

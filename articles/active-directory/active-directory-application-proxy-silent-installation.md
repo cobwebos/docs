@@ -11,35 +11,38 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9e28c89d8f64f0ae3d4150017ca544e606075c45
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: cf3058832ba656a1a18aea194bf4e5ce4e800e76
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
-# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>以无提示方式安装 Azure AD 应用程序代理连接器
-希望能够将安装脚本发送到多个 Windows 服务器或未启用用户界面的 Windows Server。 本主题可帮助创建 Windows PowerShell 脚本来无人参与安装和注册 Azure AD 应用程序代理连接器。
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器创建无人参与安装脚本
+
+本主题可帮助创建 Windows PowerShell 脚本来无人参与安装和注册 Azure AD 应用程序代理连接器。
 
 希望执行以下操作时，此功能非常有用：
 
-* 在没有 UI 层的计算机上安装连接器，或者在无法通过 RDP 连接到计算机时安装连接器。
+* 在未启用用户界面或无法使用远程桌面进行访问的 Windows 服务器上安装连接器。
 * 一次性安装并注册多个连接器。
 * 将连接器安装与注册集成为另一个过程的一部分。
 * 创建包含连接器代码但未注册的标准服务器映像。
 
-应用程序代理的工作原理是通过在网络内部安装一个名为“连接器”的精简 Windows Server 服务。 要使应用程序代理连接器工作，必须使用全局管理员和密码将其注册到 Azure AD 目录。 通常在连接器安装期间出现弹出窗口对话框时输入此信息。 但是，可使用 Windows PowerShell 来创建凭据对象以输入注册信息。 或者，可以创建自己的令牌，并使用该令牌输入注册信息。
+要使[应用程序代理连接器](application-proxy-understand-connectors.md)工作，必须使用全局管理员和密码将其注册到 Azure AD 目录。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
+
+无人参与安装包括两个步骤。 第一步，安装连接器。 第二步，向 Azure AD 注册连接器。 
 
 ## <a name="install-the-connector"></a>安装连接器
-安装 Connector MSI 而不注册连接器，如下所示：
+使用以下步骤免注册安装连接器：
 
 1. 打开命令提示符。
-2. 运行以下命令，其中 /q 表示静默安装，即安装不会提示用户接受最终用户许可协议。
+2. 运行以下命令，其中 /q 表示静默安装。 静默安装不会提示接受最终用户许可协议。
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
@@ -50,18 +53,18 @@ ms.lasthandoff: 08/24/2017
 * 使用离线创建的令牌注册连接器
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>使用 Windows PowerShell 凭据对象注册连接器
-1. 通过运行此命令创建 Windows PowerShell 凭据对象。 将 *\<username\>* 和 *\<password\>* 替换为目录的用户名和密码：
+1. 创建包含目录管理用户名和密码的 Windows PowerShell 凭据对象 `$cred`。 运行以下命令，替换 \<用户名\> 和 \<密码\>：
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. 转到 **C:\Program Files\Microsoft AAD App Proxy Connector** 并使用创建的 PowerShell 凭据对象运行脚本。 将 *$cred* 替换为创建的 PowerShell 凭据对象的名称：
+2. 转到 C:\Program Files\Microsoft AAD App Proxy Connector 并使用创建的 `$cred` 对象运行以下脚本：
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
 ### <a name="register-the-connector-using-a-token-created-offline"></a>使用离线创建的令牌注册连接器
-1. 通过 AuthenticationContext 类使用代码片段中的值创建离线令牌：
+1. 通过 AuthenticationContext 类使用此代码片段中的值创建离线令牌：
 
         using System;
         using System.Diagnostics;

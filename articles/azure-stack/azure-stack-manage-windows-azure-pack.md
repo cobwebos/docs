@@ -20,7 +20,6 @@ ms.openlocfilehash: e00cf1c3f3d74b98e84b3d3f862e3a7b1b5b65f4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Manage Windows Azure Pack virtual machines from Azure Stack
 In the Azure Stack Development Kit, you can enable access from the Azure Stack user portal to tenant virtual machines running on Windows Azure Pack. Tenants can use the Azure Stack portal to manage their existing IaaS virtual machines and virtual networks. These resources are made available on Windows Azure Pack through the underlying Service Provider Foundation (SPF) and Virtual Machine Manager (VMM) components. Specifically, tenants can:

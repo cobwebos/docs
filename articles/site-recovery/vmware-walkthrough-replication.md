@@ -20,7 +20,6 @@ ms.openlocfilehash: 3c4b7ad16e6a03fb605447def18f7475d502fdd1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 # <a name="step-9-set-up-a-replication-policy-for-vmware-vm-replication-to-azure"></a>第 9 步：创建复制策略以便将 VMware VM 复制到 Azure
 

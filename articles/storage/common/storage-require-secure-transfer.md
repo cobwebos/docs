@@ -15,10 +15,10 @@ ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bc5b7fc79869c632db96958f17aaf953a5fd3b19
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 96c641672ce6515fad3abc3fc0b8a6af037de346
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="require-secure-transfer"></a>需要安全传输
@@ -53,15 +53,15 @@ ms.lasthandoff: 08/22/2017
 
 ## <a name="enable-secure-transfer-required-programmatically"></a>以编程方式启用“需要安全传输”
 
-设置的名称为存储帐户属性中的 _supportsHttpsTrafficOnly_。 可以使用 REST API、工具或库启用“需要安全传输”设置：
+设置的名称为存储帐户属性中的 _supportsHttpsTrafficOnly_。 可通过 REST API、工具或库来启用它：
 
-* REST API（版本：2016-12-01）：[发布包](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts)
-* PowerShell（版本：4.1.0）：[发布包](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0)
-* CLI（版本：2.0.11）：[发布包](https://pypi.python.org/pypi/azure-cli-storage/2.0.11)
-* NodeJS（版本：1.1.0）：[发布包](https://www.npmjs.com/package/azure-arm-storage/)
-* .NET SDK（版本：6.3.0）：[发布包](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview)
-* Python SDK（版本：1.1.0）：[发布包](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0)
-* Ruby SDK（版本：0.11.0）：[发布包](https://rubygems.org/gems/azure_mgmt_storage)
+* [REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts)（版本：2016-12-01）
+* [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0)（版本：4.1.0）
+* [CLI](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) （版本：2.0.11）
+* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)（版本：1.1.0）
+* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview)（版本：6.3.0）
+* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0)（版本：1.1.0）
+* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)（版本： 0.11.0）
 
 ### <a name="enable-secure-transfer-required-setting-with-rest-api"></a>使用 REST API 启用"需要安全传输"设置
 
@@ -79,6 +79,7 @@ ms.lasthandoff: 08/22/2017
 在响应中，可以找到 _supportsHttpsTrafficOnly_ 设置。 示例：
 
 ```Json
+
 {
   "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
   "kind": "Storage",
@@ -89,24 +90,30 @@ ms.lasthandoff: 08/22/2017
   },
   "type": "Microsoft.Storage/storageAccounts"
 }
+
 ```
 
 可通过以下命令行，使用 REST API 启用设置：
 
 ```
+
 # Login Azure and proceed with your credentials
 > armclient login
 
 > armclient PUT /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01 < Input.json
+
 ```
+
 Input.json 示例：
 ```Json
+
 {
   "location": "westus",
   "properties": {
     "supportsHttpsTrafficOnly": true
   }
 }
+
 ```
 
 ## <a name="next-steps"></a>后续步骤

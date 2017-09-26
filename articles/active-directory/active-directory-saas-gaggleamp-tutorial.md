@@ -19,7 +19,6 @@ ms.openlocfilehash: c591cf99aecc4153e378c42a530b80deeca63158
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>教程：Azure Active Directory 与 GaggleAMP 集成
 

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 05/08/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 88f20287e2a6935b9694a25a21b607d658b8eb68
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: d7cb95d0e099d5e0357ce8871f02c894acfdc9b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/18/2017
 
 站点恢复就是能够帮助实现 BCDR 策略的一个 Azure 服务。 使用站点恢复，可将应用程序感知的复制部署到云或辅助站点中。 无论应用是基于 Windows 还是 Linux，是在物理服务器、VMware 还是 Hyper-V 上运行，都可以使用站点恢复来协调复制，执行灾难恢复测试，以及运行故障转移和故障回复。
 
-Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange、Dynamics、SQL Server 和 Active Directory。 Microsoft 还与 Oracle、SAP、IBM 和 Red Hat 等领先供应商密切合作。 可以针对每个应用自定义复制解决方案。
+Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange、Dynamics、SQL Server 和 Active Directory。 Microsoft 还与 Oracle、SAP 和 Red Hat 等领先供应商密切合作。 可以针对每个应用自定义复制解决方案。
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>为何要使用站点恢复来复制应用程序？
 站点恢复可帮助实现应用程序级的保护和恢复，如下所述：

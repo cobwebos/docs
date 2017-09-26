@@ -1,10 +1,10 @@
 ---
-title: "Wingtip SaaS 简介 - Azure SQL 数据库多租户应用 | Microsoft Docs"
-description: "借助使用 Azure SQL 数据库的示例多租户应用程序，了解 Wingtip SaaS 应用"
+title: "Azure SQL 数据库多租户应用示例 - Wingtip SaaS | Microsoft Docs"
+description: "借助使用 Azure SQL 数据库的示例多租户应用程序，了解 Wingtip SaaS 示例"
 keywords: "sql 数据库教程"
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 6d4a5df599137e95ca5458fae74b8daa565b0338
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 68a9d97a881f3a7628a08b66091c3feb4c4dbbfe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="introduction-to-the-wingtip-saas-application"></a>Wingtip SaaS 应用程序简介
+# <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>SQL 数据库多租户 SaaS 应用示例简介
 
 Wingtip SaaS 应用程序是一个示例多租户应用，用于演示 SQL 数据库的独特优势。 该应用使用租户各有数据库（一种 SaaS 应用程序模式）为多个租户提供服务。 该应用旨在展示支持 SaaS 方案（包括多个 SaaS 设计及管理模式）的 Azure SQL 数据库功能。 Wingtip SaaS 应用的部署时间不到五分钟，可快速启动并运行！
 

@@ -12,12 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/10/2017
+ms.date: 09/07/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: c4a9e57cda4ba5b4db742c1a37686a802f58212f
-ms.lasthandoff: 04/11/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: bf4d3a517e1308a142d21cffff64f3c6e104eb62
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/08/2017
 
 ---
 
@@ -35,9 +36,9 @@ ms.lasthandoff: 04/11/2017
         }
     }
 
-你可能想要将它分析为带有“text”、“datePublished”和“tags”字段的 Azure 搜索文档。
+可能想要将它分析为带有“text”、“datePublished”和“tags”字段的 Azure 搜索文档。
 
-或者，当你的 blob 包含 **JSON 对象数组**时，可能希望数组的每个元素成为一个单独的 Azure 搜索文档。 例如，以带有此 JSON 的 blob 为例：  
+或者，当 blob 包含 **JSON 对象数组**时，可能希望数组的每个元素成为一个单独的 Azure 搜索文档。 例如，以带有此 JSON 的 blob 为例：  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/11/2017
 可以使用 3 个单独的文档（每个都带有“id”和“text”字段）填充 Azure 搜索。
 
 > [!IMPORTANT]
-> JSON 数组分析功能目前处于预览状态。 它仅在使用版本 **2015-02-28-预览版**的 REST API 中可用。 请记住，预览版 API 仅供测试和评估，不应在生产环境中使用。
+> JSON 数组分析功能目前处于预览状态。 它仅在使用 2016-09-01-预览版的 REST API 中可用。 请记住，预览版 API 仅供测试和评估，不应在生产环境中使用。
 >
 >
 
@@ -90,7 +91,7 @@ ms.lasthandoff: 04/11/2017
 >
 
 ## <a name="using-field-mappings-to-build-search-documents"></a>使用字段映射生成搜索文档
-目前，Azure 搜索不能直接索引任意 JSON 文档，因为它只支持基元数据类型、字符串数组和 GeoJSON 点。 不过，可以使用**字段映射**选取你的 JSON 文档的部分，然后将它们“提升”到搜索文档的顶级字段。 若要了解字段映射的基础知识，请参阅 [Azure 搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。
+目前，Azure 搜索不能直接索引任意 JSON 文档，因为它只支持基元数据类型、字符串数组和 GeoJSON 点。 不过，可以使用**字段映射**选取 JSON 文档的部分，并将它们“提升”到搜索文档的顶级字段。 若要了解字段映射的基础知识，请参阅 [Azure 搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。
 
 回到我们的 JSON 文档示例：
 
@@ -102,7 +103,7 @@ ms.lasthandoff: 04/11/2017
         }
     }
 
-假设具有一个含以下字段的搜索索引：类型 `Edm.String` 的 `text`、类型 `Edm.DateTimeOffset` 的 `date` 和类型 `Collection(Edm.String)` 的`tags`。 若要将你的 JSON 映射到所需形状，请使用以下字段映射：
+假设具有一个含以下字段的搜索索引：类型 `Edm.String` 的 `text`、类型 `Edm.DateTimeOffset` 的 `date` 和类型 `Collection(Edm.String)` 的`tags`。 要将 JSON 映射到所需形状，请使用以下字段映射：
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -110,7 +111,7 @@ ms.lasthandoff: 04/11/2017
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
       ]
 
-使用 [JSON 指针](http://tools.ietf.org/html/rfc6901)表示法指定映射中的源字段名称。 以正斜杠开头引用 JSON 文档的根，然后通过使用正斜杠分隔的路径选取所需属性（任意层级的嵌套）。
+使用 [JSON 指针](http://tools.ietf.org/html/rfc6901)表示法指定映射中的源字段名称。 以正斜杠开头引用 JSON 文档的根，并通过使用正斜杠分隔的路径选取所需属性（任意层级的嵌套）。
 
 还可以通过使用从零开始的索引来引用个别数组元素。 例如，若要选取上述示例中“tags”数组的第一个元素，请使用如下所示的字段映射：
 
@@ -121,7 +122,7 @@ ms.lasthandoff: 04/11/2017
 >
 >
 
-如果你的 JSON 文档中只包含简单的顶层属性，可能根本不需要使用字段映射。 例如，如果 JSON 如下所示，顶层属性“text”、“datePublished”和“tags”会直接映射到搜索索引中的相应字段：
+如果 JSON 文档中只包含简单的顶层属性，可能根本不需要使用字段映射。 例如，如果 JSON 如下所示，顶层属性“text”、“datePublished”和“tags”会直接映射到搜索索引中的相应字段：
 
     {
        "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -149,7 +150,7 @@ ms.lasthandoff: 04/11/2017
     }
 
 ## <a name="indexing-nested-json-arrays"></a>对嵌套的 JSON 数组编制索引
-假设你想要对一个 JSON 对象数组编制索引，但该数组嵌套在文档的某个位置，该怎么办？ 可以使用 `documentRoot` 配置属性选取包含该数组的属性。 例如，如果你的 blob 如下所示：
+假设你想要对一个 JSON 对象数组编制索引，但该数组嵌套在文档的某个位置，该怎么办？ 可以使用 `documentRoot` 配置属性选取包含该数组的属性。 例如，如果 blob 如下所示：
 
     {
         "level1" : {

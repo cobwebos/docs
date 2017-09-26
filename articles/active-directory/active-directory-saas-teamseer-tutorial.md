@@ -19,7 +19,6 @@ ms.openlocfilehash: 2a5e8f6d1443681c43db95da5cef0b7f2ef92291
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
 

@@ -1,6 +1,6 @@
 ---
 title: "在 HDInsight 上使用 Hive 分析航班延误数据 — Azure | Microsoft Docs"
-description: "了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班数据，然后使用 Sqoop 将数据导出到 SQL 数据库中。"
+description: "了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班数据，然后使用 Sqoop 将数据导出到 SQL 数据库。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,27 +16,27 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 88031b3698ec575eb48531b118c45f11ef7f19c0
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f333354311b16c00a0d43a691f139f5f80383d1a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据
 
-了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库中。
+了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据，以及如何使用 Sqoop 将数据导出到 Azure SQL 数据库。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 Azure HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
-* **一个 HDInsight 群集**。 有关创建新的基于 Linux 的 HDInsight 群集的步骤，请参阅[在 Linux 上的 HDInsight 中开始将 Hadoop 与 Hive 配合使用](hdinsight-hadoop-linux-tutorial-get-started.md)。
+* **一个 HDInsight 群集**。 有关创建新的基于 Linux 的 HDInsight 群集的步骤，请参阅[开始在 HDInsight 中使用 Hadoop](hdinsight-hadoop-linux-tutorial-get-started.md)。
 
-* **Azure SQL 数据库**。 使用 Azure SQL 数据库作为目标数据存储。 如果没有 SQL 数据库，请参阅 [SQL 数据库教程：几分钟内即可创建 SQL 数据库](../sql-database/sql-database-get-started.md)。
+* **Azure SQL 数据库**。 使用 Azure SQL 数据库作为目标数据存储。 如果没有 SQL 数据库，请参阅[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)。
 
-* **Azure CLI**。 如果尚未安装 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md) 可了解详细步骤。
+* **Azure CLI**。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI 1.0](../cli-install-nodejs.md)了解详细步骤。
 
 ## <a name="download-the-flight-data"></a>下载航班数据
 
@@ -48,30 +48,31 @@ ms.lasthandoff: 07/08/2017
    | --- | --- |
    | 筛选年份 |2013 |
    | 筛选期间 |1 月 |
-   | 字段 |Year、FlightDate、UniqueCarrier、Carrier、FlightNum、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 清除所有其他字段 |
+   | 字段 |Year、FlightDate、UniqueCarrier、Carrier、FlightNum、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
+   清除所有其他字段。 
 
-3. 单击“下载”。
+3. 选择“下载”。
 
 ## <a name="upload-the-data"></a>上传数据
 
-1. 使用以下命令将该 zip 文件上传到 HDInsight 群集头节点：
+1. 使用以下命令将 zip 文件上传到 HDInsight 群集头节点：
 
     ```
     scp FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-    将 **FILENAME** 替换为 zip 文件的名称。 将 **USERNAME** 替换为 HDInsight 群集的 SSH 登录名。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
+    将“FILENAME”替换为 zip 文件的名称。 将 *USERNAME* 替换为 HDInsight 群集的 SSH 登录名。 将 *CLUSTERNAME* 替换为 HDInsight 群集的名称。
 
    > [!NOTE]
-   > 如果使用密码对 SSH 登录名进行身份验证，则系统会提示输入密码。 如果你使用了公钥，则可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`。
+   > 如果使用密码对 SSH 登录名进行身份验证，系统会提示输入密码。 如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`。
 
 2. 上传完成后，使用 SSH 连接到群集：
 
     ```ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net```
 
-    有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+    有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-3. 连接后，使用以下命令来解压缩 .zip 文件：
+3. 使用以下命令解压缩 .zip 文件：
 
     ```
     unzip FILENAME.zip
@@ -88,7 +89,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="create-and-run-the-hiveql"></a>创建并运行 HiveQL
 
-使用以下步骤将 CSV 文件中的数据导入到名为 **Delays** 的 Hive 表中。
+使用以下步骤将 .csv 文件中的数据导入到名为“Delays”的 Hive 表中。
 
 1. 使用以下命令创建名为 **flightdelays.hql** 的新文件并编辑它：
 
@@ -158,7 +159,7 @@ ms.lasthandoff: 07/08/2017
     FROM delays_raw;
     ```
 
-2. 若要保存该文件，请使用 **Ctrl + X**，然后使用 **Y**。
+2. 若要保存该文件，请按 Ctrl+X、Y。
 
 3. 若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
 
@@ -169,13 +170,13 @@ ms.lasthandoff: 07/08/2017
    > [!NOTE]
    > 在此示例中，由于已连接到运行 HiveServer2 的 HDInsight 群集的头节点，因此使用 `localhost`。
 
-4. __flightdelays.hql__ 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
+4. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-5. 收到 `jdbc:hive2://localhost:10001/>` 提示时，请使用以下查询从导入的航班延误数据中检索数据。
+5. 收到 `jdbc:hive2://localhost:10001/>` 提示时，使用以下查询从导入的航班延误数据中检索数据：
 
     ```hiveql
     INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
@@ -187,15 +188,15 @@ ms.lasthandoff: 07/08/2017
     GROUP BY origin_city_name;
     ```
 
-    此查询会检索遇到天气延迟的城市的列表，以及平均延迟时间并将其保存到 `/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库中。
+    此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
 6. 若要退出 Beeline，请在提示符处输入 `!quit`。
 
 ## <a name="create-a-sql-database"></a>创建 SQL 数据库
 
-如果已具备 SQL 数据库，则必须获取服务器名称。 可通过选择“SQL 数据库”在 [Azure 门户](https://portal.azure.com)中找到服务器名称，然后筛选要使用的数据库的名称。 服务器名称在“SERVER”列中列出。
+如果已拥有 SQL 数据库，必须获取服务器的名称。 要在 [Azure 门户](https://portal.azure.com)中查找服务器名称，请选择“SQL 数据库”，然后筛选要使用的数据库的名称。 服务器名称在“SERVER”列中列出。
 
-如果还没有 SQL 数据库，请使用 [SQL 数据库教程：几分钟内即可创建 SQL 数据库](../sql-database/sql-database-get-started.md)中的信息创建一个。 保存数据库所使用的服务器名称。
+如果没有 SQL 数据库，请使用[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)中的信息进行创建。 保存数据库所使用的服务器名称。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
@@ -258,7 +259,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="export-data-with-sqoop"></a>使用 Sqoop 导出数据
 
-1. 使用以下命令验证 Sqoop 是否可以看到你的 SQL 数据库：
+1. 使用以下命令验证 Sqoop 是否可以查看 SQL 数据库：
 
     ```
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
@@ -266,7 +267,7 @@ ms.lasthandoff: 07/08/2017
 
     此命令会返回数据库列表，其中包括此前创建的 delays 表所在的数据库。
 
-2. 使用以下命令将 hivesampletable 中的数据导出到 mobiledata 表：
+2. 使用以下命令将 hivesampletable 中的数据导出到 delays 表：
 
     ```
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
@@ -274,31 +275,31 @@ ms.lasthandoff: 07/08/2017
 
     Sqoop 连接到包含 delays 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录导出到 delays 表。
 
-3. 该命令完成后，使用以下命令通过 TSQL 连接到数据库：
+3. Sqoop 命令完成后，使用 tsql 实用工具连接到数据库：
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    连接成功以后，使用以下语句验证数据是否已导出到 mobiledata 表：
+    使用以下语句验证数据是否已导出到 delays 表：
 
     ```
     SELECT * FROM delays
     GO
     ```
 
-    你会在表中看到一系列数据。 键入 `exit` 退出 tsql 实用程序。
+    会在表中看到一系列数据。 键入 `exit` 退出 tsql 实用程序。
 
-## <a id="nextsteps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何通过各种方式使用 HDInsight 中的数据，请参阅以下文档：
+若要了解使用 HDInsight 中的数据的更多方式，请参阅以下文章：
 
 * [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
 * [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]
 * [将 Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]
 * [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
-* [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
-* [为 HDInsight 开发 Python Hadoop 流式处理程序][hdinsight-develop-streaming]
+* [为 HDInsight 上的 Hadoop 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
+* [为 HDInsight 开发 Python 流式处理 MapReduce 程序][hdinsight-develop-streaming]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

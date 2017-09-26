@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/19/2017
 ms.author: oanapl
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 598a4d35faebb592f840b1bec7e77c7a091ea2de
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 330ef58d89ebabaa2af7fa8e98e693ddd64dcc4e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
@@ -26,7 +26,7 @@ Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富�
 
 Service Fabric 组件使用这种提供丰富信息的运行状况模型报告其当前状态。 可以使用相同的机制报告应用程序中的运行状况。 只要投入时间规划高质量的运行状况报告来捕获自定义条件，就能更轻松地检测并修复运行中应用程序的问题。
 
-以下 Microsoft Virtual Academy 视频还介绍 Service Fabric 运行状况模型及其用法：<center><a target="_blank" href="https://mva.microsoft.com/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+以下 Microsoft Virtual Academy 视频还介绍 Service Fabric 运行状况模型及其用法：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -212,7 +212,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * **说明**。 报告器用于提供有关运行状况事件的详细信息的字符串。 **SourceId**、**属性**和 **HealthState** 应完整说明报告。 说明中添加了用户可读的报告相关信息。 文本可让管理员和用户更容易了解运行状况报告。
 * **HealthState**。 说明报告的运行状况状态的[枚举](service-fabric-health-introduction.md#health-states)。 已接受值为“确定”、“警告”和“错误”。
 * **TimeToLive**。 指示运行状况报告的有效时间的时间跨度。 结合 **RemoveWhenExpired** 时，它能够使运行状况存储知道如何评估过期的事件。 默认情况下，此值为无穷大，表示报告将永远有效。
-* **RemoveWhenExpired**。 布尔值。 如果设置为 true，过期的运行状况报告会自动从运行状况存储中删除，并且该报告不会影响实体运行状况评估。 仅当报告在一段指定时间内有效且报告器不需要显式清除它时使用。 它也用于从运行状况存储中删除报告（例如，更改监视器，并停止发送具有以前的源和属性的报告）。 它可以发送具有短暂的 TimeToLive 和 RemoveWhenExpired 的报告，以清除运行状况存储中的所有以往状态。 如果该值设置为 false，过期的报告在运行状况评估中则被视为错误。 false 值向运行状况存储发出指示，源应该对此属性进行定期报告。 如果没有报告，则一定是监视器出现了一些问题。 通过将事件视为错误来捕获监视器运行状况。
+* **RemoveWhenExpired**。 布尔值。 如果设置为 true，过期的运行状况报告会自动从运行状况存储中删除，并且该报告不会影响实体运行状况评估。 仅当报告在一段指定时间内有效且报告器不需要显式清除它时使用。它也用于从运行状况存储中删除报告（例如，更改监视器，并停止发送具有以前的源和属性的报告）。 它可以发送具有短暂的 TimeToLive 和 RemoveWhenExpired 的报告，以清除运行状况存储中的所有以往状态。 如果该值设置为 false，过期的报告在运行状况评估中则被视为错误。 false 值向运行状况存储发出指示，源应该对此属性进行定期报告。 如果没有报告，则一定是监视器出现了一些问题。 通过将事件视为错误来捕获监视器运行状况。
 * **SequenceNumber**。 需要不断增加的正整数，它表示报告的顺序。 运行状况存储使用它来检测因网络延迟或其他问题而较晚收到的过时报告。 针对相同的实体、源和属性，如果序列号小于或等于最新应用的序列号，则报告会被拒绝。 如果未指定，则会自动生成序列号。 只有在报告状态转换时，才需放入序列号。 在此情况下，源必须记住它所发送的报告，并保留信息以便在故障转移时进行恢复。
 
 每个运行状况报告都需要四种信息（SourceId、实体标识符、属性和 HealthState）。 不允许 SourceId 字符串以前缀“**System.**”开头，该字符串是为系统报告保留的。 对于相同实体，相同的源和属性只有一个报告。 如果为相同的源和属性生成多个报告，它们会在运行状况客户端（如果按批处理）或在运行状况存储端覆盖彼此。 根据序列号进行这种替换操作：较新的报告（具有更高的序列号）替换较旧的报告。

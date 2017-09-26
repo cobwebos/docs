@@ -21,7 +21,6 @@ ms.openlocfilehash: b2bb9caf82a580dc5f67ea0b0b1c2e9a46363e9c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
-
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>在 Azure VM 中使用 Marketplace 映像创建 HPC Pack 群集的头节点
 使用 Azure Marketplace 和 Azure 门户中的 [Microsoft HPC Pack 2012 R2 虚拟机映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)创建 HPC 群集的头节点。 此 HPC Pack VM 映像基于预安装了 HPC Pack 2012 R2 Update 3 的 Windows Server 2012 R2 Datacenter。 使用此头节点在 Azure 中进行 HPC Pack 的概念证明部署。 然后，可以向该群集添加计算节点，以运行 HPC 工作负荷。

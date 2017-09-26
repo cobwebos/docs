@@ -1,4 +1,4 @@
-Cu--- title: 在 Azure 中使用加密保护个人静态数据 | Microsoft Docs description: 本文是介绍如何使用 Azure 保护个人数据的系列教程的其中一篇 services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
+title: 在 Azure 中使用加密保护个人静态数据 | Microsoft Docs description: 本文是介绍如何使用 Azure 保护个人数据的系列教程的其中一篇 services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
 
 ms.assetid: ms.service: security ms.devlang: na ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 08/22/2017 ms.author: barclayn ms.custom: 
 

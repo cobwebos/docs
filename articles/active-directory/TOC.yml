@@ -1,0 +1,74 @@
+- name: Azure 中的资源访问权限
+  href: active-directory-understanding-resource-access.md
+- name: 基于角色的访问控制
+  href: role-based-access-control-what-is.md
+  items:
+    - name: 管理访问权限分配
+      items:
+        - name: 按用户
+          href: role-based-access-control-manage-assignments.md
+        - name: 按资源
+          href: role-based-access-control-configure.md
+    - name: 内置角色
+      href: role-based-access-built-in-roles.md
+    - name: 自定义角色
+      href: role-based-access-control-custom-roles.md
+    - name: 为内部用户和外部用户分配自定义角色
+      href: role-based-access-control-create-custom-roles-for-internal-external-users.md
+    - name: 报告
+      href: role-based-access-control-access-change-history-report.md
+    - name: 管理角色的更多方式
+      items:
+        - name: 使用 Azure CLI
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: 使用 PowerShell
+          href: role-based-access-control-manage-access-powershell.md
+        - name: 使用 REST
+          href: role-based-access-control-manage-access-rest.md
+    - name: 提升租户管理员访问权限
+      href: role-based-access-control-tenant-admin-access.md
+    - name: 故障排除
+      href: role-based-access-control-troubleshooting.md
+    - name: 资源提供程序操作
+      href: role-based-access-control-resource-provider-operations.md
+- name: 托管服务标识
+  href: msi-overview.md
+  items:
+    - name: 为 Windows VM 配置 MSI
+      items:
+        - name: 使用 Azure 门户
+          href: msi-qs-configure-portal-windows-vm.md
+        - name: 使用 PowerShell
+          href: msi-qs-configure-powershell-windows-vm.md
+        - name: 使用 Azure CLI
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: 使用 Azure 资源管理器模板
+          href: msi-qs-configure-template-windows-vm.md
+    - name: 将 MSI 访问权限分配给 Azure 资源
+      items:
+        - name: 使用 Azure 门户
+          href: msi-howto-assign-access-portal.md
+        - name: 使用 PowerShell
+          href: msi-howto-assign-access-powershell.md
+        - name: 使用 Azure CLI
+          href: msi-howto-assign-access-cli.md
+    - name: 使用 MSI 访问 Azure 资源管理器
+      items:
+        - name: 在 Windows VM 上
+          href: msi-tutorial-windows-vm-access-arm.md
+        - name: 在 Linux VM 上
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: 使用 MSI 访问 Azure 存储
+      items:
+        - name: 在 Windows VM 上
+          href: msi-tutorial-windows-vm-access-storage.md
+        - name: 在 Linux VM 上
+          href: msi-tutorial-linux-vm-access-storage.md
+    - name: 使用 MSI 访问非 Azure AD 资源
+      items:
+        - name: 在 Windows VM 上
+          href: msi-tutorial-windows-vm-access-nonaad.md
+        - name: 在 Linux VM 上
+          href: msi-tutorial-linux-vm-access-nonaad.md
+    - name: 反馈和已知问题
+      href: msi-known-issues.md

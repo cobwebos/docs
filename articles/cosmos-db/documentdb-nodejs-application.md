@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 1a98509a98bcd2a5de593eb006f905766fe72966
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 32d4b4a7db134975158e53fc964c24b52b14a1e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="_Toc395783175"></a>使用 Azure Cosmos DB 生成 Node.js Web 应用程序
@@ -45,11 +45,10 @@ ms.lasthandoff: 08/15/2017
 
 在按照本文中的说明操作之前，应确保已拥有下列项：
 
-* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-   或
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-   本地安装的 [Azure Cosmos DB 模拟器](local-emulator.md)（仅限 Windows）。
 * [Node.js][Node.js] v0.10.29 或更高版本。
 * [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装）
 * [Git][Git]。
@@ -420,7 +419,7 @@ ms.lasthandoff: 08/15/2017
         app.post('/addtask', taskList.addTask.bind(taskList));
         app.post('/completetask', taskList.completeTask.bind(taskList));
         app.set('view engine', 'jade');
-5. 这些行（使用从 **config.js** 中读取的值）定义 **TaskDao** 对象的新实例以及与 Azure Cosmos DB 的新连接，初始化该任务对象，然后将窗体操作与 **TaskList** 控制器上的方法绑定。 
+5. 这些行（使用从 **config.js** 中读取的值）定义 **TaskDao** 对象的新实例以及与 Azure Cosmos DB 的新连接，初始化该任务对象，并将窗体操作与 **TaskList** 控制器上的方法绑定。 
 6. 最后，保存并关闭 **app.js** 文件，我们就快完成了。
 
 ## <a name="_Toc395783181"></a>步骤 5：生成用户界面
@@ -518,7 +517,7 @@ ms.lasthandoff: 08/15/2017
 5. 若要停止应用程序，可在终端窗口中按 CTRL+C 并单击“Y”终止批处理作业。
 
 ## <a name="_Toc395783182"></a>步骤 7：将应用程序开发项目部署到 Azure 网站
-1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure App Service）主题中找到如何执行此操作的说明。
+1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure 应用服务](../app-service/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure 应用服务）主题中找到如何执行此操作的说明。
 2. 将 Azure 网站添加为 git 远程。
    
         git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git

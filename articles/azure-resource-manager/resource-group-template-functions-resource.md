@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 494ade55f21c19d9c68d5cc52756528401d9bb77
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: adcf9ddc0044da9bce1ab584d54cec66055ee0ad
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的资源函数
@@ -94,29 +94,54 @@ ListKeys 返回的对象采用以下格式：
 
 使用 [resourceId 函数](#resourceid)或格式 `{providerNamespace}/{resourceType}/{resourceName}` 指定资源。
 
-
 ### <a name="example"></a>示例
 
-以下示例演示如何从 outputs 节中的存储帐户返回主密钥和辅助密钥。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)演示如何从 outputs 节中的存储帐户返回主密钥和辅助密钥。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountId": {
-            "type": "string"
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "storageKeysOutput": {
-            "value": "[listKeys(parameters('storageAccountId'), '2016-01-01')]",
-            "type" : "object"
-        }
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "storageAccountName": { 
+          "type": "string"
+      }
+  },
+  "resources": [
+    {
+      "name": "[parameters('storageAccountName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-12-01",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+      }
+    }
+  ],
+  "outputs": {
+      "referenceOutput": {
+          "type": "object",
+          "value": "[listKeys(parameters('storageAccountName'), '2016-12-01')]"
+      }
     }
 }
 ``` 
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json --parameters storageAccountName=<your-storage-account>
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json -storageAccountName <your-storage-account>
+```
 
 <a id="providers" />
 
@@ -148,23 +173,31 @@ ListKeys 返回的对象采用以下格式：
 
 ### <a name="example"></a>示例
 
-以下示例演示了如何使用 provider 函数：
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json)演示如何使用 provider 函数：
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "providerNamespace": {
+            "type": "string"
+        },
+        "resourceType": {
+            "type": "string"
+        }
+    },
     "resources": [],
     "outputs": {
         "providerOutput": {
-            "value": "[providers('Microsoft.Web', 'sites')]",
+            "value": "[providers(parameters('providerNamespace'), parameters('resourceType'))]",
             "type" : "object"
         }
     }
 }
 ```
 
-上面的示例返回以下格式的对象：
+对于 Microsoft.Web 资源提供程序和站点资源类型，上面的示例返回以下格式的对象：
 
 ```json
 {
@@ -184,6 +217,18 @@ ListKeys 返回的对象采用以下格式：
     ...
   ]
 }
+```
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json --parameters providerNamespace=Microsoft.Web resourceType=sites
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json -providerNamespace Microsoft.Web -resourceType sites
 ```
 
 <a id="reference" />
@@ -229,7 +274,7 @@ reference 函数从运行时状态派生其值，因此不能在 variables 节�
 
 ### <a name="example"></a>示例
 
-若要在同一模板中部署和引用资源，请使用：
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json)部署一个资源并引用该资源。
 
 ```json
 {
@@ -282,7 +327,19 @@ reference 函数从运行时状态派生其值，因此不能在 variables 节�
 }
 ```
 
-以下示例引用未部署到此模板中的存储帐户。 同一资源组内已存在该存储帐户。
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json --parameters storageAccountName=<your-storage-account>
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json -storageAccountName <your-storage-account>
+```
+
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json)引用未部署到此模板中的存储帐户。 同一资源组内已存在该存储帐户。
 
 ```json
 {
@@ -301,6 +358,18 @@ reference 函数从运行时状态派生其值，因此不能在 variables 节�
         }
     }
 }
+```
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageAccountName=<your-storage-account>
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageAccountName <your-storage-account>
 ```
 
 <a id="resourcegroup" />
@@ -345,7 +414,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="example"></a>示例
 
-以下模板返回资源组的属性。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json)返回资源组的属性。
 
 ```json
 {
@@ -353,7 +422,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "resourceGroupOutput": {
             "value": "[resourceGroup()]",
             "type" : "object"
         }
@@ -372,6 +441,18 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
     "provisioningState": "Succeeded"
   }
 }
+```
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json 
 ```
 
 <a id="resourceid" />
@@ -474,7 +555,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="example"></a>示例
 
-以下示例返回资源组中存储帐户的资源 ID：
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json)返回资源组中存储帐户的资源 ID：
 
 ```json
 {
@@ -491,7 +572,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
             "type" : "string"
         },
         "differentSubOutput": {
-            "value": "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]",
+            "value": "[resourceId('11111111-1111-1111-1111-111111111111', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]",
             "type" : "string"
         },
         "nestedResourceOutput": {
@@ -508,8 +589,20 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/{different-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json 
+```
 
 <a id="subscription" />
 
@@ -533,7 +626,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="example"></a>示例
 
-以下示例显示了在 outputs 节中调用的 subscription 函数。 
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)显示了在 outputs 节中调用的 subscription 函数。 
 
 ```json
 {
@@ -547,6 +640,18 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
         }
     }
 }
+```
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
 ```
 
 ## <a name="next-steps"></a>后续步骤

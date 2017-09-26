@@ -17,10 +17,10 @@ ms.author: kgremban
 ms.reviewer: jsnow
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 3dfcf25856ede50266336c2ebb057dd3f7b8897e
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: b47e9b321b2fd0d0db9762003531b0fe9f045f07
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 
@@ -100,12 +100,12 @@ NPS 扩展需要安装了 NPS 角色服务的 Windows Server 2008 R2 SP1 或更�
 
 ### <a name="libraries"></a>库
 
-以下两个库是必需的：
+这些库将自动随扩展一同安装。
 
-* [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
-* 用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0 或更高版本。 有关最新版本和安装说明，请参阅 [Microsoft Azure Active Directory PowerShell 模块版本发布历史记录](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx)。
+-   [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+-   [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
-尽管现有文档另有说明，但这些库并未随 NPS 扩展安装程序文件（0.9.1.2 版）一起打包。 至少必须安装 Visual C++ Redistributable Packages for Visual Studio 2013。 已安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块，如果尚未安装，可以通过配置脚本，作为安装过程的一部分运行。 如果尚未安装此模块，则无需提前安装。
+已安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块，如果尚未安装，可以通过配置脚本，作为安装过程的一部分运行。 如果尚未安装此模块，则无需提前安装。
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>将 Azure Active Directory 与本地 Active Directory 同步 
 

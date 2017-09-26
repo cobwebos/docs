@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 50127242cdf156771d0610e58cf2fc41281adae7
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: d3fca8675c1f15b8fd0f952cfbf520f5c68478b3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>在 Azure Monitor 中为 Azure 服务创建指标警报 - PowerShell
@@ -32,9 +32,9 @@ ms.lasthandoff: 03/31/2017
 ## <a name="overview"></a>概述
 本文演示如何使用 PowerShell 设置 Azure 指标警报。  
 
-可以根据监视指标或事件接收 Azure 服务的警报。
+可以根据监控指标或事件接收 Azure 服务的警报。
 
-* **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，在以下两种情况下会触发警报：首先是满足条件时，然后是满足条件后，不再满足条件时。    
+* **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当首次满足条件时，以及之后不再满足条件时，都会触发此警报。    
 * **活动日志事件** - 发生每个事件，或仅当出现特定事件时触发警报。 若要深入了解活动日志警报，请[单击此处](monitoring-activity-log-alerts.md)
 
 可配置指标警报，使警报触发时执行以下操作：
@@ -77,7 +77,7 @@ ms.lasthandoff: 03/31/2017
   * 要为其设置警报的资源的**资源 ID**
   * 资源可用的**指标定义**
 
-     获取资源 ID 的一种方法是使用 Azure 门户。 假设已创建该资源，在门户中选中它。 然后在下一个边栏选项卡中，选择“设置”分区下的“属性”。 **资源 ID** 是下一个边栏选项卡中的字段。 另一种方法是使用 [Azure Resource Explorer](https://resources.azure.com/)（Azure 资源浏览器）。
+     获取资源 ID 的一种方法是使用 Azure 门户。 假设已创建该资源，在门户中选中它。 然后，在下一个边栏选项卡中，选择“设置”部分下的“属性”。 **资源 ID** 是下一个边栏选项卡中的字段。 另一种方法是使用 [Azure Resource Explorer](https://resources.azure.com/)（Azure 资源浏览器）。
 
      Web 应用的示例资源 ID 是
 
@@ -97,14 +97,14 @@ ms.lasthandoff: 03/31/2017
      Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 
      ```
-     Get-AzureRmMetricDefinition 的可用选项的完整列表可通过运行 Get-MetricDefinitions 获取。
+     运行 `Get-Help Get-AzureRmMetricDefinition -Detailed` 可获取 Get-AzureRmMetricDefinition 可用选项的完整列表。
 5. 以下示例设置了一个关于网站资源的警报。 如果其持续 5 分钟收到任何流量以及 5 分钟没收到任何流量，将触发该警报。
 
     ```PowerShell
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Description "alert on any website activity"
 
     ```
-6. 若要在警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后立即创建后跟 -Actions 标记的规则，如下面的示例中所示。 如果已通过 PowerShell 创建规则，将无法关联 webhook 或电子邮件。
+6. 若要在警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后，立即创建后跟 -Actions 标记的规则，如以下示例所示。 如果已通过 PowerShell 创建规则，将无法关联 webhook 或电子邮件。
 
     ```PowerShell
     $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
@@ -134,5 +134,5 @@ ms.lasthandoff: 03/31/2017
 * 详细了解[配置活动日志事件的警报](monitoring-activity-log-alerts.md)。
 * 了解关于 [Azure 自动化 Runbook](../automation/automation-starting-a-runbook.md) 的详细信息。
 * 获取[收集诊断日志概述](monitoring-overview-of-diagnostic-logs.md)以收集有关服务的详细高频率指标。
-* 获取[指标集合概述](insights-how-to-customize-monitoring.md)以确保你的服务可用且响应迅速。
+* 获取[指标集合概述](insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
 

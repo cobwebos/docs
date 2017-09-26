@@ -20,7 +20,6 @@ ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中部署资源或属性的多个实例
 本主题演示如何在 Azure Resource Manager 模板中进行迭代操作，以创建多个资源实例或资源上的多个属性实例。

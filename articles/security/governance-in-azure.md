@@ -265,7 +265,7 @@ Azure Resource Manager 会分析依赖关系，以确保按正确的顺序创建
 
 资源锁目前支持两个值：CanNotDelete 和 ReadOnly。 CanNotDelete 表示用户（具有相应权限）仍可读取或修改某个资源，但无法删除该资源。 ReadOnly 表示经过授权的用户无法删除或修改某个资源。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 <https://management.azure.com> 的操作。 锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁将阻止删除或修改该数据库，但不会阻止创建、更新或删除该数据库中的数据。
+Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 <https://management.azure.com> 的操作。锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁将阻止删除或修改该数据库，但不会阻止创建、更新或删除该数据库中的数据。
 
 应用“ReadOnly”可能会导致意外结果，因为看似读取操作的某些操作实际上需要其他操作。 例如，在存储帐户上放置 **ReadOnly** 锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
 
@@ -277,7 +277,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
-若要创建或删除管理锁，必须有权访问 Microsoft.Authorization/ _或 Microsoft.Authorization/locks/_ 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
+若要创建或删除管理锁，必须有权访问 Microsoft.Authorization/_ 或 Microsoft.Authorization/locks/_ 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
 
 ## <a name="api-access-to-billing-information"></a>API 对计费信息的访问
 
@@ -440,7 +440,7 @@ Azure 操作管理器通过提供管理解决方案扩展其功能。 [管理解
 
 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。
 
-合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
+合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
 
 ## <a name="performance-alerting-and-monitoring"></a>性能警报和监视
 

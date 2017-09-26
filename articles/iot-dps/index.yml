@@ -1,0 +1,52 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure IoT 中心设备预配服务（预览版）文档
+metadata:
+  title: Azure IoT 中心设备预配服务（预览版）文档 - 教程和 API 参考
+  meta.description: Overview of Azure IoT Hub Device Provisioning Service.
+  services: iot-dps
+  author: nberdy
+  manager: timlt
+  ms.service: iot-dps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: nberdy
+abstract:
+  description: IoT 中心设备预配服务（预览版）是针对 IoT 中心的帮助程序服务，它实现了无需人为干预即可零接触、实时预配至合适的 IoT 中心，允许客户采用安全且可缩放的方式预配数百万台设备。 使用快速入门、 教程和示例，了解如何将设备预配到 IoT 中心。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何设置你的第一个设备预配服务实例，以及如何将模拟设备预配到 IoT 中心。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: 设置自动预配
+            href: /azure/iot-dps/quick-setup-auto-provision
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: 创建模拟设备
+            href: /azure/iot-dps/quick-create-simulated-device
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何使用 IoT 中心设备预配服务（预览版）将已启用安全性的设备自动预配到单个或多个 IoT 中心。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">配置云资源</a>
+          - html: <a href="/azure/iot-dps/tutorial-set-up-device">设置设备以连接到 Azure</a>
+          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">将设备预配到单个 IoT 中心</a>
+          - html: <a href="/azure/iot-dps/tutorial-provision-multiple-hubs">将设备预配到多个负载均衡的 IoT 中心</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/iot-dps">REST API</a></p>

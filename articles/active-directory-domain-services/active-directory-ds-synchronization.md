@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/07/2017
-
 
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD 域服务托管域中的同步

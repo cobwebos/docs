@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/26/2017
+ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: bd136afebeceb0cd9c24cfc5f15601caa80a755e
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: ee7d40d2ff0ae1ac10b54f4c1f1dd704a70eb70c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="process-and-analyze-json-documents-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 处理和分析 JSON 文档
@@ -141,105 +141,7 @@ Hive 提供的另一个 UDF 称为 [json_tuple](https://cwiki.apache.org/conflue
 JSON\_TUPLE 在 Hive 中使用了[横向视图](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView)语法，使 json\_tuple 能够通过将 UDT 函数应用于原始表的每一行来创建虚拟表。  由于重复使用横向视图，复杂的 JSON 会变得过于庞大。 此外，JSON_TUPLE 无法处理嵌套的 JSONs。
 
 ### <a name="use-custom-serde"></a>使用自定义 SerDe
-SerDe 是用于分析嵌套 JSON 文档的最佳选择，它使你能够定义 JSON 架构，并使用该架构来分析文档。 在本教程中，将使用 [Roberto Congiu](https://github.com/rcongiu) 开发的更受欢迎的 SerDe 之一。
-
-**使用自定义 SerDe：**
-
-1. 安装 [Java SE 开发工具包 7u55 JDK 1.7.0_55](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u55-oth-JPR)。 如果要使用 HDInsight 的 Windows 部署，请选择 Windows X64 版本的 JDK
-   
-   > [!WARNING]
-   > JDK 1.8 不适用于此 SerDe。
-   > 
-   > 
-   
-    安装完成之后，请添加新的用户环境变量：
-   
-   1. 从 Windows 屏幕打开“查看高级系统设置”。
-   2. 单击“环境变量”。  
-   3. 添加指向 **C:\Program Files\Java\jdk1.7.0_55** 或任何 JDK 安装位置的新 **JAVA_HOME** 环境变量。
-      
-      ![为 JDK 设置正确的配置值][image-hdi-hivejson-jdk]
-2. 安装 [Maven 3.3.1](http://mirror.olnevhost.net/pub/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip)
-   
-    转到“控件面板”->“编辑系统变量”（对应于帐户的 Environment 变量），将 bin 文件夹添加到路径。 以下屏幕截图显示了如何执行此操作。
-   
-    ![设置 Maven][image-hdi-hivejson-maven]
-3. 从 [Hive-JSON-SerDe](https://github.com/sheetaldolas/Hive-JSON-Serde/tree/master) github 站点克隆项目。 可以通过按以下屏幕截图中所示单击“下载 Zip”按钮来执行此操作。
-   
-    ![克隆项目][image-hdi-hivejson-serde]
-
-4：转到此包下载到的文件夹，并键入“mvn package”。 这应会创建必要的 jar 文件，然后可以将其复制到群集。
-
-5：转到根文件夹下存放所下载包的目标文件夹。 将 json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar 文件上传到群集的头节点。 我通常会将它放在 hive bin 文件夹下：C:\apps\dist\hive-0.13.0.2.1.11.0-2316\bin 或类似的文件夹。
-
-6：在 hive 提示符下，键入“add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar”。 由于在我的示例中，jar 在 C:\apps\dist\hive-0.13.x\bin 文件夹中，因此我可以直接添加具有如下所示名称的 jar：
-
-    add jar json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar;
-
-   ![将 JAR 添加到项目][image-hdi-hivejson-addjar]
-
-现在，可以使用 SerDe 对 JSON 文档运行查询。
-
-以下语句将创建使用所定义架构的表：
-
-    DROP TABLE json_table;
-    CREATE EXTERNAL TABLE json_table (
-      StudentId string,
-      Grade int,
-      StudentDetails array<struct<
-          FirstName:string,
-          LastName:string,
-          YearJoined:int
-          >
-      >,
-      StudentClassCollection array<struct<
-          ClassId:string,
-          ClassParticipation:string,
-          ClassParticipationRank:string,
-          Score:int,
-          PerformedActivity:boolean
-          >
-      >
-    ) ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
-    LOCATION '/json/students';
-
-列出学生的名字和姓氏
-
-    SELECT StudentDetails.FirstName, StudentDetails.LastName FROM json_table;
-
-下面是 Hive 控制台输出的结果。
-
-![SerDe 查询 1][image-hdi-hivejson-serde_query1]
-
-计算 JSON 文档的总分
-
-    SELECT SUM(scores)
-    FROM json_table jt
-      lateral view explode(jt.StudentClassCollection.Score) collection as scores;
-
-上述查询使用 [lateral view explode](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) UDF 展开分数数组，以便可以求和。
-
-下面是 Hive 控制台的输出。
-
-![SerDe 查询 2][image-hdi-hivejson-serde_query2]
-
-查找给定学生在哪些科目取得了 80 以上的分数：
-
-    SELECT  
-      jt.StudentClassCollection.ClassId
-    FROM json_table jt
-      lateral view explode(jt.StudentClassCollection.Score) collection as score  where score > 80;
-
-上面的查询将返回一个 Hive 数组，这与 get\_json\_object 不同，后者返回一个字符串。
-
-![SerDe 查询 3][image-hdi-hivejson-serde_query3]
-
-如果想要跳过格式不正确的 JSON，可以根据此 SerDe 的 [wiki 页](https://github.com/sheetaldolas/Hive-JSON-Serde/tree/master)中所述，通过键入以下代码实现此目的：  
-
-    ALTER TABLE json_table SET SERDEPROPERTIES ( "ignore.malformed.json" = "true");
-
-
-
+SerDe 是用于分析嵌套 JSON 文档的最佳选择，它使你能够定义 JSON 架构，并使用该架构来分析文档。 有关说明，请参阅 [How to use a Custom JSON Serde with Microsoft Azure HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)（如何将自定义 JSON Serde 与 Microsoft Azure HDInsight 配合使用）。
 
 ## <a name="summary"></a>摘要
 总之，在 Hive 中选择的 JSON 运算符类型取决于方案。 如果有一个简单的 JSON 文档，并只有一个要查找的字段，可以选择使用 Hive UDF get\_json\_object。 如果有多个键用于查找，则可以使用 json_tuple。 如果有嵌套的文档，则应使用 JSON SerDe。

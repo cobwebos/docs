@@ -20,7 +20,6 @@ ms.openlocfilehash: adc0c4415e10ddd0b4994cecef17f026546e91a1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="azure-api-management-policy-reference"></a>Azure API 管理策略参考
 本部分提供 [API 管理策略参考][API Management policy reference]中策略的索引。 有关添加和配置策略的信息，请参阅 [API 管理中的策略][Policies in API Management]。

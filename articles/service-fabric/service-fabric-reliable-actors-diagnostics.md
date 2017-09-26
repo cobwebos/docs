@@ -20,7 +20,6 @@ ms.openlocfilehash: 1c53a6bbe0152f6f2b9666e6059af7c6d02e481f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
 
-
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视
 Reliable Actors 运行时发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件和[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解运行时的运行状况以及进行故障排除和性能监视。

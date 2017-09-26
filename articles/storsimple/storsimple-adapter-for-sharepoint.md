@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
@@ -62,7 +61,7 @@ RBS 的 Microsoft Azure StorSimple 实现具有以下优势：
   
     **测量内容数据库和 BLOB 大小**
   
-  1. 请在管理中心 WFE 上运行此查询。 启动 SharePoint Management Shell，然后输入以下 Windows PowerShell 命令获取内容数据库的大小：
+  1. 请在管理中心 WFE 上运行此查询。 启动 SharePoint Management Shell，并输入以下 Windows PowerShell 命令获取内容数据库的大小：
      
      `Get-SPContentDatabase | Select-Object -ExpandProperty DiskSizeRequired`
      
@@ -171,7 +170,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 ## <a name="configure-garbage-collection"></a>配置垃圾回收
 从 SharePoint 站点中删除对象时，这些对象不会从 RBS 存储卷中自动删除， 而是有一个异步后台维护程序从文件存储中删除孤立的 BLOB。 系统管理员可以将此进程安排为定期运行，也可以在必要时启动它。
 
-启用 RBS 时，此维护程序 (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) 将自动安装在所有 SharePoint WFE 服务器和应用程序服务器上。 该程序安装在以下位置：*引导盘*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\
+启用 RBS 时，此维护程序 (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) 会自动安装在所有 SharePoint WFE 服务器和应用程序服务器上。 该程序安装在以下位置：*引导盘*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\
 
 有关配置和使用此维护程序的信息，请参阅[在 SharePoint Server 2013 中维护 RBS][8]。
 
@@ -189,7 +188,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 [!INCLUDE [storsimple-sharepoint-adapter-garbage-collection](../../includes/storsimple-sharepoint-adapter-garbage-collection.md)]
 
 ## <a name="upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint"></a>升级或重新安装 StorSimple Adapter for SharePoint
-使用以下过程升级 SharePoint 服务器，然后重新安装 StorSimple Adapter for SharePoint，或者在现有 SharePoint 服务器场中升级或重新安装该适配器。
+使用以下过程升级 SharePoint 服务器，并重新安装 StorSimple Adapter for SharePoint，或者在现有 SharePoint 服务器场中升级或重新安装该适配器。
 
 > [!IMPORTANT]
 > 在尝试升级 SharePoint 软件和/或升级或重新安装 StorSimple Adapter for SharePoint 之前，请查看以下信息：
@@ -197,7 +196,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 > * 以前通过 RBS 转到外部存储的任何文件，必须等到重新安装完成并重新启用 RBS 功能之后才能使用。 为了限制用户受影响的程度，请在规划的维护期间执行任何升级或重新安装。
 > * 升级/重新安装所需的时间取决于 SharePoint 服务器场中的 SharePoint 数据库总数。
 > * 升级/重新安装完成后，需要为内容数据库启用 RBS。 有关详细信息，请参阅[配置 RBS](#configure-rbs)。
-> * 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），“SharePoint 管理中心”页可能会超时。 如果发生这种情况，请刷新页面。 这不会影响配置过程。
+> * 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），“SharePoint 管理中心”页可能会超时。如果发生这种情况，请刷新页面。 这不会影响配置过程。
 
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
@@ -236,7 +235,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 #### <a name="to-use-the-installation-program-to-uninstall-the-adapter"></a>使用安装程序卸载适配器
 1. 使用具有管理员权限的帐户登录到 Web 前端 (WFE) 服务器。
-2. 双击 StorSimple Adapter for SharePoint 安装程序。 此时将启动安装向导。
+2. 双击 StorSimple Adapter for SharePoint 安装程序。 此时会启动安装向导。
    
     ![安装向导](./media/storsimple-adapter-for-sharepoint/sasp2.png)
 3. 单击“下一步”。 将显示以下页。
@@ -245,14 +244,14 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 4. 单击“删除”开始执行删除过程。 将显示以下页。
    
     ![安装向导确认页](./media/storsimple-adapter-for-sharepoint/sasp4.png)
-5. 单击“删除”确认删除。 此时将显示以下进度页。
+5. 单击“删除”确认删除。 此时会显示以下进度页。
    
     ![安装向导进度页](./media/storsimple-adapter-for-sharepoint/sasp5.png)
-6. 删除完成后，将显示完成页。 单击“完成”关闭安装向导。
+6. 删除完成后，会显示完成页。 单击“完成”关闭安装向导。
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>使用控制面板卸载适配器
-1. 打开控制面板，然后单击“程序和功能”。
-2. 选择“StorSimple Adapter for SharePoint”，然后单击“卸载”。
+1. 打开控制面板，并单击“程序和功能”。
+2. 选择“StorSimple Adapter for SharePoint”，并单击“卸载”。
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 StorSimple](storsimple-overview.md)。

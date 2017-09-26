@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 25fbbe97d26491fc421f4821315761c18e523ec8
+ms.translationtype: HT
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 52d19297ae5c34f9daf5e42250a53a78e0168192
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 分析网站日志
@@ -27,7 +26,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2015 或 Visual Studio 2013**。
-* **[适用于 Visual Studio 的 Data Lake 工具](http://aka.ms/adltoolsvs)**。
+* **[针对 Visual Studio 的 Data Lake 工具](http://aka.ms/adltoolsvs)**。
 
     安装好适用于 Visual Studio 的 Data Lake 工具后，将在 Visual Studio 的“工具”菜单中看到“Data Lake”项：
 
@@ -36,9 +35,7 @@ ms.lasthandoff: 06/20/2017
 
   * [通过适用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 * **Data Lake Analytics 帐户**  请参阅[创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md)。
-* **将示例数据上传到 Data Lake Analytics 帐户。** 请参阅[复制示例数据文件](data-lake-analytics-get-started-portal.md)。
-
-    若要运行 Data Lake Analytics 作业，需要提供一些数据。 尽管 Data Lake 工具支持上传数据，但为了方便理解本教程，这里将使用门户来上传示例数据。
+* **安装示例数据。** 在 Azure 门户中，打开 Data Lake Analytics 帐户，再依次单击左侧菜单上的“示例脚本”和“复制示例数据”。 
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 必须先连接到 Azure，才能生成并测试任意 U SQL 脚本。
@@ -53,7 +50,7 @@ ms.lasthandoff: 06/20/2017
 **浏览 Data Lake Analytics 帐户**
 
 1. 从 Visual Studio 中，通过按 **CTRL+ALT+S**打开“服务器资源管理器” 。
-2. 在“服务器资源管理器”中，展开“Azure”，然后展开“Data Lake Analytics”。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅 [Get Started with Azure Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)（使用 Azure 门户开始 Azure Data Lake Analytics 入门）或 [Get Started with Azure Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)（使用 Azure PowerShell 开始 Azure Data Lake Analytics 入门）。
+2. 在“服务器资源管理器”中，展开“Azure”，并展开“Data Lake Analytics”。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅 [Get Started with Azure Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)（使用 Azure 门户开始 Azure Data Lake Analytics 入门）或 [Get Started with Azure Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)（使用 Azure PowerShell 开始 Azure Data Lake Analytics 入门）。
 
 ## <a name="develop-u-sql-application"></a>开发 U SQL 应用程序
 U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细信息，请参阅 [Get started with U-SQL](data-lake-analytics-u-sql-get-started.md)（U-SQL 入门）。
@@ -158,10 +155,10 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
         OUTPUT @content
         TO @"/Samples/Outputs/UnsuccessfulResponses.log"
         USING Outputters.Tsv();
-6. 切换回“提交”按钮旁边的第一个 U-SQL 脚本，指定你的 Analytics 帐户。
-7. 在“解决方案资源管理器”中，右键单击 “Script.usql”，然后单击“生成脚本”。 验证“输出”窗格中的结果。
-8. 在“解决方案资源管理器”中，右键单击 “Script.usql”，然后单击“提交脚本”。
-9. 验证“Analytics 帐户” 是否是你想要运行作业的帐户，然后单击“提交”。 完成提交后，“适用于 Visual Studio 的 Data Lake 工具结果”窗口中会出现提交结果和作业链接。
+6. 切换回“提交”按钮旁边的第一个 U-SQL 脚本，指定 Analytics 帐户。
+7. 在“解决方案资源管理器”中，右键单击 “Script.usql”，并单击“生成脚本”。 验证“输出”窗格中的结果。
+8. 在“解决方案资源管理器”中，右键单击 “Script.usql”，并单击“提交脚本”。
+9. 验证“Analytics 帐户” 是否是想要运行作业的帐户，并单击“提交”。 完成提交后，“适用于 Visual Studio 的 Data Lake 工具结果”窗口中会出现提交结果和作业链接。
 10. 等待作业成功完成。  如果作业失败，最可能的原因是缺少源文件。  请参阅本教程中的先决条件部分。 有关其他疑难解答信息，请参阅 [Monitor and troubleshoot Azure Data Lake Analytics jobs](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)（对 Azure Data Lake Analytics 作业进行监视和疑难解答）。
 
     作业完成后，将看到以下屏幕：
@@ -171,8 +168,8 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 
 **查看作业输出**
 
-1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击默认 Data Lake Storage 帐户，然后单击“资源管理器”。
-2. 双击“示例”打开文件夹，然后双击“输出”。
+1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击默认 Data Lake Storage 帐户，并单击“资源管理器”。
+2. 双击“示例”打开文件夹，并双击“输出”。
 3. 双击 “UnsuccessfulResponsees.log”。
 4. 也可以双击该作业图形视图中的输出文件直接导航到输出。
 

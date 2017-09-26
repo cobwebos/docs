@@ -20,7 +20,6 @@ ms.openlocfilehash: 5906495c565dad583e74a43b2e5eed57e0c68df1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 
 # <a name="azure-relay-port-settings"></a>Azure 中继端口设置

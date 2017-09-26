@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2017
+ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: d8c2056734bc1fdea71543157debd089a9ca743d
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 47208c60b316b580af8bf22d4f90d330ce285f7a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 08/08/2017
 这是三部分教程的最后一部分。 在前几部分中，[创建了容器映像](container-instances-tutorial-prepare-app.md)并[将其推送到了 Azure 容器注册表](container-instances-tutorial-prepare-acr.md)。 本部分为教程的最后一部分内容，介绍如何将容器部署到 Azure 容器实例。 已完成的步骤包括：
 
 > [!div class="checklist"]
-> * 使用 Azure 资源管理器模板定义容器组
-> * 使用 Azure CLI 部署容器组
+> * 使用 Azure CLI 从 Azure 容器注册表部署容器
+> * 在浏览器中查看应用程序
 > * 查看容器日志
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>使用 Azure CLI 部署容器

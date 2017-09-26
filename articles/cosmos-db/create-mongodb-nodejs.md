@@ -16,10 +16,10 @@ ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: a26477d692cc98ed16c195233ade5434cc536a36
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: cbcc72c06740fe9d0df579e85089b3e347ae638c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB：迁移现有的 Node.js MongoDB Web 应用 
@@ -28,7 +28,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 本快速入门演示如何使用以 Node.js 编写的现有 [MongoDB](mongodb-introduction.md) 应用，并将其连接到支持 MongoDB 客户端连接的 Azure Cosmos DB 数据库。 换而言之，Node.js 应用程序仅知道它要使用 MongoDB API 连接到某个数据库。 应用程序完全知道数据存储在 Azure Cosmos DB 中。
 
-完成本教程后，[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中会运行一个 MEAN（MongoDB、Express、AngularJS 和 Node.js）应用程序。 
+完成本教程后，[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中会运行一个 MEAN（MongoDB、Express、Angular 和 Node.js）应用程序。 
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/create-mongodb-nodejs/meanjs-in-azure.png)
 
@@ -38,6 +38,9 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="prerequisites"></a>先决条件 
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+
 除 Azure CLI 之外，还需要在本地安装 [Node.js](https://nodejs.org/) 和 [Git](http://www.git-scm.com/downloads)，以运行 `npm` 和 `git` 命令。
 
 应具备 Node.js 的实践知识。 本快速入门并未介绍有关开发 Node.js 应用程序的一般信息。

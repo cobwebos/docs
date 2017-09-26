@@ -19,7 +19,6 @@ ms.openlocfilehash: e5985831598a0e5b1277d2c6cd02b03c919aad4d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>教程：Azure Active Directory 与 RightAnswers 集成
 

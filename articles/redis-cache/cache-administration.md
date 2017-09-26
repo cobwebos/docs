@@ -20,7 +20,6 @@ ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。

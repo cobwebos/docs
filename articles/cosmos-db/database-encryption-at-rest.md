@@ -20,7 +20,6 @@ ms.openlocfilehash: d8967d4504a8ccabb444c7f3d5635e2d00f287c5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
 
-
 ---
 
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB 数据库静态加密

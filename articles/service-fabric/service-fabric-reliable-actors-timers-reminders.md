@@ -20,7 +20,6 @@ ms.openlocfilehash: 06b026ce06e0f16a77ac238de0af2263f272933c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="actor-timers-and-reminders"></a>执行组件计时器和提醒
 执行组件可通过注册计时器或提醒来计划自身的定期工作。 本文演示如何使用计时器和提醒，并说明它们之间的差异。

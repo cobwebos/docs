@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: elioda
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 633c9fd4f8a1d017d93148f8c2e860ccba14238c
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: d7c257553d25694005bced745f793951cc9f8951
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="get-started-with-device-twins-node"></a>设备孪生入门 (Node)
@@ -130,10 +130,6 @@ ms.lasthandoff: 08/28/2017
 ## <a name="create-the-device-app"></a>创建设备应用
 在本部分中，将创建一个 Node.js 控制台应用作为 **myDeviceId** 连接到中心，然后更新其设备孪生的报告属性，说明它是使用手机网络进行连接的。
 
-> [!NOTE]
-> 此时，只能从使用 MQTT 协议连接到 IoT 中心的设备访问设备孪生。 有关如何转换现有设备应用以使用 MQTT 的说明，请参阅 [MQTT 支持][lnk-devguide-mqtt]一文。
-> 
-> 
 
 1. 新建名为 **reportconnectivity** 的空文件夹。 在 **reportconnectivity** 文件夹中，在命令提示符下使用以下命令创建新的 package.json 文件。 接受所有默认值：
    

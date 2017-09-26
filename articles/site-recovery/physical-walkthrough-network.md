@@ -20,7 +20,6 @@ ms.openlocfilehash: f8a20b45b50f71631122e574b634818c1912f12e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/29/2017
 
-
 ---
 
 # <a name="step-4-plan-networking-for-physical-server-replication-to-azure"></a>第 4 步：计划网络以便将物理服务器复制到 Azure

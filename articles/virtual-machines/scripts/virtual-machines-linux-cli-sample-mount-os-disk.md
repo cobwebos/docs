@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: fca1844657821a8ce20deefe0056321c365ce689
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c32ea5e6cade34a9c8dac0eab523ebcaa10ef039
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>对 VM 操作系统磁盘进行故障排除
 
-此脚本将失败或有问题的虚拟机的操作系统磁盘作为数据磁盘装载到第二个虚拟机。 排查磁盘问题或恢复数据时，此脚本会很有用。 
+此脚本会失败或有问题的虚拟机的操作系统磁盘作为数据磁盘装载到第二个虚拟机。 排查磁盘问题或恢复数据时，此脚本会很有用。 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/virtual-machine/mount-os-disk/mount-os-disk.sh "快速创建 VM")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/mount-os-disk/mount-os-disk.sh "Quick Create VM")]
 
 ## <a name="script-explanation"></a>脚本说明
 
@@ -42,11 +42,11 @@ ms.lasthandoff: 05/15/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm#show) | 返回虚拟机列表。 在此示例中，查询选项用于返回虚拟机操作系统磁盘。 然后，将此值添加到名为“uri”的变量。 |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm#delete) | 删除虚拟机。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | 创建虚拟机。  |
-| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#attach) | 将磁盘附加到虚拟机。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#list-ip-addresses) | 返回虚拟机的 IP 地址。 |
+| [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | 返回虚拟机列表。 在此示例中，查询选项用于返回虚拟机操作系统磁盘。 然后，将此值添加到名为“uri”的变量。 |
+| [az vm delete](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | 删除虚拟机。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 创建虚拟机。  |
+| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach) | 将磁盘附加到虚拟机。 |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | 返回虚拟机的 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤
 

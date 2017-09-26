@@ -16,9 +16,10 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 ---

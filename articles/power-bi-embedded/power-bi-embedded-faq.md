@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/02/2017
 ms.author: asaxton
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: be485debb4d8a2d1f64e1752bc204f1634d53c97
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="power-bi-embedded-faq"></a>Power BI Embedded 常见问题解答
@@ -39,7 +39,7 @@ Power BI Embedded 和 Power BI 服务是单独的产品/服务。 Power BI Embed
 当可以利用优秀的交互式数据可视化功能直接在应用程序中通知用户的决策时，应用程序的功能将更为强大。 Power BI Embedded 可通过丰富的、始终保持最新的交互式数据可视化元素增强应用，以便提高应用的实用性、用户的满意度和忠诚度，并可在任何设备上轻松提供语境分析。
 
 ## <a name="are-there-any-rules-or-restrictions-about-how-i-can-use-power-bi-embedded-in-my-app"></a>关于如何在应用中使用 Power BI Embedded 是否存在任何规则或限制？
-Power BI Embedded 仅用于为供第三方使用而提供的应用程序。 如果想要使用 Power BI Embedded 服务创建内部业务应用程序，则每个内部用户都需要具有一个 Power BI Pro USL，并且你的组织除需要支付 Power BI Pro USL 费用外，还需要支付使用 Power BI Embedded 服务的费用。 为避免产生 Power BI Pro USL 费和 Power BI Embedded 用于内部应用程序的消耗费，Power BI 服务在 Power BI Embedded 外提供了其自己的内容嵌入功能，而未额外增加 Power BI USL 持有者的成本 (dev.powerbi.com)。
+Power BI Embedded 仅用于为供第三方使用而提供的应用程序。 如果想要使用 Power BI Embedded 服务创建内部业务应用程序，则每个内部用户都需要具有一个 Power BI Pro USL，并且组织除需要支付 Power BI Pro USL 费用外，还需要支付使用 Power BI Embedded 服务的费用。 为避免产生 Power BI Pro USL 费和 Power BI Embedded 用于内部应用程序的消耗费，Power BI 服务在 Power BI Embedded 外提供了其自己的内容嵌入功能，而未额外增加 Power BI USL 持有者的成本 (dev.powerbi.com)。
 
 ## <a name="can-power-bi-embedded-be-used-to-create-internal-applications"></a>Power BI Embedded 可以用于创建内部应用程序吗？
 不可以，Power BI Embedded 仅针对外部用户使用，不能在内部的业务应用程序中使用。 为了嵌入用于内部业务应用程序的 Power BI 内容，应该使用 Power BI 服务，并且所有使用该内容的用户必须拥有一个有效的 Power BI 免费版或 Power BI Pro 的用户订阅许可证。 有关如何将内部应用程序与 Power BI 服务进行集成的详细信息，请访问 [https://dev.powerbi.com](https://dev.powerbi.com)。
@@ -81,12 +81,12 @@ Power BI Embedded 服务使用“应用令牌”进行身份验证和授权，�
 ## <a name="how-does-the-tenancy-model-work-for-power-bi-embedded"></a>Power BI Embedded 的租户模型如何工作？
 在 Power BI Embedded 模型中，明确要求 Azure AD 租户中必须存在客户。 可以为客户选择是否需要 Azure AD。 这样，应用程序的体系结构和基础结构就可以用来确定 Power BI Embedded 要求的租户模型。
 
-开发人员/员工操作或创建应用程序时将需要具有 AAD 用户帐户才能通过 Azure 门户管理 Azure 订阅和工作区集合。 开发人员可以使用编程 API 导入报表、修改连接字符串、获取嵌入式 URL、改用应用令牌进行身份验证，因此无需使用 AAD。 有关如何使用 API 和 Azure 门户的详细信息，请参阅 Azure.com 中的 [Power BI Embedded 文档](https://azure.microsoft.com/documentation/services/power-bi-embedded/)页。
+开发人员/员工操作或创建应用程序时会需要具有 AAD 用户帐户才能通过 Azure 门户管理 Azure 订阅和工作区集合。 开发人员可以使用编程 API 导入报表、修改连接字符串、获取嵌入式 URL、改用应用令牌进行身份验证，因此无需使用 AAD。 有关如何使用 API 和 Azure 门户的详细信息，请参阅 Azure.com 中的 [Power BI Embedded 文档](https://azure.microsoft.com/documentation/services/power-bi-embedded/)页。
 
 ## <a name="where-can-i-learn-more"></a>可以从何处了解详细信息？
-可以访问 [Power BI Embedded 文档页](http://go.microsoft.com/fwlink/?LinkId=760526)。 通过访问 [Power BI 开发人员博客](http://blogs.msdn.com/powerbidev)或通过访问 dev.powerbi.com 中的 Power BI 开发人员中心，可以了解该服务的最新信息。 也可以在 [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi) 上提问。
+可以访问 [Power BI Embedded 文档页](http://go.microsoft.com/fwlink/?LinkId=760526)。 通过访问 [Power BI 开发人员博客](http://blogs.msdn.com/powerbidev)或通过访问 dev.powerbi.com 中的 Power BI 开发人员中心，可以了解该服务的最新信息。也可以在 [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi) 上提问。
 
-## <a name="how-do-i-get-started"></a>如何开始？
+## <a name="how-do-i-get-started"></a>如何入门？
 可以立即开始体验免费版！ 如果拥有 Azure 订阅，现在就可以直接从 Azure 门户预配 Power BI Embedded。  也可以创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。 一旦 Power BI Embedded 服务预配完毕，就可以直接轻松使用 Power BI REST API，或使用 [GitHub](http://go.microsoft.com/fwlink/?LinkID=746472) 上提供的开发人员 SDK。 关于如何使用开发人员 SDK 提供的示例。
 
 ## <a name="see-also"></a>另请参阅

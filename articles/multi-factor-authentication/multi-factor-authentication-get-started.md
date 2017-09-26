@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/25/2017
 ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: cc5a0a8ff789b878cd5afb62176ae8bcf3f80902
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>选择适合自己的 Azure 多重身份验证解决方案

@@ -23,7 +23,6 @@ ms.openlocfilehash: 8e77153493b6f37f5f48116b86bad6b25a50d1a1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
 
-
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>将 Sqoop 与 HDInsight 中的 Hadoop 配合使用
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]

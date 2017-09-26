@@ -22,7 +22,6 @@ ms.openlocfilehash: 49bfec791fcca3feabc4eb280cefd7faada0ea31
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>在 Azure 门户中为 Linux VM 创建完全限定的域名
 

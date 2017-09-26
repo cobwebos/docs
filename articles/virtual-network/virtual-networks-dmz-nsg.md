@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/05/2017
 
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure Resource Manager 模板构建简单的外围网络
@@ -364,8 +365,3 @@ ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
 [HOME]: ../best-practices-network-security.md
 [Template]: https://github.com/Azure/azure-quickstart-templates/tree/master/301-dmz-nsg
 [SampleApp]: ./virtual-networks-sample-app.md
-
-
-<!--HONumber=Jan17_HO1-->
-
-

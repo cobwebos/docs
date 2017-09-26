@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7d472733e80ae03294ba1ac9e97d1afd3aa0fa91
-ms.openlocfilehash: c7d8eefe560a361690cc4daf6550b2a8c894f318
+ms.translationtype: HT
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 9968d9fa1ebbc92b5647a23c75e75fb819f5d5ab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/05/2017
-
+ms.lasthandoff: 03/10/2017
 
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
@@ -40,7 +39,7 @@ ms.lasthandoff: 01/05/2017
 **应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[应用数据存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) 和 [Windows 8 应用数据漫游开发人员博客](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帐户可用于设置同步？
-在 Windows 8 和 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以便获取访问设置同步的权限。 在 Windows 10 中，主/辅助帐户框架取代了这一连接的 Microsoft 帐户功能。
+在 Windows 8 和 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以便获取访问设置同步的权限。在 Windows 10 中，主/辅助帐户框架取代了这一连接的 Microsoft 帐户功能。
 
 主帐户是指用于登录 Windows 的帐户。 可以是 Microsoft 帐户、Azure Active Directory (Azure AD) 帐户、本地 Active Directory 帐户或本地帐户。 除了主帐户外，Windows 10 用户可向设备添加一个或多个辅助云帐户。 辅助帐户通常是 Microsoft 帐户、Azure AD 帐户或某些其他帐户（如 Gmail 或 Facebook）。 这些辅助帐户提供访问其他服务（如单一登录和 Windows 应用商店）的权限，但无法支持设置同步。
 
@@ -49,9 +48,9 @@ ms.lasthandoff: 01/05/2017
 设备上不同用户帐户之间的数据永远不会混合。 设置同步有两个规则：
 
 * Windows 设置始终通过主帐户漫游。
-* 通过用于获取应用的帐户来标记应用数据。 仅同步通过主帐户标记的应用。 当通过 Windows 应用商店或移动设备管理 (MDM) 边载应用时，会确定应用所有权标记。
+* 通过用于获取应用的帐户来标记应用数据。 仅同步通过主帐户标记的应用。当通过 Windows 应用商店或移动设备管理 (MDM) 边载应用时，会确定应用所有权标记。
 
-如果无法标识应用的所有者，它将通过主帐户漫游。 如果设备从 Windows 8 或 Windows 8.1 升级到 Windows 10，所有应用会被标记为由 Microsoft 帐户获取。 这是因为大多数用户通过 Windows 应用商店获取应用，而在 Windows 10 之前，未对 Azure AD 帐户提供 Windows 应用商店支持。 如果通过离线许可证安装应用，则应用将被标记为在设备上使用主帐户。
+如果无法标识应用的所有者，它将通过主帐户漫游。 如果设备从 Windows 8 或 Windows 8.1 升级到 Windows 10，所有应用会被标记为由 Microsoft 帐户获取。 这是因为大多数用户通过 Windows 应用商店获取应用，而在 Windows 10 之前，未对 Azure AD 帐户提供 Windows 应用商店支持。 如果通过离线许可证安装应用，则应用会被标记为在设备上使用主帐户。
 
 > [!NOTE]
 > 企业拥有且连接到 Azure AD 的 Windows 10 设备不能再将其 Microsoft 帐户连接到域帐户。 将从已加入连接的 Active Directory 或 Azure AD 环境中的 Windows 10 设备中，删除将 Microsoft 帐户连接到域帐户并将所有用户数据同步到 Microsoft 帐户（即，通过已连接的 Microsoft 帐户和 Active Directory 功能进行的 Microsoft 帐户漫游）这一功能。
@@ -59,9 +58,9 @@ ms.lasthandoff: 01/05/2017
 >
 
 ## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>如何从 Windows 8 中的 Microsoft 帐户设置同步升级到 Windows 10 中的 Azure AD 设置同步？
-如果已通过连接的 Microsoft 帐户加入到运行 Windows 8 或 Windows 8.1 的 Active Directory 域，则将通过 Microsoft 帐户来同步设置。 升级到 Windows 10 后，只要你是已加入域的用户且 Active Directory 域未与 Azure AD 连接，就将继续通过 Microsoft 帐户来同步用户设置。
+如果已通过连接的 Microsoft 帐户加入到运行 Windows 8 或 Windows 8.1 的 Active Directory 域，则将通过 Microsoft 帐户来同步设置。 升级到 Windows 10 后，只要是已加入域的用户且 Active Directory 域未与 Azure AD 连接，就将继续通过 Microsoft 帐户来同步用户设置。
 
-如果本地 Active Directory 域与 Azure AD 连接，设备将尝试使用连接的 Azure AD 帐户来同步设置。 如果 Azure AD 管理员没有启用企业状态漫游，则连接的 Azure AD 帐户将停止同步设置。 如果你是 Windows 10 用户并且使用 Azure AD 标识登录，则管理员通过 Azure AD 启用设置同步时，你就能立即启动 Windows 设置。
+如果本地 Active Directory 域与 Azure AD 连接，设备将尝试使用连接的 Azure AD 帐户来同步设置。 如果 Azure AD 管理员没有启用企业状态漫游，则连接的 Azure AD 帐户将停止同步设置。 如果是 Windows 10 用户并且使用 Azure AD 标识登录，则管理员通过 Azure AD 启用设置同步时，就能立即启动 Windows 设置。
 
 如果在公司设备上存储了任何个人数据，应注意 Windows OS 和应用程序数据将开始同步到 Azure AD。 这具有以下含义：
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 01/05/2017
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>是否对来自多个租户的 Azure AD 帐户进行设置同步？
 当同一设备上有来自不同 Azure AD 租户的多个 Azure AD 帐户时，必须更新设备的注册表，才可与每个 Azure AD 租户的 Azure 权限管理 (Azure RMS) 进行通信。  
 
-1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 经典门户并选择 Azure AD 租户。 租户的 GUID 位于浏览器地址栏的 URL 中。 例如：  `https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
+1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 经典门户并选择 Azure AD 租户。 租户的 GUID 位于浏览器地址栏的 URL 中。 例如： `https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
 2. 获取 GUID 后，需要添加注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**。
    从“租户 ID GUID”键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
 3. 可以通过运行 **Get-AadrmConfiguration** cmdlet 找到授权分发点 URL。 如果 **LicensingIntranetDistributionPointUrl** 和 **LicensingExtranetDistributionPointUrl** 的值不同，则指定这两个值。 如果值相同，则指定该值一次。

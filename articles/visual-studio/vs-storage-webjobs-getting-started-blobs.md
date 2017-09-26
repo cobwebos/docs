@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: a50a265feff8c0aec28825eb0bc4e33585ea5a02
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7d683f950e8847a18f38158a8f8727b1274fc711
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概述
-本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。 这些代码示例使用 [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) 版本 1.x。 当使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
+本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。 这些代码示例使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 版本 1.x。 当使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>如何在创建或更新 Blob 后触发函数
 本部分说明如何使用 **BlobTrigger** 属性。
 
- **注意：**WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。 此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。  如果应用程序需要立即处理 blob，推荐的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 [QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性而非 **BlobTrigger** 属性。
+ **注意：**WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。 此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。  如果应用程序需要立即处理 blob，推荐的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 **QueueTrigger** 属性而非 **BlobTrigger** 属性。
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Blob 名称和扩展名的单个占位符
 以下代码示例将 *input* 容器中显示的文本 blob 复制到 *output* 容器中：
@@ -142,7 +142,7 @@ ms.lasthandoff: 08/28/2017
 ## <a name="how-to-handle-poison-blobs"></a>如何处理有害 Blob
 当 **BlobTrigger** 函数失败时，如果失败是暂时性错误导致的，则 SDK 会再次调用该函数。 如果失败是由 Blob 的内容导致的，则该函数每次尝试处理 Blob 时都会失败。 默认情况下，对于给定的 Blob，SDK 调用一个函数最多 5 次。 如果第五次尝试失败，SDK 会将消息添加到名为 webjobs-blobtrigger-poison 的队列中。
 
-最大尝试次数是可配置的。 处理有害 blob 和有害队列消息时使用相同的 [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 设置。
+最大尝试次数是可配置的。 处理有害 blob 和有害队列消息时使用相同的 **MaxDequeueCount** 设置。
 
 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
@@ -204,7 +204,7 @@ Blob 回执存储在 AzureWebJobsStorage 连接字符串指定的 Azure 存储�
 如果要强制重新处理某个 blob，则可以从 *azure-webjobs-hosts* 容器中手动删除该 blob 的 blob 回执。
 
 ## <a name="related-topics-covered-by-the-queues-article"></a>队列文章涵盖的相关主题
-有关如何处理队列消息触发的 blob 处理，或者不特定于 blob 处理的 WebJobs SDK 方案的信息，请参阅[如何通过 WebJobs SDK 使用 Azure 队列存储](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)。
+有关如何处理队列消息触发的 blob 处理，或者不特定于 blob 处理的 WebJobs SDK 方案的信息，请参阅[如何通过 WebJobs SDK 使用 Azure 队列存储](https://github.com/Azure/azure-webjobs-sdk/wiki)。
 
 该文章涵盖的相关主题包括：
 
