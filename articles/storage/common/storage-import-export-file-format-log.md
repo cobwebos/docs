@@ -1,5 +1,4 @@
 ---
-
 title: "Azure 导入/导出服务日志文件格式 | Microsoft Docs"
 description: "了解针对导入/导出服务作业执行步骤时创建的日志文件的格式。"
 author: muralikk
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ac56267d3f1e7db083edfa2d375c21238875641f
 ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
-
 
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式

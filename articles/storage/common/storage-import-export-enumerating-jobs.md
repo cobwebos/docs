@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2e3488e69d0fa56d0984bd00d6c1cc4676c9f45e
 ms.openlocfilehash: 1977bfc0e516088310f45ecdd960287eeed2c2d8
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
-
 
 ---
 

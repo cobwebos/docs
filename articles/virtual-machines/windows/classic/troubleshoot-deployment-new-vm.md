@@ -12,7 +12,7 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/16/2016
 ms.author: cjiang
 ms.translationtype: Human Translation

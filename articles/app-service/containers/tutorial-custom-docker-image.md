@@ -12,9 +12,10 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/03/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 2a14c9539e46bffbe3e11ff372f37190a562e199
