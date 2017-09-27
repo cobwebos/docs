@@ -12,7 +12,7 @@ ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
 ms.translationtype: Human Translation

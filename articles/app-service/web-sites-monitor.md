@@ -15,7 +15,7 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
 ms.contentlocale: zh-cn
 ms.lasthandoff: 08/08/2017
