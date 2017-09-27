@@ -146,7 +146,8 @@ ext install usql-vscode-ext
                       D( DepID, DepName );
          
         OUTPUT @departments
-            TO “/Output/departments.csv”
+            TO "/Output/departments.csv"
+        USING Outputters.Csv();
 
     脚本创建具有 /output 文件夹中某些数据的 departments.csv 文件。
 
