@@ -151,8 +151,8 @@ Azure 流分析可帮助快速开发和部署低成本分析解决方案，以�
     private static Lazy<ConnectionMultiplexer> lazyConnection = 
         new Lazy<ConnectionMultiplexer>(() =>
             {
-                var cnn = ConfigurationManager.ConnectionStrings["CONN NAME"].ConnectionString
-                return ConnectionMultiplexer.Connect();
+                var cnn = ConfigurationManager.ConnectionStrings["CONN NAME"].ConnectionString;
+                return ConnectionMultiplexer.Connect(cnn);
             });
 
     public static ConnectionMultiplexer Connection
