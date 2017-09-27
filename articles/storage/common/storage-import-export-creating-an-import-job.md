@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2e3488e69d0fa56d0984bd00d6c1cc4676c9f45e
 ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/06/2017
-
 
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
