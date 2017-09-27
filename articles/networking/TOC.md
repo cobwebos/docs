@@ -50,7 +50,7 @@
 
 ## 示例脚本
 ### [Azure CLI](cli-samples.md)
-### [PowerShell](powershell-samples.md)
+### [Azure PowerShell](powershell-samples.md)
 
 ## 教程
 ### [对 VM 进行负载均衡](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
@@ -58,7 +58,7 @@
 
 # 引用
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/network)
-## [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/?view=azurermps-3.8.0)
+## [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/?view=azurermps-3.8.0)
 ## [.Net](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview)
 ## [Node.js](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
 ## [REST](https://msdn.microsoft.com/library/mt163658.aspx)

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/6/2017
 ms.author: anwestg
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
 ms.openlocfilehash: be4b032e8f7370f696c47a7b8e82c0a819529f4d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/04/2017
-
 
 ---
 
@@ -35,8 +34,7 @@ App Service on Azure Stack supports on-demand deployment from multiple Source Co
 ## <a name="view-deployment-sources-in-app-service-administration"></a>View Deployment Sources in App Service Administration
 
 1. Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator.
-2. Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
-    ![App Service Resource Provider Admin][1]
+2. Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.  ![App Service Resource Provider Admin][1]
 3. Click **Source control configuration**.  Here you see the list of all Deployment Sources configured.
     ![App Service Resource Provider Admin Source Control Configuration][2]
 
@@ -45,12 +43,11 @@ App Service on Azure Stack supports on-demand deployment from multiple Source Co
 > [!NOTE]
 > You require a GitHub account to complete this task.  You may wish to use an account for your organization rather than a personal account.
 
-1. Log in to GitHub, browse to https://www.github.com/settings/developers and click **Register a new application**
-    ![GitHub - Register a new application][3]
+1. Log in to GitHub, browse to https://www.github.com/settings/developers and click **Register a new application** ![GitHub - Register a new application][3]
 2. Enter an **Application name** for example - App Service on Azure Stack
 3. Enter the **Homepage URL**.  **The Homepage URL must be the Azure Stack Portal address** for example - https://portal.local.azurestack.external
 4. Enter an **Application Description**
-5. Enter the **Authorization callback URL**.  In a default Azure Stack deployment, the Url is in the form https://portal.local.azurestack.external/tokenauthorize, if you are running under a different domain substitute your domain for azurestack.local  ![GitHub - Register a new application with values populated][4]
+5. Enter the **Authorization callback URL**.  In a default Azure Stack deployment, the Url is in the form https://portal.local.azurestack.external/tokenauthorize, if you are running under a different domain substitute your domain for azurestack.local ![GitHub - Register a new application with values populated][4]
 6. Click **Register application**.  You will now be presented with a page listing the **Client ID** and **Client Secret** for the application.
     ![GitHub - Completed application registration][5]
 7.  In a new browser tab or window Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator. 
@@ -67,14 +64,12 @@ App Service on Azure Stack supports on-demand deployment from multiple Source Co
 > You require a BitBucket account to complete this task.  You may wish to use an account for your organization rather than a personal account.
 
 1. Log in to BitBucket and browse to **Integrations** under your account  ![BitBucket Dashboard - Integrations][7]
-2. Click **OAuth** under Access Management and **Add consumer**
-    ![BitBucket Add OAuth Consumer][8]
+2. Click **OAuth** under Access Management and **Add consumer** ![BitBucket Add OAuth Consumer][8]
 3. Enter a **Name** for the consumer, for example App Service on Azure Stack
 4. Enter a **Description** for the application
 5. Enter the **Callback URL**.  In a default Azure Stack deployment, the Callback Url is in the form https://portal.local.azurestack.external/TokenAuthorize, if you are running under a different domain substitute your domain for azurestack.local.  The Url must follow the capitalization as listed here for BitBucket integration to succeed.
 6. Enter the **URL** - this Url should be the Azure Stack Portal URL, for example https://portal.local.azurestack.external
-7. Select the **Permissions** required  **Repositories**: **Read**
-    **Webhooks**: **Read and write**
+7. Select the **Permissions** required  **Repositories**: **Read** **Webhooks**: **Read and write**
 8. Click **Save**.  You will now see this new application, along with the **Key** and **Secret** under **OAuth consumers**.
     ![BitBucket Application Listing][9]
 9.  In a new browser tab or window Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator. 

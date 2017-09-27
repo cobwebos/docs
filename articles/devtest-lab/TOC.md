@@ -56,8 +56,8 @@
 ## [缩放实验室](devtest-lab-scale-lab.md)
 
 # 引用
-## [CLI 2.0](/cli/azure/lab)
-## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
+## [Azure CLI](/cli/azure/lab)
+## [Azure PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [自动创建或修改实验室](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 ## [REST API](https://docs.microsoft.com/rest/api/dtl/)
 ## [Resource Manager 模板](https://github.com/Azure/azure-devtestlab/tree/master/Samples)

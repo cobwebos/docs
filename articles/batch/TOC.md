@@ -42,7 +42,7 @@
 #### [运行作业和任务](./scripts/batch-cli-sample-run-job.md)
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
-## [PowerShell](/powershell/module/azurerm.batch)
+## [Azure PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
@@ -63,8 +63,8 @@
 
 # 相关内容
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
-## [使用批处理和数据工厂进行数据处理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-## [Azure 中的 Batch、HPC 和大型计算解决方案](../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json)
+## [使用批处理和数据工厂进行数据处理](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
+## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
