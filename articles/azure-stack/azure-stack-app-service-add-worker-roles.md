@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/6/2017
 ms.author: kathm
-translationtype: Human Translation
-ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
-ms.openlocfilehash: 2abcb15789c52b64534b4ff69392ccd49f20142f
-ms.lasthandoff: 01/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f844658c6ad2529fd385476be63095bdae7c88e5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/06/2017
 
 ---
 # <a name="app-service-on-azure-stack-adding-more-worker-roles"></a>App Service on Azure Stack: Adding more worker roles 
