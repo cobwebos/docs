@@ -96,7 +96,7 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
 
 在“连接终结点”字段中，键入群集的连接终结点，再单击“发布”。 注册合作群集时，浏览器中会提供连接终结点，例如 `winh1x87d1d.westus.cloudapp.azure.com:19000`。
 
-打开浏览器并导航到 http://winh1x87d1d.westus.cloudapp.azure.com:80。 此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
+打开浏览器并导航到 http://winh1x87d1d.westus.cloudapp.azure.com:80 。 此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单的完整示例
 以下是用在本快速入门中的完整服务和应用程序清单。
