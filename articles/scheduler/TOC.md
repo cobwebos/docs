@@ -20,8 +20,8 @@
 ## 安全
 ### [出站身份验证](scheduler-outbound-authentication.md)
 
-# 参考
-## [PowerShell](/powershell/module/azurerm.scheduler)
+# 引用
+## [Azure PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST](/rest/api/scheduler)
 
 # 资源

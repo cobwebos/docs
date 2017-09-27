@@ -4,6 +4,8 @@
   items:
     - name: 关于文本分析
       href: overview.md
+    - name: 支持的语言
+      href: text-analytics-supported-languages.md
 - name: 快速入门
   items:
     - name: 'C#'

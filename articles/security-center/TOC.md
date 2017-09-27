@@ -74,6 +74,7 @@
 
 ## 云防御措施
 ### [实时访问](security-center-just-in-time.md)
+### [自适应应用程序控制](security-center-adaptive-application.md)
 
 ## 自动化和业务流程
 ### [演练手册](security-center-playbooks.md)
