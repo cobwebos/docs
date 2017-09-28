@@ -15,7 +15,7 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.sourcegitcommit: 094844d872ef63ac2ebfb90e6dca7df37e0af98b
 ms.openlocfilehash: 6af66607478c58874f00bcf017a35abfc37888df
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
