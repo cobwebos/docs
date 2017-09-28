@@ -226,6 +226,13 @@
       items:
         - name: 连续导出
           href: app-insights-export-telemetry.md
+          items:
+            - name: 代码示例
+              items:
+                - name: 使用流分析导出到 SQL
+                  href: app-insights-code-sample-export-sql-stream-analytics.md
+                - name: 导出到流分析
+                  href: app-insights-export-stream-analytics.md
         - name: 导出数据模型
           href: app-insights-export-data-model.md
         - name: 导出到 Power BI

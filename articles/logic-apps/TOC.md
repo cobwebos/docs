@@ -43,6 +43,7 @@
 ### [合作伙伴](logic-apps-enterprise-integration-partners.md)
 ### [协议](logic-apps-enterprise-integration-agreements.md)
 ### [B2B 处理](logic-apps-enterprise-integration-b2b.md)
+### [成批发送 EDI 消息](logic-apps-scenario-edi-send-batch-messages.md)
 ### [XML 处理](logic-apps-enterprise-integration-xml.md)
 ### [平面文件处理](logic-apps-enterprise-integration-flatfile.md)
 ### [验证 XML](logic-apps-enterprise-integration-xml-validation.md)
@@ -88,7 +89,7 @@
 ### [创建无服务器的社交仪表板](logic-apps-scenario-social-serverless.md)
 ### [使用 Azure Functions 调用逻辑应用](logic-apps-scenario-function-sb-trigger.md)
 ### [添加错误和异常处理](logic-apps-scenario-error-and-exception-handling.md)
-### [B2B 处理](logic-apps-enterprise-integration-b2b.md)
+### [B2B 处理](logic-apps-enterprise-integration-b2b.md) 
 
 ## 定价和计费
 ### [定价](https://azure.microsoft.com/pricing/details/logic-apps/)

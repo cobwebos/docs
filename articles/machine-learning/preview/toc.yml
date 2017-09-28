@@ -141,6 +141,8 @@
       items:
         - name: 执行配置
           href: experiment-execution-configuration-reference.md
+        - name: 日志记录 API
+          href: reference-logging-api.md
     - name: 模型管理
       items:
         - name: 模型管理 API

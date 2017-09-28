@@ -42,7 +42,6 @@
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
-#### [为用户和应用提供使用条款](active-directory-tou.md)
 #### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [重置密码](active-directory-users-reset-password-azure-portal.md)
@@ -153,7 +152,7 @@
 #### [设置步骤](cloudappdiscovery-get-started.md)
 #### [创建快照报表](cloudappdiscovery-set-up-snapshots.md)
 #### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [使用自定义日志分析器](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)
+#### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 #### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
@@ -300,6 +299,7 @@
 #### 任务
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
 ##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
+##### [为用户和应用提供使用条款](active-directory-tou.md)
 ##### [设置 VPN 连接](active-directory-conditional-access-vpn-connectivity-windows10.md)
 ##### [设置 SharePoint 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [补救方法](active-directory-conditional-access-device-remediation.md)

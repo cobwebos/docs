@@ -1,3 +1,5 @@
+- name: 管理访问概述
+  href: manage-access-to-azure-resources.md
 - name: Azure 中的资源访问权限
   href: active-directory-understanding-resource-access.md
 - name: 基于角色的访问控制 (RBAC)

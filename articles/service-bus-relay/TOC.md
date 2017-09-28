@@ -9,6 +9,8 @@
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)
 ## [WCF 中继](relay-wcf-dotnet-get-started.md)
+## [WCF 中继教程](service-bus-relay-tutorial.md)
+## [WCF 中继 REST 教程](service-bus-relay-rest-tutorial.md)
 
 # 如何
 ## 规划和设计
