@@ -349,7 +349,7 @@ Azure Functions 为在绑定中通过 `{rand-guid}` 绑定表达式生成 GUID �
       "name": "info",
       "type": "httpTrigger",
       "direction": "in",
-      "webHookType": "genericJson",
+      "webHookType": "genericJson"
     },
     {
       "name": "blobContents",

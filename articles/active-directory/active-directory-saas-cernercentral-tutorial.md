@@ -114,19 +114,15 @@ ms.lasthandoff: 06/22/2017
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://<instancename>.sandboxcerner.com/session-api/protocol/saml2/metadata` |
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
+    
 
     b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL： 
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
-    | `https://cernercentral.com/<instasncename>` |
-    | `https://sandboxcernercentral.com/<instancename>` |
-    | `https://sandboxcernercentral.com/<instancename>` |
-    | `https://<subdomain>.sandboxcernercentral.com/<instancename>` |
+    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
+    
 
     > [!NOTE] 
     > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [Cerner Central 支持团队](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)来获取这些值。

@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: fb7d391e3118a9dccde5501c3f30c6f580932a30
 ms.contentlocale: zh-cn
 ms.lasthandoff: 08/03/2017
