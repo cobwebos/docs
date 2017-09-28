@@ -82,6 +82,8 @@
   items:
     - name: 灾难恢复
       items:
+        - name: 到 Azure，适用于支持多租户的 VMware VM
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: 到 Azure，适用于 Hyper-V VM
           href: tutorial-hyper-v-to-azure.md
         - name: 到 Azure，适用于物理服务器

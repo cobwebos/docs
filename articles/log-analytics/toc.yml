@@ -23,7 +23,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 常见问题
+    - name: Log Analytics 常见问题解答
       href: log-analytics-faq.md
     - name: 数据使用
       href: log-analytics-usage.md
@@ -31,6 +31,14 @@
       href: log-analytics-manage-access.md
     - name: 适用于服务提供商的功能
       href: log-analytics-service-providers.md
+    - name: 日志搜索
+      items:
+        - name: 日志搜索常见问题解答
+          href: log-analytics-log-search-faq.md
+        - name: 日志搜索概述
+          href: log-analytics-log-search-new.md
+        - name: 日志搜索门户
+          href: log-analytics-log-search-portals.md
 - name: 如何
   items:
     - name: 收集数据
@@ -92,15 +100,6 @@
       items:
         - name: 升级工作区
           href: log-analytics-log-search-upgrade.md
-        - name: 常见问题
-          href: log-analytics-log-search-faq.md
-        - name: 日志搜索概述
-          href: log-analytics-log-search-new.md
-        - name: 日志搜索门户
-          href: log-analytics-log-search-portals.md
-          items:
-            - name: 使用日志搜索门户
-              href: log-analytics-log-search-log-search-portal.md
         - name: 从旧式语言转换
           href: log-analytics-log-search-transition.md
         - name: Flow 连接器

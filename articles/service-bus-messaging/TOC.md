@@ -43,6 +43,7 @@
 ### [死信队列](service-bus-dead-letter-queues.md)
 ### [事务处理](service-bus-transactions.md)
 ### [诊断日志](service-bus-diagnostic-logs.md)
+### [配对命名空间实现](service-bus-paired-namespaces.md)
 ### AMQP
 #### [AMQP 概述](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)

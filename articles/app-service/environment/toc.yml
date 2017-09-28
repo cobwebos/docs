@@ -3,25 +3,19 @@
   items:
     - name: 关于应用服务环境
       href: intro.md
-    - name: 比较托管选项
-      href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
 - name: 快速入门
   expanded: true
   items:
-    - name: 在应用服务环境中创建应用
+    - name: 创建外部 ASE
       href: create-external-ase.md
-    - name: 从模板创建
-      href: create-from-template.md
+    - name: 创建内部 ASE
+      href: create-ilb-ase.md
 - name: 教程
   items:
-    - name: 创建独立应用
-      href: create-ilb-ase.md
-    - name: 与 WAP 集成
+    - name: 与 WAF 集成
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: 控制公共应用的入站流量
-      href: app-service-app-service-environment-control-inbound-traffic.md
-    - name: 横向扩展 ASE 中的应用
-      href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+    - name: 配置 TLS
+      href: app-service-app-service-environment-custom-settings.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -32,50 +26,49 @@
   items:
     - name: 网络体系结构
       href: network-info.md
-    - name: 管理地址
-      href: management-addresses.md
     - name: 地理上分散的缩放
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
-      items:
-        - name: ASEv1 简介
-          href: app-service-app-service-environment-intro.md
-        - name: 网络体系结构
-          href: app-service-app-service-environment-network-architecture-overview.md
+      href: app-service-app-service-environment-intro.md
 - name: 操作指南
   items:
-    - name: 配置 ASE
+    - name: 使用 ASE
+      href: using-an-ase.md
+    - name: 基于模板创建 ASE
+      href: create-from-template.md
+- name: 引用
+  items:
+    - name: 管理地址
+      href: management-addresses.md
+    - name: ASEv1 文档
       items:
-        - name: 使用 ASE
-          href: using-an-ase.md
+        - name: 创建 ASEv1
+          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: 配置 ASEv1
+          href: app-service-web-configure-an-app-service-environment.md
+        - name: 创建内部 ASEv1
+          href: app-service-environment-with-internal-load-balancer.md
+        - name: 基于模板创建内部 ASEv1
+          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
+        - name: 在 ASEv1 中配置自动缩放
+          href: app-service-environment-auto-scale.md
+        - name: 在 ASEv1 中横向扩展应用
+          href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+        - name: 网络体系结构
+          href: app-service-app-service-environment-network-architecture-overview.md
+        - name: 在 ASEv1 中创建 Web 应用
+          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+        - name: 高密度承载
+          href: app-service-high-density-hosting.md
         - name: 连接到后端
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: 配置 ExpressRoute
           href: app-service-app-service-environment-network-configuration-expressroute.md
-    - name: 保护 ASE
-      items:
-        - name: 配置 TLS
-          href: app-service-app-service-environment-custom-settings.md
+        - name: 控制公共应用的入站流量
+          href: app-service-app-service-environment-control-inbound-traffic.md
         - name: 使用分层安全
           href: app-service-app-service-environment-layered-security.md
-    - name: 监视 ASE
-      items:
-        - name: 在门户中监视
-          href: app-service-web-configure-an-app-service-environment.md
-    - name: 使用 ASE1
-      items:
-        - name: 配置自动缩放
-          href: app-service-environment-auto-scale.md
-        - name: 创建 ASEv1
-          href: app-service-web-how-to-create-an-app-service-environment.md
-        - name: 在 ASEv1 中创建 Web 应用
-          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
-        - name: 在 ASEv1 中创建内部应用
-          href: app-service-environment-with-internal-load-balancer.md
-        - name: 使用模板创建内部应用
-          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
-        - name: 高密度承载
-          href: app-service-high-density-hosting.md
+    - name: CLI 2.0
 - name: 引用
   items:
     - name: Azure CLI
