@@ -15,11 +15,10 @@ ms.workload: storage
 ms.date: 06/03/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.sourcegitcommit: 253ee2b822b15a9921323bd6d9e8b8c1c6873c1c
 ms.openlocfilehash: aa2b53c514890aa980bc89626e8c7c7336b77a0b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/06/2017
-
 
 ---
 # <a name="azure-storage-samples"></a>Azure 存储示例
