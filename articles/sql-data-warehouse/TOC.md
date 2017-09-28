@@ -8,6 +8,7 @@
 # 入门
 
 ## [入门教程](sql-data-warehouse-get-started-tutorial.md)
+## [弹性查询教程](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 
@@ -20,7 +21,7 @@
 ### [备份概述](sql-data-warehouse-backups.md)
 ### [还原概述](sql-data-warehouse-restore-database-overview.md)
 #### [Azure 门户](sql-data-warehouse-restore-database-portal.md)
-#### [PowerShell](sql-data-warehouse-restore-database-powershell.md)
+#### [Azure PowerShell](sql-data-warehouse-restore-database-powershell.md)
 #### [REST](sql-data-warehouse-restore-database-rest-api.md)
 
 ## 连接
@@ -34,7 +35,7 @@
 
 ## 创建
 ### [Azure 门户](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [Azure PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 ### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 开发
@@ -79,6 +80,8 @@
 ### [Power BI](sql-data-warehouse-integrate-power-bi.md)
 ### [Power BI 可视化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 ### [流分析](sql-data-warehouse-integrate-azure-stream-analytics.md)
+
+### [将弹性查询与 SQL 数据库和 SQL 数据仓库配合使用](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 ## 加载
 

@@ -11,7 +11,7 @@
       href: sql-database-get-started-portal.md
     - name: 创建 DB - Azure CLI
       href: sql-database-get-started-cli.md
-    - name: 创建 DB - PowerShell
+    - name: 创建 DB - Azure PowerShell
       href: sql-database-get-started-powershell.md
     - name: 连接和查询
       items:
@@ -51,7 +51,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
     - name: Azure CLI
       href: sql-database-cli-samples.md
-    - name: PowerShell
+    - name: Azure PowerShell
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
@@ -71,6 +71,8 @@
           href: sql-database-connectivity-architecture.md
         - name: 防火墙规则
           href: sql-database-firewall-configure.md
+        - name: 防火墙虚拟网络规则
+          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: DTU 和 eDTU
           href: sql-database-what-is-a-dtu.md
         - name: DTU 基准
@@ -95,6 +97,8 @@
           href: sql-database-elastic-transactions-overview.md
         - name: 弹性作业
           href: sql-database-elastic-jobs-overview.md
+        - name: SQL 漏洞评估
+          href: sql-vulnerability-assessment.md
         - name: SQL Server 常用功能
           href: sql-database-features.md
     - name: “安全”
@@ -155,6 +159,10 @@
           href: sql-database-advisor.md
         - name: 自动优化
           href: sql-database-automatic-tuning.md
+        - name: 智能见解
+          href: sql-database-intelligent-insights.md
+        - name: 智能见解诊断日志
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
         - name: 手动优化
           href: sql-database-performance-guidance.md
         - name: 操作 Query Store
@@ -229,7 +237,7 @@
           href: sql-database-elastic-jobs-service-installation.md
         - name: 创建作业 - 门户
           href: sql-database-elastic-jobs-create-and-manage.md
-        - name: 创建作业 - PowerShell
+        - name: 创建作业 - Azure PowerShell
           href: sql-database-elastic-jobs-powershell.md
         - name: 创建作业 - 示例应用
           href: sql-database-elastic-jobs-getting-started.md
@@ -255,12 +263,14 @@
           href: sql-database-dynamic-data-masking-get-started-portal.md
         - name: 配置多重身份验证
           href: sql-database-ssms-mfa-authentication-configure.md
+        - name: 通过 PowerShell 配置虚拟网络规则
+          href: sql-database-vnet-service-endpoint-rule-powershell.md
     - name: 业务连续性
       items:
         - name: 使用 BCP 加载数据
           href: sql-database-load-from-csv-with-bcp.md
         - name: 使用 ADF 加载数据
-          href: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+          href: ../data-factory/v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
         - name: 同步数据
           href: sql-database-get-started-sql-data-sync.md
     - name: 监视和优化
@@ -273,6 +283,8 @@
           href: sql-database-advisor-portal.md
         - name: 启用自动优化
           href: sql-database-automatic-tuning-enable.md
+        - name: 智能见解性能故障排除
+          href: sql-database-intelligent-insights-troubleshoot-performance.md
         - name: 使用 DMV 监视性能
           href: sql-database-monitoring-with-dmvs.md
         - name: 创建警报
@@ -335,7 +347,7 @@
           href: sql-database-connect-excel.md
 - name: 引用
   items:
-    - name: PowerShell
+    - name: Azure PowerShell
       href: '/powershell/module/azurerm.sql/#sql'
     - name: PowerShell（弹性数据库）
       href: '/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'

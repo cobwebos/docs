@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack 文档
+title: Azure Stack 操作员文档
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
-  title: Azure Stack 文档 - 教程和 API 参考
+  title: Azure Stack 操作员文档 - 教程和 API 参考
   description: 了解如何使用 Azure Stack 预览版从数据中心交付 Azure 服务。 通过一个概念认证环境了解和演示功能。
   services: azure-stack
   author: czeumault
@@ -12,12 +12,12 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/28/2017
+  ms.date: 09/23/2017
   ms.author: carolz
 abstract:
   description: Microsoft Azure Stack 是一种混合云平台，通过它可从数据中心提供 Azure 服务。 使用快速入门和教程，了解如何部署 Azure Stack 并提供服务。
 sections:
-  - title: 快速入门
+  - title: 5 分钟快速入门
     items:
       - type: paragraph
         text: 设置硬件并部署 Azure Stack：
@@ -33,12 +33,22 @@ sections:
       - type: paragraph
         text: 了解如何将服务添加到 Azure Stack 部署：
       - type: list
-        style: unordered
+        style: ordered
         items:
           - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">在 Azure Stack 上启用虚拟机</a>
           - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">在 Azure Stack 上启用 SQL 数据库</a>
           - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">在 Azure Stack 上启用 Web 应用</a>
-          - html: <a href="/azure/azure-stack/azure-stack-solution-pipeline">在 Azure 和 Azure Stack 上部署应用程序</a>
+  - title: 免费 Pluralsight 视频培训
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 了解 Azure Stack 的基本原理
+            href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
   - title: 引用
     items:
       - type: list
@@ -46,4 +56,4 @@ sections:
         className: cardsD
         items:
           - title: 命令行
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>

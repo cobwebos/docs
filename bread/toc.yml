@@ -70,7 +70,7 @@
     - name: 德国
       tocHref: /azure/germany/
       topicHref: /azure/germany/
-    - name: 门户
+    - name: Azure 门户
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
     - name: 资源管理器
@@ -79,6 +79,9 @@
     - name: Azure Stack
       tocHref: /azure/azure-stack/
       topicHref: /azure/azure-stack/
+    - name: Azure Stack 用户
+      tocHref: /azure/azure-stack/user/
+      topicHref: /azure/azure-stack/user/
     - name: 可支持性
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
@@ -207,6 +210,19 @@
     - name: 机器学习
       tocHref: /azure/machine-learning/
       topicHref: /azure/machine-learning/
+      items:
+        - name: 服务（预览版）
+          tocHref: /azure/machine-learning/preview
+          topicHref: /azure/machine-learning/preview/
+        - name: 工作室
+          tocHref: /azure/machine-learning/studio
+          topicHref: /azure/machine-learning/studio/
+        - name: Team Data Science Process
+          tocHref: /azure/machine-learning/team-data-science-process
+          topicHref: /azure/machine-learning/team-data-science-process/overview
+        - name: 数据科学虚拟机
+          tocHref: /azure/machine-learning/data-science-virtual-machine
+          topicHref: /azure/machine-learning/data-science-virtual-machine/virtual-machine-overview
     - name: 应用商店消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/

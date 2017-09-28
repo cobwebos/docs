@@ -1,0 +1,29 @@
+- name: Azure 成本管理文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是成本管理？
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 查看成本数据
+      href: quick-register-azure-sub.md
+    - name: 查看成本数据 - EA
+      href: quick-register-ea.md
+    - name: 查看成本数据 - CSP
+      href: quick-register-csp.md
+- name: 教程
+  items:
+    - name: 1 - 查看使用情况和成本
+      href: tutorial-review-usage.md
+    - name: 2 - 控制对数据的访问
+      href: tutorial-user-access.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+    - name: 区域可用性
+      href: 'https://azure-staging.microsoft.com/en-us/regions/services/'

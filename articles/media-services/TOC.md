@@ -11,16 +11,16 @@
 ### [使用门户管理 AAD 身份验证](media-services-portal-get-started-with-aad.md)
 ### [使用 .NET 访问 API](media-services-dotnet-get-started-with-aad.md)
 ### [使用 REST 访问 API](media-services-rest-connect-with-aad.md)
-### [使用 CLI 创建和配置 AAD 应用](media-services-cli-create-and-configure-aad-app.md)
-### [使用 PowerShell 创建和配置 AAD 应用](media-services-powershell-create-and-configure-aad-app.md)
+### [使用 Azure CLI 创建和配置 AAD 应用](media-services-cli-create-and-configure-aad-app.md)
+### [使用 Azure PowerShell 创建和配置 AAD 应用](media-services-powershell-create-and-configure-aad-app.md)
 
 ## 传送点播视频
-### [门户](media-services-portal-vod-get-started.md)
+### [Azure 门户](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
 ### [Java](media-services-java-how-to-use.md)
 ### [REST](media-services-rest-get-started.md)
 ## 执行实时传送视频流
-### [门户](media-services-portal-live-passthrough-get-started.md)
+### [Azure 门户](media-services-portal-live-passthrough-get-started.md)
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
 # 如何
@@ -29,7 +29,7 @@
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
 ### [流式处理终结点](media-services-streaming-endpoints-overview.md)
-#### [门户](media-services-portal-manage-streaming-endpoints.md)
+#### [Azure 门户](media-services-portal-manage-streaming-endpoints.md)
 #### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
 ### 存储
 #### [轮转存储访问密钥后更新媒体服务](media-services-roll-storage-access-keys.md)
@@ -38,7 +38,7 @@
 
 ## 上传内容
 ### 将文件上传到帐户中
-#### [门户](media-services-portal-upload-files.md)
+#### [Azure 门户](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST](media-services-rest-upload-files.md)
 ### [使用 Aspera 上传大型文件](media-services-upload-files-with-aspera.md)
@@ -52,7 +52,7 @@
 #### [Media Encoder Standard 格式和编解码器](media-services-media-encoder-standard-formats.md)
 #### [使用 MES 自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)
 #### 使用 Media Encoder Standard 进行编码
-##### [门户](media-services-portal-encode.md)
+##### [Azure 门户](media-services-portal-encode.md)
 ##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 ##### [REST](media-services-rest-encode-asset.md)
 #### [使用 MES 进行高级编码](media-services-advanced-encoding-with-mes.md)
@@ -109,7 +109,7 @@
 #### [门户](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 ### [使用云编码器实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)
-#### [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
+#### [Azure 门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [配置与云编码器一起使用的本地编码器](media-services-live-encoders-overview.md)
 #### [Elemental Live 编码器](media-services-configure-elemental-live-encoder.md)
@@ -120,7 +120,7 @@
 ### [碎片化的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
 
 ## [保护](media-services-content-protection-overview.md)
-### [在门户中配置内容保护](media-services-portal-protect-content.md)
+### [在 Azure 门户中配置内容保护](media-services-portal-protect-content.md)
 ### [为流配置 AES-128 明文密钥](media-services-protect-with-aes128.md)
 ### [将 REST 与存储加密配合使用来加密内容](media-services-rest-storage-encryption.md)
 ### [媒体服务 PlayReady 许可证模板概述](media-services-playready-license-template-overview.md)
@@ -140,14 +140,14 @@
 #### [.NET](media-services-dotnet-create-contentkey.md)
 #### [REST](media-services-rest-create-contentkey.md)
 ### 配置内容密钥授权策略
-#### [门户](media-services-portal-configure-content-key-auth-policy.md)
+#### [Azure 门户](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)
 #### [REST](media-services-rest-configure-content-key-auth-policy.md)
 ### [在 Safari 中播放 AES 加密的 HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
 ### [传递身份验证令牌](http://mingfeiy.com/how-client-pass-tokens-to-azure-media-services-key-delivery-services)
 
 ## [分析](media-services-analytics-overview.md)
-### [使用门户分析媒体](media-services-portal-analyze.md)
+### [使用 Azure 门户分析媒体](media-services-portal-analyze.md)
 ### [使用 Indexer 2 进行处理](media-services-process-content-with-indexer2.md)
 ### [使用 Indexer 进行处理](media-services-index-content.md)
 #### [任务预设](indexer-task-preset.md)
@@ -165,10 +165,10 @@
 
 ## 缩放
 ### [媒体处理](media-services-scale-media-processing-overview.md)
-#### [门户](media-services-portal-scale-media-processing.md)
+#### [Azure 门户](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
 ### 流式处理终结点
-#### [门户](media-services-portal-scale-streaming-endpoints.md)
+#### [Azure 门户](media-services-portal-scale-streaming-endpoints.md)
 
 ## [传送内容](media-services-deliver-content-overview.md)
 ### [动态打包](media-services-dynamic-packaging-overview.md)
@@ -177,7 +177,7 @@
 #### [使用 REST 创建筛选器](media-services-rest-dynamic-manifest.md)
 ### [媒体服务扩展中的 CDN 缓存策略](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### 发布内容
-#### [门户](media-services-portal-publish.md)
+#### [Azure 门户](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)
 #### [REST](media-services-rest-deliver-streaming-content.md)
 ### [通过下载传送](media-services-deliver-asset-download.md)
@@ -200,7 +200,7 @@
 ## 监视
 ### 检查作业进度
 #### [REST](media-services-rest-check-job-progress.md)
-#### [门户](media-services-portal-check-job-progress.md)
+#### [Azure 门户](media-services-portal-check-job-progress.md)
 #### [.NET](media-services-check-job-progress.md)
 ### [使用队列存储监视作业通知](media-services-dotnet-check-job-progress-with-queues.md)
 ### [使用 webhook 监视作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)
@@ -213,8 +213,8 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
-## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
-## [PowerShell（服务管理）](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell（资源管理器）](/powershell/module/azurerm.media)
+## [Azure PowerShell（服务管理）](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
 ## [REST](/rest/api/media/mediaservice)  
 

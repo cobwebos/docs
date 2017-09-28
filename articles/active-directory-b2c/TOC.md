@@ -67,12 +67,17 @@
 ### 集成 RESTful API
 #### [验证用户输入](active-directory-b2c-rest-api-validation-custom.md)
 #### [获取其他声明](active-directory-b2c-rest-api-step-custom.md)
-### 自定义登录
+### 用户流
 #### [配置用户输入](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [自定义属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [自定义 UI](active-directory-b2c-ui-customization-custom.md)
 #### [自定义令牌](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
-#### [自定义密码](active-directory-b2c-reference-password-complexity-custom.md)
+#### [密码复杂性](active-directory-b2c-reference-password-complexity-custom.md)
+
+#### [密码更改](active-directory-b2c-reference-password-change-custom.md)
+
+#### [启用“使我保持登录状态”](active-directory-b2c-reference-kmsi-custom.md)
+
 ### 故障排除
 #### [使用 Application Insights 收集日志](active-directory-b2c-troubleshoot-custom.md)
 ## 引用

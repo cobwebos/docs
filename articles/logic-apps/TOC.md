@@ -19,8 +19,19 @@
 ### [对消息进行批处理](logic-apps-batch-process-send-receive-messages.md)
 ### [编写逻辑应用定义](logic-apps-author-definitions.md)
 ### [调用、触发或嵌套逻辑应用](logic-apps-http-endpoint.md)
-### [为逻辑应用创建自定义 API](logic-apps-create-api-app.md)
-### [调用逻辑应用的自定义 API](logic-apps-custom-hosted-api.md)
+### 开发自定义连接器
+#### [自定义连接器概述](custom-connector-overview.md)
+#### [从 Web API 创建连接器](custom-connector-build-web-api-app-tutorial.md)
+#### [使用 Azure AD 保护连接器](custom-connector-azure-active-directory-authentication.md)
+#### [使用 Postman 描述 API](custom-connector-api-postman-collection.md)
+#### [为自定义连接器扩展 OpenAPI](custom-connector-openapi-extensions.md)
+#### [注册自定义连接器](logic-apps-custom-connector-register.md)
+#### [认证连接器](custom-connector-submit-certification.md)
+#### [自定义连接器常见问题解答](custom-connector-faq.md)
+### 开发自定义 API
+#### [为逻辑应用创建自定义 API](logic-apps-create-api-app.md)
+#### [保护对自定义 API 的调用](logic-apps-custom-api-authentication.md)
+#### [部署和调用自定义 API](logic-apps-custom-api-host-deploy-call.md)
 ### [处理错误和异常](logic-apps-exception-handling.md)
 ### [处理内容类型](logic-apps-content-type.md)
 ### [保护逻辑应用](logic-apps-securing-a-logic-app.md)
@@ -73,8 +84,7 @@
 #### [X12 跟踪架构](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [自定义跟踪架构](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## 示例、方案和演练
-### [概述](logic-apps-examples-and-scenarios.md)
+## [示例、方案和演练](logic-apps-examples-and-scenarios.md)
 ### [创建无服务器的社交仪表板](logic-apps-scenario-social-serverless.md)
 ### [使用 Azure Functions 调用逻辑应用](logic-apps-scenario-function-sb-trigger.md)
 ### [添加错误和异常处理](logic-apps-scenario-error-and-exception-handling.md)
@@ -98,7 +108,7 @@
 ## [工作流定义语言](logic-apps-workflow-definition-language.md)
 ## [工作流操作和触发器](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
-## [PowerShell](/powershell/module/azurerm.logicapp)
+## [Azure PowerShell](/powershell/module/azurerm.logicapp)
 ## 连接器：深入的主题
 ### [AS2](logic-apps-enterprise-integration-as2.md)
 ### [Azure Blob 存储](../connectors/connectors-create-api-azureblobstorage.md)

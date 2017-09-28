@@ -5,6 +5,8 @@
 ## [嵌套式流量管理器配置文件](traffic-manager-nested-profiles.md)
 ## [终结点类型](traffic-manager-endpoint-types.md)
 ## [终结点监视](traffic-manager-monitoring.md)
+## [实际用户测量值](traffic-manager-rum-overview.md)
+## [流量视图](traffic-manager-traffic-view-overview.md)
 ## [常见问题](traffic-manager-FAQs.md)
 
 # 入门
@@ -16,19 +18,22 @@
 ## [配置优先级路由方法](traffic-manager-configure-priority-routing-method.md)
 ## [配置加权路由方法](traffic-manager-configure-weighted-routing-method.md)
 ## [配置性能路由方法](traffic-manager-configure-performance-routing-method.md)
+## 将实际用户测量值发送到流量管理器 
+### [使用 Visual Studio SDK](traffic-manager-create-rum-visual-studio.md)
+### [使用网页](traffic-manager-create-rum-web-pages.md)
 ## [管理终结点](traffic-manager-manage-endpoints.md)
 ## [管理配置文件](traffic-manager-manage-profiles.md)
 ## [验证流量管理器设置](traffic-manager-testing-settings.md)
 ## [结合使用负载均衡服务](traffic-manager-load-balancing-azure.md)
 ## [测量流量管理器性能](traffic-manager-performance-considerations.md)
-## [使用 PowerShell 管理流量管理器](traffic-manager-powershell-arm.md)
+## [使用 Azure PowerShell 管理流量管理器](traffic-manager-powershell-arm.md)
 ## [将 Internet 域指向流量管理器](traffic-manager-point-internet-domain.md)
 ## 故障排除
 ### [排查 Azure 流量管理器中出现降级状态的问题](traffic-manager-troubleshooting-degraded.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
-## [PowerShell](/powershell/module/azurerm.trafficmanager)
+## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)

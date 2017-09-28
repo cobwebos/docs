@@ -19,7 +19,7 @@
 ####[动态站点加速](cdn-dynamic-site-acceleration.md)
  
 ## 管理
-### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
+### [使用 Azure PowerShell 进行管理](cdn-manage-powershell.md)
 ### 配置生存时间
 #### [Web 应用/云服务、ASP.NET 或 IIS 内容](cdn-manage-expiration-of-cloud-service-content.md)
 #### [存储 Blob 服务内容](cdn-manage-expiration-of-blob-content.md)
@@ -53,7 +53,7 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
-## [PowerShell](/powershell/module/azurerm.cdn)
+## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)

@@ -93,14 +93,20 @@
           href: local-emulator.md
         - name: 导出证书
           href: local-emulator-export-ssl-certificates.md
+    - name: 6 - 与 Functions 集成
+      items:
+        - name: HTTP 触发器
+          href: tutorial-functions-http-trigger.md
 - name: 示例
   items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: cli-samples.md
-    - name: Azure PowerShell
+    - name: PowerShell
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 无服务器的数据库
+      href: serverless-computing-database.md
     - name: 全局分发
       href: distribute-data-globally.md
     - name: 分区
@@ -268,6 +274,8 @@
           href: geospatial.md
         - name: 索引
           href: indexing-policies.md
+        - name: Visual Studio 中的连接服务
+          href: connected-service.md
     - name: 管理
       items:
         - name: 以经济高效的方式读取和写入
@@ -282,9 +290,15 @@
           href: set-throughput.md
         - name: 监视 SLA
           href: monitor-accounts.md
+        - name: 使用指标
+          href: use-metrics.md
+        - name: 诊断日志记录
+          href: logging.md
         - name: 管理密钥和一致性
           href: manage-account.md
-        - name: “安全”
+        - name: Azure 存储资源管理器
+          href: tutorial-documentdb-and-mongodb-in-storage-explorer.md
+        - name: 安全
           items:
             - name: 静态加密
               href: database-encryption-at-rest.md
@@ -309,7 +323,7 @@
         - name: 与 Azure 搜索集成
           href: ../search/search-howto-index-documentdb.md
         - name: 使用 Azure 数据工厂移动数据
-          href: ../data-factory/data-factory-azure-documentdb-connector.md
+          href: ../data-factory/connector-azure-cosmos-db.md
         - name: 使用 Azure 流分析分析实时数据
           href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
         - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
