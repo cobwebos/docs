@@ -43,21 +43,23 @@ Packer 使用服务主体向 Azure 进行身份验证。 Azure 服务主体是�
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) 创建服务主体并输出 Packer 需要的凭据：
 
 ```azurecli
-az ad sp create-for-rbac --query [appId,password,tenant]
+az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
 前述命令的输出示例如下所示：
 
 ```azurecli
-"f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
-"0e760437-bf34-4aad-9f8d-870be799c55d",
-"72f988bf-86f1-41af-91ab-2d7cd011db47"
+{
+    "client_id": "f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
+    "client_secret": "0e760437-bf34-4aad-9f8d-870be799c55d",
+    "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
 ```
 
 若要向 Azure 进行身份验证，还需使用 [az account show](/cli/azure/account#show) 获取 Azure 订阅 ID：
 
 ```azurecli
-az account show --query [id] --output tsv
+az account show --query "{ subscription_id: id }"
 ```
 
 在下一步中使用这两个命令的输出。
