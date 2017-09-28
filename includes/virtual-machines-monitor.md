@@ -30,7 +30,7 @@
 
 ## <a name="logs"></a>日志
 
-Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志[](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。 该日志包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 可以在 Azure 门户中单击“活动日志”查看 VM 的日志。
+[Azure 活动日志](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) 是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 该日志包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 可以在 Azure 门户中单击“活动日志”查看 VM 的日志。
 
 可以对活动日志执行的部分操作包括：
 
