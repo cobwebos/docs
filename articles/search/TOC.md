@@ -38,7 +38,7 @@
 ## 管理
 ### 管理 Azure 搜索
 #### [Azure 门户](search-manage.md)
-#### [PowerShell](search-manage-powershell.md)
+#### [Azure PowerShell](search-manage-powershell.md)
 ### [监视使用情况和统计信息](search-monitor-usage.md)
 ### [搜索流量分析](search-traffic-analytics.md)
 ### [性能和优化](search-performance-optimization.md)

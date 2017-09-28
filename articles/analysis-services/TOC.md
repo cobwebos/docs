@@ -8,7 +8,7 @@
 
 # 入门
 ## [在 Azure 门户中创建服务器](analysis-services-create-server.md)
-## [使用 PowerShell 创建服务器](analysis-services-create-powershell.md)
+## [使用 Azure PowerShell 创建服务器](analysis-services-create-powershell.md)
 ## [从 Visual Studio 部署模型](analysis-services-deploy.md)
 ## [在 Azure 门户（预览）中创建模型](analysis-services-create-model-portal.md)
 
@@ -43,7 +43,7 @@
 ### [补充课程 - 不规则层次结构](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # 引用
-## [PowerShell](analysis-services-powershell.md)
+## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)

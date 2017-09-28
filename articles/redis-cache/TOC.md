@@ -24,7 +24,7 @@
 ###[使用虚拟网络保护缓存](cache-how-to-premium-vnet.md)
 ###[使用群集分布缓存](cache-how-to-premium-clustering.md)
 ## 自动化
-###[使用 Powershell 进行部署和管理](cache-howto-manage-redis-cache-powershell.md)
+###[使用 Azure Powershell 进行部署和管理](cache-howto-manage-redis-cache-powershell.md)
 ###[使用 Azure CLI 进行部署和管理](cli-samples.md)
 ###[预配 Redis 缓存](cache-redis-cache-arm-provision.md)
 ###[使用 Redis 缓存预配 Web 应用](cache-web-app-arm-with-redis-cache-provision.md)
@@ -32,13 +32,13 @@
 ###[会话状态提供程序](cache-aspnet-session-state-provider.md)
 ###[输出缓存提供程序](cache-aspnet-output-cache-provider.md)
 ## 管理
-###[在门户中配置](cache-configure.md)
+###[在 Azure 门户中配置](cache-configure.md)
 ###[配置异地复制](cache-how-to-geo-replication.md)
 ###[导入/导出数据](cache-how-to-import-export-data.md)
 ###[重新启动](cache-administration.md#reboot)
 ###[计划更新](cache-administration.md#schedule-updates)
 ## 监视和故障排除
-###[在门户中监视](cache-how-to-monitor.md)
+###[在 Azure 门户中监视](cache-how-to-monitor.md)
 ###[排查缓存问题](cache-how-to-troubleshoot.md)
 ###[设置异常警报](cache-how-to-monitor.md#operations-and-alerts)
 ## 缩放
@@ -49,8 +49,8 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=redis-cache)
-## [PowerShell](/powershell/module/azurerm.rediscache)
-## [Azure CLI 2.0 预览版](/cli/azure/redis)
+## [Azure PowerShell](/powershell/module/azurerm.rediscache)
+## [Azure CLI 预览版](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis 客户端](http://redis.io/clients)

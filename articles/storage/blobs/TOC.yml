@@ -4,7 +4,105 @@
       href: storage-blobs-introduction.md
     - name: 选择 Blob、文件或数据磁盘
       href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-- name: 入门
+- name: 快速入门
+  items:
+    - name: 创建存储帐户 - PowerShell
+      href: ../common/storage-quickstart-create-storage-account-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 创建存储帐户 - CLI
+      href: ../common/storage-quickstart-create-storage-account-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 使用 Blob - PowerShell
+      href: storage-quickstart-blobs-powershell.md
+    - name: 使用 Blob - CLI
+      href: storage-quickstart-blobs-cli.md
+    - name: 使用 Blob - .NET
+      href: storage-quickstart-blobs-dotnet.md
+- name: 教程
+  items:
+    - name: 上传和处理图像
+      items:
+        - name: 1 - 上传和检索云中的图像数据
+          href: storage-upload-process-images.md
+        - name: 2 - 触发 Azure Functions 来处理 Blob
+          href: ../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 3 - 保护应用程序数据
+          href: storage-secure-access-application.md
+        - name: 4 - 监视存储和排查存储问题
+          href: storage-monitor-troubleshoot-storage-application.md
+- name: 示例
+  items:
+    - name: Azure PowerShell
+      href: storage-samples-blobs-powershell.md
+    - name: Azure CLI
+      href: storage-samples-blobs-cli.md
+- name: 概念
+  items:
+    - name: 规划和设计
+      items:
+        - name: 复制
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 热层、冷层和存档层
+          href: storage-blob-storage-tiers.md
+        - name: 对事件做出响应
+          href: storage-blob-event-overview.md
+        - name: 可伸缩性和性能目标
+          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 性能和可伸缩性清单
+          href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 并发
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 灾难恢复指南
+          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 向/从存储移动数据
+          href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 高级存储
+          items:
+            - name: 用于 VM 磁盘的高性能高级存储
+              href: ../common/storage-premium-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 使用 Azure Site Recovery 迁移到高级存储
+              href: ../common/storage-migrate-to-premium-storage-using-azure-site-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 高性能设计
+              href: ../common/storage-premium-storage-performance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 标准存储
+          items:
+            - name: 高性价比标准存储以及非托管和托管 VM 磁盘
+              href: ../common/storage-standard-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 安全
+      items:
+        - name: 安全指南
+          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 配置防火墙和虚拟网络
+          href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 静态数据加密
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 使用客户密钥进行静态加密
+          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 需要安全传输
+          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 共享密钥身份验证
+          href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
+        - name: 共享访问签名 (SAS)
+          href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 匿名访问 Blob
+          href: storage-manage-access-to-resources.md
+        - name: 使用 Azure CDN 通过 HTTPs 访问包含自定义域的 Blob
+          href: storage-https-custom-domain-cdn.md
+    - name: 监视和故障排除
+      items:
+        - name: 故障排除教程
+          href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 监视、诊断和故障排除
+          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 排查在删除存储帐户时出现的错误
+          href: ../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 指标和日志记录
+          items:
+            - name: Azure Monitor 中的 Azure 存储指标
+              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 存储分析
+              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 启用和查看指标
+              href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- name: 如何
   items:
     - name: 创建存储帐户
       href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -32,60 +130,12 @@
           href: storage-how-to-use-blobs-powershell.md
         - name: Azure CLI 2.0
           href: storage-how-to-use-blobs-cli.md
-- name: 如何
-  items:
-    - name: 规划和设计
-      items:
-        - name: 复制
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 热层、冷层和存档层
-          href: storage-blob-storage-tiers.md
-        - name: 使用 RA-GRS 设计 HA 应用
-          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 对事件做出响应
-          href: storage-blob-event-overview.md
-        - name: 可伸缩性和性能目标
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 性能和可伸缩性清单
-          href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 并发
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 灾难恢复指南
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 高级存储
-          items:
-            - name: 用于 VM 磁盘的高性能高级存储
-              href: ../common/storage-premium-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 使用 Azure Site Recovery 迁移到高级存储
-              href: ../common/storage-migrate-to-premium-storage-using-azure-site-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 高性能设计
-              href: ../common/storage-premium-storage-performance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 标准存储
-          items:
-            - name: 高性价比标准存储以及非托管和托管 VM 磁盘
-              href: ../common/storage-standard-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 开发
-      items:
-        - name: 示例
+        - name: GitHub 代码示例
           items:
             - name: .NET
               href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Java
               href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 配置连接字符串
-          href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 使用 Azure Key Vault 加密和解密 Blob
-          href: storage-encrypt-decrypt-blobs-key-vault.md
-        - name: 设置和检索属性与元数据
-          href: storage-properties-metadata.md
-        - name: 使用存储模拟器
-          href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 将事件路由到自定义终结点
-          href: storage-blob-event-quickstart.md
-        - name: 自定义域
-          href: storage-custom-domain-name.md
-        - name: 使用 Azure 搜索来搜索 Blob 存储
-          href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 管理
       items:
         - name: PowerShell
@@ -98,50 +148,32 @@
           href: ../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure 自动化
           href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 安全
+    - name: 客户端加密
       items:
-        - name: 安全指南
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 客户端加密
-          items:
-            - name: .NET
-              href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Java
-              href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Python
-              href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 静态数据加密
-          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 使用客户密钥进行静态加密
-          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 共享密钥身份验证
-          href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
-        - name: 共享访问签名 (SAS)
-          href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 需要安全传输
-          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 匿名访问 Blob
-          href: storage-manage-access-to-resources.md
-        - name: 使用 Azure CDN 通过 HTTPs 访问包含自定义域的 Blob
-          href: storage-https-custom-domain-cdn.md
-    - name: 监视和故障排除
-      items:
-        - name: 故障排除教程
-          href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 监视、诊断和故障排除
-          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 排查在删除存储帐户时出现的错误
-          href: ../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 指标和日志记录
-          items:
-            - name: 存储分析
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 启用和查看指标
-              href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: .NET
+          href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Java
+          href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Python
+          href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 配置连接字符串
+      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 使用 RA-GRS 设计 HA 应用
+      href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 使用 Azure Key Vault 加密和解密 Blob
+      href: storage-encrypt-decrypt-blobs-key-vault.md
+    - name: 设置和检索属性与元数据
+      href: storage-properties-metadata.md
+    - name: 使用存储模拟器
+      href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 将事件路由到自定义终结点
+      href: storage-blob-event-quickstart.md
+    - name: 自定义域
+      href: storage-custom-domain-name.md
+    - name: 使用 Azure 搜索来搜索 Blob 存储
+      href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 传输数据
       items:
-        - name: 向/从存储移动数据
-          href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: AzCopy on Windows
           href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Linux 上的 AzCopy
@@ -225,8 +257,6 @@
               href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 导入/导出作业的诊断和错误恢复
               href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 示例
-      href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=blob'
 - name: 引用
   items:
     - name: PowerShell

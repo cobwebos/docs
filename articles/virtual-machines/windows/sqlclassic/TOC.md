@@ -30,12 +30,12 @@
 ## 商业智能
 ### [Azure VM 中的 SQL Server 商业智能](virtual-machines-windows-classic-ps-sql-bi.md)
 ### [在 Azure 托管的网站中使用 ReportViewer](virtual-machines-windows-classic-sql-server-reportviewer.md)
-### [使用 PowerShell 创建包含报表服务器的 Azure VM](virtual-machines-windows-classic-ps-sql-report.md)
+### [使用 Azure PowerShell 创建包含报表服务器的 Azure VM](virtual-machines-windows-classic-ps-sql-report.md)
 ## [性能最佳实践](../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 ## [应用程序模式](../sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 
 # 引用
-## [PowerShell 经典](/powershell/azure/overview?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)
 ## [SQL Server 驱动程序](https://docs.microsoft.com/sql/connect/sql-server-drivers)

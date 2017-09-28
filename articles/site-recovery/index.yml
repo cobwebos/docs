@@ -1,0 +1,68 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Site Recovery 文档
+metadata:
+  title: Azure Site Recovery 文档 - 教程和 API 参考 | Microsoft 文档
+  meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
+  services: site-recovery
+  author: czeumault
+  manager: carolz
+  ms.service: site-recovery
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/23/2017
+  ms.author: carolz
+abstract:
+  description: Azure Site Recovery 可以协调和管理 Azure VM、本地 VM 与物理服务器的灾难恢复。 使用快速入门和教程了解如何复制、故障转移与故障回复。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 为 Azure VM 快速设置灾难恢复
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/site-recovery/media/index/portal.svg
+            text: Azure 门户
+            href: /azure/site-recovery/azure-to-azure-quickstart
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何为 VM 和物理服务器设置灾难恢复。
+      - type: text
+        html: <h3>Azure 到 Azure</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="azure-to-azure-tutorial-enable-replication">设置灾难恢复</a>
+          - html: <a href="azure-to-azure-tutorial-dr-drill">运行灾难恢复演练</a>
+          - html: <a href="azure-to-azure-tutorial-failover-failback">运行故障转移和故障回复</a>
+      - type: text
+        html: <h3>VMware</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-azure">准备 Azure</a>
+          - html: <a href="tutorial-prepare-on-premises-vmware">准备本地 VMware</a>
+          - html: <a href="tutorial-vmware-to-azure">设置灾难恢复</a>
+          - html: <a href="tutorial-dr-drill-azure">运行灾难恢复演练</a>
+          - html: <a href="tutorial-vmware-to-azure-failover-failback">运行故障转移和故障回复</a>
+      - type: text
+        html: <h3>迁移到 Azure</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-azure">准备 Azure</a>
+          - html: <a href="tutorial-migrate-on-premises-to-azure">将本地计算机</a>或 <a href="tutorial-migrate-aws-to-azure">AWS 实例迁移到 Azure</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/site-recovery/">REST API 参考</a></p>

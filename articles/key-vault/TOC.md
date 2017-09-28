@@ -25,9 +25,9 @@
 ### [在防火墙后面访问](key-vault-access-behind-firewall.md)
 ### [可用性和冗余](key-vault-disaster-recovery-guidance.md)
 ### [更改租户 ID](key-vault-subscription-move-fix.md)
-### [使用 CLI 2.0 进行创建和管理](key-vault-manage-with-cli2.md)
+### [使用 Azure CLI 进行创建和管理](key-vault-manage-with-cli2.md)
 ### [如何将 Key Vault 软删除与 CLI 配合使用](key-vault-soft-delete-cli.md)
-### [如何将 Key Vault 软删除与 PowerShell 配合使用](key-vault-soft-delete-powershell.md)
+### [如何将 Key Vault 软删除与 Azure PowerShell 配合使用](key-vault-soft-delete-powershell.md)
 ### [使用组授予访问权限](key-vault-group-permissions-for-apps.md)
 ### [保护密钥保管库](key-vault-secure-your-key-vault.md)
 
@@ -36,8 +36,8 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
-## [PowerShell](/powershell/module/azurerm.keyvault)
-## [Azure CLI 2](/cli/azure/keyvault)
+## [Azure PowerShell](/powershell/module/azurerm.keyvault)
+## [Azure CLI](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
 ## [Java](/java/api/com.microsoft.azure.keyvault)
 ## Node.js

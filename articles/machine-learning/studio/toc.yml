@@ -1,0 +1,239 @@
+- name: 机器学习工作室文档
+  href: index.md
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是机器学习？
+      href: what-is-machine-learning.md
+    - name: 机器学习工作室
+      href: what-is-ml-studio.md
+    - name: 机器学习工作室的功能
+      href: studio-overview-diagram.md
+    - name: 机器学习工作室基础知识（信息图）
+      href: basics-infographic-with-algorithm-examples.md
+    - name: 常见问题
+      href: faq.md
+    - name: 新增功能
+      href: whats-new.md
+- name: 入门
+  items:
+    - name: 创建第一个试验
+      href: create-experiment.md
+    - name: 示例演练
+      items:
+        - name: 创建预测解决方案
+          href: walkthrough-develop-predictive-solution.md
+        - name: 1 - 创建工作区
+          href: walkthrough-1-create-ml-workspace.md
+        - name: 2 - 上传数据
+          href: walkthrough-2-upload-data.md
+        - name: 3 - 创建试验
+          href: walkthrough-3-create-new-experiment.md
+        - name: 4 - 训练和评估
+          href: walkthrough-4-train-and-evaluate-models.md
+        - name: 5 - 部署 Web 服务
+          href: walkthrough-5-publish-web-service.md
+        - name: 6 - 访问 Web 服务
+          href: walkthrough-6-access-web-service.md
+    - name: 适合初学者的数据科学
+      items:
+        - name: 1 - 五大问题
+          href: data-science-for-beginners-the-5-questions-data-science-answers.md
+        - name: 2 - 数据是否就绪？
+          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
+        - name: 3 - 询问相关问题
+          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
+        - name: 4 - 预测答案
+          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
+        - name: 5 - 复制他人的工作
+          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: R 快速入门
+      href: r-quickstart.md
+- name: 如何
+  items:
+    - name: 设置工具和实用程序
+      items:
+        - name: 管理工作区
+          items:
+            - name: 创建
+              href: create-workspace.md
+            - name: 管理
+              href: manage-workspace.md
+            - name: 故障排除
+              href: troubleshooting-creating-ml-workspace.md
+            - name: 使用 ARM 进行部署
+              href: deploy-with-resource-manager-template.md
+            - name: 在另一区域中创建
+              href: multi-geo.md
+    - name: 获取和了解数据
+      items:
+        - name: 导入培训数据
+          items:
+            - name: 概述
+              href: import-data.md
+            - name: 从本地文件
+              href: import-data-from-local-file.md
+            - name: 从联机源
+              href: import-data-from-online-sources.md
+            - name: 从试验
+              href: import-data-from-an-experiment.md
+            - name: 使用本地 SQL
+              href: use-data-from-an-on-premises-sql-server.md
+    - name: 开发模型
+      items:
+        - name: 创建模型并定型
+          items:
+            - name: 试验生命周期管理
+              href: version-control.md
+            - name: 管理试验迭代
+              href: manage-experiment-iterations.md
+            - name: 使用 PowerShell 创建模型
+              href: create-models-and-endpoints-with-powershell.md
+            - name: 选择算法
+              items:
+                - name: 选择算法
+                  href: algorithm-choice.md
+                - name: 算法备忘单
+                  href: algorithm-cheat-sheet.md
+                - name: 使用线性回归
+                  href: linear-regression-in-azure.md
+                - name: 使用文本分析
+                  href: text-analytics-module-tutorial.md
+            - name: 评估和解释结果
+              items:
+                - name: 评估性能
+                  href: evaluate-model-performance.md
+                - name: 优化参数
+                  href: algorithm-parameters-optimize.md
+                - name: 解释结果
+                  href: interpret-model-results.md
+                - name: 调试
+                  href: debug-models.md
+            - name: 使用 R 和 Python
+              items:
+                - name: 执行 R 脚本
+                  href: extend-your-experiment-with-r.md
+                - name: 创作自定义 R 模块
+                  href: custom-r-modules.md
+                - name: 执行 Python 脚本
+                  href: execute-python-scripts.md
+    - name: 使模型可操作化
+      items:
+        - name: 概述
+          href: deploy-consume-web-service-guide.md
+        - name: 部署模型
+          items:
+            - name: 部署 Web 服务
+              href: publish-a-machine-learning-web-service.md
+            - name: 工作原理
+              href: model-progression-experiment-to-web-service.md
+            - name: 准备部署
+              href: convert-training-experiment-to-scoring-experiment.md
+            - name: 使用外部数据
+              href: web-services-that-use-import-export-modules.md
+            - name: 多个区域部署
+              href: how-to-deploy-to-multiple-regions.md
+            - name: 使用 Web 服务参数
+              href: web-service-parameters.md
+            - name: 启用日志记录
+              href: web-services-logging.md
+        - name: 管理 Web 服务
+          items:
+            - name: 使用 Web 服务门户
+              href: manage-new-webservice.md
+            - name: 使用 API 进行管理
+              href: manage-web-service-endpoints-using-api-management.md
+            - name: 创建终结点
+              href: create-endpoint.md
+            - name: 扩展
+              href: scaling-webservice.md
+        - name: 重新定型
+          items:
+            - name: 概述
+              href: retrain-machine-learning-model.md
+            - name: 以编程方式重新训练
+              href: retrain-models-programmatically.md
+            - name: 重新训练经典 Web 服务
+              href: retrain-a-classic-web-service.md
+            - name: 通过 PowerShell 重新训练
+              href: retrain-new-web-service-using-powershell.md
+            - name: 重新训练现有 Web 服务
+              href: retrain-existing-resource-manager-based-web-service.md
+            - name: 故障排除
+              href: troubleshooting-retraining-models.md
+        - name: 使用模型
+          items:
+            - name: 概述
+              href: consume-web-services.md
+            - name: 使用 Excel
+              href: consuming-from-excel.md
+            - name: 使用 Excel 外接程序
+              href: excel-add-in-for-web-services.md
+            - name: 使用 Web 应用模板
+              href: consume-web-service-with-web-app-template.md
+            - name: 使用 Batch 池
+              href: dedicated-capacity-for-bes-jobs.md
+    - name: 示例
+      items:
+        - name: 示例试验
+          href: sample-experiments.md
+        - name: 示例数据集
+          href: use-sample-datasets.md
+        - name: 客户流失示例
+          href: azure-ml-customer-churn-scenario.md
+- name: 引用
+  items:
+    - name: Azure PowerShell 模块（新版）
+      href: /powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning
+    - name: Azure PowerShell 模块（经典）
+      href: powershell-module.md
+    - name: 算法和模块参考
+      href: 'https://msdn.microsoft.com/library/azure/dn905974.aspx'
+    - name: REST 管理 API
+      href: /rest/api/machinelearning
+    - name: Web 服务错误代码
+      href: web-service-error-codes.md
+- name: 相关内容
+  items:
+    - name: Cortana Intelligence 库
+      items:
+        - name: 概述
+          href: gallery-how-to-use-contribute-publish.md
+        - name: 行业
+          href: gallery-industries.md
+        - name: 解决方案
+          href: gallery-solutions.md
+        - name: 试验
+          href: gallery-experiments.md
+        - name: Jupyter 笔记本
+          href: gallery-jupyter-notebooks.md
+        - name: 竞赛
+          href: gallery-competitions.md
+        - name: 竞赛常见问题解答
+          href: competition-faq.md
+        - name: 教程
+          href: gallery-tutorials.md
+        - name: 集合
+          href: gallery-collections.md
+        - name: 自定义模块
+          href: gallery-custom-modules.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 'Net# 神经网络语言'
+      href: azure-ml-netsharp-reference-guide.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=machine-learning'
+    - name: 博客
+      href: 'http://blogs.technet.com/b/machinelearning/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: 通过实时聊天获得帮助
+      href: live-chat.md

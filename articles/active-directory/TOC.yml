@@ -1,6 +1,6 @@
 - name: Azure 中的资源访问权限
   href: active-directory-understanding-resource-access.md
-- name: 基于角色的访问控制
+- name: 基于角色的访问控制 (RBAC)
   href: role-based-access-control-what-is.md
   items:
     - name: 管理访问权限分配
@@ -31,10 +31,14 @@
       href: role-based-access-control-troubleshooting.md
     - name: 资源提供程序操作
       href: role-based-access-control-resource-provider-operations.md
+- name: RBAC 的 Privileged Identity Management (PIM)
+  href: pim-azure-resource.md
+- name: 用于 Azure 管理的条件访问
+  href: conditional-access-azure-management.md
 - name: 托管服务标识
   href: msi-overview.md
   items:
-    - name: 为 Windows VM 配置 MSI
+    - name: 为 Azure VM 配置 MSI
       items:
         - name: 使用 Azure 门户
           href: msi-qs-configure-portal-windows-vm.md

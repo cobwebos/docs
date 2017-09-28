@@ -5,18 +5,18 @@
 ## [可以使用 Azure Data Lake Store 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
 
 # 入门
-## [使用门户](data-lake-store-get-started-portal.md)
-## [使用 PowerShell](data-lake-store-get-started-powershell.md)
+## [使用 Azure 门户](data-lake-store-get-started-portal.md)
+## [使用 Azure PowerShell](data-lake-store-get-started-powershell.md)
 ## [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
 ## [使用 Java SDK](data-lake-store-get-started-java-sdk.md)
 ## [使用 REST API](data-lake-store-get-started-rest-api.md)
-## [使用 Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+## [使用 Azure CLI](data-lake-store-get-started-cli-2.0.md)
 ## [使用 Node.js](data-lake-store-manage-use-nodejs.md)
 ## [使用 Python](data-lake-store-get-started-python.md)
 
 # 如何
 ## 复制数据
-### [使用 Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)
+### [使用 Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)
 ### [使用 AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
@@ -40,14 +40,14 @@
 
 ## 与 Azure 服务集成
 ### 与 HDInsight 配合使用
-#### [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
-#### [使用 PowerShell（默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-#### [使用 PowerShell（其他存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
+#### [使用 Azure 门户](data-lake-store-hdinsight-hadoop-use-portal.md)
+#### [使用 Azure PowerShell（默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+#### [使用 Azure PowerShell（附加存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
 #### [使用 Azure 模板](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [从 Azure VNET 中的 VM 访问](data-lake-store-connectivity-from-vnets.md)
 ### [与 Data Lake Analytics 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [与 Azure 事件中心配合使用](data-lake-store-archive-eventhub-capture.md)
-### [与数据工厂配合使用](../data-factory/data-factory-azure-datalake-connector.md)
+### [与数据工厂配合使用](../data-factory/connector-azure-data-lake-store.md)
 ### [与流分析配合使用](data-lake-store-stream-analytics.md)
 ### [与 Power BI 配合使用](data-lake-store-power-bi.md)
 ### [与数据目录配合使用](data-lake-store-with-data-catalog.md)
@@ -61,14 +61,14 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)
-## [PowerShell](/powershell/module/azurerm.datalakestore)
+## [Azure PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
 ## [Python（帐户管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python（文件系统管理）](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
-## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)

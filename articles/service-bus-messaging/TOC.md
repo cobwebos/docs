@@ -60,13 +60,14 @@
 #### [创建命名空间和队列的授权规则](service-bus-resource-manager-namespace-auth-rule.md)
 #### [创建包含主题、订阅和规则的命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 #### 
-### [使用 PowerShell 预配实体](service-bus-manage-with-ps.md)
+### [使用 Azure PowerShell 预配实体](service-bus-manage-with-ps.md)
 
 # 引用
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus（.NET 标准）](/dotnet/api/microsoft.azure.servicebus)
-## [PowerShell](/powershell/module/azurerm.servicebus)
+## [Java](/java/api/overview/azure/servicebus)
+## [Azure PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST](/rest/api/servicebus)
 ## [异常](service-bus-messaging-exceptions.md)
 ## [配额](service-bus-quotas.md)

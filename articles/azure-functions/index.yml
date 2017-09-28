@@ -15,7 +15,7 @@ metadata:
   ms.date: 01-23-2017
   ms.author: carolz
 abstract:
-  description: Azure Functions 是一个无服务器计算服务，可让你按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。 参考我们的快速入门、教程和示例了解如何使用 Azure Functions。
+  description: Azure Functions 是一个无服务器计算服务，使用它可以按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。 参考我们的快速入门、教程和示例了解如何使用 Azure Functions。
   aside:
     image:
       alt: null
@@ -46,6 +46,10 @@ sections:
             text: GitHub Webhook
             href: /azure/azure-functions/functions-create-github-webhook-triggered-function
           - image:
+              src: media/index/cosmosdb.svg
+            text: Azure Cosmos DB
+            href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
+          - image:
               src: media/index/blob.svg
             text: Blob
             href: /azure/azure-functions/functions-create-storage-blob-triggered-function
@@ -59,7 +63,7 @@ sections:
         style: icon48
         items:
           - image:
-              src: /media/logos/logo_visual-studio.svg
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
             text: Visual Studio
             href: /azure/azure-functions/functions-create-your-first-function-visual-studio
   - title: 分步教程
@@ -71,6 +75,8 @@ sections:
         items:
           - html: <a href="/azure/azure-functions/functions-twitter-email">创建与 Azure 逻辑应用集成的函数</a>
           - html: <a href="/azure/azure-functions/functions-create-serverless-api">使用 Azure Functions 创建无服务器 API</a>
+          - html: <a href="/azure/azure-functions/functions-openapi-definition">为函数创建 OpenAPI 定义</a>
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">使用事件网格自动调整已上传图像的大小</a>
   - title: 示例
     items:
       - type: list
@@ -89,4 +95,4 @@ sections:
           - title: REST
             html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
           - title: 绑定
-            html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob 存储</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">事件中心</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">外部文件</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP 和 webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">移动应用</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">通知中心</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">队列存储</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">服务总线</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">表存储</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">计时器</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 输出绑定</a></p>
+            html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob 存储</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">事件中心</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">外部文件</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP 和 webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">移动应用</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">通知中心</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">队列存储</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">服务总线</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">表存储</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">计时器</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 输出绑定</a></p>

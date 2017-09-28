@@ -11,7 +11,7 @@
       href: quick-create-cli.md
     - name: 创建 VM - 门户
       href: quick-create-portal.md
-    - name: 创建 VM - PowerShell
+    - name: 创建 VM - Azure PowerShell
       href: quick-create-powershell.md
 - name: 教程
   items:
@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 - 备份虚拟机
       href: tutorial-backup-vms.md
-    - name: 10 - 监视虚拟机
+    - name: 10 - 监视和更新 VM
       href: tutorial-monitoring.md
     - name: 11 - 管理 VM 安全性
       href: tutorial-azure-security.md
@@ -53,7 +53,7 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: PowerShell
+    - name: Azure PowerShell
       href: powershell-samples.md
 - name: 概念
   items:
@@ -187,6 +187,8 @@
           href: manage-availability.md
         - name: 纵向缩放
           href: vertical-scaling-automation.md
+        - name: 在可用性区域中创建 VM
+          href: create-cli-availability-zone.md
     - name: 使用自动化工具
       items:
         - name: Ansible
