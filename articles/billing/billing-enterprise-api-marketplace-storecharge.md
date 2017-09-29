@@ -3,7 +3,7 @@ title: "Azure 计费企业 API - Marketplace 费用 | Microsoft Docs"
 description: "了解使企业 Azure 客户能够以编程方式提取消耗数据的报告 API。"
 services: 
 documentationcenter: 
-author: aedwin
+author: cwatson-cat
 manager: aedwin
 editor: 
 tags: billing
