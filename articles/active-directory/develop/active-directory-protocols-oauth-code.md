@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 916652f2d6336da625be91431c3771a730204a73
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # 使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序
@@ -207,7 +207,7 @@ grant_type=authorization_code
 | 声明类型 | 说明 |
 | --- | --- |
 | aud |令牌的受众。 如果向客户端应用程序颁发令牌，则受众是客户端的 `client_id`。 |
-| exp |过期日期。 令牌的过期时间。 对于要生效的令牌，当前日期/时间必须小于或等于 `exp` 值。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌颁发时间的秒数。 |
+| exp |过期日期。 令牌的过期时间。 对于要生效的令牌，当前日期/时间必须小于或等于 `exp` 值。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。|
 | family_name |用户的姓氏。 应用程序可以显示此值。 |
 | given_name |用户的名字。 应用程序可以显示此值。 |
 | iat |颁发时间。 颁发 JWT 的时间。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌颁发时间的秒数。 |

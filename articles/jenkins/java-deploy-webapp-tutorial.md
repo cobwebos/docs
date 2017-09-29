@@ -1,6 +1,6 @@
 ---
 title: "使用 Jenkins 将 Web 应用部署到 Azure | Microsoft Docs"
-description: "使用 Jenkins 和 Docker 设置 Java Web 应用从 GitHub 到 Azure App Service 的持续集成。"
+description: "使用 Jenkins 和 Docker 设置 Java Web 应用从 GitHub 到 Azure 应用服务的持续集成。"
 author: rloutlaw
 manager: douge
 ms.service: jenkins
@@ -12,25 +12,25 @@ ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 22288cd1468b410df77b27721ccda32c3d033e47
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: dcc60feb4c0b3a961689f3d365d49ac1690696a6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 
-# <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>使用 Jenkins 设置 Azure App Service 的持续集成和部署
+# <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>使用 Jenkins 设置 Azure 应用服务的持续集成和部署
 
-本教程使用 Jenkins 设置通过 [Spring Boot](http://projects.spring.io/spring-boot/) 框架开发的示例 Java Web 应用的持续集成和部署 (CI/CD)，并推送到 [Linux 上的 Azure App Service Web 应用](/azure/app-service-web/app-service-linux-intro)。
+本教程使用 Jenkins 设置通过 [Spring Boot](http://projects.spring.io/spring-boot/) 框架开发的示例 Java Web 应用的持续集成和部署 (CI/CD)，并推送到 [Linux 上的 Azure 应用服务 Web 应用](/azure/app-service/containers/app-service-linux-intro)。
 
 在本教程中，将执行以下任务：
 
 > [!div class="checklist"]
-> * 安装部署到 Azure App Service 所需的 Jenkins 插件。
+> * 安装部署到 Azure 应用服务所需的 Jenkins 插件。
 > * 推送新提交时，定义 Jenkins 作业以便从 GitHub 存储库生成 Docker 映像。
 > * 定义适用于 Linux 的新 Azure Web 应用，并对其进行配置以便将推送的 Docker 映像部署到 Azure 容器注册表。
-> * 配置 Azure App Service Jenkins 插件。
-> * 使用手动生成将示例应用部署到 Azure App Service。
+> * 配置 Azure 应用服务 Jenkins 插件。
+> * 使用手动生成将示例应用部署到 Azure 应用服务。
 > * 触发 Jenkins 生成并通过将更改推送到 GitHub 更新 Web 应用。
 
 ## <a name="before-you-begin"></a>开始之前
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/29/2017
 2. 选择“可用”选项卡。
 3. 搜索并选中以下插件旁边的复选框：   
 
-    - [Azure App Service 插件](https://plugins.jenkins.io/azure-app-service)
+    - [Azure 应用服务插件](https://plugins.jenkins.io/azure-app-service)
     - [GitHub Branch Source 插件](https://plugins.jenkins.io/github-branch-source)
 
     如果未出现插件，请选中“已安装”选项卡确保它们尚未安装。
@@ -81,9 +81,9 @@ ms.lasthandoff: 08/29/2017
 5. 在“生成”部分下面，选择“添加生成步骤”，并选择“调用顶级 Maven 目标”。 在“目标”字段中输入 `package`。
 6. 选择“保存”。 可以通过从项目页选择“立即生成”测试作业。
 
-## <a name="configure-azure-app-service"></a>配置 Azure App Service 
+## <a name="configure-azure-app-service"></a>配置 Azure 应用服务 
 
-1. 使用 Azure CLI 或 [Cloud Shell](/azure/cloud-shell/overview)，创建新的 [Linux 上的 Web 应用](/azure/app-service-web/app-service-linux-intro)。 本教程中的 Web 应用名称为 `myJavaApp`，但自己的应用需要使用唯一名称。
+1. 使用 Azure CLI 或 [Cloud Shell](/azure/cloud-shell/overview)，创建新的 [Linux 上的 Web 应用](/azure/app-service/containers/app-service-linux-intro)。 本教程中的 Web 应用名称为 `myJavaApp`，但自己的应用需要使用唯一名称。
    
     ```azurecli-interactive
     az group create --name myResourceGroupJenkins --location westus
@@ -103,7 +103,7 @@ ms.lasthandoff: 08/29/2017
     az webapp config appsettings set --resource-group myResourceGroupJenkins --name myJavaApp --settings PORT=8080
     ```
 
-## <a name="configure-the-azure-app-service-jenkins-plug-in"></a>配置 Azure App Service Jenkins 插件
+## <a name="configure-the-azure-app-service-jenkins-plug-in"></a>配置 Azure 应用服务 Jenkins 插件
 
 1. 在 Jenkins Web 控制台中，选择创建的“MyJavaApp”作业，然后选择页面左侧的“配置”。
 2. 向下滚动到“生成后操作”，选择“添加生成后操作”，然后选择“发布 Azure Web 应用”。
@@ -162,7 +162,7 @@ ms.lasthandoff: 08/29/2017
     ![添加容器注册表凭据](media/jenkins-java-quickstart/enter_acr_credentials.png)
 15. 选择“添加”以保存凭据。
 16. 在“发布 Azure Web 应用”的“应用配置”面板中，从“注册表凭据”下拉列表选择新创建的凭据。 完成的生成后操作应如下图所示：   
-    ![用于 Azure App Service 部署的生成后操作配置](media/jenkins-java-quickstart/appservice_plugin_configuration.png)
+    ![用于 Azure 应用服务部署的生成后操作配置](media/jenkins-java-quickstart/appservice_plugin_configuration.png)
 17. 选择“保存”保存作业配置。
 
 ## <a name="deploy-the-app-from-github"></a>使用 GitHub 部署应用

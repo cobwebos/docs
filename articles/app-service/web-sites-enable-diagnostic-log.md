@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 7b125aeb9c0ee1dcbb199da98b0ce079820ea85c
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 42644bd97443e827b523503989b0b25d3d48028c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
@@ -275,7 +275,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 >
 
 ## <a name="nextsteps"></a>后续步骤
-* [如何监视 Web 应用](http://docs.microsoft.com/en-us/azure/app-service-web/web-sites-monitor)
+* [如何监视 Web 应用](web-sites-monitor.md)
 * [在 Visual Studio 中对 Azure Web 应用进行故障排除](web-sites-dotnet-troubleshoot-visual-studio.md)
 * [在 HDInsight 中分析 Web 应用日志](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 

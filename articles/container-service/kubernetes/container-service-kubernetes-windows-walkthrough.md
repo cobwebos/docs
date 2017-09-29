@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 9211b28debc2f0df194eded564e2a4d52303f3e6
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 6a03f668c6b9e18bf80cb04ea9feddeef4b6bd9e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/25/2017
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍如何在 [Azure 容器服务](../container-service-intro.md)中使用 Azure CLI 部署 [Kubernetes](https://kubernetes.io/docs/home/) 群集。 部署群集后，使用 Kubernetes `kubectl` 命令行工具连接到群集，并部署第一个 Windows 容器。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 使用 [az acs create](/cli/azure/acs#create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
 
-以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为 Windows 节点上的密码。 更新这些值，使其适用于你的环境。 
+以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为 Windows 节点上的密码。 更新这些值，使其适用于环境。 
 
 
 
@@ -110,7 +110,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 
 此基本示例使用 JSON 文件指定 Microsoft Internet Information Server (IIS) 容器，然后使用 `kubctl apply` 命令创建 Pod。 
 
-创建名为 `iis.json` 的本地文件，并复制以下文本。 此文件告知 Kubernetes 使用 [Docker 中心](https://hub.docker.com/r/nanoserver/iis/)提供的公共容器映像在 Windows Server 2016 Nano Server 上运行 IIS。 该容器使用端口 80，但最初只能在群集网络中访问。
+创建名为 `iis.json` 的本地文件，并复制以下文本。 此文件告知 Kubernetes 使用 [Docker 中心](https://hub.docker.com/r/microsoft/iis/)提供的公共容器映像在 Windows Server 2016 Nano Server 上运行 IIS。 该容器使用端口 80，但最初只能在群集网络中访问。
 
  ```JSON
  {
@@ -126,7 +126,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
     "containers": [
       {
         "name": "iis",
-        "image": "nanoserver/iis",
+        "image": "microsoft/iis:nanoserver",
         "ports": [
           {
           "containerPort": 80

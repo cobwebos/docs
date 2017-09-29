@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b4637922e7b280b0e9954c9e51788202e784b4f9
-ms.openlocfilehash: 743223f78f279fedf33f73ff52b56f4a7358cd51
+ms.translationtype: HT
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 23ee3572752030332c5bfdd84edc97df5fb8e58f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 应用程序升级
@@ -31,17 +31,17 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 
 在配置群集时在群集清单中指定更新域。 更新域不按特定的顺序接收更新。 更新域是应用程序部署的逻辑单元。 更新域可让服务在升级过程中保持高可用性。
 
-如果对群集中的所有节点应用升级，即应用程序只有一个更新域，将不可能进行任何滚动升级。 由于服务将会关闭，并且在升级时不可用，因此不建议此方法。 此外，当仅为群集设置了一个更新域时，Azure 不提供任何保证。
+如果对群集中的所有节点应用升级，即应用程序只有一个更新域，将不可能进行任何滚动升级。 由于服务会关闭，并且在升级时不可用，因此不建议此方法。 此外，当仅为群集设置了一个更新域时，Azure 不提供任何保证。
 
 ## <a name="health-checks-during-upgrades"></a>升级过程中的运行状况检查
 必须对升级设置运行状况策略（或者可使用默认值）。 当所有更新域均在指定的超时内进行了升级，并且所有更新域均被认为运行正常时，即可称升级为成功升级。  运行正常的更新域是指该更新域通过了运行状况策略中指定的所有运行状况检查。 例如，运行状况策略可能要求应用程序实例中的所有服务都必须*运行正常*，因为运行状况是由 Service Fabric 定义的。
 
 升级期间 Service Fabric 执行的运行状况策略和检查与服务和应用程序无关。 也就是说，不会执行任何特定于服务的测试。  例如，服务可能有吞吐量方面的要求，但 Service Fabric 并不提供用于检查吞吐量的信息。 有关要执行的检查，请参阅[运行状况文章](service-fabric-health-introduction.md)。 在升级期间执行的检查包括是否已正确复制应用程序包、是否已启动实例，等等。
 
-应用程序运行状况是应用程序子实体的聚合。 简单地说，Service Fabric 通过应用程序报告的运行状况来评估应用程序的运行状况。 它还以这种方式评估应用程序的所有服务的运行状况。 Service Fabric 通过聚合子实体（如服务副本）的运行状况进一步评估应用程序服务的运行状况。 一旦符合应用程序运行状况策略，便可继续升级。 如果违反运行状况策略，则应用程序升级将会失败。
+应用程序运行状况是应用程序子实体的聚合。 简单地说，Service Fabric 通过应用程序报告的运行状况来评估应用程序的运行状况。 它还以这种方式评估应用程序的所有服务的运行状况。 Service Fabric 通过聚合子实体（如服务副本）的运行状况进一步评估应用程序服务的运行状况。 一旦符合应用程序运行状况策略，便可继续升级。 如果违反运行状况策略，则应用程序升级会失败。
 
 ## <a name="upgrade-modes"></a>升级模式
-建议的应用程序升级模式为受监视模式，这是最常用的模式。 受监视模式对一个更新域执行升级，如果所有运行状况检查均通过（按指定的策略），则自动移动到下一个更新域。  如果运行状况检查失败和/或达到超时，则更新域的升级将会回滚，或者模式更改为不受监视的手动模式。 可以将升级配置为在升级失败时选择这两种模式之一。 
+建议的应用程序升级模式为受监视模式，这是最常用的模式。 受监视模式对一个更新域执行升级，如果所有运行状况检查均通过（按指定的策略），则自动移动到下一个更新域。  如果运行状况检查失败和/或达到超时，则更新域的升级会回滚，或者模式更改为不受监视的手动模式。 可以将升级配置为在升级失败时选择这两种模式之一。 
 
 不受监视的手动模式在每次对更新域升级之后都需要人工干预，以开始进行下一个更新域的升级。 系统不会执行任何 Service Fabric 运行状况检查。 管理员开始在下一个更新域中升级之前，需执行状况或状态检查。
 
@@ -50,9 +50,9 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 
 1. 创建该群集中不存在的新[应用程序清单](service-fabric-application-model.md#describe-an-application)中的默认服务。
 > [!TIP]
-> 需将 [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md#fabric-settings-that-you-can-customize) 设置为 true，以便启用以下规则。 从 v5.5 支持此功能。
+> 需将 [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) 设置为 true，以便启用以下规则。 从 v5.5 支持此功能。
 
-2. 更新默认服务，这些服务同时存在于以前的[应用程序清单](service-fabric-application-model.md#describe-an-application)及新版清单中。 新版中的服务说明会覆盖群集已有的说明。 默认服务更新失败时将自动回滚应用程序升级。
+2. 更新默认服务，这些服务同时存在于以前的[应用程序清单](service-fabric-application-model.md#describe-an-application)及新版清单中。 新版中的服务说明会覆盖群集已有的说明。 默认服务更新失败时会自动回滚应用程序升级。
 3. 删除以前的[应用程序清单](service-fabric-application-model.md#describe-an-application)中有的但新版本中没有的默认服务。 **请注意，删除的默认服务不能还原。**
 
 如果发生应用程序升级回滚，默认服务将还原至升级开始前的状态。 但是，永远无法创建已删除的服务。

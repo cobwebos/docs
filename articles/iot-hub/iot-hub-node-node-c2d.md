@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 4580bda5633f84a7c7af0dc85f3cea4951024836
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: d1a1a03042d657231fe7704842b2635e8107623c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>使用 IoT 中心发送云到设备的消息 (Node)
@@ -41,17 +41,17 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 * **SendCloudToDeviceMessage**，它将云到设备的消息通过 IoT 中心发送到模拟设备应用，然后接收其传递确认。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码和通常连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
+> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心]。
 > 
 > 
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
-* Node.js 版本 0.10.x 或更高版本。
+* Node.js 版本 4.0.x 或更高版本。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
-在本部分中，你将修改在 [IoT 中心入门]中创建的模拟设备应用，以接收来自 IoT 中心的“云到设备”消息。
+在本部分中，会修改在 [IoT 中心入门]中创建的模拟设备应用，以接收来自 IoT 中心的“云到设备”消息。
 
 1. 使用文本编辑器打开 SimulatedDevice.js 文件。
 2. 修改 **connectCallback** 函数以处理从 IoT 中心发送的消息。 在此示例中，设备始终调用 **complete** 函数来向 IoT 中心通知它已处理消息。 **connectCallback** 函数的新版本类似于以下片段：
@@ -135,7 +135,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
       });
     }
     ```
-8. 添加以下代码，以便在设备确认收到云到设备的消息时将消息发送到设备，并处理反馈消息：
+8. 添加以下代码，以便在设备确认收到云到设备的消息时会消息发送到设备，并处理反馈消息：
    
     ```javascript
     serviceClient.open(function (err) {
@@ -155,7 +155,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 9. 保存并关闭 **SendCloudToDeviceMessage.js** 文件。
 
 ## <a name="run-the-applications"></a>运行应用程序
-现在，你已准备就绪，可以运行应用程序了。
+现在，已准备就绪，可以运行应用程序了。
 
 1. 在 **simulateddevice** 文件夹中的命令提示符下，运行以下命令将遥测发送到 IoT 中心，并侦听云到设备的消息：
    
@@ -178,7 +178,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    > 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习如何发送和接收云到设备的消息。 
+在本教程中，已学习如何发送和接收云到设备的消息。 
 
 若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 套件]。
 

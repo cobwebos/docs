@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: a8f4f34aa99c4a9966957cac213ec9170de80a46
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 1f335b8b04821e1c0ab26af3df20c3318e9c26cd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>计划和广播作业 (.NET/Node.js)
@@ -49,10 +49,10 @@ ms.lasthandoff: 07/11/2017
 
 **ScheduleJob**：使用作业来调用 **lockDoor** 直接方法，并在多个设备上更新设备孪生的所需属性。
 
-若要完成本教程，您需要以下各项：
+要完成本教程，需要以下各项：
 
 * Visual Studio 2015 或 Visual Studio 2017。
-* Node.js 版本 0.12.x 或更高版本。 [准备开发环境][lnk-dev-setup]一文介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* Node.js 版本 4.0.x 或更高版本。 [准备开发环境][lnk-dev-setup]一文介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -67,8 +67,8 @@ ms.lasthandoff: 07/11/2017
 
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
-1. 在“解决方案资源管理器”中，右键单击“ScheduleJob”项目，然后单击“管理 NuGet 包...”。
-1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此步骤将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+1. 在“解决方案资源管理器”中，右键单击“ScheduleJob”项目，并单击“管理 NuGet 包...”。
+1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 此步骤将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
     ![“NuGet 包管理器”窗口][img-servicenuget]
 1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -246,7 +246,7 @@ ms.lasthandoff: 07/11/2017
     node simDevice.js
     ```
 
-1. 通过右键单击“ScheduleJob”项目，然后依次选择“调试”和“启动新实例”，运行 C# 控制台应用 **ScheduleJob**。
+1. 通过右键单击“ScheduleJob”项目，并依次选择“调试”和“启动新实例”，运行 C# 控制台应用 **ScheduleJob**。
 
 1. 会出现设备和后端应用的输出。
 
