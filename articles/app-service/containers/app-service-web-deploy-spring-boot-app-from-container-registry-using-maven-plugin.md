@@ -15,7 +15,7 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: f47ee59d72ea49d62be2cb435ebaf8bc841e4198
 ms.contentlocale: zh-cn
 ms.lasthandoff: 08/10/2017
@@ -382,7 +382,7 @@ Web 部署完成后即可使用 [Azure 门户]进行管理。
 [Azure 门户]: https://portal.azure.com/
 [适用于 Azure Web 应用的 Maven插件]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
 [Create a private Docker container registry using the Azure portal]: /azure/container-registry/container-registry-get-started-portal
-[Using a custom Docker image for Azure Web App on Linux]: /azure/app-service-web/app-service-linux-using-custom-docker-image
+[Using a custom Docker image for Azure Web App on Linux]: tutorial-custom-docker-image.md
 [Docker]: https://www.docker.com/
 [适用于 Maven 的 Docker 插件]: https://github.com/spotify/docker-maven-plugin
 [免费 Azure 帐户]: https://azure.microsoft.com/pricing/free-trial/
