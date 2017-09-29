@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: ebac24385560377bac27a8b8c425323c57392bd2
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: e37a68fcf645cf1056b70e520545fb3ce7c22946
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="secure-a-standalone-cluster-on-windows-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
@@ -43,7 +43,8 @@ ms.lasthandoff: 08/12/2017
         "ClusterCertificateCommonNames": {
             "CommonNames": [
             {
-                "CertificateCommonName": "[CertificateCommonName]"
+                "CertificateCommonName": "[CertificateCommonName]",
+                "CertificateIssuerThumbprint": "[Thumbprint1,Thumbprint2,Thumbprint3,...]"
             }
             ],
             "X509StoreName": "My"
@@ -56,7 +57,8 @@ ms.lasthandoff: 08/12/2017
         "ServerCertificateCommonNames": {
             "CommonNames": [
             {
-                "CertificateCommonName": "[CertificateCommonName]"
+                "CertificateCommonName": "[CertificateCommonName]",
+                "CertificateIssuerThumbprint": "[Thumbprint1,Thumbprint2,Thumbprint3,...]"
             }
             ],
             "X509StoreName": "My"
@@ -108,9 +110,9 @@ ms.lasthandoff: 08/12/2017
 | **CertificateInformation 设置** | **说明** |
 | --- | --- |
 | ClusterCertificate |建议用于测试环境。 需要使用此证书来保护群集节点之间的通信。 可以使用两个不同的证书（一个主证书和一个辅助证书）进行升级。 在 **Thumbprint** 部分中设置主证书的指纹，在 **ThumbprintSecondary** 变量中设置辅助证书的指纹。 |
-| ClusterCertificateCommonNames |建议用于生产环境。 需要使用此证书来保护群集节点之间的通信。 可以使用一个或两个群集证书公用名称。 |
+| ClusterCertificateCommonNames |建议用于生产环境。 需要使用此证书来保护群集节点之间的通信。 可以使用一个或两个群集证书公用名称。 **CertificateIssuerThumbprint** 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。|
 | ServerCertificate |建议用于测试环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 *ClusterCertificate* 和 *ServerCertificate* 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 **Thumbprint** 部分中设置主证书的指纹，在 **ThumbprintSecondary** 变量中设置辅助证书的指纹。 |
-| ServerCertificateCommonNames |建议用于生产环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的证书。 可以使用一个或两个服务器证书公用名称。 |
+| ServerCertificateCommonNames |建议用于生产环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 **CertificateIssuerThumbprint** 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。 为方便起见，可以选择对 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的证书。 可以使用一个或两个服务器证书公用名称。 |
 | ClientCertificateThumbprints |这是需要在经过身份验证的客户端上安装的一组证书。 可以在想要允许其访问群集的计算机上安装许多不同的客户端证书。 在 **CertificateThumbprint** 变量中设置每个证书的指纹。 如果 **IsAdmin** 设置为 *true*，则安装了此证书的客户端可以在群集上执行管理员管理活动。 如果 **IsAdmin** 设置为 *false*，则使用此证书的客户端只能执行用户有权执行的操作（通常为只读）。 有关角色的详细信息，请阅读[基于角色的访问控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
 | ClientCertificateCommonNames |在 **CertificateCommonName** 中设置第一个客户端证书的公用名称。 **CertificateIssuerThumbprint** 是此证书的颁发者的指纹。 请阅读[使用证书](https://msdn.microsoft.com/library/ms731899.aspx)，详细了解公用名称和颁发者。 |
 | ReverseProxyCertificate |建议用于测试环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
@@ -161,7 +163,8 @@ ms.lasthandoff: 08/12/2017
                 "ClusterCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myClusterCertCommonName"
+                      "CertificateCommonName": "myClusterCertCommonName",
+                      "CertificateIssuerThumbprint": "7c fc 91 97 13 66 8d 9f a8 ee 71 2b a2 f4 37 62 00 03 49 0d"
                     }
                   ],
                   "X509StoreName": "My"
@@ -169,7 +172,8 @@ ms.lasthandoff: 08/12/2017
                 "ServerCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myServerCertCommonName"
+                      "CertificateCommonName": "myServerCertCommonName",
+                      "CertificateIssuerThumbprint": "7c fc 91 97 13 16 8d ff a8 ee 71 2b a2 f4 62 62 00 03 49 0d"
                     }
                   ],
                   "X509StoreName": "My"
@@ -218,7 +222,7 @@ ms.lasthandoff: 08/12/2017
 
 ## <a name="certificate-roll-over"></a>证书滚动更新
 使用证书公用名而不使用指纹时，证书滚动更新不需要群集配置升级。
-如果证书滚动更新涉及证书颁发者滚动更新，请在安装新的颁发者证书后，将旧的颁发者证书在证书存储中至少保存 2 小时。
+对于颁发者指纹升级，请确保新的指纹列表具有与旧列表的交集。 首先必须使用新的颁发者指纹进行配置升级，然后在存储中安装新证书（群集/服务器证书和颁发者证书）。 请在安装新的颁发者证书后，将旧的颁发者证书在证书存储中至少保存 2 小时。
 
 ## <a name="acquire-the-x509-certificates"></a>获取 X.509 证书
 若要保护群集内部的通信，首先需要获取群集节点的 X.509 证书。 此外，如果只想允许经过授权的计算机/用户连接到此群集，需要获得并安装客户端计算机的证书。
