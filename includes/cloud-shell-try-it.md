@@ -5,7 +5,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 [![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)
 
-该按钮会启动交互式 shell，可以使用它运行本主题中的所有步骤：
+该按钮会启动交互式 shell，可以使用它运行本主题中的步骤：
 
 [![显示门户中 Cloud Shell 窗口的屏幕截图](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
 
