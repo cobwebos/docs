@@ -3,7 +3,7 @@ title: "针对 Microsoft Azure 存储使用 .NET 的客户端加密 | Microsoft 
 description: "用于 .NET 的 Azure 存储客户端库支持客户端加密以及与 Azure 密钥保管库集成以实现 Azure 存储应用程序的最佳安全性。"
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: becfccca-510a-479e-a798-2044becd9a64
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 634da215e29ede4e90f7edbef43a3be853165349

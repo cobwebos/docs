@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/19/2017
 ms.author: elkuzmen
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: c5daf4622c8b6c4f572062d5db9b567413daaec0
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: dd2dfe20f86b3fac28871b27a1c2b66c2b4a4cd6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -38,10 +38,7 @@ ms.lasthandoff: 09/14/2017
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-<<<<<<< HEAD 登录 Azure 门户 [https://portal.azure.com](https://portal.azure.com)。=======
->>>>>>> 9556aed7734bda473c8b60bfa42ff4f82a6eedd4
-
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
 
@@ -50,20 +47,19 @@ ms.lasthandoff: 09/14/2017
 1. 单击 Azure 门户左上角的“新建”按钮。
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
 3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
-<<<<<<< HEAD =======
 
->>>>>>> 9556aed7734bda473c8b60bfa42ff4f82a6eedd4 ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
-4. 在下拉列表中为虚拟机选择一个订阅。
+4. 在“订阅”下拉列表中，选择虚拟机对应的订阅。
 5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
 6. 选择 VM 大小。 若要查看更多大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在“设置”页中保留默认值，然后单击“确定”。
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：在 VM 上安装 MSI VM 扩展，以及为 VM 启用 MSI。  
+通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 幕后运行机制是，启用 MSI 可以在 VM 上安装 MSI VM 扩展，并为 VM 启用 MSI。  
 
 1. 选择要在其上启用 MSI 的虚拟机。
-2. 在左侧导航栏中，单击“配置”。
+2. 单击左侧导航栏中的“配置”。
 3. 此时，将会看到“托管服务标识”。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。
 4. 务必单击“保存”，以保存配置。
 
@@ -111,7 +107,7 @@ ms.lasthandoff: 09/14/2017
     下面是用于获取访问令牌的 CURL 请求。  
     
     ```bash
-    curl http://localhost:50432/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true  
+    curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true  
     ```
     响应包括访问资源管理器所需的访问令牌。 
     

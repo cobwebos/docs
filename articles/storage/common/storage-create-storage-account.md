@@ -3,7 +3,7 @@ title: "如何在 Azure 门户中创建、管理或删除存储帐户 | Microsof
 description: "在 Azure 门户中创建新的存储帐户、管理帐户访问密钥或删除存储帐户。 了解标准和高级存储帐户。"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
@@ -15,7 +15,7 @@ ms.topic: get-started-article
 f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 01/23/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 848f6b07e51b58b00b81dd42ca1d478fdba20d06

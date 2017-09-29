@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 09/28/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
 ms.translationtype: HT
@@ -27,8 +27,6 @@ ms.lasthandoff: 09/23/2017
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Azure 中的可用性区域（预览版）概述
 
 可用性区域可以在发生数据中心级故障时提供保护。 它们位于 Azure 地区内，并且每个都具有自己的独立电源、网络和冷却系统。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。 在地区中以物理和逻辑方式分隔可用性区域可以在发生区域级故障的情况下保护应用程序和数据。 
-
-[!INCLUDE [Availability Zones preview statement](../../includes/availability-zones-preview-statement.md)]
 
 ![地区中发生故障的一个区域的概念视图](./media/az-overview/az-graphic-two.png)
 

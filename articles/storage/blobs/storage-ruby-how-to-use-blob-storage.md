@@ -3,7 +3,7 @@ title: "如何通过 Ruby 使用 Blob 存储（对象存储）| Microsoft Docs"
 description: "使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 services: storage
 documentationcenter: ruby
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: e2fe4c45-27b0-4d15-b3fb-e7eb574db717
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: d27cf1594d6a31a746ca85b5c3184f8a5dbbaa54

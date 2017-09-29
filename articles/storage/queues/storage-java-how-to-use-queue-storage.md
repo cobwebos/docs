@@ -3,7 +3,7 @@ title: "如何通过 Java 使用队列存储 | Microsoft Docs"
 description: "了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 用 Java 编写的示例。"
 services: storage
 documentationcenter: java
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 68cecc8e-38c9-4a24-99e8-cb722bc63cf9
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: a56b345c5efb4ce9c8ee2da91b798d09d44e42be

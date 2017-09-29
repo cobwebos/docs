@@ -3,7 +3,7 @@ title: "如何通过 Ruby 使用队列存储 | Microsoft Docs"
 description: "了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 用 Ruby 编写的相关示例。"
 services: storage
 documentationcenter: ruby
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 59c2d81b-db9c-46ee-ade2-2f0caae6b1e6
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: b1a7dd36af6c45bf085342cdf9c1c926a5040792
