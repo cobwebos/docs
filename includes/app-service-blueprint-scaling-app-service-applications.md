@@ -1,4 +1,4 @@
-* [缩放 Azure 应用服务](../articles/app-service-web/web-sites-scale.md)
+* [缩放 Azure 应用服务](../articles/app-service/web-sites-scale.md)
   
   * 了解冗余性和可靠性
   * “有状态”与“无状态”应用程序

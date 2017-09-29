@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 09/20/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 18ae6a970455646b7a25170f5abefa52a98b0ba2
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: 9c3a9a7255bbbdab8f4c356eb07022d7f1d242d7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure 安全中心（预览版）的自适应应用程序控制
@@ -33,6 +33,9 @@ ms.lasthandoff: 09/14/2017
 - 避免运行旧的不受支持的应用。
 - 防止使用组织不允许的特定软件工具。
 - 允许 IT 部门控制用户使用应用来访问敏感数据。
+
+> [!NOTE]
+> 自适应应用程序控制以受限公共预览版的形式提供给 Azure 安全中心标准版客户。 若要体验预览版，请向[我们](mailto:ASC_appcontrol@microsoft.com)发送包含订阅 ID 的电子邮件。
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>如何启用自适应应用程序控制？
 可以通过自适应应用程序控制来定义一组应用程序，允许这些应用程序在配置的资源组上运行。 此功能仅适用于 Windows 计算机（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）。 请执行以下步骤，在安全中心配置应用程序允许列表功能：
@@ -112,7 +115,7 @@ ms.lasthandoff: 09/14/2017
     - ViolationsBlocked：当解决方案启用“强制”模式时，尝试执行未加入允许列表的应用程序所出现的冲突。
     - ViolationsAudited：当解决方案启用“审核”模式时，执行未加入允许列表的应用程序所出现的冲突。
     - RulesViolatedManually：当用户尝试在 VM 上手动配置规则（而不是通过 ASC 管理门户进行配置）时出现的冲突。
-- VM数：有此类问题的虚拟机数。
+- **VM 和数：有此类问题的虚拟机数。
 
 单击这其中的每一行都会重定向到 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)页，其中显示具有此类冲突的所有 VM 的相关信息。 如果单击每行末尾的三点符号，则可删除该特定条目。 “已配置虚拟机”部分列出了应用这些规则的 VM。 
 
@@ -144,10 +147,6 @@ ms.lasthandoff: 09/14/2017
 此列表包含：
 - 名称：订阅和资源组的名称。
 - VM 数：资源组中虚拟机的数目
-
-## <a name="preview-registration"></a>预览版注册
-
-自适应应用程序控制以受限公共预览版的形式提供给 Azure 安全中心标准版客户。 若要体验预览版，请向[我们](mailto:ASC_appcontrol@microsoft.com)发送包含订阅 ID 的电子邮件。
 
 ## <a name="see-also"></a>另请参阅
 本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：

@@ -1,4 +1,4 @@
-使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../articles/app-service-web/app-service-web-overview.md)。 
+在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/app-service-web-overview.md)。 
 
 该 Web 应用为代码提供托管空间，并提供一个 URL 用于查看已部署的应用。
 
@@ -8,7 +8,7 @@
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-local-git
 ```
 
-创建 Web 应用后，Azure CLI 将显示类似于以下示例的信息：
+创建 Web 应用后，Azure CLI 会显示类似于以下示例的信息：
 
 ```json
 {

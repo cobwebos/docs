@@ -1,8 +1,6 @@
 * [应用服务身份验证/授权概述](../articles/app-service/app-service-authentication-overview.md)
 * 向以下移动应用添加身份验证：[iOS][ios-get-started-users]、[Android][android-get-started-users]、[Windows Universal][windows-get-started-users]、[Xamarin.Android][xamarin-android-get-started-users]、[Xamarin.iOS][xamarin-ios-get-started-users]、[Xamarin.Forms][xamarin-forms-get-started-users]、[Cordova][cordova-get-started-users]  
   了解如何向移动应用添加应用服务身份验证。
-* API 应用中的身份验证：[用户主体](../articles/app-service-api/app-service-api-dotnet-user-principal-auth.md)、[服务主体](../articles/app-service-api/app-service-api-dotnet-service-principal-auth.md)  
-  了解如何使用应用服务身份验证保护 API 应用的安全。
 
 [android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-android-get-started-users.md
 [cordova-get-started-users]: ../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md

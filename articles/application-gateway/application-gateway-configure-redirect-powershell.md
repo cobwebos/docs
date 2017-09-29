@@ -3,7 +3,7 @@ title: "为 Azure 应用程序网关配置重定向 - PowerShell | Microsoft Doc
 description: "本页提供有关使用 PowerShell 为应用程序网关配置重定向的方案"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 ms.service: application-gateway
@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 84a25e572a27df2fe46e07c4ab0a4aab5969d68e
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: cbee070c6bfe17135f37a82c545bf8ee7db2db43
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -133,7 +133,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ## <a name="multi-site-redirect"></a>多站点重定向
 
-以下示例在端口 80 上创建包含 2 个多站点侦听器的新应用程序网关。 这些侦听器针对 adatum.com 和 adatum.org。 示例中创建了一个重定向规则，用于将流量从 adatum.org 重定向到 adatum.com。 配置应用程序网关公共 IP 地址的 CNAME 别名需要完成附加的配置。有关将域委派给 Azure DNS 以及为域创建 CNAME 记录的详细信息，请访问[将域委派给 Azure DNS](../dns/dns-delegate-domain-azure-dns.md)。
+以下示例在端口 80 上创建包含 2 个多站点侦听器的新应用程序网关。 这些侦听器针对 adatum.com 和 adatum.org。示例中创建了一个重定向规则，用于将流量从 adatum.org 重定向到 adatum.com。配置应用程序网关公共 IP 地址的 CNAME 别名需要完成附加的配置。有关将域委派给 Azure DNS 以及为域创建 CNAME 记录的详细信息，请访问[将域委派给 Azure DNS](../dns/dns-delegate-domain-azure-dns.md)。
 
 ```powershell
 # Create a new resource group for the application gateway
