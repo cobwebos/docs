@@ -3,7 +3,7 @@ title: "通过 .NET 开始使用 Azure Blob 存储（对象存储） | Microsoft
 description: "使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 services: storage
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: d18a8fc8-97cb-4d37-a408-a6f8107ea8b3
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 70c7d6a5e1b9aa9a13481893e0baa56538be097c
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7a432a22c5c2c2fc5e42cfe000dd34262ba4c85e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>通过 .NET 开始使用 Azure Blob 存储
@@ -402,5 +402,5 @@ Azure 存储支持在客户端和服务器上加密 Blob 数据：
 ### <a name="conceptual-guides"></a>概念性指南
 * [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [开始使用适用于 .NET 的文件存储](../files/storage-dotnet-how-to-use-files.md)
-* [如何通过 WebJobs SDK 使用 Azure Blob 存储](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+* [如何通过 WebJobs SDK 使用 Azure Blob 存储](https://github.com/Azure/azure-webjobs-sdk/wiki)
 
