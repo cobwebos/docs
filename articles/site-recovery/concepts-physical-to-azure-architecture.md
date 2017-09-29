@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/10/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c5ddaf7a90336ade573ac5a56e241004a7840780
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 02dafa60f19df88123358446ac72d9be85577554
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 09/25/2017
     - 配置服务器通过 HTTPS 443 出站端口来与 Azure 协调复制管理。
     - 进程服务器从源计算机接收数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
     - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 如果将多台计算机分组到复制组，并且这些组在故障转移时共享崩溃一致且应用一致的恢复点，请使用多 VM 方案。 如果计算机运行相同的工作负荷并需要保持一致，这种做法非常有用。
-4. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用 Azure ExpressRoute [公共对等互连](../expressroute/expressroute-circuit-peerings.md#public-peering)。 不支持通过站点到站点 VPN 将流量从本地站点复制到 Azure。
+4. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用 Azure ExpressRoute [公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)。 不支持通过站点到站点 VPN 将流量从本地站点复制到 Azure。
 
 
 **物理机到 Azure 的复制过程**
@@ -78,7 +78,7 @@ ms.lasthandoff: 09/25/2017
     - **Azure 中的临时进程服务器**：若要从 Azure 进行故障回复，需要设置用作进程服务器的 Azure VM，以处理从 Azure 进行的复制。 故障回复完成后，可以删除此 VM。
     - **VPN 连接**：若要进行故障回复，需要设置从 Azure 网络到本地站点的 VPN 连接（或 Azure ExpressRoute）。
     - **单独的主目标服务器**：默认情况下，在本地 VMware VM 上与配置服务器安装在一起的主目标服务器用于处理故障回复。 不过，如果需要对大量流量进行故障回复，应设置专用于此用途的单独的本地主目标服务器。
-    - **故障回复策略**：若要复制回到本地站点，需要一个故障回复策略。 这是在创建从本地到 Azure 的复制策略时自动创建的。
+    - **故障回复策略**：若要复制回到本地站点，需要创建故障回复策略。 这是在创建从本地到 Azure 的复制策略时自动创建的。
     - **VMware 基础结构**： 需要一个用于故障回复的 VMware 基础结构。 不能故障回复到物理服务器。
 2. 所有组件均就位后，故障回复分三个阶段进行：
     - 第 1 阶段： 重新保护 Azure VM，以便它们可以从 Azure 复制回本地 VMware VM。
