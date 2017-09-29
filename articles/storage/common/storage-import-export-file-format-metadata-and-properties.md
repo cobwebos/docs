@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ac56267d3f1e7db083edfa2d375c21238875641f
 ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure 导入/导出服务元数据和属性文件格式

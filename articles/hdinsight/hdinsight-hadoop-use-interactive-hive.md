@@ -1,6 +1,6 @@
 ---
-title: "通过 Azure HDInsight 使用交互式 Hive | Microsoft Docs"
-description: "了解如何通过 HDInsight 使用交互式 Hive (Hive LLAP)。"
+title: "通过 Azure HDInsight 使用交互式查询 | Microsoft Docs"
+description: "了解如何通过 HDInsight 使用交互式查询 (Hive LLAP)。"
 keywords: 
 services: hdinsight
 documentationcenter: 
@@ -15,43 +15,58 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 09/20/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 6c4e3d0e97eb9ad4500d684c7da3b19c5669994f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ad47c3b6d7f44815208741e686f11675c81eca8b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="use-interactive-hive-with-hdinsight-preview"></a>通过 HDInsight 使用交互式 Hive（预览）
-交互式 Hive（也称为 Hive LLAP 或 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是新的 Azure HDInsight [群集类型](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式 Hive 支持内存中缓存，这可提高 Hive 查询速度和交互性。 
+# <a name="use-interactive-query-with-hdinsight"></a>将交互式查询与 HDInsight 配合使用
+交互式查询（也称为 Hive LLAP 或 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式查询支持内存中缓存，可提高 Hive 查询速度和交互性。 
 
-交互式 Hive 群集与 Hadoop 群集有所不同。 交互式 Hive 群集只包含 Hive 服务。 
+交互式查询群集与 Hadoop 群集有所不同。 交互式 Hive 群集只包含 Hive 服务。 
 
 > [!NOTE]
 > MapReduce、Pig、Sqoop、Oozie，以及其他服务很快将从此群集类型中删除。
-> 仅可通过 Ambari Hive 视图、Beeline 和 Microsoft Hive 开放式数据库连接驱动程序 (Hive ODBC) 访问交互式 Hive 群集中的 Hive 服务。 不能通过 Hive 控制台、Templeton、Azure 命令行工具 (Azure CLI) 或 Azure PowerShell 对其进行访问。 
+> 仅可通过 Ambari Hive 视图、Beeline 和 Microsoft Hive 开放式数据库连接驱动程序 (Hive ODBC) 访问交互式查询群集中的 Hive 服务。 不能通过 Hive 控制台、Templeton、Azure 命令行工具 (Azure CLI) 或 Azure PowerShell 对其进行访问。 
 > 
 > 
 
-## <a name="create-an-interactive-hive-cluster"></a>创建交互式 Hive 群集
-仅可在基于 Linux 的群集上使用交互式 Hive 群集。 有关如何创建 HDInsight 群集的信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+## <a name="create-an-interactive-query-cluster"></a>创建交互式查询群集
+有关创建 HDInsight 群集的信息，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。 选择“交互式查询”群集类型。
 
-## <a name="execute-hive-queries-from-interactive-hive"></a>从交互式 Hive 中执行 Hive 查询
+## <a name="execute-hive-queries-from-interactive-query"></a>从交互式查询执行 Hive 查询
 若要执行 Hive 查询，可以使用以下选项：
 
+* 使用 Power BI
+
+    请参阅[在 Azure HDInsight 中使用 Power BI 直观显示大数据](./hdinsight-connect-hive-power-bi.md)。
+
+* 使用 Zeppelin
+
+    请参阅[在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询](./hdinsight-connect-hive-zeppelin.md)。
+
+* 使用 Visual Studio
+
+    请参阅[使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询](hdinsight-hadoop-visual-studio-tools-get-started.md#run-a-hive-query)。
+
+* 使用 Visual Studio Code
+
+    请参阅[将 Visual Studio Code 用于 Hive、LLAP 或 pySpark](hdinsight-for-vscode.md)。
 * 使用 Ambari Hive 视图运行 Hive。
   
-    有关使用 Hive 视图的信息，请参阅[在 HDInsight 中将 Hive 与 Hadoop 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)。
+    请参阅[将 Hive 视图与 Azure HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)。
 * 使用 Beeline 运行 Hive。
   
-    有关在 HDInsight 上使用 Beeline 的信息，请参阅[通过 Beeline 在 HDInsight 中将 Hive 与 Hadoop 配合使用](hdinsight-hadoop-use-hive-beeline.md)。
+    请参阅[通过 Beeline 将 Hive 与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-beeline.md)。
   
     可以使用来自头结点或空边缘节点的 Beeline。 建议使用来自空边缘节点的 Beeline。 有关如何使用空边缘节点创建 HDInsight 群集的信息，请参阅[在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)。
 * 使用 Hive ODBC 运行 Hive。
   
-    有关如何使用 Hive ODBC 的信息，请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop](hdinsight-connect-excel-hive-odbc-driver.md)。
+    请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop](hdinsight-connect-excel-hive-odbc-driver.md)。
 
 若要查找 Java Database Connectivity (JDBC) 连接字符串：
 
@@ -59,10 +74,16 @@ ms.lasthandoff: 09/09/2017
 2. 在左侧菜单中，选择“Hive”。
 3. 若要复制 URL，请选择剪贴板图标：
    
-   ![HDInsight Hadoop 交互式 Hive LLAP JDBC](./media/hdinsight-hadoop-use-interactive-hive/hdinsight-hadoop-use-interactive-hive-jdbc.png)
+   ![HDInsight Hadoop 交互式查询 LLAP JDBC](./media/hdinsight-hadoop-use-interactive-hive/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[在 HDInsight 中创建交互式 Hive 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+
+* 了解如何[在 HDInsight 中创建交互式查询群集](hdinsight-hadoop-provision-linux-clusters.md)。
+* 了解如何[在 Azure HDInsight 中使用 Power BI 直观显示大数据](./hdinsight-connect-hive-power-bi.md)。
+* 了解如何[在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询](./hdinsight-connect-hive-zeppelin.md)。
+* 了解如何[使用针对 Visual Studio 的 Data Lake 工具运行 Hive 查询](./hdinsight-hadoop-visual-studio-tools-get-started.md#run-a-hive-query)。
+* 了解如何[将 Visual Studio Code 用于 Hive、LLAP 或 pySpark](hdinsight-for-vscode.md)。
+* 了解如何[将 Hive 视图与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)
 * 了解如何[使用 Beeline 在 HDInsight 中提交 Hive 查询](hdinsight-hadoop-use-hive-beeline.md)。
 * 了解如何[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop](hdinsight-connect-excel-hive-odbc-driver.md)。
 

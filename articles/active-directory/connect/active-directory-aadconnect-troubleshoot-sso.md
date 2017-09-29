@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: bc4ff9125553c8918df3a1f84041560a5b7d4cd8
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4d96f96d6b9d6808d6a7c7ad8d720c2c2773d7d5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,12 +28,14 @@ ms.lasthandoff: 08/07/2017
 
 ## <a name="known-issues"></a>已知问题
 
+- 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
+- 不支持 Edge 浏览器。
+- 在 Office 客户端上（尤其是在共享计算机应用场景中）执行许可证激活，用户可能会收到额外的登录提示。
+- 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。 And 
+- 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
+- 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
 - 如果你要同步 30 个或更多的 AD 林，则不能使用 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-azure-ad-seamless-sso)该功能。
 - 将 Azure AD 服务 URL (https://autologon.microsoftazuread-sso.com、https://aadg.windows.net.nsatc.net) 添加到“受信任的站点”区域，而非“本地 Intranet”区域会阻止用户登录。
-- 无缝 SSO 在 Firefox 和 Edge 的隐私浏览模式下不起作用。 在 Internet Explorer 的增强保护模式打开时也不起作用。
-
->[!IMPORTANT]
->我们最近中止了对 Microsoft Edge 的支持，以调查客户报告的问题。
 
 ## <a name="check-status-of-the-feature"></a>检查功能状态
 
@@ -67,7 +69,7 @@ ms.lasthandoff: 08/07/2017
 使用以下清单排查无缝 SSO 问题：
 
 - 在 Azure AD Connect 中检查是否已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](active-directory-aadconnect-sso-quick-start.md#step-1-check-prerequisites)。
-- 检查是否两个 Azure AD URL （https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net） 均为用户 Intranet 区域设置的一部分。
+- 检查是否两个 Azure AD URL（https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net）均为用户 Intranet 区域设置的一部分。
 - 确保企业设备已加入 AD 域。
 - 确保用户使用 AD 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 AD 林。

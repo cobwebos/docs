@@ -3,7 +3,7 @@ title: "Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 | 
 description: "为 Azure 上的 SAP HANA（大型实例）建立高可用性并规划灾难恢复"
 services: virtual-machines-linux
 documentationcenter: 
-author: RicksterCDN
+author: saghorpa
 manager: timlt
 editor: 
 ms.service: virtual-machines-linux
@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/11/2016
-ms.author: rclaus
+ms.date: 09/15/2016
+ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 87ea8b808c0b7e5fe79a5bee038a3d34ed59a1e6
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 293ac7a275398f05e3abe815413403efeaadc6e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
@@ -41,9 +41,9 @@ Azure 上的 SAP HANA（大型实例）在包括三个不同地缘政治区域�
 | 主机自动故障转移：N+m<br /> 包括 1+1 | 在备用节点充当活动角色的情况下可行。<br /> HANA 控制角色切换。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。 | HANA 卷集附加到所有节点 (n+m)。<br /> DR 站点必须拥有相同的节点数。 |
 | HANA 系统复制。 | 在使用主要或辅助设置的情况下可行。<br /> 在故障转移案例中，辅助角色变为主要角色。<br /> HANA 系统复制和 OS 控制故障转移。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。<br /> 在没有第三方组件的情况下，无法使用 HANA 系统复制实现 DR。 | 单独一组磁盘卷附加到每个节点。<br /> 仅生产站点中的辅助副本磁盘卷被复制到 DR 位置。<br /> DR 站点中需要一组卷。 | 
 
-专用 DR 设置是在不用于运行任何其他工作负荷或非生产系统的 DR 站点中部署 HANA 大型实例单元。 此单元是被动单元，仅当执行灾难故障转移时才部署。 到目前为止，我们没有一个具有此配置的客户。
+专用 DR 设置是在不用于运行任何其他工作负荷或非生产系统的 DR 站点中部署 HANA 大型实例单元。 此单元是被动单元，仅当执行灾难故障转移时才部署。 不过，对于许多客户而言，这不是首选方式。
 
-多用途 DR 设置在运行非生产工作负荷的 DR 站点中部署 HANA 大型实例单元。 发生灾难时，可关闭非生产系统，装载存储复制的（其他）卷集，并启动生产 HANA 实例。 到目前为止，所有使用 HANA 大型实例灾难恢复功能的客户都使用此替代配置方案。 
+多用途 DR 设置在运行非生产工作负荷的 DR 站点中部署 HANA 大型实例单元。 发生灾难时，可关闭非生产系统，装载存储复制的（其他）卷集，并启动生产 HANA 实例。 使用 HANA 大型实例灾难恢复功能的大多数客户都使用此配置。 
 
 
 可在以下 SAP 文章中找到有关 SAP HANA 高可用性的详细信息： 
@@ -221,7 +221,15 @@ MACs hmac-sha1
 
 按如下所示输入 `hdbuserstore` 命令：
 
-![输入 hdbuserstore 命令](./media/hana-overview-high-availability-disaster-recovery/image4-hdbuserstore-command.png)
+**对于非 MDC HANA 设置**
+```
+hdbuserstore set <key> <host><3[instance]15> <user> <password>
+```
+
+**对于 MDC HANA 设置**
+```
+hdbuserstore set <key> <host><3[instance]13> <user> <password>
+```
 
 在以下示例中，用户为 **SCADMIN01**，主机名为 **lhanad01**，实例编号为 **01**：
 ```
@@ -231,8 +239,8 @@ hdbuserstore set SCADMIN01 lhanad01:30115 <backup username> <password>
 
 ```
 hdbuserstore set SCADMIN01 lhanad01:30115 SCADMIN <password>
-hdbuserstore set SCADMIN02 lhanad02:30215 SCADMIN <password>
-hdbuserstore set SCADMIN03 lhanad03:30315 SCADMIN <password>
+hdbuserstore set SCADMIN01 lhanad02:30115 SCADMIN <password>
+hdbuserstore set SCADMIN01 lhanad03:30115 SCADMIN <password>
 ```
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>步骤 6：获取快照脚本、配置快照及测试配置和连接
@@ -285,7 +293,7 @@ Storage IP Address: 10.240.20.31
 #hdbuserstore utility.
 Node 1 IP Address: 
 Node 1 HANA instance number:
-Node 1 HANA Backup Name:
+Node 1 HANA userstore Name:
 ```
 
 >[!NOTE]
@@ -376,28 +384,28 @@ Snapshot created successfully.
 在完成所有准备步骤后，可以开始配置实际存储快照的配置。 要计划的脚本会使用 SAP HANA 纵向扩展和横向扩展配置。 应该通过 cron 来计划脚本的执行。 
 
 可以创建实现三种类型的快照备份：
-- **HANA**：组合快照备份，其中包含 /hana/data、/hana/log 和 /hana/shared（包含 /usr/sap）的卷的快照通过协调式快照实现。 可从此快照还原单个文件。
+- **HANA**：组合快照备份，其中包含 /hana/data 和 /hana/shared（包含 /usr/sap）的卷的快照通过协调式快照实现。 可从此快照还原单个文件。
 - **Logs**：/hana/logbackups 卷的快照备份。 执行此存储快照时不触发任何 HANA 快照。 此存储卷是要包含 SAP HANA 事务日志备份的卷。 SAP HANA 事务日志备份的执行频率更高，以限制日志增长并防止潜在的数据丢失。 可从此快照还原单个文件。 其执行频率不应小于五分钟。
 - **Boot**：包含 HANA 大型实例启动逻辑单元号 (LUN) 的卷的快照。 此快照备份仅适用于 HANA 大型实例 I 类型 SKU。 无法从包含启动 LUN 的卷的快照执行单个文件还原。  
 
 
 这三种不同类型的快照的调用语法如下所示：
 ```
-HANA backup covering /hana/data, /hana/log, /hana/shared (includes/usr/sap)
+HANA backup covering /hana/data and /hana/shared (includes/usr/sap)
 ./azure_hana_backup.pl hana <HANA SID> manual 30
 
 For /hana/logbackups snapshot
 ./azure_hana_backup.pl logs <HANA SID> manual 30
 
 For snapshot of the volume storing the boot LUN
-./azure_hana_backup.pl boot manual 30
+./azure_hana_backup.pl boot none manual 30
 
 ```
 
 需要指定以下参数：
 
 - 第一个参数确定相应快照备份类型的特征。 允许的值为 **hana**、**logs** 和 **boot**。 
-- 第二个值是 HANA SID（如 HM3）。 执行启动卷的备份时不需要此参数。
+- 第二个参数是 **HANA SID**（例如 HM3）或 **none**。 如果提供的第一个参数值为 **hana** 或 **logs**，则此参数的值为 **HANA SID**（例如 HM3），而对于引导卷备份，该值为 **none**。 
 - 第三个参数是一个快照，或快照类型的备份标签。 它有两个用途。 第一个用途是指定快照的名称，以便知道这些快照的作用。 第二个用途是让 azure\_hana\_backup.pl 确定该特定标签下保留的存储快照数。 如果计划两个具有相同类型（例如 **hana**）、不同标签的存储快照备份，并定义要对每个备份保留 30 个快照，则最终会有 60 个受影响的存储卷快照。 
 - 第四个参数通过定义要保留的快照数（拥有相同快照前缀/标签）间接定义快照的保留期。 对于通过 cron 制定的执行计划，此参数十分重要。 
 
@@ -428,7 +436,7 @@ For snapshot of the volume storing the boot LUN
 - 每个卷的快照数限制为 255。
 
 
-对于不使用 HANA 大型实例灾难恢复功能的客户，快照频率会低一些。 在这类情况下，客户以 12 小时或 24 小时的周期对 /hana/data、/hana/log 和 /hana/shared（包括 /usr/sap）执行组合快照，并将这些快照保留一个月。 对日志备份卷的快照也执行相同操作。 但是，日志备份卷的 SAP HANA 事务日志备份按 5 - 15 分钟的周期执行。
+对于不使用 HANA 大型实例灾难恢复功能的客户，快照频率会低一些。 在这类情况下，客户以 12 小时或 24 小时的周期对 /hana/data 和 /hana/shared（包括 /usr/sap）执行组合快照，并将这些快照保留一个月。 对日志备份卷的快照也执行相同操作。 但是，日志备份卷的 SAP HANA 事务日志备份按 5 - 15 分钟的周期执行。
 
 我们建议使用 cron 执行计划的存储快照。 此外，建议使用同一个脚本来满足所有备份和灾难恢复需求。 需要修改脚本输入，使之与请求的不同备份时间匹配。 可以根据这些快照的执行时间，在 cron 中做好上述一切计划：每小时、12 小时、每天或每周。 
 
@@ -440,9 +448,9 @@ For snapshot of the volume storing the boot LUN
 22 12 * * *  ./azure_hana_backup.pl log HM3 dailylogback 28
 30 00 * * *  ./azure_hana_backup.pl boot dailyboot 28
 ```
-上述示例中有一个每小时执行一次的组合快照，该快照的实施对象包括含 /hana/data、/hana/log 和 /hana/shared（包括 /usr/sap）位置的卷。 此类型的快照用于快速实现过去两天内的时点恢复。 此外，将对这些卷执行每日快照。 因此，会执行两天的每时快照和四周的每日快照。 此外，事务日志备份卷每天备份一次。 这些备份将保留四周。 从 crontab 第三行可知，计划每五分钟执行一次 HANA 事务日志备份。 执行存储快照的不同 cron 作业的启动时间是错开的，因此不会在某个时间点同时执行所有这些快照。 
+上述示例中有一个每小时执行一次的组合快照，该快照的实施对象包括含 /hana/data 和 /hana/shared（包括 /usr/sap）位置的卷。 此类型的快照用于快速实现过去两天内的时点恢复。 此外，将对这些卷执行每日快照。 因此，会执行两天的每时快照和四周的每日快照。 此外，事务日志备份卷每天备份一次。 这些备份将保留四周。 从 crontab 第三行可知，计划每五分钟执行一次 HANA 事务日志备份。 执行存储快照的不同 cron 作业的启动时间是错开的，因此不会在某个时间点同时执行所有这些快照。 
 
-在以下示例中，将每小时执行一次组合快照，该快照涵盖包含 /hana/data、/hana/log 和 /hana/shared（包括 /usr/sap）位置的卷。 这些快照会保留两天。 事务日志备份卷的快照每五分钟执行一次，并保留四个小时。 与之前一样，HANA 事务日志文件的备份计划为每五分钟执行一次。 启动事务日志备份后，执行事务日志备份卷的快照时会存在两分钟的延迟。 一般情况下，SAP HANA 事务日志备份应在这两分钟内完成。 与之前一样，包含启动 LUN 的卷通过存储快照每天备份一次，且会保留四周。
+在以下示例中，将每小时执行一次组合快照，该快照涵盖包含 /hana/data 和 /hana/shared（包括 /usr/sap）位置的卷。 这些快照会保留两天。 事务日志备份卷的快照每五分钟执行一次，并保留四个小时。 与之前一样，HANA 事务日志文件的备份计划为每五分钟执行一次。 启动事务日志备份后，执行事务日志备份卷的快照时会存在两分钟的延迟。 一般情况下，SAP HANA 事务日志备份应在这两分钟内完成。 与之前一样，包含启动 LUN 的卷通过存储快照每天备份一次，且会保留四周。
 
 ```
 10 0-23 * * * ./azure_hana_backup.pl hana HM3 hourlyhana 48
@@ -453,9 +461,9 @@ For snapshot of the volume storing the boot LUN
 
 下图演示了上述示例的序列（不包括启动 LUN）：
 
-![备份和快照之间的关系](./media/hana-overview-high-availability-disaster-recovery/backup_snapshot.PNG)
+![备份和快照之间的关系](./media/hana-overview-high-availability-disaster-recovery/backup_snapshot_updated0921.PNG)
 
-SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据库。 SAP HANA 将保存点定期写入 /hana/data 卷。 根据 crontab 中所指定，SAP HANA 事务日志备份每五分钟执行一次。 由于对 /hana/data、/hana/log 和 /hana/shared 卷触发组合存储快照，因此还会每小时执行一次 SAP HANA 快照。 成功执行 HANA 快照后，会执行组合存储快照。 如 crontab 中所指示，在 HANA 事务日志备份后两分钟左右，/hana/logbackup 卷上的存储快照每五分钟执行一次。
+SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据库。 SAP HANA 将保存点定期写入 /hana/data 卷。 根据 crontab 中所指定，SAP HANA 事务日志备份每五分钟执行一次。 由于对 /hana/data 和 /hana/shared 卷触发组合存储快照，因此还会每小时执行一次 SAP HANA 快照。 成功执行 HANA 快照后，会执行组合存储快照。 如 crontab 中所指示，在 HANA 事务日志备份后两分钟左右，/hana/logbackup 卷上的存储快照每五分钟执行一次。
 
 
 >[!IMPORTANT]
@@ -463,7 +471,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 如果向用户承诺时间点恢复目标为 30 天，则需要满足以下条件：
 
-- 在极端情况下，需要能够访问针对 /hana/data、/hana/log 和 /hana/shared 且保留期限已达 30 天的组合存储快照。
+- 在极端情况下，需要能够访问针对 /hana/data 和 /hana/shared 且保留期限已达 30 天的组合存储快照。
 - 创建保留时长长于任何两个组合存储快照间隔时间的连续事务日志备份。 因此事务日志备份卷快照的最长保留时长需为 30 天。 如果将事务日志备份复制到位于 Azure 存储的另一个 NFS 共享，则不存在这种情况。 在这种情况下，可以从该 NFS 共享拉取旧事务日志备份。
 
 若要从存储快照和事务日志备份的最终存储复制中获益，需要更改 SAP HANA 写入事务日志备份的位置。 可在 HANA Studio 中进行此更改。 虽然 SAP HANA 会自动备份完整日志段，但仍应指定确定的日志备份间隔时间。 使用灾难恢复选项时尤其如此，因为通常需要以确定性的周期执行日志备份。 在以下案例中，日志备份间隔定为 15 分钟。

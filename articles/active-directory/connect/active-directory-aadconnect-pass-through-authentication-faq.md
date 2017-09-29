@@ -12,22 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: ded80330ad323a0019ad59ac54d076a78b70f521
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: cfc95726c535aa49add98d700740b24bde5ea0f7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
 本文解决了有关 Azure Active Directory (Azure AD) 传递身份验证的常见问题。 请随时返回查看新内容。
-
->[!IMPORTANT]
->传递身份验证目前以预览版提供。
 
 ## <a name="which-of-the-azure-ad-sign-in-methods---pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs---should-i-choose"></a>我应选择哪种 Azure AD 登录方法（传递身份验证、密码哈希同步和 Active Directory 联合身份验证服务 (AD FS)）？
 
@@ -65,7 +62,7 @@ ms.lasthandoff: 08/04/2017
 
 如果已针对特定的用户配置[密码写回](../active-directory-passwords-update-your-own-password.md)，则当用户使用传递身份验证进行登录时，可更改或重置其密码。 密码会按预期写回到本地 Active Directory。
 
-但是，若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“你的组织不允许你更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在你本地 Active Directory 中重置其密码。
+但是，若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“组织不允许更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在你本地 Active Directory 中重置其密码。
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>传递身份验证如何防止不受密码搜索攻击？
 
@@ -132,10 +129,10 @@ ms.lasthandoff: 08/04/2017
 从服务器上卸载传递身份验证代理会导致其停止接收登录请求。 执行此操作之前请确保正在运行另一个身份验证代理，以避免租户上的用户登录断开。
 
 ## <a name="next-steps"></a>后续步骤
-- [**当前限制**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 此功能目前处于预览状态。 了解支持和不支持的方案。
-- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 启用并运行 Azure AD 传递身份验证。
-- [**深入技术探究**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能的工作原理。
-- [**故障排除**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [**当前限制**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
+- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 启动并运行 Azure AD 直通身份验证。
+- [深入技术探究](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能如何运作。
+- [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [**Azure AD 无缝 SSO**](active-directory-aadconnect-sso.md) - 深入了解此补充功能。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 
