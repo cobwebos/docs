@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: c8e1db0a5488b1296206a4d557e47599edc59a88
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 7b7e5f0f089cc87c9e63eee1fd3d29b7a2c0d49f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
@@ -28,7 +28,6 @@ ms.lasthandoff: 07/28/2017
 
 > [!IMPORTANT]
 > 如果遇到本地 VPN 设备与 VPN 网关之间的连接问题，请参阅[已知的设备兼容性问题](#known)。
->
 >
 
 ### <a name="items-to-note-when-viewing-the-tables"></a>查看表时的注意事项：
@@ -56,9 +55,9 @@ ms.lasthandoff: 07/28/2017
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X-series |Barracuda Firewall 6.5 |[配置指南](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |不兼容 |
 | Brocade            |Vyatta 5400 vRouter   |Virtual Router 6.6R3 GA|[配置指南](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |不兼容 |
 | 检查点 |安全网关 |R77.30 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |不兼容 |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[配置指南*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[配置示例*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[配置示例**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX，SDX，VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |  |[配置指南](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
@@ -69,12 +68,15 @@ ms.lasthandoff: 07/28/2017
 | Juniper |SSG |ScreenOS 6.2 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft |路由和远程访问服务 |Windows Server 2012 |不兼容 |[配置示例](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | 打开系统 AG |任务控制安全网关 |不适用 |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
-| Openswan |Openswan |2.6.32 |（即将支持） |不兼容 |
 | Palo Alto Networks |运行 PAN-OS 的所有设备 |PAN-OS<br>PolicyBased：6.1.5 或更高版本<br>RouteBased：7.1.4 |[配置指南](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[配置指南](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| SonicWall |TZ 系列、NSA 系列<br>SuperMassive 系列<br>E 类 NSA 系列 |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[SonicOS 6.2 配置指南](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 配置指南](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[SonicOS 6.2 配置指南](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 配置指南](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| SonicWall |TZ 系列、NSA 系列<br>SuperMassive 系列<br>E 类 NSA 系列 |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |不支持|[配置指南](https://www.sonicwall.com/en-us/support/knowledge-base/170505320011694) |
 | WatchGuard |全部 |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
-(*) ISR 7200 系列路由器仅支持 PolicyBased VPN。
+> [!NOTE]
+>
+> (*) Cisco ASA 版本 8.4+ 增加了 IKEv2 支持，可以通过“UsePolicyBasedTrafficSelectors”选项使用自定义 IPsec/IKE 策略连接到 Azure VPN 网关。 请参阅此[操作说明文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)。
+>
+> (**) ISR 7200 系列路由器仅支持 PolicyBased VPN。
 
 ## <a name="additionaldevices"></a>非验证的 VPN 设备
 
@@ -105,9 +107,10 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="ipsec"></a>IPsec/IKE 参数
 
-> [!NOTE]
-> 尽管 VPN 网关支持下表中列出的值，但目前无法从 VPN 网关中选择或指定算法或参数的特定组合。 必须从本地 VPN 设备指定任何约束。 此外，还必须将 **MSS** 固定在 **1350**。
-> 
+> [!IMPORTANT]
+> 1. 下面各表包含了 Azure VPN 网关在默认配置中使用的算法和参数的组合。 对于使用 Azure 资源管理器部署模型创建的基于路由的 VPN 网关，可以在每个单独的连接上指定一个自定义策略。 有关详细说明，请参阅[配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)。
+>
+> 2. 此外，还必须将 TCP **MSS** 固定在 **1350**。 或者，如果 VPN 设备不支持 MSS 固定，则可以改为在隧道接口上将 **MTU** 设置为 **1400** 字节。
 >
 
 在下面的表中：
@@ -147,7 +150,7 @@ ms.lasthandoff: 07/28/2017
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |无         |
-| 2 |AES256        |SHA1              |无         |
+| #N/A |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
 | 5 |AES128        |SHA1              |无         |
@@ -158,29 +161,29 @@ ms.lasthandoff: 07/28/2017
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |无         |
-| 2 |AES256        |SHA1              |无         |
+| #N/A |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
 | 5 |AES128        |SHA1              |无         |
 | 6 |3DES          |SHA256            |无         |
 | 7 |DES           |SHA1              |无         |
 | 8 |AES256        |SHA1              |1            |
-| 9 |AES256        |SHA1              |2            |
+| 9 |AES256        |SHA1              |#N/A            |
 | 10|AES256        |SHA1              |14           |
 | 11|AES128        |SHA1              |1            |
-| 12|AES128        |SHA1              |2            |
+| 12|AES128        |SHA1              |#N/A            |
 | 13|AES128        |SHA1              |14           |
 | 14|3DES          |SHA1              |1            |
-| 15|3DES          |SHA1              |2            |
-| 16|3DES          |SHA256            |2            |
+| 15|3DES          |SHA1              |#N/A            |
+| 16|3DES          |SHA256            |#N/A            |
 | 17|AES256        |SHA256            |1            |
-| 18|AES256        |SHA256            |2            |
+| 18|AES256        |SHA256            |#N/A            |
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
 | 22|AES128        |SHA256            |无         |
 | 23|AES128        |SHA256            |1            |
-| 24|AES128        |SHA256            |2            |
+| 24|AES128        |SHA256            |#N/A            |
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
 

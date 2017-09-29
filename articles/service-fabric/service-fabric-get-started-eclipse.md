@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/21/2016
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 98c1b99972b9ad7a396d72b98e727286f6822e42
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: 4fa77da8665908553072792d7f2ede47bf5567dd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -45,6 +45,10 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 
 > [!NOTE]
 > 如果安装或更新 Service Fabric 插件时运行缓慢，原因可能是 Eclipse 设置有问题。 Eclipse 将收集有关所有更改的元数据，以更新已注册到 Eclipse 实例的站点。 若要加速 Service Fabric 插件更新的检查和安装过程，请转到“可用软件站点”。 清除所有站点对应的复选框，但指向 Service Fabric 插件位置 (http://dl.microsoft.com/eclipse/azure/servicefabric) 的站点除外。
+
+> [!NOTE]
+>如果 Eclipse 在 Mac 上未按预期方式工作，或者需要你以超级用户身份运行，请转到 ECLIPSE_INSTALLATION_PATH 文件夹，然后导航到子文件夹 Eclipse.app/Contents/MacOS。 运行 `./eclipse` 启动 Eclipse。
+
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>在 Eclipse 中创建 Service Fabric 应用程序
 

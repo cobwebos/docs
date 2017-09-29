@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2017
+ms.date: 09/20/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: baf948587ede31fe3d5b4f6f0981269b4cfe4d3d
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 68f9492231d367b1ede6ab032ec1c66c75150957
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
@@ -127,7 +127,7 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 在 Service Fabric Explorer 中，可看到应用程序和应用程序类型不再显示在“应用程序”节点中。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 库
-Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral 提供的 Service Fabric Java 库。
+Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral 提供的 Service Fabric Java 库。 
 
 ### <a name="actors"></a>执行组件
 
@@ -137,7 +137,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-actors-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -146,19 +146,19 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-actors-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-actors-preview:0.12.0'
   }
   ```
 
 ### <a name="services"></a>服务
 
-针对应用程序的 Service Fabric 无状态服务支持。
+针对应用程序的 Service Fabric Reliable Services 支持。
 
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-services-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -167,7 +167,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-services-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-services-preview:0.12.0'
   }
   ```
 
@@ -180,7 +180,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-transport-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -189,7 +189,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-transport-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-transport-preview:0.12.0'
   }
   ```
 
@@ -201,7 +201,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -210,7 +210,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-preview:0.12.0'
   }
   ```
 

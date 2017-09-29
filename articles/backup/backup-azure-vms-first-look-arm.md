@@ -13,14 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/15/2017
+ms.date: 09/04/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 696f8025d0d7a65f59be650fac0a6e0e68f1a2ca
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 639f008eea61b973b9d32dc734d42d5c4e93e924
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>将 Azure 虚拟机备份到恢复服务保管库
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/22/2017
 * 标准存储 VM
 * 高级存储 VM
 * 在托管磁盘上运行的 VM
-* 使用 Azure 磁盘加密进行加密的 VM，以及 BEK 和 KEK
+* 使用 Azure 磁盘加密进行加密的 VM
 * 使用 VSS 对 Windows VM 进行应用程序一致性备份，以及使用自定义快照前和快照后脚本对 Linux VM 进行应用程序一致性备份
 
 有关保护高级存储 VM 的详细信息，请参阅[备份和还原高级存储 VM](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)一文。 有关支持托管磁盘 VM 的详细信息，请参阅[备份和还原托管磁盘上的 VM](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。 若要详细了解适用于 Linux VM 备份的前脚本和后脚本框架，请参阅[使用前脚本和后脚本进行应用程序一致性 Linux VM 备份] (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
@@ -183,7 +183,7 @@ ms.lasthandoff: 08/22/2017
 现已创建保管库，接下来请了解如何设置存储复制。
 
 ### <a name="set-storage-replication"></a>设置存储复制
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果恢复服务保管库是主备份，请将存储复制选项设置为异地冗余存储。 如果想要一个更便宜、但持久性不高的选项，请选择“本地冗余存储”。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)存储选项。
+存储复制选项可让用户在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果恢复服务保管库是主备份，请将存储复制选项设置为异地冗余存储。 如果想要一个更便宜、但持久性不高的选项，请选择“本地冗余存储”。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 

@@ -18,10 +18,10 @@ ms.date: 08/25/2017
 ms.author: nepeters
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 7b8336e3865e7032e3ee0d5e4ee712bcb95aa4b5
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 01357ceca1d78c80c901c9fbec08ce85f02fb958
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -69,6 +69,8 @@ az group create --name myResourceGroup --location ukwest
 ```azurecli-interactive
 az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
+
+在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#create) 命令中，以减少默认代理计数。 
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。
 
