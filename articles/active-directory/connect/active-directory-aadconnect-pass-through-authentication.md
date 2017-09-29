@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 6acbc347d7b187a6aac603dd05cf95c6aba54475
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 9fcf2756dee8a19ee3fd6013ccbb427fcef99ae1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,14 +28,13 @@ ms.lasthandoff: 08/01/2017
 
 借助 Azure Active Directory (Azure AD) 传递身份验证证，用户可使用同一密码登录到本地应用程序和基于云的应用程序。 此功能为用户提供更好的体验 - 少记一个密码，并且能减少 IT 支持人员成本，因为用户不太可能忘记如何登录。 如果用户使用 Azure AD 进行登录，此功能可直接针对本地 Active Directory 验证用户的密码。
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PyeAC85Gm7w" frameborder="0" allowfullscreen></iframe>
+
 此功能是 [Azure AD 密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)的一种替代方法，可为组织提供同样的云身份验证权益。 但是，某些组织中的安全和符合性策略不允许这些组织发送用户密码，即使是以经过哈希处理的窗体在其内部边界之外进行发送也是如此。 传递身份验证是这类组织的理想解决方案。
 
 ![Azure AD 直通身份验证](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
 可将传递身份验证与[无缝单一登录](active-directory-aadconnect-sso.md)功能结合使用。 这样一来，如果用户在企业网络中的企业计算机上访问应用程序，他们不需要键入密码便可登录。
-
->[!IMPORTANT]
->Azure AD 直通身份验证目前处于预览状态。
 
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>使用 Azure AD 传递身份验证的主要优势
 
@@ -59,6 +58,7 @@ ms.lasthandoff: 08/01/2017
 - 支持用户登录到所有基于 Web 浏览器的应用程序和使用[新式身份验证](https://aka.ms/modernauthga)的 Microsoft Office 客户端应用程序。
 - 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性（称为 `Alternate ID`）。
 - 该功能可与[条件性访问](../active-directory-conditional-access.md)功能（例如多重身份验证 (MFA)）进行无缝配合使用，帮助保护用户安全。
+- 与基于云的[自助密码管理](../active-directory-passwords-overview.md)集成，包括本地 Active Directory 的密码写回和通过禁止常用密码的密码保护。
 - 如果 AD 林之间存在信任关系并且正确配置了名称后缀路由，则支持多林环境。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 - 可通过 [Azure AD Connect](active-directory-aadconnect.md) 启用它。
@@ -68,11 +68,11 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 启用并运行 Azure AD 传递身份验证。
-- [**当前限制**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 此功能目前处于预览状态。 了解支持和不支持的方案。
-- [**深入技术探究**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能的工作原理。
+- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 快速了解 Azure AD 直通身份验证。
+- [**当前限制**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
+- [深入技术探究](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能如何运作。
 - [**常见问题**](active-directory-aadconnect-pass-through-authentication-faq.md) - 常见问题解答。
-- [**故障排除**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [**Azure AD 无缝 SSO**](active-directory-aadconnect-sso.md) - 深入了解此补充功能。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 

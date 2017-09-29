@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ea15705bf02d9773507c6cb59f2da4c1dd0f9d77
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 7347be8520e643cd166851d3f525a9a0726b40c8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
@@ -30,8 +30,8 @@ ms.lasthandoff: 08/24/2017
 操作组可以具有最多 10 种不同的操作类型。 每个操作包含以下属性：
 
 * 名称：操作组中的唯一标识符。  
-* 操作类型：发送短信、发送电子邮件，或调用 webhook。  
-* 详细信息：相应电话号码、电子邮件地址，或 webhook URI。
+* **操作类型**：发送短信、发送电子邮件、调用 webhook，或者将数据发送到 ITSM 工具。
+* **详细信息**：相应电话号码、电子邮件地址、webhook URI 或 ITSM 连接详细信息。
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](monitoring-create-action-group-with-resource-manager-template.md)。
 
@@ -57,9 +57,14 @@ ms.lasthandoff: 08/24/2017
 
     a. 名称：输入此操作的唯一标识符。
 
-    b. 操作类型：选择 SMS、电子邮件或 webhook。
+    b. **操作类型**：选择短信、电子邮件、webhook 或 ITSM。
 
-    c. 详细信息：根据操作类型，输入电话号码、电子邮件地址或 Webhook URI。
+    c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI 或 ITSM 连接详细信息。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。 
+
+> [!NOTE]
+> ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。 ITSM 操作当前仅适用于活动日志警报。 对于其他警报类型，此操作当前不执行任何操作。
+>
+>
 
 8. 选择“确定”创建操作组。
 
@@ -72,6 +77,7 @@ ms.lasthandoff: 08/24/2017
 ## <a name="next-steps"></a>后续步骤 ##
 * 详细了解[短信警报行为](monitoring-sms-alert-behavior.md)。  
 * 获取[对活动日志警报 webhook 架构的了解](monitoring-activity-log-alerts-webhook.md)。  
+* 了解有关 [ITSM 连接器](../log-analytics/log-analytics-itsmc-overview.md)的详细信息
 * 详细了解有关警报的[速率限制](monitoring-alerts-rate-limiting.md)。 
 * 获取[活动日志警报概述](monitoring-overview-alerts.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](monitoring-activity-log-alerts-on-service-notifications.md)。

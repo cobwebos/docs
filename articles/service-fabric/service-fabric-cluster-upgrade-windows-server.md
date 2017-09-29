@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/30/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: ac40775ca62362a32184207857a0b965a798e135
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f141c3d22275ff04d7161415e9c9f879d85dbc08
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-on-windows-server-cluster"></a>升级 Windows Server 群集上的独立 Azure Service Fabric
@@ -219,6 +219,7 @@ ms.lasthandoff: 08/12/2017
 1. 单个证书升级：升级路径为“证书 A（主证书）-> 证书 B（主证书）-> 证书 C（主证书）-> ...”。   
 2. 双证书升级：升级路径为“证书 A（主证书）-> 证书 A（主证书）和证书 B（辅助证书）-> 证书 B（主证书）-> 证书 B（主证书）和证书 C（辅助证书）-> 证书 C（主证书）-> ...”。
 3. 证书类型升级：“基于指纹的证书配置 <-> 基于 CommonName 的证书配置”。 例如，“证书指纹 A（主证书）和指纹 B（辅助证书）-> 证书 CommonName C”。
+4. 证书颁发者指纹升级：升级路径为“Certificate CN=A,IssuerThumbprint=IT1 (Primary) -> Certificate CN=A,IssuerThumbprint=IT1,IT2 (Primary) -> Certificate CN=A,IssuerThumbprint=IT2 (Primary)”
 
 
 ## <a name="next-steps"></a>后续步骤

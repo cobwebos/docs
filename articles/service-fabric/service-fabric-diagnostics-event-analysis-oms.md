@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 425c7a733a0a2383f01d2122e7155d3e3a9071be
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: f52988f2a67f2cafe93a7e0a358c599658d068b2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -40,7 +40,7 @@ Log Analytics 收到数据后，OMS 提供多个预打包的管理解决方案�
 
 ![OMS SF 解决方案](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
-可通过两种方法预配和配置 OMS 工作区：通过 Resource Manager 模板或直接从 Azure Marketplace 预配和配置。 部署群集时使用第一种方法，若已在启用了诊断的情况下部署有群集，则使用第二种。
+可通过两种方法预配和配置 OMS 工作区：通过 Resource Manager 模板或直接从 Azure 应用商店预配和配置。 部署群集时使用第一种方法，若已在启用了诊断的情况下部署有群集，则使用第二种。
 
 ### <a name="deploying-oms-using-a-resource-management-template"></a>使用 Resource Manager 模板部署 OMS
 
@@ -51,11 +51,11 @@ Log Analytics 收到数据后，OMS 提供多个预打包的管理解决方案�
 
 [此处](https://azure.microsoft.com/resources/templates/service-fabric-oms/)是示例模板，可根据需求使用和修改，它将执行上述操作。 如果想要更多选择，可在 [Service Fabric 和OMS 模板](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS)处查阅更多模板，它们根据设置 OMS 工作区所处的阶段为你提供其他选项。
 
-### <a name="deploying-oms-using-through-azure-marketplace"></a>通过 Azure Marketplace 部署 OMS
+### <a name="deploying-oms-using-through-azure-marketplace"></a>通过 Azure 应用商店部署 OMS
 
-若要在部署群集之后添加 OMS 工作区，请转到 Azure Marketplace，查找“Service Fabric 分析”。 结果中应该只有一个资源，显示在“监视和管理”类别中，如下所示：
+若要在部署群集之后添加 OMS 工作区，请转到 Azure 应用商店，查找“Service Fabric 分析”。 结果中应该只有一个资源，显示在“监视和管理”类别中，如下所示：
 
-![Marketplace 中的 OMS SF 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+![应用商店中的 OMS SF 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
 单击“创建”后，将提示创建 OMS 工作区。 单击“选择工作区”，然后单击“新建工作区”。 填写必需的条目，此处仅要求 Service Fabric 群集和 OMS 工作区的订阅相同。 验证条目后，OMS 工作区会在数分钟内部署。 部署结束后，仍可创建 Service Fabric 解决方案边栏选项卡。 请确保相同工作区在 OMS 工作区下显示，点击底部的“创建”按钮，将 Service Fabric 解决方案添加到该工作区。
 
@@ -92,7 +92,7 @@ Log Analytics 收到数据后，OMS 提供多个预打包的管理解决方案�
 
 若要在工作区中设置容器解决方案，请确保已遵循上文所述步骤在群集结点上部署 OMS 代理。 群集准备就绪后，请在其上部署一个容器。 请记住，首次将容器映像部署到群集时，需要几分钟才能下载映像，具体时间取决于映像大小。
 
-在 Azure Marketplace 中，搜索“容器”并创建容器资源（位于“监视和管理”类别下）。
+在 Azure Marketplace 中的“监视 + 管理”类别下，搜索“容器监视解决方案”并创建应该显示的“容器监视解决方案”结果。
 
 ![添加容器解决方案](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 

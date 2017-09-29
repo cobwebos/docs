@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: d3e373adeaa2ae01c8e3cbaffccf0ddb5310126d
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: fc0cc37794ef291c9d27b094211b38cec90da55c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="install-a-client-certificate-for-point-to-site-azure-certificate-authentication-connections"></a>为点到站点 Azure 证书身份验证连接安装客户端证书
@@ -36,8 +36,10 @@ ms.lasthandoff: 09/23/2017
 
 ## <a name="installmac"></a>在 Mac 客户端上安装证书
 
+Mac VPN 客户端仅在资源管理器部署模型中受支持。 经典部署模型不支持它们。
+
 > [!NOTE]
-> Mac VPN 客户端仅在资源管理器部署模型中受支持。 经典部署模型不支持它们。
+>  IKEv2 目前处于预览状态。
 >
 
 [!INCLUDE [Install on Mac](../../includes/vpn-gateway-certificates-install-mac-client-cert-include.md)]

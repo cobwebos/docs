@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 8ca04ac79665d5ecc639addd48939f71825f2024
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 1ecded3af6396f50e67dc5d2a9ef8337699046ea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
@@ -79,7 +79,7 @@ Service Fabric 群集中提供的容器服务的默认网络模式是 `nat` 网�
             ],
     ```
 
-2. 设置网络配置文件部分，以允许在群集的每个节点上配置多个 IP 地址。 以下示例为 Windows Service Fabric 群集的每个节点设置了五个 IP 地址（因此，可使五个服务实例侦听每个节点上的端口）。
+2. 设置网络配置文件部分，以允许在群集的每个节点上配置多个 IP 地址。 以下示例为 Windows/Linux Service Fabric 群集的每个节点设置了五个 IP 地址（因此，可使五个服务实例侦听每个节点上的端口）。
 
     ```json
     "variables": {
@@ -174,124 +174,8 @@ Service Fabric 群集中提供的容器服务的默认网络模式是 `nat` 网�
                   }
                 ]
               }
-    ```
-
-    对于 Linux 群集，已添加其他公共 IP 配置以允许出站连接。 以下代码片段为 Linux 群集的每个节点设置五个 IP 地址：
-
-    ```json
-    "networkProfile": {
-                "networkInterfaceConfigurations": [
-                  {
-                    "name": "[concat(parameters('nicName'), '-0')]",
-                    "properties": {
-                      "ipConfigurations": [
-                        {
-                          "name": "[concat(parameters('nicName'),'-',0)]",
-                          "properties": {
-                            "primary": "true",
-                            "publicipaddressconfiguration": {
-                              "name": "devpub",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "loadBalancerBackendAddressPools": [
-                              {
-                                "id": "[variables('lbPoolID0')]"
-                              }
-                            ],
-                            "loadBalancerInboundNatPools": [
-                              {
-                                "id": "[variables('lbNatPoolID0')]"
-                              }
-                            ],
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 1)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 1)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 2)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 2)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 3)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 3)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 4)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 4)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 5)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 5)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        }
-                      ],
-                      "primary": true
-                    }
-                  }
-                ]
-              }
-    ```
+   ```
+ 
 
 3. 仅对 Windows 群集设置一个 NSG 规则，该规则通过以下值为 vNET 打开端口 UDP/53：
 
