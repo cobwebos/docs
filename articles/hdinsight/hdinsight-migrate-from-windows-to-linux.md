@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 2efd8e9981ac5d8f2ff28df9ffe1e6b5c01ba953
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4ea38d3b47ff4b50446f4ffdc3dc544fdcf938e7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
@@ -47,7 +47,7 @@ ms.lasthandoff: 06/10/2017
 
 验证一切都按预期工作后，请为迁移安排停机时间。 在停机期间，请执行以下操作：
 
-1. 备份所有存储在本地群集节点上的暂时性数据。 例如，如果你的数据直接存储在头节点上。
+1. 备份所有存储在本地群集节点上的暂时性数据。 例如，如果数据直接存储在头节点上。
 
 2. 删除基于 Windows 的群集。
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 06/10/2017
 
 #### <a name="direct-copy-between-blobs-in-azure-storage"></a>在 Azure 存储的 blob 之间直接复制
 
-或者，你可能想要使用 `Start-AzureStorageBlobCopy` Azure PowerShell cmdlet 在 HDInsight 以外的存储帐户之间复制 Blob。 有关详细信息，请参阅“Using Azure PowerShell with Azure Storage”（在 Azure 存储中使用 Azure PowerShell）一文中的“How to manage Azure Blobs”（如何管理 Azure Blob）部分。
+或者，可能想要使用 `Start-AzureStorageBlobCopy` Azure PowerShell cmdlet 在 HDInsight 以外的存储帐户之间复制 Blob。 有关详细信息，请参阅“Using Azure PowerShell with Azure Storage”（在 Azure 存储中使用 Azure PowerShell）一文中的“How to manage Azure Blobs”（如何管理 Azure Blob）部分。
 
 ## <a name="client-side-technologies"></a>客户端技术
 
@@ -109,12 +109,12 @@ ms.lasthandoff: 06/10/2017
 
 下表提供了迁移特定于 Windows 的服务器端组件的指南。
 
-| 如果你使用此技术... | 请执行此操作... |
+| 如果使用此技术... | 请执行此操作... |
 | --- | --- |
 | **PowerShell**（服务器端脚本，包含群集创建期间使用的脚本操作） |重新编写为 Bash 脚本。 有关脚本操作的信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。 |
 | **Azure CLI**（服务器端脚本） |尽管 Azure CLI 可在 Linux 上使用，但它并没有预先安装在 HDInsight 群集头节点上。 有关安装 Azure CLI 的详细信息，请参阅 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。 |
 | **.NET 组件** |.NET 在基于 Linux 的 HDInsight 上通过 [Mono](https://mono-project.com) 受支持。 有关详细信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。 |
-| **Win32 组件或其他仅限 Windows 的技术** |指南因组件或技术而异。 你可以找到与 Linux 兼容的版本，或者你可能需要查找替代解决方案或重新编写此组件。 |
+| **Win32 组件或其他仅限 Windows 的技术** |指南因组件或技术而异。 可以找到与 Linux 兼容的版本，或者可能需要查找替代解决方案或重新编写此组件。 |
 
 > [!IMPORTANT]
 > HDInsight 管理 SDK 与 Mono 完全不兼容。 此时它不应用作部署到 HDInsight 群集的解决方案的一部分。
@@ -129,7 +129,7 @@ ms.lasthandoff: 06/10/2017
 
 在群集创建期间，必须提供 SSH 用户，以及**密码**或**公钥证书**进行身份验证。
 
-我们建议使用公钥证书，因为它比密码更安全。 证书身份验证将生成已签名的公钥/私钥对，然后在创建群集时提供公钥。 使用 SSH 连接到服务器时，客户端上的私钥将会为连接提供身份验证。
+我们建议使用公钥证书，因为它比密码更安全。 证书身份验证将生成已签名的公钥/私钥对，然后在创建群集时提供公钥。 使用 SSH 连接到服务器时，客户端上的私钥会为连接提供身份验证。
 
 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 06/10/2017
 
 与基于 Linux 的群集配合使用的**脚本操作**必须以 Bash 脚本编写。 尽管脚本操作可在群集创建期间使用，它们也可以用于在基于 Linux 的群集已启动并开始运行之后进行自定义。 有关详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight](hdinsight-hadoop-customize-cluster-linux.md) 和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。
 
-另一个自定义功能是 **bootstrap**。 对于 Windows 群集，此功能可让你指定其他配合 Hive 使用的库的位置。 在创建群集后，这些库可自动配合 Hive 查询使用，而无需使用 `ADD JAR`。
+另一个自定义功能是 **bootstrap**。 对于 Windows 群集，使用此功能可指定其他配合 Hive 使用的库的位置。 在创建群集后，这些库可自动配合 Hive 查询使用，而无需使用 `ADD JAR`。
 
 基于 Linux 的群集的 Bootstrap 不具备此功能。 请改用[在创建群集期间添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md)中所述的脚本操作。
 
@@ -158,10 +158,10 @@ ms.lasthandoff: 06/10/2017
 
 ### <a name="ambari-alerts"></a>Ambari 警报
 
-Ambari 提供能够通知群集潜在问题的警报系统。 警报将以红色或黄色条目出现在 Ambari Web UI 中，你也可以通过 REST API 检索警报。
+Ambari 提供能够通知群集潜在问题的警报系统。 警报以红色或黄色条目出现在 Ambari Web UI 中，也可以通过 REST API 检索警报。
 
 > [!IMPORTANT]
-> Ambari 警报表示可能有问题，而不表示已发生问题。 例如，你可能会收到无法访问 HiveServer2 的警报，但实际上仍可以正常访问它。
+> Ambari 警报表示可能有问题，而不表示已发生问题。 例如，可能会收到无法访问 HiveServer2 的警报，但实际上仍可以正常访问它。
 >
 > 许多警报都是针对某项服务实现为基于间隔的查询，并预期在特定的时间范围内收到响应。 因此警报本身并不代表服务已关闭，而只是单纯表示该服务没有在预期时间范围内返回结果。
 
@@ -178,7 +178,7 @@ Linux 群集文件系统的布局与基于 Windows 的 HDInsight 群集不同。
 | Hortonworks 数据平台 (HDP) |`/usr/hdp`。此处有两个目录，一个是当前 HDP 版本，另一个是 `current`。 `current` 目录包含位于版本号目录中的文件和目录的符号链接。 由于版本号随 HDP 版本的更新而更改，因此可将 `current` 目录作为访问 HDP 文件的便利方式。 |
 | hadoop-streaming.jar |`/usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar` |
 
-一般而言，如果你知道文件的名称，则可以从 SSH 会话使用以下命令来查找文件路径：
+一般而言，如果知道文件的名称，则可以从 SSH 会话使用以下命令来查找文件路径：
 
     find / -name FILENAME 2>/dev/null
 
@@ -254,20 +254,20 @@ Oozie 工作流支持 shell 操作。 shell 操作将默认 shell 用于操作�
 
 ### <a name="azure-data-factory-custom-net-activities"></a>Azure 数据工厂自定义 .NET 活动
 
-Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight 群集支持。 你应改用以下方法之一，将自定义活动实现为 ADF 管道的一部分。
+Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight 群集支持。 应改用以下方法之一，将自定义活动实现为 ADF 管道的一部分。
 
-* 在 Azure Batch 池上执行 .NET 活动。 请参阅[在 Azure 数据工厂管道中使用自定义活动](../data-factory/data-factory-use-custom-activities.md)的“使用 Azure Batch 链接服务”部分
-* 将活动实现为 MapReduce 活动。 有关详细信息，请参阅[从数据工厂调用 MapReduce 程序](../data-factory/data-factory-map-reduce.md)。
+* 在 Azure Batch 池上执行 .NET 活动。 请参阅[在 Azure 数据工厂管道中使用自定义活动](../data-factory/transform-data-using-dotnet-custom-activity.md)的“使用 Azure Batch 链接服务”部分
+* 将活动实现为 MapReduce 活动。 有关详细信息，请参阅[从数据工厂调用 MapReduce 程序](../data-factory/transform-data-using-hadoop-map-reduce.md)。
 
 ### <a name="line-endings"></a>行尾
 
-一般情况下，基于 Windows 的系统上的行尾使用 CRLF，而基于 Linux 的系统使用 LF。 如果你生成的数据带有 CRLF 行尾或者你预期会出现这种行尾，可能需要修改生成器或使用方才能处理 LF 行尾。
+一般情况下，基于 Windows 的系统上的行尾使用 CRLF，而基于 Linux 的系统使用 LF。 如果生成的数据带有 CRLF 行尾或者预期会出现这种行尾，可能需要修改生成器或使用方才能处理 LF 行尾。
 
 例如，使用 Azure PowerShell 在基于 Windows 的群集上查询 HDInsight，将返回带有 CRLF 的数据。 在基于 Linux 的群集上使用相同的查询将返回 LF。 在迁移到基于 Linux 的群集之前应进行测试，以查看行尾是否会导致解决方案出现问题。
 
-如果有直接在 Linux 群集节点上执行的脚本，你应始终使用 LF 作为行结束符。 如果使用 CRLF，可能会在基于 Linux 的群集上运行脚本时遇到错误。
+如果有直接在 Linux 群集节点上执行的脚本，应始终使用 LF 作为行结束符。 如果使用 CRLF，可能会在基于 Linux 的群集上运行脚本时遇到错误。
 
-如果你知道脚本中不存在内嵌 CR 字符的字符串，可以使用以下方法之一来批量更改行尾：
+如果知道脚本中不存在内嵌 CR 字符的字符串，可以使用以下方法之一来批量更改行尾：
 
 * **在上传到群集前**：在将脚本上传到群集前，使用以下 PowerShell 语句将行尾从 CRLF 更改为 LF。
 

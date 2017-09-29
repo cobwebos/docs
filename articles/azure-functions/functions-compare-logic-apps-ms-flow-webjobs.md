@@ -17,10 +17,10 @@ ms.date: 09/07/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 1c39b2d9943532c8ccf0a11d3cf4bc8896669cfb
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: cec9660ee068b33a114748813f0c7ffa3821d973
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
@@ -29,7 +29,7 @@ ms.lasthandoff: 09/20/2017
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure 应用服务 WebJobs](../app-service-web/web-sites-create-web-jobs.md)
+* [Azure 应用服务 WebJobs](../app-service/web-sites-create-web-jobs.md)
 
 将分散的系统"粘附"在一起时，所有这些服务很有用。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 但是，每个服务都有其独特的优点，进行比较并不能解决“哪个服务最佳？”的问题， 而是“哪个服务最适合于这种情况？”问题。 通常，这些服务的组合是快速构建可扩展、全功能的集成解决方案的最佳方法。
 

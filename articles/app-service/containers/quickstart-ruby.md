@@ -17,10 +17,10 @@ ms.date: 08/29/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 7b3620d3674ea3783af72af37f80db0ea357d325
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 7080a655040918c6cc059023ad3d62389dd6ab71
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="create-a-ruby-app-with-web-apps-on-linux"></a>使用 Linux 上的 Web 应用创建 Ruby 应用
@@ -171,5 +171,5 @@ http://<app name>.azurewebsites.net
 
 ## <a name="next-steps"></a>后续步骤
 
-[Linux 上的 Azure 应用服务 Web 应用常见问题解答](https://docs.microsoft.com/azure/app-service-web/app-service-linux-faq.md)
+[Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
 

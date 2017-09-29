@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: e5242b5f76866ca382b31005deca07cd722af423
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 535dcd8b03a0fd92eaa5800a924ca17fc958d630
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
@@ -64,7 +64,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 * [使用 Azure 门户故障转移到异地复制的辅助数据库](sql-database-geo-replication-portal.md)
 * [使用 PowerShell 故障转移到异地复制的辅助数据库](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-* [使用 T-SQL 故障转移到异地复制的辅助数据库](/sql/t-sql/statements/alter-database-azure-sql-database.md)
+* [使用 T-SQL 故障转移到异地复制的辅助数据库](/sql/t-sql/statements/alter-database-azure-sql-database)
 
 ## <a name="recover-using-geo-restore"></a>使用异地还原进行恢复
 如果应用程序停机不会带来业务责任，则可以使用[异地还原](sql-database-recovery-using-backups.md)作为恢复应用程序数据库的方法。 它会从其最新的异地冗余备份创建数据库的副本。

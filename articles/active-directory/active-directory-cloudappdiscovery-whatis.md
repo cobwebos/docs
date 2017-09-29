@@ -1,5 +1,5 @@
 ---
-title: "使用 Cloud App Discovery 查找非托管的云应用程序 | Microsoft Docs"
+title: "在 Azure Active Directory 中使用 Cloud App Discovery 查找非托管云应用程序 | Microsoft Docs"
 description: "提供有关如何使用 Cloud App Discovery 来查找和管理应用程序、这样做的好处以及其工作原理的信息。"
 services: active-directory
 keywords: "cloud app discovery, 管理应用程序"
@@ -12,21 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 011cdf5f1e1b78832a8e4f18f4eef0f376860c45
+ms.translationtype: HT
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 35b898aa3c03aeef914a7df574ac65a22a6c7bec
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="finding-unmanaged-cloud-applications-with-cloud-app-discovery"></a>使用 Cloud App Discovery 查找非托管的云应用程序
-## <a name="overview"></a>概述
-在现代企业中，IT 部门不一定了解组织成员执行其工作所使用的所有云应用程序。 很容易知道为什么管理员对未经授权访问公司数据、可能的数据泄漏和其他安全风险有所顾虑。 缺乏认知可能使得要创建一个应付这些安全风险的计划让人却步。
+# <a name="find-unmanaged-cloud-applications-with-cloud-app-discovery"></a>使用 Cloud App Discovery 查找非托管云应用程序
+## <a name="summary"></a>摘要
 
-Cloud App Discovery 是 Azure Active Directory (AD) Premium 的一项功能，可用于发现你组织中的人员所使用的云应用程序。
+Cloud App Discovery 是 Azure Active Directory Premium 的一项功能，可用于发现组织中的人员所使用的非托管云应用程序。 在现代企业中，IT 部门不一定了解组织成员执行其工作所使用的所有云应用程序。 很容易知道为什么管理员对未经授权访问公司数据、可能的数据泄漏和其他安全风险有所顾虑。 缺乏认知可能使得要创建一个应付这些安全风险的计划让人却步。
+
+> [!TIP] 
+> 在 Azure Active Directory (Azure AD) 中核查 Cloud App Discovery 的改进，该功能已通过[与 Microsoft Cloud App Security 集成](https://portal.cloudappsecurity.com)而得到加强。
 
 **使用 Cloud App Discovery，可以：**
 
@@ -42,15 +44,11 @@ Cloud App Discovery 是 Azure Active Directory (AD) Premium 的一项功能，�
 
 ![Cloud App Discovery 图示](./media/active-directory-cloudappdiscovery/cad01.png)
 
-若要开始使用 Cloud App Discovery，请参阅 [Getting Started With Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)（Cloud App Discovery 入门）
 
-## <a name="related-articles"></a>相关文章
+## <a name="next-steps"></a>后续步骤
 * [Cloud App Discovery 的安全和隐私注意事项](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)  
-* [Cloud App Discovery Group Policy Deployment Guide](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)（Cloud App Discovery 组策略部署指南）
-* [Cloud App Discovery System Center Deployment Guide](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)（Cloud App Discovery System Center 部署指南）
 * [具有自定义端口的代理服务器的 Cloud App Discovery 注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 * [Cloud App Discovery Agent Changelog](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)（Cloud App Discovery 代理更改日志）
-* [Cloud App Discovery Frequently Asked Questions](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)（Cloud App Discovery 常见问题）
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
 

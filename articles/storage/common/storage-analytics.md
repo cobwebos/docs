@@ -3,7 +3,7 @@ title: "使用 Azure 存储分析收集日志和指标数据 | Microsoft Docs"
 description: "使用存储分析，可以跟踪所有存储服务的度量值数据，并收集 Blob、队列和表存储的日志。"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: a477c1eaf2388f31d4fd36b90f9a830c782873d3
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 61e4f599d17417c11d7ff79489300b82df0bc9c8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="storage-analytics"></a>存储分析
@@ -38,7 +38,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 仅当存在存储服务活动时，才会创建日志项。 例如，如果存储帐户的 BLOB 服务中存在活动，而表或队列服务中没有活动，则仅创建与 BLOB 服务有关的日志。
 
-存储分析日志记录不可用于 Azure 文件存储。
+存储分析日志记录不可用于 Azure 文件。
 
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
 将记录以下类型的已经过身份验证的请求：
@@ -61,7 +61,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 不会记录所有其他失败的匿名请求。 [存储分析记录的操作和状态消息](https://msdn.microsoft.com/library/hh343260.aspx)及[存储分析日志格式](https://msdn.microsoft.com/library/hh343259.aspx)主题中提供了所记录数据的完整列表。
 
 ### <a name="how-logs-are-stored"></a>如何存储日志
-所有日志以块 Blob 的形式存储在一个名为 $logs 的容器中，为存储帐户启用存储分析时将自动创建该容器。 $logs 容器位于存储帐户的 blob 命名空间中，例如：`http://<accountname>.blob.core.windows.net/$logs`。 在启用存储分析后，无法删除该容器，但可以删除其内容。
+所有日志以块 Blob 的形式存储在一个名为 $logs 的容器中，为存储帐户启用存储分析时会自动创建该容器。 $logs 容器位于存储帐户的 blob 命名空间中，例如：`http://<accountname>.blob.core.windows.net/$logs`。 在启用存储分析后，无法删除该容器，但可以删除其内容。
 
 > [!NOTE]
 > 执行容器列出操作（例如 [ListContainers](https://msdn.microsoft.com/library/azure/dd179352.aspx) 方法）时，不会显示 $logs 容器。 必须直接访问该容器。 例如，可以使用 [ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx) 方法访问 `$logs` 容器中的 Blob。
@@ -116,7 +116,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 * LogVersion=1.0
 
 ### <a name="accessing-logging-data"></a>访问日志记录数据
-可以使用 Blob 服务 API（包括 Azure 托管库提供的 .NET API）访问 `$logs` 容器中的所有数据。 存储帐户管理员可以读取和删除日志，但不能创建或更新日志。 在查询日志时，可以使用日志的元数据和日志名称。 给定小时的日志可能顺序不正确，但元数据始终指定日志中日志项的时间范围。 因此，在搜索特定日志时，你可以使用日志名称和元数据组合。
+可以使用 Blob 服务 API（包括 Azure 托管库提供的 .NET API）访问 `$logs` 容器中的所有数据。 存储帐户管理员可以读取和删除日志，但不能创建或更新日志。 在查询日志时，可以使用日志的元数据和日志名称。 给定小时的日志可能顺序不正确，但元数据始终指定日志中日志项的时间范围。 因此，在搜索特定日志时，可以使用日志名称和元数据组合。
 
 ## <a name="about-storage-analytics-metrics"></a>关于存储分析度量值
 存储分析可存储一些度量值，这些度量值包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 度量值数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题以及提高使用服务的应用程序的性能。
@@ -158,7 +158,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 | 分钟度量值，辅助位置 |$MetricsMinuteSecondaryTransactionsBlob <br/>$MetricsMinuteSecondaryTransactionsTable <br/>$MetricsMinuteSecondaryTransactionsQueue |所有版本，包括 2013-08-15。 必须启用读访问的异地冗余复制。 |
 | 容量（仅限 Blob 服务） |$MetricsCapacityBlob |所有版本，包括 2013-08-15。 |
 
-为存储帐户启用存储分析时，将自动创建这些表。 这些表通过存储帐户的命名空间进行访问，例如：`https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
+为存储帐户启用存储分析时，会自动创建这些表。 这些表通过存储帐户的命名空间进行访问，例如：`https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
 
 ### <a name="accessing-metrics-data"></a>访问度量值数据
 度量值表中的所有数据都可以使用表服务 API 进行访问，包括 Azure 托管库提供的 .NET API。 存储帐户管理员可以读取和删除表实体，但不能创建或更新表实体。
@@ -171,12 +171,12 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 * 为日志记录创建 Blob 的请求。 
 * 为度量创建表实体的请求。
 
-如果你配置了数据保留策略，在存储分析删除以前的日志记录和度量数据时，不会对删除事务进行收费。 不过，从客户端中删除事务是计费的。 有关保留策略的详细信息，请参阅[设置存储分析数据保留策略](https://msdn.microsoft.com/library/azure/hh343263.aspx)。
+如果配置了数据保留策略，在存储分析删除以前的日志记录和度量数据时，不会对删除事务进行收费。 不过，从客户端中删除事务是计费的。 有关保留策略的详细信息，请参阅[设置存储分析数据保留策略](https://msdn.microsoft.com/library/azure/hh343263.aspx)。
 
 ### <a name="understanding-billable-requests"></a>了解计费请求
-向帐户的存储服务发出的每个请求是应计费或不计费的。 存储分析记录向服务发出的每个请求，包括指示如何处理请求的状态消息。 同样，存储分析存储服务及其 API 操作的度量数据，包括某些状态消息的百分比和计数。 总之，这些功能可以帮助分析你的计费请求，对你的应用程序进行改进，以及诊断向你的服务发出的请求的问题。 有关计费的详细信息，请参阅 [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)（了解 Azure 存储计费 - 带宽、事务和容量）。
+向帐户的存储服务发出的每个请求是应计费或不计费的。 存储分析记录向服务发出的每个请求，包括指示如何处理请求的状态消息。 同样，存储分析存储服务及其 API 操作的度量数据，包括某些状态消息的百分比和计数。 总之，这些功能可以帮助分析计费请求，对应用程序进行改进，以及诊断向服务发出的请求的问题。 有关计费的详细信息，请参阅 [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
-查看存储分析数据时，可以使用[存储分析记录的操作和状态消息](https://msdn.microsoft.com/library/azure/hh343260.aspx)主题中的表来确定计费的请求。 然后，你可以将日志和度量数据与状态消息进行比较，以查看是否对你的特定请求进行收费。 也可以使用前述主题中的表来调查存储服务或各个 API 操作的可用性。
+查看存储分析数据时，可以使用[存储分析记录的操作和状态消息](https://msdn.microsoft.com/library/azure/hh343260.aspx)主题中的表来确定计费的请求。 然后，可以将日志和度量数据与状态消息进行比较，以查看是否对特定请求进行收费。 也可以使用前述主题中的表来调查存储服务或各个 API 操作的可用性。
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="setting-up-storage-analytics"></a>设置存储分析

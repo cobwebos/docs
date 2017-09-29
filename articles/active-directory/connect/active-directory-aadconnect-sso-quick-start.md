@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 977108687734a5eb7f7a30419de2a6bdef184d0e
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 75c361cca556c797fd3ea5480cacbbc14799aca8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -27,9 +27,6 @@ ms.lasthandoff: 08/07/2017
 ## <a name="how-to-deploy-seamless-sso"></a>如何部署无缝 SSO
 
 Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使登录连接到企业网络的企业台式机用户自动登录。 此功能可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
-
->[!IMPORTANT]
->无缝 SSO 功能目前处于预览状态。
 
 要部署无缝 SSO，需要遵循以下步骤：
 
@@ -73,7 +70,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使登录�
 
 ## <a name="step-3-roll-out-the-feature"></a>步骤 3：扩展此功能
 
-若要将此功能扩展到你的用户，需要通过 Active Directory 中的组策略将两个 Azure AD URL（https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net）添加到用户的 Intranet 区域设置。
+要向用户推出该功能，需要使用 Active Directory 中的组策略将几个 Azure AD URL 添加到用户的 Intranet 区域设置。
 
 >[!NOTE]
 > 以下说明仅适用于 Windows 上的 Internet Explorer 和 Google Chrome（如果它与 Internet Explorer 共用一组相同的受信任站点 URL）。 请阅读下一节，了解在 Mac 上设置 Mozilla Firefox 和 Google Chrome 的说明。
@@ -122,7 +119,7 @@ Mozilla Firefox 不会自动执行 Kerberos 身份验证。 每个用户必须�
 
 使用第三方 Active Directory 组策略扩展将 Azure AD URL 扩展到 Mac 上的 Firefox、Google Chrome，不在本文讨论范围之内。
 
-#### <a name="known-limitations"></a>已知限制
+#### <a name="known-browser-limitations"></a>已知的浏览器限制
 
 无缝 SSO 在 Firefox 和 Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式运行的 Internet Explorer 中也不起作用。
 
@@ -146,7 +143,7 @@ Mozilla Firefox 不会自动执行 Kerberos 身份验证。 每个用户必须�
 
 ## <a name="step-5-roll-over-keys"></a>步骤 5：滚动更新密钥
 
-在步骤 2 中，Azure AD Connect 在已启用无缝 SSO 的所有 AD 林中创建计算机帐户（表示 Azure AD）。 在[此处](active-directory-aadconnect-sso-how-it-works.md)了解更多详细信息。 为了提高安全性，建议经常滚动更新这些计算机帐户的 Kerberos 解密密钥。
+在步骤 2 中，Azure AD Connect 在已启用无缝 SSO 的所有 AD 林中创建计算机帐户（表示 Azure AD）。 在[此处](active-directory-aadconnect-sso-how-it-works.md)了解更多详细信息。 为了提高安全性，建议定期滚动更新这些计算机帐户的 Kerberos 解密密钥。 有关如何进行滚动更新的说明，请参阅[此处](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。
 
 >[!IMPORTANT]
 >启用该功能后无需_立即_执行此步骤。 至少每隔 30 天滚动更新一次 Kerberos 解密密钥。

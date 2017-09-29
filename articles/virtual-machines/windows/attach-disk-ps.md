@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 486e6a27fa28ec63001d824fe9f59c03a7aea5a7
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: e259a9cf42719fb0426dce09b5526fa43585bb26
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -54,15 +54,35 @@ $storageType = 'PremiumLRS'
 $dataDiskName = $vmName + '_datadisk1'
 
 $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Empty -DiskSizeGB 128
-
 $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
 
 $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
-
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
 
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 ```
+
+### <a name="using-managed-disks-in-an-availability-zone"></a>在可用性区域中使用托管磁盘
+若要在可用性区域中创建磁盘，请将 [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) 与 `-Zone` 参数一起使用。 以下示例在区域 *1* 中创建一个磁盘。
+
+[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
+
+```powershell
+$rgName = 'myResourceGroup'
+$vmName = 'myVM'
+$location = 'East US 2' 
+$storageType = 'PremiumLRS'
+$dataDiskName = $vmName + '_datadisk1'
+
+$diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Empty -DiskSizeGB 128 -Zone 1
+$dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
+
+$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
+$vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
+
+Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
+```
+
 
 ### <a name="using-unmanaged-disks-in-a-storage-account"></a>在存储帐户中使用非托管磁盘
 

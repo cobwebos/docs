@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 42e594dc6a8a8be619b5652bf8e44cf883650489
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 20e6cdaa2ab92b6f832b9d23344a10aa2f4e0763
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>计划和广播作业 (Node)
@@ -49,9 +49,9 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 **scheduleJobService.js**，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
-* Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* Node.js 版本 4.0.x 或更高版本； <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

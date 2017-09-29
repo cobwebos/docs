@@ -15,10 +15,10 @@ ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 8b8ab2883234850fe243c4d7473d737c497204b4
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 3b37033e0c96e01c73bef15af1b85116f404c354
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
@@ -34,7 +34,7 @@ ms.lasthandoff: 09/14/2017
 
 **备注：**
 
-- 条件访问策略中的用户必须有 [macOS 支持的 Office 版本](active-directory-conditional-access-technical-reference.md#supported-mobile-apps-and-desktop-clients)，才能访问资源。 
+- 条件访问策略中的用户必须有 [macOS 支持的 Office 版本](active-directory-conditional-access-technical-reference.md#client-apps-condition)，才能访问资源。 
 
 - 首次尝试访问期间，用户会看到有关使用公司门户注册设备的提示。
 
@@ -153,10 +153,20 @@ ms.lasthandoff: 09/14/2017
 
 ---
 
-**问：在哪里可以了解如何设置已加入混合 Azure AD 的设备？**
+**问：在哪里可以找到自动注册设备的安装说明？**
 
-**答：**有关详细说明，请参阅[设置已加入混合 Azure Active Directory 的设备](device-management-hybrid-azuread-joined-devices-setup.md)。
+**答：**有关详细说明，请参阅[如何配置已加入域的 Windows 设备的 Azure Active Directory 自动注册](active-directory-conditional-access-automatic-device-registration-setup.md)
 
+---
+
+**问：在哪里可以找到有关自动设备注册的故障排除信息？**
+
+**答：**有关故障排除信息，请参阅：
+
+- [排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 10 和 Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md)
+
+- 请参阅[排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+ 
 ---
 
 

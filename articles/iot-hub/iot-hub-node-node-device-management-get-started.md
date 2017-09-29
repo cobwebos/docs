@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: juanpere
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 7de541ac45fd277f3cfc91d598c654c24af187fc
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: edb86f73f637e3e1722c5027e3dcea531b19af53
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="get-started-with-device-management-node"></a>设备管理入门 (Node)
@@ -31,15 +31,15 @@ ms.lasthandoff: 06/17/2017
 * 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
 * 创建一个 Node.js 控制台应用，其通过 IoT 中心直接重启模拟设备应用。
 
-在本教程结束时，将会创建两个 Node.js 控制台应用：
+在本教程结束时，会创建两个 Node.js 控制台应用：
 
 **dmpatterns_getstarted_device.js**，它使用先前创建的设备标识连接到 IoT 中心，接收重新启动直接方法，模拟物理重新启动，并报告上次重新启动的时间。
 
 **dmpatterns_getstarted_service.js**，它调用模拟设备应用中的直接方法，显示响应，并显示更新后的报告属性。
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
-* Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* Node.js 版本 4.0.x 或更高版本； <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -47,7 +47,7 @@ ms.lasthandoff: 06/17/2017
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
-在本部分中，你将
+在本部分中，会
 
 * 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
 * 触发模拟设备重新启动

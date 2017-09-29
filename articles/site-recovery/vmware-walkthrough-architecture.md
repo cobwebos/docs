@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27.017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 4aae04a793bab11562c20ceec0e1ae8f1a035a0f
+ms.translationtype: HT
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 2bbab5f1ac0efe9632ad6c818504584e2503cf15
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 06/29/2017
     - 配置服务器通过 HTTPS 443 出站端口来与 Azure 协调复制管理。
     - 进程服务器从源计算机接收数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
     - 如果启用了多 VM 一致性，复制组中的计算机将通过端口 20004 相互通信。 如果将多台计算机分组到复制组，并且这些组在故障转移时共享崩溃一致且应用一致的恢复点，请使用多 VM 方案。 如果计算机运行相同的工作负荷并需要保持一致，这种做法非常有用。
-4. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用 Azure ExpressRoute [公共对等互连](../expressroute/expressroute-circuit-peerings.md#public-peering)。 不支持通过站点到站点 VPN 将流量从本地站点复制到 Azure。
+4. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用 Azure ExpressRoute [公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)。 不支持通过站点到站点 VPN 将流量从本地站点复制到 Azure。
 
 
 **图 2：VMware 到 Azure 的复制**
@@ -67,7 +67,7 @@ ms.lasthandoff: 06/29/2017
 
 1. 在验证故障转移可以正常工作以后，即可根据需要运行到 Azure 的计划外故障转移。 不支持计划内故障转移。
 2. 可以故障转移单台计算机，或创建[恢复计划](site-recovery-create-recovery-plans.md)来故障转移多台 VM。
-3. 运行故障转移时，将在 Azure 中创建副本 VM。 提交故障转移，开始从副本 Azure VM 访问工作负荷。
+3. 运行故障转移时，会在 Azure 中创建副本 VM。 提交故障转移，开始从副本 Azure VM 访问工作负荷。
 4. 当本地主站点再次可用时，便可以故障回复。 设置故障回复基础结构，开始将计算机从辅助站点复制到主站点，然后从辅助站点运行计划外故障转移。 提交此故障转移后，数据将回到本地，此时需要再次启用目标为 Azure 的复制。 [了解详细信息](site-recovery-failback-azure-to-vmware.md)
 
 故障回复有以下几项要求：

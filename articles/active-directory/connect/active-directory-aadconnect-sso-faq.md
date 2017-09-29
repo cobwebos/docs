@@ -12,22 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 518b2719f24be96dffba3458f6c15e65f16b7e0d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f603c4f0305184bfefe23a02b07cef134c83e678
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
 本文解决了有关 Azure Active Directory 无缝单一登录（无缝 SSO）的常见问题。 请随时返回查看新内容。
-
->[!IMPORTANT]
->无缝 SSO 功能目前处于预览状态。
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>无缝 SSO 使用的登录方法是什么？
 
@@ -49,9 +46,9 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 可以，此方案需要版本 2.1 或更高版本的[工作区加入客户端](https://www.microsoft.com/download/details.aspx?id=53554)。
 
-## <a name="how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account"></a>如何滚动更新 `AZUREADSSOACCT` 计算机帐户的 Kerberos 解密密钥？
+## <a name="how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account"></a>如何滚动更新 `AZUREADSSOACC` 计算机帐户的 Kerberos 解密密钥？
 
-请务必在本地 AD 林中频繁滚动更新 `AZUREADSSOACCT` 计算机帐户（代表 Azure AD）的 Kerberos 解密密钥。
+请务必在本地 AD 林中频繁滚动更新 `AZUREADSSOACC` 计算机帐户（代表 Azure AD）的 Kerberos 解密密钥。
 
 >[!IMPORTANT]
 >强烈建议至少每 30 天滚动更新一次 Kerberos 解密密钥。
@@ -70,7 +67,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>步骤 2. 在设置 Kerberos 解密密钥的每个 AD 林上更新此密钥
 
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 AD 林的域管理员凭据。
-2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSOACCT` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
+2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSOACC` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
 3. 针对已设置了此功能的每个 AD 林重复上述步骤。
 
 >[!IMPORTANT]
@@ -102,7 +99,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门](active-directory-aadconnect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
-- [**深入技术探究**](active-directory-aadconnect-sso-how-it-works.md) - 了解此功能的工作原理。
-- [**故障排除**](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [深入技术探究](active-directory-aadconnect-sso-how-it-works.md) - 了解此功能如何运作。
+- [故障排除](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 

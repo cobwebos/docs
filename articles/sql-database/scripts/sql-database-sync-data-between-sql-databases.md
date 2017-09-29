@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: douglasl
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: ac4dde8c175b1632de8c309f01f8dac7fde6426b
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 3a2fe08706ea5bea10da0c8f42188397a2f9f2f4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="use-powershell-to-sync-between-multiple-azure-sql-databases"></a>使用 PowerShell 在多个 Azure SQL 数据库之间进行同步
  
 此 PowerShell 示例将数据同步配置为在多个 Azure SQL 数据库之间进行同步。
 
-本示例需要 Azure PowerShell 模块 4.2 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)。
+本示例需要 Azure PowerShell 模块 4.2 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
  
 运行 `Login-AzureRmAccount`，创建与 Azure 的连接。 
 

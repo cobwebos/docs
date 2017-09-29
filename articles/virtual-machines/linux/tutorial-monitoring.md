@@ -1,6 +1,6 @@
 ---
-title: "监视 Azure 中的 Linux 虚拟机 | Microsoft Docs"
-description: "了解如何在 Azure 中的 Linux 虚拟机上监视启动诊断和性能指标"
+title: "监视和更新 Azure 中的 Linux 虚拟机 | Microsoft 文档"
+description: "了解如何在 Azure 中的 Linux 虚拟机上监视启动诊断和性能指标，以及管理程序包更新"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: davidmu1
@@ -17,15 +17,15 @@ ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: c5eab88f1b2311d52e582a0aa1121c8001437376
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 70c17d9a8f7bf6d9106efcb56eee7cd996460c18
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="how-to-monitor-a-linux-virtual-machine-in-azure"></a>如何监视 Azure 中的 Linux 虚拟机
+# <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>如何监视和更新 Azure 中的 Linux 虚拟机
 
-为确保 Azure 中的虚拟机 (VM) 正常运行，可以查看启动诊断和性能指标。 本教程介绍如何：
+为确保 Azure 中的虚拟机 (VM) 正常运行，可以查看启动诊断、性能指标，并管理程序包更新。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 VM 上启用启动诊断
@@ -34,6 +34,7 @@ ms.lasthandoff: 09/09/2017
 > * 在 VM 上启用诊断扩展
 > * 查看 VM 指标
 > * 基于诊断指标创建警报
+> * 管理程序包更新
 > * 设置高级监视
 
 
@@ -163,6 +164,92 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 6. （可选）选中“电子邮件所有者、参与者和阅读者”对应的框，以便向他们发送电子邮件通知。 默认操作是在门户中显示通知。
 7. 单击“确定”按钮。
 
+## <a name="manage-package-updates"></a>管理程序包更新
+
+通过使用更新管理，你可以管理 Azure Linux 虚拟机的程序包更新和修补程序。 可以直接从虚拟机快速评估可用更新的状态，计划安装所需更新，并查看部署结果，以验证更新是否已成功应用于虚拟机。
+
+有关定价信息，请参阅[更新管理自动化定价](https://azure.microsoft.com/pricing/details/automation/)
+
+### <a name="enable-update-management-preview"></a>启用更新管理（预览）
+
+为虚拟机启用更新管理
+
+1. 在屏幕的左侧，选择“虚拟机”
+1. 从列表中选择一个虚拟机。
+1. 在虚拟机屏幕的“操作”部分中，单击“更新管理”。 “启用更新管理”屏幕随即打开。
+
+执行验证以确定是否为该虚拟机启用了更新管理。 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
+
+Log Analytics 工作区用于收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。 若要在需要更新的虚拟机上执行其他操作，Azure 自动化可运行针对虚拟机的脚本，如下载和应用更新。
+
+此外，验证过程还会检查虚拟机是否预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。 此代理用于与虚拟机通信并获取关于更新状态的信息。 
+
+如果未满足这些先决条件，则会显示一个横幅，以选择启用该解决方案。
+
+![更新管理载入配置横幅](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
+
+单击横幅以启用该解决方案。 如果在验证后发现缺少下列任何先决条件，它们将自动添加：
+
+* [Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区。
+* [自动化](../../automation/automation-offering-get-started.md)
+* [混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)已在虚拟机上启用
+
+“启用更新管理”屏幕随即打开。 配置设置，然后单击“启用”。
+
+![启用“更新管理解决方案”](./media/tutorial-monitoring/manage-updates-update-enable.png)
+
+启用该解决方案最多需要 15 分钟，在此期间，不应关闭浏览器窗口。 启用该解决方案后，虚拟机中缺少的更新信息会从程序包管理器流向 Log Analytics。
+这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
+
+### <a name="view-update-assessment"></a>查看更新评估
+
+启用“更新管理”解决方案后，将出现“更新管理”屏幕。 可在“缺少更新”选项卡上查看缺少更新的列表。
+
+![查看更新状态](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
+
+### <a name="schedule-an-update-deployment"></a>计划更新部署
+
+若要安装更新，请计划一个遵循发布计划和维护时段的部署。
+
+通过单击“更新管理”屏幕顶部的“计划更新部署”，计划一个用于虚拟机的新更新部署。 在“新建更新部署”屏幕中，指定以下信息：
+
+* 名称 - 提供用于标识更新部署的唯一名称。
+* 要排除的更新 - 选择此项，可输入要从更新中排除的程序包的名称。
+* 计划设置 - 可以接受默认的日期和时间，即当前时间后 30 分钟，或指定不同的时间。 还可以指定部署是发生一次还是设置定期计划。 在“重复周期”下单击“重复执行”选项以设置定期计划。
+
+  ![更新计划设置屏幕](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
+
+* 维护时段(分钟) - 指定要在其中进行更新部署的时间段。  这有助于确保在定义的维护时段内执行更改。 
+
+完成配置计划后，单击“创建”按钮，然后返回到状态仪表板。
+请注意，“已计划”表显示你创建的部署计划。
+
+> [!WARNING]
+> 如果维护时段的时间足够，虚拟机将在安装更新后自动重新启动。
+
+更新管理使用虚拟机上的现有程序包管理器来安装程序包。
+
+### <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
+
+在计划的部署开始后，可以在“更新管理”屏幕的“更新部署”选项卡上查看该部署的状态。
+如果当前正在运行，则其状态显示为“正在进行”。 完成后，如果成功，其状态会更改为“已成功”。
+如果部署中有一个或多个更新失败，则状态为“已失败”。
+单击完成的更新部署以查看该更新部署的仪表板。
+
+![更新部署状态仪表板以进行特定部署](./media/tutorial-monitoring/manage-updates-view-results.png)
+
+在“更新结果”磁贴中，是虚拟机上更新和部署结果总数的汇总。
+右侧的表格详细列出了每个更新的细目以及安装结果，结果可能是以下值之一：
+
+* 未尝试 - 由于定义的维护时段时长不足，因而未安装更新。
+* 已成功 - 更新已成功下载并安装在虚拟机上
+* 已失败 - 无法下载或在虚拟机上安装更新。
+
+单击“所有日志”，查看部署创建的所有日志条目。
+
+单击“输出”磁贴，查看负责管理目标虚拟机更新部署的 runbook 的作业流。
+
+单击“错误”，查看有关部署中的任何错误的详细信息。
 
 ## <a name="advanced-monitoring"></a>高级监视 
 
@@ -187,7 +274,7 @@ az vm extension set \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已使用 Azure 安全中心配置并查看了 VM。 你已了解如何：
+在本教程中，将配置、审核和管理虚拟机更新。 你已了解如何：
 
 > [!div class="checklist"]
 > * 在 VM 上启用启动诊断
@@ -196,9 +283,11 @@ az vm extension set \
 > * 在 VM 上启用诊断扩展
 > * 查看 VM 指标
 > * 基于诊断指标创建警报
+> * 管理程序包更新
 > * 设置高级监视
 
 请转到下一教程来了解 Azure 安全中心。
 
 > [!div class="nextstepaction"]
 > [管理 VM 安全性](./tutorial-azure-security.md)
+
