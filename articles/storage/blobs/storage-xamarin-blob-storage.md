@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5ff4d86082c03dcd7098743a984a97aa70232d1d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c7b4d0e7d7d95f2e3f8c5a97b78c60c52cc862a0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>如何通过 Xamarin 使用 Blob 存储
@@ -245,10 +245,9 @@ namespace XamarinApp.WinPhone
 本教程介绍了如何在 Xamarin 中创建使用 Azure 存储的跨平台应用程序，特别介绍了 Blob 存储中的一个方案。 但是，还可以进行更多操作，不光是使用 Blob 存储，还可以使用表、文件和队列存储。 请参阅以下文章以了解更多信息：
 
 * [通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)
+* [Azure 文件简介](../files/storage-files-introduction.md)
+* [使用 .NET 针对 Azure 文件进行开发](../files/storage-dotnet-how-to-use-files.md)
 * [通过 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [通过 .NET 开始使用 Azure 队列存储](../queues/storage-dotnet-how-to-use-queues.md)
-* [在 Windows 上开始使用 Azure 文件存储](../files/storage-dotnet-how-to-use-files.md)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
-
-

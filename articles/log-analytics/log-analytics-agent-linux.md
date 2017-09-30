@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/05/2017
+ms.date: 09/23/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 17b451b1fc91cf9fdc895ad28f2c455af5d28b07
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 616505d7884189ddee2edadc4114deb8f08f7475
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -129,8 +129,8 @@ sudo sh ./omsagent-<version>.universal.x64.sh --upgrade
 sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <shared key> -d opinsights.azure.us
 ```
 
-## <a name="configuring-the-agent-for-use-with-an-http-proxy-server-or-oms-gateway"></a>将代理配置为使用 HTTP 代理服务器或 OMS 网关
-OMS Agent for Linux 支持通过 HTTP 或 HTTPS 代理服务器或 OMS 网关与 OMS 服务进行通信。  支持匿名身份验证和基本身份验证（用户名/密码）。  
+## <a name="configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway"></a>将代理配置为使用代理服务器或 OMS 网关
+适用于 Linux 的 OMS 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 OMS 服务进行通信。  支持匿名身份验证和基本身份验证（用户名/密码）。  
 
 ### <a name="proxy-configuration"></a>代理配置
 代理配置值具有以下语法：
@@ -139,13 +139,13 @@ OMS Agent for Linux 支持通过 HTTP 或 HTTPS 代理服务器或 OMS 网关与
 
 属性|说明
 -|-
-协议|http 或 https
+协议|https
 user|用于代理身份验证的可选用户名
 password|用于代理身份验证的可选密码
 proxyhost|代理服务器/OMS 网关的地址或 FQDN
 端口|代理服务器/OMS 网关的可选端口号
 
-例如： `http://user01:password@proxy01.contoso.com:8080`
+例如： `https://user01:password@proxy01.contoso.com:30443`
 
 可在安装期间指定代理服务器，也可在安装后通过修改 proxy.conf 配置文件来指定。   
 
@@ -153,13 +153,13 @@ proxyhost|代理服务器/OMS 网关的地址或 FQDN
 omsagent 安装捆绑包的 `-p` 或 `--proxy` 参数指定要使用的代理配置。 
 
 ```
-sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -p http://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
+sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
 ```
 
 ### <a name="define-the-proxy-configuration-in-a-file"></a>在文件中定义代理配置
 可以在 `/etc/opt/microsoft/omsagent/proxy.conf` 和 `/etc/opt/microsoft/omsagent/conf/proxy.conf ` 文件中设置代理配置。 可以直接创建或编辑这些文件，但必须更新其权限以授予 omiuser 用户对这些文件的读取权限。 例如：
 ```
-proxyconf="https://proxyuser:proxypassword@proxyserver01:8080"
+proxyconf="https://proxyuser:proxypassword@proxyserver01:30443"
 sudo echo $proxyconf >>/etc/opt/microsoft/omsagent/proxy.conf
 sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf
 sudo chmod 600 /etc/opt/microsoft/omsagent/proxy.conf /etc/opt/microsoft/omsagent/conf/proxy.conf  
@@ -240,7 +240,7 @@ omsagent 的日志轮换配置位于此处：`/etc/logrotate.d/omsagent-<workspa
 1. 使用以下命令（启用了 `-v` 选项）通过 OMS Agent for Linux 重新载入到 OMS 服务中。 这允许通过代理服务器连接到 OMS 服务的代理能够进行详细输出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
-2. 请查看[将代理配置为使用 HTTP 代理服务器(#configuring the-agent-for-use-with-a-http-proxy-server)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
+2. 请查看[将代理配置为使用代理服务器或 OMS 网关](#configuring the-agent-for-use-with-a-proxy-server-or-oms-gateway)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
 * 仔细检查下列 OMS 服务终结点是否在允许列表中：
 
     |代理资源| 端口 |  
