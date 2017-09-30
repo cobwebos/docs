@@ -16,13 +16,13 @@ ms.date: 08/31/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 1203a77ebc117c646f587f0d64466364f0e47751
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e1bc68426f93717dcf466652d2481b6ab1db2a18
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-web-apps-for-containers"></a>在用于容器的 Azure Web 应用中生成 Node.js 和 MongoDB Web 应用
+# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-web-app-for-containers"></a>在用于容器的 Azure Web 应用中生成 Node.js 和 MongoDB Web 应用
 
 [用于容器的 Web 应用](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 Node.js Web 应用，并将其连接至 MongoDB 数据库。 完成操作后，将拥有一个在用于容器的 Web 应用上运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](http://meanjs.org/)。
 
@@ -103,7 +103,7 @@ MEAN.JS version: 0.5.0
 --
 ```
 
-在浏览器中导航到 http://localhost:3000 。 单击菜单顶部的“注册”，并创建测试用户。 
+在浏览器中导航至 `http://localhost:3000`。 单击菜单顶部的“注册”，并创建测试用户。 
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建用户和登录成功，应用向本地 MongoDB 数据库写入数据。
 
@@ -228,7 +228,7 @@ App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
 
-在浏览器中导航到 http://localhost:8443 。 单击菜单顶部的“注册”，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。 
+在浏览器中导航至 `http://localhost:8443`。 单击菜单顶部的“注册”，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。 
 
 在终端中，通过键入 `Ctrl+C` 停止 Node.js。 
 
@@ -479,5 +479,5 @@ git push azure master
 转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
 
 > [!div class="nextstepaction"] 
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../../app-service-web/app-service-web-tutorial-custom-domain.md)
+> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)
 

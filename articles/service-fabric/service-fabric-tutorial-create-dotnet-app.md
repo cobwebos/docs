@@ -16,10 +16,10 @@ ms.date: 08/09/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: ef50adf3af19bce494c3256308b443c8eaccdcea
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 51d580e9594bc3fb43a812395d1dda505a83ead1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -40,6 +40,7 @@ ms.lasthandoff: 08/17/2017
 > * 构建 .NET Service Fabric 应用程序
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [使用 Visual Studio Team Services 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [设置监视和诊断应用程序](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>先决条件
 在开始学习本教程之前：
