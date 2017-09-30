@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/21/2017
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8b4fc0ab9034263418cac42ced203035e0a8fcad
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 28424d139499b797b09664f73657a7f73361e3bc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
@@ -49,7 +49,7 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    此步骤获取包含 VM 配置和 VM 下载位置的文件 `Vagrantfile`。
+    此步骤获取包含 VM 配置和 VM 下载位置的文件 `Vagrantfile`。  该文件所指向库存 Ubuntu 映像。 
 
 2. 导航到本地克隆存储库
 
@@ -70,9 +70,24 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
     vagrant up
     ```
 
-   此步骤包括：下载预配置的 VM 映像，在本地启动它，并在其中设置本地 Service Fabric 群集。 完成此步骤预计需要几分钟的时间。 如果成功完成安装，输出中会出现一条消息，指示群集正在启动。
 
-    ![群集安装会在 VM 设置后启动][cluster-setup-script]
+5. 登录到 VM 并安装 Service Fabric SDK
+
+    ```bash
+    vagrant ssh
+    ```
+   
+   根据 [SDK 安装](service-fabric-get-started-linux.md)中所述安装 SDK。  为方便起见，我们提供了以下脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 运行该脚本即认为你已阅读并同意所要安装的所有软件的许可条款。
+
+    ```bash
+    sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
+    ```
+
+5.  启动 Service Fabric 群集
+
+    ```bash
+    sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
+    ```
 
     >[!TIP]
     > 如果 VM 下载耗时过长，可以使用 wget 或 curl 下载，也可通过浏览器下载，只需导航到文件 `Vagrantfile` 中通过 **config.vm.box_url** 指定的链接即可。 将其下载到本地以后，请编辑 `Vagrantfile`，以便指向下载了映射的本地路径。 例如，如果已将映像下载到 /home/users/test/azureservicefabric.tp8.box，则请将 **config.vm.box_url** 设置为该路径。
@@ -106,6 +121,10 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
   npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
   ```
 4. 若要在 Mac 上生成 Service Fabric Java 应用程序，则需在计算机上安装 JDK 1.8 和 Gradle。
+
+## <a name="set-up-net-core-20-development"></a>设置 .NET Core 2.0 开发
+
+安装[用于 Mac 的 .NET Core 2.0 SDK](https://www.microsoft.com/net/core#macos)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core 2.0 Service Fabric 应用程序包托管在 NuGet.org 上，目前以预览版提供。
 
 
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>为 Eclipse Neon 安装 Service Fabric 插件

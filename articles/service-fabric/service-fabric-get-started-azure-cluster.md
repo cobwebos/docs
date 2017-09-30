@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/24/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: ec59450052b377412a28f7eaf55d1f1512b55195
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ecf9554554c8b7acbd8b8f5aa9122ce1678c6502
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -70,18 +70,6 @@ ms.lasthandoff: 08/28/2017
 
     可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。
 
-### <a name="view-cluster-status"></a>查看群集状态
-创建群集后，即可在门户的“概览”边栏选项卡中检查群集。 现在，仪表板会显示群集的详细信息，包括群集的公共终结点和 Service Fabric Explorer 的链接。
-
-![群集状态][cluster-status]
-
-### <a name="visualize-the-cluster-using-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一项很好的工具，适用于可视化群集和管理应用程序。  Service Fabric Explorer 是在群集中运行的一项服务。  可以使用 Web 浏览器对其进行访问，方法是在门户中单击群集“概览”页的“Service Fabric Explorer”链接。  也可直接在浏览器中输入以下地址：[http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer](http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer)
-
-群集仪表板提供了群集的概览，包括应用程序和节点运行状况的摘要。 节点视图显示群集的物理布局。 对于给定的节点，可以检查已在该节点上部署代码的应用程序。
-
-![Service Fabric Explorer][service-fabric-explorer]
-
 ### <a name="connect-to-the-cluster-using-powershell"></a>使用 PowerShell 连接到群集
 使用 PowerShell 进行连接，验证群集是否正在运行。  ServiceFabric PowerShell 模块与 [Service Fabric SDK](service-fabric-get-started.md) 一起安装。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。   
 
@@ -112,7 +100,7 @@ Service Fabric 群集由群集资源本身以及其他 Azure 资源组成。 因
     ![删除资源组][cluster-delete]
 
 
-## <a name="use-azure-powershell-to-deploy-a-secure-cluster"></a>使用 Azure Powershell 部署安全群集
+## <a name="use-azure-powershell-to-deploy-a-secure-windows-cluster"></a>使用 Azure Powershell 部署安全 Windows 群集
 1. 将 [Azure Powershell 模块 4.0 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)下载到计算机上。
 
 2. 打开 Windows PowerShell 窗口，运行以下命令。 
@@ -205,10 +193,6 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mycluster.southcentralus.clouda
 Get-ServiceFabricClusterHealth
 
 ```
-### <a name="publish-your-apps-to-your-cluster-from-visual-studio"></a>将应用从 Visual Studio 发布到群集
-
-设置 Azure 群集以后，即可按照[发布到群集](service-fabric-publish-app-remote-cluster.md)文档中的说明，将应用程序从 Visual Studio 发布到该群集。 
-
 ### <a name="remove-the-cluster"></a>删除群集
 群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。 
 
@@ -217,12 +201,62 @@ Get-ServiceFabricClusterHealth
 Remove-AzureRmResourceGroup -Name $RGname -Force
 
 ```
+## <a name="use-azure-cli-to-deploy-a-secure-linux-cluster"></a>使用 Azure CLI 部署安全 Linux 群集
+
+1. 在计算机上安装 [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+2. 登录到 Azure，选择要在其中创建群集的订阅。
+   ```azurecli
+   az login
+   az account set --subscription <GUID>
+   ```
+3. 运行 [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) 命令创建安全群集。
+
+    ```azurecli
+    #!/bin/bash
+
+    # Variables
+    ResourceGroupName="aztestclustergroup" 
+    ClusterName="aztestcluster" 
+    Location="southcentralus" 
+    Password="q6D7nN%6ck@6" 
+    Subject="aztestcluster.southcentralus.cloudapp.azure.com" 
+    VaultName="aztestkeyvault" 
+    VaultGroupName="testvaultgroup"
+    VmPassword="Mypa$$word!321"
+    VmUserName="sfadminuser"
+
+    # Create resource groups
+    az group create --name $ResourceGroupName --location $Location 
+    az group create --name $VaultGroupName --location $Location
+
+    # Create secure five node Linux cluster. Creates a key vault in a resource group
+    # and creates a certficate in the key vault. The certificate's subject name must match 
+    # the domain that you use to access the Service Fabric cluster.  The certificate is downloaded locally.
+    az sf cluster create --resource-group $ResourceGroupName --location $Location --certificate-output-folder . \
+        --certificate-password $Password --certificate-subject-name $Subject --cluster-name $ClusterName \
+        --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName --vault-resource-group $VaultGroupName \
+        --vm-password $VmPassword --vm-user-name $VmUserName
+    ```
+    
+### <a name="connect-to-the-cluster"></a>连接至群集
+运行以下 CLI 命令，使用证书连接到群集。  使用客户端证书进行身份验证时，证书详细信息必须与部署到群集节点的证书匹配。  为自签名证书使用 `--no-verify` 选项。
+
+```azurecli
+az sf cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 --pem ./linuxcluster201709161647.pem --no-verify
+```
+
+运行以下命令，检查是否已连接，以及群集是否处于正常状态。
+
+```azurecli
+az sf cluster health
+```
 
 ## <a name="next-steps"></a>后续步骤
 设置开发群集以后，可尝试以下操作：
-* [在门户中创建安全群集](service-fabric-cluster-creation-via-portal.md)
-* [从模板创建群集](service-fabric-cluster-creation-via-arm.md) 
+* [使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)
+* [删除群集](service-fabric-cluster-delete.md) 
 * [使用 PowerShell 部署应用](service-fabric-deploy-remove-applications.md)
+* [使用 CLI 部署应用](service-fabric-application-lifecycle-sfctl.md)
 
 
 [cluster-setup-basics]: ./media/service-fabric-get-started-azure-cluster/basics.png

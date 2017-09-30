@@ -9,17 +9,11 @@
 4. 在“注册”中，选择从保管库下载的注册密钥。
 
     ![注册](./media/site-recovery-add-configuration-server/combined-wiz3.png)
-5. 在“Internet 设置”中，指定配置服务器上运行的提供程序如何通过 Internet 连接到 Azure Site Recovery。
+5. 在“Internet 设置”中，指定配置服务器上运行的提供程序如何通过 Internet 连接到 Azure Site Recovery。 确保已允许所需的 URL。
 
-   a. 如果想要使用当前已在计算机上设置的代理进行连接，请选择“使用代理服务器连接到 Azure Site Recovery”。
-
-   b. 如果希望提供程序直接进行连接，请选择“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”。
-
-   c. 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”。
-
-     * 如果使用自定义代理，则需指定地址、端口和凭据。
-     * 如果你使用代理，应事先允许[先决条件](#prerequisites)中所述的 URL。
-
+    - 如果想要使用当前已在计算机上设置的代理进行连接，请选择“使用代理服务器连接到 Azure Site Recovery”。
+    - 如果希望提供程序直接进行连接，请选择“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”。
+    - 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”，并指定地址、端口和凭据。
      ![防火墙](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. 在“先决条件检查”设置中运行检查，确保安装可以运行。 如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
 
@@ -39,8 +33,8 @@
     ![网络选择](./media/site-recovery-add-configuration-server/combined-wiz9.png)
 
 
-11. 在“摘要”中复查信息，然后单击“安装”。 安装完成后，将生成通行短语。 启用复制时需要用到它，因此请复制并将它保存在安全的位置。
+11. 在“摘要”中复查信息，并单击“安装”。 安装完成后，将生成通行短语。 启用复制时需要用到它，因此请复制并将它保存在安全的位置。
 
     ![摘要](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-注册完成后，服务器将显示在保管库的“设置” > “服务器”边栏选项卡中。
+注册完成后，服务器会显示在保管库的“设置” > “服务器”边栏选项卡中。
