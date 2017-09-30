@@ -33,6 +33,7 @@
 
 ## 调试 U-SQL 程序
 ### [作业的监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+### [对异常的定期作业进行故障排除](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
 ### [在 U-SQL 中调试 C# 代码](data-lake-analytics-debug-u-sql-jobs.md)
 ### [使用作业浏览器和作业视图](data-lake-analytics-data-lake-tools-view-jobs.md)
 ### [使用顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)

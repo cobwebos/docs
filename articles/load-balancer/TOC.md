@@ -26,9 +26,8 @@
 ### [配置面向 Internet 的负载均衡器 (CLI)](load-balancer-get-started-internet-arm-cli.md)
 ### [配置面向 Internet 的负载均衡器（模板）](load-balancer-get-started-internet-arm-template.md)
 
-## [配置面向 Internet 的负载均衡器（经典门户）](load-balancer-get-started-internet-classic-portal.md)
+## [配置面向 Internet 的负载均衡器 - （经典 PowerShell）](load-balancer-get-started-internet-classic-ps.md)
 ### [配置面向 Internet 的负载均衡器（经典云）](load-balancer-get-started-internet-classic-cloud.md)
-### [配置面向 Internet 的负载均衡器（经典 PS）](load-balancer-get-started-internet-classic-ps.md)
 ### [配置面向 Internet 的负载均衡器（经典 CLI）](load-balancer-get-started-internet-classic-cli.md)
 
 ## [使用 IPv6 创建面向 Internet 的负载均衡器](load-balancer-ipv6-internet-ps.md)
