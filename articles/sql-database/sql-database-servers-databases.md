@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 09/13/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5db3f6dc28da9a07d0193db58b37def8c03a8c46
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 2ad643d5f099457018d02a43252db4c259f5b613
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -220,7 +220,7 @@ Azure 数据库逻辑服务器：
 |[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
 |[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐弹性池内的数据库列表。|
 |[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](/api/sql/databases/update)|更新现有的数据库。|
+|[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
 |[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
 |[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
 |[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|获取防火墙规则。|
