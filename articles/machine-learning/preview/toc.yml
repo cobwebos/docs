@@ -45,6 +45,8 @@
       items:
         - name: 配置执行目标
           href: experiment-execution-configuration.md
+        - name: 创建 DSVM 和 HDI Spark 群集
+          href: how-to-create-dsvm-hdi.md
         - name: 使用 GPU 训练
           href: how-to-use-gpu.md
     - name: 获取和了解数据

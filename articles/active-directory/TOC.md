@@ -148,13 +148,14 @@
 ### [入门](active-directory-integrating-applications-getting-started.md)
 ### [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
 ### [Cloud App Discovery](cloudappdiscovery-overview.md)
-#### [什么是 Cloud App Discovery？](active-directory-cloudappdiscovery-whatis.md)
-#### [设置步骤](cloudappdiscovery-get-started.md)
+#### [设置无代理发现](cloudappdiscovery-get-started.md)
 #### [创建快照报表](cloudappdiscovery-set-up-snapshots.md)
 #### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-#### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-#### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
+#### 基于代理的发现
+##### [什么是 Cloud App Discovery？](active-directory-cloudappdiscovery-whatis.md)
+##### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+##### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)

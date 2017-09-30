@@ -24,6 +24,8 @@
   items:
     - name: 使用 Power BI 进行文本分析
       href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Power Apps 中的文本分析
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
 - name: 操作指南
   items:
     - name: 注册
