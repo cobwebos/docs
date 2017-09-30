@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
 ms.author: rajanaki
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ccc2b53e0824042c0f07b9fe63e8777aa68c6dc1
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 490833c14b6856cdaf6f6bfd2f67ce54fb0414a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -56,22 +56,27 @@ Azure Site Recovery 可以安排从 Azure 虚拟机 (VM) 到其他 Azure 区域�
 
 ### <a name="configuration-server-or-additional-process-server"></a>配置服务器或附加进程服务器
 
-将一台本地计算机设置为配置服务器来安排本地站点与 Azure 之间的通信。 本地计算机还管理数据复制。 <br/></br>
+将一台本地计算机设置为配置服务器来安排本地站点与 Azure 之间的通信。 下表介绍了可配置为配置服务器的虚拟机的系统和软件需求。
 
-*   **VMware vCenter 或 vSphere 主机先决条件**
+> [!IMPORTANT]
+> 部署配置服务器以保护 VMware 虚拟机时，我们建议将其部署为高可用性 (HA) 虚拟机。
 
-    | **组件** | **要求** |
-    | --- | --- |
-    | **vSphere** | 必须有一个或多个 VMware vSphere 虚拟机监控程序。<br/><br/>虚拟机监控程序必须运行包含最新更新的 vSphere 版本 6.0、5.5 或 5.1。<br/><br/>建议将 vSphere 主机和 vCenter 服务器与进程服务器置于同一网络中。 这就是指配置服务器所在的网络，除非已设置了专用进程服务器。 |
-    | **vCenter** | 建议部署 VMware vCenter 服务器来管理 vSphere 主机。 它必须运行包含最新更新的 vCenter 6.0 或 5.5 版。<br/><br/>**限制**：Site Recovery 不支持在 vCenter vMotion 的实例之间进行复制。 在执行重新保护操作之后，主目标 VM 也不支持存储 DRS 和存储 vMotion。||
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
-* **复制的计算机先决条件**
+### <a name="vmware-vcenter-or-vsphere-host-prerequisites"></a>VMware vCenter 或 vSphere 主机先决条件
 
-    | **组件** | **要求** |
-    | --- | --- |
-    | **本地计算机** (VMware VM) | 复制的 VM 上必须已安装并运行 VMware 工具。<br/><br/> VM 必须满足创建 Azure VM 时的 [Azure 先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。<br/><br/>每台受保护计算机上的磁盘容量不能超过 1,023 GB。 <br/><br/>安装驱动器上至少需要 2 GB 的可用空间才能安装组件。<br/><br/>如果想要实现多 VM 一致性，必须在 VM 本地防火墙中打开端口 20004。<br/><br/>计算机名称必须包含 1 到 63 个字符（可以使用字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 <br/><br/>为计算机启用复制后，可以修改 Azure 名称。<br/><br/> |
-    | **Windows 计算机**（物理机或 VMware） | 计算机必须运行下列受支持的 64 位操作系统之一： <br/>- Windows Server 2012 R2<br/>- Windows Server 2012<br/>- 包含 SP1 的 Windows Server 2008 R2 或更高版本<br/><br/> 操作系统必须安装在驱动器 C 上。OS 磁盘必须为 Windows 基本磁盘而不是动态磁盘。 数据磁盘可以是动态磁盘。<br/><br/>|
-    | **Linux 计算机**（物理机或 VMware） | 计算机必须运行下列受支持的 64 位操作系统之一： <br/>- Red Hat Enterprise Linux 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3<br/>- CentOS 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3<br/>- Ubuntu 14.04 LTS 服务器（有关受支持的 Ubuntu 内核版本的列表，请参阅[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)）<br/>- Ubuntu 16.04 LTS 服务器（有关受支持的 Ubuntu 内核版本的列表，请参阅[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)）<br/>- Debian 7 或 Debian 8<br/>-  Oracle Enterprise Linux 6.5 或 6.4（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）<br/>- SUSE Linux Enterprise Server 11 SP4 或 SUSE Linux Enterprise Server 11 SP3<br/><br/>在受保护计算机上的 /etc/hosts 文件中，必须有条目将本地主机名映射到与所有网络适配器相关联的 IP 地址。<br/><br/>在故障转移后，如果希望使用安全外壳 (SSH) 客户端连接到运行 Linux 的 Azure VM，请确保受保护计算机上的 SSH 服务设置为在系统启动时自动启动。 另请确保防火墙规则允许与受保护的计算机建立 SSH 连接。<br/><br/>主机名、装载点、设备名称以及 Linux 系统路径和文件名（例如 /etc/ 和 /usr）必须采用英文形式。<br/><br/>下列目录（如果设置为单独的分区或文件系统）必须位于源服务器上的同一磁盘（OS 磁盘）中：<br/>- / (root)<br/>- /boot<br/>- /usr<br/>- /usr/local<br/>- /var<br/>- /etc<br/><br/>目前，XFS 文件系统上的 Site Recovery 不支持 XFS v5 功能，例如元数据校验和。 请确保 XFS 文件系统未使用任何 v5 功能。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果 **ftype** 设置为 **1**，则在使用 XFS v5 功能。<br/><br/>在 Red Hat Enterprise Linux 7 和 CentOS 7 服务器上，必须安装和提供 lsof 实用工具。<br/><br/>
+| **组件** | **要求** |
+| --- | --- |
+| **vSphere** | 必须有一个或多个 VMware vSphere 虚拟机监控程序。<br/><br/>虚拟机监控程序必须运行包含最新更新的 vSphere 版本 6.0、5.5 或 5.1。<br/><br/>建议将 vSphere 主机和 vCenter 服务器与进程服务器置于同一网络中。 这就是指配置服务器所在的网络，除非已设置了专用进程服务器。 |
+| **vCenter** | 建议部署 VMware vCenter 服务器来管理 vSphere 主机。 它必须运行包含最新更新的 vCenter 6.0 或 5.5 版。<br/><br/>**限制**：Site Recovery 不支持在 vCenter vMotion 的实例之间进行复制。 在执行重新保护操作之后，主目标 VM 也不支持存储 DRS 和存储 vMotion。|
+
+### <a name="replicated-machine-prerequisites"></a>复制的计算机先决条件
+
+| **组件** | **要求** |
+| --- | --- |
+| **本地计算机** (VMware VM) | 复制的 VM 上必须已安装并运行 VMware 工具。<br/><br/> VM 必须满足创建 Azure VM 时的 [Azure 先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。<br/><br/>每台受保护计算机上的磁盘容量不能超过 1,023 GB。 <br/><br/>安装驱动器上至少需要 2 GB 的可用空间才能安装组件。<br/><br/>如果想要实现多 VM 一致性，必须在 VM 本地防火墙中打开端口 20004。<br/><br/>计算机名称必须包含 1 到 63 个字符（可以使用字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 <br/><br/>为计算机启用复制后，可以修改 Azure 名称。<br/><br/> |
+| **Windows 计算机**（物理机或 VMware） | 计算机必须运行下列受支持的 64 位操作系统之一： <br/>- Windows Server 2012 R2<br/>- Windows Server 2012<br/>- 包含 SP1 的 Windows Server 2008 R2 或更高版本<br/><br/> 操作系统必须安装在驱动器 C 上。OS 磁盘必须为 Windows 基本磁盘而不是动态磁盘。 数据磁盘可以是动态磁盘。<br/><br/>|
+| **Linux 计算机**（物理机或 VMware） | 计算机必须运行下列受支持的 64 位操作系统之一： <br/>- Red Hat Enterprise Linux 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3<br/>- CentOS 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3<br/>- Ubuntu 14.04 LTS 服务器（有关受支持的 Ubuntu 内核版本的列表，请参阅[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)）<br/>- Ubuntu 16.04 LTS 服务器（有关受支持的 Ubuntu 内核版本的列表，请参阅[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)）<br/>- Debian 7 或 Debian 8<br/>-  Oracle Enterprise Linux 6.5 或 6.4（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）<br/>- SUSE Linux Enterprise Server 11 SP4 或 SUSE Linux Enterprise Server 11 SP3<br/><br/>在受保护计算机上的 /etc/hosts 文件中，必须有条目将本地主机名映射到与所有网络适配器相关联的 IP 地址。<br/><br/>在故障转移后，如果希望使用安全外壳 (SSH) 客户端连接到运行 Linux 的 Azure VM，请确保受保护计算机上的 SSH 服务设置为在系统启动时自动启动。 另请确保防火墙规则允许与受保护的计算机建立 SSH 连接。<br/><br/>主机名、装载点、设备名称以及 Linux 系统路径和文件名（例如 /etc/ 和 /usr）必须采用英文形式。<br/><br/>下列目录（如果设置为单独的分区或文件系统）必须位于源服务器上的同一磁盘（OS 磁盘）中：<br/>- / (root)<br/>- /boot<br/>- /usr<br/>- /usr/local<br/>- /var<br/>- /etc<br/><br/>目前，XFS 文件系统上的 Site Recovery 不支持 XFS v5 功能，例如元数据校验和。 请确保 XFS 文件系统未使用任何 v5 功能。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果 **ftype** 设置为 **1**，则在使用 XFS v5 功能。<br/><br/>在 Red Hat Enterprise Linux 7 和 CentOS 7 服务器上，必须安装和提供 lsof 实用工具。<br/><br/>
 
 
 ## <a name="disaster-recovery-of-hyper-v-vms-to-azure-no-vmm"></a>在发生灾难后将 Hyper-V VM 恢复到 Azure（无 VMM）

@@ -261,7 +261,7 @@ PS C:\> $MPG = Get-ModifiableProtectionGroup $PG
 使用 [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) cmdlet 获取安装 DPM 代理并由 DPM 服务器管理的服务器的列表。 在本示例中，我们将进行筛选，并只为备份配置名为 *productionserver01* 的 PS。
 
 ```
-PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”
+PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”}
 ```
 
 现在使用 [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) cmdlet 获取 ```$server``` 上的数据源列表。 在本示例中，我们将筛选要为备份配置的卷 *D:\*。 然后，使用 [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) cmdlet 将此数据源添加到保护组。 请记得使用可修改的保护组对象 ```$MPG``` 来完成添加。

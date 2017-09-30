@@ -18,10 +18,10 @@ ms.date: 08/04/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: fdc85e69403cec392328aad255352b2bee5afc20
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 8070d224fe6281e61f67483d4f1dd905a2ab99eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -58,12 +58,10 @@ az group create --name myResourceGroup --location eastus
 下面的示例创建一个名为 myDCOSCluster 的 DC/OS 群集，并且在不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
 ```azurecli
-az acs create \
-  --orchestrator-type dcos \
-  --resource-group myResourceGroup \
-  --name myDCOSCluster \
-  --generate-ssh-keys
+az acs create --orchestrator-type dcos --resource-group myResourceGroup --name myDCOSCluster --generate-ssh-keys
 ```
+
+在某些情况下（如限时试用），Azure 订阅对 Azure 资源的访问受限。 如果由于可用核心有限而导致部署失败，请将 `--agent-count 1` 添加到 [az acs creat](/cli/azure/acs#create) 命令中，以减少默认代理计数。 
 
 几分钟后，该命令完成并返回有关部署的信息。
 

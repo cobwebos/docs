@@ -16,10 +16,10 @@ ms.date: 07/21/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: c6981b8059f11afbce0492aac5acdf06b3ca4858
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 77d5e04b2e4606cdeb79de12b7c5a0b0cc8f5c25
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>在 Azure 中构建 PHP 和 MySQL Web 应用
@@ -612,5 +612,5 @@ git push azure master
 转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../../app-service-web/app-service-web-tutorial-custom-domain.md)
+> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)
 

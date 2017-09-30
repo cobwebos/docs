@@ -16,15 +16,15 @@ ms.date: 08/31/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7683856e5ad7bf19b38d51f019e4eef106f1800c
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 365747f9f9c765e8db1ab86946ba578c321ec732
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="build-a-net-core-and-sql-database-web-app-in-azure-web-apps-for-containers"></a>在用于容器的 Azure Web 应用中生成 .NET Core 和 SQL 数据库 Web 应用
+# <a name="build-a-net-core-and-sql-database-web-app-in-azure-web-app-for-containers"></a>在用于容器的 Web 应用中生成 .NET Core 和 SQL 数据库 Web 应用
 
-[用于容器的 Web 应用](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 .NET Core Web 应用，并将其连接至 SQL 数据库。 完成操作后，将获得一个在用于容器的 Web 应用上运行的 .NET Core MVC 应用。 
+[用于容器的 Web 应用](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 .NET Core Web 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在用于容器的 Web 应用上运行的 .NET Core MVC 应用。 
 
 ![在用于容器的 Web 应用上运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
@@ -74,7 +74,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航到 http://localhost:5000。 选择“新建”链接，创建一对待办事项。
+在浏览器中导航至 `http://localhost:5000`。 选择“新建”链接，创建一对待办事项。
 
 ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -335,7 +335,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航至 http://local:5000/。 你现在可以添加一个待办事项，并检查“完成”。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查“完成”。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
@@ -381,5 +381,5 @@ git push azure master
 转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
 
 > [!div class="nextstepaction"] 
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../../app-service-web/app-service-web-tutorial-custom-domain.md)
+> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)
 
