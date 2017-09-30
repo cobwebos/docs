@@ -1,6 +1,6 @@
 ---
-title: "如何在 Azure 门户中管理 Azure 文件存储 | Microsoft Docs"
-description: "了解如何使用 Azure 门户管理 Azure 文件存储。"
+title: "如何在 Azure 门户中管理 Azure 文件 | Microsoft Docs"
+description: "了解如何使用 Azure 门户管理 Azure 文件。"
 services: storage
 documentationcenter: 
 author: RenaShahMSFT
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d5ffa7cff0a31e36f5a96aaa4b2d477fa39333fb
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: fc521fa40428caacebb072cb1aacdebf0ce977ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="how-to-use-azure-file-storage-from-the-azure-portal"></a>如何在 Azure 门户中使用 Azure 文件存储
-[Azure 门户](https://portal.azure.com)提供用于管理 Azure 文件存储的用户界面。 可以从 Web 浏览器中执行以下操作：
+# <a name="how-to-use-azure-files-from-the-azure-portal"></a>如何在 Azure 门户中使用 Azure 文件
+[Azure 门户](https://portal.azure.com)提供用于管理 Azure 文件的用户界面。 可以从 Web 浏览器中执行以下操作：
 
 * 创建文件共享
 * 将文件上传到文件共享和从文件共享下载文件。
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/22/2017
 
     ![演示如何在门户中创建文件共享的屏幕快照](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share4.png)
 
-6. 填写文件共享名称以及文件共享的大小（最高 5120 GB），以便创建第一个文件共享。 创建文件共享之后，即可从任何支持 SMB 2.1 或 SMB 3.0 的文件系统装载它。 可以通过单击文件共享中的“配额”来更改文件大小，最大为 5120 GB。 若要估算使用 Azure 文件存储时的存储费用，请参阅 [Azure 价格计算器](https://azure.microsoft.com/pricing/calculator/)。
+6. 填写文件共享名称以及文件共享的大小（最高 5120 GB），以便创建第一个文件共享。 创建文件共享之后，即可从任何支持 SMB 2.1 或 SMB 3.0 的文件系统装载它。 可以通过单击文件共享中的“配额”来更改文件大小，最大为 5120 GB。 若要估算使用 Azure 文件时的存储费用，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
 
     ![演示如何在门户中创建文件共享的屏幕快照](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share5.png)
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/22/2017
     ![演示如何从门户上传文件的屏幕快照](./media/storage-how-to-use-files-portal/use-files-portal-upload-file2.png)
 
 ## <a name="connect-to-file-share"></a>连接到文件共享
--  单击“连接”获取从 Windows 和 Linux 装载文件共享的命令行。 对于 Linux 用户，你还可以参阅[如何将 Azure 文件存储与 Linux 配合使用](../storage-how-to-use-files-linux.md)，了解针对其他 Linux 发行版的更多装载说明。
+-  单击“连接”获取从 Windows 和 Linux 装载文件共享的命令行。 对于 Linux 用户，还可以参阅[如何将 Azure 文件与 Linux 配合使用](../storage-how-to-use-files-linux.md)，了解针对其他 Linux 发行版的更多装载说明。
 
     ![演示如何装载文件共享的屏幕快照](./media/storage-how-to-use-files-portal/use-files-portal-connect.png)
 -  可以复制在 Windows 或 Linux 上装载文件共享的命令，然后在 Azure VM 或本地计算机中运行。
@@ -74,7 +74,7 @@ ms.lasthandoff: 08/22/2017
 若要查找用于装载的存储帐户访问密钥，请单击“连接”页底部的“查看此存储帐户的访问密钥”。
 
 ## <a name="see-also"></a>另请参阅
-请参阅以下链接以获取有关 Azure 文件存储的更多信息。
+请参阅以下链接，获取有关 Azure 文件的更多信息。
 
 * [常见问题](../storage-files-faq.md)
 * [在 Windows 上进行故障排除](storage-troubleshoot-windows-file-connection-problems.md)      

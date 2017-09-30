@@ -1,4 +1,4 @@
-## <a name="add-function-apps-to-your-portal-favorites"></a>将 Function App 添加到门户收藏夹 
+## <a name="favorite-functions-in-the-portal"></a>在门户中收藏函数 
 
 如果尚未这样做，请将 Function App 添加到 Azure 门户中的收藏夹。 这样可以更轻松地查找 Function App。 如果已执行此操作，请跳至下一节。 
 

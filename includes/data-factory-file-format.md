@@ -44,19 +44,19 @@ Azure 数据工厂支持以下格式类型：
 },
 ```
 
-若要使用 `escapeChar` 而非 `quoteChar`，请将 `quoteChar` 所在的行替换为以下 escapeChar：
+要使用 `escapeChar` 而非 `quoteChar`，请将 `quoteChar` 所在的行替换为以下 escapeChar：
 
 ```json
 "escapeChar": "$",
 ```
 
 #### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>firstRowAsHeader 和 skipLineCount 的使用方案
-* 你要从非文件源复制到文本文件，并想要添加包含架构元数据（例如 SQL 架构）的标头行。 对于此方案，请在输出数据集中将 `firstRowAsHeader` 指定为 true。
-* 你要从包含标头行的文本文件复制到非文件接收器，并想要删除该行。 请在输入数据集中将 `firstRowAsHeader` 指定为 true。
-* 你要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
+* 要从非文件源复制到文本文件，并想要添加包含架构元数据（例如 SQL 架构）的标头行。 对于此方案，请在输出数据集中将 `firstRowAsHeader` 指定为 true。
+* 要从包含标头行的文本文件复制到非文件接收器，并想要删除该行。 请在输入数据集中将 `firstRowAsHeader` 指定为 true。
+* 要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ### <a name="specifying-jsonformat"></a>指定 JsonFormat
-若要**在 Azure Cosmos DB 中按原样导入/导出 JSON 文件**，请参阅 Azure Cosmos DB 连接器中的[导入/导出 JSON 文档](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents)部分，了解详细信息。
+若要**在 Azure Cosmos DB 中按原样导入/导出 JSON 文件**，请参阅 Azure Cosmos DB 连接器中的[导入/导出 JSON 文档](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents)部分，了解详细信息。
 
 若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
@@ -192,7 +192,7 @@ Azure 数据工厂支持以下格式类型：
     }
 }
 ```
-并且你想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
+并且想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
 
 | id | deviceType | targetResourceType | resourceManagmentProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
@@ -200,7 +200,7 @@ Azure 数据工厂支持以下格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非你需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array[x].property** 从 xth 对象中提取给定属性的值，或者使用 **array[*].property** 从包含此类属性的任何对象中查找该值。
 
 ```json
@@ -273,7 +273,7 @@ Azure 数据工厂支持以下格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非你需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
 - `jsonNodeReference` 指示进行迭代操作，在**数组**订单行下以同一模式从对象提取数据。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 在以下示例中，"ordernumber"、"orderdate" 和 "city" 位于 JSON 路径以“$.”开头的根对象下，而 "order_pd" 和 "order_price" 在定义时使用的路径派生自没有“$.”的数组元素。
 
@@ -327,7 +327,7 @@ Azure 数据工厂支持以下格式类型：
 | id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
-| 2 | 20170120 | 3500 | Patrick |
+| #N/A | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
 每个记录将按以下格式写入到 JSON 对象中：
@@ -342,7 +342,7 @@ Azure 数据工厂支持以下格式类型：
 }
 ```
 
-**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非你需要根据源列名更改属性名称，或者需要嵌套部分属性。
+**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要根据源列名更改属性名称，或者需要嵌套部分属性。
 
 ```json
 "properties": {

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 9f7eb8e63f30d0f3450ad913620e59cd461b75bc
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: b12eab7a430e620d0b6e872551c0252ccb5d4c14
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
@@ -113,9 +113,9 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 * Azure 门户：导航到“经典虚拟网络”>“VPN 连接”>“站点到站点 VPN 连接”>“本地站点名称”>“本地站点”>“客户端地址空间”。 
 * 经典门户：在“本地网络”下的“网络”页上为虚拟网络添加要通过网关发送的每个范围。 
 
-### <a name="can-i-configure-forced-tunneling"></a>能否配置强制隧道？
+### <a name="can-i-configure-force-tunneling"></a>是否可以配置强制隧道？
 
-是的。 请参阅 [配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
+是的。 请参阅[配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>能否在 Azure 中设置自己的 VPN 服务器，并使用该服务器连接到本地网络？
 
@@ -159,9 +159,13 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 其他软件 VPN 解决方案只要遵循行业标准 IPsec 实现，就会与我们的网关兼容。 有关配置和支持说明，请与该软件的供应商联系。
 
-## <a name="P2S"></a>点到站点连接
+## <a name="P2S"></a>点到站点 - 本机 Azure 证书身份验证
 
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-point-to-site-include.md)]
+[!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
+
+## <a name="P2SRADIUS"></a>点到站点 - RADIUS 身份验证
+
+[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
 ## <a name="V2VMulti"></a>VNet 到 VNet 连接和多站点连接
 
