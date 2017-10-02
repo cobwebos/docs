@@ -3,8 +3,8 @@ title: "保护 Azure AD 中的特权访问 | Microsoft Docs"
 description: "本主题介绍在 Azure、Azure Active Directory 和 Microsoft 在线服务中保护特许访问的方法。"
 services: active-directory
 documentationcenter: 
-author: kgremban
-manager: femila
+author: barclayn
+manager: mbaldwin
 editor: mwahl
 ms.assetid: 235a0ce9-1daf-4433-8f65-9c6afcd64d08
 ms.service: active-directory
@@ -12,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: c96a0bd6710d60629bc631fe7e1f642cdb2bada6
+ms.translationtype: HT
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 849637fb391576954307bc84bb02e1d8579bf1cf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>保护 Azure AD 中的特权访问
@@ -33,7 +32,7 @@ Microsoft 建议遵循[保护特权访问](https://technet.microsoft.com/library
 对于使用 Azure Active Directory、Office 365 或其他 Microsoft 服务和应用程序的客户而言，是否可以应用这些原则将取决于用户帐户是由 Active Directory 进行管理和身份验证，还是在 Azure Active Directory 中进行管理和身份验证。 以下部分提供了有关用于支持保护特权访问的 Azure AD 功能的详细信息。
 
 ## <a name="azure-multi-factor-authentication"></a>Azure 多重身份验证
-若要提高管理员身份验证的安全性，应在授予特权之前要求进行双重验证。 双重验证是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。 它为用户登录和事务提供了附加的安全层。
+若要提高管理员身份验证的安全性，应在授予特权之前要求进行双重验证。 双重验证是要求使用多种方式（而不仅仅是用户名和密码）对身份进行验证的一种方法。 它为用户登录和事务提供了附加的安全层。
 
 Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过一系列简单的验证选项提供强式身份验证，这些选项包括：
 
@@ -52,7 +51,7 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 ## <a name="time-bound-privileges"></a>时间约束的特权
 某些组织可能发现它们有太多拥有高特权角色的用户。 用户可能因为某个特定活动（例如注册某个服务）而被添加到该角色，但之后却不经常使用这些特权。
 
-若要减少特权的曝露时间并增大其使用的可见性，可将用户限制为只在需要执行某个任务时才适时 (JIT) 使用其特权。 对于 Azure Active Directory 和 Microsoft Online Services，可使用 [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)。
+为了降低特权公开时间并提高用户使用的可见性，可将用户限制为仅“就在当时”(JIT) 具有其特权，或在缩短的持续时间内分配这些角色，从而有把握自动撤销特权。 对于 Azure Active Directory、Azure 资源（预览）和 Microsoft Online Services，可使用 [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)。
 
 ![PIM 仪表板][2]
 
@@ -62,7 +61,7 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 ![Azure AD Identity Protection][3]
 
 ## <a name="conditional-access"></a>条件性访问
-借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查你选择的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选择的特定条件，才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 
 ![设置使用 MFA 的条件性访问规则][4]
 

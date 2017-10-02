@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/15/2017
 ms.author: skwan
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 891a895419a4fe882e01495231f33a1d79eb42a9
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: c18fd5d5b528dfbafa456b3702996b80c3a60a02
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -57,7 +57,6 @@ ms.lasthandoff: 09/15/2017
 | 服务 | 状态 | 日期 |
 | --- | --- | --- |
 | Azure 虚拟机 | 预览 | 2017 年 9 月 |
-| Azure 虚拟机规模集 | 预览 | 2017 年 9 月 |
 | Azure 应用服务 | 预览 | 2017 年 9 月 |
 | Azure Functions | 预览 | 2017 年 9 月 |
 
@@ -69,7 +68,6 @@ ms.lasthandoff: 09/15/2017
 | --- | --- | --- | --- |
 | Azure 资源管理器 | https://management.azure.com/ | 可用 | 2017 年 9 月 |
 | Azure 密钥保管库 | https://vault.azure.net/ | 可用 | 2017 年 9 月 |
-| Azure SQL | https://database.windows.net/ | 可用 | 2017 年 9 月 |
 | Azure Data Lake | https://datalake.azure.net/ | 可用 | 2017 年 9 月 |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>托管服务标识的费用如何？
@@ -85,28 +83,35 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
 
 ## <a name="try-managed-service-identity"></a>试一试托管服务标识
 
-至此，大家已了解基础知识，请尝试学习托管服务标识教程，了解如何访问不同的 Azure 资源。
+试用“托管服务标识”教程以了解用于访问不同 Azure 资源的端到端方案：
 
-- [使用 Windows VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-windows-vm-access-arm.md)
-- [使用 Linux VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-linux-vm-access-arm.md)
-- [使用 Windows VM 托管服务标识访问 Azure 存储](msi-tutorial-windows-vm-access-storage.md)
-- [使用 Linux VM 托管服务标识访问 Azure 存储](msi-tutorial-linux-vm-access-storage.md)
-- [使用 Windows VM 托管服务标识访问非 Azure AD 资源](msi-tutorial-windows-vm-access-nonaad.md)
-- [使用 Linux VM 托管服务标识访问非 Azure AD 资源](msi-tutorial-linux-vm-access-nonaad.md)
-- [将托管服务标识与 Azure App Service 或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity)
+| 从已启用 MSI 的资源 | 了解如何操作 |
+| ------- | -------- |
+| A1 VM (Windows) | [使用 Windows VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-windows-vm-access-arm.md) |
+|                    | [使用 Windows VM 托管服务标识访问 Azure 存储](msi-tutorial-windows-vm-access-storage.md) |
+|                    | [使用 Windows VM 托管服务标识访问非 Azure AD 资源和 Azure Key Vault](msi-tutorial-windows-vm-access-nonaad.md) |
+| Azure VM (Linux)   | [使用 Linux VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-linux-vm-access-arm.md) |
+|                    | [使用 Linux VM 托管服务标识访问 Azure 存储](msi-tutorial-linux-vm-access-storage.md) |
+|                    | [使用 Linux VM 托管服务标识访问非 Azure AD 资源](msi-tutorial-linux-vm-access-nonaad.md) |
+| Azure 应用服务  | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
+| Azure 函数     | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
 
+如果只是想要学习在 Azure 资源上启用 MSI 的基础知识：
 
+| 对于 Azure 资源 | 使用以下项启用/删除 MSI |
+| ------------------ | ------------------------------------ |
+| A1 VM (Windows) | [Azure 门户](msi-qs-configure-portal-windows-vm.md) |
+|                    | [PowerShell](msi-qs-configure-powershell-windows-vm.md) |
+|                    | [Azure CLI](msi-qs-configure-cli-windows-vm.md)|
+|                    | [Azure Resource Manager 模板](msi-qs-configure-template-windows-vm.md) |
 
+然后了解如何使用基于角色的访问控制 (RBAC) 提供可访问另一 Azure 资源的 MSI 权限：
 
-
-
-
-
-
-
-
-
-
+| 从已启用 MSI 的资源 | 使用以下项分配对另一 Azure 资源的访问权限 |
+| ------------------------ | ---------------------------------------------------------- |
+| A1 VM (Windows) | [Azure 门户](msi-howto-assign-access-portal.md) |
+|                    | [PowerShell](msi-howto-assign-access-powershell.md) |
+|                    | [Azure CLI](msi-howto-assign-access-CLI.md) |
 
 
 

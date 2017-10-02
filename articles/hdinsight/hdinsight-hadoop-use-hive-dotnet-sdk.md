@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 09/15/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 7b1a5f7ea3b2bda438727dc75a85557ea7930280
+ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
+ms.openlocfilehash: eb83a681df1a1836dbf970c4de14937aaea6b2f5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/16/2017
 
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 Hive 查询
@@ -30,13 +30,15 @@ ms.lasthandoff: 08/17/2017
 
 > [!NOTE]
 > 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端来使用 Hive 的信息，请使用本文顶部显示的选项卡选择器。
-> 
-> 
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有以下项目：
 
 * **HDInsight 中的 Hadoop 群集**。 请参阅[在 HDInsight 中使用基于 Linux 的 Hadoop](./hdinsight-hadoop-linux-tutorial-get-started.md)。
+
+    > [!WARNING]
+    > 自 2017 年 9 月 15 日起，HDInsight .NET SDK 仅支持从 Azure 存储帐户返回 Hive 查询结果。 如果将此示例用于使用 Data Lake Store 作为主存储的 HDInsight 群集，则无法使用 .NET SDK 检索搜索结果。
+
 * **Visual Studio 2013/2015/2017**。
 
 ## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 提交 Hive 查询
@@ -69,7 +71,8 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
                 private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
                 private const string ExistingClusterUsername = "<Cluster Username>";
                 private const string ExistingClusterPassword = "<Cluster User Password>";
-   
+                
+                // Only Azure Storage accounts are supported by the SDK
                 private const string DefaultStorageAccountName = "<Default Storage Account Name>";
                 private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
                 private const string DefaultStorageContainerName = "<Default Blob Container Name>";

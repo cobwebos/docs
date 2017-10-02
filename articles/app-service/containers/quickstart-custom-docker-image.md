@@ -12,18 +12,19 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/05/2017
-ms.author: naziml;wesmc
+ms.author: wesmc
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 47eec572272eb22cd6cd881874d7ecb87d7e08ad
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: da47bc9dd6fd980a37e2fdb57485858c2f1b2a73
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="run-a-custom-docker-hub-image-in-azure-web-apps-for-containers"></a>在用于容器的 Azure Web 应用中运行自定义 Docker 中心映像 #
+# <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>在用于容器的 Azure Web 应用中运行自定义 Docker 中心映像 #
 
 在 Linux 上，应用服务提供预定义的应用程序堆栈，并支持特定版本，例如 PHP 7.0 和 Node.js 4.5。 还可使用自定义 Docker 映像将 Web 应用部署到尚未在 Azure 中定义的应用程序堆栈。 本快速入门介绍了如何创建 Web 应用并向其部署 Python 映像。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用。
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 09/07/2017
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service-web/app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为唯一的应用名称。
+使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为唯一的应用名称。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name elnably/dockerimagetest

@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 的 Linux 容器中创建 .NET Core Web 应用 | Microsoft Docs"
-description: "在数分钟内将你的第一个 .NET Core Hello World 应用部署到用于容器的 Web 应用。"
+description: "在数分钟内将第一个 .NET Core Hello World 应用部署到用于容器的 Web 应用。"
 keywords: "azure 应用服务、web 应用、dotnet、core、linux、oss"
 services: app-service
 documentationCenter: 
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/30/2017
-ms.author: aelnably;wesmc;mikono;rachelap;cephalin;cfowler
+ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 5d84e558e2fd998df31725b71d1474c0a774490b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 3ae0f28272d70a63b74a9f249566ae789f07aad5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-a-net-core-web-app-in-a-linux-container-in-azure"></a>在 Azure 的 Linux 容器中创建 .NET Core Web 应用
@@ -63,7 +64,7 @@ dotnet restore
 dotnet run
 ```
 
-打开 Web 浏览器并导航到 http://localhost:5000 处的应用。
+打开 Web 浏览器并导航到 `http://localhost:5000` 处的应用。
 
 页面中会显示该示例应用发出的 Hello World 消息。
 
@@ -87,7 +88,7 @@ git commit -m "first commit"
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service-web/app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为唯一的应用名称。
+使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为唯一的应用名称。
 
 以下命令中的运行时设置为 `DOTNETCORE|1.1`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes](/cli/azure/webapp#list-runtimes)。
 
@@ -140,7 +141,7 @@ To https://cephalin-dotnetcore.scm.azurewebsites.net/cephalin-dotnetcore.git
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js 示例代码在 Azure App Service Web 应用中运行。
+Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 

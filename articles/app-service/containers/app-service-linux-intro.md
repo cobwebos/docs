@@ -12,19 +12,20 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 02/16/2017
-ms.author: naziml;wesmc
+ms.author: wesmc
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: f46f59a69d13a4e702eccded810cf3c7a8b30904
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: bc1658fa49677386c8e4697221f7269ceec3533d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="introduction-to-azure-web-apps-for-containers"></a>用于容器的 Azure Web 应用简介
+# <a name="introduction-to-azure-web-app-for-containers"></a>用于容器的 Azure Web 应用简介
 
-[Web 应用](../../app-service-web/app-service-web-overview.md)是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 客户可以使用用于容器的 Web 应用在 Linux 本地为受支持的应用程序堆栈托管 Web 应用。 以下部分列出了目前受支持的应用程序堆栈。
+[Web 应用](../app-service-web-overview.md)是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 客户可以使用用于容器的 Web 应用在 Linux 本地为受支持的应用程序堆栈托管 Web 应用。 以下部分列出了目前受支持的应用程序堆栈。
 
 ## <a name="languages"></a>语言
 
@@ -63,11 +64,11 @@ ms.lasthandoff: 09/07/2017
 
 ## <a name="limitations"></a>限制
 
-Azure 门户仅显示当前对用于容器的 Web 应用可用的功能。 当我们启用更多功能时，会在门户中看到这些功能。
+Azure 门户仅显示当前对用于容器的 Web 应用有效的功能。 当我们启用更多功能时，会在门户中看到这些功能。
 
 某些功能（例如虚拟网络集成、Azure Active Directory/第三方身份验证或 Kudu 站点扩展）尚不可用。 这些功能可用后，我们将更新文档和博客，以反映所做更改。
 
-用于容器的 Web 应用仅支持[基本、标准](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[免费或共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 以下也是有关用于容器的 Web 应用的重要限制：
+用于容器的 Web 应用仅支持[基本和标准](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[免费或共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 以下也是有关用于容器的 Web 应用的重要限制：
 
 * 不能在已经托管非 Linux Web 应用的应用服务计划中创建用于容器的 Web 应用。
 * 在包含非 Linux Web 应用的资源组中创建用于容器的 Web 应用时，必须在不同于现有应用服务计划的区域中创建应用服务计划。
@@ -92,7 +93,7 @@ Azure 门户仅显示当前对用于容器的 Web 应用可用的功能。 当�
 * [在用于容器的 Azure 应用服务 Web 应用中使用 Ruby](quickstart-ruby.md)
 * [用于容器的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
 * [对用于容器的 Azure Web 应用的 SSH 支持](app-service-linux-ssh-support.md)
-* [设置 Azure 应用服务中的过渡环境](../../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [设置 Azure 应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [使用用于容器的 Azure Web 应用进行 Docker 中心持续部署](./app-service-linux-ci-cd.md)
 
 <!--Image references-->
