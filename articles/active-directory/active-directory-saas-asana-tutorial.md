@@ -89,7 +89,7 @@ ms.lasthandoff: 08/10/2017
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Asana 测试用户](#create-an-asana-test-user) - 在 Asana 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/10/2017
 
     b. 在“标识符”文本框中，键入值：`https://app.asana.com/`
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-asana-tutorial/tutorial_asana_certificate.png)
     
@@ -220,7 +220,7 @@ ms.lasthandoff: 08/10/2017
 
 本部分旨在测试 Azure AD 单一登录。
 
-请转到 Asana 登录页。 在电子邮件地址文本框中，插入电子邮件地址 britta.simon@contoso.com。 将密码文本框留空，并单击“登录”。 系统会你将重定向至 Azure AD 登录页。 完成 Azure AD 凭据。 此时已登录 Asana。
+请转到 Asana 登录页。 在电子邮件地址文本框中，插入电子邮件地址 britta.simon@contoso.com。将密码文本框留空，并单击“登录”。 系统会你将重定向至 Azure AD 登录页。 完成 Azure AD 凭据。 此时已登录 Asana。
 
 ## <a name="additional-resources"></a>其他资源
 

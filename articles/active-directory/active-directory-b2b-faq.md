@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: bfedbbf8b26e1b129584a6a644e64a15635f5723
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
-
 
 ---
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 05/25/2017
 当然！ 请参阅[有关此功能的博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 有关如何自定义组织登录页的详细信息，请参阅[在登录页和访问面板页中添加公司品牌](active-directory-add-company-branding.md)。
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>B2B 协作用户能否访问 SharePoint Online 和 OneDrive？
-是的。 不过，在 SharePoint Online 中使用人员选取器搜索现有来宾用户的功能默认已**关闭**。 若要启用该选项来搜索现有来宾用户，请将 **ShowPeoplePickerSuggestionsForGuestUsers** 为 **On**。 可以在租户级别或站点集合级别启用此设置。 可以使用 Set-SPOTenant 和 Set-SPOSite cmdlet 更改此设置。 使用这些 cmdlet，成员可以搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SharePoint Online 站点。
+是的。 不过，在 SharePoint Online 中使用人员选取器搜索现有来宾用户的功能默认已**关闭**。 要启用该选项来搜索现有来宾用户，请将 **ShowPeoplePickerSuggestionsForGuestUsers** 为 **On**。 可以在租户级别或站点集合级别启用此设置。 可以使用 Set-SPOTenant 和 Set-SPOSite cmdlet 更改此设置。 使用这些 cmdlet，成员可以搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SharePoint Online 站点。
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>是否仍支持 CSV 上传功能？
 是的。 有关使用 .csv 文件上传功能的详细信息，请参阅[此 PowerShell 示例](active-directory-b2b-code-samples.md)。
@@ -78,13 +77,13 @@ ms.lasthandoff: 05/25/2017
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B 协作是否支持多重身份验证和使用者电子邮件帐户？
 是的。 Azure AD B2B 协作同时支持多重身份验证和使用者电子邮件帐户。
 
-### <a name="do-you-plan-to-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>你们是否有计划支持 Azure AD B2B 协作用户的密码重置？
+### <a name="do-you-plan-to-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>是否计划支持 Azure AD B2B 协作用户的密码重置？
 是的。 下面是从合作伙伴组织中邀请的 B2B 用户的自助服务密码重置 (SSPR) 重要详细信息：
  
 * SSPR 只会在 B2B 用户的标识租户中发生。
 * 如果标识租户是 Microsoft 帐户，则使用 Microsoft 帐户 SSPR 机制。
 * 如果标识租户是实时 (JIT) 或“活跃”租户，则会发送密码重置电子邮件。
-* 对于其他租户，将为 B2B 用户遵循标准的 SSPR 流程。 与 B2B 用户的成员 SSPR 类似，在资源上下文中，租户将被阻止。 
+* 对于其他租户，将为 B2B 用户遵循标准的 SSPR 流程。 与 B2B 用户的成员 SSPR 类似，在资源上下文中，租户会被阻止。 
 
 ### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>密码重置是否适用于实时 (JIT) 或“活跃”租户中的来宾用户（这些用户使用工作或学校电子邮件地址接受邀请，但没有预先存在的 Azure AD 帐户）？
 是的。 可发送密码重置邮件，允许用户在 JIT 租户中重置其密码。
@@ -105,7 +104,7 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
  来宾用户可以使用任何标识提供者进行身份验证。 有关详细信息，请参阅 [B2B 协作用户的属性](active-directory-b2b-user-properties.md)。 使用 **UserType** 属性确定用户体验。 令牌中当前未包括 **UserType** 声明。 应用程序应当使用图形 API 从目录中查询用户并获取其 UserType。
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>可在何处找到 B2B 协作社区以共享解决方案和提交意见？
-我们将在改进 B2B 协作的过程中不断听取你的反馈。 我们诚邀你分享用户方案和最佳做法并分享 Azure AD B2B 协作中让你钟意的方面。 欢迎在 [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)参与讨论。
+我们会在改进 B2B 协作的过程中不断听取反馈。 我们诚邀你分享用户方案和最佳做法并分享 Azure AD B2B 协作中让你钟意的方面。 欢迎在 [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)参与讨论。
  
 我们还力邀你在 [B2B 协作意见](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas)中提交意见并为未来的功能投票。
 

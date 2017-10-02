@@ -189,7 +189,7 @@ Sysvol 和 Netlogon 共享不可用
 ### <a name="dns-and-domain-controller-on-different-machines"></a>不同计算机上的 DNS 和域控制器
 如果 DNS 与域控制器不在同一个虚拟机上，则需创建一个可以进行测试性故障转移的 DNS VM。 如果它们位于同一 VM 上，则可跳过本部分。
 
-可以使用全新的 DNS 服务器并创建所有需要的区域。 例如，如果 Active Directory 域是 contoso.com，则可以使用名称 contoso.com 创建 DNS 区域。 必须在 DNS 中更新与 Active Directory 对应的条目，如下所示：
+可以使用全新的 DNS 服务器并创建所有需要的区域。 例如，如果 Active Directory 域是 contoso.com，则可以使用名称 contoso.com 创建 DNS 区域。必须在 DNS 中更新与 Active Directory 对应的条目，如下所示：
 
 1. 确保在恢复计划中的任何其他虚拟机到位之前，以下设置已准备就绪：
    

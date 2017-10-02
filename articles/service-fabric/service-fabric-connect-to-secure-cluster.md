@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/29/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d6a13ceb8ccd9207ecacc166247535d496d5dec7
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 76606189e7bed1a5179c7486d7c10f3c253884b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
@@ -312,6 +312,8 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 `http://<your-cluster-endpoint>:19080/Explorer`
 
 Azure 门户的群集基本信息窗格中也提供了完整 URL。
+
+若要使用浏览器连接到 Windows 或 OS X 上的安全群集，可以导入客户端证书，浏览器将提示你提供要用于连接群集的证书。  在 Linux 计算机上，需要使用高级浏览器设置（每个浏览器具有不同的机制）导入证书并将其指向磁盘上的证书位置。
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>使用 Azure Active Directory 连接到安全群集
 

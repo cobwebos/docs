@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Salesforce Sandbox 的集成 | Microsoft Docs"
+title: "教程：Azure Active Directory 与 Salesforce Sandbox 集成 | Microsoft 文档"
 description: "了解如何在 Azure Active Directory 和 Salesforce Sandbox 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 7d3c655a754f83284c386d2007c604a731367814
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
-
 
 ---
 # <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
@@ -27,7 +26,7 @@ ms.lasthandoff: 06/23/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   必须拥有 Salesforce Sandbox for Work 或 Salesforce Sandbox for Education 的有效租户。 免费试用帐户可用于任一服务。
@@ -72,9 +71,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分中，提供以下配置设置：
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce Sandbox 帐户名称。
+    a. 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce Sandbox 帐户名称。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“管理员密码”文本框中，键入此帐户的密码。
+    b. 在“管理员密码”文本框中，键入此帐户的密码。
 
 6. 若要获取 Salesforce Sandbox 安全令牌，请打开新选项卡并登录到同一个 Salesforce Sandbox 管理员帐户。 在页面右上角单击你的名字，然后单击“我的设置”。
 

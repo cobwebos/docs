@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
 ms.openlocfilehash: c19f81da495eb7116b62797d1755d312a23f3805
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/28/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>教程：Azure Active Directory 与 LCVista 集成
@@ -55,7 +54,7 @@ ms.lasthandoff: 04/28/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-lcvista-from-the-gallery"></a>从库中添加 LCVista
-若要配置 LCVista 与 Azure AD 的集成，需要从库中将 LCVista 添加到托管 SaaS 应用列表。
+要配置 LCVista 与 Azure AD 的集成，需要从库中将 LCVista 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 LCVista，请执行以下步骤：**
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 04/28/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_search.png)
 
-5. 在结果窗格中，选择“LCVista”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“LCVista”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_addfromgallery.png)
 
@@ -88,15 +87,15 @@ ms.lasthandoff: 04/28/2017
 
 若要配置和测试 LCVista 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LCVista 测试用户](#creating-a-lcvista-test-user)** - 在 LCVista 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 LCVista 测试用户](#creating-a-lcvista-test-user)** - 在 LCVista 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-本部分将在 Azure 门户中启用 Azure AD 单一登录，并在 LCVista 应用程序中配置单一登录。
+本部分会在 Azure 门户中启用 Azure AD 单一登录，并在 LCVista 应用程序中配置单一登录。
 
 **若要配置 LCVista 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -112,14 +111,14 @@ ms.lasthandoff: 04/28/2017
 
     ![配置单一登录](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.lcvista.com/rainier/login`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.lcvista.com/rainier/login`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.lcvista.com`    
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.lcvista.com` 
      
     > [!NOTE] 
     > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [LCVista 客户端支持团队](https://lcvista.com/contact)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_certificate.png) 
 
@@ -137,7 +136,7 @@ ms.lasthandoff: 04/28/2017
 
     ![配置单一登录](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_config.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“实体 ID”部分中粘贴从 Azure AD 复制的**颁发者 URL**。 
+    a. 在“实体 ID”部分中粘贴从 Azure AD 复制的**颁发者 URL**。 
 
     b. 在“URL”部分中粘贴从 Azure AD 复制的**单一登录服务 URL**。
 
@@ -145,13 +144,13 @@ ms.lasthandoff: 04/28/2017
 
     d.单击“下一步”。 在“名字属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“姓氏属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“姓氏属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
 
     f. 在“电子邮件属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
     g. 在“用户名属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存”保存这些设置。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存”保存这些设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -180,7 +179,7 @@ ms.lasthandoff: 04/28/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-lcvista-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -190,7 +189,7 @@ ms.lasthandoff: 04/28/2017
  
 ### <a name="creating-a-lcvista-test-user"></a>创建 LCVista 测试用户
 
-在本部分中，将在 LCVista 中创建一个名为“Britta Simon”的用户。 需要联系 [LCVista 客户端支持团队](https://lcvista.com/contact)，以便将用户添加到 LCVista 应用程序中。 
+在本部分中，会在 LCVista 中创建一个名为“Britta Simon”的用户。 需要联系 [LCVista 客户端支持团队](https://lcvista.com/contact)，以便将用户添加到 LCVista 应用程序中。 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -198,9 +197,9 @@ ms.lasthandoff: 04/28/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 LCVista，请执行以下步骤：**
+**要将 Britta Simon 分配到 LCVista，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -224,7 +223,7 @@ ms.lasthandoff: 04/28/2017
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。 单击访问面板中的“LCVista”磁贴，你将重定向到组织登录页面。 成功登录后，你将登录到 LCVista 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。 单击访问面板中的“LCVista”磁贴，将重定向到组织登录页面。 成功登录后，将登录到 LCVista 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

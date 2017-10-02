@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 658616d1979e617a7d80a989b8e80246a9091fdf
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 6e2f6983e00f874420f7f0907dbc68185f0af713
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>在 HDInsight Hadoop 群集上安装 Giraph 并使用 Giraph 处理大型图形
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="whatis"></a>什么是 Giraph
 
-[Apache Giraph](http://giraph.apache.org/) 可让你使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。 Graphs 对各个对象之间的关系进行建模。 例如，大型网络（例如 Internet）上的路由器之间的连接，或者社交网络上人们之间的关系。 通过图形处理，你可以推理图形中对象之间的关系，例如：
+[Apache Giraph](http://giraph.apache.org/) 允许使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。 Graphs 对各个对象之间的关系进行建模。 例如，大型网络（例如 Internet）上的路由器之间的连接，或者社交网络上人们之间的关系。 通过图形处理，可以推理图形中对象之间的关系，例如：
 
 * 根据当前的关系识别潜在的朋友。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/08/2017
 > [!WARNING]
 > 随 HDInsight 群集提供的组件享有完全支持权利 - Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件（如 Giraph）可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题。 如果不能，你必须去开源社区查阅资料，可以在那里找到关于该技术的深层专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件（如 Giraph）可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题。 如果不能，必须去开源社区查阅资料，可以在那里找到关于该技术的深层专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 
 
 ## <a name="what-the-script-does"></a>脚本功能
@@ -69,7 +69,7 @@ ms.lasthandoff: 07/08/2017
 > * HDInsight .NET SDK
 > * Azure Resource Manager 模板
 > 
-> 你也可以将脚本操作应用于已在运行的群集。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+> 也可以将脚本操作应用于已在运行的群集。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 1. 使用[创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤开始创建群集，但是不完成创建。
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 07/08/2017
 
     ![tiny_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
 
-3. 若要保存文件，请使用 **Ctrl+X**，然后输入“Y”，最后按 **Enter** 以接受文件名。
+3. 要保存文件，请使用 **Ctrl+X**，然后输入“Y”，最后按 **Enter** 以接受文件名。
 
 4. 使用以下命令将数据存储到 HDInsight 群集的主存储中：
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 07/08/2017
 
     有关这些参数以及与 Giraph 示例搭配使用的其他参数的详细信息，请参阅 [Giraph 快速入门](http://giraph.apache.org/quick_start.html)。
 
-6. 完成该作业后，结果将存储在 **/example/out/shotestpaths** 目录中。 输出文件的名称将以 **part-m-** 开头，结尾的数字表示第一个文件、第二个文件，依此类推。 使用以下命令查看输出：
+6. 完成该作业后，结果将存储在 **/example/out/shotestpaths** 目录中。 输出文件的名称以 **part-m-** 开头，结尾的数字表示第一个文件、第二个文件，依此类推。 使用以下命令查看输出：
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*
@@ -171,7 +171,7 @@ ms.lasthandoff: 07/08/2017
 
     SimpleShortestPathComputation 示例硬编码为从对象 ID 1 开始查找与其他对象间的最短路径。 输出采用 `destination_id` 和 `distance` 的格式。 `distance` 是对象 ID 1 与目标 ID 的边缘之间的行程值（或权重）。
 
-    在可视化此数据的情况下，你可以通过体验 ID 1 与所有其他对象之间的最短路径来验证结果。 ID 1 和 ID 4 之间的最短路径为 5。 这是从 <span style="color:orange">ID 1 到 ID 3</span>，然后再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
+    在可视化此数据的情况下，可以通过体验 ID 1 与所有其他对象之间的最短路径来验证结果。 ID 1 和 ID 4 之间的最短路径为 5。 这是从 <span style="color:orange">ID 1 到 ID 3</span>，再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
 
     ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
 

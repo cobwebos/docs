@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 3c9642e5c2da92203be2bc23820e5b6f544de660
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 491a920ceeaac62dd37b1def3f02234056aebfb0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/04/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>针对对象无法同步到 Azure AD 进行故障排除
 
-如果对象未能按照预期同步到 Azure AD，则可能存在多种原因。 如果你收到来自 Azure AD 的有关错误的电子邮件，或者在 Azure AD Connect Health 中看到错误，请参阅[解决导出错误](active-directory-aadconnect-troubleshoot-sync-errors.md)。 但是，如果要解决的问题所涉及的对象不在 Azure AD 中，则应使用本主题作为参考。 本主题介绍如何在本地组件 Azure AD Connect 同步中查找错误。
+如果对象未能按照预期同步到 Azure AD，则可能存在多种原因。 如果收到来自 Azure AD 的有关错误的电子邮件，或者在 Azure AD Connect Health 中看到错误，请参阅[解决导出错误](active-directory-aadconnect-troubleshoot-sync-errors.md)。 但是，如果要解决的问题所涉及的对象不在 Azure AD 中，则应使用本主题作为参考。 本主题介绍如何在本地组件 Azure AD Connect 同步中查找错误。
 
 若要查找错误，需要按以下顺序查看几个不同位置的内容：
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/04/2017
 | completed-\*-warnings |运行已完成，但某些数据并未处于预期的状态。 如果遇到错误，则此消息通常只是一种征兆。 在解决错误之前，不应该调查警告。 |
 | 成功 |没有问题。 |
 
-选择某一行时，底部将更新以显示该运行的详细信息。 在底部的最左边，可能会有一份显示“步骤编号”的列表。 仅当林中有多个域，而且每个域都以一个步骤表示时，才会显示此列表。 可以在“分区”标题下方找到域名。 在“同步统计信息”下方，可以找到有关已处理更改次数的详细信息。 可以单击链接获取已更改对象的列表。 如果有对象发生错误，这些错误将显示在“同步错误”下方。
+选择某一行时，底部将更新以显示该运行的详细信息。 在底部的最左边，可能会有一份显示“步骤编号”的列表。 仅当林中有多个域，而且每个域都以一个步骤表示时，才会显示此列表。 可以在“分区”标题下方找到域名。 在“同步统计信息”下方，可以找到有关已处理更改次数的详细信息。 可以单击链接获取已更改对象的列表。 如果有对象发生错误，这些错误会显示在“同步错误”下方。
 
 ### <a name="troubleshoot-errors-in-operations-tab"></a>排查“操作”选项卡中的错误
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorsync.png)  
@@ -57,27 +57,27 @@ ms.lasthandoff: 03/04/2017
 
 首先单击错误字符串（图中的 **sync-rule-error-function-triggered**）。 随后会先看到对象概述。 若要查看实际的错误，可单击“堆栈跟踪”按钮。 此跟踪提供错误的调试级别信息。
 
-可以在“调用堆栈信息”框中单击右键，然后选择“全选”“复制”。 接着可以复制堆栈，并在最喜爱的编辑器（例如记事本）中查看此错误。
+可以在“调用堆栈信息”框中单击右键，并选择“全选”“复制”。 接着可以复制堆栈，并在最喜爱的编辑器（例如记事本）中查看此错误。
 
-* 如果错误来自 **SyncRulesEngine**，则调用堆栈信息首先会列出对象上的所有属性。 向下滚动，直到你看到 **InnerException =>** 标题为止。  
+* 如果错误来自 **SyncRulesEngine**，则调用堆栈信息首先会列出对象上的所有属性。 向下滚动，直到看到 **InnerException =>** 标题为止。  
   ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorinnerexception.png)  
   后面的行显示错误。 在上图中，错误来自所创建的自定义同步规则 Fabrikam。
 
 如果错误本身未提供足够的信息，则请查看数据本身。 可以单击具有对象标识符的链接，继续对[连接器空间导入的对象](#cs-import)进行故障排除。
 
 ## <a name="connector-space-object-properties"></a>连接器空间对象属性
-如果没有在[操作](#operations)选项卡中找到任何错误，则下一步是从 Active Directory 到 metaverse 然后到 Azure AD 查找连接器空间对象的问题。 在此路径中，你应能找到问题所在。
+如果没有在[操作](#operations)选项卡中找到任何错误，则下一步是从 Active Directory 到 metaverse 然后到 Azure AD 查找连接器空间对象的问题。 在此路径中，应能找到问题所在。
 
 ### <a name="search-for-an-object-in-the-cs"></a>搜索 CS 中的对象
 
 在“Synchronization Service Manager”中，单击“连接器”，选择“Active Directory 连接器”和“搜索连接器空间”。
 
-在“作用域”中，选择“RDN”（如果想要搜索 CN 属性）或“DN 或定位点”（如果想要搜索 distinguishedName 属性）。 输入一个值，然后单击“搜索”。  
+在“作用域”中，选择“RDN”（如果想要搜索 CN 属性）或“DN 或定位点”（如果想要搜索 distinguishedName 属性）。 输入一个值，并单击“搜索”。  
 ![连接器空间搜索](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearch.png)  
 
 如果找不到要查找的对象，则可能已通过[基于域的筛选](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)或[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)对其进行筛选。 阅读[配置筛选](active-directory-aadconnectsync-configure-filtering.md)主题，以验证已按所需方式配置筛选。
 
-另一种有用的搜索是选择 Azure AD 连接器，在“作用域”中，选择“挂起的导入”，然后选择“添加”复选框。 此搜索提供 Azure AD 中不能与本地对象相关联的所有已同步对象。  
+另一种有用的搜索是选择 Azure AD 连接器，在“作用域”中，选择“挂起的导入”，并选择“添加”复选框。 此搜索提供 Azure AD 中不能与本地对象相关联的所有已同步对象。  
 ![连接器空间搜索孤立](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
 这些对象已由其他同步引擎或具有不同筛选配置的同步引擎创建。 此视图是不再托管的**孤立**对象的列表。 应查看此列表并考虑使用 [Azure AD PowerShell](http://aka.ms/aadposh) cmdlet 删除这些对象。
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 03/04/2017
 所有选项卡的底部都有两个按钮：“预览”和“日志”。
 
 ### <a name="preview"></a>预览
-“预览”页面可用于同步单个对象。 如果你正在对某些自定义同步规则进行故障排除，并且想要在单个对象上查看更改的效果，则此页面非常有用。 可以在“完全同步”和“增量同步”之间选择。 还可以在“生成预览”（仅在内存中保留更改）和“提交预览”（将更新 metaverse 并暂存对目标连接器空间的所有更改）之间选择。  
+“预览”页面可用于同步单个对象。 如果正在对某些自定义同步规则进行故障排除，并且想要在单个对象上查看更改的效果，则此页面非常有用。 可以在“完全同步”和“增量同步”之间选择。还可以在“生成预览”（仅在内存中保留更改）和“提交预览”（将更新 metaverse 并暂存对目标连接器空间的所有更改）之间选择。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/preview.png)  
 可以检查对象，以及哪一个规则适用于特定的属性流。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
@@ -139,7 +139,7 @@ ms.lasthandoff: 03/04/2017
 
 如果缺少连接到 Azure AD 的连接器，则阅读 [MV 属性](#MV-attributes)以验证有关预配到 Azure AD 的条件。
 
-此选项卡也可让你导航到[连接器空间对象](#connector-space-object-properties)。 选择一行，然后单击“属性”。
+使用此选项卡也可导航到[连接器空间对象](#connector-space-object-properties)。 选择一行，并单击“属性”。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

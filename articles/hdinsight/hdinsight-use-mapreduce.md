@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 09/20/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: df8ac578a56de72df667b1fa7f90f981c79d9999
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 625bbf802888b70ccac57b7da3d7060a9706ddec
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>在 Hadoop on HDInsight 中使用 MapReduce
@@ -40,9 +39,9 @@ ms.lasthandoff: 07/08/2017
 
 ## <a id="whatis"></a>什么是 MapReduce
 
-Hadoop MapReduce 是一个软件框架，用于编写处理海量数据的作业。 输入数据已拆分成独立的区块，这些区块将在群集中的节点之间并行处理。 MapReduce 作业包括两个函数：
+Hadoop MapReduce 是一个软件框架，用于编写处理海量数据的作业。 输入的数据将拆分为独立的区块。 每个区块跨群集中的节点并行进行处理。 MapReduce 作业包括两个函数：
 
-* **映射器**：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），然后发出元组（键/值对）
+* **映射器**：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），并发出元组（键/值对）
 
 * **化简器**：使用映射器发出的元组并执行汇总运算，以基于映射器数据创建更小的合并结果
 
@@ -50,7 +49,7 @@ Hadoop MapReduce 是一个软件框架，用于编写处理海量数据的作业
 
 ![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
 
-此作业的输出是某个单词在所分析的文本中出现的次数。
+此作业的输出是文本中每个单词出现次数的计数。
 
 * 映射器将输入文本中的每行用作一个输入并将其拆分为多个单词。 每当文本中的单词后跟一个 1 时，映射器将发出一个键/值对。 输出在发送到化简器之前经过排序。
 * 随后，化简器会计算每个单词的计数的和并发出一个键/值对（包含单词，后跟该单词的总出现次数）。
@@ -163,7 +162,7 @@ public class WordCount {
 
 ## <a id="run"></a>运行 MapReduce
 
-HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合你，然后按链接进行演练。
+HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合，并按链接进行演练。
 
 | **请使用以下方法**... | **...要执行以下操作** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--- |:--- |:--- |:--- |

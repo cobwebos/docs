@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 4963888748d7103e3b24ac9c8de3d10ef9554fd4
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 0b6a7f22d744480a40a878c979986cdd7667109c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步服务影子属性
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/18/2017
 
 userPrincipalName 属性是在使用 PowerShell 时显示的值。
 
-由于实际本地属性值存储在 Azure AD 中，因此当你验证 fabrikam.com 域时，Azure AD 使用 shadowUserPrincipalName 的值更新 userPrincipalName 属性。 对于要更新的这些值，无需从 Azure AD Connect 同步任何更改。
+由于实际本地属性值存储在 Azure AD 中，因此验证 fabrikam.com 域时，Azure AD 使用 shadowUserPrincipalName 的值更新 userPrincipalName 属性。 对于要更新的这些值，无需从 Azure AD Connect 同步任何更改。
 
 ### <a name="proxyaddresses"></a>proxyAddresses
 用于仅包括已验证域的相同过程也会对 proxyAddresses 执行，但会使用一些其他逻辑。 仅对邮箱用户进行已验证域检查。 已启用邮件的用户或联系人表示另一个 Exchange 组织中的用户，只能将 proxyAddresses 中的任何值添加到这些对象。
@@ -56,7 +56,7 @@ userPrincipalName 属性是在使用 PowerShell 时显示的值。
 | 本地 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-在这种情况下，**smtp:abbie.spencer@fabrikam.com** 已删除，因为尚未验证该域。 但 Exchange 还添加了 **SIP:abbie.spencer@fabrikamonline.com**。 Fabrikam 未使用本地 Lync/Skype，但 Azure AD 和 Exchange Online 准备使用它。
+在这种情况下，**smtp:abbie.spencer@fabrikam.com** 已删除，因为尚未验证该域。 但 Exchange 还添加了 **SIP:abbie.spencer@fabrikamonline.com**。Fabrikam 未使用本地 Lync/Skype，但 Azure AD 和 Exchange Online 准备使用它。
 
 proxyAddresses 的此逻辑称为 **ProxyCalc**。 在以下情况下，每次更改用户时，将调用 ProxyCalc：
 

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 707bb2b7cd9796e0e05234aa08002bbc1820f871
+ms.translationtype: HT
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 4f58177f540c14172d7ece8b4bc8c8a2b9787f8f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="get-started-with-web-apis-for-nodejs"></a>用于 Node.js 的 Web API 入门
@@ -30,7 +29,7 @@ ms.lasthandoff: 03/18/2017
 
 若要实现此目的，需要：
 
-1. 将一个应用程序注册到 Azure AD。
+1. 将应用程序注册到 Azure AD。
 2. 将应用设置为使用 Passport 的 `passport-azure-ad` 插件。
 3. 配置一个客户端应用程序用于调用“待办事项列表”Web API。
 
@@ -41,10 +40,10 @@ ms.lasthandoff: 03/18/2017
 >
 >
 
-我们已在 GitHub 中的 MIT 许可证下发布了此运行示例的所有源代码，你可以任意克隆（甚至分发）这些代码，并提供反馈和发出请求。
+我们已在 GitHub 中的 MIT 许可证下发布了此运行示例的所有源代码，可以任意克隆（甚至分发）这些代码，并提供反馈和发出请求。
 
 ## <a name="about-nodejs-modules"></a>关于 Node.js 模块
-本演练将使用 Node.js 模块。 模块是可加载的 JavaScript 包，可为你的应用程序提供特定功能。 我们通常使用 Node.js NPM 命令行工具在 NPM 安装目录中安装模块。 但有些模块（如 HTTP 模块）是作为核心 Node.js 包的一部分提供的。
+本演练将使用 Node.js 模块。 模块是可加载的 JavaScript 包，可为应用程序提供特定功能。 我们通常使用 Node.js NPM 命令行工具在 NPM 安装目录中安装模块。 但有些模块（如 HTTP 模块）是作为核心 Node.js 包的一部分提供的。
 
 安装的模块保存在 Node.js 安装目录的根目录下的 **node_modules** 目录中。 **node_modules** 目录中的每个模块都保留自身的 **node_modules** 目录，其中包含它依赖的所有模块。 另外，每个必需的模块都有一个 **node_modules** 目录 这种递归的目录结构表示了依赖关系链。
 
@@ -60,11 +59,11 @@ ms.lasthandoff: 03/18/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在顶部菜单中选择你的帐户。 然后，在“目录”列表下选择要注册应用程序的 Active Directory 租户。
+2. 在顶部菜单中选择帐户。 然后，在“目录”列表下选择要注册应用程序的 Active Directory 租户。
 
-3. 在左侧的菜单中选择“更多服务”，然后选择“Azure Active Directory”。
+3. 在左侧的菜单中选择“更多服务”，并选择“Azure Active Directory”。
 
-4. 选择“应用注册”，然后选择“添加”。
+4. 选择“应用注册”，并选择“添加”。
 
 5. 根据提示创建一个 **Web 应用程序和/或 WebAPI**。
 
@@ -72,19 +71,19 @@ ms.lasthandoff: 03/18/2017
 
       * “登录 URL”是应用的基本 URL。  示例代码的默认 URL 为 `https://localhost:8080`。
 
-6. 注册后，Azure AD 会为应用分配唯一的应用程序 ID。 在后面的部分中将会用到此值，因此，请从应用程序页复制此值。
+6. 注册后，Azure AD 会为应用分配唯一的应用程序 ID。 在后面的部分中会用到此值，因此，请从应用程序页复制此值。
 
 7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 “应用程序 ID URI”是应用程序的唯一标识符。 约定使用 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。
 
 8. 通过“设置”页为应用程序创建**密钥**，然后将该密钥复制到某个位置， 稍后需要用到它。
 
 ## <a name="step-3-download-nodejs-for-your-platform"></a>步骤 3：下载平台的 Node.js
-若要成功使用本示例，你必须正确安装 Node.js。
+要成功使用本示例，必须正确安装 Node.js。
 
 从 [http://nodejs.org](http://nodejs.org) 安装 Node.js。
 
 ## <a name="step-4-install-mongodb-on-your-platform"></a>步骤 4：在平台上安装 MongoDB
-若要成功使用本示例，你必须正确安装 MongoDB。 使用 MongoDB 将 REST API 持久保留在服务器实例之间。
+要成功使用本示例，必须正确安装 MongoDB。 使用 MongoDB 将 REST API 持久保留在服务器实例之间。
 
 从 [http://mongodb.org](http://www.mongodb.org) 安装 MongoDB。
 
@@ -129,7 +128,7 @@ gyp ERR! node-gyp -v v0.10.0
 gyp ERR! not ok
 npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
-Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许多操作系统中没有 DTrace。 你可以安全地忽略这些错误。
+Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许多操作系统中没有 DTrace。 可以安全地忽略这些错误。
 
 此命令的输出应如下所示：
 
@@ -155,7 +154,7 @@ Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许
     └── bunyan@0.22.0 (mv@0.0.5)
 
 
-## <a name="step-6-install-passportjs-in-your-web-api"></a>步骤 6：将在 Passport.js 安装到 Web API
+## <a name="step-6-install-passportjs-in-your-web-api"></a>步骤 6：会在 Passport.js 安装到 Web API
 [Passport](http://passportjs.org/) 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用模块化结构，可以在不造成干扰的情况下放入任何基于 Express 的应用程序或 Resitify Web 应用程序。 一套综合性策略支持使用用户名和密码、Facebook、Twitter 等进行身份验证。
 
 我们针对 Azure Active directory 开发了一个策略。 我们将安装此模块，然后添加 Azure Active Directory 策略插件。
@@ -231,7 +230,7 @@ server.js 文件提供 Web API 服务器的大多数功能。 我们要将大部
 
     `cd azuread`
 
-2. 在偏好的编辑器中创建 `server.js` 文件，然后添加以下信息：
+2. 在偏好的编辑器中创建 `server.js` 文件，并添加以下信息：
 
     ```Javascript
         'use strict';
@@ -261,7 +260,7 @@ server.js 文件提供 Web API 服务器的大多数功能。 我们要将大部
 
     `cd azuread`
 
-2. 在偏好的编辑器中创建 `config.js` 文件，然后添加以下信息：
+2. 在偏好的编辑器中创建 `config.js` 文件，并添加以下信息：
 
     ```Javascript
          exports.creds = {
@@ -286,12 +285,12 @@ server.js 文件提供 Web API 服务器的大多数功能。 我们要将大部
 
     `cd azuread`
 
-2. 在偏好的编辑器中打开 `server.js` 文件，然后添加以下信息：
+2. 在偏好的编辑器中打开 `server.js` 文件，并添加以下信息：
 
     ```Javascript
     var config = require('./config');
     ```
-3. 然后，在 `server.js` 中替换包含以下代码的新节：
+3. 然后，将包含以下代码的新节添加到 `server.js` 中：
 
     ```Javascript
     var options = {
@@ -341,7 +340,7 @@ server.js 文件提供 Web API 服务器的大多数功能。 我们要将大部
 
 本演练使用 MongoDB 来存储步骤 4 中所述的任务。
 
-我们在步骤 11 中创建了 `config.js` 文件，并将数据库命名为 `tasklist`，因为这是在 **mogoose_auth_local** 连接 URL 的末尾放置的内容。 不需要在 MongoDB 中事先创建此数据库。 首次运行服务器应用程序时，MongoDB 将会自动创建此数据库（假设该数据库尚不存在）。
+我们在步骤 11 中创建了 `config.js` 文件，并将数据库命名为 `tasklist`，因为这是在 **mogoose_auth_local** 连接 URL 的末尾放置的内容。 不需要在 MongoDB 中事先创建此数据库。 首次运行服务器应用程序时，MongoDB 会自动创建此数据库（假设该数据库尚不存在）。
 
 现在，我们已告诉服务器要使用哪个 MongoDB 数据库，接下来需要编写一些附加的代码，为服务器任务创建模型和架构。
 
@@ -361,7 +360,7 @@ COMPLETED：任务是否已完成。 一个**布尔值**。
 
     `cd azuread`
 
-2. 在偏好的编辑器中打开 `server.js` 文件，然后在配置条目下面添加以下信息：
+2. 在偏好的编辑器中打开 `server.js` 文件，并在配置条目下面添加以下信息：
 
     ```Javascript
     // Connect to MongoDB.
@@ -381,13 +380,13 @@ COMPLETED：任务是否已完成。 一个**布尔值**。
     mongoose.model('Task', TaskSchema);
     var Task = mongoose.model('Task');
     ```
-从该代码中可以看到，首先会创建架构。 然后创建在定义**路由**时，用于存储整个代码中的数据的模型对象
+从该代码中可以看到，首先会创建架构。 然后创建在定义**路由**时，用于存储整个代码中的数据的模型对象。
 
 ## <a name="step-14-add-our-routes-for-our-task-rest-api-server"></a>步骤 14：为任务 REST API 服务器添加路由
 现已创建一个可用的数据库模型，接下来添加用于 REST API 服务器的路由。
 
 ### <a name="about-routes-in-restify"></a>关于 Restify 中的路由
-Restify 中路由的工作原理与 Express 堆栈中的路由相同。 可以使用客户端应用程序应该调用的 URI 定义路由。 通常，需要在单独的文件中定义路由。 本演练将在 server.js 文件中定义路由。 对于生产用途，建议在各自的文件中定义路由。
+Restify 中路由的工作原理与 Express 堆栈中的路由相同。 可以使用客户端应用程序应该调用的 URI 定义路由。 通常，需要在单独的文件中定义路由。 本演练会在 server.js 文件中定义路由。 对于生产用途，建议在各自的文件中定义路由。
 
 Restify 路由的典型模式如下：
 
@@ -419,7 +418,7 @@ server.post('/service/:add/:object', createObject); // Calls createObject on rou
 
     `cd azuread`
 
-2. 在偏好的编辑器中打开 `server.js` 文件，然后在前面创建的数据库条目下面添加以下信息：
+2. 在偏好的编辑器中打开 `server.js` 文件，并在前面创建的数据库条目下面添加以下信息：
 
 ```Javascript
 
@@ -712,7 +711,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
     `$npm install -g jsontool`
 
-    这将全局安装 JSON 工具。 现已安装了工具，接下来让我们试运行服务器：
+    这会全局安装 JSON 工具。 现已安装了工具，接下来让我们试运行服务器：
 
 2. 首先，确保 mongoDB 实例正在运行：
 
@@ -720,8 +719,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 3. 然后，切换到目录并开始运行：
 
-    `$ cd azuread`
-    `$ node server.js`
+    `$ cd azuread` `$ node server.js`
 
     `$ curl -isS http://127.0.0.1:8080 | json`
 
@@ -764,7 +762,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 如果一切正常，便可以将 OAuth 添加到 REST API 服务器。
 
-你已有一台装有 MongoDB 的 REST API 服务器！
+已有一台装有 MongoDB 的 REST API 服务器！
 
 ## <a name="step-18-add-authentication-to-our-rest-api-server"></a>步骤 18：将身份验证添加到 REST API 服务器
 既然我们运行了 REST API，接下来让它在 Azure AD 中发挥作用。
@@ -839,7 +837,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有策略写入器都依循类似的模式。 查看该策略可以发现，我们已将它作为函数来传递，其中包含一个令牌和一个用作参数的 done。 策略完成其工作后将返回。 完成后，需要存储用户并隐藏令牌，以免再次请求它。
 
 > [!IMPORTANT]
-> 上述代码使用了正好地服务器上进行身份验证的任何用户。 这就是所谓的自动注册。 在生产服务器中，建议要求所有人都必须先经历你所确定的注册过程，然后才能进入服务器。 这通常是在使用者应用中看到的模式，可让向 Facebook 注册，但接着请求填写其他信息。 如果这不是命令行程序，我们就只能从返回的令牌对象中提取电子邮件，然后请求用户填写其他信息。 由于这是测试服务器，因此，我们直接将它们加入到内存中的数据库。
+> 上述代码使用了正好地服务器上进行身份验证的任何用户。 这就是所谓的自动注册。 在生产服务器中，建议要求所有人都必须先经历所确定的注册过程，才能进入服务器。 这通常是在使用者应用中看到的模式，可让向 Facebook 注册，但接着请求填写其他信息。 如果这不是命令行程序，我们就只能从返回的令牌对象中提取电子邮件，并请求用户填写其他信息。 由于这是测试服务器，因此，我们直接将它们加入到内存中的数据库。
 >
 >
 
@@ -893,8 +891,7 @@ next();
 
 2. 然后，切换到目录并开始运行。
 
-      `$ cd azuread`
-      `$ node server.js`
+      `$ cd azuread` `$ node server.js`
 
 3. 试用基本 POST。
 

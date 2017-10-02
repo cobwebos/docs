@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: be957651af78519f678321aec511b71cb18a85f2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
 
-
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
-本文提供常用于在 Azure Resource Manager 部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，你的 CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。  
+本文提供常用于在 Azure Resource Manager 部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。  
 
 > [!NOTE]
 > 本文介绍了 Azure CLI（有时被称为 Azure CLI 1.0）中的 Resource Manager 模式命令。 若要在 Resource Manager 模型中工作，还可试用下一代多平台 CLI - [Azure CLI 2.0](/cli/azure/install-az-cli2)。
@@ -33,7 +32,7 @@ ms.lasthandoff: 04/19/2017
 
 若要开始，请先[安装 Azure CLI](../cli-install-nodejs.md) 并[连接到 Azure 订阅](../xplat-cli-connect.md)。
 
-要在资源管理器模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；要显示某个命令的帮助，请键入 `azure help [command]`。 还可以在创建和管理具体 Azure 服务的说明文档中找到 CLI 示例。
+要在 Resource Manager 模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；要显示某个命令的帮助，请键入 `azure help [command]`。 还可以在创建和管理具体 Azure 服务的说明文档中找到 CLI 示例。
 
 可选参数显示在方括号中（例如，`[parameter]`）。 其他所有参数都是必需的。
 
@@ -49,8 +48,8 @@ ms.lasthandoff: 04/19/2017
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>azure account：管理你的帐户信息
-该工具使用你的 Azure 订阅信息连接到你的帐户。
+## <a name="azure-account-manage-your-account-information"></a>azure account：管理帐户信息
+该工具使用 Azure 订阅信息连接到帐户。
 
 **列出导入的订阅**
 
@@ -1000,7 +999,7 @@ ms.lasthandoff: 04/19/2017
 
 可以创建负载均衡器规则，用于配置负载均衡器的前端终结点以及要接收传入网络流量的后端地址池范围。 设置还包括前端 IP 终结点的端口，以及后端地址池范围的端口。
 
-下例演示了如何创建负载均衡器规则、侦听端口 80 TCP 的前端终结点，以及发送到后端地址池范围的端口 8080 的负载平衡网络流量。
+下例演示了如何创建负载均衡器规则、侦听端口 80 TCP 的前端终结点，以及发送到后端地址池范围的端口 8080 的负载均衡网络流量。
 
     azure network lb rule create -g myresourcegroup -l mylb -n mylbrule -p tcp -f 80 -b 8080 -i 10
 
@@ -1255,7 +1254,7 @@ ms.lasthandoff: 04/19/2017
 **用于管理公共 IP 地址的命令**
 
     network public-ip create [options] <resource-group> <name> <location>
-创建公共 IP 资源。 你将要创建公共 IP 资源并将其关联到一个域名。
+创建公共 IP 资源。 将要创建公共 IP 资源并将其关联到一个域名。
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
     info:    Executing command network public-ip create
@@ -1681,7 +1680,7 @@ ms.lasthandoff: 04/19/2017
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>azure tag：用于管理资源管理器标记的命令
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>azure tag：用于管理 Resource Manager 标记的命令
 **添加标记**
 
     tag create [options] <name> <value>
@@ -1708,7 +1707,7 @@ ms.lasthandoff: 04/19/2017
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> 从 CLI 0.10 版开始，可以为某些热门 Marketplace 映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create`。 另外，从 0.10 版开始，`azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
+> 从 CLI 0.10 版开始，可以为某些热门应用商店映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create`。 另外，从 0.10 版开始，`azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
 > 
 > 
 
