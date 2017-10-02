@@ -3,13 +3,13 @@
    
         sudo -s
    
-    输入您的密码。
+    输入密码。
 2. 若要安装 MySQL Community Server 版本，请键入：
    
         zypper install mysql-community-server
    
     下载和安装 MySQL 时，请等待。
-3. 若要将 MySQL 设置为在系统引导时启动，请键入：
+3. 要将 MySQL 设置为在系统引导时启动，请键入：
    
         insserv mysql
 4. 使用以下命令手动启动 MySQL 守护程序 (mysqld)：
@@ -25,7 +25,7 @@
         rcmysql stop
    
    > [!IMPORTANT]
-   > 在安装后，MySQL 根密码默认为空。 建议用户运行 **mysql\_secure\_installation**，这是一个可帮助保护 MySQL 的脚本。 该脚本将提示你更改 MySQL 根密码、删除匿名用户帐户、禁用远程根登录、删除测试数据库以及重新加载特权表。 建议你对所有这些选项回答“是”并更改根密码。
+   > 在安装后，MySQL 根密码默认为空。 建议用户运行 **mysql\_secure\_installation**，这是一个可帮助保护 MySQL 的脚本。 该脚本会提示更改 MySQL 根密码、删除匿名用户帐户、禁用远程根登录、删除测试数据库以及重新加载特权表。 建议对所有这些选项回答“是”并更改根密码。
    > 
    > 
 5. 键入以下内容来运行脚本 MySQL 安装脚本：
@@ -35,7 +35,7 @@
    
         mysql -u root -p
    
-    输入在上一步中所更改的 MySQL 根密码，将显示一条可发出 SQL 语句以与数据库进行交互的位置提示。
+    输入在上一步中所更改的 MySQL 根密码，会显示一条可发出 SQL 语句以与数据库进行交互的位置提示。
 7. 若要创建新的 MySQL 用户，请在 **mysql>** 提示符处运行以下命令：
    
         CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
@@ -51,16 +51,16 @@
    
         GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
    
-    其中，`ip-address` 是你将从其中连接到 MySQL 的计算机的 IP 地址。
+    其中，`ip-address` 是要从其中连接到 MySQL 的计算机的 IP 地址。
 10. 若要退出 MySQL 数据库管理实用程序，请键入：
     
         quit
 
 ## <a name="add-an-endpoint"></a>添加终结点
-1. 安装 MySQL 后，你必须配置终结点，以便远程访问 MySQL。 登录到 [Azure 经典门户][AzurePortal]。 依次单击“虚拟机”、新虚拟机的名称和“终结点”。
+1. 安装 MySQL 后，必须配置终结点，以便远程访问 MySQL。 登录到 [Azure 经典门户][AzurePortal]。 依次单击“虚拟机”、新虚拟机的名称和“终结点”。
 2. 在页面底部单击“添加”。
 3. 添加名为“MySQL”的终结点，协议为“TCP”，并将“公用”和“专用”端口均设置为“3306”。
-4. 若要从你的计算机远程连接到虚拟机，请键入：
+4. 要从计算机远程连接到虚拟机，请键入：
    
         mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
    
