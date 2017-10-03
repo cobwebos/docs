@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 780f94f9863f73834ab72e9daf4362bea28242e9
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: edf3b0a80712e8287a66978e0e9574949805a27a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
@@ -119,15 +119,13 @@ ms.lasthandoff: 08/30/2017
 
 
 ## <a name="query-error-remediation"></a>查询错误更正
-下表列出了可能的错误以及当发生这些错误时更正的方法
+下表列出了常见错误以及更正方法
 
 | 查询分析错误 | 错误用法 | 更正的用法 |
 | --- | --- | --- |
-| 错误: 不支持的属性。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/>属性应匹配[支持的属性列表](#supported-properties)中的一个属性。 |
-| 错误: 不支持对属性使用运算符。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/>属性为布尔值类型。 对布尔值类型使用上面列出的受支持运算符（-eq 或 -ne）。 |
-| 错误: 查询编译错误。 |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应匹配上述受支持属性列表中的一个属性。(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")正则表达式中有错误。 |
-| 错误: 二进制表达式的格式不正确。 |(user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
-| 错误: 在设置动态成员身份期间发生未知的错误。 |(user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
+| 错误: 不支持的属性。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>请确保该属性在[支持的属性列表](#supported-properties)中。 |
+| 错误: 不支持对属性使用运算符。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>属性类型不支持所使用的运算符（在此示例中，-contains 不能用于布尔类型）。 请对该属性类型使用正确的运算符。 |
+| 错误: 查询编译错误。 |1. (user.department -eq "Sales") (user.department -eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1.缺少运算符。 使用 -and 或 -or 这两个联接谓词<br/><br/>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br/><br/>2. 与 -match 一起使用的正则表达式出错<br/><br/>(user.userPrincipalName -match ".*@domain.ext")，或者：(user.userPrincipalName -match "@domain.ext$")|
 
 ## <a name="supported-properties"></a>支持的属性
 下面是可以在高级规则中使用的所有用户属性：

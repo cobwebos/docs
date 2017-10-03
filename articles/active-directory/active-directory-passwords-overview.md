@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: 9f72a4900f20282827ff939aa41bc4f306e547a3
+ms.translationtype: HT
+ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
+ms.openlocfilehash: de2d41d8c2787ffdc80daddf959487f6031da87d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 09/16/2017
 
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>面向 IT 专业人员的 Azure AD 自助服务密码重置
@@ -28,13 +28,13 @@ ms.lasthandoff: 05/20/2017
 
 凭借着易于使用和部署，Azure Active Directory (Azure AD) 自助服务密码重置 (SSPR) 脱颖而出。 Azure AD 自助服务密码重置组合了一系列功能，它们：
 
-* 允许你的用户通过以下方式管理其自己的密码
+* 允许用户通过以下方式管理其自己的密码
   * 从任何设备
   * 在任何位置
   * 在任何时间
-* 遵循你以管理员身份定义的策略
+* 遵循以管理员身份定义的策略
 
-如果你已准备就绪，可以使用我们的[快速入门指南](active-directory-passwords-getting-started.md)开始使用 Azure AD SSPR 并快速让你的用户重置其自己的密码。
+如果已准备就绪，可以使用我们的[快速入门指南](active-directory-passwords-getting-started.md)开始使用 Azure AD SSPR 并快速让用户重置其自己的密码。
 
 ## <a name="what-is-possible"></a>可以实现的功能
 
@@ -53,10 +53,10 @@ ms.lasthandoff: 05/20/2017
 
 ## <a name="azure-ad-self-service-password-reset-availability"></a>Azure AD 自助服务密码重置可用性
 
-Azure AD 自助服务密码重置在三个层中可用，具体取决于你的订阅。
+Azure AD 自助服务密码重置在三个层中可用，具体取决于订阅。
 
-* **Azure AD Free** - 仅限云的管理员可以重置其自己的密码
-* **Azure AD Basic**或任何**付费 Office 365 订阅** - 仅限云的用户和仅限云的管理员可以重置其自己的密码
+* **Azure AD Free** - 仅限云的管理员可以重置其自己的密码。
+* **Azure AD Basic** 或任何**付费 Office 365 订阅** - 仅限云的用户可以更改其自己的密码，仅限云的管理员可以重置其自己的密码。
 * **Azure AD Premium** - 任何用户或管理员（包括仅限云、联合或密码同步的用户）都可以重置其自己的密码。 本地密码要求启用密码写回。
 
 ## <a name="azure-ad-self-service-password-reset-a-sum-of-the-parts"></a>Azure AD 自助服务密码重置，一系列部件的组合
@@ -68,7 +68,7 @@ Azure AD 中的自助服务密码重置由以下组件构成：
 * **密码重置门户**，用户可以在其中使用由管理员定义的质询和用户已提供的答案来重置其密码
 * **用户密码更改门户**，用户可以在其中通过输入旧密码并提供新密码来更改其自己的密码
 * **密码管理报表**，用户可以在其中查看和分析其在 Azure 门户中的租户的密码活动报表
-* **使用 Azure AD Connect 将密码写回到本地**使得你可以通过云实现对本地、联合或密码同步用户的管理
+* **使用 Azure AD Connect 将密码写回到本地**使得可以通过云实现对本地、联合或密码同步用户的管理
 
 ## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Azure AD 定价、SLA、更新和路线图
 
@@ -91,7 +91,7 @@ Azure AD 中的自助服务密码重置由以下组件构成：
 * [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
 * [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
 * [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
+* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
 * [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
 

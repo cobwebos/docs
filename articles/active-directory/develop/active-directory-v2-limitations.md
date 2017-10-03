@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 00a6749d00c6e66a957b0a89c6658511a1bafe4d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
-
 
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>我是否应使用 v2.0 终结点？
@@ -31,7 +30,7 @@ ms.lasthandoff: 07/06/2017
 * 如果必须在应用程序中支持个人 Microsoft 帐户，请使用 v2.0 终结点。 执行操作前，请确保了解本文讨论的限制。
 * 如果应用程序只需支持 Microsoft 工作和学校帐户，则不要使用 v2.0 终结点。 请改为参阅我们的 [Azure AD 开发人员指南](active-directory-developers-guide.md)。
 
-随着时间推移，v2.0 终结点将会逐步移除此处列出的限制，因此你只需要使用 v2.0 终结点。 在此同时，本文旨在帮助你判断 v2.0 终结点是否对你适用。 我们将持续更新本文，以反映 v2.0 终结点当前的状态。 可返回查看，重新评估对 v2.0 功能的要求。
+随着时间推移，v2.0 终结点会逐步移除此处列出的限制，因此，只需要使用 v2.0 终结点。 与此同时，本文旨在帮助你判断 v2.0 终结点是否适合你。 我们将持续更新本文，以反映 v2.0 终结点当前的状态。 可返回查看，重新评估对 v2.0 功能的要求。
 
 如果现有的某个 Azure AD 应用未使用 v2.0 终结点，无需从头开始进行配置。 将来，我们会提供一种方法，将现有 Azure AD 应用程序与 v2.0 终结点配合使用。
 
@@ -58,7 +57,7 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`
 
-注册系统会将现有重定向 URI 的完整 DNS 名称与要添加的重定向 URI 的 DNS 名称相比较。 如果满足以下任一条件，添加 DNS 名称的请求将失败：  
+注册系统会将现有重定向 URI 的完整 DNS 名称与要添加的重定向 URI 的 DNS 名称相比较。 如果满足以下任一条件，添加 DNS 名称的请求会失败：  
 
 * 新的重定向 URI 的完整 DNS 名称与现有的重定向 URI 的 DNS 名称不匹配。
 * 新的重定向 URI 的完整 DNS 名称不是现有的重定向 URI 的子域。
@@ -67,21 +66,21 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 
 `https://login.contoso.com`
 
-你可以向其添加，如下所示：
+可以向其添加，如下所示：
 
 `https://login.contoso.com/new`
 
-在这种情况下，DNS 名称将完全匹配。 或者，你可以执行下面的操作：
+在这种情况下，DNS 名称将完全匹配。 或者，可以执行下面的操作：
 
 `https://new.login.contoso.com`
 
-在这种情况下，你将引用 login.contoso.com 的 DNS 子域。 如果希望拥有使用 login-east.contoso.com 和 login-west.contoso.com 作为重定向 URI 的应用，则必须按以下顺序添加这些重定向 URI：
+在这种情况下，将引用 login.contoso.com 的 DNS 子域。如果希望拥有使用 login-east.contoso.com 和 login-west.contoso.com 作为重定向 URI 的应用，则必须按以下顺序添加这些重定向 URI：
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-可以添加后两个重定向 URI，因为它们是第一个重定向 URI (contoso.com) 的子域。 即将发布的版本中将取消此限制。
+可以添加后两个重定向 URI，因为它们是第一个重定向 URI (contoso.com) 的子域。即将发布的版本中将取消此限制。
 
 若要了解如何在应用程序注册门户中注册应用，请参阅[如何使用 v2.0 终结点注册应用](active-directory-v2-app-registration.md)。
 
@@ -89,7 +88,7 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 v2.0 终结点目前支持登录所有已在应用程序注册门户中注册的应用，并且该应用已在[支持的身份验证流](active-directory-v2-flows.md)列表中列出。 但这些应用可获取 OAuth 2.0 访问令牌来访问非常有限的资源集。 V2.0 终结点仅对以下应用颁发访问令牌：
 
 * 请求令牌的应用。 如果逻辑应用包含多个不同的组件或层，则应用可为自身获取访问令牌。 若要查看此方案的工作方式，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)教程。
-* Outlook 邮件、日历和联系人 REST API，全都位于 https://outlook.office.com。 若要了解如何编写访问这些 API 的应用，请参阅 [Office 入门](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)教程。
+* Outlook 邮件、日历和联系人 REST API，全都位于 https://outlook.office.com。若要了解如何编写访问这些 API 的应用，请参阅 [Office 入门](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)教程。
 * Microsoft Graph API。 可以详细了解 [Microsoft Graph](https://graph.microsoft.io) 以及可用的数据。
 
 目前不支持其他服务。 将来会添加更多的 Microsoft Online Services，并支持自定义构建的 Web API 和服务。

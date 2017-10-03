@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 283c9903501a1e497e4dde81146d21edb869e9e2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 081cf2bde44a0b55508cc7f0197fa7f8e378189b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="how-azure-subscriptions-are-associated-with-azure-active-directory"></a>Azure 订阅与 Azure Active Directory 的关联方式
@@ -48,13 +48,14 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 ## <a name="to-add-an-existing-subscription-to-your-azure-ad-directory"></a>将现有订阅添加到 Azure AD 目录
 使用帐户登录时，该帐户必须存在于订阅所关联的当前目录中，同时存在于要向其添加订阅的目录中。 
 
-1. 使用充当订阅（其所有权需转让）的“帐户管理员”的帐户登录到 [Azure 帐户中心](https://account.windowsazure.com/Home/Index)。
+1. 使用充当订阅（其所有权需转让）的“帐户管理员”的帐户登录到 [Azure 帐户中心](https://account.azure.com/Subscriptions)。
 2. 确保需要让其成为订阅所有者的用户位于目标目录中。
 3. 单击“转让订阅”。
 4. 指定接收方。 接收方会自动收到含有接受链接的电子邮件。
 5. 接收方单击该链接并遵照说明操作，包括输入他们的付款信息。 接收方成功后，订阅将转让。 
 6. 订阅的默认目录会更改为该用户所在的目录。
 
+若要了解详细信息，请参阅[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
 
 ## <a name="suggestions-to-manage-both-a-subscription-and-a-directory"></a>建议：如何同时管理订阅和目录
 Azure 订阅的管理角色可以管理与 Azure 订阅绑定的资源。 本部分介绍 Azure 订阅管理员和 Azure AD 目录管理员之间的差异。 有关管理角色以及如何使用这些角色来管理订阅的其他建议，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)。

@@ -9,15 +9,17 @@ ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 851f04c8b5eee762ec43060f02c8b83f00c1782e
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: f246ee8aaecf3a398182debdea07832c75c1bd9c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
 Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用于与 Service Fabric 实体交互并对其进行管理。 Service Fabric CLI 可以与 Windows 或 Linux 群集配合使用。 Service Fabric CLI 可以在任何支持 Python 的平台上运行。
+
+[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,6 +57,13 @@ pip install sfctl
 sfctl -h
 ```
 
+如果遇到错误，指出“未找到 `sfctl`”，请运行以下命令：
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 ### <a name="ubuntu"></a>Ubuntu
 
 对于 Ubuntu 16.04 桌面版，可以使用第三方个人软件包存档 (PPA) 安装 Python 3.6。
@@ -75,6 +84,13 @@ python3.6 -m pip install sfctl
 sfctl -h
 ```
 
+如果遇到错误，指出“未找到 `sfctl`”，请运行以下命令：
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 这些步骤不影响系统安装的 Python 3.5 和 Python 2.7。 如果不熟悉 Ubuntu，请勿尝试修改这些安装。
 
 ### <a name="macos"></a>MacOS
@@ -92,6 +108,15 @@ brew install python3
 pip3 install sfctl
 sfctl -h
 ```
+
+
+如果遇到错误，指出“未找到 `sfctl`”，请运行以下命令：
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 
 这些步骤不修改系统安装的 Python 2.7。
 
@@ -120,10 +145,10 @@ sfctl cluster select --endpoint http://testcluster.com:19080
 
 群集终结点必须以 `http` 或 `https` 为前缀。 它必须包括 HTTP 网关的端口。 此端口和地址与 Service Fabric Explorer URL 相同。
 
-对于使用证书进行保护的群集，可以指定一个进行 PEM 编码的证书。 可以将证书指定为单个文件，或者指定为证书和密钥对。
+对于使用证书进行保护的群集，可以指定一个进行 PEM 编码的证书。 可以将证书指定为单个文件，或者指定为证书和密钥对。 如果它是并非 CA 签名的自签名证书，可以传递 `--no-verify` 选项以跳过 CA 验证。
 
 ```azurecli
-sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 有关详细信息，请参阅[连接到安全的 Azure Service Fabric 群集](service-fabric-connect-to-secure-cluster.md)。
@@ -175,6 +200,12 @@ Service Fabric CLI 支持 PEM（.pem 扩展名）文件形式的客户端证书�
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
+同样，若要从 PEM 文件将转换为 PFX 文件，可以使用以下命令（此处未提供密码）：
+
+```bash
+openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
+```
+
 有关详细信息，请参阅 [OpenSSL 文档](https://www.openssl.org/docs/)。
 
 ### <a name="connection-problems"></a>连接问题
@@ -202,6 +233,16 @@ sfctl application -h
 ```azurecli
 sfctl application create -h
 ```
+
+## <a name="updating-the-service-fabric-cli"></a>更新 Service Fabric CLI 
+
+若要更新 Service Fabric CLI，请运行以下命令（根据在原始安装期间所选的内容将 `pip` 替换为 `pip3`）：
+
+```bash
+pip uninstall sfctl 
+pip install sfctl 
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

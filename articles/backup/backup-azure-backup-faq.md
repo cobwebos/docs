@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
-ms.author: markgal;arunak;trinadhk;
+ms.author: markgal;arunak;trinadhk;sogup;
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 62ca4e395a7390c57b46c548395333283a06c21a
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 94b649d7949b6fbc2ec734afc955dabbfc84fc4d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/18/2017
 仍然支持[经典门户](https://manage.windowsazure.com)中所有现有的备份保管库。 但是，无法再使用经典门户来部署新的备份保管库。 Microsoft 建议对所有部署使用恢复服务保管库，因为将来只会对恢复服务保管库进行增强。 如果尝试在经典门户中创建备份保管库，系统会你将重定向到 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>是否可以将备份保管库迁移到恢复服务保管库？ <br/>
-很遗憾不可以，无法将备份保管库的内容迁移到恢复服务保管库。 我们正在着手添加此功能，但当前未提供。
+可以，现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。
 
 ### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>我已在备份保管库中备份了经典 VM。 是否可以将 VM 从经典模式迁移到 Resource Manager 模式并在恢复服务保管库中保护它们？
 将 VM 从经典模式迁移到 Resource Manager 模式时，备份保管库中的经典 VM 恢复点不会自动迁移到恢复服务保管库。 可以按照以下步骤传输 VM 备份：

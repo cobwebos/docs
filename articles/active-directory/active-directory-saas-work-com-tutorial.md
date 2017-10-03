@@ -86,7 +86,7 @@ ms.lasthandoff: 07/26/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Work.com 测试用户](#create-a-workcom-test-user)** - 在 Work.com 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+3. **[创建 Work.com 测试用户](#create-a-workcom-test-user)** - 在 Work.com 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 07/26/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Work.com 客户端支持团队](https://help.salesforce.com/articleView?id=000159855&type=3)获取此值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![“SAML 签名证书”部分](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_certificate.png) 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 07/26/2017
    
     ![设置](./media/active-directory-saas-work-com-tutorial/ic794108.png "设置")
 
-9. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，然后单击“我的域”，打开“我的域”页。 
+9. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
    
     ![我的域](./media/active-directory-saas-work-com-tutorial/ic767825.png "我的域")
 
@@ -194,7 +194,7 @@ ms.lasthandoff: 07/26/2017
     
     ![登录页品牌打造](./media/active-directory-saas-work-com-tutorial/ic767826.png "登录页品牌打造")
 
-14. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，然后单击“保存”。
+14. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，并单击“保存”。
     
     ![登录页品牌打造](./media/active-directory-saas-work-com-tutorial/ic784366.png "登录页品牌打造")
 
@@ -227,14 +227,14 @@ ms.lasthandoff: 07/26/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
     d.单击“下一步”。 单击“创建” 。
  
 ### <a name="create-a-workcom-test-user"></a>创建 Work.com 测试用户
-要使 Azure Active Directory 用户能够登录，必须将这些用户预配到 Work.com 中。 对于 Work.com，需要手动执行预配。
+要使 Azure Active Directory 用户能够登录，必须将这些用户预配到 Work.com 中。对于 Work.com，需要手动执行预配。
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
 1. 以管理员身份登录到 Work.com 公司站点。

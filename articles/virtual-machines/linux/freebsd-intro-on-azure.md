@@ -3,7 +3,7 @@ title: "Azure 上的 FreeBSD 简介 | Microsoft Docs"
 description: "了解如何在 Azure 上使用 FreeBSD 虚拟机"
 services: virtual-machines-linux
 documentationcenter: 
-author: KylieLiang
+author: thomas1206
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
-ms.author: kyliel
+ms.date: 09/13/2017
+ms.author: huishao
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 7ada9fddd7ffccc3dcbfe3eac05d99b710b67cbc
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 79724bced613619406b693b4b352037e2c5ec9f3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 简介
@@ -32,6 +32,7 @@ Microsoft Corporation 在 Azure 上提供预先配置了 [Azure VM 来宾代理]
 
 - FreeBSD 10.3-RELEASE
 - FreeBSD 11.0-RELEASE
+- FreeBSD 11.1-RELEASE
 
 进行首次使用时的 VM 预配（用户名、密码或 SSH 密钥、主机名等）以及为选择性 VM 扩展启用相关功能等操作时，该代理负责在 FreeBSD VM 和 Azure 结构之间进行通信。
 
@@ -42,6 +43,7 @@ Microsoft Corporation 在 Azure 上提供预先配置了 [Azure VM 来宾代理]
 
 - [Azure 应用商店中的 FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
 - [Azure 应用商店中的 FreeBSD 11.0](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)
+- [Azure Marketplace 中的 FreeBSD 11.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>通过 FreeBSD 上的 Azure CLI 2.0 创建 FreeBSD VM
 首先需要通过以下命令在 FreeBSD 计算机上安装 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。

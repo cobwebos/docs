@@ -1,5 +1,5 @@
 >[!NOTE]
-> 你可以通过本反馈页面或 [Azure 反馈](https://feedback.azure.com/forums/216843-virtual-machines)使用 #azerrormessage 标记给我们留言。
+> 可以通过本反馈页面或 [Azure 反馈](https://feedback.azure.com/forums/216843-virtual-machines)使用 #azerrormessage 标记给我们留言。
 
 ## <a name="error-response-format"></a>错误响应格式 
 Azure VM 使用以下 JSON 格式进行错误响应：
@@ -51,10 +51,10 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  ContainerAlreadyOnLease  |  已有针对保留 URI 为 {0} 的 blob 的存储容器的租约。  |
 |  CrossSubscriptionMoveWithKeyVaultResources  |  移动资源请求包含由请求中一个或多个 {0} 引用的 KeyVault 资源。 跨订阅移动中当前不支持此操作。 请查看 KeyVault 资源 ID 的错误详细信息。  |
 |  DiagnosticsOperationInternalError  |  处理 VM {0} 的诊断配置文件时出现内部错误。  |
-|  DiskBlobAlreadyInUseByAnotherDisk  |  属于 VM“{1}”的其他磁盘正在使用 Blob {0}。 你可以检查 Blob 元数据以了解磁盘引用信息。  |
+|  DiskBlobAlreadyInUseByAnotherDisk  |  属于 VM“{1}”的其他磁盘正在使用 Blob {0}。 可以检查 Blob 元数据以了解磁盘引用信息。  |
 |  DiskBlobNotFound  |  找不到磁盘“{1}”的 URI 为 {0} 的 VHD Blob。  |
 |  DiskBlobNotFound  |  找不到 URI 为 {0} 的 VHD Blob。  |
-|  DiskEncryptionKeySecretMissingTags  |  {0} 机密没有 {1} 标志。 请更新机密版本，添加所需标志，然后重试。  |
+|  DiskEncryptionKeySecretMissingTags  |  {0} 机密没有 {1} 标志。 请更新机密版本，添加所需标志，并重试。  |
 |  DiskEncryptionKeySecretUnwrapFailed  |  未能使用密钥 {1} 解开机密 {0} 的值。  |
 |  DiskImageNotReady  |  磁盘映像 {0} 处于 {1} 状态。 请在映像就绪后重试。  |
 |  DiskPreparationError  |  准备 VM 磁盘时出现一个或多个错误。 有关详细信息，请参阅磁盘实例视图。  |
@@ -110,7 +110,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  NotFound  |  找不到 ID 为 {0} 的租户。  |
 |  NotFound  |  找不到映像 {0}。  |
 |  NotSupported  |  许可证类型为 {0}，但映像 Blob {1} 不是来自本地。  |
-|  OperationNotAllowed  |  无法删除可用性集 {0}。 请先确保可用性集中不包含任何 VM，然后再进行删除。  |
+|  OperationNotAllowed  |  无法删除可用性集 {0}。 请先确保可用性集中不包含任何 VM，再进行删除。  |
 |  OperationNotAllowed  |  不允许将可用性集 SKU 从 'Aligned' 更改为 'Classic'。  |
 |  OperationNotAllowed  |  VM 未运行时，无法修改 VM 中的扩展。  |
 |  OperationNotAllowed  |  捕获操作仅在含基于 Blob 的磁盘的虚拟机上受支持。 请使用“映像”资源 API 从托管的虚拟机创建映像。  |
@@ -140,7 +140,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  OperationNotAllowed  |  VM“{0}”属于 'Classic' 可用性集“{1}”。 请将可用性集更新为使用 'Aligned' SKU，然后重试转换。  |
 |  OperationNotAllowed  |  从映像创建的 VM 不能具有基于 Blob 的磁盘。 所有磁盘都必须是托管磁盘。  |
 |  OperationNotAllowed  |  捕获操作无法完成，因为 VM 未通用化。  |
-|  OperationNotAllowed  |  不允许在 VM“{0}”上执行管理操作，因 VM 磁盘将被转换为托管磁盘。  |
+|  OperationNotAllowed  |  不允许在 VM“{0}”上执行管理操作，因 VM 磁盘会被转换为托管磁盘。  |
 |  OperationNotAllowed  |  有一个进行中的操作正在将虚拟机的电源状态从 {0} 改为 {1}。 请稍后执行操作 {2}。  |
 |  OperationNotAllowed  |  无法添加或更新 VM。 请求的 VM 大小 {0} 可能不可用于现有分配单元。 访问 https://aka.ms/azure-resizevm 详细了解重设 VM 大小的策略。  |
 |  OperationNotAllowed  |  无法重设 VM 大小，因为请求的大小 {0} 不可用于当前分配有可用性集的群集。 可用的大小为: {1}。 访问 https://aka.ms/azure-resizevm 详细了解重设 VM 大小的策略。  |
@@ -167,7 +167,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  StorageAccountTypeNotSupported  |  存储帐户 {0} 的类型为 {1}。 启动诊断支持 {2} 种存储帐户类型。  |
 |  SubscriptionNotAuthorizedForImage  |  未对订阅授权。  |
 |  TargetDiskBlobAlreadyExists  |  Blob {0} 已存在。 请提供其他 blob URI 来创建新的空白数据磁盘“{1}”。  |
-|  TargetDiskBlobAlreadyExists  |  无法继续捕获操作，因为目标映像 Blob {0} 已存在，并且未设置覆盖 VHD Blob 的标志。 请删除 Blob 或设置覆盖 VHD Blob 的标志，然后重试。  |
+|  TargetDiskBlobAlreadyExists  |  无法继续捕获操作，因为目标映像 Blob {0} 已存在，并且未设置覆盖 VHD Blob 的标志。 请删除 Blob 或设置覆盖 VHD Blob 的标志，并重试。  |
 |  TargetDiskBlobAlreadyExists  |  捕获操作无法继续，因为目标映像 Blob {0} 对其具有活动租约。   |
 |  TargetDiskBlobAlreadyExists  |  Blob {0} 已存在。 请提供不同的 Blob URI 作为磁盘“{1}”的目标。  |
 |  TooManyVMRedeploymentRequests  |  为 VM“{0}”或与此 VM 位于同一可用性集中的 VM 收到过多重新部署请求。 请稍后重试。  |
@@ -180,15 +180,15 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  VMExtensionManagementInternalError  |  准备 VM 扩展时出现多个错误。 有关详细信息，请参阅 VM 扩展实例视图。  |
 |  VMExtensionProvisioningError  |  VM 在处理扩展“{0}”时报告失败。 错误消息:“{1}”。  |
 |  VMExtensionProvisioningError  |  未能在 VM 上预配多个 VM 扩展。 有关详细信息，请参阅 VM 扩展实例视图。  |
-|  VMExtensionProvisioningTimeout  |  预配 VM 扩展“{0}”超时。 扩展安装可能耗时过长，或无法获得扩展状态。  |
-|  VMMarketplaceInvalidInput  |  从非 Marketplace 映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
-|  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从 Marketplace 映像部署。 OS 磁盘名称为 {0}。  |
-|  VMMarketplaceInvalidInput  |  从 Marketplace 映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
+|  VMExtensionProvisioningTimeout  |  预配 VM 扩展“{0}”超时。扩展安装可能耗时过长，或无法获得扩展状态。  |
+|  VMMarketplaceInvalidInput  |  从非应用商店映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从应用商店映像部署。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  从应用商店映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
 |  VMNotFound  |  找不到 VM“{0}”。  |
 |  VMRedeploymentFailed  |  VM“{0}”的重新部署因内部错误而失败。 请稍后重试。  |
-|  VMRedeploymentTimedOut  |  VM“{0}”的重新部署未在分配的时间内完成。 不久即可成功完成。 否则，你可以重试该请求。  |
+|  VMRedeploymentTimedOut  |  VM“{0}”的重新部署未在分配的时间内完成。 不久即可成功完成。 否则，可以重试该请求。  |
 |  VMStartTimedOut  |  VM“{0}”未在分配的时间内启动。 该 VM 仍可能成功启动。 请于稍后检查电源状态。  |
 
 
 ## <a name="next-steps"></a>后续步骤
-如果需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+如果需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

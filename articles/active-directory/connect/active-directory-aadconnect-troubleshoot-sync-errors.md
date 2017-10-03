@@ -28,7 +28,7 @@ ms.lasthandoff: 07/18/2017
 
 在最新版本的 Azure AD Connect（\(2016 年 8 月版或更高版本\)）中，[Azure 门户](https://aka.ms/aadconnecthealth)会针对用于同步的 Azure AD Connect Health 提供同步错误报告。
 
-从 2016 年 9 月 1 日开始，默认将为所有*新的* Azure Active Directory 租户启用 [Azure Active Directory 重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)功能。 在接下来的几个月，将自动为现有租户启用此功能。
+从 2016 年 9 月 1 日开始，默认将为所有*新的* Azure Active Directory 租户启用 [Azure Active Directory 重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)功能。 在接下来的几个月，会自动为现有租户启用此功能。
 
 Azure AD Connect 通过它所同步的目录执行 3 种类型的操作：导入、同步和导出。 在执行所有这些操作时都可能发生错误。 本文重点介绍在导出到 Azure AD 期间发生的错误。
 
@@ -65,9 +65,9 @@ Azure Active Directory 架构不允许两个或更多个对象的以下属性使
 2. 本地 Active Directory 中有两个或更多个对象的 userPrincipalName 值相同。 在 Azure AD 中只会预配其中一个对象。
 3. 在本地 Active Directory 中添加了一个对象，该对象的 ProxyAddresses 属性值与 Azure Active Directory 中现有对象的该属性值相同。 在本地添加的对象将不会在 Azure Active Directory 中预配。
 4. 在本地 Active Directory 中添加了一个对象，该对象的 userPrincipalName 属性值与 Azure Active Directory 中某个帐户的该属性值相同。 该对象将不会在 Azure Active Directory 中预配。
-5. 将某个已同步的帐户从林 A 移到了林 B。Azure AD Connect（同步引擎）已使用 ObjectGUID 属性计算 SourceAnchor。 移动林后，SourceAnchor 值将会不同。 林 B 中的新对象无法与 Azure AD 中的现有对象同步。
+5. 将某个已同步的帐户从林 A 移到了林 B。Azure AD Connect（同步引擎）已使用 ObjectGUID 属性计算 SourceAnchor。 移动林后，SourceAnchor 值会不同。 林 B 中的新对象无法与 Azure AD 中的现有对象同步。
 6. 从本地 Active Directory 中意外删除了一个已同步的对象，同时，在 Active Directory 中为同一实体（例如用户）创建了新对象，但未删除 Azure Active Directory 中的帐户。 新帐户将无法与现有的 Azure AD 对象同步。
-7. 卸载后重新安装 Azure AD Connect。 重新安装期间，将一个不同的属性选作 SourceAnchor。 以前同步的所有对象将不再同步，并出现 InvalidSoftMatch 错误。
+7. 卸载后重新安装 Azure AD Connect。 重新安装期间，将一个不同的属性选作 SourceAnchor。 以前同步的所有对象不再同步，并出现 InvalidSoftMatch 错误。
 
 #### <a name="example-case"></a>案例：
 1. **Bob Smith** 是 Azure Active Directory 中的一个用户，该用户已从 *contoso.com* 本地 Active Directory 同步
@@ -84,10 +84,10 @@ Azure Active Directory 架构不允许两个或更多个对象的以下属性使
    * smtp:bobt@contoso.com
    * smtp:bob.taylor@contoso.com
    * **smtp:bob@contoso.com**
-9. 在同步期间，Azure AD Connect 将会识别到在本地 Active Directory 中添加了 Bob Taylor，并要求 Azure AD 做出相同的更改。
-10. Azure AD 首先会执行硬匹配。 也就是说，它会搜索 immutableId 等于 "abcdefghijkl0123456789==" 的任何对象。 如果 Azure AD 中没有任何其他对象具有该 immutableId，硬匹配将会失败。
+9. 在同步期间，Azure AD Connect 会识别到在本地 Active Directory 中添加了 Bob Taylor，并要求 Azure AD 做出相同的更改。
+10. Azure AD 首先会执行硬匹配。 也就是说，它会搜索 immutableId 等于 "abcdefghijkl0123456789==" 的任何对象。 如果 Azure AD 中没有任何其他对象具有该 immutableId，硬匹配会失败。
 11. 然后，Azure AD 将尝试对 Bob Taylor 进行软匹配。 也就是说，它将搜索 proxyAddresses 等于上述三个值（包括 smtp:bob@contoso.com）的任何对象
-12. Azure AD 将会根据软匹配条件查找 Bob Smith 的对象。 但该对象的值为 immutableId = "abcdefghijklmnopqrstuv=="。 这表示该对象是从本地 Active Directory 中的另一对象同步来的。 因此，Azure AD 无法软匹配这些对象，从而导致 **InvalidSoftMatch** 同步错误。
+12. Azure AD 会根据软匹配条件查找 Bob Smith 的对象。 但该对象的值为 immutableId = "abcdefghijklmnopqrstuv=="。 这表示该对象是从本地 Active Directory 中的另一对象同步来的。 因此，Azure AD 无法软匹配这些对象，从而导致 **InvalidSoftMatch** 同步错误。
 
 #### <a name="how-to-fix-invalidsoftmatch-error"></a>如何解决 InvalidSoftMatch 错误
 发生 InvalidSoftMatch 错误的最常见原因是两个对象的 SourceAnchor \(immutableId\) 不同，但 ProxyAddresses 和/或 UserPrincipalName 属性（在 Azure AD 中执行软匹配过程中会使用这些属性）相同。 解决软匹配无效错误
@@ -100,7 +100,7 @@ Azure Active Directory 架构不允许两个或更多个对象的以下属性使
 请注意，用于同步的 Azure AD Connect Health 中的同步错误报告每隔 30 分钟更新一次，其中包含最近一次同步尝试出现的错误。
 
 > [!NOTE]
-> 根据定义，ImmutableId 在对象的生存期内不应更改。 如果在配置 Azure AD Connect 时未考虑到上述列表中的某些情景，Azure AD Connect 为代表相同实体（同一个用户/组/联系人等）的、存在你想要继续使用的 Azure AD 对象的 AD 对象计算的 SourceAnchor 值不同。
+> 根据定义，ImmutableId 在对象的生存期内不应更改。 如果在配置 Azure AD Connect 时未考虑到上述列表中的某些情景，Azure AD Connect 为代表相同实体（同一个用户/组/联系人等）、存在要继续使用的 Azure AD 对象的 AD 对象计算的 SourceAnchor 值不同。
 >
 >
 
@@ -115,7 +115,7 @@ Azure Active Directory 架构不允许两个或更多个对象的以下属性使
 * 在 Office 365 中创建了一个支持邮件的安全组。 管理员在本地 AD 中添加了一个新用户或联系人（尚未同步到 Azure AD），并且该对象的 ProxyAddresses 属性值与 Office 365 组的该属性值相同。
 
 #### <a name="example-case"></a>案例
-1. 管理员在 Office 365 中为税务部门创建一个支持邮件的新安全组，并提供了电子邮件地址 tax@contoso.com。 这样，就会为此组分配值为 **smtp:tax@contoso.com** 的 ProxyAddresses 属性
+1. 管理员在 Office 365 中为税务部门创建一个支持邮件的新安全组，并提供了电子邮件地址 tax@contoso.com。这样，就会为此组分配值为 **smtp:tax@contoso.com** 的 ProxyAddresses 属性
 2. 有一个新用户加入了 Contoso.com，管理员在本地为该用户创建了 proxyAddress 为 **smtp:tax@contoso.com** 的帐户
 3. 当 Azure AD Connect 同步新用户帐户时，会出现“ObjectTypeMismatch”错误。
 
@@ -171,8 +171,8 @@ Azure Active Directory 架构不允许两个或更多个对象的以下属性使
 在允许将数据写入目录之前，Azure Active Directory 会对数据本身强制实施各种限制。 这是为了确保最终用户尽可能获得最佳体验，同时可以使用依赖于此数据的应用程序。
 
 #### <a name="scenarios"></a>方案
-a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 UserPrincipalName 属性值包含无效/不支持的字符。
-b.保留“数据库类型”设置，即设置为“共享”。 UserPrincipalName 属性不符合所需的格式。
+a. UserPrincipalName 属性值包含无效/不支持的字符。
+b. UserPrincipalName 属性不符合所需的格式。
 
 #### <a name="how-to-fix-identitydatavalidationfailed-error"></a>如何解决 IdentityDataValidationFailed 错误
 a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式。
@@ -196,8 +196,8 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 #### <a name="how-to-fix"></a>如何解决
 如果用户的 UserPrincipalName 后缀已从 bob@**contoso.com** 更新为 bob@**fabrikam.com**，并且 **contoso.com** 和 **fabrikam.com** 都是**联合域**，则执行以下步骤可以解决同步错误
 
-1. 在 Azure AD 中将用户的 UserPrincipalName 从 bob@contoso.com 更新为 bob@contoso.onmicrosoft.com。 可以在 Azure AD PowerShell 模块中使用以下 PowerShell 命令：`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. 允许下一个同步周期尝试同步。 这一次，同步将会成功，并且会按预期将 Bob 的 UserPrincipalName 更新为 bob@fabrikam.com。
+1. 在 Azure AD 中将用户的 UserPrincipalName 从 bob@contoso.com 更新为 bob@contoso.onmicrosoft.com。可以在 Azure AD PowerShell 模块中使用以下 PowerShell 命令：`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+2. 允许下一个同步周期尝试同步。 这一次，同步会成功，并且会按预期将 Bob 的 UserPrincipalName 更新为 bob@fabrikam.com。
 
 #### <a name="related-articles"></a>相关文章
 * [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)

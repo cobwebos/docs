@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 484db494e7975df950543d19bf841a4df7cdd139
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 021c695a91ff46274b2a5174918711d04bcff239
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -131,11 +131,11 @@ Edge 会在内部 NAT 网络上使用容器的 IP 地址（通常为 172.x.x.x�
 ### <a name="expose-the-port-for-the-app"></a>公开应用程序的端口
 默认情况下，配置的 Service Fabric 群集在 Azure 负载均衡器中的端口 80 处于打开状态，Azure 负载均衡器负责均衡传入到群集的流量。 可以通过 docker-compose.yml 文件公开此端口上的容器。
 
-在 Visual Studio 中，打开“解决方案资源管理器”，查找“docker-compose”，然后打开文件“docker-compose.override.yml”。
+在 Visual Studio 中，打开“解决方案资源管理器”，查找“docker-compose”，然后打开文件“docker-compose.yml”。
 
 修改 `fabrikamfiber.web:` 节点，添加名为 `ports:` 的子节点。
 
-添加字符串项 `- "80:80"`。
+添加字符串项 `- "80:80"`。 docker-compose.yml 文件应如下所示：
 
 ```yml
   version: '3'
@@ -216,6 +216,8 @@ Edge 会在内部 NAT 网络上使用容器的 IP 地址（通常为 172.x.x.x�
 > * 在 Visual Studio 中创建 Docker 项目
 > * 容器化现有应用程序
 > * 设置与 Visual Studio 和 VSTS 的持续集成
+
+在本教程的下一部分中，了解如何设置[容器监视](service-fabric-tutorial-monitoring-wincontainers.md)。
 
 <!--   NOTE SURE WHAT WE SHOULD DO YET HERE
 

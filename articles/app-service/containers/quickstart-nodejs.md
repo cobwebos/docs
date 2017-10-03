@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 的 Linux 容器中创建 Node.js Web 应用 | Microsoft Docs"
-description: "数分钟内在 Azure App Service Web 应用中部署第一个 Node.js Hello World。"
+description: "数分钟内在 Azure 应用服务 Web 应用中部署第一个 Node.js Hello World。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/05/2017
-ms.author: cfowler;cephalin
+ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8dba82b37a1584199f6a16cd2b05129e2adca276
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 6a7e2a99af7bca9bd0b12f877511f765593acb0a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-a-nodejs-web-app-in-a-linux-container-in-azure"></a>在 Azure 的 Linux 容器中创建 Node.js Web 应用
@@ -62,7 +63,7 @@ cd nodejs-docs-hello-world
 npm start
 ```
 
-打开 Web 浏览器并导航到 http://localhost:1337 处的示例应用。
+打开 Web 浏览器并导航到 `http://localhost:1337` 处的示例应用。
 
 页面中会显示该示例应用发出的 Hello World 消息。
 
@@ -134,7 +135,7 @@ To https://<app_name>.scm.azurewebsites.net:443/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js 示例代码在 Azure App Service Web 应用中运行。
+Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-nodejs/hello-world-in-browser.png)
 

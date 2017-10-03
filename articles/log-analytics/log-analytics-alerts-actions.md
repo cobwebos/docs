@@ -1,6 +1,6 @@
 ---
 title: "响应 OMS Log Analytics 中的警报 | Microsoft 文档"
-description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，并可以主动向你通知问题，或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
+description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，还可主动通知你存在问题或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: fdf22ff85a3a76be5de50632c4948df44c2312df
 ms.openlocfilehash: b8731e1fe48b7d809b113eb5273e3962542b8f34
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
-
 
 ---
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 03/01/2017
 
 | 操作 | 说明 |
 |:--|:--|
-| [电子邮件](#email-actions) |    将内含警报详细信息的电子邮件发送给一位或多位收件人。 |
+| [电子邮件](#email-actions) | 将内含警报详细信息的电子邮件发送给一位或多位收件人。 |
 | [Webhook](#webhook-actions) | 通过单个 HTTP POST 请求调用外部进程。 |
 | [Runbook](#runbook-actions) | 在 Azure 自动化中启动 Runbook。 |
 
 
 ## <a name="email-actions"></a>电子邮件操作
-电子邮件操作会将内含警报详细信息的电子邮件发送给一位或多位收件人。  你可以指定邮件主题，但其内容是由 Log Analytics 构造的标准格式。  除了日志搜索所返回的最多&10; 条记录的详细信息之外，邮件内容还包括摘要信息（如警报名称）。  此外，还包含 Log Analytics 中将从查询中返回整个记录集的日志搜索的链接。   邮件发件人为 *Microsoft Operations Management Suite (OMS) 团队&lt;noreply@oms.microsoft.com&gt;*。 
+电子邮件操作会将内含警报详细信息的电子邮件发送给一位或多位收件人。  可以指定邮件主题，但其内容是由 Log Analytics 构造的标准格式。  除了日志搜索所返回的最多 10 条记录的详细信息之外，邮件内容还包括摘要信息（如警报名称）。  此外，还包含 Log Analytics 中将从查询中返回整个记录集的日志搜索的链接。   邮件发件人为 *Microsoft Operations Management Suite (OMS) 团队&lt;noreply@oms.microsoft.com&gt;*。 
 
 电子邮件操作需要下表中的属性。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="webhook-actions"></a>Webhook 操作
 
-Webhook 操作可让你通过单个 HTTP POST 请求调用外部进程。  被调用的服务应支持 Webhook，并确定将如何使用接收的任何负载。  只要此请求采用 API 理解的格式，你还可以调用不专门支持 Webhook 的 REST API。  使用 webhook 响应警报的示例是在 [Slack](http://slack.com) 中发送消息或在 [PagerDuty](http://pagerduty.com/) 中创建事件。  有关使用 webhook 来调用 Slack，以创建警报规则的完整演练步骤，请参阅 [Log Analytics 警报中的 Webhook](log-analytics-alerts-webhooks.md)。
+使用 Webhook 操作可通过单个 HTTP POST 请求调用外部进程。  被调用的服务应支持 Webhook，并确定将如何使用接收的任何负载。  只要此请求采用 API 理解的格式，还可以调用不专门支持 Webhook 的 REST API。  使用 webhook 响应警报的示例是在 [Slack](http://slack.com) 中发送消息或在 [PagerDuty](http://pagerduty.com/) 中创建事件。  有关使用 webhook 来调用 Slack，以创建警报规则的完整演练步骤，请参阅 [Log Analytics 警报中的 Webhook](log-analytics-alerts-webhooks.md)。
 
 Webhook 操作需要下表中的属性。
 
@@ -56,7 +56,7 @@ Webhook 操作需要下表中的属性。
 | 自定义 JSON 负载 |要使用 webhook 发送的自定义负载。  有关详细信息，请参阅下文。 |
 
 
-Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据）。  默认情况下，负载将包含下表中的值。  可以选择将此负载替换为你自己的自定义负载。  在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义负载中。
+Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据）。  默认情况下，负载将包含下表中的值。  可以选择将此负载替换成自己的自定义负载。  在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义负载中。
 
 | 参数 | 变量 | 说明 |
 |:--- |:--- |:--- |
@@ -110,7 +110,7 @@ Runbook 操作需要下表中的属性。
 
 Runbook 操作使用 [Webhook](../automation/automation-webhooks.md) 来启动 Runbook。  在创建警报规则时，系统会自动为 Runbook 创建新的 Webhook，其名称为 **OMS Alert Remediation** 且后跟一个 GUID。  
 
-你无法直接填充 Runbook 的任何参数，但 [$WebhookData 参数](../automation/automation-webhooks.md)将包含警报的详细信息，包括创建该警报的日志搜索结果。  Runbook 需要将 **$WebhookData** 定义为参数，以使其访问警报属性。  在 **$WebhookData** 的 **RequestBody** 属性中，警报数据将在称为 **SearchResults** 的单一属性中以 json 格式提供。  这些数据具有下表所列的属性。
+无法直接填充 Runbook 的任何参数，但 [$WebhookData 参数](../automation/automation-webhooks.md)将包含警报的详细信息，包括创建该警报的日志搜索结果。  Runbook 需要将 **$WebhookData** 定义为参数，以使其访问警报属性。  在 **$WebhookData** 的 **RequestBody** 属性中，警报数据会在称为 **SearchResults** 的单一属性中以 json 格式提供。  这些数据具有下表所列的属性。
 
 | 节点 | 说明 |
 |:--- |:--- |

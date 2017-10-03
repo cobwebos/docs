@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/15/2017
 ms.author: elkuzmen
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 150c8ff025fa71657aa91cdef728a893d62a5337
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 064843d3118c36c63c3024f5cd5d08ba4d65eb7f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 09/14/2017
 2.  在左侧导航栏中，单击“配置”。 
 3.  此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
 4.  务必单击“保存”，以保存配置。  
-    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-configured.png)
+    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果启用了 MSI，列表中会显示“ManagedIdentityExtensionforWindows”。
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 09/14/2017
 4.  使用 Powershell 的 Invoke-WebRequest，向本地 MSI 终结点发出请求以获取 Azure 资源管理器的访问令牌。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost/50342/oauth2/token -Method GET -Body @resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
@@ -97,7 +97,7 @@ ms.lasthandoff: 09/14/2017
     接下来，提取完整响应，响应以 JavaScript 对象表示法 (JSON) 格式字符串的形式存储在 $response 对象中。 
     
     ```powershell
-    $content = $repsonse.Content | ConvertFrom-Json
+    $content = $response.Content | ConvertFrom-Json
     ```
     接下来，从响应中提取访问令牌。
     

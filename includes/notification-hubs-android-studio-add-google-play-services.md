@@ -1,5 +1,5 @@
 1. 通过单击 Android Studio 工具栏上的图标，或者通过单击“工具” -> “Android” -> “SDK Manager”，打开 Android SDK Manager。 找到项目中使用的 Android SDK 目标版本，单击“显示包详细信息”将它打开，然后选择“Google API”（如果尚未安装）。
-2. 单击“SDK 工具”选项卡。 如果尚未安装 Google Play 服务，请单击“Google Play 服务”，如下所示。 然后单击“应用”进行安装。 
+2. 单击“SDK 工具”选项卡。如果尚未安装 Google Play 服务，请单击“Google Play 服务”，如下所示。 然后，单击“应用”以进行安装。 
    
     记下 SDK 路径，因为后面的步骤将要用到。 
    

@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/10/2017
 ms.author: a-crradu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: d687f94bebfd0b6c1ec0690da798be5409640954
+ms.translationtype: HT
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: cccd0af0c991efe330567c2459717798d116e68f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 09/20/2017
 
 ---
 ## <a name="intro-on-role-based-access-control"></a>基于角色的访问控制简介
 
 基于角色的访问控制是只能在 Azure 门户中使用的功能，可让订阅所有者将具体的角色分配到可在环境中管理特定资源范围的其他用户。
 
-对于需要访问你环境中的特定资源，但不一定要访问整个基础结构或任何计费相关范围的大型组织以及与外部协作者、供应商或自由职业者合作的中小型企业而言，RBAC 可以改善安全管理。 RBAC 允许灵活拥有管理员帐户（订阅级别的服务管理员角色）管理的 Azure 订阅，并邀请多个用户在同一个订阅下工作，但不为他们分配任何管理权限。 从管理和计费角度看，RBAC 功能经证实是各种 Azure 使用方案中的省时且能提高管理效率的选项。
+对于需要访问环境中的特定资源，但不一定要访问整个基础结构或任何计费相关范围的大型组织以及与外部协作者、供应商或自由职业者合作的中小型企业而言，RBAC 可以改善安全管理。 RBAC 允许灵活拥有管理员帐户（订阅级别的服务管理员角色）管理的 Azure 订阅，并邀请多个用户在同一个订阅下工作，但不为他们分配任何管理权限。 从管理和计费角度看，RBAC 功能经证实是各种 Azure 使用方案中的省时且能提高管理效率的选项。
 
 ## <a name="prerequisites"></a>先决条件
 在 Azure 环境中使用 RBAC 需要满足以下要求：
@@ -35,6 +34,7 @@ ms.lasthandoff: 05/16/2017
 * 获取 Azure 订阅的所有者角色。
 * 有权访问 [Azure 门户](https://portal.azure.com)
 * 确保为用户订阅注册以下资源提供程序：**Microsoft.Authorization**。 有关如何注册资源提供程序的详细信息，请参阅 [Resource Manager 提供程序、区域、API 版本和架构](/azure-resource-manager/resource-manager-supported-services.md)。
+<!---Loc Comment: Link [Resource Manager providers, regions, API versions and schemas] is broken with an error message "404 - Content Not Found--->
 
 > [!NOTE]
 > 从 O365 门户预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：Azure Active Directory 访问权限）不符合 RBAC 的使用条件。
@@ -55,15 +55,15 @@ ms.lasthandoff: 05/16/2017
 ## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>为 Azure Active Directory 外部的用户授予订阅级访问权限
 RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须使用已预先分配有此角色或已创建 Azure 订阅的用户名登录。
 
-在 Azure 门户中以管理员身份登录后，选择“订阅”，然后选择所需的订阅。
-![Azure 门户中的订阅边栏选项卡](./media/role-based-access-control-create-custom-roles-for-internal-external-users/0.png)默认情况下，如果管理员用户购买了 Azure 订阅，则该用户将显示为“帐户管理员”，即订阅角色。 有关 Azure 订阅角色的详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](/billing/billing-add-change-azure-subscription-administrator.md)。
+在 Azure 门户中以管理员身份登录后，选择“订阅”，并选择所需的订阅。
+![Azure 门户中的订阅边栏选项卡](./media/role-based-access-control-create-custom-roles-for-internal-external-users/0.png)默认情况下，如果管理员用户购买了 Azure 订阅，则该用户会显示为“帐户管理员”，即订阅角色。 有关 Azure 订阅角色的详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](/billing/billing-add-change-azure-subscription-administrator.md)。
 
 在此示例中，用户“alflanigan@outlook.com”是 AAD 租户“默认租户 Azure”中“免费试用”订阅的“所有者”。 由于此用户是最初使用 Microsoft 帐户“Outlook”（Microsoft 帐户 = Outlook、Live 等等）创建 Azure 订阅的用户，因此，添加到此租户的其他所有用户的默认域名将是 **“@alflaniganuoutlook.onmicrosoft.com”**。 根据设计，新域的语法格式是将创建租户的用户的用户名和域名组合在一起，并加上扩展 **.onmicrosoft.com**。
 此外，在为新租户添加并验证自定义域名后，用户可以在租户中使用该域名登录。 有关如何在 Azure Active Directory 租户中验证自定义域名的详细信息，请参阅[将自定义域名添加到目录](/active-directory/active-directory-add-domain)。
 
 在此示例中，“默认租户 Azure”目录仅包含域名为“@alflanigan.onmicrosoft.com”的用户。
 
-选择订阅后，管理员用户必须单击“访问控制(IAM)”，然后单击“添加新角色”。
+选择订阅后，管理员用户必须单击“访问控制(IAM)”，并单击“添加新角色”。
 
 
 
@@ -78,6 +78,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 ![在 Azure 门户的访问控制 IAM 功能中添加新用户](./media/role-based-access-control-create-custom-roles-for-internal-external-users/2.png)
 
 下一步是选择要分配的角色，以及要将 RBAC 角色分配到的用户。 在“角色”下拉菜单中，管理员用户只会看到 Azure 中提供的内置 RBAC 角色。 有关每个角色及其可分配范围的详细说明，请参阅[用于 Azure 基于角色的访问控制的内置角色](/active-directory/role-based-access-built-in-roles.md)。
+<!---Loc Comment: Link [Built-in roles for Azure Role-Based Access Control] is broken with an error message "404 - Content Not Found--->
 
 然后，管理员用户需要添加外部用户的电子邮件地址。 预期的行为不在现有租户中显示外部用户。 邀请外部用户后，“订阅”>“访问控制(IAM)”下面会显示该用户，以及当前在订阅范围分配有 RBAC 角色的所有当前用户。
 
@@ -96,7 +97,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 已邀请用户“chessercarlton@gmail.com”成为“免费试用”订阅的“所有者”。 发送邀请后，外部用户将收到包含激活链接的电子邮件确认。
 ![RBAC 角色的电子邮件邀请](./media/role-based-access-control-create-custom-roles-for-internal-external-users/5.png)
 
-由于在组织外部，新用户在“默认租户 Azure”目录中没有任何现有的属性。 同意在与外部用户分配有角色的订阅相关联的目录中记录该用户后，将会创建这些属性。
+由于在组织外部，新用户在“默认租户 Azure”目录中没有任何现有的属性。 同意在与外部用户分配有角色的订阅相关联的目录中记录该用户后，会创建这些属性。
 
 
 
@@ -104,7 +105,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 
 ![RBAC 角色的电子邮件邀请消息](./media/role-based-access-control-create-custom-roles-for-internal-external-users/6.png)
 
-从现在开始，该外部用户将显示在 Azure Active Directory 租户中，可以在 Azure 门户和经典门户中查看该用户。
+从现在开始，该外部用户会显示在 Azure Active Directory 租户中，可以在 Azure 门户和经典门户中查看该用户。
 
 
 
@@ -124,9 +125,10 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 * 经典门户中的不同来源点
 
 但是，在“订阅”范围向外部用户授予“所有者”或“参与者”访问权限并不允许他们访问管理员用户的目录，除非“全局管理员”允许访问。 在用户属性中，可以看到包含“成员”和“来宾”这两个通用参数的“用户类型”。 成员是已在目录中注册的用户，而来宾是来自外部源的、受邀加入目录的用户。 有关详细信息，请参阅 [Azure Active Directory 管理员如何添加 B2B 协作用户](/active-directory/active-directory-b2b-admin-add-users)。
+<!---Loc Comment: Link [How do Azure Active Directory admins add B2B collaboration users] is broken with an error message "404 - Content Not Found--->
 
 > [!NOTE]
-> 请确保在门户中输入凭据后，外部用户选择要登录到的正确目录。 同一个用户可以访问多个目录，并且可以选择其中的一个目录：在 Azure 门户中单击右上角的用户名，然后从下拉列表中选择相应的目录。
+> 请确保在门户中输入凭据后，外部用户选择要登录到的正确目录。 同一个用户可以访问多个目录，并且可以选择其中的一个目录：在 Azure 门户中单击右上角的用户名，并从下拉列表中选择相应的目录。
 
 成为目录中的来宾后，外部用户可以管理 Azure 订阅的所有资源，但无法访问该目录。
 
@@ -243,7 +245,7 @@ Get-AzureRMResourceProvider
     ![用于资源提供程序管理的 PowerShell 屏幕截图](./media/role-based-access-control-create-custom-roles-for-internal-external-users/17.png)
 
 为了限制特定 RBAC 角色可执行的所有操作，**NotActions** 节下面列出了资源提供程序。
-最后，RBAC 角色必须包含它所应用到的显式订阅 ID。 订阅 ID 必须列在 **AssignableScopes** 下面，否则，你无法在订阅中导入角色。
+最后，RBAC 角色必须包含它所应用到的显式订阅 ID。 订阅 ID 必须列在 **AssignableScopes** 下面，否则，无法在订阅中导入角色。
 
 创建并自定义 RBAC 角色后，需要将它导入回到环境中。
 

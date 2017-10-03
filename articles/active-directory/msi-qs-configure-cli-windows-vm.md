@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 78a6164e76f6ceab936874e68bd38bb4eb387e00
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 03fb9cc6633f81e284ae299f7b2ba4018d19cc73
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/14/2017
 
 托管服务标识为 Azure 服务提供了 Azure Active Directory 中的自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
 
-本文将介绍如何使用 Azure CLI 为 Azure Windows VM 启用和禁用 MSI。
+本文将介绍如何使用 Azure CLI 为 Azure VM 启用和删除 MSI。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 09/14/2017
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm"></a>在 Azure VM 创建过程中启用 MSI
 
-已启用 MSI 的 Windows 虚拟机资源是在新资源组中通过指定配置参数创建而成。 另请注意，许多这些函数可能需要运行几秒/几分钟，才能返回内容。
+若要创建启用 MSI 的 VM，请执行以下操作：
 
 1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 09/14/2017
 
 如果需要在现有虚拟机上启用 MSI，请执行以下操作：
 
-1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
+1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
 
    ```azurecli-interactive
    az login
@@ -83,13 +83,13 @@ ms.lasthandoff: 09/14/2017
 
 如果虚拟机不再需要 MSI，请执行以下操作：
 
-1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
+1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
 
    ```azurecli-interactive
    az login
    ```
 
-2. 结合使用 `-n ManagedIdentityExtensionForWindows` 开关与 [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity)，从而禁用 MSI：
+2. 将 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 开关（具体取决于 VM 的类型）与 [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity) 配合使用以删除 MSI：
 
    ```azurecli-interactive
    az vm extension delete --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -98,7 +98,10 @@ ms.lasthandoff: 09/14/2017
 ## <a name="related-content"></a>相关内容
 
 - [托管服务标识概述](msi-overview.md)
-- 本文改编自[使用 CLI 创建 Windows 虚拟机](../virtual-machines/windows/quick-create-cli.md)快速入门，出于添加 MSI 专属说明的目的进行了修改。 
+- 有关完整的 Azure VM 创建快速入门，请参阅： 
+
+  - [使用 CLI 创建 Windows 虚拟机](../virtual-machines/windows/quick-create-cli.md)  
+  - [使用 CLI 创建 Linux 虚拟机](../virtual-machines/linux/quick-create-cli.md) 
 
 使用以下评论部分提供反馈，帮助我们改进内容。
 

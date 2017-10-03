@@ -48,7 +48,7 @@ ms.lasthandoff: 07/24/2017
 - 获取 [Azure AD 一个月免费试用版](https://azure.microsoft.com/pricing/free-trial/)（如果没有）。  
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加由 HR2day by Merces。
 2. 配置和测试 Azure AD 单一登录。
@@ -171,7 +171,7 @@ ms.lasthandoff: 07/24/2017
     >向 Merces 团队提及此集成需要使用以下模式设置实体 ID：**https://hr2day.force.com/INSTANCENAME**。
 
     > [!TIP]
-    >之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory” > “企业应用程序”部分添加此应用后，请选择“单一登录”选项卡。 然后通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
+    >之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory” > “企业应用程序”部分添加此应用后，请选择“单一登录”选项卡。然后通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户

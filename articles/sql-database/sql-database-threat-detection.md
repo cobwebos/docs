@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: ronmat; ronitr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 5c2742a1d8ed6df7496a14226a38e02ca993abf3
+ms.translationtype: HT
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: bd3de9ed0131edc683763b0fe7f4a2ae74533944
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="sql-database-threat-detection"></a>SQL 数据库威胁检测
@@ -29,15 +28,15 @@ SQL 威胁检测会检测异常活动，这些活动表示异常和可能有害�
 
 ## <a name="overview"></a>概述
 
-SQL 威胁检测提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。  出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式时，用户将收到警报。 SQL 威胁检测警报提供可疑活动的详细信息，以及如何调查和缓解威胁的推荐操作。 用户可以使用 [SQL 数据库审核](sql-database-auditing.md)来探查可疑事件，判断这些可疑事件是否是因为有人尝试访问、破坏或利用数据库中的数据而生成的。 你不必是安全专家，也不需要管理先进的安全监视系统，就能使用威胁检测轻松解决数据库的潜在威胁。
+SQL 威胁检测提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。  出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式时，用户将收到警报。 SQL 威胁检测警报提供可疑活动的详细信息，以及如何调查和缓解威胁的推荐操作。 用户可以使用 [SQL 数据库审核](sql-database-auditing.md)来探查可疑事件，判断这些可疑事件是否是因为有人尝试访问、破坏或利用数据库中的数据而生成的。 不必是安全专家，也不需要管理先进的安全监视系统，就能使用威胁检测轻松解决数据库的潜在威胁。
 
 例如，SQL 注入是 Internet 上常见的 Web 应用程序安全问题之一，用于攻击数据驱动的应用程序。 攻击者利用应用程序漏洞将恶意 SQL 语句注入应用程序入口字段，以破坏或修改数据库中的数据。
 
-SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.com/en-us/services/security-center/)集成，且每个受保护的 SQL 数据库服务器将按与 Azure 安全中心标准层相同的价格（即 $15/节点/月）进行计费，其中每个受保护的 SQL 数据库服务器均计为 1 个节点。 诚邀你免费试用该功能 60 天。 
+SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.com/en-us/services/security-center/)集成，且每个受保护的 SQL 数据库服务器将按与 Azure 安全中心标准层相同的价格（即 $15/节点/月）进行计费，其中每个受保护的 SQL 数据库服务器均计为 1 个节点。 我们诚邀各位免费试用该功能 60 天。 
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>在 Azure 门户中为数据库设置威胁检测
 1. 在 [https://portal.azure.com](https://portal.azure.com) 上启动 Azure 门户。
-2. 导航到你要监视的 SQL 数据库的配置边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”。 
+2. 导航到要监视的 SQL 数据库的配置边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”。 
     ![导航窗格][1]
 3. 在“审核和威胁检测”配置边栏选项卡中，将审核设置为“打开”，随后会显示威胁检测设置。
   
@@ -53,7 +52,7 @@ SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
 ## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>检测到可疑事件时探查异常数据库活动
-1. 检测到异常数据库活动时，你将收到电子邮件通知。 <br/>
+1. 检测到异常数据库活动时，将收到电子邮件通知。 <br/>
    电子邮件将提供可疑安全事件的相关信息，包括异常活动的性质、数据库名称、服务器名称、应用程序名称和事件时间。 此外，电子邮件还会提供可能原因和建议操作的相关信息，帮助调查和缓解数据库的潜在威胁。<br/>
      
     ![导航窗格][4]

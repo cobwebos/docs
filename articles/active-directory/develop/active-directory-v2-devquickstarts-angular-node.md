@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 3f2e856b71a42fe677d92c9c020236b8f0da9c1e
+ms.translationtype: HT
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 0e90171afd9c4c782fbb18375ab2d147497ef442
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/03/2017
-
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---nodejs"></a>将登录凭据添加到 AngularJS 单页应用 - NodeJS
@@ -34,7 +33,7 @@ ms.lasthandoff: 02/03/2017
 > 
 
 ## <a name="download"></a>下载
-若要开始，你需要下载并安装 [node.js](https://nodejs.org)。  然后可以克隆或[下载](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip)骨架应用：
+要开始，需要下载并安装 [node.js](https://nodejs.org)。  然后可以克隆或[下载](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip)骨架应用：
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS.git
@@ -64,7 +63,7 @@ bower install adal-angular#experimental
 
 或者，可以手动下载 [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/experimental/dist/adal.min.js) 和 [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/experimental/dist/adal-angular.min.js)。  将这两个文件添加到 `app/lib/adal-angular-experimental/dist` 目录。
 
-现在，请在你偏爱的文本编辑器中打开该项目，并在页面正文的末尾加载 adal.js：
+现在，请在偏爱的文本编辑器中打开该项目，并在页面正文的末尾加载 adal.js：
 
 ```html
 <!--index.html-->
@@ -78,7 +77,7 @@ bower install adal-angular#experimental
 ```
 
 ## <a name="set-up-the-rest-api"></a>设置 REST API
-在设置的同时，让我们查看后端 REST API 的工作方式。  在命令提示符下，通过运行以下命令安装所有必要的包（确保你处于项目的顶层目录）：
+在设置的同时，让我们查看后端 REST API 的工作方式。  在命令提示符下，通过运行以下命令安装所有必要的包（确保处于项目的顶层目录）：
 
 ```
 npm install
@@ -96,12 +95,12 @@ exports.creds = {
 }
 ```
 
-REST API 使用此值来验证发出 AJAX 请求时从 Angular 应用收到的令牌。  请注意，这个简单的 REST API 会在内存中存储数据 - 因此，每次停止服务器后，你将会丢失以前创建的所有任务。
+REST API 使用此值来验证发出 AJAX 请求时从 Angular 应用收到的令牌。  请注意，这个简单的 REST API 会在内存中存储数据 - 因此，每次停止服务器后，会丢失以前创建的所有任务。
 
 有关 REST API 工作方式的讨论到此为止。  请自由摸索代码，但如要深入了解如何使用 Azure AD 保护 Web API，请参阅[此文](active-directory-v2-devquickstarts-node-api.md)。 
 
 ## <a name="sign-users-in"></a>登录用户
-编写一些标识代码。  你可能已发现 adal.js 包含 AngularJS 提供程序，该程序可以顺畅使用 Angular 路由机制。  首先，将 adal 模块添加到应用：
+编写一些标识代码。  可能已发现 adal.js 包含 AngularJS 提供程序，该程序可以顺畅使用 Angular 路由机制。  首先，将 adal 模块添加到应用：
 
 ```js
 // app/scripts/app.js
@@ -153,7 +152,7 @@ adalProvider.init({
 ...
 ```
 
-现在，用户单击 `TodoList` 链接时，adal.js 会根据需要自动重定向到 Azure AD 以进行登录。  你也可以通过在控制器中调用 adal.js，显式发送登录和注销请求：
+现在，用户单击 `TodoList` 链接时，adal.js 会根据需要自动重定向到 Azure AD 以进行登录。  也可以通过在控制器中调用 adal.js，显式发送登录和注销请求：
 
 ```js
 // app/scripts/homeCtrl.js
@@ -177,7 +176,7 @@ angular.module('todoApp')
 ```
 
 ## <a name="display-user-info"></a>显示用户信息
-用户现已登录，你可能需要访问应用程序中已登录用户的身份验证数据。  Adal.js 在 `userInfo` 对象中公开此信息。  若要在视图中访问此对象，首先请将 adal.js 添加到相应控制器的根范围：
+用户现已登录，可能需要访问应用程序中已登录用户的身份验证数据。  Adal.js 在 `userInfo` 对象中公开此信息。  要在视图中访问此对象，首先请将 adal.js 添加到相应控制器的根范围：
 
 ```js
 // app/scripts/userDataCtrl.js
@@ -218,9 +217,9 @@ angular.module('todoApp')
 ```
 
 ## <a name="call-the-rest-api"></a>调用 REST API
-最后，获取一些令牌并调用 REST API，以创建、读取、更新和删除任务。  知道吗？  无需进行任何操作。  Adal.js 将自动为你获取、缓存和刷新令牌。  它还会将这些令牌附加到发往 REST API 的传出 AJAX 请求。  
+最后，获取一些令牌并调用 REST API，以创建、读取、更新和删除任务。  知道吗？  不需要做任何事。  Adal.js 会自动获取、缓存和刷新令牌。  它还会将这些令牌附加到发往 REST API 的传出 AJAX 请求。  
 
-到底是如何做到这一点的呢？ 这一切归功于神奇的 [AngularJS 拦截器](https://docs.angularjs.org/api/ng/service/$http)，它让 adal.js 能够转换传出和传入的 http 消息。  此外，adal.js 假设作为窗口发送到同一个域的任何请求都应该使用与 AngularJS 应用相同的应用程序 ID 所用的令牌。  这就是为什么我们在 Angular 应用和 NodeJS REST API 中使用相同的应用程序 ID。  当然，你可以重写此行为，并根据需要告知 adal.js 获取其他 REST API 的令牌 - 但是对于此简单方案，使用默认值即可。
+到底是如何做到这一点的呢？ 这一切归功于神奇的 [AngularJS 拦截器](https://docs.angularjs.org/api/ng/service/$http)，它让 adal.js 能够转换传出和传入的 http 消息。  此外，adal.js 假设作为窗口发送到同一个域的任何请求都应该使用与 AngularJS 应用相同的应用程序 ID 所用的令牌。  这就是为什么我们在 Angular 应用和 NodeJS REST API 中使用相同的应用程序 ID。  当然，可以重写此行为，并根据需要告知 adal.js 获取其他 REST API 的令牌 - 但是对于此简单方案，使用默认值即可。
 
 下面代码段演示了如何轻松地从 Azure AD 发送包含持有者令牌的请求：
 
@@ -232,13 +231,13 @@ return $http.get('/api/tasks');
 ...
 ```
 
-祝贺你！  你现已完成创建 Azure AD 集成的单页面应用。  佩服吧！  该应用可对用户进行身份验证，使用 OpenID Connect 安全调用其后端 REST API，并获取有关用户的基本信息。  它原本就支持来自 Azure AD 的具有个人 Microsoft 帐户或工作/学校帐户的任何用户。  运行以下命令以尝试使用该应用：
+祝贺你！  现已完成创建 Azure AD 集成的单页面应用。  佩服吧！  该应用可对用户进行身份验证，使用 OpenID Connect 安全调用其后端 REST API，并获取有关用户的基本信息。  它原本就支持来自 Azure AD 的具有个人 Microsoft 帐户或工作/学校帐户的任何用户。  运行以下命令以尝试使用该应用：
 
 ```
 node server.js
 ```
 
-在浏览器中，导航到 `http://localhost:8080`。  使用个人 Microsoft 帐户或工作/学校帐户登录。  将任务添加到用户的待办事项列表，然后注销。  尝试使用其他类型的帐户登录。 如果需要一个 Azure AD 租户来创建工作/学校用户，请[在此处了解如何获取租户](active-directory-howto-tenant.md)（免费）。
+在浏览器中，导航到 `http://localhost:8080`。  使用个人 Microsoft 帐户或工作/学校帐户登录。  将任务添加到用户的待办事项列表，然后注销。尝试使用其他类型的帐户登录。 如果需要一个 Azure AD 租户来创建工作/学校用户，请[在此处了解如何获取租户](active-directory-howto-tenant.md)（免费）。
 
 若要继续了解 v2.0 终结点，请返回 [v2.0 开发人员指南](active-directory-appmodel-v2-overview.md)。  有关更多资源，请查看：
 

@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: f5d5f238f8f57c8dcf7a3759274f9d565e73ecce
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 4b06338cb62cc458e7b097db36023f0746d4e969
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
@@ -27,20 +27,20 @@ ms.lasthandoff: 02/28/2017
 ![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/sync-blade.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>用于同步的 Azure AD Connect Health 的警报
-用于同步的 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。 选择活动或已解决的警报后，将看到一个新的边栏选项卡，其中将显示额外信息、可用于解决警报的方法步骤以及其他文档的链接。 还可以查看过去已解决警报的相关历史数据。
+用于同步的 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。 选择活动或已解决的警报后，将看到一个新的边栏选项卡，其中会显示额外信息、可用于解决警报的方法步骤以及其他文档的链接。 还可以查看过去已解决警报的相关历史数据。
 
 选择警报后，将获取到额外信息、可用于解决警报的方法步骤以及其他文档的链接。
 
 ![Azure AD Connect 同步错误](./media/active-directory-aadconnect-health-sync/alert.png)
 
 ### <a name="limited-evaluation-of-alerts"></a>警报的受限评估
-如果 Azure AD Connect 未使用默认配置（例如，如果属性筛选已从默认配置更改为自定义配置），则 Azure AD Connect Health 代理将不会上载与 Azure AD Connect 相关的错误事件。
+如果 Azure AD Connect 未使用默认配置（例如，如果属性筛选已从默认配置更改为自定义配置），则 Azure AD Connect Health 代理将不会上传与 Azure AD Connect 相关的错误事件。
 
-这会限制服务对警报进行评估。 你将在服务的 Azure 门户中看到一条指示这种状态的横幅消息。
+这会限制服务对警报进行评估。 将在服务的 Azure 门户中看到一条指示这种状态的横幅消息。
 
 ![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/banner.png)
 
-你可以通过单击“设置”并允许 Azure AD Connect Health 代理上载所有错误日志，来改变这种状态。
+可以通过单击“设置”并允许 Azure AD Connect Health 代理上传所有错误日志，来改变这种状态。
 
 ![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/banner2.png)
 
@@ -68,8 +68,7 @@ ms.lasthandoff: 02/28/2017
 * 该报告涵盖同步客户端（Azure AD Connect 1.1.281.0 或更高版本）记录的错误
 * 其中包含上一次在同步引擎中执行同步操作时发生的错误。 （Azure AD 连接器中的“导出”。）
 * 为了在报告中包含最新的数据，用于同步的 Azure AD Connect Health 代理必须与所需的终结点建立出站连接。
-* 系统会使用用于同步的 Azure AD Connect Health 代理上载的数据**每隔 30 分钟更新**该报告。
-  该报告提供以下重要功能
+* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据每隔 30 分钟更新该报告。该报告提供以下重要功能
 
   * 错误分类
   * 按类别列出出错的对象
@@ -86,7 +85,7 @@ ms.lasthandoff: 02/28/2017
 | 数据不匹配 |当软匹配无法匹配导致同步错误的对象时出错。 |
 | 数据验证失败 |由于数据无效（例如，UserPrincipalName 等关键属性中包含不受支持的字符，写入 Azure AD 之前使验证失败的格式错误）而出错。 |
 | 属性过大 |由于一个或多个属性大于允许的大小、长度或计数而出错。 |
-| 其他 |不适合上述类别的所有其他错误。 我们将根据反馈将此类别细分为若干子类别。 |
+| 其他 |不适合上述类别的所有其他错误。 我们会根据反馈将此类别细分为若干子类别。 |
 
 ![同步错误报告摘要](./media/active-directory-aadconnect-health-sync/errorreport01.png)
 ![同步错误报告类别](./media/active-directory-aadconnect-health-sync/errorreport02.png)

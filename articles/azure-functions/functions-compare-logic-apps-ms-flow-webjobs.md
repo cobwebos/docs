@@ -3,7 +3,7 @@ title: "在流、逻辑应用、函数和 Web 作业之间进行选择 | Microso
 description: "比较和对比来自 Microsoft 的 4 个云集成服务，并决定应使用哪个服务。"
 services: functions,app-service\logic
 documentationcenter: na
-author: cephalin
+author: ggailey777
 manager: wpickett
 tags: 
 keywords: "microsoft flow、流、逻辑应用、azure functions、函数、azure webjobs、webjobs，事件处理、动态计算、无服务器体系结构"

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
 ms.openlocfilehash: 35c94e2d9d8a938971f85ea732a74a7e1655545e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/04/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>教程：Azure Active Directory 与 Lecorpio 的集成
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/04/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Lecorpio（单一登录）
 - 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 05/04/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-lecorpio-from-the-gallery"></a>从库中添加 Lecorpio
-若要配置 Lecorpio 与 Azure AD 的集成，需要从库中将 Lecorpio 添加到托管 SaaS 应用列表。
+要配置 Lecorpio 与 Azure AD 的集成，需要从库中将 Lecorpio 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Lecorpio，请执行以下步骤：**
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 05/04/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_search.png)
 
-5. 在结果窗格中，选择“Lecorpio”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Lecorpio”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_addfromgallery.png)
 
@@ -90,13 +89,13 @@ ms.lasthandoff: 05/04/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Lecorpio 测试用户](#creating-a-lecorpio-test-user)** - 在 Lecorpio 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 Lecorpio 测试用户](#creating-a-lecorpio-test-user)** - 在 Lecorpio 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Lecorpio 应用程序中配置单一登录。
+在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 Lecorpio 应用程序中配置单一登录。
 
 **若要配置 Lecorpio 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -119,7 +118,7 @@ ms.lasthandoff: 05/04/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 请联系 [Lecorpio 客户端支持团队](mailto:info@lecorpio.com)来获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_certificate.png) 
 
@@ -127,7 +126,7 @@ ms.lasthandoff: 05/04/2017
 
     ![配置单一登录](./media/active-directory-saas-lecorpio-tutorial/tutorial_general_400.png)
 
-6. 若要在 **Lecorpio** 端配置单一登录，需要将下载的**元数据 XML** 发送给 [Lecorpio 支持团队](mailto:info@lecorpio.com)。
+6. 要在 **Lecorpio** 端配置单一登录，需要将下载的**元数据 XML** 发送给 [Lecorpio 支持团队](mailto:info@lecorpio.com)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -157,15 +156,15 @@ ms.lasthandoff: 05/04/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建” 。
  
 ### <a name="creating-a-lecorpio-test-user"></a>创建 Lecorpio 测试用户
 
-在本部分中，将在 Lecorpio 中创建一个名为 Britta Simon 的用户。 
+在本部分中，会在 Lecorpio 中创建一个名为 Britta Simon 的用户。 
 
 请联系 [Lecorpio 客户端支持团队](mailto:info@lecorpio.com)，以便将用户添加到 Lecorpio 应用程序中。
 
@@ -175,9 +174,9 @@ ms.lasthandoff: 05/04/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Lecorpio，请执行以下步骤：**
+**要将 Britta Simon 分配到 Lecorpio，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -208,7 +207,7 @@ ms.lasthandoff: 05/04/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
 

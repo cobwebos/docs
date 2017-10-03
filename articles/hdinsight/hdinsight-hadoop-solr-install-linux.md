@@ -40,7 +40,7 @@ ms.lasthandoff: 07/13/2017
 > [!WARNING]
 > Microsoft 完全支持 HDInsight 群集提供的组件。
 >
-> 自定义组件（如 Solr）可获得合理范围的支持，以帮助进一步排查问题。 Microsoft 支持可能无法解决与自定义组件有关的问题。 用户可能需要寻求开源社区的帮助。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件（如 Solr）可获得合理范围的支持，以帮助进一步排查问题。 Microsoft 支持可能无法解决与自定义组件有关的问题。 用户可能需要寻求开源社区的帮助。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 
 ## <a name="what-the-script-does"></a>脚本功能
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/13/2017
 
 若要创建安装了 Solr 的群集，请使用[创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)文档中的步骤。 在创建过程中，使用以下步骤安装 Solr：
 
-1. 在“群集摘要”边栏选项卡中，选择“高级设置”，然后选择“脚本操作”。 使用以下信息填充表格：
+1. 在“群集摘要”边栏选项卡中，选择“高级设置”，并选择“脚本操作”。 使用以下信息填充表格：
 
    * **名称**：输入脚本操作的友好名称。
    * **脚本 URI**：https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="index-data"></a>索引数据
 
-使用以下步骤将示例数据添加到 Solr，然后查询该数据：
+使用以下步骤将示例数据添加到 Solr，并查询该数据：
 
 1. 使用 SSH 连接到 HDInsight 群集：
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 07/13/2017
     有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
      > [!IMPORTANT]
-     > 本文档中的后续步骤使用 SSL 隧道连接到 Solr Web UI。 若要使用这些步骤，必须建立 SSL 隧道，然后将浏览器配置为使用该隧道。
+     > 本文档中的后续步骤使用 SSL 隧道连接到 Solr Web UI。 要使用这些步骤，必须建立 SSL 隧道，并将浏览器配置为使用该隧道。
      >
      > 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)文档。
 
@@ -279,7 +279,7 @@ sudo start solr
 
 使用以下步骤，将 Solr 数据备份到群集的默认存储：
 
-1. 使用 SSH 连接到群集，然后使用以下命令来获取头节点的主机名：
+1. 使用 SSH 连接到群集，并使用以下命令来获取头节点的主机名：
 
     ```bash
     hostname -f

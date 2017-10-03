@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 1032c4e7d378016e36c92efa9478be72e9a557c4
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 9520e4c2680e1dd0158a35b4ee65496a42a02563
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
@@ -35,7 +35,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 * 实现混合云方案：利用 VNet 可以灵活支持一系列混合云方案。 可以安全地将基于云的应用程序连接到任何类型的本地系统，例如大型机和 Unix 系统。
 
 ### <a name="how-do-i-know-if-i-need-a-vnet"></a>如何知道是否需要 VNet？
-[虚拟网络概述](virtual-networks-overview.md)一文提供了一份决策表，可帮助你确定最佳的网络设计选项。
+[虚拟网络概述](virtual-networks-overview.md)一文提供了一份决策表，可帮助确定最佳的网络设计选项。
 
 ### <a name="how-do-i-get-started"></a>如何入门？
 请访问[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)帮助自己入门。 这些内容提供了所有 VNet 功能的概述和部署信息。
@@ -45,7 +45,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
 
-是的。 可以通过 Azure Marketplace 部署许多供应商提供 [WAN 优化网络虚拟设备](https://azure.microsoft.com/marketplace/?term=wan+optimization)。
+是的。 可以通过 Azure 应用商店部署许多供应商提供 [WAN 优化网络虚拟设备](https://azure.microsoft.com/marketplace/?term=wan+optimization)。
 
 ## <a name="configuration"></a>配置
 
@@ -179,9 +179,9 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>是否可以在 VNet 中使用 Azure 应用服务 Web 应用？
 是的。 可以使用 ASE（应用服务环境）在 VNet 中部署 Web 应用。 如果为 VNet 配置了点到站点连接，Web 应用可以安全地连接和访问 Azure VNet 中的资源。 有关详细信息，请参阅以下文章：
 
-* [在应用服务环境中创建 Web 应用](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
-* [将应用与 Azure 虚拟网络集成](../app-service-web/web-sites-integrate-with-vnet.md)
-* [将 VNet 集成和混合连接用于 Web 应用](../app-service-web/web-sites-integrate-with-vnet.md#hybrid-connections-and-app-service-environments)
+* [在应用服务环境中创建 Web 应用](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md)
+* [将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)
+* [将 VNet 集成和混合连接用于 Web 应用](../app-service/web-sites-integrate-with-vnet.md#hybrid-connections-and-app-service-environments)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>是否可以在 VNet 中部署云服务与 Web 和辅助角色 (PaaS)？
 是的。 （可选）可在 VNet 中部署云服务角色实例。 为此，请在服务配置的网络配置部分中指定 VNet 名称和角色/子网映射。 不需要更新任何二进制文件。
@@ -201,7 +201,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 是的。 可向 VNet 中的单个子网和/或附加到 VNet 的 NIC 应用[网络安全组](virtual-networks-nsg.md)。
 
 ### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>是否可在与 VNet 连接的资源之间实施防火墙？
-是的。 可以通过 Azure Marketplace 部署许多供应商提供[防火墙网络虚拟设备](https://azure.microsoft.com/en-us/marketplace/?term=firewall)。
+是的。 可以通过 Azure 应用商店部署许多供应商提供[防火墙网络虚拟设备](https://azure.microsoft.com/en-us/marketplace/?term=firewall)。
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>是否有介绍如何保护 VNet 的信息？
 是的。 有关详细信息，请参阅 [Azure 网络安全概述](../security/security-network-overview.md)一文。

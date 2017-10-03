@@ -1,6 +1,6 @@
 ---
 title: "了解 Azure AD 中的 OAuth2 隐式授权流 | Microsoft 文档"
-description: "详细了解 Azure Active Directory 的 OAuth2 隐式授权流实现，以及它是否适合你的应用程序。"
+description: "详细了解 Azure Active Directory 的 OAuth2 隐式授权流实现，以及它是否适合应用程序。"
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 11/15/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
-ms.openlocfilehash: 980cac016b37e3744441508b93e5cd504045d638
+ms.translationtype: HT
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 241c744737515ee0c8d5d833a51121808877e559
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/30/2017
-
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>了解 Azure Active Directory (AD) 中的 OAuth2 隐式授权流
@@ -34,7 +33,7 @@ OAuth2 隐式授权是 OAuth2 规范中安全疑虑最多的授权方式，因�
 OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌返回到客户端。 如下一部分所述，这实际上是不必要的，反而会造成安全问题。
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 隐式授权的适用方案
-正如 OAuth2 规范本身所声明的，设计出隐式授权是为了实现用户代理应用程序，即在浏览器中执行的 JavaScript 应用程序。 此类应用程序的鲜明特征是，JavaScript 代码可用于访问服务器资源（通常是 Web API）以及相应地更新应用程序 UX。 以 Gmail 或 Outlook Web Access 之类的应用程序为例：当你在收件箱中选择某封邮件时，只有邮件可视化面板会更改以显示新的选择内容，页面的其余部分保持不变。 这明显不同于传统的基于重定向的 Web 应用，在后者中，每个用户交互都会造成整页回传，并造成整页呈现新的服务器响应。
+正如 OAuth2 规范本身所声明的，设计出隐式授权是为了实现用户代理应用程序，即在浏览器中执行的 JavaScript 应用程序。 此类应用程序的鲜明特征是，JavaScript 代码可用于访问服务器资源（通常是 Web API）以及相应地更新应用程序 UX。 以 Gmail 或 Outlook Web Access 之类的应用程序为例：在收件箱中选择某封邮件时，只有邮件可视化面板会更改以显示新的选择内容，页面的其余部分保持不变。 这明显不同于传统的基于重定向的 Web 应用，在后者中，每个用户交互都会造成整页回传，并造成整页呈现新的服务器响应。
 
 采用极端的基于 JavaScript 方法的应用程序称为单页应用程序 (SPA)：其思路是，这些应用程序只提供初始的 HTML 页和关联的 JavaScript，至于所有后续交互，则由通过 JavaScript 执行的 Web API 调用驱动。 但是，应用程序大多是由回传驱动，但偶尔执行 JS 调用的混合方法也并非罕见；关于隐式流用法的介绍也与这些方法有关。
 
@@ -47,7 +46,7 @@ OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌�
 * 会话或本地存储等 HTML5 功能可授予令牌缓存和生存期管理的完全控制权，但是 Cookie 管理对于应用而言是不透明的
 * 访问令牌不容易遭受跨站点请求伪造 (CSRF) 攻击
 
-隐式授权流不颁发刷新令牌，这主要是出于安全考虑。 刷新令牌的范围不像访问令牌那么窄，前者授予更大的权力，因此万一泄露，将造成更大的损害。 在隐式流中，令牌在 URL 中传递，因此遭到拦截的风险高于授权代码授予。
+隐式授权流不颁发刷新令牌，这主要是出于安全考虑。 刷新令牌的范围不像访问令牌那么窄，前者授予更大的权力，因此万一泄露，将造成更大的损害。在隐式流中，令牌在 URL 中传递，因此遭到拦截的风险高于授权代码授予。
 
 不过请注意，JavaScript 应用程序提供另一种可任其处置的机制，可用于续订访问令牌，且不会重复提示用户输入凭据。 应用程序可以使用隐藏的 iframe 来针对 Azure AD 的授权终结点执行新的令牌请求：只要浏览器仍然针对 Azure AD 域提供活动会话（读取：有会话 Cookie），则身份验证请求就可以成功且不需要用户交互。
 
@@ -62,7 +61,7 @@ OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌�
 
 ## <a name="next-steps"></a>后续步骤
 * 有关开发人员资源的完整列表，包括 Azure AD 支持的协议和 OAuth2 授权流的参考信息，请参阅 [Azure AD 开发人员指南][AAD-Developers-Guide]
-* 若要更深入地了解应用程序集成过程，请参阅[如何将应用程序与 Azure AD 集成][ACOM-How-To-Integrate]。
+* 要更深入地了解应用程序集成过程，请参阅[如何将应用程序与 Azure AD 集成][ACOM-How-To-Integrate]。
 
 <!--Image references-->
 

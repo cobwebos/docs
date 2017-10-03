@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 1b2f9c3fc59a83b384a63db00d2d039cab8679e8
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 0e8fc0ffb8e0d0bdf00bea46594fe050c00b6c8e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -51,14 +51,14 @@ DNS Analytics 可帮助：
 
 ### <a name="data-collection-details"></a>数据收集详细信息
 
-解决方案从安装有 Log Analytics 代理的 DNS 服务器收集 DNS 清单以及与 DNS 事件相关的数据。 此数据稍后将上传到 Log Analytics，之后将显示在解决方案仪表板中。 通过运行 DNS PowerShell cmdlet 收集与清单相关的数据，如 DNS 服务器的数量、区域和资源记录。 该数据每两天更新一次。 与事件相关的数据几乎是从由 Windows Server 2012 R2 中增强的 DNS 日志记录和诊断提供的[分析和审核日志](https://technet.microsoft.com/library/dn800669.aspx#enhanc)中实时收集的。
+解决方案从安装有 Log Analytics 代理的 DNS 服务器收集 DNS 清单以及与 DNS 事件相关的数据。 此数据稍后将上传到 Log Analytics，之后会显示在解决方案仪表板中。 通过运行 DNS PowerShell cmdlet 收集与清单相关的数据，如 DNS 服务器的数量、区域和资源记录。 该数据每两天更新一次。 与事件相关的数据几乎是从由 Windows Server 2012 R2 中增强的 DNS 日志记录和诊断提供的[分析和审核日志](https://technet.microsoft.com/library/dn800669.aspx#enhanc)中实时收集的。
 
 ## <a name="configuration"></a>配置
 
 使用以下信息配置解决方案：
 
 - 在要监视的每个 DNS 服务器上，都必须装有 [Windows](log-analytics-windows-agents.md) 或 [Operations Manager](log-analytics-om-agents.md) 代理。
-- 从 [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) 将 DNS Analytics 解决方案添加到 Operations Management Suite 工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。
+- 从 [Azure 应用商店](https://aka.ms/dnsanalyticsazuremarketplace)将 DNS Analytics 解决方案添加到 Operations Management Suite 工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。
 
 解决方案将开始收集数据，而无需进一步配置。 但是，可使用以下配置自定义数据收集。
 
@@ -66,7 +66,7 @@ DNS Analytics 可帮助：
 
 在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
 
-- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Log Analytics 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
+- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Log Analytics 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。可以滚动查看完整的默认列表。
 
  可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
@@ -129,7 +129,7 @@ DNS Analytics 可帮助：
 
 ![“DNS 客户端”边栏选项卡](./media/log-analytics-dns/dns-clients-blade.png)
 
-**动态 DNS 注册**。 报告名称注册失败。 突出显示地址[资源记录](https://en.wikipedia.org/wiki/List_of_DNS_record_types)（类型 A 和 AAAA）的所有注册失败以及提出注册请求的客户端 IP。 然后可以使用此信息通过执行以下步骤查找注册失败的根本原因：
+**动态 DNS 注册**。 报告名称注册失败。 突出显示地址[资源记录](https://en.wikipedia.org/wiki/List_of_DNS_record_types)（类型 A 和 AAAA）的所有注册失败以及提出注册请求的客户端 IP。 然后可以使用此信息，通过执行以下步骤查找注册失败的根本原因：
 
 1. 为客户端正在尝试更新的名称，找到权威的区域。
 
@@ -172,11 +172,11 @@ DNS Analytics 可帮助：
 
     ![DnsEvents 日志搜索](./media/log-analytics-dns/log-search-dnsevents.png)  
 
-    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时将显示一个表格，其中列出了所选时间段内的所有查找查询事件。
+    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。 此时将显示一个表格，其中列出了所选时间段内的所有动态注册事件。
+    b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
 
-    c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。 此时将显示一个表格，其中列出了所选时间段内的所有配置更改事件。
+    c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
 
 2. 在“搜索查询”框中，键入 `Type=DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
 

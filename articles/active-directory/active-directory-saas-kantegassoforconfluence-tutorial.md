@@ -19,7 +19,6 @@ ms.openlocfilehash: ec11decbff4cf2f6c39b40228e349312fd86da00
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>教程：Azure Active Directory 与 Kantega SSO for Confluence 集成
 
@@ -112,7 +111,7 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -125,7 +124,7 @@ ms.lasthandoff: 07/11/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 在配置 Confluence 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_certificate.png) 
 
@@ -135,7 +134,7 @@ ms.lasthandoff: 07/11/2017
     
 7. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的“Confluence 管理门户”。
 
-8. 将鼠标悬停在小齿轮上，然后单击“外接程序”。
+8. 将鼠标悬停在小齿轮上，并单击“外接程序”。
     
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon1.png)
 
@@ -179,25 +178,25 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon6.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Confluence 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
+    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Confluence 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“下一步”。
+    b. 单击“下一步”。
 
 19. 在“元数据导入”部分，执行以下步骤： 
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon7.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
+    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“下一步”。
+    b. 单击“下一步”。
 
 20. 在“名称和 SSO 位置”部分，执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon8.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
+    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“下一步”。
+    b. 单击“下一步”。
 
 21. 验证签名证书，然后单击“下一步”。
 
@@ -207,9 +206,9 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon10.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“根据需要在 Confluence 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
+    a. 选择“根据需要在 Confluence 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“下一步”。
+    b. 单击“下一步”。
 
 23. 单击“完成” 。   
 
@@ -219,9 +218,9 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon12.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 从页的左侧面板中选择“已知域”。
+    a. 从页的左侧面板中选择“已知域”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“已知域”文本框中输入域名。
+    b. 在“已知域”文本框中输入域名。
 
     c. 单击“保存” 。 
 
@@ -252,7 +251,7 @@ ms.lasthandoff: 07/11/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-kantegassoforconfluence-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -268,17 +267,17 @@ ms.lasthandoff: 07/11/2017
 
 1. 以管理员身份登录到 Kantega SSO for Confluence 公司站点。
 
-2. 将鼠标悬停在小齿轮上，然后单击“用户管理”。
+2. 将鼠标悬停在小齿轮上，并单击“用户管理”。
 
     ![添加员工](./media/active-directory-saas-kantegassoforconfluence-tutorial/user1.png) 
 
-3. 在“用户”部分，单击“添加用户”选项卡。 在“添加用户”对话框页上，执行以下步骤：
+3. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
     ![添加员工](./media/active-directory-saas-kantegassoforconfluence-tutorial/user2.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
+    b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
     c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
@@ -296,7 +295,7 @@ ms.lasthandoff: 07/11/2017
 
 若要将 Britta Simon 分配到 Kantega SSO for Confluence，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

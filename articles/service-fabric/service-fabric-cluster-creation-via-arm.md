@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8d876a0f2168ee9375a3905d5d5a562ab1194cf3
-ms.openlocfilehash: 9159f40fed17e52e6576efa1ea7e8a2dee98728e
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 47152d05eb7e31e7fe1f35e33a10fe8e903e21e2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 创建 Service Fabric 群集
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/04/2017
 无论是 Linux 或 Windows 群集，创建安全群集的概念是相同的。 有关创建安全的 Linux 群集的详细信息和协助脚本，请参阅[在 Linux 上创建安全群集](#secure-linux-clusters)。
 
 ## <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
-本指南使用 [Azure PowerShell][azure-powershell]。 开始新的 PowerShell 会话时，请登录到 Azure 帐户并选择订阅，然后执行 Azure 命令。
+本指南使用 [Azure PowerShell][azure-powershell]。 开始新的 PowerShell 会话时，请登录到 Azure 帐户并选择订阅，并执行 Azure 命令。
 
 请登录到 Azure 帐户：
 
@@ -127,7 +127,7 @@ _必须针对部署启用_密钥保管库，使计算资源提供程序能够从
 
 ## <a name="use-an-existing-key-vault"></a>使用现有的密钥保管库
 
-若要使用现有密钥保管库，则_必须针对部署启用_该密钥保管库，使计算资源提供程序能够从中获取证书并将其安装在群集节点上：
+要使用现有密钥保管库，则_必须针对部署启用_该密钥保管库，使计算资源提供程序能够从中获取证书并将其安装在群集节点上：
 
 ```powershell
 
@@ -160,7 +160,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployme
 * 在复制期间跨节点加密数据。
 
 ### <a name="formatting-certificates-for-azure-resource-provider-use"></a>格式化证书以供 Azure 资源提供程序使用
-可直接通过密钥保管库添加和使用私有密钥文件 (.pfx)。 但是，Azure 计算资源提供程序需要以特殊 JavaScript 对象表示法 (JSON) 格式存储的密钥。 格式包含作为 base 64 编码的字符串和私钥密码的 .pfx 文件。 若要满足这些要求，必须将密钥放入 JSON 字符串，然后在密钥保管库中将其存储为“机密”。
+可直接通过密钥保管库添加和使用私有密钥文件 (.pfx)。 但是，Azure 计算资源提供程序需要以特殊 JavaScript 对象表示法 (JSON) 格式存储的密钥。 格式包含作为 base 64 编码的字符串和私钥密码的 .pfx 文件。 要满足这些要求，必须将密钥放入 JSON 字符串，并在密钥保管库中将其存储为“机密”。
 
 为了简化此过程，[GitHub 上提供了][service-fabric-rp-helpers] PowerShell 模块。 若要使用该模块，请执行以下操作：
 
@@ -226,7 +226,7 @@ Value : https://mywestusvault.vault.azure.net:443/secrets/mycert/4d087088df974e8
 
 #### <a name="creating-a-self-signed-certificate-and-uploading-it-to-the-key-vault"></a>创建自签名证书并将其上传到密钥保管库
 
-如果已将证书上传到密钥保管库，可跳过此步骤。 此步骤用于生成新的自签名证书并将其上传到密钥保管库。 在以下脚本中更改参数然后运行该参数后，系统会提示用户输入证书密码。  
+如果已将证书上传到密钥保管库，可跳过此步骤。 此步骤用于生成新的自签名证书并将其上传到密钥保管库。 在以下脚本中更改参数并运行该参数后，系统会提示用户输入证书密码。  
 
 ```powershell
 
@@ -303,7 +303,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 > 在创建群集之前，请完成以下步骤。 因为脚本需要群集名称和终结点，这些值应是规划的值，而不是已创建的值。
 
 1. [将脚本下载][sf-aad-ps-script-download]到计算机。
-2. 右键单击 zip 文件，选择“属性”，“解除阻止”复选框，然后单击“应用”。
+2. 右键单击 zip 文件，选择“属性”，“解除阻止”复选框，并单击“应用”。
 3. 解压缩 zip 文件。
 4. 运行 `SetupApplications.ps1` 并提供 TenantId、ClusterName 和 WebApplicationReplyUrl 作为参数。 例如：
 
@@ -319,7 +319,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
     https://&lt;cluster_domain&gt;:19080/Explorer
 
-    系统将提示登录到具有 Azure AD 租户管理权限的帐户。 完成此操作后，脚本会创建 Web 和本机应用程序来代表 Service Fabric 群集。 在 [Azure 经典门户][azure-classic-portal]中查看租户的应用程序时，应会看到两个新条目：
+    系统会提示登录到具有 Azure AD 租户管理权限的帐户。 完成此操作后，脚本会创建 Web 和本机应用程序来代表 Service Fabric 群集。 在 [Azure 经典门户][azure-classic-portal]中查看租户的应用程序时，应会看到两个新条目：
 
    * *ClusterName*\_Cluster
    * *ClusterName*\_Client
@@ -335,7 +335,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 ```
 
 ## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
-本部分将在 Service Fabric 群集 Resource Manager 模板中使用上述 PowerShell 命令的输出。
+本部分会在 Service Fabric 群集 Resource Manager 模板中使用上述 PowerShell 命令的输出。
 
 可以从 [GitHub 上的 Azure 快速入门模板库][azure-quickstart-templates]获取示例 Resource Manager 模板。 这些模板可用作群集模板的起点。
 
@@ -539,12 +539,12 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 <a name="assign-roles"></a>
 
 ## <a name="assign-users-to-roles"></a>将用户分配到角色
-创建用于表示群集的应用程序后，请将用户分配到 Service Fabric 支持的角色：只读和管理员。 可通过使用 [Azure 经典门户][azure-classic-portal]来分配角色。
+创建用于表示群集的应用程序后，请将用户分配到 Service Fabric 支持的角色：只读和管理员。可通过使用 [Azure 经典门户][azure-classic-portal]来分配角色。
 
-1. 在 Azure 门户中，转到你的租户，然后选择“应用程序”。
+1. 在 Azure 门户中，转到自己的租户，并选择“应用程序”。
 2. 选择名称类似于 `myTestCluster_Cluster` 的 Web 应用程序。
 3. 单击“用户”选项卡。
-4. 选择要分配的用户，然后单击屏幕底部的“分配”按钮。
+4. 选择要分配的用户，并单击屏幕底部的“分配”按钮。
 
     ![将用户分配到角色按钮][assign-users-to-roles-button]
 5. 选择要分配给用户的角色。
@@ -560,7 +560,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
  <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
 
 ## <a name="create-secure-clusters-on-linux"></a>在 Linux 上创建安全群集
-为了简化该过程，我们提供了[帮助程序脚本](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux)。 使用此帮助程序脚本之前，请确保已安装 Azure 命令行接口 (CLI) 并且安装在你的路径中。 下载该脚本后，请运行 `chmod +x cert_helper.py`，确定脚本具有执行权限。 第一个步骤是在 CLI 中使用 `azure login` 命令登录到 Azure 帐户。 登录到 Azure 帐户后，结合使用帮助程序脚本和 CA 签名的证书，如以下命令所示：
+为了简化该过程，我们提供了[帮助程序脚本](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux)。 使用此帮助程序脚本之前，请确保已安装 Azure 命令行接口 (CLI) 并且安装在路径中。 下载该脚本后，请运行 `chmod +x cert_helper.py`，确定脚本具有执行权限。 第一个步骤是在 CLI 中使用 `azure login` 命令登录到 Azure 帐户。 登录到 Azure 帐户后，结合使用帮助程序脚本和 CA 签名的证书，如以下命令所示：
 
 ```sh
 ./cert_helper.py [-h] CERT_TYPE [-ifile INPUT_CERT_FILE] [-sub SUBSCRIPTION_ID] [-rgname RESOURCE_GROUP_NAME] [-kv KEY_VAULT_NAME] [-sname CERTIFICATE_NAME] [-l LOCATION] [-p PASSWORD]
@@ -591,9 +591,9 @@ CertificateThumbprint: 0xfffffffffffffffffffffffffffffffffffffffff
 
 证书的使用者名称必须与用于访问 Service Fabric 群集的域匹配。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 SSL。 无法从 CA 获取 `.cloudapp.azure.com` 域的 SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
-根据[配置 Resource Manager 模板参数](#configure-arm)中所述，这些使用者名称是一些条目，创建安全 Service Fabric 群集（没有 Azure AD）时需要用到这些条目。 可以根据[对访问群集的客户端进行身份验证](service-fabric-connect-to-secure-cluster.md)中的说明连接到安全群集。 Linux 预览版群集不支持 Azure AD 身份验证。 可以根据[向用户分配角色](#assign-roles)部分中所述，分配管理员和客户端角色。 为 Linux 预览群集指定管理员和客户端角色时，需要提供证书指纹以进行身份验证。 （你未提供使用者名称，因为在此预览版本中未执行链验证或吊销。）
+根据[配置 Resource Manager 模板参数](#configure-arm)中所述，这些使用者名称是一些条目，创建安全 Service Fabric 群集（没有 Azure AD）时需要用到这些条目。 可以根据[对访问群集的客户端进行身份验证](service-fabric-connect-to-secure-cluster.md)中的说明连接到安全群集。 Linux 群集不支持 Azure AD 身份验证。 可以根据[向用户分配角色](#assign-roles)部分中所述，分配管理员和客户端角色。 为 Linux 群集指定管理员和客户端角色时，需要提供证书指纹以进行身份验证。 不提供使用者名称，因为不执行链验证或吊销。
 
-如果想要使用自签名证书进行测试，可使用同一个脚本生成证书。 然后可通过提供标志 `ss` 而不是证书路径和证书名称，将证书上传到密钥保管库。 例如，请参阅以下命令创建和上载自签名证书：
+如果想要使用自签名证书进行测试，可使用同一个脚本生成证书。 然后可通过提供标志 `ss` 而不是证书路径和证书名称，将证书上传到密钥保管库。 例如，请参阅以下命令创建和上传自签名证书：
 
 ```sh
 ./cert_helper.py ss -rgname "mykvrg" -sub "fffffff-ffff-ffff-ffff-ffffffffffff" -kv "mykevname"   -sname "mycert" -l "East US" -p "selftest" -subj "mytest.eastus.cloudapp.net"
@@ -656,7 +656,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalIn
 是的。 请记得将 Service Fabric Explorer 的 URL 添加到群集 (Web) 应用程序。 否则 Service Fabric Explorer 无法正常工作。
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>为何启用 Azure AD 时仍然需要服务器证书？
-FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身份验证时，Azure AD 集成可将客户端标识提供给服务器，服务器证书将用于验证服务器标识。 有关 Service Fabric 证书的详细信息，请参阅 [X.509 证书和 Service Fabric][x509-certificates-and-service-fabric]。
+FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身份验证时，Azure AD 集成可将客户端标识提供给服务器，服务器证书用于验证服务器标识。 有关 Service Fabric 证书的详细信息，请参阅 [X.509 证书和 Service Fabric][x509-certificates-and-service-fabric]。
 
 <!-- Links -->
 [azure-powershell]:https://azure.microsoft.com/documentation/articles/powershell-install-configure/

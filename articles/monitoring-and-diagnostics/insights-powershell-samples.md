@@ -152,7 +152,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 | 此警报规则的位置 |美国东部 |
 | resourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。 有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
+| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
 | operator |GreaterThan |
 | 阈值（此指标的计数/秒） |1 |
 | WindowSize（hh:mm:ss 格式） |00:05:00 |

@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/06/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 8d7f397145bbecf0c651872f04b81cf44e25dbff
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8517c09d4dc4bd7907fc6e5260de119fbdd8f5e9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>使用 Hadoop、Spark、Kafka 等等在 HDInsight 中设置群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-了解如何使用 Hadoop、Spark、Kafka、交互式 Hive、HBase、R Server 或 Storm 在 HDInsight 中设置和配置群集。 另外，了解如何自定义群集，并将它们加入域以提高安全性。
+了解如何使用 Hadoop、Spark、Kafka、交互式查询、HBase、R Server 或 Storm 在 HDInsight 中设置和配置群集。 另外，了解如何自定义群集，并将它们加入域以提高安全性。
 
 Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点）组成。 Azure HDInsight 对各个节点的安装和配置的实现细节进行处理，因此用户只需提供常规配置信息。 
 
@@ -83,7 +83,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 | [Spark](hdinsight-apache-spark-overview.md) |内存中处理、交互式查询、微批流处理 |
 | [Kafka（预览版）](hdinsight-apache-kafka-introduction.md) | 分布式流式处理平台，可用于构建实时流数据管道和应用程序 |
 | [R Server](hdinsight-hadoop-r-server-overview.md) |各种大数据统计信息、预测模型和机器学习功能 |
-| [交互式 Hive（预览版）](hdinsight-hadoop-use-interactive-hive.md) |更快的交互式 Hive 查询的内存中缓存 |
+| [交互式查询](hdinsight-hadoop-use-interactive-hive.md) |更快的交互式 Hive 查询的内存中缓存 |
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>每种群集类型的节点数
 每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
@@ -112,7 +112,7 @@ Azure HDInsight 提供两个服务层的大数据云产品/服务：标准版和
 ## <a name="cluster-login-and-ssh-user-name"></a>群集登录和 SSH 用户名
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
-* HTTP 用户：默认用户名为 *admin*。 它使用 Azure 门户上的基本配置。 有时称为“群集用户”。
+* HTTP 用户：默认用户名为 *admin*。它使用 Azure 门户上的基本配置。 有时称为“群集用户”。
 * SSH 用户（Linux 群集）：用于通过 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 ## <a name="location"></a>群集和存储所在的位置（区域）
@@ -207,9 +207,9 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 ## <a name="advanced-settings-script-actions"></a>高级设置：脚本操作
 
-你可以在创建期间通过使用脚本安装其他组件或自定义群集配置。 此类脚本可通过**脚本操作**调用，脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+可以在创建期间通过使用脚本安装其他组件或自定义群集配置。 此类脚本可通过**脚本操作**调用，脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-某些本机 Java 组件（如 Mahout 和 Cascading）可以在群集上作为 Java 存档 (JAR) 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure 存储，然后提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。
+某些本机 Java 组件（如 Mahout 和 Cascading）可以在群集上作为 Java 存档 (JAR) 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure 存储，并提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。
 
 > [!NOTE]
 > 如果在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。

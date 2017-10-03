@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 20cf384c96d4ff4eaf064c8880ad128d521fb9bf
+ms.translationtype: HT
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: d39fc7d75f6709391617e2e7c35d8cc7c7ac66fa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>使用脚本操作在 HDInsight 上的 Apache Spark 群集中安装 Jupyter 笔记本的外部 Python 包
@@ -40,7 +39,7 @@ ms.lasthandoff: 07/01/2017
 
 可以在[包索引](https://pypi.python.org/pypi)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，可以安装通过 [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) 或 [conda-forge](https://conda-forge.github.io/feedstocks.html) 提供的包。
 
-本文将介绍如何使用脚本操作在群集上安装 [TensorFlow](https://www.tensorflow.org/) 包并通过 Jupyter 笔记本使用它。
+本文介绍如何使用脚本操作在群集上安装 [TensorFlow](https://www.tensorflow.org/) 包并通过 Jupyter notebook 使用它。
 
 ## <a name="prerequisites"></a>先决条件
 必须满足以下条件：
@@ -68,7 +67,7 @@ ms.lasthandoff: 07/01/2017
 
     ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "创建新的 Jupyter 笔记本")
 
-4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
+4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
 
     ![提供笔记本的名称](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "提供笔记本的名称")
 

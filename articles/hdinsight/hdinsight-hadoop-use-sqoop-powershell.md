@@ -1,6 +1,6 @@
 ---
-title: "使用PowerShell 和 Azure HDInsight 运行 Sqoop 作业 | Microsoft Docs"
-description: "学习如何从工作站使用 Azure PowerShell 在 Hadoop 群集和 Azure SQL 数据库之间运行 Sqoop 导入和导出。"
+title: "使用 PowerShell 和 Azure HDInsight 运行 Sqoop 作业 | Microsoft Docs"
+description: "了解如何使用工作站中的 Azure PowerShell 在 Hadoop 群集与 Azure SQL 数据库之间运行 Sqoop 导入和导出。"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -17,32 +17,30 @@ ms.topic: article
 ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 87af5baeeb1b3132a17085db7cbf275ae86da53b
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 9ccb191335e8a0d2984599e822bc10db6dba9f2d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/19/2017
 
 ---
-# <a name="run-sqoop-jobs-using-azure-powershell-for-hadoop-in-hdinsight"></a>使用 HDInsight 中的 Azure PowerShell for Hadoop 运行 Sqoop 作业
+# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>使用 HDInsight 中的用于 Hadoop 的 Azure PowerShell 运行 Sqoop 作业
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Azure PowerShell 运行 HDInsight 中的 Sqoop 作业，以在 HDInsight 群集和 Azure SQL 数据库或 SQL Server 数据库之间进行导入和导出。
+了解如何使用 Azure PowerShell 运行 Azure HDInsight 中的 Sqoop 作业，以便在 HDInsight 群集与 Azure SQL 数据库或 SQL Server 数据库之间进行导入和导出。
 
 > [!NOTE]
-> 可以对基于 Windows 或 Linux 的 HDInsight 群集使用本文中的步骤，但是，只能从 Windows 客户端执行这些步骤。 有关其他作业提交的方法，请单击本文顶部的选项卡选择器。
+> 尽管可以对基于 Windows 或 Linux 的 HDInsight 群集使用本文中的步骤，但是，只能从 Windows 客户端执行这些步骤。 若要选择其他方法，使用本文顶部的选项卡选择器。 
 > 
 > 
 
 ### <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
 
-* **配备 Azure PowerShell 的工作站**。
-  
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-* **HDInsight 中的 Hadoop 群集**。 请参阅[创建群集和 SQL 数据库](hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
+* 配备 Azure PowerShell 的工作站。
+* HDInsight 中的 Hadoop 群集。 有关详细信息，请参阅[创建群集和 SQL 数据库](hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
-## <a name="run-sqoop-using-powershell"></a>使用 PowerShell 运行 Sqoop
-下面的 PowerShell 脚本预处理源文件，并将它导出到 Azure SQL 数据库：
+## <a name="run-sqoop-by-using-powershell"></a>使用 PowerShell 运行 Sqoop
+下面的 PowerShell 脚本预处理源文件，然后将它导出到 Azure SQL 数据库：
 
     $resourceGroupName = "<AzureResourceGroupName>"
     $hdinsightClusterName = "<HDInsightClusterName>"
@@ -167,15 +165,18 @@ ms.lasthandoff: 09/07/2017
     #endregion
 
 ## <a name="limitations"></a>限制
-* 批量导出 - 在基于 Linux 的 HDInsight 上，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
-* 批处理 - 在基于 Linux 的 HDInsight 上，如果在执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
+基于 Linux 的 HDInsight 存在以下限制：
+
+* 批量导出：用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
+
+* 批处理：如果在执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。 
 
 ## <a name="next-steps"></a>后续步骤
 现在已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
 * [将 Oozie 与 HDInsight 配合使用](hdinsight-use-oozie.md)：在 Oozie 工作流中使用 Sqoop 操作。
 * [使用 HDInsight 分析航班延误数据](hdinsight-analyze-flight-delay-data.md)：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
-* [将数据上传到 HDInsight](hdinsight-upload-data.md)：了解将数据上传到 HDInsight/Azure Blob 存储的其他方法。
+* [将数据上传到 HDInsight](hdinsight-upload-data.md)：了解将数据上传到 HDInsight 或 Azure Blob 存储的其他方法。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 

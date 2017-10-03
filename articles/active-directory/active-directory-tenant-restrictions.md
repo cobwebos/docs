@@ -14,23 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 7288f8fa173f8018570cd17aa7274f56a4eead41
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
-重视安全的大型组织都希望迁移到 Office 365 等云服务中，但需要知道，其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果 SaaS 应用在公有云中托管并在类似于 outlook.office.com 和 login.microsoftonline.com 的共享域名中运行，则这种做法将会失败。 阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
+重视安全的大型组织都希望迁移到 Office 365 等云服务中，但需要知道，其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果 SaaS 应用在公有云中托管并在类似于 outlook.office.com 和 login.microsoftonline.com 的共享域名中运行，则这种做法会失败。阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
 
 为了解决这个难题，Azure Active Directory 推出了一项称作“租户限制”的功能。 租户限制可让组织根据应用程序用于单一登录的 Azure AD 租户来控制对 SaaS 云应用程序的访问。 例如，你可能希望允许用户访问你所在组织的 Office 365 应用程序，同时阻止他们访问其他组织中这些应用程序的实例。  
 
 借助租户限制，组织可以指定其用户有权访问的租户的列表。 然后，Azure AD 只会授予对这些允许的租户的访问权限。
 
-本文重点介绍 Office 365 的租户限制，但该功能应该也适用于结合 Azure AD 使用新式身份验证协议进行单一登录的任何 SaaS 云应用。 如果你的 SaaS 应用使用的 Azure AD 租户不同于 Office 365 使用的租户，请确保允许全部所需的租户。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/)（Active Directory 应用商店）。
+本文重点介绍 Office 365 的租户限制，但该功能应该也适用于结合 Azure AD 使用新式身份验证协议进行单一登录的任何 SaaS 云应用。 如果 SaaS 应用使用的 Azure AD 租户不同于 Office 365 使用的租户，请确保允许全部所需的租户。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/)（Active Directory 应用商店）。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 05/15/2017
 
 - 客户端必须信任代理提供的用于 SSL 通信的证书链。 例如，如果使用了来自内部 PKI 的证书，则必须受信任内部颁发根证书颁发机构证书。
 
-- Office 365 订阅中包含此功能，但如果你想要使用租户限制来控制对其他 SaaS 应用的访问，则需要提供 Azure AD Premium 1 许可证。
+- Office 365 订阅中包含此功能，但如果想要使用租户限制来控制对其他 SaaS 应用的访问，则需要提供 Azure AD Premium 1 许可证。
 
 #### <a name="configuration"></a>配置
 
@@ -74,10 +73,10 @@ ms.lasthandoff: 05/15/2017
 
 这些标头应包含以下元素： 
 - 对于 *Restrict-Access-To-Tenants*，应包含\<允许的租户列表\>值，这是希望允许用户访问的租户的逗号分隔列表。 已注册到某个租户的任何域都可用于在此列表中标识该租户。 例如，若要允许访问 Contoso 和 Fabrikam 租户，名称/值对如下所示：`Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- 对于 *Restrict-Access-Context*，应包含单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，若要将 Contoso 声明为要设置租户限制策略的租户，名称/值对如下所示：`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+- 对于 *Restrict-Access-Context*，应包含单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为要设置租户限制策略的租户，名称/值对如下所示：`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> 可在 [Azure 门户](https://portal.azure.com)中找到你的目录 ID。 以管理员身份登录，选择“Azure Active Directory”，然后选择“属性”即可。
+> 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。
 
 为了防止用户插入其自己的、包含未批准的租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。 
 
@@ -95,7 +94,7 @@ ms.lasthandoff: 05/15/2017
 
 ### <a name="admin-experience"></a>管理员体验
 
-尽管租户限制的配置是在企业代理基础结构中完成的，但管理员也可以直接在 Azure 门户中访问租户限制报告。 若要查看报告，请转到 Azure Active Directory 的“概述”页，然后查看“其他功能”。
+尽管租户限制的配置是在企业代理基础结构中完成的，但管理员也可以直接在 Azure 门户中访问租户限制报告。 要查看报告，请转到 Azure Active Directory 的“概述”页，并查看“其他功能”。
 
 Restricted-Access-Context 租户的管理员可以使用此报告来查看由于租户限制策略的原因而被阻止的所有登录，包括使用的标识和目标目录 ID。
 
@@ -124,11 +123,11 @@ Office 365 基于浏览器的应用程序（Office 门户、Yammer、SharePoint 
 
 Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS 流量，包括插入 HTTP 标头。 若要配置 Fiddler 来测试租户限制，请执行以下步骤：
 
-1.    [下载并安装 Fiddler](http://www.telerik.com/fiddler)。
-2.    根据 [Fiddler 的帮助文档](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)，配置 Fiddler 来解密 HTTPS 流量。
-3.    配置 Fiddler，使用自定义规则插入 *Restrict-Access-To-Tenants* 和 *Restrict-Access-Context* 标头：
-  1. 在 Fiddler Web 调试器工具中选择“规则”菜单，然后选择“自定义规则...” 打开 CustomRules 文件。
-  2. 在 *OnBeforeRequest* 函数的开头添加以下行。 将 \<tenant domain\> 替换为已注册到租户的域，例如 contoso.onmicrosoft.com。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
+1.  [下载并安装 Fiddler](http://www.telerik.com/fiddler)。
+2.  根据 [Fiddler 的帮助文档](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)，配置 Fiddler 来解密 HTTPS 流量。
+3.  配置 Fiddler，使用自定义规则插入 *Restrict-Access-To-Tenants* 和 *Restrict-Access-Context* 标头：
+  1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...” 打开 CustomRules 文件。
+  2. 在 *OnBeforeRequest* 函数的开头添加以下行。 将 \<tenant domain\> 替换为已注册到租户的域，例如 contoso.onmicrosoft.com。将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
 
   ```
   if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
@@ -148,8 +147,8 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
 根据代理基础结构的功能，有时可以分阶段向用户部署设置。 请考虑下面几个高级选项：
 
-1.    使用 PAC 文件将测试用户指向测试代理基础结构，普通用户可继续使用生产代理基础结构。
-2.    某些代理服务器可以使用组来支持不同的配置。
+1.  使用 PAC 文件将测试用户指向测试代理基础结构，普通用户可继续使用生产代理基础结构。
+2.  某些代理服务器可以使用组来支持不同的配置。
 
 有关具体细节，请参阅代理服务器文档。
 

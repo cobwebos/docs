@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/01/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Confluence by resolution GmbH 集成
@@ -56,7 +55,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-the-gallery"></a>从库添加 SAML SSO for Confluence by resolution GmbH
 
-若要配置 SAML SSO for Confluence by resolution GmbH 的集成（集成到 Azure AD 中），需从库中将 SAML SSO for Confluence by resolution GmbH 添加到托管 SaaS 应用的列表中。
+要配置 SAML SSO for Confluence by resolution GmbH 的集成（集成到 Azure AD 中），需从库中将 SAML SSO for Confluence by resolution GmbH 添加到托管 SaaS 应用的列表中。
 
 **若要从库中添加 SAML SSO for Confluence by resolution GmbH，请执行以下步骤：**
 
@@ -76,7 +75,7 @@ ms.lasthandoff: 06/01/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_search.png)
 
-5. 在结果窗格中，选择“SAML SSO for Confluence by resolution GmbH”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“SAML SSO for Confluence by resolution GmbH”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_addfromgallery.png)
 
@@ -92,7 +91,7 @@ ms.lasthandoff: 06/01/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SAML SSO for Confluence by resolution GmbH 测试用户](#creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user)** - 在 SAML SSO for Confluence by resolution GmbH 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 身份
+3. **[创建 SAML SSO for Confluence by resolution GmbH 测试用户](#creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user)** - 在 SAML SSO for Confluence by resolution GmbH 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -114,7 +113,7 @@ ms.lasthandoff: 06/01/2017
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -127,21 +126,21 @@ ms.lasthandoff: 06/01/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [SAML SSO for Confluence by resolution GmbH 客户支持团队](https://www.resolution.de/go/support)。 
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_samlssoconfluence_certificate.png) 
 
 6. 单击“保存”按钮。
 
-    ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_400.png)    
+    ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_400.png)  
     
 7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **SAML SSO for Confluence by resolution GmbH 管理门户**。
 
-8. 将鼠标悬停在小齿轮上，然后单击“外接程序”。
+8. 将鼠标悬停在小齿轮上，并单击“外接程序”。
     
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon1.png)
 
-9. 系统会将你重定向到“管理员访问权限”页。 输入密码，然后单击“确认”按钮。
+9. 系统会你将重定向到“管理员访问权限”页。 输入密码，并单击“确认”按钮。
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon2.png)
 
@@ -149,7 +148,7 @@ ms.lasthandoff: 06/01/2017
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon.png)
 
-11. 搜索“SAML Single Sign On (SSO) for Confluence”，然后单击“安装”按钮安装新的 SAML 插件。
+11. 搜索“SAML Single Sign On (SSO) for Confluence”，并单击“安装”按钮安装新的 SAML 插件。
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon7.png)
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 06/01/2017
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon9.png)
 
-13.    单击“管理”。
+13. 单击“管理”。
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon10.png)
     
@@ -179,15 +178,15 @@ ms.lasthandoff: 06/01/2017
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon5.png)
  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 添加标识提供者（例如 Azure AD）的“名称”。
+    a. 添加标识提供者（例如 Azure AD）的“名称”。
     
     b. 添加标识提供者（例如 Azure AD）的“说明”。
 
-    c. 单击“XML”，然后选择已从 Azure 门户下载的“元数据”文件。
+    c. 单击“XML”，并选择已从 Azure 门户下载的“元数据”文件。
 
     d. 单击“加载”按钮。
 
-    e. 此时会读取 IdP 元数据，并根据屏幕截图中突出显示的内容来填充字段。    
+    e. 此时会读取 IdP 元数据，并根据屏幕截图中突出显示的内容来填充字段。 
 18. 单击“保存设置”按钮保存设置。
 
     ![配置单一登录](./media/active-directory-saas-samlssoconfluence-tutorial/addon6.png)
@@ -218,7 +217,7 @@ ms.lasthandoff: 06/01/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-samlssoconfluence-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -228,22 +227,22 @@ ms.lasthandoff: 06/01/2017
  
 ### <a name="creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user"></a>创建 SAML SSO for Confluence by resolution GmbH 测试用户
 
-若要使 Azure AD 用户能够登录 SAML SSO for Confluence by resolution GmbH，必须将其预配到 SAML SSO for Confluence by resolution GmbH 中。  
+要使 Azure AD 用户能够登录 SAML SSO for Confluence by resolution GmbH，必须将其预配到 SAML SSO for Confluence by resolution GmbH 中。  
 在 SAML SSO for Confluence by resolution GmbH 中，预配是一项手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
 1. 以管理员身份登录到 SAML SSO for Confluence by resolution GmbH 公司站点。
 
-2. 将鼠标悬停在小齿轮上，然后单击“用户管理”。
+2. 将鼠标悬停在小齿轮上，并单击“用户管理”。
 
     ![添加员工](./media/active-directory-saas-samlssoconfluence-tutorial/user1.png) 
 
-3. 在“用户”部分，单击“添加用户”选项卡。 在“添加用户”对话框页上，执行以下步骤：
+3. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
     ![添加员工](./media/active-directory-saas-samlssoconfluence-tutorial/user2.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“用户名”文本框中，键入用户（例如 Britta Simon）的电子邮件地址。
+    a. 在“用户名”文本框中，键入用户（例如 Britta Simon）的电子邮件地址。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
@@ -261,9 +260,9 @@ ms.lasthandoff: 06/01/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 SAML SSO for Confluence by resolution GmbH，请执行以下步骤：**
+**要将 Britta Simon 分配到 SAML SSO for Confluence by resolution GmbH，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

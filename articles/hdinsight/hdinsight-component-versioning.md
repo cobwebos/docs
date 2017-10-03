@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 26512049dba3d4dde575c5a67ba884fb56374236
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7f4981feb0b2f524bab095d76000e01aa88bc81f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Hadoop 组件和版本？
@@ -112,7 +112,7 @@ Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 如果针�
 Azure HDInsight 版本 3.3 是适用于 Windows 的最后 HDInsight 版本。 在 Windows 上的 HDInsight 停用之前，必须将所有 HDInsight Windows 3.3 或更低版本的群集迁移到 Linux 上的 HDInsight 版本 3.5 或更高版本。 将群集迁移到 Linux 上的 HDInsight 后，将仍然能够创建新群集或调整现有群集的大小。 
 
 ### <a name="what-do-i-need-to-do"></a>我需要做什么？
-在 2018 年 7 月 31 日之前，将你的 HDInsight Windows 群集迁移到受支持的 HDInsight Linux 群集。 可以在 [HDInsight 迁移文档](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)中了解详细信息。 有关 Azure HDInsight 版本的详细信息，请参阅[支持的版本](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)列表。 
+在 2018 年 7 月 31 日之前，将你的 HDInsight Windows 群集迁移到受支持的 HDInsight Linux 群集。 可以在 [HDInsight 迁移文档](hdinsight-migrate-from-windows-to-linux.md)中了解详细信息。 有关 Azure HDInsight 版本的详细信息，请参阅[支持的版本](hdinsight-component-versioning.md#supported-hdinsight-versions)列表。 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>可以在哪里找到群集 OS 类型？
 在 Azure 门户中，转到 HDInsight 群集概述页，然后在“概要”下找到“群集类型”。 该页上列出了群集 OS 类型。 
@@ -121,7 +121,7 @@ Azure HDInsight 版本 3.3 是适用于 Windows 的最后 HDInsight 版本。 �
 HDInsight Windows 群集将按现样运行，但是你将无法创建新的 HDInsight Windows 群集，也无法调整现有 HDInsight Windows 群集的大小。 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>我的群集具有 .NET 依赖项。 在 Linux 上如何解决此依赖关系？
-可以使用 [Mono 项目](http://www.mono-project.com/)解决 Linux 群集依赖关系。 .NET 的此开源实现可用于 HDInsight Linux 群集。 可以在 [HDInsight 迁移文档](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)中了解详细信息。 
+可以使用 [Mono 项目](http://www.mono-project.com/)解决 Linux 群集依赖关系。 .NET 的此开源实现可用于 HDInsight Linux 群集。 可以在 [HDInsight 迁移文档](hdinsight-migrate-from-windows-to-linux.md)中了解详细信息。 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>我是 Windows 上的 HDInsight 的新客户。 如何创建 HDInsight Windows 群集？
 从 2017 年 7 月 3 日起，只有现有 HDInsight Windows 客户可以创建新的 HDInsight Windows 群集。 新客户无法使用 PowerShell 或 SDK 在 Azure 门户中创建 HDInsight Windows 群集。 我们建议新客户创建 Linux HDInsight 群集。 现有客户仍然可以创建新的 HDInsight Windows 群集，直到 Windows 上的 HDInsight 停用的那一天。 
@@ -138,7 +138,7 @@ HDInsight Windows 群集将按现样运行，但是你将无法创建新的 HDIn
 从 HDInsight 版本 3.4 开始，Microsoft 仅在 Linux OS 上发行了 HDInsight。 因此，HDInsight 中的某些组件仅可供 Linux 使用。 这包括 Apache Ranger、Kafka、Interactive Hive、Spark、HDInsight 应用程序以及作为主文件系统的 Azure Data Lake Store。 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight 群集版本的服务级别协议
-服务级别协议 (SLA) 是按“支持窗口”定义的。 支持窗口是 HDInsight 群集版本受 Microsoft 客户服务和支持部门支持的时间段。 如果版本的“支持到期日期”已过，则 HDInsight 处于支持窗口外。 有关支持的版本的详细信息，请参阅[支持的 HDInsight 群集版本](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)列表。 指定的 HDInsight 版本 X 的支持到期日期（在提供更新的 X+1 版本后）为按以下公式计算所得时间的较晚者：  
+服务级别协议 (SLA) 是按“支持窗口”定义的。 支持窗口是 HDInsight 群集版本受 Microsoft 客户服务和支持部门支持的时间段。 如果版本的“支持到期日期”已过，则 HDInsight 处于支持窗口外。 有关支持的版本的详细信息，请参阅[支持的 HDInsight 群集版本](hdinsight-migrate-from-windows-to-linux.md)列表。 指定的 HDInsight 版本 X 的支持到期日期（在提供更新的 X+1 版本后）为按以下公式计算所得时间的较晚者：  
 
 * 公式 1：发布 HDInsight 群集版本 X 的日期加 180 天。
 * 公式 2：在 Azure 门户中提供 HDInsight 群集版本 X+1 的日期加 90 天。

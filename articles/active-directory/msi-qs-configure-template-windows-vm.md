@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 266458323ca54d9805aea12108faed79e69d30b0
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 8b599c3e0e7d4fa3ae5bdb156191bff0553249ee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/14/2017
 
 托管服务标识为 Azure 服务提供了 Azure Active Directory 中的自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
 
-本文将介绍如何使用 Azure 资源管理器部署模板为 Azure Windows VM 启用和禁用 MSI。
+本文介绍如何使用 Azure 资源管理器部署模板为 Azure VM 启用和删除 MSI。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,15 +44,17 @@ ms.lasthandoff: 09/14/2017
 
 无论采用哪种方法，初始部署和重新部署期间模板语法都是一样的，这样就可以相同方式在新的或现有的 VM 上启用 MSI。 此外，默认情况下，Azure 资源管理器还会对部署执行[增量更新](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)：
 
-1. 在编辑器中加载模板后，在 `resources` 部分中找到相关的 `Microsoft.Compute/virtualMachines` 资源。 大家的屏幕截图可能与下面的略有不同，具体取决于要使用的编辑器，以及编辑后的模板是用于新部署，还是用于现有部署：
+1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。 此外，还需要确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”。
+
+2. 在编辑器中加载模板后，在 `resources` 部分中找到相关的 `Microsoft.Compute/virtualMachines` 资源。 大家的屏幕截图可能与下面的略有不同，具体取决于要使用的编辑器，以及编辑后的模板是用于新部署，还是用于现有部署：
 
    >[!NOTE] 
-   > 第 2 步还假定模板中定义了变量 `vmName`、`storageAccountName` 和 `nicName`。
+   > 此示例假定变量（如 `vmName`、`storageAccountName` 和 `nicName`）已在模板中定义。
    >
 
    ![编辑前的模板的屏幕截图 - 查找 VM](./media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
-2. 运行以下语法，添加与 `"type": "Microsoft.Compute/virtualMachines"` 属性的级别相同的 `"identity"` 属性：
+3. 运行以下语法，添加与 `"type": "Microsoft.Compute/virtualMachines"` 属性的级别相同的 `"identity"` 属性：
 
    ```JSON
    "identity": { 
@@ -60,10 +62,10 @@ ms.lasthandoff: 09/14/2017
    },
    ```
 
-3. 然后，运行以下语法，将 VM MSI 扩展添加为 `resources` 元素：
+4. 然后，运行以下语法，将 VM MSI 扩展添加为 `resources` 元素：
 
    >[!NOTE] 
-   > 下面的示例假定正在部署的是 Windows VM 扩展 (`ManagedIdentityExtensionForWindows`)。 也可以改用 `ManagedIdentityExtensionForLinux` 为 Linux 配置。
+   > 下面的示例假定正在部署的是 Windows VM 扩展 (`ManagedIdentityExtensionForWindows`)。 对于 Linux，也可以改为将 `ManagedIdentityExtensionForLinux` 用于 `"name"` 和 `"type"` 元素来进行配置。
    >
 
    ```JSON
@@ -88,13 +90,17 @@ ms.lasthandoff: 09/14/2017
    }
    ```
 
-4. 完成后，模板应如以下示例所示：
+5. 完成后，模板应如以下示例所示：
 
    ![编辑后的模板](./media/msi-qs-configure-template-windows-vm/template-file-after.png) 
 
 ## <a name="remove-msi-from-an-azure-vm"></a>在 Azure VM 上禁用 MSI
 
-如果虚拟机不再需要 MSI，只需删除在上一示例中添加的两个元素（VM 的 `"identity"` 属性和 `"Microsoft.Compute/virtualMachines/extensions"` 资源），即可禁用 MSI。
+如果虚拟机不再需要 MSI，请执行以下操作：
+
+1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”。
+
+2. 删除上一部分中添加的两个元素：VM 的 `"identity"` 属性和 `"Microsoft.Compute/virtualMachines/extensions"` 资源。
 
 ## <a name="related-content"></a>相关内容
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
-
 
 ---
 
@@ -155,8 +154,7 @@ Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 支持 [MongoDB shell 查
 **查询**
     
     db.families.find( { "isRegistered" : true })
-**结果**
-不返回任何文档。 
+**结果**不返回任何文档。 
 
 ## <a id="examplequery4"></a>示例查询 4
 

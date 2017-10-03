@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7cbdbc65bac97aef5d4215fd6b188830795a86f2
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7ce9b23e8925d4c79827c7c4e8bec63067ce33e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="ssh-support-for-azure-web-apps-for-containers"></a>对用于容器的 Azure Web 应用的 SSH 支持
+# <a name="ssh-support-for-azure-web-app-for-containers"></a>对用于容器的 Azure Web 应用的 SSH 支持
 
 [安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 是一种用于安全地使用网络服务的加密网络协议。 它通常用来从命令行安全地远程登录到某个系统并远程执行管理命令。
 
@@ -67,7 +67,7 @@ https://<your sitename>.scm.azurewebsites.net/webssh/host
         && echo "root:Docker!" | chpasswd
     ```
 
-1. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
+1. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/6.11.0/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
 
     > [!NOTE]
     > *sshd_config* 文件必须包括以下项，否则连接会失败： 
