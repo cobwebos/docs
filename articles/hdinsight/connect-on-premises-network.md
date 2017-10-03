@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/21/2017
+ms.date: 09/21/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 6fc863010cc59e20e7d86ea9344489e574be75f2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 27a5d0e69ec9c47feab2b23d7c79fe2547edfc08
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -34,9 +34,6 @@ ms.lasthandoff: 08/22/2017
 * 虚拟网络上由 HDInsight 提供的端口。
 
 ## <a name="create-the-virtual-network-configuration"></a>创建虚拟网络配置
-
-> [!IMPORTANT]
-> 如果正在查找有关如何使用 Azure 虚拟网络将 HDInsight 连接到本地网络的分步指南，请参阅[将 HDInsight 连接到本地网络](connect-on-premises-network.md)文档。
 
 使用以下文档来了解如何创建连接到本地网络的 Azure 虚拟网络：
     
@@ -74,7 +71,10 @@ ms.lasthandoff: 08/22/2017
 若要创建使用 [Bind](https://www.isc.org/downloads/bind/) DNS 软件的 Linux VM，请使用以下步骤：
 
 > [!NOTE]
-> 以下步骤将通过 [Azure 门户](https://portal.azure.com)创建 Azure 虚拟机。 关于其他创建虚拟机的方法，请参阅[创建 VM - Azure CLI](../virtual-machines/linux/quick-create-cli.md) 和[创建 VM - Azure PowerShell](../virtual-machines/linux/quick-create-portal.md) 文档。
+> 以下步骤将通过 [Azure 门户](https://portal.azure.com)创建 Azure 虚拟机。 有关创建虚拟机的其他方法，请参阅以下文档：
+>
+> * [创建 VM - Azure CLI](../virtual-machines/linux/quick-create-cli.md)
+> * [创建 VM - Azure PowerShell](../virtual-machines/linux/quick-create-portal.md)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，依次选择“+”、“计算”和“Ubuntu Server 16.04 LTS”。
 
@@ -299,7 +299,9 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 ## <a name="connecting-to-hdinsight"></a>连接到 HDInsight
 
-关于 HDInsight 的大多数文档都假定能够通过 Internet 访问群集。 例如，可在 https://CLUSTERNAME.azurehdinsight.net 连接到群集。 此地址使用公共网关，该地址在已使用 NSG 或 UDR 限制从 Internet 访问时不可用。
+关于 HDInsight 的大多数文档都假定能够通过 Internet 访问群集。 例如，可在 https://CLUSTERNAME.azurehdinsight.net 连接到群集。 此地址使用公共网关，在已使用 NSG 或 UDR 限制从 Internet 访问时不可用。
+
+一些文档在通过 SSH 会话连接到群集时还引用了 `headnodehost`。 该地址仅可在群集中的节点上使用，在通过虚拟网络连接的客户端上不可用。
 
 若要通过虚拟网络直接连接到 HDInsight，请使用以下步骤：
 

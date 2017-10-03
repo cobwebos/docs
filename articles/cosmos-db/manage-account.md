@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: kirillg
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: a0c6ec8d490e1adacc96758971ab91d8eaeab45c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>如何管理 Azure Cosmos DB 帐户
 了解如何在 Azure 门户中设置全局一致性、使用密钥，以及删除 Azure Cosmos DB 帐户。
 
 ## <a id="consistency"></a>管理 Azure Cosmos DB 一致性设置
-根据应用程序的语义选择正确的一致性级别。 用户应通过阅读[使用一致性级别最大限度地提高 Azure Cosmos DB 中的可用性和性能][consistency]，自行熟悉 Azure Cosmos DB 中提供的一致性级别。 Azure Cosmos DB 在可用于数据库帐户的每个一致性级别提供一致性、可用性和性能保证。 使用非常一致性级别配置数据库帐户需要将数据局限在单个 Azure 区域，而不能使其全局可用。 另一方面，宽松的一致性级别 - 受限停滞、会话或最终一致性可让你将任意数量的 Azure 区域与你的数据库帐户相关联。 以下简单步骤说明如何为数据库帐户选择默认的一致性级别。 
+根据应用程序的语义选择正确的一致性级别。 用户应通过阅读[使用一致性级别最大限度地提高 Azure Cosmos DB 中的可用性和性能][consistency]，自行熟悉 Azure Cosmos DB 中提供的一致性级别。 Azure Cosmos DB 在可用于数据库帐户的每个一致性级别提供一致性、可用性和性能保证。 使用非常一致性级别配置数据库帐户需要将数据局限在单个 Azure 区域，而不能使其全局可用。 另一方面，宽松的一致性级别 - 受限停滞、会话或最终一致性可让你将任意数量的 Azure 区域与数据库帐户相关联。 以下简单步骤说明如何为数据库帐户选择默认的一致性级别。 
 
 ### <a name="to-specify-the-default-consistency-for-an-azure-cosmos-db-account"></a>指定 Azure Cosmos DB 帐户的默认一致性
 1. 在 [Azure 门户](https://portal.azure.com/)中，访问 Azure Cosmos DB 帐户。
@@ -67,9 +66,9 @@ ms.lasthandoff: 05/31/2017
 1. 更新应用程序代码中的访问密钥以引用 Azure Cosmos DB 帐户的辅助访问密钥。
 2. 再生成 Azure Cosmos DB 帐户的主访问密钥。 在 [Azure 门户](https://portal.azure.com/)中，访问 Azure Cosmos DB 帐户。
 3. 在“Azure Cosmos DB 帐户”边栏选项卡中，单击“密钥”。
-4. 在“密钥”边栏选项卡上，单击“重新生成”按钮，然后单击“确定”确认要生成新密钥。
+4. 在“密钥”边栏选项卡上，单击“重新生成”按钮，并单击“确定”确认要生成新密钥。
     ![重新生成访问密钥](./media/manage-account/regenerate-keys.png)
-5. 当你确认新的密钥可供使用后（大约在重新生成后的 5 分钟），请更新应用程序代码中的访问密钥以引用新的主访问密钥。
+5. 确认新的密钥可供使用后（大约在重新生成后的 5 分钟），请更新应用程序代码中的访问密钥以引用新的主访问密钥。
 6. 重新生成辅助访问密钥。
    
     ![重新生成访问密钥](./media/manage-account/regenerate-secondary-key.png)
@@ -89,12 +88,12 @@ ms.lasthandoff: 05/31/2017
 如果在 [Azure Cosmos DB 数据库迁移工具](import-data.md)中使用连接字符串，将数据库名称追加到连接字符串的末尾。 `AccountEndpoint=< >;AccountKey=< >;Database=< >`。
 
 ## <a id="delete"></a>删除 Azure Cosmos DB 帐户
-若要从 Azure 门户中删除不再使用的 Azure Cosmos DB 帐户，请右键单击该帐户名称，然后单击“删除帐户”。
+要从 Azure 门户中删除不再使用的 Azure Cosmos DB 帐户，请右键单击该帐户名称，并单击“删除帐户”。
 
 ![如何在 Azure 门户中删除 Azure Cosmos DB 帐户](./media/manage-account/deleteaccount.png)
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，访问要删除的 Azure Cosmos DB 帐户。
-2. 在“Azure Cosmos DB 帐户”边栏选项卡上，右键单击该帐户，然后单击“删除帐户”。 
+2. 在“Azure Cosmos DB 帐户”边栏选项卡上，右键单击该帐户，并单击“删除帐户”。 
 3. 在生成的确认边栏选项卡中，键入 Azure Cosmos DB 帐户名称，确认要删除该帐户。
 4. 单击“删除” 按钮。
 

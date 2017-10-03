@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 254d5d43f0f665f64ddfe276fe31702f66f16758
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -189,6 +189,13 @@ ms.lasthandoff: 08/15/2017
 > 虽然可使用门户创建具有 IPv6 地址的网络接口，但不能使用门户将现有网络接口添加到新的或现有的虚拟机。 使用 PowerShell 或 Azure CLI 2.0 创建具有专用 IPv6 地址的网络接口，然后在创建虚拟机时附加该网络接口。 无法将分配有专用 IPv6 地址的网络接口附加到现有虚拟机。 对于附加到虚拟机的任何网络接口，无法使用任何工具（门户、CLI 或 PowerShell）为 IP 配置添加专用 IPv6 地址。
 
 无法为主要或辅助 IP 配置分配公共 IPv6 地址。
+
+## <a name="skus"></a>SKU
+
+公共 IP 地址是使用基本或标准 SKU 创建的。  有关 SKU 差异的详细信息，请参阅[管理公共 IP 地址](virtual-network-public-ip-address.md)。
+
+> [!NOTE]
+> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建和关联网络安全组并显式允许所需流量之后，才可与资源通信。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建具有不同 IP 配置的虚拟机，请阅读以下文章：

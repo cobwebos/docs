@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 的 Linux 容器中创建 PHP Web 应用 | Microsoft Docs"
-description: "数分钟内在 Azure App Service Web 应用中部署首个 PHP Hello World。"
+description: "数分钟内在 Azure 应用服务 Web 应用中部署首个 PHP Hello World。"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -16,10 +16,10 @@ ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 1b10636848198ab0ff46e6a492373ecf42a96202
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 2d5c8901e3deb126e216b58264c820b374b5670b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-a-php-web-app-in-a-linux-container-in-azure"></a>在 Azure 的 Linux 容器中创建 PHP Web 应用
@@ -56,7 +56,7 @@ cd php-docs-hello-world
 php -S localhost:8080
 ```
 
-打开 Web 浏览器并导航到 http://localhost:8080 处的示例应用。
+打开 Web 浏览器并导航到 `http://localhost:8080` 处的示例应用。
 
 此时会看到来自示例应用的 Hello World! 消息显示在页面中。
 
@@ -121,7 +121,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-PHP 示例代码在 Azure App Service Web 应用中运行。
+PHP 示例代码在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 

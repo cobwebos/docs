@@ -13,17 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 60d35b230534ca5721a49a770ea81cc79d52ec02
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: d33e516628c56a7aa038e37b4498461de17f8433
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/23/2017
 
 ---
-
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>如何排查自助密码重置问题
 
 如果在使用自助密码重置时遇到问题，下面的方法可能会帮助你快速解决问题。
@@ -152,17 +151,21 @@ ms.lasthandoff: 08/29/2017
 | 33008| ADPasswordPolicyError| 当密码写回服务尝试在本地目录中设置的密码不符合域在密码期限、历史记录、复杂度或筛选方面的要求时，将发生此事件。 <br> <br> 如果使用最短密码期限，并且最近在此时间窗口内已更改过密码，将无法再次更改密码，直到它达到域中指定的期限。 对于测试目的，最短期限应设置为 0。 <br> <br> 如果启用了密码历史记录要求，则必须选择在最近 N 次未使用过的密码，其中 N 是密码历史记录设置。 如果选择了在最近 N 次中使用过的密码，则在此情况下会失败。 对于测试目的，历史记录应设置为 0。 <br> <br> 如果有密码复杂性要求，则当用户尝试更改或重置密码时会强制实施所有这些要求。 <br> <br> 如果启用密码筛选器，并且用户选择了不满足筛选条件的密码，则重置或更改操作会失败。|
 | 33009| ADConfigurationError| 此事件表示将密码写回到本地目录时由于 Active Directory 存在配置问题而出现问题。 有关发生了什么错误的详细信息，请检查 Azure AD Connect 计算机的应用程序事件日志以查找来自 ADSync 服务的消息。|
 
-
 ## <a name="troubleshoot-password-writeback-connectivity"></a>排查密码写回连接问题
 
 如果遇到 Azure AD Sync 密码写回组件的服务中断，可以使用以下快速步骤来解决此问题：
 
+* [确认网络连接](#confirm-network-connectivity)
 * [重新启动 Azure AD Sync 服务](#restart-the-azure-ad-connect-sync-service)
 * [禁用再重新启用密码写回功能](#disable-and-re-enable-the-password-writeback-feature)
 * [安装最新版本的 Azure AD Connect](#install-the-latest-azure-ad-connect-release)
 * [排查密码写回问题](#troubleshoot-password-writeback)
 
 通常，我们建议按照上述顺序执行这些步骤，从而以最快的方式恢复服务。
+
+### <a name="confirm-network-connectivity"></a>确认网络连接
+
+最常见的故障点是防火墙和/或代理端口以及空闲超时未正确配置。 请在 [Azure AD 中的自助密码重置深入探讨](active-directory-passwords-how-it-works.md#network-requirements)一文中查看网络要求，了解详细信息。
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>重新启动 Azure AD Sync 服务
 

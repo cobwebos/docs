@@ -1,30 +1,30 @@
 ---
 title: "Azure 事件网格事件架构"
-description: "介绍为 Azure 事件网格中事件所提供的属性。"
+description: "介绍为 Azure 事件网格中事件所提供的属性"
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 09/18/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 6736c6a60021b51db612f0a596086a9e988d7aef
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a61357b6ba75566e0ad4d3300cc602333ece0563
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="event-grid-event-schema"></a>事件网格事件架构
+# <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
-本文提供事件的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象包含特定于每个发布服务器的属性。 对于系统主题，这些属性特定于资源提供程序，例如存储或事件中心。
+本文提供事件的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象包含特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
-事件会发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 如果只存在单个事件，则数组长度为 1。 
+事件会发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 如果只存在单个事件，则数组长度为 1。 数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。
  
 ## <a name="event-properties"></a>事件属性
 
-所有事件包含以下相同的顶级数据。
+所有事件包含以下相同的顶级数据：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
@@ -55,7 +55,7 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 - Microsoft.Resources.ResourceWriteCancel：在取消资源创建或更新操作时引发。  
 - Microsoft.Resources.ResourceDeleteSuccess：在资源删除操作成功时引发。  
 - Microsoft.Resources.ResourceDeleteFailure：在资源删除操作失败时引发。  
-- Microsoft.Resources.ResourceDeleteCancel：在取消资源删除时引发。 取消模板部署时会出现此情况。
+- Microsoft.Resources.ResourceDeleteCancel：在取消资源删除操作时引发。 取消模板部署时会出现此情况。
 
 ### <a name="example-event-schema"></a>示例事件架构
 
@@ -96,7 +96,7 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 - Microsoft.Resources.ResourceWriteCancel：在取消资源创建或更新操作时引发。  
 - Microsoft.Resources.ResourceDeleteSuccess：在资源删除操作成功时引发。  
 - Microsoft.Resources.ResourceDeleteFailure：在资源删除操作失败时引发。  
-- Microsoft.Resources.ResourceDeleteCancel：在取消资源删除时引发。 取消模板部署时会出现此情况。
+- Microsoft.Resources.ResourceDeleteCancel：在取消资源删除操作时引发。 取消模板部署时会出现此情况。
 
 ### <a name="example-event"></a>示例事件
 
@@ -128,7 +128,7 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 
 ## <a name="event-hubs"></a>事件中心
 
-当前仅在使用“捕获”功能将文件自动发送至存储时才会发出事件中心事件。
+当前仅在通过“捕获”功能将文件自动发送至存储时才会发出事件中心事件。
 
 ### <a name="available-event-types"></a>可用事件类型
 
@@ -136,7 +136,7 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 
 ### <a name="example-event"></a>示例事件
 
-此示例事件显示“捕获”在存储文件时引发的事件中心事件的架构。 
+此示例事件显示“捕获”功能在存储文件时引发的事件中心事件的架构： 
 
 ```json
 [
@@ -163,10 +163,11 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 ```
 
 
-
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
 
-个人预览版 Azure Blob 存储（可进行注册以与事件网格集成）。
+>[!IMPORTANT]
+>若要使用 Blob 存储事件，必须注册 Blob 存储事件预览版。 有关预览计划的详细信息，请参阅 [Azure Blob 存储事件](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#join-the-preview)。  
+
 
 ### <a name="available-event-types"></a>可用事件类型
 
@@ -175,7 +176,7 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 
 ### <a name="example-event"></a>示例事件
 
-此示例事件显示在创建 blob 时引发的存储事件的架构。 
+此示例事件显示在创建 blob 时引发的存储事件的架构： 
 
 ```json
 [
@@ -208,7 +209,7 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 
 ## <a name="custom-topics"></a>自定义主题
 
-自定义事件的数据有效负载由你定义，可以是任何格式正确的 JSON。 顶级数据应包含与标准资源所定义事件相同的字段。 将事件发布到自定义主题时，应考虑对事件主题建模，以辅助路由和筛选。
+自定义事件的数据有效负载由你定义，可以是任何格式正确的 JSON 对象。 顶级数据应包含与标准资源所定义事件相同的字段。 将事件发布到自定义主题时，应考虑对事件主题建模，以辅助路由和筛选。
 
 ### <a name="example-event"></a>示例事件
 
@@ -232,6 +233,6 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关事件网格的介绍，请参阅[什么是事件网格？](overview.md)
-* 若要了解有关创建事件网格订阅的信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
+* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
+* 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
 

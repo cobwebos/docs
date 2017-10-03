@@ -3,7 +3,7 @@ title: "对 Azure 存储使用 Azure PowerShell | Microsoft Docs"
 description: "了解如何使用 Azure 存储的 Azure PowerShell cmdlet 来创建和管理存储帐户；使用 Blob、表、队列和文件；配置和查询存储分析并创建共享访问签名。"
 services: storage
 documentationcenter: na
-author: robinsh
+author: tamram
 manager: timlt
 ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
 ms.service: storage
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 87a116111d085fe2913bf6f5f8751c3ff5f3c076
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8306ae5d4a943b9246da1d941725150c60026ca5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -689,9 +689,9 @@ $Queue.CloudQueue.DeleteMessage($QueueMessage)
 ```
 
 ## <a name="how-to-manage-azure-file-shares-and-files"></a>如何管理 Azure 文件共享和文件
-Azure 文件存储使用标准 SMB 协议为应用程序提供共享存储。 Microsoft Azure 虚拟机和云服务可以通过装入的共享在应用程序组件之间共享文件数据，本地应用程序可以通过文件存储 API 或 Azure PowerShell 访问共享中的文件数据。
+Azure 文件使用标准 SMB 协议为应用程序提供共享存储。 Microsoft Azure 虚拟机和云服务可以通过装入的共享在应用程序组件之间共享文件数据，本地应用程序可以通过文件存储 API 或 Azure PowerShell 访问共享中的文件数据。
 
-有关 Azure 文件存储的详细信息，请参阅[在 Windows 上开始使用 Azure 文件存储](../storage-dotnet-how-to-use-files.md)和 [File Service REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)（文件服务 REST API）。
+有关 Azure 文件的详细信息，请参阅[在 Windows 上开始使用 Azure 文件](../files/storage-files-introduction.md)和 [File Service REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)（文件服务 REST API）。
 
 ## <a name="how-to-set-and-query-storage-analytics"></a>如何设置和查询存储分析
 可使用 [Azure 存储分析](../storage-analytics.md)从 Azure 存储帐户收集度量值，并记录与发送到存储帐户的请求有关的数据。 可以使用存储度量值监视存储帐户的运行状况，并使用存储日志记录诊断和解决与存储帐户有关的问题。 可以使用 Azure 门户或 Windows PowerShell 配置监视，也可以使用存储客户端库以编程方式配置监视。 存储日志记录在服务器端执行，可用于在存储帐户中记录成功和失败请求的相关详细信息。 使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。

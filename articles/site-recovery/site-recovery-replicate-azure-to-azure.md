@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 5/22/2017
 ms.author: asgang
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: f9f97cf840b722c8cfee169dd1640e0682f287ff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/20/2017
-
 
 ---
 

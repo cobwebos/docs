@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 66f733d7602a8d26627fcc205f357e7a4a266d11
-ms.openlocfilehash: b76ef954d8a00e190817e3d7f8e2b064210d0357
+ms.translationtype: HT
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
-
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 诊断 1.2 配置架构
@@ -191,7 +190,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |元素名称|说明|  
 |------------------|-----------------|  
-|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> -                     **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> -                     **sampleRate** - 对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|  
+|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> -                     **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> -                     **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration 元素  
  下表介绍子元素：  

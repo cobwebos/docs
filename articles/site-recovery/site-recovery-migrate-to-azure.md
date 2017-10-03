@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 77ebe20940bce0e21caa60567e1ccffaba7351b3
+ms.translationtype: HT
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: f4dfe430fba51bd009431ca72279a21be55e3a40
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="migrate-to-azure-with-site-recovery"></a>使用 Site Recovery 迁移到 Azure
 
 本文概述如何使用 Azure Site Recovery 服务迁移虚拟机和物理服务器。
 
-Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 有关详细信息，请参阅 [什么是 Site Recovery？](site-recovery-overview.md) 还可使用 Site Recovery 将现有本地工作负荷迁移到 Azure，加快云进程并增益 Azure 提供的大量功能。
+Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，可以故障转移回到主要位置。 有关详细信息，请参阅 [什么是 Site Recovery？](site-recovery-overview.md) 还可使用 Site Recovery 将现有本地工作负荷迁移到 Azure，加快云进程并增益 Azure 提供的大量功能。
 
 有关如何执行迁移的快速概述，请观看以下视频。
 >[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/ASRHowTo-Video2-Migrate-Virtual-Machines-to-Azure/player]
@@ -42,7 +41,7 @@ Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务�
 
 ## <a name="what-can-site-recovery-migrate"></a>Site Recovery 可以迁移哪些工作负荷？
 
-你可以：
+可以：
 
 - 迁移本地 Hyper-V VM、VMware VM 和物理服务器上运行的工作负荷，使其在 Azure VM 上运行。 在此方案中，还可以执行完全复制和故障回复。
 - 在 Azure 区域之间迁移 [Azure IaaS VM](site-recovery-migrate-azure-to-azure.md)。 目前只有此方案才支持迁移，这意味着，故障回复不受支持。
@@ -56,9 +55,9 @@ Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务�
 2. 配置所需的管理服务器（VMware、VMM、Hyper-V - 具体取决于想要迁移哪些工作负荷），将这些服务器添加到保管库，然后指定复制设置。
 3. 为需要迁移的虚拟机启用复制
 4. 初始迁移之后，请运行一个快速的测试性故障转移，确保一切正常。
-5. 确认复制环境正常工作后，根据方案[支持的操作](site-recovery-failover.md)使用计划内或计划外故障转移。 我们建议你尽可能使用计划内故障转移。
+5. 确认复制环境正常工作后，根据方案[支持的操作](site-recovery-failover.md)使用计划内或计划外故障转移。 我们建议尽可能使用计划内故障转移。
 6. 迁移时，不需要提交故障转移，也不需将其删除。 对于想要迁移的每台计算机，可以选择“完成迁移”选项。
-     - 在“复制的项”中，右键单击 VM，然后单击“完成迁移”。 单击“确定”完成相关操作。 若要在 VM 属性中跟踪进度，可以在“Site Recovery 作业”中监视“完成迁移”作业。
+     - 在“复制的项”中，右键单击 VM，并单击“完成迁移”。 单击“确定”完成相关操作。 若要在 VM 属性中跟踪进度，可以在“Site Recovery 作业”中监视“完成迁移”作业。
      - “完成迁移”操作会完成迁移过程，删除计算机复制设置，使计算机不再产生 Site Recovery 费用。
 
 ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)

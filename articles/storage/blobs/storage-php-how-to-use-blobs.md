@@ -3,7 +3,7 @@ title: "如何通过 PHP 使用 Blob 存储（对象存储）| Microsoft Docs"
 description: "使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 documentationcenter: php
 services: storage
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 1af56b59-b3f0-4b46-8441-aab463ae088e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ae57d8bb5ecf495538f7de703c3a4033488fe93e
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 9de2f7e81d75669267fe6448030c118d06b3f88a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-php"></a>如何通过 PHP 使用 Blob 存储
@@ -76,7 +76,7 @@ UseDevelopmentStorage=true
 若要创建任何 Azure 服务客户端，则需要使用 **ServicesBuilder** 类。 可以：
 
 * 将连接字符串直接传递给此类或
-* 在 Web 应用中使用环境变量来存储连接字符串。 要配置连接字符串，请参阅 [Azure Web 应用配置设置](../../app-service-web/web-sites-configure.md)文档。
+* 在 Web 应用中使用环境变量来存储连接字符串。 要配置连接字符串，请参阅 [Azure Web 应用配置设置](../../app-service/web-sites-configure.md)文档。
 
 在此处列出的示例中，将直接传递连接字符串。
 

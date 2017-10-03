@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: bb058b11d211c4c41ff8f8c3849a4630886c78d5
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: d555f7a93a980a35c6b50d480c43de6bdc5c86df
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
@@ -32,9 +32,13 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="backup"></a>备份
 
-## <a name="error-the-specified-disk-configuration-is-not-supported"></a>错误：不支持指定的磁盘配置
+### <a name="error-the-specified-disk-configuration-is-not-supported"></a>错误：不支持指定的磁盘配置
 
-当前 Azure 备份不支持大于 1023 GB 的磁盘大小。 请拆分磁盘，确保磁盘大小小于此限制。 要拆分磁盘，需要将数据从大于 1023 GB 的磁盘复制到新创建的小于 1023 GB 的磁盘。
+当前 Azure 备份不支持[大于 1023GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm) 的磁盘大小。 
+- 如果有大于 1 TB 的磁盘，请[附加小于 1 TB 的新磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) <br>
+- 然后，将大于 1TB 的磁盘中的数据复制到新创建的小于 1TB 的磁盘。 <br>
+- 确保已复制所有数据并删除大于 1 TB 的磁盘
+- 启动备份。
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |

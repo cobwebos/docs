@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/22/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 5d566e7b84723bacf575ade8ea6947cfdaf8b606
+ms.translationtype: HT
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: dfcab23d19d74dfff92b7e9b696a4e5c39ee8d90
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter 笔记本配合使用
@@ -45,7 +45,7 @@ ms.lasthandoff: 06/07/2017
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>将外部包与 Jupyter 笔记本配合使用
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
-2. 在 Spark 群集边栏选项卡中单击“快速链接”，然后在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+2. 在 Spark 群集边栏选项卡中单击“快速链接”，并在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
     > [!NOTE]
     > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -55,11 +55,11 @@ ms.lasthandoff: 06/07/2017
 
    
 
-3. 创建新的笔记本。 单击“新建”，然后单击“Spark”。
+3. 创建新的笔记本。 单击“新建”，并单击“Spark”。
    
     ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "创建新的 Jupyter 笔记本")
 
-4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
+4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
    
     ![提供笔记本的名称](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "提供笔记本的名称")
 
@@ -71,11 +71,11 @@ ms.lasthandoff: 06/07/2017
     | HDInsight 版本 | 命令 |
     |-------------------|---------|
     |对于 HDInsight 3.3 和 HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
-    | 对于 HDInsight 3.5 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
+    | 对于 HDInsight 3.5 和 HDInsight 3.6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
 6. 上述代码段需要 Maven 中心存储库中外部包的 maven 坐标。 在此代码片段中，`com.databricks:spark-csv_2.10:1.4.0` 是 **spark-csv** 包的 maven 坐标。 下面说明了如何构造包的坐标。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Maven 存储库中找出该包。 在本教程中，我们使用 [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
+    a. 在 Maven 存储库中找出该包。 在本教程中，我们使用 [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
    
     b. 从存储库中收集 **GroupId**、**ArtifactId** 和 **Version** 的值。 确保收集的值与群集相匹配。 本示例中，我们使用 Scala 2.10 和 Spark 1.4.0 包，但可能需要选择群集中相应的 Scala 或 Spark 版本的不同版本。 通过在 Spark Jupyter 内核或 Spark 提交上运行 `scala.util.Properties.versionString`，可以找出群集上的 Scala 版本。 通过在 Jupyter 笔记本上运行 `sc.version`，可以找出群集上的 Spark 版本。
    
@@ -85,14 +85,21 @@ ms.lasthandoff: 06/07/2017
    
         com.databricks:spark-csv_2.10:1.4.0
 
-7. 结合 `%%configure` magic 运行代码单元。 这会将基础 Livy 会话配置为使用你提供的包。 现在，可以在笔记本的后续单元中使用该包，如下所示。
+7. 结合 `%%configure` magic 运行代码单元。 这会将基础 Livy 会话配置为使用提供的包。 现在，可以在笔记本的后续单元中使用该包，如下所示。
    
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-8. 然后，可以运行代码片段（如下所示）以查看上一步骤创建的数据帧中的数据。
+    对于 HDInsight 3.6，应使用以下代码片段。
+
+        val df = spark.read.format("com.databricks.spark.csv").
+        option("header", "true").
+        option("inferSchema", "true").
+        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+
+8. 然后，可以运行代码片段（如下所示）以查看上一步创建的数据帧中的数据。
    
         df.show()
    

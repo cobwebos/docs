@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/13/2017
+ms.date: 09/18/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 80c5a2a43302e1cc8ec3b4298eb393a1861252d3
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 86c01a55304c5f5179e0e94d67f318e42075fd48
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="create-a-secure-cluster-on-azure-using-powershell"></a>使用 PowerShell 在 Azure 中创建安全群集
-本教程介绍如何创建一个在 Azure 中运行的 Service Fabric 群集（Windows 或 Linux）。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。
+# <a name="create-a-windows-cluster-in-azure-using-powershell"></a>使用 PowerShell 在 Azure 中创建 Windows 群集
+本教程介绍如何创建一个在 Azure 中运行的 Windows Service Fabric 群集。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。
 
 本教程介绍如何执行下列操作：
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/16/2017
 有关创建 Service Fabric 群集的详细信息，请参阅[使用 Azure Resource Manager 创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。
 
 ## <a name="create-the-cluster-using-azure-powershell"></a>使用 Azure PowerShell 创建群集
-1. 从[用于 Service Fabric 的 Azure Resource Manager 模板](https://aka.ms/securepreviewonelineclustertemplate) GitHub 存储库下载 Azure Resource Manager 模板和参数文件的本地副本：  *azuredeploy.json* 是定义 Service Fabric 群集的 Azure Resource Manager 模板。 *azuredeploy.parameters.json* 是用于自定义群集部署的参数文件。
+1. 从[用于 Service Fabric 的 Azure Resource Manager 模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) GitHub 存储库下载 Azure Resource Manager 模板和参数文件的本地副本：  *azuredeploy.json* 是定义 Service Fabric 群集的 Azure Resource Manager 模板。 *azuredeploy.parameters.json* 是用于自定义群集部署的参数文件。
 
 2. 在 *azuredeploy.parameters.json* 参数文件中自定义以下参数：
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 08/16/2017
    | clusterName     | 要创建的群集的名称。 | 例如 bobs-sfpreviewcluster |
    | adminUserName   | 群集虚拟机上的本地管理员帐户。 | 任何有效的 Windows Server 用户名 |
    | adminPassword   | 群集虚拟机上的本地管理员帐户的密码。 | 任何有效的 Windows Server 密码 |
-   | clusterCodeVersion | 要运行的 Service Fabric 版本。 （255.255.X.255 是预览版）。 | **255.255.5718.255** |
+   | clusterCodeVersion | 要运行的 Service Fabric 版本。 （255.255.X.255 是预览版）。 | **5.7.198.9494** |
    | vmInstanceCount | 群集中的虚拟机数量（可以是 1 或 3-99 之间的数字）。 | **1** | 对于预览群集，仅指定一个虚拟机 |
 
 3. 打开 PowerShell 控制台，登录到 Azure，选择要在其中部署群集的订阅：
@@ -146,7 +146,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何：
+在本教程中，已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 Service Fabric 群集

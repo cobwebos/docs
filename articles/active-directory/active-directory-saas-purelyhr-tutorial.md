@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: a9075b1759ebd39f164bfe288fb0a365acdcc44c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>教程：Azure Active Directory 与 PurelyHR 的集成
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/25/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-purelyhr-from-the-gallery"></a>从库中添加 PurelyHR
-若要配置 PurelyHR 与 Azure AD 的集成，需要从库中将 PurelyHR 添加到托管 SaaS 应用列表。
+要配置 PurelyHR 与 Azure AD 的集成，需要从库中将 PurelyHR 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 PurelyHR，请执行以下步骤：**
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 04/25/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-purelyhr-tutorial/tutorial_purelyhr_search.png)
 
-5. 在结果窗格中，选择“PurelyHR”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“PurelyHR”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-purelyhr-tutorial/tutorial_purelyhr_addfromgallery.png)
 
@@ -89,13 +89,13 @@ ms.lasthandoff: 04/25/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 PurelyHR 测试用户](#creating-a-purelyhr-test-user)** - 在 PurelyHR 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 PurelyHR 测试用户](#creating-a-purelyhr-test-user)** - 在 PurelyHR 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 PurelyHR 应用程序中配置单一登录。
+在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 PurelyHR 应用程序中配置单一登录。
 
 **若要配置 PurelyHR 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 04/25/2017
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [PurelyHR 客户端支持团队](http://support.purelyhr.com/)获取这些值。 
 
-5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-purelyhr-tutorial/tutorial_purelyhr_certificate.png) 
 
@@ -136,13 +136,13 @@ ms.lasthandoff: 04/25/2017
 
 8. 若要在 **PurelyHR** 端配置单一登录，请以管理员身份登录到他们的网站。
 
-9. 通过工具栏中的选项打开“仪表板”，然后单击“SSO 设置”。
+9. 通过工具栏中的选项打开“仪表板”，并单击“SSO 设置”。
 
 10. 按如下所述在框中粘贴值-
 
     ![配置单一登录](./media/active-directory-saas-purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)    
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在记事本中打开从 Azure 门户下载的 **Certificate(Bas64)** 并复制证书值。 将复制的值粘贴到“X.509 证书”框中。
+    a. 在记事本中打开从 Azure 门户下载的 **Certificate(Bas64)** 并复制证书值。 将复制的值粘贴到“X.509 证书”框中。
 
     b. 在“Idp 颁发者 URL”中，粘贴从 Azure 门户复制的“SAML 实体 ID”。
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 04/25/2017
 
     d.单击“下一步”。 选中“自动创建用户”复选框，在 PurelyHR 中启用自动用户预配。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存更改”保存这些设置。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存更改”保存这些设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -179,7 +179,7 @@ ms.lasthandoff: 04/25/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-purelyhr-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -197,9 +197,9 @@ ms.lasthandoff: 04/25/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 PurelyHR，请执行以下步骤：**
+**要将 Britta Simon 分配到 PurelyHR，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 04/25/2017
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Absorb LMS 磁贴时，你将自动登录到 Absorb LMS 应用程序。
+单击访问面板中的 Absorb LMS 磁贴时，会自动登录到 Absorb LMS 应用程序。
 
 有关访问面板的详细信息，请参阅。 [访问面板简介](https://msdn.microsoft.com/library/dn308586)。
 

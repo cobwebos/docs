@@ -16,10 +16,10 @@ ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 5b6f016ce634fd244f1ea3b54361b9a5da9d5483
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: fe4c79f4e71d885e22bbcf31869b809f5d7fe1a4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 

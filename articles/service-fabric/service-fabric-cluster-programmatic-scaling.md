@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: mikerou
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 46b0b62f92abbac57bc27bbcdd5821eafedf5519
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
-
 
 ---
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 06/30/2017
 由于这些限制，我们可能想要实现其他自定义的自动缩放模型。 
 
 ## <a name="scaling-apis"></a>缩放 API
-Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service Fabric 群集。 如果现有的自动缩放选项不适用于你的方案，可通过这些 API 实现自定义的缩放逻辑。 
+Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service Fabric 群集。 如果现有的自动缩放选项不适用于方案，可通过这些 API 实现自定义的缩放逻辑。 
 
 实现这种“定制”自动缩放功能的方法之一是，将一个新的无状态服务添加到 Service Fabric 应用程序来管理缩放操作。 在服务的 `RunAsync` 方法中，有一组触发器可以确定是否需要缩放（包括检查最大群集大小等参数，以及缩放减缓）。   
 
@@ -94,7 +93,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ## <a name="scaling-in"></a>缩减
 
-缩减过程类似于扩展。 实际的虚拟机规模集更改几乎是相同的。 但是，如前所述，Service Fabric 只会自动清理持久性为金级或银级的已删除节点。 因此，在持久性为铜级的节点中缩减时，需要与 Service Fabric 群集交互，以关闭要删除的节点，然后删除其状态。
+缩减过程类似于扩展。实际的虚拟机规模集更改几乎是相同的。 但是，如前所述，Service Fabric 只会自动清理持久性为金级或银级的已删除节点。 因此，在持久性为铜级的节点中缩减时，需要与 Service Fabric 群集交互，以关闭要删除的节点，并删除其状态。
 
 准备关闭节点的过程涉及到查找要删除的节点删除（最近添加的节点）并停用它。 对于非种子节点，可通过比较 `NodeInstanceId` 找到更新的节点。 
 
@@ -143,13 +142,13 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 ## <a name="potential-drawbacks"></a>潜在的缺点
 
-如前面的代码片段中所示，创建自己的缩放服务可以针对应用程序的缩放行为实现最大控制度和定制性。 在需要精确何时或者如何缩减或扩展应用程序的方案中，这种方法非常有效。 但是，这种控制也附带了代码复杂性方面的弊端。 使用这种方法意味着需要拥有缩放代码，而这并不是一个简单的任务。
+如前面的代码片段中所示，创建自己的缩放服务可以针对应用程序的缩放行为实现最大控制度和定制性。 在需要精确何时或者如何缩减或扩展应用程序的方案中，这种方法非常有效。但是，这种控制也附带了代码复杂性方面的弊端。 使用这种方法意味着需要拥有缩放代码，而这并不是一个简单的任务。
 
 应选择哪种 Service Fabric 缩放方法取决于具体的方案。 如果缩放过程不常见，则具备手动添加或删除节点的能力也许已足够。 在比较复杂的方案中，能够以编程方式缩放的自动缩放规则和 SDK 可用作强大的替代方法。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始实现你自己的自动缩放逻辑，请先熟悉以下概念和有用的 API：
+要开始实现自己的自动缩放逻辑，请先熟悉以下概念和有用的 API：
 
 - [手动或使用自动缩放规则缩放](./service-fabric-cluster-scale-up-down.md)
 - [用于 .NET 的 Fluent Azure 管理库](https://github.com/Azure/azure-sdk-for-net/tree/Fluent)（与 Service Fabric 群集的底层虚拟机规模集交互时非常有用）

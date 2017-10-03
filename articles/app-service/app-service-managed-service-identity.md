@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 7aaf611a562d373a8cc1dad33963050d246b2882
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 6e1fa23bffc03a8a77c0c9e3342609c042fc4a5b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -103,12 +103,13 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 对于.NET 应用程序和函数，使用托管服务身份最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 本节演示如何开始使用库。
 
-1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) NuGet 包的引用。
+1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用。
 
 2.  将以下代码添加到应用程序：
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Azure.KeyVault;
 // ...
 var azureServiceTokenProvider = new AzureServiceTokenProvider();
 string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");

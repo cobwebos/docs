@@ -1,6 +1,6 @@
 ---
-title: "排查 Windows 中的 Azure 文件存储问题 | Microsoft Docs"
-description: "排查 Windows 中的 Azure 文件存储问题"
+title: "在 Windows 中排查 Azure 文件问题 | Microsoft Docs"
+description: "在 Windows 中排查 Azure 文件问题"
 services: storage
 documentationcenter: 
 author: genlin
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 09/19/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 0e3bbf5ad2ae9cda72876af6bdf880e3aa4f63ac
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 5aacc8a920c9343c5efa89128aabb1505fc2d9aa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="troubleshoot-azure-file-storage-problems-in-windows"></a>排查 Windows 中的 Azure 文件存储问题
+# <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
-本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件存储相关的常见问题。 此外，还介绍了这些问题的可能原因和解决方案。 除了本文中的疑难解答步骤之外，还可以使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息，该疑难解答提供相关步骤来帮助解决在连接/映射/装载 Azure 文件共享时遇到的问题。
+本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 除了本文中的疑难解答步骤之外，还可以使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息，该疑难解答提供相关步骤来帮助解决在连接/映射/装载 Azure 文件共享时遇到的问题。
 
 
 <a id="error53-67-87"></a>
@@ -50,7 +50,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 
 ### <a name="cause-2-port-445-is-blocked"></a>原因 2：端口 445 被阻止
 
-如果端口 445 到 Azure 文件存储数据中心的出站通信受阻，可能会发生系统错误 53 或 67。 若要概览允许或不允许从端口 445 访问的 ISP，请转到 [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)。
+如果端口 445 到 Azure 文件数据中心的出站通信受阻，可能会发生系统错误 53 或 67。 若要概览允许或不允许从端口 445 访问的 ISP，请转到 [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)。
 
 若要确定“系统错误 53”消息是否由此造成，可使用 Portqry 来查询 TCP:445 终结点。 如果 TCP:445 终结点显示为“已筛选”，则 TCP 端口被阻止。 下面是一个示例查询：
 
@@ -68,7 +68,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 
 ### <a name="cause-3-ntlmv1-is-enabled"></a>原因 3：NTLMv1 已启用
 
-如果客户端上已启用 NTLMv1 通信，可能会出现系统错误 53 或 87。 Azure 文件存储仅支持 NTLMv2 身份验证。 启用 NTLMv1 将创建安全级别较低的客户端。 因此，Azure 文件存储的通信受阻。 
+如果客户端上已启用 NTLMv1 通信，可能会出现系统错误 53 或 87。 Azure 文件仅支持 NTLMv2 身份验证。 启用 NTLMv1 将创建安全级别较低的客户端。 因此，Azure 文件的通信受阻。 
 
 若要确定错误是否由此造成，请验证以下注册表子项的值是否设置为 3：
 
@@ -94,7 +94,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 关闭一些句柄，减少并发打开句柄的数量，再重试。 有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-file-storage-in-windows"></a>在 Windows 中将文件复制到 Azure 文件存储以及从中复制文件时速度缓慢
+## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>在 Windows 中将文件复制到 Azure 文件以及从中复制文件时速度缓慢
 
 尝试将文件传输到 Azure 文件服务时，可能会发现速度缓慢。
 
@@ -153,7 +153,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 - 用双引号将密钥括起来，可以解决此问题（除非正斜杠是首个字符）。 如果是，可以使用交互模式并单独输入密码，也可以生成密钥来获取不以正斜杠开头的密钥。
 
 <a id="cannotaccess"></a>
-## <a name="application-or-service-cannot-access-a-mounted-azure-file-storage-drive"></a>应用程序或服务无法访问装载的 Azure 文件存储驱动器
+## <a name="application-or-service-cannot-access-a-mounted-azure-files-drive"></a>应用程序或服务无法访问装载的 Azure 文件驱动器
 
 ### <a name="cause"></a>原因
 
@@ -174,7 +174,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 通过网络复制文件时，文件在源计算机上被解密，以明文形式传输，并在目标位置上被重新加密。 不过，尝试复制加密文件时，可能会看到以下错误消息：“要将该文件复制到的目标不支持加密。”
 
 ### <a name="cause"></a>原因
-如果使用的是加密文件系统 (EFS)，可能会出现此问题。 可将 BitLocker 加密的文件复制到 Azure 文件存储。 不过，Azure 文件存储不支持 NTFS EFS。
+如果使用的是加密文件系统 (EFS)，可能会出现此问题。 可将 BitLocker 加密的文件复制到 Azure 文件。 不过，Azure 文件不支持 NTFS EFS。
 
 ### <a name="workaround"></a>解决方法
 必须先将文件解密，才能通过网络进行复制。 使用以下方法之一：

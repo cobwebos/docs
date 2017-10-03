@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2017
-ms.author: jdial;narayan;annahar
+ms.date: 09/25/2017
+ms.author: jdial;anavin
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 7d75d85863ce4b06ef1f552e0d583dec302f7ace
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 1adf219dc4ca9ba91dc1ffc1ae98b764c9ef61b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>创建虚拟网络对等互连 - 不同部署模型，相同订阅 
@@ -34,9 +34,40 @@ ms.lasthandoff: 07/26/2017
 |[均为 Resource Manager 模型](create-peering-different-subscriptions.md) |不同|
 |[一个为 Resource Manager 模型，一个为经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
 
-不能在通过经典部署模型部署的两个虚拟网络之间创建对等互连。 只能在同一 Azure 区域中的两个虚拟网络之间创建虚拟网络对等互连。 如需连接均通过经典部署模型创建的虚拟网络或是位于不同 Azure 区域中的虚拟网络，可使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来连接虚拟网络。 
+只能在同一 Azure 区域中的两个虚拟网络之间创建虚拟网络对等互连。
 
-可使用 [Azure 门户](#portal)、Azure [命令行接口](#cli) (CLI) 或 Azure [PowerShell](#powershell) 创建虚拟网络对等互连。 单击以前的任何工具链接直接转到使用所选工具创建虚拟网络对等互连的步骤。
+  > [!WARNING]
+  > 预览版中当前支持在不同区域的虚拟网络之间创建虚拟网络对等互连。 可注册订阅获取以下预览版。 采用此方案创建的虚拟网络对等互连与在正式发布版中创建的虚拟网络对等互连相比，二者的可用性和可靠性等级可能不同。 不支持采用此方案创建的虚拟网络对等体互连，其功能可能会受限，且可能无法用于所有 Azure 区域。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)（Azure 虚拟网络更新）页。
+
+无法在通过经典部署模型部署的两个虚拟网络之间创建虚拟网络对等互连。如需连接均通过经典部署模型创建的虚拟网络，或位于不同 Azure 区域中的虚拟网络，可使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)连接虚拟网络。 
+
+可以使用 [Azure 门户](#portal)、Azure [命令行接口](#cli) (CLI)、Azure [PowerShell](#powershell)、或 [Azure Resource Manager 模板](#template)创建虚拟网络对等互连。 单击以前的任何工具链接直接转到使用所选工具创建虚拟网络对等互连的步骤。
+
+## <a name="register"></a>注册全局 VNet 对等互连预览版
+
+若要跨区域建立虚拟网络对等互连，请注册预览版，并完成包含要对等互连的虚拟网络的两个订阅的后续步骤。 唯一可用于注册预览版的工具是 PowerShell。
+
+1. 安装最新版本的 PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+2. 使用 `Login-AzureRmAccount` 命令启动 PowerShell 会话并登录到 Azure。
+3. 输入以下命令，注册预览版订阅：
+
+    ```powershell
+    Register-AzureRmProviderFeature `
+      -FeatureName AllowGlobalVnetPeering `
+      -ProviderNamespace Microsoft.Network
+    
+    Register-AzureRmResourceProvider `
+      -ProviderNamespace Microsoft.Network
+    ```
+    输入以下命令后，收到的两个订阅的 RegistrationState 输出为“已注册”后，才能完成本文中在门户、Azure CLI 或 PowerShell 部分中进行的步骤：
+
+    ```powershell    
+    Get-AzureRmProviderFeature `
+      -FeatureName AllowGlobalVnetPeering `
+      -ProviderNamespace Microsoft.Network
+    ```
+  > [!WARNING]
+  > 预览版中当前支持在不同区域的虚拟网络之间创建虚拟网络对等互连。 采用此方案创建的虚拟网络对等互连可能功能受限，且可能无法用于所有 Azure 区域。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)（Azure 虚拟网络更新）页。
 
 ## <a name="cli"></a>创建对等互连 - 门户
 
@@ -106,7 +137,7 @@ ms.lasthandoff: 07/26/2017
       --address-prefix 10.0.0.0/16
     ```
 
-6. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<subscription id>` 替换为订阅 ID。 如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。 将修改后的脚本粘贴到 CLI 会话，然后按 `Enter`。
+6. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<subscription id>` 替换为订阅 ID。如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。将修改后的脚本粘贴到 CLI 会话，然后按 `Enter`。
 
     ```azurecli-interactive
     # Get the id for VNet1.
@@ -175,7 +206,7 @@ ms.lasthandoff: 07/26/2017
       -Location eastus
     ```
 
-7. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<subscription id>` 替换为订阅 ID。 如果不知道订阅 ID，请输入 `Get-AzureRmSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 若要执行该脚本，请从文本编辑器中复制修改后的脚本，然后在 PowerShell 会话中右键单击，然后按 `Enter`。
+7. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<subscription id>` 替换为订阅 ID。如果不知道订阅 ID，请输入 `Get-AzureRmSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 若要执行该脚本，请从文本编辑器中复制修改后的脚本，然后在 PowerShell 会话中右键单击，然后按 `Enter`。
 
     ```powershell
     # Peer VNet1 to VNet2.

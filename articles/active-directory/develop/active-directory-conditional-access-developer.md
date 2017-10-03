@@ -15,10 +15,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: b8fac1b258535fd668b45acbe2c1c8580fb8a340
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: ea4421f7b22cf60b2c3e42b59057162ad56f412e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -34,7 +34,7 @@ Azure Active Directory (AD) 提供了多种保护应用和服务安全的方法�
 
 在本文中，我们将重点介绍条件性访问对构建适用于 Azure AD 应用的开发人员的意义。  本文假定你了解[单租户](active-directory-integrating-applications.md)和[多租户](active-directory-devhowto-multi-tenant-overview.md)应用及[常见的身份验证模式](active-directory-authentication-scenarios.md)。
 
-我们将深入探索访问你没有控制权限且可能已应用条件性访问策略的资源的影响。  此外，我们还将了解条件性访问对代理流、Web 应用、访问 Microsoft Graph 和调用 API 的含义。
+我们将深入探索访问你没有控制权限且可能已应用条件性访问策略的资源的影响。  此外，我们还将了解条件访问对代理流、Web 应用、访问 Microsoft Graph 和调用 API 的含义。
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>条件性访问对应用有何影响？
 
@@ -88,15 +88,15 @@ Azure AD 条件性访问是 [Azure AD Premium](../active-directory-whatis.md#cho
 * 访问多个服务/资源的应用
 * 使用 ADAL.js 的单页应用
 
-在后续部分中，我们将介绍更为复杂的常见应用场景。  核心运行原则是请求已应用条件性访问策略的服务令牌时评估条件性访问策略，但在通过 Microsoft Graph 访问时除外。
+在后续部分中，我们将介绍更为复杂的常见应用场景。  核心运行原则是请求已应用条件访问策略的服务令牌时评估条件访问策略，但在通过 Microsoft Graph 访问时除外。
 
-### <a name="scenario-app-accessing-the-microsoft-graph"></a>应用场景：访问 Microsoft Graph 的应用
+### <a name="scenario-app-accessing-microsoft-graph"></a>应用场景：访问 Microsoft Graph 的应用
 
-在此应用场景中，我们将演示 Web 应用请求访问 Microsoft Graph 时的场景。 可以将此场景中的条件性访问策略分配到 Microsoft Graph 将其作为工作负载访问的 SharePoint、Exchange 或其他的一些服务。  在此示例中，假定有关于 Sharepoint Online 的条件性访问策略。
+在此应用场景中，我们将演示 Web 应用请求访问 Microsoft Graph 时的场景。 可以将此场景中的条件访问策略分配到通过 Microsoft Graph 将其作为工作负荷访问的 SharePoint、Exchange 或其他的一些服务。  在此示例中，假定有关于 Sharepoint Online 的条件性访问策略。
 
 ![访问 Microsoft Graph 流的应用示意图](media/active-directory-conditional-access-developer/app-accessing-microsoft-graph-scenario.png)
 
-应用首先向 Microsoft Graph 请求授权，此过程需要访问没有条件性访问策略的下游工作负载。  请求成功且未调用任何策略，应用收到 Microsoft Graph 的令牌。  此时，应用可以在所请求的终结点的持有者请求中使用此访问令牌。 现在，应用需要访问 Microsoft Graph 的 Sharepoint Online 终结点，例如：`https://graph.microsoft.com/v1.0/me/mySite`
+应用首先向 Microsoft Graph 请求授权，此过程需要访问没有条件访问策略的下游工作负荷。  请求成功且未调用任何策略，应用收到 Microsoft Graph 的令牌。  此时，应用可以在所请求的终结点的持有者请求中使用此访问令牌。 现在，应用需要访问 Microsoft Graph 的 Sharepoint Online 终结点，例如：`https://graph.microsoft.com/v1.0/me/mySite`
 
 应用已拥有 Microsoft Graph 的有效令牌，因此，它可以执行新请求，而无需获取新令牌。 此请求失败，并且 Microsoft Graph 以包含 ```WWW-Authenticate``` 质询的“HTTP 403 禁止访问”的形式发出声明质询。
 以下是响应示例： 

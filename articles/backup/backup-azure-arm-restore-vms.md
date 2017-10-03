@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/15/2017
+ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: e1fe2b94d462a30f09cb23ab905542aa121ba46b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: d234d9c97064e22a0ea882f199da326b0aae0674
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="use-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
@@ -164,7 +164,7 @@ ms.lasthandoff: 08/17/2017
 [完成磁盘还原操作](#Track-the-restore-operation)后，可以使用还原操作过程中生成的模板来创建一个配置与备份配置不同的新 VM，或者自定义在从还原点创建新 VM 时创建的资源的名称。 
 
 > [!NOTE]
-> 对于 2017 年 3 月 1 日以后创建的恢复点，模板将添加为还原磁盘的一部分。 这些模板适用于未加密的 VM 和非托管磁盘 VM。 将来的版本可支持加密的 VM 和托管磁盘 VM。 
+> 对于 2017 年 3 月 1 日以后创建的恢复点，模板将添加为还原磁盘的一部分。 这些模板适用于非托管磁盘 VM。 将来的版本可支持托管磁盘 VM。 
 >
 >
 

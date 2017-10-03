@@ -1,6 +1,6 @@
 ---
-title: "OMS IT Service Management Connector 中的 ITSM 连接 | Microsoft Docs"
-description: "将 ITSM 产品/服务与 OMS 中的 IT Service Management Connector 相连接，以集中监视和管理 ITSM 工作项。"
+title: "Azure Log Analytics 中与 IT Service Management Connector 的手支持连接 | Microsoft Docs"
+description: "将 ITSM 产品/服务与 Azure Log Analytics 中的 IT Service Management Connector 相连接，以集中监视和管理 ITSM 工作项。"
 documentationcenter: 
 author: JYOTHIRMAISURI
 manager: riyazp
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: cf9963be162df3bd886b6fd44535c3d09e06284b
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bbec5773987b29eb62d10d17b88efcda29889612
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>将 ITSM 产品/服务与 IT Service Management Connector（预览版）相连接
@@ -39,7 +39,7 @@ ms.lasthandoff: 09/20/2017
 请确保满足以下先决条件：
 
 - 已安装 IT Service Management Connector。
-详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
+详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
@@ -176,7 +176,7 @@ ms.lasthandoff: 09/20/2017
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector。 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
+- 已安装 IT Service Management Connector。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - ServiceNow 支持的版本 – Fuji、Geneva、Helsinki。
 
 ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
@@ -269,8 +269,10 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector。 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
-- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。
+
+- 已安装 IT Service Management Connector。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。
+
 - 用户角色：管理员。
 
 ### <a name="connection-procedure"></a>连接过程
@@ -313,7 +315,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector。 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
+- 已安装 IT Service Management Connector。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已生成客户端 ID。 详细信息：[为 Cherwell 生成客户端 ID](#generate-client-id-for-cherwell)。
 - 用户角色：管理员。
 

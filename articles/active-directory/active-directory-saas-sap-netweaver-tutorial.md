@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: ad4140eb1183094a67822ad92eabcd35101360b6
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>教程：将 Azure Active Directory 与 SAP NetWeaver 的集成
@@ -56,7 +55,7 @@ ms.lasthandoff: 06/16/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-sap-netweaver-from-the-gallery"></a>从库中添加 SAP NetWeaver
-若要配置 SAP NetWeaver 与 Azure AD 的集成，需要从库中将 SAP NetWeaver 添加到托管 SaaS 应用列表。
+要配置 SAP NetWeaver 与 Azure AD 的集成，需要从库中将 SAP NetWeaver 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 SAP NetWeaver，请执行以下步骤：**
 
@@ -89,9 +88,9 @@ ms.lasthandoff: 06/16/2017
 
 若要配置和测试 SAP NetWeaver 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SAP NetWeaver 测试用户](#creating-an-sap-netweaver-test-user)** - 在 SAP NetWeaver 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 SAP NetWeaver 测试用户](#creating-an-sap-netweaver-test-user)** - 在 SAP NetWeaver 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -117,12 +116,12 @@ ms.lasthandoff: 06/16/2017
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<your company instance of SAP NetWeaver>`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<your company instance of SAP NetWeaver>/sap/saml2/sp/acs/100`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<your company instance of SAP NetWeaver>/sap/saml2/sp/acs/100`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 请联系 [SAP NetWeaver 客户端支持团队](https://www.sap.com/support.html)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_certificate.png) 
 
@@ -173,7 +172,7 @@ ms.lasthandoff: 06/16/2017
  
 ### <a name="creating-an-sap-netweaver-test-user"></a>创建 SAP NetWeaver 测试用户
 
-在本部分中，将在 SAP NetWeaver 中创建一个名为“Britta Simon”的用户。 与 [SAP NetWeaver 支持](https://www.sap.com/support.html)协作，将用户添加到 SAP NetWeaver 平台中。
+在本部分中，会在 SAP NetWeaver 中创建一个名为“Britta Simon”的用户。 与 [SAP NetWeaver 支持](https://www.sap.com/support.html)协作，将用户添加到 SAP NetWeaver 平台中。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -181,9 +180,9 @@ ms.lasthandoff: 06/16/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 SAP NetWeaver，请执行以下步骤：**
+**要将 Britta Simon 分配到 SAP NetWeaver，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 08141edfbc8be9bf7bf303419e1e482d5f884860
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 615b758d6aa48f94ec8c9159d4f52e32f413c8d9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
@@ -138,6 +138,9 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
   </Certificates>
 </ApplicationManifest>
 ```
+
+对于 Linux 群集，**MY** 存储默认为文件夹 **/var/lib/sfcerts**。
+
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>重写 ServiceManifest.xml 中的终结点
 

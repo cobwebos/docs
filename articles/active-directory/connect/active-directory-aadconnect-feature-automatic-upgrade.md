@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9541cd195e8afa6e692a5a0214b0d614e429c33b
-ms.openlocfilehash: 234f06a858987b03ec2ed0bbe0899423d8f0bcdd
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 57cd81a92817171a23ffd0f607eb127005bc1e0d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/20/2016
+ms.lasthandoff: 09/23/2017
 
 ---
-# Azure AD Connect：自动升级
-<a id="azure-ad-connect-automatic-upgrade" class="xliff"></a>
+# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 1.1.105.0（于 2016 年 2 月发布）一起推出的。
 
-## 概述
-<a id="overview" class="xliff"></a>
-使用**自动升级**功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，你的安装会自动升级。
+## <a name="overview"></a>概述
+使用**自动升级**功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，安装会自动升级。
 
 默认情况下，将针对以下方案启用自动升级：
 
@@ -50,13 +48,12 @@ ms.lasthandoff: 12/20/2016
 
 如果服务器上正在运行**同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
 
-## 故障排除
-<a id="troubleshooting" class="xliff"></a>
+## <a name="troubleshooting"></a>故障排除
 如果 Connect 安装未按预期自动升级，请遵循以下步骤来找出可能的错误。
 
-首先，不建议在新版本发行的第一天就自动升级。 由于升级前有刻意设计的随机性，因此你不用担心安装没有立即升级。
+首先，不建议在新版本发行的第一天就自动升级。 由于升级前有刻意设计的随机性，因此，不用担心安装没有立即升级。
 
-如果你认为有问题，请先运行 `Get-ADSyncAutoUpgrade` 确保已启用自动升级。
+如果认为有问题，请先运行 `Get-ADSyncAutoUpgrade` 确保已启用自动升级。
 
 然后，确保已在代理或防火墙中打开所需的 URL。 自动更新正在使用 Azure AD Connect Health，情形如[概述](#overview)中介绍的那样。 如果使用代理，请确保 Health 已配置为使用[代理服务器](../connect-health/active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。 另请测试 [Health 的连接](../connect-health/active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)（连接到 Azure AD）。
 
@@ -71,8 +68,8 @@ ms.lasthandoff: 12/20/2016
 | 结果代码前缀 | 说明 |
 | --- | --- |
 | 成功 |安装已成功升级。 |
-| UpgradeAborted |某种临时状态停止了升级。 升级将会重试，预期稍后会成功。 |
-| UpgradeNotSupported |系统中的某个配置阻止系统自动升级。 升级将会重试，以查看状态是否已变化，但预期只能手动升级系统。 |
+| UpgradeAborted |某种临时状态停止了升级。 升级会重试，预期稍后会成功。 |
+| UpgradeNotSupported |系统中的某个配置阻止系统自动升级。 升级会重试，以查看状态是否已变化，但预期只能手动升级系统。 |
 
 下面是最常见的消息列表。 该列表并不完整，但结果消息应会明确说明问题所在。
 
@@ -90,18 +87,20 @@ ms.lasthandoff: 12/20/2016
 | UpgradeAbortedSyncExeInUse |服务器上打开了 [Synchronization Service Manager UI](active-directory-aadconnectsync-service-manager-ui.md)。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |安装向导正在运行，或者在计划程序外部计划了同步。 |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedCustomizedSyncRules |你已将自己的自定义规则添加到配置中。 |
+| UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 | 
+| UpgradeNotSupportedCustomizedSyncRules |已将自己的自定义规则添加到配置中。 |
 | UpgradeNotSupportedDeviceWritebackEnabled |已启用[设备写回](active-directory-aadconnect-feature-device-writeback.md)功能。 |
 | UpgradeNotSupportedGroupWritebackEnabled |已启用[组写回](active-directory-aadconnect-feature-preview.md#group-writeback)功能。 |
 | UpgradeNotSupportedInvalidPersistedState |安装不是快速设置或 DirSync 升级。 |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Metaverse 中的对象超过 100,000 个。 |
-| UpgradeNotSupportedMultiForestSetup |你正在连接到多个林。 快速安装只会连接到一个林。 |
-| UpgradeNotSupportedNonLocalDbInstall |你使用的不是 SQL Server Express LocalDB 数据库。 |
+| UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速安装只会连接到一个林。 |
+| UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
 | UpgradeNotSupportedNonMsolAccount |[AD 连接器帐户](active-directory-aadconnect-accounts-permissions.md#active-directory-account)不再是默认的 MSOL_ 帐户。 |
+| UpgradeNotSupportedNotConfiguredSignInMethod | 已选择“不配置”作为登录方法。 | 
+| UpgradeNotSupportedPtaSignInMethod | 已选择“直通身份验证”作为登录方法。 |
 | UpgradeNotSupportedStagingModeEnabled |服务器已设置为[过渡模式](active-directory-aadconnectsync-operations.md#staging-mode)。 |
 | UpgradeNotSupportedUserWritebackEnabled |已启用[用户写回](active-directory-aadconnect-feature-preview.md#user-writeback)功能。 |
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 

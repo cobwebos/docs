@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/21/2017
-
 
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板将多个 IP 地址分配给虚拟机
@@ -84,7 +84,7 @@ ms.lasthandoff: 04/21/2017
     若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/windows/cli-ps-findimage.md)一文中的步骤。
 
     >[!TIP]
-    >如果不确定 dnslabelprefix 是否可用，请输入 `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` 命令进行查找。 如果可用，该命令会返回 `True`。
+    >如果不确定 dnslabelprefix 是否可用，请输入 `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` 命令进行查找。如果可用，该命令会返回 `True`。
 
 2. 部署 VM 后，连接到 VM 并将专用 IP 地址添加到部署的操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分的步骤即可。 请勿向操作系统添加公共 IP 地址。
 
