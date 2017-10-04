@@ -9,7 +9,7 @@
 
 # 如何
 
-## 管理 Data Lake Analytics 帐户
+## 管理 Data Lake Analytics
 ### [Azure 门户](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
 ### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)

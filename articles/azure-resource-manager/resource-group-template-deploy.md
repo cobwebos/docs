@@ -45,6 +45,8 @@ ms.lasthandoff: 05/16/2017
 
 ```powershell
 Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
  
 New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
