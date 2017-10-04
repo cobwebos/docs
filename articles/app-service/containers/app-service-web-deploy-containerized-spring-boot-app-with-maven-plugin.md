@@ -157,7 +157,7 @@ ms.lasthandoff: 09/20/2017
    `<client>` | 包含服务主体的 `appId` 值。
    `<tenant>` | 包含服务主体的 `tenant` 值。
    `<key>` | 包含服务主体的 `password` 值。
-   `<environment>` | 定义目标 Azure 云环境，此示例中为 `AZURE`。 （[适用于 Azure Web 应用的 Maven 插件]文档中提供了完整的环境列表）
+   `<environment>` | 定义目标 Azure 云环境，此示例中为 `AZURE`。 （[适用于 Azure Web 应用的 Maven插件]文档中提供了完整的环境列表）
 
 1. 保存并关闭 settings.xml 文件。
 
@@ -222,11 +222,11 @@ ms.lasthandoff: 09/20/2017
 
 元素 | 说明
 ---|---|---
-`<version>` | 指定[适用于 Azure Web 应用的 Maven 插件]的版本。 应检查 [Maven 中央存储库](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22)中列出的版本，确保使用最新版本。
+`<version>` | 指定[适用于 Azure Web 应用的 Maven插件]的版本。 应检查 [Maven 中央存储库](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22)中列出的版本，确保使用最新版本。
 `<authentication>` | 指定 Azure 的身份验证信息，该信息在本示例中含有包含 `azure-auth` 的 `<serverId>` 元素；Maven 使用该值查找在本文前面部分定义的 Maven settings.xml 文件中的 Azure 服务主体值。
 `<resourceGroup>` | 指定目标资源组，在此示例中为 `maven-plugin`。 如果资源组不存在，则会在部署过程中进行创建。
 `<appName>` | 指定 Web 应用的目标名称。 在此示例中，目标名称为 `maven-linux-app-${maven.build.timestamp}`，此示例附加​​了 `${maven.build.timestamp}` 后缀以避免冲突。 （时间戳是可选项；可为应用名称指定任何唯一的字符串。）
-`<region>` | 指定目标区域，在此示例中为 `westus`。 （[适用于 Azure Web 应用的 Maven 插件]文档中提供了完整列表。）
+`<region>` | 指定目标区域，在此示例中为 `westus`。 （[适用于 Azure Web 应用的 Maven插件]文档中提供了完整列表。）
 `<appSettings>` | 指定 Maven 在将 Web 应用部署到 Azure 时使用的任何唯一设置。 在此示例中，`<property>` 元素包含指定应用端口的子元素的名称/值对。
 
 > [!NOTE]
@@ -305,7 +305,7 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 
 有关本文中讨论的各项技术的详细信息，请参阅以下文章：
 
-* [适用于 Azure Web 应用的 Maven 插件]
+* [适用于 Azure Web 应用的 Maven插件]
 
 * [通过 Azure CLI 登录到 Azure](/azure/xplat-cli-connect)
 
@@ -333,7 +333,7 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 [Spring Boot]: http://projects.spring.io/spring-boot/
 [Docker 上的 Spring Boot 入门]: https://github.com/spring-guides/gs-spring-boot-docker
 [Spring Framework]: https://spring.io/
-[适用于 Azure Web 应用的 Maven 插件]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
+[适用于 Azure Web 应用的 Maven插件]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
 
 <!-- IMG List -->
 
