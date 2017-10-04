@@ -149,7 +149,7 @@ az group create --name myResourceGroup --location "West US"
 
 使用 [az postgres server create](/cli/azure/documentdb#create) 命令创建 PostgreSQL 服务器。
 
-在下列命令中，用唯一的服务器名称替换* \<postgresql_name >* 占位符，并用用户名替换* \<admin_username >* 占位符。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 此用户名用于初始数据库管理员用户帐户。 系统会提示选择此用户的密码。
+在下列命令中，用唯一的服务器名称替换 *\<postgresql_name >* 占位符，并用用户名替换 *\<admin_username >* 占位符。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 此用户名用于初始数据库管理员用户帐户。 系统会提示选择此用户的密码。
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>
@@ -245,7 +245,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-在浏览器中导航至 http://127.0.0.1:5000。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
+在浏览器中导航至 http://127.0.0.1:5000 。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
 
 ![在本地运行的 Python Flask 应用程序](./media/tutorial-docker-python-postgresql-app/local-app.png)
 
@@ -298,7 +298,7 @@ INFO  [alembic.runtime.migration] Will assume transactional DDL.
 
 ### <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 
-在以下用以创建容器注册表的命令中，使用所选的唯一的 Azure 容器注册表名称替换 * \<registry_name >*。
+在以下用以创建容器注册表的命令中，使用所选的唯一的 Azure 容器注册表名称替换  *\<registry_name >*。
 
 ```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic

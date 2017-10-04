@@ -58,8 +58,7 @@ ms.lasthandoff: 09/25/2017
 ## <a name="create-a-partitioned-table"></a>创建分区表
 根据映射到在上一步中创建的数据库文件组的数据架构，创建分区表。 当将数据批量导入到分区表时，会根据分区方案在文件组之中分布记录，如下所述。
 
-
-            **要创建分区表，需要：**
+**要创建分区表，需要：**
 
 * [创建分区函数](https://msdn.microsoft.com/library/ms187802.aspx)，用于定义要包括在每个分区表中的值/边界范围，例如，按 2013 年的月份（某些 \_datetime\_ 字段）限制分区：
   
@@ -85,8 +84,7 @@ ms.lasthandoff: 09/25/2017
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
-* 
-            [创建分区表](https://msdn.microsoft.com/library/ms174979.aspx)（根据数据架构），并指定用于对表进行分区的分区方案和约束字段，例如：
+* [创建分区表](https://msdn.microsoft.com/library/ms174979.aspx)（根据数据架构），并指定用于对表进行分区的分区方案和约束字段，例如：
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
