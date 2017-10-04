@@ -357,8 +357,7 @@ Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务�
 
 Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 可以通过在 Azure 中配置[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)实现此操作。
 
-
-            [强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动到 Internet 上的设备的连接。
+[强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动到 Internet 上的设备的连接。
 
 Azure 支持通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 使用专用 WAN 链路连接本地网络和 Azure 虚拟网络。 Azure 和站点之间的链接使用专用连接，不需要通过公共 Internet。 如果 Azure 应用程序在多个数据中心运行，则可以使用 [Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)智能地跨应用程序实例路由来自用户的请求。 如果可以通过 Internet 访问未在 Azure 中运行的服务，还可以将流量路由到这些服务。
 
