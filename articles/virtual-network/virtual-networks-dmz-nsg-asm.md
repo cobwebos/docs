@@ -204,7 +204,7 @@ ms.lasthandoff: 01/05/2017
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>（*允许*）在 DNS 服务器上执行 Web 服务器 DNS 查找
 1. Web 服务器 IIS01 需要 www.data.gov 上的数据源，但需要解析地址。
-2. VNet 的网络配置将 DNS01（后端子网上的&10;.0.2.4）列为主 DNS 服务器，IIS01 将 DNS 请求发送到 DNS01
+2. VNet 的网络配置将 DNS01（后端子网上的 10.0.2.4）列为主 DNS 服务器，IIS01 将 DNS 请求发送到 DNS01
 3. 前端子网上没有出站规则，允许流量
 4. 后端子网开始处理入站规则：
    * NSG 规则 1 (DNS) 适用，允许流量，停止规则处理

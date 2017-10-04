@@ -90,7 +90,7 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 
 ## <a name="example-requests-and-responses"></a>示例请求和响应
 
-### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现&202; 响应）
+### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现 202 响应）
 此示例演示如何确定虚拟机的“启动”操作的状态。 初始请求采用以下格式：
 
 ```HTTP
@@ -121,7 +121,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 }
 ```
 
-### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现&201; 响应）
+### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
 此示例演示将资源部署到 Azure 时，如何确定“部署”操作的状态。 初始请求采用以下格式：
 
@@ -161,7 +161,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 {"status":"Succeeded"}
 ```
 
-### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现&202; 响应）
+### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现 202 响应）
 
 此示例演示如何确定存储帐户的“创建”操作的状态。 初始请求采用以下格式：
 

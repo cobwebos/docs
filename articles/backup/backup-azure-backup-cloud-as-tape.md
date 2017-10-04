@@ -50,7 +50,7 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 ## <a name="example--putting-both-together"></a>示例 - 组合策略
 ![示例屏幕](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **每天保留策略**：每天创建的备份存储&7; 天。
+1. **每天保留策略**：每天创建的备份存储 7 天。
 2. **每周保留策略**：每个星期六午夜和下午 6 点创建的备份保留 4 周
 3. **每月保留策略**：每个月最后一个星期六午夜和下午 6 点创建的备份保留 12 个月
 4. **每年保留策略**：每年三月最后一个星期六午夜执行的备份保留 10 年
