@@ -140,7 +140,7 @@ ARP 表可帮助验证第 2 层配置，并可针对第 2 层的基本连接问�
 * ARP 表会有一个针对本地端且包含有效 IP 地址和 MAC 地址的条目，以及一个类似的针对 Microsoft 端的条目。
 * 本地 IP 地址的最后一个八位字节始终是奇数。
 * Microsoft IP 地址的最后一个八位字节始终是偶数。
-* 所有&3; 种对等互连（主/辅助）在 Microsoft 端都会显示相同的 MAC 地址。
+* 所有 3 种对等互连（主/辅助）在 Microsoft 端都会显示相同的 MAC 地址。
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    

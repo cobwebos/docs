@@ -32,7 +32,7 @@ Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将�
 利用 **Twilio 客户端**，可以从任何手机、平板电脑或浏览器发起 VoIP 呼叫并支持 WebRTC。
 
 ## <a id="Pricing"></a>Twilio 定价和特别优惠
-Azure 客户在升级 Twilio 帐户后即可获得&10; 美元的 Twilio 信用额度的[特别优惠][special_offer]。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 [Twilio 信用][special_offer]并开始使用。
+Azure 客户在升级 Twilio 帐户后即可获得 10 美元的 Twilio 信用额度的[特别优惠][special_offer]。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 [Twilio 信用][special_offer]并开始使用。
 
 Twilio 是一种现用现付服务。 没有设置费用，并且您可以随时关闭您的帐户。 可以在 [Twilio 定价][twilio_pricing]中找到更多详细信息。
 
