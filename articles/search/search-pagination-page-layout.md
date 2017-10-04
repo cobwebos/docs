@@ -65,7 +65,7 @@ ms.lasthandoff: 12/08/2016
 
 图像和媒体文件不可直接搜索，它们应存储在其他存储平台（Azure Blob 存储）中以减少成本。 在索引和记录中，定义存储外部内容的 URL 地址的字段。 然后，你可以将该字段用作图像引用。 图像的 URL 应在记录中。
 
-若要检索 **onClick** 事件的产品说明页，请使用“查找记录”[](http://msdn.microsoft.com/library/azure/dn798929.aspx)传递要检索的记录的密钥。 密钥的数据类型为 `Edm.String`。 在此示例中，它是 *246810*。 
+若要检索 **onClick** 事件的产品说明页，请使用 [查找记录](http://msdn.microsoft.com/library/azure/dn798929.aspx) 传递要检索的记录的密钥。 密钥的数据类型为 `Edm.String`。 在此示例中，它是 *246810*。 
 
         GET /indexes/onlineCatalog/docs/246810
 

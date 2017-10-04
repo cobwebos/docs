@@ -55,7 +55,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 ## <a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
-1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount* 是正例，等于 $0 的 \_tip*amount* 是反例\_*。
+1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount *是正例，等于 $0 的 \_tip*amount *是反例\_*。
 2. **多元分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
@@ -75,8 +75,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
   
   * **存储帐户名称**
   * **存储帐户密钥**
-  * 
-            **容器名称**（希望在 Azure Blob 存储中存储数据的容器的名称）
+  * **容器名称**（希望在 Azure Blob 存储中存储数据的容器的名称）
 
 **设置 Azure SQL DW 实例。**
 请按照[创建 SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)处的文档设置 SQL 数据仓库实例。 请务必记下以下 SQL 数据仓库凭据，稍后的步骤中会使用它们。
@@ -86,10 +85,9 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 * **用户名**
 * **密码**
 
-**安装 Visual Studio 和 SQL Server Data Tools。 ** 有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
+**安装 Visual Studio 和 SQL Server Data Tools。**  有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
-
-            **使用 Visual Studio 连接到 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
+**使用 Visual Studio 连接到 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
 
 > [!NOTE]
 > 在 SQL 数据仓库中创建的数据库上运行下面的 SQL 查询（而不是在连接主题的步骤 3 中提供的查询）来**创建一个主密钥**。
@@ -104,8 +102,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
            --If the master key exists, do nothing
     END CATCH;
 
-
-            **在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](../studio/create-workspace.md)。
+**在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](../studio/create-workspace.md)。
 
 ## <a name="getdata"></a>将数据载入 SQL 数据仓库
 打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。
