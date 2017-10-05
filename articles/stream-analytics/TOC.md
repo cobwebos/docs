@@ -25,7 +25,6 @@
 ### [集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md)
 ### [集成 REST API 和机器学习](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [创建输出](stream-analytics-define-outputs.md)
-### [输出到 Azure Functions](stream-analytics-functions-redis.md)
 ### [输出到 Data Lake Store](stream-analytics-data-lake-output.md)
 ### [输出到 Cosmos DB](stream-analytics-documentdb-output.md)
 
@@ -39,7 +38,8 @@
 ### [监视作业](stream-analytics-monitoring.md)
 ### [以编程方式监视作业](stream-analytics-monitor-jobs.md)
 ### [使用 PowerShell 监视作业](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
-### [优化流单元](stream-analytics-streaming-unit-consumption.md)
+### [了解和调整流式处理单元](stream-analytics-streaming-unit-consumption.md)
+### [利用查询并行度](stream-analytics-parallelization.md)
 ### [通过扩展增大吞吐量](stream-analytics-scale-jobs.md)
 ### [机器学习功能缩放](stream-analytics-scale-with-machine-learning-functions.md)
 

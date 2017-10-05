@@ -12,6 +12,7 @@
 ### [存档](hdinsight-release-notes-archive.md)
 
 # 入门
+## [规划 HDInsight 群集容量](hdinsight-capacity-planning.md)
 ## [Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 ## Spark 入门
 ### [创建 Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)
@@ -167,6 +168,8 @@
 ### [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [使用 SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)
 ### [限制数据访问](hdinsight-storage-sharedaccesssignature-permissions.md)
+### [授权用户访问 Ambari 视图](hdinsight-authorize-users-to-ambari.md)
+### [在文件和文件夹级别管理用户权限](hdinsight-add-acls-at-file-folder-levels.md)
 ## 管理
 ### [创建 Linux 群集](hdinsight-hadoop-provision-linux-clusters.md)
 #### [使用 Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -200,6 +203,7 @@
 ### [使用 Azure Log Analytics](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 ### [特定于群集的仪表板](hdinsight-hadoop-oms-log-analytics-management-solutions.md)
 ### [将查询与 Log Anaytics 配合使用](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+### [监视群集性能](hdinsight-key-scenarios-to-monitor.md)
 ## [故障排除](hdinsight-troubleshoot-guide.md)
 ### [HBASE 故障排除](hdinsight-troubleshoot-hbase.md)
 ### [HDFS 故障排除](hdinsight-troubleshoot-hdfs.md)
