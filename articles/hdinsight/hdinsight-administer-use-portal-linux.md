@@ -3,7 +3,7 @@ title: "使用 Azure 门户管理 HDInsight 中的 Hadoop 群集 | Microsoft Doc
 description: "了解如何使用 Azure 门户创建和管理 HDInsight 群集。"
 services: hdinsight
 documentationcenter: 
-author: mumian
+author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -15,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: jgao
+ms.author: ashishtha
 ms.translationtype: HT
 ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 54e53c98390b44ee5f298d5f61c13a4d299e5ae1
@@ -24,6 +24,7 @@ ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
+
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 Hadoop 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
