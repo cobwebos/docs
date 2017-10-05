@@ -39,6 +39,8 @@
           href: backup-azure-vm-backup-faq.md
         - name: 有关使用 Azure 备份代理进行文件-文件夹备份的常见问题解答
           href: backup-azure-file-folder-backup-faq.md
+        - name: 有关自动升级备份保管库的常见问题解答
+          href: backup-upgrade-backup-vault.md
     - name: 基于角色的访问控制
       href: backup-rbac-rs-vault.md
     - name: 混合备份的安全性

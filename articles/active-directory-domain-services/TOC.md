@@ -16,8 +16,9 @@
 # 如何
 ## 加入托管域
 ### [加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [使用 Azure PowerShell 加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-### [加入 Linux VM](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [使用 PowerShell 加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [RedHat Enterprise Linux](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## 管理托管域
 ### [管理托管域](active-directory-ds-admin-guide-administer-domain.md)
 ### [管理托管域上的 DNS](active-directory-ds-admin-guide-administer-dns.md)
@@ -36,7 +37,6 @@
 ## 故障排除
 ### [常见问题](active-directory-ds-faqs.md)
 ### [故障排除指南](active-directory-ds-troubleshooting.md)
-### [启用预览版 Azure 门户体验](active-directory-ds-azure-portal-enable-preview-access.md)
 ### [解决“不匹配的租户”错误](active-directory-ds-mismatched-tenant-error.md)
 
 # 引用

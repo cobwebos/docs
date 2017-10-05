@@ -37,11 +37,13 @@
 ### [HTTP/2 支持](cdn-http2.md)
 
 ## 分析
-### [分析使用模式](cdn-analyze-usage-patterns.md)
-### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
-### [查看实时统计信息](cdn-real-time-stats.md)
-### [分析边缘节点性能](cdn-edge-performance.md)
-### [使用诊断日志导出指标](cdn-log-analysis.md)
+### [分析 Azure CDN 使用模式](cdn-log-analysis.md)
+#### [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)
+#### [Azure 诊断日志](cdn-azure-diagnostic-logs.md)
+### Verizon 中用于 Azure CDN 的分析工具
+#### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
+#### [查看实时统计信息](cdn-real-time-stats.md)
+#### [分析边缘节点性能](cdn-edge-performance.md)
 
 ## 开发
 ### [.NET](cdn-app-dev-net.md)

@@ -66,6 +66,8 @@
   items:
     - name: Facebook 帖子审查
       href: facebook-post-moderation.md
+    - name: 电子商务目录审查
+      href: ecommerce-retail-catalog-moderation.md
 - name: API 参考
   items:
     - name: 所有 API

@@ -26,8 +26,8 @@
 
 ## 创建和管理群集
 ### 1- 在 Azure 上创建群集
-#### [1a- 在 Azure 上创建安全 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-#### [1b- 在 Azure 上创建安全 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+#### [1a- 创建 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+#### [1b- 创建 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 ### [2- 部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 # 示例
@@ -198,7 +198,6 @@
 ### 生成 Reliable Actors 服务
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-actors-get-started.md)
-##### [Linux 上的 Java](service-fabric-reliable-actors-get-started-java.md)
 ##### [Linux 上的 Java Actor](service-fabric-create-your-first-linux-application-with-java.md)
 #### [发送通知](service-fabric-reliable-actors-events.md)
 #### [设置计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)

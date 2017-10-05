@@ -2,21 +2,17 @@
 ## [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 ## [Azure Data Lake Store 与 Azure 存储的比较](data-lake-store-comparison-with-blob-storage.md)
 ## [使用 Azure Data Lake Store 处理大数据](data-lake-store-data-scenarios.md)
-## [可以使用 Azure Data Lake Store 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
+## [使用 Azure Data Lake Store 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
 
 # 入门
-## [使用 Azure 门户](data-lake-store-get-started-portal.md)
-## [使用 Azure PowerShell](data-lake-store-get-started-powershell.md)
-## [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
-## [使用 Java SDK](data-lake-store-get-started-java-sdk.md)
-## [使用 REST API](data-lake-store-get-started-rest-api.md)
-## [使用 Azure CLI](data-lake-store-get-started-cli-2.0.md)
-## [使用 Node.js](data-lake-store-manage-use-nodejs.md)
-## [使用 Python](data-lake-store-get-started-python.md)
+## [使用门户](data-lake-store-get-started-portal.md)
+## [使用 PowerShell](data-lake-store-get-started-powershell.md)
+## [使用 Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+
 
 # 如何
-## 复制数据
-### [使用 Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)
+## 加载和移动数据
+### [使用 Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)
 ### [使用 AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
@@ -27,12 +23,35 @@
 ### [安全性概述](data-lake-store-security-overview.md)
 ### [Data Lake Store 中的访问控制](data-lake-store-access-control.md)
 ### [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
-### [服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)
-### [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
 ### [加密](data-lake-store-encryption.md)
+
+## Data Lake Store 身份验证
+### [身份验证选项](data-lakes-store-authentication-using-azure-active-directory.md)
+### [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
+#### [使用 Java](data-lake-store-end-user-authenticate-java-sdk.md)
+#### [使用 .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
+#### [使用 REST API](data-lake-store-end-user-authenticate-rest-api.md)
+#### [使用 Python](data-lake-store-end-user-authenticate-python.md)
+### [服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)
+#### [使用 Java](data-lake-store-service-to-service-authenticate-java.md)
+#### [使用 .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
+#### [使用 REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
+#### [使用 Python](data-lake-store-service-to-service-authenticate-python.md)
+
+## 使用 Data Lake Store
+### 帐户管理操作
+#### [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
+#### [使用 REST API](data-lake-store-get-started-rest-api.md)
+#### [使用 Python](data-lake-store-get-started-python.md)
+### 文件系统操作
+#### [使用 .NET SDK](data-lake-store-data-operations-net-sdk.md)
+#### [使用 Java SDK](data-lake-store-get-started-java-sdk.md)
+#### [使用 REST API](data-lake-store-data-operations-rest-api.md)
+#### [使用 Python](data-lake-store-data-operations-python.md)
 
 ## 性能
 ### [Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-guidance.md)
+### [将 PowerShell 与 Azure Data Lake Store 配合使用的性能优化指南](data-lake-store-performance-tuning-powershell.md)
 ### [Spark on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-spark.md)
 ### [Hive on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-hive.md)
 ### [MapReduce on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-mapreduce.md)

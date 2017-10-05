@@ -36,3 +36,4 @@ sections:
         items:
           - html: <a href="tutorial-review-usage">查看用量和成本以检测异常和效率</a>
           - html: <a href="tutorial-user-access">分配对成本管理数据的访问权限</a>
+          - html: <a href="tutorial-forecast-spending">预测将来的支出</a>
