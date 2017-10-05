@@ -241,7 +241,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
 
 ![Service Fabric Explorer][sfx]
 
-若要连接到运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http://lin0823ryf2he.cloudapp.azure.com:80。 在 Web UI 中应会显示投票应用程序。
+若要连接到运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http://lin0823ryf2he.cloudapp.azure.com:80 。 在 Web UI 中应会显示投票应用程序。
 
 ![votingapp][votingapp]
 

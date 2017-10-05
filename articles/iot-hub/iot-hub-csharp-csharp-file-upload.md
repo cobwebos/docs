@@ -195,7 +195,7 @@ ms.lasthandoff: 09/25/2017
 
 [Azure IoT 开发人员中心]: http://www.azure.com/develop/iot
 
-[暂时性故障处理]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure IoT 服务 SDK NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
