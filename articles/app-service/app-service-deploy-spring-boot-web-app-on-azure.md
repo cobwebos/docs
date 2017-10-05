@@ -52,7 +52,7 @@ ms.lasthandoff: 09/20/2017
    cd /users/robert/SpringBoot
    ```
 
-1. 将 [Spring Boot 启动入门]示例项目克隆到刚刚创建的目录；例如：
+1. 将 [Spring Boot 启动入门] 示例项目克隆到刚刚创建的目录；例如：
    ```
    git clone https://github.com/spring-guides/gs-spring-boot.git
    ```
@@ -204,7 +204,7 @@ ms.lasthandoff: 09/20/2017
 
 有关使用 FTP 将 Web 应用部署到 Azure 的其他信息，请参阅[使用 FTP/S 将应用部署到 Azure 应用服务]。
 
-有关 Spring Boot 示例项目的详细信息，请参阅 [Spring Boot 入门]。
+有关 Spring Boot 示例项目的详细信息，请参阅 [Spring Boot 启动入门]。
 
 若要获取 Spring Boot 应用程序入门的相关帮助，请参阅 https://start.spring.io/ 中的“Spring Initializr”。
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 09/20/2017
 [Maven]: http://maven.apache.org/
 [MSDN 订阅者权益]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Spring Boot 入门]: https://github.com/spring-guides/gs-spring-boot
+[Spring Boot 启动入门]: https://github.com/spring-guides/gs-spring-boot
 [Spring Framework]: https://spring.io/
 
 <!-- IMG List -->
