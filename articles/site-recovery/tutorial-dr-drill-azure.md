@@ -42,7 +42,7 @@ ms.lasthandoff: 09/25/2017
 
 1. 在“受保护的项”中，单击“复制的项”>“虚拟机”。
 2. “复制的项”窗格中具有虚拟机信息、运行状况状态和最新可用恢复点的摘要。 单击“属性”可查看更多详细信息。
-3. 在“计算和网络”中，可修改 Azure 名称、资源组、目标大小、“可用性集”[](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置
+3. 在“计算和网络”中，可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置
 4. 可以查看和修改网络设置，包括在故障转移后 Azure VM 将位于其中的网络/子网，以及将分配给它的 IP 地址。
 5. 在“磁盘”中，可以看到关于虚拟机上的操作系统和数据磁盘的信息。
 
