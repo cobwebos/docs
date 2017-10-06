@@ -3,7 +3,7 @@ title: "Azure 自动化中的图形创作 | Microsoft Docs"
 description: "图形创作可以让你在不使用代码的情况下，为 Azure 自动化创建 Runbook。 本文介绍了图形创作以及开始创建图形 Runbook 所需的所有详细信息。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 4b6f840c-e941-4293-a728-b33407317943

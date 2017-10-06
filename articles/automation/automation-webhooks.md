@@ -3,7 +3,7 @@ title: "通过 Webhook 启动 Azure 自动化 Runbook | Microsoft 文档"
 description: "一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。  本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d

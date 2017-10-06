@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
 ms.translationtype: HT
 ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a

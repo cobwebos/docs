@@ -3,7 +3,7 @@ title: "什么是 Azure 自动化 | Microsoft Docs"
 description: "了解 Azure 自动化的重要性以及获取常见问题的答案，以便使用 Runbook 和 Azure Automation DSC 开始创建。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "什么是自动化, azure 自动化, azure 自动化示例"

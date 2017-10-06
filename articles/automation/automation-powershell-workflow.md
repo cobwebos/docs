@@ -3,7 +3,7 @@ title: "了解 Azure 自动化的 PowerShell 工作流 | Microsoft Docs"
 description: "本文旨在作为熟悉 PowerShell 创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流之间的具体差异，并介绍适用于自动化 runbook 的概念。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 84bf133e-5343-4e0e-8d6c-bb14304a70db

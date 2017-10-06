@@ -3,7 +3,7 @@ title: "我在 Azure 自动化中的第一个 PowerShell 工作流 Runbook | Mic
 description: "本教程指导使用 PowerShell 工作流创建、测试和发布一个简单的文本 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "powershell 工作流, powershell 工作流示例, 工作流 powershell"

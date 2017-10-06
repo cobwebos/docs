@@ -3,7 +3,7 @@ title: "Azure 自动化中的证书资产 | Microsoft Docs"
 description: "可以安全地将证书存储在 Azure 自动化中，以便可以通过 Runbook 或 DSC 配置访问这些证书，对 Azure 和第三方资源进行身份验证。  本文介绍了有关证书的详细信息，以及如何在文本和图形创作中使用证书。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: ac9c22ae-501f-42b9-9543-ac841cf2cc36

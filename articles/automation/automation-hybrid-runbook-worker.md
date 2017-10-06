@@ -3,7 +3,7 @@ title: "Azure 自动化混合 Runbook 辅助角色 | Microsoft Docs"
 description: "本文介绍如何安装和使用混合 Runbook 辅助角色，该角色是 Azure 自动化的一项功能，可以用于在本地数据中心或云提供商的计算机上运行 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee

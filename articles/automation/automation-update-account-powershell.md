@@ -3,7 +3,7 @@ title: "使用 PowerShell 创建 Azure 自动化运行方式帐户 | Microsoft D
 description: "本文介绍如何使用 PowerShell 通过升级自动化帐户来创建运行方式帐户（如果你尚未在初始创建过程中通过门户执行此步骤）。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

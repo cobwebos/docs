@@ -3,7 +3,7 @@ title: "非工作时间启动/停止 VM [预览版] 解决方案 | Microsoft Doc
 description: "VM 管理解决方案可按计划启动和停止 Azure Resource Manager 虚拟机，并通过 Log Analytics 进行主动监视。"
 services: automation
 documentationCenter: 
-authors: mgoedtel
+authors: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883

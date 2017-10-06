@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/16/2017
+ms.date: 10/04/2017
 ms.author: ryanwi
 ms.translationtype: HT
 ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d

@@ -3,7 +3,7 @@ title: "在 Azure 自动化混合 Runbook 辅助角色上运行 runbook | Micros
 description: "本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或云提供商的计算机上运行 runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee
