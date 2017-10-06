@@ -3,7 +3,7 @@ title: "Azure 自动化中的 Runbook 执行 | Microsoft Docs"
 description: "详细介绍如何处理 Azure 自动化中的 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: d10c8ce2-2c0b-4ea7-ba3c-d20e09b2c9ca

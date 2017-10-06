@@ -3,7 +3,7 @@ title: "验证 Azure 自动化帐户配置 | Microsoft Docs"
 description: "本文介绍如何确认自动化帐户的配置设置是正确的。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

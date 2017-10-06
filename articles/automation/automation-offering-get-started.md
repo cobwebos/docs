@@ -3,7 +3,7 @@ title: "Azure 自动化入门 | Microsoft Docs"
 description: "本文概述了 Azure 自动化服务，探讨了 Azure 应用商店产品/服务的载入准备过程涉及的设计和实现细节。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

@@ -3,7 +3,7 @@ title: "使用 JSON 格式的标记来安排 Azure VM 状态 | Microsoft Docs"
 description: "本文演示如何在标记上使用 JSON 字符串来自动计划 VM 启动和关闭。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 6afed5d2-e939-4749-8b2c-9312b4c16fb2

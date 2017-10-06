@@ -3,7 +3,7 @@ title: "创建 Azure AD 用户帐户 | Microsoft Docs"
 description: "本文介绍如何为 Azure 自动化中的 Runbook 创建 Azure AD 用户帐户凭据，以便在 Azure 和经典 Azure 中进行身份验证。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "azure active directory 用户, azure 服务管理, azure ad 用户帐户"

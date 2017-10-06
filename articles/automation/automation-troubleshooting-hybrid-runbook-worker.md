@@ -3,7 +3,7 @@ title: "对 Azure 自动化混合 Runbook 辅助角色相关问题进行故障�
 description: "介绍 Azure 自动化中最常见的混合 Runbook 辅助角色问题的相关表现、起因及解决方法。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 02c6606e-8924-4328-a196-45630c2255e9

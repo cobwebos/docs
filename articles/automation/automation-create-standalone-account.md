@@ -3,7 +3,7 @@ title: "创建独立的 Azure 自动化帐户 | Microsoft Docs"
 description: "本教程引导在 Azure 自动化中创建、测试安全主体，并示范如何使用安全主体进行身份验证。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3

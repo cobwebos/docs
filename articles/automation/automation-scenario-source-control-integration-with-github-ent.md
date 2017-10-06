@@ -3,7 +3,7 @@ title: "Azure 自动化中源代码管理与 GitHub Enterprise 的集成 | Micro
 description: "详细介绍如何配置与 GitHub Enterprise 的集成，以便对自动化 Runbook 进行源代码管理。"
 services: automation
 documentationCenter: 
-authors: mgoedtel
+authors: eslesar
 manager: jwhit
 editor: 
 ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4

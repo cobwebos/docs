@@ -3,7 +3,7 @@ title: "我在 Azure 自动化中的第一个图形 Runbook | Microsoft Docs"
 description: "本教程指导完成创建、 测试和发布一个简单图形 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "runbook, runbook 模板, runbook 自动化, azure runbook"

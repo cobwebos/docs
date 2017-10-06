@@ -3,7 +3,7 @@ title: "删除 Azure 自动化混合 Runbook 辅助角色 | Microsoft Docs"
 description: "本文介绍了如何管理已部署的 Azure 自动化混合 Runbook 辅助角色。借助此角色，可以在本地数据中心或云环境中的计算机上运行 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 

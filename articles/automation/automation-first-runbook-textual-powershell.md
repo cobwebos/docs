@@ -3,7 +3,7 @@ title: "我在 Azure 自动化中的第一个 PowerShell Runbook | Microsoft Doc
 description: "本教程指导创建、测试和发布一个简单的 PowerShell Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "azure powershell, powershell 脚本教程, powershell 自动化"

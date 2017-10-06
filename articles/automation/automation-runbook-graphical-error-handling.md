@@ -3,7 +3,7 @@ title: "Azure 自动化图形 Runbook 中的错误处理 | Microsoft 文档"
 description: "本文介绍如何在 Azure 自动化图形 Runbook 中实现错误处理逻辑。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 

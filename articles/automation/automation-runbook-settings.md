@@ -3,7 +3,7 @@ title: "Runbook 设置 | Microsoft Docs"
 description: "介绍 Azure 自动化中 Runbook 的配置设置，以及如何使用 Azure 管理门户和 Windows PowerShell 更改这些设置。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: a726f20c-a952-48b8-88ee-36d76aa3ac61

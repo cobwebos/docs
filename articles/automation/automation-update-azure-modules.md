@@ -3,7 +3,7 @@ title: "更新 Azure 自动化中的 Azure 模块 | Microsoft Docs"
 description: "本文介绍如何更新 Azure 自动化中默认提供的常见 Azure PowerShell 模块。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 
