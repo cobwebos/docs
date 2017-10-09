@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2017
+ms.date: 09/28/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c863dbdcb242bdea208f7e72f6c1f61b5ba04844
-ms.openlocfilehash: 77d157800d71d1afc3411553b31c1182a1d0bc28
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 2728e8b1e190b4ecd0635925b96e97775564a2ee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 
@@ -369,6 +369,9 @@ Azure 的[网络服务限制](https://docs.microsoft.com/en-us/azure/azure-subsc
     ```cli
     az feature register --name AllowLBPreview --namespace Microsoft.Network
     ```
+
+>[!NOTE]
+>注册负载均衡器标准版功能最长可能需要一小时。
 
 >[!NOTE]
 >若要配合负载均衡器和公共 IP 使用可用性区域，则还需要注册可用性区域预览版的订阅。

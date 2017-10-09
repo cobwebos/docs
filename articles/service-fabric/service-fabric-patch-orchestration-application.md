@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
 ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
-ms.openlocfilehash: bcd1d13265350d8ac96250c5cd5b4b2880e1c146
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 6385dd99e3f5d96eee2cf50016e4af599d91b011
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
-修补业务流程应用程序是一个 Azure Service Fabric 应用程序，可在 Azure 上的 Service Fabric 群集中自动修补操作系统，而无需停机。
+修补业务流程应用程序是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集中自动修补操作系统，而无需停机。
 
 修补业务流程应用提供以下功能：
 

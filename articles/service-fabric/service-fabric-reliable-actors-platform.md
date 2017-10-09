@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 09/20/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 0a12da52b6e74c721cd25f89e7cde3c07153a396
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 43b3f758fe7017c0ec949ba6e28b76438cf1bc13
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/14/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors 如何使用 Service Fabric 平台
@@ -31,13 +31,13 @@ ms.lasthandoff: 04/14/2017
 这些组件共同构成了 Reliable Actor 框架。
 
 ## <a name="service-layering"></a>服务分层
-因为执行组件服务本身是一种可靠服务，Reliable Services 的所有[应用程序模型](service-fabric-application-model.md)、生命周期、[打包](service-fabric-package-apps.md)、[部署](service-fabric-deploy-remove-applications.md)、升级和缩放概念同样适用于执行组件服务。 
+因为执行组件服务本身是一种可靠服务，Reliable Services 的所有[应用程序模型](service-fabric-application-model.md)、生命周期、[打包](service-fabric-package-apps.md)、[部署](service-fabric-deploy-remove-applications.md)、升级和缩放概念同样适用于执行组件服务。
 
 ![执行组件服务分层][1]
 
 上图显示了 Service Fabric 应用程序框架和用户代码之间的关系。 蓝色元素代表 Reliable Services 应用程序框架，橙色代表 Reliable Actor 框架，绿色则代表用户代码。
 
-在 Reliable Services 中，服务会继承 `StatefulService` 类。 该类本身派生自 `StatefulServiceBase`（或无状态服务的 `StatelessService`）。 在 Reliable Actors 中，使用执行组件服务。 执行组件服务是一种不同的 `StatefulServiceBase` 类的实现，该类可实现运行执行组件的执行组件模式。 由于执行组件服务只是 `StatefulServiceBase` 的一个实现，因此你可以编写自己的派生自 `ActorService` 的服务，并且以与继承 `StatefulService` 时一样的方式实现服务级别的功能，例如：
+在 Reliable Services 中，服务会继承 `StatefulService` 类。 该类本身派生自 `StatefulServiceBase`（或无状态服务的 `StatelessService`）。 在 Reliable Actors 中，使用执行组件服务。 执行组件服务是一种不同的 `StatefulServiceBase` 类的实现，该类可实现运行执行组件的执行组件模式。 由于执行组件服务只是 `StatefulServiceBase` 的一个实现，因此可以编写自己的派生自 `ActorService` 的服务，并且以与继承 `StatefulService` 时一样的方式实现服务级别的功能，例如：
 
 * 服务备份和还原。
 * 共享给所有执行组件的功能，例如断路器。
@@ -69,7 +69,7 @@ CompletableFuture<?> MyActorMethod()
 ```
 
 
-与所有 Reliable Services 一样，执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册你的执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。 最简单的情况是，你只需注册执行组件类型，然后隐式使用具有默认设置的执行组件服务：
+与所有 Reliable Services 一样，执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。 最简单的情况是，只需注册执行组件类型，然后隐式使用具有默认设置的执行组件服务：
 
 ```csharp
 static class Program
@@ -183,7 +183,7 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 有关删除执行组件及其状态的详细信息，请参阅[执行组件生命周期文档](service-fabric-reliable-actors-lifecycle.md)。
 
 ### <a name="custom-actor-service"></a>自定义执行组件服务
-通过使用执行组件注册 lambda，可以注册从 `ActorService` (C#) 和 `FabricActorService` (Java) 派生的自定义执行组件服务。 在此自定义执行组件服务中，可以通过编写从 `ActorService` (C#) 或 `FabricActorService` (Java) 继承的服务类来实现自己的服务级功能。 自定义执行组件服务从 `ActorService` (C#) 或 `FabricActorService` (Java) 继承了所有执行组件运行时功能，可用来实现你自己的服务方法。
+通过使用执行组件注册 lambda，可以注册从 `ActorService` (C#) 和 `FabricActorService` (Java) 派生的自定义执行组件服务。 在此自定义执行组件服务中，可以通过编写从 `ActorService` (C#) 或 `FabricActorService` (Java) 继承的服务类来实现自己的服务级功能。 自定义执行组件服务从 `ActorService` (C#) 或 `FabricActorService` (Java) 继承了所有执行组件运行时功能，可用来实现自己的服务方法。
 
 ```csharp
 class MyActorService : ActorService
@@ -308,7 +308,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 ```
 
 
-在本示例中，`IMyActorService` 是一个实现 `IService` (C#) 和 `Service` (Java)，然后由 `MyActorService` 实现的远程协定。 通过添加此远程协定，并通过 `ActorServiceProxy` 创建远程代理，现在 `IMyActorService` 的方法也可用于客户端：
+在本示例中，`IMyActorService` 是一个实现 `IService` (C#) 和 `Service` (Java)，并由 `MyActorService` 实现的远程协定。 通过添加此远程协定，并通过 `ActorServiceProxy` 创建远程代理，现在 `IMyActorService` 的方法也可用于客户端：
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -324,7 +324,7 @@ myActorServiceProxy.backupActorsAsync();
 ```
 
 ## <a name="application-model"></a>应用程序模型
-执行组件服务都是 Reliable Services，因此服务的应用程序模型是相同的。 但是，执行组件框架生成工具为你生成某些应用程序模型文件。
+执行组件服务都是 Reliable Services，因此服务的应用程序模型是相同的。 但是，执行组件框架生成工具生成某些应用程序模型文件。
 
 ### <a name="service-manifest"></a>服务清单
 执行组件框架生成工具自动生成执行组件服务的 ServiceManifest.xml 文件的内容。 此文件包括：
@@ -335,7 +335,7 @@ myActorServiceProxy.backupActorsAsync();
 * 资源和终结点。
 
 ### <a name="application-manifest"></a>应用程序清单
-执行组件框架生成工具将为你的执行组件服务自动创建默认的服务定义。 生成工具填充默认的服务属性：
+执行组件框架生成工具将为执行组件服务自动创建默认的服务定义。 生成工具填充默认的服务属性：
 
 * 副本集计数由执行组件的持久性属性决定。 每次更改执行组件的持久性属性时，将相应地重置默认服务定义中的副本集计数。
 * 分区方案和范围设置为具有完整的 Int64 键范围的统一 Int64。
@@ -372,6 +372,35 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
 使用 GUID/UUID 和字符串时，这些值将经过哈希算法转换为 Int64。 但是，如果向 `ActorId` 显式提供 Int64，此 Int64 将直接映射到分区，而无需进行哈希转换。 可以使用此方法来控制将执行组件置于哪个分区。
+
+## <a name="actor-using-remoting-v2-stack"></a>使用 Remoting V2 堆栈的参与者
+借助 2.8 Nuget 包，用户现在可以使用更高性能的 Remoting V2 堆栈，它提供自定义序列化等功能。 Remoting V2 不与现有的 Remoting 堆栈（称为 V1 Remoting 堆栈）向后兼容。
+
+需要进行以下更改才能使用 Remoting V2 堆栈。
+ 1. 在参与者界面中添加以下程序集属性。
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+   ```
+
+ 2. 生成并升级 ActorService 和参与者客户端项目以开始使用 V2 堆栈。
+
+### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>在不影响服务可用性的情况下将参与者服务升级到 Remoting V2 堆栈。
+这项更改是包括 2 个步骤的升级过程。 按照所列的顺序执行步骤。
+
+1.  在参与者界面中添加以下程序集属性。 此属性针对 ActorService 启动两个侦听器：V1（现有）和 V2 侦听器。 通过此项更改升级 ActorService。
+
+  ```csharp
+  [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.CompatListener,RemotingClient = RemotingClient.V2Client)]
+  ```
+
+2. 完成上述升级后，升级 ActorClients。
+此步骤确保参与者代理使用 Remoting V2 堆栈。
+
+3. 此步骤是可选的。 更改上述属性可删除 V1 侦听器。
+
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 70deefe92212742f76e7221a661fd79fd38c4280
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: e012526af264edd8b4fdbe84ff8b8648fb6d675c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="about-vpn-gateway"></a>关于 VPN 网关
@@ -122,7 +122,7 @@ Azure 当前有两种部署模型：经典模型和 Resource Manager 模型。 �
 
 ## <a name="ExpressRoute"></a>ExpressRoute（专用连接）
 
-Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
+使用 Microsoft Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
 
 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
 
@@ -156,3 +156,4 @@ ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包
 - 有关更多信息，请查看 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
 - 查看[订阅和服务限制](../azure-subscription-service-limits.md#networking-limits)。
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
+

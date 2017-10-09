@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 09/25/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 07ad15c61bd4b3912dfa2f629218deebdebd6dc8
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 38f6f5ebe0c53bc4314fa11f0f8d4f00af6086dd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/29/2017
 
 ---
-# <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure 函数进行编码和测试
+# <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
 虽然 [Azure 门户]提供了一整套用于开发和测试 Azure Functions 的工具，但许多开发人员更喜欢本地开发体验。 Azure Functions 方便用户使用其喜欢的代码编辑器和本地开发工具在本地计算机上开发和测试函数。 其函数可在 Azure 中触发事件，并且用户可以在本地计算机上调试 C# 和 JavaScript 函数。 
 
@@ -29,25 +29,64 @@ ms.lasthandoff: 07/14/2017
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
-Azure Functions Core Tools 是 Azure Functions 运行时的本地版本，可在本地 Windows 计算机上运行。 它既不是仿真器，也不是模拟器。 它与在 Azure 中运行的 Functions 运行时相同。
+[Azure Functions Core Tools] 是 Azure Functions 运行时的本地版本，可在本地开发计算机上运行。 它既不是仿真器，也不是模拟器。 它与在 Azure 中运行的 Functions 运行时相同。 Azure Functions Core Tools 有两个版本，一个适用于运行时版 1.x，另一个适用于版本 2.x。 这两个版本都以 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)的形式提供。
 
-[Azure Functions Core Tools] 作为 npm 包提供。 必须首先[安装 NodeJS](https://docs.npmjs.com/getting-started/installing-node)，其中包括 npm。  
+>[!NOTE]  
+> 在安装任一版本之前，必须[安装包含 npm 的 NodeJS](https://docs.npmjs.com/getting-started/installing-node)。 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。 
 
->[!NOTE]
->目前只能在 Windows 计算机上安装Azure Functions Core Tools 包。 具有此限制的原因在于 Functions 主机中有临时限制。
+### <a name="version-1x-runtime"></a>1.x 版运行时
 
-[Azure Functions Core Tools] 增加以下命令别名：
+工具的原始版本使用 Functions 1.x 运行时。 此版本使用 .NET Framework，仅在 Windows 计算机上受支持。 使用以下命令安装 1.x 版工具：
+
+```bash
+npm install -g azure-functions-core-tools
+```
+
+### <a name="version-2x-runtime"></a>2.x 版运行时
+
+2.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台都支持此版本。 在进行跨平台开发以及需要 Functions 运行时 2.x 时，可以使用此版本。 
+
+>[!IMPORTANT]   
+> 在安装 Azure Functions Core Tools 之前，请[安装 .NET Core 2.0](https://www.microsoft.com/net/core)。  
+>
+> Azure Functions 运行时 2.0 以预览版提供，目前不一定支持所有的 Azure Functions 功能。 有关详细信息，请参阅 [Azure Functions 运行时 2.0 已知问题](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)。 
+
+ 使用以下命令安装 2.0 版工具：
+
+```bash
+npm install -g azure-functions-core-tools@core
+```
+
+在 Ubuntu 上安装时，请使用 `sudo`，如下所示：
+
+```bash
+sudo npm install -g azure-functions-core-tools@core
+```
+
+在 macOS 和 Linux 上安装时，可能需要包含 `unsafe-perm` 标志，如下所示：
+
+```bash
+sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
+```
+
+## <a name="run-azure-functions-core-tools"></a>运行 Azure Functions Core Tools
+ 
+Azure Functions Core Tools 添加了以下命令别名：
 * func
 * azfun
 * azurefunctions
 
-可以使用这些别名代替本主题的示例中显示的 `func`。
+在示例中显示的 `func` 位置，可以使用其中的任何别名。
+
+```
+func init MyFunctionProj
+```
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
-在本地运行时，Functions 项目是具有 host.json 和 local.settings.json 的目录。 此目录相当于 Azure 中的一个函数应用。 若要深入了解 Azure Functions 文件夹结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
+在本地运行时，Functions 项目是包含 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings) 的目录。 此目录相当于 Azure 中的一个函数应用。 若要深入了解 Azure Functions 文件夹结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
-请在命令提示符处运行以下命令：
+在终端窗口中或者在命令提示符下，运行以下命令创建项目和本地 Git 存储库：
 
 ```
 func init MyFunctionProj
@@ -63,7 +102,7 @@ Created launch.json
 Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
-若决定放弃创建 Git 存储库，请使用 `--no-source-control [-n]` 选项。
+若要创建不包含本地 Git 存储库的项目，请使用 `--no-source-control [-n]` 选项。
 
 <a name="local-settings"></a>
 
@@ -90,9 +129,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 | 设置      | 说明                            |
 | ------------ | -------------------------------------- |
 | IsEncrypted | 设置为“true”时，使用本地计算机密钥加密所有值。 与 `func settings` 命令配合使用。 默认值为“false”。 |
-| **值** | 在本地运行时所使用的一系列应用程序设置。 将应用程序设置添加到此对象。  |
-| AzureWebJobsStorage | 将连接字符串设置为 Azure Functions 运行时在内部使用的 Azure 存储帐户。 存储帐户支持函数的触发器。 除 HTTP 触发的函数以外，所有函数都需要此存储帐户连接设置。  |
-| AzureWebJobsDashboard | 将连接字符串设置为用于存储函数日志的 Azure 存储帐户。 此值为可选项，能使日志可在门户中访问。|
+| **值** | 在本地运行时所使用的一系列应用程序设置。 **AzureWebJobsStorage** 和 **AzureWebJobsDashboard** 为示例；有关完整列表，请参阅[应用设置参考](functions-app-settings.md)。  |
 | **主机** | 在本地运行时，本部分中的设置会自定义 Functions 主机进程。 | 
 | LocalHttpPort | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此值。 |
 | **CORS** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (**\***)，它允许使用任何来源的请求。 |
@@ -112,7 +149,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 
 ### <a name="configure-app-settings"></a>配置应用设置
 
-若要设置连接字符串的值，可执行以下任一操作：
+若要设置连接字符串的值，可执行以下选项之一：
 * 通过 [Azure 存储资源管理器](http://storageexplorer.com/)输入连接字符串。
 * 使用以下命令之一：
 
@@ -120,7 +157,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
     ```
-    func azure functionapp storage fetch-connection-string <StorageAccountName>
+    func azure storage fetch-connection-string <StorageAccountName>
     ```
     这两个命令都要求首先登录到 Azure。
 
@@ -233,7 +270,18 @@ func azure functionapp publish <FunctionAppName>
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。|
 | **`--overwrite-settings -y`** | 必须与 `-i` 一起使用。 如果不同，则使用本地值覆盖 Azure 中的 AppSettings。 默认为提示。|
 
-`publish` 命令上传 Functions 项目目录的内容。 如果在本地删除文件，`publish` 命令不会将文件从 Azure 中删除。 可以使用 [Azure 门户]中的 [Kudu 工具](functions-how-to-use-azure-function-app-settings.md#kudu)删除 Azure 中的文件。
+此命令发布到 Azure 中的现有函数应用。 如果订阅中不存在 `<FunctionAppName>`，会发生错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。
+
+`publish` 命令上传 Functions 项目目录的内容。 如果在本地删除文件，`publish` 命令不会将文件从 Azure 中删除。 可以使用 [Azure 门户]中的 [Kudu 工具](functions-how-to-use-azure-function-app-settings.md#kudu)删除 Azure 中的文件。  
+
+>[!IMPORTANT]  
+> 在 Azure 中创建函数应用时，该应用默认使用 1.x 版函数运行时。 若要让函数应用使用 2.x 版运行时，请添加应用程序设置 `FUNCTIONS_EXTENSION_VERSION=beta`。  
+使用以下 Azure CLI 代码将此设置添加到函数应用： 
+```azurecli-interactive
+az functionapp config appsettings set --name <function_app> \
+--resource-group myResourceGroup \
+--settings FUNCTIONS_EXTENSION_VERSION=beta   
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -53,9 +53,9 @@
 
 ## <a name="create-a-vm-from-the-original-hard-disk"></a>从原始硬盘创建 VM
 
-若要从原始虚拟硬盘创建 VM，请使用 [Azure 经典门户](https://manage.windowsazure.com)。
+若要从原始虚拟硬盘创建 VM，请使用 [Azure 门户](https://portal.azure.com)。
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在门户底部，选择“新建” > “计算” > “虚拟机” > “从库”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在门户左上角，选择“新建” > “计算” > “虚拟机” > “从库”。
 3. 在“选择映像”部分，选择“我的磁盘”，然后选择原始虚拟硬盘。 查看位置信息。 这是必须在其中部署 VM 的区域。 选择“下一步”按钮。
 4. 在“虚拟机配置”部分，键入 VM 名称并选择 VM 大小。

@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: f45b3f705ba3d11dd20221e3a7a465796d7a86a1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>搭配使用 Azure Functions 和 .Net 类库
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
-在 Visual Studio 中创建新的 Azure Functions 项目。 新的项目模板会创建 *host.json* 和 *local.settings.json* 文件。 可[在 host.json 中自定义 Azure Functions 运行时设置](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)。 
+在 Visual Studio 中创建新的 Azure Functions 项目。 新的项目模板会创建 *host.json* 和 *local.settings.json* 文件。 可[在 host.json 中自定义 Azure Functions 运行时设置](functions-host-json.md)。 
 
 *local.settings.json* 文件将存储应用设置、连接字符串和 Azure Functions Core Tools 的设置。 若要了解该结构的详细信息，请参阅[在本地对 Azure Functions 编写代码和进行测试](functions-run-local.md#local-settings)。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/28/2017
 
 ### <a name="conversion-to-functionjson"></a>转换为 function.json
 
-生成 Azure Functions 项目后，它将在目录中创建一个 `[FunctionName]` 定义的函数名所匹配的文件 `function.json`。 它可指定触发器和绑定，并指向项目程序集文件。
+生成 Azure Functions 项目时，会在函数的目录中创建 *function.json* 文件。 目录名称与 `[FunctionName]` 属性指定的函数名称相同。 *function.json* 文件包含触发器和绑定，指向项目程序集文件。
 
 转换操作由 NuGet 程序包 [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) 执行。 源可在 GitHub 存储库 [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) 中使用。
 

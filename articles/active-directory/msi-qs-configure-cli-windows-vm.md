@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 03fb9cc6633f81e284ae299f7b2ba4018d19cc73
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: fe276fe802eceb1f062ed8bda685dd44a1e3d175
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 09/23/2017
 
 若要创建启用 MSI 的 VM，请执行以下操作：
 
-1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
 
    ```azurecli-interactive
    az login
@@ -67,7 +67,7 @@ ms.lasthandoff: 09/23/2017
 
 如果需要在现有虚拟机上启用 MSI，请执行以下操作：
 
-1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
 
    ```azurecli-interactive
    az login
@@ -83,7 +83,7 @@ ms.lasthandoff: 09/23/2017
 
 如果虚拟机不再需要 MSI，请执行以下操作：
 
-1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
 
    ```azurecli-interactive
    az login

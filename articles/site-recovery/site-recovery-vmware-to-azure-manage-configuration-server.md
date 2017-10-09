@@ -15,10 +15,10 @@ ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: bf62fb21dfac99038e3b3759d9e78c6870f52f9e
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: ba236ad1327a7f3419d7c8cf7effc889a90dde61
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -111,6 +111,17 @@ ProxyPassword="Password"
   >[!WARNING]
   如果已将横向扩展进程服务器附加到此配置服务器，需在部署中[修复所有横向扩展进程服务器上的代理设置](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server)。
 
+## <a name="modify-user-accounts-and-passwords"></a>修改用户帐户和密码
+
+使用 CSPSConfigTool.exe 可以管理用于**自动发现 VMware 虚拟机**的用户帐户，以及执行**受保护计算机上的移动服务推送安装**。 
+
+1. 登录到配置服务器。
+2. 单击桌面上的快捷方式启动 CSPSConfigtool.exe。
+3. 单击“管理帐户”选项卡。
+4. 选择需要修改其密码的帐户，单击“编辑”按钮。
+5. 输入新密码，单击“确定”
+
+
 ## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>将配置服务器重新注册到同一个恢复服务保管库
   1. 登录到配置服务器。
   2. 使用桌面上的快捷方式启动 cspsconfigtool.exe。
@@ -132,6 +143,10 @@ ProxyPassword="Password"
   如果已将横向扩展进程服务器附加到此配置服务器，需在部署中[重新注册所有横向扩展进程服务器](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server)。
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>将配置服务器注册到不同的恢复服务保管库。
+
+> [!WARNING]
+> 下面一组步骤会在当前保管库中取消关联配置，并停止配置服务器下所有受保护虚拟机的复制。
+
 1. 登录到配置服务器。
 2. 在管理员命令提示符中，运行命令
 
@@ -161,7 +176,7 @@ ProxyPassword="Password"
 
 1. 将更新安装程序下载到配置服务器上。
 2. 双击该安装程序以启动安装程序。
-3. 该安装程序将检测计算机上存在的 Site Recovery 组件的版本并提示进行确认。 
+3. 该安装程序检测计算机上的 Site Recovery 组件版本并提示进行确认。 
 4. 单击“确定”按钮以提供确认并继续进行升级。
 
 
@@ -227,6 +242,17 @@ ProxyPassword="Password"
 
   >[!TIP]
   如果未出现“立即续订”按钮，则会出现“立即升级”按钮。 这表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。
+
+## <a name="revive-a-configuration-server-if-the-secure-socket-layer-ssl-certificate-expired"></a>如果安全套接字层 (SSL) 证书已过期，请续订配置服务器
+
+1. 将配置服务器更新到[最新版本](http://aka.ms/unifiedinstaller)
+2. 如果有任何横向扩展进程服务器、故障回复主目标服务器或故障回复进程服务器，请将其更新到最新版本
+3. 将所有受保护虚拟机上的移动服务更新到最新版本。
+4. 登录到配置服务器，并使用管理员特权打开命令提示符。
+5. 浏览到文件夹 %ProgramData%\ASR\home\svsystems\bin
+6. 运行 RenewCerts.exe，续订配置文件服务器上的 SSL 证书。
+7. 如果该过程成功，应会看到消息“证书续订成功”
+
 
 ## <a name="sizing-requirements-for-a-configuration-server"></a>配置服务器大小要求
 

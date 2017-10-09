@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 341128e4a1ad6902f6052eb954ffae08e5d78121
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 63a313d9035422207a1ce56f0da8b388e2747685
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="network-security"></a>网络安全
@@ -129,7 +129,7 @@ ms.lasthandoff: 09/25/2017
 * **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示 Azure 公共 IP 地址空间。 [Azure 拥有的公共 IP 空间](https://www.microsoft.com/download/details.aspx?id=41653)文档（会定期更新）中列出了此标记包含的地址。
 * **AzureTrafficManager**（仅限资源管理器）：此标记表示 Azure 流量管理器服务的 IP 地址空间。
 * **Storage**（仅限资源管理器）：此标记表示 Azure 存储服务的 IP 地址空间。 如果指定 *Storage* 作为值，则会允许或拒绝发往存储的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的存储进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure 存储，可以指定 *Storage.EastUS* 作为服务标记。 其他可用的区域服务标记：Storage.AustraliaEast、Storage.AustraliaSoutheast、Storage.EastUS、Storage.UKSouth、Storage.WestCentralUS、Storage.WestUS 和 Storage.WestUS2。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。
-* **Sql**（仅限资源管理器）：此标记表示 Azure SQL 数据库和 Azure SQL 数据仓库服务的地址前缀。 只能为此服务标记指定特定的区域。 例如，如果希望只允许访问美国东部区域中的 Azure SQL 数据库，可以指定 *Sql.EastUS* 作为服务标记。 不能针对所有 Azure 区域单独指定 Sql，而必须单独指定区域。 其他可用的区域服务标记：Storage.AustraliaEast、Storage.AustraliaSoutheast、Storage.EastUS、Storage.UKSouth、Storage.WestCentralUS、Storage.WestUS 和 Storage.WestUS2。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 Azure SQL 数据库。
+* **Sql**（仅限资源管理器）：此标记表示 Azure SQL 数据库和 Azure SQL 数据仓库服务的地址前缀。 只能为此服务标记指定特定的区域。 例如，如果希望只允许访问美国东部区域中的 Azure SQL 数据库，可以指定 *Sql.EastUS* 作为服务标记。 不能针对所有 Azure 区域单独指定 Sql，而必须单独指定区域。 其他可用的区域服务标记：Sql.AustraliaEast、Sql.AustraliaSoutheast、Sql.EastUS、Sql.UKSouth、Sql.WestCentralUS、Sql.WestUS 和 Sql.WestUS2。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 Azure SQL 数据库。
 
 > [!WARNING]
 > AzureTrafficManager、Storage 和 Sql 服务标记以预览版提供。 预览版功能的可用性和可靠性级别与正式版不同。 这些服务标记仅在以下区域提供：美国东部、美国西部、美国西部 2 区、美国中西部、澳大利亚东部、澳大利亚东南部和英国南部。

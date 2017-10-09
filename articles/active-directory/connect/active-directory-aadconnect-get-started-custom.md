@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/02/2017
+ms.date: 09/27/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 51906e8d68b5f951a75b8141644bbaf4cf6a43ce
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: a3a4a90221821de690f72260b2adca07680d30a9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
@@ -50,12 +50,12 @@ ms.lasthandoff: 08/18/2017
 
 | 单一登录选项 | 说明 |
 | --- | --- |
-| 密码同步 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。 用户密码将作为密码哈希同步到 Azure AD，并在云中进行身份验证。 有关详细信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 |
-|传递身份验证（预览版）|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户密码将传递到本地 Active Directory 控制器进行验证。
+| 密码哈希同步 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。 用户密码将作为密码哈希同步到 Azure AD，并在云中进行身份验证。 有关详细信息，请参阅[密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 |
+|直通身份验证|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户密码将传递到本地 Active Directory 控制器进行验证。
 | 使用 AD FS 进行联合身份验证 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户被重定向到他们的本地 AD FS 实例以进行登录，并在本地完成身份验证。 |
 | 不要配置 |不安装和配置任一功能。 如果已有第三方联合服务器或部署了另一个现有解决方案，请选择此选项。 |
 |启用单一登录|此选项适用于密码同步和传递身份验证，为企业网络中的桌面用户提供单一登录体验。  有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。</br>（如果同时未发布 PTA）
-|登录选项|此选项适用于密码同步客户，为企业网络中的桌面用户提供单一登录体验。  </br>有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。
+|登录选项|此选项适用于密码哈希同步客户，为企业网络中的桌面用户提供单一登录体验。  </br>有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。
 
 
 ### <a name="connect-to-azure-ad"></a>连接到 Azure AD
@@ -169,7 +169,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 | Exchange 混合部署 |Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Office 365 中共存。 Azure AD Connect 将特定的[属性](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)集从 Azure AD 同步回到本地目录。 |
 | Exchange 邮件公用文件夹 | “Exchange 邮件公用文件夹”功能可以将支持邮件功能的公用文件夹对象从本地 Active Directory 同步到 Azure AD。 |
 | Azure AD 应用程序和属性筛选 |通过启用 Azure AD 应用和属性筛选，可以定制同步的属性集。 此选项会在向导中额外添加两个配置页。 有关详细信息，请参阅 [Azure AD 应用程序和属性筛选](#azure-ad-app-and-attribute-filtering)。 |
-| 密码同步 |如果选择了联合作为登录解决方案，则可以启用此选项。 然后，可将密码同步用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 </br></br>如果选择了“传递身份验证”，则默认会启用此选项，确保支持旧客户端并可用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。|
+| 密码同步 |如果选择了联合作为登录解决方案，则可以启用此选项。 然后，可将密码同步用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 </br></br>如果选择了“传递身份验证”，则也可以启用此选项来确保支持旧客户端并将其用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。|
 | 密码写回 |通过启用密码写回，源自 Azure AD 的密码更改将写回到本地目录。 有关详细信息，请参阅[密码管理入门](../active-directory-passwords-getting-started.md)。 |
 | 组写回 |如果使用了“Office 365 组”功能，则可以在本地 Active Directory 中呈现这些组。 仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。 有关详细信息，请参阅[组写回](active-directory-aadconnect-feature-preview.md#group-writeback)。 |
 | 设备写回 |允许将 Azure AD 中的设备对象写回本地 Active Directory 以实现条件性访问方案。 有关详细信息，请参阅[在 Azure AD Connect 中启用设备写回](active-directory-aadconnect-feature-device-writeback.md)。 |

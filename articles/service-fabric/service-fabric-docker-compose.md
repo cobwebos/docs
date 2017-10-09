@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/25/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: e05d1a3d6111e3bbc34008226bcd1fdf35935450
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 519bab9d226f9d00ae0fa21348823d2d6b6cd2c9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="docker-compose-application-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 应用程序支持（预览版）
@@ -34,26 +34,26 @@ Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>在 Service Fabric 上部署一个 Docker Compose 文件
 
-以下命令创建一个 Service Fabric 应用程序（在上一示例中名为 `fabric:/TestContainerApp`），可以像对任何其他 Service Fabric 应用程序一样对该应用程序进行监视和托管。 指定的应用程序名称可用于运行状况查询。
+以下命令创建一个 Service Fabric 应用程序（名为 `TestContainerApp`），可以像对任何其他 Service Fabric 应用程序一样对该应用程序进行监视和托管。 指定的应用程序名称可用于运行状况查询。
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-通过在 PowerShell 中运行以下命令，根据 docker-compose.yml 文件创建 Service Fabric Compose 应用程序：
+通过在 PowerShell 中运行以下命令，根据 docker-compose.yml 文件创建 Service Fabric Compose 部署：
 
 ```powershell
-New-ServiceFabricComposeDeployment -DeploymentName fabric:/TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
+New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName` 和 `RegistryPassword` 指容器注册表用户名和密码。 创建完应用程序后，可以使用以下命令检查其状态：
+`RegistryUserName` 和 `RegistryPassword` 指容器注册表用户名和密码。 创建完部署后，可以使用以下命令检查其状态：
 
 ```powershell
-Get-ServiceFabricComposeDeploymentStatus -DeploymentName fabric:/TestContainerApp -GetAllPages
+Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp -GetAllPages
 ```
 
-若要通过 PowerShell 删除 Compose 应用程序，请使用以下命令：
+若要通过 PowerShell 删除 Compose 部署，请使用以下命令：
 
 ```powershell
-Remove-ServiceFabricComposeDeployment  -DeploymentName fabric:/TestContainerApp
+Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
 ```
 
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl)
@@ -61,7 +61,7 @@ Remove-ServiceFabricComposeDeployment  -DeploymentName fabric:/TestContainerApp
 或者，可以使用以下 Service Fabric CLI 命令：
 
 ```azurecli
-sfctl compose create --application-id fabric:/TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
+sfctl compose create --application-id TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
 ```
 
 创建应用程序后，可以使用以下命令检查其状态：

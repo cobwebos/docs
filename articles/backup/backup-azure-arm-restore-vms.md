@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: d234d9c97064e22a0ea882f199da326b0aae0674
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: c4723a7d174991f5bf679bf3e8c97fe2338926a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="use-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
@@ -95,7 +95,7 @@ ms.lasthandoff: 09/20/2017
 ## <a name="choosing-a-vm-restore-configuration"></a>选择 VM 还原配置
 选择还原点点，请选择用于还原 VM 的配置。 用于配置已还原 VM 的选项包括使用 Azure 门户或 PowerShell。
 
-1. 如果尚未到达这一步，请转到“**还原**”边栏选项卡。 确保已选择 [还原点](#select-restore-point-for-restore)，并单击 **还原配置**，打开 **恢复配置** 边栏选项卡。
+1. 如果尚未到达这一步，请转到“**还原**”边栏选项卡。 确保已选择“还原点”，单击“还原配置”打开“还原配置”边栏选项卡。[](#select-restore-point-for-restore)
 
     ![已设置恢复配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
 2. 在“还原配置”边栏选项卡上，有两个选择：

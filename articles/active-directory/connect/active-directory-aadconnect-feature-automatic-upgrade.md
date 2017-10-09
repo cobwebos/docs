@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 57cd81a92817171a23ffd0f607eb127005bc1e0d
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 894e387b4b83ed859139b4aecb3d8bb5df9ab56f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
@@ -26,7 +26,6 @@ ms.lasthandoff: 09/23/2017
 
 ## <a name="overview"></a>概述
 使用**自动升级**功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，安装会自动升级。
-
 默认情况下，将针对以下方案启用自动升级：
 
 * 快速设置安装和 DirSync 升级。
@@ -45,6 +44,7 @@ ms.lasthandoff: 09/23/2017
 可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。 应该只有系统才能设置“暂停”状态。
 
 自动升级使用 Azure AD Connect Health 作为升级基础结构。 为使自动升级正常工作，请确保根据 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述，在代理服务器中打开 **Azure AD Connect Health** 的 URL。
+
 
 如果服务器上正在运行**同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 09/23/2017
 | UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速安装只会连接到一个林。 |
 | UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
 | UpgradeNotSupportedNonMsolAccount |[AD 连接器帐户](active-directory-aadconnect-accounts-permissions.md#active-directory-account)不再是默认的 MSOL_ 帐户。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 已选择“不配置”作为登录方法。 | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。 | 
 | UpgradeNotSupportedPtaSignInMethod | 已选择“直通身份验证”作为登录方法。 |
 | UpgradeNotSupportedStagingModeEnabled |服务器已设置为[过渡模式](active-directory-aadconnectsync-operations.md#staging-mode)。 |
 | UpgradeNotSupportedUserWritebackEnabled |已启用[用户写回](active-directory-aadconnect-feature-preview.md#user-writeback)功能。 |
