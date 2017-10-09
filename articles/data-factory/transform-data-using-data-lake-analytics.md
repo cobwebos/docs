@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 09/08/2017
 ms.author: shengc
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f72ee8b6ef51046a64e794b17d1c389a25246358
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 5e54464ceabfe1fea2af80d63e538bea6a0a50a5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-usql-activity.md)
+> * [版本 1 - GA](v1/data-factory-usql-activity.md)
 > * [版本 2 - 预览版](transform-data-using-data-lake-analytics.md)
 
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动**。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 USQL 活动](v1/data-factory-usql-activity.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 USQL 活动](v1/data-factory-usql-activity.md)。
 
 在使用 Data Lake Analytics U-SQL 活动创建管道之前，先创建 Azure Data Lake Analytics 帐户。 若要了解 Azure Data Lake Analytics，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
@@ -120,10 +120,10 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 | 属性            | 说明                              | 必选 |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | 管道中活动的名称     | 是      |
+| 名称                | 管道中活动的名称     | 是      |
 | description         | 描述活动用途的文本。  | 否       |
 | type                | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **DataLakeAnalyticsU-SQL**。 | 是      |
-| linkedServiceName   | Azure Data Lake Analytics 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  |          |
+| linkedServiceName   | Azure Data Lake Analytics 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  |是       |
 | scriptPath          | 包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 | 是      |
 | scriptLinkedService | 将包含脚本的存储链接到数据工厂的链接服务 | 是      |
 | degreeOfParallelism | 同时用于运行作业的最大节点数。 | 否       |
@@ -189,7 +189,7 @@ OUTPUT @rs1
 在这种情况下，输入文件仍从 /datalake/input 文件夹中获取，输出文件仍在 /datalake/output 文件夹中生成。 文件名则根据切片开始时间动态产生。  
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章了解如何以其他方式转换数据： 
+参阅以下文章了解如何以其他方式转换数据： 
 
 * [Hive 活动](transform-data-using-hadoop-hive.md)
 * [Pig 活动](transform-data-using-hadoop-pig.md)
@@ -197,6 +197,6 @@ OUTPUT @rs1
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)
 

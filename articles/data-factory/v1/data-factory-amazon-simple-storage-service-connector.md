@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 09/26/2017
 ms.author: jingwang
 robots: noindex
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 042b81cd2228ac87bcb6c654776a9c235920b77e
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: d2681e629d478208301091571d77a3c283a8e774
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务移动数据
@@ -69,6 +69,10 @@ ms.lasthandoff: 09/25/2017
 | --- | --- | --- | --- |
 | accessKeyID |机密访问键 ID。 |字符串 |是 |
 | secretAccessKey |机密访问键本身。 |加密的机密字符串 |是 |
+
+>[!NOTE]
+>此连接器需要 IAM 帐户的访问密钥才能从 Amazon S3 复制数据。 不支持[临时安全凭据](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)。
+>
 
 下面是一个示例：
 

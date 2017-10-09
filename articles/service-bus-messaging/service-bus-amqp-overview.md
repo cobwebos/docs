@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 10/06/2017
 ms.author: sethm
 ms.translationtype: HT
 ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
