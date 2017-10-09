@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b70d2340c0f1286fa355a78a4cd0cb1ce37cbc39
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b320581011c27a2efc49fa784f184a37bdb7f6fe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/25/2017
 
 [Draft](https://aka.ms/draft) 是一种新的开放源工具，使用它可轻松地开发基于容器的应用程序并将其部署到 Kubernetes 群集，而无需了解大量有关 Docker 和 Kubernetes 的信息，甚至无需安装它们。 使用 Draft 之类的工具，你和你的团队可专注于使用 Kubernetes 生成应用程序，而不用太过关注基础结构。
 
-可将 Draft 与任何 Docker 映像注册表以及任何 Kubernetes 群集一起使用（在本地也可）。 本教程演示如何结合使用 ACS、Kubernetes、ACR 和 Azure DNS，通过 Draft 创建实时 CI/CD 开发人员管道。
+可将 Draft 与任何 Docker 映像注册表以及任何 Kubernetes 群集一起使用（在本地也可）。 本教程演示如何搭配 ACS 使用 Kubernetes 和 ACR，在 Kubernetes 中通过 Draft 创建实时但安全的开发人员管道，以及如何使用 Azure DNS 公开该开发人员管道，让其他人可以在域中看到。
 
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
@@ -39,9 +39,9 @@ ms.lasthandoff: 07/25/2017
       az group create --name draft --location eastus
       ```
 
-2. 使用 [az acr create](/cli/azure/acr#create) 创建 ACR 映像注册表
+2. 使用 [az acr create](/cli/azure/acr#create) 创建 ACR 映像注册表，并确保 `--admin-enabled` 选项设置为 `true`。
       ```azurecli
-      az acr create -g draft -n draftacs --sku Basic --admin-enabled true -l eastus
+      az acr create --resource-group draft --name draftacs --sku Basic --admin-enabled true 
       ```
 
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/25/2017
 
 现已准备好使用 [az acs create](/cli/azure/acs#create) 创建 ACS 群集，使用 Kubernetes 作为 `--orchestrator-type` 值。
 ```azurecli
-az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes
+az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes --generate-ssh-keys
 ```
 
 > [!NOTE]
@@ -104,31 +104,110 @@ waiting for AAD role to propagate.done
 现在有了一个群集，可以使用 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令导入凭据。 现在群集有了本地配置文件，Helm 和 Draft 需要它来完成工作。
 
 ## <a name="install-and-configure-draft"></a>安装并配置 Draft
-[Draft 存储库](https://github.com/Azure/draft/blob/master/docs/install.md)中提供 Draft 的安装说明。 安装相对简单，但需要一些配置，因为它依赖于 [Helm](https://aka.ms/helm) 来创建 Helm 图表并将图表部署到 Kubernetes 群集。
 
-1. [下载并安装 Helm](https://aka.ms/helm#install)。
-2. 使用 Helm 搜索并安装 `stable/traefik` 和入口控制器，为生成启用入站请求。
-    ```bash
-    $ helm search traefik
-    NAME            VERSION DESCRIPTION
-    stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
-    $ helm install stable/traefik --name ingress
-    ```
-    现对 `ingress` 控制器设置监视，在部署时捕获外部 IP 值。 此 IP 地址将是下一节中[映射到部署域](#wire-up-deployment-domain)的地址。
+1. 在 https://github.com/Azure/draft/releases 中为环境下载 Draft 并安装到 PATH 中，以便可以使用该命令。
+2. 在 https://github.com/kubernetes/helm/releases 中为环境下载 Helm 并[安装到 PATH 中，以便可以使用该命令](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client)。
+3. 配置 Draft 来使用注册表并为所创建的每个 Helm 图表创建子域。 若要配置 Draft，需要：
+  - Azure 容器注册表名称（此示例中为 `draftacsdemo`）
+  - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` 中的注册表项或密码。
 
-    ```bash
-    kubectl get svc -w
-    NAME                          CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
-    ingress-traefik               10.0.248.104   13.64.108.240   80:31046/TCP,443:32556/TCP   1h
-    kubernetes                    10.0.0.1       <none>          443/TCP                      7h
-    ```
+  调用 `draft init`，配置过程会提示用户输入上面的值；请注意，注册表 URL 的 URL 格式是注册表名称（本例中为 `draftacsdemo`）加上 `.azurecr.io`。 用户名是注册表自身的名称。 该进程会在你首次运行时，要求你提供如下所示的信息。
+ ```bash
+    $ draft init
+    Creating /home/ralph/.draft 
+    Creating /home/ralph/.draft/plugins 
+    Creating /home/ralph/.draft/packs 
+    Creating pack go...
+    Creating pack python...
+    Creating pack ruby...
+    Creating pack javascript...
+    Creating pack gradle...
+    Creating pack java...
+    Creating pack php...
+    Creating pack csharp...
+    $DRAFT_HOME has been configured at /home/ralph/.draft.
 
-    在这种情况下，部署域的外部 IP 为 `13.64.108.240`。 现在，可以将域映射到该 IP。
+    In order to configure Draft, we need a bit more information...
 
-## <a name="wire-up-deployment-domain"></a>连接部署域
+    1. Enter your Docker registry URL (e.g. docker.io/myuser, quay.io/myuser, myregistry.azurecr.io): draftacsdemo.azurecr.io
+    2. Enter your username: draftacsdemo
+    3. Enter your password: 
+    Draft has been installed into your Kubernetes Cluster.
+    Happy Sailing!
+```
 
-Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），就为其创建一个版本。 每个图表获得一个生成的名称，该名称由 Draft 用作所控制的根部署域之上的子域。 （此示例中，我们使用 `squillace.io` 作为部署域。）若要启用这一子域行为，必须在部署域的 DNS 条目中为 `'*'` 创建一个 A 记录，使每个生成的子域都路由到 Kubernetes 群集的入口控制器。
+现已准备好部署应用程序。
+
+
+## <a name="build-and-deploy-an-application"></a>生成和部署应用程序
+
+在 Draft 中，存储库是 [6 个简单的示例应用程序](https://github.com/Azure/draft/tree/master/examples)。 克隆存储库并使用 [Java 示例](https://github.com/Azure/draft/tree/master/examples/java)。 切换为 examples/java 目录，并键入 `draft create` 生成应用程序。 结果应与以下示例类似。
+```bash
+$ draft create
+--> Draft detected the primary language as Java with 91.228814% certainty.
+--> Ready to sail
+```
+
+输出包括一个 Dockerfile 和一个 Helm 图表。 若要生成并部署，只需键入 `draft up`。 输出的内容很广泛，但应当类似于以下示例。
+```bash
+$ draft up
+Draft Up Started: 'handy-labradoodle'
+handy-labradoodle: Building Docker Image: SUCCESS ⚓  (35.0232s)
+handy-labradoodle: Pushing Docker Image: SUCCESS ⚓  (17.0062s)
+handy-labradoodle: Releasing Application: SUCCESS ⚓  (3.8903s)
+handy-labradoodle: Build ID: 01BT0ZJ87NWCD7BBPK4Y3BTTPB
+```
+
+## <a name="securely-view-your-application"></a>安全查看应用程序
+
+容器现在在 ACS 中运行。 若要查看它，请使用 `draft connect` 命令，与具有面向应用程序的特定端口的群集 IP 建立安全连接，以便在本地查看。 如果成功，则在 **SUCCESS** 指示符后面的第一行上查找用于连接到应用的 URL。
+
+> [!NOTE]
+> 如果收到一条消息，指出没有已准备就绪的 Pod，则等一会再重试，也可以一边使用 `kubectl get pods -w` 准备 Pod 一边观察，等 Pod 就绪后再重试。
+
+```bash
+draft connect
+Connecting to your app...SUCCESS...Connect to your app on localhost:46143
+Starting log streaming...
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+== Spark has ignited ...
+>> Listening on 0.0.0.0:4567
+```
+
+在前面的示例中，可以键入 `curl -s http://localhost:46143`，会收到回复 `Hello World, I'm Java!`。 按 CTRL+ 或 CMD+C（取决于 OS 环境）时，安全隧道被撤销，用户可以继续循环访问。
+
+## <a name="sharing-your-application-by-configuring-a-deployment-domain-with-azure-dns"></a>使用 Azure DNS 配置部署域来共享应用程序
+
+你已执行前面步骤中 Draft 创建的开发人员迭代循环。 但是，可以通过以下方式在 Internet 上共享应用程序：
+1. 在 ACS 群集中安装入口（以提供用于显示应用的公共 IP 地址）
+2. 将自定义域委托给 Azure DNS 并将域映射到 ACS 分配给入口控制器的 IP 地址
+
+### <a name="use-helm-to-install-the-ingress-controller"></a>使用 Helm 安装入口控制器。
+使用 **Helm** 搜索并安装 `stable/traefik`（一种入口控制器），为生成启用入站请求。
+```bash
+$ helm search traefik
+NAME            VERSION DESCRIPTION
+stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
+
+$ helm install stable/traefik --name ingress
+```
+现对 `ingress` 控制器设置监视，在部署时捕获外部 IP 值。 此 IP 地址将是下一节中[映射到部署域](#wire-up-deployment-domain)的地址。
+
+```bash
+kubectl get svc -w
+NAME                          CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+ingress-traefik               10.0.248.104   13.64.108.240   80:31046/TCP,443:32556/TCP   1h
+kubernetes                    10.0.0.1       <none>          443/TCP                      7h
+```
+
+在这种情况下，部署域的外部 IP 为 `13.64.108.240`。 现在，可以将域映射到该 IP。
+
+### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>将入口 IP 映射到自定义子域
+
+Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），就为其创建一个版本。 每个图表获得一个生成的名称，该名称由 **Draft** 用作所控制的根_部署域_之上的_子域_。 （此示例中，我们使用 `squillace.io` 作为部署域。）若要启用这一子域行为，必须在部署域的 DNS 条目中为 `'*.draft'` 创建一个 A 记录，使每个生成的子域都路由到 Kubernetes 群集的入口控制器。 
 
 域提供商有其自己的方法来分配 DNS 服务器；若要[将域的名称服务器委托给 Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)，请执行以下步骤：
 
@@ -169,98 +248,44 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
       "type": "Microsoft.Network/dnszones"
     }
     ```
-3. 将提供的 DNS 服务器添加到部署域的域提供商，通过此可使用 Azure DNS 根据需要重新定位域。
-4. 为上一节步骤 2 中映射到 `ingress` IP 的部署域创建 A 记录集条目。
-    ```azurecli
-    az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*' -g squillace.io -z squillace.io
-    ```
+3. 将提供的 DNS 服务器添加到部署域的域提供商，通过此可使用 Azure DNS 根据需要重新定位域。 执行此操作的方式因所提供域的不同而不同；[将域名服务器委托给 Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) 包含一些应当了解的详细信息。 
+4. 将域委托给 Azure DNS 之后，就会为映射到前一部分步骤 2 中的 `ingress` IP 的部署域创建一个 A 记录集条目。
+  ```azurecli
+  az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
+  ```
 输出与下面类似：
-    ```json
-    {
-      "arecords": [
-        {
-          "ipv4Address": "13.64.108.240"
-        }
-      ],
-      "etag": "<guid>",
-      "id": "/subscriptions/<guid>/resourceGroups/squillace.io/providers/Microsoft.Network/dnszones/squillace.io/A/*",
-      "metadata": null,
-      "name": "*",
-      "resourceGroup": "squillace.io",
-      "ttl": 3600,
-      "type": "Microsoft.Network/dnszones/A"
-    }
+  ```json
+  {
+    "arecords": [
+      {
+        "ipv4Address": "13.64.108.240"
+      }
+    ],
+    "etag": "<guid>",
+    "id": "/subscriptions/<guid>/resourceGroups/squillace.io/providers/Microsoft.Network/dnszones/squillace.io/A/*",
+    "metadata": null,
+    "name": "*.draft",
+    "resourceGroup": "squillace.io",
+    "ttl": 3600,
+    "type": "Microsoft.Network/dnszones/A"
+  }
+  ```
+5. 重新安装 **Draft**
+  1. 通过键入 `helm delete --purge draft` 从群集中删除 **draftd**。 
+  2. 使用相同的 `draft-init` 命令重新安装 **Draft**，唯一不同的是该命令带有 `--ingress-enabled` 选项：
+    ```bash
+    draft init --ingress-enabled
     ```
-
-5. 配置 Draft 来使用注册表并为所创建的每个 Helm 图表创建子域。 若要配置 Draft，需要：
-  - Azure 容器注册表名称（此示例中为 `draft`）
-  - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` 中的注册表项或密码。
-  - 已配置为映射到 Kubernetes 入口外部 IP 地址的根部署域（此处为 `squillace.io`）
-
-  调用 `draft init`，然后配置进程会提示你输入上述值。 该进程会在你首次运行时，要求你提供如下所示的信息。
- ```bash
-    $ draft init
-    Creating pack ruby...
-    Creating pack node...
-    Creating pack gradle...
-    Creating pack maven...
-    Creating pack php...
-    Creating pack python...
-    Creating pack dotnetcore...
-    Creating pack golang...
-    $DRAFT_HOME has been configured at /Users/ralphsquillace/.draft.
-
-    In order to install Draft, we need a bit more information...
-
-    1. Enter your Docker registry URL (e.g. docker.io, quay.io, myregistry.azurecr.io): draft.azurecr.io
-    2. Enter your username: draft
-    3. Enter your password:
-    4. Enter your org where Draft will push images [draft]: draft
-    5. Enter your top-level domain for ingress (e.g. draft.example.com): squillace.io
-    Draft has been installed into your Kubernetes Cluster.
-    Happy Sailing!
-    ```
-
-现已准备好部署应用程序。
-
-
-## <a name="build-and-deploy-an-application"></a>生成和部署应用程序
-
-在 Draft 中，存储库是 [6 个简单的示例应用程序](https://github.com/Azure/draft/tree/master/examples)。 克隆存储库并使用 [Python 示例](https://github.com/Azure/draft/tree/master/examples/python)。 更改为 examples/Python 目录，并键入 `draft create` 来生成应用程序。 结果应与以下示例类似。
+与前面第一次一样回答提示问题。 但是，这一次要回答的问题比第一次多一个，即使用为 Azure DNS 配置的完整域路径。
 ```bash
-$ draft create
---> Python app detected
---> Ready to sail
+4. Enter your top-level domain for ingress (e.g. draft.example.com): draft.squillace.io
+```
+5. 这次调用 `draft up` 时，可以在 `<appname>.draft.<domain>.<top-level-domain>` 形式的 URL 中看到应用程序（或对它执行 `curl`）。 本例中为 `http://handy-labradoodle.draft.squillace.io`。 
+```bash
+curl -s http://handy-labradoodle.draft.squillace.io
+Hello World, I'm Java!
 ```
 
-输出包括一个 Dockerfile 和一个 Helm 图表。 若要生成并部署，只需键入 `draft up`。 输出的内容很多，但开头类似于以下示例。
-```bash
-$ draft up
---> Building Dockerfile
-Step 1 : FROM python:onbuild
-onbuild: Pulling from library/python
-10a267c67f42: Pulling fs layer
-fb5937da9414: Pulling fs layer
-9021b2326a1e: Pulling fs layer
-dbed9b09434e: Pulling fs layer
-ea8a37f15161: Pulling fs layer
-<snip>
-```
-
-成功后，结尾类似于以下示例的内容。
-```bash
-ab68189731eb: Pushed
-53c0ab0341bee12d01be3d3c192fbd63562af7f1: digest: sha256:bb0450ec37acf67ed461c1512ef21f58a500ff9326ce3ec623ce1e4427df9765 size: 2841
---> Deploying to Kubernetes
---> Status: DEPLOYED
---> Notes:
-
-  http://gangly-bronco.squillace.io to access your application
-
-Watching local files for changes...
-```
-
-无论图表的名称是什么，现都可以 `curl http://gangly-bronco.squillace.io`接收回复 `Hello World!`。
 
 ## <a name="next-steps"></a>后续步骤
 

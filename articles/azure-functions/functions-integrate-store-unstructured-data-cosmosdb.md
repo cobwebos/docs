@@ -1,9 +1,9 @@
 ---
-title: "使用 Azure Functions 和 Cosmos DB 存储非结构化数据"
+title: "使用 Azure Cosmos DB 和 Azure Functions 存储非结构化数据 | Microsoft Docs"
 description: "使用 Azure Functions 和 Cosmos DB 存储非结构化数据"
 services: functions
 documentationcenter: functions
-author: rachelappel
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -14,17 +14,17 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/03/2017
+ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 00e9a76fed5743d7d74bafd333b87edf59a4f8bb
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b64d994dbc8f53418981e33a1dcd3cf513838b92
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="store-unstructured-data-using-azure-functions-and-cosmos-db"></a>使用 Azure Functions 和 Cosmos DB 存储非结构化数据
+# <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 是存储非结构化数据和 JSON 数据的良好方式。 将 Cosmos DB 与 Azure Functions 结合使用，可以快速、轻松地存储数据，并且所需的代码也比在关系数据库中存储数据时所需的代码少得多。
 
@@ -54,10 +54,10 @@ ms.lasthandoff: 08/02/2017
     | ------------ | ---------------- | ------------------------------------------ |
     | 文档参数名称 | taskDocument | 引用代码中的 Cosmos DB 对象的名称。 |
     | **数据库名称** | taskDatabase | 用于保存文档的数据库的名称。 |
-    | 集合名称 | TaskCollection | Cosmos DB 数据库集合的名称。 |
+    | 集合名称 | TaskCollection | 数据库集合的名称。 |
     | 如果为 true，则创建 Cosmos DB 数据库和集合 | 已选中 | 集合不存在，因此创建集合。 |
 
-4. 选择“Cosmos DB 文档连接”标签旁边的“新建”，然后选择“+ 新建”。 
+4. 选择“Azure Cosmos DB 文档连接”标签旁边的“新建”，然后选择“+ 新建”。 
 
 5. 按照表中的指定使用“新建帐户”设置： 
 
@@ -65,13 +65,13 @@ ms.lasthandoff: 08/02/2017
 
     | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **ID** | 数据库的名称 | Cosmos DB 数据库的唯一 ID  |
+    | **ID** | 数据库的名称 | Azure Cosmos DB 数据库的唯一 ID  |
     | **API** | SQL (DocumentDB) | 选择文档数据库 API。  |
     | **订阅** | Azure 订阅 | Azure 订阅  |
     | **资源组** | myResourceGroup |  使用包含函数应用的现有资源组。 |
     | **位置**  | 西欧 | 选择一个靠近函数应用的位置，或者一个靠近的其他应用使用已存储文档的位置。  |
 
-6. 单击“确定”创建该数据库。 创建数据库可能需要几分钟的时间。 创建数据库后，数据库连接字符串存储为函数应用设置。 此应用设置的名称插入Cosmos DB 帐户连接中。 
+6. 单击“确定”创建该数据库。 创建数据库可能需要几分钟的时间。 创建数据库后，数据库连接字符串存储为函数应用设置。 此应用设置的名称插入 Azure Cosmos DB 帐户连接中。 
  
 8. 设置连接字符串后，选择“保存”以创建绑定。
 
@@ -129,11 +129,13 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 
     ![搜索 Cosmos DB 服务](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
 
-2. 选择已创建的数据库，然后选择“数据资源管理器”。 展开“集合”节点，选择新的文档，并确认该文档包含查询字符串值，以及一些其他的元数据。 
+2. 选择你的 Azure Cosmos DB 帐户，然后选择“数据资源管理器”。 
+
+3. 展开“集合”节点，选择新的文档，并确认该文档包含查询字符串值，以及一些其他的元数据。 
 
     ![验证 Cosmos DB 项](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
 
-你已成功地将绑定添加到 HTTP 触发器，后者在 Cosmos DB 数据库中存储非结构化数据。
+你已成功地将绑定添加到 HTTP 触发器，该触发器在 Azure Cosmos DB 中存储非结构化数据。
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
