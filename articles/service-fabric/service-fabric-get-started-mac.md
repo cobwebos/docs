@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2017
+ms.date: 09/26/2017
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 28424d139499b797b09664f73657a7f73361e3bc
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: c447a92e076bacc9b208b837493400b70cd067e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
@@ -49,7 +49,7 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    此步骤获取包含 VM 配置和 VM 下载位置的文件 `Vagrantfile`。  该文件所指向库存 Ubuntu 映像。 
+    此步骤下载包含 VM 配置以及 VM 下载位置的文件 `Vagrantfile`。  该文件所指向库存 Ubuntu 映像。
 
 2. 导航到本地克隆存储库
 
@@ -76,7 +76,7 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
     ```bash
     vagrant ssh
     ```
-   
+
    根据 [SDK 安装](service-fabric-get-started-linux.md)中所述安装 SDK。  为方便起见，我们提供了以下脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 运行该脚本即认为你已阅读并同意所要安装的所有软件的许可条款。
 
     ```bash
@@ -97,6 +97,23 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
 
     ![从主机 Mac 查看的 Service Fabric Explorer][sfx-mac]
 
+## <a name="install-the-necessary-java-artifacts-on-vagrant-to-use-service-fabric-java-programming-model"></a>在 Vagrant 上安装所需的 Java 项目，以使用 Service Fabric Java 编程模型
+
+若要使用 Java 来生成 Service Fabric 服务，请确保已安装 JDK 1.8 和 Gradle，后者用于运行生成任务。 以下代码片段安装 Open JDK 1.8 和 Gradle。 Service Fabric Java 库是从 Maven 拉取的。
+
+  ```bash
+  vagrant ssh
+  sudo apt-get install openjdk-8-jdk-headless
+  sudo apt-get install gradle
+```
+
+## <a name="set-up-the-service-fabric-cli"></a>设置 Service Fabric CLI
+
+[Service Fabric CLI](service-fabric-cli.md) 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。 它基于 python，因此在执行以下命令之前，请务必安装 python 和 pip：
+
+```bash
+pip install sfctl
+```
 
 ## <a name="create-application-on-mac-using-yeoman"></a>使用 Yeoman 在 Mac 上创建应用程序
 Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模板生成器从终端创建 Service Fabric 应用程序。 请执行以下步骤，确保已经有可以在计算机上运行的 Service Fabric yeoman 模板生成器。
@@ -141,6 +158,7 @@ Service Fabric 为**适用于 Java IDE 的 Eclipse Neon** 提供了一个插件�
 * [在 Azure 门户中创建 Service Fabric 群集](service-fabric-cluster-creation-via-portal.md)
 * [使用 Azure Resource Manager 创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)
 * [了解 Service Fabric 应用程序模型](service-fabric-application-model.md)
+* [使用 Service Fabric CLI 管理应用程序](service-fabric-application-lifecycle-sfctl.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png

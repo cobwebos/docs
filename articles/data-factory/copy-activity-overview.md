@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 09/26/2017
 ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4ea7220310f63108f8ec2fa1b28ddcaf992a3a51
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 784b9489911be0d9a559b6fe7795a6c2cbdb09fc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/25/2017
 ## <a name="overview"></a>概述
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-data-movement-activities.md)
+> * [版本 1 - 正式版](v1/data-factory-data-movement-activities.md)
 > * [版本 2 - 预览版](copy-activity-overview.md)
 
 在 Azure 数据工厂中，可使用复制活动在本地和云数据存储之间复制数据。 复制数据后，可对其进一步执行转换和分析操作。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
@@ -33,7 +33,7 @@ ms.lasthandoff: 09/25/2017
 ![复制活动的角色](media/copy-activity-overview/copy-activity.png)
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 数据工厂。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 复制活动在[集成运行时](concepts-integration-runtime.md)上执行。 对于不同的数据复制方案，可以利用不同风格的集成运行时：
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 09/25/2017
 | sqlDwPolyBase | 如果将数据复制到 SQL 数据仓库时使用了 PolyBase。 | 布尔 |
 | redshiftUnload | 如果从 Redshift 复制数据时使用了 UNLOAD。 | 布尔 |
 | hdfsDistcp | 如果从 HDFS 复制数据时使用了 DistCp。 | 布尔 |
-| effectiveIntegrationRuntime | 以“<IR name> (<region for Azure IR>)”格式显示运行活动时使用的集成运行时。 | 文本（字符串） |
+| effectiveIntegrationRuntime | 以“`<IR name> (<region if it's Azure IR>)`”格式显示运行活动时使用的集成运行时。 | 文本（字符串） |
 | usedCloudDataMovementUnits | 复制期间有效的云数据移动单位。 | Int32 值 |
 | redirectRowPath | 在“redirectIncompatibleRowSettings”下配置的 blob 存储中跳过的不兼容行的日志路径。 请参阅下面的示例。 | 文本（字符串） |
 | billedDuration | 数据移动所需的持续时间。 | Int32 值（秒） |

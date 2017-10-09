@@ -15,7 +15,7 @@ wwwroot
  | | - run.csx
 ```
 
-*host.json* 文件包含一些特定于运行时的配置，位于 Function App 的根文件夹中。 有关可用设置的信息，请参阅 WebJobs.Script 存储库 wiki 中的 [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)。
+*host.json* 文件包含一些特定于运行时的配置，位于 Function App 的根文件夹中。 有关可用设置的信息，请参阅 [host.json 参考](../articles/azure-functions/functions-host-json.md)。
 
 每个函数有一个对应的文件夹，其中包含一个或多个代码文件、function.json 配置和其他依赖项。
 

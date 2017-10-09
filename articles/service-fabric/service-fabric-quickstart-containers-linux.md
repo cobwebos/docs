@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 601cfb136530d2595cded0dd147703d6b272c3ce
+ms.sourcegitcommit: d07d5d59632791a52bcb3a2f54bebe194cc76a54
+ms.openlocfilehash: 44eaaae123490934bc62b4ea30968656900d48fc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 10/04/2017
 
 ---
 
@@ -55,7 +55,7 @@ cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
 ## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>将容器部署到 Azure 中的 Service Fabric 群集
 若要将应用程序部署到 Azure 中的群集，可以使用自己的群集，或使用合作群集。
 
-合作群集是 Azure 上托管的免费限时 Service Fabric 群集。 这些群集由 Service Fabric 团队维护，任何人都可以在其中部署应用程序和了解平台。 若要使用合作群集，请[按照说明操作](http://aka.ms/tryservicefabric)。 
+合作群集是 Azure 上托管的免费限时 Service Fabric 群集。 这些群集由 Service Fabric 团队维护，任何人都可以在其中部署应用程序和了解平台。 若要使用合作群集，请[遵照说明](http://aka.ms/tryservicefabric)。 
 
 若要了解如何创建自己的群集，请参阅[在 Azure 上创建你的第一个 Service Fabric 群集](service-fabric-get-started-azure-cluster.md)。
 
@@ -64,7 +64,7 @@ cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
 >
 
 ### <a name="deploy-the-application-manifests"></a>部署应用程序清单 
-在 CLI 环境中安装 Service Fabric 命令行 (sfctl)
+在 CLI 环境中安装 [Service Fabric CLI (sfctl)](service-fabric-cli.md)
 
 ```azurecli-interactive
 pip3 install --user sfctl 
@@ -82,7 +82,7 @@ sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:190
 ./install.sh
 ```
 
-打开浏览器并导航到 Service Fabric Explorer，其网址为 http://\<Azure Service Fabric 群集 URL>:80 - 例如 `http://linh1x87d1d.westus.cloudapp.azure.com:80`。 展开“应用程序”节点，可以看到投票应用程序类型的条目以及创建的实例。
+打开浏览器并导航到 Service Fabric Explorer，其网址为 http://\<Azure Service Fabric 群集 URL>:19080/Explorer - 例如 `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`。 展开“应用程序”节点，可以看到投票应用程序类型的条目以及创建的实例。
 
 ![Service Fabric Explorer][sfx]
 
@@ -95,7 +95,7 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 
 若要故障转移前端容器，请执行以下步骤：
 
-1. 在群集中打开 Service Fabric Explorer - 例如 `http://linh1x87d1d.westus.cloudapp.azure.com:19080`。
+1. 在群集中打开 Service Fabric Explorer - 例如 `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`。
 2. 在树视图中单击“fabric:/Voting/azurevotefront”节点，展开分区节点（由 GUID 表示）。 注意树视图中的节点名称，它显示了当前正在运行容器的节点 - 例如 `_nodetype_4`
 3. 在树视图中展开“节点”节点。 单击正在运行容器的节点旁边的省略号（三个点）。
 4. 选择“重启”以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。

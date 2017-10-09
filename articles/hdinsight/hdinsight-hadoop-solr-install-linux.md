@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2017
+ms.date: 09/28/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: ad930ca023a36fa5874483873c82fdba11d117c7
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: c7a911474d6fb90f45565c90a72bfd407898ceba
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Solr
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/13/2017
 
 若要创建安装了 Solr 的群集，请使用[创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)文档中的步骤。 在创建过程中，使用以下步骤安装 Solr：
 
-1. 在“群集摘要”边栏选项卡中，选择“高级设置”，并选择“脚本操作”。 使用以下信息填充表格：
+1. 在“群集摘要”部分中，依次选择“高级设置”、“脚本操作”。 使用以下信息填充表格：
 
    * **名称**：输入脚本操作的友好名称。
    * **脚本 URI**：https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/13/2017
    * **ZOOKEEPER**：选中此选项以在 Zookeeper 节点上安装
    * **参数**：将此字段留空
 
-2. 在“脚本操作”边栏选项卡底部，使用“选择”按钮保存配置。 最后，使用“下一步”按钮返回到“群集摘要”
+2. 在“脚本操作”部分的底部，使用“选择”按钮保存配置。 最后，使用“下一步”按钮返回到“群集摘要”
 
 3. 在“群集摘要”页上，选择“创建”以创建群集。
 
