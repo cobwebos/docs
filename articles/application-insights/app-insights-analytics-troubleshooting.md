@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 82a1888cca687ce60f811c2c3cec6b971d4a0461
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: d48c7ca64b00dc9b575f06f18d1ea56393211307
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>排查 Application Insights 中的分析问题
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/12/2017
 1. 检查是否在浏览器中[启用了第三方 Cookie](#cookies)。 
 2. 是否使用了收藏夹、书签或保存的链接来打开 Analytics 门户？ 登录时使用的凭据与保存链接时使用的凭据是否不同？
 3. 尝试使用 InPrivate/incognito 浏览器窗口（在关闭所有此类窗口之后）。 需要提供凭据。 
-4. 打开另一个（普通）浏览器窗口并转到 [Azure](https://portal.azure.com)。 注销。 然后打开链接并使用正确的凭据登录。
+4. 打开另一个（普通）浏览器窗口并转到 [Azure](https://portal.azure.com)。 注销。然后打开链接并使用正确的凭据登录。
 5. 如果受信任区域设置不受支持，Edge 和 Internet Explorer 的用户也会收到此错误。
    
     检查 [Analytics 门户](https://analytics.applicationinsights.io)和 [Azure Active Directory 门户](https://portal.azure.com)是否位于相同的安全区域：
@@ -77,10 +77,10 @@ ms.lasthandoff: 04/12/2017
 ## <a name="e-e"></a>403 ...未授权
 ![403 ... 未授权](./media/app-insights-analytics-troubleshooting/050.png)
 
-你无权在 Analytics 中打开此应用程序。
+无权在 Analytics 中打开此应用程序。
 
-* 链接是其他人提供的吗？ 请求他们将你设置为[此资源组的读取者或参与者](app-insights-resources-roles-access-control.md)。
-* 保存链接时是否使用了不同的凭据？ 请打开 [Azure 门户](https://portal.azure.com)，注销，提供正确的凭据，然后重试打开此链接。
+* 链接是其他人提供的吗？ 请求他们你将设置为[此资源组的读取者或参与者](app-insights-resources-roles-access-control.md)。
+* 保存链接时是否使用了不同的凭据？ 请打开 [Azure 门户](https://portal.azure.com)，注销，提供正确的凭据，并重试打开此链接。
 
 ## <a name="html-storage"></a>403 ...HTML5 存储
 我们的门户使用 HTML5 localStorage 和 sessionStorage。

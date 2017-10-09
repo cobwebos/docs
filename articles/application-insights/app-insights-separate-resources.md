@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 0ee19b46a0e882571f6193471be69fa097d98936
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: cc9bc256d28a03d71237b763d671a3a745ade80e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
-部署 Web 应用程序的下一个版本时，你不希望将新版本和已发布的版本中的 [Application Insights](app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。 
+部署 Web 应用程序的下一个版本时，不希望将新版本和已发布的版本中的 [Application Insights](app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。 
 
 （如果系统是 Azure 云服务，有[另一种方法可以设置单独 ikey](app-insights-cloudservices.md)。）
 
 ## <a name="about-resources-and-instrumentation-keys"></a>关于资源和检测密钥
 
-为 Web 应用设置 Application Insights 监视时，你将在 Microsoft Azure 中创建 Application Insights *资源*。 为了查看和分析从你的应用收集的遥测数据，你将在 Azure 门户中打开此资源。 每个资源都由一个*检测密钥* (iKey) 予以标识。 在安装 Application Insights 程序包来监视你的应用时，你将为其配置检测密钥，以使其知道要将遥测数据发送到何处。
+为 Web 应用设置 Application Insights 监视时，会在 Microsoft Azure 中创建 Application Insights *资源*。 为了查看和分析从应用收集的遥测数据，会在 Azure 门户中打开此资源。 每个资源都由一个*检测密钥* (iKey) 予以标识。 在安装 Application Insights 程序包来监视应用时，将为其配置检测密钥，以使其知道要将遥测数据发送到何处。
 
-在不同的方案中，你通常选择使用不同的资源或使用单个共享资源：
+在不同的方案中，通常选择使用不同的资源或使用单个共享资源：
 
 * 不同的独立应用程序 - 为每个应用使用不同的资源和 ikey。
 * 单个业务应用程序的多个组件或角色 - 为所有组件应用使用[单个共享资源](app-insights-monitor-multi-role-apps.md)。 可以按 cloud_RoleName 属性对遥测数据进行筛选或分段。
@@ -85,14 +85,14 @@ ms.lasthandoff: 05/22/2017
 * **位置**是保留数据的位置。 当前无法更改它。 
 * **添加到仪表板**将资源的快速访问磁贴放在 Azure 主页上。 
 
-创建资源需要几秒钟。 完成后，你将看到警报。
+创建资源需要几秒钟。 完成后，会看到警报。
 
 （可编写 [PowerShell 脚本](app-insights-powershell-script-create-resource.md)，自动创建资源。）
 
 ### <a name="getting-the-instrumentation-key"></a>获取检测密钥
 检测密钥标识所创建的资源。 
 
-![单击“Essentials”、单击“检测密钥，然后按“CTRL+C”](./media/app-insights-separate-resources/02-props.png)
+![单击“Essentials”、单击“检测密钥，并按“CTRL+C”](./media/app-insights-separate-resources/02-props.png)
 
 需要将向其发送数据的所有资源的检测密钥。
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 05/22/2017
     </PropertyGroup>
     ```
 
-    这会生成一个名为 *yourProjectName*.BuildInfo.config 的文件。 发布过程会将此文件重命名为 BuildInfo.config。
+    这会生成一个名为 *yourProjectName*.BuildInfo.config 的文件。发布过程会将此文件重命名为 BuildInfo.config。
 
     当使用 Visual Studio 生成时，生成标签包含一个占位符 (AutoGen_...)。 但是，在使用 MSBuild 生成时，标签中会填充正确的版本号。
 
@@ -154,7 +154,7 @@ ms.lasthandoff: 05/22/2017
 但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 
 ### <a name="release-annotations"></a>版本注释
-如果使用 Visual Studio Team Services，则可以在每次发布新版本时将[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
+如果使用 Visual Studio Team Services，则可以在每次发布新版本时会[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
 
 ![图表中示例版本批注的屏幕截图](./media/app-insights-asp-net/release-annotation.png)
 ## <a name="next-steps"></a>后续步骤

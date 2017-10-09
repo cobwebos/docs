@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2015
+ms.date: 09/20/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 69ead621c179bf49f17ed3274be4b625fc587556
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 9efe10fa35c6a7c84e0d448bbe53127d16d20870
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
@@ -44,7 +44,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 ## <a name="view"></a>探索性能指标
 在 [Azure 门户](https://portal.azure.com)中，浏览到为应用程序设置的 Application Insights 资源。 “概述”边栏选项卡显示基本性能数据：
 
-单击任意图表查看更多详细信息，并查看更长时间段的结果。 例如，单击“请求”磁贴，然后选择时间范围：
+单击任意图表查看更多详细信息，并查看更长时间段的结果。 例如，单击“请求”磁贴，并选择时间范围：
 
 ![通过单击转到更多数据并选择时间范围](./media/app-insights-web-monitor-performance/appinsights-48metrics.png)
 
@@ -91,7 +91,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 对于单个检查，仅保留失败的代表性示例。
 
 ### <a name="other-metrics"></a>其他指标
-若要查看可显示的其他指标，请单击某个图，然后取消选中所有指标查看完整的可用集。 单击 (i) 查看每个指标的定义。
+要查看可显示的其他指标，请单击某个图，并取消选中所有指标查看完整的可用集。 单击 (i) 查看每个指标的定义。
 
 ![取消选中所有指标查看完整集](./media/app-insights-web-monitor-performance/appinsights-62allchoices.png)
 
@@ -106,7 +106,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 请仔细留意系统要求输入阈值所采用的单位。
 
-*我看不到“添加警报”按钮。* - 这是否是你拥有只读访问权限的组帐户？ 请咨询帐户管理员。
+*我看不到“添加警报”按钮。* - 这是否是你对其具有只读访问权限的组帐户？ 请咨询帐户管理员。
 
 ## <a name="diagnosis"></a>诊断问题
 下面是查找和诊断性能问题的一些提示：
@@ -117,9 +117,38 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 * 使用[实时指标流][livestream]监视正在运行的 Web 应用。
 * 使用[快照调试器][snapshot]捕获 .Net 应用程序的状态。
 
-## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-performance-investigation"></a>使用交互式性能调查来查找和修复性能瓶颈
+>[!Note]
+> 我们正在将 Application Insights 性能调查转换为交互式全屏体验。 以下文档首先介绍了新体验，然后回顾了以前的体验，为防止你仍然需要访问以前的体验，以前的体验在整个转换期间保持可用。
 
-可以使用新的 Application Insights 交互式性能调查来查找 Web 应用中拖慢总体性能的问题。 可以快速找到速度变慢的特定页面，并使用[探查工具](app-insights-profiler.md)来确定这些页面之间是否存在关联。
+## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-full-screen-performance-investigation"></a>使用交互式全屏性能调查来查找和修复性能瓶颈
+
+可以使用新的 Application Insights 交互式性能调查来查找 Web 应用中性能低下的操作。 可以快速选择一个特定的性能低下的操作，并使用[探查器](app-insights-profiler.md)深入到代码中来查明导致操作性能低下的根源。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 实际上，对于性能低下的每个操作，可以查看有多少用户交互受到影响。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，可以看到有三个峰值。 最左侧的峰值在 400ms 附近，表示响应体验很棒。 中间的峰值在 1.2s 附近，表示体验普普通通。 最后，在 3.6s 处有另一个小的峰值，它表示第 99 个百分位体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
+
+![“GET Customers/Details”三个持续时间峰值](./media/app-insights-web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
+
+若要更好地了解此操作的用户体验，我们可以选择一个更大的时间范围。 对于其中的操作特别慢的特定时间范围，还可以收缩时间范围。 在下面的示例中，我们从默认的 24 小时时间范围切换到了 7 天时间范围，然后在周二（12 日）与周三（13 日）之间放大到 9:47 到 12:47。 请注意，右侧的持续时间分布和示例数以及探查器跟踪数已更新。
+
+![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+
+为了收缩低性能体验的范围，我们接下来将对介于第 95 个百分位与第 99 个百分位之间的持续时间进行放大。 这些项表示有 4% 的用户交互特别慢。
+
+![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+
+现在，我们可以通过单击“Samples”按钮来查看有代表性的示例，或者通过单击“Profiler traces”按钮来查看有代表性的探查器跟踪。 在此示例中，在该时间范围和所关注的范围持续时间内为“GET Customers/Details”收集了四个跟踪。
+
+有时候，问题不在代码中，而在代码所调用的依赖项中。 可以在性能会审视图中切换到“依赖项”选项卡来调查此类性能低下的依赖项。 请注意，默认情况下，性能视图显示的是平均值趋势，但你实际希望查看的是第 95 个百分位（或第 99 个百分位，如果监视的是非常成熟的服务）。 在下面的示例中，我们聚焦于性能低下的 Azure BLOB 依赖项，我们在该依赖项中调用了 PUT fabrikamaccount。 良好的体验聚集在 40ms 附近，而对同一依赖项的性能低下调用要慢三倍，聚集在 120ms 附近。 它没有进行许多这类调用，因此没有积少成多，未导致相应操作显著变慢。 可以钻取到有代表性的示例和探查器跟踪，就像使用“操作”选项卡可做的那样。
+
+![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/app-insights-web-monitor-performance/SlowDependencies95thTrend.png)
+
+交互式全屏性能调查新增的另一个确实强大的功能是与 Insights 的集成。 Application Insights 能够进行检测并以见解响应回归的形式显示检测结果，同时还可以帮助你识别你决定重点调查的示例集中的常用属性。 查看所有可用洞察信息的最佳方式是切换到一个 30 天时间范围，然后选择“总体”来查看过去一个月的所有操作的洞察信息。
+
+![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/app-insights-web-monitor-performance/Performance30DayOveralllnsights.png)
+
+新的性能会审视图中的 Application Insights 简直可以如大海捞针般帮你查明导致 Web 应用用户体验糟糕的问题。
+
+## <a name="deprecated-find-and-fix-performance-bottlenecks-with-a-narrow-bladed-legacy-performance-investigation"></a>已弃用：使用窄的边栏选项卡式旧式性能调查来查找和修复性能瓶颈
+
+可以使用旧式 Application Insights 边栏选项卡式性能调查来查找 Web 应用中拖慢总体性能的问题。 可以查找拖慢性能的具体页面，并且可以使用[探查器](app-insights-profiler.md)深入到代码中来查明这些问题的根源。 
 
 ### <a name="create-a-list-of-slow-performing-pages"></a>创建性能不佳页面的列表 
 

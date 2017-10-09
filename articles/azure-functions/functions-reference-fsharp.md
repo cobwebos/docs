@@ -7,7 +7,7 @@ author: sylvanc
 manager: jbronsk
 editor: 
 tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构，F#"
+keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, F#"
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
 ms.devlang: fsharp
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-translationtype: Human Translation
-ms.sourcegitcommit: 4544629c47326d448cd99b5d96d79666a56f0274
-ms.openlocfilehash: 1691d378263f6b4ce5072f5c621d8db02f774b5f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: acb6052343acc34eb2365017ac2a49f9a4af51a2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
@@ -79,7 +80,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>日志记录
-若要记录以 F # 输出传送到 [流式传输日志](../app-service-web/web-sites-streaming-logs-and-console.md) 中，函数应采取 `TraceWriter` 参数。 为了保持一致，我们建议参数名为 `log`。 例如：
+若要记录以 F # 输出传送到 [流式传输日志](../app-service/web-sites-enable-diagnostic-log.md) 中，函数应采取 `TraceWriter` 参数。 为了保持一致，我们建议参数名为 `log`。 例如：
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -166,7 +167,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`。
 
-如果需要引用私有程序集，可以将程序集文件上传到  `bin` 与功能相关的文件，并通过使用文件名（例如`#r "MyAssembly.dll"`）来引用它. 有关如何将文件上载到函数文件夹的信息，请参阅下一部分中有关程序包管理的信息。
+如果需要引用私有程序集，可以将程序集文件上传到  `bin` 与功能相关的文件，并通过使用文件名（例如`#r "MyAssembly.dll"`）来引用它. 有关如何将文件上传到函数文件夹的信息，请参阅下一部分中有关程序包管理的信息。
 
 ## <a name="editor-prelude"></a>Editor Prelude
 支持 F # 编译器服务的编辑器检测不到命名空间和 Azure 函数会自动包括在内的程序集。 在这种情况下，包含可帮助找到使用的程序集并显式地打开命名空间的 prelude，这会很有帮助。 例如：
@@ -189,7 +190,7 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 <a name="package"></a>
 
 ## <a name="package-management"></a>包管理
-若要在 F # 函数中使用 NuGet 包，可将 `project.json` 文件添加到函数应用程序的文件系统中的函数的文件夹。 下面是一个示例 `project.json` 文件，其中将 NuGet 包引用添加到 `Microsoft.ProjectOxford.Face` 1.1.0 版：
+要在 F # 函数中使用 NuGet 包，可将 `project.json` 文件添加到函数应用程序的文件系统中的函数的文件夹。 下面是一个示例 `project.json` 文件，其中将 NuGet 包引用添加到 `Microsoft.ProjectOxford.Face` 1.1.0 版：
 
 ```json
 {
@@ -205,13 +206,13 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 
 只支持.NET Framework 4.6，因此请确保 `project.json` 文件指定 `net46`如下所示。
 
-上载 `project.json` 文件时，运行时获取包，并自动将引用添加到包程序集。 无需添加 `#r "AssemblyName"` 指令。 只需添加所需 `open` 语句到 `.fsx` 文件。
+上传 `project.json` 文件时，运行时获取包，并自动将引用添加到包程序集。 无需添加 `#r "AssemblyName"` 指令。 只需添加所需 `open` 语句到 `.fsx` 文件。
 
-可能希望将自动引用程序集放入编辑器 prelude，以提高编辑器与 F # 编译服务的交互。
+可能希望会自动引用程序集放入编辑器 prelude，以提高编辑器与 F # 编译服务的交互。
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>如何添加 `project.json` 文件到 Azure 函数
 1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 通过此操作，还可以访问显示程序包安装输出位置的流式日志日志。
-2. 若要上载 `project.json` 文件，请使用[如何更新函数应用程序文件](functions-reference.md#fileupdate) 中描述的其中一种方法。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
+2. 若要上传  `project.json`文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
 3. 添加 `project.json` 文件后，将看到类似于函数流式日志中的实例的输出：
 
 ```
@@ -280,10 +281,5 @@ let mylog(log: TraceWriter, text: string) =
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [ Azure Functions 测试](functions-test-a-function.md)
 * [Azure Functions 缩放](functions-scale.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

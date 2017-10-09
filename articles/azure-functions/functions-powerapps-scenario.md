@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 0fd127293edfaf7eb19a4561ab8d0a19f993bcad
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -30,6 +30,8 @@ ms.lasthandoff: 09/13/2017
 本主题基于风力涡轮机的维护方案生成应用。 该主题介绍如何调用在[为函数创建 OpenAPI 定义](functions-openapi-definition.md)中定义的函数。 此函数确定风力涡轮机上的紧急修复是否经济高效。
 
 ![PowerApps 中已完成的应用](media/functions-powerapps-scenario/finished-app.png)
+
+有关从 Microsoft Flow 调用同一函数的信息，请参阅[从 Microsoft Flow 调用函数](functions-flow-scenario.md)。
 
 本主题介绍如何执行下列操作：
 
@@ -251,4 +253,4 @@ ms.lasthandoff: 09/13/2017
 
 若要了解有关 PowerApps 的更多详细信息，请参阅 [PowerApps 简介](https://powerapps.microsoft.com/tutorials/getting-started/)。
 
-若要了解其他有关使用 Azure Functions 的有趣方案，请参阅[创建与 Azure 逻辑应用集成的函数](functions-twitter-email.md)。
+若要了解其他有关使用 Azure Functions 的有趣方案，请参阅[从 Microsoft Flow 调用函数](functions-flow-scenario.md)和[创建与 Azure 逻辑应用集成的函数](functions-twitter-email.md)。

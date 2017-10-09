@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: e6f5798b260c4923452dcc96c18d4839f5c34bfc
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 3229fe0b5aacbbc716039a4a6abfd235dbc4c4f7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
 在 Azure Functions 中，Function App 提供各个函数的执行上下文。 Function App 行为适用于由给定 Function App 托管的所有函数。 本主题介绍如何在 Azure 门户中配置和管理 Function App。
 
-若要开始，请转到 [Azure 门户](http://portal.azure.com)，然后使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入 Function App 的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
+要开始，请转到 [Azure 门户](http://portal.azure.com)，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入函数应用的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
 
 ![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -57,7 +57,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 + [身份验证](#auth)
 + [API 定义](#swagger)
 
-若要深入了解如何使用应用服务设置，请参阅[配置 Azure 应用服务设置](../app-service-web/web-sites-configure.md)。
+若要深入了解如何使用应用服务设置，请参阅[配置 Azure 应用服务设置](../app-service/web-sites-configure.md)。
 
 ### <a name="editor"></a>应用服务编辑器
 
@@ -120,7 +120,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 | | |
 |-|-|
-| ![Azure 门户中的 Function App API Swagger 定义](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions 支持 Swagger，以便使客户更轻松地使用 HTTP 触发的函数。 有关使用 Swagger 创建 API 定义的详细信息，请访问 [开始使用 Azure 中的 API 应用、ASP.NET 和 Swagger](../app-service-api/app-service-api-dotnet-get-started.md)。 还可以使用函数代理来定义多个函数的单个 API 图面。 有关详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
+| ![Azure 门户中的 Function App API Swagger 定义](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions 支持 Swagger，以便使客户更轻松地使用 HTTP 触发的函数。 有关使用 Swagger 创建 API 定义的详细信息，请访问 [Azure 中的 API 应用和 Swagger 入门](../app-service/app-service-web-tutorial-rest-api.md)。 还可以使用函数代理来定义多个函数的单个 API 图面。 有关详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
 
 ![配置函数应用的 API](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 
@@ -128,7 +128,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [配置 Azure 应用服务设置](../app-service-web/web-sites-configure.md)
++ [配置 Azure 应用服务设置](../app-service/web-sites-configure.md)
 + [Azure Functions 的连续部署](functions-continuous-deployment.md)
 
 

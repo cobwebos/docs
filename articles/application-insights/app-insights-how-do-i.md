@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 618fcfa3354ef5900d89546ffb7c222a852fe4f8
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 9e6d18e2111fc0d69125a1b3dc5328484b970e82
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/22/2017
 2. 针对异常计数指标[设置警报](app-insights-alerts.md)
 
 ### <a name="email-on-an-event-in-my-app"></a>应用中发生某个事件时发送电子邮件
-假设你希望在发生特定的事件时收到电子邮件。 Application Insights 不直接提供此功能，但可以[在指标超过某个阈值时发送警报](app-insights-alerts.md)。
+假设希望在发生特定的事件时收到电子邮件。 Application Insights 不直接提供此功能，但可以[在指标超过某个阈值时发送警报](app-insights-alerts.md)。
 
 可以针对[自定义指标](app-insights-api-custom-events-metrics.md#trackmetric)设置警报，但不能针对自定义事件设置警报。 编写一些代码，以便在发生事件时增大指标：
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 05/22/2017
 
 将平均期限设置为最小值。
 
-当指标高于和低于阈值时，你将收到电子邮件。
+当指标高于和低于阈值时，将收到电子邮件。
 
 考虑的要点：
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 05/22/2017
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
 
 * 应用中的多个角色：使用单个 Application Insights 资源，并对 cloud_Rolename 进行筛选。 [了解详细信息](app-insights-monitor-multi-role-apps.md)
-* 分隔开发、测试和发布版本：使用不同 Application Insights 资源。 从 web.config 中选取检测密钥。 [了解详细信息](app-insights-separate-resources.md)
+* 分隔开发、测试和发布版本：使用不同 Application Insights 资源。 从 web.config 中选取检测密钥。[了解详细信息](app-insights-separate-resources.md)
 * 报告生成版本：使用遥测初始值设定项添加属性。 [了解详细信息](app-insights-separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>监视后端服务器和桌面应用
@@ -104,7 +104,7 @@ ms.lasthandoff: 05/22/2017
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>筛选出匿名用户或经过身份验证的用户
-如果用户要登录，你可以设置[经过身份验证的用户 ID](app-insights-api-custom-events-metrics.md#authenticated-users)。 （不会自动设置此 ID。）
+如果用户要登录，可以设置[经过身份验证的用户 ID](app-insights-api-custom-events-metrics.md#authenticated-users)。（不会自动设置此 ID。）
 
 然后，可以：
 
@@ -124,8 +124,8 @@ ms.lasthandoff: 05/22/2017
 
 如果想要查看用户列表以及他们查看过哪些页面或登录频率等相关数据，可以使用两个选项：
 
-* [设置经过身份验证的用户 ID](app-insights-api-custom-events-metrics.md#authenticated-users)，[导出到数据库](app-insights-code-sample-export-sql-stream-analytics.md)，然后使用适当的工具分析用户数据。
-* 如果只有少量的用户，可以发送自定义事件或指标，并在其中使用所需的数据作为指标值或事件名称，将用户 ID 设置为属性。 若要分析页面视图，可以替换标准的 JavaScript trackPageView 调用。 若要分析服务器端遥测数据，可以使用遥测初始值设定项，将用户 ID 添加到所有服务器遥测数据。 然后可以筛选和分段指标，并按用户 ID 执行搜索。
+* [设置经过身份验证的用户 ID](app-insights-api-custom-events-metrics.md#authenticated-users)，[导出到数据库](app-insights-code-sample-export-sql-stream-analytics.md)，并使用适当的工具分析用户数据。
+* 如果只有少量的用户，可以发送自定义事件或指标，并在其中使用所需的数据作为指标值或事件名称，将用户 ID 设置为属性。 若要分析页面视图，可以替换标准的 JavaScript trackPageView 调用。 要分析服务器端遥测数据，可以使用遥测初始值设定项，将用户 ID 添加到所有服务器遥测数据。 然后可以筛选和细分指标，并按用户 ID 执行搜索。
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>减少从应用到 Application Insights 的流量
 * 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中，禁用所有不需要用到的模块，例如性能计数器收集器。
@@ -147,7 +147,7 @@ ms.lasthandoff: 05/22/2017
 
 
 
-若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 中的相关行。 例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器
 可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。

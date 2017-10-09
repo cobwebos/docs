@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: be871b1c5f131b0ff6de1f74ed3e6f12b7a482ce
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 5aed57e69924f03221fc0d9909889358d80df9a4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="generate-the-openapi-definition"></a>生成 OpenAPI 定义
 
-现在即可生成 OpenAPI 定义。 其他 Microsoft 技术（例如 [API 应用](../app-service-api/app-service-api-dotnet-get-started.md)、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md)）以及第三方开发者工具（例如 [Postman](https://www.getpostman.com/docs/importing_swagger) 和[其他更多包](http://swagger.io/tools/)）也可以使用此定义。
+现在即可生成 OpenAPI 定义。 其他 Microsoft 技术（例如 API 应用、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md)）以及第三方开发者工具（例如 [Postman](https://www.getpostman.com/docs/importing_swagger) 和[其他更多包](http://swagger.io/tools/)）也可以使用此定义。
 
 1. 请仅选择 API 支持的“谓词”（本示例中为 POST）。 这样可以生成更干净的 API 定义。
 
@@ -175,20 +175,9 @@ ms.lasthandoff: 08/29/2017
     此定义描述为“模板”，因为它需要更多元数据才能组成完整的 OpenAPI 定义。 将在下一步修改定义。
 
 ## <a name="modify-the-openapi-definition"></a>修改 OpenAPI 定义
-具有模板定义后，接下来可以修改模板，以提供其他关于 API 操作和数据结构的元数据。 在本教程中，可以将以下修改的定义直接粘贴到“API 定义”窗格，然后单击“保存”。
+具有模板定义后，接下来可以修改模板，以提供其他关于 API 操作和数据结构的元数据。 在“API 定义”中，删除从 `post` 到定义的底部生成的定义，粘贴以下内容，然后单击“保存”。
 
 ```yaml
-swagger: '2.0'
-info:
-  title: Turbine Repair
-  version: 1.0.0
-host: function-demo-energy.azurewebsites.net
-basePath: /
-schemes:
-  - https
-  - http
-paths:
-  /api/TurbineRepair:
     post:
       operationId: CalculateCosts
       description: Determines if a technician should be sent for repair
@@ -248,7 +237,7 @@ securityDefinitions:
     in: query
 ```
 
-话虽如此，但了解对默认模板做出的修改类型也很重要：
+在此示例中，可以只粘贴已更新的元数据，但请务必了解对默认模板做出的修改类型：
 
 + 指定 API 生成并使用 JSON 格式的数据。
 
@@ -297,7 +286,7 @@ securityDefinitions:
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建一个函数

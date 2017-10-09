@@ -18,10 +18,10 @@ ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 77538db308c657392ac8bc6a0b7665f9b8427256
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 891640526b25c030f7e01d79e981aad517dfafb4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介  
@@ -37,7 +37,7 @@ Azure Functions 是用于在云中轻松运行小段代码或“函数”的一�
 * **引入自己的依赖项** - Functions 支持 NuGet 和 NPM，因此用户可以使用自己的常用库。  
 * **集成安全性** - 使用 OAuth 提供程序（如 Azure Active Directory、Facebook、Google、Twitter 和 Microsoft 帐户）保护 HTTP 触发的函数。  
 * **简化集成** - 轻松利用 Azure 服务和软件即服务 (SaaS) 产品/服务。 有关一些示例，请参阅[集成部分](#integrations)。  
-* **灵活开发** - 直接在门户中编写函数代码，或者通过 GitHub、Visual Studio Team Services 和其他 [受支持的开发工具](../app-service-web/web-sites-deploy.md#deploy-using-an-ide)设置持续集成和部署代码。  
+* **灵活开发** - 直接在门户中编写函数代码，或者通过 [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md)、[Visual Studio Team Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) 和其他[受支持的开发工具](../app-service/app-service-deploy-local-git.md)设置持续集成和部署代码。  
 * **开放源代码** - Functions 运行时是一个开放源代码， [可在 GitHub 上找到](https://github.com/azure/azure-webjobs-sdk-script)。  
 
 ## <a name="what-can-i-do-with-functions"></a>使用 Functions 可以做什么？
@@ -47,7 +47,7 @@ Functions 提供模板，以帮助用户从主要方案开始，包括以下模�
 
 * **HTTPTrigger** - 使用 HTTP 请求触发执行代码。 有关示例，请参阅[创建第一个函数](functions-create-first-azure-function.md)。
 * **TimerTrigger** - 按预定义的计划执行清除或其他批处理任务。 有关示例，请参阅[创建由计时器触发的函数](functions-create-scheduled-function.md)。
-* **GitHub webhook** - 响应 GitHub 存储库中发生的事件。 有关示例，请参阅[创建由 GitHub webhook 触发的函数](functions-create-a-web-hook-or-api-function.md)。
+* **GitHub webhook** - 响应 GitHub 存储库中发生的事件。 有关示例，请参阅[创建由 GitHub webhook 触发的函数](functions-create-github-webhook-triggered-function.md)。
 * **Generic webhook** - 处理来自支持 webhook 的任何服务的 webhook HTTP 请求。 有关示例，请参阅[创建由通用 webhook 触发的函数](functions-create-generic-webhook-triggered-function.md)。
 * **BlobTrigger** - Azure 存储 blob 添加到容器时，处理这些 blob。 可以使用此函数调整图像大小。 有关详细信息，请参阅 [Blob 存储帐户绑定](functions-bindings-storage-blob.md)。
 * **QueueTrigger** - 当消息到达 Azure 存储队列时，响应这些消息。 有关示例，请参阅[创建与其他 Azure 服务相连接的函数](functions-create-an-azure-connected-function.md)。
@@ -87,7 +87,7 @@ Azure Functions 有两种定价计划。 请选择最适合自己的那种：
   介绍可用于测试函数的各种工具和技巧。
 * [如何缩放 Azure Functions](functions-scale.md)  
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
-* [详细了解 Azure 应用服务](../app-service/app-service-value-prop-what-is.md)  
+* [详细了解 Azure 应用服务](../app-service/app-service-web-overview.md)  
   Azure Functions 利用 Azure 应用服务执行核心功能，例如部署、环境变量和诊断。 
 
 

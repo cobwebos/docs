@@ -12,19 +12,19 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/12/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 29fee079bd8b2775d7b45fa37cadb73635a2eb60
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 38742fd84dafc3fb68829a55ab7be0827ad0b451
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>添加或更改管理订阅或服务的 Azure 管理员角色
 
-用户可以更改管理 Azure 订阅或管理订阅中使用的 Azure 服务的 Azure 管理员。 若要查看 Azure 计费信息及管理订阅，必须以帐户管理员身份登录[帐户中心](https://account.windowsazure.com/Home/Index)。 
+用户可以更改管理 Azure 订阅或管理订阅中使用的 Azure 服务的 Azure 管理员。 若要查看 Azure 计费信息及管理订阅，必须以帐户管理员身份登录“帐户中心”。 
 
 <a name="add-an-admin-for-a-subscription"></a>
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 09/13/2017
 
 | 管理角色 | 限制 | 说明 |
 | --- | --- | --- |
-| 帐户管理员 (AA) |每个 Azure 帐户 1 个帐户管理员 |这是注册或购买了 Azure 订阅的人员，有权访问[帐户中心](https://account.windowsazure.com/Home/Index)并执行各种管理任务。 其中包括能够创建订阅、取消订阅、更改订阅的帐单，以及更改服务管理员。 |
+| 帐户管理员 (AA) |每个 Azure 帐户 1 个帐户管理员 |这是注册或购买了 Azure 订阅的人员，有权访问[帐户中心](https://account.azure.com/Subscriptions)并执行各种管理任务。 其中包括能够创建订阅、取消订阅、更改订阅的帐单，以及更改服务管理员。 |
 | 服务管理员 (SA) |每个 Azure 订阅 1 个服务管理员 |此角色有权管理 [Azure 门户](https://portal.azure.com)中的服务。 默认情况下，新订阅的帐户管理员也是服务管理员。 |
 | [Azure 经典门户](https://manage.windowsazure.com)中的共同管理员 (CA) |每个订阅 200 个共同管理员 |此角色具有与服务管理员一样的访问特权，但不能更改订阅与 Azure 目录之间的关联关系。 |
 

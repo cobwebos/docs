@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 252e1fb070bcdc11494f6f37a9a1ee03fa50509e
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: ddfed2be315ae261e9c3015aa21d0b44405d6109
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
@@ -50,6 +50,7 @@ ms.lasthandoff: 09/14/2017
 
 ![配置边栏选项卡][linked app services]
 
+## <a name="disable-the-profiler"></a>禁用探查器
 若要为单个应用服务实例停止或重新启动探查器，可在“Web 作业”中的“应用服务资源”中找到相应的实例。 若要删除探查器，请查看“扩展”下面的选项。
 
 ![为 Web 作业禁用探查器][disable-profiler-webjob]
@@ -91,9 +92,13 @@ ms.lasthandoff: 09/14/2017
 * **计数** - 在边栏选项卡的时间范围中这些请求的数目。
 * **中间值** - 应用响应请求所花费的平均时间。 在所有响应中，有一半的响应速度超过此值。
 * **第 95 百分位**：95% 的响应速度超过此值。 如果此数字与中间值有很大的差异，可能是应用存在间歇性的问题。 （或者，原因可能出在某个设计功能上，例如缓存。）
-* **示例** - 一个图标，指示探查器已捕获此操作的堆栈跟踪。
+* **探查器跟踪** - 一个图标，指示探查器已捕获此操作的堆栈跟踪。
 
-单击“示例”图标会打开跟踪浏览器。 该浏览器显示探查器捕获的多个样本（已按响应时间分类）。
+单击“查看”按钮可打开跟踪浏览器。 该浏览器显示探查器捕获的多个样本（已按响应时间分类）。
+
+如果正在使用“预览性能”边栏选项卡，请转到右下角的“执行操作”部分查看探查器跟踪。 单击“探查器跟踪”按钮。
+
+![Application Insights 性能边栏选项卡预览探查器跟踪][performance-blade-v2-examples]
 
 选择一个样本可以显示执行该请求所花费的时间的代码级细节。
 
@@ -158,6 +163,10 @@ CPU 正忙于执行指令。
 
 ## <a id="troubleshooting"></a>故障排除
 
+### <a name="too-many-active-profiling-sessions"></a>活动分析会话太多
+
+目前，可以对同一服务计划上运行的最多 4 个 Azure Web 应用和部署槽启用探查器。 如果看到探查器 Web 作业报告活动分析会话太多，则需要将一些 Web 应用移到不同的服务计划。
+
 ### <a name="how-can-i-know-whether-application-insights-profiler-is-running"></a>如何确定 Application Insights 探查器是否正在运行？
 
 探查器在 Web 应用中以连续 Web 作业的形式运行。 可以在 https://portal.azure.com 中打开 Web 应用资源，并在“Web 作业”边栏选项卡中查看“ApplicationInsightsProfiler”状态。 如果探查器未运行，请打开“日志”查看详细信息。
@@ -204,10 +213,7 @@ CPU 正忙于执行指令。
 此问题的解决方案是将以下附加部署参数添加到 Web 部署任务：
 
 ```
--skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*' 
--skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*'
--skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
--skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+-skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
 ```
 
 这将删除 App Insights Profiler 所用的文件夹，并取消阻止重新部署进程。 它不会影响当前正在运行的 Profiler 实例。
@@ -237,6 +243,7 @@ ASP.NET Core 应用程序需要安装 Microsoft.ApplicationInsights.AspNetCore N
 
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
+[performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png
 [trace-explorer]: ./media/app-insights-profiler/trace-explorer.png
 [trace-explorer-toolbar]: ./media/app-insights-profiler/trace-explorer-toolbar.png
 [trace-explorer-hint-tip]: ./media/app-insights-profiler/trace-explorer-hint-tip.png

@@ -17,10 +17,10 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 9c6eab099057ef91f79ff1a97e1cc1bd397fc946
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 9b8f96b34b53982c469273a3df9751ceb7930d60
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -52,8 +52,7 @@ Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理
 
 ![](media/container-service-monitoring-oms/image4.png)
 
-3. 需在此页面上输入 `wsid`（OMS 工作区 ID）和 `wskey`（工作区 ID 的 OMS 主密钥）。 若要获取 `wsid` 和 `wskey`，需在 <https://mms.microsoft.com> 创建 OMS 帐户。
-请按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
+3. 需在此页面上输入 `wsid`（OMS 工作区 ID）和 `wskey`（工作区 ID 的 OMS 主密钥）。 若要获取 `wsid` 和 `wskey`，需在 <https://mms.microsoft.com> 创建 OMS 帐户。请按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
