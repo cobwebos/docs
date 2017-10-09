@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: jsnow
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 07aaefc0b2f806178651c2192f6abcbae9a31f83
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 2ea119b56f467f57b5929dec05bfd645028578ef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>快速入门：将自定义域名添加到 Azure Active Directory
@@ -62,7 +62,7 @@ ms.lasthandoff: 08/31/2017
 现在，可以 [分配包含自定义域名的用户名](active-directory-users-create-azure-portal.md)。 可使用自定义域名创建基于云的用户帐户，或更新先前同步的本地用户帐户信息。 还可以使用 [Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) 或[图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations) 更改已同步的用户帐户域后缀信息。
 
 > [!TIP]
-> 最多可添加 900 个自定义域名，但只有一个域名可[设置为 Azure AD 目录的主域名](active-directory-domains-manage-azure-portal.md#set-the-primary-domain-name-for-your-azure-ad-directory)，作为创建新帐户时默认使用的域名。
+> 最多可添加 900 个托管域名。 若要配置所有域以便与 Active Directory 本地联合，最多可在每个目录中添加 450 个域名。 有关详细信息，请参阅[联合域名和托管域名](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names)。
 
 ## <a name="troubleshooting"></a>故障排除
 如果无法验证自定义域名，请尝试以下故障排除步骤：

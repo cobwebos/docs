@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 09/26/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 72bd39bcf720cf5704274fcdfa0f2b8fc44a77bc
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 7bb8868ab813d0de992e92a921b2d204b0ac60c6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -51,9 +51,9 @@ ms.lasthandoff: 08/07/2017
 |AADSTS80005|验证遇到了不可预知的 WebException|暂时性的错误。 重试请求。 如果持续失败，请与 Microsoft 支持人员联系。
 |AADSTS80007|与 Active Directory 通信时出错|检查代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理中心登录失败原因
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 
-通过在 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上查看[登录活动报表](../active-directory-reporting-activity-sign-ins.md)，开始排查用户登录问题。
+如果你的租户有关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)。
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 08/07/2017
 
 ### <a name="exchange-powershell-issue"></a>Exchange PowerShell 问题
 
-如果在运行 `Set-OrganizationConfig` Exchange PowerShell 命令时发现 错误`Set-OrganizationConfig`“找不到与参数名‘PerTenantSwitchToESTSEnabled’相匹配的参数”，请联系 Microsoft 支持部门。
+如果看到“找不到与参数名称‘PerTenantSwitchToESTSEnabled’\.相匹配的参数” 错误（在运行 `Set-OrganizationConfig` Exchange PowerShell 命令时），请联系 Microsoft 支持部门。
 
 ### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync 不能正常工作
 

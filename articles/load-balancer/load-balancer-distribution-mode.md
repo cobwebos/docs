@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5c08b1361dfd2d13e0e7ca2ce6f9a2cf357a8dff
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: a6b3c346358e0aed4c60c4903932236edc237379
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -99,7 +99,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
 
 ### <a name="cloud-service-configuration-to-change-distribution-mode"></a>用于更改分发模式的云服务配置
 
-可利用用于 .NET 2.5 的 Azure SDK（于 11 月发布）来更新云服务。 云服务的终结点设置在 .csdef 中进行。 若要更新云服务部署的负载均衡器分发模式，需要进行部署升级。
+可以利用用于 .NET 2.5 的 Azure SDK 来更新云服务。 云服务的终结点设置在 .csdef 中进行。 若要更新云服务部署的负载均衡器分发模式，需要进行部署升级。
 下面是终结点设置的 .csdef 更改的示例：
 
 ```xml

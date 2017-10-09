@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中创建 Service Fabric 群集 | Microsoft Docs"
-description: "了解如何使用模板在 Azure 中创建 Windows 群集。"
+title: "在 Azure 中创建 Windows Service Fabric 群集 | Microsoft Docs"
+description: "了解如何使用 PowerShell 将 Windows Service Fabric 群集部署到现有 Azure 虚拟网络。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,23 +12,23 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/06/2017
+ms.date: 09/26/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5d56fd468998ee4b1253b47aa133812e0141062b
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 7cee4f8d68062dcfd2b6f61d55319160a2a80a98
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
-# <a name="deploy-a-secure-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>将安全的 Service Fabric Windows 群集部署到 Azure 虚拟网络
-本教程是一个系列中的第一部分。 将了解如何创建在 Azure 中运行的 Service Fabric 群集 (Windows) 并将其部署到现有虚拟网络 (VNET) 和子网。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。  若要创建 Linux 群集，请参阅[使用模板在 Azure 上创建安全的 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
+# <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>将 Service Fabric Windows 群集部署到 Azure 虚拟网络
+本教程是一个系列中的第一部分。 可以了解到如何使用 PowerShell 将 Windows Service Fabric 群集部署到现有 Azure 虚拟网络 (VNET) 及子网。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。  若要使用 Azure CLI 创建 Linux 群集，请参阅[在 Azure 上创建安全的 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 使用模板在 Azure 中创建 VNET
+> * 使用 PowerShell 在 Azure 中创建 VNET
 > * 创建密钥保管库并上传证书
 > * 使用 PowerShell 在 Azure 中创建安全的 Service Fabric 群集
 > * 使用 X.509 证书保护群集
@@ -37,7 +37,7 @@ ms.lasthandoff: 09/25/2017
 
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
-> * 使用模板在 Azure 上创建安全的群集
+> * 在 Azure 上创建安全群集
 > * [部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>先决条件
@@ -46,10 +46,7 @@ ms.lasthandoff: 09/25/2017
 - 安装 [Service Fabric SDK 和 PowerShell 模块](service-fabric-get-started.md)
 - 安装 [Azure PowerShell 模块 4.1 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
 
-以下步骤将创建一个五节点 Service Fabric 群集。 该群集由置于密钥保管库中的自签名证书保护。 
-
-若要计算在 Azure 中运行 Service Fabric 群集的成本，请使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
-有关创建 Service Fabric 群集的详细信息，请参阅[使用 Azure Resource Manager 创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。
+以下步骤将创建一个五节点 Service Fabric 群集。 若要计算在 Azure 中运行 Service Fabric 群集的成本，请使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>登录到 Azure，然后选择订阅
 本指南使用 Azure PowerShell。 开始新的 PowerShell 会话时，请登录到 Azure 帐户并选择订阅，并执行 Azure 命令。
@@ -181,33 +178,17 @@ Write-Host "Certificate Thumbprint: " $output.CertificateThumbprint
 ```
 
 ## <a name="deploy-the-service-fabric-cluster"></a>部署 Service Fabric 群集
-在网络资源完成部署并将证书上传到密钥保管库后，下一步是将 Service Fabric 群集部署到子网中的 VNET 以及为 Service Fabric 群集指定的 NSG。 在本教程中，Service Fabric 资源管理器模板将预配置为使用上一步中设置的 VNET、子网和 NSG 的名称。
-
-下载以下 Resource Manager 模板和参数文件：
+网络资源部署完成后，下一步是将 Service Fabric 群集部署到子网中的 VNET 以及为 Service Fabric 群集指定的 NSG。 将群集部署到现有 VNET 和子网（在本文前面已部署）需要资源管理器模板。  有关详细信息，请参阅[使用 Azure 资源管理器创建群集](service-fabric-cluster-creation-via-arm.md)。 在本教程系列中，模板预配置为使用上一步中设置的 VNET、子网和 NSG 的名称。  下载以下 Resource Manager 模板和参数文件：
 - [cluster.json][cluster-arm]
 - [cluster.parameters.json][cluster-parameters-arm]
 
-针对部署填充 `cluster.parameters.json` 文件中的空参数，其中包括群集证书的[密钥保管库信息](service-fabric-cluster-creation-via-arm.md#set-up-a-key-vault)。
+填写用于部署的 cluster.parameters.json 文件中的空的 clusterName、adminUserName、adminPassword、certificateThumbprint、certificateUrlValue 和 sourceVaultValue 参数。  如果现有证书已上传到密钥保管库，请填写该证书的 certificateThumbprint、certificateUrlValue 和 sourceVaultValue 值。
 
 使用以下 PowerShell 命令部署 Resource Manager 模板和参数文件，以创建 Service Fabric 群集：
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
 ```
-
-## <a name="modify-the-certificate--access-service-fabric-explorer"></a>修改证书并访问 Service Fabric Explorer 
-
-1. 双击证书打开证书导入向导。
-
-2. 使用默认设置，但务必勾选“将此密钥标记为可导出” 复选框（在“私钥保护”步骤中）。 本教程中稍后将 Azure 容器注册表配置为 Service Fabric 群集身份验证时，Visual Studio 需要导出该证书。
-
-3. 现在可以在浏览器中打开 Service Fabric Explorer。 为此，请使用 Web 浏览器导航到群集的 ManagementEndpoint URL，然后选择已保存到计算机的证书。
-
->[!NOTE]
->打开 Service Fabric Explorer 时会看到证书错误，因为使用的是自签名证书。 在Microsoft Edge 中，必须单击“详细信息”，然后单击“转到网页”链接。 在 Chrome 中，必须单击“高级”，然后单击“继续”链接。
-
->[!NOTE]
->如果群集创建失败，始终可以重新运行命令，这样可以更新已部署的资源。 如果在失败部署的过程中创建了证书，则将创建新的证书。 若要排查群集创建问题，请参阅[使用 Azure Resource Manager 创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。
 
 ## <a name="connect-to-the-secure-cluster"></a>连接到安全群集
 使用连同 Service Fabric SDK 一起安装的 Service Fabric PowerShell 模块连接到群集。  首先，将证书安装到计算机上当前用户的“个人(我的)”存储中。  运行以下 PowerShell 命令：
@@ -237,13 +218,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster.southcentralus.clou
 Get-ServiceFabricClusterHealth
 ```
 
-```azurecli
-sfctl cluster health
-```
-
 ## <a name="clean-up-resources"></a>清理资源
-
-群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
+本教程系列中的其他文章将使用刚才创建的群集。 如果没有立即转到下一篇文章，可能需要删除该群集，避免产生费用。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
 登录到 Azure，选择要删除的群集的订阅 ID。  可通过登录到 [Azure 门户](http://portal.azure.com)查找订阅 ID。 使用 [Remove-AzureRMResourceGroup cmdlet](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组和所有群集资源。
 
@@ -256,17 +232,17 @@ Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 使用模板在 Azure 中创建 VNET
+> * 使用 PowerShell 在 Azure 中创建 VNET
 > * 创建密钥保管库并上传证书
 > * 使用 PowerShell 在 Azure 中创建安全的 Service Fabric 群集
 > * 使用 X.509 证书保护群集
 > * 使用 PowerShell 连接到群集
 > * 删除群集
 
-接下来，转到以下教程了解如何部署现有应用程序。
+接下来，转到以下教程了解如何使用 Service Fabric 部署 API 管理。
 > [!div class="nextstepaction"]
 > [部署 API 管理](service-fabric-tutorial-deploy-api-management.md)
 

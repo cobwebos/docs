@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/26/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 8ddea06b1a90e9b1599466ad4d1c3af7a6dc8ba9
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 0b27386cd0f9f3ae50314b8c5d7708aea3e3d028
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
-此 Microsoft 常见问题解答是有关 Microsoft 操作管理套件 (OMS) 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ## <a name="general"></a>常规
 
@@ -40,21 +40,17 @@ A. 2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent
 
 可以将结果导出到 Excel，以便深入查看。
 
-### <a name="q-why-do-i-see-something-different-than-oms-in-system-center-operations-manager-console"></a>问：为何我在 System Center Operations Manager 控制台中看到了不同于 *OMS* 的内容？
+### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>问：为何我在 System Center Operations Manager 控制台中看到了不同于 OMS 的内容？
 
 答：你可能会看到*系统中心顾问*、*操作见解*或 *Log Analytics* 节点，具体取决于所使用的 Operations Manager 更新汇总。
 
-对“OMS”进行的文本字符串更新包含在一个管理包中，需要手动导入。 若想看到最新文本和功能，请按照最新 System Center Operations Manager 更新汇总知识库文章中的说明进行操作并刷新控制台。
+对 *OMS* 进行的文本字符串更新包含在一个管理包中，需要你手动导入。 若想看到最新文本和功能，请按照最新 System Center Operations Manager 更新汇总知识库文章中的说明进行操作并刷新控制台。
 
 ### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>问：Log Analytics 是否有“本地”版本？
 
-答：没有。 Log Analytics 处理并存储大量数据。 作为云服务，Log Analytics 可根据需要向上扩展，以避免对环境造成任何性能影响。
+答：没有。 Log Analytics 是处理和存储大量数据的可缩放云服务。 
 
-其他优势包括：
-- Log Analytics 基础结构由 Microsoft 运行，节省了你的成本
-- 功能更新和修补程序的常规部署。
-
-### <a name="q-how-do-i-troubleshoot-that-log-analytics-is-no-longer-collecting-data"></a>问： 如何排除 Log Analytics 不再收集数据这一故障？
+### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>问： 如何排除 Log Analytics 不再收集数据这一故障？
 
 答：如果采用的是免费定价层并且某天已发送的数据超过 500 MB，则该天的剩余时间内会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。
 
@@ -127,13 +123,13 @@ Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 答：要确保代理能够与 OMS 通信，请转到：控制面板、安全性和设置、**Microsoft 监视代理**。
 
-在“**Azure Log Analytics (OMS)**”选项卡下，查找一个绿色复选标记。 绿色复选标记图标确认代理能够与 OMS 服务进行通信。
+在“**Azure Log Analytics (OMS)**”选项卡下，查找一个绿色复选标记。 绿色复选标记图标确认代理能够与 Azure 服务进行通信。
 
-黄色警告图标意味着代理与 OMS 存在通信问题。 一个常见原因是 Microsoft 监视代理服务已停止。 请使用服务控制管理器重启该服务。
+黄色警告图标意味着代理与 Log Analytics 存在通信问题。 一个常见原因是 Microsoft 监视代理服务已停止。 请使用服务控制管理器重启该服务。
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>问：如何使某个代理停止与 Log Analytics 进行通信？
 
-答：在 System Center Operations Manager 中，从顾问托管的计算机列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 对于直接连接到 Log Analytics 的代理，可以通过以下路径使其停止与 Log Analytics 进行通信：控制面板、安全性和设置、**Microsoft 监视代理**。
+答：在 System Center Operations Manager 中，从 OMS 托管的计算机列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 对于直接连接到 Log Analytics 的代理，可以通过以下路径使其停止与 Log Analytics 进行通信：控制面板、安全性和设置、**Microsoft 监视代理**。
 在“**Azure Log Analytics (OMS)**”选项卡下，删除列出的所有工作区。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>问：为什么我在尝试将工作区从一个 Azure 订阅移动到另一个订阅时收到错误？
@@ -169,8 +165,6 @@ Log Analytics 代理设计为确保占用较小的数据空间。 我们的一�
 ```
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
-
-
 
 ## <a name="next-steps"></a>后续步骤
 * [开始使用 Log Analytics](log-analytics-get-started.md)，以快速了解有关 Log Analytics 的更多信息并使 Log Analytics 开始运行。

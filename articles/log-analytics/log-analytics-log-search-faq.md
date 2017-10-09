@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 09/26/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 507136beef9718dc6a7f42a4b84f8030d4a60563
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 0ced7a128003402f74b847cc71e1c3ed21982651
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -58,6 +58,18 @@ ms.lasthandoff: 09/07/2017
 
 ### <a name="question-why-are-my-query-results-not-sorted"></a>问：为什么我的查询结果未排序？
 默认情况下，新的查询语言中不对结果进行排序。  使用 [sort 运算符](https://go.microsoft.com/fwlink/?linkid=856079)以便按一个或多个属性对结果进行排序。
+
+### <a name="question-where-did-minify-go-after-i-upgraded"></a>问题：升级后“缩小”选项位于何处？
+“缩小”是一个功能，提供搜索结果的汇总视图。  升级后，“缩小”选项不再显示在“日志搜索”门户中。  可使用新搜索语言中的 [reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) 或 [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster) 获得与之类似的功能。 
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | reduce by RenderedDescription
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | evaluate autocluster_v2()
+
 
 ### <a name="known-issue-search-results-in-a-list-may-include-properties-with-no-data"></a>已知问题：列表中的搜索结果可能包括不含数据的属性
 列表中的日志搜索结果可能会显示不含数据的属性。  升级之前，这些属性将不包括在内。  此问题将会得到解决，以便不会显示空的属性。
@@ -125,11 +137,11 @@ ms.lasthandoff: 09/07/2017
 ### <a name="known-issue-capacity-and-performance-solution"></a>已知问题：容量和性能解决方案
 [容量和性能](log-analytics-capacity.md)视图中的某些部分可能为空。  不久便会提供此问题的解决办法。
 
-### <a name="known-issue-device-health-solution"></a>已知问题：设备运行状况解决方案
-[设备运行状况解决方案](https://docs.microsoft.com/windows/deployment/update/device-health-monitor)不会在升级后的工作区中收集数据。  不久便会提供此问题的解决办法。
-
 ### <a name="known-issue-application-insights-connector"></a>已知问题：Application Insights 连接器
 升级后的工作区中当前不支持 [Application Insights 连接器解决方案](log-analytics-app-insights-connector.md)中的观点。  目前正在对此问题的解决办法进行分析。
+
+### <a name="known-issue-backup-solution"></a>已知问题：备份解决方案
+备份解决方案不会在升级后的工作区中收集数据。 不久将公布适用于升级后的工作区的新备份解决方案。
 
 ## <a name="upgrade-process"></a>升级过程
 

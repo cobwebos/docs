@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 87f4d219a678cab78980af2ff8b98ae55739f04c
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 9d1b629ad05f45efc8d01799616c82b4a11ecaab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 HBase 群集复制
@@ -130,7 +130,11 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
   3.  **头**：确保已选定。 清除其他节点类型。
   4. **参数**：以下示例参数将对所有现有表启用复制，并将源群集中的所有数据复制到目标群集：
 
-            -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+          -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+    
+    >[!note]
+    >
+    > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
 
 6. 选择“创建” 。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 

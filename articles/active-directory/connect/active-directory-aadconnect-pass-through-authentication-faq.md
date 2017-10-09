@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: cfc95726c535aa49add98d700740b24bde5ea0f7
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 79d2f5265c05a1e5f83325295d3d750e1796e1cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -97,11 +97,11 @@ ms.lasthandoff: 09/25/2017
 
 是的。 如果 AD 林之间存在信任关系并且正确配置了名称后缀路由，则支持多林环境。
 
-## <a name="do-pass-through-authentication-agents-provide-load-balancing-capability"></a>传递身份验证代理是否提供负载均衡功能？
+## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>需要安装多少个直通身份验证代理？
 
-否。安装多个传递身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)，但无法提供负载均衡。 一个或两个身份验证代理会处理这批登录请求。
+安装多个直通身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。 但不提供负载均衡。 一个或两个身份验证代理会处理这批登录请求。
 
-身份验证代理需要的处理的密码验证请求都是轻量级的。 因此只需两个或三个身份验证代理便可处理大多数客户的峰值和平均负载。
+请考虑希望在租户上看到的登录请求的峰值和平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300,000 到 400,000 个身份验证。 对于大多数客户而言，总共两个或三个身份验证代理足以满足高可用性和大容量需求。
 
 推荐在域控制器附近安装身份验证代理以改善延迟。
 

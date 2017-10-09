@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/21/2017
+ms.date: 09/26/2017
 ms.author: jejiang
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 17900c88fcfccd9c56ac548d1e9167b16a92b433
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: fdf1911f4f5b515592b6197ea738d808104cb43e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
-# <a name="use-azure-hdinsight-tool-for-visual-studio-code-hive-llap-or-pyspark"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具（Hive、LLAP 或 pySpark）
+# <a name="use-azure-hdinsight-tool-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
 学习如何使用用于 Visual Studio Code (VSCode) 的 Azure HDInsight 工具来创建和提交 Hive 批处理作业、交互式 Hive 查询和 pySpark 脚本。 可以在 VSCode 支持的平台（包括 Windows、Linux 和 MacOS）上安装 Azure HDInsight 工具。 可以找到不同平台的必备组件。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成本文需要具有以下项：
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 09/25/2017
 **安装 Azure HDInsight 工具**
 
 1. 打开 **Visual Studio Code**。
-2. 单击左侧窗格中的“扩展”。 在搜索框中输入“Azure HDInsight 工具”。
+2. 单击左侧窗格中的“扩展”。 在搜索框中输入 HDInsight。
 3. 单击“Azure HDInsight 工具”旁边的“安装”。 数秒后，“安装”按钮将变为“重载”。
 4. 单击“重载”以激活“Azure HDInsight 工具”扩展。
 5. 单击“重载窗口”以进行确认。 在“扩展”窗格中，可看到“Azure HDInsight 工具”。
@@ -86,13 +86,9 @@ ms.lasthandoff: 09/25/2017
 2. 右键单击脚本编辑器，然后从上下文菜单中选择“HDInsight: Login”。 还可以按 **CTRL+SHIFT+P** 并输入“HDInsight: Login”。
 
     ![用于 Visual Studio Code 的 HDInsight 工具登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
-3. 根据你的订阅单击“Azure”或“AzureChina”。
-
-    ![用于 Visual Studio Code 的 HDInsight 工具登录选项](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login-options.png)
-
 3. 按照“输出”窗格中的登录说明进行登录。
 
-    **Azure：**![用于 Visual Studio Code 的 HDInsight 工具登录信息](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-Azurelogin-info.png) **AzureChina：**![用于 Visual Studio Code 的 HDInsight 工具中国登录信息](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-AzureChinalogin-info.png)
+    Azure：![用于 Visual Studio Code 的 HDInsight 工具登录信息](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-Azurelogin-info.png)
 
     连接后，VSCode 窗口左下角的状态栏上会显示 Azure 帐户名称。 
 
@@ -106,7 +102,7 @@ ms.lasthandoff: 09/25/2017
 
     从上下文菜单中，可以执行以下任务：
 
-    - 注销
+    - logout
     - 列出群集
     - 设置默认群集
     - 提交交互式 Hive 查询

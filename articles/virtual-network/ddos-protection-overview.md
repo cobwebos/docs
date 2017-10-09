@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b0fa58c8bf0e50314c61272eb221878eca2c3def
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 0130823b6a6f5a4883ad640c9bcefc89b82b2cd1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
 >[!IMPORTANT]
->Azure DDoS 保护标准当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护标准。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护标准。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护标准仅在美国东部、美国西部和美国中部区域可用。 在预览版期间，使用该服务无需付费。
+>Azure DDoS 保护标准当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护标准。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护标准。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护标准仅在美国东部、美国西部和美国中西部区域可用。 在预览版期间，使用该服务无需付费。
 
 分布式拒绝服务 (DDoS) 攻击是将应用程序移动到云的客户所面临的最大的可用性和安全性问题之一。 DDoS 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。
 

@@ -14,19 +14,19 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/07/2017
+ms.date: 09/28/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 36285fbaf1da3c566d338bd5612eebad327eaf50
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: c72de1c83fe73019ac3ad8b8487aa25bbd078555
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
-了解如何为 Apache Storm 创建基于 Java 的拓扑。 你将创建实现了单词计数应用程序的 Storm 拓扑。 你将使用 Maven 构建并打包项目。 然后了解如何使用 Flux 框架定义拓扑。
+了解如何为 Apache Storm 创建基于 Java 的拓扑。 将创建实现了单词计数应用程序的 Storm 拓扑。 将使用 Maven 构建并打包项目。 然后了解如何使用 Flux 框架定义拓扑。
 
 > [!NOTE]
 > Storm 0.10.0 或更高版本中提供了 Flux 框架。 HDInsight 3.3 和 3.4 随附了 Storm 0.10.0。
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发人员工具包 (JDK) 版本 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+* [Java 开发人员工具包 (JDK) 版本 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 * [Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi)：Maven 是 Java 项目的项目生成系统。
 
@@ -46,9 +46,9 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="configure-environment-variables"></a>配置环境变量
 
-可以在安装 Java 和 JDK 时设置以下环境变量。 不过，你应该检查它们是否存在并且包含系统的正确值。
+可以在安装 Java 和 JDK 时设置以下环境变量。 不过，应该检查它们是否存在并且包含系统的正确值。
 
-* **JAVA_HOME** - 应该指向已安装 Java 运行时环境 (JRE) 的目录。 例如，在 Unix 或 Linux 分发版中，它的值应该类似于 `/usr/lib/jvm/java-7-oracle`。 在 Windows 中，它的值类似于 `c:\Program Files (x86)\Java\jre1.7`
+* **JAVA_HOME** - 应该指向已安装 Java 运行时环境 (JRE) 的目录。 例如，在 Unix 或 Linux 分发版中，它的值应该类似于 `/usr/lib/jvm/java-8-oracle`。 在 Windows 中，它的值类似于 `c:\Program Files (x86)\Java\jre1.8`
 
 * **PATH** - 应该包含以下路径：
 
@@ -133,9 +133,9 @@ Maven 允许定义项目级的值，称为属性。 在 __pom.xml__ 中，在 `<
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
-    This is a version of Storm from the Hortonworks repository that is compatible with HDInsight.
+    This is a version of Storm from the Hortonworks repository that is compatible with HDInsight 3.5.
     -->
-    <storm.version>1.0.1.2.5.3.0-37</storm.version>
+    <storm.version>1.1.0.2.6.1.9-1</storm.version>
 </properties>
 ```
 
@@ -158,11 +158,11 @@ Maven 允许定义项目级的值，称为属性。 在 __pom.xml__ 中，在 `<
 在编译时，Maven 会使用此信息在 Maven 存储库中查找 `storm-core`。 它会先查找本地计算机上的存储库。 如果文件不存在，Maven 会从公共 Maven 存储库下载这些文件，并将其存储在本地存储库中。
 
 > [!NOTE]
-> 请注意该部分中的 `<scope>provided</scope>` 行。 此设置告诉 Maven 从创建的任何 JAR 文件中排除 **storm-core**，因为它将由系统提供。
+> 请注意该部分中的 `<scope>provided</scope>` 行。 此设置告诉 Maven 从创建的任何 JAR 文件中排除 **storm-core**，因为它由系统提供。
 
 ## <a name="build-configuration"></a>生成配置
 
-Maven 插件允许你自定义项目的构建阶段。 例如，如何编译项目或者如何将其打包到 JAR 文件中。 打开 `pom.xml` 文件，并在 `</project>` 行的上方直接添加以下代码。
+Maven 插件允许自定义项目的构建阶段。 例如，如何编译项目或者如何将其打包到 JAR 文件中。 打开 `pom.xml` 文件，并在 `</project>` 行的上方直接添加以下代码。
 
 ```xml
 <build>
@@ -224,7 +224,7 @@ Maven 插件允许你自定义项目的构建阶段。 例如，如何编译项�
 
 ### <a name="configure-resources"></a>配置资源
 
-使用 resources 节可以包含非代码资源，例如拓扑中组件所需的配置文件。 本示例将在 `pom.xml 文件的 `<resources>` 节中添加以下文本。
+使用 resources 节可以包含非代码资源，例如拓扑中组件所需的配置文件。 本示例会在 `pom.xml 文件的 `<resources>` 节中添加以下文本。
 
 ```xml
 <resource>
@@ -240,7 +240,7 @@ Maven 插件允许你自定义项目的构建阶段。 例如，如何编译项�
 
 ## <a name="create-the-topology"></a>创建拓扑
 
-基于 Java 的 Apache Storm 拓扑包含你必须编写（或引用）为依赖项的三个组件。
+基于 Java 的 Apache Storm 拓扑包含必须编写（或引用）为依赖项的三个组件。
 
 * **Spouts**：读取外部源中的数据，并发出进入拓扑的数据流。
 
@@ -611,40 +611,42 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
 2. 在 `resources` 目录中，创建名为 `topology.yaml` 的文件。 将以下文本用作此文件的内容。
 
-        name: "wordcount"       # friendly name for the topology
+    ```yaml
+    name: "wordcount"       # friendly name for the topology
+
+    config:                 # Topology configuration
+      topology.workers: 1     # Hint for the number of workers to create
+
+    spouts:                 # Spout definitions
+    - id: "sentence-spout"
+      className: "com.microsoft.example.RandomSentenceSpout"
+      parallelism: 1      # parallelism hint
+
+    bolts:                  # Bolt definitions
+    - id: "splitter-bolt"
+      className: "com.microsoft.example.SplitSentence"
+      parallelism: 1
         
-        config:                 # Topology configuration
-        topology.workers: 1     # Hint for the number of workers to create
-        
-        spouts:                 # Spout definitions
-        - id: "sentence-spout"
-            className: "com.microsoft.example.RandomSentenceSpout"
-            parallelism: 1      # parallelism hint
-        
-        bolts:                  # Bolt definitions
-        - id: "splitter-bolt"
-            className: "com.microsoft.example.SplitSentence"
-            parallelism: 1
-         
-        - id: "counter-bolt"
-            className: "com.microsoft.example.WordCount"
-            constructorArgs:
-                - 10
-            parallelism: 1
-        
-        streams:                # Stream definitions
-            - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-            from: "sentence-spout"       # The stream emitter
-            to: "splitter-bolt"          # The stream consumer
-            grouping:                    # Grouping type
-                type: SHUFFLE
-          
-            - name: "Splitter -> Counter"
-            from: "splitter-bolt"
-            to: "counter-bolt"
-            grouping:
-            type: FIELDS
-                args: ["word"]           # field(s) to group on
+    - id: "counter-bolt"
+      className: "com.microsoft.example.WordCount"
+      constructorArgs:
+        - 10
+      parallelism: 1
+
+    streams:                # Stream definitions
+    - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
+      from: "sentence-spout"       # The stream emitter
+      to: "splitter-bolt"          # The stream consumer
+      grouping:                    # Grouping type
+        type: SHUFFLE
+    
+    - name: "Splitter -> Counter"
+      from: "splitter-bolt"
+      to: "counter-bolt"
+      grouping:
+        type: FIELDS
+        args: ["word"]           # field(s) to group on
+    ```
 
 3. 对 `pom.xml` 文件进行以下更改。
    
@@ -722,14 +724,14 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
     ```
 
     > [!WARNING]
-    > 如果拓扑使用 Storm 1.0.1 位，此命令将失败。 此失败是由 [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) 引起的。 [在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，并使用以下信息。
-
-    如果已[在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，则可以改用以下命令：
-
-    ```bash
-    mvn compile package
-    storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
-    ```
+    > 如果拓扑使用 Storm 1.0.1 位，此命令会失败。 此失败是由 [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) 引起的。 相反，[在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，并按照以下步骤操作：
+    >
+    > 如果已[在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，则可以改用以下命令：
+    >
+    > ```bash
+    > mvn compile package
+    > storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
+    > ```
 
     `--local` 参数在开发环境中以本地模式运行拓扑。 `-R /topology.yaml` 参数使用 jar 文件中的 `topology.yaml` 文件资源来定义拓扑。
 
@@ -776,7 +778,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
 Trident 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident 的主要优点在于，它可以保证进入拓扑的每个消息只会处理一次。 如果不使用 Trident，则拓扑只能保证至少将消息处理一次。 两者还有其他方面的差异，例如，可以使用内置组件，而无需创建 Bolt。 事实上，可以使用低泛型组件（例如筛选、投影和函数）来取代 Bolt。
 
-你可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 Trident（目前）还不能与 Flux 框架配合使用。
+可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 Trident（目前）还不能与 Flux 框架配合使用。
 
 有关 Trident 的详细信息，请参阅 [Trident API 概述](http://storm.apache.org/documentation/Trident-API-Overview.html)。
 
@@ -784,7 +786,7 @@ Trident 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident �
 
 ## <a name="next-steps"></a>后续步骤
 
-你已学习如何使用 Java 创建 Storm 拓扑。 接下来，请学习如何：
+已学习如何使用 Java 创建 Storm 拓扑。 接下来，请学习如何：
 
 * [在 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology.md)
 

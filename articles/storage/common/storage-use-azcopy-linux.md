@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 28/9/2017
 ms.author: seguler
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: b080e323c4195f640a256c4726916dbf40ef2698
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 0b6417b616a9e4e74b5fb8a67e1414ad74e8f258
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
@@ -31,16 +31,17 @@ AzCopy on Linux 是一个命令行实用工具，专用于使用具有优化性�
 
 本文包括各种版本 Ubuntu 的命令。  使用 `lsb_release -a` 命令确认分发版本和代码名称。 
 
-AzCopy on Linux 要求在平台上安装 .NET Core 框架。 请参阅 [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) 页上的安装说明。
+AzCopy on Linux 要求在平台上安装 .NET Core 框架（版本 1.1.x）。 请参阅 [.NET Core](https://www.microsoft.com/net/download/linux) 页上的安装说明。
 
-例如，让我们在 Ubuntu 16.10 上安装 .NET Core。 有关最新的安装指南，请访问 [Linux 上的 .NET Core](https://www.microsoft.com/net/core#linuxubuntu) 安装页。
+例如，在 Ubuntu 16.04 上安装 .NET Core。 有关最新的安装指南，请访问 [Linux 上的 .NET Core](https://www.microsoft.com/net/download/linux) 安装页。
 
 
 ```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-get update
-sudo apt-get install dotnet-sdk-2.0.0
+sudo apt-get install dotnet-dev-1.1.4
 ```
 
 安装 .NET Core 后，请下载并安装 AzCopy。
@@ -53,76 +54,6 @@ sudo ./install.sh
 
 安装 AzCopy on Linux 后，可以删除提取的文件。 如果你没有超级用户特权，也可以在提取的文件夹中使用 shell 脚本“azcopy”运行 AzCopy。 
 
-### <a name="alternative-installation-on-ubuntu"></a>Ubuntu 上的替代安装
-
-**Ubuntu 14.04**
-
-添加 .Net Core 的 apt 源：
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-```
-
-添加 Microsoft Linux 产品存储库的 apt 源并安装 AzCopy：
-
-```bash
-curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list > ./microsoft-prod.list
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
-
-```bash
-sudo apt-get update
-sudo apt-get install azcopy
-```
-
-**Ubuntu 16.04**
-
-添加 .Net Core 的 apt 源：
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-```
-
-添加 Microsoft Linux 产品存储库的 apt 源并安装 AzCopy：
-
-```bash
-curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
-
-```bash
-sudo apt-get update
-sudo apt-get install azcopy
-```
-
-**Ubuntu 16.10**
-
-添加 .Net Core 的 apt 源：
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-```
-
-添加 Microsoft Linux 产品存储库的 apt 源并安装 AzCopy：
-
-```bash
-curl https://packages.microsoft.com/config/ubuntu/16.10/prod.list > ./microsoft-prod.list
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
-
-```bash
-sudo apt-get update
-sudo apt-get install azcopy
-```
 
 ## <a name="writing-your-first-azcopy-command"></a>编写第一条 AzCopy 命令
 AzCopy 命令的基本语法是：

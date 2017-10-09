@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 8badb3455fa508e4eef56ec7fc1901fbbc8b23d0
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: a1a3688d4ff215d05d2f78cdfa7d402e3fc20be2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DDoS 保护标准
 
 >[!IMPORTANT]
->Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护仅在美国东部、美国西部和美国中部区域可用。 在预览版期间，使用该服务无需付费。
+>Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护仅在美国东部、美国西部和美国中西部区域可用。 在预览版期间，使用该服务无需付费。
 
 本文演示了如何使用 Azure PowerShell 来启用 DDoS 保护、禁用 DDoS 保护以及如何使用遥测来缓解攻击。
 

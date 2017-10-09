@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/15/2016
+ms.date: 09/27/2016
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 293ac7a275398f05e3abe815413403efeaadc6e0
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: c7f3da9a92d5e9c60355c93a7205d16dc9ab8390
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
@@ -155,7 +155,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 ### <a name="step-1-install-the-sap-hana-hdb-client"></a>步骤 1：安装 SAP HANA HDB 客户端
 
-Azure 上的 SAP HANA（大型实例）上安装的 Linux 操作系统包含所需的文件夹和脚本用于针对备份和灾难恢复目的执行 SAP HANA 存储快照。 在 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 中查找最新版本。 最新发布的脚本版本为 2.0。
+Azure 上的 SAP HANA（大型实例）上安装的 Linux 操作系统包含所需的文件夹和脚本用于针对备份和灾难恢复目的执行 SAP HANA 存储快照。 在 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 中查找最新版本。 最新发布的脚本版本为 2.1。
 但是，客户需要负责在安装 SAP HANA 时在 HANA 大型实例单元上安装 SAP HANA HDB 客户端。 （Microsoft 不会安装 HDB 客户端或 SAP HANA。）
 
 ### <a name="step-2-change-the-etcsshsshconfig"></a>步骤 2：更改 /etc/ssh/ssh\_config

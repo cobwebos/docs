@@ -11,14 +11,14 @@ ms.service: virtual-machines
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: ba8a02e2faaa0affd68feebd2ae5efe64cded93f
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -67,7 +67,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 若成功登录后无法检索订阅，请执行以下步骤解决此问题：
 
-- 通过登录到 Azure 门户验证帐户是否有权访问该订阅。
+- 通过登录 Azure 门户验证帐户是否有权访问该订阅。
 
 - 请确保使用正确的环境登录（Azure、Azure 中国、Azure 德国、Azure 美国政府或自定义环境/Azure Stack）。
 
@@ -150,7 +150,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 - 检查网络工具使用的端口号。
 
-- 在存储资源管理器中，输入本地主机 URL和网络工具的端口号作为代理设置。 如果正确执行，网络工具将开始记录存储资源管理器向管理和服务终结点发出的网络请求。 例如，如果在浏览器中输入 https://cawablobgrs.blob.core.windows.net/ 作为 Blob 终结点，将收到类似以下的响应，表示资源存在，尽管无法访问。
+- 在存储资源管理器中，输入本地主机 URL和网络工具的端口号作为代理设置。 如果操作无误，网络工具将开始记录存储资源管理器向管理和服务终结点发出的网络请求。 例如，如果在浏览器中输入 https://cawablobgrs.blob.core.windows.net/ 作为 Blob 终结点，将收到类似以下的响应，表示资源存在，尽管无法访问。
 
 ![代码示例](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 

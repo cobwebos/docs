@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 09/27/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 95f14f2b77565b53c6e270f6afbf9873cdac606a
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 4abfdcc0a50c229555088dff0ac2c00c15f49218
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/25/2017
 VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本机 Windows 或 Mac IKEv2 VPN 客户端通过使用本机 Azure 证书身份验证的点到站点连接，来与 VNet 建立连接所需的设置。
 
 >[!NOTE]
->IKEv2 for P2S 目前处于预览状态。
+>IKEv2 for P2S 目前以预览版提供。
 >
 
 ### <a name="workflow"></a>P2S 工作流
@@ -45,26 +45,29 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 在开始之前，请确保所有连接方用户的设备上安装了有效的证书。 有关安装客户端证书的详细信息，请参阅[安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
+可使用 PowerShell 或使用 Azure 门户生成客户端配置文件。 两种方法之一都会返回相同的 zip 文件。 解压缩该文件，查看以下文件夹：
+
+  * **WindowsAmd64** 和 **WindowsX86**：分别包含 Windows 32 位和 64 位安装程序包。 **WindowsAmd64** 安装程序包适用于所有受支持的 64 位 Windows 客户端，而不仅仅是 Amd。
+  * **Generic**：包含用于创建自己的 VPN 客户端配置的常规信息。 请忽略此文件夹。 如果网关上配置了 IKEv2 或 SSTP+IKEv2，会提供 Generic 文件夹。 如果仅配置了 SSTP，则不会提供 Generic 文件夹。
+
+### <a name="zipportal"></a>使用 Azure 门户生成文件
+
+1. 在 Azure 门户中，导航到要连接到的虚拟网络的虚拟网络网关。
+2. 在虚拟网络网关页面上，单击“点到点配置”。
+3. 在“点到站点配置”页的顶部，单击“下载 VPN 客户端”。 需要几分钟才能生成客户端配置包。
+4. 浏览器会指示客户端配置 zip 文件可用。 其名称与网关名称相同。 解压缩该文件，查看文件夹。
+
+### <a name="zipps"></a>使用 PowerShell 生成文件
+
 1. 生成 VPN 客户端配置文件时，“-AuthenticationMethod”的值为“EapTls”。 使用以下命令生成 VPN 客户端配置文件：
 
   ```powershell
-  New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW" -AuthenticationMethod "EapTls"
+  $profile=New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+
+  $profile.VPNProfileSASUrl
   ```
-2. 上述命令会返回一个用于下载客户端配置文件的链接。 请将该链接复制并粘贴到 Web 浏览器，下载“VpnClientConfiguration.zip”文件。 解压缩该文件，查看以下文件夹：
+2. 将 URL 复制到浏览器，下载 zip 文件，然后解压缩该文件，查看其中的文件夹。
 
-  * **WindowsAmd64** 和 **WindowsX86**：分别包含 Windows 32 位和 64 位安装程序包。 **WindowsAmd64** 安装程序包适用于所有受支持的 64 位 Windows 客户端，而不仅仅是 Amd。
-  * **Generic**：包含用于创建自己的 VPN 客户端配置的常规信息。 请忽略此文件夹。 仅当网关上配置了 IKEv2 或 SSTP+IKEv2 时，才会提供 Generic 文件夹。 如果仅配置了 SSTP，则不会提供 Generic 文件夹。
-
-### <a name="to-retrieve-client-configuration-files"></a>检索客户端配置文件
-
-如果已生成客户端配置文件并且只需检索这些文件，可以使用“Get-AzureRmVpnClientConfiguration”cmdlet。 “Get-AzureRmVpnClientConfiguration”cmdlet 返回一个 URL（链接），用于下载 VpnClientConfiguration.zip 文件。 如果对 P2S VPN 配置（例如 VPN 协议类型或身份验证类型）做了更改，该配置不会自动更新。 必须运行“New-AzureRmVpnClientConfiguration”cmdlet 来重新创建该配置。
-
-若要检索以前生成的客户端配置文件，请使用以下示例：
-
-```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW"
-```
- 
 ## <a name="installwin"></a>安装 Windows VPN 客户端配置包
 
 只要版本与 Windows 客户端的体系结构匹配，就可以在每台客户端计算机上使用相同的 VPN 客户端配置包。 有关支持的客户端操作系统列表，请参阅 [VPN 网关常见问题解答](vpn-gateway-vpn-faq.md#P2S)中的“点到站点”部分。
@@ -77,7 +80,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGat
 
 ## <a name="installmac"></a>安装 Mac (OSX) VPN 客户端配置
 
-必须为每个连接到 Azure VNet 的 Mac 设备创建单独的 VPN 客户端配置。 不能对多个 Mac 设备重复使用相同的配置文件。 这是因为，对于这些设备，必须在 VPN 客户端配置文件中指定用户证书。 **Generic** 文件夹包含创建 VPN 客户端配置所需的全部信息。 Generic 文件夹包含以下文件：
+必须为每个连接到 Azure VNet 的 Mac 设备创建单独的 VPN 客户端配置。 不能对多个 Mac 设备重复使用相同的配置文件。 这是因为，对于这些设备，必须在 VPN 客户端配置文件中指定用户证书。 **Generic** 文件夹包含创建 VPN 客户端配置所需的全部信息。 如果在下载中没有看到 Generic 文件夹，则可能 IKEv2 未选作隧道类型。 选择 IKEv2 后，再次生成 zip 文件，检索 Generic 文件夹。 Generic 文件夹包含以下文件：
 
 * **VpnSettings.xml**：包含服务器地址和隧道类型等重要设置。 
 * **VpnServerRoot.cer**：包含在 P2S 连接设置过程中验证 Azure VPN 网关所需的根证书。
@@ -105,7 +108,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGat
 6. “选择标识”会显示可供选择的证书列表。 选择适当的证书，单击“继续”。
 
   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
-7. 在“本地 ID”字段中，指定证书的名称（见步骤 5）。 在本示例中，该名称为“ikev2Client.com”。 然后单击“应用”按钮保存所做的更改。
+7. 在“本地 ID”字段中，指定证书的名称（见步骤 6）。 在本示例中，该名称为“ikev2Client.com”。 然后单击“应用”按钮保存所做的更改。
 
   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 8. 在“网络”对话框中，单击“应用”保存所有更改。 然后单击“连接”，启动与 Azure VNet 的 P2S 连接。
@@ -113,3 +116,4 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGat
 ## <a name="next-steps"></a>后续步骤
 
 返回到相关文章，[完成 P2S 配置](vpn-gateway-howto-point-to-site-rm-ps.md)。
+

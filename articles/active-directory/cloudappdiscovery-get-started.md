@@ -16,16 +16,16 @@ ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 2943e0b119726b31dd6e6507d279f6c8f74df98b
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
-# <a name="get-started-using-cloud-app-discovery-in-azure-ad"></a>开始在 Azure AD 中使用 Cloud App Discovery
+# <a name="set-up-cloud-app-discovery-in-azure-ad"></a>在 Azure AD 中设置 Cloud App Discovery
 
-在 Azure AD 中，Cloud App Discovery 增强功能的公共预览版本现已随 Azure Active Directory Premium P1 许可证一同提供。 这些增强功能基于与 Microsoft Cloud App Security 的集成。 Cloud App Discovery 会比较超过 15,000 种云应用的 Cloud App Security 目录的流量日志，以便提供关于云使用和影子 IT 的实时信息。 
+在 Azure AD 中，新的 Cloud App Discovery 增强功能现已随 Azure Active Directory Premium P1 许可证一同提供。 这些增强功能基于与 Microsoft Cloud App Security 的集成。 Cloud App Discovery 会比较超过 15,000 种云应用的 Cloud App Security 目录的流量日志，以便提供关于云使用和影子 IT 的实时信息。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,14 +33,14 @@ ms.lasthandoff: 09/25/2017
 
 若要设置 Cloud App Discovery，你必须是 Azure Active Directory 的全局管理员或安全读者。 分配为管理员角色的用户在组织已订阅的所有云应用中具有相同的权限。
 
-## <a name="snapshot-and-continuous-reports"></a>快照报表和连续报表
+## <a name="setup-steps"></a>设置步骤
 
-可以生成两类报表：
+1. [设置快照报表](cloudappdiscovery-set-up-snapshots.md)，检查日志格式，确保日志向 Cloud App Discovery 提供可用信息。 快照报表还可提供对手动从防火墙和代理服务器上传的流量日志的临时可见性。
 
-* **快照报表**可提供对手动从防火墙和代理服务器上传的流量日志的临时可见性。 使用它们可确保日志对 Cloud App Discovery 提供有用信息。
+2. [设置连续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)，使用 Cloud App Security 日志收集器分析从网络转发的所有日志。 可以使用它们来标识新的应用和使用情况趋势。
 
-* **连续报表**可使用 [Cloud App Security 日志收集器](https://docs.microsoft.com/cloud-app-security/discovery-docker)分析从网络转发的所有日志。 可以使用它们来标识新的应用和使用情况趋势。
-
+3. 如果日志当前不受支持，请[设置自定义日志分析程序](https://docs.microsoft.com/en-us/cloud-app-security/custom-log-parser)，以便 Cloud App Discovery 可以对其进行分析。
+  
 ## <a name="log-processing-flow"></a>日志处理流
 
 它可能需要花费几分钟到几小时的时间来生成报表，具体取决于数据量。 下面是分析的具体内容：
@@ -134,8 +134,8 @@ Cloud App Discovery 无法显示或分析不包含在日志中的属性。 例�
 
 
 ## <a name="next-steps"></a>后续步骤
-使用以下链接继续在 Azure AD 中设置增强的 Cloud App Discovery。
+使用以下链接继续在 Azure AD 中设置 Cloud App Discovery。
 
-* [创建快照 Cloud App Discovery 报表](cloudappdiscovery-set-up-snapshots.md)
-* [配置用于持续报告的自动日志上传](https://docs.microsoft.com/cloud-app-security/discovery-docker)
+* [创建快照报表](cloudappdiscovery-set-up-snapshots.md)
+* [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 * [使用自定义日志分析器](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)

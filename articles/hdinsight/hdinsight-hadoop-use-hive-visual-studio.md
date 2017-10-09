@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/07/2017
+ms.date: 09/28/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 3411c59fee73aa2e26a05d70e1dae11cdfc865ff
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: b9a8f857f42f16ec7735a79ec29e77e3c99c8ba7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Hive 查询
@@ -72,7 +72,7 @@ ms.lasthandoff: 07/13/2017
 
    * `ROW FORMAT`：告知 Hive 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
 
-   * `STORED AS TEXTFILE LOCATION`：让 Hive 知道数据的存储位置（example/data 目录），并且数据已存储为文本。
+   * `STORED AS TEXTFILE LOCATION`：告知 Hive 数据已以文本形式存储在 example/data 目录中。
 
    * `SELECT`：选择 `t4` 列包含值 `[ERROR]` 的所有行计数。 此语句返回值 `3`，因为有三行包含此值。
 
@@ -82,13 +82,13 @@ ms.lasthandoff: 07/13/2017
 
    ![“提交”栏](./media/hdinsight-hadoop-use-hive-visual-studio/toolbar.png)
 
-4. “Hive 作业摘要”将会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
+4. “Hive 作业摘要”会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
 
    ![作业摘要，显示已完成的作业](./media/hdinsight-hadoop-use-hive-visual-studio/jobsummary.png)
 
 5. 使用“作业输出”链接查看此作业的输出。 它显示 `[ERROR] 3`，这是此查询返回的值。
 
-6. 你也可以运行 Hive 查询，而无需创建项目。 使用“服务器资源管理器”，展开“Azure” > “HDInsight”，右键单击 HDInsight 服务器，然后选择“编写 Hive 查询”。
+6. 也可以运行 Hive 查询，而无需创建项目。 使用“服务器资源管理器”，展开“Azure” > “HDInsight”，右键单击 HDInsight 服务器，并选择“编写 Hive 查询”。
 
 7. 在出现的 **temp.hql** 文档中，添加以下 HiveQL 语句：
 

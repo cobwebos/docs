@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 3365bc81b17e0225652504a71d3aff42a399ce67
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 3644b41c3e3293a263bd9ff996d4e3d26417aeed
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的虚拟机
@@ -29,10 +29,13 @@ ms.lasthandoff: 09/02/2017
 本文介绍了如何将 Azure 虚拟机从 Azure 重新保护到本地站点。 如[使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-failover.md)中所述将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 后，准备对它们进行故障回复时，请遵循本文中的说明。
 
 > [!WARNING]
-> 在[完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、将虚拟机转移至另一资源组或删除 Azure 虚拟机后，无法进行故障回复。
+> 如果[已完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、已将虚拟机移至另一资源组或已删除 Azure 虚拟机，则无法进行故障回复。 如果禁用虚拟机的保护，则无法进行故障回复。
 
 
 在重新保护完成并且受保护的虚拟机正在复制后，可以在虚拟机上启动故障回复将其恢复到本地站点。
+
+> [!NOTE]
+> 仅可重新保护和故障回复到 ESXi 主机。 无法将虚拟机故障回复到 Hyper-v 主机、VMware 工作站或任何其他虚拟化平台。
 
 请在本文末尾或者在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)中发表任何评论或问题。
 
@@ -41,6 +44,11 @@ ms.lasthandoff: 09/02/2017
 
 
 ## <a name="prerequisites"></a>先决条件
+
+> [!IMPORTANT]
+> 在故障转移到 Azure 的过程中，本地站点可能无法访问，因此配置服务器可能不可用或关闭。 在重新保护和故障回复期间，本地配置服务器应运行且处于连接正常状态。
+
+
 在准备重新保护虚拟机时，请执行或注意以下先决条件操作：
 
 * 如果 vCenter 服务器管理着要故障回复到的虚拟机，请确保拥有在 vCenter 服务器上发现虚拟机[所必需的权限](site-recovery-vmware-to-azure-classic.md)。
@@ -93,13 +101,15 @@ ms.lasthandoff: 09/02/2017
  ![VPN 的体系结构关系图](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
 
 
-请记住，复制只能通过 S2S VPN 或 ExpressRoute 网络的专用对等互连进行。 请确保通过该网络通道提供足够的带宽。
+请记住，从 Azure 复制到本地的操作将只能通过 S2S VPN 或 ExpressRoute 网络的专用对等互连进行。 请确保通过该网络通道提供足够的带宽。
 
 有关安装基于 Azure 的进程服务器的信息，请参阅[管理在 Azure 中运行的进程服务器](site-recovery-vmware-setup-azure-ps-resource-manager.md)。
 
 > [!TIP]
 > 我们建议在故障回复期间使用基于 Azure 的进程服务器。 如果进程服务器离复制虚拟机（Azure 中进行故障转移的计算机）较近，则复制性能较高。 但是，在概念验证 (POC) 或演示期间，可以将本地进程服务器与专用对等互连的 ExpressRoute 一起使用以更快地完成 POC。
 
+> [!NOTE]
+> 从本地复制到 Azure 的操作只能通过 Internet 或具有公共对等互连的 ExpressRoute 来完成。 从 Azure 复制到本地的操作只能通过 S2S VPN 或具有专用对等互连的 ExpressRoute 来完成
 
 
 #### <a name="what-ports-should-i-open-on-different-components-so-that-reprotection-can-work"></a>要使重新保护正常工作，应当在不同的组件上打开哪些端口？
@@ -107,7 +117,7 @@ ms.lasthandoff: 09/02/2017
 ![用于故障转移和故障回复的端口](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
 
 #### <a name="which-master-target-server-should-i-use-for-reprotection"></a>应该将哪个主目标服务器用于重新保护？
-需要本地主目标服务器，以便从进程服务器接收数据，然后将数据写入到本地虚拟机的 VMDK。 如果要保护 Windows 虚拟机，需要 Windows 主目标服务器。 可以重复使用本地进程服务器和主目标<!-- !todo component -->。 对于 Linux虚拟机，需要设置附加的本地 Linux 主目标。
+需要本地主目标服务器，以便从进程服务器接收数据，并将数据写入到本地虚拟机的 VMDK。 如果要保护 Windows 虚拟机，需要 Windows 主目标服务器。 可以重复使用本地进程服务器和主目标<!-- !todo component -->。 对于 Linux虚拟机，需要设置附加的本地 Linux 主目标。
 
 
 有关安装主目标服务器的信息，请参阅：
@@ -248,7 +258,7 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 1. 要重新保护的虚拟机为 Windows Server 2016。 故障回复当前不支持此操作系统，但很快将给予支持。
 2. 故障回复到的主目标服务器上已有同名虚拟机。
 
-要解决此问题，可在另一台主机上选择另一个主目标服务器，以便重新保护在该主机上创建计算机，从而确保名称不发生冲突。 还可以将主目标 vMotion 到另一台主机，这样就不会发生名称冲突。
+要解决此问题，可在另一台主机上选择另一个主目标服务器，以便重新保护在该主机上创建计算机，从而确保名称不发生冲突。 还可以将主目标 vMotion 到另一台主机，这样就不会发生名称冲突。 如果现有虚拟机是孤立的计算机，可将其重命名，以便在同一 ESXi 主机上创建新的虚拟机。
 
 ### <a name="error-code-78093"></a>错误代码 78093
 
@@ -256,6 +266,10 @@ VM 未运行，它处于挂起状态或无法访问。
 
 要将故障转移的虚拟机重新保护回本地，需运行 Azure 虚拟机。 这样做的目的是向本地配置服务器注册移动服务，并通过与进程服务器通信来启动复制。 如果计算机位于错误的网络中或者未运行（处于挂起或关闭状态），则配置服务器无法访问虚拟机中的移动服务，无法开始重新保护。 可以重启虚拟机，使其重新与本地通信。 启动 Azure 虚拟机后，重启重新保护作业
 
+### <a name="error-code-8061"></a>错误代码 8061
 
+无法通过 ESXi 主机访问数据存储。
+
+有关故障回复，请参阅[主目标先决条件](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)及[支持数据存储](site-recovery-how-to-reprotect.md#what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback)
 
 

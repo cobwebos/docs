@@ -1,3 +1,4 @@
+
 ---
 title: "用于使用 Azure Site Recovery 复制到辅助站点的支持矩阵 | Microsoft Docs"
 description: "汇总了 Azure Site Recovery 支持的操作系统和组件"
@@ -14,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: db7ee5251f2e2016081e55ca4b295e284c8b08cf
+ms.translationtype: HT
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 69c5d09b6608484210870e1a69c51b112b497810
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>用于使用 Azure Site Recovery 复制到辅助站点的支持矩阵
@@ -44,7 +45,7 @@ ms.lasthandoff: 06/15/2017
 
   >[!Note]
   > 目前不支持混合使用 Windows Server 2016 和 2012 R2 主机的 VMM 2016 云。
-
+  > 当前不支持包括现有 SCVMM 2012 R2 至 2016 升级的配置。
 ### <a name="host-servers"></a>主机服务器
 
 **部署** | **支持**

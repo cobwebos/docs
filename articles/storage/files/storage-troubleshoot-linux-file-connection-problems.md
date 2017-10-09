@@ -1,6 +1,6 @@
 ---
-title: "在 Linux 中排查 Azure 文件存储问题 | Microsoft Docs"
-description: "在 Linux 中排查 Azure 文件存储问题"
+title: "在 Linux 中排查 Azure 文件问题 | Microsoft Docs"
+description: "在 Linux 中排查 Azure 文件问题"
 services: storage
 documentationcenter: 
 author: genlin
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 09/19/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: dc32a57bf49d20faa2e0c241f99b1af7d02b586f
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: bef3e7bf8b1fd9199d0c8a083d94660b8eed3365
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
-# <a name="troubleshoot-azure-file-storage-problems-in-linux"></a>在 Linux 中排查 Azure 文件存储问题
+# <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
-本文列出了从 Linux 客户端进行连接时，与 Microsoft Azure 文件存储相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。
+本文列出了从 Linux 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>尝试打开文件时出现“[权限被拒绝] 超出磁盘配额”
@@ -41,7 +41,7 @@ ms.lasthandoff: 09/08/2017
 关闭一些句柄，减少并发打开句柄的数量，然后重试操作。 有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-file-storage-in-linux"></a>在 Linux 中将文件复制到 Azure 文件存储以及从中复制文件时速度缓慢
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>在 Linux 中将文件复制到 Azure 文件以及从中复制文件时速度缓慢
 
 -   如果没有特定的最低 I/O 大小要求，建议 I/O 大小为 1 MB 以实现最佳性能。
 -   如果知道通过写入扩展的最终文件大小，并且文件上尚未写入的结尾包含零时软件不会出现兼容性问题，请提前设置文件大小，而不是使每次写入都成为扩展写入。
@@ -79,15 +79,15 @@ ms.lasthandoff: 09/08/2017
 如果无法升级到最新的内核版本，可通过将每隔 30 秒或更少的时间间隔便会对其进行写入操作的文件保留在 Azure 文件共享中来解决此问题。 这必须是一个写入操作，例如在文件上重写创建或修改的日期。 否则，可能会得到缓存的结果，并且操作可能不会触发重新连接。
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-file-storage-by-using-smb-30"></a>使用 SMB 3.0 装载 Azure 文件存储时出现“装载错误(115): 操作正在进行”
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>使用 SMB 3.0 装载 Azure 文件时出现“装载错误(115): 操作正在进行”
 
 ### <a name="cause"></a>原因
 
-某些 Linux 发行版尚不支持 SMB 3.0 中的加密功能，如果用户尝试使用 SMB 3.0 装载 Azure 文件存储，可能会由于缺少功能而收到“115”错误消息。
+某些 Linux 发行版尚不支持 SMB 3.0 中的加密功能，如果用户尝试使用 SMB 3.0 装载 Azure 文件，可能会由于缺少功能而收到“115”错误消息。
 
 ### <a name="solution"></a>解决方案
 
-在 4.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 在发布时，此功能已向后移植到 Ubuntu 17.04 和 Ubuntu 16.10。 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件存储帐户所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件存储。
+在 4.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 在发布时，此功能已向后移植到 Ubuntu 17.04 和 Ubuntu 16.10。 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件存储帐户所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM 上装载的 Azure 文件共享性能缓慢
@@ -110,7 +110,7 @@ ms.lasthandoff: 09/08/2017
 
 `//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-如果不存在 **cache=strict** 或 **serverino** 选项，请通过运行[文档](../storage-how-to-use-files-linux.md)中的装载命令卸载并再次装载 Azure 文件存储。 然后重新检查 **/etc/fstab** 条目是否具有正确选项。
+如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](../storage-how-to-use-files-linux.md)中的装载命令卸载并再次装载 Azure 文件。 然后重新检查 **/etc/fstab** 条目是否具有正确选项。
 
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>将文件从 Windows 复制到 Linux 时丢失时间戳
@@ -129,6 +129,32 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
+
+## <a name="cannot-connect-or-mount-an-azure-file-share"></a>无法连接或装载 Azure 文件共享
+
+### <a name="cause"></a>原因
+
+造成此问题的常见原因包括：
+
+
+- 正在使用不兼容的 Linux 分发客户端。 建议使用以下 Linux 分发来连接 Azure 文件共享：
+
+    - Ubuntu Server 14.04+ 
+    - RHEL 7+ 
+    - CentOS 7+ 
+    - Debian 8 
+    - openSUSE 13.2+ 
+    - SUSE Linux Enterprise Server 12
+
+- 客户端上未安装 CIFS 实用程序。
+- 客户端上未安装最低的 SMB/CIFS 版本 2.1。
+- 客户端不支持 SMB 3.0 加密。 SMB 3.0 加密在 Ubuntu 16.4 及更高版本、SUSE 12.3 及更高版本中可用。 其他分发要求内核 4.11 及更高版本。
+- 试图通过不支持的 TCP 端口 445 连接到存储帐户。
+- 试图从 Azure VM 连接到 Azure 文件共享，而该 VM 并非与存储帐户处于同一区域。
+
+### <a name="solution"></a>解决方案
+
+若要解决此问题，请使用 [Troubleshooting tool for Azure Files mounting errors on Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)（用于 Linux 上 Azure 文件装载错误的故障排除工具）。 此工具可在以下方面提供帮助：验证客户端运行环境，检测会导致 Azure 文件访问失败的不兼容客户端配置，为自行修复提供规范指导，以及收集诊断跟踪。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 

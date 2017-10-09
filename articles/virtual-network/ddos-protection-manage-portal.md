@@ -16,17 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 2b55341a9d5107376557147913f4fb6cb3966bae
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 5c599b4cc867dbc9a081af3a081195b998f63954
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
 >[!IMPORTANT]
->Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护仅在美国东部、美国西部和美国中部区域可用。 在预览版期间，使用该服务不用付费。
+>Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护仅在美国东部、美国西部和美国中西部区域可用。 在预览版期间，使用该服务不用付费。
 
 这篇文章演示了如何使用 Azure 门户来启用 DDoS 保护、禁用 DDoS 保护以及如何使用遥测来缓解攻击。 
 

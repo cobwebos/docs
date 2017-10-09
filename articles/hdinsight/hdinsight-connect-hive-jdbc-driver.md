@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 9667cc728d9700e9ca985969f3566cd8ea47e80e
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: c57684133ac7e5dfd2cc273db0e1ceca78679178
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Hive
@@ -131,7 +131,7 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
    单击“确定”以保存这些设置。
 
-5. 在 SQuirreL SQL 窗口左侧，选择“别名”。 然后单击“+”图标创建连接别名。
+5. 在 SQuirreL SQL 窗口左侧，选择“别名”。 然后单击 **+** 图标，以创建连接别名。
 
     ![添加新的别名](./media/hdinsight-connect-hive-jdbc-driver/aliases.png)
 
@@ -197,6 +197,12 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 现在，已了解如何将 JDBC 与 Hive 配合使用，请使用以下链接来学习 Azure HDInsight 的其他用法。
 
+* [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Hive 数据](./hdinsight-connect-hive-power-bi.md)。
+* [在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询](./hdinsight-connect-hive-zeppelin.md)。
+* [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](./hdinsight-connect-excel-hive-odbc-driver.md)。
+* [使用 Power Query 将 Excel 连接到 Hadoop](./hdinsight-connect-excel-power-query.md)。
+* [使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
+* [使用用于 Visual Studio Code 的 Azure HDInsight 工具](hdinsight-for-vscode.md)。
 * [将数据上传到 HDInsight](hdinsight-upload-data.md)
 * [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)

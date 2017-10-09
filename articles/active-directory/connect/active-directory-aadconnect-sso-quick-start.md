@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 09/26/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 75c361cca556c797fd3ea5480cacbbc14799aca8
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 9d91c59d3e4d73879d95ab193949d54f7b86d6cd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -70,7 +70,10 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使登录�
 
 ## <a name="step-3-roll-out-the-feature"></a>步骤 3：扩展此功能
 
-要向用户推出该功能，需要使用 Active Directory 中的组策略将几个 Azure AD URL 添加到用户的 Intranet 区域设置。
+若要向用户推广该功能，需要使用 Active Directory 中的组策略将以下 Azure AD URL 添加到用户的 Intranet 区域设置：
+
+- https://autologon.microsoftazuread-sso.com
+- https://aadg.windows.net.nsatc.net
 
 >[!NOTE]
 > 以下说明仅适用于 Windows 上的 Internet Explorer 和 Google Chrome（如果它与 Internet Explorer 共用一组相同的受信任站点 URL）。 请阅读下一节，了解在 Mac 上设置 Mozilla Firefox 和 Google Chrome 的说明。

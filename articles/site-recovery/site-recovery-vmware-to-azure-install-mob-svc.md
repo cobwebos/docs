@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 848284f37ae2470a169d8f8a8c9c0bb5b926abe3
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 5a5fc9bac4f0ee54532f34fe957e3722123df178
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -30,7 +30,7 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 * [使用 Azure 自动化和 Desired State Configuration (Automation DSC) 安装移动服务](site-recovery-automate-mobility-service-install.md)
 * [使用图形用户界面 (GUI) 手动安装移动服务](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui)
 * [在命令提示符下手动安装移动服务](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt)
-* [通过推送安装从 Azure Site Recovery 安装移动服务](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
+* [通过推送安装从 Site Recovery 安装移动服务](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
 
 
 >[!IMPORTANT]
@@ -38,7 +38,7 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 
 ## <a name="prerequisites"></a>先决条件
 在服务器上手动安装移动服务之前，请完成以下先决条件步骤：
-1. 登录配置服务器，然后以管理员身份打开“命令提示符”窗口。
+1. 登录配置服务器，并以管理员身份打开“命令提示符”窗口。
 2. 将目录更改到 bin 文件夹，然后创建一个密码文件：
 
     ```
@@ -78,7 +78,7 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 
 
 ## <a name="install-mobility-service-by-push-installation-from-azure-site-recovery"></a>通过推送安装从 Azure Site Recovery 安装移动服务
-若要通过使用 Site Recovery 执行移动服务的推送安装，所有目标计算机必须满足以下先决条件。
+若要通过使用 Site Recovery 执行移动服务的推送安装，所有目标计算机必须满足以下先决条件：
 
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-win](../../includes/site-recovery-prepare-push-install-mob-svc-win.md)]
 
@@ -86,14 +86,28 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 
 
 > [!NOTE]
-安装移动服务后，在 Azure 门户中选择“复制”按钮以开始保护这些 VM。
+安装移动服务后，在 Azure 门户中选择“+复制”按钮以开始保护这些 VM。
+
+## <a name="update-mobility-service"></a>更新移动服务
+
+> [!WARNING]
+> 开始在受保护的服务器上更新移动服务之前，请确保部署中的配置服务器、扩展进程服务器及所有主目标服务器均已更新。 有关详细信息，请参阅[如何更新配置服务器](site-recovery-vmware-to-azure-manage-configuration-server.md#updating-a-configuration-server)及[如何更新扩展进程服务器](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#upgrading-a-scale-out-process-server)
+
+1. 在 Azure 门户中，浏览到“<Your Vault>”->“复制项”视图。
+2. 如果配置服务器已更新到最新版本，则应看到一条通知，显示“新的 Site Recovery 复制代理更新已可用。单击以安装”
+3. 单击通知打开虚拟机选择页面。
+4. 选择要升级移动服务的虚拟机，然后单击“确定”按钮。
+5. 这将为每个所选的虚拟机启动“更新移动服务”作业。
+
+> [!NOTE]
+> [阅读详细内容](site-recovery-vmware-to-azure-manage-configuration-server.md)，了解如何为用于安装移动服务的帐户更新密码 
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>卸载 Windows Server 计算机上的移动服务
 使用以下方法之一卸载 Windows Server 计算机上的移动服务。
 
 ### <a name="uninstall-by-using-the-gui"></a>使用 GUI 卸载
 1. 在“控制面板”中，选择“程序”。
-2. 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器”，然后单击“卸装”。
+2. 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器”，并单击“卸装”。
 
 ### <a name="uninstall-at-a-command-prompt"></a>在命令提示符下卸载
 1. 以管理员身份打开“命令提示符”窗口。

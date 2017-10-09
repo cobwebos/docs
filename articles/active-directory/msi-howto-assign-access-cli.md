@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/25/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: e6eede1c093145894f4330a0c4385969cd4dd7da
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: e77915c1d982ccf6262ffcbc09dc91dfd986dac5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 09/14/2017
 
 在 Azure 资源（[如 Azure VM](msi-qs-configure-cli-windows-vm.md)）上启用 MSI 后： 
 
-1. 如果使用的不是 Azure 门户中的 Azure Cloud Shell，请先运行 [az login](/cli/azure/#login) 登录 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
 
    ```azurecli-interactive
    az login
@@ -52,7 +52,7 @@ ms.lasthandoff: 09/14/2017
 2. 此示例要授予 Azure VM 对存储帐户的访问权限。 首先，运行 [az resource list](/cli/azure/resource/#list) 获取名为“myVM”的 VM 的服务主体，它是在 VM 上启用 MSI 时创建的：
 
    ```azurecli-interactive
-   $spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
+   spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
    ```
 
 3. 有了服务主体 ID 后，立即运行 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)，授予 VM 对“myStorageAcct”存储帐户的“阅读器”访问权限：
