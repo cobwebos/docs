@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f7351f310752803b910eef69e71d081ddc923c5e
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 279838150c94ab04eaea08dc30ee8b0f9f7ee3d5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 
 - 需要 Azure 订阅和现有 Node.js Web 应用程序。
 
-如果没有 Node.js Web 应用程序，则可以按照[创建 Node.js Web 应用快速入门](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-nodejs)创建一个。
+如果没有 Node.js Web 应用程序，则可以按照[创建 Node.js Web 应用快速入门](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs)创建一个。
  
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -69,7 +69,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
    npm install applicationinsights --save
    ```
 
-3. 编辑应用的第一个 .js 文件并将以下两行添加到脚本的最顶部部分。 如果使用的是 [Node.js 快速入门应用](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-nodejs)，则将修改 index.js 文件。 
+3. 编辑应用的第一个 .js 文件并将以下两行添加到脚本的最顶部部分。 如果使用的是 [Node.js 快速入门应用](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs)，则将修改 index.js 文件。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
