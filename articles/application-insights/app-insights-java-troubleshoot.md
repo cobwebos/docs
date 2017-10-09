@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: b95a52e1de176622907c338521da7b6885948118
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 4d33f8499abfa58437328715ec892a414a3c22d6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
@@ -31,18 +31,18 @@ ms.lasthandoff: 06/13/2017
 ## <a name="no-data"></a>没有数据
 **我已成功添加 Application Insights 并运行应用，但在门户中从未看到数据。**
 
-* 请稍等片刻，然后单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
+* 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
 * 检查是否已在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中定义检测密钥
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
-* 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。 请参阅 [full list of firewall exceptions](app-insights-ip-addresses.md)（防火墙例外的完整列表）
-* 在 Microsoft Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，然后关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，打开 IDE 控制台窗口日志记录功能，然后错误条目的前面是否带有 [Error]。
+* 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。请参阅 [full list of firewall exceptions](app-insights-ip-addresses.md)（防火墙例外的完整列表）
+* 在 Microsoft Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
+* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，打开 IDE 控制台窗口日志记录功能，并检查条目的前面是否带有 [Error]。
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
 * 如果找不到配置文件，请检查输出消息来确定在何处搜索配置文件，并确保 ApplicationInsights.xml 位在这些搜索位置之一。 根据经验法则，可以将配置文件放置在 Application Insights SDK JAR 的附近。 例如：在 Tomcat 中，这可能是 WEB-INF/lib 文件夹。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
 * 请查看[状态博客](http://blogs.msdn.com/b/applicationinsights-status/)。
-* 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。 如果达到了配额，你可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
+* 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
 * 打开“配额和定价”边栏选项卡，检查是否正在执行[采样](app-insights-sampling.md)。 （如果传输百分比为 100%，表示当前未执行采样。）可将 Application Insights 服务设置为只接受来自应用的一部分遥测数据。 这有助于保持在每月的遥测配额范围内。 
@@ -54,7 +54,7 @@ ms.lasthandoff: 06/13/2017
 
 或者，如果客户端是[手机或其他设备][platforms]中的应用，可以从该处发送遥测数据。 
 
-使用相同的检测密钥来设置客户端和服务器遥测。 数据将出现在相同的 Application Insights 资源中，你可以将来自客户端和服务器的事件相关联。
+使用相同的检测密钥来设置客户端和服务器遥测。 数据将出现在相同的 Application Insights 资源中，可以将来自客户端和服务器的事件相关联。
 
 
 ## <a name="disabling-telemetry"></a>禁用遥测
@@ -112,7 +112,7 @@ ms.lasthandoff: 06/13/2017
 
 *如何从 Azure 开始面板（主屏幕）找到有关应用的数据？*
 
-假设要[为 Application Insights 设置应用][java]，请单击“浏览”，选择“Application Insights”，然后选择为应用创建的应用资源。 今后若要快速转到该位置，可将应用固定到开始面板。
+假设要[为 Application Insights 设置应用][java]，请单击“浏览”，选择“Application Insights”，并选择为应用创建的应用资源。 今后要快速转到该位置，可将应用固定到开始面板。
 
 ## <a name="intranet-servers"></a>Intranet 服务器
 **是否可以在 Intranet 上监视服务器？**

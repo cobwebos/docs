@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/17/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: fe769fb433d65374109fec60c6c6d032b1ad97fb
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 3e688f9596f9ef564370e20a6143aa1d47539526
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
@@ -79,7 +79,7 @@ TelemetryClient 是线程安全的。
 
 在代码中插入 `TrackEvent` 调用来统计各种事件。 用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
-例如，在游戏应用中，每当用户获胜时将会发送事件：
+例如，在游戏应用中，每当用户获胜时会发送事件：
 
 *JavaScript*
 
@@ -98,11 +98,11 @@ Visual Basic
     telemetry.trackEvent("WinGame");
 
 ### <a name="view-your-events-in-the-microsoft-azure-portal"></a>在 Microsoft Azure 门户中查看事件
-若要查看事件计数，请打开[“指标资源管理器”](app-insights-metrics-explorer.md)边栏选项卡、添加新图表，然后选择“事件”。  
+要查看事件计数，请打开[“指标资源管理器”](app-insights-metrics-explorer.md)边栏选项卡、添加新图表，并选择“事件”。  
 
 ![查看自定义事件计数](./media/app-insights-api-custom-events-metrics/01-custom.png)
 
-若要比较不同事件的计数，请将图表类型设置为“网格”，并按事件名称分组：
+要比较不同事件的计数，请将图表类型设置为“网格”，并按事件名称分组：
 
 ![设置图表类型和分组](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
@@ -110,9 +110,9 @@ Visual Basic
 
 ![钻取事件](./media/app-insights-api-custom-events-metrics/03-instances.png)
 
-若要在“搜索”或“指标资源管理器”中专注查看特定事件，请将边栏选项卡筛选器设置为所需的事件名称：
+要在“搜索”或“指标资源管理器”中专注查看特定事件，请将边栏选项卡筛选器设置为所需的事件名称：
 
-![打开“筛选器”，展开“事件名称”，然后选择一个或多个值](./media/app-insights-api-custom-events-metrics/06-filter.png)
+![打开“筛选器”，展开“事件名称”，并选择一个或多个值](./media/app-insights-api-custom-events-metrics/06-filter.png)
 
 ### <a name="custom-events-in-analytics"></a>Analytics 中的自定义事件
 
@@ -307,7 +307,7 @@ namespace MetricAggregationExample
 > 可能需要几分钟，自定义指标才会显示在可用指标列表中。
 >
 
-![添加新图表或选择图表，然后在“自定义”下面选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
+![添加新图表或选择图表，并在“自定义”下面选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
 ### <a name="custom-metrics-in-analytics"></a>分析中的自定义指标
 
@@ -469,7 +469,7 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
        appInsights.trackException(ex);
     }
 
-SDK 将自动捕获许多异常，因此不一定需要显式调用 TrackException。
+SDK 会自动捕获许多异常，因此不一定需要显式调用 TrackException。
 
 * ASP.NET：[编写代码来捕获异常](app-insights-asp-net-exceptions.md)。
 * J2EE：[自动捕获异常](app-insights-java-get-started.md#exceptions-and-request-failures)。
@@ -521,7 +521,7 @@ exceptions
 `message` 上的大小限制比属性上的限制高得多。
 TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 例如，可在此处对 POST 数据进行编码。  
 
-此外，可向你的消息添加严重性级别。 并像其他遥测一样，可以添加属性值以帮助筛选或搜索不同跟踪集。 例如：
+此外，可向消息添加严重性级别。 并像其他遥测一样，可以添加属性值以帮助筛选或搜索不同跟踪集。 例如：
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -538,7 +538,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 `trackTrace()` 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
 
 ## <a name="trackdependency"></a>TrackDependency
-可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果将显示在门户上的依赖项图表中。
+可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果会显示在门户上的依赖项图表中。
 
 ```C#
 var success = false;
@@ -706,20 +706,20 @@ Visual Basic
 >
 >
 
-如果使用了指标，请打开“指标资源管理器”，然后从“自定义”组中选择指标：
+如果使用了指标，请打开“指标资源管理器”，并从“自定义”组中选择指标：
 
-![打开“指标资源管理器”，选择图表，然后选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
+![打开“指标资源管理器”，选择图表，并选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
 > [!NOTE]
 > 如果指标未显示或“自定义”标题未出现，请关闭选项边栏选项卡并稍后重试。 有时，通过管道聚合指标可能需要花费一个小时。
 
 *如果使用了属性和指标*，请按属性将指标分段：
 
-![设置“分组”，然后在“分组依据”下面选择属性](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
+![设置“分组”，并在“分组依据”下面选择属性](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
 
 *在诊断搜索中*，可以查看发生的每个事件的属性和指标。
 
-![选择一个实例，然后选择“...”](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
+![选择一个实例，并选择“...”](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
 
 使用“搜索”字段查看具有特定属性值的事件匹配项。
 
@@ -828,7 +828,7 @@ Visual Basic
 若要向所有遥测数据（包括来自标准收集模块的数据）添加属性，请[实现 `ITelemetryInitializer`](app-insights-api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>采样、筛选和处理遥测数据
-可以先通过编写代码来处理遥测数据，然后再从 SDK 发送该数据。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
+可以先通过编写代码来处理遥测数据，再从 SDK 发送该数据。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
 
 通过实现 `ITelemetryInitializer` [将属性添加到](app-insights-api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
 
@@ -850,7 +850,7 @@ Visual Basic
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中的相关行。 例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 ## <a name="debug"></a>开发人员模式
 在调试期间，通过管道加速遥测会很有效，这样可以立即看到结果。 此外，还可以获得其他消息来帮助跟踪任何遥测问题。 在生产环境中请关闭此模式，因为它可能会拖慢应用。
@@ -913,7 +913,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 
     telemetry.Context.Operation.Name = "MyOperationName";
 
-如果自行设置这些值，请考虑从 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中删除相关的代码行，以便你的值与标准值不会造成混淆。
+如果自行设置这些值，请考虑从 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中删除相关的代码行，以便值与标准值不会造成混淆。
 
 * **Component**：应用及其版本。
 * **Device**：有关正在运行应用的设备的数据。 （在 Web 应用中，是指从其中发送遥测的服务器或客户端设备。）
@@ -924,7 +924,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
   * **Name**：一个标识符，通常是 HTTP 请求的 URL。
   * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为傀儡或 Web 测试。 默认情况下，该属性会从指标资源管理器的计算中排除。
 * **Properties**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
-* **Session**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值将会更改。
+* **Session**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值会更改。
 * **User**：用户信息。
 
 ## <a name="limits"></a>限制
@@ -952,7 +952,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 ## <a name="questions"></a>问题
 * *Track_() 调用可能会引发哪些异常？*
 
-    无。 不需要将它们包装在 try-catch 子句中。 如果 SDK 遇到问题，它将会在调试控制台输出中记录消息，如果消息已传入，可在诊断搜索中查看。
+    无。 不需要将它们包装在 try-catch 子句中。 如果 SDK 遇到问题，它会在调试控制台输出中记录消息，如果消息已传入，可在诊断搜索中查看。
 * *是否可以使用某个 REST API 从门户获取数据？*
 
     是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[从 Analytics 导出到 Power BI](app-insights-export-power-bi.md) 和[连续导出](app-insights-export-telemetry.md)。

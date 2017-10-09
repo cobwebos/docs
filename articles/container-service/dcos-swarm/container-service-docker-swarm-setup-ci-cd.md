@@ -16,10 +16,10 @@ ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b6687b4e5df73e61acc599133e53385987742937
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 99c27c37218a35d2a3416d6edd5e0a871cd5c011
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -167,7 +167,7 @@ Microsoft 提供了一个 VSTS 扩展，用于在生成和发布过程中操作 
 
 4. 为每个映像（共五个）配置生成和推送步骤后，请在生成工作流中另外添加两个步骤。
 
-    a. 一个命令行任务，使用 Bash 脚本将 docker-compose.yml 文件中出现的 BuildNumber 替换为当前生成 ID。 请参阅以下屏幕截图中的详细信息。
+    a. 一个命令行任务，使用 Bash 脚本将 docker-compose.yml 文件中出现的 BuildNumber 替换为当前生成 ID。请参阅以下屏幕截图中的详细信息。
 
     ![Visual Studio Team Services - 更新 Compose 文件](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 

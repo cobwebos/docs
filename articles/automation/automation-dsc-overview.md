@@ -14,7 +14,7 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 23a6e09d410616b135506df778d6fdd5ed68bb41
 ms.contentlocale: zh-cn
@@ -52,7 +52,7 @@ Azure Automation DSC 向 [PowerShell Desired State Configuration](https://msdn.m
 
 ## <a name="introduction-video"></a>简介视频
 
-你更喜欢观看视频而不喜欢阅读文档？ 请观看以下在 2015 年 5 月发布的视频，这是首次发布 Azure 自动化 DSC 的时间。
+更喜欢观看视频而不喜欢阅读文档？ 请观看以下在 2015 年 5 月发布的视频，这是首次发布 Azure 自动化 DSC 的时间。
 
 >[!NOTE]
 >尽管这段视频中所述的概念和生命周期都是正确的，但 Azure Automation DSC 自从这段视频录制以来已有很大的发展。
@@ -67,4 +67,4 @@ Azure Automation DSC 向 [PowerShell Desired State Configuration](https://msdn.m
 * 要了解编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure 自动化 DSC 中编译配置](automation-dsc-compile.md)
 * 有关 Azure Automation DSC 的 PowerShell cmdlet 参考，请参阅 [Azure Automation DSC cmdlet](/powershell/module/azurerm.automation/#automation)
 * 有关定价信息，请参阅 [Azure Automation DSC 定价](https://azure.microsoft.com/pricing/details/automation/)。
-* 要查看在持续部署管道中使用 Azure Automation DSC 的示例，请参阅 [使用 Automation DSC 和 Chocolatey 持续部署到 IaaS 虚拟机](automation-dsc-cd-chocolatey.md)
+* 若要查看在持续部署管道中使用 Azure Automation DSC 的示例，请参阅[使用 Azure Automation DSC 和 Chocolatey 持续部署到 IaaS VM](automation-dsc-cd-chocolatey.md)

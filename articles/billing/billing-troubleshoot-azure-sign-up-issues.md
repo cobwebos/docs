@@ -17,10 +17,10 @@ ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: af8a7bbc4bf007dfa5bef7ceb9cf940ad752239a
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 5f9d4e580b0d4d7c3ea39c53b1bf4067a59d4d52
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>排查 Azure 注册问题
@@ -30,8 +30,8 @@ ms.lasthandoff: 09/06/2017
 
 若要解决该问题，请执行以下步骤：
 
-1. 使用帐户管理员凭据登录到 [Azure 帐户中心](https://account.azure.com)。 
-2. 单击“配置文件”，然后单击“编辑详细信息”。
+1. 使用帐户管理员凭据登录到 [Azure 帐户中心](https://account.azure.com/Profile)。 
+2. 单击“编辑详细信息”。
 3. 确保所有地址字段都已完成并且有效。 
 4. 注册 Azure 订阅时，请确保在信用卡注册期间输入的帐单地址与银行记录相符。
 
