@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/17/2017
+ms.date: 09/26/2017
 ms.author: mikeray
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 439353b7d22fb7376049ea8e1433a8d5840d3e0f
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 1bbfd7cc63d534d7f9c360ad4afd05bd4e225725
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -431,19 +431,37 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 在 PowerShell 中设置群集探测端口参数。
 
-若要设置群集探测端口参数，请在环境中更新以下脚本中的变量。
+若要设置群集探测端口参数，请使用环境中的值更新以下脚本中的变量。 从脚本中删除尖括号 `<>`。 
 
-  ```PowerShell
-   $ClusterNetworkName = "<Cluster Network Name>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
-   $IPResourceName = "IP Address Resource Name" # the IP Address cluster resource name.
-   $ILBIP = "<10.0.0.x>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-   [int]$ProbePort = <59999>
+   ```PowerShell
+   $ClusterNetworkName = "<Cluster Network Name>"
+   $IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
+   $ILBIP = "<n.n.n.n>" 
+   [int]$ProbePort = <nnnnn>
 
    Import-Module FailoverClusters
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
+在前面的脚本中，设置环境的值。 以下列表对这些值进行了说明：
+
+   - `<Cluster Network Name>`：Windows Server 故障转移群集的网络名称。 在“故障转移群集管理器” > “网络”中，右键单击网络，然后单击“属性”。 正确的值位于“常规”选项卡的“名称”下。 
+
+   - `<SQL Server FCI IP Address Resource Name>`：SQL Server FCI IP 地址资源名称。 在“故障转移群集管理器” > “角色”中，SQL Server FCI 角色的“服务器名称”下，右键单击 IP 地址资源，然后单击“属性”。 正确的值位于“常规”选项卡的“名称”下。 
+
+   - `<ILBIP>`：ILB IP 地址。 在 Azure 门户中将此地址配置为 ILB 前端地址。 这也是 SQL Server FCI IP 地址。 可在“故障转移群集管理器”中找到该地址，它与 `<SQL Server FCI IP Address Resource Name>` 位于同一属性页。  
+
+   - `<nnnnn>`：这是在负载均衡器运行状况探测中配置的探测端口。 任何未使用的 TCP 端口都有效。 
+
+>[!IMPORTANT]
+>群集参数的子网掩码必须是 TCP IP 广播地址：`255.255.255.255`。
+
+设置群集探测后，可在 PowerShell 中看到所有群集参数。 运行以下脚本：
+
+   ```PowerShell
+   Get-ClusterResource $IPResourceName | Get-ClusterParameter 
+  ```
 
 ## <a name="step-7-test-fci-failover"></a>步骤 7：测试 FCI 故障转移
 

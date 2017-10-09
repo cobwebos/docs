@@ -13,19 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2017
+ms.date: 09/26/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 2e41c70b982b97c6aab7b6c0322c193c61370a26
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 2219aeb725b207fd92ff3e7603d7ee9c78f2844c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
-# <a name="high-availability-ports-overview"></a>高可用性端口概述
+# <a name="high-availability-ports-overview-preview"></a>高可用性端口概述（预览）
 
 Azure 负载均衡器的标准 SKU 引入了高可用性 (HA) 端口功能 - 能够为所有支持的协议分配来自所有端口的流量。 配置内部负载均衡器时，用户可以配置 HA 端口规则（可将前端和后端端口设置为 **0**，将协议设置为 **all**），从而允许所有流量流经内部负载均衡器。
+
+>[!NOTE]
+> 高可用性端口功能当前处于预览状态。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 负载均衡算法仍保持不变，并基于五元组 <源 IP 地址、源端口、目标 IP 地址、目标端口、协议> 选择目标。 但此配置允许单个 LB 规则处理所有可用流量，并减少配置复杂性以及由可以添加的最大负载均衡规则数施加的任何限制。
 
@@ -43,6 +46,32 @@ HA 端口无需采用更复杂的解决方案（如 zookeeper）从而减少了 
 
 图 1 - 包含以 HA 模式部署的 NVA 的中心辐射型虚拟网络
 
+
+## <a name="region-availability"></a>上市区域
+
+HA 端口当前在以下区域提供：
+- 美国东部 2
+- 美国中部
+- 欧洲北部
+- 美国中西部
+- 欧洲西部
+- 东南亚 
+
+## <a name="preview-sign-up"></a>预览版注册
+
+若要体验负载均衡器标准 SKU 中 HA 端口功能的预览版，请使用 PowerShell 或 Azure CLI 2.0 注册订阅，获取访问权限。
+
+- 使用 PowerShell 注册
+
+    ```powershell
+    Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
+    ```
+
+- 使用 Azure CLI 2.0 注册
+
+    ```cli
+    az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network 
+    ```
 ## <a name="caveats"></a>注意事项
 
 以下是 HA 端口支持的配置或异常：

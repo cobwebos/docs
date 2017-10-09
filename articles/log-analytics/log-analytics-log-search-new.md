@@ -1,5 +1,5 @@
 ---
-title: "OMS Log Analytics 中的日志搜索 | Microsoft Docs"
+title: "Azure Log Analytics 中的日志搜索 | Microsoft Docs"
 description: "需要日志搜索才能检索来自 Log Analytics 的任何数据。  本文介绍新的日志搜索在 Log Analytics 中的用法以及创建搜索之前需要了解的概念。"
 services: log-analytics
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/26/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 0f27db7018e398f71a8d7bd0b86e643367b15875
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: db271f5157fee29a5cc0c4534768bdb3c769ba74
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>了解 Log Analytics 中的日志搜索
@@ -33,9 +33,9 @@ ms.lasthandoff: 08/28/2017
 
 在 Log Analytics 中使用日志搜索的方式包括以下几种：
 
-- **门户。** 可使用[日志搜索门户](log-analytics-log-search-log-search-portal.md)或[高级分析门户](https://go.microsoft.com/fwlink/?linkid=856587)在存储库中执行交互式数据分析。  这样便可采用各种格式和可视化效果编辑查询并分析结果。  创建的大多数查询会在其中一个门户中启动，然后在用户已验证查询按预期工作后，查询将被复制。
+- **门户。** 可在 Azure 门户或[高级分析门户](https://go.microsoft.com/fwlink/?linkid=856587)中，对存储库中的数据进行交互式分析。  这样便可采用各种格式和可视化效果编辑查询并分析结果。  创建的大多数查询会在其中一个门户中启动，然后在用户已验证查询按预期工作后，查询将被复制。
 - **警报规则。** [警报规则](log-analytics-alerts.md)主动识别工作区中数据的问题。  每个警报规则均基于定期自动运行的日志搜索。  对结果进行检查，确定是否应创建警报。
-- **视图。**  可以使用[视图设计器](log-analytics-view-designer.md)创建要包含在用户仪表板中的数据的可视化效果。  日志搜索提供每个视图中[磁贴](log-analytics-view-designer-tiles.md)和[可视化部件](log-analytics-view-designer-parts.md)使用的数据。  可以从可视化部件向下钻取到日志搜索门户，对数据执行进一步的分析。
+- **视图。**  可以使用[视图设计器](log-analytics-view-designer.md)创建要包含在用户仪表板中的数据的可视化效果。  日志搜索提供每个视图中[磁贴](log-analytics-view-designer-tiles.md)和[可视化部件](log-analytics-view-designer-parts.md)使用的数据。  可以从可视化部件向下钻取到日志搜索页，对数据执行进一步的分析。
 - **导出。**  将数据从 Log Analytics 工作区导出到 Excel 或 [Power BI](log-analytics-powerbi.md) 中时，创建日志搜索以定义要导出的数据。
 - **PowerShell。** 可从命令行运行 PowerShell 脚本或运行使用 [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) 的 Azure 自动化 runbook，从 Log Analytics 中检索数据。  此 cmdlet 需要一个查询来确定要检索的数据。
 - **Log Analytics API。**  [Log Analytics 日志搜索 API](log-analytics-log-search-api.md) 允许任何 REST API 客户端从工作区中检索数据。  API 请求包括针对 Log Analytics 运行的查询，用于确定要检索的数据。
@@ -43,7 +43,7 @@ ms.lasthandoff: 08/28/2017
 ![日志搜索](media/log-analytics-log-search-new/log-search-overview.png)
 
 ## <a name="how-log-analytics-data-is-organized"></a>Log Analytics 数据的组织方式
-生成查询时，首先确定哪些表含要查找的数据。 每个[数据源](log-analytics-data-sources.md)和[解决方案](../operations-management-suite/operations-management-suite-solutions.md)在 Log Analytics 工作区的专用表中存储其数据。  每个数据源和解决方案的文档包括其创建的数据类型名称及其每个属性的说明。     许多查询只需要单个表中的数据，但其他查询可能会使用多种选项以包含多个表中的数据。
+生成查询时，首先确定哪些表含要查找的数据。 每个[数据源](log-analytics-data-sources.md)和[解决方案](../operations-management-suite/operations-management-suite-solutions.md)在 Log Analytics 工作区的专用表中存储其数据。  每个数据源和解决方案的文档包括其创建的数据类型名称及其每个属性的说明。  许多查询只需要单个表中的数据，但其他查询可能会使用多种选项以包含多个表中的数据。
 
 ![表](media/log-analytics-log-search-new/queries-tables.png)
 
@@ -78,10 +78,17 @@ Log Analytics 中日志搜索的核心是[扩展的查询语言](https://docs.lo
 
 从这些快速示例可以看出，无论处理何种数据，查询的结构是类似的。  可以将其分解为不同的步骤，其中从一条命令生成的数据会通过管道发送到下一条命令。
 
+还可在订阅中跨 Log Analytics 工作区查询数据。
+
+    union Update, workspace("contoso-workspace").Update
+    | where TimeGenerated >= ago(1h)
+    | summarize dcount(Computer) by Classification 
+
+
 有关 Azure Log Analytics 查询语言的完整文档，包括教程和语言参考，请参阅 [Azure Log Analytics 查询语言文档](https://docs.loganalytics.io/)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[用于创建并编辑日志搜索的门户](log-analytics-log-search-portals.md)。
-- 查看使用新查询语言的[查询编写教程](https://go.microsoft.com/fwlink/?linkid=856078)。
+- 查看使用新查询语言的[查询编写教程](log-analytics-tutorial-viewdata.md)。
 

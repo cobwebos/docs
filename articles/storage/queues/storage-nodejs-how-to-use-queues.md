@@ -3,7 +3,7 @@ title: "如何通过 Node.js 使用队列存储 | Microsoft Docs"
 description: "了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 相关示例是使用 Node.js 编写的。"
 services: storage
 documentationcenter: nodejs
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: a8a92db0-4333-43dd-a116-28b3147ea401
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: aec5eb551ef438015d4f6a3d1578d0fa890d737e
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 649c656b08c03ca9c902b0d80e77d9b3b662635b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>如何通过 Node.js 使用队列存储
@@ -341,9 +341,8 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.com
 [在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/app-service-web-get-started-nodejs.md)
-   
 
 
-[生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)   
-[Azure 存储团队博客]：http://blogs.msdn.com/b/windowsazurestorage/ [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]：https://www.microsoft.com/web/webmatrix/   
+
+[生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) [Azure 存储团队博客]：http://blogs.msdn.com/b/windowsazurestorage/ [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]：https://www.microsoft.com/web/webmatrix/
 

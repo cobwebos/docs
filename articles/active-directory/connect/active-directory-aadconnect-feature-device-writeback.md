@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 09/26/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 3b14013894b7fabdd4658a64f8fdfd29216ba268
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 7af8fadca15e07e178f12db27fec2467f43c5d36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
@@ -44,19 +44,27 @@ ms.lasthandoff: 07/13/2017
 使用以下步骤来准备使用设备写回。
 
 1. 从已安装 Azure AD Connect 的计算机上，以权限提升模式启动 PowerShell。
-2. 如果尚未安装 Active Directory PowerShell 模块，请使用以下命令安装该模块：
-   
-   `Add-WindowsFeature RSAT-AD-PowerShell`
-3. 如果尚未安装 Azure Active Directory PowerShell 模块，请从 [用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)下载并安装该模块。 此组件依赖于随 Azure AD Connect 一起安装的登录助手。
+2. 如果未安装 Active Directory PowerShell 模块，请安装包含 AD PowerShell 模块的远程服务器管理工具，并安装运行脚本所需的 dsacls.exe。  运行以下命令：
+  
+   ``` powershell
+   Add-WindowsFeature RSAT-AD-Tools
+   ```
+
+3. 如果尚未安装 Azure Active Directory PowerShell 模块，请从 [用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)下载并安装该模块。 此组件依赖于随 Azure AD Connect 一起安装的登录助手。  
 4. 使用企业管理员凭据运行以下命令，并退出 PowerShell。
    
-   `Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
-   
-   `Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}`
+   ``` powershell
+   Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
+   ```
+
+   ``` powershell
+   Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}
+   ```
 
 由于需要对配置命名空间进行更改，因此需要使用企业管理员凭据。 域管理员没有足够的权限。
 
-![用于启用设备写回的 Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)
+![用于启用设备写回的 Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png) d
+
 
 说明:
 

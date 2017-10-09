@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 32d8fca81c20e77db4ed3aae05d017ccc2ce1be3
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: f5ffcb5be1c52f27948414304f1fc2e82c76709b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>使用自动缩放规则扩展可缩减 Service Fabric 群集
@@ -100,7 +100,7 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 
 若要确保在删除 VM 时删除节点，有两个选项：
 
-1) 为群集中的节点类型选择金级或银级（即将推出）持续性级别，这会提供基础结构集成。 这随后会在你进行减少时自动从我们的系统服务 (FM) 状态中删除节点。
+1) 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在进行减少时自动从我们的系统服务 (FM) 状态中删除节点。
 在[此处](service-fabric-cluster-capacity.md)了解有关持续性级别的详细信息
 
 2) 减少 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](https://msdn.microsoft.com/library/mt125993.aspx)。

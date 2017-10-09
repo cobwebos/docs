@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: a6f417ea6575b81258998ae3b31c10e9df59b603
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 45b3e2a493fd6fab54f193f8ea9bbeae1d7470ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/08/2017
 
 ### <a name="operating-system"></a>操作系统
 
-可以针对 Windows Server 2008 R2、2012、2012 R2 和 2016 版本运行适用于 Windows 的自定义脚本扩展。
+可以针对 Windows 10 客户端、Windows Server 2008 R2、2012、2012 R2 和 2016 版本运行适用于 Windows 的自定义脚本扩展。
 
 ### <a name="script-location"></a>脚本位置
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/08/2017
 ```json
 {
     "apiVersion": "2015-06-15",
-    "type": "extensions",
+    "type": "Microsoft.Compute/virtualMachines/extensions",
     "name": "config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -150,5 +150,5 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容不了解，可以联系 [MSDN Azure 和 Stack Overflow 论坛] (https://azure.microsoft.com/en-us/support/forums/) 上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/en-us/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)。
+如果对本文中的任何内容不了解，可以联系 [MSDN Azure 和 Stack Overflow 论坛] (https://azure.microsoft.com/en-us/support/forums/) 上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/en-us/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)。
 

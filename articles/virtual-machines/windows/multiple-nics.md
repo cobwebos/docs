@@ -4,7 +4,7 @@ description: "了解如何使用 Azure PowerShell 或 Resource Manager 模板创
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/05/2017
+ms.date: 09/26/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 92f5181dbf36ef0f7e2568d557faa7c5f2144ad9
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 4fa4d56cc0e28fe5d945959e51c482449975af81
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
@@ -126,7 +126,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     ```
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>向现有 VM 添加 NIC
-若要向现有 VM 添加虚拟 NIC，解除分配 VM，添加虚拟 NIC，然后启动 VM。
+若要向现有 VM 添加虚拟 NIC，解除分配 VM，添加虚拟 NIC，然后启动 VM。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](resize-vm.md)。
 
 1. 通过 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) 解除分配 VM。 以下示例解除分配“myResourceGroup”中名为“myVM”的 VM：
 

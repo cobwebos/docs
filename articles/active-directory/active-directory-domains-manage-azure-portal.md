@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/25/2017
 ms.author: curtand;jeffsta
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 402c1be07b8ee885ee5341128fb3f419611b924d
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 2f5a41907e9fa304444b369311e182d3f00ef619
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/11/2017
 可以将目录的主域名更改为任何未联合的已验证自定义域。 更改目录的主域不会更改任何现有用户的用户名。
 
 ## <a name="add-custom-domain-names-to-your-azure-ad"></a>将自定义域名添加到 Azure AD
-可以将最多 900 个自定义域名添加到每个 Azure AD 目录。 [添加其他自定义域名](add-custom-domain.md)的过程与第一个自定义域名的相同。
+> 最多可添加 900 个托管域名。 若要配置所有域以便与本地 Active Directory 联合，最多可在每个目录中添加 450 个域名。 有关详细信息，请参阅[联合域名和托管域名](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names)。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>添加自定义域的子域
 如果想要将第三级域名（如 “europe.contoso.com”）添加到目录，则应首先添加并验证第二级域，例如 contoso.com。子域由 Azure AD 自动验证。 若要查看刚添加的子域是否已经过验证，请刷新浏览器中的页面，其中列出了域。

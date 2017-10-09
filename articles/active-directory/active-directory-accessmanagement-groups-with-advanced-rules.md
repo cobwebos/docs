@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: b136d3841243ad7aa88786f76b2d31e5dfae9079
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: f2541b906a2c3a5bbdd384476ce99cad766a6c09
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -239,7 +239,8 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 
-可以通过使用图形资源管理器查询用户的属性，以及通过搜索属性名称来查找自定义属性名称。 目前我们不支持从本地 Active Directory 同步的多值属性。 
+可以通过使用图形资源管理器查询用户的属性，以及通过搜索属性名称来查找自定义属性名称。
+目前我们不支持从本地 Active Directory 同步的多值属性。
 
 ## <a name="direct-reports-rule"></a>“直接下属”规则
 可以创建包含经理的所有直接下属的组。 当经理的直接下属将来发生更改时，组的成员身份将自动进行调整。
@@ -287,6 +288,19 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 > 无法在 Azure 经典门户中使用“简单规则”下拉列表创建这些设备规则。
 >
 >
+
+## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>将动态成员身份更改为静态，反之亦然
+可更改在组中管理成员身份的方式。 想要在系统中保留相同的组名称和 ID，使针对组的任何现有引用仍然有效时，这很有用；创建新组需要更新这些引用。
+
+> [!WARNING]
+> 将现有静态组更改为动态组时，会从组中删除所有现有成员，然后会处理成员身份规则以添加新成员。 如果使用组来控制对应用或资源的访问，则在完全处理成员身份规则前，原始成员可能无法进行访问。
+>
+> 建议事先测试新的成员身份规则，确保组中的新成员身份符合预期。
+
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，打开组。
+2. 选择“配置”选项卡，查看动态成员身份的当前状态。
+3. 要将组设为静态，只需将“启用动态成员身份”设置切换为“否”。 单击下方工具栏中的“保存”按钮进行确认。 现有成员保留在组中，并且从现在起，不会再处理成员身份规则。
+4. 要将组设为动态，请将设置切换为“是”，指定所需的成员身份规则，然后单击“保存”。 将删除现有成员，并开始处理新规则以添加新成员。
 
 ## <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。

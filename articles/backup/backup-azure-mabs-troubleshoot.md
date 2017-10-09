@@ -15,16 +15,28 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 5672bb1e17dac4ae0aaa67f936676d6c2fc5ef12
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 71da98bf6d53ab50df4f6e40cf0b548752d10f93
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
 可参考下表中所列的信息，排查使用 Azure 备份服务器时遇到的错误。
+
+## <a name="error-invalid-vault-credentials-provided-the-file-is-either-corrupted-or-does-not-have-the-latest-credentials-associated-with-recovery-service"></a>错误：提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据 
+
+请按照这些 [疑难解答步骤] (https://docs.microsoft.com/zh-cn/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) 操作来解决此问题。
+
+## <a name="error-the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-server"></a>错误：代理操作失败，因为服务器上的 DPM 代理协调器服务出现通信错误 
+
+请按照这些 [疑难解答步骤] (https://docs.microsoft.com/zh-cn/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) 操作来解决此问题。
+
+## <a name="error-setup-could-not-update-registry-metadata"></a>错误：安装程序无法更新注册表元数据
+
+请按照这些 [疑难解答步骤] (https://docs.microsoft.com/zh-cn/azure/backup/backup-azure-mabs-troubleshoot#installation-issues) 操作来解决此问题。
 
 
 ## <a name="installation-issues"></a>安装问题

@@ -17,10 +17,10 @@ ms.date: 09/20/2017
 ms.author: jdial
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 21729bc6af282abc47c9b226f343bf2d44153d55
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 035eb44432081ef52c758a5d311b4d2ba2c6108d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>使用网络和应用程序安全组（预览版）筛选网络流量
@@ -39,10 +39,22 @@ ms.lasthandoff: 09/25/2017
 无论是从 Windows、 Linux 还是 macOS 执行命令，Azure CLI 命令都相同。 不过在操作系统 shell 之间存在脚本差异。 以下步骤中的脚本在 Bash shell 中执行。 
 
 1. [安装并配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-2. 通过输入 `az --version` 命令确保使用的是高于 2.0.17 的 CLI 2.0 版本。 如果不是，请安装最新版本。
+2. 输入 `az --version` 命令，确保使用的是版本 2.0.18 或更高版本的 Azure CLI。 如果不是，请安装最新版本。
 3. 使用 `az login` 命令登录到 Azure。
-4. 通过在 [PowerShell](#powershell) 中完成步骤 1-5 针对本教程中使用的预览版功能进行注册。 只能使用 PowerShell 注册预览版。 在注册成功或这些步骤失败之前，不要继续执行剩余步骤。
-5. 运行以下脚本来创建资源组：
+4. 输入以下命令，针对预览版进行注册：
+    
+    ```azurecli-interactive
+    az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
+    ``` 
+
+5. 输入以下命令，确认已针对预览版进行了注册：
+
+    ```azurecli-interactive
+    az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
+    ```
+
+    在上一命令返回的输出中的“状态”显示为 Registered 之前，不要继续执行剩余的步骤。 如果在完成注册之前继续执行，则剩余的步骤将失败。
+6. 运行以下 bash 脚本，创建资源组：
 
     ```azurecli-interactive
     #!/bin/bash
@@ -52,7 +64,7 @@ ms.lasthandoff: 09/25/2017
       --location westcentralus
     ```
 
-6. 创建三个应用程序安全组，每个服务器类型一个：
+7. 创建三个应用程序安全组，每个服务器类型一个：
 
     ```azurecli-interactive
     az network asg create \
@@ -71,7 +83,7 @@ ms.lasthandoff: 09/25/2017
       --location westcentralus
     ```
 
-7. 创建网络安全组：
+8. 创建网络安全组：
 
     ```azurecli-interactive
     az network nsg create \
@@ -80,7 +92,7 @@ ms.lasthandoff: 09/25/2017
       --location westcentralus
     ```
 
-8. 在网络安全组中创建安全规则。
+9. 在 NSG 内创建安全规则，将应用程序安全组设置为目标：
     
     ```azurecli-interactive    
     az network nsg rule create \
@@ -120,7 +132,7 @@ ms.lasthandoff: 09/25/2017
       --protocol "TCP" 
     ``` 
 
-9. 创建虚拟网络： 
+10. 创建虚拟网络： 
     
     ```azurecli-interactive
     az network vnet create \
@@ -129,8 +141,9 @@ ms.lasthandoff: 09/25/2017
       --subnet-name mySubnet \
       --address-prefix 10.0.0.0/16 \
       --location westcentralus
+    ```
 
-10. Associate the network security group to the subnet in the virtual network:
+11. 将网络安全组关联到虚拟网络中的子网：
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -138,8 +151,9 @@ ms.lasthandoff: 09/25/2017
       --resource-group myResourceGroup \
       --vnet-name myVnet \
       --network-security-group myNsg
-
-11. Create three network interfaces, one for each server type. 
+    ```
+    
+12. 创建三个网络接口，每个服务器类型一个： 
 
     ```azurecli-interactive
     az network nic create \
@@ -170,9 +184,9 @@ ms.lasthandoff: 09/25/2017
       --application-security-groups "DatabaseServers"
     ```
 
-    只有在步骤 8 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 *myWebNic*，只有 *WebRule* 会生效，因为该网络接口是 *WebServers* 应用程序安全组的成员并且该规则将 *WebServers* 应用程序安全组指定为其目标。 *AppRule* 和 *DatabaseRule* 规则不会应用于 *myWebNic*，因为该网络接口不是 *AppServers* 和 *DatabaseServers* 应用程序安全组的成员。
+    只有在步骤 9 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 *myWebNic*，只有 *WebRule* 会生效，因为该网络接口是 *WebServers* 应用程序安全组的成员并且该规则将 *WebServers* 应用程序安全组指定为其目标。 *AppRule* 和 *DatabaseRule* 规则不会应用于 *myWebNic*，因为该网络接口不是 *AppServers* 和 *DatabaseServers* 应用程序安全组的成员。
 
-12. 为每个服务器类型创建一台虚拟机，将对应的网络接口附加到每台虚拟机。 此示例将创建 Windows 虚拟机，但是你可以将 *win2016datacenter* 更改为 *UbuntuLTS* 来改为创建 Linux 虚拟机。
+13. 为每个服务器类型创建一台虚拟机，将对应的网络接口附加到每台虚拟机。 此示例将创建 Windows 虚拟机，但是你可以将 *win2016datacenter* 更改为 *UbuntuLTS* 来改为创建 Linux 虚拟机。
 
     ```azurecli-interactive
     # Update for your admin password
@@ -206,7 +220,7 @@ ms.lasthandoff: 09/25/2017
       --admin-password $AdminPassword    
     ```
 
-13. 可选：若要删除在本教程中创建的资源，请完成[删除资源](#delete-cli)中所述的步骤。
+14. 可选：若要删除在本教程中创建的资源，请完成[删除资源](#delete-cli)中所述的步骤。
 
 ## <a name="powershell"></a>PowerShell
 

@@ -16,10 +16,10 @@ ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ebafcb2463bc92f15c1299963e054fcddd47b0b3
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: c1b3feb79328269f4692d744e7a473397d0328c1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="web-apps-overview"></a>Web 应用概述
@@ -40,7 +40,7 @@ ms.lasthandoff: 09/20/2017
 
 该计算资源可能位于共享虚拟机 (VM) 上，也可能位于专用虚拟机上，具体取决于选择的定价层。 应用程序代码在独立于其他客户的托管 VM 中运行。
 
-代码可以使用 [Azure 应用服务](../app-service/app-service-web-overview.md)支持的任何语言或框架，例如 ASP.NET、Node.js、Java、PHP 或 Python。 也可以在 Web 应用中运行使用 [PowerShell 和其他脚本语言](web-sites-create-web-jobs.md#acceptablefiles) 的脚本。
+代码可使用 Azure App Service 支持的任何语言或框架，例如 ASP.NET、Node.js、Java、PHP 或 Python。 也可以在 Web 应用中运行使用 [PowerShell 和其他脚本语言](web-sites-create-web-jobs.md#acceptablefiles) 的脚本。
 
 有关可使用 Web 应用的典型应用程序方案示例，请参阅 [Azure 应用服务、虚拟机、Service Fabric 和云服务组件](choose-web-site-cloud-service-vm.md#scenarios)中的 [Web 应用方案](https://azure.microsoft.com/documentation/scenarios/web-app/)以及**方案和建议**部分。
 

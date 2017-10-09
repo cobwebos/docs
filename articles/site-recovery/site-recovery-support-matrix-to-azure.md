@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: rajanaki
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 30ccdc62e68ff86d693b9eb3477c65e4e6a1fe3f
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 103643ace17961cd4e2e37313f75c775e3dcd8cd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>用于从本地复制到 Azure 的 Azure Site Recovery 支持矩阵
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/30/2017
 
   >[!Note]
   > 目前不支持混合使用 Windows Server 2016 和 2012 R2 主机的 System Center Virtual Machine Manager 2016 云。
-
+  > 当前不支持包括现有 SCVMM 2012 R2 至 2016 升级的配置。
 ### <a name="host-servers"></a>主机服务器
 
 **部署** | **支持**
