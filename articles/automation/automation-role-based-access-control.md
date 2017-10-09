@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;sngun
-translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
@@ -31,17 +32,17 @@ ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 | **角色** | **说明** |
 |:--- |:--- |
 | 所有者 |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
-| 参与者 |“参与者”角色允许你管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
-| 读取器 |“读者”角色允许你查看自动化帐户中的所有资源，但不能进行任何更改。 |
-| 自动化运算符 |“自动化操作员”角色允许你执行作业的启动、停止、暂停、恢复和计划等操作任务。 如果你想要防止他人查看或修改你的自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
-| 用户访问管理员 |“用户访问管理员”角色允许你管理用户对 Azure 自动化帐户的访问。 |
+| 参与者 |“参与者”角色允许管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
+| 读取器 |“读者”角色允许查看自动化帐户中的所有资源，但不能进行任何更改。 |
+| 自动化运算符 |“自动化操作员”角色允许执行作业的启动、停止、暂停、恢复和计划等操作任务。 如果想要防止他人查看或修改自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
+| 用户访问管理员 |“用户访问管理员”角色允许管理用户对 Azure 自动化帐户的访问。 |
 
 > [!NOTE]
-> 你不能授予对特定 Runbook 的访问权限，而只能授予对自动化帐户中的资源和操作的访问权限。  
+> 不能授予对特定 Runbook 的访问权限，而只能授予对自动化帐户中的资源和操作的访问权限。  
 > 
 > 
 
-在本文中，我们将指导你在 Azure 自动化中设置 RBAC。 不过，首先让我们仔细地看一下授予参与者、读者、自动化操作员和用户访问管理员的各个权限，以便我们在授予任何人对自动化帐户的权限之前更好地理解这些权限。  否则，它可能导致意外或不良后果。     
+在本文中，我们指导在 Azure 自动化中设置 RBAC。 不过，首先让我们仔细地看一下授予参与者、读者、自动化操作员和用户访问管理员的各个权限，以便我们在授予任何人对自动化帐户的权限之前更好地理解这些权限。  否则，它可能导致意外或不良后果。     
 
 ## <a name="contributor-role-permissions"></a>“参与者”角色权限
 下表列出了可以由自动化中的“参与者”角色执行的特定操作。
@@ -127,8 +128,8 @@ ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 | 自动化 Webhook |![绿色状态](media/automation-role-based-access-control/green-checkmark.png) | | | |
 
 ## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>使用 Azure 门户为自动化帐户配置 RBAC
-1. 登录到 [Azure 门户](https://portal.azure.com/) ，然后从“自动化帐户”边栏选项卡中打开你的自动化帐户。  
-2. 单击右上角的“访问”控件  。 此时会打开“用户”边栏选项卡，你可以在其中添加新的用户、组和应用程序，以便管理你的自动化帐户并查看可以为自动化帐户配置的现有角色  。  
+1. 登录到 [Azure 门户](https://portal.azure.com/)，然后从“自动化帐户”边栏选项卡中打开自动化帐户。  
+2. 单击右上角的“访问”控件  。 此时会打开“用户”边栏选项卡，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色。  
    
    ![访问按钮](media/automation-role-based-access-control/automation-01-access-button.png)  
 
@@ -141,19 +142,19 @@ ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 1. 在“用户”边栏选项卡中，单击“添加”打开“添加访问权限”边栏选项卡，以便添加用户、组或应用程序并向其分配角色。  
    
    ![添加用户](media/automation-role-based-access-control/automation-02-add-user.png)  
-2. 从可用角色列表中选择一个角色。 我们将选择“读者”角色，但你可以选择自动化帐户所支持的任何可用的内置角色，或者你所定义的任何自定义角色  。  
+2. 从可用角色列表中选择一个角色。 我们将选择“读者”角色，但可以选择自动化帐户所支持的任何可用的内置角色，或者你所定义的任何自定义角色。  
    
    ![选择角色](media/automation-role-based-access-control/automation-03-select-role.png)  
-3. 单击“添加用户”打开“添加用户”边栏选项卡。 如果你已经添加过管理订阅的用户、组或应用程序，系统会列出这些用户，你可以选择他们来添加访问权限。 如果没有列出任何用户，或者没有列出你想要添加的用户，请单击“邀请”打开“邀请来宾”边栏选项卡，以便邀请具有有效 Microsoft 帐户电子邮件地址（例如 Outlook.com、OneDrive 或 Xbox Live ID）的用户。 输入用户的电子邮件地址以后，请单击“选择”以添加用户，然后单击“确定”。 
+3. 单击“添加用户”打开“添加用户”边栏选项卡。 如果已经添加过管理订阅的用户、组或应用程序，系统会列出这些用户，可以选择他们来添加访问权限。 如果未列出任何用户或者想要添加的用户未列出，则单击“邀请”打开“邀请来宾”边栏选项卡，可在其中邀请具有有效 Microsoft 帐户电子邮件地址（如 Outlook.com、OneDrive 或 Xbox Live Id）的用户。 输入用户的电子邮件地址以后，请单击“选择”以添加用户，并单击“确定”。 
    
    ![添加用户](media/automation-role-based-access-control/automation-04-add-users.png)  
    
-   现在，你会看到添加到“用户”边栏选项卡且被分配了“读者”角色的用户。  
+   现在，会看到添加到“用户”边栏选项卡且被分配了“读者”角色的用户。  
    
    ![列出用户](media/automation-role-based-access-control/automation-05-list-users.png)  
    
-   你也可以通过“角色”边栏选项卡向用户分配角色  。 
-4. 单击“用户”边栏选项卡中的“角色”打开“角色”边栏选项卡。 在该边栏选项卡中，你可以查看角色的名称以及分配给该角色的用户和组的数目。
+   也可以通过“角色”边栏选项卡向用户分配角色。 
+4. 单击“用户”边栏选项卡中的“角色”打开“角色”边栏选项卡。 在该边栏选项卡中，可以查看角色的名称以及分配给该角色的用户和组的数目。
    
     ![从用户边栏选项卡分配角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
    
@@ -162,12 +163,12 @@ ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
    > 
    > 
    
-    可以将多个角色分配给用户、组或应用程序。 例如，如果将“自动化操作员”角色和“读者”角色一起添加到用户，用户就可以查看所有自动化资源并执行 Runbook 作业。 你可以展开下拉列表，以便查看分配给用户的角色的列表。  
+    可以将多个角色分配给用户、组或应用程序。 例如，如果将“自动化操作员”角色和“读者”角色一起添加到用户，用户就可以查看所有自动化资源并执行 Runbook 作业。 可以展开下拉列表，以便查看分配给用户的角色的列表。  
    
     ![查看多个角色](media/automation-role-based-access-control/automation-07-view-multiple-roles.png)  
 
 ### <a name="remove-a-user"></a>删除用户
-你可以删除不管理自动化帐户或不再为组织工作的用户的访问权限。 下面是删除用户的步骤： 
+可以删除不管理自动化帐户或不再为组织工作的用户的访问权限。 下面是删除用户的步骤： 
 
 1. 在“用户”边栏选项卡中，选择要删除的角色分配  。
 2. 单击“分配详细信息”边栏选项卡中的“删除”按钮  。
@@ -200,7 +201,7 @@ ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 ## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>使用 Azure PowerShell 为自动化帐户配置 RBAC
 还可以使用以下 [Azure PowerShell cmdlet](../active-directory/role-based-access-control-manage-access-powershell.md)为自动化帐户配置基于角色的访问权限。
 
-• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) 列出 Azure Active Directory 中提供的所有 RBAC 角色。 你可以使用此命令和 **Name** 属性来列出特定角色可以执行的所有操作。  
+• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) 列出 Azure Active Directory 中提供的所有 RBAC 角色。 可以使用此命令和 **Name** 属性来列出特定角色可以执行的所有操作。  
     **示例：**  
     ![获取角色定义](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)  
 
@@ -223,16 +224,11 @@ ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 
     Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName "Automation Operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”
 
-在上述示例中，请将**登录 ID**、**订阅 ID**、**资源组名称**和**自动化帐户名称**替换为你的帐户详细信息。 出现提示时选择“是”  以在继续删除用户角色分配前确认。   
+在上述示例中，请将**登录 ID**、**订阅 ID**、**资源组名称**和**自动化帐户名称**替换为帐户详细信息。 出现提示时选择“是”  以在继续删除用户角色分配前确认。   
 
 ## <a name="next-steps"></a>后续步骤
 * 有关为 Azure 自动化配置 RBAC 的不同方式的信息，请参阅 [使用 Azure PowerShell 管理 RBAC](../active-directory/role-based-access-control-manage-access-powershell.md)。
 * 有关以不同方式启动 Runbook 的详细信息，请参阅 [启动 Runbook](automation-starting-a-runbook.md)
 * 有关不同 Runbook 类型的信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

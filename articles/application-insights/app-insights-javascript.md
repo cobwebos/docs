@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 1ae47899443d5552178078a417b7d1ebe91966d2
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 314c142deba29952e31da1e48d81824795a5eb97
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
@@ -52,7 +52,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 ![在应用概述边栏选项卡上，选择“快速启动”、“获取代码”以监视网页。 复制脚本。](./media/app-insights-javascript/02-monitor-web-page.png)
 
-紧靠在要跟踪的每个页面的 `</head>` 标记前面插入脚本。 如果网站有母版页，可以在那里插入脚本。 例如：
+紧靠在要跟踪的每个页面的 `</head>` 标记前面插入脚本。如果网站有母版页，可以在那里插入脚本。 例如：
 
 * 在 ASP.NET MVC 项目中，请将脚本放在 `View\Shared\_Layout.cshtml`
 * 在 SharePoint 站点的控制面板中，打开 [站点设置/母版页](app-insights-sharepoint.md)。
