@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 3756f1a039730bfd99b0375ce9bfeaf27178f2e0
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 3eaa0535222a4a91c36abfff79dd4c134fa8352e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/25/2017
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
 * 外部存储库（Git 或 Mercurial）
-* [Git 本地存储库](../app-service-web/app-service-deploy-local-git.md)
+* [Git 本地存储库](../app-service/app-service-deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
 * [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/25/2017
  
     ![设置连续部署](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. 在“部署源”边栏选项卡中，单击“选择源”，然后为所选部署源填写信息，单击“确定”。
+2. 在“部署源”边栏选项卡中，单击“选择源”，并为所选部署源填写信息，单击“确定”。
    
     ![选择部署源](./media/functions-continuous-deployment/choose-deployment-source.png)
 
@@ -84,13 +84,13 @@ Function App 尚不支持部署槽。 但是，仍可以通过使用持续集成
 
 4. 针对过渡 Function App 重复此步骤，但在 GitHub 存储库中改为选择过渡分支。 如果部署的源不支持分支，请使用不同的文件夹。
     
-5. 更新临时分支或文件夹中的代码，然后验证这些更改是否反映在过渡部署中。
+5. 更新临时分支或文件夹中的代码，并验证这些更改是否反映在过渡部署中。
 
 6. 测试完成后，将更改从临时分支合并到主分支。 此合并会触发生产 Function App 的部署。 如果部署的源不支持分支，请使用临时文件夹中的文件覆盖生产文件夹中的文件。
 
 <a name="existing"></a>
 ### <a name="move-existing-functions-to-continuous-deployment"></a>将现有函数移至连续部署
-如果门户中具有已创建和维护的现有函数，则在可如上文所述设置连续部署前，需要使用 FTP 或本地 Git 存储库下载现有函数代码文件。 可以在应用程序服务设置为函数应用完成以上操作。 文件会下载完后，可以将它们上载到选择的连续部署源中。
+如果门户中具有已创建和维护的现有函数，则在可如上文所述设置连续部署前，需要使用 FTP 或本地 Git 存储库下载现有函数代码文件。 可以在应用服务设置中为函数应用完成以上操作。 文件会下载完后，可以将它们上传到选择的连续部署源中。
 
 > [!NOTE]
 > 配置持续集成后，不能再对函数门户中的源文件进行编辑。
@@ -107,12 +107,12 @@ Function App 尚不支持部署槽。 但是，仍可以通过使用持续集成
    
     ![设置本地部署凭据](./media/functions-continuous-deployment/setup-deployment-credentials.png)
 
-2. 键入用户名和密码，然后单击“保存”。 现在可以使用这些凭据来访问 FTP 或内置 Git 存储库内的函数应用。
+2. 键入用户名和密码，并单击“保存”。 现在可以使用这些凭据来访问 FTP 或内置 Git 存储库内的函数应用。
 
 <a name="downftp"></a>
 #### <a name="how-to-download-files-using-ftp"></a>使用 FTP 下载文件的方法
 
-1. 在 [Azure 门户](https://portal.azure.com)的 Function App 中，单击“平台功能”和“属性”，然后复制 FTP/部署用户的值、FTP 主机名和 FTPS 主机名。  
+1. 在 [Azure 门户](https://portal.azure.com)的 Function App 中，单击“平台功能”和“属性”，并复制 FTP/部署用户的值、FTP 主机名和 FTPS 主机名。  
 
     根据门户显示，必须输入“FTP/部署用户”（包括应用名称），以便为 FTP 服务器提供适当的上下文。
    
@@ -131,7 +131,7 @@ Function App 尚不支持部署槽。 但是，仍可以通过使用持续集成
  
     ![设置连续部署](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. 在“部署源”边栏选项卡中，单击“本地 Git 存储库”，然后单击“确定”。
+2. 在“部署源”边栏选项卡中，单击“本地 Git 存储库”，并单击“确定”。
 
 3. 在“平台功能”中，单击“属性”，并记录 Git URL 值。 
    

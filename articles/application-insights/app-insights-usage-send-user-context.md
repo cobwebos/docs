@@ -1,9 +1,25 @@
-title: 发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验 | Microsoft Docs description: 通过在 Application Insights 中为每个用户分配一个唯一且持久的 ID 字符串跟踪用户如何在服务中移动。
-services: application-insights documentationcenter: '' author: abgreg manager: carmonm
-
-ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: csharp ms.topic: article ms.date: 08/02/2017 ms.author: bwren
+---
+title: "向用户发送上下文 ID 以启用 Azure Application Insights 中的使用体验 | Microsoft Docs"
+description: "在 Application Insights 中通过向每位用户分配一个唯一的永久性 ID（字符串），跟踪其如何使用服务。"
+services: application-insights
+documentationcenter: 
+author: abgreg
+manager: carmonm
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: csharp
+ms.topic: article
+ms.date: 08/02/2017
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e16866501fd34f0b998ba929771a423866759b55
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/20/2017
 
 ---
+
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 
 ## <a name="tracking-users"></a>跟踪用户
@@ -81,3 +97,4 @@ ID 必须是 GUID 或另一个复杂程度足以唯一地标识每个用户的�
     * [漏斗图](usage-funnels.md)
     * [保留](app-insights-usage-retention.md)
     * [工作簿](app-insights-usage-workbooks.md)
+

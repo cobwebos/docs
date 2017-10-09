@@ -1,5 +1,5 @@
 ---
-title: "在云服务资源上启用 Azure Application Insights Profiler | Microsoft Docs"
+title: "为 Azure 计算资源启用 Azure Application Insights Profiler | Microsoft Docs"
 description: "了解如何在由 Azure 云服务资源托管的 ASP.NET 应用程序上设置探查器。"
 services: application-insights
 documentationcenter: 
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: c2cae6129386260f2bf35f75d44fa001f7541d40
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 65ba755f35df7bd09dd652ac6fccf96a878c6ca9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 
@@ -113,13 +113,15 @@ New-AzureRmResourceGroup -Name "Replace_With_Resource_Group_Name" -Location "Rep
 
 
 ## <a name="enable-the-profiler"></a>启用探查器
-1. 转到 Application Insights 的“性能”边栏选项卡并选择“配置”。
-   
-   ![“配置”图标](./media/enable-profiler-compute/enableprofiler1.png)
- 
+
+1. 转到 Application Insights 的“性能”边栏选项卡，单击右上角的“探查器”对其进行配置。
+
+   ![“配置探查器”按钮](./media/enable-profiler-compute/PerformanceTriageViewPofilerButton.png)
+
 2. 选择“启用探查器”。
-   
-   ![“启用探查器”图标](./media/enable-profiler-compute/enableprofiler2.png)
+
+   ![“启用探查器”按钮](./media/enable-profiler-compute/enableprofiler2.png)
+
 
 ## <a name="add-a-performance-test-to-your-application"></a>对应用程序添加性能测试
 通过这些步骤就可以收集一些要在 Application Insights Profiler 中显示的样本数据：
@@ -134,9 +136,15 @@ New-AzureRmResourceGroup -Name "Replace_With_Resource_Group_Name" -Location "Rep
 
 1. 等待 10-15 分钟，让探查器收集和分析数据。 
 
-2. 转到 Application Insights 资源中的“性能”边栏选项卡，并查看应用程序在承受负载时的表现。
+2. 转到 Application Insights 资源中的“性能”边栏选项卡，并查看应用程序在承受负载时的表现。 通过将操作网格按“计数”列排序，重点关注使用次数足够多的感兴趣操作执行速度缓慢的情况。 通过查看持续时间分布上方的探查器通道，观察哪些持续时间范围包含探查器跟踪。 请注意，监视应用程序的时间越长，探查器收集的跟踪越多，因此探查器跟踪支持的丰富代码级示例中被覆盖到的分布也将越多。 
 
-   ![查看性能](./media/enable-profiler-compute/aiperformance.png)
+   ![性能会审视图中的探查器跟踪](./media/enable-profiler-compute/PerformanceTriageViewProfilerTraces.png)
+
+    可以放大到感兴趣的持续时间范围，如 95% 附近的第三个峰值。 这将限制“执行操作”按钮中示例和探查器跟踪的数量。 
+
+    ![缩放到持续时间范围](./media/enable-profiler-compute/DurationRangeZoomedTo95th.png)
+
+    现在单击“探查器跟踪”按钮可打开包含相应跟踪的探查器。
 
 3. 选择“示例”下面的图标，打开“跟踪视图”边栏选项卡。
 
