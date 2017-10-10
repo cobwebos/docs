@@ -12,7 +12,7 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 10/09/2017
 ms.author: sethm;shvija
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
@@ -138,7 +138,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```cli
+```azurecli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json][]
