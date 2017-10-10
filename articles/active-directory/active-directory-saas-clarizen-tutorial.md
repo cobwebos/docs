@@ -134,8 +134,7 @@ ms.lasthandoff: 02/21/2017
 
 11. 单击用户名，然后单击“设置”。
 
-    
-            ![单击用户名下的“设置”](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_001.png "设置")
+    ![单击用户名下的“设置”](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_001.png "设置")
 
 12. 单击“全局设置”选项卡。然后，在“联合身份验证”旁边，单击“编辑”。
 

@@ -106,9 +106,8 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
      若要继续进行就地升级，请单击消息旁的复选框：“继续在此计算机上升级 DirSync”。
      要改为进行[并行部署](#parallel-deployment)，请导出 DirSync 配置设置，将该配置迁移到新的服务器。
 5. 提供当前用于连接 Azure AD 的帐户的密码。 这必须是 DirSync 当前使用的帐户。  
-   
-               ![输入 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)  
-如果收到错误消息并且出现了连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
+   ![输入 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)  
+   如果收到错误消息并且出现了连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 6. 提供 Active Directory 的企业管理员帐户。  
    ![输入 ADDS 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
 7. 现在可以开始配置。 单击“升级”时，会卸载 DirSync 并配置 Azure AD Connect，然后开始同步。  
