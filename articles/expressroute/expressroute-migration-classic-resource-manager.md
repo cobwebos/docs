@@ -75,8 +75,9 @@ ms.lasthandoff: 07/11/2017
 4. 验证、准备和迁移。 若要转移虚拟网络，请使用以下 PowerShell 代码片段：
 
   ```powershell
-  Move-AzureVirtualNetwork -Prepare $vnetName  
-  Move-AzureVirtualNetwork -Commit $vnetName
+  Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
+  Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
+  Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
   ```
 
   也可通过运行以下 PowerShell cmdlet 来中止迁移：
