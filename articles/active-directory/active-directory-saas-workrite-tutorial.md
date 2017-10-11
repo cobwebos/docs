@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 4358c4c621634c17cbbd7fa1c72f12746b8e4a2a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>教程：Azure Active Directory 与 Workrite 的集成
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 07/20/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-workrite-from-the-gallery"></a>从库中添加 Workrite
-若要配置 Workrite 与 Azure AD 的集成，需将库中的 Workrite 添加到托管的 SaaS 应用列表。
+要配置 Workrite 与 Azure AD 的集成，需将库中的 Workrite 添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 Workrite，请执行以下步骤：**
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/20/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Workrite 测试用户](#create-a-workrite-test-user)** - 在 Workrite 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+3. **[创建一个 Workrite 测试用户](#create-a-workrite-test-user)** -若要链接到用户的 Azure AD 表示的 Workrite 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -114,7 +113,7 @@ ms.lasthandoff: 07/20/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Workrite 客户端支持团队](mailto:support@workrite.co.uk)获取此值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-workrite-tutorial/tutorial_workrite_certificate.png) 
 
@@ -184,9 +183,9 @@ ms.lasthandoff: 07/20/2017
    
     ![“创建用户”对话框][402]
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“名字”文本框中，键入用户的名字（如 Britta）。
+    b. 在“名字”文本框中，键入用户的名字（如 Britta）。
 
     c. 在“姓氏”文本框中，键入用户的姓氏（如 Simon）。
     
@@ -200,9 +199,9 @@ ms.lasthandoff: 07/20/2017
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 Workrite，请执行以下步骤：**
+**要将 Britta Simon 分配到 Workrite，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -251,5 +250,4 @@ ms.lasthandoff: 07/20/2017
 [400]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_400.png
 [401]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_401.png
 [402]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_402.png
-
 

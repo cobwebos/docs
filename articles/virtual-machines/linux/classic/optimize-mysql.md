@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 8f2ec884fa98e989448ac11675e71f39aa21fa7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>优化 Azure Linux VM 上的 MySQL 性能
 影响 Azure 上 MySQL 性能的因素有很多，主要体现在虚拟硬件选择和软件配置两个方面。 本文重点介绍如何通过存储、系统和数据库配置优化性能。
@@ -35,11 +34,11 @@ ms.lasthandoff: 06/03/2017
 
 增加 RAID 级别时，除了磁盘 I/O，MySQL 性能也得到改善。  有关详细信息，请参阅[附录 B](#AppendixB)。  
 
-你可能还要考虑区块大小。 通常，区块越大，开销就越低，对于大型写入操作尤其如此。 不过，区块太大时，它可能会添加额外的开销，使你无法利用 RAID。 当前的默认大小为 512 KB，经证实，它是大多数常见生产环境的最佳大小。 有关详细信息，请参阅[附录 C](#AppendixC)。   
+可能还需要考虑区块大小。 通常，区块越大，开销就越低，对于大型写入操作尤其如此。 不过，区块太大时，可能会有额外的开销，导致用户无法利用 RAID。 当前的默认大小为 512 KB，经证实，它是大多数常见生产环境的最佳大小。 有关详细信息，请参阅[附录 C](#AppendixC)。   
 
-对于不同的虚拟机类型，可添加的磁盘数量是有限制的。 [Azure 的虚拟机和云服务大小](http://msdn.microsoft.com/library/azure/dn197896.aspx)中详细介绍了这些限制。 你可以选择设置磁盘较少的 RAID，不过，在本文的 RAID 示例中，你需要附加四个数据磁盘。  
+对于不同的虚拟机类型，可添加的磁盘数量是有限制的。 [Azure 的虚拟机和云服务大小](http://msdn.microsoft.com/library/azure/dn197896.aspx)中详细介绍了这些限制。 可以选择设置磁盘较少的 RAID，不过，在本文的 RAID 示例中，需要附加 4 个数据磁盘。  
 
-本文假定你已经创建 Linux 虚拟机，并且安装和配置了 MYSQL。 有关入门的详细信息，请参阅“如何在 Azure 上安装 MySQL”。  
+本文假定已经创建 Linux 虚拟机，并且安装和配置了 MYSQL。 有关入门的详细信息，请参阅“如何在 Azure 上安装 MySQL”。  
 
 ### <a name="set-up-raid-on-azure"></a>在 Azure 上设置 RAID
 以下步骤展示了如何使用 Azure 门户在 Azure 上创建 RAID。 也可以使用 Windows PowerShell 脚本设置 RAID。
@@ -59,7 +58,7 @@ ms.lasthandoff: 06/03/2017
 ![附加空磁盘](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-attach-empty-disk.png)
 
 
-这将向虚拟机添加一个空磁盘。 再重复此步骤三次，以便为 RAID 附加四个数据磁盘。  
+这会向虚拟机添加一个空磁盘。 再重复此步骤三次，以便为 RAID 附加四个数据磁盘。  
 
 通过查看内核消息日志，可以看到虚拟机中添加的驱动器。 例如，若要在 Ubuntu 上查看，请使用以下命令：  
 
@@ -106,7 +105,7 @@ Linux 实现了四种类型的 I/O 计划算法：
 * 完全公平队列算法 (CFQ)
 * 预算期算法（预测）  
 
-在不同的情况下，你可以选择使用不同的 I/O 计划程序来优化性能。 在完全随机的访问环境中，CFQ 算法和截止时间算法对性能的影响区别不大。 为保持稳定性，建议将 MySQL 数据库环境设置为截止时间算法。 如果有大量的顺序 I/O，CFQ 可能会降低磁盘 I/O 性能。   
+在不同的情况下，可以选择使用不同的 I/O 计划程序来优化性能。 在完全随机的访问环境中，CFQ 算法和截止时间算法对性能的影响区别不大。 为保持稳定性，建议将 MySQL 数据库环境设置为截止时间算法。 如果有大量的顺序 I/O，CFQ 可能会降低磁盘 I/O 性能。   
 
 对于 SSD 和其他设备，NOOP 或截止时间算法可以比默认计划程序实现更好的性能。   
 
@@ -119,7 +118,7 @@ Linux 实现了四种类型的 I/O 计划算法：
 
     root@mysqlnode1:~# cat /sys/block/sda/queue/scheduler
 
-你将看到以下输出，指示当前的计划程序：  
+此时会显示以下输出，指示当前的计划程序：  
 
     noop [deadline] cfq
 
@@ -137,7 +136,7 @@ Linux 实现了四种类型的 I/O 计划算法：
 >
 >
 
-你应该会看到以下输出，指示已成功重新生成 grub.cfg 并且默认计划程序已更新为 NOOP：  
+此时会显示以下输出，指示已成功重新生成 grub.cfg 并且默认计划程序已更新为 NOOP：  
 
     Generating grub configuration file ...
     Found linux image: /boot/vmlinuz-3.13.0-34-generic
@@ -169,7 +168,7 @@ Linux 实现了四种类型的 I/O 计划算法：
 
     mount -o remount /RAID0
 
-测试修改后的结果。 当你修改测试文件时，系统不会更新访问时间。 以下示例显示修改前后代码的外观。
+测试修改后的结果。 修改测试文件时，系统不会更新访问时间。 以下示例显示修改前后代码的外观。
 
 之前：        
 
@@ -215,7 +214,7 @@ MySQL 是高并发数据库。 对于 Linux，默认的并发句柄数量是 102
 以下配置项是影响 MySQL 性能的主要因素：  
 
 * **innodb_buffer_pool_size**：缓冲池包含缓冲数据和索引。 此值通常设置为物理内存的 70%。
-* **innodb_log_file_size**：这是重做日志大小。 重做日志用于确保写入操作快速、可靠并且可在出现故障后恢复。 此值设置为 512 MB，这将为记录写入操作提供大量空间。
+* **innodb_log_file_size**：这是重做日志大小。 重做日志用于确保写入操作快速、可靠并且可在出现故障后恢复。 此值设置为 512 MB，这会为记录写入操作提供大量空间。
 * **max_connections**：应用程序有时候不会正确关闭连接。 值越大，服务器就有越多时间回收空闲的连接。 最大连接数为 10,000，但建议的最大值为 5,000。
 * **Innodb_file_per_table**：此设置允许或禁止 InnoDB 将表存储在单独的文件中。 启用该选项可确保可以有效地应用多项高级管理操作。 从性能角度来看，它可以提高表空间传输的速度和优化碎片管理性能。 此选项的推荐设置是“打开”。</br></br>
 从 MySQL 5.6 开始，默认设置为“打开”，因此不需要任何操作。 对于早期版本，默认设置为“关闭”。 应在加载数据之前更改此选项，因为只有新创建的表才会受影响。
@@ -246,7 +245,7 @@ MySQL 慢查询日志有助于识别 MySQL 的慢查询。 在启用 MySQL 慢�
 
 ![慢速查询日志结果][8]
 
-在本示例中，可以看到慢查询功能已启用。 然后可以使用 **mysqldumpslow** 工具来确定性能瓶颈和优化性能，比如添加索引。
+在本示例中，可以看到慢查询功能已启用。 然后，可以使用**mysqldumpslow**工具来确定性能瓶颈和优化性能，比如添加索引。
 
 ## <a name="appendices"></a>附录
 以下是在目标实验室环境中生成的性能测试示例数据。 它们使用不同性能优化方法提供性能数据趋势的一般背景知识。 在不同的环境或产品版本下，结果可能会不同。
@@ -343,5 +342,4 @@ MySQL 慢查询日志有助于识别 MySQL 的慢查询。 在启用 MySQL 慢�
 [12]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-12.png
 [13]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-14.png
-
 

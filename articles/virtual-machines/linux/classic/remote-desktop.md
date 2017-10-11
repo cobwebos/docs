@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
-ms.translationtype: HT
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
 ms.openlocfilehash: 68031d548bdbeda9a83d1bceaaea7c5bbcab3188
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>使用远程桌面连接到 Microsoft Azure Linux VM
 > [!IMPORTANT] 
@@ -39,7 +38,7 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 > 
 
 ## <a name="create-an-endpoint-for-remote-desktop"></a>为远程桌面创建终结点
-在本文档中，我们将使用默认终结点 3389 进行远程连接。将 3389 终结点设置为 Linux VM 的`Remote Desktop`，如下所示：
+在本文档中，我们将使用默认终结点 3389 进行远程连接。 将 3389 终结点设置为 Linux VM 的`Remote Desktop`，如下所示：
 
 ![图像](./media/remote-desktop/endpoint-for-linux-server.png)
 
@@ -82,7 +81,7 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 
 对于 Ubuntu，安装后，在启动时会自动启动并启用 xrdp。
 
-## <a name="using-xfce-if-you-are-using-an-ubuntu-version-later-than-ubuntu-1204lts"></a>如果使用的是比 Ubuntu 12.04LTS 更高的 Ubuntu 版本，请使用 xfce
+## <a name="using-xfce-if-you-are-using-an-ubuntu-version-later-than-ubuntu-1204lts"></a>如果使用比 Ubuntu 12.04LTS 更高的 Ubuntu 版本，请使用 xfce
 因为 xrdp 的当前版本对高于 Ubuntu 12.04LTS 的 Ubuntu 版本不支持 Gnome 桌面，我们将改而使用 `xfce` 桌面。
 
 若要安装 `xfce`，请使用此命令：
@@ -113,4 +112,3 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 
 ## <a name="next-steps"></a>后续步骤
 有关使用 xrdp 的详细信息，请参阅 [http://www.xrdp.org/](http://www.xrdp.org/)。
-

@@ -1,5 +1,5 @@
 ---
-title: "将 CDN 添加到 Azure App Service | Microsoft Docs"
+title: "将 CDN 添加到 Azure 应用服务 | Microsoft Docs"
 description: "向 Azure 应用服务添加内容交付网络 (CDN)，以便在全球靠近客户的服务器缓存和交付静态文件。"
 services: app-service\web
 author: syntaxc4
@@ -10,12 +10,11 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: a4f5113c4cc0ffb5fdd072e9a59743c83154c38c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>向 Azure 应用服务添加内容交付网络 (CDN)
 
@@ -58,7 +57,7 @@ ms.lasthandoff: 06/08/2017
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>创建 CDN 配置文件和终结点
 
-在左侧导航窗格中，选择“应用服务”，然后选择在[静态 HTML 快速入门](app-service-web-get-started-html.md)中创建的应用。
+在左侧导航窗格中，选择“应用服务”，并选择在[静态 HTML 快速入门](app-service-web-get-started-html.md)中创建的应用。
 
 ![在门户中选择应用服务应用](media/app-service-web-tutorial-content-delivery-network/portal-select-app-services.png)
 
@@ -153,7 +152,7 @@ http://<endpointname>.azureedge.net/index.html
 
 若要触发 CDN 更新其缓存的版本，请清除该 CDN。
 
-在门户的左侧导航窗格中选择“资源组”，然后选择为 Web 应用创建的资源组 (myResourceGroup)。
+在门户的左侧导航窗格中选择“资源组”，并选择为 Web 应用创建的资源组 (myResourceGroup)。
 
 ![选择资源组](media/app-service-web-tutorial-content-delivery-network/portal-select-group.png)
 
@@ -221,7 +220,7 @@ CDN 返回当前的 Web 应用内容，其在标题中包含“V2”。
 
 若要确保此页缓存在 CDN 中，请刷新页面。 
 
-打开 `index.html`，将“V2”更改为“V3”，然后部署所做的更改。 
+打开 `index.html`，将“V2”更改为“V3”，并部署所做的更改。 
 
 ```bash
 git commit -am "version 3"
@@ -257,11 +256,11 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 ### <a name="find-the-hostname-to-use-with-the-cname"></a>找到与 CNAME 配合使用的主机名
 
-在 Azure 门户的“终结点”页中，确保选中左侧导航窗格中的“概览”，然后选择页面顶部的“+ 自定义域”按钮。
+在 Azure 门户的“终结点”页中，确保选中左侧导航窗格中的“概览”，并选择页面顶部的“+ 自定义域”按钮。
 
 ![选择“添加自定义域”](media/app-service-web-tutorial-content-delivery-network/portal-select-add-domain.png)
 
-在“添加自定义域”页中，将会看到创建 CNAME 记录时需要使用的终结点主机名。 主机名派生自 CDN 终结点 URL：**&lt;EndpointName>.azureedge.net**。 
+在“添加自定义域”页中，会看到创建 CNAME 记录时需要使用的终结点主机名。 主机名派生自 CDN 终结点 URL：**&lt;EndpointName>.azureedge.net**。 
 
 ![“添加域”页](media/app-service-web-tutorial-content-delivery-network/portal-add-domain.png)
 
@@ -269,7 +268,7 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 导航到域注册机构的网站，找到创建 DNS 记录的部分。 可能会在“**域名**”、“**DNS**”或“**名称服务器管理**”等部分中找到此页。
 
-找到用于管理 CNAME 的部分。 你可能需要转至高级设置页面，并找到“CNAME”、“别名”或“子域”字样。
+找到用于管理 CNAME 的部分。 可能需要转至高级设置页面，并找到“CNAME”、“别名”或“子域”字样。
 
 创建一个 CNAME 记录，将所选子域（例如 static 或 cdn）映射到此前在门户中显示的“终结点主机名”。 
 
@@ -277,7 +276,7 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 返回到“添加自定义域”页，在对话框中输入自定义域（包括子域）。 例如，输入 `cdn.contoso.com`。   
    
-Azure 会验证你所输入的域名是否存在 CNAME 记录。 如果该 CNAME 正确，将验证你的自定义域。
+Azure 会验证所输入的域名是否存在 CNAME 记录。 如果该 CNAME 正确，会验证自定义域。
 
 将 CNAME 记录传播到 Internet 上的名称服务器需要一定的时间。 如果没有立即验证域，请等待几分钟，然后重试。
 
@@ -308,4 +307,3 @@ Azure 会验证你所输入的域名是否存在 CNAME 记录。 如果该 CNAME
 
 > [!div class="nextstepaction"]
 > [在 Azure CDN 终结点上预加载资产](../cdn/cdn-preload-endpoint.md)
-

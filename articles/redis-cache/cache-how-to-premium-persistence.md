@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 638f0154d3a4fd091197a2da86374a053b31c4c0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置数据暂留
 Azure Redis 缓存具有不同的缓存产品（包括高级层功能，如群集、暂留和虚拟网络支持），使缓存大小和功能的选择更加灵活。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留。
@@ -88,7 +87,7 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 ## <a name="persistence-faq"></a>保留常见问题
 以下列表包含有关 Azure Redis 缓存保留常见问题的解答。
 
-* [能否对此前创建的缓存启用保留？](#can-i-enable-persistence-on-a-previously-created-cache)
+* [能否对此前创建的缓存启用暂存？](#can-i-enable-persistence-on-a-previously-created-cache)
 * [是否可同时启用 AOF 暂留和 RDB 暂留？](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
 * [应选择哪个暂留模型？](#which-persistence-model-should-i-choose)
 * [如果我缩放到不同大小并还原了缩放操作之前生成的备份，会发生什么情况？](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
@@ -108,8 +107,8 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 * [AOF 数据如何在存储中进行整理？](#how-is-my-aof-data-organized-in-storage)
 
 
-### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>能否在此前已创建的缓存的基础上启用暂留？
-是的，可以在创建缓存时或者在现有高级缓存上配置 Redis 暂留。
+### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>能否在此前已创建的缓存的基础上启用保留？
+是的，可以在创建缓存时或者在现有高级缓存上配置 Redis 持久性。
 
 ### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>是否可以同时启用 AOF 暂留和 RDB 暂留？
 
@@ -196,4 +195,3 @@ AOF 文件中存储的数据在每个节点分为多个页 Blob，以便提升�
 [redis-cache-aof-persistence]: ./media/cache-how-to-premium-persistence/redis-cache-aof-persistence.png
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
-

@@ -1,15 +1,15 @@
-在本部分中，更新现有移动应用后端项目中的代码，以便在每次添加新项目时发送推送通知。 这由 Azure 通知中心的[模板](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)功能提供支持，允许跨平台推送。 各种客户端使用模板注册推送通知，因此只需单个通用推送即可将内容发送到所有客户端平台。
+在此部分中，更新代码中你现有的移动应用后端项目以发送推送通知，每次添加新项。 这由提供支持[模板](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)Azure 通知中心，启用跨平台推送功能。 各种客户端注册推送通知使用模板，并且单个通用推送能否访问所有客户端平台。
 
-选择其中一个与后端项目类型 [.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
+选择你的后端项目类型相匹配的以下过程之一&mdash;任一[.NET 后端](#dotnet)或[Node.js 后端](#nodejs)。
 
 ### <a name="dotnet"></a>.NET 后端项目
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，然后单击“安装”。 将安装通知中心库，以便从后端发送通知。
-2. 在服务器项目中，打开“控制器” > “TodoItemController.cs”，使用以下语句进行添加：
+1. 在 Visual Studio 中，右键单击服务器项目，然后单击**管理 NuGet 包**。 搜索`Microsoft.Azure.NotificationHubs`，然后单击**安装**。 这将安装为从后端发送通知的通知中心库。
+2. 在服务器项目中，打开**控制器** > **TodoItemController.cs**，并添加以下 using 语句：
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
         using Microsoft.Azure.Mobile.Server.Config;
-3. 在 **PostTodoItem** 方法中，在调用 **InsertAsync** 后添加如下代码：  
+3. 在**PostTodoItem**方法，将以下代码添加到在调用后**InsertAsync**:  
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
@@ -45,12 +45,12 @@
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    插入新项时，会发送包含 item.text 的模板通知。
+    这将发送模板通知包含项。当插入的新项的文本。
 4. 重新发布服务器项目。
 
 ### <a name="nodejs"></a>Node.js 后端项目
-1. 如果尚未执行此操作，请[下载快速入门后端项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)，或使用 [Azure 门户中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
-2. 将 todoitem.js 文件中的现有代码替换为以下内容：
+1. 如果尚未这样做[下载快速入门后端项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)，或其他使用[Azure 门户中的联机编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+2. Todoitem.js 中的现有代码替换为以下：
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -91,5 +91,5 @@
 
         module.exports = table;  
 
-    插入新项时，会发送包含 item.text 的模板通知。
-3. 编辑本地计算机上的文件时，请重新发布服务器项目。
+    这将发送模板通知时插入的新项包含 item.text。
+3. 在编辑本地计算机上的文件，重新发布服务器项目。

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 7a82e58d9ff9208130c43fcd11d03dcc3238696a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="step-2-review-the-prerequisites-for-vmware-to-azure-replication"></a>步骤 2：查看将 VMware 复制到 Azure 的先决条件
 
 了解下表中汇总的先决条件。
@@ -54,4 +52,3 @@ ms.lasthandoff: 08/25/2017
 
 - 如果执行的是完整部署，请转到[步骤 3：规划容量](vmware-walkthrough-capacity.md)
 - 如果执行的是简单的测试部署，请转到[步骤 4：规划网络](vmware-walkthrough-network.md)。
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 01ba8ddfcf90e1368ac147296fd180f99420d96f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hubs-namespace"></a>将 Azure 诊断日志流式传输到事件中心命名空间
 可将 **[Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)**以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在诊断设置中启用服务总线规则 ID。
@@ -60,13 +59,13 @@ ms.lasthandoff: 08/24/2017
 
     ![Azure Monitor 的“监视”部分](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
 
-2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断的资源。
+2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断设置的资源。
 
 3. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“启用诊断”。
 
    ![添加诊断设置 - 没有现有的设置](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
 
-   如果资源上没有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
+   如果资源上有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
 
    ![添加诊断设置 - 现有的设置](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
 
@@ -180,5 +179,4 @@ azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serv
 ## <a name="next-steps"></a>后续步骤
 * [详细了解 Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)
 * [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 1cf96bbf8bd215d7ddb3c99860a5cb4e668be3c2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-the-smtp-connector"></a>SMTP 连接器入门
 连接到 SMTP 以发送电子邮件。
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/26/2017
 若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。
 
 ## <a name="connect-to-smtp"></a>连接到 SMTP
-需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SMTP，首先需要 SMTP 连接。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此在 SMTP 示例中，输入连接名称、SMTP 服务器地址和用户登录信息的凭据，以便创建到 SMTP 的连接。  
+在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SMTP，首先需要 SMTP 连接。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此在 SMTP 示例中，输入连接名称、SMTP 服务器地址和用户登录信息的凭据，以便创建到 SMTP 的连接。  
 
 ### <a name="create-a-connection-to-smtp"></a>创建到 SMTP 的连接
 > [!INCLUDE [Steps to create a connection to SMTP](../../includes/connectors-create-api-smtp.md)]
@@ -38,13 +37,13 @@ ms.lasthandoff: 05/26/2017
 ## <a name="use-an-smtp-trigger"></a>使用 SMTP 触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
-在此示例中，由于 SMTP 没有自己的触发器，因此使用“Salesforce - 创建对象时”触发器。 此触发器将在 Salesforce 中新建对象时激活。 对于此示例，我们将设置为每次在 Salesforce 中新建潜在客户时，通过 SMTP 连接器发生“发送电子邮件”操作，并附带要创建的新潜在客户的通知。
+在此示例中，由于 SMTP 没有自己的触发器，因此使用“Salesforce - 创建对象时”触发器。 在 Salesforce 中创建一个新对象时，会激活此触发器。 对于此示例，我们将设置为每次在 Salesforce 中新建潜在客户时，通过 SMTP 连接器发生“发送电子邮件”操作，并附带要创建的新潜在客户的通知。
 
-1. 在逻辑应用设计器上的搜索框中输入“salesforce”，然后选择“Salesforce - 创建对象时”触发器。  
+1. 在逻辑应用设计器上的搜索框中输入“salesforce”，并选择“Salesforce - 创建对象时”触发器。  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
 2. 显示“创建对象时”控件。
    ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
-3. 选择“对象类型”，然后从对象列表中选择“潜在客户”。 在此步骤中，将指示要创建一个触发器，每当在 Salesforce 中新建潜在客户时，该触发器都将通知逻辑应用。  
+3. 选择“对象类型”，并从对象列表中选择“潜在客户”。 在此步骤中，将指示要创建一个触发器，每当在 Salesforce 中新建潜在客户时，该触发器都将通知逻辑应用。  
    ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
 4. 已创建触发器。  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
@@ -52,11 +51,11 @@ ms.lasthandoff: 05/26/2017
 ## <a name="use-an-smtp-action"></a>使用 SMTP 操作
 操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
-现在已添加触发器，请按照以下步骤添加 SMTP 操作，该操作将在 Salesforce 中新建潜在客户时发生。
+现在已添加触发器，请按照以下步骤添加 SMTP 操作，该操作会在 Salesforce 中新建潜在客户时发生。
 
 1. 选择“+ 新步骤”，添加要在新建潜在客户时采取的操作。  
    ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
-2. 选择“添加操作”。 这将打开可搜索要采取的任何操作的搜索框。  
+2. 选择“添加操作”。 这会打开可搜索要采取的任何操作的搜索框。  
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
 3. 输入“smtp”搜索与 SMTP 相关的操作。  
 4. 选择“SMTP - 发送电子邮件”作为新建潜在客户时要采取的操作。 操作控制块打开。 如果之前未在设计器块中建立 SMTP 连接，必须执行此操作。  

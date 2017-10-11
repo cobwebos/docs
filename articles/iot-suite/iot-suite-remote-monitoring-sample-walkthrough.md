@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: c6d76cc741a6d932a506017781e45bc9b8f8c640
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
-
+ms.openlocfilehash: b28105f300723b542fa6d1aebc569439d5c73dc4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>远程监视预配置解决方案演练
 
@@ -30,7 +29,7 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。 
-* 设计你自己的 IoT 解决方案，以使用 Azure 服务。
+* 设计自己的 IoT 解决方案，以使用 Azure 服务。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
@@ -40,7 +39,7 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 
 ## <a name="simulated-devices"></a>模拟设备
 
-在该预配置解决方案中，模拟设备表示冷却设备（例如建筑物空调或设施空气处理单位）。 部署预配置解决方案时，还会自动预配 4 个在 [Azure Web 作业][lnk-webjobs]中运行的模拟设备。 模拟设备可让你轻松观测解决方案的行为，而不需要部署任何物理设备。 若要部署实际的物理设备，请参阅 [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm]（将设备连接到远程监视预配置解决方案）教程。
+在该预配置解决方案中，模拟设备表示冷却设备（例如建筑物空调或设施空气处理单位）。 部署预配置解决方案时，还会自动预配 4 个在 [Azure Web 作业][lnk-webjobs]中运行的模拟设备。 模拟设备可让你轻松观测解决方案的行为，而不需要部署任何物理设备。 要部署实际的物理设备，请参阅 [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm]（将设备连接到远程监视预配置解决方案）教程。
 
 ### <a name="device-to-cloud-messages"></a>设备到云的消息
 
@@ -78,7 +77,7 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 | System.Processor |运行设备的处理器 |
 | System.InstalledRAM |在设备上安装的 RAM 量 |
 
-模拟器会以示例值在模拟设备中植入这些属性。 模拟器每次初始化模拟设备时，设备将以报告的属性的形式向 IoT 中心报告预定义的元数据。 报告的属性只能由设备更新。 若要更改报告的属性，请在解决方案门户中设置所需的属性。 设备负责：
+模拟器会以示例值在模拟设备中植入这些属性。 模拟器每次初始化模拟设备时，设备以报告的属性的形式向 IoT 中心报告预定义的元数据。 报告的属性只能由设备更新。 若要更改报告的属性，请在解决方案门户中设置所需的属性。 设备负责：
 
 1. 定期从 IoT 中心检索所需的属性。
 2. 使用所需的属性值更新其配置。
@@ -268,7 +267,7 @@ Web 应用中的此页面使用 PowerBI javascript 控件（请参阅 [PowerBI-v
 * [IoT Suite - Under The Hood - Remote Monitoring（IoT 套件 - 幕后 - 远程监视）](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
 * [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices（IoT 套件 - 远程监视 - 添加实时与模拟设备）](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
 
-你可以通过阅读以下文章继续开始使用 IoT 套件：
+可以通过阅读以下文章继续开始使用 IoT 套件：
 
 * [将设备连接到远程监视预配置解决方案][lnk-connect-rm]
 * [azureiotsuite.com 站点权限][lnk-permissions]
@@ -283,4 +282,3 @@ Web 应用中的此页面使用 PowerBI javascript 控件（请参阅 [PowerBI-v
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
 [lnk-device-twins]:  ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-

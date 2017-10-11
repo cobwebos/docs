@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 63f951fbfc9ab5adad8f9225c2827abcbdb7f784
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: e01e6fa3b9871541bf9573963ced05848a3726e3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Azure 数据目录常见方案
 本文介绍 Azure 数据目录可帮助组织从现有数据源获取更多价值的常见方案。
@@ -68,4 +67,3 @@ Azure 数据目录可以为以上问题以及其他问题提供答案。 跨组�
 数据专家会努力记录他们的知识、将其通过电子邮件或在团队 SharePoint 站点上通过 Word 文档进行分享。 尽管这种方法可能很有价值，但它引入了新的发现问题：大家如何知道存在哪些文档以及在哪里找到它们？
 
 使用 Azure 数据目录，组织有一个中央位置，用于存储和共享这一部落知识并使它易被发现。 在数据目录中，数据专家可以直接批注数据资产，并提供现有文档的链接。 组织成员使用目录发现数据源时，他们不仅会找到数据源，还会找到组织专家以前共享的知识。
-

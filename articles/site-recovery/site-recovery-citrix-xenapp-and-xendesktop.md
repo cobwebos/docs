@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: ponatara
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: dc064352b1841ff346b705dc63186b12d79350b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 Citrix XenApp 和 XenDesktop 部署
 
@@ -80,7 +79,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 3.  Azure Site Recovery 无法复制和保护现有的本地 MCS 或 PVS 克隆。
 需要使用从传递控制器预配的 Azure RM 重新创建这些克隆。
 
-4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure Marketplace 的新 NetScaler 设备。
+4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure 应用商店的新 NetScaler 设备。
 
 
 ## <a name="replicating-virtual-machines"></a>复制虚拟机
@@ -111,7 +110,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 计算机受保护后（“复制的项”下的状态显示为“受保护”），需要配置“计算和网络”设置。
 在“计算和网络”>“计算属性”中，可以指定 Azure VM 名称和目标大小。
-根据需要修改名称，使其符合 Azure 要求。 你还可以查看和添加目标网络、子网的相关信息，以及要分配到 Azure VM 的 IP 地址。
+根据需要修改名称，使其符合 Azure 要求。 还可以查看和添加目标网络、子网的相关信息，以及要分配到 Azure VM 的 IP 地址。
 
 注意以下事项：
 
@@ -199,4 +198,3 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 ## <a name="next-steps"></a>后续步骤
 
 可以从本白皮书中[详细了解](https://aka.ms/citrix-xenapp-xendesktop-with-asr)如何复制 Citrix XenApp 和 XenDesktop 部署。 请查看相关指南，使用 Site Recovery [复制其他应用程序](site-recovery-workload.md)。
-

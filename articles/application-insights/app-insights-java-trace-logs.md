@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 086091bb3be6659436ec8e371acbe4b8e86bfacb
-ms.openlocfilehash: 3ef5f6240d7e4704118b86fb0cfee8cf502859ff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/13/2016
-
+ms.openlocfilehash: 5baba3deaf58a1a24995c60381592a9c2ffefd81
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
@@ -36,7 +35,7 @@ ms.lasthandoff: 12/13/2016
 #### <a name="if-youre-using-maven"></a>如果使用 Maven...
 如果项目已设置为使用 Maven 进行生成，请将以下代码片段之一合并到 pom.xml 文件。
 
-然后刷新项目依赖项以下载二进制文件。
+然后刷新项目依赖关系，以获取二进制文件下载。
 
 *Logback*
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 12/13/2016
 #### <a name="if-youre-using-gradle"></a>如果使用 Gradle...
 如果项目已设置为使用 Gradle 进行生成，请将以下代码行之一添加到 build.gradle 文件中的 `dependencies` 组。
 
-然后刷新项目依赖项以下载二进制文件。
+然后刷新项目依赖关系，以获取二进制文件下载。
 
 **Logback**
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 12/13/2016
 | Log4j v1.2 |[包含 Log4J v1.2 追加器的 SDK](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>将追加器添加到日志记录框架
-若要开始跟踪，请将相关的代码片段合并到 Log4J 或 Logback 配置文件： 
+要开始跟踪，请将相关的代码片段合并到 Log4J 或 Logback 配置文件： 
 
 *Logback*
 
@@ -168,6 +167,5 @@ Application Insights 追加器可由配置的任何记录器（而不一定是�
 
 [diagnostic]: app-insights-diagnostic-search.md
 [java]: app-insights-java-get-started.md
-
 
 

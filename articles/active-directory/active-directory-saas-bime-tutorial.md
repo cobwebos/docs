@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
 ms.openlocfilehash: 8f46ff1265d302ab114747b4b45227e58718166b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教程：Azure Active Directory 与 Bime 集成
 
@@ -132,7 +131,7 @@ ms.lasthandoff: 07/14/2017
 
 7. 在其他 Web 浏览器窗口中，以管理员身份登录 Bime 公司站点。
 
-8. 在工具栏中，单击“管理员”，然后单击“帐户”。
+8. 在工具栏中，单击“管理员”，并单击“帐户”。
    
     ![管理员](./media/active-directory-saas-bime-tutorial/ic775558.png "管理员")
 
@@ -140,9 +139,9 @@ ms.lasthandoff: 07/14/2017
    
     ![配置单一登录](./media/active-directory-saas-bime-tutorial/ic775559.png "配置单一登录")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“启用 SAML 身份验证”。
+    a. 选择“启用 SAML 身份验证”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“远程登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“远程登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     c.  将 Azure 门户中的指纹值粘贴到“证书指纹”文本框。       
    
@@ -175,7 +174,7 @@ ms.lasthandoff: 07/14/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-bime-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -191,7 +190,7 @@ ms.lasthandoff: 07/14/2017
 
 1. 登录 **Bime** 租户。
 
-2. 在工具栏中，单击“管理员”，然后单击“用户”。
+2. 在工具栏中，单击“管理员”，并单击“用户”。
    
     ![管理员](./media/active-directory-saas-bime-tutorial/ic775561.png "管理员")
 
@@ -203,9 +202,9 @@ ms.lasthandoff: 07/14/2017
    
     ![用户详细信息](./media/active-directory-saas-bime-tutorial/ic775563.png "用户详细信息")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名字”文本框中，输入用户的名字（如“Britta”）。
+    a. 在“名字”文本框中，输入用户的名字（如“Britta”）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
+    b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
  
     c. 在“电子邮件”文本框中，输入用户的电子邮件地址（如 brittasimon@contoso.com）。
 
@@ -223,7 +222,7 @@ ms.lasthandoff: 07/14/2017
 
 **若要将 Britta Simon 分配到 Bime，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -271,5 +270,4 @@ ms.lasthandoff: 07/14/2017
 [201]: ./media/active-directory-saas-bime-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-bime-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-bime-tutorial/tutorial_general_203.png
-
 

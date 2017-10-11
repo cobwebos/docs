@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 07/12/2016
 ms.author: shigu;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: dff94161c7d6dfedc91cfb36954e847f945985f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
-
+ms.openlocfilehash: b205ed47833f675286539705e2754d2ea3821b8e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表编制索引
 > [!div class="op_single_selector"]
@@ -59,7 +57,7 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 * 包含少于 1 亿行的小型表。  可以考虑使用堆表。
 
 ## <a name="heap-tables"></a>堆表
-当在 SQL 数据仓库上暂时登录数据时，可能发现使用堆表可让整个过程更快速。  这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表将会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表][Temporary]也比将表载入永久存储更快速。  
+当在 SQL 数据仓库上暂时登录数据时，可能发现使用堆表可让整个过程更快速。  这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表][Temporary]也比将表载入永久存储更快速。  
 
 对于包含少于 1 亿行的小型查找表，堆表通常比较适合。  超过 1 亿行后，聚集列存储表开始达到最佳压缩性能。
 
@@ -76,7 +74,7 @@ WITH ( HEAP );
 ```
 
 ## <a name="clustered-and-nonclustered-indexes"></a>聚集与非聚集索引
-需要快速检索单个行时，聚集索引可能优于聚集列存储表。  对于需要单个或极少数行查找才能极速执行的查询，请考虑使用聚集索引或非聚集辅助索引。  使用聚集索引的缺点是只有在聚集索引列上使用高度可选筛选器的查询才可受益。  若要改善其他列中的筛选器，可将非聚集索引添加到其他列。  但是，添加到表中的每个索引将会增大空间和加载处理时间。
+需要快速检索单个行时，聚集索引可能优于聚集列存储表。  对于需要单个或极少数行查找才能极速执行的查询，请考虑使用聚集索引或非聚集辅助索引。  使用聚集索引的缺点是只有在聚集索引列上使用高度可选筛选器的查询才可受益。  要改善其他列中的筛选器，可将非聚集索引添加到其他列。  但是，添加到表中的每个索引会增大空间和加载处理时间。
 
 若要创建聚集索引表，只需在 WITH 子句中指定 CLUSTERED INDEX：
 
@@ -148,7 +146,7 @@ GROUP BY
 ;
 ```
 
-现在你已创建视图，请运行此查询来识别哪些表的行组中包含的行少于 10 万个。  当然，如果你要寻求更理想的段质量，可以将 10 万这个阈值增大。 
+现在已创建视图，请运行此查询来识别哪些表的行组中包含的行少于 10 万个。  当然，如果要寻求更理想的段质量，可以将 10 万这个阈值增大。 
 
 ```sql
 SELECT    *
@@ -167,7 +165,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 | [COMPRESSED_rowgroup_rows] |表的列存储格式的行的总数。 |
 | [COMPRESSED_rowgroup_rows_AVG] |如果平均行数明显小于行组的最大行数，则可以考虑使用 CTAS 或 ALTER INDEX REBUILD 重新压缩数据 |
 | [COMPRESSED_rowgroup_count] |列存储格式的行组数。 如果该值相对于表的大小显得非常高，那么它表示列存储密度低。 |
-| [COMPRESSED_rowgroup_rows_DELETED] |逻辑上被删除的列存储格式的行数。 如果该数值相对于表的大小来说是高的，请考虑重新创建分区或重新生成索引，因为这将以物理方式删除它们。 |
+| [COMPRESSED_rowgroup_rows_DELETED] |逻辑上被删除的列存储格式的行数。 如果该数值相对于表的大小来说是高的，请考虑重新创建分区或重新生成索引，因为这以物理方式删除它们。 |
 | [COMPRESSED_rowgroup_rows_MIN] |将该值与 AVG 和 MAX 列一起使用，以便了解列存储格式的行组的值的范围。 如果该值稍微高出加载阈值（每分区对齐的分布区 102,400 行），则提示可在数据加载中进行优化 |
 | [COMPRESSED_rowgroup_rows_MAX] |同上 |
 | [OPEN_rowgroup_count] |打开的行组都是正常的。 理论上，每个表分布区 (60) 预期有一个 OPEN 状态的行组。 如果该值过大，则提示需要跨分区进行数据加载。 仔细检查分区策略，以确保该值合理。 |
@@ -183,7 +181,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 | [Rebuild_Index_SQL] |用于重建表的列存储索引的 SQL |
 
 ## <a name="causes-of-poor-columnstore-index-quality"></a>列存储索引质量不佳的原因
-如果你已识别出段质量不佳的表，接下来可以找出根本原因。  下面是段质量不佳的其他一些常见原因：
+如果已识别出段质量不佳的表，接下来可以找出根本原因。  下面是段质量不佳的其他一些常见原因：
 
 1. 生成索引时内存有压力
 2. 有大量的 DML 操作
@@ -199,7 +197,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 更新和删除行的大量 DML 操作可能造成列存储低效。 当行组中的大多数行已修改时尤其如此。
 
 * 从压缩的行组中删除某行只会以逻辑方式将该行标记为已删除。 该行仍会保留在压缩的行组中，直到重新生成分区或表为止。
-* 插入某行会将该行添加到名为增量行组的内部行存储表中。 在增量行组已满且标记为已关闭之前，插入的行不会转换成列存储。 达到 1,048,576 个行的容量上限后，行组将会关闭。 
+* 插入某行会将该行添加到名为增量行组的内部行存储表中。 在增量行组已满且标记为已关闭之前，插入的行不会转换成列存储。 达到 1,048,576 个行的容量上限后，行组会关闭。 
 * 更新采用列存储格式的行将依次作为逻辑删除和插入进行处理。 插入的行可以存储在增量存储中。
 
 超出每个分区对齐分布区的 102,400 行批量阈值的批次更新和插入操作将直接写入列存储格式。 但是，假设在平均分布的情况下，需要在单个操作中修改超过 6.144 百万行才发生这种情况。 如果给定分区对齐分布区的行数少于 102,400 个，行将转到增量存储，并在插入足够的行、修改行以关闭行组或已创建索引之前，保留在增量存储中。
@@ -225,7 +223,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>步骤 2：使用更高的用户资源类重建聚集列存储索引
-以步骤 1 中所述用户的身份（例如 LoadUser，该用户现在使用更高的资源类）登录，然后执行 ALTER INDEX 语句。  请确保此用户对重建索引的表拥有 ALTER 权限。  这些示例演示如何重新生成整个列存储索引或如何重建单个分区。 对于大型表，一次重建一个分区的索引比较合适。
+以步骤 1 中所述用户的身份（例如 LoadUser，该用户现在使用更高的资源类）登录，并执行 ALTER INDEX 语句。  请确保此用户对重建索引的表拥有 ALTER 权限。  这些示例演示如何重新生成整个列存储索引或如何重建单个分区。 对于大型表，一次重建一个分区的索引比较合适。
 
 或者，可以使用 [CTAS][CTAS] 将表复制到新表，而不要重建索引。  哪种方法最合适？ 如果数据量很大，[CTAS][CTAS] 的速度通常比 [ALTER INDEX][ALTER INDEX] 要快。 对于少量的数据，[ALTER INDEX][ALTER INDEX] 更容易使用，不需要换出表。  有关如何使用 CTAS 重建索引的详细信息，请参阅下面的**使用 CTAS 和分区切换重建索引**。
 
@@ -323,4 +321,3 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 [clustered columnstore indexes]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
-

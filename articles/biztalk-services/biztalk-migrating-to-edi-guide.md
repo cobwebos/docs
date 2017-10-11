@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 1b70fc3d199d7f1521acb534dafec8fb3e69500e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 06/01/2017
 本文档讨论了将 BizTalk Server EDI 项目迁移到 BizTalk 服务所涉及的一些差异。 本文档假定了一种 BizTalk Server EDI 处理和贸易合作伙伴协议的应用知识。 有关 BizTalk Server EDI 的详细信息，请参阅[使用 BizTalk Server 进行贸易合作伙伴管理](https://msdn.microsoft.com/library/bb259970.aspx)。
 
 ## <a name="which-version-of-biztalk-server-edi-artifacts-can-be-migrated-to-biztalk-services"></a>哪个版本的 BizTalk Server EDI 项目可迁移到 BizTalk 服务？
-BizTalk Server EDI 模块针对 BizTalk Server 2010 实现了显著增强，重新建模时纳入了合作伙伴、配置文件和协议。 BizTalk 服务利用同一模型整理贸易合作伙伴以及这些伙伴中的业务部门。 因此，可更为直接地将 EDI 项目从 BizTalk Server 2010 及更高版本迁移到 BizTalk 服务。 若要迁移与 BizTalk Server 2010 之前的版本关联的 EDI 项目，必须先升级到 BizTalk Server 2010，然后将 EDI 项目迁移到 BizTalk 服务。
+BizTalk Server EDI 模块针对 BizTalk Server 2010 实现了显著增强，重新建模时纳入了合作伙伴、配置文件和协议。 BizTalk 服务利用同一模型整理贸易合作伙伴以及这些伙伴中的业务部门。 因此，可更为直接地将 EDI 项目从 BizTalk Server 2010 及更高版本迁移到 BizTalk 服务。 要迁移与 BizTalk Server 2010 之前的版本关联的 EDI 项目，必须先升级到 BizTalk Server 2010，然后将 EDI 项目迁移到 BizTalk 服务。
 
 ## <a name="scenariosmessage-flow"></a>方案/消息流
 与 BizTalk Server 一样，BizTalk 服务中的 EDI 处理同样基于贸易合作伙伴管理 (TPM) 解决方案。 TPM 解决方案包含以下关键组件：
@@ -63,13 +62,13 @@ BizTalk 服务提供了一种易于使用的配置体验，可在不配置任何
 
 1. 从贸易合作伙伴 Fabrikam 接收到 EDI 消息。  为了从贸易合作伙伴接收 EDI 消息，BizTalk 服务支持传输协议，如 FTP、SFTP、AS2 和 HTTP/S。
 2. 贸易合作伙伴协议接收端处理将 EDI 消息拆分成 XML 格式。  可将已拆分的 EDI 消息（XML 格式）路由到服务总线终结点，例如服务总线中继终结点、服务总线主题、服务总线队列或 BizTalk 服务网桥。
-3. 然后，可从终结点接收已拆分的 XML 消息，进行进一步的自定义处理。  这些终结点可由本地组件或 Microsoft Azure 计算实例处理，以便在 Windows Workflow (WF) 或 Windows Communication Foundation (WCF) 服务等中进一步处理消息。
-4. 然后，贸易合作伙伴协议的“发送端处理”将 XML 消息组装成 EDI 格式，并将其发送给贸易合作伙伴 Contoso。  为了向贸易合作伙伴发送 EDI 消息，BizTalk 服务支持接收 EDI 消息时所用的相同协议。
+3. 然后可以从以进行进一步自定义处理终结点接收分解的 XML 消息。  这些终结点可由本地组件或 Microsoft Azure 计算实例处理，以便在 Windows Workflow (WF) 或 Windows Communication Foundation (WCF) 服务等中进一步处理消息。
+4. "发送方处理"的贸易合作伙伴协议然后组合成 EDI 格式的 XML 消息并将其发送给贸易合作伙伴，Contoso。  为了向贸易合作伙伴发送 EDI 消息，BizTalk 服务支持接收 EDI 消息时所用的相同协议。
 
 本文档进一步提供了概念性指导，介绍了如何将一些不同的 BizTalk Server EDI 项目迁移到 BizTalk 服务。
 
 ## <a name="sendreceive-ports-to-trading-partners"></a>到贸易合作伙伴的发送/接收端口
-在 BizTalk Server 中，设置接收位置和接收端口以便从贸易合作伙伴接收 EDI/XML 消息，设置发送端口以便向贸易合作伙伴发送 EDI/XML 消息。 然后，使用 BizTalk Server 管理控制台将这些端口绑定到贸易合作伙伴协议。 在 BizTalk 服务中，BizTalk 服务门户将用于从贸易合作伙伴接收消息和向贸易合作伙伴发送消息的位置配置为贸易合作伙伴协议本身的一部分（作为“传输设置”的一部分）。  因此在 BizTalk 服务中，你本身并不具有“发送端口”和“接收位置”的概念。 有关详细信息，请参阅[创建协议](https://msdn.microsoft.com/library/windowsazure/hh689908.aspx)。
+在 BizTalk Server 中，设置接收位置和接收端口以便从贸易合作伙伴接收 EDI/XML 消息，设置发送端口以便向贸易合作伙伴发送 EDI/XML 消息。 然后，使用 BizTalk Server 管理控制台将这些端口绑定到贸易合作伙伴协议。 在 BizTalk 服务中，BizTalk 服务门户用于从贸易合作伙伴接收消息和向贸易合作伙伴发送消息的位置配置为贸易合作伙伴协议本身的一部分（作为“传输设置”的一部分）。  因此在 BizTalk 服务中，本身并不具有“发送端口”和“接收位置”的概念。 有关详细信息，请参阅[创建协议](https://msdn.microsoft.com/library/windowsazure/hh689908.aspx)。
 
 ## <a name="pipelines-bridges"></a>管道（网桥）
 在 BizTalk Server EDI 中，管道是消息处理实体，它还可包括应用程序所需的用于特定处理功能的自定义逻辑。 对于 BizTalk 服务，其等效于 EDI 网桥。 然而在 BizTalk 服务中，EDI 网桥目前处于“关闭”状态。  也就是说，无法将自己的自定义活动添加到 EDI 网桥。 任何自定义处理都必须在应用程序中的 EDI 网桥外执行，在消息进入配置为交易合作伙伴协议的一部分的网桥之前或之后完成。 EAI 网桥可执行自定义处理。 如要进行自定义处理，可在 EDI 网桥处理消息之前或之后使用 EAI 网桥。 有关详细信息，请参阅[如何在桥中包含自定义代码](https://msdn.microsoft.com/library/azure/dn232389.aspx)。
@@ -79,7 +78,7 @@ BizTalk 服务提供了一种易于使用的配置体验，可在不配置任何
 有关消息流模式，请参阅本主题中的**方案/消息流**。
 
 ## <a name="agreements"></a>协议
-如果你熟悉用于 EDI 处理的 BizTalk Server 2010 交易合作伙伴协议，就会发现 BizTalk 服务贸易合作伙伴协议与之很相似。 大部分协议设置均相同且使用相同术语。 在某些情况下，与 BizTalk Server 中的相同设置相比，协议设置要简单得多。 Microsoft Azure BizTalk 服务支持 X12、EDIFACT 和 AS2 传输。
+如果熟悉用于 EDI 处理的 BizTalk Server 2010 交易合作伙伴协议，就会发现 BizTalk 服务贸易合作伙伴协议与之很相似。 大部分协议设置均相同且使用相同术语。 在某些情况下，与 BizTalk Server 中的相同设置相比，协议设置要简单得多。 Microsoft Azure BizTalk 服务支持 X12、EDIFACT 和 AS2 传输。
 
 Microsoft Azure BizTalk 服务还提供 **TPM 数据迁移**工具，用于将贸易合作伙伴和协议从 BizTalk Server 贸易合作伙伴模块迁移到 BizTalk 服务门户。 TPM 数据迁移工具作为工具包的一部分提供，可以从 [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057) 下载。 该包还包括一个自述文件，其中提供了工具使用方式的说明和工具的基本疑难解答信息。
 
@@ -102,7 +101,7 @@ Microsoft Azure BizTalk 服务提供了将 BizTalk Server 映射迁移到 BizTal
 还可查看 Sandro Pereira (BizTalk MVP) 提供的示例，了解如何 [migrate BizTalk Server maps to BizTalk Services transforms](http://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx)（将 BizTalk Server 映射迁移到 BizTalk 服务转换）。
 
 ## <a name="orchestrations"></a>业务流程
-如需将 BizTalk Server 业务流程处理迁移到 Microsoft Azure，则需要重写该业务流程，因为 Microsoft Azure 不支持运行 BizTalk Server 业务流程。  可在 Windows Workflow Foundation 4.0 (WF4) 服务中重写业务流程功能。  这将是一次完全重写，因为当前没有从 BizTalk Server 业务流程到 WF4 的迁移。 以下是 Windows 工作流的部分资源：
+如需将 BizTalk Server 业务流程处理迁移到 Microsoft Azure，则需要重写该业务流程，因为 Microsoft Azure 不支持运行 BizTalk Server 业务流程。  可在 Windows Workflow Foundation 4.0 (WF4) 服务中重写业务流程功能。  这会是一次完全重写，因为当前没有从 BizTalk Server 业务流程到 WF4 的迁移。 以下是 Windows 工作流的部分资源：
 
 * [如何将 WCF 工作流服务与服务总线队列和主题集成](https://msdn.microsoft.com/library/azure/hh709041.aspx)（Paolo Salvatori 编写）。 
 * [使用 Windows Workflow Foundation 和 Azure 构建应用会议](http://go.microsoft.com/fwlink/p/?LinkId=237314)（来自 Build 2011 大会）。
@@ -125,4 +124,3 @@ Microsoft Azure BizTalk 服务会定期进行里程碑更新，增添更多功�
 [开发用于 Azure 的企业应用程序](https://msdn.microsoft.com/library/azure/hh674490.aspx)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
-

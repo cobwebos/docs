@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: df72270ca6443b456c079b22425f1660aa522389
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -97,7 +96,7 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ArcGIS Online 测试用户](#creating-an-arcgis-online-test-user)** - 在 ArcGIS Online 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 ArcGIS 联机测试用户](#creating-an-arcgis-online-test-user)** -若要在 ArcGIS 联机链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -124,7 +123,7 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [ArcGIS Online 客户端支持团队](http://support.esri.com/)联系。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
 
@@ -150,9 +149,9 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
    
     ![设置标识提供者](./media/active-directory-saas-arcgis-tutorial/ic784745.png "设置标识提供者")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名称”文本框中，键入组织的名称。
+    a. 在“名称”文本框中，键入组织的名称。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 对于“企业标识提供者提供元数据所使用的方法”，请选择“文件”。
+    b. 对于“企业标识提供者提供元数据所使用的方法”，请选择“文件”。
 
     c. 若要上传下载的元数据文件，请单击“选择文件”。
 
@@ -185,7 +184,7 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-arcgis-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的**电子邮件地址**。
 
@@ -206,7 +205,7 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
    
     ![邀请成员](./media/active-directory-saas-arcgis-tutorial/ic784747.png "邀请成员")
 
-3. 选择“自动添加成员且无需发送电子邮件”，然后单击“下一步”。
+3. 选择**自动添加成员，而不发送一封电子邮件**，然后单击**下一步**。
    
     ![自动添加成员](./media/active-directory-saas-arcgis-tutorial/ic784748.png "自动添加成员")
 
@@ -214,10 +213,10 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
    
      ![添加和查看](./media/active-directory-saas-arcgis-tutorial/ic784749.png "添加和查看")
     
-     a.在“横幅徽标”下面，选择“删除上传的徽标”。 输入想要预配的有效 AAD 帐户的“电子邮件”、“名字”和“姓氏”。
+     a. 输入想要预配的有效 AAD 帐户的“电子邮件”、“名字”和“姓氏”。
   
-     b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“添加和查看”。
-5. 查看输入的数据，然后单击“添加成员”。
+     b. 单击“添加和查看”。
+5. 查看的数据输入，并依次**添加成员**。
    
     ![添加成员](./media/active-directory-saas-arcgis-tutorial/ic784750.png "添加成员")
         
@@ -232,7 +231,7 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
 
 若要将 Britta Simon 分配到 ArcGIS Online，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -281,5 +280,4 @@ To enable single sign-on with ArcGIS Online, it must be configured to use Azure 
 [201]: ./media/active-directory-saas-arcgis-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-arcgis-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-arcgis-tutorial/tutorial_general_203.png
-
 

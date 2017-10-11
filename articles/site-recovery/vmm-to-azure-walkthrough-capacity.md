@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: ab1dc21a829140f8cd2e57837d83a05b0d71bcdf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="step-3-plan-capacity-and-scaling-for-hyper-v-with-vmm-to-azure-replication"></a>步骤 3：规划容量和缩放以将 Hyper-V（带 VMM）复制到 Azure
 
 查看[部署先决条件](vmm-to-azure-walkthrough-prerequisites.md)后，使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中的本地 Hyper-V VM 复制到 Azure 时，请根据本文规划容量和缩放。
@@ -85,4 +83,3 @@ ms.lasthandoff: 07/26/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[第 4 步：计划网络](vmm-to-azure-walkthrough-network.md)。
-

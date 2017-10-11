@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
-ms.openlocfilehash: 5e71ecc6539179efdcfa6bfc4567bddaa96a59d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: a14bb0320c1f6a563f766a6a0fad5cf556fe7b70
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -37,17 +36,17 @@ ms.lasthandoff: 03/01/2017
 
 1. 在 Visual Studio 解决方案资源管理器中，右键单击 UWP 应用项目，单击“应用商店” > “将应用与应用商店关联...”。
 
-    ![将应用与 Windows 应用商店关联](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
-2. 在向导中，单击“下一步”，使用 Microsoft 帐户登录，在“保留新应用名称”中键入应用的名称，然后单击“保留”。
+    ![关联应用与 Windows 应用商店](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+2. 在向导中，单击“下一步”，使用 Microsoft 帐户登录，在“保留新应用名称”中键入应用的名称，并单击“保留”。
 3. 成功创建应用注册后，选择新应用名称，再依次单击“下一步”和“关联”。 这会将所需的 Windows 应用商店注册信息添加到应用程序清单中。  
 4. 导航到 [Windows 开发人员中心](https://dev.windows.com/en-us/overview)、用 Microsoft 帐户登录，再单击“我的应用”中的新应用注册，然后展开“服务” > “推送通知”。
 5. 在“推送通知”页中，单击“Microsoft Azure 移动服务”下的“Live 服务站点”。
 6. 在注册页中，记下“应用程序机密”和“包 SID”下的值，后面将使用这些值配置移动应用后端。
 
-    ![将应用与 Windows 应用商店关联](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+    ![关联应用与 Windows 应用商店](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
-   > 客户端密钥和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随你的应用程序分发它们。 将“应用程序 ID”与机密配合使用来配置 Microsoft 帐户身份验证。
+   > 客户端密钥和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。 将“应用程序 ID”与机密配合使用来配置 Microsoft 帐户身份验证。
    >
    >
 
@@ -58,8 +57,8 @@ ms.lasthandoff: 03/01/2017
 使用下面与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
 ### <a name="dotnet"></a>.NET 后端项目
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 Microsoft.Azure.NotificationHubs，然后单击“安装”。 这将安装通知中心客户端库。
-2. 展开“控制器”，打开 TodoItemController.cs，然后添加以下 using 语句：
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 Microsoft.Azure.NotificationHubs，并单击“安装”。 这会安装通知中心客户端库。
+2. 展开“控制器”，打开 TodoItemController.cs，并添加以下 using 语句：
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
@@ -149,7 +148,7 @@ ms.lasthandoff: 03/01/2017
 3. 编辑本地计算机上的文件时，重新发布服务器项目。
 
 ## <a id="update-app"></a>向应用程序添加推送通知
-下一步，应用必须在启动时注册推送通知。 已启用身份验证时，请确保用户先登录，然后再尝试注册推送通知。
+下一步，应用必须在启动时注册推送通知。 已启用身份验证时，请确保用户先登录，再尝试注册推送通知。
 
 1. 打开 **App.xaml.cs** 项目文件并添加以下 `using` 语句：
 
@@ -178,7 +177,7 @@ ms.lasthandoff: 03/01/2017
         }
 
     这保证每次启动应用程序时都注册短期的 ChannelURI。
-4. 重新生成 UWP 应用项目。 你的应用现在已能够接收 toast 通知。
+4. 重新生成 UWP 应用项目。 应用现在已能够接收 toast 通知。
 
 ## <a id="test"></a>在应用程序中测试推送通知
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
@@ -204,4 +203,3 @@ ms.lasthandoff: 03/01/2017
 [Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
-

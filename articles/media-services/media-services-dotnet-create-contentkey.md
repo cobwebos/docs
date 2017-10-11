@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c547afd9535eb4764caf6b37d4e38a22f6e88186
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 3280a6fcde59bae360da7cb9fea4bb649f984e43
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-contentkeys-with-net"></a>使用 .NET 创建内容密钥
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ ms.lasthandoff: 11/17/2016
 > 
 > 
 
-媒体服务允许你创建资产和传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
+媒体服务允许创建资产和传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
 
 创建新资产时（例如，[上传文件](media-services-dotnet-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 11/17/2016
 加密的资产必须与 **ContentKey** 关联。 本文介绍如何创建内容密钥。
 
 > [!NOTE]
-> 使用媒体服务 .NET SDK 创建新的 **StorageEncrypted** 资产时，会自动创建 **ContentKey** 并将其链接到资产。
+> 使用媒体服务 .NET SDK 创建新的“StorageEncrypted”资产时，会自动创建“ContentKey”并将其链接到资产。
 > 
 > 
 
@@ -148,5 +147,4 @@ call
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

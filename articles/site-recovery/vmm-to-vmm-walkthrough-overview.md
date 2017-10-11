@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: b422dd2cf23426de2f154a553b38509082536309
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site"></a>将 VMM 云中的 Hyper-V 虚拟机复制到辅助 VMM 站点
 
@@ -101,4 +100,3 @@ ms.lasthandoff: 08/01/2017
 运行测试故障转移，确保一切按预期运行。
 
 转到[步骤 10：运行测试故障转移](vmm-to-vmm-walkthrough-test-failover.md)。
-

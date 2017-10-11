@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
 ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="community-portal"></a>社区门户
 ## <a name="community-spotlight"></a>社区聚焦
-让我们推销你的项目！ 展示你使用下一代 DocumentDB 堆栈 Azure Cosmos DB 创作的优秀项目，我们将助你向全世界分享你的才华。 若要提交你的项目，请向我们发送电子邮件：[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
+让我们推销项目！ 展示你使用下一代 DocumentDB 堆栈 Azure Cosmos DB 创作的优秀项目，我们将助你向全世界分享才华。 要提交项目，请向我们发送电子邮件：[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
 
 ### <a name="documentdb-lumenize"></a>documentdb-lumenize
 作者：Larry Maccherone
@@ -77,9 +76,9 @@ fluent-plugin-documentdb 是用于输出到 Azure Cosmos DB DocumentDB API 的 F
 * [**A Journey to Social**](https://medium.com/@Ealsur/a-journey-to-social-c47636bf25c9#.an669sx41)（社交之旅） - 作者：Matías Quaranta 
 * [**Azure DocumentDB protocol support for MongoDB in Preview, my test with Sitecore**](https://alwaysupalwayson.blogspot.ca/2016/05/azure-documentdb-protocol-support-for.html)（Azure DocumentDB 的 MongoDB 协议支持预览版，采用 Sitecore 的测试） - 作者：Mathieu Benoit 
 * [**Going Social with DocumentDB**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/)（使用 DocumentDB 展开社交） - 作者：Matías Quaranta
-* [**UWP, Azure 应用服务, and DocumentDB Soup: A photo-sharing app**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/)（UWP、Azure 应用服务和 DocumentDB Soup：一个照片分享应用） - 作者：Eric Langland
+* [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/)（UWP、Azure 应用服务和 DocumentDB Soup：一个照片分享应用） - 作者：Eric Langland
 * [**Collecting logs in to Azure DocumentDB using fluent-plugin-documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/)（使用 fluent-plugin-documentdb 将日志收集到 Azure DocumentDB） - 作者：Yoichi Kawasaki
-* [**DocumentDB revisited Part 1/2 – The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/)（重新访问的 DocumentDB 第 1 部分（共 2 部分）- 理论） - 作者：Peter Mannerhult
+* [**DocumentDB revisited Part 1/2 - The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/)（重新访问的 DocumentDB 第 1 部分（共 2 部分）- 理论） - 作者：Peter Mannerhult
 * [**What to love and hate about Azure’s DocumentDB**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/)（令人又爱又恨的 Azure 的 DocumentDB） - 作者：George Saadeh
 * [**Azure DocumentDB Server-Side Scripting**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/)（Azure DocumentDB 服务器端脚本） - 作者：Robert Sheldon
 * [**DocumentDB as a data sink for Azure Stream Analytics**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter)作为 Azure 流分析的数据接收器的 DocumentDB） - 作者：Jan Hentschel
@@ -88,9 +87,9 @@ fluent-plugin-documentdb 是用于输出到 Azure Cosmos DB DocumentDB API 的 F
 * [**Data Points - Aurelia Meets DocumentDB: A Matchmaker’s Journey**](https://msdn.microsoft.com/magazine/mt620011.aspx)（数据点 - Aurelia 遇见 DocumentDB：匹配生成器之旅） - 作者：Julie Lerman
 * [**Infrastructure as Code and Continuous Deployment of a Node.js + Azure DocumentDB Solution**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution)（基础结构即代码和 Node.js + Azure DocumentDB 解决方案的连续部署） - 作者：Thiago Almedia
 * [**Why DocumentDb Makes Good Business Sense for Some Projects**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects)（为什么 DocumentDB 对于某些项目具有重要商业意义） - 作者：Samuel Uresin
-* [**Azure DocumentDB development moving forward – development of the Client class (1 of 2) (Japanese)**](http://beachside.hatenablog.com/entry/2015/10/01/202734)（Azure DocumentDB 开发向前推进 – 开发客户端类）(1/2)（日语） - 作者：Atsushi Yokohama*by Atsushi Yokohama*
+* [**Azure DocumentDB development moving forward – development of the Client class (1 of 2) (Japanese)**](http://beachside.hatenablog.com/entry/2015/10/01/202734)（Azure DocumentDB 开发向前推进 – 开发客户端类）(1/2)（日语） - 作者：Atsushi Yokohama
 * [**Things you need to know when using Azure DocumentDB (Japanese)**](http://beachside.hatenablog.com/entry/2015/10/01/202734)（使用 Azure DocumentDB 时需要了解的内容）（日语） - 作者：Atsushi Yokohama
-* [**数据点 - Microsoft Azure DocumentDB 概述**](https://msdn.microsoft.com/magazine/mt147238.aspx) - 作者：Julie Lerman
+* [**数据点-Microsoft Azure DocumentDB 的概述**](https://msdn.microsoft.com/magazine/mt147238.aspx) - *通过 Julie Lerman*
 * [**Using DocumentDB With F#**（配合 F# 使用 DocumentDB）](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/) - 作者：Jamie Dixon
 * [**Analysing Application Logs with DocumentDB**](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/)（使用 DocumentDB 分析应用程序日志） - 作者：Vincent-Philippe Lauzon
 * [**Azure DocumentDB – Point in time Backups**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/)（Azure DocumentDB - 时间点备份） - 作者：Juan Carlos Sanchez
@@ -173,7 +172,8 @@ fluent-plugin-documentdb 是用于输出到 Azure Cosmos DB DocumentDB API 的 F
 | Wired2WinWebinar |Sai Sankar Kunnathukuzhiyil |2016 年 3 月 9 日 |[Developing Solutions with Azure DocumentDB](https://www.youtube.com/watch?v=xKttEwXv_bs)（使用 Azure DocumentDB 开发解决方案） |
 | Integration User Group |Han Wong |2016 年 2 月 17 日 |[Analyze and visualize non-relational data with DocumentDB + Power BI](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/)（使用 DocumentDB + Power BI 分析和可视化非相关数据） |
 | The Azure Podcast |Cale Teeter |2016 年 1 月 14 日 |[Episode 110: Using DocumentDB & Search](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search)（剧集 110：使用 DocumentDB 和搜索） |
-| Channel 9: Modern Applications |Tara Shankar Jana |2016 年 12 月 13 日 |[Take a modern approach to data in your apps](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps)（在你的应用中采用现代方法处理数据） |
+| Channel 9: Modern Applications |Tara Shankar Jana |2016 年 12 月 13 日 |
+            [Take a modern approach to data in your apps](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps)（在应用中采用现代方法处理数据） |
 | NinjaTips |Miguel Quintero |2015 年 12 月 10 日 |[DocumentDB - Un vistazo general](https://channel9.msdn.com/Series/Ninja-Tips/31-NinjaTips-Desarrollo-DocumentDB-1-Vistazo-general) |
 | Integration User Group |Howard Edidin |2015 年 10 月 5 日 |[Azure DocumentDB for Healthcare Integration](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk)（用于健康护理的 Azure DocumentDB） |
 | DX Italy - #TecHeroes |Alessandro Melchiori |2015 年 10 月 2 日 |[#TecHeroes - DocumentDB](https://channel9.msdn.com/Shows/TecHeroes/TecHeroes-DocumentDB) |
@@ -193,9 +193,9 @@ fluent-plugin-documentdb 是用于输出到 Azure Cosmos DB DocumentDB API 的 F
 ### <a name="online-classes"></a>在线课程
 | 学习合作伙伴 | 说明 |
 | --- | --- |
-| [![Microsoft Virtual Academy](./media/community/mva.png)](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847)（Microsoft 虚拟大学） |[**Microsoft Virtual Academy**](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847)（Microsoft 虚拟大学）向你提供培训，这些培训来自那些帮助构建 Azure DocumentDB 的人士。 |
-| [![Pluralsight](./media/community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) |[**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) 是提供 Azure 培训的重要 Microsoft 合作伙伴。 如果你是一名 MSDN 订户，请使用你访问 Microsoft Azure 培训的权益。 |
-| [![OpsGility](./media/community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) |[**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) 提供有关 Microsoft Azure 的深层次技术培训。 在现场或通过远程教室获得由业内认可的培训师指导的培训。 |
+| [![Microsoft 虚拟大学](./media/community/mva.png)](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) |[**Microsoft 虚拟大学**](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) 向你提供培训，这些培训来自那些帮助构建 Azure DocumentDB 的人士。 |
+| [![Pluralsight](./media/community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) |[**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) 是提供 Azure 培训的重要 Microsoft 合作伙伴。 如果是一名 MSDN 订户，请使用访问 Microsoft Azure 培训的权益。 |
+| [![OpsGility](./media/community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) |[**OpsGility** ](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb)在 Microsoft Azure 上提供深入的技术的培训。 在现场或通过远程教室获得由业内认可的培训师指导的培训。 |
 
 ## <a name="discussion"></a>讨论区
 ### <a name="twitter"></a>Twitter
@@ -209,7 +209,7 @@ fluent-plugin-documentdb 是用于输出到 Azure Cosmos DB DocumentDB API 的 F
 ## <a name="contact-the-team"></a>与团队联系
 ![团队](./media/community/team.png)
 
-你需要技术协助吗？ 有任何疑问吗？ 想知道 NoSQL 是否适合你？ 可发送[电子邮件](mailto:askcosmosdb@microsoft.com)给我们，或在 [@DocumentDB](https://twitter.com/DocumentDB) 推文给我们，直接安排与 DocumentDB 工程团队进行 1 对 1 交谈。
+需要技术协助吗？ 有任何疑问吗？ 想知道 NoSQL 是否适合你？ 可发送[电子邮件](mailto:askcosmosdb@microsoft.com)给我们，或在 [@DocumentDB](https://twitter.com/DocumentDB) 推文给我们，直接安排与 DocumentDB 工程团队进行 1 对 1 交谈。
 
 ## <a name="open-source-projects"></a>开放源代码项目
 这些项目由 Azure DocumentDB 团队与我们的开放源代码社区共同积极开发。
@@ -242,6 +242,5 @@ Azure Cosmos DB 奇才是社区领导者，他们是帮助其他人充分利用�
 |  [Santosh Hari](https://twitter.com/_s_hari) |[![Santosh Hari](./media/community/wizard-santosh-hari.jpg)](https://twitter.com/_s_hari) |
 | [Matías Quaranta](https://twitter.com/ealsur) |[![Matías Quaranta](./media/community/wizard-matias-quaranta.jpg)](https://twitter.com/ealsur) |
 
-你想成为 Azure Cosmos DB 奇才吗？ 是否成为奇才并没有客观衡量基准，评估条件包括但不限于被提名者对以下内容作出的贡献所产生的影响：在线论坛（例如 StackOverflow 和 MSDN）、Wiki 和在线内容、会议和用户组、播客、网站、博客和社交媒体以及文章与书籍。 如果想提名自己或其他人，[请向我们发送电子邮件](mailto:askcosmosdb@microsoft.com)。
-
+想成为 Azure Cosmos DB 奇才吗？ 是否成为奇才并没有客观衡量基准，评估条件包括但不限于被提名者对以下内容作出的贡献所产生的影响：在线论坛（例如 StackOverflow 和 MSDN）、Wiki 和在线内容、会议和用户组、播客、网站、博客和社交媒体以及文章与书籍。 如果想提名自己或其他人，[请向我们发送电子邮件](mailto:askcosmosdb@microsoft.com)。
 

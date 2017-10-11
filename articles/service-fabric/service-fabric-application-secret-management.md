@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: cc6ef8f3ef5371ac3092686afddc9198516916fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/09/2016
-
-
+ms.openlocfilehash: d71924cda8bb3bffbe221946d80dba150359e38e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="managing-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -38,10 +36,11 @@ ms.lasthandoff: 12/09/2016
 
 1. 获取数据加密证书。
 2. 在群集中安装证书。
-3. 在部署应用程序时使用证书加密机密值，然后将其注入服务的 Settings.xml 配置文件。
+3. 在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。
 4. 通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。 
 
-[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，也可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
+
+            [Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
 
 ## <a name="data-encipherment-certificate"></a>数据加密证书
 数据加密证书只用于加密和解密服务 Settings.xml 中的配置值，而不用于身份验证或密码文本签名。 该证书必须满足以下要求：
@@ -57,7 +56,7 @@ ms.lasthandoff: 12/09/2016
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>在群集中安装证书
-必须在群集中的每个节点上安装此证书。 在运行时，将使用此证书解密服务的 Settings.xml 中存储的值。 有关设置说明，请参阅[如何使用 Azure Resource Manager 创建群集][service-fabric-cluster-creation-via-arm]。 
+必须在群集中的每个节点上安装此证书。 在运行时，使用此证书解密服务的 Settings.xml 中存储的值。 有关设置说明，请参阅[如何使用 Azure Resource Manager 创建群集][service-fabric-cluster-creation-via-arm]。 
 
 ## <a name="encrypt-application-secrets"></a>加密应用程序机密
 Service Fabric SDK 提供内置的机密加密和解密函数。 可以在生成时加密机密值，在服务代码中以编程方式解密和读取机密值。 
@@ -68,7 +67,7 @@ Service Fabric SDK 提供内置的机密加密和解密函数。 可以在生成
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-生成的 base-64 字符串包含机密密文，以及用来将其加密的证书相关信息。  当 `IsEncrypted` 属性设置为 `true` 时，可将 base-64 编码字符串插入服务 Settings.xml 配置文件中的参数内：
+生成的 base-64 字符串包含机密密文，以及用来将其加密的证书相关信息。  当 `IsEncrypted` 属性设置为 `true` 时，可将 base-64 编码字符串插入服务的 Settings.xml 配置文件中的参数内：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -79,7 +78,7 @@ Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text 
 </Settings>
 ```
 
-### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密插入应用程序实例
+### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密注入应用程序实例
 理想情况下，部署到不同环境的过程应尽可能自动化。 这可以通过在生成环境中执行机密加密，并在创建应用程序实例时提供加密机密作为参数来实现。
 
 #### <a name="use-overridable-parameters-in-settingsxml"></a>在 Settings.xml 中使用可重写参数
@@ -115,7 +114,7 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
   </ServiceManifestImport>
  ```
 
-现在，可以在创建应用程序实例时将值指定为*应用程序参数*。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
+现在，可以在创建应用程序实例时将值指定为*应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
 使用 PowerShell 时，参数将以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
 
@@ -165,7 +164,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 > [!NOTE]
-> 在 Windows 上从证书存储管理单元中复制证书指纹时，将在证书指纹字符串的开头添加一个不可见的字符。 尝试按指纹查找证书时，此不可见字符可能导致出错，因此请务必删除这个附加字符。
+> 在 Windows 上从证书存储管理单元中复制证书指纹时，会在证书指纹字符串的开头添加一个不可见的字符。 尝试按指纹查找证书时，此不可见字符可能导致出错，因此请务必删除这个附加字符。
 > 
 > 
 
@@ -187,4 +186,3 @@ SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Param
 
 <!-- Images -->
 [overview]:./media/service-fabric-application-secret-management/overview.png
-

@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 98c78d84f3a615fae7d6785994f0db20f7a53254
-ms.openlocfilehash: 013e3d29694a8daf1481e513c9c4dfc6b5da3384
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/10/2017
-
-
+ms.openlocfilehash: 088f10bc32dd492f82f0a10a7e5829e76f588758
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>方案：使用 Azure Functions 和 Azure 服务总线触发逻辑应用
 
-需要部署长时间运行的侦听器或任务时，可以使用 Azure Functions 为逻辑应用创建触发器。 例如，可以创建一个函数以侦听队列，然后立即以推送触发器的形式触发逻辑应用。
+需要部署长时间运行的侦听器或任务时，可以使用 Azure Functions 为逻辑应用创建触发器。 例如，可以创建一个函数以侦听队列，并立即以推送触发器的形式触发逻辑应用。
 
 ## <a name="build-the-logic-app"></a>构建逻辑应用
-在此示例中，你有一个为需要触发的每个逻辑应用运行的函数。 首先，创建一个具有 HTTP 请求触发器的逻辑应用。 每当收到队列消息时，函数会调用该终结点。  
+在此示例中，需要触发的每个逻辑应用都有一个运行的函数。 首先，创建一个具有 HTTP 请求触发器的逻辑应用。 每当收到队列消息时，函数会调用该终结点。  
 
 1. 创建逻辑应用。
 2. 选择“手动 - 收到 HTTP 请求时”触发器。
@@ -40,7 +38,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="build-the-function"></a>构建函数
 接下来，需要创建一个充当触发器并侦听队列的函数。
 
-1. 在 [Azure Functions 门户](https://functions.azure.com/signin)中，选择“新建函数”，然后选择“ServiceBusQueueTrigger - C#”模板。
+1. 在 [Azure Functions 门户](https://functions.azure.com/signin)中，选择“新建函数”，并选择“ServiceBusQueueTrigger - C#”模板。
    
     ![Azure Functions 门户][2]
 2. 配置与服务总线队列之间的连接，该连接会使用 Azure 服务总线 SDK `OnMessageReceive()` 侦听器。
@@ -70,4 +68,3 @@ ms.lasthandoff: 02/10/2017
 <!-- Image References -->
 [1]: ./media/logic-apps-scenario-function-sb-trigger/manualtrigger.png
 [2]: ./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png
-

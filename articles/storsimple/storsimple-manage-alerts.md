@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/08/2017
 ms.author: anbacker
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 5772334aade138101730fa7345f4515664d6d22f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple Manager 服务查看和管理 StorSimple 警报
 ## <a name="overview"></a>概述
@@ -61,7 +60,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
    
    1. 在“发送电子邮件通知”字段中选择“是”。
    2. 如果希望服务管理员和所有协同管理员接收警报通知，请在“电子邮件服务管理员”字段中选择“是”。
-   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。使用分号分隔电子邮件地址。 对于每个设备，最多可以配置 20 个电子邮件地址。 
+   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。 使用分号分隔电子邮件地址。 对于每个设备，最多可以配置 20 个电子邮件地址。 
       
        ![警报通知配置](./media/storsimple-manage-alerts/AlertNotify.png)
 3. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”旁边的箭头图标。 StorSimple Manager 服务在转发测试通知时会显示状态消息。 
@@ -79,7 +78,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 ![“警报”仪表板](./media/storsimple-manage-alerts/admin_alerts_dashboard.png)
 
-单击严重级别可打开“警报”选项卡。结果仅包括与该严重级别匹配的警报。
+单击严重级别可打开“警报”选项卡。 结果仅包括与该严重级别匹配的警报。
 
 ![警报报告已划归到警报类型](./media/storsimple-manage-alerts/admin_alerts_scoped.png)
 
@@ -203,5 +202,4 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 错误以及如何排查运行中设备的问题](storsimple-troubleshoot-operational-device.md)。
-
 

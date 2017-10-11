@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Qlik Sense Enterprise 集成 | Microsoft 文档"
+title: "教程：Azure Active Directory 与 Qlik Sense Enterprise 集成 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Qlik Sense Enterprise 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 4964634cd5aaf0dbb98c766f5e12700c4d118750
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>教程：Azure Active Directory 与 Qlik Sense Enterprise 集成
 
@@ -359,5 +358,4 @@ ms.lasthandoff: 08/28/2017
 [qs51]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_51.png
 [qs52]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_52.png
 [qs53]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_53.png
-
 

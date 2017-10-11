@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: d7cd31dcb2278284ada6e7ac1d8beab9e1b5b1df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 
 ## <a name="overview"></a>概述
 
-你的 Microsoft Azure StorSimple 设备的硬件组件遵循本文中概述的技术规格和法规标准。 此技术规格介绍电源和散热模块 (PCM)、磁盘驱动器、存储容量和机箱。 符合性信息涉及国际标准、安全与发射以及缆线等内容。
+#N/A 此技术规格介绍电源和散热模块 (PCM)、磁盘驱动器、存储容量和机箱。 符合性信息涉及国际标准、安全与发射以及缆线等内容。
 
 ## <a name="power-and-cooling-module-specifications"></a>电源和散热模块规格
 
@@ -63,7 +62,7 @@ EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与
 
 ## <a name="disk-drive-specifications"></a>磁盘驱动器规格
 
-你的 StorSimple 设备最多可支持 12 个 3.5 英寸外形规格串行连接 SCSI (SAS) 磁盘驱动器。 实际驱动器可能是固态硬盘 (SSD) 或硬盘驱动器 (HDD) 的混合，具体取决于产品配置。 这 12 个磁盘驱动器插槽以 3x4 配置分布于机箱前面。 EBOD 机箱允许放置额外的 12 个磁盘驱动器。 这些磁盘驱动器始终是 HDD。
+StorSimple 设备最多可支持 12 个 3.5 英寸外形规格串行连接 SCSI (SAS) 磁盘驱动器。 实际驱动器可能是固态硬盘 (SSD) 或硬盘驱动器 (HDD) 的混合，具体取决于产品配置。 这 12 个磁盘驱动器插槽以 3x4 配置分布于机箱前面。 EBOD 机箱允许放置额外的 12 个磁盘驱动器。 这些磁盘驱动器始终是 HDD。
 
 ## <a name="storage-specifications"></a>存储器规格
 
@@ -81,7 +80,7 @@ StorSimple 设备 8100 和 8600 都是硬盘驱动器和固态硬盘的混合。
 | 总可用容量* |~ 15 TB |~ 38 TB |
 | 最大解决方案容量（包括云） |200 TB |500 TB |
 
-<sup>* </sup>- *总可用容量包括数据、元数据和缓冲区的可用容量。*
+<sup>* </sup>- *总的可用容量包括数据、 元数据，和缓冲区的可用容量。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>机箱尺寸和重量规格
 
@@ -196,6 +195,5 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 ## <a name="next-steps"></a>后续步骤
 
-你现在可以在数据中心部署 StorSimple 设备。 有关详细信息，请参阅[部署你的本地设备](storsimple-8000-deployment-walkthrough-u2.md)。
-
+现在可以在数据中心部署 StorSimple 设备。 有关详细信息，请参阅[部署本地设备](storsimple-8000-deployment-walkthrough-u2.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure 批处理池创建事件 | Microsoft Docs"
+title: "Azure Batch 池创建事件 | Microsoft Docs"
 description: "批处理池创建事件参考。"
 services: batch
 author: tamram
@@ -12,17 +12,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 67edaa55d7ccd00d4aebb309f11bcf95486e87fa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="pool-create-event"></a>池创建事件
 
- 池创建后，会发出此事件。 日志内容将公开有关池的常规信息。 请注意，如果池的目标大小大于 0 个计算节点，则池调整大小启动事件将在此事件之后立即发生。
+ 池创建后，会发出此事件。 日志内容将公开有关池的常规信息。 请注意，如果池的目标大小大于 0 个计算节点，则池调整大小启动事件会在此事件之后立即发生。
 
  以下示例显示了使用 CloudServiceConfiguration 属性所创建池的池创建事件的正文。
 
@@ -52,7 +50,7 @@ ms.lasthandoff: 04/22/2017
 |-------------|----------|-----------|
 |id|String|池的 id。|
 |displayName|String|池的显示名称。|
-|vmSize|String|池中虚拟机的大小。 池中所有虚拟机的大小相同。 <br/><br/> 有关云服务池（使用 cloudServiceConfiguration 创建的池）的虚拟机可用大小的信息，请参阅[云服务的大小](http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)。 批处理支持除 `ExtraSmall` 以外的所有云服务 VM 大小。<br/><br/> 有关使用虚拟机 Marketplace 中映像的池（使用 virtualMachineConfiguration 创建的池）的可用 VM 大小的信息，请参阅[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) 或[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows)。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。|
+|vmSize|String|池中虚拟机的大小。 池中所有虚拟机的大小相同。 <br/><br/> 有关云服务池（使用 cloudServiceConfiguration 创建的池）的虚拟机可用大小的信息，请参阅[云服务的大小](http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)。 批处理支持除 `ExtraSmall` 以外的所有云服务 VM 大小。<br/><br/> 有关使用虚拟机应用商店中映像的池（使用 virtualMachineConfiguration 创建的池）的可用 VM 大小的信息，请参阅[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) 或[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows)。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。|
 |[cloudServiceConfiguration](#bk_csconf)|复杂类型|池的云服务配置。|
 |[virtualMachineConfiguration](#bk_vmconf)|复杂类型|池的虚拟机配置。|
 |[networkConfiguration](#bk_netconf)|复杂类型|池的网络配置。|
@@ -75,7 +73,7 @@ ms.lasthandoff: 04/22/2017
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|[imageReference](#bk_imgref)|复杂类型|指定关于要使用的平台或 Marketplace 映像的信息。|
+|[imageReference](#bk_imgref)|复杂类型|指定关于要使用的平台或应用商店映像的信息。|
 |nodeAgentSKUId|String|在计算节点上预配的批处理节点代理的 SKU。|
 |[windowsConfiguration](#bk_winconf)|复杂类型|指定虚拟机上的 Windows 操作系统设置。 如果 imageReference 引用 Linux OS 映像，则不能指定此属性。|
 
@@ -99,4 +97,3 @@ ms.lasthandoff: 04/22/2017
 |元素名称|类型|说明|
 |------------------|--------------|----------|
 |subnetId|String|指定创建池计算节点的子网的资源标识符。|
-

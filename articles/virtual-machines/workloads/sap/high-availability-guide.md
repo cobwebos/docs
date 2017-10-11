@@ -17,14 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 65236f527b62b4990b062fb6a54ce13b3c182e93
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -459,7 +457,7 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 
 在本文中，我们为[三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) 使用 Azure Resource Manager 模板。 有关模板的有用概述，请参阅 [SAP Azure Resource Manager模板](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
 
-## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>资源
+## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> 资源
 这些文章介绍了 Azure 中的 SAP 部署：
 
 * [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide]
@@ -485,14 +483,14 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 
 了解有关 [Azure 订阅的限制][azure-subscription-service-limits-subscription]的详细信息，包括常规默认限制和最大限制。
 
-## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>使用 Azure 资源管理器与 Azure 经典部署模型的高可用性 SAP
+## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Azure Resource Manager 与 Azure 经典部署模型的高可用性 SAP
 Azure Resource Manager 和 Azure 经典部署模型在以下方面有所不同：
 
 - 资源组
 - Azure 内部负载均衡器与 Azure 资源组的依赖关系
 - 对 SAP 多 SID 方案的支持
 
-### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>资源组
+### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a> 资源组
 在 Azure Resource Manager 中，可使用资源组管理 Azure 订阅中的所有应用程序资源。 使用集成方法时，资源组中的所有资源具有相同的生命周期。 例如，所有资源同时创建并同时删除。 了解有关 [资源组](../../../azure-resource-manager/resource-group-overview.md#resource-groups)的详细信息。
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure 内部负载均衡器与 Azure 资源组的依赖关系
@@ -512,12 +510,12 @@ Azure Resource Manager 和 Azure 经典部署模型在以下方面有所不同�
 >
 >
 
-## <a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a>Windows Server 故障转移群集
+## <a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a> Windows Server 故障转移群集
 Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装和 DBMS 的基础。
 
 故障转移群集是由 1+n 个独立服务器（节点）构成的组，这些服务器配合工作以提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集将计算发生的故障次数并维护状况良好的群集，提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-### <a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a>仲裁模式
+### <a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a> 仲裁模式
 使用 Windows Server 故障转移群集时可从四种仲裁模式中选择：
 
 * **节点多数**。 群集的每个节点都可以投票。 只有获取多数票（也就是票数过半）时，群集才能正常运行。 建议针对节点数目为奇数的群集使用此选项。 例如，在七节点的群集中，即使三个节点发生故障，群集仍然达到多数，可继续运行。  
@@ -526,7 +524,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 * **无多数：仅磁盘**。 当有一个节点可用并且正与群集存储中的特定磁盘进行通信时，群集具有仲裁。 只有也在与该磁盘进行通信的节点能够加入群集。 建议不要使用此模式。
  
 
-## <a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>本地 Windows Server 故障转移群集
+## <a name="fdfee875-6e66-483a-a343-14bbaee33275"></a> 本地 Windows Server 故障转移群集
 图 1 显示了包含两个节点的群集。 如果节点之间的网络连接发生故障，并且两个节点均保持启动并运行，则由仲裁磁盘或文件共享确定哪个节点继续提供群集的应用程序和服务。 有权访问仲裁磁盘或文件共享的节点是确保服务继续的节点。
 
 由于此示例使用双节点群集，我们使用节点和文件共享多数仲裁模式。 节点和磁盘多数也是有效的选项。 在生产环境中，我们建议使用仲裁磁盘。 可使用网络和存储系统技术使其具有高可用性。
@@ -535,7 +533,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 图 1：Azure 中 SAP ASCS/SCS 的 Windows Server 故障转移群集配置示例__
 
-### <a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a>共享存储
+### <a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a> 共享存储
 图 1 还显示双节点共享存储群集。 在本地共享存储群集中，群集中的所有节点都检测到共享存储。 锁定机制防止数据损坏。 当另一个节点发生故障时，所有节点都可检测到这种故障。 如果一个节点发生故障，剩余的节点将获取存储资源的所有权并确保服务的可用性。
 
 > [!NOTE]
@@ -543,7 +541,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 >
 >
 
-### <a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a>网络和名称解析
+### <a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a> 网络和名称解析
 客户端计算机通过 DNS 服务器提供的虚拟 IP 地址和虚拟主机名访问群集。 本地节点和 DNS 服务器可处理多个 IP 地址。
 
 在典型设置中，使用两个或更多个网络连接：
@@ -552,7 +550,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 * 用于检测信号的群集内部网络连接
 * 客户端用于连接到群集的公用网络
 
-## <a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a>Azure 中的 Windows Server 故障转移群集
+## <a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a> Azure 中的 Windows Server 故障转移群集
 相比于裸机或私有云部署，Azure 虚拟机要求执行额外的步骤来配置 Windows Server 故障转移群集。 构建共享群集磁盘时，需要为 SAP ASCS/SCS 实例设置多个 IP 地址和虚拟主机名。
 
 本文介绍在 Azure 中构建 SAP 高可用性中心服务群集时所要了解的重要概念与其他步骤。 我们介绍如何设置第三方工具 SIOS DataKeeper，以及如何配置 Azure 内部负载均衡器。 可通过这些工具使用文件共享见证在 Azure 中创建 Windows 故障转移群集。
@@ -561,12 +559,12 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 图 2：Azure 中没有共享磁盘的 Windows Server 故障转移群集配置__
 
-### <a name="1a464091-922b-48d7-9d08-7cecf757f341"></a>Azure 中使用 SIOS DataKeeper 的共享磁盘
+### <a name="1a464091-922b-48d7-9d08-7cecf757f341"></a> Azure 中使用 SIOS DataKeeper 的共享磁盘
 对于高可用性 SAP ASCS/SCS 实例，需要群集共享存储。 自 2016 年 9 月起，Azure 不再提供可用于创建共享存储群集的共享存储。 可使用第三方软件 SIOS DataKeeper Cluster Edition 创建模拟群集共享存储的镜像存储。 SIOS 解决方案提供实时同步的数据复制。 为群集创建共享磁盘资源的方法为：
 
 1. 将额外的 Azure 虚拟硬盘 (VHD) 附加到 Windows 群集配置中的每个虚拟机 (VM)。
 2. 在两个虚拟机节点上都运行 SIOS DataKeeper Cluster Edition。
-3. 配置 SIOS DataKeeper Cluster Edition，以便它将额外 VHD 附加卷的内容从源虚拟机映射到目标虚拟机的额外 VHD 附加卷。 SIOS DataKeeper 抽象化源和目标本地卷，并以单个共享磁盘形式呈现给 Windows Server 故障转移群集。
+3. 配置 SIOS DataKeeper Cluster Edition，以便它将额外 VHD 附加卷的内容从源虚拟机映射到目标虚拟机的额外 VHD 附加卷。 SIOS DataKeeper 将抽象化源和目标本地卷，并以单个共享磁盘的形式呈现给 Windows Server 故障转移群集。
 
 获取有关 [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/) 的详细信息。
 
@@ -579,13 +577,13 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 >
 >
 
-### <a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a>Azure 中的名称解析
+### <a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a> Azure 中的名称解析
 Azure 云平台不提供配置虚拟 IP 地址（如浮动 IP 地址）的选项。 需要一个替代解决方案来设置虚拟 IP，以便连接到云中的群集资源。
 Azure 在 Azure 负载均衡器服务中具有内部负载均衡器。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。
 需要在包含群集节点的资源组中部署内部负载均衡器。 然后，使用内部负载均衡器的探测端口配置所有必要的端口转发规则。
 客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址，内部负载均衡器处理向活动群集节点的端口转发。
 
-## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>Azure 服务架构 (IaaS) 中的 SAP NetWeaver 高可用性
+## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>Azure 基础结构即服务 (IaaS) 中的 SAP NetWeaver 高可用性
 若要实现 SAP 应用程序高可用性（例如为 SAP 软件组件），需要保护以下组件：
 
 * SAP 应用程序服务器实例
@@ -610,7 +608,7 @@ Azure 在 Azure 负载均衡器服务中具有内部负载均衡器。 借助内
 
 由于 Azure 存储帐户是潜在的单一故障点，因此必须至少有两个 Azure 存储帐户，并且在其中至少分配两个虚拟机。 在理想的设置中，运行 SAP 对话实例的每个虚拟机的磁盘都应部署在不同的存储帐户中。
 
-### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a>高可用性 SAP ASCS/SCS 实例
+### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a> 高可用性 SAP ASCS/SCS 实例
 图 5 是高可用性 SAP ASCS/SCS 实例的一个示例。
 
 ![图 5：高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-2001]
@@ -674,7 +672,7 @@ DBMS 也是 SAP 系统中的单一接触点。 需要使用高可用性解决方
 
 图 10：SAP 高可用性体系结构模板 3：包含用于不同 ASCS/SCS 实例的专用群集__
 
-## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a>准备基础结构
+## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a> 准备基础结构
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>准备体系结构模板 1 的基础结构
 适用于 SAP 的 Azure Resource Manager 模板有助于简化所需资源的部署。
@@ -705,7 +703,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
   * **所有虚拟机的网卡以及关联的 IP 地址**：
     * <SAPSystemSID>-nic-di-<Number>
     * <SAPSystemSID>-nic-ascs-<Number>
-    * <SAPSystemSID>-nic-db-<Number>
+    * <*SAPSystemSID*>-nic-db-<*Number*>
 
   * **Azure 存储帐户**
 
@@ -726,7 +724,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 >
 >
 
-### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>部署带有公司网络连接的虚拟机（跨界）以在生产中使用
+### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> 部署带有公司网络连接的虚拟机（跨场地）以在生产中使用
 对于生产 SAP 系统，使用 Azure 站点到站点 (VPN) 或 Azure ExpressRoute 部署具有[企业网络连接（跨界）][planning-guide-2.2]的 Azure 虚拟机。
 
 > [!NOTE]
@@ -755,7 +753,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
   /subscriptions/<SubscriptionId>/resourceGroups/<VPNName>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<SubnetName>
   ```
 
-### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a>部署用于测试和演示的仅限云 SAP 实例
+### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> 部署用于测试和演示的仅限云 SAP 实例
 可以在仅限云的部署模型中部署高可用性 SAP 系统。 这种部署主要用于演示和测试目的。 它不适合生产用例。
 
 - 在 Azure 门户中的“参数”边栏选项卡上，从“NEWOREXISTINGSUBNET”框中选择“新建”。 将“SUBNETID”字段保留空白。
@@ -791,7 +789,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 以下部分介绍了有关模板的详细信息以及需要在模板中提供的参数。
 
-#### <a name="ASCS-SCS-template"></a>ASCS/SCS 模板
+#### <a name="ASCS-SCS-template"></a> ASCS/SCS 模板
 
 ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于托管多个 ASCS/SCS 实例的 Windows Server 故障转移群集。
 
@@ -845,7 +843,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
   -  **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
   -  **子网 ID**。输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
 
-#### <a name="application-servers-template"></a>应用程序服务器模板
+#### <a name="application-servers-template"></a> 应用程序服务器模板
 
 应用程序服务器模板部署两个或更多个虚拟机，可将这些虚拟机用作一个 SAP 系统的 SAP 应用程序服务器实例。 例如，如果为 5 个 SAP 系统部署 ASCS/SCS 模板，则需要部署此模板 5 次。
 
@@ -859,7 +857,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
   -  **子网 ID**。输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
 
 
-### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Azure 虚拟网络
+### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure 虚拟网络
 在本例中，Azure 虚拟网络的地址空间是 10.0.0.0/16。 有一个名为 **Subnet**、地址范围为 10.0.0.0/24 的子网。 所有虚拟机和内部负载均衡器都部署在此虚拟网络中。
 
 > [!IMPORTANT]
@@ -893,7 +891,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 | 第一台 DNS 服务器 |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | 第二台 DNS 服务器 |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
-### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>SAP ASCS/SCS 群集实例和 DBMS 群集实例的主机名和静态 IP 地址
+### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>SAP ASCS/SCS 群集实例和 DBMS 群集实例的主机名与静态 IP 地址
 
 对于本地部署，需要这些保留的主机名和 IP 地址：
 
@@ -907,7 +905,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 可以在 DNS 服务器上手动创建另外两个虚拟主机 **pr1-ascs-sap** 和 **pr1-dbms-sap** 以及关联的 IP 地址。 群集 SAP ASCS/SCS 实例和群集 DBMS 实例使用以下资源。 有关如何执行此操作的信息，请参阅[为 SAP ASCS/SCS 群集实例创建虚拟主机名][sap-ha-guide-9.1.1]。
 
-### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>设置 SAP 虚拟机的静态 IP 地址
+### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> 设置 SAP 虚拟机的静态 IP 地址
 部署虚拟机以供在群集中使用后，需要为所有虚拟机设置静态 IP 地址。 请在 Azure 虚拟网络配置中而不是来宾操作系统中执行此操作。
 
 1.  在 Azure 门户中，选择“资源组” > “网卡” > “设置” > “IP 地址”。
@@ -1017,7 +1015,7 @@ SAP Azure Resource Manager 模板创建所需的端口：
 
 将负载均衡器 **pr1-lb-dbms** 的 IP 地址设置为 DBMS 实例的虚拟主机名 IP 地址。
 
-### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则
+### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> 更改 Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则
 
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
@@ -1036,7 +1034,7 @@ SAP Azure Resource Manager 模板创建所需的端口：
 
   图 16：更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则__
 
-### <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>将 Windows 虚拟机添加到域
+### <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a> 将 Windows 虚拟机添加到域
 
 将静态 IP 地址分配到虚拟机后，请将虚拟机添加到域。
 
@@ -1044,7 +1042,7 @@ SAP Azure Resource Manager 模板创建所需的端口：
 
 图 17：将虚拟机添加到域__
 
-### <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项
+### <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a> 在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项
 
 Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定时间内处于空闲状态时（空闲超时）关闭连接。 对话实例中的 SAP 工作进程在需要发送第一个排队/取消排队请求时立即打开与 SAP 排队进程的连接。 这些连接通常持续保持已建立状态，直到工作进程或排队进程重新启动为止。 但是，如果连接空闲了设置的一段时间，Azure 内部负载均衡器会关闭连接。 这不是问题，因为如果连接不再存在，SAP 工作进程会重新建立与排队进程的连接。 这些活动记录在 SAP 进程的开发人员跟踪中，但它们会在这些跟踪中创建大量额外内容。 在两个群集节点上更改 TCP/IP `KeepAliveTime` 和 `KeepAliveInterval` 是一个好办法。 将 TCP/IP 参数中的这些更改与 SAP 配置文件参数组合起来，文章后面部分有介绍。
 
@@ -1072,14 +1070,14 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
 **若要应用更改，请重新启动两个群集节点。**
 
-### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>为 SAP ASCS/SCS 实例设置 Windows Server 故障转移群集
+### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a> 为 SAP ASCS/SCS 实例设置 Windows Server 故障转移群集
 
 为 SAP ASCS/SCS 实例设置 Windows Server故障转移群集的过程包括以下任务：
 
 - 收集群集配置中的群集节点
 - 配置群集文件共享见证
 
-#### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>收集群集配置中的群集节点
+#### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> 收集群集配置中的群集节点
 
 1.  在“添加角色和功能向导”中，将故障转移群集功能添加到两个群集节点。
 2.  使用故障转移群集管理器设置故障转移群集。 在故障转移群集管理器中选择“创建群集”，然后只添加第一个群集节点 A 的名称。暂时不要添加第二个节点；会在后面的步骤中添加第二个节点。
@@ -1158,14 +1156,14 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
   图 29：忽略关于磁盘仲裁的警告__
 
 
-#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>配置群集文件共享见证
+#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a> 配置群集文件共享见证
 
 配置群集文件共享见证的过程包括以下任务：
 
 - 创建文件共享
 - 在故障转移群集管理器中设置文件共享见证仲裁
 
-##### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>创建文件共享
+##### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> 创建文件共享
 
 1.  选择文件共享见证，而不是仲裁磁盘。 SIOS DataKeeper 支持此选项。
 
@@ -1204,7 +1202,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
   图 33：为群集名称对象设置对文件共享仲裁的安全属性__
 
-##### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>在故障转移群集管理器中设置文件共享见证仲裁
+##### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a> 在故障转移群集管理器中设置文件共享见证
 
 1.  打开“配置仲裁设置向导”。
 
@@ -1242,7 +1240,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
 一方面，这些设置已经过客户测试，并且为具有足够弹性提供了良好的折中办法。 另一方面，在发生 SAP 软件或节点/VM 故障时的实际出错情况下，这些设置提供了足够快速的故障转移。 
 
-### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>为 SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition
+### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> 为 SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition
 
 现在，已在 Azure 中创建有效的 Windows Server 故障转移群集配置。 但是，若要安装 SAP ASCS/SCS，需要一个共享磁盘资源。 无法在 Azure 中创建所需的共享磁盘资源。 SIOS DataKeeper Cluster Edition 是可用于创建共享磁盘资源的第三方解决方案。
 
@@ -1252,7 +1250,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 - 安装 SIOS DataKeeper
 - 设置 SIOS DataKeeper
 
-#### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>添加 .NET Framework 3.5
+#### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a> 添加 .NET Framework 3.5
 Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5。 由于 SIOS DataKeeper 要求安装 DataKeeper 的所有节点上都包含 .NET Framework，因此，必须在群集中所有虚拟机的来宾操作系统上安装 .NET Framework 3.5。
 
 可通过两种方法添加 .NET Framework 3.5：
@@ -1273,7 +1271,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
   ```
 
-#### <a name="dd41d5a2-8083-415b-9878-839652812102"></a>安装 SIOS DataKeeper
+#### <a name="dd41d5a2-8083-415b-9878-839652812102"></a> 安装 SIOS DataKeeper
 
 在群集中的每个节点上安装 SIOS DataKeeper Cluster Edition。 要创建包含 SIOS DataKeeper 的虚拟共享存储，请创建同步的镜像，并模拟群集共享存储。
 
@@ -1320,7 +1318,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 6.  根据提示重新启动虚拟机。
 
-#### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>设置 SIOS DataKeeper
+#### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> 设置 SIOS DataKeeper
 
 在两个节点上安装 SIOS DataKeeper 后，需要开始配置。 配置的目的是在连接到每个虚拟机的附加 VHD 之间进行同步数据复制。
 
@@ -1396,7 +1394,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 >
 >
 
-### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>使用高可用性 ASCS/SCS 实例安装 SAP
+### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>安装包含高可用性 ASCS/SCS 实例的 SAP 系统
 
 > [!IMPORTANT]
 > 请确保不要将页面文件放置在 DataKeeper 镜像卷上。 DataKeeper 不支持镜像卷。 可将页面文件保留在 Azure 虚拟机的临时驱动器 D 上，这是默认值。 如果它尚未在该位置，请将 Windows 页面文件移到 Azure 虚拟机的驱动器 D。
@@ -1411,7 +1409,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 - 添加探测端口
 - 打开 Windows 防火墙探测端口
 
-#### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
+#### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a> 为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
 1.  在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
@@ -1432,7 +1430,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
   图 57：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址__
 
-#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 的第一个群集节点
+#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> 安装 SAP 第一个群集节点
 
 1.  在群集节点 A 上执行第一个群集节点选项。例如，在 **pr1-ascs-0** 主机上。
 2.  若要保留 Azure 内部负载均衡器的默认端口，请选择：
@@ -1450,7 +1448,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 >
 >
 
-#### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>修改 ASCS/SCS 实例的 SAP 配置文件
+#### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> 修改 ASCS/SCS 实例的 SAP 配置文件
 
 需要添加新的配置文件参数。 配置文件参数可避免 SAP 工作进程与排队服务器之间的连接在空闲时间太长时关闭。 [在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-ha-guide-8.11]部分中已提到了出现该问题的情景。 在该部分中，我们还介绍了对一些基本 TCP/IP 连接参数所做的两项更改。 在第二个步骤中，需将排队服务器设置为发送 `keep_alive` 信号，以便连接不会达到 Azure 内部负载均衡器的空闲阈值。
 
@@ -1471,7 +1469,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 2.  若要应用更改，请重新启动 SAP ASCS/SCS 实例。
 
-#### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>添加探测端口
+#### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> 添加探测端口
 
 使用内部负载均衡器探测功能，让整个群集配置使用 Azure Load Balancer。 Azure 内部负载均衡器通常在参与的虚拟机之间平均分配传入的工作负荷。 但是，这在某些群集配置中由于只有一个实例处于活动状态而不起作用。 其他实例处于被动状态，并且无法接受任何工作负荷。 当 Azure 内部负载均衡器将工作仅分配给活动实例时，探测功能很有帮助。 通过探测功能，内部负载均衡器可检测到哪些实例处于活动状态，仅定位带有工作负荷的实例。
 
@@ -1578,15 +1576,15 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 **ProbePort** 设置为 **62000**。 现在，可从其他主机（例如 **ascsha-dbas**）访问文件共享 **\\\ascsha-clsap\sapmnt**。
 
-### <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>安装数据库实例
+### <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> 安装数据库实例
 
 若要安装数据库实例，请按照 SAP 安装文档中所述的过程操作。
 
-### <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>安装第二个群集节点
+### <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> 安装第二个群集节点
 
 若要安装第二个群集，请按照 SAP 安装指南中的步骤操作。
 
-### <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>更改 SAP ERS Windows 服务实例的启动类型
+### <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> 更改 SAP ERS Windows 服务实例的启动类型
 
 将两个群集节点上的 SAP 排队复制服务器 (ERS) Windows 服务的启动类型更改为“自动(延迟启动)”。
 
@@ -1594,7 +1592,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 图 60：将 SAP ERS 实例的服务类型更改为自动延迟__
 
-### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>安装 SAP 主应用程序服务器
+### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> 安装 SAP 主应用程序服务器
 
 在已指定为托管 PAS 的虚拟机上安装主应用程序服务器 (PAS) 实例 <*SID*>-di-0。 这种安装不需要考虑 Azure 还是 DataKeeper 相关的设置。
 
@@ -1607,10 +1605,10 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
+## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> 测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
 可以使用故障转移群集管理器和 SIOS DataKeeper 管理和配置工具，轻松测试及监视 SAP ASCS/SCS 实例故障转移与 SIOS 磁盘复制。
 
-### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS 实例在群集节点 A 上运行
+### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> SAP ASCS/SCS 实例在群集节点 A 上运行
 
 **SAP PR1** 群集组在群集节点 A（例如在 **pr1-ascs-0**）上运行。 将属于 **SAP PR1** 群集组并由 ASCS/SCS 实例使用的共享磁盘驱动器 S 分配到群集节点 A。
 
@@ -1624,7 +1622,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 图 62：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B__
 
-### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>从节点 A 到节点 B 的故障转移
+### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> 从节点 A 到节点 B 的故障转移
 
 1.  选择以下选项之一，开始将 SAP <*SID*> 群集组从群集节点 A 故障转转到群集节点 B 的故障转移：
   - 使用故障转移群集管理器  
@@ -1652,4 +1650,3 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
   ![图 64：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
 
   图 64：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A__
-

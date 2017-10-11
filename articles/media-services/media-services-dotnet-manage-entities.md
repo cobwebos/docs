@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
 > [!div class="op_single_selector"]
@@ -31,7 +30,7 @@ ms.lasthandoff: 08/28/2017
 本主题演示如何使用 .NET 管理 Azure 媒体服务实体。 
 
 >[!NOTE]
-> 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
+> 从 2017 年 4 月 1 日开始，用户帐户中任何超过 90 天的作业记录及其关联的任务记录都会被系统自动删除，即使记录总数低于最大配额。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -113,7 +112,7 @@ ms.lasthandoff: 08/28/2017
     }
 
 ## <a name="list-jobs-and-assets"></a>列出作业和资产
-在媒体服务中列出资产及其关联作业是一项重要的相关任务。 以下代码示例演示如何列出每个 IJob 对象，然后，针对每个作业显示作业的相关属性、所有相关的任务、所有输入资产和所有输出资产。 本示例中的代码对各种其他任务也有所帮助。 例如，如果想要列出你先前运行的一个或多个编码作业的输出资产，本代码将演示如何访问输出资产。 如果拥有对某个输出资产的引用，可以通过下载或提供 URL 的方式，将内容传递给其他用户或应用程序。 
+在媒体服务中列出资产及其关联作业是一项重要的相关任务。 以下代码示例演示了如何列出每个 IJob 对象，它会针对每个作业显示作业的相关属性、所有相关的任务、所有输入资产和所有输出资产。 本示例中的代码对各种其他任务也有所帮助。 例如，如果想要列出你先前运行的一个或多个编码作业的输出资产，本代码演示如何访问输出资产。 如果拥有对某个输出资产的引用，可以通过下载或提供 URL 的方式，将内容传递给其他用户或应用程序。 
 
 有关传递资产选项的详细信息，请参阅[使用适用于 .NET 的媒体服务 SDK 传递资产](media-services-deliver-streaming-content.md)。
 
@@ -193,9 +192,9 @@ ms.lasthandoff: 08/28/2017
     }
 
 ## <a name="list-all-access-policies"></a>列出所有访问策略
-在媒体服务中，可以对资产或其文件定义访问策略。 访问策略定义文件或资产的权限（访问类型以及持续时间）。 在媒体服务代码中，通常通过创建 IAccessPolicy 对象来定义访问策略对象，然后将其与现有资产相关联。 然后创建一个 ILocator 对象，它允许提供对媒体服务中的资产的直接访问。 本文档系列随附的 Visual Studio 项目包含几个代码示例，这些代码示例演示如何创建和分配访问策略和定位符到资产。
+在媒体服务中，可以对资产或其文件定义访问策略。 访问策略定义文件或资产的权限（访问类型以及持续时间）。 在媒体服务代码中，通常通过创建 IAccessPolicy 对象来定义访问策略对象，并将其与现有资产相关联。 然后创建一个 ILocator 对象，它允许用户提供对媒体服务中的资产的直接访问。 本文档系列随附的 Visual Studio 项目包含几个代码示例，这些代码示例演示如何创建和分配访问策略和定位符到资产。
 
-以下代码示例演示如何列出服务器上所有的访问策略，并显示与每个策略关联的权限类型。 查看访问策略的另一个有用方法是列出服务器上的所有 ILocator 对象，然后针对每个定位符，可以使用其 AccessPolicy 属性列出其关联的访问策略。
+以下代码示例演示如何列出服务器上所有的访问策略，并显示与每个策略关联的权限类型。 查看访问策略的另一个有用方法是列出服务器上的所有 ILocator 对象，并针对每个定位符，可以使用其 AccessPolicy 属性列出其关联的访问策略。
 
     static void ListAllPolicies()
     {
@@ -254,7 +253,7 @@ ms.lasthandoff: 08/28/2017
 
 以下代码示例列出了服务器上的所有定位符。 对于每个定位符，它会显示相关资产和访问策略的 ID。 它也显示权限的类型、到期日期和访问资产的完整路径。
 
-请注意，访问资产的定位符路径仅仅是访问资产的基本 URL。 要创建用户或应用程序可以浏览到的单个文件的直接路径，代码必须将特定文件路径添加到定位符路径。 有关如何进行操作的详细信息，请参阅主题[使用适用于 .NET 的媒体服务 SDK 传递资产](media-services-deliver-streaming-content.md)。
+请注意，访问资产的定位符路径仅仅是访问资产的基本 URL。 要创建用户或应用程序可以浏览到的单个文件的直接路径，你的代码必须将特定文件路径添加到定位符路径。 有关如何进行操作的详细信息，请参阅主题[使用适用于 .NET 的媒体服务 SDK 传递资产](media-services-deliver-streaming-content.md)。
 
     static void ListAllLocators()
     {
@@ -277,7 +276,7 @@ ms.lasthandoff: 08/28/2017
 ## <a name="enumerating-through-large-collections-of-entities"></a>枚举大型实体集合
 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 枚举大型实体集合时，需要使用 Skip 和 Take。 
 
-以下函数将循环访问所提供的媒体服务帐户中的所有作业。 媒体服务会在作业集合中返回 1000 个作业。 该函数使用 Skip 和 Take 来确保枚举所有作业（如果帐户中的作业超过 1000 个）。
+以下函数将循环访问所提供的媒体服务帐户中的所有作业。 媒体服务会在作业集合中返回 1000 个作业。 该函数使用 Skip 和 Take 来确保枚举所有作业（如果你帐户中的作业超过 1000 个）。
 
     static void ProcessJobs()
     {
@@ -404,5 +403,4 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

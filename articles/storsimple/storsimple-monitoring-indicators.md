@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 0d44f94719bff0cb58b3727050598e55f4774e66
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
 ## <a name="overview"></a>概述
@@ -46,7 +45,7 @@ StorSimple 设备包括了发光二极管 (LED) 和警报，可以使用它们�
 4. 逻辑故障指示器 LED（亮起红色-琥珀红/熄灭）
 5. 单元 ID 显示  
 
-设备的前面板 LED 与 EBOD 机箱的前面板 LED 之间的主要差异是 LED 显示屏上显示的**系统单元标识号**。 设备上显示的默认单元 ID 是 **00**，而 EBOD 机箱上显示的默认单元 ID 是 **01**。 当设备处于打开状态时，你可以据此快速区分设备与 EBOD 机箱。 当设备处于关闭状态时，可以使用[打开新设备](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)中提供的信息来区分设备与 EBOD 机箱。  
+设备的前面板 LED 与 EBOD 机箱的前面板 LED 之间的主要差异是 LED 显示屏上显示的**系统单元标识号**。 设备上显示的默认单元 ID 是 **00**，而 EBOD 机箱上显示的默认单元 ID 是 **01**。 当设备处于打开状态时，可以据此快速区分设备与 EBOD 机箱。 当设备处于关闭状态时，可以使用[打开新设备](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)中提供的信息来区分设备与 EBOD 机箱。  
 
 ## <a name="front-panel-led-status"></a>前面板 LED 状态
 可以使用下表识别设备或 EBOD 机箱的前面板上的 LED 指示的状态。  
@@ -127,7 +126,7 @@ EBOD 机箱有一个 580W PCM，没有额外的电池。 EBOD 机箱的 PCM 面�
 StorSimple 设备包含了用于主控制器和 EBOD 控制器模块的 LED   
 
 ### <a name="monitoring-leds-for-the-primary-controller"></a>主控制器的监视 LED
-下图可以帮助你识别主控制器上的 LED。 （为了帮助你确定方位，列出了所有组件。）  
+下图可帮助你识别主控制器上的 Led。 （所有组件列出以帮助你识别方向。）  
 
    ![监视 LED - 主控制器][4]
 
@@ -207,12 +206,12 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | S4 |严重故障模式：持续告警 |不可用：静音未处于活动状态 |
 
 > [!NOTE]
-> * 在警报状态 S1 下，如果在 2 分钟内没有按静音按钮，则状态将自动转变为 S2 或 S3。  
+> * 在警报状态 S1 下，如果在 2 分钟内没有按静音按钮，则状态会自动转变为 S2 或 S3。  
 > * 清除故障状况后，警报状态 S1 到 S4 将恢复为 S0。  
 > * 严重故障状态 S4 可以由任何其他状态转变而来。  
 
 
-可以通过按下操作面板上的静音按钮使有声警报静音。 如果没有手动操作静音开关，则两分钟后将自动静音。 当警报静音后，它会继续间歇性地短暂鸣叫以指示问题仍然存在。 当所有问题都清除后，警报将静音。
+可以通过按下操作面板上的静音按钮使有声警报静音。 如果没有手动操作静音开关，则两分钟后会自动静音。 当警报静音后，它会继续间歇性地短暂鸣叫以指示问题仍然存在。 当所有问题都清除后，警报将静音。
 
 下表描述了各种警报状况。
 
@@ -248,6 +247,5 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 [4]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE04.png
 [5]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE05.png
 [6]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE06.png
-
 
 

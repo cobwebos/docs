@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
 ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="performance-metrics"></a>性能指标
 
 应收集指标，以了解群集及其中运行的应用程序的性能。 对于 Service Fabric 群集，建议收集以下性能计数器。
@@ -32,10 +30,10 @@ ms.lasthandoff: 07/20/2017
 
 | 计数器类别 | 计数器名称 |
 | --- | --- |
-| PhysicalDisk(per Disk) | 平均磁盘读取队列长度 |
-| PhysicalDisk(per Disk) | 平均磁盘写入队列长度 |
-| PhysicalDisk(per Disk) | 平均磁盘秒数/读取 |
-| PhysicalDisk(per Disk) | 平均磁盘秒数/写入 |
+| PhysicalDisk(per Disk) | 平均 磁盘读取队列长度 |
+| PhysicalDisk(per Disk) | 平均 磁盘写入队列长度 |
+| PhysicalDisk(per Disk) | 平均 磁盘秒数/读取 |
+| PhysicalDisk(per Disk) | 平均 磁盘秒数/写入 |
 | PhysicalDisk(per Disk) | 磁盘读取数/秒 |
 | PhysicalDisk(per Disk) | 磁盘读取字节数/秒 |
 | PhysicalDisk(per Disk) | 磁盘写入数/秒 |
@@ -81,4 +79,3 @@ Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可
 
 * 详细了解 Service Fabric 中的[平台级事件生成情况](service-fabric-diagnostics-event-generation-infra.md)
 * 通过 [Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)收集性能指标
-

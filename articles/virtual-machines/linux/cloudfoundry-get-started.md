@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: fd51bf9e965d2efd5a6bea9de142ab2ec8d27836
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 94fbde7707ea9a91076780fdefc3f5a827e0e7b2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
 Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和操作以各种语言和框架开发的十二因素应用程序。 本文档介绍了在 Azure 上运行 Cloud Foundry 的选项及其入门知识。
@@ -34,7 +32,7 @@ Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和�
 
 ### <a name="open-source-cloud-foundry"></a>开源 Cloud Foundry
 
-可在 Azure 上部署 OSS Cloud Foundry，首先部署 BOSH 控制器，然后使用 [GitHub 上提供的说明](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)部署 Cloud Foundry。 若要了解有关使用 OSS CF 的详细信息，请参阅由 Cloud Foundry Foundation 提供的[文档](https://docs.cloudfoundry.org/)。
+你可以通过首先将部署 BOSH 控制器，然后将其部署云 Foundry 部署在 Azure 上的 OSS 云 Foundry 使用[GitHub 上提供的说明操作](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)。 若要了解有关使用 OSS CF 的详细信息，请参阅由 Cloud Foundry Foundation 提供的[文档](https://docs.cloudfoundry.org/)。
 
 Microsoft 通过以下社区渠道为 OSS CF 提供最大支持：
 
@@ -47,11 +45,11 @@ Microsoft 通过以下社区渠道为 OSS CF 提供最大支持：
 
 ### <a name="pivotal-cloud-foundry"></a>Pivotal Cloud Foundry
 
-Pivotal Cloud Foundry 包括与 OSS 分发相同的核心平台，以及一套专有管理工具和企业支持。 若要在 Azure 上运行 PCF，必须从 Pivotal 获取许可证。 Azure Marketplace 的 PCF 产品/服务包括 90 天的试用版许可证。
+Pivotal Cloud Foundry 包括与 OSS 分发相同的核心平台，以及一套专有管理工具和企业支持。 若要在 Azure 上运行 PCF，必须从 Pivotal 获取许可证。 Azure 应用商店的 PCF 产品/服务包括 90 天的试用版许可证。
 
 这些工具包括一个简化部署和管理 Cloud Foundry 基础的 Web 应用程序 [Pivotal Operations Manager](http://docs.pivotal.io/pivotalcf/customizing/) 和一个用于管理用户和应用程序的 Web 应用程序 [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/)。
 
-除了上面列出的 OSS CF 支持通道外，PCF 许可证允许你联系 Pivotal 以获取支持。 Microsoft 和 Pivotal 还启用了支持工作流，允许用户联系任意一方以获取帮助，并根据问题的具体所在正确地路由查询。
+除了上面列出的 OSS CF 支持通道外，PCF 许可证允许联系 Pivotal 以获取支持。 Microsoft 和 Pivotal 还启用了支持工作流，允许用户联系任意一方以获取帮助，并根据问题的具体所在正确地路由查询。
 
 ## <a name="azure-service-broker"></a>Azure 服务中转站
 
@@ -67,5 +65,5 @@ Cloud Foundry 非常适合用于开发敏捷软件，其中包括使用持续集
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署来自 Azure Marketplace 的 Pivotal Cloud Foundry](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [部署来自 Azure 应用商店的 Pivotal Cloud Foundry](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
 - [将应用部署到 Azure 中的 Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fe9d4f6b232e9abcf1fe9fc5657044b6c72fedb8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Virtual Array 更新 0.3 发行说明
 ## <a name="overview"></a>概述
@@ -42,7 +41,7 @@ ms.lasthandoff: 11/17/2016
 
 | 否。 | 功能 | 问题 |
 | --- | --- | --- |
-| 1 |备份 |早期版本中出现了无法还原备份进行文件共享的问题。 如果发生此问题，备份作业将失败，并且将在 StorSimple Manager 服务中引发严重性警报以通知用户。 此问题不会对共享上的数据或对数据的访问产生影响。 在此版本中识别并修复了其根本原因。 <br></br> 修补程序不会以追溯的方式应用于已出现此问题的共享。 出现此问题的客户应首先应用更新 0.3，然后联系 Microsoft 支持来执行完整的系统备份以解决此问题。 除了与 Microsoft 支持联系，客户还可以将受影响的共享从运行状况良好的备份还原为新的共享。 |
+| 1 |备份 |早期版本中出现了无法完成备份以进行文件共享的问题。 如果发生此问题，备份作业会失败，并且会在 StorSimple Manager 服务中引发严重性警报以通知用户。 此问题不会对共享上的数据或对数据的访问产生影响。 在此版本中识别并修复了其根本原因。 <br></br> 修补程序不会以追溯的方式应用于已出现此问题的共享。 首先，看到此问题的客户应应用更新 0.3，然后联系 Microsoft 支持部门执行完整系统备份，以便解决此问题。 除了与 Microsoft 支持联系，客户还可以将受影响的共享从运行状况良好的备份还原为新的共享。 |
 | 2 |iSCSI |早期版本中出现了将数据复制到 StorSimple Virtual Array 上的卷时，卷会消失的问题。 在此版本中已修复了此问题。 <br></br> 修补程序仅对新创建的卷有效。 修补程序不会以追溯的方式应用于已出现此问题的卷。 建议客户通过 Azure 经典门户使受影响的卷联机，为这些卷执行备份，然后将这些卷还原为新卷。 |
 
 ## <a name="known-issues-in-the-update-03"></a>更新 0.3 中的已知问题
@@ -58,10 +57,10 @@ ms.lasthandoff: 11/17/2016
 | **6.** |分层卷或共享 |不支持对适用于 StorSimple 分层卷的应用程序进行字节范围锁定。 如果启用了字节范围锁定，则 StorSimple 分层将不起作用。 |建议的措施包括： <br></br>在应用程序逻辑中关闭字节范围锁定。<br></br>选择将此应用程序的数据放置在本地固定卷中，而不是分层卷中。<br></br>*注意事项*：当使用本地固定卷并且已启用字节范围锁定时，即使在还原完成之前，本地固定卷也可以处于联机状态。 在这种情况下，如果正在进行还原，则必须等待还原完成。 |
 | **7.** |分层共享 |处理大型文件可能会导致分层速度变慢。 |处理大型文件时，建议最大的文件应小于共享大小的 3%。 |
 | **8.** |共享的已用容量 |即使共享上没有任何数据时，也可能会看到共享消耗。 这是因为共享的已用容量中包括元数据。 | |
-| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这将在更高版本中实现。 |
+| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这会在更高版本中实现。 |
 | **10.** |Azure PowerShell |在此版本中，不可以通过 Azure PowerShell 管理 StorSimple 虚拟设备。 |所有对虚拟设备的管理应通过 Azure 经典门户和本地 Web UI 进行。 |
 | **11.** |密码更改 |虚拟数组设备控制台仅接受 en-US 键盘格式的输入。 | |
-| **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，然后再使它们联机，以使更改生效。 |此问题将在更高版本中得以解决。 |
+| **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，再使它们联机，以使更改生效。 |此问题会在更高版本中得以解决。 |
 | **13.** |iSCSI 服务器 |在 StorSimple Manager服务和 iSCSI 主机中，为 iSCSI 卷显示的“已用存储”可能有所不同。 |iSCSI 主机具有“文件系统”视图。<br></br>设备能够查看当卷处于最大大小时所分配的快。 |
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 
@@ -73,5 +72,4 @@ ms.lasthandoff: 11/17/2016
 
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
-
 

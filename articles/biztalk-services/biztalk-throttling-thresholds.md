@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: e14f42497d5ee0c89fe1fa0824431e2d82e6555a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 145e7470bbc01c676a1fb5856c0f9a8726e667fc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk 服务：限制
 
@@ -49,7 +47,7 @@ Azure BizTalk 服务跟踪限制状态（正常状态与受限制状态)以及�
 * 任何请求源都不会轮询或下载消息。 例如：<br/>
   管道从外部 FTP 源请求消息。 执行请求的角色实例会进入限制状态。 在此情况下，管道停止下载其他消息，直到角色实例停止限制。
 * 系统将向客户端发送响应，以便客户端能够重新提交消息。
-* 你必须等待，直到限制得以解决。 具体而言，你必须等待，直到达到低阈值。
+* 必须等待，直到限制得以解决。 具体而言，必须等待，直到达到低阈值。
 
 ## <a name="important-notes"></a>重要事项
 * 无法禁用限制。
@@ -70,5 +68,4 @@ Azure BizTalk 服务跟踪限制状态（正常状态与受限制状态)以及�
 * [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk 服务：备份和还原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk 服务：颁发者名称和颁发者密钥](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-
 

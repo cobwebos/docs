@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: c72f839d0a1288dccb7deb3e44fc2b20d64818f0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="step-8-set-up-the-source-and-target-for-hyper-v-with-vmm-replication-to-azure"></a>步骤 8：复制源和目标以将 Hyper-V（包含 VMM）复制到 Azure
 
 [创建保管库](vmm-to-azure-walkthrough-create-vault.md)并指定要复制的内容之后，请使用本文配置源和目标设置，在 Azure 门户中通过 [Azure Site Recovery](site-recovery-overview.md) 服务将 System Center Virtual Machine Manager (VMM) 云中的本地 Hyper-V 虚拟机复制到 Azure 时需使用这些设置。
@@ -133,4 +131,3 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 9：配置网络映射](vmm-to-azure-walkthrough-network-mapping.md)
-

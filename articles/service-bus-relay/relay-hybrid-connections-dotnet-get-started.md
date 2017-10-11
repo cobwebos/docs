@@ -14,21 +14,19 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="get-started-with-relay-hybrid-connections"></a>中继混合连接入门
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
 本教程简单介绍了 [Azure 中继混合连接](relay-what-is-it.md#hybrid-connections)，同时介绍了如何使用 .NET 创建客户端应用程序，以便将消息发送到相应的侦听器应用程序。 
 
 ## <a name="what-will-be-accomplished"></a>将要完成的任务
-由于混合连接要求客户端和服务器组件，本教程将创建两个控制台应用程序。 下面是相关步骤：
+由于混合连接要求客户端和服务器组件，本教程会创建两个控制台应用程序。 下面是相关步骤：
 
 1. 使用 Azure 门户创建中继命名空间。
 2. 使用 Azure 门户在该命名空间中创建混合连接。
@@ -77,5 +75,4 @@ ms.lasthandoff: 07/10/2017
 * [中继常见问题](relay-faq.md)
 * [创建命名空间](relay-create-namespace-portal.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
-
 

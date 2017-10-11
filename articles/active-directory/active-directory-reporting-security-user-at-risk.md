@@ -13,12 +13,11 @@ ms.workload: identity
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 04f15384a7cd0fa03300acdf159d371569ecf9fc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 
@@ -64,9 +63,9 @@ Azure Active Directory 免费版和基本版中“标记为风险用户”报告
 ![有风险的登录](./media/active-directory-reporting-security-user-at-risk/46.png)
 
 
-此对话框提供的选项用于：
+此对话框为你提供的选项：
 
-- 下载报告
+- 下载报表
 
 - 搜索用户
 
@@ -112,5 +111,4 @@ Azure Active Directory Premium 版中“标记为风险用户”的用户的报�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure Active Directory Identity Protection 的详细信息，请参阅 [Azure Active Directory Identity Protection](active-directory-identityprotection.md)。
-
 

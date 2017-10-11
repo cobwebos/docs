@@ -14,24 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 29d19364b9a98e351c95f13e68a2e63b9f6439f8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用编码 X12 消息
 
-使用编码 X12 消息连接器，你可以验证 EDI 和特定于合作伙伴的属性，将 XML 编码的消息转换为交换中的 EDI 事务集并请求技术确认和/或功能确认。
-若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
+使用编码 X12 消息连接器，可以验证 EDI 和特定于合作伙伴的属性，将 XML 编码的消息转换为交换中的 EDI 事务集并请求技术确认和/或功能确认。
+要使用此连接器，必须将此连接器添加到逻辑应用中的现有触发器。
 
 ## <a name="before-you-start"></a>开始之前
 
 需要具有以下各项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 已定义的、与你的 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 X12 消息连接器。
+* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 X12 消息连接器。
 * 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [X12 协议](logic-apps-enterprise-integration-x12.md)
 
@@ -39,13 +38,13 @@ ms.lasthandoff: 07/06/2017
 
 1. [创建逻辑应用](logic-apps-create-a-logic-app.md)。
 
-2. 编码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
+2. 编码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
 
 3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 编码为 X12 消息(按协议名称)”，或者选择“X12 - 编码为 X 12 消息(按标识)”。
    
     ![搜索“x12”](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
-3. 如果以前未创建与集成帐户的任何连接，系统会提示你现在创建该连接。 为你的连接命名，并选择要连接的集成帐户。 
+3. 如果以前未创建与集成帐户的任何连接，系统会提示现在创建该连接。 为连接命名，并选择要连接的集成帐户。 
    
     ![集成帐户连接](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 07/06/2017
 
     ![集成帐户连接已创建](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
-    你的连接现已创建。
+    连接现已创建。
 
     ![集成帐户连接详细信息](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
 
@@ -72,7 +71,7 @@ ms.lasthandoff: 07/06/2017
 
 #### <a name="encode-x12-messages-by-identities"></a>编码 X12 消息(按标识)
 
-如果选择了按标识编码 X12 消息，请根据你的 X12 协议中的配置输入发送方标识符、发送方限定符、接收方标识符和接收方限定符。 选择要编码的 XML 消息。
+如果选择了按标识编码 X12 消息，请根据 X12 协议中的配置输入发送方标识符、发送方限定符、接收方标识符和接收方限定符。 选择要编码的 XML 消息。
    
 ![提供发送方和接收方的标识，选择要编码的 XML 消息](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
@@ -98,5 +97,4 @@ X12 编码连接器执行以下任务：
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 
-
 

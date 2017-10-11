@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 967501fa8ac4b2471a62afabc18a12a71776eaac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.openlocfilehash: cc4fb87e559f554634ae062a59bee31f0831da64
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="prepare-to-publish-or-deploy-an-azure-application-from-visual-studio"></a>准备从 Visual Studio 发布或部署 Azure 应用程序
 ## <a name="overview"></a>概述
@@ -41,7 +40,7 @@ ms.lasthandoff: 08/22/2017
 3. 选择“下一步”按钮进入“设置”页。
 
     ![发布向导通用设置](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/publish-settings-page.png)
-4. 在“云服务”列表中，选择“新建”。 此时会显示“创建 Azure 服务”对话框。
+4. 在“云服务”列表中，选择“新建”。 此时将显示“创建 Azure 服务”对话框。
 5. 输入云服务的名称。 该名称构成服务的 URL 部分，因此必须是全局唯一的。 该名称不区分大小写。
 
 ### <a name="to-create-a-cloud-service-by-using-the-azure-classic-portal"></a>使用 Azure 经典门户创建云服务
@@ -90,10 +89,10 @@ ms.lasthandoff: 08/22/2017
 必须配置访问存储服务以使用所创建的 Azure 存储服务的任何角色。 为此，可为 Azure 项目使用多个服务配置。 默认情况下，其中两个配置是在 Azure 项目中创建的。 通过使用多个服务配置，可以在代码中使用相同的连接字符串，但在每个服务配置中为连接字符串使用不同的值。 例如，可以使用一个服务配置通过本地 Azure 存储模拟器来运行和调试应用程序，并使用另一个服务配置将应用程序发布到 Azure。 有关服务配置的详细信息，请参阅[使用多种服务配置来配置 Azure 项目](vs-azure-tools-multiple-services-project-configurations.md)。
 
 ### <a name="to-configure-your-application-to-use-services-that-the-storage-account-provides"></a>将应用程序配置为使用存储帐户提供的服务
-1. 在 Visual Studio 中打开 Azure 解决方案。 在解决方案资源管理器中，在访问存储服务的 Azure 项目中打开每个角色的快捷菜单，并选择“属性”。 包含角色名称的页会显示在 Visual Studio 编辑器中。 该页面显示“配置”选项卡的字段。
+1. 在 Visual Studio 中打开 Azure 解决方案。 在解决方案资源管理器中，在访问存储服务的 Azure 项目中打开每个角色的快捷菜单，并选择“属性”。 包含角色名称的页将显示在 Visual Studio 编辑器中。 该页面显示“配置”选项卡的字段。
 2. 在角色的属性页中，选择“设置”。
 3. 在“服务配置”列表中，选择要编辑的服务配置名称。 如果要对角色的所有服务配置进行更改，则可选择“所有配置”。  有关如何更新服务配置的详细信息，请参阅主题[使用 Visual Studio 配置 Azure 云服务的角色](vs-azure-tools-configure-roles-for-cloud-service.md)中的**管理存储帐户的连接字符串**部分。
-4. 若要修改任何连接字符串设置，请选择该设置旁边的 **…**  按钮。 此时会显示“创建存储连接字符串”对话框。
+4. 若要修改任何连接字符串设置，请选择该设置旁边的 **…**  按钮。 此时将显示“创建存储连接字符串”对话框。
 5. 在“连接时使用”下，选择“订阅”选项。
 6. 在“订阅”列表中，选择订阅。 如果列表不包括所需订阅，请选择“下载发布设置”链接。
 7. 在“帐户名称”列表中，选择存储帐户名称。 Azure Tools 使用 .publishsettings 文件自动获得存储帐户凭据。 要手动指定存储帐户凭据，请选择“手动输入凭据”选项，并继续此过程。 存储帐户的名称和主密钥可以从 [Azure 经典门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)获得。 如果不想手动指定存储帐户设置，请选择“确定”按钮，关闭此对话框。
@@ -123,5 +122,4 @@ ms.lasthandoff: 08/22/2017
 11. 要保存这些连接字符串更改，请选择“确定”按钮，并选择工具栏上的“保存”按钮。 保存这些更改后，可以通过在代码中使用 [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) 获取此连接字符串的值。 将应用程序发布到 Azure 时，请选择包含连接字符串的 Azure 存储帐户的服务配置。 发布应用程序后，验证应用程序是否按预期方式针对 Azure 存储服务正常工作
 
 ## <a name="next-steps"></a>后续步骤
-要详细了解如何将应用从 Visual Studio 发布到 Azure，请参阅[使用 Azure Tools 发布云服务](vs-azure-tools-publishing-a-cloud-service.md)。
-
+若要详细了解如何将应用从 Visual Studio 发布到 Azure，请参阅[使用 Azure Tools 发布云服务](vs-azure-tools-publishing-a-cloud-service.md)。

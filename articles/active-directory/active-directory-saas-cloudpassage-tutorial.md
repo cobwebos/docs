@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: 094740e20570665e975dec1a591989e411f90c16
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>教程：Azure Active Directory 与 CloudPassage 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/22/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-cloudpassage-from-the-gallery"></a>从库中添加 CloudPassage
-若要配置 CloudPassage 与 Azure AD 的集成，需要从库中将 CloudPassage 添加到托管 SaaS 应用列表。
+要配置 CloudPassage 与 Azure AD 的集成，需要从库中将 CloudPassage 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 CloudPassage，请执行以下步骤：**
 
@@ -113,14 +112,14 @@ ms.lasthandoff: 06/22/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://portal.cloudpassage.com/saml/init/accountid`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://portal.cloudpassage.com/saml/consume/accountid`。 可以通过在 CloudPassage 门户的“单一登录设置”部分中单击“SSO 设置文档”来获取此属性的值。
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://portal.cloudpassage.com/saml/consume/accountid`。 可以通过在 CloudPassage 门户的“单一登录设置”部分中单击“SSO 设置文档”来获取此属性的值。
 
     ![配置单一登录](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_05.png)
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的回复 URL 和注销 URL 更新这些值。 请联系 [CloudPassage 客户端支持团队](https://www.cloudpassage.com/company/contact/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_certificate.png) 
 
@@ -128,7 +127,7 @@ ms.lasthandoff: 06/22/2017
    
    ![配置单一登录](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_25.png) 
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，然后执行以下步骤：
+6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
     | 属性名称 | 属性值 |
     | --- | --- |
@@ -136,7 +135,7 @@ ms.lasthandoff: 06/22/2017
     | 姓 |user.surname |
     | 电子邮件 |user.mail |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/active-directory-saas-cloudpassage-tutorial/tutorial_attribute_04.png)
     
@@ -156,9 +155,9 @@ ms.lasthandoff: 06/22/2017
 
     ![配置单一登录](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_configure.png) 
 
-9. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 CloudPassage 公司站点。
+9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 CloudPassage 公司站点。
 
-10. 在顶部菜单中，单击“设置”，然后单击“网站管理”。 
+10. 在顶部菜单中，单击“设置”，并单击“网站管理”。 
    
     ![配置单一登录][12]
 
@@ -170,9 +169,9 @@ ms.lasthandoff: 06/22/2017
    
     ![配置单一登录][14]
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选中“启用单一登录 (SSO)(SSO 设置文档)”复选框。
+    a. 选中“启用单一登录 (SSO)(SSO 设置文档)”复选框。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将“SAML 实体 ID”粘贴到“SAML 颁发者 URL”文本框。
+    b. 将“SAML 实体 ID”粘贴到“SAML 颁发者 URL”文本框。
   
     c. 将“SAML 单一登录服务 URL”粘贴到“SAML 终结点 URL”文本框。
   
@@ -208,7 +207,7 @@ ms.lasthandoff: 06/22/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -222,13 +221,13 @@ ms.lasthandoff: 06/22/2017
 
 **若要在 CloudPassage 中创建名为 Britta Simon 的用户，请执行以下步骤：**
 
-1. 以管理员身份登录到你的 **CloudPassage** 公司站点。 
+1. 以管理员身份登录到 **CloudPassage** 公司站点。 
 
-2. 在顶部工具栏中，单击“设置”，然后单击“网站管理”。 
+2. 在顶部工具栏中，单击“设置”，并单击“网站管理”。 
    
    ![创建 CloudPassage 测试用户][22] 
 
-3. 单击“用户”选项卡，然后单击“添加新用户”。 
+3. 单击“用户”选项卡，并单击“添加新用户”。 
    
    ![创建 CloudPassage 测试用户][23]
 
@@ -252,9 +251,9 @@ ms.lasthandoff: 06/22/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 CloudPassage，请执行以下步骤：**
+**要将 Britta Simon 分配到 CloudPassage，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -307,5 +306,4 @@ ms.lasthandoff: 06/22/2017
 [201]: ./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_203.png
-
 

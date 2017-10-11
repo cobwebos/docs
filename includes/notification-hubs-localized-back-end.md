@@ -2,7 +2,7 @@
 
 
 
-当您发送模板通知时，您只需提供一组属性，在本例中，我们将发送一组包含当前新闻的本地化版本的属性，例如：
+当你发送模板通知，只需提供一组属性时，在本例中我们将发送一组包含当前新闻的本地化的版本的实例的属性：
 
     {
         "News_English": "World News in English!",
@@ -11,12 +11,12 @@
     }
 
 
-本部分演示如何使用控制台应用发送通知
+本部分演示如何使用控制台应用程序发送通知
 
-包括的代码将广播到 Windows 应用商店和 iOS 设备，因为该后端可广播到支持的任何设备。
+包含的代码广播到 Windows 应用商店和 iOS 设备，因为该后端可广播到任何受支持的设备。
 
-### <a name="to-send-notifications-using-a-c-console-app"></a>使用 C# 控制台应用程序发送通知
-使用以下代码修改前面创建的控制台应用中的 `SendTemplateNotificationAsync` 方法。 请注意为何在本例中无需为不同的区域设置和平台发送多条通知。
+### <a name="to-send-notifications-using-a-c-console-app"></a>若要使用 C# 控制台应用程序发送通知
+修改`SendTemplateNotificationAsync`替换为以下代码以前创建的控制台应用中的方法。 请注意如何在此情况下没有无需发送不同的区域设置和平台的多个通知。
 
         private static async void SendTemplateNotificationAsync()
         {
@@ -52,10 +52,10 @@
         }
 
 
-请注意，此简单调用不管平台如何都会将本地化的新闻片段传送到**所有**设备，因为通知中心将生成正确的本机有效负载并将其传送到已订阅特定标记的所有设备。
+请注意，此简单调用将提供到新闻的本地化的部分**所有**你的设备，不管平台如何，因为你的通知中心将生成并提供了正确的本机负载对所有设备已都订阅特定标记。
 
-### <a name="sending-the-notification-with-mobile-services"></a>使用移动服务发送通知
-在移动服务计划程序中，可以使用以下脚本：
+### <a name="sending-the-notification-with-mobile-services"></a>发送与移动服务通知
+在您的移动服务计划，你可以使用以下脚本：
 
     var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');

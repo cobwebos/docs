@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd@microsoft.com
-ms.translationtype: HT
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
 ms.openlocfilehash: 3053fc622c6343898e2007b8aaafbe1fa8e6934e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-from-azure-to-vmware-with-azure-site-recovery-legacy"></a>使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器从 Azure 故障回复到 VMware（旧版）
 > [!div class="op_single_selector"]
@@ -62,7 +61,7 @@ ms.lasthandoff: 06/06/2017
 6. 在 Azure 中配置服务器 VM 的“**终结点**”选项卡上查找配置服务器 HTTPS 公共端口。
 
    ![](./media/site-recovery-failback-azure-to-vmware/image5.png)
-7. 在“CS 密码详细信息”页上，指定在注册配置服务器时记下的密码。 如果忘了密码，可在配置服务器 VM 的 **C:\\Program Files (x86)\\InMage Systems\\private\\connection.passphrase** 中查看。
+7. 在“CS 通行短语详细信息”页上，指定在注册配置服务器时记下的通行短语。 如果忘了密码，可在配置服务器 VM 的 **C:\\Program Files (x86)\\InMage Systems\\private\\connection.passphrase** 中查看。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image6.png)
 8. 在“**选择目标位置**”页中指定要安装 vContinuum 服务器的位置，并单击：“**安装**”。
@@ -77,7 +76,7 @@ ms.lasthandoff: 06/06/2017
 1. 在 Azure 中的“**配置服务器**”页上，选择添加新的进程服务器。
 
    ![](./media/site-recovery-failback-azure-to-vmware/image9.png)
-2. 指定进程服务器名称，并指定用于连接到虚拟机的管理员用户名和密码。 选择要将进程服务器注册到的配置服务器。 此服务器应该是用来保护虚拟机并对其进行故障转移的同一个服务器。
+2. 指定进程服务器名称，并指定用于连接到虚拟机的管理员用户名和密码。 选择要将进程服务器注册到的配置服务器。 此服务器应该是用来保护虚拟机并对其进行故障转移的同一台服务器。
 3. 指定应在其中部署进程服务器的 Azure 网络。 它与配置服务器应该是相同的网络。 指定所选子网的唯一 IP 地址，并开始部署。
 
    ![](./media/site-recovery-failback-azure-to-vmware/image10.png)
@@ -118,7 +117,7 @@ vContinuum 安装程序中已捆绑 Windows 主目标。 安装 vContinuum 时�
 
 1. 关闭虚拟机。
 2. 在左侧面板中右键单击 VM 对应的条目，并单击“**编辑设置**”。
-3. 单击“**选项**”选项卡。选择“**高级\>常规项**” > “**配置参数**”。 仅当计算机已关闭时，“**配置参数**”选项才可用。
+3. 单击“**选项**”选项卡。 选择“**高级\>常规项**” > “**配置参数**”。 仅当计算机已关闭时，“**配置参数**”选项才可用。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 4. 查看是否存在包含 **disk.EnableUUID** 的行。 如果存在该行且其值设置为 **False**，请将该值设置为 **True**（不区分大小写）。 如果存在该行并且其值设置为 true，请单击“**取消**”，并在启动来宾操作系统后，在该系统中测试 SCSI 命令。 如果不存在该行，请单击“**添加行**”。
@@ -183,7 +182,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 1. 将 RHEL 6-64 统一代理二进制文件复制到新建的 OS。
 2. 运行以下命令来解压缩二进制文件：**tar -zxvf \<File name\>**
 3. 运行以下命令来指定权限：\# **chmod 755 ./ApplyCustomChanges.sh**
-4. 运行脚本：**\# ./ApplyCustomChanges.sh**。仅在服务器上运行该脚本一次。 运行该脚本后，重新启动服务器。
+4. 运行脚本：**\# ./ApplyCustomChanges.sh**。 仅在服务器上运行该脚本一次。 运行该脚本后，重新启动服务器。
 
 ### <a name="install-the-linux-server"></a>安装 Linux 服务器
 1. [下载](http://go.microsoft.com/fwlink/?LinkID=529757)安装文件。
@@ -205,7 +204,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
     ![](./media/site-recovery-failback-azure-to-vmware/image19.png)
 10. 在“**IP**”字段中，输入配置服务器的内部 IP 地址（可在配置服务器 VM 的“**仪表板**”选项卡中找到），并按 Enter。 在“**端口**”中输入 **22**，并按 Enter。
 11. 将“**使用 HTTPS**”保留为“**是**”，然后按 Enter。
-12. 输入在配置服务器上生成的通行短语。 如果在 Windows 计算机中使用 PUTTY 客户端与 Linux 虚拟机建立 ssh 连接，则可以使用 Shift+Insert 来粘贴剪贴板的内容。 使用 Ctrl+C 将通行短语复制到本地剪贴板，然后使用 Shift+Insert 粘贴通行短语。 按 Enter。
+12. 输入在配置服务器上生成的通行短语。 如果在 Windows 计算机中使用 PUTTY 客户端与 Linux 虚拟机建立 ssh 连接，则可以使用 Shift+Insert 来粘贴剪贴板的内容。 使用 Ctrl+C 将通行短语复制到本地剪贴板，并使用 Shift+Insert 粘贴通行短语。 按 Enter。
 13. 使用右箭头键导航到退出按钮，并按 Enter。 等待安装完成。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image20.png)
@@ -269,7 +268,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
     | **属性** | **详细信息** |
     | --- | --- |
     | 网络配置 |对于检测到的每个网络适配器，请选择该适配器并单击“**更改**”以配置虚拟机的故障回复 IP 地址。 |
-    | 硬件配置 |指定 VM 的 CPU 和内存。 可向要尝试保护的所有 VM 应用设置。 若要确定“CPU”和“内存”的正确值，可以参考 IAAS VM 角色大小，并查看分配的核心数和内存。 |
+    | 硬件配置 |指定 VM 的 CPU 和内存。 可向正在尝试保护的所有 VM 应用设置。 若要确定“CPU”和“内存”的正确值，可以参考 IAAS VM 角色大小，并查看分配的核心数和内存。 |
     | 显示名称 |在故障转移回到本地后，可以重命名要在 vCenter 清单中显示的虚拟机。 默认名称是虚拟机主机名。 若要确定 VM 名称，可以参考保护组中的 VM 列表。 |
     | NAT 配置 |下面将详细讨论 |
 
@@ -279,7 +278,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 1. 若要启用虚拟机保护，需要建立两个通信通道。 第一个通道在虚拟机和进程服务器之间建立。 此通道从 VM 收集数据并将数据发送到进程服务器，后者将此数据发送到主目标服务器。 如果要保护的 进程服务器和虚拟机位于同一个 Azure 虚拟网络上，则不需要使用 NAT 设置。 否则需要指定 NAT 设置。 在 Azure 中查看进程服务器的公共 IP 地址。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image28.png)
-2. 第二个通道在进程服务器和主目标服务器之间建立。 是否选择使用 NAT 取决于是要使用基于 VPN 的连接，还是要通过 Internet 进行通信。 如果使用 VPN，请不要选择 NAT；仅使用 Internet 连接时，才选择 NAT。
+2. 第二个通道在进程服务器和主目标服务器之间建立。 是否选择使用 NAT 取决于是要使用基于 VPN 的连接，还是要通过 Internet 进行通信。 如果使用 VPN，请不要选择 NAT；仅当使用 Internet 连接时，才选择 NAT。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image29.png)
 
@@ -355,4 +354,3 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 ## <a name="next-steps"></a>后续步骤
 * [了解](site-recovery-vmware-to-azure-classic.md)如何使用增强版部署将 VMware 虚拟机和物理服务器复制到 Azure 中。
-

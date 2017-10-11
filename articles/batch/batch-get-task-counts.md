@@ -8,12 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>按状态对任务计数，监视作业进度（预览）
 
@@ -80,4 +79,3 @@ Batch 服务通过从异步分布式系统的多个部分收集数据，聚合�
 [rest_get_task_counts]: https://docs.microsoft.com/rest/api/batchservice/get-the-task-counts-for-a-job
 [rest_get_task]: https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task
 [rest_list_tasks]: https://docs.microsoft.com/rest/api/batchservice/list-the-tasks-associated-with-a-job
-

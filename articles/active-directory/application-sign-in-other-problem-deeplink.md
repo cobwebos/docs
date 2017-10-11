@@ -13,21 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 7e7c19173229586cc788dbb5a6a01a9b075d33e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 798015ab68afc65378cffc75afec9c7f91fc1926
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>使用深层链接登录应用程序时出现的问题
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授予他们访问权限的基于云的应用程序。 
 
 这些应用程序代表用户在 Azure AD 门户中进行配置。 应用程序必须正确配置并分配到用户或用户所属的组，才能在访问面板中看到应用程序。
 
-深层链接或用户访问 URL 是用户可用来直接从其浏览器 URL 栏访问其密码 - SSO 应用程序的链接。 通过导航到此链接，用户将自动登录到应用程序，而不必先转到访问面板。 此链接与用户从 Office 365 应用程序启动器访问这些应用程序时使用的链接相同。
+深层链接或用户访问 URL 是用户可用来直接从其浏览器 URL 栏访问其密码 - SSO 应用程序的链接。 通过导航到此链接，用户会自动登录到应用程序，而不必先转到访问面板。 此链接与用户从 Office 365 应用程序启动器访问这些应用程序时使用的链接相同。
 
 ## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
 
@@ -39,15 +37,15 @@ ms.lasthandoff: 04/18/2017
 
 -   确保用户帐户**已启用**进行登录。
 
--   确保用户帐户**未锁定**。
+-   确保用户的帐户**未被锁定**。
 
 -   确保用户的**密码未过期或遗忘**。
 
--   确保**多重身份验证**不会阻止用户访问。
+-   确保**多重身份验证**未阻止用户访问。
 
 -   确保**条件访问策略**或 **Identity Protection** 策略不会阻止用户访问。
 
--   确保用户的**身份验证联系信息**是最新信息以允许强制执行多重身份验证或条件访问策略。
+-   确保用户的**身份验证联系信息**是最新的以允许强制执行多重身份验证或条件访问策略。
 
 -   确保同时尝试清除浏览器 Cookie，并尝试重新登录。
 
@@ -59,25 +57,25 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
 7.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-8.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+8.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 9.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 10. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 11. 选择要检查其深层链接的应用程序。
 
@@ -89,7 +87,7 @@ ms.lasthandoff: 04/18/2017
 
 1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
 
-2.  单击访问面板中的“密码 - SSO 应用程序”。
+2.  在访问面板中单击“密码-SSO 应用程序”。
 
 3.  在出现询问是否安装该软件的提示时，选择“立即安装”。
 
@@ -123,7 +121,7 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
@@ -143,17 +141,17 @@ ms.lasthandoff: 04/18/2017
 
 若要为应用程序配置单一登录，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -163,7 +161,7 @@ ms.lasthandoff: 04/18/2017
 
 9.  [将用户分配到应用程序](#how-to-assign-a-user-to-an-application-directly)。
 
-10. 此外，还可以通过以下方式代表用户提供凭据：选择用户对应的行，单击“更新凭据”，然后代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
+10. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
 ## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
@@ -181,7 +179,7 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
@@ -197,17 +195,17 @@ ms.lasthandoff: 04/18/2017
 
 若要为应用程序配置单一登录，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-    1.  如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+    1.  如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -219,23 +217,23 @@ ms.lasthandoff: 04/18/2017
 
 10. 将用户分配到应用程序。
 
-11. 此外，还可以通过以下方式代表用户提供凭据：选择用户对应的行，单击“更新凭据”，然后代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
+11. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
 ## <a name="how-to-assign-a-user-to-an-application-directly"></a>如何直接将用户分配到应用程序
 
-若要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
+要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  从列表中选择要向其分配用户的应用程序。
 
@@ -253,9 +251,9 @@ ms.lasthandoff: 04/18/2017
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器以选择要分配给所选用户的角色。
+14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器可选择要分配给所选用户的角色。
 
-15. 单击“分配”按钮将应用程序分配给所选用户。
+15. 单击“分配”按钮，将应用程序分配给选定用户。
 
 稍等片刻，所选用户就能使用解决方案描述部分所述的方法来启动这些应用程序了。
 
@@ -271,10 +269,9 @@ ms.lasthandoff: 04/18/2017
 
 -   浏览器类型
 
--   错误发生时的时区和时间/时间范围
+-   错误发生的时区和时间/时间段
 
 -   Fiddler 跟踪
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
-

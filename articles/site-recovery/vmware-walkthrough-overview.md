@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: db6f5f95929503e82a529dba26b56af1edb0767f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replicate-vmware-vms-to-azure-with-site-recovery"></a>使用 Site Recovery 将 VMware VM 复制到 Azure
 
@@ -111,4 +110,3 @@ ms.lasthandoff: 06/29/2017
 初始复制完成并运行增量复制后，可以运行测试故障转移，以确保一切都符合预期。
 
 转到[第 12 步：运行测试故障转移](vmware-walkthrough-test-failover.md)
-

@@ -1,6 +1,6 @@
 ---
 title: "使用基于 Linux 的 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs"
-description: "了解如何使用 Bash 脚本自定义基于 Linux 的 HDInsight 群集。 利用 HDInsight 的脚本操作功能，可在群集创建期间或之后运行脚本。 脚本可用于更改群集配置设置或安装其他软件。"
+description: "了解如何使用 Bash 脚本来自定义基于 Linux 的 HDInsight 群集。 HDInsight 脚本操作功能，可在期间或在群集创建后运行脚本。 脚本可以用于更改群集配置设置或安装其他软件。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 7f1a0bd8c7e60770d376f10eaea136a55c632c5e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -61,7 +60,7 @@ ms.lasthandoff: 08/02/2017
 * [使用重试逻辑从暂时性错误中恢复](#bps9)
 
 > [!IMPORTANT]
-> 脚本操作必须在 60 分钟内完成，否则进程将失败。 在节点预配期间，脚本将与其他安装和配置进程一同运行。 争用 CPU 时间和网络带宽等资源可能导致完成脚本所需的时间要长于在开发环境中所需的时间。
+> 脚本操作必须在 60 分钟内完成，否则过程将失败。 在节点预配期间，脚本将与其他安装和配置进程一同运行。 争用 CPU 时间和网络带宽等资源可能导致完成脚本所需的时间要长于在开发环境中所需的时间。
 
 ### <a name="bPS1"></a>选择目标 Hadoop 版本
 
@@ -119,11 +118,11 @@ fi
 > [!IMPORTANT]
 > 使用的存储帐户必须是群集的默认存储帐户，或其他任何存储帐户的公共只读容器。
 
-例如，Microsoft 提供的示例存储在 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) 存储帐户中。 这是 HDInsight 团队维护的一个公共只读容器。
+例如，由 Microsoft 提供的示例存储在[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/)存储帐户。 这是由 HDInsight 团队维护的公共的、 只读容器。
 
 ### <a name="bPS4"></a>使用预编译的资源
 
-若要减少运行脚本所花费的时间，请避免使用从源代码编译资源的操作。 例如，对资源进行预编译并将其存储在与 HDInsight 相同的数据中心的 Azure 存储帐户 blob 中。
+若要减少运行脚本所花费的时间，请避免使用从源代码编译资源的操作。 例如，预编译资源并将其存储在 Azure 存储帐户 blob HDInsight 所在的同一数据中心中。
 
 ### <a name="bPS3"></a>确保群集自定义脚本是幂等的
 
@@ -133,7 +132,7 @@ fi
 
 ### <a name="bPS5"></a>确保群集体系结构的高可用性
 
-基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只有一个头节点，请不要在两个头节点上安装组件。
+基于 Linux 的 HDInsight 群集提供在群集中，处于活动状态的两个头节点和两个节点上运行脚本操作。 如果安装的组件只有一个头节点，请不要在两个头节点上安装组件。
 
 > [!IMPORTANT]
 > 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
@@ -379,4 +378,3 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅�
 * 了解如何[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
 * 使用 [HDInsight.NET SDK 参考](https://msdn.microsoft.com/library/mt271028.aspx)详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
 * 使用 [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) 了解如何通过 REST 在 HDInsight 群集上执行管理操作。
-

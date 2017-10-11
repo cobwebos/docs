@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 6ad28cb3adaa63ddc3d3769a650d26ca6a7e2695
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>教程：Azure Active Directory 与 LinkedIn Learning 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/20/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-linkedin-learning-from-the-gallery"></a>从库中添加 LinkedIn Learning
-若要配置 LinkedIn Learning 与 Azure AD 的集成，需要从库中将 LinkedIn Learning 添加到托管 SaaS 应用列表。
+要配置 LinkedIn Learning 与 Azure AD 的集成，需要从库中将 LinkedIn Learning 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 LinkedIn Learning，请执行以下步骤：**
 
@@ -85,8 +84,8 @@ ms.lasthandoff: 06/20/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LinkedIn Learning 测试用户](#creating-a-linkedin-learning-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 LinkedIn 学习测试用户](#creating-a-linkedin-learning-test-user)** -若要测试 Azure AD 单一登录与 Britta 人 Simon。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -103,7 +102,7 @@ ms.lasthandoff: 06/20/2017
  
     ![配置单一登录](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedin_01.png)
 
-3. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 LinkedIn Learning 租户。
+3. 在另一个 Web 浏览器窗口中，以管理员身份登录到 LinkedIn Learning 租户。
 
 4. 在“帐户中心”，单击“设置”下的“全局设置”。 此外，从下拉列表选择“学习 - 默认”。
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 06/20/2017
 
     ![配置单一登录](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
@@ -131,7 +130,7 @@ ms.lasthandoff: 06/20/2017
 
     ![配置单一登录](./media/active-directory-saas-linkedinlearning-tutorial/updateusermail.png)
     
-9. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。 用户需要添加名为 **email**、**department**、**firstname** 和 **lastname** 的四个声明，并分别映射值 **user.mail**、**user.department**、**user.givenname** 和 **user.surname**
+9. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。 用户需要添加名为 email、department、firstname 和 lastname 的四个声明，并分别映射值 user.mail、user.department、user.givenname 和 user.surname
 
     | 属性名称 | 属性值 |
     | --- | --- |
@@ -142,7 +141,7 @@ ms.lasthandoff: 06/20/2017
     
     ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinlearning-tutorial/userattribute.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加属性”打开属性对话框。
+    a. 单击“添加属性”打开属性对话框。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinLearning-tutorial/tutorial_attribute_04.png)
 
@@ -154,17 +153,17 @@ ms.lasthandoff: 06/20/2017
     
     d. 单击“确定”
 
-10. 对 **name** 属性执行以下步骤
+10. 对 name 属性执行以下步骤
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击该属性打开“编辑属性”窗口。
+    a. 单击该属性打开“编辑属性”窗口。
 
     ![配置单一登录](./media/active-directory-saas-linkedinLearning-tutorial/url_update.png)
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 从“命名空间”中删除 URL 值。
+    b. 从“命名空间”中删除 URL 值。
     
     c. 单击“确定”保存设置。
 
-11. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+11. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png) 
 
@@ -203,7 +202,7 @@ ms.lasthandoff: 06/20/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -223,9 +222,9 @@ Linked Learning 应用程序支持 实时用户预配，且进行身份验证后
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 LinkedIn Learning，请执行以下步骤：**
+**要将 Britta Simon 分配到 LinkedIn Learning，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

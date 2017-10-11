@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/05/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-nsgs-using-the-portal"></a>使用门户创建 NSG
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 01/05/2017
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
 ## <a name="retrieve-information"></a>检索信息
-可以查看你的现有 NSG、检索现有 NSG 的规则和查找与 NSG 关联的资源。
+可以查看现有 NSG、检索现有 NSG 的规则和查找与 NSG 关联的资源。
 
 ### <a name="view-existing-nsgs"></a>查看现有 NSG
 
@@ -107,7 +106,7 @@ ms.lasthandoff: 01/05/2017
 
 1. 在“**网络安全组**”边栏选项卡或上述“**资源**”边栏选项卡中，单击“**NSG-FrontEnd**”。
 2. 在“**设置**”选项卡中，单击“**入站安全规则**”。
-3. 在“**入站安全规则**”边栏选项卡中，单击“**添加**”。 然后，在“**添加入站安全规则**”边栏选项卡中，填充如下所示的值，然后单击“**确定**”。
+3. 在“**入站安全规则**”边栏选项卡中，单击“**添加**”。 然后，在“**添加入站安全规则**”边栏选项卡中，填充如下所示的值，并单击“**确定**”。
 
     ![Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure8.png)
 
@@ -116,11 +115,11 @@ ms.lasthandoff: 01/05/2017
     ![Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure9.png)
 
 ### <a name="change-a-rule"></a>更改规则
-若要将上文创建的规则更改为仅允许来自 **Internet** 的入站流量，请完成以下步骤：
+要将上面创建的规则更改为仅允许来自 **Internet** 的入站流量，请完成以下步骤：
 
 1. 在“**网络安全组**”边栏选项卡或上述“**资源**”边栏选项卡中，单击“**NSG-FrontEnd**”。
 2. 在“**设置**”选项卡中，单击上文创建的规则。
-3. 在“**allow-https**”边栏选项卡中，对“**Source**”属性进行如下更改，然后单击“**保存**”。
+3. 在“**allow-https**”边栏选项卡中，对“**Source**”属性进行如下更改，并单击“**保存**”。
 
     ![Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure10.png)
 
@@ -130,7 +129,7 @@ ms.lasthandoff: 01/05/2017
 
 1. 在“**网络安全组**”边栏选项卡或上述“**资源**”边栏选项卡中，单击“**NSG-FrontEnd**”。
 2. 在“**设置**”选项卡中，单击上文创建的规则。
-3. 在“**allow-https**”边栏选项卡中，单击“**删除**”和“**是**”。
+3. 在“**allow-https**”边栏选项卡中，单击“**删除**”，并单击“**是**”。
 
     ![Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure11.png)
 
@@ -193,11 +192,10 @@ ms.lasthandoff: 01/05/2017
 3. 如果有任何 NIC 列出，请按照[取消关联 NSG 与 NIC](#Dissociate-an-NSG-from-a-NIC) 中的第 2 步操作。
 4. 对每个 NIC 重复步骤 3。
 5. 在“**设置**”边栏选项卡中，单击“**子网**”。
-6. 如果有任何子网列出，请单击相应的子网，然后按照[取消关联 NSG 与子网](#Dissociate-an-NSG-from-a-subnet)中的第 2 步和第 3 步操作。
-7. 向左滚动到“**NSG-FrontEnd**”边栏选项卡，然后依次单击“**删除**” > “**是**”。
+6. 如果有任何子网列出，请单击相应的子网，并按照[取消关联 NSG 与子网](#Dissociate-an-NSG-from-a-subnet)中的第 2 步和第 3 步操作。
+7. 向左滚动到“**NSG-FrontEnd**”边栏选项卡，并依次单击“**删除**” > “**是**”。
 
     ![Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/07/2016
 ms.author: v-livech
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 4951860630f0aad107d0846d52ebe4423ee0b91c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="mount-azure-file-storage-on-linux-vms-by-using-smb-with-azure-cli-10"></a>通过 Azure CLI 1.0 使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
 本文介绍如何使用服务器消息块 (SMB) 协议将 Azure 文件存储装载在 Linux VM 上。 文件存储通过标准 SMB 协议在云中提供文件共享。 要求如下：
@@ -49,7 +47,7 @@ ms.lasthandoff: 04/03/2017
 * 一个 Azure 文件存储共享
 * 一个 Linux VM
 
-将任何示例替换为你自己的设置。
+将任何示例替换成自己的设置。
 
 ### <a name="create-a-directory-for-the-local-mount"></a>为本地装载创建目录
 
@@ -90,7 +88,7 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
 
 2. 显示存储帐户密钥。
 
-    创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，将创建新的密钥对。 新的存储帐户密钥始终成对创建，可确保始终至少有一个未使用的存储密钥可以轮换到。 若要显示存储帐户密钥，请使用以下代码：
+    创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，创建新的密钥对。 新的存储帐户密钥始终成对创建，可确保始终至少有一个未使用的存储密钥可以轮换到。 若要显示存储帐户密钥，请使用以下代码：
 
     ```azurecli
     azure storage account keys list myStorageAccount \
@@ -109,7 +107,7 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
 
 4. 创建装载点目录。
 
-    必须在 Linux 文件系统中创建将 SMB 共享装载到其中的本地目录。 写入到本地装载目录或从本地装载目录读取的任何内容都将转发到文件存储上托管的 SMB 共享。 若要创建该目录，请使用以下代码：
+    必须在 Linux 文件系统中创建本地目录，用于装载 SMB 共享。 写入到本地装载目录或从本地装载目录读取的任何内容都会转发到文件存储上托管的 SMB 共享。 若要创建该目录，请使用以下代码：
 
     ```bash
     sudo mkdir -p /mnt/mymountdirectory
@@ -134,4 +132,3 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
 - [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [将磁盘添加到 Linux VM](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [使用 Azure CLI 加密 Linux VM 上的磁盘](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-

@@ -14,23 +14,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 12/15/2016
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9b56317fe8326a20fccfff4687f518d1e847122f
 ms.openlocfilehash: af9da85c37211d2436c23cc05400031c661ef51e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 CSV blob 编制索引
-默认情况下，[Azure 搜索 Blob 索引器](search-howto-indexing-azure-blob-storage.md)会将分隔的文本 blob 分析为单个文本块。 但在 blob 含有 CSV 数据的情况下，你通常希望将 blob 中的每一行视为一个单独文档。 例如，以如下分隔文本为例： 
+默认情况下，[Azure 搜索 Blob 索引器](search-howto-indexing-azure-blob-storage.md)会将分隔的文本 blob 分析为单个文本块。 但在 blob 含有 CSV 数据的情况下，通常希望将 blob 中的每一行视为一个单独文档。 例如，以如下分隔文本为例： 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-你可能希望将它分析为 2 个文档，每个文档都带有“id”、“datePublished”和“tags”字段。
+你可能想要将它分析 2 个文档，为每个包含"id"、"datePublished"和"tags"字段。
 
-在文本中，你将了解如何使用 Azure 搜索 Blob 索引器分析 CSV blob。 
+在文本中，将了解如何使用 Azure 搜索 Blob 索引器分析 CSV blob。 
 
 > [!IMPORTANT]
 > 此功能目前处于预览状态。 它仅在使用版本 **2015-02-28-预览版**的 REST API 中可用。 请记住，预览版 API 仅供测试和评估，不应在生产环境中使用。 
@@ -56,7 +55,7 @@ ms.lasthandoff: 07/06/2017
 目前，仅支持 UTF-8 编码。 此外，仅支持逗号 `','` 字符用作分隔符。 如果需要对其他编码或分隔符的支持，请通过[我们的 UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search)告知我们。
 
 > [!IMPORTANT]
-> 当使用分隔文本分析模式时，Azure 搜索假定你的数据源中的所有 blob 都将是 CSV。 如果需要在同一数据源中支持混用 CSV 和非 CSV blob，请通过[我们的 UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search)告知我们。
+> 当使用分隔文本分析模式时，Azure 搜索假定数据源中的所有 blob 都将是 CSV。 如果需要在同一数据源中支持混用 CSV 和非 CSV blob，请通过[我们的 UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search)告知我们。
 > 
 > 
 
@@ -90,6 +89,5 @@ ms.lasthandoff: 07/06/2017
     }
 
 ## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
-如果你有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
-
+如果有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
 

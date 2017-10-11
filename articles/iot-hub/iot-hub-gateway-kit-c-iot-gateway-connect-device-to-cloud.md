@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 61cb8eb0ad23a7d4b333bf54342b872a3a8ae1da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 4fb77ed0241d15338c2574fd22828507c3e40cb3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>使用 IoT 网关将设备连接到 Azure IoT 中心的云 - SensorTag
+# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>使用 IoT 网关将设备连接到云 - 将 SensorTag 连接到 Azure IoT 中心
 
 > [!NOTE]
 > 在开始本教程前，请确保[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)已完成。 在[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)中，用户将 Intel NUC 设备设置为 IoT 网关。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+## <a name="what-you-will-learn"></a>要学习的知识
 
 了解如何使用 IoT 网关将 Texas Instruments SensorTag (CC2650STK) 连接到 Azure IoT 中心。 IoT 网关将从 SensorTag 收集的温度和湿度数据发送到 Azure IoT 中心。
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/28/2017
 - 创建 IoT 中心。
 - 在 IoT 中心内为 SensorTag 注册一台设备。
 - 启用 IoT 网关和 SensorTag 之间的连接。
-- 运行 BLE 示例应用程序，以将 SensorTag 数据发送到 IoT 中心。
+- 运行 BLE 示例应用程序，将 SensorTag 数据发送到 IoT 中心。
 
 ## <a name="what-you-need"></a>所需条件
 
@@ -172,4 +171,3 @@ Azure IoT Edge 提供了蓝牙低功耗 (BLE) 示例应用程序。 该示例应
 ## <a name="next-steps"></a>后续步骤
 
 [通过 Azure IoT Edge，使用 IoT 网关进行传感器数据转换](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: cd35b6e2dc3171e9cffdb820bbc5b0d45ff58e07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-concur-for-user-provisioning"></a>教程：配置 Concur 以便进行用户预配
 
@@ -26,7 +25,7 @@ ms.lasthandoff: 07/04/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用 Concur 单一登录的订阅。
@@ -67,7 +66,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 * 必须由客户在启用应用后显示的对话窗口上单击“是”。 此单击将确认客户同意合作伙伴应用程序访问其数据，因此你或合作伙伴无法单击该“是”按钮。
 
-* 如果使用 T&E 管理员配置文件启用了应用的客户管理员离开了公司（导致该配置文件停用），则使用该配置文件启用的所有应用都无法正常工作，直到使用另一个活动的 WS 管理员配置文件启用该应用。 这就是建议你创建单独的 WS 管理配置文件的原因。
+* 如果使用 T&E 管理员配置文件启用了应用的客户管理员离开了公司（导致该配置文件停用），则使用该配置文件启用的所有应用都无法正常工作，直到使用另一个活动的 WS 管理员配置文件启用该应用。 这就是建议创建单独的 WS 管理配置文件的原因。
 
 * 如果管理员离开了公司，可根据需要将与该 WS 管理员配置文件关联的名称更改为替代管理员，这不会影响已启用的应用，因为无需停用该配置文件。
 
@@ -83,7 +82,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
    
     ![启用合作伙伴应用程序](./media/active-directory-saas-concur-provisioning-tutorial/ic721730.png "Enable Partner Application")
 
-4. 从“启用应用程序”列表中，选择“Azure Active Directory”，然后单击“启用”。
+4. 从“启用应用程序”列表中，选择“Azure Active Directory”，并单击“启用”。
    
     ![Microsoft Azure Active Directory](./media/active-directory-saas-concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
@@ -124,5 +123,4 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-concur-tutorial.md)
-
 

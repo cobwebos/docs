@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 4b23d46ef3c56baf91d09018552969eaf20cc8d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: b00088bb005519dc5d533433308c0e3e33c7f433
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>通过 Marathon Web UI 管理 Azure 容器服务 DC/OS 群集
 DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，以及底层硬件的抽象化。 DC/OS 上方是一种管理计划和执行计算工作负荷的框架。
@@ -81,7 +80,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 使用专用和公用代理组部署 DC/OS 群集。 为使群集能从 Internet 访问应用程序，需将应用程序部署到公用代理。 为此，请选择“新建应用程序”向导上的“可选”选项卡，并输入 **slave_public** 作为“已接受资源角色”。
 
-然后单击“创建应用程序”。
+然后单击**创建应用程序**。
 
 ![新应用程序 UI - 公用代理设置](./media/container-service-mesos-marathon-ui/dcos14.png)
 
@@ -114,4 +113,3 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 
-

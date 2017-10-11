@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.translationtype: HT
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -64,7 +63,7 @@ ms.lasthandoff: 03/18/2017
 3. 选择要启用 Azure AD 域服务的 Azure AD 租户（目录）。
 4. 导航到“应用程序”选项卡。
 5. 从下拉列表中选择“我公司拥有的应用程序”选项。
-6. 检查是否存在名为“Azure AD 域服务同步”的应用程序。如果存在，请将它删除。
+6. 检查是否存在名为“Azure AD 域服务同步”的应用程序。 如果存在，请将它删除。
 7. 删除该应用程序后，再次尝试启用 Azure AD 域服务。
 
 ### <a name="invalid-configuration"></a>配置无效
@@ -159,4 +158,3 @@ Azure AD 会防止意外删除用户对象。 如果从 Azure AD 租户中删除
 
 ## <a name="contact-us"></a>联系我们
 欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](active-directory-ds-contact-us.md)。
-

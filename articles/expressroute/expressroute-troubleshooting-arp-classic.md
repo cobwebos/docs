@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
 ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在经典部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
-> * [PowerShell - 资源管理器](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - 经典](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-本文将指导你完成为 Azure ExpressRoute 线路获取地址解析协议 (ARP) 表的步骤。
+本文介绍为 Azure ExpressRoute 线路获取地址解析协议 (ARP) 表的步骤。
 
 > [!IMPORTANT]
 > 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果使用以下指南无法解决问题，请使用 [Microsoft Azure 帮助+支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)建立支持请求。
@@ -57,15 +56,15 @@ ARP 表可帮助验证第 2 层配置，并可针对第 2 层的基本连接问�
 以下部分介绍如何查看供 ExpressRoute 边缘路由器查看的 ARP 表。
 
 ## <a name="prerequisites-for-using-arp-tables"></a>使用 ARP 表的先决条件
-在继续之前，请确保你具备以下条件：
+在继续之前，请确保具备以下条件：
 
 * 配置了至少一个对等互连的有效的 ExpressRoute 线路。 该线路必须由连接提供商进行完整的配置。 用户（或用户的连接提供商）必须在该线路上配置至少一个对等互连（Azure 专用、Azure 公共或 Microsoft）。
-* 用于配置对等互连（Azure 专用、Azure 公共和 Microsoft）的 IP 地址范围。 查看 [ExpressRoute 路由要求页](expressroute-routing.md)中的 IP 地址分配示例，了解如何将 IP 地址映射到你所在的一侧和 ExpressRoute 侧的接口。 可通过查看 [ExpressRoute 对等互连配置页](expressroute-howto-routing-classic.md)了解对等互连配置。
-* 你的网络团队或连接提供商提供的有关接口（用于这些 IP 地址）的 MAC 地址的信息。
+* 用于配置对等互连（Azure 专用、Azure 公共和 Microsoft）的 IP 地址范围。 查看 [ExpressRoute 路由要求页](expressroute-routing.md)中的 IP 地址分配示例，了解如何将 IP 地址映射到所在的一侧和 ExpressRoute 侧的接口。 可通过查看 [ExpressRoute 对等互连配置页](expressroute-howto-routing-classic.md)了解对等互连配置。
+* 网络团队或连接提供商提供的有关接口（用于这些 IP 地址）的 MAC 地址的信息。
 * Azure 的最新 Windows PowerShell 模块（1.50 版或更高版本）。
 
 ## <a name="arp-tables-for-your-expressroute-circuit"></a>ExpressRoute 线路的 ARP 表
-本部分说明如何使用 PowerShell 查看每种类型的对等互连的 ARP 表。 在继续之前，你或你的连接提供商必须配置对等互连。 每个线路有两个路径（主路径和辅助路径）。 你可以独立地检查每个路径的 ARP 表。
+本部分说明如何使用 PowerShell 查看每种类型的对等互连的 ARP 表。 在继续之前，你或连接提供商必须配置对等互连。 每个线路有两个路径（主路径和辅助路径）。 可以独立地检查每个路径的 ARP 表。
 
 ### <a name="arp-tables-for-azure-private-peering"></a>Azure 专用对等互连的 ARP 表
 以下 cmdlet 提供 Azure 专用对等互连的 ARP 表：
@@ -155,13 +154,13 @@ ARP 表可帮助验证第 2 层配置，并可针对第 2 层的基本连接问�
           0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
 
 > [!NOTE]
-> 如果你遇到此类问题，请通过连接提供商联系建立支持请求以解决它。
+> 如果遇到此类问题，请通过连接提供商联系建立支持请求以解决它。
 > 
 > 
 
 ### <a name="arp-table-when-the-microsoft-side-has-problems"></a>当 Microsoft 端出现问题时的 ARP 表
 * 如果 Microsoft 端存在问题，则不会为对等互连显示 ARP 表。
-* 使用 [Microsoft Azure 帮助+支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)建立支持请求。 指出你的第 2 层连接有问题。
+* 使用 [Microsoft Azure 帮助+支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)建立支持请求。 指出第 2 层连接有问题。
 
 ## <a name="next-steps"></a>后续步骤
 * 验证 ExpressRoute 线路的第 3 层配置：
@@ -169,5 +168,4 @@ ARP 表可帮助验证第 2 层配置，并可针对第 2 层的基本连接问�
   * 获取路由表以确定哪些前缀跨 ExpressRoute 播发。
 * 通过查看输入/输出中的字节数来验证数据传输。
 * 如果仍然遇到问题，请使用 [Microsoft Azure 帮助+支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)建立支持请求。
-
 

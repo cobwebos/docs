@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 298e0218c51385caa2de6a684ac40503fc07f5fa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 64675c51abf80daa3a55220f910aa8fdee1042ca
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 可以在 [Application Insights](app-insights-overview.md) 中自动配置[警报](app-insights-alerts.md)。
@@ -39,7 +38,7 @@ ms.lasthandoff: 04/27/2017
 * 使用它来安装 Microsoft Azure Powershell
 
 ## <a name="connect-to-azure"></a>连接到 Azure
-启动 Azure PowerShell 并[连接到你的订阅](/powershell/azure/overview)：
+启动 Azure PowerShell 并[连接到订阅](/powershell/azure/overview)：
 
 ```PowerShell
 
@@ -121,7 +120,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 | `request.rate` |请求速率 |每秒应用程序所有请求的速率。 |
 | `requestFailed.count` |失败的请求 |响应代码中生成的 HTTP 请求计数 >= 400 |
 | `view.count` |页面视图 |网页的客户端用户请求的计数。 综合流量已筛选掉。 |
-| {你的自定义指标名称} |{你的指标名称} |由 [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](app-insights-api-custom-events-metrics.md#properties)中的指标值。 |
+| {自定义指标名称} |{指标名称} |由 [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](app-insights-api-custom-events-metrics.md#properties)中的指标值。 |
 
 指标由不同的遥测模块发送：
 
@@ -140,4 +139,3 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 * [从模板创建 Application Insights 和 Web 测试资源](app-insights-powershell.md)
 * [自动执行 Microsoft Azure 诊断到 Application Insights 的耦合](app-insights-powershell-azure-diagnostics.md)
 * [自动执行对警报的响应](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
-

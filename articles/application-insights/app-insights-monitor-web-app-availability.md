@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 74cd4dbf74afbf5e7e0e7d0b7aca49b5aa214b83
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 6c7f52fc3998b0b29301206ffbc6a5a0c4134f6a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
 
-对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置可用性测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是站点：可以测试你所依赖的 REST API 服务。
+对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置可用性测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是你的站点： 无法测试你所依赖的 REST API 服务。
 
 有两种类型的可用性测试：
 
@@ -36,22 +35,22 @@ ms.lasthandoff: 05/26/2017
 
 **如果已配置 Application Insights**（针对 Web 应用），请在 [Azure 门户](https://portal.azure.com)中打开 Application Insights 资源。
 
-**或者，若要在新资源中查看报告**，请注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，然后创建 Application Insights 资源。
+**或者，要在新资源中查看报告**，请注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源。
 
 ![“新建”>“Application Insights”](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 单击“所有资源”，打开新资源的“概述”边栏选项卡。
 
 ## <a name="setup"></a>2.创建 URL ping 测试
-打开“可用性”边栏选项卡，然后添加一个测试。
+打开“可用性”边栏选项卡，并添加一个测试。
 
 ![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 * **URL** 可以是要测试的任何网页，但必须在公共 Internet 中可见。 该 URL 可以包括查询字符串。 因此，例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。
-* **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试将会失败。 
+* **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试会失败。 
 
     如果不选中此选项，则测试只请求指定 URL 的文件。
-* **启用重试**：如果选中此选项，则测试失败时，将在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试将会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 建议使用此选项。 平均大约有 80% 的失败可在重试后消除。
+* **启用重试**：如果选中此选项，则测试失败时，会在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 建议使用此选项。 平均大约有 80% 的失败可在重试后消除。
 * **测试频率**：设置从每个测试位置运行测试的频率。 如果有五个测试位置，且频率为五分钟，则平均每隔一分钟测试站点一次。
 * **测试位置** 是服务器将 Web 请求发送到的 URL 位置。 请选择多个位置，以便区分网站问题与网络问题。 最多可以选择 16 个位置。
 * **成功准则**：
@@ -86,15 +85,15 @@ ms.lasthandoff: 05/26/2017
 
 可以将筛选器应用于测试名称、位置以分析特定测试和/或位置的趋势。
 
-## <a name="edit"></a> 检查和编辑测试
+## <a name="edit"></a>检查和编辑测试
 
-从摘要页面选择特定的测试。 你可以在该处查看具体结果，对其进行编辑或者临时禁用它。
+从摘要页面选择特定的测试。 可以在该处查看具体结果，对其进行编辑或者临时禁用它。
 
 ![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
 
-对服务执行维护时，你可能想要禁用可用性测试或与这些测试关联的警报规则。 
+你可能想要禁用可用性测试或在服务上执行维护时与它们关联的警报规则。 
 
-## <a name="failures"></a>如果看到失败
+## <a name="failures"></a>如果你看到失败
 单击红点。
 
 ![单击红点](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
@@ -103,7 +102,7 @@ ms.lasthandoff: 05/26/2017
 从可用性测试结果，可以：
 
 * 检查从服务器收到的响应。
-* 在处理失败的请求实例时将打开服务器应用发送的遥测。
+* 在处理失败的请求实例时会打开服务器应用发送的遥测。
 * 在 Git 或 VSTS 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
 * 在 Visual Studio 中打开 Web 测试结果。
 
@@ -122,7 +121,7 @@ ms.lasthandoff: 05/26/2017
 若要创建多步骤测试，可以使用 Visual Studio Enterprise 来录制方案，然后将录制内容上传到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
 
 > [!NOTE]
-> 不能在测试中使用编码的函数或循环。 测试必须完全包含在 .webtest 脚本中。 但是，你可以使用标准插件。
+> 不能在测试中使用编码的函数或循环。 测试必须完全包含在 .webtest 脚本中。 但是，可以使用标准插件。
 >
 
 #### <a name="1-record-a-scenario"></a>1.录制方案
@@ -137,7 +136,7 @@ ms.lasthandoff: 05/26/2017
 2. 打开 .webtest 文件并开始录制。
 
     ![打开 .webtest 文件并单击“录制”。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
-3. 执行要在测试中模拟的用户操作：打开网站、将产品加入购物车，等等。 然后停止测试。
+3. 执行要在测试中模拟的用户操作：打开网站、将产品加入购物车，等等。 然后停止你的测试。
 
     ![Web 测试录制程序在 Internet Explorer 中运行。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-record.png)
 
@@ -168,7 +167,7 @@ ms.lasthandoff: 05/26/2017
 
 像单 url 测试一样查看测试结果和所有失败。
 
-此外，你还可以下载测试结果，在 Visual Studio 中查看。
+此外，还可以下载测试结果，在 Visual Studio 中查看。
 
 #### <a name="too-many-failures"></a>失败太多？
 
@@ -241,9 +240,9 @@ Web 测试插件提供时间参数化方式。
 ## <a name="performance-tests"></a>性能测试
 可以在网站上运行负载测试。 与可用性测试一样，可以从全球各地的站点发送简单请求或多步骤请求。 与可用性测试不同的是，发送的许多请求可以模拟多个并发用户。
 
-在“概述”边栏选项卡中，打开“设置”、“性能测试”。 创建测试时，系统会邀请你连接或创建 Visual Studio Team Services 帐户。
+在“概述”边栏选项卡中，打开“设置”、“性能测试”。 当你创建一个测试时，你受邀连接到或创建一个 Visual Studio Team Services 帐户。
 
-测试完成时，将显示响应时间和成功率。
+测试完成时，会显示响应时间和成功率。
 
 
 ![性能测试](./media/app-insights-monitor-web-app-availability/perf-test.png)
@@ -256,7 +255,7 @@ Web 测试插件提供时间参数化方式。
 * [使用 PowerShell 脚本自动设置可用性测试](app-insights-powershell.md#add-an-availability-test)。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
-## <a name="qna"></a>有疑问？ 遇到问题？
+## <a name="qna"></a>问题？ 遇到问题？
 * *是否可以从 Web 测试调用代码？*
 
     不可以。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
@@ -271,7 +270,7 @@ Web 测试插件提供时间参数化方式。
     有两个可能的解决方案：
     
     * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](app-insights-ip-addresses.md)发出的传入请求。
-    * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 你的测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果不会显示在可用性 Web 测试边栏选项卡中，但会作为可用性结果显示在分析、搜索和指标资源管理器中。
+    * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果不会显示在可用性 Web 测试边栏选项卡中，但会作为可用性结果显示在分析、搜索和指标资源管理器中。
 * *上传多步骤 Web 测试失败*
 
     存在 300 K 大小限制。
@@ -285,7 +284,7 @@ Web 测试插件提供时间参数化方式。
 
     存在每个测试 100 个请求的限制。
 
-    如果运行时间超过两分钟，测试将会停止。
+    如果运行时间超过两分钟，测试会停止。
 * *如何使用客户端证书运行测试？*
 
     抱歉，不支持这种测试。
@@ -304,4 +303,3 @@ Web 测试插件提供时间参数化方式。
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
 ms.author: parakhj
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: b32e81494b8c84799485f154ae43ad30af394caa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-qq-accounts"></a>Azure Active Directory B2C：向用户提供使用 QQ 帐户的注册和登录功能
 
@@ -67,5 +66,4 @@ ms.lasthandoff: 08/08/2017
 7. 输入先前作为**客户端 ID** 复制的**应用密钥**。
 8. 输入先前作为**客户端机密**复制的**应用机密**。
 9. 单击“确定”，并单击“创建”保存 QQ 配置。
-
 

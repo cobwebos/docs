@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 04c83dcd4df442d3e8bb41a15bb033de91bc4fcc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/05/2017
-
+ms.openlocfilehash: a78ee0877de717210d5c9140c6957d271a2b2453
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="application-insights-for-microsoft-azure-apps"></a>适用于 Microsoft Azure 应用的 Application Insights
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 04/05/2017
 
 它的配置非常简单，几分钟之内就能看到结果。
 
-你在使用哪种类型的应用？
+在使用哪种类型的应用？
 
 * [Azure Web 应用](app-insights-asp-net.md)
 * [Azure 云服务应用 - Web 角色和辅助角色](app-insights-cloudservices.md)
@@ -37,5 +36,4 @@ ms.lasthandoff: 04/05/2017
 
 * [实时 Azure Web 应用探查器](app-insights-profiler.md)
 * [在 Application Insights 中显示 Azure 诊断日志](app-insights-azure-diagnostics.md)
-
 

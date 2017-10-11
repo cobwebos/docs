@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 95dba08744357f8800b05e3d4b892e3a363d5985
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>创建要在 HDInsight 上的 Apache Spark 群集中运行的 Scala Maven 应用程序
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 08/28/2017
    * 选择“从原型创建”选项。
    * 从原型列表中，选择“org.scala-tools.archetypes:scala-archetype-simple”。 这会创建适当的目录结构，并下载所需的默认依赖项来编写 Scala 程序。
 2. 提供 **GroupId**、**ArtifactId** 和 **Version** 的相关值。 单击“下一步”。
-3. 在下一个对话框中（在其中指定 Maven 主目录和其他用户设置），接受默认值，并单击“下一步”。
+3. 在下一个对话框中（在其中指定 Maven 主目录和其他用户设置的位置），接受默认值，并单击“下一步” 。
 4. 在最后一个对话框中，指定项目名称和位置，并单击“完成”。
 5. 删除位于 **src\test\scala\com\microsoft\spark\example** 的 **MySpec.Scala** 文件。 应用程序不需要此文件。
 6. 如有必要，对默认源和测试文件进行重命名。 从 IntelliJ IDEA 的左窗格中，导航到 **src\main\scala\com.microsoft.spark.example**。 右键单击“App.scala”，单击“重构”、“重命名”文件，并在对话框中，提供应用程序的新名称，并单击“重构”。
@@ -153,5 +152,4 @@ ms.lasthandoff: 08/28/2017
 
 > [!div class="nextstepaction"]
 >[使用 Livy 在 Spark 群集中远程运行作业](hdinsight-apache-spark-livy-rest-interface.md)
-
 

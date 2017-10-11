@@ -15,14 +15,12 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 2721b41e8736c9ebd75cd098ad376018b4563d3f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.openlocfilehash: fd284542e1de65f323f1e3a092689f847e025be6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="install-or-update-mono-on-hdinsight"></a>在 HDInsight 上安装或更新 Mono
 
 了解如何在 HDInsight 3.4 或更高版本上安装特定版本的 [Mono](https://www.mono-project.com)。
@@ -63,7 +61,7 @@ __要求__：
 
 ## <a name="next-steps"></a>后续步骤
 
-你已学习如何在 HDInsight 上升级或安装 Mono 的特定版本。 有关如何将 .NET 应用程序与 HDInsight 上的 Mono 配合使用的详细信息，请参阅以下文档：
+已学习如何在 HDInsight 上升级或安装 Mono 的特定版本。 有关如何将 .NET 应用程序与 HDInsight 上的 Mono 配合使用的详细信息，请参阅以下文档：
 
 * [使用 .NET 流式处理 HDInsight 上的 MapReduce](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [在 HDInsight 中将 .NET 与 Hive 和 Pig 配合使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)

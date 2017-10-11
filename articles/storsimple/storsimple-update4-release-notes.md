@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
 ms.openlocfilehash: 23f1bbb066c5b6481988ee841ad8979d78abf084
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/05/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 发行说明
 
@@ -33,7 +32,7 @@ Update 4 可应用于任何运行 Release (GA)、Update 0.1 到 Update 3.1 的 S
 
 > [!IMPORTANT]
 > * Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、磁盘固件、Storport 和 Spaceport、安全更新以及其他 OS 更新。 安装此更新大约需要 4 小时。 磁盘固件更新是中断性更新，并且会导致设备出现故障时间。 建议应用 Update 4，使设备保持最新状态。 
-> * 对于新版本，由于我们分阶段推出更新，你可能不能立即看到更新。 我们会尽快提供更新，请耐心等待几日，然后再次检查更新。
+> * 对于新版本，由于我们分阶段推出更新，可能不能立即看到更新。 请等待几天，再次扫描更新，因为很快就会提供这些更新。
 
 ## <a name="whats-new-in-update-4"></a>Update 4 中的新增功能
 
@@ -53,11 +52,11 @@ Update 4 中进行了以下重大改进和 bug 修复。
 
 * **基于 UI 的 StorSimple 迁移工具** - 在此版本之前，从 5000-7000 系列迁移数据要求用户使用 Azure PowerShell 接口执行一部分迁移工作流。 在此版本中，则提供了易于使用的基于 UI 的 StorSimple 迁移工具，使执行相同的迁移工作流变得更加便利。 此工具还支持合并恢复存储桶。 
 
-* **与 FIPS 相关的更改** - 自此版本起，对于 Microsoft Azure 政府和 Azure 公有云帐户，将在所有 StorSimple 8000 系列设备上默认启用 FIPS。
+* **与 FIPS 相关的更改** - 自此版本起，对于 Microsoft Azure 政府和 Azure 公有云帐户，会在所有 StorSimple 8000 系列设备上默认启用 FIPS。
 
 * **更新更改** - 此版本修复了与更新失败相关的 bug。
 
-* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。 如果你遇到此警报，请联系 Microsoft 支持，让其发送更换磁盘。 有关详细信息，请转到 [StorSimple 设备上的硬件警报](storsimple-manage-alerts.md#hardware-alerts)。
+* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。 如果遇到此警报，请联系 Microsoft 支持，让其发送更换磁盘。 有关详细信息，请转到 [StorSimple 设备上的硬件警报](storsimple-manage-alerts.md#hardware-alerts)。
 
 * **控制器替换更改** - 此版本中添加了一个 cmdlet，它允许用户查询控制器替换过程的状态。 有关详细信息，请转到[可查询控制器替换状态的 cmdlet](https://technet.microsoft.com/library/dn688168.aspx)。
 
@@ -73,7 +72,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 | 3 |支持包 |之前版本中存在与支持包相关的问题，该问题会导致 System.OutOfMemory 异常，或支持包创建失败的其他错误。 在此版本中已修复这些 bug。 |是 |是 |
 | 4 |监视 |在之前版本中，当监视本地固定卷的图表时会出现占用量显示在 EB 中的问题。 在此版本中已修复了此 bug。 |是 |是 |
 | 5 |迁移 |在之前版本中，当从 5000-7000 系列迁移到 8000 系列设备时，会出现若干与迁移可靠性相关的问题。 此版本中已解决这些问题。 |是 |是 |
-| 6 |更新 |在以前版本中，如果有更新失败，控制器会进入恢复模式，用户因此无法继续更新，需要联系 Microsoft 支持部门。 <br> 此版本更改了这一行为。 当两个控制器都运行相同版本（更新 4）后，如果用户遇到更新失败，控制器不进入恢复模式。 如果用户遇到此失败，建议稍作等待，然后重试更新。 重试可能会成功。 如果重试失败，应联系 Microsoft 支持部门。 |是 |是 |
+| 6 |更新 |在以前版本中，如果有更新失败，控制器会进入恢复模式，用户因此无法继续更新，需要联系 Microsoft 支持部门。 <br> 此版本更改了这一行为。 当两个控制器都运行相同版本（更新 4）后，如果用户遇到更新失败，控制器不进入恢复模式。 如果用户遇到此失败，建议稍作等待，并重试更新。 重试可能会成功。 如果重试失败，应联系 Microsoft 支持部门。 |是 |是 |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Update 4 中的已知问题（来自之前版本）
@@ -91,5 +90,4 @@ Update 4 中没有任何新的已知问题。 有关从之前版本遗留至 Upd
 ## <a name="next-step"></a>后续步骤
 
 了解如何在 StorSimple 设备上[安装 Update 4](storsimple-install-update-4.md)。
-
 

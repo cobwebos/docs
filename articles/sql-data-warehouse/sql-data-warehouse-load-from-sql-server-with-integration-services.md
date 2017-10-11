@@ -15,14 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 03/30/2017
 ms.author: cakarst;douglasl;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d208f783e5b4e7786350706d8025e6e13f45f0d2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
-
-
+ms.openlocfilehash: 6c9cebdd715b6997d0633bc725a3945ba9e0c357
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-ssis"></a>将数据从 SQL Server 载入 Azure SQL 数据仓库 (SSIS)
 > [!div class="op_single_selector"]
@@ -34,7 +31,7 @@ ms.lasthandoff: 04/03/2017
 
 创建 SQL Server Integration Services (SSIS) 包，以将 SQL Server 的数据加载到 Azure SQL 数据仓库。 可以在数据通过 SSIS 数据流进行传递时，选择性地对其进行重构、转换和清理。
 
-在本教程中，您将：
+在本教程中，将：
 
 * 在 Visual Studio 中创建新的 Integration Services 项目。
 * 连接到数据源，包括 SQL Server（作为源）和 SQL 数据仓库（作为目标）。
@@ -44,7 +41,7 @@ ms.lasthandoff: 04/03/2017
 本教程使用 SQL Server 作为数据源。 SQL Server 可在本地或 Azure 虚拟机中运行。
 
 ## <a name="basic-concepts"></a>基本概念
-该包是 SSIS 中的工作单元。 项目中对相关的包进行了分组。 在 Visual Studio 中使用 SQL Server Data Tools 创建项目并设计包。 设计过程是一个可视的过程，在其中你可以将组件从“工具箱”拖放到设计图面，然后连接组件，并设置其属性。 完成包后，可以选择性地将其部署到 SQL Server，以进行全面管理、监视并保障安全性。
+该包是 SSIS 中的工作单元。 项目中对相关的包进行了分组。 在 Visual Studio 中使用 SQL Server Data Tools 创建项目并设计包。 设计过程是一个可视的过程，在其中可以将组件从“工具箱”拖放到设计图面，然后连接组件，并设置其属性。 完成包后，可以选择性地将其部署到 SQL Server，以进行全面管理、监视并保障安全性。
 
 ## <a name="options-for-loading-data-with-ssis"></a>使用 SSIS 加载数据的选项
 SQL Server Integration Services (SSIS) 是一套灵活的工具，可提供连接到 SQL 数据仓库以及将数据加载到其中的各种选项。
@@ -54,7 +51,7 @@ SQL Server Integration Services (SSIS) 是一套灵活的工具，可提供连�
 3. 使用 Azure Blob 上传任务将数据暂存在 Azure Blob 存储中。 然后使用 SSIS 执行 SQL 任务以启动将数据加载到 SQL 数据仓库的 Polybase 脚本。 此选项可提供此处列出的三个选项的最佳性能。 若要获取 Azure Blob 上传任务，请下载[用于 Azure 的 Microsoft SQL Server 2016 Integration Services 功能包][Microsoft SQL Server 2016 Integration Services Feature Pack for Azure]。 若要了解有关 Polybase 的详细信息，请参阅 [PolyBase 指南][PolyBase Guide]。
 
 ## <a name="before-you-start"></a>开始之前
-若要逐步完成本教程，你需要：
+要逐步完成本教程，需要：
 
 1. **SQL Server 集成服务 (SSIS)**。 SSIS 是 SQL Server 的一个组件，且需要使用 SQL Server 的评估版或许可的版本。 若要获取 SQL Server 2016 预览版的评估版本，请参阅 [SQL Server 评估][SQL Server Evaluations]。
 2. **Visual Studio**。 若要获取免费的 Visual Studio Community Edition，请参阅 [Visual Studio Community][Visual Studio Community]。
@@ -67,9 +64,9 @@ SQL Server Integration Services (SSIS) 是一套灵活的工具，可提供连�
 1. 启动 Visual Studio。
 2. 在“文件”菜单中，选择“新建 | 项目”。
 3. 导航到“安装 | 模板 | 商业智能 | 集成服务”项目类型。
-4. 选择“集成服务项目”。 提供“名称”和“位置”的值，然后选择“确定”。
+4. 选择“集成服务项目”。 提供“名称”和“位置”的值，并选择“确定”。
 
-Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然后 Visual Studio 会在项目中打开用于单个新的 SSIS 包 (Package.dtsx) 的设计器。 你会看到以下屏幕区域：
+Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然后，Visual Studio 会在项目中打开用于单个新的 SSIS 包 (Package.dtsx) 的设计器。 会看到以下屏幕区域：
 
 * 位于左侧的是 SSIS 组件的“工具箱”。
 * 中间是带有多个选项卡的设计图面。 通常至少会使用“控制流”和“数据流”选项卡。
@@ -91,7 +88,7 @@ Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然
 1. 双击源适配器以打开“ADO.NET 源编辑器”。
    
     ![][03]
-2. 在“ADO.NET 源编辑器”的“连接管理器”选项卡上，单击“ADO.NET 连接管理器”列表旁边的“新建”按钮，以打开“配置 ADO.NET 连接管理器”对话框，然后为本教程从中加载数据的 SQL Server 数据库创建连接设置。
+2. 在“ADO.NET 源编辑器”的“连接管理器”选项卡上，单击“ADO.NET 连接管理器”列表旁边的“新建”按钮，以打开“配置 ADO.NET 连接管理器”对话框，并为本教程从中加载数据的 SQL Server 数据库创建连接设置。
    
     ![][04]
 3. 在“配置 ADO.NET 连接管理器”对话框中，单击“新建”按钮以打开“连接管理器”对话框，并创建新的数据连接。
@@ -130,7 +127,7 @@ Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然
 1. 双击目标适配器以打开“ADO.NET 目标编辑器”。
    
     ![][11]
-2. 在“ADO.NET 目标编辑器”的“连接管理器”选项卡上，单击“连接管理器”列表旁边的“新建”按钮，以打开“配置 ADO.NET 连接管理器”对话框，然后为本教程将向其加载数据的 Azure SQL 数据仓库数据库创建连接设置。
+2. 在“ADO.NET 目标编辑器”的“连接管理器”选项卡上，单击“连接管理器”列表旁边的“新建”按钮，以打开“配置 ADO.NET 连接管理器”对话框，然后为本教程会向其加载数据的 Azure SQL 数据仓库数据库创建连接设置。
 3. 在“配置 ADO.NET 连接管理器”对话框中，单击“新建”按钮以打开“连接管理器”对话框，并创建新的数据连接。
 4. 在“连接管理器”对话框中，执行以下操作。
    1. 针对“提供程序”，选择 SqlClient 数据提供程序。
@@ -168,7 +165,7 @@ Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然
 
 ![][15]
 
-祝贺你！ 你已成功使用 SQL Server Integration Services 将数据加载到 Azure SQL 数据仓库。
+祝贺你！ 已成功使用 SQL Server Integration Services 将数据加载到 Azure SQL 数据仓库。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关 SSIS 数据流的详细信息。 从此处开始：[数据流][Data Flow]。
@@ -208,4 +205,3 @@ Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然
 [SQL Server Evaluations]: https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2016
 [Visual Studio Community]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
 [AdventureWorks 2014 Sample Databases]: https://msftdbprodsamples.codeplex.com/releases/view/125550
-

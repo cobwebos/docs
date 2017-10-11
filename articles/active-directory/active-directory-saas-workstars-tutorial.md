@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: e17c85689fa3aebf00ebf559185032b90103b4a5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>教程：Azure Active Directory 与 Workstars 集成
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/28/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Workstars 测试用户](#create-a-workstars-test-user)** - 在 Workstars 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+3. **[创建一个 Workstars 测试用户](#create-a-workstars-test-user)** -若要链接到用户的 Azure AD 表示的 Workstars 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 07/28/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Workstars 支持团队](https://support.workstars.com)获取此值。
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-workstars-tutorial/tutorial_workstars_certificate.png) 
 
@@ -254,5 +253,4 @@ ms.lasthandoff: 07/28/2017
 [201]: ./media/active-directory-saas-workstars-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workstars-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workstars-tutorial/tutorial_general_203.png
-
 

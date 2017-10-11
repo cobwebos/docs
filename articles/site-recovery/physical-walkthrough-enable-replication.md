@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 42f35c53eec06a346281fd90c97aecfd2269307d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="step-10-enable-replication-for-physical-servers-to-azure"></a>步骤 10：将物理服务器复制到 Azure
 
@@ -31,14 +30,14 @@ ms.lasthandoff: 06/29/2017
 ## <a name="before-you-start"></a>开始之前
 
 - 服务器必须[安装有移动服务组件](physical-walkthrough-install-mobility.md)。
-- 如果已为推送安装准备了 VM，那么在启用复制时，进程服务器将自动安装移动服务。
+- 如果已为推送安装准备了 VM，那么在启用复制时，进程服务器自动安装移动服务。
 - 启用计算机的复制时，你的 Azure 用户帐户需要特定[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)来确保你能够使用 Azure 存储并创建 Azure VM。
 - 添加或修改服务器的 IP 地址时，可能需要 15 分钟或更长时间，更改才会生效并显示在门户中。
 
 
 ## <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 
-默认情况下将复制计算机上的所有磁盘。 你可以从复制中排除磁盘。 例如，你可能不想要复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。 [了解详细信息](site-recovery-exclude-disk.md)
+默认情况下将复制计算机上的所有磁盘。 可以从复制中排除磁盘。 例如，你可能不希望复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。 [了解详细信息](site-recovery-exclude-disk.md)
 
 ## <a name="replicate-servers"></a>复制服务器
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 06/29/2017
 
     ![启用复制](./media/physical-walkthrough-enable-replication/targetsettings.png)
 
-8. 在“物理机”中，单击“+物理机”，然后输入“名称”和“IP 地址”。 选择要复制的计算机的操作系统。 发现计算机并将其显示在列表中需要几分钟。
+8. 在“物理计算机”中，单击“+物理计算机”，然后输入“名称”和“IP 地址”。 选择要复制的计算机的操作系统。 发现计算机并将其显示在列表中需要几分钟。
 9. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
 10. 默认情况下会复制所有磁盘。 单击“所有磁盘”并清除不想要复制的所有磁盘。 。 可以稍后再设置其他 VM 属性。
 
@@ -61,11 +60,10 @@ ms.lasthandoff: 06/29/2017
 12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 。 请注意：
 
     * 复制组中的计算机将一起复制，并在故障转移时具有在崩溃时保持一致且应用保持一致的共享恢复点。
-    * 我们建议你将物理服务器集合在一起，使其镜像你的工作负荷。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且你需要一致性时，才应使用该设置。
+    * 我们建议你将物理服务器集合在一起，使其镜像你的工作负荷。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且需要一致性时，才应使用该设置。
 
 13. 单击“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 11：运行测试故障转移](physical-walkthrough-test-failover.md)
-

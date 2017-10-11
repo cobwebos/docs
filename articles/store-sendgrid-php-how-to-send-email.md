@@ -14,19 +14,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
 ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 通过 PHP 编写示例。
 所涉及的任务包括**创建电子邮件**、**发送电子邮件**以及**添加附件**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什么是 SendGrid 电子邮件服务？
-SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。 常见 SendGrid 使用方案包括：
+SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、伸缩性、实时分析以及可用于简化自定义集成的灵活的 API。 常见 SendGrid 使用方案包括：
 
 * 自动向客户发送收据
 * 管理用于每月向客户发送电子传单和特惠产品/服务的通讯组列表
@@ -381,7 +380,7 @@ SendGrid 通过使用“筛选器”提供其他电子邮件功能。 可将这�
      print_r($response);
 
 ## <a name="next-steps"></a>后续步骤
-此时，你已了解 SendGrid 电子邮件服务的基础知识，请访问以下链接以了解更多信息。
+此时，已了解 SendGrid 电子邮件服务的基础知识，请访问以下链接以了解更多信息。
 
 * SendGrid 文档：<https://sendgrid.com/docs>
 * SendGrid PHP 库：<https://github.com/sendgrid/sendgrid-php>
@@ -399,4 +398,3 @@ SendGrid 通过使用“筛选器”提供其他电子邮件功能。 可将这�
 [事务电子邮件传递]: https://sendgrid.com/transactional-email
 [sendgrid-php 库]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
 [编辑器]: https://getcomposer.org/download/
-

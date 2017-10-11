@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: d73267d7a64221a3138af19e9a2d5dd15809b927
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-9-install-the-mobility-service"></a>步骤 9：安装移动服务
 
 
@@ -46,7 +44,7 @@ Mobility Service 可以捕获计算机上的数据写入，并将其转发给进
 1. 如果尚未创建帐户，请遵循以下指南创建一个：
 
     - 可以使用域帐户，也可以使用本地帐户
-    - 对于 Windows，如果你使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。 为此，请在注册表中的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下添加值为 1 的 DWORD 项 **LocalAccountTokenFilterPolicy**。
+    - 对于 Windows，如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。 为此，请在注册表中的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下添加值为 1 的 DWORD 项 **LocalAccountTokenFilterPolicy**。
     - 若要通过 CLI 添加 Windows 注册表项，请键入：
 
         ```
@@ -65,5 +63,4 @@ Mobility Service 可以捕获计算机上的数据写入，并将其转发给进
 
 ## <a name="next-steps"></a>后续步骤
 
-转到[第 10 步：启用复制](physical-walkthrough-enable-replication.md)
-
+转到[步骤 10：启用复制](physical-walkthrough-enable-replication.md)

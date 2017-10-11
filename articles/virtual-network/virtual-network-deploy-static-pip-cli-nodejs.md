@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 7aec9dcba717592b5324ac667008902bd323f537
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: a373c32271096308678fe3402e8420cc14fe5935
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建具有静态公共 IP 地址的 VM
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 02/28/2017
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [资源管理器和经典](../resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。Microsoft 建议对大多数新的部署使用该模型，而不是经典部署模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。Microsoft 建议对大多数新的部署使用该模型，而不是经典部署模型。
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 02/28/2017
 
 可以使用 Azure CLI 1.0（本文）或 [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md) 完成此任务。 
 
-## <a name = "create"></a>步骤 1 - 启动脚本
+## <a name = "create"></a>步骤 1：启动脚本
 可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-cli.sh)下载所用的完整 bash 脚本。 完成以下步骤，以更改要在环境中使用的脚本：
 
 根据需要用于部署的值更改以下变量的值。 以下值映射到本文中使用的方案：
@@ -80,8 +79,8 @@ pipName="PIPWEB1"
 dnsName="iaasstoryws1"
 ```
 
-## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>步骤 2 - 为你的 VM 创建必要的资源
-在创建 VM 之前，你需要可供 VM 使用的资源组、VNet、公共 IP 和 NIC。
+## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>步骤 2 - 为 VM 创建必要的资源
+在创建 VM 之前，需要可供 VM 使用的资源组、VNet、公共 IP 和 NIC。
 
 1. 创建新的资源组。
 
@@ -142,7 +141,7 @@ dnsName="iaasstoryws1"
     ```
 
 ## <a name="step-3---create-the-vm"></a>步骤 3 - 创建 VM
-现在，所有必需的资源均已就绪，你可以创建新的 VM 了。
+现在，所有必需的资源均已就绪，可以创建新的 VM 了。
 
 1. 创建 VM。
 
@@ -172,7 +171,7 @@ dnsName="iaasstoryws1"
     sh myscript.sh
     ```
 
-2. 几分钟后，将会显示以下输出。
+2. 几分钟后，会显示以下输出。
 
         info:    Executing command group create
         info:    Getting resource group IaaSStory
@@ -254,4 +253,3 @@ dnsName="iaasstoryws1"
         info:    Looking up the NIC "NICWEB1"
         info:    Creating VM "WEB1"
         info:    vm create command OK
-

@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 44d350d2d098be14ad254066a8528fe117200ec4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.openlocfilehash: 3cb22b935624041ab51e64028a1b668fd694f9b5
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>为 Azure Web 应用购买自定义域名
 
 应用服务域（预览版）是直接在 Azure 中管理的顶级域。 使用这些域可以轻松管理 [Azure Web 应用](app-service-web-overview.md)的自定义域。 本教程介绍如何购买应用服务域并将 DNS 名称分配到 Azure Web 应用。
 
-本文适用于 Azure App Service（Web 应用、API 应用、移动应用和逻辑应用）。 对于 Azure VM 或 Azure 存储，请查看[Assign App Service domain to Azure VM or Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/)（将应用服务分配到 Azure VM 或 Azure 存储）。 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。
+本文适用于 Azure 应用服务（Web 应用、API 应用、移动应用和逻辑应用）。 对于 Azure VM 或 Azure 存储，请查看[Assign App Service domain to Azure VM or Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/)（将应用服务分配到 Azure VM 或 Azure 存储）。 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -240,4 +239,3 @@ ms.lasthandoff: 08/04/2017
 选择“确定”以确认操作。 如果不想继续，请单击确认对话框外部的任何位置。
 
 完成该操作后，该域将从订阅中释放，可供任何人再次购买。 
-

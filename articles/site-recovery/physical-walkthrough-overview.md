@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 0a09b35e98dc0b2f5283c2a707a3a2b8ac9a39f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replicate-physical-servers-to-azure-with-site-recovery"></a>使用 Site Recovery 将物理服务器复制到 Azure
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 06/29/2017
 
 必须确定所需的复制资源，才能执行完整部署。 若要执行快速部署来测试环境，可以跳过这一步。
 
-转到[第 3 步：计划容量](physical-walkthrough-capacity.md)
+转到[步骤 3：计划容量](physical-walkthrough-capacity.md)
 
 ## <a name="step-4-plan-networking"></a>第 4 步：计划网络
 
@@ -97,5 +96,4 @@ ms.lasthandoff: 06/29/2017
 初始复制完成并运行增量复制后，可以运行测试故障转移，以确保一切都符合预期。
 
 转到[第 11 步：运行测试故障转移](physical-walkthrough-test-failover.md)
-
 

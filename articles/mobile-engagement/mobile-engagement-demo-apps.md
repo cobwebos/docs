@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8381edb569e19a85c1259f7791b477cfa6e51ea3
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-mobile-engagement-demo-app"></a>Azure Mobile Engagement 演示应用
-Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 Azure Mobile Engagement 演示应用，从而帮助你找到有用的资源并了解有关 Mobile Engagement 的详细信息。
+我们已发布的 Azure Mobile Engagement 演示应用程序**iOS**， **Android**，和**Windows**平台来帮助你查找有用的资源和了解有关 Mobile Engagement 的详细信息。
 
-此应用可帮助你：
+应用程序可帮助你：
 
 * 轻松找到 Mobile Engagement 资源（如视频、文档、支持论坛以及在何处可以提交功能请求）的有用链接。
-* 体验 Mobile Engagement 所支持的示例通知，从而设计你自己的移动应用程序。
-* 利用参考实现来了解如何在自己的应用中实施 Mobile Engagement。 你可以了解如何：
+* 体验 Mobile Engagement 所支持的示例通知，从而设计自己的移动应用程序。
+* 利用参考实现来了解如何在自己的应用中实施 Mobile Engagement。 可以了解如何：
   
   * 收集分析数据。
   * 实施不同类型的高级通知方案，如*全屏插播式*或*弹出式*。
@@ -47,7 +47,7 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
   * 此应用在 IOS Swift 中开发。 [GitHub](https://github.com/Azure/azure-mobile-engagement-app-ios) 上提供了源代码。
 * **Android 演示应用**：
   
-  * 在 [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement) 下载此应用。
+  * 在 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement)下载此应用。
   * [GitHub](https://github.com/Azure/azure-mobile-engagement-app-android) 上提供了源代码。
 
 ![Windows Universal 演示应用][1]
@@ -58,7 +58,7 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 ## <a name="usage"></a>使用情况
 可以按以下方式使用此应用：
 
-**从前面提供的应用商店链接将应用下载到你的设备：**
+**从前面提供的应用商店链接将应用下载到设备：**
 
 > [!IMPORTANT]
 > 不需要 Azure 帐户或将应用连接到后端。 该应用可以独立运行。
@@ -66,8 +66,9 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 > 
 
 * 在设备上安装应用后，可以浏览左侧菜单中的链接，查找有关 Mobile Engagement 的有用资源。
-* [服务的 RSS 源](https://aka.ms/azmerssfeed)已添加到此应用程序，因此你始终都会获得最新的产品更新。
-* 你还可以浏览示例通知方案，以体验 Mobile Engagement 针对不同平台所支持的通知类型。 在本地即可体验这些通知，也就是说你可以单击屏幕上的按钮来展示通知体验，这就相当于从 Mobile Engagement 平台发送通知。
+* 
+            [服务的 RSS 源](https://aka.ms/azmerssfeed)已添加到此应用程序，因此，始终都会获得最新的产品更新。
+* 还可以浏览示例通知方案，以体验 Mobile Engagement 针对不同平台所支持的通知类型。 在本地即可体验这些通知，也就是说可以单击屏幕上的按钮来展示通知体验，这就相当于从 Mobile Engagement 平台发送通知。
 
 ![适用于 Windows 的应用菜单][4]
 
@@ -78,12 +79,12 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 
 * 下载源代码后，在相应的开发环境（XCode for iOS、Android Studio for Android 和 Visual Studio for Windows XCode）中打开它。
 * 接下来遵循 [SDK 集成的基本步骤](mobile-engagement-windows-store-dotnet-get-started.md)，以便能将此应用连接到其自身的 Mobile Engagement 后端实例。
-  * 你需要在应用中配置连接字符串。
+  * 需要在应用中配置连接字符串。
   * 还需要为应用配置推送通知平台。
-* 你会注意到，应用本身已经配置有 Mobile Engagement。 因此，在打开应用并将其连接到后端后，你可以在“**监视**”选项卡上看到用户会话、活动、事件等等 。
+* 你会注意到，使用 Mobile Engagement 检测在应用程序。 因此，将应用连接到后端之后再打开该应用时，可以在“监视”选项卡上看到用户会话、活动、事件等等。
 * 还可以从自己的 Mobile Engagement 实例将通知发送到此应用，而不必使用本地通知。
   
-  * 此处你可以使用应用中的“**获取设备 ID**”菜单项添加你的设备作为测试设备。 这样你就有了一个设备 ID 来将测试设备注册到平台后端实例。
+  * 此处可以使用应用中的“获取设备 ID”菜单项添加设备作为测试设备。 这样你就有了一个设备 ID 来将测试设备注册到平台后端实例。
     
     ![Windows 上的设备 ID][7]
     
@@ -91,8 +92,8 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
     ![Android 上的设备 ID][9]
 
 ## <a name="key-features-of-the-demo-app"></a>演示应用的主要功能
-* 如前所述，有了此应用，你也就掌握了 Mobile Engagement 的所有关键资源。 可以浏览左侧菜单上的链接。
-* 可以体验每个平台的应用外通知。 这些通知可以“**仅供通知**”的形式发送，也就是单击通知只会打开一个应用程序的本机屏幕（通过使用**深层链接**） 或以“**Web 公告**”的形式发送，也就是在单击通知时，可以从 Mobile Engagement 后端传送其他将要显示的 HTML 内容。
+* 如前所述，有了此应用，也就掌握了 Mobile Engagement 的所有关键资源。 可以浏览左侧菜单上的链接。
+* 可以体验每个平台的应用外通知。 可以将这些通知以“仅通知”的形式发送，即单击通知只会打开应用程序的本机屏幕（通过使用“深层链接”）；或者以“Web 通知”的形式发送，即单击通知时，可以从 Mobile Engagement 后端传送将要显示的其他 HTML 内容。
   
     ![应用外通知][29]
 * 在 iOS 中，必须关闭应用才能查看应用外通知或系统推送通知。 可以在此处查看如何添加**操作按钮**，比如那些添加到此应用外通知以用于*反馈*和*共享*的按钮（以便用户可以直接根据通知本身采取相应的操作）。
@@ -104,14 +105,14 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 * 在 Windows 10 中，可以查看通知在电脑上的显示方式。 此通知还会显示在 Windows 10 的**通知中心**。 Windows SDK 暂不支持添加**操作按钮**。
   
     ![Windows 中的应用外通知][10] ![Windows 中显示的应用外通知][13]
-* 你可以体验每个平台的默认“应用内”通知。 这是一个两步式体验：首先显示一个“**通知**”窗口。 单击该窗口会打开一个全屏“**公告**”，如下面的屏幕截图所示。 此公告的内容来自于 Mobile Engagement 后端实例。 SDK 同时提供了通知模板和公告模板。 可以按照本演示应用所示，通过添加徽标和着色轻松自定义模板。  
+* 可以体验每个平台的默认“应用内”通知。 这是一个两步式体验：首先显示一个“通知”窗口。 单击该窗口会打开一个全屏“公告”，如下面的屏幕截图所示。 此公告的内容来自于 Mobile Engagement 后端实例。 SDK 同时提供了通知模板和公告模板。 可以按照本演示应用所示，通过添加徽标和着色轻松自定义模板。  
   
     ![Windows 中的应用内通知][16]
   
     ![iOS 中的应用内通知][17]  ![Android 中的应用内通知][18]
   
     **iOS**，**Android**
-* 还可以使用 Mobile Engagement 的“**类别**”功能自定义该默认体验。 在演示应用中，我们演示了两种更改通知体验的常用方法。 请注意，Windows SDK 暂不支持“类别”功能。
+* 还可以使用 Mobile Engagement 的“类别”功能自定义该默认体验。 在演示应用中，我们演示了两种更改通知体验的常用方法。 请注意，Windows SDK 暂不支持“类别”功能。
   
     **全屏插播式：**
   
@@ -127,7 +128,7 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 
 **iOS**，**Android**
 
-* Mobile Engagement 还支持一种叫做“**轮询**”的特殊应用内通知类型。 该通知允许向细分的应用用户发送快速调查。 你可以针对每个问题添加额外的问题和选项，如下面的屏幕截图中所示。 这些内容将作为应用内通知显示给应用用户。   
+* Mobile Engagement 还支持一种叫做“轮询”的特殊应用内通知类型。 该通知允许向细分的应用用户发送快速调查。 可以针对每个问题添加额外的问题和选项，如下面的屏幕截图中所示。 这些内容将作为应用内通知显示给应用用户。   
   
     ![“轮询”通知][32]
   
@@ -137,7 +138,7 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 
 **iOS**，**Android**
 
-* Mobile Engagement 还支持发送无提示**数据推送**通知。 通过这些通知，可以发送来自服务的数据（如下例中的 JSON 数据），然后可以在应用中处理这些数据，并执行某个操作。 比如通过使用数据推送通知有选择地更改某个商品的价格。
+* Mobile Engagement 还支持发送无提示**数据推送**通知。 使用这些通知，你可以将数据发送从你的服务 （如下面的示例中的 JSON 数据），你可以在你的应用程序中处理和采取某项操作。 比如通过使用数据推送通知有选择地更改某个商品的价格。
   
     ![数据推送通知][33]
   
@@ -148,7 +149,7 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 **iOS**，**Android**
 
 > [!NOTE]
-> 可以通过单击任意示例通知屏幕上的“**单击此处了解如何从 Mobile Engagement 平台发送这些通知的说明**”，查看详细的逐步说明。
+> 可以通过单击任意示例通知屏幕上的“单击此处了解如何从 Mobile Engagement 平台发送这些通知的说明”，查看详细的逐步说明。
 > 
 > 
 
@@ -185,9 +186,3 @@ Microsoft 已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 
 [31]: ./media/mobile-engagement-demo-apps/in-app-pop-up.png
 [32]: ./media/mobile-engagement-demo-apps/notification-poll.png
 [33]: ./media/mobile-engagement-demo-apps/notification-data-push.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

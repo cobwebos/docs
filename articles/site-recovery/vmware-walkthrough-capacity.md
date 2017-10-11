@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Site Recovery 规划复制到 Azure 的 VMware 的容量和缩放 | Microsoft Docs"
+title: "规划容量和缩放以便使用 Azure Site Recovery 将 VMware 复制到 Azure | Microsoft Docs"
 description: "阅读本文，使用 Azure Site Recovery 规划复制到 Azure 的 VMware VM 的容量和缩放"
 services: site-recovery
 documentationcenter: 
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: rayne
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: f5b334e594e3d002e1862b25c4faba7163efa7d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="step-3-plan-capacity-and-scaling-for-vmware-to-azure-replication"></a>步骤 3：规划复制到 Azure 的 VMware 的容量和缩放
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 06/29/2017
 
 **组件** | **详细信息** |
 --- | --- | ---
-**复制** | **每日最大更改率：**一台受保护的计算机只能使用一个进程服务器，一个进程服务器可处理的每日更改率最高可达 2 TB。 因此，2 TB 是受保护计算机支持的每日数据更改率上限。<br/><br/> **最大吞吐量：**在 Azure 中，一个复制的计算机可能属于一个存储帐户。 标准存储帐户每秒最多可以处理 20,000 个请求，因此建议你将源计算机中的每秒输入/输出操作数 (IOPS) 保持在 20,000。 例如，如果源计算机有 5 个磁盘，每个磁盘在源计算机上生成 120 IOPS（8K 大小），则 Azure 中单磁盘 IOPS 限制为 500。 （所需的存储帐户数等于源计算机总 IOPS 除以 20,000。）
+**复制** | **每日最大更改率：**一台受保护的计算机只能使用一个进程服务器，一个进程服务器可处理的每日更改率最高可达 2 TB。 因此，2 TB 是受保护计算机支持的每日数据更改率上限。<br/><br/> **最大吞吐量：**在 Azure 中，一个复制的计算机可能属于一个存储帐户。 标准存储帐户每秒最多可以处理 20,000 个请求，因此建议将源计算机中的每秒输入/输出操作数 (IOPS) 保持在 20,000。 例如，如果源计算机有 5 个磁盘，每个磁盘在源计算机上生成 120 IOPS（8K 大小），则 Azure 中单磁盘 IOPS 限制为 500。 （所需的存储帐户数等于源计算机总 IOPS 除以 20,000。）
 
 ## <a name="configuration-server-capacity"></a>配置服务器容量
 
@@ -52,16 +51,16 @@ ms.lasthandoff: 06/29/2017
 
 最佳做法是，将配置服务器置于与所要保护的计算机相同的网络和 LAN 网段上。 可以将配置服务器置于另一网络中，但所要保护的计算机应可通过第 3 层网络来查看它。
 
-## <a name="sizing-recommendations"></a>大小调整建议
+## <a name="sizing-recommendations"></a>重设大小建议
 
-此表汇总了基于 CPU 的大小调整建议。
+下表按 CPU 汇总了重设大小建议。
 
 **CPU** | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机**
 --- | --- | --- | --- | ---
 8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 千兆赫 [GHz]） | 16 GB | 300 GB | 500 GB 或更少 | 复制少于 100 台计算机。
 12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz） | 18 GB | 600 GB | 500 GB 到 1 TB | 复制 100-150 台计算机。
 16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz） | 32 GB | 1 TB | 1 TB 到 2 TB | 复制 150-200 台计算机。
-部署另一个进程服务器 | | | > 2 TB | 如果你要复制 200 多台计算机，或者每日数据更改率超过 2 TB，则需部署额外的进程服务器。
+部署另一个进程服务器 | | | > 2 TB | 如果要复制超过 200 台计算机，或者每日数据更改率超过 2 TB，则需部署额外的进程服务器。
 
 其中：
 
@@ -71,10 +70,10 @@ ms.lasthandoff: 06/29/2017
 ## <a name="process-server-capacity"></a>进程服务器容量
 
 
-进程服务器接收受保护计算机提供的复制数据，并对其通过缓存、压缩和加密进行优化。 然后它将数据发送到 Azure。
+进程服务器接收受保护计算机提供的复制数据，并对其通过缓存、压缩和加密进行优化。 然后将数据发送到 Azure。
 
 - 进程服务器计算机应有足够的资源来执行这些任务。
-- 默认情况下，第一个进程服务器安装在配置服务器上。 你可以部署更多的进程服务器以扩展环境。
+- 默认情况下，第一个进程服务器安装在配置服务器上。 可以部署更多的进程服务器以扩展环境。
 - 进程服务器使用基于磁盘的缓存。 在出现网络瓶颈或中断时，使用单独的大小至少为 600 GB 的缓存磁盘来处理存储的数据更改。
 - 如果需要保护的计算机超过 200 台，或者每日更改率大于 2 TB，可添加进程服务器来处理复制负载。 若要横向扩展，可以执行以下操作：
     - 增加配置服务器的数目。 例如，可以通过两台配置服务器来保护最多 400 台计算机。
@@ -85,8 +84,8 @@ ms.lasthandoff: 06/29/2017
 
 下表介绍了一种方案，在该方案中：
 
-* 你不打算使用配置服务器作为进程服务器。
-* 你已设置额外的进程服务器。
+* 不打算使用配置服务器作为进程服务器。
+* 已设置额外的进程服务器。
 * 现已将受保护的虚拟机配置为使用这个额外的进程服务器。
 * 每台受保护的源计算机配置为了三个磁盘，每个磁盘 100 GB。
 
@@ -96,7 +95,7 @@ ms.lasthandoff: 06/29/2017
 8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz），16 GB 内存 | 8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz），12 GB 内存 | 600 GB | 250 GB 到 1 TB | 复制 85-150 台计算机。
 12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz），18 GB 内存 | 12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz），24 GB 内存 | 1 TB | 1 TB 到 2 TB | 复制 150-225 台计算机。
 
-使用哪种方式来扩展服务器取决于你是偏好纵向扩展模型还是横向扩展模型。  纵向扩展时，需要部署一些高端配置服务器和进程服务器，而横向扩展时，需要使用更少资源部署更多服务器。 例如，如果需要对 220 台计算机进行保护，可执行以下操作之一：
+使用哪种方式来扩展服务器取决于是要纵向扩展模型还是横向扩展模型。  纵向扩展时，需要部署一些高端配置服务器和进程服务器，而横向扩展时，需要使用更少资源部署更多服务器。 例如，如果需要对 220 台计算机进行保护，可执行以下操作之一：
 
 * 使用 12 vCPU、18 GB 的内存设置配置服务器，使用 12 vCPU、24 GB 的内存设置附加的进程服务器。 将受保护的计算机配置为仅使用附加的进程服务器。
 * 设置两个配置服务器（2 x 8 vCPU，16 GB RAM）和两个附加的进程服务器（1 x 8 vCPU 和 4 vCPU x 1，可处理 135 + 85 [220] 台计算机）。 将受保护的计算机配置为仅使用附加的进程服务器。
@@ -124,12 +123,12 @@ ms.lasthandoff: 06/29/2017
 
     ![切换进程服务器](./media/vmware-walkthrough-capacity/migrate-ps3.png)
 3. 在“选择目标进程服务器”中，选择要使用的进程服务器，然后选择该服务器将要处理的 VM。
-4. 单击信息图标。 为了帮助你做出负载决策，随后会显示将每个所选 VM 复制到新进程服务器所需的平均空间。
-5. 单击复选标记，开始复制到新的进程服务器。
+4. 单击信息图标。 为了帮助用户做出负载决策，将显示把每个选定 VM 复制到新进程服务器所需的平均空间。
+5. 单击选中复选标记，开始复制到新进程服务器。
 
 ## <a name="control-network-bandwidth"></a>控制网络带宽
 
-在运行 [Deployment Planner 工具](site-recovery-deployment-planner.md)并计算复制（初始复制及后续增量）所需的带宽后，可以使用几个选项来控制用于复制的带宽量：
+运行[部署计划器工具](site-recovery-deployment-planner.md)计算复制（初始复制和增量复制）所需的带宽后，可以使用下列几个选项来控制用于复制的带宽量：
 
 * **限制带宽**：复制到 Azure 的 VMware 流量会经过特定的进程服务器。 可以在运行进程服务器的计算机上限制带宽。
 * **控制带宽**：可以使用几个注册表项来控制用于复制的带宽：
@@ -155,15 +154,14 @@ ms.lasthandoff: 06/29/2017
 
 ### <a name="influence-network-bandwidth-for-a-vm"></a>影响 VM 的网络带宽
 
-1. 在 VM 的注册表中，转到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsofte Azure Backup\Replication。
+1. 在 VM 注册表中，转到“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsofte Azure Backup\Replication”。
    * 若要影响复制磁盘上的带宽流量，请修改 **UploadThreadsPerVM** 的值，或者创建该项（如果不存在）。
    * 若要影响用于从 Azure 故障回复流量的带宽，请修改 **DownloadThreadsPerVM** 的值。
-2. 默认值为 4。 在预配过度的网络中，需要修改这些注册表项。 最大值为 32。 监视流量以优化值。
+2. 默认值为 4。 在过度预配的网络中，应修改这些注册表项。 最大值为 32。 监视流量以优化值。
 
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-转到[步骤 4：规划网络](vmware-walkthrough-network.md)。
-
+转到[第 4 步：计划网络](vmware-walkthrough-network.md)。

@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 8270a223ca31c623c1b760a64c0e4d64fb85e080
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-mobile-engagement---key-features"></a>Azure Mobile Engagement - 主要特性
 本文提供有关 Mobile Engagement 平台主要特性的高级概述。 
 
 ## <a name="general"></a>**常规**
 * **查找适用于所有重要平台的 SDK** 适用于所有重要平台（ iOS、Android、Universal Windows、 Windows Phone Silverlight、Kindle、Cordova）的 SDK。 
-  我们提供了易于集成的 SDK 和有用文档，帮助你就所选的任意平台轻松入门。 
+  我们变得简单提供集成 Sdk 和有用的文档，帮助你开始在所选的任何平台上。 
 * **独立的 SaaS 门户**允许轻松访问市场营销团队而无需浏览 Azure 管理门户。 
-* **开放式 REST API 的可用性**为了使用开放式平台 API 与 CRM/CMS/IT 系统集成并实现自动化，我们提供了开放式 REST API 和.NET SDK 来使用这些 API，它们允许你与 Mobile Engagement 轻松集成并实现自动化。 请参阅[此内容](mobile-engagement-api-authentication.md)来了解详细信息。 
-* **Power BI 连接器可用**你还可以取出关键分析图表并放入 Power BI 仪表板。 请参阅此[指南](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-mobile/)
+* **打开 REST api 的可用性**集成，并使用 CRM/CMS/IT 系统使用打开平台 Api 自动执行，我们提供打开的 REST Api 和.NET SDK 来使用这些 Api，它可以使您能够轻松地集成和与 Mobile Engagement 自动化。 请参阅[此内容](mobile-engagement-api-authentication.md)来了解详细信息。 
+* **Power BI 连接器可用**还拉入到 Power BI 仪表板的密钥的分析图表出。 请参阅此[指南](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-mobile/)
 * **安全和隐私保障**作为 Azure 系列的一部分，Azure Mobile Engagement 遵循有关云服务所需的安全性和隐私的所有标准最佳实践。
 
 ## <a name="actionable-analytics"></a>**可行性分析**
@@ -38,7 +37,8 @@ ms.lasthandoff: 12/08/2016
     ![][1]
   
     ![][2]        
-* **查看聚合数据**通过使用“分析”模块，还可以获得更加丰富的聚合分析数据视图，从而让你可以基于应用版本和时间段轻松筛选数据。
+* 
+              **查看聚合数据**通过使用“分析”模块，还可以获得更加丰富的聚合分析数据视图，从而让可以基于应用版本和时间段轻松筛选数据。
   
     ![][3]        
 * **深入了解用户和保留模式**
@@ -49,7 +49,8 @@ ms.lasthandoff: 12/08/2016
     ![][5]        
   
     ![][6]        
-* **找出应用用户访问的屏幕，以及如何优化用户路径**这有助于用户发现你希望他们看到的屏幕和功能。
+* 
+              **找出应用用户访问的屏幕，以及如何优化用户路径**这有助于用户发现希望他们看到的屏幕和功能。
   
     ![][7]        
   
@@ -57,12 +58,14 @@ ms.lasthandoff: 12/08/2016
 * **深入了解应用中的最常见事件，并基于这些事件了解业务流程** 
   
     ![][9]    
-* **跟踪常见错误和崩溃，深入了解你的开发团队**
+* 
+            **跟踪常见错误和崩溃，深入了解开发团队**
   
     ![][10]        
   
     ![][11]    
-* **了解用户是通过哪些设备和网络访问你的应用，从而优化应用** 
+* 
+            **了解用户是通过哪些设备和网络访问应用，从而优化应用** 
   
     ![][12]    
 
@@ -78,7 +81,8 @@ ms.lasthandoff: 12/08/2016
 * **发送有针对性的通知**以常用细分类别（如新/老用户等）为目标，或者发送给自定义创建的细分类别
   
     ![][16]    
-* **根据你的方案发送应用外/系统外推送通知以及基于 HTML 的丰富应用内推送通知**
+* 
+            **根据方案发送应用外/系统外推送通知以及基于 HTML 的丰富应用内推送通知**
   
     ![][17]    
   
@@ -95,21 +99,22 @@ ms.lasthandoff: 12/08/2016
 * **指定活动的开始和结束时间** 
   
     ![][22]    
-* 通过注册测试设备并将测试通知仅发送到此设备来**轻松测试通知** 。
+* 通过注册测试设备并将测试通知仅发送到此设备来**轻松测试通知**。
   
     ![][23]    
 * **轻松设置应用内通知以显示为快速轮询/调查**  
   
     ![][24]
-* 为你的通知**获取推送活动统计信息**，了解你通知有多成功。
+* 为通知**获取推送活动统计信息**，了解你通知有多成功。
   
     ![][25]    
-* **通过使用应用信息/标记和表情符号来轻松个性化你的通知** 
+* 
+            **通过使用应用信息/标记和表情符号来轻松个性化通知** 
   
     ![][26]    
   
     ![][27]    
-* **设置推送限制以防止向用户发送垃圾信息** 你肯定不希望向应用用户发送大量推送信息，像是发送垃圾信息一样。 这就是推送限制功能的作用，它允许你根据细分类别的粒度配置推送限制。 
+* **设置推送限制以防止垃圾邮件用户**你不想要将大量的推送发送到你的应用程序用户并遇到作为发送垃圾邮件。 这就是推送限制功能的作用，它允许根据细分类别的粒度配置推送限制。 
   
     ![][28]            
 
@@ -142,7 +147,6 @@ ms.lasthandoff: 12/08/2016
 [26]: ./media/mobile-engagement-key-features/push_personalized.png
 [27]: ./media/mobile-engagement-key-features/push_emoji.png
 [28]: ./media/mobile-engagement-key-features/push_limits.png
-
 
 
 

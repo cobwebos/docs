@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
 ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/14/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的软件更改
 
@@ -102,7 +101,7 @@ ms.lasthandoff: 08/14/2017
 
 下表显示“更改跟踪”的数据收集方法和其他数据收集方式的详细信息。
 
-| 平台 | 直接代理 | Operations Manager 代理 | Linux 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
+| 平台 | 直接代理 | Operations Manager 代理 | Linux 代理 | Azure 存储空间 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Windows 和 Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 耗时 5 分钟到 50 分钟，具体取决于更改类型。 有关详细信息，请参阅下表。 |
 
@@ -184,4 +183,3 @@ Log Analytics 通过“更改跟踪”解决方案执行 Windows 注册表监视
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)可查看详细的更改跟踪数据。
-

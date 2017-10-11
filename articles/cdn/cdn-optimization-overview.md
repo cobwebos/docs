@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>针对方案优化 Azure 内容传送
 
@@ -96,7 +95,7 @@ Verizon 的 Azure 内容传送网络使用常规 Web 传送优化类型来提供
 若要详细了解媒体流式处理优化，请参阅[媒体流式处理优化](cdn-media-streaming-optimization.md)。
 
 > [!NOTE]
-> 如果终结点主要用于点播视频内容，请使用此优化类型。 这种优化与常规媒体流式处理优化的主要区别在于连接重试超时。实时传送视频流方案的超时时间要短得多。
+> 如果终结点主要用于点播视频内容，请使用此优化类型。 这种优化与常规媒体流式处理优化的主要区别在于连接重试超时。 实时传送视频流方案的超时时间要短得多。
 
 ### <a name="large-file-download"></a>大文件下载
 
@@ -115,7 +114,6 @@ Verizon 的 Azure 内容传送网络使用常规 Web 传送优化类型来提供
 动态站点加速包括各种对动态内容延迟和性能有益的技术。 这些技术包括路由和网络优化、TCP 优化等。 
 
 此优化可用于加速许多响应都不可缓存的 Web 应用。 例如，搜索结果、签出事务或实时数据。 可以继续对静态数据使用核心 CDN 缓存功能。 
-
 
 
 

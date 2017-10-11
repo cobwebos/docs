@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
 ms.openlocfilehash: 8817b511d779029421491194b50120d51ec9dbad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="overview-of-microsoft-azure-data-lake-analytics"></a>Microsoft Azure Data Lake Analytics 概述
 ## <a name="what-is-azure-data-lake-analytics"></a>什么是 Azure Data Lake Analytics？
@@ -28,16 +27,17 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
 ## <a name="key-capabilities"></a>关键功能
 * **动态缩放**
   
-    Data Lake Analytics 是针对云缩放和性能需求进行构建的。  它能动态地预配资源并让你以千吉字节甚至百亿亿字节为单位进行分析。 当作业完成时，它自动释放资源，你仅需为所用的处理功能付费。 增加或减少存储数据的大小或使用的计算资源量时，无需重写代码。 用户可仅关注自己的业务逻辑，而非如何处理和存储大数据集。
+    Data Lake Analytics 是针对云缩放和性能需求进行构建的。  它能动态地预配资源并让你以千吉字节甚至百亿亿字节为单位进行分析。 当作业完成时，它自动释放资源，仅需为所用的处理功能付费。 增加或减少存储数据的大小或使用的计算资源量时，无需重写代码。 用户可仅关注自己的业务逻辑，而非如何处理和存储大数据集。
 * **使用熟悉的工具更快开发、更智能调试和优化**
   
-    Data Lake Analytics 与 Visual Studio 深度集成，从而你可以使用熟悉的工具运行、调试和调整你的代码。 U-SQL 作业可视化允许你看见你的代码如何大规模运行，因此你可以轻松找到性能瓶颈并优化成本。
+    数据湖分析具有与 Visual Studio 中，深度集成，因此你可以使用熟悉的工具来运行、 调试和优化你的代码。 U-SQL 作业可视化允许看见代码如何大规模运行，因此可以轻松找到性能瓶颈并优化成本。
 * **U-SQL：简单熟悉、功能强大且易于扩展**
   
     Data Lake Analytics 包含 U-SQL，这是一种查询语言，扩展了 SQL 的简单熟悉的声明性本质和 C# 的表现力。 U-SQL 语言基于在 Microsoft 内部支持大数据系统的同一分布式运行时。 现在，数以百万计的 SQL 和 .NET 开发人员可以凭借自身已有的技能处理和分析自己的数据。
-* **与你的 IT 投资无缝集成**
+* 
+            **与 IT 投资无缝集成**
   
-    Data Lake Analytics 可以使用你现有的 IT 投资进行识别、管理、安全和数据仓库工作来应对这个挑战。 此方法简化了数据管理，使当前的数据应用程序更容易扩展。 Data Lake Analytics 与适用于用户管理和权限的 Active Directory 集成且随附内置监视与审核功能。
+    Data Lake Analytics 可以使用现有的 IT 投资进行识别、管理、安全和数据仓库工作来应对这个挑战。 此方法简化了数据管理，使当前的数据应用程序更容易扩展。 Data Lake Analytics 与适用于用户管理和权限的 Active Directory 集成且随附内置监视与审核功能。
 * **价格合理且经济高效**
   
     Data Lake Analytics 是用于运行大数据工作负荷的经济高效的解决方案。 处理数据时按每个作业付费。 无需硬件、许可证或服务特定的支持协议。 作业开始和完成时，系统自动缩放大小，所以你永远无需为你所需之外的东西付费。
@@ -50,4 +50,3 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
   * 通过 [Azure 门户](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli2.md) 使用 Data Lake Analytics 入门
   * 使用 [Azure 门户](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md) 管理 Azure Data Lake Analytics
   * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md) 
-

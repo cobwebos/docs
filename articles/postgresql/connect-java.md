@@ -11,14 +11,12 @@ ms.custom: mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 93ee612764e8f74943e0a847969fb1220b3bdee1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.openlocfilehash: 730a3f464b4437c260d09abc026a186a0e26293c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Java 进行连接并查询数据
 本快速入门演示了如何使用 Java 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Java 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
@@ -27,7 +25,7 @@ ms.lasthandoff: 06/26/2017
 - [创建 DB - 门户](quickstart-create-server-database-portal.md)
 - [创建 DB - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-你还需要：
+还需要：
 - 下载与 Java 版本和 Java 开发工具包匹配的 [PostgreSQL JDBC 驱动程序](https://jdbc.postgresql.org/download.html)。
 - 在应用程序类路径中包括 PostgreSQL JDBC jar 文件（例如 postgresql-42.1.1.jar）。 有关详细信息，请参阅[类路径详细信息](https://jdbc.postgresql.org/documentation/head/classpath.html)。
 
@@ -391,4 +389,3 @@ public class DeleteTable {
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
-

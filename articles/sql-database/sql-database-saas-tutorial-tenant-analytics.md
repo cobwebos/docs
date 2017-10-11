@@ -16,19 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 4e32407d5f321198358e07980907c3420aaf56c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="extract-data-from-tenant-databases-into-an-analytics-database-for-offline-analysis"></a>将租户数据库中的数据提取到分析数据库以供离线分析
 
 在本教程中，将使用弹性作业对每个租户数据库运行查询。 此作业会提取门票销售数据，并将数据加载到分析数据库（或数据仓库）中，以供分析。 然后查询分析数据库，以便从所有租户的日常运行数据中提取见解。
 
 
-本教程将介绍如何执行下列操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建租户分析数据库
@@ -70,8 +69,8 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 1. 打开 SSMS 并连接到 catalog-&lt;user&gt;.database.windows.net 服务器
 1. 打开 ...\\Learning Modules\\Operational Analytics\\Tenant Analytics\\*TicketPurchasesfromAllTenants.sql*
 1. 修改 &lt;User&gt;，使用在部署脚本 **sp\_add\_target\_group\_member** 和 **sp\_add\_jobstep** 顶部的 Wingtip SaaS 应用时使用过的用户名
-1. 通过右键单击选择“连接”，然后连接到 catalog-&lt;User&gt;.database.windows.net 服务器（如果尚未连接）
-1. 确保已连接到 **jobaccount** 数据库，然后按 **F5** 运行该脚本
+1. 通过右键单击选择“连接”，并连接到 catalog-&lt;User&gt;.database.windows.net 服务器（如果尚未连接）
+1. 确保已连接到 **jobaccount** 数据库，并按 **F5** 运行该脚本
 
 * **sp\_add\_target\_group** 创建目标组名称 *TenantGroup*，现在需添加目标成员。
 * **sp\_add\_target\_group\_member** 添加 *server* 目标成员类型，该类型认定在作业执行时位于该服务器（请注意，这是包含租户数据库的 customer1-&lt;User&gt; 服务器）中的所有数据库都应包括在作业中。
@@ -90,8 +89,8 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 1. 打开 SSMS 并连接到 *catalog-&lt;User&gt;.database.windows.net* 服务器
 1. 打开 …\\Learning Modules\\Provision and Catalog\\Operational Analytics\\Tenant Analytics\\*Results-TicketPurchasesfromAllTenants.sql* 文件
 1. 修改 &lt;User&gt;，使用在脚本（位于 **sp\_add\_jobstep** 存储过程中）中部署 Wingtip SaaS 应用时使用过的用户名
-1. 通过右键单击选择“连接”，然后连接到 catalog-&lt;User&gt;.database.windows.net 服务器（如果尚未连接）
-1. 确保已连接到 **tenantanalytics** 数据库，然后按 **F5** 运行该脚本
+1. 通过右键单击选择“连接”，并连接到 catalog-&lt;User&gt;.database.windows.net 服务器（如果尚未连接）
+1. 确保已连接到 **tenantanalytics** 数据库，并按 **F5** 运行该脚本
 
 成功运行该脚本生成的结果应类似：
 
@@ -120,4 +119,3 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 
 * 其他[基于 Wingtip SaaS 应用程序编写的教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [弹性作业](sql-database-elastic-jobs-overview.md)
-

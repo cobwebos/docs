@@ -15,18 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: c15dc66718a855e22f8109448cb8c8a23787b9bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>使用 HPC Pack IaaS 部署脚本创建 Linux 高性能计算 (HPC) 群集
-运行 HPC Pack IaaS 部署 PowerShell 脚本，以便为 Azure 虚拟机中的 Linux 工作负荷部署完整的 HPC Pack 2012 R2 群集。 群集包含一个运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点和多个运行 HPC Pack 支持的 Linux 分发之一的计算节点。 如果想要在 Azure 中部署适用于 Windows 工作负荷的 HPC Pack 群集，请参阅 [Create a Windows HPC cluster with the HPC Pack IaaS deployment script](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（使用 HPC Pack IaaS 部署脚本创建 Windows HPC 群集）。 你还可以使用 Azure 资源管理器模板来部署 HPC Pack 群集。 有关示例，请参阅 [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)（使用 Linux 计算节点创建 HPC 群集）。
+运行 HPC Pack IaaS 部署 PowerShell 脚本，以便为 Azure 虚拟机中的 Linux 工作负荷部署完整的 HPC Pack 2012 R2 群集。 群集包含一个运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点和多个运行 HPC Pack 支持的 Linux 分发之一的计算节点。 如果想要在 Azure 中部署适用于 Windows 工作负荷的 HPC Pack 群集，请参阅 [Create a Windows HPC cluster with the HPC Pack IaaS deployment script](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（使用 HPC Pack IaaS 部署脚本创建 Windows HPC 群集）。 还可以使用 Azure Resource Manager 模板来部署 HPC Pack 群集。 有关示例，请参阅 [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)（使用 Linux 计算节点创建 HPC 群集）。
 
 > [!IMPORTANT] 
-> 本文中介绍的 PowerShell 脚本使用经典部署模型在 Azure 中创建 Microsoft HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用资源管理器模型。
+> 本文中介绍的 PowerShell 脚本使用经典部署模型在 Azure 中创建 Microsoft HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 > 此外，本文中所述的脚本不支持 HPC Pack 2016。
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
@@ -81,7 +80,7 @@ ms.lasthandoff: 03/27/2017
   如果发生此错误，请对失败的部署重新运行该脚本。
 * **从 Azure 虚拟网络访问 Internet 时出现问题**。 如果使用部署脚本创建具有新域控制器的 HPC Pack 群集，或将头节点 VM 手动提升为域控制器，则将 Azure 虚拟网络中的 VM 连接到 Internet 时可能会遇到问题。 如果已在域控制器上自动配置转发器 DNS 服务器，但此转发器 DNS 服务器未正确解析，则会出现这种情况。
   
-    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 为此，请在服务器管理器中单击“工具” > “DNS”打开 DNS 管理器，然后双击“转发器”。
+    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 为此，请在服务器管理器中单击“工具” > “DNS”打开 DNS 管理器，并双击“转发器”。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](hpcpack-cluster.md)，了解有关支持的 Linux 分发、移动数据、以及使用 Linux 计算节点将作业提交到 HPC Pack 群集的信息。
@@ -89,5 +88,4 @@ ms.lasthandoff: 03/27/2017
   * [在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD](hpcpack-cluster-namd.md)
   * [在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 OpenFOAM](hpcpack-cluster-openfoam.md)
   * [在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 STAR-CCM+](hpcpack-cluster-starccm.md)
-
 

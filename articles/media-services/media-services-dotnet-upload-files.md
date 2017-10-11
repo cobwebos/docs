@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 08dfdb54db0655bc025f8c268988804b069f70c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: ec8c1da633374ba684f6a0a895c542ee76ef73b8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户
 > [!div class="op_single_selector"]
@@ -44,24 +43,25 @@ ms.lasthandoff: 03/14/2017
 
 在创建资产时，可以指定以下加密选项。 
 
-* **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。
+* **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
   如果计划使用渐进式下载交付 MP4，则使用此选项。 
 * **CommonEncryption** - 上传经过通用加密或 PlayReady DRM 加密并保护的内容（例如，受 PlayReady DRM 保护的平滑流式处理）时使用此选项。
 * **EnvelopeEncrypted** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
-* **StorageEncrypted** - 使用 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+* 
+            **StorageEncrypted** - 使用 AES-256 位加密在本地加密明文内容，并将其上传到 Azure Storage 中以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
   
     媒体服务为资产提供磁盘上的存储加密，而不是通过数字权限管理器 (DRM) 等线路提供加密。
   
-    如果你的资产已经过存储加密，则必须配置资产传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)。
+    如果资产已经过存储加密，则必须配置资产传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)。
 
 如果指定使用 **CommonEncrypted** 选项或 **EnvelopeEncypted** 选项加密资产，则需要将资产关联到 **ContentKey**。 有关详细信息，请参阅[如何创建 ContentKey](media-services-dotnet-create-contentkey.md)。 
 
-如果指定使用 **StorageEncrypted** 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 **StorateEncrypted** **ContentKey**。
+如果指定使用 **StorageEncrypted** 选项加密资产，适用于 .NET 的媒体服务 SDK 为资产创建 **StorateEncrypted****ContentKey**。
 
 本主题说明如何使用媒体服务.NET SDK 以及媒体服务.NET SDK 扩展将文件上传到媒体服务资产中。
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 上传单个文件
-以下示例代码使用 .NET SDK 上载单个文件。 AccessPolicy 和 Locator 由 Upload 函数创建和销毁。 
+以下示例代码使用 .NET SDK 上传单个文件。 AccessPolicy 和 Locator 由 Upload 函数创建和销毁。 
 
 
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -89,7 +89,7 @@ ms.lasthandoff: 03/14/2017
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 上传多个文件
 以下代码演示如何创建资产及上传多个文件。
 
-代码将执行以下操作：
+代码执行以下操作：
 
 * 使用上一步中定义的 CreateEmptyAsset 方法创建一个空资产。
 * 创建用于定义权限以及资产访问持续时间的 **AccessPolicy** 实例。
@@ -164,13 +164,13 @@ ms.lasthandoff: 03/14/2017
 上传大量资产时，请注意以下事项。
 
 * 每个线程创建一个新的 **CloudMediaContext** 对象。 **CloudMediaContext** 类不是线程安全的。
-* 将 NumberOfConcurrentTransfers 从默认值 2 增加到更高的值（如 5）。 设置此属性将影响 **CloudMediaContext** 的所有实例。 
+* 将 NumberOfConcurrentTransfers 从默认值 2 增加到更高的值（如 5）。 设置此属性会影响 **CloudMediaContext**的所有实例。 
 * 将 ParallelTransferThreadCount 保留为默认值 10。
 
 ## <a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产
-上传大型资产文件可能在资产创建过程中形成瓶颈。 批量引入资产（简称“批量引入”）涉及到将资产创建过程与上传过程分离。 若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。 然后，你可以使用所选上传方法将关联的文件上传到该清单的 Blob 容器。 Microsoft Azure 媒体服务将会监视与清单关联的 Blob 容器。 文件上传到 Blob 容器后，Microsoft Azure 媒体服务将基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
+上传大型资产文件可能在资产创建过程中形成瓶颈。 批量引入资产（简称“批量引入”）涉及到将资产创建过程与上传过程分离。 若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。 然后，可以使用所选上传方法将关联的文件上传到该清单的 Blob 容器。 Microsoft Azure 媒体服务会监视与清单关联的 Blob 容器。 文件上传到 Blob 容器后，Microsoft Azure 媒体服务将基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
 
-若要创建新的 IngestManifest，请调用通过 CloudMediaContext 中的 IngestManifests 集合公开的 Create 方法。 此方法将使用你提供的清单名称创建一个新的 IngestManifest。
+若要创建新的 IngestManifest，请调用通过 CloudMediaContext 中的 IngestManifests 集合公开的 Create 方法。 此方法会使用你提供的清单名称创建一个新的 IngestManifest。
 
     IIngestManifest manifest = context.IngestManifests.Create(name);
 
@@ -182,7 +182,7 @@ ms.lasthandoff: 03/14/2017
 
 一个 IngestManifestAsset 将一个资产与一个用于批量引入的批量 IngestManifest 相关联。 它还关联构成每个资产的 AssetFiles。 若要创建 IngestManifestAsset，请使用服务器上下文中的 Create 方法。
 
-以下示例演示如何添加两个新的 IngestManifestAssets，这两项将以前创建的两个资产关联到批量引入清单。 每个 IngestManifestAsset 还关联一组将在批量引入期间为每个资产上传的文件。  
+以下示例演示如何添加两个新的 IngestManifestAssets，这两项以前创建的两个资产关联到批量引入清单。 每个 IngestManifestAsset 还关联一组会在批量引入期间为每个资产上传的文件。  
 
     string filename1 = _singleInputMp4Path;
     string filename2 = _primaryFilePath;
@@ -191,7 +191,7 @@ ms.lasthandoff: 03/14/2017
     IIngestManifestAsset bulkAsset1 =  manifest.IngestManifestAssets.Create(destAsset1, new[] { filename1 });
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 
-可以使用任何能够将资产文件上传到 blob 存储容器 URI（由 IngestManifest 的 **IIngestManifest.BlobStorageUriForUpload** 属性提供）的高速客户端应用程序。 一个明显的高速上传服务就是 [Aspera On Demand for Azure 应用程序](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6)。 你还可以编写代码来上传资产文件，如以下代码示例所示。
+可以使用任何能够将资产文件上传到 blob 存储容器 URI（由 IngestManifest 的 **IIngestManifest.BlobStorageUriForUpload** 属性提供）的高速客户端应用程序。 一个明显的高速上传服务就是 [Aspera On Demand for Azure 应用程序](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6)。 还可以编写代码来上传资产文件，如以下代码示例所示。
 
     static void UploadBlobFile(string destBlobURI, string filename)
     {
@@ -262,7 +262,7 @@ ms.lasthandoff: 03/14/2017
 
 
 ## <a name="upload-files-using-net-sdk-extensions"></a>使用 .NET SDK 扩展上传文件
-以下示例演示如何使用 .NET SDK 扩展上传单个文件。 在此情况下，将使用 **CreateFromFile** 方法，但也可以使用异步版本 (**CreateFromFileAsync**)。 **CreateFromFile** 方法可让你指定文件名、加密选项和回叫，以报告文件的上传进度。
+以下示例演示如何使用 .NET SDK 扩展上传单个文件。 在此情况下，使用 **CreateFromFile** 方法，但也可以使用异步版本 (**CreateFromFileAsync**)。 **CreateFromFile**方法允许你指定的文件名、 加密选项和回调以报告文件的上载进度。
 
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
@@ -279,13 +279,13 @@ ms.lasthandoff: 03/14/2017
         return inputAsset;
     }
 
-以下示例将调用 UploadFile 函数，并指定存储加密作为资产创建选项。  
+以下示例调用 UploadFile 函数，并指定存储加密作为资产创建选项。  
 
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以对上载的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。
+现在可以对上传的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。
 
 还可以使用 Azure Functions，基于传入到所配置容器中的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
 
@@ -299,5 +299,4 @@ ms.lasthandoff: 03/14/2017
 将资产上传到媒体服务后，请转到[如何获取媒体处理器][How to Get a Media Processor]主题。
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 8e2f9f979f8b94e0c043d4db6e93bd7a53c3dd27
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>教程：Azure Active Directory 与 Perception United States (Non-UltiPro) 的集成
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/28/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Perception United States (Non-UltiPro) 测试用户](#create-a-perception-united-states-non-ultipro-test-user)** - 在 Perception United States (Non-UltiPro) 中创建 Britta Simon 的对应用户，并将其链接到她在 Azure AD 中的表示形式。
+3. **[创建一个感知 United States (非 UltiPro) 测试用户](#create-a-perception-united-states-non-ultipro-test-user)** -若要在感知美国 (非 UltiPro) 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 07/28/2017
     > [!NOTE] 
     > 此值不是真实值。 用户将使用实际的回复 URL 更新该值（本教程稍后将会介绍）。
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_certificate.png) 
 
@@ -198,9 +197,9 @@ ms.lasthandoff: 07/28/2017
 
     ![“用户”对话框](./media/active-directory-saas-perceptionunitedstates-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -267,5 +266,4 @@ ms.lasthandoff: 07/28/2017
 [201]: ./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_general_203.png
-
 

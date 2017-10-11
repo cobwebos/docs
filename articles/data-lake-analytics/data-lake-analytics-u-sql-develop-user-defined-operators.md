@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>开发 U-SQL 用户定义的运算符 (UDO)
 了解如何开发用户定义的运算符以处理 U-SQL 作业中的数据。
@@ -31,7 +30,7 @@ ms.lasthandoff: 06/20/2017
 
 1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”>“U-SQL 项目”。
 2. 单击“确定”。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
-3. 在“解决方案资源管理器”中，展开 Script.usql，然后单击 “Script.usql.cs”。
+3. 在“解决方案资源管理器”中，展开 Script.usql，并单击 “Script.usql.cs”。
 4. 将以下代码粘贴到文件中：
 
         using Microsoft.Analytics.Interfaces;
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/20/2017
                 }
             }
         }
-6. 打开 **Script.usql**，然后粘贴以下 U-SQL 脚本：
+6. 打开 **Script.usql**，并粘贴以下 U-SQL 脚本：
 
         @drivers =
             EXTRACT UserID      string,
@@ -119,19 +118,18 @@ ms.lasthandoff: 06/20/2017
             TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
 7. 指定 Data Lake Analytics 帐户、数据库和架构。
-8. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“生成脚本”。
-9. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“提交脚本”。
-10. 如果尚未连接到 Azure 订阅，系统将提示输入 Azure 帐户凭据。
+8. 在“解决方案资源管理器”中，右键单击“Script.usql”，并单击“生成脚本”。
+9. 在“解决方案资源管理器”中，右键单击“Script.usql”，并单击“提交脚本”。
+10. 如果你尚未连接到你的 Azure 订阅，系统将提示输入 Azure 帐户凭据。
 11. 单击“提交”。 完成提交后，“结果”窗口中会出现提交结果和作业链接。
 12. 单击“刷新”按钮以查看最新的作业状态和刷新屏幕。
 
 **查看输出**
 
-1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击“默认存储”，然后单击“资源管理器”。
-2. 展开示例、展开输出，然后双击 “Drivers.csv”。
+1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击“默认存储”，并单击“资源管理器”。
+2. 展开示例、展开输出，并双击 “Drivers.csv”。
 
 ## <a name="see-also"></a>另请参阅
 * [通过 PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
 * [使用适用于 Visual Studio 的工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)
-

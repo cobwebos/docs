@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0974b9eda2cb7e3ba54a4a0fad0a768db644caf9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="step-11-run-a-test-failover-for-hyper-v-replication-to-azure"></a>步骤 11：为到 Azure 的 Hyper-V 复制运行测试故障转移
 
 本文介绍了如何使用 Azure 门户中的 [Azure Site Recovery](site-recovery-overview.md) 服务为从本地 Hyper-V 虚拟机（未由 System Center VMM 管理的）到 Azure 的复制运行测试故障转移。
@@ -46,7 +44,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="network-considerations"></a>网络注意事项
     
 - 你可以设置要为故障转移后的 Azure VM 使用的目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移会失败。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
-- 网络适配器数目根据你为目标虚拟机指定的大小来确定，如下所述：
+- 网络适配器数目根据为目标虚拟机指定的大小来确定，如下所述：
     - 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
     - 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
     - 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。     
@@ -100,5 +98,4 @@ ms.lasthandoff: 08/22/2017
 
 - [详细了解](site-recovery-failover.md)不同类型的故障转移，以及如何运行它们。
 - [详细了解故障回复](site-recovery-failback-from-azure-to-hyper-v.md)，以便将 Azure VM 故障回复和复制回本地 Hyper-V 站点。
-
 

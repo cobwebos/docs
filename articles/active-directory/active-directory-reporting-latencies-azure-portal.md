@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 93cb0baeab8f13f81257ed1bd32ed08561c54b72
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
@@ -91,4 +90,3 @@ Azure Active Directory 使用自适应机器学习算法和试探法来检测与
 - [Azure Active Directory 门户中的“有风险的登录”报表](active-directory-reporting-security-risky-sign-ins.md)
 
 如果想要深入了解风险事件，请参阅 [Azure Active Directory 风险事件](active-directory-reporting-risk-events.md)。
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 49211b35ab3e28e0df914061e7fa623907935638
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envoy"></a>教程：Azure Active Directory 与 Envoy 的集成
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/16/2017
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要配置 Azure AD 与 Envoy 的集成，需要以下项：
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 08/16/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Envoy
-2. 配置和测试 Azure AD 单一登录
+2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-envoy-from-the-gallery"></a>从库中添加 Envoy
 要配置 Envoy 与 Azure AD 的集成，需要从库中将 Envoy 添加到托管 SaaS 应用列表。
@@ -250,5 +249,4 @@ ms.lasthandoff: 08/16/2017
 [201]: ./media/active-directory-saas-envoy-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-envoy-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-envoy-tutorial/tutorial_general_203.png
-
 

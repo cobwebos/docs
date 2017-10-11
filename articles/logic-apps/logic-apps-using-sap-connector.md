@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="connect-to-an-on-premises-sap-system-from-logic-apps-with-the-sap-connector"></a>使用 SAP 连接器从逻辑应用连接到本地 SAP 系统 
 
 通过本地数据网关可管理数据并安全访问本地资源。 本主题说明如何将逻辑应用连接到本地 SAP 系统。 在此示例中，逻辑应用通过 HTTP 请求 IDOC 并返回响应。    
@@ -92,4 +90,3 @@ SAP 连接器包含操作，但不包含触发器。 因此，必须在工作流
 
 - 了解如何在 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 中验证、转换，以及其他类似 BizTalk 的功能。 
 - 从逻辑应用[连接到本地数据](../logic-apps/logic-apps-gateway-connection.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>在 Resource Manager 模板中设置子资源的名称和类型
 创建模板时，通常需要包括与父资源相关的子资源。 例如，模板可以包括 SQL Server 和数据库。 SQL Server 是父资源，数据库是子资源。 
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/02/2017
 
 子资源名称的格式为：`{parent-resource-name}/{child-resource-name}`
 
-但是，你可以根据它是嵌套在父资源中，还是独自在最高级别，以不同方式在模板中指定类型和名称。 本主题演示如何处理这两种方法。
+但是，可以根据它是嵌套在父资源中，还是独自在最高级别，以不同方式在模板中指定类型和名称。 本主题演示如何处理这两种方法。
 
 向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。  相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列：
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 06/02/2017
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
 ## <a name="nested-child-resource"></a>嵌套的子资源
-定义子资源的最简单方法是将其嵌套在父资源中。 以下示例演示了 SQL Server 中嵌套的 SQL 数据库。
+要定义子资源，最简单的方式是将其嵌套在父资源中。 以下示例演示了 SQL Server 中嵌套的 SQL 数据库。
 
 ```json
 {
@@ -87,4 +86,3 @@ ms.lasthandoff: 06/02/2017
 ## <a name="next-steps"></a>后续步骤
 * 有关如何创建模板的建议，请参阅 [Best practices for creating Azure Resource Manager templates](resource-manager-template-best-practices.md)（创建 Azure Resource Manager 模板的最佳做法）。
 * 有关创建多个子资源的示例，请参阅[在 Azure Resource Manager 模板中部署多个资源实例](resource-group-create-multiple.md)。
-

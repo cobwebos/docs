@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="stored-procedures-in-sql-data-warehouse"></a>SQL 数据仓库中的存储过程
 SQL 数据仓库支持 SQL Server 中提供的许多 Transact-SQL 功能。 更重要的是，我们可以利用特定的扩大功能将解决方案的性能最大化。
@@ -46,7 +45,7 @@ SQL 数据仓库最多支持 8 个嵌套级别。 这与 SQL Server 稍有不同
 ```sql
 EXEC prc_nesting
 ```
-如果存储过程还调用另一个 EXEC，则嵌套级别将增加到 2
+如果存储过程还调用另一个 EXEC，则嵌套级别增加到 2
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -65,10 +64,10 @@ GO
 EXEC prc_nesting
 ```
 
-请注意，SQL 数据仓库当前不支持 @@NESTLEVEL。 将需要自行保持跟踪嵌套级别。 不太可能达到 8 个嵌套级别的限制，但如果达到，则你需要重新处理代码并将其“平整化”，使其符合此限制。
+请注意，SQL 数据仓库当前不支持 @@NESTLEVEL。 将需要自行保持跟踪嵌套级别。 不太可能达到 8 个嵌套级别的限制，但如果达到，则需要重新处理代码并将其“平整化”，使其符合此限制。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
-SQL 数据仓库不允许通过 INSERT 语句使用存储过程的结果集。 但是，你可以使用替代方法。
+SQL 数据仓库不允许通过 INSERT 语句使用存储过程的结果集。 但是，可以使用替代方法。
 
 有关此方法的示例，请参阅以下有关[临时表]的文章。
 
@@ -102,4 +101,3 @@ SQL 数据仓库中未实现 Transact-SQL 存储过程的某些方面。
 [nest level]: https://msdn.microsoft.com/library/ms187371.aspx
 
 <!--Other Web references-->
-

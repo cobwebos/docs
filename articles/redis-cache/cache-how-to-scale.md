@@ -1,6 +1,6 @@
 ---
 title: "如何缩放 Azure Redis 缓存 | Microsoft Docs"
-description: "了解如何缩放你的 Azure Redis 缓存实例"
+description: "了解如何缩放 Azure Redis 缓存实例"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 91b3580491a1e3504a3891b66606a9bd18c0638f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>如何缩放 Azure Redis 缓存
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何通过 Azure 门户以及使用 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
@@ -27,7 +26,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 ## <a name="when-to-scale"></a>何时缩放
 可以使用 Azure Redis 缓存的[监视](cache-how-to-monitor.md)功能来监视缓存的运行状况和性能，并帮助确定何时缩放缓存。 
 
-你可以监视以下指标以帮助确定是否需要进行缩放。
+可以监视以下指标以帮助确定是否需要进行缩放。
 
 * Redis 服务器负载
 * 内存用量
@@ -37,11 +36,11 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 如果确定缓存不再满足应用程序的要求，可以更改到应用程序所需的更大或更小缓存定价层。 有关确定应使用哪个缓存定价层的详细信息，请参阅[我应当使用哪些 Redis 缓存产品/服务和大小](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)。
 
 ## <a name="scale-a-cache"></a>缩放缓存
-若要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[浏览到缓存](cache-configure.md#configure-redis-cache-settings)，然后从“资源菜单”单击“缩放”。
+若要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[浏览到缓存](cache-configure.md#configure-redis-cache-settings)，然后从“资源”菜单单击“缩放”。
 
 ![缩放](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-从“选择定价层”边栏选项卡选择所需的定价层，然后单击“选择”。
+从“选择定价层”边栏选项卡选择所需的定价层，并单击“选择”。
 
 ![定价层][redis-cache-pricing-tier-blade]
 
@@ -51,11 +50,11 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * 不能从较高的定价层缩放到较低的定价层。
   * 不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
   * 不能从**标准**缓存向下缩放到**基本**缓存。
-* 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果你需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
-* 不能从**基本**缓存直接缩放到**高级**缓存。 必须在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
+* 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
+* 不能从**基本**缓存直接缩放到**高级**缓存。 必须在一个缩放操作中从**基本**缩放到**标准**，并在后续的缩放操作中从**标准**缩放到**高级**。
 * 不能从较大的大小减小为 **C0 (250 MB)**。
  
-当缓存缩放到新的定价层，将在“Redis 缓存”边栏选项卡中显示**缩放**状态。
+当缓存缩放到新的定价层，会在“Redis 缓存”边栏选项卡中显示**缩放**状态。
 
 ![扩展][redis-cache-scaling]
 
@@ -119,7 +118,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 ### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>可以向上缩放到高级缓存，或在其中向下缩放吗？
 * 不能从**高级**缓存向下缩放到**基本**或**标准**定价层。
 * 可以从一个**高级**缓存定价层缩放到另一个高级缓存定价层。
-* 不能从**基本**缓存直接缩放到**高级**缓存。 必须先在一个缩放操作中从**基本**缩放到**标准**，然后再在后续的缩放操作中从**标准**缩放到**高级**。
+* 不能从**基本**缓存直接缩放到**高级**缓存。 必须先在一个缩放操作中从**基本**缩放到**标准**，再在后续的缩放操作中从**标准**缩放到**高级**。
 * 如果在创建**高级**缓存时启用了群集，则可以[更改群集大小](cache-how-to-premium-clustering.md#cluster-size)。 如果缓存创建为不启用群集功能，稍后将无法配置群集功能。
   
   有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
@@ -141,9 +140,9 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 某些定价层具有不同的[数据库限制](cache-configure.md#databases)，因此，如果在缓存创建过程中为 `databases` 设置配置了自定义值，则在向下缩放时需注意一些注意事项。
 
 * 缩放到的定价层的 `databases` 限制低于当前层：
-  * 如果你使用的是默认 `databases` 数（对于所有定价层来说为 16），则不会丢失数据。
-  * 如果你使用的是在你要缩放到的层的限制内的自定义 `databases` 数，则将保留此 `databases` 设置并且不会丢失数据。
-  * 如果你使用的是超出新层限制的自定义 `databases` 数，则 `databases` 设置将降低到新层的限制，并且已删除数据库中的所有数据都将丢失。
+  * 如果使用的是默认 `databases` 数（对于所有定价层来说为 16），则不会丢失数据。
+  * 如果使用的是在要缩放到的层的限制内的自定义 `databases` 数，则将保留此 `databases` 设置并且不会丢失数据。
+  * 如果使用的是超出新层限制的自定义 `databases` 数，则 `databases` 设置将降低到新层的限制，并且已删除数据库中的所有数据都将丢失。
 * 所缩小到的定价层的 `databases` 限制等于或高于当前层时，将保留 `databases` 设置并且不会丢失数据。
 
 注意，当标准和高级缓存有 99.9% 可用性 SLA 时，则没有数据丢失方面的 SLA。
@@ -156,8 +155,8 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * 不能从较高的定价层缩放到较低的定价层。
   * 不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
   * 不能从**标准**缓存向下缩放到**基本**缓存。
-* 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果你需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
-* 不能从**基本**缓存直接缩放到**高级**缓存。 必须先在一个缩放操作中从**基本**缩放到**标准**，然后再在后续的缩放操作中从**标准**缩放到**高级**。
+* 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
+* 不能从**基本**缓存直接缩放到**高级**缓存。 必须先在一个缩放操作中从**基本**缩放到**标准**，再在后续的缩放操作中从**标准**缩放到**高级**。
 * 不能从较大的大小减小为 **C0 (250 MB)**。
 
 如果缩放操作失败，该服务将尝试还原操作并且缓存将还原为初始大小。
@@ -173,7 +172,6 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
-
 
 
 

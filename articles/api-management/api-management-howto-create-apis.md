@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 496aa7754b35877900da020283c8b7efe0e04cef
-
-
+ms.openlocfilehash: ab08256fbc3caca05bf23a12016ad2acf4fc7412
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-create-apis-in-azure-api-management"></a>如何在 Azure API 管理中创建 API
-API 管理中的 API 表示一组可由客户端应用程序调用的操作。 在发布者门户中创建新的 API，然后添加所需的操作。 一旦添加操作，该 API 添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
+API 管理中的 API 表示一组可由客户端应用程序调用的操作。 在发布者门户中创建新的 API，并添加所需的操作。 一旦添加操作，该 API 添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
 
 本指南演示此过程的第一步：如何在 API 管理中创建和配置新的 API。 有关添加操作和发布产品的详细信息，请参阅[如何将操作添加到 API][How to add operations to an API]以及[如何创建和发布产品][How to create and publish a product]。
 
-## <a name="create-new-api"> </a>创建新的 API
+## <a name="create-new-api"> </a>创建新 API
 API 在发布者门户中创建并发布。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。
 
 ![发布者门户][api-management-management-console]
@@ -34,7 +34,7 @@ API 在发布者门户中创建并发布。 若要访问发布者门户，请在
 > 
 > 
 
-单击左侧“API 管理”菜单中的“API”，然后单击“添加 API”。
+单击左侧“API 管理”菜单中的“API”，并单击“添加 API”。
 
 ![创建 API][api-management-create-api]
 
@@ -48,7 +48,7 @@ API 在发布者门户中创建并发布。 若要访问发布者门户，请在
 * **Web 服务 URL** 引用执行该 API 的 HTTP 服务。 API 管理将请求转发到此地址。
 * **Web API URL 后缀**附加到 API 管理服务的基础 URL。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
 * **Web API URL 方案**确定哪些协议可用于访问 API。 默认情况下指定 HTTPs。
-* 若要（可选）将此新 API 添加到产品，请单击“产品(可选)”下拉列表并选择产品。 多次重复此步骤以将 API 添加到多个产品。
+* 若要有选择性地将此新 API 添加到产品，请单击“产品(可选)”下拉列表并选择产品。 可以多次重复此步骤，将此 API 添加到多个产品。
 
 配置所需的值后，单击“保存”。 一旦创建新的 API，该 API 的摘要页显示在发布者门户中。
 
@@ -94,9 +94,3 @@ API 在发布者门户中创建并发布。 若要访问发布者门户，请在
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [How to secure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
 [How to authorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

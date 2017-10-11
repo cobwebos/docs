@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 安全中心中对 SQL Server 启用审核和威胁检测 | Microsoft Docs"
-description: "本文档演示如何实现 Azure 安全中心建议**对 SQL Server 启用审核和威胁检测**。"
+description: "本文档演示如何实现 Azure 安全中心建议 * * SQL 服务器 * * 上的启用审核和威胁检测。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
 ms.openlocfilehash: 660b537aef8d175a478ff93d60b8391d55fc92ad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>在 Azure 安全中心中对 SQL Server 启用审核和威胁检测
-Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审核和威胁检测（如果尚未启用）。 审核和威胁检测可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
+Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审核和威胁检测（如果尚未启用）。 审核和威胁检测可帮助你一直保持遵从法规、 了解数据库活动，以及深入了解差异和异常信息，则可能指示业务关注点或可疑安全冲突。
 
-启用审核后，则可以配置威胁检测设置和电子邮件，以接收安全警报。 威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。 这使你能够检测出潜在威胁，并在威胁发生时做出响应。
+启用审核后，则可以配置威胁检测设置和电子邮件，以接收安全警报。 威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。 这使你可以检测和应对潜在威胁，在发生。
 
 此建议仅适用于 Azure SQL 服务；不包括 Azure 基础结构服务 (Azure IaaS) 中的虚拟机上运行的 SQL。
 
@@ -34,10 +33,10 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡中，选择“对 SQL Server 启用审核和威胁检测”。  这将打开“对 SQL Server 启用审核和威胁检测”边栏选项卡。
+1. 在“建议”边栏选项卡中，选择“对 SQL Server 启用审核和威胁检测”。  这将打开**SQL 服务器上的启用审核和威胁检测**边栏选项卡。
 
    ![对 SQL 服务器启用审核][1]
-2. 选择一个 SQL Server 以启用审核和威胁检测。 这将打开“审核和威胁检测”边栏选项卡。
+2. 选择一个 SQL Server 以启用审核和威胁检测。 这将打开**审核和威胁检测**边栏选项卡。
 
 3. 在“审核和威胁检测”边栏选项卡上，选择“审核”下方的“ON”。
 
@@ -63,4 +62,3 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-server/enable-auditing-on-sql-servers.png
 [2]: ./media/security-center-enable-auditing-on-sql-server/auditing-settings-blade.png
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 ## <a name="introduction"></a>介绍
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/12/2017
 ### <a name="azure-platform"></a>Azure 平台
 Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。
 
-例如，你可以：
+例如，可以：
 -   使用 Docker 集成运行 Linux 容器。
 
 -   使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用
@@ -279,7 +278,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 -   **请求率、响应时间和失败率** - 了解最受欢迎的页面、时段以及用户的位置。 查看哪些页面效果最好。 当有较多请求时，如果响应时间长且失败率高，则可能存在资源问题。
 
--   **依赖项速率、响应时间和失败率** - 了解外部服务是否正拖慢你的速度。
+-   **依赖项速率、响应时间和失败率** - 了解外部服务是否正拖慢速度。
 
 -   异常 - 分析聚合的统计信息，或选择特定实例并钻取堆栈跟踪和相关请求。 报告服务器和浏览器异常。
 
@@ -307,7 +306,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 |[仪表板](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-dashboards#dashboards)|混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。||
 |[实时指标流](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-live-stream)|部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。||
 |[分析](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics)|使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。||
-|[自动和手动警报](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-alerts)|当某些内容处于异常模式时，自动警报适应你的应用的遥测和触发器正常模式。 还可以在自定义或标准指标的特定级别上设置警报。||
+|[自动和手动警报](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-alerts)|当某些内容处于异常模式时，自动警报适应应用的遥测和触发器正常模式。 还可以在自定义或标准指标的特定级别上设置警报。||
 |[Visual Studio](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-visual-studio)|查看代码中的性能数据。 从堆栈跟踪转到代码。||
 |[Power BI](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-export-power-bi)|将使用指标与其他商业智能集成。||
 |[REST API](https://dev.applicationinsights.io/)|编写代码以对指标和原始数据运行查询。||
@@ -338,11 +337,11 @@ Log Analytics 是 [Operations Management Suite (OMS)](https://docs.microsoft.com
 
 ![Log Analytics](./media/azure-log-audit/azure-log-audit-fig8.png)
 
-Log Analytics 的中心是托管在 Azure 云中的 OMS 存储库。 通过配置数据源和向你的订阅添加解决方案，将连接的源中的数据收集到存储库。 数据源和解决方案将分别创建具有自身属性集的不同记录类型，但是仍可在对存储库的查询中同时对它们进行分析。 这允许你使用相同的工具和方法来处理不同资源收集的各种数据。
+Log Analytics 的中心是托管在 Azure 云中的 OMS 存储库。 通过配置数据源和向订阅添加解决方案，将连接的源中的数据收集到存储库。 数据源和解决方案将分别创建具有自身属性集的不同记录类型，但是仍可在对存储库的查询中同时对它们进行分析。 这允许使用相同的工具和方法来处理不同资源收集的各种数据。
 
 连接的源是生成 Log Analytics 收集的数据的计算机和其他资源。 其中可包括直接连接的 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) 和 [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) 计算机上安装的代理或[连接的 System Center Operations Manager 管理组](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents)中的代理。 Log Analytics 还可收集 [Azure 存储](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的数据。
 
-[数据源](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources) 是从各个连接的源中收集的各种数据。 除 [IIS 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-iis-logs)和[自定义文本日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-custom-logs)等源外，还包括 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events) 和 Linux 代理中的事件和[性能数据](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)。 你可以配置要收集的各个数据源，配置将自动传递到各个连接的源。
+[数据源](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources) 是从各个连接的源中收集的各种数据。 除 [IIS 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-iis-logs)和[自定义文本日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-custom-logs)等源外，还包括 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events) 和 Linux 代理中的事件和[性能数据](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)。 可以配置要收集的各个数据源，配置会自动传递到各个连接的源。
 
 可通过四种不同方式[收集 Azure 服务的日志和指标：](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)
 1.  将 Azure 诊断定向到 Log Analytics（下表中的诊断）
@@ -391,7 +390,7 @@ Log Analytics 的中心是托管在 Azure 云中的 OMS 存储库。 通过配�
 
 ![日志集成](./media/azure-log-audit/azure-log-audit-fig9.png)
 
-Azure 日志集成从 Windows (WAD) 虚拟机、Azure 活动日志、Azure 安全中心警报和 Azure 资源提供程序日志收集 Azure 诊断。 此集成为本地或云中的所有资产提供统一的仪表板，以便你可以针对安全事件进行聚合、关联、分析和发出警报。
+Azure 日志集成从 Windows (WAD) 虚拟机、Azure 活动日志、Azure 安全中心警报和 Azure 资源提供程序日志收集 Azure 诊断。 此集成为本地或云中的所有资产提供统一的仪表板，以便可以针对安全事件进行聚合、关联、分析和发出警报。
 
 
 
@@ -408,7 +407,7 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 
 下表介绍了日志类别和 SIEM 集成详细信息。
 
-[Azure 日志集成入门](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started) - 本教程将指导用户完成 Azure 日志集成的安装，以及集成来自 Azure WAD 存储、Azure 活动日志、Azure 安全中心警报和 Azure Active Directory 审核日志的日志。
+[Azure 日志集成入门](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started) - 本教程会指导用户完成 Azure 日志集成的安装，以及集成来自 Azure WAD 存储、Azure 活动日志、Azure 安全中心警报和 Azure Active Directory 审核日志的日志。
 
 集成方案
 
@@ -416,7 +415,7 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 
 -   [Azure 日志集成常见问题解答 (FAQ)](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq) - 此常见问题解答回答了有关 Azure 日志集成的问题。
 
--   [集成安全中心警报与 Azure 日志集成](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与你的日志分析或 SIEM 解决方案同步。
+-   [集成安全中心警报与 Azure 日志集成](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与日志分析或 SIEM 解决方案同步。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -435,6 +434,5 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 - [在 Office 365 安全与合规中心中搜索审核日志](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US)
 
 可以使用 Office 365 安全与合规中心搜索统一的审核日志，以便查看 Office 365 组织中的用户和管理员活动。
-
 
 

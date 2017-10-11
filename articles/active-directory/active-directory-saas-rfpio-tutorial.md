@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 26a8bb17dad5a01b401ce7f9b484f09822825cbf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>教程：Azure Active Directory 与 RFPIO 集成
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/30/2017
 - 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 RFPIO。
 2. 配置和测试 Azure AD 单一登录。
@@ -111,11 +110,11 @@ ms.lasthandoff: 06/30/2017
 
     ![配置单一登录](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，键入 URL：`https://www.rfpio.com`
+    a. 在“标识符”文本框中，键入 URL：`https://www.rfpio.com`
 
     ![配置单一登录](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url1.png)
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选中“显示高级 URL 设置”。
+    b. 选中“显示高级 URL 设置”。
 
     c. 在“中继状态”文本框中输入的字符串值。 请联系 [RFPIO 支持团队](https://www.rfpio.com/contact/)获取此值。 
 
@@ -125,7 +124,7 @@ ms.lasthandoff: 06/30/2017
 
     在“登录 URL”文本框中，键入 URL： `https://www.app.rfpio.com`
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_certificate.png) 
 
@@ -155,12 +154,12 @@ ms.lasthandoff: 06/30/2017
 
     ![配置单一登录](./media/active-directory-saas-rfpio-tutorial/app5.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 复制下载的元数据 XML 文件的内容，然后将其粘贴到“标识配置”字段。
+    a. 复制下载的元数据 XML 文件的内容，然后将其粘贴到“标识配置”字段。
 
     > [!NOTE]
     >要复制下载的元数据 XML的内容，请使用“Notepad++”或“XML 编辑器”。 
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“验证”。
+    b. 单击“验证”。
 
     c. 单击“验证”后，将“SAML(启用)”改为“开启”。
 
@@ -193,7 +192,7 @@ ms.lasthandoff: 06/30/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-rfpio-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -230,9 +229,9 @@ ms.lasthandoff: 06/30/2017
 
     ![配置单一登录](./media/active-directory-saas-rfpio-tutorial/app8.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“每行输入一个电子邮件”字段输入电子邮件地址。
+    a. 在“每行输入一个电子邮件”字段输入电子邮件地址。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 根据需要选择角色。
+    b. 根据需要选择角色。
 
     c. 单击“添加成员”。
         
@@ -247,7 +246,7 @@ ms.lasthandoff: 06/30/2017
 
 若要将 Britta Simon 分配到 RFPIO，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -294,5 +293,4 @@ ms.lasthandoff: 06/30/2017
 [201]: ./media/active-directory-saas-rfpio-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-rfpio-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-rfpio-tutorial/tutorial_general_203.png
-
 

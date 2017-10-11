@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-dabosl
-ms.translationtype: HT
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: cd5db703ab0b89b8597c99c0d536bc07f883ebc6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-the-azure-marketplace-seller-insights-portal"></a>如何使用 Microsoft Azure Marketplace 卖方 Insights 门户
 
@@ -108,7 +107,7 @@ ms.lasthandoff: 06/17/2017
 ## <a name="orders-and-usage"></a>订单和用途
 ### <a name="overview"></a>概述
 
-在“面板 A”中，可以选择“订单和用途”选项卡。在此处可以从“报告类型”中选择“订单”或“用途”，并使用滑块选择所需的数据。
+在“面板 A”中，可以选择“订单和用途”选项卡。  在此处可以从“报告类型”中选择“订单”或“用途”，并使用滑块选择所需的数据。
 
 在“面板 B”中，可以选择每月数据。 根据在面板 A 的“报告类型”中选择的内容选择“订单”或“用途”。显示的数据将反映所输入的日期，以及在面板 A 中使用滑块应用的筛选器。
 
@@ -417,4 +416,3 @@ ms.lasthandoff: 06/17/2017
 [33]: ./media/marketplace-publishing-report-seller-insights-user-guide/support-fill-out-and-submit.png
 [34]: ./media/marketplace-publishing-report-seller-insights-user-guide/feedback-form.png
 [35]: ./media/marketplace-publishing-report-seller-insights-user-guide/help.png
-

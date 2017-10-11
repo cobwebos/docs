@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: a7e73f6ee763d1005ad85935cf2d8f6b24ecf116
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 07/28/2017
     > [!NOTE] 
     > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [SAP HANA 客户支持团队](https://cloudplatform.sap.com/contact.html)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_certificate.png) 
 
@@ -293,5 +292,4 @@ SAP HANA 支持在默认情况下启用的实时预配。
 [201]: ./media/active-directory-saas-saphana-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-saphana-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-saphana-tutorial/tutorial_general_203.png
-
 

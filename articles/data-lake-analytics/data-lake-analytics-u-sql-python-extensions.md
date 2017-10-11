@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 6f3477b67b27a30e6b69f6015e9063bfa27834f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: d18ef1f747aee2fa01cef9891432d0461031ee4c
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="tutorial-get-started-with-extending-u-sql-with-python"></a>教程：使用 Python 扩展 U-SQL 入门
 
 通过 U-SQL 的 Python 扩展，开发人员可以执行大规模并发执行的 Python 代码。 以下示例演示了基本步骤：
@@ -91,7 +89,7 @@ ms.lasthandoff: 06/20/2017
     numexpr
 
 ### <a name="exception-messages"></a>异常消息
-当前，Python 代码中的异常显示为泛型顶点失败。 以后，U-SQL 作业错误消息将显示 Python 异常消息。
+当前，Python 代码中的异常显示为泛型顶点失败。 以后，U-SQL 作业错误消息会显示 Python 异常消息。
 
 ### <a name="input-and-output-size-limitations"></a>输入和输出大小限制
 分配给每个顶点的内存量受限。 当前，澳大利亚的限制为 6 GB。 因为输入和输出 DataFrames 必须存在于 Python 代码的内存中，因此输入和输出的总大小不能超过 6 GB。
@@ -100,5 +98,4 @@ ms.lasthandoff: 06/20/2017
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
-
 

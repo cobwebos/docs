@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 86b8300553caa0741e8aca3c0e7621ec80cc5b21
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 ## <a name="overview"></a>概述
@@ -27,7 +26,7 @@ ms.lasthandoff: 08/22/2017
 
 StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介质中存储的数据。 当前的工作集存储于固态硬盘 (SSD) 本地，使用频率较低的数据存储于硬盘驱动器 (HDD)，而存档数据则被推送到云中。 此外，StorSimple 使用删除重复和压缩来减少数据占用的存储量。 有关详细信息，请转到[删除重复和压缩](#deduplication-and-compression)。 有关其他关键术语和 StorSimple 8000 系列文档中所使用概念的定义，请转到本文末尾的 [StorSimple 术语](#storsimple-terminology)。
 
-除存储管理外，通过 StorSimple 数据保护功能，也可以创建按需备份和计划备份，然后将它们存储在本地或云中。 以增量快照形式进行备份意味着可快速创建和还原这些备份。 在灾难恢复方案中，云快照可能非常重要，因为它们替换辅助存储系统（如磁带备份），并且允许将数据还原到数据中心或其他站点上（如有必要）。
+除存储管理外，通过 StorSimple 数据保护功能，也可以创建按需备份和计划备份，并将它们存储在本地或云中。 以增量快照形式进行备份意味着可快速创建和还原这些备份。 在灾难恢复方案中，云快照可能非常重要，因为它们替换辅助存储系统（如磁带备份），并且允许将数据还原到数据中心或其他站点上（如有必要）。
 
 ![video icon](./media/storsimple-overview/video_icon.png) 观看此视频，了解 Microsoft Azure StorSimple 的简要介绍。
 
@@ -56,7 +55,7 @@ Microsoft Azure StorSimple 解决方案包括以下组件：
 * **Microsoft Azure StorSimple 设备** – 是一个本地混合存储阵列，包含 SSD 和 HDD，还具有冗余控制器和自动故障转移功能。 控制器管理存储分层，将当前使用的数据（也就是热数据）放置在本地存储中（在设备或本地服务器上），同时将使用频率较低的数据移动到云。
 * **StorSimple 云设备** – 也称为 StorSimple 虚拟设备，这是 StorSimple 设备的软件版本，可复制物理混合存储设备的体系结构和多数功能。 StorSimple 云设备在 Azure 虚拟机中的单个节点上运行。 Update 2 及更高版本中提供了高级虚拟设备，可充分利用 Azure 高级存储性能。
 * **StorSimple 设备管理器服务** – Azure 门户的扩展，可用于从单个 Web 界面管理 StorSimple 设备或 StorSimple 云设备。 可以使用 StorSimple 设备管理器服务来创建和管理服务、查看和管理设备、查看警报、管理卷以及查看和管理备份策略和备份目录。
-* **Windows PowerShell for StorSimple** – 一个命令行接口，可用于管理 StorSimple 设备。 用于 StorSimple 的 Windows PowerShell 具有多种功能，让你能够注册 StorSimple 设备、配置设备上的网络接口、安装特定类型的更新、通过访问支持会话为设备排除故障，以及更改设备状态。 可以通过连接到串行控制台或通过使用 Windows PowerShell 远程处理来访问 Windows PowerShell for StorSimple。
+* **Windows PowerShell for StorSimple** – 一个命令行接口，可用于管理 StorSimple 设备。 Windows PowerShell for StorSimple 具有多种功能，让你能够注册 StorSimple 设备、配置设备上的网络接口、安装特定类型的更新、通过访问支持会话为设备排除故障，以及更改设备状态。 可以通过连接到串行控制台或通过使用 Windows PowerShell 远程处理来访问 Windows PowerShell for StorSimple。
 * **Azure PowerShell StorSimple cmdlet** - Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/azure/?view=azuresmps-3.7.0#azure)。
 * **StorSimple Snapshot Manager** – 一个 MMC 管理单元，它使用卷组和 Windows 卷影复制服务来生成应用程序一致性备份。 此外，还可以使用 StorSimple 快照管理器来创建备份计划，并克隆或还原卷。
 * **StorSimple Adapter for SharePoint** – 一种工具，可将 Microsoft Azure StorSimple 存储和数据保护透明地扩展到 SharePoint 服务器场，同时让用户能够从 SharePoint 中心管理门户查看和管理 StorSimple 存储。
@@ -183,7 +182,7 @@ StorSimple 会随着使用模式的变化调整和重新排列数据及存储分
 
 StorSimple 对所有快照中的客户数据和主数据（主机写入的数据）进行删除重复操作。 虽然删除重复数据非常有利于存储效率，但它使得“什么在云中”的问题复杂化。 分层主数据和快照数据相互重叠。 云中的单个数据块可用作分层主数据，并且也可以由多个快照引用。 每个云快照可确保在删除该快照之前，所有时间点数据的副本已锁定到云中。
 
-仅当对该数据没有任何引用时，才将该数据从云中删除。 例如，如果我们为 StorSimple 设备中的所有数据创建了云快照，然后删除一些主数据，我们会看到_主数据_立即删除。 _云数据_（包括分层数据和备份）保持不变。 这是因为仍有快照引用云数据。 删除云快照（及引用相同数据的任何其他快照）后，云消耗将下降。 在删除云数据之前，应检查是否没有快照仍引用该数据。 此进程称为_垃圾回收_，是设备上运行的后台服务。 删除云数据并非立即执行，因为垃圾回收服务在删除数据前会检查是否存在对该数据的其他引用。 垃圾回收的速度取决于快照总数和总数据量。 通常情况下，云数据在不到一周的时间内已清除。
+仅当对该数据没有任何引用时，才将该数据从云中删除。 例如，如果为 StorSimple 设备中的所有数据创建了云快照，并删除一些主数据，将会看到_主数据_立即删除。 _云数据_（包括分层数据和备份）保持不变。 这是因为仍有快照引用云数据。 删除云快照（及引用相同数据的任何其他快照）后，云消耗将下降。 在删除云数据之前，应检查是否没有快照仍引用该数据。 此进程称为_垃圾回收_，是设备上运行的后台服务。 删除云数据并非立即执行，因为垃圾回收服务在删除数据前会检查是否存在对该数据的其他引用。 垃圾回收的速度取决于快照总数和总数据量。 通常情况下，云数据在不到一周的时间内已清除。
 
 
 ### <a name="thin-provisioning"></a>精简设置
@@ -312,5 +311,4 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 ## <a name="next-steps"></a>后续步骤
 了解 [StorSimple 安全性](storsimple-8000-security.md)。
-
 

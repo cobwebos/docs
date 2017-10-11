@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 08/12/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>创建由通用 webhook 触发的函数
 
@@ -29,7 +28,7 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 
 ![Azure 门户中通用 webhook 触发的函数](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 完成本教程：
 
@@ -72,7 +71,7 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
     | 设置      |  建议的值   | 说明                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **活动日志警报名称** | resource-group-create-alert | 活动日志警报名称。 |
-    | **订阅** | 你的订阅 | 本教程中使用的订阅。 | 
+    | **订阅** | 订阅 | 本教程中使用的订阅。 | 
     |  **资源组** | myResourceGroup | 向其部署警报资源的资源组。 使用与函数应用相同的资源组，以便于在完成本教程后进行清理。 |
     | **事件类别** | 管理 | 此类别包括对 Azure 资源所做的更改。  |
     | **资源类型** | 资源组 | 筛选面向资源组活动的警报。 |
@@ -167,5 +166,4 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 有关 Webhook 触发器的详细信息，请参阅 [Azure Functions HTTP 和 Webhook 绑定](functions-bindings-http-webhook.md)。 若要了解有关以 C# 开发函数的详细信息，请参阅 [Azure Functions C# 脚本开发人员参考](functions-reference-csharp.md)。
-
 

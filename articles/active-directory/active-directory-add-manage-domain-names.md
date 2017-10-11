@@ -16,12 +16,11 @@ ms.date: 07/26/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 5ae19bb370064de96cf466ca09b13d02563d65a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 域名可以是许多目录资源的重要标识符，作为以下项的一部分：
@@ -53,7 +52,7 @@ Azure Active Directory (Azure AD) 中的资源可包含已验证为目录（包�
 可以将最多 900 个自定义域名添加到每个 Azure AD 目录。 [添加其他自定义域名](active-directory-add-domain.md)的过程与第一个自定义域名的相同。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>添加自定义域的子域
-如果想要将第三级域名（如 “europe.contoso.com”）添加到目录，则应首先添加并验证第二级域，例如 contoso.com。子域由 Azure AD 自动验证。 若要查看刚添加的子域是否已经过验证，请刷新浏览器中的页面，其中列出了目录中的域。
+如果想要将第三级域名（如 “europe.contoso.com”）添加到目录，则应首先添加并验证第二级域，例如 contoso.com。 子域由 Azure AD 自动验证。 若要查看刚添加的子域是否已经过验证，请刷新浏览器中的页面，其中列出了目录中的域。
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>更改自定义域名的 DNS 注册机构会发生什么情况
 如果更改自定义域名的 DNS 注册机构，则可以继续将自定义域名用于 Azure AD 本身，而不会发生中断，也不需要执行其他配置任务。 如果在 Office 365、Intune 或其他依赖于 Azure AD 中的自定义域名的服务中使用自定义域名，请参阅这些服务的文档。
@@ -78,5 +77,4 @@ Azure Active Directory (Azure AD) 中的资源可包含已验证为目录（包�
 ## <a name="next-steps"></a>后续步骤
 * [了解 Azure AD 中的域名](active-directory-add-domain-concepts.md)
 * [管理自定义域名](active-directory-add-manage-domain-names.md)
-
 

@@ -1,6 +1,6 @@
 ---
 title: "为 Azure 微服务创建混沌和故障转移测试 | Microsoft Docs"
-description: "使用 Service Fabric 混沌测试和故障转移测试方案来引发故障，然后验证服务的可靠性。"
+description: "使用 Service Fabric 混沌测试和故障转移测试方案来引发故障，并验证服务的可靠性。"
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 8975df6b0fe594b092c9890352c7b3787733d8db
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: d06026c750e01ad5825338a78d9af331265f434a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="testability-scenarios"></a>可测试性方案
 大型分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 使开发人员能够编写出可以在不可靠基础结构上运行的服务。 若要编写高质量的服务，开发人员需要能够引入这种不可靠的基础结构来测试其服务的稳定性。
@@ -43,9 +41,9 @@ ms.lasthandoff: 01/24/2017
 * 移动主副本（可选）
 * 移动辅助副本（可选）
 
-混沌测试在指定时间段内运行故障和群集验证的多次循环。 让群集达到稳定状态以及验证成功所用的时间也是可配置的。 若你在群集验证中遇到一次故障，则方案失败。
+混沌测试在指定时间段内运行故障和群集验证的多次循环。 让群集达到稳定状态以及验证成功所用的时间也是可配置的。 若在群集验证中遇到故障，则方案失败。
 
-例如，考虑一个设置为运行上小时且最多三个并发故障的测试。 该测试将引入三个故障，然后验证群集运行状况。 该测试将循环进行以上步骤，直到群集变得不正常或一小时的时间已过。 如果在任何一次迭代中群集变得不正常，即在配置的时间内不稳定，则测试将引发异常而失败。 此异常指出系统出现问题，并且需要进一步调查。
+例如，考虑一个设置为运行上小时且最多三个并发故障的测试。 该测试将引入三个故障，并验证群集运行状况。 该测试将循环进行以上步骤，直到群集变得不正常或一小时的时间已过。 如果在任何一次迭代中群集变得不正常，即在配置的时间内不稳定，则测试会引发异常而失败。 此异常指出系统出现问题，并且需要进一步调查。
 
 当前，混沌测试故障生成引擎只引入安全故障。 这意味着在没有外部故障的情况下，绝对不会出现仲裁丢失或数据丢失。
 
@@ -148,7 +146,7 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 
 
 ## <a name="failover-test"></a>故障转移测试
-故障转移测试方案是混沌测试方案针对特定服务分区的一个版本。 它在特定服务分区上测试故障转移的效果，同时让其他服务不受影响。 一旦配置好目标分区信息和其他参数，它就可以作为一个客户端工具运行，使用 C# API 或 PowerShell 生成针对一个服务分区的故障。 该方案遍历一系列的模块故障和服务验证，同时你的业务逻辑在一边继续运行以提供工作负荷。 服务验证失败指出存在需要进一步调查的问题。
+故障转移测试方案是混沌测试方案针对特定服务分区的一个版本。 它在特定服务分区上测试故障转移的效果，同时让其他服务不受影响。 一旦配置好目标分区信息和其他参数，它就可以作为一个客户端工具运行，使用 C# API 或 PowerShell 生成针对一个服务分区的故障。 该方案遍历一系列的模块故障和服务验证，同时业务逻辑在一边继续运行以提供工作负荷。 服务验证失败指出存在需要进一步调查的问题。
 
 ### <a name="faults-simulated-in-the-failover-test"></a>在故障转移测试中模拟的故障
 * 重新启动分区所在的已部署代码包
@@ -158,7 +156,7 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 * 移动辅助副本
 * 重新启动分区
 
-故障转移测试工作引入一个经过选择的故障，然后在服务上运行验证以确保其稳定性。 与混沌测试中可能出现多个故障相比，故障转移测试一次仅引入一个故障。 如果在每次故障之后，服务分区在配置的等待时间内没有达到稳定，则测试失败。 测试只引入安全故障。 这意味着在没有外部故障的情况下，将不会出现仲裁丢失或数据丢失。
+故障转移测试工作引入一个经过选择的故障，并在服务上运行验证以确保其稳定性。 与混沌测试中可能出现多个故障相比，故障转移测试一次仅引入一个故障。 如果在每次故障之后，服务分区在配置的等待时间内没有达到稳定，则测试失败。 测试只引入安全故障。 这意味着在没有外部故障的情况下，不会出现仲裁丢失或数据丢失。
 
 ### <a name="important-configuration-options"></a>重要的配置选项
 * **PartitionSelector**：选择器对象，指定需要作为目标的分区。
@@ -255,4 +253,3 @@ Connect-ServiceFabricCluster $connection
 
 Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindSingleton
 ```
-

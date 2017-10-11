@@ -1,6 +1,6 @@
 ---
 title: "如何容器化 Azure Service Fabric 微服务（预览版）"
-description: "Azure Service Fabric 已添加用于容器化 Service Fabric 微服务的新功能。 此功能目前处于预览状态。"
+description: "Azure Service Fabric 已添加用于容器化 Service Fabric 微服务的新功能。 此功能目前以预览版提供。"
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/04/2017
 ms.author: anmola
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 6f8ad0bad8d1ae861e6b72f7e1a32ab0675813c2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="how-to-containerize-your-service-fabric-reliable-services-and-reliable-actors-preview"></a>如何容器化 Service Fabric Reliable Services 和 Reliable Actors（预览版）
 
@@ -114,4 +113,3 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何运行 [Service Fabric 上的容器](service-fabric-get-started-containers.md)。
 * 了解 Service Fabric [应用程序生命周期](service-fabric-application-lifecycle.md)。
-

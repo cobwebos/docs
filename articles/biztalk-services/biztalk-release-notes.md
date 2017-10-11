@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
@@ -152,7 +151,7 @@ BizTalk 适配器服务功能中的 BizTalk 适配器包适配器可利用用户
 Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和“解决方案资源管理器”窗口未同时停靠，可能会出现此问题。 若要解决此问题，请停靠“属性”窗口和“解决方案资源管理器”窗口。  
 
 ### <a name="datetime-reformat-drop-down-is-grayed-out"></a>“重新设置日期时间格式”下拉列表呈灰显
-将“重新设置日期时间格式”映射操作添加到设计图面并对其进行配置后，“格式”下拉列表可能灰显。如果计算机“显示”设置为“中等 - 125%”或“较大 - 150%”，则可能发生此情况。 要解决此问题，请按照以下步骤会显示大小设置为“较小 - 100% (默认)”：  
+将“重新设置日期时间格式”映射操作添加到设计图面并对其进行配置后，“格式”下拉列表可能灰显。 如果计算机“显示”设置为“中等 - 125%”或“较大 - 150%”，则可能发生此情况。 要解决此问题，请按照以下步骤会显示大小设置为“较小 - 100% (默认)”：  
 
 1. 打开“控制面板”，并单击“外观和个性化”。
 2. 单击“显示”。
@@ -222,5 +221,4 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 
 ### <a name="concepts"></a>概念
 [BizTalk 服务](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
-
 

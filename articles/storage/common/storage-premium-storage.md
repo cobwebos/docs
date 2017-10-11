@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: ramankum
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 559753d7ff3da7e8b5dc8f976368a1d35dd6258b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
 Azure 高级存储为运行输入/输出 (I/O) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 使用高级存储的 VM 磁盘在固态硬盘 (SSD) 上存储数据。 要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级存储。
@@ -40,7 +39,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **托管磁盘**
 
-    选择 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)时，Azure 将管理 VM 磁盘使用的存储帐户。 需要指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将创建和管理该磁盘。 为了确保符合存储帐户的伸缩性限制，无需煞费苦心，将磁盘放置在多个存储帐户中。 Azure 会处理这一切。
+    选择 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)时，Azure 将管理 VM 磁盘使用的存储帐户。 请指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将为你创建和管理该磁盘。 为了确保符合存储帐户的伸缩性限制，无需煞费苦心，将磁盘放置在多个存储帐户中。 Azure 会处理这一切。
 
 我们建议选择托管磁盘以利用其许多功能。
 
@@ -241,7 +240,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 托管磁盘的快照是托管磁盘的只读副本。 该快照存储为标准托管磁盘。 目前，托管磁盘不支持[增量快照](../../virtual-machines/windows/incremental-snapshots.md)。 若要了解如何创建托管磁盘的快照，请参阅[在 Windows 中使用托管快照创建存储为 Azure 托管磁盘的 VHD 的副本](../../virtual-machines/windows/snapshot-copy-managed-disk.md)或[在 Linux 中使用托管快照创建存储为 Azure 托管磁盘的 VHD 的副本](../../virtual-machines/linux/snapshot-copy-managed-disk.md)。
 
-如果将托管磁盘附加到 VM，该磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 请先创建磁盘快照，然后对该快照执行复制操作。 或者，可以分离磁盘，并生成 SAS 来执行复制操作。
+如果将托管磁盘附加到 VM，该磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 而是，请先创建磁盘快照，再对该快照执行复制操作。 或者，可以分离磁盘，并生成 SAS 来执行复制操作。
 
 
 ## <a name="premium-storage-for-linux-vms"></a>Linux VM 的高级存储
@@ -329,4 +328,3 @@ sudo yum install microsoft-hyper-v
 ### <a name="blog-posts"></a>博客文章
 * [Azure 高级存储已正式推出](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
 * [GS 系列公告：将高级存储支持添加到公有云中的最大 VM](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
-

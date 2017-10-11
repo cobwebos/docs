@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 26a6b41a0e59924d007855ca548f22ed00bd7e23
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icims"></a>教程：Azure Active Directory 与 ICIMS 集成
 
@@ -86,7 +85,7 @@ ms.lasthandoff: 07/26/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ICIMS 测试用户](#create-an-icims-test-user)** - 在 ICIMS 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+3. **[创建 ICIMS 测试用户](#create-an-icims-test-user)** -若要链接到用户的 Azure AD 表示的 ICIMS 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -115,7 +114,7 @@ ms.lasthandoff: 07/26/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [ICIMS 客户端支持团队](https://www.icims.com/contact-us)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-icims-tutorial/tutorial_icims_certificate.png) 
 
@@ -224,5 +223,4 @@ ms.lasthandoff: 07/26/2017
 [201]: ./media/active-directory-saas-icims-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-icims-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-icims-tutorial/tutorial_general_203.png
-
 

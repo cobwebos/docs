@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: trinadhk; jimpark;
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: fc52c909df5e91741ec1fa21fb911487be039fdc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="restore-virtual-machines-in-azure"></a>还原 Azure 中的虚拟机
 > [!div class="op_single_selector"]
@@ -32,7 +31,7 @@ ms.lasthandoff: 08/12/2017
 执行以下步骤，通过存储在 Azure 备份保管库中的备份将虚拟机还原到新的 VM。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 <br/> 从 2017 年 11 月 1 日起：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> **2017 年 10 月 15 日之后**，无法使用 PowerShell 创建备份保管库。 <br/> **从 2017 年 11 月 1 日起**：
 >- 其余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
@@ -65,12 +64,12 @@ ms.lasthandoff: 08/12/2017
 1. 在“选择还原实例”屏幕中，指定有关要将虚拟机还原到何处的详细信息。
 
    * 指定虚拟机名称：在指定的云服务中，虚拟机名称应该是唯一的。 不支持覆盖现有 VM。
-   * 选择 VM 的云服务：这是创建 VM 的必要步骤。 可以选择使用现有的云服务，或创建新的云服务。
+   * 选择 VM 的云服务：这是创建 VM 的必要步骤。 可选择使用现有的云服务，或创建新的云服务。
 
         选取的任何云服务名称都应是全局唯一的。 通常，云服务名称与面向公众的 URL 相关联，采用 [cloudservice].cloudapp.net 形式。 如果名称已使用，Azure 将不允许创建新的云服务。 如果选择创建新的云服务，它的名称将与虚拟机的名称一样，在这种情况下，选择的 VM 名称应足够唯一，以应用于关联的云服务。
 
         仅显示不与还原实例详细信息中的任何地缘组相关联的云服务和虚拟网络。 [了解详细信息](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
-2. 选择 VM 的存储帐户：这是创建 VM 的必要步骤。 可以选择与 Azure 备份保管库位于相同区域的现有存储帐户。 不支持区域冗余或高级存储类型的存储帐户。
+2. 选择 VM 的存储帐户：这是创建 VM 的必要步骤。 可选择与 Azure 备份保管库位于相同区域的现有存储帐户。 不支持区域冗余或高级存储类型的存储帐户。
 
     如果没有受支持配置的存储帐户，请在启动还原操作之前创建一个具有受支持配置的存储帐户。
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 08/12/2017
     如果选择的云服务与虚拟网络关联，则无法更改虚拟网络。
 
     ![选择虚拟网络](./media/backup-azure-restore-vms/restore-cs-vnet.png)
-4. 选择子网：如果 VNET 有子网，默认选择的选项为第一个子网。 从下拉选项中选择所需子网。 有关子网详细信息，请转到[门户主页](https://manage.windowsazure.com/)中的“网络”扩展，然后转到“虚拟网络”，选择虚拟网络并向下钻取到“配置”以查看子网详细信息。
+4. 选择子网：如果 VNET 有子网，默认选择的选项为第一个子网。 从下拉选项中选择所需子网。 有关子网详细信息，请转到[门户主页](https://manage.windowsazure.com/)中的“网络”扩展，然后转到“虚拟网络”，并在选择虚拟网络后，向下钻取到“配置”以查看子网详细信息。
 
     ![选择子网](./media/backup-azure-restore-vms/select-subnet.png)
 5. 在向导中单击“提交”图标以提交详细信息并创建还原作业。
@@ -167,4 +166,3 @@ PowerShell 能够只从备份还原 VM 磁盘，而不建立虚拟机。 当还�
 ## <a name="next-steps"></a>后续步骤
 * [排查错误](backup-azure-vms-troubleshoot.md#restore)
 * [管理虚拟机](backup-azure-manage-vms.md)
-

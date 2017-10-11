@@ -16,12 +16,11 @@ ms.date: 07/06/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 9dbe88a59b68bfb424c43dd89acf55d8c73fdf39
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
 本文解答有关双重验证的最常见问题。 
@@ -95,5 +94,4 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 ## <a name="related-topics"></a>相关主题
 * [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)  
 * [Microsoft Authenticator 应用程序常见问题](microsoft-authenticator-app-faq.md)
-
 

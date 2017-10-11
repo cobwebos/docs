@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
-ms.openlocfilehash: 7bd71144cd2c96fcfb6636ca8d24fc354f86584d
-ms.lasthandoff: 12/06/2016
-
-
+ms.openlocfilehash: 8656607611e7518e42b51b91774f55abec15c228
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-an-azure-sql-data-warehouse-rest-api"></a>还原 Azure SQL 数据仓库 (REST API)
 > [!div class="op_single_selector"]
@@ -31,7 +30,7 @@ ms.lasthandoff: 12/06/2016
 > 
 > 
 
-在本文中，你将学习如何使用 REST API 还原 Azure SQL 数据仓库。
+在本文中，学习如何使用 REST API 还原 Azure SQL 数据仓库。
 
 ## <a name="before-you-begin"></a>开始之前
 **验证 DTU 容量。** 每个 SQL 数据仓库都由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。  在还原 SQL 数据仓库之前，请确保 SQL Server 的剩余 DTU 配额足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][Request a DTU quota change]。
@@ -86,4 +85,3 @@ ms.lasthandoff: 12/06/2016
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
-

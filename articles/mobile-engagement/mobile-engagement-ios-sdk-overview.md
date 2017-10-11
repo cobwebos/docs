@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 6acd343782a3ee07750e27ec3022ff81cedfadee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="ios-sdk-for-azure-mobile-engagement"></a>iOS SDK for Azure Mobile Engagement
 从此处可以了解如何在 iOS 应用中集成 Azure Mobile Engagement 的所有详细信息。 如果想要先进行尝试，请确保完成我们的 [15 分钟教程](mobile-engagement-ios-get-started.md)。
@@ -63,7 +62,7 @@ ms.lasthandoff: 07/20/2017
     }
 
 > [!IMPORTANT]
-> **我们不建议此解决方法**，因为此 iOS API 已被弃用，此行为在任何即将发布的（即便是微小）iOS 版本升级中都可能发生改变。 你应尽快改用 XCode 8。
+> **我们不建议此解决方法**，因为此 iOS API 已被否决，此行为在任何即将发布的（即使再小）iOS 版本升级过程中会有所更改。 你应尽快改用 XCode 8。
 >
 >
 
@@ -115,7 +114,7 @@ XCode 8 可能会重置你的应用推送功能，请在你选定目标的 `capa
 
 如果应用程序或其中一个第三方库实现了 `UNUserNotificationCenterDelegate`，则可以跳过此部分。
 
-SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 SDK 具有其自己实现的 `UNUserNotificationCenterDelegate` 协议，但每个应用程序只能有一个 `UNUserNotificationCenter` 委托。 任何其他添加到 `UNUserNotificationCenter` 对象的委托将与 Engagement 委托冲突。 如果 SDK 检测到你或任何其他第三方的委托，则不会使用其自己的实现来提供解决此冲突的可能性。 需要将 Engagement 逻辑添加到自己的委托中来解决此冲突。
+SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 SDK 具有其自己实现的 `UNUserNotificationCenterDelegate` 协议，但每个应用程序只能有一个 `UNUserNotificationCenter` 委托。 任何其他添加到 `UNUserNotificationCenter` 对象的委托将与 Engagement 委托冲突。 如果 SDK 检测到你或任何其他第三方的委托，则不会使用其自己的实现，从而让你有机会解决此冲突。 需要将 Engagement 逻辑添加到自己的委托中来解决此冲突。
 
 可通过两种方式实现此目的：
 
@@ -184,4 +183,3 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
         return YES;
       }
-

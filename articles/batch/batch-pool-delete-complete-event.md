@@ -1,5 +1,5 @@
 ---
-title: "Azure 批处理池删除完成事件 | Microsoft Docs"
+title: "Azure Batch 池删除完成事件 | Microsoft Docs"
 description: "批处理池删除完成事件参考。"
 services: batch
 author: tamram
@@ -12,14 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 890f2ba7fda37060c56177868d6214d517d91831
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="pool-delete-complete-event"></a>池删除完成事件
 
  当完成池删除操作时，会发出此事件。

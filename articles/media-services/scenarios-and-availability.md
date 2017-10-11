@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: juliako;anilmur
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 5cdfd4dd90f5073d03071ef77c062d450210f5ea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.openlocfilehash: d9994dd7bfb6b6bf949a7708c07651d667929ae4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -32,9 +31,9 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ### <a name="prerequisites"></a>先决条件
 
-若要开始使用 Azure 媒体服务，你应该具备以下条件：
+若要开始使用 Azure 媒体服务，应该具备以下条件：
 
-* 一个 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
+* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
@@ -62,7 +61,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
     建议向输出资产应用存储加密选项，以便保护静态内容。
 3. 配置资产传送策略（由动态打包使用）。
 
-    如果你的资产已经过存储加密，则 **必须** 配置资产传送策略。
+    如果资产已经过存储加密，则 **必须** 配置资产传送策略。
 4. 通过创建 OnDemand 定位符来发布资产。
 5. 流式传输已发布的内容。
 
@@ -88,7 +87,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 1. 将优质媒体文件上传到资产中。
 2. 使用[媒体分析概述](media-services-analytics-overview.md)部分介绍的媒体分析服务之一来处理视频。
-3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，你可以采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，你可以从 Azure Blob 存储下载该文件。
+3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，可采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，可以从 Azure Blob 存储下载该文件。
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
@@ -101,7 +100,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
     如果使用 SAS 定位符，将从 Azure blob 存储中下载内容。 在这种情况下，流式处理终结点不需要处于已启动状态。
 4. 渐进式下载内容。
 
-## <a id="live_scenarios"></a>传送实时流式处理事件 
+## <a id="live_scenarios"></a>传送实时传送视频流事件 
 
 1. 使用多种实时流式处理协议（例如 RTMP 或平滑流式处理）引入实时内容。
 2. （可选）将流编码为自适应比特率流。
@@ -134,7 +133,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="consuming-content"></a>使用内容
 
-Azure 媒体服务提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
+Azure 媒体服务提供所需的工具，以便创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
 
 ## <a name="enabling-azure-cdn"></a>启用 Azure CDN
 
@@ -146,19 +145,19 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 * 媒体服务客户可以选择“标准”或“高级”流式处理终结点。 “标准”流式处理终结点适用于大多数流式处理工作负荷。 它拥有与“高级”流式处理终结点相同的功能，且可以自动缩放出站带宽。 
 
-    “高级”流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 默认情况下，具有“高级”流式处理终结点的客户会获得一个流单元 (SU)。 可以通过添加 SU 缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 若要详细了解如何缩放“高级”流式处理终结点，请参阅[缩放流式处理终结点](media-services-portal-scale-streaming-endpoints.md)主题。
+    “高级”流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 默认情况下，使用高级流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 若要详细了解如何缩放“高级”流式处理终结点，请参阅[缩放流式处理终结点](media-services-portal-scale-streaming-endpoints.md)主题。
 
 * 媒体服务帐户与保留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下保留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 保留单位类型相比，使用 **S2** 保留单位类型时，同一编码作业运行速度更快。
 
-    除了指定保留单位类型，还可以指定通过保留单位 (RU) 来预配帐户。 预配的 RU 数决定了给定帐户中可同时处理的媒体任务数。
+    除了指定保留单位类型，还可以指定为帐户预配保留单位 (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
 
     >[!NOTE]
     >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的保留单位并不能更快地完成处理。
 
     有关详细信息，请参阅[缩放媒体处理](media-services-portal-scale-media-processing.md)。
-* 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 若要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。 有关详细信息，请参阅[管理存储帐户](meda-services-managing-multiple-storage-accounts.md)。
+* 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。 有关详细信息，请参阅[管理存储帐户](meda-services-managing-multiple-storage-accounts.md)。
 
-##<a id="availability"></a> 媒体服务功能的跨数据中心可用性
+##<a id="availability"></a>媒体服务功能的跨数据中心可用性
 
 本部分详细说明了媒体服务功能的跨数据中心可用性。
 
@@ -260,5 +259,4 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

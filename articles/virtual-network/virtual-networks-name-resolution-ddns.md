@@ -1,6 +1,6 @@
 ---
 title: "使用动态 DNS 注册主机名"
-description: "本页面提供有关如何设置动态 DNS 以在你自己的 DNS 服务器中注册主机名的详细信息。"
+description: "本页面提供有关如何设置动态 DNS 以在自己的 DNS 服务器中注册主机名的详细信息。"
 services: dns
 documentationcenter: na
 author: GarethBradshawMSFT
@@ -14,25 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4fffba6d95f4c9c30ab3a1ecd9dfeb7acd9119d
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>使用动态 DNS 在自己的 DNS 服务器中注册主机名
-[Azure 为虚拟机 (VM) 和角色实例提供名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 但是，如果你需要 Azure 所提供的名称解析之外的名称解析，则可以提供自己的 DNS 服务器。 这样你可以量身定制你的 DNS 解决方案以满足自己的特定需求。 例如，你可能需要通过 Active Directory 域控制器来访问本地资源。
+[Azure 为虚拟机 (VM) 和角色实例提供名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 但是，如果需要 Azure 所提供的名称解析之外的名称解析，则可以提供自己的 DNS 服务器。 这样可以量身定制 DNS 解决方案以满足自己的特定需求。 例如，可能需要通过 Active Directory 域控制器来访问本地资源。
 
-将自定义 DNS 服务器作为 Azure VM 托管时，可将针对同一 VNet 的主机名查询转发到 Azure 以解析主机名。 如果不希望使用此路由，可使用动态 DNS 在 DNS 服务器中注册 VM 主机名。  Azure 不具备直接在你的 DNS 服务器中创建记录的功能（如凭据），因此通常需要替代方案。 以下是一些常见的替代方案。
+将自定义 DNS 服务器作为 Azure VM 托管时，可将针对同一 VNet 的主机名查询转发到 Azure 以解析主机名。 如果不希望使用此路由，可使用动态 DNS 在 DNS 服务器中注册 VM 主机名。  Azure 不具备直接在 DNS 服务器中创建记录的功能（如凭据），因此通常需要替代方案。 以下是一些常见的替代方案。
 
 ## <a name="windows-clients"></a>Windows 客户端
 在启动时或其 IP 地址更改时，未加入域的 Windows 客户端将尝试不安全的动态 DNS (DDNS) 更新。 DNS 名称为主机名加上的主 DNS 后缀。 Azure 将保留主 DNS 后缀为空，但可以通过 [UI](https://technet.microsoft.com/library/cc794784.aspx) 或[使用自动化](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix)在 VM 中对其进行设置。
 
-已加入域的 Windows 客户端通过使用安全的动态 DNS 将其 IP 地址注册到域控制器。 域加入过程将在客户端上设置主 DNS 后缀并创建和维护信任关系。
+已加入域的 Windows 客户端通过使用安全的动态 DNS 将其 IP 地址注册到域控制器。 域加入过程在客户端上设置主 DNS 后缀并创建和维护信任关系。
 
 ## <a name="linux-clients"></a>Linux 客户端
-Linux 客户端通常在启动时注册到 DNS 服务器，并假设 DHCP 服务器将执行此操作。 Azure 的 DHCP 服务器没有能力也没有凭据在你的 DNS 服务器中注册记录。  可以使用名为 *nsupdate* 的工具发送动态 DNS 更新，该工具包含在绑定包中。 由于动态 DNS 协议是标准化的，所以即使在 DNS 服务器上未使用绑定时，也可以使用 *nsupdate*。
+Linux 客户端通常在启动时注册到 DNS 服务器，并假设 DHCP 服务器执行此操作。 Azure 的 DHCP 服务器没有能力也没有凭据在 DNS 服务器中注册记录。  可以使用名为 *nsupdate* 的工具发送动态 DNS 更新，该工具包含在绑定包中。 由于动态 DNS 协议是标准化的，所以即使在 DNS 服务器上未使用绑定时，也可以使用 *nsupdate*。
 
 可以使用 DHCP 客户端提供的挂钩在 DNS 服务器中创建和维护主机名条目。 在 DHCP 周期中，客户端将执行 */etc/dhcp/dhclient-exit-hooks.d/* 中的脚本。 通过使用 *nsupdate* 可将其用于注册新的 IP 地址。 例如：
 
@@ -68,5 +67,4 @@ Linux 客户端通常在启动时注册到 DNS 服务器，并假设 DHCP 服务
 如果需要，可以将 DNS 搜索后缀添加到 VM。 DNS 后缀在 */etc/resolv.conf* 文件中指定。 大多数 Linux 发行版自动管理此文件中的内容，因此通常不能对其进行编辑。 但是，可以通过使用 DHCP 客户端的 *supersede* 命令重写该后缀。 若要执行此操作，请在 */etc/dhcp/dhclient.conf* 中添加：
 
         supersede domain-name <required-dns-suffix>;
-
 

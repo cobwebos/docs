@@ -16,17 +16,16 @@ ms.date: 05/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 robots: noindex
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
-ms.openlocfilehash: f58c051bc25544d2811738b8ade483c82f3901b2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: e0b0b87a454db96747f024e81882fe83d62fdbe2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="assign-azure-active-directory-groups-to-an-application"></a>将 Azure Active Directory 组分配到应用程序
-在将用户和组分配到应用程序之前，你必须要求用户分配。 若要了解如何要求进行用户分配，请参阅[要求进行用户分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)一文。
+在将用户和组分配到应用程序之前，必须要求用户分配。 若要了解如何要求进行用户分配，请参阅[要求进行用户分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)一文。
 
-本文假设你已经在用于此应用程序的 Active Directory 中创建了组。
+本文假设已经在用于此应用程序的 Active Directory 中创建了组。
 
 ## <a name="assigning-groups-to-an-application"></a>将组分配到应用程序
 1. 使用管理员帐户登录到 Azure 门户。
@@ -42,4 +41,3 @@ ms.lasthandoff: 02/28/2017
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
-

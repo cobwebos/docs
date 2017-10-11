@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/26/2016
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 7d269a5805da405e4e5f7a3caf5a58fa454b9abb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
-
+ms.openlocfilehash: edbf797e6277a65b5311e4939f5ab72776b11557
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Hive 查询
 
@@ -56,7 +55,7 @@ Tez 速度更快，因为：
 
 有关这些概念的更多详细信息，请参阅 [Apache TEZ](http://hortonworks.com/hadoop/tez/)。
 
-你可以通过在查询的前面加上以下设置作为前缀，来执行 Tez 支持的任何 Hive 查询：
+可以通过在查询的前面加上以下设置作为前缀，来执行 Tez 支持的任何 Hive 查询：
 
     set hive.execution.engine=tez;
 
@@ -91,7 +90,8 @@ Hive 分区的实现方法是将未经处理的数据刷新成新的目录，而
 
 创建分区表后，可以创建静态分区或动态分区。
 
-* **静态分区**表示已在相应目录中创建了分片数据，你可以请求根据目录位置在 Hive 中手动分区。 以下代码片段是一个示例。
+* 
+            **静态分区**表示已在相应目录中创建了分片数据，可以请求根据目录位置在 Hive 中手动分区。 以下代码片段是一个示例。
   
         INSERT OVERWRITE TABLE lineitem_part
         PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
@@ -100,7 +100,8 @@ Hive 分区的实现方法是将未经处理的数据刷新成新的目录，而
   
         ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
         LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
-* **动态分区**表示你希望 Hive 自动为你创建分区。 由于我们已基于暂存表创建了分区表，因此我们需要做的就是将数据插入分区表：
+* 
+            **动态分区**表示希望 Hive 自动创建分区。 由于已基于暂存表创建了分区表，因此需要做的就是将数据插入分区表：
   
         SET hive.exec.dynamic.partition = true;
         SET hive.exec.dynamic.partition.mode = nonstrict;
@@ -172,14 +173,14 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 有关详细信息，请参阅[向量化查询执行](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution)。
 
 ## <a name="other-optimization-methods"></a>其他优化方法
-你还可以考虑使用其他一些高级优化方法，例如：
+还可以考虑使用其他一些高级优化方法，例如：
 
 * **Hive 存储桶：**将大型数据集群集化或分段以优化查询性能的技术。
 * **联接优化**：Hive 的查询执行计划优化，可改善联接的效率并减少用户提示的需要。 有关详细信息，请参阅[联接优化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
 * **增加化简器**。
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
+在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
 
 * [使用 HDInsight 中的 Apache Hive](hdinsight-use-hive.md)
 * [使用 HDInsight 中的 Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data.md)
@@ -191,4 +192,3 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
-

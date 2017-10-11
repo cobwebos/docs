@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 5bd6fe0dd369b3bbc7ca0d697c964badda557cb8
-ms.contentlocale: zh-cn
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
 ms.lasthandoff: 08/03/2017
-
 ---
-
 # <a name="azure-database-security-best-practices"></a>Azure 数据库安全性最佳做法
 
 安全性是管理数据库时的首要考虑因素，并且始终是 Azure SQL 数据库的优先事务。 严格保护数据库有助于满足大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1 等等。 [Microsoft 信任中心站点](http://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。 也可以根据法规要求将数据库放置在特定的 Azure 数据中心。
@@ -99,7 +97,7 @@ SQL 数据库支持两种身份验证：SQL 身份验证和 Azure Active Directo
 -   为 Azure SQL Server 或 [Azure SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)创建 Azure Active Directory 管理员。
 - 配置客户端计算机。
 -   在映射到 Azure AD 标识的数据库中创建包含的数据库用户。
--   通过使用 Azure AD 标识连接到你的数据库。
+-   通过使用 Azure AD 标识连接到数据库。
 
 可以在[此处](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)查看详细信息。
 
@@ -148,7 +146,7 @@ SQL Server 有多个审核级别，具体取决于针对安装的政府要求或
 
 [Azure SQL 数据库审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。
 
-借助审核可一直保持合规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
+审核可帮助你一直保持符合法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
 审核有助于遵从法规标准，但不能保证遵从法规。
 
@@ -166,10 +164,9 @@ SQL 威胁检测可在发生异常活动时提供安全警报，让我们检测�
 有关数据库威胁检测及其启用方法的详细信息，请阅读[在 Azure 安全中心对 SQL Server 启用审核和威胁检测](https://docs.microsoft.com/azure/security-center/security-center-enable-auditing-on-sql-servers)一文。
 
 ## <a name="conclusion"></a>结束语
-Azure 数据库是一个可靠的数据库平台，提供满足众多组织要求与合规要求的整套安全功能。 通过控制对数据的物理访问，结合透明数据加密、单元格级加密或行级别安全性使用各种文件级、列级或行级数据安全选项，有助于保护数据。 此外，Always Encrypted 支持针对加密的数据执行操作，简化应用程序更新的过程。 因此，访问 SQL 数据库活动的审核日志又能提供所需的信息来帮助自己了解何时以何种方法访问了数据。
+Azure 数据库是一个可靠的数据库平台，提供满足众多组织要求与合规要求的整套安全功能。 通过控制对数据的物理访问，结合透明数据加密、单元格级加密或行级别安全性使用各种文件级、列级或行级数据安全选项，有助于保护数据。 此外，Always Encrypted 支持针对加密的数据执行操作，简化应用程序更新的过程。 反过来，访问 SQL 数据库活动的审核日志可以提供所需的信息来帮助自己了解何时以何种方法访问了数据。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关防火墙规则的详细信息，请参阅[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)。
 - 若要了解用户和登录名，请参阅[管理登录名](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)。
 - 相关教程，请参阅[保护 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial)。
-

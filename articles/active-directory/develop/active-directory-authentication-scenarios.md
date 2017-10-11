@@ -15,15 +15,14 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 2f9410bdaa037f1839cf7c12c3532b51be669ed5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD 的身份验证方案
-Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的身份验证：将标识提供为一项服务、支持行业标准协议（例如 OAuth 2.0 和 OpenID Connect），并提供用于不同平台的开源库来帮助你快速开始编码。 本文档将帮助你了解 Azure AD 支持的各种方案并演示如何入门。 具体内容划为以下几部分：
+Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的身份验证：将标识作为服务提供、支持行业标准协议（例如 OAuth 2.0 和 OpenID Connect），并提供用于不同平台的开源库，帮助你快速开始编码。 本文档将帮助你了解 Azure AD 支持的各种方案并演示如何入门。 具体内容划为以下几部分：
 
 * [Azure AD 中的身份验证基本知识](#basics-of-authentication-in-azure-ad)
 * [Azure AD 安全令牌中的声明](#claims-in-azure-ad-security-tokens)
@@ -37,7 +36,7 @@ Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的�
   * [后台或服务器应用程序到 Web API](#daemon-or-server-application-to-web-api)
 
 ## <a name="basics-of-authentication-in-azure-ad"></a>Azure AD 中的身份验证基本知识
-如果不熟悉 Azure AD 中的身份验证基本概念，请阅读本部分。 否则，你可能希望跳到[应用程序类型和方案](#application-types-and-scenarios)。
+如果不熟悉 Azure AD 中的身份验证基本概念，请阅读本部分。 否则，建议跳到 [应用程序类型和方案](#application-types-and-scenarios)。
 
 让我们考虑一下需要标识的最基本方案：Web 浏览器中的用户需要通过 Web 应用程序进行身份验证。 此方案在 [Web 浏览器到 Web 应用程序](#web-browser-to-web-application)部分中有更详细的介绍，但可以在一开始的时候用来对 Azure AD 的功能进行说明，并通过概念对此方案的工作方式进行归纳。 对于此方案，请参考以下示意图：
 
@@ -143,13 +142,13 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 #### <a name="registering"></a>注册
 * 单租户：如果在构建仅供组织使用的应用程序，则必须使用 Azure 门户在公司的目录中注册该应用程序。
-* 多租户：如果在构建可以由组织外部用户使用的应用程序，则必须在公司的目录中注册该应用程序，并且还必须在要使用该应用程序的每个组织的目录中注册该应用程序。 要使应用程序在客户的目录中可用，可以提供一个供客户使用的注册流程，让客户许可应用程序的要求。 当他们针对应用程序进行注册时，系统会向他们显示一个对话框，其中显示了应用程序要求的权限，之后是表示许可的选项。 可能会要求其他组织中的管理员表示许可，具体取决于所需的权限。 当用户或管理员表示许可后，会在其目录中注册该应用程序。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications.md)。
+* 多租户：如果在构建可以由组织外部用户使用的应用程序，则必须在公司的目录中注册该应用程序，并且还必须在要使用该应用程序的每个组织的目录中注册该应用程序。 要使应用程序在客户的目录中可用，可以提供一个供客户使用的注册流程，让客户许可应用程序的要求。 当他们针对应用程序进行注册时，系统会向他们显示一个对话框，其中显示了应用程序要求的权限，之后是表示许可的选项。 可能会要求其他组织中的管理员表示许可，具体取决于所需的权限。 当用户或管理员许可后，该应用程序在其目录中注册。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications.md)。
 
 #### <a name="token-expiration"></a>令牌过期
 当 Azure AD 颁发的令牌的生存期过期时，用户的会话便过期。 如果需要，应用程序可以缩短此时段，例如，根据用户处于不活动状态的时长注销用户。 当会话过期时，会提示用户重新登录。
 
 ### <a name="single-page-application-spa"></a>单页面应用程序 (SPA)
-本部分介绍使用 Azure AD 和 OAuth 2.0 隐式授权授予来保护其 Web API 后端的单页面应用程序的身份验证。 通常将单页面应用程序构建为一个 JavaScript 表示层（前端），该表示层不仅在浏览器中运行，还在一个在服务器上运行并实现应用程序业务逻辑的 Web API 中运行。 若要了解有关隐式授权授予的详细信息，并帮助确定其是否适合应用程序方案，请参阅[了解 Azure Active Directory 中的 OAuth2 隐式授权流](active-directory-dev-understanding-oauth2-implicit-grant.md)。
+本部分介绍使用 Azure AD 和 OAuth 2.0 隐式授权授予来保护其 Web API 后端的单页面应用程序的身份验证。 通常将单页面应用程序构建为一个 JavaScript 表示层（前端），该表示层不仅在浏览器中运行，还在一个在服务器上运行并实现应用程序业务逻辑的 Web API 后端中运行。 若要了解有关隐式授权授予的详细信息，并帮助确定其是否适合应用程序方案，请参阅[了解 Azure Active Directory 中的 OAuth2 隐式授权流](active-directory-dev-understanding-oauth2-implicit-grant.md)。
 
 在此方案中，当用户登录时，JavaScript 前端使用 [JavaScript (ADAL.JS) 的 Active Directory 身份验证库](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev)和隐式授权授予从 Azure AD 获取一个 ID 令牌 (id_token)。 该令牌随后被缓存，当客户端调用使用 OWIN 中间件进行保护的 Web API 后端时，客户端将该令牌作为持有者令牌附加到请求。 
 
@@ -171,7 +170,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 #### <a name="registering"></a>注册
 * 单租户：如果在构建仅供组织使用的应用程序，则必须使用 Azure 门户在公司的目录中注册该应用程序。
-* 多租户：如果在构建可以由组织外部用户使用的应用程序，则必须在公司的目录中注册该应用程序，并且还必须在要使用该应用程序的每个组织的目录中注册该应用程序。 要使应用程序在客户的目录中可用，可以提供一个供客户使用的注册流程，让客户许可应用程序的要求。 当他们针对应用程序进行注册时，系统会向他们显示一个对话框，其中显示了应用程序要求的权限，之后是表示许可的选项。 可能会要求其他组织中的管理员表示许可，具体取决于所需的权限。 当用户或管理员表示许可后，会在其目录中注册该应用程序。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications.md)。
+* 多租户：如果在构建可以由组织外部用户使用的应用程序，则必须在公司的目录中注册该应用程序，并且还必须在要使用该应用程序的每个组织的目录中注册该应用程序。 要使应用程序在客户的目录中可用，可以提供一个供客户使用的注册流程，让客户许可应用程序的要求。 当他们针对应用程序进行注册时，系统会向他们显示一个对话框，其中显示了应用程序要求的权限，之后是表示许可的选项。 可能会要求其他组织中的管理员表示许可，具体取决于所需的权限。 当用户或管理员许可后，该应用程序在其目录中注册。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications.md)。
 
 注册应用程序之后，必须将其配置为使用 OAuth 2.0 隐式授予协议。 默认情况下，应用程序禁用此协议。 要为应用程序启用 OAuth2 隐式授予协议，从 Azure 门户中编辑该协议的应用程序清单，将“oauth2AllowImplicitFlow”值设置为 true。 有关详细说明，请参阅[为单页面应用程序启用 OAuth 2.0 隐式授权](active-directory-integrating-applications.md)。
 
@@ -283,7 +282,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 #### <a name="registering"></a>注册
 * 单租户：对于应用程序标识和委托用户标识这两种情况，后台或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用委托用户标识类型，则服务器应用程序需要从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
-* 多租户：首先，后台或服务器应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，会在其目录中注册这两个 Web API。
+* 多租户：首先，后台或服务器应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，将在其目录中注册这两个 Web API。
 
 #### <a name="token-expiration"></a>令牌过期
 当第一个应用程序使用其授权代码来获取 JWT 访问令牌时，它还会收到一个 JWT 刷新令牌。 当访问令牌过期时，可以使用刷新令牌来重新对用户进行身份验证，不会提示他们输入凭据。 然后将使用此刷新令牌对用户进行身份验证，这会生成新的访问令牌和刷新令牌。
@@ -296,5 +295,4 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 [有关 Azure AD 中签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)
 
 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
-
 

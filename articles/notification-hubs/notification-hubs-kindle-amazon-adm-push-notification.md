@@ -1,6 +1,6 @@
 ---
 title: "Azure 通知中心入门（Kindle 应用）| Microsoft Docs"
-description: "在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。"
+description: "在本教程中，将了解如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。"
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>通知中心入门（Kindle 应用）
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -30,7 +30,7 @@ ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
 ## <a name="prerequisites"></a>先决条件
 本教程需要的内容如下：
 
-* 从 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>获取 Android SDK（我们假设你要使用 Eclipse）。
+* 从 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>获取 Android SDK（我们假设要使用 Eclipse）。
 * 按照<a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">设置开发环境</a>中的步骤设置 Kindle 的开发环境。
 
 ## <a name="add-a-new-app-to-the-developer-portal"></a>向开发人员门户添加新应用程序
@@ -40,10 +40,10 @@ ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
 2. 复制“应用程序密钥” 。
    
     ![][1]
-3. 在门户中单击应用的名称，然后单击“设备消息”选项卡。
+3. 在门户中单击应用的名称，并单击“设备消息”选项卡。
    
     ![][2]
-4. 单击“创建新的安全配置文件”，然后创建一个新的安全配置文件（例如 **TestAdm security profile**）。 。
+4. 单击“创建新的安全配置文件”，并创建一个新的安全配置文件（例如 **TestAdm security profile**）。 。
    
     ![][3]
 5. 单击“安全配置文件”以查看你刚刚创建的安全配置文件。 复制“客户端 ID”和“客户端密码”值以供稍后使用。
@@ -60,7 +60,7 @@ ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
     ![][5]
 4. 对于“密钥库”密码，请键入 **android**。
 5. 复制 **MD5** 指纹。
-6. 返回到开发人员门户，在“消息”选项卡中，单击“Android/Kindle”，输入应用包的名称（例如 **com.sample.notificationhubtest**）和 **MD5** 值，然后单击“生成 API 密钥”。
+6. 返回到开发人员门户，在“消息”选项卡中，单击“Android/Kindle”，输入应用包的名称（例如 **com.sample.notificationhubtest**）和 **MD5** 值，并单击“生成 API 密钥”。
 
 ## <a name="add-credentials-to-the-hub"></a>将凭据添加到中心
 在门户中，将客户端密码和客户端 ID 添加到通知中心的“配置”选项卡。
@@ -71,20 +71,20 @@ ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
 > 
 > 
 
-将 ADM 库添加到你的 Eclipse 项目：
+将 ADM 库添加到 Eclipse 项目：
 
 1. 若要获取 ADM 库，请 [下载 SDK]。 解压缩 SDK zip 文件。
 2. 在 Eclipse 中右键单击你的项目，然后单击“属性”。 在左侧选择“Java 生成路径”，然后选择顶部的“库”选项卡。 单击“添加外部 Jar”，并从提取 Amazon SDK 的目录中选择文件 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`。
 3. 下载 NotificationHubs Android SDK（链接）。
 4. 解压缩该包，然后在 Eclipse 中将文件 `notification-hubs-sdk.jar` 拖放到 `libs` 文件夹中。
 
-编辑你的应用程序清单以支持 ADM：
+编辑应用程序清单以支持 ADM：
 
 1. 在根清单元素中添加 Amazon 命名空间：
 
         xmlns:amazon="http://schemas.amazon.com/apk/res/android"
 
-1. 在清单元素下添加权限作为第一个元素。 将 **[YOUR PACKAGE NAME]** 替换为用于创建应用的包。
+1. 在清单元素下添加权限作为第一个元素。 将 [YOUR PACKAGE NAME] 替换为用于创建应用的包。
    
         <permission
          android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
@@ -100,7 +100,7 @@ ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
    
         <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-2. 插入以下元素作为应用程序元素的第一个子级。 请记得将 **[YOUR SERVICE NAME]** 替换为你在下一部分中创建的 ADM 消息处理程序的名称（包括包），并将 **[YOUR PACKAGE NAME]** 替换为创建应用时所用的包名称。
+2. 插入以下元素作为应用程序元素的第一个子级。 请记得将 [YOUR SERVICE NAME] 替换为你在下一部分中创建的 ADM 消息处理程序的名称（包括包），并将 [YOUR PACKAGE NAME] 替换为创建应用时所用的包名称。
    
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
@@ -231,7 +231,7 @@ ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
 
 ## <a name="run-the-app"></a>运行应用程序
 1. 启动模拟器。
-2. 在模拟器中，从顶部往下轻扫，单击“设置”，然后单击“我的帐户”并使用有效的 Amazon 帐户注册。
+2. 在模拟器中，从顶部往下轻扫，单击“设置”，单击“我的帐户”并使用有效的 Amazon 帐户注册。
 3. 在 Eclipse 中运行应用程序。
 
 > [!NOTE]
@@ -265,9 +265,3 @@ ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
 [5]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-cmd-window.png
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: c852a1297261504015a3a985fe14a38957d1a64a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.openlocfilehash: 449425189a3b42dcb2c31316c1c8e38fac69d761
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的虚拟机
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 07/21/2017
 
 在不使用加速网络的情况下，传入和传出 VM 的所有网络流量必须遍历主机和虚拟交换机。 虚拟交换机针对网络流量实施所有策略，例如网络安全组、访问控制列表、隔离和其他网络虚拟化服务。 若要详细了解虚拟交换机，请阅读 [Hyper-V 网络虚拟化和虚拟交换机](https://technet.microsoft.com/library/jj945275.aspx)一文。
 
-在使用加速网络的情况下，网络流量将抵达 VM 的网络接口 (NIC)，然后转发到 VM。 在不使用加速网络的情况下由虚拟交换机应用的所有网络策略将会卸载，并在硬件中应用。 由于在硬件中应用策略，NIC 可以绕过主机和虚拟交换机将网络流量直接转发到 VM，同时保留它在主机中应用的所有策略。
+在使用加速网络的情况下，网络流量将抵达 VM 的网络接口 (NIC)，然后转发到 VM。 在不使用加速网络的情况下由虚拟交换机应用的所有网络策略会卸载，并在硬件中应用。 由于在硬件中应用策略，NIC 可以绕过主机和虚拟交换机将网络流量直接转发到 VM，同时保留它在主机中应用的所有策略。
 
 加速网络的优势仅适用于已启用该功能的 VM。 为获得最佳效果，最好是在连接到同一个 Azure 虚拟网络 (VNet) 的最少两个 VM 上启用此功能。 跨 VNet 通信或者在本地连接时，此功能对总体延迟的影响极小。
 
@@ -62,8 +61,8 @@ ms.lasthandoff: 07/21/2017
 
 1. 在 Internet 浏览器中打开 Azure [门户](https://portal.azure.com)并使用 Azure [帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果还没有帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
 2. 在门户中单击“+ 新建” > “计算” > “Windows Server 2016 Datacenter”。 
-3. 在显示的“Windows Server 2016 Datacenter”边栏选项卡中，保留“选择部署模型”框中选中的“Resource Manager”，然后单击“创建”。
-4. 在显示的“基本信息”边栏选项卡中输入以下值，保留剩余的默认选项，或者选择或输入自己的值，然后单击“确定”按钮：
+3. 在显示的“Windows Server 2016 Datacenter”边栏选项卡中，保留“选择部署模型”框中选中的“资源管理器”，并单击“创建”。
+4. 在显示的“基本信息”边栏选项卡中输入以下值，保留剩余的默认选项，或者选择或输入自己的值，并单击“确定”按钮：
 
     |设置|值|
     |---|---|
@@ -71,16 +70,16 @@ ms.lasthandoff: 07/21/2017
     |资源组|保留选中“新建”并输入 *MyResourceGroup*|
     |位置|美国西部 2|
 
-    如果你不熟悉 Azure，请详细了解[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)、[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和[位置](https://azure.microsoft.com/regions)（也称为区域）。
-5. 在显示的“选择大小”边栏选项卡，在“最小核心数”框中输入 *8*，然后单击“查看所有”。
+    如果不熟悉 Azure，请详细了解[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)、[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和[位置](https://azure.microsoft.com/regions)（也称为区域）。
+5. 在显示的“选择大小”边栏选项卡，在“最小核心数”框中输入 *8*，并单击“查看所有”。
 6. 单击“DS4_V2 标准”，或任何受支持的 VM 然后单击“选择”按钮。
-7. 在显示的“设置”边栏选项卡中，保留所有现有设置，但要在“加速网络”下面单击“已启用”，然后单击“确定”按钮。 **注意：**如果，在上一步骤中针对本文[限制](#Limitations)部分中未列出的 VM 大小、操作系统或位置选择了值，则“加速网络”将不可见。
+7. 在显示的“设置”边栏选项卡中，保留所有现有设置，但要在“加速网络”下面单击“已启用”，并单击“确定”按钮。 **注意：**如果，在上一步骤中针对本文[限制](#Limitations)部分中未列出的 VM 大小、操作系统或位置选择了值，则“加速网络”将不可见。
 8. 在“摘要”边栏选项卡中，单击“确定”按钮。 Azure 随即开始创建 VM。 创建 VM 需要几分钟时间。
 9. 若要安装适用于 Windows 的加速网络驱动程序，请完成本文[配置 Windows](#configure-windows) 部分中所述的步骤。
 
 ### <a name="windows-powershell"></a>PowerShell
-1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果你不太熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
-2. 单击 Windows“开始”按钮，键入 **powershell**，然后在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
+1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+2. 单击 Windows“开始”按钮，键入 PowerShell，然后在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
 3. 在 PowerShell 窗口中输入 `login-azurermaccount` 命令，使用 Azure [帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果还没有帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
 4. 在浏览器中复制以下脚本：
     ```powershell
@@ -145,7 +144,7 @@ ms.lasthandoff: 07/21/2017
       -VM $VmConfig
     #
     ```
-5. 在 PowerShell 窗口中，通过右键单击菜单粘贴脚本，然后开始执行该脚本。 系统提示输入用户名和密码。 在下一步骤中连接到 VM 时，需要使用这些凭据登录到 VM。 如果脚本失败，并且在执行脚本之前更改了脚本中的值，请确认针对本文[限制](#Limitations)部分中未列出的 VM 大小、操作系统和位置的值。
+5. 在 PowerShell 窗口中，通过右键单击菜单粘贴脚本，并开始执行该脚本。 系统提示输入用户名和密码。 在下一步骤中连接到 VM 时，需要使用这些凭据登录到 VM。 如果脚本失败，并且在执行脚本之前更改了脚本中的值，请确认针对本文[限制](#Limitations)部分中未列出的 VM 大小、操作系统和位置的值。
 6. 若要安装适用于 Windows 的加速网络驱动程序，请完成本文[配置 Windows](#configure-windows) 部分中所述的步骤。
 
 ### <a name="configure-windows"></a>配置 Windows
@@ -156,9 +155,9 @@ ms.lasthandoff: 07/21/2017
 3. 在“MyVm”边栏选项卡中，单击顶部左上角的“连接”按钮。 **注意：**如果“连接”按钮下方显示“正在创建”，则表示 Azure 尚未完成创建 VM。 只有在“连接”按钮下方不再显示“正在创建”时，才能单击“连接”。
 4. 允许浏览器下载 **MyVm.rdp** 文件。  下载后，单击该文件将它打开。 
 5. 在显示的“远程桌面连接”框（告知无法识别远程连接的发布者）中单击“连接”按钮。
-6. 在显示的“Windows 安全性”框中单击“更多选项”，然后单击“使用其他帐户”。 输入在步骤 4 中所输入的用户名和密码，然后单击“确定”按钮。
+6. 在显示的“Windows 安全性”框中单击“更多选项”，并单击“使用其他帐户”。 输入在步骤 4 中所输入的用户名和密码，并单击“确定”按钮。
 7. 在显示的“远程桌面连接”框（告知无法验证远程计算机的标识）中单击“是”按钮。
-8. 右键单击 Windows“开始”按钮，然后单击“设备管理器”。 展开“网络适配器”节点。 确认已显示“Mellanox ConnectX-3 Virtual Function Ethernet Adapter”，如下图所示：
+8. 右键单击 Windows“开始”按钮，并单击“设备管理器”。 展开“网络适配器”节点。 确认已显示“Mellanox ConnectX-3 Virtual Function Ethernet Adapter”，如下图所示：
    
     ![设备管理器](./media/virtual-network-create-vm-accelerated-networking/image2.png)
 
@@ -170,18 +169,18 @@ ms.lasthandoff: 07/21/2017
 ### <a name="linux-portal"></a>门户
 1. 完成本文[创建 Linux VM -  PowerShell](#linux-powershell)部分中所述的步骤 1-5，注册适用于 Linux 预览版的加速网络。  无法在门户中为预览版注册。
 2. 完成本文[创建 Windows VM - 门户](#windows-portal)部分中所述的步骤 1-8。 在步骤 2 中，请单击“Ubuntu Server 16.04 LTS”，而不要单击“Windows Server 2016 Datacenter”。 对于本教程，请选择使用密码而不是 SSH 密钥，但对于生产部署，可以使用两者之一。 如果完成本文[创建 Windows VM - 门户](#windows-portal)部分中所述的步骤 7 后“加速网络”未显示，则原因可能是下列其中一项：
-    - 尚未为预览版注册。 根据本文[创建 Linux VM - Powershell](#linux-powershell) 部分中步骤 4 所述，确认注册状态为“已注册”。 **注意：**如果你已参与 Windows VM 预览版的加速网络（不再需要注册即可使用适用于 Windows VM 的加速网络），则尚未自动注册适用于 Linux VM 预览版的加速网络。 必须注册适用于 Linux VM 预览版的加速网络才能参与它。
+    - 尚未为预览版注册。 根据本文[创建 Linux VM - Powershell](#linux-powershell) 部分中步骤 4 所述，确认注册状态为“已注册”。 **注意：**如果已参与 Windows VM 预览版的加速网络（不再需要注册即可使用适用于 Windows VM 的加速网络），则尚未自动注册适用于 Linux VM 预览版的加速网络。 必须注册适用于 Linux VM 预览版的加速网络才能参与它。
     - 未选择本文[限制](#limitations)部分中列出的 VM 大小、操作系统或位置。
 3. 若要安装适用于 Linux 的加速网络驱动程序，请完成本文[配置 Linux](#configure-linux) 部分中所述的步骤。
 
 ### <a name="linux-powershell"></a>PowerShell
 
 >[!WARNING]
->如果在订阅中创建具有加速网络的 Linux VM，然后尝试在同一订阅中创建具有加速网络的 Windows VM，创建 Windows VM 可能会失败。 在此预览版推出期间，我们建议在不同的订阅中测试具有加速网络的 Linux 和 Windows VM。
+>如果在订阅中创建具有加速网络的 Linux VM，并尝试在同一订阅中创建具有加速网络的 Windows VM，创建 Windows VM 可能会失败。 在此预览版推出期间，我们建议在不同的订阅中测试具有加速网络的 Linux 和 Windows VM。
 >
 
-1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果你不太熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
-2. 单击 Windows“开始”按钮，键入 **powershell**，然后在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
+1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+2. 单击 Windows“开始”按钮，键入 PowerShell，然后在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
 3. 在 PowerShell 窗口中输入 `login-azurermaccount` 命令，使用 Azure [帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果还没有帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
 4. 完成以下步骤，注册适用于 Azure 预览版的加速网络：
     - 将包含 Azure 订阅 ID 和目标用途的电子邮件发送到 [axnpreview@microsoft.com](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)。 请等待来自 Microsoft 的有关启用订阅的邮件确认。
@@ -200,7 +199,7 @@ ms.lasthandoff: 07/21/2017
         ```
         
       >[!NOTE]
-      >如果你已参与 Windows VM 预览版的加速网络（不再需要注册即可使用适用于 Windows VM 的加速网络），则尚未自动注册适用于 Linux VM 预览版的加速网络。 必须注册适用于 Linux VM 预览版的加速网络才能参与它。
+      >如果已参与 Windows VM 预览版的加速网络（不再需要注册即可使用适用于 Windows VM 的加速网络），则尚未自动注册适用于 Linux VM 预览版的加速网络。 必须注册适用于 Linux VM 预览版的加速网络才能参与它。
       >
 5. 在浏览器中，根据需要复制以下脚本代替 Ubuntu 或 SLES。  同样，Redhat 和 CentOS 具有不同的工作流，如下所述：
 
@@ -277,7 +276,7 @@ ms.lasthandoff: 07/21/2017
       -VM $VmConfig
     ```
     
-6. 在 PowerShell 窗口中，通过右键单击菜单粘贴脚本，然后开始执行该脚本。 系统提示输入用户名和密码。 在下一步骤中连接到 VM 时，需要使用这些凭据登录到 VM。 如果脚本失败，请确认：
+6. 在 PowerShell 窗口中，通过右键单击菜单粘贴脚本，并开始执行该脚本。 系统提示输入用户名和密码。 在下一步骤中连接到 VM 时，需要使用这些凭据登录到 VM。 如果脚本失败，请确认：
     - 已根据步骤 4 中所述为预览版注册
     - 如果执行脚本之前更改了脚本中的 VM 大小、操作系统类型或位置值，请确认这些值是否已在本文的[限制](#Limitations)部分中列出。
 7. 若要安装适用于 Linux 的加速网络驱动程序，请完成本文[配置 Linux](#configure-linux) 部分中所述的步骤。
@@ -287,12 +286,12 @@ ms.lasthandoff: 07/21/2017
 在 Azure 中创建 VM 后，必须安装适用于 Linux 的加速网络驱动程序。 完成以下步骤之前，必须使用本文中所述的[门户](#linux-portal)或 [PowerShell](#linux-powershell) 步骤创建具有加速网络的 Linux VM。 
 
 1. 在 Internet 浏览器中打开 Azure [门户](https://portal.azure.com)并使用 Azure [帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果还没有帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
-2. 在门户顶部“搜索资源”栏的右侧，单击“>_”图标启动 Bash Cloud Shell（预览）。 Bash Cloud Shell 窗格显示在门户底部，几秒钟后将显示 **username@Azure:~$** 提示符。 尽管可以在计算机中使用 SSH 而不是 Cloud Shell 连接到 VM，但本教程中的说明假设使用 Cloud Shell。
+2. 在门户顶部“搜索资源”栏的右侧，单击“>_”图标启动 Bash Cloud Shell（预览）。 Bash Cloud Shell 窗格显示在门户底部，几秒钟后会显示 **username@Azure:~$** 提示符。 尽管可以在计算机中使用 SSH 而不是 Cloud Shell 连接到 VM，但本教程中的说明假设使用 Cloud Shell。
 3. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入 *MyVm*。 当“MyVm”出现在搜索结果中时，请单击它。
 4. 在“MyVm”边栏选项卡中，单击顶部左上角的“连接”按钮。 **注意：**如果“连接”按钮下方显示“正在创建”，则表示 Azure 尚未完成创建 VM。 只有在“连接”按钮下方不再显示“正在创建”时，才能单击“连接”。
 5. Azure 会打开一个框，告知需要输入 `ssh adminuser@<ipaddress>`。 在 Cloud Shell 中输入此命令（或者从步骤 4 中显示的框复制此命令，将它粘贴到 Cloud Shell），然后按 Enter。
-6. 出现是否继续连接的问题时，请输入“是”，然后按 Enter。
-7. 输入创建 VM 时所输入的密码。 成功登录到 VM 后，将会看到 adminuser@MyVm:~ $ 提示符。 现已通过 Cloud Shell 会话登录到 VM。 **注意：**在处于非活动状态 10 分钟后，Cloud Shell 会话将会超时。
+6. 出现是否继续连接的问题时，请输入“是”，并按 Enter。
+7. 输入创建 VM 时所输入的密码。 成功登录到 VM 后，会看到 adminuser@MyVm:~ $ 提示符。 现已通过 Cloud Shell 会话登录到 VM。 **注意：**在处于非活动状态 10 分钟后，Cloud Shell 会话会超时。
 
 此时，说明会根据你使用的分发而有所不同。 
 
@@ -450,4 +449,3 @@ ms.lasthandoff: 07/21/2017
     ```
 
 VM 应配置 bond0 并启用加速网络路径。  运行 `ifconfig` 确认。
-

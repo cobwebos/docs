@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: xpouyat;anilmur;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
-ms.openlocfilehash: c789a5518575706992c8719c1927a8566c504fbb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: df1ee5089a0af6ffce1431b658843fcb34a66ce5
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>在高级编码器中使用多个输入文件和组件属性
 ## <a name="overview"></a>概述
@@ -136,7 +135,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 在前面的示例中，propertyPath 为“/Media File Input/filename”、“/inactiveTimeout”或“clipListXml”。
 通常是组件名称后接属性名称。 路径可以包含更多或更少的级别，例如“/primarySourceFile”（因为属性位于工作流的根目录）或“/Video Processing/Graphic Overlay/Opacity”（因为覆盖层在组中）。    
 
-若要检查路径和属性名称，使用紧靠在每个属性旁边的操作按钮。 可以单击此操作按钮，然后选择“编辑”。 随后将显示属性的实际名称，并在其正上方显示命名空间。
+若要检查路径和属性名称，使用紧靠在每个属性旁边的操作按钮。 可以单击此操作按钮，并选择“编辑”。 随后会显示属性的实际名称，并在其正上方显示命名空间。
 
 ![操作/编辑](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
@@ -159,7 +158,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 工作流中的连接：
 
 * 如果使用一个或多个媒体文件输入组件，并打算使用 **setRuntimeProperties** 来指定文件名，请勿将主文件组件插针连接到这些组件。 确保主文件对象与媒体文件输入之间没有连接。
-* 如果你偏好使用剪辑列表 XML 和一个媒体源组件，则可以将两者连接在一起。
+* 如果偏好使用剪辑列表 XML 和一个媒体源组件，则可以将两者连接在一起。
 
 ![主源文件与媒体文件输入之间未建立连接](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
 
@@ -296,9 +295,9 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 > 视频文件名已发送到 primarySourceFile 属性。 这样做的目的是要在工作流中使用此属性，以便（举例而言）使用 Expressions 构建正确的输出文件名。
 
 ### <a name="step-by-step-workflow-creation"></a>分步工作流创建
-以下步骤将创建一个工作流，该工作流采用视频和图像两个文件作为输入。 它将覆盖位于视频顶层的图像。
+以下是创建工作流的步骤，该工作流采用两个文件作为输入：视频和图像。 它将覆盖位于视频顶层的图像。
 
-打开“工作流设计器”，然后选择“文件” > “新建工作区” > “转码蓝图”。
+打开“工作流设计器”，并选择“文件” > “新建工作区” > “转码蓝图”。
 
 新工作流显示了三个元素：
 
@@ -310,9 +309,9 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 新编码工作流
 
-为了接受输入媒体文件，请从添加媒体文件输入组件开始。 若要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。
+为了接受输入媒体文件，请从添加媒体文件输入组件开始。 如果要将组件添加到工作流，请在“存储库”搜索框中查找它，并将所需的项拖放到设计器窗格。
 
-接下来，添加要用于设计工作流的视频文件。 为此，请单击工作流设计器中的背景窗格，并在右侧属性窗格中找到“主源文件”属性。 单击文件夹图标，然后选择相应的视频文件。
+接下来，添加要用于设计工作流的视频文件。 为此，请单击工作流设计器中的背景窗格，并在右侧属性窗格中找到“主源文件”属性。 单击文件夹图标，并选择相应的视频文件。
 
 ![主文件源](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture10_primaryfile.png)
 
@@ -324,7 +323,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 媒体文件输入源
 
-完成此操作后，媒体文件输入组件将检查文件，并填充其输出插针，以反映其检查的文件。
+完成此操作之后，媒体文件输入组件检查该文件，并填充其输出引脚，以反映它检查的文件。
 
 下一步是添加一个“视频数据类型更新器”，以将颜色空间指定为 Rec.709。 添加设置为“数据布局/布局类型 = 可配置平面”的“视频格式转换器”。 这会将视频流转换为可以用作覆盖层组件源的格式。
 
@@ -338,20 +337,20 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 接下来，添加一个视频覆盖层组件，并将（未压缩的）视频插针连接到媒体文件输入的（未压缩的）视频插针。
 
-添加另一个媒体文件输入（用于加载徽标文件），单击此组件并将其重命名为“媒体文件输入徽标”，然后在文件属性中选择图像（例如 .png 文件）。 将未压缩的图像插针连接到覆盖层的未压缩图像插针。
+添加另一个媒体文件输入（用于加载徽标文件），单击此组件并将其重命名为“媒体文件输入徽标”，并在文件属性中选择图像（例如 .png 文件）。 将未压缩的图像插针连接到覆盖层的未压缩图像插针。
 
 ![覆盖层组件和图像文件源](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
 
 覆盖层组件和图像文件源
 
-若要修改视频中徽标的位置（例如，需要将其放在距离视频左上角 10% 处），可清除“手动输入”复选框。 由于使用媒体文件输入为覆盖层组件提供徽标文件，因此可以执行此操作。
+如果你想要修改的位置上的视频的徽标 （例如，你可能想要将其从视频左上角中移出 10%），清除"手动输入"复选框。 由于使用媒体文件输入为覆盖层组件提供徽标文件，因此可以执行此操作。
 
 ![覆盖层位置](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
 
 覆盖层位置
 
-若要将视频流编码成 H.264，请将 AVC 视频编码器和 AAC 编码器组件添加到设计器图面。 连接插针。
-设置 AAC 编码器，然后选择：“音频格式转换/预设：2.0 (L, R)”。
+要将视频流编码成 H.264，请将 AVC 视频编码器和 AAC 编码器组件添加到设计器图面。 连接插针。
+设置 AAC 编码器，并选择“音频格式转换/预设：2.0 (L, R)”。
 
 ![音频和视频编码器](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
@@ -363,7 +362,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 MP4 多路复用器和文件输出
 
-需要设置输出文件的名称。 单击“文件输出”组件，然后编辑文件的表达式：
+需要设置输出文件的名称。 单击“文件输出”组件，并编辑文件的表达式：
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
 
@@ -389,9 +388,9 @@ MP4 多路复用器和文件输出
 
 AMSE 中的资产文件
 
-选择资产，并选择使用高级编码器将其编码。 上载工作流并选择它。
+选择资产，并选择使用高级编码器将其编码。 上传工作流并选择它。
 
-单击按钮将数据传递到处理器，然后添加以下 XML 来设置运行时属性：
+单击相应的按钮将数据传递到处理器，并添加以下 XML 来设置运行时属性：
 
 ![AMSE 中的高级编码器](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
 
@@ -420,7 +419,7 @@ AMSE 中的高级编码器
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
-作业完成后，输出资产中的 MP4 文件将显示覆盖层！
+作业完成后，输出资产中的 MP4 文件显示覆盖层！
 
 ![视频中的覆盖层](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
 
@@ -463,7 +462,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 </transcodeRequest>
 ```
 
-* 编码资产将包含多个语言音频轨道，且可在 Azure Media Player 中选择这些轨道。
+* 编码资产会包含多语言音频轨道，且可在 Azure Media Player 中选择这些轨道。
 
 ## <a name="see-also"></a>另请参阅
 * [在 Azure 媒体服务中引入高级编码](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
@@ -478,4 +477,3 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 763f97855695a51d8fb6050cf1404c787b72c6f6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.openlocfilehash: 7123a2d44d3b7c332afe30fb0fcea88ca29e313a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>使用 Azure 媒体服务传送实时流
 
@@ -42,7 +41,7 @@ Microsoft Azure 媒体服务提供了相应的 API 用来请求媒体服务启�
 
 ## <a name="example"></a>示例
 
-以下示例定义了一个名为 **ChannelOperations** 的类。 可以将该类定义用作你的 web 服务类定义的起点。 为简单起见，以下示例使用了方法的非异步版本。
+以下示例定义了一个名为 **ChannelOperations** 的类。 可以将该类定义用作 web 服务类定义的起点。 为简单起见，以下示例使用了方法的非异步版本。
 
 示例还展示了客户端可以如何使用该类。
 
@@ -204,5 +203,4 @@ Microsoft Azure 媒体服务提供了相应的 API 用来请求媒体服务启�
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

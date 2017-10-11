@@ -12,15 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: db2e0bd43161aad02ffce61b4cd9325892844dde
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: 4a20091b59f2643ea71cce99c159a5075706e35d
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
-
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
 
 本演练在包含 DC/OS 群集的 Azure 容器服务上设置 Vamp。 我们将通过 Canary 发布 Vamp 演示服务“sava”，并通过应用智能流量筛选解决该服务与 Firefox 不兼容的问题。 
@@ -299,5 +296,4 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 * 在 Node.js 中生成 Vamp 自动化脚本并以 [Vamp 工作流](http://vamp.io/documentation/tutorials/create-a-workflow/)的形式运行这些脚本。
 
 * 参阅其他 [VAMP 教程](http://vamp.io/documentation/tutorials/overview/)。
-
 

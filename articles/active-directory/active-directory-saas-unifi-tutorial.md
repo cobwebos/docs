@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 09074d4628825909f0bb961c8001e53fb06cf7c0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>教程：Azure Active Directory 与 UNIFI 集成
 
@@ -119,7 +118,7 @@ ms.lasthandoff: 06/28/2017
 
     在“登录 URL”文本框中，键入 URL：`https://app.discoverunifi.com/login`
 
-5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_certificate.png) 
 
@@ -145,9 +144,9 @@ ms.lasthandoff: 06/28/2017
 
     ![配置单一登录](./media/active-directory-saas-unifi-tutorial/app3.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“提供者名称”文本框中，键入标识提供者的名称。
+    a. 在“提供者名称”文本框中，键入标识提供者的名称。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“提供者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“提供者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     c. 在记事本中打开通过 Azure 门户下载的证书，删除“---BEGIN CERTIFICATE---”和“---END CERTIFICATE---”标记，然后在“证书”文本框中粘贴剩余的内容。
 
@@ -180,7 +179,7 @@ ms.lasthandoff: 06/28/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-unifi-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -200,7 +199,7 @@ ms.lasthandoff: 06/28/2017
 
 若要将 Britta Simon 分配到 UNIFI，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -247,5 +246,4 @@ ms.lasthandoff: 06/28/2017
 [201]: ./media/active-directory-saas-unifi-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-unifi-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-unifi-tutorial/tutorial_general_203.png
-
 

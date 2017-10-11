@@ -16,17 +16,16 @@ ms.topic: article
 ms.date: 03/29/2016
 ms.author: singhkay
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 1ffcecf1e61fc0cd9ee668514fbb913dafe39bd8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>使用 Azure 自动化纵向缩放 Azure Linux 虚拟机
 垂直缩放是增加或减少计算机的资源以响应工作负荷的过程。 在 Azure 中，这可以通过更改虚拟机的大小来实现。 这种做法可为以下方案提供方便
 
-* 如果你不经常使用某个虚拟机，可以缩小其大小，以降低每月成本
+* 如果不经常使用某个虚拟机，可以缩小其大小，以降低每月成本
 * 如果虚拟机将来会出现负载高峰，可以增大其大小，以提高其容量
 
 下面概述了实现此目的的步骤
@@ -83,13 +82,12 @@ ms.lasthandoff: 04/03/2017
 2. 选择“警报规则”
 3. 选择“添加警报”
 4. 选择用于触发警报的指标
-5. 选择一个条件，满足此条件时将触发该警报
+5. 选择一个条件，满足此条件时会触发该警报
 6. 为步骤 5 中要满足的条件 选择一个阈值
-7. 选择一个时间段，超过该时间段时，监视服务将检查步骤 5 和 6 中的条件与阈值
-8. 粘贴你在上一部分复制的 Webhook。
+7. 在步骤 5 和 6 中选择的条件和阈值监视服务将检查对其的段
+8. 在上一部分中复制的 webhook 中粘贴。
 
 ![将警报添加到虚拟机 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
 ![将警报添加到虚拟机 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
-
 

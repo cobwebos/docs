@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 31fed307a32e629d00aab7cc9d5167ee16d83936
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-etime"></a>教程：Azure Active Directory 与 ADP eTime 集成
 
@@ -252,5 +251,4 @@ ms.lasthandoff: 06/20/2017
 [201]: ./media/active-directory-saas-adpetime-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adpetime-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adpetime-tutorial/tutorial_general_203.png
-
 

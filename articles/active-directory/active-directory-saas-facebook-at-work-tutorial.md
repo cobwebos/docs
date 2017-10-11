@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 27e62a00832484667117d8718db9f2fc05e2f4e2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 与 Workplace by Facebook 集成
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/23/2017
 
 有关服务型软件 (SaaS) 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
@@ -155,7 +154,7 @@ ms.lasthandoff: 08/23/2017
 
 ![创建 Azure AD 用户][100]
 
-1. 在“Azure 门户”的左窗格中，选择“Azure Active Directory”。
+1. 在 **Azure 门户** 的左窗格中，选择“Azure Active Directory”。
 
     ![“Azure Active Directory”按钮](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
 
@@ -177,7 +176,7 @@ ms.lasthandoff: 08/23/2017
 
     c. 选择“显示密码”，并记下。
 
-    d.单击“下一步”。 选择“创建”。
+    d.单击“下一步”。 选择“创建” 。
  
 ### <a name="create-a-workplace-by-facebook-test-user"></a>创建 Workplace by Facebook 测试用户
 
@@ -243,5 +242,4 @@ ms.lasthandoff: 08/23/2017
 [201]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_203.png
-
 

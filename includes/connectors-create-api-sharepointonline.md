@@ -1,19 +1,19 @@
 
 
-要连接到 **SharePoint Online**，需要向 SharePoint Online 提供标识（用户名和密码、智能卡凭据等）。 经过身份验证后，可以继续在逻辑应用中使用 SharePoint Online 连接器。 
+若要连接到**SharePoint Online**，你需要提供你的身份 （用户名和密码，智能卡凭据，等等） 对 SharePoint Online。 一旦你已经过身份验证，你可以继续在逻辑应用中使用 SharePoint Online 的连接器。 
 
-逻辑应用的设计器打开时，按照以下步骤操作登录到 SharePoint，创建要在逻辑应用中使用的**连接**：
+在设计器中的应用程序逻辑，请按照下列步骤登录到 SharePoint 中可创建**连接**逻辑应用中使用：
 
-1. 在搜索框中输入“SharePoint”，并等待该搜索返回与 SharePoint Online 有关的所有触发器和操作：   
+1. 在搜索框中输入 SharePoint 并等待搜索以返回所有触发器和与 SharePoint Online 相关的操作：   
    ![配置 SharePoint][1]  
-2. 选择“SharePoint Online - 创建文件时”触发器  
-3. 选择“登录到 SharePoint Online”：   
+2. 选择**SharePoint Online 日-如果创建了文件**触发器  
+3. 选择**联机登录到 SharePoint**:   
    ![配置 SharePoint][2]    
-4. 提供 SharePoint 凭据进行登录，以使用 SharePoint 进行身份验证   
+4. 提供你的 SharePoint 凭据进行登录便可使用 SharePoint 进行身份验证   
    ![配置 SharePoint][3]     
-5. 身份验证完成后，会你将重定向到逻辑应用。 就这么简单，连接完成创建。 请注意底部的消息，指示现在已连接到 SharePoint。  
+5. 身份验证完成后你将重定向到逻辑应用。 就这么简单，在创建连接。 注意在底部，该值指示你现在已连接到 SharePoint 的消息。  
    ![配置 SharePoint][4]  
-6. 然后可以添加完成逻辑应用所需的其他触发器和操作。   
+6. 然后可以添加其他触发器和你需要完成逻辑应用的操作。   
 
 [1]: ./media/connectors-create-api-sharepointonline/connectionconfig1.png
 [2]: ./media/connectors-create-api-sharepointonline/connectionconfig2.png 

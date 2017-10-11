@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.translationtype: HT
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9968d9fa1ebbc92b5647a23c75e75fb819f5d5ab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本主题将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
@@ -39,7 +38,7 @@ ms.lasthandoff: 03/10/2017
 **应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[应用数据存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) 和 [Windows 8 应用数据漫游开发人员博客](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帐户可用于设置同步？
-在 Windows 8 和 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以便获取访问设置同步的权限。在 Windows 10 中，主/辅助帐户框架取代了这一连接的 Microsoft 帐户功能。
+在 Windows 8 和 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以便获取访问设置同步的权限。 在 Windows 10 中，主/辅助帐户框架取代了这一连接的 Microsoft 帐户功能。
 
 主帐户是指用于登录 Windows 的帐户。 可以是 Microsoft 帐户、Azure Active Directory (Azure AD) 帐户、本地 Active Directory 帐户或本地帐户。 除了主帐户外，Windows 10 用户可向设备添加一个或多个辅助云帐户。 辅助帐户通常是 Microsoft 帐户、Azure AD 帐户或某些其他帐户（如 Gmail 或 Facebook）。 这些辅助帐户提供访问其他服务（如单一登录和 Windows 应用商店）的权限，但无法支持设置同步。
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 03/10/2017
 设备上不同用户帐户之间的数据永远不会混合。 设置同步有两个规则：
 
 * Windows 设置始终通过主帐户漫游。
-* 通过用于获取应用的帐户来标记应用数据。 仅同步通过主帐户标记的应用。当通过 Windows 应用商店或移动设备管理 (MDM) 边载应用时，会确定应用所有权标记。
+* 通过用于获取应用的帐户来标记应用数据。 仅同步通过主帐户标记的应用。 当通过 Windows 应用商店或移动设备管理 (MDM) 边载应用时，会确定应用所有权标记。
 
 如果无法标识应用的所有者，它将通过主帐户漫游。 如果设备从 Windows 8 或 Windows 8.1 升级到 Windows 10，所有应用会被标记为由 Microsoft 帐户获取。 这是因为大多数用户通过 Windows 应用商店获取应用，而在 Windows 10 之前，未对 Azure AD 帐户提供 Windows 应用商店支持。 如果通过离线许可证安装应用，则应用会被标记为在设备上使用主帐户。
 
@@ -129,4 +128,3 @@ Windows 10 客户端 SKU 支持企业状态漫游，但服务器 SKU 不支持�
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-

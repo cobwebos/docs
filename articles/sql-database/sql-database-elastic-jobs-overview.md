@@ -15,18 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 0d95f9f0e0c5b69aed6ba74a2488e46540589c00
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
-
+ms.openlocfilehash: 8e84562115a866c0df5e0dee6c7f66c036a74737
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
 若要管理扩大的分区数据库，可使用**弹性数据库作业**功能（预览版）在一组数据库中可靠地执行 Transact-SQL (T-SQL) 脚本，这些数据库包括：
 
-* 自定义的数据库集合（下面将会介绍）
+* 自定义的数据库集合（下面会介绍）
 * [弹性池](sql-database-elastic-pool.md)中的所有数据库
 * 分片集（使用[弹性数据库客户端](sql-database-elastic-database-client-library.md)创建）。 
 
@@ -36,7 +34,7 @@ ms.lasthandoff: 02/16/2017
 * [使用 Powershell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。
 * [创建和管理扩大的 Azure SQL 数据库](sql-database-elastic-jobs-getting-started.md)
 
-**弹性数据库作业**是当前的客户托管 Azure 云服务，可以让你执行即席任务和计划的管理任务，称为**作业**。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。 
+**弹性数据库作业**是当前的客户托管 Azure 云服务，使执行即席任务和计划的管理任务，称为**作业**。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。 
 
 ![弹性数据库作业服务][1]
 
@@ -51,7 +49,7 @@ ms.lasthandoff: 02/16/2017
 
 **减少开销**
 
-通常，你必须单独连接到每个数据库才能运行 Transact-SQL 语句或执行其他管理任务。 作业可处理登录到目标组中每个数据库的任务。 此外，可定义、维护及保存要在一组 Azure SQL 数据库中执行的 Transact-SQL 脚本。
+通常，必须单独连接到每个数据库才能运行 Transact-SQL 语句或执行其他管理任务。 作业可处理登录到目标组中每个数据库的任务。 此外，可定义、维护及保存要在一组 Azure SQL 数据库中执行的 Transact-SQL 脚本。
 
 **计帐**
 
@@ -82,7 +80,7 @@ ms.lasthandoff: 02/16/2017
 6. 或使用 PowerShell 脚本：[使用 PowerShell 创建和管理 SQL 数据库弹性数据库作业（预览版）](sql-database-elastic-jobs-powershell.md)。
 
 ## <a name="idempotent-scripts"></a>幂等脚本
-脚本必须是[幂等的](https://en.wikipedia.org/wiki/Idempotence)。 简单而言，“幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业将自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次，也仍会返回相同的结果。 
+脚本必须是[幂等的](https://en.wikipedia.org/wiki/Idempotence)。 简单而言，“幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业会自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次，也仍会返回相同的结果。 
 
 一个简单的策略是在创建对象之前测试其是否存在。  
 
@@ -93,7 +91,7 @@ ms.lasthandoff: 02/16/2017
 同样地，脚本必须以逻辑方式测试并反驳它所找到的任何条件，才能成功执行。
 
 ## <a name="failures-and-logs"></a>失败和日志
-如果脚本在多次尝试之后失败，作业将会记录错误并继续。 在作业结束后（即已针对组中的所有数据库运行），你可以检查其失败的尝试列表。 日志提供详细信息用于调试错误脚本。 
+如果脚本在多次尝试之后失败，作业会记录错误并继续。 在作业结束后（即已针对组中的所有数据库运行），可以检查其失败的尝试列表。 日志提供详细信息用于调试错误脚本。 
 
 ## <a name="group-types-and-creation"></a>组类型和创建
 有两种类型的组： 
@@ -101,17 +99,17 @@ ms.lasthandoff: 02/16/2017
 1. 分片集
 2. 自定义组
 
-分片集组是使用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建的。 当你创建分片集组时，将在组中自动添加或删除数据库。 例如，当你将新分片添加到分片映射中时，该分片会自动出现在组中。 然后就可以对组运行作业。
+分片集组是使用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建的。 创建分片集组时，会在组中自动添加或删除数据库。 例如，将新分片添加到分片映射中时，该分片会自动出现在组中。 然后就可以对组运行作业。
 
-另一方面，自定义组的定义方式很严格。 你必须在自定义组中显式添加或删除数据库。 如果组中的数据库已被删除，作业将尝试对最终导致失败的数据库运行脚本。 使用 Azure 门户创建的组当前是自定义组。 
+另一方面，自定义组的定义方式很严格。 必须在自定义组中显式添加或删除数据库。 如果组中的数据库已被删除，作业将尝试对最终导致失败的数据库运行脚本。 使用 Azure 门户创建的组当前是自定义组。 
 
 ## <a name="components-and-pricing"></a>组件和定价
-以下组件配合工作可以创建支持即席执行管理作业的 Azure 云服务。 在安装期间，你的订阅会自动安装和配置这些组件。 你可以识别这些服务，因为它们具有相同的自动生成名称。 名称是唯一的，包括前缀“edj”后接 21 个随机生成的字符。
+以下组件配合工作可以创建支持即席执行管理作业的 Azure 云服务。 安装过程中，这些组件已在订阅中完成了安装和配置。 可以识别这些服务，因为它们具有相同的自动生成名称。 名称是唯一的，包括前缀“edj”后接 21 个随机生成的字符。
 
-* **Azure 云服务**：弹性数据库作业（预览版）以客户托管的 Azure 云服务交付，可执行请求的任务。 从门户开始，服务部署并托管在你的 Microsoft Azure 订阅中。 默认部署的服务将结合最少两个辅助角色运行，以实现高可用性。 每个默认大小的辅助角色 (ElasticDatabaseJobWorker) 在 A0 实例上运行。 有关价格，请参阅[云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)。 
+* **Azure 云服务**：弹性数据库作业（预览版）以客户托管的 Azure 云服务交付，可执行请求的任务。 从门户开始，服务部署并托管在 Microsoft Azure 订阅中。 默认部署的服务将结合最少两个辅助角色运行，以实现高可用性。 每个默认大小的辅助角色 (ElasticDatabaseJobWorker) 在 A0 实例上运行。 有关价格，请参阅[云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)。 
 * **Azure SQL 数据库**：服务使用名为**控制数据库的 Azure SQL 数据库**来存储所有的作业元数据。 默认的服务层是 S0。 有关价格，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 * **Azure 服务总线**：Azure 服务总线用于协调 Azure 云服务中的工作。 请参阅[服务总线](https://azure.microsoft.com/pricing/details/service-bus/)定价。
-* **Azure 存储空间**：在某个问题需要进一步调试时，使用 Azure 存储帐户来存储诊断输出日志记录（请参阅[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)）。 有关价格，请参阅 [Azure 存储空间定价](https://azure.microsoft.com/pricing/details/storage/)。
+* **Azure 存储**：在某个问题需要进一步调试时，使用 Azure 存储帐户来存储诊断输出日志记录（请参阅[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)）。 有关价格，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 ## <a name="how-elastic-database-jobs-work"></a>弹性数据库作业的工作原理
 1. Azure SQL 数据库是一个**控制数据库**，用于存储所有元数据和状态数据。
@@ -134,7 +132,7 @@ ms.lasthandoff: 02/16/2017
 2. 控制器将识别新作业。 创建并执行作业任务，以拆分脚本并刷新组的数据库。 最后，将创建并执行新的作业以扩展该作业，并创建新的作业，其中指定了每个子作业针对据组中的单个数据库执行 Transact-SQL 脚本。
 3. 控制器将识别创建的子作业。 对于每个作业，控制器将创建并触发作业任务，以针对数据库执行脚本。 
 4. 完成所有作业任务后，控制器会将作业更新为已完成状态。 
-   在作业执行期间，可以随时使用 PowerShell API 来查看作业执行的当前状态。 PowerShell API 返回的所有时间都以 UTC 表示。 如果需要，你可以启动取消请求来停止作业。 
+   在作业执行期间，可以随时使用 PowerShell API 来查看作业执行的当前状态。 PowerShell API 返回的所有时间都以 UTC 表示。 如果需要，可以启动取消请求来停止作业。 
 
 ## <a name="next-steps"></a>后续步骤
 [安装组件](sql-database-elastic-jobs-service-installation.md)，然后[创建一个登录名并将其添加到数据库组的每个数据库中](sql-database-manage-logins.md)。 若要进一步了解作业创建和管理过程，请参阅[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)。 另请参阅[弹性数据库作业入门](sql-database-elastic-jobs-getting-started.md)。
@@ -144,6 +142,5 @@ ms.lasthandoff: 02/16/2017
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
-
 
 

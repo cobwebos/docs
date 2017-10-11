@@ -15,12 +15,11 @@ ms.date: 07/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: 463946256f9e335fa6d98fc904835e5c3dc2725e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="working-with-conditional-access-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的条件访问
 
@@ -73,4 +72,3 @@ ms.lasthandoff: 08/01/2017
             [使用自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-

@@ -16,15 +16,14 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
-ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/15/2017
-
+ms.openlocfilehash: 45522bf526c4aeab1d6ccc8891a55a0436ff9320
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>向用户分配 Azure MFA、Azure AD Premium 或企业移动性许可证
-如果你已购买 Azure MFA、Azure AD Premium 或企业移动性套件许可证，则不需要创建 Multi-Factor Auth 提供程序。 将许可证分配给用户后，即可开始为用户启用 MFA。
+如果已购买 Azure MFA、Azure AD Premium 或企业移动性套件许可证，则不需要创建 Multi-Factor Auth 提供程序。 将许可证分配给用户后，即可开始为用户启用 MFA。
 
 ## <a name="to-assign-a-license"></a>分配许可证
 1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
@@ -38,10 +37,9 @@ ms.lasthandoff: 02/15/2017
 7. 在出现的框中，在要分配许可证的用户或组的旁边单击。  应会看到绿色勾号。
 8. 单击该勾号图标以保存更改。
    ![分配许可证](./media/multi-factor-authentication-get-started-assign-licenses/assign4.png)
-9. 你应会看到一条消息指出分配了多少个许可证，以及有多少个许可证分配失败。  单击“确定” 。
+9. 应会看到一条消息指出分配了多少个许可证，以及有多少个许可证分配失败。  单击“确定” 。
    ![分配许可证](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关详细信息，请参阅[什么是 Microsoft Azure Active Directory 许可？](../active-directory/active-directory-licensing-what-is.md)
-

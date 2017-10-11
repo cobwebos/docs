@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 73c81691b68ee820e1d905a17b4f2ab6b6ceb5fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>教程：Azure Active Directory 与 Zscaler 的集成
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 07/11/2017
 若要配置和测试 Zscaler 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. [配置代理设置](#configuring-proxy-settings) - 在 Internet Explorer 中配置代理设置
+2. [配置代理设置](#configuring-proxy-settings) - 以在 Internet Explorer 中配置代理设置
 3. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. [创建 Zscaler 测试用户](#creating-a-zscaler-test-user) - 在 Zscaler 中创建 Britta Simon 的对应用户，其与用户的 Azure AD 表示形式相关联。
 5. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -320,5 +319,4 @@ ms.lasthandoff: 07/11/2017
 [201]: ./media/active-directory-saas-zscaler-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-zscaler-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-zscaler-tutorial/tutorial_general_203.png
-
 

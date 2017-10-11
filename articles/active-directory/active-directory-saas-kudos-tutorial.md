@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: 353798fcfd4ad7ce017fc2fddf4110715db3ace2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/24/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>教程：Azure Active Directory 与 Kudos 的集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/24/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Kudos 测试用户](#creating-a-kudos-test-user)** - 在 Kudos 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 Kudos 测试用户](#creating-a-kudos-test-user)** -若要链接到用户的 Azure AD 表示的 Kudos 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 06/24/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Kudos 客户端支持团队](http://success.kudosnow.com/home)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_certificate.png) 
 
@@ -140,13 +139,13 @@ ms.lasthandoff: 06/24/2017
    
     ![SSO](./media/active-directory-saas-kudos-tutorial/ic787807.png "SSO")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。 
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。 
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“X.509 证书”文本框中
+    b. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“X.509 证书”文本框中
    
     c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
    
-    d. 在“Kudos URL”文本框中，键入你的公司名称。
+    d. 在“Kudos URL”文本框中，键入公司名称。
    
     e. 单击“保存” 。
 
@@ -177,7 +176,7 @@ ms.lasthandoff: 06/24/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-kudos-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -209,9 +208,9 @@ ms.lasthandoff: 06/24/2017
    
     ![添加用户](./media/active-directory-saas-kudos-tutorial/ic787810.png "添加用户")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”、“姓氏”、“电子邮件地址”和其他详细信息。
+    a. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”、“姓氏”、“电子邮件地址”和其他详细信息。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“创建用户”。
+    b. 单击“创建用户”。
 
 >[!NOTE]
 >可以使用 Kudos 提供的任何其他 Kudos 用户帐户创建工具或 API 来预配 AAD 用户帐户。
@@ -224,7 +223,7 @@ ms.lasthandoff: 06/24/2017
 
 **若要将 Britta Simon 分配到 Kudos，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -272,5 +271,4 @@ ms.lasthandoff: 06/24/2017
 [201]: ./media/active-directory-saas-kudos-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-kudos-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-kudos-tutorial/tutorial_general_203.png
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: guybo
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: cb1fc9a44dc9e57d9cc9f1c546ad937d67e63c2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-a-lamp-app-using-the-azure-customscript-extension-for-linux"></a>使用适用于 Linux 的 Azure CustomScript 扩展部署 LAMP 应用程序
 > [!IMPORTANT] 
@@ -72,7 +71,7 @@ script-vm VM 需要使用与 Azure 之间的有效连接安装 Azure CLI。 有�
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
-还要创建一个描述如何从 Azure 存储下载脚本的 JSON 文件。 将该文件另存为 public_config.json（使用存储帐户的名称替换“mystorage”）：
+还要创建一个描述如何从 Azure 存储下载脚本的 JSON 文件。 将该文件另存为 *public_config.json*（使用存储帐户的名称替换“mystorage”）：
 
     {"fileUris":["https://mystorage.blob.core.windows.net/scripts/install_lamp.sh"], "commandToExecute":"sh install_lamp.sh" }
 

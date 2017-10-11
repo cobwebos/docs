@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 744c420aa0298c59c44e645b95a716ad876752de
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>教程：Azure Active Directory 与 Land Gorilla 客户端的集成
 
@@ -59,7 +58,7 @@ ms.lasthandoff: 03/31/2017
 
 
 ## <a name="adding-land-gorilla-client-from-the-gallery"></a>从库添加 Land Gorilla 客户端
-若要将 Land Gorilla 客户端集成配置到到 Azure AD 中，需从库中将 Land Gorilla 客户端添加到托管式 SaaS 应用的列表中。
+要将 Land Gorilla 客户端集成配置到到 Azure AD 中，需从库中将 Land Gorilla 客户端添加到托管式 SaaS 应用的列表中。
 
 **若要从库中添加 Land Gorilla 客户端，请执行以下步骤：**
 
@@ -79,13 +78,13 @@ ms.lasthandoff: 03/31/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_search.png)
 
-5. 在结果窗格中，选择“Land Gorilla 客户端”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Land Gorilla 客户端”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_addfromgallery.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Land Gorilla 客户端的 Azure AD 单一登录。
+在本部分中，可以配置和使用基于一个名为"Britta 人 Simon"的测试用户的上关于领土 Gorilla 客户端测试 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Land Gorilla 客户端用户。 换句话说，需要在 Azure AD 用户与 Land Gorilla 客户端中相关用户之间建立链接关系。
 
@@ -93,15 +92,15 @@ ms.lasthandoff: 03/31/2017
 
 若要配置和测试 Land Gorilla 客户端的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用有限组测试 Azure AD 单一登录。
-3. **[创建 Land Gorilla 测试用户](#creating-a-land-gorilla-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建一个 Azure AD 的测试用户](#creating-an-azure-ad-test-user)** -若要测试 Azure AD 单一登录与一组有限。
+3. **[创建上关于领土 Gorilla 测试用户](#creating-a-land-gorilla-test-user)** -若要测试 Azure AD 单一登录与 Britta 人 Simon。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 Land Gorilla 客户端应用程序中配置单一登录。
+在本部分中，会在 Azure 管理门户中启用 Azure AD 单一登录并在 Land Gorilla 客户端应用程序中配置单一登录。
 
 **若要配置 Land Gorilla 客户端的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 03/31/2017
 
     ![配置单一登录](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_url_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用下面的一种模式键入值： 
+    a. 在“标识符”文本框中，使用下面的一种模式键入值： 
     
     `https://<customer domain>.landgorilla.com/` 
     
@@ -136,7 +135,7 @@ ms.lasthandoff: 03/31/2017
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 联系 [Land Gorilla 客户端团队](https://www.landgorilla.com/support/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
 
@@ -170,7 +169,7 @@ ms.lasthandoff: 03/31/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -188,9 +187,9 @@ ms.lasthandoff: 03/31/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Land Gorilla 客户端，请执行以下步骤：**
+**要将 Britta Simon 分配到 Land Gorilla 客户端，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -240,4 +239,3 @@ ms.lasthandoff: 03/31/2017
 [201]: ./media/active-directory-saas-landgorilla-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-landgorilla-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-landgorilla-tutorial/tutorial_general_203.png
-

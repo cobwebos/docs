@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 混合标识设计注意事项 - 确定数据保护要求 | Microsoft 文档"
-description: "规划你的混合标识解决方案时，确定适用于你的业务的数据保护要求以及哪些选项可用于最好地满足这些要求。"
+description: "规划混合标识解决方案时，确定适用于业务的数据保护要求以及哪些选项可用于最好地满足这些要求。"
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -14,24 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 69f7b49fd82e4d34b1d54718cfbd2f4dedd2ae47
-ms.openlocfilehash: bfa6413bd939b6082de4a88195b1f35cf8210375
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: 96bf9d4c26a22f718c29804c11681199e775f589
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>通过强标识解决方案增强数据安全性的计划
-保护数据的第一步是确定谁可以访问该数据，作为此过程的组成部分，需要具有可与你的系统集成的标识解决方案，以便提供身份验证和授权功能。 身份验证与授权经常给人造成混淆，并且其角色容易令人误解。 事实上它们有很大的差别，如下图中所示：
+保护数据的第一步是确定谁可以访问该数据，作为此过程的组成部分，需要具有可与系统集成的标识解决方案，以便提供身份验证和授权功能。 身份验证与授权经常给人造成混淆，并且其角色容易令人误解。 事实上它们有很大的差别，如下图中所示：
 
 ![](./media/hybrid-id-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **移动设备管理生命周期阶段**
 
-规划你的混合标识解决方案时，必须了解适用于你的业务的数据保护要求以及哪些选项可用于最好地满足这些要求。
+规划混合标识解决方案时，必须了解适用于业务的数据保护要求以及哪些选项可用于最好地满足这些要求。
 
 > [!NOTE]
-> 完成数据安全性规划后，查看[确定多重身份验证要求](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)，确保与多重身份验证要求相关的选择不受你在此部分所做决定的影响。
+> 完数据安全规划，请查看[确定多因素身份验证要求](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)以确保根据多因素身份验证要求你选择了不受本节对此做出的决策。
 > 
 > 
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 05/05/2017
 3. 静态本地的数据保护。
 4. 静态云中的数据保护。
 
-IT 人员借以在其中每个阶段保护数据本身的技术控制并非由混合标识解决方案直接提供，但混合标识解决方案仍然必须能够在授予数据访问权限之前，利用本地和云标识管理资源确定用户身份。 规划你的混合标识解决方案时，确保根据你组织的要求回答以下问题：
+IT 人员借以在其中每个阶段保护数据本身的技术控制并非由混合标识解决方案直接提供，但混合标识解决方案仍然必须能够在授予数据访问权限之前，利用本地和云标识管理资源确定用户身份。 规划混合标识解决方案时，确保根据组织的要求回答以下问题：
 
 ## <a name="data-protection-at-rest"></a>静态数据保护
 无论静态数据位于何处（设备、云或本地），务必执行评估来了解组织在这方面的需求。 对于此方面，确保询问以下问题：
@@ -70,13 +69,13 @@ IT 人员借以在其中每个阶段保护数据本身的技术控制并非由�
 * 云标识管理是否与已签名的目录存储通信并将通信保持在该存储内部（数据中心内以及数据中心之间）？
 
 ## <a name="compliance"></a>合规性
-法律法规和监管遵从性要求因你公司所属行业不同而有所不同。 属于严格管控行业的公司必须解决与合规性问题有关的标识管理。 萨班斯-奥克斯利法案 (SOX)、健康保险可携性和责任法案 (HIPAA)、金融服务现代化法案 (GLBA) 和支付卡行业数据安全标准 (PCI DSS) 等法规对于标识和访问的规定是非常严格的。 贵公司将采用的混合标识解决方案必须具有能够满足上述一个或多个法规要求的核心功能。 对于此方面，确保询问以下问题：
+法律法规和监管遵从性要求因公司所属行业不同而有所不同。 属于严格管控行业的公司必须解决与合规性问题有关的标识管理。 萨班斯-奥克斯利法案 (SOX)、健康保险可携性和责任法案 (HIPAA)、金融服务现代化法案 (GLBA) 和支付卡行业数据安全标准 (PCI DSS) 等法规对于标识和访问的规定是非常严格的。 贵公司会采用的混合标识解决方案必须具有能够满足上述一个或多个法规要求的核心功能。 对于此方面，确保询问以下问题：
 
-* 混合标识解决方案是否遵循针对你的业务的法规要求？
+* 混合标识解决方案是否遵循针对业务的法规要求？
 * 混合标识解决方案是否具有使贵公司遵循法规要求的内置功能？ 
 
 > [!NOTE]
-> 务必记下每个答案并了解答案背后的依据。 [定义数据保护策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)会检查可用选项以及每个选项的优点/缺点。  回答了这些问题之后，就会挑选出最适合你的业务需求的选项。
+> 务必记下每个答案并了解答案背后的依据。 [定义数据保护策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)会检查可用选项以及每个选项的优点/缺点。  回答了这些问题之后，就会挑选出最适合业务需求的选项。
 > 
 > 
 
@@ -85,5 +84,4 @@ IT 人员借以在其中每个阶段保护数据本身的技术控制并非由�
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

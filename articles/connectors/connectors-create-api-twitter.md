@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-the-twitter-connector"></a>Twitter 连接器入门
 借助 Twitter 连接器，可以：
@@ -44,7 +43,7 @@ ms.lasthandoff: 05/26/2017
 
 在此示例中，我将演示如何使用“发布新推文时”触发器搜索 #Seattle，如果找到了 #Seattle，则使用推文中的文本更新 Dropbox 中的文件。 在企业示例中，可搜索公司名称并使用推文中的文本更新 SQL 数据库。
 
-1. 在逻辑应用设计器上的搜索框中输入“twitter”，然后选择“Twitter - 发布新推文时”触发器   
+1. 在逻辑应用设计器上的搜索框中输入“twitter”，并选择“Twitter - 发布新推文时”触发器   
    ![Twitter 触发器图 1](./media/connectors-create-api-twitter/trigger-1.png)  
 2. 在“搜索文本”控件中输入“#Seattle”  
    ![Twitter 触发器图 2](./media/connectors-create-api-twitter/trigger-2.png) 
@@ -63,7 +62,7 @@ ms.lasthandoff: 05/26/2017
    ![Twitter 操作图 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
 2. 选择**添加条件**链接。  
    ![Twitter 条件图 1](../../includes/media/connectors-create-api-twitter/condition-1.png)   
-   这将打开“条件”控件，可在该控件中检查*等于*、*小于*、*大于*、*包含*等条件。  
+   这会打开“条件”控件，可在该控件中检查*等于*、*小于*、*大于*、*包含*等条件。  
    ![Twitter 条件图 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
 3. 选择“选择值”控件。  
    在此控件中，可选择来自任何之前操作或触发器的一个或多个属性作为评价其条件为 true 还是 false 的值。
@@ -87,9 +86,9 @@ ms.lasthandoff: 05/26/2017
 
 在下一步中，将添加一个 Twitter 操作，该操作将使用具有多于 50 个关注者的用户所发布的每条推文的某些属性发布推文。  
 
-1. 选择“添加操作”。 这将打开搜索控件，可在该控件中搜索其他操作和触发器。  
+1. 选择“添加操作”。 这会打开搜索控件，可在该控件中搜索其他操作和触发器。  
    ![Twitter 条件图 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
-2. 在搜索框中输入“twitter”，然后选择“Twitter - 发布推文”操作。 这打开“发布推文”控件，将在该控件中输入要发布的推文的所有详细信息。      
+2. 在搜索框中输入“twitter”，并选择“Twitter - 发布推文”操作。 这打开“发布推文”控件，会在该控件中输入要发布的推文的所有详细信息。      
    ![Twitter 操作图 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   
 3. 选择“推文文本”控件。 来自逻辑应用中的之前操作和触发器的所有输出现在都可见。 可选择其中任意一个，并将它们用作新推文的推文文本的一部分。     
    ![Twitter 操作图 2](../../includes/media/connectors-create-api-twitter/action-2.png)   
@@ -97,7 +96,7 @@ ms.lasthandoff: 05/26/2017
 5. 在推文文本控件中输入“说:”。 紧跟在用户名后输入此内容。  
 6. 选择“推文文本”。       
    ![Twitter 操作图 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
-7. 保存工作，然后发送带有 #Seattle 井号标签的推文以激活工作流。  
+7. 保存工作，并发送带有 #Seattle 井号标签的推文以激活工作流。  
 
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
@@ -106,5 +105,4 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
-
 

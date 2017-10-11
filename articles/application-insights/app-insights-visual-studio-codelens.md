@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ebfed89674dc132bd5d93f34a8b5ed5ab12bd73e
-ms.openlocfilehash: 3e7cb9dfbc3a0985794294c94d331f12829c2bdc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/16/2016
-
+ms.openlocfilehash: 20933afab55043ccc5ce908c04c6e4a7a28e3538
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遥测
 使用有关运行时异常和请求响应时间的遥测，可以批注 Web 应用代码中的方法。 如果在应用程序中安装 [Azure Application Insights](app-insights-overview.md)，遥测会在 Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) 中显示，即每个函数顶端的备注，通常在此处查看有用的信息，例如引用函数的位置数量或最后编辑函数的人员。
@@ -31,7 +30,7 @@ ms.lasthandoff: 11/16/2016
 > 
 
 ## <a name="where-to-find-application-insights-data"></a>在哪里查找 Application Insights 数据
-在 Web 应用程序的公共请求方法的 CodeLens 指示器中查找 Application Insights 遥测。 CodeLens 指示器在 C# 和 Visual Basic 代码中的方法和其他声明上方显示。 如果 Application Insights 数据可用于某个方法，将看到请求和异常指示器，例如“100 个请求，%1 个失败”或“10 个异常”。 单击 CodeLens 指示器了解更多详细信息。 
+在 Web 应用程序的公共请求方法的 CodeLens 指示器中查找 Application Insights 遥测。 CodeLens 指示器在 C# 和 Visual Basic 代码中的方法和其他声明上方显示。 Application Insights 数据是否可用的方法，你将看到请求和异常，例如"100 请求，1%失败"10 异常。"的指示符 单击 CodeLens 指示器了解更多详细信息。 
 
 > [!TIP]
 > 在其他 CodeLens 指示器出现后，Application Insights 请求和异常指示器可能需要再过几秒才能加载。
@@ -53,10 +52,10 @@ ms.lasthandoff: 11/16/2016
 * 选择“探索异常趋势”  可查看过去 24 小时内发生的所有异常的趋势可视化效果。 
 
 > [!TIP]
-> 如果在 CodeLens 中看到“0 个异常”，但知道应该有异常，请检查并确保在 CodeLens 中选择了正确的 Application Insights 资源。 若要选择其他资源，请在解决方案资源管理器中右键单击项目，然后选择“Application Insights”>“选择遥测源”。 CodeLens 仅显示过去 24 小时内应用程序中的十五大最频繁发生的异常，因此，如果异常的发生频率排名第 16 位或发生频率更低，将看到“0 个异常”。 ASP.NET 视图中的异常可能不会在生成这些视图的控制器方法中显示。
+> 如果在 CodeLens 中看到“0 个异常”，但知道应该有异常，请检查并确保在 CodeLens 中选择了正确的 Application Insights 资源。 要选择其他资源，请在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“选择遥测源”。 CodeLens 仅显示 15 大多数经常出现的异常在过去的 24 小时，因此，如果异常最常被第 16 位或更少的应用程序中，你将看到"0 异常"。 ASP.NET 视图中的异常可能不会在生成这些视图的控制器方法中显示。
 > 
 > [!TIP]
-> 如果在 CodeLens 中看到“？ 个异常”，则需要将 Azure 帐户与 Visual Studio 关联，否则 Azure 帐户凭据可能会过期。 在任何一种情况下，单击“？ 个异常”，然后选择“添加帐户...”  以输入凭据。
+> 如果在 CodeLens 中看到“？ 你需要将你的 Azure 帐户关联使用 Visual Studio 中的异常"CodeLens，或你的 Azure 帐户的凭据可能已过期。 在任何一种情况下，单击“？ 异常"，然后选择**添加帐户...**输入凭据。
 > 
 > 
 
@@ -76,8 +75,7 @@ ms.lasthandoff: 11/16/2016
 ## <a name="next"></a>后续步骤
 |  |  |
 | --- | --- |
-| **[在 Visual Studio 中使用 Application Insights](app-insights-visual-studio.md)**<br/>搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 |![右键单击项目，然后依次选择“Application Insights”、“搜索”](./media/app-insights-visual-studio-codelens/34.png) |
+| **[使用 Visual Studio 中的 Application Insights](app-insights-visual-studio.md)**<br/>搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 |![右键单击项目，并依次选择“Application Insights”、“搜索”](./media/app-insights-visual-studio-codelens/34.png) |
 | **[添加更多数据](app-insights-asp-net-more.md)**<br/>监视使用情况、可用性、依赖项、异常。 集成来自记录框架的跟踪。 编写自定义遥测。 |![Visual Studio](./media/app-insights-visual-studio-codelens/64.png) |
 | **[使用 Application Insights 门户](app-insights-dashboards.md)**<br/>仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测导出。 |![Visual Studio](./media/app-insights-visual-studio-codelens/62.png) |
-
 

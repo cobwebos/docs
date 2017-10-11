@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
 ms.openlocfilehash: 6b5af18d02fd508a21cdc21b38b1c16e79f07ecb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="install-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 的 Windows VM 上安装 MongoDB
 > [!IMPORTANT]
@@ -39,7 +38,7 @@ ms.lasthandoff: 06/26/2017
 >
 
 ## <a name="attach-a-data-disk"></a>附加数据磁盘
-若要为虚拟机提供存储，请附加数据磁盘，然后对其进行初始化，以便 Windows 可以使用它。 如果已有数据磁盘，可附加该现有磁盘；此外还可附加空磁盘。
+要为虚拟机提供存储，请附加数据磁盘，并对其进行初始化，以便 Windows 可以使用它。 如果已有数据磁盘，可附加该现有磁盘；此外还可附加空磁盘。
 
 [!INCLUDE [howto-attach-disk-windows-linux](../../../../includes/howto-attach-disk-windows-linux.md)]
 
@@ -49,10 +48,9 @@ ms.lasthandoff: 06/26/2017
 [!INCLUDE [install-and-run-mongo-on-win2k8-vm](../../../../includes/install-and-run-mongo-on-win2k8-vm.md)]
 
 ## <a name="summary"></a>摘要
-在本教程中，你已了解如何创建运行 Windows Server 的虚拟机、如何远程连接到该虚拟机以及如何附加数据磁盘。  你还了解了如何在基于 Windows 的虚拟机上安装和配置 MongoDB。 现可按照 [MongoDB 文档][MongoDocs]中的高级主题操作，访问基于 Windows 的虚拟机上的 MongoDB。
+在本教程中，已了解如何创建运行 Windows Server 的虚拟机、如何远程连接到该虚拟机以及如何附加数据磁盘。  还了解了如何在基于 Windows 的虚拟机上安装和配置 MongoDB。 现可按照 [MongoDB 文档][MongoDocs]中的高级主题操作，访问基于 Windows 的虚拟机上的 MongoDB。
 
 [MongoDocs]: http://docs.mongodb.org/manual/
 [MongoDB]: http://www.mongodb.org/
 [AzurePortal]: https://portal.azure.com/
-
 

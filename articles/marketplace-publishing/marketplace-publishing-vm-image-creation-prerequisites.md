@@ -1,6 +1,6 @@
 ---
-title: "为 Azure Marketplace 创建虚拟机映像的技术先决条件 | Microsoft Docs"
-description: "了解创建虚拟机映像并将其部署到 Azure Marketplace 以供其他人购买的要求。"
+title: "为 Azure 应用商店创建虚拟机映像的技术先决条件 | Microsoft Docs"
+description: "了解创建虚拟机映像并将其部署到 Azure 应用商店以供其他人购买的要求。"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,14 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 创建虚拟机映像的技术先决条件
+# <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像的技术先决条件
 在开始之前，请仔细阅读过程，并了解执行每个步骤的位置和原因。 在开始产品/服务创建过程前，应尽可能多地准备公司信息和其他数据、下载必需的工具和/或创建技术组件。 通过查看本文，应该清楚了解这些项目。  
 
 ## <a name="download-needed-tools--applications"></a>下载所需的工具和应用程序
@@ -53,4 +52,3 @@ ms.lasthandoff: 03/31/2017
 * 本地开发需要下载 VHD 并使用本地基础结构进行开发。 尽管此操作可行，但不建议这样做。 请注意，针对 Windows 或 SQL 本地开发要求具有相关的本地许可证密钥。 在创建 VM 后，无法包括或安装 SQL Server。 还必须以 Azure 门户中已批准 SQL 映像上的产品/服务为基础。 如果决定在本地开发，必须执行一些不同于在云中开发的步骤。 可以在[创建本地 VM 映像](marketplace-publishing-vm-image-creation-on-premise.md)中找到相关信息。
 
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
-

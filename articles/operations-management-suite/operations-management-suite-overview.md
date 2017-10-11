@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>什么是 Operations Management Suite (OMS)？
 本文介绍 Operations Management Suite (OMS)，包括它提供的商业价值、服务和管理解决方案以及将不同服务和解决方案打包在一起的产品的简要概述。  文中提供了有关部署和使用每种服务和解决方案的详细文档的链接。
@@ -33,7 +32,7 @@ ms.lasthandoff: 06/29/2017
 Operations Management Suite（简称为 OMS）是在云中从无到有设计出的管理服务集合。  OMS 组件完全在 Azure 中托管，而不是部署和管理本地资源。  配置工作极少，基本上在几分钟内就能将它启动并运行。  
 
 - **极低的部署成本与复杂性。**  由于 OMS 的所有组件和数据都存储在 Azure 中，因此在短时间就能将它启动并运行，没有本地组件那样的复杂性，也不需要额外的投资。
-- **缩放到云级别。**  不必担心要为使用不上的计算资源付费，也不必担心存储空间耗尽，因为在云中只需为实际使用的资源付费，并且随时可以根据任何所需的负载进行缩放。  一开始可以管理少量的资源来帮助自己入门，然后根据整个环境扩展。
+- **缩放到云级别。**  不必担心要为使用不上的计算资源付费，也不必担心存储空间耗尽，因为在云中只需为实际使用的资源付费，并且随时可以根据任何所需的负载进行缩放。  一开始可以管理少量的资源来帮助自己入门，并根据整个环境扩展。
 - **利用最新的功能。**  OMS 服务中的功能正在持续增加和更新。  用户始终可以访问最新的功能，根本不需要部署更新。
 - **集成的服务。**  尽管每个 OMS 服务本身都能提供重要的价值，但它们也可以协同工作来解决复杂的管理方案。  例如，Azure 自动化中的 Runbook 可以配合 Azure Site Recovery 来驱动故障转移过程，然后将信息记录到 Log Analytics 来生成警报。
 - **全球信息。**  OMS 中的管理解决方案可持续访问最新的信息。  例如，安全和审核解决方案可以使用在全球检测到的最新威胁来执行威胁分析。
@@ -41,7 +40,7 @@ Operations Management Suite（简称为 OMS）是在云中从无到有设计出�
 
 ### <a name="is-it-just-for-the-cloud"></a>它只适用于云环境吗？
 不能仅仅因为 OMS 服务在云中运行，就认为它们无法有效管理本地环境。  在数据中心内的任意 Windows 或 Linux 计算机上安装一个代理，就能将数据发送到 Log Analytics，可在其中连同从云或本地服务收集的其他所有数据一起进行分析。  使用 Azure 备份和 Azure Site Recovery 可以利用云来实现本地资源的备份和高可用性。  
-云中的 Runbook 通常无法访问本地资源，但你也可以在数据中心内托管 Runbook 的一台或多台计算机上安装代理。  启动 Runbook 时，只需指定是要让它在云中还是本地辅助角色上运行即可。
+云中的 Runbook 通常无法访问本地资源，但你可以在数据中心内托管 Runbook 的一台或多台计算机上安装代理。  启动 Runbook 时，只需指定是要让它在云中还是本地辅助角色上运行即可。
 
 ## <a name="hybrid-management-with-system-center"></a>使用 System Center 进行混合管理
 如果有现有的 System Center 安装，可将这些组件与 OMS 服务集成，利用每种产品的相关专业技术为本地和云环境提供混合解决方案。  将现有 Operations Manager 管理组连接到 Log Analytics 可以分析云中托管的代理。  结合 Data Protection Manager 使用现有备份过程可将数据备份到云中。  
@@ -65,7 +64,7 @@ OMS 的核心功能由 Azure 中运行的一组服务提供。  每个服务提�
 #### <a name="collecting-data"></a>收集数据
 可通过多种方法将数据收集到存储库，供 Log Analytics 分析。
 
-- **Windows 或 Linux 计算机和虚拟机。**  在要从中收集数据的 [Windows](../log-analytics/log-analytics-windows-agents.md) 和 [Linux](../log-analytics/log-analytics-linux-agents.md) 计算机或虚拟机上安装 Microsoft 监视代理。  该代理将自动从 Log Analytics 下载用于定义要收集的事件和性能数据的配置。  可以使用 Azure 门户在 Azure 中运行的虚拟机上轻松安装该代理。  如果有现有的 Operations Manager 环境，可将管理组连接到 Log Analytics，然后从所有现有代理自动开始收集数据。
+- **Windows 或 Linux 计算机和虚拟机。**  在要从中收集数据的 [Windows](../log-analytics/log-analytics-windows-agents.md) 和 [Linux](../log-analytics/log-analytics-linux-agents.md) 计算机或虚拟机上安装 Microsoft 监视代理。  该代理会自动从 Log Analytics 下载用于定义要收集的事件和性能数据的配置。  可以使用 Azure 门户在 Azure 中运行的虚拟机上轻松安装该代理。  如果有现有的 Operations Manager 环境，可将管理组连接到 Log Analytics，然后从所有现有代理自动开始收集数据。
 - **Azure 服务。**  Log Analytics 将 [Azure 诊断和 Azure 监视](../log-analytics/log-analytics-azure-storage.md)中的遥测数据收集到存储库，以便可以监视 Azure 资源。
 - **数据收集器 API。**  Log Analytics 提供[用于从任何客户端填充数据的 REST API](../log-analytics/log-analytics-data-collector-api.md)。  可以使用此 API 从第三方应用程序收集数据，或实现自定义管理方案。  一种常用方法是使用 Azure 自动化中的 Runbook 收集数据，然后使用数据收集器 API 将数据写入存储库。
 
@@ -99,7 +98,7 @@ Runbook 为套件中的其他服务提供过程自动化。  由于可以使用 
 ##### <a name="accessing-resources"></a>访问资源
 由于 Runbook 基于 PowerShell，因此能够管理可通过 PowerShell cmdlet 访问的任何资源。  在自动化帐户中[加载模块](../automation/automation-integration-modules.md)时，该模块可供该帐户中的所有 Runbook 使用。 
  
-在云中运行 Runbook 时，这些 Runbook 可从云访问任何资源。  这包括你的 Azure 订阅、Amazon Web Services (AWS) 等其他云或可通过 REST API 访问的服务中的资源。  云中的 Runbook 不使用任何凭据运行，但可以利用凭据、连接和证书等自动化资产向它们访问的资源进行身份验证。
+在云中运行 Runbook 时，这些 Runbook 可从云访问任何资源。  这包括 Azure 订阅、Amazon Web Services (AWS) 等其他云或可通过 REST API 访问的服务中的资源。  云中的 Runbook 不使用任何凭据运行，但可以利用凭据、连接和证书等自动化资产向它们访问的资源进行身份验证。
 
 数据中心内的资源很有可能无法通过云中运行的 Runbook 访问。  不过，可在数据中心内安装一个或多个[混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)，以运行需要访问本地资源的 Runbook。  启动 Runbook 时，可以指定是要让它在云中还是特定的辅助角色上运行。
 
@@ -150,9 +149,9 @@ Azure Site Recovery 有三种基本复制方案。
 Site Recovery 将元数据存储在位于特定 Azure 地理区域的保管库。 Site Recovery 服务不存储任何复制的数据。
 
 ## <a name="management-solutions"></a>管理解决方案
-[管理解决方案](operations-management-suite-solutions.md)是预先打包的逻辑集，可以实现利用一个或多个 OMS 服务的特定管理方案。  Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。  合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
+[管理解决方案](operations-management-suite-solutions.md)是预先打包的逻辑集，可以实现利用一个或多个 OMS 服务的特定管理方案。  Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。  合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
 
-[更新管理解决方案](oms-solution-update-management.md)就是利用多个服务提供更多功能的解决方案的一个好例子。  此解决方案使用适用于 Windows 和 Linux 的 Log Analytics 代理来收集有关每个代理上所需的更新的信息。  它将这些数据写入 Log Analytics 存储库，你可以使用随附的仪表板来分析这些数据。  创建部署时，可以使用 Azure 自动化中的 Runbook 来安装所需的更新。  可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
+[更新管理解决方案](oms-solution-update-management.md)就是利用多个服务提供更多功能的解决方案的一个好例子。  此解决方案使用适用于 Windows 和 Linux 的 Log Analytics 代理来收集有关每个代理上所需的更新的信息。  它将这些数据写入 Log Analytics 存储库，可以使用随附的仪表板来分析这些数据。  创建部署时，可以使用 Azure 自动化中的 Runbook 来安装所需的更新。  可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
 ![解决方案](media/operations-management-suite-overview/overview-solution.png)
 
@@ -161,7 +160,7 @@ Site Recovery 将元数据存储在位于特定 Azure 地理区域的保管库�
 - 收集其他信息  Log Analytics 从客户端和服务收集各种数据，包括事件和性能数据。  管理解决方案通常使用 Azure 自动化 Runbook 收集其他数据源中不提供的其他信息。
 - 针对收集的信息提供附加分析。  管理解决方案包含仪表板和视图，可针对数据提供分析与可视化。  这些信息将链接回到预定义的日志搜索，方便用户钻取详细数据。  它们还可以针对已收集到存储库中的数据执行分析，例如，在所有安全事件中搜索指示出现威胁的模式。
 - 添加功能。  Microsoft 提供的某些解决方案可能构建在核心服务的功能基础之上，以提供更多的功能。  例如，服务映射提供自身的控制台用于实时发现和映射服务器与进程依赖关系。
-Microsoft 与合作伙伴会定期将解决方案添加到 OMS，使用户能够持续提高投资价值。  可以通过 OMS 门户中的“解决方案目录”浏览并安装 Microsoft 解决方案，或者在 Azure 门户中通过 Azure Marketplace 来浏览并安装 Microsoft 与合作伙伴的解决方案。  
+Microsoft 与合作伙伴会定期将解决方案添加到 OMS，使用户能够持续提高投资价值。  可以通过 OMS 门户中的“解决方案目录”浏览并安装 Microsoft 解决方案，或者在 Azure 门户中通过 Azure 应用商店来浏览并安装 Microsoft 与合作伙伴的解决方案。  
 
 ![解决方案库](media/operations-management-suite-overview/solution-gallery.png)
 
@@ -172,5 +171,4 @@ Microsoft 与合作伙伴会定期将解决方案添加到 OMS，使用户能够
 * 了解 [Azure 备份](http://azure.microsoft.com/documentation/services/backup)的相关信息。
 * 了解 [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) 的相关信息。
 * 发现不同 OMS 产品中[提供的解决方案](../log-analytics/log-analytics-add-solutions.md)。 
-
 

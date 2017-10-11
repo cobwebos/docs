@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef43d1df2a64d85f256b28cd7db5a4f4356a7ec0
-ms.openlocfilehash: 055f55966de1e5c1bb41a6e0bf1c0da1758a3ed0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/13/2016
-
+ms.openlocfilehash: b89e9af55342d5d7473d848956996f846250b4b5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>向 Android 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -68,7 +67,7 @@ ms.lasthandoff: 12/13/2016
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
 ## <a name="test-the-app-against-the-published-mobile-service"></a>针对发布的移动服务测试应用程序
-你可以通过以下方式测试应用程序：使用 USB 电缆直接连接 Android 手机，或者在模拟器中使用虚拟设备。
+可以通过以下方式测试应用程序：使用 USB 电缆直接连接 Android 手机，或者在模拟器中使用虚拟设备。
 
 ## <a name="next-steps"></a>后续步骤
 完成此教程后，请考虑继续学习以下教程之一：
@@ -82,4 +81,3 @@ ms.lasthandoff: 12/13/2016
 [Android 快速入门]: app-service-mobile-android-get-started.md
 
 [设置 Google Play Services SDK]:https://developers.google.com/android/guides/setup
-

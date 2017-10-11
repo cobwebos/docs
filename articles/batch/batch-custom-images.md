@@ -8,14 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 3d655766b4f2a5efb0c8c29ffa81a89f84b3e17c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池
 
 在 Azure Batch 中创建虚拟机池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 可通过使用 Azure Marketplace 映像，或提供已准备好的自定义映像 VHD 来创建虚拟机池。 提供自定义映像时，可在预配每个计算节点时控制如何配置操作系统。 自定义映像还可包括应用程序和引用数据，计算节点预配好后就可以使用这些数据。
@@ -29,7 +27,7 @@ ms.lasthandoff: 08/22/2017
 - **复制大量数据。** 如果将数据复制到自定义映像，仅需复制一次，而不用复制到每个计算节点，节省了时间和带宽。
 - **在安装过程中重启 VM。** 重启 VM 可能是一个耗时的过程，尤其是有大量计算节点时。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - **使用“用户订阅”池分配模式创建的 Batch 帐户。** 若要使用自定义映像预配虚拟机池，请使用“用户订阅”[池分配模式](batch-api-basics.md#pool-allocation-mode)创建 Batch 帐户。 使用此模式，Batch 池将分配到帐户所在的订阅中。 有关在创建 Batch 帐户时如何设置池分配模式的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)中的[帐户](batch-api-basics.md#account)部分。
 

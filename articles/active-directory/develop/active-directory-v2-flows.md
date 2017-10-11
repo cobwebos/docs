@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 9d59e7f0e8f326c40be86e199d7712f6c565cc13
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点的应用类型
 Azure Active Directory (Azure AD) v2.0 终结点支持各种现代应用体系结构的身份验证，所有这些体系结构都基于行业标准协议 [OAuth 2.0 或 OpenID Connect](active-directory-v2-protocols.md)。 本指南介绍可以通过 Azure AD v2.0 构建的应用的类型，而不考虑首选语言或平台。 本文旨在帮助你在[开始处理代码](active-directory-appmodel-v2-overview.md#getting-started)之前了解高级方案。
@@ -31,7 +30,7 @@ Azure Active Directory (Azure AD) v2.0 终结点支持各种现代应用体系�
 > 
 
 ## <a name="the-basics"></a>基础知识
-必须在 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com)中注册使用 v2.0 终结点的每个应用。 应用注册过程将收集这些值并将其分配给应用：
+必须在 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com)中注册使用 v2.0 终结点的每个应用。 应用注册过程收集并分配应用的以下值：
 
 * 用于唯一标识应用的**应用程序 ID**
 * 用于将响应定向回应用的重定向 URI
@@ -39,7 +38,7 @@ Azure Active Directory (Azure AD) v2.0 终结点支持各种现代应用体系�
 
 有关详细信息，请了解如何[注册应用](active-directory-v2-app-registration.md)。
 
-注册应用后，应用通过将请求发送到 Azure AD v2.0 终结点与 Azure AD 进行通信。 我们提供开源框架和库，用于处理这些请求的详细信息。 还可以通过创建对这些终结点的请求，选择自行实现身份验证逻辑：
+注册应用后，应用会通过向 Azure AD v2.0 终结点发送请求来与 Azure AD 通信。 我们提供开源框架和库，用于处理这些请求的详细信息。 还可以通过创建对这些终结点的请求，选择自行实现身份验证逻辑：
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -69,7 +68,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 ![Web 应用身份验证流](../../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
-可以利用从 v2.0 终结点接收到的公用签名密钥通过验证 ID 令牌来确定用户标识。 设置会话 Cookie，在后续页面请求中将其用于识别用户。
+可以利用从 v2.0 终结点接收到的公用签名密钥通过验证 ID 令牌来确定用户标识。 这会设置一个可在后续页面请求中用于识别用户的会话 Cookie。
 
 若要查看此方案的工作方式，请尝试运行 v2.0 [入门部分](active-directory-appmodel-v2-overview.md#getting-started)中提供的 Web 应用登录代码示例之一。
 
@@ -122,4 +121,3 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 ![守护程序应用身份验证流](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
 若要生成守护程序，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)部分中的客户端凭据文档，或者尝试 [.NET 示例应用](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)。
-

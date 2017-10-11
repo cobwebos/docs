@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
 ms.openlocfilehash: cbb5d3598ef91512991d7d1e9f854eb12980752b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="step-2-review-the-prerequisites-for-hyper-v-without-vmm-to-azure-replication"></a>步骤 2：复查 Hyper-V（无 VMM）到 Azure 复制的先决条件
 
 下表对先决条件进行了汇总。
@@ -40,4 +38,3 @@ ms.lasthandoff: 07/20/2017
 
 - 如果执行的是完整部署，请转到[步骤 3：规划容量](hyper-v-site-walkthrough-capacity.md)
 - 如果执行的是简单的测试部署，请转到[步骤 4：规划网络](hyper-v-site-walkthrough-network.md)。
-

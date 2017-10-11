@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure CLI 设计你的第一个 Azure Database for PostgreSQL | Microsoft Docs"
-description: "本教程演示如何使用 Azure CLI 设计你的第一个 Azure Database for PostgreSQL。"
+title: "使用 Azure CLI 设计第一个 Azure Database for PostgreSQL | Microsoft Docs"
+description: "本教程演示如何使用 Azure CLI 设计第一个 Azure Database for PostgreSQL。"
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -11,14 +11,13 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 700c68f354c61cb975ae684d558e650631ff4d66
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: cf536fce8925f9173b541b845af25a8d8c38eabd
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>使用 Azure CLI 设计你的第一个 Azure Database for PostgreSQL 
+# <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>使用 Azure CLI 设计第一个 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
 > [!div class="checklist"]
 > * 创建 Azure Database for PostgreSQL
@@ -202,5 +201,4 @@ az postgres server restore --resource-group myResourceGroup --name mypgserver-re
 > * 更新数据
 > * 还原数据
 
-接下来了解如何使用 Azure 门户执行类似的任务，请查看本教程：[使用 Azure 门户设计你的第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-portal.md)
-
+接下来了解如何使用 Azure 门户执行类似的任务，请查看本教程：[使用 Azure 门户设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-portal.md)

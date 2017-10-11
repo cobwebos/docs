@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/30/2016
 ms.author: jejiang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="develop-u-sql-assemblies-for-azure-data-lake-analytics-jobs"></a>为 Azure Data Lake Analytics 作业开发 U-SQL 程序集
 了解如何将代码隐藏转换为程序集，从而在 Data Lake Analytics 作业中使用和重复使用。 
@@ -30,7 +29,7 @@ U-SQL 可使用户轻松使用 .Net 语言添加自己的自定义代码，例�
 - 每次提交脚本时都会上传源代码。
 - 代码隐藏无法与其他作业共享。
 
-若要解决这些问题，可将代码隐藏转换为程序集，并将程序集注册到 Data Lake Analytics 目录。
+要解决这些问题，可将代码隐藏转换为程序集，并将程序集注册到 Data Lake Analytics 目录。
 
 ## <a name="prerequisites"></a>先决条件
 * Visual Studio 2017、Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012
@@ -44,8 +43,8 @@ U-SQL 可使用户轻松使用 .Net 语言添加自己的自定义代码，例�
 
 **创建和提交 U-SQL 作业**
 
-1. 在“文件”菜单中，单击“新建”，然后单击“项目”。
-2. 展开“已安装”、“模板”、“Azure Data Lake”、“U-SQL(ADLA)”，选择“类库(适用于 U-SQL 应用程序)”模板，然后单击“确定”。
+1. 在“文件”菜单中，单击“新建”，并单击“项目”。
+2. 展开“已安装”、“模板”、“Azure Data Lake”、“U-SQL(ADLA)”，选择“类库(适用于 U-SQL 应用程序)”模板，并单击“确定”。
 3. 在 Class1.cs 中编写代码。  下面就是一个代码示例。
 
         using Microsoft.Analytics.Interfaces;
@@ -63,7 +62,7 @@ U-SQL 可使用户轻松使用 .Net 语言添加自己的自定义代码，例�
                 }
             }
         }
-4. 单击“生成”菜单，然后单击“生成解决方案”，创建 dll。
+4. 单击“生成”菜单，并单击“生成解决方案”，创建 dll。
 
 ## <a name="register-assemblies"></a>注册程序集
 

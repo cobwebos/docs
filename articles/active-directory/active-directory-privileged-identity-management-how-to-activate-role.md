@@ -15,17 +15,16 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: a143fd78eae52fda0cbadb7e74fd8209f24629a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中激活或停用角色
 Azure Active Directory (AD) Privileged Identity Management 简化了企业管理以特权身份访问 Azure AD 中的资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的方式。  
 
-如果符合管理角色的资格，即表示可以在需要执行特权操作时激活该角色。 例如，如果偶尔管理 Office 365 功能，则组织的特权角色管理员可能不会让你成为永久全局管理员，因为该角色也影响其他服务。 他们会让你符合 Azure AD 角色（例如“Exchange Online 管理员”）的资格。 可以在需要权限时，请求暂时分配该角色，然后将在预定的时段内拥有管理控制权。
+如果符合管理角色的资格，即表示可以在需要执行特权操作时激活该角色。 例如，如果偶尔管理 Office 365 功能，则组织的特权角色管理员可能不会让你成为永久全局管理员，因为该角色也影响其他服务。 他们会让你符合 Azure AD 角色（例如“Exchange Online 管理员”）的资格。 可以在需要权限时，请求暂时分配该角色，并将在预定的时段内拥有管理控制权。
 
 本文面向需要在 Azure AD Privileged Identity Management (PIM) 中激活其角色的管理员。 其中逐步讲解了如何在需要权限时激活角色，在完成任务后停用该角色。 此外，特权角色管理员可能需要获得批准才能激活角色（预览）。 在此处了解有关 [PIM 批准流](./privileged-identity-management/azure-ad-pim-approval-workflow.md)的详细信息。
 
@@ -33,9 +32,9 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 在 [Azure 门户中](https://portal.azure.com/)使用 Azure AD Privileged Identity Management 应用程序请求角色激活，即使要在另一个门户中或通过 PowerShell 来操作，也是如此。 如果 Azure 门户中没有 Azure AD Privileged Identity Management 应用程序，请遵循以下步骤开始操作。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 选择 Azure 门户右上角的用户名，然后选择要操作的目录。
-3. 选择“更多服务”，然后使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
-4. 选中“固定到仪表板”，然后单击“创建”。 Privileged Identity Management 应用程序打开。
+2. 选择 Azure 门户右上角的用户名，并选择要操作的目录。
+3. 选择“更多服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
+4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序打开。
 
 ## <a name="activate-a-role"></a>激活角色
 需要充当某个角色时，可在 Azure AD Privileged Identity Management 应用程序左侧导航栏中选择“我的角色”导航选项来请求激活。
@@ -43,7 +42,7 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 1. 登录到 [Azure 门户](https://portal.azure.com/)，选择“Azure AD Privileged Identity Management”磁贴。
 2. 选择“我的角色”。 该页顶部的“分组”中将显示分配给你的合格角色列表。
 3. 选择要激活的角色。
-4. 选择“激活”。 此时将显示“请求激活角色”边栏选项卡。
+4. 选择“激活”。 此时会显示“请求激活角色”边栏选项卡。
 5. 有些角色要求事先进行多重身份验证 (MFA) 才能激活。 只需在每个会话中执行身份验证一次。
    
     ![在激活角色之前先执行 MFA 身份验证 - 屏幕截图][2]
@@ -79,4 +78,3 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 [2]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png
 [3]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Toast2.png
 [4]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Banner_Cancel.png
-

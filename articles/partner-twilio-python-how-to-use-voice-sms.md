@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: f4a02bb7a7c46e7a0e3c75b870c522eae8294339
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/07/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>如何通过 Python 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -34,7 +33,7 @@ Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将�
 ## <a id="Pricing"></a>Twilio 定价和特别优惠
 Azure 客户在升级 Twilio 帐户后即可获得 10 美元的 Twilio 信用额度的[特别优惠][special_offer]。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 [Twilio 信用][special_offer]并开始使用。
 
-Twilio 是一种现用现付服务。 没有设置费用，并且您可以随时关闭您的帐户。 可以在 [Twilio 定价][twilio_pricing]中找到更多详细信息。
+Twilio 是一种现用现付服务。 没有设置费用，并且可以随时关闭帐户。 可以在 [Twilio 定价][twilio_pricing]中找到更多详细信息。
 
 ## <a id="Concepts"></a>概念
 Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][twilio_libraries]。
@@ -46,17 +45,17 @@ API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在�
 
 下面是 Twilio 谓词的列表。 通过 [Twilio 标记语言文档][twiml]了解其他谓词和功能。
 
-* **&lt;Dial&gt;**：将呼叫方连接到其他电话。
-* **&lt;Gather&gt;**：收集通过电话按键输入的数字。
-* **&lt;Hangup&gt;**：结束呼叫。
-* **&lt;Pause&gt;**：安静地等待指定的时间（以秒为单位）。
-* **&lt;Play&gt;**：播放音频文件。
-* **&lt;队列&gt;**：添加到调用方的队列。
-* **&lt;Record&gt;**：录制呼叫方的声音并返回包含该录音的文件的 URL。
-* **&lt;Redirect&gt;**：将对呼叫或 SMS 的控制转移到其他 URL 上的 TwiML。
-* **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫且无需付费。
-* **&lt;Say&gt;**：将文本转换为呼叫中生成的语音。
-* **&lt;Sms&gt;**：发送 SMS 消息。
+* **&lt;拨&gt;**： 将调用方连接到另一个电话。
+* **&lt;收集&gt;**： 收集电话键盘上输入数字。
+* **&lt;G u p&gt;**： 结束呼叫。
+* **&lt;暂停&gt;**： 安静地等待指定的秒数。
+* **&lt;播放&gt;**： 播放音频文件。
+* **&lt;队列&gt;**： 添加到调用方的队列。
+* **&lt;记录&gt;**： 录制的调用方的声音并返回包含该录音的文件的 URL。
+* **&lt;重定向&gt;**： 将对呼叫或 SMS 的控制转移到其他 URL 上的 TwiML。
+* **&lt;拒绝&gt;**： 拒绝对 Twilio 号码的传入呼叫而不向你收费。
+* **&lt;说&gt;**： 将文本转换语音呼叫中生成。
+* **&lt;Sms&gt;**： 发送 SMS 消息。
 
 ### <a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -73,9 +72,9 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][twiml]。 有关 Twilio API 的其他信息，请参阅 [Twilio API][twilio_api]。
 
 ## <a id="CreateAccount"></a>创建 Twilio 帐户
-准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级您的帐户。
+准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，你将收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对您的帐户进行未经授权的访问，请保护身份验证令牌。 帐户 SID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”和“身份验证令牌”的字段中。
+注册 Twilio 帐户时，将收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 SID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
 ## <a id="create_app"></a>创建 Python 应用程序
 使用 Twilio 服务且在 Azure 中运行的 Python 应用程序与任何其他使用 Twilio 服务的 Python 应用程序没有任何差别。 Twilio 服务是基于 REST 的且可通过几种方法从 Python 中调用，本文将重点介绍如何将 Twilio 服务与 [GitHub 提供的用于 Python 的 Twilio 库][twilio_python]一起使用。 有关使用用于 Python 的 Twilio 库的详细信息，请参阅 [http://readthedocs.org/docs/twilio-python/en/latest/index.html][twilio_lib_docs]。
@@ -96,7 +95,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 请记住，我们已将虚拟机配置为仅允许端口 80 上的流量。 因此，请确保将应用程序配置为使用此端口。
 
-## <a id="configure_app"></a>将应用程序配置为使用 Twilio 库
+## <a id="configure_app"></a>应用程序配置为使用 Twilio 库
 可以通过两种方式将应用程序配置为使用用于 Python 的 Twilio 库：
 
 * 将用于 Python 的 Twilio 库作为 Pip 包安装。 可使用以下命令安装它：
@@ -115,7 +114,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 有关详细信息，请参阅 [https://github.com/twilio/twilio-python/blob/master/README.md][twilio_github_readme]。
 
-## <a id="howto_make_call"></a>如何：发起传出呼叫
+## <a id="howto_make_call"></a>如何： 发起传出呼叫
 下面演示如何发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换 **from_number** 和 **to_number** 电话号码，并确保在运行代码之前验证 Twilio 帐户的 **from_number** 电话号码。
 
     from urllib.parse import urlencode
@@ -151,7 +150,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的网站来提供 TwiML 响应；有关详细信息，请参阅[如何从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
 
-## <a id="howto_send_sms"></a>如何：发送 SMS 消息
+## <a id="howto_send_sms"></a>如何： 发送 SMS 消息
 以下代码演示了如何使用 `TwilioRestClient` 类发送短信。 **from_number** 号码由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须为 Twilio 帐户验证 **to_number** 号码。
 
     # Import the Twilio Python Client.
@@ -173,10 +172,10 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
                                      from_=from_number,
                                      body=message)
 
-## <a id="howto_provide_twiml_responses"></a>如何：从您自己的网站提供 TwiML 响应
-当你的应用程序发起对 Twilio API 的调用时，Twilio 会将你的请求发送到应返回 TwiML 响应的 URL。 上面的示例使用 Twilio 提供的 URL [http://twimlets.com/message][twimlet_message_url]。 （虽然 TwiML 专供 Twilio 使用，但你可以在浏览器中查看它。 例如，单击 [http://twimlets.com/message][twimlet_message_url] 可查看空 `<Response>` 元素；又如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] 可查看包含 `<Say>` 元素的 `<Response>` 元素。）
+## <a id="howto_provide_twiml_responses"></a>如何： 从您自己的网站提供 TwiML 响应
+当应用程序发起对 Twilio API 的调用时，Twilio 会将请求发送到应返回 TwiML 响应的 URL。 上面的示例使用 Twilio 提供的 URL [http://twimlets.com/message][twimlet_message_url]。 （虽然 TwiML 专供 Twilio 使用，但可以在浏览器中查看它。 例如，单击 [http://twimlets.com/message][twimlet_message_url] 可查看空 `<Response>` 元素；又如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] 可查看包含 `<Say>` 元素的 `<Response>` 元素。）
 
-你可以创建自己的返回 HTTP 响应的网站，而不用依赖 Twilio 提供的 URL。 可以使用任何语言创建返回 XML 响应的站点；本主题假设使用 Python 创建 TwiML。
+可以创建自己的返回 HTTP 响应的网站，而不用依赖 Twilio 提供的 URL。 可以使用任何语言创建返回 XML 响应的站点；本主题假设使用 Python 创建 TwiML。
 
 以下示例将输出在呼叫时念出 **Hello World** 的 TwiML 响应。
 
@@ -195,7 +194,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
         xml = '<Response><Say>Hello world.</Say></Response>'
         return HttpResponse(xml, content_type='text/xml')
 
-如上面的示例中所示，TwiML 响应只是一个 XML 文档。 用于 Python 的 Twilio 库包含将为你生成 TwiML 的类。 以下示例将生成与上面所示相同的响应，但该响应会使用用于 Python 的 Twilio 库中的 `twiml` 模块：
+如上面的示例中所示，TwiML 响应只是一个 XML 文档。 用于 Python 的 Twilio 库包含将生成 TwiML 的类。 以下示例将生成与上面所示相同的响应，但该响应会使用用于 Python 的 Twilio 库中的 `twiml` 模块：
 
     from twilio import twiml
 
@@ -224,7 +223,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
                                url=url)
     print(call.sid)
 
-## <a id="AdditionalServices"></a>如何：使用其他 Twilio 服务
+## <a id="AdditionalServices"></a>如何： 使用其他 Twilio 服务
 除了此处所示的示例之外，Twilio 还提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程序中使用其他 Twilio 功能。 有关完整详细信息，请参阅 [Twilio API 文档][twilio_api]。
 
 ## <a id="NextSteps"></a>后续步骤
@@ -256,4 +255,3 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
-

@@ -1,12 +1,12 @@
-1. 选择“+ 新建步骤”来添加操作。  
-2. 选择**添加操作**链接。 这将打开可搜索要采取的任何操作的搜索框。 本示例关注的操作是 SharePoint 操作。    
+1. 选择**+ 新步骤**以添加操作。  
+2. 选择**添加操作**链接。 搜索框中，你可以搜索的任何操作你想要学习这将打开。 例如，SharePoint 操作感兴趣。    
    ![SFTP 条件图像 1](./media/connectors-create-api-sftp/condition-1.png)    
-3. 在左侧选择“选择值”。 
+3. 选择**选择一个值**左侧。 
    ![SFTP 条件图像 2](./media/connectors-create-api-sftp/condition-2.png)    
-4. 选择“文件内容”，指明想要评估条件中的文件内容。      
+4. 选择**文件内容**以指示你想要评估在条件中的文件内容。      
    ![SFTP 条件图像 3](./media/connectors-create-api-sftp/condition-3.png)   
-5. 从运算符列表中选择“包含”。       
+5. 选择*包含*从运算符的列表。       
    ![SFTP 条件图像 4](./media/connectors-create-api-sftp/condition-4.png)   
-6. 在右侧选择“选择值”，然后输入 *ExtractMeFirst*。 在本示例中，ExtractMeFirst 应该位于有权访问 SFTP 文件夹的用户的某个文件中，该文件表示应该提取的存档文件。  
+6. 选择**选择一个值**右侧并输入*ExtractMeFirst*。 在此示例中，ExtractMeFirst 是预计会在文件中的人员有权访问的 SFTP 文件夹以指示它是应提取的存档文件的值。  
    ![SFTP 条件图像 5](./media/connectors-create-api-sftp/condition-5.png)   
 

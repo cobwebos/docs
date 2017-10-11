@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
 ms.openlocfilehash: 3861814974b95f0c65879158cb02ec727a25c99f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>借助 Azure，SnelStart 以每月 1,000 个新 Azure SQL 数据库的速度快速扩展其业务服务
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
@@ -59,7 +58,7 @@ SnelStart 是一家现代化的敏捷型高科技企业，其渊源可追溯到 
 SnelStart 是弹性池的早期大规模采用者。 弹性池可帮助该公司控制成本，更有效地管理性能要求。 Been 表示，“使用弹性池，我们可以根据客户的需求优化性能，而不会发生过度预配的情况。 如果我们必须根据高峰负载预配，费用将相当高昂。 在多个低使用量数据库之间共享资源的做法，使我们能够创建既能顺畅运行又能符合成本效益的解决方案。”
 
 ## <a name="azure-sql-databases-help-containerize-data-for-isolation-and-security"></a>Azure SQL 数据库帮助容器化数据，实现隔离和安全性
-Azure SQL 数据库使得 SnelStart 能够以轻松通透的方式将客户的本地业务管理数据转移到 Azure。 Azure SQL 数据库是一个便利的容器，提供隔离、身份验证和授权边界，以及轻松备份与还原功能。 数据库为业务管理提供了一个适当的概念模型。 IT 架构师 Carlo Kuip 表示，“此容器边界内的项目包含对企业到关重要的敏感数据，将这些项目存储在隔离的数据库中可为它们提供严密的防护。 我们可以在数据库级别管理授权，甚至将管理自动化以及横向扩展这些数据库，而无需雇用数据库管理员 (DBA)。”
+Azure SQL 数据库使得 SnelStart 能够以轻松透明的方式将客户的本地业务管理数据转移到 Azure。 Azure SQL 数据库是一个便利的容器，提供隔离、身份验证和授权边界，以及轻松备份与还原功能。 数据库为业务管理提供了一个适当的概念模型。 IT 架构师 Carlo Kuip 表示，“此容器边界内的项目包含对企业至关重要的敏感数据，将这些项目存储在隔离的数据库中可为它们提供严密的防护。 我们可以在数据库级别管理授权，甚至将管理自动化以及横向扩展这些数据库，而无需雇用数据库管理员 (DBA)。”
 
 Azure SQL 数据仓库在 SnelStart 安全与管理方案中帮助公司收集遥测数据（例如入侵检测、用户活动记录和连接），因此也扮演着相当重要的角色。
 
@@ -94,7 +93,7 @@ Azure 平台模型消除了基础结构开销，使 SnelStart 能够使用 C# �
 ## <a name="simplicity-from-the-cloud"></a>云的简便性
 自从转移到基于 Azure 云的解决方案之后，SnelStart 能够为快速增长的客户提供支持，同时提供创新的功能和服务。 Been 指出，“通过 Azure，我们可以为客户提供几乎持续不断的更新，而无需扩大操作人员编制。 我们顺便还获得了其他所有的优异 Azure 功能，例如伸缩性和灾难恢复。”
 
-> “当我们远在雷德蒙德时... 荷兰一位开发人员打来电话，告诉我一个具体的问题。 然后，我们让 Microsoft 在 48 小时内在客户生产环境中提供了一项更改，从而解决了问题。”
+> “当我们远在雷德蒙德时... 荷兰一位开发人员打来电话，告诉我一个具体的问题。 然后，我们借助 Microsoft 在 48 小时内在客户生产环境中提供了一项更改，因而解决了问题。”
 > 
 > — Henry Been，软件架构师
 > 
@@ -108,5 +107,4 @@ SnelStart 当前的目标是不断拓展客户群体并使他们感到满意。 
 * 有关 Web 角色和辅助角色的详细信息，请参阅[辅助角色](../fundamentals-introduction-to-azure.md#compute)。    
 * 有关 Azure SQL 数据仓库的详细信息，请参阅 [SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * 有关 SnelStart 的详细信息，请参阅 [SnelStart](http://www.snelstart.nl)。
-
 

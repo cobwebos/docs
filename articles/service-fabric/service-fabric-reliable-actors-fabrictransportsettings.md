@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: 75bdd4644f4ccc583271b9169c50a375e2cd6629
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>配置 Reliable Actors 的 FabricTransport 设置
 
@@ -75,7 +74,7 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>配置执行组件客户端程序集的 FabricTransport 设置
 
-如果客户端不是作为服务一部分运行，则可在客户端 .exe 文件所在的同一位置创建“&lt;Client Exe Name&gt;.settings.xml”文件。 然后在该文件中添加 TransportSettings 节。 SectionName 应为“TransportSettings”。
+如果客户端不是作为服务一部分运行，则可在客户端 .exe 文件所在的同一位置创建“&lt;Client Exe Name&gt;.settings.xml”文件。 然后，在该文件中添加 TransportSettings 部分。 SectionName 应为“TransportSettings”。
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -154,4 +153,3 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
      ```
-

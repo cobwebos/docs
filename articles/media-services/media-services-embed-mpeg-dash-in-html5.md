@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35ba9161f70a27a215685830d1a9e7c1881cc3bb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 27ce6325773ba1f9fd9cd9ab9e07ea9f5e2488ac
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频
 ## <a name="overview"></a>概述
-MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为那些希望传送高质量自适应视频流式处理输出的用户提供了显著的好处。 使用 MPEG-DASH，当在网络阻塞时，视频流将自动降低到较低清晰度。 这将减少在播放器下载下几秒钟要播放内容（又称缓冲）时观众看到“暂停”视频的可能性。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，然后在已缓冲足够内容后提升到更高质量。
+MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为那些希望传送高质量自适应视频流式处理输出的用户提供了显著的好处。 使用 MPEG-DASH，当在网络阻塞时，视频流会自动降低到较低清晰度。 这将减少在播放器下载下几秒钟要播放内容（又称缓冲）时观众看到“暂停”视频的可能性。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，并在已缓冲足够内容后提升到更高质量。
 
 Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标是提供可以在需要视频播放的应用程序中自由重用的功能强大的跨平台播放器。 它在支持 W3C 媒体源扩展 (MSE) 的任何浏览器（目前为 Chrome、Microsoft Edge 和 IE11，其他浏览器已指示有意支持 MSE）中提供 MPEG-DASH 播放。 有关 DASH.js、js 的详细信息，请参阅 GitHub dash.js 存储库。
 
 ## <a name="creating-a-browser-based-streaming-video-player"></a>创建基于浏览器的流式处理视频播放器
-若要使用所需控件（如播放、暂停、后退等）创建显示视频播放器的简单网页，你将需要：
+要使用所需控件（如播放、暂停、后退等）创建显示视频播放器的简单网页，你需要：
 
 1. 创建一个 HTML 页
 2. 添加视频标记
@@ -52,9 +51,9 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
     </html>
 
 ## <a name="adding-the-dashjs-player"></a>添加 DASH.js 播放器
-若要将 dash.js 引用实现添加到应用程序，需要从 1.0 版本的 dash.js 项目中找到 dash.all.js 文件。 此文件应保存到你的应用程序的 JavaScript 文件夹中。 此文件是一个易用文件，将所有必要的 dash.js 代码一起提取到单个文件中。 如果你浏览 dash.js 存储库，你将找到各个文件、测试代码以及更多内容，但如果你只想使用 dash.js，那么 dash.all.js 文件就是你所需的文件。
+要将 dash.js 引用实现添加到应用程序，需要从 1.0 版本的 dash.js 项目中找到 dash.all.js 文件。 此文件应保存到应用程序的 JavaScript 文件夹中。 此文件是一个易用文件，将所有必要的 dash.js 代码一起提取到单个文件中。 如果浏览 dash.js 存储库，将找到各个文件、测试代码以及更多内容，但如果只想使用 dash.js，那么 dash.all.js 文件就是你所需的文件。
 
-若要将 dash.js 播放器添加到你的应用程序，请将脚本标记添加到 basicPlayer.html 的 head 部分中：
+要将 dash.js 播放器添加到你的应用程序，请将脚本标记添加到 basicPlayer.html 的 head 部分中：
 
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
@@ -74,13 +73,13 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
     }
     </script>
 
-此函数首先创建一个 DashContext。 此项用于为特定运行时环境配置应用程序。 从技术角度看，它定义在构造应用程序时，依赖关系注入框架应使用的类。 在大多数情况下，你将使用 Dash.di.DashContext。
+此函数首先创建一个 DashContext。 此项用于为特定运行时环境配置应用程序。 从技术角度看，它定义在构造应用程序时，依赖关系注入框架应使用的类。 在大多数情况下，你使用 Dash.di.DashContext。
 
 接下来，实例化 dash.js 框架的主类 MediaPlayer。 此类包含所需的核心方法（如播放和暂停）、管理与 video 元素的关系，还管理媒体演示描述 (MPD) 文件的解释，该文件说明了要播放的视频。
 
-调用 MediaPlayer 类的 startup() 函数可确保播放器已准备好播放视频。 除了其他用处以外，此函数还可确保已加载所有必需的类（如上下文所定义）。 播放器准备就绪后，便可以使用 attachView() 函数将 video 元素附加到它。 这使 MediaPlayer 可以将视频流注入到该元素，还可以根据需要控制播放。
+调用 MediaPlayer 类的 startup() 函数可确保播放器已准备好播放视频。 除了其他用处以外，此函数还可确保已加载所有必需的类（如上下文所定义）。 播放器准备就绪后，便可以使用 attachView() 函数将 video 元素附加上去。 这使 MediaPlayer 可以将视频流注入到该元素，还可以根据需要控制播放。
 
-将 MPD 文件的 URL 传递到 MediaPlayer，这样后者便了解有关它应播放的视频的信息。页面完全加载后，将需要执行刚创建的 setupVideo() 函数。 可通过使用 body 元素的 onload 事件来执行此操作。 将 <body> 元素更改为：
+将 MPD 文件的 URL 传递到 MediaPlayer，以便后者了解有关它应播放的视频的信息。页面完全加载后，将需要执行刚创建的 setupVideo() 函数。 可通过使用 body 元素的 onload 事件来执行此操作。 将 <body> 元素更改为：
 
     <body onload="setupVideo()">
 
@@ -94,7 +93,7 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
     </style>
 
 ## <a name="playing-a-video"></a>播放视频
-若要播放视频，请将浏览器指向 basicPlayback.html 文件，并单击所显示的视频播放器上的“播放”。
+要播放视频，请将浏览器指向 basicPlayback.html 文件，并单击所显示的视频播放器上的“播放”。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -106,5 +105,4 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 [开发视频播放器应用程序](media-services-develop-video-players.md)
 
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js) 
-
 

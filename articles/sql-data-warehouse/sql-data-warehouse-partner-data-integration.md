@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: partners
 ms.date: 01/30/2017
 ms.author: kevin;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 892a7f2727ab899ef539ac4ae06a8669512e6fef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 若要创建端到端数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 | ![Informatica][4] |**适用于 Azure 的 Informatica 云服务 – 即用即付**<br> 使用“适用于 Azure 的 Informatica 云服务 – 即用即付”优化 Azure 服务的价值，并从所有混合数据集提取可操作见解。 Informatica 云为数据集成、云分析、应用程序集成和数据管理提供同类最佳的解决方案。 借助自助服务数据迁移、集成和管理功能，客户可以快速且可靠地从各种源（如 SaaS 应用程序、基于 Hadoop 的 Data Lake 和其他本地数据源（Oracle、 SAP））将千万亿字节的数据导入、导出、同步和计划到 Azure。  适用于 Azure 的 Informatica 云服务提供与 Azure SQL 数据仓库、Sgl 数据库、Blob 存储、Data Lake Store 和 DocumentDB 之间的本机、大容量、高性能连接。 |[Marketplace][informatica_Cloud_Services_marketplace]<br>[免费试用][informatica_cloud_free_trial]<br>[配置指南][informatica_cloud_services_config]<br>[网站][informatica_Cloud_Services_website]<br>[数据表][informatica_cloud_datasheet]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
 | ![Informatica][4] |**Informatica PowerCenter**<br>Informatica 是全球最知名的独立数据集成软件提供商之一。 PowerCenter 是用户所有数据集成计划的基石。 可以将 PowerCenter 用于分析、数据仓库、应用程序迁移、整合或数据管理。 |[Marketplace（标准）][informatica_PowerCenter_std_marketplace]<br>[Marketplace（高级）][informatica_PowerCenter_adv_marketplace]<br>[网站][informatica_PowerCenter_website]<br>[数据表][informatica_powercenter_datasheet]<br>[Twitter][informatica_powercenter_twitter]<br>[YouTube][informatica_powercenter_youtube] | |
 | ![Redgate][5] |**Redgate Data Platform Studio（预览版）**<br>Redgate 的 Data Platform Studio 可通过简单而可靠的方式将本地 SQL 数据库迁移到 Azure SQL 数据仓库。 它经过专门的设计，可以让你在实施完全自动化迁移时进行明智的决策，并且可以免费用来进行一次性迁移。 |[网站][redgate_website]<br>[Twitter][redgate_twitter]<br>[YouTube][redgate_youtube] |[![Redgate 视频](./media/sql-data-warehouse-partner-data-integration/redgate_video.jpg)](https://www.youtube.com/watch?v=IR9HNvnU46s) |
-| ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 集成平台即服务 (iPaaS) 可让客户在 Microsoft Azure SQL 数据仓库中快速传入和传出数据。  SnapLogic 可以让用户在一个解决方案中集成数百个应用程序、服务和 IoT 方案。 使用 SnapLogic 可以在云模式、本地模式或混合模式下对数据进行快速有效的分析！ |[Marketplace][snaplogic_marketplace]<br>[网站][snaplogic_website]<br>[数据表][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] |[![Snaplogic 视频](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
+| ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 集成平台即服务 (iPaaS) 可让客户在 Microsoft Azure SQL 数据仓库中快速传入和传出数据。  SnapLogic 可以让用户在一个解决方案中集成数百个应用程序、服务和 IoT 方案。 使用 SnapLogic 可以在云模式、本地模式或混合模式下对数据进行快速有效的分析！ |[Marketplace][snaplogic_marketplace]<br>[网站][snaplogic_website]<br>[数据表][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] |[![SnapLogic 视频](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解我们的部分其他合作伙伴，请参阅[商业智能合作伙伴][bi_partners]和[数据管理合作伙伴][dm_partners]。

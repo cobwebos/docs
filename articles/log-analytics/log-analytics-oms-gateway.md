@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: a4d3a45d4bf83754fba363cdb3f3688d7218baa4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="connect-computers-without-internet-access-to-oms-using-the-oms-gateway"></a>使用 OMS 网关将无法访问 Internet 的计算机连接到 OMS
 
 本文档介绍 OMS 管理的计算机和 System Center Operations Manager 监视的计算机在无法访问 Internet 的情况下，如何将数据发送到 OMS 服务。 OMS 网关是使用 HTTP CONNECT 命令支持 HTTP 隧道的 HTTP 转发代理，可以收集数据，然后代表这些设备将数据发送到 OMS 服务。  
@@ -292,4 +290,3 @@ OMS 网关提供了以下语言：
 
 ## <a name="next-steps"></a>后续步骤
 * [添加数据源](log-analytics-data-sources.md)，以便从 OMS 工作区中已连接的源收集数据并将其存储在 OMS 存储库中。
-

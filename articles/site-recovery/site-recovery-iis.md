@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: b23624fc7e82af1cb593a1aedd138ae0d6637ae7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 4ac79df703de00ac009d9845772d8be740e74f29
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制基于 IIS 的多层 Web 应用程序
 
@@ -30,12 +29,12 @@ ms.lasthandoff: 03/29/2017
 
 关键的 Web 应用程序通常设置为多层应用程序，其 Web、数据库和应用程序分别位于不同的层。 除了分散在不同的层以外，应用程序还可以在每个层中使用多个服务器来对流量进行负载均衡。 此外，各个层之间以及 Web 服务器上的映射可以基于静态 IP 地址。 故障转移时，其中的某些映射需要更新，尤其是在 Web 服务器上配置了多个网站时。 如果 Web 应用程序使用 SSL，则需要更新证书绑定。
 
-不是以复制为基础的传统恢复方法涉及到备份各种配置文件、注册表设置、绑定、自定义组件（COM 或 .NET）、内容和证书，以及通过一系列手动步骤恢复文件。 很明显，这些方法非常繁琐、容易出错且没有弹性。 例如，我们经常忘记备份证书。如果出现这种情况，在故障转移后，我们别无他法，只能为服务器购买新证书。
+传统恢复方法并非以复制为基础，涉及备份各种配置文件、注册表设置、绑定、自定义组件（COM 或 .NET）、内容和证书，以及通过一系列手动步骤恢复文件。 很明显，这些方法非常繁琐、容易出错且没有弹性。 例如，我们经常忘记备份证书。如果出现这种情况，在故障转移后，我们别无他法，只能为服务器购买新证书。
 
 合理的灾难恢复解决方案应该允许围绕上述复杂应用程序体系结构为恢复计划建模，同时，可以添加自定义的步骤来处理各层之间的应用程序映射，以便在发生导致 RTO 降低的灾难时，只需按一下鼠标就能彻底解决问题。
 
 
-本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护基于 IIS 的 Web 应用程序。 内容包括如何将基于 IIS 的三层 Web 应用程序复制到 Azure、如何执行灾难恢复演练，以及如何将应用程序故障转移到 Azure 的最佳做法。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护基于 IIS 的 Web 应用程序。 内容包括如何按照最佳做法将基于 IIS 的三层 Web 应用程序复制到 Azure、执行灾难恢复演练，以及将应用程序故障转移到 Azure。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -50,7 +49,7 @@ ms.lasthandoff: 03/29/2017
 1. 如何[复制 SQL Server](site-recovery-sql.md)
 
 ## <a name="deployment-patterns"></a>部署模式
-基于的 IIS Web 应用程序通常遵循以下部署模式之一：
+基于 IIS 的 Web 应用程序通常遵循以下部署模式之一：
 
 **部署模式 1**：包含应用程序请求路由 (ARR)、IIS 服务器和 Microsoft SQL Server 的基于 IIS 的 Web 场。
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 03/29/2017
 
 ## <a name="site-recovery-support"></a>Site Recovery 支持
 
-本文在 Windows Server 2012 R2 Enterprise 中使用装有 IIS 服务器版本 7.5 的 VMware 虚拟机。 由于 Site Recovery 复制不区分应用程序，因此本文提供的建议应该也适用于后续方案以及不同版本的 IIS。
+本文使用的是在 Windows Server 2012 R2 Enterprise 上运行的装有 IIS 服务器版本 7.5 的 VMware 虚拟机。 由于 Site Recovery 复制不区分应用程序，因此本文提供的建议应该也适用于后续方案以及不同版本的 IIS。
 
 ### <a name="source-and-target"></a>源和目标
 
@@ -116,14 +115,14 @@ ms.lasthandoff: 03/29/2017
         </connectionStrings>
         </configuration>
 
-在 Web 层中，可以通过恢复计划的“组 3”后面的添加 [IIS 连接更新脚本](https://aka.ms/asr-update-webtier-script-classic)来更新连接字符串。
+在 Web 层中，可以通过恢复计划的“组 3”后面添加 [IIS 连接更新脚本](https://aka.ms/asr-update-webtier-script-classic)来更新连接字符串。
 
 #### <a name="site-bindings-for-the-application"></a>应用程序的站点绑定
 每个站点包含绑定信息，其中包括绑定类型、IIS 服务器侦听站点请求所用的 IP 地址、端口号和站点的主机名。 故障转移时，如果与这些绑定关联的 IP 地址发生更改，则可能需要更新这些绑定。
 
 > [!NOTE]
 >
-> 如果按以下示例中所示为站点绑定标记了“全部取消分配”，则故障转移后不需要更新此绑定。 此外，如果与站点关联的 IP 地址在故障转移后未发生未更改，则不需要更新站点绑定（能否保留 IP 地址取决于网络体系结构以及分配给主站点和恢复站点的子网，因此不一定适用于你的组织。）
+> 如果按以下示例中所示为站点绑定标记了“全部取消分配”，则故障转移后不需要更新此绑定。 此外，如果与站点关联的 IP 地址在故障转移后未发生未更改，则不需要更新站点绑定（能否保留 IP 地址取决于网络体系结构以及分配给主站点和恢复站点的子网，因此不一定适用于组织。）
 
 ![SSL 绑定](./media/site-recovery-iis/sslbinding.png)
 
@@ -134,7 +133,7 @@ ms.lasthandoff: 03/29/2017
 如果使用应用程序请求路由虚拟机，请在“组 4”后面添加 [IIS ARR 故障转移脚本](https://aka.ms/asr-iis-arrtier-failover-script-classic)来更新 IP 地址。
 
 #### <a name="the-ssl-cert-binding-for-an-https-connection"></a>用于 https 连接的 SSL 证书绑定
-网站可与 SSL 证书关联，帮助确保在 Web 服务器与用户浏览器之间实现安全通信。 如果网站有一个 https 连接，并且将一个 https 站点绑定关联到了具有 SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，需要使用 IIS 虚拟机的 IP 来为证书添加新的站点绑定。
+网站可与 SSL 证书关联，帮助确保在 Web 服务器与用户浏览器之间实现安全通信。 如果网站有一个 https 连接，并且有关联的 https 站点绑定，通过 SSL 证书绑定至 IIS 服务器的 IP 地址，则故障转移后，需要使用 IIS 虚拟机的 IP 来为证书添加新的站点绑定。
 
 可针对以下对象颁发 SSL 证书 -
 
@@ -149,7 +148,7 @@ d) IP 地址 – 如果 SSL 证书是针对 IIS 服务器的 IP 颁发的，则�
 ## <a name="doing-a-test-failover"></a>执行测试故障转移
 遵循[此指南](site-recovery-test-failover-to-azure.md)执行测试故障转移。
 
-1.  转到 Azure 门户并选择你的恢复服务保管库。
+1.  转到 Azure 门户并选择恢复服务保管库。
 1.  单击针对 IIS Web 场创建的恢复计划。
 1.  单击“测试故障转移”。
 1.  选择恢复点和 Azure 虚拟网络开始测试故障转移过程。
@@ -159,11 +158,10 @@ d) IP 地址 – 如果 SSL 证书是针对 IIS 服务器的 IP 颁发的，则�
 ## <a name="doing-a-failover"></a>执行故障转移
 执行故障转移时，请遵循[此指南](site-recovery-failover.md)。
 
-1.  转到 Azure 门户并选择你的恢复服务保管库。
+1.  转到 Azure 门户并选择恢复服务保管库。
 1.  单击针对 IIS Web 场创建的恢复计划。
 1.  单击“故障转移”。
 1.  选择恢复点开始故障转移过程。
 
 ## <a name="next-steps"></a>后续步骤
 详细了解如何使用 Site Recovery [复制其他应用程序](site-recovery-workload.md)。
-

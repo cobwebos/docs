@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 042a41eaa6bb21670b4c12068f1b017222f64b99
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>教程：Azure Active Directory 与 Procore SSO 的集成
 
@@ -62,7 +61,7 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-procore-sso-from-the-gallery"></a>从库添加 Procore SSO
-若要配置 Procore SSO 与 Azure AD 的集成，需要从库中将 Procore SSO 添加到托管 SaaS 应用列表。
+要配置 Procore SSO 与 Azure AD 的集成，需要从库中将 Procore SSO 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Procore SSO，请执行以下步骤：**
 
@@ -82,7 +81,7 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_search.png)
 
-5. 在结果窗格中，选择“Procore SSO”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Procore SSO”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_addfromgallery.png)
 
@@ -97,13 +96,13 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Procore SSO 测试用户](#creating-a-procore-sso-test-user)** - 在 Procore SSO 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 Procore SSO 测试用户](#creating-a-procore-sso-test-user)** -若要链接到的 Azure AD 表示形式她的 Procore sso 具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-本部分将在 Azure 管理门户中启用 Azure AD 单一登录并在 Procore SSO 应用程序中配置单一登录。
+本部分会在 Azure 管理门户中启用 Azure AD 单一登录并在 Procore SSO 应用程序中配置单一登录。
 
 **若要配置 Procore SSO 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -119,7 +118,7 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 
     ![配置单一登录](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_url.png)
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
@@ -145,7 +144,7 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 
     b. 在“SAML 单一登录目标 URL”中，粘贴从 Azure 门户复制的 SAML 单一登录服务 URL。
 
-    c. 现在打开上面从 Azure 门户下载的**元数据 XML**，然后复制名为 **X509Certificate** 的标记中的证书。 将复制的值粘贴到“单一登录 x509 证书”框中。
+    c. 现在打开上面从 Azure 门户下载的**元数据 XML**，并复制名为 **X509Certificate** 的标记中的证书。 将复制的值粘贴到“单一登录 x509 证书”框中。
 
 10. 单击“保存更改”。
 
@@ -187,7 +186,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-procoresso-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -217,7 +216,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     d.单击“下一步”。 对“权限模板”选择“稍后应用权限模板”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“创建” 。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“创建” 。
 
 4. 检查并更新新添加的联系人的详细信息。
 
@@ -233,9 +232,9 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Procore SSO，请执行以下步骤：**
+**要将 Britta Simon 分配到 Procore SSO，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -283,5 +282,4 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 [201]: ./media/active-directory-saas-procoresso-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-procoresso-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-procoresso-tutorial/tutorial_general_203.png
-
 

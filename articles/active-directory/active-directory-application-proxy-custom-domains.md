@@ -15,14 +15,12 @@ ms.date: 08/01/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 1dde300780c8d1f7ea9eee4c92de06bcf70a1f12
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
 通过 Azure Active Directory 应用程序代理发布应用程序时，会创建可让用户在远程工作时访问的外部 URL。 此 URL 的默认域为 yourtenant.msappproxy.net。 例如，如果发布了一个名为 Expenses 的应用且租户名为 Contoso，则外部 URL 为 https://expenses-contoso.msappproxy.net。 如果想要使用自己的域名，请为应用程序配置自定义域。 
@@ -88,6 +86,5 @@ ms.lasthandoff: 08/05/2017
 * 使用 Azure AD 身份验证对已发布应用[启用单一登录](active-directory-application-proxy-sso-using-kcd.md)。
 * 对已发布应用[启用条件访问](active-directory-application-proxy-conditional-access.md)。
 * [将自定义域名添加到 Azure AD](active-directory-domains-add-azure-portal.md)
-
 
 

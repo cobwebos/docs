@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 @Task| 集成 | Microsoft Docs"
+title: "教程： Azure Active Directory 集成与@Task|Microsoft 文档"
 description: "了解如何在 Azure Active Directory 与 @Task 之间配置单一登录。"
 services: active-directory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
-ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
-
-
+ms.openlocfilehash: ebb19ca6cbaf04106fbce937d95651e709854cfd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-task"></a>教程：Azure Active Directory 与 @Task 集成
 本教程旨在展示如何将 @Task 与 Azure Active Directory (Azure AD) 集成。  
@@ -30,10 +30,10 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 
 如果想要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
-若要配置 Azure AD 与 @Task, 的集成，需要以下项目：
+## <a name="prerequisites"></a>必备组件
+若要配置与 Azure AD 集成@Task，你需要以下各项：
 
-* 一个 Azure AD 订阅
+* Azure AD 订阅
 * 启用的订阅上的 @Task 单一登录
 
 > [!NOTE]
@@ -43,7 +43,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 
 测试本教程中的步骤应遵循以下建议：
 
-* 不应使用生产环境，除非有此必要。
+* 除非必要，请勿使用生产环境。
 * 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。 
 
 ## <a name="scenario-description"></a>方案描述
@@ -54,7 +54,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-task-from-the-gallery"></a>从库中添加 @Task
-若要配置 @Task 与 Azure AD 的集成，需要将库中的 @Task 添加到托管的 SaaS 应用列表。
+要配置 @Task 与 Azure AD 的集成，需要将库中的 @Task 添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 @Task，请执行以下步骤：**
 
@@ -74,7 +74,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 6. 在“搜索框”中，键入 **@Task**。
    
     ![应用程序][5] 
-7. 在“结果”窗格中，选择 **@Task**，然后单击“完成”，添加该应用程序。
+7. 在“结果”窗格中，选择 **@Task**，并单击“完成”，添加该应用程序。
    
     ![应用程序][30] 
 
@@ -84,32 +84,32 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 对于单一登录到工作帐户，Azure AD 需要知道 Azure AD 用户在 @Task 中的对应用户是谁。 换句话说，需要建立 Azure AD 用户与 @Task 中相关用户之间的链接关系。   
 可以通过将 Azure AD 中“用户名”的值分配为 @Task 中“用户名”的值来建立此链接关系。
 
-若要通过 @Task, 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Azure AD 单一登录与@Task，你需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 @Tasktest 用户](#creating-a-halogen-software-test-user)** - 在 @Taskthat 中创建 Britta Simon 的对立用户，并且将其链接到她在 Azure AD 中的代表。
+3. **[创建@Tasktest用户](#creating-a-halogen-software-test-user)** -若要具有 Britta 人 Simon 中的副本@Taskthat链接到的 Azure AD 表示形式她。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 本部分要在 Azure 经典门户中启用 Azure AD 单一登录，并且在 @Task 应用程序中配置单一登录。
 
-**若要配置 @Task, 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Azure AD 单一登录与@Task，执行以下步骤：**
 
 1. 在 Azure 经典门户中的 **@Task** 应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录][6] 
-2. 在“你希望用户如何登录 @Task”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 @Task”页上，选择“Azure AD 单一登录”，并单击“下一步”。
    
     ![Azure AD 单一登录][7] 
 3. 在“配置应用设置”对话框页上，执行以下步骤：
    
     ![配置应用设置][8] 
    
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，键入用户用于登录 @Task 应用程序的 URL（例如：*https://<Tenant name>.attask-ondemand.com*）。
+     a. 在“登录 URL”文本框中，键入用户用于登录 @Task 应用程序的 URL（例如：*https://<Tenant name>.attask-ondemand.com*）。
    
-     b. 单击“资源组名称” 的 Azure 数据工厂。
+     b. 单击“下一步”。
 4. 在“配置 @Task 的单一登录”页面上，单击“下载元数据”，然后将元数据文件本地保存在计算机上，随后单击“下一步”。
    
     ![什么是 Azure AD Connect][9] 
@@ -119,7 +119,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
    
     ![配置单一登录][23]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“类型”，选择“SAML 2.0”。
+    a. 对于“类型”，选择“SAML 2.0”。
    
     b. 选择“服务提供商 ID”。
    
@@ -127,10 +127,10 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
    
     d.单击“下一步”。 在 Azure 经典门户中，复制“单一注销服务 URL”，然后将其粘贴到“注销 URL”文本框。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在 Azure 经典门户中，复制“更改密码 URL”，然后将其粘贴到“更改密码 URL”文本框。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在 Azure 经典门户中，复制“更改密码 URL”，然后将其粘贴到“更改密码 URL”文本框。
    
     f. 单击“保存” 。
-8. 在 Azure 经典门户上，选择“单一登录配置确认”，然后单击“下一步”。 
+8. 在 Azure 经典门户上，选择“单一登录配置确认”，并单击“下一步”。 
    
     ![什么是 Azure AD Connect][10]
 9. 在“单一登录确认”页上，单击“完成”。  
@@ -158,7 +158,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-attask-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    a. 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
@@ -167,7 +167,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-attask-tutorial/create_aaduser_06.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a. 在“名字”文本框中，键入“Britta”。  
    
     b. 在“姓氏”文本框中，键入“Simon”。
    
@@ -175,7 +175,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -184,14 +184,14 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-attask-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
+    a. 写下“新密码”的值。
    
     b. 单击“完成”。   
 
 ### <a name="creating-an-task-test-user"></a>创建 @Task 测试用户
 本部分的目的是在 @Task 中创建名为“Britta Simon”的用户。
 
-**若要在 @Task, 中创建名为“Britta Simon”的用户，请执行以下步骤：**
+**若要创建一个名为 Britta 人 Simon 用户@Task，执行以下步骤：**
 
 1. 以管理员身份登录 @Task 公司站点。
 2. 在顶部菜单中，单击“人脉”。
@@ -200,7 +200,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
    
     ![创建 @Task 测试用户][21] 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。
+    a. 在“名字”文本框中，键入“Britta”。
    
     b. 在“姓氏”文本框中，键入“Simon”。
    
@@ -213,7 +213,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 @Task,，请执行以下步骤：**
+**若要将分配到 Britta 人 Simon @Task，执行以下步骤：**
 
 1. 在 Azure 经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
@@ -269,11 +269,5 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 
 
 
-
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

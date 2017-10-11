@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: b38eb3a011d46f2239891ea1d1bcac2a4059a866
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-8-set-up-the-source-and-target-for-hyper-v-replication-to-azure"></a>步骤 8：为到 Azure 的 Hyper-V 复制设置源和目标
 
 本文介绍了使用 Azure 门户中的 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Hyper-V 虚拟机（无 System Center VMM）复制到 Azure 时，如何配置源和目标设置。
@@ -43,7 +41,7 @@ ms.lasthandoff: 06/23/2017
 3. 在“添加服务器” > “服务器类型”中，确保显示“Hyper-V 服务器”。
 
     - 确保要添加的 Hyper-V 服务器符合[先决条件](#on-premises-prerequisites)并且能够访问指定的 URL。
-    - 下载 Azure Site Recovery 提供程序安装文件。 你将运行此文件，以在每个 Hyper-V 主机上安装提供程序和恢复服务代理。
+    - 下载 Azure Site Recovery 提供程序安装文件。 运行此文件，以在每个 Hyper-V 主机上安装提供程序和恢复服务代理。
 
     ![设置源](./media/hyper-v-site-walkthrough-source-target/set-source3.png)
 
@@ -52,7 +50,7 @@ ms.lasthandoff: 06/23/2017
 
 1. 在添加到 Hyper-V 站点的每个主机上运行提供程序安装文件。 如果要在 Hyper-V 群集上进行安装，则在每个群集节点上运行安装程序。 通过安装并注册每个 Hyper-V 群集节点，可确保 VM 即使在节点之间迁移也会受到保护。
 2. 在“Microsoft 更新” 中，可以选择进行更新，以便根据 Microsoft 更新策略安装提供程序更新。
-3. 在“安装”中接受或修改默认提供程序安装位置，然后单击“安装”。
+3. 在“安装”中接受或修改默认提供程序安装位置，并单击“安装”。
 4. 在“保管库设置”中，单击“浏览”以选择所下载的保管库密钥文件。 指定 Azure Site Recovery 订阅、保管库名称和 Hyper-V 服务器属于的 Hyper-V 站点。
 
     ![服务器注册](./media/hyper-v-site-walkthrough-source-target/provider3.png)
@@ -81,7 +79,7 @@ ms.lasthandoff: 06/23/2017
 1. 单击“准备基础结构” > “目标”。
 2. 选择故障转移后要在其中创建 Azure VM 的订阅和资源组。 选择要在 Azure 中用于 VM 的部署模型（经典或资源管理）。
 
-3. Site Recovery 将检查是否有一个或多个兼容的 Azure 存储帐户和网络。
+3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
     - 如果没有存储帐户，请单击“+存储”创建基于 Resource Manager 的内联帐户。 
     - 如果没有 Azure 网络，请单击“+网络”创建基于 Resource Manager 的内联网络。
@@ -94,4 +92,3 @@ ms.lasthandoff: 06/23/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 9：设置复制策略](hyper-v-site-walkthrough-replication.md)
-

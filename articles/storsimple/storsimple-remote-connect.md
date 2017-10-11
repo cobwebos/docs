@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5760c4a381a10fd1619b0239dd38e41d88f495e5
 ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 02/28/2017
 * 与在网络上通过串行控制台进行连接相比，通过 HTTP 会话进行连接可能具有更高的安全性。 虽然这不是最安全的方法，但在受信任的网络上是比较可行的方法。 
 * 通过使用自签名证书的 HTTPS 会话进行连接是最安全的选项（建议使用）。
 
-可以远程连接到 Windows PowerShell 接口。 但在默认情况下，通过 Windows PowerShell 接口远程访问 StorSimple 设备处于未启用状态。 首先需要在设备上启用远程管理，然后在用于访问设备的客户端上启用远程管理。
+可以远程连接到 Windows PowerShell 接口。 但在默认情况下，通过 Windows PowerShell 接口远程访问 StorSimple 设备处于未启用状态。 你需要首先，启用设备上的远程管理，然后在客户端用于访问你的设备。
 
 本文中所述的步骤是在运行 Windows Server 2012 R2 的主机系统上执行的。
 
@@ -72,7 +71,7 @@ ms.lasthandoff: 02/28/2017
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>通过设备串行控制台启用远程管理
 1. 在串行控制台菜单上，选择“选项 1”。 有关在设备上使用串行控制台的详细信息，请转到 [Connect to Windows PowerShell for StorSimple via device serial console](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)（通过设备串行控制台连接到 Windows PowerShell for StorSimple）。
 2. 在提示符下键入：`Enable-HcsRemoteManagement –AllowHttp`
-3. 将会收到使用 HTTP 连接到设备的安全漏洞的相关通知。 出现提示时，键入 **Y** 以确认。
+3. 会收到使用 HTTP 连接到设备的安全漏洞的相关通知。 出现提示时，键入 **Y** 以确认。
 4. 键入以下内容来验证是否启用了 HTTP：`Get-HcsSystem`
 5. 验证“RemoteManagementMode”字段是否显示为“HttpsAndHttpEnabled”。下图显示了 PuTTY 中的这些设置。
    
@@ -167,7 +166,7 @@ ms.lasthandoff: 02/28/2017
     将显示与下面类似的证书。
    
     ![获取远程管理证书](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. 将证书中从 **-----BEGIN CERTIFICATE-----** 到 **-----END CERTIFICATE-----** 的信息复制到如记事本等文本编辑器中，然后将其另存为 .cer 文件。 （在准备主机时，需要将此文件复制到远程主机。）
+6. 将证书中从 **-----BEGIN CERTIFICATE-----** 到 **-----END CERTIFICATE-----** 的信息复制到如记事本等文本编辑器中，并将其另存为 .cer 文件。 （在准备主机时，需要将此文件复制到远程主机。）
    
    > [!NOTE]
    > 若要生成新的证书，请使用 `Set-HcsRemoteManagementCert` cmdlet。
@@ -183,11 +182,11 @@ ms.lasthandoff: 02/28/2017
 以下描述了每个过程的详细步骤。
 
 #### <a name="to-import-the-certificate-on-the-remote-host"></a>在远程主机上导入证书
-1. 右键单击 .cer 文件并选择“安装证书”。 这将启动“证书导入向导”。
+1. 右键单击 .cer 文件并选择“安装证书”。 这会启动“证书导入向导”。
    
     ![证书导入向导 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. 对于“存储位置”，选择“本地计算机”，然后单击“下一步”。
-3. 选择“将所有证书放入下列存储”，然后单击“浏览”。 导航到远程主机的根存储，然后单击“下一步”。
+2. 对于“存储位置”，选择“本地计算机”，并单击“下一步”。
+3. 选择“将所有证书放入下列存储”，并单击“浏览”。 导航到远程主机的根存储，并单击“下一步”。
    
     ![证书导入向导 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
 4. 单击“完成” 。 将显示一条提示已成功导入的消息。
@@ -195,7 +194,7 @@ ms.lasthandoff: 02/28/2017
     ![证书导入向导 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>将设备序列号添加到远程主机
-1. 以管理员身份启动记事本，然后打开位于 \Windows\System32\Drivers\etc 的主机文件。
+1. 以管理员身份启动记事本，并打开位于 \Windows\System32\Drivers\etc 的主机文件。
 2. 将以下三项添加到主机文件中：**DATA 0 IP 地址**、**控制器 0 固定 IP 地址**和**控制器 1 固定 IP 地址**。
 3. 输入之前保存的设备序列号。 将此设备序列号映射到 IP 地址，如下图所示。 对于控制器 0 和控制器 1，请在序列号末尾追加 **Controller0** 和 **Controller1**（CN 名）。
    
@@ -229,12 +228,11 @@ ms.lasthandoff: 02/28/2017
 5. 键入： 
    
      `Enter-PSSession $session`
-6. 等待几分钟后，将在 SSL 上通过 HTTPS 连接到设备。 然后将看到一条指示已连接到设备的消息。
+6. 等待几分钟后，会在 SSL 上通过 HTTPS 连接到设备。 然后将看到一条指示已连接到设备的消息。
    
     ![使用 HTTPS 和 SSL 的 PowerShell 远程处理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关如何[使用 Windows PowerShell 管理 StorSimple 设备](storsimple-windows-powershell-administration.md)的详细信息。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
 

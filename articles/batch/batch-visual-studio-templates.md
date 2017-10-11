@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -68,8 +67,8 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 ## <a name="preparation"></a>准备工作
 建议创建可在其中包含作业管理器和任务处理器的解决方案，因为这样可以更轻松地在作业管理器和任务处理器程序之间共享代码。 若要创建此解决方案，请遵循以下步骤：
 
-1. 打开 Visual Studio，然后选择“文件” > “新建” > “项目”。
-2. 在“模板”下展开“其他项目类型”，单击“Visual Studio 解决方案”，然后选择“空白解决方案”。
+1. 打开 Visual Studio，并选择“文件” > “新建” > “项目”。
+2. 在“模板”下展开“其他项目类型”，单击“Visual Studio 解决方案”，并选择“空白解决方案”。
 3. 键入用于描述应用程序和此解决方案用途的名称（例如，“LitwareBatchTaskPrograms”）。
 4. 若要创建新解决方案，请单击“确定”。
 
@@ -88,8 +87,8 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 若要在前面创建的解决方案中添加作业管理器，请遵循以下步骤：
 
 1. 在 Visual Studio 中打开现有解决方案。
-2. 在解决方案资源管理器中，右键单击解决方案，然后单击“添加” > “新建项目”。
-3. 在“Visual C#”下单击“云”，然后单击“随附作业拆分器的 Azure Batch 作业管理器”。
+2. 在解决方案资源管理器中，右键单击解决方案，并单击“添加” > “新建项目”。
+3. 在“Visual C#”下单击“云”，并单击“随附作业拆分器的 Azure Batch 作业管理器”。
 4. 键入用于描述应用程序并将此项目标识为作业管理器的名称（例如“LitwareJobManager”）。
 5. 若要创建项目，请单击“确定”。
 6. 最后，生成项目来强制 Visual Studio 加载所有引用的 NuGet 包，并验证项目是否有效以便能开始对其进行修改。
@@ -119,7 +118,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 
 **作业拆分器**
 
-`JobSplitter.cs`：此类包含用于将作业拆分为多个任务的应用程序特定逻辑。 框架调用 JobSplitter.Split 方法以获取一连串的任务，并在方法返回任务时将方法添加到作业中。 这是将在其中注入作业逻辑的类。 实现拆分方法，返回一连串代表要将作业拆分成的任务的 CloudTask 实例。
+`JobSplitter.cs`：此类包含用于将作业拆分为多个任务的应用程序特定逻辑。 框架调用 JobSplitter.Split 方法以获取一连串的任务，并在方法返回任务时会方法添加到作业中。 这是会在其中注入作业逻辑的类。 实现拆分方法，返回一连串代表要将作业拆分成的任务的 CloudTask 实例。
 
 **标准 .NET 命令行项目文件**
 
@@ -167,7 +166,7 @@ Split() 实现具有以下项的访问权限：
 * 代表作业的 CloudJob 对象，通过 `_job` 字段。
 * 代表作业管理器任务的 CloudTask 对象，通过 `_jobManagerTask` 字段。
 
-`Split()` 实现不需要直接将任务添加到作业中。 相反地，代码应返回一连串的 CloudTask 对象，并由调用作业拆分器的框架类自动添加到作业中。 通常使用 C# 的迭代器 (`yield return`) 功能实现作业拆分器，因为这可让任务尽快开始运行，而不是等待所有要计算的任务。
+ph x="1" /> 实现不需要直接将任务添加到作业中。 相反地，代码应返回一连串的 CloudTask 对象，并由调用作业拆分器的框架类自动添加到作业中。 通常使用 C# 的迭代器 (`yield return`) 功能实现作业拆分器，因为这可让任务尽快开始运行，而不是等待所有要计算的任务。
 
 **作业拆分器失败**
 
@@ -206,7 +205,7 @@ Split() 实现具有以下项的访问权限：
 
 **必需的凭据**
 
-若要将任务添加到 Azure Batch 作业，作业管理器任务需要 Azure Batch 帐户 URL 和密钥。 必须在名为 YOUR_BATCH_URL 和 YOUR_BATCH_KEY 的环境变量中传递这些凭据。 可以在作业管理器任务的环境设置中设置这些变量。 例如，在 C# 客户端中：
+要将任务添加到 Azure Batch 作业，作业管理器任务需要 Azure Batch 帐户 URL 和密钥。 必须在名为 YOUR_BATCH_URL 和 YOUR_BATCH_KEY 的环境变量中传递这些凭据。 可以在作业管理器任务的环境设置中设置这些变量。 例如，在 C# 客户端中：
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -257,8 +256,8 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 若要在前面创建的解决方案中添加任务处理器，请遵循以下步骤：
 
 1. 在 Visual Studio 中打开现有解决方案。
-2. 在解决方案资源管理器中，右键单击解决方案，单击“添加”，然后单击“新建项目”。
-3. 在“Visual C#”下单击“云”，然后单击“Azure Batch 任务处理器”。
+2. 在解决方案资源管理器中，右键单击解决方案，单击“添加”，并单击“新建项目”。
+3. 在“Visual C#”下单击“云”，并单击“Azure Batch 任务处理器”。
 4. 键入用于描述应用程序并将此项目标识为任务处理器的名称（例如“LitwareTaskProcessor”）。
 5. 若要创建项目，请单击“确定”。
 6. 最后，生成项目来强制 Visual Studio 加载所有引用的 NuGet 包，并验证项目是否有效以便能开始对其进行修改。
@@ -268,7 +267,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 * 主程序文件 (Program.cs)。 此文件包含程序入口点和顶层异常处理。 一般情况下，不需要修改此文件。
 * 框架目录。 此目录包含的文件负责处理作业管理器程序执行的样板工作，例如解压缩参数、在 Batch 作业中添加任务等。一般情况下，不需要修改这些文件。
-* 任务处理器文件 (TaskProcessor.cs)。 此文件可供存放用于执行任务的应用程序特定逻辑（通常是通过向外调用现有的可执行文件）。 预处理和和后处理代码（例如下载额外数据或上载结果文件）也存放在此。
+* 任务处理器文件 (TaskProcessor.cs)。 此文件可供存放用于执行任务的应用程序特定逻辑（通常是通过向外调用现有的可执行文件）。 预处理和和后处理代码（例如下载额外数据或上传结果文件）也存放在此。
 
 当然，可以根据作业拆分逻辑的复杂性，视需要添加其他文件来支持任务处理器代码。
 
@@ -286,7 +285,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 **任务处理器**
 
-* `TaskProcessor.cs`：运行任务。 框架调用 TaskProcessor.Run 方法。 这是将在其中注入任务的应用程序特定逻辑的类。 实现 Run 方法以便：
+* `TaskProcessor.cs`：运行任务。 框架调用 TaskProcessor.Run 方法。 这是会在其中注入任务的应用程序特定逻辑的类。 实现 Run 方法以便：
   * 分析和验证任何任务参数
   * 针对要调用的任何外部程序编写命令行
   * 记录为了调试所可能需要的任何诊断信息
@@ -394,7 +393,7 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-然后，可以通过 `_configuration.StorageAccount` 属性在 TaskProcessor 类中使用存储帐户。
+然后通过 TaskProcessor 类中提供的存储帐户，是`_configuration.StorageAccount`属性。
 
 如果想要使用具有 SAS 的容器 URL，也可以通过作业的通用环境设置传递此 URL，但任务处理器模板目前未内置支持此 URL。
 
@@ -415,7 +414,7 @@ Batch 服务提供一个简单的机制，用于在 [Microsoft.Azure.Batch.JobMa
 例如，若要获取 Batch 帐户的 `BatchClient` 实例，可以环境变量的形式从客户端代码传递 Batch 帐户的 URL 和共享密钥凭据。 同样，若要访问链接到 Batch 帐户的存储帐户，可使用环境变量的形式传递存储帐户名和存储帐户密钥。
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>将参数传递到作业管理器模板
-在许多情况下，最好将每个操作的参数传递到作业管理器任务，以便控制作业拆分进程或配置作业的任务。 为此，可将名为 parameters.json 的 JSON 文件上载为作业管理器任务的资源文件。 然后，参数就可以在作业管理器模板的 `JobSplitter._parameters` 字段中可用。
+在许多情况下，最好将每个操作的参数传递到作业管理器任务，以便控制作业拆分进程或配置作业的任务。 为此，可将名为 parameters.json 的 JSON 文件上传为作业管理器任务的资源文件。 参数随后将成为位于`JobSplitter._parameters`作业管理器模板中的字段。
 
 > [!NOTE]
 > 内置的参数处理程序只支持字符串到字符串的字典。 如果想要以参数值的形式传递复杂 JSON 值，需要以字符串形式传递并在作业拆分器中进行分析，或者修改框架的 `Configuration.GetJobParameters` 方法。
@@ -428,7 +427,7 @@ Batch 服务提供一个简单的机制，用于在 [Microsoft.Azure.Batch.JobMa
 parameters.json 的资源文件，如果找到，则将它加载为参数字典。 有几个选项可用于将参数传递给任务处理器任务：
 
 * 重复使用作业参数 JSON。 这适用于唯一的参数都是作业范围的参数时（例如渲染高度和宽度）。 为此，请于在作业拆分器中创建 CloudTask 时，从作业管理器任务的 ResourceFiles (`JobSplitter._jobManagerTask.ResourceFiles`) 将 parameters.json 资源文件对象的引用添加到 CloudTask 的 ResourceFiles 集合。
-* 生成和上载任务特定的 parameters.json 文档作为作业拆分器执行的一部分，并在任务的资源文件集合中引用该 Blob。 如果不同的任务有不同的参数，就必须这样做。 以参数形式将帧索引传递到任务的 3D 渲染方案便是可能的示例。
+* 生成和上传任务特定的 parameters.json 文档作为作业拆分器执行的一部分，并在任务的资源文件集合中引用该 Blob。 如果不同的任务有不同的参数，就必须这样做。 以参数形式将帧索引传递到任务的 3D 渲染方案便是可能的示例。
 
 > [!NOTE]
 > 内置的参数处理程序只支持字符串到字符串的字典。 如果想要以参数值的形式传递复杂 JSON 值，需要以字符串形式传递并在任务处理器中进行分析，或者修改框架的 `Configuration.GetTaskParameters` 方法。
@@ -440,7 +439,7 @@ parameters.json 的资源文件，如果找到，则将它加载为参数字典�
 在开发 Batch 解决方案时的另一个有用工具是 [Azure Batch 文件约定][nuget_package]。 在 Batch .NET 应用程序中使用此 .NET 类库（目前以预览版提供）可在 Azure 存储中轻松存储和检索任务输出。 [保存 Azure Batch 作业和任务输出](batch-task-output.md)包含该库及其用法的完整介绍。
 
 ### <a name="batch-forum"></a>Batch 论坛
-MSDN 上的 [Azure 批处理论坛][forum]是探讨 Batch 服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些帮忙解决“棘手问题”的贴子，并发布你在构建 Batch 解决方案时遇到的问题。
+MSDN 上的 [Azure Batch 论坛][forum]是探讨 Batch 服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些帮忙解决“棘手问题”的贴子，并发布在构建 Batch 解决方案时遇到的问题。
 
 [forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
@@ -454,4 +453,3 @@ MSDN 上的 [Azure 批处理论坛][forum]是探讨 Batch 服务以及咨询相�
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
-

@@ -9,15 +9,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: rickbyh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: 0dcec61c03a84197e2c351761c743683caa98a06
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的条件性访问 (MFA)  
 
 SQL 数据库和 SQL 数据仓库均支持 Microsoft 条件性访问。 下列步骤演示如何配置 SQL 数据库以强制实施条件性访问策略。  
@@ -51,4 +48,3 @@ SQL 数据库和 SQL 数据仓库均支持 Microsoft 条件性访问。 下列�
 ## <a name="next-steps"></a>后续步骤  
 
 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
-

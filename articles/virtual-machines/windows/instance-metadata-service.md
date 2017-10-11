@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/11/2017
 ms.author: harijay
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 55b97b89cb297dc08dc73f6714c5159d4565a97c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="azure-instance-metadata-service-for-windows-vms"></a>适用于 Windows VM 的 Azure 实例元数据服务
 
 
@@ -57,9 +55,9 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure Res
 已对实例元数据服务进行了版本控制。 版本是必需的，当前版本为 `2017-04-02`。
 
 > [!NOTE] 
-> 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
+> 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且将在未来弃用。
 
-我们添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。 但是请注意，当前预览版本 (2017-03-01) 在服务正式发布之后可能不再可用。
+添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。 但是请注意，当前预览版本 (2017-03-01) 在服务正式发布之后可能不再可用。
 
 ### <a name="using-headers"></a>使用标头
 查询实例元数据服务时，必须提供标头 `Metadata: true`，以确保不会意外将请求重定向。
@@ -405,4 +403,3 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解由实例元数据服务提供的公共预览版 [scheduledevents](scheduled-events.md) API。
-

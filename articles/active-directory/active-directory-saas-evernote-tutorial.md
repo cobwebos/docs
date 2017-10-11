@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: be94152a84bbbeacb623d7dd8b540e3981931a8e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>教程：Azure Active Directory 与 Evernote 的集成
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/10/2017
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Evernote 的集成，需要以下项：
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 08/10/2017
 
     在“登录 URL”文本框中，键入 URL： `https://www.evernote.com/Login.action`   
 
-5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_certificate.png) 
 
@@ -266,5 +265,4 @@ ms.lasthandoff: 08/10/2017
 [201]: ./media/active-directory-saas-evernote-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-evernote-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-evernote-tutorial/tutorial_general_203.png
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 52fd9375c71c42feaf87f4a0f4220e1cb3889e63
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从旧版升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。
@@ -32,12 +31,12 @@ ms.lasthandoff: 07/13/2017
 | --- | --- |
 | [自动升级](active-directory-aadconnect-feature-automatic-upgrade.md) |对于使用快速安装的客户，这是最容易的方法。 |
 | [就地升级](#in-place-upgrade) |如果只有一台服务器，可在该服务器上就地升级安装。 |
-| [交叉迁移](#swing-migration) |如果有两台服务器，可将其中一台升级到最新版本或配置，然后在准备就绪时更改活动服务器。 |
+| [交叉迁移](#swing-migration) |如果有两台服务器，可将其中一台升级到最新版本或配置，并在准备就绪时更改活动服务器。 |
 
 有关权限信息，请参阅[升级所需权限](active-directory-aadconnect-accounts-permissions.md#upgrade)。
 
 > [!NOTE]
-> 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。
+> 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。 不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。
 
 ## <a name="in-place-upgrade"></a>就地升级
 就地升级适用于从 Azure AD Sync 或 Azure AD Connect 迁移。 它不适用于从 DirSync 迁移，也不适用于使用 Forefront Identity Manager (FIM) + Azure AD 连接器的解决方案。
@@ -52,7 +51,7 @@ ms.lasthandoff: 07/13/2017
 ## <a name="swing-migration"></a>交叉迁移
 如果部署复杂或者有多个对象，在活动的系统上进行就地升级可能不切合实际。 对于某些客户来说，此过程可能要花费几天时间，在此期间无法处理任何增量更改。 如果打算对配置进行重大更改，并且希望在将这些更改推送到云之前对其进行测试，则也可以使用此方法。
 
-针对这些方案的建议方法是使用交叉迁移。 至少需要两台服务器，一台是活动服务器，另一台是过渡服务器。 活动服务器（在下图中以蓝色实线表示）负责处理活动的生产负载。 过渡服务器（以紫色虚线表示）已升级到最新版本或配置。 完全就绪以后，该服务器处于活动状态。 将目前安装了旧版本或配置的前一台活动服务器设为过渡服务器，然后进行升级。
+针对这些方案的建议方法是使用交叉迁移。 至少需要两台服务器，一台是活动服务器，另一台是过渡服务器。 活动服务器（在下图中以蓝色实线表示）负责处理活动的生产负载。 过渡服务器（以紫色虚线表示）已升级到最新版本或配置。 完全就绪以后，该服务器处于活动状态。 将目前安装了旧版本或配置的前一台活动服务器设为过渡服务器，并进行升级。
 
 两台服务器可以使用不同的版本。 例如，打算解除的活动服务器可以使用 Azure AD Sync，新的过渡服务器可以使用 Azure AD Connect。 如果使用交叉迁移来开发新配置，则建议在两台服务器上使用相同的版本。  
 ![暂存服务器](./media/active-directory-aadconnect-upgrade-previous-version/stagingserver1.png)
@@ -74,7 +73,7 @@ ms.lasthandoff: 07/13/2017
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>将自定义配置从活动服务器移到过渡服务器
 如果对活动服务器做了配置更改，需确保将相同的更改应用到过渡服务器。 有关此移动的帮助，可以使用 [Azure AD Connect 配置文档](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
-可以使用 PowerShell 移动所创建的自定义同步规则。 必须在两个系统上使用同一方式应用其他更改，不能迁移所做的更改。 [配置文档](https://github.com/Microsoft/AADConnectConfigDocumenter)可帮助你比较两个系统，以确保它们相同。 该工具还可帮助自动执行本部分中的步骤。
+可以使用 PowerShell 移动所创建的自定义同步规则。 必须在两个系统上使用同一方式应用其他更改，不能迁移所做的更改。 [配置文档](https://github.com/Microsoft/AADConnectConfigDocumenter)可帮助比较两个系统，以确保它们相同。 该工具还可帮助自动执行本部分中的步骤。
 
 需在两个服务器上使用同一方式配置以下内容：
 
@@ -130,4 +129,3 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="next-steps"></a>后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-

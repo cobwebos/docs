@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: feac309db1ffce0945012e293bfc1df417aed876
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="advanced-reporting-with-the-windows-universal-apps-engagement-sdk"></a>使用 Windows 通用应用 Engagement SDK 的高级报告
 > [!div class="op_single_selector"]
@@ -30,7 +29,7 @@ ms.lasthandoff: 11/17/2016
 > 
 > 
 
-本主题介绍 Windows 通用应用程序中的其他报告方案。 这些方案包括的选项可供你选择，以应用于在[入门](mobile-engagement-windows-store-dotnet-get-started.md)教程中创建的应用程序。
+本主题介绍 Windows 通用应用程序中的其他报告方案。 这些方案包括你可以选择要应用于应用程序中创建的选项[入门](mobile-engagement-windows-store-dotnet-get-started.md)教程。
 
 ## <a name="prerequisites"></a>先决条件
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
@@ -40,7 +39,7 @@ ms.lasthandoff: 11/17/2016
 ## <a name="specifying-engagement-configuration-at-runtime"></a>指定运行时的 Engagement 配置
 Engagement 配置集中在项目的 `Resources\EngagementConfiguration.xml` 文件中，这是在[入门](mobile-engagement-windows-store-dotnet-get-started.md)主题中指定的位置。
 
-但也可以在运行时指定位置：你可以在 Engagement 代理初始化前调用以下方法：
+但也可以在运行时指定位置：可以在 Engagement 代理初始化前调用以下方法：
 
           /* Engagement configuration. */
           EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -117,7 +116,7 @@ Engagement 配置集中在项目的 `Resources\EngagementConfiguration.xml` 文�
         </engagement:EngagementPage >
 
 ### <a name="override-the-default-behaviour"></a>重写默认行为
-默认情况下，页面的类名被报告为活动名，无其他附加内容。 如果类使用“Page”后缀，则 Engagement 会将其删除。
+默认情况下，页面的类名被报告为活动名，无其他附加内容。 如果类使用的"页"后缀，Engagement 中删除它。
 
 要重写名称的默认行为的，请添加以下代码：
 
@@ -153,13 +152,12 @@ Engagement 配置集中在项目的 `Resources\EngagementConfiguration.xml` 文�
 > [!IMPORTANT]
 > 确保正确结束会话。
 > 
-> Windows Universal SDK 将在应用程序关闭时自动调用 `EndActivity` 方法。 因此，**强烈**建议每当用户的活动更改时即调用 `StartActivity` 方法，并且**从不**调用 `EndActivity` 方法。 此方法会告知 Engagement 服务器将当前用户已离开应用程序，这将影响该应用程序的所有日志。
+> Windows Universal SDK 会在应用程序关闭时自动调用 `EndActivity` 方法。 因此，**强烈**建议每当用户的活动更改时即调用 `StartActivity` 方法，并且**从不**调用 `EndActivity` 方法。 此方法会告知 Engagement 服务器将当前用户已离开应用程序，这会影响该应用程序的所有日志。
 > 
 > 
 
 ## <a name="advanced-reporting"></a>高级报告
-根据需要，你可能要报告应用程序特定事件、错误和作业，为此，可使用在 `EngagementAgent` 类中找到的其他方法。 Engagement API 允许使用的所有 Engagement 高级功能。
+根据需要，可能要报告应用程序特定事件、错误和作业，为此，可使用在 `EngagementAgent` 类中找到的其他方法。 Engagement API 允许使用的所有 Engagement 高级功能。
 
 要了解更多信息，请参阅[如何在 Windows 通用应用中使用高级的 Mobile Engagement 标记 API](mobile-engagement-windows-store-use-engagement-api.md)。
-
 

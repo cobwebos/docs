@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
 ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>将 Sparkfun ESP8266 Thing Dev 连接到云中的 Azure IoT 中心
 
@@ -149,14 +148,14 @@ ms.lasthandoff: 08/16/2017
 
 1. 在 Arduino IDE 中，单击“File”（文件） > “Preferences”（首选项）。
 1. 在“Preferences”（首选项）对话框中，单击“Additional Boards Manager URLs”（其他 Boards Manager URL）文本框旁边的图标。
-1. 在弹出窗口中输入以下 URL，并单击“OK”（确定）。
+1. 在弹出窗口中输入以下 URL，然后单击“OK”（确定）。
 
    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
    ![指向 arduino ide 中的包 url](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
 
 1. 在“Preference”（首选项）对话框中，单击“OK”（确定）。
-1. 单击“Tools”（工具） > “Board”（开发板） > “Boards Manager”，并搜索 esp8266。
+1. 单击“Tools”（工具） > “Board”（开发板） > “Boards Manager”，然后搜索 esp8266。
    应安装 2.2.0 或更高版本的 ESP8266。
 
    ![已安装 esp8266 包](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
@@ -189,7 +188,7 @@ ms.lasthandoff: 08/16/2017
 
 ### <a name="deploy-the-sample-application-to-sparkfun-esp8266-thing-dev"></a>将示例应用程序部署到 Sparkfun ESP8266 Thing Dev
 
-1. 在 Arduino IDE 中，单击“Tool”（工具） > “Port”（端口），并单击 Sparkfun ESP8266 Thing Dev 的串行端口。
+1. 在 Arduino IDE 中，单击“Tool”（工具） > “Port”（端口），然后单击 Sparkfun ESP8266 Thing Dev 的串行端口。
 1. 单击“Sketch” > “Upload”（上传），生成示例应用程序并将其部署到 Sparkfun ESP8266 Thing Dev。
 
 > [!Note]
@@ -227,4 +226,3 @@ ms.lasthandoff: 08/16/2017
 现已成功将 Sparkfun ESP8266 Thing Dev 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: markgal;trinadhk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0c930c7413b24a811707c3a1ff3d7d70585bc528
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
 本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
@@ -79,7 +78,7 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 对于从存储帐户复制的备份数据，会添加到该存储帐户的每秒输入/输出操作数 (IOPS) 和出口（或吞吐量）度量值。 同时，虚拟机也会消耗 IOPS 与吞吐量。 目的是确保备份和虚拟机流量不会超过存储帐户限制。
 
 ### <a name="number-of-disks"></a>磁盘数目
-备份过程会尝试尽快完成备份作业。 为此，这会使用尽可能多的资源。 但是，*单个 Blob 的目标吞吐量*实施 I/O 操作总次数限制为每秒 60 MB。 为了最大限度加快速度，备份过程会尝试并行备份每个 VM 磁盘。 如果 VM 有 4 个磁盘，则服务会尝试并行备份所有 4 个磁盘。 决定存储帐户备份流量的最重要因素是备份的**磁盘数**。
+备份过程会尝试尽快完成备份作业。 在此情况下，它会占用尽可能多的资源。 但是，*单个 Blob 的目标吞吐量*实施 I/O 操作总次数限制为每秒 60 MB。 为了最大限度加快速度，备份过程会尝试并行备份每个 VM 磁盘。 如果 VM 有 4 个磁盘，则服务会尝试并行备份所有 4 个磁盘。 决定存储帐户备份流量的最重要因素是备份的**磁盘数**。
 
 ### <a name="backup-schedule"></a>备份计划
 影响性能的另一因素是**备份计划**。 如果配置策略以同时备份所有 VM，则会导致流量拥堵。 备份过程会尝试并行备份所有磁盘。 若要减少存储帐户的备份流量，请在一天的不同时间备份不同 VM，并且时间不重叠。
@@ -99,7 +98,7 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 尽管大部分备份时间花在读取和复制数据上，但其他一些操作也会影响到备份 VM 所需的总时间：
 
 * 花费在[安装或更新备份扩展](backup-azure-vms.md)上的时间。
-* 快照时间，即触发某个快照所花费的时间。 在接近计划的备份时间时，会触发快照。
+* 快照时间，即触发某个快照所花费的时间。 接近计划的备份时间时触发快照。
 * 队列等待时间。 由于备份服务要处理来自多个客户的备份，可能不会立即将备份数据从快照复制到备份或恢复服务保管库。 在负载高峰期，由于要处理的备份数过多，等待时间可能会长达 8 小时。 但是，每日备份策略规定的 VM 备份总时间不会超过 24 小时。
 * 数据传输时间，备份服务计算上一备份中的增量更改并将更改传输到保管库存储所需的时间。
 
@@ -153,4 +152,3 @@ VM 备份定价*并非*基于附加到虚拟机的每个数据磁盘的最大支
 * [管理虚拟机备份](backup-azure-manage-vms.md)
 * [恢复虚拟机](backup-azure-restore-vms.md)
 * [解决 VM 备份问题](backup-azure-vms-troubleshoot.md)
-

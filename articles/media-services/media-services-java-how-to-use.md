@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4cf3aaa9678c423c71cf542591a5a98547bb5cf5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: 2294f3de094389f8aa500c75472e753339b18358
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>使用 Java 按需传送内容入门
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -42,11 +41,11 @@ ms.lasthandoff: 03/14/2017
 >[!NOTE]
 >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
-以下代码演示了如何创建资产、将媒体文件上载到该资产、使用任务运行某个作业以转换该资产，以及创建定位符流式传输视频。
+以下代码演示了如何创建资产、将媒体文件上传到该资产、使用任务运行某个作业以转换该资产，以及创建定位符流式传输视频。
 
 在使用此代码之前，需要设置一个媒体服务帐户。 有关设置帐户的信息，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 
-将“clientId”和“clientSecret”变量替换为你自己的值。 该代码还依赖于本地存储的文件。 你需要提供自己的文件以供使用。
+将“clientId”和“clientSecret”变量替换成自己的值。 该代码还依赖于本地存储的文件。 需要提供自己的文件以供使用。
 
     import java.io.*;
     import java.security.NoSuchAlgorithmException;
@@ -275,4 +274,3 @@ ms.lasthandoff: 03/14/2017
 [Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
 [Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
 [Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: a68a8fdc3976ade0d1036d5ed58c8b2eb6d32a5d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>预见性维护预配置解决方案演练
 
@@ -57,13 +56,13 @@ IoT 中心会提供设备命令确认。
 
 ## <a name="azure-stream-analytics-job"></a>Azure 流分析作业
 
-作业：遥测会使用两个语句来操作传入设备遥测流：
+**作业： 遥测**上使用两个语句的传入设备遥测流进行操作：
 
 * 第一个语句会从设备选择所有遥测，然后将这些数据 从在 Web 应用中可视化的位置发送到 Blob 存储。
 * 第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到事件处理器。
 
 ## <a name="event-processor"></a>事件处理器
-**事件处理器主机**在 Azure Web 作业中运行。 **事件处理器** 为已完成的周期获取平均传感器值。 然后，将这些值传递给某个 API，后者可公开用于计算引擎 RUL 的训练模型。 该 API 由预配为解决方案一部分的机器学习工作区公开。
+**事件处理器主机**在 Azure Web 作业中运行。 **事件处理器** 为已完成的周期获取平均传感器值。 此外，它随后会将这些值传递到公开训练的模型，用于计算引擎的 RUL 的 API。 该 API 由预配为解决方案一部分的机器学习工作区公开。
 
 ## <a name="machine-learning"></a>机器学习
 机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 可以导航到预配解决方案 [azureiotsuite.com][lnk-azureiotsuite] 页面的磁贴中的机器学习工作区。 当解决方案处于“就绪”状态时，会提供一个磁贴。

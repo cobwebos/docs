@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/28/2016
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a61c57cd74a0df8363648dd8df40e433b0e6489d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-volumes-update-2"></a>使用 StorSimple Manager 服务管理卷 (Update 2)
 [!INCLUDE [storsimple-version-selector-manage-volumes](../../includes/storsimple-version-selector-manage-volumes.md)]
@@ -226,7 +225,7 @@ StorSimple 卷可以是：
 2. 先在主机上使卷脱机。 这样可以消除任何造成卷上数据损坏的潜在风险。 有关具体的步骤，请参阅适用于主机操作系统的说明。
 3. 在主机上脱机后，执行以下步骤在设备上使卷脱机：
    
-   1. 在“设备”页上，选择设备、双击它，并单击“卷容器”选项卡。“卷容器”选项卡以表格格式列出与设备关联的所有卷容器。
+   1. 在“设备”页上，选择设备、双击它，并单击“卷容器”选项卡。 “卷容器”选项卡以表格格式列出与设备关联的所有卷容器。
    2. 选择并单击一个卷容器可以显示该容器中所有卷的列表。
    3. 选择一个卷并单击“脱机”。
    4. 出现确认提示时，单击“是”。 该卷随即会脱机。
@@ -273,5 +272,4 @@ StorSimple 卷可以是：
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[克隆 StorSimple 卷](storsimple-clone-volume.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

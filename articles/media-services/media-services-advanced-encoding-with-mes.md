@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 25a13ad3738286795f45bbdec681614356bd3db8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 8de3bdd45261c84a0e1bb90f1c58863ad740dd5a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码 
 
 ## <a name="overview"></a>概述
@@ -243,7 +241,7 @@ ms.lasthandoff: 06/30/2017
   * 相对于源持续时间（如果以 % 为后缀表示），例如："Start": "15%"，或者
   * 时间戳（如果以 HH:MM:SS... 格式表示），例如 "Start" : "00:01:00"
 
-    你可以随意混搭使用表示法。
+    可以随意混搭使用表示法。
 
     此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
   * 默认值：Start:{Best}
@@ -493,9 +491,9 @@ ms.lasthandoff: 06/30/2017
 
 ## <a id="overlay"></a>创建覆盖层
 
-Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
+Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
 
-除了定义预设文件外，你还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是**主**文件。
+除了定义预设文件外，还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是要在其上覆盖图像的源视频。 视频文件必须是**主**文件。
 
 如果使用 .NET，请将以下两个函数添加到[此主题](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)中定义的 .NET 示例。 **UploadMediaFilesFromFolder** 函数从文件夹上传文件（例如 BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件设置为资产中的主文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
 
@@ -702,7 +700,7 @@ Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持�
 
 
 ## <a id="silent_audio"></a>在输入不包含音频时插入静音曲目
-默认情况下，如果要向编码器发送仅包含视频而不包含音频的输入，则输出资产将包含仅有视频数据的文件。 某些播放器可能无法处理此类输出流。 对于这种方案，你可以使用此设置来强制编码器将静音曲目添加到输出。
+默认情况下，如果要向编码器发送仅包含视频而不包含音频的输入，则输出资产将包含仅有视频数据的文件。 某些播放器可能无法处理此类输出流。 对于这种方案，可以使用此设置来强制编码器将静音曲目添加到输出。
 
 若要强制编码器在输入不包含音频时生成包含静音曲目的资产，请指定“InsertSilenceIfNoAudio”值。
 
@@ -727,7 +725,7 @@ Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持�
 ## <a id="deinterlacing"></a>禁用自动取消隔行扫描
 如果客户想要将隔行扫描内容自动取消隔行扫描，不需要执行任何操作。 当自动取消隔行扫描打开（默认设置）时，MES 将自动检测隔行扫描帧，并且只将标记为隔行扫描的帧取消隔行扫描。
 
-你可以关闭自动取消隔行扫描， 但不建议这样做。
+可以关闭自动取消隔行扫描。 但不建议这样做。
 
 ### <a name="json-preset"></a>JSON 预设
     "Sources": [
@@ -799,7 +797,7 @@ Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持�
       ]
     }
 
-## <a id="concatenate"></a>连接两个或更多视频文件
+## <a id="concatenate"></a>连接两个或更多个视频文件
 
 以下示例演示如何生成预设来连接两个或更多个视频文件。 最常见的应用场景：你想在主视频中添加标题或预告片。 预期使用场合：当一起编辑的视频文件共享属性（视频分辨率、帧速率、音轨计数等）时。 务必注意不要混合使用不同帧速率或不同音轨数的视频。
 
@@ -815,7 +813,7 @@ Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持�
 * 以下预设示例假设所有输入视频的起始时间戳都为零。 如果视频具有不同的起始时间戳（通常是实时存档的情况），则需要修改 StartTime 值。
 * JSON 预设会显式引用输入资产的 AssetID 值。
 * 示例代码假设 JSON 预设已保存到本地文件（例如“C:\supportFiles\preset.json”）。 同时假设已通过上传两个视频文件创建了两个资产，并且你知悉生成的 AssetID 值。
-* 代码片段和 JSON 预设显示连接两个视频文件的示例。 你可以将其扩展至两个以上的视频，方法是：
+* 代码片段和 JSON 预设显示连接两个视频文件的示例。 可以将其扩展至两个以上的视频，方法是：
 
   1. 重复调用 task. InputAssets.Add() 以便依次添加更多视频。
   2. 通过按相同顺序添加更多条目，对 JSON 中的“Sources”元素进行相应编辑。
@@ -855,7 +853,7 @@ Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持�
 
 ### <a name="json-preset"></a>JSON 预设
 
-使用你想连接的资产 ID 以及每个视频的适当时间段，更新你的自定义预设。
+使用想连接的资产 ID 以及每个视频的适当时间段，更新自定义预设。
 
     {
       "Version": 1.0,
@@ -1044,4 +1042,3 @@ Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持�
 
 ## <a name="see-also"></a>另请参阅
 [媒体服务编码概述](media-services-encode-asset.md)
-

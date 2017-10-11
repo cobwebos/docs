@@ -14,23 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/28/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务查看 StorSimple 虚拟阵列的作业
 ## <a name="overview"></a>概述
-“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple Device Manager 服务的虚拟阵列上启动的作业。 可以针对多个虚拟设备查看正在运行的、已完成的、失败的作业。 结果将以表格形式呈现。
+“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple Device Manager 服务的虚拟阵列上启动的作业。 可以针对多个虚拟设备查看正在运行的、已完成的、失败的作业。 结果以表格形式呈现。
 
 ![“作业”边栏选项卡](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 
 可以通过筛选下述字段，快速查找感兴趣的作业：
 
 * **时间范围** - 可以根据日期和时间范围筛选作业。
-* **设备** - 可以在连接到服务的特定设备上启动作业。 然后基于以下属性以表格方式列出所筛选的作业：
+* **设备** - 可以在连接到服务的特定设备上启动作业。 筛选的作业是然后以表格方式列出基于以下属性：
   
   * **名称** - 作业名称可以是“全部”、“备份”、“克隆”、“故障转移”、“下载更新”或“安装更新”。
   * **状态** - 作业可以是“全部”、“正在进行”、“成功”或“失败”或“已取消”。
@@ -57,13 +56,12 @@ ms.lasthandoff: 11/28/2016
     ![作业详细信息](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
 #### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>在虚拟机监控程序中暂停虚拟机时的作业失败
-当作业正在 StorSimple 虚拟阵列上运行且设备（在虚拟机监控程序中预配的虚拟机）暂停超过 15 分钟时，作业将失败。 这是由于 StorSimple 虚拟阵列时间与 Microsoft Azure 时间不同步。 
+当作业正在 StorSimple 虚拟阵列上运行且设备（在虚拟机监控程序中预配的虚拟机）暂停超过 15 分钟时，作业会失败。 这是由于 StorSimple 虚拟阵列时间与 Microsoft Azure 时间不同步。 
 
-你将看到以下错误：“设备时间与 Microsoft Azure 时间不同步已超过 15 分钟。 确保虚拟机监控程序和设备时间与 NTP 服务器同步。 验证是否没有连接问题。 若要解决连接问题，请从虚拟设备的本地 Web UI 运行诊断测试。”
+会看到以下错误：“设备时间与 Microsoft Azure 时间不同步已超过 15 分钟。 确保虚拟机监控程序和设备时间与 NTP 服务器同步。 验证是否没有连接问题。 若要解决连接问题，请从虚拟设备的本地 Web UI 运行诊断测试。”
 
 这些失败适用于备份、还原、更新和故障转移作业。 如果在 Hyper-V 中预配了虚拟机，则虚拟机最终将与虚拟机监控程序同步时间。 一旦同步后，可重新启动作业。
 
 ## <a name="next-steps"></a>后续步骤
 [了解如何使用本地 Web UI 管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
-
 

@@ -19,9 +19,9 @@
    
     可选择以下映像类型。
    
-   * “公共映像”将列出操作系统和服务器软件（例如 Windows Server 和 SQL Server）的虚拟机映像。
-   * “MSDN 映像”将列出 MSDN 订户可用软件（例如 Visual Studio 和 Microsoft Dynamics）的虚拟机映像。
-   * “专用映像”将列出用户创建的专用化和通用化虚拟机映像。
+   *  将列出操作系统和服务器软件（例如 Windows Server 和 SQL Server）的虚拟机映像。
+   *  将列出 MSDN 订户可用软件（例如 Visual Studio 和 Microsoft Dynamics）的虚拟机映像。
+   *  将列出用户创建的专用化和通用化虚拟机映像。
      
      若要了解专用化和通用化虚拟机，请参阅 [VM 映像](https://azure.microsoft.com/blog/2014/04/14/vm-image-blog-post/)。 有关如何将虚拟机转换成模板以便快速创建预配置的新虚拟机的信息，请参阅[如何捕获一台用作模板的 Windows 虚拟机](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/)。
      
@@ -68,7 +68,7 @@
     
      ![虚拟机活动日志 - 已完成。](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
     
-     如果操作成功完成，新的虚拟机会显示在“服务器资源管理器”中的“虚拟机”节点下面。 可通过单击“使用远程桌面进行连接”快捷方式登录到该虚拟机。
+     如果操作成功完成，新的虚拟机会显示在“服务器资源管理器”中的“虚拟机”  节点下面。 可通过单击“使用远程桌面进行连接”快捷方式登录到该虚拟机。
     
      ![服务器资源管理器中显示的虚拟机。](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
 
@@ -98,7 +98,7 @@
    
     ![Azure 配置页捕获按钮](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744142.png)
    
-    将出现“捕获虚拟机”对话框。
+    出现“捕获虚拟机”  对话框。
    
     ![Azure 捕获虚拟机对话框](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744143.png)
 4. 提供映像标签和说明。 系统提供了默认的标签和说明，但如果需要，可以使用自己的标签和说明来覆盖它们。

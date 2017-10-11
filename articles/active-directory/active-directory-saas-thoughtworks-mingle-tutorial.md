@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 268ae5affb88a718f68c08daa94fe7aba4a99c11
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>教程：Azure Active Directory 与 Thoughtworks Mingle 集成
 
@@ -86,7 +85,7 @@ ms.lasthandoff: 07/26/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Thoughtworks Mingle 测试用户](#create-a-thoughtworks-mingle-test-user)** - 在 Thoughtworks Mingle 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+3. **[创建一个 Thoughtworks Mingle 测试用户](#create-a-thoughtworks-mingle-test-user)** -若要在 Thoughtworks Mingle 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -113,7 +112,7 @@ ms.lasthandoff: 07/26/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Thoughtworks Mingle 客户支持团队](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-thoughtworks-mingle-tutorial/tutorial_thoughtworksmingle_certificate.png) 
 
@@ -131,7 +130,7 @@ ms.lasthandoff: 07/26/2017
    
     ![SSO 配置](./media/active-directory-saas-thoughtworks-mingle-tutorial/ic785158.png "SSO Config")
     
-    a. 若要上传元数据文件，请单击“选择文件”。 
+    a. 若要上传元数据文件，请单击**“选择文件”**。 
 
     b. 单击“保存更改”。
 
@@ -236,7 +235,7 @@ ms.lasthandoff: 07/26/2017
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-本部分旨在使用“访问面板”测试你的 Azure AD 单一登录配置。
+本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Thoughtworks Mingle 磁贴，即可自动登录到 Thoughtworks Mingle 应用程序。
 
@@ -260,5 +259,4 @@ ms.lasthandoff: 07/26/2017
 [201]: ./media/active-directory-saas-thoughtworks-mingle-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-thoughtworks-mingle-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-thoughtworks-mingle-tutorial/tutorial_general_203.png
-
 

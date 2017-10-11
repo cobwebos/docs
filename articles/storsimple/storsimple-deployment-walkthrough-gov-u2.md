@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2016
 ms.author: v-sharos
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0b22dcdfc0432533b286e70d130bfe2ee2db92b2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal-update-2"></a>在政府门户中部署本地 StorSimple 设备 (Update 2)
 [!INCLUDE [storsimple-version-selector-deploy-gov](../../includes/storsimple-version-selector-deploy-gov.md)]
@@ -227,5 +226,4 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 ## <a name="next-steps"></a>后续步骤
 * 配置 [虚拟设备](storsimple-virtual-device-u2.md)。
 * 使用 [StorSimple Manager 服务](storsimple-manager-service-administration.md) 管理 StorSimple 设备。
-
 

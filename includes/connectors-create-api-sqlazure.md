@@ -1,42 +1,42 @@
-### <a name="prerequisites"></a>先决条件
-* Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 一个 [Azure SQL 数据库](../articles/sql-database/sql-database-get-started.md)及其连接信息（其中包括服务器名称、数据库名称和用户名/密码）。 该信息将包含在 SQL 数据库连接字符串中：
+### <a name="prerequisites"></a>必备条件
+* Azure 帐户;你可以创建[免费帐户](https://azure.microsoft.com/free)
+* [Azure SQL 数据库](../articles/sql-database/sql-database-get-started.md)与其连接信息，包括服务器名称、 数据库名称和用户名/密码。 此信息包含在 SQL 数据库连接字符串：
   
-    Server=tcp:*yoursqlservername*.database.windows.net,1433;Initial Catalog=*yourqldbname*;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    服务器 = tcp:*yoursqlservername*。 database.windows.net,1433;Initial 目录 =*yourqldbname*;持久性安全信息 = False;用户 ID = {your_username};密码 = {your_password};MultipleActiveResultSets = False;加密 = True;TrustServerCertificate = False;连接超时值 = 30;
   
-    详细了解 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database)。
+    阅读更多有关[Azure SQL 数据库](https://azure.microsoft.com/services/sql-database)。
 
 > [!NOTE]
-> 在创建 Azure SQL 数据库时，还可以使用 SQL 创建包含的示例数据库。 
+> 在创建 Azure SQL 数据库时，你还可以创建包含 SQL 的示例数据库。 
 > 
 > 
 
-在逻辑应用中使用 Azure SQL 数据库之前，请先连接到你的 SQL 数据库。 可以在 Azure 门户中的逻辑应用内轻松地执行此操作。  
+在使用之前你的 Azure SQL 数据库在逻辑应用程序中，连接到你的 SQL 数据库。 逻辑应用在 Azure 门户中可以轻松执行此操作。  
 
-按照以下步骤操作，即可连接到 Azure SQL 数据库：  
+连接到 Azure SQL 数据库使用以下步骤：  
 
-1. 创建逻辑应用。 在逻辑应用设计器中，添加触发器，然后添加操作。 在下拉列表中选择“显示 Microsoft 托管的 API”，然后在搜索框中输入“sql”。 选择其中一个操作：  
+1. 创建一个逻辑应用。 Logic Apps 设计器中，添加了触发器，然后再添加操作。 选择**显示 Microsoft 托管 Api**在下拉列表，然后在搜索框中输入"sql"。 选择其中一项操作：  
    
     ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/sql-actions.png)
-2. 如果以前尚未创建任何与 SQL 数据库的连接，系统会提示你输入连接详细信息：  
+2. 如果你以前尚未创建任何连接到 SQL Database，系统会提示有关连接详细信息：  
    
     ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/connection-details.png) 
-3. 输入 SQL 数据库详细信息。 带有星号的属性必填。
+3. 输入 SQL 数据库详细信息。 有一个星号属性都是必需的。
    
    | 属性 | 详细信息 |
    | --- | --- |
-   | 通过网关连接 |将该属性保留未选中状态。 在连接到本地 SQL Server 时，会使用该属性。 |
-   | 连接名称 * |为连接输入任何名称。 |
-   | SQL Server 名称 * |输入服务器名称；这有点类似于 *servername.database.windows.net*。 该服务器名称将显示在 Azure 门户中的 SQL 数据库属性中，也会显示在连接字符串中。 |
-   | SQL 数据库名称 * |输入你的 SQL 数据库的名称。 该名称将列在连接字符串中的 SQL 数据库属性中：Initial Catalog=*yoursqldbname*。 |
-   | 用户名 * |输入在创建 SQL 数据库时创建的用户名。 该用户名将列在 Azure 门户中的 SQL 数据库属性中。 |
-   | 密码 * |输入在创建 SQL 数据库时创建的密码。 |
+   | 通过网关连接 |请取消选中。 它用于连接到本地 SQL Server。 |
+   | 连接名称 * |输入任何名称用于你的连接。 |
+   | SQL Server 名称 * |输入服务器名称;这是类似*servername.database.windows.net，则*。 服务器名称是显示在 Azure 门户中的 SQL 数据库属性，并且还显示连接字符串中。 |
+   | SQL 数据库名称 * |输入为指定你的 SQL 数据库的名称。 这连接字符串中的 SQL 数据库属性中列出： 初始目录 =*yoursqldbname*。 |
+   | 用户名 * |输入创建 SQL 数据库时创建的用户名。 这是在 Azure 门户中的 SQL 数据库属性中列出的。 |
+   | 密码 * |输入创建 SQL 数据库时创建的密码。 |
    
-    这些凭据将用于授权逻辑应用进行连接，然后访问你的 SQL 数据。 完成之后，连接详细信息会类似于下面这样：  
+    这些凭据用于授权逻辑应用程序连接，并访问你的 SQL 数据。 完成后，你连接的详细信息类似于以下内容：  
    
     ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/sample-connection.png) 
-4. 选择“创建” 。 
-5. 请注意，连接已创建。 现在，继续在逻辑应用中执行其他步骤： 
+4. 选择“创建”。 
+5. 请注意创建连接。 现在，继续执行应用程序逻辑中的其他步骤： 
    
     ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/table.png)
 

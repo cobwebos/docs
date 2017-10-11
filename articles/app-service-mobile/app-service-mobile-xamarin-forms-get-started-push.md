@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f1fe97c6b3e2d28b7e17d035bc7e3ecced8a0d0f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 912367636f1b26b3b07fbd5fe3fe8ed053218fd5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -48,9 +47,9 @@ ms.lasthandoff: 03/21/2017
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 ### <a name="add-push-notifications-to-the-android-project"></a>向 Android 项目添加推送通知
-使用 FCM 配置后端以后，即可将组件和代码添加到客户端，以便通过 FCM 注册。 也可通过移动应用后端向 Azure 通知中心注册推送通知，然后即可接收通知。
+使用 FCM 配置后端以后，即可将组件和代码添加到客户端，以便通过 FCM 注册。 还可通过移动应用后端向 Azure 通知中心注册推送通知，并接收通知。
 
-1. 在 **Droid** 项目中，右键单击 **Components** 文件夹，然后单击“获取更多组件...”。 然后搜索 **Google Cloud Messaging 客户端**组件并将其添加到项目。 此组件支持 Xamarin Android 项目的推送通知。
+1. 在 **Droid** 项目中，右键单击 **Components** 文件夹，并单击“获取更多组件...”。 然后搜索 **Google Cloud Messaging 客户端**组件并将其添加到项目。 此组件支持 Xamarin Android 项目的推送通知。
 2. 打开 MainActivity.cs 项目文件，在文件顶部添加以下语句：
 
         using Gcm.Client;
@@ -253,7 +252,7 @@ ms.lasthandoff: 03/21/2017
             notificationManager.Notify(1, notification);
         }
 
-    这将处理传入通知并将其发送到通知管理器进行显示。
+    这会处理传入通知并将其发送到通知管理器进行显示。
 13. **GcmServiceBase** 还要求实现 **OnUnRegistered** 和 **OnError** 处理程序方法，操作方法如下：
 
         protected override void OnUnRegistered(Context context, string registrationId)
@@ -273,9 +272,9 @@ ms.lasthandoff: 03/21/2017
 
 1. 请确保在将 Google API 设置为目标的虚拟设备上部署或调试，如下方的 Android 虚拟设备管理器所示。
 2. 单击“应用” > “设置” > “添加帐户”，将 Google 帐户添加到 Android 设备。 然后按提示操作，将现有的 Google 帐户添加到设备，或者新建一个。
-3. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **Droid** 项目，然后单击“设为启动项目”。
+3. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **Droid** 项目，并单击“设为启动项目”。
 4. 单击“运行”生成项目，并在 Android 设备或模拟器中启动应用。
-5. 在应用中，键入一项任务，然后单击加号 (**+**) 图标。
+5. 在应用中，键入一项任务，并单击加号 (**+**) 图标。
 6. 确认在添加该项目时收到了通知。
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>配置和运行 iOS 项目（可选）
@@ -286,7 +285,7 @@ ms.lasthandoff: 03/21/2017
 #### <a name="configure-the-notification-hub-for-apns"></a>为 APNS 配置通知中心
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-接下来，将在 Xamarin Studio 或 Visual Studio 中配置 iOS 项目设置。
+接下来，会在 Xamarin Studio 或 Visual Studio 中配置 iOS 项目设置。
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
@@ -343,20 +342,20 @@ ms.lasthandoff: 03/21/2017
         UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
         UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
-    这将启用对远程通知的支持并请求推送注册。
+    这会启用对远程通知的支持并请求推送注册。
 
-你的应用现已更新，可支持推送通知。
+应用现已更新，可支持推送通知。
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
-1. 右键单击 iOS 项目，然后单击“设为启动项目” 。
-2. 在 Visual Studio 中按“运行”按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击“确定”接受推送通知。
+1. 右键单击 iOS 项目，并单击“设为启动项目” 。
+2. 在 Visual Studio 中按“运行”按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击**确定**接受推送通知。
 
    > [!NOTE]
-   > 你必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
+   > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
    >
    >
-3. 在应用中，键入一项任务，然后单击加号 (**+**) 图标。
-4. 检查是否已收到通知，然后单击“确定”以取消通知。
+3. 在应用中，键入一项任务，并单击加号 (**+**) 图标。
+4. 检查是否已收到通知，并单击“确定”以取消通知。
 
 ## <a name="configure-and-run-windows-projects-optional"></a>配置和运行 Windows 项目（可选）
 本部分用于运行适用于 Windows 设备的 Xamarin.Forms WinApp 和 WinPhone81 项目。 这些步骤也支持通用 Windows 平台 (UWP) 项目。 如果不使用 Windows 设备，可以跳过本部分。
@@ -402,7 +401,7 @@ ms.lasthandoff: 03/21/2017
         }
 
     此方法获取推送通知通道，并注册模板以从通知中心接收模板通知。 支持 *messageParam* 的模板通知将传送到此客户端。
-3. 在 App.xaml.cs 中，通过添加 `async` 修饰符更新 **OnLaunched** 事件处理程序方法定义。 然后，在方法的末尾添加以下代码行：
+3. 在 App.xaml.cs 中，通过添加 `async` 修饰符更新 **OnLaunched** 事件处理程序方法定义。 然后在此方法的末尾添加以下代码行：
 
         await InitNotificationsAsync();
 
@@ -411,10 +410,10 @@ ms.lasthandoff: 03/21/2017
 5. 生成该应用并确认没有错误。 客户端应用现在应从移动应用后端注册模板通知。 对于解决方案中的每个 Windows 项目，重复此部分的操作。
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>在 Windows 应用中测试推送通知
-1. 在 Visual Studio 中，右键单击 Windows 项目，然后单击“设为启动项目”。
+1. 在 Visual Studio 中，右键单击 Windows 项目，并单击“设为启动项目”。
 2. 按“运行”按钮生成项目并启动应用程序  。
-3. 在应用中，为新 todoitem 键入一个名称，然后单击加号 (**+**) 图标以添加它。
-4. 确认在添加该项目时收到了通知。
+3. 在应用中，为新 todoitem 键入一个名称，并单击加号 (**+**) 图标以添加它。
+4. 确认在添加项时收到了通知。
 
 ## <a name="next-steps"></a>后续步骤
 可以了解有关推送通知的详细信息：
@@ -435,4 +434,3 @@ ms.lasthandoff: 03/21/2017
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
-

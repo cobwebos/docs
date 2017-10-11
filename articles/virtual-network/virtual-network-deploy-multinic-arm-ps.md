@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: ae6c92d4f005b389de2d65c30113580190914b42
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: f3a11afd8fbd6a5e6b94cf1ebee7ea20665421bd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-powershell"></a>使用 PowerShell 创建具有多个 NIC 的 VM
 
@@ -40,17 +39,17 @@ ms.lasthandoff: 02/28/2017
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。
+以下步骤使用名为 *IaaSStory* 的资源组作为主资源组，并在名为 *IaaSStory-BackEnd* 的资源组中实现后端服务器。
 
 ## <a name="prerequisites"></a>先决条件
 创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成以下步骤：
 
 1. 导航到[模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)。
 2. 在模板页中“**父资源组**”的右侧，单击“**部署到 Azure**”。
-3. 如果需要，更改参数值，然后按照 Azure 预览门户中的步骤部署资源组。
+3. 如果需要，更改参数值，并按照 Azure 预览门户中的步骤部署资源组。
 
 > [!IMPORTANT]
-> 请确保你的存储帐户名称是唯一的。 不能在 Azure 中有重复的存储帐户名称。
+> 请确保存储帐户名称是唯一的。 不能在 Azure 中有重复的存储帐户名称。
 > 
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
@@ -58,9 +57,9 @@ ms.lasthandoff: 02/28/2017
 ## <a name="create-the-back-end-vms"></a>创建后端 VM
 后端 VM 取决于以下资源的创建：
 
-* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘将使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
-* **NIC**。 每个 VM 都将具有两个 NIC，一个用于数据库访问，另一个用于管理。
-* **可用性集**。 所有数据库服务器都将添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。  
+* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
+* **NIC**。 每个 VM 都会具有两个 NIC，一个用于数据库访问，另一个用于管理。
+* **可用性集**。 所有数据库服务器都会添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。  
 
 ### <a name="step-1---start-your-script"></a>步骤 1 - 启动脚本
 可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1)下载所用的完整 PowerShell 脚本。 请按以下步骤更改要在环境中使用的脚本。
@@ -95,7 +94,7 @@ ms.lasthandoff: 02/28/2017
     $ipAddressPrefix       = "192.168.2."
     $numberOfVMs           = 2
     ```
-3. 检索你的部署所需的现有资源。
+3. 检索部署所需的现有资源。
 
     ```powershell
     $vnet                  = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $existingRGName
@@ -105,7 +104,7 @@ ms.lasthandoff: 02/28/2017
     ```
 
 ### <a name="step-2---create-necessary-resources-for-your-vms"></a>步骤 2 - 为 VM 创建必要资源
-你需要为数据磁盘创建一个新的资源组和存储帐户，并为所有 VM 创建一个可用性集。 你还需要每个 VM 的本地管理员帐户凭据。 若要创建这些资源，请执行以下步骤。
+需要为数据磁盘创建一个新的资源组和存储帐户，并为所有 VM 创建一个可用性集。 还需要每个 VM 的本地管理员帐户凭据。 若要创建这些资源，请执行以下步骤。
 
 1. 创建新的资源组。
 
@@ -205,7 +204,7 @@ ms.lasthandoff: 02/28/2017
 ### <a name="step-4---run-the-script"></a>步骤 4 - 运行脚本
 既已根据需要下载并更改脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
 
-1. 保存脚本并从 **PowerShell** 命令提示符或 **PowerShell ISE** 运行它。 你将看到最初的输出，如下所示：
+1. 保存脚本并从 **PowerShell** 命令提示符或 **PowerShell ISE** 运行它。 最初的输出会如下所示：
 
         ResourceGroupName : IaaSStory-Backend
         Location          : westus
@@ -218,7 +217,7 @@ ms.lasthandoff: 02/28/2017
 
         ResourceId        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend
 
-2. 几分钟后，填写提示的凭据，然后单击“**确定**”。 下面的输出表示单个 VM。 请注意，整个过程需要 8 分钟才能完成。
+2. 几分钟后，填写提示的凭据，并单击“**确定**”。 下面的输出表示单个 VM。 请注意，整个过程需要 8 分钟才能完成。
 
         ResourceGroupName            :
         Id                           :
@@ -228,8 +227,8 @@ ms.lasthandoff: 02/28/2017
         Tags                         :
         TagsText                     : null
         AvailabilitySetReference     : Microsoft.Azure.Management.Compute.Models.AvailabilitySetReference
-        AvailabilitySetReferenceText :     {
-                                     "ReferenceUri": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Compute/availabilitySets/ASDB"
+        AvailabilitySetReferenceText :  {
+                                    "ReferenceUri": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Compute/availabilitySets/ASDB"
                                     }
         Extensions                   :
         ExtensionsText               : null
@@ -337,4 +336,3 @@ ms.lasthandoff: 02/28/2017
         TrackingOperationId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         RequestId           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         StatusCode          : OK
-

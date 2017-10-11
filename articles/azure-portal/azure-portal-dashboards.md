@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 5429e68723448ff5db6ef0ed8da1b927e97e6dd9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
 可以创建多个仪表板，并与对 Azure 订阅有访问权限的其他用户共享。  本文介绍创建、编辑、发布和管理仪表板访问权限的基础知识。
@@ -78,7 +77,7 @@ ms.lasthandoff: 08/24/2017
 
 系统会要求选择可将仪表板发布到的订阅和资源组。 为了将仪表板无缝集成到生态系统，我们已将共享仪表板作为 Azure 资源实现（因此，无法通过键入电子邮件地址进行共享）。  对门户中大多数磁贴显示的信息的访问由 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)管理。 从访问控制角度来看，共享仪表板与虚拟机或存储帐户没有什么不同。  
 
-假设拥有 Azure 订阅，并且团队中的成员都分配了订阅的**所有者**、**参与者**或**读取者**角色。  作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。  作为读取者的用户能够列出并查看仪表板，但不能修改或删除它们。  具有读取者访问权限的用户能够对共享仪表板进行本地编辑，但不能将这些更改发布回服务器。  但是，他们可以制作仪表板的专用副本供自己使用。  与往常一样，仪表板中的各个磁贴会根据其对应的资源强制实施自己的访问控制规则。  
+假设拥有 Azure 订阅，并且团队中的成员都分配了订阅的**所有者**、**参与者**或**读取者**角色。  作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。  作为读取者的用户能够列出并查看仪表板，但不能修改或删除它们。  具有读取者访问权限的用户能够对共享仪表板进行本地编辑，但不能将这些更改发布回服务器。  但是，他们可以制作仪表板的专用副本供自己使用。  与往常一样，仪表板中的各个磁贴根据其对应的资源强制实施自己的访问控制规则。  
 
 为方便起见，门户的发布体验会引导完成将仪表板放在名为**仪表板**的资源组中的模式。  
 
@@ -88,12 +87,11 @@ ms.lasthandoff: 08/24/2017
 
 ![将仪表板发布到资源组](./media/azure-portal-dashboards/publish-to-resource-group.png)
 
-仪表板发布后，“共享 + 访问”控制窗格将刷新，并显示有关已发布仪表板的信息，其中包含用于管理仪表板用户访问权限的链接。  此链接将启动用于管理任何 Azure 资源访问权限的基于角色的标准访问控制边栏选项卡。  随时可以通过选择“共享”返回此视图。
+仪表板发布后，“共享 + 访问” 控制窗格刷新，并显示有关已发布仪表板的信息，其中包含用于管理仪表板用户访问权限的链接。  此链接将启动用于管理任何 Azure 资源访问权限的基于角色的标准访问控制边栏选项卡。  随时可以通过选择“共享”返回此视图。
 
 ![管理访问控制](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 若要管理资源，请参阅[通过门户管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
 * 若要部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md)。
-
 

@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c48dc5cb5dd6dfa09ff9718e78f8d560886851be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 747c00842f4df9c7fbd816c99771ba8a267106a4
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="telemetry-correlation-data-model"></a>遥测关联数据模型
 
-Application Insights 定了义用于分配遥测关联的[数据模型](application-insights-data-model.md)。 若要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使单个层失去了遥测功能，也仍可关联其他组件报告的遥测。
+Application Insights 定了义用于分配遥测关联的[数据模型](application-insights-data-model.md)。 要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使单个层失去了遥测功能，也仍可关联其他组件报告的遥测。
 
 分布式逻辑操作通常由一系列小规模操作（某个组件处理的请求）构成。 这些操作由[请求遥测](application-insights-data-model-request-telemetry.md)定义。 每个请求遥测具有自身的 `id`，用于对自身进行唯一全局标识。 与此请求关联的所有遥测（跟踪、异常等）应将 `operation_parentId` 设置为请求 `id` 的值。
 
@@ -35,7 +34,7 @@ Application Insights 定了义用于分配遥测关联的[数据模型](applicat
 
 可以结合 `dependency.id` 使用 `operation_Id`、`operation_parentId` 和 `request.id` 生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
 
-在微服务环境中，来自组件的跟踪可能会进入不同的存储。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 若要获取逻辑操作的遥测数据，需要查询每个存储中的数据。 如果存储数目极大，你需要提示后续查找位置。
+在微服务环境中，来自组件的跟踪可能会进入不同的存储。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 若要获取逻辑操作的遥测数据，需要查询每个存储中的数据。 如果存储数目极大，需要提示后续查找位置。
 
 Application Insights 数据模型定义了以下两个字段来解决此问题：`request.source` 和 `dependency.target`。 第一个字段定义发起依赖项请求的组件，第二个字段定义哪个组件返回依赖项调用的响应。
 
@@ -61,7 +60,7 @@ Application Insights 数据模型定义了以下两个字段来解决此问题�
 | 请求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
-现在，在对外部服务发出 `GET /api/stock/value` 调用时，你希望知道该服务器的标识。 因此，可以相应地设置 `dependency.target` 字段。 如果外部服务不支持监视 - `target` 将设置为服务的主机名，例如 `stock-prices-api.com`。 但是，如果该服务通过返回预定义的 HTTP 标头来标识自身 - `target` 将包含服务标识，使 Application Insights 能够通过查询该服务中的遥测数据来生成分布式跟踪。 
+现在时调用`GET /api/stock/value`对外部服务你想要知道该服务器的标识。 因此，可以相应地设置 `dependency.target` 字段。 如果外部服务不支持监视 - `target` 将设置为服务的主机名，例如 `stock-prices-api.com`。 但是，如果该服务通过返回预定义的 HTTP 标头来标识自身 - `target` 将包含服务标识，使 Application Insights 能够通过查询该服务中的遥测数据来生成分布式跟踪。 
 
 ## <a name="correlation-headers"></a>关联标头
 
@@ -91,7 +90,7 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
-.NET 至今已定义了多种方式用于关联遥测和诊断日志。 它提供了用于跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx) 的 `System.Diagnostics.CorrelationManager`。 `System.Diagnostics.Tracing.EventSource` 和 Windows ETW 定义了方法 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx)。 `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 WCF 和 Http 将“当前”上下文传播关联到一起。
+.NET 至今已定义了多种方式用于关联遥测和诊断日志。 它提供了用于跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx) 的 `System.Diagnostics.CorrelationManager`。 `System.Diagnostics.Tracing.EventSource` 和 Windows ETW 定义了方法 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx)。 `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 "当前"上下文传播 WCF 和 Http 连接。
 
 但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticsSource` 是支持跨计算机自动关联的一种方式。 .NET 库支持诊断源，并允许通过 http 等传输方法自动跨计算机传播关联上下文。
 
@@ -111,4 +110,3 @@ ASP.NET Classic 有一个新的 Http 模块 [Microsoft.AspNet.TelemetryCorrelati
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](app-insights-platforms.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 了解如何[扩展和筛选遥测](app-insights-api-filtering-sampling.md)。
-

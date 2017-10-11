@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 4896d9da456bcc17b1a4d92259ef3d57f8575d8b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>逻辑应用 B2B 跨区域灾难恢复
 
 B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在灾难事件中快速恢复以满足与合作伙伴达成一致意见的企业级 SLA，这非常重要。 本文演示为 B2B 工作负荷生成业务连续性计划。 
@@ -50,7 +48,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 5. 建议也在次要区域中部署所有主要区域资源。 
 
-   主要区域资源包括 Azure SQL 数据库或 Azure Cosmos DB、用于消息传送的 Azure 服务总线和 Azure 事件中心、Azure API 管理，以及 Azure App Service 中的 Azure 逻辑应用功能。   
+   主要区域资源包括 Azure SQL 数据库或 Azure Cosmos DB、用于消息传送的 Azure 服务总线和 Azure 事件中心、Azure API 管理，以及 Azure 应用服务中的 Azure 逻辑应用功能。   
 
 6. 在主要区域和次要区域之间建立连接。 为了从主要区域提取运行状态，请在次要区域中创建逻辑应用。 
 
@@ -248,5 +246,4 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 ## <a name="next-steps"></a>后续步骤
 
 [监视 B2B 消息](logic-apps-monitor-b2b-message.md)
-
 

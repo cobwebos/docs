@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: tarcher
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 328a4d893637d7150807855e118b485a2c3bbfc5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
 
@@ -80,7 +79,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 选择“保存”。
 
-    默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 若要从特定 VM 中删除此设置，请打开 VM 的边栏选项卡，然后更改其“自动关闭”设置 
+    默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 要从特定 VM 中删除此设置，请打开 VM 的边栏选项卡，并更改其“自动关闭”设置 
 
 ## <a name="set-auto-start"></a>设置自动启动
 通过自动启动策略可以指定启动当前实验室中虚 VM 的时间。  
@@ -95,21 +94,21 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 4. 选择“保存”。
 
-    一旦启用，此策略不会自动应用到当前实验室中所有 VM。 若要将设置应用到特定 VM，请打开 VM 的边栏选项卡，然后更改其“自动启动”设置 
+    一旦启用，此策略不会自动应用到当前实验室中所有 VM。 要将设置应用到特定 VM，请打开 VM 的边栏选项卡，然后更改其“自动启动”设置 
 
 ## <a name="set-expiration-date"></a>设置到期日期
-在[创建 VM](devtest-lab-add-vm.md) 时可以设置到期日期。 在“高级设置”中，选择日历图标，指定一个将自动删除 VM 的日期。  默认情况下，VM 永不过期。
+在[创建 VM](devtest-lab-add-vm.md) 时可以设置到期日期。 在“高级设置”中，选择日历图标，指定一个会自动删除 VM 的日期。  默认情况下，VM 永不过期。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>后续步骤
 一旦定义并应用了各种实验室 VM 策略设置，以下为下一步尝试：
 
-* [了解共享 IP 地址](devtest-lab-shared-ip.md) - 说明了在开发测试实验室中如何使用共享 IP 地址以最大程度地减少连接到你的实验室 VM 时所需的公共 IP 地址数。
+* 
+            [了解共享 IP 地址](devtest-lab-shared-ip.md) - 说明了在开发测试实验室中如何使用共享 IP 地址以最大程度地减少连接到实验室 VM 时所需的公共 IP 地址数。
 * [配置成本管理](devtest-lab-configure-cost-management.md) - 演示了如何使用**每月的估计成本趋势**图表  
   查看当前所处月份的截止目前估计的成本以及截止本月结束预计成本。
-* [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或 Marketplace 映像。 本文演示了如何从 VHD 文件创建自定义映像。
-* [配置 Marketplace 映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure Marketplace 映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure Marketplace 映像（如果有）。
-* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或 Marketplace 映像）创建 VM，以及如何使用在 VM 中使用项目。
-
+* [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或应用商店映像。 本文演示了如何从 VHD 文件创建自定义映像。
+* [配置应用商店映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure 应用商店映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 应用商店映像（如果有）。
+* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或应用商店映像）创建 VM，以及如何使用在 VM 中使用项目。
 

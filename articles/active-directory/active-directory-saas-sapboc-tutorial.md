@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 6d517c5e302ac36e5bba2053998c75f8f4d42683
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/28/2017
 
 若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要设置 Azure AD 与 SAP Business Object Cloud 的集成，需备齐以下各项：
 
@@ -69,9 +68,9 @@ ms.lasthandoff: 08/28/2017
 
     ![企业应用程序页][2]
     
-3. 若要添加新的应用程序，请选择“新应用程序”。
+3. 若要添加新的应用程序，请选择“新建应用程序”。
 
-    ![“新应用程序”按钮][3]
+    ![“新建应用程序”按钮][3]
 
 4. 在搜索框中，输入“SAP Business Object Cloud”。
 
@@ -184,7 +183,7 @@ ms.lasthandoff: 08/28/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-sapboc-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，然后选择“所有用户”。
+2. 若要显示用户列表，请转到“用户和组”，选择“所有用户”。
     
     ![创建 Azure AD 测试用户](./media/active-directory-saas-sapboc-tutorial/create_aaduser_02.png) 
 
@@ -247,7 +246,7 @@ ms.lasthandoff: 08/28/2017
 
 若要将 Britta Simon 分配到 SAP Business Object Cloud：
 
-1. 在 Azure 门户中，打开应用程序视图，然后转到目录视图。 选择“企业应用程序”，然后选择“所有应用程序”。
+1. 在 Azure 门户中，打开应用程序视图，并转到目录视图。 选择“企业应用程序”，然后选择“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -298,5 +297,4 @@ ms.lasthandoff: 08/28/2017
 [201]: ./media/active-directory-saas-sapboc-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sapboc-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sapboc-tutorial/tutorial_general_203.png
-
 

@@ -15,17 +15,16 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 4735a1789c33b7cc51896e26ec8e079f9b0de7d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 0518519da6c5e62a863a47d6743ab7b7c5923acf
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure 虚拟机上的 Ruby on Rails Web 应用程序
 本教程介绍如何在 Azure 中使用 Linux 虚拟机托管 Ruby on Rails 网站。  
 
-本教程使用 Ubuntu Server 14.04 LTS 进行了验证。 如果你使用不同 Linux 分发，则可能需要修改安装 Rails 的步骤。
+本教程使用 Ubuntu Server 14.04 LTS 进行了验证。 如果使用不同 Linux 分发，则可能需要修改安装 Rails 的步骤。
 
 > [!IMPORTANT]
 > Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
@@ -87,9 +86,9 @@ ms.lasthandoff: 06/30/2017
     cd myapp
     rails server -b 0.0.0.0 -p 3000
 
-[new](http://guides.rubyonrails.org/command_line.html#rails-new) 命令创建新的 Rails 应用。 [server](http://guides.rubyonrails.org/command_line.html#rails-server) 命令启动 Rails 附带的 WEBrick Web 服务器。 （在生产环境中使用时，你可能想要使用其他服务器，例如 Unicorn 或 Passenger。）
+[new](http://guides.rubyonrails.org/command_line.html#rails-new) 命令创建新的 Rails 应用。 [server](http://guides.rubyonrails.org/command_line.html#rails-server) 命令启动 Rails 附带的 WEBrick Web 服务器。 （在生产环境中使用时，可能想要使用其他服务器，例如 Unicorn 或 Passenger。）
 
-您应该会看到与下面类似的输出。
+输出应显示如下。
 
     => Booting WEBrick
     => Rails 4.2.1 application starting in development on http://0.0.0.0:3000
@@ -124,12 +123,12 @@ ms.lasthandoff: 06/30/2017
 
 5. 单击“确定”，保存此终结点。
 
-6. 应该会看到一条内容为“正在保存虚拟机终结点”的消息。 此消息消失后，终结点即处于活动状态。 现在你可以通过导航到虚拟机的 DNS 名称来测试你的应用程序。 网站应显示如下：
+6. 应该会看到一条内容为“正在保存虚拟机终结点”的消息。 此消息消失后，终结点即处于活动状态。 现在可以通过导航到虚拟机的 DNS 名称来测试应用程序。 网站应显示如下：
 
     ![默认 rails 页面][default-rails-cloud]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你手动执行大多数步骤。 在生产环境中，会在开发计算机上编写应用，然后将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/。
+在本教程中，手动执行大多数步骤。 在生产环境中，可在开发计算机上编写应用，并将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/。
 
 若要详细了解 Ruby on Rails，请参阅 [Ruby on Rails 指南][rails-guides]。
 
@@ -156,4 +155,3 @@ ms.lasthandoff: 06/30/2017
 [endpoints]:./media/virtual-machines-linux-classic-ruby-rails-web-app/endpoints.png
 [new-endpoint]:./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint.png
 [new-endpoint1]:./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint1.png
-

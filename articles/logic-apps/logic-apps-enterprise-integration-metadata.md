@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ca8537a7e35e44efafb9b0a9d6ddefe069067475
-ms.openlocfilehash: de55bf7d9e68146745c90b96f280c8a71e27b2f9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>在集成帐户中为逻辑应用管理项目元数据
 
 可以在集成帐户中定义项目的自定义元数据，并且在运行时期间为逻辑应用检索该元数据。 例如，可以指定项目的元数据（如合作伙伴、协议、架构和映射）- 所有使用键/值对的存储元数据。 目前，项目无法通过 UI 创建元数据，但可以使用 REST API 创建元数据。 若要在 Azure 门户中创建或选择合作伙伴、协议或架构时添加元数据，请选择“以 JSON 编辑”。 若要在逻辑应用中检索项目元数据，可以使用集成帐户项目查找功能。
@@ -33,7 +31,7 @@ ms.lasthandoff: 03/02/2017
 
 2. 将项目添加到集成帐户，例如[合作伙伴](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner)、[协议](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements)或[架构](logic-apps-enterprise-integration-schemas.md)。
 
-3.    选择项目，选择“以 JSON 编辑”并输入元数据详细信息。
+3.  选择项目，选择“以 JSON 编辑”并输入元数据详细信息。
 
     ![输入元数据](media/logic-apps-enterprise-integration-metadata/image1.png)
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 03/02/2017
 
 3. 在逻辑应用设计器中，将触发器（如请求或 HTTP）添加到逻辑应用。
 
-4.    选择“下一步” > “添加操作”。 搜索集成以便找到并选择“集成帐户 - 集成帐户项目查找”。
+4.  选择“下一步” > “添加操作”。 搜索集成以便找到并选择“集成帐户 - 集成帐户项目查找”。
 
     ![选择“集成帐户项目查找”](media/logic-apps-enterprise-integration-metadata/image2.png)
 
@@ -61,7 +59,7 @@ ms.lasthandoff: 03/02/2017
 
 1. 在逻辑应用中，添加触发器、用于合作伙伴的“集成帐户 - 集成帐户项目查找”操作和“HTTP”。
 
-    ![将触发器、项目查找和“HTTP”添加到逻辑应用](media/logic-apps-enterprise-integration-metadata/image4.png)
+    ![将触发器、 项目查找和"HTTP"添加到逻辑应用](media/logic-apps-enterprise-integration-metadata/image4.png)
 
 2. 若要检索 URI，请转到逻辑应用的代码视图。 逻辑应用定义应如以下示例所示：
 
@@ -70,4 +68,3 @@ ms.lasthandoff: 03/02/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关协议的详细信息](logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
-

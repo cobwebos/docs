@@ -1,6 +1,6 @@
 ---
-title: "使用 Site Recovery 迁移到 Azure | Microsoft 文档"
-description: "本文概述如何使用 Azure Site Recovery 将 VM 和物理服务器迁移到 Azure"
+title: "将迁移到 Azure Site Recovery 与 |Microsoft 文档"
+description: "本文概述了迁移的虚拟机和物理服务器到与 Azure Site Recovery 的 Azure"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,72 +14,70 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: f4dfe430fba51bd009431ca72279a21be55e3a40
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="migrate-to-azure-with-site-recovery"></a>使用 Site Recovery 迁移到 Azure
+# <a name="migrate-to-azure-with-site-recovery"></a>将迁移到 Azure 站点恢复
 
-本文概述如何使用 Azure Site Recovery 服务迁移虚拟机和物理服务器。
+阅读有关概述使用 Azure Site Recovery 服务的虚拟机和物理服务器的迁移的这篇文章。
 
-Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，可以故障转移回到主要位置。 有关详细信息，请参阅 [什么是 Site Recovery？](site-recovery-overview.md) 还可使用 Site Recovery 将现有本地工作负荷迁移到 Azure，加快云进程并增益 Azure 提供的大量功能。
+站点恢复是通过协调复制的本地物理服务器和虚拟机到云 (Azure)，或到辅助数据中心可能会导致 BCDR 策略，一个 Azure 服务。 在您的主要位置中发生服务中断，当你故障转移到辅助位置，使应用程序和工作负荷可用。 当它返回到正常操作故障回复到主位置。 了解详细信息中[什么是站点恢复？](site-recovery-overview.md) 你可以使用 Site Recovery 将你现有的本地工作负荷迁移到 Azure，以加快云旅程和利用 Azure 提供的功能的数组。
 
-有关如何执行迁移的快速概述，请观看以下视频。
+有关如何执行迁移的快速概述，请参阅此视频。
 >[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/ASRHowTo-Video2-Migrate-Virtual-Machines-to-Azure/player]
 
-本文介绍如何在 [Azure 门户](https://portal.azure.com)中部署。 使用 [Azure 经典门户](https://manage.windowsazure.com/)可以维护现有的 Site Recovery 保管库，但无法创建新保管库。
+本指南介绍了中的部署[Azure 门户](https://portal.azure.com)。 [Azure 经典门户](https://manage.windowsazure.com/)用于维护现有站点恢复保管库，但不是能创建新的保管库。
 
-请在本文末尾发表任何看法。 如有技术问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上提出。
+发布任何评论底部的这篇文章。 在询问技术问题[Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
 
-## <a name="what-do-we-mean-by-migration"></a>迁移的意思是什么？
+## <a name="what-do-we-mean-by-migration"></a>我们通过迁移代表什么？
 
-可以部署 Site Recovery，实现将本地 VM 和物理服务器复制到 Azure 或辅助站点。 可以复制计算机，在发生中断时将其从主站点进行故障转移，然后在主站点恢复时再将其故障回复到主站点。 除此之外，还可以使用 Site Recovery 将 VM 和物理服务器迁移到 Azure，以便用户可将其作为 Azure VM 进行访问。 迁移涉及到复制、从主站点故障转移到 Azure，以及完整的迁移动作。
+你可以部署 Site Recovery 为复制的本地虚拟机和物理服务器，到 Azure 或辅助站点。 复制机，它们时故障转移从主站点中断发生，并且它们返回故障到主站点时它会恢复。 除此之外，你可以使用 Site Recovery 将虚拟机和物理服务器迁移到 Azure，以便用户可以访问它们作为 Azure Vm。 迁移需要复制，并从主站点到 Azure，以及在完成迁移笔势故障转移。
 
-## <a name="what-can-site-recovery-migrate"></a>Site Recovery 可以迁移哪些工作负荷？
+## <a name="what-can-site-recovery-migrate"></a>Site Recovery 可以迁移？
 
-可以：
+你可以：
 
-- 迁移本地 Hyper-V VM、VMware VM 和物理服务器上运行的工作负荷，使其在 Azure VM 上运行。 在此方案中，还可以执行完全复制和故障回复。
-- 在 Azure 区域之间迁移 [Azure IaaS VM](site-recovery-migrate-azure-to-azure.md)。 目前只有此方案才支持迁移，这意味着，故障回复不受支持。
-- 将 [AWS Windows 实例](site-recovery-migrate-aws-to-azure.md)迁移到 Azure IaaS VM。 目前只有此方案才支持迁移，这意味着，故障回复不受支持。
+- 迁移的本地 HYPER-V Vm、 VMware 虚拟机和物理服务器，在 Azure Vm 上运行上运行的工作负荷。 你还可以执行完全复制与在此方案中的故障回复。
+- 迁移[Azure IaaS Vm](site-recovery-migrate-azure-to-azure.md) Azure 区域之间。 当前仅迁移支持在此方案中，这意味着故障回复不受支持。
+- 迁移[AWS Windows 实例](site-recovery-migrate-aws-to-azure.md)到 Azure IaaS Vm。 当前仅迁移支持在此方案中，这意味着故障回复不受支持。
 
-## <a name="migrate-on-premises-vms-and-physical-servers"></a>迁移本地 VM 和物理服务器
+## <a name="migrate-on-premises-vms-and-physical-servers"></a>迁移在本地虚拟机和物理服务器
 
-若要迁移本地 Hyper-V VM、VMware VM 和物理服务器，遵循的步骤大致与普通复制相同。
+迁移在本地 HYPER-V 虚拟机、 VMware 虚拟机和物理服务器，请按照与所使用的常规复制几乎相同的步骤。
 
 1. 设置恢复服务保管库
-2. 配置所需的管理服务器（VMware、VMM、Hyper-V - 具体取决于想要迁移哪些工作负荷），将这些服务器添加到保管库，然后指定复制设置。
-3. 为需要迁移的虚拟机启用复制
-4. 初始迁移之后，请运行一个快速的测试性故障转移，确保一切正常。
-5. 确认复制环境正常工作后，根据方案[支持的操作](site-recovery-failover.md)使用计划内或计划外故障转移。 我们建议尽可能使用计划内故障转移。
-6. 迁移时，不需要提交故障转移，也不需将其删除。 对于想要迁移的每台计算机，可以选择“完成迁移”选项。
-     - 在“复制的项”中，右键单击 VM，并单击“完成迁移”。 单击“确定”完成相关操作。 若要在 VM 属性中跟踪进度，可以在“Site Recovery 作业”中监视“完成迁移”作业。
-     - “完成迁移”操作会完成迁移过程，删除计算机复制设置，使计算机不再产生 Site Recovery 费用。
+2. 配置所需管理服务器 (VMware、 VMM、 HYPER-V-具体取决于你想要迁移)，将它们添加到保管库，并指定复制设置。
+3. 为你想要迁移的机启用复制
+4. 初始迁移之后，运行快速测试故障转移以确保所有内容按预期工作。
+5. 在验证正在复制环境后，你使用计划或非计划故障转移中的，具体取决于[支持的功能](site-recovery-failover.md)为你的方案。 我们建议你使用计划的故障转移在可能的情况。
+6. 对于迁移，你不需要以提交故障转移，或将其删除。 相反，选择**完成迁移**为你想要迁移的每台计算机的选项。
+     - 在**复制项**，右键单击虚拟机，然后单击**完成迁移**。 单击**确定**才能完成。 你也可以通过监视中的完成迁移作业中跟踪在 VM 属性中，进度**Site Recovery 作业，**。
+     - **完成迁移**操作完成迁移过程中, 删除的计算机，复制并停止机的 Site Recovery 计费。
 
 ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 
-## <a name="migrate-between-azure-regions"></a>在 Azure 区域之间迁移
+## <a name="migrate-between-azure-regions"></a>Azure 区域之间迁移
 
-可以使用 Site Recovery 在区域之间迁移 Azure VM。 此方案仅支持迁移。 换而言之，可以复制 Azure VM 并将其故障转移到另一区域，但无法故障回复。 在此方案中，需要设置一个恢复服务保管库，部署本地配置服务器用于管理复制，将该服务器添加到保管库，然后指定复制设置。 为想要迁移的计算机启用复制，运行快速测试故障转移。 然后，使用“完成迁移”选项运行计划外故障转移。
+你可以使用 Site Recovery 的区域之间迁移 Azure 虚拟机。 在这种情况下支持仅限迁移。 换而言之，你可以复制 Azure Vm 和进行故障转移到另一个区域，但你无法进行故障回复。 在此方案中设置恢复服务保管库，部署在本地配置服务器以管理复制，将其添加到保管库，并指定复制设置。 为你想要迁移，机启用复制并运行快速测试故障转移。 然后运行未计划故障转移**完成迁移**选项。
 
 ## <a name="migrate-aws-to-azure"></a>将 AWS 迁移到 Azure
 
-可将 AWS 实例迁移到 Azure VM。 此方案仅支持迁移。 换而言之，可以复制 AWS 实例并将其故障转移到 Azure，但无法故障回复。 在迁移过程中，AWS 实例的处理方式与物理服务器相同。 需要设置一个恢复服务保管库，部署本地配置服务器用于管理复制，将该服务器添加到保管库，然后指定复制设置。 为想要迁移的计算机启用复制，运行快速测试故障转移。 然后，使用“完成迁移”选项运行计划外故障转移。
+你可以将 AWS 实例迁移到 Azure Vm 中。 在这种情况下支持仅限迁移。 换而言之，你可以复制 AWS 实例和故障转移到 Azure，但你无法进行故障回复。 采用与物理服务器以进行迁移相同的方式来处理 AWS 实例。 设置恢复服务保管库，部署在本地配置服务器以管理复制，将其添加到保管库，并指定复制设置。 为你想要迁移，机启用复制并运行快速测试故障转移。 然后运行未计划故障转移**完成迁移**选项。
 
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将 VMware VM 迁移到 Azure](site-recovery-vmware-to-azure.md)
-- [将 VMM 云中的 Hyper-V VM 迁移到 Azure](site-recovery-vmm-to-azure.md)
-- [将不包含 VMM 的 Hyper-V VM 迁移到 Azure](site-recovery-hyper-v-site-to-azure.md)
-- [在 Azure 区域之间迁移 Azure VM](site-recovery-migrate-azure-to-azure.md)
+- [将 VMware 虚拟机迁移到 Azure](site-recovery-vmware-to-azure.md)
+- [将 VMM 云中的 HYPER-V Vm 迁移到 Azure](site-recovery-vmm-to-azure.md)
+- [将没有 VMM 的 HYPER-V Vm 迁移到 Azure](site-recovery-hyper-v-site-to-azure.md)
+- [Azure 区域之间迁移 Azure 虚拟机](site-recovery-migrate-azure-to-azure.md)
 - [将 AWS 实例迁移到 Azure](site-recovery-migrate-aws-to-azure.md)
-- [准备迁移的计算机以启用复制](site-recovery-azure-to-azure-after-migration.md)，根据灾难恢复需要复制到其他区域。
-- [复制 Azure 虚拟机](site-recovery-azure-to-azure.md)，开始对工作负荷进行保护。
-
+- [准备迁移的机启用复制](site-recovery-azure-to-azure-after-migration.md)到灾难恢复的另一个区域需要。
+- 开始保护你的工作负荷通过[复制 Azure 虚拟机。](site-recovery-azure-to-azure.md)

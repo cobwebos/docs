@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 23f38693939ef0dc893ef77267811b176d3083d1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/06/2017
-
+ms.openlocfilehash: 8c319d0dcbe8b95af11b8be2368a9348b260446c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>在 Azure 数据目录中保存搜索并固定数据资产
 ## <a name="introduction"></a>介绍
@@ -85,4 +84,3 @@ Azure 数据目录提供数据源发现功能。 可快速搜索并筛选目录�
 
 ## <a name="summary"></a>摘要
 Azure 数据目录提供更易于发现所需数据源的功能，让你和其他组织成员可花更少的时间查找数据，有更多的时间来处理数据。 保存的搜索和固定的数据资产建立在这些核心功能的基础上，让用户可以轻松标识将重复使用的数据源。
-

@@ -1,6 +1,6 @@
 ---
 title: "配置长期备份保留 - Azure SQL 数据库 | Microsoft Docs"
-description: "了解如何将自动备份存储在 Azure 恢复服务保管库中以及从 Azure 恢复服务保管库中还原"
+description: "了解如何会自动备份存储在 Azure 恢复服务保管库中以及从 Azure 恢复服务保管库中还原"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,22 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a293c06f2e9bca8790832ecb851c89b04e76bb24
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: ed9f74a59f0ca512e2758c6db4c5c9075030f859
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>从 Azure SQL 数据库长期备份保留进行配置和恢复
 
-可配置 Azure 恢复服务保管库来存储 Azure SQL 数据库备份，然后通过 Azure 门户或 PowerShell 使用保管库中保留的备份恢复数据库。
+可配置 Azure 恢复服务保管库来存储 Azure SQL 数据库备份，并通过 Azure 门户或 PowerShell 使用保管库中保留的备份恢复数据库。
 
 ## <a name="azure-portal"></a>Azure 门户
 
 以下章节介绍如何使用 Azure 门户配置 Azure 恢复服务保管库、查看保管库中的备份和从保管库进行恢复。
 
-### <a name="configure-the-vault-register-the-server-and-select-databases"></a>配置保管库、注册服务器，然后选择数据库
+### <a name="configure-the-vault-register-the-server-and-select-databases"></a>配置保管库、注册服务器，并选择数据库
 
 可[配置 Azure 恢复服务保管库以保留自动备份](sql-database-long-term-retention.md)，使其保留期长于服务层。 
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 05/10/2017
 
    ![接受预览条款](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
 
-4. 若要配置长期备份保留，请在网格中选择该数据库，然后在工具栏上单击“配置”。
+4. 要配置长期备份保留，请在网格中选择该数据库，并在工具栏上单击“配置”。
 
    ![选择要进行长期备份保留的数据库](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 05/10/2017
 
    ![新保管库名称](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
 
-9. 选择订阅和资源组，然后选择保管库的位置。 完成后，单击“创建”。
+9. 选择订阅和资源组，并选择保管库的位置。 完成后，单击“创建”。
 
    ![创建保管库](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
@@ -76,11 +75,11 @@ ms.lasthandoff: 05/10/2017
 
 10. 创建新保管库后，执行必要的步骤以返回到“恢复服务保管库”页面。
 
-11. 在“恢复服务保管库”页面上，单击保管库，然后单击“选择”。
+11. 在“恢复服务保管库”页面上，单击保管库，并单击“选择”。
 
    ![选择现有保管库](./media/sql-database-get-started-backup-recovery/select-existing-vault.png)
 
-12. 在“配置”页面上，为新保留策略提供有效的名称，根据需要修改默认保留策略，然后单击“确定”。
+12. 在“配置”页面上，为新保留策略提供有效的名称，根据需要修改默认保留策略，并单击“确定”。
 
    ![定义保留策略](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
 
@@ -88,12 +87,12 @@ ms.lasthandoff: 05/10/2017
 
    ![定义保留策略](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
 
-14. 单击“保存”以使用此新策略对你配置的 Azure 恢复服务保管库启用长期备份保留。
+14. 单击**保存**以便使用此新策略，以配置你的 Azure 恢复服务保管库的长期备份保留。
 
    ![定义保留策略](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
 
 > [!IMPORTANT]
-> 配置后，备份将在接下来的七天内显示在保管库中。 备份显示在保管库中后再继续本教程。
+> 配置后，备份会在接下来的七天内显示在保管库中。 备份显示在保管库中后再继续本教程。
 >
 
 ### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>使用 Azure 门户查看长期保留的备份
@@ -122,7 +121,7 @@ ms.lasthandoff: 05/10/2017
 
 从 Azure 恢复服务保管库中的备份将数据库还原到新数据库。
 
-1. 在“Azure 保管库备份”页面上，单击要还原的备份，然后单击“选择”。
+1. 在“Azure 保管库备份”页面上，单击要还原的备份，并单击“选择”。
 
    ![选择保管库中的备份](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
 
@@ -269,4 +268,3 @@ $restoredDb
 - 若要了解服务生成的自动备份，请参阅[自动备份](sql-database-automated-backups.md)
 - 若要了解长期备份保留，请参阅[长期备份保留](sql-database-long-term-retention.md)
 - 若要了解如何从备份中还原，请参阅[从备份中还原](sql-database-recovery-using-backups.md)
-

@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 49d2429c01fe3fde2e51e4344904f55e43eea1cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 6b220b0cb6719bac606f599d657d08ab847c7590
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>异常遥测：Application Insights 数据模型
 
@@ -50,4 +49,3 @@ ms.lasthandoff: 04/27/2017
 - 请参阅[数据模型](application-insights-data-model.md)，了解 Application Insights 的类型和数据模型。
 - 了解如何[使用 Application Insights 诊断 Web 应用中的异常](app-insights-asp-net-exceptions.md)。
 - 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
-

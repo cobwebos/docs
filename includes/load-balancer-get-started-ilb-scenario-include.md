@@ -1,11 +1,11 @@
 ## <a name="scenario"></a>方案
 
-正根据以下方案创建内部负载平衡器
+要创建一个内部负载平衡器根据以下方案
 
-![图像说明](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
+![映像说明](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
 在虚拟网络中配置内部负载平衡器
 
-* 2 台分别名为 DB1 和 DB2 的虚拟机
+* 调用 DB1 和 DB2 2 个虚拟机
 * 终结点
-* Internal Load Balancer
+* 内部负载平衡器

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 649535590114920c834ceeac947ee821f476c60d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.openlocfilehash: f2bed0a7124517319cc82405c4ab6b4d79aacfe1
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -34,8 +33,8 @@ ms.lasthandoff: 07/20/2017
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>启用快速入门解决方案中的脱机同步功能
 脱机同步代码使用 C# 预处理器指令，包含在项目中。 定义 **OFFLINE\_SYNC\_ENABLED** 符号时，这些代码路径包含在生成中。 对于 Windows 应用，还必须安装 SQLite 平台。
 
-1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”，然后在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
-2. 在解决方案资源管理器中，从名称中包含 **Portable** 的项目（该项目是可移植类库项目）中打开 TodoItemManager.cs 文件，然后取消注释以下预处理器指令：
+1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
+2. 在解决方案资源管理器中，从名称中包含 **Portable** 的项目（该项目是可移植类库项目）中打开 TodoItemManager.cs 文件，并取消注释以下预处理器指令：
 
         #define OFFLINE_SYNC_ENABLED
 3. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
@@ -116,12 +115,12 @@ ms.lasthandoff: 07/20/2017
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
 在此示例中，仅在启动时和请求同步时才调用 **SyncAsync** 方法。  若要在 Android 或 iOS 应用中启动同步，请下拉项目列表；对于 Windows，请使用“同步”按钮。 在实际应用程序中，还可以在网络状态发生更改时触发同步。
 
-对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作将自动触发在前面执行的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
+如果对一个表执行拉取操作，并且该表具有由上下文跟踪的未完成的本地更新，那么该拉取操作自动触发之前的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
 
-在所提供的代码中，将查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分[2]。
+在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分[2]。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
-现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
+现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 稍后，模拟脱机场景，并在应用处于脱机状态时修改本地存储中的数据。
 
 ## <a name="update-the-sync-behavior-of-the-client-app"></a>更新客户端应用的同步行为
 在本部分中，修改客户端项目，通过对后端使用无效的应用程序 URL 来模拟脱机情况。 或者可以通过将设备切换到“飞行模式”来关闭网络连接。  添加或更改数据项时，这些更改将保存在本地存储中，但在重新建立连接之前，不会同步到后端数据存储中。
@@ -129,7 +128,7 @@ ms.lasthandoff: 07/20/2017
 1. 在解决方案资源管理器中，从 **Portable** 项目打开 Constants.cs 项目文件，更改 `ApplicationURL` 的值使其指向无效的 URL：
 
         public static string ApplicationURL = @"https://your-service.azurewebsites.net/";
-2. 从 **Portable** 项目打开 TodoItemManager.cs 文件，然后在 **SyncAsync** 的 **try...catch** 块中为 **Exception** 基类添加一个 **catch**。 此 **catch** 块会将异常消息写入控制台，如下所示：
+2. 从 **Portable** 项目打开 TodoItemManager.cs 文件，并在 **SyncAsync** 的 **try...catch** 块中为 **Exception** 基类添加一个 **catch**。 此 **catch** 块会将异常消息写入控制台，如下所示：
 
             catch (Exception ex)
             {
@@ -163,4 +162,3 @@ ms.lasthandoff: 07/20/2017
 [6]: https://www.getpostman.com/
 [7]: http://www.telerik.com/fiddler
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md
-

@@ -14,17 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: bf8038b7171053b75eeb9aed88bff4246e65a8a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 设备管理器服务查看和管理作业（Update 3 和更高版本）
 
 ## <a name="overview"></a>概述
-“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple 设备管理器服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、已取消的和失败的作业。 结果将以表格形式呈现。
+“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple 设备管理器服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、已取消的和失败的作业。 结果以表格形式呈现。
 
 ![“作业”边栏选项卡](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -88,5 +87,4 @@ ms.lasthandoff: 07/08/2017
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 备份策略](storsimple-8000-manage-backup-policies-u2.md)。
 * 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

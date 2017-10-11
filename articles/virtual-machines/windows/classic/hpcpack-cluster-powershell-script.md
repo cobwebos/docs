@@ -15,24 +15,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 85b125ab19671b61d2541af6378c95feb88bf952
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>使用 HPC Pack IaaS 部署脚本创建 Windows 高性能计算 (HPC) 群集
-运行 HPC Pack IaaS 部署 PowerShell 脚本，以便在 Azure 虚拟机中部署适用于 Windows 工作负荷的完整 HPC Pack 2012 R2 群集。 群集包含运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点以及你指定的其他 Windows 计算资源。 如果想要在 Azure 中部署适用于 Linux 工作负荷的 HPC Pack 群集，请参阅[使用 HPC Pack IaaS 部署脚本创建 Linux HPC 群集](../../linux/classic/hpcpack-cluster-powershell-script.md)。 你还可以使用 Azure 资源管理器模板来部署 HPC Pack 群集。 有关示例，请参阅[创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)和[使用自定义计算节点映像创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)。
+运行 HPC Pack IaaS 部署 PowerShell 脚本，以便在 Azure 虚拟机中部署适用于 Windows 工作负荷的完整 HPC Pack 2012 R2 群集。 群集包含运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点以及指定的其他 Windows 计算资源。 如果想要在 Azure 中部署适用于 Linux 工作负荷的 HPC Pack 群集，请参阅[使用 HPC Pack IaaS 部署脚本创建 Linux HPC 群集](../../linux/classic/hpcpack-cluster-powershell-script.md)。 还可以使用 Azure Resource Manager 模板来部署 HPC Pack 群集。 有关示例，请参阅[创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)和[使用自定义计算节点映像创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)。
 
 > [!IMPORTANT] 
-> 本文中介绍的 PowerShell 脚本使用经典部署模型在 Azure 中创建 Microsoft HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用资源管理器模型。
+> 本文中介绍的 PowerShell 脚本使用经典部署模型在 Azure 中创建 Microsoft HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 > 此外，本文中所述的脚本不支持 HPC Pack 2016。
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
 ## <a name="example-configuration-files"></a>示例配置文件
-在下面的示例中，将订阅 ID 或名称以及帐户和服务名称替换为你自己的值。
+在下面的示例中，将订阅 ID 或名称以及帐户和服务名称替换成自己的值。
 
 ### <a name="example-1"></a>示例 1
 以下配置文件将部署 1 个 HPC Pack 群集，其中包含 1 个具有本地数据库的头节点和 5 个运行 Windows Server 2012 R2 操作系统的计算节点。 所有云服务直接在“美国西部”位置创建。 头节点充当域林的域控制器。
@@ -72,7 +71,7 @@ ms.lasthandoff: 03/27/2017
 ```
 
 ### <a name="example-2"></a>示例 2
-以下配置文件将在现有域林中部署一个 HPC Pack 群集。 该群集包含 1 个具有本地数据库的头节点和 12 个应用了 BGInfo VM 扩展的计算节点。
+以下配置文件在现有域林中部署一个 HPC Pack 群集。 该群集包含 1 个具有本地数据库的头节点和 12 个应用了 BGInfo VM 扩展的计算节点。
 对于域林中的所有 VM，禁用了 Windows 更新的自动安装。 所有云服务直接在“亚洲东部”位置创建。 计算节点在 3 个云服务和 3 个存储帐户中创建：*MyHPCCNService01* 和 *mycnstorage01* 中的 *MyHPCCN-0001* 到 *MyHPCCN-0005*；*MyHPCCNService02* 和 *mycnstorage02* 中的 *MyHPCCN-0006* 到 *MyHPCCN0010*；*MyHPCCNService03* 和 *mycnstorage03* 中的 *MyHPCCN-0011* 到 *MyHPCCN-0012*。 计算节点是基于从计算节点捕获的现有专用映像创建的。 已启用自动增长和收缩服务，该服务采用默认的增长和收缩间隔。
 
 ```Xml
@@ -136,7 +135,7 @@ ms.lasthandoff: 03/27/2017
 ```
 
 ### <a name="example-3"></a>示例 3
-以下配置文件将在现有域林中部署一个 HPC Pack 群集。 该群集包含 1 个头节点、 1 个具有 500 GB 数据磁盘的数据库服务器、2 个运行 Windows Server 2012 R2 操作系统的代理节点，以及 5 个运行 Windows Server 2012 R2 操作系统的计算节点。 云服务 MyHPCCNService 是在地缘组 *MyIBAffinityGroup* 中创建的，其他云服务是在地缘组 *MyAffinityGroup* 中创建的。 已在头节点上启用了 HPC 作业计划程序 REST API 和 HPC Web 门户。
+以下配置文件在现有域林中部署一个 HPC Pack 群集。 该群集包含 1 个头节点、 1 个具有 500 GB 数据磁盘的数据库服务器、2 个运行 Windows Server 2012 R2 操作系统的代理节点，以及 5 个运行 Windows Server 2012 R2 操作系统的计算节点。 云服务 MyHPCCNService 是在地缘组 *MyIBAffinityGroup* 中创建的，其他云服务是在地缘组 *MyAffinityGroup* 中创建的。 已在头节点上启用了 HPC 作业计划程序 REST API 和 HPC Web 门户。
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -191,7 +190,7 @@ ms.lasthandoff: 03/27/2017
 
 
 ### <a name="example-4"></a>示例 4
-以下配置文件将在现有域林中部署一个 HPC Pack 群集。 该群集包含 2 个具有本地数据库的头节点，此外将创建 2 个 Azure 节点模板并为 Azure 节点模板 *AzureTemplate1* 创建 3 个中等大小的 Azure 节点。 配置头节点后，在其上运行脚本文件。
+以下配置文件在现有域林中部署一个 HPC Pack 群集。 该群集包含 2 个具有本地数据库的头节点，此外还会创建 2 个 Azure 节点模板并为 Azure 节点模板 *AzureTemplate1* 创建 3 个中等大小的 Azure 节点。 配置头节点后，在其上运行脚本文件。
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -262,16 +261,15 @@ ms.lasthandoff: 03/27/2017
   如果发生此错误，请对失败的部署再次运行该脚本。
 * **从 Azure 虚拟网络访问 Internet 时出现问题** - 如果使用部署脚本创建具有新域控制器的群集，或将头节点 VM 手动提升为域控制器，则将 VM 连接到 Internet 时可能会遇到问题。 如果已在域控制器上自动配置转发器 DNS 服务器，但此转发器 DNS 服务器未正确解析，则会出现此问题。
   
-    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 若要配置此设置，请在服务器管理器中单击“工具” >
-  “DNS”打开 DNS 管理器，然后双击“转发器”****  ********。
+    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 要配置此设置，请在服务器管理器中单击“工具” >
+    “DNS”打开 DNS 管理器，并双击“转发器”************。
 * **从计算密集型 VM 访问 RDMA 网络时出现问题** - 如果使用支持 RDMA 的大小（例如 A8 或 A9）添加 Windows Server 计算节点 VM 或代理节点 VM，则在将这些 VM 连接到 RDMA 应用程序网络时可能会遇到问题。 出现此问题的原因之一是，在将 VM 添加到群集时未正确安装 HpcVmDrivers 扩展。 例如，该扩展可能会停滞在安装状态。
   
-    若要解决此问题，请先检查 VM 中扩展的状态。 如果该扩展未正确安装，请尝试从 HPC 群集中删除节点，然后再重新添加节点。 例如，你可以通过使用 Add-HpcIaaSNode.ps1 脚本添加计算节点 VM。
+    若要解决此问题，请先检查 VM 中扩展的状态。 如果该扩展未正确安装，请尝试从 HPC 群集中删除节点，再重新添加节点。 例如，可以通过使用 Add-HpcIaaSNode.ps1 脚本添加计算节点 VM。
 
 ## <a name="next-steps"></a>后续步骤
 * 尝试在群集上运行测试工作负荷。 例如，请参阅 HPC Pack [入门指南](https://technet.microsoft.com/library/jj884144)。
 * 有关编写群集部署脚本和运行 HPC 工作负荷的教程，请参阅[开始在 Azure 中使用 HPC Pack 群集运行 Excel 和 SOA 工作负荷](../../virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 尝试使用 HPC Pack 的工具来启动、停止、添加和删除所创建群集中的计算节点。 请参阅[在 Azure 中管理 HPC Pack 群集的计算节点](hpcpack-cluster-node-manage.md)。
 * 若要完成设置以将本地计算机中的作业提交到群集，请参阅[将本地计算机中的 HPC 作业提交到 Azure 中的 HPC Pack 群集](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
 

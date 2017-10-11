@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 07135e9b5e619971a59cc22ec68a0a4e8bcaabe1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-6-set-up-the-replication-source-and-target"></a>步骤 6：设置复制源和目标
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 08/01/2017
 
 1. 在每个 VMM 服务器上运行提供程序安装文件。 如果在群集中部署 VMM，请在首次安装时执行以下操作：
     -  在活动节点上安装提供程序，并完成安装以在保管库中注册 VMM 服务器。
-    - 然后在其他节点上安装该提供程序。 所有群集节点应运行相同版本的提供程序。
+    - 然后在其他节点上安装提供程序。 所有群集节点应运行相同版本的提供程序。
 2. 安装程序将运行几项先决条件检查，并请求停止 VMM 服务的权限。 VMM 服务会在安装程序完成时自动重启。 如果在 VMM 群集上进行安装，系统会提示停止群集角色。
 3. 在“Microsoft 更新”中，可选择指定根据 Microsoft 更新策略安装提供程序更新。
 4. 在“安装”中接受或修改默认安装位置，并单击“安装”。
@@ -100,4 +99,3 @@ ms.lasthandoff: 08/01/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 7：配置网络映射](vmm-to-vmm-walkthrough-network-mapping.md)。
-

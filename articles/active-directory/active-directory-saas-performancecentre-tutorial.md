@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: e86adaf4bd9b4752f2aece8207a8a423ec5590a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>教程：Azure Active Directory 与 PerformanceCentre 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/04/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-performancecentre-from-the-gallery"></a>从库中添加 PerformanceCentre
-若要通过配置将 PerformanceCentre 集成到 Azure AD 中，需从库将 PerformanceCentre 添加到托管式 SaaS 应用的列表中。
+要通过配置将 PerformanceCentre 集成到 Azure AD 中，需从库将 PerformanceCentre 添加到托管式 SaaS 应用的列表中。
 
 **若要从库添加 PerformanceCentre，请执行以下步骤：**
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 07/04/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [PerformanceCentre 客户端支持团队](https://www.performancecentre.com/contact-us/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_certificate.png) 
 
@@ -136,7 +135,7 @@ ms.lasthandoff: 07/04/2017
    
     ![Azure AD 单一登录][10]
 
-9. 在左侧选项卡中，单击“杂项”，然后单击“单一登录”。
+9. 在左侧选项卡中，单击“杂项”，并单击“单一登录”。
    
     ![Azure AD 单一登录][11]
 
@@ -179,7 +178,7 @@ ms.lasthandoff: 07/04/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -195,7 +194,7 @@ ms.lasthandoff: 07/04/2017
 
 1. 以管理员身份登录 PerformanceCentre 公司站点。
 
-2. 在左侧菜单中，单击“相互关联”，然后单击“创建参与者”。
+2. 在左侧菜单中，单击“相互关联”，并单击“创建参与者”。
    
     ![创建用户][400]
 
@@ -203,7 +202,7 @@ ms.lasthandoff: 07/04/2017
    
     ![创建用户][401]
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在相关文本框中键入 Britta Simon 的所需属性。
+    a. 在相关文本框中键入 Britta Simon 的所需属性。
     
     >[!IMPORTANT]
     >Britta 在 PerformanceCentre 中的“用户名”属性必须与 Azure AD 中的“用户名”相同。
@@ -218,9 +217,9 @@ ms.lasthandoff: 07/04/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 PerformanceCentre，请执行以下步骤：**
+**要将 Britta Simon 分配到 PerformanceCentre，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -273,5 +272,4 @@ ms.lasthandoff: 07/04/2017
 [203]: ./media/active-directory-saas-performancecentre-tutorial/tutorial_general_203.png
 [400]: ./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_11.png
 [401]: ./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_12.png
-
 

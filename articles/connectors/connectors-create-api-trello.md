@@ -1,6 +1,6 @@
 ---
 title: "Azure 逻辑应用中的 Trello 连接器 | Microsoft Docs"
-description: "使用 Azure 应用服务创建逻辑应用。 利用 Trello，不管是在工作还是在家，你随时都可以掌管自己的所有项目。  这是一款简单灵活而又免费的工具，可让你以可视化方式的管理项目和安排一些事务。  连接到 Trello 以管理你的看板、列表和卡片"
+description: "使用 Azure 应用服务创建逻辑应用。 利用 Trello，不管是在工作还是在家，随时都可以掌管自己的所有项目。  它是简单、 可用、 灵活且 visual 方法管理项目和组织的任何内容。  连接到 Trello 以管理看板、列表和卡片"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 526a14710f24ee4a4b61a11873aa6caa0b47dc10
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-the-trello-connector"></a>Trello 连接器入门
-利用 Trello，不管是在工作还是在家，你随时都可以掌管自己的所有项目。  这是一款简单灵活而又免费的工具，可让你以可视化方式的管理项目和安排一些事务。  连接到 Trello 以管理你的看板、列表和卡片。
+利用 Trello，不管是在工作还是在家，随时都可以掌管自己的所有项目。  它是简单、 可用、 灵活且 visual 方法管理项目和组织的任何内容。  连接到 Trello 以管理看板、列表和卡片。
 
 若要开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 

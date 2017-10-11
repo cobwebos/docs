@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: ad87534af448356b8cc80d8ddd278bfb8a9165e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>教程：将 Azure Active Directory 与 vxMaintain 集成
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 08/10/2017
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 
 
 本教程概述的方案包括两个主要构建基块：
 
@@ -214,5 +213,4 @@ ms.lasthandoff: 08/10/2017
 [201]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_203.png
-
 

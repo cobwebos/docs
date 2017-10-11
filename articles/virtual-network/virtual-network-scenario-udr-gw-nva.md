@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fb8d59469eadad51dcf269ec8ff2829b2f8ef922
-
-
+ms.openlocfilehash: 8e464348660114f5e99b4739bb7761b7e53ebf99
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
 在较大的 Azure 客户中，一种常见情况是需要向 Internet 公开某个双层应用程序，同时允许从本地数据中心访问后端层。 本文档将指导你实施一种使用用户定义的路由 (UDR)、VPN 网关和网络虚拟设备部署双层环境的方案，该方案可满足以下要求：
@@ -26,7 +26,7 @@ ms.openlocfilehash: fb8d59469eadad51dcf269ec8ff2829b2f8ef922
 * 只能从公共 Internet 访问 Web 应用程序。
 * 托管应用程序的 Web 服务器必须能够访问后端应用程序服务器。
 * 从 Internet 到 Web 应用程序的所有流量必须流经防火墙虚拟设备。 此虚拟设备只用于 Internet 流量。
-* 发往应用程序服务器的所有流量必须流经防火墙虚拟设备。 此虚拟设备将用于通过 VPN 网关从本地网络访问后端服务器。
+* 发往应用程序服务器的所有流量必须流经防火墙虚拟设备。 此虚拟设备用于通过 VPN 网关从本地网络访问后端服务器。
 * 管理员必须能够使用第三个防火墙虚拟设备（专门用于管理目的）从其本地计算机管理防火墙虚拟设备。
 
 这是一个标准的外围网络方案，其中包含一个外围网络和一个受保护网络。 可以在 Azure 中使用 NSG 和/或防火墙虚拟设备来构建此类方案。 下表显示了 NSG 与防火墙虚拟设备之间的一些优缺点。
@@ -45,7 +45,7 @@ ms.openlocfilehash: fb8d59469eadad51dcf269ec8ff2829b2f8ef922
 * **虚拟设备**。 有多个合作伙伴在 Azure 应用商店中提供了虚拟设备，可对上述三种防火墙使用这些设备。 
 * **用户定义的路由 (UDR)**。 路由表可以包含 Azure 网络使用的 UDR 来控制数据包在 VNet 中的流动。 这些路由表可应用到子网。 Azure 中的最新功能之一是将路由表应用到 GatewaySubnet，从而能够通过混合连接将传入 Azure VNet 的所有流量转发到虚拟设备。
 * **IP 转发**。 默认情况下，仅当数据包目标 IP 地址与 NIC IP 地址匹配时，Azure 网络引擎才将数据包转发到虚拟网络接口卡 (NIC)。 因此，如果 UDR 定义必须将数据包发送到给定的虚拟设备，则 Azure 网络引擎会丢弃该数据包。 为了确保将数据包传送到并非数据包实际目标的 VM（在本例中为虚拟设备），需要为虚拟设备启用 IP 转发。
-* **网络安全组 (NSG)**。 以下示例未使用 NSG，但你可以在此解决方案中使用应用到子网和/或 NIC 的 NSG 来进一步筛选传入和传出子网与 NIC 的流量。
+* **网络安全组 (NSG)**。 以下示例未使用 NSG，但可以在此解决方案中使用应用到子网和/或 NIC 的 NSG 来进一步筛选传入和传出子网与 NIC 的流量。
 
 ![IPv6 连接](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
@@ -61,7 +61,7 @@ ms.openlocfilehash: fb8d59469eadad51dcf269ec8ff2829b2f8ef922
 * 按如下所示分段的名为 **azurevnet** 的 VNet。
   * **azsn1**。 专门用于外部防火墙的外部防火墙子网。 所有 Internet 流量将通过此子网传入。 此子网仅包含链接到外部防火墙的 NIC。
   * **azsn2**。 前端子网，托管作为 Web 服务器运行的、将从 Internet 访问的 VM。
-  * **azsn3**。 后端子网，托管运行前端应用程序服务器的、将由前端 Web 服务器访问的 VM。
+  * **azsn3**。 后端子网，托管运行前端应用程序服务器的、由前端 Web 服务器访问的 VM。
   * **azsn4**。 管理子网，专门用于提供对所有防火墙虚拟设备的管理访问权限。 此子网仅包含解决方案中使用的每个防火墙虚拟设备的 NIC。
   * **GatewaySubnet**。 ExpressRoute 和 VPN 网关在 Azure VNet 与其他网络之间提供连接所需的 Azure 混合连接子网。 
 * **azurevnet** 网络中有 3 个防火墙虚拟设备。 
@@ -84,7 +84,7 @@ Azure 中的每个子网可以链接到用于定义该子网中发起的流量�
 ### <a name="azsn2udr"></a>azsn2udr
 | 目标 | 下一跃点 | 说明 |
 | --- | --- | --- |
-| 10.0.3.0/24 |10.0.2.11 |允许通过 **AZF2** 将流量传送到托管应用程序服务器的后端子网 |
+| 10.0.3.0/24 |10.0.2.11 |允许通过 **AZF2** |
 | 0.0.0.0/0 |10.0.2.10 |允许通过 **AZF1** 路由所有其他流量 |
 
 ### <a name="azsn3udr"></a>azsn3udr
@@ -102,7 +102,7 @@ Azure 中的每个子网可以链接到用于定义该子网中发起的流量�
 ### <a name="onpremsn2udr"></a>onpremsn2udr
 | 目标 | 下一跃点 | 说明 |
 | --- | --- | --- |
-| 10.0.3.0/24 |192.168.2.4 |允许通过 **OPFW** 将流量传送到 Azure 中的后端子网 |
+| 10.0.3.0/24 |192.168.2.4 |允许通过 **onpremsn2** |
 | 192.168.1.0/24 |192.168.2.4 |允许通过 **OPFW** 将流量传送到 **onpremsn1** |
 
 ## <a name="ip-forwarding"></a>IP 转发
@@ -148,7 +148,7 @@ AZF2 代表包含以下规则的 Azure 虚拟设备：
 * **策略**：允许 **port1** 与 **port2** 之间的所有双向流量。
 
 ## <a name="network-security-groups-nsgs"></a>网络安全组 (NSG)
-此方案中未使用 NSG。 但是，你可以向每个子网应用 NSG，以限制传入和传出的流量。 例如，可将以下 NSG 规则应用到外部 FW 子网。
+此方案中未使用 NSG。 但是，可以向每个子网应用 NSG，以限制传入和传出的流量。 例如，可将以下 NSG 规则应用到外部 FW 子网。
 
 **传入**
 
@@ -167,10 +167,4 @@ AZF2 代表包含以下规则的 Azure 虚拟设备：
 3. 预配属于 **AZURERG** 的资源。
 4. 预配从 **onpremvnet** 到 **azurevnet** 的隧道。
 5. 预配所有资源后，登录到 **onpremvm2** 并 ping 10.0.3.101，以测试 **onpremsn2** 与 **azsn3** 之间的连接。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

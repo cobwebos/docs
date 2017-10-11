@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 4eaf86c9ac3e4dc2b51b88383626eda774cab0e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>使用负载均衡的集来群集化 Linux 上的 MySQL
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 模型和经典模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 如果需要部署 MySQL 群集，可以使用 [Resource Manager 模板](https://azure.microsoft.com/documentation/templates/mysql-replication/)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 模型和经典模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 如果需要部署 MySQL 群集，可以使用 [Resource Manager 模板](https://azure.microsoft.com/documentation/templates/mysql-replication/)。
 
 本文将探讨并演示在 Microsoft Azure 上部署基于 Linux 的高度可用服务时可用的不同方法，并在 MySQL Server 高可用性方面提供入门性的探讨。 [第 9 频道](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)提供了此方法的视频演示。
 
@@ -52,7 +51,7 @@ MySQL 的其他可能体系结构包括 NBD 群集、Percona 和 Galera 以及�
   * Corosync 和 Pacemaker
 
 ### <a name="affinity-group"></a>地缘组
-创建解决方案的地缘组：登录到 Azure 经典门户，选择“设置”，然后创建地缘组。 稍后创建的已分配资源将分配给此地缘组。
+创建解决方案的地缘组：登录到 Azure 经典门户，选择“设置”，并创建地缘组。 稍后创建的已分配资源将分配给此地缘组。
 
 ### <a name="networks"></a>网络
 将创建新网络，并在该网络内部创建子网。 本示例使用只包含一个 /24 子网的 10.10.10.0/24 网络。
@@ -65,7 +64,7 @@ MySQL 的其他可能体系结构包括 NBD 群集、Percona 和 Galera 以及�
 创建两个 VM 后，请记下 `hadb01` 的 SSH 端口 (TCP 22) 和 `hadb02`（由 Azure 自动分配）。
 
 ### <a name="attached-storage"></a>附加存储
-将新磁盘附加到两个 VM，并在附加过程中创建 5-GB 磁盘。 这些磁盘托管在 VHD 容器中，用作主要操作系统磁盘。 创建并附加磁盘后，无需重启 Linux，因为内核将会发现新设备。 此设备通常为 `/dev/sdc`。 可以检查 `dmesg` 的输出。
+将新磁盘附加到两个 VM，并在附加过程中创建 5-GB 磁盘。 这些磁盘托管在 VHD 容器中，用作主要操作系统磁盘。 创建并附加磁盘后，无需重启 Linux，因为内核会发现新设备。 此设备通常为 `/dev/sdc`。 可以检查 `dmesg` 的输出。
 
 在每个 VM 上，使用 `cfdisk` 创建分区（主 Linux 分区），并写入新的分区表。 不要在此分区中创建文件系统。
 
@@ -74,7 +73,7 @@ MySQL 的其他可能体系结构包括 NBD 群集、Percona 和 Galera 以及�
 
     sudo apt-get install corosync pacemaker drbd8-utils.
 
-暂时不要安装 MySQL。 Debian 和 Ubuntu 安装脚本将在 `/var/lib/mysql` 上初始化 MySQL 数据目录，但由于该目录将由 DRBD 文件系统取代，因此稍后需要安装 MySQL。
+暂时不要安装 MySQL。 Debian 和 Ubuntu 安装脚本会在 `/var/lib/mysql` 上初始化 MySQL 数据目录，但由于该目录由 DRBD 文件系统取代，因此稍后需要安装 MySQL。
 
 使用 `/sbin/ifconfig` 验证两个 VM 是否使用 10.10.10.0/24 子网中的地址，并且它们是否可以按名称彼此 ping 通。 还可以使用 `ssh-keygen` 和 `ssh-copy-id` 确保这两个 VM 可以通过 SSH 通信而无需密码。
 
@@ -107,7 +106,7 @@ MySQL 的其他可能体系结构包括 NBD 群集、Percona 和 Galera 以及�
 
         sudo drbdadm primary --force r0
 
-如果你在这两个 VM 中检查 /proc/drbd (`sudo cat /proc/drbd`) 的内容，应在 `hadb01` 上看到 `Primary/Secondary`，在 `hadb02` 上看到 `Secondary/Primary`，与此时的解决方案保持一致。 5-GB 磁盘通过 10.10.10.0/24 网络进行同步，不会向客户收费。
+如果在这两个 VM 中检查 /proc/drbd (`sudo cat /proc/drbd`) 的内容，应在 `hadb01` 上看到 `Primary/Secondary`，在 `hadb02` 上看到 `Secondary/Primary`，与此时的解决方案保持一致。 5-GB 磁盘通过 10.10.10.0/24 网络进行同步，不会向客户收费。
 
 同步磁盘后，可在 `hadb01` 上创建文件系统。 出于测试目的，我们使用了 ext2，但以下代码将创建 ext3 文件系统：
 
@@ -120,17 +119,17 @@ MySQL 的其他可能体系结构包括 NBD 群集、Percona 和 Galera 以及�
     sudo mount /dev/drbd1 /var/lib/mysql
 
 ## <a name="set-up-mysql"></a>设置 MySQL
-现在你已准备好在 `hadb01` 上安装 MySQL：
+现在已准备好在 `hadb01` 上安装 MySQL：
 
     sudo apt-get install mysql-server
 
-对于 `hadb02`，可以使用两个选项。 可以安装 mysql-server，这会创建 /var/lib/mysql 并在其中填入一个新的数据目录，然后删除内容。 若要执行此选项，请在 `hadb02` 上运行以下代码：
+对于 `hadb02`，可以使用两个选项。 可以安装 mysql-server，这会创建 /var/lib/mysql 并在其中填入一个新的数据目录，并删除内容。 若要执行此选项，请在 `hadb02` 上运行以下代码：
 
     sudo apt-get install mysql-server
     sudo service mysql stop
     sudo rm –rf /var/lib/mysql/*
 
-第二个选项用于故障转移到 `hadb02`，然后在该位置安装 mysql-server。 安装脚本会检测到现有安装，并且不会对它进行修改。
+第二个选项用于故障转移到 `hadb02`，并在该位置安装 mysql-server。 安装脚本会检测到现有安装，并且不会对它进行修改。
 
 在 `hadb01` 上运行以下代码：
 
@@ -155,9 +154,9 @@ MySQL 的其他可能体系结构包括 NBD 群集、Percona 和 Galera 以及�
 如果要从 VM 外部进行查询，则还需要为 MySQL 启用网络（这是本指南的目的）。 在两个 VM 上打开 `/etc/mysql/my.cnf` 并转到 `bind-address`。 将地址从 127.0.0.1 更改为 0.0.0.0。 保存该文件之后，在当前主节点上发出 `sudo service mysql restart`。
 
 ### <a name="create-the-mysql-load-balanced-set"></a>创建 MySQL 负载均衡集
-返回门户，转到 `hadb01`，然后选择“终结点”。 若要创建终结点，请从下拉列表中选择“MySQL (TCP 3306)”，然后选择“新建负载均衡集”。 将负载均衡的终结点命名为 `lb-mysql`。 将“时间”设置为最小 5 秒。
+返回门户，转到 `hadb01`，并选择“终结点”。 要创建终结点，请从下拉列表中选择“MySQL (TCP 3306)”，并选择“新建负载均衡集”。 将负载均衡的终结点命名为 `lb-mysql`。 将“时间”设置为 5 秒（最小值）。
 
-创建终结点后，转到 `hadb02`，选择“终结点”，然后创建一个终结点。 选择 `lb-mysql`，然后从下拉列表中选择“MySQL”。 还可以将 Azure CLI 用于此步骤。
+创建终结点后，转到 `hadb02`，选择“终结点”，并创建一个终结点。 选择 `lb-mysql`，并从下拉列表中选择“MySQL”。 还可以将 Azure CLI 用于此步骤。
 
 现已做好手动操作群集所需的一切准备。
 
@@ -248,7 +247,7 @@ Azure 上 Corosync 的主要约束是 Corosync 首选多播，其次广播，再
 ## <a name="set-up-pacemaker"></a>设置 Pacemaker
 Pacemaker 使用群集监视资源、定义主节点何时停机，并将这些资源切换到辅助节点。 可以通过一组可用脚本或 LSB（类似 init）脚本以及其他选项定义资源。
 
-我们希望 Pacemaker“拥有”DRBD 资源、装入点和 MySQL 服务。 如果在主节点出现问题时 Pacemaker 可以启用和关闭 DRBD，请按正确的顺序装载和卸载它，然后启动并停止 MySQL，这样就完成了设置。
+我们希望 Pacemaker“拥有”DRBD 资源、装入点和 MySQL 服务。 如果在主节点出现问题时 Pacemaker 可以启用和关闭 DRBD，请按正确的顺序装载和卸载它，并启动并停止 MySQL，这样就完成了设置。
 
 首次安装 Pacemaker 时，配置应足够简单，如下所示：
 
@@ -312,7 +311,7 @@ Pacemaker 使用群集监视资源、定义主节点何时停机，并将这些�
 ## <a name="testing"></a>测试
 现已准备好自动故障转移模拟。 可通过两种方式执行此操作：软方式和硬方式。
 
-软方式使用群集的关闭功能：``crm_standby -U `uname -n` -v on``。 在主节点上使用此功能时，从节点将会接管。 请记得将此功能重新设为 off。 否则，crm_mon 会显示一个节点处于待机。
+软方式使用群集的关闭功能：``crm_standby -U `uname -n` -v on``。 在主节点上使用此功能时，从节点会接管。 请记得将此功能重新设为 off。 否则，crm_mon 会显示一个节点处于待机。
 
 硬方式是通过门户关闭主 VM (hadb01) 或更改 VM 上的运行级别（即，停止、关闭）。 这可以通过指示主节点即将关闭来帮助 Corosync 和 Pacemaker。 可以对此进行测试（适用于维护窗口），但也可以通过只冻结 VM 来强制实施该方案。
 
@@ -338,5 +337,4 @@ Pacemaker 使用群集监视资源、定义主节点何时停机，并将这些�
   * 编辑 linbit DRBD 脚本以确保未在 `/usr/lib/ocf/resource.d/linbit/drbd` 中调用 `down`。
 * 负载均衡器至少需要 5 秒钟才能做出响应，因此应用程序应是群集感知的并更容忍超时。 其他体系结构（如应用中队列和查询中间件）也会有帮助。
 * 有必要进行 MySQL 优化，确保以受控的速度完成写入，并且尽可能频繁地将缓存刷新到磁盘
-* 写入性能将依赖于虚拟交换机中的 VM 互连，因为这是 DRBD 用于复制设备的机制。
-
+* 写入性能依赖于虚拟交换机中的 VM 互连，因为这是 DRBD 用于复制设备的机制。

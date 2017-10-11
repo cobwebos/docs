@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/06/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 51a7a274c0cdbec169154bd1100abb4534283cff
-ms.openlocfilehash: ac478dc5c6691ef9f6c4829bd47a81912774d032
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/10/2016
-
+ms.openlocfilehash: 88c5701279f370914fac68872d67b02a7571748a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>将 Azure 活动日志流式传输到事件中心
 可以将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在日志配置文件中启用服务总线规则 ID。
@@ -31,7 +30,7 @@ ms.lasthandoff: 12/10/2016
 * **生成自定义遥测和日志记录平台** – 如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。 [请参阅此处提供的 Dan Rosanova 的指南，了解如何在全局规模的遥测平台中使用事件中心。](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)
 
 ## <a name="enable-streaming-of-the-activity-log"></a>启用活动日志的流式传输
-可以通过编程方式或门户启用活动日志的流式传输。 无论哪种方式，都需要选择一个服务总线命名空间和一个用于该命名空间的共享访问策略，并在第一个新活动日志事件发生时在该命名空间中创建一个事件中心。 如果没有服务总线命名空间，则需要先创建一个。 如果先前已将活动日志事件流式传输到此服务总线命名空间，则将重用先前创建的事件中心。 共享访问策略定义了流式传输机制具有的权限。 目前，流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 在经典门户中针对服务总线命名空间的“配置”选项卡下，可以创建或修改服务总线命名空间的共享访问策略。 若要更新活动日志的日志配置文件，使之包括流式传输，则执行更改的用户必须在服务总线授权规则中拥有 ListKey 权限。
+可以通过编程方式或门户启用活动日志的流式传输。 无论哪种方式，都需要选择一个服务总线命名空间和一个用于该命名空间的共享访问策略，并在第一个新活动日志事件发生时在该命名空间中创建一个事件中心。 如果没有服务总线命名空间，则需要先创建一个。 如果以前已将活动日志事件流式传输到此服务总线命名空间，则会重复使用以前创建的事件中心。 共享访问策略定义了流式传输机制具有的权限。 目前，流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 在经典门户中针对服务总线命名空间的“配置”选项卡下，可以创建或修改服务总线命名空间的共享访问策略。 若要更新活动日志的日志配置文件，使之包括流式传输，则执行更改的用户必须在服务总线授权规则中拥有 ListKey 权限。
 
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，服务总线或事件中心命名空间就不必与订阅发出日志位于同一订阅中。
 
@@ -80,5 +79,4 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 * [将活动日志存档到存储帐户](monitoring-archive-activity-log.md)
 * [阅读 Azure 活动日志概述](monitoring-overview-activity-logs.md)
 * [根据活动日志事件设置警报](insights-auditlog-to-webhook-email.md)
-
 

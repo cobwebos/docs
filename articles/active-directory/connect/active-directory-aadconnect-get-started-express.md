@@ -14,26 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 8a08f6e441a856a06bf7870747ca20af45a0364e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>通过快速设置开始使用 Azure AD Connect
-采用单林拓扑和用于身份验证的[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)时，可以使用 Azure AD Connect 的“快速设置”。 **快速设置** 是默认选项，用于最常见的部署方案。 只需按几下鼠标即可将本地目录扩展到云中。
+有单林拓扑和用于身份验证的 **密码同步** 时，便可使用 Azure AD Connect [快速设置](active-directory-aadconnectsync-implement-password-synchronization.md)。 **快速设置** 是默认选项，用于最常见的部署方案。 只需按几下鼠标即可将本地目录扩展到云中。
 
 开始安装 Azure AD Connect 之前，确保[下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)，完成 [Azure AD Connect：硬件和先决条件](active-directory-aadconnect-prerequisites.md)中的预备步骤。
 
 如果快速设置与拓扑不匹配，请参阅 [相关文档](#related-documentation) 中的其他方案。
 
 ## <a name="express-installation-of-azure-ad-connect"></a>Azure AD Connect 的快速安装
-你可以在 [视频](#videos) 一节观看这些步骤的操作示范。
+可以在 [视频](#videos) 一节观看这些步骤的操作示范。
 
 1. 以本地管理员身份登录到要安装 Azure AD Connect 的服务器。 应该在要用作同步服务器的服务器上执行此操作。
 2. 导航到 **AzureADConnect.msi**并双击它。
-3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，然后单击“继续”。  
+3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。  
 4. 在“快速设置”屏幕上，单击“使用快速设置”。  
    ![欢迎使用 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
 5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步”。  
@@ -48,7 +47,7 @@ ms.lasthandoff: 07/13/2017
    * 如果本地 Active Directory 中有 Exchange，也可以选择启用 [**Exchange 混合部署**](https://technet.microsoft.com/library/jj200581.aspx)。 如果打算同时在云中和本地设置 Exchange 邮箱，请启用此选项。
      ![已准备好配置 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/readytoconfigure.png)
 9. 安装完成后，单击“退出” 。
-10. 安装完成后，请注销并再次登录，然后即可使用同步服务管理器或同步规则编辑器。
+10. 安装完成后，请注销并再次登录，即可使用同步服务管理器或同步规则编辑器。
 
 ## <a name="videos"></a>视频
 有关使用快速安装的视频，请参阅：
@@ -64,7 +63,7 @@ ms.lasthandoff: 07/13/2017
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](active-directory-aadconnectsync-feature-scheduler.md)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 
 ## <a name="related-documentation"></a>相关文档
 | 主题 |
@@ -73,5 +72,4 @@ ms.lasthandoff: 07/13/2017
 | 使用自定义设置安装 |
 | 从 DirSync 升级 |
 | 用于安装的帐户 |
-
 

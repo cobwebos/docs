@@ -15,12 +15,11 @@ ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: b402ae326ab34ec71ad9de966e22be00045fee3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
 本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
@@ -165,5 +164,4 @@ ms.lasthandoff: 08/04/2017
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
 * [Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md)
-
 

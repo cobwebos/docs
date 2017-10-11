@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
 ms.openlocfilehash: 018afaa8b08bd001e55693390e80c8e2c4f33a30
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 07/06/2017
 > Azure SQL 数据库需要至少监视活动一天才能确定某些建议。 Azure SQL 数据库优化一致的查询模式比优化随机的突发活动更加轻松。 如果建议当前不可用，“性能建议”页会提供一条说明原因的消息。
 > 
 
-你还可以查看历史操作的状态。 选择一条建议或状态即可查看详细信息。
+还可以查看历史操作的状态。 选择一条建议或状态即可查看详细信息。
 
 下面是 Azure 门户中“创建索引”建议的示例。
 
@@ -71,7 +70,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 在应用建议时数据库将保持联机状态，使用性能建议或者自动优化不会使数据库脱机。
 
 ### <a name="apply-an-individual-recommendation"></a>应用单个建议
-你可以逐个查看和接受建议。
+可以逐个查看和接受建议。
 
 1. 在“建议”边栏选项卡上选择某个建议。
 2. 在“详细信息”边栏选项卡上单击“应用”按钮。
@@ -104,7 +103,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
     ![建议的索引](./media/sql-database-advisor-portal/automation.png)
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>手动运行建议的 T-SQL 脚本
-选择任意建议，然后单击“查看脚本”。 针对数据库运行此脚本以手动应用建议。
+选择任意建议，并单击“查看脚本”。 针对数据库运行此脚本以手动应用建议。
 
 不通过该服务监视和验证手动执行的索引的性能影响，因此建议在创建后监视这些索引以验证它们是否提供性能提升，并在必要时调整或删除它们。 有关创建索引的详细信息，请参阅[创建索引 (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)。
 
@@ -132,7 +131,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 ![建议的索引](./media/sql-database-advisor-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>正在还原建议
-如果使用了性能建议来应用建议（即并没有手动运行 T-SQL 脚本），那么性能建议会在发现性能影响为负面时自动还原该建议。 如果你因故需要还原建议，可执行以下操作：
+如果使用了性能建议来应用建议（即并没有手动运行 T-SQL 脚本），那么性能建议会在发现性能影响为负面时自动还原该建议。 如果因故需要还原建议，可执行以下操作：
 
 1. 在“优化历史记录”区域中选择已成功应用的建议。
 2. 单击“建议详细信息”边栏选项卡上的“还原”。
@@ -140,7 +139,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 ![建议的索引](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>监视索引建议的性能影响
-成功实施建议后（当前仅限索引操作和参数化查询建议），可单击建议详细信息边栏选项卡上的“查询见解”打开[查询性能见解](sql-database-query-performance.md)，然后查看排位靠前的查询的性能影响。
+成功实施建议后（当前仅限索引操作和参数化查询建议），可单击建议详细信息边栏选项卡上的“查询见解”打开[查询性能见解](sql-database-query-performance.md)，并查看排位靠前的查询的性能影响。
 
 ![监视性能影响](./media/sql-database-advisor-portal/query-insights.png)
 
@@ -158,5 +157,4 @@ Azure SQL 数据库提供了提高 SQL 数据库性能的建议。 通过提供 
 * [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
 * [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
 * [基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)
-
 

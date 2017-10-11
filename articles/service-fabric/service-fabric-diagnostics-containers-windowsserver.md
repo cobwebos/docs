@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/10/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: 874c1a5c4b399ff2254072b7282f05d83a005cc3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="monitoring-windows-server-containers-with-oms"></a>使用 OMS 监视 Windows Server 容器
 
 ## <a name="oms-containers-solution"></a>OMS 容器解决方案
@@ -51,7 +49,7 @@ Operations Management Suite (OMS) 团队已经发布了用于诊断和监视容�
 修改现有 Service Fabric 群集：
 * 确认已启用“诊断”（如未启用，请通过[更新虚拟机规模集](/rest/api/virtualmachinescalesets/create-or-update-a-set)启用）
 * 通过经由 Azure Marketplace 创建“Service Fabric 分析”解决方案，添加 OMS 工作区
-* 编辑 Service Fabric 解决方案的数据源，从群集所在的资源组中的相应 Azure存储表（由 WAD 设置）中提取数据
+* 编辑 Service Fabric 解决方案的数据源，从群集所在的资源组中的相应 Azure 存储表（由 WAD 设置）中提取数据
 * 通过 PowerShell 或通过更新虚拟机规模集（与上述链接相同，用于修改 Resource Manager 模板）将代理作为[扩展添加到虚拟机规模集](/powershell/module/azurerm.compute/add-azurermvmssextension)
 
 ## <a name="2-deploy-a-container"></a>2.部署容器

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 33c65bf2eecff3914f3227c76f7d638a4507e1f6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>更改 StorSimple 设备上的设备模式
 本文简要介绍了适合 StorSimple 设备运行的各种模式。 StorSimple 设备客户端可在下述三种模式下运行：正常、维护和恢复。 
@@ -78,8 +77,8 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
 3. 在命令提示符处，键入 
    
     `Enter-HcsMaintenanceMode`
-4. 此时会显示一条警告消息，指示维护模式将中断所有 I/O 请求并断开到 Azure 经典门户的服务器连接，并将提示用户进行确认。 键入 **Y** 进入维护模式。
-5. 将重新启动两个控制器。 重新启动完成后，将显示另一条消息，指示设备处于维护模式。
+4. 此时会显示一条警告消息，指示维护模式将中断所有 I/O 请求并断开到 Azure 经典门户的服务器连接，并会提示用户进行确认。 键入 **Y** 进入维护模式。
+5. 将重新启动两个控制器。 重新启动完成后，会显示另一条消息，指示设备处于维护模式。
 
 #### <a name="to-exit-maintenance-mode"></a>退出维护模式
 1. 登录到设备串行控制台。 从横幅消息验证设备是否处于维护模式。
@@ -87,9 +86,8 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
    
     `Exit-HcsMaintenanceMode`
 3. 将显示一条警告消息和一条确认消息。 键入 **Y** 退出维护模式。
-4. 将重新启动两个控制器。 重新启动完成后，将显示另一条消息，指示设备处于正常模式。
+4. 将重新启动两个控制器。 重新启动完成后，会显示另一条消息，指示设备处于正常模式。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何在 StorSimple 设备上[应用正常模式和维护模式更新](storsimple-update-device.md)。
-
 

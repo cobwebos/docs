@@ -14,21 +14,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 98d1e2ad162f4b69be4fdf9a5b004f640fbb5d7e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.openlocfilehash: cb98d5f2aaa526555820c15ba5a32fb7e78ffc5a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="azure-functions-runtime-overview"></a>Azure Functions 运行时概述
 
 Azure Functions 运行时提供了一种新方法供你用来在本地利用 Azure Functions 编程模型的简单性和灵活性。 Azure Functions 运行时基于与 Azure Functions 相同的开源代码根而构建，并且部署在本地来提供与云服务几乎完全相同的部署体验。
 
 ![Azure Functions 运行时预览版门户][1]
 
-Azure Functions 运行时提供了一种方法供你用来在提交到云之前体验 Azure Functions。 这样，你构建的代码资产可以在你迁移时随你迁移到云。  运行时还为你提供了新选择，例如使用你的本地计算机的备用计算能力在夜间运行批处理。 你还可以使用你的组织中的设备来有条件地向本地和云中的其他系统发送数据。
+Azure Functions 运行时提供了一种方法供你用来在提交到云之前体验 Azure Functions。 这样，构建的代码资产可以在迁移时随你迁移到云。  运行时还提供了新选择，例如使用本地计算机的备用计算能力在夜间运行批处理。 还可以使用组织中的设备来有条件地向本地和云中的其他系统发送数据。
 
 Azure Functions 运行时由两部分组成：
 * Azure Functions 运行时管理角色
@@ -38,13 +36,13 @@ Azure Functions 运行时由两部分组成：
 
 Azure Functions 管理角色提供了用于管理本地 Functions 的宿主。 此角色执行以下任务：
 
-* 托管 Azure Functions 管理门户，该门户与你在 [Azure 门户](https://portal.azure.com)中看到的是同一个。 这使得你可以采用与在 Azure 门户中相同的方式来部署函数。
+* 托管 Azure Functions 管理门户，该门户与你在 [Azure 门户](https://portal.azure.com)中看到的是同一个。 这使得可以采用与在 Azure 门户中相同的方式来部署函数。
 * 将函数分布到多个 Functions 辅助角色中。
-* 提供发布终结点，以便你可以直接从 Microsoft Visual Studio 发布函数。
+* 提供发布终结点，以便可以直接从 Microsoft Visual Studio 发布函数。
 
 ## <a name="azure-functions-worker-role"></a>Azure Functions 辅助角色
 
-Azure Functions 辅助角色部署在 Windows 容器中，这是执行你的函数代码的地方。  你可以在整个组织中部署多个辅助角色，并且这是客户可以利用备用计算能力的主要方式。
+Azure Functions 辅助角色部署在 Windows 容器中，这是执行函数代码的地方。  可以在整个组织中部署多个辅助角色，并且这是客户可以利用备用计算能力的主要方式。
 
 ## <a name="minimum-requirements"></a>最低要求
 
@@ -56,4 +54,3 @@ Azure Functions 辅助角色部署在 Windows 容器中，这是执行你的函�
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png
-

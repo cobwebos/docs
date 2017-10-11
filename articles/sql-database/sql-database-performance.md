@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 522b932ab055978c52f085dbaa36095bb6b77962
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优化操作和建议来建议可以提高工作负荷性能的操作。
@@ -38,7 +37,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 4. [自动优化](#automatic-tuning)，可让 Azure SQL 数据库自动优化数据库。
 
 ## <a name="performance-overview"></a>性能概述
-此视图提供了数据库性能摘要，有助于你进行性能优化和故障排除。 
+此视图提供了数据库性能摘要，有助于进行性能优化和故障排除。 
 
 ![性能](./media/sql-database-performance/performance.png)
 
@@ -77,5 +76,4 @@ Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自�
 ## <a name="additional-resources"></a>其他资源
 * [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)
 * [何时应使用弹性池？](sql-database-elastic-pool-guidance.md)
-
 

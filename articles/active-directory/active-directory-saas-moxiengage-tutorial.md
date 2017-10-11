@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 25b5e377d8d0d504860ab9a8c4dac49c9ca5b104
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>教程：Azure Active Directory 与 Moxi Engage 集成
 
@@ -222,5 +221,4 @@ ms.lasthandoff: 05/27/2017
 [201]: ./media/active-directory-saas-moxiengage-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-moxiengage-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-moxiengage-tutorial/tutorial_general_203.png
-
 

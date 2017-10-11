@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: a310236179677046ec49930b07cfdffdadc37974
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
-事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，从而使你能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
+事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道的“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
 
 本文是[将 Azure API 管理与事件中心集成](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/)视频的配套内容，介绍了如何使用 Azure 事件中心记录 API 管理事件。
 
 ## <a name="create-an-azure-event-hub"></a>创建 Azure 事件中心
-若要创建新事件中心，请登录到 [Azure 经典门户](https://manage.windowsazure.com)并依次单击“新建”->“应用服务”->“服务总线”->“事件中心”->“快速创建”。 输入事件中心名称、区域，选择订阅，然后选择命名空间。 如果之前未创建命名空间，可通过在“命名空间”文本框中键入名称来创建命名空间。 配置所有属性后，单击“创建新事件中心”创建事件中心。
+若要创建新事件中心，请登录到 [Azure 经典门户](https://manage.windowsazure.com)并依次单击“新建”->“应用服务”->“服务总线”->“事件中心”->“快速创建”。 输入事件中心名称、区域，选择订阅，并选择命名空间。 如果之前未创建命名空间，可通过在“命名空间”文本框中键入名称来创建命名空间。 配置所有属性后，单击“创建新事件中心”创建事件中心。
 
 ![创建事件中心][create-event-hub]
 
@@ -93,11 +91,11 @@ ms.lasthandoff: 04/27/2017
 ## <a name="configure-log-to-eventhubs-policies"></a>配置 log-to-eventhubs 策略
 在 API 管理中配置记录器后，可配置 log-to-eventhubs 策略以记录所需事件。 log-to-eventhubs 策略可在入站策略部分或出站策略部分中使用。
 
-若要配置策略，请登录到 [Azure 门户](https://portal.azure.com)，导航到 API 管理服务，然后单击“发布者门户”访问发布者门户。
+要配置策略，请登录到 [Azure 门户](https://portal.azure.com)，导航到 API 管理服务，并单击“发布者门户”访问发布者门户。
 
 ![发布者门户][publisher-portal]
 
-单击左侧 API 管理菜单中的“策略”、选择所需的产品和 API，然后单击“添加策略”。 在此示例中，我们向 **Unlimited** 产品中的 **Echo API** 添加策略。
+单击左侧 API 管理菜单中的“策略”、选择所需的产品和 API，并单击“添加策略”。 在此示例中，我们向 **Unlimited** 产品中的 **Echo API** 添加策略。
 
 ![添加策略][add-policy]
 
@@ -140,4 +138,3 @@ ms.lasthandoff: 04/27/2017
 [sending-policy]: ./media/api-management-howto-log-event-hubs/sending-policy.png
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
-

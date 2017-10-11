@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 90d55bbac6e113d6add848ace67cf0749e26342b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-classic-portal"></a>如何在经典门户中为云服务配置自动缩放
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-how-to-scale-portal.md)
@@ -45,7 +43,7 @@ ms.lasthandoff: 08/22/2017
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
 ## <a name="schedule-scaling"></a>计划缩放
-默认情况下，并非所有角色都遵循某一特定计划。 因此，所更改的任意设置都将应用到全年中的所有时间和日期。 如果需要，可针对以下模式之一设置手动或自动缩放：
+默认情况下，并非所有角色都遵循某一特定计划。 因此，所更改的任意设置都会应用到全年中的所有时间和日期。 如果需要，可针对以下模式之一设置手动或自动缩放：
 
 * 工作日
 * 周末
@@ -78,7 +76,7 @@ ms.lasthandoff: 08/22/2017
    
     如果需要更多实例，可能需要更改[云服务虚拟机大小](cloud-services-sizes-specs.md)。
 6. 单击“保存” 。  
-   将根据用户的选择添加或删除角色实例。
+   根据用户的选择添加或删除角色实例。
 
 > [!TIP]
 > 看到 ![][tip_icon] 时，将鼠标移到其上可获取特定设置功能的相关帮助。
@@ -141,4 +139,3 @@ ms.lasthandoff: 08/22/2017
 [scale_schedules]: ./media/cloud-services-how-to-scale/schedules.png
 [scale_popup]: ./media/cloud-services-how-to-scale/schedules-dialog.png
 [linked_resource]: ./media/cloud-services-how-to-scale/linked-resources.png
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: curtand
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 3c591680160101a91174868714392674c9aa7178
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="conceptual-overview-of-custom-domain-names-in-azure-active-directory"></a>Azure Active Directory 中自定义域名的概念性概述
 域名可以是许多目录资源的重要标识符，作为以下项的一部分：
@@ -38,7 +37,7 @@ Azure AD 中的域名是全局唯一的。 自定义域名一次只能由一个 
 ## <a name="initial-and-custom-domain-names"></a>初始域名和自定义域名
 Azure AD 中的每个域名不是初始域名就是自定义域名。
 
-每个 Azure AD 都随附形式为 contoso.onmicrosoft.com 的初始域名。在创建目录时，会建立此三级域名（通常由创建目录的管理员建立），在此示例中为“contoso.onmicrosoft.com”。 目录的初始域名无法更改或删除。 完全正常运行的初始域名主要用作启动机制，直到验证了自定义域名为止。
+每个 Azure AD 都随附形式为 contoso.onmicrosoft.com 的初始域名。 在创建目录时，会建立此三级域名（通常由创建目录的管理员建立），在此示例中为“contoso.onmicrosoft.com”。 目录的初始域名无法更改或删除。 完全正常运行的初始域名主要用作启动机制，直到验证了自定义域名为止。
 
 在大部分生产环境中，目录具有至少一个已验证的自定义域，例如“contoso.com”，而且是可让最终用户看到的自定义域。 自定义域名是由该组织拥有和使用的域名，例如“contoso.com”，用途包括托管其网站等等。 员工很熟悉此域名，因为它是用来登录公司网络或发送和检索电子邮件的用户名的一部分。
 
@@ -71,5 +70,4 @@ Azure Web 应用使用其自身的机制来验证域的所有权。 域必须经
 * [在 Azure 经典门户中管理域](active-directory-add-manage-domain-names.md)
 * [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [使用 Azure AD 图形 API 管理 Azure AD 中的域名](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
-
 

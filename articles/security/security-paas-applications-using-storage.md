@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: TomShinder
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 62c7b6706268e3c6e329f90651125fe299f61d67
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序
 本文介绍有关保护 PaaS Web 和移动应用程序的 Azure 存储安全最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
 
 [Azure 存储安全指南](../storage/common/storage-security-guide.md)是有关 Azure存储和安全性的详细信息的重要来源。  本文在较高的层次上介绍了安全指南中的一些概念，以及获得详细信息的安全指南和其他来源的链接。
 
-## <a name="azure-storage"></a>Azure 存储
+## <a name="azure-storage"></a>Azure 存储空间
 Azure 可以用本地不易实现的方式来部署并使用存储。 通过 Azure 存储，可用相对较少的工作量达到高水平的可伸缩性和可用性。 Azure 存储不仅是 Windows 和 Linux Azure 虚拟机的基础，还可以支持大型分布式应用程序。
 
 Azure 存储提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
@@ -111,4 +110,3 @@ Azure 磁盘加密是用于帮助加密 Windows 和 Linux IaaS 虚拟机磁盘�
 - [保护 PaaS 部署](security-paas-deployments.md)
 - [使用 Azure 应用服务保护 PaaS Web 和移动应用程序](security-paas-applications-using-app-services.md)
 - [在 Azure 中保护 PaaS 数据库](security-paas-applications-using-sql.md)
-

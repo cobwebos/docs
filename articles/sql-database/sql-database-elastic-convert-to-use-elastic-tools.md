@@ -15,13 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 6f51f0585dfc75d28da72d1056ef7173c06b24fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/13/2017
-
-
+ms.openlocfilehash: 099f40d00753b7c86ba726a818f17d440a125221
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库
 使用 Azure SQL 数据库数据库工具（例如[弹性数据库客户端库](sql-database-elastic-database-client-library.md)）轻松管理现有的扩展共享数据库。 必须先转换现有数据库集，以使用[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)。 
@@ -34,12 +32,12 @@ ms.lasthandoff: 01/13/2017
 3. 准备各个分片。  
 4. 将映射添加到分片映射。
 
-你可以使用 [.NET Framework 客户端库](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)或者 [Azure SQL DB - 弹性数据库工具脚本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)中提供的 PowerShell 脚本来实现这些技巧。 以下示例使用 PowerShell 脚本。
+可以使用 [.NET Framework 客户端库](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)或者 [Azure SQL DB - 弹性数据库工具脚本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)中提供的 PowerShell 脚本来实现这些技巧。 以下示例使用 PowerShell 脚本。
 
 有关 ShardMapManager 的详细信息，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。 有关弹性数据库工具的概述，请参[阅弹性数据库功能概述](sql-database-elastic-scale-introduction.md)。
 
 ## <a name="prepare-the-shard-map-manager-database"></a>准备分片映射管理器数据库
-分片映射管理器是一个特殊数据库，其中包含用来管理已扩展数据库的数据。 你可使用现有数据库或创建新数据库。 请注意，用作分片映射管理器的数据库不应是与分片相同的数据库。 另请注意：PowerShell 脚本不会为你创建该数据库。 
+分片映射管理器是一个特殊数据库，其中包含用来管理已扩展数据库的数据。 可使用现有数据库或创建新数据库。 请注意，用作分片映射管理器的数据库不应是与分片相同的数据库。 另请注意：PowerShell 脚本不会创建该数据库。 
 
 ## <a name="step-1-create-a-shard-map-manager"></a>步骤 1：创建分片映射管理器
     # Create a shard map manager. 
@@ -73,15 +71,16 @@ ms.lasthandoff: 01/13/2017
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（你可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
+多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组）。 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
 
 ![范围映射][2]
 
-或者你可以使用*列表映射*来实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
+或者可以使用“列表映射”  实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
 
 ![单一数据库上的多个租户][3] 
 
-**根据你的选择，选择以下选项之一：**
+
+            **根据选择，选择以下选项之一：**
 
 ### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>选项 1：为列表映射创建分片映射
 使用 ShardMapManager 对象创建分片映射。 
@@ -106,7 +105,7 @@ ms.lasthandoff: 01/13/2017
 设置此模式也需要创建列表映射，如步骤 2，选项 1 中所示。
 
 ## <a name="step-3-prepare-individual-shards"></a>步骤 3：准备各个分片
-将每个分片（数据库）添加到分片映射管理器。 这将准备用于存储映射信息的各个数据库。 对每个分片执行此方法。
+将每个分片（数据库）添加到分片映射管理器。 这会准备用于存储映射信息的各个数据库。 对每个分片执行此方法。
 
     Add-Shard 
     -ShardMap $ShardMap 
@@ -116,7 +115,7 @@ ms.lasthandoff: 01/13/2017
 
 
 ## <a name="step-4-add-mappings"></a>步骤 4：添加映射
-添加映射的操作取决于创建的分片映射种类。 如果你已创建列表映射，请添加列表映射。 如果你已创建范围映射，请添加范围映射。
+添加映射的操作取决于创建的分片映射种类。 如果已创建列表映射，请添加列表映射。 如果已创建范围映射，请添加范围映射。
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>选项 1：映射列表映射的数据
 通过为每个租户添加列表映射来映射数据。  
@@ -153,7 +152,7 @@ ms.lasthandoff: 01/13/2017
     Get-Mappings -ShardMap $ShardMap 
 
 ## <a name="summary"></a>摘要
-完成设置后，可以开始使用弹性数据库客户端库。 你还可以使用[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)和[多分片查询](sql-database-elastic-scale-multishard-querying.md)。
+完成设置后，可以开始使用弹性数据库客户端库。 还可以使用[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)和[多分片查询](sql-database-elastic-scale-multishard-querying.md)。
 
 ## <a name="next-steps"></a>后续步骤
 从 [Azure SQL DB - 弹性数据库工具脚本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)获取 PowerShell 脚本。
@@ -172,5 +171,4 @@ GitHub 上也提供了这些工具：[Azure/elastic-db-tools](https://github.com
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png
 [2]: ./media/sql-database-elastic-convert-to-use-elastic-tools/rangemapping.png
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
-
 

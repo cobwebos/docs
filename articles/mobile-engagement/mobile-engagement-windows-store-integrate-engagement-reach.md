@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8fc1faac88cab0e3d3755fdf16fe3d7188169961
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Windows Universal Apps Reach SDK 集成
 在按本指南操作之前，必须完成 [Windows Universal Engagement SDK 集成](mobile-engagement-windows-store-integrate-engagement.md)中所述的集成程序。
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-universal-project"></a>在 Windows Universal 项目中嵌入 Engagement Reach SDK
-无需添加任何内容。 `EngagementReach` 参考和资源已在你的项目中。
+无需添加任何内容。 
+            `EngagementReach` 参考和资源已在项目中。
 
 > [!TIP]
 > 可以自定义项目文件夹 `Resources` 中的图像，尤其是品牌图标（默认为 Engagement 图标）。 在 Universal 应用中，还可以移动共享项目中的 `Resources` 文件夹以便在应用之间共享其内容，但由于文件依赖于平台，因此必须将 `Resources\EngagementConfiguration.xml` 文件保存在其默认位置。
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/17/2016
 若要使用位于 `Application UI` 的 `Package.appxmanifest` 文件中的 **Windows 通知服务**（也称为 WNS），请单击左侧 bot 框中的 `All Image Assets`。 在 `Notifications` 中的框右侧，将 `toast capable` 从 `(not set)` 更改为 `(Yes)`。
 
 ### <a name="all-platforms"></a>所有平台
-你需要将应用同步到 Microsoft 帐户和 Engagement 平台。 为此，你需要创建一个帐户或登录 [Windows 开发人员中心](https://dev.windows.com)。 在此之后，创建一个新的应用程序并找到 SID 及密钥。 在 Engagement 前端，转至 `native push` 中的应用设置并粘贴你的凭据。 随后右键单击你的项目，依次选择 `store` 和 `Associate App with the Store...`。 只需选择之前创建的应用程序以便将其同步。
+需要将应用同步到 Microsoft 帐户和 Engagement 平台。 为此，需要创建一个帐户或登录 [Windows 开发人员中心](https://dev.windows.com)。 在此之后，创建一个新的应用程序并找到 SID 及密钥。 在 Engagement 前端，转至 `native push` 中的应用设置并粘贴凭据。 随后右键单击项目，依次选择 `store` 和 `Associate App with the Store...`。 只需选择之前创建的应用程序以便将其同步。
 
 ## <a name="initialize-the-engagement-reach-sdk"></a>初始化 Engagement Reach SDK
 修改 `App.xaml.cs`：
@@ -50,10 +50,10 @@ ms.lasthandoff: 11/17/2016
         EngagementReach.Instance.Init(e);
       }
   
-  `EngagementReach.Instance.Init` 会在专用的线程中运行。 不需要你亲自执行。
+  `EngagementReach.Instance.Init` 会在专用的线程中运行。 无需自行执行此操作。
 
 > [!NOTE]
-> 如果要在应用程序中的其他地方使用推送通知，则必须与 Engagement Reach [共享你的推送通道](#push-channel-sharing)。
+> 如果要在应用程序中的其他地方使用推送通知，则必须与 Engagement Reach [共享推送通道](#push-channel-sharing)。
 > 
 > 
 
@@ -63,10 +63,10 @@ Engagement 提供了两种方法为应用程序中的公告和轮询添加 Reach
 两种集成之间的选择可归纳为以下方式：
 
 * 如果页面已从代理 `EngagementPage` 继承了集成，可以选择覆盖集成，也就是将页面中的 `EngagementPage` 替换为 `EngagementPageOverlay`，将 `xmlns:engagement="using:Microsoft.Azure.Engagement"` 替换为 `xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"`。
-* 如果想要精确地将 Reach UI 放置在页面内，或者不想向页面中添加另一个继承级别，你可以选择 Web 视图手动集成。 
+* 如果想要精确地将 Reach UI 放置在页面内，或者不想向页面中添加另一个继承级别，可以选择 Web 视图手动集成。 
 
 ### <a name="overlay-integration"></a>覆盖集成
-Engagement 覆盖会动态添加用于在页面中显示 Reach 营销活动的 UI 元素。 如果覆盖不适合你的布局，则应考虑 Web 视图手动集成。
+Engagement 覆盖会动态添加用于在页面中显示 Reach 营销活动的 UI 元素。 如果覆盖不适合布局，则应考虑 Web 视图手动集成。
 
 在 .xaml 文件中，将 `EngagementPage` 引用更改为 `EngagementPageOverlay`
 
@@ -91,7 +91,7 @@ Engagement 覆盖会动态添加用于在页面中显示 Reach 营销活动的 U
             <!-- Your layout -->
         </engagement:EngagementPageOverlay>
 
-然后在.cs 文件中，在 `EngagementPageOverlay` 而不是 `EngagementPage` 中标记你的页面，然后导入 `Microsoft.Azure.Engagement.Overlay`。
+然后在.cs 文件中，在 `EngagementPageOverlay` 而不是 `EngagementPage` 中标记页面，然后导入 `Microsoft.Azure.Engagement.Overlay`。
 
             using Microsoft.Azure.Engagement.Overlay;
 
@@ -127,7 +127,7 @@ Engagement 覆盖会在由布局和两个 `WebView` 元素组成的页面顶部�
 可以直接在 `EngagementPageOverlay.cs` 文件中自定义覆盖元素。
 
 ### <a name="web-views-manual-integration"></a>Web 视图手动集成
-Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `WebView` 元素。 你唯一需要做的就是将这两个 `WebView` 元素添加到页面中的某处，如下例所示：
+Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `WebView` 元素。 唯一需要做的就是将这两个 `WebView` 元素添加到页面中的某处，如下例所示：
 
     <Grid x:Name="engagementGrid">
 
@@ -146,7 +146,7 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
 > 
 
 ## <a name="handle-datapush-optional"></a>句柄 datapush（可选）
-如果你希望应用程序能够接收 Reach 数据推送，则必须实现 EngagementReach 类的两个事件：
+如果希望应用程序能够接收 Reach 数据推送，则必须实现 EngagementReach 类的两个事件：
 
 在 App.xaml.cs 的 App() 构造函数中添加：
 
@@ -163,16 +163,16 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
               return true;
             };
 
-你可以看到每个方法的回调都返回一个布尔值。 Engagement 会在分发数据推送之后将反馈发送到其后端。 如果回调返回 false，则发送 `exit` 反馈。 否则，将会是 `action`。 如果没有为事件设置回调，则 `drop` 反馈将被返回到 Engagement。
+可以看到每个方法的回调都返回一个布尔值。 Engagement 会在分发数据推送之后将反馈发送到其后端。 如果回调返回 false，则发送 `exit` 反馈。 否则，会是 `action`。 如果没有为事件设置回调，则 `drop` 反馈会被返回到 Engagement。
 
 > [!WARNING]
-> Engagement 不能接收一个数据推送的多个反馈。 如果打算在一个事件上设置多个句柄，请注意反馈将对应最后发送的那个。 在这种情况下，我们建议你始终返回同一值，以避免在前端有令人困惑的反馈。
+> Engagement 不能接收一个数据推送的多个反馈。 如果打算在一个事件上设置多个句柄，请注意反馈将对应最后发送的那个。 在这种情况下，我们建议始终返回同一值，以避免在前端有令人困惑的反馈。
 > 
 > 
 
 ## <a name="customize-ui-optional"></a>自定义 UI（可选）
 ### <a name="first-step"></a>第一步
-我们可让你自定义 Reach UI。
+我们将允许你自定义使其 UI。
 
 若要执行此操作，必须创建 `EngagementReachHandler` 类的一个子类。
 
@@ -188,7 +188,7 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
               }
             }
 
-然后，使用 `App()` 方法中 `App.xaml.cs` 类的自定义对象，设置 `EngagementReach.Instance.Handler` 字段的内容。
+然后，设置的内容`EngagementReach.Instance.Handler`字段与在你自定义对象你`App.xaml.cs`类内`App()`方法。
 
 **示例代码：**
 
@@ -201,7 +201,7 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
 
 > [!NOTE]
 > 默认情况下，Engagement 会利用其自己的 `EngagementReachHandler` 的实现。
-> 你不必创建自己的方法，即使创建了，也无需覆盖每个方法。 默认行为是选择 Engagement 基对象。
+> 不必创建自己的方法，即使创建了，也无需覆盖每个方法。 默认行为是选择 Engagement 基对象。
 > 
 > 
 
@@ -210,9 +210,9 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
 
 若要提供完全自定义的可能性，我们只需使用 Web 视图。 如果想要自定义布局，直接覆盖资源文件 `EngagementAnnouncement.html` 和 `EngagementNotification.html` 即可。 Engagement 需要 `<body></body>` 中的所有代码才能正确运行。 但是可以在 `engagement_webview_area` 外面添加标记。
 
-不过你可以决定使用自己的资源。
+不过可以决定使用自己的资源。
 
-可以覆盖子类中的 `EngagementReachHandler` 方法来告诉 Engagement 使用你的布局，但请注意嵌入 Engagement 机制：
+可以覆盖子类中的 `EngagementReachHandler` 方法来告诉 Engagement 使用布局，但请注意嵌入 Engagement 机制：
 
 **示例代码：**
 
@@ -241,10 +241,10 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
 NotfificationHTML 为 `ms-appx-web:///Resources/EngagementNotification.html`。 它代表用于设计推送消息通知的 html 文件。 NotfificationName 为 `engagement_notification_content`。 它是 xaml 页面中 webview 设计的名称。
 
 ### <a name="customization"></a>自定义
-如果保留了 Engagement 对象，你可以按照需要自定义通知和公告 Web 视图。 注意描述了三次 webview 对象：第一次在 xaml 中，第二次在 "setwebview()" 方法的 .cs 文件中，第三次在 html 文件中。
+如果保留了 Engagement 对象，可以按照需要自定义通知和公告 Web 视图。 注意描述了三次 webview 对象：第一次在 xaml 中，第二次在 .cs 文件的“setwebview()”方法中，第三次在 html 文件中。
 
 * 在 xaml 中描述当前图形布局 webview 组件。
-* 在 .cs 文件中，你可以定义 "setwebview()" 并在其中设置两个 webview 的维度（通知和公告）。 在应用程序调整大小时，这会非常有效。
+* 在 .cs 文件中，可以定义 "setwebview()" 并在其中设置两个 webview 的维度（通知和公告）。 在应用程序调整大小时，这会非常有效。
 * 在 Engagement html 文件中，我们描述了 webview 内容、设计和元素在彼此之间的位置。
 
 ### <a name="launch-message"></a>启动消息
@@ -280,12 +280,12 @@ NotfificationHTML 为 `ms-appx-web:///Resources/EngagementNotification.html`。 
 > 
 > 
 
-## <a name="a-idpush-channel-sharinga-push-channel-sharing"></a><a id="push-channel-sharing"></a>推送通道共享
+## <a id="push-channel-sharing"></a>推送通道共享
 如果因为其他目的要在应用程序中使用推送通知，则必须使用 Engagement SDK 的推送通道共享功能。 这是为了避免丢失的推送。
 
-* 可以将自己的推送通道提供给 Engagement Reach 初始化。 SDK 将使用你的通道，而不会请求新的通道。
+* 可以将自己的推送通道提供给 Engagement Reach 初始化。 SDK 将使用通道，而不会请求新的通道。
 
-在 `InitEngagement` 文件的 `App.xaml.cs` 方法中，使用你的推送通道更新 Engagement Reach 初始化：
+在 `InitEngagement` 文件的 `App.xaml.cs` 方法中，使用推送通道更新 Engagement Reach 初始化：
 
     /* Your own push channel logic... */
     var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
@@ -294,7 +294,7 @@ NotfificationHTML 为 `ms-appx-web:///Resources/EngagementNotification.html`。 
     EngagementAgent.Instance.Init(e);
     EngagementReach.Instance.Init(e,pushChannel);
 
-* 或者，如果只是想在 Reach 初始化之后使用推送通道，你可以针对 Engagement Reach 设置一个回调，以便在 SDK 创建完通道后获取该通道。
+* 或者，如果只是想在 Reach 初始化之后使用推送通道，可以针对 Engagement Reach 设置一个回调，以便在 SDK 创建完通道后获取该通道。
 
 Reach 初始化**之后**，在任意位置设置回调：
 
@@ -309,7 +309,7 @@ Reach 初始化**之后**，在任意位置设置回调：
     }
 
 ## <a name="custom-scheme-tip"></a>自定义方案提示
-我们提供了自定义方案可供使用。 可以从 Engagement 前端发送将要在 Engagement 应用程序中使用的不同类型的 URI。 默认方案（如 `http, ftp, ...`）由 Windows 管理，如果设备上没有安装默认应用程序，将会弹出一个窗口提示。 还可以为应用程序创建自己的自定义方案。
+我们提供了自定义方案可供使用。 可以从 Engagement 前端发送将要在 Engagement 应用程序中使用的不同类型的 URI。 默认方案（如 `http, ftp, ...`）由 Windows 管理，如果设备上没有安装默认应用程序，会弹出一个窗口提示。 还可以为应用程序创建自己的自定义方案。
 
 在应用程序中设置自定义方案的一个简单方法就是打开 `Package.appxmanifest`，进入“`Declarations`”面板。 在“可用声明”滚动框中选择“`Protocol`”并进行添加。 使用新协议所需的名称编辑“`Name`”字段。
 
@@ -338,5 +338,4 @@ Reach 初始化**之后**，在任意位置设置回调：
                 }
               }
               #endregion
-
 

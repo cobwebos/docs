@@ -14,19 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a874bc48cc94fff32382ccdb832f0fbd3d08e03f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.openlocfilehash: eada8f2bcd2488d5ed36b0c24aa3d1b917815517
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
 **媒体服务操作 REST** API 用于在媒体服务帐户中创建作业、资产、访问策略和其他对象操作。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
 
-Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。 由于媒体服务遵循 Azure 设计准则，因此在连接到媒体服务时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。 以下部分介绍你在创建请求和接收来自媒体服务的响应时可以使用的标头和 HTTP 谓词。
+Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。 由于媒体服务遵循 Azure 设计准则，因此在连接到媒体服务时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。 以下部分介绍创建请求和接收来自媒体服务的响应时可以使用的标头和 HTTP 谓词。
 
 本主题概述了如何在媒体服务中使用 REST v2。
 
@@ -53,7 +52,7 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
         . . . 
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 请求标头
-每次调用媒体服务时，必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
+每次调用媒体服务时，都必须在请求中包括一组必需标头，并且还可以根据需要包括一组可选标头。 下表列出了必需的标头：
 
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
@@ -78,10 +77,10 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 | Accept-Charset |字符集类型，如“UTF-8” |默认值为 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |允许不支持 HTTP 方法（例如 PUT 或 DELETE）的客户端或防火墙使用这些通过 GET 调用隧道化的方法。 |
 | Content-Type |内容类型 |PUT 或 POST 请求中请求正文的内容类型。 |
-| client-request-id |字符串 |调用方定义的值，用于标识给定请求。 如果指定，会在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
+| client-request-id |字符串 |调用方定义的值，用于标识给定请求。 如果指定，此值会包含在响应消息中，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
-下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
+下面是可以根据所请求的资源以及要执行的操作返回的一组标头。
 
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
@@ -121,5 +120,4 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

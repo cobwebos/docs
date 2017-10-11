@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: a56a5af171eaca259db29f25fee4331a77313420
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>教程：Azure Active Directory 与 Dropbox for Business 的集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/08/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Dropbox for Business 测试用户](#creating-a-dropbox-for-business-test-user)** - 在 Dropbox for Business 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建业务测试的用户是 Dropbox](#creating-a-dropbox-for-business-test-user)**  -若要在 Dropbox for Business 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -109,7 +108,7 @@ ms.lasthandoff: 07/08/2017
 
 3. 在“Dropbox for Business 域和 URL”部分中，执行以下步骤：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 登录到 Dropbox for business 租户。 
+    a. 登录到 Dropbox for business 租户。 
    
     ![配置单一登录](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769509.png "配置单一登录")
    
@@ -121,11 +120,11 @@ ms.lasthandoff: 07/08/2017
    
     ![配置单一登录](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769511.png "配置单一登录")
    
-    d.单击“下一步”。 在“单一登录”部分，选择“启用单一登录”，然后单击“更多”，展开此部分。  
+    d.单击“下一步”。 在“单一登录”部分，选择“启用单一登录”，并单击“更多”，展开此部分。  
    
     ![配置单一登录](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769512.png "配置单一登录")
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 复制位于“用户可输入其电子邮件地址进行登录或直接转到”旁的 URL。 
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 复制位于“用户可输入其电子邮件地址进行登录或直接转到”旁的 URL。 
     
     ![配置单一登录](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769513.png)
     
@@ -138,7 +137,7 @@ ms.lasthandoff: 07/08/2017
     > [!NOTE] 
     > 此值不是实际值。 使用从其“单一登录”部分中获取的实际登录 URL 更新该值。 请联系 [Dropbox for Business 客户端支持团队](https://www.dropbox.com/business/contact)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_certificate.png) 
 
@@ -154,9 +153,9 @@ ms.lasthandoff: 07/08/2017
    
     ![配置单一登录](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "配置单一登录")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“必需”。
+    a. 单击“必需”。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在 Azure 门户中的“配置登录”窗口中，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“登录 URL”文本框中。
+    b. 在 Azure 门户中的“配置登录”窗口中，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“登录 URL”文本框中。
 
     c. 单击“选择证书”，然后浏览到“Base64 编码的证书文件”。
 
@@ -188,7 +187,7 @@ ms.lasthandoff: 07/08/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-dropboxforbusiness-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -213,7 +212,7 @@ ms.lasthandoff: 07/08/2017
 
 **若要将 Britta Simon 分配到 Dropbox for Business，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -260,5 +259,4 @@ ms.lasthandoff: 07/08/2017
 [201]: ./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_general_203.png
-
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: e59b750e44fa6f6586ecd542dd888aedd2574ebb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/25/2017
-
+ms.openlocfilehash: 1b188b2a057da56c0c44bdbf52086ebb037edb6b
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-manage-windows-virtual-machines-in-visual-studio"></a>在 Visual Studio 中创建和管理 Windows 虚拟机
 [!INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
-
 

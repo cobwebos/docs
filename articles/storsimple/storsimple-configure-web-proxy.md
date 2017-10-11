@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 66ee6ce15e51b14366eac0512c899d1c425c6092
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
 ## <a name="overview"></a>概述
@@ -32,7 +31,7 @@ Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows Pow
 
 完成 Web 代理配置后，可以在 Microsoft Azure StorSimple Manager 服务和 Windows PowerShell for StorSimple 中查看配置的 Web 代理设置。 
 
-阅读本教程之后，你将能够：
+阅读本教程之后，能够：
 
 * 使用安装向导和 cmdlet 配置 Web 代理
 * 使用 cmdlet 启用 Web 代理
@@ -45,7 +44,7 @@ Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows Pow
 * 使用安装向导来引导完成配置步骤。
 * 使用 Windows PowerShell for StorSimple 中的 cmdlet。
 
-以下部分将介绍上述每种方法。
+以下部分介绍上述每种方法。
 
 ## <a name="configure-web-proxy-via-the-setup-wizard"></a>通过安装向导配置 Web 代理
 可以使用安装向导来引导自己完成 Web 代理的配置步骤。 执行以下步骤，在设备上配置 Web 代理。
@@ -70,7 +69,7 @@ Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows Pow
    
     ![在 StorSimple 设备上配置 Web 代理 - 1](./media/storsimple-configure-web-proxy/IC751830.png)
 
-如果这是首次注册自己的设备，请继续注册。 如果设备已注册，向导将会退出。 配置的设置将会保存，
+如果这是首次注册自己的设备，请继续注册。 如果设备已注册，向导会退出。 配置的设置会保存，
 
 同时，Web 代理已启用。 可以跳过[启用 Web 代理](#enable-web-proxy)步骤，直接转到[在 Azure 经典门户中查看 Web 代理设置](#view-web-proxy-settings-in-the-azure-classic-portal)。
 
@@ -113,7 +112,7 @@ Web 代理默认已禁用。 在 StorSimple 设备上配置 Web 代理设置后�
 Web 代理设置是通过 Windows PowerShell 界面配置的，无法在经典门户中更改。 但是，可以在经典门户中查看配置的这些设置。 执行以下步骤可查看 Web 代理。
 
 #### <a name="to-view-web-proxy-settings"></a>查看 Web 代理设置
-1. 导航到“StorSimple Manager 服务”>“设备”。 选择并单击某个设备，然后转到“配置”。
+1. 导航到“StorSimple Manager 服务”>“设备”。 选择并单击某个设备，转到“配置”。
 2. 将“配置”页向下滚动到“Web 代理设置”部分。 可以查看 StorSimple 设备上配置的 Web 代理设置，如下所示。
    
     ![在管理门户中查看 Web 代理](./media/storsimple-configure-web-proxy/ViewWebProxyPortal_M.png)
@@ -128,7 +127,7 @@ Web 代理设置是通过 Windows PowerShell 界面配置的，无法在经典�
 | 3. |0x80070057 - 参数无效 |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式：`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
 | 4. |0x800706ba - RPC 服务器不可用 |根本原因是以下项之一：</br></br>群集未启动。</br></br>数据路径服务未运行。</br></br>命令从被动控制器运行，但无法与主动控制器通信。 |请咨询 Microsoft 支持，确保群集可启动，数据路径服务可运行。</br></br>从主动控制器运行命令。 若要从被动控制器运行命令，需确保被动控制器可与主动控制器通信。 如果此连接中断，需要咨询 Microsoft 支持。 |
 | 5. |0x800706be - RPC 调用失败 |群集已关闭。 |请咨询 Microsoft 支持，确保群集可启动。 |
-| 6. |0x8007138f - 找不到群集资源 |找不到平台服务群集资源。 安装不当时可能会发生此错误。 |可能需要在设备上执行出厂重置。 可能需要创建平台资源。 请联系 Microsoft 支持了解后续措施。 |
+| 6. |0x8007138f - 找不到群集资源 |找不到平台服务群集资源。 安装不当时可能会发生此错误。 |可能需要在设备上执行出厂重置。 可能需要创建平台资源。 请联系 Microsoft 支持了解后续步骤。 |
 | 7. |0x8007138c - 群集资源未联机 |平台或数据路径群集资源未联机。 |请联系 Microsoft 支持，帮助确保数据路径和平台服务资源联机。 |
 
 > [!NOTE]
@@ -140,5 +139,4 @@ Web 代理设置是通过 Windows PowerShell 界面配置的，无法在经典�
 ## <a name="next-steps"></a>后续步骤
 * 如果在部署设备或配置 Web 代理设置时遇到任何问题，请参阅[排查 StorSimple 设备的部署问题](storsimple-troubleshoot-deployment.md)。
 * 若要了解如何使用 StorSimple Manager 服务，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

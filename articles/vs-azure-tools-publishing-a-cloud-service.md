@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/14/2017
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 23cea0486a769d4f446f5114016d5accbe8113cf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.openlocfilehash: e617d600dbc8287eea737fc4969833e873365288
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publishing-a-cloud-service-using-the-azure-tools"></a>使用 Azure Tools 发布云服务
 通过使用 Azure Tools for Microsoft Visual Studio，可直接从 Visual Studio 发布 Azure 应用程序。 Visual Studio 支持以集成方式将云服务发布到暂存或生产环境中。
@@ -78,10 +77,10 @@ ms.lasthandoff: 08/16/2017
 * **只能支持 Web 角色的单个实例：**不能在部署环境中使用任何 Ｗeb 角色的多个实例。 但是，支持仅含一个实例的多个 Web 角色。
 * **必须启用远程桌面连接：**这是必备条件，以便 Web 部署可以使用该用户和密码来连接到虚拟机，从而将更改部署到运行 Internet Information Services (IIS) 的服务器。 此外，可能需要连接到虚拟机才能将可信证书添加到此虚拟机上的 IIS。 （这样可以确保 Web 部署使用的 IIS 远程连接是安全的。）
 
-以下过程假设你正在使用“发布 Azure 应用程序”向导。
+以下过程假设正在使用“发布 Azure 应用程序”  向导。
 
 ### <a name="to-enable-web-deploy-when-you-publish-your-application"></a>发布应用程序时启用 Web 部署
-1. 若要启用“为所有 Web 角色启用 Web 部署”复选框，必须先配置远程桌面连接。 选择“为所有角色启用远程桌面”，然后在显示的“远程桌面配置”框中提供用于远程连接的凭据。 有关详细信息，请参阅 [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md)（对 Azure 角色使用远程桌面）。
+1. 若要启用“为所有 Web 角色启用 Web 部署”复选框，必须先配置远程桌面连接。 选择“为所有角色启用远程桌面”，然后在显示的“远程桌面配置”框中提供将用于远程连接的凭据。 有关详细信息，请参阅 [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md)（对 Azure 角色使用远程桌面）。
 2. 若要为应用程序中的所有 Web 角色启用 Web 部署，请选择“为所有 Web 角色启用 Web 部署”。
    
     此时会显示一个黄色的警告三角形。 默认情况下，Web 部署使用受信任的自签名证书，因此不建议上传敏感数据。 如果需要保护敏感数据的进程，可以添加 SSL 证书用于 Web 部署连接。 此证书需是可信证书。 有关如何执行此操作的信息，请参阅本主题下文中的**确保 Web 部署安全**部分。
@@ -95,7 +94,7 @@ ms.lasthandoff: 08/16/2017
    > 
 
 ### <a name="to-update-your-web-role-by-using-web-deploy"></a>使用 Web 部署来更新 Web 角色
-1. 要使用 Web 部署，请在 Visual Studio 中，针对所有 Web 角色，对要发布的项目进行代码更改，并在解决方案中，右键单击此项目节点并指向“发布”。 此时会显示“发布 Web”对话框。
+1. 要使用 Web 部署，请在 Visual Studio 中，针对所有 Web 角色，对要发布的项目进行代码更改，并在解决方案中，右键单击此项目节点并指向“发布”。 此时显示“发布 Web”  对话框。
 2. （可选）如果添加了受信任的 SSL 证书，以便使用 IIS 的远程连接，则可以清除“允许不受信任的证书”复选框。 有关如何添加证书以确保 Web 部署安全的信息，请参阅本主题下文中的**确保 Web 部署安全**部分。
 3. 要使用 Web 部署，发布机制需要使用在首次发布包时为远程桌面连接设置的用户名和密码。
    
@@ -104,7 +103,7 @@ ms.lasthandoff: 08/16/2017
    3. （可选）如果要在此配置文件中保存此密码，请选择“保存密码”。
 4. 若要发布对 Web 角色所做的更改，请选择“发布”。
    
-    状态行会显示“发布已启动”。 完成发布后，会显示“发布成功”。 更改现已部署到虚拟机上的 Web 角色。 现在可以在 Azure 环境中启动 Azure 应用程序以测试更改。
+    状态行会显示“发布已启动” 。 完成发布后，会显示“发布成功”  。 更改现已部署到虚拟机上的 Web 角色。 现在可以在 Azure 环境中启动 Azure 应用程序以测试更改。
 
 ### <a name="to-make-web-deploy-secure"></a>确保 Web 部署安全
 1. 默认情况下，Web 部署使用受信任的自签名证书，因此不建议上传敏感数据。 如果需要保护敏感数据的进程，可以添加 SSL 证书用于 Web 部署连接。 此证书必须是从证书颁发机构 (CA) 获取的受信任证书。
@@ -115,10 +114,10 @@ ms.lasthandoff: 08/16/2017
    1. 要连接到正在运行 Web 角色的虚拟机，请单击“云资源管理器”或“服务器资源管理器”中的 Web 角色实例，并选择“使用远程桌面连接”。 有关如何连接到虚拟机的详细步骤，请参阅 [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md)（对 Azure 角色使用远程连接）。
       
       浏览器会提示下载 .RDP 文件。
-   2. 若要添加 SSL 证书，请在 IIS 管理器中打开管理服务。 在 IIS 管理器中，通过在“操作”窗格中打开“绑定”链接来启用 SSL。 此时会显示“添加站点绑定”对话框。 选择“添加”，并在“类型”下拉列表中选择“HTTPS”。 在 SSL 证书列表中，选择已上传到 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885) 并已由 CA 签名的 SSL 证书。 有关详细信息，请参阅 [Configure Connection Settings for the Management Service](http://go.microsoft.com/fwlink/?LinkId=215824)（配置管理服务的连接设置）。
+   2. 若要添加 SSL 证书，请在 IIS 管理器中打开管理服务。 在 IIS 管理器中，通过在“操作”窗格中打开“绑定”链接来启用 SSL。 此时会显示“添加站点绑定”  对话框。 选择“添加”，并在“类型”下拉列表中选择“HTTPS”。 在 SSL 证书列表中，选择已上传到 Azure 经典门户并已由 CA 签名的 SSL 证书。 有关详细信息，请参阅 [Configure Connection Settings for the Management Service](http://go.microsoft.com/fwlink/?LinkId=215824)（配置管理服务的连接设置）。
       
       > [!NOTE]
-      > 如果添加了受信任的 SSL 证书，“发布向导”中不再显示黄色警告三角形。
+      > 如果添加了受信任的 SSL 证书，“发布向导”中将不再显示黄色警告三角形。
       > 
       > 
 
@@ -129,24 +128,23 @@ ms.lasthandoff: 08/16/2017
 1. 要将程序集添加到服务包，请使用以下步骤：
    
    1. 在“解决方案资源管理器”中，打开缺少已引用程序集的项目的项目节点。
-   2. 要将程序集添加到项目，请打开“引用”文件夹的快捷菜单，然后选择“添加引用”。 此时会显示“添加引用”对话框。
+   2. 若要将程序集添加到项目，请打开“引用”文件夹的快捷菜单，然后选择“添加引用”。 此时会显示“添加引用”对话框。
    3. 选择要添加的引用，并选择“确定”按钮。
       
-      该引用将添加到“引用”文件夹下的列表中。
-   4. 打开所添加的程序集的快捷菜单，并选择“属性”。 此时会显示“属性”窗口。
+      该引用会添加到“引用”  文件夹下的列表中。
+   4. 打开所添加的程序集的快捷菜单，并选择“属性”。 此时会显示“属性”  窗口。
       
-      要将此程序集包含在服务包中，请在“本地复制”列表中选择“True”。
+      若要将此程序集包含在服务包中，请在“本地复制”列表中选择“True”。
 2. 在“解决方案资源管理器”中，打开缺少已引用程序集的项目的项目节点。
-3. 要将程序集添加到项目，请打开“引用”文件夹的快捷菜单，然后选择“添加引用”。 此时会显示“添加引用”对话框。
+3. 若要将程序集添加到项目，请打开“引用”文件夹的快捷菜单，然后选择“添加引用”。 此时会显示“添加引用”  对话框。
 4. 选择要添加的引用，并选择“确定”按钮。
    
-    该引用将添加到“引用”文件夹下的列表中。
+    该引用会添加到“引用”  文件夹下的列表中。
 5. 打开所添加的程序集的快捷菜单，并选择“属性”。 此时会显示“属性”窗口。
-6. 要将此程序集包含在服务包中，请在“本地复制”列表中选择“True”。
+6. 若要将此程序集包含在服务包中，请在“本地复制”列表中选择“True”。
 7. 要将文件包括在已添加到 Web 角色项目的服务包中，请打开文件的快捷菜单，然后选择“属性”。 从“属性”窗口中的“生成”操作列表框内选择“内容”。
 8. 要将文件包括在已添加到辅助角色项目的服务包中，请打开文件的快捷菜单，然后选择“属性”。 从“属性”窗口中的“复制到输出目录”列表框内选择“如果较新则复制”。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何从 Visual Studio 发布到 Azure，请参阅 [Publish Azure Application Wizard](vs-azure-tools-publish-azure-application-wizard.md)（发布 Azure 应用程序向导）。
-
 

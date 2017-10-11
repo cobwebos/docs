@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/16/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
 ms.openlocfilehash: 46b6ec12655b64b8fce6e103d5d71a4e8021890e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
@@ -71,7 +70,7 @@ Datadog 是适用于云规模应用程序的全球领先监视服务，将服务
 [查看相关文档。][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用程序服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标以外，Dynatrace 还可以实现环境的端到端可视化，显示从客户端到数据库层的事务。 基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
+Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标以外，Dynatrace 还可以实现环境的端到端可视化，显示从客户端到数据库层的事务。 基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
 
 [查看相关文档。][dynatrace-doc]
 
@@ -89,7 +88,7 @@ PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提
 [查看相关文档。][pagerduty-doc]
 
 ## <a name="sciencelogic"></a>ScienceLogic
-ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任何技术。  ScienceLogic 在一个平台中提供必要的规模、安全性、自动化和复原性，简化不断扩展的管理任务（管理持续运行的 IT 资源、服务和应用程序）。  ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。  ScienceLogic 提供 Azure 服务和资源的实时可见性，让你了解某些内容出现故障并能更快解决。 还可将 Azure 与其他云、数据中心系统以及服务一起管理。
+ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任何技术。  ScienceLogic 在一个平台中提供必要的规模、安全性、自动化和复原性，简化不断扩展的管理任务（管理持续运行的 IT 资源、服务和应用程序）。  ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。  使用 ScienceLogic 可以实时查看 Azure 服务和资源，以便了解何时某个功能不正常工作，并可以更快地解决它。 还可将 Azure 与其他云、数据中心系统以及服务一起管理。
 
 [了解详细信息。][sciencelogic-doc]
 
@@ -159,4 +158,3 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic 文档。"
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk 文档。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic 文档。"
-

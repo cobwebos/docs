@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: c2873510c280a2683c235cfdce3d2617c3b665cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 Azure AD Connect 的同步功能有两个组件：
@@ -46,7 +45,7 @@ Azure AD Connect 的同步功能有两个组件：
 启用某个功能后，无法再次将其禁用。
 
 > [!NOTE]
-> 从 2016 年 8 月 24 日起，将为新的 Azure AD 目录默认启用*重复属性复原*功能。 今后还会针对此日期之前创建的目录推出并启用此功能。 在为目录启用此功能之前的短时间内，用户会收到电子邮件通知。
+> 从 2016 年 8 月 24 日起，为新的 Azure AD 目录默认启用*重复属性复原*功能。 今后还会针对此日期之前创建的目录推出并启用此功能。 在为目录启用此功能之前的短时间内，用户会收到电子邮件通知。
 > 
 > 
 
@@ -62,12 +61,12 @@ Azure AD Connect 的同步功能有两个组件：
 | UserWriteback |目前不支持。 |
 
 ## <a name="duplicate-attribute-resiliency"></a>重复属性复原
-将属性“隔离”并分配临时值，而不是使预配包含重复 UPNs/proxyAddresses 的对象失败。 解决冲突时，自动将临时 UPN 更改为适当的值。 有关详细信息，请参阅[标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)。
+将属性“隔离”并分配临时值，而不是使预配包含重复 UPNs/proxyAddresses 的对象失败。 解决冲突后，临时 UPN 会自动更改为适当的值。 有关详细信息，请参阅[标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)。
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName 软匹配
-启用此功能后，除了始终启用的[主 SMTP 地址](https://support.microsoft.com/kb/2641663)，将为 UPN 启用软匹配。 软匹配功能用于将 Azure AD 中的现有云用户与本地用户进行匹配。
+启用此功能后，除了始终启用的[主 SMTP 地址](https://support.microsoft.com/kb/2641663)外，还将为 UPN 启用软匹配。 软匹配功能用于将 Azure AD 中的现有云用户与本地用户进行匹配。
 
-如果需要将本地 AD 帐户与云中创建的现有帐户进行匹配但不使用 Exchange Online，则此功能特别有用。 在此情况下，通常没有必要在云中设置 SMTP 属性。
+如果需要将本地 AD 帐户与云中创建的现有帐户进行匹配，但未使用 Exchange Online，则此功能非常有用。 在此情况下，通常没有必要在云中设置 SMTP 属性。
 
 在新建的 Azure AD 目录中，默认已打开此功能。 可以运行以下命令查看是否已启用此功能：  
 
@@ -89,7 +88,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 有关详细信息，请参阅 [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)。
 
-如果 userPrincipalName 在本地发生更改并且你使用密码同步，则启用此功能可允许同步引擎对其进行更新。如果使用联合身份验证，此功能不受支持。
+当本地的 userPrincipalName 发生更改并且你在使用密码同步时，启用此功能可允许同步引擎更新该元素。 如果使用联合身份验证，此功能不受支持。
 
 在新建的 Azure AD 目录中，默认已打开此功能。 可以运行以下命令查看是否已启用此功能：  
 
@@ -108,5 +107,4 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ## <a name="see-also"></a>另请参阅
 * [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
-
 

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="create-your-first-virtual-network"></a>创建自己的首个虚拟网络
 
 了解如何创建包含两个子网的虚拟网络 (VNet)、如何创建两个虚拟机 (VM)，以及如何将每个 VM 连接到其中一个子网，如下图所示：
@@ -34,9 +32,9 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
 1. [创建包含两个子网的 VNet](#create-vnet)
 2. [创建两个 VM，每个都有一个网络接口 (NIC)](#create-vms)，并将一个网络安全组 (NSG) 关联到每个 NIC
 3. [连接到 VM 以及从 VM 进行连接](#connect-to-from-vms)
-4. [删除所有资源](#delete-resources)。 本练习中创建的某些资源在预配时会收费。 为了尽量减少费用，在完成练习后，请务必执行本部分的步骤，将创建的资源删除。
+4. [删除所有资源](#delete-resources)。 本练习中创建的某些资源在预配时会收费。 为尽量削减费用，完成练习后，请务必完成本节中的步骤以删除创建的资源。
 
-在完成本文的步骤以后，用户将对如何使用 VNet 有一个基本的了解。 提供后续步骤是为了让用户在更深的层次详细了解如何使用 VNet。
+在完成本节中的步骤后，可以基本了解如何使用 VNet。 提供后续步骤是为了让用户在更深的层次详细了解如何使用 VNet。
 
 ## <a name="create-vnet"></a>创建包含两个子网的虚拟网络
 
@@ -97,7 +95,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
     |**VM 磁盘类型**|*SSD*|
     |**用户名**|*由用户选择*|
     |**密码和确认密码**|*由用户选择*|
-    | **订阅**|*<Your subscription>*|此订阅必须是用户在本文[创建包含两个子网的虚拟网络](#create-vnet)部分的步骤 5 中选择的订阅。 将 VM 连接到 VNet 时，VNet 与 VM 必须属于同一订阅。|
+    | **订阅**|*<Your subscription>*|此订阅必须是用户在本文[创建包含两个子网的虚拟网络](#create-vnet)部分的步骤 5 中选择的订阅。 VM 所连接到的 VNet 必须与该 VM 位于同一订阅中。|
     |**资源组**|**使用现有项:** 选择 *MyRG*|虽然我们使用的资源组与用于 VNet 的相同，但资源不需属于同一资源组。|
     |**位置**|*美国西部*|此位置必须是用户在本文[创建包含两个子网的虚拟网络](#create-vnet)部分的步骤 5 中指定的位置。 资源所连接到的 VM 和 VNet 必须属于同一位置。|
 
@@ -113,7 +111,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
     |**网络安全组(防火墙)**|接受默认值|单击门户创建的“(新建) MyWebServer-nsg”默认 NSG 查看其设置。 在打开的“创建网络安全组”边栏选项卡中，可以看到其中有一个入站规则，该规则允许来自任意源 IP 地址的 TCP/3389 (RDP) 流量。|
     |**所有其他值**|接受默认值|若要详细了解其余设置，请阅读[关于 VM](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文。|
 
-    可以使用网络安全组 (NSG)，针对流入和流出 VM 的网络流量的类型创建入站/出站规则。 默认情况下，将拒绝到 VM 的所有入站流量。 可以为生产型 Web 服务器添加更多针对 TCP/80 (HTTP) 和 TCP/443 (HTTPS) 的入站规则。 没有针对出站流量的规则，因为默认情况下，所有出站流量都是允许的。 可以添加/删除规则，按策略来控制流量。 阅读[网络安全组](virtual-networks-nsg.md)一文，了解有关 NSG 的详细信息。
+    可以使用网络安全组 (NSG)，针对流入和流出 VM 的网络流量的类型创建入站/出站规则。 默认拒绝所有到 VM 的入站流量。 可以为生产型 Web 服务器添加更多针对 TCP/80 (HTTP) 和 TCP/443 (HTTPS) 的入站规则。 没有针对出站流量的规则，因为默认情况下，所有出站流量都是允许的。 可以添加/删除规则，按策略来控制流量。 阅读[网络安全组](virtual-networks-nsg.md)一文，了解有关 NSG 的详细信息。
 
 6.  在“摘要”边栏选项卡中查看设置，并单击“确定”创建 VM。 在创建 VM 的同时，系统会在门户仪表板上显示状态磁贴。 创建过程可能需要数分钟的时间。 不需等待创建过程完成。 当系统创建 VM 时，用户可以继续下一步操作。
 
@@ -176,7 +174,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
 
     ![连接到 Web 服务器 VM](./media/virtual-network-get-started-vnet-subnet/webserver.png)
 
-4. 允许浏览器下载 *MyWebServer.rdp* 文件，然后将其打开。
+4. 允许浏览器下载“MyWebServer.rdp”  文件，并将其打开。
 5. 如果出现一个对话框，提示无法验证远程连接的发布者，则请单击“连接”。
 6. 输入凭据时，请确保使用在本文[创建 Web 服务器 VM](#create-web-server-vm) 部分的步骤 3 中指定的用户名和密码登录。 如果显示的“Windows 安全”框没有列出正确的凭据，则可能需要单击“更多选项”，并单击“使用其他帐户”，以便指定正确的用户名和密码。 单击“确定”连接到 VM。
 7. 如果出现一个“远程桌面连接”框，提示无法验证远程计算机的身份，则请单击“是”。
@@ -194,14 +192,14 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
 
 1. 如果尚未打开到 MyWebServerVM 的远程连接，请完成本文[从 Internet 连接到 Web 服务器 VM](#connect-from-internet) 部分的步骤，以远程方式连接到 VM。
 2. 从 Windows 桌面打开 Internet Explorer。 在“设置 Internet Explorer 11”对话框中，单击“不使用推荐设置”，并单击“确定”。 对于生产服务器，建议接受推荐设置。
-3. 在 Internet Explorer 地址栏中，输入 [bing.com](http:www.bing.com)。如果出现一个 Internet Explorer 对话框，则请单击“添加”，然后单击“受信任的站点”对话框中的“添加”，再单击“关闭”。 对任何其他 Internet Explorer 对话框重复此过程。
+3. 在 Internet Explorer 地址栏中，输入 [bing.com](http:www.bing.com)。如果出现一个 Internet Explorer 对话框，则请单击“添加”，然后单击“受信任的站点”对话框中的“添加”，再单击“关闭”。 任何其他 Internet Explorer 对话框均重复此过程。
 4. 在必应搜索页上输入 *whatsmyipaddress*，并单击放大镜按钮。 必应会返回一个公共 IP 地址，该地址已分配给用户创建 VM 时门户创建的公共 IP 地址资源。 如果检查 **MyWebServer-ip** 资源的设置，则会看到分配给公共 IP 地址资源的同一 IP 地址，如下图所示。 不过，分配给 VM 的 IP 地址是不同的。
 
     ![连接到 Web 服务器 VM](./media/virtual-network-get-started-vnet-subnet/webserver-pip.png)
 
 5.  让远程桌面连接保持打开状态，以便完成下一部分的步骤。
 
-用户能够从 VM 连接到 Internet 是因为从 VM 发出的所有出站连接默认情况下都是允许的。 要限制出站连接，可将更多规则添加到适用于 NIC 的 NSG，以及/或者添加到 NIC 所连接到的子网。
+用户能够从 VM 连接到 Internet 是因为从 VM 发出的所有出站连接默认情况下都是允许的。 可将其他规则添加到应用于 NIC 的 NSG 和/或 NIC 连接到的子网，进而限制出站连接。
 
 如果通过门户将 VM 置于“已停止”（“已解除分配”）状态，公共 IP 地址可能会更改。 如果要求公共 IP 地址永不更改，则可对 IP 地址使用静态分配方法而非动态分配方法（默认）。 若要详细了解分配方法之间的差异，请阅读 [IP 地址类型和分配方法](virtual-network-ip-addresses-overview-arm.md)一文。
 
@@ -242,7 +240,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
 
 1. 若要查看在本文中创建的 MyRG 资源组，请完成本文[查看资源](#review)部分的步骤 1-3。 再次查看资源组中的资源。 如果按照前面的步骤创建了 MyRG 资源组，则会看到图中显示的步骤 4 的 12 项资源。
 2. 在“MyRG”边栏选项卡中，单击“删除”按钮。
-3. 门户会要求用户键入资源组的名称，以便确认用户需要删除它。 如果看到的资源不同于在本文[查看资源](#review)部分的步骤 4 中显示的资源，请单击“取消”。 如果只看到在本文中创建的 12 项资源，则请键入 *MyRG* 作为资源组名称，并单击“删除”。 删除资源组会删除资源组中的所有资源，因此在删除资源组之前，请确保始终确认其内容。 门户会先删除包含在资源组中的所有资源，然后删除资源组本身。 此过程需要几分钟。
+3. 门户会要求用户键入资源组的名称，以便确认用户需要删除它。 如果看到的资源不同于在本文[查看资源](#review)部分的步骤 4 中显示的资源，请单击“取消”。 如果只看到在本文中创建的 12 项资源，则请键入 *MyRG* 作为资源组名称，并单击“删除”。 删除资源组会删除资源组中的所有资源，因此在删除资源组之前，请确保始终确认其内容。 门户将删除资源组中包含的所有资源，然后删除资源组本身。 此过程需要几分钟。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -253,4 +251,3 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
 - [网络接口](virtual-network-network-interface.md)
 - [网络安全组](virtual-networks-nsg.md)
 - [虚拟机](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-

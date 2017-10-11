@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 394e2138ed2ba21b949195e473dafeaf6413cccf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.openlocfilehash: 394344c0e126472b97c2e8f721c8c8d6514a17dc
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用队列存储和 Visual Studio 连接服务 (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -29,7 +28,7 @@ ms.lasthandoff: 08/22/2017
 
 Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。 一条队列消息的大小最多可为 64 千字节 (KB)，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。
 
-若要开始，首先需要在存储帐户中创建 Azure 队列。 我们将向你展示如何使用代码创建队列。 此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。 示例是用 C\# 代码编写的，并使用了 Azure Storage Client Library for .NET。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
+若要开始，首先需要在存储帐户中创建 Azure 队列。 我们将向你展示如何使用代码创建队列。 此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。 示例是用 C\# 代码编写的，并使用了用于 .NET 的 Azure 存储客户端库。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
 
 **注意：**在 ASP.NET Core 中执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
 
@@ -74,7 +73,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 可从字符串（UTF-8 格式）或字节数组创建 **CloudQueueMessage** 对象。
 
-以下示例将插入消息“Hello, World”。
+以下示例插入了消息“Hello, World”。
 
     // Create a message and add it to the queue.
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
@@ -90,10 +89,10 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 ## <a name="read-and-remove-a-message-in-a-queue"></a>读取和删除队列中的消息
 代码分两步从队列中删除消息（取消对消息的排队）。
 
-1. 调用 **GetMessageAsync**，以获得队列中的下一条消息。 从 **GetMessageAsync** 返回的消息将变为对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。
+1. 调用 **GetMessageAsync**，以获得队列中的下一条消息。 从 **GetMessageAsync** 返回的消息将变为对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息持续 30 秒不可见。
 2. 若要完成从队列中删除消息的操作，请调用 **DeleteMessageAsync**。
 
-此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 以下代码会在处理消息后立即调用 **DeleteMessageAsync**。
+此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 以下代码在处理消息后立即调用 **DeleteMessageAsync** 。
 
     // Get the next message in the queue.
     CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
@@ -105,7 +104,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 ## <a name="leverage-additional-options-for-dequeuing-messages"></a>使用其他方法取消对消息的排队
 可以通过两种方式自定义队列中的消息检索。
-首先，可以获取一批消息（最多 32 个）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 **GetMessages** 5 分钟后，尚未删除的任何消息都将再次变为可见。
+首先，可获取一批消息（最多 32 条）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 **GetMessages**5 分钟后，尚未删除的任何消息都会再次变得可见。
 
     // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
     //   delete each message after processing.
@@ -154,5 +153,4 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-
 

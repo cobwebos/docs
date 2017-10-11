@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 1ecc2bdef5ff7ef8ed8dded7dc12428ce9657821
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的应用密码是什么？
-某些非浏览器应用（例如使用 Exchange Active Sync 的 Apple 本机电子邮件客户端）目前不支持多重身份验证。 多重身份验证是按用户启用的。  这意味着，用户在以下情况下不能使用多重身份验证：
+某些非浏览器应用（例如使用 Exchange Active Sync 的 Apple 本机电子邮件客户端）目前不支持 Multi-Factor Authentication。 Multi-Factor Authentication 是按用户启用的。  这意味着，用户在以下情况下不能使用多重身份验证：
 
 - 已为用户启用多重身份验证
 - 用户尝试使用非浏览器应用。
@@ -69,7 +68,7 @@ ms.lasthandoff: 09/20/2017
 3. 在验证页的顶部选择应用密码
 4. 单击“创建” 。
 5. 输入应用密码的名称，并单击“下一步”
-6. 将应用密码复制到剪贴板，然后将它粘贴到应用。
+6. 将应用密码复制到剪贴板，并将它粘贴到用户的应用。
    
    ![云](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
 
@@ -123,4 +122,3 @@ ms.lasthandoff: 09/20/2017
 - [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)
 
 - 试用 [Microsoft 验证器应用](microsoft-authenticator-app-how-to.md)以验证是否可以使用应用通知（而不是通过接收短信或电话）登录。 
-

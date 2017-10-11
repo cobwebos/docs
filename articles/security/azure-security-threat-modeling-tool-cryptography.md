@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
@@ -108,7 +106,7 @@ ms.lasthandoff: 08/23/2017
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | <p>产品必须使用 SHA-2 系列的哈希算法（SHA256、SHA384 和 SHA512）。 如果需要更短的哈希（例如 128 位输出长度）来适应出于缩短 MD5 哈希目的而设计的数据结构，产品团队可以截断 SHA2 哈希之一（通常为 SHA256）。 请注意，SHA384 是 SHA512 的截断版本。 不允许出于安全目的将加密哈希截断至 128 位以下。 新代码必须使用 MD2、MD4、MD5、SHA-0、 SHA-1 或 RIPEMD 哈希算法。 对于这些算法，哈希冲突在计算上是可行的，这会有效地破解这些算法。</p><p>为使加密灵活可控而允许的 .NET 哈希算法（按优先顺序列出）：</p><ul><li>SHA512Cng（符合 FIPS）</li><li>SHA384Cng（符合 FIPS）</li><li>SHA256Cng（符合 FIPS）</li><li>SHA512Managed（不符合 FIPS）（在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中使用 SHA512 作为算法名称）</li><li>SHA384Managed（不符合 FIPS）（在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中使用 SHA384 作为算法名称）</li><li>SHA256Managed（不符合 FIPS）（在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中使用 SHA256 作为算法名称）</li><li>SHA512CryptoServiceProvider（符合 FIPS）</li><li>SHA256CryptoServiceProvider（符合 FIPS）</li><li>SHA384CryptoServiceProvider（符合 FIPS）</li></ul>| 
+| **步骤** | <p>产品必须使用 SHA-2 系列的哈希算法（SHA256、SHA384 和 SHA512）。 如果需要更短的哈希（例如 128 位输出长度）来适应出于缩短 MD5 哈希目的而设计的数据结构，产品团队可以截断 SHA2 哈希之一（通常为 SHA256）。 请注意，SHA384 是 SHA512 的截断版本。 不允许出于安全目的将加密哈希截断至 128 位以下。 新代码必须使用 MD2、MD4、MD5、SHA-0、 SHA-1 或 RIPEMD 哈希算法。 对于这些算法，哈希冲突在计算上是可行的，这会有效地破解这些算法。</p><p>为使加密灵活可控而允许的 .NET 哈希算法（按优先顺序列出）：</p><ul><li>SHA512Cng（符合 FIPS）</li><li>SHA384Cng（符合 FIPS）</li><li>SHA256Cng（符合 FIPS）</li><li>SHA512Managed （非-符合 fips 标准的） （使用 SHA512 作为对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中的算法名称）</li><li>SHA384Managed （非-符合 fips 标准的） （使用 SHA384 算法名称形式调用 HashAlgorithm.Create 或 CryptoConfig.CreateFromName）</li><li>SHA256Managed （非-符合 fips 标准的） （使用 SHA256 作为对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中的算法名称）</li><li>SHA512CryptoServiceProvider（符合 FIPS）</li><li>SHA256CryptoServiceProvider（符合 FIPS）</li><li>SHA384CryptoServiceProvider（符合 FIPS）</li></ul>| 
 
 ## <a id="strong-db"></a>使用强加密算法加密数据库中的数据
 

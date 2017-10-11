@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 649cc1a78f3a9f343533cb18fb7d763e4f9ea196
 ms.openlocfilehash: 89fa04a1107b6abb49aefd68066443717ac9b731
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="troubleshoot-visual-studio-docker-development"></a>Visual Studio Docker 开发故障排除
 
 在使用 Visual Studio Tools for Docker 预览版时，可能会因预览特性而遇到一些问题。
@@ -44,7 +42,7 @@ ERROR: for webapplication1  Cannot create container for service webapplication1:
 ```
 若要解决此问题，请执行以下操作：
 
-1. 右键单击通知区域中的“Docker for Windows”，然后选择“设置”。  
+1. 右键单击通知区域中的“Docker for Windows”，并选择“设置”。  
 2. 选择“共享驱动器”，并共享项目所在的驱动器。
 
 ### <a name="windows-containers"></a>**Windows 容器**
@@ -56,7 +54,7 @@ ERROR: for webapplication1  Cannot create container for service webapplication1:
 1. 必须安装具有 .NET Core 和 Docker 预览版工作负荷的 Visual Studio 2017 RC（或更高版本）。
 2. 具有最新 Windows 更新修补程序的 Windows 10 周年更新。 具体而言，必须安装 [KB3194798](https://support.microsoft.com/en-us/help/3194798/cumulative-update-for-windows-10-version-1607-and-windows-server-2016-october-11,-2016)。 
 3. 必须安装 [Docker for Windows](https://docs.docker.com/docker-for-windows/)（内部版本 1.13.0 或更高版本）。
-4. 必须选择“切换到 Windows 容器”。 在通知区域中，单击“Docker for Windows”，然后选择“切换到 Windows 容器”。 重启计算机后，请确保此设置已保留。
+4. 必须选择“切换到 Windows 容器”。 在通知区域中，单击“Docker for Windows”，并选择“切换到 Windows 容器”。 重启计算机后，请确保此设置已保留。
 
 #### <a name="console-output-does-not-appear-in-visual-studios-output-window-while-debugging-a-console-application"></a>调试控制台应用程序时，控制台输出未显示在 Visual Studio 的输出窗口中
 
@@ -75,7 +73,7 @@ ERROR: for webapplication1  Cannot create container for service webapplication1:
 ### <a name="linux-containers"></a>**Linux 容器**
 
 #### <a name="unable-to-validate-volume-mapping"></a>无法验证卷映射
-要与容器中的应用文件夹共享应用程序的源代码和二进制文件，必须进行卷映射。  具体的卷映射包含在 docker-compose.dev.debug.yml 和 docker-compose.dev.release.yml 中。 当文件在主机上发生更改时，容器将在相似的文件夹结构中反映这些更改。
+要与容器中的应用文件夹共享应用程序的源代码和二进制文件，必须进行卷映射。  具体的卷映射包含在 docker-compose.dev.debug.yml 和 docker-compose.dev.release.yml 中。 当文件在主机上发生更改时，容器会在相似的文件夹结构中反映这些更改。
 
 若要启用卷映射，请执行以下操作：
 
@@ -100,7 +98,7 @@ docker run -it -v /c/Users/Public:/wormhole busybox
 / # ls
 ```
 
-你应看到 Users/Public 文件夹中的目录列表。 如果未显示任何文件，并且 /c/Users/Public 文件夹不为空，则卷映射未正确配置。
+应看到 Users/Public 文件夹中的目录列表。 如果未显示任何文件，并且 /c/Users/Public 文件夹不为空，则卷映射未正确配置。
 
 ```
 bin       etc       proc      sys       usr       wormhole
@@ -131,7 +129,7 @@ Microsoft.DotNet.Docker.CommandLine.ClientException：尝试连接时发生错�
 docker info
 ```
 
-如果这返回错误，则尝试启动 **Docker for Windows** 桌面应用。 如果桌面应用正在运行，则应该在通知区域中看到**小鲸鱼**。 右键单击**小鲸鱼**并打开“设置”。 单击“重置”，然后重新启动 Docker。
+如果这返回错误，则尝试启动 **Docker for Windows** 桌面应用。 如果桌面应用正在运行，则应该在通知区域中看到**小鲸鱼**。 右键单击**小鲸鱼**并打开“设置”。 单击“重置”，并重新启动 Docker。
 
 ## <a name="an-error-dialog-occurs-when-attempting-to-add-docker-support-or-debug-f5-an-aspnet-core-application-in-a-container"></a>尝试在容器中添加 Docker 支持或调试 (F5) ASP.NET Core 应用程序时，显示错误对话框
 
@@ -147,4 +145,3 @@ docker info
     ```
 1. 打开 Visual Studio。
 1. 再次尝试该方案。
-

@@ -15,39 +15,38 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
 ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/07/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>使用 Azure Resource Manager 查看部署操作
 
 
-可以通过 Azure 门户查看部署操作。 当你在部署过程中收到错误时，可能最想要查看操作，因此本文将重点介绍如何查看已失败的操作。 该门户提供了一个界面让你轻松找到错误并确定可能的解决方法。
+可以通过 Azure 门户查看部署操作。 在部署过程中收到错误时，可能最想要查看操作，因此本文将重点介绍如何查看已失败的操作。 该门户提供了一个界面让你轻松找到错误并确定可能的解决方法。
 
 [!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
 
 ## <a name="portal"></a>门户
 若要查看部署操作，请使用以下步骤 ：
 
-1. 对于部署中涉及的资源组，请注意最后一个部署的状态。 你可以选择此状态以获取更多详细信息。
+1. 对于部署中涉及的资源组，请注意最后一个部署的状态。 可以选择此状态以获取更多详细信息。
    
     ![部署状态](./media/resource-manager-deployment-operations/deployment-status.png)
-2. 你看到最近的部署历史记录。 选择失败的部署。
+2. 看到最近的部署历史记录。 选择失败的部署。
    
     ![部署状态](./media/resource-manager-deployment-operations/select-deployment.png)
 3. 选择链接，查看部署失败的原因说明。 在下图中，DNS 记录不是唯一的。  
    
     ![查看失败的部署](./media/resource-manager-deployment-operations/view-error.png)
    
-    此错误消息应足够让你可以开始进行故障排除。 但是，如果你需要有关完成了哪些任务的更多详细信息，可以查看操作，如下面的步骤所示。
+    此错误消息应足够让可以开始进行故障排除。 但是，如果需要有关完成了哪些任务的更多详细信息，可以查看操作，如下面的步骤所示。
 4. 可以在“部署”边栏选项卡中查看所有部署操作。 选择任何操作，以查看更多详细信息。
    
     ![查看操作](./media/resource-manager-deployment-operations/view-operations.png)
    
-    在此示例中，你会看到已成功创建存储帐户、虚拟网络和可用性集。 公共 IP 地址失败，未尝试其他资源。
+    在此示例中，会看到已成功创建存储帐户、虚拟网络和可用性集。 公共 IP 地址失败，未尝试其他资源。
 5. 可以通过选择“事件”查看部署的事件。
    
     ![查看事件](./media/resource-manager-deployment-operations/view-events.png)
@@ -74,7 +73,7 @@ ms.lasthandoff: 03/07/2017
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
-    它将返回多个操作，其中每个操作采用以下格式：
+    它返回多个操作，其中每个操作采用以下格式：
 
   ```powershell
   Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -92,7 +91,7 @@ ms.lasthandoff: 03/07/2017
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
-    它将返回所有失败的操作，其中每个操作采用以下格式：
+    它返回所有失败的操作，其中每个操作采用以下格式：
 
   ```powershell
   provisioningOperation : Create
@@ -108,14 +107,14 @@ ms.lasthandoff: 03/07/2017
                           resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
   ```
 
-    注意操作的 serviceRequestId 和 trackingId。 与技术支持人员合作排查部署问题时，serviceRequestId 非常有用。 将在下一步使用 trackingId 重点关注特定操作。
+    注意操作的 serviceRequestId 和 trackingId。 与技术支持人员合作排查部署问题时，serviceRequestId 非常有用。 会在下一步使用 trackingId 重点关注特定操作。
 4. 若要获取特定失败操作的状态消息，请使用以下命令：
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
   ```
 
-    将返回：
+    返回：
 
   ```powershell
   code           message                                                                        details
@@ -214,8 +213,7 @@ ms.lasthandoff: 03/07/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关解决特定部署错误的帮助，请参阅 [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md)（解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误）。
+* 如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
 * 若要了解如何使用活动日志监视其他类型的操作，请参阅[通过查看活动日志管理 Azure 资源](resource-group-audit.md)。
 * 若要在执行部署之前验证部署，请参阅 [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署资源组）。
-
 

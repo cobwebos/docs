@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 657d8d4c98b7b133698a5cda0aa675da7f68c464
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 06/28/2017
 
 若要配置和测试 HackerOne 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 HackerOne 测试用户](#creating-a-hackerone-test-user) - 在 HackerOne 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -114,12 +113,12 @@ ms.lasthandoff: 06/28/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://hackerone.com/<company name>/authentication`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，键入 URL：`https://hackerone.com/users/saml/metadata`
+    b. 在“标识符”文本框中，键入 URL：`https://hackerone.com/users/saml/metadata`
     
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [HackerOne 支持团队](mailto:support@hackerone.com)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_certificate.png) 
 
@@ -145,9 +144,9 @@ ms.lasthandoff: 06/28/2017
    
     ![配置单一登录](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件域”文本框中，键入已注册域。
+    a. 在“电子邮件域”文本框中，键入已注册域。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“单一登录 URL”文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”的值。
+    b. 在“单一登录 URL”文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”的值。
 
     c. 在记事本中打开从 Azure 门户下载的“证书文件”，将内容复制到剪贴板，然后粘贴到“X509 证书”文本框。
     
@@ -157,9 +156,9 @@ ms.lasthandoff: 06/28/2017
    
     ![配置单一登录](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“运行测试”。
+    a. 单击“运行测试”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 如果“状态”字段的值为“上次测试状态: 已创建”，则请联系 [HackerOne 支持团队](mailto:support@hackerone.com)请求查看配置。
+    b. 如果“状态”字段的值为“上次测试状态: 已创建”，则请联系 [HackerOne 支持团队](mailto:support@hackerone.com)请求查看配置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -188,7 +187,7 @@ ms.lasthandoff: 06/28/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-hackerone-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -212,9 +211,9 @@ ms.lasthandoff: 06/28/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 HackerOne，请执行以下步骤：**
+**要将 Britta Simon 分配到 HackerOne，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -260,5 +259,4 @@ ms.lasthandoff: 06/28/2017
 [201]: ./media/active-directory-saas-hackerone-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-hackerone-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-hackerone-tutorial/tutorial_general_203.png
-
 

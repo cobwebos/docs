@@ -16,17 +16,16 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9ab67d21b65323b7f927cb2197c0e123ebe3351e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 5e8d4fbd8afc54c8bbc1a9a71c66d7022a7d5986
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>从远程桌面连接运行 Pig 作业
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-本文档演练了如何使用 Pig 命令从到基于 Windows 的 HDInsight 群集的远程桌面连接运行 Pig Latin 语句。 Pig Latin 可让你通过描述数据转换来创建 MapReduce 应用程序，而不是创建映射和化简函数。
+本文档演练了如何使用 Pig 命令从到基于 Windows 的 HDInsight 群集的远程桌面连接运行 Pig Latin 语句。 Pig Latin 允许通过描述数据转换创建 MapReduce 应用程序，而不是创建映射和化简函数。
 
 > [!IMPORTANT]
 > 远程桌面只能在使用 Windows 作为操作系统的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/08/2017
 > 有关 HDInsight 3.4 或更高版本，请参阅[将 Pig 与 HDInsight 和 SSH 配合使用](hdinsight-hadoop-use-pig-ssh.md)，了解如何通过命令行直接在群集上以交互方式运行 Pig 作业。
 
 ## <a id="prereq"></a>先决条件
-若要完成本文中的步骤，你将需要：
+要完成本文中的步骤，需要：
 
 * 基于 Windows 的 HDInsight（HDInsight 上的 Hadoop）群集
 * 运行 Windows 10、Windows 8 或 Windows 7 的客户端计算机
@@ -48,12 +47,12 @@ ms.lasthandoff: 07/08/2017
 
         %pig_home%\bin\pig
 
-    系统将为你提供 `grunt>` 提示符。
+    系统将提供 `grunt>` 提示符。
 3. 输入以下语句：
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
 
-    此命令会将 sample.log 文件的内容加载到 LOGS 文件中。 你可以通过使用以下方法查看该文件的内容：
+    此命令会将 sample.log 文件的内容加载到 LOGS 文件中。 可以通过使用以下命令查看该文件的内容：
 
         DUMP LOGS;
 4. 通过应用正则表达式从每个记录中仅提取日志记录级别来转换数据：
@@ -85,7 +84,7 @@ ms.lasthandoff: 07/08/2017
         STORE RESULT into 'wasb:///example/data/pigout'
 
    > [!NOTE]
-   > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，则你将会收到错误消息。
+   > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，会收到错误消息。
    >
    >
 7. 若要退出 grunt 提示符，请输入以下语句。
@@ -93,10 +92,10 @@ ms.lasthandoff: 07/08/2017
         QUIT;
 
 ### <a name="pig-latin-batch-files"></a>Pig Latin 批处理文件
-你也可以使用 Pig 命令运行文件中包含的 Pig Latin。
+也可以使用 Pig 命令运行文件中包含的 Pig Latin。
 
 1. 退出 grunt 提示符之后，请打开“记事本”，并在 **%PIG_HOME%** 目录中创建名为 **pigbatch.pig** 的新文件。
-2. 在 **pigbatch.pig** 文件中键入或粘贴以下行，然后保存它：
+2. 在 **pigbatch.pig** 文件中键入或粘贴以下行，并保存它：
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
@@ -109,7 +108,7 @@ ms.lasthandoff: 07/08/2017
 
         pig %PIG_HOME%\pigbatch.pig
 
-    在批处理作业完成后，你应该会看到以下输出，该输出应该与先前步骤中使用 `DUMP RESULT;` 时相同：
+    在批处理作业完成后，应该会看到以下输出，该输出应该与先前步骤中使用 `DUMP RESULT;` 时相同：
 
         (TRACE,816)
         (DEBUG,434)
@@ -119,7 +118,7 @@ ms.lasthandoff: 07/08/2017
         (FATAL,2)
 
 ## <a id="summary"></a>摘要
-如你所见，Pig 命令允许你以交互方式运行 MapReduce 操作，或运行存储在批处理文件中的 Pig Latin 作业。
+如你所见，Pig 命令允许以交互方式运行 MapReduce 操作，或运行存储在批处理文件中的 Pig Latin 作业。
 
 ## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Pig 的一般信息：
@@ -130,4 +129,3 @@ ms.lasthandoff: 07/08/2017
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-

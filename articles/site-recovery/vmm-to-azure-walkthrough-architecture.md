@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: df4e227d02901153d3cfcfd4dfd4f11de180763a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
-
-
 # <a name="step-1-review-the-architecture"></a>步骤 1：查看体系结构
 
 
@@ -61,14 +58,15 @@ ms.lasthandoff: 07/26/2017
 ### <a name="enable-protection"></a>启用保护
 
 1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”。
-2. 该作业会检查计算机是否符合先决条件，然后调用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)，以使用配置的设置来设置复制。
-3. 该作业通过调用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法启动初始复制，以便初始化完整的 VM 复制，然后将 VM 的虚拟磁盘发送到 Azure。
-4. 可以在“作业”选项卡中监视作业。    ![作业列表](media/vmm-to-azure-walkthrough-architecture/image1.png) ![启用保护性向下钻取](media/vmm-to-azure-walkthrough-architecture/image2.png)
+2. 该作业先检查计算机是否符合先决条件，再调用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)，以使用用户配置的设置来设置复制。
+3. 该作业通过调用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法启动初始复制，以便初始化完整的 VM 复制，并将 VM 的虚拟磁盘发送到 Azure。
+4. 可以在“作业”选项卡中监视作业。
+        ![作业列表](media/vmm-to-azure-walkthrough-architecture/image1.png) ![启用保护性向下钻取](media/vmm-to-azure-walkthrough-architecture/image2.png)
 
 ### <a name="replicate-the-initial-data"></a>复制初始数据
 
 1. 当触发初始复制时，系统会拍摄一个 [Hyper-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)。
-2. 虚拟硬盘是逐一复制的，直至全部复制到 Azure 为止。 可能需要一段时间才能完成，具体取决于 VM 大小和网络带宽。 要优化网络使用，请参阅[如何管理本地到 Azure 保护网络带宽使用](https://support.microsoft.com/kb/3056159)。
+2. 虚拟硬盘是逐一复制的，直至全部复制到 Azure 为止。 可能需要一段时间才能完成，具体取决于 VM 大小和网络带宽。 若要优化网络的使用，请参阅 [How to manage on-premises to Azure protection network bandwidth usage](https://support.microsoft.com/kb/3056159)（如何管理本地到 Azure 保护的网络带宽使用）。
 3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助存储。
 4. 当初始复制正在进行时，快照和日志将占用磁盘资源。
 5. 当初始复制完成时，将删除 VM 快照。 日志中的增量磁盘更改会进行同步，并合并到父磁盘中。
@@ -83,14 +81,14 @@ ms.lasthandoff: 07/26/2017
 ### <a name="replicate-the-delta"></a>复制增量
 
 1. 在完成初始复制后，根据复制设置开始增量同步。
-2. Hyper-V 副本复制跟踪器跟踪对虚拟硬盘所做的更改，并将其另存为 .hrl 文件。 为复制配置的每个磁盘都有一个关联的 .hrl 文件。 在初始复制完成后，此日志会被发送到客户的存储帐户中。 当日志正处于传输到 Azure 的过程中时，主磁盘中的变更会被记录到同一目录的另一日志文件中。
+2. Hyper-V 副本复制跟踪器跟踪对虚拟硬盘所做的更改，并将其另存为 .hrl 文件。 为复制配置的每个磁盘都有一个关联的 .hrl 文件。 在初始复制完成后，此日志会被发送到客户的存储帐户中。 在向 Azure 传输日志的过程中，会在同一目录中的另一日志文件内跟踪主磁盘中的更改。
 3. 在初始复制和增量复制过程中，可以在“VM”视图中监视 VM。 [了解详细信息](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machines)。  
 
 ### <a name="synchronize-replication"></a>同步复制
 
 1. 如果增量复制失败且完整复制因为带宽或时间限制而需要大量开销，则会将 VM 标记为需要重新同步。 例如，如果 .hrl 文件达到磁盘大小的 50%，系统会将 VM 标记为重新同步。
 2.  重新同步通过计算源虚拟机磁盘和目标虚拟机的校验和并只发送增量数据来最大程度地减小发送的数据量。 重新同步使用固定块区块算法，其中源文件和目标文件被分到固定区块。 系统会针对每个区块生成校验和，并进行比较，以确定源中的哪些区块需要应用到目标。
-3. 重新同步完成后，应会恢复正常增量复制。 默认情况下，重新同步安排为在非工作时间自动运行，但可以手动重新同步虚拟机。 例如，如果发生网络中断或其他中断，可以继续重新同步。 为此，请在“门户”>“重新同步”中选择 VM。
+3. 重新同步完成后，应会恢复正常增量复制。 默认情况下，重新同步计划为在非工作时间自动运行，但可以手动重新同步虚拟机。 例如，如果发生网络中断或其他中断，可以继续重新同步。 为此，请在“门户”>“重新同步”中选择 VM。
 
     ![手动重新同步](media/vmm-to-azure-walkthrough-architecture/image4.png)
 
@@ -120,4 +118,3 @@ ms.lasthandoff: 07/26/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 2：查看部署先决条件](vmm-to-azure-walkthrough-prerequisites.md)
-

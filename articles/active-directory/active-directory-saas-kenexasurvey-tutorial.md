@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 5c276c23288292a1c54dd9d57177d5072b90c9e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 07/13/2017
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-本教程将在测试环境中测试 Azure AD SSO。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD SSO。 本教程中概述的方案包括两个主要构建基块：
 
 * 从库中添加 IBM Kenexa Survey Enterprise
 * 配置和测试 Azure AD SSO
@@ -103,9 +102,9 @@ ms.lasthandoff: 07/13/2017
 
     ![“IBM Kenexa Survey Enterprise 域和 URL”单一登录信息](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：`https://surveys.kenexa.com/<companycode>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://surveys.kenexa.com/<companycode>`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE] 
     > 上面的值不是实际值。 使用实际标识符和回复 URL 更新它们。 若要获得实际值，请联系 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)。
@@ -169,7 +168,7 @@ ms.lasthandoff: 07/13/2017
  
 ### <a name="create-an-ibm-kenexa-survey-enterprise-test-user"></a>创建 IBM Kenexa Survey Enterprise 测试用户
 
-在本部分中，将在 IBM Kenexa Survey Enterprise 中创建一个名为“Britta Simon”的用户。 
+在本部分中，会在 IBM Kenexa Survey Enterprise 中创建一个名为“Britta Simon”的用户。 
 
 若要在 IBM Kenexa Survey Enterprise 系统中创建用户并为他们映射 SSO ID，可联系 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)获取帮助。 应将此 SSO ID 值映射到 Azure AD 中的用户标识符的值。 可以在“属性”选项上中更改此默认设置。
 
@@ -229,4 +228,3 @@ ms.lasthandoff: 07/13/2017
 [203]: ./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_203.png
 
  
-

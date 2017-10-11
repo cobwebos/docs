@@ -15,16 +15,14 @@ ms.topic: article
 ms.date: 07/30/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: d0602a61b0335ef2bb92e27051c286852bc08d35
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
-
+ms.openlocfilehash: 7389f55ee6fef9548abb0ca4ac1bbd0399868d47
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-sign-in-to-a-windows-desktop-app"></a>将登录凭据添加到 Windows 桌面应用
-v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  它也可让你应用程序安全地与后端 Web API，以及 [Microsoft Graph](https://graph.microsoft.io) 和多个 [Office 365 统一 API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) 进行通信。
+v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  它也可让应用程序安全地与后端 Web API、[Microsoft Graph](https://graph.microsoft.io) 以及多个 [Office 365 Unified API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) 进行通信。
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory (AD) 方案和功能。  若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
@@ -47,7 +45,7 @@ v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持
 ## <a name="register-an-app"></a>注册应用程序
 在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 中创建新应用，或遵循以下[详细步骤](active-directory-v2-app-registration.md)。  请确保：
 
-* 复制分配给应用的**应用程序 ID**，稍后将要用到。
+* 复制分配给应用程序的**应用程序 ID** ，因为稍后会用到。
 * 为应用添加**移动**平台。
 
 ## <a name="install--configure-msal"></a>安装并配置 MSAL
@@ -64,12 +62,12 @@ PM> Install-Package Microsoft.Identity.Client -ProjectName TodoListClient -Inclu
   * `ida:ClientId` 是从门户复制的应用的**应用程序 ID**。
 * 在 TodoList-Service 项目中，打开项目根目录中的 `web.config`。  
   
-  * 将 `ida:Audience` 值替换为来自门户的相同**应用程序 ID**。
+  * 将 `ida:Audience` 值替换为来自门户的相同**应用程序 ID** 。
 
 ## <a name="use-msal-to-get-tokens"></a>使用 MSAL 获取令牌
 MSAL 遵守的基本原理是，每当应用需要访问令牌时，只需调用 `app.AcquireToken(...)`，MSAL 就会负责其余的工作。  
 
-* 在 `TodoListClient` 项目中，打开 `MainWindow.xaml.cs` 并找到 `OnInitialized(...)` 方法。  第一步是初始化应用的 `PublicClientApplication`（MSAL 表示本机应用程序的主类）。  将在此处向 MSAL 传递其与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
+* 在 `TodoListClient` 项目中，打开 `MainWindow.xaml.cs` 并找到 `OnInitialized(...)` 方法。  第一步是初始化应用的 `PublicClientApplication`（MSAL 表示本机应用程序的主类）。  会在此处向 MSAL 传递其与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
 
 ```C#
 protected override async void OnInitialized(EventArgs e)
@@ -167,7 +165,7 @@ catch (MsalException ex)
 }
 ```
 
-* 如果用户成功登录，MSAL 将为你接收和缓存令牌，让你可以放心地继续调用 `GetTodoList()` 方法。  获取用户任务的剩余步骤是实现 `GetTodoList()` 方法。
+* 如果用户成功登录，MSAL 会为你接收和缓存令牌，让可以放心地继续调用 `GetTodoList()` 方法。  获取用户任务的剩余步骤是实现 `GetTodoList()` 方法。
 
 ```C#
 private async void GetTodoList()
@@ -242,16 +240,16 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 ```
 
 ## <a name="run"></a>运行
-祝贺你！ 现在，你已创建一个有效的 .NET WPF 应用，它可以对用户进行身份验证，使用 OAuth 2.0 安全调用 Web API。  运行两个项目，并以个人的 Microsoft 或工作/学校的帐户登录。  将任务添加到该用户的待办事项列表。  注销，然后以其他用户的身份重新登录，以查看其他用户的待办事项列表。  关闭应用程序，然后重新运行它。  请注意，用户的会话保持不变 - 这是因为应用在本地文件中缓存了令牌。
+祝贺你！ 现在，已创建一个有效的 .NET WPF 应用，它可以对用户进行身份验证，使用 OAuth 2.0 安全调用 Web API。  运行两个项目，并以个人的 Microsoft 或工作/学校的帐户登录。  将任务添加到该用户的待办事项列表。  注销，并以其他用户的身份重新登录，以查看其他用户的待办事项列表。  关闭应用程序，并重新运行它。  请注意，用户的会话保持不变 - 这是因为应用在本地文件中缓存了令牌。
 
-借助 MSAL，可以通过个人和工作帐户方便地将常用标识功能合并到应用。  它会负责所有的繁琐工作 - 缓存管理、OAuth 协议支持、向用户显示登录名 UI、刷新已过期的令牌，等等。  你只需要真正了解一个 API 调用，即 `app.AcquireTokenAsync(...)`。
+借助 MSAL，可以通过个人和工作帐户方便地将常用标识功能合并到应用。  它会负责所有的繁琐工作 - 缓存管理、OAuth 协议支持、向用户显示登录名 UI、刷新已过期的令牌，等等。  只需要真正了解一个 API 调用，即 `app.AcquireTokenAsync(...)`。
 
 若要参考，请在[此处查看 .zip 格式的](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)完整示例（不含配置值），也可从 GitHub 克隆该示例：
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
 ## <a name="next-steps"></a>后续步骤
-现在，可以转到更高级的主题。  你可能想要尝试：
+现在，可以转到更高级的主题。  可能想要尝试：
 
 * [使用 v2.0 终结点保护 TodoListService Web API >>](active-directory-v2-devquickstarts-dotnet-api.md)
 
@@ -262,5 +260,4 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 
 ## <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 建议发生安全事件时获取相关通知，方法是访问 [此页](https://technet.microsoft.com/security/dd252948) 并订阅“安全公告通知”。
-
 

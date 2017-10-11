@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
 ms.openlocfilehash: 82d5eb7fd13b1e9700a3e9bc2d30775e9c129749
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site-classic-portal"></a>将 VMware 虚拟机和物理服务器故障回复到本地站点（经典门户）
 > [!div class="op_single_selector"]
@@ -79,7 +78,7 @@ ms.lasthandoff: 07/14/2017
 * 故障回复之前，需要创建多个组件：
   * **在 Azure 中创建进程服务器**。 这是需要在故障回复过程中创建并保持运行的 Azure VM。 完成故障回复后，可以删除该虚拟机。
   * **创建主目标服务器**：主目标服务器发送和接收故障回复数据。 在本地创建的管理服务器默认情况下已安装主目标服务器。 但是，可能需要创建单独的故障回复用主目标服务器，具体取决于故障回复流量。
-  * 如果你需要创建其他在 Linux 上运行的主目标服务器，，则需先设置 Linux VM，再安装主目标服务器，如下所示。
+  * 如果用户需要创建其他在 Linux 上运行的主目标服务器，则需先设置 Linux VM，再安装主目标服务器，如下所示。
 * 执行故障回复时，配置服务器必须为本地服务器。 故障回复期间，虚拟机必须位于配置服务器数据库中，而失败的故障回复将不会成功。 因此，请确保定期计划服务器备份。 发生灾难时，需要使用相同的 IP 地址进行还原，让故障回复正常工作。
 
 ## <a name="set-up-the-process-server-in-azure"></a>在 Azure 中设置进程服务器
@@ -96,7 +95,7 @@ ms.lasthandoff: 07/14/2017
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/ps3.png)
 
-   在 Azure 上部署进程服务器后，可以使用指定的凭据登录到该服务器。 第一次登录时，会运行进程服务器对话框。 键入本地管理服务器的 IP 地址及其密码。 保留默认的端口 443 设置。 也可以保留默认的 9443 端口进行数据复制，除非在安装本地管理服务器时特意修改了此设置。
+   在 Azure 上部署进程服务器后，可以使用指定的凭据登录该服务器。 第一次登录时，会运行进程服务器对话框。 键入本地管理服务器的 IP 地址及其密码。 保留默认的端口 443 设置。 也可以保留默认的 9443 端口进行数据复制，除非在安装本地管理服务器时特意修改了此设置。
 
    > [!NOTE]
    > 服务器不会显示在“**VM 属性**”下。 它只显示在所注册到的管理服务器中的“服务器”选项卡下。 可能需要大约 10-15 分钟才能显示进程服务器。
@@ -150,7 +149,7 @@ ms.lasthandoff: 07/14/2017
 
 1. 将 RHEL 6-64 统一代理二进制文件复制到 VM。 运行以下命令解压缩二进制文件：**tar –zxvf <file name>**
 2. 运行以下命令指定权限：**# chmod 755 ./ApplyCustomChanges.sh**
-3. 运行脚本：**# ./ApplyCustomChanges.sh**。只应运行脚本一次。 成功运行脚本后，重新启动服务器。
+3. 运行脚本：**# ./ApplyCustomChanges.sh**。 只应运行脚本一次。 成功运行脚本后，重新启动服务器。
 
 ## <a name="run-the-failback"></a>运行故障回复
 ### <a name="reprotect-the-azure-vms"></a>重新保护 Azure VM
@@ -161,7 +160,7 @@ ms.lasthandoff: 07/14/2017
 5. 如果要恢复到备用位置，则请选择针对主目标服务器配置的保留驱动器和数据存储。 故障回复到本地站点时，故障回复保护计划中的 VMware VM 将使用与主目标服务器相同的数据存储。 如果要将副本 Azure VM 恢复到相同的本地 VM，则本地 VM 所在的数据存储应与主目标服务器的相同。 如果没有本地 VM，则会在重新保护期间创建一个新的。
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/failback1.png)
-6. 单击“确定”开始重新保护以后，作业就会开始将 VM 从 Azure 复制到本地站点。 可以在“**作业**”选项卡上跟踪进度。
+6. 单击“确定”开始重新保护以后，作业就会开始将 VM 从 Azure 复制到本地站点。 可以在“作业”选项卡上跟踪进度。
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/failback2.png)
 
@@ -181,7 +180,7 @@ ms.lasthandoff: 07/14/2017
 ### <a name="common-issues-in-failback"></a>故障回复的常见问题
 1. 如果执行只读的用户 vCenter 发现并保护虚拟机，操作将成功且故障转移可正常工作。 在重新保护时，操作会失败，因为无法发现数据存储。 征兆是重新保护时不会列出数据存储。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据并重试该作业。 [了解详细信息](site-recovery-vmware-to-azure-classic.md)
 2. 在故障回复 Linux VM 并在本地运行时，会看到网络管理器程序包已从该计算机卸载。 这是因为 VM 在 Azure 中恢复时，网络管理器程序包遭到删除。
-3. 当 VM 以静态 IP 地址配置且故障转移到 Azure 时，将通过 DHCP 获取 IP 地址。 当故障转移回复到本地时，该 VM 会继续使用 DHCP 获取 IP 地址。 如有需要，需要手动登录到该计算机并将 IP 地址设置回静态地址。
+3. 当 VM 以静态 IP 地址配置且故障转移到 Azure 时，将通过 DHCP 获取 IP 地址。 当故障转移回复到本地时，该 VM 会继续使用 DHCP 获取 IP 地址。 如有需要，需要手动登录该计算机并将 IP 地址设置回静态地址。
 4. 如果使用 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版，则故障转移会成功，但故障回复不会成功。 需要升级为评估许可证才能启用故障回复。
 
 ## <a name="failing-back-with-expressroute"></a>使用 ExpressRoute 进行故障回复
@@ -189,4 +188,3 @@ ms.lasthandoff: 07/14/2017
 
 * 应在 Azure 虚拟网络上设置 ExpressRoute，源计算机会故障转移到该网络，而故障转移完成后，Azure VM 也将位于其中。
 * 在公共终结点上，数据将复制到 Azure 存储帐户。 应该在 ExpressRoute 中设置公共对等互连，以便通过进行 Site Recovery 复制的目标数据中心使用 ExpressRoute。
-

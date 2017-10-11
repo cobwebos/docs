@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3cf78b59dc2dd010fdf4f480b09b3f80def1e62d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 207fb9fd861c66039fbde89681aed3df3a2f4021
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -36,7 +34,7 @@ ms.lasthandoff: 04/03/2017
 使用 SQL Server Management Studio (SSMS) 来连接并查询 Azure SQL 数据仓库。 
 
 ## <a name="prerequisites"></a>先决条件
-要使用本教程，你需要：
+要使用本教程，需要：
 
 * 现有 SQL 数据仓库。 若要创建 SQL 数据仓库，请参阅 [创建 SQL 数据仓库][Create a SQL Data Warehouse]。
 * 安装了 SQL Server Management Studio (SSMS)。 如果尚未[安装 SSMS][Install SSMS]，可免费安装。
@@ -55,14 +53,14 @@ ms.lasthandoff: 04/03/2017
    * “身份验证”。 选择“SQL Server 身份验证”或“Active Directory 集成身份验证”。
    * “用户名”和“密码”。 如果上面选择了 SQL Server 身份验证，请输入用户名和密码。
    * 单击“连接”。
-4. 若要浏览，请展开你的 Azure SQL 服务器。 你可以查看与服务器关联的数据库。 展开 AdventureWorksDW 以查看示例数据库中的表。
+4. 要浏览，请展开 Azure SQL 服务器。 可以查看与服务器关联的数据库。 展开 AdventureWorksDW 以查看示例数据库中的表。
    
     ![浏览 AdventureWorksDW][3]
 
 ## <a name="2-run-a-sample-query"></a>2.运行示例查询
-现在，你已建立了与数据库的连接，接下来让我们编写查询。
+现在，已建立了与数据库的连接，接下来让我们编写查询。
 
-1. 在 SQL Server 对象资源管理器中右键单击你的数据库。
+1. 在 SQL Server 对象资源管理器中右键单击数据库。
 2. 选择“新建查询”。 此时将打开一个新的查询窗口。
    
     ![新建查询][4]
@@ -79,7 +77,7 @@ ms.lasthandoff: 04/03/2017
     ![查询结果][6]
 
 ## <a name="next-steps"></a>后续步骤
-既然你可以执行连接和查询，接下来请尝试 [使用 PowerBI 直观地显示数据][visualizing the data with PowerBI]。
+既然可以执行连接和查询，接下来请尝试 [使用 PowerBI 直观地显示数据][visualizing the data with PowerBI]。
 
 若要为 Azure Active Directory 身份验证配置环境，请参阅[向 SQL 数据仓库进行身份验证][Authenticate to SQL Data Warehouse]。
 
@@ -102,4 +100,3 @@ ms.lasthandoff: 04/03/2017
 [4]: media/sql-data-warehouse-query-ssms/new-query.png
 [5]: media/sql-data-warehouse-query-ssms/execute-query.png
 [6]: media/sql-data-warehouse-query-ssms/results.png
-

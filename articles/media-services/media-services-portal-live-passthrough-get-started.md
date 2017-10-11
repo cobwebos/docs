@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 门户中使用本地编码器实时传送流 | Microsoft Docs"
-description: "本教程将指导你完成相关步骤，以便创建经配置后可以进行直通传递的“通道”。"
+description: "本教程指导完成相关步骤，以便创建经配置后可以进行直通传递的“通道”。"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: b28488ac9037b0f0ff7df892b9c3a61167b1eceb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.openlocfilehash: 6939e3b31c3c1b514df4c559c2d9408fce122a4e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>如何通过 Azure 门户使用本地编码器执行实时流式处理
 > [!div class="op_single_selector"]
@@ -38,7 +37,7 @@ ms.lasthandoff: 07/11/2017
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 网络摄像机。 例如， [Telestream Wirecast 编码器](http://www.telestream.net/wirecast/overview.htm)。
 
-强烈建议你阅读以下文章：
+强烈建议阅读以下文章：
 
 * [Azure 媒体服务 RTMP 支持和实时编码器](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [使用 Azure 媒体服务实时传送视频流概述](media-services-manage-channels-overview.md)
@@ -80,26 +79,26 @@ ms.lasthandoff: 07/11/2017
 ![通知](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
 ## <a name="create-and-start-pass-through-channels-and-events"></a>创建并启动直通通道和事件
-频道与事件/节目相关联，使用事件/节目，你可以控制实时流中的段的发布和存储。 通道管理事件。 
+频道与事件/节目相关联，使用事件/节目，可以控制实时流中的段的发布和存储。 通道管理事件。 
 
-可以通过设置 **存档窗口** 长度，指定你希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
+可以通过设置 **存档窗口** 长度，指定希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
 
 每个事件都与某个资产关联。 若要发布事件，必须为关联的资产创建按需定位符。 创建此定位符后，可以生成一个可提供给客户端的流 URL。
 
-一个通道最多支持三个并发运行的事件，因此你可以为同一传入流创建多个存档。 这样，你便可以根据需要发布和存档事件的不同部分。 例如，你的业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，你需要创建两个同时运行的节目。 一个节目设置为存档 6 小时的事件但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
+一个通道最多支持三个并发运行的事件，因此可以为同一传入流创建多个存档。 这样，便可以根据需要发布和存档事件的不同部分。 例如，业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，需要创建两个同时运行的节目。 一个节目设置为存档 6 小时的事件但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
 不应重复使用现有的实时事件。 与之相反，应针对每个事件创建并启动新事件。
 
 在准备好开始流式传输和存档时，启动事件。 在要停止对事件进行流式传输和存档时，停止节目。 
 
-若要删除存档的内容，请停止并删除事件，然后删除关联的资产。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
+如果要删除存档的内容，请停止并删除事件，并删除关联的资产。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
-即使你停止并删除了事件，只要你没有删除资产，用户也将能够按需将你的已存档内容作为视频进行流式传输。
+即使停止并删除了事件，只要没有删除资产，用户也能够按需将你的已存档内容作为视频进行流式传输。
 
 如果希望保留已存档的内容但不希望其可供流式传输，请删除流式传输定位符。
 
 ### <a name="to-use-the-portal-to-create-a-channel"></a>使用门户来创建通道
-本部分将介绍如何使用“快速创建”  选项创建直通通道。
+本部分演示如何使用“快速创建”  选项来创建直通通道。
 
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
@@ -108,13 +107,13 @@ ms.lasthandoff: 07/11/2017
    
     ![入门](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    此时将显示“实时传送视频流”  窗口。
+    此时会显示“实时传送视频流”  窗口。
 3. 单击“快速创建”  ，即可使用 RTMP 引入协议创建直通通道。
    
-    此时将显示“创建新通道”  窗口。
-4. 为新通道命名，然后单击“创建” 。 
+    此时会显示“创建新通道”  窗口。
+4. 为新通道命名，并单击“创建” 。 
    
-    此时将使用 RTMP 引入协议创建直通通道。
+    此时会使用 RTMP 引入协议创建直通通道。
 
 ## <a name="create-events"></a>创建事件
 1. 选择要添加事件的通道。
@@ -123,25 +122,25 @@ ms.lasthandoff: 07/11/2017
 ![事件](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>获取引入 URL
-创建通道后，你可以获得要提供给实时编码器的引入 URL。 编码器将使用这些 URL 来输入实时流。
+创建通道后，可以获得要提供给实时编码器的引入 URL。 编码器将使用这些 URL 来输入实时流。
 
 ![已创建](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>观看事件
-要观看事件，请在 Azure 门户中单击“观看”  ，或者先复制流式处理 URL，然后使用选择的播放器进行播放。 
+要观看事件，请在 Azure 门户中单击“观看”  ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
 
 ![已创建](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
-停止后，实时事件将自动转换为按需内容。
+停止时，实时事件会自动转换为点播内容。
 
 ## <a name="clean-up"></a>清理
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
-* 只有当频道中的所有事件/节目都已停止时，才能停止频道。  通道停止后，不会产生任何费用。 当你需要重新启动它时，它将采用相同的引入 URL，因此你无需重新配置编码器。
+* 只有当频道中的所有事件/节目都已停止时，才能停止频道。  通道停止后，不会产生任何费用。 需要重新启动它时，它会采用相同的引入 URL，因此无需重新配置编码器。
 * 只有当频道中的所有实时事件都已删除时，才能删除频道。
 
 ## <a name="view-archived-content"></a>查看存档的内容
-即使你停止并删除了事件，只要你没有删除资产，用户也将能够按需将你的已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
+即使停止并删除了事件，只要没有删除资产，用户也能够按需将你的已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
 若要管理资产，请选择“设置”，再单击“资产”。
 
@@ -154,5 +153,4 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

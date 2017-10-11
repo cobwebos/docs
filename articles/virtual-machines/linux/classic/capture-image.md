@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
 ms.openlocfilehash: ecde5dd3211bfbb290e6910d7d55136d079c6cf3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>How to capture a classic Linux virtual machine as an image（如何捕获用作映像的经典 Linux 虚拟机）
 > [!IMPORTANT]
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/26/2017
 
 本文将演示如何捕获运行 Linux 的经典 Azure 虚拟机 (VM) 作为创建其他虚拟机的映像。 此映像包括操作系统磁盘和附加到 VM 的数据磁盘。 它不包括网络配置，因此在使用此映像创建其他 VM 时需要进行网络配置。
 
-Azure 在“映像”下存储映像，以及任何已上传的映像。 有关映像的详细信息，请参阅[关于 Azure 中的虚拟机映像][About Virtual Machine Images in Azure]。
+Azure 在“映像”下存储映像，以及任何已上载的映像。 有关映像的详细信息，请参阅[关于 Azure 中的虚拟机映像][About Virtual Machine Images in Azure]。
 
 ## <a name="before-you-begin"></a>开始之前
 这些步骤假定已使用经典部署模型创建了 Azure VM 并配置了操作系统，包括附加任何数据磁盘。 如果需要创建 VM，请阅读[如何创建 Linux 虚拟机][How to Create a Linux Virtual Machine]。
@@ -91,13 +90,13 @@ Azure 在“映像”下存储映像，以及任何已上传的映像。 有关�
     > [!NOTE]
     > 在 Azure 门户中，你可以从中心菜单中选择“映像”以捕获映像。 需提供以下映像信息：名称、资源组、位置、操作系统类型和存储 blob 路径。
 
-9. 新映像现在会出现在映像列表中，可以用于配置任何新的 VM。 你可以使用以下命令来查看它：
+9. 新映像现在会出现在映像列表中，可以用于配置任何新的 VM。 可以使用以下命令来查看它：
 
    ```azurecli
    azure vm image list
    ```
 
-   在 [Azure 门户](http://portal.azure.com)中，新映像会出现在属于“计算”服务的“VM 映像(经典)”中。 可通过在 Azure 服务列表底部单击“更多服务”，然后在“计算”服务中查找来访问“VM 映像(经典)”。   
+   在 [Azure 门户](http://portal.azure.com)中，新映像会出现在属于“计算”服务的“VM 映像(经典)”中。 可通过在 Azure 服务列表底部单击“更多服务”，并在“计算”服务中查找来访问“VM 映像(经典)”。   
 
    ![成功捕获映像](./media/capture-image/VMCapturedImageAvailable.png)
 
@@ -112,4 +111,3 @@ Azure 在“映像”下存储映像，以及任何已上传的映像。 有关�
 [How to Create a Custom Virtual Machine]:create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]:attach-disk.md
 [How to Create a Linux Virtual Machine]:create-custom.md
-

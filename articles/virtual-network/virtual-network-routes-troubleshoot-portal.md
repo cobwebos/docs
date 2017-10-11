@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: b2e005d707717a8f6db90b24438527304823a6a8
-ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
-
-
+ms.openlocfilehash: dad415936280b4af916b8c46df46f6c51ac0bca4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>使用 Azure 门户排查路由问题
 > [!div class="op_single_selector"]
@@ -55,9 +55,9 @@ ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
 若要查看应用到 VM 的聚合路由，请完成以下步骤：
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 单击“**更多服务**”，然后在显示的列表中单击“**虚拟机**”。
+2. 单击“**更多服务**”，并在显示的列表中单击“**虚拟机**”。
 3. 在显示的列表中选择要进行故障排除的 VM，随后会显示一个包含选项的 VM 边栏选项卡。
-4. 单击“**诊断和解决问题**”，然后选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。
+4. 单击“**诊断和解决问题**”，并选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image1.png)
 5. 该问题的下面会出现步骤，如下图所示：
@@ -65,7 +65,7 @@ ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
     ![](./media/virtual-network-routes-troubleshoot-portal/image2.png)
 
     在建议的步骤列表中单击“*有效路由*”。
-6. 此时将显示“ **有效路由**”边栏选项卡，如下图所示：
+6. 此时会显示“ **有效路由**”边栏选项卡，如下图所示：
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image3.png)
 
@@ -81,7 +81,7 @@ ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
    * **Source**：表示路由的类型。 系统路由显示为 *Default*，UDR 显示为 *User*，网关路由（静态或 BGP）显示为 *VPNGateway*。
    * **State**：表示有效路由的状态。 可能的值为“*Active*”或“*Invalid*”。
    * **AddressPrefixes**：以 CIDR 表示法指定有效路由的地址前缀。
-   * **nextHopType**：表示给定路由的下一跃点。 可能的值为 *VirtualAppliance*、*Internet*、*VNetLocal*、*VNetPeering* 或 *Null*。 如果 UDR 中的 **nextHopType** 值为 *Null*，可能表示是路由无效。 例如，如果 **nextHopType** 为 *VirtualAppliance*，但网络虚拟设备 VM 不处于已预配/运行中状态。 如果 **AddressPrefixes** 为 *VPNGateway*，但给定的 VNet 中没有任何网关处于已预配/运行中状态，则路由可能失效。
+   * **nextHopType**：表示给定路由的下一跃点。 可能的值为 *VirtualAppliance**Internet**VNetLocal**VNetPeering* 或 *Null*。 如果 UDR 中的 **nextHopType** 值为 *Null*，可能表示是路由无效。 例如，如果 **nextHopType** 为 *VirtualAppliance*，但网络虚拟设备 VM 不处于已预配/运行中状态。 如果 **AddressPrefixes** 为 *VPNGateway*，但给定的 VNet 中没有任何网关处于已预配/运行中状态，则路由可能失效。
 7. 上一步骤的图片中没有列出从 *WestUS-VNet1*（前缀 10.9.0.0/16）到  *WestUS-VNET3* VNet（前缀 10.10.0.0/16）的路由。 在下图中，对等互连链接处于 *Disconnected* 状态：
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)
@@ -97,7 +97,7 @@ ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
 如果网络流量流受到特定网络接口 (NIC) 的影响，可以直接查看 NIC 上有效路由的完整列表。 若要查看应用到 NIC 的聚合路由，请完成以下步骤：
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 单击“**更多服务**”，然后单击“**网络接口**”
+2. 单击“**更多服务**”，并单击“**网络接口**”
 3. 在列表中搜索 NIC 的名称，或者从显示的列表中选择 NIC。 本示例选择了 **VM1-NIC1**。
 4. 在“**网络接口**”边栏选项卡中选择“**有效路由**”，如下图所示：
 
@@ -117,8 +117,8 @@ ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
 若要查看路由表的聚合路由，请完成以下步骤：
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 单击“**更多服务**”，然后单击“**路由表**”
-3. 在列表中搜索想要查看其聚合路由的路由表，并将它选中。 本示例选择了 **UDRouteTable**。 此时将显示选定路由表的边栏选项卡，如下图所示：
+2. 单击“**更多服务**”，并单击“**路由表**”
+3. 在列表中搜索想要查看其聚合路由的路由表，并将它选中。 本示例选择了 **UDRouteTable**。 此时会显示选定路由表的边栏选项卡，如下图所示：
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image9.png)
 4. 在“**路由表**”边栏选项卡中选择“**有效路由**”。 “**范围**”已设置为选定的路由表。
@@ -150,9 +150,3 @@ ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
 * 要使 VNet 对等互连流量正常工作，对等互连的 VNet 的前缀范围中必须存在 **nextHopType** 为 *VNetPeering* 的系统路由。 如果没有此类路由，并且 VNet 对等互连链接看起来正常：
   * 如果是新建立的对等互连链接，请等待几秒钟并重试。 有时需要花费较长的时间才能将路由传播到子网中的所有网络接口。
   * 网络安全组 (NSG) 规则可能会影响流量流。 有关详细信息，请参阅[排查网络安全组问题](virtual-network-nsg-troubleshoot-portal.md)一文。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

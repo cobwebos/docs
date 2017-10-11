@@ -14,17 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>如何在 Azure 搜索中对搜索结果分页
 本文提供有关如何使用 Azure 搜索服务 REST API 实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。
 
-在下面所述的每种情况下，通过发送给 Azure 搜索服务的[搜索记录](http://msdn.microsoft.com/library/azure/dn798927.aspx)请求指定与页面相关的选项，用于将数据或信息提供到你的搜索结果页面。 请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。
+在下面所述的每种情况下，通过发送给 Azure 搜索服务的[搜索记录](http://msdn.microsoft.com/library/azure/dn798927.aspx)请求指定与页面相关的选项，用于将数据或信息提供到搜索结果页面。 请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。
 
 > [!NOTE]
 > 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 搜索服务 REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx) 文档。
@@ -32,7 +31,7 @@ ms.lasthandoff: 12/08/2016
 > 
 
 ## <a name="total-hits-and-page-counts"></a>总匹配记录和页面计数
-几乎所有搜索页面都以显示从查询返回的结果总数，然后以较小的区块返回这些结果为基础。
+几乎所有搜索页面都以显示从查询返回的结果总数，并以较小的区块返回这些结果为基础。
 
 ![][1]
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 12/08/2016
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>布局
-在搜索结果页中，你可能想要显示缩略图、字段子集和完整产品页面的链接。
+在搜索结果页中，你可能想要显示缩略图、 字段的子集和完整的产品页面的链接。
 
  ![][2]
 
@@ -63,9 +62,9 @@ ms.lasthandoff: 12/08/2016
 
         GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
 
-图像和媒体文件不可直接搜索，它们应存储在其他存储平台（Azure Blob 存储）中以减少成本。 在索引和记录中，定义存储外部内容的 URL 地址的字段。 然后，你可以将该字段用作图像引用。 图像的 URL 应在记录中。
+图像和媒体文件不可直接搜索，它们应存储在其他存储平台（Azure Blob 存储）中以减少成本。 在索引和记录中，定义存储外部内容的 URL 地址的字段。 然后，可以将该字段用作图像引用。 图像的 URL 应在记录中。
 
-若要检索 **onClick** 事件的产品说明页，请使用 [查找记录](http://msdn.microsoft.com/library/azure/dn798929.aspx) 传递要检索的记录的密钥。 密钥的数据类型为 `Edm.String`。 在此示例中，它是 *246810*。 
+若要检索 **onClick** 事件的产品说明页，请使用“查找记录”[](http://msdn.microsoft.com/library/azure/dn798929.aspx)传递要检索的记录的密钥。 密钥的数据类型为 `Edm.String`。 在此示例中，它是 *246810*。 
 
         GET /indexes/onlineCatalog/docs/246810
 
@@ -76,18 +75,18 @@ ms.lasthandoff: 12/08/2016
 
 在 Azure 搜索中，对于所有编制索引为 `"Sortable": true.` 的字段，根据 `$orderby` 表达式进行排序
 
-相关性与计分配置文件密切关联。 你可以使用依赖于文本分析和统计信息对所有结果排序顺序的默认计分，针对某个搜索词，分数越高，相应记录的匹配项就越多且越相关。
+相关性与计分配置文件密切关联。 可以使用依赖于文本分析和统计信息对所有结果排序顺序的默认计分，针对某个搜索词，分数越高，相应记录的匹配项就越多且越相关。
 
 备用排序顺序通常与 **onClick** 事件关联，这些事件可回调生成排序顺序的方法。 例如，以此页面元素为例：
 
  ![][4]
 
-你将创建一个接受选定排序选项作为输入并返回与该选项关联的条件的排序列表的方法。
+将创建一个接受选定排序选项作为输入并返回与该选项关联的条件的排序列表的方法。
 
  ![][5]
 
 > [!NOTE]
-> 虽然默认计分足以处理许多方案，但我们建议使用基于相关性的自定义计分配置文件。 通过自定义计分配置文件，你可以增强对你的业务更有益的项。 有关详细信息，请参阅[添加计分配置文件](http://msdn.microsoft.com/library/azure/dn798928.aspx)。 
+> 虽然默认计分足以处理许多方案，但我们建议使用基于相关性的自定义计分配置文件。 通过自定义计分配置文件，可以增强对业务更有益的项。 有关详细信息，请参阅[添加计分配置文件](http://msdn.microsoft.com/library/azure/dn798928.aspx)。 
 > 
 > 
 
@@ -95,9 +94,9 @@ ms.lasthandoff: 12/08/2016
 搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 搜索中，分面导航基于预定义筛选器提供自定向搜索。 有关详细信息，请参阅 [Azure 搜索中的分面导航](search-faceted-navigation.md)。
 
 ## <a name="filters-at-the-page-level"></a>页面级别的筛选器
-如果你的解决方案设计包含了专用于特定内容类型（例如页面顶部列出了部门的在线零售应用程序）的搜索页面，你可以在 **onClick** 事件旁边插入筛选器表达式，以在预筛选状态下打开页面。 
+如果解决方案设计包含了专用于特定内容类型（例如页面顶部列出了部门的在线零售应用程序）的搜索页面，可以在 **onClick** 事件旁边插入筛选器表达式，以在预筛选状态下打开页面。 
 
-你可以发送带有或不带有搜索表达式的筛选器。 例如，将按品牌名称筛选以下请求，以便仅返回与之匹配的记录。
+可以发送带有或不带有搜索表达式的筛选器。 例如，将按品牌名称筛选以下请求，以便仅返回与之匹配的记录。
 
         GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
@@ -116,4 +115,3 @@ ms.lasthandoff: 12/08/2016
 [3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
 [5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png 
-

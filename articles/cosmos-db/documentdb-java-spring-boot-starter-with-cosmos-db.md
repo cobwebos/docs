@@ -15,14 +15,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: robmcm;yungez;kevinzha
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 273cc750857c5e466882060a38ac0f3475811e98
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="how-to-use-the-spring-boot-starter-with-azure-cosmos-db-documentdb-api"></a>如何将 Spring Boot Starter 与 Azure Cosmos DB DocumentDB API 配合使用
 
 ## <a name="overview"></a>概述
@@ -151,13 +149,13 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
 
 ## <a name="add-sample-code-to-implement-basic-database-functionality"></a>添加示例代码以实现数据库的基本功能
 
-本部分会创建两个存储用户数据的 Java 类，然后修改主应用程序类以创建用户类的实例并将其保存在数据库。
+本部分会创建两个存储用户数据的 Java 类，并修改主应用程序类以创建用户类的实例并将其保存在数据库。
 
 ### <a name="define-a-basic-class-for-storing-user-data"></a>定义存储用户数据的基本类
 
-1. 在与主应用程序 Java 文件相同的目录中创建一个名为 User.java 的新文件。
+1. 在与主应用程序 Java 文件相同的目录中创建一个名为 *User.java* 的新文件。
 
-1. 在文本编辑器中打开 User.java 文件，然后将以下行添加到文件中，以定义在数据库中存储和检索值的通用用户类：
+1. 在文本编辑器中打开 *User.java* 文件，并将以下行添加到文件中，以定义在数据库中存储和检索值的通用用户类：
 
    ```java
    package com.example.wingtiptoys;
@@ -204,13 +202,13 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
    }
    ```
 
-1. 保存并关闭 User.java 文件。
+1. 保存并关闭 *User.java* 文件。
 
 ### <a name="define-a-data-repository-interface"></a>定义数据存储库接口
 
 1. 在与主应用程序 Java 文件相同的目录中创建一个名为 UserRepository.java 的新文件。
 
-1. 在文本编辑器中打开 UserRepository.java 文件，然后将以下行添加到文件中，以定义可扩展默认 DocumentDB 存储库接口的用户存储库接口：
+1. 在文本编辑器中打开 *UserRepository.java* 文件，并将以下行添加到文件中，以定义可扩展默认 Cosmos DB 存储库接口的用户存储库接口：
 
    ```java
    package com.example.wingtiptoys;
@@ -222,7 +220,7 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
    public interface UserRepository extends DocumentDbRepository<User, String> {}   
    ```
 
-1. 保存并关闭 UserRepository.java 文件。
+1. 保存并关闭 *UserRepository.java* 文件。
 
 ### <a name="modify-the-main-application-class"></a>修改主应用程序类
 
@@ -236,7 +234,7 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
 
    ![找到应用程序 Java 文件][JV01]
 
-1. 在文本编辑器中打开主应用程序 Java 文件，然后将以下行添加到文件中：
+1. 在文本编辑器中打开主应用程序 Java 文件，并将以下行添加到文件中：
 
    ```java
    package com.example.wingtiptoys;
@@ -292,7 +290,7 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
 
    ![成功地从应用程序输出][JV02]
 
-1. 可选：使用 Azure 门户可以从数据库的属性页面查看 Azure Cosmos DB 的内容，方法是单击“文档资源管理器”，然后从现实的列表中选择项目以查看内容。
+1. 可选：使用 Azure 门户可以从数据库的属性页面查看 Azure Cosmos DB 的内容，方法是单击“文档资源管理器”，并从现实的列表中选择项目以查看内容。
 
    ![使用文档资源管理器查看数据][JV03]
 
@@ -308,7 +306,7 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
 
 * [用于 Azure 的 Spring Boot DocumenDB Starter](https://github.com/Microsoft/azure-spring-boot-starters/tree/master/azure-documentdb-spring-boot-starter-sample)
 
-* [将 Spring Boot 应用程序部署到 Azure App Service](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [将 Spring Boot 应用程序部署到 Azure 应用服务](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 
 * [在 Azure 容器服务中运行 Kubernetes 群集上的 Spring Boot 应用程序](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
 
@@ -347,4 +345,3 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
 [JV01]: ./media/documentdb-java-spring-boot-starter-with-cosmos-db/JV01.png
 [JV02]: ./media/documentdb-java-spring-boot-starter-with-cosmos-db/JV02.png
 [JV03]: ./media/documentdb-java-spring-boot-starter-with-cosmos-db/JV03.png
-

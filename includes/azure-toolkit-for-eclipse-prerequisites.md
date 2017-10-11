@@ -12,7 +12,7 @@
   * [Mac OS X](http://www.apple.com/osx) 版本“Yosemite”及更高版本
   * [Ubuntu Linux](http://www.ubuntu.com) 版本 14、15 和 16
 
-有关详细信息，请参阅 Eclipse Marketplace 的 [Azure Toolkit for Eclipse](http://marketplace.eclipse.org/content/azure-toolkit-eclipse)（适用于 Eclipse 的 Azure 工具包）页。
+有关详细信息，请参阅 Eclipse Marketplace 的 [Azure Toolkit for Eclipse](http://marketplace.eclipse.org/content/azure-toolkit-eclipse)（用于 Eclipse 的 Azure 工具包）页。
 
 <!--
 > [!IMPORTANT]

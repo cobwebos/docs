@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
 ms.openlocfilehash: bd1c860db026f948202cd1f3aa763b4547c597b4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
 本文介绍如何使用 C# 部署 Azure Resource Manager 模板。 创建的模板会在包含单个子网的新虚拟网络中部署运行 Windows Server 的单个虚拟机。
@@ -167,7 +166,7 @@ ms.lasthandoff: 07/18/2017
 
 若要为模板中定义的资源参数指定值，请创建包含值的参数文件。
 
-1. 在解决方案资源管理器中，右键单击“myDotnetProject” > ，单击“添加” > “新建项”，然后在“Visual C# 项”中选择“文本文件”。 命名文件 Parameters.json，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*“myDotnetProject”* > **，单击** > **“添加”****“新建项”**，然后在*“Visual C# 项”中选择“文本文件”*。 命名文件 Parameters.json，然后单击“添加”。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -187,7 +186,7 @@ ms.lasthandoff: 07/18/2017
 
 在可部署模板之前，请先确保能够访问 [Active Directory 服务主体](../../resource-group-authenticate-service-principal.md)。 从服务主体中，将获取对 Azure Resource Manager 请求进行身份验证的令牌。 还应记录授权文件中所需的应用程序 ID、身份验证秘钥和的租户 ID。
 
-1. 在解决方案资源管理器中，右键单击“myDotnetProject” > ，单击“添加” > “新建项”，然后在“Visual C# 项”中选择“文本文件”。 命名文件 azureauth.properties，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*“myDotnetProject”* > **，单击** > **“添加”****“新建项”**，然后在*“Visual C# 项”中选择“文本文件”*。 命名文件 azureauth.properties，然后单击“添加”。
 2. 添加这些授权属性：
 
     ```
@@ -311,7 +310,7 @@ Console.ReadLine();
 
 ## <a name="delete-the-resources"></a>删除资源
 
-由于需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。 你不需要单独从资源组中删除每个资源， 删除资源组，其中包含的所有资源会一并删除。 
+由于需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。 不需要单独从资源组中删除每个资源， 删除资源组，其中包含的所有资源会一并删除。 
 
 若要删除资源组，请将以下代码添加到 Main 方法：
 
@@ -330,4 +329,3 @@ azure.ResourceGroups.DeleteByName(groupName);
 ## <a name="next-steps"></a>后续步骤
 * 如果部署出现问题，后续措施是参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../../resource-manager-common-deployment-errors.md)。
 * 若要了解如何部署虚拟机及其支持的资源，请查看[使用 C# 部署 Azure 虚拟机](csharp.md)。
-

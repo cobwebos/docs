@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
@@ -232,7 +231,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="to-define-an-elastic-database-shard-map-target"></a>定义弹性数据库分片映射目标
 要针对分片集（使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)创建）中的所有数据库执行作业，请将分片映射用作数据库目标。 本示例要求使用弹性数据库客户端库创建分片应用程序。 请参阅[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
-必须将分片映射管理器数据库设置为数据库目标，然后将特定分片映射指定为目标。
+必须将分片映射管理器数据库设置为数据库目标，并将特定分片映射指定为目标。
 
     $shardMapCredentialName = "{Credential Name}"
     $shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -524,7 +523,7 @@ ms.lasthandoff: 08/22/2017
     Write-Output $job
 
 ## <a name="data-collection-across-databases"></a>跨数据库收集数据
-可以使用作业跨一组数据库来执行查询，然后将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
+用户可以使用作业跨一组数据库来执行查询，并将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
 
 如果不存在指定的目标表，则自动创建该表。 新表与返回的结果集的架构相符。 如果脚本返回多个结果集，弹性数据库作业只将第一个结果集发送到目标表。
 
@@ -645,4 +644,3 @@ ms.lasthandoff: 08/22/2017
 [1]: ./media/sql-database-elastic-jobs-powershell/cmd-prompt.png
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 668c094d5330be1c5f71d51d2e76170dc69d1bce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>教程：Azure Active Directory 与 Capriza Platform 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/20/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Capriza Platform 测试用户](#creating-a-capriza-platform-test-user)** - 目的是在 Capriza Platform 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建 Capriza 平台测试用户](#creating-a-capriza-platform-test-user)** -若要链接到用户的 Azure AD 表示 Capriza 平台中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 06/20/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Capriza Platform 客户端支持团队](mailTo:support@capriza.com)获取此值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-capriza-tutorial/tutorial_caprizaplatform_certificate.png) 
 
@@ -156,7 +155,7 @@ ms.lasthandoff: 06/20/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-capriza-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -178,7 +177,7 @@ ms.lasthandoff: 06/20/2017
 
 **若要将 Britta Simon 分配到 Capriza Platform，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -226,5 +225,4 @@ ms.lasthandoff: 06/20/2017
 [201]: ./media/active-directory-saas-capriza-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-capriza-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-capriza-tutorial/tutorial_general_203.png
-
 

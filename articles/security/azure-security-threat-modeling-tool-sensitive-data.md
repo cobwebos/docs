@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 21d1ba02052862e16ef27ec313d53cd0bffcc21a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
@@ -263,7 +261,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用 Azure 磁盘加密来加密虚拟机所用的磁盘](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| **步骤** | <p>Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。 Azure 磁盘加密解决方案支持以下三种客户加密方案：</p><ul><li>在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。</li><li>在通过 Azure 应用商店创建的新 IaaS VM 上启用加密。</li><li>在 Azure 中已运行的现有 IaaS VM 上启用加密。</li></ul>| 
+| **步骤** | <p>Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 它与 Azure 密钥保管库集成，可用于控制和管理磁盘加密密钥。 Azure 磁盘加密解决方案支持以下三种客户加密方案：</p><ul><li>在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。</li><li>在通过 Azure 应用商店创建的新 IaaS VM 上启用加密。</li><li>在 Azure 中已运行的现有 IaaS VM 上启用加密。</li></ul>| 
 
 ## <a id="fabric-apps"></a>加密 Service Fabric 应用程序中的机密
 
@@ -324,7 +322,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| **组件**               | Azure 存储空间 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -335,7 +333,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| **组件**               | Azure 存储空间 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -465,4 +463,3 @@ Allow screen capture
   </bindings> 
 </system.serviceModel> 
 ```
-

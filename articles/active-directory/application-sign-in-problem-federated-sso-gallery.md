@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: 0fc5a8eb3d033d60bf6082d61bf1698924ab91c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的库应用程序时出现的问题
 
 若要解决问题，需要按照以下内容验证 Azure AD 中的应用程序配置：
@@ -106,7 +104,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 **解决方法**
 
-若要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
+要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
@@ -223,7 +221,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 8.  刷新 Azure AD，并从 Azure AD 库添加应用程序。 然后，配置应用程序
 
-<span id="_Hlk477190176" class="anchor"></span>重新配置应用程序后，应该能登录到该应用程序。
+<span id="_Hlk477190176" class="anchor"></span>后重新配置应用程序，你应该能够登录到应用程序。
 
 ## <a name="certificate-or-key-not-configured"></a>证书或密钥未配置
 
@@ -267,4 +265,3 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 ## <a name="next-steps"></a>后续步骤
 [如何在 Azure AD 中调试对应用程序进行基于 SAML 的单一登录](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
-

@@ -16,18 +16,17 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 34072574f83b51280e60e2f8766c6c5d5a33c307
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑
 
-Storm 仪表板可让你使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果你使用 Visual Studio，则 HDInsight Tools for Visual Studio 会提供 Visual Studio 中的类似功能。
+通过 Storm 仪表板可以使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果使用 Visual Studio，则适用于 Visual Studio 的 HDInsight 工具会提供 Visual Studio 中的类似功能。
 
-HDInsight Tools 中的 Storm 仪表板和 Storm 功能依赖于 Storm REST API，此 API 可用于创建你自己的监视和管理解决方案。
+HDInsight Tools 中的 Storm 仪表板和 Storm 功能依赖于 Storm REST API，此 API 可用于创建自己的监视和管理解决方案。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用以 Windows 作为操作系统的 Storm on HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -67,7 +66,7 @@ Storm 仪表板是 Storm 群集上提供的网页。 URL 是 **https://&lt;clust
 ![Storm UI][storm-dashboard-ui]
 
 > [!NOTE]
-> 在某些版本的 Internet Explorer 中，你可能会发现，在首次访问 Storm UI 后它并不会刷新。 例如，可能不显示已提交的新拓扑，或者将以前停用的拓扑显示为活动状态。 Microsoft 已意识此问题，并在努力找出相应的解决方法。
+> 在某些版本的 Internet Explorer 中，你可能会发现，在首次访问 Storm UI 后它并不会刷新。 例如，可能不显示已提交的新拓扑，或者以前停用的拓扑显示为活动状态。 Microsoft 已意识此问题，并在努力找出相应的解决方法。
 
 #### <a name="main-page"></a>主页面
 
@@ -93,7 +92,7 @@ Storm UI 的主页面提供以下信息：
 
   * **停用**：暂停正在运行的拓扑。
 
-  * **重新平衡**：调整拓扑的并行度。 更改群集中的节点数目之后，你应该重新平衡正在运行的拓扑。 这可让拓扑调整并行度，以弥补群集中增加或减少的节点数目。
+  * **重新平衡**：调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 这可让拓扑调整并行度，以弥补群集中增加或减少的节点数目。
 
       有关详细信息，请参阅 [Understanding the parallelism of a Storm topology (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)（了解 Storm 拓扑的并行度）。
 
@@ -127,29 +126,29 @@ Storm UI 的主页面提供以下信息：
 
 HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下步骤使用了一个示例应用程序。 有关使用 HDInsight 工具创建自己的拓扑的详细信息，请参阅[使用 Visual Studio 的 HDInsight 工具开发 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)。
 
-使用以下步骤将示例部署到 Storm on HDInsight 群集，然后查看和管理拓扑。
+使用以下步骤将示例部署到 Storm on HDInsight 群集，并查看和管理拓扑。
 
-1. 如果你尚未安装最新版本的 HDInsight Tools for Visual Studio，请参阅[开始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)。
+1. 如果尚未安装最新版本的 HDInsight Tools for Visual Studio，请参阅[开始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
 2. 打开 Visual Studio，选择“文件” > “新建” > “项目”。
 
-3. 在“新建项目”对话框中，展开“已安装” > “模板”，然后选择“HDInsight”。 从模板列表中，选择“Storm 示例”。 在对话框底部，键入应用程序的名称。
+3. 在“新建项目”对话框中，展开“已安装” > “模板”，并选择“HDInsight”。 从模板列表中，选择“Storm 示例”。 在对话框底部，键入应用程序的名称。
 
     ![图像](./media/hdinsight-storm-deploy-monitor-topology/sample.png)
 
-4. 在“解决方案资源管理器”中，右键单击项目，然后选择“提交到 Storm on HDInsight”。
+4. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。
 
    > [!NOTE]
    > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
-5. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，然后选择“提交”。 可以使用“输出”窗口监视提交是否成功。
+5. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，并选择“提交”。 可以使用“输出”窗口监视提交是否成功。
 
 6. 成功提交拓扑之后，应该会出现群集的“Storm 拓扑”。 从列表中选择拓扑，以查看有关正在运行的拓扑的信息。
 
     ![visual studio 监视器](./media/hdinsight-storm-deploy-monitor-topology/vsmonitor.png)
 
    > [!NOTE]
-   > 也可以通过依次展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
+   > 也可以通过依次展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，并选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
 
     选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 每选择一项都会打开一个新窗口。
 
@@ -164,7 +163,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 ## <a name="rest-api"></a>REST API
 
-Storm UI 是以 REST API 为基础生成的，因此，你可以使用 API 执行类似的管理和监视功能。 使用 REST API 可以创建自定义工具来管理和监视 Storm 拓扑。
+Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行类似的管理和监视功能。 使用 REST API 可以创建自定义工具来管理和监视 Storm 拓扑。
 
 有关详细信息，请参阅 [Storm UI REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md)。 以下信息特定于将 REST API 与 Apache Storm on HDInsight 配合使用的情况。
 
@@ -185,7 +184,7 @@ HDInsight 群集上的 REST API 的基本 URI 是 **https://&lt;clustername>.azu
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已经了解如何使用 Storm 仪表板部署和监视拓扑，接下来请学习：
+现在，已经了解如何使用 Storm 仪表板部署和监视拓扑，接下来请学习：
 
 * [使用 Visual Studio 的 HDInsight 工具开发 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
@@ -196,4 +195,3 @@ HDInsight 群集上的 REST API 的基本 URI 是 **https://&lt;clustername>.azu
 [hdinsight-dashboard]: ./media/hdinsight-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
-

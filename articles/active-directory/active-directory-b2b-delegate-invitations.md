@@ -15,20 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 78613cc978b585a98d235245194c02371f7f3849
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>委托 Azure Active Directory B2B 协作邀请
 
-使用 Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作，你不必成为全局管理员便可发送邀请。 相反，你可以使用策略并将邀请委托给其角色允许他们发送邀请的用户。 委托来宾用户邀请的重要新方法是通过“来宾邀请者”角色邀请。
+使用 Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作，不必成为全局管理员便可发送邀请。 相反，可以使用策略并将邀请委托给其角色允许他们发送邀请的用户。 委托来宾用户邀请的重要新方法是通过“来宾邀请者”角色邀请。
 
 ## <a name="guest-inviter-role"></a>“来宾邀请者”角色
-我们可以将用户分配给可发送邀请的“来宾邀请者”角色。 你不必成为全局管理员角色的成员便可发送邀请。 默认情况下，常规用户还可以调用邀请 API，除非全局管理员已对常规用户禁用邀请。 用户也可以使用 Azure 门户或 PowerShell 调用 API。
+我们可以将用户分配给可发送邀请的“来宾邀请者”角色。 不必成为全局管理员角色的成员便可发送邀请。 默认情况下，常规用户还可以调用邀请 API，除非全局管理员已对常规用户禁用邀请。 用户也可以使用 Azure 门户或 PowerShell 调用 API。
 
 下面是一个示例，它展示了如何使用 PowerShell 将用户添加到“来宾邀请者”角色：
 
@@ -63,4 +61,3 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 * [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
-

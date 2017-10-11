@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: d171538ea57839eccddcc74ca099a39aee34ea10
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>手动或自动缩放实例计数
 在 [Azure 门户](https://portal.azure.com/)中，可手动设置服务的实例计数，或者设置参数以基于需求自动缩放。 这通常称为扩大或缩小。
@@ -29,7 +28,7 @@ ms.lasthandoff: 07/18/2017
 可以在门户中进行缩放，也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) 或 [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) 手动或自动调整规模。
 
 > [!NOTE]
-> 本文介绍如何在门户 [http://portal.azure.com](http://portal.azure.com) 中创建自动缩放设置。不可在经典门户 ([http://manage.windowsazure.com](http://manage.windowsazure.com)) 中对此门户中创建的自动缩放设置进行编辑。
+> 本文介绍如何在门户 [http://portal.azure.com](http://portal.azure.com) 中创建自动缩放设置。 不可在经典门户 ([http://manage.windowsazure.com](http://manage.windowsazure.com)) 中对此门户中创建的自动缩放设置进行编辑。
 > 
 > 
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/18/2017
 
 ![多个缩放规则](./media/insights-how-to-scale/Insights_MultipleScaleRules.png)
 
-启用这条附加规则后，如果在执行缩放操作之前负载超出 85%，会看到两个附加实例而不是一个。
+启用这条附加规则后，如果在执行缩放操作之前负载超出 85%，你会看到两个附加实例而不是一个。
 
 ## <a name="scale-based-on-a-schedule"></a>基于计划的缩放
 默认情况下，当创建缩放规则时，它会始终应用。 可以在单击配置文件标头时看到该规则：
@@ -107,7 +106,7 @@ ms.lasthandoff: 07/18/2017
 5. 接下来，需要添加要在其他时间应用的配置文件。 单击“添加配置文件”行。
     ![下班](./media/insights-how-to-scale/Insights_ProfileOffWork.png)
 6. 命名新的第二个配置文件，例如可将它称为“下班”。
-7. 然后再次选择“重复周期”，然后选择此期间所需的实例计数范围。
+7. 然后再次选择“重复周期”，选择在此时间内所需的实例计数范围。
 8. 与默认配置文件一样，选择希望应用此配置文件的“天”，以及一天中的“开始时间”。
    
    > [!NOTE]
@@ -129,5 +128,4 @@ ms.lasthandoff: 07/18/2017
 * 要确切了解代码在云中的执行情况时[监视应用程序性能](../application-insights/app-insights-azure-web-apps.md)。
 * [查看事件和活动日志](insights-debugging-with-events.md)，以了解服务中发生的所有事件。
 * 使用 Application Insights [监视任何网页的可用性和响应能力](../application-insights/app-insights-monitor-web-app-availability.md)，以便可以在页面出现故障时及时发现。
-
 

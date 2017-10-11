@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: alkohli;
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
@@ -37,7 +36,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-create-a-support-request"></a>创建支持请求
 
-1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”，然后单击“新建支持请求”。
+1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”，并单击“新建支持请求”。
      
     ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
@@ -70,11 +69,11 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
         ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
     Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
-提交请求后，支持工程师会与你尽早联系，以便处理你的请求。
+提交请求后，支持工程师会与你尽早联系，以便处理请求。
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 
-创建支持请求之后，您可以在门户内管理请求的生命周期。
+创建支持请求之后，可以在门户内管理请求的生命周期。
 
 #### <a name="to-manage-your-support-requests"></a>管理支持请求
 
@@ -92,7 +91,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中启动支持会话
 
-若要解决在 StorSimple 设备上可能会遇到的问题，需要与 Microsoft 支持团队合作。 Microsoft 支持团队可能需要使用支持会话登录到你的设备。
+若要解决在 StorSimple 设备上可能会遇到的问题，需要与 Microsoft 支持团队合作。 Microsoft 支持团队可能需要使用支持会话登录到设备。
 
 可以执行以下步骤来启动支持会话：
 
@@ -117,4 +116,3 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[诊断并解决与 StorSimple 8000 系列设备相关的问题](storsimple-troubleshoot-deployment.md)
-

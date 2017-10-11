@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7b1b50f71158e62da6b8ceb741a5b8cf9795e3a4
 ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/20/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
 云服务角色通过内部和外部连接进行通信。 外部连接称为**输入终结点**，内部连接称为**内部终结点**。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。
 
 ## <a name="input-endpoint"></a>输入终结点
-当你想要向外部公开某个端口时，将使用输入终结点。 你可以指定该终结点的协议类型和端口，然后，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性为终结点指定不同的内部端口。
+想要向外部公开某个端口时，使用输入终结点。 用户可以指定该终结点的协议类型和端口，然后，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性为终结点指定不同的内部端口。
 
 输入终结点可以使用以下协议：**http、https、tcp、udp**。
 
-若要创建输入终结点，请将 **InputEndpoint** 子元素添加到 Web 角色或辅助角色的 **Endpoints** 元素。
+若要创建输入终结点，请将 InputEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素。
 
 ```xml
 <Endpoints>
@@ -38,11 +37,11 @@ ms.lasthandoff: 12/20/2016
 ```
 
 ## <a name="instance-input-endpoint"></a>实例输入终结点
-实例输入终结点类似于输入终结点，但允许你通过使用负载平衡器上的端口转发，映射每个角色实例的面向公众的特定端口。 你可以指定单个面向公众的端口，也可以指定一系列端口。
+实例输入终结点类似于输入终结点，但允许通过使用负载均衡器上的端口转发，映射每个角色实例的面向公众的特定端口。 可以指定单个面向公众的端口，也可以指定一系列端口。
 
 实例输入终结点只能使用 **tcp** 或 **udp** 作为协议。
 
-若要创建实例输入终结点，请将 **InstanceInputEndpoint** 子元素添加到 Web 角色或辅助角色的 **Endpoints** 元素。
+若要创建实例输入终结点，请将 InstanceInputEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素。
 
 ```xml
 <Endpoints>
@@ -59,7 +58,7 @@ ms.lasthandoff: 12/20/2016
 
 内部终结点可以使用以下协议：**http、tcp、udp、任何**。
 
-若要创建内部输入终结点，请将 **InternalEndpoint** 子元素添加到 Web 角色或辅助角色的 **Endpoints** 元素。
+若要创建内部输入终结点，请将 InternalEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素。
 
 ```xml
 <Endpoints>
@@ -67,7 +66,7 @@ ms.lasthandoff: 12/20/2016
 </Endpoints> 
 ```
 
-你也可以使用端口范围。
+也可以使用端口范围。
 
 ```xml
 <Endpoints>
@@ -79,7 +78,7 @@ ms.lasthandoff: 12/20/2016
 
 
 ## <a name="worker-roles-vs-web-roles"></a>辅助角色与Web 角色
-当你使用辅助角色和 web 角色时，在终结点方面需要注意一个细微的差别。 Web 角色必须至少有一个使用 **HTTP** 协议的输入终结点。
+使用辅助角色和 web 角色时，在终结点方面需要注意一个细微的差别。 Web 角色必须至少有一个使用 **HTTP** 协议的输入终结点。
 
 ```xml
 <Endpoints>
@@ -92,26 +91,26 @@ ms.lasthandoff: 12/20/2016
 Azure 托管库提供了角色实例在运行时用来通信的方法。 可以从角色实例中运行的代码检索有关其他角色实例及其终结点是否存在的信息，以及有关当前角色实例的信息。
 
 > [!NOTE]
-> 你只能检索有关正在你的云服务中运行且定义了至少一个内部终结点的角色实例的信息。 无法获取有关其他服务中运行的角色实例的数据。
+> 只能检索有关正在云服务中运行且定义了至少一个内部终结点的角色实例的信息。 无法获取有关其他服务中运行的角色实例的数据。
 > 
 > 
 
-可以使用 [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) 属性检索角色的实例。 首先，使用 [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) 返回对当前角色实例的引用，然后使用 [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) 属性返回对角色本身的引用。
+可以使用 [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) 属性检索角色的实例。 首先，使用 [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) 返回对当前角色实例的引用，并使用 [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) 属性返回对角色本身的引用。
 
-当你通过 .NET SDK 以编程方式连接到角色实例时，可以相对较容易地访问终结点信息。 例如，在连接到特定的角色环境后，你可以使用以下代码获取特定终结点的端口：
+通过 .NET SDK 以编程方式连接到角色实例时，可以相对较容易地访问终结点信息。 例如，在连接到特定的角色环境后，可以使用以下代码获取特定终结点的端口：
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-**Instances** 属性将返回一个 **RoleInstance** 对象集合。 此集合始终包含当前实例。 如果角色未定义内部终结点，则集合将包含当前实例，但不包含任何其他实例。 如果未为角色定义内部终结点，则集合中的角色实例的数目将始终为 1。 如果角色定义了一个内部终结点，则其实例在运行时是可发现的，并且集合中的实例数将与在服务配置文件中为角色指定的实例数对应。
+Instances 属性将返回一个 RoleInstance 对象集合。 此集合始终包含当前实例。 如果角色未定义内部终结点，则集合包含当前实例，但不包含任何其他实例。 如果未为角色定义内部终结点，则集合中的角色实例的数目会始终为 1。 如果角色定义了一个内部终结点，则其实例在运行时是可发现的，并且集合中的实例数将与在服务配置文件中为角色指定的实例数对应。
 
 > [!NOTE]
-> Azure 托管库不提供用来确定其他角色实例的运行状况的方法，但如果你的服务需要此功能，则可以自行实现此类运行状况评估。 可以使用 [Azure 诊断](cloud-services-dotnet-diagnostics.md)来获取有关正在运行的角色实例的信息。
+> Azure 托管库不提供用来确定其他角色实例的运行状况的方法，但如果服务需要此功能，则可以自行实现此类运行状况评估。 可以使用 [Azure 诊断](cloud-services-dotnet-diagnostics.md)来获取有关正在运行的角色实例的信息。
 > 
 > 
 
-若要确定角色实例上的内部终结点的端口号，可以使用 [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) 属性来返回 Dictionary 对象，该对象中将包含终结点名称及其对应的 IP 地址和端口。 [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) 属性返回指定终结点的 IP 地址和端口。 **PublicIPEndpoint** 属性返回负载平衡终结点的端口。 将不使用 **PublicIPEndpoint** 属性的 IP 地址部分。
+要确定角色实例上的内部终结点的端口号，可以使用 [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) 属性来返回 Dictionary 对象，该对象中将包含终结点名称及其对应的 IP 地址和端口。 [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) 属性返回指定终结点的 IP 地址和端口。 **PublicIPEndpoint** 属性返回负载均衡终结点的端口。 不使用 **PublicIPEndpoint** 属性的 IP 地址部分。
 
 下面是一个循环访问角色实例的示例。
 
@@ -126,10 +125,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-下面的辅助角色示例将获取通过服务定义公开的终结点，然后开始侦听连接。
+下面的辅助角色示例将获取通过服务定义公开的终结点，并开始侦听连接。
 
 > [!WARNING]
-> 此代码仅适用于已部署的服务。 在 Azure 计算模拟器中运行时，将忽略创建直接端口终结点的服务配置元素（**InstanceInputEndpoint** 元素）。
+> 此代码仅适用于已部署的服务。 在 Azure 计算模拟器中运行时，将忽略创建直接端口终结点的服务配置元素（InstanceInputEndpoint 元素）。
 > 
 > 
 
@@ -258,7 +257,7 @@ namespace WorkerRole1
 > 
 > 
 
-默认情况下，在定义内部终结点后，通信可以从任意角色流动到角色的内部终结点，而不会受到任何限制。 若要限制通信，必须将 **NetworkTrafficRules** 元素添加到服务定义文件中的 **ServiceDefinition** 元素。
+默认情况下，在定义内部终结点后，通信可以从任意角色流动到角色的内部终结点，而不会受到任何限制。 若要限制通信，必须将 NetworkTrafficRules 元素添加到服务定义文件中的 ServiceDefinition 元素。
 
 ### <a name="scenario-1"></a>方案 1
 仅允许从 **WebRole1** 到 **WorkerRole1** 的网络流量。
@@ -372,5 +371,4 @@ namespace WorkerRole1
 
 ## <a name="next-steps"></a>后续步骤
 阅读有关云服务[模型](cloud-services-model-and-package.md)的详细信息。
-
 

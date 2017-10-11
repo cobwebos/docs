@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 32c6d4ed5470077856d4ab175a5df5188b3690a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.openlocfilehash: 58d29996a922fac6d295e753ba5d66d32e745a57
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
 
 阅读本文有助于了解在配置 Azure AD 库应用程序**密码单一登录**时人们面对的常见问题。
@@ -31,7 +29,7 @@ ms.lasthandoff: 06/13/2017
 
 但是，尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，但是有时我们仍然无法立即找到这些问题，或者这些问题需要一些时间去解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
 
-除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>凭据已填写并提交，但页面却显示凭据不正确
 
@@ -41,13 +39,13 @@ ms.lasthandoff: 06/13/2017
 
   * 如果这种方法有效，再让用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为大家所知的最新有效的用户名和密码。
 
-   * 如果你或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
+   * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
 -   如果用户自己分配凭据，让用户“检查以确保他们的密码在应用程序中未过期”，如果已经过期，直接登录应用程序**更新过期密码**。
 
    * 密码在应用程序中更新好后，要求用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”按钮，以将凭据更新到大家所知的最新有效的用户名和密码。
 
-   * 如果你或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
+   * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
 -   让用户通过遵循下面的[如何安装访问面板浏览器扩展](#how-to-install-the-access-panel-browser-extension)部分中的步骤更新访问面板浏览器扩展。
 
@@ -59,7 +57,7 @@ ms.lasthandoff: 06/13/2017
 
 但是，尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，但是有时我们仍然无法立即找到这些问题，或者这些问题需要一些时间去解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
 
-除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>扩展在 Chrome 和 Firefox 中有效，但在 Internet Explorer 中无效
 
@@ -71,9 +69,9 @@ ms.lasthandoff: 06/13/2017
 
 -   在少数情况下，Internet Explorer 的安全验证有时可以导致页面的加载速度慢于脚本的执行速度。
 
-   * 不幸的是，这种情况会根据浏览器的版本、计算机的速度或被访问的站点而有所变化。 在这种情况下，我们建议你联系支持，这样可以解决具体应用程序的集成。
+   * 不幸的是，这种情况会根据浏览器的版本、计算机的速度或被访问的站点而有所变化。 在这种情况下，我们建议联系支持，这样可以解决具体应用程序的集成。
 
-除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>检查应用程序的登录页面近期是否已变更，或需要其他字段
 
@@ -81,7 +79,7 @@ ms.lasthandoff: 06/13/2017
 
 尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，可有时我们仍然无法立即找到这些问题。 否则，这些问题只需一些时间即可解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
 
-除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 
@@ -109,5 +107,4 @@ ms.lasthandoff: 06/13/2017
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: mingzhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 0bccdc1cfdbda06b57da8cd662373ef137768672
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
@@ -31,13 +30,13 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 ## <a name="install-postgresql"></a>安装 PostgreSQL
 > [!NOTE]
-> 你必须已经有一个运行 Linux 的 Azure 虚拟机，才能完成本教程。 在继续操作前，若要创建并设置 Linux VM，请参阅 [Azure Linux VM 教程](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> 必须已经有一个运行 Linux 的 Azure 虚拟机，才能完成本教程。 在继续操作前，若要创建并设置 Linux VM，请参阅 [Azure Linux VM 教程](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 > 
 > 
 
 在此示例中，使用端口 1999 作为 PostgreSQL 端口。  
 
-通过 PuTTY 连接到你创建的 Linux VM。 如果这是你首次使用 Azure Linux VM，请参阅[如何在 Azure 上将 SSH 用于 Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，了解如何使用 PuTTY 连接到 Linux VM。
+通过 PuTTY 连接到创建的 Linux VM。 如果这是你首次使用 Azure Linux VM，请参阅[如何在 Azure 上将 SSH 用于 Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，了解如何使用 PuTTY 连接到 Linux VM。
 
 1. 运行以下命令切换成根用户（管理员）：
    
@@ -69,7 +68,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
    
         # gmake install-world
    
-    你应该会收到以下确认消息：
+    应该会收到以下确认消息：
    
         PostgreSQL, contrib, and documentation successfully made. Ready to install.
 
@@ -109,21 +108,21 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 5. 执行 *bash_profile* 文件：
    
         $ source .bash_profile
-6. 使用以下命令验证你的安装：
+6. 使用以下命令验证安装：
    
         $ which psql
    
     如果安装成功，你将看到以下响应：
    
         /opt/pgsql/bin/psql
-7. 你还可以检查 PostgreSQL 版本：
+7. 还可以检查 PostgreSQL 版本：
    
         $ psql -V
 8. 初始化数据库：
    
         $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
    
-    你应该会收到以下输出：
+    应该会收到以下输出：
 
 ![图像](./media/postgresql-install/no1.png)
 
@@ -156,7 +155,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # netstat -tunlp|grep 1999
 
-你应该会看到以下输出：
+应该会看到以下输出：
 
 ![图像](./media/postgresql-install/no3.png)
 
@@ -185,13 +184,13 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 1. “name”列受 VARCHAR 命令限制，必须少于 20 个字符。
 2. “food”列指示每个人将携带的食物。 VARCHAR 将此文本限制为 30 个字符以下。
 3. “confirmed”列记录此人是否接受了百乐餐邀请。 可接受的值为“Y”和“N”。
-4. “date”列将在他们报名参加该活动时显示。 Postgres 要求日期格式为 yyyy-mm-dd。
+4. “date”列会在他们报名参加该活动时显示。 Postgres 要求日期格式为 yyyy-mm-dd。
 
-如果成功创建了表，你应该会看到以下内容：
+如果成功创建了表，应该会看到以下内容：
 
 ![图像](./media/postgresql-install/no4.png)
 
-你还可以使用以下命令检查表结构：
+还可以使用以下命令检查表结构：
 
 ![图像](./media/postgresql-install/no5.png)
 
@@ -200,11 +199,11 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-你应该会看到以下输出：
+应该会看到以下输出：
 
 ![图像](./media/postgresql-install/no6.png)
 
-你也可以向表中多添加几个人。 下面是几个选项，你也可以自行创建：
+也可以向表中多添加几个人。 下面是几个选项，也可以自行创建：
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
 
@@ -237,6 +236,5 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 
 ## <a name="get-more-information-about-postgresql"></a>获取有关 PostgreSQL 的详细信息
-现在，你已完成在 Azure Linux VM 中安装 PostgreSQL，你可以在 Azure 中享受使用它的过程。 若要了解有关 PostgreSQL 的详细信息，请访问 [PostgreSQL 网站](http://www.postgresql.org/)。
-
+现在，已完成在 Azure Linux VM 中安装 PostgreSQL，可以在 Azure 中享受使用它的过程。 若要了解有关 PostgreSQL 的详细信息，请访问 [PostgreSQL 网站](http://www.postgresql.org/)。
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: da10b213bc2543942b5ac77cf5c5d8547c00220c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="replicate-hyper-v-virtual-machines-without-vmm-to-azure"></a>将 Hyper-V 虚拟机（不使用 VMM）复制到 Azure 
 
 > [!div class="op_single_selector"]
@@ -109,4 +107,3 @@ ms.lasthandoff: 06/23/2017
 初始复制完成并运行增量复制后，可以运行测试故障转移，以确保一切都符合预期。
 
 转到[第 11 步：运行测试故障转移](hyper-v-site-walkthrough-test-failover.md)
-

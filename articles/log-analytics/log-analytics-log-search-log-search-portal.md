@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>在 Azure Log Analytics 中使用日志搜索门户创建日志搜索
 
@@ -104,7 +103,7 @@ Syslog | where (SeverityLevel == "err")
 ![按计算机分组](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 
 ## <a name="work-with-results"></a>处理结果
-日志搜索门户具有用于处理查询结果的各种功能。  可以对结果进行排序、筛选和分组，由此对数据进行分析，而无需修改实际查询。  默认情况下，查询结果不会进行排序。
+日志搜索门户具有用于处理查询结果的各种功能。  可以对结果进行排序、筛选和分组，由此对数据进行分析，而无需修改实际查询。  默认情况下未排序的查询的结果。
 
 若要以表的形式查看数据 - 这种形式可提供其他用于筛选和排序的选项，请单击“表”。  
 
@@ -165,4 +164,3 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 - 在 [Analytics 门户入门](https://go.microsoft.com/fwlink/?linkid=856079)中了解有关 Log Analytics 查询语言的详细信息。
 - 使用[高级分析门户](https://go.microsoft.com/fwlink/?linkid=856587)逐步学习本教程，借助该门户可以运行与日志搜索门户相同的查询并访问相同的数据。
-

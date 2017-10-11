@@ -15,12 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 54c0149a769e654139bbdf709802d49127f041ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="sql-data-warehouse-backups"></a>SQL 数据仓库备份
 SQL 数据仓库的数据仓库备份功能分为本地备份和异地备份， 其中包括 Azure 存储 Blob 快照和异地冗余存储。 使用数据仓库备份可以将数据仓库还原到主要区域的某个还原点，或者还原到另一地理区域。 本文介绍了在 SQL 数据仓库中进行备份的细节。
@@ -119,5 +118,4 @@ SQL 数据仓库备份的主要用途是在保留期内将数据仓库还原到�
 * 若要还原数据仓库，请参阅[还原 SQL 数据仓库](sql-data-warehouse-restore-database-overview.md)
 
 <!-- ### Tutorials -->
-
 

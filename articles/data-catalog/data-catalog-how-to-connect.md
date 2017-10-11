@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5db1a6f8b3ff0369817e69abaa4d95af843cd7f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: fd687bb74a22b0483225c509171edaa67f1c49d4
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
 ## <a name="introduction"></a>介绍
@@ -35,7 +34,7 @@ ms.lasthandoff: 11/17/2016
 
  ![从数据资产磁贴在 Excel 中打开 SQL Server 表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
 
-使用列表视图时，菜单将显示在门户窗口顶部的搜索栏。
+使用列表视图时，菜单会显示在门户窗口顶部的搜索栏。
 
  ![从搜索栏在报表管理器中打开 SQL Server Reporting Services 报表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
@@ -51,7 +50,7 @@ ms.lasthandoff: 11/17/2016
 | SQL Server Data Tools |vsweb:// |安装了 SQL Server 工具的 Visual Studio 2013 Update 4 或更高版本 |
 | 报表管理器 |http:// |请参阅 [SQL Server Reporting Services 的浏览器要求](https://technet.microsoft.com/en-us/library/ms156511.aspx) |
 
-## <a name="your-data-your-tools"></a>你的数据，你的工具
+## <a name="your-data-your-tools"></a>数据，工具
 菜单中可用的选项取决于当前所选的数据资产类型。 当然，并非所有可能的工具都包括在“打开方式...” 菜单中，但仍可以使用任何客户端工具轻松连接到数据源。 在“Azure 数据目录”门户中选中某数据资产时，会在属性窗格中显示其完整位置。
 
  ![SQL Server 表的连接信息](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
@@ -70,4 +69,3 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程，了解有关如何连接到数据源的分步详细说明。
-

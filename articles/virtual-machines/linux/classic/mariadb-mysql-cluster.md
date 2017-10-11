@@ -15,19 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) 群集：Azure 教程
 > [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍经典部署模型。 Microsoft 建议大多数新部署使用 Azure Resource Manager 模型。
 
 > [!NOTE]
-> MariaDB Enterprise 群集现已在 Azure Marketplace 中推出。 这款新产品可在 Azure Resource Manager 上自动部署 MariaDB Galera 群集。 应从 [Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/) 使用这款新产品。
+> MariaDB Enterprise 群集现已在 Azure 应用商店中推出。 这款新产品可在 Azure Resource Manager 上自动部署 MariaDB Galera 群集。 应从 [Azure 应用商店](https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/)使用这款新产品。
 >
 >
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 03/27/2017
 4. 查找 CentOS 7 虚拟机映像的名称。
 
         azure vm image list | findstr CentOS
-   输出将类似于 `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926`。
+   输出类似于 `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926`。
 
    在下一步中使用该名称。
 5. 创建 VM 模板，并将 /path/to/key.pem 替换为生成的 .pem SSH 密钥的存储路径。
@@ -81,11 +80,11 @@ ms.lasthandoff: 03/27/2017
 
 2. 安装 RAID 支持：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 安装 mdadm。
+    a. 安装 mdadm。
 
               yum install mdadm
 
-    b.保留“数据库类型”设置，即设置为“共享”。 创建具有 EXT4 文件系统的 RAID0/条带化配置。
+    b. 创建具有 EXT4 文件系统的 RAID0/条带化配置。
 
               mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=4 /dev/sdc /dev/sdd /dev/sde /dev/sdf
               mdadm --detail --scan >> /etc/mdadm.conf
@@ -96,7 +95,7 @@ ms.lasthandoff: 03/27/2017
     d.单击“下一步”。 检索新创建的 RAID 设备的 UUID。
 
               blkid | grep /dev/md0
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 编辑 /etc/fstab。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 编辑 /etc/fstab。
 
               vi /etc/fstab
     f. 添加设备，以便在重新启动时自动装载，并将 UUID 替换为前面从 **blkid** 命令获取的值。
@@ -108,7 +107,7 @@ ms.lasthandoff: 03/27/2017
 
 3. 安装 MariaDB。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 创建 MariaDB.repo 文件。
+    a. 创建 MariaDB.repo 文件。
 
                 vi /etc/yum.repos.d/MariaDB.repo
 
@@ -128,7 +127,7 @@ ms.lasthandoff: 03/27/2017
 
 4. 将 MySQL 数据目录移到 RAID 块设备。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将当前 MySQL 目录复制到其新位置，然后删除旧目录。
+    a. 将当前 MySQL 目录复制到其新位置，然后删除旧目录。
 
            cp -avr /var/lib/mysql /mnt/data  
            rm -rf /var/lib/mysql
@@ -147,10 +146,10 @@ ms.lasthandoff: 03/27/2017
             then editing `/etc/selinux/config` to set `SELINUX=permissive`
 6. 验证 MySQL 是否运行。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 启动 MySQL。
+   a. 启动 MySQL。
 
            service mysql start
-   b.保留“数据库类型”设置，即设置为“共享”。 保护 MySQL 安装、设置根密码、删除匿名用户，禁用远程根登录并删除测试数据库。
+   b. 保护 MySQL 安装、设置根密码、删除匿名用户，禁用远程根登录并删除测试数据库。
 
            mysql_secure_installation
    c. 在数据库上创建一个用户，以便在群集操作中使用，也可以选择在应用程序中使用。
@@ -164,10 +163,10 @@ ms.lasthandoff: 03/27/2017
             service mysql stop
 7. 创建配置占位符。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 编辑 MySQL 配置，以便为群集设置创建一个占位符。 暂时不要替换 **`<Variables>`** 或取消注释。 在基于此模板创建 VM 后，才需执行此操作。
+   a. 编辑 MySQL 配置，以便为群集设置创建一个占位符。 暂时不要替换 **`<Variables>`** 或取消注释。 在基于此模板创建 VM 后，才需执行此操作。
 
             vi /etc/my.cnf.d/server.cnf
-   b.保留“数据库类型”设置，即设置为“共享”。 编辑 **[galera]** 节并将其清除。
+   b. 编辑 **[galera]** 节并将其清除。
 
    c. 编辑 **[mariadb]** 节。
 
@@ -193,10 +192,10 @@ ms.lasthandoff: 03/27/2017
 
 9. 优化系统性能。 有关详细信息，请参阅[性能优化策略](optimize-mysql.md)。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 再次编辑 MySQL 配置文件。
+   a. 再次编辑 MySQL 配置文件。
 
             vi /etc/my.cnf.d/server.cnf
-   b.保留“数据库类型”设置，即设置为“共享”。 编辑 **[mariadb]** 节，在其后追加以下内容：
+   b. 编辑 **[mariadb]** 节，在其后追加以下内容：
 
    > [!NOTE]
    > 建议 innodb\_buffer\_pool_size 为 VM 内存量的 70%。 在此示例中，它已设置为 2.45 GB，因为中型 Azure VM 具有 3.5 GB 的 RAM。
@@ -210,21 +209,21 @@ ms.lasthandoff: 03/27/2017
            innodb_log_buffer_size = 128M # The log buffer allows transactions to run without having to flush the log to disk before the transactions commit
            innodb_flush_log_at_trx_commit = 2 # The setting of 2 enables the most data integrity and is suitable for Master in MySQL cluster
            query_cache_size = 0
-10. 停止 MySQL 并禁止 MySQL 服务在启动时运行，以免在添加节点时导致群集混乱，然后取消预配计算机。
+10. 停止 MySQL 并禁止 MySQL 服务在启动时运行，以免在添加节点时导致群集混乱，并取消预配计算机。
 
         service mysql stop
         chkconfig mysql off
         waagent -deprovision
 11. 通过门户捕获 VM。 （目前，[Azure CLI 工具中的问题 #1268](https://github.com/Azure/azure-xplat-cli/issues/1268) 描述的事实是，Azure CLI 工具所捕获的映像并没有捕获所附加的数据磁盘。）
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 通过门户关闭计算机。
+    a. 通过门户关闭计算机。
 
     b. 单击“捕获”，然后将映像名称指定为 **mariadb-galera-image**。 提供说明并选中“我已运行 waagent”。
       
       ![捕获虚拟机](./media/mariadb-mysql-cluster/Capture2.PNG)
 
 ## <a name="create-the-cluster"></a>创建群集
-使用已创建的模板创建三个 VM，然后配置并启动群集。
+使用已创建的模板创建三个 VM，并配置并启动群集。
 
 1. 从已创建的 mariadb-galera-image 映像创建第一个 CentOS 7 VM，并提供以下信息：
 
@@ -238,7 +237,7 @@ ms.lasthandoff: 03/27/2017
  - 传递 SSH 证书 .pem 文件，将 /path/to/key.pem 替换为已生成的 .pem SSH 密钥的存储路径。
 
    > [!NOTE]
-   > 为清楚起见，以下命令已拆分为多行，但你应将每条命令作为一行输入。
+   > 为清楚起见，以下命令拆开显示在多行内，但每个都应作为一整行进行输入。
    >
    >
         azure vm create
@@ -275,7 +274,7 @@ ms.lasthandoff: 03/27/2017
         --ssh 24
         --vm-name mariadb3
         --connect mariadbha mariadb-galera-image azureuser
-3. 下一步将需要获取这三个 VM 的内部 IP 地址：
+3. 需要获取三个 VM 各自的内部 IP 地址，才能执行下一步：
 
     ![获取 IP 地址](./media/mariadb-mysql-cluster/IP.png)
 4. 使用 SSH 登录到这三个 VM，并编辑每个 VM 的配置文件。
@@ -319,7 +318,7 @@ CLI 将负载均衡器探测间隔设置为 15 秒，这可能有点太长。 �
 ![更改探测间隔](./media/mariadb-mysql-cluster/Endpoint3.PNG)
 
 ## <a name="validate-the-cluster"></a>验证群集
-繁琐的工作已经完成。 现在应该可以在 `mariadbha.cloudapp.net:3306` 访问群集，这将触发负载均衡器并在三个 VM 之间顺利、高效地路由请求。
+繁琐的工作已经完成。 现在应该可以在 `mariadbha.cloudapp.net:3306` 访问群集，这会触发负载均衡器并在三个 VM 之间顺利、高效地路由请求。
 
 使用偏好的 MySQL 客户端进行连接，或从其中一个 VM 进行连接，以验证此群集是否正常运行。
 
@@ -346,7 +345,7 @@ CLI 将负载均衡器探测间隔设置为 15 秒，这可能有点太长。 �
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
-在本文中，你在运行 CentOS 7 的 Azure 虚拟机上创建了包含三个节点的 MariaDB + Galera 高度可用群集。 这些 VM 通过 Azure 负载均衡器实现了负载均衡。
+在本文中，在运行 CentOS 7 的 Azure 虚拟机上创建了包含三个节点的 MariaDB + Galera 高度可用群集。 这些 VM 通过 Azure 负载均衡器实现了负载均衡。
 
 你可能希望了解[在 Linux 上对 MySQL 进行群集的其他方式](mysql-cluster.md)并探究如何[优化和测试 Azure Linux VM 上的 MySQL 性能](optimize-mysql.md)。
 
@@ -365,4 +364,3 @@ CLI 将负载均衡器探测间隔设置为 15 秒，这可能有点太长。 �
 [MariaDBs]:https://mariadb.org/en/about/
 [创建用于身份验证的 SSH 密钥]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
 [issue #1268 in the Azure CLI]:https://github.com/Azure/azure-xplat-cli/issues/1268
-

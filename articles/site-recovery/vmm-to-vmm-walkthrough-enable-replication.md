@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 6673d192dbc18bfc955d9e7e3c55893512511ffb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-9-enable-replication-to-a-secondary-site-for-hyper-v-vms"></a>步骤 9：实现将 Hyper-V VM 复制到辅助站点
 
@@ -63,4 +62,3 @@ ms.lasthandoff: 08/01/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 10：运行测试故障转移](vmm-to-vmm-walkthrough-test-failover.md)。
-
