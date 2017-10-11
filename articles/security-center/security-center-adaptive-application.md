@@ -115,7 +115,7 @@ ms.lasthandoff: 09/20/2017
     - ViolationsBlocked：当解决方案启用“强制”模式时，尝试执行未加入允许列表的应用程序所出现的冲突。
     - ViolationsAudited：当解决方案启用“审核”模式时，执行未加入允许列表的应用程序所出现的冲突。
     - RulesViolatedManually：当用户尝试在 VM 上手动配置规则（而不是通过 ASC 管理门户进行配置）时出现的冲突。
-- **VM 和数：有此类问题的虚拟机数。
+- **VM 和数**： 有此类问题的虚拟机数。
 
 单击这其中的每一行都会重定向到 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)页，其中显示具有此类冲突的所有 VM 的相关信息。 如果单击每行末尾的三点符号，则可删除该特定条目。 “已配置虚拟机”部分列出了应用这些规则的 VM。 
 

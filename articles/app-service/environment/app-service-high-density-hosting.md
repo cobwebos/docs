@@ -156,7 +156,7 @@ Set-AzureRmWebApp $newapp
 1. 在应用服务计划中将 PerSiteScaling 标志设置为 true。
 1. 将 **numberOfWorkers** 属性设置为 **1**，创建新应用并将其分配给该应用服务计划。 使用此配置，让该辅助池中产生可能的最高密度。
 1. 可按应用独立配置辅助角色数，根据需要授予其他资源。 例如：
-    - 使用率高的应用可通过将 **numberOfWorkers** 设置为 ** 3** 来提高该应用的处理能力。 
+    - 使用率高的应用可通过将 **numberOfWorkers** 设置为 **3** 来提高该应用的处理能力。 
     - 使用率低的应用可将 **numberOfWorkers** 属性设置为 **1**。
 
 ## <a name="next-steps"></a>后续步骤
