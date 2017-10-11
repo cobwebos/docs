@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 85911fcc66dcedff0d43bd986bce4500a1a2f00b
-
-
+ms.openlocfilehash: db03b3cd668bf8e35913872ac4225de6d4d3edd1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple 设备上支持的适用于 10 GbE 网络接口的硬件
 ## <a name="overview"></a>概述
 本文将提供有关适用于 Microsoft Azure StorSimple 设备的附属硬件的信息。
 
 ## <a name="list-of-devices-tested-by-microsoft"></a>Microsoft 已测试的设备列表
-Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，确保它们能以最佳方式和设备一起工作。 （下表将会随着新硬件进行测试而更新。）
+Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，确保它们能以最佳方式和设备一起工作。 （下表会随着新硬件进行测试而更新。）
 
 ### <a name="sfp-transceivers"></a>SFP+ 收发器
 | 制造商 | 模型 |
@@ -48,7 +48,7 @@ Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，
 | 3. |Cisco |N5K-C5596UP-FA |
 
 ## <a name="list-of-devices-tested-in-the-field"></a>已在现场测试的设备列表
-本部分包含 StorSimple 客户已在现场成功部署的设备的列表。 这些设备尚未经过 Microsoft 测试，但可能可以与你的 StorSimple 设备一起使用。
+本部分包含 StorSimple 客户已在现场成功部署的设备的列表。 这些设备尚未经过 Microsoft 测试，但可能可以与 StorSimple 设备一起使用。
 
 | 参数 | 值 |
 | --- | --- |
@@ -67,7 +67,7 @@ Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，
 Mellanox 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，确保它们能以最佳方式与 Mellanox 网络接口一起工作，例如 StorSimple 设备上的 10 GbE 网络接口。
 
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Mellanox 支持的电缆和模块
-下表列出了 Mellanox 支持的电缆和模块。 这些设备尚未经过 Microsoft 测试，但可能可以与你的 StorSimple 设备一起使用。
+下表列出了 Mellanox 支持的电缆和模块。 这些设备尚未经过 Microsoft 测试，但可能可以与 StorSimple 设备一起使用。
 
 | 序列 否。 | Speed | 模型 | 说明 | 制造商 |
 | --- | --- | --- | --- | --- |
@@ -108,7 +108,7 @@ Mellanox 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，�
 | 35. |10 GbE |MC3309130-00A Mt |无源铜缆 1x SFP+ 10Gb/s 30AWG 0.5 米 |Mellanox 技术 |
 
 ### <a name="switches-supported-by-mellanox"></a>Mellanox 支持的交换机
-下表列出了 Mellanox 支持的交换机。 这些设备尚未经过 Microsoft 测试，但可能可以与你的 StorSimple 设备一起使用。
+下表列出了 Mellanox 支持的交换机。 这些设备尚未经过 Microsoft 测试，但可能可以与 StorSimple 设备一起使用。
 
 | 序列 否。 | Speed | 模型 | 说明 | 制造商 |
 | --- | --- | --- | --- | --- |
@@ -122,10 +122,4 @@ Mellanox 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，�
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 StorSimple 的硬件组件和状态](storsimple-monitor-hardware-status.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

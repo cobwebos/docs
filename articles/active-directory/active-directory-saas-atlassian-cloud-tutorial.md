@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
 ms.openlocfilehash: 2891838b56dd15cb5f97dcae391770143a80c781
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>教程：Azure Active Directory 与 Atlassian Cloud 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/14/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>从库中添加 Atlassian Cloud
-若要配置 Atlassian Cloud 与 Azure AD 的集成，需要从库中将 Atlassian Cloud 添加到托管 SaaS 应用列表。
+要配置 Atlassian Cloud 与 Azure AD 的集成，需要从库中将 Atlassian Cloud 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Atlassian Cloud，请执行以下步骤：**
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/14/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Atlassian Cloud 测试用户](#creating-an-atlassian-cloud-test-user)** - 在 Atlassian Cloud 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+3. **[创建一个 Atlassian 云的测试用户](#creating-an-atlassian-cloud-test-user)** -若要具有 Atlassian 云中的链接到用户的 Azure AD 表示 Britta 人 Simon 对应项。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -111,9 +110,9 @@ ms.lasthandoff: 07/14/2017
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<instancename>.atlassian.net/admin/saml/edit`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instancename>.atlassian.net/admin/saml/edit`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中键入 URL：`https://id.atlassian.com/login/saml/acs`
+    b. 在“回复 URL”文本框中键入 URL：`https://id.atlassian.com/login/saml/acs`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 07/14/2017
     > [!NOTE] 
     > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 可从 Atlassian Cloud SAML 配置屏幕中获取确切值。
  
-5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png) 
 
@@ -138,7 +137,7 @@ ms.lasthandoff: 07/14/2017
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_06.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在文本框中键入域名，然后单击“添加域”。
+    a. 在文本框中键入域名，并单击“添加域”。
         
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_07.png)
 
@@ -162,9 +161,9 @@ ms.lasthandoff: 07/14/2017
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识提供者实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    a. 在“标识提供者实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识提供者 SSO URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“标识提供者 SSO URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     c. 在 Azure 门户中打开下载的证书并复制其中包含的值（不要复制 Begin 和 End 行），然后将其粘贴到“公共 X509 证书”框。
     
@@ -172,9 +171,9 @@ ms.lasthandoff: 07/14/2017
      
 11. 更新 Azure AD 设置，确保设置正确的标识符 URL。
   
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 从 SAML 屏幕复制“SP 标识 ID”并将其作为“标识符”值粘贴到 Azure AD。
+    a. 从 SAML 屏幕复制“SP 标识 ID”并将其作为“标识符”值粘贴到 Azure AD。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 “登录 URL”是 Atlassian Cloud 的租户 URL。   
+    b. “登录 URL”是 Atlassian Cloud 的租户 URL。   
 
      ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
     
@@ -208,7 +207,7 @@ ms.lasthandoff: 07/14/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -246,9 +245,9 @@ ms.lasthandoff: 07/14/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Atlassian Cloud，请执行以下步骤：**
+**要将 Britta Simon 分配到 Atlassian Cloud，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -296,5 +295,4 @@ ms.lasthandoff: 07/14/2017
 [201]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_203.png
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: f401f592d79ad954aa466de74d3e3fbb18aa9a5b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>教程：Azure Active Directory 与 Mimecast Admin Console 的集成
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/16/2017
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要配置 Azure AD 与 Mimecast Admin Console 的集成，需要以下项：
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 08/16/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Mimecast Admin Console
-2. 配置和测试 Azure AD 单一登录
+2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>从库中添加 Mimecast Admin Console
 要配置 Mimecast Admin Console 与 Azure AD 的集成，需要从库中将 Mimecast Admin Console 添加到托管 SaaS 应用列表。
@@ -118,7 +117,7 @@ ms.lasthandoff: 08/16/2017
     > [!NOTE] 
     > 登录 URL 特定于区域。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_certificate.png) 
 
@@ -288,5 +287,4 @@ ms.lasthandoff: 08/16/2017
 [201]: ./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_general_203.png
-
 

@@ -15,14 +15,12 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 6/2/2017
 ms.author: shigu;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
 行组质量由行组中的行数决定。 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
@@ -122,7 +120,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 数据库会在查询的所有运算符之间共享查询的内存授予。 如果加载查询的排序和联接复杂，可用于压缩的内存将减少。
 
-请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，并将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
+请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，并将临时表加载到列存储索引中。 也可先加载数据，并使用 MPP 系统来转换数据。
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 
@@ -164,4 +162,3 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 <!--MSDN references-->
 
 <!--Other Web references-->
-

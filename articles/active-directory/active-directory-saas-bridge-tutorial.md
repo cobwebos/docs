@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: d2b7fd6f73f1b782cfe6337d13f9f22f9c70d389
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>教程：Azure Active Directory 与 Bridge 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/22/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-bridge-from-the-gallery"></a>从库中添加 Bridge
-若要配置 Bridge 与 Azure AD 的集成，需要从库中将 Bridge 添加到托管 SaaS 应用列表。
+要配置 Bridge 与 Azure AD 的集成，需要从库中将 Bridge 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Bridge，请执行以下步骤：**
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/22/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Bridge 测试用户](#creating-a-bridge-test-user)** - 目的是在 Bridge 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建桥测试用户](#creating-a-bridge-test-user)** -若要链接到用户的 Azure AD 表示的桥中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 06/22/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-bridge-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -169,7 +168,7 @@ ms.lasthandoff: 06/22/2017
  
 ### <a name="creating-a-bridge-test-user"></a>创建 Bridge 测试用户
 
-在本部分中，将在 Bridge 中创建一个名为“Britta Simon”的用户。 请协助 [Bridge 客户端支持团队](https://community.bridgeapp.com/community/help)在该平台中创建用户。 可以在<a href="https://community.bridgeapp.com/community/help">此处</a>请求 Bridge 的支持票证，以便将用户添加到 Bridge 平台中。
+在本部分中，会在 Bridge 中创建一个名为“Britta Simon”的用户。 请协助 [Bridge 客户端支持团队](https://community.bridgeapp.com/community/help)在该平台中创建用户。 可以在<a href="https://community.bridgeapp.com/community/help">此处</a>请求 Bridge 的支持票证，以便将用户添加到 Bridge 平台中。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -177,9 +176,9 @@ ms.lasthandoff: 06/22/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Bridge，请执行以下步骤：**
+**要将 Britta Simon 分配到 Bridge，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -225,5 +224,4 @@ ms.lasthandoff: 06/22/2017
 [201]: ./media/active-directory-saas-bridge-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-bridge-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-bridge-tutorial/tutorial_general_203.png
-
 

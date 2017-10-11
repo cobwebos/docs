@@ -15,13 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: e3aeaee3a71ae8b024153996431fba203a1cdfce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
-
+ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 EDIFACT 消息以实现企业集成
 
@@ -34,17 +32,17 @@ ms.lasthandoff: 05/17/2017
 
 下面是需要准备好的项：
 
-* 已定义的、与你的 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
+* 已定义的、与 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
 * 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 
 > [!NOTE]
-> 创建协议时，你与合作伙伴之间相互接收或发送的消息中的内容必须与协议类型匹配。
+> 在创建协议时，接收或发送到和从合作伙伴的消息中的内容必须与匹配的协议类型。
 
 [创建集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)并[添加合作伙伴](logic-apps-enterprise-integration-partners.md)之后，可以遵循以下步骤来创建 EDIFACT 协议。
 
 ## <a name="create-an-edifact-agreement"></a>创建 EDIFACT 协议 
 
-1.    登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。
+1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。
 
     > [!TIP]
     > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
@@ -87,7 +85,7 @@ ms.lasthandoff: 05/17/2017
 
 设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的传入消息。
 
-1.    在“添加”下面，选择“接收设置”。
+1.  在“添加”下面，选择“接收设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     “接收设置”划分为以下部分：“标识符”、“确认”、“架构”、“控制编号”、“验证”和“内部设置”。
@@ -122,7 +120,7 @@ ms.lasthandoff: 05/17/2017
 | UNH2.5 (协会分配的代码) |输入分配的代码。 （最多六个字符。 必须是字母数字）。 |
 | UNG2.1 (应用发送方 ID) |输入包含最少一个字符且最多 35 个字符的字母数字值。 |
 | UNG2.2 (应用发送方代码限定符) |输入包含最多四个字符的字母数字值。 |
-| 架构 |从关联的集成帐户中选择要使用的以前上载的架构。 |
+| 架构 |从关联的集成帐户中选择要使用的以前上传的架构。 |
 
 ### <a name="control-numbers"></a>控制编号
 | 属性 | 说明 |
@@ -160,7 +158,7 @@ ms.lasthandoff: 05/17/2017
 
 可以配置此协议如何识别和处理发送给合作伙伴的传出消息。
 
-1.    在“添加”下面，选择“发送设置”。
+1.  在“添加”下面，选择“发送设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     “发送设置”划分为以下部分：“标识符”、“确认”、“架构”、“字符集和分隔符”、“控制编号”和“验证”。
@@ -195,7 +193,7 @@ ms.lasthandoff: 05/17/2017
 | UNH2.1 (类型) |选择事务集类型。 |
 | UNH2.2 (版本) |输入消息版本号。 |
 | UNH2.3 (发布) |输入消息发布号。 |
-| 架构 |选择要使用的架构。 架构位于集成帐户中。 若要访问架构，请先将集成帐户链接到逻辑应用。 |
+| 架构 |选择要使用的架构。 架构位于集成帐户中。 要访问架构，请先将集成帐户链接到逻辑应用。 |
 
 ### <a name="envelopes"></a>信封
 | 属性 | 说明 |
@@ -242,11 +240,11 @@ ms.lasthandoff: 05/17/2017
 
 ## <a name="find-your-created-agreement"></a>查找创建的协议
 
-1.    设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
+1.  设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.    还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。 
+2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，并选择“协议”磁贴。 
 
     ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
@@ -255,5 +253,4 @@ ms.lasthandoff: 05/17/2017
 
 ## <a name="learn-more"></a>了解详细信息
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
-
 

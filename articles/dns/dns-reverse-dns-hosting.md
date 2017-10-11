@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 3e10b25d2f9b91c96af2958fef6dc6a4fdbff301
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="hosting-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中托管反向 DNS 查找区域
 
 本文介绍如何在 Azure DNS 中托管所分配的 IP 范围的反向 DNS 查找区域。 必须将反向查找区域表示的 IP 范围分配给组织（通常通过 ISP 执行）。
@@ -188,7 +186,7 @@ azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.
 
 ## <a name="view-records"></a>查看记录
 
-若要查看创建的记录，请在 Azure 门户中导航到 DNS 区域。 在“DNS 区域”边栏选项卡的下半部分，可看到 DNS 区域的记录。 你应当会看到默认的 NS 和 SOA 记录（在每个区域中都会创建这些记录）以及你创建的新记录。
+若要查看创建的记录，请在 Azure 门户中导航到 DNS 区域。 在“DNS 区域”边栏选项卡的下半部分，可看到 DNS 区域的记录。 应当会看到默认的 NS 和 SOA 记录（在每个区域中都会创建这些记录）以及创建的新记录。
 
 ### <a name="ipv4"></a>IPv4
 
@@ -248,7 +246,7 @@ Get-AzureRmDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -Reso
 
 是的。 完全支持在 Azure DNS 托管自己的 IP 范围的反向查找 (ARPA) 区域。
 
-按照本文所述步骤在 Azure DNS 中创建反向查找区域，然后使用 ISP [委托区域](dns-domain-delegation.md)。  然后，便可以像处理其他记录类型一样，管理每个反向查找的 PTR 记录。
+按照本文所述步骤在 Azure DNS 中创建反向查找区域，然后使用 ISP [委托区域](dns-domain-delegation.md)。  然后，你可以在与其他记录类型相同的方式来管理每个反向查找的 PTR 记录。
 
 ### <a name="how-much-does-hosting-my-reverse-dns-lookup-zone-cost"></a>托管反向 DNS 查找区域的成本是多少？
 
@@ -269,4 +267,3 @@ Get-AzureRmDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -Reso
 有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
 <br>
 了解如何[管理 Azure 服务的反向 DNS 记录](dns-reverse-dns-for-azure-services.md)。
-

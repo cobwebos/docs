@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e71730ffe7e42ce5658189baca92ced3a54d269d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 2e97c3f951f46c32802aea543b93d5ab1bb76228
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
@@ -71,4 +70,3 @@ ms.lasthandoff: 04/27/2017
 - [编写自定义依赖项遥测](app-insights-api-custom-events-metrics.md#trackdependency)
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
-

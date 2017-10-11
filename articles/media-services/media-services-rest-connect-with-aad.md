@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: willzhan;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: a4531b69c44337c4863016810123f7f89bf7f98f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 1c62857699fb29b3583363e1c6f2dc7874635f40
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API
 
 Azure 媒体服务团队发布了 Azure Active Directory (Azure AD) 身份验证支持，以供访问 Azure 媒体服务。 它还宣布了计划停止通过 Azure 访问控制服务身份验证来访问媒体服务。 由于每个 Azure 订阅和每个媒体服务帐户都附加到 Azure AD 租户，因此 Azure AD 身份验证支持增添了许多安全保障。 若要详细了解此更改和迁移（如果对应用程序使用媒体服务 .NET SDK），请参阅以下博文和文章：
@@ -147,4 +145,3 @@ Azure 媒体服务团队发布了 Azure Active Directory (Azure AD) 身份验证
 ## <a name="next-steps"></a>后续步骤
 
 开始[将文件上传到帐户](media-services-dotnet-upload-files.md)。
-

@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>使用 REST API 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -108,5 +107,4 @@ ms.lasthandoff: 07/12/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-创建 Azure 搜索索引后，就可以 [将内容上传到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
-
+创建 Azure 搜索索引后，就可以 [将内容上传到索引中](search-what-is-data-import.md)，以便可以开始搜索数据。

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 37dc0772ccf74b19656b60f11e66e065815dc2a6
-ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
-
-
+ms.openlocfilehash: 18c5cd8eb4ca211f8ae2b8dd994c0e8c48625a2f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>教程：Azure Active Directory 与 Halosys 集成
 
@@ -45,7 +45,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
 测试本教程中的步骤应遵循以下建议：
 
-- 不应使用生产环境，除非有此必要。
+- 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 
@@ -59,7 +59,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
 
 ## <a name="adding-halosys-from-the-gallery"></a>从库中添加 Halosys
-若要配置 Halosys 与 Azure AD 的集成，需要从库中将 Halosys 添加到托管 SaaS 应用列表。
+要配置 Halosys 与 Azure AD 的集成，需要从库中将 Halosys 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Halosys，请执行以下步骤：**
 
@@ -84,12 +84,12 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_01.png)
     
-7. 在结果窗格中，选择“Halosys”，然后单击“完成”以添加该应用程序。
+7. 在结果窗格中，选择“Halosys”，并单击“完成”以添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_011.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Halosys 的 Azure AD 单一登录。
+在本部分中，可以配置和测试 Azure AD 单一登录与 Halosys 基于一个名为"Britta 人 Simon"的测试用户。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Halosys 用户。 换句话说，需要在 Azure AD 用户与 Halosys 中相关用户之间建立链接关系。
 
@@ -99,7 +99,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Halosys 测试用户](#creating-a-halosys-test-user)** - 在 Halosys 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 Halosys 测试用户](#creating-a-halosys-test-user)** -若要链接到的 Azure AD 表示形式她的 Halosys 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -114,7 +114,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
      
     ![配置单一登录][6] 
 
-2. 在“你希望用户如何登录 Halosys”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 Halosys”页上，选择“Azure AD 单一登录”，并单击“下一步”。
 
     ![配置单一登录](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_03.png) 
 
@@ -122,9 +122,9 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
     ![配置单一登录](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Halosys 应用程序的 URL：`https://<company-name>.Halosys.com/client-api/api`。
+    a. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Halosys 应用程序的 URL：`https://<company-name>.Halosys.com/client-api/api`。
 
-    b.在“标识符 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.Halosys.com`。    
+    b.在“标识符 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.Halosys.com`。   
          
 4. 在“配置 Halosys 的单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上：
 
@@ -137,7 +137,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
     • **SAML SSO URL**
     
 
-6. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+6. 在经典门户中，选择“单一登录配置确认”，并单击“下一步”。
     
     ![Azure AD 单一登录][10]
 
@@ -168,17 +168,17 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
 
-5. 在“告诉我们有关此用户的信息”对话框页中，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+5. 上**告诉我们有关此用户的信息**对话框页上，执行以下步骤：![创建一个 Azure AD 的测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    a. 对于“用户类型”，选择“组织中的新用户”。
 
     b. 在“用户名”文本框中，键入“BrittaSimon”。
 
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
 6.  在“用户配置文件”对话框页面上，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_06.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a. 在“名字”文本框中，键入“Britta”。  
 
     b. 在“姓氏”文本框中，键入“Simon”。
 
@@ -186,7 +186,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
 
@@ -196,7 +196,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_08.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
+    a. 写下“新密码”的值。
 
     b. 单击“完成”。   
 
@@ -204,7 +204,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
 ### <a name="creating-a-halosys-test-user"></a>创建 Halosys 测试用户
 
-在本部分中，将在 Halosys 中创建一个名为“Britta Simon”的用户。 请与 Halosys 支持团队协作，将用户添加到 Halosys 平台中。
+在本部分中，会在 Halosys 中创建一个名为“Britta Simon”的用户。 请与 Halosys 支持团队协作，将用户添加到 Halosys 平台中。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -213,7 +213,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Halosys，请执行以下步骤：**
+**要将 Britta Simon 分配到 Halosys，请执行以下步骤：**
 
 1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
 
@@ -264,9 +264,3 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 [203]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-

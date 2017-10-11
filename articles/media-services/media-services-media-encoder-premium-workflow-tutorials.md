@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: christoc;xpouyat;juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 565497bd5a35e3c4d69d29512307cf3ca2364bdd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -68,12 +67,12 @@ ms.lasthandoff: 08/28/2017
   * [添加 ClippingEnabled 便利属性](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
 
 ## <a id="MXF_to_MP4"></a>将 MXF 编码为单比特率 MP4
-在本演练中，我们将使用来自 .MXF 输入文件 AAC-HE 编码的音频来创建单比特率 .MP4 文件。
+在本演练中，我们使用来自 .MXF 输入文件 AAC-HE 编码的音频来创建单比特率 .MP4 文件。
 
 ### <a id="MXF_to_MP4_start_new"></a>启动新工作流
 打开“工作流设计器”，并选择“文件”-“新建工作区”-“转码蓝图”
 
-新的工作流会显示 3 个元素：
+新的工作流显示 3 个元素：
 
 * 主源文件
 * 剪辑列表 XML
@@ -84,7 +83,7 @@ ms.lasthandoff: 08/28/2017
 新编码工作流
 
 ### <a id="MXF_to_MP4_with_file_input"></a>使用媒体文件输入
-为了接受我们的输入媒体文件，请从添加媒体文件输入组件开始。 要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。 对“媒体文件输入”执行此操作，并将“主源文件”组件从“媒体文件输入”连接到“文件名”输入插针。
+为了接受我们的输入媒体文件，请从添加媒体文件输入组件开始。 如果要将组件添加到工作流，请在“存储库”搜索框中查找它，并将所需的项拖放到设计器窗格。 对“媒体文件输入”执行此操作，并将“主源文件”组件从“媒体文件输入”连接到“文件名”输入插针。
 
 ![连接的媒体文件输入](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
 
@@ -103,7 +102,7 @@ ms.lasthandoff: 08/28/2017
 配置的输入和输出属性
 
 ### <a id="MXF_to_MP4_streams"></a>检查媒体流
-通常我们想要知道经过工作流之后流的外观。 若要在工作流中的任一时间点检查流，只需单击任何组件上的输出或输入插针。 在此情况下，请尝试从我们的“媒体文件输入”单击“未压缩的视频”输出插针。 将打开一个对话框，让你检查输出视频。
+通常我们想要知道经过工作流之后流的外观。 若要在工作流中的任一时间点检查流，只需单击任何组件上的输出或输入插针。 在此情况下，请尝试从我们的“媒体文件输入”单击“未压缩的视频”输出插针。 此时会打开一个对话框，让你检查输出视频。
 
 ![检查未压缩的视频输出插针](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
 
@@ -170,13 +169,13 @@ ms.lasthandoff: 08/28/2017
 连接的 MPEG4 多路复用器
 
 ### <a id="MXF_to_MP4_writing_mp4"></a>写入 MP4 文件
-写入输出文件时，将使用“文件输出”组件。 我们可以将它连接到 ISO MPEG-4 多路复用器的输出，让其将输出写入到磁盘。 为此，请将容器 (MPEG-4) 输出插针连接到“文件输出”的“写入”输入插针。
+写入输出文件时，使用“文件输出”组件。 我们可以将它连接到 ISO MPEG-4 多路复用器的输出，让其将输出写入到磁盘。 为此，请将容器 (MPEG-4) 输出插针连接到“文件输出”的“写入”输入插针。
 
 ![连接的文件输出](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
 
 连接的文件输出
 
-将使用的文件名取决于“文件”属性。 尽管可以将该属性硬编码为给定值，但用户很可能想要改为通过表达式设置它。
+要使用的文件名取决于“文件”属性。 尽管可以将该属性硬编码为给定值，但用户很可能想要改为通过表达式设置它。
 
 若要让工作流通过表达式自动判断输出“文件名”属性，请单击“文件名”旁边的按钮（文件夹图标旁）。 从下拉菜单中选择“表达式”。 这会显示表达式编辑器。 先清除编辑器的内容。
 
@@ -184,7 +183,7 @@ ms.lasthandoff: 08/28/2017
 
 空白的表达式编辑器
 
-表达式编辑器允许以一个或多个变量的组合输入任何文本值。 以货币符号开头的变量。 按 $ 键时，编辑器会显示一个下拉框，其中包含一系列可用变量。 在此例中，我们将使用输出目录变量与基本输入文件名变量的组合：
+表达式编辑器允许以一个或多个变量的组合输入任何文本值。 以货币符号开头的变量。 当你按 $ 键时，编辑器会显示一个下拉框，其中包含一系列可用变量。 在此例中，我们使用输出目录变量与基本输入文件名变量的组合：
 
     ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
 
@@ -197,14 +196,14 @@ ms.lasthandoff: 08/28/2017
 >
 >
 
-按“确定”确认表达式时，“属性”窗口将提供在此时间点的文件属性所解析的值预览。
+按“确定”确认表达式时，“属性”窗口提供在此时间点的文件属性所解析的值预览。
 
 ![文件表达式解析输出目录](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-expression-resolves-output-dir.png)
 
 文件表达式解析输出目录
 
 ### <a id="MXF_to_MP4_asset_from_output"></a>从输出文件创建媒体服务资产
-尽管我们已编写一个 MP4 输出文件，我们仍需要指出此文件属于媒体服务因为执行此工作流生成的输出资产。 为此，请使用工作流画布上的“输出文件/资产”节点。 所有传入到此节点的文件将成为生成的 Azure 媒体服务资产的一部分。
+尽管我们已编写一个 MP4 输出文件，我们仍需要指出此文件属于媒体服务因为执行此工作流生成的输出资产。 为此，请使用工作流画布上的“输出文件/资产”节点。 所有传入到此节点的文件成为生成的 Azure 媒体服务资产的一部分。
 
 将“文件输出”组件连接到“输出文件/资产”组件以完成工作流。
 
@@ -215,8 +214,8 @@ ms.lasthandoff: 08/28/2017
 ### <a id="MXF_to_MP4_test"></a>在本地测试完成的工作流
 若要在本地测试工作流，请按顶部工具栏中的播放按钮。 工作流完成执行后，请检查配置的输出文件夹中生成的输出。 会看到从 MXF 输入源文件编码完成的 MP4 输出文件。
 
-## <a id="MXF_to_MP4_with_dyn_packaging"></a>将 MXF 编码为 MP4 - 多比特率动态打包已启用
-在本演练中，我们将使用来自单个 .MXF 输入文件 AAC 编码的音频来创建一组多比特率 MP4 文件。
+## <a id="MXF_to_MP4_with_dyn_packaging"></a>将 MXF 编码为多比特率 MP4 - 动态打包已启用
+在本演练中，我们使用来自单个 .MXF 输入文件 AAC 编码的音频来创建一组多比特率 MP4 文件。
 
 想要将多比特率资产输出用于结合 Azure 媒体服务提供的动态打包功能时，需要对每个不同的比特率与分辨率生成多个 GOP 对齐的 MP4 文件。 为此，可以先完成[将 MXF 编码为单比特率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) 演练。
 
@@ -225,7 +224,7 @@ ms.lasthandoff: 08/28/2017
 启动工作流
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>添加一个或多个其他 MP4 输出
-我们生成的 Azure 媒体服务资产中的每个 MP4 文件，将支持不同的比特率与分辨率。 让我们将一个或多个 MP4 输出文件添加到工作流。
+我们生成的 Azure 媒体服务资产中的每个 MP4 文件，会支持不同的比特率与分辨率。 让我们将一个或多个 MP4 输出文件添加到工作流。
 
 为了确保使用相同的设置来创建视频编码器，最方便的方式是复制现有的 AVC 视频编码器，并设置其他分辨率与比特率的组合（让我们添加 960x540，每秒 25 帧，2.5 Mbps 的组合）。 若要复制现有的编码器，请在设计器图面中执行复制粘贴。
 
@@ -327,7 +326,7 @@ ms.lasthandoff: 08/28/2017
 ## <a id="MXF_to__multibitrate_MP4"></a>将 MXF 编码为多比特率 MP4 - 增强的蓝图
 在[前一个工作流演练](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)中，我们已了解单个 MXF 输入资产如何转换成输出资产，其具有多比特率 MP4 文件、仅限音频的 MP4 文件和用于与 Azure 媒体服务动态打包结合使用的清单文件。
 
-本演练将演示如何增强一些方面并提高其方便性。
+本演练会演示如何增强一些方面并提高其方便性。
 
 ### <a id="MXF_to_multibitrate_MP4_overview"></a>要增强的工作流概述
 ![要增强的多比特率 MP4 工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
@@ -442,7 +441,7 @@ JPG 编码器
 
 输入颜色空间错误
 
-这是因为在我们原始原始未压缩的视频流（来自 MXF）中，颜色信息的表示方式与 JPG 编码器所预期的不同。 更具体地说，预期流入称为“RGB”或“灰阶”的“颜色空间”。 这意味着，视频帧门限的输入视频流，将需要先应用有关其颜色空间的转换。
+这是因为在我们原始原始未压缩的视频流（来自 MXF）中，颜色信息的表示方式与 JPG 编码器所预期的不同。 更具体地说，预期流入称为“RGB”或“灰阶”的“颜色空间”。 这意味着，视频帧门限的输入视频流，需要先应用有关其颜色空间的转换。
 
 拖放到工作流上的“颜色空间转换器 - Intel”，并将它连接到帧门限。
 
@@ -596,7 +595,7 @@ JPG 编码器
 
 Hello world 日志输出
 
-调用日志方法所在的节点对象是指当前的“节点”或者我们正在编写脚本的组件。 每个组件因此具备可通过系统选项卡输出日志记录数据的能力。在此情况下，将输出字符串文本“Hello World”。 在此处需要了解的是，这确实是非常重要的调试工具，可深入了解脚本实际上做些什么。
+调用日志方法所在的节点对象是指当前的“节点”或者我们正在编写脚本的组件。 每个组件因此具备可通过系统选项卡输出日志记录数据的能力。这里，我们输出字符串文本“Hello World”。 在此处需要了解的是，这确实是非常重要的调试工具，可深入了解脚本实际上做些什么。
 
 从脚本环境内，我们也可以访问其他组件的属性。 试试看：
 
@@ -655,9 +654,9 @@ Hello world 日志输出
 
 将修剪元素添加到剪辑列表
 
-如果修改类似于上面的剪辑列表 XML 并执行本地测试回合，会看到视频已正确在视频中修剪为 10 到 20 秒。
+如果修改类似于上面的剪辑列表 XML 并执行本地测试回合，你会看到视频已正确在视频中修剪为 10 到 20 秒。
 
-不过，相对于当执行本地执行时发生的情况，在 Azure 媒体服务中执行的工作流中，此完全相同的剪辑列表 XML 将不有相同的效果。 Azure 高级编码器启动时，每次都会根据提供给编码作业的输入文件生成剪辑列表 XML。 这意味着，我们在 XML 上执行的任何更改不幸地被重写。
+不过，相对于当执行本地执行时发生的情况，在 Azure 媒体服务中执行的工作流中，此完全相同的剪辑列表 XML 不会有相同的效果。 Azure 高级编码器启动时，每次都会根据提供给编码作业的输入文件生成剪辑列表 XML。 这意味着，我们在 XML 上执行的任何更改不幸地被重写。
 
 若要避免剪辑列表 XML 在编码作业开始时被擦除，我们可以在工作流启动之后快速重新生成它。 通过称为“脚本组件”的组件即可以采取这种自定义操作。 有关详细信息，请参阅[引入脚本组件](media-services-media-encoder-premium-workflow-tutorials.md#scripting)。
 
@@ -744,7 +743,7 @@ Hello world 日志输出
 
 用于添加修剪元素的脚本代码
 
-这可以通过一般的字符串处理操作完成。 生成的经修改剪辑列表 XML 通过“setProperty”方法写回工作流根目录上的 clipListXML 属性。 在另一个测试回合之后日志窗口会显示以下内容：
+这可以通过一般的字符串处理操作完成。 生成的经修改剪辑列表 XML 通过“setProperty”方法写回工作流根目录上的 clipListXML 属性。 在另一个测试回合之后日志窗口显示以下内容：
 
 ![记录生成的剪辑列表](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-result-clip-list.png)
 
@@ -939,4 +938,3 @@ Hello world 日志输出
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 9ab6d3e5e41f155b1404cee8a555078409c09c60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
-
+ms.openlocfilehash: 8b58a83ffd473500dd3f76c09e251f9208527d4f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-linked-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接的模版
 可在一个 Azure Resource Manager 模板中链接到另一个模板，将部署分解成一组有针对性并且有特定用途的模板。 如同将一个应用程序分解为多个代码类那样，分解可在测试、重用和可读性方面带来好处。  
@@ -28,7 +26,7 @@ ms.lasthandoff: 05/26/2017
 可以将参数从主模板传递到链接的模板，并可以直接将这些参数映射到由调用模板公开提供的参数或变量。 链接模板还可以将输出变量传递回源模板中，启用模板之间的双向数据交换。
 
 ## <a name="linking-to-a-template"></a>链接到模板
-通过在主模板内添加部署源，从而在两个模板间创建指向链接模板的链接。 将 **templateLink** 属性设置为链接模板的 URI。 可以直接在模板或参数文件中为链接模板提供参数值。 以下示例使用 **parameters** 属性直接指定参数值。
+通过在主模板内添加部署源，从而在两个模板间创建指向链接模板的链接。 对链接模版的 URI 设置 **templateLink** 属性。 可以直接在模板或参数文件中为链接模板提供参数值。 以下示例使用 **parameters** 属性直接指定参数值。
 
 ```json
 "resources": [ 
@@ -89,9 +87,9 @@ Resource Manager 服务必须能够访问链接的模板。 无法为链接的�
 ],
 ```
 
-即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
+即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也会记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
 
-Resource Manager 会将每个链接的模板作处理为单独的部署。 在资源组的部署历史记录中，你会看到针对父模板和嵌套模板的独立部署。
+Resource Manager 会将每个链接的模板作处理为单独的部署。 在资源组的部署历史记录中，会看到针对父模板和嵌套模板的独立部署。
 
 ![部署历史记录](./media/resource-group-linked-templates/linked-deployment-history.png)
 
@@ -122,7 +120,7 @@ Resource Manager 会将每个链接的模板作处理为单独的部署。 在�
 链接参数文件的 URI 值不能是本地文件，并且必须包含 **http** 或 **https**。 也可将参数文件限制为通过 SAS 令牌进行访问。
 
 ## <a name="using-variables-to-link-templates"></a>使用变量来链接模板
-前面的示例演示了用于模板链接的硬编码 URL 值。 这种方法可能适用于简单的模板，但如果使用一组大型模块化模板时，将无法正常工作。 相反，可以创建一个存储主模板的基 URL 的静态变量，然后从基 URL 动态创建用于链接模板的 URL。 这种方法的好处是可以轻松地移动或派生模板，因为您只需在主模板中更改静态变量。 主模板将在整个分解后的模板中传递正确的 URI。
+前面的示例演示了用于模板链接的硬编码 URL 值。 这种方法可能适用于简单的模板，但如果使用一组大型模块化模板，则无法正常工作。 相反，可以创建一个存储主模板的基 URL 的静态变量，并从基 URL 动态创建用于链接模板的 URL。 这种方法的好处是可以轻松地移动或派生模板，因为只需在主模板中更改静态变量。 主模板会在整个分解后的模板中传递正确的 URI。
 
 以下示例演示如何使用基 URL 来创建两个用于链接模板的 URL（**sharedTemplateUrl** 和 **vmTemplate**）。 
 
@@ -195,7 +193,7 @@ Resource Manager 会将每个链接的模板作处理为单独的部署。 在�
 }
 ```
 
-在 PowerShell 中，你使用以下命令获取容器的令牌并部署模板：
+在 PowerShell 中，使用以下命令获取容器的令牌并部署模板：
 
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -230,5 +228,4 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何为资源定义部署顺序，请参阅 [Defining dependencies in Azure Resource Manager templates](resource-group-define-dependencies.md)（在 Azure Resource Manager 模板中定义依赖关系）
 * 若要了解如何定义一个资源而创建多个实例，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）
-
 

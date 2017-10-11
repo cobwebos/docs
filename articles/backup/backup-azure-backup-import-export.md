@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 4/20/2017
 ms.author: saurse;nkolli;trinadhk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 Azure 备份可压缩初始备份。 通过脱机种子设定，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。  
@@ -166,7 +165,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 | --- | --- |
 | /j:<*JournalFile*> |日志文件的路径。 每个驱动器必须正好有一个日志文件。 日志文件不能在目标驱动器上。 日志文件的扩展名是 .jrn，并作为运行此命令的一部分创建。 |
 | /id:<*SessionId*> |会话 ID 标识复制会话。 它用于确保准确恢复中断的复制会话。 复制会话中复制的文件将存储在以目标驱动器上的会话 ID 命名的目录中。 |
-| /sk:<*StorageAccountKey*> |将数据导入到的存储帐户的帐户密钥。 该密钥应与创建备份策略/保护组期间输入的密钥相同。 |
+| /sk:<*StorageAccountKey*> |数据导入到的存储帐户的帐户密钥。 该密钥应与创建备份策略/保护组期间输入的密钥相同。 |
 | /BlobType |Blob 的类型。 仅当已指定 **PageBlob** 时，此工作流才成功。 这不是默认选项，并应在此命令中所述。 |
 | /t:<*TargetDriveLetter*> |当前复制会话的目标硬盘驱动器的驱动器号（不带尾随冒号）。 |
 | /format |用于格式化驱动器的选项。 在需要格式化驱动器时指定此参数；否则，请将其忽略。 在对驱动器进行格式化之前，该工具会提示通过控制台进行确认。 若不希望显示该确认，请指定 /silentmode 参数。 |
@@ -210,4 +209,3 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 ## <a name="next-steps"></a>后续步骤
 * 如有任何关于 Azure 导入/导出工作流的问题，请参阅 [Use the Microsoft Azure Import/Export service to transfer data to Blob storage](../storage/common/storage-import-export-service.md)（使用 Microsoft Azure 导入/导出服务可将数据传输到 Blob 存储中）。
 * 如有工作流方面的任何问题，请参阅 Azure 备份 [FAQ](backup-azure-backup-faq.md)（常见问题）的“脱机备份”部分。
-

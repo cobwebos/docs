@@ -13,31 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 21dabdcf0697b38ad3598ee8126a1bd62007efb5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: fd500fdd4c8642bad96dcf71eebcf1fad461a35f
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
 本文介绍对应用程序进行许可期间可能发生的错误。 如果要对不包含任何错误消息的意外许可提示进行故障排除，请参阅 [Azure AD 的身份验证方案](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)。
 
 与 Azure Active Directory 集成的许多应用程序需要获取访问其他资源的权限才能正常工作。 当这些资源也与 Azure Active Directory 集成时，通常使用通用许可框架来请求访问它们的权限。 
 
-这将显示许可提示，此情形通常发生在首次使用应用程序时，但也可能发生在后续使用应用程序时。
+这会显示许可提示，此情形通常发生在首次使用应用程序时，但也可能发生在后续使用应用程序时。
 
 对于用户而言，必须满足一些条件才能对应用程序所需的权限进行许可。 如果不满足这些条件，可能会发生各种错误。 其中包括：
 
 ## <a name="requesting-not-authorized-permissions-error"></a>请求未授予的权限错误
-* **AADSTS90093：**&lt;clientAppDisplayName&gt; 正在请求一个或多个无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
+* **AADSTS90093：**&lt;clientAppDisplayName&gt; 正在请求一个或多个无权授予的权限。 请与联系的可以同意此应用程序代表您的管理员。
 
 当非公司管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
-* **AADSTS90093：**&lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;应用名称&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
+* **AADSTS90093：**&lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;应用名称&gt; 请求的权限。 请与管理员联系&lt;tenantDisplayName&gt;，用户可以授予对此应用代表您的权限。
 
 当公司管理员关闭用户对应用程序进行许可的能力，非管理员用户尝试使用的应用程序需要许可时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
@@ -78,6 +76,5 @@ ms.lasthandoff: 04/18/2017
 [Azure Active Directory（v1 终结点）中的应用、权限和许可](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 
 [Azure Active Directory（v2.0 终结点）中的范围、权限和许可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
 
 

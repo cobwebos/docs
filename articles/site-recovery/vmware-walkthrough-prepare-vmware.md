@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: 3e1c589030210c2eae1ad9c02811775d9d6365d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="step-6-prepare-on-premises-vmware-replication-to-azure"></a>步骤 6：准备将本地 VMware 复制到 Azure
 
@@ -65,4 +64,3 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 7：创建保管库](vmware-walkthrough-create-vault.md)
-

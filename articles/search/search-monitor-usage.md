@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 05/01/2017
 ms.author: betorres
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 16cb5a1e16a59200f0e731622398efcf24c3f777
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitoring-an-azure-search-service"></a>监视 Azure 搜索服务
 
@@ -52,7 +51,7 @@ Azure 搜索针对三种不同指标收集数据：
 1. 登录[门户](https://portal.azure.com)。
 2. 打开 Azure 搜索服务的服务仪表板。 可以在主页上找到服务磁贴，或者可以从跳转栏上的“浏览”来浏览到服务。
 
-“使用情况”部分包含的指标告知你当前正在使用可用资源的哪些部分。 有关索引、文档和存储的每个服务限制的信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
+使用部分包括仪表盘，告诉你哪些部分可用资源的当前正在使用。 有关索引、文档和存储的每个服务限制的信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
   ![“使用情况”磁贴][2]
 
@@ -100,7 +99,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 | Name | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
 | time |datetime |“2015-12-07T00:00:43.6872559Z” |操作的时间戳 |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |你的 ResourceId |
+| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
 | operationName |字符串 |“Query.Search” |操作的名称 |
 | operationVersion |字符串 |"2015-02-28" |使用的 api-version |
 | category |字符串 |“OperationLogs” |常量 |
@@ -120,7 +119,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 #### <a name="metrics-schema"></a>度量值架构
 | Name | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |你的资源 ID |
+| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
 | metricName |字符串 |“Latency” |度量值名称 |
 | time |datetime |“2015-12-07T00:00:43.6872559Z” |操作的时间戳 |
 | average |int |64 |度量值时间间隔内原始样本的平均值 |
@@ -157,4 +156,3 @@ Azure 搜索提供 [Power BI 内容包](https://app.powerbi.com/getdata/services
 [2]: ./media/search-monitor-usage/AzureSearch-Monitor1.PNG
 [3]: ./media/search-monitor-usage/AzureSearch-Enable-Monitoring.PNG
 [4]: ./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png
-

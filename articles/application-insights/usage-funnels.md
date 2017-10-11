@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 2b25ffd844507074a8467b1135b1331feb9d3ed7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.openlocfilehash: 59c4dfafc102b26e3b9873f433065715f4aec9ec
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
 
 了解客户体验对你的业务而言至关重要。 如果你的应用程序涉及多个阶段，那么需要知道是否大多数客户正在完成整个进程，或者他们是否即将在某个时间点结束进程。 Web 应用程序中通过一系列步骤完成的进度被称为“漏斗图”。 Application Insights 漏斗图可用于深入了解你的用户，并监视分步转换率。 
@@ -50,4 +48,3 @@ ms.lasthandoff: 08/09/2017
   * [保留](app-insights-usage-retention.md)
   * [工作簿](app-insights-usage-workbooks.md)
   * [添加用户上下文](app-insights-usage-send-user-context.md)
-

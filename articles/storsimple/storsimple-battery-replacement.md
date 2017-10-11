@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的备用电池模块
 ## <a name="overview"></a>概述
@@ -69,7 +68,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
    | 5 |直流电源故障 |
    | 6 |电池功能正常 |
 3. 若要移除电池发生故障的 PCM，请按[移除 PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm) 中的步骤操作。
-4. 移除 PCM 之后，请抬起并旋转电池模块把手（如下图所示），然后向上拉将电池移除。
+4. 移除 PCM 之后，请抬起并旋转电池模块把手（如下图所示），并向上拉将电池移除。
    
     ![将电池从 PCM 移除](./media/storsimple-battery-replacement/IC741019.png)
    
@@ -111,5 +110,4 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
-
 

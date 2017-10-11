@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a7ab18ea9e7302f6cd2a89e7c2cce7f5a46c66a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 7ed018c8c9759bc497c5fea129257486f6128531
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-networking"></a>Azure 网络
 
 Azure 提供可以结合使用或单独使用的各种网络功能。 请单击以下任一重要功能了解更多相关信息：
@@ -41,7 +39,7 @@ Azure 提供可以结合使用或单独使用的各种网络功能。 请单击�
 
 - 使用公共和专用 (RFC 1918) 地址指定自定义专用 IP 地址空间。 Azure 从分配的地址空间中向连接到 VNet 的资源分配一个专用 IP 地址。
 - 将 VNet 细分为一个或多个子网，并向每个子网分配一部分 VNet 地址空间。
-- 使用 Azure 提供的名称解析或指定你自己的 DNS 服务器以供连接到 VNet 的资源使用。
+- 使用 Azure 提供的名称解析或指定自己的 DNS 服务器以供连接到 VNet 的资源使用。
 
 若要了解有关 Azure 虚拟网络服务的详细信息，请参阅[虚拟网络概述](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。 VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可与 VNet 之间的每个资源进行通信。 可使用以下两个中任意一个选项或使用这两个选项相互连接 VNet：
 
@@ -84,7 +82,7 @@ Azure 提供可以结合使用或单独使用的各种网络功能。 请单击�
 
 ## <a name="load-balancing"></a>负载均衡和流量方向
 
-Microsoft Azure 提供了多种服务，以便你可以管理网络流量的分布和负载均衡方式。 可以单独或者结合使用以下任何功能：
+Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布和负载均衡方式。 可以单独或者结合使用以下任何功能：
 
 **DNS 负载均衡**
 
@@ -123,7 +121,7 @@ Azure 负载均衡器为所有 UDP 和 TCP 协议提供高性能、低延迟的�
 可使用以下选项筛选传入和传出 Azure 资源的流量：
 
 - **网络：**可以实现 Azure 网络安全组 (NSG) 来筛选 Azure 资源的入站和出站流量。 每个 NSG 包含一个或多个入站和出站规则。 每个规则指定用于筛选流量的源 IP 地址、目标 IP 地址、端口和协议。 可将 NSG 应用到单个子网和单个 VM。 有关 NSG 的详细信息，请参阅[网络安全组概述](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
-- **应用程序：**将应用程序网关与 Web 应用程序防火墙结合使用可以保护 Web 应用程序，使其免受漏洞和攻击的影响。 常见的示例包括 SQL 注入攻击、跨站点脚本和格式不当的标头。 应用程序网关可筛选掉这些流量，并阻止其传入 Web 服务器。 你可以配置想要启用的规则。 还可以配置 SSL 协商策略，以便能够禁用某些策略。 若要详细了解 Web 应用程序防火墙，请参阅 [Web 应用程序防火墙](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
+- **应用程序：**将应用程序网关与 Web 应用程序防火墙结合使用可以保护 Web 应用程序，使其免受漏洞和攻击的影响。 常见的示例包括 SQL 注入攻击、跨站点脚本和格式不当的标头。 应用程序网关可筛选掉这些流量，并阻止其传入 Web 服务器。 可以配置想要启用的规则。 还可以配置 SSL 协商策略，以便能够禁用某些策略。 若要详细了解 Web 应用程序防火墙，请参阅 [Web 应用程序防火墙](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 
 如果 Azure 无法提供所需的网络功能，或者你要使用本地使用的网络应用程序，可以在 VM 中实施产品并将其连接到 VNet。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) 包含许多不同的 VM，其中已预配置了你当前使用的网络应用程序。 这些预配置的 VM 通常称为网络虚拟设备 (NVA)。 NVA 可用于防火墙等应用程序以及 WAN 优化。
 
@@ -164,4 +162,3 @@ Azure 提供以下工具用于监视和管理网络：
 - 完成[创建首个虚拟网络](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，创建自己的首个虚拟网络，并将几个 VM 连接到此网络。
 - 完成[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，将计算机连接到 VNet。
 - 完成[创建面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，对发往公共服务器的 Internet 流量进行负载均衡。
-

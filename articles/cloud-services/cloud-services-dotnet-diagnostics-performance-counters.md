@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/29/2016
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 2cf765cb034725199127c547a9b8b997a4a6089c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-use-performance-counters-in-an-azure-application"></a>在 Azure 应用程序中创建和使用性能计数器
-本文介绍性能计数器的好处，以及如何将其置于 Azure 应用程序中。 可以使用性能计数器来收集数据、查找瓶颈，以及优化系统和应用程序的性能。
+本文介绍性能计数器的好处，以及如何将其置于 Azure 应用程序中。 可以使用性能计数器收集数据，查找瓶颈以及优化系统和应用程序的性能。
 
 还可以收集适用于 Windows Server、IIS 和 ASP.NET 的性能计数器，并可将其用于确定 Azure Web 角色、辅助角色和虚拟机的运行状况。 还可以创建和使用自定义性能计数器。  
 
@@ -102,7 +101,7 @@ Azure 缓存性能计数器数据和其他诊断信息。 此数据适用于在�
 在将诊断文件添加到 Visual Studio 解决方案中后，可在 Azure 应用程序中配置性能计数器数据的收集和存储。 通过将性能计数器添加到诊断文件可做到这一点。 首先在实例中收集诊断数据（包括性能计数器）。 随后该数据将保留到 Azure 表服务中的 WADPerformanceCountersTable 表中，因此，还需要指定应用程序中的存储帐户。 如果在计算模拟器中本地测试应用程序，则也可在存储模拟器中本地存储诊断数据。 必须先转到 [Azure 门户](http://portal.azure.com/)并创建经典存储帐户，然后才能存储诊断数据。 最佳做法是将存储帐户与 Azure 应用程序置于同一位置。 通过使 Azure 应用程序和存储帐户处于同一位置，可避免支付外部带宽费用并减少延迟。
 
 ### <a name="add-performance-counters-to-the-diagnostics-file"></a>将性能计数器添加到诊断文件
-可以使用许多计数器。 以下示例介绍了推荐用于 Web 角色监视和辅助角色监视的几个性能计数器。
+可以使用多个计数器。 以下示例介绍了推荐用于 Web 角色监视和辅助角色监视的几个性能计数器。
 
 打开诊断文件（在 SDK 2.4 及更低版本中为 diagnostics.wadcfg，在 SDK 2.5 及更高版本中为 diagnostics.wadcfgx），将以下代码添加到 DiagnosticMonitorConfiguration 元素中：
 
@@ -174,7 +173,7 @@ counterSpecifier 特性指定要收集的性能计数器。 sampleRate 特性指
 ## <a name="step-2-optional-create-custom-performance-counters"></a>步骤 2：（可选）创建自定义性能计数器
 除了预定义的性能计数器外，还可以添加自己的自定义性能计数器来监视 Web 角色或辅助角色。 自定义性能计数器可用于跟踪和监视特定于应用程序的行为，并且可使用提升的权限在启动任务、Web 角色或辅助角色中创建或删除该计数器。
 
-Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计数器配置。  如果在 OnStart 方法中创建自定义性能计数器，而启动任务需要 1 分钟以上的执行时间，则当 Azure 诊断代理尝试加载自定义性能计数器时，这些计数器还尚未创建好。  在这种情况下，你会看到 Azure 诊断正确地捕获了所有诊断数据，但自定义性能计数器除外。  为了解决这个问题，可以在启动任务中创建性能计数器，也可以在创建性能计数器以后将部分启动任务工作转移到 OnStart 方法。
+Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计数器配置。  如果在 OnStart 方法中创建自定义性能计数器，并且启动任务的执行时间超过 1 分钟，则自定义性能计数器不会在 Azure 诊断代理尝试加载时创建。  在这种情况下，Azure 诊断可正确捕获除自定义性能计数器以外的所有诊断数据。  为了解决这个问题，可以在启动任务中创建性能计数器，也可以在创建性能计数器以后将部分启动任务工作转移到 OnStart 方法。
 
 执行下列步骤来创建一个名为“\MyCustomCounterCategory\MyButton1Counter”的简单的自定义性能计数器：
 
@@ -243,9 +242,9 @@ Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计�
 现在由 Azure 诊断监视器收集自定义性能计数器数据。
 
 ## <a name="step-3-query-performance-counter-data"></a>步骤 3：查询性能计数器数据
-在应用程序部署完成并运行后，诊断监视器将开始收集性能计数器并将该数据保存到 Azure 存储。 使用 Cerebrata 提供的工具（例如 Visual Studio 中的服务器资源管理器、[Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com/)或 [Azure 诊断管理器](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)）查看 WADPerformanceCountersTable 表中的性能计数器数据。 你还可以使用 [C#](../cosmos-db/table-storage-how-to-use-dotnet.md)、[Java](../cosmos-db/table-storage-how-to-use-java.md)、[Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md)、[Python](../cosmos-db/table-storage-how-to-use-python.md)、[Ruby](../cosmos-db/table-storage-how-to-use-ruby.md) 或 [PHP](../cosmos-db/table-storage-how-to-use-php.md) 以编程方式查询表服务。
+在应用程序部署完成并运行后，诊断监视器将开始收集性能计数器并将该数据保存到 Azure 存储。 使用 Cerebrata 提供的工具（例如 Visual Studio 中的服务器资源管理器、[Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com/)或 [Azure 诊断管理器](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)）查看 WADPerformanceCountersTable 表中的性能计数器数据。 还可以使用 [C#](../cosmos-db/table-storage-how-to-use-dotnet.md)、[Java](../cosmos-db/table-storage-how-to-use-java.md)、[Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md)、[Python](../cosmos-db/table-storage-how-to-use-python.md)、[Ruby](../cosmos-db/table-storage-how-to-use-ruby.md) 或 [PHP](../cosmos-db/table-storage-how-to-use-php.md) 以编程方式查询表服务。
 
-以下 C# 示例显示针对 WADPerformanceCountersTable 表的基本查询并将诊断数据保存到 CSV 文件中。 将性能计数器保存到 CSV 文件后，你可以使用 Microsoft Excel 中的图形功能或使用一些其他工具来使数据可视化。 请务必添加对 Microsoft.WindowsAzure.Storage.dll（它包含在 2012 年 10 月版的 Azure SDK for .NET 和更高版本中）的引用。 程序集安装在 %Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\version-num\ref\ 目录中。
+以下 C# 示例显示针对 WADPerformanceCountersTable 表的基本查询并将诊断数据保存到 CSV 文件中。 将性能计数器保存到 CSV 文件后，可以使用 Microsoft Excel 中的图形功能或使用其他一些工具来使数据可视化。 请务必添加对 Microsoft.WindowsAzure.Storage.dll（它包含在 2012 年 10 月版的 Azure SDK for .NET 和更高版本中）的引用。 程序集安装在 %Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\version-num\ref\ 目录中。
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -321,4 +320,3 @@ public class PerformanceCountersEntity : TableEntity
 
 ## <a name="next-steps"></a>后续步骤
 [查看有关 Azure 诊断的其他文章](../azure-diagnostics.md)
-

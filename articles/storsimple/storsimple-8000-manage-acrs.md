@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9173e34f889ce1c082b20bb382cb6ca9a03dd797
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服务管理访问控制记录
 
 ## <a name="overview"></a>概述
-使用访问控制记录 (ACR) 可以指定哪些主机能够连接到 StorSimple 设备上的卷。 ACR 设置为特定的卷，并包含主机的 iSCSI 限定名称 (IQN)。 当主机尝试连接到卷时，设备将在与该卷关联的 ACR 中检查 IQN 名称；如果名称匹配，则建立连接。 StorSimple 设备管理器服务边栏选项卡的“配置”部分中的访问控制记录显示包含相应主机 IQN 的所有访问控制记录。
+使用访问控制记录 (ACR) 可以指定哪些主机能够连接到 StorSimple 设备上的卷。 ACR 设置为特定的卷，并包含主机的 iSCSI 限定名称 (IQN)。 当主机尝试连接到卷时，设备会在与该卷关联的 ACR 中检查 IQN 名称；如果名称匹配，则建立连接。 StorSimple 设备管理器服务边栏选项卡的“配置”部分中的访问控制记录显示包含相应主机 IQN 的所有访问控制记录。
 
 本教程介绍了以下与 ACR 相关的常见任务：
 
@@ -130,5 +129,4 @@ ms.lasthandoff: 07/08/2017
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[管理 StorSimple 卷](storsimple-8000-manage-volumes-u2.md)。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)的详细信息。
-
 

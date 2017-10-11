@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/18/2017
 ms.author: jroth
-ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 29a92f0c70bffedeb75c50b7fc3b687ee5ee227d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 04/21/2017
 
 ### <a name="bring-your-own-license-byol"></a>自带许可证 (BYOL)
 
-“通过许可移动性使用自己的 SQL Server 许可证”（也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 将仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是你已通过批量许可计划获得许可证和软件保障。
+“通过许可移动性使用自己的 SQL Server 许可证”（也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 将仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
 
 建议在以下情况采用“通过许可移动性使用自己的 SQL Server 许可”：
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 04/21/2017
 |-----|-----|
 | 节省费用 | 如果工作负荷将连续运行 SQL Server Standard 或 Enterprise 超过 10 个月，则自带 SQL Server 许可证比按使用情况付费更具成本效益。 |
 | 长期节省 | 通常，若购买或续订 SQL Server 许可证，前三年每年要便宜 30%。 此外，三年之后，无需再续订许可证，只需支付软件保障费用。 此时，它将便宜两倍。 |
-| 免费的被动辅助副本 | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这将高度可用的 SQL Server 部署（例如使用 AlwaysOn 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
+| 免费的被动辅助副本 | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 AlwaysOn 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
 
 若要使用上述某个自带许可证映像创建 SQL Server 2016 Azure VM，请参阅前缀为“{BYOL}”的 VM：
 
@@ -96,7 +95,7 @@ ms.lasthandoff: 04/21/2017
 - [SQL Server 2016 Standard Azure VM](https://ms.portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP1StandardWindowsServer2016)
 
 > [!NOTE]
-> 请于 10 天内告知我们你要在 Azure 中使用的 SQL Server 许可证数。 上述映像的链接具有如何执行此操作的说明。
+> 请于 10 天内告知我们要在 Azure 中使用的 SQL Server 许可证数。 上述映像的链接具有如何执行此操作的说明。
 
 ## <a name="avoid-unecessary-costs"></a>避免不必要的成本
 
@@ -120,4 +119,3 @@ ms.lasthandoff: 04/21/2017
 有关虚拟机最新定价（包括 SQL Server），请参阅 [Azure VM 定价页](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard)。
 
 查看 [Azure 虚拟机上的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)中的其他 SQL Server 虚拟机主题。
-

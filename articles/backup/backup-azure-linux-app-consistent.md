@@ -1,6 +1,6 @@
 ---
 title: "Azure 备份：Linux VM 的应用程序一致性备份 | Microsoft Docs"
-description: "对于 Linux 虚拟机，使用脚本以保证对 Azure 的应用程序一致性备份。 脚本仅适用于 Resource Manager 部署中的 Linux VM；脚本不适用于 Windows VM 或服务管理器部署。 本文将指导完成包括故障排除在内的脚本配置步骤。"
+description: "对于 Linux 虚拟机，使用脚本以保证对 Azure 的应用程序一致性备份。 脚本仅适用于 Resource Manager 部署中的 Linux VM；脚本不适用于 Windows VM 或服务管理器部署。 本文指导完成包括故障排除在内的脚本配置步骤。"
 services: backup
 documentationcenter: dev-center-name
 author: anuragmehrotra
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 4/12/2017
 ms.author: anuragm;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Azure Linux VM 的应用程序一致性备份（预览版）
 
 本文介绍 Linux 操作前脚本和操作后脚本框架，以及如何使用该框架创建 Azure Linux VM 的应用程序一致性备份。
@@ -99,4 +97,3 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="next-steps"></a>后续步骤
 [配置 VM 到恢复服务保管库的备份](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
-

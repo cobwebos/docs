@@ -15,7 +15,7 @@
 #### [SKU 表单](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus)
 ##### [定价](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#pricing)
 ##### [VM 映像](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#vm-images)
-#### [Marketplace 表单](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#marketplace-form)
+#### [应用商店表单](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#marketplace-form)
 #### [支持表单](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#support-form)
 ### [发布 VM 产品/服务](./Cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
 

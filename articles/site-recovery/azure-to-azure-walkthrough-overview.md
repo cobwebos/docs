@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 9258613161a61e36b1d0c5796d5763c916d66859
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="replicate-azure-vms-between-regions-with-azure-site-recovery"></a>使用 Azure Site Recovery 在区域间复制 Azure VM
 
 >本文概述了将一个 Azure 区域中的 Azure 虚拟机 (VM) 复制到另一个区域中的 Azure VM 所需的步骤。 
@@ -74,6 +72,5 @@ ms.lasthandoff: 08/02/2017
 初始复制完成并运行增量复制后，可以运行测试故障转移，以确保一切都符合预期。
 
 转到[第 6 步：运行测试故障转移](azure-to-azure-walkthrough-test-failover.md)
-
 
 

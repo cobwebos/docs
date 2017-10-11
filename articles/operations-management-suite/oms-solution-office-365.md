@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: dcc44986acbb76eafc3cfacb79acf237802de021
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="office-365-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中的 Office 365 解决方案
 
@@ -65,7 +64,7 @@ Office 365 解决方案不会从任何 [OMS 代理](../log-analytics/log-analyti
 
 ## <a name="using-the-solution"></a>使用解决方案
 向 OMS 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到 OMS 仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
-![Office 365 摘要磁贴](media/oms-solution-office-365/tile.png)  
+![Office 365 摘要图块](media/oms-solution-office-365/tile.png)  
 
 单击“Office 365”磁贴，打开“Office 365”仪表板。
 
@@ -305,4 +304,3 @@ Active Directory 用户尝试登录时，将创建这些记录。
 * 使用[Log Analytics](../log-analytics/log-analytics-log-searches.md)中的日志搜索可查看详细的更新数据。
 * [创建自己的仪表板](../log-analytics/log-analytics-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
 * [创建警报](../log-analytics/log-analytics-alerts.md)，主动接收重要的 Office 365 活动通知。  
-

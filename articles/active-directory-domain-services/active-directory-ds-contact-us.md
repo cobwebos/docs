@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD 域服务 - 联系我们
 ## <a name="contact-the-product-team"></a>联系产品团队
@@ -36,4 +35,3 @@ ms.lasthandoff: 08/24/2017
 欢迎通过 **[Azure Active Directory 用户之声渠道](https://feedback.azure.com/forums/169401-azure-active-directory/)**提供有关 Azure AD 域服务的反馈。
 
 请务必在问题或反馈的前面加上**“AADDS”**字样，这样我们才能收到。
-

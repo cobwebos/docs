@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 7ec57789ee76f4ec54e4f7b68ea75c19522f3d7c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/17/2017
 ### <a name="deployment-models-and-methods"></a>部署模型和方法
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-当我们发布有关此配置的新文章和其他可用工具时，将会更新此表格。 有相关的文章发布时，我们会直接从此表格链接到该文章。
+当我们发布有关此配置的新文章和其他可用工具时，会更新此表格。 有相关的文章发布时，我们会直接从此表格链接到该文章。
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/17/2017
 * 有一个使用 Resource Manager 部署模型创建的、包含现有连接的虚拟网络。
 * VNet 的虚拟网络网关是 RouteBased 类型。 如果使用 PolicyBased VPN 网关，必须先删除虚拟网络网关，然后创建新的 RouteBased VPN 网关。
 * 此 VNet 连接到的任何 VNet 都不存在地址范围重叠的情况。
-* 有一台兼容的 VPN 设备，并且可对其进行配置。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 如果不熟悉 VPN 设备的配置，或者不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。
+* 有一台兼容的 VPN 设备，并且可对其进行配置。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 如果不熟悉 VPN 设备的配置，或者不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。
 * VPN 设备有一个面向外部的公共 IP 地址。 此 IP 地址不得位于 NAT 之后。
 
 ## <a name="part1"></a>第 1 部分 - 配置连接
@@ -68,7 +67,7 @@ ms.lasthandoff: 06/17/2017
      ![“添加连接”边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection blade")<br>
 
 ## <a name="part2"></a>第 2 部分 - 添加本地网络网关
-1. 单击“**本地网络网关**”“***选择本地网络网关***”。 此时将打开“**选择本地网络网关**”边栏选项卡。
+1. 单击“**本地网络网关**”“***选择本地网络网关***”。 此时会打开“选择本地网络网关”边栏选项卡。
    
     ![选择本地网络网关](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Choose local network gateway")<br>
 2. 单击“**新建**”打开“**创建本地网络网关**”边栏选项卡。
@@ -82,7 +81,7 @@ ms.lasthandoff: 06/17/2017
 4. 在“**创建本地网络网关**”边栏选项卡中，单击“**确定**”保存更改。
 
 ## <a name="part3"></a>第 3 部分 - 添加共享密钥并创建连接
-1. 在“**添加连接**”边栏选项卡中，添加用于创建连接的共享密钥。 可以从 VPN 设备获取共享密钥，或者在此边栏选项卡中创建一个共享密钥，然后将 VPN 设备配置为使用这个共享密钥。 重要的一点是，这两个密钥必须完全相同。
+1. 在“**添加连接**”边栏选项卡中，添加用于创建连接的共享密钥。 可以从 VPN 设备获取共享密钥，或者在此边栏选项卡中创建一个共享密钥，并将 VPN 设备配置为使用这个共享密钥。 重要的一点是，这两个密钥必须完全相同。
    
     ![共享密钥](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Shared key")<br>
 2. 单击边栏选项卡底部的“**确定**”创建连接。
@@ -95,4 +94,3 @@ ms.lasthandoff: 06/17/2017
 ## <a name="next-steps"></a>后续步骤
 
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅虚拟机 [学习路径](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) 。
-

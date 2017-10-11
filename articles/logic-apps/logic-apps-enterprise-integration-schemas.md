@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7884032fd4b5a72ca7e2f2dc2830b0a7c2220e94
-ms.openlocfilehash: 5d8ddd4449d3b160dbca7496c801e75dcf4a44e5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
-
+ms.openlocfilehash: 4f58a587c1f10aea1cee89e46fa9ec340e0d21c6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的架构验证 XML
 
@@ -32,7 +30,7 @@ ms.lasthandoff: 02/07/2017
 
     ![Azure 门户，“更多服务”](media/logic-apps-enterprise-integration-schemas/overview-11.png)
 
-2. 在筛选器搜索框中输入**集成**，然后从结果列表中选择“集成帐户”。
+2. 在筛选器搜索框中输入**集成**，并从结果列表中选择“集成帐户”。
 
     ![筛选器搜索框](media/logic-apps-enterprise-integration-schemas/overview-21.png)
 
@@ -50,7 +48,7 @@ ms.lasthandoff: 02/07/2017
 
     ![“架构”边栏选项卡，“添加”](media/logic-apps-enterprise-integration-schemas/schema-21.png)
 
-2. 输入架构的名称。 通过选择“架构”框旁的文件夹图标上载架构文件。 上载过程完成之后，选择“确定”。
+2. 输入架构的名称。 通过选择“架构”框旁的文件夹图标上传架构文件。 上传过程完成之后，选择“确定”。
 
     ![“添加架构”的屏幕截图，其中突出显示了“小型文件”](media/logic-apps-enterprise-integration-schemas/schema-31.png)
 
@@ -60,17 +58,17 @@ ms.lasthandoff: 02/07/2017
 
 **确定此访问级别**
 
-1.    打开 **Azure 存储资源管理器**。 
+1.  打开 **Azure 存储资源管理器**。 
 
-2.    在“Blob 容器”下，选择所需的 blob 容器。 
+2.  在“Blob 容器”下，选择所需的 blob 容器。 
 
-3.    选择“安全性”、“访问级别”。
+3.  选择“安全性”、“访问级别”。
 
 如果 blob 安全访问级别为“公共”，请按下列步骤操作。
 
 ![Azure 存储资源管理器，其中突出显示了“Blob 容器”、“安全性”和“公共”](media/logic-apps-enterprise-integration-schemas/blob-public.png)
 
-1. 将架构上载到存储帐户并复制该 URI。
+1. 将架构上传到存储帐户并复制该 URI。
 
     ![存储帐户，其中突出显示了 URI](media/logic-apps-enterprise-integration-schemas/schema-blob.png)
 
@@ -82,7 +80,7 @@ ms.lasthandoff: 02/07/2017
 
 ![Azure 存储资源管理器，其中突出显示了“Blob 容器”、“安全性”和“没有匿名访问”](media/logic-apps-enterprise-integration-schemas/blob-1.png)
 
-1. 将架构上载到存储帐户。
+1. 将架构上传到存储帐户。
 
     ![存储帐户](media/logic-apps-enterprise-integration-schemas/blob-3.png)
 
@@ -108,11 +106,11 @@ ms.lasthandoff: 02/07/2017
 
     ![“架构”边栏选项卡](media/logic-apps-enterprise-integration-schemas/edit-12.png)
 
-4. 选择要编辑的架构文件，然后选择“打开”。
+4. 选择要编辑的架构文件，并选择“打开”。
 
     ![打开要编辑的架构文件](media/logic-apps-enterprise-integration-schemas/edit-31.png)
 
-Azure 会显示一条消息，指示该架构已成功上载。
+Azure 会显示一条消息，指示该架构已成功上传。
 
 ## <a name="delete-schemas"></a>删除架构
 
@@ -134,5 +132,4 @@ Azure 会显示一条消息，指示该架构已成功上载。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "Learn about the enterprise integration pack")。  
-
 

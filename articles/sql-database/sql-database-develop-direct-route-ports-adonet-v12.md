@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: d47ee8c794d1e231507dae6bb4aa88bf19ce6418
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 本主题介绍使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为。 
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/08/2017
 端口 1433 是托管 SQL 数据库客户端应用程序的台式机上唯一必须打开的端口。
 
 #### <a name="inside-client-runs-on-azure"></a>内部：客户端在 Azure 上运行
-如果你的客户端在 Azure 云边界内部运行，则它使用我们所谓的直接路由来与 SQL 数据库服务器交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何中间件代理。
+如果客户端在 Azure 云边界内部运行，则它使用我们所谓的直接路由来与 SQL 数据库服务器交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何中间件代理。
 
 顺序如下：
 
@@ -51,7 +50,7 @@ ms.lasthandoff: 06/08/2017
 * 具体而言，范围中的端口必须没有其他任何出站阻塞器。
 * 在 Azure VM 上，**高级安全 Windows 防火墙**控制端口设置。
   
-  * 你可以使用[防火墙的用户界面](http://msdn.microsoft.com/library/cc646023.aspx)为指定 **TCP** 协议以及语法类似于 **11000-11999** 的端口范围添加规则。
+  * 可以使用[防火墙的用户界面](http://msdn.microsoft.com/library/cc646023.aspx)为指定 **TCP** 协议以及语法类似于 **11000-11999** 的端口范围添加规则。
 
 ## <a name="version-clarifications"></a>版本澄清
 本部分澄清引用产品版本的 Moniker。 此外还列出了产品之间的版本配对。
@@ -69,5 +68,4 @@ ms.lasthandoff: 06/08/2017
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)
 * [如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)
-
 

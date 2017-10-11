@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 43061d1a9abd30d8f0c8a627183dbafb00da5067
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.openlocfilehash: 1c05bd6dc4c4d394aa043b9995de9c184e4f14c6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中心流式处理热路径中的 Azure 诊断数据
 Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) 的指标和日志，并将结果传输到 Azure 存储。 从 2016 年 3 月 (SDK 2.9) 这一时间范围开始，可以将诊断发送到自定义数据源，并使用 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)在数秒内传输热路径数据。
@@ -80,7 +79,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 “接收器”名称可以设置为任何有效的字符串，前提是在整个配置文件中一致地使用相同的值。
 
 > [!NOTE]
-> 该部分中可能配置了其他接收器，例如 *applicationInsights*。 如果 **PrivateConfig** 部分中还对每个接收器进行了声明，Azure 诊断将允许定义一个或多个接收器。  
+> 该部分中可能配置了其他接收器，例如 *applicationInsights*。 Azure 诊断允许定义一个或多个接收器，前提是每个接收器也已在 **PrivateConfig** 节中声明。  
 >
 >
 
@@ -105,7 +104,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 }
 ```
 
-`SharedAccessKeyName` 值必须与已在**事件中心**命名空间中定义的共享访问签名 (SAS) 密钥和策略匹配。 浏览到 [Azure 门户](https://manage.windowsazure.com)中的“事件中心”仪表板，单击“配置”选项卡，然后设置具有“发送”权限的命名策略（例如“SendRule”）。 **StorageAccount** 也已在 **PrivateConfig** 中声明。 如果这里的值有效，就不需要更改。 在本示例中，我们将值保留为空，这表示下游资产将设置这些值。 例如，*ServiceConfiguration.Cloud.cscfg* 环境配置文件会设置适合环境的名称和密钥。  
+`SharedAccessKeyName` 值必须与已在**事件中心**命名空间中定义的共享访问签名 (SAS) 密钥和策略匹配。 浏览到 [Azure 门户](https://manage.windowsazure.com)中的“事件中心”仪表板，单击“配置”选项卡，并设置具有“发送”权限的命名策略（例如“SendRule”）。 **StorageAccount** 也已在 **PrivateConfig** 中声明。 如果这里的值有效，就不需要更改。 在本示例中，我们将值保留为空，这表示下游资产将设置这些值。 例如，*ServiceConfiguration.Cloud.cscfg* 环境配置文件会设置适合环境的名称和密钥。  
 
 > [!WARNING]
 > 事件中心 SAS 密钥以纯文本形式存储在 *.wadcfgx* 文件中。 通常，系统会将此密钥签入源代码管理，或作为生成服务器中的资产提供，因此应该适当地保护它。 建议在此处使用具有“仅发送”权限的 SAS 密钥，使恶意用户只能写入事件中心，而无法侦听或进行管理。
@@ -207,18 +206,18 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 在此示例中，接收器已应用到日志，并且只筛选为错误级别跟踪。
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>部署和更新云服务应用程序与诊断配置
-Visual Studio 提供最简单的路径供你部署应用程序和事件中心接收器配置。 若要查看和编辑文件，请在 Visual Studio 中打开 *.wadcfgx* 文件，然后编辑并保存它。 路径为“云服务项目” > “角色” > “(RoleName)”“ > diagnostics.wadcfgx”。  
+Visual Studio 提供最简单的路径供你部署应用程序和事件中心接收器配置。 要查看和编辑文件，请在 Visual Studio 中打开 *.wadcfgx* 文件，然后编辑并保存它。 路径为“云服务项目” > “角色” > “(RoleName)”“ > diagnostics.wadcfgx”。  
 
 此时，Visual Studio、Visual Studio Team System 中的所有部署和部署更新操作，以及所有基于 MSBuild 并使用 **/t:publish** 目标的命令或脚本，都会在打包过程中纳入 *.wadcfgx*。 此外，部署和更新会使用 VM 上适当的 Azure 诊断代理扩展将文件部署到 Azure。
 
-在部署应用程序与 Azure 诊断配置后，将立即在事件中心的仪表板中看到活动。 这意味着你可以继续在侦听器客户端或选择的分析工具中查看热路径数据。  
+在部署应用程序与 Azure 诊断配置后，将立即在事件中心的仪表板中看到活动。 这意味着可以继续在侦听器客户端或选择的分析工具中查看热路径数据。  
 
 在下图中，事件中心仪表板显示从晚上 11 点之后开始发送到事件中心且状态良好的诊断数据发送操作。 也就是使用更新的 *.wadcfgx* 文件部署应用程序，而且正确配置接收器的时候。
 
 ![][0]  
 
 > [!NOTE]
-> 当你更新 Azure 诊断配置文件 (.wadcfgx) 时，建议使用 Visual Studio 发布或 Windows PowerShell 脚本将更新推送到整个应用程序以及配置。  
+> 更新 Azure 诊断配置文件 (.wadcfgx) 时，建议使用 Visual Studio 发布或 Windows PowerShell 脚本将更新推送到整个应用程序以及配置。  
 >
 >
 
@@ -318,10 +317,10 @@ namespace EventHubListener
     检查是否已成功预配事件中心。 *.wadcfgx* 中 **PrivateConfig** 部分的所有连接信息必须与门户中显示的资源值匹配。 请确保已在门户中定义 SAS 策略（本示例中为“SendRule”），并为其授予“发送”权限。  
 * 进行更新后，事件中心不再显示传入或传出事件活动。
 
-    首先，确保事件中心和配置信息如先前所述的那样准确无误。 有时，系统会在部署更新时重置 **PrivateConfig**。 建议的解决方法是在项目中对 *.wadcfgx* 进行所有更改，然后推送完整的应用程序更新。 如果不可行，请确保诊断更新推送完整的 **PrivateConfig**，包括 SAS 密钥。  
+    首先，确保事件中心和配置信息如先前所述的那样准确无误。 有时，系统会在部署更新时重置 **PrivateConfig**。 建议的解决方法是在项目中对 *.wadcfgx* 进行所有更改，并推送完整的应用程序更新。 如果不可行，请确保诊断更新推送完整的 **PrivateConfig**，包括 SAS 密钥。  
 * 我试过了上述建议，但事件中心仍无法正常运行。
 
-    请尝试查看 Azure 存储表，其中包含日志和 Azure 诊断本身的错误：**WADDiagnosticInfrastructureLogsTable**。 一个选项是使用 [Azure 存储资源管理器](http://www.storageexplorer.com)等工具连接到此存储帐户，查看此表，然后添加过去 24 小时的时间戳查询。 你可以使用此工具导出 .csv 文件，并在 Microsoft Excel 之类的应用程序中打开它。 Excel 可以轻松地搜索电话卡字符串（如 **EventHubs**），以便查看系统报告了哪些错误。  
+    请尝试查看 Azure 存储表，其中包含日志和 Azure 诊断本身的错误：**WADDiagnosticInfrastructureLogsTable**。 一个选项是使用 [Azure 存储资源管理器](http://www.storageexplorer.com)等工具连接到此存储帐户，查看此表，并添加过去 24 小时的时间戳查询。 可以使用此工具导出 .csv 文件，并在 Microsoft Excel 之类的应用程序中打开它。 Excel 可以轻松地搜索电话卡字符串（如 **EventHubs**），以便查看系统报告了哪些错误。  
 
 ## <a name="next-steps"></a>后续步骤
 •    [了解有关事件中心的详细信息](https://azure.microsoft.com/services/event-hubs/)
@@ -514,4 +513,3 @@ namespace EventHubListener
 
 <!-- Images. -->
 [0]: ../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png
-

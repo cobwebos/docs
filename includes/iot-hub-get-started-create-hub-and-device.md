@@ -5,9 +5,9 @@
    ![在 Azure 门户中创建 IoT 中心](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
 2. 在“IoT 中心”窗格中，输入 IoT 中心的以下信息：
 
-     名称：输入 IoT 中心的名称。 如果输入的名称有效，会显示一个绿色复选标记。
+     **名称**：输入 IoT 中心的名称。 如果输入的名称有效，则显示一个绿色复选标记。
 
-     定价和缩放层：选择“F1 - 免费”层。 此选项对于本演示来说已足够。 有关详细信息，请参阅[定价和缩放层](https://azure.microsoft.com/pricing/details/iot-hub/)。
+     **定价和缩放级别**：选择“F1 - 免费”级别。 此选项对于本演示来说已足够。 有关详细信息，请参阅[定价和缩放层](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
      **资源组**：创建用于托管 IoT 中心的资源组，或使用现有的资源组。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../articles/azure-resource-manager/resource-group-portal.md)。
 
@@ -30,7 +30,7 @@
 5. 在“共享访问策略”窗格中单击“iothubowner”策略，复制并记下 IoT 中心的**连接字符串**。 有关详细信息，请参阅[控制对 IoT 中心的访问](../articles/iot-hub/iot-hub-devguide-security.md)。
 
 > [!NOTE] 
-此设置教程不需要此 iothubowner 连接字符串。 不过，在完成此设置以后，可能需要将其用于某些讲述其他 IoT 方案的教程。
+本教程中设置，将不需要此 iothubowner 连接字符串。 但是，可能需要它的一些不同的 IoT 方案的教程，在完成此设置后。
 
    ![获取 IoT 中心连接字符串](../articles/iot-hub/media/iot-hub-create-hub-and-device/5_get-azure-iot-hub-connection-string-portal.png)
 

@@ -14,15 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/07/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: 880f5e5967298401fc2522124af3746d9906ffa8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-reset-local-windows-password-for-azure-vm"></a>如何重置 Azure VM 的本地 Windows 密码
-如果已安装 Azure 来宾代理，可以使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重置 Azure 中 VM 的本地 Windows 密码。 此方法是重置 Azure VM 密码的主要方法。 如果遇到了 Azure 来宾代理无响应的问题，或者上载自定义映像后无法安装，可以手动重置 Windows 密码。 本文详细说明如何通过将源 OS 虚拟磁盘附加到另一个 VM 来重置本地帐户密码。 
+如果已安装 Azure 来宾代理，可以使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重置 Azure 中 VM 的本地 Windows 密码。 此方法是重置 Azure VM 密码的主要方法。 如果遇到了 Azure 来宾代理无响应的问题，或者上传自定义映像后无法安装，可以手动重置 Windows 密码。 本文详细说明如何通过将源 OS 虚拟磁盘附加到另一个 VM 来重置本地帐户密码。 
 
 > [!WARNING]
 > 只有在万不得已的情况下才使用此过程。 始终应该先尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重置密码。
@@ -32,19 +31,19 @@ ms.lasthandoff: 04/10/2017
 ## <a name="overview-of-the-process"></a>过程概述
 无法访问 Azure 来宾代理时，针对 Azure 中的 Windows VM 执行本地密码重置的核心步骤如下：
 
-* 删除源 VM 虚拟磁盘将会保留。
+* 删除源 VM 虚拟磁盘会保留。
 * 将源 VM 的 OS 磁盘附加到 Azure 订阅中同一位置的另一个 VM。 此 VM 称为故障排除 VM。
 * 使用故障排除 VM 在源 VM 的 OS 磁盘上创建一些配置文件。
 * 从故障排除 VM 中分离源 VM 的 OS 磁盘。
 * 在 Resource Manager 模板中使用原始虚拟磁盘创建一个 VM。
-* 新 VM 启动时，创建的配置文件将会更新所需用户的密码。
+* 新 VM 启动时，创建的配置文件会更新所需用户的密码。
 
 ## <a name="detailed-steps"></a>详细步骤
 在执行以下步骤之前，始终应该尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 来重置密码。 在开始之前，请确保备份 VM。 
 
-1. 在 Azure 门户中删除受影响的 VM。 删除 VM 只会删除元数据，以及 Azure 中对 VM 的引用。 删除 VM 时，将会保留虚拟磁盘：
+1. 在 Azure 门户中删除受影响的 VM。 删除 VM 只会删除元数据，以及 Azure 中对 VM 的引用。 删除 VM 时，会保留虚拟磁盘：
    
-   * 在 Azure 门户中选择 VM，然后单击“删除”：
+   * 在 Azure 门户中选择 VM，并单击“删除”：
      
      ![删除现有 VM](./media/reset-local-password-without-agent/delete_vm.png)
 2. 将源 VM 的 OS 磁盘附加到故障排除 VM。 故障排除 VM 必须与源 VM 的 OS 磁盘位于同一区域（例如 `West US`）：
@@ -53,7 +52,7 @@ ms.lasthandoff: 04/10/2017
      
      ![附加现有磁盘](./media/reset-local-password-without-agent/disks_attach_existing.png)
      
-     选择“VHD 文件”，然后选择包含源 VM 的存储帐户：
+     选择“VHD 文件”，并选择包含源 VM 的存储帐户：
      
      ![选择存储帐户](./media/reset-local-password-without-agent/disks_select_storageaccount.PNG)
      
@@ -66,7 +65,7 @@ ms.lasthandoff: 04/10/2017
      ![选择源虚拟磁盘](./media/reset-local-password-without-agent/disks_select_source_vhd.png)
 3. 使用远程桌面连接到故障排除的 VM，确保源 VM 的 OS 磁盘可见：
    
-   * 在 Azure 门户中选择故障排除 VM，然后单击“连接”。
+   * 在 Azure 门户中选择故障排除 VM，并单击“连接”。
    * 打开下载的 RDP 文件。 输入故障排除 VM 的用户名和密码。
    * 在文件资源管理器中，找到附加的数据磁盘。 如果源 VM 的 VHD 是附加到故障排除 VM 的唯一数据磁盘，它应该是 F: 驱动器：
      
@@ -113,18 +112,18 @@ ms.lasthandoff: 04/10/2017
     定义新密码时，必须符合针对 VM 配置的密码复杂性要求。
 7. 在 Azure 门户中，从故障排除 VM 分离该磁盘：
    
-   * 在 Azure 门户中选择故障排除 VM，然后单击“磁盘”。
-   * 选择步骤 2 中附加的数据磁盘，然后单击“分离”：
+   * 在 Azure 门户中选择故障排除 VM，并单击“磁盘”。
+   * 选择步骤 2 中附加的数据磁盘，并单击“分离”：
      
      ![分离磁盘](./media/reset-local-password-without-agent/detach_disk.png)
 8. 在创建 VM 之前，请获取源 OS 磁盘的 URI：
    
-   * 在 Azure 门户中选择存储帐户，然后单击“Blob”。
+   * 在 Azure 门户中选择存储帐户，并单击“Blob”。
    * 选择容器。 源容器通常为 *vhd*：
      
      ![选择存储帐户 Blob](./media/reset-local-password-without-agent/select_storage_details.png)
      
-     选择源 VM 的 OS VHD，然后单击“URL”名称旁边的“复制”按钮：
+     选择源 VM 的 OS VHD，并单击“URL”名称旁边的“复制”按钮：
      
      ![复制磁盘 URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. 从源 VM 的 OS 磁盘创建一个 VM：
@@ -146,5 +145,4 @@ ms.lasthandoff: 04/10/2017
 
 ## <a name="next-steps"></a>后续步骤
 如果仍然无法使用远程桌面建立连接，请参阅 [RDP 故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 [详细的 RDP 故障排除指南](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)探讨的是故障排除方法而不是具体的步骤。 也可以通过[提出 Azure 支持请求](https://azure.microsoft.com/support/options/)来获得人工协助。
-
 

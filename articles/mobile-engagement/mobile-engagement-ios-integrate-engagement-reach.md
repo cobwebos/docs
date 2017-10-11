@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>如何在 iOS 上集成 Engagement Reach
 在遵循本指南操作之前，必须先按照[如何在 iOS 上集成 Engagement 文档](mobile-engagement-ios-integrate-engagement.md)中所述的集成步骤操作。
@@ -33,7 +32,7 @@ ms.lasthandoff: 07/20/2017
     }
 
 > [!IMPORTANT]
-> **我们不建议此解决方法**，因为此 iOS API 已被弃用，此行为在任何即将发布的（即便是微小）iOS 版本升级中都可能发生改变。 你应尽快改用 XCode 8。
+> **我们不建议此解决方法**，因为此 iOS API 已被否决，此行为在任何即将发布的（即使再小）iOS 版本升级过程中会有所更改。 你应尽快改用 XCode 8。
 >
 >
 
@@ -42,9 +41,9 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="integration-steps"></a>集成步骤
 ### <a name="embed-the-engagement-reach-sdk-into-your-ios-project"></a>将 Engagement Reach SDK 嵌入 iOS 项目
-* 在 Xcode 项目中添加 Reach SDK。 在 Xcode 中，转到“**项目 \> 添加到项目**”，然后选择 `EngagementReach` 文件夹。
+* 在 Xcode 项目中添加 Reach SDK。 在 Xcode 中，转到“**项目 \> 添加到项目**”，并选择 `EngagementReach` 文件夹。
 
-### <a name="modify-your-application-delegate"></a>修改你的应用程序代理
+### <a name="modify-your-application-delegate"></a>修改应用程序代理
 * 在实现文件的顶部，导入 Engagement Reach 模块：
 
       [...]
@@ -62,10 +61,10 @@ ms.lasthandoff: 07/20/2017
 * 如果要在市场宣传活动中使用“*更新锁屏提醒值*”选项，或要使用原生推送 \</SaaS/Reach API/Campaign format/Native Push\> 市场活动，则必须让 Reach 模块自行管理锁屏提醒图标（它会在每次应用程序启动或前置时自动清除应用程序锁屏提醒，并重设由 Engagement 存储的值）。 具体是通过在 Reach 模块初始化代码后添加以下代码行来实现：
 
       [reach setAutoBadgeEnabled:YES];
-* 如果想处理市场宣传数据推送，则必须使你的应用程序委托符合 `AEReachDataPushDelegate` 协议。 Reach 模块初始化后请添加以下行：
+* 如果想处理市场宣传数据推送，则必须使应用程序委托符合 `AEReachDataPushDelegate` 协议。 Reach 模块初始化后请添加以下行：
 
       [reach setDataPushDelegate:self];
-* 然后你就可以在应用程序委派中实现 `onDataPushStringReceived:` 和 `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` 方法：
+* 然后便可以在应用程序委派中实现 `onDataPushStringReceived:` 和 `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` 方法：
 
       -(BOOL)didReceiveStringDataPushWithCategory:(NSString*)category body:(NSString*)body
       {
@@ -81,12 +80,13 @@ ms.lasthandoff: 07/20/2017
       }
 
 ### <a name="category"></a>类别
-当你创建数据推送活动时，类别参数是可选的，并允许你筛选数据推送。 如果想推送不同种类的 `Base64` 数据，并希望在解析这些数据之前确定其类型，那么这种做法很有用。
+创建数据推送活动时，类别参数是可选的，并允许筛选数据推送。 如果想推送不同种类的 `Base64` 数据，并希望在解析这些数据之前确定其类型，那么这种做法很有用。
 
-**现在你的应用程序已准备好接收和显示市场宣传内容！**
+
+            **现在应用程序已准备好接收和显示市场宣传内容！**
 
 ## <a name="how-to-receive-announcements-and-polls-at-any-time"></a>如何随时接收公告和投票
-通过使用 Apple Push Notification 服务，Engagement 可随时将市场宣传通知发送给最终用户。
+通过使用 Apple Push Notification 服务，Engagement 可随时会市场宣传通知发送给最终用户。
 
 要启用此功能，必须准备好应用程序以使用 Apple 推送通知，并修改应用程序委派。
 
@@ -94,7 +94,8 @@ ms.lasthandoff: 07/20/2017
 请按照指南操作：[如何准备应用程序以使用 Apple 推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
 
 ### <a name="add-the-necessary-client-code"></a>添加必要的客户端代码
-*目前，你的应用程序应该在 Engagement 前端有一个已注册的 Apple 推送证书。*
+
+            *目前，应用程序应该在 Engagement 前端有一个已注册的 Apple 推送证书。*
 
 如果尚未完成，需要注册应用程序以接收推送通知。
 
@@ -119,7 +120,7 @@ ms.lasthandoff: 07/20/2017
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-然后，你需要向 Engagement 提供 Apple 服务器返回的设备令牌。 该操作会在应用程序委派中的名为 `application:didRegisterForRemoteNotificationsWithDeviceToken:` 方法中完成：
+然后，需要向 Engagement 提供 Apple 服务器返回的设备令牌。 该操作会在应用程序委派中的名为 `application:didRegisterForRemoteNotificationsWithDeviceToken:` 方法中完成：
 
     - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
     {
@@ -176,7 +177,7 @@ ms.lasthandoff: 07/20/2017
 
 如果应用程序或其中一个第三方库实现了 `UNUserNotificationCenterDelegate`，则可以跳过此部分。
 
-SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 SDK 具有其自己实现的 `UNUserNotificationCenterDelegate` 协议，但每个应用程序只能有一个 `UNUserNotificationCenter` 委托。 任何其他添加到 `UNUserNotificationCenter` 对象的委托将与 Engagement 委托冲突。 如果 SDK 检测到你或任何其他第三方的委托，则不会使用其自己的实现来提供解决此冲突的可能性。 需要将 Engagement 逻辑添加到自己的委托中来解决此冲突。
+SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 SDK 具有其自己实现的 `UNUserNotificationCenterDelegate` 协议，但每个应用程序只能有一个 `UNUserNotificationCenter` 委托。 任何其他添加到 `UNUserNotificationCenter` 对象的委托将与 Engagement 委托冲突。 如果 SDK 检测到你或任何其他第三方的委托，则不会使用其自己的实现，从而让你有机会解决此冲突。 需要将 Engagement 逻辑添加到自己的委托中来解决此冲突。
 
 可通过两种方式实现此目的：
 
@@ -252,15 +253,15 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
 系统通知由 iOS 处理，且无法进行自定义。
 
-应用内通知，是由以动态添加到当前应用程序窗口的视图组成。 这称为通知覆盖。 通知覆盖非常适用于快速集成，因为它们不需要你修改应用程序中的任何视图。
+应用内通知，是由以动态添加到当前应用程序窗口的视图组成。 这称为通知覆盖。 通知叠加是非常适合于快速集成，因为它们不要求你修改应用程序中的任何视图。
 
 #### <a name="layout"></a>布局
-若要修改应用内通知的外观，你可以按自己需求直接修改 `AENotificationView.xib` 文件，只要保留标记值和现有的子视图类型即可。
+要修改应用内通知的外观，可以按自己需求直接修改 `AENotificationView.xib` 文件，只要保留标记值和现有的子视图类型即可。
 
 默认情况下，应用内通知出现在屏幕底部。 如果想要将它们显示在屏幕的顶部，请编辑所提供的 `AENotificationView.xib` 并更改主视图的 `AutoSizing` 属性，这样通知便可以位于其超视图的顶部了。
 
 #### <a name="categories"></a>Categories
-当修改提供的布局时，也会修改所有通知的外观。 类别允许你定义通知的各种目标外观（可能是行为）。 创建市场宣传活动时可以指定类别。 请记住，使用类别还可以自定义公告和投票，本文档稍后会介绍这部分内容。
+当修改提供的布局时，也会修改所有通知的外观。 类别允许定义通知的各种目标外观（可能是行为）。 创建市场宣传活动时可以指定类别。 请记住，使用类别还可以自定义公告和投票，本文档稍后会介绍这部分内容。
 
 若要注册通知类别处理程序，需要在市场宣传模块初始化后添加调用。
 
@@ -270,7 +271,7 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
 `myNotifier` 必须是符合 `AENotifier` 协议的对象实例。
 
-你可以自己实现此协议方法，也可以选择要重新实现已执行的大部分工作的现有类 `AEDefaultNotifier`。
+可以自己实现此协议方法，也可以选择要重新实现已执行的大部分工作的现有类 `AEDefaultNotifier`。
 
 例如，如果想为特定类别重新定义通知视图，则可以按照以下示例操作：
 
@@ -288,7 +289,7 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
     @end
 
-此简单的类别示例假定你在主应用程序捆绑包中有一个名为 `MyNotificationView.xib` 的文件。 如果该方法无法找到相应的 `.xib`，则通知将无法显示，Engagement 将在控制台中输出一条消息。
+类别的这个简单的示例假定您有一个名为文件`MyNotificationView.xib`主应用程序捆绑中。 如果该方法无法找到相应的 `.xib`，则通知将无法显示，Engagement 会在控制台中输出一条消息。
 
 提供的 nib 文件应遵循以下规则：
 
@@ -297,15 +298,15 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 * 子视图具有的标记应与名为 `AENotificationView.xib` 的 nib 文件内提供的标记相同。
 
 > [!TIP]
-> 只需复制提供的 nib 文件（名为 `AENotificationView.xib`），并从该处开始工作。 但请注意，此 nib 文件内的视图与 `AENotificationView` 类相关联。 此类重新定义了方法 `layoutSubViews`，因而可根据上下文移动和调整其子视图大小。 你可能要将其替换为 `UIView` 或自定义视图类。
+> 只需复制提供的 nib 文件（名为 `AENotificationView.xib`），并从该处开始工作。 但请注意，此 nib 文件内的视图与 `AENotificationView` 类相关联。 此类重新定义了方法 `layoutSubViews`，因而可根据上下文移动和调整其子视图大小。 可能要将其替换为 `UIView` 或自定义视图类。
 >
 >
 
 如果需要进一步自定义通知（比方说希望直接从代码加载视图），建议看一看 `Protocol ReferencesDefaultNotifier` 和 `AENotifier` 的源代码以及类文档。
 
-请注意，你可以针对多个类别使用相同的通知程序。
+请注意，可以针对多个类别使用相同的通知程序。
 
-你也可以重新定义默认通知程序，如下所示：
+也可以重新定义默认通知程序，如下所示：
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerNotifier:myNotifier forCategory:kAEReachDefaultCategory];
@@ -317,22 +318,22 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 * 如果关闭通知，系统将调用 `exitNotification` 方法、报告统计信息，并且立即处理后续市场活动。
 * 如果单击该通知，则系统将调用 `actionNotification`、报告统计信息并执行相关联的操作。
 
-如果你的 `AENotifier` 实现绕过默认行为，则必须自行调用这些生命周期方法。 下面的示例阐释了绕过默认行为的一些情况：
+如果 `AENotifier` 实现绕过默认行为，则必须自行调用这些生命周期方法。 下面的示例阐释了绕过默认行为的一些情况：
 
-* 你不扩展 `AEDefaultNotifier`，例如，从头开始实现类别处理。
-* 你重写了 `prepareNotificationView:forContent:`，请务必至少将 `onNotificationActioned` 或 `onNotificationExited` 映射到其中一个 U.I 控件。
+* 不扩展 `AEDefaultNotifier`，例如，从头开始实现类别处理。
+* 重写了 `prepareNotificationView:forContent:`，请务必至少将 `onNotificationActioned` 或 `onNotificationExited` 映射到其中一个 U.I 控件。
 
 > [!WARNING]
-> 如果 `handleNotification:` 抛出异常，则内容将被删除并调用 `drop`，这种情况将在统计信息中报告，且可以立即处理后续活动。
+> 如果 `handleNotification:` 抛出异常，则内容会被删除并调用 `drop`，这种情况会在统计信息中报告，且可以立即处理后续活动。
 >
 >
 
 #### <a name="include-notification-as-part-of-an-existing-view"></a>在现有视图中包含通知
 覆盖非常适合用于快速集成，但有时不太方便或产生负面影响。
 
-如果你不满意某些视图中的覆盖系统，可以为这些视图进行自定义。
+如果不满意某些视图中的覆盖系统，可以为这些视图进行自定义。
 
-你可以决定是否在现有视图中包括我们的通知布局。 如果要包括，有两种实现方式：
+可以决定是否在现有视图中包括我们的通知布局。 如果要包括，有两种实现方式：
 
 1. 使用界面生成器添加通知视图
 
@@ -354,7 +355,7 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
 ### <a name="announcements-and-polls"></a>公告和投票
 #### <a name="layouts"></a>布局
-你可以修改 `AEDefaultAnnouncementView.xib` 和 `AEDefaultPollView.xib` 文件，只要保留标记值和现有子视图类型即可。
+可以修改 `AEDefaultAnnouncementView.xib` 和 `AEDefaultPollView.xib` 文件，只要保留标记值和现有子视图类型即可。
 
 #### <a name="categories"></a>类别
 ##### <a name="alternate-layouts"></a>备用布局
@@ -390,7 +391,7 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
 如果不想自行加载视图，而希望重复使用默认公告视图布局，则只需使自定义视图控制器扩展提供的 `AEDefaultAnnouncementViewController` 类。 在这种情况下，复制 `AEDefaultAnnouncementView.xib` nib 文件并将其重命名，这样它便可以通过自定义视图控制器加载（如果是名为 `CustomAnnouncementViewController` 的控制器，则应调用 `CustomAnnouncementView.xib` nib 文件）。
 
-要替换公告的默认类别，只需针对 `kAEReachDefaultCategory` 中定义的类别注册你的自定义视图控制器即可：
+要替换公告的默认类别，只需针对 `kAEReachDefaultCategory` 中定义的类别注册自定义视图控制器即可：
 
     [reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:kAEReachDefaultCategory];
 
@@ -502,4 +503,3 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
     }
 
     @end
-

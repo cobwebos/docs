@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: dcabdb789489af1996276d8838afde410473738d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis 缓存常见问题
 了解常见问题的答案，以及有关 Azure Redis 缓存的模式和最佳实践。
@@ -105,7 +104,7 @@ Azure Redis 缓存基于流行的开放源代码 [Redis 缓存](http://redis.io)
 以下是选择缓存产品的注意事项。
 
 * **内存**：基本级别和标准级别提供 250 MB - 53 GB。 高级层最高可提供 530 GB。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
-* **网络性能**：如果你的工作负荷需要高的吞吐量，则可使用高级级别，该级别提供比标准级别或基本级别更高的带宽。 另外，因为基础 VM 托管着缓存，所以，在每个级别中，缓存大小越大，则带宽越高。 有关详细信息，请参阅[下表](#cache-performance)。
+* **网络性能**：如果工作负荷需要较高的吞吐量，则可使用高级层，该层可提供比标准层或基本层更高的带宽。 另外，因为基础 VM 托管着缓存，所以，在每个级别中，缓存大小越大，则带宽越高。 有关详细信息，请参阅[下表](#cache-performance)。
 * **吞吐量**：高级级别提供最大可用吞吐量。 如果缓存服务器或客户端达到带宽限制，则客户端上可能出现超时。 有关详细信息，请参阅下表。
 * **高可用性/SLA**：Azure Redis 缓存保证标准/高级缓存在至少 99.9% 的时间内都可用。 若要了解有关 SLA 的详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 SLA 仅涉及与缓存终结点的连接。 SLA 不涉及对数据丢失的防护。 我们建议使用高级级别中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。
 * **Redis 数据持久性**：高级级别允许将缓存数据暂留在 Azure 存储帐户中。 在基本/标准缓存中，所有数据都只存储在内存中。 如果底层基础结构出现问题，可能会导致数据丢失。 我们建议使用高级级别中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。 Azure Redis 缓存提供可在 Redis 暂留中使用的 RDB 和 AOF（即将推出）选项。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
@@ -290,7 +289,7 @@ Redis 数据库就是同一 Redis 实例中的数据的逻辑隔离。 缓存内
 <a name="cache-ssl"></a>
 
 ### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>何时应启用非 SSL 端口来连接 Redis？
-Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。 如果你要连接到 Azure Redis 缓存并且客户端支持 SSL（如 StackExchange.Redis），则你应使用 SSL。
+Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。 如果要连接到 Azure Redis 缓存并且客户端支持 SSL（如 StackExchange.Redis），则你应使用 SSL。
 
 >[!NOTE]
 >默认情况下，为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 如果客户端不支持 SSL，则必须根据[在 Azure Redis 缓存中配置缓存](cache-configure.md)一文中的[访问端口](cache-configure.md#access-ports)部分中的说明启用非 SSL 端口。
@@ -333,7 +332,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 * 对于某些需要较长时间才能完成的 Redis 命令，在未了解这些命令造成的影响的情况下，不应运行这些命令。
   * 例如，不要在生产环境中运行 [KEYS](http://redis.io/commands/keys) 命令，因为它可能需要很长时间才能返回，具体时间取决于键数。 Redis 是单线程服务器，每次只能处理一个命令。 如果在 KEYS 后面发出了其他命令，则这些命令只会在处理完 KEYS 命令后才会得到处理。 [redis.io](http://redis.io/commands/) 站点具有关于其支持的每个操作的时间复杂性的详细信息。 单击每个命令以查看每个操作的复杂程度。
 * 键大小 - 应使用小键/值还是大键/值？ 通常这取决于具体方案。 如果方案需要较大的键，则可以调整 ConnectionTimeout 和重试值，并调整重试逻辑。 从 Redis 服务器的角度来看，值越小，性能就越好。
-* 这些注意事项并不意味着你不能在 Redis 中存储较大值，只是要注意以下事项。 延迟会提高。 如果采用一个较大的数据集和一个较小的数据集，则可以使用多个 ConnectionMultiplexer 实例，并根据 [StackExchange.Redis 配置选项有什么作用](#cache-configuration)部分中所述，为每个实例配置一组不同的超时和重试值。
+* 这些考量并不意味着不能在 Redis 中存储较大值，只是要注意以下事项。 延迟会提高。 如果采用一个较大的数据集和一个较小的数据集，则可以使用多个 ConnectionMultiplexer 实例，并根据 [StackExchange.Redis 配置选项有什么作用](#cache-configuration)部分中所述，为每个实例配置一组不同的超时和重试值。
 
 <a name="cache-benchmarking"></a>
 
@@ -476,4 +475,3 @@ Redis 取得成功的另一个重要方面是围绕它构建了健康而充满�
 若要查看存档文档，请参阅[已存档角色中缓存文档](https://msdn.microsoft.com/library/azure/dn386103.aspx)。
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
-

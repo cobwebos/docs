@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: yanacai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 771a96df5cc66bac46e7144785be8cc072b57b31
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>使用本地运行和 Azure Data Lake U-SQL SDK 来测试及调试 U-SQL 作业
 
@@ -59,7 +58,7 @@ Data Lake 工具安装程序创建要用作默认数据根文件夹的 C:\LocalR
 1. 打开 Visual Studio。
 2. 打开“服务器资源管理器”。
 3. 展开“Azure” > “Data Lake Analytics”。
-4. 单击“Data Lake”菜单，然后单击“选项和设置”。
+4. 单击“Data Lake”菜单，并单击“选项和设置”。
 5. 在左侧树中，依次展开“Azure Data Lake”、“常规”。
 
     ![用于 Visual Studio 的 Data Lake 工具本地运行配置设置](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-configure.png)
@@ -68,9 +67,9 @@ Data Lake 工具安装程序创建要用作默认数据根文件夹的 C:\LocalR
 
 ### <a name="to-run-a-u-sql-script-locally"></a>本地运行 U-SQL 脚本
 1. 从 Visual Studio，打开 U-SQL 项目。   
-2. 在解决方案资源管理器中，右键单击 U-SQL 脚本，然后单击“提交脚本”。
+2. 在解决方案资源管理器中，右键单击 U-SQL 脚本，并单击“提交脚本”。
 3. 选择“(本地)”作为本地运行脚本的 Analytics 帐户。
-还可在脚本窗口顶部单击“(本地)”帐户，然后单击“提交”（或使用 Ctrl + F5 快捷键）。
+还可在脚本窗口顶部单击“(本地)”帐户，并单击“提交”（或使用 Ctrl + F5 快捷键）。
 
     ![用于 Visual Studio 的 Data Lake 工具本地运行提交作业](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
 
@@ -110,4 +109,3 @@ Data Lake 工具安装程序创建要用作默认数据根文件夹的 C:\LocalR
 * 若要查看更复杂的查询，请参阅 [Analyze website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)（使用 Azure Data Lake Analytics 分析网站日志）。
 * 若要查看作业详细信息，请参阅 [Use Job Browser and Job View for Azure Data Lake Analytics jobs](data-lake-analytics-data-lake-tools-view-jobs.md)（对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图）。
 * 若要使用顶点执行视图，请参阅 [Use the Vertex Execution View in Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)（使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图）。
-

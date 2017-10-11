@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d7333f9752a9e03c1087a4bc588284b418d8926
-ms.openlocfilehash: 4a80252f139d653ff8788b3c1a6a075448cb48e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/14/2017
-
+ms.openlocfilehash: d9f53148787729d29a0a89cce1b8b2b83ba228f8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="integrate-azure-ad-with-an-apache-cordova-app"></a>将 Azure AD Apache Cordova 应用程序集成
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -39,13 +38,13 @@ Cordova 插件在 iOS、Android、Windows 应用商店和 Windows Phone 上包�
 
 若要进行这些改进，需要：
 
-1. 将一个应用程序注册到 Azure AD。
+1. 将应用程序注册到 Azure AD。
 2. 将代码添加到应用以请求令牌。
 3. 添加代码以使用该令牌查询 Graph API 并显示结果。
 4. 使用所需的所有目标平台创建 Cordova 部署项目，添加 Cordova ADAL 插件，并在模拟器中测试解决方案。
 
 ## <a name="prerequisites"></a>先决条件
-若要完成本教程，你需要：
+要完成本教程，需要：
 
 * 一个 Azure AD 租户，其中有一个具有应用开发权限的帐户。
 * 一个配置为使用 Apache Cordova 的开发环境。  
@@ -85,10 +84,10 @@ Cordova 插件在 iOS、Android、Windows 应用商店和 Windows Phone 上包�
 ## <a name="step-1-register-an-application-with-azure-ad"></a>步骤 1：向 Azure AD 注册应用程序
 此步骤是可选的。 此教程提供了预设置的值，使你无需在自己的租户中进行任何预配，就可使用该值查看示例的运行情况。 但我们建议你执行此步骤并熟悉相关的过程，因为在你创建自己的应用程序时，将需要执行该过程。
 
-Azure AD 仅向已知应用程序颁发令牌。 在从应用程序使用 Azure AD 之前，你需要在租户中为该应用程序创建一个条目。 在租户中注册新应用程序：
+Azure AD 仅向已知应用程序颁发令牌。 在从应用程序使用 Azure AD 之前，需要在租户中为该应用程序创建一个条目。 在租户中注册新应用程序：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏上，单击你的帐户。 在“目录”列表中选择要注册应用程序的 Azure AD 租户。
+2. 在顶部栏上，单击帐户。 在“目录”列表中，选择要在其中注册应用程序的 Azure AD 租户。
 3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
 4. 单击“应用注册”，然后选择“添加”。
 5. 根据提示创建“本机客户端应用程序”。 （尽管 Cordova 应用以 HTML 为基础，但我们要在此处创建本机客户端应用程序。 必须选择“本机客户端应用程序”选项，否则应用程序将无法运行。）
@@ -125,7 +124,7 @@ Azure AD 仅向已知应用程序颁发令牌。 在从应用程序使用 Azure 
   * Windows：`xcopy ..\NativeClient-MultiTarget-Cordova\DirSearchClient www /E /Y`
   * Mac：`cp -r  ../NativeClient-MultiTarget-Cordova/DirSearchClient/* www`
 
-4. 添加白名单插件。 这是调用图形 API 必需的。
+4. 添加允许列表插件。 这是调用图形 API 必需的。
 
         cordova plugin add cordova-plugin-whitelist
 
@@ -292,4 +291,3 @@ var authority = "https://login.microsoftonline.com/common",
 现在，让我们来了解更高级（也更有趣）的方案。 可能需要：[使用 Azure AD 保护 Node.js Web API](active-directory-devquickstarts-webapi-nodejs.md)。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

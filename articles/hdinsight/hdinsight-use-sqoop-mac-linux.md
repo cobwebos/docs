@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 35dcbb91e6af1480685c9fd5b829c54277c1c605
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据
 
@@ -106,7 +105,7 @@ ms.lasthandoff: 08/02/2017
 
 ## <a name="sqoop-export"></a>Sqoop 导出
 
-1. 通过 SSH 连接到群集后，使用以下命令验证 Sqoop 是否可以看到你的 SQL 数据库：
+1. 通过 SSH 连接到群集后，使用以下命令验证 Sqoop 是否可以看到 SQL 数据库：
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> -P
@@ -140,7 +139,7 @@ ms.lasthandoff: 08/02/2017
     GO
     ```
 
-    你会在表中看到一系列数据。 键入 `exit` 退出 tsql 实用程序。
+    会在表中看到一系列数据。 键入 `exit` 退出 tsql 实用程序。
 
 ## <a name="sqoop-import"></a>Sqoop 导入
 
@@ -150,7 +149,7 @@ ms.lasthandoff: 08/02/2017
     sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
-    数据中的字段将通过制表符分隔，并且相关行将由换行符终止。
+    数据中的字段将通过制表符分隔，并且相关行由换行符终止。
 
 2. 完成导入后，可使用以下命令在新目录中列出这些数据：
 
@@ -160,7 +159,7 @@ ms.lasthandoff: 08/02/2017
 
 ## <a name="using-sql-server"></a>使用 SQL Server
 
-你还可以使用 Sqoop 通过 SQL Server 来导入和导出数据，不管是在数据中心进行，还是在托管在 Azure 中的虚拟机上进行。 SQL 数据库和 SQL Server 在使用方面的差异是：
+还可以使用 Sqoop 通过 SQL Server 来导入和导出数据，不管是在数据中心进行，还是在托管在 Azure 中的虚拟机上进行。 SQL 数据库和 SQL Server 在使用方面的差异是：
 
 * HDInsight 和 SQL Server 必须位于同一 Azure 虚拟网络上。
 
@@ -170,7 +169,7 @@ ms.lasthandoff: 08/02/2017
 
 * 必须将 SQL Server 配置为允许 SQL 身份验证。 有关详细信息，请参阅[选择身份验证模式](https://msdn.microsoft.com/ms144284.aspx)文档。
 
-* 你可能需要将 SQL Server 配置为接受远程连接。 有关详细信息，请参阅[如何解决 SQL Server 数据库引擎的连接问题](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)文档。
+* 可能需要将 SQL Server 配置为接受远程连接。 有关详细信息，请参阅[如何解决 SQL Server 数据库引擎的连接问题](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)文档。
 
 * 使用诸如 **SQL Server Management Studio** 或 **tsql** 等实用工具在 SQL Server 中创建 **sqooptest** 数据库。 有关使用 Azure CLI 的步骤仅适用于 Azure SQL 数据库。
 
@@ -205,7 +204,7 @@ ms.lasthandoff: 08/02/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
+现在已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
 * [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]：在 Oozie 工作流中使用 Sqoop 操作。
 * [使用 HDInsight 分析航班延误数据][hdinsight-analyze-flight-data]：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
@@ -228,4 +227,3 @@ ms.lasthandoff: 08/02/2017
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
-

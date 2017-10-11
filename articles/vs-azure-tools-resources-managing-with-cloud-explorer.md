@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: ca20927377e84e76c8148deef075f2d6bfb11137
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.openlocfilehash: 6e6d8d559f0251b71bfa6d529ead82a246cb3235
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源
 通过 Cloud Explorer，可在 Visual Studio 中查看 Azure 资源和资源组、检查其属性，以及执行重要的开发人员诊断操作。 
@@ -36,7 +35,7 @@ ms.lasthandoff: 03/27/2017
 > 
 
 ## <a name="add-an-azure-account-to-cloud-explorer"></a>将 Azure 帐户添加到 Cloud Explorer
-若要查看与 Azure 帐户关联的资源，必须先将帐户添加到 Cloud Explorer。 
+要查看与 Azure 帐户关联的资源，必须先将帐户添加到 Cloud Explorer。 
 
 1. 在 **Cloud Explorer** 中，选择“Azure 帐户设置”。
 
@@ -48,11 +47,11 @@ ms.lasthandoff: 03/27/2017
 
 1. 登录要浏览其资源的 Azure 帐户。 
 
-1. 登录 Azure 帐户后，将显示与该帐户关联的订阅。 选中要浏览的帐户订阅的复选框，然后选择“应用”。 
+1. 登录到 Azure 帐户以后，会显示与该帐户关联的订阅。 选中要浏览的帐户订阅的复选框，并选择“应用”。 
  
     ![Cloud Explorer：选择要显示的 Azure 订阅](media/vs-azure-tools-resources-managing-with-cloud-explorer/select-subscriptions.png)
 
-1. 选择要浏览其资源的订阅后，这些订阅和资源将显示在 Cloud Explorer 中。
+1. 选择要浏览其资源的订阅后，这些订阅和资源会显示在 Cloud Explorer 中。
 
     ![Azure 帐户的 Cloud Explorer 资源列表](media/vs-azure-tools-resources-managing-with-cloud-explorer/resources-listed.png)
 
@@ -83,7 +82,7 @@ ms.lasthandoff: 03/27/2017
     ![Cloud Explorer 资源视图比较](media/vs-azure-tools-resources-managing-with-cloud-explorer/resource-views-comparison.png)
 
 ## <a name="view-and-navigate-resources-in-cloud-explorer"></a>在 Cloud Explorer 中查看和导航资源
-若要在 Cloud Explorer 中导航到 Azure 资源并查看其信息，请展开项的类型或关联的资源组，然后选择该资源。 当选择资源时，信息将显示在 Cloud Explorer 底部的两个选项卡（“操作”和“属性”）中。 
+要在 Cloud Explorer 中导航到 Azure 资源并查看其信息，请展开项的类型或关联的资源组，并选择该资源。 当选择资源时，信息会显示在 Cloud Explorer 底部的两个选项卡（“操作”和“属性”）中。 
 
 - “操作”选项卡 - 列出了用户可以在 Cloud Explorer 针对所选资源执行的操作。 还可以通过右键单击资源来查看这些选项，以查看其上下文菜单。
 
@@ -93,9 +92,9 @@ ms.lasthandoff: 03/27/2017
 
 ![](./media/vs-azure-tools-resources-managing-with-cloud-explorer/actions-and-properties.png)
 
-每个资源都有“在门户中打开”操作。 选择此操作时，云资源管理器将在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中显示所选的资源。 在导航到深度嵌套的资源时，**在门户中打开**功能特别方便。
+每个资源都有“在门户中打开”操作。 选择此操作时，Cloud Explorer 会在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中显示所选的资源。 在导航到深度嵌套的资源时，**在门户中打开**功能特别方便。
 
-根据 Azure 资源，还可能会显示其他操作和属性值。 例如，除了“在门户中打开”以外，Web 应用和逻辑应用还提供了“在浏览器中打开”和“附加调试器”操作。 当选择存储帐户 Blob、队列或表时，将显示用于打开编辑器的操作。 Azure 应用具有“URL”和“状态”属性，而存储资源具有键和连接字符串属性。
+根据 Azure 资源，还可能会显示其他操作和属性值。 例如，除了“在门户中打开”以外，Web 应用和逻辑应用还提供了“在浏览器中打开”和“附加调试器”操作。 当选择存储帐户 Blob、队列或表时，会显示用于打开编辑器的操作。 Azure 应用具有“URL”和“状态”属性，而存储资源具有键和连接字符串属性。
 
 ## <a name="find-resources-in-cloud-explorer"></a>在 Cloud Explorer 中查找资源
 若要在 Azure 帐户订阅中查找具有特定名称的资源，请在 Cloud Explorer 的“搜索”框中输入该名称。
@@ -103,4 +102,3 @@ ms.lasthandoff: 03/27/2017
 ![在云资源管理器中查找资源](./media/vs-azure-tools-resources-managing-with-cloud-explorer/search-for-resources.png)
 
 当在“搜索”框中输入字符时，只有符合这些字符的资源才会显示在资源树中。
-

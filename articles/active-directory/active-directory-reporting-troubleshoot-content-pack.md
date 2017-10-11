@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: a47810d89fb3db839d1d59942ee90610afaeb6a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: c880e9eb6d48bd1e38075fbd867d3906ec67b547
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory 活动日志内容包错误故障排除 
 
 
@@ -68,6 +66,5 @@ ms.lasthandoff: 06/17/2017
 ## <a name="next-steps"></a>后续步骤
 
 若要为 Azure Active Directory 预览版安装 Power BI 内容包，请单击[此处](https://powerbi.microsoft.com/en-us/blog/azure-active-directory-meets-power-bi/)。
-
 
 

@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: joflore
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 516240ccc82a522a414d837ec334712196edf7dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 0a45a563d8aed45dd30cc76a13b0e197c248be84
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>在 Azure 虚拟网络中安装新的 Active Directory 林
 本主题说明如何在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)上的虚拟机 (VM) 中创建新的 Windows Server Active Directory 环境。 在此情况下，Azure 虚拟网络未连接到本地网络。
 
-你也有可能对下列相关主题感兴趣：
+也有可能对下列相关主题感兴趣：
 
 * 有关这些步骤的演示视频，请参阅[如何在 Azure 虚拟网络中安装新的 Active Directory 林](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 * 可以有选择性地[配置站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)，然后安装新林，或者将本地林扩展到 Azure 虚拟网络。 有关这些步骤的说明，请参阅[在 Azure 虚拟网络中安装副本 Active Directory 域控制器](active-directory-install-replica-active-directory-domain-controller.md)。
@@ -43,7 +42,7 @@ ms.lasthandoff: 04/27/2017
 | --- | --- | --- |
 | **域控制器的 IP 地址** |在网络适配器属性中分配静态 IP 地址 |运行 Set-AzureStaticVNetIP cmdlet 以分配静态 IP 地址 |
 | **DNS 客户端解析器** |在域成员的网络适配器属性中设置首选和备用 DNS 服务器地址 |在虚拟网络属性中设置 DNS 服务器地址 |
-| **Active Directory 数据库存储** |选择性地更改默认存储位置 C:\ |你需要更改默认存储位置 C:\ |
+| **Active Directory 数据库存储** |选择性地更改默认存储位置 C:\ |需要更改默认存储位置 C:\ |
 
 ## <a name="create-an-azure-virtual-network"></a>创建 Azure 虚拟网络
 1. 登录到 Azure 经典门户。
@@ -56,7 +55,7 @@ ms.lasthandoff: 04/27/2017
    |  **虚拟网络地址空间** |<p>子网名称：输入子网的名称</p><p>起始 IP：<b>10.0.0.0</b></p><p>CIDR：<b>/24 (256)</b></p> |
 
 ## <a name="create-vms-to-run-the-domain-controller-and-dns-server-roles"></a>创建 VM 以运行域控制器和 DNS 服务器角色
-重复以下步骤，根据需要创建用于托管 DC 角色的 VM。 应该至少部署两个虚拟域控制器来提供容错和冗余。 如果 Azure 虚拟网络包含至少两个采用类似配置的 DC（即，它们都是 GC、运行 DNS 服务器，并且都不包含任何 FSMO 角色，等等），那么，你可将运行这些 DC 的 VM 放在可用性集中，以获得更高的容错能力。
+重复以下步骤，根据需要创建用于托管 DC 角色的 VM。 应该至少部署两个虚拟域控制器来提供容错和冗余。 如果 Azure 虚拟网络包含至少两个采用类似配置的 DC（即，它们都是 GC、运行 DNS 服务器，并且都不包含任何 FSMO 角色，等等），那么，可将运行这些 DC 的 VM 放在可用性集中，以获得更高的容错能力。
 
 若要使用 Windows PowerShell 而不是 UI 创建 VM，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
@@ -65,8 +64,8 @@ ms.lasthandoff: 04/27/2017
    | 在此向导页上... | 指定这些值 |
    | --- | --- |
    |  **选择映像** |Windows Server 2012 R2 Datacenter |
-   |  **虚拟机配置** |<p>虚拟机名称：键入单个标签名称（例如 AzureDC1）。</p><p>新用户名：键入用户的名称。 此用户将是 VM 上本地管理员组的成员。 在首次登录 VM 时，你需要使用此名称。 名为“管理员”的内置帐户将无法使用。</p><p>新密码/确认：键入密码</p> |
-   |  **虚拟机配置** |<p>云服务：针对第一个 VM 选择“创建新云服务”，并在创建更多用于托管 DC 角色的 VM 时选择该云服务名称。<b></b></p><p>云服务 DNS 名称：指定一个全局唯一的名称</p><p>区域/地缘组/虚拟网络：指定虚拟网络名称（例如 WestUSVNet）。</p><p>存储帐户：针对第一个 VM 选择“使用自动生成的存储帐户”，然后在创建更多用于托管 DC 角色的 VM 时选择该存储帐户名称。<b></b></p><p>可用性集：选择“创建可用性集”。<b></b></p><p>可用性集名称：键入创建第一个 VM 时的可用性集的名称，然后在创建更多 VM 时选择该名称。</p> |
+   |  **虚拟机配置** |<p>虚拟机名称：键入单个标签名称（例如 AzureDC1）。</p><p>新用户名：键入用户的名称。 此用户将是 VM 上本地管理员组的成员。 在首次登录 VM 时，需要使用此名称。 名为“管理员”的内置帐户将无法使用。</p><p>新密码/确认：键入密码</p> |
+   |  **虚拟机配置** |<p>云服务：针对第一个 VM 选择“创建新云服务”，并在创建更多用于托管 DC 角色的 VM 时选择该云服务名称。<b></b></p><p>云服务 DNS 名称：指定一个全局唯一的名称</p><p>区域/地缘组/虚拟网络：指定虚拟网络名称（例如 WestUSVNet）。</p><p>存储帐户：针对第一个 VM 选择“使用自动生成的存储帐户”，并在创建更多用于托管 DC 角色的 VM 时选择该存储帐户名称。<b></b></p><p>可用性集：选择“创建可用性集”。<b></b></p><p>可用性集名称：键入创建第一个 VM 时的可用性集的名称，并在创建更多 VM 时选择该名称。</p> |
    |  **虚拟机配置** |<p>选择“安装 VM 代理”，以及所需的任何其他扩展。<b></b></p> |
 2. 将磁盘附加到要运行 DC 服务器角色的每个 VM。 需要提供额外的磁盘来存储 AD 数据库、日志和 SYSVOL。 指定磁盘的大小（例如 10 GB）并将“主机缓存首选项”设置为“无”。 有关步骤，请参阅[如何将数据磁盘附加到 Windows 虚拟机](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 3. 在首次登录 VM 之后，请打开“服务器管理器” > “文件和存储服务”，使用 NTFS 在该磁盘上创建一个卷。
@@ -77,18 +76,18 @@ ms.lasthandoff: 04/27/2017
 有关如何设置静态 IP 地址的详细信息，请参阅[为 VM 配置静态内部 IP 地址](../virtual-network/virtual-networks-reserved-private-ip.md)。
 
 ## <a name="install-windows-server-active-directory"></a>安装 Windows Server Active Directory
-使用在本地所用的相同例程[安装 AD DS](https://technet.microsoft.com/library/jj574166.aspx)（也就是说，可以使用 UI、应答文件或 Windows PowerShell）。 需要提供管理员凭据来安装新林。 若要指定 Active Directory 数据库、日志和 SYSVOL 的位置，请将默认存储位置从操作系统驱动器更改为你已附加到 VM 的额外数据磁盘。
+使用在本地所用的相同例程[安装 AD DS](https://technet.microsoft.com/library/jj574166.aspx)（也就是说，可以使用 UI、应答文件或 Windows PowerShell）。 需要提供管理员凭据来安装新林。 要指定 Active Directory 数据库、日志和 SYSVOL 的位置，请将默认存储位置从操作系统驱动器更改成已附加到 VM 的额外数据磁盘。
 
 完成 DC 安装后，请再次连接到 VM 并登录到 DC。 请记得指定域凭据。
 
 ## <a name="reset-the-dns-server-for-the-azure-virtual-network"></a>重置 Azure 虚拟网络的 DNS 服务器
 1. 重置新 DC/DNS 服务器上的 DNS 转发器设置。
    1. 在服务器管理器中，单击“工具” > “DNS”。
-   2. 在“DNS 管理器”中，右键单击 DNS 服务器的名称，然后单击“属性”。
-   3. 在“转发器”选项卡上，单击该转发器的 IP 地址，然后单击“编辑”。  选择 IP 地址，然后单击“删除”。
-   4. 单击“确定”关闭编辑器，然后再次单击“确定”关闭 DNS 服务器属性。
+   2. 在“DNS 管理器”中，右键单击 DNS 服务器的名称，并单击“属性”。
+   3. 在“转发器”选项卡上，单击该转发器的 IP 地址，并单击“编辑”。  选择 IP 地址，并单击“删除”。
+   4. 单击“确定”关闭编辑器，并再次单击“确定”关闭 DNS 服务器属性。
 2. 更新虚拟网络的 DNS 服务器设置。
-   1. 单击“虚拟网络”，双击创建的虚拟网络，单击“配置” > “DNS 服务器”，键入运行 DC/DNS 服务器角色的某个 VM 的名称和 DIP，然后单击“保存”。
+   1. 单击“虚拟网络”，双击创建的虚拟网络，单击“配置” > “DNS 服务器”，键入运行 DC/DNS 服务器角色的某个 VM 的名称和 DIP，并单击“保存”。
    2. 选择 VM 并单击“重新启动”触发该 VM，以便使用新 DNS 服务器的 IP 地址配置 DNS 解析器设置。
 
 ## <a name="create-vms-for-domain-members"></a>为域成员创建 VM
@@ -97,10 +96,10 @@ ms.lasthandoff: 04/27/2017
    | 在此向导页上... | 指定这些值 |
    | --- | --- |
    |  **选择映像** |Windows Server 2012 R2 Datacenter |
-   |  **虚拟机配置** |<p>虚拟机名称：键入单个标签名称（例如 AppServer1）。</p><p>新用户名：键入用户的名称。 此用户将是 VM 上本地管理员组的成员。 在首次登录 VM 时，你需要使用此名称。 名为“管理员”的内置帐户将无法使用。</p><p>新密码/确认：键入密码</p> |
-   |  **虚拟机配置** |<p>云服务：针对第一个 VM 选择“创建新云服务”，并在创建更多用于托管应用程序的 VM 时选择该云服务名称。</p><p>云服务 DNS 名称：指定一个全局唯一的名称</p><p>区域/地缘组/虚拟网络：指定虚拟网络名称（例如 WestUSVNet）。</p><p>存储帐户：针对第一个 VM 选择“使用自动生成的存储帐户”，然后在创建更多用于托管应用程序的 VM 时选择该存储帐户名称。</p><p>可用性集：选择“创建可用性集”。</p><p>可用性集名称：键入创建第一个 VM 时的可用性集的名称，然后在创建更多 VM 时选择该名称。</p> |
+   |  **虚拟机配置** |<p>虚拟机名称：键入单个标签名称（例如 AppServer1）。</p><p>新用户名：键入用户的名称。 此用户将是 VM 上本地管理员组的成员。 在首次登录 VM 时，需要使用此名称。 名为“管理员”的内置帐户将无法使用。</p><p>新密码/确认：键入密码</p> |
+   |  **虚拟机配置** |<p>云服务：针对第一个 VM 选择“创建新云服务”，并在创建更多用于托管应用程序的 VM 时选择该云服务名称。</p><p>云服务 DNS 名称：指定一个全局唯一的名称</p><p>区域/地缘组/虚拟网络：指定虚拟网络名称（例如 WestUSVNet）。</p><p>存储帐户：针对第一个 VM 选择“使用自动生成的存储帐户”，并在创建更多用于托管应用程序的 VM 时选择该存储帐户名称。</p><p>可用性集：选择“创建可用性集”。</p><p>可用性集名称：键入创建第一个 VM 时的可用性集的名称，并在创建更多 VM 时选择该名称。</p> |
    |  **虚拟机配置** |<p>选择“安装 VM 代理”，以及所需的任何其他扩展。<b></b></p> |
-2. 预配每个 VM 之后，登录 VM 并将其加入域。 在“服务器管理器”中，单击“本地服务器” > “工作组” > “更改...”， 然后选择“域”并键入本地域的名称。 提供域用户的凭据，然后重新启动 VM 以完成加入域的操作。
+2. 预配每个 VM 之后，登录 VM 并将其加入域。 在“服务器管理器”中，单击“本地服务器” > “工作组” > “更改...”， 然后选择“域”并键入本地域的名称。 提供域用户的凭据，并重新启动 VM 以完成加入域的操作。
 
 若要使用 Windows PowerShell 而不是 UI 创建 VM，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
@@ -124,4 +123,3 @@ ms.lasthandoff: 04/27/2017
 
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
-

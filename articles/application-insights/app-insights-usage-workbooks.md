@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 4e7ca1f4b3ca7734b00f4d9ce60b466ecf2aeb3f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: 75028b4fbda43d90f56690a33c7eb624fce049c8
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>在 Application Insights 中使用交互式工作簿调查和共享使用情况数据
 
 工作簿将 [Azure Application Insights](app-insights-overview.md) 数据可视化、[Analytics 查询](app-insights-analytics.md)和文本融入交互式文档。 有权访问相同 Azure 资源的其他团队成员可编辑工作簿。 这意味着用于创建工作簿的查询和控件可供阅读工作簿的其他人使用，使其易于浏览、扩展和检查错误。
@@ -127,4 +125,3 @@ ms.lasthandoff: 08/17/2017
     - [用户流](app-insights-usage-flows.md)
     - [添加用户上下文](app-insights-usage-send-user-context.md)
     
-

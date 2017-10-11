@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 7551c290858251b6dbbd131049dbee14e5353785
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: fe56f56162ba7186f1b660a5b44fcef38f1dee9d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-creating-an-application-proxy-application"></a>创建应用程序代理应用程序时出现问题 
 
 以下是用户在创建新应用程序代理应用程序时遇到的一些常见问题。
@@ -35,7 +33,7 @@ ms.lasthandoff: 04/18/2017
 
 为避免常见的错误，请验证：
 
--   你是有权创建应用程序代理应用程序的管理员
+-   是有权创建应用程序代理应用程序的管理员
 
 -   内部 URL 唯一
 
@@ -51,4 +49,3 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="next-steps"></a>后续步骤
 [在 Azure 门户中启用应用程序代理](active-directory-application-proxy-enable.md)
-

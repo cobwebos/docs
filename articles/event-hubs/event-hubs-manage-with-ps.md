@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 2b49c01153b1104612e6ebf9c88566fc40d1f635
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>使用 PowerShell 管理事件中心资源
 
@@ -27,7 +26,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 还可以使用 Azure Resource Manager 模板管理事件中心资源。 有关详细信息，请参阅文章[使用 Azure 资源管理器模板创建包含事件中心和使用者组的事件中心命名空间](event-hubs-resource-manager-namespace-event-hub.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，需要具备以下项：
 
@@ -47,7 +46,8 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 * `$Namespace` 是我们要使用的事件中心命名空间的名称。
 * `$Location` 标识我们要在其中设置命名空间的数据中心。
-* `$CurrentNamespace` 将存储我们检索（或创建）的引用命名空间。
+* 
+            `$CurrentNamespace` 存储我们检索（或创建）的引用命名空间。
 
 在实际脚本中，`$Namespace` 和 `$Location` 可作为参数传递。
 
@@ -158,4 +158,3 @@ Remove-AzureRmEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $N
 [purchase options]: http://azure.microsoft.com/pricing/purchase-options/
 [member offers]: http://azure.microsoft.com/pricing/member-offers/
 [free account]: http://azure.microsoft.com/pricing/free-trial/
-

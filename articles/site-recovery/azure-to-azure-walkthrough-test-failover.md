@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 8babb0d016729f318442af93596d206c38d91206
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="step-6-run-a-test-failover-for-azure-vm-replication"></a>步骤 6：针对 Azure VM 复制运行测试故障转移
 
 为 Azure 虚拟机 (VM) 启用复制后，根据本文中的步骤使用 Azure 门户中的 [Azure Site Recovery](site-recovery-overview.md) 服务运行从一个 Azure 区域到另一个区域的测试故障转移。
@@ -66,5 +64,4 @@ ms.lasthandoff: 08/02/2017
 - 详细了解[使用恢复计划](site-recovery-create-recovery-plans.md)对多个 VM 进行故障转移。
 - 详细了解如何[使用恢复计划](site-recovery-create-recovery-plans.md)。
 - 详细了解如何在故障转移后[重新保护 Azure VM](site-recovery-how-to-reprotect.md)。
-
 

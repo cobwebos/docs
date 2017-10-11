@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: kirillg
-ms.translationtype: HT
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: a0c6ec8d490e1adacc96758971ab91d8eaeab45c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>如何管理 Azure Cosmos DB 帐户
 了解如何在 Azure 门户中设置全局一致性、使用密钥，以及删除 Azure Cosmos DB 帐户。
@@ -54,14 +53,14 @@ ms.lasthandoff: 05/31/2017
 ![在 Azure 门户中查看并复制访问密钥，密钥边栏选项卡](./media/manage-account/copykeys.png)
 
 ### <a name="regenerate-access-keys"></a>重新生成访问密钥
-应定期更改 Azure Cosmos DB 帐户访问密钥，使连接更安全。 将分配两个访问密钥，从而可以在使用一个访问密钥保持连接到 Azure Cosmos DB 帐户的同时，再生成另一个访问密钥。
+应定期更改 Azure Cosmos DB 帐户访问密钥，使连接更安全。 为分配两个访问密钥是为了让你使用一个访问密钥保持与 Azure Cosmos DB 帐户的连接，同时可以重新生成另一个访问密钥。
 
 > [!WARNING]
 > 重新生成访问密钥会影响任何依赖于当前密钥的应用程序。 所有使用访问密钥访问 Azure Cosmos DB 帐户的客户端都必须更新为使用新密钥。
 > 
 > 
 
-如果拥有使用 Azure Cosmos DB 帐户的应用程序或云服务，则再生成密钥将失去连接，除非滚动使用密钥。 以下步骤概述了滚动密钥的过程。
+如果应用程序或云服务使用 Azure Cosmos DB 帐户，则重新生成密钥会失去连接，除非滚动使用密钥。 以下步骤概述了滚动密钥的过程。
 
 1. 更新应用程序代码中的访问密钥以引用 Azure Cosmos DB 帐户的辅助访问密钥。
 2. 再生成 Azure Cosmos DB 帐户的主访问密钥。 在 [Azure 门户](https://portal.azure.com/)中，访问 Azure Cosmos DB 帐户。
@@ -87,7 +86,7 @@ ms.lasthandoff: 05/31/2017
 
 如果在 [Azure Cosmos DB 数据库迁移工具](import-data.md)中使用连接字符串，将数据库名称追加到连接字符串的末尾。 `AccountEndpoint=< >;AccountKey=< >;Database=< >`。
 
-## <a id="delete"></a>删除 Azure Cosmos DB 帐户
+## <a id="delete"></a> 删除 Azure Cosmos DB 帐户
 要从 Azure 门户中删除不再使用的 Azure Cosmos DB 帐户，请右键单击该帐户名称，并单击“删除帐户”。
 
 ![如何在 Azure 门户中删除 Azure Cosmos DB 帐户](./media/manage-account/deleteaccount.png)
@@ -110,4 +109,3 @@ ms.lasthandoff: 05/31/2017
 [consistency]: consistency-levels.md
 [azureregions]: https://azure.microsoft.com/regions/#services
 [offers]: https://azure.microsoft.com/pricing/details/cosmos-db/
-

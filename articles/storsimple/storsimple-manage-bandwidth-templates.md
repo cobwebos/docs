@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: df3ae8bf775370432b3648459a7c942afe69fb17
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates"></a>使用 StorSimple Manager 服务管理 StorSimple 带宽模板
 ## <a name="overview"></a>概述
@@ -65,7 +64,7 @@ ms.lasthandoff: 07/06/2017
    4. 从下拉列表中选择“结束时间”。 这是停止实施计划的时间。
       
       > [!NOTE]
-      > 不允许重叠的计划。 如果开始时间和结束时间会导致计划重叠，将显示一条错误消息。
+      > 不允许重叠的计划。 如果开始时间和结束时间会导致计划重叠，会显示一条错误消息。
       > 
       > 
    5. 指定“带宽速率”。 这是指 StorSimple 设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。 为此字段提供介于 1 和 1,000 之间的数字。
@@ -95,12 +94,12 @@ ms.lasthandoff: 07/06/2017
 执行以下步骤可删除带宽模板。
 
 #### <a name="to-delete-a-bandwidth-template"></a>删除带宽模板
-1. 在服务的带宽模板表格列表中，选择要删除的模板。 所选模板的最右侧将显示一个删除图标 (**x**)。 单击 **x** 图标即可删除模板。
-2. 系统将提示进行确认。 单击“确定”继续。
+1. 在服务的带宽模板表格列表中，选择要删除的模板。 所选模板的最右侧会显示一个删除图标 (**x**)。 单击 **x** 图标即可删除模板。
+2. 系统会提示进行确认。 单击“确定”继续。
 
-如果模板被任何卷使用，将不允许删除该模板。 此时将显示一条错误消息，指出该模板正在使用中。 系统将显示一个错误消息对话框，告知应删除对该模板的所有引用。
+如果模板被任何卷使用，将不允许删除该模板。 此时会显示一条错误消息，指出该模板正在使用中。 系统会显示一个错误消息对话框，告知应删除对该模板的所有引用。
 
-若要删除对此模板的所有引用，可以访问“卷容器”页，然后修改使用此模板的卷容器，使其使用其他模板，或使用自定义或不受限制的带宽设置。 删除所有引用后，便可以删除该模板。
+要删除对此模板的所有引用，可以访问“卷容器”页，并修改使用此模板的卷容器，使其使用其他模板，或使用自定义或不受限制的带宽设置。 删除所有引用后，便可以删除该模板。
 
 ## <a name="use-a-default-bandwidth-template"></a>使用默认带宽模板
 默认情况下，在访问云时，卷容器使用提供的默认带宽模板实施带宽控制。 想要自行创建模板的用户也可以使用现成的默认模板作为参考。 此默认模板的详细信息为：
@@ -145,7 +144,7 @@ ms.lasthandoff: 07/06/2017
 
 使用修改的模板后，需要再次监视网络以确定是否存在明显的延迟。 如果仍然存在这些问题，则需要再次访问带宽模板。
 
-**问**： 如果设备上的多个卷容器具有相互重叠并应用不同限制的计划，将会发生什么情况？
+**问**： 如果设备上的多个卷容器具有相互重叠并应用不同限制的计划，会发生什么情况？
 
 **答**： 假设设备上有 3 个卷容器， 与这些容器关联的计划完全重叠。 对于其中的每个容器，使用的带宽限制分别 5、10 和 15 Mbps。 如果所有这些容器同时发生 I/O，可以应用 3 个带宽限制中的最小者：在这种情况下为 5 Mbps，因为这些传出 I/O 请求共享同一个队列。
 
@@ -157,5 +156,4 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="next-steps"></a>后续步骤
 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
 

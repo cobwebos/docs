@@ -1,5 +1,5 @@
 ---
-title: 'Who''s using Azure Search: case studies and customer stories | Microsoft Docs'
+title: "谁在使用 Azure Search： 案例研究和客户情景 |Microsoft 文档"
 description: "有关 Azure 搜索的案例研究和客户案例，它是 Microsoft Azure 上托管的一项云搜索服务。"
 services: search
 documentationcenter: 
@@ -15,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>谁在使用 Azure 搜索：案例研究和客户案例
 了解以下组织如何通过将丰富的 Azure 搜索体验集成到其联机应用程序来开展其业务。
@@ -53,4 +52,3 @@ Weichert Realtors 正在移动到云，这会使公司开展其业务的方式�
 [4]: ./media/search-case-studies/medihoo_m.png
 [5]: ./media/search-case-studies/weichert_m.png
 [xomni]: ./media/search-case-studies/xomni_m.png
-

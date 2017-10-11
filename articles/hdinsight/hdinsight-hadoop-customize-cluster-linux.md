@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: cbfdc3c4b6a6d0f3174c9d7512c3aadd926a56df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
-
+ms.openlocfilehash: 0c5d00b6cb9f68a1a0e474f81c969eb1b5654c67
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-action"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -56,7 +55,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ## <a name="understanding-script-actions"></a>了解脚本操作
 
-脚本操作只是一个 Bash 脚本，为其提供 URI 和参数。 该脚本在 HDInsight 群集节点上运行。 下面是脚本操作的特征和功能。
+脚本操作只是一个提供 URI 和参数的 Bash 脚本。 该脚本在 HDInsight 群集节点上运行。 下面是脚本操作的特征和功能。
 
 * 必须存储在可从 HDInsight 群集访问的 URI 上。 下面是可能的存储位置：
 
@@ -417,7 +416,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
         New-AzureRmResourceGroupDeployment -Name mydeployment -ResourceGroupName myresourcegroup -TemplateFile <PathOrLinkToTemplate>
 
-    系统会提示为模板中定义的参数提供值。
+    系统会提示用户为模板中定义的参数提供值。
 
 1. 部署资源组后，会显示部署摘要。
 
@@ -611,8 +610,7 @@ Microsoft Azure HDInsight 服务使用围绕 Hadoop 构建的开源技术生态�
 HDInsight 服务中有两种类型的开放源代码组件：
 
 * **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，Yarn ResourceManager、Hive 查询语言 (HiveQL) 及 Mahout 库均属于此类别。 [HDInsight 提供的 Hadoop 群集版本有哪些新功能](hdinsight-component-versioning.md)中提供了群集组件的完整列表。
-* 
-            **自定义组件** - 作为群集用户，可以安装，或者在工作负荷中使用由社区提供的或自己创建的任何组件。
+* **自定义组件** - 作为群集用户，可以安装，或者在工作负荷中使用由社区提供或自己创建的任何组件。
 
 > [!WARNING]
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
@@ -722,5 +720,4 @@ sudo pip install azure-storage==0.20.0
 * [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "群集创建期间的阶段"
-
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "群集创建过程中的阶段"

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: b9b3bd0f2184ac85261166d5fe2ab67e1bf319d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>将虚拟网络（经典）从地缘组迁移到区域
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 07/12/2017
    > 
    > 
    
-    编辑网络配置文件中的以下行，将相应值替换为你自己的值： 
+    编辑网络配置文件中的以下行，将相应值替换成自己的值： 
    
     **旧值：** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
    
@@ -62,4 +61,3 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>如果在地缘组中有一个 VM（经典）该怎么办
 当前位于地缘组中的 VM（经典）不需要从地缘组中删除。 在 VM 部署后，系统会将其部署到单个缩放单位。 地缘组可以限制可用于新 VM 部署的 VM 大小集，但是部署的任何现有 VM 已限制为在其中部署该 VM 的缩放单位中可用的 VM 大小集。 由于该 VM 已部署到缩放单位，因此，从地缘组中删除该 VM 不会对 VM 产生影响。
-

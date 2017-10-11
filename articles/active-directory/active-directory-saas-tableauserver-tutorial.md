@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: 6b35609d88fbbf649e15863901d521886db2a4d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/22/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-tableau-server-from-the-gallery"></a>从库中添加 Tableau Server
-若要配置 Tableau Server 与 Azure AD 的集成，需要从库中将 Tableau Server 添加到托管 SaaS 应用列表。
+要配置 Tableau Server 与 Azure AD 的集成，需要从库中将 Tableau Server 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Tableau Server，请执行以下步骤：**
 
@@ -62,7 +61,7 @@ ms.lasthandoff: 06/22/2017
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/22/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Tableau Server 测试用户](#creating-a-tableau-server-test-user)** - 在 Tableau Server 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建一个 Tableau Server 测试用户](#creating-a-tableau-server-test-user)** -若要链接到用户的 Azure AD 表示 Tableau Server 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 06/22/2017
     
     ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/3.png)
     
-5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，然后执行以下步骤：
+5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ---------------| --------------- |    
@@ -136,14 +135,14 @@ ms.lasthandoff: 06/22/2017
 
     ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_officespace_05.png)
     
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
     d. 单击“确定”
 
 
-6. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
 
@@ -204,7 +203,7 @@ ms.lasthandoff: 06/22/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -227,9 +226,9 @@ ms.lasthandoff: 06/22/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Tableau Server，请执行以下步骤：**
+**要将 Britta Simon 分配到 Tableau Server，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -278,5 +277,4 @@ ms.lasthandoff: 06/22/2017
 [201]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_203.png
-
 

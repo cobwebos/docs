@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: anhoh
-ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
 ms.openlocfilehash: 4dbf91a3c1d6a287d7337647f9e059566c7ddbe5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB: API for MongoDB 简介
 
@@ -33,15 +32,15 @@ ms.lasthandoff: 07/17/2017
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>将 Azure Cosmos DB 用于 MongoDB 应用程序的好处是什么？
 
-可弹性增减的吞吐量和存储：轻松增大或减小 MongoDB 数据库规模来满足应用程序需求。 你的数据存储在固态硬盘 (SSD) 上，以实现可预测的低延迟。 Cosmos DB 支持几乎可以扩展到无限存储大小和预配吞吐量的 MongoDB 集合。 随着应用程序规模的增长，可以灵活无缝地扩展 Cosmos DB 且其性能可以预测。 
+可弹性增减的吞吐量和存储：轻松增大或减小 MongoDB 数据库规模来满足应用程序需求。 数据存储在固态硬盘 (SSD) 上，以实现可预测的低延迟。 Cosmos DB 支持几乎可以扩展到无限存储大小和预配吞吐量的 MongoDB 集合。 随着应用程序规模的增长，可以灵活无缝地扩展 Cosmos DB 且其性能可以预测。 
 
-多区域复制：Cosmos DB 以透明方式将数据复制到与 MongoDB 帐户关联的所有区域，使用户能够开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 Cosmos DB 提供具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储。 在[全局分发数据](distribute-data-globally.md)中了解详细信息。
+多区域复制：Cosmos DB 以透明方式将数据复制到与 MongoDB 帐户关联的所有区域，使你可以开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 Cosmos DB 提供具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储。 在[全局分发数据](distribute-data-globally.md)中了解详细信息。
 
-MongoDB 兼容性：可使用现有 MongoDB 专业知识、应用程序代码和工具。 可使用 MongoDB 开发应用程序，并使用完全托管的全球分布式 Cosmos DB 服务将其部署到生产环境。
+MongoDB 兼容性：可使用现有 MongoDB 专业知识、应用程序代码和工具。 可以使用 MongoDB 来开发应用程序，并使用完全托管的全局分布式 Cosmos DB 服务将其部署到生产环境。
 
 无需管理服务器：无需管理和缩放 MongoDB 数据库。 Cosmos DB 是完全托管的服务，这意味着无需自己管理任何基础结构或虚拟机。 Cosmos DB 在 30 多个 [Azure 区域](https://azure.microsoft.com/regions/services/)中可用。
 
-**可优化的一致性级别：**从五个妥善定义的一致性级别中选择，实现一致性与性能之间的最佳平衡。 对于查询和读取操作，Cosmos DB 提供五种不同的一致性级别：强、有限过期、会话、一致前缀和最终。 通过这些细化的定义完好的一致性级别，你可以在一致性、可用性和延迟之间实现合理的平衡。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
+**可优化的一致性级别：**从五个妥善定义的一致性级别中选择，实现一致性与性能之间的最佳平衡。 对于查询和读取操作，Cosmos DB 提供五种不同的一致性级别：强、有限过期、会话、一致前缀和最终。 通过这些细化的定义完好的一致性级别，可以在一致性、可用性和延迟之间实现合理的平衡。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
 
 自动编制索引：默认情况下，Cosmos DB 自动为 MongoDB 数据库文档中的所有属性编制索引，无需任何架构或创建二级索引。
 
@@ -65,9 +64,8 @@ MongoDB 兼容性：可使用现有 MongoDB 专业知识、应用程序代码和
 有关 Azure Cosmos DB 的 MongoDB API 的信息已整合到整个 Azure Cosmos DB 文档中，以下是几个入门指南：
 
 * 若要了解如何获取帐户连接字符串信息，请参阅[连接到 MongoDB 帐户](connect-mongodb-account.md)教程。
-* 若要了解如何在 MongoChef 中创建 Azure Cosmos DB 数据库和 MongoDB 应用之间的连接，请参阅[将 MongoChef 与 Azure Cosmos DB 配合使用](mongodb-mongochef.md)教程。
+* 要了解如何在 MongoChef 中创建 Azure Cosmos DB 数据库和 MongoDB 应用之间的连接，请参阅[将 MongoChef 与 Azure Cosmos DB 配合使用](mongodb-mongochef.md)教程。
 * 按照[将数据迁移到具有 MongoDB 协议支持的 Azure Cosmos DB](mongodb-migrate.md) 教程将数据导入到 MongoDB 的 API 数据库。
 * 使用 [Robomongo](mongodb-robomongo.md) 连接到 MongoDB 的 API 帐户。
-* 了解你的操作将多少 RU 用于 [GetLastRequestStatistics 命令和 Azure 门户指标](request-units.md#GetLastRequestStatistics)。
+* 了解操作将多少 RU 用于 [GetLastRequestStatistics 命令和 Azure 门户指标](request-units.md#GetLastRequestStatistics)。
 * 了解如何[配置全局分布的应用的读取首选项](../cosmos-db/tutorial-global-distribution-mongodb.md)。
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6fbd96935f444d8b0c6d068ebd0d28e612f19816
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>备份资源管理器部署中的 Windows 系统状态
 本文介绍了如何将 Windows Server 系统状态备份到 Azure。 本教程旨在引导完成基本操作。
@@ -235,7 +234,7 @@ ms.lasthandoff: 08/22/2017
 
     ![立即备份 Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“备份”。
+3. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“**备份**”。
 
 4. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
 
@@ -320,4 +319,3 @@ ms.lasthandoff: 08/22/2017
 * 详细了解如何 [备份 Windows 计算机](backup-configure-vault.md)。
 * 备份文件和文件夹后，可以 [管理保管库和服务器](backup-azure-manage-windows-server.md)。
 * 如果需要还原备份，请参阅[将文件还原到 Windows 计算机](backup-azure-restore-windows-server.md)一文。
-

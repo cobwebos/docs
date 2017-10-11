@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9d7640577eedcc9221f6346b650aed85f1d31a65
-ms.openlocfilehash: 26ebdbc6f568dd3d9bbcaa3250aae70d80af2d35
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/18/2017
-
+ms.openlocfilehash: 9e5b45d71b978c383932409f0037a4f6f32d0cb3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>在 AD DS 中使用 Azure AD Connect Health
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Active Directory 域服务。 支持的 AD DS 版本为：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。
@@ -48,11 +47,11 @@ ms.lasthandoff: 01/18/2017
 ![复制状态](./media/active-directory-aadconnect-health/aadconnect-health-adds-replication.png)
 
 ## <a name="monitoring"></a>监视
-此功能提供不同性能计数器的图形趋势，这些趋势信息是从每个受监视的域控制器持续收集的。 可以根据林中其他所有受监视的域控制器，来轻松比较某个域控制器的性能。 此外，你还可以看到并排放置的各种性能计数器，这对排查环境中出现的问题很有帮助。
+此功能提供不同性能计数器的图形趋势，这些趋势信息是从每个受监视的域控制器持续收集的。 可以根据林中其他所有受监视的域控制器，来轻松比较某个域控制器的性能。 此外，还可以看到并排放置的各种性能计数器，这对排查环境中出现的问题很有帮助。
 
 ![监视](./media/active-directory-aadconnect-health/aadconnect-health-adds-monitoring.png)
 
-默认情况下，我们已经预先选择四个性能计数器；但是，你可以通过单击筛选命令并选择或取消选择任何所需的性能计数器，来添加其他计数器。 此外，可以双击某个性能计数器图表打开一个新的边栏选项卡，其中包含每个受监视域控制器的数据点。
+默认情况下，我们已经预先选择四个性能计数器；但是，可以通过单击筛选命令并选择或取消选择任何所需的性能计数器，来添加其他计数器。 此外，可以双击某个性能计数器图表打开一个新的边栏选项卡，其中包含每个受监视域控制器的数据点。
 
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
@@ -62,5 +61,4 @@ ms.lasthandoff: 01/18/2017
 * [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
-
 

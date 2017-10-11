@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 9e75bbe528a427724a623305fbd45e2277e9d0af
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-labels-to-instrument-queries-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用标签检测查询
 SQL 数据仓库支持称为查询标签的概念。 在继续之前，让我们看一个示例：
@@ -46,7 +45,7 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> 查询时，必须以方括号或双引号括住文字标签。 标签是一个保留字，如果未分隔，将会导致错误。
+> 查询时，必须以方括号或双引号括住文字标签。 标签是一个保留字，如果未分隔，会导致错误。
 > 
 > 
 
@@ -61,4 +60,3 @@ WHERE   r.[label] = 'My Query Label'
 <!--MSDN references-->
 
 <!--Other Web references-->
-

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 1ef3903bc4c401988c0f8b27dc9f9f0f3ec99466
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: d6867c73bc6ea3c238cceef8a68466d451f3365c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 
 要发布元数据，可使用公共 API、单击一次的注册工具或直接手动将信息输入到 Azure 数据目录 Web 门户。 下表汇总了目录当前支持的所有数据源以及每个数据源的发布功能。 还列出了外部数据工具（每个数据源都可从门户“open-in”体验启动它）。 第二个表包含每个数据源连接属性的详细技术规范。
@@ -464,7 +462,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>Data Lake</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -472,7 +470,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>目录、文件</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -480,7 +478,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>容器</td>
       <td>
-        <font size=2> 协议：azure-blob <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容器 </font>
+        <font size=2> 协议：azure-blob <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容器</font>
       </td>
     </tr>
     <tr>
@@ -488,7 +486,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>Blob、目录</td>
       <td>
-        <font size=2> 协议：azure-blob <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名称 </font>
+        <font size=2> 协议：azure-blob <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名称</font>
       </td>
     </tr>
     <tr>
@@ -496,7 +494,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>容器</td>
       <td>
-        <font size=2> 协议：azure 表 <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 </font>
+        <font size=2> 协议：azure 表 <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帐户</font>
       </td>
     </tr>
     <tr>
@@ -504,7 +502,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表</td>
       <td>
-        <font size=2> 协议：azure 表 <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名称 </font>
+        <font size=2> 协议：azure 表 <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名称</font>
       </td>
     </tr>
     <tr>
@@ -512,7 +510,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>虚拟群集</td>
       <td>
-        <font size=2> 协议：cosmos <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：cosmos <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -520,7 +518,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>流、流集、视图</td>
       <td>
-        <font size=2> 协议：cosmos <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：cosmos <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -528,7 +526,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>站点</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -536,7 +534,7 @@ ms.lasthandoff: 07/08/2017
       <td>报表</td>
       <td>报表、仪表板</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -544,7 +542,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：db2 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：db2 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -552,7 +550,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：db2 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 </font>
+        <font size=2> 协议：db2 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构</font>
       </td>
     </tr>
     <tr>
@@ -560,7 +558,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>文件</td>
       <td>
-        <font size=2> 协议：文件 <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 路径 </font>
+        <font size=2> 协议：文件 <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;路径</font>
       </td>
     </tr>
     <tr>
@@ -568,7 +566,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>目录、文件</td>
       <td>
-        <font size=2> 协议：ftp <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：ftp <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -576,7 +574,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>群集</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -584,7 +582,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>目录、文件</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -592,7 +590,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：hive <br>身份验证：{HDInsight、基本、用户名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>connectionProperties： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器协议：{hive2} </font>
+        <font size=2> 协议：hive <br>身份验证：{HDInsight、基本、用户名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>connectionProperties： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;serverProtocol: {hive2}</font>
       </td>
     </tr>
     <tr>
@@ -600,7 +598,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：hive <br>身份验证：{HDInsight、基本、用户名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>connectionProperties： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器协议：{hive2} </font>
+        <font size=2> 协议：hive <br>身份验证：{HDInsight、基本、用户名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>connectionProperties： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;serverProtocol: {hive2}</font>
       </td>
     </tr>
     <tr>
@@ -608,7 +606,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>站点</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -616,7 +614,7 @@ ms.lasthandoff: 07/08/2017
       <td>报表</td>
       <td>报表、仪表板</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -624,7 +622,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>终结点、文件</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -632,7 +630,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：mysql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：mysql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -640,7 +638,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：mysql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：mysql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -648,7 +646,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>实体容器</td>
       <td>
-        <font size=2> 协议：odata <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：odata <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -656,7 +654,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>实体集、函数</td>
       <td>
-        <font size=2> 协议：odata <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 资源 </font>
+        <font size=2> 协议：odata <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资源</font>
       </td>
     </tr>
     <tr>
@@ -664,7 +662,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：oracle <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：oracle <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -672,7 +670,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：oracle <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：oracle <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -680,7 +678,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：postgresql <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：postgresql <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -688,7 +686,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：postgresql <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：postgresql <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -696,7 +694,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>站点</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -704,7 +702,7 @@ ms.lasthandoff: 07/08/2017
       <td>报表</td>
       <td>报表、仪表板</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -712,7 +710,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>数据混合</td>
       <td>
-        <font size=2> 协议：power-query <br>身份验证：{oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：power-query <br>身份验证：{oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -720,7 +718,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>对象</td>
       <td>
-        <font size=2> 协议：salesforce-com <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 登录服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 类 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 项名称 </font>
+        <font size=2> 协议：salesforce-com <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loginServer <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目名称</font>
       </td>
     </tr>
     <tr>
@@ -728,7 +726,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>服务器</td>
       <td>
-        <font size=2> 协议：sap-hana-sql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 </font>
+        <font size=2> 协议：sap-hana-sql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器</font>
       </td>
     </tr>
     <tr>
@@ -736,7 +734,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>查看</td>
       <td>
-        <font size=2> 协议：sap-hana-sql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：sap-hana-sql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -744,7 +742,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>列出</td>
       <td>
-        <font size=2> 协议：sharepoint 列表 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> 协议：sharepoint 列表 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url</font>
       </td>
     </tr>
     <tr>
@@ -752,7 +750,7 @@ ms.lasthandoff: 07/08/2017
       <td>命令</td>
       <td>存储过程</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -760,7 +758,7 @@ ms.lasthandoff: 07/08/2017
       <td>TableValuedFunction</td>
       <td>Table-valued 函数</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -768,7 +766,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -776,7 +774,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -784,7 +782,7 @@ ms.lasthandoff: 07/08/2017
       <td>命令</td>
       <td>存储过程</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -792,7 +790,7 @@ ms.lasthandoff: 07/08/2017
       <td>TableValuedFunction</td>
       <td>Table-valued 函数</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -800,7 +798,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -808,7 +806,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -816,7 +814,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>模型</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 </font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型</font>
       </td>
     </tr>
     <tr>
@@ -824,7 +822,7 @@ ms.lasthandoff: 07/08/2017
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{KPI}</font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objectType: {KPI}</font>
       </td>
     </tr>
     <tr>
@@ -832,7 +830,7 @@ ms.lasthandoff: 07/08/2017
       <td>度量</td>
       <td>度量</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{度量值} </font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objectType: {Measure}</font>
       </td>
     </tr>
     <tr>
@@ -840,7 +838,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>维度</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{维度} </font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objectType: {维度}</font>
       </td>
     </tr>
     <tr>
@@ -848,7 +846,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>模型</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 </font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型</font>
       </td>
     </tr>
     <tr>
@@ -856,7 +854,7 @@ ms.lasthandoff: 07/08/2017
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{KPI}</font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objectType: {KPI}</font>
       </td>
     </tr>
     <tr>
@@ -864,7 +862,7 @@ ms.lasthandoff: 07/08/2017
       <td>度量</td>
       <td>度量</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{度量值} </font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objectType: {Measure}</font>
       </td>
     </tr>
     <tr>
@@ -872,7 +870,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{表} </font>
+        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objectType: {Table}</font>
       </td>
     </tr>
     <tr>
@@ -880,7 +878,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>服务器</td>
       <td>
-        <font size=2> 协议：报表服务 <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本：{ReportingService2010} </font>
+        <font size=2> 协议：报表服务 <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版本: {ReportingService2010}</font>
       </td>
     </tr>
     <tr>
@@ -888,7 +886,7 @@ ms.lasthandoff: 07/08/2017
       <td>报表</td>
       <td>报表</td>
       <td>
-        <font size=2> 协议：报表服务 <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 路径 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本：{ReportingService2010} </font>
+        <font size=2> 协议：报表服务 <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;路径 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版本: {ReportingService2010}</font>
       </td>
     </tr>
     <tr>
@@ -896,7 +894,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：teradata <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：teradata <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -904,7 +902,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：teradata <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：teradata <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -912,7 +910,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>模型</td>
       <td>
-        <font size="2"> 协议：mssql-mds <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本 </font>
+        <font size="2"> 协议：mssql-mds <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版本</font>
       </td>
     </tr>
     <tr>
@@ -920,7 +918,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>实体</td>
       <td>
-        <font size="2"> 协议：mssql-mds <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 实体 </font>
+        <font size="2"> 协议：mssql-mds <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版本 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实体</font>
       </td>
     </tr>
     <tr>
@@ -928,7 +926,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：document-db <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：document-db <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -936,7 +934,7 @@ ms.lasthandoff: 07/08/2017
       <td>集合</td>
       <td>集合</td>
       <td>
-        <font size=2> 协议：document-db <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 集合 </font>
+        <font size=2> 协议：document-db <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;集合</font>
       </td>
     </tr>
     <tr>
@@ -944,7 +942,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：odbc <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：odbc <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -952,7 +950,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：odbc <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 </font>
+        <font size=2> 协议：odbc <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构</font>
       </td>
     </tr>
     <tr>
@@ -960,7 +958,7 @@ ms.lasthandoff: 07/08/2017
       <td>容器</td>
       <td>数据库</td>
       <td>
-        <font size=2> 协议：sybase <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        <font size=2> 协议：sybase <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库</font>
       </td>
     </tr>
     <tr>
@@ -968,7 +966,7 @@ ms.lasthandoff: 07/08/2017
       <td>表</td>
       <td>表、视图</td>
       <td>
-        <font size=2> 协议：sybase <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        <font size=2> 协议：sybase <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象</font>
       </td>
     </tr>
     <tr>
@@ -976,8 +974,7 @@ ms.lasthandoff: 07/08/2017
       <td>\*</td>
       <td>\*</td>
       <td>
-        <font size=2> 协议：通用资产 <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId </font>
+        <font size=2> 协议：通用资产 <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assetId</font>
       </td>
     </tr>
 </table>
-

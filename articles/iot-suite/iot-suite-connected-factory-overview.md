@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: d502c8e2e2715899279f6ebcf7ed89c19a1bb9a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>连接工厂预配置解决方案入门
 
@@ -192,7 +191,7 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 
 ## <a name="browse-an-opc-ua-server"></a>浏览 OPC UA 服务器
 
-部署预配置的解决方案时，会自动预配模拟 OPC UA 服务器，此类服务器可以通过解决方案浏览器进行浏览。 这些服务器是模拟 OPC UA 服务器。 模拟服务器可让你试验预配置解决方案，而不需要部署实际的物理服务器。 要将实际 OPC UA 服务器连接到解决方案，请参阅[将 OPC UA 设备连接到连接工厂预配置解决方案][lnk-connect-cf]教程。
+部署预配置的解决方案时，会自动预配模拟 OPC UA 服务器，此类服务器可以通过解决方案浏览器进行浏览。 这些服务器是模拟 OPC UA 服务器。 使用仿真服务器可以轻松试验预配置解决方案，而不需要部署实际的物理服务器。 要将实际 OPC UA 服务器连接到解决方案，请参阅[将 OPC UA 设备连接到连接工厂预配置解决方案][lnk-connect-cf]教程。
 
 1. 单击仪表板导航栏中的**工厂图标**。
 
@@ -246,7 +245,7 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 
     ![连接工厂预配置解决方案调用上下文][cf-img-call-context]
 
-7. 上下文面板会进行更新，告知你该方法调用成功。 可以通过读取压力节点的值（在调用后已更新）来验证调用是否成功。
+7. 上下文面板会更新，告知方法调用成功。 可以通过读取压力节点的值（在调用后已更新）来验证调用是否成功。
 
     ![连接工厂预配置解决方案调用成功][cf-img-call-success]
 

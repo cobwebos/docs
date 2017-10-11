@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: d6bc4a67a95f41db7f89fbafd35819d38a9844d1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 4eb2c04c940dd6ad15a491a331aed76c237f0387
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序的联合单一登录时遇到的问题
 
 如果在配置应用程序时遇到问题。 检查是否遵循了文章[针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)中的所有步骤。
@@ -71,4 +69,3 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
-

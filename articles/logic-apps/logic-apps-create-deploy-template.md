@@ -15,13 +15,11 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: e736bf626cd379e1bffe2dbf023e86addb09539f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
-
-
+ms.openlocfilehash: 9cfbb294010d48deaf4b4c78c6a6bcd59a387d87
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>创建模板以用于逻辑应用部署和版本管理
 
@@ -42,7 +40,7 @@ ms.lasthandoff: 04/21/2017
 
 可以使用诸如 [Azure 资源管理器](http://resources.azure.com)之类的工具查看现有逻辑应用的所有这些资源。
 
-若要创建逻辑应用模板以用于资源组部署，必须先定义资源并根据需要将其参数化。
+要创建逻辑应用模板以用于资源组部署，必须先定义资源并根据需要将其参数化。
 例如，如果部署到开发、测试和生产环境，则可能想要在每个环境中使用不同的连接字符串连接到 SQL 数据库。
 或者，可能想要在不同的订阅或资源组中进行部署。  
 
@@ -51,9 +49,9 @@ ms.lasthandoff: 04/21/2017
 获得有效逻辑应用部署模板的最简单方法是使用 [Visual Studio Tools for Logic Apps](logic-apps-deploy-from-vs.md)。
 Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板。
 
-其他一些工具可在你创建逻辑应用部署模板时提供帮助。
-你可以手动创建，也就是使用此处讨论的资源根据需要创建参数。
-另一种方法是使用[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell 模块。 此开放源代码模块首先评估逻辑应用和其使用的任何连接，然后生成用于部署的模板资源与所需参数。
+其他一些工具可在创建逻辑应用部署模板时提供帮助。
+可以手动创建，也就是使用此处讨论的资源根据需要创建参数。
+另一种方法是使用[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell 模块。 此开放源代码模块首先计算逻辑应用和任何连接，它使用，，，然后生成与部署的必需参数的模板资源。
 例如，如果逻辑应用从 Azure 服务总线队列接收消息，并将数据添加到 Azure SQL 数据库，那么该工具将保存所有业务流程逻辑并参数化 SQL 和服务总线连接字符串，以便可以在部署中设置它们。
 
 > [!NOTE]
@@ -64,7 +62,7 @@ Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板
 ### <a name="install-the-logic-app-template-powershell-module"></a>安装逻辑应用模板 PowerShell 模块
 安装此模块的最简单方法是通过 [PowerShell 库](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1)中的命令 `Install-Module -Name LogicAppTemplate` 进行安装。  
 
-你也可以手动安装 PowerShell 模块：
+也可以手动安装 PowerShell 模块：
 
 1. 下载最新版本的[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator/releases)。  
 2. 提取 PowerShell 模块文件夹中的文件夹（通常为 `%UserProfile%\Documents\WindowsPowerShell\Modules`）。
@@ -91,13 +89,13 @@ Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板
 
 部署后，逻辑应用使用有效参数进行端到端的运行。
 但是，仍需要对 OAuth 连接授权以生成有效的访问令牌。
-若要对 OAuth 连接授权，请在逻辑应用设计器中打开逻辑应用，然后对这些连接授权。 或者，如果想要自动部署，可以使用脚本来许可每个 OAuth 连接。
+要对 OAuth 连接授权，请在逻辑应用设计器中打开逻辑应用，并对这些连接授权。 或者，如果想要自动部署，可以使用脚本来许可每个 OAuth 连接。
 在 GitHub 的 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) 项目下有一个示例脚本。
 
 <a name="team-services"></a>
 ## <a name="visual-studio-team-services-release-management"></a>Visual Studio Team Services Release Management
 
-部署和管理环境的一个常用方案是将 Visual Studio Team Services Release Management 之类的工具用于逻辑应用部署模板。 Visual Studio Team Services 包括可以添加到任何内部版本或发布管道的[部署 Azure 资源组](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup)任务。 授权需要有[服务主体](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)才能部署，然后生成发布定义。
+部署和管理环境的一个常用方案是将 Visual Studio Team Services Release Management 之类的工具用于逻辑应用部署模板。 Visual Studio Team Services 包括可以添加到任何内部版本或发布管道的[部署 Azure 资源组](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup)任务。 授权需要有[服务主体](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)才能部署，并生成发布定义。
 
 1. 在 Release Management 中，选择“空”以便创建一个空定义。
 
@@ -110,4 +108,3 @@ Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板
 
 <!-- Image References -->
 [1]: ./media/logic-apps-create-deploy-template/emptyreleasedefinition.png
-

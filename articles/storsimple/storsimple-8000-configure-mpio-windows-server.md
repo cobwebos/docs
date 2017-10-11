@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/05/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9fe3fa3a2df63d111de742ecb48b1469aad543cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>为 StorSimple 设备配置多路径 I/O
 
@@ -53,7 +51,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    
    ![服务器管理器](./media/storsimple-configure-mpio-windows-server/IC740997.png)
 
-2. 依次单击“服务器管理器”>“仪表板”>“添加角色和功能”。 这将启动“添加角色和功能”向导。
+2. 依次单击“服务器管理器”>“仪表板”>“添加角色和功能”。 这会启动“添加角色和功能”向导。
    
    ![添加角色和功能向导 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
 3. 在“添加角色和功能”向导中，执行以下步骤：
@@ -64,7 +62,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
        ![添加角色和功能向导 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
    3. 在“选择目标服务器”页上，选择“从服务器池中选择服务器”。 主机服务器应该会被自动发现。 单击“下一步”。
    4. 在“选择服务器角色”页上，单击“下一步”。
-   5. 在“选择功能”页上，选择“多路径 I/O”，然后单击“下一步”。
+   5. 在“选择功能”页上，选择“多路径 I/O”，并单击“下一步”。
    
        ![添加角色和功能向导 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
    6. 在“确认安装选择”页上，确认选择，并选择“如果需要，自动重启目标服务器”，如下所示。 单击“安装” 。
@@ -76,13 +74,13 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 
 ## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>步骤 2：为 StorSimple 卷配置 MPIO
 
-必须将 MPIO 配置为识别 StorSimple 卷。 若要将 MPIO 配置为识别 StorSimple 卷，请执行以下步骤。
+必须将 MPIO 配置为识别 StorSimple 卷。 要将 MPIO 配置为识别 StorSimple 卷，请执行以下步骤。
 
 #### <a name="to-configure-mpio-for-storsimple-volumes"></a>为 StorSimple 卷配置 MPIO
 
 1. 打开“MPIO 配置”。 依次单击“服务器管理器”>“仪表板”>“工具”>“MPIO”。
 2. 在“MPIO 属性”对话框中，选择“发现多路径”选项卡。
-3. 选择“添加对 iSCSI 设备的支持”，然后单击“添加”。  
+3. 选择“添加对 iSCSI 设备的支持”，并单击“添加”。  
    ![MPIO 属性 - 发现多路径](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. 出现提示时，重新启动服务器。
 5. 在“MPIO 属性”对话框中，单击“MPIO 设备”选项卡。 单击 **“添加”**。
@@ -94,12 +92,12 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 
 ## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>步骤 3：在主机上装载 StorSimple 卷
 
-在 Windows Server 上配置 MPIO 后，可以装载在 StorSimple 设备上创建的卷，然后可以利用 MPIO 实现冗余。 若要装载卷，请执行以下步骤。
+在 Windows Server 上配置 MPIO 后，可以装载在 StorSimple 设备上创建的卷，并可以利用 MPIO 实现冗余。 若要装载卷，请执行以下步骤。
 
 #### <a name="to-mount-volumes-on-the-host"></a>在主机上装载卷
 
 1. 在 Windows Server 主机上打开“iSCSI 发起程序属性”窗口。 依次单击“服务器管理器”>“仪表板”>“工具”>“iSCSI 发起程序”。
-2. 在“iSCSI 发起程序属性”对话框中，单击“发现”选项卡，然后单击“发现目标门户”。
+2. 在“iSCSI 发起程序属性”对话框中，单击“发现”选项卡，并单击“发现目标门户”。
 3. 在“发现目标门户”对话框中，执行以下步骤：
    
    1. 输入 StorSimple 设备的 DATA 端口的 IP 地址（例如，输入 DATA 0）。
@@ -162,10 +160,10 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 
 ### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>配置 MPIO 以实现高可用性和负载均衡
 
-1. 执行目标发现：在“iSCSI 发起程序属性”对话框中，单击“发现”选项卡，然后单击“发现门户”。
+1. 执行目标发现：在“iSCSI 发起程序属性”对话框中，单击“发现”选项卡，并单击“发现门户”。
 2. 在“连接到目标”对话框中，输入一个设备网络接口的 IP 地址。
 3. 单击“确定”返回到“iSCSI 发起程序属性”对话框。
-4. 在“iSCSI 发起程序属性”对话框中，选择“目标”选项卡，突出显示发现的目标，然后单击“连接”。 此时将显示“连接到目标”对话框。
+4. 在“iSCSI 发起程序属性”对话框中，选择“目标”选项卡，突出显示发现的目标，并单击“连接”。 此时会显示“连接到目标”对话框。
 5. 在“连接到目标”对话框中执行以下操作：
    
    1. 保留“将此连接添加到收藏目标列表”的默认选定目标设置。 这样，每次重启此计算机时，设备就会自动尝试重启连接。
@@ -177,8 +175,8 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    2. 在“发起程序 IP”下拉列表中，选择主机的 IP 地址。
    3. 在“目标门户 IP”下拉列表中，选择在设备上启用的数据接口的 IP 地址。
    4. 单击“确定”返回到“iSCSI 发起程序属性”对话框。
-7. 单击“属性”，然后在“属性”对话框中单击“添加会话”。
-8. 在“连接到目标”对话框中，选中“启用多路径”复选框，然后单击“高级”。
+7. 单击“属性”，并在“属性”对话框中单击“添加会话”。
+8. 在“连接到目标”对话框中，选中“启用多路径”复选框，并单击“高级”。
 9. 在“高级设置”对话框中执行以下操作：
    
    1. 在“本地适配器”下拉列表中，选择“Microsoft iSCSI 发起程序”。
@@ -186,11 +184,10 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    3. 在“目标门户 IP”下拉列表中，选择在设备上启用的第二个数据接口的 IP 地址。
    4. 单击“确定”返回到“iSCSI 发起程序属性”对话框。 现已向目标添加第二个会话。
 10. 重复步骤 8-10，向目标添加其他会话（路径）。 主机上有两个接口，设备上也有两个接口，总共可以添加四个会话。
-11. 在添加所需的会话（路径）后，在“iSCSI 发起程序属性”对话框中，选择目标并单击“属性”。 在“属性”对话框的“会话”选项卡上，记下与可能的路径排列对应的四个会话标识符。 若要取消会话，请选中会话标识符旁边的复选框，然后单击“断开连接”。
+11. 在添加所需的会话（路径）后，在“iSCSI 发起程序属性”对话框中，选择目标并单击“属性”。 在“属性”对话框的“会话”选项卡上，记下与可能的路径排列对应的四个会话标识符。 要取消会话，请选中会话标识符旁边的复选框，并单击“断开连接”。
 12. 若要查看会话内存在的设备，请选择“设备”选项卡。 若要为所选设备配置 MPIO 策略，请单击“MPIO”。 “设备详细信息”对话框随即出现。 在“MPIO”选项卡上，可以选择适当的“负载均衡策略”设置。 还可以查看“活动”或“备用”路径类型。
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解如何[使用 StorSimple 设备管理器服务修改 StorSimple 设备配置](storsimple-8000-modify-device-config.md)。
-
 

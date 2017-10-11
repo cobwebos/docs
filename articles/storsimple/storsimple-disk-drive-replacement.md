@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8f6da61b02a1289be0fa3444fd4dcfbe487068f
-
-
+ms.openlocfilehash: 0659ab9d304dbfcce72e8c3c79edad68e70b9630
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-device"></a>更换 StorSimple 设备上的磁盘驱动器
 ## <a name="overview"></a>概述
@@ -114,10 +114,4 @@ StorSimple 设备支持类似 RAID 10 的存储空间配置。 这意味着它�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

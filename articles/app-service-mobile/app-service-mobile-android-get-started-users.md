@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: fcaab18c2c22bcbdbb42708da9840fb6e5c25b2e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/25/2017
-
+ms.openlocfilehash: 81331142aa6110d4e29e6fb30a90ce6e3a853439
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-authentication-to-your-android-app"></a>将身份验证添加到 Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -32,13 +31,13 @@ ms.lasthandoff: 03/25/2017
 
 ## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
-安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回你的应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，你可以使用所选择的任何 URL 方案。 对于你的移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
+安全身份验证要求为应用定义新的 URL 方案。 此方案允许在完成身份验证过程后，身份验证系统重定向到应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
 1. 在 [Azure 门户]中，选择应用服务。
 
 2. 单击“身份验证/授权”菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是你的移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，因为你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，因为需要在几个地方使用 URL 方案调整移动应用程序代码。
 
 4. 单击 **“确定”**。
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 03/25/2017
 ## <a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* 在 Android Studio 中，打开你按照[移动应用入门]教程完成的项目。 从“运行”菜单中单击“运行应用”；验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未经处理的异常。
+* 在 Android Studio 中，打开通过 [移动应用入门]教程完成的项目。 从“运行”菜单中单击“运行应用”；验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未经处理的异常。
 
      发生此异常的原因是应用尝试以未经身份验证的用户身份访问后端，但 TodoItem 表现在要求身份验证。
 
@@ -80,4 +79,3 @@ ms.lasthandoff: 03/25/2017
 
 <!-- URLs. -->
 [移动应用入门]: app-service-mobile-android-get-started.md
-

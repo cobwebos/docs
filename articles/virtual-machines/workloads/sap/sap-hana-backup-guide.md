@@ -13,14 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
 ## <a name="getting-started"></a>入门
@@ -236,4 +234,3 @@ Azure 备份服务可以处理加密的 VM/磁盘（请参阅[如何使用 Azure
 * [文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)介绍了基于文件的备份选项。
 * [基于存储快照的 SAP HANA 备份](sap-hana-backup-storage-snapshots.md)介绍了基于存储快照的备份选项。
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-

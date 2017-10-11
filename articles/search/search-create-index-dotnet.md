@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 2f2160f9b4383f9220c81a7233612a767e296109
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.openlocfilehash: fac41903c3e5731d17f832ff58145fe74dfa29f1
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>使用 .NET SDK 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -156,7 +155,7 @@ public partial class Hotel
 上述索引定义对 `description_fr` 字段使用了语言分析器，因为它用于存储法语文本。 请参阅[语言支持主题](https://docs.microsoft.com/rest/api/searchservice/Language-support)以及相应的[博客文章](https://azure.microsoft.com/blog/language-support-in-azure-search/)，了解有关语言分析器的详细信息。
 
 > [!NOTE]
-> 默认情况下，模型类中的每个属性名称被用作索引中的对应字段的名称。 若要将所有属性名映射到 camel 形式的字段名称，请使用 `SerializePropertyNamesAsCamelCase` 特性标记类。 若要映射到不同的名称，可以使用 `JsonProperty` 属性，如上面的 `DescriptionFr` 属性一样。 `JsonProperty` 特性优先于 `SerializePropertyNamesAsCamelCase` 特性。
+> 默认情况下，模型类中的每个属性名称被用作索引中的对应字段的名称。 要将所有属性名映射到 camel 形式的字段名称，请使用 `SerializePropertyNamesAsCamelCase` 特性标记类。 若要映射到不同的名称，可以使用 `JsonProperty` 属性，如上面的 `DescriptionFr` 属性一样。 `JsonProperty` 特性优先于 `SerializePropertyNamesAsCamelCase` 特性。
 > 
 > 
 
@@ -191,6 +190,5 @@ serviceClient.Indexes.Delete("hotels");
 > 
 
 ## <a name="next-steps"></a>后续步骤
-创建 Azure 搜索索引后，就可以 [将内容上传到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
-
+创建 Azure 搜索索引后，就可以 [将内容上传到索引中](search-what-is-data-import.md)，以便可以开始搜索数据。
 

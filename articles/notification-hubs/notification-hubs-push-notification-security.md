@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9128fa76cc0b0f4d879faaaf98d55b5b9180f46e
-
-
+ms.openlocfilehash: 7c3283799806135060bb8ca57ea398c93d1106bb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="security"></a>“安全”
 ## <a name="overview"></a>概述
@@ -31,7 +31,7 @@ ms.openlocfilehash: 9128fa76cc0b0f4d879faaaf98d55b5b9180f46e
 
 通过客户端应用执行注册管理时，如果通过通知发送的信息不敏感（例如，天气更新），则访问通知中心的常用方法是，向客户端应用提供规则仅限侦听访问权限的密钥值，并向应用后端提供规则完全访问权限的密钥值。
 
-建议你不要在 Windows 应用商店客户端应用中嵌入密钥值。 避免嵌入密钥值的一种方法是让客户端应用程序在启动时从应用程序后端检索密钥值。
+建议不要在 Windows 应用商店客户端应用中嵌入密钥值。 避免嵌入密钥值的一种方法是让客户端应用程序在启动时从应用程序后端检索密钥值。
 
 必须知道，具有侦听访问权限的密钥允许客户端应用程序注册任何标记。 如果应用必须将特定标记的注册限制到特定的客户端（例如，当标记表示用户 ID 时），则应用后端必须执行注册。 有关详细信息，请参阅“注册管理”。 请注意，采用这种方式时，客户端应用将无权直接访问通知中心。
 
@@ -45,10 +45,4 @@ ms.openlocfilehash: 9128fa76cc0b0f4d879faaaf98d55b5b9180f46e
 | 管理 |通知中心的 CRUD（包括更新 PNS 凭据和安全密钥），以及基于标记读取注册。 |创建/更新/读取/删除通知中心<br><br>按标记读取注册 |
 
 通知中心接受 Microsoft Azure 访问控制令牌所授予的声明，并接受签名令牌（使用在通知中心直接配置的共享密钥生成）所授予的声明。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

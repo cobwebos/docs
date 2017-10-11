@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
 ## <a name="overview"></a>概述
 
-StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 StorSimple 设备。 创建该服务后，可以使用它从浏览器中运行的 Microsoft Azure 门户管理设备。 这使得你可以从单个中央位置监视连接到 StorSimple Device Manager 服务的所有设备，因此最大限度地减少了管理负担。
+StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 StorSimple 设备。 创建该服务后，可以使用它从浏览器中运行的 Microsoft Azure 门户管理设备。 这使得可以从单个中央位置监视连接到 StorSimple Device Manager 服务的所有设备，因此最大限度地减少了管理负担。
 
 与 StorSimple Device Manager 服务相关的常见任务包括：
 
@@ -48,7 +47,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 单个服务可以管理多台设备。 但是，一台设备不能跨越多个服务。 大型企业可以具有多个服务实例，以便使用不同的订阅、组织，甚至是部署位置。
 
 > [!NOTE]
-> 需要隔离 StorSimple Device Manager 服务的实例，管理 StorSimple 8000 系列设备和 StorSimple 虚拟阵列。
+> 需要隔离 StorSimple 设备管理器服务的实例，管理 StorSimple 8000 系列设备和 StorSimple 虚拟阵列。
 
 
 执行以下步骤，创建服务。
@@ -60,7 +59,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 删除服务之前，请确保没有连接的设备正在使用它。 如果服务正在使用中，停用连接的设备。 停用操作将断开设备与服务之间的连接，但将设备数据保留在云中。
 
 > [!IMPORTANT]
-> 删除服务后，该操作不可逆。 使用该服务的任何设备都需要恢复出厂设置，然后才能与其他服务一起使用。 在这种情况下，设备上的本地数据以及配置都将丢失。
+> 删除服务后，该操作不可逆。 使用该服务的任何设备都需要恢复出厂设置，才能与其他服务一起使用。 在这种情况下，设备上的本地数据以及配置都将丢失。
  
 
 可以执行以下步骤来删除服务。
@@ -77,7 +76,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 3. 当系统提示确认时，请单击确认通知中的“是”。 
    
     ![确认服务删除](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
-4. 可能需要花费几分钟时间才能删除服务。 成功删除服务后，你会收到通知。
+4. 可能需要花费几分钟时间才能删除服务。 成功删除服务后，会收到通知。
    
     ![成功删除服务](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
 
@@ -86,7 +85,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
  ![已更新的服务列表](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>获取服务注册密钥
-成功创建服务后，你需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-security.md)。 可以通过访问服务的“密钥”边栏选项卡来获取注册密钥。
+成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-security.md)。 可以通过访问服务的“密钥”边栏选项卡来获取注册密钥。
 
 执行以下步骤，获取服务注册密钥。
 
@@ -94,12 +93,12 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”&gt;“密钥”。
    
    ![“密钥”边栏选项卡](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. 在“密钥”边栏选项卡中，将显示服务注册密钥。 使用“复制”图标复制该注册密钥。 
+2. 在“密钥”边栏选项卡中，会显示服务注册密钥。 使用“复制”图标复制该注册密钥。 
 
-将服务注册密钥保存在安全位置。 若要为其他设备注册此服务，你需要使用此密钥以及服务数据加密密钥。 获取服务注册密钥后，需要通过 StorSimple 接口的 Windows PowerShell 配置你的设备。
+将服务注册密钥保存在安全位置。 要为其他设备注册此服务，需要使用此密钥以及服务数据加密密钥。 获取服务注册密钥后，需要通过 StorSimple 接口的 Windows PowerShell 配置设备。
 
 ## <a name="regenerate-the-service-registration-key"></a>重新生成服务注册密钥
-如果系统要求你执行密钥轮换或者如果服务管理员列表发生更改，你需要重新生成服务注册密钥。 重新生成密钥时，新密钥仅用于注册后续设备。 已注册的设备不受此过程影响。
+如果系统要求执行密钥轮换或者如果服务管理员列表发生更改，需要重新生成服务注册密钥。 重新生成密钥时，新密钥仅用于注册后续设备。 已注册的设备不受此过程影响。
 
 执行以下步骤，重新生成服务注册密钥。
 
@@ -110,7 +109,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 2. 在“密钥”边栏选项卡中，单击“重新生成”。
    
    ![单击“重新生成”](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. 在“重新生成服务注册密钥”边栏选项卡中，查看重新生成密钥时所需的操作。 后续将注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”以确认。 完成注册后，你将收到通知。
+3. 在“重新生成服务注册密钥”边栏选项卡中，查看重新生成密钥时所需的操作。 后续将注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”以确认。 完成注册后，将收到通知。
    
    ![确认重新生成密钥](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. 将显示新的服务注册密钥。
@@ -121,6 +120,5 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[开始](storsimple-virtual-array-deploy1-portal-prep.md)使用 StorSimple 虚拟阵列。
-* 了解如何[管理你的 StorSimple 设备](storsimple-ova-web-ui-admin.md)。
-
+* 了解如何[管理 StorSimple 设备](storsimple-ova-web-ui-admin.md)。
 

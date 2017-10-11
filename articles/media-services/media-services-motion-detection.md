@@ -14,18 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: milanga;juliako;
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 4ccd5efb0d5651d90d70f382fd7d2ebed8bed4eb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.openlocfilehash: 115ad9dfd88062f23d5d17eed8897ce5d2ca8484
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
 ## <a name="overview"></a>概述
 借助 **Azure Media Motion Detector** 媒体处理器 (MP)，用户可在冗长且平淡的视频中有效识别出感兴趣的部分。 可以对静态相机数据片段使用动作检测，以识别视频中有动作的部分。 它会生成 JSON 文件，其中包含带时间戳的元数据，以及发生事件的边界区域。
 
-此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，你就可以在无需查看无止境的不相关事件的情况下，从相机输出生成安全警报，并从长时间的监控视频中提取感兴趣的片段。
+此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，便可以在无需查看无止境的不相关事件的情况下，从相机输出生成安全警报，并从长时间的监控视频中提取感兴趣的片段。
 
 **Azure Media Motion Detector** MP 目前以预览版提供。
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 08/01/2017
 在使用 **Azure Media Motion Detector**创建任务时，必须指定配置预设。 
 
 ### <a name="parameters"></a>parameters
-你可以使用以下参数：
+可以使用以下参数：
 
 | 名称 | 选项 | 说明 | 默认 |
 | --- | --- | --- | --- |
@@ -79,7 +78,7 @@ ms.lasthandoff: 08/01/2017
 
 
 ## <a name="motion-detector-output-files"></a>动作检测器输出文件
-动作检测作业将在输出资产中返回 JSON 文件，该文件描述视频中的动作警报和类别。 该文件将包含有关在视频中检测到的动作的时间和持续时间的信息。
+动作检测作业会在输出资产中返回 JSON 文件，该文件描述视频中的动作警报和类别。 该文件将包含有关在视频中检测到的动作的时间和持续时间的信息。
 
 一旦固定背景视频（例如监控视频）中出现运动对象，动作检测器 API 将提供指示器。 动作检测器经过训练可减少误报（例如光源和阴影变化）。 当前算法限制包括夜视视频、半透明对象和小对象。
 
@@ -372,5 +371,4 @@ ms.lasthandoff: 08/01/2017
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
 

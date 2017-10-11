@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: f218fe7e59e46683b544fd83bfea505b7cbe2d59
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -38,13 +37,13 @@ ms.lasthandoff: 03/22/2017
 组织可以使用提供商的基于云的安全功能和云智能来改善其威胁检测和响应时间。  通过将责任转移到云提供商，组织可以扩大安全覆盖范围，为其他优先业务重新调配安全资源与预算。
 
 ## <a name="division-of-responsibility"></a>责任划分
-必须了解你与 Microsoft 之间的责任划分。 在本地，你拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。 以下责任矩阵显示了在 SaaS、PaaS 和 IaaS 部署中，分别由你和 Microsoft 负责的堆栈区域。
+请务必了解你与 Microsoft 之间的职责的除法。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。 以下的责任矩阵显示堆栈的区域中，你将负责的 SaaS、 PaaS 和 IaaS 部署和 Microsoft 负责。
 
 ![责任区域][2]
 
-对于所有云部署类型，你拥有你的数据和标识。 你需要负责保护由你控制的数据和标识、本地资源及云组件的安全（保护的项目因服务类型而异）。
+对于所有云部署类型，拥有数据和标识。 需要负责保护由你控制的数据和标识、本地资源及云组件的安全（保护的项目因服务类型而异）。
 
-不管部署类型为何，你都必须负责的项目包括：
+不管部署类型为何，都必须负责的项目包括：
 
 - 数据
 - 终结点
@@ -86,9 +85,10 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 
 下面汇总了标识边界管理方法的一般最佳实践。
 
-- **不会丢失你的密钥或凭据**保护密钥和凭据对于保护 PaaS 部署至关重要。 丢失密钥和凭据是一个常见问题。 一个不错的解决方法是使用集中式解决方案，将密钥和机密存储在硬件安全模块 (HSM) 中。 Azure 在云中提供一个包含 [Azure Key Vault](../key-vault/key-vault-whatis.md) 的 HSM。
+- 
+              **不会丢失密钥或凭据**保护密钥和凭据对于保护 PaaS 部署至关重要。 丢失密钥和凭据是一个常见问题。 一个不错的解决方法是使用集中式解决方案，将密钥和机密存储在硬件安全模块 (HSM) 中。 Azure 在云中提供一个包含 [Azure Key Vault](../key-vault/key-vault-whatis.md) 的 HSM。
 - **不要将凭据和其他机密放入源代码或 GitHub**比丢失密钥和凭据更遭糕的唯一问题就是让未经授权的人员获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共源代码存储库。
-- **保护混合 PaaS 和 IaaS 服务中的 VM 管理接口**IaaS 和 PaaS 服务在虚拟机 (VM) 上运行。 根据服务的类型，你可以使用多个管理接口来直接远程管理这些 VM。 可以使用远程管理协议，例如[安全外壳协议 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)、[远程桌面协议 (RDP)](https://support.microsoft.com/kb/186607)和[远程 PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。 在可能的情况下，应使用替代方法，例如，使用虚拟专用网络接入 Azure 虚拟网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并在可能的情况下使用双重身份验证（例如 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)）。
+- **保护混合 PaaS 和 IaaS 服务中的 VM 管理接口**IaaS 和 PaaS 服务在虚拟机 (VM) 上运行。 根据服务的类型，可以使用多个管理接口来直接远程管理这些 VM。 可以使用远程管理协议，例如[安全外壳协议 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)、[远程桌面协议 (RDP)](https://support.microsoft.com/kb/186607)和[远程 PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。 在可能的情况下，应使用替代方法，例如，使用虚拟专用网络接入 Azure 虚拟网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并在可能的情况下使用双重身份验证（例如 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)）。
 - **使用强身份验证和授权平台**
 
   - 在 Azure AD 而不是自定义用户存储中使用联合标识。 使用联合标识时，可以利用基于平台的方法，将已获授权的标识的管理权限委托给合作伙伴。 如果员工离职后，需要通过多个标识和授权系统反映该信息，则联合标识方法就特别重要。
@@ -97,11 +97,11 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
   - 使用 OAuth2 和 Kerberos 等标准身份验证协议。 这些协议经过广泛的同行评审，有时可实现为平台库的一部分用于身份验证和授权。
 
 ## <a name="next-steps"></a>后续步骤
-本文重点介绍了 Azure PaaS 部署的安全优势。 接下来，请阅读有关保护 PaaS Web 和移动解决方案的建议做法。 首先，我们将介绍如何保护 Azure 应用服务、Azure SQL 数据库和 Azure SQL 数据仓库。 随着适用于其他 Azure 服务的建议做法文章的发布，我们会在以下列表中提供相应的链接：
+本文重点介绍了 Azure PaaS 部署的安全优势。 接下来，请阅读有关保护 PaaS Web 和移动解决方案的建议做法。 首先，我们介绍如何保护 Azure 应用服务、Azure SQL 数据库和 Azure SQL 数据仓库。 随着适用于其他 Azure 服务的建议做法文章的发布，我们会在以下列表中提供相应的链接：
 
-- [Web 应用](security-paas-applications-using-app-services.md)
+- [Azure 应用服务](security-paas-applications-using-app-services.md)
 - [Azure SQL 数据库和 Azure SQL 数据仓库](security-paas-applications-using-sql.md)
-- Azure 存储空间
+- Azure 存储
 - Azure REDIS 缓存
 - Azure 服务总线
 - Web 应用程序防火墙
@@ -111,4 +111,3 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 [2]: ./media/security-paas-deployments/responsibility-zones.png
 [3]: ./media/security-paas-deployments/advantages-of-paas.png
 [4]: ./media/security-paas-deployments/identity-perimeter.png
-

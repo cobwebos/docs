@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: af68d21184c137b2b0f1bb4c1afb9bf507e8332d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>在 Azure 门户中使用 Site Recovery 将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
 > [!div class="op_single_selector"]
@@ -113,6 +112,5 @@ ms.lasthandoff: 07/26/2017
 运行测试故障转移，确保一切按预期运行。
 
 转到[步骤 12：运行测试故障转移](vmm-to-azure-walkthrough-test-failover.md)
-
 
 

@@ -11,14 +11,12 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
 你可以在 Azure 资源或第三方资源中发生特定事件时，启动自动化[逻辑应用工作流](../logic-apps/logic-apps-what-are-logic-apps.md)。 这些资源可以将这些事件发布到 [Azure 事件网格](../event-grid/overview.md)。 然后，事件网格会将这些事件推送给具有队列、webhook 或[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)作为终结点的订阅者。 作为订阅者，逻辑应用可以在运行自动化工作流以执行任务之前等待这些来自事件网格的事件 - 而无需编写任何代码。
@@ -41,7 +39,7 @@ ms.lasthandoff: 08/19/2017
 > * 添加一个专门检查虚拟机更改的条件。
 > * 虚拟机更改时发送电子邮件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 来自 [Azure 逻辑应用所支持的任何电子邮件提供程序](../connectors/apis-list.md)用于发送通知的电子邮件帐户，如 Office 365 Outlook、Outlook.com 或 Gmail。 本教程使用 Office 365 Outlook。
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: ba6dafd8d890d88478a5e3213dd023921908f4bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure 新支持请求“文件上传”实用工具指导原则
 [创建支持请求](https://portal.azure.com/#create/Microsoft.Support)时，“文件上传”实用工具可帮助用户轻松上传诊断文件或任何用户认为与事件相关的其他文件。  
@@ -68,4 +67,3 @@ ms.lasthandoff: 06/28/2017
 | -            | -      | -            | -      | -         | .wtl       | .zit    |
 | -            | -      | -            | -      | -         |     -       | .zix    |
 | -            | -      | -            | -      | -         |  -          | .zzz    |
-

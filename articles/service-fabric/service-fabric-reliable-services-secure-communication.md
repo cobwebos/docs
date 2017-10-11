@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: 53119244f8f09c0c6c43f43761af1cc074f8d0af
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>在 Azure Service Fabric 中帮助保护服务的通信
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ ms.lasthandoff: 04/29/2017
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具供你用来提高安全性。 本文介绍如何在使用服务远程处理和 Windows Communication Foundation (WCF) 通信堆栈时提高安全性。
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在使用服务远程处理和 Windows Communication Foundation (WCF) 通信堆栈时提高安全性。
 
 ## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>使用服务远程处理时帮助保护服务
 我们将使用一个现有[示例](service-fabric-reliable-services-communication-remoting.md)来解释如何为 Reliable Services 设置远程处理。 若要在使用服务远程处理时帮助保护服务，请遵循以下步骤：
@@ -58,7 +57,7 @@ ms.lasthandoff: 04/29/2017
     ```
 2. 添加侦听器设置和安全凭据。
 
-    确保你要用来帮助保护服务通信的证书安装在群集中的所有节点上。 有两种方式可用于提供侦听器设置和安全凭据：
+    确保要用来帮助保护服务通信的证书安装在群集中的所有节点上。 有两种方式可用于提供侦听器设置和安全凭据：
 
    1. 在服务代码中直接提供：
 
@@ -189,7 +188,7 @@ ms.lasthandoff: 04/29/2017
 
     ```
 
-    如果客户端不是作为服务一部分运行，你可以在 client_name.exe 所在的同一位置中创建 client_name.settings.xml 文件。 然后在该文件中创建 TransportSettings 节。
+    如果客户端不是作为服务一部分运行，可以在 client_name.exe 所在的同一位置中创建 client_name.settings.xml 文件。 然后，在该文件中创建 TransportSettings 节。
 
     类似于服务，如果在客户端 settings.xml/client_name.settings.xml 中添加 `TransportSettings` 节，则 `FabricTransportRemotingSettings` 将默认加载此节中的所有设置。
 
@@ -312,4 +311,3 @@ ms.lasthandoff: 04/29/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
-

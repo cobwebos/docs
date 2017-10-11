@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9f061f3f5a0a4825854b893150ceccc8951487de
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-box-for-automatic-user-provisioning"></a>教程：配置 Box 以进行自动用户预配
 
@@ -26,7 +25,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用 Box 单一登录的订阅。

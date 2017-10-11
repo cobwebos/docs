@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 2b6eb113e5725260bc04f50e9218939bf28b1ff0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>教程：Azure Active Directory 与 Zscaler ZSCloud 的集成
 
@@ -88,9 +87,9 @@ ms.lasthandoff: 06/23/2017
 若要配置和测试 Zscaler ZSCloud 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[配置代理设置](#configuring-proxy-settings)** - 在 Internet Explorer 中配置代理设置
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Zscaler ZSCloud 测试用户](#creating-a-zscaler-zscloud-test-user)** - 在 Zscaler ZSCloud 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+2. [配置代理设置](#configuring-proxy-settings) - 以在 Internet Explorer 中配置代理设置
+2. **[创建一个 Azure AD 的测试用户](#creating-an-azure-ad-test-user)** -若要测试 Azure AD 单一登录与 Britta 人 Simon。
+3. **[创建 Zscaler ZSCloud 测试用户](#creating-a-zscaler-zscloud-test-user)** -若要链接到用户的 Azure AD 表示的 Zscaler ZSCloud 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 06/23/2017
     > [!NOTE] 
     > 必须使用实际登录 URL 更新此值。 若要获取此值，请与 [Zscaler ZSCloud 客户端支持团队](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint)联系。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
@@ -153,7 +152,7 @@ ms.lasthandoff: 06/23/2017
     
     a. 将“SAML 单一登录服务 URL”值粘贴到“发送给用户进行身份验证的 SAML 门户 URL”文本框中。
     
-    b. 在“包含登录名的属性”文本框中，键入“NameID”。
+    b. 在“属性包含登录名”文本框中，键入 **NameID** 。
     
     c. 若要上传已下载的证书，请单击“Zscaler pem”。
     
@@ -163,7 +162,7 @@ ms.lasthandoff: 06/23/2017
 
     ![管理](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800210.png "Administration")
     
-    a. 单击“保存”。
+    a. 单击“保存” 。
 
     b. 单击“立即激活”。
 
@@ -223,7 +222,7 @@ ms.lasthandoff: 06/23/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -254,7 +253,7 @@ ms.lasthandoff: 06/23/2017
         
     ![添加用户](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781038.png "添加用户")
    
-    a. 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，然后选择想要预配的有效 AAD 帐户的“组”和“部门”。
+    a. 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，并选择想要预配的有效 AAD 帐户的“组”和“部门”。
 
     b. 单击“保存”。
 
@@ -269,7 +268,7 @@ ms.lasthandoff: 06/23/2017
 
 **若要将 Britta Simon 分配到 Zscaler ZSCloud，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -317,5 +316,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_203.png
-
 

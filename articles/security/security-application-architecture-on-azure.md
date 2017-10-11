@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 91e46d690d3e7c298bc3b4020cc383ca99c43c4f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="application-architecture-on-azure"></a>Azure 上的应用程序体系结构
-若要在 Microsoft Azure 上帮助保护你的基于云的解决方案，坚实的体系结构基础是至关重要的。 架构师、设计师和实施者全部受益于应用程序和服务体系结构的扎实的知识。 此基础知识可帮助你了解你的基于云的解决方案的所有组件，并且更加轻松地将安全集成到你的设计和实现的各个方面。
+要在 Microsoft Azure 上帮助保护基于云的解决方案，坚实的体系结构基础是至关重要的。 架构师、设计师和实施者全部受益于应用程序和服务体系结构的扎实的知识。 此基础知识可帮助你了解基于云的解决方案的所有组件，并且更加轻松地将安全集成到设计和实现的各个方面。
 
-我们可在你的体系结构调查和设计方面提供下列帮助：
+我们可在体系结构调查和设计方面提供下列帮助：
 
 * 体系结构信息图
 * 体系结构蓝图
@@ -41,12 +40,12 @@ Microsoft 发布了几个与体系结构相关的海报/信息图。 这些权�
 Microsoft 发布了一套高级别的[体系结构蓝图](http://aka.ms/azblueprints)，介绍如何使用 Microsoft 产品构建特定类型的系统。
 每个蓝图均包含：
 
-* 一个基于 2D Visio 2003 的平面文件，可供你下载和修改
+* 平面 2D Visio 2003 基于文件，你可以下载和修改
 * 一个彩色三维透视 PDF 文件，向较少的技术访问群体介绍蓝图
 * 一个介绍 3D 版本的视频
 
 ## <a name="cloud-and-enterprise-symbol-set"></a>云和企业符号集
-[观看 Visio 和符号培训视频](http://aka.ms/CnESymbolsVideo)，然后[下载云和企业符号集](http://aka.ms/CnESymbols)以帮助创建介绍 Azure、Windows Server 和 SQL Server 等的技术资料。 如果此书培训用户如何使用 Microsoft 产品，则可以使用体系结构图、培训材料、演示文稿、数据表、信息图、白皮书甚至是第三方书籍中的符号。 但是，它们并不适合在用户界面中使用。
+[观看 Visio 和符号培训视频](http://aka.ms/CnESymbolsVideo)，并[下载云和企业符号集](http://aka.ms/CnESymbols)以帮助创建介绍 Azure、Windows Server 和 SQL Server 等的技术资料。 如果此书培训用户如何使用 Microsoft 产品，则可以使用体系结构图、培训材料、演示文稿、数据表、信息图、白皮书甚至是第三方书籍中的符号。 但是，它们并不适合在用户界面中使用。
 
 ## <a name="3d-blueprint-visio-template"></a>3D Blueprint Visio 模板
 3D 版本的 [Microsoft 体系结构蓝图](http://aka.ms/azblueprints)最初在非 Microsoft 工具中创建。 新的 Visio 2013（和更高版本）模板于 2015 年 8 月 5 日发布，作为 [Microsoft 体系结构认证课程的一部分在 EDX.ORG 上分发](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course)。
@@ -56,4 +55,3 @@ Microsoft 发布了一套高级别的[体系结构蓝图](http://aka.ms/azbluepr
 * 首先[观看视频培训](http://aka.ms/3dBlueprintTemplateVideo)了解其功能
 * 下载 [Microsoft 3d Blueprint Visio 模板](http://aka.ms/3DBlueprintTemplate)
 * 下载与 3D 模板配合使用的[云和企业符号](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets)
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 62f89087af9a82eddeec4dd745a26c3559bb0c04
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.openlocfilehash: 3c1b455e6298367dc50f0943b58f6cf1e7f1c5fd
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>使用 Java 从 Azure 事件中心接收事件
 
 
@@ -32,7 +30,7 @@ ms.lasthandoff: 08/16/2017
 
 本教程演示如何使用用 Java 编写的控制台应用程序从事件中心接收事件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -247,4 +245,3 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
 <!-- Images -->
 [11]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp2.png
 [12]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp3.png
-

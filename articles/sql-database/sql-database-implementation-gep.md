@@ -15,13 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 2d77e95a4e99679686839959bf6330f1e29f870b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
-
+ms.openlocfilehash: 64dec0bb789fe6e07975b1d403b6a37b5c2c2ed8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>Azure 实现 GEP 全球覆盖并提高效率
 ![GEP 徽标](./media/sql-database-implementation-gep/geplogo.png)
@@ -32,7 +30,7 @@ GEP 提供软件和服务，可让世界各地的采购领导充分影响其业�
 SMART by GEP 客户喜欢此平台的功能和易用性；客户可以随时随地通过任何设备（笔记本电脑、平板电脑或手机）管理他们的流程。 通过转移到 Microsoft Azure，GEP 已经能够应对其快速增长及扩展到新市场的可能性。 GEP 技术副总裁 Dhananjay Nagalkar 表示，“Microsoft Azure 不仅让我们能够快速灵活地缩放服务，还提供区域数据中心帮助我们符合全球客户的法规要求，因此在 GEP 的成功上扮演了关键角色。”
 
 ## <a name="the-limitations-of-a-do-it-yourself-datacenter"></a>自备数据中心的限制
-2013 年，GEP 领导人认识到他们需要通过某种方式来确保在发展客户群体时能够保持可缩放性与性能。 Nagalkar 解释，“若要以现有的数据中心满足该需求，我们必须大幅扩展基础结构和 IT 资源。 此投资与时间的耗费都相当庞大。” 本地的物理机和虚拟机需要大量的配置、管理、缩放、备份及修补，其花费对 GEP 而言成本过高。 另一方面，云解决方案则提供简单性和便利性，使 GEP 能够更专注于开发而不是管理越来越复杂的 IT 运营。 Nagalkar 知道 GEP 可以通过迁移到云来降低其基础结构的采购、配置和管理开销。
+2013 年，GEP 领导人认识到他们需要通过某种方式来确保在发展客户群体时能够保持伸缩性与性能。 Nagalkar 解释，“若要以现有的数据中心满足该需求，我们必须大幅扩展基础结构和 IT 资源。 此投资与时间的耗费都相当庞大。” 本地的物理机和虚拟机需要大量的配置、管理、缩放、备份及修补，其花费对 GEP 而言成本过高。 另一方面，云解决方案则提供简单性和便利性，使 GEP 能够更专注于开发而不是管理越来越复杂的 IT 运营。 Nagalkar 知道 GEP 可以通过迁移到云来降低其基础结构的采购、配置和管理开销。
 
 GEP 还需要通过某种方式克服它无法进入部分全球市场的法规障碍。 对于 GEP 的许多潜在欧洲客户而言，法规遵循要求他们必须将数据存储在当地的地理区域。 但对于 GEP 而言，构建多个数据中心的做法并不切实际。 “广泛的基础结构投资和 IT 人力成本严重影响利润”，Nagalkar 说。 “因此，我们实际上被迫放弃需要当地存储数据的潜在客户。”
 
@@ -48,7 +46,7 @@ Nagalkar 及其团队调查了多个云选项，但大多数都是基于基础�
 使用全球各地的 Azure 数据中心，GEP 可以轻松将触角扩展到欧洲和亚洲。 这些全球数据中心除了让 GEP 能够灵活缩放以外，还能符合客户的当地存储数据要求，在减少延迟的同时可以满足法规要求。
 
 ## <a name="smart-by-gep-architecture"></a>SMART by GEP 体系结构
-GEP 在 Azure 上从头开始构建了 SMART by GEP。 GEP 的关键设计动机是，与 GEP 在本地环境所能实现的效果相比，使用 Azure SQL 数据库可以体验到更好的可缩放性、更短的停机时间以及更低的维护成本。 但是，在转移到云之后，GEP 在云中发现了能以更佳方式响应客户要求的新开发机会（例如快速的原型设计和精简工程）。 在 Azure 中开发可让 GEP 的开发人员摆脱在本地环境中可能需要面对的软件授权问题。 SMART by GEP 的核心是 Azure SQL 数据库，不过 GEP 也使用了其他许多 Azure 服务来轻松快速地持续改进 SMART by GEP。
+GEP 在 Azure 上从头开始构建了 SMART by GEP。 GEP 的关键设计动机是，与 GEP 在本地环境所能实现的效果相比，使用 Azure SQL 数据库可以体验到更好的伸缩性、更短的停机时间以及更低的维护成本。 但是，在转移到云之后，GEP 在云中发现了能以更佳方式响应客户要求的新开发机会（例如快速的原型设计和精简工程）。 在 Azure 中开发可让 GEP 的开发人员摆脱在本地环境中可能需要面对的软件授权问题。 SMART by GEP 的核心是 Azure SQL 数据库，不过 GEP 也使用了其他许多 Azure 服务来轻松快速地持续改进 SMART by GEP。
 
 ![SMART by GEP 体系结构](./media/sql-database-implementation-gep/figure1.png)图 1。 SMART by GEP 体系结构
 
@@ -70,7 +68,7 @@ SMART by GEP 应用程序的核心是为企业采购管理解决方案提供技�
 每个 SMART by GEP 客户有两个 Azure SQL 数据库实例：一个用于联机事务处理 (OLTP)，一个用于分析（例如客户开支和报表分析）。 Azure SQL 数据库弹性池可让 GEP 轻松管理全球数千个数据库，处理无法预测的数据库资源需求。 弹性池为 GEP 提供一种方式，既能确保客户数据库可根据需要缩放，而不会出现过度预配或预配不足的情况，同时使 GEP 能够控制成本。 此外，由于这是一项 PaaS 服务，GEP 可在自动升级的过程中获取所有新的 Azure SQL 数据库功能。
 
 ## <a name="unstructured-and-semi-structured-data"></a>非结构化和半结构化数据
-但是，有些 SMART by GEP 客户数据需要不太严格的结构化存储。 针对此类数据，GEP 采用 Azure Blob 存储、Azure 表存储和 Azure Redis 缓存。 Azure Blob 存储容装 SMART by GEP 用户上载到应用程序中的所有附件。 它也是 SMART by GEP 存储静态内容（例如级联样式表 (CSS) 和 JavaScript 文件）的位置。
+但是，有些 SMART by GEP 客户数据需要不太严格的结构化存储。 针对此类数据，GEP 采用 Azure Blob 存储、Azure 表存储和 Azure Redis 缓存。 Azure Blob 存储容装 SMART by GEP 用户上传到应用程序中的所有附件。 它也是 SMART by GEP 存储静态内容（例如级联样式表 (CSS) 和 JavaScript 文件）的位置。
 
 GEP 将不面向客户的数据（例如 SMART by GEP 日志数据）存储在 Azure 表存储中，有效利用高性价比的无限制存储和加速检索速度，无需担心如何为数据设置架构。 GEP 使用 Azure Redis 缓存作为主要缓存。
 
@@ -84,7 +82,7 @@ GEP 采用了其他一些 Azure 服务，使 SMART by GEP 能够响应客户需�
 
 为了降低应用程序延迟，GEP 使用 Azure 内容交付网络 (CDN) 将存储在 Azure Blob 存储中的静态内容（例如 CSS 和 JavaScript 文件）放置在靠近用户的边缘服务器上。 GEP 使用 Azure 服务总线来支持应用程序体系结构模式，包括发布-订阅到部分命令查询响应分离 (CQRS) 及包含松散耦合与异步通信的分层体系结构。 GEP 使用 Azure 媒体服务改善其客户支持服务。 GEP 发现，可以轻松将用户支持视频发布到 Azure 媒体服务。 这些视频解答了常见用户问题，除了减轻 GEP 客户支持人员的部分支持负担以外，还有助于提升 SMART by GEP 用户的满意度。
 
-为了发送 SMART by GEP 每天生成的数千封事务邮件，公司使用 SendGrid .NET API 来与 Azure 集成。 对 GEP 开发人员而言，此过程十分简单 — Azure Marketplace 中就有适用于 Azure 的 SendGrid 加载项。 GEP 开发人员可以直接在 Microsoft Visual Studio 中使用 SendGrid NuGet 包来配置 SMART by GEP；GEP IT 可以直接从 Azure 监视软件的 SendGrid 电子邮件流量。
+为了发送 SMART by GEP 每天生成的数千封事务邮件，公司使用 SendGrid .NET API 来与 Azure 集成。 对 GEP 开发人员而言，此过程十分简单 — Azure 应用商店中就有适用于 Azure 的 SendGrid 加载项。 GEP 开发人员可以直接在 Microsoft Visual Studio 中使用 SendGrid NuGet 包来配置 SMART by GEP；GEP IT 可以直接从 Azure 监视软件的 SendGrid 电子邮件流量。
 
 最后，SMART by GEP 使用 Azure 虚拟机（Azure IaaS 服务）来托管工程设计时还没有成形的应用程序和服务，取代软件即服务 (SaaS) 或 PaaS 解决方案。 例如，GEP 将集成 API 服务托管在虚拟机中，以便与客户本地企业资源规划 (ERP) 系统（例如 SAP、Oracle、PeopleSoft、JD Edwards、Microsoft Dynamics GP 和 Lawson）以及客户 SaaS 解决方案进行企业到企业 (B2B) 集成，有效交换采购文档（例如发票）。
 
@@ -95,7 +93,7 @@ GEP 采用了其他一些 Azure 服务，使 SMART by GEP 能够响应客户需�
 > 
 
 ## <a name="expand-customer-satisfaction-without-expanding-it"></a>无需扩展 IT 资源即可提升客户满意度
-从本地数据中心迁移到 Azure，并且在 Azure 平台上从头开始构建 SMART by GEP 之后，GEP 无需扩展其基础结构或 IT 人员编制，就提高了可缩放性与灵活性。 事实上，该公司已有四年多未添置 IT 资源。 Azure 便利的 PaaS 模型让 GEP 降低了供应商支持和运营管理方面的开支。 因此，GEP 能够将资源集中在软件开发上；在云中开发使得 GEP 开发人员能够快速调研新的创意，无需花费时间与 IT 部门协调，或担心本地授权要求。 借助 Azure SQL 数据库，GEP 更有信心确保其客户始终享有卓越的服务与性能。
+从本地数据中心迁移到 Azure，并且在 Azure 平台上从头开始构建 SMART by GEP 之后，GEP 无需扩展其基础结构或 IT 人员编制，就提高了伸缩性与灵活性。 事实上，该公司已有四年多未添置 IT 资源。 Azure 便利的 PaaS 模型让 GEP 降低了供应商支持和运营管理方面的开支。 因此，GEP 能够将资源集中在软件开发上；在云中开发使得 GEP 开发人员能够快速调研新的创意，无需花费时间与 IT 部门协调，或担心本地授权要求。 借助 Azure SQL 数据库，GEP 更有信心确保其客户始终享有卓越的服务与性能。
 
 ## <a name="more-information"></a>详细信息
 * GEP 主页：[GEP](http://www.gep.com)
@@ -105,5 +103,4 @@ GEP 采用了其他一些 Azure 服务，使 SMART by GEP 能够响应客户需�
 * Huzaifa Matawala，GEP 助理架构主任
 * Sathyan Narasingh，GEP 工程经理
 * Deepa Velukutty，GEP 数据库架构师
-
 

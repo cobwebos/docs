@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 91eed294077ff72d0760018b10c98f32db88f3be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署与 SQL Server 和 Windows 操作系统一起运行的 SAP IDES 系统。 屏幕截图将逐步显示此过程。 若要部署另一种解决方案，请按照相同的步骤操作。
@@ -40,9 +39,9 @@ ms.lasthandoff: 06/23/2017
 ### <a name="create-an-account-in-the-sap-cal"></a>在 SAP CAL 中创建帐户
 1. 首次登录 SAP CAL，请使用 SAP S-User 或 SAP 中注册的其他用户。 然后定义 SAP CAL 用于在 Azure 上部署设备的 SAP CAL 帐户。 在帐户定义中，需要：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择 Azure 上的部署模型（Resource Manager 或经典）。
+    a. 选择 Azure 上的部署模型（Resource Manager 或经典）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
+    b. 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
     
     c. 授予 SAP CAL 权限，以便部署到 Azure 订阅中。
 
@@ -51,9 +50,9 @@ ms.lasthandoff: 06/23/2017
 
 2. 若要创建新的 SAP CAL 帐户，“帐户”页显示 Azure 的两个选项： 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 Microsoft Azure（经典）是经典部署模型，已不再是首选项。
+    a. Microsoft Azure（经典）是经典部署模型，已不再是首选项。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 Microsoft Azure 是新的 Resource Manager 部署模型。
+    b. Microsoft Azure 是新的 Resource Manager 部署模型。
 
     ![SAP CAL 帐户](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
@@ -98,9 +97,9 @@ ms.lasthandoff: 06/23/2017
 
 2. 在“基本模式：创建实例”页上，需要：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 输入实例“名称”。
+    a. 输入实例“名称”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择 Azure“区域”。 可能需要 SAP CAL 订阅才能获取提供的多个 Azure 区域。
+    b. 选择 Azure“区域”。 可能需要 SAP CAL 订阅才能获取提供的多个 Azure 区域。
 
     c.  输入解决方案的主“密码”，如下所示：
 
@@ -125,5 +124,4 @@ ms.lasthandoff: 06/23/2017
 几个小时内即可在 Azure 中部署一个完善的 SAP IDES 系统。
 
 如果购买了 SAP CAL 订阅，则 SAP 完全支持通过 Azure 上的 SAP CAL 进行部署。 支持队列是 BC-VCM-CAL。
-
 

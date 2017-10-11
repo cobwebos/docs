@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: aabe99dbd375b80e4a87ca7a067927008672b4ed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-10-enable-replication-for-hyper-v-vms-replicating-to-azure"></a>步骤 10：为复制到 Azure 的 Hyper-V VM 启用复制
 
 
@@ -38,7 +36,7 @@ ms.lasthandoff: 06/23/2017
 
 ## <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 
-默认情况下将复制计算机上的所有磁盘。 你可以从复制中排除磁盘。 例如，你可能不想要复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。 [了解详细信息](site-recovery-exclude-disk.md)
+默认情况下将复制计算机上的所有磁盘。 可以从复制中排除磁盘。 例如，你可能不希望复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。 [了解详细信息](site-recovery-exclude-disk.md)
 
 
 ## <a name="replicate-vms"></a>复制 VM
@@ -55,7 +53,7 @@ ms.lasthandoff: 06/23/2017
 
     - 若要将网络设置应用到所有启用复制功能的计算机，请选择“立即为选定的计算机配置”。
     - 选择“稍后配置”以选择每个计算机的 Azure 网络。
-    - 如果没有要使用的网络，可以[创建一个](#set-up-an-azure-network)。 选择适用的子网。 。
+    - 如果没有要使用的网络，可以[创建一个](#set-up-an-azure-network)。 选择适用的子网。 然后单击“确定”。
 
    ![启用复制](./media/hyper-v-site-walkthrough-enable-replication/enable-replication11.png)
 
@@ -70,7 +68,7 @@ ms.lasthandoff: 06/23/2017
 
     ![启用复制](./media/hyper-v-site-walkthrough-enable-replication/enable-replication6-with-exclude-disk.png)
 
-11. 在“复制设置” > “配置复制设置”中，选择要应用于受保护 VM 的复制策略。 。 可以在“复制策略”> 策略名称 >“编辑设置”中修改复制策略。 应用的更改将用于已在复制的计算机和新计算机。
+11. 在“复制设置” > “配置复制设置”中，选择要应用于受保护 VM 的复制策略。 。 可以在“复制策略”> 策略名称 >“编辑设置”中修改复制策略。 应用的更改用于已在复制的计算机和新计算机。
 
 
    ![启用复制](./media/hyper-v-site-walkthrough-enable-replication/enable-replication7.png)
@@ -82,4 +80,3 @@ ms.lasthandoff: 06/23/2017
 
 
 转到[步骤 11：运行测试故障转移](hyper-v-site-walkthrough-test-failover.md)
-

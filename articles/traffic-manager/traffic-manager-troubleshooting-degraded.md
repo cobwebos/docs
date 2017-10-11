@@ -1,6 +1,6 @@
 ---
-title: "Azure 流量管理器上的降级状态故障排除"
-description: "如何在流量管理器显示为降级状态时对流量管理器配置文件进行故障排除。"
+title: "降级状态 Azure Traffic Manager 故障排除"
+description: "如何解决 Traffic Manager 配置文件，如果它显示为降级状态。"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -13,58 +13,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
+# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>状态 Azure 流量管理器上的降级故障排除
 
-# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
+本文介绍如何进行故障排除显示降级的状态的 Azure 流量管理器配置文件。 对于此方案中，请考虑你已配置指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果运行状况的流量管理器显示**已降级**状态，则一个或多个终结点的状态可能**已降级**:
 
-本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”状态，则一个或多个终结点的状态可能为“已降级”：
+![降级的终结点状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-![已降级终结点状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+如果运行状况的流量管理器显示**非活动**状态，则这两个终结点可能**禁用**:
 
-如果流量管理器的运行状况显示“非活动”状态，则这两个终结点可能**已禁用**：
-
-![非活动流量管理器状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![非活动状态的流量管理器状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
 ## <a name="understanding-traffic-manager-probes"></a>了解流量管理器探测
 
-* 仅当探测从探测路径收到 HTTP 200 响应时，流量管理器才将终结点视为“联机”。 其他任何非 200 响应都被视为失败。
-* 即使重定向 URL 返回 200，30x 重定向也会失败。
-* 对于 HTTPS 探测器，证书错误将被忽略。
-* 只要返回 200，就无需在意探测器路径的实际内容。 常用的技巧是探测某些静态内容的 URL，例如“/favicon.ico”。 即使应用程序处于正常状态，ASP 页等动态内容也不一定会返回 200。
-* 最佳实践是将探测路径设置为提供足够逻辑来确定站点是启动还是关闭的值。 在上述示例中，如果将路径设置为“/favicon.ico”，则只会测试 w3wp.exe 是否有响应。 这种探测可能不会指示 Web 应用程序是否正常。 更好的做法是将路径设置为类似于“/Probe.aspx”的值，通过某个逻辑来确定站点的运行状况。 例如，可以使用性能计数器来查看 CPU 利用率，或者测量失败请求的数目。 或者，可以尝试访问数据库资源或会话状态，确保 Web 应用程序正常工作。
-* 如果配置文件中的所有终结点都已降级，流量管理器会将所有终结点视为处于正常状态，并将流量路由到所有终结点。 此行为可确保探测机制中的问题不会导致服务完全中断。
+* 流量管理器会将终结点视为处于联机状态，仅当探测器从探测器路径接收 HTTP 200 响应时。 任何其他非 200 响应是失败。
+* 30x 重定向失败，即使重定向的 URL 返回 200。
+* 对于 HTTPs 探测器，证书错误将被忽略。
+* 探测路径的实际内容并不重要，只要返回 200。 探测之类的某些静态内容的 URL"/ favicon.ico"是一种常用技术。 动态内容，如 ASP 页中，可能不始终会返回 200，即使应用程序处于正常状态。
+* 最佳做法是将探测器路径设置为拥有足够的逻辑来确定站点向上或向下的内容的。 在上一示例中，通过将路径设置为"/ favicon.ico"，您只是测试该 w3wp.exe 是否响应。 此探测不可能表示 web 应用程序处于正常状态。 更好的选择将设置成一个路径，如"/ Probe.aspx"已从逻辑上确定站点的运行状况。 例如，你无法使用为 CPU 使用率的性能计数器或度量值的失败请求数。 或者，你可以尝试访问数据库资源或会话状态，以确保的 web 应用程序正常工作。
+* 如果已降级的配置文件中的所有终结点，然后流量管理器会将所有正常运行的终结点和路由流量的所有终结点。 此行为确保探测机制的问题不会导致你的服务完全中断。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-若要排查探测失败，需要使用一个工具显示探测 URL 中返回的 HTTP 状态代码。 有许多工具可以显示原始 HTTP 响应。
+若要解决探测失败，你需要一种工具，显示的 HTTP 状态代码返回从探测 URL。 有许多工具可显示原始 HTTP 响应。
 
 * [Fiddler](http://www.telerik.com/fiddler)
 * [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-也可以在 Internet Explorer 中使用“F12 调试工具”的“网络”标签页查看 HTTP 响应。
+此外，可以在 Internet Explorer 中使用 F12 调试工具的网络选项卡以查看 HTTP 响应。
 
-在本示例中，我们想要查看探测 URL 返回的响应：http://watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
+此示例中我们想要查看来自我们探测 URL 的响应： http://watestsdp2008r2.cloudapp.net:80/探测。 下面的 PowerShell 示例演示了该问题。
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
 ```
 
-示例输出：
+输出示例：
 
     StatusCode StatusDescription
     ---------- -----------------
            301 Moved Permanently
 
-请注意我们收到了重定向响应。 如前所述，任何非 200 状态代码都被视为失败。 流量管理器将终结点状态更改为“脱机”。 若要解决该问题，请检查网站配置，确保可以从探测路径返回正确的状态代码。 将流量管理器探测重新配置为指向返回 200 的路径。
+请注意，我们收到的重定向响应。 如前面所述，任何 StatusCode 以外 200 被认为是失败。 流量管理器的终结点状态更改为脱机。 若要解决此问题，请检查网站配置以确保可以从探测路径返回正确 StatusCode。 重新配置为指向返回 200 的路径的流量管理器探测。
 
-如果探测使用 HTTPS 协议，可能需要禁用证书检查，避免测试期间出现 SSL/TLS 错误。 以下 PowerShell 语句禁用当前 PowerShell 会话的证书验证：
+如果你的探测器使用 HTTPS 协议，你可能需要禁用检查以避免在测试期间的 SSL/TLS 错误的证书。 以下 PowerShell 语句禁用证书验证当前 PowerShell 会话：
 
 ```powershell
 add-type @"
@@ -89,11 +87,10 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [云服务](http://go.microsoft.com/fwlink/?LinkId=314074)
 
-[Azure Web 应用](https://azure.microsoft.com/documentation/services/app-service/web/)
+[Azure Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[流量管理器上的操作（REST API 参考）](http://go.microsoft.com/fwlink/?LinkId=313584)
+[Traffic Manager 的操作 （REST API 参考）](http://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure 流量管理器 Cmdlet][1]
 
 [1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
-

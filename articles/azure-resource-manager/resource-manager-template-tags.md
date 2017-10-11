@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: adc10ade79af3087a8b24ea5b6709182cb1edb92
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tag-resources-in-azure-resource-manager-templates"></a>标记 Azure Resource Manager 模板中的资源
 [!INCLUDE [resource-manager-tag-introduction](../../includes/resource-manager-tag-introduction.md)]
@@ -31,5 +30,4 @@ ms.lasthandoff: 07/21/2017
 ## <a name="next-steps"></a>后续步骤
 * 有关管理标记的信息，请参阅[使用标记组织 Azure 资源](resource-group-using-tags.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
 

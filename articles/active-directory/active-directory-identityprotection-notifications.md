@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Identity Protection 通知 | Microsoft Docs"
-description: "了解通知如何支持你的调查活动。"
+description: "了解通知如何支持调查活动。"
 services: active-directory
 keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略"
 documentationcenter: 
@@ -16,15 +16,14 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ce3379d5b5e883c6601c40aca191e8b84e3ad8d3
-ms.openlocfilehash: 0170b5d2435f6e856478ee9e55ae26c626288f75
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/22/2016
-
+ms.openlocfilehash: 079d16bbf75cd2b3b94269d684e1ae1a0e6aa967
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
-Azure AD Identity Protection 会发送两种类型的自动生成的通知电子邮件，帮助你管理用户风险和风险事件：
+Azure AD Identity Protection 发送两种类型的自动的通知电子邮件来帮助你管理用户风险和风险事件：
 
 * 用户受威胁的警报电子邮件
 * 每周摘要电子邮件
@@ -42,25 +41,24 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
 * 指向 Identity Protection 中相关报告的链接
 
 <br>
-![修正](./media/active-directory-identityprotection-notifications/400.png "Remediation")
+![修正](./media/active-directory-identityprotection-notifications/400.png "修正")
 <br>
 
 可以关闭每周摘要电子邮件发送。
 <br><br>
-![用户风险](./media/active-directory-identityprotection-notifications/62.png "User risks")
+![用户风险](./media/active-directory-identityprotection-notifications/62.png "用户风险")
 <br>
 
 **若要打开相关的配置对话框**：
 
 1. 在“Azure AD Identity Protection”边栏选项卡中，单击“设置”。
    <br><br>
-   ![用户风险策略](./media/active-directory-identityprotection-notifications/401.png "User risk policy")
+   ![用户风险策略](./media/active-directory-identityprotection-notifications/401.png "用户风险策略")
    <br>
 2. 在“常规”部分中，单击“通知”。
    <br><br>
-   ![用户风险策略](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
+   ![用户风险策略](./media/active-directory-identityprotection-notifications/405.png "用户风险策略")
    <br>
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-

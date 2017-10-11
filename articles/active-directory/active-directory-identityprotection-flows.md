@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: e45936280b51fb2e54012a688fceddcc8dabe984
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 中的登录体验
 使用 Azure Active Directory Identity Protection 时，可以：
@@ -60,10 +59,10 @@ ms.lasthandoff: 12/29/2016
 1. 第一个步骤是通知用户必须为其帐户设置多重身份验证。 
    
     ![补救](./media/active-directory-identityprotection-flows/140.png "补救")
-2. 若要设置多重身份验证，需要告知系统如何与你取得联系。
+2. 要设置多重身份验证，需要告知系统如何与你取得联系。
    
     ![补救](./media/active-directory-identityprotection-flows/141.png "补救")
-3. 系统会向你提交质询，而你需要做出回复。
+3. 系统会向你提交质询，而需要做出回复。
    
     ![补救](./media/active-directory-identityprotection-flows/142.png "补救")
 
@@ -112,5 +111,4 @@ ms.lasthandoff: 12/29/2016
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
-
 

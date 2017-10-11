@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
 ms.openlocfilehash: a86864a779b0de1c6d5669cfbba0f3e1a27f1ff1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Hadoop 运行 Pig 作业
 
@@ -43,7 +42,7 @@ ms.lasthandoff: 07/31/2017
 
 * [jq](http://stedolan.github.io/jq/)
 
-## <a id="curl"></a>通过使用 Curl 运行 Pig 作业
+## <a id="curl"></a>使用 Curl 运行 Pig 作业
 
 > [!NOTE]
 > REST API 通过[基本访问身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终使用安全 HTTP (HTTPS) 发出请求，以确保安全地将凭据发送到服务器。
@@ -111,7 +110,7 @@ HDInsight 可以使用 Azure 存储或 Azure Data Lake Store 作为默认数据�
 
 ## <a id="summary"></a>摘要
 
-如本文档中所示，你可以使用原始 HTTP 请求来运行、监视和查看 HDInsight 群集上的 Pig 作业的结果。
+如本文档中所示，可以使用原始 HTTP 请求运行、监视和查看 HDInsight 群集上的 Pig 作业的结果。
 
 有关本文中使用的 REST 接口的详细信息，请参阅 [WebHCat 参考](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)。
 
@@ -125,4 +124,3 @@ HDInsight 可以使用 Azure 存储或 Azure Data Lake Store 作为默认数据�
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-

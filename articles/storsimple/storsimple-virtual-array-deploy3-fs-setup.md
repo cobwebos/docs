@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: bf507fb21b314a6811db1c1e45a4356381caada1
-ms.lasthandoff: 05/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -103,7 +103,7 @@ ms.lasthandoff: 05/03/2017
 11. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
     
     1. 输入在[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)（适用于 StorSimple 虚拟阵列）中获得的“服务注册密钥”。
-    2. 如果这是注册到此服务的第一个设备，则会向你提供“服务数据加密密钥”。 复制此密钥并将其保存到一个安全位置。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 
+    2. 如果这是你第一台设备注册此服务，你将看到与**服务数据加密密钥**。 复制此密钥并将其保存到一个安全位置。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 
        
        如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅本地 Web UI 上的[获取服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
     3. 单击“注册”。 此时会重新启动设备。 可能需要等待 2-3 分钟才能成功注册设备。 重新启动设备后，会转到登录页。
@@ -112,7 +112,7 @@ ms.lasthandoff: 05/03/2017
 12. 返回到 Azure 门户。 转到“所有资源”，搜索 StorSimple Device Manager 服务。
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
-13. 在筛选列表中，选择 StorSimple Device Manager 服务，然后导航到“管理”>“设备”。 在“设备”边栏选项卡中，验证设备是否已成功连接到服务，并且其状态是否为“已准备好设置”。
+13. 在筛选列表中，选择 StorSimple Device Manager 服务，并导航到“管理”>“设备”。 在“设备”边栏选项卡中，验证设备是否已成功连接到服务，并且其状态是否为“已准备好设置”。
     
     ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
@@ -120,19 +120,19 @@ ms.lasthandoff: 05/03/2017
 在 [Azure 门户](https://portal.azure.com/)中执行以下步骤，完成所需的设备设置。
 
 #### <a name="to-configure-the-device-as-file-server"></a>将设备配置为文件服务器
-1. 转到 StorSimple Device Manager 服务，然后转到“管理”>“设备”。 在“设备”边栏选项卡中，选择刚创建的设备。 此设备将显示为“已准备好设置”。
+1. 转到 StorSimple Device Manager 服务，并转到“管理”>“设备”。 在“设备”边栏选项卡中，选择刚创建的设备。 此设备会显示为“已准备好设置”。
    
    ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
-2. 单击设备，将显示横幅消息，指示该设备已准备好设置。
+2. 单击设备，会显示横幅消息，指示该设备已准备好设置。
    
     ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
-3. 在命令栏中，单击“配置”。 此时将打开“配置”边栏选项卡。 在“配置”边栏选项卡中，执行以下操作：
+3. 在命令栏中，单击“配置”。 此时会打开“配置”边栏选项卡。 在“配置”边栏选项卡中，执行以下操作：
    
     1. 将自动填充文件服务器名称。
     
-    2. 确保云存储加密已设置为“启用”。 这将对发送到云的所有数据都进行加密。 
+    2. 确保云存储加密已设置为“启用”。 这会对发送到云的所有数据都进行加密。 
     
-    3. 将使用 256 位 AES 密钥与用户定义密钥进行加密。 指定 32 个字符的密钥，然后再次输入该密钥以进行确认。 在密钥管理应用中记录密钥以供将来参考。
+    3. 将使用 256 位 AES 密钥与用户定义密钥进行加密。 指定 32 个字符的密钥，并再次输入该密钥以进行确认。 在密钥管理应用中记录密钥以供将来参考。
     
     4. 单击“配置所需设置”，指定要用于设备的存储帐户凭据。 如果未配置任何存储帐户凭据，请单击“新增”。 **请确保所用的存储帐户支持块 blob。页 blob 不受支持。** 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
    
@@ -155,7 +155,7 @@ ms.lasthandoff: 05/03/2017
    
    ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
-   你将看到正在创建文件服务器。 成功创建文件服务器后，你会收到通知。
+   会看到正在创建文件服务器。 成功创建文件服务器后，会收到通知。
    
    ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
@@ -169,7 +169,7 @@ ms.lasthandoff: 05/03/2017
 在 [Azure 门户](https://portal.azure.com/)中执行以下步骤，以创建共享。
 
 #### <a name="to-create-a-share"></a>创建共享
-1. 选择在上一步中配置的文件服务器设备，然后单击“...”（或右键单击）。 在上下文菜单中，选择“添加共享”。 或者，可以单击设备命令栏上的“+ 添加共享”。
+1. 选择在上一步中配置的文件服务器设备，并单击“...”（或右键单击）。 在上下文菜单中，选择“添加共享”。 或者，可以单击设备命令栏上的“+ 添加共享”。
    
    ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. 指定以下共享设置：
@@ -199,15 +199,14 @@ ms.lasthandoff: 05/03/2017
 现在需连接到上一步所创建的一个或多个共享。 已连接到 StorSimple 虚拟阵列的 Windows Server 主机上执行这些步骤。
 
 #### <a name="to-connect-to-the-share"></a>连接到共享
-1. 按 ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R。在“运行”窗口中，指定“&#92;&#92;&lt;文件服务器名称&gt;”作为路径，将“文件服务器名称”替换为分配给文件服务器的设备名称。 单击“确定”。
+1. 按![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png)+。在运行窗口中，指定*&#92; &#92;&lt;文件服务器名称&gt;*作为路径，替换*文件服务器名称*使用分配给你的文件服务器的设备名称。 单击“确定”。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
-2. 这将打开文件资源管理器。 此时应能看到作为文件夹创建的共享。 选择并双击要查看其内容的共享（文件夹）。
+2. 这会打开文件资源管理器。 此时应能看到作为文件夹创建的共享。 选择并双击要查看其内容的共享（文件夹）。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. 此时可向这些共享添加文件并进行备份。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何使用本地 Web UI [管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
-
 

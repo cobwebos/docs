@@ -15,21 +15,19 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
-ms.openlocfilehash: 2a886d1eaf1253b55d8c95786139a2bbdc6f145e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 950cb449b53f400f0f0f860caf5415bbb5212269
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>在工作流中添加或更新企业到企业协议中的合作伙伴
 
-合作伙伴是参与企业到企业 (B2B) 交易并相互交换消息的实体。 在创建代表你和这些交易中的其他组织的合作伙伴之前，你们双方必须先共享可识别并验证相互发送的消息的信息。 在讨论这些详细信息并准备好开始业务关系后，你们便可以在集成帐户中创建代表你们双方的合作伙伴。
+合作伙伴是参与企业到企业 (B2B) 交易并相互交换消息的实体。 在创建代表你和这些交易中的其他组织的合作伙伴之前，们双方必须先共享可识别并验证相互发送的消息的信息。 在讨论这些详细信息并准备好开始业务关系后，们便可以在集成帐户中创建代表你们双方的合作伙伴。
 
 ## <a name="what-roles-do-partners-have-in-your-integration-account"></a>合作伙伴在集成帐户中具有什么角色？
 
-要定义有关合作伙伴之间交换的消息的详细信息，需在这些合作伙伴之间创建协议。 但是，在创建协议前，必须先将至少两个合作伙伴添加到集成帐户。 你的组织必须作为**管理方**是协议的一部分。 其他合作伙伴或**托管方**表示与你的组织交换消息的组织。 托管方可以是其他公司，甚至是你自己的组织中的部门。
+要定义有关合作伙伴之间交换的消息的详细信息，需在这些合作伙伴之间创建协议。 但是，在创建协议前，必须先将至少两个合作伙伴添加到集成帐户。 组织必须作为**管理方**是协议的一部分。 其他合作伙伴或**托管方**表示与组织交换消息的组织。 托管方可以是其他公司，甚至是自己的组织中的部门。
 
 添加这些合作伙伴后，便可以创建协议。
 
@@ -41,7 +39,7 @@ ms.lasthandoff: 03/01/2017
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-1.png)
 
-2. 在筛选器搜索框中输入“集成”，然后在结果列表中选择“集成帐户”。
+2. 在筛选器搜索框中输入“集成”，并在结果列表中选择“集成帐户”。
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-2.png)
 
@@ -57,7 +55,7 @@ ms.lasthandoff: 03/01/2017
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-2.png)
 
-6. 为合作伙伴输入名称，然后选择“限定符”。 最后，输入**值**以帮助标识进入你的应用的文档。
+6. 为合作伙伴输入名称，并选择“限定符”。 最后，输入**值**以帮助标识进入应用的文档。
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-3.png)
 
@@ -92,5 +90,4 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关协议的详细信息](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
-
 

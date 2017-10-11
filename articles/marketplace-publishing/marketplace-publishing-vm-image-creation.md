@@ -1,6 +1,6 @@
 ---
-title: "为 Azure Marketplace 创建虚拟机映像 | Microsoft Docs"
-description: "详细说明了如何为 Azure Marketplace 创建虚拟机映像，以供其他人购买。"
+title: "为 Azure 应用商店创建虚拟机映像 | Microsoft Docs"
+description: "详细说明了如何为 Azure 应用商店创建虚拟机映像，以供其他人购买。"
 services: Azure Marketplace
 documentationcenter: 
 author: HannibalSII
@@ -14,18 +14,17 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 8f87f2c0caccded5b0f24052deee6cefaad08013
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 创建虚拟机映像指南
-本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure Marketplace。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
+# <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像指南
+本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure 应用商店。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
 
 ## <a name="1-define-offers-and-skus"></a>1.定义产品/服务和 SKU
-在本部分中，你将了解如何定义产品/服务及其关联的 SKU。
+在本部分中，会了解如何定义产品/服务及其关联的 SKU。
 
 产品/服务是其所有 SKU 的“父级”。 用户可以拥有多个产品/服务。 用户决定如何构造产品/服务。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。 请仔细考虑 SKU 标识符，因为它们会显示在 URL 中：
 
@@ -43,7 +42,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
 ### <a name="11-add-an-offer"></a>1.1 添加产品/服务
 1. 使用卖方帐户登录[发布门户][link-pubportal]。
-2. 在发布门户上选择“虚拟机”选项卡。 在提示的输入字段中，输入产品/服务名称。 产品/服务名称通常是计划在 Azure Marketplace 中销售的产品或服务的名称。
+2. 在发布门户上选择“虚拟机”选项卡。 在提示的输入字段中，输入产品/服务名称。 产品/服务名称通常是计划在 Azure 应用商店中销售的产品或服务的名称。
 3. 选择“创建” 。
 
 ### <a name="12-define-a-sku"></a>1.2 定义 SKU
@@ -52,17 +51,17 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 1. **添加 SKU。** SKU 需要在 URL 中使用的标识符。 该标识符在发布配置文件中必须独一无二，不过不会有标识符与其他发布者发生冲突的风险。
 
    > [!NOTE]
-   > 产品/服务和 SKU 标识符显示在 Marketplace 的产品/服务 URL 中。
+   > 产品/服务和 SKU 标识符显示在应用商店的产品/服务 URL 中。
    >
    >
 2. **为 SKU 添加摘要说明。** 摘要说明对客户可见，因此要使它们便于阅读。 在“推送到过渡环境”阶段之前，无需锁定此信息。 到时候可随意编辑。
 3. 如果使用基于 Windows 的 SKU，请遵循建议链接来获取已批准的 Windows Server 版本。
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2.创建与 Azure 兼容的 VHD（基于 Linux）
-本部分重点介绍有关为 Azure Marketplace 创建基于 Linux 的 VM 映像的最佳做法。 有关分步演练，请参阅以下文档：[创建和上载包含 Linux 操作系统的虚拟硬盘](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+本部分重点介绍有关为 Azure 应用商店创建基于 Linux 的 VM 映像的最佳做法。 有关分步演练，请参阅以下文档：[创建和上传包含 Linux 操作系统的虚拟硬盘](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3.创建与 Azure 兼容的 VHD（基于 Windows）
-本部分重点介绍用于为 Azure Marketplace 创建基于 Windows Server 的 SKU 的步骤。
+本部分重点介绍用于为 Azure 应用商店创建基于 Windows Server 的 SKU 的步骤。
 
 ### <a name="31-ensure-that-you-are-using-the-correct-base-vhds"></a>3.1 请确保使用正确的基本 VHD
 用于 VM 映像的操作系统 VHD 必须基于 Azure 批准的基本映像（包含 Windows Server 或 SQL Server）。
@@ -92,25 +91,25 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
     ![绘制][img-portal-vm-create]
 4. 选择要部署的 VM 大小：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
+    a.    如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
 
-    b.保留“数据库类型”设置，即设置为“共享”。    如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
+    b.    如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
 
     c.    有关定价信息，请参阅门户上显示的“建议定价层”选择器。 它将提供由发布者提供的三个建议大小。 （在此例中，发布者是 Microsoft。）
 
     ![绘制][img-portal-vm-size]
 5. 设置属性：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    为进行快速部署，可以为“可选配置”和“资源组”下的属性保留默认值。
+    a.    为进行快速部署，可以为“可选配置”和“资源组”下的属性保留默认值。
 
-    b.保留“数据库类型”设置，即设置为“共享”。    在“存储帐户”下，可以选择存储操作系统 VHD 的存储帐户。
+    b.    在“存储帐户”下，可以选择存储操作系统 VHD 的存储帐户。
 
     c.    在“资源组”下，可以选择放置 VM 的逻辑组。
 6. 选择部署的“位置”：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    如果计划在本地开发 VHD，位置则无关紧要，因为映像将稍后上传到 Azure。
+    a.    如果计划在本地开发 VHD，位置则无关紧要，因为映像将稍后上传到 Azure。
 
-    b.保留“数据库类型”设置，即设置为“共享”。    如果计划在 Azure 中开发映像，请考虑从开始便使用一个位于美国的 Microsoft Azure 区域。 这将加快 VHD 复制过程，Microsoft 会在你提交映像进行认证时代表你执行该过程。
+    b.    如果计划在 Azure 中开发映像，请考虑从开始便使用一个位于美国的 Microsoft Azure 区域。 这会加快 VHD 复制过程，Microsoft 会在提交映像进行认证时代表你执行该过程。
 
     ![绘制][img-portal-vm-location]
 7. 单击“创建” 。 开始部署 VM。 在几分钟内便会部署成功，可以开始为 SKU 创建映像。
@@ -126,7 +125,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 “使用 [Microsoft Azure 门户][link-azure-portal]通过 RDP 进行连接”
 
 1. 选择“浏览 VM” > 。
-2. 虚拟机边栏选项卡将打开。 请确保要连接的 VM 正在运行，然后从部署的 VM 列表中选择它。
+2. 虚拟机边栏选项卡将打开。 请确保要连接的 VM 正在运行，并从部署的 VM 列表中选择它。
 3. 一个介绍所选 VM 的边栏选项卡将打开。 在顶部单击“连接”。
 4. 将提示输入在预配时指定的用户名和密码。
 
@@ -168,7 +167,7 @@ VM 映像中的 Windows 操作系统 VHD 应创建为 128 GB 的固定格式的 
 * 不应有任何配置依赖于驱动器 C 或 D 之外的驱动器，因为这两个驱动器是仅有的始终保证存在的驱动器。 驱动器 C 是操作系统磁盘，而驱动器 D 是临时的本地磁盘。
 
 ### <a name="37-generalize-the-image"></a>3.7 一般化映像
-Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 换句话说，必须对操作系统 VHD 进行一般化：
+Azure 应用商店中的所有映像必须可采用一般形式重复使用。 换句话说，必须对操作系统 VHD 进行一般化：
 
 * 对于 Windows，映像应“执行 sysprep 操作”，不应进行任何不支持 **sysprep** 命令的配置。
 * 可从 %windir%\System32\Sysprep 目录中运行以下命令。
@@ -178,7 +177,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
   以下 MSDN 文章的步骤提供了有关如何对操作系统执行 sysprep 操作的指南：[创建 Windows Server VHD 并上传到 Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4.从 VHD 部署 VM
-将 VHD（一般化操作系统 VHD 以及零个或更多数据磁盘 VHD）上传到 Azure 存储器帐户之后，可将它们注册为用户 VM 映像。 然后可以测试该映像。 请注意，因为操作系统 VHD 已经一般化，所以无法通过提供 VHD URL 来直接部署 VM。
+将 VHD（一般化操作系统 VHD 以及零个或更多数据磁盘 VHD）上传到 Azure 存储器帐户之后，可将它们注册为用户 VM 映像。 随后可以测试该映像。 请注意，因为操作系统 VHD 已经一般化，所以无法通过提供 VHD URL 来直接部署 VM。
 
 若要了解关于 VM 映像的详细信息，请查看以下博客文章：
 
@@ -213,7 +212,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 1. 依次转到“新建” > “计算” > “虚拟机” > “从库”。
 
     ![绘制][img-manage-vm-new]
-2. 转到“我的映像”，然后选择要用于部署 VM 的 VM 映像：
+2. 转到“我的映像”，并选择要用于部署 VM 的 VM 映像：
 
    1. 请密切注意选择的映像，因为“我的映像”视图会同时列出操作系统映像和 VM 映像。
    2. 查看磁盘数可以帮助确定所部署的映像类型，因为大多数 VM 映像都具有多个磁盘。 但是，仍可能有 VM 映像仅包含单个操作系统磁盘，从而会将“磁盘数”设置为 1。
@@ -237,7 +236,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 >
 
 ## <a name="5-obtain-certification-for-your-vm-image"></a>5.获取 VM 映像的认证
-为 Azure Marketplace 准备 VM 映像的下一步是进行认证。
+为 Azure 应用商店准备 VM 映像的下一步是进行认证。
 
 此过程包括运行一个专门认证工具、将认证结果上传到 VHD 所处的 Azure 容器、添加产品/服务、定义 SKU 以及提交 VM 映像进行认证。
 
@@ -247,7 +246,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 认证工具可以与 Windows 和 Linux VM 一起使用。 它通过 PowerShell 连接到基于 Windows 的 VM，通过 SSH.Net 连接到 Linux VM：
 
 1. 首先，在 [Microsoft 下载站点][link-msft-download]下载认证工具。
-2. 打开认证工具，然后单击“启动新测试”按钮。
+2. 打开认证工具，并单击“启动新测试”按钮。
 3. 在“测试信息”屏幕中，为测试运行输入名称。
 4. 选择 VM 是处于 Linux 还是 Windows 上。 根据所选内容，选择后续选项。
 
@@ -274,9 +273,9 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
 ![Windows VM 映像的测试用例][img-cert-vm-test-win]
 
-如果任何测试失败，将不会认证映像。 如果发生这种情况，请查看要求并作出任何必要更改。
+如果任何测试失败，不会认证映像。 如果发生这种情况，请查看要求并作出任何必要更改。
 
-自动测试后，将通过调查表屏幕要求用户提供有关 VM 映像的其他输入。  填写这些问题，然后选择“下一步”。
+自动测试后，将通过调查表屏幕要求用户提供有关 VM 映像的其他输入。  填写这些问题，并选择“下一步”。
 
 ![认证工具调查表][img-cert-vm-questionnaire]
 
@@ -295,7 +294,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 * 访问的持续时间应至少是三 (3) 周，从创建共享访问签名 URI 时算起。
 * 为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
-可以通过多种方式生成 SAS URL，以便向 Azure Marketplace 共享你的 VHD。
+可以通过多种方式生成 SAS URL，以便向 Azure 应用商店共享 VHD。
 以下是 3 个建议的工具：
 
 1.  Azure 存储资源管理器
@@ -319,7 +318,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_03.png)
 
-5. 指定存储帐户名称、存储帐户密钥和存储终结点域。 这是 Azure 订阅中的存储帐户，你通过其将 VHD 保存在 Azure 门户中。
+5. 指定存储帐户名称、存储帐户密钥和存储终结点域。 这是 Azure 订阅中的存储帐户，通过其将 VHD 保存在 Azure 门户中。
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_04.png)
 
@@ -335,7 +334,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_07.png)
 
-9.  在“Blob 容器安全”对话框中，保留“访问级别”选项卡上的默认值，然后单击“共享访问签名”选项卡。
+9.  在“Blob 容器安全”对话框中，保留“访问级别”选项卡上的默认值，并单击“共享访问签名”选项卡。
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_08.png)
 
@@ -343,7 +342,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **允许访问开始日期**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+    a. **允许访问开始日期**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
     b. **允许访问结束日期**：选择“允许访问开始日期”后至少 3 周的日期。
 
@@ -357,7 +356,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
        - 请确保映像文件名称和“.vhd”均在 URI 中。
        - 在签名末尾，确保显示“=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-       - 在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
+       - 在签名中间，确保显示“sr=c”。 此示例演示你具有容器级别访问权限
 
 11. 若要确保生成的共享访问签名 URI 可运行，请单击“在浏览器中测试”。 这应开始下载过程。
 
@@ -377,7 +376,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
 3.  单击“添加帐户”。
 
-4.  登录到你的帐户，在订阅中配置 Microsoft Azure 存储资源管理器
+4.  登录到帐户，在订阅中配置 Microsoft Azure 存储资源管理器
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
@@ -391,9 +390,9 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+    a.  **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
-    b.保留“数据库类型”设置，即设置为“共享”。  **到期时间**：选择至少为“开始时间”后 3 周的日期。
+    b.  **到期时间**：选择至少为“开始时间”后 3 周的日期。
 
     c.  **权限**：选择“列出”和“读取”权限
 
@@ -415,7 +414,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
     - 在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-    - 在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
+    - 在签名中间，确保显示“sr=c”。 此示例演示你具有容器级别访问权限
 
 9.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 
@@ -439,13 +438,13 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     更新上述代码中的以下参数
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **`<StorageAccountName>`**：指定存储帐户名称
+    a. **`<StorageAccountName>`**： 为你的存储帐户名称
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **`<Storage Account Key>`**：指定存储帐户密钥
+    b. **`<Storage Account Key>`**： 为你的存储帐户密钥
 
-    c. **`<Permission Start Date>`**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016
+    c. **`<Permission Start Date>`**： 若要保护的 UTC 时间，选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016
 
-    d.单击“下一步”。 **`<Permission End Date>`**：选择至少为“开始日期”后 3 周的日期。 则值应为“11/02/2016”。
+    d.单击“下一步”。 **`<Permission End Date>`**： 选择的日期，则至少 3 周时间后**开始日期**。 则值应为“11/02/2016”。
 
     以下是更新适当参数后的代码示例
 
@@ -455,13 +454,13 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
 4.  在“以管理员身份运行”模式下打开 Powershell 编辑器并打开步骤 #3 中的文件。
 
-5.  运行脚本，脚本将为你提供容器级别访问权限所对应的 SAS URL
+5.  运行脚本，脚本将提供容器级别访问权限所对应的 SAS URL
 
     以下是 SAS 签名的输出，请将突出显示部分复制到记事本中
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
 
-6.  现在，你将获得容器级别 SAS URL，并需要在其中添加 VHD 名称。
+6.  现在，会获得容器级别 SAS URL，并需要在其中添加 VHD 名称。
 
     容器级别 SAS URL #
 
@@ -477,7 +476,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
     -   在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-    -   在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
+    -   在签名中间，确保显示“sr=c”。 此示例演示你具有容器级别访问权限
 
 8.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 
@@ -489,13 +488,13 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 ### <a name="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 在发布门户中提供有关 VM 映像的信息并请求认证
 创建了产品/服务和 SKU 之后，应输入与该 SKU 关联的映像详细信息：
 
-1. 转到[发布门户][link-pubportal]，然后使用卖方帐户登录。
+1. 转到[发布门户][link-pubportal]，并使用卖方帐户登录。
 2. 选择“VM 映像”选项卡。
 3. 页面顶部列出的标识符实际上是产品/服务标识符，而不是 SKU 标识符。
 4. 在“SKU”部分下填写属性。
 5. 在“操作系统系列”下，选择与操作系统 VHD 关联的操作系统类型。
 6. 在“操作系统”框下，描述操作系统。 请考虑诸如操作系统系列、类型、版本和更新这样的格式。 一个示例是“Windows Server Datacenter 2014 R2”。
-7. 选择最多六个建议的虚拟机大小。 在客户决定购买和部署你的映像时，这些是在 Azure 门户的“定价层”边栏选项卡中向他们显示的建议。 **这些仅仅是建议。客户能够选择可容纳在映像中指定的磁盘的任何 VM 大小。**
+7. 选择最多六个建议的虚拟机大小。 在客户决定购买和部署映像时，这些是在 Azure 门户的“定价层”边栏选项卡中向他们显示的建议。 **这些仅仅是建议。客户能够选择可容纳在映像中指定的磁盘的任何 VM 大小。**
 8. 输入版本。 版本字段封装标识产品及其更新的语义版本：
    * 版本格式应为 X.Y.Z，X、Y 和 Z 是整数。
    * 不同 SKU 中的映像拥有不同的主版本和次版本。
@@ -519,10 +518,10 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
 
 ## <a name="next-step"></a>后续步骤
-填写完 SKU 详细信息后，可前进到 [Azure Marketplace 市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，然后执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure Marketplace，使公众都可以看到和购买。  
+填写完 SKU 详细信息后，可前进到 [Azure 应用商店市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，然后执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure 应用商店，使公众都可以看到和购买。  
 
 ## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure Marketplace](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
 [img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png
@@ -568,4 +567,3 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 [link-openssl]:https://www.openssl.org/
 [link-intsvc]:http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]:https://www.python.org/
-

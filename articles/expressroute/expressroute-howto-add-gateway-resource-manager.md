@@ -1,6 +1,6 @@
 ---
 title: "将虚拟网络网关添加到 ExpressRoute 的 VNet：PowerShell：Azure | Microsoft Docs"
-description: "本文指导你将 VNet 网关添加到已为 ExpressRoute 创建的 Resource Manager VNet 中。"
+description: "本文指导将 VNet 网关添加到已为 ExpressRoute 创建的 Resource Manager VNet 中。"
 documentationcenter: na
 services: expressroute
 author: charwen
@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: charwen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0fb6b5efc8ad4d40e1b0f41aad678eca6da9798d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 3aeddd03e0be548933775164ae790ba208fc13ae
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -35,11 +34,10 @@ ms.lasthandoff: 04/27/2017
 
 
 ## <a name="before-beginning"></a>开始之前
-确认已安装最新的 Azure PowerShell cmdlet。 如果尚未安装最新的 cmdlet，必须先安装，然后才能开始执行配置步骤。 有关详细信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
+确认已安装最新的 Azure PowerShell cmdlet。 如果尚未安装最新的 cmdlet，必须先安装，才能开始执行配置步骤。 有关详细信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 [!INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 创建 VNet 网关之后，可以将 VNet 链接到 ExpressRoute 线路。 请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)。
-
 

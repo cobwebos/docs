@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: ronmat; ronitr
-ms.translationtype: HT
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: bd3de9ed0131edc683763b0fe7f4a2ae74533944
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sql-database-threat-detection"></a>SQL 数据库威胁检测
 
@@ -52,7 +51,7 @@ SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
 ## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>检测到可疑事件时探查异常数据库活动
-1. 检测到异常数据库活动时，将收到电子邮件通知。 <br/>
+1. 检测到异常数据库活动时，你将收到电子邮件通知。 <br/>
    电子邮件将提供可疑安全事件的相关信息，包括异常活动的性质、数据库名称、服务器名称、应用程序名称和事件时间。 此外，电子邮件还会提供可能原因和建议操作的相关信息，帮助调查和缓解数据库的潜在威胁。<br/>
      
     ![导航窗格][4]
@@ -94,6 +93,5 @@ SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azur
 [6]: ./media/sql-database-threat-detection/6_td_security_tile_view_alerts.png
 [7]: ./media/sql-database-threat-detection/7_td_SQL_security_alerts_list.png
 [8]: ./media/sql-database-threat-detection/8_td_SQL_security_alert_details.png
-
 
 

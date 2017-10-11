@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 81d5ae3775cca7cea5abf1922a25be0663a8a949
-ms.contentlocale: zh-cn
-
+ms.openlocfilehash: 2ac1117a31a101705539a1f75520ce8de43809a2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库 (MSAL) 获取用于 Microsoft Graph API 的令牌
 
@@ -140,7 +140,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
 `acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `acquireToken` 后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用 - 因为调用请求或续订令牌都以静默方式进行。
 
-`acquireTokenSilent` 最终将失败（例如，用户已注销，或已在另一台设备上更改了密码）。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MSALErrorCode.interactionRequired` 异常。 应用程序可以通过两种方式处理此异常：
+`acquireTokenSilent` 最终会失败（例如，用户已注销，或已在另一台设备上更改了密码）。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MSALErrorCode.interactionRequired` 异常。 应用程序可以通过两种方式处理此异常：
 
 1.  立即调用 `acquireToken`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例应用程序使用此模式：可在第一次执行应用程序时看到其正在运行。 由于没有用户使用过该应用程序，`applicationContext.users().first` 将包含一个 null 值，并且引发 ` MSALErrorCode.interactionRequired ` 异常。 此示例中的代码随后处理此异常，方法是通过调用 `acquireToken` 使其显示用户登录提示。
 
@@ -238,5 +238,4 @@ func application(_ application: UIApplication, open url: URL, sourceApplication:
     return true
 }
 ```
-
 

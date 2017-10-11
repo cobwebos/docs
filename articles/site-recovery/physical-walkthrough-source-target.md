@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: e89bbf5a2c1d71852e49da43d3106a05ebfc28a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="step-7-set-up-the-source-and-target-for-physical-server-replication-to-azure"></a>第 7 步：设置源和目标以便将物理服务器复制到 Azure
 
@@ -43,7 +42,7 @@ ms.lasthandoff: 06/29/2017
 
 ## <a name="register-the-configuration-server-in-the-vault"></a>在保管库中注册配置服务器
 
-在开始之前，执行以下操作，然后运行统一安装程序来安装配置服务器、进程服务器和主目标服务器。 视频介绍了如何设置组件，以便将 VMware VM 复制到 Azure。 不过，此过程对将物理服务器复制到 Azure 同样有效。
+在开始之前，执行以下操作，并运行统一安装程序来安装配置服务器、进程服务器和主目标服务器。 视频介绍了如何设置组件，以便将 VMware VM 复制到 Azure。 不过，此过程对将物理服务器复制到 Azure 同样有效。
 
 - 在配置服务器 VM 上，确保将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
 - 在配置服务器计算机上以本地管理员身份运行安装程序。
@@ -63,8 +62,8 @@ ms.lasthandoff: 06/29/2017
 设置目标环境前，请确保已创建 Azure 存储帐户和虚拟网络。
 
 1. 单击“准备基础结构” > “目标”，然后选择要使用的 Azure 订阅。
-2. 指定你的目标部署模型是基于 Resource Manager 的还是经典的。
-3. Site Recovery 将检查是否有一个或多个兼容的 Azure 存储帐户和网络。
+2. 指定目标部署模型是基于 Resource Manager 还是基于经典部署。
+3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
    ![目标](./media/physical-walkthrough-source-target/gs-target.png)
 
@@ -73,4 +72,3 @@ ms.lasthandoff: 06/29/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[第 8 步：创建复制策略](physical-walkthrough-replication.md)
-

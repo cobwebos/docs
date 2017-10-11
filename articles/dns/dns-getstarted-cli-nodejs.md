@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: f7943b71bbd16c36df09436973d92539eb62b210
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="get-started-with-azure-dns-using-azure-cli-10"></a>通过 Azure CLI 1.0 开始使用 Azure DNS
 
 > [!div class="op_single_selector"]
@@ -31,11 +29,11 @@ ms.lasthandoff: 04/21/2017
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
-本文将指导你完成使用跨平台的 Azure CLI 1.0（适用于 Windows、Mac 和 Linux）创建你的第一个 DNS 区域和记录的步骤。 也可以使用 Azure 门户或 Azure PowerShell 执行这些步骤。
+本文指导完成使用跨平台的 Azure CLI 1.0（适用于 Windows、Mac 和 Linux）创建第一个 DNS 区域和记录的步骤。 也可以使用 Azure 门户或 Azure PowerShell 执行这些步骤。
 
-DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后将在此 DNS 区域内为每个 DNS 记录创建域。 最后，若要将 DNS 区域发布到 Internet，需要为域配置名称服务器。 以下描述了上述每一个步骤。
+DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 最后，要将 DNS 区域发布到 Internet，需要为域配置名称服务器。 以下描述了上述每一个步骤。
 
-这些说明假设你已安装并登录到 Azure CLI 1.0。 若需帮助，请参阅[如何使用 Azure CLI 1.0 管理 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
+这些说明假定已安装并登录到 Azure CLI 1.0。 若需帮助，请参阅[如何使用 Azure CLI 1.0 管理 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
 
 ## <a name="create-the-resource-group"></a>创建资源组
 
@@ -49,7 +47,7 @@ azure group create --name MyResourceGroup --location "West US"
 
 使用 `azure network dns zone create` 命令创建 DNS 区域。 若要查看此命令的帮助，请键入 `azure network dns zone create -h`。
 
-以下示例在名为 *MyResourceGroup* 的资源组中创建名为 *contoso.com* 的 DNS 区域。 使用该示例创建 DNS 区域，将相应的值替换为你自己的值。
+以下示例在名为 *MyResourceGroup* 的资源组中创建名为 *contoso.com* 的 DNS 区域。 使用该示例创建 DNS 区域，将相应的值替换成自己的值。
 
 ```azurecli
 azure network dns zone create MyResourceGroup contoso.com
@@ -80,7 +78,7 @@ azure network dns record-set list MyResourceGroup contoso.com
 
 ## <a name="update-name-servers"></a>更新名称服务器
 
-正确设置 DNS 区域和记录后，需要将域名配置为使用 Azure DNS 名称服务器。 这样，Internet 上的其他用户便可以找到你的 DNS 记录。
+正确设置 DNS 区域和记录后，需要将域名配置为使用 Azure DNS 名称服务器。 这样，Internet 上的其他用户便可以找到 DNS 记录。
 
 区域的名称服务器是通过 `azure network dns zone show` 命令指定的。
 
@@ -121,5 +119,4 @@ azure group delete --name MyResourceGroup
 若要了解有关管理 Azure DNS 中的 DNS 区域的详细信息，请参阅[使用 Azure CLI 1.0 管理 Azure DNS 中的 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
 
 若要了解有关管理 Azure DNS 中的 DNS 记录的详细信息，请参阅[使用 Azure CLI 1.0 管理 Azure DNS 中的 DNS 记录和记录集](dns-operations-recordsets-cli-nodejs.md)。
-
 

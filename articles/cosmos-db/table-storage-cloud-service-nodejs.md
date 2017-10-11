@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="nodejs-web-application-using-storage"></a>使用存储构建 Node.js Web 应用程序
 ## <a name="overview"></a>概述
@@ -79,7 +78,7 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
 6. 保存该文件并关闭记事本。
 
 ### <a name="install-additional-modules"></a>安装其他模块
-1. 使用以下命令在本地安装 azure、[node-uuid]、[nconf] 和 [async] 模块，并将它们的一个条目保存到 **package.json** 文件：
+1. 使用以下命令在本地安装 [azure]、[node-uuid]、[nconf] 和 [async] 模块，并将它们的一个条目保存到 package.json 文件：
 
   ```powershell
   PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
@@ -194,7 +193,7 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
 6. 保存并关闭 **task.js** 文件。
 
 ### <a name="create-the-controller"></a>创建控制器
-1. 在 **WebRole1/routes** 目录中，创建一个名为 **tasklist.js** 的新文件并在文本编辑器中将其打开。
+1. 在 WebRole1/routes 目录中，创建一个名为 **tasklist.js** 的新文件，并在文本编辑器中将其打开。
 2. 将以下代码添加到 **tasklist.js**。 此代码加载 **tasklist.js** 使用的 azure 和 async 模块，并定义 **TaskList** 函数，会向该函数传递我们之前定义的 **Task** 对象的一个实例：
 
     ```nodejs
@@ -415,6 +414,5 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。
 [使用 Express 生成 Node.js Web 应用程序]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
 [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Node.js Web 应用程序]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
-
 
 

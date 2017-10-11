@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 09/21/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 763ae02d1196a924bbf89e423871af2ec22e9e6c
-ms.openlocfilehash: 84f582e8d767466ce9dec83203ec78047648caea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/21/2016
-
-
+ms.openlocfilehash: f6bc8671410dc7015a8d2a4bea1ba11f9ae526c3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>还原 Azure SQL 数据仓库（门户）
 > [!div class="op_single_selector"]
@@ -31,7 +29,7 @@ ms.lasthandoff: 12/21/2016
 > * [REST][REST]
 >
 >
-在本文中，用户将学习如何使用 Azure 门户还原 Azure SQL 数据仓库。
+本文介绍如何使用 Azure 门户还原 Azure SQL 数据仓库。
 
 ## <a name="before-you-begin"></a>开始之前
 **验证 DTU 容量。** 每个 SQL 数据仓库实例都由一个具有默认数据吞吐量单位 (DTU) 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。 在还原 SQL 数据仓库之前，请验证 SQL Server 剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][Request a DTU quota change]。
@@ -40,13 +38,13 @@ ms.lasthandoff: 12/21/2016
 还原数据库：
 
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在左侧面板中选择“浏览”，然后选择“SQL Server”。
+2. 在左侧面板中选择“浏览”，并选择“SQL Server”。
 
     ![依次选择“浏览”>“SQL Server”](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
-3. 查找服务器，然后选择它。
+3. 查找服务器，并选择它。
 
     ![选择服务器](./media/sql-data-warehouse-restore-database-portal/01-select-server.png)
-4. 查找要从中还原的 SQL 数据仓库实例，然后选择它。
+4. 查找要从中还原的 SQL 数据仓库实例，并选择它。
 
     ![选择要还原的 SQL 数据仓库实例](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
 5. 在数据仓库边栏选项卡顶部，选择“还原”。
@@ -70,10 +68,10 @@ ms.lasthandoff: 12/21/2016
 还原已删除的数据库：
 
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在左侧面板中选择“浏览”，然后选择“SQL Server”。
+2. 在左侧面板中选择“浏览”，并选择“SQL Server”。
 
     ![依次选择“浏览”>“SQL Server”](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
-3. 查找服务器，然后选择它。
+3. 查找服务器，并选择它。
 
     ![选择服务器](./media/sql-data-warehouse-restore-database-portal/02-select-server.png)
 4. 向下滚动到服务器边栏选项卡上的“操作”部分。
@@ -114,4 +112,3 @@ ms.lasthandoff: 12/21/2016
 
 <!--Other Web references-->
 [Azure portal]: https://portal.azure.com/
-

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: 9b56ce6cc5bdd3b8d48d047751e978cad08598e1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-domain-joined-hdinsight-clusters-preview"></a>管理已加入域的 HDInsight 群集（预览版）
 了解已加入域的 HDInsight 中的用户和角色以及如何管理已加入域的 HDInsight 群集。
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/13/2017
 * **Ranger 管理员**：此帐户是本地的 Apache Ranger 管理员帐户。 它不是 Active Directory 域用户。 此帐户可用于设置策略和让其他用户成为管理员或委托管理员（这些用户则可管理策略）。 默认情况下，用户名为 admin，密码与 Ambari 管理员密码相同。 可从 Ranger 中的“设置”页更新密码。
 * **群集管理员域用户**：此帐户是指定为 Hadoop 群集管理员的 Active Directory 域用户（包括 Ambari 和 Ranger）。 群集创建过程中必须提供用户的凭据。 此用户具有以下权限：
 
-  * 将计算机加入到域，并将其放在在群集创建期间指定的 OU 中。
+  * 将计算机加入到域，并将其放在群集创建期间指定的 OU 中。
   * 在群集创建期间指定的 OU 内创建服务主体。
   * 创建反向 DNS 条目。
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 06/13/2017
 2. 在边栏选项卡中打开 HDInsight 群集。 请参阅[列出和显示群集](hdinsight-administer-use-management-portal.md#list-and-show-clusters)。
 3. 在顶部菜单中单击“仪表板”以打开 Ambari。
 4. 使用群集管理员域用户名和密码登录到 Ambari。
-5. 在右上角单击“管理员”下拉菜单，然后单击“管理 Ambari”。
+5. 在右上角单击“管理员”下拉菜单，并单击“管理 Ambari”。
 
     ![加入域的 HDInsight 管理 Ambari](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
@@ -98,7 +97,7 @@ ms.lasthandoff: 06/13/2017
 5. 向下滚动到“权限”部分。
 
     ![加入域的 HDInsight Ambari 管理 UI Hive 视图配置权限](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
-6. 单击“添加用户”或“添加组”，然后指定可以使用 Hive 视图的用户或组。
+6. 单击“添加用户”或“添加组”，并指定可以使用 Hive 视图的用户或组。
 
 ## <a name="configure-users-for-the-roles"></a>为角色配置用户
  若要查看角色及其权限的列表，请参阅[已加入域的 HDInsight 群集的角色](#roles-of-domain---joined-hdinsight-clusters)。
@@ -111,4 +110,3 @@ ms.lasthandoff: 06/13/2017
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
 * 有关在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
-

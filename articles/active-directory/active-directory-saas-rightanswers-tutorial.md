@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: e5985831598a0e5b1277d2c6cd02b03c919aad4d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>教程：Azure Active Directory 与 RightAnswers 集成
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 06/16/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [RightAnswers 客户端支持团队](https://www.rightanswers.com/contact-us/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-rightanswers-tutorial/tutorial_rightanswers_certificate.png) 
 
@@ -130,7 +129,7 @@ ms.lasthandoff: 06/16/2017
 
     >[!NOTE]
     >RightAnswers 支持团队需要执行实际的 SSO 配置。
-    >在为订阅启用了 SSO 后，你将收到通知。
+    >在为订阅启用了 SSO 后，将收到通知。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -158,7 +157,7 @@ ms.lasthandoff: 06/16/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-rightanswers-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -170,7 +169,7 @@ ms.lasthandoff: 06/16/2017
 
 为了使 Azure AD 用户能够登录到 RightAnswers，必须将其预配到 RightAnswers 中。 对于 RightAnswers，预配是一项自动化任务，因此不存在任何操作项。
 
-如有必要，在第一次尝试单一登录时将自动创建用户。
+如有必要，在第一次尝试单一登录时会自动创建用户。
 
 >[!NOTE]
 >可以使用任何其他 Rally Software 用户帐户创建工具或 RightAnswers 提供的 API 来预配 AAD 用户帐户。
@@ -183,7 +182,7 @@ ms.lasthandoff: 06/16/2017
 
 若要将 Britta Simon 分配到 RightAnswers，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -226,5 +225,4 @@ ms.lasthandoff: 06/16/2017
 [201]: ./media/active-directory-saas-rightanswers-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-rightanswers-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-rightanswers-tutorial/tutorial_general_203.png
-
 

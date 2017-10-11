@@ -14,17 +14,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a2971c3b66b31e2936ca7ebc95d103ff5daf5881
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-monitor-real-time-data-about-your-application"></a>如何监视有关应用程序的实时数据
-本文介绍了 **Mobile Engagement** 门户的“**监视器**”选项卡。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，若要开始使用该门户，你首先需要创建 **Azure Mobile Engagement** 帐户。 
+本文介绍了 **Mobile Engagement** 门户的“**监视器**”选项卡。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 
 
-UI 的“监视器”部分提供了实时分析信息，而且允许你设置达到阈值时的警报，获取 UI 的“[分析](mobile-engagement-user-interface-analytics.md)”部分中过去提供的大部分相同信息。 请参阅[概念](http://go.microsoft.com/fwlink/?LinkId=525555)主题中的**词汇表**部分，了解分析和监视中术语和缩写的定义（如下所示：活动用户、新用户、保留用户、会话、用户路径图形、用户映射、跟踪 URL、趋势、活动、事件、作业、错误、额外的信息、崩溃和应用信息）。
+UI 的“监视器”部分提供了实时分析信息，而且允许设置达到阈值时的警报，获取 UI 的“[分析](mobile-engagement-user-interface-analytics.md)”部分中过去提供的大部分相同信息。 请参阅[概念](http://go.microsoft.com/fwlink/?LinkId=525555)主题中的**词汇表**部分，了解分析和监视中术语和缩写的定义（如下所示：活动用户、新用户、保留用户、会话、用户路径图形、用户映射、跟踪 URL、趋势、活动、事件、作业、错误、额外的信息、崩溃和应用信息）。
 
 > [!NOTE]
 > **Mobile Engagement** 门户 UI 的很多部分中都包含“**显示帮助**”按钮。 按此按钮可获取关于某一部分的更多上下文信息。
@@ -32,28 +31,28 @@ UI 的“监视器”部分提供了实时分析信息，而且允许你设置�
 > 
 
 ## <a name="monitor---sessions-jobs-events-errors-and-crashes"></a>监视器 - 会话、作业、事件、错误和崩溃
-你可以看到会话中和特定屏幕上当前的用户数量或正在执行特定操作的用户数量。 你可以查看按会话、作业、事件、错误和崩溃划分的用户活动。 你可以看到最新信息，并显示过去一小时、一天或一周内的信息。 你可以看到每个类别中或按特定会话、作业、事件、错误和崩溃排序的所有信息。  实时监视有助于利用事件（例如推送营销活动）发生过程来查看是否在发送推送通知后操作立即见效。
+可以看到会话中和特定屏幕上当前的用户数量或正在执行特定操作的用户数量。 可以查看按会话、作业、事件、错误和崩溃划分的用户活动。 可以看到最新信息，并显示过去一小时、一天或一周内的信息。 可以看到每个类别中或按特定会话、作业、事件、错误和崩溃排序的所有信息。  实时监视有助于利用事件（例如推送营销活动）发生过程来查看是否在发送推送通知后操作立即见效。
 
 ![监视器 1][14]  
 
 ## <a name="troubleshooting-with-monitor---events---details"></a>监视器 - 事件 - 详细信息疑难解答
-从你的测试设备的应用程序中生成事件并在“监视器 - 事件 - 详细信息”中找到它是查找你的测试设备的设备 ID 以及确认分析、监视和段的 Azure Mobile Engagement 集成正在你的应用程序中工作的最简单方法之一。 获得测试设备的设备 ID 后，你可以在“我的帐户 - 设备”中将其添加到你的测试设备。 如果你不能生成事件，请确保 Azure Mobile Engagement 在 Android/iOS/Web/Windows/Windows Phone 应用中与 SDK 正确地集成。
+从测试设备的应用程序中生成事件并在“监视器 - 事件 - 详细信息”中找到它是查找测试设备的设备 ID 以及确认分析、监视和段的 Azure Mobile Engagement 集成正在应用程序中工作的最简单方法之一。 获得测试设备的设备 ID 后，可以在“我的帐户 - 设备”中将其添加到测试设备。 如果不能生成事件，请确保 Azure Mobile Engagement 在 Android/iOS/Web/Windows/Windows Phone 应用中与 SDK 正确地集成。
 
 有关详细信息，请参阅：[SDK 文档][Link 5]
 
 ![监视器 2][15]  
 
 ## <a name="troubleshooting-with-monitor---crashes---details"></a>监视器 - 崩溃 - 详细信息疑难解答
-你可以从“监视器 - 崩溃 - 详细信息”中查看有关应用的崩溃信息，以帮助确定你的应用崩溃的原因。 你还应在每个版本的 SDK for Android/iOS/Web/Windows/Windows Phone 的发行说明中查找每个版本的 SDK 的已知问题。
+可以从“监视器 - 崩溃 - 详细信息”中查看有关应用的崩溃信息，以帮助确定应用崩溃的原因。 还应在每个版本的 SDK for Android/iOS/Web/Windows/Windows Phone 的发行说明中查找每个版本的 SDK 的已知问题。
 
 有关详细信息，请参阅：[SDK 文档 - 发行说明][Link 5]
 
 ![监视器 3][16]
 
 ## <a name="monitor---alerts"></a>监视器 - 警报
-你还可以指定将通过电子邮件或即时消息自动发送给你的警报的条件。 （支持任何符合 XMPP 的服务，如 Google 的 GTalk 或 Apple 的 iChat。）警报基于预定义的检测阈值大于 (>) 或小于 (<) 每秒、每分钟或每小时会话、作业、事件、错误或崩溃的特定数目。 警报可以监视某个给定类型的所有活动，或仅监视某个特定的作业、事件或错误活动。 
+还可以指定将通过电子邮件或即时消息自动发送给警报的条件。 （支持任何符合 XMPP 的服务，如 Google 的 GTalk 或 Apple 的 iChat。）警报基于预定义的检测阈值大于 (>) 或小于 (<) 每秒、每分钟或每小时会话、作业、事件、错误或崩溃的特定数目。 警报可以监视某个给定类型的所有活动，或仅监视某个特定的作业、事件或错误活动。 
 
-你还可以指定最低检测率，即针对同一个警报分离两个通知以确定何时出发警报的最少分钟数，在每个指定的时间间隔内你永远不会收到多个通知。
+还可以指定最低检测率，即针对同一个警报分离两个通知以确定何时出发警报的最少分钟数，在每个指定的时间间隔内你永远不会收到多个通知。
 
 ![监视器 4][17]
 
@@ -155,4 +154,3 @@ UI 的“监视器”部分提供了实时分析信息，而且允许你设置�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-

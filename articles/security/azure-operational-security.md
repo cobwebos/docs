@@ -14,19 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: ec9e0fc7d67537a47d5c0d3bb376b60dc6ccffcd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>介绍
 
 ### <a name="overview"></a>概述
-我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 为你的应用程序和服务使用 Azure 其中一个最合理原因就是：可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 必须提供保密、完整且可用的客户数据，并实现透明问责。
+我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 针对应用程序和服务使用 Azure 的最合理原因之一是可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 必须提供保密、完整且可用的客户数据，并实现透明问责。
 
 为帮助客户更好地从客户和 Microsoft 操作这两个角度了解 Microsoft Azure 中实施的一系列安全控件，特编写本白皮书《Azure 操作安全性》，全面介绍通过 Microsoft Azure 实现的操作安全性。
 
@@ -103,12 +101,12 @@ Azure 备份中的受保护数据存储在位于特定地理区域的备份保�
 [Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。
 
 
-[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 OMS 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
+[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 OMS 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
 
 
 ![管理解决方案](./media/azure-operational-security/azure-operational-security-fig4.png)
 
-[更新管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 代理来收集有关每个代理上所需的更新的信息。 它将这些数据写入 Log Analytics 存储库，你可以使用随附的仪表板来分析这些数据。
+[更新管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 代理来收集有关每个代理上所需的更新的信息。 它将这些数据写入 Log Analytics 存储库，可以使用随附的仪表板来分析这些数据。
 
 创建部署时，可以使用 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)中的 runbook 来安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
@@ -341,5 +339,4 @@ Microsoft 在设计其服务和软件时始终关注安全性，确保其云基�
 使用 Microsoft 安全数据和分析来执行更智能和有效的威胁检测。
 
 - [Azure 安全中心规划和操作](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide) 提供一系列步骤和任务，用户可以按照这些步骤和任务，根据组织的安全要求和云管理模型优化安全中心的使用。
-
 

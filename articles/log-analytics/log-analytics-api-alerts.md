@@ -15,17 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
 ms.openlocfilehash: 5ce72ffef4394bf3bbe39fa420c4fcaa965ae35c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则
 Log Analytics 警报 REST API 允许在 Operations Management Suite (OMS) 中创建和管理警报。  本文详细介绍了该 API 并提供了几个执行不同操作的示例。
 
-Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager REST API 访问。 在本文档中你会看到使用 [ARMClient](https://github.com/projectkudu/ARMClient)（可简化 Azure Resource Manager API 调用的开放源命令行工具）从 PowerShell 命令行访问 API 的示例。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 使用这些工具可以利用 RESTful Azure Resource Manager API 对 OMS 工作区进行调用并执行它们所包含的搜索命令。 API 将以 JSON 格式输出搜索结果，从而允许你以多种编程方式使用搜索结果。
+Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager REST API 访问。 在本文档，你将找到示例其中从 PowerShell 命令行使用访问 API [ARMClient](https://github.com/projectkudu/ARMClient)，简化了 Azure 资源管理器 API 调用的开放源代码命令行工具。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 使用这些工具可以利用 RESTful Azure Resource Manager API 对 OMS 工作区进行调用并执行它们所包含的搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
 ## <a name="prerequisites"></a>先决条件
 目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](log-analytics-log-search-api.md)。
@@ -208,7 +207,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager RES
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 #### <a name="remediation-actions"></a>修正操作
-修正在 Azure 自动化中启动 Runbook，尝试纠正警报发现的问题。  必须为用于修正操作的 Runbook 创建 Webhook，然后在 WebhookUri 属性中指定 URI。  使用 OMS 控制台创建此操作时，将自动为 Runbook 创建新的 Webhook。
+修正在 Azure 自动化中启动 Runbook，尝试纠正警报发现的问题。  必须为用于修正操作的 Runbook 创建 Webhook，并在 WebhookUri 属性中指定 URI。  使用 OMS 控制台创建此操作时，会自动为 Runbook 创建新的 Webhook。
 
 修正具有下表中的属性。
 
@@ -247,7 +246,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager RES
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myremediationaction?api-version=2015-03-20 $remediateJson
 
 #### <a name="example"></a>示例
-下面是创建新电子邮件警报的完整示例。  这将创建一个新计划以及包含阈值和电子邮件的操作。
+下面是创建新电子邮件警报的完整示例。  这会创建一个新计划以及包含阈值和电子邮件的操作。
 
     $subscriptionId = "3d56705e-5b26-5bcc-9368-dbc8d2fafbfc"
     $resourceGroup  = "MyResourceGroup"    
@@ -266,7 +265,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager RES
 ### <a name="webhook-actions"></a>Webhook 操作
 Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进程。  Webhook 操作与修正操作类似，不同之处在于它们是用于 Webhook，可能调用 Azure 自动化 Runbook 之外的进程。  此外，它们还提供了额外的选项，即提供要发送到远程进程的负载。
 
-Webhook 操作没有阈值，但应添加到具有带阈值的警报操作的计划中。  可以添加多个 Webhook 操作，达到该阈值时将运行这些操作。
+Webhook 操作没有阈值，但应添加到具有带阈值的警报操作的计划中。  可以添加多个 Webhook 操作，达到该阈值时会运行这些操作。
 
 Webhook 操作具有下表中的属性。
 
@@ -308,7 +307,7 @@ Webhook 操作具有下表中的属性。
     }
 
 #### <a name="create-or-edit-a-webhook-action"></a>创建或编辑 Webhook 操作
-结合使用 Put 方法和唯一操作 ID 为计划创建新的 Webhook 操作。  下面的示例创建了 Webhook 操作和包含一个阈值的警报操作，因此已保存搜索的结果超出该阈值时将触发 Webhook。
+结合使用 Put 方法和唯一操作 ID 为计划创建新的 Webhook 操作。  下面的示例创建了 Webhook 操作和包含一个阈值的警报操作，因此已保存搜索的结果超出该阈值时会触发 Webhook。
 
     $thresholdAction = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdAction
@@ -323,5 +322,4 @@ Webhook 操作具有下表中的属性。
 
 ## <a name="next-steps"></a>后续步骤
 * 在 Log Analytics 中使用 [REST API 执行日志搜索](log-analytics-log-search-api.md)。
-
 

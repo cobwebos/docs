@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c81f23603cfbbc916c148c61bd3de52ef1db36ac
 ms.openlocfilehash: 5c598bfa5b6725d21a89df54dbcb3314cc631d80
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/15/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>教程：Azure Active Directory 与 Zscaler Private Access (ZPA) 集成
 
@@ -58,7 +57,7 @@ ms.lasthandoff: 02/15/2017
 
 
 ## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>从库中添加 Zscaler Private Access (ZPA)
-若要配置 Zscaler Private Access (ZPA) 与 Azure AD 的集成，需要从库中将 Zscaler Private Access (ZPA) 添加到托管 SaaS 应用列表。
+要配置 Zscaler Private Access (ZPA) 与 Azure AD 的集成，需要从库中将 Zscaler Private Access (ZPA) 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Zscaler Private Access (ZPA)，请执行以下步骤：**
 
@@ -78,7 +77,7 @@ ms.lasthandoff: 02/15/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_001.png)
 
-5. 在结果窗格中，选择“Zscaler Private Access (ZPA)”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Zscaler Private Access (ZPA)”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_0001.png)
 
@@ -94,13 +93,13 @@ ms.lasthandoff: 02/15/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Zscaler Private Access (ZPA) 测试用户](#creating-a-zscaler-private-access-(zpa)-test-user)** - 在 Zscaler Private Access (ZPA) 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建专用访问 Zscaler (ZPA) 测试用户](#creating-a-zscaler-private-access-(zpa)-test-user)** -若要具有在 Zscaler 私有访问 (ZPA) 链接到的 Azure AD 表示形式她的 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 Zscaler Private Access (ZPA) 应用程序中配置单一登录。
+在本部分中，会在 Azure 管理门户中启用 Azure AD 单一登录并在 Zscaler Private Access (ZPA) 应用程序中配置单一登录。
 
 **若要配置 Zscaler Private Access (ZPA) 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -116,9 +115,9 @@ ms.lasthandoff: 02/15/2017
     
     ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“标识符”文本框中，键入 `https://samlsp.private.zscaler.com/auth/metadata`
+    b. 在“标识符”文本框中，键入 `https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用 URL 的唯一值。 若要获取这些值，请联系 [Zscaler Private Access (ZPA) 支持团队](https://help.zscaler.com/zpa-submit-ticket)。
@@ -127,11 +126,11 @@ ms.lasthandoff: 02/15/2017
 
     ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)   
 
-5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
+5. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击**保存**按钮。
 
     ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_500.png)
 
-6. 在“SAML 签名证书”部分中，选择“激活新证书”，然后单击“保存”按钮。
+6. 在“SAML 签名证书”部分中，选择“激活新证书”，并单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
 
@@ -139,13 +138,13 @@ ms.lasthandoff: 02/15/2017
 
     ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_600.png)
 
-8. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+8. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
 
 9. 在另一个 Web 浏览器窗口中，以管理员身份登录 Zscaler Private Access (ZPA) 公司站点。
 
-10. 导航到“管理员”，然后单击“Idp 配置”。
+10. 导航到“管理员”，并单击“Idp 配置”。
 
     ![在应用端配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_04.png)
 
@@ -157,7 +156,7 @@ ms.lasthandoff: 02/15/2017
 
     ![在应用端配置单一登录](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“选择文件”，然后上传已下载的元数据文件。
+    a. 单击“选择文件”，并上传已下载的元数据文件。
 
     b. 单击“保存”按钮。
     
@@ -186,7 +185,7 @@ ms.lasthandoff: 02/15/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-zscalerprivateaccess-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -198,7 +197,7 @@ ms.lasthandoff: 02/15/2017
 
 ### <a name="creating-a-zscaler-private-access-zpa-test-user"></a>创建 Zscaler Private Access (ZPA) 测试用户
 
-在本部分中，将在 Zscaler Private Access (ZPA) 中创建一个名为“Britta Simon”的用户。 请与 [Zscaler Private Access (ZPA) 支持团队](https://help.zscaler.com/zpa-submit-ticket)协作，将用户添加到 Zscaler Private Access (ZPA) 平台。
+在本部分中，会在 Zscaler Private Access (ZPA) 中创建一个名为“Britta Simon”的用户。 请与 [Zscaler Private Access (ZPA) 支持团队](https://help.zscaler.com/zpa-submit-ticket)协作，将用户添加到 Zscaler Private Access (ZPA) 平台。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -207,9 +206,9 @@ ms.lasthandoff: 02/15/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Zscaler Private Access (ZPA)，请执行以下步骤：**
+**要将 Britta Simon 分配到 Zscaler Private Access (ZPA)，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

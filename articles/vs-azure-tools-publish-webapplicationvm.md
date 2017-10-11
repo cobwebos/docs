@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bedcbc3218022b36cc9f961c7621db3c5a639828
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationVM（Windows PowerShell 脚本）
-将 Web 应用程序部署到虚拟机。 此脚本将在 Azure 订阅中创建所需的资源（如果这些资源不存在）。
+将 Web 应用程序部署到虚拟机。 如果资源不存在，脚本会在 Azure 订阅中创建所需的资源。
 
 ```
 Publish-WebApplicationVM
@@ -115,7 +114,7 @@ Azure 中的 SQL 数据库的凭据。 示例：-DatabaseServerPassword @{Name =
 ## <a name="remarks"></a>备注
 有关如何使用脚本创建开发和测试环境的完整说明，请参阅[使用 Windows PowerShell 脚本发布到开发和测试环境](vs-azure-tools-publishing-using-powershell-scripts.md)。
 
-JSON 配置文件指定要部署的内容的详细信息。 它包括当你创建项目时指定的信息，如名称、地缘组、VHD 映像和虚拟机的大小。 它还包括虚拟机上的终结点、要预配的数据库（如果有的话）和 Web 部署参数。 以下代码显示一个示例 JSON 配置文件：
+JSON 配置文件指定要部署的内容的详细信息。 它包括创建项目时指定的信息，如名称、地缘组、VHD 映像和虚拟机的大小。 它还包括虚拟机上的终结点、要预配的数据库（如果有的话）和 Web 部署参数。 以下代码显示一个示例 JSON 配置文件：
 
 ```
 {
@@ -184,6 +183,5 @@ JSON 配置文件指定要部署的内容的详细信息。 它包括当你创�
 }
 ```
 
-你可以编辑 JSON 配置文件以更改预配的内容。 虚拟机和云服务是必需的，但数据库部分则是可选的。
-
+可以编辑 JSON 配置文件以更改预配的内容。 虚拟机和云服务是必需的，但数据库部分则是可选的。
 

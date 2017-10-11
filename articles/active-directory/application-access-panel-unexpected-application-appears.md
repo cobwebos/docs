@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewr: japere
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: f8ccf2cf66b49940bc7f2b9f4764020efc04838e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-applications-appear-on-the-access-panel"></a>应用程序为何在访问面板上显示
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 这些应用程序代替用户配置在 Azure AD 门户中。 管理员可以直接向用户或用户所在组提供应用程序，这会导致应用程序出现在用户的访问面板上。
@@ -61,7 +59,7 @@ ms.lasthandoff: 07/13/2017
 
 8.  检查用户是否被分配给应用程序。
 
-  * 若要将用户从应用程序中删除，请**单击用户对应的行**，然后选择“删除”。
+  * 要将用户从应用程序中删除，请**单击用户对应的行**，并选择“删除”。
 
 ### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>检查用户是否符合与应用程序相关的许可证
 
@@ -77,11 +75,11 @@ ms.lasthandoff: 07/13/2017
 
 5.  单击“所有用户”。
 
-6.  **搜索**感兴趣的用户，然后**单击对应的行**进行选择。
+6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
 7.  单击“许可证”查看当前分配给用户的许可证有哪些。
 
-   * 如果已向用户分配 Office 许可证，则第一方 Office 应用程序将显示在用户的访问面板中。
+   * 如果已向用户分配 Office 许可证，则第一方 Office 应用程序会显示在用户的访问面板中。
 
 ## <a name="problems-related-to-assigning-applications-to-groups"></a>有关为组分配应用程序的问题
 
@@ -105,13 +103,13 @@ ms.lasthandoff: 07/13/2017
 
 5.  单击“所有用户”。
 
-6.  **搜索**你感兴趣的用户，然后**单击对应的行**进行选择。
+6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
 7.  单击“组”
 
 8.  检查用户是否是分配给应用程序的组的成员。
 
-   * 若要将用户从组中删除，请**单击组对应的行**，并选择删除。
+   * 要将用户从组中删除，请**单击组对应的行**，并选择删除。
 
 ### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>检查用户是否是被分配许可证的组的成员
 
@@ -125,7 +123,7 @@ ms.lasthandoff: 07/13/2017
 
 5.  单击“所有用户”。
 
-6.  **搜索**你感兴趣的用户，然后**单击对应的行**进行选择。
+6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
 7.  单击“组”
 
@@ -154,4 +152,3 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -46,7 +45,7 @@ ms.lasthandoff: 07/06/2017
   
 -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。  
   
-##  <a name="ConvertJSONtoXML"></a> 将 JSON 转换为 XML  
+##  <a name="ConvertJSONtoXML">将 JSON 转换为 XML</a>  
  `json-to-xml` 策略将请求或响应正文从 JSON 转换为 XML。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -234,7 +233,7 @@ ms.lasthandoff: 07/06/2017
   
 应用 [<choose\>](api-management-advanced-policies.md#choose) 策略语句时，后端服务基 URL 可能会再次更改为 `http://contoso.com/api/8.2` 或 `http://contoso.com/api/9.1`，具体取决于版本请求查询参数的值。 例如，如果值为 `"2013-15"`，最终请求 URL 将变为 `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`。  
   
-如果需要进一步转换请求，可使用其他[转换策略](api-management-transformation-policies.md#TransformationPolicies)。 例如，在将请求路由到特定于版本的后端以后，若要删除版本查询参数，可以使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略删除现在的冗余版本属性。  
+如果需要进一步转换请求，可使用其他[转换策略](api-management-transformation-policies.md#TransformationPolicies)。 例如，在将请求路由到特定于版本的后端以后，要删除版本查询参数，可以使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略删除现在的冗余版本属性。  
   
 ### <a name="example"></a>示例  
   
@@ -282,7 +281,7 @@ ms.lasthandoff: 07/06/2017
 >   
 >  在使用 `set-body` 策略时，请注意以下事项。  
 >   
->  -   若要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，因为你是在显式提供全新的正文内容。  
+>  -   若要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，因为是在显式提供全新的正文内容。  
 > -   将响应的内容保留在入站管道中并不合理，因为尚无响应。  
 > -   将请求的内容保留在出站管道中并不合理，因为请求此时已发送到后端。  
 > -   如果在没有消息正文的情况下使用此策略（例如在入站 GET 中使用），则会引发异常。  
@@ -705,4 +704,3 @@ OriginalUrl.
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-

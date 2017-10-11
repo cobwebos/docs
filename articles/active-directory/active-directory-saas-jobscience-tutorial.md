@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 66bec35a8f17482433dbf02827b90620d1cff378
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教程：Azure Active Directory 与 Jobscience 集成
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 07/13/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 通过 [Jobscience 客户端支持团队](https://www.jobscience.com/support)获取此值，或从 SSO 配置文件可以创建将在教程后面部分进行说明的内容。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
@@ -134,7 +133,7 @@ ms.lasthandoff: 07/13/2017
    
    ![设置](./media/active-directory-saas-jobscience-tutorial/IC784358.png "设置")
 
-9. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，然后单击“我的域”，打开“我的域”页。 
+9. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
    
    ![我的域](./media/active-directory-saas-jobscience-tutorial/ic767825.png "我的域")
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 07/13/2017
 
     ![部署到用户的域](./media/active-directory-saas-jobscience-tutorial/ic784377.png "部署到用户的域")
 
-11. 在 Jobscience 公司站点上，单击“安全控制”，然后单击“单一登录设置”。
+11. 在 Jobscience 公司站点上，单击“安全控制”，并单击“单一登录设置”。
     
     ![安全性控制](./media/active-directory-saas-jobscience-tutorial/ic784364.png "安全性控制")
 
@@ -150,17 +149,17 @@ ms.lasthandoff: 07/13/2017
     
     ![单一登录设置](./media/active-directory-saas-jobscience-tutorial/ic781026.png "Single Sign-On Settings")
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“已启用 SAML”。
+    a. 选择“已启用 SAML”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“新建” 。
+    b. 单击“新建” 。
 
 13. 在“SAML 单一登录设置编辑”对话框中，执行以下步骤：
     
     ![SAML 单一登录设置](./media/active-directory-saas-jobscience-tutorial/ic784365.png "SAML Single Sign-On Settings")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置名称。
+    a. 在“名称”文本框中，键入配置名称。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
+    b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
 
     c. 在“实体 Id”文本框中，键入 `https://salesforce-jobscience.com`
 
@@ -176,7 +175,7 @@ ms.lasthandoff: 07/13/2017
 
     i. 单击“保存” 。
 
-14. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，然后单击“我的域”，打开“我的域”页。 
+14. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
     
     ![我的域](./media/active-directory-saas-jobscience-tutorial/ic767825.png "我的域")
 
@@ -184,7 +183,7 @@ ms.lasthandoff: 07/13/2017
     
     ![登录页品牌打造](./media/active-directory-saas-jobscience-tutorial/ic767826.png "登录页品牌打造")
 
-16. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，然后单击“保存”。
+16. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，并单击“保存”。
     
     ![登录页品牌打造](./media/active-directory-saas-jobscience-tutorial/ic784366.png "登录页品牌打造")
 
@@ -192,7 +191,7 @@ ms.lasthandoff: 07/13/2017
 
     ![安全性控制](./media/active-directory-saas-jobscience-tutorial/ic784368.png "安全性控制")
     
-    单击上一步中创建的 SSO 配置文件。 此页显示你的公司的单一登录 URL（例如 [https://companyname.my.salesforce.com?so=companyid](https://companyname.my.salesforce.com?so=companyid)）。    
+    单击上一步中创建的 SSO 配置文件。 此页显示公司的单一登录 URL（例如 [https://companyname.my.salesforce.com?so=companyid](https://companyname.my.salesforce.com?so=companyid)）。    
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -221,7 +220,7 @@ ms.lasthandoff: 07/13/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-jobscience-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -254,9 +253,9 @@ ms.lasthandoff: 07/13/2017
    
    ![用户编辑](./media/active-directory-saas-jobscience-tutorial/ic784371.png "用户编辑")
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名”文本框中键入用户的名（如 Britta）。
+   a. 在“名”文本框中键入用户的名（如 Britta）。
    
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“姓”文本框中键入用户的姓（如 Simon）。
+   b. 在“姓”文本框中键入用户的姓（如 Simon）。
    
    c. 在“别名”文本框中键入用户的别名（如 brittas）。
 
@@ -280,7 +279,7 @@ ms.lasthandoff: 07/13/2017
 
 若要将 Britta Simon 分配到 Jobscience，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -327,5 +326,4 @@ ms.lasthandoff: 07/13/2017
 [201]: ./media/active-directory-saas-jobscience-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-jobscience-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-jobscience-tutorial/tutorial_general_203.png
-
 

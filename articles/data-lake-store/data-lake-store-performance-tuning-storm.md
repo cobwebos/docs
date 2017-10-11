@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 1dfa93643f45a96ded3fd022aa8b1c71d487acb4
-ms.lasthandoff: 03/21/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Storm on HDInsight 和 Azure Data Lake Store 性能优化指南
 
@@ -51,7 +50,7 @@ ms.lasthandoff: 03/21/2017
 * 监督器节点。 在 HDInsight 中，对应于辅助节点 Azure VM。
 * 辅助任务是 VM 中运行的 Storm 进程。 每个辅助任务对应于一个 JVM 实例。 Storm 会尽可能均匀地将指定的工作进程数分配到辅助节点。
 * Spout 和 Bolt 执行器实例。 每个执行器实例对应于辅助角色 (JVM) 中运行的一个线程。
-* Storm 任务。 其中每个线程运行的逻辑任务。 这不会更改并行度，因此，你应该评估是否需要为每个执行器提供多个任务。
+* Storm 任务。 其中每个线程运行的逻辑任务。 这不会更改并行度，因此，应该评估是否需要为每个执行器提供多个任务。
 
 ### <a name="get-the-best-performance-from-data-lake-store"></a>从 Data Lake Store 获得最佳性能
 
@@ -84,7 +83,7 @@ ms.lasthandoff: 03/21/2017
 
 - **最大 Spout 挂起时间：topology.max.spout.pending**。 此设置确定任意时间每个 Spout 线程的进行中元组数（尚未在拓扑中的所有节点上确认）。
 
- 一种不错的计算方式是评估每个元组的大小。 然后算出一个 Spout 线程具有的内存量。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
+ 一种不错的计算方式是评估每个元组的大小。 然后找出多少内存一个 spout 线程都有。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
 
 ## <a name="tune-the-bolt"></a>优化 Bolt
 向 Data Lake Store 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小达到此值时，才执行刷新或 hsync()。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Store 驱动程序会自动执行这种缓冲。
@@ -134,11 +133,10 @@ ms.lasthandoff: 03/21/2017
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;**。 重新启动所有节点/服务使配置生效。
+1. In **Ambari** > **Storm** > **Config** > **Advanced storm-worker-log4j**, change **&lt;root level="info"&gt;** to **&lt;root level=”debug”&gt;**. 重新启动所有节点/服务使配置生效。
 2. 监视辅助节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Store 限制异常。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Storm 的其他性能优化方法，请参阅这篇[博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。
 
 有关可运行的其他示例，请参阅 [GitHub 上的这篇文章](https://github.com/hdinsight/storm-performance-automation)。
-

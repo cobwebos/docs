@@ -14,12 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
-ms.openlocfilehash: 61aa9e5c004decff18337efe3b1baacfcf9279dc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
+ms.openlocfilehash: ebf0e911eeada0e529f908dd3e3430c94edae763
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -45,7 +44,7 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 
 ## <a name="ionic"></a>设置 Ionic v2 应用
 
-若要正确配置 Ionic v2 项目，请先创建基本应用，然后添加 Cordova 插件：
+要正确配置 Ionic v2 项目，请先创建基本应用，然后添加 Cordova 插件：
 
 ```
 ionic start projectName --v2
@@ -53,7 +52,7 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-将以下行添加到 `app.component.ts` 以创建客户端对象：
+向 `app.component.ts` 中添加以下行以创建客户端对象：
 
 ```
 declare var WindowsAzure: any;
@@ -72,7 +71,7 @@ Azure 移动应用 Cordova 插件同时支持 Ionic v1 和 Ionic v2 应用。  �
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
 ## <a name="auth"></a>如何对用户进行身份验证
-Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
+Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
 
 在 Apache Cordova 应用中使用身份验证时，以下 Cordova 插件必须可用：
 
@@ -83,7 +82,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
+### <a name="configure-external-redirect-urls"></a>如何： 为外部重定向 Url 配置你的移动应用程序服务。
 有多种类型的 Apache Cordova 应用程序使用环回功能来处理 OAuth UI 流。  localhost 上的 OAuth UI 流会造成问题，因为身份验证服务默认只知道如何利用服务。  有问题的 OAuth UI 流示例包括：
 
 * Ripple 模拟器。
@@ -94,9 +93,9 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 请遵循以下说明将本地设置添加到配置中：
 
 1. 登录到 [Azure 门户]
-2. 选择“所有资源”或“应用服务”，然后单击移动应用的名称。
+2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
 3. 单击“工具”
-4. 在“观察”菜单中单击“资源浏览器”，然后单击“转到”。  此时将打开一个新窗口或选项卡。
+4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  会打开新窗口或选项卡。
 5. 在左侧导航栏中，展开站点的“config”、“authsettings”节点。
 6. 单击“编辑”
 7. 查找“allowedExternalRedirectUrls”元素。  该元素可能已设置为 null 或值数组。  将该值更改为以下值：
@@ -110,21 +109,21 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 8. 单击屏幕右上角的“读/写”按钮。
 9. 单击绿色的“PUT”按钮。
 
-此时将保存设置。  在保存完设置之前，请不要关闭浏览器窗口。
-还需要将以下环回 URL 添加到 CORS 设置：
+此时会保存设置。  在保存完设置之前，请不要关闭浏览器窗口。
+还需要将以下环回 URL 添加到应用服务的 CORS 设置：
 
 1. 登录到 [Azure 门户]
-2. 选择“所有资源”或“应用服务”，然后单击移动应用的名称。
+2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
 3. “设置”边栏选项卡随即自动打开。  如果没有打开，请单击“所有设置”。
 4. 在“API”菜单下单击“CORS”。
-5. 在提供的框中输入想要添加的 URL，然后按 Enter。
+5. 在提供的框中输入想要添加的 URL，并按 Enter。
 6. 根据需要输入其他 URL。
 7. 单击“保存”保存这些设置。
 
 大约需要 10-15 秒时间才能使新设置生效。
 
-## <a name="register-for-push"></a>如何：注册推送通知
-安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码将为设备注册推送通知：
+## <a name="register-for-push"></a>如何： 注册推送通知
+安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码为设备注册推送通知：
 
 ```
 var pushOptions = {
@@ -163,7 +162,7 @@ pushHandler.on('error', function (error) {
 });
 ```
 
-使用通知中心 SDK 从服务器发送推送通知。  请勿直接从客户端发送推送通知。 否则可能会触发拒绝对通知中心或 PNS 的服务攻击。  遇到此类攻击时，PNS 会禁止你的流量。
+使用通知中心 SDK 从服务器发送推送通知。  请勿直接从客户端发送推送通知。 否则可能会触发拒绝对通知中心或 PNS 的服务攻击。  遇到此类攻击时，PNS 会禁止流量。
 
 ## <a name="more-information"></a>详细信息
 
@@ -182,4 +181,3 @@ pushHandler.on('error', function (error) {
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
-

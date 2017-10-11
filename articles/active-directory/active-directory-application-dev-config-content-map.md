@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 13155da09127c4ebe43ac77fdd196777ab884a1d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 573fa7e9017e0b7746e40639370e68a2b7bb8548
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problems-configuring-or-registering-my-application"></a>配置或注册应用程序时出现问题
 
 
@@ -46,4 +44,3 @@ ms.lasthandoff: 04/18/2017
   * [我对应用程序许可的工作原理感到迷惑](https://docs.microsoft.com/azure/active-directory/application-dev-consent-framework/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
   * [我不知道如何向应用程序授予权限](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-grant-permissions-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
   * [我不了解委派权限与应用程序权限之间的差别](https://docs.microsoft.com/azure/active-directory/application-dev-delegated-and-app-perms/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
-

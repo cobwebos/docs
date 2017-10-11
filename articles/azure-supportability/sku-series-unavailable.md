@@ -14,38 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: gangan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sku-series-unavailable"></a>SKU 系列不可用
 在某些地区，某些 SKU 未自动在新订阅上可用。  当[某个区域中引入更强大的 SKU 而传统 SKU 的受欢迎程度下降](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/)时，可能会出现这种情况。
-当创建支持请求以增加计算核心配额时，将显示消息“*对于该区域的选定订阅，某些 SKU 系列不可用*”。
+消息"*某些 SKU 系列不可用于此区域的选定订阅*"创建支持请求以增加计算核心配额时显示。
 
 可以在 [按区域的 Azure 服务](https://azure.microsoft.com/regions/#services) 页上查看 SKU 可用性。 
 
 若要请求访问订阅中受限制的 SKU，请创建一个“订阅管理”支持请求。
 
-* 在“基础知识”页上，选择“订阅管理”作为问题类型，然后单击“下一步”。
+* 在“基础知识”页上，选择“订阅管理”作为问题类型，并单击“下一步”。
 
 ![“基本信息”边栏选项卡](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
 * 在“问题”页上，选择“其他一般问题”作为问题类型，并输入未看到的精确区域和 SKU。
-  这将有助于加快支持过程。
+  这会有助于加快支持过程。
 
 ![问题](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
-* 在“联系信息”页上，输入你的详细联系信息，然后单击“创建”。
+* 在“联系信息”页上，输入详细联系信息，然后单击“创建”。
 
 ![联系信息](./media/SKU-series-unavailable/ContactInformation.png)
 
 ## <a name="feedback"></a>反馈
-我们始终乐于接受反馈和建议！ 向我们发送你的[建议](https://feedback.azure.com/forums/266794-support-feedback)。 此外，你可以通过 [Twitter](https://twitter.com/azuresupport) 或 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure)与我们联系。
+我们始终乐于接受反馈和建议！ 向我们发送[建议](https://feedback.azure.com/forums/266794-support-feedback)。 此外，可以通过 [Twitter](https://twitter.com/azuresupport) 或 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure)与我们联系。
 
 ## <a name="learn-more"></a>了解详细信息
 [Azure 支持常见问题](https://azure.microsoft.com/support/faq)
-
 

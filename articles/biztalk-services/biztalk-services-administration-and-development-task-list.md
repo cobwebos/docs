@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1013419f9283c3e81a6a6e8ed56a34d6ee5937ea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 7d4532daf5e4b8f45de94bbec230633978814a6e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>BizTalk 服务中的管理和开发任务列表
 
@@ -33,7 +31,7 @@ ms.lasthandoff: 11/17/2016
 | --- | --- | --- | --- |
 | 1. |管理员 |使用 Microsoft 帐户或组织帐户创建 Microsoft Azure 订阅 |[Azure 经典门户](http://go.microsoft.com/fwlink/p/?LinkID=213885) |
 | 2. |管理员 |创建或预配 BizTalk 服务。 |[使用 Azure 经典门户创建 BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=302280) |
-| 3. |管理员 |注册你个人或公司的 BizTalk 服务部署 |[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](https://msdn.microsoft.com/library/azure/hh689837.aspx) |
+| 3. |管理员 |注册你的或你公司的 BizTalk 服务部署 |[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](https://msdn.microsoft.com/library/azure/hh689837.aspx) |
 | 4. |管理员 |如果应用程序使用 BizTalk 适配器服务连接到本地业务线 (LOB) 系统或或队列/主题目标，则适用。  创建 Azure 服务总线命名空间。 向开发人员提供此命名空间、服务总线颁发者名称和服务总线颁发者密钥值。 |[如何：创建或修改服务总线服务命名空间](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)和[获取颁发者名称和颁发者密钥值](biztalk-issuer-name-issuer-key.md) |
 | 5. |开发人员 |在 Visual Studio 中安装 SDK 并创建 BizTalk 服务项目。 |[安装 Azure BizTalk 服务 SDK](https://msdn.microsoft.com/library/azure/hh689760.aspx) 和[在 Azure 上创建丰富消息传递终结点](https://msdn.microsoft.com/library/azure/hh689766.aspx) |
 | 6. |开发人员 |将 BizTalk 服务项目部署到托管在 Azure 上的 BizTalk 服务。 |[部署并刷新 BizTalk 服务项目](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
@@ -58,5 +56,4 @@ ms.lasthandoff: 11/17/2016
 [了解并创建消息映射和转换](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
 [使用 BizTalk 适配器服务 (BAS)](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
 [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=303664)
-
 

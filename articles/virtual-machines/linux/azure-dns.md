@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案有助于选择适合的解决方案。
@@ -54,7 +53,7 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 **注意事项：**
 
 * 不能修改 Azure 创建的 DNS 后缀。
-* 不能手动注册你自己的记录。
+* 不能手动注册自己的记录。
 * 不支持 WINS 和 NetBIOS。
 * 主机名必须符合 DNS。
     名称只能使用 0-9、a-z 和“-”，并且不能以“-”开始或结尾。 请参阅 RFC 3696 第 2 节。
@@ -116,7 +115,7 @@ Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
 1. 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient”。
 2. 运行“service network restart”以更新。
 
-## <a name="name-resolution-using-your-own-dns-server"></a>使用你自己的 DNS 服务器的名称解析
+## <a name="name-resolution-using-your-own-dns-server"></a>使用自己的 DNS 服务器的名称解析
 名称解析需求可能超过 Azure 提供的功能。 例如，可能需要在虚拟网络之间进行 DNS 解析。 为涵盖这种情况，可以使用你自己的 DNS 服务器。  
 
 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析同一虚拟网络中的主机名。 例如，在 Azure 中运行的 DNS 服务器可以响应其自身 DNS 区域文件的 DNS 查询，而将所有其他查询转发到 Azure。 通过此功能，虚拟机可以查看区域文件中的条目以及 Azure 提供的主机名（通过转发器）。 可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。
@@ -140,4 +139,3 @@ DNS 转发还可以在虚拟网络之间进行 DNS 解析，并使本地计算�
 > 为让性能达到最佳，在 Azure DNS 服务器中使用虚拟机时，请禁用 IPv6 并且将[实例层级公共 IP](../../virtual-network/virtual-networks-instance-level-public-ip.md) 分配给每个 DNS 服务器虚拟机。  
 >
 >
-

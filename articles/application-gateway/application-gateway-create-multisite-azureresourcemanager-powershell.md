@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: amsriva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: d42efa7d359f5c87c14afbfd138328b37c8ae6c2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-an-application-gateway-for-hosting-multiple-web-applications"></a>创建托管多个 Web 应用程序的应用程序网关
 
@@ -44,9 +43,9 @@ ms.lasthandoff: 04/20/2017
 
 * **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP/VIP。 也可使用 FQDN。
 * **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
-* **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
+* **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。 对于启用了多个站点的应用程序网关，还会添加主机名和 SNI 指示器。
-* **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 规则按其列出的顺序进行处理，并且流量通过匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。
+* **规则：**规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 规则按其列出的顺序进行处理，并且流量通过匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 04/20/2017
 3. 创建应用程序网关配置对象。
 4. 创建应用程序网关资源。
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
 确保使用最新版本的 Azure PowerShell。 可从[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中获取详细信息。
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 04/20/2017
 ```powershell
 Login-AzureRmAccount
 ```
-系统将提示用户使用凭据进行身份验证。
+系统会提示用户使用凭据进行身份验证。
 
 ### <a name="step-2"></a>步骤 2
 
@@ -100,12 +99,12 @@ New-AzureRmResourceGroup -Name appgw-RG -location "West US"
 $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway multiple site"}
 ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上面的示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
 
 > [!NOTE]
-> 如果你需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请参阅[自定义探测和运行状况监视](application-gateway-probe-overview.md)。
+> 如果需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请参阅[自定义探测和运行状况监视](application-gateway-probe-overview.md)。
 
 ## <a name="create-a-virtual-network-and-subnets"></a>创建虚拟网络和子网
 
@@ -221,7 +220,7 @@ $listener02 = New-AzureRmApplicationGatewayHttpListener -Name "listener02" -Prot
 
 ### <a name="step-8"></a>步骤 8
 
-为此示例中的两个 Web 应用程序创建两个规则设置。 可以通过规则将侦听器、后端池和 http 设置绑定到一起。 此步骤将应用程序网关配置为使用基本的路由规则，每个网站都有一个规则。 流向每个网站的流量由所配置的侦听器接收，然后又定向到所配置的后端池，所使用的属性在 BackendHttpSettings 中指定。
+为此示例中的两个 Web 应用程序创建两个规则设置。 可以通过规则将侦听器、后端池和 http 设置绑定到一起。 此步骤将应用程序网关配置为使用基本的路由规则，每个网站都有一个规则。 流向每个网站的流量由所配置的侦听器接收，再定向到所配置的后端池，所使用的属性在 BackendHttpSettings 中指定。
 
 ```powershell
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule01" -RuleType Basic -HttpListener $listener01 -BackendHttpSettings $poolSetting01 -BackendAddressPool $pool1
@@ -282,5 +281,4 @@ DnsSettings              : {
 ## <a name="next-steps"></a>后续步骤
 
 通过[应用程序网关 - Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)了解如何保护网站
-
 

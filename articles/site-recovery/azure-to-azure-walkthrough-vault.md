@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: e03d17992ee0b12049636e40188950bcc4a6f31e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="step-4-set-up-a-vault-for-azure-to-azure-replication"></a>步骤 4：为 Azure 到 Azure 的复制设置保管库
 
 [规划网络](azure-to-azure-walkthrough-network.md)后，使用本文在 Azure 门户中通过 [Azure Site Recovery](site-recovery-overview.md) 服务为复制到另一个 Azure 区域的 Azure 虚拟机 (VM) 设置保管库。
@@ -50,4 +48,3 @@ ms.lasthandoff: 08/02/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 5：启用复制](azure-to-azure-walkthrough-enable-replication.md)
-

@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 08/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 9944cbd2b1b7c4acb18d37da1394c0bbc170f77d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -37,12 +36,12 @@ Azure Active Directory 可向你提供各种报告。 对于应用程序（如 S
    
    * [使用审核 API 的示例](active-directory-reporting-api-audit-samples.md) 
    * [使用登录活动报告 API 的示例](active-directory-reporting-api-sign-in-activity-samples.md)
-3. **自定义** - 创建自己的解决方案： 
+3. 
+            **自定义** - 创建自己的解决方案： 
    
    * [使用审核 API 参考](active-directory-reporting-api-audit-reference.md) 
    * [使用登录活动报告 API 参考](active-directory-reporting-api-sign-in-activity-reference.md)
 
 ## <a name="next-steps"></a>后续步骤
 如果想要查看所有可用的 Azure AD 图形 API 终结点，请使用此链接：[https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta)。
-
 

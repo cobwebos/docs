@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>使用 Linux 诊断扩展监视 Linux VM 的性能和诊断数据
 
@@ -134,7 +133,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 步骤 2. 运行 `azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json`。
 
-请注意，在 2.3 版之前的扩展版本上使用此设置，所有写入到 `/var/log/mysql.err` 的日志也可能会复制到 `/var/log/syslog`（或 `/var/log/messages`，具体取决于 Linux 发行版）。 如果要避免此重复的日志记录，可以在 rsyslog 配置中不包括 `local6` 设备日志的日志记录。 这取决于 Linux 发行版，但在 Ubuntu 14.04 系统中，要修改的文件是 `/etc/rsyslog.d/50-default.conf`，可以将行 `*.*;auth,authpriv.none -/var/log/syslog` 替换为 `*.*;auth,authpriv,local6.none -/var/log/syslog`。 在最新修补程序版本 2.3 (2.3.9007) 中解决了此问题，因此，如果使用的是扩展版本 2.3，此问题应该不会发生。 如果在重新启动 VM 后此问题仍存在，请与我们联系，并帮助我们故障排除以确定未自动安装最新修补程序版本的原因。
+请注意，在 2.3 版之前的扩展版本上使用此设置，所有写入到 `/var/log/mysql.err` 的日志也可能会复制到 `/var/log/syslog`（或 `/var/log/messages`，具体取决于 Linux 发行版）。 如果要避免此重复的日志记录，可以在 rsyslog 配置中不包括 `local6` 设备日志的日志记录。 这取决于 Linux 发行版，但在 Ubuntu 14.04 系统中，要修改的文件是 `/etc/rsyslog.d/50-default.conf`，你可以将行 `*.*;auth,authpriv.none -/var/log/syslog` 替换为 `*.*;auth,authpriv,local6.none -/var/log/syslog`。 在最新修补程序版本 2.3 (2.3.9007) 中解决了此问题，因此，如果使用扩展版本 2.3，此问题应该不会发生。 如果在重新启动 VM 后此问题仍存在，请与我们联系，并帮助我们故障排除以确定未自动安装最新修补程序版本的原因。
 
 ### <a name="scenario-4-stop-the-extension-from-collecting-any-logs"></a>方案 4. 阻止扩展收集任何日志
 
@@ -161,9 +160,8 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 ![图像](./media/diagnostic-extension/no1.png)
 
-如果已启用 fileCfg 或 perfCfg（如方案 2 和 3 所述），则可以使用 Visual Studio 服务器资源管理器和 Azure 存储资源管理器来查看非默认数据。
+如果已启用 fileCfg 或 perfCfg（如方案 2 和 3 所述），则可以使用 Visual Studio 服务器资源管理器和 Azure 存储资源管理器查看非默认数据。
 
 ## <a name="known-issues"></a>已知问题
 
 * 只能通过脚本访问 Rsyslog 信息和客户指定的日志文件。
-

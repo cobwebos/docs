@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据仓库 (T-SQL) 中的透明数据加密 | Microsoft 文档"
+title: "SQL 数据仓库 (T-SQL) 中的透明数据加密 |Microsoft 文档"
 description: "SQL 数据仓库 (T-SQL) 中的透明数据加密 (TDE)"
 services: sql-data-warehouse
 documentationcenter: 
@@ -15,55 +15,54 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 74c9032aababdce91ed617cd7a4c628915b42504
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-transparent-data-encryption-tde"></a>透明数据加密 (TDE) 入门
+# <a name="get-started-with-transparent-data-encryption-tde"></a>要开始使用透明数据加密 (TDE)
 > [!div class="op_single_selector"]
 > * [安全性概述](sql-data-warehouse-overview-manage-security.md)
 > * [身份验证](sql-data-warehouse-authentication.md)
-> * [加密（门户）](sql-data-warehouse-encryption-tde.md)
+> * [加密 （门户）](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
-## <a name="required-permssions"></a>所需权限
-若要启用透明数据加密 (TDE)，用户必须是管理员或 dbmanager 角色的成员。
+## <a name="required-permssions"></a>所需的权限
+若要启用透明数据加密 (TDE)，你必须是管理员或 dbmanager 角色的成员。
 
 ## <a name="enabling-encryption"></a>启用加密
-执行以下步骤，对 SQL 数据仓库启用 TDE：
+请按照下列步骤，若要为 SQL 数据仓库启用 TDE:
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到托管数据库的服务器上的 *master* 数据库
-2. 执行以下语句来加密数据库。
+1. 连接到*master*承载使用管理员或的成员的登录名的数据库的服务器上的数据库**dbmanager** master 数据库中的角色
+2. 执行以下语句对数据库进行加密。
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>禁用加密
-执行以下步骤，对 SQL 数据仓库禁用 TDE：
+请按照下列步骤，若要为 SQL 数据仓库禁用 TDE:
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库
-2. 执行以下语句来加密数据库。
+1. 连接到*master*数据库使用管理员或的成员的登录名**dbmanager** master 数据库中的角色
+2. 执行以下语句对数据库进行加密。
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> 在更改 TDE 设置之前，必须恢复暂停的 SQL 数据仓库。
+> 必须对 TDE 的设置进行更改前恢复已暂停的 SQL 数据仓库。
 > 
 > 
 
 ## <a name="verifying-encryption"></a>验证加密
-若要验证 SQL 数据仓库的加密状态，请遵循以下步骤：
+若要为 SQL 数据仓库中验证加密状态，请按照以下步骤操作：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库或实例数据库
-2. 执行以下语句来加密数据库。
+1. 连接到*master*或使用管理员或的成员的登录名的实例数据库**dbmanager** master 数据库中的角色
+2. 执行以下语句对数据库进行加密。
 
 ```sql
 SELECT
@@ -73,9 +72,9 @@ FROM
     sys.databases;
 ```
 
-结果 ```1``` 表示数据库已加密，```0``` 表示数据库未加密。
+结果```1```指示数据库已加密，```0```指示非加密的数据库。
 
-## <a name="encryption-dmvs"></a>加密 DMV
+## <a name="encryption-dmvs"></a>加密 Dmv
 * [sys.databases][sys.databases] 
 * [sys.dm_pdw_nodes_database_encryption_keys][sys.dm_pdw_nodes_database_encryption_keys]
 
@@ -87,4 +86,3 @@ FROM
 <!--Image references-->
 
 <!--Link references-->
-

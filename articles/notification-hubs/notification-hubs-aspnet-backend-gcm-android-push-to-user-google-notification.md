@@ -14,20 +14,20 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-for-android-with-net-backend"></a>Azure 通知中心 - 使用 .NET 后端通知 Android 用户
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>概述
-利用 Azure 中的推送通知支持，你可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。 本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 本教程以你在[通知中心入门 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) 教程中创建的通知中心为基础。
+利用 Azure 中的推送通知支持，可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。 本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 本教程中创建的通知中心为基础[开始使用通知中心 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)教程。
 
 > [!NOTE]
-> 本教程假设你已按照[通知中心入门 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) 中所述创建并配置了通知中心。
+> 本教程假设已按照[通知中心入门 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) 中所述创建并配置了通知中心。
 > 
 > 
 
@@ -39,7 +39,7 @@ ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
 1. 请按照[通知中心入门 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) 教程创建应用并将其配置为从 GCM 接收推送通知。
 2. 打开 **res/layout/activity_main.xml** 文件，并将其内容替换为以下内容定义。
    
-    这将添加新的 EditText 控件用于以用户身份登录。 此外还会添加一个字段用作要发送的通知的一部分的用户名标记：
+    这会添加新的 EditText 控件用于以用户身份登录。 此外还会添加一个字段用作要发送的通知的一部分的用户名标记：
    
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -248,7 +248,7 @@ ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
         private static final String BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
 
 
-1. 在 `MainActivity` 类的 `onCreate` 方法中，删除或注释掉 `hub` 字段的初始化以及对 `registerWithNotificationHubs` 方法的调用。 然后添加代码以初始化 `RegisterClient` 类的实例。 该方法应包含以下行：
+1. 在 `MainActivity` 类的 `onCreate` 方法中，删除或注释掉 `hub` 字段的初始化以及对 `registerWithNotificationHubs` 方法的调用。 然后添加代码以初始化的实例`RegisterClient`类。 该方法应包含以下行：
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -265,7 +265,7 @@ ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
    
             setContentView(R.layout.activity_main);
         }
-2. 在 `MainActivity` 类中，删除或注释掉整个 `registerWithNotificationHubs` 方法。 本教程将不会使用该方法。
+2. 在 `MainActivity` 类中，删除或注释掉整个 `registerWithNotificationHubs` 方法。 本教程会不会使用该方法。
 3. 将以下 `import` 语句添加到 **MainActivity.java** 文件中。
    
         import android.widget.Button;
@@ -276,7 +276,7 @@ ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
         import org.apache.http.client.ClientProtocolException;
         import java.io.IOException;
         import org.apache.http.HttpStatus;
-4. 然后，添加以下方法以处理“登录”按钮单击事件以及发送推送通知。
+4. 然后，添加以下方法来处理**登录**按钮单击事件以及发送推送通知。
    
         @Override
         protected void onStart() {
@@ -363,7 +363,7 @@ ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
             }.execute(null, null, null);
         }
 
-    “登录”按钮的 `login` 处理程序使用输入的用户名和密码生成基本身份验证令牌（请注意，此令牌代表身份验证方案使用的任何令牌），然后该处理程序使用 `RegisterClient` 调用后端进行注册。
+    “登录”按钮的 `login` 处理程序使用输入的用户名和密码生成基本身份验证令牌（请注意，此令牌代表身份验证方案使用的任何令牌），并该处理程序使用 `RegisterClient` 调用后端进行注册。
 
     `sendPush` 方法调用后端来触发根据用户标记向用户发送安全通知。 `sendPush` 针对的平台通知服务取决于传入的 `pns` 字符串。
 
@@ -403,19 +403,13 @@ ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
 ## <a name="run-the-application"></a>运行应用程序
 1. 在设备或模拟器上使用 Android Studio 运行该应用程序。
 2. 在 Android 应用中，输入用户名和密码。 它们必须都是相同的字符串值，并且不能包含空格或特殊字符。
-3. 在 Android 应用中，单击“登录”。 等待指示“已登录并已注册”的 toast 消息。 此时将启用“发送通知”按钮。
+3. 在 Android 应用中，单击“登录”。 等待指示“已登录并已注册”的 toast 消息。 此时会启用“发送通知”按钮。
    
     ![][A2]
-4. 单击切换按钮，以启用你已在其中运行该应用并已注册用户的所有平台。
-5. 输入将接收通知消息的用户的名称。 必须已在目标设备上为通知注册该用户。
+4. 单击切换按钮，以启用已在其中运行该应用并已注册用户的所有平台。
+5. 输入接收通知消息的用户的名称。 必须已在目标设备上为通知注册该用户。
 6. 为用户输入要接收为推送通知的消息。
 7. 单击“发送通知”。  已使用匹配的用户名标记注册的每个设备都将收到该推送通知。
 
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

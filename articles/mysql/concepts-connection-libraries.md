@@ -9,14 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 06/08/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: e746f28829063f8437ad408c4681f90aec6c0e0a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL 的连接库
 本主题列出了客户端程序连接到 Azure Database for MySQL 时可以使用的每个库或驱动程序。
 
@@ -39,4 +37,3 @@ MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标�
 ## <a name="next-steps"></a>后续步骤
 [Azure Database for MySQL 概述](./overview.md)
 [Azure Database for MySQL 中的服务器概念](./concepts-servers.md)
-

@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.translationtype: HT
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
 ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>监视虚拟机和物理服务器的保护及其故障排除
 本监视与故障排除指南可帮助你了解如何跟踪 Azure Site Recovery 的复制运行状况，并掌握相关的故障排除方法。
 
 ## <a name="understand-the-components"></a>了解组件
 ### <a name="vmware-virtual-machine-or-physical-server-site-deployment-for-replication-between-on-premises-and-azure"></a>针对本地与 Azure 之间复制的 VMware 虚拟机或物理服务器站点部署
-若要设置本地 VMware 虚拟机或物理服务器与 Azure 之间的数据库恢复，需要在虚拟机或服务器上设置配置服务器、主目标服务器和进程服务器组件。 如果启用源服务器保护，Azure Site Recovery 会安装 Microsoft Azure 应用服务的移动应用功能。 在本地中断或源服务器故障转移到 Azure 后，客户需要在 Azure 中设置进程服务器，并在本地设置主目标服务器，以在本地重新生成源服务器。
+若要设置本地 VMware 虚拟机或物理服务器与 Azure 之间的数据库恢复，需要在虚拟机或服务器上设置配置服务器、主目标服务器和进程服务器组件。 为源服务器启用保护时，Azure Site Recovery 安装 Microsoft Azure 应用服务的移动应用功能。 在本地中断或源服务器故障转移到 Azure 后，客户需要在 Azure 中设置进程服务器，并在本地设置主目标服务器，以在本地重新生成源服务器。
 
 ![针对本地与 Azure 之间复制的 VMware/物理站点部署](media/site-recovery-monitoring-and-troubleshooting/image18.png)
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 06/06/2017
 此过程与 Virtual Machine Manager 部署类似。 唯一的区别在于，Azure Site Recovery 提供程序和 Azure 恢复服务代理会在 Hyper-V 主机上自行安装。 [了解详细信息](site-recovery-hyper-v-azure-architecture.md)。 。
 
 ## <a name="monitor-configuration-protection-and-recovery-operations"></a>监视配置、保护和恢复操作
-在“**作业**”选项卡下，Azure Site Recovery 中的每项操作都会经过审核和跟踪。有关任何配置、保护或恢复错误，请转到“**作业**”选项卡，并查找故障。
+在“**作业**”选项卡下，Azure Site Recovery 中的每项操作都会经过审核和跟踪。 有关任何配置、保护或恢复错误，请转到“**作业**”选项卡，并查找故障。
 
 ![“作业”选项卡中的“失败”筛选器](media/site-recovery-monitoring-and-troubleshooting/image3.png)
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 06/06/2017
 
 ![“错误详细信息”按钮](media/site-recovery-monitoring-and-troubleshooting/image4.png)
 
-错误详细信息可帮助你识别可能的原因，并获得解决问题的建议。
+可以借助错误详细信息识别可能的原因，获得解决问题的建议。
 
 ![显示特定作业的错误详细信息的对话框](media/site-recovery-monitoring-and-troubleshooting/image5.png)
 
@@ -192,7 +191,6 @@ Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery
 * 许多客户无法连接 Azure 中已故障转移的虚拟机。 [请参考故障排除文档，使用 RDP 连接虚拟机](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 #### <a name="adding-a-public-ip-on-a-resource-manager-virtual-machine"></a>在 Resource Manager 虚拟机上添加公共 IP
-如果门户中的“**连接**”按钮灰显，并且未通过 Express Route 或站点到站点 VPN 连接连接 Azure，必须先为虚拟机创建并分配一个公共 IP 地址，才能使用远程桌面/共享的 Shell。 然后，可以在虚拟机的网络接口上添加公共 IP。  
+如果门户中的“连接”按钮灰显，并且未通过 Express Route 或站点到站点 VPN 连接连接 Azure，必须先为虚拟机创建并分配一个公共 IP 地址，然后才能使用远程桌面/共享的 Shell。 然后，可以在虚拟机的网络接口上添加公共 IP。  
 
 ![在已故障转移的虚拟机的网络接口上添加公共 IP](media/site-recovery-monitoring-and-troubleshooting/createpublicip.gif)
-

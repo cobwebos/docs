@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: mmccrory
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4acea8e7f4714754e6b3e54e9aaa622219ca9f7f
-ms.openlocfilehash: f16d981a0dc33295c1981d9c282beb1d3243d9ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/03/2016
-
-
+ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>如何在 PowerShell 中缩放云服务
 
@@ -60,13 +58,13 @@ Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 
 ## <a name="scale-out-the-role-by-adding-more-instances"></a>通过添加更多实例来扩展角色
 
-若要扩展角色，请将所需的实例数作为 **Count** 参数传递给 **Set-AzureRole** cmdlet：
+若要扩展角色，请将所需的实例数作为 Count 参数传递给 Set-AzureRole cmdlet：
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
 ```
 
-当预配并启动新实例时，此 cmdlet 将立即阻止。 在此期间，如果打开一个新的 PowerShell 窗口，然后调用 **Get-AzureRole**（如前面所示），将看到新的目标实例计数。 如果在门户中查看角色状态，应看到新实例正在启动：
+当预配并启动新实例时，此 cmdlet 将立即阻止。 在此期间，如果打开一个新的 PowerShell 窗口，并调用 **Get-AzureRole** （如前面所示），将看到新的目标实例计数。 如果在门户中查看角色状态，应看到新实例正在启动：
 
 ![VM 实例正在门户中启动](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
 
@@ -76,9 +74,8 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ## <a name="scale-in-the-role-by-removing-instances"></a>通过删除实例缩小角色
 
-同样，可通过删除实例缩小角色。 将 **Set-AzureRole** 中的 **Count** 参数设置为缩小操作完成后所需的实例数。
+同样，可通过删除实例缩小角色。 将 Set-AzureRole 中的 Count 参数设置为缩小操作完成后所需的实例数。
 
 ## <a name="next-steps"></a>后续步骤
 
 不能从 PowerShell 为云服务配置自动缩放。 若要实现此操作，请参阅[如何自动缩放云服务](cloud-services-how-to-scale-portal.md)。
-

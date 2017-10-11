@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: f877a1dd844c40c913f3121e5288952653c312cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>教程：Azure Active Directory 与 eDigitalResearch 的集成
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 07/26/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-edigitalresearch-from-the-gallery"></a>从库中添加 eDigitalResearch
-若要配置 eDigitalResearch 与 Azure AD 的集成，需要从库中将 eDigitalResearch 添加到托管 SaaS 应用列表。
+要配置 eDigitalResearch 与 Azure AD 的集成，需要从库中将 eDigitalResearch 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 eDigitalResearch，请执行以下步骤：**
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/26/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 eDigitalResearch 测试用户](#create-a-edigitalresearch-test-user)** - 在 eDigitalResearch 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建一个 eDigitalResearch 测试用户](#create-a-edigitalresearch-test-user)** -若要具有在链接到用户的 Azure AD 表示的 eDigitalResearch Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**以验证配置是否正常工作。
+5. **[单一登录测试](#test-single-sign-on)**以验证配置是否适用。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -159,9 +158,9 @@ ms.lasthandoff: 07/26/2017
 
     ![“用户”对话框](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -216,7 +215,7 @@ ms.lasthandoff: 07/26/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -233,5 +232,4 @@ ms.lasthandoff: 07/26/2017
 [201]: ./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_203.png
-
 

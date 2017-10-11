@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
 ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>使用 Azure Active Directory 管理应用程序
 除了实际工作流或内容以外，企业对所有应用程序还会提出两个基本要求：
@@ -59,7 +58,7 @@ Azure Active Directory 是 Microsoft 的综合性标识即服务 (IDaaS) 解决�
 
 如果需要实施未在应用程序库中列出的应用程序怎么办？ 尽管这比为应用程序库中的应用程序配置 SSO 更加耗时，但 Azure AD 提供的向导可以帮助你完成配置。
 
-Azure AD 的价值“不只是”体现在云应用程序方面。 你也可以通过提供安全的远程访问，将它与本地应用程序搭配使用。 有了安全的远程访问，你就不再需要 VPN 或其他传统的远程访问管理实施。
+Azure AD 的价值“不只是”体现在云应用程序方面。 也可以通过提供安全的远程访问，将它用于本地应用程序。 有了安全的远程访问，就不再需要 VPN 或其他传统的远程访问管理实施。
 
 Azure AD 为所有应用程序提供中心访问管理和单一登录 (SSO)，可以解决主要数据安全和工作效率问题。
 
@@ -77,41 +76,40 @@ SSO 过程分为两个步骤：
 使用 Azure AD 来管理应用程序和启用 SSO 时：
 
 * 身份验证在用户本地（例如 AD）或 Azure AD 帐户中完成。
-* 授权将会根据 Azure AD 分配和保护策略执行，确保一致的最终用户体验，并使你能够在任何应用程序中添加分配、位置和 MFA 条件，不管应用程序的内部功能是什么。
+* 授权会根据 Azure AD 分配和保护策略执行，确保一致的最终用户体验，并使你能够在任何应用程序中添加分配、位置和 MFA 条件，不管应用程序的内部功能是什么。
 
-你必须知道，对目标应用程序实施授权的方式根据应用程序与 Azure AD 集成的方式而有所不同。
+必须知道，对目标应用程序实施授权的方式根据应用程序与 Azure AD 集成的方式而有所不同。
 
 * **服务提供商预先集成的应用程序**：与 Office 365 和 Azure 一样，这些应用程序直接构建在 Azure AD 的基础之上，并依赖于 Azure AD 来实现其全面的标识和访问管理功能。 可以通过目录信息和令牌颁发来实现对这些应用程序的访问。
 * **由 Microsoft 预先集成的应用程序和自定义应用程序**：这些应用程序是独立的云应用程序，它们依赖于一个内部应用程序目录，并可以独立于 Azure AD 运行。 可以通过颁发映射到应用程序帐户的应用程序特定凭据来实现对这些应用程序的访问。 根据应用程序的功能，凭据可以是联合身份验证令牌，也可以是先前在应用程序中预配的帐户的用户名和密码。
-* **本地应用程序**：通过 Azure AD 应用程序代理发布的应用程序，主要用于实现对本地应用程序的访问。 这些应用程序主要依赖于 Windows Server Active Directory 等本地目录。 若要访问这些应用程序，可以触发代理以便将应用程序内容传送给最终用户，同时遵守本地登录要求。
+* **本地应用程序**：通过 Azure AD 应用程序代理发布的应用程序，主要用于实现对本地应用程序的访问。 这些应用程序主要依赖于 Windows Server Active Directory 等本地目录。 要访问这些应用程序，可以触发代理以便将应用程序内容传送给最终用户，同时遵守本地登录要求。
 
-例如，如果某个用户加入了你的组织，你需要在 Azure AD 中为该用户创建一个帐户，使其能够执行主要的登录操作。 如果此用户需要访问托管应用程序（如 Salesforce），则你还需要在 Salesforce 中为此用户创建一个帐户并将该帐户链接到 Azure 帐户，这样才能使 SSO 正常工作。 当该用户离开你的组织时，建议你删除该用户以前所访问应用程序的 IAM 存储中的 Azure AD 帐户和所有对应帐户。
+例如，如果某个用户加入了组织，需要在 Azure AD 中为该用户创建一个帐户，使其能够执行主要的登录操作。 如果此用户需要访问托管应用程序（如 Salesforce），则你还需要在 Salesforce 中为此用户创建一个帐户并将该帐户链接到 Azure 帐户，这样才能使 SSO 正常工作。 当该用户离开组织时，建议删除该用户以前所访问应用程序的 IAM 存储中的 Azure AD 帐户和所有对应帐户。
 
 ## <a name="access-detection"></a>访问检测
-在现代企业中，IT 部门不一定了解它们正在使用的所有云应用程序。 Cloud App Discovery 与 Azure AD 的组合为你提供了检测这些应用程序的解决方案。
+在现代企业中，IT 部门不一定了解它们正在使用的所有云应用程序。 Cloud App Discovery 与 Azure AD 的组合提供了检测这些应用程序的解决方案。
 
 ## <a name="account-management"></a>帐户管理
 管理不同应用程序中的帐户一直以来都是组织中 IT 或支持人员手动执行的过程。 Azure AD 可以全自动管理服务提供商集成的所有应用程序，以及 Microsoft 集成的、支持自动用户预配或 SAML JIT 的应用程序中的帐户。
 
 ## <a name="automated-user-provisioning"></a>自动用户预配
-某些应用程序提供了自动化接口用于创建和删除（或停用）帐户。 如果提供商提供了这种接口，Azure AD 就会利用该接口。 由于管理任务会自动进行，因此可以降低你的运营成本；此外，由于减少了未授权访问的可能性，因此提高了环境的安全性。
+某些应用程序提供了自动化接口用于创建和删除（或停用）帐户。 如果提供商提供了这种接口，Azure AD 就会利用该接口。 由于管理任务会自动进行，因此可以降低运营成本；此外，由于减少了未授权访问的可能性，因此可以提高环境的安全性。
 
 ## <a name="access-management"></a>访问管理
-借助 Azure AD，你可以使用个人或规则驱动的分配来管理对应用程序的访问。 你还可以将访问管理权委派给组织中的适当人员，确保以最适当的方式监督访问，减轻支持人员的负担。
+借助 Azure AD，可以使用个人或规则驱动的分配来管理对应用程序的访问。 还可以将访问管理权委派给组织中的适当人员，确保以最适当的方式监督访问，减轻支持人员的负担。
 
 ## <a name="on-premises-applications"></a>本地应用程序
-使用内置的应用程序代理，可以将本地应用程序发布给你的用户，使现代云应用程序中提供一致性的访问体验，同时受益于 Azure AD 监视、报告和安全功能。
+使用内置的应用程序代理，可以将本地应用程序发布给用户，使现代云应用程序中提供一致性的访问体验，同时受益于 Azure AD 监视、报告和安全功能。
 
 ## <a name="reporting-and-monitoring"></a>报告和监视
 Azure AD 提供预先集成的报告和监控功能，使你能够知道谁有权访问应用程序，以及他们使用应用程序的实际时间。
 
 ## <a name="related-capabilities"></a>相关功能
-借助 Azure AD，可以使用精细的访问策略和预先集成的 MFA 来保护你的应用程序。 若要了解有关 Azure MFA 的详细信息，请参阅 [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/)。
+借助 Azure AD，可以使用精细的访问策略和预先集成的 MFA 来保护应用程序。 若要了解有关 Azure MFA 的详细信息，请参阅 [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/)。
 
 ## <a name="getting-started"></a>入门
-若要开始将应用程序与 Azure AD 集成，请参阅[将 Azure Active Directory 与应用程序集成入门指南](active-directory-integrating-applications-getting-started.md)。
+要开始将应用程序与 Azure AD 集成，请参阅[将 Azure Active Directory 与应用程序集成入门指南](active-directory-integrating-applications-getting-started.md)。
 
 ## <a name="see-also"></a>另请参阅
 [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
 

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 4f8ebf5e734cc2e79819593c942f0e55227e522c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: c90b61812affb7e7af05cf3e302d045958da59be
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>登录到配置为密码单一登录的 Azure AD 库应用程序时出现的问题
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授予他们访问权限的基于云的应用程序。 拥有 Azure AD 版本的用户还可以通过访问面板使用自助服务组和应用管理功能。 访问面板不同于 Azure 门户，它不要求用户拥有 Azure 订阅。
@@ -40,7 +38,7 @@ ms.lasthandoff: 04/18/2017
 -   Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
 
 >[!NOTE]
->如果浏览器扩展支持 Edge，则基于密码的 SSO 扩展可供 Windows 10 中的 Edge 使用。
+>如果浏览器扩展支持 Microsoft Edge，则基于密码的 SSO 扩展可供 Windows 10 中的 Microsoft Edge 使用。
 >
 >
 
@@ -50,7 +48,7 @@ ms.lasthandoff: 04/18/2017
 
 1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
 
-2.  单击访问面板中的“密码 - SSO 应用程序”。
+2.  在访问面板中单击“密码-SSO 应用程序”。
 
 3.  在出现询问是否安装该软件的提示时，选择“立即安装”。
 
@@ -74,7 +72,7 @@ ms.lasthandoff: 04/18/2017
 
 先决条件包括：
 
--   已设置 [Active Directory 域服务](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，并且已将用户的计算机加入你的域。
+-   已设置 [Active Directory 域服务](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，并且已将用户的计算机加入域。
 
 -   必须拥有“编辑设置”权限才能编辑组策略对象 (GPO)。 默认情况下，以下安全组的成员拥有此权限：域管理员、企业管理员和组策略创建者和所有者。 [了解详细信息](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
 
@@ -102,11 +100,11 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“企业应用程序”边栏选项卡右上角的“添加”按钮
+5.  在“企业应用程序”边栏选项卡上的右上角，单击“添加”按钮
 
 6.  单击“非库应用程序”。
 
@@ -118,17 +116,17 @@ ms.lasthandoff: 04/18/2017
 
 若要为应用程序配置单一登录，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序
 
@@ -140,23 +138,23 @@ ms.lasthandoff: 04/18/2017
 
 10. 将用户分配到应用程序。
 
-11. 此外，还可以通过以下方式代表用户提供凭据：选择用户对应的行，单击“更新凭据”，然后代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
+11. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
 ### <a name="assign-users-to-the-application"></a>将用户分配到应用程序
 
-若要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
+要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  从列表中选择要向其分配用户的应用程序。
 
@@ -174,15 +172,15 @@ ms.lasthandoff: 04/18/2017
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器以选择要分配给所选用户的角色。
+14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器可选择要分配给所选用户的角色。
 
-15. 单击“分配”按钮将应用程序分配给所选用户。
+15. 单击“分配”按钮，将应用程序分配给选定用户。
 
 稍等片刻，所选用户就能使用解决方案描述部分所述的方法来启动这些应用程序了。
 
 ## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题
 
-打开支持票证并提供以下信息（如果有）：
+打开支持票证，并提供以下信息（如有）：
 
 -   相关错误 ID
 
@@ -192,11 +190,10 @@ ms.lasthandoff: 04/18/2017
 
 -   浏览器类型
 
--   错误发生时的时区和时间/时间范围
+-   错误发生的时区和时间/时间段
 
 -   Fiddler 跟踪
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
-ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
 ms.openlocfilehash: df3bbda15e1245b6068c2b8290d0c96856051f1f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -122,7 +121,7 @@ ms.lasthandoff: 08/08/2017
 
 ## <a name="configure-your-notification-hub"></a>配置通知中心
 1. 登录到 [Azure 经典门户]，并单击屏幕底部的“+新建”。
-2. 依次单击“应用程序服务”、“服务总线”、“通知中心”和“快速创建”
+2. 依次单击“应用服务”、“服务总线”、“通知中心”和“快速创建”。
 3. 为**通知中心**提供名称，选择要在其中创建此通知中心的**区域**和**命名空间**，并单击“创建新的通知中心”。  
    
       ![][17]
@@ -447,4 +446,3 @@ ms.lasthandoff: 08/08/2017
 [百度推送 Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
 [Azure 经典门户]: https://manage.windowsazure.com/
 [百度门户]: http://www.baidu.com/
-

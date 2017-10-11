@@ -162,7 +162,7 @@ docker info
 
     ![PuTTY 配置 1](./media/container-service-connect/putty1.png)
 
-4. 选择“SSH”>“身份验证”。添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
+4. 选择“SSH”>“身份验证”。 添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
 
     ![PuTTY 配置 2](./media/container-service-connect/putty2.png)
 
@@ -191,7 +191,7 @@ docker info
 * Marathon： `http://localhost/marathon`
 * Mesos： `http://localhost/mesos`
 
-为 Docker Swarm 配置隧道后，请打开 Windows 设置，配置一个名为 `DOCKER_HOST`、值为 `:2375` 的系统环境变量。 然后，可以通过 Docker CLI 访问 Swarm 群集。
+为 Docker Swarm 配置隧道后，请打开 Windows 设置，配置一个名为 `DOCKER_HOST`、值为 `:2375` 的系统环境变量。 然后，你可以通过 Docker CLI 访问 Swarm 群集。
 
 ## <a name="next-steps"></a>后续步骤
 在群集中部署和管理容器：

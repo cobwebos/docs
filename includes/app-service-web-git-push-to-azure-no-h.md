@@ -10,4 +10,4 @@ git remote add azure <URI from previous step>
 git push azure master
 ```
 
-前面的命令会显示类似于以下示例的信息：
+前面的命令将显示类似于以下示例的信息：

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 38d70ed302eeab912ce4fe33272f85e96f1b1eda
 ms.openlocfilehash: 9d2dcf7164985508d691e8a0c123efaf3b8aa19a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/11/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-a-custom-image-from-a-vm"></a>从 VM 创建自定义映像
 
 [!INCLUDE [devtest-lab-custom-image-definition](../../includes/devtest-lab-custom-image-definition.md)]
@@ -32,7 +30,7 @@ ms.lasthandoff: 01/11/2017
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 
 1. 从实验室列表，选择所需的实验室。  
 
@@ -57,9 +55,8 @@ ms.lasthandoff: 01/11/2017
 ## <a name="related-blog-posts"></a>相关的博客文章
 
 - [自定义映像或公式吗？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [复制 Azure DevTest 实验室间的自定义映像](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [复制 Azure 开发测试实验室间的自定义映像](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ##<a name="next-steps"></a>后续步骤
 
 - [将 VM 添加到实验室](./devtest-lab-add-vm-with-artifacts.md)
-

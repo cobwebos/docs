@@ -15,14 +15,12 @@ ms.date: 06/15/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 6166e20a4652379dc9eeffe522feb651f5e57ea2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.openlocfilehash: f43f6e33976325920da9cf0f6aef6decae5bde26
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="security-best-practices-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全最佳实践
 
 对于希望增强其身份验证过程的大多数组织来说，双重验证是其首选。 Azure 多重身份验证 (MFA) 可帮助公司满足其安全和法规遵从要求，同时为用户提供简单的登录体验。 本文介绍了计划采用 Azure MFA 时应考虑的一些提示。
@@ -55,7 +53,7 @@ ms.lasthandoff: 09/14/2017
 * 无需拥有 Azure AD 目录，即可创建多重身份验证提供程序；但如果有，可以使用更多功能。 将身份验证提供程序与 Azure AD 目录关联后会实现以下功能：  
   * 将双重验证功能扩展到所有用户  
   * 为全局管理员提供其他功能，如管理门户、自定义问候语和报告。
-* 若要将本地 Active Directory 环境与 Azure AD 目录同步，需要有 DirSync 或 AAD Sync。如果使用不与 Active Directory 的本地实例同步的 Azure AD 目录，则不需要 DirSync 或 AAD 同步。
+* 若要将本地 Active Directory 环境与 Azure AD 目录同步，需要有 DirSync 或 AAD Sync。 如果使用不与 Active Directory 的本地实例同步的 Azure AD 目录，则不需要 DirSync 或 AAD 同步。
 * 选择最适合业务的消耗模型。 使用模型一旦选择之后，就无法对其更改。 有以下两个模型：
   * 按身份验证：针对每次验证收费。 如果要对访问某些应用的任何人（而不是特定用户）进行双重验证，请使用此模型。
   * 基于启用的用户：对启用 Azure MFA 的每个用户收费。 如果拥有一些使用 Azure AD Premium 或企业移动性套件许可证的用户，请使用此模型。
@@ -89,7 +87,7 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 如果组织通过 Azure AD 进行 SSO 联合验证，并且打算使用 Azure MFA，请注意以下详细信息：
 
 * 应用密码由 Azure AD 进行验证，因此绕过了联合。 仅在设置应用密码时，才会使用联合。
-* 对于联合 (SSO) 用户，密码存储在组织 ID 中。如果用户离开公司，相应信息必须通过 DirSync 流向组织 ID。 帐户禁用/删除可能需要长达三个小时才能同步，从而延迟了 Azure AD 中应用密码的禁用/删除。
+* 对于联合 (SSO) 用户，密码存储在组织 ID 中。 如果用户离开公司，相应信息必须通过 DirSync 流向组织 ID。 帐户禁用/删除可能需要长达三个小时才能同步，从而延迟了 Azure AD 中应用密码的禁用/删除。
 * 应用密码不遵循“本地客户端访问控制”设置。
 * 没有为应用密码提供本地身份验证日志记录/审核功能。
 * 在对客户端使用双重验证时，某些先进的体系结构设计可能需要将组织用户名和密码与应用密码结合使用，具体取决于进行身份验证的位置。 对于针对本地基础结构进行身份验证的客户端，会使用组织用户名和密码。 对于针对 Azure AD 进行身份验证的客户端，会使用应用密码。
@@ -114,5 +112,4 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 * [Azure 多重身份验证中的报告](multi-factor-authentication-manage-reports.md)
 * [双重验证注册体验](multi-factor-authentication-end-user-first-time.md)
 * [Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)
-
 

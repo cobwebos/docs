@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL 数据仓库中的 Group By 选项
 [GROUP BY][GROUP BY] 子句用于将数据聚合成摘要行集。 它还具有一些扩展其功能的选项，但这些选项需要经过处理，因为 Azure SQL 数据仓库不直接支持这些选项。
@@ -147,7 +146,7 @@ WITH
 ;
 ```
 
-第三步是是循环访问执行聚合的列 cube。 查询将为 #Cube 临时表中的每个行运行一次，并将结果存储在 #Results 临时表中
+第三步是是循环访问执行聚合的列 cube。 查询为 #Cube 临时表中的每个行运行一次，并将结果存储在 #Results 临时表中
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -196,4 +195,3 @@ ORDER BY 1,2,3
 
 
 <!--Other Web references-->
-

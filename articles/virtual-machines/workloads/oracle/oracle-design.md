@@ -15,15 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9bd9ff35cebc2aeaf0558dcf1a37887050682f0a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: 1af7e1d40a0eb129875dd6a30ac899f2025bee13
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
-
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
 ## <a name="assumptions"></a>假设
@@ -213,7 +210,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
 
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 
@@ -238,4 +235,3 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
 - [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)
-

@@ -1,8 +1,8 @@
 
-上一示例介绍了标准登录过程，此过程要求在应用每次启动时客户端同时联系标识提供者和后端 Azure 服务。 此方法效率较低，并且许多用户同时启动应用时可能产生使用率相关方面的问题。 更好的方法是缓存 Azure 服务返回的授权令牌，然后在使用基于提供者的登录之前首先尝试使用此令牌。
+前面的示例显示标准登录，这要求客户端每次启动该应用程序与联系标识提供程序和后端 Azure 服务。 此方法、 低效且如果很多客户尝试同时启动您的应用程序，可能会遇到关于使用率的问题。 更好的方法是缓存授权令牌由 Azure 服务，并尝试使用基于提供程序的登录之前，使用此第一个。
 
 > [!NOTE]
-> 无论使用客户端管理的还是服务管理的身份验证，都可以缓存由后端 Azure 服务颁发的令牌。 本教程使用服务管理的身份验证。
+> 你可以缓存由后端无论你使用客户端管理或由服务管理身份验证的 Azure 服务颁发的令牌。 本教程使用服务托管的身份验证。
 >
 >
 
@@ -11,12 +11,12 @@
         import android.content.Context;
         import android.content.SharedPreferences;
         import android.content.SharedPreferences.Editor;
-2. 将以下成员添加到 `ToDoActivity` 类。
+2. 添加到以下成员`ToDoActivity`类。
 
         public static final String SHAREDPREFFILE = "temp";    
         public static final String USERIDPREF = "uid";    
         public static final String TOKENPREF = "tkn";    
-3. 在 ToDoActivity.java 文件中，为 `cacheUserToken` 方法添加下面的定义。
+3. 在 ToDoActivity.java 文件中，添加以下定义`cacheUserToken`方法。
 
         private void cacheUserToken(MobileServiceUser user)
         {
@@ -27,13 +27,13 @@
             editor.commit();
         }    
 
-    此方法将用户 ID 和令牌存储在标记为私有的首选项文件中。 这可保护对缓存的访问，这样设备上的其他应用便无权访问此令牌。 因为应用的首选项已经过沙盒处理。 但是，如果有人获取了设备的访问权，则它们可能会通过其他方式获得对令牌缓存的访问权。
+    此方法将标记为私有的首选项文件中存储的用户 ID 和令牌。 这应保护对缓存的访问，以便其他应用在设备上的没有访问令牌。 首选方法是沙盒应用程序。 但是，如果有人获取了对设备进行访问，则可能它们可能会获得对通过其他方式令牌缓存的访问。
 
    > [!NOTE]
-   > 如果使用令牌访问的数据非常敏感，并且有人可能会获得设备的访问权限，则可以使用加密进一步保护令牌。 但是，完全安全的解决方案超出了本教程的范围并且取决于具体的安全要求。
+   > 如果对你的数据的访问令牌被认为非常敏感，并且有人可能会获得访问设备，可以进一步防止具有加密的令牌。 但是，完全安全的解决方案超出了本教程中，范围并且取决于您的安全要求。
    >
    >
-4. 在 ToDoActivity.java 文件中，为 `loadUserTokenCache` 方法添加下面的定义。
+4. 在 ToDoActivity.java 文件中，添加以下定义`loadUserTokenCache`方法。
 
         private boolean loadUserTokenCache(MobileServiceClient client)
         {
@@ -51,7 +51,7 @@
 
             return true;
         }
-5. 在 *ToDoActivity.java* 文件中，将 `authenticate` 方法替换为下面这种使用令牌缓存的方法。 如果要使用的帐户不是 Google 帐户，请更改登录提供者。
+5. 在*ToDoActivity.java*文件中，将`authenticate`使用以下方法，它使用令牌缓存的方法。 如果你想要使用的帐户不是 Google，请更改登录提供程序。
 
         private void authenticate() {
             // We first try to load a token cache if one exists.
@@ -81,4 +81,4 @@
                 });
             }
         }
-6. 构建此应用并使用有效帐户来测试验证。 至少两次运行它。 在第一次运行期间，你应会收到要求登录并创建令牌缓存的提示。 之后，每次运行时，系统都会尝试加载用于身份验证的令牌缓存。 而你无需再次登录。
+6. 生成的应用和测试身份验证使用有效的帐户。 至少两次运行它。 在第一次运行，您应收到登录并创建令牌缓存的提示。 之后，每次运行尝试加载令牌缓存中的用于身份验证。 你不应需要登录。

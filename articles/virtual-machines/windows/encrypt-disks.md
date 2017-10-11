@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/10/2017
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 14130a87a7a4262307f9e8d9c0d0f8c057e9810b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.openlocfilehash: 98b42b252a601af090579e3939f3c7ab91c3803b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>如何加密 Windows VM 上的虚拟磁盘
 为了增强虚拟机 (VM) 的安全性以及符合性，可以加密 Azure 中的虚拟磁盘。 磁盘是使用 Azure 密钥保管库中受保护的加密密钥加密的。 可以控制这些加密密钥，以及审核对它们的使用。 本文详细阐述如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘。 还可[使用 Azure CLI 2.0 加密 Linux VM](../linux/encrypt-disks.md)。
@@ -42,7 +41,7 @@ Windows VM 上的虚拟磁盘使用 Bitlocker 进行静态加密。 加密 Azure
 
 * **Azure 密钥保管库** - 用于保护磁盘加密/解密过程中使用的加密密钥和机密。 
   * 可以使用现有的 Azure 密钥保管库（如果有）。 不需要专门使用某个密钥保管库来加密磁盘。
-  * 若要将管理边界和密钥可见性隔离开来，可以创建专用的密钥保管库。
+  * 要将管理边界和密钥可见性隔离开来，可以创建专用的密钥保管库。
 * **Azure Active Directory** - 处理所需加密密钥的安全交换，以及对请求的操作执行的身份验证。 
   * 通常，可以使用现有的 Azure Active Directory 实例来容装应用程序。
   * 服务主体提供了安全机制，可用于请求和获取相应的加密密钥。 实际并不需要开发与 Azure Active Directory 集成的应用程序。
@@ -50,7 +49,7 @@ Windows VM 上的虚拟磁盘使用 Bitlocker 进行静态加密。 加密 Azure
 ## <a name="requirements-and-limitations"></a>要求和限制
 磁盘加密支持的方案和要求
 
-* 在来自 Azure Marketplace 映像或自定义 VHD 映像的新 Windows VM 上启用加密。
+* 在来自 Azure 应用商店映像或自定义 VHD 映像的新 Windows VM 上启用加密。
 * 在现有的 Azure Windows VM 上启用加密。
 * 在使用存储空间配置的 Windows VM 上启用加密。
 * 在 Windows VM 的 OS 和数据驱动器上禁用加密。
@@ -115,7 +114,7 @@ $app = New-AzureRmADApplication -DisplayName $appName `
 New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
 ```
 
-若要成功加密或解密虚拟磁盘，必须将 Key Vault 中存储的加密密钥的权限设置为允许 Azure Active Directory 服务主体读取密钥。 使用 [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) 设置 Key Vault 的权限：
+要成功加密或解密虚拟磁盘，必须将 Key Vault 中存储的加密密钥的权限设置为允许 Azure Active Directory 服务主体读取密钥。 使用 [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) 设置 Key Vault 的权限：
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName $keyvaultName `
@@ -179,7 +178,7 @@ New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vmConfig
 
 
 ## <a name="encrypt-virtual-machine"></a>加密虚拟机
-若要加密虚拟磁盘，可将前面的所有组件合并在一起：
+要加密虚拟磁盘，可将前面的所有组件合并在一起：
 
 1. 指定 Azure Active Directory 服务主体和密码。
 2. 指定用于存储加密磁盘元数据的密钥保管库。
@@ -222,4 +221,3 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Key Vault 管理的详细信息，请参阅[为虚拟机设置 Key Vault](key-vault-setup.md)。
 * 有关磁盘加密的详细信息，例如准备要上载到 Azure 的已加密自定义 VM，请参阅 [Azure Disk Encryption](../../security/azure-security-disk-encryption.md)\（Azure 磁盘加密）。
-

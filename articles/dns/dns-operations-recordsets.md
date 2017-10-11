@@ -14,14 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 2962e30e5d9c60b8e786e2ba79647cabfc5925cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集
 
 > [!div class="op_single_selector"]
@@ -74,7 +72,7 @@ $aRecords += New-AzureRmDnsRecordConfig -IPv4Address "2.3.4.5"
 New-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-可使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将应用程序特定的数据与每个记录集相关联。 以下示例说明如何使用“dept=finance”和“environment=production”这两个元数据条目创建记录集。
+可以使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将特定于应用程序的数据与每个记录集相关联。 以下示例说明如何使用“dept=finance”和“environment=production”这两个元数据条目创建记录集。
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
@@ -188,7 +186,7 @@ $recordsets = Get-AzureRmDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName
 $recordsets = Get-AzureRmDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-若要跨记录类型检索具有给定名称的所有记录集，需先检索所有记录集，然后对结果进行筛选：
+要跨记录类型检索具有给定名称的所有记录集，需先检索所有记录集，然后对结果进行筛选：
 
 ```powershell
 $recordsets = Get-AzureRmDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
@@ -203,7 +201,7 @@ $recordsets = Get-AzureRmDnsRecordSet -Zone $zone
 
 ## <a name="add-a-record-to-an-existing-record-set"></a>将记录添加到现有记录集
 
-若要将记录添加到现有记录集，请执行以下三个步骤：
+要将记录添加到现有记录集，请执行以下三个步骤：
 
 1. 获取现有记录集
 
@@ -321,7 +319,7 @@ Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ### <a name="to-modify-record-set-metadata"></a>修改记录集元数据
 
-可使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将应用程序特定的数据与每个记录集相关联。
+可以使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将特定于应用程序的数据与每个记录集相关联。
 
 以下示例说明如何修改现有记录集的元数据：
 
@@ -392,4 +390,3 @@ Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -Resourc
 了解如何在使用 Azure DNS 时[保护区域和记录](dns-protect-zones-recordsets.md)。
 <br>
 查看 [Azure DNS PowerShell 参考文档](/powershell/module/azurerm.dns)。
-

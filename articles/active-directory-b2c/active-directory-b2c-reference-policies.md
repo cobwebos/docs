@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: sama
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: daad3af089afdf76b930053728bb11a5cf4c2a92
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C：内置策略
 
@@ -105,5 +104,4 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 ## <a name="next-steps"></a>后续步骤
 * [令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)
 * [在使用者注册期间禁用电子邮件验证](active-directory-b2c-reference-disable-ev.md)
-
 

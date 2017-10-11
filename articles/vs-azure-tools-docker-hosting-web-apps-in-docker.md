@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
 ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>将 ASP.NET 容器部署到远程 Docker 主机
 ## <a name="overview"></a>概述
-Docker 是轻型容器引擎，在某些方面类似于虚拟机，你可以将其用于托管应用程序和服务。
+Docker 是轻型容器引擎，在某些方面类似于虚拟机，可以将其用于托管应用程序和服务。
 本教程将指导你完成使用 [Visual Studio Tools for Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) 扩展在 Azure 上通过 PowerShell 将 ASP.NET Core 应用部署到 Docker 主机。
 
 ## <a name="prerequisites"></a>先决条件
@@ -48,7 +47,7 @@ Docker 是轻型容器引擎，在某些方面类似于虚拟机，你可以将�
    ```
    PS C:\Src\WebApplication1>
    ```
-2. 验证远程主机是否正在运行。 你应看到状态 =“正在运行” 
+2. 验证远程主机是否正在运行。 应看到状态 =“正在运行” 
    
    ```
    docker-machine ls
@@ -79,12 +78,11 @@ Docker 是轻型容器引擎，在某些方面类似于虚拟机，你可以将�
    > 
    > 
    
-   Docker 完成后，你应看到与下面类似的结果：
+   Docker 完成后，应看到与下面类似的结果：
    
-   ![查看你的应用][3]
+   ![查看应用][3]
 
 [0]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/docker-props-in-solution-explorer.png
 [1]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/change-docker-machine-name.png
 [2]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
-

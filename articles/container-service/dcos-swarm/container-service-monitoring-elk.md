@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 6abad7d9d501a1fdead83a1a678f1b053ee70a25
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: fcfa277cdd0f3cebc0fbbb23e771fb23ffbe2ca6
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-elk"></a>使用 ELK 监视 Azure 容器服务群集
 在本文中，我们将演示如何在 Azure 容器服务中的 DC/OS 群集上部署 ELK（Elasticsearch、Logstash、Kibana）堆栈。 
@@ -61,7 +60,7 @@ ELK 堆栈是 Elasticsearch、Logstash 和 Kibana 的组合，提供可用于监
 ![ELK6](./media/container-service-monitoring-elk/elk6.PNG)
 
 
-若要访问 Kibana 仪表板（在端口 5601 上部署），需要打开端口 5601。 请按照[此处](container-service-enable-public-access.md)的说明进行操作。 然后在 `http://localhost:5601` 打开 Kibana 仪表板。
+若要访问 Kibana 仪表板（在端口 5601 上部署），需要打开端口 5601。 请按照[此处](container-service-enable-public-access.md)的说明进行操作。 然后打开在 Kibana 仪表板： `http://localhost:5601`。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -70,5 +69,4 @@ ELK 堆栈是 Elasticsearch、Logstash 和 Kibana 的组合，提供可用于监
 * 若要筛选日志，请参阅[使用 ELK 筛选日志](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/)。 
 
  
-
 

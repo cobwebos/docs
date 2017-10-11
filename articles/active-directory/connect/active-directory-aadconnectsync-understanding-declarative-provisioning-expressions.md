@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: 58908d65fdebd651e5cfab2b668574bdf7ab6085
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: e3a03a97b10e04fb85261620879b2102e1db8465
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
 Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明式预配。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
@@ -40,7 +39,7 @@ Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的
 * 内置常量和文本仅使用其名称表示：NULL、CRLF、IgnoreThisFlow
 
 ### <a name="functions"></a>函数
-声明性预配使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果将传递到另一个函数。
+声明性预配使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果会传递到另一个函数。
 
 `Function1(Function2(Function3()))`
 
@@ -78,11 +77,11 @@ Active Directory 连接器为入站同步规则提供以下参数：
 运算符从左到右进行求值，并具有相同的求值优先级。 也就是说，\*（乘号）不会在 -（减号）之前求值。 2\*(5+3) 与 2\*5+3 不同。 如果从左到右的求值顺序不适当，可以使用括号 () 来更改求值顺序。
 
 ## <a name="multi-valued-attributes"></a>多值属性
-可对单值和多值属性运行函数。 对于多值属性，函数将针对每个值运行，向每个值应用相同的函数。
+可对单值和多值属性运行函数。 对于多值属性，函数针对每个值运行，向每个值应用相同的函数。
 
 例如：  
 `Trim([proxyAddresses])` 对 proxyAddress 属性中的每个值执行 Trim。  
-`Word([proxyAddresses],1,"@") & "@contoso.com"` 对于包含 @-sign, 的每个值，将域替换为 @contoso.com。  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` 对于包含 @-sign 的每个值，将域替换为 @contoso.com。  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` 查找 SIP 地址并从值中删除该地址。
 
 ## <a name="next-steps"></a>后续步骤
@@ -98,5 +97,4 @@ Active Directory 连接器为入站同步规则提供以下参数：
 **参考主题**
 
 * [Azure AD Connect 同步：函数参考](active-directory-aadconnectsync-functions-reference.md)
-
 

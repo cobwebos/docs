@@ -1,6 +1,6 @@
 # [Docker 文档](index.md)
 # 快速入门
-## [Docker Marketplace 模板](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS)
+## [Docker 应用商店模板](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS)
 # 教程
 ## [使用 Docker 和 PostgreSQL 的 Python Web 应用](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app)
 ## [将 CI/CD 与 Docker Swarm 和 VSTS 配合使用](/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine)

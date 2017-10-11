@@ -1,2 +1,2 @@
-如果本文未解决你的 Azure 问题，请访问 [MSDN 和 Stack Overflow](https://azure.microsoft.com/support/forums/) 上的 Azure 论坛。 可将问题发布到这些论坛上，或发布到 [Twitter 上的 @AzureSupport](https://twitter.com/AzureSupport)。 还可提交 Azure 支持请求。 若要提交支持请求，请在 [Azure 支持](https://azure.microsoft.com/support/options/)页上，选择“获取支持”。
+如果在本文中未解决你的 Azure 问题，请访问 Azure 论坛上[MSDN 和堆栈溢出](https://azure.microsoft.com/support/forums/)。 可以在这些论坛中张贴你的问题，也可以发布到[@AzureSupport在 Twitter 上](https://twitter.com/AzureSupport)。 你还可以提交 Azure 支持请求。 若要在提交支持请求， [Azure 支持](https://azure.microsoft.com/support/options/)页上，选择**获取支持**。
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: ea18a9f9bff258337a3de6d7703b4c548efa37df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>教程：Azure Active Directory 与 &frankly 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/16/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-frankly-from-the-gallery"></a>从库中添加 &frankly
-若要配置 &frankly 与 Azure AD 的集成，需要从库中将 &frankly 添加到托管 SaaS 应用列表。
+若要配置的和坦白到 Azure AD 集成，你需要添加和坦白从库添加到你的托管的 SaaS 应用的列表。
 
 **若要从库中添加 &frankly，请执行以下步骤：**
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 06/16/2017
 
 若要配置和测试 &frankly 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 &frankly 测试用户](#creating-a-frankly-test-user)** - 在 &frankly 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建和坦白测试用户](#creating-a-frankly-test-user)** -若要具有 Britta 人 Simon 副本 & 坦白地说，它是链接到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 06/16/2017
 
     ![配置单一登录](./media/active-directory-saas-andfrankly-tutorial/tutorial_andfrankly_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
 
@@ -123,7 +122,7 @@ ms.lasthandoff: 06/16/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符、登录和回复 URL 更新这些值。 若要获取这些值，请与 [andfrankly 支持团队](mailto:help@andfrankly.com)联系。
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 06/16/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-andfrankly-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -169,7 +168,7 @@ ms.lasthandoff: 06/16/2017
  
 ### <a name="creating-a-frankly-test-user"></a>创建 &frankly 测试用户
 
-在本部分中，将在 &frankly 中创建一个名为“Britta Simon”的用户。 请与 [andfrankly 支持团队](mailto:help@andfrankly.com)协作，以将用户添加到 &frankly 平台。
+在本部分中，你将创建一个名为 Britta 人 Simon & 坦白用户。 请与 [andfrankly 支持团队](mailto:help@andfrankly.com)协作，以将用户添加到 &frankly 平台。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -177,9 +176,9 @@ ms.lasthandoff: 06/16/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 &frankly，请执行以下步骤：**
+**若要为 （&） 坦白地说，将分配 Britta 人 Simon，执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -227,5 +226,4 @@ ms.lasthandoff: 06/16/2017
 [201]: ./media/active-directory-saas-andfrankly-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-andfrankly-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-andfrankly-tutorial/tutorial_general_203.png
-
 

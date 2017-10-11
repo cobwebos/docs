@@ -17,14 +17,12 @@ ms.date: 07/31/2017
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Azure Active Directory 中的应用、权限和许可
 在 Azure Active Directory，可以将应用程序添加到目录。  应用程序根据类型的不同而异。  要在经典门户中查看某个应用程序，请选择一个目录，并选择应用程序。
 
@@ -117,7 +115,7 @@ ms.lasthandoff: 08/01/2017
 
 
 
-- 可以控制在哪些条件下能够访问应用程序（即条件性访问）。 请注意，这同时适用于客户端应用和资源应用。 假设你设置了一个条件性访问策略，指定只能从合规的计算机访问“Office 365 Exchange Online”应用。  当用户尝试使用请求 Exchange Online 权限的客户端应用时，也会触发此策略。
+- 可以控制在哪些条件下能够访问应用程序（即条件性访问）。 请注意，这同时适用于客户端应用和资源应用。 因此，假设设置的条件访问策略是：仅可从合规的计算机访问“Office 365 Exchange Online”应用。  当用户尝试使用请求 Exchange Online 权限的客户端应用时，也会触发此策略。
 
 
 
@@ -221,5 +219,4 @@ ms.lasthandoff: 08/01/2017
 （**ClientId** 是 FabrikamMail 的服务主体对象 ID（刚刚创建），**PrincipalId** 是用户对象 ID（属于许可用户），**ResourceId** 是 Exchange 的服务主体对象 ID，Scope 是 Exchange 中已许可的权限）。
 
 如果不允许用户许可，他们将看到一个屏幕，指出必须获取权限。
-
 

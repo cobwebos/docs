@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>使用 IoT 中心进行设备管理的概述
 ## <a name="introduction"></a>介绍
 Azure IoT 中心提供功能和可扩展性模型，使设备和后端开发人员可以构建功能强大的设备管理解决方案。 设备的范围从受约束的传感器和单一用途微控制器到功能强大的路由设备组通信的网关。  此外，在不同行业中，IoT 操作员的用例和要求也显著不同。  尽管有此不同，但使用 IoT 中心进行设备管理提供了功能、模式和代码库，以满足不同设备和最终用户的需要。
 
-创建成功的企业 IoT 解决方案的一个重要部分，是提供操作员如何处理其设备集合的日常管理的策略。 IoT 操作员需要简单且可靠的工具和应用程序，使他们能够重点处理其工作的更具战略意义方面。 本文将提供：
+创建成功的企业 IoT 解决方案的一个重要部分，是提供操作员如何处理其设备集合的日常管理的策略。 IoT 操作员需要简单且可靠的工具和应用程序，使他们能够重点处理其工作的更具战略意义方面。 本文提供：
 
 * Azure IoT 中心设备管理方法的简要概述。
 * 常见设备管理原则的说明。
@@ -89,7 +88,7 @@ IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-sta
     ![设备管理报告进度和状态模式图形][img-report_progress_pattern]
 
 ## <a name="next-steps"></a>后续步骤
-可以使用 IoT 中心设备管理提供的功能、模式和代码库，在每个设备生命周期阶段创建满足企业 IoT 操作员需求的 IoT 应用程序。
+功能、 模式和 IoT 中心的设备管理，提供的代码库，可以创建 IoT 应用程序在每个设备生命周期阶段内满足企业 IoT 运算符要求。
 
 若要继续了解 IoT 中心设备管理功能，请参阅[设备管理入门][lnk-get-started]教程。
 
@@ -114,4 +113,3 @@ IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-sta
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
-

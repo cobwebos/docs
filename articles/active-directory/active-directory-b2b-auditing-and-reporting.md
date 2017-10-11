@@ -15,17 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: ba782270f3280e52235bc13148d232284b55762a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>审核和报告 B2B 协作用户
-对于来宾用户，你具有与成员用户类似的审核功能。 下面是受邀人 Sam Oogle 的邀请和兑换历史记录的示例：
+对于来宾用户，具有与成员用户类似的审核功能。 下面是受邀人 Sam Oogle 的邀请和兑换历史记录的示例：
 
 ![审核日志](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 
@@ -50,4 +47,3 @@ ms.lasthandoff: 04/12/2017
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 * [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
-

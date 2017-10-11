@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: b95bcb38664718bf25ec6981c803415790c6da3d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建具有多个 NIC 的 VM
 
@@ -35,17 +34,17 @@ ms.lasthandoff: 02/28/2017
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。 可以使用 Azure CLI 1.0（本文）或 [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md) 完成此任务。 在以下步骤中，"" 中的变量值使用本方案的设置创建资源。 根据需要更改你的环境值。
+以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。 可以使用 Azure CLI 1.0（本文）或 [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md) 完成此任务。 在以下步骤中，"" 中的变量值使用本方案的设置创建资源。 根据需要更改环境值。
 
 ## <a name="prerequisites"></a>先决条件
 创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成以下步骤：
 
 1. 导航到[模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)。
 2. 在模板页中“**父资源组**”的右侧，单击“**部署到 Azure**”。
-3. 如果需要，更改参数值，然后按照 Azure 预览门户中的步骤部署资源组。
+3. 如果需要，更改参数值，并按照 Azure 预览门户中的步骤部署资源组。
 
 > [!IMPORTANT]
-> 请确保你的存储帐户名称是唯一的。 不能在 Azure 中有重复的存储帐户名称。
+> 请确保存储帐户名称是唯一的。 不能在 Azure 中有重复的存储帐户名称。
 > 
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
@@ -53,9 +52,9 @@ ms.lasthandoff: 02/28/2017
 ## <a name="create-the-back-end-vms"></a>创建后端 VM
 后端 VM 取决于以下资源的创建：
 
-* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘将使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
-* **NIC**。 每个 VM 都将具有两个 NIC，一个用于数据库访问，另一个用于管理。
-* **可用性集**。 所有数据库服务器都将添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
+* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
+* **NIC**。 每个 VM 都会具有两个 NIC，一个用于数据库访问，另一个用于管理。
+* **可用性集**。 所有数据库服务器都会添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
 
 ### <a name="step-1---start-your-script"></a>步骤 1 - 启动脚本
 可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh)下载所用的完整 bash 脚本。 请按以下步骤更改要在环境中使用的脚本。
@@ -91,7 +90,7 @@ ms.lasthandoff: 02/28/2017
     numberOfVMs=2
     ```
 
-3. 检索要在其中创建 VM 的 `BackEnd` 子网的 ID。 你需要执行此操作，因为要关联到此子网的 NIC 位于不同的资源组中。
+3. 检索要在其中创建 VM 的 `BackEnd` 子网的 ID。 需要执行此操作，因为要关联到此子网的 NIC 位于不同的资源组中。
 
     ```azurecli
     subnetId="$(azure network vnet subnet show --resource-group $existingRGName \
@@ -104,7 +103,7 @@ ms.lasthandoff: 02/28/2017
    > 上面的第一个命令使用 [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) 和[字符串操作](http://tldp.org/LDP/abs/html/string-manipulation.html)（更具体地说，是子字符串删除）。
    >
 
-4. 检索 `NSG-RemoteAccess` NSG 的 ID。 你需要执行此操作，因为要关联到此 NSG 的 NIC 位于不同的资源组中。
+4. 检索 `NSG-RemoteAccess` NSG 的 ID。 需要执行此操作，因为要关联到此 NSG 的 NIC 位于不同的资源组中。
 
     ```azurecli
     nsgId="$(azure network nsg show --resource-group $existingRGName \
@@ -120,7 +119,7 @@ ms.lasthandoff: 02/28/2017
     azure group create $backendRGName $location
     ```
 
-2. 为要由你的 VM 使用的 OS 和数据磁盘创建高级存储帐户。
+2. 为要由 VM 使用的 OS 和数据磁盘创建高级存储帐户。
 
     ```azurecli
     azure storage account create $prmStorageAccountName \
@@ -214,9 +213,9 @@ ms.lasthandoff: 02/28/2017
     ```
 
 ### <a name="step-4---run-the-script"></a>步骤 4 - 运行脚本
-现在，你已根据需要下载并更改了脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
+现在，已根据需要下载并更改了脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
 
-1. 保存该脚本并从 **Bash** 终端运行它。 将看到最初的输出，如下所示。
+1. 保存该脚本并从 **Bash** 终端运行它。 会看到最初的输出，如下所示。
    
         info:    Executing command group create
         info:    Getting resource group IaaSStory-Backend
@@ -283,7 +282,7 @@ ms.lasthandoff: 02/28/2017
         info:    Looking up the NIC "NICDB1-DA"
         info:    Looking up the NIC "NICDB1-RA"
         info:    Creating VM "DB1"
-2. 几分钟后，执行将结束，你将看到输出的其余部分，如下所示。
+2. 几分钟后，执行将结束，会看到输出的其余部分，如下所示。
    
         info:    vm create command OK
         info:    Executing command vm disk attach-new
@@ -358,5 +357,4 @@ ms.lasthandoff: 02/28/2017
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-2.vhd
         info:    Updating VM "DB2"
         info:    vm disk attach-new command OK
-
 

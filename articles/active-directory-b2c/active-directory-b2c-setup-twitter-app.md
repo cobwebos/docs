@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
 ms.author: parakhj
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 82a001dd53cdddcf3b360090f3250af593c96fbb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Azure Active Directory B2C：向用户提供使用 Twitter 帐户的注册和登录功能
 
 > [!NOTE]
@@ -47,5 +45,4 @@ ms.lasthandoff: 08/08/2017
 5. 单击“标识提供者类型”，选择“Twitter”，并单击“确定”。
 6. 单击“设置此标识提供者”，针对“客户端 ID”，输入 Twitter **使用者密钥**，针对“客户端密码”输入 Twitter **使用者密码**。
 7. 单击“确定”，并单击“创建”以保存 Twitter 配置。
-
 

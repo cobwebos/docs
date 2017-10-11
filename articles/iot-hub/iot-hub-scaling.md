@@ -15,17 +15,16 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 03eeecc575be3073066a203cdd4ec6944bb23afc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: 2cb263103da05b10c24aab71d81c43eb25987565
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="scale-your-iot-hub-solution"></a>缩放 IoT 中心解决方案
 Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信息，请参阅 [IoT 中心定价][lnk-pricing]。 每个 IoT 中心单元允许一定数量的每日消息。
 
-若要正确地缩放解决方案，请考虑你的 IoT 中心特定使用情况。 尤其要考虑以下类别的操作所需的高峰吞吐量：
+要正确地缩放解决方案，请考虑 IoT 中心特定使用情况。 尤其要考虑以下类别的操作所需的高峰吞吐量：
 
 * 设备到云的消息
 * 云到设备的消息
@@ -63,4 +62,3 @@ Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
-

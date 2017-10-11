@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 7049af4567947d3d799a38c5a3940ba25a2c0f18
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect：从 DirSync 升级
 Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 DirSync 升级的方式。 这些步骤不适用于从另一个版本的 Azure AD Connect 或从 Azure AD Sync 升级。
 
@@ -32,7 +30,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 * 需要在代理服务器中打开的 URL。 对于基本的应用场景，DirSync 也支持这些 URL，要求是一样的。 如果想要使用任何包括在 Azure AD Connect 中的新功能，则必须打开一些新的 URL。
 
 > [!NOTE]
-> 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。
+> 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。 不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。
 
 如果不是从 DirSync 升级，请参阅 [相关文档](#related-documentation) 了解其他应用场景。
 
@@ -104,13 +102,14 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
    * 如果有超过 50,000 个对象，则会看到以下屏幕：  
      ![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
      若要继续进行就地升级，请单击消息旁的复选框：“继续在此计算机上升级 DirSync”。
-     要改为进行[并行部署](#parallel-deployment)，请导出 DirSync 配置设置，将该配置迁移到新的服务器。
+     若要改为进行[并行部署](#parallel-deployment)，请导出 DirSync 配置设置，将该配置迁移到新的服务器。
 5. 提供当前用于连接 Azure AD 的帐户的密码。 这必须是 DirSync 当前使用的帐户。  
-   ![输入 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)  
-   如果收到错误消息并且出现了连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
+   
+               ![输入 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)  
+如果收到错误消息并且出现了连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 6. 提供 Active Directory 的企业管理员帐户。  
    ![输入 ADDS 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
-7. 现在可以开始配置。 单击“升级”时，会卸载 DirSync 并配置 Azure AD Connect，然后开始同步。  
+7. 现在可以开始配置。 单击“升级” 后，会卸载 DirSync 并配置 Azure AD Connect，并开始同步。  
    ![已准备好配置](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
 8. 安装完成后，请注销并再次登录到 Windows，即可使用同步服务管理器或同步规则编辑器，或者尝试进行其他任何配置更改。
 
@@ -151,7 +150,8 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 3. 打开命令提示符。
 4. 从 Azure AD Connect 的安装位置（默认值：C:\Program Files\Microsoft Azure Active Directory Connect）执行以下命令：`AzureADConnect.exe /migrate`。
    Azure AD Connect 安装向导会启动并显示以下屏幕：  
-   ![输入 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
+   
+               ![输入 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
 5. 选择从 DirSync 安装中导出的设置文件。
 6. 配置任何高级选项，包括：
    * Azure AD Connect 的自定义安装位置。
@@ -170,7 +170,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>验证 Azure AD Connect 是否已准备好开始同步
 若要验证 Azure AD Connect 是否已准备好接管 DirSync，需要从“开始”菜单的“Azure AD Connect”组中，打开“同步服务管理器”。
 
-在应用程序中，转到“操作”选项卡。在此选项卡上，确认以下操作已完成：
+在应用程序中，转到“操作”选项卡。 在此选项卡上，确认以下操作已完成：
 
 * 在 AD 连接器上导入
 * 在 Azure AD 连接器上导入
@@ -197,7 +197,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 ### <a name="enable-azure-ad-connect-new-server"></a>启用 Azure AD Connect（新服务器）
 安装之后，重新打开 Azure AD Connect 时可以进行其他配置更改。 从“开始”菜单或桌面快捷方式启动 **Azure AD Connect** 。 请确保不要尝试重新运行安装 MSI。
 
-应该看到以下内容：  
+应该显示以下内容：  
 ![其他任务](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AdditionalTasks.png)
 
 * 选择“配置过渡模式”。
@@ -218,4 +218,3 @@ Azure AD Connect 现在为活动服务器，不得切换回去使用现有的 Di
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](active-directory-aadconnectsync-feature-scheduler.md)。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-

@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
-
 # <a name="azure-network-security"></a>Azure 网络安全
 
 我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 将 Azure 用于应用程序和服务的最合理原因之一是可以利用 Azure 的各种安全工具和功能。 这些工具和功能可帮助在 Azure 平台上创建安全的解决方案。
@@ -78,7 +75,7 @@ Azure 有许多与网络安全话题相关的网络组件。 我们将介绍这�
 
 ### <a name="basic-network-connectivity"></a>基本网络连接
 
-利用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 还可以使用站点到站点 VPN 和专用 [WAN 链路](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)将 VNet 连接到 VNet 和本地网络。
+利用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 你还可以连接 Vnet 彼此和与您使用站点到站点 Vpn 的本地网络和专用[WAN 链接](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)。
 
 ![基本网络连接](media/azure-network-security/azure-network-security-fig-2.png)
 
@@ -224,7 +221,7 @@ P2S 连接不需要 VPN 设备或面向公众的 IP 地址。 可从客户端计
 
 使用站点到站点 VPN 网关连接，通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道将本地网络连接到 Azure 虚拟网络。
 
-此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 此连接通过 Internet 进行，因此可以通过网络与 Azure 之间的加密链接“输送”信息。 站点到站点 VPN 是安全成熟的技术，各种规模的企业已部署数十年。 使用 [IPsec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)可执行隧道加密。
+此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 此连接通过 Internet 进行，可让你在网络与 Azure 之间的加密链接内“输送”信息。 站点到站点 VPN 是安全成熟的技术，各种规模的企业已部署数十年。 使用 [IPsec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)可执行隧道加密。
 
 尽管站点到站点 VPN 是可信、可靠且经过证实的技术，但隧道中的流量将遍历 Internet。 此外，最大带宽相对受限于大约 200 Mbps。
 
@@ -480,7 +477,7 @@ Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据
 
 应用程序的基础结构通常由许多组件构成，其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure Resource Manager 以组的方式处理解决方案中的资源。
 
-可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助你在部署后管理资源。
+可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
 **使用 Resource Manager 的优势**
 
@@ -665,4 +662,3 @@ Log Analytics 提供了用来监视网络的以下解决方案：
 -   [Microsoft 如何构建快速可靠的全球网络](https://azure.microsoft.com/blog/how-microsoft-builds-its-fast-and-reliable-global-network/)
 
 -   [照亮网络创新之路](https://azure.microsoft.com/blog/lighting-up-network-innovation/)
-

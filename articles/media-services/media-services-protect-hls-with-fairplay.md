@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 8d5ed9d8a14ae8cc656dfe9d48700cc44b8908e8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.openlocfilehash: 895d6307b1cef74e195cc2ffd8dbef4196e97b1f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
 使用 Azure 媒体服务，可使用以下格式动态加密 HTTP Live Streaming (HLS) 内容：  
@@ -50,7 +49,7 @@ ms.lasthandoff: 07/19/2017
   * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
   * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
   * 注册 [Apple 开发计划](https://developer.apple.com/)。
-  * Apple 要求内容所有者获取[部署包](https://developer.apple.com/contact/fps/)。 说明已使用媒体服务实现密钥安全模块 (KSM)，以及你正在请求最终 FPS 包。 最终 FPS 包中有如何生成证书和获取应用程序密钥 (ASK) 的说明。 可使用 ASK 配置 FairPlay。
+  * Apple 要求内容所有者获取[部署包](https://developer.apple.com/contact/fps/)。 说明已使用媒体服务实现密钥安全模块 (KSM)，以及正在请求最终 FPS 包。 最终 FPS 包中有如何生成证书和获取应用程序密钥 (ASK) 的说明。 可使用 ASK 配置 FairPlay。
   * Azure 媒体服务 .NET SDK **3.6.0** 版本或更高版本。
 
 必须在媒体服务密钥传送端上设置以下各项：
@@ -67,20 +66,20 @@ ms.lasthandoff: 07/19/2017
     2. 从命令行运行以下命令。 这会将 .cer 文件转换为 .pem 文件。
 
         "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in fairplay.cer -out fairplay-out.pem
-    3. 从命令行运行以下命令。 这会将 .pem 文件转换为包含私钥的 .pfx 文件。 然后 OpenSSL 会要求提供 .pfx 文件的密码。
+    3. 从命令行运行以下命令。 这会将 .pem 文件转换为包含私钥的 .pfx 文件。 OpenSSL 然后要求.pfx 文件的密码。
 
         "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out fairplay-out.pfx -inkey privatekey.pem -in fairplay-out.pem -passin file:privatekey-pem-pass.txt
   * **应用证书密码**：用于创建 .pfx 文件的密码。
   * **应用证书密码 ID**：必须上传密码，其方式与上传其他媒体服务密钥类似。 使用 **ContentKeyType.FairPlayPfxPassword** 枚举值获取媒体服务 ID。 需要在密钥传送策略选项中使用此 ID。
   * **iv**：这是 16 字节的随机值。 该值必须与资产传送策略中的 iv 相匹配。 生成 iv 并将其放入以下两个位置：资产传送策略和密钥传送策略选项。
-  * **ASK**：使用 Apple 开发人员门户生成证书时会收到此密钥。 每个开发团队将会收到唯一的 ASK。 请保存一份 ASK 副本，并将其存储在安全位置。 稍后需要将 ASK 作为 FairPlayAsk 配置到媒体服务。
+  * **ASK**：使用 Apple 开发人员门户生成证书时会收到此密钥。 每个开发团队会收到唯一的 ASK。 请保存一份 ASK 副本，并将其存储在安全位置。 稍后需要将 ASK 作为 FairPlayAsk 配置到媒体服务。
   * **ASK ID**：将 ASK 上传到媒体服务中时，将获取此 ID。 必须使用 **ContentKeyType.FairPlayAsk** 枚举值上传 ASK。 因此，将返回媒体服务 ID，在设置密钥传送策略选项时应使用此 ID。
 
 以下事项必须通过 FPS 客户端来设置：
 
   * **应用证书 (AC)**：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
 
-若要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
+要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
 
   * .der 文件
   * .pfx 文件
@@ -545,4 +544,3 @@ ms.lasthandoff: 07/19/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

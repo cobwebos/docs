@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: e101e5fc84b032b66dd0636bab8bff128791f77c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>教程：Azure Active Directory 与 TigerText Secure Messenger 集成
 
@@ -85,7 +84,7 @@ ms.lasthandoff: 07/26/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TigerText Secure Messenger 测试用户](#create-a-tigertext-secure-messenger-test-user)** - 在 TigerText Secure Messenger 中创建与 Britta Simon 相对应的用户，该用户与 Azure AD 中表示 Britta Simon 的用户相链接。
+3. **[创建一个 TigerText 安全 Messenger 测试用户](#create-a-tigertext-secure-messenger-test-user)** -若要在 TigerText 安全的 Messenger 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -114,7 +113,7 @@ ms.lasthandoff: 07/26/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际标识符更新此值。 请联系 [TigerText Secure Messenger 客户端支持团队](mailTo:prosupport@tigertext.com)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![“SAML 签名证书”部分](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_certificate.png) 
 
@@ -153,7 +152,7 @@ ms.lasthandoff: 07/26/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -219,5 +218,4 @@ ms.lasthandoff: 07/26/2017
 [201]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_203.png
-
 

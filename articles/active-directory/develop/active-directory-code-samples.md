@@ -15,17 +15,16 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
-ms.openlocfilehash: 4e8c8539fdcab348aa91644baafae217bd5e863a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/13/2017
-
+ms.openlocfilehash: 19d71e65dc2c78663d94c74228dcff038566391b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory 代码示例
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-你可以使用 Microsoft Azure Active Directory (Azure AD) 向你的 web 应用程序和 web API 添加身份验证和授权。 本部分提供了指向示例的链接，这些示例将演示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 并且代码带有注释，可以帮助你理解关键部分。
+可以使用 Microsoft Azure Active Directory (Azure AD) 向 web 应用程序和 web API 添加身份验证和授权。 本部分提供了指向示例的链接，这些示例将演示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 并且代码带有注释，可以帮助你理解关键部分。
 
 若要了解每个示例类型的基本方案，请参阅“Azure AD 的身份验证方案”。
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 02/13/2017
 | C#/.NET |[NativeClient-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) |一个 .NET WPF 应用程序，它调用了使用 Azure AD 保护的一个 Web API。 |
 | C#/.NET |[NativeClient-WindowsStore](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) |一个 Windows 应用商店应用程序，它调用了使用 Azure AD 保护的一个 Web API。 |
 | C#/.NET |[NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) |一个 Windows 应用商店应用程序，它调用了使用 Azure AD 保护的多租户 Web API。 |
-| C#/.NET |[WebAPI-OnBehalfOf-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) |一个本机客户端应用程序，它调用了一个 web API，该 Web API 代表原始用户获取一个令牌，然后使用该令牌调用另一个 Web API。 |
+| C#/.NET |[WebAPI-OnBehalfOf-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) |一个本机客户端应用程序，它调用了一个 web API，该 Web API 代表原始用户获取一个令牌，并使用该令牌调用另一个 Web API。 |
 | C#/.NET |[NativeClient-WindowsPhone8.1](https://github.com/Azure-Samples/active-directory-dotnet-windowsphone-8.1) |一个适用于 Windows Phone 8.1 的 Windows 应用商店应用程序，它调用了由 Azure AD 保护的一个 Web API。 |
 | ObjC |[NativeClient-iOS](https://github.com/Azure-Samples/active-directory-ios) |一个 iOS 应用程序，它调用了要求 Azure AD 进行身份验证的一个 Web API。 |
 | C#/.NET |[WebAPI-ManuallyValidateJwt-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation) |一个本机客户端应用程序，其中包含了用来在 Web API 中（而非使用 OWIN 中间件）处理 JWT 令牌的逻辑。 |
@@ -95,7 +94,7 @@ ms.lasthandoff: 02/13/2017
 | C#/.NET |[ConsoleApp-GraphAPI-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-console) |这是一个控制台应用程序，它展示了对图形 API 的常用读取和写入调用，并展示了如何执行用户许可证分配以及更新用户的缩略图照片和链接。 |
 | C#/.NET |[ConsoleApp-GraphAPI-DiffQuery-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-diffquery) |一个控制台应用程序，它使用图形 API 中的差异查询来获取对 Azure AD 中的用户对象的定期更改。 |
 | C#/.NET |[WebApp-GraphAPI-DirectoryExtensions-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-directoryextensions-web) |一个 MVC 应用程序，它使用图形 API 查询生成简单的公司组织图。 |
-| PHP |[WebApp-GraphAPI-DirectoryExtensions-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-directoryextensions-web) |一个 PHP 应用程序，它调用图形 API 来注册一个扩展，然后读取、更新和删除扩展属性中的值。 |
+| PHP |[WebApp-GraphAPI-DirectoryExtensions-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-directoryextensions-web) |一个 PHP 应用程序，它调用图形 API 来注册一个扩展，并读取、更新和删除扩展属性中的值。 |
 
 ## <a name="authorization"></a>授权
 这些代码示例展示了如何使用 Azure AD 进行授权。
@@ -115,7 +114,7 @@ ms.lasthandoff: 02/13/2017
 | C#/.NET |[ADAL - Native App to REST service - Authentication with AAD via Browser Dialog](http://go.microsoft.com/fwlink/?LinkId=259814)（ADAL - 本机应用到 REST 服务 - 通过浏览器对话框使用 AAD 进行身份验证） |使用 [Azure AD 身份验证库 (ADAL)](active-directory-authentication-libraries.md) 向 WPF 客户端添加用户身份验证功能。 |
 | C#/.NET |[ADAL - Native App to REST service - Authentication with ACS via Browser Dialog](http://code.msdn.microsoft.com/AAL-Native-App-to-REST-de57f2cc)（ADAL - 本机应用到 REST 服务 - 通过浏览器对话框使用 ACS 进行身份验证） |使用 [Azure AD 身份验证库 (ADAL)](active-directory-authentication-libraries.md) 和[访问控制服务 2.0 (ACS)](http://msdn.microsoft.com/library/azure/hh147631.aspx) 向 WPF 客户端添加用户身份验证功能。 |
 | C#/.NET |[ADAL - Server to Server Authentication](http://go.microsoft.com/fwlink/?LinkId=259816)（ADAL - 服务器到服务器身份验证） |使用 [Azure AD 身份验证库 (ADAL)](active-directory-authentication-libraries.md) 保护从服务器端进程到 MVC4 Web API REST 服务的服务调用。 |
-| C#/.NET |[使用 Azure AD 将登录名添加到 Web 应用程序中](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |将 .NET 应用程序配置为根据你的 Azure AD 企业目录执行 Web 单一登录。 |
+| C#/.NET |[使用 Azure AD 将登录名添加到 Web 应用程序中](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |将 .NET 应用程序配置为根据 Azure AD 企业目录执行 Web 单一登录。 |
 | C#/.NET |[利用 Azure AD 开发多租户 Web 应用程序](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |使用 Azure AD 向一个 .NET 应用程序添加单一登录和目录访问功能以便在多个组织中工作。 |
 | JAVA |[Java Sample App for Azure AD Graph API](http://go.microsoft.com/fwlink/?LinkId=263969)（Azure AD 图形 API 的 Java 示例应用） |使用图形 API 访问 Azure AD 中的目录数据。 |
 | PHP |[Azure AD 图形 API 的 PHP 示例应用](http://code.msdn.microsoft.com/PHP-Sample-App-For-Windows-228c6ddb) |使用图形 API 访问 Azure AD 中的目录数据。 |
@@ -132,4 +131,3 @@ ms.lasthandoff: 02/13/2017
 [Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
 [Azure AD 图形 API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
-

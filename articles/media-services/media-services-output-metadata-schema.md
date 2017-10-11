@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: c175d359f93e7cd8cd73aa498ad8b71c4ec497f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="output-metadata"></a>输出元数据
 ## <a name="overview"></a>概述
@@ -34,7 +33,7 @@ ms.lasthandoff: 08/28/2017
 >
 >
 
-## <a name="AssetFiles "></a>AssetFiles 根元素
+## <a name="AssetFiles "></a> AssetFiles 根元素
 编码作业的 AssetFile 条目集合。  
 
 ### <a name="child-elements"></a>子元素
@@ -42,7 +41,7 @@ ms.lasthandoff: 08/28/2017
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |[AssetFile 元素](media-services-output-metadata-schema.md)是 AssetFiles 集合的一部分。 |
 
-## <a name="AssetFile "></a>AssetFile 元素
+## <a name="AssetFile "></a> AssetFile 元素
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
@@ -59,7 +58,7 @@ ms.lasthandoff: 08/28/2017
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个视频轨道。 这是所有这些视频轨道的集合。 有关详细信息，请参阅 [VideoTracks 元素](media-services-output-metadata-schema.md)。 |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个音频轨道。 这是所有这些音频轨道的集合。 有关详细信息，请参阅 [AudioTracks 元素](media-services-output-metadata-schema.md)。 |
 
-## <a name="Sources "></a>Sources 元素
+## <a name="Sources "></a> Sources 元素
 为生成此 AssetFile 而处理的输入/源媒体文件集合。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -69,7 +68,7 @@ ms.lasthandoff: 08/28/2017
 | --- | --- |
 | **源**<br/><br/> minOccurs="1" maxOccurs="unbounded" |生成此资产时所使用的输入/源文件。 有关详细信息，请参阅[源元素](media-services-output-metadata-schema.md)。 |
 
-## <a name="Source "></a>Source 元素
+## <a name="Source "></a> Source 元素
 生成此资产时所使用的输入/源文件。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -79,7 +78,7 @@ ms.lasthandoff: 08/28/2017
 | --- | --- | --- |
 | **Name**<br/><br/> 必选 |**xs:string** |输入源文件名称。 |
 
-## <a name="VideoTracks "></a>VideoTracks 元素
+## <a name="VideoTracks "></a> VideoTracks 元素
 每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个视频轨道。 这是所有这些视频轨道的集合。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -89,7 +88,7 @@ ms.lasthandoff: 08/28/2017
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |父级 AssetFile 中某个特定视频轨道。 有关详细信息，请参阅 [VideoTrack 元素](media-services-output-metadata-schema.md#VideoTrack)。 |
 
-## <a name="VideoTrack"></a>VideoTrack 元素
+## <a name="VideoTrack"></a> VideoTrack 元素
 父级 AssetFile 中某个特定视频轨道。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -111,7 +110,7 @@ ms.lasthandoff: 08/28/2017
 | **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |通过编码预设请求的此视频轨道的目标平均比特率，以千比特/秒为单位。 |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |此视频轨道的最大 GOP 平均比特率，以千比特/秒为单位。 |
 
-## <a name="AudioTracks "></a>AudioTracks 元素
+## <a name="AudioTracks "></a> AudioTracks 元素
 每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个音频轨道。 这是所有这些音频轨道的集合。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -121,7 +120,7 @@ ms.lasthandoff: 08/28/2017
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |父级 AssetFile 中某个特定音频轨道。 有关详细信息，请参阅 [AudioTrack 元素](media-services-output-metadata-schema.md)。 |
 
-## <a name="AudioTrack "></a>AudioTrack 元素
+## <a name="AudioTrack "></a> AudioTrack 元素
 父级 AssetFile 中某个特定音频轨道。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -142,7 +141,7 @@ ms.lasthandoff: 08/28/2017
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Loudness metering result parameters. 有关详细信息，请参阅 [LoudnessMeteringResultParameters 元素](media-services-output-metadata-schema.md)。 |
 
-## <a name="LoudnessMeteringResultParameters "></a>LoudnessMeteringResultParameters 元素
+## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters 元素
 Loudness metering result parameters.  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -510,7 +509,7 @@ Loudness metering result parameters.
 
 
 
-## <a name="xml"></a>XML 示例
+## <a name="xml"></a> XML 示例
  下面是输出元数据文件的示例。  
 
     <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
@@ -604,4 +603,3 @@ Loudness metering result parameters.
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

@@ -1,4 +1,4 @@
-Visual Studio 中的 Azure Functions 项目模板创建一个项目，该项目可发布到 Azure 中的函数应用。 Function App 可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。   
+Visual Studio 中的 Azure Functions 项目模板创建一个项目，该项目可发布到 Azure 中的函数应用。 作为一个逻辑单元用于更轻松地管理、 部署和共享的资源组函数函数应用程序让。   
 
 1. 在解决方案资源管理器中右键单击项目节点，然后选择“添加” > “新建项”。 从对话框中选择“Azure Function”。
 

@@ -13,12 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: kapiteir
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: 5a21bcd9f12fc3f96b17a556ba15526c35ababe2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS 的基于令牌的 (HTTP/2) 身份验证
 ## <a name="overview"></a>概述
@@ -119,4 +118,3 @@ ms.lasthandoff: 06/22/2017
 
 ## <a name="reverting-to-using-certificate-based-authentication"></a>还原到使用基于证书的身份验证
 可通过使用前述的任一方法并传递证书（而非令牌属性），随时还原到使用基于证书的身份验证。 该操作会覆盖以前存储的凭据。
-

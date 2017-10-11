@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C：参考 - 信任框架 | Microsoft 文档"
+title: "Azure Active Directory B2C：参考 - 信任框架 | Microsoft Docs"
 description: "本主题介绍了 Azure Active Directory B2C 自定义策略和标识体验框架"
 services: active-directory-b2c
 documentationcenter: 
@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 4e2de9c4d1c0f92970911e132fffaacbd01d9ad0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 标识体验框架定义信任框架
 
 利用标识体验框架的 Azure Active Directory B2C (Azure AD B2C) 自定义策略可以为组织提供集中式服务。 此服务降低了大型社区利益体中联合身份验证的复杂性。 复杂性会降低到单一信任关系和单个元数据交换。
@@ -130,4 +128,3 @@ TF 规范是用于相关社区治理的一个或多个参考文档，让相关�
 用户旅程包含用于在信赖方与其他参与者之间协调“在线”互操作性的协议配置文件和元数据。 还会向标识信息交换请求/响应消息应用操作运行时规则，强制与 TF 规范中发布的策略相符。 用户旅程的概念是自定义客户体验的关键所在。 它还阐明了系统在协议级别的工作方式。
 
 在此基础上，信赖方应用程序和门户可以根据其上下文，通过传递特定策略的名称来调用利用标识体验框架的 Azure AD B2C 自定义策略，并准确获取所需的行为和信息交换，而不会出现任何混乱或风险。
-

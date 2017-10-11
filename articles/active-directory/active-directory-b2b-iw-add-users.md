@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.translationtype: HT
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: c6ca561d1a02e283c7932f08f53b8dd590208835
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>信息工作者如何将 B2B 协作用户添加到 Azure Active Directory？
 
 信息工作者可以使用[应用程序访问面板](http://myapps.microsoft.com)将 B2B 协作用户添加到组和他们管理的应用程序。
@@ -54,4 +52,3 @@ ms.lasthandoff: 05/25/2017
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
 * [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-

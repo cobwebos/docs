@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: sangarg
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 122cb48149477f295a65b8ee623c647b6db10a86
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
 可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](https://msdn.microsoft.com/library/azure/dn971527.aspx)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
@@ -45,7 +44,7 @@ ms.lasthandoff: 05/17/2017
 * 队列不保证严格的 FIFO 排序。
 * 队列不读取自己的写入。 项在事务中排队时，该项对于同一事务中的取消排队者来说为不可见。
 * 取消排队不是相互隔离的。 如果项 A 在事务 txnA 中取消排队，则即使 txnA 尚未提交，项 A 也不会对并发事务 txnB 可见。  如果 txnA 中止，A 会立刻变得对 txnB 可见。
-* 可以先使用 TryDequeueAsync， 然后中止事务，从而实施 TryPeekAsync 行为。 “编程模式”部分提供了一个这样的示例。
+* 可以先使用 TryDequeueAsync，然后中止事务，从而实施 TryPeekAsync 行为。 “编程模式”部分提供了一个这样的示例。
 * 计数是非事务性的。 可以通过计数来了解队列中的元素数目，但计数只代表一个时间点的情况，可靠性不强。
 * 不应在事务处于活动状态时对取消排队项执行开销昂贵的处理，以免事务长时间运行，对系统造成性能影响。
 
@@ -307,7 +306,7 @@ do
 ```
 
 ### <a name="peek"></a>速览
-可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 TryDequeueAsync，然后中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
+可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 *TryDequeueAsync*，然后中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -345,4 +344,3 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Service Fabric Web API 服务入门](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services 编程模型的高级用法](service-fabric-reliable-services-advanced-usage.md)
 * [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-

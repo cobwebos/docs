@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 19177fe13db2aefcef7fcf37ea8fef2fa99c728f
 ms.openlocfilehash: e5c62689de36baa175001f5f4f70d87568876ef0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理共享
 
@@ -74,7 +73,7 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
 
 ## <a name="add-a-share"></a>添加共享
 
-1. 在“StorSimple 服务摘要”边栏选项卡上，单击命令栏中的“+ 添加共享”。 此时将打开“添加共享”边栏选项卡。
+1. 在“StorSimple 服务摘要”边栏选项卡上，单击命令栏中的“+ 添加共享”。 此时会打开“添加共享”边栏选项卡。
 
     ![添加共享](./media/storsimple-virtual-array-manage-shares/add-share.png)
 
@@ -89,7 +88,7 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
     4. 在“容量”字段中，指定共享的大小。 分层共享的大小必须介于 500 GB 到 20 TB 之间，本地固定共享的大小必须介于 50 GB 到 2 TB 之间。
 
     5. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。 以 _john@contoso.com_ 格式指定用户或用户组的名称。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
-3. 完成配置共享后，单击“创建”。 此时将使用指定的设置创建共享，你将看到一条通知。 默认情况下，将为共享启用备份功能。
+3. 完成配置共享后，单击“创建”。 此时会使用指定的设置创建共享，会看到一条通知。 默认情况下，将为共享启用备份功能。
 4. 若要确认已成功创建共享，请转到“共享”边栏选项卡。 应看到列出该共享。
    
     ![共享创建成功](./media/storsimple-virtual-array-manage-shares/share-success.png)
@@ -102,7 +101,7 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
 
 1. 从“StorSimple 服务摘要”边栏选项卡上的“共享”设置中，选择要修改的共享所驻留的虚拟阵列。
 2. **选择**该共享以查看当前说明并对其进行修改。
-3. 单击命令栏上的“保存”以保存所做的更改。 此时将应用指定的设置，你将看到一条通知。
+3. 单击命令栏上的“保存”以保存所做的更改。 此时会应用指定的设置，会看到一条通知。
    
     ![ 编辑共享](./media/storsimple-virtual-array-manage-shares/share-edit.png)
 
@@ -117,11 +116,11 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
    
     1. 从“StorSimple 服务摘要”边栏选项卡上的“共享”设置中，选择要使其脱机的共享所驻留的虚拟阵列。
 
-    2. **选择**该共享，单击“...”（或者在此行中右键单击），然后从上下文菜单中选择“脱机”。
+    2. **选择**该共享，单击“...”（或者在此行中右键单击），并从上下文菜单中选择“脱机”。
      
         ![脱机共享](./media/storsimple-virtual-array-manage-shares/shares-offline.png)
 
-    3. 在“脱机”边栏选项卡中查看信息并确认你接受该操作。 单击“脱机”使该共享脱机。 你将看到“正在进行操作”的通知。
+    3. 在“脱机”边栏选项卡中查看信息并确认接受该操作。 单击“脱机”使该共享脱机。 会看到“正在进行操作”的通知。
 
     4. 若要确认已成功使共享脱机，请转到“共享”边栏选项卡。 应看到共享的状态为“脱机”。
 
@@ -136,13 +135,12 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
 #### <a name="to-delete-a-share"></a>删除共享
 
 1. 从“StorSimple 服务摘要”边栏选项卡上的“共享”设置中，选择要删除的共享所驻留的虚拟阵列。
-2. **选择**该共享，单击“...”（或者在此行中右键单击），然后从上下文菜单中选择“删除”。
+2. **选择**该共享，单击“...”（或者在此行中右键单击），并从上下文菜单中选择“删除”。
    
     ![删除共享](./media/storsimple-virtual-array-manage-shares/share-delete.png)
 3. 检查要删除的共享的状态。 如果要删除的共享未处于脱机状态，请先使其脱机。 请按照[使共享脱机](#take-a-share-offline)中的步骤操作。
-4. 当系统提示在“删除”边栏选项卡中进行确认时，接受确认，然后单击“删除”。 此时将删除该共享，“共享”边栏选项卡将显示虚拟阵列中共享的更新列表。
+4. 当系统提示在“删除”边栏选项卡中进行确认时，接受确认，并单击“删除”。 此时会删除该共享，“共享”边栏选项卡会显示虚拟阵列中共享的更新列表。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[克隆 StorSimple 共享](storsimple-virtual-array-clone.md)。
-
 

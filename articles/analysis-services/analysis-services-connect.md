@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 2e1b9495cecac0095a9364752967f868f8e92530
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
-
+ms.openlocfilehash: deb3ef28d20decef01826450bd6091f87dd069de
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connect-to-an-azure-analysis-services-server"></a>连接到 Azure Analysis Services 服务器
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 04/19/2017
  其中，协议是字符串 **asazure**，区域是在其中创建服务器的 URI（例如 westus.asazure.windows.net），服务器名称是该区域中的唯一服务器名称。
 
 ### <a name="get-the-server-name"></a>获取服务器名称
-在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，然后复制整个服务器名称。 如果组织中的其他用户也要连接此服务器，则可以将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
+在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制整个服务器名称。 如果组织中的其他用户也要连接此服务器，则可以将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
 
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -81,5 +80,4 @@ ms.lasthandoff: 04/19/2017
 [使用 Excel 进行连接](analysis-services-connect-excel.md)    
 [使用 Power BI 进行连接](analysis-services-connect-pbi.md)   
 [管理服务器](analysis-services-manage.md)   
-
 

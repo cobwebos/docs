@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: ddc391127d43a954f555943d27258593eba02df2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.openlocfilehash: 1ce90cf4bae66bfd6387a2698fd9b1ba7fc64595
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组
 
 本文介绍如何在位于远程 Azure 位置的 Azure 虚拟机上配置 SQL Server Always On 可用性组副本。 使用此配置以支持灾难恢复。
@@ -158,7 +156,7 @@ ms.lasthandoff: 07/26/2017
 1. 单击“确定”。
 1. 在“对象资源管理器”中，右键单击可用性组中，并单击“显示仪表板”。
 1. 在仪表板上确认灾难恢复恢复上的副本为同步。
-1. 在“对象资源管理器”中，右键单击可用性组中，并单击“付账转移...”。SQL Server Management Studio 将打开向导对 SQL Server 进行故障转移。  
+1. 在“对象资源管理器”中，右键单击可用性组中，并单击“付账转移...”。 SQL Server Management Studio 将打开向导对 SQL Server 进行故障转移。  
 1. 单击“下一步”，并选择灾难恢复站点中的 SQL Server 实例。 再次单击“下一步”。
 1. 连接到灾难恢复站点中的 SQL Server 实例，并单击“下一步”。
 1. 在“摘要”页上查看设置，并单击“完成”。
@@ -185,4 +183,3 @@ ms.lasthandoff: 07/26/2017
 * [Azure 虚拟机](http://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure 负载均衡器](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure 可用性集](../manage-availability.md)
-

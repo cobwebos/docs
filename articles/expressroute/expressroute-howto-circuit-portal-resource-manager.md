@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: e3721cd3c031622788f553e71a6555b844f3f7dc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -150,7 +149,7 @@ ms.lasthandoff: 07/28/2017
 可以通过选择“删除”图标来删除 ExpressRoute 线路。 注意以下事项：
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请检查是否有虚拟网络链接到了该线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商取消对线路的预配并通知我们之前，我们会继续保留资源并向你收费。
+* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 服务提供商取消了预配线路并通知我们之前，我们会继续保留资源并向你收费。
 * 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”），则可以删除线路。 这样就会停止线路计费
 
 ## <a name="next-steps"></a>后续步骤
@@ -158,5 +157,4 @@ ms.lasthandoff: 07/28/2017
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-portal-resource-manager.md)
 * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-
 

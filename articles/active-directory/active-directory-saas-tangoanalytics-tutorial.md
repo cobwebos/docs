@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 46f6facc3c86630a9252340b2e89634368c0263d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>教程：Azure Active Directory 与 Tango Analytics 的集成
 
@@ -111,14 +110,14 @@ ms.lasthandoff: 06/29/2017
 
     ![配置单一登录](./media/active-directory-saas-tangoanalytics-tutorial/tutorial_tangoanalytics_url.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，键入值 `TACORE_SSO`
+    a. 在“标识符”文本框中，键入值 `TACORE_SSO`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://mts.tangoanalytics.com/saml2/sp/acs/post`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://mts.tangoanalytics.com/saml2/sp/acs/post`
 
     > [!NOTE] 
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新该值。 请联系 [Tango Analytics 支持团队](mailto:support@tangoanalytics.com)获取此值。
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-tangoanalytics-tutorial/tutorial_tangoanalytics_certificate.png) 
 
@@ -155,7 +154,7 @@ ms.lasthandoff: 06/29/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tangoanalytics-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -175,7 +174,7 @@ ms.lasthandoff: 06/29/2017
 
 若要将 Britta Simon 分配到 Tango Analytics，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -222,5 +221,4 @@ ms.lasthandoff: 06/29/2017
 [201]: ./media/active-directory-saas-tangoanalytics-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tangoanalytics-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tangoanalytics-tutorial/tutorial_general_203.png
-
 

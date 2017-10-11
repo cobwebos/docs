@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 06bfb75a07b7902fcf245271def5d40e9941a89e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 36df5bc0a019f4197d40fd6fa5a2a9957820c8b4
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
 是否发现自己曾对遥测数据重复运行相同的查询以检查服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ 用于逻辑应用的 Azure Application Insights 连接器（预览版）是适用于此用途的合适工具。
 
 通过这种集成，无需编写任何代码就可以自动执行许多过程。 可以使用 Application Insights 连接器创建逻辑应用，快速自动执行任何 Application Insights 过程。 
 
-也可以添加其他操作。 Azure App Service 的逻辑应用功能提供数百个操作。 例如，可使用逻辑应用在 Visual Studio Team Services 中自动发送电子邮件通知或创建 bug。 还可使用多个可用[模板](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)帮助加快逻辑应用的创建过程。 
+也可以添加其他操作。 Azure 应用服务的逻辑应用功能提供数百个操作。 例如，可使用逻辑应用在 Visual Studio Team Services 中自动发送电子邮件通知或创建 bug。 还可使用多个可用[模板](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)帮助加快逻辑应用的创建过程。 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>为 Application Insights 创建逻辑应用
 
@@ -48,7 +46,7 @@ ms.lasthandoff: 07/08/2017
     ![逻辑应用设计器“重复周期”窗口](./media/automate-with-logic-apps/step2b.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
-1. 单击“新建步骤”，然后单击“添加操作”。
+1. 单击“新建步骤”，并单击“添加操作”。
 
 2. 在“选择操作”搜索框中，键入“Azure Application Insights”。
 
@@ -100,9 +98,9 @@ ms.lasthandoff: 07/08/2017
 
 4. 在“发送电子邮件”窗口中，执行以下操作：
 
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 键入收件人的电子邮件地址。
+   a. 键入收件人的电子邮件地址。
 
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 键入电子邮件的主题。
+   b. 键入电子邮件的主题。
 
    c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
 
@@ -112,9 +110,9 @@ ms.lasthandoff: 07/08/2017
 
 5. 在动态内容菜单上执行以下操作：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“附件名称”。
+    a. 选择“附件名称”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择“附件内容”。
+    b. 选择“附件内容”。
     
     c. 在“是否为 HTML”框中选择“是”。
 
@@ -139,7 +137,6 @@ ms.lasthandoff: 07/08/2017
 
 
 <!--Link references-->
-
 
 
 

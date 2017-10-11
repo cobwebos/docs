@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: b2b87ed07a26fa30e49a19e34ca8b06b283da9b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
-
+ms.openlocfilehash: 6a185d96447c2e1b0b463439dd062081e783da5f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>管理 Azure SQL 数据仓库中的计算能力 (PowerShell)
 > [!div class="op_single_selector"]
@@ -44,7 +42,7 @@ ms.lasthandoff: 03/28/2017
 开始操作：
 
 1. 打开 Azure PowerShell。
-2. 在 PowerShell 提示符下，运行以下命令以登录到 Azure Resource Manager，然后选择你的订阅。
+2. 在 PowerShell 提示符下，运行以下命令以登录到 Azure Resource Manager，然后选择订阅。
 
     ```PowerShell
     Login-AzureRmAccount
@@ -69,7 +67,7 @@ Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -Requested
 ## <a name="pause-compute"></a>暂停计算
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-若要暂停数据库，请使用 [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase] cmdlet。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用 [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase] cmdlet。 以下示例暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 > [!NOTE]
 > 注意，如果服务器是 foo.database.windows.net，请使用“foo”作为 Powershell cmdlet 中的 -ServerName。
@@ -94,7 +92,7 @@ $resultDatabase
 ## <a name="resume-compute"></a>恢复计算
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-若要启动数据库，请使用 [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase] cmdlet。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要启动数据库，请使用 [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase] cmdlet。 以下示例启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -122,9 +120,9 @@ Get-AzureRmSqlDatabase [-ResourceGroupName] <String> [-ServerName] <String> [[-D
  [<CommonParameters>]
 ```
 
-这将导致以下类似的结果 
+这会导致以下类似的结果 
 
-```powershell    
+```powershell   
 ResourceGroupName             : nytrg
 ServerName                    : nytsvr
 DatabaseName                  : nytdb
@@ -144,7 +142,7 @@ ElasticPoolName               :
 EarliestRestoreDate           : 1/1/0001 12:00:00 AM
 ```
 
-然后，你可以在其中进行检查，了解查看数据库的状态。 在本例中，你可以看到此数据库处于联机状态。 
+然后，可以在其中进行检查，了解查看数据库的状态。 在本例中，可以看到此数据库处于联机状态。 
 
 运行此命令后，应收到“联机”、“正在暂停”、“正在恢复”、“正在缩放”和“已暂停”等状态值。
 
@@ -170,4 +168,3 @@ EarliestRestoreDate           : 1/1/0001 12:00:00 AM
 <!--Other Web references-->
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 [Azure portal]: http://portal.azure.com/
-

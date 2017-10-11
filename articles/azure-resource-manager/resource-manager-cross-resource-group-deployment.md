@@ -13,23 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>将 Azure 资源部署到多个资源组
 
-通常情况下，你将模板中的所有资源部署到单个资源组。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 Resource Manager 允许你使用嵌套的模板将不同于父模板所用资源组的多个不同资源组作为目标。
+通常情况下，将模板中的所有资源部署到单个资源组。 不过，在某些情况下，你可能希望将一组资源一起部署但将其放置在不同的资源组中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 Resource Manager 允许你使用嵌套的模板将不同于父模板所用资源组的多个不同资源组作为目标。
 
-资源组是应用程序及其资源集合的生命周期容器。 你将在模板外部创建资源组，并指定在部署期间要用作目标的资源组。 有关资源组的简介，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
+资源组是应用程序及其资源集合的生命周期容器。 可在模板外部创建资源组，并在部署期间指定要用作目标的资源组。 有关资源组的简介，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
 
 ## <a name="example-template"></a>示例模板
 
-若要将不同的资源作为目标，在部署期间必须使用嵌套的或链接的模板。 `Microsoft.Resources/deployments` 资源类型提供 `resourceGroup` 参数，使用该参数可以为嵌套部署指定不同资源组。 在运行部署之前，所有资源组都必须存在。 下面的示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在名为 `crossResourceGroupDeployment` 的资源组中：
+若要将不同的资源作为目标，在部署期间必须使用嵌套模板或链接模板。 `Microsoft.Resources/deployments` 资源类型提供 `resourceGroup` 参数，使用该参数可以为嵌套部署指定不同资源组。 在运行部署之前，所有资源组都必须存在。 下面的示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在名为 `crossResourceGroupDeployment` 的资源组中：
 
 ```json
 {
@@ -89,7 +87,7 @@ ms.lasthandoff: 06/17/2017
 
 ## <a name="deploy-the-template"></a>部署模板
 
-若要部署示例模板，可以使用门户、Azure PowerShell 或 Azure CLI。 对于 Azure PowerShell 或 Azure CLI，必须使用 2017 年 5 月或之后发布的版本。 这些示例假定你已在本地将模板保存为名为 **crossrgdeployment.json** 的文件。
+若要部署示例模板，可以使用门户、Azure PowerShell 或 Azure CLI。 对于 Azure PowerShell 或 Azure CLI，必须使用 2017 年 5 月或之后发布的版本。 这些示例假定已在本地将模板保存为名为 **crossrgdeployment.json** 的文件。
 
 对于 PowerShell：
 
@@ -158,4 +156,3 @@ az group deployment create \
 * 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](resource-group-authoring-templates.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](resource-manager-powershell-sas-token.md)。
-

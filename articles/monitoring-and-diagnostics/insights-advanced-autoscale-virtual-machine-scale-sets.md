@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6f1234381a6aad9632d88825aab1a5bf304a20fb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
 
@@ -32,10 +30,10 @@ ms.lasthandoff: 05/10/2017
 >
 
 ## <a name="walkthrough"></a>演练
-在本演练中，将使用 [Azure 资源浏览器](https://resources.azure.com/)来配置和更新规模集的自动缩放设置。 Azure 资源浏览器是通过 Resource Manager 模板轻松管理 Azure 资源的一种方式。 如果不熟悉 Azure 资源浏览器工具，请参阅[此简介](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)。
+本演练使用 [Azure 资源浏览器](https://resources.azure.com/)来配置和更新规模集的自动缩放设置。 Azure 资源浏览器是通过 Resource Manager 模板轻松管理 Azure 资源的一种方式。 如果不熟悉 Azure 资源浏览器工具，请参阅[此简介](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)。
 
 1. 使用基本自动缩放设置部署新的规模集。 本文会使用 Azure 快速入门库中的规模集，该库中具有含基本自动缩放模板的 Windows 规模集。 Linux 规模集的工作方式相同。
-2. 创建规模集后，从 Azure 资源管理器导航到规模集资源。 将会在 Microsoft.Insights 节点下看到以下内容。
+2. 创建规模集后，从 Azure 资源管理器导航到规模集资源。 用户在 Microsoft.Insights 节点下会看到以下内容。
 
     ![Azure 资源管理器](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 05/10/2017
 
     ![Autoscalewad，默认自动缩放设置](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
 
-6. 单击“编辑”。 将自动缩放设置中的“配置文件”元素**替换**为以下配置：
+6. 单击“编辑”。 **替换** 为以下配置：
 
     ![配置文件](./media/insights-advanced-autoscale-vmss/profiles.png)
 
@@ -209,7 +207,7 @@ ms.lasthandoff: 05/10/2017
    - 向一组用户发送电子邮件
    - 触发 webhook 调用。 触发时，此 webhook 将发送关于自动缩放条件和规模集资源的元数据。 若要了解有关自动缩放 webhook 的有效负载的详细信息，请参阅[对自动缩放配置 Webhook 和电子邮件通知](insights-autoscale-to-webhook-email.md)。
 
-   将以下内容添加到自动缩放设置，替换值为 null 的 **notification** 元素
+   将以下内容添加到自动缩放设置，替换值为 null 的 **notification**  元素
 
    ```
    "notifications": [
@@ -255,4 +253,3 @@ ms.lasthandoff: 05/10/2017
 [使用 CLI 管理自动缩放](insights-cli-samples.md#autoscale)
 
 [对自动缩放配置 Webhook 和电子邮件通知](insights-autoscale-to-webhook-email.md)
-

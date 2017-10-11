@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c697b49769ffbbb4aee7a482bb067990b893490c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: fce51546e041c8989d813c3935e058c52b38ba77
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
 本文介绍一些常见模式，这些模式可在 Azure 中缩放资源。
@@ -32,37 +31,37 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 ## <a name="scale-based-on-cpu"></a>基于 CPU 进行缩放
 
-你拥有 Web 应用（/VMSS/云服务角色）并且 
+拥有 Web 应用（/VMSS/云服务角色）并且 
 
 - 要基于 CPU 进行扩大/缩小。
-- 此外，你希望确保实例数最小。 
+- 此外，你想要确保最小实例数。 
 - 同时，希望确保为可以扩展到的实例数设置最大限制。
 
 ![基于 CPU 进行缩放][2]
 
 ## <a name="scale-differently-on-weekdays-vs-weekends"></a>在工作日与周末以不同方式缩放
 
-你拥有 Web 应用（/VMSS/云服务角色）并且
+拥有 Web 应用（/VMSS/云服务角色）并且
 
 - 默认情况下想要 3 个实例（在工作日）
-- 你不希望在周末有流量，因此希望在周末减少到 1 个实例。
+- 不希望在周末有流量，因此希望在周末减少到 1 个实例。
 
 ![在工作日与周末以不同方式缩放][3]
 
 ## <a name="scale-differently-during-holidays"></a>在节假日期间以不同方式缩放
 
-你拥有 Web 应用（/VMSS/云服务角色）并且 
+拥有 Web 应用（/VMSS/云服务角色）并且 
 
 - 希望在默认情况下基于 CPU 使用率向上扩展/向下扩展
-- 但是，在节假日（或对于业务非常重要的特定日子）期间你想要覆盖默认值，并希望有更多容量可由你支配。
+- 但是，在节假日 （或对于你的业务非常重要的特定天） 期间你想要重写默认值并可以在更多容量。
 
 ![在节假日以不同方式缩放][4]
 
 ## <a name="scale-based-on-custom-metric"></a>基于自定义指标进行缩放
 
-你有一个 Web 前端和一个可与后端通信的 API 层。 
+有一个 Web 前端和一个可与后端通信的 API 层。 
 
-- 你想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结账进程）
+- 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结账进程）
 
 ![基于自定义指标进行缩放][5]
 

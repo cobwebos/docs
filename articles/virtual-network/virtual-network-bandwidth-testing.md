@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: a2cbb6ca9197c7af0d1d30e87d58b0314507a531
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: ccebc722386a19014674d7a59757a3685bd50793
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
 在 Azure 中测试网络吞吐量性能时，最好使用以要测试的网络为目标并能在最大程度减少其他资源（这些资源可能会对性能产生影响）的使用的工具。 建议使用 NTTTCP。
@@ -33,7 +31,7 @@ ms.lasthandoff: 05/31/2017
  
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 
-记下 VM 上的核心数。 暂且将其称为“\#num\_cores”
+记下 VM 上的核心数。 我们将其称为“\#num\_cores”
  
 在发送方 VM 和接收方 VM 上运行 NTTTCP 测试 300 秒（5 分钟）。
 
@@ -49,7 +47,7 @@ ms.lasthandoff: 05/31/2017
 发送方参数：ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
 
 > [!NOTE]
-> 以上示例应仅用于确认配置。 本文档中稍后将介绍测试的有效示例。
+> 以上示例应仅用于确认配置。 本文档稍后会介绍测试的有效示例。
 
 ## <a name="testing-vms-running-windows"></a>测试运行 WINDOWS 的 VM：
 
@@ -164,4 +162,3 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ## <a name="next-steps"></a>后续步骤
 * 根据得到的结果，也许能够为方案[优化网络吞吐量计算机](virtual-network-optimize-network-bandwidth.md)。
 * 通过 [Azure 虚拟网络常见问题 (FAQ)](virtual-networks-faq.md) 了解详细信息
-

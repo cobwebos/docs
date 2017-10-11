@@ -10,7 +10,7 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-powershell
 articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.md
 
 -->
-可以通过调整数据仓库单位 (DWU) 来提高或降低计算能力。 默认值为 400 DWU。 当 DWU 增加时，计算资源呈线性增加。 例如，将 DWU 从 400 更改为 800 会导致计算资源加倍。 
+你可以增加或减少计算通过调整数据仓库单位 (Dwu)。 默认值为 400 Dwu。 计算资源作为 Dwu 增加而呈线性增加。 例如，更改 Dwu 从 400 到 800 double 的计算资源。 
 
-有关最新 DWU 设置的列表，请参阅[服务容量限制](../articles/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)中的“服务级别目标”。
+当前的 DWU 设置的列表，请参阅在服务级别目标[服务容量限制](../articles/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 

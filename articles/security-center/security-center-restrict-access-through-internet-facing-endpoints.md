@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
 ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>在 Azure 安全中心中通过面向 Internet 的终结点限制访问
-如果任何网络安全组 (NSG) 具有一个或多个允许从“任何”源 IP 地址进行访问的入站规则，Azure 安全中心将建议通过面向 Internet 的终结点限制访问。 将访问权限打开到“任何”，攻击者将能够访问你的资源。 安全中心将建议你编辑这些入站规则，以限制对实际需要访问的源 IP 地址的访问。
+如果任何网络安全组 (NSG) 具有一个或多个允许从“任何”源 IP 地址进行访问的入站规则，Azure 安全中心将建议通过面向 Internet 的终结点限制访问。 将访问权限打开到“任何”，攻击者能够访问资源。 安全中心将建议编辑这些入站规则，以限制对实际需要访问的源 IP 地址的访问。
 
 此建议针对以“任何”作为源的任何非 Web 端口。
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 02/06/2017
 1. 在“建议”边栏选项卡，选择“通过面向 Internet 的终结点限制访问”。
 
    ![通过面向 Internet 的终结点限制访问][1]
-2. 这将打开“通过面向 Internet 的终结点限制访问”边栏选项卡。 此边栏选项卡列出了具有潜在安全问题的入站规则的虚拟机 (VM)。 选择 VM。
+2. 这会打开“通过面向 Internet 的终结点限制访问”边栏选项卡。 此边栏选项卡列出了具有潜在安全问题的入站规则的虚拟机 (VM)。 选择 VM。
 
    ![选择 VM][2]
 3. “NSG”边栏选项卡显示网络安全组信息、相关入站规则，以及相关联的 VM。 选择“编辑入站规则”以继续进行编辑入站规则。
@@ -61,7 +60,7 @@ ms.lasthandoff: 02/06/2017
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
-* [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) - 了解建议如何帮助你保护 Azure 资源。
+* [管理 Azure 安全中心中的安全建议](security-center-recommendations.md)-了解如何建议可以帮助你保护你的 Azure 资源。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
@@ -75,4 +74,3 @@ ms.lasthandoff: 02/06/2017
 [4]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/inbound-security-rules.png
 [5]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/default-rules.png
 [6]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/edit-inbound-rule.png
-

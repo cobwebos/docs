@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: c49f283971b33a4e88573e1d67ba159021fbccb8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.openlocfilehash: 01a6f35fe61290f8c7275c34273d66956a53d3f9
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>在经典 Azure 门户中将本地 VMware 虚拟机或物理服务器复制到辅助站点
 
@@ -27,21 +26,21 @@ ms.lasthandoff: 05/04/2017
 Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实时复制。 InMage Scout 随附在 Azure Site Recovery 服务订阅中。 
 
 ## <a name="prerequisites"></a>先决条件
-**Azure 帐户**：需要 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/) Site Recovery 定价。
+**Azure 帐户**：需要 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/) Site Recovery 定价。
 
 ## <a name="step-1-create-a-vault"></a>步骤 1：创建保管库
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“新建”>“管理”>“备份和 Site Recovery (OMS)”。 或者，可以单击“浏览”>“恢复服务保管库”>“添加”。
-3. 在“**名称**”中，指定一个友好名称以标识该保管库。 如果你有多个订阅，请选择其中一个。
+3. 在“**名称**”中，指定一个友好名称以标识该保管库。 如果有多个订阅，请选择其中一个。
 4. 在“**资源组**”中，创建新资源组或选择现有的资源组。 指定 Azure 区域，以完成必填字段。
 5. 在“**位置**”中，选择保管库的地理区域。 若要查看支持的区域，请参阅 [Azure Site Recovery 定价](https://azure.microsoft.com/pricing/details/site-recovery/)。
-6. 若要从仪表板快速访问保管库，请单击“固定到仪表板”，然后单击“创建”。
-7. 新保管库将显示在“仪表板”>“所有资源”中，以及“恢复服务保管库”主边栏选项卡上。
+6. 要从仪表板快速访问保管库，请单击“固定到仪表板”，并单击“创建”。
+7. 新保管库会显示在“仪表板”>“所有资源”中，以及“恢复服务保管库”主边栏选项卡上。
 
 ## <a name="step-2-configure-the-vault-and-download-inmage-scout-components"></a>步骤 2：配置保管库并下载 InMage Scout 组件
-1. 在“恢复服务保管库”边栏选项卡中选择保管库，然后单击“设置”。
+1. 在“恢复服务保管库”边栏选项卡中选择保管库，并单击“设置”。
 2. 在“**设置**” > “**快速启动**”中，单击“**Site Recovery**”>“**步骤 1: 准备基础结构**” > “**保护目标**”。
-3. 在“**保护目标**”中选择“到恢复站点”，然后选择“是，使用 VMware vSphere 虚拟机监控程序”。 然后，单击“确定”。
+3. 在“**保护目标**”中选择“到恢复站点”，并选择“是，使用 VMware vSphere 虚拟机监控程序”。 然后，单击“确定”。
 4. 在 **Scout 安装**中，单击“下载”以下载 InMage Scout 8.0.1 GA 软件和注册密钥。 所有必需组件的安装程序文件都包含在下载的 .zip 文件中。
 
 ## <a name="step-3-install-component-updates"></a>步骤 3：安装组件更新
@@ -65,18 +64,18 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实�
    * vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe
    * 对于 RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 2. 解压缩 .zip 文件。<br>
-3. **对于 RX 服务器**：将 **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** 复制到 RX 服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。<br>
+3. **对于 RX 服务器**：将 **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** 复制到 RX 服务器并将其提取。 在解压缩的文件夹中运行 **/Install**。<br>
 4. **对于配置服务器/进程服务器**：将 **CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe** 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
-5. **对于 Windows 主目标服务器**：若要更新统一代理，将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到主目标服务器。 双击以运行该文件。 请注意，如果源未更新到 Update4，则统一代理也适用于源服务器。 还应将其安装在源服务器上，如此列表后面部分所述。<br>
+5. **对于 Windows 主目标服务器**：要更新统一代理，将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到主目标服务器。 双击以运行该文件。 请注意，如果源未更新到 Update4，则统一代理也适用于源服务器。 还应将其安装在源服务器上，如此列表后面部分所述。<br>
 6. **对于 vContinuum 服务器**：将 **vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe** 复制到 vContinuum 服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。<br>
-7. **对于 Linux 主目标服务器**：若要更新统一代理，将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到主目标服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。<br>
+7. **对于 Linux 主目标服务器**：要更新统一代理，将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到主目标服务器并将其提取。 在解压缩的文件夹中运行 **/Install**。<br>
 8. **对于 Windows 源服务器**：如果源已经处于 update4，则不需要在源上安装 Update 5 代理。 如果它低于 update4，请应用 update 5 代理。
-若要更新统一代理，请将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到源服务器。 双击以运行该文件。 <br>
-9. **对于 Linux 源服务器**：若要更新统一代理，将相应版本的 UA 文件复制到 Linux 服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。
+要更新统一代理，请将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到源服务器。 双击以运行该文件。 <br>
+9. **对于 Linux 源服务器**：要更新统一代理，将相应版本的 UA 文件复制到 Linux 服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。
 
 ## <a name="step-4-set-up-replication"></a>步骤 4：设置复制
 1. 设置源与目标 VMware 站点之间的复制。
-2. 有关指导，请使用随产品下载的 InMage Scout 文档。 你也可以访问以下文档：
+2. 有关指导，请使用随产品下载的 InMage Scout 文档。 也可以访问以下文档：
 
    * [发行说明](https://aka.ms/asr-scout-release-notes)
    * [兼容性对照表](https://aka.ms/asr-scout-cm)
@@ -106,13 +105,13 @@ Scout Update 5 是累积更新。 它包含从 Update 1 到 Update 4 的所有�
     * 已修复 - 单节点群集保护由于 SCSI 不匹配问题而失败 
     * 已修复 - 当存在目标群集磁盘时，P2V Windows 群集服务器的重新保护失败。 
     
-* 在故障回复保护期间，如果所选的 MT 不与受保护源计算机的 MT（在正向保护期间）位于同一 ESXi 服务器上，则 vContinuum 在故障回复恢复期间会选取错误的 MT，并且随后的恢复操作将失败。
+* 在故障回复保护期间，如果所选的 MT 不与受保护源计算机的 MT（在正向保护期间）位于同一 ESXi 服务器上，则 vContinuum 在故障回复恢复期间会选取错误的 MT，并且随后的恢复操作会失败。
 
 > [!NOTE]
 > 
-> * 上述 P2V 群集修复仅适用于以 ASR Scout update5 全新保护的那些物理 MSCS 群集。 若要在具有较旧更新的已受保护的 P2V MSCS 群集上利用这些群集修复，需要遵循 [ASR Scout 发行说明](https://aka.ms/asr-scout-release-notes)中第 12 节“将受保护的 P2V MSCS 群集升级到 Scout Update5”中提到的升级步骤。
+> * 上述 P2V 群集修复仅适用于以 ASR Scout update5 全新保护的那些物理 MSCS 群集。 要在具有较旧更新的已受保护的 P2V MSCS 群集上利用这些群集修复，需要遵循 [ASR Scout 发行说明](https://aka.ms/asr-scout-release-notes)中第 12 节“将受保护的 P2V MSCS 群集升级到 Scout Update5”中提到的升级步骤。
 > 
-> * 只有满足下述条件时，物理 MSCS 群集的重新保护才能重新使用现有目标磁盘：在进行重新保护时，在每个群集节点上处于活动状态的磁盘集与最初保护这些群集节点时在其上处于活动状态的磁盘集相同。 如果不是，则需执行 [ASR Scout 发行说明](https://aka.ms/asr-scout-release-notes)的第 12 节中提到的手动步骤将目标端磁盘移动到正确的数据存储路径以便在重新保护期间重新使用它们。 如果在不执行那些升级步骤的情况下重新保护处于 P2V 模式的 MSCS 群集，则它将在目标 ESXi 服务器上创建新磁盘。 你需要手动从数据存储中删除旧磁盘。
+> * 只有满足下述条件时，物理 MSCS 群集的重新保护才能重新使用现有目标磁盘：在进行重新保护时，在每个群集节点上处于活动状态的磁盘集与最初保护这些群集节点时在其上处于活动状态的磁盘集相同。 如果不是，则需执行 [ASR Scout 发行说明](https://aka.ms/asr-scout-release-notes)的第 12 节中提到的手动步骤将目标端磁盘移动到正确的数据存储路径以便在重新保护期间重新使用它们。 如果在不执行那些升级步骤的情况下重新保护处于 P2V 模式的 MSCS 群集，则它会在目标 ESXi 服务器上创建新磁盘。 需要手动从数据存储中删除旧磁盘。
 > 
 > * 每当具有任何 Service Pack 服务器的源 SLES11 或 SLES11 正常重新启动时，都应当手动标记**根**磁盘复制对以便重新同步，因为 CX UI 中不会提供通知。 如果没有标记根磁盘以便重新同步，则可能会看到数据完整性 (DI) 问题。
 > 
@@ -175,7 +174,7 @@ Update 3 包含以下 bug 修复和增强功能：
 * 密码大于 16 个字符时，推送安装服务会崩溃。
 * vContinuum 不会在凭据更改时检查和提示输入新的 vCenter 凭据。
 * 在 Linux 上，主目标缓存管理器 (cachemgr) 不会从进程服务器下载文件，从而发生复制对限制。
-* 当所有节点上的物理故障转移群集 (MSCS) 磁盘顺序不一致时，将不会设置某些群集卷的复制。
+* 当所有节点上的物理故障转移群集 (MSCS) 磁盘顺序不一致时，不会设置某些群集卷的复制。
   <br/>请注意，群集需要重新保护才能利用这一修复。  
 * 在 RX 从 Scout 7.1 升级到 Scout 8.0.1 之后，SMTP 功能不按预期工作。
 * 已在日志中添加更多统计信息，以便回滚操作跟踪完成此操作所需的时间。
@@ -188,8 +187,8 @@ Update 3 包含以下 bug 修复和增强功能：
 | **问题说明** | **实现过程** |
 | --- | --- |
 | 通过参数篡改绕过授权 |已将访问权限限制为不适用的用户。 |
-| 跨站点请求伪造 |实施针对每页随机生成的页面令牌概念。 <br/>通过此过程，你将看到： <li> 同一用户仅有单个登录实例。</li><li>页面刷新不起作用--此操作会重定向至仪表板。</li> |
-| 恶意文件上载 |将文件限制为特定的扩展名。 允许的扩展名：7z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml 和 zip。 |
+| 跨站点请求伪造 |实施针对每页随机生成的页面令牌概念。 <br/>通过此过程，会看到： <li> 同一用户仅有单个登录实例。</li><li>页面刷新不起作用--此操作会重定向至仪表板。</li> |
+| 恶意文件上传 |将文件限制为特定的扩展名。 允许的扩展名：7z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml 和 zip。 |
 | 持久性跨站点脚本 |已添加输入验证。 |
 
 > [!NOTE]
@@ -207,9 +206,9 @@ Update 2 中的修复包括：
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Update 1 包含以下 bug 修复和新功能：
 
-* 每个服务器实例享有 31 天的免费保护。 这样，你便可以测试功能或建立概念认证。
+* 每个服务器实例享有 31 天的免费保护。 这样，便可以测试功能或建立概念认证。
   * 从使用 Site Recovery Scout 首次保护服务器的时间开始计算的前 31 天，服务器上的所有操作（包括故障转移和故障回复）都是免费的。
-  * 从第 32 天起，将会根据标准实例费率，针对每个受保护的服务器，向客户拥有的站点收取 Azure Site Recovery 保护费用。
+  * 从第 32 天起根据标准实例费率，针对每个受保护的服务器，向客户拥有的站点收取 Azure Site Recovery 保护费用。
   * 在 Azure Site Recovery 保管库的“仪表板”页上随时会显示当前计费的受保护服务器数目。
 * 添加了对 vSphere命令行接口 (vCLI) 5.5 Update 2 的支持。
 * 已添加对源服务器上 Linux 操作系统的支持：
@@ -231,4 +230,3 @@ Update 1 包含以下 bug 修复和新功能：
 
 ## <a name="next-steps"></a>后续步骤
 请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上发布任何问题。
-

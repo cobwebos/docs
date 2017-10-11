@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 7d655c482a16c991a819eec84c84556d2f288a75
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>教程：Azure Active Directory 与 Zscaler One 的集成
 
@@ -88,9 +87,9 @@ ms.lasthandoff: 07/13/2017
 若要配置和测试 Zscaler One 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. [配置代理设置](#configuring-proxy-settings) - 在 Internet Explorer 中配置代理设置
+2. [配置代理设置](#configuring-proxy-settings) - 以在 Internet Explorer 中配置代理设置
 3. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 Zscaler One 测试用户](#creating-a-zscaler-one-test-user)** - 以在 Zscaler One 中具有对应的 Britta Simon 用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+4. **[创建 Zscaler One 的测试用户](#creating-a-zscaler-one-test-user)** -若要在 Zscaler One 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 5. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 6. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 07/13/2017
     > [!NOTE] 
     > 需使用实际登录 URL 更新此值。 请联系 [Zscaler One 客户端支持团队](https://www.zscaler.com/company/contact)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-zscaler-one-tutorial/tutorial_zscalerone_certificate.png) 
 
@@ -143,17 +142,17 @@ ms.lasthandoff: 07/13/2017
                 
     ![身份验证](./media/active-directory-saas-zscaler-one-tutorial/ic800208.png "身份验证")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“使用 SAML 单一登录进行身份验证”。
+    a. 选择“使用 SAML 单一登录进行身份验证”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“配置 SAML 单一登录参数”。
+    b. 单击“配置 SAML 单一登录参数”。
 
 11. 在“配置 SAML 单一登录参数”对话框页上，执行以下步骤，然后单击“完成”
 
     ![单一登录](./media/active-directory-saas-zscaler-one-tutorial/ic800209.png "单一登录")
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 单一登录服务 URL”值粘贴到“发送给用户进行身份验证的 SAML 门户 URL”文本框中。
+    a. 将从 Azure 门户复制的“SAML 单一登录服务 URL”值粘贴到“发送给用户进行身份验证的 SAML 门户 URL”文本框中。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“属性包含登录名”文本框中，键入 **NameID** 。
+    b. 在“属性包含登录名”文本框中，键入 **NameID** 。
     
     c. 若要上传已下载的证书，请单击“Zscaler pem”。
     
@@ -163,9 +162,9 @@ ms.lasthandoff: 07/13/2017
 
     ![管理](./media/active-directory-saas-zscaler-one-tutorial/ic800210.png "Administration")
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“保存” 。
+    a. 单击“保存” 。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“立即激活”。
+    b. 单击“立即激活”。
 
 ## <a name="configuring-proxy-settings"></a>配置代理设置
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
@@ -186,9 +185,9 @@ ms.lasthandoff: 07/13/2017
    
     ![代理服务器](./media/active-directory-saas-zscaler-one-tutorial/ic769494.png "代理服务器")
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“为 LAN 使用代理服务器”。
+    a. 选择“为 LAN 使用代理服务器”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“地址”文本框中，键入 **gateway.zscalerone.net**。
+    b. 在“地址”文本框中，键入 **gateway.zscalerone.net**。
 
     c. 在“端口”文本框中，键入 **80**。
 
@@ -225,7 +224,7 @@ ms.lasthandoff: 07/13/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-zscaler-one-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -257,9 +256,9 @@ ms.lasthandoff: 07/13/2017
         
     ![添加用户](./media/active-directory-saas-zscaler-one-tutorial/ic781038.png "添加用户")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，然后选择想要预配的有效 Azure AD 帐户的“组”和“部门”。
+    a. 键入“UserID”、“用户显示名称”、“密码”和“确认密码”，然后选择想要预配的有效 Azure AD 帐户的“组”和“部门”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“保存” 。
+    b. 单击“保存” 。
 
 > [!NOTE]
 > 可使用任何其他 Zscaler One 用户帐户创建工具或使用 Zscaler One 提供的 API 来预配 Azure Active Directory 用户帐户。
@@ -272,7 +271,7 @@ ms.lasthandoff: 07/13/2017
 
 **若要将 Britta Simon 分配到 Zscaler One，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -319,5 +318,4 @@ ms.lasthandoff: 07/13/2017
 [201]: ./media/active-directory-saas-zscaler-one-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-zscaler-one-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-zscaler-one-tutorial/tutorial_general_203.png
-
 

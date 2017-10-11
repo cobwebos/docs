@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c4ec436df17926114e3e27eabc8ed12761c9614e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: 4650cebe18153e3b10bbec685a66a590348c99e9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
 > [!div class="op_single_selector"]
@@ -80,7 +79,7 @@ ms.lasthandoff: 05/31/2017
 
 - 如果想要将静态 IP 地址用于生产槽，也必须为过渡槽保留一个静态 IP 地址。 否则，交换失败。
 
-- 执行交换前，你的角色的所有实例必须都在运行。 可在 Azure 门户的“概述”边栏选项卡中检查实例的状态。 或者，可以使用 Windows PowerShell 中的 [Get-azurerole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) 命令。
+- 执行交换前，角色的所有实例必须都在运行。 可在 Azure 门户的“概述”边栏选项卡中检查实例的状态。 或者，可以使用 Windows PowerShell 中的 [Get-azurerole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) 命令。
 
 请注意，来宾 OS 更新和服务修复操作也会导致部署交换失败。 有关详细信息，请参阅[排查云服务部署问题](cloud-services-troubleshoot-deployment-problems.md)。
 
@@ -92,7 +91,7 @@ ms.lasthandoff: 05/31/2017
 Azure 门户不会像当前 Azure 经典门户一样将资源链接在一起。 而是将其他资源部署到云服务正在使用的同一资源组。
 
 ## <a name="how-to-delete-deployments-and-a-cloud-service"></a>如何：删除部署和云服务
-必须先删除每个现有部署，然后才能删除云服务。
+必须先删除每个现有部署，才能删除云服务。
 
 为节省计算成本，可以在验证生产部署能够按预期运行后删除过渡部署。 停止的已部署角色实例仍会产生计算成本。
 
@@ -108,7 +107,7 @@ Azure 门户不会像当前 Azure 经典门户一样将资源链接在一起。 
     ![云服务交换](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 
 4. 单击底部的“删除”按钮。
-5. 要删除云服务，则单击“删除云服务”。 然后在出现确认提示时单击“是”。
+5. 要删除云服务，则单击“删除云服务”。 然后，在出现确认提示时单击“是”。
 
 > [!NOTE]
 > 删除云服务时，如果已配置详细监视，则必须从存储帐户中手动删除数据。 有关在何处查找度量值表的信息，请参阅[此](cloud-services-how-to-monitor.md)文章。
@@ -128,4 +127,3 @@ Azure 门户不会像当前 Azure 经典门户一样将资源链接在一起。 
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。
 * 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
-

@@ -1,4 +1,3 @@
-
 ---
 title: "使用 Azure AD v2.0 访问安全资源而无需用户互动 | Microsoft Docs"
 description: "使用 Azure AD 的 OAuth 2.0 身份验证协议实现构建 Web 应用程序。"
@@ -16,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: 93b54c3fc4397573f77b2e157c6f1866786690da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流
 可通过 [OAuth 2.0 客户端凭据授予](http://tools.ietf.org/html/rfc6749#section-4.4)（有时称为双重 OAuth），使用应用程序标识来访问 Web 托管的资源。 这种授予通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 此类应用程序通常称为守护程序或服务帐户。
@@ -34,7 +32,7 @@ ms.lasthandoff: 06/08/2017
 在较典型的“三重 OAuth”中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](active-directory-v2-scopes.md)过程中由用户委托给应用程序。 但是，在客户端凭据流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身拥有执行操作的授权，而不是用户拥有授权。
 
 ## 协议图
-整个客户端凭据流类似于下图。 本文稍后将介绍每个步骤。
+整个客户端凭据流类似于下图。 本文稍后介绍每个步骤。
 
 ![客户端凭据流](../../media/active-directory-v2-flows/convergence_scenarios_client_creds.png)
 
@@ -61,7 +59,7 @@ ms.lasthandoff: 06/08/2017
 若要在应用中使用应用程序权限，请执行下面部分所述的步骤。
 
 #### 在应用注册门户中请求权限
-1. 在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)中，转到你的应用，或[创建一个应用](active-directory-v2-app-registration.md)（如尚未创建）。 创建应用时，需使用至少一个应用程序密钥。
+1. 在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)中，转到应用，或[创建一个应用](active-directory-v2-app-registration.md)（如尚未创建）。 创建应用时，需使用至少一个应用程序密钥。
 2. 找到“直接应用程序权限”部分，然后添加应用所需的权限。
 3. **保存**应用注册。
 
@@ -95,7 +93,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | tenant |必选 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
 | client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
 | redirect_uri |必选 |要向其发送响应以供应用处理的重定向 URI。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
-| state |建议 |同样随令牌响应返回的请求中所包含的值。 其可以是你想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| state |建议 |同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
 
 此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统将要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
 
@@ -109,7 +107,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | 参数 | 说明 |
 | --- | --- | --- |
 | tenant |向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
-| state |同样随令牌响应返回的请求中所包含的值。 其可以是你想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| state |同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
 | admin_consent |设置为 **true**。 |
 
 ##### 错误响应
@@ -127,7 +125,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 从应用预配终结点收到成功响应后，应用便已获得所请求的直接应用程序权限。 现在便可为所需资源请求令牌。
 
 ## 获取令牌
-获取应用程序的必要授权后，可继续获取 API 的访问令牌。 若要使用客户端凭据授予获取令牌，请将 POST 请求发送到 `/token` v2.0 终结点：
+获取应用程序的必要授权后，可继续获取 API 的访问令牌。 要使用客户端凭据授予获取令牌，请将 POST 请求发送到 `/token` v2.0 终结点：
 
 ### 第一种情况：使用共享密钥访问令牌请求
 
@@ -231,4 +229,3 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 ## 代码示例
 若要查看使用管理员许可终结点实现客户端凭据授予的应用程序示例，请参阅 [v2.0 守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)。
-

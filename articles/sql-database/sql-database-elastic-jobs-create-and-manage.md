@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 7058139814a0a20d6fb6305e1e469946bb6b7d77
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
-
+ms.openlocfilehash: d30cc74778e0b36dd632c2f040ce80d1ca8af5a5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>使用弹性作业创建和管理扩大的 Azure SQL 数据库（预览）
 
@@ -37,16 +35,16 @@ ms.lasthandoff: 02/16/2017
 1. 使用 [Azure 门户](https://portal.azure.com)，从现有的弹性数据库作业池中单击“**创建作业**”。
 2. 键入作业控制数据库（作业的元数据存储）的数据库管理员（在安装作业时创建）的用户名和密码。
    
-    ![为作业命名、键入或粘贴代码，然后单击“运行”][1]
+    ![为作业命名、键入或粘贴代码，并单击“运行”][1]
 3. 在“**创建作业**”边栏选项卡中，键入作业的名称。
 4. 键入具有足够权限、用于连接到目标数据库的用户名和密码，使脚本执行成功。
 5. 粘贴或键入 T-SQL 脚本。
-6. 单击“**保存**”，然后单击“**运行**”。
+6. 单击“**保存**”，并单击“**运行**”。
    
     ![创建并运行作业][5]
 
 ## <a name="run-idempotent-jobs"></a>运行幂等作业
-当你针对一组数据库运行某个脚本时，必须确保该脚本是幂等的。 也就是说，该脚本必须能够运行多次，即使它在进入未完成状态之前已失败。 例如，当脚本失败时，作业将自动重试直到成功（在限制次数内，因为重试逻辑最终会停止重试）。 执行此操作的方法是使用一个“IF EXISTS”子句，并在新建对象之前删除找到的任何实例。 下面显示了一个示例：
+针对一组数据库运行某个脚本时，必须确保该脚本是幂等的。 也就是说，该脚本必须能够运行多次，即使它在进入未完成状态之前已失败。 例如，当脚本失败时，作业会自动重试直到成功（在限制次数内，因为重试逻辑最终会停止重试）。 执行此操作的方法是使用一个“IF EXISTS”子句，并在新建对象之前删除找到的任何实例。 下面显示了一个示例：
 
     IF EXISTS (SELECT name FROM sys.indexes
             WHERE name = N'IX_ProductVendor_VendorID')
@@ -69,7 +67,7 @@ ms.lasthandoff: 02/16/2017
     INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime());
     GO
 
-然后，此脚本将更新以前创建的表。
+然后，此脚本更新以前创建的表。
 
     IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation')
     BEGIN
@@ -85,7 +83,7 @@ ms.lasthandoff: 02/16/2017
 
 
 ## <a name="checking-job-status"></a>检查作业状态
-作业开始后，你可以检查其进度。
+作业开始后，可以检查其进度。
 
 1. 在弹性池页中，单击“管理作业”。
    
@@ -107,6 +105,5 @@ ms.lasthandoff: 02/16/2017
 [3]: ./media/sql-database-elastic-jobs-create-and-manage/running-jobs.png
 [4]: ./media/sql-database-elastic-jobs-create-and-manage/failed.png
 [5]: ./media/sql-database-elastic-jobs-create-and-manage/screen-2.png
-
 
 

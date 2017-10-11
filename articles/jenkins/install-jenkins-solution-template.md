@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 上创建 Jenkins 服务器"
-description: "通过 Jenkins 解决方案模板在 Azure Linux 虚拟机上安装 Jenkins，然后生成示例 Java 应用程序。"
+description: "从 Jenkins 解决方案模板的 Azure Linux 虚拟机上安装 Jenkins 和生成示例 Java 应用程序。"
 author: mlearned
 manager: douge
 ms.service: multiple
@@ -10,107 +10,104 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
+# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>在 Azure 门户中的 Azure Linux VM 创建 Jenkins 的服务器
 
-# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
+本快速入门演示如何安装[Jenkins](https://jenkins.io) Ubuntu Linux VM 的工具和插件配置为使用 Azure 上。 完成后，必须在生成示例 Java 应用程序从 Azure 中运行的 Jenkins 服务器[GitHub](https://github.com)。
 
-本快速入门介绍如何使用经过配置的适用于 Azure 的工具和插件在 Ubuntu Linux VM 上安装 [Jenkins](https://jenkins.io)。 完成后，你会有一个在 Azure 中运行的 Jenkins 服务器，并可生成 [GitHub](https://github.com) 中的示例 Java 应用。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅
-* 可以在计算机的命令行（例如 Bash shell 或 [PuTTY](http://www.putty.org/)）上访问 SSH
+* 在你的计算机的命令行上 SSH 访问 (例如 Bash shell 或[PuTTY](http://www.putty.org/))
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>从解决方案模板创建 Jenkins VM
 
-在 Web 浏览器中打开 [Jenkins 的 Marketplace 映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)，然后从页面左侧选择“立即获取”。 查看定价详细信息并选择“继续”，然后选择“创建”，在 Azure 门户中配置 Jenkins 服务器。 
+打开[Jenkins 的应用商店映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)在 web 浏览器，选择**获取 IT**从页面的左侧。 查看定价详细信息，然后选择**继续**，然后选择**创建**在 Azure 门户中配置 Jenkins 服务器。 
    
 ![Azure 门户对话框](./media/install-jenkins-solution-template/ap-create.png)
 
-在“配置基本设置”选项卡中，填充以下字段：
+在**配置基本设置**选项卡上，填写以下字段：
 
 ![配置基本设置](./media/install-jenkins-solution-template/ap-basic.png)
 
-* 使用“Jenkins”作为“名称”。
-* 输入“用户名”。 用户名称必须满足[特定要求](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
-* 选择“密码”作为“身份验证类型”，然后输入密码。 密码必须包含一个大写字符、一个数字和一个特殊字符。
-* 使用“myJenkinsResourceGroup”作为“资源组”。
-* 从“位置”下拉列表中选择“美国东部”[Azure 区域](https://azure.microsoft.com/regions/)。
+* 使用**Jenkins**为**名称**。
+* 输入**用户名**。 用户名称必须满足[特定要求](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
+* 选择**密码**作为**身份验证类型**并输入密码。 密码必须包含大写字符、 一个数字和一个特殊字符。
+* 使用**myJenkinsResourceGroup**为**资源组**。
+* 选择**美国东部** [Azure 区域](https://azure.microsoft.com/regions/)从**位置**下拉列表。
 
-选择“确定”，转到“配置更多选项”选项卡。输入用于标识 Jenkins 服务器的唯一域名，然后选择“确定”。
+选择**确定**以进入**配置其他选项**选项卡。输入要识别 Jenkins 服务器并选择的唯一域名**确定**。
 
 ![设置其他选项](./media/install-jenkins-solution-template/ap-addtional.png)  
 
- 通过验证以后，再次从“摘要”选项卡选择“确定”。最后选择“购买”，创建 Jenkins VM。 服务器就绪以后，Azure 门户中会出现一个通知：   
+ 之后，则通过验证，可选择**确定**再次从**摘要**选项卡。最后，选择**购买**创建 Jenkins VM。 准备你的服务器时，你将看到一条通知，在 Azure 门户中：   
 
-![Jenkins 就绪通知](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
+![Jenkins 是准备通知](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
 
 ## <a name="connect-to-jenkins"></a>连接到 Jenkins
 
-在 Web 浏览器中导航到虚拟机（例如 http://jenkins2517454.eastus.cloudapp.azure.com/）。 Jenkins 控制台无法通过不安全的 HTTP 进行访问，因此在页面上提供了说明，介绍如何在计算机中使用 SSH 隧道安全地访问 Jenkins 控制台。
+在 web 浏览器中，导航到你的虚拟机 (例如，http://jenkins2517454.eastus.cloudapp.azure.com/)。 Jenkins 控制台是无法通过不安全的 HTTP 访问，因此页后，可以安全地从你的计算机使用 SSH 隧道访问 Jenkins 控制台上提供了说明。
 
 ![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
-在页面上通过命令行使用 `ssh` 命令设置该隧道，将 `username` 替换为此前从解决方案模板设置虚拟机时选择的虚拟机管理员用户的名称。
+设置隧道使用`ssh`命令从命令行中，页上替换`username`替换时从解决方案模板设置虚拟机之前选择的虚拟机管理员用户的名称。
 
 ```bash
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-启动隧道后，导航到本地计算机上的 http://localhost:8080/。 
+启动隧道后，导航到 http://localhost:8080 / 本地计算机上。 
 
-通过 SSH 连接到 Jenkins VM 时，在命令行中运行以下命令，以便获取初始密码。
+通过在命令行时连接通过 ssh 连接到 Jenkins VM 中运行以下命令获取初始密码。
 
 ```bash
 `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
 ```
 
-首次解锁 Jenkins 仪表板时，请使用此初始密码。
+首次使用此初始密码解锁 Jenkins 仪表板中。
 
 ![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-unlock.png)
 
-在下一页选择“安装建议的插件”，然后创建用于访问 Jenkins 仪表板的 Jenkins 管理员用户。
+选择**安装建议的插件**在下次页上，然后创建 Jenkins 管理员用户用于访问 Jenkins 仪表板中。
 
 ![Jenkins 已准备就绪！](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
-Jenkins 服务器现在已就绪，可以生成代码了。
+Jenkins 服务器现在已准备好生成的代码。
 
 ## <a name="create-your-first-job"></a>创建第一个作业
 
-从 Jenkins 控制台选择“创建新作业”，将其命名为“mySampleApp”并选择“自由格式项目”，然后选择“确定”。
+选择**创建新作业**从 Jenkins 控制台中，然后将其命名**mySampleApp**和选择**自由格式项目**，然后选择**确定**。
 
 ![创建新的作业](./media/install-jenkins-solution-template/jenkins-new-job.png) 
 
-选择“源代码管理”选项卡，启用“Git”，然后在“存储库 URL”字段中输入以下 URL：`https://github.com/spring-guides/gs-spring-boot.git`
+选择**源代码管理**选项卡上，启用**Git**，并输入以下 URL**存储库 URL**字段：`https://github.com/spring-guides/gs-spring-boot.git`
 
-![定义 Git 存储库](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
+![定义的 Git 存储库](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
 
-依次选择“生成”选项卡、“添加生成步骤”、“调用 Gradle 脚本”。 选择“使用 Gradle 包装器”，然后在“包装器位置”中输入 `complete`，并输入 `build` 作为“任务”。
+选择**生成**选项卡，然后选择**添加生成步骤**，**调用 Gradle 脚本**。 选择**使用 Gradle 包装**，然后输入`complete`中**包装位置**和`build`为**任务**。
 
-![使用要生成的 Gradle 包装器](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
+![使用生成的 Gradle 包装](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-选择“高级...”， 然后在“根生成脚本”字段中输入 `complete`。 选择“保存”。
+选择**高级...** 然后输入`complete`中**根生成脚本**字段。 选择“保存”。
 
-![在 Gradle 包装器生成步骤中设置高级设置](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
+![在 Gradle 包装构建步骤中设置高级的设置](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 
 ## <a name="build-the-code"></a>生成代码
 
-选择“立即生成”，编译代码并打包示例应用。 生成完成后，选择项目的 Workspace 链接。
+选择**立即生成**编译代码并打包示例应用程序。 完成你的生成操作后，选择**工作区**项目的链接。
 
 ![浏览到要从生成中获取 JAR 文件的工作区](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
-导航到 `complete/build/libs`，确保能够验证生成是否成功的 `gs-spring-boot-0.1.0.jar` 位于其中。 Jenkins 服务器现已就绪，可以在 Azure 中生成你自己的项目了。
+导航到`complete/build/libs`并确保`gs-spring-boot-0.1.0.jar`是否有以验证你的生成是否成功。 你的 Jenkins 服务器现在已准备好生成您自己在 Azure 中的项目。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将 Azure VM 作为 Jenkins 代理添加](jenkins-azure-vm-agents.md)
-
+> [将 Azure Vm 添加为 Jenkins 代理](jenkins-azure-vm-agents.md)

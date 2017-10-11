@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2 ASP.NET Web 服务器入门 - 使用 | Microsoft Docs"
-description: "通过基于传统 Web 浏览器的使用 OpenID Connect 标准的应用程序，对 ASP.NET 解决方案实现 Microsoft 登录"
+title: "Azure AD v2 ASP.NET Web 服务器获取已启动 – 使用 |Microsoft 文档"
+description: "与传统 web 基于浏览器应用程序使用 OpenID Connect 标准在 ASP.NET 解决方案上实现 Microsoft 登录"
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -15,22 +15,21 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3b7d29e48c91f40e8782a5e32a52998b815fe331
-ms.contentlocale: zh-cn
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
+## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>添加一个控制器来处理在登录和注销请求
 
-## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>添加控制器来处理登录和注销请求
+此步骤演示如何创建新的控制器以公开在登录和注销方法。
 
-此步骤演示如何创建新控制器来公开登录和注销方法。
-
-1.  右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
-2.  选择 `MVC (.NET version) Controller – Empty`。
-3.  单击“添加”
-4.  将其命名为 `HomeController`，然后单击“添加”
-5.  向该类添加 OWIN 引用：
+1.  右键单击`Controllers`文件夹，然后选择`Add` > `Controller`
+2.  选择`MVC (.NET version) Controller – Empty`。
+3.  单击*添加*
+4.  将其命名为`HomeController`单击*添加*
+5.  添加*OWIN*对该类的引用：
 
 ```csharp
 using Microsoft.Owin.Security;
@@ -40,7 +39,7 @@ using Microsoft.Owin.Security.OpenIdConnect;
 <!-- Workaround for Docs conversion bug -->
 <ol start="6">
 <li>
-通过代码启动身份验证质询，添加下面两个方法来处理控制器登录和注销：
+启动身份验证质询通过代码你的控制器中添加以下处理登录和注销的两个方法：
 </li>
 </ol>
 
@@ -70,13 +69,13 @@ public void SignOut()
 }
 ```
 
-## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>创建应用的主页，通过登录按钮来登录用户
+## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>创建应用程序的主页上，以在用户通过登录按钮进行签名
 
-在 Visual Studio 中，创建新视图来添加登录按钮并在身份验证后显示用户信息：
+在 Visual Studio 中，创建新视图，以添加在登录按钮和显示身份验证后的用户信息：
 
-1.  右键单击 `Views\Home` 文件夹，然后选择`Add View`
-2.  将它命名为 `Index`。
-3.  向文件添加以下 HTML，其中包括登录按钮：
+1.  右键单击`Views\Home`文件夹，然后选择`Add View`
+2.  将其命名为`Index`。
+3.  将以下 HTML，其中包括登录按钮，添加到该文件：
 
 ```html
 <html>
@@ -116,18 +115,18 @@ else
 </html>
 ```
 <!--start-collapse-->
-### <a name="more-information"></a>更多信息
-> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![使用 Microsoft 登录](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[本页](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines")。
+### <a name="more-information"></a>详细信息
+> 此页可将登录按钮添加带有黑色背景的 SVG 格式：<br/>![使用 Microsoft 登录](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[本页](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines")。
 <!--end-collapse-->
 
-## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
-此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 下面的代码使用该属性来显示作为登录的一部分被检索的用户声明。
+## <a name="add-a-controller-to-display-users-claims"></a>添加一个控制器来显示用户的声明
+此控制器演示的使用`[Authorize]`属性以保护控制器。 通过仅允许经过身份验证的用户，此特性将访问限制到的控制器。 下面的代码使用的属性显示为登录的一部分中检索到的用户声明。
 
-1.  右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
-2.  选择 `MVC {version} Controller – Empty`。
-3.  单击“添加”
-4.  将其命名为 `ClaimsController`
-5.  将控制器类的代码替换为下面的代码，这将 `[Authorize]` 属性添加到类：
+1.  右键单击`Controllers`文件夹：`Add` > `Controller`
+2.  选择`MVC {version} Controller – Empty`。
+3.  单击*添加*
+4.  将其命名为`ClaimsController`
+5.  将控制器类的代码替换为下面的代码这会将添加`[Authorize]`到类属性：
 
 ```csharp
 [Authorize]
@@ -158,16 +157,16 @@ public class ClaimsController : Controller
 ```
 
 <!--start-collapse-->
-### <a name="more-information"></a>更多信息
-> 因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 上面的代码查看用户令牌中特定用户属性的 `ClaimsPrincipal.Current` 实例的声明集合。 这些属性包括用户的完整姓名和用户名，以及全局用户标识符使用者。 它还包含租户 ID，表示用户的组织的 ID。 
+### <a name="more-information"></a>详细信息
+> 因为使用了`[Authorize]`可以仅执行属性，此控制器的所有方法，当用户进行身份验证。 如果用户未经过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 上面的代码查看的声明集合`ClaimsPrincipal.Current`中的用户的令牌中包含的特定用户属性的实例。 这些属性包括用户的完整名称和用户名，以及全局用户标识符使用者。 它还包含*租户 ID*，它表示用户的组织的 ID。 
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>创建视图来显示用户的声明
 
-在 Visual Studio 中创建新视图，以在网页上显示用户的声明：
+在 Visual Studio 中，创建新视图，以在网页上显示用户的声明：
 
-1.  右键单击 `Views\Claims` 文件夹，然后选择`Add View`
-2.  将它命名为 `Index`。
+1.  右键单击`Views\Claims`文件夹和：`Add View`
+2.  将其命名为`Index`。
 3.  将以下 HTML 添加到文件：
 
 ```html
@@ -199,4 +198,3 @@ public class ClaimsController : Controller
 </body>
 </html>
 ```
-

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 0651f497de446bd6b66f8eaccd7114d262925afd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 3a768c30cb874d42d7b4fbd2eeaa6c0e23904e10
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-configure-an-application-proxy-application-to-use-kerberos-constrained-delegation"></a>如何配置应用程序代理应用程序以使用 Kerberos 约束委派
 
 用于为发布的应用程序实现 SSO 的方法因应用程序不同而稍有不同，而 Azure 应用程序代理直接提供的一个选项是 Kerberos 约束委派 (KCD)。 在此选项中，连接器主机配置为代表用户向后端应用程序执行受约束的 kerberos 身份验证。
@@ -77,7 +75,7 @@ Azure 应用程序代理可部署到几乎任何类型的基础结构或环境�
 
 -   [在本地标识和云标识不相同的情况下使用 SSO](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd#working-with-sso-when-on-premises-and-cloud-identities-are-not-identical)
 
-如果你已进行到这步，则一定存在主要问题。 需要更深入了解，因此先将流分为可进行故障排除的三个不同阶段。
+如果已进行到这步，则一定存在主要问题。 需要更深入了解，因此先将流分为可进行故障排除的三个不同阶段。
 
 **客户端预身份验证** - 外部用户通过浏览器进行 Azure 身份验证。
 
@@ -91,7 +89,7 @@ Azure 应用程序代理可部署到几乎任何类型的基础结构或环境�
 
    ![KCD 配置不正确的错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-在事件日志中看到的相应条目也将在事件 13019 或 12027 中看到。 可以在“应用程序和服务日志”&gt;“Microsoft”&gt;“AadApplicationProxy”&gt;“连接器”&gt;“管理员”中找到连接器事件日志。
+在事件日志中看到的相应条目也会在事件 13019 或 12027 中看到。 可以在“应用程序和服务日志”&gt;“Microsoft”&gt;“AadApplicationProxy”&gt;“连接器”&gt;“管理员”中找到连接器事件日志。
 
    ![应用程序代理事件日志中的事件 13019](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -113,7 +111,7 @@ Azure 应用程序代理可部署到几乎任何类型的基础结构或环境�
 
 在此阶段，连接器应该已将 kerberos 服务票证发送至后端，作为第一个应用程序请求中的标头。
 
--   通过使用门户中定义的应用程序内部 URL，验证该应用程序可从连接器主机上的浏览器直接访问。 然后就可以成功登陆。 有关此操作的详细信息可在连接器“故障排除”页面上找到。
+-   通过使用门户中定义的应用程序内部 URL，验证该应用程序可从连接器主机上的浏览器直接访问。 然后你可以成功登录。 有关此操作的详细信息可在连接器“故障排除”页面上找到。
 
 -   还是在连接器主机上，通过执行以下操作之一，确认浏览器和应用程序之间的身份验证在使用 kerberos：
 
@@ -151,7 +149,7 @@ Azure 应用程序代理可部署到几乎任何类型的基础结构或环境�
 
    ![Azure 门户中的 SPN 配置](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
    
--   转到 IIS，为应用程序选择“配置编辑器”选项，然后导航至 **system.webServer/security/authentication/windowsAuthentication** 以确保 **UseAppPoolCredentials** 设置为 true。
+-   转到 IIS，为应用程序选择“配置编辑器”选项，并导航至 **system.webServer/security/authentication/windowsAuthentication** 以确保 **UseAppPoolCredentials** 设置为 true。
 
    ![IIS 配置应用池凭据选项](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 
@@ -159,7 +157,7 @@ Azure 应用程序代理可部署到几乎任何类型的基础结构或环境�
 
 -   作为额外检查，还可以禁用**扩展**保护。 过去遇到过的情况已经证明，如果应用程序作为默认网站的子文件夹发布，在特定配置中启用扩展保护会使 KCD 中断。 其本身配置为仅限匿名身份验证，使整个对话框呈灰色，表示子对象不会继承任何当前活动设置。 但是我们建议尽量启用该选项，所以在各种测试后，不要忘了将此设置恢复为启用状态。
 
-这些额外检查应可让你以正确的方式开始使用已发布的应用程序。 你可以继续并加快同样配置为委派的额外连接器，但是如果没有进展，我们建议你阅读更详细的技术演练 [Azure AD 应用程序代理故障排除完整指南](https://aka.ms/proxytshootpaper)
+这些额外的检查应该具有将置于你跟踪以开始使用你发布的应用程序。 可以继续并加快同样配置为委派的额外连接器，但是如果没有进展，我们建议阅读更详细的技术演练 [Azure AD 应用程序代理故障排除完整指南](https://aka.ms/proxytshootpaper)
 
 如果仍无法进一步解决问题，支持人员将非常乐意帮助你从这一步继续下去。 直接在门户中创建支持票证，我们的工程师将联系你。
 
@@ -171,4 +169,3 @@ Azure 应用程序代理可部署到几乎任何类型的基础结构或环境�
 
 ## <a name="next-steps"></a>后续步骤
 [在托管域上配置 Kerberos 约束委派 (KCD)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-enable-kcd)
-

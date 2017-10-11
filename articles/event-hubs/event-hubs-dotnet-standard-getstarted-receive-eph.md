@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: cc62792dad0284f9514664795fdfb32e94a85943
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
 
 > [!NOTE]
@@ -39,22 +37,22 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心  
 
-第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤操作，然后继续执行以下步骤。  
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤操作，并继续执行以下步骤。  
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户  
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
 2. 在门户的左侧导航窗格中，依次单击“新建”、“存储”和“存储帐户”。  
-3. 完成“存储帐户”边栏选项卡中的字段，然后单击“创建”。
+3. 完成“存储帐户”边栏选项卡中的字段，并单击“创建”。
 
     ![创建存储帐户][1]
 
-4. 看到“部署成功”消息后，单击新存储帐户名。 在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 为容器指定名称，然后关闭“Blob 服务”边栏选项卡。  
+4. 看到“部署成功”消息后，单击新存储帐户名。 在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 为容器指定名称，并关闭“Blob 服务”边栏选项卡。  
 5. 单击左侧边栏选项卡中的“访问密钥”，复制存储容器、存储帐户的名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。  
 
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 
-启动 Visual Studio。 在“文件”菜单中，单击“新建”，然后单击“项目”。 创建 .NET Core 控制台应用程序。
+启动 Visual Studio。 在“文件”菜单中，单击“新建”，并单击“项目”。 创建 .NET Core 控制台应用程序。
 
 ![新建项目][2]
 
@@ -62,13 +60,13 @@ ms.lasthandoff: 06/28/2017
 
 通过执行以下步骤，将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 和 [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET 标准库 NuGet 包添加到项目中： 
 
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包。 单击“安装”以完成安装，然后关闭此对话框。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
+2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包。 单击“安装”以完成安装，并关闭此对话框。
 3. 重复步骤 1 和步骤 2，安装“Microsoft.Azure.EventHubs.Processor”包。
 
 ## <a name="implement-the-ieventprocessor-interface"></a>实现 IEventProcessor 接口
 
-1. 在“解决方案资源管理器”中，右键单击该项目，单击“添加”，然后单击“类”。 将新类命名为 **SimpleEventProcessor**。
+1. 在“解决方案资源管理器”中，右键单击该项目，单击“添加”，并单击“类”。 将新类命名为 **SimpleEventProcessor**。
 
 2. 打开 SimpleEventProcessor.cs 文件，并将以下 `using` 语句添加到文件顶部。
 
@@ -225,4 +223,3 @@ ms.lasthandoff: 06/28/2017
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcore.png
-

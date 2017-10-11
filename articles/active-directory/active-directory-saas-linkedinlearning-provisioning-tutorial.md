@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 5eb2b1594eedb2a135d7b8cd501a33d8264e136b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="tutorial-configuring-linkedin-learning-for-automatic-user-provisioning"></a>教程：为 LinkedIn Learning 配置自动用户预配
 
 
@@ -29,7 +27,7 @@ ms.lasthandoff: 05/31/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   一个 Azure Active Directory 租户
 *   LinkedIn Learning 租户 
@@ -64,7 +62,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-learning-in-azure-ad"></a>若要在 Azure AD 中为 LinkedIn Learning 配置自动用户帐户预配，请执行以下操作：
 
 
-第一步是检索你的 LinkedIn 访问令牌。 如果你是企业管理员，则可以自己预配一个访问令牌。 在帐户中心内，转到“设置”&gt;“全局设置”并打开“SCIM 设置”面板。
+第一步是检索 LinkedIn 访问令牌。 如果是企业管理员，则可以自己预配一个访问令牌。 在帐户中心内，转到“设置”&gt;“全局设置”并打开“SCIM 设置”面板。
 
 > [!NOTE]
 > 如果是要直接（而不是通过某个链接）访问帐户中心，可以使用以下步骤进行访问。
@@ -73,7 +71,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 2)  选择“管理”&gt;“管理设置”。
 
-3)  在左侧的边栏中，单击“高级集成”。 你将被定向到帐户中心。
+3)  在左侧的边栏中，单击“高级集成”。 将被定向到帐户中心。
 
 4)  单击“+ 添加新的 SCIM 配置”并填写每个字段来完成该过程。
 
@@ -85,9 +83,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ![LinkedIn Learning 预配](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_2.PNG)
 
-5)  单击“生成令牌”。 应当可以看到你的访问令牌显示在“访问令牌”字段下。
+5)  单击“生成令牌”。 应当可以看到访问令牌显示在“访问令牌”字段下。
 
-6)  离开页面之前，将你的访问令牌保存到剪贴板或计算机。
+6)  离开页面之前，将访问令牌保存到剪贴板或计算机。
 
 7) 接下来，登录到[Azure 门户](https://portal.azure.com)，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
@@ -103,7 +101,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * 在“租户 URL”字段中，输入 https://api.linkedin.com。
 
-* 在“密钥标记”字段中，输入你在第 1 步中生成的访问令牌并单击“测试连接”。
+* 在**机密令牌**字段中输入你在步骤 1 中生成的访问令牌，然后单击**测试连接**。
 
 * 应当会在门户的右上端看到一条成功通知。
 
@@ -126,4 +124,3 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
-

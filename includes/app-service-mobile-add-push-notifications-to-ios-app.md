@@ -1,16 +1,16 @@
 
-**Objective-C**：
+**Objective C**:
 
-1. 在 **QSAppDelegate.m** 中，导入 iOS SDK 和 **QSTodoService.h**：
+1. 在**QSAppDelegate.m**，导入 iOS SDK 和**QSTodoService.h**:
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
-2. 在 **QSAppDelegate.m** 中的 `didFinishLaunchingWithOptions` 内，紧靠在 `return YES;` 的前面插入以下行：
+2. 在`didFinishLaunchingWithOptions`中**QSAppDelegate.m**，插入下列代码行之前`return YES;`:
    
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. 在 **QSAppDelegate.m** 中，添加以下处理程序方法。 你的应用现已更新，可支持推送通知。 
+3. 在**QSAppDelegate.m**，添加以下处理程序方法。 你的应用程序现已更新以支持推送通知。 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -77,17 +77,17 @@
    
         }
 
-**Swift**：
+**Swift**:
 
-1. 将文件“ClientManager.swift”与以下内容一起添加。 用 Azure 移动应用后端的 URL 替换 *%AppUrl%*。
+1. 将文件添加**ClientManager.swift**具有以下内容。 替换*%appurl%*替换 Azure 移动应用后端的 URL。
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
         }
-2. 在 **ToDoTableViewController.swift** 中，用以下行替换用于初始化 `MSClient` 的 `let client` 行：
+2. 在**ToDoTableViewController.swift**，替换`let client`初始化的行`MSClient`用下面这行：
    
         let client = ClientManager.sharedClient
-3. 在 **AppDelegate.swift** 中，如下所示替换 `func application` 的正文：
+3. 在**AppDelegate.swift**，替换的主体`func application`，如下所示：
    
         func application(application: UIApplication,
           didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. 在 **AppDelegate.swift** 中，添加以下处理程序方法。 你的应用现已更新，可支持推送通知。
+4. 在**AppDelegate.swift**，添加以下处理程序方法。 你的应用程序现已更新以支持推送通知。
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

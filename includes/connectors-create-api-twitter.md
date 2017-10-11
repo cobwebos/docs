@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 * Twitter 帐户 
 
-可以在逻辑应用中使用 Twitter 帐户之前，必须先授权该逻辑应用可以连接到你的 Twitter 帐户。 好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。 
+在逻辑应用中使用你的 Twitter 帐户之前，你必须向授权逻辑应用，使连接到你的 Twitter 帐户。 幸运的是，你可以轻松地从在 Azure 门户上的应用程序逻辑。 
 
-下面介绍授权逻辑应用连接到 Twitter 帐户的步骤：
+下面是授权逻辑应用程序，以连接到你的 Twitter 帐户的步骤：
 
-1. 若要创建与 Twitter 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，然后在搜索框中输入“Twitter”。 选择要使用的触发器或操作：  
+1. 若要创建连接到 Twitter 逻辑应用程序设计器中，选择**显示 Microsoft 托管 Api**下拉列表然后输入*Twitter*的搜索框中。 选择触发器或你将希望使用的操作：  
    ![Twitter 连接图像 0](./media/connectors-create-api-twitter/twitter-0.png)
-2. 如果以前尚未创建任何与 Twitter 的连接，系统会提示你提供 Twitter 凭据。 这些凭据将用于授权逻辑应用连接到你的 Twitter 帐户，然后访问该帐户中的数据：  
+2. 如果你尚未创建任何连接到 Twitter 之前，你将获取提示提供你的 Twitter 凭据。 这些凭据将用于连接到你逻辑应用程序进行授权和访问你的 Twitter 帐户的数据：  
    ![Twitter 连接图像 1](./media/connectors-create-api-twitter/twitter-1.png)  
-3. 提供 Twitter 用户名和密码，对逻辑应用进行授权：  
+3. 提供你的 Twitter 用户名和密码逻辑应用程序进行授权：  
    ![Twitter 连接图像 2](./media/connectors-create-api-twitter/twitter-2.png)  
-4. 确认你的授权：  
+4. 确认您的授权：  
    ![Twitter 连接图像 3](./media/connectors-create-api-twitter/twitter-3.png)  
-5. 请注意，连接已创建，现在可以随时在逻辑应用中继续执行其他步骤：  
+5. 请注意已创建连接，并且你现在可以自由地继续其他应用程序逻辑中的步骤：  
    ![Twitter 连接图像 4](./media/connectors-create-api-twitter/twitter-4.png)
 

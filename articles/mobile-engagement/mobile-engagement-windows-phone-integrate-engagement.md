@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 67f69a5a92c922bc7357c1e4bcc88f55e16d1255
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 29b18aecff783cebf617995e2a19f16f0b68b51b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Windows Phone Silverlight Engagement SDK 集成
 > [!div class="op_single_selector"]
@@ -73,7 +72,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
     /* Initialize Engagement agent with above configuration. */
     EngagementAgent.Instance.Init(engagementConfiguration);
 
-应用程序的连接字符串将显示在 Azure 经典门户中。
+应用程序的连接字符串会显示在 Azure 经典门户中。
 
 ### <a name="engagement-initialization"></a>Engagement 初始化
 创建新项目时，将生成一个 `App.xaml.cs` 文件。 此类继承自 `Application`，包含许多重要的方法。 它还用于初始化 Engagement SDK。
@@ -97,7 +96,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
       }
 
 > [!WARNING]
-> 强烈建议你不要在应用程序的另一个位置添加 Engagement 初始化。 但是，请注意，`EngagementAgent.Instance.Init` 方法运行于专用线程，而非 UI 线程。
+> 强烈建议不要在应用程序的另一个位置添加 Engagement 初始化。 但是，请注意，`EngagementAgent.Instance.Init` 方法运行于专用线程，而非 UI 线程。
 > 
 > 
 
@@ -138,7 +137,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
         }
 
 > [!WARNING]
-> 如果页面继承自 `OnNavigatedTo` 方法，务必让 `base.OnNavigatedTo(e)` 调用。 否则，将不会报告该活动。 实际上，`EngagementPage` 将调用 `StartActivity` 方法中的 `OnNavigatedTo`。
+> 如果页面继承自 `OnNavigatedTo` 方法，务必让 `base.OnNavigatedTo(e)` 调用。 否则，不会报告该活动。 实际上，`EngagementPage` 将调用 `StartActivity` 方法中的 `OnNavigatedTo`。
 > 
 > 
 
@@ -165,9 +164,9 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
         </engagement:EngagementPage >
 
 #### <a name="override-the-default-behavior"></a>重写默认行为
-默认情况下，页面的类名被报告为活动名，无其他附加内容。 如果类使用“Page”后缀，Engagement 也会将其删除。
+默认情况下，页面的类名被报告为活动名，无其他附加内容。 类使用的"页"后缀，如果用户参与策略还将删除它。
 
-如果想要重写名称的默认行为，只需将此内容添加到你的代码中即可：
+如果想要重写名称的默认行为，只需将此内容添加到代码中即可：
 
         // in the .xaml.cs file
         protected override string GetEngagementPageName()
@@ -176,7 +175,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
            return "new name";
         }
 
-如果想要报告关于活动的一些额外信息，可以将此内容添加到你的代码中：
+如果想要报告关于活动的一些额外信息，可以将此内容添加到代码中：
 
         // in the .xaml.cs file
         protected override Dictionary<object,object> GetEngagementPageExtra()
@@ -201,12 +200,12 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 > [!IMPORTANT]
 > 确保正确结束会话。
 > 
-> 应用程序关闭时，SDK 会自动调用 `EndActivity` 方法。 因此，**强烈**建议每当用户的活动更改时即调用 `StartActivity` 方法，并且**从不**调用 `EndActivity` 方法。 此方法会向 Engagement 服务器发送一条消息，告知当前用户已离开应用程序，这将会影响所有应用程序日志。
+> 应用程序关闭时，SDK 会自动调用 `EndActivity` 方法。 因此，**强烈**建议每当用户的活动更改时即调用 `StartActivity` 方法，并且**从不**调用 `EndActivity` 方法。 此方法会向 Engagement 服务器发送一条消息，告知当前用户已离开应用程序，这会影响所有应用程序日志。
 > 
 > 
 
 ## <a name="advanced-reporting"></a>高级报告
-（可选）你可能希望报告应用程序特定事件、错误和任务，为此，请使用 `EngagementAgent` 类中找到的其他方法。 Engagement API 允许使用 Engagement 的所有高级功能。
+或者，你可能需要对报表应用程序特定事件、 错误和作业，为此，请使用其他方法中找到`EngagementAgent`类。 Engagement API 允许使用 Engagement 的所有高级功能。
 
 有关详细信息，请参阅[如何在 Windows Phone Silverlight 应用中使用高级 Mobile Engagement 标记 API](mobile-engagement-windows-phone-use-engagement-api.md)。
 
@@ -219,7 +218,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 > 
 > 
 
-要禁用自动崩溃报告，只需要根据你声明的方式自定义配置即可：
+若要禁用自动故障报告，只需自定义配置，具体取决于你声明的方法：
 
 #### <a name="from-engagementconfigurationxml-file"></a>在 `EngagementConfiguration.xml` 文件中
 将报告崩溃设置为 `<reportCrash>` 和 `</reportCrash>` 标记之间的 `false`。
@@ -244,8 +243,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 突发模式会略微增加电池寿命，但会对 Engagement 监视器造成影响：所有会话和任务持续时间均被取整为突发阈值（这样，小于突发阈值的会话和任务可能不会显示）。 建议使用的突发阈值不长于 30000（30 秒）。 必须注意，保存的日志限制为 300 条。 如果发送的日志太长，可能会丢失某些日志。
 
 > [!WARNING]
-> 不能将突发阈值配置为小于一秒。 如果尝试这样做，SDK 将显示错误跟踪，并将阈值自动重置为默认值（即零秒）。 这将触发 SDK 实时报告日志。
+> 不能将突发阈值配置为小于一秒。 如果尝试这样做，SDK 会显示错误跟踪，并将阈值自动重置为默认值（即零秒）。 这会触发 SDK 实时报告日志。
 > 
 > 
-
 

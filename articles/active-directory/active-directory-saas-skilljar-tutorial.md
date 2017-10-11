@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: d5238a0471b6ae4b367ca5c1ed5e1f273a0c476b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>教程：Azure Active Directory 与 Skilljar 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-skilljar-from-the-gallery"></a>从库中添加 Skilljar
-若要配置 Skilljar 与 Azure AD 的集成，需要从库中将 Skilljar 添加到托管 SaaS 应用列表。
+要配置 Skilljar 与 Azure AD 的集成，需要从库中将 Skilljar 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Skilljar，请执行以下步骤：**
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 07/11/2017
 
 若要配置和测试 Skilljar 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Skilljar 测试用户](#creating-a-skilljar-test-user) - 在 Skilljar 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -118,7 +117,7 @@ ms.lasthandoff: 07/11/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Skilljar 客户端支持团队](http://support.skilljar.com/hc/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-skilljar-tutorial/tutorial_skilljar_certificate.png) 
 
@@ -155,7 +154,7 @@ ms.lasthandoff: 07/11/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-skilljar-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -179,9 +178,9 @@ ms.lasthandoff: 07/11/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Skilljar，请执行以下步骤：**
+**要将 Britta Simon 分配到 Skilljar，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -229,5 +228,4 @@ ms.lasthandoff: 07/11/2017
 [201]: ./media/active-directory-saas-skilljar-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-skilljar-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-skilljar-tutorial/tutorial_general_203.png
-
 

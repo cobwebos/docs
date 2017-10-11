@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c844f9a84878f12fbdf7a5b4eaf7bbf19f4ce666
-ms.openlocfilehash: 4a1615c4bea8c54d506c3252e2de42642bb55e46
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/27/2017
-
+ms.openlocfilehash: 9adbc9cc13f0b4cafa3a3a7703c46f8085b15232
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>将设备连接到远程监视预配置解决方案 (Linux)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
@@ -28,14 +27,14 @@ ms.lasthandoff: 02/27/2017
 ## <a name="build-and-run-a-sample-c-client-linux"></a>生成并运行示例 C 客户端 Linux
 以下步骤演示如何创建一个客户端应用程序，用来与远程监视预配置解决方案通信。 此应用程序以 C 编写，在 Ubuntu Linux 上生成和运行。
 
-若要完成这些步骤，你需要一个运行 Ubuntu 版本 15.04 或 15.10 的设备。 继续操作之前，请使用以下命令在 Ubuntu 设备上安装必备组件包：
+要完成这些步骤，需要一个运行 Ubuntu 版本 15.04 或 15.10 的设备。 继续操作之前，请使用以下命令在 Ubuntu 设备上安装必备组件包：
 
 ```
 sudo apt-get install cmake gcc g++
 ```
 
 ## <a name="install-the-client-libraries-on-your-device"></a>在设备上安装客户端库
-Azure IoT 中心客户端库以包的形式提供，你可以使用 **apt-get** 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和标头文件的包：
+Azure IoT 中心客户端库以包的形式提供，可以使用 **apt-get** 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和标头文件的包：
 
 1. 在外壳程序中，向计算机添加 AzureIoT 库：
    
@@ -62,7 +61,7 @@ git clone https://github.com/kgabis/parson.git
 - 创建四个文件：**main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、**CMakeLists.txt**。
 - 创建名为 **parson** 的文件夹。
 
-将 **parson.c** 和 **parson.h** 文件从 Parson 存储库的本地副本复制到 **remote\_monitoring/parson** 文件夹。
+将“parson.c”和“parson.h”文件从 Parson 存储库的本地副本复制到“remote\_monitoring/parson”文件夹。
 
 在文本编辑器中，打开 **remote\_monitoring.c** 文件。 添加以下 `#include` 语句：
    
@@ -152,7 +151,7 @@ int main(void)
         m
     )
     ```
-1. 在 **remote_monitoring** 文件夹中，创建一个文件夹用于存储 CMake 生成的 *make* 文件，然后运行 **cmake** 和 **make** 命令，如下所示：
+1. 在 **remote_monitoring** 文件夹中，创建一个文件夹用于存储 CMake 生成的 *make* 文件，并运行 **cmake** 和 **make** 命令，如下所示：
    
     ```
     mkdir cmake
@@ -168,5 +167,4 @@ int main(void)
     ```
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 1c8703d64ff45e589a7ce93f1f2176681e1bf331
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/25/2017
-
+ms.openlocfilehash: 320190488bb4c7b8192421f9dd50a5264f558584
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
@@ -29,13 +28,13 @@ Microsoft Azure IoT 套件是企业级解决方案，让用户能够通过一组
 
 预配置的解决方案是可以正常工作的完整端到端解决方案，其中包括：
 
-- 可帮助你入门的模拟设备。
+- 帮助入门的模拟设备。
 - 预配置的 Azure 服务，例如 [Azure IoT 中心][Azure IoT Hub]、[Azure 事件中心][Azure Event Hubs]、[Azure 流分析][Azure Stream Analytics]、[Azure 机器学习][Azure Machine Learning]和 [Azure 存储][Azure storage]。
 - 解决方案特定的管理控制台。
 
-预配置的解决方案包含经过验证的可用于生产的代码，你可以自定义和扩展该代码以实现你自己的特定 IoT 场景。
+预配置的解决方案包含经过验证的可用于生产的代码，可以自定义和扩展该代码以实现自己的特定 IoT 场景。
 
-你还可能对许多预配置的解决方案所使用的 [Azure IoT 中心][Azure IoT Hub]服务感兴趣。 [Azure IoT 中心][Azure IoT Hub]在预配置解决方案体系结构所使用的设备和云之间提供安全、可靠的双向通信。
+还可能对许多预配置的解决方案所使用的 [Azure IoT 中心][Azure IoT Hub]服务感兴趣。 [Azure IoT 中心][Azure IoT Hub]在预配置解决方案体系结构所使用的设备和云之间提供安全、可靠的双向通信。
 
 ## <a name="next-steps"></a>后续步骤
 浏览以下资源以继续了解 IoT 套件和预配置解决方案：

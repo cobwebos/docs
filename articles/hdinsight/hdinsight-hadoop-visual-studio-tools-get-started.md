@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: d24c92b90d7d8e43554fcd77278bf7d23a963c02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: f7eff70ece5e8dc7e0c5983871d40bd1f6eafff2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>使用用于 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 05/13/2017
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>安装用于 Visual Studio 的 Data Lake 工具
 
-默认为 Visual Studio 2017 安装 Data Lake 工具。 如需更旧的版本，可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)进行安装。 你必须选择与你的 Visual Studio 版本匹配的版本。 如果尚未安装 Visual Studio，可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)安装最新 Visual Studio Community 和 Azure SDK：
+默认为 Visual Studio 2017 安装 Data Lake 工具。 如需更旧的版本，可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)进行安装。 必须选择与 Visual Studio 版本匹配的版本。 如果尚未安装 Visual Studio，可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)安装最新 Visual Studio Community 和 Azure SDK：
 
 ![用于 Visual Studio 的 Data Lake 工具 Web 平台安装程序。](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.wpi.png "使用 Web 平台安装程序安装用于 Visual Studio 的 Data Lake 工具")
 
@@ -66,31 +65,31 @@ ms.lasthandoff: 05/13/2017
 3. 依次展开“Azure”和“HDInsight”。
    
    > [!NOTE]
-   > 请注意，“HDInsight 任务列表”窗口应已打开。 如果未显示该窗口，请在“视图”菜单中单击“其他窗口”，然后单击“HDInsight 任务列表”窗口。  
+   > 请注意，“HDInsight 任务列表”窗口应已打开。 如果未显示该窗口，请在“视图”菜单中单击“其他窗口”，并单击“HDInsight 任务列表”窗口。  
    > 
    > 
-4. 输入 Azure 订阅凭据，然后单击“登录”。 仅当尚未从此工作站上的 Visual Studio 连接到 Azure 订阅时，才需要此凭据。
-5. 在“服务器资源管理器”中，你将看到现有 HDInsight 群集的列表。 如果没有任何群集，可以使用 Azure 门户、Azure PowerShell 或 HDInsight SDK 创建一个群集。 有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+4. 输入 Azure 订阅凭据，并单击“登录”。 仅当尚未从此工作站上的 Visual Studio 连接到 Azure 订阅时，才需要此凭据。
+5. 在“服务器资源管理器”中，会看到现有 HDInsight 群集的列表。 如果没有任何群集，可以使用 Azure 门户、Azure PowerShell 或 HDInsight SDK 创建一个群集。 有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
    
    ![用于 Visual Studio 的 Data Lake 工具服务器资源管理器群集列表](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.server.explorer.png "用于 Visual Studio 的 Data Lake 工具服务器资源管理器")
-6. 展开 HDInsight 群集。 此时将显示“Hive 数据库”、默认存储帐户、链接的存储帐户，以及“Hadoop 服务日志”。 你可以进一步展开条目。
+6. 展开 HDInsight 群集。 此时将显示“Hive 数据库”、默认存储帐户、链接的存储帐户，以及“Hadoop 服务日志”。 可以进一步展开条目。
 
 连接到 Azure 订阅后，可以执行以下操作：
 
 **从 Visual Studio 连接到 Azure 门户**
 
-* 在服务器资源管理器中，展开“Azure” > “HDInsight”，右键单击 HDInsight 群集，然后单击“在 Azure 门户中管理群集”。
+* 在服务器资源管理器中，展开“Azure” > “HDInsight”，右键单击 HDInsight 群集，并单击“在 Azure 门户中管理群集”。
 
 **通过 Visual Studio 提出问题并提供反馈**
 
-* 在“工具”菜单中单击“HDInsight”，然后单击“MSDN 论坛”提出问题，或单击“提供反馈”。
+* 在“工具”菜单中单击“HDInsight”，并单击“MSDN 论坛”提出问题，或单击“提供反馈”。
 
 ## <a name="navigate-the-linked-resources"></a>导航链接的资源
-在“服务器资源管理器”中，你可以看到默认存储帐户和任何链接的存储帐户。 如果你展开默认存储帐户，则可以看到存储帐户中的容器。 默认存储帐户和默认容器将处于标记状态。 你也可以右键单击任何容器以查看内容。
+在“服务器资源管理器”中，可以看到默认存储帐户和任何链接的存储帐户。 如果展开默认存储帐户，则可以看到存储帐户中的容器。 默认存储帐户和默认容器将处于标记状态。 也可以右键单击任何容器以查看内容。
 
 ![用于 Visual Studio 的 Data Lake 工具服务器资源管理器列表链接资源](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.linked.resources.png "列表链接资源")
 
-打开一个容器后，可以使用以下按钮来上载、删除和下载 Blob：
+打开一个容器后，可以使用以下按钮来上传、删除和下载 Blob：
 
 ![用于 Visual Studio 的 Data Lake 工具服务器资源管理器 Blob 操作](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png "上传、删除和下载 Blob")
 
@@ -107,36 +106,36 @@ ms.lasthandoff: 05/13/2017
 **列出 Hive 表和查看 Hive 表架构**
 
 1. 在“服务器资源管理器”中，展开“Azure” > “HDInsight”> 所选的群集 >“Hive 数据库” > “默认值” > “hivesampletable”，查看表架构。
-2. 右键单击“hivesampletable”，然后单击“查看前 100 行”列出行。 这相当于使用 Hive ODBC 驱动程序运行以下 Hive 查询：
+2. 右键单击“hivesampletable”，并单击“查看前 100 行”列出行。 这相当于使用 Hive ODBC 驱动程序运行以下 Hive 查询：
    
      SELECT * FROM hivesampletable LIMIT 100
    
-   你可以自定义行计数。
+   可以自定义行计数。
    
    ![Data Lake 工具：HDInsight Hive Visual Studio 架构查询](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.hive.schema.png "Hive 查询结果")
 
 ### <a name="create-hive-tables"></a>创建 Hive 表
-你可以使用 GUI 创建 Hive 表或使用 Hive 查询。 有关使用 Hive 查询的信息，请参阅 [运行 Hive 查询](#run.queries)。
+可以使用 GUI 创建 Hive 表或使用 Hive 查询。 有关使用 Hive 查询的信息，请参阅 [运行 Hive 查询](#run.queries)。
 
 **创建 Hive 表**
 
-1. 在“服务器资源管理器”中，展开“Azure” > “HDInsight 群集” > HDInsight 群集 >“Hive 数据库”，右键单击“默认值”，然后单击“创建表”。
+1. 在“服务器资源管理器”中，展开“Azure” > “HDInsight 群集” > HDInsight 群集 >“Hive 数据库”，右键单击“默认值”，并单击“创建表”。
 2. 配置该表。
 3. 单击“创建表”  来提交创建新 Hive 表的作业。
    
     ![Data Lake 工具：HDInsight Visual Studio 工具创建 hive 表](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.create.hive.table.png "创建 Hive 表")
 
 ### <a name="run.queries"></a>验证和运行 Hive 查询
-你可以使用两种方法创建和运行 Hive 查询：
+可以使用两种方法创建和运行 Hive 查询：
 
 * 创建临时查询
 * 创建 Hive 应用程序
 
 **创建、验证和运行临时查询**
 
-1. 在“服务器资源管理器”中，展开“Azure”，然后展开“HDInsight 群集”。
-2. 右键单击要运行查询的群集，然后单击“编写 Hive 查询”。
-3. 输入 Hive 查询。 请注意，Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，当你键入“SELECT * FROM”时，IntelliSense 将列出所有建议的表名称。 在指定表名称后，IntelliSense 将列出列名称。 该工具几乎支持所有的 Hive DML 语句、子查询和内置 UDF。
+1. 在“服务器资源管理器”中，展开“Azure”，并展开“HDInsight 群集”。
+2. 右键单击要运行查询的群集，并单击“编写 Hive 查询”。
+3. 输入 Hive 查询。 请注意，Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，当键入“SELECT * FROM”时，IntelliSense 将列出所有建议的表名称。 在指定表名称后，IntelliSense 将列出列名称。 该工具几乎支持所有的 Hive DML 语句、子查询和内置 UDF。
    
     ![Data Lake 工具：HDInsight Visual Studio Tools IntelliSense](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.table.names.png "U-SQL IntelliSense")
    
@@ -161,22 +160,22 @@ ms.lasthandoff: 05/13/2017
 
 **创建和运行 Hive 解决方案**
 
-1. 在“文件”菜单中，单击“新建”，然后单击“项目”。
+1. 在“文件”菜单中，单击“新建”，并单击“项目”。
 2. 从左窗格中选择“HDInsight”，在中间窗格中选择“Hive 应用程序”，输入属性，然后单击“确定”。
    
     ![Data Lake 工具：HDInsight Visual Studio 工具新建 hive 项目](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "从 Visual Studio 创建 Hive 应用程序")
 3. 在“解决方案资源管理器”中，双击“Script.hql”将其打开。
-4. 若要验证 Hive 脚本，可以单击“验证脚本”按钮，或在 Hive 编辑器中右键单击该脚本，然后在上下文菜单中单击“验证脚本”。
+4. 要验证 Hive 脚本，可以单击“验证脚本”按钮，或在 Hive 编辑器中右键单击该脚本，并在上下文菜单中单击“验证脚本”。
 
 ### <a name="view-hive-jobs"></a>查看 Hive 作业
-你可以查看作业查询、作业输出、作业日志和 Hive 作业的 Yarn 日志。 有关详细信息，请参阅以前的屏幕截图。
+可以查看作业查询、作业输出、作业日志和 Hive 作业的 Yarn 日志。 有关详细信息，请参阅以前的屏幕截图。
 
 使用最新版本的工具可以通过收集和显示 YARN 日志来查看 Hive 作业的内容。 YARN 日志可以帮助你调查性能问题。 有关 HDInsight 如何收集 YARN 日志的详细信息，请参阅[以编程方式访问 HDInsight 应用程序日志](hdinsight-hadoop-access-yarn-app-logs.md)。
 
 **查看 Hive 作业**
 
-1. 在“服务器资源管理器”中，展开“Azure”，然后展开“HDInsight”。
-2. 右键单击 HDInsight 群集，然后单击“查看作业”。 你将会看到群集上运行的 Hive 作业的列表。
+1. 在“服务器资源管理器”中，展开“Azure”，并展开“HDInsight”。
+2. 右键单击 HDInsight 群集，并单击“查看作业”。 你将会看到群集上运行的 Hive 作业的列表。
 3. 单击作业列表中的作业以将其选定，然后使用“Hive 作业摘要”窗口以打开“作业查询”、“作业输出”、“作业日志”或“Yarn 日志”。
    
     ![Data Lake 工具：HDInsight Visual Studio 工具查看 Hive 作业](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "查看 Hive 作业")
@@ -208,7 +207,7 @@ Data Lake 工具用于通过 [WebHCat](https://cwiki.apache.org/confluence/displ
 | 执行查询 |消除了 WebHCat 的开销（WebHCat 启动名为“TempletonControllerJob”的 MapReduce 作业）。 |只要通过 WebHCat 执行查询，WebHCat 就会启动一个 MapReduce 作业，从而造成额外的开销。 |
 | 向后流式传输日志 |接近实时进行。 |仅当作业完成时才提供作业执行日志。 |
 | 查看作业历史记录 |如果通过 HiveServer2 执行了查询，系统将不保留查询的作业历史记录（作业日志、作业输出）。 可以在 YARN UI 中查看应用程序的有限信息。 |如果通过 WebHCat 执行了查询，系统将保留查询的作业历史记录（作业日志、作业输出），可以使用 Visual Studio/HDInsight SDK/PowerShell 查看这些记录。 |
-| 关闭窗口 |通过 HiveServer2 执行是一种“同步”方式，因此必须保持窗口打开状态；如果窗口关闭，将会取消执行查询。 |通过 WebHCat 提交是一种“异步”方式，因此你可以通过 WebHCat 提交查询，然后关闭 Visual Studio。 你随时可以回来查看结果。 |
+| 关闭窗口 |通过 HiveServer2 执行是一种“同步”方式，因此必须保持窗口打开状态；如果窗口关闭，会取消执行查询。 |通过 WebHCat 提交是一种“异步”方式，因此可以通过 WebHCat 提交查询，然后关闭 Visual Studio。 随时可以回来查看结果。 |
 
 ### <a name="tez-hive-job-performance-graph"></a>Tez Hive 作业性能图
 Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业的性能图。 有关启用 Tez 的信息，请参阅[使用 HDInsight 中的 Hive](hdinsight-use-hive.md)。 提交 Visual Studio 中的 Hive 作业后，Visual Studio 将在作业完成时显示图形。  可能需要单击“刷新”按钮来获取最新的作业状态。
@@ -220,7 +219,7 @@ Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 
 ![hadoop hive tez 性能图](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png "作业状态")
 
-为了帮助你更好地了解 Hive 查询，该工具在此版中添加了“Hive 运算符”视图。 只需双击作业图的相应顶点，即可查看顶点中的所有运算符。 也可将鼠标悬停在特定运算符上方，以查看该运算符的更多详细信息。
+为了帮助用户更好地了解 Hive 查询，该工具在此版中添加了“Hive 运算符”视图。 只需双击作业图的相应顶点，即可查看顶点中的所有运算符。 也可将鼠标悬停在特定运算符上方，以查看该运算符的更多详细信息。
 
 ### <a name="task-execution-view-for-hive-on-tez-jobs"></a>适用于 Tez 上的 Hive 作业的任务执行视图
 适用于 Tez 上的 Hive 作业的任务执行视图可用于获取结构化和可视化 Hive 作业的信息，以及获取更多作业详细信息。 出现性能问题时，可以使用此视图来获取更多详细信息。 例如，获取每个任务的运行方式和有关每个任务的详细信息（数据读取/写入、计划/开始时间/结束时间等），以便根据可视化信息优化作业配置或系统体系结构。
@@ -232,8 +231,8 @@ Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 
 ## <a name="feedbacks--known-issues"></a>反馈和已知问题
 * 目前 HiveServer2 结果以纯文本形式显示，这不是很理想。 我们正在努力解决该问题。
-* 如果结果以 NULL 值开头，则目前不会显示结果。 我们已解决此问题，如果你受此问题的困扰，欢迎给我们发送电子邮件，或与支持团队联系。
-* Visual Studio 创建的 HQL 脚本将根据用户的本地区域设置进行编码。 如果用户以二进制文件形式将脚本上载到群集，脚本可能无法正常执行。
+* 如果结果以 NULL 值开头，则目前不会显示结果。 我们已解决此问题，如果受此问题的困扰，欢迎给我们发送电子邮件，或与支持团队联系。
+* Visual Studio 创建的 HQL 脚本会根据用户的本地区域设置进行编码。 如果用户以二进制文件形式将脚本上传到群集，脚本可能无法正常执行。
 
 ## <a name="next-steps"></a>后续步骤
 本文已介绍如何使用 Data Lake (HDInsight) 工具包从 Visual Studio 连接到 HDInsight 群集，以及如何运行 Hive 查询。 有关详细信息，请参阅：
@@ -242,5 +241,4 @@ Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 * [使用 HDInsight 中的 Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [使用 HDInsight 中的 Hadoop 分析 Twitter 数据](hdinsight-analyze-twitter-data.md)
-
 

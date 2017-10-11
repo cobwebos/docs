@@ -15,22 +15,21 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>管理 Azure 的 HPC Pack 群集中计算节点的数量和可用性
-如果在 Azure VM 中创建了一个 HPC Pack 2012 R2 群集，你可能希望有轻松添加、删除、启动（预配）或停止（取消预配）群集中一些计算节点 VM 的方法。 若要执行这些任务，请运行头节点 VM 中安装的 Azure PowerShell 脚本。 这些脚本可帮助你控制 HPC Pack 群集资源的数量和可用性，以便你可以控制成本。
+如果在 Azure VM 中创建了一个 HPC Pack 2012 R2 群集，可能希望有轻松添加、删除、启动（预配）或停止（取消预配）群集中一些计算节点 VM 的方法。 若要执行这些任务，请运行头节点 VM 中安装的 Azure PowerShell 脚本。 这些脚本可帮助你控制 HPC Pack 群集资源的数量和可用性，以便可以控制成本。
 
 > [!IMPORTANT] 
-> 本文仅适用于 Azure 中使用经典部署模型创建的 HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用资源管理器模型。
+> 本文仅适用于 Azure 中使用经典部署模型创建的 HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 > 此外，本文所述的 PowerShell 脚本不可在 HPC Pack 2016 中使用。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure VM 中的 HPC Pack 2012 R2 群集**：在经典部署模型中创建一个 HPC Pack 2012 R2 群集。 例如，可以通过使用 Azure Marketplace 中的 HPC Pack 2012 R2 VM 映像和 Azure PowerShell 脚本，自动执行部署。 有关信息和先决条件，请参阅[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](hpcpack-cluster-powershell-script.md)。
+* **Azure VM 中的 HPC Pack 2012 R2 群集**：在经典部署模型中创建一个 HPC Pack 2012 R2 群集。 例如，可以通过使用 Azure 应用商店中的 HPC Pack 2012 R2 VM 映像和 Azure PowerShell 脚本，自动执行部署。 有关信息和先决条件，请参阅[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](hpcpack-cluster-powershell-script.md)。
   
     部署后，在头节点上的 %CCP\_HOME%bin 文件夹中查找节点管理脚本。 以管理员身份运行各个脚本。
 * **Azure 发布设置文件或管理证书**：需要在头节点上执行下列操作之一：
@@ -42,7 +41,7 @@ ms.lasthandoff: 03/27/2017
     
     Import-AzurePublishSettingsFile –PublishSettingsFile <publish settings file>
     ```
-  * **在头节点上配置 Azure 管理证书**。 如果你有 .cer 文件，将其导入至 CurrentUser\My certificate store，然后为 Azure 环境（AzureCloud 或 AzureChinaCloud）运行以下 Azure PowerShell cmdlet：
+  * **在头节点上配置 Azure 管理证书**。 如果有 .cer 文件，将其导入 CurrentUser\My certificate store，然后为 Azure 环境（AzureCloud 或 AzureChinaCloud）运行以下 Azure PowerShell cmdlet：
     
     ```PowerShell
     Set-AzureSubscription -SubscriptionName <Sub Name> -SubscriptionId <Sub ID> -Certificate (Get-Item Cert:\CurrentUser\My\<Cert Thrumbprint>) -Environment <AzureCloud | AzureChinaCloud>
@@ -100,7 +99,7 @@ Remove-HPCIaaSNode.ps1 -Node <Object> [-DeleteVHD] [-Force] [-Confirm] [<CommonP
 * **WhatIf**：一项设置，用于说明如果执行了命令，但命令没有被实际执行时出现的情况。
 
 ### <a name="example"></a>示例
-下面的示例强制名称以 *HPCNode-CN-* 开头的节点脱机，然后删除这些节点及其关联磁盘。
+下面的示例强制名称以 *HPCNode-CN-* 开头的节点脱机，并删除这些节点及其关联磁盘。
 
 ```PowerShell
 Remove-HPCIaaSNode.ps1 –Name HPCNodeCN-* –DeleteVHD -Force
@@ -142,7 +141,7 @@ Stop-HPCIaaSNode.ps1 -Node <Object> [-Force] [<CommonParameters>]
 * **Force**（可选）：在停止 HPC 节点之前强制其脱机的设置。
 
 ### <a name="example"></a>示例
-下面的示例强制名称以 *HPCNode-CN-* 开头的节点脱机，然后停止这些节点。
+下面的示例强制名称以 *HPCNode-CN-* 开头的节点脱机，并停止这些节点。
 
 ```PowerShell
 Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
@@ -150,5 +149,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 ## <a name="next-steps"></a>后续步骤
 * 若要根据群集上作业及任务的当前工作负荷自动扩展或收缩群集节点，请参阅 [Automatically grow and shrink the HPC Pack cluster resources in Azure according to the cluster workload](hpcpack-cluster-node-autogrowshrink.md)（根据群集工作负荷自动扩展和收缩 Azure 中的 HPC Pack 群集资源）。
-
 

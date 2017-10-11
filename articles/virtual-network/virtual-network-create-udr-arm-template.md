@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 78936ac34cc582684e938efa74133426f1b53741
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>使用模板创建用户定义的路由 (UDR)
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 04/27/2017
 > * [CLI（经典）](virtual-network-create-udr-classic-cli.md)
 
 > [!IMPORTANT]
-> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文介绍资源管理器部署模型。 
+> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文介绍 Resource Manager 部署模型。 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 04/27/2017
         }
       ]
 
-若要将 UDR 关联到前端子网，需要更改模板中的子网定义，并使用 UDR 的引用 ID。
+要将 UDR 与前端子网关联，需要更改模板中的子网定义，并使用 UDR 的引用 ID。
 
     "subnets": [
         "name": "[parameters('frontEndSubnetName')]",
@@ -76,7 +75,7 @@ ms.lasthandoff: 04/27/2017
 
 请注意，需要在模板中对后端 NSG 和后端子网执行相同的操作。
 
-你还需要确保 **FW1** VM 的 IP 转发属性在要用于接收和转发数据包的 NIC 上已启用。 下面的部分说明基于上述方案为 azuredeploy-nsg-udr.json 文件中的 FW1 定义 NIC。
+还需要确保 **FW1** VM 的 IP 转发属性在用于接收和转发数据包的 NIC 上已启用。 下面的部分说明基于上述方案为 azuredeploy-nsg-udr.json 文件中的 FW1 定义 NIC。
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -113,9 +112,9 @@ ms.lasthandoff: 04/27/2017
     }
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>通过单击部署方式部署模板
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 若要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR)，单击“部署至 Azure”，如有必要，请替换默认参数值，然后按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR)，单击“部署至 Azure”，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择订阅。
 2. 运行以下命令来创建资源组：
 
     ```powershell
@@ -176,7 +175,7 @@ ms.lasthandoff: 04/27/2017
 
 若要使用 Azure CLI 部署 ARM 模板，请完成以下步骤：
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行以下命令切换到 Resource Manager 模式：
 
     ```azurecli
@@ -407,4 +406,3 @@ ms.lasthandoff: 04/27/2017
 > [!TIP]
 > 如果看不到所有资源，可运行 `azure group deployment show` 命令以确保部署的预配状态为“*成功*”。
 > 
-

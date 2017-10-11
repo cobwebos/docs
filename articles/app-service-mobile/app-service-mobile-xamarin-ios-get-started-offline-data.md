@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
-ms.openlocfilehash: d609231d6d9913b0f40b6e311aeedeb9a2391c7c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: b5878d8a2e18cf08b6e9074ecf40cd732624f0c0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>为 Xamarin.iOS 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -32,28 +31,28 @@ ms.lasthandoff: 03/01/2017
 若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>更新客户端应用以支持脱机功能
-脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 若要在应用中使用这些功能，请将 [SyncContext] 初始化到本地存储。 通过 [IMobileServiceSyncTable] 接口引用表。 SQLite 在设备上用作本地存储。
+脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 要在应用中使用这些功能，请将 [SyncContext] 初始化到本地存储。 通过 [IMobileServiceSyncTable] 接口引用表。 SQLite 在设备上用作本地存储。
 
-1. 打开在[创建 Xamarin iOS 应用]教程中完成的项目中的 NuGet 包管理器，然后搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
+1. 打开在[创建 Xamarin iOS 应用]教程中完成的项目中的 NuGet 包管理器，搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
 2. 打开 QSTodoService.cs 文件并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
 3. 重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。 但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
 ## <a name="update-sync"></a>更新应用以与后端断开连接
-在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项将添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
+在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项会添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
 
 1. 在共享项目中编辑 QSToDoService.cs。 更改 **applicationURL** 以指向无效的 URL：
 
          const string applicationURL = @"https://your-service.azurewebsites.fail";
 
     还可以通过在设备上禁用 wifi 和手机网络或使用飞行模式来演示脱机行为。
-2. 构建并运行应用程序。 请注意，在应用启动时，同步刷新将失败。
+2. 构建并运行应用程序。 请注意，在应用启动时，同步刷新会失败。
 3. 输入新项，并注意每次单击“保存”时，推送将失败，并显示 [CancelledByNetworkError] 状态。 但是，新的待办事项在推送到移动应用后端之前，存在于本地存储中。  在生产应用中，如果取消显示这些异常，客户端应用的行为就像它仍连接到移动应用后端一样。
 4. 关闭应用程序并重新启动它，以验证你创建的新项目是否已永久保存到本地存储中。
 5. （可选）如果电脑上装有 Visual Studio，打开“服务器资源管理器”。 导航到“Azure”-> “SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。 验证后端数据库中的数据是否未更改。
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
 ## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
-在本部分中，会将应用重新连接到移动应用后端。 这模拟的是通过移动应用后端从脱机状态转为联机状态的应用。   如果通过关闭网络连接来模拟网络故障，则不需要更改代码。
+本部分将应用重新连接到移动应用后端。 这模拟的是通过移动应用后端从脱机状态转为联机状态的应用。   如果通过关闭网络连接来模拟网络故障，则不需要更改代码。
 再次打开网络。  首次运行应用程序时，调用 `RefreshDataAsync` 方法。 这转而会调用 `SyncAsync`，将本地存储与后端数据库同步。
 
 1. 在共享项目中打开 QSToDoService.cs，并恢复对 **applicationURL** 属性的更改。
@@ -81,7 +80,7 @@ ms.lasthandoff: 03/01/2017
             // Uses the default conflict handler, which fails on conflict
             await client.SyncContext.InitializeAsync(store);
         }
-* `QSTodoService` 的 `todoTable` 成员属于 `IMobileServiceSyncTable` 类型而不是 `IMobileServiceTable` 类型。 MobileServiceSyncTable 会将所有创建、读取、更新和删除 (CRUD) 表操作定向到本地存储数据库。
+* `QSTodoService` 的 `todoTable` 成员属于 `IMobileServiceSyncTable` 类型而不是 `IMobileServiceTable` 类型。 IMobileServiceSyncTable 会将所有创建、读取、更新和删除 (CRUD) 表操作定向到本地存储数据库。
 
     通过调用 `IMobileServiceSyncContext.PushAsync()` 决定将这些更改推送到 Azure 移动应用后端的时间。 对于调用 `PushAsync` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
 
@@ -115,4 +114,3 @@ ms.lasthandoff: 03/01/2017
 [Azure 移动应用中的脱机数据同步]: app-service-mobile-offline-data-sync.md
 [SyncContext]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.synccontext(v=azure.10).aspx
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md
-

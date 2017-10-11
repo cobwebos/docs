@@ -15,20 +15,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 015096a48e5287af6b225f16a38fac328ed28630
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
-通过 Azure Batch PowerShell cmdlet，你可以执行许多与通过 Batch API、Azure 门户和 Azure 命令行界面执行的相同任务并为它们编写脚本。 本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
+通过 Azure Batch PowerShell cmdlet，可以执行许多与通过 Batch API、Azure 门户和 Azure 命令行界面执行的相同任务并为它们编写脚本。 本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
 
 如需 Batch cmdlet 的完整列表和详细的 cmdlet 语法，请参阅 [Azure Batch cmdlet 参考](/powershell/module/azurerm.batch/#batch)。
 
-本文基于 Azure PowerShell 3.0.0 版本中的 cmdlet。 建议你经常更新 Azure PowerShell 以利用服务更新和增强功能。
+本文基于 Azure PowerShell 3.0.0 版本中的 cmdlet。 建议经常更新 Azure PowerShell 以利用服务更新和增强功能。
 
 ## <a name="prerequisites"></a>先决条件
 执行以下操作，使用 Azure PowerShell 来管理批处理资源。
@@ -43,11 +42,11 @@ ms.lasthandoff: 07/24/2017
 
 ## <a name="manage-batch-accounts-and-keys"></a>管理批处理帐户和密钥
 ### <a name="create-a-batch-account"></a>创建批处理帐户
-**New-AzureRmBatchAccount** 可在指定的资源组中创建批处理帐户。 如果你没有资源组，可以运行 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。 例如：
+**New-AzureRmBatchAccount** 可在指定的资源组中创建批处理帐户。 如果没有资源组，可以运行 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。 例如：
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
-然后，在资源组中创建一个批处理帐户，为 <*account_name*> 中的帐户指定帐户名，另外请指定资源组的位置和名称。 创建 Batch 帐户可能需要一些时间才能完成。 例如：
+然后，在资源组中，指定的名称中的帐户的创建批处理帐户 <*account_name*> 和的位置和资源组的名称。 创建 Batch 帐户可能需要一些时间才能完成。 例如：
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
 
@@ -83,7 +82,7 @@ ms.lasthandoff: 07/24/2017
 出现提示时，确认你想要删除该帐户。 帐户删除可能需要一段时间才能完成。
 
 ## <a name="create-a-batchaccountcontext-object"></a>创建 BatchAccountContext 对象
-若要在创建和管理池、作业、任务和其他资源时使用 Batch PowerShell cmdlet 进行身份验证，需先创建 BatchAccountContext 对象来存储你的帐户名和密钥：
+要在创建和管理池、作业、任务和其他资源时使用 Batch PowerShell cmdlet 进行身份验证，需先创建 BatchAccountContext 对象来存储帐户名和密钥：
 
     $context = Get-AzureRmBatchAccountKeys -AccountName <account_name>
 
@@ -182,12 +181,12 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
     Remove-AzureRmBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
 
 > [!NOTE]
-> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除当前具有应用程序包的应用程序，将会发生“冲突”错误。
+> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除的应用程序当前存在应用程序包，则会收到“冲突”错误。
 > 
 > 
 
 ### <a name="deploy-an-application-package"></a>部署应用程序包
-在创建池时，可以指定一个或多个要部署的应用程序包。 如果创建池时指定包，该包将在节点加入池时部署到每个节点。 将节点重新启动或重置映像时，也会部署包。
+在创建池时，可以指定一个或多个要部署的应用程序包。 如果创建池时指定包，该包会在节点加入池时部署到每个节点。 将节点重新启动或重置映像时，也会部署包。
 
 创建池时，请指定 `-ApplicationPackageReference` 选项，以便在池节点加入该池时，将应用程序包部署到这些节点。 首先，创建 **PSApplicationPackageReference** 对象，并使用应用程序 ID 和要部署到池中计算节点的包版本来配置该对象：
 
@@ -204,7 +203,7 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
 有关应用程序包的详细信息，可参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
 
 > [!IMPORTANT]
-> 若要使用应用程序包，必须 [将 Azure 存储帐户链接到](#linked-storage-account-autostorage) Batch 帐户。
+> 要使用应用程序包，必须 [将 Azure 存储帐户链接到](#linked-storage-account-autostorage) Batch 帐户。
 > 
 > 
 
@@ -217,7 +216,7 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
 
     $appPackageReference.Version = "2.0"
 
-接下来，从批处理中获取池，清除所有现有包，添加新的包引用，然后使用新的池设置更新批处理服务：
+接下来，从批处理中获取池，清除所有现有包，添加新的包引用，并使用新的池设置更新批处理服务：
 
     $pool = Get-AzureBatchPool -BatchContext $context -Id "PoolWithAppPackage"
 
@@ -227,7 +226,7 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
 
     Set-AzureBatchPool -BatchContext $context -Pool $pool
 
-现已更新批处理服务中的池属性。 但是，若要将新应用程序包真正部署到池中的计算节点，必须将这些节点重新启动或重置映像。 可以使用以下命令重新启动池中的每个节点：
+现已更新批处理服务中的池属性。 但是，要将新应用程序包真正部署到池中的计算节点，必须将这些节点重新启动或重置映像。 可以使用以下命令重新启动池中的每个节点：
 
     Get-AzureBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Restart-AzureBatchComputeNode -BatchContext $context
 

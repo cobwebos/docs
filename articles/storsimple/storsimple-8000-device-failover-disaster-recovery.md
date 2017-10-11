@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 5dc4a98bf889d38c62c76364289c2d58c14d771e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 07/08/2017
 
 故障转移的目标设备可以是物理设备，甚至可以是云设备。 目标设备可以位于与源设备相同或不同的地理位置。
 
-在故障转移期间，可以选择要迁移的卷容器。 然后，StorSimple 会将这些卷容器的所有权从源设备更改为目标设备。 在卷容器更改所有权后，StorSimple 会将这些容器从源设备中删除。 在删除完成后，你可以对目标设备进行故障回复。 “故障回复”将所有权移交回原始源设备。
+在故障转移期间，可以选择要迁移的卷容器。 然后，StorSimple 会将这些卷容器的所有权从源设备更改为目标设备。 在卷容器更改所有权后，StorSimple 会将这些容器从源设备中删除。 在删除完成后，你可以对目标设备进行故障回复。 _故障回复_将所有权转移回原始的源设备。
 
 ### <a name="cloud-snapshot-used-during-device-failover"></a>设备故障转移期间使用的云快照
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 07/08/2017
 * *defaultPol*：有一个卷（*vol1*），每天晚上 10:30 开始运行。
 * *customPol*：有四个卷（*vol1*、*vol2*、*vol3*、*vol4*），每天晚上 10:00 开始运行。
 
-在此情况下，StorSimple 将针对崩溃一致性确定优先级并将使用 *customPol*，因为具有更多卷。 此策略中的最新备份将用于还原数据。 有关如何创建和管理备份策略的详细信息，请转到[使用 StorSimple 设备管理器服务管理备份策略](storsimple-8000-manage-backup-policies-u2.md)。
+在此情况下，StorSimple 将针对崩溃一致性确定优先级并将使用 *customPol*，因为具有更多卷。 此策略中的最新备份用于还原数据。 有关如何创建和管理备份策略的详细信息，请转到[使用 StorSimple 设备管理器服务管理备份策略](storsimple-8000-manage-backup-policies-u2.md)。
 
 ## <a name="common-considerations-for-device-failover"></a>设备故障转移常见注意事项
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>业务连续性灾难恢复 (BCDR)
 
-当整个 Azure 数据中心停止运行时，将会启动业务连续性灾难恢复 (BCDR) 方案。 此方案可能会影响 StorSimple 设备管理器服务和关联的 StorSimple 设备。
+当整个 Azure 数据中心停止运行时，会启动业务连续性灾难恢复 (BCDR) 方案。 此方案可能会影响 StorSimple 设备管理器服务和关联的 StorSimple 设备。
 
 如果 StorSimple 设备在发生灾难前才刚刚注册，则此 StorSimple 设备可能需要进行出厂重置。 在发生灾难后，StorSimple 设备在 Azure 门户中显示为脱机。 必须从门户中删除此设备。 将设备重置为出厂默认设置并重新将其注册到服务。
 
@@ -140,5 +139,4 @@ ms.lasthandoff: 07/08/2017
 
 * [停用或删除 StorSimple 设备](storsimple-8000-deactivate-and-delete-device.md)。
 * [使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

@@ -10,14 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4cd77c4ae4d9487aad11ea790c5d88a4eaff6077
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 871887e67d686a965a0648d2c6f0c72b3008db05
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>如何使用 Azure CLI 在用于 PostgreSQL 的 Azure 数据库中备份和还原服务器
 
 使用用于 PostgreSQL 的 Azure 数据库将服务器数据库还原到 7 至 35 天以前的日期。
@@ -71,4 +69,3 @@ az postgres server restore --resource-group myResourceGroup --name mypgserver-re
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Database for PostgreSQL 的连接库](concepts-connection-libraries.md)
-

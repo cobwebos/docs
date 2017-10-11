@@ -16,12 +16,11 @@ ms.workload: big-data
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 06630096383601e48e8f69f8553314cee42f5f3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>使用 Storm 和 HBase 关联在不同时间到达的事件
 
@@ -69,7 +68,7 @@ ms.lasthandoff: 08/10/2017
 
 ### <a name="storm-topology"></a>Storm 拓扑
 
-会话启动时，**开始**事件由拓扑接收，并记录到 HBase。 在收到**结束**事件时，拓扑会检索**开始**事件并计算两个事件之间的时间。 然后会将此**持续时间**值存储到 HBase 中，同时存储的还有**结束**事件信息。
+会话启动时，**开始**事件由拓扑接收，并记录到 HBase。 在收到**结束**事件时，拓扑会检索**开始**事件并计算两个事件之间的时间。 然后会将此持续时间值存储到 HBase 中，同时存储的还有结束事件信息。
 
 > [!IMPORTANT]
 > 虽然此拓扑演示了基本的模式，但生产型解决方案需要针对以下情况进行设计：
@@ -107,7 +106,7 @@ ms.lasthandoff: 08/10/2017
 * 版本：“cf”系列设置为每行保留 5 个版本。
 
   > [!NOTE]
-  > 可以使用版本来记录以前为特定行键存储的值。 默认情况下，HBase 只返回行的最新版本的值。 在这种情况下，同一行用于所有事件（开始、结束）。每个版本的行通过时间戳值来标识。 使用版本可通过历史视图来查看针对特定 ID 记录的事件。
+  > 可以使用版本来记录以前为特定行键存储的值。 默认情况下，HBase 只返回行的最新版本的值。 在这种情况下，同一行将用于所有事件（开始、结束）。每个版本的行通过时间戳值来标识。 使用版本可通过历史视图来查看针对特定 ID 记录的事件。
 
 ## <a name="download-the-project"></a>下载项目
 
@@ -147,9 +146,9 @@ ms.lasthandoff: 08/10/2017
 
 1. 在 Visual Studio 中打开 **CorrelationTopology** 解决方案。
 
-2. 在“解决方案资源管理器”中，右键单击 **CorrelationTopology** 项目，并选择属性。
+2. 在“解决方案资源管理器”中，右键单击 CorrelationTopology 项目，然后选择属性。
 
-3. 在属性窗口中，选择“设置”，并输入此项目的配置值。 前 5 个属性的值与 **SessionInfo** 项目所使用的值相同：
+3. 在属性窗口中，选择“设置”，然后输入此项目的配置值。 前 5 个属性的值与 **SessionInfo** 项目所使用的值相同：
 
    * HBaseClusterURL：到 HBase 群集的 URL。 例如，https://myhbasecluster.azurehdinsight.net。
 
@@ -166,7 +165,7 @@ ms.lasthandoff: 08/10/2017
 
 4. 保存属性，并生成项目。
 
-5. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。 如果出现提示，请输入 Azure 订阅的凭据。
+5. 在“解决方案资源管理器”中，右键单击项目，然后选择“提交到 Storm on HDInsight”。 如果出现提示，请输入 Azure 订阅的凭据。
 
    ![提交到 storm 菜单项的图像](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
@@ -175,7 +174,7 @@ ms.lasthandoff: 08/10/2017
    > [!NOTE]
    > 第一次提交拓扑时，可能需要几秒钟来检索 HDInsight 群集名称。
 
-7. 将拓扑上传并提交到该群集后，“Storm 拓扑视图”将打开并显示正在运行的拓扑。 要刷新数据，请选择“CorrelationTopology”，并使用页面右上角的“刷新”按钮。
+7. 将拓扑上传并提交到该群集后，“Storm 拓扑视图”将打开并显示正在运行的拓扑。 若要刷新数据，请选择“CorrelationTopology”，然后使用页面右上角的“刷新”按钮。
 
    ![拓扑视图的图像](./media/hdinsight-storm-correlation-topology/topologyview.png)
 
@@ -184,8 +183,8 @@ ms.lasthandoff: 08/10/2017
    > [!NOTE]
    > 如果“Storm 拓扑视图”不会自动打开，可使用以下步骤将其打开：
    >
-   > 1. 在“解决方案资源管理器”中，展开“Azure”，并展开“HDInsight”。
-   > 2. 右键单击运行拓扑的 Storm 群集，并选择“查看 Storm 拓扑”
+   > 1. 在“解决方案资源管理器”中，展开“Azure”，然后展开“HDInsight”。
+   > 2. 右键单击运行拓扑的 Storm 群集，然后选择“查看 Storm 拓扑”
 
 ## <a name="query-the-data"></a>查询数据
 
@@ -219,4 +218,3 @@ ms.lasthandoff: 08/10/2017
 ## <a name="next-steps"></a>后续步骤
 
 如需更多的 Storm 示例，请参阅 [Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)。
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -145,7 +144,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 ### <a name="connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager"></a>连接到虚拟机并启动 Reporting Services 配置管理器
 连接到 Azure 虚拟机有两个常见工作流：
 
-* 若要连接，请单击虚拟机的名称，然后单击“连接”。 远程桌面连接打开并自动填充计算机名称。
+* 要连接，请单击虚拟机的名称，并单击“连接”。 远程桌面连接打开并自动填充计算机名称。
   
     ![连接到 Azure 虚拟机](./media/virtual-machines-windows-classic-ps-sql-bi/IC650112.gif)
 * 通过 Windows 远程桌面连接到虚拟机。 在远程桌面的用户界面中：
@@ -167,7 +166,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 
 在 **Windows Server 2008 R2** 中：
 
-1. 单击“开始”屏幕，然后单击“所有程序”。
+1. 单击“开始”屏幕，并单击“所有程序”。
 2. 单击“Microsoft SQL Server 2016”。
 3. 单击“配置工具”。
 4. 右键单击“Reporting Services 配置管理器”并单击“以管理员身份运行”。
@@ -183,9 +182,9 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 ### <a name="configure-reporting-services"></a>配置 Reporting Services
 **服务帐户和 Web 服务 URL：**
 
-1. 验证“服务器名称”是否是本地服务器名称，然后单击“连接”。
+1. 验证“服务器名称”是否是本地服务器名称，并单击“连接”。
 2. 注意空白“报表服务器数据库名称”。 配置完成时创建该数据库。
-3. 确认“报表服务器状态”为“已启动”。 如果你想要验证 Windows Server Manager 中的服务，该服务为 **SQL Server Reporting Services** Windows 服务。
+3. 确认“报表服务器状态”为“已启动”。 如果想要验证 Windows Server Manager 中的服务，该服务为 **SQL Server Reporting Services** Windows 服务。
 4. 单击“服务帐户”并根据需要更改帐户。 如果在非加入域的环境中使用虚拟机，内置 **ReportServer** 帐户就足够了。 有关服务帐户的详细信息，请参阅[服务帐户](https://msdn.microsoft.com/library/ms189964.aspx)。
 5. 在左侧窗格中，单击“Web 服务 URL”。
 6. 单击“应用”以配置默认值。
@@ -196,10 +195,10 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 
 1. 在左侧窗格中，单击“数据库”。
 2. 单击“更改数据库”。
-3. 验证是否已选中“创建新的报表服务器数据库”，然后单击“下一步”。
+3. 验证是否已选中“创建新的报表服务器数据库”，并单击“下一步”。
 4. 验证“服务器名称”并单击“测试连接”。
-5. 如果结果为“连接测试成功”，单击“确定”，然后单击“下一步”。
-6. 请注意数据库名称是 **ReportServer**，“报表服务器模式”是“本机”，然后单击“下一步”。
+5. 如果结果为“连接测试成功”，单击“确定”，并单击“下一步”。
+6. 请注意数据库名称是 **ReportServer**，“报表服务器模式”是“本机”，并单击“下一步”。
 7. 在“凭据”页上单击“下一步”。
 8. 在“摘要”页上单击“下一步”。
 9. 在“进度和完成”页上单击“下一步”。
@@ -220,7 +219,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 2. 在 VM 上浏览到 http://localhost/reports。
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>连接到适用于 2014 和 2012 的远程 Web 门户或报表管理器
-如果想要从远程计算机连接到虚拟机上适用于 2012 和 2014 的 Web 门户或报表管理器，请新建虚拟机 TCP 终结点。 默认情况下，报表服务器侦听“端口 80”上的 HTTP 请求。 如果您配置报表服务器 URL 使用其他端口，必须在下面的说明中指定该端口号。
+如果想要从远程计算机连接到虚拟机上适用于 2012 和 2014 的 Web 门户或报表管理器，请新建虚拟机 TCP 终结点。 默认情况下，报表服务器侦听“端口 80”上的 HTTP 请求。 如果将报表服务器 URL 配置为使用其他端口，必须在下面的说明中指定该端口号。
 
 1. 为虚拟机创建终结点 TCP 端口 80。 有关详细信息，请参阅本文档中的[虚拟机终结点以及防火墙端口](#virtual-machine-endpoints-and-firewall-ports)部分。
 2. 在虚拟机的防火墙中打开端口 80。
@@ -235,8 +234,8 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 
 * **报表生成器**：虚拟机包括适用于 SQL 2014 和 2012 的 Microsoft SQL Server 报表生成器的单击一次版本。 若要首次在装有 SQL 2016 的虚拟机上启动报表生成器：
   
-  1. 使用管理权限启动你的浏览器。
-  2. 在虚拟机上浏览到 Web 门户，然后选择右上角的“下载”图标。
+  1. 使用管理权限启动浏览器。
+  2. 在虚拟机上浏览到 Web 门户，并选择右上角的“下载”图标。
   3. 选择“报表生成器”。
      
      有关详细信息，请参阅[启动报表生成器](https://msdn.microsoft.com/library/ms159221.aspx)。
@@ -246,7 +245,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
     ![SSRS 项目的 ssdt 项目属性](./media/virtual-machines-windows-classic-ps-sql-bi/IC650114.gif)
 * 创建一个包含报表的 .VHD 硬盘驱动器，然后上传并附加该驱动器。
   
-  1. 在本地计算机上创建一个包含您的报表的 .VHD 硬盘驱动器。
+  1. 在本地计算机上创建一个包含报表的 .VHD 硬盘驱动器。
   2. 创建并安装管理证书。
   3. 使用 Add-AzureVHD cmdlet 将 VHD 文件上传到 Azure [创建 Windows Server VHD 并将其上传到 Azure](../classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
   4. 将磁盘附加到虚拟机。
@@ -254,8 +253,8 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 ## <a name="install-other-sql-server-services-and-features"></a>安装其他 SQL Server 服务和功能
 若要安装其他 SQL Server 服务（如表格模式下的 Analysis Services），运行 SQL Server 安装向导。 安装程序文件在虚拟机的本地磁盘上。
 
-1. 单击“开始”屏幕，然后单击“所有程序”。
-2. 单击 **Microsoft SQL Server 2016**、**Microsoft SQL Server 2014** 或 **Microsoft SQL Server 2012**，然后单击“配置工具”。
+1. 单击“开始”屏幕，并单击“所有程序”。
+2. 单击 **Microsoft SQL Server 2016**、**Microsoft SQL Server 2014** 或 **Microsoft SQL Server 2012**，并单击“配置工具”。
 3. 单击“SQL Server 安装中心”。
 
 或运行 C:\SQLServer_13.0_full\setup.exe、C:\SQLServer_12.0_full\setup.exe 或 C:\SQLServer_11.0_full\setup.exe
@@ -263,7 +262,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 > [!NOTE]
 > 首次运行 SQL Server 安装程序时可能会下载更多安装文件并需要重新启动虚拟机和重新启动 SQL Server 安装程序。
 > 
-> 如果需要反复自定义从 Microsoft Azure 虚拟机中选择的映像，请考虑创建您自己的 SQL Server 映像。 Analysis Services SysPrep 功能在 SQL Server 2012 SP1 CU2 中已启用。 有关详细信息，请参阅[使用 SysPrep 安装 SQL Server 的注意事项](https://msdn.microsoft.com/library/ee210754.aspx)和 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
+> 如果需要反复自定义从 Microsoft Azure 虚拟机中选择的映像，请考虑创建自己的 SQL Server 映像。 Analysis Services SysPrep 功能在 SQL Server 2012 SP1 CU2 中已启用。 有关详细信息，请参阅[使用 SysPrep 安装 SQL Server 的注意事项](https://msdn.microsoft.com/library/ee210754.aspx)和 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 > 
 > 
 
@@ -275,11 +274,11 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 
 **若要安装 Analysis Services 表格模式：**
 
-1. 在 SQL Server 安装向导中，单击左侧窗格中的“安装”，然后单击“新的 SQL Server 独立安装或向现有安装添加功能”。
+1. 在 SQL Server 安装向导中，单击左侧窗格中的“安装”，并单击“新的 SQL Server 独立安装或向现有安装添加功能”。
    
-   * 如果你看到“浏览文件夹”，浏览到 c:\SQLServer_13.0_full、c:\SQLServer_12.0_full 或 c:\SQLServer_11.0_full，然后单击“确定”。
+   * 如果看到“浏览文件夹”，浏览到 c:\SQLServer_13.0_full、c:\SQLServer_12.0_full 或 c:\SQLServer_11.0_full，然后单击“确定”。
 2. 单击产品更新页面上的“下一步”。
-3. 在“安装类型”页上，选择“对 SQL Server 执行全新安装”，然后单击“下一步”。
+3. 在“安装类型”页上，选择“对 SQL Server 执行全新安装”，并单击“下一步”。
 4. 在“安装角色”页上，单击“SQL Server 功能安装”。
 5. 在“功能选择”页上，单击“Analysis Services”。
 6. 在“实例配置”页上，在“命名实例”和“实例 ID”文本框中键入一个描述性名称，如“表格”。
@@ -307,11 +306,11 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 ## <a name="virtual-machine-endpoints-and-firewall-ports"></a>虚拟机终结点以及防火墙端口
 本部分总结了要创建的 Microsoft Azure 虚拟机终结点以及要在虚拟机防火墙中打开的端口。 下表总结了要为其创建终结点的 **TCP** 端口和要在虚拟机防火墙中打开的端口。
 
-* 如果您使用的是单个 VM 并且下列两项为 true，不需要创建 VM 终结点并且不需要在 VM 上的防火墙中打开端口。
+* 如果使用的是单个 VM 并且下列两项为 true，不需要创建 VM 终结点并且不需要在 VM 上的防火墙中打开端口。
   
-  * 你未远程连接到 VM 上的 SQL Server 功能。 与 VM 建立远程桌面连接和从本地访问 VM 上的 SQL Server 功能，不被视为与 SQL Server 功能远程连接。
+  * 未远程连接到 VM 上的 SQL Server 功能。 与 VM 建立远程桌面连接和从本地访问 VM 上的 SQL Server 功能，不被视为与 SQL Server 功能远程连接。
   * 不通过 Azure 虚拟网络或其他 VPN 隧道解决方案将 VM 加入到本地域。
-* 如果虚拟机未加入到域，但您希望远程连接到 VM 上的 SQL Server 功能：
+* 如果虚拟机未加入到域，但希望远程连接到 VM 上的 SQL Server 功能：
   
   * 在 VM 防火墙中打开端口。
   * 为前述端口 (*) 打开虚拟机终结点。
@@ -324,7 +323,7 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
   | **1434** |UDP |SQL Server Browser。 当 VM 加入到域时需要。 |
   | **2382** |TCP |SQL Server Browser。 |
   | **2383** |TCP |SQL Server Analysis Services 默认实例和群集命名实例。 |
-  | **用户定义** |TCP |为您选择的端口号创建一个静态 Analysis Services 命名实例端口，然后在防火墙中解锁该端口号。 |
+  | **用户定义** |TCP |为用户选择的端口号创建一个静态 Analysis Services 命名实例端口，并在防火墙中解锁该端口号。 |
 
 有关创建终结点的详细信息，请参阅以下资源：
 
@@ -352,5 +351,4 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 
 ### <a name="community-content"></a>社区内容
 * [使用 PowerShell 管理 Azure SQL 数据库](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
-
 

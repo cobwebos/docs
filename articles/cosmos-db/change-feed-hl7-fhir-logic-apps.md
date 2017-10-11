@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 6e6e12f3d6d95002b223ad0fcb11d72bd920cdaf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: d2b50c0b6864af41fb9cfa051721c432772b228d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>使用逻辑应用和 Azure Cosmos DB 通知患者 HL7 FHIR 医疗保健记录的更改
 
 一家医疗保健组织最近联系了 Azure MVP Howard Edidin，表示希望向他们的患者门户添加新功能。 他们需要在患者的健康记录更新时向患者发送通知，并且希望患者能订阅这些更新。 
@@ -61,7 +59,7 @@ ms.lasthandoff: 06/07/2017
 
 ![此 HL7 FHIR 医疗保健教程中使用的 Azure Cosmos DB 帐户](./media/change-feed-hl7-fhir-logic-apps/account.png)
 
-#### <a name="logic-apps"></a>Logic Apps
+#### <a name="logic-apps"></a>逻辑应用
 逻辑应用将处理工作流进程。 以下屏幕快照显示了为此解决方案创建的逻辑应用。 
 
 
@@ -79,7 +77,7 @@ ms.lasthandoff: 06/07/2017
     ![向患者发送电子邮件（正文中包括 HL7 FHIR 资源）的逻辑应用](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
 #### <a name="service-bus"></a>服务总线
-下图显示患者队列。 Tag 属性值将用于电子邮件主题。
+下图显示患者队列。 Tag 属性值用于电子邮件主题。
 
 ![此 HL7 FHIR 教程中使用的服务总线队列](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
 
@@ -232,6 +230,5 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 主页](https://azure.microsoft.com/services/cosmos-db/)。 有关逻辑应用的详细信息，请参阅[逻辑应用](https://azure.microsoft.com/services/logic-apps/)。
-
 
 

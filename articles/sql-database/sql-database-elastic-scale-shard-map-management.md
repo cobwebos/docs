@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eb5483e497ef1c1a239f207a034eb8c67f485a39
-ms.openlocfilehash: c7a46ebf0df6db92d2e66c7523e00c0a574ebf56
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: f626cf417d8b3f1761f3c900d49039b3ff83b093
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 若要轻松地扩大 SQL Azure 上的数据库，请使用分片映射管理器。 分片映射管理器是一个特殊的数据库，它维护一个分片集中有关所有分片 （数据库）的全局映射信息。 元数据允许应用程序基于**分片键**值连接到正确的数据库。 此外，在集中的每个分片都包含跟踪本地分片数据的映射 （称为 **shardlet**）。 
@@ -42,16 +40,16 @@ ms.lasthandoff: 01/24/2017
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（你可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
+多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组）。 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
 
 ![范围映射][2]
 
-或者你可以使用*列表映射*来实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
+或者可以使用“列表映射”  实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
 
 ![单一数据库上的多个租户][3] 
 
 ### <a name="supported-net-types-for-sharding-keys"></a>支持的分片键的 .Net 类型
-灵活扩展支持将以下 .Net Framework 类型用作分片键：
+Elastic Scale 支持将以下 .Net Framework 类型用作分片键：
 
 * integer
 * long
@@ -102,7 +100,7 @@ ms.lasthandoff: 01/24/2017
 
 **请注意：**在应用程序的初始化代码内，每个应用域只应实例化 **ShardMapManager** 一次。 在同一个应用域中创建 ShardMapManager 的其他实例将导致应用程序的内存增加且 CPU 使用率增加。 **ShardMapManager** 可包含任意数量的分片映射。 尽管对于许多应用程序而言，单个分片映射可能是足够的，但有时针对不同的架构或出于特定目的，需使用不同的数据库集，在这些情况下多个分片可能更合适。 
 
-在此代码中，应用程序尝试使用 [TryGetSqlShardMapManage](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)r 方法打开现有的 **ShardMapManager**。  如果表示全局 **ShardMapManager** (GSM) 的对象尚未存在于数据库内，则客户端库将在此处使用 [CreateSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx) 方法创建这些对象。
+在此代码中，应用程序尝试使用 [TryGetSqlShardMapManage](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)r 方法打开现有的 **ShardMapManager**。  如果表示全局 ShardMapManager (GSM) 的对象尚未存在于数据库内，则客户端库将在此处使用 [CreateSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx) 方法创建这些对象。
 
     // Try to get a reference to the Shard Map Manager 
      // via the Shard Map Manager database.  
@@ -131,7 +129,7 @@ ms.lasthandoff: 01/24/2017
         // for privileges on both the GSM and the shards themselves.
     } 
 
-你可以使用 Powershell 作为替代方法来创建新的分片映射管理器。 [此处](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)提供了一个示例。
+可以使用 Powershell 作为替代方法来创建新的分片映射管理器。 [此处](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)提供了一个示例。
 
 ## <a name="get-a-rangeshardmap-or-listshardmap"></a>获取 RangeShardMap 或 ListShardMap
 创建分片映射管理器后，使用 [TryGetRangeShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)、[TryGetListShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx) 或者 [GetShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) 方法获取 [RangeShardMap](https://msdn.microsoft.com/library/azure/dn807318.aspx) 或 [ListShardMap](https://msdn.microsoft.com/library/azure/dn807370.aspx)。
@@ -167,14 +165,14 @@ ms.lasthandoff: 01/24/2017
 请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。
 
 ### <a name="only-metadata-affected"></a>仅元数据受影响
-用于填充或更改 **ShardMapManager** 数据的方法不会更改存储在分片本身中的用户数据。 例如，类似于 **CreateShard**、**DeleteShard**、**UpdateMapping** 等的方法仅影响分片映射元数据， 而不会删除、添加或更改分片中所包含的用户数据。 但是，这些方法旨在与您执行的单独操作结合使用，以创建或删除实际数据库，或者将行从一个分片移动到另一个分片，以使分片环境恢复均衡。  （弹性数据库工具附带的**拆分-合并**工具将使用这些 API 并安排在分片之间移动实际数据。）请参阅[使用弹性数据库拆分 / 合并工具进行缩放](sql-database-elastic-scale-overview-split-and-merge.md)。
+用于填充或更改 **ShardMapManager** 数据的方法不会更改存储在分片本身中的用户数据。 例如，类似于 **CreateShard**、**DeleteShard**、**UpdateMapping** 等的方法仅影响分片映射元数据， 而不会删除、添加或更改分片中所包含的用户数据。 但是，这些方法旨在与你执行的单独操作结合使用，以创建或删除实际数据库，或者将行从一个分片移动到另一个分片，以使分片环境恢复均衡。  （弹性数据库工具附带的**拆分-合并**工具将使用这些 API 并安排在分片之间移动实际数据。）请参阅[使用弹性数据库拆分 / 合并工具进行缩放](sql-database-elastic-scale-overview-split-and-merge.md)。
 
 ## <a name="populating-a-shard-map-example"></a>填充分片映射示例
 下面显示了用于填充特定分片映射的操作的示例序列。 此代码将执行下列步骤： 
 
 1. 将在分片映射管理器中创建新的分片映射。 
 2. 将两个不同分片的元数据添加到分片映射。 
-3. 将添加各种键范围映射，并且将显示分片映射的整体内容。 
+3. 将添加各种键范围映射，并且会显示分片映射的整体内容。 
 
 编写的代码可在发生错误时重新运行该方法。 每个请求将测试是否存在某个分片或映射，然后尝试创建该分片或映射。 该代码假设已在由字符串 **shardServer** 引用的服务器中创建名为 **sample_shard_0**、**sample_shard_1** 和 **sample_shard_2** 的数据库。 
 
@@ -296,16 +294,16 @@ ms.lasthandoff: 01/24/2017
     若要执行这些操作，表示目标分片的服务器和数据库必须已经存在。 这些方法不会对数据库本身产生任何影响，仅对分片映射上的元数据产生影响。
 * 若要创建或删除映射到分片的点或范围：请使用 [RangeShardMapping 类](https://msdn.microsoft.com/library/azure/dn807318.aspx)的 **[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn841993.aspx)** 和 **[DeleteMapping](https://msdn.microsoft.com/library/azure/dn824200.aspx)**，以及 [ListShardMap](https://msdn.microsoft.com/library/azure/dn842123.aspx) 的 **[CreatePointMapping](https://msdn.microsoft.com/library/azure/dn807218.aspx)**
   
-    许多不同的点或范围可映射到相同的分片。 这些方法仅影响元数据，而不会影响已显示在分片中的任何数据。 如果为了与 **DeleteMapping** 操作保持一致而需要将数据从数据库中删除，你将需要单独执行这些操作，但需要结合使用这些方法。  
+    许多不同的点或范围可映射到相同的分片。 这些方法仅影响元数据，而不会影响已显示在分片中的任何数据。 如果为了与 **DeleteMapping** 操作保持一致而需要将数据从数据库中删除，需要单独执行这些操作，但需要结合使用这些方法。  
 * 将现有的范围拆分为两个，或将相邻的范围合并为一个：请使用 **[SplitMapping](https://msdn.microsoft.com/library/azure/dn824205.aspx)** 和 **[MergeMappings](https://msdn.microsoft.com/library/azure/dn824201.aspx)**。  
   
-    请注意，拆分和合并操作**不更改键值要映射到的分片**。 拆分操作可将现有的范围拆分为两个部分，但在映射到相同分片时同时保留这两个部分。 对在已映射到相同分片的两个相邻的范围进行合并操作，从而可将其合并到单个范围中。  若要在分片之间移动点或范围本身，需要将 **UpdateMapping** 与移动的实际数据结合使用，才能进行协调。  当需要移动数据时，你可以使用弹性数据库工具中随附的**拆分 / 合并**服务，以将分片映射的更改与数据移动相协调。 
+    请注意，拆分和合并操作**不更改键值要映射到的分片**。 拆分操作可将现有的范围拆分为两个部分，但在映射到相同分片时同时保留这两个部分。 对在已映射到相同分片的两个相邻的范围进行合并操作，从而可将其合并到单个范围中。  要在分片之间移动点或范围本身，需要将 **UpdateMapping** 与移动的实际数据结合使用，才能进行协调。  当需要移动数据时，可以使用弹性数据库工具中随附的**拆分 / 合并**服务，以将分片映射的更改与数据移动相协调。 
 * 将单独的点或范围重新映射（或移动）到不同的分片：请使用 **[UpdateMapping](https://msdn.microsoft.com/library/azure/dn824207.aspx)**。  
   
-    由于可能需要将数据从一个分片移动到另一个分片，以便与 **UpdateMapping** 操作保持一致，因此你将需要单独执行此移动，但需要结合使用这些方法。
+    由于可能需要将数据从一个分片移动到另一个分片，以便与 **UpdateMapping** 操作保持一致，因此需要单独执行此移动，但需要结合使用这些方法。
 * 若要在联机和脱机状态下执行映射：请使用 **[MarkMappingOffline](https://msdn.microsoft.com/library/azure/dn824202.aspx)** 和 **[MarkMappingOnline](https://msdn.microsoft.com/library/azure/dn807225.aspx)** 来控制映射的联机状态。 
   
-    仅当映射处于“脱机”状态时才允许在分片映射上进行某些操作，其中包括 **UpdateMapping** 和 **DeleteMapping**。 当映射处于脱机状态时，基于该映射中所包含的键的数据依赖请求将返回一个错误。 此外，当范围首次处于脱机状态时，所有到受影响的分片的连接都将自动终止，以防止因范围的更改而导致查询出现不一致或不完整的结果。 
+    仅当映射处于“脱机”状态时才允许在分片映射上进行某些操作，其中包括 **UpdateMapping** 和 **DeleteMapping**。 当映射处于脱机状态时，基于该映射中所包含的键的数据依赖请求将返回一个错误。 此外，当范围首次处于脱机状态时，所有到受影响的分片的连接都会自动终止，以防止因范围的更改而导致查询出现不一致或不完整的结果。 
 
 映射是 .Net 中的不可变对象。  以上会更改映射的所有方法也会使代码中任何对映射的引用失效。 为了更轻松地执行操作序列来更改映射的状态，所有会更改映射的方法都将返回新的映射引用，以便能够链接操作。 例如，若要在 shardmap sm 中删除包含索引键 25 的现有映射，可以执行以下命令： 
 
@@ -324,4 +322,3 @@ ms.lasthandoff: 01/24/2017
 [1]: ./media/sql-database-elastic-scale-shard-map-management/listmapping.png
 [2]: ./media/sql-database-elastic-scale-shard-map-management/rangemapping.png
 [3]: ./media/sql-database-elastic-scale-shard-map-management/multipleonsingledb.png
-

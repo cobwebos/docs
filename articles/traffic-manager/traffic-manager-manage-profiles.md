@@ -1,6 +1,6 @@
 ---
-title: "管理 Azure 流量管理器配置文件 | Microsoft Docs"
-description: "本文帮助你创建、禁用、启用和删除 Azure 流量管理器配置文件。"
+title: "管理 Azure 流量管理器配置文件 |Microsoft 文档"
+description: "本文可帮助你创建、 禁用、 启用和删除 Azure 流量管理器配置文件。"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -14,66 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 
-流量管理器配置文件使用流量路由方法控制云服务或网站终结点的流量分布。 本文介绍如何创建和管理这些配置文件。
+Traffic Manager 配置文件使用流量路由方法控制分发给你的云服务或网站终结点的流量。 此文章介绍了如何创建和管理这些配置文件。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
-可以使用 Azure 门户创建流量管理器配置文件。 在创建配置文件后，可以在 Azure 门户中配置终结点、监视以及其他设置。 流量管理器支持每个配置文件最多 200 个终结点。 但是，大多数使用方案只需要少量的终结点。
+你可以通过 Azure 门户创建 Traffic Manager 配置文件。 在创建后你的配置文件，你可以对在 Azure 门户中配置终结点、 监视和其他设置。 流量管理器支持每个配置文件的最多 200 终结点。 但是，大多数使用方案需要只有几个终结点。
 
 ### <a name="to-create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
-2. 在“中心”菜单上，单击“新建” > “网络” > “全部查看”，单击“流量管理器配置文件”，打开“创建流量管理器配置文件”边栏选项卡，然后单击“创建”。
-3. 在“创建流量管理器配置文件”边栏选项卡上，按如下所示完成输入：
-    1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（<name>,trafficmanager.net），该名称用于访问流量管理器配置文件。
-    2. 在**路由方法**中，选择“优先级”路由方法。
-    3. 在**订阅**中，选择要创建此配置文件的订阅
-    4. 在**资源组**中，创建新的资源组，以在其下放置此配置文件。
-    5. 在**资源组位置**中，选择资源组的位置。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。
-    6. 单击“创建” 。
-    7. 流量管理器配置文件的全局部署完成后，它将在相应的资源组中作为资源之一列出。
+1. 从浏览器中，登录到[Azure 门户](http://portal.azure.com)。 如果你还没有帐户，你可以注册[免费试用一个月](https://azure.microsoft.com/free/)。 
+2. 上**中心**菜单上，单击**新建** > **网络** > **查看所有**，单击**流量管理器**配置文件以打开**创建 Traffic Manager 配置文件**边栏选项卡，然后单击**创建**。
+3. 上**创建 Traffic Manager 配置文件**边栏选项卡，完成，如下所示：
+    1. 在**名称**，提供你的配置文件的名称。 此名称必须是唯一 trafficmanager.net 区域内，并导致的 DNS 名称<name>，trafficmanager.net，用于访问你的流量管理器配置文件。
+    2. 在**路由方法**，选择**优先级**路由方法。
+    3. 在**订阅**，选择你想要创建在此配置文件的订阅
+    4. 在**资源组**，创建新的资源组，将在此配置文件。
+    5. 在**资源组位置**，选择资源组的位置。 此设置引用的资源组、 位置以及不会影响对将全局部署的流量管理器配置文件。
+    6. 单击“创建”。
+    7. Traffic Manager 配置文件的全局部署完成后，它被列为各自资源组中的资源之一。
 
-## <a name="disable-enable-or-delete-a-profile"></a>禁用、启用或删除配置文件
+## <a name="disable-enable-or-delete-a-profile"></a>禁用、 启用或删除配置文件
 
-可以禁用现有的配置文件，使流量管理器不会将用户请求路由到配置的终结点。 禁用流量管理器配置文件后，配置文件及其中包含的信息将保持不变，并且可以在流量管理器界面中进行编辑。  重新启用配置文件时，路由将会恢复。 在 Azure 门户中创建流量管理器配置文件时，会自动启用该配置文件。 如果确定不再需要某个配置文件，可以将其删除。
+你可以禁用现有配置文件，以便该流量管理器不是指用户请求配置的终结点。 当禁用流量管理器配置文件时，配置文件和配置文件中包含的信息保持不变，并且可在 Traffic Manager 界面中进行编辑。  当重新启用该配置文件时，将恢复引用。 当你在 Azure 门户中创建 Traffic Manager 配置文件时，它会自动启用。 如果你决定不再需要一个配置文件，你可以将其删除。
 
 ### <a name="to-disable-a-profile"></a>禁用配置文件
 
-1. 如果使用自定义域名，请更改 Internet DNS 服务器上的 CNAME 记录，使它不再指向流量管理器配置文件。
-2. 流量将不再通过流量管理器配置文件设置定向到终结点。
-3. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
-2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，然后在显示的结果中单击该流量管理器配置文件。
-3. 在“流量管理器配置文件”边栏选项卡中，单击“概述”，在“概述”边栏选项卡中单击“禁用”，然后确认禁用流量管理器配置文件。
+1. 如果使用自定义域名，更改你的 Internet DNS 服务器上的 CNAME 记录，以便它不再指向 Traffic Manager 配置文件。
+2. 流量将停止定向到通过 Traffic Manager 配置文件设置的终结点。
+3. 从浏览器中，登录到[Azure 门户](http://portal.azure.com)。
+2. 在门户的搜索栏中，搜索**Traffic Manager 配置文件**你想要修改，，然后单击结果中的流量管理器配置文件的名称的显示。
+3. 在**Traffic Manager 配置文件**边栏选项卡，单击**概述**，在概述边栏选项卡中，单击**禁用**，然后确认若要禁用流量管理器配置文件。
 
-### <a name="to-enable-a-profile"></a>启用配置文件
+### <a name="to-enable-a-profile"></a>若要启用配置文件
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
-2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，然后在显示的结果中单击该流量管理器配置文件。
-3. 在“流量管理器配置文件”边栏选项卡中，单击“概述”，然后在“概述”边栏选项卡中单击“启用”。
-5. 如果使用自定义域名，请在 Internet DNS 服务器上创建一条指向流量管理器配置文件域名的 CNAME 资源记录。
-6. 然后，流量将再次定向到终结点。
+1. 从浏览器中，登录到[Azure 门户](http://portal.azure.com)。
+2. 在门户的搜索栏中，搜索**Traffic Manager 配置文件**你想要修改，，然后单击结果中的流量管理器配置文件的名称的显示。
+3. 在**Traffic Manager 配置文件**边栏选项卡，单击**概述**，然后在概述边栏选项卡单击**启用**。
+5. 如果使用自定义域名，请在你的 Internet DNS 服务器指向 Traffic Manager 配置文件的域名上创建的 CNAME 资源记录。
+6. 流量将再次定向到终结点。
 
-### <a name="to-delete-a-profile"></a>删除配置文件
+### <a name="to-delete-a-profile"></a>若要删除配置文件
 
-1. 确保你的 Internet DNS 服务器上的 DNS 资源记录不再使用指向你的流量管理器配置文件域名的 CNAME 资源记录。
-2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，然后在显示的结果中单击该流量管理器配置文件。
-3. 在“流量管理器配置文件”边栏选项卡中，单击“概述”，在“概述”边栏选项卡中单击“删除”，然后确认删除流量管理器配置文件。
+1. 确保你的 Internet DNS 服务器上的 DNS 资源记录不再使用指向 Traffic Manager 配置文件的域名的 CNAME 资源记录。
+2. 在门户的搜索栏中，搜索**Traffic Manager 配置文件**你想要修改，，然后单击结果中的流量管理器配置文件的名称的显示。
+3. 在**Traffic Manager 配置文件**边栏选项卡，单击**概述**，在概述边栏选项卡中，单击**删除**，然后确认要删除流量管理器配置文件。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [添加终结点](traffic-manager-endpoints.md)
+* [添加一个终结点](traffic-manager-endpoints.md)
 * [配置优先级路由方法](traffic-manager-configure-priority-routing-method.md)
-* [配置地域路由方法](traffic-manager-configure-geographic-routing-method.md) 
+* [配置地理路由方法](traffic-manager-configure-geographic-routing-method.md) 
 * [配置加权路由方法](traffic-manager-configure-weighted-routing-method.md)
 * [配置性能路由方法](traffic-manager-configure-performance-routing-method.md)
-

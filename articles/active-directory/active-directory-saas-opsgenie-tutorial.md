@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: ce63726d2406d2f1415d29786f0ef92ca95b9b90
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>教程：Azure Active Directory 与 OpsGenie 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/04/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>从库中添加 OpsGenie
-若要通过配置将 OpsGenie 集成到 Azure AD 中，需从库将 OpsGenie 添加到托管式 SaaS 应用的列表中。
+要通过配置将 OpsGenie 集成到 Azure AD 中，需从库将 OpsGenie 添加到托管式 SaaS 应用的列表中。
 
 **若要从库添加 OpsGenie，请执行以下步骤：**
 
@@ -113,7 +112,7 @@ ms.lasthandoff: 07/04/2017
 
     在“登录 URL”文本框中，键入 URL：`https://app.opsgenie.com/auth/login`
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png) 
 
@@ -125,9 +124,9 @@ ms.lasthandoff: 07/04/2017
 
     ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png) 
 
-7. 打开另一个浏览器实例，然后以管理员身份登录到 OpsGenie。
+7. 打开另一个浏览器实例，并以管理员身份登录到 OpsGenie。
 
-8. 单击“设置”，然后单击“单一登录”选项卡。
+8. 单击“设置”，并单击“单一登录”选项卡。
    
     ![OpsGenie 单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_06.png)
 
@@ -143,9 +142,9 @@ ms.lasthandoff: 07/04/2017
    
     ![OpsGenie 设置](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“单一登录服务 URL”粘贴到“SAML 2.0 终结点”文本框。
+    a. 将从 Azure 门户复制的“单一登录服务 URL”粘贴到“SAML 2.0 终结点”文本框。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在记事本中打开 base-64 编码的已下载证书，将其内容复制到剪贴板，然后再粘贴到“X.500 证书”文本框。
+    b. 在记事本中打开 base-64 编码的已下载证书，将其内容复制到剪贴板，然后再粘贴到“X.500 证书”文本框。
     
     c. 单击“保存更改”。
 
@@ -176,7 +175,7 @@ ms.lasthandoff: 07/04/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -200,9 +199,9 @@ ms.lasthandoff: 07/04/2017
    
    ![OpsGenie 设置](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“电子邮件”文本框中，键入 Britta Simon 在 Azure Active Directory 中填写的电子邮件地址。
+   a. 在“电子邮件”文本框中，键入 Britta Simon 在 Azure Active Directory 中填写的电子邮件地址。
    
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“完整名称”文本框中，键入“Britta Simon”。
+   b. 在“完整名称”文本框中，键入“Britta Simon”。
    
    c. 单击“保存” 。 
 
@@ -215,9 +214,9 @@ ms.lasthandoff: 07/04/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 OpsGenie，请执行以下步骤：**
+**要将 Britta Simon 分配到 OpsGenie，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -263,5 +262,4 @@ ms.lasthandoff: 07/04/2017
 [201]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_203.png
-
 

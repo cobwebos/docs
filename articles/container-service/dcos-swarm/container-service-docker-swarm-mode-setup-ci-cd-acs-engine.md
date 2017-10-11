@@ -15,14 +15,12 @@ ms.workload: na
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: e68f06925fd7c72d72610ca68fab58a6fa2f4561
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: 2c0e5fe4f60738fcc1aa67a78674e6f3c62e5628
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>用于通过 Visual Studio Team Services 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
 本文基于[用于通过 Visual Studio Team Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道](container-service-docker-swarm-setup-ci-cd.md)文档
@@ -257,4 +255,3 @@ ms.lasthandoff: 07/25/2017
 * 有关使用 Visual Studio Team Services 的 CI/CD 的详细信息，请参阅 [VSTS Build overview](https://www.visualstudio.com/docs/build/overview)（VSTS 生成概述）。
 * 有关 ACS 引擎的详细信息，请参阅[ACS 引擎 GitHub 存储库](https://github.com/Azure/acs-engine)。
 * 有关 Docker Swarm 模式的详细信息，请参阅[Docker Swarm 模式概述](https://docs.docker.com/engine/swarm/)。
-

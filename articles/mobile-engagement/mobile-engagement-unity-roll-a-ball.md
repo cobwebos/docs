@@ -1,6 +1,6 @@
 ---
 title: "Unity 滚动球教程"
-description: "创建经典 Unity 滚动球游戏的步骤是所有 Mobile Engagement Unity 教程中必不可少的部分"
+description: "创建经典 Unity 滚动球游戏的步骤，这是所有 Mobile Engagement Unity 教程中必不可少的部分"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,48 +14,48 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="a-idunity-roll-a-ballacreate-unity-roll-a-ball-game"></a><a id="unity-roll-a-ball"></a>创建 Unity 滚动球游戏
-本教程介绍了稍经修改的 [Unity 滚动球教程](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)的主要步骤。 此示例游戏包含一个“Player”球对象（该对象由应用程序用户控制），而这款游戏的目标是通过将 Player 对象与这些可回收对象碰撞以“收集”这些可回收对象。 本教程假定用户基本熟悉 Unity 编辑器的环境。 如果遇到任何问题，请参考完整教程。 
+# <a id="unity-roll-a-ball"></a>创建 Unity 回滚球游戏
+本教程介绍了稍经修改的 [Unity 滚动球教程](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)的主要步骤。 此示例游戏包含一个“Player”球形对象（该对象由应用程序用户控制），而这款游戏的目标是通过将 Player 对象与可收集对象碰撞以“收集”这些可收集对象。 本教程假定用户基本熟悉 Unity 编辑器的环境。 如果遇到任何问题，请参考完整教程。 
 
 ### <a name="setting-up-the-game"></a>设置游戏
 以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)
 
-1. 打开“**Unity 编辑器**”，然后单击“**新建**”。 
+1. 打开“Unity 编辑器”，并单击“新建”。 
    
     ![][51] 
-2. 提供“**项目名称**” & “**位置**”，选择“**3D**”，然后单击“**创建项目**”。
+2. 提供“项目名称” & “位置”，选择“3D”，并单击“创建项目”。
    
     ![][52]
-3. 将刚创建的默认场景另存为新项目的一部分（名为 **MiniGame**，位于 **Assets** 文件夹下的**\_ Scenes** 文件夹）：
+3. 将刚才创建的默认场景另存为新项目的一部分（名为 **MiniGame**，位于 **Assets** 文件夹下新建的 **\_ Scenes** 文件夹中）：
    
     ![][53]
-4. 通过 **3D 对象 -> Plane** 创建游戏区域，并将此 Plane 对象重命名为 **Ground**。
+4. 创建**三维对象-> 平面**作为播放字段和重命名此平面对象作为**接地**
    
     ![][1]
 5. 重置该 **Ground** 对象的转换组件，使其位于原点。 
    
     ![][3]
-6. 从 **Gizmos 菜单**为 **Ground** 对象取消选中**显示网格**。
+6. 从“Gizmos 菜单”为 **Ground** 对象取消选中“显示网格”。
    
     ![][4]
 7. 将 **Ground** 对象的 **Scale** 组件更新至 [X = 2、Y = 1、 Z = 2]。 
    
     ![][5]
-8. 通过 **3D 对象 -> 球体**向项目添加新对象，并将该对象重命名为 **Player**。 
+8. 添加新**三维对象-> 球**到的项目和重命名此球面对象作为**播放器**。 
    
     ![][6]
-9. 选择 **Player** 对象并单击与 Plane 对象类似的**重置转换**。 
-10. 将 Player Y 的**转换 -> 位置 -> Y 坐标**组件更新至 0.5。  
+9. 选择 **Player** 对象并单击与 Plane 对象类似的“重置转换”。 
+10. 更新**转换-> 位置-> Y 坐标**为 0.5 播放器 Y 分量。  
     
     ![][7]
-11. 在项目中，新建名为“**材质**”的文件夹（我们将在此处对 Player 对象创建颜色材质）。 
-12. 在此文件夹中，新建名为**背景**的**材质**。 
+11. 在项目中，新建名为“材质”的文件夹（我们会在此处对 Player 对象创建颜色材质）。 
+12. 在此文件夹中，新建名为“背景”的“材质”。 
     
     ![][8]
 13. 通过更新其 **Albedo** 属性，更新材质颜色。 可选择 [0,32,64] 的 RGB 值。 
@@ -64,7 +64,7 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
 14. 将此材质拖动到场景视图，以向 **Ground** 对象应用颜色。 
     
     ![][10]
-15. 最后，将方向性光源对象上的“**转换 -> 旋转 -> Y**”更新至 60，以确保清晰度。 
+15. 最后更新**转换-> 旋转-> Y**到 60 为清楚起见定向光对象上。 
     
     ![][12]
 
@@ -74,12 +74,12 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
 1. 将 **RigidBody** 组件添加到 **Player** 对象。 
    
     ![][13]
-2. 在项目中，新建名为“**脚本**”的文件夹。 
-3. 单击“**添加组件-> 新建脚本 -> C# 脚本**”。 将其命名为 **PlayerController**，并单击“**创建和添加**”。 该操作将创建一个脚本，并将其附加到 Player 对象。  
+2. 在项目中，新建名为“脚本”的文件夹。 
+3. 单击“添加组件-> 新建脚本 -> C# 脚本”。 将其命名为 **PlayerController**，并单击“创建和添加”。 该操作将创建一个脚本，并将其附加到 Player 对象。  
    
     ![][14]
 4. 在项目的“**脚本**”文件夹下移动此脚本。 
-5. 在你最喜欢的脚本编辑器中打开脚本进行编辑，使用以下代码更新脚本，并将其保存。 
+5. 在常用的脚本编辑器中打开脚本进行编辑，使用以下代码更新脚本并保存。 
    
         using UnityEngine;
         using System.Collections;
@@ -100,13 +100,13 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
                 rb.AddForce (movement * speed);
             }
         }
-6. 请注意，以上脚本使用 **Speed** 属性。 在 Unity 编辑器中，将 Speed 属性更新至 10。  
+6. 请注意，以上脚本使用“Speed”属性。 在 Unity 编辑器中，将 Speed 属性更新至 10。  
    
     ![][15]
-7. 单击 Unity 编辑器中的“**Play**”。 现在，应能使用键盘控制小球，且小球应旋转并来回滚动。 
+7. 单击 Unity 编辑器中的“Play”。 现在，应能使用键盘控制小球，且小球应旋转并来回滚动。 
 
 ### <a name="moving-the-camera"></a>移动摄像头
-以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141)，将介绍如何将 **Main Camera** 与 **Player** 对象相关联。 
+以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141)，介绍如何将 **Main Camera** 与 **Player** 对象相关联。 
 
 1. 将 **Transform.Position** 更新至 X = 0、Y = 10.5、Z=-10。  
 2. 将 **Transform.Rotation** 更新至 X = 45、Y = 0、Z= 0。  
@@ -142,15 +142,15 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
 6. 现在，如果单击 Unity 编辑器中的“Play”，并旋转 Player Ball 对象，将看到跟随该对象移动的摄像头。  
 
 ### <a name="setting-up-the-play-area"></a>设置 Play 区域
-以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141)。 我们将在 Ground 周围创建 Walls，以便 Player Ball 对象在移动中不会跌落到游戏区域以外。 
+以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141)。 我们会在 Ground 周围创建 Walls，以免 Player Ball 对象在移动中跌落到游戏区域以外。 
 
-1. 单击“**创建 -> 创建空项 -> 游戏对象**” ，并将其命名为 **Walls**
+1. 单击**创建-> 创建空白-> 游戏对象**并将其命名**墙**
    
     ![][19]
-2. 在 Walls 对象下，创建新的 **3D 对象-> Cube**，并将其命名为“West wall”。 
+2. 在此墙对象-下创建一个新**三维对象-> 多维数据集**并将其命名为"西部 wall"。 
    
     ![][20]
-3. 为该 West Wall 对象更新“**转换 -> 位置**”和“**转换 -> 缩放**”。 
+3. 为该 West Wall 对象更新“转换 -> 位置”和“转换 -> 缩放”。 
    
     ![][21]
 4. 重复 West Wall，以使用更新的转换位置和缩放比例创建 **East Wall**。 
@@ -164,16 +164,16 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
     ![][24]
 
 ### <a name="creating-collectible-objects"></a>创建 Collectible 对象
-以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141)。 我们将创建一些有意思的对象，这些对象将构成可回收对象集，而 Player Ball 对象需通过与其碰撞来“收集”这些对象。 
+以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141)。 我们将创建一些有意思的对象，这些对象将构成可收集对象集，而 Player Ball 对象需通过与其碰撞来“收集”这些对象。 
 
 1. 创建新的 **3D Cube** 对象，并将其命名为 Pickup。 
-2. 调整 Pickup 对象的“**转换 -> 旋转**” & “**转换 -> 旋转**”。 
+2. 调整 Pickup 对象的“转换 -> 旋转” & “转换 -> 旋转”。 
    
     ![][25]
 3. 创建名为 **Rotator** 的**新 C# 脚本**，并将其附加到 Pickup 对象。 请确保将脚本置于“脚本”文件夹下。 
    
     ![][26]
-4. 打开该脚本进行编辑，并将其更新至以下格式： 
+4. 打开该脚本进行编辑，并将其更新为： 
    
         using UnityEngine;
         using System.Collections;
@@ -192,10 +192,10 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
 7. 拖动 **Pickup** 对象并将其置入 Prefabs 文件夹中。
    
     ![][28]
-8. 创建名为 **Pickups** 的**空游戏对象**。 将它的位置重置到原始位置，然后拖动该游戏对象下的 Pickup 对象。  
+8. 创建名为 **Pickups** 的**空游戏对象**。 将它的位置重置到原始位置，然后将 Pickup 对象拖动到该游戏对象下。  
    
     ![][29]
-9. 重复 **Pickup** 对象，并通过适当更新 **Transform.Position's X & Z** 值将该对象分散到 **Player** 对象周围的 **Ground** 对象。 
+9. 重复**拾取**对象的限制，扩展上**接地**对象周围**播放器**通过更新对象**Transform.Position 的 X 和 Z**适当值。 
    
     ![][30]
 10. 创建名为 **Pickup** 的**新材质**，并通过更新 **Albedo 属性**（与更新 Ground 对象的方法类似）将该材质更新为红色。 
@@ -250,16 +250,16 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
 3. 将该**标记**应用到 Prefab Pickup 对象。 
    
     ![][35]
-4. 为 Prefab 对象选中 **IsTrigger** 复选框。
+4. 为 Prefab 对象选中“IsTrigger”复选框。
    
     ![][36]
 5. 将刚体添加到 Pickup Prefab 对象。 为了性能优化，我们将更新用于动态碰撞体的静态碰撞体。 
    
     ![][37]
-6. 最后检查 Prefab 对象的 **IsKinematic** 属性。 
+6. 最后检查 Prefab 对象的“IsKinematic”属性。 
    
     ![][38]
-7. 在 Unity 编辑器中单击“**Play**”即可启动**滚动球**游戏，该游戏使用键盘键作为方向输入来移动 Player 对象。 
+7. 在 Unity 编辑器中单击“Play”即可启动**滚动球**游戏，该游戏使用键盘键作为方向输入来移动 Player 对象。 
 
 ### <a name="updating-the-game-for-mobile-play"></a>更新游戏以在移动设备上运行
 前面的部分总结了来自 Unity 的基本教程。 现在，我们将对游戏进行修改，以使其能够更友好地在移动设备上运行。 请注意，目前我们对游戏使用的是键盘输入进行测试。 现在，我们将对其进行修改，以通过使用手机动作等来控制 Player。 将加速计用作输入。 
@@ -329,11 +329,5 @@ ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
 
 
 
-
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

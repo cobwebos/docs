@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/15/2016
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 88d1f4e29f38ba1a6bef57c2da43bee205575eee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>在 Azure 中部署 HPC Pack 2016 群集
 
@@ -128,23 +127,23 @@ $hpcSecret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Se
 
 ## <a name="deploy-a-cluster"></a>部署群集
 
-若要创建群集，请选择一个模板，然后单击“部署到 Azure”。 在 [Azure 门户](https://portal.azure.com)中，指定该模板的参数，如以下步骤中所示。 每个模板为 HPC 群集基础结构创建所需的全部 Azure 资源。 资源包括 Azure 虚拟网络、公共 IP 地址、负载均衡器（仅适用于高可用性群集）、网络接口、可用性集、存储帐户和虚拟机。
+要创建群集，请选择一个模板，并单击“部署到 Azure”。 在 [Azure 门户](https://portal.azure.com)中，指定该模板的参数，如以下步骤中所示。 每个模板为 HPC 群集基础结构创建所需的全部 Azure 资源。 资源包括 Azure 虚拟网络、公共 IP 地址、负载均衡器（仅适用于高可用性群集）、网络接口、可用性集、存储帐户和虚拟机。
 
 ### <a name="step-1-select-the-subscription-location-and-resource-group"></a>步骤 1：选择订阅、位置和资源组
 
-“订阅”和“位置”必须与你上传 PFX 证书时所指定的值相同（请参阅“先决条件”）。 我们建议你为部署创建“资源组”。
+**订阅**和**位置**必须相同，指定 PFX 证书的上载时 （请参阅先决条件）。 我们建议为部署创建“资源组”。
 
 ### <a name="step-2-specify-the-parameter-settings"></a>步骤 2：指定参数设置
 
 输入或修改模板参数的值。 单击每个参数旁边的图标可获得帮助信息。 另请参阅 [VM 可用大小](sizes.md)准则。
 
-指定你在先决条件中记录的以下参数值：“保管库名称”、“保管库资源组”、“证书 URL”和“证书指纹”。
+指定以下参数的先决条件中记录的值：**保管库名称**，**保管库资源组**，**证书 URL**，和**证书指纹**。
 
 ### <a name="step-3-review-legal-terms-and-create"></a>步骤 3. 查看法律条款和创建
-单击“查看法律条款”，查看条款。 如果同意，单击“购买”，然后单击“创建”以开始部署。
+单击“查看法律条款”，查看条款。 如果同意，单击“购买”，并单击“创建”以开始部署。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
-1. HPC Pack 群集完成部署后，请转到 [Azure 门户](https://portal.azure.com)。 单击“资源组”，然后查找已部署群集的资源组。 可找到头节点虚拟机。
+1. HPC Pack 群集完成部署后，请转到 [Azure 门户](https://portal.azure.com)。 单击“资源组”，并查找已部署群集的资源组。 可找到头节点虚拟机。
 
     ![门户中的群集头节点](./media/hpcpack-2016-cluster/clusterhns.png)
 
@@ -152,9 +151,8 @@ $hpcSecret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Se
 
     ![群集连接设置](./media/hpcpack-2016-cluster/clusterconnect.png)
 
-3. 单击“连接”，以使用你指定的管理员用户名通过远程桌面登录到任何一个头节点。 如果已部署的群集位于 Active Directory 域中，用户名的格式为 <privateDomainName>\<adminUsername>（例如，hpc.local\hpcadmin）。
+3. 单击“连接”，以使用指定的管理员用户名通过远程桌面登录到任何一个头节点。 如果已部署的群集位于 Active Directory 域中，用户名的格式为 <privateDomainName>\<adminUsername>（例如，hpc.local\hpcadmin）。
 
 ## <a name="next-steps"></a>后续步骤
 * 向群集提交作业。 请参阅[在 Azure 中将作业提交到 HPC（即 HPC Pack 群集）](hpcpack-cluster-submit-jobs.md)和[使用 Azure Active Directory 在 Azure 中管理 HPC Pack 2016 群集](hpcpack-cluster-active-directory.md)。
-
 

@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4d1f02951bf93d59f16173bd021ab9340a425071
-
-
+ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="registration-management"></a>注册管理
 ## <a name="overview"></a>概述
-本主题介绍如何使用通知中心注册设备，以接收推送通知。 本主题概括介绍了注册，然后引入两种主要的注册设备模式：从设备直接注册到通知中心和通过应用程序后端注册。 
+本主题介绍如何使用通知中心注册设备，以接收推送通知。 本主题概括介绍了注册，并引入两种主要的注册设备模式：从设备直接注册到通知中心和通过应用程序后端注册。 
 
 ## <a name="what-is-device-registration"></a>什么是设备注册
 向通知中心注册设备是通过使用“**注册**”或“**安装**”来完成的。
@@ -36,8 +36,8 @@ ms.openlocfilehash: 4d1f02951bf93d59f16173bd021ab9340a425071
 以下是使用安装的一些主要优点：
 
 * 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
-* 安装模型可让你轻松地执行每次推送（以特定设备为目标）。 每次执行基于安装的注册时，都会自动添加一个系统标记 **"$InstallationId:[installationId]"**。 因此，你无需编写任何额外的代码，就能对此标记调用 send 以针对特定的设备。
-* 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 当你想要更新注册中的标记时，此方法特别有用。 你不需要删除整个注册，然后重新发送前面的所有标记。
+* 安装模型可让你轻松地执行每次推送（以特定设备为目标）。 每次执行基于安装的注册时，都会自动添加一个系统标记 **"$InstallationId:[installationId]"**。 因此，无需编写任何额外的代码，就能对此标记调用 send 以针对特定的设备。
+* 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法特别有用。 不需要删除整个注册，然后重新发送前面的所有标记。
 
 安装可以包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)或[安装属性](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)。
 
@@ -79,7 +79,7 @@ ms.openlocfilehash: 4d1f02951bf93d59f16173bd021ab9340a425071
 
 请务必注意，注册和安装默认情况下不再过期。
 
-注册与安装必须包含每个设备/通道的有效 PNS 句柄。 由于只能在设备上的客户端应用中获取 PNS 句柄，因此有一种模式是直接在该设备上使用客户端应用进行注册。 另一方面，与标记相关的安全性考虑和业务逻辑可能要求你在应用后端管理设备注册。 
+注册与安装必须包含每个设备/通道的有效 PNS 句柄。 由于只能在设备上的客户端应用中获取 PNS 句柄，因此有一种模式是直接在该设备上使用客户端应用进行注册。 另一方面，与标记相关的安全性考虑和业务逻辑可能要求在应用后端管理设备注册。 
 
 #### <a name="templates"></a>模板
 如果要使用[模板](notification-hubs-templates-cross-platform-push-messages.md)，则设备安装还会保存与设备关联的、采用 JSON 格式的所有模板（请参阅上面的示例）。 模板名称有助于将目标指向相同设备的不同模板。
@@ -187,7 +187,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 
 #### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>使用注册从设备向通知中心注册的示例代码
-这些方法为调用它们的设备创建或更新注册。 这意味着，若要更新句柄或标记，必须覆盖整个注册。 请记住，注册是暂时性的，因此，你始终应使用具有特定设备所需的当前标记的可靠存储。
+这些方法为调用它们的设备创建或更新注册。 这意味着，若要更新句柄或标记，必须覆盖整个注册。 请记住，注册是暂时性的，因此，始终应使用具有特定设备所需的当前标记的可靠存储。
 
     // Initialize the Notification Hub
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
@@ -240,14 +240,14 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 
 ## <a name="registration-management-from-a-backend"></a>从后端管理注册
-从后端管理注册需要编写附加代码。 每次设备中的应用启动时，该应用都必须为后端提供已更新的 PNS 句柄（以及标记和模板），然后后端必须在通知中心上更新此句柄。 下图演示了此设计。
+从后端管理注册需要编写附加代码。 每次设备中的应用启动时，该应用都必须为后端提供已更新的 PNS 句柄（以及标记和模板），后端必须在通知中心上更新此句柄。 下图演示了此设计。
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 从后端管理注册的优点是即使在设备上的相应应用处于非活动状态也能修改注册标记，并且在向其注册添加标记之前能够对客户端应用进行身份验证。
 
 #### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>使用安装从后端向通知中心注册的示例代码
-客户端设备仍会像前面一样获取其 PNS 句柄及相关的安装属性，然后在可以执行注册和授权标记等的后端上调用自定义 API。后端可以利用[适用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+客户端设备仍会像前面一样获取其 PNS 句柄及相关的安装属性，并在可以执行注册和授权标记等的后端上调用自定义 API。后端可以利用[适用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 也可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安装。
 
@@ -317,10 +317,4 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 
 后端必须处理注册更新之间的并发性。 服务总线为注册管理提供了乐观并发控制。 在 HTTP 级别，这是通过对注册管理操作使用 ETag 来实现的。 Microsoft SDK 以透明方式使用此功能，如果由于并发原因拒绝了更新，则会引发异常。 应用后端负责处理这些异常并在需要时重试更新。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

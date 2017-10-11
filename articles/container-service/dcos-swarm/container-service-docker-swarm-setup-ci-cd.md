@@ -15,14 +15,12 @@ ms.workload: na
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 99c27c37218a35d2a3416d6edd5e0a871cd5c011
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>用于通过 Visual Studio Team Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
 开发适用于云环境的新型应用程序时，最大的挑战之一是持续交付这些应用程序。 本文介绍如何使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Visual Studio Team Services 生成与发布管理，实现完整的持续集成与持续部署 (CI/CD) 管道。
@@ -231,4 +229,3 @@ Microsoft 提供了一个 VSTS 扩展，用于在生成和发布过程中操作 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用 Visual Studio Team Services 的 CI/CD 的详细信息，请参阅 [VSTS Build overview](https://www.visualstudio.com/docs/build/overview)（VSTS 生成概述）。
-

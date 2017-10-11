@@ -13,14 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: chackdan;maburlik
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 6a6bacedde04419449a061554d5ce9ad37259a2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
 在[下载的](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
 
@@ -60,4 +58,3 @@ ms.lasthandoff: 08/12/2017
 ## <a name="related"></a>相关内容
 * [创建独立 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 * [Service Fabric 群集安全性方案](service-fabric-windows-cluster-windows-security.md)
-

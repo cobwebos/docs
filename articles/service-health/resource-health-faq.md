@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 794117b6f383bdd1851681864e99b3c1ef077f86
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
 
 ## <a name="what-is-azure-resource-health"></a>什么是 Azure 资源运行状况？
-资源运行状况在 Azure 问题影响你的资源时帮助你进行诊断并获得支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在你需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。  
+资源运行状况在 Azure 问题影响资源时帮助你进行诊断并获得支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。  
 
 ## <a name="what-is-the-resource-health-intended-for"></a>资源运行状况的用途是什么？
-检测到资源出现问题以后，即可通过资源运行状况诊断根本原因。 它有助于减轻问题，并可在你需要 Azure 服务问题的更多帮助时提供技术支持。
+检测到资源出现问题以后，即可通过资源运行状况诊断根本原因。 它有助于减轻问题，并可在需要 Azure 服务问题的更多帮助时提供技术支持。
 
 ## <a name="what-health-checks-are-performed-by-resource-health"></a>资源运行状况执行何种运行状况检查？
 资源运行状况根据[资源类型](resource-health-checks-resource-types.md)执行各种检查。 这些检查旨在针对三类问题： 
@@ -44,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 - 未知：资源运行状况无法确定资源的运行状况，因为已停止接收有关该资源的信息。 
 
 ## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>未知状态意味着什么？ 我的资源是否出了问题？
-当资源运行状况停止接收特定资源的相关信息时，资源运行状态设置为未知。 虽然在你出现问题的情况下，此状态并没有确切地指示资源的状态，但仍然表明可能存在 Azure 问题。
+当资源运行状况停止接收特定资源的相关信息时，资源运行状态设置为未知。 虽然在出现问题的情况下，此状态并没有确切地指示资源的状态，但仍然表明可能存在 Azure 问题。
 
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>如果资源不可用，如何获取帮助？
 可以从资源运行状况边栏选项卡提交支持请求。 当资源因平台事件而不可用时，提交请求不需与 Microsoft 达成的支持协议。
@@ -62,7 +60,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="where-do-i-find-resource-health"></a>在何处查找资源运行状况？
 登录 Azure 门户以后，即可通过多种方式访问资源运行状况：
-- 导航到你的资源。 在左侧导航栏中，选择“资源运行状况”
+- 导航到资源。 在左侧导航栏中，选择“资源运行状况”
 - 转到 Azure Monitor 边栏选项卡。  在左侧导航栏中，选择“资源运行状况”。
 - 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。 该边栏选项卡打开后，选择“资源运行状况”
 
@@ -72,7 +70,7 @@ ms.lasthandoff: 07/11/2017
 如需资源运行状况支持的运行状况检查和资源类型的列表，可单击[此处](resource-health-checks-resource-types.md)。
 
 ## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>如果我的资源显示可用，但我认为它不可用，该怎么办？
-检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。 在提交报告之前，你可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
+检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。 在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>资源运行状况是否适用于所有 Azure 区域？ 
 资源运行状况适用于除以下区域之外的所有 Azure 地理区域：
@@ -102,11 +100,10 @@ ms.lasthandoff: 07/11/2017
 是的。  Azure 资源运行状况免费提供。
 
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>资源运行状况提供的建议有哪些？
-资源运行状况会根据运行状态提供建议，目的是减少进行故障排除的时间。 这些建议针对可用资源，注重于如何解决客户遇到的最常见问题。 如果资源因 Azure 计划外事件而不可用，则会注重于为你提供恢复过程之中和之后的帮助。 
+资源运行状况会根据运行状态提供建议，目的是减少进行故障排除的时间。 这些建议针对可用资源，注重于如何解决客户遇到的最常见问题。 如果资源因 Azure 计划外事件而不可用，则会注重于提供恢复过程之中和之后的帮助。 
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关资源运行状况的详细信息：
 -  [Azure 资源运行状况概述](Resource-health-overview.md)
 -  [可通过 Azure 资源运行状况使用的资源类型和运行状况检查](resource-health-checks-resource-types.md)
-

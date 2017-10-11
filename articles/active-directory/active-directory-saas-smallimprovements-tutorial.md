@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
 ms.openlocfilehash: 49a8cd3acfc6df15ef6a51171c8421162bc94efc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>教程：Azure Active Directory 与 Small Improvements 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/14/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-small-improvements-from-the-gallery"></a>从库中添加 Small Improvements
-若要配置 Small Improvements 与 Azure AD 的集成，需要从库中将 Small Improvements 添加到托管 SaaS 应用列表。
+要配置 Small Improvements 与 Azure AD 的集成，需要从库中将 Small Improvements 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Small Improvements，请执行以下步骤：**
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 07/14/2017
 
 若要配置和测试 Small Improvements 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Small Improvements 测试用户](#creating-a-small-improvements-test-user) - 在 Small Improvements 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -118,7 +117,7 @@ ms.lasthandoff: 07/14/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Small Improvements 客户端支持团队](mailto:support@small-improvements.com)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_certificate.png) 
 
@@ -144,15 +143,15 @@ ms.lasthandoff: 07/14/2017
    
     ![配置单一登录](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“HTTP 终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a. 在“HTTP 终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在记事本中打开下载的证书，复制其内容，然后将其粘贴到“x509 证书”文本框中。 
+    b. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“x509 证书”文本框中。 
 
     c. 如果想要让 SSO 和登录表单身份验证选项可供用户使用，请选中“也启用通过登录名/密码访问”选项。  
 
     d. 在“SAML 提示”文本框中输入用于命名“SSO 登录”按钮的相应值。  
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存” 。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存” 。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -181,7 +180,7 @@ ms.lasthandoff: 07/14/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -211,9 +210,9 @@ ms.lasthandoff: 07/14/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 输入用户的名字，如 Britta。
+    a. 输入用户的名字，如 Britta。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 输入用户的姓氏，如 Simon。
+    b. 输入用户的姓氏，如 Simon。
 
     c. 输入用户的“电子邮件地址”，如 brittasimon@contoso.com。 
 
@@ -227,9 +226,9 @@ ms.lasthandoff: 07/14/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Small Improvements，请执行以下步骤：**
+**要将 Britta Simon 分配到 Small Improvements，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -277,5 +276,4 @@ ms.lasthandoff: 07/14/2017
 [201]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_203.png
-
 

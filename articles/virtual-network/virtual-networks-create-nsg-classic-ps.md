@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 097f0f7df8db8ec06d91e598cedcfb92a4cc160c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: e3f84e4757e3854fc63e3069e179446174f0c0bd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-create-nsgs-classic-in-powershell"></a>如何在 PowerShell 中创建 NSG（经典）
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
@@ -29,16 +28,16 @@ ms.lasthandoff: 04/27/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍经典部署模型。 你还可以[在资源管理器部署模型中创建 NSG](virtual-networks-create-nsg-arm-ps.md)。
+本文介绍经典部署模型。 还可以[在 Resource Manager 部署模型中创建 NSG](virtual-networks-create-nsg-arm-ps.md)。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-下面的示例 PowerShell 命令需要基于上述方案创建的简单环境。 如果你想要运行本文档中所显示的命令，首先通过[创建 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md) 构建测试环境。
+下面的示例 PowerShell 命令需要基于上述方案创建的简单环境。 如果想要运行本文档中所显示的命令，首先通过[创建 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md) 构建测试环境。
 
 ## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>如何为前端子网创建 NSG
 若要基于上述方案创建名为 **NSG-FrontEnd** 的 NSG，请执行下面的步骤：
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择订阅。
 2. 创建名为 **NSG-FrontEnd** 的网络安全组。
    
         New-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" -Location uswest `
@@ -207,4 +206,3 @@ ms.lasthandoff: 04/27/2017
                    ALLOW INTERNET       65001     Allow    *               *             INTERNET         *              *       
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
-

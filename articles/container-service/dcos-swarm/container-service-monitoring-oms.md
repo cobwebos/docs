@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 9b8f96b34b53982c469273a3df9751ceb7930d60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集
 
 Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。 容器解决方案是 OMS Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
@@ -78,7 +76,7 @@ Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理
 
 ### <a name="azure-portal"></a>Azure 门户 
 
-在 <https://portal.microsoft.com/> 中登录到 Azure 门户。 转到“Marketplace”，选择“监视 + 管理”，并单击“查看全部”。 然后在搜索中键入 `containers`。 搜索结果中将显示“容器”。 选择“容器”，并单击“创建”。
+在 <https://portal.microsoft.com/> 中登录到 Azure 门户。 转到“Marketplace”，选择“监视 + 管理”，并单击“查看全部”。 然后键入`containers`在搜索中。 搜索结果中将显示“容器”。 选择“容器”，并单击“创建”。
 
 ![](media/container-service-monitoring-oms/image9.png)
 
@@ -116,4 +114,3 @@ $ dcos package uninstall msoms
 ## <a name="next-steps"></a>后续步骤
 
  现在已完成设置，可使用 OMS 监视容器，请[查看容器仪表板](../../log-analytics/log-analytics-containers.md)。
-

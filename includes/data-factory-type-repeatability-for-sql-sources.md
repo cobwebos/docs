@@ -1,7 +1,7 @@
-## <a name="repeatability-during-copy"></a>复制期间的可重复性
-从其他数据存储中的数据复制到 Azure SQL/SQL Server 时，需要记住可重复性，以免发生意外的结果。 
+## <a name="repeatability-during-copy"></a>在复制期间可重复性
+当其他数据从数据复制到 Azure SQL/SQL Server 将存储一个需要记住可重复性以避免意外的结果。 
 
-将数据复制到 Azure SQL/SQL Server 数据库时，复制活动默认会将数据集追加到接收器表。 例如，将数据从包含两条记录的 CSV（逗号分隔值）文件源复制到 Azure SQL/SQL Server 数据库时，表的外观如下所示：
+当将数据复制到 Azure SQL/SQL Server 数据库，复制活动将按默认追加到接收器表数据集默认情况下。 例如，在从包含到 Azure SQL/SQL Server 数据库的两条记录的 CSV （逗号分隔值数据） 文件源复制数据，这是表的外观：
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -10,7 +10,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-假设在源文件中发现错误，然后将源文件中的 Down Tube 数量从 2 更新为 4。 如果重新运行该时间段的数据切片，会发现有两条新记录已追加到 Azure SQL/SQL Server 数据库。 下面假设表中的列都没有主键约束。
+假设你在源文件中发现错误，并且更新的从 2 到 4 的源文件中向下管的数量。 如果该时间段重新运行数据切片，你将找到追加到 Azure SQL/SQL Server 数据库的两条新记录。 下面假定没有任何表中的列具有主键约束。
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -21,15 +21,15 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-若要避免此问题，必须利用下述 2 种机制之一指定 UPSERT 语义。
+若要避免此问题，你将需要通过利用之一指定 UPSERT 语义下面 2 下面所述的机制。
 
 > [!NOTE]
-> 可以根据指定的重试策略在 Azure 数据工厂中自动重新运行切片。
+> 切片可以重新运行自动在 Azure 数据工厂中根据指定的重试策略。
 > 
 > 
 
 ### <a name="mechanism-1"></a>机制 1
-可以利用 **sqlWriterCleanupScript** 属性在运行切片时先执行清理操作。 
+你可以利用**sqlWriterCleanupScript**属性在运行切片时首先执行清理操作。 
 
 ```json
 "sink":  
@@ -39,9 +39,9 @@ ID    Product        Quantity    ModifiedDate
 }
 ```
 
-在复制给定的切片期间会先执行清除脚本，这将删除 SQL 表中对应于该切片的数据。 然后，活动会将数据插入 SQL 表。 
+清理脚本将执行第一个期间给定切片，这将删除与该切片对应的 SQL 表中的数据的副本。 活动随后将插入 SQL 表的数据。 
 
-如果此时重新运行切片，则会发现数量已根据需要更新。
+如果切片是现在重新运行，则你将找到的数量更新为所需。
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -50,25 +50,25 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-假设 Flat Washer 已从原始 csv 中删除。 重新运行切片会生成以下结果： 
+假设从原始 csv 删除垫圈记录。 然后重新运行切片后会生成以下结果： 
 
 ```
 ID    Product        Quantity    ModifiedDate
 ...    ...            ...            ...
 7     Down Tube    4            2015-05-01 00:00:00
 ```
-不需要执行其他操作。 复制活动已运行清除脚本来删除该切片的相应数据。 然后，它从 csv（只包含 1 条记录）中读取了输入并将其插入表中。 
+什么新鲜事物不得不进行。 复制活动运行清理脚本，才能删除该切片的相应数据。 然后它从 （然后包含只有 1 记录） 的 csv 读取输入并将其插入到表。 
 
 ### <a name="mechanism-2"></a>机制 2
 > [!IMPORTANT]
-> Azure SQL 数据仓库目前不支持 sliceIdentifierColumnName。 
+> 使用 sliceIdentifierColumnName 不支持为 Azure SQL 数据仓库在这一次。 
 
-实现可重复性的另一种机制是在目标表中使用专用列 (**sliceIdentifierColumnName**)。 Azure 数据工厂使用此列来确保源与目标保持同步。 如果可以灵活更改或定义目标 SQL 表架构，则很适合使用这种方法。 
+若要实现可重复性的另一种机制是使用专用的列 (**sliceIdentifierColumnName**) 目标表中。 此列将由 Azure 数据工厂，用于确保源和目标保持同步。 灵活地更改或定义目标 SQL 表架构时，此方法适用。 
 
-出于可重复性的目的，Azure 数据工厂将使用此列，在此过程中，Azure 数据工厂不会对表做出任何架构更改。 如何使用此方法：
+此列将用于通过 Azure 数据工厂可重复性目的，在过程中 Azure 数据工厂不会进行任何架构更改到表。 若要使用此方法的方式：
 
-1. 在目标 SQL 表中定义二进制 (32) 类型的列。 此列不应有任何约束。 在本示例中，我们将此列命名为“ColumnForADFuseOnly”。
-2. 如下所示，在复制活动中使用该列：
+1. 在目标 SQL 表中定义的二进制类型 (32) 的列。 不应在此列上的任何约束。 让我们对于此示例名称作为 ColumnForADFuseOnly 的此列。
+2. 它在中使用复制活动，如下所示：
    
     ```json
     "sink":  
@@ -79,7 +79,7 @@ ID    Product        Quantity    ModifiedDate
     }
     ```
 
-Azure 数据工厂会根据此列的需求填充数据，确保源与目标保持同步。 用户不应在此上下文以外使用此列的值。 
+Azure 数据工厂将填充此列根据其需要确保源和目标保持同步。 此列的值不应在此上下文外部用户使用。 
 
-类似于机制 1，复制活动首先会自动从目标 SQL 表中清除给定切片的数据，然后正常运行复制活动，将数据从源插入该切片的目标。 
+类似于机制 1，复制活动将自动首先清除目标 SQL 表中给定的切片的数据，然后运行通常要将数据从源插入到该切片的目标的复制活动。 
 

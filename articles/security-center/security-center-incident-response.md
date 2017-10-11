@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f40f64906bf87d8505fa1a209222163256326d14
-ms.openlocfilehash: a2cc4729ca5cb1dcc10630158ec3d94315fb01a5
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 6cd6c822eb255893feac2536d7bae034380094b2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>利用 Azure 安全中心进行事件响应
 许多组织只有在遭受攻击后才会去学习如何响应安全事件。 为降低成本并减少破坏，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。
@@ -40,7 +39,7 @@ ms.lasthandoff: 01/24/2017
 * **诊断**：进行技术性调查，确定抑制、缓解和解决威胁的各种策略。
   * 示例：按照安全中心在该特定安全警报中描述的补救步骤进行操作。
 
-随后的方案说明了如何在安全事件的检测、评估和诊断/响应阶段利用安全中心。 在安全中心，[安全事件](security-center-incident.md)是对资源的所有警报汇总，与[网络攻击链](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)模式保持一致。 事件显示在 [安全警报](security-center-managing-and-responding-alerts.md) 磁贴和边栏选项卡中。 事件会显示相关警报的列表，可使你获取每个匹配项的相关详细信息。 安全中心还提供单独的安全警报，其还可用于更正可疑活动。
+随后的方案说明了如何在安全事件的检测、评估和诊断/响应阶段利用安全中心。 在安全中心，[安全事件](security-center-incident.md)是对资源的所有警报汇总，与[网络攻击链](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)模式保持一致。 事件显示在 [安全警报](security-center-managing-and-responding-alerts.md) 磁贴和边栏选项卡中。 事件将显示的列表相关的警报，可用于获取有关每个匹配项的详细信息。 安全中心还提供单独的安全警报，其还可用于更正可疑活动。
 
 ## <a name="scenario"></a>方案
 Contoso 最近向 Azure 迁移了部分本地资源，包括基于虚拟机的一些业务线工作负荷和 SQL 数据库。 目前，Contoso 的核心计算机安全事件响应团队 (CSIRT) 无法调查安全问题，因为其当前的事件响应工具尚未集成安全智能。 由于没有集成，检测阶段以及评估和诊断阶段都出现了问题（误报过多）。 在此次迁移过程中，他们决定加入安全中心计划，以便解决此问题。
@@ -54,7 +53,7 @@ Contoso 最近向 Azure 迁移了部分本地资源，包括基于虚拟机的�
 Judy 负责安全操作。 其职责包括：
 
 * 全天候监视和响应安全威胁。
-* 必要时将问题上报给云工作负荷所有者或安全分析师。
+* 必要时会问题上报给云工作负荷所有者或安全分析师。
 
 Sam 是安全分析师，他的责任包括：
 
@@ -72,7 +71,7 @@ Sam 是安全分析师，他的责任包括：
 Judy 需要在检测和评估阶段使用安全警报。 完成初步评估后，如需额外调查，Judy 可能会将问题上报给 Sam。 此时，Sam 会利用安全中心提供的信息，有时结合其他数据源，进入到诊断阶段。
 
 ## <a name="how-to-implement-this-solution"></a>如何实施该解决方案
-为了说明如何在响应威胁事件时发挥 Azure 安全中心的作用，需先对 Judy 在检测和评估阶段执行的步骤进行演示，然后演示 Sam 的问题诊断步骤。
+若要查看如何将事件响应方案中使用 Azure 安全中心，我们按照中的检测和评估阶段中，Judy 的步骤，然后查看 Sam 功能来诊断问题。
 
 ### <a name="detect-and-assess-incident-response-stages"></a>检测和评估事件响应阶段
 Judy 登录到 Azure 门户，现在位于安全中心控制台中。 她开始执行以下步骤的操作，按日常监视惯例查看优先级高的安全警报：
@@ -84,7 +83,7 @@ Judy 登录到 Azure 门户，现在位于安全中心控制台中。 她开始�
    > 就本方案来说，Judy 需要评估“恶意 SQL 活动”警报，如上图所示。
    >
    >
-2. 单击“恶意 SQL 活动”警报，在“恶意 SQL 活动”边栏选项卡中查看受攻击的资源： ![事件详细信息](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. 单击**恶意 SQL 活动**警报并查看中的受攻击的资源**恶意 SQL 活动**边栏选项卡：![事件详细信息](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     Judy 可查看该边栏选项卡，记下受攻击的资源、此攻击发生的次数和检测到它的时间。
 3. 单击“受攻击的资源”，获取有关该攻击的详细信息。
@@ -100,5 +99,4 @@ Sam 收到 Judy 的案例，开始查看安全中心建议的补救步骤。
 事件响应团队还可利用[安全中心 Power BI](security-center-powerbi.md) 功能查看不同类型的报表。 这些报表可帮助他们在进一步调查过程中直观显示、分析和筛选建议及安全警报。 如果公司在调查过程中使用安全信息和事件管理 (SIEM) 解决方案，则其还可[将安全中心与解决方案集成](security-center-integrating-alerts-with-log-integration.md)。 也可通过 [Azure 日志集成工具](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/)集成 Azure 审核日志和虚拟机 (VM) 安全事件。 可结合使用该信息和安全中心提供的信息对攻击进行调查。
 
 ## <a name="conclusion"></a>结束语
-在事件发生之前组建安全团队对组织来说非常重要，这将会积极地影响事件的处理方式。 必须使用正确的工具监视相关资源，这样该团队才能准确应对安全事件。 安全中心[检测功能](security-center-detection-capabilities.md)可协助 IT 部门快速响应安全事件，并就安全问题提供补救措施。
-
+在事件发生之前组建安全团队对组织来说非常重要，这会积极地影响事件的处理方式。 必须使用正确的工具监视相关资源，这样该团队才能准确应对安全事件。 安全中心[检测功能](security-center-detection-capabilities.md)可协助 IT 部门快速响应安全事件，并就安全问题提供补救措施。

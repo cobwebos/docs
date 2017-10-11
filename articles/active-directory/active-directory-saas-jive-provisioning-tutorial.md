@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 957b152fdd40d08a867e788b0cb9f7d57ed481e4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-jive-for-user-provisioning"></a>教程：为 Jive 配置用户预配
 
@@ -26,7 +25,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用 Jive 单一登录的订阅。
@@ -56,7 +55,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ### <a name="to-configure-user-account-provisioning"></a>配置用户帐户预配：
 
 本部分的目的是概述如何对 Jive 启用 Active Directory 用户帐户的用户预配。
-在此过程中，你将需要提供从 Jive.com 发出请求所需的用户安全令牌。
+在此过程中，需要提供从 Jive.com 发出请求所需的用户安全令牌。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
@@ -70,7 +69,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分中，提供以下配置设置：
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“Jive 管理员用户名”文本框中，键入在 Jive.com 中已分配**系统管理员**配置文件的 Jive 帐户名称。
+    a. 在“Jive 管理员用户名”文本框中，键入在 Jive.com 中已分配**系统管理员**配置文件的 Jive 帐户名称。
    
     b.保留“数据库类型”设置，即设置为“共享”。 在“Jive 管理员密码”文本框中，键入此帐户的密码。
    

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-ms.translationtype: HT
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
 ms.openlocfilehash: be3a797c4a405fd2f6636e67f4c961dd6d143486
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>故障排除：“Active Directory”项缺失或不可用
 关于使用 Azure Active Directory 功能和服务的很多说明都以“转到 Azure 管理门户并单击‘Active Directory’”开头。 但是，如果未出现 Active Directory 扩展或菜单项或者它被标记为**不可用**，该怎么办？ 本主题旨在提供帮助。 其中描述了 **Active Directory** 未出现或不可用的情况，并解释了如何继续执行操作。
@@ -29,7 +28,7 @@ ms.lasthandoff: 04/28/2017
 
 ![屏幕截图：Azure 中的 Active Directory](./media/active-directory-troubleshooting/typical-view.png)
 
-如果以下任一情况属实，Active  Directory 项将出现在左侧导航菜单中。 否则，该项不会出现。
+如果以下任一情况属实，Active  Directory 项出现在左侧导航菜单中。 否则，该项不会出现。
 
 * 当前用户已使用 Microsoft 帐户（以前称为 Windows Live ID）登录。
   
@@ -47,10 +46,9 @@ ms.lasthandoff: 04/28/2017
 要获取对目录的管理权限，请让管理员为帐户分配管理员角色。 有关详细信息，请参阅[分配管理员角色](active-directory-assign-admin-roles.md)。
 
 ## <a name="active-directory-is-not-available"></a>Active Directory 不可用
-当单击“+新建” > “应用服务”时，会显示“Active Directory”项。 具体而言，当前用户可以使用任何 Active Directory 功能（如“目录”、“访问控制”或“Multi-Factor Auth 提供程序”）时，会显示 Active Directory 项。
+当单击“+新建” > “应用服务”时，将显示“Active Directory”项。 具体而言，当前用户可以使用任何 Active Directory 功能（如“目录”、“访问控制”或“Multi-Factor Auth 提供程序”）时，会显示 Active Directory 项。
 
-但是，在加载页面时，该项将灰显或标记为**不可用**。 这是一种暂时性的状态。 只需等待几秒，该项便可供使用。 如果延迟时间过长，刷新网页通常就会解决问题。
+但是，在加载页面时，该项将灰显或标记为“不可用”。 这是一种暂时性的状态。 只需等待几秒，该项便可供使用。 如果延迟时间过长，刷新网页通常就会解决问题。
 
 ![屏幕截图：Active Directory 不可用](./media/active-directory-troubleshooting/not-available.png)
-
 

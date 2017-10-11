@@ -10,10 +10,10 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-powershell
 articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.md
 
 -->
-当你恢复数据库时：
+当你恢复数据库：
 
-* SQL 数据仓库将获取 DWU 设置的计算和内存资源。
-* DWU 的计算费用将会恢复。
-* 你的数据可用。
-* 你需要重新启动工作负荷查询。
+* SQL 数据仓库获取 DWU 设置的计算和内存资源。
+* 计算费用 Dwu 恢复。
+* 你的数据将可用。
+* 你将需要重新启动您的工作负荷查询。
 

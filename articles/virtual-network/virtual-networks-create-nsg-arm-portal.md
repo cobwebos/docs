@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: ecb4fb4608628f5a1bd54fac6af19fecfa4508f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户管理网络安全组
 
@@ -31,11 +30,11 @@ ms.lasthandoff: 02/28/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍资源管理器部署模型。 还可[在经典部署模型中创建 NSG](virtual-networks-create-nsg-classic-ps.md)。
+本文介绍 Resource Manager 部署模型。 还可[在经典部署模型中创建 NSG](virtual-networks-create-nsg-classic-ps.md)。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-下面的示例 PowerShell 命令需要基于上述方案创建的简单环境。 若要运行本文档中所显示的命令，请首先通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd)构建测试环境，单击“**部署至 Azure**”，根据需要替换默认参数值，然后按照门户中的说明进行操作。 下面的步骤使用 **RG-NSG** 作为模板部署到的资源组的名称。
+下面的示例 PowerShell 命令需要基于上述方案创建的简单环境。 要运行本文档中所显示的命令，请首先通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd)构建测试环境，单击“**部署至 Azure**”，根据需要替换默认参数值，然后按照门户中的说明进行操作。 下面的步骤使用 **RG-NSG** 作为模板部署到的资源组的名称。
 
 ## <a name="create-the-nsg-frontend-nsg"></a>创建 NSG-FrontEnd NSG
 若要如上述方案所示创建 **NSG-FrontEnd** NSG，请按照以下步骤进行操作。
@@ -47,7 +46,7 @@ ms.lasthandoff: 02/28/2017
 3. 在“**网络安全组**”边栏选项卡中，单击“**添加**”。
    
     ![Azure 门户 - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
-4. 在“**创建网络安全组**”边栏选项卡中，在 *RG-NSG* 资源组中创建名为 *NSG-FrontEnd* 的 NSG，然后单击“**创建**”。
+4. 在“**创建网络安全组**”边栏选项卡中，在 *RG-NSG* 资源组中创建名为 *NSG-FrontEnd* 的 NSG，并单击“**创建**”。
    
     ![Azure 门户 - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure13.png)
 
@@ -61,7 +60,7 @@ ms.lasthandoff: 02/28/2017
 3. 在“**入站安全规则**”列表中，单击“**添加**”。
    
     ![Azure 门户 - 添加规则](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
-4. 在“**添加入站安全规则**”边栏选项卡中创建一个名为 *web-rule* 的规则，其优先级为 *200*，允许端口 *80* 通过 *TCP* 访问来自任何来源的任何 VM，然后单击“**确定**”。 请注意，这些设置中大多数已为默认值。
+4. 在“**添加入站安全规则**”边栏选项卡中创建一个名为 *web-rule* 的规则，其优先级为 *200*，允许端口 *80* 通过 *TCP* 访问来自任何来源的任何 VM，并单击“**确定**”。 请注意，这些设置中大多数已为默认值。
    
     ![Azure 门户 - 规则设置](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
 5. 几秒钟后可在 NSG 中看到新规则。
@@ -90,10 +89,9 @@ ms.lasthandoff: 02/28/2017
    | 入站规则 | 出站规则 |
    | --- | --- |
    | ![Azure 门户 - 入站规则](./media/virtual-networks-create-nsg-arm-pportal/figure17.png) |![Azure 门户 - 出站规则](./media/virtual-networks-create-nsg-arm-pportal/figure18.png) |
-3. 重复[将 NSG 关联到 FrontEnd 子网](#Associate-the-NSG-to-the-FrontEnd-subnet)中的步骤以将 **NSG-Backend** NSG 关联到 **BackEnd** 子网。
+3. 重复执行[将 NSG 关联到 FrontEnd 子网](#Associate-the-NSG-to-the-FrontEnd-subnet)中的步骤，将 **NSG-Backend** NSG 关联到 **BackEnd** 子网。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理现有 NSG](virtual-network-manage-nsg-arm-portal.md)
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
-
 

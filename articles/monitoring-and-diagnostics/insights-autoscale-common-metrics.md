@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/6/2016
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
 利用 Azure 监视器自动缩放，可以根据遥测数据（指标）增加或减少正在运行的实例数。 本文档介绍了可能需要使用的常用指标。 在云服务和服务器场的 Azure 门户中，可以选择要作为缩放依据的资源指标。 不过，也可以选择其他资源的任何指标来作为缩放依据。
@@ -78,9 +77,9 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒字节数 |
-| \PhysicalDisk(_Total)\Avg.磁盘队列长度 |计数 |
-| \PhysicalDisk(_Total)\Avg.磁盘读取队列长度 |计数 |
-| \PhysicalDisk(_Total)\Avg.磁盘写入队列长度 |计数 |
+| \PhysicalDisk(_Total)\Avg. 磁盘队列长度 |计数 |
+| \PhysicalDisk(_Total)\Avg. 磁盘读取队列长度 |计数 |
+| \PhysicalDisk(_Total)\Avg. 磁盘写入队列长度 |计数 |
 | \LogicalDisk(_Total)\% Free Space |百分比 |
 | \LogicalDisk(_Total)\Free Megabytes |计数 |
 
@@ -193,4 +192,3 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 > 若使用服务总线，则不存在资源组这一概念，但 Azure Resource Manager 会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
 >
 >
-

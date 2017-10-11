@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 4b2ceb64b1737918458f6d5c692fc2bfbc0f12ed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>设置 Linux RDMA 群集以运行 MPI 应用程序
 了解如何在 Azure 中使用[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)设置 Linux RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
@@ -31,9 +30,10 @@ ms.lasthandoff: 07/12/2017
 ## <a name="cluster-deployment-options"></a>群集部署选项
 以下是可用于创建 Linux RDMA 群集的方法（使用或不使用作业计划程序）。
 
-* **Azure CLI 脚本**：如本文后面所示，使用 [Azure 命令行接口](../../../cli-install-nodejs.md) (CLI) 为支持 RDMA 的 VM 群集部署编写脚本。 服务管理模式下的 CLI 将在经典部署模型中连续创建群集节点，因此，如果要部署许多计算节点，可能需要几分钟。 使用经典部署模型时，若要启用 RDMA 网络连接，请将 VM 部署在相同的云服务中。
-* **Azure Resource Manager 模板**：也可以使用 Resource Manager 部署模型部署连接到 RDMA 网络且支持 RDMA 的 VM 群集。 可以[创建自己的模板](../../../resource-group-authoring-templates.md)，或查看 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)，获取 Microsoft 或社区贡献的模板来部署所需的解决方案。 Resource Manager 模板可以提供快速可靠的方式来部署 Linux 群集。 使用 Resource Manager 部署模型时，若要启用 RDMA 网络连接，请将 VM 部署在相同的可用性集中。
-* **HPC Pack**：在 Azure 中创建 Microsoft HPC Pack 群集，然后添加运行受支持 Linux 分发版且支持 RDMA 的计算节点，以便访问 RDMA 网络。 有关详细信息，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](hpcpack-cluster.md)。
+* **Azure CLI 脚本**：如本文后面所示，使用 [Azure 命令行接口](../../../cli-install-nodejs.md) (CLI) 为支持 RDMA 的 VM 群集部署编写脚本。 服务管理模式下的 CLI 会在经典部署模型中连续创建群集节点，因此，如果要部署许多计算节点，可能需要几分钟。 若要在使用经典部署模型时启用 RDMA 网络连接，请在同一云服务中部署 VM。
+* **Azure Resource Manager 模板**：也可以使用 Resource Manager 部署模型部署连接到 RDMA 网络且支持 RDMA 的 VM 群集。 可以[创建自己的模板](../../../resource-group-authoring-templates.md)，或查看 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)，获取 Microsoft 或社区贡献的模板来部署所需的解决方案。 Resource Manager 模板可以提供快速可靠的方式来部署 Linux 群集。 若要在使用 Resource Manager 部署模型时启用 RDMA 网络连接，请在同一可用性集中部署 VM。
+* 
+            **HPC Pack**：在 Azure 中创建 Microsoft HPC Pack 群集，并添加支持 RDMA 的计算节点，这些节点运行受支持的 Linux 分发版来访问 RDMA 网络。 有关详细信息，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](hpcpack-cluster.md)。
 
 ## <a name="sample-deployment-steps-in-the-classic-model"></a>经典模型中的示例部署步骤
 下列步骤显示如何使用 Azure CLI 从 Azure Marketplace 部署 SUSE Linux Enterprise Server (SLES) 12 SP1 HPC VM、将它自定义，并创建自定义 VM 映像。 然后，可以使用该映像为支持 RDMA 的 VM 群集部署编写脚本。
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/12/2017
 
     azure account list
 
-通过将 `Current` 设为 `true` 来标识当前的活动订阅。 如果此订阅不是要用于创建群集的订阅，请将相应的订阅 ID 设为活动订阅：
+通过将 `Current` 设为 `true` 来标识当前的活动订阅。 如果此订阅不是用于创建群集的订阅，请将相应的订阅 ID 设为活动订阅：
 
     azure account set <subscription-Id>
 
@@ -85,14 +85,14 @@ ms.lasthandoff: 07/12/2017
 
 
 ### <a name="customize-the-vm"></a>自定义 VM
-在 VM 完成预配后，使用 VM 的外部 IP 地址（或 DNS 名称）和已配置的外部端口号通过 SSH 登录到 VM，然后对其进行自定义。 有关连接详细信息，请参阅[如何登录到运行 Linux 的虚拟机](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 必须以 VM 上配置的用户身份执行命令，除非必须要根访问权限才能完成步骤。
+在 VM 完成预配后，使用 VM 的外部 IP 地址（或 DNS 名称）和已配置的外部端口号通过 SSH 登录到 VM，并对其进行自定义。 有关连接详细信息，请参阅[如何登录到运行 Linux 的虚拟机](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 必须以 VM 上配置的用户身份执行命令，除非必须要根访问权限才能完成步骤。
 
 > [!IMPORTANT]
 > Microsoft Azure 不提供对 Linux VM 的根访问权限。 若要在以用户身份连接至 VM 时获得管理访问权限，请使用 `sudo` 运行命令。
 >
 >
 
-* **更新**：使用 zypper 安装更新。 你可能想要安装 NFS 实用工具。
+* **更新**：使用 zypper 安装更新。 可能想要安装 NFS 实用工具。
 
   > [!IMPORTANT]
   > 在 SLES 12 SP1 HPC VM 中，建议不要应用内核更新，否则可能会在使用 Linux RDMA 驱动程序时导致问题。
@@ -110,7 +110,7 @@ ms.lasthandoff: 07/12/2017
     ```
 
   > [!NOTE]
-  > 出于测试目的，你也可以将 memlock 设置为不受限制。 例如：`<User or group name>    hard    memlock unlimited`。 有关详细信息，请参阅 [Best known methods for setting locked memory size](https://software.intel.com/en-us/blogs/2014/12/16/best-known-methods-for-setting-locked-memory-size)（设置锁定内存大小的最佳已知方法）。
+  > 出于测试目的，也可以将 memlock 设置为不受限制。 例如：`<User or group name>    hard    memlock unlimited`。 有关详细信息，请参阅 [Best known methods for setting locked memory size](https://software.intel.com/en-us/blogs/2014/12/16/best-known-methods-for-setting-locked-memory-size)（设置锁定内存大小的最佳已知方法）。
   >
   >
 * **SLES VM 的 SSH 密钥**：生成 SSH 密钥，以便运行 MPI 作业时，在 SLES 群集的计算节点上为用户帐户建立信任。 如果部署了基于 CentOS 的 HPC VM，请不要遵循此步骤。 请参阅本文稍后的说明，以便在捕获映像并部署群集之后，在群集节点之间设置无密码 SSH 信任。
@@ -161,10 +161,10 @@ azure vm capture -t <vm-name> <image-name>
 
 ```
 
-运行这些命令之后，将捕获 VM 映像供你使用并删除 VM。 现已准备好用于部署群集的自定义映像。
+运行这些命令之后，会捕获 VM 映像供你使用并删除 VM。 现已准备好用于部署群集的自定义映像。
 
 ### <a name="deploy-a-cluster-with-the-image"></a>使用映像部署群集
-使用你环境的相应值修改以下 Bash 脚本，并从客户端计算机运行它。 由于 Azure 在经典部署模型中依序部署 VM，因此将需要几分钟时间才能部署此脚本中建议的八个 A9 VM。
+使用环境的相应值修改以下 Bash 脚本，并从客户端计算机运行该脚本。 由于 Azure 在经典部署模型中依序部署 VM，因此将需要几分钟时间才能部署此脚本中建议的八个 A9 VM。
 
 ```
 #!/bin/bash -x
@@ -209,7 +209,7 @@ done
 ### <a name="set-up-passwordless-ssh-trust-on-the-cluster"></a>在群集上设置无密码 SSH 信任
 在基于 CentOS 的 HPC 群集上，可通过两种方法在计算节点之间建立信任：基于主机的身份验证和基于用户的身份验证。 基于主机的身份验证超出了本文的范围，通常必须在部署期间通过扩展脚本来完成。 基于用户的身份验证便于在部署之后建立信任，并且需要在群集中的计算节点之间生成和共享 SSH 密钥。 此方法通常称为无密码 SSH 登录，在运行 MPI 作业时必须使用此方法。
 
-[GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) 中提供了社区所贡献的示例脚本，以便在基于 CentOS 的 HPC 群集上启用方便的用户身份验证。 可以使用以下步骤来下载和使用此脚本。 你还可以修改此脚本，或使用任何其他方法在群集计算节点之间建立无密码 SSH 身份验证。
+[GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) 中提供了社区所贡献的示例脚本，以便在基于 CentOS 的 HPC 群集上启用方便的用户身份验证。 可以使用以下步骤来下载和使用此脚本。 还可以修改此脚本，或使用任何其他方法在群集计算节点之间建立无密码 SSH 身份验证。
 
     wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
 
@@ -234,7 +234,7 @@ done
 >
 
 ## <a name="configure-intel-mpi"></a>配置 Intel MPI
-若要在 Azure Linux RDMA 上运行 MPI 应用程序，你需要配置特定于 Intel MPI 的某些环境变量。 下面是用于配置运行应用程序时所需变量的示例 Bash 脚本。 根据 Intel MPI 安装需要来更改 mpivars.sh 的路径。
+要在 Azure Linux RDMA 上运行 MPI 应用程序，需要配置特定于 Intel MPI 的某些环境变量。 下面是用于配置运行应用程序时所需变量的示例 Bash 脚本。 根据 Intel MPI 安装需要来更改 mpivars.sh 的路径。
 
 ```
 #!/bin/bash -x
@@ -294,7 +294,7 @@ source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
 ```
 mpirun -ppn 1 -n 2 -hosts <host1>,<host2> -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 hostname
 ```
-你的输出应列出你传递作为 `-hosts` 输入的所有节点的名称。 例如，使用两个节点的 **mpirun** 命令将返回类似如下内容的输出：
+输出应列出你传递作为 `-hosts` 输入的所有节点的名称。 例如，使用两个节点的 **mpirun** 命令将返回类似如下内容的输出：
 
 ```
 cluster11
@@ -380,4 +380,3 @@ mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAP
 * 在 Linux 群集上部署和运行 Linux MPI 应用程序。
 * 有关 Intel MPI 的指南，请参阅 [Intel MPI 库文档](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/)。
 * 尝试使用基于 CentOS 的 HPC 映像通过[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos)创建 Intel Lustre 群集。 有关详细信息，请参阅[在 Microsoft Azure 上部署用于 Lustre 的 Intel 云版本](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/)。
-

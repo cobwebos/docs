@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 540ef8379145b764d0926649095db57fddb27329
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 6a91ea2251ea3b748faba5c97765bfded9c00234
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>使用弹性数据库工具添加分片
 ## <a name="to-add-a-shard-for-a-new-range-or-key"></a>添加新范围或键的分片
@@ -46,10 +44,10 @@ ms.lasthandoff: 11/17/2016
                             (new Range<long>(300, 400), shard2, MappingStatus.Online)); 
 
 
-你可以使用 Powershell 作为替代方法来创建新的分片映射管理器。 [此处](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)提供了一个示例。
+可以使用 Powershell 作为替代方法来创建新的分片映射管理器。 [此处](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)提供了一个示例。
 
 ## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>为现有范围的空部分添加分片
-在某些情况下，你可能已将某个范围映射到某个分片，并在该分片中填充了部分数据，但是，你现在希望将后续数据定向到其他分片。 例如，你以前按日期范围分片，并且已在某个分片中分配了 50 天的数据，但从第 24 天开始，你希望以后的数据驻留在其他分片中。 弹性数据库[拆分 / 合并工具](sql-database-elastic-scale-overview-split-and-merge.md)可以执行此操作，但是，如果不需要数据移动（例如，[25, 50) 天范围的数据 - 即，从第 25 天（含）到第 50 天（不含）的数据尚不存在），你完全可以直接使用分片映射管理 API 执行此操作。
+在某些情况下，可能已将某个范围映射到某个分片，并在该分片中填充了部分数据，但是，现在希望将后续数据定向到其他分片。 例如，以前按日期范围分片，并且已在某个分片中分配了 50 天的数据，但从第 24 天开始，你希望以后的数据驻留在其他分片中。 弹性数据库[拆分 / 合并工具](sql-database-elastic-scale-overview-split-and-merge.md)可以执行此操作，但是，如果不需要数据移动（例如，[25, 50) 天范围的数据 - 即，从第 25 天（含）到第 50 天（不含）的数据尚不存在），完全可以直接使用分片映射管理 API 执行此操作。
 
 ### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>示例：拆分范围并将空部分分配到新增的分片
 已创建名为“sample_shard_2”的数据库以及其中所有必要的架构对象。  
@@ -76,8 +74,8 @@ ms.lasthandoff: 11/17/2016
     upd.Shard = shard2; 
     sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd)); 
 
-**重要说明**：仅当你确定所更新映射的范围为空时，才使用此方法。  上述方法不会在数据中检查要移动的范围，因此最好在代码中包含检查操作。  如果要移动的范围中存在行，则实际数据分发将不匹配更新的分片映射。 在这种情况下，请改用[拆分 / 合并工具](sql-database-elastic-scale-overview-split-and-merge.md)来执行操作。  
+
+            **重要说明**：仅确定所更新映射的范围为空时，才使用此方法。  上述方法不会在数据中检查要移动的范围，因此最好在代码中包含检查操作。  如果要移动的范围中存在行，则实际数据分发将不匹配更新的分片映射。 在这种情况下，请改用[拆分 / 合并工具](sql-database-elastic-scale-overview-split-and-merge.md)来执行操作。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
 

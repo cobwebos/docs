@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 361e16262e528c7dea1bab4b9d945a28af8be399
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
 若要为导入作业准备一个或多个硬盘驱动器，请执行以下步骤：
 
@@ -39,7 +37,7 @@ ms.lasthandoff: 08/22/2017
  创建导入作业的第一个步骤是确定要导入哪些目录和文件， 这可以是目录列表、唯一文件列表或两者的组合。 包含某个目录时，该目录及其子目录中的所有文件都将成为导入作业的一部分。
 
 > [!NOTE]
->  由于在包含父目录时以递归方式包含子目录，因此仅指定父目录。 此外，不要指定其任何子目录。
+>  由于在包含父目录时将以递归方式包含子目录，因此仅指定父目录。 此外，不要指定其任何子目录。
 >
 >  目前，Microsoft Azure 导入/导出工具存在以下限制：如果目录包含的数据超过硬盘驱动器可包含的数据，该目录需要分解为较小目录。 例如，如果目录包含 2.5TB 数据，而硬盘驱动器的容量仅为 2TB，则需要将此 2.5TB 目录分解为多个小目录。 该工具的更高版本中将解除该限制。
 
@@ -114,7 +112,7 @@ ms.lasthandoff: 08/22/2017
 |**/sk:**<StorageAccountKey\>|`Optional.` 将数据导入到的存储帐户的存储帐户密钥。 必须在命令中包含 **/sk:**<StorageAccountKey\> 或 **/csas:**<ContainerSas\>。|
 |**/csas:**<ContainerSas\>|`Optional`。 用于将数据导入存储帐户的容器 SAS。 必须在命令中包含 **/sk:**<StorageAccountKey\> 或 **/csas:**<ContainerSas\>。<br /><br /> 此参数的值必须以容器名称开头，后接问号 (?) 和 SAS 令牌。 例如：<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> 无论是在 URL 上还是存储的访问策略中指定，权限都必须包括“读取”、“写入”和“删除”导入作业，以及“读取”、“写入”和“列出”导出作业。<br /><br /> 指定此参数时，要导入或导出的所有 Blob 都必须位于共享访问签名中指定的容器内。|
 |**/t:**<TargetDriveLetter\>|`Required.` 当前复制会话的目标硬盘驱动器的驱动器号（不带尾随冒号）。|
-|**/format**|`Optional.` 在需要格式化驱动器时指定此参数；否则，请将其忽略。 在对驱动器进行格式化之前，该工具会提示通过控制台进行确认。 若不希望显示该确认，请指定 /silentmode 参数。|
+|**/format**|`Optional.` 在需要格式化驱动器时指定此参数；否则，请将其忽略。 在对驱动器进行格式化之前，该工具将提示你通过控制台进行确认。 若不希望显示该确认，请指定 /silentmode 参数。|
 |**/silentmode**|`Optional.` 指定此参数将不显示对目标驱动器进行格式化的确认。|
 |**/encrypt**|`Optional.` 在尚未使用 BitLocker 对驱动器进行加密但需要使用此工具进行加密时，指定此参数。 如果已使用 BitLocker 对驱动器进行加密，则忽略此参数并指定 `/bk` 参数，同时还提供现有 BitLocker 密钥。<br /><br /> 如果指定 `/format` 参数，则还必须指定 `/encrypt` 参数。|
 |**/bk:**<BitLockerKey\>|`Optional.` 如果指定 `/encrypt`，请省略此参数。 如果省略 `/encrypt`，则需要事先使用 BitLocker 为驱动器加密。 使用此参数可指定 BitLocker 密钥。 导入作业的所有硬盘驱动器都需要 BitLocker 加密。|
@@ -184,4 +182,3 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 * [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
 * [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
-

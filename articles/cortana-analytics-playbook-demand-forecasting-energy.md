@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册
 ## <a name="executive-summary"></a>执行摘要
@@ -119,7 +118,7 @@ SLTF 解决方案也可能引起大量的预测调用（服务请求），因为
 | 典型准确度 |5% 或更低的 MAPE* |25% 或更低的 MAPE* |
 | 预测频率 |每小时或每 24 小时生成一次 |每月、每季或每年生成一次 |
 
-\*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – 平均百分比误差
+\*[映射](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)– 意味着平均百分比错误
 
 从此表格可以看出，区别短期和长期预测方案相当重要，因为这些参数代表不同的业务需求，可能有不同的部署和用电模式。
 
@@ -172,7 +171,7 @@ Cortana Intelligence Suite 是云中的集成环境。 在云环境中部署高�
 对于刚开始转换到云的公司，强烈建议实现云迁移路线图，采取渐进方式。 对于能源领域中的公共事业或公司，我们相信本演练手册所介绍的用例，就代表在云中试验预测分析解决方案的绝佳机会。
 
 #### <a name="business-case-justification-considerations"></a>业务用例论证注意事项
-在许多情况下，客户可能想要对给定的用例发出一个业务理由，表明基于云的解决方案和机器学习是重要的组件。 不同于本地解决方案，在基于云的解决方案中，前期成本的成分极少，大多数的成本要素都与实际用量有关。 在 Cortana Intelligence Suite 中部署预测能源解决方案时，多个服务可以与单个的一般成本结构集成。 例如，数据库（*例如* SQL Azure）可以用于存储原始数据，然后在实际预测时，使用 Azure ML 来托管预测服务。 在此示例中，成本结构可能包括存储和事务组件。
+在许多情况下，客户可能想要对给定的用例发出一个业务理由，表明基于云的解决方案和机器学习是重要的组件。 不同于本地解决方案，在基于云的解决方案中，前期成本的成分极少，大多数的成本要素都与实际用量有关。 在 Cortana Intelligence Suite 中部署预测能源解决方案时，多个服务可以与单个的一般成本结构集成。 例如，数据库（*例如* SQL Azure）可以用于存储原始数据，并在实际预测时，使用 Azure ML 来托管预测服务。 在此示例中，成本结构可能包括存储和事务组件。
 
 另一方面，应该要正确了解从事能源需求预测（短期或长期）的业务价值。 事实上，必须了解每个预测操作的业务价值。 例如，准确预测接下来 24 小时内的电力负载，可以避免生产过剩或电网过载，还能从每日节省的资金来量化这方面的信息。
 
@@ -241,7 +240,7 @@ Cortana Intelligence Suite 是云中的集成环境。 在云环境中部署高�
 其他外部数据源也有助于创建能源需求预测模型。 其中可能包括长期气候变化、经济指标（*例如* GDP）等。 本文不介绍其他这些数据源。
 
 ### <a name="data-structure"></a>数据结构
-确定所需的数据源之后，需要确保已收集的原始数据包含正确的数据特征。 若要创建可靠的需求预测模型，需要确保收集的数据包含有助于预测将来需求的数据元素。 下面是关于原始数据的数据结构（架构）的一些基本要求。
+确定所需的数据源之后，需要确保已收集的原始数据包含正确的数据特征。 要创建可靠的需求预测模型，需要确保收集的数据包含有助于预测将来需求的数据元素。 下面是关于原始数据的数据结构（架构）的一些基本要求。
 
 原始数据由行和列构成。 每个测量值以单个行表示。 每个行包含多个列（也称为特征或字段）。
 
@@ -287,7 +286,7 @@ Cortana Intelligence Suite 支持最常见的数据格式，例如 CSV、TSV、J
 * **延迟** - 如前面**数据引入**中所述，我们依赖于可靠的数据流和引入过程。 为了做好控制，必须控制数据延迟。 这指定为从进行实际测量的时间，到已加载到 Cortana Intelligence Suite 存储且可供使用的时间，两者之间的时差。 对于短期负载预测，总延迟时间不应该超过 30 分钟。 对于长期负载预测，总延迟时间不应该超过 1 天。
 
 ### <a name="data-preparation-and-feature-engineering"></a>数据准备和特征设计
-引入原始数据（请参阅**数据引入**）并安全存储后，就可以开始处理。 简单地说，数据准备阶段是获取原始数据并转换（变换、重塑）成适用于建模阶段的格式。 其中包括简单的操作，例如直接使用原始数据列及其实际测量值、标准化值，还有更复杂的操作，例如[时间延隔](https://en.wikipedia.org/wiki/Lag_operator)等。 新建的数据列称为数据特征，生成这些特征的过程称为特征设计。 此过程结束时，将获得一组从原始数据派生的、可用于建模的新数据集。 此外，数据准备阶段还必须处理并补偿缺失值（请参阅**数据质量**）。 在某些情况下，还需要将数据规范化，确保所有值以相同的标度表示。
+引入原始数据（请参阅**数据引入**）并安全存储后，就可以开始处理。 简单地说，数据准备阶段是获取原始数据并转换（变换、重塑）成适用于建模阶段的格式。 其中包括简单的操作，例如直接使用原始数据列及其实际测量值、标准化值，还有更复杂的操作，例如[时间延隔](https://en.wikipedia.org/wiki/Lag_operator)等。 新建的数据列称为数据特征，生成这些特征的过程称为特征设计。 此过程结束时，会获得一组从原始数据派生的、可用于建模的新数据集。 此外，数据准备阶段还必须处理并补偿缺失值（请参阅**数据质量**）。 在某些情况下，还需要将数据规范化，确保所有值以相同的标度表示。
 
 本部分列出能源需求预测模型包含的一些常见数据特征。
 
@@ -328,17 +327,17 @@ Cortana Intelligence Suite 支持最常见的数据格式，例如 CSV、TSV、J
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA（移动平均）**](https://www.otexts.org/fpp/6/2)
+#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA （移动平均线）**](https://www.otexts.org/fpp/6/2)
 移动平均是时序预测的第一代分析技巧之一，目前仍很常用。 它也是更高级预测技巧的基础。 使用移动平均时，可将 K 个最近数据点算出平均值，预测下一个数据点，其中 K 表示移动平均的顺序。
 
 移动平均技巧具有将预测平滑化的效果，因此可能无法处理数据中的急剧波动。
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS（指数平滑）**](https://www.otexts.org/fpp/7/5)
+#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS （指数平滑）**](https://www.otexts.org/fpp/7/5)
 指数平滑 (ETS) 由一系列方法组成，使用最近数据点的加权平均来预测下一个数据点。 其思路是将较高权重分配给较新的值，而对于较旧的测量值，逐渐降低此权重。 此方法系列包括许多不同的方法，其中一些方法可处理数据中的季节性，例如 [Holt-Winters 季节性方法](https://www.otexts.org/fpp/7/5)。
 
 还有一些方法也会考虑数据的季节性。
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA（自动回归集成移动平均）**](https://www.otexts.org/fpp/8)
+#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA （自动回归集成移动平均值）**](https://www.otexts.org/fpp/8)
 自动回归集成移动平均 (ARIMA) 是常用于时序预测的另一种方法系列。 实际上是结合自动回归方法与移动平均。 自动回归方法使用回归模型时获取以前的时序值来计算下一个日期点。 ARIMA 方法也利用差异性方法，包括计算数据点之间的差异，以及使用它们而不是原始的测量值。 最后，ARIMA 也使用上面所述的移动平均技巧。 以各种方式将所有这些方法组合起来，就构成 ARIMA 方法系列。
 
 ETS 和 ARIMA 现在广泛用于能源需求预测和其他许多的预测问题。 在许多情况下，这些结合起来可提供非常准确的结果。
@@ -357,7 +356,7 @@ ETS 和 ARIMA 现在广泛用于能源需求预测和其他许多的预测问题
 ### <a name="typical-evaluation-techniques"></a>典型评估方法
 有多种方法可以测量和量化预测误差。 本部分侧重于介绍有关时序的预测技巧，尤其是能源需求预测。
 
-#### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**MAPE**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
+#### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**映射**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
 MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩写。 使用 MAPE 来计算每一个预测点和该点的实际值之间的差异。 然后，计算差异相对于实际值的比例，量化每个点的误差。 在最后一个步骤，求这些值的平均。 MAPE 使用的数学公式如下：
 
 ![MAPE 公式](media/cortana-analytics-playbook-demand-forecasting-energy/mape-formula.png)
@@ -373,7 +372,7 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 
 ![Web 服务部署和使用](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 
-由此可知，Web 服务部署在 Cortana Intelligence Suite 云中，然后通过其公开的 REST API 终结点来调用。 位于不同域中的各种不同的客户端可以通过 Web API 服务来同时调用服务。 Web 服务也可以扩展，以便支持数千个并发调用。
+Web 服务部署和使用由此可知，Web 服务部署在 Cortana Intelligence Suite 云中，并通过其公开的 REST API 终结点来调用。 位于不同域中的各种不同的客户端可以通过 Web API 服务来同时调用服务。 Web 服务也可以扩展，以便支持数千个并发调用。
 
 ### <a name="a-typical-solution-architecture"></a>典型的解决方案体系结构
 在部署能源需求预测解决方案时，我们的兴趣是部署端到端解决方案，超越预测 Web 服务，并加速整个数据流。 调用新预测时，必须确保可向模型馈送最新的数据特征。 这意味着，需要不断地引入、处理和转换新收集的原始数据，成为赖以创建模型的必要特征。 同时，还要将预测的数据提供给最终使用方客户端使用。 下图演示了一个示例数据流周期（或数据管道）：
@@ -389,7 +388,7 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 5. 调用重新训练服务来重新训练预测模型 – 更新后的模型持续保存，可供评分 Web 服务使用。
 6. 根据符合所需预测频率的计划来调用评分 Web 服务。
 7. 预测的数据存储在最终使用方客户端可访问的数据库中。
-8. 使用方客户端检索预测值，将它应用到电网，然后根据所需用例使用它。
+8. 使用方客户端检索预测值，将它应用到电网，并根据所需用例使用它。
 
 请务必注意，这整个周期完全自动化，并按计划运行。 可使用 [Azure 数据工厂](http://azure.microsoft.com/services/data-factory/)等工具来全面协调此数据周期。
 
@@ -401,5 +400,4 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 ![端到端部署体系结构](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
 
 有关每个组件和整个体系结构的详细信息，请参阅“Energy Solution Template”（能源解决方案模板）。
-
 

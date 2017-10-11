@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: c7891c188c2cecbbf056fa79672a13bb16fa7fcf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-3-plan-capacity-and-scaling-for-hyper-v-to-azure-replication"></a>步骤 3：规划复制到 Azure 的 Hyper-V 的容量和缩放
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 Hyper-V VM（无 System Center VMM）复制到 Azure 时，根据本文规划容量和缩放。
@@ -38,7 +36,7 @@ ms.lasthandoff: 06/23/2017
 ## <a name="gather-information"></a>收集信息
 
 1. 收集有关复制环境的信息，包括 VM 数、每个 VM 的磁盘数和每个磁盘的存储空间。
-2. 确定已复制数据的每日更改（改动）率。 请下载 [Hyper-V 容量计划工具](https://www.microsoft.com/download/details.aspx?id=39057)来获取更改率。 我们建议你运行此工具一周以上的时间以获取平均值。
+2. 确定已复制数据的每日更改（改动）率。 请下载 [Hyper-V 容量计划工具](https://www.microsoft.com/download/details.aspx?id=39057)来获取更改率。 我们建议运行此工具一周以上的时间以获取平均值。
  
 
 ## <a name="figure-out-capacity"></a>规划容量
@@ -64,7 +62,7 @@ ms.lasthandoff: 06/23/2017
 ### <a name="throttle-bandwidth"></a>限制带宽
 1. 在 Hyper-V 主机服务器上打开 Microsoft Azure 备份 MMC 管理单元。 默认情况下，Microsoft Azure 备份的快捷方式位于桌面上或 C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin 中。
 2. 在管理单元中，单击“更改属性”。
-3. 在“限制”选项卡上，选择“为备份操作启用 Internet 带宽使用限制”，然后设置工作时间和非工作时间的限制。 有效范围为 512 Kbps 到 102 Mbps。
+3. 在“限制”选项卡上，选择“为备份操作启用 Internet 带宽使用限制”，并设置工作时间和非工作时间的限制。 有效范围为 512 Kbps 到 102 Mbps。
 
     ![限制带宽](./media/hyper-v-site-walkthrough-capacity/throttle2.png)
 
@@ -84,5 +82,4 @@ ms.lasthandoff: 06/23/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-转到[步骤 4：规划网络](hyper-v-site-walkthrough-network.md)。
-
+转到[第 4 步：计划网络](hyper-v-site-walkthrough-network.md)。

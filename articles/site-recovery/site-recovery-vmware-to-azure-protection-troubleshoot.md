@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/26/2017
 ms.author: asgang
-ms.translationtype: HT
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 6ebec2e06566b1e2d6834fdd81c0d8b2801b80b9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-on-premises-vmwarephysical-server-replication-issues"></a>排除本地 VMware/物理服务器复制问题
 使用 Azure Site Recovery 保护 VMware 虚拟机或物理服务器时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。
@@ -44,7 +43,7 @@ ms.lasthandoff: 06/02/2017
 
 * **检查进程服务器是否主动将数据推送到 Azure** 
 
-在进程服务器计算机中，打开任务管理器（按 Ctrl-Shift-Esc）。 转到“性能”选项卡，然后单击“打开资源监视器”链接。 在资源管理器中，转到“网络”选项卡。检查“网络活动的进程”中的 cbengine.exe 是否正在主动发送大量数据（以 MB 为单位）。
+在进程服务器计算机中，打开任务管理器（按 Ctrl-Shift-Esc）。 转到“性能”选项卡，然后单击“打开资源监视器”链接。 在资源管理器中，转到“网络”选项卡。 检查“网络活动的进程”中的 cbengine.exe 是否正在主动发送大量数据（以 MB 为单位）。
 
 ![启用复制](./media/site-recovery-protection-common-errors/cbengine.png)
 

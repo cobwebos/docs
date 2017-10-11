@@ -1,30 +1,30 @@
 ## <a name="create-client"></a>创建客户端连接
-通过创建 `WindowsAzure.MobileServiceClient` 对象创建客户端连接。  将 `appUrl` 替换为到移动应用的 URL。
+创建客户端的连接创建`WindowsAzure.MobileServiceClient`对象。  替换`appUrl`使用你的移动应用的 URL。
 
 ```
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
 ## <a name="table-reference"></a>使用表
-若要访问或更新数据，请创建到后端表的引用。 将 `tableName` 替换为表名称
+访问或更新数据，创建对后端表的引用。 替换`tableName`与你的表名称
 
 ```
 var table = client.getTable(tableName);
 ```
 
-拥有表格引用后，可进一步使用表格：
+表引用后，您可以进一步与您的表：
 
 * [查询表](#querying)
   * [筛选数据](#table-filter)
-  * [分页浏览数据](#table-paging)
-  * [对数据排序](#sorting-data)
+  * [通过数据的分页](#table-paging)
+  * [对数据进行排序](#sorting-data)
 * [插入数据](#inserting)
 * [修改数据](#modifying)
 * [删除数据](#deleting)
 
-### <a name="querying"></a>如何：查询表格引用
-拥有表格引用后，可用其查询服务器上的数据。  查询使用了“类 LINQ”语言。
-若要返回表中的所有数据，请使用以下代码：
+### <a name="querying"></a>如何： 查询的表引用
+表引用后，可用于查询有关在服务器上的数据。  在"类似的 LINQ"语言进行查询。
+若要返回表中的所有数据，请使用下面的代码：
 
 ```
 /**
@@ -52,12 +52,12 @@ table
     .then(success, failure);
 ```
 
-随结果调用 success 函数。  请勿在 success 函数中使用 `for (var i in results)`，因为这会在使用其他查询函数（如 `.includeTotalCount()`）时迭代结果中所含的信息。
+Success 函数调用的结果。  不要使用`for (var i in results)`获得成功，将循环访问结果中包括的信息发挥时其他查询函数 (如`.includeTotalCount()`) 使用。
 
 有关查询语法的详细信息，请参阅 [查询对象文档]。
 
-#### <a name="table-filter"></a>在服务器上筛选数据
-可在表格引用上使用 `where` 子句：
+#### <a name="table-filter"></a>在服务器上的筛选数据
+你可以使用`where`子句对表引用：
 
 ```
 table
@@ -66,7 +66,7 @@ table
     .then(success, failure);
 ```
 
-也可使用筛选对象的函数。  在这种情况下，`this` 变量将分配到正在筛选的当前对象。  以下代码在功能上等效于上述示例：
+你还可以使用筛选器对象的函数。  在这种情况下，`this`变量分配给要筛选的当前对象。  下面的代码在功能上等效于前一个示例：
 
 ```
 function filterByUserId(currentUserId) {
@@ -79,8 +79,8 @@ table
     .then(success, failure);
 ```
 
-#### <a name="table-paging"></a>分页浏览数据
-利用 `take()` 和 `skip()` 方法。  例如，如想要将表拆分为 100 行记录：
+#### <a name="table-paging"></a>到数据进行分页
+利用`take()`和`skip()`方法。  例如，如果你想要拆分为 100 行记录的表：
 
 ```
 var totalCount = 0, pages = 0;
@@ -103,12 +103,12 @@ function loadPage(pageNum) {
 }
 ```
 
-`.includeTotalCount()` 方法用于将 totalCount 字段添加到结果对象。  如果不分页，totalCount 字段会填充要返回的记录总数。
+`.includeTotalCount()`方法用于将 totalCount 字段添加到结果对象。  TotalCount 字段填入的如果使用没有分页，则将返回的记录总数。
 
-然后可使用页变量和某些 UI 按钮提供页列表；使用 `loadPage()` 为每页加载新记录。  实施缓存，加快已加载的记录的访问速度。
+你可以然后使用页变量和一些 UI 按钮提供的页列表;使用`loadPage()`加载每个页面的新记录。  实现对已加载的记录的速度访问缓存。
 
-#### <a name="sorting-data"></a>如何：返回排序后的数据
-使用 `.orderBy()` 或 `.orderByDescending()` 查询方法：
+#### <a name="sorting-data"></a>如何： 返回已排序数据
+使用`.orderBy()`或`.orderByDescending()`查询方法：
 
 ```
 table
@@ -117,10 +117,10 @@ table
     .then(success, failure);
 ```
 
-有关查询对象的详细信息，请参阅 [查询对象文档]。
+查询对象的详细信息，请参阅 [查询对象文档]。
 
-### <a name="inserting"></a>如何：插入数据
-使用相应日期创建 JavaScript 对象并异步调用 `table.insert()`：
+### <a name="inserting"></a>如何： 插入数据
+创建具有相应的日期和调用的 JavaScript 对象`table.insert()`以异步方式：
 
 ```javascript
 var newItem = {
@@ -135,12 +135,12 @@ table
     }, failure);
 ```
 
-成功插入后，插入项随同步操作所需的其他字段一并返回。  使用此信息更新自己的缓存，便于后续更新。
+成功插入与所需的同步操作的其他字段被返回插入的项。  使用更高版本更新此信息更新您自己的缓存。
 
-Azure 移动应用 Node.js Server SDK 支持用于开发的动态架构。  使用动态架构可将列添加到表中，在插入或更新操作中指定这些列即可。  建议先关闭动态架构，再将应用程序迁移到生产。
+Azure 移动应用程序 Node.js 服务器 SDK 出于开发目的支持动态架构。  动态架构，可将列添加到表中，通过指定中插入或更新操作。  我们建议，动态架构之前关闭移动到生产环境的应用程序。
 
-### <a name="modifying"></a>如何：修改数据
-类似于 `.insert()` 方法，应创建 Update 对象，然后调用 `.update()`。  update 对象必须包含要更新的记录的 ID，此 ID 在读取记录或调用 `.insert()` 时获取。
+### <a name="modifying"></a>如何： 修改数据
+类似于`.insert()`方法，你应创建更新对象，然后调用`.update()`。  更新对象必须包含要更新的记录 ID-读取记录时或在调用时获取该 ID `.insert()`。
 
 ```javascript
 var updateItem = {
@@ -155,8 +155,8 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>如何：删除数据
-若要删除记录，请调用 `.del()` 方法。  在对象引用中传递 ID：
+### <a name="deleting"></a>如何： 删除数据
+若要删除记录时，调用`.del()`方法。  将 ID 传递对象引用中：
 
 ```
 table

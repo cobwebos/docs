@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 06b2a8b5e12d33c3ade469491b2694dd4a342cf1
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: f87f65788075c7f4067e77946e1bcbc8f3709317
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-upgrade-procedures"></a>Windows Phone Silverlight SDK 升级过程
 如果已将我们较旧版本的 SDK 集成到应用程序中，则在升级 SDK 时必须考虑以下几点。
 
-如果错过了几个版本的 SDK，则可能需要执行多个过程。 例如，如果从 0.10.1 迁移至 0.11.0，则必须首先按照“从 0.9.0 至 0.10.1”的过程操作，然后按照“从 0.10.1 至 0.11.0”的过程操作。
+如果错过了几个版本的 SDK，则可能需要执行多个过程。 例如，如果你将从迁移 0.10.1 到你必须首先按照"发件人 0.10.1 到 0.9.0"步骤的 0.11.0 然后"发件人到 0.11.0 0.10.1"过程。
 
 ## <a name="from-200-to-330"></a>从 2.0.0 至 3.3.0
 ### <a name="test-logs"></a>测试日志
-现在可以启用/禁用/筛选由 SDK 生成的控制台日志。 若要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
+现在可以启用/禁用/筛选由 SDK 生成的控制台日志。 要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
@@ -37,11 +36,11 @@ ms.lasthandoff: 11/17/2016
 以下部分介绍如何将 SDK 集成从由 Capptain SAS 提供的 Capptain 服务迁移到 Azure Mobile Engagement 支持的应用。 
 
 > [!IMPORTANT]
-> Capptain 和 Mobile Engagement 不是相同的服务，以下提供的过程仅重点描述如何迁移客户端应用。 迁移应用中的 SDK 不会将你的数据从 Capptain 服务器迁移到 Mobile Engagement 服务器
+> Capptain 和 Mobile Engagement 不是相同的服务，以下提供的过程仅重点描述如何迁移客户端应用。 迁移应用中的 SDK 不会将数据从 Capptain 服务器迁移到 Mobile Engagement 服务器
 > 
 > 
 
-如果从较早版本进行迁移，请先参阅 Capptain 网站迁移到 1.1.1，然后再应用以下过程
+如果从较早版本进行迁移，请先参阅 Capptain 网站迁移到 1.1.1，再应用以下过程
 
 ### <a name="nuget-package"></a>NuGet 程序包
 将 **Capptain.WindowsPhone** 替换为 **MicrosoftAzure.MobileEngagement** Nuget 程序包。
@@ -49,13 +48,13 @@ ms.lasthandoff: 11/17/2016
 ### <a name="applying-mobile-engagement"></a>应用 Mobile Engagement
 SDK 使用术语 `Engagement`。 需要更新项目以匹配此更改。
 
-需要卸载当前 Capptain NuGet 程序包。 请注意，Capptain 资源文件夹中的所有更改都将被删除。 如果想要保留这些文件，请对其进行备份。
+需要卸载当前 Capptain NuGet 程序包。 请注意，Capptain 资源文件夹中的所有更改都会被删除。 如果想要保留这些文件，请对其进行备份。
 
 之后，在项目上安装新的 Microsoft Azure Engagement nuget 程序包。 可直接在 [Nuget](http://www.nuget.org/packages/MicrosoftAzure.MobileEngagement) 上找到它。 此操作将替换 Engagement 使用的所有资源文件，并将新的 Engagement DLL 添加到项目引用中。
 
-需通过删除 Capptain DLL 引用来清理项目引用。 如果不执行此操作，Capptain 的版本将会发生冲突并出现错误。
+需通过删除 Capptain DLL 引用来清理项目引用。 如果不执行此操作，Capptain 的版本会发生冲突并出现错误。
 
-如果你已自定义 Captain 资源，请复制旧文件内容并将其粘贴到新的 Engagement 文件中。 请注意，xaml 和 cs 文件都需要更新。
+如果已自定义 Captain 资源，请复制旧文件内容并将其粘贴到新的 Engagement 文件中。 请注意，xaml 和 cs 文件都需要更新。
 
 完成这些步骤后，只需将旧的 Capptain 引用替换为新的 Engagement 引用。
 
@@ -129,7 +128,7 @@ Engagement 使用连接字符串。 无需使用 Mobile Engagement 指定应用�
         /* Initialize Engagement angent with above configuration. */
         EngagementAgent.Instance.Init(engagementConfiguration);
 
-应用程序的连接字符串将显示在 Azure 经典门户中。
+应用程序的连接字符串会显示在 Azure 经典门户中。
 
 ### <a name="items-name-change"></a>项名称更改
 所有名为 *capptain* 的项被命名为 *engagement*。 同样，名为 *Capptain* 的项被命名为 *Engagement*。
@@ -143,5 +142,4 @@ Engagement 使用连接字符串。 无需使用 Mobile Engagement 指定应用�
 * GetCapptainPageName 现在名为 GetEngagementPageName
 
 请注意，重命名也会影响重写方法。
-
 

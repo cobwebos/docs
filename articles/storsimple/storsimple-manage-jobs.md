@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6b7e0e1a689ff6caa4142959818a70bc4a6b65af
-
-
+ms.openlocfilehash: 7d9377bb8f3cb8c587823c2d71d61dfb9b50f52f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-jobs"></a>使用 StorSimple Manager 服务查看和管理 StorSimple 作业
 [!INCLUDE [storsimple-version-selector-manage-jobs](../../includes/storsimple-version-selector-manage-jobs.md)]
 
 ## <a name="overview"></a>概述
-“作业”页提供了一个中央门户，用于查看和管理在连接到 StorSimple Manager 服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、失败的作业。 结果将以表格形式呈现。 
+“作业”页提供了一个中央门户，用于查看和管理在连接到 StorSimple Manager 服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、失败的作业。 结果以表格形式呈现。 
 
 ![“作业”页](./media/storsimple-manage-jobs/HCS_JobsPage.png)
 
@@ -74,10 +74,4 @@ ms.openlocfilehash: 6b7e0e1a689ff6caa4142959818a70bc4a6b65af
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 备份策略](storsimple-manage-backup-policies.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

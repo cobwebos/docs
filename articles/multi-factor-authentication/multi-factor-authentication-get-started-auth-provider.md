@@ -15,14 +15,12 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: ed14a5a762bab20a1ccde699504dd21f25009b52
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Azure 多重身份验证提供程序入门
 双重验证对于具有 Azure Active Directory 和 Office 365 用户的全局管理员默认可用。 但是，如果想充分利用[高级功能](multi-factor-authentication-whats-next.md)，则应购买完整版的 Azure 多重身份验证 (MFA)。
 
@@ -88,4 +86,3 @@ Azure 多重身份验证提供程序用于利用 Azure MFA 完整版提供的功
 [下载多重身份验证 SDK](multi-factor-authentication-sdk.md)
 
 [配置多重身份验证设置](multi-factor-authentication-whats-next.md)
-

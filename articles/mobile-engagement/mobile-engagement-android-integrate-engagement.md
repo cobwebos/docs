@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 35bd92e52b7a02f58620a03156902f9f91be57ae
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-integrate-engagement-on-android"></a>如何在 Android 上集成 Engagement
 > [!div class="op_single_selector"]
@@ -43,7 +42,7 @@ ms.lasthandoff: 03/01/2017
 从 [此处](https://aka.ms/vq9mfn) 下载 Android SDK，获取 `mobile-engagement-VERSION.jar` 并将其放入 Android 项目的 `libs` 文件夹 中（如果此 lib 文件夹尚不存在，则创建此文件夹）。
 
 > [!IMPORTANT]
-> 如果使用 ProGuard 生成应用程序包，则需要保留某些类。 你可以使用以下配置代码段：
+> 如果使用 ProGuard 生成应用程序包，则需要保留某些类。 可以使用以下配置代码段：
 > 
 > -keep public class * extends android.os.IInterface -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
 > 
@@ -70,10 +69,10 @@ ms.lasthandoff: 03/01/2017
             android:exported="false"
             android:label="<Your application name>Service"
             android:process=":Engagement"/>
-* 将 `<Your application name>` 更改为你的应用程序名称。
+* 将 `<Your application name>` 更改为应用程序名称。
 
 > [!TIP]
-> `android:label` 属性允许选择 Engagement 服务名称，它将显示在最终用户手机的“正在运行的服务”屏幕中。 建议将此属性设置为 `"<Your application name>Service"`（例如 `"AcmeFunGameService"`）。
+> `android:label`特性，您可以选择参与服务的名称，将向最终用户在他们的电话的"Running 服务"屏幕中显示。 建议将此属性设置为 `"<Your application name>Service"`（例如 `"AcmeFunGameService"`）。
 > 
 > 
 
@@ -94,9 +93,9 @@ ms.lasthandoff: 03/01/2017
                ... Your code...
              }
 
-你可以对 `Application.onTerminate()`、`Application.onLowMemory()` 和 `Application.onConfigurationChanged(...)` 执行相同的操作。
+可以对 `Application.onTerminate()`、`Application.onLowMemory()` 和 `Application.onConfigurationChanged(...)` 执行相同的操作。
 
-你也可以扩展 `EngagementApplication`，而不是扩展 `Application`：回调 `Application.onCreate()` 会执行进程检查并仅在当前进程不是托管 Engagement 服务的进程时调用 `Application.onApplicationProcessCreate()`，相同的规则也适用于其他回调。
+也可以扩展 `EngagementApplication`，而不是扩展 `Application`：仅在当前进程不是托管 Engagement 服务的进程时，回调 `Application.onCreate()` 执行进程检查并调用 `Application.onApplicationProcessCreate()`，相同的规则适用于其他回调。
 
 ## <a name="basic-reporting"></a>基本报告
 ### <a name="recommended-method-overload-your-activity-classes"></a>建议方法：重载 `Activity` 类
@@ -141,7 +140,7 @@ ms.lasthandoff: 03/01/2017
 > 
 > 
 
-你可以在 `src` 文件夹中找到这些类，然后将其复制到你的项目中。 该类还存在于 **JavaDoc** 中。
+可以在 `src` 文件夹中找到这些类，然后将其复制到项目中。 该类还存在于 **JavaDoc** 中。
 
 ### <a name="alternate-method-call-startactivity-and-endactivity-manually"></a>备用方法：手动调用 `startActivity()` 和 `endActivity()`
 如果无法或不想重载 `Activity` 类，可以直接调用 `EngagementAgent` 方法来启动和结束活动。
@@ -174,7 +173,7 @@ ms.lasthandoff: 03/01/2017
 此示例非常类似于 `EngagementActivity` 类及其变体，它的源代码在 `src` 文件夹中提供。
 
 ## <a name="test"></a>测试
-现在，通过在仿真器或设备中运行移动应用，并验证它是否在“监视器”选项卡上注册会话来验证你的集成。
+现在，通过在仿真器或设备中运行移动应用，并验证它是否在“监视器”选项卡上注册会话来验证集成。
 
 以下各节均为可选。
 
@@ -197,7 +196,7 @@ ms.lasthandoff: 03/01/2017
 
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-或者，如果你已在应用程序中使用 ``ACCESS_FINE_LOCATION``，则可以继续使用。
+或者，如果已在应用程序中使用 ``ACCESS_FINE_LOCATION``，则可以继续使用。
 
 ### <a name="real-time-location-reporting"></a>实时位置报告
 实时位置报告允许报告关联到设备的纬度和经度。 默认情况下，此类型的位置报告仅使用网络位置（基于 Cell ID 或 WIFI），且报告仅在应用程序在前台中运行时（例如，在会话期间）可用。
@@ -215,7 +214,7 @@ ms.lasthandoff: 03/01/2017
 
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-或者，如果你已在应用程序中使用 ``ACCESS_FINE_LOCATION``，则可以继续使用。
+或者，如果已在应用程序中使用 ``ACCESS_FINE_LOCATION``，则可以继续使用。
 
 #### <a name="gps-based-reporting"></a>基于 GPS 的报告
 默认情况下，实时位置报告仅使用基于网络的位置。 要启用基于 GPS 的位置（更为精确），请使用以下配置对象：
@@ -244,7 +243,7 @@ ms.lasthandoff: 03/01/2017
 > 
 > 
 
-如果用户重新启动后台设备，则后台位置报告就将停止，你可以添加以下内容，使该报告在开机时自动重新启动：
+如果用户重新启动后台设备，则后台位置报告就将停止，可以添加以下内容，使该报告在开机时自动重新启动：
 
             <receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
                android:exported="false">
@@ -270,9 +269,9 @@ ms.lasthandoff: 03/01/2017
 * `ACCESS_FINE_LOCATION`
 * `WRITE_EXTERNAL_STORAGE`（此项仅适用于面向 Android API 级别 23 的情况）
 
-外部存储仅用于市场宣传大图功能。 如果你发现向用户要求此权限会引起混乱，而你只是为了 Mobile Engagement 才使用它，则可以删除它，但代价是禁用大图功能。
+外部存储仅用于市场宣传大图功能。 如果发现向用户要求此权限会引起混乱，而你只是为了 Mobile Engagement 才使用它，则可以删除它，但代价是禁用大图功能。
 
-对于位置功能，则应使用标准系统对话框向用户请求权限。 如果用户同意，你需要告诉 ``EngagementAgent`` 实时考虑这些更改（否则该更改将在下一次用户启动应用程序时处理）。
+对于位置功能，则应使用标准系统对话框向用户请求权限。 如果用户同意，需要告诉 ``EngagementAgent`` 实时考虑这些更改（否则该更改会在下一次用户启动应用程序时处理）。
 
 下面是要在应用程序的活动中使用的代码示例，如果 ``EngagementAgent`` 为正，则请求权限并转发结果：
 
@@ -314,7 +313,7 @@ ms.lasthandoff: 03/01/2017
     }
 
 ## <a name="advanced-reporting"></a>高级报告
-此外，如果你想报告应用程序特定事件、错误和作业，则需要通过 `EngagementAgent` 类的方法使用 Engagement API 。 此类的对象可以通过调用 `EngagementAgent.getInstance()` 静态方法进行检索。
+此外，如果想报告应用程序特定事件、错误和作业，则需要通过 `EngagementAgent` 类的方法使用 Engagement API。 此类的对象可以通过调用 `EngagementAgent.getInstance()` 静态方法进行检索。
 
 Engagement API 允许使用 Engagement 的所有高级功能，详细信息请参见“如何在 Android 上使用 Engagement API”（以及 `EngagementAgent` 类技术文档）。
 
@@ -337,7 +336,7 @@ Engagement API 允许使用 Engagement 的所有高级功能，详细信息请�
 突发模式会略微增加电池寿命，但会对 Engagement 监视器造成影响：所有会话和任务持续时间均被取整为突发阈值（这样，小于突发阈值的会话和任务可能不会显示）。 建议使用的突发阈值不长于 30000（30 秒）。
 
 ### <a name="session-timeout"></a>会话超时
-默认情况下，会话是在其上一活动结束 10 秒后结束（这种情况通常会在按 Home 或 Back 键、设置电话空闲或跳转到其他应用程序时出现）。 这是为了避免用户每次快速退出和返回应用程序时的会话拆分（用户在执行选取图像、检查通知等操作时可能出现此问题）。 你可能需要修改这个参数。 要执行此操作，请添加以下代码（在 `<application>` 和 `</application>` 标记之间）：
+默认情况下，会话是在其上一活动结束 10 秒后结束（这种情况通常会在按 Home 或 Back 键、设置电话空闲或跳转到其他应用程序时出现）。 这是为了避免用户每次快速退出和返回应用程序时的会话拆分（用户在执行选取图像、检查通知等操作时可能出现此问题）。 可能需要修改这个参数。 要执行此操作，请添加以下代码（在 `<application>` 和 `</application>` 标记之间）：
 
             <meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
@@ -356,10 +355,10 @@ Engagement API 允许使用 Engagement 的所有高级功能，详细信息请�
 ### <a name="integration-in-your-own-preferenceactivity"></a>在自己的 `PreferenceActivity` 中集成
 如不调用此函数，还可以在现有的 `PreferenceActivity` 中直接集成此设置。
 
-你可在 `AndroidManifest.xml` 文件中使用 `application meta-data`，配置 Engagement，以使用首选项文件：
+可在 `AndroidManifest.xml` 文件中使用 `application meta-data`，配置 Engagement，以使用首选项文件：
 
 * `engagement:agent:settings:name` 关键字用于定义共享的首选项文件的名称。
-* `engagement:agent:settings:mode` 关键字可用于定义共享的首选项文件的模式，你应使用在 `PreferenceActivity` 中使用的同一模式。 该模式必须以数字传递：如果在代码中使用常量标志的组合，请检查总值。
+* ph x="1" /> 关键字可用于定义共享的首选项文件的模式，应使用在 `PreferenceActivity` 中使用的同一模式。 该模式必须以数字传递：如果在代码中使用常量标志的组合，请检查总值。
 
 Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字，以用于管理该设置。
 
@@ -374,7 +373,7 @@ Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字
                   android:name="engagement:agent:settings:mode"
                   android:value="0" />
 
-然后，可在首选项布局中添加 `CheckBoxPreference`，如下所示：
+然后，可以添加`CheckBoxPreference`在你首选项布局中以下所示：
 
             <CheckBoxPreference
               android:key="engagement:enabled"
@@ -385,4 +384,3 @@ Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字
 
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
-

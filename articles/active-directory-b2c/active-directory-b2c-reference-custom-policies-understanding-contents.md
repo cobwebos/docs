@@ -14,26 +14,24 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 9847bcfcc139a769847678c1cca6a8b9c3a30e93
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>了解 Azure AD B2C 自定义策略初学者包的自定义策略
 
-本部分列出**初学者包**随附的，让你通过 *B2C_1A_base_extensions 策略*继承创建自己策略的 B2C_1A_base 策略的所有核心元素。
+本部分列出的附带 B2C_1A_base 策略的所有核心元素**初学者包**和中，利用创作你自己的策略通过的继承*B2C_1A_base_extensions 策略*。
 
 因此，本部分专门侧重于已定义的声明类型、声明转换、内容定义、声明提供程序及其技术配置文件和核心用户旅程。
 
 > [!IMPORTANT]
 > 对于下面提供的信息，Microsoft 不做任何明示或暗示的保证。 在正式版发布之前、发布期间或之后，随时可能会引入更改。
 
-你自己的策略和 B2C_1A_base_extensions 策略可以重写这些定义，并可根据需要通过提供其他定义来扩展此父策略。
+自己的策略和 B2C_1A_base_extensions 策略可以重写这些定义，并可根据需要通过提供其他定义来扩展此父策略。
 
-*B2C_1A_base 策略*的核心元素是声明类型、声明转换和内容定义。 在你自己的策略以及 *B2C_1A_base_extensions 策略*中，可以方便地引用这些元素。
+*B2C_1A_base 策略*的核心元素是声明类型、声明转换和内容定义。 在自己的策略以及 *B2C_1A_base_extensions 策略*中，可以方便地引用这些元素。
 
 ## <a name="claims-schemas"></a>声明架构
 
@@ -121,7 +119,7 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="content-definitions"></a>内容定义
 
-本部分介绍已在 *B2C_1A_base* 策略中声明的内容定义。 可以根据需要在你自己的策略以及 *B2C_1A_base_extensions* 策略中方便地引用、重写和/或扩展这些内容定义。
+本部分介绍已在 *B2C_1A_base* 策略中声明的内容定义。 可以根据需要在自己的策略以及 *B2C_1A_base_extensions* 策略中方便地引用、重写和/或扩展这些内容定义。
 
 | 声明提供程序 | 说明 |
 |-----------------|-------------|
@@ -138,7 +136,7 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="technical-profiles"></a>技术配置文件
 
-本部分描述已在 *B2C_1A_base* 策略中为每个声明提供程序声明的技术配置文件。 可以根据需要在你自己的策略以及 *B2C_1A_base_extensions* 策略中方便地进一步引用、重写和/或扩展这些技术配置文件。
+本部分描述已在 *B2C_1A_base* 策略中为每个声明提供程序声明的技术配置文件。 可以根据需要在自己的策略以及 *B2C_1A_base_extensions* 策略中方便地进一步引用、重写和/或扩展这些技术配置文件。
 
 ### <a name="technical-profiles-for-facebook"></a>Facebook 的技术配置文件
 
@@ -210,7 +208,7 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="user-journeys"></a>用户旅程
 
-本部分描述已在 *B2C_1A_base* 策略中声明的用户旅程。 可以根据需要在你自己的策略以及 *B2C_1A_base_extensions* 策略中方便地进一步引用、重写和/或扩展这些用户旅程。
+本部分描述已在 *B2C_1A_base* 策略中声明的用户旅程。 可以根据需要在自己的策略以及 *B2C_1A_base_extensions* 策略中方便地进一步引用、重写和/或扩展这些用户旅程。
 
 | 用户旅程 | 说明 |
 |--------------|-------------|
@@ -219,4 +217,3 @@ ms.lasthandoff: 05/09/2017
 | *SignUpOrSignIn* | |
 | *EditProfile* | |
 | *PasswordReset* | |
-

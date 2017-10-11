@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
-ms.openlocfilehash: aa3c83f82d1a60253f70350e88aa96fb285ef3d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: 6b119be9c06d8c1ccc8e747168429e6c2d2e7a8f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。
@@ -47,7 +46,7 @@ ms.lasthandoff: 02/28/2017
       - 委派的权限（任何用户）。 例如：Azure AD、登录和读取配置文件
 
 > [!NOTE]
-> 默认情况下，任何成员都可以注册应用程序。 若要了解如何限定只有特定成员拥有注册应用程序的权限，请参阅 [How applications are added to Azure AD](develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)（如何将应用程序添加到 Azure AD）。
+> 默认情况下，任何成员都可以注册应用程序。 要了解如何限定只有特定成员拥有注册应用程序的权限，请参阅 [How applications are added to Azure AD](develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)（如何将应用程序添加到 Azure AD）。
 >
 >
 
@@ -61,11 +60,11 @@ ms.lasthandoff: 02/28/2017
 在 SaaS 应用中配置基于应用程序的访问规则。 例如，这可能要求 MFA，或只允许受信任网络上的用户访问。 [配置访问规则](active-directory-conditional-access-azuread-connected-apps.md)文档中提供了相关详细信息。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>将应用程序配置为要求用户分配，并分配用户
-默认情况下，用户无需分配即可访问应用程序。 不过，如果应用程序公开角色或者你希望应用程序出现在用户的访问面板上，则你应该要求用户分配。
+默认情况下，用户无需分配即可访问应用程序。 不过，如果应用程序公开角色或者希望应用程序出现在用户的访问面板上，则你应该要求用户分配。
 
 [要求进行用户分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)
 
-如果你是 Azure AD Premium 或 Enterprise Mobility Suite (EMS) 的订阅者，我们强烈建议使用组。 将组分配到应用程序可让你将持续进行的访问管理委派给组所有者。 你可以创建组，或使用组管理功能请求组织中负责人创建组。
+如果是 Azure AD Premium 或 Enterprise Mobility Suite (EMS) 的订阅者，我们强烈建议使用组。 将组分配到应用程序可让你将持续进行的访问管理委派给组所有者。 可以创建组，或使用组管理功能请求组织中负责人创建组。
 
 [将用户分配到应用程序](active-directory-applications-guiding-developers-assigning-users.md)  
 [将组分配到应用程序](active-directory-applications-guiding-developers-assigning-groups.md)
@@ -73,7 +72,7 @@ ms.lasthandoff: 02/28/2017
 ## <a name="suppress-user-consent"></a>抑制用户同意
 默认情况下，每个用户通过同意体验进行登录。 对于不太熟悉做出此类决定的用户而言，同意体验（请求用户授予对应用程序的权限）可能会令其不安。
 
-对于你信任的应用程序，你可以代表组织来同意应用程序，以简化用户体验。
+对于信任的应用程序，可以代表组织来同意应用程序，以简化用户体验。
 
 有关 Azure 中的用户同意和同意体验的详细信息，请参阅 [Integrating Applications with Azure Active Directory](active-directory-integrating-applications.md)（将应用程序与 Azure Active Directory 集成）。
 
@@ -82,4 +81,3 @@ ms.lasthandoff: 02/28/2017
 * [适用于 SaaS 应用的 Azure 条件性访问预览版](active-directory-conditional-access-azuread-connected-apps.md)
 * [使用 Azure AD 管理对应用的访问](active-directory-managing-access-to-apps.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-

@@ -14,14 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: c38b73fa69bee34ce2434c6274cb017c99ef3c35
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>使用 Fiddler 评估和测试 Azure 搜索 REST API
 > [!div class="op_single_selector"]
 >
@@ -35,13 +33,13 @@ ms.lasthandoff: 12/08/2016
 
 本文介绍如何使用 Fiddler（以 [Telerik 的免费下载项](http://www.telerik.com/fiddler)的形式提供）通过 Azure 搜索 REST API（而无需编写任何代码）发出 HTTP 请求并查看响应。 Azure 搜索是在 Microsoft Azure 上完全托管的托管云搜索服务，可通过 .NET 和 REST API 简化编程。 [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx)上介绍了 Azure 搜索服务 REST API。
 
-在以下步骤中，将创建索引，上载文档，查询索引，然后在系统中查询服务信息。
+在以下步骤中，将创建索引，上传文档，查询索引，然后在系统中查询服务信息。
 
 若要完成这些步骤，需要 Azure 搜索服务和 `api-key`。 有关如何开始使用的说明，请参阅 [在门户中创建 Azure 搜索服务](search-create-service-portal.md) 。
 
 ## <a name="create-an-index"></a>创建索引
 1. 启动 Fiddler。 在“文件”菜单上，关闭“捕获流量”，隐藏与当前任务无关的外部 HTTP 活动。
-2. 在“编辑器”  选项卡上，将构建如以下屏幕截图所示的请求。
+2. 在“编辑器”选项卡上，将构建如以下屏幕截图所示的请求。
 
       ![][1]
 3. 选择“PUT” 。
@@ -85,7 +83,7 @@ ms.lasthandoff: 12/08/2016
 如果收到 HTTP 504，请验证该 URL 是否指定了 HTTPS。 如果看到 HTTP 400 或 404，请检查请求正文，以验证是否没有复制粘贴错误。 HTTP 403 通常指示 api-key 有问题（密钥无效或指定 api-key 的方式有语法问题）。
 
 ## <a name="load-documents"></a>加载文档
-在“编辑器”  选项卡上，发布文档的请求将如下所示。 请求正文包含搜索 4 个酒店的数据。
+在“编辑器”选项卡上，发布文档的请求将如下所示。 请求正文包含搜索 4 个酒店的数据。
 
    ![][2]
 
@@ -163,7 +161,7 @@ ms.lasthandoff: 12/08/2016
          }
 5. 单击“执行” 。
 
-在几秒钟内，应在会话列表中看到 HTTP 200 响应。 这指示已成功创建文档。 如果收到 207，则指示至少有一个文档无法上载。 如果收到 404，则指示请求的标头或正文中有语法错误。
+在几秒钟内，应在会话列表中看到 HTTP 200 响应。 这指示已成功创建文档。 如果收到 207，则指示至少有一个文档无法上传。 如果收到 404，则指示请求的标头或正文中有语法错误。
 
 ## <a name="query-the-index"></a>查询索引
 现在，已加载索引和文档，可以针对它们发出查询了。  在“编辑器”选项卡上，用于查询服务的 **GET** 命令将如下面的屏幕截图所示。
@@ -198,7 +196,7 @@ ms.lasthandoff: 12/08/2016
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
 
 ## <a name="query-the-system"></a>查询系统
-还可以查询系统以获取文档计数和存储使用量。 在“编辑器”  选项卡上，请求将如下所示，并且响应将返回文档计数和已用空间。
+还可以查询系统以获取文档计数和存储使用量。 在“编辑器”选项卡上，请求将如下所示，并且响应将返回文档计数和已用空间。
 
  ![][5]
 
@@ -214,7 +212,7 @@ ms.lasthandoff: 12/08/2016
          api-key: 1111222233334444
 4. 将请求正文留空。
 5. 单击“执行” 。 应在会话列表中看到 HTTP 200 状态代码。 选择为命令发布的条目。
-6. 单击“检查器”选项卡，单击“标头”选项卡，然后选择 JSON 格式。 应看到文档计数和存储大小（以 KB 为单位）。
+6. 单击“检查器”选项卡，单击“标头”选项卡，并选择 JSON 格式。 应看到文档计数和存储大小（以 KB 为单位）。
 
 ## <a name="next-steps"></a>后续步骤
 有关使用无代码方法管理和使用 Azure 搜索，请参阅 [在 Azure 上管理搜索服务](search-manage.md) 。
@@ -225,4 +223,3 @@ ms.lasthandoff: 12/08/2016
 [3]: ./media/search-fiddler/AzureSearch_Fiddler3_Query.png
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
-

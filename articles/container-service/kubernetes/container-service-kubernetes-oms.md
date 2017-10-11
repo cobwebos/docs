@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: bd5c81435c091d25bc14710589b7c043e9f56a25
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>使用 Microsoft Operations Management Suite (OMS) 监视 Azure 容器服务群集
 
 ## <a name="prerequisites"></a>先决条件
@@ -130,4 +128,3 @@ $ kubectl create -f oms-daemonset.yaml
 
 ### <a name="conclusion"></a>结束语
 就这么简单！ 几分钟后，应该可以看到数据流向 OMS 仪表板。
-

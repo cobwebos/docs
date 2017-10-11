@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: lakasa
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 6d1e6752fb631114f5be06cb27a63e40547bf6ca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的存储服务加密
 
@@ -127,4 +126,3 @@ Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性�
 *   有关可帮助开发人员构建安全应用程序的综合安全功能集的详细信息，请参阅[存储安全指南](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide)。
 *   有关 Azure Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis)
 *   有关 Azure Key Vault 的入门信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)。
-

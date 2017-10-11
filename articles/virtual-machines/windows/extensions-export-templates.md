@@ -15,17 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: nepeters
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: cc3c705f1c9123de75ced016a5b39eb1a86b0f73
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
-可以将 Azure 资源组导出到新的 Resource Manager 模板，然后重新部署该模板。 导出过程会对现有资源进行解释，并创建一个 Resource Manager 模板，该模板在部署后会生成类似的资源组。 针对包含虚拟机扩展的资源组使用资源组导出选项时，需考虑多个事项，例如扩展兼容性和受保护设置。
+可以将 Azure 资源组导出到新的 Resource Manager 模板，并重新部署该模板。 导出过程会对现有资源进行解释，并创建一个 Resource Manager 模板，该模板在部署后会生成类似的资源组。 针对包含虚拟机扩展的资源组使用资源组导出选项时，需考虑多个事项，例如扩展兼容性和受保护设置。
 
 本文档详细介绍在使用虚拟机扩展（包括支持的扩展的列表）时如何实施资源组导出过程，以及如何处理受保护的数据。
 
@@ -50,7 +48,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="export-the-resource-group"></a>导出资源组
 
-若要将资源组导出到可重用模板中，请完成以下步骤：
+要将资源组导出到可重用模板中，请完成以下步骤：
 
 1. 登录到 Azure 门户
 2. 在“中心”菜单上，单击“资源组”
@@ -152,7 +150,7 @@ Azure Resource Manager 自动化脚本生成一个 Resource Manager 模板、一
 
 如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)。
 
-以 `IaasDiagnostic` 扩展为例，将在 Resource Manager 模板的参数部分创建以下参数。
+以 `IaasDiagnostic` 扩展为例，会在 Resource Manager 模板的参数部分创建以下参数。
 
 ```json
 "storageAccountName": {
@@ -166,4 +164,3 @@ Azure Resource Manager 自动化脚本生成一个 Resource Manager 模板、一
 ```
 
 目前可以使用任何模板部署方法部署此模板。
-

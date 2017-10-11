@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42b245d4e205dffda7ec62199ced3834c278a466
-
-
+ms.openlocfilehash: 32d20e7a8adcfc646c592213fe7395b87a93c985
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-and-manage-a-storsimple-support-package"></a>创建和管理 StorSimple 支持包
 ## <a name="overview"></a>概述
@@ -26,34 +26,34 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 本教程提供创建和管理支持包的分步说明。
 
-## <a name="create-and-upload-a-support-package-in-the-azure-classic-portal"></a>在 Azure 经典门户中创建并上载支持包
-可以在 Azure 经典门户中通过服务的“维护”页创建支持包并将其上载到 Microsoft 支持站点。
+## <a name="create-and-upload-a-support-package-in-the-azure-classic-portal"></a>在 Azure 经典门户中创建并上传支持包
+可以在 Azure 经典门户中通过服务的“维护”页创建支持包并将其上传到 Microsoft 支持站点。
 
 > [!NOTE]
-> 上载需要支持密钥。 支持工程师应该在电子邮件中提供了该密码。
+> 上传需要支持密钥。 支持工程师应该在电子邮件中提供了该密码。
 > 
 > 
 
-创建经过加密和压缩的支持包（.cab 文件）并将其上载到支持站点。 然后，支持工程师即可从支持站点检索该包来排除问题。
+创建经过加密和压缩的支持包（.cab 文件）并将其上传到支持站点。 然后，支持工程师可以从用于解决问题的支持站点检索此包。
 
 请在经典门户中执行以下步骤，创建支持包。
 
 #### <a name="to-create-a-support-package-in-the-azure-classic-portal"></a>在 Azure 经典门户中创建支持包
 1. 选择“设备” > “维护”。
-2. 在“支持包”部分，选择“创建并上载支持包”。
-3. 在“创建并上载支持包”对话框中，执行以下操作：
+2. 在“支持包”部分，选择“创建并上传支持包”。
+3. 在“创建并上传支持包”对话框中，执行以下操作：
    
     ![创建支持包](./media/storsimple-create-manage-support-package/IC740923.png)
    
    * 在“支持密钥”文本框中，输入密钥。 Microsoft 支持工程师会通过电子邮件发送该密钥。
-   * 选中此复选框即表示同意自动将支持包上载到 Microsoft 支持站点。
+   * 选中此复选框即表示同意自动将支持包上传到 Microsoft 支持站点。
    * 单击选中图标  ![勾选图标](./media/storsimple-create-manage-support-package/IC740895.png)。
 
 ## <a name="manually-create-a-support-package"></a>手动创建支持包
 某些情况下，需要通过 Windows PowerShell for StorSimple 手动创建支持包。 例如：
 
 * 与 Microsoft 支持部门共享日志文件之前，需要从其中删除敏感信息。
-* 因连接问题而无法上载该包。
+* 因连接问题而无法上传该包。
 
 可以通过电子邮件与 Microsoft 支持部门共享手动创建的支持包。 执行以下步骤，在 Windows PowerShell for StorSimple 中创建支持包。
 
@@ -108,7 +108,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 > 
 > 
 
-若要编辑支持包以便将其上载到 Microsoft 支持站点，请首先解密该支持包，编辑文件，然后重新对其加密。 执行以下步骤。
+要编辑支持包以便将其上传到 Microsoft 支持站点，请首先解密该支持包，编辑文件，然后重新对其加密。 执行以下步骤。
 
 #### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中编辑支持包
 1. 如前所述生成支持包，详见：[在 Windows PowerShell for StorSimple 中创建支持包](#to-create-a-support-package-in-windows-powershell-for-storsimple)。
@@ -128,7 +128,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
         cmdlet Open-HcsSupportPackage at command pipeline position 1
    
         Supply values for the following parameters:EncryptionPassphrase: ****
-6. 浏览到包含日志文件的文件夹。 这些日志文件现在已解压缩和解密，因此会显示原始的文件扩展名。 修改这些文件，删除任何特定于客户的信息，例如卷名称和设备 IP 地址，然后保存文件。
+6. 浏览到包含日志文件的文件夹。 这些日志文件现在已解压缩和解密，因此会显示原始的文件扩展名。 修改这些文件，删除任何特定于客户的信息，例如卷名称和设备 IP 地址，并保存文件。
 7. 关闭要使用 gzip 压缩并使用 AES-256 加密的文件。 这是为了确保通过网络传输支持包的速度和安全性。 若要压缩和加密文件，请输入以下命令：
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
@@ -166,10 +166,4 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用支持包和设备日志排查设备部署问题](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

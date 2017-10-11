@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: cd09b7c5d45d07a3fbcc5d6f0c02400dcd36d61b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/02/2017
-
+ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 02/02/2017
 * 特定事件名称
 
 > [!NOTE]
-> 筛选器会使应用的指标产生偏差。 例如，为了诊断缓慢响应时间，你可能会决定设置一个排除快速响应时间的筛选器。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
+> 筛选器会使应用的指标产生偏差。 例如，你可能决定，以便诊断响应速度慢，你将设置筛选器以放弃快速的响应时间。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
 > 如果这是一个问题，请改用[采样](app-insights-sampling.md)。
 
 ## <a name="setting-filters"></a>设置筛选器
@@ -259,9 +258,8 @@ ms.lasthandoff: 02/02/2017
 
 我的筛选器不能正常工作。
 
-* 请检查提供的参数值是否有效。 例如，持续时间应为整数。 无效值将导致筛选器被忽略。 如果自定义筛选器从构造函数或 set 方法中引发异常，它将被忽略。
+* 请检查提供的参数值是否有效。 例如，持续时间应为整数。 无效值将导致筛选器被忽略。 如果自定义筛选器从构造函数或 set 方法中引发异常，它会被忽略。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [采样](app-insights-sampling.md) - 请考虑将采样作为替代方法，该方法不会使指标出现偏差。
-

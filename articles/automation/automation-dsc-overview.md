@@ -14,14 +14,12 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 23a6e09d410616b135506df778d6fdd5ed68bb41
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-automation-dsc-overview"></a>Azure 自动化 DSC 概述
 
 Azure Automation DSC 是一种 Azure 服务，允许编写、管理和编译 PowerShell Desired State Configuration (DSC) [配置](https://msdn.microsoft.com/powershell/dsc/configurations)，导入 [DSC 资源](https://msdn.microsoft.com/powershell/dsc/resources)，并将配置分配给目标节点，所有操作均在云中进行。
@@ -67,4 +65,4 @@ Azure Automation DSC 向 [PowerShell Desired State Configuration](https://msdn.m
 * 要了解编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure 自动化 DSC 中编译配置](automation-dsc-compile.md)
 * 有关 Azure Automation DSC 的 PowerShell cmdlet 参考，请参阅 [Azure Automation DSC cmdlet](/powershell/module/azurerm.automation/#automation)
 * 有关定价信息，请参阅 [Azure Automation DSC 定价](https://azure.microsoft.com/pricing/details/automation/)。
-* 若要查看在持续部署管道中使用 Azure Automation DSC 的示例，请参阅[使用 Azure Automation DSC 和 Chocolatey 持续部署到 IaaS VM](automation-dsc-cd-chocolatey.md)
+* 若要查看在连续部署管道中使用 Azure 自动化 DSC 的示例，请参阅[IaaS Vm 使用 Azure 自动化 DSC 和 Chocolatey 进行持续部署](automation-dsc-cd-chocolatey.md)

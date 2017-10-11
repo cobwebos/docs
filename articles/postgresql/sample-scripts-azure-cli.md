@@ -11,12 +11,11 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: sample, mvc
 ms.date: 05/25/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: cda2ae1776602b4daa85b5bec8204eec035d537f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: bad53b7d7ff931605fd3a2cdfc40fda6447f8ab9
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>用于 PostgreSQL 的 Azure 数据库的 Azure CLI 示例 
 下表包含指向示例 Azure CLI 脚本的链接，这些脚本针对用于 PostgreSQL 的 Azure 数据库。
@@ -28,4 +27,3 @@ ms.lasthandoff: 05/27/2017
 |**缩放服务器**||
 | [缩放服务器](scripts/sample-scale-server-up-or-down.md?toc=%2fcli%2fazure%2ftoc.json) | 此 Azure CLI 脚本可扩大或缩小用于 PostgreSQL 服务器的单个 Azure 数据库，以允许更改性能要求。 |
 |||
-

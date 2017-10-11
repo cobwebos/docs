@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 0bfbbaee7a74df6508584b7c8846fd07c2dc15c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教程：Azure Active Directory 与 Image Relay 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/23/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-image-relay-from-the-gallery"></a>从库中添加 Image Relay
-若要配置 Image Relay 与 Azure AD 的集成，需要从库中将 Image Relay 添加到托管 SaaS 应用列表。
+要配置 Image Relay 与 Azure AD 的集成，需要从库中将 Image Relay 添加到托管 SaaS 应用列表。
 
 **若要从库添加 Image Relay，请按以下步骤操作：**
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Image Relay 测试用户](#creating-an-image-relay-test-user)** - 在 Image Relay 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建映像中继测试用户](#creating-an-image-relay-test-user)** -若要链接到用户的 Azure AD 表示的图像中继中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 06/23/2017
  
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_certificate.png) 
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 06/23/2017
    
     ![配置单一登录](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_08.png)
 
-10. 在“单一登录设置”工作负荷中，选中“此组只能通过单一登录进行登录”复选框，然后单击“保存”。
+10. 在“单一登录设置”工作负荷中，选中“此组只能通过单一登录进行登录”复选框，并单击“保存”。
    
     ![配置单一登录](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
@@ -158,15 +157,15 @@ ms.lasthandoff: 06/23/2017
     
     ![配置单一登录](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_12.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“单一注销服务 URL”值。
+    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“单一注销服务 URL”值。
 
     c. 对于“名称 ID 格式”，选择“urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress”。
 
     d.单击“下一步”。 对于“来自服务提供商(Image Relay)的请求的绑定选项”，选择“POST 绑定”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“x.509 证书”下，单击“更新证书”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“x.509 证书”下，单击“更新证书”。
 
     ![配置单一登录](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_17.png)
 
@@ -211,7 +210,7 @@ ms.lasthandoff: 06/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -227,7 +226,7 @@ ms.lasthandoff: 06/23/2017
 
 1. 以管理员身份登录 Image Relay 公司站点。
 
-2. 转到“用户和权限”，然后选择“创建 SSO 用户”。
+2. 转到“用户和权限”，并选择“创建 SSO 用户”。
    
     ![配置单一登录](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
@@ -243,9 +242,9 @@ ms.lasthandoff: 06/23/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Image Relay，请执行以下步骤：**
+**要将 Britta Simon 分配到 Image Relay，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -295,5 +294,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_203.png
-
 

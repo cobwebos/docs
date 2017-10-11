@@ -14,16 +14,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7bd8de649ba2975c47f7e84feb0438c51756a697
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: eafcc2f9d53bcdae63036df070e5adec24cbc252
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>测试云服务的性能
 ## <a name="overview"></a>概述
-您可以通过以下方式测试云服务的性能：
+可以通过以下方式测试云服务的性能：
 
 * 使用 Azure 诊断，可以收集有关请求和连接的信息，可以查看站点统计信息，其中显示了客户角度的服务执行情况。 若要快速入门，请参阅[为 Azure 云服务和虚拟机配置诊断](http://go.microsoft.com/fwlink/p/?LinkId=623009)。
 * 通过使用 Visual Studio 探查器，可以获取该服务在计算方面运行情况的深入分析。 如本主题所述，当服务在 Azure 中运行时，可以使用探查器来测量性能。 有关当服务在计算模拟器中本地运行时如何使用探查器来测量其性能的信息，请参阅[使用 Visual Studio 探查器来测试在计算模拟器中本地运行的 Azure 云服务的性能](http://go.microsoft.com/fwlink/p/?LinkId=262845)。
@@ -82,37 +81,36 @@ ms.lasthandoff: 11/17/2016
 ![配置分析设置](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
 
 > [!NOTE]
-> 若要启用“启用分析”复选框，则必须在你用来发布云服务的本地计算上安装了探查器。 默认情况下，在安装 Visual Studio 时会安装探查器。
+> 要启用“启用分析”复选框，则必须在用来发布云服务的本地计算上安装了探查器。 默认情况下，在安装 Visual Studio 时会安装探查器。
 > 
 > 
 
 ### <a name="to-configure-profiling-settings"></a>配置分析设置
-1. 在“解决方案资源管理器”中，打开“Azure 项目”的快捷菜单，然后选择“发布”。 有关如何发布云服务的详细步骤，请参阅[使用 Azure Tools 发布云服务](http://go.microsoft.com/fwlink/p?LinkId=623012)。
+1. 在“解决方案资源管理器”中，打开“Azure 项目”的快捷菜单，并选择“发布”。 有关如何发布云服务的详细步骤，请参阅[使用 Azure Tools 发布云服务](http://go.microsoft.com/fwlink/p?LinkId=623012)。
 2. 在“发布 Azure 应用程序”对话框中，选择“高级设置”选项卡。
 3. 若要启用分析，请选中“启用分析”复选框。
-4. 若要配置分析设置，请选择“设置”超链接。 此时将显示“分析设置”对话框。
+4. 若要配置分析设置，请选择“设置”超链接。 此时显示“分析设置”对话框。
 5. 在“要使用什么分析方法”选项按钮中，选择所需的分析类型。
 6. 若要收集层交互分析数据，请选中“启用层交互分析”复选框。
 7. 若要保存设置，请选择“确定”按钮。
    
-    当发布此应用程序时，这些设置将用于为每个角色创建分析会话。
+    当发布此应用程序时，这些设置用于为每个角色创建分析会话。
 
 ## <a name="viewing-profiling-reports"></a>查看分析报告
-为云服务中的角色的每个实例创建分析会话。 若要从 Visual Studio 查看每个会话的分析报告，可以查看“服务器资源管理器”窗口，然后选择“Azure 计算”节点以选择角色的实例。 然后可以查看分析报告，如下图所示。
+为云服务中的角色的每个实例创建分析会话。 要从 Visual Studio 查看每个会话的分析报告，可以查看“服务器资源管理器”窗口，并选择“Azure 计算”节点以选择角色的实例。 然后可以查看分析报告，如下图所示。
 
 ![从 Azure 查看分析报告](./media/vs-azure-tools-performance-profiling-cloud-services/IC748914.png)
 
 ### <a name="to-view-profiling-reports"></a>查看分析报告
 1. 若要在 Visual Studio 中查看“服务器资源管理器”窗口，请在菜单栏上选择“视图”、“服务器资源管理器”。
-2. 选择“Azure 计算”节点，然后针对从 Visual Studio 发布时您所选的要进行分析的云服务，选择相应 Azure 部署节点。
-3. 若要查看实例的分析报告，请选择服务中的角色，打开特定实例的快捷菜单，然后选择“查看分析报告”。
+2. 选择“Azure 计算”节点，并针对从 Visual Studio 发布时所选的要进行分析的云服务，选择相应 Azure 部署节点。
+3. 要查看实例的分析报告，请选择服务中的角色，打开特定实例的快捷菜单，并选择“查看分析报告”。
    
-    报告是一个 .vsp 文件，它现在已从 Azure 下载，且下载状态显示在 Azure 活动日志中。 下载完成后，分析报告将显示在名为 <Role name>*<Instance Number>*<identifier>.vsp 的 Visual Studio 编辑器选项卡中。 随即将显示报告的汇总数据。
+    报告是一个 .vsp 文件，它现在已从 Azure 下载，且下载状态显示在 Azure 活动日志中。 下载完成后，分析报告将显示在名为 <Role name>*<Instance Number>*<identifier>.vsp 的 Visual Studio 编辑器选项卡中。 随即会显示报告的汇总数据。
 4. 若要显示报告的其他视图，请在“当前视图”列表中，选择所需视图类型。 有关详细信息，请参阅[分析工具报告视图](https://msdn.microsoft.com/library/azure/bb385755.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
 [调试云服务](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
 [从 Visual Studio 发布到 Azure 云服务](https://msdn.microsoft.com/library/azure/ee460772.aspx)
-
 

@@ -16,25 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: b62421b7289650818748d0016dccfdf42ef0a768
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建具有多个 NIC 的 VM（经典）
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-你可以在 Azure 中创建虚拟机 (VM)，然后将多个网络接口 (NIC) 附加到每个 VM。 通过多个 NIC 可分离跨 NIC 的流量类型。 例如，一个 NIC 可与 Internet 通信，而另一个 NIC 仅与未连接到 Internet 的内部资源通信。 许多网络虚拟设备（例如应用程序交付和 WAN 优化解决方案）都需要具备跨多个 NIC 分离网络流量的能力。
+可以在 Azure 中创建虚拟机 (VM)，然后将多个网络接口 (NIC) 附加到每个 VM。 通过多个 NIC 可分离跨 NIC 的流量类型。 例如，一个 NIC 可与 Internet 通信，而另一个 NIC 仅与未连接到 Internet 的内部资源通信。 许多网络虚拟设备（例如应用程序交付和 WAN 优化解决方案）都需要具备跨多个 NIC 分离网络流量的能力。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何使用 [Resource Manager 部署模型](virtual-network-deploy-multinic-arm-cli.md)执行这些步骤。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 了解如何使用 [Resource Manager 部署模型](virtual-network-deploy-multinic-arm-cli.md)执行这些步骤。
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。
+以下步骤使用名为 *IaaSStory* 的资源组作为主资源组，并在名为 *IaaSStory-BackEnd* 的资源组中实现后端服务器。
 
 ## <a name="prerequisites"></a>先决条件
 创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成如下步骤。 若要创建虚拟网络，请完成[创建虚拟网络](virtual-networks-create-vnet-classic-cli.md)一文中的步骤。
@@ -44,9 +43,9 @@ ms.lasthandoff: 02/28/2017
 ## <a name="deploy-the-back-end-vms"></a>部署后端 VM
 后端 VM 取决于以下资源的创建：
 
-* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘将使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
-* **NIC**。 每个 VM 都将具有两个 NIC，一个用于数据库访问，另一个用于管理。
-* **可用性集**。 所有数据库服务器都将添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
+* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
+* **NIC**。 每个 VM 都会具有两个 NIC，一个用于数据库访问，另一个用于管理。
+* **可用性集**。 所有数据库服务器都会添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
 
 ### <a name="step-1---start-your-script"></a>步骤 1 - 启动脚本
 可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh)下载所用的完整 bash 脚本。 完成以下步骤，以更改要在环境中使用的脚本：
@@ -85,7 +84,7 @@ ms.lasthandoff: 02/28/2017
         --location $location
     ```
 
-2. 为要由你的 VM 使用的 OS 和数据磁盘创建高级存储帐户。
+2. 为要由 VM 使用的 OS 和数据磁盘创建高级存储帐户。
 
     ```azurecli
     azure storage account create $prmStorageAccountName \
@@ -141,9 +140,9 @@ ms.lasthandoff: 02/28/2017
     ```
 
 ### <a name="step-4---run-the-script"></a>步骤 4 - 运行脚本
-现在，你已根据需要下载并更改了脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
+现在，已根据需要下载并更改了脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
 
-1. 保存该脚本并从 **Bash** 终端运行它。 将看到最初的输出，如下所示。
+1. 保存该脚本并从 **Bash** 终端运行它。 会看到最初的输出，如下所示。
 
         info:    Executing command service create
         info:    Creating cloud service
@@ -160,7 +159,7 @@ ms.lasthandoff: 02/28/2017
         info:    Looking up deployment
         info:    Creating VM
 
-2. 几分钟后，执行将结束，你将看到输出的其余部分，如下所示。
+2. 几分钟后，执行将结束，会看到输出的其余部分，如下所示。
 
         info:    OK
         info:    vm create command OK
@@ -189,4 +188,3 @@ ms.lasthandoff: 02/28/2017
         info:    Getting virtual machines
         info:    Adding Data-Disk
         info:    vm disk attach-new command OK
-

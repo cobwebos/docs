@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 3a597d228f6c9234ec2fd2644ec3ac50b98f3b6b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>教程：Azure Active Directory 与 FM:Systems 集成
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 06/20/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [FM:Systems 客户端支持团队](https://fmsystems.com/ask-us/)获取此值。
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/tutorial_fmsystems_certificate.png) 
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 06/20/2017
 
     ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/tutorial_general_400.png)
 
-6. 若要在“FM:Systems”端配置单一登录，需要将下载的“元数据 XML”发送给 [FM:Systems 支持团队](https://fmsystems.com/ask-us/)。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。 在为订阅启用了 SSO 后，你将收到通知。
+6. 若要在“FM:Systems”端配置单一登录，需要将下载的“元数据 XML”发送给 [FM:Systems 支持团队](https://fmsystems.com/ask-us/)。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。 在为订阅启用了 SSO 后，将收到通知。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -152,7 +151,7 @@ ms.lasthandoff: 06/20/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fm-systems-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -176,9 +175,9 @@ ms.lasthandoff: 06/20/2017
    
     ![创建用户](./media/active-directory-saas-fm-systems-tutorial/ic795907.png "创建用户")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“用户名”、“密码”、“确认密码”、“电子邮件”和“员工 ID”。
+    a. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“用户名”、“密码”、“确认密码”、“电子邮件”和“员工 ID”。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“下一步”。
+    b. 单击“下一步”。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -188,7 +187,7 @@ ms.lasthandoff: 06/20/2017
 
 **若要将 Britta Simon 分配到 FM:Systems，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -237,5 +236,4 @@ ms.lasthandoff: 06/20/2017
 [201]: ./media/active-directory-saas-fm-systems-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-fm-systems-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-fm-systems-tutorial/tutorial_general_203.png
-
 

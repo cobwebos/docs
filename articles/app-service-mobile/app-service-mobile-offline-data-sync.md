@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 8e2bd755d14319f8c66f7ae7ec64fbd10801b39d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
 ## <a name="what-is-offline-data-sync"></a>什么是脱机数据同步？
@@ -63,12 +62,12 @@ ms.lasthandoff: 08/24/2017
 本地存储使用初始化方法（例如 [.NET 客户端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`）来与同步上下文关联。
 
 ## <a name="how-sync-works"></a>脱机同步的工作原理
-使用同步表时，客户端代码将控制本地更改与 Azure 移动应用后端同步的时机。 在发生*推送*本地更改的调用之前，不会向后端发送任何内容。 同样，仅当发生了*提取*数据的调用时，才在本地存储中填充新数据。
+使用同步表时，客户端代码控制本地更改与 Azure 移动应用后端同步的时机。 在发生*推送*本地更改的调用之前，不会向后端发送任何内容。 同样，仅当发生了*提取*数据的调用时，才在本地存储中填充新数据。
 
 * **推送**：推送是对同步上下文的操作，发送自上一次推送之后的所有 CUD 更改。 请注意，无法做到只发送单个表的更改，否则操作发送顺序可能出错。 推送对 Azure 移动应用后端执行一系列 REST 调用，而这会修改服务器数据库。
 * **提取**：提取是根据每个表执行的，可以使用查询来自定义，以便只检索服务器数据的子集。 然后，Azure 移动客户端 SDK 会将最终数据插入本地存储。
 * **隐式推送**：如果提取针对包含挂起本地更新的表执行，则提取操作先对同步上下文执行 `push()`。 此推送有助于最大程度减少已排队的更改与服务器中新数据之间的冲突。
-* **增量同步**：提取操作的第一个参数是*查询名称*，此参数只在客户端上使用。 如果使用非 null 查询名称，Azure 移动 SDK 将执行*增量同步*。每当提取操作返回结果集，该结果集中最新的 `updatedAt` 时间戳将存储在 SDK 本地系统表中。 后续提取操作只检索该时间戳以后的记录。
+* **增量同步**：提取操作的第一个参数是*查询名称*，此参数只在客户端上使用。 如果使用非 null 查询名称，Azure 移动 SDK 将执行*增量同步*。每次拉取操作返回结果集时，该结果集中最新的 `updatedAt` 时间戳将存储在 SDK 本地系统表中。 后续提取操作只检索该时间戳以后的记录。
 
   若要使用增量同步，服务器必须返回有意义的 `updatedAt` 值，并且必须支持按此字段排序。 但是，由于 SDK 在 updatedAt 字段中添加了自身的排序，因此无法使用本身具有 `orderBy` 子句的提取查询。
 
@@ -85,9 +84,9 @@ ms.lasthandoff: 08/24/2017
 * **清除**：可以使用 `IMobileServiceSyncTable.PurgeAsync` 清除本地存储的内容。
   如果客户端数据库包含陈旧的数据，或者需要丢弃所有挂起的更改，可能需要执行清除操作。
 
-  清除操作会从本地存储中清除表。 如果有操作正在等待与服务器数据库的同步，除非设置了 *force purge* 参数，否则清除将引发异常。
+  清除操作会从本地存储中清除表。 如果有操作正在等待与服务器数据库的同步，除非设置了 force purge 参数，否则清除将引发异常。
 
-  客户端包含陈旧数据的示例：假设在“待办事项列表”示例中，Device1 只提取未完成的项。 “购买牛奶”待办事项由其他设备在服务器上标记为已完成。 但是，Device1 在本地存储中仍有“购买牛奶”待办事项，因为它只提取未标记为已完成的项。 清除操作将清除此陈旧事项。
+  客户端包含陈旧数据的示例：假设在“待办事项列表”示例中，Device1 只提取未完成的项。 “购买牛奶”待办事项由其他设备在服务器上标记为已完成。 但是，Device1 在本地存储中仍有“购买牛奶”待办事项，因为它只提取未标记为已完成的项。 清除操作会清除这条陈旧项。
 
 ## <a name="next-steps"></a>后续步骤
 * [iOS：启用脱机同步]
@@ -102,4 +101,3 @@ ms.lasthandoff: 08/24/2017
 [Xamarin iOS：启用脱机同步]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android：启用脱机同步]: app-service-mobile-xamarin-android-get-started-offline-data.md
 [通用 Windows 平台：启用脱机同步]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-

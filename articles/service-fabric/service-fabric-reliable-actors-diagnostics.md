@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: abhisram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 1c53a6bbe0152f6f2b9666e6059af7c6d02e481f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视
 Reliable Actors 运行时发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件和[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解运行时的运行状况以及进行故障排除和性能监视。
@@ -49,7 +48,7 @@ Reliable Actors 运行时定义以下性能计数器类别。
 
 以上每个类别都有一个或多个计数器。
 
-Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet.microsoft.com/library/cc749249.aspx)应用程序可用于收集和查看性能计数器数据。 [Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)是另一种用于收集性能计数器数据并将其上载到 Azure 表的工具。
+Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet.microsoft.com/library/cc749249.aspx)应用程序可用于收集和查看性能计数器数据。 [Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)是另一种用于收集性能计数器数据并将其上传到 Azure 表的工具。
 
 ### <a name="performance-counter-instance-names"></a>性能计数器实例名称
 具有大量执行组件服务或执行组件服务分区的群集将具有大量执行组件性能计数器实例。 性能计数器实例名称有助于标识与性能计数器实例相关联的特定[分区](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)和执行组件方法（如果适用）。
@@ -142,7 +141,7 @@ Reliable Actors 运行时发出以下与[执行组件副本](service-fabric-reli
 | 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |信息性 |0x1 |执行组件副本将角色更改为“主要”。 这意味着在此副本内创建此分区的执行组件。 |
-| ReplicaChangeRoleFromPrimary |2 |信息性 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 正在进行中的任何请求完成后将会销毁执行组件。 |
+| ReplicaChangeRoleFromPrimary |2 |信息性 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 正在进行中的任何请求完成后会销毁执行组件。 |
 
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>执行组件激活和停用事件以及性能计数器
 Reliable Actors 运行时发出以下与[执行组件激活和停用](service-fabric-reliable-actors-lifecycle.md)相关的事件。
@@ -173,4 +172,3 @@ Reliable Actors 运行时发布以下与执行组件激活和停用相关的性�
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [代码示例](https://github.com/Azure/servicefabric-samples)
 * [PerfView 中的 EventSource 提供程序](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
-

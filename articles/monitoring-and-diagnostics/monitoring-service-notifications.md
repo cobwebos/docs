@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c7ea129346c5fddcff9f824dc69478cf6fb1c67a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: d85281c02b792921f12cc62e6d60bef3e7c13b3f
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="service-health-notifications"></a>服务运行状况通知
 ## <a name="overview"></a>概述
@@ -83,4 +82,3 @@ Properties.communicationId | 与此事件关联的通信。
 ## <a name="next-steps"></a>后续步骤：
 每当[发布服务运行状况通知时接收警报通知](monitoring-activity-log-alerts-on-service-notifications.md)  
 深入了解[活动日志警报](monitoring-activity-log-alerts.md)
-

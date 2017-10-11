@@ -13,14 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>使用 REST API 查询 Azure 搜索索引
 > [!div class="op_single_selector"]
 >
@@ -131,7 +129,7 @@ api-key: [query key]
 }
 ```
 
-成功的查询请求会返回状态代码 `200 OK` ，搜索结果则以 JSON 形式在响应正文中返回。 以下是上述查询的结果（假定“hotels”索引填充的是 [使用 REST API 将数据导入 Azure 搜索](search-import-data-rest-api.md) 中的示例数据）（注意，为清楚起见，JSON 已经过格式设置）。
+成功的查询请求会返回状态代码 `200 OK` ，搜索结果则以 JSON 形式在响应正文中返回。 下面是什么的结果，如上面的查询查找假设使用中的示例数据填充"酒店"索引[使用 REST API 的 Azure 搜索中的数据导入](search-import-data-rest-api.md)（请注意 JSON 已被格式化为清楚起见）。
 
 ```JSON
 {
@@ -165,4 +163,3 @@ api-key: [query key]
 ```
 
 要了解详细信息，请参阅 [搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)的“响应”部分。 有关请求失败时可能返回的其他 HTTP 状态代码的详细信息，请参阅 [HTTP 状态代码（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
-

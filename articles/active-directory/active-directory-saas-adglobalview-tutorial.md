@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: e9a5e65c484dfb98d1a7bc63d55f6ef92039554b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>教程：Azure Active Directory 与 ADP Globalview 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/22/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ADP Globalview 测试用户](#creating-an-adp-globalview-test-user)** - 在 ADP Globalview 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 ADP Globalview 测试用户](#creating-an-adp-globalview-test-user)** -若要链接到用户的 Azure AD 表示 ADP Globalview 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 06/22/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际标识符更新此值。 请与 [ADP Globalview 支持](https://www.adp.com/contact-us/overview.aspx)联系以获取此值。
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_certificate.png) 
 
@@ -134,7 +133,7 @@ ms.lasthandoff: 06/22/2017
     | email               | user.mail |
     | userid              | user.userprincipalname|
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/active-directory-saas-adglobalview-tutorial/tutorial_attribute_04.png)
 
@@ -185,7 +184,7 @@ ms.lasthandoff: 06/22/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-adglobalview-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -205,7 +204,7 @@ ms.lasthandoff: 06/22/2017
 
 若要将 Britta Simon 分配到 ADP Globalview，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -251,5 +250,4 @@ ms.lasthandoff: 06/22/2017
 [201]: ./media/active-directory-saas-adglobalview-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adglobalview-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adglobalview-tutorial/tutorial_general_203.png
-
 

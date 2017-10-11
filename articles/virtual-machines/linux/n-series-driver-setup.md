@@ -16,14 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: bdeb4d5ca1d9ff4d7dfd0961690412dd7530572a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
 若要利用运行 Linux 的 Azure N 系列 VM 的 GPU 功能，请安装支持的 NVIDIA 图形驱动程序。 部署 N 系列 VM 后，本文提供了驱动程序安装步骤。 针对 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 也提供了驱动程序安装信息。
@@ -92,7 +90,7 @@ ms.lasthandoff: 07/28/2017
   ```
   IgnoreSP=TRUE
   ```
-9. 重新启动 VM，然后继续验证安装。
+9. 重新启动 VM，并继续验证安装。
 
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>基于 CentOS 的 7.3 或 Red Hat Enterprise Linux 7.3
@@ -156,12 +154,12 @@ ms.lasthandoff: 07/28/2017
   ```
   IgnoreSP=TRUE
   ```
-9. 重新启动 VM，然后继续验证安装。
+9. 重新启动 VM，并继续验证安装。
 
 ### <a name="verify-driver-installation"></a>验证驱动程序安装
 
 
-若要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，然后运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
+要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，并运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
 
 将显示类似于下面的输出：
 
@@ -217,7 +215,7 @@ C 和 C++ 开发人员可以选择安装完整的工具包来生成 GPU 加速�
 ```bash
 lspci | grep -i NVIDIA
 ```
-你将看到类似于以下示例（显示 NVIDIA Tesla K80 卡）的输出：
+会看到类似于以下示例（显示 NVIDIA Tesla K80 卡）的输出：
 
 ![lspci 命令输出](./media/n-series-driver-setup/lspci.png)
 
@@ -249,7 +247,7 @@ lspci | grep -i NVIDIA
   sudo apt-get install cuda
   ```
 
-3. 重新启动 VM，然后继续验证安装。
+3. 重新启动 VM，并继续验证安装。
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>基于 CentOS 的 7.3 或 Red Hat Enterprise Linux 7.3
 
@@ -306,13 +304,13 @@ lspci | grep -i NVIDIA
   sudo yum install cuda
   ```
 
-5. 重新启动 VM，然后继续验证安装。
+5. 重新启动 VM，并继续验证安装。
 
 
 ### <a name="verify-driver-installation"></a>验证驱动程序安装
 
 
-若要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，然后运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
+要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，并运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
 
 将显示类似于下面的输出：
 
@@ -321,7 +319,7 @@ lspci | grep -i NVIDIA
 
 ### <a name="cuda-driver-updates"></a>CUDA 驱动程序更新
 
-在部署后，建议你定期更新 CUDA 驱动程序。
+在部署后，建议定期更新 CUDA 驱动程序。
 
 #### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -361,4 +359,3 @@ sudo reboot
     * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html)（适用于 Azure NV VM）
 
 * 若要捕获安装了 NVIDIA 驱动程序的 Linux VM 映像，请参阅[如何通用化和捕获 Linux 虚拟机](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-

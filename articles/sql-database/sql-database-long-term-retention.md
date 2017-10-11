@@ -16,12 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
-ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
 ms.openlocfilehash: 25e651203f804fbf32d632b5f83145a3f3f72a7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>将 Azure SQL 数据库备份存储 10 年之久
 出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库的[自动备份](sql-database-automated-backups.md)功能提供的过去 7-35 天的数据库备份。 使用长期备份保留功能，可将 SQL 数据库备份存储在 Azure 恢复服务保管库中长达 10 年。 每个保管库最多可存储 1000 个数据库。 然后可选择保管库中的任何备份，并将其还原为新数据库。
@@ -94,7 +93,7 @@ SQL 数据库的长期备份保留按 [Azure 备份服务定价费率](https://a
 
 ## <a name="disable-long-term-retention"></a>禁用长期保留
 
-恢复服务将根据提供的保留策略自动清理备份。 
+恢复服务时自动处理基于提供的保留策略的备份的清理。 
 
 若要停止向保管库发送特定数据库的备份，请删除该数据库的保留策略。
   
@@ -103,7 +102,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName 'RG1' -Se
 ```
 
 > [!NOTE]
-> 不会影响保管库中已有备份。 恢复服务将在其保留期到期时将其自动删除。
+> 不会影响保管库中已有备份。 恢复服务会在其保留期到期时将其自动删除。
 
 ## <a name="long-term-backup-retention-faq"></a>长期备份保留常见问题解答
 
@@ -167,4 +166,3 @@ SQL 保留策略中可否存在多个计划（日计划、周计划、月计划�
 
 ## <a name="next-steps"></a>后续步骤
 数据库备份可保护数据免遭意外损坏或删除，因此数据库备份是任何业务连续性和灾难恢复策略不可或缺的组成部分。 若要了解其他 SQL 数据库业务连续性解决方案，请参阅[业务连续性概述](sql-database-business-continuity.md)。
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>使用 Docker-Machine 在 Azure 中创建 Docker 主机
 运行 [Docker](https://www.docker.com/) 容器时需要使用运行 Docker 守护程序的主机 VM。
@@ -121,5 +120,4 @@ PS C:\> docker-machine ip MyDockerHost
 有关容器的生产托管，请参阅 [Azure 容器服务](http://aka.ms/AzureContainerService)
 
 若要使用 Visual Studio 开发 .NET Core 应用程序，请参阅 [Docker Tools for Visual Studio](http://aka.ms/DockerToolsForVS)
-
 

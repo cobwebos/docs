@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte;bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 4a3ee3c4d1fa9b626a51f24997603adceed8311f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="upgrade-your-azure-log-analytics-workspace-to-new-log-search"></a>将 Azure Log Analytics 工作区升级到新的日志搜索
 
 > [!NOTE]
@@ -84,4 +82,3 @@ ms.lasthandoff: 08/28/2017
 - 查看[有关新语言的教程](https://go.microsoft.com/fwlink/?linkid=856078)。
 - 学习[有关使用日志搜索门户的教程](log-analytics-log-search-log-search-portal.md)（使用新查询语言）。
 - 获取对新的[高级分析门户](https://go.microsoft.com/fwlink/?linkid=856587)的简介。
-

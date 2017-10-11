@@ -15,14 +15,12 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 67581624ca00893176e6d31c7b2de92a19fe966a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.openlocfilehash: ef922668f080b8f02f07c2f9724f5a98171fb754
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
 
 网络策略服务器 (NPS) 扩展可将基于云的 Azure 多重身份验证扩展至本地基础结构。 本文假设你已安装扩展，并想了解如何为自身需求自定义扩展。 
@@ -39,7 +37,7 @@ ms.lasthandoff: 09/14/2017
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | 字符串 | 空 | 指定要使用的 Active Directory 属性（而非 UPN）的名称。 此属性将用作 AlternateLoginId 属性。 如果将此注册表值设置为[有效的 Active Directory 属性](https://msdn.microsoft.com/library/ms675090.aspx)（例如 mail 或 displayName），那么将使用该属性的值（而不使用用户的 UPN）来进行身份验证。 如果此注册表值为空或未配置，则将禁用 AlternateLoginId，并使用用户的 UPN 来进行身份验证。 |
 | LDAP_FORCE_GLOBAL_CATALOG | 布尔值 | False | 在查找 AlternateLoginId 时，凭此标记强制使用全局编录执行 LDAP 搜索。 将域控制器配置为全局编录，向全局编录中添加 AlternateLoginId 属性，然后启用此标记。 <br><br> 如果配置了 LDAP_LOOKUP_FORESTS（非空），则无论注册表设置的值为何，都会将此标记强制设为 True。 在这种情况下，NPS 扩展要求对每个林都使用 AlternateLoginId 属性来配置全局编录。 |
-| LDAP_LOOKUP_FORESTS | 字符串 | 空 | 提供以分号分隔的林列表以供搜索。 例如，contoso.com;foobar.com。如果配置了此注册表值，则 NPS 扩展将以迭代的方式、按列表顺序搜索整个林，然后返回第一个成功的 AlternateLoginId 值。 如果未配置此注册表值，则将 AlternateLoginId 的查找范围限制在当前域中。|
+| LDAP_LOOKUP_FORESTS | 字符串 | 空 | 提供以分号分隔的林列表以供搜索。 例如，contoso.com;foobar.com。 如果配置了此注册表值，则 NPS 扩展将以迭代的方式、按列表顺序搜索整个林，然后返回第一个成功的 AlternateLoginId 值。 如果未配置此注册表值，则将 AlternateLoginId 的查找范围限制在当前域中。|
 
 要使用备用登录 ID 排除故障，请对[备用登录 ID 错误](multi-factor-authentication-nps-errors.md#alternate-login-id-errors)执行推荐的步骤。
 

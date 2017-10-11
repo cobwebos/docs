@@ -14,19 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 4dc5ae7d3feae769a8366f68f412f3b79fa8eb00
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题解答
 
 
 ## <a name="overview"></a>概述
-以下是你作为 StorSimple 合作伙伴在 Azure 门户中部署或管理 StorSimple Virtual Array 时可能遇到的问题及其答案。
+以下是问题和答案时部署或管理 StorSimple Virtual Array，在 Azure 门户中可能遇到作为 StorSimple 合作伙伴。
 
 问题和解答分为以下几个类别：
 
@@ -76,13 +74,13 @@ StorSimple 是基于使用情况的服务。 通过 CSP 渠道采购 StorSimple 
 是的。 借助用于 CSP 的 StorSimple Virtual Array，合作伙伴访问 Azure 门户的最佳方式应该是通过[合作伙伴中心](http://partnercenter.microsoft.com/)进行访问，他们可在合作伙伴中心中管理客户和订阅。 若要管理 StorSimple 订阅，合作伙伴或客户（具体取决于授予的权限），应登录到 Azure 门户。 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>Microsoft 是否为 StorSimple for CSP 提供了新的门户？ 
-否。 你将能够通过 Azure 门户在 CSP 中管理 StorSimple Virtual Array。
+否。 将能够通过 Azure 门户在 CSP 中管理 StorSimple Virtual Array。
 
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>我已为我的客户配置了独立的 StorSimple 订阅。 我必须使用 Azure 门户来管理我的设备吗？ 
 是的。 
 
 ### <a name="is-the-microsoft-account-team-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>对于通过 CSP 销售的 StorSimple，Microsoft 帐户团队是否会因此得到报酬？
-是的。 合作伙伴销售主管和面向最终客户的客户团队将获得 CSP 销售的报酬。 合作伙伴可望在销售差异化价值和产品/服务方面起到带头作用。
+是的。 合作伙伴销售主管和面向最终客户的客户团队会获得 CSP 销售的报酬。 合作伙伴可望在销售差异化价值和产品/服务方面起到带头作用。
 
 ## <a name="support-for-storsimple-and-csp"></a>支持 StorSimple 和 CSP
 
@@ -100,4 +98,3 @@ CSP 中 StorSimple 的支持模型与 CSP 中其他 Azure 服务的支持模型�
 
 ## <a name="next-steps"></a>后续步骤
 如果已准备好部署 StorSimple，请转到[部署 CSP 中的 StorSimple](storsimple-partner-csp-deploy.md)。
-

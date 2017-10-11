@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 创建和管理卷组
 ## <a name="overview"></a>概述
@@ -46,7 +45,7 @@ ms.lasthandoff: 07/08/2017
 在“**操作**”窗格中也提供了所有这些操作。
 
 ## <a name="view-volume-groups"></a>查看卷组
-如果单击“**卷组**”节点，“**结果**”窗格会显示有关每个卷组的以下信息，具体取决于你所选择的列。 （“**结果**”窗格中的列是可以配置的。 右键单击“**卷**”节点，选择“**查看**”，然后选择“**添加/删除列**”。）
+如果单击“**卷组**”节点，“**结果**”窗格会显示有关每个卷组的以下信息，具体取决于所选择的列。 （“**结果**”窗格中的列是可以配置的。 右键单击“**卷**”节点，选择“**查看**”，并选择“**添加/删除列**”。）
 
 | 结果列 | 说明 |
 |:--- |:--- |
@@ -65,17 +64,17 @@ ms.lasthandoff: 07/08/2017
 
 #### <a name="to-create-a-volume-group"></a>创建卷组
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，右键单击“**卷组**”，然后单击“**创建卷组**”。
+2. 在“**作用域**”窗格中，右键单击“**卷组**”，并单击“**创建卷组**”。
    
     ![创建卷组](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
    
-    此时将显示“**创建卷组**”对话框。
+    此时会显示“**创建卷组**”对话框。
    
     ![创建卷组对话框](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
 3. 输入以下信息：
    
    1. 在“**名称**”框中，为新卷组键入一个唯一的名称。
-   2. 在“**应用程序**”框中，选择与你将添加到卷组的卷相关联的应用程序。
+   2. 在“**应用程序**”框中，选择与添加到卷组的卷相关联的应用程序。
       
        “**应用程序**”框仅列出使用 StorSimple 卷且已为其启用 VSS 编写器的应用程序。 仅当编写器可以识别的所有卷都是 StorSimple 卷时，才启用 VSS 编写器。 如果“应用程序”框为空，则表明没有安装任何使用 Azure StorSimple 卷且具有支持的 VSS 编写器的应用程序。 （目前，Azure StorSimple 支持 Microsoft Exchange 和 SQL Server。）有关 VSS 编写器的详细信息，请参阅[与 Windows 卷影复制服务的集成](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
       
@@ -92,21 +91,21 @@ ms.lasthandoff: 07/08/2017
 
 #### <a name="to-back-up-a-volume-group"></a>备份卷组
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，展开“**卷组**”节点，右键单击卷组名称，然后单击“**执行备份**”。
+2. 在“**作用域**”窗格中，展开“**卷组**”节点，右键单击卷组名称，并单击“**执行备份**”。
    
     ![立即备份卷组](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
-3. 在“**执行备份**”对话框中，选择“**本地快照**”或“**云快照**”，然后单击“**创建**”。
+3. 在“**执行备份**”对话框中，选择“**本地快照**”或“**云快照**”，并单击“**创建**”。
    
     ![执行备份对话框](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
-4. 若要确认备份正在运行，请展开“**作业**”节点，然后再单击“**正在运行**”。 此时会列出备份。
-5. 若要查看已完成的快照，请展开“**备份目录**”节点，展开卷组名称，然后单击“**本地快照**”或“**云快照**”。 如果已成功完成，则会列出备份。
+4. 要确认备份正在运行，请展开“**作业**”节点，再单击“**正在运行**”。 此时会列出备份。
+5. 要查看已完成的快照，请展开“**备份目录**”节点，展开卷组名称，并单击“**本地快照**”或“**云快照**”。 如果已成功完成，则会列出备份。
 
 ## <a name="edit-a-volume-group"></a>编辑卷组
 使用以下过程编辑卷组。
 
 #### <a name="to-edit-a-volume-group"></a>编辑卷组
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，展开“**卷组**”节点，右键单击卷组名称，然后单击“**编辑**”。
+2. 在“**作用域**”窗格中，展开“**卷组**”节点，右键单击卷组名称，并单击“**编辑**”。
 3. 此时将显示“创建卷组”对话框。 可以更改“**名称**”、“**应用程序**”和“**卷**”条目。
 4. 单击“确定”  保存更改。
 
@@ -120,13 +119,12 @@ ms.lasthandoff: 07/08/2017
 
 #### <a name="to-delete-a-volume-group"></a>删除卷组
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，展开“**卷组**”节点，右键单击卷组名称，然后单击“**删除**”。
-3. 此时将显示“**删除卷组**”对话框。 在文本框中键入“**确认**”，然后单击“**确定**”。
+2. 在“**作用域**”窗格中，展开“**卷组**”节点，右键单击卷组名称，并单击“**删除**”。
+3. 此时会显示“**删除卷组**”对话框。 在文本框中键入“**确认**”，并单击“**确定**”。
    
     已删除的卷组即会从“**结果**”窗格的列表中消失，而且与该卷组相关联的所有备份也将从备份目录中删除。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[使用 StorSimple Snapshot Manager 管理你的 StorSimple 解决方案](storsimple-snapshot-manager-admin.md)。
+* 了解如何[使用 StorSimple Snapshot Manager 管理 StorSimple 解决方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何[使用 StorSimple Snapshot Manager 创建和管理备份策略](storsimple-snapshot-manager-manage-backup-policies.md)。
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 2bd0cf8be87937044ad515a2c6f253b1711bb2bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -36,7 +35,7 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="before-beginning"></a>开始之前
 
-此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 我们将此列表用于我们的示例步骤。 你可以复制列表作为参考，并将列表中的值替换为自己的值。
+此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 我们将此列表用于我们的示例步骤。 可以复制列表作为参考，并将列表中的值替换为自己的值。
 
 **配置参考列表**
 
@@ -46,14 +45,14 @@ ms.lasthandoff: 04/19/2017
     * 子网地址范围 =“192.168.1.0/24”
 * 资源组 = “TestRG”
 * 位置 =“美国东部”
-* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
+* 网关的子网名称:"GatewaySubnet"必须始终命名网关子网*GatewaySubnet*。
     * 网关子网地址空间 = “192.168.200.0/26”
 * 网关名称 =“ERGW”
 * 网关 IP 名称 =“MyERGWVIP”
 * 网关类型 =“ExpressRoute” ExpressRoute 配置需要此类型。
 * 网关公共 IP 名称 =“MyERGWVIP”
 
-可以先观看这些步骤的[视频](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)，然后再开始配置。
+可以先观看这些步骤的[视频](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)，再开始配置。
 
 ## <a name="create-the-gateway-subnet"></a>创建网关子网
 
@@ -70,14 +69,14 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
-1. 在门户左侧单击 **+**，然后在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，然后单击该条目。 单击“虚拟网络网关”边栏选项卡底部的“创建”。 这会打开“创建虚拟网络网关”边栏选项卡。
+1. 在门户左侧单击 **+**，并在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目。 单击“虚拟网络网关”边栏选项卡底部的“创建”。 这会打开“创建虚拟网络网关”边栏选项卡。
 2. 在“创建虚拟网络网关”边栏选项卡中，填写虚拟网络网关的值。
 
     ![创建虚拟网络网关边栏选项卡字段](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "创建虚拟网络网关边栏选项卡字段")
 3. **名称**：为网关命名。 这与为网关子网命名不同。 它是要创建的网关对象的名称。
 4. **网关类型**：选择“ExpressRoute”。
 5. **SKU**：从下拉列表中选择网关 SKU。
-6. **位置**：调整“位置”字段，使其指向虚拟网络所在的位置。 如果该位置未指向虚拟网络所在的区域，该虚拟网络将不会显示在“选择虚拟网络”下拉列表中。
+6. **位置**：调整“位置”字段，使其指向虚拟网络所在的位置。 如果该位置未指向虚拟网络所在的区域，该虚拟网络不会显示在“选择虚拟网络”下拉列表中。
 7. 选择要将此网关添加到其中的虚拟网络。 单击“虚拟网络”打开“选择虚拟网络”边栏选项卡。 选择 VNet。 如果看不到 VNet，请确保“位置”字段指向虚拟网络所在的区域。
 9. 选择公共 IP 地址。 单击“公共 IP 地址”打开“选择公共 IP 地址”边栏选项卡。 单击“+新建”打开“创建公共 IP 地址”边栏选项卡。 输入公共 IP 地址的名称。 此边栏选项卡会创建一个公共 IP 地址对象，将向其动态分配公共 IP 地址。 单击“确定”保存对此边栏选项卡所做的更改。
 10. **订阅**：确保选择正确的订阅。

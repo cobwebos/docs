@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/21/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/22/2016
-
+ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 本文说明如何使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
@@ -182,7 +181,7 @@ ms.lasthandoff: 12/22/2016
 [此处提供](https://msdn.microsoft.com/library/azure/dn933805.aspx)了警报规则的架构和属性说明。
 
 ## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>具有警报的资源的 Resource Manager 模板
-在创建的资源过程中创建警报时，Resource Manager 模板上的警报通常很有用。 例如，你可能想要确保每次部署虚拟机时设置“CPU % > 80”规则。 为此，请在 VM 模板的资源数组中将警报规则添加为资源，使用 `dependsOn` 属性将依赖项添加到 VM 资源 ID。 下面是创建 Windows VM 并在 CPU 利用率高于 80% 时添加警报以通知订阅管理员的完整示例。
+在创建的资源过程中创建警报时，Resource Manager 模板上的警报通常很有用。 例如，你可能想要确保"CPU %> 80"设置规则每次部署虚拟机。 为此，请在 VM 模板的资源数组中将警报规则添加为资源，使用 `dependsOn` 属性将依赖项添加到 VM 资源 ID。 下面是创建 Windows VM 并在 CPU 利用率高于 80% 时添加警报以通知订阅管理员的完整示例。
 
 ```json
 {
@@ -404,5 +403,4 @@ ms.lasthandoff: 12/22/2016
 ## <a name="next-steps"></a>后续步骤
 * [详细了解警报](insights-receive-alert-notifications.md)
 * [将诊断设置添加](monitoring-enable-diagnostic-logs-using-template.md)到 Resource Manager 模板
-
 

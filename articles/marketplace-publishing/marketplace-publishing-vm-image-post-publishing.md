@@ -14,12 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.translationtype: HT
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>有关 Azure Marketplace 中的虚拟机产品/服务的发布后指南
 本文介绍如何在 Azure Marketplace 中更新实时虚拟机产品。 其中将指导你完成将一个或多个新 SKU 添加到现有产品的过程。 此外，还将引导你完成删除从 Marketplace 的实时虚拟机产品或 SKU 的过程。
@@ -70,7 +69,7 @@ ms.lasthandoff: 05/17/2017
 2. 转到“虚拟机”选项卡并选择你的产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
-5. 单击“详细信息”选项卡。在“说明”部分中，更新产品的“标题”、“摘要”和“详细摘要”，然后保存更改。
+5. 单击“详细信息”选项卡。 在“说明”部分中，更新产品的“标题”、“摘要”和“详细摘要”，然后保存更改。
 
    > [!NOTE]
    > 更新 SKU 详细信息时，请注意以下限制： 
@@ -99,7 +98,7 @@ ms.lasthandoff: 05/17/2017
 2. 转到“虚拟机”选项卡并选择你的产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
-5. 单击“计划”选项卡。在“SKU”部分中，更新 SKU 的“标题”、“摘要”和“说明”，然后保存更改。
+5. 单击“计划”选项卡。 在“SKU”部分中，更新 SKU 的“标题”、“摘要”和“说明”，然后保存更改。
 
    > [!NOTE]
    > 更新 SKU 详细信息时，请注意以下限制： 
@@ -165,7 +164,7 @@ ms.lasthandoff: 05/17/2017
 2. 转到“虚拟机”选项卡并选择你的产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
-5. 单击“法律”选项卡。在“法律”部分中，更新策略/使用条款。 在“使用条款”文本框中输入或粘贴策略/条款并保存更改。
+5. 单击“法律”选项卡。 在“法律”部分中，更新策略/使用条款。 在“使用条款”文本框中输入或粘贴策略/条款并保存更改。
 6. 法律使用条款的字符数限制为 100 万个字符。
 7. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 8. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
@@ -207,7 +206,7 @@ ms.lasthandoff: 05/17/2017
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
 2. 转到“虚拟机”选项卡并选择你的产品。
-3. 在左侧菜单中，单击“SKU”选项卡。然后单击“添加 SKU”。 
+3. 在左侧菜单中，单击“SKU”选项卡。 然后单击“添加 SKU”。 
 4. 在对话框中，以小写形式输入“SKU 标识符”。 若要使用 BYOL 计费模型发布新 SKU，请选中“自带许可(BYOL)模型”复选框。 否则，请清除该复选框。 单击勾选标记创建新 SKU。 如果未选择 BYOL 计费模型，则计费模型将自动设置为“每小时”。 如果想要为每小时计费模型启用 30 天免费试用，请针对“是否提供免费试用?”单击“一个月”。 否则，选择“无试用”。 （仅当创建新 SKU 时未选择 BYOL 时，才显示选项“是否提供免费试用?”。）
 
    > [!IMPORTANT]
@@ -337,4 +336,3 @@ ms.lasthandoff: 05/17/2017
 * [作为发布者获取支持](marketplace-publishing-get-publisher-support.md)
 * [创建本地 VM 映像](marketplace-publishing-vm-image-creation-on-premise.md)
 * [在 Azure 预览门户中创建运行 Windows 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

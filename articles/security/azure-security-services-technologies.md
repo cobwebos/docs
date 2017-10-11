@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure 安全服务与技术
-在我们与当前和未来 Azure 客户的讨论中，经常会被问及“你们是否有 Azure 必须提供的所有安全相关服务和技术的列表？”
+在我们与当前和未来 Azure 客户的讨论中，我们经常被问及“你们是否有 Azure 必须提供的所有安全相关服务和技术的列表？”
 
 我们知道在用户要评估云服务提供商技术选项时，有这样的列表会很有帮助，以便用户可以在适当的时候用来进行更深的研究。
 
@@ -73,4 +72,3 @@ ms.lasthandoff: 08/22/2017
 * [Azure ExpressRoute](../expressroute/expressroute-introduction.md)
 * [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)
 * [Azure 应用程序代理](../active-directory/active-directory-application-proxy-enable.md)
-

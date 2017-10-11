@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 48e4ad774164b87d0cacb42f709e54af1d6f07b9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 486a27d7ca576c8fe1552c02eb24ece6b8bb2ba8
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="package-an-application"></a>打包应用程序
 本文介绍如何打包 Service Fabric 应用程序并为部署做好准备。
@@ -59,16 +58,16 @@ D:\TEMP\MYAPPLICATIONTYPE
 <a id="Package-App"></a>
 ## <a name="configure"></a>配置
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
-如果使用 Visual Studio 2015 创建应用程序，你可以使用“包”命令自动创建符合上述布局的包。
+如果使用 Visual Studio 2015 创建应用程序，可以使用“包”命令自动创建符合上述布局的包。
 
 若要创建包，请在“解决方案资源管理器”中右键单击应用程序项目，并选择“包”命令，如下所示：
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
-打包完成后，该包的位置将显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+打包完成后，该包的位置会显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
 
 ### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
-还可以使用 `msbuild.exe` 以编程方式打包你的应用程序。 这是 Visual Studio 实际运行的操作，因此输出是相同的。
+还可以使用 `msbuild.exe` 以编程方式打包应用程序。 这是 Visual Studio 实际运行的操作，因此输出是相同的。
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
@@ -123,7 +122,7 @@ PS D:\temp>
 对于压缩应用程序包，[上传应用程序包](service-fabric-deploy-remove-applications.md#upload-the-application-package)比上传未压缩的程序包（特别是如果考虑压缩时间）需要更长时间，但[注册](service-fabric-deploy-remove-applications.md#register-the-application-package)和[取消注册应用程序类型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)对于压缩应用程序包而言更快。
 
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
-压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
+压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩不会产生任何更改。
 
 可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
@@ -202,4 +201,3 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
-

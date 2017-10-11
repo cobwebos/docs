@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 1b96ab084acae14b35634666ae465d406c25f75a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: c4d49cfc9887e422b3eaed2b96348c99eca48881
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a>开始使用 Azure Active Directory 和 Visual Studio 连接服务（MVC 项目）
 > [!div class="op_single_selector"]
@@ -30,10 +29,10 @@ ms.lasthandoff: 05/25/2017
 > 
 
 ## <a name="requiring-authentication-to-access-controllers"></a>访问控制器需要身份验证
-你项目中的所有控制器均带有 **Authorize** 属性。 此属性要求用户先进行身份验证，然后才能访问这些控制器。 若要允许匿名访问控制器，请从控制器删除此属性。 如果您想要更详细地设置这些权限，请将该属性应用到需要身份验证的每个方法，而不是将它应用到控制器类。
+项目中的所有控制器均带有 **Authorize** 属性。 此属性要求用户先进行身份验证，才能访问这些控制器。 若要允许匿名访问控制器，请从控制器删除此属性。 如果想要更详细地设置这些权限，请将该属性应用到需要身份验证的每个方法，而不是将它应用到控制器类。
 
 ## <a name="adding-signin--signout-controls"></a>添加 SignIn/SignOut 控件
-若要将 SignIn/SignOut 控件添加到视图，可使用 **_LoginPartial.cshtml** 分部视图将该功能添加到某个视图。 下面是已添加到标准 **_Layout.cshtml** 视图的功能示例。 （注意带有 navbar-collapse 类的 div 中的最后一个元素）：
+要将 SignIn/SignOut 控件添加到视图，可使用 **_LoginPartial.cshtml** 分部视图将该功能添加到某个视图。 下面是已添加到标准 **_Layout.cshtml** 视图的功能示例。 （注意带有 navbar-collapse 类的 div 中的最后一个元素）：
 
 <pre>
     &lt;!DOCTYPE html&gt; 
@@ -82,5 +81,4 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 - [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 9746170f157ed5065adc953a31687ff18bd73708
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>在 Log Analytics 中使用正则表达式筛选日志搜索结果
 
@@ -99,4 +98,3 @@ ms.lasthandoff: 08/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 * 熟悉[日志搜索](log-analytics-log-searches.md)，以便查看和分析 Log Analytics 存储库中的数据。
-

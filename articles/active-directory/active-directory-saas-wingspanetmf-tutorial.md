@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
 ms.openlocfilehash: 8c76fb64229abcad0cabb910e7c170979a79d839
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>教程：Azure Active Directory 与 Wingspan eTMF 的集成
 
@@ -225,5 +224,4 @@ ms.lasthandoff: 05/04/2017
 [201]: ./media/active-directory-saas-wingspanetmf-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-wingspanetmf-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-wingspanetmf-tutorial/tutorial_general_203.png
-
 

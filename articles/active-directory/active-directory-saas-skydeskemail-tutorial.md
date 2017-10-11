@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 0ffcca4161fc836192fc9c9871a905f36ea76b32
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>教程：Azure Active Directory 与 SkyDesk Email 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/13/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-skydesk-email-from-the-gallery"></a>从库中添加 SkyDesk Email
-若要配置 SkyDesk Email 与 Azure AD 的集成，需要从库中将 SkyDesk Email 添加到托管 SaaS 应用列表。
+要配置 SkyDesk Email 与 Azure AD 的集成，需要从库中将 SkyDesk Email 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 SkyDesk Email，请执行以下步骤：**
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 07/13/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.sg/support/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_certificate.png) 
 
@@ -130,9 +129,9 @@ ms.lasthandoff: 07/13/2017
 
 7. 若要在 **SkyDesk Email** 中启用 SSO，请执行以下步骤：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 以管理员身份登录 SkyDesk Email 帐户。
+    a. 以管理员身份登录 SkyDesk Email 帐户。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在顶部菜单中，单击“设置”，并选择“组织”。 
+    b. 在顶部菜单中，单击“设置”，并选择“组织”。 
     
       ![配置单一登录](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
@@ -144,7 +143,7 @@ ms.lasthandoff: 07/13/2017
     
       ![配置单一登录](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 输入域名，然后验证域。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 输入域名，并验证域。
     
       ![配置单一登录](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
@@ -163,9 +162,9 @@ ms.lasthandoff: 07/13/2017
    
     ![配置单一登录](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
     c. **更改密码 URL** 是可选项，因此将其留空。
 
@@ -202,7 +201,7 @@ ms.lasthandoff: 07/13/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-skydeskemail-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -212,9 +211,9 @@ ms.lasthandoff: 07/13/2017
  
 ### <a name="creating-a-skydesk-email-test-user"></a>创建 SkyDesk Email 测试用户
 
-在本部分中，将在 SkyDesk Email 中创建一个名为“Britta Simon”的用户。
+在本部分中，会在 SkyDesk Email 中创建一个名为“Britta Simon”的用户。
 
-1. 在 SkyDesk Email 的左侧面板中，单击“用户访问”，然后输入用户名。 
+1. 在 SkyDesk Email 的左侧面板中，单击“用户访问”，并输入用户名。 
 
     ![配置单一登录](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
@@ -230,7 +229,7 @@ ms.lasthandoff: 07/13/2017
 
 **若要将 Britta Simon 分配到 SkyDesk Email，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -278,5 +277,4 @@ ms.lasthandoff: 07/13/2017
 [201]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_203.png
-
 

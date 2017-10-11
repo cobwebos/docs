@@ -1,14 +1,14 @@
-使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。
+创建 App Service 计划与[az appservice 计划创建](/cli/azure/appservice/plan#create)命令。
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
+下面的示例创建名为 App Service 计划`myAppServicePlan`中**免费**定价层：
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
+创建 App Service 计划后，则 Azure CLI 将显示类似于下面的示例信息：
 
 ```json
 { 

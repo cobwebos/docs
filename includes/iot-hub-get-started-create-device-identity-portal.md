@@ -4,7 +4,7 @@
 
 1. 请确保已登录到 [Azure 门户][lnk-azure-portal]。
 
-1. 在跳转栏中单击“所有资源”，然后查找 IoT 中心资源。
+1. 在跳转栏中单击“所有资源”，并查找 IoT 中心资源。
 
     ![导航到 IoT 中心][img-find-iothub]
 

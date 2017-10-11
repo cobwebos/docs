@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 4d020ff2b998da4cb52fe91e4d7d4b93544965a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>StorSimple 虚拟阵列更新 0.5 发行说明
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 05/10/2017
 
 - 备份复原能力改进 - 此版本有改进备份复原能力的修补程序。 在早期版本中，仅在出现特定异常时重试备份。 此版本将重试所有备份异常，增强备份复原能力。
 
-- 对存储使用情况监视的更新 - 自 2017 年 6 月 30 日起，对 StorSimple 虚拟设备系列的存储使用情况监视将会停用。 这适用于运行更新 0.4 或更低版本的所有虚拟阵列上的监视图表。 此更新包含在 Azure 门户中继续使用存储使用情况监视所需的更改。 请在 2017 年 6 月 30 日前安装此重要更新，以便继续使用监视功能。
+- 对存储使用情况监视的更新 - 自 2017 年 6 月 30 日起，对 StorSimple 虚拟设备系列的存储使用情况监视会停用。 这适用于运行更新 0.4 或更低版本的所有虚拟阵列上的监视图表。 此更新包含在 Azure 门户中继续使用存储使用情况监视所需的更改。 请在 2017 年 6 月 30 日前安装此重要更新，以便继续使用监视功能。
 
 
 ## <a name="issues-fixed-in-the-update-05"></a>更新 0.5 中修复的问题
@@ -68,14 +67,14 @@ ms.lasthandoff: 05/10/2017
 | **6.** |分层卷或共享 |不支持对适用于 StorSimple 分层卷的应用程序进行字节范围锁定。 如果启用了字节范围锁定，则 StorSimple 分层将不起作用。 |建议的措施包括： <br></br>在应用程序逻辑中关闭字节范围锁定。<br></br>选择将此应用程序的数据放置在本地固定卷中，而不是分层卷中。<br></br>*注意事项*：当使用本地固定卷并且已启用字节范围锁定时，即使在还原完成之前，本地固定卷也可以处于联机状态。 在这种情况下，如果正在进行还原，则必须等待还原完成。 |
 | **7.** |分层共享 |处理大型文件可能会导致分层速度变慢。 |处理大型文件时，建议最大的文件应小于共享大小的 3%。 |
 | **8.** |共享的已用容量 |即使共享上没有任何数据时，也可能会看到共享消耗。 出现此消耗是因为共享的已用容量中包括元数据。 | |
-| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这将在更高版本中实现。 有关详细信息，请转到 [StorSimple 虚拟阵列的故障转移和灾难恢复](storsimple-virtual-array-failover-dr.md) |
+| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这会在更高版本中实现。 有关详细信息，请转到 [StorSimple 虚拟阵列的故障转移和灾难恢复](storsimple-virtual-array-failover-dr.md) |
 | **10.** |Azure PowerShell |在此版本中，不可以通过 Azure PowerShell 管理 StorSimple 虚拟设备。 |所有对虚拟设备的管理应通过 Azure 门户和本地 Web UI 进行。 |
 | **11.** |密码更改 |虚拟阵列设备控制台仅接受以英语（美国）键盘格式输入。 | |
-| **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，然后再使它们联机，以使更改生效。 |此问题将在更高版本中得以解决。 |
+| **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，再使它们联机，以使更改生效。 |此问题会在更高版本中得以解决。 |
 | **13.** |iSCSI 服务器 |在 StorSimple 设备管理器服务和 iSCSI 主机中，显示的 iSCSI 卷“已用存储”可能有所不同。 |iSCSI 主机具有“文件系统”视图。<br></br>设备能够查看当卷处于最大大小时所分配的快。 |
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 | **15.** |文件服务器 |不支持符号链接。 | |
-| **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时将导致不受支持的配置。  | |
+| **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时会导致不受支持的配置。  | |
 
 ## <a name="next-step"></a>后续步骤
 在 StorSimple 虚拟阵列上[安装更新 0.5](storsimple-virtual-array-install-update-05.md)。
@@ -87,5 +86,4 @@ ms.lasthandoff: 05/10/2017
 * [StorSimple Virtual Array Update 0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
-
 

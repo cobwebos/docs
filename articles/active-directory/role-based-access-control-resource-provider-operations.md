@@ -12,12 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 资源提供程序操作
 
@@ -810,7 +809,7 @@ ms.lasthandoff: 05/18/2017
 |/labs/ListVhds/action|列出可用于创建自定义映像的磁盘映像。|
 |/labs/GenerateUploadUri/action|生成用于将自定义磁盘映像上传到实验室的 URI。|
 |/labs/CreateEnvironment/action|在实验室中创建虚拟机。|
-|/labs/ClaimAnyVm/action|在实验室中声明随机可声明的虚拟机。|
+|/labs/ClaimAnyVm/action|在实验室中认领随机可认领虚拟机。|
 |/labs/ExportResourceUsage/action|将实验室资源使用情况导出到存储帐户|
 |/labs/users/delete|删除用户配置文件。|
 |/labs/users/read|读取用户配置文件。|
@@ -1104,9 +1103,9 @@ ms.lasthandoff: 05/18/2017
 
 | 操作 | 说明 |
 |---|---|
-|/agreements/offers/plans/read|返回给定 Marketplace 项的协议|
-|/agreements/offers/plans/sign/action|为给定 Marketplace 项的协议签名|
-|/agreements/offers/plans/cancel/action|取消给定 Marketplace 项的协议|
+|/agreements/offers/plans/read|返回给定应用商店项的协议|
+|/agreements/offers/plans/sign/action|为给定应用商店项的协议签名|
+|/agreements/offers/plans/cancel/action|取消给定应用商店项的协议|
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -2224,4 +2223,3 @@ ms.lasthandoff: 05/18/2017
 - 查看[内置的 RBAC 角色](role-based-access-built-in-roles.md)。
 
 - 了解如何[按用户](role-based-access-control-manage-assignments.md)或[按资源](role-based-access-control-configure.md)管理访问权限分配 
-

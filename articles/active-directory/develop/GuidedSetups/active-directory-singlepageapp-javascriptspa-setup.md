@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: a399d35358ecf188070e699f4d975a415bd4649d
-ms.contentlocale: zh-cn
-
+ms.openlocfilehash: fc9f88cc8d23abcfa8ea30e346192732b422ffa2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>设置 Web 服务器或项目
 
@@ -29,7 +29,7 @@ ms.contentlocale: zh-cn
 >
 > 然后跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 运行此指导式设置需要本地 Web 服务器，如 [Python http.server](https://www.python.org/downloads/)、[http-server](https://www.npmjs.com/package/http-server/)、[.NET Core](https://www.microsoft.com/net/core) 或与 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 集成的 IIS Express。 
 
 本指南中的说明是基于 Python 和 Visual Studio 2017 的，但可任意使用其他开发环境或 Web 服务器。
@@ -91,4 +91,3 @@ ms.contentlocale: zh-cn
 </body>
 </html>
 ````
-

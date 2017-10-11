@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 2fc922cb591bcd9ef333fbe3d77ee3dd03005915
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 9c76b6f3495e2dd759a156fcef97b57aece8d632
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 
 阅读本文有助于了解在通过非库应用程序配置**密码单一登录**时人们面对的常见问题。
@@ -49,13 +47,13 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -67,7 +65,7 @@ ms.lasthandoff: 04/18/2017
 
 10. 单击“保存”按钮  。
 
-11. 执行该操作后，系统将自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。
+11. 执行该操作后，系统会自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。
 
 ## <a name="how-to-manually-capture-sign-in-fields-for-an-application"></a>如何手动捕获应用程序的登录字段
 
@@ -79,13 +77,13 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -97,7 +95,7 @@ ms.lasthandoff: 04/18/2017
 
 10. 单击“保存”按钮  。
 
-11. 执行该操作后，系统将自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。 如果操作失败，可以继续到步骤 12，**将登录模式更改为使用手动登录字段捕获**。
+11. 执行该操作后，系统会自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。 如果操作失败，可以继续到步骤 12，**将登录模式更改为使用手动登录字段捕获**。
 
 12. 单击“配置 &lt;应用名称&gt; 密码单一登录设置”。
 
@@ -141,17 +139,17 @@ ms.lasthandoff: 04/18/2017
 
 -   再次尝试手动捕获进程，确保红色红色标记在正确的字段上。
 
--   如果手动捕获进程看似已挂起或登录页面没有任何变化（上述案例 3），请再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开“控制台”，键入“window.location=’&lt;enter the sign in url you specified when configuring the app&gt;’”，然后按“Enter”。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
+-   如果手动捕获进程看似已挂起或登录页面没有任何变化（上述案例 3），请再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开“控制台”，键入“window.location=’&lt;enter the sign in url you specified when configuring the app&gt;’”，并按“Enter”。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
 
-如果这些方法都无效，我们可以提供帮助。 打开支持案例，说明你尝试过的操作的详细信息和在[如何看到门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分搜集的信息（如适用）。
+如果这些方法都无效，我们可以提供帮助。 使用什么你尝试，以及在中收集的信息的详细信息打开一个支持案例[如何查看门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知的详细信息中获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分 （如果适用）。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 
 若要安装访问面板浏览器扩展，请按照以下步骤操作：
 
-1.  在某个支持的浏览器中打开 [访问面板](https://myapps.microsoft.com) ，并在 Azure AD 中以“用户”身份登录。
+1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
 
-2.  单击访问面板中的“密码 - SSO 应用程序”。
+2.  在访问面板中单击“密码-SSO 应用程序”。
 
 3.  在出现询问是否安装该软件的提示时，选择“立即安装”。
 
@@ -173,7 +171,7 @@ ms.lasthandoff: 04/18/2017
 
 可以通过遵循以下步骤来查看任何门户通知的详细信息：
 
-1.  单击 Azure 门户右上方的“通知”图标（铃铛）
+1.  单击 Azure 门户右上角的“通知”图标（铃铛）
 
 2.  选择“错误”状态的任何通知（旁边红色的 (!)）。
 
@@ -181,9 +179,9 @@ ms.lasthandoff: 04/18/2017
   >
   >
 
-3.  这将打开“通知的详细信息”边栏选项卡。
+3.  这会打开“通知的详细信息”边栏选项卡。
 
-4.  使用此信息了解有关问题的详细信息。
+4.  请使用此信息了解有关问题的详细信息。
 
 5.  如果仍需要帮助，还可以与支持工程师或产品组共享此信息以获取问题的帮助。
 
@@ -191,51 +189,51 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>如何通过向支持工程师发送通知的详细信息来获取帮助
 
-如果需要帮助，与支持工程师共享**下面列出的所有详细信息**非常重要，这有助于他们迅速提供帮助。 可以通过**拍摄屏幕截图**或单击“复制错误”图标（“复制错误”文本框右侧），轻松实现此目的。
+如果需要帮助，与支持工程师共享**下面列出的所有详细信息**非常重要，这有助于他们迅速提供帮助。 通过**捕获屏幕截图**或单击“复制错误”图标（位于“复制错误”文本框右侧），可以轻松执行此操作。
 
-## <a name="notification-details-explained"></a>介绍通知的详细信息
+## <a name="notification-details-explained"></a>介绍通知详细信息
 
-下面介绍了每个通知项的含义，并提供了每项的示例。
+下面详细介绍每个通知项的含义，并提供每项的示例。
 
 ### <a name="essential-notification-items"></a>基本通知项
 
--   **标题** - 通知的描述性标题
+-   **标题** – 通知的描述性标题
 
-    -   示例 - **应用程序代理设置**
+    -   示例 – **应用程序代理设置**
 
--   **说明** - 已发生情况的说明（操作的结果）
+-   **说明** – 由操作导致的所发生情况的说明
 
-    -   示例 - **输入的内部 URL 已被其他应用程序使用**
+    -   示例 – **输入的内部 URL 已被其他应用程序使用**
 
--   **通知 ID** - 通知的唯一 ID
+-   **通知 ID** – 通知的唯一 ID
 
     -   示例 - **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **客户请求 ID** - 浏览器发出的特定请求 ID
+-   **客户请求 ID** – 浏览器发出的特定请求 ID
 
-    -   示例 - **302fd775-3329-4670-a9f3-bea37004f0bc**
+    -   示例 – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **时间戳 UTC** - 在通知生成期间的时间戳（采用 UTC 时制）
+-   **时间戳 UTC** – 在通知发生期间的时间戳 (UTC)
 
-    -   示例 - **2017-03-23T19:50:43.7583681Z**
+    -   示例 – **2017-03-23T19:50:43.7583681Z**
 
--   **内部事务 ID** - 可用于在系统中查找错误的内部 ID
+-   **内部事务 ID** – 可用于在系统中查找错误的内部 ID
 
-    -   示例 - **71a2f329-ca29-402f-aa72-bc00a7aca603**
+    -   示例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN** - 执行操作的用户
+-   **UPN** – 执行操作的用户
 
-    -   示例 - **tperkins@f128.info**
+    -   示例 – **tperkins@f128.info**
 
--   **租户 ID** - 执行操作的用户是其成员的租户的唯一 ID
+-   **租户 ID** – 执行操作的用户所属的租户的唯一 ID
 
-    -   示例 - **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+    -   示例 – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **用户对象 ID** - 执行操作的用户的唯一 ID
+-   **用户对象 ID** – 执行操作的用户的唯一 ID
 
-    -   示例 - **17f84be4-51f8-483a-b533-383791227a99**
+    -   示例 – **17f84be4-51f8-483a-b533-383791227a99**
 
-### <a name="detailed-notification-items"></a>详细的通知项
+### <a name="detailed-notification-items"></a>详细通知项
 
 -   **显示名称** - **（可以为空）**错误的更详细的显示名称
 
@@ -247,11 +245,11 @@ ms.lasthandoff: 04/18/2017
 
 -   **对象 ID** - **（可以为空）**已对其执行操作的对象的 ID
 
-    -   示例 - **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+    -   示例 – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **详细信息** - 已发生情况的说明（操作的结果）
+-   **详细信息** – 由操作导致的所发生情况的详细说明
 
-    -   示例 - **内部 URL“http://bing.com/”无效，因为它已在使用中**
+    -   示例 – **内部 URL“http://bing.com/”无效，因为它已在使用中**
 
 -   **复制错误** - 单击“复制错误”文本框右侧的“复制”图标，复制所有通知的详细信息以与支持工程师或产品组工程师共享
 
@@ -259,5 +257,4 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
-
 

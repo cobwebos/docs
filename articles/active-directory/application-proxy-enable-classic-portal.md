@@ -15,14 +15,12 @@ ms.date: 07/02/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: ea97fdc8d146ed524a932018b572ceda0982738b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="enable-application-proxy-in-the-classic-portal-and-download-connectors"></a>在经典门户中启用应用程序代理并下载连接器
 本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
 
@@ -54,7 +52,7 @@ ms.lasthandoff: 08/01/2017
    >
    >有关将连接器升级到最新版本的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md#automatic-updates)。
 
-2. 如果你的防火墙或代理允许执行 DNS 白名单，可以将与 msappproxy.net 和 servicebus.windows.net 的连接加入白名单。 如果不允许，则需要允许访问每周进行更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+2. 如果你的防火墙或代理允许执行 DNS 白名单，可以将与 msappproxy.net 和 servicebus.windows.net 的连接加入白名单。 如果没有，你需要允许访问[Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，这会更新每周。
 
 3. 使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。
 
@@ -76,13 +74,13 @@ ms.lasthandoff: 08/01/2017
 
    * 提供 Azure AD 全局管理员凭据。 全局管理员租户可能不同于 Microsoft Azure 凭据。
    * 确保注册连接器的管理员在启用应用程序代理服务的同一目录中。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他别名。
-   * 如果将服务器上的“IE 增强的安全配置”设为“打开”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
+   * 如果**IE 增强的安全配置**设置为**上**在服务器上，可能会阻止注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
    * 如果连接器注册不成功，请参阅 [故障排除应用程序代理](active-directory-application-proxy-troubleshoot.md)。  
 4. 安装完成后，服务器上会添加两个新的服务：
 
    * **Microsoft AAD 应用程序代理连接器** 将启用连接
 
-     * **Microsoft AAD 应用程序代理连接器更新程序**是一项自动更新服务。 它会定期检查新的连接器版本，根据需要更新连接器。
+     * **Microsoft AAD 应用程序代理连接器更新程序**是自动的更新服务。 定期检查新版本的连接器，并根据需要更新连接器。
 
      ![应用代理连接器服务 - 屏幕截图](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 5. 在安装窗口中单击“完成”  。
@@ -97,4 +95,3 @@ ms.lasthandoff: 08/01/2017
 现在，可以随时 [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
 
 如果应用程序位于单独网络或其他位置，可以使用连接器组将不同连接器组织到逻辑单元中。 了解有关 [使用应用程序代理连接器](active-directory-application-proxy-connectors.md)的详细信息。
-

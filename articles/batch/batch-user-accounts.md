@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: d408c0565c0ed81fc97cc2b3976a4fc233e31302
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
 Azure Batch 中的任务始终在用户帐户下运行。 默认情况下，任务在没有管理员权限的标准用户帐户下运行。 这些默认用户帐户设置通常足以满足操作需要。 但是，对于某些方案，如果能够配置用于运行任务的用户帐户，则会很有帮助。 本文介绍用户帐户的类型以及如何为方案配置这些帐户。
@@ -35,7 +33,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 - **命名用户帐户。** 创建池时，可为该池指定一个或多个命名用户帐户。 每个用户帐户在该池的每个节点上创建。 除了帐户名以外，还可以指定用户帐户密码、提升级别，对于 Linux 池，还可以指定 SSH 私钥。 添加任务时，可以指定任务应在其下运行的命名用户帐户。
 
 > [!IMPORTANT] 
-> 批处理服务版本 2017-01-01.4.0 引入了一项重大更改，你需要更新代码才能调用该版本。 如果你要从旧版批处理迁移代码，请注意，REST API 或批处理客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 有关使用某个客户端库时如何更新批处理代码的快速指导，请参阅标题为[将代码更新到最新的批处理客户端库](#update-your-code-to-the-latest-batch-client-library)的部分。
+> Batch 服务版本 2017-01-01.4.0 引入了一项重大更改，你需要更新代码才能调用该版本。 如果你要从旧版 Batch 迁移代码，请注意，REST API 或 Batch 客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 有关使用某个客户端库时如何更新批处理代码的快速指导，请参阅标题为[将代码更新到最新的批处理客户端库](#update-your-code-to-the-latest-batch-client-library)的部分。
 >
 >
 
@@ -143,7 +141,7 @@ batch_client.task.add(job_id=jobid, task=task)
 
 你可能想要在具有池范围的自动用户帐户下运行任务的另一种情景是实现消息传递接口 (MPI) 文件共享。 如果 MPI 任务中的节点需要处理相同的文件数据，MPI 文件共享将非常有用。 如果头节点和子节点在同一个自动用户帐户下运行，则头节点将创建可由子节点访问的文件共享。 
 
-以下代码片段在批处理 .NET 中将自动用户的范围设置为任务的池范围。 已省略提升级别，因此，任务将在标准池范围自动用户帐户下运行。
+以下代码片段在 Batch .NET 中将自动用户的范围设置为任务的池范围。 已省略提升级别，因此，任务将在标准池范围自动用户帐户下运行。
 
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserScope.Pool));
@@ -337,4 +335,4 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ### <a name="batch-forum"></a>Batch 论坛
 
-MSDN 上的 [Azure Batch 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch)是探讨批处理服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些精华贴子，并发布你在构建批处理解决方案时遇到的问题。
+MSDN 上的 [Azure Batch 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch)是探讨批处理服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些精华贴子，并发布你在构建 Batch 解决方案时遇到的问题。

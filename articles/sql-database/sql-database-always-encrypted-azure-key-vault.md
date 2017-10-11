@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 15db9db72a80dc95c615e52b889f6470b2e6eed0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 61bfd420425b4740f6d4ebc01a403a88ff351382
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 04/27/2017
 
 将数据库配置为使用始终加密后，将通过 Visual Studio 在 C# 中创建一个客户端应用程序，以便处理加密的数据。
 
-按本文所述步骤进行操作，了解如何为 Azure SQL 数据库设置始终加密。 在本文中，你将学习如何执行以下任务：
+按本文所述步骤进行操作，了解如何为 Azure SQL 数据库设置始终加密。 在本文中，学习如何执行以下任务：
 
 * 在 SSMS 中使用始终加密向导创建[始终加密密钥](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3)。
   * 创建[列主密钥 (CMK)](https://msdn.microsoft.com/library/mt146393.aspx)。
@@ -40,7 +39,7 @@ ms.lasthandoff: 04/27/2017
 * 创建一个可以从已加密列插入、选择和显示数据的应用程序。
 
 ## <a name="prerequisites"></a>先决条件
-在本教程中，你需要：
+在本教程中，需要：
 
 * Azure 帐户和订阅。 如果没有订阅，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 版本 13.0.700.242 或更高版本。
@@ -53,14 +52,14 @@ ms.lasthandoff: 04/27/2017
 
 1. 打开 [Azure 经典门户](http://manage.windowsazure.com)。
 2. 选择“Active Directory”，然后单击应用程序将使用的 Active Directory。
-3. 单击“应用程序”，然后单击“添加”。
-4. 键入应用程序的名称（例如：*myClientApp*），选择“WEB 应用程序”，然后单击箭头以继续。
-5. 对于“登录 URL”和“应用 ID URI”，可以键入一个有效 URL（例如：*http://myClientApp*），然后继续。
+3. 单击“应用程序”，并单击“添加”。
+4. 键入应用程序的名称（例如：*myClientApp*），选择“WEB 应用程序”，并单击箭头以继续。
+5. 对于“登录 URL”和“应用 ID URI”，可以键入一个有效 URL（例如：*http://myClientApp*），并继续。
 6. 单击“配置”。
-7. 复制你的“客户端 ID”。 （稍后在代码中将需要此值。）
+7. 复制“客户端 ID”。 （稍后在代码中将需要此值。）
 8. 在“密钥”部分中，从“选择持续时间”下拉列表选择“1 年”。 （在步骤 13 中保存后将复制该密钥。）
 9. 向下滚动并单击“添加应用程序”。
-10. 保留“显示”设置为“Microsoft 应用”，然后选择“Microsoft Azure 服务管理 API”。 单击复选标记以继续。
+10. 保留“显示”设置为“Microsoft 应用”，并选择“Microsoft Azure 服务管理 API”。 单击复选标记以继续。
 11. 从“委派权限”下拉列表选择“访问 Azure 服务管理...”。
 12. 单击“保存”。
 13. 在保存完成后，将密钥值复制到“密钥”部分。 （稍后在代码中将需要此值。）
@@ -98,7 +97,7 @@ ms.lasthandoff: 04/27/2017
    
     ![创建空数据库](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
-在本教程中稍后将需要连接字符串，因此在创建数据库后，浏览到新的 Clinic 数据库并复制连接字符串。 你可以在任何时候获取连接字符串，但很容易将其复制到 Azure 门户。
+在本教程中稍后将需要连接字符串，因此在创建数据库后，浏览到新的 Clinic 数据库并复制连接字符串。 可以在任何时候获取连接字符串，但很容易将其复制到 Azure 门户。
 
 1. 转到“SQL 数据库” > “Clinic” > “显示数据库连接字符串”。
 2. 复制 **ADO.NET** 的连接字符串。
@@ -109,17 +108,17 @@ ms.lasthandoff: 04/27/2017
 打开 SSMS，连接到包含 Clinic 数据库的服务器。
 
 1. 打开 SSMS。 （转到“连接” > “数据库引擎”以打开“连接到服务器”窗口）（如果它未打开。）
-2. 输入服务器名称和凭据。 服务器名称可以在 SQL 数据库边栏选项卡以及你此前复制的连接字符串中找到。 键入完整的服务器名称，包括 *database.windows.net*。
+2. 输入服务器名称和凭据。 服务器名称可以在 SQL 数据库边栏选项卡以及此前复制的连接字符串中找到。 键入完整的服务器名称，包括 *database.windows.net*。
    
     ![复制连接字符串](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
-如果“新建防火墙规则”窗口打开，请登录到 Azure，让 SSMS 为你创建新的防火墙规则。
+如果“新建防火墙规则”窗口打开，请登录到 Azure，让 SSMS 创建新的防火墙规则。
 
 ## <a name="create-a-table"></a>创建表
 在本部分中，将创建一个表以保存患者数据。 它最初尚未加密 - 可在下一部分配置加密。
 
 1. 展开“数据库”。
-2. 右键单击“Clinic”数据库，然后单击“新建查询”。
+2. 右键单击“Clinic”数据库，并单击“新建查询”。
 3. 将以下 Transact-SQL (T-SQL) 粘贴到新查询窗口中，然后“执行”它。
 
         CREATE TABLE [dbo].[Patients](
@@ -141,7 +140,7 @@ ms.lasthandoff: 04/27/2017
 SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加密列即可轻松地配置始终加密。
 
 1. 展开“数据库” > “Clinic” > “表”。
-2. 右键单击“患者”表，然后选择“加密列”以打开始终加密向导：
+2. 右键单击“患者”表，并选择“加密列”以打开始终加密向导：
    
     ![加密列](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
@@ -168,21 +167,21 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 ![主密钥配置](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
 ### <a name="validation"></a>验证
-你可以现在就加密这些列，也可以保存 PowerShell 脚本供以后运行。 对于本教程，请选择“现在完成”，然后单击“下一步”。
+可以现在就加密这些列，也可以保存 PowerShell 脚本供以后运行。 对于本教程，请选择“现在完成”，并单击“下一步”。
 
 ### <a name="summary"></a>摘要
-验证设置是否全都正确，然后单击“完成”以完成“始终加密”的设置。
+验证设置是否全都正确，并单击“完成”以完成“始终加密”的设置。
 
 ![摘要](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>验证向导的操作
-向导完成后，你的数据库就会设置为始终加密。 该向导执行以下操作：
+向导完成后，数据库就会设置为始终加密。 该向导执行以下操作：
 
 * 创建列主密钥并将其存储在 Azure 密钥保管库中。
 * 创建列加密密钥并将其存储在 Azure 密钥保管库中。
 * 配置了所选列的加密。 “患者”表目前尚无数据，但所选列中的任何现有数据都会进行加密。
 
-你可以验证 SSMS 中密钥的创建，只需展开“Clinic” > “安全” > “始终加密密钥”即可。
+可以验证 SSMS 中密钥的创建，只需展开“Clinic” > “安全” > “始终加密密钥”即可。
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>创建处理已加密数据的客户端应用程序
 现在已设置始终加密，可以生成一个应用程序，用其在已加密列上执行某些 *inserts* 操作和 *selects* 操作。  
@@ -192,7 +191,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 > 
 > 
 
-1. 打开 Visual Studio 并创建新的 C# **控制台应用程序**（Visual Studio 2015 和更低版本）或**控制台应用 (.NET Framework)**（Visual Studio 2017 和更高版本）。 确保将你的项目设置为 **.NET Framework 4.6** 或更高版本。
+1. 打开 Visual Studio 并创建新的 C# **控制台应用程序**（Visual Studio 2015 和更低版本）或**控制台应用 (.NET Framework)**（Visual Studio 2017 和更高版本）。 确保将项目设置为 **.NET Framework 4.6** 或更高版本。
 2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，然后单击“确定”。
 3. 通过转到“工具” > “NuGet 包管理器” > “包管理器控制台”来安装以下 NuGet 包。
 
@@ -206,9 +205,9 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>修改连接字符串以启用始终加密
 本节介绍如何在数据库连接字符串中启用始终加密。
 
-若要启用“始终加密”，你需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
+要启用“始终加密”，需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
 
-你可以在连接字符串中直接进行该设置，也可以使用 [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) 进行设置。 下一节中的示例应用程序演示如何使用 **SqlConnectionStringBuilder**。
+可以在连接字符串中直接进行该设置，也可以使用 [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) 进行设置。 下一节中的示例应用程序演示如何使用 **SqlConnectionStringBuilder**。
 
 ### <a name="enable-always-encrypted-in-the-connection-string"></a>在连接字符串中启用始终加密
 将以下关键字添加到连接字符串中。
@@ -609,28 +608,28 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
-你可以看到，加密的列不包含任何明文数据。
+可以看到，加密的列不包含任何明文数据。
 
    ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-若要使用 SSMS 来访问明文数据，可将 *Column Encryption Setting=enabled* 参数添加到连接中。
+要使用 SSMS 来访问明文数据，可将 *Column Encryption Setting=enabled* 参数添加到连接中。
 
-1. 在 SSMS 中，右键单击“对象资源管理器”中的服务器，然后选择“断开连接”。
-2. 单击“连接” > “数据库引擎”打开“连接到服务器”窗口，然后单击“选项”。
-3. 单击“其他连接参数”，然后键入 **Column Encryption Setting=enabled**。
+1. 在 SSMS 中，右键单击“对象资源管理器”中的服务器，并选择“断开连接”。
+2. 单击“连接” > “数据库引擎”打开“连接到服务器”窗口，并单击“选项”。
+3. 单击“其他连接参数”，并键入 **Column Encryption Setting=enabled**。
    
     ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
 4. 针对 Clinic 数据库运行以下查询。
    
         SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    
-     现在，你可以看到已加密列中的明文数据。
+     现在，可以看到已加密列中的明文数据。
 
     ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
 ## <a name="next-steps"></a>后续步骤
-创建使用始终加密的数据库以后，你可能需要执行以下操作：
+创建使用始终加密的数据库以后，可能需要执行以下操作：
 
 * [轮换使用和清除密钥](https://msdn.microsoft.com/library/mt607048.aspx)。
 * [迁移已使用始终加密加密的数据](https://msdn.microsoft.com/library/mt621539.aspx)。
@@ -641,5 +640,4 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 * [SQL Server 加密](https://msdn.microsoft.com/library/bb510663.aspx)
 * [始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)
 * [始终加密博客](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
 

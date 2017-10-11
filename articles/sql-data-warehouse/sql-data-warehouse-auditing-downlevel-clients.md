@@ -15,12 +15,11 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3750e2875935d2753a819ef8ce540009417d19b5
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: a7ea6141285a0098339f1e071af2592dd4535c12
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sql-data-warehouse----downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>SQL 数据仓库 - 审核和动态数据掩码的下层客户端支持
 [审核](sql-data-warehouse-auditing-overview.md)适用于支持 TDS 重定向的 SQL 客户端。
@@ -41,5 +40,4 @@ ms.lasthandoff: 11/17/2016
 * Tedious（适用于 Node.JS）
 
 **注释：**上面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。     
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 46f99496397e2ed39b1d9410453dac7983ced612
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>教程：Azure Active Directory 与 EasyTerritory 的集成
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/28/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 EasyTerritory 测试用户](#create-a-easyterritory-test-user)** - 在 EasyTerritory 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+3. **[创建一个 EasyTerritory 测试用户](#create-a-easyterritory-test-user)** -若要链接到用户的 Azure AD 表示的 EasyTerritory 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -122,7 +121,7 @@ ms.lasthandoff: 07/28/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [EasyTerritory 客户端支持团队](mailto:sales@easyterritory.com)获取这些值。 
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_certificate.png) 
 
@@ -159,9 +158,9 @@ ms.lasthandoff: 07/28/2017
 
     ![“用户”对话框](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -229,5 +228,4 @@ ms.lasthandoff: 07/28/2017
 [201]: ./media/active-directory-saas-easyterritory-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-easyterritory-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-easyterritory-tutorial/tutorial_general_203.png
-
 

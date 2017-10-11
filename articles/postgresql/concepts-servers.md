@@ -9,12 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/06/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 43123486f21178a5ba657caa9d4b090922435913
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: c79603a11fa23ad775783157675c07ab67102057
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL 服务器
 本主题提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。
@@ -27,7 +26,7 @@ Azure Database for PostgreSQL 服务器：
 - 在 Azure 订阅中创建。
 - 是数据库的父资源。
 - 为数据库提供了一个命名空间。
-- 是具有强生存期语义的容器 - 删除服务器时将删除所包含的数据库。
+- 是具有强生存期语义的容器 - 删除服务器时会删除所包含的数据库。
 - 并置区域中的资源。
 - 提供用于服务器和数据库访问的连接终结点 (.postgresql.database.azure.com)。
 - 提供应用于其数据库的管理策略的作用域：登录名、防火墙、用户、角色、配置等。
@@ -54,4 +53,3 @@ Azure Database for PostgreSQL 服务器：
 - 有关该服务的概述，请参阅 [Azure Database for PostgreSQL 概述](overview.md)
 - 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](concepts-service-tiers.md)
 - 有关连接到服务的信息，请参阅 [Azure Database for PostgreSQL 的连接库](concepts-connection-libraries.md)。
-

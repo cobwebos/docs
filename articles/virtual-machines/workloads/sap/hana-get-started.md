@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 05fb31007e1e4c2243f93169129ec5b2c93099e2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>介绍
@@ -454,5 +453,4 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 下载 HANA SP12 Platform Edition：
 
  ![用于下载 HANA SP12 Platform Edition 的 SAP 服务安装和升级窗口](./media/hana-get-started/image002.jpg)
-
 

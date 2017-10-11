@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 02/28/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: fd34fb135c76eed4041c29e00e98dde330dfe3f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -924,11 +923,11 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="solution"></a>解决方案
 前一部分重点介绍了尝试使用表服务来存储日志条目的问题，并建议了两个并不令人满意的设计。 一种解决方案会导致热分区并具有在写入日志消息时性能不佳的风险；另一种解决方案由于需要扫描表中的每个分区才能检索特定时间跨度的日志消息而导致查询性能不佳。 对于此类方案，Blob 存储提供了更好的解决方案，这就是 Azure 存储分析存储它收集的日志数据的方式。  
 
-本部分通过概述存储分析如何在 blob 存储中存储日志数据说明了此方法如何存储通常按范围查询的数据。  
+本部分通过概述 Storage Analytics 如何在 blob 存储中存储日志数据说明了此方法如何存储通常按范围查询的数据。  
 
-存储分析以带分隔符格式将日志消息存储在多个 blob 中。 使用带分隔符的格式，客户端应用程序可以轻松地分析日志消息中的数据。  
+Storage Analytics 以带分隔符格式将日志消息存储在多个 blob 中。 使用带分隔符的格式，客户端应用程序可以轻松地分析日志消息中的数据。  
 
-存储分析使用 blob 的命名约定，使你可以找到包含要搜索的日志消息的一个或多个 blob。 例如，名为“queue/2014/07/31/1800/000001.log”的 blob 包含与从 2014 年 7 月 31 日 18:00 开始的 1 小时的队列服务相关的日志消息。 “000001”指示这是此期间的第一个日志文件。 存储分析还会记录该文件中存储的第一条和最后一条日志消息的时间戳作为 blob 的元数据的一部分。 使用 blob 存储的 API 可以根据名称前缀在容器中查找 blob：若要查找包含从 18:00 开始的 1 小时的队列日志数据的所有 blob，可以使用前缀“queue/2014/07/31/1800”。  
+存储分析使用 blob 的命名约定，使你可以找到包含要搜索的日志消息的一个或多个 blob。 例如，名为“queue/2014/07/31/1800/000001.log”的 blob 包含与从 2014 年 7 月 31 日 18:00 开始的 1 小时的队列服务相关的日志消息。 “000001”指示这是此期间的第一个日志文件。 Storage Analytics 还会记录该文件中存储的第一条和最后一条日志消息的时间戳作为 blob 的元数据的一部分。 使用 blob 存储的 API 可以根据名称前缀在容器中查找 blob：若要查找包含从 18:00 开始的 1 小时的队列日志数据的所有 blob，可以使用前缀“queue/2014/07/31/1800”。  
 
 存储分析在内部缓存日志消息，并定期更新相应的 blob 或使用最新一批日志条目创建新的 blob。 这会减少它必须执行的写入 blob 服务的次数。  
 
@@ -1545,5 +1544,4 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 [27]: ./media/storage-table-design-guide/storage-table-design-IMAGE27.png
 [28]: ./media/storage-table-design-guide/storage-table-design-IMAGE28.png
 [29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: ashwink
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: f06e5dd7d17c1d7795fb1f112e649cd42d7dd6d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.openlocfilehash: 48f064884c2a6d0a55cc58a44169ed03c62de46d
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
@@ -208,7 +207,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 下面列出了要使用的步骤：
 
 1. 创建规则。
-2. 创建配置文件，将之前创建的规则映射到该配置文件。
+2. 创建配置文件，将之前创建的规则映射到这些配置文件。
 3. 可选︰通过配置 webhook 和电子邮件属性，创建自动缩放通知。
 4. 通过映射在前面步骤中创建的配置文件和通知，创建自动缩放设置，并使用目标资源上的名称。
 
@@ -290,7 +289,7 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>管理活动日志的日志配置文件
-可以创建日志配置文件并将数据从活动日志中导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 注意，目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzureRmContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
+可以创建*日志配置文件*并从活动日志中将数据导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 注意，目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzureRmContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
 
 ### <a name="get-a-log-profile"></a>获取日志配置文件
 若要提取现有日志配置文件，请使用 `Get-AzureRmLogProfile` cmdlet。
@@ -363,4 +362,3 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insigh
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId 76d785fd-d1ce-4f50-8ca3-858fc819ca0f -Enabled $true
 
 ```
-

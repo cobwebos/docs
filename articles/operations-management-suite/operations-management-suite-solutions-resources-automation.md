@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>将 Azure 自动化资源添加到 OMS 管理解决方案（预览版）
 > [!NOTE]
@@ -34,14 +33,14 @@ ms.lasthandoff: 05/26/2017
 
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你已熟悉以下信息。
+本文假设已熟悉以下信息。
 
 - 如何[创建管理解决方案](operations-management-suite-solutions-creating.md)。
 - [解决方案文件](operations-management-suite-solutions-solution-file.md)的结构。
 - 如何[创作 Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>自动化帐户
-Azure 自动化中的所有资源都包含在[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装将失败。
+Azure 自动化中的所有资源都包含在[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
 
 每个自动化资源的名称都包含其自动化帐户的名称。  这是在具有 **accountName** 参数的解决方案中完成的，如以下 Runbook 资源示例所示。
 
@@ -82,11 +81,11 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 | logProgress |指定是否应为 Runbook 生成[进度记录](../automation/automation-runbook-output-and-messages.md)。 |
 | logVerbose |指定是否应为 Runbook 生成[详细记录](../automation/automation-runbook-output-and-messages.md)。 |
 | description |Runbook 的可选说明。 |
-| publishContentLink |指定 Runbook 的内容。 <br><br>uri - Runbook 内容的 URI。  这将是 PowerShell 和脚本 Runbook 的 .ps1 文件，以及为图形 Runbook 导出的图形 Runbook 文件。  <br> version - 你自己跟踪的 Runbook 版本。 |
+| publishContentLink |指定 Runbook 的内容。 <br><br>uri - Runbook 内容的 URI。  这会是 PowerShell 和脚本 Runbook 的 .ps1 文件，以及为图形 Runbook 导出的图形 Runbook 文件。  <br> version - 自己跟踪的 Runbook 版本。 |
 
 
 ## <a name="automation-jobs"></a>自动化作业
-在 Azure 自动化中启动 runbook 时，将会创建一个自动化作业。  可以将自动化作业资源添加到解决方案，以便在安装管理解决方案时自动启动 runbook。  此方法通常用于启动用于对解决方案进行初始配置的 runbook。  若要定期启动 runbook，请创建[计划](#schedules)和[作业计划](#job-schedules)
+在 Azure 自动化中启动 runbook 时，会创建一个自动化作业。  可以会自动化作业资源添加到解决方案，以便在安装管理解决方案时自动启动 runbook。  此方法通常用于启动用于对解决方案进行初始配置的 runbook。  若要定期启动 runbook，请创建[计划](#schedules)和[作业计划](#job-schedules)
 
 作业资源具有类型 **Microsoft.Automation/automationAccounts/jobs** 和以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
@@ -117,7 +116,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 | Runbook |包含要启动的 Runbook 名称的单个 name 实体。 |
 | parameters |Runbook 所需的每个参数值的实体。 |
 
-作业包括 Runbook 名称和发送到 Runbook 的任何参数值。  作业应[依赖于](operations-management-suite-solutions-solution-file.md#resources)自必须在作业之前创建 Runbook 以来启动的 Runbook。  如果你有多个应启动的 runbook，则可以通过让一个作业依赖于任何其他应先运行的作业来定义其顺序。
+作业包括 Runbook 名称和发送到 Runbook 的任何参数值。  作业应[依赖于](operations-management-suite-solutions-solution-file.md#resources)自必须在作业之前创建 Runbook 以来启动的 Runbook。  如果有多个应启动的 runbook，则可以通过让一个作业依赖于任何其他应先运行的作业来定义其顺序。
 
 作业资源的名称必须包含一个通常由参数分配的 GUID。  有关 GUID 参数的详细信息，可参阅[在 Operations Management Suite (OMS) 中创建解决方案](operations-management-suite-solutions-solution-file.md#parameters)。  
 
@@ -210,7 +209,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 
 在解决方案中使用计划资源时，请使用以下两个策略之一。
 
-- 对计划的开始时间使用参数。  这将在安装解决方案时提示用户提供一个值。  如果你有多个计划，可以对多个计划使用单个参数值。
+- 对计划的开始时间使用参数。  这会在安装解决方案时提示用户提供一个值。  如果有多个计划，可以对多个计划使用单个参数值。
 - 可使用安装解决方案时启动的 runbook 创建计划。  这样用户将无需指定时间，但你不能在解决方案中包含计划，以免在删除解决方案时删除计划。
 
 
@@ -310,12 +309,12 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 
 | 属性 | 说明 |
 |:--- |:--- |
-| contentLink |指定模块的内容。 <br><br>uri - 模块内容的 URI。  这将是 PowerShell 和脚本 Runbook 的 .ps1 文件，以及为图形 Runbook 导出的图形 Runbook 文件。  <br> version - 你自己跟踪的模块版本。 |
+| contentLink |指定模块的内容。 <br><br>uri - 模块内容的 URI。  这会是 PowerShell 和脚本 Runbook 的 .ps1 文件，以及为图形 Runbook 导出的图形 Runbook 文件。  <br> version - 自己跟踪的模块版本。 |
 
 runbook 应依赖于模块资源，以确保模块资源在 runbook 之前创建。
 
 ### <a name="updating-modules"></a>更新模块
-如果更新的管理解决方案包含使用计划的 Runbook，并且新版本的解决方案具有该 Runbook 使用的新模块，则该 Runbook 可以使用旧版本的模块。  应在解决方案中包括以下 Runbook，并创建一个作业，以在任何其他 Runbook 之前运行它们。  这将确保在加载 Runbook 之前视需要更新任何模块。
+如果更新的管理解决方案包含使用计划的 Runbook，并且新版本的解决方案具有该 Runbook 使用的新模块，则该 Runbook 可以使用旧版本的模块。  应在解决方案中包括以下 Runbook，并创建一个作业，以在任何其他 Runbook 之前运行它们。  这会确保在加载 Runbook 之前视需要更新任何模块。
 
 * [Update-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) 将确保解决方案中的 Runbook 使用的所有模块都是最新版本。  
 * [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) 将重新注册所有的计划资源来确保 Runbook 链接到使用最新模块的 Runbook。
@@ -652,4 +651,3 @@ runbook 应依赖于模块资源，以确保模块资源在 runbook 之前创建
 
 ## <a name="next-steps"></a>后续步骤
 * [将视图添加到解决方案](operations-management-suite-solutions-resources-views.md)以可视化收集的数据。
-

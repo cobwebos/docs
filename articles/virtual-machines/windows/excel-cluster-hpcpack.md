@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: acd2ee7fb94c43493ffd9ffee157f2c3e795b63e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>开始在 Azure 的 HPC Pack 群集上运行 Excel 和 SOA 工作负荷
 本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure 应用商店 VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。
@@ -58,7 +57,7 @@ ms.lasthandoff: 06/03/2017
    ![将模板部署到 Azure][github]
 3. 在门户中，按照以下步骤输入 HPC 群集模板的参数。
    
-   a. 在“参数”页上，输入或修改模板参数的值。 （单击每个设置旁边的图标可获得帮助信息。）下面的屏幕中会显示示例值。 本示例会在 *hpc.local* 域中创建名为 *hpc01* 的群集，该群集由 1 个头节点和 2 个计算节点组成。 将从包含 Microsoft Excel 的 HPC Pack VM 映像创建计算节点。
+   a. 在“参数”页上，输入或修改模板参数的值。 （单击每个设置旁边的图标可获得帮助信息。）下面的屏幕中显示示例值。 本示例在 *hpc.local* 域中创建名为 *hpc01* 的群集，该群集由 1 个头节点和 2 个计算节点组成。 将从包含 Microsoft Excel 的 HPC Pack VM 映像创建计算节点。
    
    ![输入参数][parameters-new-portal]
    
@@ -96,7 +95,7 @@ HPC Pack IaaS 部署脚本提供了另一种通用的方法来部署 HPC Pack �
 
 **创建配置文件**
 
- HPC Pack IaaS 部署脚本使用描述 HPC 群集基础结构的 XML 配置文件作为输入。 要部署由 1 个头节点和 18 个计算节点（从包含 Microsoft Excel 的计算节点映像创建）组成的群集，请你将环境的值代入下面的示例配置文件。 有关配置文件的详细信息，请参阅脚本文件夹中的 Manual.rtf 文件和[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+ HPC Pack IaaS 部署脚本使用描述 HPC 群集基础结构的 XML 配置文件作为输入。 要部署由 1 个头节点和 18 个计算节点（从包含 Microsoft Excel 的计算节点映像创建）组成的群集，请将你环境的值代入下面的示例配置文件。 有关配置文件的详细信息，请参阅脚本文件夹中的 Manual.rtf 文件和[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -264,13 +263,13 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 
 成功部署群集后，继续使用以下步骤来运行示例内置 Excel UDF。 对于自定义 Excel UDF，请参阅这些[资源](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)来构建 XLL并将它们部署在 IaaS 群集上。
 
-1. 打开一个新的 Excel 工作簿。 在“开发”功能区上，单击“外接程序”。然后，在对话框中单击“浏览”，导航到 %CCP_HOME%Bin\XLL32 文件夹，并选择示例 ClusterUDF32.xll。 如果 ClusterUDF32 未存在于客户端计算机上，请从头节点上的 %CCP_HOME%Bin\XLL32 文件夹复制它。
+1. 打开一个新的 Excel 工作簿。 在“开发”功能区上，单击“外接程序”。 然后，在对话框中单击“浏览”，导航到 %CCP_HOME%Bin\XLL32 文件夹，并选择示例 ClusterUDF32.xll。 如果 ClusterUDF32 未存在于客户端计算机上，请从头节点上的 %CCP_HOME%Bin\XLL32 文件夹复制它。
    
    ![选择 UDF][udf]
 2. 单击“文件” > “选项” > “高级”。 在“公式”下，选中“允许用户定义的 XLL 函数运行计算群集”。 然后，单击“选项”，在“群集头节点名称”中输入完整的群集名称。 （如前所述，此输入框限制为 34 个字符，因此较长的群集名称可能容纳不下。 可以在此处使用计算机范围的变量作为群集的长名称。）
    
    ![配置 UDF][options]
-3. 要在群集上运行 UDF 计算，请单击值为 XllGetComputerNameC() 的单元格，并按 Enter。 该函数只检索运行 UDF 的计算节点的名称。 第一次运行时，凭据对话框会提示输入用于连接到 IaaS 群集的用户名和密码。
+3. 如果要在群集上运行 UDF 计算，请单击值为 XllGetComputerNameC() 的单元格，并按 Enter。 该函数只检索运行 UDF 的计算节点的名称。 第一次运行时，凭据对话框会提示你输入用于连接到 IaaS 群集的用户名和密码。
    
    ![运行 UDF][run]
    
@@ -362,4 +361,3 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 [endpoint]: ./media/excel-cluster-hpcpack/endpoint.png
 [endpoint-new-portal]: ./media/excel-cluster-hpcpack/endpoint-new-portal.png
 [udf]: ./media/excel-cluster-hpcpack/udf.png
-

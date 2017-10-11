@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 68820f9c018b1076bae8dc0195906d0f34590748
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 1eb2e0c467d4fb4cb263047caf58d36231578d9a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断 
 
 通过使用 [Application Insights](app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 实时指标流与[探查器](app-insights-profiler.md)、[快照调试器](app-insights-snapshot-debugger.md)和[性能测试](app-insights-monitor-web-app-availability.md#performance-tests)一同为实时网站提供了功能强大且非入侵性的诊断工具。
@@ -35,14 +33,14 @@ ms.lasthandoff: 05/26/2017
 * 实时监视任何 Windows 性能计数器。
 * 轻松识别有问题的服务器，并筛选出只与该服务器相关的所有 KPI/实时源。
 
-[![实时指标流视频](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![实时度量值流视频](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
 实时指标流当前在本地或云端运行的 ASP.NET 应用中可用。 
 
 ## <a name="get-started"></a>入门
 
 1. 如果尚未在 ASP.NET Web 应用或 [Windows Server 应用](app-insights-windows-services.md)中[安装 Application Insights](app-insights-asp-net.md)，请立即进行安装。 
-2. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。 打开“更新”选项卡，选中“包括预先发行版”，然后选择所有的 Microsoft.ApplicationInsights.* 包。
+2. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中，右键单击你的项目并选择**管理 Nuget 包**。 打开“更新”选项卡，选中“包括预先发行版”，然后选择所有的 Microsoft.ApplicationInsights.* 包。
 
     重新部署应用。
 
@@ -78,13 +76,13 @@ ms.lasthandoff: 05/26/2017
 
 ![自定义请求 KPI](./media/app-insights-live-stream/live-stream-filteredMetric.png)
 
-可以监视与“计数”不同的值。 可用的选项取决于流的类型，这可能是任何 Application Insights 遥测数据：请求、依赖项、异常、跟踪、事件或指标。 它也可能是你自己的[自定义度量值](app-insights-api-custom-events-metrics.md#properties)：
+可以监视与“计数”不同的值。 可用的选项取决于流的类型，这可能是任何 Application Insights 遥测数据：请求、依赖项、异常、跟踪、事件或指标。 它也可能是自己的[自定义度量值](app-insights-api-custom-events-metrics.md#properties)：
 
 ![值选项](./media/app-insights-live-stream/live-stream-valueoptions.png)
 
-除了 Application Insights 遥测数据以外，还可以监视任何 Windows 性能计数器：从流选项中选择该类型，然后提供性能计数器的名称。
+除了 Application Insights 遥测数据以外，还可以监视任何 Windows 性能计数器：从流选项中选择该类型，并提供性能计数器的名称。
 
-实时指标分别在以下两个点上聚合：在每个服务器本地，然后在所有服务器上。 可以通过在相应的下拉列表中选择其他选项来更改默认选项。
+实时指标分别在以下两个点上聚合：在每个服务器本地，并在所有服务器上。 可以通过在相应的下拉列表中选择其他选项来更改默认选项。
 
 ## <a name="sample-telemetry-custom-live-diagnostic-events"></a>样本遥测数据：自定义实时诊断事件
 默认情况下，事件实时源显示已失败的请求和依赖项调用、异常、事件与跟踪的样本。 单击筛选器图标可以查看在任意时间点应用的条件。 
@@ -97,7 +95,7 @@ ms.lasthandoff: 05/26/2017
 
 注意：目前，对于基于异常消息的条件，请使用外部异常消息。 在前面的示例中，若要筛选出具有内部异常消息“客户端已断开连接”（追随“<--”分隔符查找）的良性异常， 请使用不包含“读取请求内容时出错”条件的消息。
 
-单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。 在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源将会恢复。
+单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。 在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
 
 ![采样的实时失败](./media/app-insights-live-stream/live-metrics-eventdetail.png)
 
@@ -161,4 +159,3 @@ ms.lasthandoff: 05/26/2017
 * [使用诊断搜索](app-insights-diagnostic-search.md)
 * [探查器](app-insights-profiler.md)
 * [快照调试器](app-insights-snapshot-debugger.md)
-

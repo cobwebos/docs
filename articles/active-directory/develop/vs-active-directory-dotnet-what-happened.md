@@ -1,6 +1,6 @@
 ---
 title: "连接到 Azure AD 时对 MVC 项目所做的更改 | Microsoft 文档"
-description: "描述一下，当你使用 Visual Studio 连接服务连接到 Azure AD 时，你的 MVC 项目会发生什么情况"
+description: "描述一下，使用 Visual Studio 连接服务连接到 Azure AD 时，MVC 项目会发生什么情况"
 services: active-directory
 documentationcenter: na
 author: kraigb
@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 72cd94ba16cb4fe234c898b093c7de6a08f71239
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 095411a7fc854f4dce11921adb0f57c5389a8e13
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 > [!div class="op_single_selector"]
@@ -53,13 +52,13 @@ ms.lasthandoff: 03/21/2017
 * **System.Runtime.Serialization**
 
 ## <a name="code-has-been-added"></a>已添加代码
-### <a name="code-files-were-added-to-your-project"></a>代码文件已添加到您的项目
-身份验证启动类 **App_Start/Startup.Auth.cs**（包含 Azure AD 身份验证的启动逻辑）已添加到你的项目。 此外，还添加了控制器类 Controllers/AccountController.cs，其中包含 **SignIn()** 和 **SignOut()** 方法。 最后，添加了分部视图 **Views/Shared/_LoginPartial.cshtml**（包含 SignIn/SignOut 的操作链接）。
+### <a name="code-files-were-added-to-your-project"></a>代码文件已添加到项目
+身份验证启动类 **App_Start/Startup.Auth.cs**（包含 Azure AD 身份验证的启动逻辑）已添加到项目。 此外，还添加了控制器类 Controllers/AccountController.cs，其中包含 **SignIn()** 和 **SignOut()** 方法。 最后，添加了分部视图 **Views/Shared/_LoginPartial.cshtml**（包含 SignIn/SignOut 的操作链接）。
 
-### <a name="startup-code-was-added-to-your-project"></a>启动代码已添加到您的项目
-如果项目中已经有一个 Startup 类，**Configuration** 方法将进行更新，以包括对 **ConfigureAuth(app)** 的调用。 否则，Startup 类已添加到您的项目。
+### <a name="startup-code-was-added-to-your-project"></a>启动代码已添加到项目
+如果项目中已经有一个 Startup 类，**Configuration** 方法将进行更新，以包括对 **ConfigureAuth(app)** 的调用。 否则，Startup 类已添加到项目。
 
-### <a name="your-appconfig-or-webconfig-has-new-configuration-values"></a>您的 app.config 或 web.config 具有新的配置值
+### <a name="your-appconfig-or-webconfig-has-new-configuration-values"></a>app.config 或 web.config 具有新配置值
 已添加以下配置条目。
 
     <appSettings>
@@ -71,10 +70,10 @@ ms.lasthandoff: 03/21/2017
     </appSettings>
 
 ### <a name="an-azure-active-directory-ad-app-was-created"></a>已创建 Azure Active Directory (AD) 应用
-已在您在向导中选定的目录内创建一个 Azure AD 应用程序。
+已在向导中选定的目录内创建一个 Azure AD 应用程序。
 
 ## <a name="if-i-checked-disable-individual-user-accounts-authentication-what-additional-changes-were-made-to-my-project"></a>如果我选中“*禁用单个用户帐户身份验证*”，会对我的项目进行哪些额外的更改？
-NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状态，你可能需要手动删除额外的引用或文件，或者根据需要修改代码。
+NuGet 包引用已删除，文件已删除和备份。 根据项目的状态，可能需要手动删除额外的引用或文件，或者根据需要修改代码。
 
 ### <a name="nuget-package-references-removed-for-those-present"></a>删除的 NuGet 包引用（针对已存在的）
 * **Microsoft.AspNet.Identity.Core**
@@ -120,10 +119,10 @@ NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状�
 * **Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms**
 * **System.Spatial**
 
-### <a name="additional-code-files-were-added-to-your-project"></a>其他代码文件已添加到你的项目
+### <a name="additional-code-files-were-added-to-your-project"></a>其他代码文件已添加到项目
 添加了两个支持令牌缓存的文件：**Models\ADALTokenCache.cs** 和 **Models\ApplicationDbContext.cs**。  额外添加了一个控制器和视图，以演示如何使用 Azure 图形 API 访问用户配置文件信息。  这些文件是 **Controllers\UserProfileController.cs** 和 **Views\UserProfile\Index.cshtml**。
 
-### <a name="additional-startup-code-was-added-to-your-project"></a>其他启动代码已添加到你的项目
+### <a name="additional-startup-code-was-added-to-your-project"></a>其他启动代码已添加到项目
 在 **startup.auth.cs** 文件中，新的 **OpenIdConnectAuthenticationNotifications** 对象已添加到 **OpenIdConnectAuthenticationOptions** 的 **Notifications** 成员中。  这是为了能够接收 OAuth 代码，并用其交换访问令牌。
 
 ### <a name="additional-changes-were-made-to-your-appconfig-or-webconfig"></a>对 app.config 或 web.config 做出的其他更改
@@ -154,10 +153,9 @@ NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状�
     </entityFramework>
 
 
-### <a name="your-azure-active-directory-app-was-updated"></a>你的 Azure Active Directory 应用已更新
-你的 Azure Active Directory 应用已更新为包括*读取目录数据*权限，并已创建一个附加密钥，该密钥随后已用作 *ida:ClientSecret* 文件中的 **web.config**。
+### <a name="your-azure-active-directory-app-was-updated"></a>Azure Active Directory 应用已更新
+Azure Active Directory 应用已更新为包括*读取目录数据*权限，并已创建一个附加密钥，该密钥随后已用作 *ida:ClientSecret* 文件中的 **web.config**。
 
 ## <a name="next-steps"></a>后续步骤
 - [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
-
 

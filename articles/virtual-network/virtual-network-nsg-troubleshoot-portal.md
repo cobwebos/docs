@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户排查网络安全组问题
 > [!div class="op_single_selector"]
@@ -33,7 +32,7 @@ ms.lasthandoff: 06/01/2017
 
 使用 NSG 可以控制流入和流出虚拟机 (VM) 的流量类型。 可对 Azure 虚拟网络 (VNet) 中的子网和/或网络接口 (NIC) 应用 NSG。 对 NIC 应用的有效规则是对 NIC 应用的 NSG 以及对 NIC 所连接到的子网应用的 NSG 的规则聚合。 这些 NSG 的规则有时互相冲突，影响 VM 的网络连接。  
 
-可以查看 NSG 中对 VM NIC 应用的所有有效安全规则。 本文说明如何在 Azure Resource Manager 部署模型中使用这些规则来排查 VM 连接问题。 如果你不熟悉 VNet 与 NSG 的概念，请参阅[虚拟网络](virtual-networks-overview.md)和[网络安全组](virtual-networks-nsg.md)概述文章。
+可以查看 NSG 中对 VM NIC 应用的所有有效安全规则。 本文说明如何在 Azure Resource Manager 部署模型中使用这些规则来排查 VM 连接问题。 如果不熟悉 VNet 与 NSG 的概念，请参阅[虚拟网络](virtual-networks-overview.md)和[网络安全组](virtual-networks-nsg.md)概述文章。
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>使用有效的安全规则排查 VM 流量流问题
 以下情景是常见连接问题的示例：
@@ -48,9 +47,9 @@ ms.lasthandoff: 06/01/2017
 可以从 VM 本身查看 NIC 上的完整有效安全规则列表。 如果有相应的权限，也可以从有效规则的边栏选项卡添加、修改和删除 NIC 与子网的 NSG 规则。
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。
-2. 单击“**更多服务**”，然后在显示的列表中单击“**虚拟机**”。
+2. 单击“**更多服务**”，并在显示的列表中单击“**虚拟机**”。
 3. 在显示的列表中选择要进行故障排除的 VM，随后会显示一个包含选项的 VM 边栏选项卡。
-4. 单击“**诊断和解决问题**”，然后选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。 
+4. 单击“**诊断和解决问题**”，并选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。 
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image1.png)
 5. 该问题的下面会出现步骤，如下图所示： 
@@ -58,7 +57,7 @@ ms.lasthandoff: 06/01/2017
     ![](./media/virtual-network-nsg-troubleshoot-portal/image2.png)
    
     在建议的步骤列表中单击“*有效的安全组规则*”。
-6. 此时将显示“**获取有效的安全规则**”边栏选项卡，如下图所示：
+6. 此时会显示“**获取有效的安全规则**”边栏选项卡，如下图所示：
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image3.png)
    
@@ -75,7 +74,7 @@ ms.lasthandoff: 06/01/2017
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image4.png)
    
-    请注意 *denyRDP* **入站**规则。 对网络接口应用规则之前，将评估对子网应用的入站规则。 由于对子网应用了拒绝规则，永远不会评估 NIC 上的允许规则，因此连接到 TCP 3389 的请求将会失败。 
+    请注意 *denyRDP* **入站**规则。 对网络接口应用规则之前，将评估对子网应用的入站规则。 由于对子网应用了拒绝规则，永远不会评估 NIC 上的允许规则，因此连接到 TCP 3389 的请求会失败。 
    
     *denyRDP* 规则是 RDP 连接失败的原因。 删除此规则应可解决问题。
    
@@ -97,7 +96,7 @@ ms.lasthandoff: 06/01/2017
 如果特定的 NIC 影响了 VM 流量流，可以完成以下步骤，从网络接口上下文查看 NIC 的完整有效规则列表：
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。
-2. 单击“**更多服务**”，然后在显示的列表中单击“**网络接口**”。
+2. 单击“**更多服务**”，并在显示的列表中单击“**网络接口**”。
 3. 选择一个网络接口。 在下图中，已选择名为 *VM1-NIC1* 的 NIC。
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image5.png)
@@ -114,7 +113,7 @@ ms.lasthandoff: 06/01/2017
 修改 NSG 规则时，可以查看在特定 VM 上添加规则产生的影响。 可以查看应用了给定 NSG 的所有 NIC 的完整有效安全规则列表，而无需从给定 NSG 的边栏选项卡切换上下文。 若要排查 NSG 中有效规则的问题，请完成以下步骤：
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。
-2. 单击“**更多服务**”，然后在显示的列表中单击“**网络安全组**”。
+2. 单击“**更多服务**”，并在显示的列表中单击“**网络安全组**”。
 3. 选择一个 NSG。 在下图中，已选择名为 VM1-nsg 的 NSG。
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image6.png)
@@ -122,7 +121,8 @@ ms.lasthandoff: 06/01/2017
     请注意上图中的以下部分：
    
    * **范围：**设置为选定的 NSG。
-   * **虚拟机：**向某个子网应用某个 NSG 时，将会向附加到与该子网连接的所有 VM 的所有网络接口应用该 NSG。 此列表显示此 NSG 应用到的所有 VM。 可以从列表中选择任一 VM。
+   * 
+            **虚拟机：** 向某个子网应用某个 NSG 时，会向附加到与该子网连接的所有 VM 的所有网络接口应用该 NSG。 此列表显示此 NSG 应用到的所有 VM。 可以从列表中选择任一 VM。
      
      > [!NOTE]
      > 如果只向空子网应用了 NSG，则不会列出 VM。 如果将 NSG 应用到不与 VM 相关联的 NIC，也不会列出这些 NIC。 
@@ -149,5 +149,4 @@ ms.lasthandoff: 06/01/2017
 * 如果已创建对等互连的 VNet，则默认情况下，VIRTUAL_NETWORK 标记会自动扩展，包含对等互连的 VNet 的前缀。 可以在 **ExpandedAddressPrefix** 列表中查看这些前缀，排查与 VNet 对等连接相关的任何问题。 
 * 只有当 NSG 与 VM 的 NIC 和/或子网关联时，才会显示有效安全规则。 
 * 如果没有任何 NSG 与 NIC 或子网关联，并且向 VM 分配了公共 IP 地址，则会打开所有端口以便进行入站和出站访问。 如果 VM 使用公共 IP 地址，我们强烈建议对 NIC 或子网应用 NSG。
-
 

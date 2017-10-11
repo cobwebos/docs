@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: fb7d391e3118a9dccde5501c3f30c6f580932a30
-ms.contentlocale: zh-cn
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
 ms.lasthandoff: 08/03/2017
-
 ---
 # <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure Web 应用流量
 > [!NOTE]
@@ -29,7 +28,7 @@ ms.lasthandoff: 08/03/2017
 > 
 
 ## <a name="introduction"></a>介绍
-可以使用 Azure 流量管理器来控制如何将来自 Web 客户端的请求分发到 Azure App Service 中的 Web 应用。 将 Web 应用终结点添加到 Azure 流量管理器配置文件时，Azure 流量管理器会跟踪 Web 应用的状态（正在运行、已停止或已删除），以便确定那些终结点中有哪些应该接收流量。
+可以使用 Azure 流量管理器来控制如何将来自 Web 客户端的请求分发到 Azure 应用服务中的 Web 应用。 将 Web 应用终结点添加到 Azure 流量管理器配置文件时，Azure 流量管理器会跟踪 Web 应用的状态（正在运行、已停止或已删除），以便确定那些终结点中有哪些应该接收流量。
 
 ## <a name="load-balancing-methods"></a>负载均衡方法
 Azure 流量管理器使用三种不同的负载均衡方法。 下面的列表中说明了这些方法，因为它们与 Azure Web 应用相关。
@@ -55,5 +54,4 @@ Azure 流量管理器使用三种不同的负载均衡方法。 下面的列表�
 有关 Azure 流量管理器概念及技术方面的概述，请参阅[流量管理器概述](../traffic-manager/traffic-manager-overview.md)。
 
 有关将流量管理器与 Web 应用一起使用的详细信息，请参阅博客文章 [Using Azure Traffic Manager with Azure Web Sites](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)（将 Azure 流量管理器用于 Azure 网站）和 [Azure Traffic Manager can now integrate with Azure Web Sites](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)（Azure 流量管理器现在可以与 Azure 网站集成）。
-
 

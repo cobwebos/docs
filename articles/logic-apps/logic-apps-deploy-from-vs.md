@@ -15,17 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: LADocs; jehollan
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: e7f5cf483d22e4c60dedbe5176ceb0bc8b2b6e66
-ms.contentlocale: zh-cn
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
 ms.lasthandoff: 08/03/2017
-
 ---
-
 # <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>在 Visual Studio 中设计、生成和部署 Azure 逻辑应用
 
-虽然 [Azure 门户](https://portal.azure.com/)提供了创建和管理 Azure 逻辑应用的良好方法，但你可以使用 Visual Studio 设计、生成和部署逻辑应用。 Visual Studio 提供了丰富的工具（如逻辑应用设计器），使你能够创建逻辑应用，配置部署和自动化模板，并部署到任何环境。 
+虽然 [Azure 门户](https://portal.azure.com/)提供了创建和管理 Azure 逻辑应用的良好方法，但你可以使用 Visual Studio 设计、生成和部署逻辑应用。 Visual Studio 提供了丰富的工具，如逻辑应用程序设计器为你创建逻辑应用、 配置部署和自动化的模板，并将部署到任何环境。 
 
 若要开始使用 Azure 逻辑应用，请参阅[如何在 Azure 门户中创建第一个逻辑应用](logic-apps-create-a-logic-app.md)。
 
@@ -238,4 +236,3 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 * [查看常见示例和方案](logic-apps-examples-and-scenarios.md)
 * [了解如何使用 Azure 逻辑应用自动执行业务流程](http://channel9.msdn.com/Events/Build/2016/T694)
 * [了解如何将系统与 Azure 逻辑应用集成](http://channel9.msdn.com/Events/Build/2016/P462)
-

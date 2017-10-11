@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 40cd76e1aacb68d6051cae4a3c90a8970f5449f0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="available-event-hubs-apis"></a>可用的事件中心 API
 
 ## <a name="runtime-apis"></a>运行时 API
@@ -45,7 +43,7 @@ ms.lasthandoff: 08/16/2017
 
 #### <a name="node"></a>节点
 
-Node.js 库目前处于预览状态，由 Microsoft 员工和外部参与者作为副项目进行维护。 包括源代码在内的所有贡献都欢迎并将对其进行审查。
+Node.js 库目前处于预览状态，由 Microsoft 员工和外部参与者作为副项目进行维护。 包括源代码在内的所有贡献都欢迎并会对其进行审查。
 
 ## <a name="management-apis"></a>管理 API
 

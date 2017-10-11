@@ -15,12 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 290a9dc5ca67495da18d88b61dce1d8b6becea61
-ms.lasthandoff: 03/25/2017
-
-
+ms.openlocfilehash: 8c51c0bb37e25ad61fe58a85dd641dabe0a1958c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>如何在虚拟机上通过 Java 运行计算密集型任务
 > [!IMPORTANT] 
@@ -28,9 +27,9 @@ ms.lasthandoff: 03/25/2017
 
 借助 Azure，可以使用虚拟机来处理计算密集型任务。 例如，虚拟机可以处理任务并将结果传送给客户端计算机或移动应用程序。 阅读完本文后，将了解如何创建运行可由其他 Java 应用程序监视的、计算密集型 Java 应用程序的虚拟机。
 
-本教程假定你知道如何创建 Java 控制台应用程序，而且你可以将库导入 Java 应用程序并生成 Java 存档 (JAR)。 本教程并不假定你了解 Microsoft Azure。
+本教程假定你知道如何创建 Java 控制台应用程序，而且可以将库导入 Java 应用程序并生成 Java 存档 (JAR)。 假定不了解 Microsoft Azure。
 
-你将学习以下内容：
+将学习以下内容：
 
 * 如何创建已安装 Java 开发工具包 (JDK) 的虚拟机。
 * 如何远程登录到虚拟机。
@@ -55,13 +54,13 @@ ms.lasthandoff: 03/25/2017
 2. 依次单击“新建”、“计算”、“虚拟机”和“从库中”。
 3. 在“虚拟机映像选择”对话框中，选择“JDK 7 Windows Server 2012”。
    请注意，万一安装的是尚不能在 JDK 7 中运行的旧版应用程序，则可选择“JDK 6 Windows Server 2012”。
-4. 单击“下一步”。
+4. 单击“下一步” 。
 5. 在“虚拟机配置”对话框中：
    1. 指定虚拟机的名称。
    2. 指定要用于虚拟机的大小。
-   3. 在“用户名”字段中输入管理员的名称。 请记住接下来要输的名称和密码，此名称和密码将用于远程登录虚拟机。
-   4. 在“新密码”字段中输入密码，然后在“确认”字段中再次输入密码。 这是“管理员”帐户密码。
-   5. 单击“下一步”。
+   3. 在“用户名”字段中输入管理员的名称。 请记住接下来要输的名称和密码，此名称和密码用于远程登录虚拟机。
+   4. 在“新密码”字段中输入密码，并在“确认”字段中再次输入密码。 这是“管理员”帐户密码。
+   5. 单击“下一步” 。
 6. 在下一个“虚拟机配置”对话框中：
    1. 对于“云服务”，使用默认的“创建新的云服务”。
    2. “云服务 DNS 名称”的值在 cloudapp.net 中必须唯一。 如有必要，请修改此值，使 Azure 能够将其指示为唯一值。
@@ -89,13 +88,13 @@ ms.lasthandoff: 03/25/2017
 
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在 Azure 经典门户的左下方导航窗格中，单击“服务总线、访问控制和 Caching”。
-3. 在 Azure 经典门户的左上方窗格中，单击“服务总线”节点，然后单击“新建”按钮。  
+3. 在 Azure 经典门户的左上方窗格中，单击“服务总线”节点，并单击“新建”按钮。  
    ![“服务总线节点”屏幕截图][svc_bus_node]
-4. 在“新建服务命名空间”对话框中，输入一个**命名空间**，然后单击“检查可用性”按钮以确保该命名空间是唯一的。  
+4. 在“新建服务命名空间”对话框中，输入一个**命名空间**，并单击“检查可用性”按钮以确保该命名空间是唯一的。  
    ![“创建新的命名空间”屏幕截图][create_namespace]
-5. 确保该命名空间名称可用之后，选择应在其中托管命名空间的国家或地区，然后单击“创建命名空间”按钮。  
+5. 确保该命名空间名称可用之后，选择应在其中托管命名空间的国家或地区，并单击“创建命名空间”按钮。  
    
-   创建的命名空间随后将显示在 Azure 经典门户中，并需要一段时间激活。 请等到状态变为“活动”后再继续下一步。
+   创建的命名空间随后会显示在 Azure 经典门户中，并需要一段时间激活。 请等到状态变为“活动”后再继续下一步。
 
 ## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>获取命名空间的默认管理凭据
 若要在新命名空间上执行管理操作（如创建队列），则需要获取该命名空间的管理凭据。
@@ -302,7 +301,7 @@ ms.lasthandoff: 03/25/2017
 
 ## <a name="how-to-create-a-java-application-that-monitors-the-progress-of-the-compute-intensive-task"></a>如何创建监视计算密集型任务的进度的 Java 应用程序
 1. 在开发计算机上，使用本节末尾的示例代码创建 Java 控制台应用程序。 在本教程中，将使用 **TSPClient.java** 作为 Java 文件名。 如前所述，将 **your\_service\_bus\_namespace**、**your\_service\_bus\_owner** 和 **your\_service\_bus\_key** 占位符修改为分别使用服务总线的**命名空间**、**默认颁发者**和**默认密钥**值。
-2. 将应用程序导出到可运行的 JAR，并将所需的库打包到生成的 JAR 中。 在本教程中，将使用 **TSPClient.jar** 作为生成的 JAR 名称。
+2. 将应用程序导出到可运行的 JAR，并将所需的库打包到生成的 JAR 中。 本教程会使用 **TSPClient.jar** 作为生成的 JAR 名称。
 
 <p/>
 
@@ -505,7 +504,7 @@ ms.lasthandoff: 03/25/2017
    
         java -jar TSPClient.jar 1
    
-    客户端会一直运行，直到它看到“完成”的队列消息为止。 请注意，如果多次运行解算器而没有运行客户端，则可能需要多次运行客户端才能完全清空队列。 或者，可以删除该队列，然后重新创建一个。 若要删除队列，请运行以下 **TSPSolver**（不是 **TSPClient**）命令。
+    客户端会一直运行，直到它看到“完成”的队列消息为止。 请注意，如果多次运行解算器而没有运行客户端，则可能需要多次运行客户端才能完全清空队列。 或者，可以删除该队列，并重新创建一个。 若要删除队列，请运行以下 **TSPSolver**（不是 **TSPClient**）命令。
    
         java -jar TSPSolver.jar deletequeue
    
@@ -523,4 +522,3 @@ ms.lasthandoff: 03/25/2017
 [properties_pane]:media/java-run-compute-intensive-task/SvcBusQueues_06_PropertiesPane.jpg
 [default_key]:media/java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../../../java-add-certificate-ca-store.md
-

@@ -14,23 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako;johndeu;anilmur
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 74916c9da0c1d71395a087a729513110b663738b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.openlocfilehash: ef277710713d342eb9aaaf119e2985e8c1d82d0c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流
 ## <a name="overview"></a>概述
 **工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。
-借助工作流设计器工具的强大功能，你可以设计和创建将在**媒体编码器高级**中运行的复杂工作流。  
+借助工作流设计器工具的强大功能，可以设计和创建会在**媒体编码器高级**中运行的复杂工作流。  
 
-根据输入源文件的属性，工作流可以包含客户决策逻辑和分支。 你可以创建具有可重写属性与动态值的工作流，让即使最复杂的编码任务也能在云中轻松重复及自定义。
+根据输入源文件的属性，工作流可以包含客户决策逻辑和分支。 可以创建具有可重写属性与动态值的工作流，让即使最复杂的编码任务也能在云中轻松重复及自定义。
 
-你可以创建的工作流示例包括：
+可以创建的工作流示例包括：
 
-* 基于决策的工作流，该类工作流将检查要解析的源内容，并且仅编码所需的输出跟踪。  这有助于消除因无意中增加源内容而生成的多余跟踪。
+* 基于决策的工作流，该类工作流会检查要解析的源内容，并且仅编码所需的输出跟踪。  这有助于消除因无意中增加源内容而生成的多余跟踪。
 * 可使用多个输入文件来支持标题、覆盖和拼结在一起的内容。 
 
 还可以使用此工具修改任何[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 
@@ -88,9 +87,8 @@ ms.lasthandoff: 07/20/2017
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-如果你需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。
+如果需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。
 
 ## <a name="see-also"></a>另请参阅
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
-
 

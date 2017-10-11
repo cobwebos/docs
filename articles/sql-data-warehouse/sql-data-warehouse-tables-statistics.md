@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b2b99ec031ea26b4ab19e7327da035788661a0a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 1d5ded69e394643ddfc3de0c6d30dbd30c8e848f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>管理 SQL 数据仓库中表的统计信息
 > [!div class="op_single_selector"]
@@ -35,17 +33,17 @@ ms.lasthandoff: 12/08/2016
 > 
 > 
 
-SQL 数据仓库对你的数据了解得越多，其针对你的数据执行查询的速度就越快。  你可以通过收集数据统计信息的方式将数据的相关信息告知 SQL 数据仓库。  若要优化你的查询，则收集数据统计信息是你能够做的最重要事情之一。  SQL 数据仓库可以通过统计信息为你的查询创建最佳计划。  这是因为，SQL 数据仓库查询优化器是基于成本的优化器。  也就是说，此优化器会对各种查询计划的成本进行比较，然后选择成本最低的计划，该计划也应该是执行速度最快的计划。
+SQL 数据仓库对数据了解得越多，其针对数据执行查询的速度就越快。  可以通过收集数据统计信息的方式将数据的相关信息告知 SQL 数据仓库。  要优化查询，则收集数据统计信息是你能够做的最重要事情之一。  SQL 数据仓库可以通过统计信息为查询创建最佳计划。  这是因为，SQL 数据仓库查询优化器是基于成本的优化器。  也就是说，此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划，该计划也应该是执行速度最快的计划。
 
 可以针对单个列、多个列或表的索引创建统计信息。  统计信息存储在直方图中，该图可捕获值的范围和选择性。  当优化器需要评估查询中的 JOIN、GROUP BY、HAVING 和 WHERE 子句时，这些数据特别有用。  例如，如果优化器估计你在查询中筛选的日期会返回 1 行数据，则与该优化器估计你选择的日期会返回 1 百万行数据的情况相比，其选择的计划可能会有很大的不同。  虽然创建统计信息很重要，但确保统计信息准确反映表的当前状态也同样重要。  拥有最新统计信息可确保优化器选择好的计划。  优化器创建的计划的好坏取决于数据的统计信息。
 
 目前，创建和更新统计信息只能手动进行，但操作起来很简单。  这与 SQL Server 不一样，后者会自动创建和更新单个列和索引的统计信息。  使用以下信息可大大加强数据统计信息的自动化管理。 
 
 ## <a name="getting-started-with-statistics"></a>统计信息入门
- 创建每个列的模板统计信息是开始使用统计信息的简单方式。  由于保持统计信息处于最新状态也同样重要，因此即使采用保守的做法，也需每日或每次加载后更新统计信息。 创建和更新统计信息的性能与成本之间总有一些取舍。  如果你发现维护所有统计信息所需时间太长，可能要更谨慎选择哪些列要进行统计信息、哪些列需要频繁更新。  例如，你可能需要每日更新日期列（由于添加的可能是新值），而不是每次加载后进行更新。 同样，获取 JOIN、GROUP BY、HAVING 和 WHERE 子句中涉及的列的统计信息可以获得最大效益。  如果你的表包含的许多列只用在 SELECT 子句中，则这些列的统计信息可能没有用处，这种情况下，多花一点精力来标识其统计信息有用的列，可以减少统计信息的维护时间。
+ 创建每个列的模板统计信息是开始使用统计信息的简单方式。  由于保持统计信息处于最新状态也同样重要，因此即使采用保守的做法，也需每日或每次加载后更新统计信息。 创建和更新统计信息的性能与成本之间总有一些取舍。  如果发现维护所有统计信息所需时间太长，可能要更谨慎选择哪些列要进行统计信息、哪些列需要频繁更新。  例如，可能需要每日更新日期列（由于添加的可能是新值），而不是每次加载后进行更新。 同样，获取 JOIN、GROUP BY、HAVING 和 WHERE 子句中涉及的列的统计信息可以获得最大效益。  如果表包含的许多列只用在 SELECT 子句中，则这些列的统计信息可能没有用处，这种情况下，多花一点精力来标识其统计信息有用的列，可以减少统计信息的维护时间。
 
 ## <a name="multi-column-statistics"></a>多列统计信息
-你会发现，除了针对单个列创建的统计信息，查询还会从多列统计信息受益。  多列统计信息是基于列列表创建的统计信息。  其中包含列表中第一个列的单列统计信息，加上一些跨列相关性信息（称为密度）。  例如，如果你的表基于两个列联接到另一个表，你会发现，如果 SQL 数据仓库了解两个列之间的关系，就能更好地优化计划。   多列统计信息可以改善某些操作（例如复合 Join 和 Group By）的查询性能。
+会发现，除了针对单个列创建的统计信息，查询还会从多列统计信息受益。  多列统计信息是基于列列表创建的统计信息。  其中包含列表中第一个列的单列统计信息，加上一些跨列相关性信息（称为密度）。  例如，如果表基于两个列联接到另一个表，会发现，如果 SQL 数据仓库了解两个列之间的关系，就能更好地优化计划。   多列统计信息可以改善某些操作（例如复合 Join 和 Group By）的查询性能。
 
 ## <a name="updating-statistics"></a>更新统计信息
 更新统计信息是数据库管理日常工作的重要部分。  数据库中的数据发布改变时，就需要更新统计信息。  过期的统计信息会导致查询性能欠佳。
@@ -58,11 +56,11 @@ SQL 数据仓库对你的数据了解得越多，其针对你的数据执行查�
 
 例如，**SQL Server**（不是 SQL 数据仓库）在以下情况下会自动更新这些统计信息：
 
-* 如果表中没有行，则当你添加行时，将自动更新统计信息
+* 如果表中没有行，则添加行时，会自动更新统计信息
 * 如果在最初包含不到 500 行的表中添加超过 500 行（例如，表最初包含 499 行，后来你添加了 500 行，总共 999 行），则会自动更新 
-* 行数超过 500 之后，必须额外添加 500 行并加上表大小的 20%，然后系统才会对统计信息执行自动更新
+* 行数超过 500 之后，必须额外添加 500 行并加上表大小的 20%，系统才会对统计信息执行自动更新
 
-由于系统未提供 DMV 来确定自上次更新统计信息以来表中的数据是否发生更改，因此，如果知道统计信息的期限的话，也许你可以大致猜出更新状态。  可以使用以下查询来确定上次更新每个表的统计信息的时间。  
+由于系统未提供 DMV 来确定自上次更新统计信息以来表中的数据是否发生更改，因此，如果知道统计信息的期限的话，也许可以大致猜出更新状态。  可以使用以下查询来确定上次更新每个表的统计信息的时间。  
 
 > [!NOTE]
 > 请记住，如果给定列的值分布有重大变化，则应该更新统计信息，不管上次更新时间为何。  
@@ -137,7 +135,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
 ### <a name="b-create-single-column-statistics-by-examining-every-row"></a>B. 通过检查每个行创建单列统计信息
-20% 的默认采样率足以应付大多数情况。 不过，你可以调整采样率。
+20% 的默认采样率足以应付大多数情况。 不过，可以调整采样率。
 
 若要采样整个表，请使用此语法：
 
@@ -152,7 +150,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
 ### <a name="c-create-single-column-statistics-by-specifying-the-sample-size"></a>C. 通过指定样本大小创建单列统计信息
-或者，你可以以百分比指定样本大小：
+或者，可以以百分比指定样本大小：
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
@@ -161,9 +159,9 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ### <a name="d-create-single-column-statistics-on-only-some-of-the-rows"></a>D. 只对某些行创建单列统计信息
 另一个选项是对表中的部分行创建统计信息。 这称为筛选的统计信息。
 
-例如，在计划查询大型分区表的特定分区时，你可以使用筛选的统计信息。 只对分区值创建统计信息，统计信息的准确度将会改善，并因而改善查询性能。
+例如，在计划查询大型分区表的特定分区时，可以使用筛选的统计信息。 只对分区值创建统计信息，统计信息的准确度会改善，并因而改善查询性能。
 
-此示例将会基于一系列的值创建统计信息。 可以轻松定义这些值以匹配分区中的值范围。
+此示例会基于一系列的值创建统计信息。 可以轻松定义这些值以匹配分区中的值范围。
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
@@ -175,7 +173,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 > 
 
 ### <a name="e-create-single-column-statistics-with-all-the-options"></a>E. 使用所有选项创建单列统计信息
-当然，你可以将选项组合在一起。 以下示例使用自定义样本大小创建筛选的统计信息对象：
+当然，可以将选项组合在一起。 以下示例使用自定义样本大小创建筛选的统计信息对象：
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -223,7 +221,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ### <a name="h-use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>H. 使用存储过程基于数据库中的所有列创建统计信息
 SQL 数据仓库不提供相当于 SQL Server 中 [sp_create_stats][] 的系统存储过程。 此存储过程将基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
 
-这可以帮助你开始进行数据库设计。 你可以根据需要任意改写此存储过程。
+这可以帮助你开始进行数据库设计。 可以根据需要任意改写此存储过程。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -313,7 +311,7 @@ prc_sqldw_create_stats;
 ```
 
 ## <a name="examples-update-statistics"></a>示例：更新统计信息
-若要更新统计信息，你可以：
+要更新统计信息，可以：
 
 1. 更新一个统计信息对象。 指定要更新的统计信息对象名称。
 2. 更新表中的所有统计信息对象。 指定表名称，而不是一个特定的统计信息对象。
@@ -443,7 +441,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
 ### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>显示 DBCC SHOW_STATISTICS(); 的一个或多个组成部分
-如果你只想要查看特定部分，请使用 `WITH` 子句并指定要查看哪些部分：
+如果只想要查看特定部分，请使用 `WITH` 子句并指定要查看哪些部分：
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
@@ -467,7 +465,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 7. 不支持自定义错误 2767
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 MSDN 上的 [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS]。  若要了解详细信息，请参阅有关[表概述][Overview]、[表数据类型][Data Types]、[分布表][Distribute]、[为表编制索引][Index]、[将表分区][Partition]和[临时表][Temporary]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。  
+有关详细信息，请参阅 MSDN 上的 [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS]。  若要了解详细信息，请参阅有关[表概述][Overview]、[表数据类型][Data Types]、[分布表][Distribute]、[为表编制索引][Index]、[对表进行分区][Partition]和[临时表][Temporary]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。  
 
 <!--Image references-->
 
@@ -497,4 +495,3 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
 <!--Other Web references-->  
-

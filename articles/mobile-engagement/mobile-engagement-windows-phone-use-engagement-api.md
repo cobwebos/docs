@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f8ed91048ecfb1e7d19bb000216618b4e0c4b381
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>如何在 Windows Phone Silverlight 上使用 Engagement API
 本文档是文档 [如何在 Windows Phone Silverlight 应用中集成 Mobile Engagement](mobile-engagement-windows-phone-integrate-engagement.md) 的补充内容。 它提供了有关如何使用 Engagement API 来报告应用程序统计信息的全部详细信息。
@@ -174,7 +173,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
             EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
 
 ## <a name="reporting-crashes"></a>报告崩溃
-代理提供两种方法来解决崩溃。
+代理提供两种处理崩溃的方法。
 
 ### <a name="send-an-exception"></a>发送异常
 #### <a name="reference"></a>引用
@@ -189,7 +188,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 
             EngagementAgent.Instance.SendCrash(new Exception("example"), terminateSession: true);
 
-如果执行了以上操作，会话和作业将在发送崩溃后立即关闭。
+如果执行了以上操作，会话和作业会在发送崩溃后立即关闭。
 
 ### <a name="send-an-unhandled-exception"></a>发送未经处理的异常
 #### <a name="reference"></a>引用
@@ -200,7 +199,7 @@ Engagement 还提供了一种发送未经处理的异常的方法。 在 silverl
 此方法被调用后，会**始终**终止 Engagement 会话和作业。
 
 #### <a name="example"></a>示例
-你可以使用它来实施自己的 UnhandledException 处理程序（尤其是当你禁用了 Engagement 的自动报告崩溃功能时）。 例如，在 `App.xaml.cs` 文件的 `Application_UnhandledException` 方法中：
+可以使用它来实施自己的 UnhandledException 处理程序（尤其是禁用了 Engagement 的自动报告崩溃功能时）。 例如，在 `App.xaml.cs` 文件的 `Application_UnhandledException` 方法中：
 
             // In your App.xaml.cs file
 
@@ -216,9 +215,9 @@ Engagement 还提供了一种发送未经处理的异常的方法。 在 silverl
 ### <a name="reference"></a>引用
             void OnActivated(ActivatedEventArgs e)
 
-当用户向前导航以离开应用程序时，在引发 Deactivated 事件之后，操作系统将尝试使应用程序处于休眠状态。 然后，应用程序在进行逻辑删除。 在该过程中将终止应用程序，但是保留关于应用程序状态和应用程序内的各个页面的部分数据。
+当用户向前导航以离开应用程序时，在引发 Deactivated 事件之后，操作系统将尝试使应用程序处于休眠状态。 然后，应用程序是逻辑删除。 在该过程中将终止应用程序，但是保留关于应用程序状态和应用程序内的各个页面的部分数据。
 
-当应用程序被逻辑删除时，你必须在 App.xaml.cs 文件的 `Application_Activated` 方法中插入 `EngagementAgent.Instance.OnActivated(e)`，以重置 Engagement 代理。
+当应用程序被逻辑删除时，必须在 App.xaml.cs 文件的 `Application_Activated` 方法中插入 `EngagementAgent.Instance.OnActivated(e)`，以重置 Engagement 代理。
 
 ### <a name="example"></a>示例
             // Inside your App.xaml.cs file
@@ -293,10 +292,10 @@ Engagement 还提供了一种发送未经处理的异常的方法。 在 silverl
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线（\_）。
+这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线 (\_)。
 
 #### <a name="size"></a>大小
-其他参数的限制为每次调用 **1024** 个字符。
+extras 在每次调用中限制为 **1024** 个字符。
 
 ## <a name="reporting-application-information"></a>报告应用程序信息
 ### <a name="reference"></a>引用
@@ -321,7 +320,7 @@ Engagement 还提供了一种发送未经处理的异常的方法。 在 silverl
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线（\_）。
+这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线 (\_)。
 
 #### <a name="size"></a>大小
 应用程序信息仅限于每次调用 **1024** 个字符。
@@ -333,8 +332,7 @@ Engagement 还提供了一种发送未经处理的异常的方法。 在 silverl
 ## <a name="logging"></a>日志记录
 ### <a name="enable-logging"></a>启用日志记录
 可以将 SDK 配置为在 IDE 控制台中生成测试日志。
-默认情况下不启用这些日志。 若要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
+默认情况下不启用这些日志。 要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
-

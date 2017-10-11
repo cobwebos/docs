@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 595541e7248a7486e58123927389c552af0e50f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>教程：Azure Active Directory 与 Tangoe Command Premium Mobile 集成
 
@@ -86,7 +85,7 @@ ms.lasthandoff: 07/26/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Tangoe Command Premium Mobile 测试用户](#create-a-tangoe-command-premium-mobile-test-user)** - 在 Tangoe Command Premium Mobile 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建一个 Tangoe 命令高级移动测试用户](#create-a-tangoe-command-premium-mobile-test-user)** -若要链接到用户的 Azure AD 表示 Tangoe 命令高级移动中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -115,7 +114,7 @@ ms.lasthandoff: 07/26/2017
     > [!NOTE] 
     > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-2/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![“SAML 签名证书”部分](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_certificate.png) 
 
@@ -163,7 +162,7 @@ ms.lasthandoff: 07/26/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -231,5 +230,4 @@ ms.lasthandoff: 07/26/2017
 [201]: ./media/active-directory-saas-tangoe-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tangoe-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tangoe-tutorial/tutorial_general_203.png
-
 

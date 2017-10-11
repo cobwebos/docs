@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>如何将数据磁盘附加到 Linux 虚拟机
 > [!IMPORTANT] 
@@ -54,7 +53,7 @@ ms.lasthandoff: 04/03/2017
    
     或
    
-    b) 使用 `lsscsi` 命令找出设备 ID。`lsscsi` 的安装可以通过 `yum install lsscsi`（在基于 Red Hat 的分发版上）或 `apt-get install lsscsi`（在基于 Debian 的分发版上）来进行。 可以通过 *lun*（**逻辑单元号**）找到所要的磁盘。 例如，所附加磁盘的 *lun* 可以轻松地通过 `azure vm disk list <virtual-machine>` 来查看，如下所示：
+    b) 使用 `lsscsi` 命令找出设备 ID。 `lsscsi` 的安装可以通过 `yum install lsscsi`（在基于 Red Hat 的分发版上）或 `apt-get install lsscsi`（在基于 Debian 的分发版上）来进行。 可以通过 *lun*（**逻辑单元号**）找到所要的磁盘。 例如，所附加磁盘的 *lun* 可以轻松地通过 `azure vm disk list <virtual-machine>` 来查看，如下所示：
 
     ```azurecli
     azure vm disk list myVM
@@ -90,7 +89,7 @@ ms.lasthandoff: 04/03/2017
     sudo fdisk /dev/sdc
     ```
 
-4. 出现提示时，键入 **n** 创建分区。
+4. 出现提示时，键入 **n** 来创建分区。
 
     ![创建设备](./media/attach-disk/fdisknewpartition.png)
 
@@ -175,7 +174,7 @@ ms.lasthandoff: 04/03/2017
     > [!NOTE]
     > 即使文件系统已损坏或磁盘在引导时不存在，`nofail` 选项也能确保 VM 启动。 如果不使用此选项，可能会遇到 [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)（由于 FSTAB 错误而无法通过 SSH 连接到 Linux VM）中所述的行为。
 
-    现在，可以通过卸载并重新装载文件系统（即使用在之前的步骤中创建的示例装载点 `/datadrive`）来测试文件系统是否已正确装载：
+    现在，可以通过卸载并重新装载文件系统（即 使用在前面步骤中创建的示例装入点 `/datadrive`）来测试文件系统是否已正确装载：
 
     ```bash
     sudo umount /datadrive
@@ -235,4 +234,3 @@ ms.lasthandoff: 04/03/2017
 <!--Link references-->
 [Agent]:../agent-user-guide.md
 [Logon]:../mac-create-ssh-keys.md
-

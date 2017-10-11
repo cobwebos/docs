@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 1ebabe4844732412e04bab8c277f7ebbc4a5737c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -99,7 +98,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-在本教程中，我们将重点放在 `runAsync()` 入口点方法上。 这是可以立即开始运行代码的位置。
+在本教程中，我们重点介绍 `runAsync()` 入口点方法。 这是可以立即开始运行代码的位置。
 
 ### <a name="runasync"></a>RunAsync
 当服务实例已放置并且可以执行时，平台将调用此方法。 对于无状态服务，这就意味着打开服务实例。 需要关闭服务实例时，将提供取消标记进行协调。 在 Service Fabric 中，服务实例的此打开-关闭循环可能会在服务的整个生存期内出现多次。 发生这种情况的原因多种多样，包括：
@@ -109,7 +108,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 * 应用程序或系统升级。
 * 基础硬件遇到中断。
 
-Service Fabric 将管理此业务流程，以便保持服务的高度可用和适当均衡。
+Service Fabric 会管理此业务流程，以便保持服务的高度可用和适当均衡。
 
 `runAsync()` 不应阻止同步。 runAsync 的实现应返回一个 CompletableFuture，以允许运行时继续执行。 如果工作负荷需要实现一个应该在 CompletableFuture 内完成的、长期运行的任务。
 
@@ -178,4 +177,3 @@ $ ./install.sh
 ## <a name="next-steps"></a>后续步骤
 
 * [Service Fabric CLI 入门](service-fabric-cli.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: aff0710ead4f76bb80c38e2d88fe9cd3ce6a7b48
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/08/2017
 
 * **还原本地卷时可执行备份** – 有关过程，请参阅[使用 StorSimple 设备管理器服务管理备份策略](storsimple-8000-manage-backup-policies-u2.md)。
 
-* **可取消还原操作** – 如果取消还原作业，则该卷将被回滚到启动还原操作之前所处的状态。 有关过程，请转到[取消作业](storsimple-8000-manage-jobs-u2.md#cancel-a-job)。
+* **可取消还原操作** – 如果取消还原作业，则该卷会被回滚到启动还原操作之前所处的状态。 有关过程，请转到[取消作业](storsimple-8000-manage-jobs-u2.md#cancel-a-job)。
 
 ## <a name="how-does-restore-work"></a>还原的工作原理
 
@@ -61,7 +60,7 @@ ms.lasthandoff: 07/08/2017
 
 * 如果设备上存在就地还原和要还原卷的本地快照，则不解除冻结（因为数据已在本地可用）。 
 
-* 默认情况下，将在还原时启动解除冻结作业，以根据热度地图主动解除冻结数据。 
+* 默认情况下，会在还原时启动解除冻结作业，以根据热度地图主动解除冻结数据。 
 
 在 Update 4 中，可使用 Windows PowerShell cmdlet 查询正在运行的解除冻结作业、取消解除冻结作业，并获取解除冻结作业的状态。
 
@@ -123,7 +122,7 @@ ms.lasthandoff: 07/08/2017
 
     ![备份集列表](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
-5. 系统将提示进行确认。 查看还原信息，然后选择“确认”复选框。
+5. 系统会提示进行确认。 查看还原信息，并选择“确认”复选框。
    
     ![“确认”页](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
@@ -138,10 +137,9 @@ ms.lasthandoff: 07/08/2017
 
 如果因任何原因而导致还原操作失败，用户将收到警报。 如果发生这种情况，请刷新备份列表，以验证备份是否仍然有效。 如果备份有效，并且正在从云中进行还原，则可能是由连接问题所造成的。
 
-若要完成还原操作，需要使卷在主机上脱机，然后重试还原操作。 请注意，在还原过程中之前对卷数据进行的任何修改都将丢失。
+要完成还原操作，需要使卷在主机上脱机，并重试还原操作。 请注意，在还原过程中之前对卷数据进行的任何修改都将丢失。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 卷](storsimple-8000-manage-volumes-u2.md)。
 * 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

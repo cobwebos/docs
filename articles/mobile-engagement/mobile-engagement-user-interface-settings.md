@@ -14,15 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3c20ee0d5abb40d7650eeaa722e87142275448d
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>如何管理应用程序的全局设置
-应用程序的“**设置**”菜单选项不尽相同，具体取决于应用程序所在的平台以及授予给你的应用程序权限。 设置包括以下内容：详细信息、项目、原生推送、推送速度、标记（应用信息） 和商业压力。 “设置”部分的“标记”（应用信息）菜单选项由应用程序通过 SDK 管理，或由后端通过设备 API 管理。 
+应用程序的“**设置**”菜单选项不尽相同，具体取决于应用程序所在的平台以及授予给应用程序权限。 设置包括以下内容：详细信息、项目、原生推送、推送速度、标记（应用信息） 和商业压力。 “设置”部分的“标记”（应用信息）菜单选项由应用程序通过 SDK 管理，或由后端通过设备 API 管理。 
 
 > [!NOTE]
 > **Mobile Engagement** 门户 UI 的很多部分中都包含“**显示帮助**”按钮。 按此按钮可获取关于某一部分的更多上下文信息。
@@ -37,33 +36,33 @@ ms.lasthandoff: 12/08/2016
   ![settings1][46]
 
 ## <a name="projects"></a>项目
-允许你选择希望应用程序显示在其中的所有项目。 
+允许选择希望应用程序显示在其中的所有项目。 
 
-还可以搜索项目并查看名称、描述、所有者和你在应用程序所属项目中的角色权限。
+你也可以搜索项目和查看的名称、 描述、 所有者和你的应用程序属于任何项目你角色的权限。
 
 有关详细信息，请查看：[UI 文档 - 主页][Link 13]
 
   ![settings3][48]
 
 ## <a name="native-push"></a>原生推送
-允许注册新证书或删除任何用于原生推送的现有证书。 原生推送允许 Azure Mobile Engagement 随时向你的应用程序推送，即使应用程序并未运行。 
+允许注册新证书或删除任何用于原生推送的现有证书。 原生推送允许 Azure Mobile Engagement 随时向应用程序推送，即使应用程序并未运行。 
 
 在为至少一个原生推送服务提供凭据或证书后，创建 Reach Campaigns 时可以选择“随时”选项，还可以在 PUSH API 中使用“notifier”参数。
 
 ### <a name="apple-push-notification-service-apns"></a>Apple 推送通知服务 (APNS)
-要使用 Apple 推送通知服务来启用原生推送，需要注册你的证书。 需要指定证书类型为开发 (DEV) 或生产 (PROD)。 然后需要上载证书和密码。
+要使用 Apple 推送通知服务来启用原生推送，需要注册证书。 需要指定证书类型为开发 (DEV) 或生产 (PROD)。 然后需要上传证书和密码。
 
 有关详细信息，请查看：[SDK 文档 - iOS - 如何为 Apple 推送通知准备应用程序][Link 5]
 
 ![settings4][49]
 
 ### <a name="windows-push-notification-service-wpns"></a>Windows 推送通知服务 (WPNS)
-要使用 Windows 通知服务来启用原生推送，必须提供应用程序的凭据。 你需要程序包安全标识符 (SID) 和密钥。
+要使用 Windows 通知服务来启用原生推送，必须提供应用程序的凭据。 需要程序包安全标识符 (SID) 和密钥。
 
 ![settings5][50]
 
 ### <a name="google-cloud-messaging-for-android-gcm"></a>Google Cloud Messaging for Android (GCM)
-要使用 GCM 来启用原生推送，需要遵循来自 Google 的操作说明。 然后必须粘贴服务器简单 API 密钥（配置为无 IP 限制）。 要求与 SDK for Android v1.12.0 + 相集成。
+要使用 GCM 来启用原生推送，需要遵循来自 Google 的操作说明。 然后必须粘贴服务器简单 API 密钥，配置为无 IP 限制。 要求与 SDK for Android v1.12.0 + 相集成。
 
 有关详细信息，请参阅： 
 
@@ -189,5 +188,4 @@ ms.lasthandoff: 12/08/2016
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
 

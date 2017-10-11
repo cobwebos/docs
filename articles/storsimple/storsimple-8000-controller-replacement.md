@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 849eccff114c2fd6d952e44d095d0cc89a238675
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
 ## <a name="overview"></a>概述
@@ -43,7 +42,7 @@ ms.lasthandoff: 07/08/2017
 | 3 |切换来自同一个设备或不同设备的控制器。 机箱、磁盘和磁盘盒都工作正常。 |将显示插槽不匹配警报消息。 |
 | 4 |一个控制器缺失，另一个控制器发生故障。 |[双控制器更换](#replace-both-controllers)，其中描述了[双控制器更换背后的逻辑](#dual-controller-replacement-logic)，以及[更换步骤](#dual-controller-replacement-steps)。 |
 | 5 |一个或两个控制器发生故障。 无法通过串行控制台或 Windows PowerShell 远程处理功能访问设备。 |请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)，了解手动更换控制器的过程。 |
-| 6 |控制器有不同的内部版本，这可能是因为：<ul><li>控制器有不同的软件版本。</li><li>控制器有不同的固件版本。</li></ul> |如果控制器的软件版本不同，则更换逻辑会检测到这种情况，并更新用于更换的控制器的软件版本。<br><br>如果控制器的固件版本不同，并且旧固件版本**无法**自动升级，Azure 门户中会显示一条警报消息。 应扫描更新并安装固件更新。</br></br>如果控制器的固件版本不同，并且旧固件版本可自动升级，则控制器更换逻辑将检测到这种情况，在控制器启动后，将自动更新固件。 |
+| 6 |控制器有不同的内部版本，这可能是因为：<ul><li>控制器有不同的软件版本。</li><li>控制器有不同的固件版本。</li></ul> |如果控制器的软件版本不同，则更换逻辑会检测到这种情况，并更新用于更换的控制器的软件版本。<br><br>如果控制器的固件版本不同，并且旧固件版本**无法**自动升级，Azure 门户中会显示一条警报消息。 应扫描更新并安装固件更新。</br></br>如果控制器的固件版本不同，并且旧固件版本可自动升级，则控制器更换逻辑将检测到这种情况，在控制器启动后，会自动更新固件。 |
 
 如果控制器模块发生故障，需要将其拆下。 一个或两个控制器模块可能发生故障，从而需要执行单控制器更换或双控制器更换过程。 有关更换过程及其背后的逻辑：请参阅以下主题：
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 07/08/2017
 2. 在用于更换的控制器上复制活动控制器的虚拟硬盘 (VHD) 快照。
 3. 修改该快照，以便在从此 VHD 启动用于更换的控制器时，将该控制器视为备用控制器。
 4. 完成修改之后，用于更换的控制器将作为备用控制器启动。
-5. 当两个控制器处于运行状态时，群集将会联机。
+5. 当两个控制器处于运行状态时，群集会联机。
 
 ### <a name="single-controller-replacement-steps"></a>单控制器更换步骤
 如果 Microsoft Azure StorSimple 设备中的某个控制器发生故障，请完成以下步骤。 （另一个控制器必须处于活动状态，并且正在运行。 如果两个控制器都发生故障或功能异常，请转到[双控制器更换步骤](#dual-controller-replacement-steps)。）
@@ -98,7 +97,7 @@ ms.lasthandoff: 07/08/2017
    | 4 |控制器 1 |
 4. 在发生故障的控制器上，从数据端口拔下所有连接的网络电缆。 如果使用的是 8600 型号，也请拔下将该控制器连接到 EBOD 控制器的 SAS 电缆。
 5. 按照[拆卸控制器](#remove-a-controller)中的步骤拆卸发生故障的控制器。
-6. 将厂家更换件安装在拆卸故障控制器后空出的插槽中。 此时将触发单控制器更换逻辑。 有关详细信息，请参阅[单控制器更换逻辑](#single-controller-replacement-logic)。
+6. 将厂家更换件安装在拆卸故障控制器后空出的插槽中。 此时会触发单控制器更换逻辑。 有关详细信息，请参阅[单控制器更换逻辑](#single-controller-replacement-logic)。
 7. 单控制器更换逻辑在后台运行时，请重新连接电缆。 小心连接所有电缆，连接方式与更换前的连接方式完全一样。
 8. 控制器重新启动后，在 Azure 门户中检查“控制器状态”和“群集状态”，确认该控制器是否已恢复到正常工作状态，并且处于备用模式。
 
@@ -112,9 +111,9 @@ ms.lasthandoff: 07/08/2017
 当 Microsoft Azure StorSimple 设备上的两个控制器发生故障、工作异常或缺失时，需要更换这两个控制器。 
 
 ### <a name="dual-controller-replacement-logic"></a>双控制器更换逻辑
-若要更换两个控制器，首先应该拆下两个有故障的控制器，然后插入用于更换的控制器。 插入两个用于更换的控制器后，将执行以下操作：
+要更换两个控制器，首先应该拆下两个有故障的控制器，然后插入用于更换的控制器。 插入两个用于更换的控制器后，将执行以下操作：
 
-1. 插槽 0 中用于更换的控制器将检查以下项目：
+1. 插槽 0 中用于更换的控制器会检查以下项目：
    
    1. 控制器是否使用了最新版本的固件和软件？
    2. 控制器是否已加入群集？
@@ -123,7 +122,7 @@ ms.lasthandoff: 07/08/2017
       如果上述问题的答案均为“否”，则控制器会查找最新的每日备份（位于驱动器 S 上的 **nonDOMstorage** 中）。 控制器从该备份复制 VHD 的最新快照。
 2. 插槽 0 中的控制器使用该快照构建自身的映像。
 3. 与此同时，插槽 1 中的控制器等待控制器 0 完成映像创建并启动。
-4. 当控制器 0 启动时，控制器 1 将检测由控制器 0 创建的群集，此时将触发单控制器更换逻辑。 有关详细信息，请参阅[单控制器更换逻辑](#single-controller-replacement-logic)。
+4. 当控制器 0 启动时，控制器 1 将检测由控制器 0 创建的群集，此时会触发单控制器更换逻辑。 有关详细信息，请参阅[单控制器更换逻辑](#single-controller-replacement-logic)。
 5. 然后，两个控制器将会运行，群集将会联机。
 
 > [!IMPORTANT]
@@ -143,7 +142,7 @@ ms.lasthandoff: 07/08/2017
    2. 等待设备完全关闭。 设备背面的所有 LED 都将熄灭。
 2. 拔下连接到数据端口的所有网络电缆。 如果使用的是 8600 型号，也请拔下将主机箱连接到 EBOD 机箱的 SAS 电缆。
 3. 从 StorSimple 设备上拆下两个控制器。 有关详细信息，请参阅[拆卸控制器](#remove-a-controller)。
-4. 请先插入控制器 0 的厂家更换部件，然后插入控制器 1。 有关详细信息，请参阅[插入控制器](#insert-a-controller)。 此时将触发双控制器更换逻辑。 有关详细信息，请参阅[双控制器更换逻辑](#dual-controller-replacement-logic)。
+4. 请先插入控制器 0 的厂家更换部件，并插入控制器 1。 有关详细信息，请参阅[插入控制器](#insert-a-controller)。 此时会触发双控制器更换逻辑。 有关详细信息，请参阅[双控制器更换逻辑](#dual-controller-replacement-logic)。
 5. 控制器更换逻辑在后台运行时，请重新连接电缆。 小心连接所有电缆，连接方式与更换前的连接方式完全一样。 请参阅[安装 StorSimple 8100 设备](storsimple-8100-hardware-installation.md)或[安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md)的“设备布线”部分中与具体型号相关的详细说明。
 6. 打开 StorSimple 设备。 如果使用的是 8600 型号：
    
@@ -185,7 +184,7 @@ ms.lasthandoff: 07/08/2017
     ![将控制器滑入机箱中](./media/storsimple-controller-replacement/IC741053.png)
    
     **图 4** 将控制器滑入机箱中
-3. 插入控制器模块后，一边关闭闩锁，一边继续将控制器模块推入机箱中。 闩锁将会啮合，将控制器卡入位。
+3. 插入控制器模块后，一边关闭闩锁，一边继续将控制器模块推入机箱中。 闩锁会啮合，将控制器卡入位。
    
     ![关闭控制器闩锁](./media/storsimple-controller-replacement/IC741054.png)
    
@@ -214,7 +213,7 @@ ms.lasthandoff: 07/08/2017
 **图 6** 显示活动控制器的 Azure 门户
 
 ### <a name="use-windows-powershell-for-storsimple-to-identify-the-active-controller"></a>使用 Windows PowerShell for StorSimple 识别活动控制器
-通过串行控制台访问设备时，将显示一条标题消息。 这条标题消息包含基本的设备信息，例如型号、名称、安装的软件版本以及正在访问的控制器的状态。 下图显示了一个标题消息示例：
+通过串行控制台访问设备时，会显示一条标题消息。 这条标题消息包含基本的设备信息，例如型号、名称、安装的软件版本以及正在访问的控制器的状态。 下图显示了一个标题消息示例：
 
 ![串行标题消息](./media/storsimple-controller-replacement/IC741098.png)
 
@@ -238,5 +237,4 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-8000-hardware-component-replacement.md)。
-
 

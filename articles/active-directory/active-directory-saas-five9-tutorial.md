@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: d75163ea5eb3fa811e07861f06e6c4d5c758b898
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>教程：将 Azure Active Directory 与 Five9 Plus Adapter (CTI, Contact Center Agents) 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/18/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Five9 Plus Adapter (CTI, Contact Center Agents) 测试用户](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)** - 在 Five9 Plus Adapter (CTI, Contact Center Agents) 创建 Britta Simon 的对应用户， 将其链接到用户的 Azure AD 表现形式。
+3. **[创建 Five9 加上的适配器 （CTI，联系人 Center 代理） 测试用户](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)** -若要在 Five9 加上适配器 （CTI，联系人 Center 代理） 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 07/18/2017
 
     ![配置单一登录](./media/active-directory-saas-five9-tutorial/tutorial_five9_url.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
 
     |    环境      |       代码      |
     | :-- | :-- |
@@ -119,7 +118,7 @@ ms.lasthandoff: 07/18/2017
     | 适用于 Five9 Plus Adapter for Zendesk | `https://app.five9.com/appsvcs/saml/metadata/alias/zd` |
     | 适用于 Five9 Plus Adapter for Agent Desktop Toolkit | `https://app.five9.com/appsvcs/saml/metadata/alias/adt` |
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL：
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：
 
     |      环境     |      代码      |
     | :--                  | :--           |
@@ -127,7 +126,7 @@ ms.lasthandoff: 07/18/2017
     | 适用于 Five9 Plus Adapter for Zendesk | `https://app.five9.com/appsvcs/saml/SSO/alias/zd` |
     | 适用于 Five9 Plus Adapter for Agent Desktop Toolkit | `https://app.five9.com/appsvcs/saml/SSO/alias/adt` |
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-five9-tutorial/tutorial_five9_certificate.png) 
 
@@ -141,9 +140,9 @@ ms.lasthandoff: 07/18/2017
 
 7. 若要在“Five9 Plus Adapter (CTI, Contact Center Agents)”端配置单一登录，需要将下载的“证书 (Base64)”、“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”发送到 [Five9 Plus Adapter (CTI, Contact Center Agents) 支持团队](https://www.five9.com/about/contact)。 此外，若要进一步配置 SSO，请根据适配器遵循以下步骤：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 “Five9 Plus Adapter for Agent Desktop Toolkit”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. “Five9 Plus Adapter for Agent Desktop Toolkit”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 “Five9 Plus Adapter for Microsoft Dynamics CRM”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. “Five9 Plus Adapter for Microsoft Dynamics CRM”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
     c. “Five9 Plus Adapter for Zendesk”管理员指南：[http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
@@ -175,7 +174,7 @@ ms.lasthandoff: 07/18/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-five9-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -195,7 +194,7 @@ ms.lasthandoff: 07/18/2017
 
 若要将 Britta Simon 分配到 Five9 Plus Adapter (CTI, Contact Center Agents)，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -242,5 +241,4 @@ ms.lasthandoff: 07/18/2017
 [201]: ./media/active-directory-saas-five9-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-five9-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-five9-tutorial/tutorial_general_203.png
-
 

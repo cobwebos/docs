@@ -13,18 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: a347eedbf5511dc83e1bc7721667441cfb87cb59
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-user-provisioning"></a>教程：配置 Workplace by Facebook 以进行用户预配
 
 本教程展示了从 Azure Active Directory (Azure AD) 到 Workplace by Facebook 对用户账户进行自动预配和取消预配所需的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
@@ -92,5 +91,4 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-facebook-at-work-tutorial.md)
-
 

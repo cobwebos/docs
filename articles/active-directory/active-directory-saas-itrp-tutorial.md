@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: fae1c7b6b0e04c1e23123d3aee7913cb3131e645
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 
@@ -90,7 +89,7 @@ ms.lasthandoff: 07/04/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ITRP 测试用户](#creating-an-itrp-test-user)** - 在 ITRP 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 ITRP 测试用户](#creating-an-itrp-test-user)** -若要链接到用户的 Azure AD 表示的 ITRP 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -147,9 +146,9 @@ ms.lasthandoff: 07/04/2017
     
     ![单一登录](./media/active-directory-saas-itrp-tutorial/ic775573.png "单一登录")   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“启用”。
+    a. 单击“启用”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    b. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
     c. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
@@ -184,7 +183,7 @@ ms.lasthandoff: 07/04/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-itrp-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -218,9 +217,9 @@ ms.lasthandoff: 07/04/2017
    
     ![用户](./media/active-directory-saas-itrp-tutorial/ic775577.png "用户") 
       
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 键入要预配的有效 AAD 帐户的“名称”、“电子邮件”。
+    a. 键入要预配的有效 AAD 帐户的“名称”、“电子邮件”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“保存” 。
+    b. 单击“保存” 。
 
 >[!NOTE]
 >可以使用 ITRP 提供的任何其他 ITRP 用户帐户创建工具或 API 来预配 AAD 用户帐户。 
@@ -234,7 +233,7 @@ ms.lasthandoff: 07/04/2017
 
 **若要将 Britta Simon 分配到 ITRP，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -281,5 +280,4 @@ ms.lasthandoff: 07/04/2017
 [201]: ./media/active-directory-saas-itrp-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-itrp-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-itrp-tutorial/tutorial_general_203.png
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建活动日志警报
 本文说明如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)配置活动日志警报。 使用模板，可以轻松设置在自动执行的部署过程中基于特定活动日志事件条件激活的多个警报。
@@ -106,4 +105,3 @@ ms.lasthandoff: 08/24/2017
 - 了解如何[使用资源管理器模板添加操作组](monitoring-create-action-group-with-resource-manager-template.md)。
 - 了解如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)。
 - 了解如何[创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
-

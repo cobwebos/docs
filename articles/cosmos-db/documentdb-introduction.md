@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
 ms.openlocfilehash: 2cb4bd74ea973c8ff980d208a8c5f63a98ec1edd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB 简介：DocumentDB API
 
@@ -49,7 +48,7 @@ Azure Cosmos DB 通过 DocumentDB API 提供了以下主要功能和优势：
 
 * **自动索引：**默认情况下，Azure Cosmos DB 会自动为数据库中的所有文档编制，无需任何架构或创建二级索引。 不想索引所有内容？ 别担心，还可以 [退出 JSON 文件中的路径](indexing-policies.md) 。
 
-* 更改源支持：更改源在 Azure Cosmos DB 集合中按文档修改顺序提供排序的文档列表。 可以使用此源来侦听对数据的修改，以便复制数据、触发 API 调用或对更新执行流处理。 更改源是自动启用的，且易于使用：[详细了解更改源](https://docs.microsoft.com/azure/cosmos-db/change-feed)。 
+* **更改源支持：**更改源提供了在其中修改顺序 Azure Cosmos DB 集合中的文档的已排序的列表。 此数据源可用来侦听对为了将数据复制、 触发 API 调用或执行更新的流处理的数据修改。 更改源会自动启用并易于使用：[了解有关的详细信息更改源](https://docs.microsoft.com/azure/cosmos-db/change-feed)。 
 
 ## <a name="data-management"></a>如何使用 Cosmos DB API 管理数据？
 Cosmos DB API 有助于通过定义完好的数据库资源管理 JSON 数据。 这些资源经过复制具有高可用性，并且使用其逻辑 URI 进行唯一寻址。 DocumentDB API 为所有资源提供简单的基于 HTTP 的 RESTful 编程模型。 
@@ -111,5 +110,4 @@ Cosmos DB 中的 JavaScript 执行是在关系型数据库系统所支持的概�
 已有 Azure 帐户？ 然后，可以根据我们的[快速入门](../cosmos-db/create-documentdb-dotnet.md)开始使用 Azure Cosmos DB，这些快速入门将引导创建帐户并开始使用 Cosmos DB。
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png
-
 

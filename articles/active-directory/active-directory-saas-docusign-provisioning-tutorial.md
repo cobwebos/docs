@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 3b509ffa934949200277ae431761d2accd4a02d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-configuring-docusign-for-user-provisioning"></a>教程：为 DocuSign 配置用户预配
 
@@ -26,7 +25,7 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用 DocuSign 单一登录的订阅。
@@ -69,9 +68,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分中，提供以下配置设置：
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“管理员用户名”文本框中，键入在 DocuSign.com 中已分配“系统管理员”配置文件的 DocuSign 帐户名称。
+    a. 在“管理员用户名”文本框中，键入在 DocuSign.com 中已分配“系统管理员”配置文件的 DocuSign 帐户名称。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“管理员密码”文本框中，键入此帐户的密码。
+    b. 在“管理员密码”文本框中，键入此帐户的密码。
 
 6. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 DocuSign 应用。
 

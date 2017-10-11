@@ -16,12 +16,11 @@ ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 399230584d01986dd0f793a6ff8245ef2b4f8fb1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 07/26/2017
 > [!IMPORTANT]
 > Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 若要了解如何在 Azure AD 管理中心添加 B2B 协作来宾用户，请参阅[什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-默认情况下，添加的用户没有管理员权限，但你随时可以向他们分配角色。
+默认情况下添加的用户没有管理员权限，但随时可以为其分配角色。
 
 ## <a name="add-a-user"></a>添加用户
 1. 使用充当目录全局管理员的帐户登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
@@ -60,7 +59,7 @@ ms.lasthandoff: 07/26/2017
 ## <a name="external-user-management-and-limitations"></a>外部用户管理和限制
 将另一个目录中的用户添加到目录时，该用户是新目录中的外部用户。 显示名称和用户名是从用户的主目录复制的，用于目录中的外部用户。 此后，外部用户帐户的属性是完全独立的。 如果对主目录中的用户进行属性更改，这些更改不会传播到目录中的外部用户帐户。
 
-这两个帐户之间的唯一联系是用户始终针对主目录或使用它们的 Microsoft 帐户进行身份验证。 这就是为什么你看不到重置密码或为外部用户启用多重身份验证选项的原因。 目前，主目录的身份验证或 Microsoft 帐户策略是用户登录时唯一需要进行评估的策略。
+这两个帐户之间的唯一联系是用户始终针对主目录或使用它们的 Microsoft 帐户进行身份验证。 这就是你看不到重置密码或为外部用户启用多重身份验证的选项的原因。 目前，主目录的身份验证或 Microsoft 帐户策略是用户登录时唯一需要进行评估的策略。
 
 > [!NOTE]
 > 仍然可以禁用目录中的外部用户，这会阻止其对目录访问。
@@ -80,4 +79,3 @@ ms.lasthandoff: 07/26/2017
 * [管理 Azure AD](active-directory-administer.md)
 * [在 Azure AD 中管理密码](active-directory-manage-passwords.md)
 * [在 Azure AD 中管理组](active-directory-manage-groups.md)
-

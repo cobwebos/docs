@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: e109e92d8add47315f483a3ba027912f4b2ee1fd
 ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/15/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
- 
 # <a name="machine-learning-rest-api-error-codes"></a>机器学习 REST API 错误代码
  
 在 Azure 机器学习 Web 服务中执行操作时，可能会返回以下错误代码。
@@ -69,7 +67,7 @@ ms.lasthandoff: 03/15/2017
 | MissingWebServicePackage | 未提供 Web 服务包。 请提供有效的 Web 服务包，并重试。 |
 | MissingWorkspaceId | 未提供工作区 ID。 请提供有效的工作区 ID，并重试。 |
 | ModelConfigurationInvalid | 模型包中的模型配置无效。 请确保模型配置包含输出终结点定义、std 错误终结点和 std out 终结点，并重试。 |
-| ModelPackageIdInvalid | 模型包 ID 无效。请检查模型包 ID 是否正确，并重试。 |
+| ModelPackageIdInvalid | 模型包 ID 无效。 请检查模型包 ID 是否正确，并重试。 |
 | RequestBodyInvalid | 未提供请求正文，或者反序列化请求正文时出错。 |
 | RequestIsEmpty | 未提供请求。 请提供有效请求，并重试。 |
 | UnexpectedParameter | 提供了意外的参数。 请检查所有参数名称是否拼写正确，只传递所需的参数，并重试。 |
@@ -255,4 +253,3 @@ Web 服务包无效。 请检查提供的 Web 包是否正确，并重试。
 | BackendInitializationTimeout | 无法在允许的时间内完成 Web 服务初始化。 |
 | BackendScoreTimeout | 无法在允许的时间内完成 Web 服务请求执行。 |
  
-

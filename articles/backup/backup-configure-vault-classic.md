@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: a8daa6a4655b72936b6299c0fa5b80459ffa5da3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="back-up-a-windows-server-or-workstation-to-azure-using-the-classic-portal"></a>使用经典门户将 Windows 服务器或工作站备份到 Azure
 > [!div class="op_single_selector"]
@@ -42,7 +41,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 > [!IMPORTANT]
 > 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
 >
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 <br/> 从 2017 年 11 月 1 日起：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> **2017 年 10 月 15 日之后**，无法使用 PowerShell 创建备份保管库。 <br/> **从 2017 年 11 月 1 日起**：
 >- 其余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
@@ -72,7 +71,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 
 ### <a name="to-download-install-and-register-the-agent"></a>下载、安装和注册代理
 1. 单击“**恢复服务**”，然后选择要向其注册服务器的备份保管库。
-2. 在“快速启动”页上，单击“**Windows Server、System Center Data Protection Manager 或 Windows 客户端的代理**”。 然后单击“保存”。
+2. 在“快速启动”页上，单击“**Windows Server、System Center Data Protection Manager 或 Windows 客户端的代理**”。 。
 
     ![保存代理](./media/backup-configure-vault-classic/agent.png)
 3. 下载 MARSagentinstaller.exe 后，单击“**运行**”（或双击保存位置中的 **MARSAgentInstaller.exe**）。
@@ -84,10 +83,10 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 
     从门户下载后，保管库凭据文件只能生效 48 小时。 如果此页上显示任何错误（例如“提供的保管库凭据文件已过期”），请登录到门户，并再次下载保管库凭据文件。
 
-    确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果遇到访问相关的错误，请将保管库凭据文件复制到同一台计算机中的临时位置，然后重试操作。
+    确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果遇到访问相关的错误，请将保管库凭据文件复制到同一台计算机中的临时位置，并重试操作。
 
     如果遇到保管库凭据错误（例如“提供的保管库凭据无效”），则表示该文件已损坏，或者没有与恢复服务关联的最新凭据。 请在从门户下载新的保管库凭据文件后重试该操作。 如果用户快速连续单击“**下载保管库凭据**”选项，则可能会出现此错误。 在这种情况下，只有最后一个保管库凭据文件有效。
-9. 在“加密设置”页上，可以生成一个通行短语，或者提供一个通行短语（最少包含 16 个字符）。 请记住将通行短语保存在安全位置。
+9. 在“加密设置”页上，可生成一个通行短语，或者提供一个通行短语（最少包含 16 个字符）。 请记住将通行短语保存在安全位置。
 10. 单击“完成” 。 注册服务器向导会在备份中注册服务器。
 
     > [!WARNING]
@@ -95,7 +94,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
     >
     >
 
-11. 设置加密密钥后，请将“**启动 Microsoft Azure 恢复服务代理**”复选框保持选中状态，然后单击“**关闭**”。
+11. 设置加密密钥后，请将“**启动 Microsoft Azure 恢复服务代理**”复选框保持选中状态，并单击“**关闭**”。
 
 ## <a name="complete-the-initial-backup"></a>完成初始备份
 初始备份包括两个关键任务：
@@ -130,7 +129,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 8. 在“**选择保留策略**”页上，为备份复制选择“**保留策略**”。
 
     保留策略指定备份可以存储的时间长短。 可以根据备份的创建时间指定不同的保留策略，而不只是为所有备份点指定一个“通用的策略”。 可以根据需要修改每日、每周、每月和每年保留策略。
-9. 在“选择初始备份类型”页上，选择初始备份类型。 将“**自动通过网络**”选项保持选中状态，然后单击“**下一步**”。
+9. 在“选择初始备份类型”页上，选择初始备份类型。 将“**自动通过网络**”选项保持选中状态，并单击“**下一步**”。
 
     可以通过网络自动备份，或者脱机备份。 本文的余下部分介绍自动备份过程。 如果想要执行脱机备份，请查看 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md) 以了解更多信息。
 10. 在“确认”页上复查信息，并单击“**完成**”。
@@ -156,7 +155,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 1. 在“备份代理”中单击“**立即备份**”，以通过网络完成初始种子设定。
 
     ![立即备份 Windows Server](./media/backup-configure-vault-classic/backup-now.png)
-2. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“备份”。
+2. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“**备份**”。
 3. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前执行此操作，向导将继续在后台运行。
 
 完成初始备份后，备份控制台中会显示“**作业已完成**”状态。
@@ -171,4 +170,3 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 * [备份 IaaS VM](backup-azure-vms-prepare.md)
 * [使用 Microsoft Azure 备份服务器将工作负荷备份到 Azure](backup-azure-microsoft-azure-backup.md)
 * [使用 DPM 将工作负荷备份到 Azure](backup-azure-dpm-introduction.md)
-

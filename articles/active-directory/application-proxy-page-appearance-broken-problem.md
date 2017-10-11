@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: d0b0ddba5ad9f8c584cd35c6f20edf76883b425d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: cac4c333e59ef9a0f28a2f93a7afee22eeafd54e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>应用程序代理应用程序的应用程序页无法正确显示
 
 如果导航到某个页面后其中的某些内容未能正确显示，则可在本文的帮助下针对 Azure Active Directory 应用程序代理应用程序中的问题进行故障排除。
 
 ## <a name="overview"></a>概述
-发布应用程序代理应用时，通过访问该应用程序只能访问根目录下的页面。 如果页面未正确显示，则代表用于该应用程序的根内部 URL 可能缺少某些页面资源。 若要解决此问题，请确保已将页面的*所有*资源作为应用程序的一部分予以发布。
+发布应用程序代理应用时，通过访问该应用程序只能访问根目录下的页面。 如果页面未正确显示，则代表用于该应用程序的根内部 URL 可能缺少某些页面资源。 要解决此问题，请确保已将页面的*所有*资源作为应用程序的一部分予以发布。
 
-通过打开网络跟踪程序（如 Fiddler 或 Internet Explorer/Edge 中的 F12 工具），加载页面，然后查找 404 错误，即可验证这就是问题的根源。 这样可以找出当前找不到且可能仍需要发布的页面。
+通过打开网络跟踪程序（如 Fiddler 或 Internet Explorer/Edge 中的 F12 工具），加载页面，并查找 404 错误，即可验证这就是问题的根源。 这样可以找出当前找不到且可能仍需要发布的页面。
 
 例如，假定已使用内部 URL <http://myapps/expenses> 发布了一个开支应用程序，但该应用使用了样式表 <http://myapps/style.css>。 在这种情况下，该样式表未在应用程序中予以发布；所以，如果在加载该开支应用时尝试加载 style.css，就会引发 404 错误。 在此示例中，通过转而使用内部 URL <http://myapp/> 来发布该应用程序，即可解决这个问题。
 
@@ -40,4 +38,3 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
-

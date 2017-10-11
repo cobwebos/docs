@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 868b2cc1559053057d17b34c03e2e31347f399bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-azure-portal-to-assign-and-manage-resource-policies"></a>使用 Azure 门户分配和管理资源策略
 通过 Azure 门户，可以将资源策略分配给资源组和订阅。 借助用户界面，可以轻松选择想要分配的策略，并为该策略指定参数值以自定义策略设置。 
@@ -32,7 +31,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="assign-a-policy"></a>分配策略
 
-1. 若要将策略分配给资源组或订阅，请选择此资源组或订阅。 在设置中，选择“策略”。
+1. 要将策略分配给资源组或订阅，请选择此资源组或订阅。 在设置中，选择“策略”。
 
    ![选择策略](./media/resource-manager-policy-portal/select-policies.png)
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 03/31/2017
 
    ![选择参数值](./media/resource-manager-policy-portal/select-parameters.png)
 
-6. 为其他参数提供值。 开始分配策略时，将根据所选边栏选项卡自动分配作用域。 完成后选择“确定”。
+6. 为其他参数提供值。 开始分配策略时，会根据所选边栏选项卡自动分配作用域。 完成后选择“确定”。
 
    ![定义参数](./media/resource-manager-policy-portal/define-parameters.png)
 
@@ -84,5 +83,4 @@ ms.lasthandoff: 03/31/2017
 * 若要了解用于定义策略的 JSON 语法，请参阅[资源策略概述](resource-manager-policy.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
 * 该策略架构在 [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) 中发布。 
-
 

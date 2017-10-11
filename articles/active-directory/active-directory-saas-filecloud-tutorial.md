@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: ad03516f684acc59912ffc57f6e0712828bd03f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>教程：Azure Active Directory 与 FileCloud 的集成
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 07/20/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-filecloud-from-the-gallery"></a>从库中添加 FileCloud
-若要配置 FileCloud 与 Azure AD 的集成，需要从库中将 FileCloud 添加到托管 SaaS 应用列表。
+要配置 FileCloud 与 Azure AD 的集成，需要从库中将 FileCloud 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 FileCloud，请执行以下步骤：**
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/20/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 FileCloud 测试用户](#create-a-filecloud-test-user)** - 在 FileCloud 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
+3. **[创建一个 FileCloud 测试用户](#create-a-filecloud-test-user)** -若要链接到用户的 Azure AD 表示的 FileCloud 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -109,14 +108,14 @@ ms.lasthandoff: 07/20/2017
 
     ![FileCloud 域和 URL 单一登录信息](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_url.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudhosted.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudhosted.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [FileCloud 客户端支持团队](mailto:support@codelathe.com)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_certificate.png) 
 
@@ -128,7 +127,7 @@ ms.lasthandoff: 07/20/2017
 
     ![FileCloud 配置](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_configure.png) 
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 FileCloud 租户。
+7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 FileCloud 租户。
 
 8. 在左侧导航窗格上，单击“设置”。 
    
@@ -146,7 +145,7 @@ ms.lasthandoff: 07/20/2017
 
     ![“IDP 终结点 URL”文本框](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
 
-12. 在记事本中打开下载的元数据文件，将其内容复制到剪贴板，然后将其粘贴到“SAML 设置”面板上的“IdP 元数据”文本框中。
+12. 在记事本中打开下载的元数据文件，将其内容复制到剪贴板，并将其粘贴到“SAML 设置”面板上的“IdP 元数据”文本框中。
 
     ![应用端上的“IDP 元数据”部分](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
 
@@ -201,9 +200,9 @@ ms.lasthandoff: 07/20/2017
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 FileCloud，请执行以下步骤：**
+**要将 Britta Simon 分配到 FileCloud，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -249,5 +248,4 @@ ms.lasthandoff: 07/20/2017
 [201]: ./media/active-directory-saas-filecloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-filecloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-filecloud-tutorial/tutorial_general_203.png
-
 

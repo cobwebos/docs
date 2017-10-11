@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 07/12/2017
 ms.author: kevin;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="system-views"></a>系统视图
 ## <a name="sql-data-warehouse-catalog-views"></a>SQL 数据仓库目录视图
@@ -246,4 +245,3 @@ SQL 数据仓库公开许多 SQL Server 动态管理视图 (DMV)。 在 SQL 数�
 
 
 <!--Other Web references-->
-

@@ -1,4 +1,3 @@
-
 ---
 title: "组策略和 MDM 设置 | Microsoft Docs"
 description: "提供有关在公司自有设备上使用的组策略和移动设备管理 (MDM) 设置的信息。 这些策略适用于用户的整个设备。"
@@ -16,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 6bdec7bf35bb4a233200def36c0e697baaf15fec
-ms.openlocfilehash: 5ca48cf3cc4b2f4d86463e36c73de47e386cff25
-ms.lasthandoff: 01/05/2017
-
-
+ms.openlocfilehash: 71dd5281a618fe7367eab3e97daac069f77ab491
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="group-policy-and-mdm-settings"></a>组策略和 MDM 设置
 仅在公司自有设备上使用这些组策略和移动设备管理 (MDM) 设置，因为这些策略将应用于用户的整个设备。 应用 MDM 策略禁用个人设备和用户自有设备的设置同步，这会对该设备的使用产生负面影响。 此外，设备上的其他用户帐户也将受到该策略的影响。
@@ -35,10 +33,10 @@ MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移
 | Name | 说明 |
 | --- | --- |
 | 允许 Microsoft 帐户连接 |允许用户使用设备上的 Microsoft 帐户进行身份验证 |
-| 允许同步我的设置 |允许用户漫游 Windows 设置和应用数据；停用此政策将会停用移动设备上的同步和备份 |
+| 允许同步我的设置 |允许用户漫游 Windows 设置和应用数据；停用此政策会停用移动设备上的同步和备份 |
 
 ## <a name="group-policy-settings"></a>组策略设置
-组策略设置适用于已加入 Active Directory 域的 Windows 10 设备。 此表还包括将显示为管理同步设置，但不适用于 Windows 10 企业状态漫游的旧设置，这些设置在说明中标有“请勿使用”。
+组策略设置适用于已加入 Active Directory 域的 Windows 10 设备。 此表还包括会显示为管理同步设置，但不适用于 Windows 10 企业状态漫游的旧设置，这些设置在说明中标有“请勿使用”。
 
 | Name | 说明 |
 | --- | --- |
@@ -60,5 +58,4 @@ MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移
 * [设置和数据漫游的常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
 

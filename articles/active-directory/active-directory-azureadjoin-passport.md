@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b10fc7c51d9fee306b0e71d405f0fd7ec7a6816
-ms.openlocfilehash: 9270df5e880cc9a512ae673c1c25449376d8a7b4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
-
-
+ms.openlocfilehash: 62adf8a9fd4400a056e2c0f59c79431acbad5865
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>通过 Windows Hello 企业版在没有密码的情况下进行身份验证
 单纯使用密码进行身份验证的传统方法不足以保障用户的安全。 使用这种方法时，用户需重复使用密码，有时还会忘记密码。 密码可能会泄露、被骗取、易于破解且可猜出。 密码也很难记住，并且易于遭受攻击，例如“[传递哈希](https://technet.microsoft.com/dn785092.aspx)”。
@@ -29,16 +27,16 @@ ms.lasthandoff: 02/23/2017
 ## <a name="about-windows-hello-for-business"></a>关于 Windows Hello 企业版
 对于组织和消费者而言，Windows Hello 企业版是基于私钥/公钥或证书的身份验证方法，它比密码身份验证更有优势。 这种形式的身份验证依赖于密钥对凭据，其可取代密码且能抵御漏洞、窃取及钓鱼。
 
- Windows Hello 企业版让用户能够向 Microsoft 帐户、Windows Server Active Directory 帐户、Microsoft Azure Active Directory (Azure AD) 帐户或支持 Fast IDentity Online (FIDO) 身份验证的非 Microsoft 服务进行身份验证。 在 Windows Hello 企业版注册期间完成最初的双重验证之后，将在用户的设备上设置 Windows Hello 企业版，并且该用户需设置一个手势（可以是 Windows Hello 或 PIN）。 用户会提供该手势来验证其身份。 然后，Windows 使用 Windows Hello 企业版来对用户进行身份验证，并帮助他们访问受保护的资源和服务。
+ Windows Hello 企业版让用户能够向 Microsoft 帐户、Windows Server Active Directory 帐户、Microsoft Azure Active Directory (Azure AD) 帐户或支持 Fast IDentity Online (FIDO) 身份验证的非 Microsoft 服务进行身份验证。 在 Windows Hello 企业版注册期间完成最初的双重验证之后，会在用户的设备上设置 Windows Hello 企业版，并且该用户需设置一个手势（可以是 Windows Hello 或 PIN）。 用户会提供该手势来验证其身份。 Windows 然后使用 Windows Hello 企业版用户进行身份验证，并帮助他们访问受保护的资源和服务。
 
-私钥可以通过“用户手势”单独使用，例如，PIN、生物识别技术或远程设备（例如用户用来登录设备的智能卡）。 此信息会链接到证书或非对称密钥对。 如果设备上装配了受信任平台模块 (TPM) 芯片，此私钥将会通过硬件认证。 私钥永远不会离开设备。
+私钥可以通过“用户手势”单独使用，例如，PIN、生物识别技术或远程设备（例如用户用来登录设备的智能卡）。 此信息会链接到证书或非对称密钥对。 如果设备上装配了受信任平台模块 (TPM) 芯片，此私钥会通过硬件认证。 私钥永远不会离开设备。
 
 公钥已注册到 Azure Active Directory 和 Windows Server Active Directory（以便在本地使用）。 标识提供者 (IDP) 通过将用户的公钥映射到私钥来验证用户的身份，并通过一次性密码 (OTP)、PhoneFactor 或不同的通知机制来提供登录信息。
 
 ## <a name="why-enterprises-should-adopt-windows-hello-for-business"></a>企业为何应采用 Windows Hello 企业版
 启用 Windows Hello 企业版后，企业可通过以下措施使其资源变得更安全：
 
-* 为 Windows Hello 企业版设置一个硬件首选选项。 这表示将在可用时于 TPM 1.2 或 TPM 2.0 上生成密钥。 无法使用 TPM 时，软件将生成密钥。
+* 为 Windows Hello 企业版设置一个硬件首选选项。 这表示会在可用时于 TPM 1.2 或 TPM 2.0 上生成密钥。 无法使用 TPM 时，软件将生成密钥。
 * 定义 PIN 的复杂性和长度，以及是否要在组织中启用 Hello 使用情况。
 * 将 Windows Hello 企业版配置为可以使用基于证书的信任来支持类似于智能卡的方案。
 
@@ -70,7 +68,6 @@ ms.lasthandoff: 02/23/2017
 * [面向企业的 Windows 10：在工作中使用设备的方式](active-directory-azureadjoin-windows10-devices-overview.md)
 * [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
 * [了解 Azure AD Join 的使用方案](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时会已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
 * [设置 Azure AD Join](active-directory-azureadjoin-setup.md)
-
 

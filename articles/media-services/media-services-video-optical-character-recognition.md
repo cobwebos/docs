@@ -14,16 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: feb4d85270d3c2bee90280459ca2b8383aeca107
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
-
+ms.openlocfilehash: 43f5b3a9bbec243e668c79702045094fcfedbdda
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本
 ## <a name="overview"></a>概述
-如果你需要提取视频文件的文本内容，并生成可编辑、可搜索的数字文本，则应该使用 Azure 媒体分析 OCR（光学字符识别）。 此 Azure 媒体处理器可检测视频文件的文本内容并生成文本文件供你使用。 OCR 可让你从媒体的视频信号中自动提取有意义的元数据。
+如果需要提取视频文件的文本内容，并生成可编辑、可搜索的数字文本，则应该使用 Azure 媒体分析 OCR（光学字符识别）。 此 Azure 媒体处理器可检测视频文件的文本内容并生成文本文件供你使用。 OCR 可让你从媒体的视频信号中自动提取有意义的元数据。
 
 与搜索引擎配合使用时，可以根据文本轻松编制媒体的索引，并增强发现内容的能力。 这在包含大量文本的视频（例如视频录制或者幻灯片演示屏幕截图）中非常有用。 Azure OCR 媒体处理器已针对数字文本进行了优化。
 
@@ -95,7 +94,7 @@ ms.lasthandoff: 08/03/2017
 OCR 媒体处理器的输出是一个 JSON 文件。
 
 ### <a name="elements-of-the-output-json-file"></a>输出 JSON 文件中的元素
-视频 OCR 输出针对视频中的字符提供时间分段数据。  你可以使用属性（例如语言或方向）来锁定你想要分析的文本。 
+视频 OCR 输出针对视频中的字符提供时间分段数据。  可以使用属性（例如语言或方向）来锁定你想要分析的文本。 
 
 输出包含以下属性：
 
@@ -354,5 +353,4 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
-
 

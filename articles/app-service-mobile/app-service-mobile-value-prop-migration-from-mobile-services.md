@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: e23a4f182e6bb0ba53927aa6195967c2464e4233
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.openlocfilehash: 22397b6b448b418d5b54a457c3bafaf5c68ecc7b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="getting-started"> </a>使用移动服务时，应用服务有何作用？
 ## <a name="overview"></a>概述
@@ -46,7 +45,7 @@ ms.lasthandoff: 07/11/2017
 * （适用于 Node.js）利用 Node 生态系统的任何纯 JavaScript 库，包括常用的 MVC 库。
 
 ## <a name="access-on-premises-data-using-vnet"></a>使用 VNet 访问本地数据
-有了移动服务，便可以使用混合连接访问本地资源。 但是，在某些情况下，VPN 解决方案更合适。 通过 *Azure 应用服务* ，可以将 Azure VNet 用于移动应用后端代码。
+有了移动服务，便可以使用混合连接访问本地资源。 但是，在某些情况下，VPN 解决方案更合适。 通过 *Azure 应用服务*，可以将 Azure VNet 用于移动应用后端代码。
 
 ## <a name="use-your-favorite-backend-language"></a>使用偏好的后端语言
 *Azure 应用服务* 提供对 ASP.NET 与 Node.js 平台更广泛、更丰富的支持，包括对最新运行时的访问。
@@ -63,5 +62,4 @@ ms.lasthandoff: 07/11/2017
 ## <a name="ready-stage-go"></a>各就位，预备，跑！
 使用 *Azure 应用服务* ，可以为移动应用创建多个专用测试和过渡环境。 可以在部署之前使用这些环境执行测试。 无需停机即可切换到生产环境。 预先加载 Web 应用，确保最佳客户体验。
 
-可以遵循此 *教程* ，开始将 [应用服务](app-service-mobile-migrating-from-mobile-services.md)用于现有移动服务。
-
+可以遵循此 *教程*，开始将 [应用服务](app-service-mobile-migrating-from-mobile-services.md)用于现有移动服务。

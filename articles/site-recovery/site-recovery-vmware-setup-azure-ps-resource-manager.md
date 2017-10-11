@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 2b9b31abd5d11d02935a74e47d26be9803cdc920
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="manage-a-process-server-running-in-azure-resource-manager"></a>管理在 Azure (Resource Manager) 中运行的进程服务器
 > [!div class="op_single_selector"]
 > * [Resource Manager](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
 > * [经典](./site-recovery-vmware-setup-azure-ps-classic.md)
 
-故障回复期间，如果 Azure 虚拟网络与本地网络之间存在高延迟，建议将进程服务器部署在 Azure 中。 本指南介绍如何设置、配置和管理在 Azure 中运行的进程服务器。
+故障回复期间，如果 Azure 虚拟网络与本地网络之间存在高延迟，建议在 Azure 中部署进程服务器。 本指南介绍如何设置、配置和管理在 Azure 中运行的进程服务器。
 
 > [!NOTE]
 > 如果在故障转移期间使用了 **Resource Manager** 部署模型作为虚拟机的部署模型，则要使用本文。 如果使用**经典**部署模型作为部署模型，请按照[如何设置和配置故障回复进程服务器（经典）](./site-recovery-vmware-setup-azure-ps-classic.md)中的步骤进行操作
@@ -48,7 +46,7 @@ ms.lasthandoff: 06/30/2017
 |**字段名称**|**值**|
 |-|-|
 |选择要部署进程服务器的位置|选择值“在 Azure 中部署故障回复进程服务器” |
-|订阅|选择已将虚拟机故障转移到的 Azure 订阅|
+|订阅|选择在其中故障转移了虚拟机的 Azure 订阅|
 |资源组|可以创建资源组以部署此进程服务器，或者选择在现有资源组中部署进程服务器|
 |位置|选择虚拟机已故障转移到的 Azure 数据中心|
 |Azure 网络|选择虚拟机已故障转移到的 Azure 虚拟网络(VNet)。 如果已将虚拟机故障转移到多个 Azure VNet，则需要为每个 VNet 部署一个进程服务器|
@@ -61,12 +59,12 @@ ms.lasthandoff: 06/30/2017
 |服务器名称|进程服务器虚拟机的显示名称和主机名|
 | 用户名|成为该虚拟机上的管理员的用户名|
 |存储帐户|放置虚拟机的虚拟磁盘的存储帐户名称|
-|子网|虚拟机将连接到的 Azure VNet 的子网|
+|子网|虚拟机连接到的 Azure VNet 的子网|
 | IP 地址|想要进程服务器在启动后采用的 IP 地址|
 5. 单击“确定”按钮开始部署进程服务器虚拟机。
 
 > [!NOTE]
-> 若要能够使用此进程服务器进行故障回复，需要将其注册到本地配置服务器。
+> 要能够使用此进程服务器进行故障回复，需要将其注册到本地配置服务器。
 
 ## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>将进程服务器（在 Azure 中运行）注册到配置服务器（在本地运行）
 
@@ -79,4 +77,3 @@ ms.lasthandoff: 06/30/2017
 ## <a name="unregistering-the-process-server-running-in-azure-from-a-configuration-server-running-on-premises"></a>将进程服务器（在 Azure 中运行）从配置服务器（在本地运行）中注销
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
-

@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
-构建 IT 资产或将其迁移到云提供商处时，需要依赖该组织来保护你的应用程序和数据，并且需要依赖该组织提供的服务和控制机制来管理基于云的资产的安全性。
+构建 IT 资产或将其迁移到云提供商处时，需要依赖该组织来保护应用程序和数据，并且需要依赖该组织提供的服务和控制机制来管理基于云的资产的安全性。
 
 Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 此外，Azure 还提供广泛的可配置安全选项以及对这些选项进行控制的功能，方便你自定义安全措施来满足部署的独特要求。
 
@@ -39,12 +38,12 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 基于 REST 的图形 API 允许开发人员从任意平台对目录进行读和写。 通过对 [OAuth 2.0](http://oauth.net/2/) 的支持，开发人员可以构建与 Microsoft 和第三方 Web API 相集成的移动和 Web 应用程序，并且构建自己的安全 Web API。 提供面向 .Net、Windows 应用商店、iOS 和 Android 的开放源客户端库，还有更多的库仍在开发中。
 
 ### <a name="how-azure-enables-identity-and-access-management"></a>Azure 启用标识和访问管理的方式
-可将 Azure AD 用作你组织的单独云目录，或者用作集成解决方案，与现有的本地 Active Directory 相集成。 某些集成功能包括目录同步和单一登录 (SSO)。 这些功能可将现有本地标识扩展到云中，改进管理员和最终用户的体验。
+可将 Azure AD 用作组织的单独云目录，或者用作集成解决方案，与现有的本地 Active Directory 相集成。 某些集成功能包括目录同步和单一登录 (SSO)。 这些功能可将现有本地标识扩展到云中，改进管理员和最终用户的体验。
 
 标识和访问管理的其他部分功能包括：
 
 * 使用 Azure AD 即可对 SaaS 应用程序启用 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)，不管这些应用程序在何处托管。 某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。 联合应用程序还可以支持用户预配和密码存储。
-* 对 [Azure 存储空间](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](https://msdn.microsoft.com/library/azure/ee460785.aspx)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
+* 对 [Azure 存储](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](https://msdn.microsoft.com/library/azure/ee460785.aspx)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
 * Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](../active-directory/fundamentals-identity.md)）、同步以及本地目录复制方式提供标识即服务。
 * [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)是多重身份验证服务，它要求用户使用移动应用、手机或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
 * [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)可让用户将 Azure 虚拟机加入一个域，且无需部署域控制器。 用户可以使用其公司的 Active Directory 凭据登录到这些虚拟机中，并使用组策略管理已加入域的虚拟机，以便在所有 Azure 虚拟机上强制实施安全基准措施。
@@ -58,7 +57,7 @@ Azure 还提供多种功能来保护正在传输的数据和静态数据。 这�
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-getting-started/sec-azgsfig1.PNG)
 
 ### <a name="azure-encryption-technologies"></a>Azure 加密技术
-你可以使用 [Azure AD 报告](../active-directory/active-directory-reporting-audit-events.md)来收集对订阅进行管理性访问的相关详细信息。 可以在 Azure 中包含敏感信息的 VHD 上配置 [BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)。
+可以使用 [Azure AD 报告](../active-directory/active-directory-reporting-audit-events.md)来收集对订阅进行管理性访问的相关详细信息。 可以在 Azure 中包含敏感信息的 VHD 上配置 [BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)。
 
 Azure 中其他用于确保数据安全的功能包括：
 
@@ -67,7 +66,7 @@ Azure 中其他用于确保数据安全的功能包括：
 * [Azure Rights Management (Azure RMS)](https://technet.microsoft.com/library/jj585026.aspx)（随附 [RMS SDK](https://msdn.microsoft.com/library/dn758244.aspx)）通过基于策略的访问管理提供文件和数据级别的加密和数据泄露防护功能。
 * Azure 支持在 SQL Server 虚拟机中进行[表级和列级加密 (TDE/CLE)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database.aspx)，并支持在数据中心部署第三方本地密钥管理服务器。
 * 存储帐户密钥、共享访问签名、管理证书以及其他密钥对每个 Azure 租户来说都是唯一的。
-* Azure [StorSimple](http://www.microsoft.com/server-cloud/products/storsimple/overview.aspx) 混合存储通过 128 位公钥/私钥对加密数据，然后将数据上载到 Azure 存储。
+* Azure [StorSimple](http://www.microsoft.com/server-cloud/products/storsimple/overview.aspx) 混合存储通过 128 位公钥/私钥对加密数据，然后将数据上传到 Azure 存储。
 * Azure 支持和使用多种加密机制，包括 SSL/TLS、IPsec 和 AES，具体取决于数据类型、容器以及传输情况。
 
 ## <a name="virtualization"></a>虚拟化
@@ -80,7 +79,7 @@ Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请�
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-getting-started/sec-azgsfig2.PNG)
 
 ### <a name="how-azure-implements-virtualization"></a>Azure 如何实现虚拟化
-Azure 使用虚拟机监控程序防火墙（数据包筛选器），该防火墙是在虚拟机监控程序中实施的，可以通过结构控制器代理进行配置。 这有助于防止租户进行未经授权的访问。 默认情况下，在创建虚拟机时，会阻止所有流量，然后通过结构控制器代理来配置数据包筛选器，添加*规则和例外*以允许经授权的流量。
+Azure 使用虚拟机监控程序防火墙（数据包筛选器），该防火墙是在虚拟机监控程序中实施的，可以通过结构控制器代理进行配置。 这有助于防止租户进行未经授权的访问。 默认情况下，在创建虚拟机时，会阻止所有流量，并通过结构控制器代理来配置数据包筛选器，添加*规则和例外*以允许经授权的流量。
 
 此处对两类规则进行了编程：
 
@@ -106,7 +105,7 @@ Azure 结构控制器负责将基础结构资源分配到租户工作负荷，�
 * 通过将唯一的专用 IP 地址、防火墙和 IP ACL 组合起来，可以对虚拟网络进行逻辑隔离。 负载均衡器根据终结点定义将流量路由到相应的租户。
 
 ## <a name="virtual-networks-and-firewalls"></a>虚拟网络和防火墙
-Azure 中的[分布式网络和虚拟网络](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)有助于确保将你的专用网络流量与其他 Azure 虚拟网络上的流量进行逻辑隔离。
+Azure 中的[分布式网络和虚拟网络](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)有助于确保将专用网络流量与其他 Azure 虚拟网络上的流量进行逻辑隔离。
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-getting-started/sec-azgsfig4.PNG)
 
@@ -123,19 +122,19 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 * 将流量定向到受保护的基础结构终结点。
 * 发送或接收不当的广播流量。
 
-可以将虚拟机放置在 [Azure 虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)中。 这些虚拟网络类似于你在本地环境中配置的网络，在本地环境中，网络通常与虚拟交换机相关联。 连接到同一个虚拟网络的虚拟机可以相互通信而无需其他配置。 还可以在虚拟网络中配置不同的子网。
+可以将虚拟机放置在 [Azure 虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)中。 这些虚拟网络类似于在本地环境中配置的网络，在本地环境中，网络通常与虚拟交换机相关联。 连接到同一个虚拟网络的虚拟机可以相互通信而无需其他配置。 还可以在虚拟网络中配置不同的子网。
 
 可以使用以下 Azure 虚拟网络技术来帮助实现虚拟网络上的安全通信：
 
-* [**网络安全组 (NSG)**](../virtual-network/virtual-networks-nsg.md)。 可以在虚拟网络中使用 NSG 控制流向一个或多个虚拟机实例的流量。 NSG 包含根据流量方向、协议、源地址和端口以及目标地址和端口允许或拒绝流量的访问控制规则。
-* [**用户定义的路由**](../virtual-network/virtual-networks-udr-overview.md)。 可以创建用户定义的路由来指定下一跃点，方便数据包流向特定的子网并转到你的虚拟网络安全设备，从而控制数据包通过虚拟设备进行的路由。
+* [**网络安全组 (Nsg)**](../virtual-network/virtual-networks-nsg.md)。 可以在虚拟网络中使用 NSG 控制流向一个或多个虚拟机实例的流量。 NSG 包含根据流量方向、协议、源地址和端口以及目标地址和端口允许或拒绝流量的访问控制规则。
+* [**用户定义的路由**](../virtual-network/virtual-networks-udr-overview.md)。 可以创建用户定义的路由来指定下一跃点，方便数据包流向特定的子网并转到虚拟网络安全设备，从而控制数据包通过虚拟设备进行的路由。
 * [**IP 转发**](../virtual-network/virtual-networks-udr-overview.md)。 虚拟网络安全设备必须能够接收不发送给自身的传入流量。 若要允许虚拟机接收发送到其他目标的流量，可为该虚拟机启用 IP 转发。
-* [**强制隧道**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 借助强制隧道，可以通过站点到站点 VPN 隧道，将虚拟网络中的虚拟机所生成的全部 Internet 绑定流量重定向或“强制”返回到本地位置，以便进行检查和审核
+* [**强制隧道**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 强制隧道允许你重定向或"强制"所生成的虚拟网络中的虚拟机的所有 Internet 绑定流量通过站点到站点 VPN 隧道以进行检查和审核回到本地位置
 * [**终结点 ACL**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 可以通过定义终结点 ACL 来控制哪些计算机允许从 Internet 到虚拟网络上的虚拟机的入站连接。
-* [**合作伙伴网络安全解决方案**](https://azure.microsoft.com/marketplace/)。 可以通过 Azure Marketplace 访问大量的合作伙伴网络安全解决方案。
+* [**合作伙伴网络安全解决方案**](https://azure.microsoft.com/marketplace/)。 可以通过 Azure 应用商店访问大量的合作伙伴网络安全解决方案。
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Azure 如何实施虚拟网络和防火墙
-默认情况下，Azure 在所有主机和来宾虚拟机上实施数据包筛选防火墙。 Azure Marketplace 中的 Windows OS 映像也默认启用 Windows 防火墙。 位于 Azure 面向公众的网络外围的负载均衡器会根据客户管理员所管理的 IP ACL 来控制通信。
+默认情况下，Azure 在所有主机和来宾虚拟机上实施数据包筛选防火墙。 Azure 应用商店中的 Windows OS 映像也默认启用 Windows 防火墙。 位于 Azure 面向公众的网络外围的负载均衡器会根据客户管理员所管理的 IP ACL 来控制通信。
 
 如果 Azure 在正常操作过程中或灾难过程中移动某个客户的数据，它会通过专用加密通信通道来进行。 Azure 可以在虚拟网络和防火墙中采用的其他功能包括：
 
@@ -153,25 +152,26 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 为了安全地将本地数据中心扩展到云，Azure 提供了[站点到站点 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) 和[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 以及通过 [ExpressRoute](../expressroute/expressroute-introduction.md) 进行的专用链接（通过 VPN 到 Azure 虚拟网络的连接会进行加密）。
 
 ### <a name="how-azure-implements-secure-remote-access"></a>Azure 如何实现安全的远程访问
-连接到 Azure 门户时，必须始终进行身份验证，并且需要 SSL/TLS。 你可以配置管理证书，以便进行安全管理。 完全支持各种行业标准安全协议，例如 [SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) 和 [IPsec](https://en.wikipedia.org/wiki/IPsec)。
+连接到 Azure 门户时，必须始终进行身份验证，并且需要 SSL/TLS。 可以配置管理证书，以便进行安全管理。 完全支持各种行业标准安全协议，例如 [SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) 和 [IPsec](https://en.wikipedia.org/wiki/IPsec)。
 
-使用 [Azure ExpressRoute](../expressroute/expressroute-introduction.md)，可在 Azure 数据中心与你的本地环境或共同租用环境中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet 。 与常用的基于 Internet 的链接相比，这些链接更可靠，速度更快，延迟更低，安全性更高。 在某些情况下，使用 ExpressRoute 连接在本地位置与 Azure 之间传输数据还可以产生显著的成本效益。
+使用 [Azure ExpressRoute](../expressroute/expressroute-introduction.md)，可在 Azure 数据中心与本地环境或共同租用环境中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet 。 与常用的基于 Internet 的链接相比，这些链接更可靠，速度更快，延迟更低，安全性更高。 在某些情况下，使用 ExpressRoute 连接在本地位置与 Azure 之间传输数据还可以产生显著的成本效益。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 Azure 对生成审计线索的安全相关事件进行经过身份验证的日志记录，其本身也可以防止篡改。 这包括系统信息，例如 Azure 基础结构虚拟机和 Azure AD 中的安全事件日志。 安全事件监视包括收集各种事件，例如更改 DHCP 或 DNS 服务器 IP 地址；尝试访问已通过设计进行阻止的端口、协议或 IP 地址；更改安全策略或防火墙设置；创建帐户或组；意外的流程或驱动程序安装。
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-getting-started/sec-azgsfig5.PNG)
 
-审核日志（记录特权用户访问和活动）、授权的和未经授权的访问尝试、系统异常以及信息安全事件将会保留固定的时间。 日志的保留由你全权决定，因为你可以根据自己的需求来配置日志的收集和保留。
+审核日志（记录特权用户访问和活动）、授权的和未经授权的访问尝试、系统异常以及信息安全事件会保留固定的时间。 日志的保留由你全权决定，因为可以根据自己的需求来配置日志的收集和保留。
 
 ### <a name="how-azure-implements-logging-and-monitoring"></a>Azure 如何实施日志记录和监视
-Azure 将管理代理 (MA) 和 Azure 安全监视器 (ASM) 代理部署到每个受管的计算节点、存储节点或结构节点，不管它们是本机的还是虚拟的。 每个管理代理都经过配置，可以使用从 Azure 证书存储获得的证书通过服务团队存储帐户进行身份验证，并将预先配置的诊断和事件数据转发到存储帐户。 这些代理不会部署到客户的虚拟机中。
+Azure 将管理代理 (MA) 和 Azure 安全监视器 (ASM) 代理部署到管理中的每个计算节点、存储节点或结构节点，不管是本机的还是虚拟的节点。 每个管理代理都经过配置，可以使用从 Azure 证书存储获得的证书通过服务团队存储帐户进行身份验证，并将预先配置的诊断和事件数据转发到存储帐户。 这些代理不会部署到客户的虚拟机中。
 
 Azure 管理员通过 Web 门户访问日志，对日志进行的访问必须经过身份验证，并且是可控的。 管理员可以对日志进行解析、筛选、关联和分析。 与日志对应的 Azure 服务团队存储帐户不允许管理员直接访问，这样是为了防止日志篡改。
 
 Microsoft 使用 Syslog 协议从网络设备收集日志，使用 Microsoft 审核收集服务 (ACS) 从主机服务器收集日志。 这些日志放置在日志数据库中，发生可疑事件时，会生成警报。 管理员可以访问并分析这些日志。
 
-[Azure 诊断](https://msdn.microsoft.com/library/azure/gg433048.aspx)是 Azure 的一项功能，你可以通过它从运行在 Azure 中的应用程序收集诊断数据。 可以将这些诊断数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。 收集诊断数据后，可以将其传输到 Azure 存储帐户进行永久保存。 可以按计划传输，也可以按需传输。
+
+            [Azure 诊断](https://msdn.microsoft.com/library/azure/gg433048.aspx)是 Azure 的一项功能，可以通过它从运行在 Azure 中的应用程序收集诊断数据。 可以将这些诊断数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。 收集诊断数据后，可以将其传输到 Azure 存储帐户进行永久保存。 可以按计划传输，也可以按需传输。
 
 ## <a name="threat-mitigation"></a>威胁缓解措施
 除了隔离、加密和筛选，Azure 还采用了大量的威胁缓解机制和流程来保护基础结构和服务。 其中包括内部控制和技术，用于检测和化解各种高级威胁，例如 DDoS、特权提升以及 [10 大 OWASP](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)。
@@ -195,4 +195,3 @@ Azure 建立安全控制的目的是实施威胁缓解措施，同时帮助客�
 [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)
 
 [Active Directory 博客](http://blogs.technet.com/b/ad/)
-

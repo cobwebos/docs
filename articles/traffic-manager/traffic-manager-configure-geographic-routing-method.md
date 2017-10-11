@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 770b1b8418baba78371dda43eb255dde8a1d13e8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.openlocfilehash: 13190189074b24b2d28cd3ce46cf8571f3e1e1d1
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>使用流量管理器配置地理流量路由方法
 
 使用地理流量路由方法，可基于请求源自的地理位置将流量定向到特定终结点。 本教程说明如何使用此路由方法创建流量管理器配置文件，并配置终结点以从特定地理区域接收流量。
@@ -65,4 +63,3 @@ ms.lasthandoff: 07/26/2017
 
 - 深入了解[地理流量路由方法](traffic-manager-routing-methods.md#geographic)。
 - 了解如何[测试流量管理器设置](traffic-manager-testing-settings.md)。
-

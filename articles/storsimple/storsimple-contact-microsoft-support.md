@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli;anbacker
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b0e763769564eaa191c78df05c008150c9a363f
 ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="contact-microsoft-support-for-your-storsimple"></a>请联系 StorSimple 的 Microsoft 支持部门
 若在使用 Microsoft Azure StorSimple 解决方案时遇到问题，可以创建服务请求以获取技术支持。 在与支持工程师进行联机会话时，可能还需在 StorSimple 设备上启动支持会话。 本文介绍：
@@ -34,7 +33,7 @@ ms.lasthandoff: 03/01/2017
 可以执行以下步骤来创建支持请求：
 
 #### <a name="to-create-a-support-request"></a>创建支持请求
-1. 在[Azure 经典门户](https://manage.windowsazure.com/)的右上角单击帐户名称，然后单击“联系 Microsoft 支持部门”。
+1. 在[Azure 经典门户](https://manage.windowsazure.com/)的右上角单击帐户名称，并单击“联系 Microsoft 支持部门”。
    
     ![通过管理门户联系 MS 支持部门](./media/storsimple-contact-microsoft-support/Ibiza1.png)
 2. 系统会将用户重定向到新的 Azure 门户 (portal.azure.com)。 单击“新建支持请求”磁贴。
@@ -50,7 +49,7 @@ ms.lasthandoff: 03/01/2017
    2. 从下拉列表中选择“订阅”。
    3. 从“服务”下拉列表中，选择“StorSimple”。 
    4. 从下拉列表中选择“支持计划”。 需要付费的支持计划才能启用技术支持。
-4. 单击“资源组名称” 的 Azure 数据工厂。 此时会显示“问题”对话框。
+4. 单击“下一步”。 此时会显示“问题”对话框。
    
     ![“新建支持请求”窗格](./media/storsimple-contact-microsoft-support/Ibiza5a.png) 
 5. 在“问题”对话框中，完成以下操作：
@@ -60,7 +59,7 @@ ms.lasthandoff: 03/01/2017
    3. 从下拉列表中选择“类别”。 
    4. 在“详细信息”框中简要描述问题。
    5. 在“时间范围”框中，指示与问题的最新匹配项对应的日期、时间和时区。
-   6. 在“文件上载”下单击文件夹图标，浏览到支持包。
+   6. 在“文件上传”下单击文件夹图标，浏览到支持包。
    7. 选择“共享诊断信息”复选框。
 6. 单击“下一步”。 此时会出现“联系信息”对话框。
    
@@ -69,10 +68,10 @@ ms.lasthandoff: 03/01/2017
 8. 选中“保存联系人更改以便将其用于将来的支持请求”复选框。
 9. 单击“创建” 。
 
-提交请求后，支持工程师会与你尽早联系，以便处理你的请求。
+提交请求后，支持工程师会与你尽早联系，以便处理请求。
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中启动支持会话
-若要解决在 StorSimple 设备上可能会遇到的问题，需要与 Microsoft 支持团队合作。 Microsoft 支持团队可能需要使用支持会话登录到你的设备。 
+若要解决在 StorSimple 设备上可能会遇到的问题，需要与 Microsoft 支持团队合作。 Microsoft 支持团队可能需要使用支持会话登录到设备。 
 
 可以执行以下步骤来启动支持会话：
 
@@ -93,5 +92,4 @@ ms.lasthandoff: 03/01/2017
 > 运行 `Disable-HcsSupportAccess` 即可禁用支持访问。 StorSimple 设备也会在启动会话 8 小时后尝试禁用支持访问。 最好是在启动支持会话后更改 StorSimple 设备凭据。
 > 
 > 
-
 

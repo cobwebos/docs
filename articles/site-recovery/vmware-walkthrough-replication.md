@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 3c4b7ad16e6a03fb605447def18f7475d502fdd1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="step-9-set-up-a-replication-policy-for-vmware-vm-replication-to-azure"></a>第 9 步：创建复制策略以便将 VMware VM 复制到 Azure
 
@@ -42,9 +41,8 @@ ms.lasthandoff: 06/29/2017
 5. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（以分钟为单位）。 单击“确定”创建该策略。
 
     ![复制策略](./media/vmware-walkthrough-replication/gs-replication2.png)
-8. 当你创建新策略时，该策略将自动与配置服务器关联。 默认情况下将自动创建一个匹配策略以用于故障回复。 例如，如果复制策略是 **rep-policy**，则故障回复策略将是 **rep-policy-failback**。 你从 Azure 启动故障回复之前，不会使用此策略。
+8. 创建新策略时，该策略会自动与配置服务器关联。 默认情况下会自动创建一个匹配策略以用于故障回复。 例如，如果复制策略是 **rep-policy**，则故障回复策略将是 **rep-policy-failback**。 从 Azure 启动故障回复之前，不会使用此策略。
 
 ## <a name="next-steps"></a>后续步骤
 
 转到[第 10 步：安装 Mobility Service](vmware-walkthrough-install-mobility.md)
-
