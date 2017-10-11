@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
-
-
+ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
 本文将帮助你排查 [CDN 文件压缩](cdn-improve-performance.md)问题。
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“**获取支持**”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“**获取支持**”。
 
 ## <a name="symptom"></a>症状
 已经为终结点启用了压缩，但返回的文件没有压缩。
 
 > [!TIP]
-> 要检查返回的文件是否已压缩，你需要使用 [Fiddler](http://www.telerik.com/fiddler) 这类工具或浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)。  检查随缓存的 CDN 内容一起返回的 HTTP 响应标头。  如果存在名为 `Content-Encoding` 的标头，且其值为 **gzip**、**bzip2** 或 **deflate**，则内容已压缩。
+> 要检查返回的文件是否已压缩，需要使用 [Fiddler](http://www.telerik.com/fiddler) 这类工具或浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)。  检查随缓存的 CDN 内容一起返回的 HTTP 响应标头。  如果存在名为 `Content-Encoding` 的标头，且其值为 **gzip**、**bzip2** 或 **deflate**，则内容已压缩。
 > 
 > ![Content-Encoding 标头](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -51,7 +51,7 @@ ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
 ### <a name="verify-the-request"></a>验证请求
 首先，应该对请求进行一次快速的完整性检查。  可以使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)来查看正在提出的请求。
 
-* 验证请求是发送到你的终结点 URL `<endpointname>.azureedge.net`，而不是你的源。
+* 验证请求是发送到终结点 URL `<endpointname>.azureedge.net`，而不是源。
 * 验证该请求包含 **Accept-encoding** 标头，并且该标头的值包含 **gzip**、**deflate** 或 **bzip2**。
 
 > [!NOTE]
@@ -63,11 +63,11 @@ ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
 
 ### <a name="verify-compression-settings-standard-cdn-profile"></a>验证压缩设置（标准 CDN 配置文件）
 > [!NOTE]
-> 仅在你的 CDN 配置文件为**来自 Verizon 的 Azure CDN** 或 **来自 Akamai 的 Azure CDN** 配置文件时，此步骤才适用。 
+> 仅在 CDN 配置文件为**来自 Verizon 的 Azure CDN** 或 **来自 Akamai 的 Azure CDN** 配置文件时，此步骤才适用。 
 > 
 > 
 
-在 [Azure 门户](https://portal.azure.com)中导航到你的终结点，然后单击“**配置**”按钮。
+在 [Azure 门户](https://portal.azure.com)中导航到终结点，然后单击“**配置**”按钮。
 
 * 验证是否已启用压缩。
 * 验证待压缩内容的 MIME 类型是否已包括在压缩格式列表中。
@@ -80,7 +80,7 @@ ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
 > 
 > 
 
-在 [Azure 门户](https://portal.azure.com)中导航到你的终结点，然后单击“**管理**”按钮。  随即打开补充门户。  将鼠标悬停在“**HTTP 大**”选项卡上，然后悬停在“**缓存设置**”浮出控件。  单击“**压缩**”。 
+在 [Azure 门户](https://portal.azure.com)中导航到终结点，然后单击“**管理**”按钮。  随即打开补充门户。  将鼠标悬停在“**HTTP 大**”选项卡上，然后悬停在“**缓存设置**”浮出控件。  单击“**压缩**”。 
 
 * 验证是否已启用压缩。
 * 验证“**文件类型**”列表包含以逗号分隔（无空格）的 MIME 类型列表。
@@ -117,10 +117,4 @@ ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
 
 * **IIS 6**：[在 IIS 元数据库属性中设置 HcNoCompressionForProxies ="FALSE"](https://msdn.microsoft.com/library/ms525390.aspx)
 * **IIS 7 及更高版本**：[在服务器配置中将 **noCompressionForHttp10** 和 **noCompressionForProxies** 设置为 False ](http://www.iis.net/configreference/system.webserver/httpcompression)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

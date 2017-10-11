@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 4d33f8499abfa58437328715ec892a414a3c22d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: ce46a4f561a273dc340b090a5bf0c8932a308722
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -31,7 +30,7 @@ ms.lasthandoff: 08/17/2017
 ## <a name="no-data"></a>没有数据
 **我已成功添加 Application Insights 并运行应用，但在门户中从未看到数据。**
 
-* 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
+* 请稍等片刻，并单击“刷新”。 图表定期刷新本身，但也可以手动刷新。 刷新间隔取决于图表的时间范围。
 * 检查是否已在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中定义检测密钥
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
 * 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。请参阅 [full list of firewall exceptions](app-insights-ip-addresses.md)（防火墙例外的完整列表）
@@ -147,5 +146,4 @@ ms.lasthandoff: 08/17/2017
 [platforms]: app-insights-platforms.md
 [track]: app-insights-api-custom-events-metrics.md
 [usage]: app-insights-javascript.md
-
 

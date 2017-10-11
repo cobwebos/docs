@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 667ff16dc7608dab2a5b8b1fd7df715da4620ca1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述
 ## <a name="overview"></a>概述
@@ -199,5 +198,4 @@ Widevine 许可证请求将格式化为 JSON 消息。
 
 ## <a name="see-also"></a>另请参阅
 [使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-drm.md)
-
 

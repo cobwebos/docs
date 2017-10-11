@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 6e1622cd55e3b0e8063604ac9dc0cb0673fa9753
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教程：Azure Active Directory 与 Sprinklr 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/16/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Sprinklr 测试用户](#creating-a-sprinklr-test-user)** - 在 Sprinklr 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 Sprinklr 测试用户](#creating-a-sprinklr-test-user)** -若要在 Sprinklr 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 06/16/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新该值。 请联系 [Sprinklr 客户端支持团队](https://www.sprinklr.com/contact-us/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
 
@@ -196,7 +195,7 @@ ms.lasthandoff: 06/16/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -235,7 +234,7 @@ ms.lasthandoff: 06/16/2017
      >[!IMPORTANT]
      >必须选择“禁用密码”才能让用户通过标识提供者登录。 
      
-6. 单击“角色”，然后执行以下步骤：
+6. 单击“角色”，并执行以下步骤：
    
     ![合作伙伴角色](./media/active-directory-saas-sprinklr-tutorial/ic782917.png "Partner Roles")
 
@@ -254,7 +253,7 @@ ms.lasthandoff: 06/16/2017
 
 **若要将 Britta Simon 分配到 Sprinklr，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -302,5 +301,4 @@ ms.lasthandoff: 06/16/2017
 [201]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_203.png
-
 

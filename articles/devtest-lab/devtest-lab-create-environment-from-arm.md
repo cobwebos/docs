@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure Resource Manager 模板创建多 VM 环境和 PaaS 资源 | Microsoft Docs"
-description: "了解如何在 Azure 开发测试实验室中通过 Azure Resource Manager 模板创建多 VM 环境和 PaaS 资源"
+description: "了解如何在 Azure 开发测试实验室中通过 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: tomarcher
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
 ms.openlocfilehash: 4e1aae6c041e4572e7e2281203f969e7649e1480
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建多 VM 环境和 PaaS 资源
 
 使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)可以轻松地[在实验室中创建和添加 VM](https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-add-vm)。 这种方法非常适合用于一次创建一个 VM。 但是，如果环境包含多个 VM，则必须单独创建每个 VM。 对于多层 Web 应用或 SharePoint 场等情况，需要使用某种机制以单个步骤创建多个 VM。 现在，可以使用 Azure Resource Manager 模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。 此功能提供以下优势：
@@ -42,7 +40,7 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="configure-azure-resource-manager-template-repositories"></a>配置 Azure Resource Manager 模板存储库
 
-在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 VSTS Git 存储库加载所有 Azure Resource Manager 模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
+在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 VSTS Git 存储库加载所有 Azure 资源管理器模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
 
 在存储库中整理 Azure Resource Manager 模板时需遵循几条规则：
 
@@ -51,7 +49,7 @@ ms.lasthandoff: 06/14/2017
     ![关键的 Azure Resource Manager 模板文件](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - 如果想要使用参数文件中定义的参数值，必须将参数文件命名为 `azuredeploy.parameters.json`。
-- 可以使用参数 `_artifactsLocation` 和 `_artifactsLocationSasToken` 来构造 parametersLink URI 的值，以允许开发测试实验室自动管理嵌套的模板。 请参阅 [How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)（Azure 开发测试实验室如何使在测试环境中部署嵌套的 Resource Manager 模板部署更轻松），了解详细信息。
+- 可以使用参数 `_artifactsLocation` 和 `_artifactsLocationSasToken` 来构造 parametersLink URI 的值，以允许开发测试实验室自动管理嵌套的模板。 请参阅 [How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)（Azure 开发测试实验室如何使在测试环境中部署嵌套的资源管理器模板部署更轻松），了解详细信息。
 - 可以定义元数据来指定模板显示名称和说明。 此元数据必须在名为 `metadata.json` 的文件中。 以下示例元数据文件演示如何指定显示名称和说明： 
 
 ```json
@@ -64,16 +62,16 @@ ms.lasthandoff: 06/14/2017
 }
 ```
 
-以下步骤将指导你完成使用 Azure 门户将存储库添加到实验室的整个过程。 
+以下步骤指导完成使用 Azure 门户将存储库添加到实验室的整个过程。 
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表，选择所需的实验室。   
 1. 在实验室的边栏选项卡中，选择“配置和策略”。
 
     ![配置和策略](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. 从“配置和策略”设置列表中选择“存储库”。 “存储库”边栏选项卡列出已添加到实验室的存储库。 名为 `Public Repo` 的存储库是系统自动为所有实验室生成的，它连接到包含你所用的多个 VM 项目的[开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)。
+1. 从“配置和策略”设置列表中选择“存储库”。 “存储库”边栏选项卡列出已添加到实验室的存储库。 名为的存储库`Public Repo`自动为所有 labs、 生成和连接到[DevTest 实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)，其中包含供你使用的多个 VM 项目。
 
     ![公共存储库](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
@@ -82,7 +80,7 @@ ms.lasthandoff: 06/14/2017
     - **名称** - 输入实验室中使用的存储库名称。
     - **Git 克隆 URI** - 输入 GitHub 或 Visual Studio Team Services 中的 GIT HTTPS 克隆 URL。  
     - **分支** - 输入用于访问 Azure Resource Manager 模板定义的分支名称。 
-    - **个人访问令牌** - 个人访问令牌用于安全访问存储库。 若要从 Visual Studio Team Services 获取令牌，请选择“&lt;你的姓名>”>“我的配置文件”>“安全”>“公共访问令牌”。 若要从 GitHub 获取令牌，请选择你的头像，然后选择“设置”>“公共访问令牌”。 
+    - **个人访问令牌** - 个人访问令牌用于安全访问存储库。 要从 Visual Studio Team Services 获取令牌，请选择“&lt;姓名>”>“我的配置文件”>“安全”>“公共访问令牌”。 要从 GitHub 获取令牌，请选择头像，然后选择“设置”>“公共访问令牌”。 
     - **文件夹路径** - 使用两个输入字段中的一个，输入以正斜杠“/”开头的文件夹路径，该路径是项目定义（第一个输入字段）或 Azure Resource Manager 模板定义的 Git 克隆 URI 的相对路径。   
     
         ![公共存储库](./media/devtest-lab-create-environment-from-arm/repo-values.png)
@@ -96,14 +94,14 @@ ms.lasthandoff: 06/14/2017
 在实验室中配置 Azure Resource Manager 模板存储库后，实验室用户可在 Azure 门户中使用以下步骤创建环境：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表，选择所需的实验室。   
 1. 在实验室的边栏选项卡中，选择“添加+”。
 1. “选择库”边栏选项卡显示了可与最前面列出的 Azure Resource Manager 模板配合使用的基本映像。 选择所需的 Azure Resource Manager 模板。
 
     ![选择一个库](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. 在“添加”边栏选项卡中，输入“环境名称”值。 环境名称是向实验室中的用户显示的名称。 剩余的输入字段已在 Azure Resource Manager 模板中定义。 如果模板中定义了默认值或者存在 `azuredeploy.parameter.json` 文件，默认值将显示在这些输入字段中。 对于*安全字符串*类型的参数，可以使用实验室的[个人机密存储](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)中存储的机密。
+1. 在“添加”边栏选项卡中，输入“环境名称”值。 环境名称是向实验室中的用户显示的名称。 剩余的输入字段已在 Azure Resource Manager 模板中定义。 如果模板中定义了默认值或者存在 `azuredeploy.parameter.json` 文件，默认值会显示在这些输入字段中。 对于*安全字符串*类型的参数，可以使用实验室的[个人机密存储](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)中存储的机密。
 
     ![“添加”边栏选项卡](./media/devtest-lab-create-environment-from-arm/add.png)
 
@@ -132,4 +130,3 @@ ms.lasthandoff: 06/14/2017
 * 创建 VM 后，可通过选择 VM 边栏选项卡中的“连接”来连接该 VM。
 * 在实验室的“我的虚拟机”列表中选择环境，查看和管理该环境中的资源。 
 * 浏览 [Azure 快速入门模板库中的 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)
-

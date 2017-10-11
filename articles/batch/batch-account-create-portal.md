@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 520d1d42d35b25db1a35d4317e9eb616cf5de565
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 08/28/2017
 2. 单击“新建” > “计算” > “批处理服务”。
 
     ![应用商店中的批处理][marketplace_portal]
-3. 将显示“新建 Batch 帐户”边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
+3. 此时会显示“新建 Batch 帐户” 边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
 
     ![创建批处理帐户][account_portal]
 
@@ -102,7 +101,7 @@ ms.lasthandoff: 08/28/2017
 1. 在 [Azure 门户][azure_portal]中，单击“新建” > “计算” > “批处理服务”。
 
     ![应用商店中的批处理][marketplace_portal]
-3. 将显示“新建 Batch 帐户”边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
+3. 此时会显示“新建 Batch 帐户” 边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
 
     ![创建批处理帐户][account_portal_byos]
 
@@ -137,7 +136,7 @@ ms.lasthandoff: 08/28/2017
 
 ![门户中的 Batch 帐户 URL][account_url]
 
-* **访问密钥**（“批处理服务”模式）：从应用程序访问批处理帐户时，若要进行身份验证，需提供帐户访问密钥。 （此设置不适用于“用户订阅”模式，该模式使用 Azure Active Directory 身份验证。）
+* **访问密钥**（“批处理服务”模式）：从应用程序访问批处理帐户时，若要进行身份验证，需提供帐户访问密钥。 （此设置不是在用户订阅模式下可用，使用 Azure Active Directory 身份验证。）
 
     要查看或重新生成批处理帐户的访问密钥，请在“批处理帐户”边栏选项卡左侧菜单的“搜索”框中输入 `keys`，并选择“密钥”。
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 08/28/2017
 >
 
 > [!WARNING]
-> 重新生成关联的存储帐户的访问密钥时请小心。 只能重新生成一个存储帐户密钥，并单击链接的存储帐户边栏选项卡上的“同步密钥”  。 等待五分钟，让密钥传播到池中的计算节点，重新生成并同步其他密钥（如有必要）。 如果同时重新生成这两个密钥，计算节点将无法同步任何一个密钥，并且无法访问存储帐户。
+> 重新生成关联的存储帐户的访问密钥时请小心。 只能重新生成一个存储帐户密钥，并单击链接的存储帐户边栏选项卡上的“同步密钥”  。 等待五分钟，让密钥传播到池中的计算节点，并重新生成并同步其他密钥（如有必要）。 如果同时重新生成这两个密钥，计算节点将无法同步任何一个密钥，并且无法访问存储帐户。
 >
 >
 
@@ -202,4 +201,3 @@ ms.lasthandoff: 08/28/2017
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
 [account_portal_byos]: ./media/batch-account-create-portal/batch_acct_portal_byos.png
-

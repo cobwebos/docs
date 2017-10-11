@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: abfe283476206b181018d187675b47112dc5ad2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>使用 Azure CDN 规则引擎重写 HTTP 行为
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>概述
-使用规则引擎，可允许你自定义 HTTP 请求的处理方式，例如，阻止交付某些类型的内容、定义缓存策略以及修改 HTTP 标头。  本教程将演示如何创建一个用于更改 CDN 资产的缓存行为的规则。  “[另请参阅](#see-also)”一节还提供了视频内容。
+使用规则引擎，可允许自定义 HTTP 请求的处理方式，例如，阻止交付某些类型的内容、定义缓存策略以及修改 HTTP 标头。  本教程会演示如何创建一个用于更改 CDN 资产的缓存行为的规则。  “[另请参阅](#see-also)”一节还提供了视频内容。
 
    > [!TIP] 
    > 有关语法引用的详细信息，请参阅[规则引擎参考](cdn-rules-engine-reference.md)。
@@ -38,7 +37,7 @@ ms.lasthandoff: 01/25/2017
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-rules-engine/cdn-manage-btn.png)
    
     随即 CDN 管理门户打开。
-2. 单击“**HTTP 大型**”选项卡，然后单击“**规则引擎**”。
+2. 单击“**HTTP 大型**”选项卡，并单击“**规则引擎**”。
    
     将显示新规则的选项。
    
@@ -49,12 +48,12 @@ ms.lasthandoff: 01/25/2017
    > 
    > 
 3. 在“**名称/描述**”文本框中输入一个名称。
-4. 标识该规则将适用的请求类型。  默认情况下，选择“**始终**”匹配条件。  在本教程中将使用“**始终**”条件，因此保留该选择。
+4. 标识该规则将适用的请求类型。  默认情况下，选择“**始终**”匹配条件。  在本教程中将使用“**始终**”条件，因此请保留该选择。
    
    ![CDN 匹配条件](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!TIP]
-   > 下拉列表中提供了很多类型的匹配条件。  单击匹配条件左侧的蓝色信息图标，将显示当前所选条件的详细信息。
+   > 下拉列表中提供了很多类型的匹配条件。  单击匹配条件左侧的蓝色信息图标，会显示当前所选条件的详细信息。
    > 
    >  有关条件表达式完整列表的详细信息，请参阅[规则引擎条件表达式](cdn-rules-engine-reference-match-conditions.md)。
    >  
@@ -66,7 +65,7 @@ ms.lasthandoff: 01/25/2017
    ![CDN 功能](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > 跟匹配条件一样，单击新功能左侧的蓝色信息图标，将显示有关此功能的详细信息。  在使用“**强制内部最长时间**”的情况下，我们将重写该资产的 **Cache-Control** 和 **Expires** 标头，以控制 CDN 边缘节点何时刷新来自源的资产。  此示例为 300 秒，意味着在刷新来自其源的资产之前，CDN 边缘节点将缓存该资产 5 分钟。
+   > 跟匹配条件一样，单击新功能左侧的蓝色信息图标，会显示有关此功能的详细信息。  在使用“**强制内部最长时间**”的情况下，我们将重写该资产的 **Cache-Control** 和 **Expires** 标头，以控制 CDN 边缘节点何时刷新来自源的资产。  此示例为 300 秒，意味着在刷新来自其源的资产之前，CDN 边缘节点将缓存该资产 5 分钟。
    > 
    > 有关功能完整列表的详细信息，请参阅[规则引擎功能详细信息](cdn-rules-engine-reference-features.md)。
    > 

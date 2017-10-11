@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9b5556fabd2ccfc026037a411a2f8e83f97ffb81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: de94633cabaa7a1562a5a4839a8a8924da91a283
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
@@ -175,5 +174,4 @@ Application Insights 入门非常简单。 主要选项包括：
 * 检测已在运行的 Web 应用。 这样就可以体验到所有内置的性能遥测功能。 该功能适用于 [Java](app-insights-java-live.md) 和 [IIS 服务器](app-insights-monitor-performance-live-website-now.md)，以及 [Azure Web 应用](app-insights-azure.md)。
 * 在开发期间检测项目。 可以针对 [ASP.NET](app-insights-asp-net.md) 或 [Java](app-insights-java-get-started.md) 应用以及 [Node.js](app-insights-nodejs.md) 和很多[其他类型](app-insights-platforms.md)的应用执行此操作。 
 * 通过添加简短的代码片段来检测[任何网页](app-insights-javascript.md)。
-
 

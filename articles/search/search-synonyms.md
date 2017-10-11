@@ -13,18 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
 ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Azure 搜索中的同义词功能（预览版）
 
 搜索引擎中的同义词功能无需用户实际提供术语，便可关联隐式扩展查询作用域的等效术语。 例如，若给定术语“dog”以及“canine”和“puppy”同义词关联，则包含“dog”、“canine”或“puppy”的所有文档都属于查询作用域。
 
-在 Azure 搜索中，查询时将完成同义词功能扩展。 你可将同义词映射添加到服务，而不会中断现有操作。 可将  **synonymMaps** 属性添加到字段定义，而无需重新生成索引。 有关详细信息，请参阅[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)。
+在 Azure 搜索中，查询时会完成同义词功能扩展。 可将同义词映射添加到服务，而不会中断现有操作。 可将  **synonymMaps** 属性添加到字段定义，而无需重新生成索引。 有关详细信息，请参阅[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)。
 
 ## <a name="feature-availability"></a>功能可用性
 
@@ -32,9 +31,9 @@ ms.lasthandoff: 06/09/2017
 
 ## <a name="how-to-use-synonyms-in-azure-search"></a>如何在 Azure 搜索中使用同义词功能
 
-在 Azure 搜索中，同义词支持基于你定义和上传到服务的同义词映射。 这些映射构成独立的资源（如索引或数据源），在搜索服务中可用于任何索引的任何可搜索字段。
+在 Azure 搜索中，同义词支持基于定义和上传到服务的同义词映射。 这些映射构成独立的资源（如索引或数据源），在搜索服务中可用于任何索引的任何可搜索字段。
 
-同义词映射和索引独立维护。 定义同义词映射并将其上传到服务后，可通过在字段定义中添加名为 **synonymMaps** 的新属性在字段上启用同义词功能。 创建、更新和删除同义词映射始终是整个文档操作，这意味着你无法以增量方式创建、更新或删除部分同义词映射。 甚至更新单个条目也需要重新加载。
+同义词映射和索引独立维护。 定义同义词映射并将其上传到服务后，可通过在字段定义中添加名为 **synonymMaps** 的新属性在字段上启用同义词功能。 创建、 更新和删除同义词映射始终是整个文档操作，这意味着你无法创建、 更新或删除同义词映射的部分以增量方式。 甚至更新单个条目也需要重新加载。
 
 将同义词并入搜索应用程序需要两步：
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/09/2017
 
 使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 在免费服务中可为每个同义词映射定义最多 5,000 条规则，在所有其他 SKU 中可定义最多 10,000 条规则。 每条规则可包含最多 20 个扩展。
 
-在此预览版中，同义词映射的格式必须为 Apache Solr，以下对此进行了解释。 如果现有的同义词字典具有不同格式，并且你想要直接使用，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上告诉我们。
+在此预览版中，同义词映射的格式必须为 Apache Solr，以下对此进行了解释。 如果你有一个现有的同义词字典以不同的格式，并想要直接使用，请让我们知道上[UserVoice](https://feedback.azure.com/forums/263029-azure-search)。
 
 如以下示例所示，可使用 HTTP POST 创建新的同义词映射：
 
@@ -82,9 +81,9 @@ Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Sol
               USA, United States, United States of America
 ```
 
-使用以上规则，搜索查询“USA”将扩展为“USA”、“United States”或“United States of America”。
+使用上面的搜索查询的规则"USA"将扩展到"USA"或者"美国"或者"美国"。
 
-箭头“=>”表示显式映射。 如果已指定，则与“=>”左侧内容匹配的搜索查询术语序列将替换为右侧的替代项。 给定以下规则，搜索查询“Washington”、“Wash”。 或“WA”全部将被重写为“WA”。 显式映射仅按指定方向应用，在本例中不会将查询“WA”重写为“Washington”。
+箭头“=>”表示显式映射。 如果指定，搜索查询相匹配的左侧的术语序列"= >"将替换为右侧替代项。 给定以下规则，搜索查询“Washington”、“Wash”。 或者"WA"将所有重写到"WA"。 显式映射仅适用于指定的方向并不重写查询"WA"到"华盛顿"在此情况下。
 ```
               Washington, Wash., WA => WA
 ```
@@ -155,9 +154,9 @@ Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Sol
 
 ## <a name="tips-for-building-a-synonym-map"></a>构建同义词映射的提示
 
-- 相比穷举可能的匹配，简明清晰、精心设计的同义词映射更高效。 如果查询扩展到多个同义词，由于字典过大或太复杂，分析时间将延长，导致查询延迟。 你可通过[搜索流量分析报告](search-traffic-analytics.md)获取实际术语，而无需猜测可能使用的术语。
+- 相比穷举可能的匹配，简明清晰、精心设计的同义词映射更高效。 如果查询扩展到多个同义词，由于字典过大或太复杂，分析时间将延长，导致查询延迟。 可通过[搜索流量分析报告](search-traffic-analytics.md)获取实际术语，而无需猜测可能使用的术语。
 
-- 作为一个初步和验证练习，请启用并使用该报告精确确定哪些术语将受益于同义词匹配，然后继续使用它验证同义词映射是否产生更好的结果。 在预定义的报告中，磁贴“最常用的搜索查询”和“零结果的搜索查询”将为你提供必要信息。
+- 作为一个初步和验证练习，请启用并使用该报告精确确定哪些术语将受益于同义词匹配，然后继续使用它验证同义词映射是否产生更好的结果。 在预定义的报告中，磁贴“最常用的搜索查询”和“零结果的搜索查询”将提供必要信息。
 
 - 可为搜索应用程序创建多个同义词映射（例如，如果应用程序支持多语言客户群，则可按语言创建同义词映射）。 目前，一个字段仅可使用其中一种。 可随时更新字段的 synonymMaps 属性。
 
@@ -166,4 +165,3 @@ Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Sol
 - 如果开发（非生产）环境中具有现有索引，请使用一个小字典进行试验，了解添加同义词如何更改搜索体验，包括对计分配置文件、突出显示和建议造成的影响。
 
 - [启用搜索流量分析](search-traffic-analytics.md)并使用预定义的 Power BI 报告可了解最常使用的术语及将返回零个文档的术语。 使用这些见解，修改字典以包括应解析至索引中的文档的非生产性查询的同义词。
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
 ms.openlocfilehash: 9f085dfa1fe4db36d58cb976bb550a46bf241ac7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-azure-cli-10"></a>使用 Azure CLI 1.0 将多个 IP 地址分配给虚拟机
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 03/28/2017
 
 可以使用 Azure CLI 1.0（本文）或 [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md) 完成此任务。 下面的步骤说明如何根据方案中所述，创建具有多个 IP 地址的示例 VM。 在自己的实施项目中，需要更改变量名称和 IP 地址类型。
 
-1. 按照[安装和配置 Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤安装并配置 Azure CLI 1.0，然后使用 `azure-login` 命令登录到 Azure 帐户。
+1. 按照[安装和配置 Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤安装并配置 Azure CLI 1.0，并使用 `azure-login` 命令登录到 Azure 帐户。
 
 2. 创建资源组：
     
@@ -117,7 +116,7 @@ ms.lasthandoff: 03/28/2017
     --image UbuntuLTS --ssh-key-value ~/.ssh/id_rsa.pub --admin-username azureuser
     ```
 
-    例如，若要将 VM 大小更改为标准 DS2 v2，只需将以下属性 `--vm-size Standard_DS3_v2` 添加到步骤 6 中的 `azure vm create` 命令。
+    例如，要将 VM 大小更改为标准 DS2 v2，只需将以下属性 `--vm-size Standard_DS3_v2` 添加到步骤 6 中的 `azure vm create` 命令。
 
 8. 输入以下命令查看 NIC 和关联的 IP 配置：
 
@@ -130,13 +129,13 @@ ms.lasthandoff: 03/28/2017
 
 完成以下步骤可将其他专用和公共 IP 地址添加到现有 NIC。 这些示例是基于本文中所述的[方案](#Scenario)制作的。
 
-1. 打开 Azure CLI，然后在单个 CLI 会话中完成本部分的剩余步骤。 如果尚未安装并配置 Azure CLI，请完成[安装和配置 Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤，然后登录到你的 Azure 帐户。
+1. 打开 Azure CLI，并在单个 CLI 会话中完成本部分的剩余步骤。 如果尚未安装并配置 Azure CLI，请完成[安装和配置 Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤，然后登录到 Azure 帐户。
 
 2. 根据要求完成以下部分之一中的步骤：
 
     - **添加专用 IP 地址**
     
-        若要将专用 IP 地址添加到 NIC，必须使用以下命令创建 IP 配置。 静态地址必须是未使用的子网地址。
+        要将专用 IP 地址添加到 NIC，必须使用以下命令创建 IP 配置。 静态地址必须是未使用的子网地址。
 
         ```azurecli
         azure network nic ip-config create --resource-group myResourceGroup --nic-name myNic1 \
@@ -215,4 +214,3 @@ ms.lasthandoff: 03/28/2017
 4. 根据本文[将 IP 地址添加到 VM 操作系统](#os-config)部分中的说明，将添加到 NIC 的专用 IP 地址添加到 VM 操作系统。 请勿向操作系统添加公共 IP 地址。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-

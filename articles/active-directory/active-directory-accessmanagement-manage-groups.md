@@ -17,12 +17,11 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 2cc2b63312b331a19c61cd7b59a4cac78edf32e6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>在 Azure Active Directory 中管理组
 > [!div class="op_single_selector"]
@@ -37,7 +36,7 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 * 资源，例如目录中的对象
 * 目录外部的资源，例如 SaaS 应用程序、Azure 服务、SharePoint 站点或本地资源
 
-此外，资源所有者还可以将资源访问权限分配给其他人拥有的 Azure AD 组。 此分配操作将向该组的成员授予资源访问权限。 然后，组所有者可以管理组的成员身份。 实际上，资源所有者是将其资源的用户访问权限委派给了组的所有者。
+此外，资源所有者还可以将资源访问权限分配给其他人拥有的 Azure AD 组。 此分配操作将向该组的成员授予资源访问权限。 然后，组的所有者管理组中的成员身份。 实际上，资源所有者是将其资源的用户访问权限委派给了组的所有者。
 
 > [!IMPORTANT]
 > Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 若要了解如何在 Azure AD 管理中心管理组，请参阅[在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md)。
@@ -107,4 +106,3 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [什么是 Azure Active Directory？](active-directory-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

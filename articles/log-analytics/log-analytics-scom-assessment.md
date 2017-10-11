@@ -15,14 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
 ms.openlocfilehash: 4992d98397da409f7c1cfbdeb40fdb0cdd0d2f19
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/14/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>使用 System Center Operations Manager 评估（预览版）解决方案优化环境
 
 ![“System Center Operations Manager 评估”符号](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
@@ -47,7 +45,7 @@ ms.lasthandoff: 08/14/2017
 
 使用以下信息安装和配置解决方案。
 
- - 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) 或按照[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的说明，安装解决方案。
+ - 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)或按照[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的说明，安装解决方案。
 
  - 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 评估”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，并按照页面中所述的配置步骤操作
 
@@ -292,4 +290,3 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 ## <a name="next-steps"></a>后续步骤
 
 - 使用[搜索日志](log-analytics-log-searches.md)查看详细的 System Center Operations Manager 评估数据和建议。
-

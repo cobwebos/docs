@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/22/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 99b76e3bc2939c65654cbf606fda6f8a45e0c44b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set-update-2"></a>从备份集中还原 StorSimple 卷（更新 2）
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
@@ -50,7 +49,7 @@ ms.lasthandoff: 04/21/2017
 ## <a name="how-does-restore-work"></a>还原的工作原理
 对于运行 Update 4 或更高版本的设备，实现基于热度地图的还原。 设备收到访问数据的主机请求时，会跟踪这些请求并创建热度地图。 高请求速率导致出现较高热度的数据区块，而较低请求速率则表现为较低热度的区块。 必须访问数据至少两次，才能将其标记为“热”。 将修改的文件也标记为“热”。 启动还原后，根据热度地图执行数据的主动水化。 对于 Update 4 之前的版本，仅根据访问情况在还原期间下载数据。 
 
-仅对分层卷启用基于热度地图的跟踪，不支持本地固定卷。 将卷克隆到其他设备时也不支持基于热度地图的还原。 如果设备上存在就地还原和要还原卷的本地快照，则不解除冻结（因为数据已在本地可用）。 默认情况下，将在还原时启动解除冻结作业，以根据热度地图主动解除冻结数据。 在 Update 4 中，可使用 Windows PowerShell cmdlet 查询正在运行的解除冻结作业、取消解除冻结作业，并获取解除冻结作业的状态。
+仅对分层卷启用基于热度地图的跟踪，不支持本地固定卷。 将卷克隆到其他设备时也不支持基于热度地图的还原。 如果设备上存在就地还原和要还原卷的本地快照，则不解除冻结（因为数据已在本地可用）。 默认情况下，会在还原时启动解除冻结作业，以根据热度地图主动解除冻结数据。 在 Update 4 中，可使用 Windows PowerShell cmdlet 查询正在运行的解除冻结作业、取消解除冻结作业，并获取解除冻结作业的状态。
 
 * `Get-HcsRehydrationJob` - 此 cmdlet 用于获取解除冻结作业的状态。 对一个卷触发单个解除冻结作业。
 * `Set-HcsRehydrationJob` - 使用此 cmdlet 可在解除冻结过程中暂停、停止、恢复解除冻结作业。 
@@ -94,7 +93,7 @@ ms.lasthandoff: 04/21/2017
    4. 单击选中图标  ![选中图标](./media/storsimple-restore-from-backup-set-u2/HCS_CheckIcon.png) 以执行此查询。
       
       与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
-3. 展开备份集以查看相关联的卷。 在还原这些卷之前，必须使其在主机和设备上脱机。 在“卷容器”页面上访问卷，然后按照[使卷脱机](storsimple-manage-volumes-u2.md#take-a-volume-offline)中的步骤使其脱机。
+3. 展开备份集以查看相关联的卷。 在还原这些卷之前，必须使其在主机和设备上脱机。 在“卷容器”页面上访问卷，并按照[使卷脱机](storsimple-manage-volumes-u2.md#take-a-volume-offline)中的步骤使其脱机。
    
    > [!IMPORTANT]
    > 请确保在设备上使卷脱机之前，已在主机上使卷处于脱机状态。 如果未在主机上使卷脱机，则可能会导致数据损坏。
@@ -102,7 +101,7 @@ ms.lasthandoff: 04/21/2017
    > 
 4. 导航回“备份目录”选项卡并选择备份集。
 5. 单击页面底部的“还原”。
-6. 系统会提示你进行确认。 查看还原信息，然后选择“确认”复选框。
+6. 系统会提示进行确认。 查看还原信息，并选择“确认”复选框。
    
     ![“确认”页](./media/storsimple-restore-from-backup-set-u2/ConfirmRestore.png)
 7. 单击选中图标![选中图标](./media/storsimple-restore-from-backup-set-u2/HCS_CheckIcon.png)。 还原作业随即开始。 通过访问“作业”页面可查看该作业。 
@@ -115,10 +114,9 @@ ms.lasthandoff: 04/21/2017
 ## <a name="if-the-restore-fails"></a>如果还原失败
 如果因任何原因导致还原操作失败，则用户会收到警报。 如果发生这种情况，请刷新备份列表，以验证备份是否仍然有效。 如果备份有效，并且正在从云中进行还原，则可能是由连接问题所造成的。 
 
-若要完成还原操作，需要使卷在主机上脱机，然后重试还原操作。 在还原过程中对卷数据执行的任何修改都会丢失。
+要完成还原操作，需要使卷在主机上脱机，并重试还原操作。 在还原过程中对卷数据执行的任何修改都会丢失。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 卷](storsimple-manage-volumes-u2.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: cbdc964b16cbc6cf291dbc4b6f60b20d67d9fc41
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: e454778c558b9c17c47ad9eb651737aa0b5e2605
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述 
 
@@ -87,7 +86,7 @@ CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没�
 缩放|自动增加到目标吞吐量。|额外流单元
 IP 筛选/G20/自定义主机|是|是
 渐进式下载|是|是
-建议的用法 |建议用于绝大多数的流式处理方案。|专业用法。<br/>如果你认为需求可能会超出标准。 如果预计并发受众大小大于 50,000 个查看器，请与我们联系（microsoft.com 上的 amsstreaming）。
+建议的用法 |建议用于绝大多数的流式处理方案。|专业用法。<br/>如果认为需求可能会超出标准。 如果预计并发受众大小大于 50,000 个查看器，请与我们联系（microsoft.com 上的 amsstreaming）。
 
 
 ## <a name="migration-between-types"></a>类型之间的迁移
@@ -112,5 +111,4 @@ IP 筛选/G20/自定义主机|是|是
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

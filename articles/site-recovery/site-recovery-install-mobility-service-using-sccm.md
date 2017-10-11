@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 65d9cc77d7ce87d05a9357673712c518e4e43dc3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: 49b72cd306aa91f114af7688f02d95db6f6eca05
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="automate-mobility-service-installation-by-using-software-deployment-tools"></a>使用软件部署工具自动执行移动服务安装
 
 >[!IMPORTANT]
-本文档假定你使用版本 **9.9.4510.1** 或更高版本。
+本文档假定使用的是版本 **9.9.4510.1** 或更高版本。
 
 本文提供如何使用 System Center Configuration Manager 在数据中心内部署 Azure Site Recovery 移动服务的示例。 使用 Configuration Manager 等软件部署工具具有以下优势：
 * 计划全新安装和升级的部署，在计划维护时段内进行软件更新
@@ -392,7 +391,7 @@ cd /tmp
 3. 右键单击“包”，然后选择“创建包”。
 4. 提供“名称”、“说明”、“制造商”、“语言”和“版本”的值。
 5. 选中“此包包含源文件”复选框。
-6. 单击“浏览”，然后选择存储安装程序的网络共享 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux)。
+6. 单击“浏览”，然后选择存储安装程序的网络共享(\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux)。
 
   ![创建包和程序向导的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/create_sccm_package-linux.png)
 
@@ -472,4 +471,3 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
 
 ## <a name="next-steps"></a>后续步骤
 现在可以为虚拟机[启用保护](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications)。
-

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="mapping-an-existing-web-service-to-odata-through-csdl"></a>通过 CSDL 将现有 Web 服务映射到 OData
 > [!IMPORTANT]
-> **本次我们将不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure 应用商店上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
+> **本次我们不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure 应用商店上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
 > 
 > 
 
@@ -39,7 +39,8 @@ CSDL（概念架构定义语言）是一种规范，定义如何使用通用 XML
 
   `Client <- Azure Marketplace <- Content Provider’s WebService`
 
-**图 1**说明客户端如何通过访问 Azure 应用商店获取内容提供商（你的服务）的数据。  映射/转换组件使用 CSDL 处理请求以及内容提供商服务和请求客户端之间的数据传递。
+
+            **图 1**说明客户端如何通过访问 Azure 应用商店获取内容提供商（服务）的数据。  映射/转换组件使用 CSDL 处理请求以及内容提供商服务和请求客户端之间的数据传递。
 
 *图 1：通过 Azure 应用商店从请求客户端到内容提供商的详细流程*
 
@@ -47,7 +48,7 @@ CSDL（概念架构定义语言）是一种规范，定义如何使用通用 XML
 
 有关 Azure 应用商店扩展生成所依据的 Atom、Atom Pub 和 OData 协议的背景信息，请参阅：[http://msdn.microsoft.com/library/ff478141.aspx](http://msdn.microsoft.com/library/ff478141.aspx)
 
-上述链接中的节选：      *“开发数据协议（以下称为 OData）的用途是针对已公开为数据服务的资源提供适用于 CRUD 样式操作（创建、读取、更新和删除）的基于 REST 的协议。“数据服务”是一个终结点，其中含有一个或多个“集合”公开的数据，每个集合带有零个或多个“条目”，这组成了类型化的命名值对。OData 由 Microsoft 根据 OASIS（结构化信息标准促进组织）标准发布，以便任何人都可以用它生成服务器、客户端或工具，无需缴付版税，也不会受到限制。*
+上述链接中的节选：*“开发数据协议（以下称为 OData）的用途是针对已公开为数据服务的资源提供适用于 CRUD 样式操作（创建、读取、更新和删除）的基于 REST 的协议。“数据服务”是一个终结点，其中含有一个或多个“集合”公开的数据，每个集合带有零个或多个“条目”，这组成了类型化的命名值对。OData 由 Microsoft 根据 OASIS（结构化信息标准促进组织）标准发布，以便任何人都可以用它生成服务器、客户端或工具，无需缴付版税，也不会受到限制。*
 
 ### <a name="three-critical-pieces-that-have-to-be-defined-by-the-csdl-are"></a>CSDL 必须定义的三个关键部分如下所示：
 * 服务提供商的**终结点**，即服务的 Web 地址 (URI)
@@ -73,7 +74,7 @@ ATOM Pub 的扩展，其中每个条目表示结果集的一行。 条目的内�
 允许定义通过数据库公开的函数 (SPROC) 和实体。 有关详细信息，请参阅：[http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx)  
 
 > [!TIP]
-> 如果未看到文章，请单击“其他版本”下拉列表，然后选择某个版本。
+> 如果未看到文章，请单击“其他版本”下拉列表，并选择某个版本。
 > 
 > 
 
@@ -132,16 +133,15 @@ CSDL 是用于描述 Web 服务的 XML 语法。 规范本身划分为 4 个主�
 ## <a name="metadatamapping-document"></a>元数据/映射文档
 元数据/映射文档用于映射内容提供商的现有 Web 服务，以便 Azure 应用商店系统可以将它公开为 OData Web 服务。 它基于 CSDL，并实现了 CSDL 的一些扩展，以满足通过 Azure 应用商店公开的基于 REST 的 Web 服务需求。 [http://schemas.microsoft.com/dallas/2010/04](http://schemas.microsoft.com/dallas/2010/04) 命名空间中可以找到这些扩展。
 
-以下是 CSDL 的一个示例：（将以下 CSDL 示例复制并粘贴到 XML 编辑器并更改，以匹配你的服务。  然后在 [Azure 应用商店发布门户](https://publish.windowsazure.com)中创建你的服务时，将修改内容粘贴到“DataService”选项卡下的 CSDL 映射）。
+以下是 CSDL 的一个示例：（将以下 CSDL 示例复制并粘贴到 XML 编辑器并更改，以匹配服务。  然后在 [Azure 应用商店发布门户](https://publish.windowsazure.com)中创建服务时，将修改内容粘贴到“DataService”选项卡下的 CSDL 映射）。
 
 **条款：**将 CSDL 条款与[发布门户](https://publish.windowsazure.com) UI (PPUI) 条款关联。
 
 * PPUI 中的优惠“标题”与 MyWebOffer 关联
 * PPUI 中的 MyCompany 与 [Microsoft 开发人员中心](http://dev.windows.com/registration?accountprogram=azure) UI 中的**发布者显示名称**关联
-* 你的 API 与 Web 或数据服务（PPUI 中的计划）关联
+* API 与 Web 或数据服务（PPUI 中的计划）关联
 
-**层次结构：**
-公司（内容提供商）拥有具有计划的优惠，即与 API 相符的服务。
+**层次结构：** （内容提供程序） 的公司拥有 Offer(s) 其具有个计划，即服务 API 向上哪些行。
 
 ### <a name="webservice-csdl-example"></a>WebService CSDL 示例
 连接到将公开 Web 应用程序终结点（类似 C# 应用程序）的服务
@@ -314,13 +314,7 @@ CSDL 是用于描述 Web 服务的 XML 语法。 规范本身划分为 4 个主�
         </Schema>
 
 ## <a name="see-also"></a>另请参阅
-* 如果你有兴趣学习和了解特定节点及其参数，请阅读[数据服务 OData 映射节点](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)一文以了解有关定义和说明、 示例和使用案例上下文。
-* 如果你有兴趣查看示例，请阅读[数据服务 OData 映射示例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)一文以查看示例代码，了解代码的语法和上下文。
-* 若要返回到用于将数据服务发布到 Azure 应用商店的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+* 如果有兴趣学习和了解特定节点及其参数，请阅读[数据服务 OData 映射节点](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)一文以了解有关定义和说明、 示例和使用案例上下文。
+* 如果有兴趣查看示例，请阅读[数据服务 OData 映射示例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)一文以查看示例代码，了解代码的语法和上下文。
+* 要返回到用于将数据服务发布到 Azure 应用商店的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。
 

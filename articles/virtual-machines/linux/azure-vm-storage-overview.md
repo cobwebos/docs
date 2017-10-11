@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 5e8a62bb180de7288531139594cb61440cab04c5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure 和 Linux VM 存储
 Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求的现代应用程序的云存储解决方案。  除了使开发人员可以构建大型应用程序来支持新方案之外，Azure 存储还为 Azure 虚拟机提供了存储基础。
 
 ## <a name="managed-disks"></a>托管磁盘
 
-Azure VM 现支持使用 [Azure 托管磁盘](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，不必自行创建或管理任何 [Azure 存储帐户](../../storage/common/storage-introduction.md)即可创建 VM。 指定是需要高级还是标准存储，以及磁盘应具有的容量，随之 Azure 便会创建 VM 磁盘。 使用托管磁盘的 VM 具有许多重要功能，包括：
+目前 Azure VM 支持使用 [Azure 托管磁盘](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，使得你自身无需创建或管理任何 [Azure 存储帐户](../../storage/common/storage-introduction.md)便可创建 VM。 指定是需要高级还是标准存储，以及磁盘应具有的容量，随之 Azure 便会创建 VM 磁盘。 使用托管磁盘的 VM 具有许多重要功能，包括：
 
 - 自动可伸缩性支持。 Azure 创建磁盘并管理基础存储，每个订阅最多可支持 10,000 个磁盘。
 - 可用性集带来更高的可靠性。 Azure 可确保 VM 磁盘在可用集内自动彼此隔离。
@@ -148,7 +147,7 @@ Azure 冷存储层为存储不常访问且长期留存的数据进行了优化�
 区域冗余存储 (ZRS) 在两到三个设施之间复制数据（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。 如果存储帐户启用了 ZRS，即使其中一个设施出现故障，数据也能持久保存。
 
 ### <a name="geo-redundant-storage"></a>异地冗余存储
-异地冗余存储 (GRS) 将数据复制到距主区域数百英里以外的辅助区域。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
+异地冗余存储 (GRS) 将数据复制到距主区域数百英里以外的辅助区域。 如果存储帐户启用了 GRS，即使在遇到区域完全停电或导致主要区域不可恢复的灾难时，数据也能持久保存。
 
 ### <a name="read-access-geo-redundant-storage"></a>读取访问异地冗余存储
 除了 GRS 所提供的在两个区域之间进行复制外，读取访问异地冗余存储 (RA-GRS) 还提供对辅助位置中的数据的只读访问权限，从而最大限度地提高了存储帐户的可用性。 当主区域中的数据不可用时，应用程序可以从辅助区域读取数据。
@@ -200,7 +199,7 @@ Azure 存储提供配套的安全性功能，这些功能相辅相成，可让�
 * [Azure 存储安全指南](../../storage/common/storage-security-guide.md)
 
 ## <a name="temporary-disk"></a>临时磁盘
-每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
+每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
 
 在 Linux 虚拟机上，此磁盘通常为 **/dev/sdb**，并且由 Azure Linux 代理格式化和装入到 **/mnt**。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Linux 虚拟机的大小](sizes.md)。
 
@@ -212,4 +211,3 @@ Azure 存储提供配套的安全性功能，这些功能相辅相成，可让�
 
 ## <a name="storage-limits"></a>存储限制
 * [存储服务限制](../../azure-subscription-service-limits.md#storage-limits)
-

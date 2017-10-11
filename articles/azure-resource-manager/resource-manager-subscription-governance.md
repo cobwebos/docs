@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure 企业基架 - 出于合规目的监管订阅
 为了敏捷性和灵活性，企业越来越多地采用公有云。 它们利用云的优势来产生营收或优化企业资源。 Microsoft Azure 提供多种不同的服务，企业可以像构建块一样将它们组合，解决广泛的工作负荷与应用程序需求。 
@@ -32,7 +31,7 @@ ms.lasthandoff: 07/11/2017
 
 不带任何防护措施的空白订阅，其前景是让人担忧的。 如果不在这方面有所作为，可能会给 Azure 过渡造成阻碍。
 
-本文为技术专业人员提供一个起点，帮助他们解决监管需求，并在监管需求与敏捷性需求之间权衡利弊。 其中将会介绍企业基架的概念，它可以引导组织实施和管理 Azure 订阅。 
+本文为技术专业人员提供一个起点，帮助他们解决监管需求，并在监管需求与敏捷性需求之间权衡利弊。 其中会介绍企业基架的概念，它可以引导组织实施和管理 Azure 订阅。 
 
 ## <a name="need-for-governance"></a>监管需求
 在过渡到 Azure 时，必须提前解决监管方面的问题，确保成功地在企业中利用云。 遗憾的是，建立全面监管系统所花费的时间和存在的官僚主义，意味着某些业务小组必须直接与供应商对话，而不与企业 IT 部门沟通。 如果资源未得到正确管理，这种方法可能会导致企业出现漏洞。 公有云的特征 - 敏捷性、灵活性和基于消耗量的定价 - 对于需要快速满足客户（内部和外部）需求的业务小组而言非常重要。 但是，企业 IT 部门需要确保有效地保护数据和系统。
@@ -85,7 +84,7 @@ Azure 注册的三种常见模式为：
 > 关于命名约定：
 > * 如果可能，请审阅并采纳[模式与实践指南](../guidance/guidance-naming-conventions.md)。 可以借助此指南来确定一套有意义的命名标准。
 > * 对资源名称使用骆驼拼写法（例如，myResourceGroup 和 vnetNetworkName）。 注意：某些资源，例如存储帐户，只允许使用小写字母（不能包括其他特殊字符）。
-> * 考虑使用 Azure Resource Manager 策略（下一部分将会介绍）强制实施命名标准。
+> * 考虑使用 Azure Resource Manager 策略（下一部分会介绍）强制实施命名标准。
 > 
 > 前面的提示可帮助实现一致的命名约定。
 
@@ -255,5 +254,4 @@ Azure 在最初发布时，对订阅的访问控制非常直接：只允许管�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解订阅监管后，接下来可以了解如何实施这些建议。 请参阅 [Examples of implementing Azure subscription governance](resource-manager-subscription-examples.md)（Azure 订阅监管实施示例）。
-
 

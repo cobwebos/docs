@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: trinadhk;markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 284a1b64fbb15d0aa800182c6671d447e191b76a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 > [!div class="op_single_selector"]
@@ -49,7 +48,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="backup"></a>备份
 | 备份操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 备份 |无法与 VM 代理通信，因此无法获取快照状态。 快照 VM 子任务超时 - 请参阅故障排除指南以了解如何解决此问题。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会引发此错误。 详细了解如何[调试 VM 快照问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)。 <br> 如果 VM 代理未导致任何问题，则重启 VM。 有时 VM 状态不正确可能会导致问题，而重新启动 VM 则会重置此“错误状态” |
+| 备份 |无法与 VM 代理通信，因此无法获取快照状态。 快照 VM 子任务超时。 请参阅故障排除指南以了解如何解决此问题。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会引发此错误。 详细了解如何[调试 VM 快照问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)。 <br> 如果 VM 代理未导致任何问题，则重启 VM。 有时 VM 状态不正确可能会导致问题，而重新启动 VM 则会重置此“错误状态” |
 | 备份 |发生内部错误，备份失败 - 请在几分钟后重试操作。 如果问题持续出现，请联系 Microsoft 支持 |请查看在访问 VM 存储时是否存在一过性问题。 请检查“[Azure 状态](https://azure.microsoft.com/en-us/status/)”，以确定区域中的计算/存储/网络是否存在任何相关问题。 解决问题后，请重试备份。 |
 | 备份 |无法执行该操作，因为 VM 不再存在。 |无法执行备份，因为已删除针对备份配置的 VM。 请转到“受保护的项”视图，选择受保护的项后，单击“停止保护”，停止进一步的备份操作。 选择“保留备份数据”选项即可保留数据。 之后可以单击“已注册项”视图中的“配置保护”，继续保护此虚拟机 |
 | 备份 |无法在选择的项上安装 Azure 恢复服务扩展 - VM 代理是 Azure 恢复服务扩展的必备组件。 请安装 Azure VM 代理并重新启动注册操作 |<ol> <li>检查是否已正确安装 VM 代理。 <li>确定已正确设置 VM 配置中的标志。</ol> [详细了解](#validating-vm-agent-installation)如何安装 VM 代理以及如何验证 VM 代理安装。 |
@@ -93,7 +92,7 @@ ms.lasthandoff: 04/03/2017
 
 对于 Windows VM：
 
-* 下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。
+* 下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要管理员权限才能完成安装。
 * [更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。
 
 对于 Linux VM：
@@ -114,5 +113,4 @@ ms.lasthandoff: 04/03/2017
 如何检查 Windows VM 上的 VM 代理版本：
 
 1. 登录 Azure 虚拟机并导航到 *C:\WindowsAzure\Packages* 文件夹。 应会发现 WaAppAgent.exe 文件已存在。
-2. 右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。“产品版本”字段应为 2.6.1198.718 或更高
-
+2. 右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。 “产品版本”字段应为 2.6.1198.718 或更高

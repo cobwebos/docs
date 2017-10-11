@@ -15,20 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 61d62cde5311c8e447acf8890e0a32339585bb42
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
-
+ms.openlocfilehash: 3e43494721f03ce8e56cb069638ad24df7222386
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI 使用 Azure 来加速其开发周期和增强其客户服务与性能
 ![Daxko/CSI 徽标](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
 Daxko/CSI Software 面临的挑战：归功于其全方位企业软件解决方案的成功，健身与休闲中心的客户群体快速发展，但 IT 基础结构要跟上不断发展的客户群体，给该公司的 IT 人员带来了考验。 该公司逐渐受到运营开销不断提高的约束，特别是在管理日渐庞大的数据库方面。 更糟的是，这些运营开销已占用新举措（例如公司软件的新移动功能）的部分开发资源。
 
-Daxko/CSI 产品开发主任 David Molina 指出，Azure 为 CSI Software 提供了它在简化数据库管理、提高可缩放性以及释放资源来专注于软件而不是运营等方面所需的平台即服务 (PaaS) 模型。 “Azure SQL 数据库是很适合我们的选择。 不需要操心维护 SQL Server、故障转移群集，以及所有其他基础结构需求，对我们而言相当理想。”
+Daxko/CSI 产品开发主任 David Molina 指出，Azure 为 CSI Software 提供了所需的平台即服务 (PaaS) 模型，它可以简化数据库管理、提高伸缩性以及释放资源，让客户专注于软件，而不是运营事务。 “Azure SQL 数据库是很适合我们的选择。 不需要操心维护 SQL Server、故障转移群集，以及所有其他基础结构需求，对我们而言相当理想。”
 
 自从迁移到 Azure 后，CSI Software 只需要两位操作人员来管理 600 多个客户数据库。 该公司使用 Azure SQL 数据库弹性池，根据大小和需求来移动客户数据库。
 
@@ -48,9 +46,9 @@ Molina 补充道，“我们的客户立即感受到改变。 在使用弹性池
 
 “我们的产品还包含一个面向会员的门户（以 ASP.net 编写），旨在以白标签方式匹配客户的 Web 空间；另外还包含一个 SOAP API，用于支持在线网页和任何第三方集成。”
 
-将体系结构迁移到云并未花费很长时间。 Molina 表示，“大部分精力花费在修改读取配置文件信息的方式、集中化连接字符串修改，以及自动化打包、上载和部署版本上。”
+将体系结构迁移到云并未花费很长时间。 Molina 表示，“大部分精力花费在修改读取配置文件信息的方式、集中化连接字符串修改，以及自动化打包、上传和部署版本上。”
 
-为了开发构建自动化，CSI Software 工程师使用了 Azure PowerShell 和 REST API 来创建包并将其上载到过渡环境以便在每天晚上发布。
+为了开发构建自动化，CSI Software 工程师使用了 Azure PowerShell 和 REST API 来创建包并将其上传到过渡环境以便在每天晚上发布。
 过渡到基于 Azure 云的部署的整个过程对 CSI Software IT 团队而言相当快速顺利。 Molina 解释道，“总而言之，我们在承接项目后的三到四周内，云中就有了一个测试环境。 这种收获让我们感到意外。”
 
 在配置并测试环境之后，CSI Software 便开始迁移客户。 对于已在使用 CSI Software 托管服务的客户，这种过渡几乎是无缝的。 对于从本地部署迁移的客户，迁移到云需要多花一些时间，但就客户和 CSI Software 而言，基本上也没有造成太大的困扰。
@@ -66,7 +64,7 @@ Molina 补充道，“我们的客户立即感受到改变。 在使用弹性池
 ## <a name="azure-elastic-pools-free-up-it-resources"></a>Azure 弹性池释放 IT 资源
 Azure 的多个功能已帮助 CSI Software 从基础结构和运营为焦点，转化为以功能和开发为焦点。 最大的收益或许来自弹性池。
 
-CSI Software 目前为客户提供大约 550 个数据库。 在使用弹性池之前，很难在一个分层结构内管理这么多数据库。 运营经理必须根据客户的高峰需求分配性能层，造成了严重的 IT 资源开销。 通过弹性池，经理可以根据情况为租户分配高级或标准池，然后根据大小和需求移动客户。 客户几乎立即可以感受到弹性池的作用；在使用弹性池之前，客户在高峰使用期间遇到了超时和其他问题，但使用弹性池之后，客户可以根据需要体验活动喷发情况，然后继续使用 SpectrumNG 而不会出现任何问题。
+CSI Software 目前为客户提供大约 550 个数据库。 在使用弹性池之前，很难在一个分层结构内管理这么多数据库。 运营经理必须根据客户的高峰需求分配性能层，造成了严重的 IT 资源开销。 通过弹性池，经理可以根据情况为租户分配高级或标准池，并根据大小和需求移动客户。 客户几乎立即可以感受到弹性池的作用；在使用弹性池之前，客户在高峰使用期间遇到了超时和其他问题，但使用弹性池之后，客户可以根据需要体验活动喷发情况，并继续使用 SpectrumNG 而不会出现任何问题。
 
 ## <a name="azure-active-geo-replication-accelerates-reporting"></a>Azure 活动异地复制加速报告
 有多个 CSI Software 客户还利用了 Azure 活动异地复制。 使用活动异地复制时，可在相同或不同的数据中心区域中最多配置 4 个可读的辅助数据库。 CSI Software 以两种方式使用活动异地复制：首先，在数据中心中断服务或在无法连接到主数据库时可以使用辅助数据库；其次，辅助数据库是可读取的，并且可用于卸载只读工作负荷，例如报告作业。 某些 CSI Software 客户使用这种优点来加速报告工作流。
@@ -96,5 +94,4 @@ Azure SQL 数据库不仅为 SpectrumNG 客户带来了好处，让他们享有�
 * 有关 Web 角色和辅助角色的详细信息，请参阅[辅助角色](../fundamentals-introduction-to-azure.md#compute)。    
 * 有关 Azure 服务总线的详细信息，请参阅 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)。
 * 有关自动缩放的详细信息，请参阅[缩放云服务](../cloud-services/cloud-services-how-to-scale.md)。
-
 

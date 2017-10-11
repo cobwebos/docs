@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 10f7b8f20cc41a5ebb1b1376e2bf17be02600ae4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-insights-from-azure-security-center-data-with-power-bi"></a>使用 Power BI 从 Azure 安全中心数据获得见解
 Azure 安全中心的 [Power BI 仪表板](http://aka.ms/azure-security-center-power-bi) 允许用户从包括移动设备在内的任何位置查看、分析和筛选建议和安全警报。 使用 Power BI 仪表板揭示趋势和攻击模式 - 按资源或源 IP 地址查看安全警告，按资源或时间查看未处理的安全风险。
@@ -43,10 +42,10 @@ Azure 安全中心仪表板还可用于访问 Power BI 报表。 按照以下步
 4. 对于此示例，请单击“安全见解仪表板”选项。 第一次为安全中心创建 Power BI 仪表板时，系统会提示用户安装内容包。 单击“Power BI 内容包”窗口中的“获取”按钮，如以下屏幕所示：
 
     ![“Azure 安全中心安全见解”仪表板](./media/security-center-powerbi/security-center-powerbi-fig1-new3.png)
-5. 随即显示“连接到 Azure 安全中心安全见解”窗口。 确保“身份验证”方法为“oAuth2”（如下所示），然后单击“登录”按钮。
+5. 随即显示“连接到 Azure 安全中心安全见解”窗口。 确保“身份验证”方法为“oAuth2”（如下所示），并单击“登录”按钮。
 
     ![身份验证](./media/security-center-powerbi/security-center-powerbi-fig1-new4.png)
-6. 系统可能会要求用户重新使用 Azure 凭据进行身份验证。 身份验证完成后就会创建仪表板。 创建仪表板以后，将会显示一个报表，其结构类似于以下屏幕中显示的结构：
+6. 系统可能会要求用户重新使用 Azure 凭据进行身份验证。 身份验证完成后就会创建仪表板。 创建仪表板以后，会显示一个报表，其结构类似于以下屏幕中显示的结构：
 
     ![Power BI 仪表板](./media/security-center-powerbi/security-center-powerbi-fig1-new5.png)
 
@@ -77,7 +76,7 @@ Azure 安全中心链接可将用户重定向到 Azure 门户。 可以通过图
 >
 >
 
-“一段时间内的警报数”、“受攻击的资源”和“攻击者 IP”磁贴对于单击操作具有类似的输出。 This happens because the report aggregates information regarding all those three variables and calls it **Resources under Attack** as shown in the following screen:
+“一段时间内的警报数”、“受攻击的资源”和“攻击者 IP”磁贴对于单击操作具有类似的输出。 这是因为报表汇总有关所有这些三个变量的信息，并调用它**下攻击资源**下面的屏幕中所示：
 
 ![受攻击的资源](./media/security-center-powerbi/security-center-powerbi-fig1-new7.png)
 
@@ -97,7 +96,7 @@ Azure 安全中心链接可将用户重定向到 Azure 门户。 可以通过图
    >
    >
 2. 就本示例来说，请单击“Azure 安全中心策略管理”磁贴中的“获取”。
-3. 在“连接到 Azure 安全中心策略管理”窗口中，确保选择“身份验证方法”下拉列表中的“oAuth2”（如下所示），然后单击“登录”按钮。
+3. 在“连接到 Azure 安全中心策略管理”窗口中，确保选择“身份验证方法”下拉列表中的“oAuth2”（如下所示），并单击“登录”按钮。
 
     ![“策略管理”窗口](./media/security-center-powerbi/security-center-powerbi-fig1-new8.png)
 4. 系统会将用户重定向到身份验证页，用户应在其中键入用来连接到 Azure 安全中心的凭据。 身份验证过程完成后，Power BI 就会开始导入生成报表所需的数据。 此时可能会在浏览器的右角看到以下消息：
@@ -120,4 +119,3 @@ Azure 安全中心链接可将用户重定向到 Azure 门户。 可以通过图
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报）- 了解如何管理和响应安全警报
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
-

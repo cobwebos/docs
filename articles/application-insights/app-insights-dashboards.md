@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 27ab2084cdb6506cbb807fc9c35b0e67630ad85f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.openlocfilehash: 9987f04e7e71df5fe10c8bc209a390cb940ec4f2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
 [在项目中设置 Application Insights](app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
@@ -165,4 +164,3 @@ ms.lasthandoff: 08/25/2017
 | [指标资源管理器](app-insights-metrics-explorer.md)<br/>筛选器和分段指标 |![搜索示例](./media/app-insights-dashboards/64.png) |
 | [诊断搜索](app-insights-diagnostic-search.md)<br/>查找和检查事件及其相关事件，以及创建 Bug |![搜索示例](./media/app-insights-dashboards/61.png) |
 | [分析](app-insights-analytics.md)<br/>功能强大的查询语言 |![搜索示例](./media/app-insights-dashboards/63.png) |
-

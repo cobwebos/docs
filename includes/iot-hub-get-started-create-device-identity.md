@@ -6,7 +6,7 @@
 
     `npm install -g iothub-explorer@latest`
 
-1. 然后，运行以下命令登录到中心。 将 `{iot hub connection string}` 替换为前面复制的 IoT 中心连接字符串：
+1. 然后，运行以下命令以登录到你的中心。 将 `{iot hub connection string}` 替换为前面复制的 IoT 中心连接字符串：
 
     `iothub-explorer login "{iot hub connection string}"`
 

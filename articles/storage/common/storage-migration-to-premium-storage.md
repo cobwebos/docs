@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: ca893f87b155a92c457e3bf6d9d39aaf86bf5fb3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>迁移到 Azure 高级存储（非托管磁盘）
 
@@ -43,7 +42,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 完成整个迁移过程可能需要在执行本指南中提供的步骤前后执行其他操作。 示例包括配置虚拟网络或终结点，或在应用程序本身中进行代码更改，这可能要求应用程序一段时间内处于停用状态。 这些操作对于每个应用程序都是唯一的，应该随本指南中提供的步骤一起来完成这些操作，以便尽可能无缝地进行到高级存储的完全转换。
 
-## <a name="plan-the-migration-to-premium-storage"></a>计划迁移到高级存储
+## <a name="plan-the-migration-to-premium-storage"></a>迁移到高级存储的计划
 通过本节，可确保用户已准备好遵循本文中的迁移步骤，并帮助用户在 VM 和磁盘类型方面做出最佳决策。
 
 ### <a name="prerequisites"></a>先决条件
@@ -69,7 +68,7 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 根据工作负荷，确定 VM 是否需要附加数据磁盘。 可以将多个持久性数据磁盘附加到 VM。 如有需要，可以跨磁盘条带化，以增加卷的容量与性能。 （请参阅[此处](storage-premium-storage-performance.md#disk-striping)，了解什么是磁盘条带化。）如果使用[存储空间][4]来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 对于 Linux VM，可以使用 mdadm 实用工具来实现同一目的。 有关详细信息，请参阅[在 Linux 上配置软件 RAID](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 一文。
 
 #### <a name="storage-account-scalability-targets"></a>存储帐户的可伸缩性目标
-高级存储帐户除了 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)外还具有以下可伸缩性目标。 如果应用程序需求超过了单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据分布到这些存储帐户中。
+高级存储帐户除了 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)外还具有以下可伸缩性目标。 如果应用程序需求超过了单个存储帐户的可伸缩性目标，则在生成应用程序时请让它使用多个存储帐户，并将数据分布在这些存储帐户中。
 
 | 总帐户容量 | 本地冗余存储帐户的总带宽 |
 |:--- |:--- |
@@ -89,7 +88,7 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 ### <a name="optimization"></a>优化
 [Azure 高级存储：高性能设计](storage-premium-storage-performance.md)提供了使用 Azure 高级存储构建高性能应用程序的准则。 可结合使用这些指导和适用于应用程序所使用的技术的性能最佳做法。
 
-## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>准备虚拟硬盘 (VHD) 并将其复制到高级存储
+## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>准备并复制虚拟硬盘 (VHD) 到高级存储
 下面的部分提供有关准备 VM 中的 VHD 和将 VHD 复制到 Azure 存储的准则。
 
 * [方案 1：“将现有 Azure VM 迁移到 Azure 高级存储。”](#scenario1)
@@ -105,14 +104,14 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 > [!NOTE]
 > 如果选择 AzCopy 同步复制选项，为了获得最佳性能，请从与目标存储帐户位于同一区域的 Azure VM 运行上述工具之一。 如果从其他区域中的 Azure VM 复制 VHD，性能可能会下降。
 >
-> 要在带宽有限的情况下复制大量数据，可以考虑[使用 Azure 导入/导出服务将数据传输到 Blob 存储中](../storage-import-export-service.md)；这样一来，可以通过将硬盘驱动器运送到 Azure 数据中心来传输数据。 使用 Azure 导入/导出服务可以仅将数据复制到标准存储帐户。 当数据传入标准存储帐户后，可以使用[复制 Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) 或 AzCopy 将数据传输到高级存储帐户。
+> 若要在带宽有限的情况下复制大量数据，可以考虑[使用 Azure 导入/导出服务将数据传输到 Blob 存储中](../storage-import-export-service.md)；这样一来，可以通过将硬盘驱动器运送到 Azure 数据中心来传输数据。 使用 Azure 导入/导出服务可以仅将数据复制到标准存储帐户。 当数据传入标准存储帐户后，可以使用[复制 Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) 或 AzCopy 将数据传输到高级存储帐户。
 >
 > 请注意，Microsoft Azure 仅支持固定大小的 VHD 文件。 不支持 VHDX 文件或动态 VHD。 如果有动态 VHD，可以使用 [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) cmdlet 将其转换为固定大小。
 >
 >
 
-### <a name="scenario1"></a>情景 1：“要将现有 Azure VM 迁移到 Azure 高级存储。”
-如果要迁移现有 Azure VM，请停止运行 VM，按每个所需 VHD 类型准备 VHD，并使用 AzCopy 或 PowerShell 复制 VHD。
+### <a name="scenario1"></a>方案 1：“我要将现有 Azure VM 迁移到 Azure 高级存储。”
+如果要迁移现有的 Azure VM，请停止运行 VM，根据所需的 VHD 类型准备 VHD，并使用 AzCopy 或 PowerShell 复制 VHD。
 
 VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存在停机时间。
 
@@ -158,12 +157,12 @@ VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存�
 创建用于维护 VHD 的存储帐户。 规划 VHD 的存储位置时，应注意以下几点：
 
 * 目标高级存储帐户。
-* 存储帐户位置必须与会在最后阶段创建的支持高级存储的 Azure VM 相同。 可以复制到新的存储帐户，也可以根据需求计划使用同一存储帐户。
+* 存储帐户位置必须与最后阶段创建的支持高级存储的 Azure VM 相同。 可以复制到新的存储帐户，也可以根据需求计划使用同一存储帐户。
 * 为下一阶段复制并保存目标存储帐户的存储帐户密钥。
 
 对于数据磁盘，可以选择在标准存储帐户中保留一些数据磁盘（例如，具有冷却存储功能的磁盘），但我们强烈建议迁移所有数据，以便生产工作负荷使用高级存储。
 
-#### <a name="copy-vhd-with-azcopy-or-powershell"></a>步骤 3. 使用 AzCopy 或 PowerShell 复制 VHD
+#### <a name="copy-vhd-with-azcopy-or-powershell"></a>步骤 3。 使用 AzCopy 或 PowerShell 复制 VHD
 处理这两个选项中的任意一个时都需找到容器路径和存储帐户密钥。 可在“Azure 门户” > “存储”中找到容器路径和存储帐户密钥。 容器 URL 类似于“https://myaccount.blob.core.windows.net/mycontainer/”。
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>选项 1：使用 AzCopy 复制 VHD（异步复制）
@@ -218,8 +217,8 @@ C:\PS> $destinationContext = New-AzureStorageContext  –StorageAccountName "des
 C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>情景 2：“要从其他平台将 VM 迁移到 Azure 高级存储。”
-如果要将 VHD 从非 Azure 云存储迁移到 Azure，必须首先将 VHD 导出到本地目录中。 准备好存储 VHD 的本地目录的完整源路径，然后使用 AzCopy 将其上传至 Azure 存储。
+### <a name="scenario2"></a>方案 2：“我要将其他平台中的 VM 迁移到 Azure 高级存储。”
+如果要将 VHD 从非 Azure 云存储迁移到 Azure，必须首先将 VHD 导出到本地目录中。 获取就地存储 VHD 的本地目录的完整源路径，并使用 AzCopy 将其上传到 Azure 存储。
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>步骤 1。 将 VHD 导出到本地目录
 ##### <a name="copy-a-vhd-from-aws"></a>从 AWS 复制 VHD
@@ -244,7 +243,7 @@ C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceCont
 创建用于维护 VHD 的存储帐户。 规划 VHD 的存储位置时，应注意以下几点：
 
 * 目标存储帐户可以是标准或高级存储，具体取决于应用程序需求。
-* 存储帐户区域必须与会在最后阶段创建的支持高级存储的 Azure VM 相同。 可以复制到新的存储帐户，也可以根据需求计划使用同一存储帐户。
+* 存储帐户区域必须与最后阶段创建的支持高级存储的 Azure VM 相同。 可以复制到新的存储帐户，也可以根据需求计划使用同一存储帐户。
 * 为下一阶段复制并保存目标存储帐户的存储帐户密钥。
 
 强烈建议迁移所有数据，以便生产工作负荷使用高级存储。
@@ -303,7 +302,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 >
 
 ## <a name="create-azure-virtual-machine-using-premium-storage"></a>使用高级存储创建 Azure VM
-将 VHD 上传或复制到所需的存储帐户后，请按照本部分中的说明将 VHD 注册为 OS 映像或 OS 磁盘（具体取决于方案），然后从中创建 VM 实例。 在创建后，可以将数据磁盘 VHD 附加到 VM。
+将 VHD 上传或复制到所需的存储帐户后，请按照本部分中的说明将 VHD 注册为 OS 映像或 OS 磁盘（具体取决于方案），并从中创建 VM 实例。 在创建后，可以将数据磁盘 VHD 附加到 VM。
 本部分末尾提供了一个示例迁移脚本。 该示例脚本并不适用于所有方案。 可能需要更新该脚本以与特定方案相匹配。 要查看此脚本是否适用于方案，请参阅下面的[示例迁移脚本](#a-sample-migration-script)。
 
 ### <a name="checklist"></a>清单
@@ -311,7 +310,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 2. 确保高级存储在要迁移到的区域中可用。
 3. 决定要使用的新 VM 系列。 其应支持高级存储，并且其大小应具体取决于区域中的可用性和用户的需求。
 4. 决定要使用的确切 VM 大小。 VM 大小需要足够大以支持所拥有的数据磁盘数。 例如 如果有 4 个数据磁盘，则 VM 必须具有 2 个或更多核心。 此外，还应考虑处理能力、内存和网络带宽需求。
-5. 在目标区域中创建高级存储帐户。 这是用于新 VM 的帐户。
+5. 在目标区域中创建高级存储帐户。 这是要用于新 VM 的帐户。
 6. 手边具备当前 VM 详细信息，包括磁盘和对应的 VHD blob 的列表。
 
 让应用程序做好停机准备。 为了执行净迁移，必须停止当前系统中的所有处理。 只有这样才能使其处于一致状态，可以将该状态迁移到新的平台。 停机持续时间将取决于要迁移的磁盘中的数据量。
@@ -322,7 +321,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 >
 
 ### <a name="register-your-vhd"></a>注册 VHD
-要从 OS VHD 创建 VM 或将数据磁盘附加到新的 VM，必须先对其进行注册。 请按照以下步骤进行操作，具体取决于 VHD 方案。
+要从 OS VHD 创建 VM 或将数据磁盘附加到新的 VM，必须先注册它们。 请按照以下步骤进行操作，具体取决于 VHD 方案。
 
 #### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>用于创建多个 Azure VM 实例的通用操作系统 VHD
 将通用 OS 映像 VHD 上传到存储帐户后，将其注册为 **Azure VM 映像**，以便可以从中创建一个或多个 VM 实例。 使用以下 PowerShell cmdlet 将 VHD 注册为 Azure VM OS 映像。 提供 VHD 已复制到的完整容器 URL。
@@ -436,9 +435,9 @@ Update-AzureVM  -VM $vm
 假设：
 
 * 要创建经典 Azure VM。
-* 源 OS 磁盘和源数据磁盘处于同一个存储帐户和同一个容器中。 如果 OS 磁盘和数据磁盘不在同一位置，可以使用 AzCopy 或 Azure PowerShell 在存储帐户和容器间复制 VHD。 请参阅上一步：[使用 AzCopy 或 PowerShell 复制 VHD](#copy-vhd-with-azcopy-or-powershell)。 另一个选择是编辑此脚本来满足方案，但建议使用 AzCopy 或 PowerShell，因为这样更快更容易。
+* 源 OS 磁盘和源数据磁盘处于同一个存储帐户和同一个容器中。 如果 OS 磁盘和数据磁盘不在同一位置，可以使用 AzCopy 或 Azure PowerShell 在存储帐户和容器间复制 VHD。 请参阅上一步：[使用 AzCopy 或 PowerShell 复制 VHD](#copy-vhd-with-azcopy-or-powershell)。 还可以编辑此脚本来满足方案，但建议使用 AzCopy 或 PowerShell，因为后两种更便捷、速度更快。
 
-下面提供了自动化脚本。 将文本替换为信息，然后更新脚本，使其适用于特定方案。
+下面提供了自动化脚本。 将文本替换为用户信息，并更新脚本以匹配特定方案。
 
 > [!NOTE]
 > 使用现有脚本不会保留源 VM 的网络配置。 需要在已迁移的 VM 上重新配置网络设置。
@@ -774,4 +773,3 @@ Update-AzureVM  -VM $vm
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 [4]: http://technet.microsoft.com/library/hh831739.aspx
-

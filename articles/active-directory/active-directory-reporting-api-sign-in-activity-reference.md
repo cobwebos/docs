@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
 ms.openlocfilehash: d83f1a899ba38dab2c1c1661adede87db6f88c20
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory 登录活动报告 API 参考
 本主题包含在有关 Azure Active Directory 报告 API 的主题集合中。  
@@ -38,7 +37,7 @@ Azure AD 报告提供一个用于通过代码或相关工具访问登录活动�
 * 全局管理员
 * 有权访问 API 的任何应用（仅可根据全局管理员的权限设置应用授权）
 
-若要为应用程序配置访问安全 API（如登录事件）的权限，请使用以下 PowerShell 将应用程序服务主体添加到“安全读者”角色中
+要为应用程序配置访问安全 API（如登录事件）的权限，请使用以下 PowerShell 将应用程序服务主体添加到“安全读者”角色中
 
 ```PowerShell
 Connect-MsolService
@@ -54,7 +53,7 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 * 完成了[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)。 
 
 ## <a name="accessing-the-api"></a>访问 API
-你可以通过 [Graph 浏览器](https://graphexplorer2.cloudapp.net) 访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
+可以通过“Graph 浏览器”[](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
 
 本主题着重介绍了 Graph 浏览器。 有关 PowerShell 示例，请参阅此 [PowerShell 脚本](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script)。
 
@@ -68,20 +67,20 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 由于数据量的原因，此 API 限制为一百万条返回的记录。 
 
 此调用批量返回数据。 每一批中最多有 1000 条记录。  
-若要获取下一批记录，请使用“下一个”链接。 从第一组返回的记录中获取 [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) 信息。 跳过标记将在结果集的末尾。  
+若要获取下一批记录，请使用“下一个”链接。 从第一组返回的记录中获取 [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) 信息。 跳过标记会在结果集的末尾。  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
 
 ## <a name="supported-filters"></a>支持的筛选器
-你可以缩小显示在筛选器窗体中的 API 调用所返回记录的范围。  
+可以缩小显示在筛选器窗体中的 API 调用所返回记录的范围。  
 对于与登录 API 相关的数据，支持以下筛选器：
 
-* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果你想要返回数以千计的对象，则不应使用此筛选器。  
-* **$filter=\<筛选语句\>** - 根据受支持的筛选字段，指定你所关注的记录类型
+* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果想要返回数以千计的对象，则不应使用此筛选器。  
+* **$filter =\<筛选语句\>** -若要根据支持的筛选器字段中指定你关注的记录的类型
 
 ## <a name="supported-filter-fields-and-operators"></a>支持的筛选字段和运算符
-若要指定你所关注的记录类型，可生成包含以下一个或一组筛选字段的筛选语句：
+要指定你所关注的记录类型，可生成包含以下一个或一组筛选字段的筛选语句：
 
 * [signinDateTime](#signindatetime) - 定义日期或日期范围
 * [userId](#userid) - 根据用户的 ID 定义特定的用户。
@@ -190,5 +189,4 @@ loginStatus 有两个选项：0 - 成功，1 - 失败
 ## <a name="next-steps"></a>后续步骤
 * 想要查看筛选的登录活动的示例？ 请查看 [Azure Active Directory 登录活动报告 API 示例](active-directory-reporting-api-sign-in-activity-samples.md)。
 * 是否要了解有关 Azure AD 报告 API 的详细信息？ 请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
-
 

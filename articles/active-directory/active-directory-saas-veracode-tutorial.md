@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: d49349c5ae08e67d91e30967f3644623211823ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>教程：Azure Active Directory 与 Veracode 集成
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/28/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Veracode 测试用户](#create-a-veracode-test-user)** - 在 Veracode 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+3. **[创建一个 Veracode 测试用户](#create-a-veracode-test-user)** -若要链接到用户的 Azure AD 表示的 Veracode 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -109,7 +108,7 @@ ms.lasthandoff: 07/28/2017
 
     ![配置单一登录](./media/active-directory-saas-veracode-tutorial/tutorial_veracode_url.png)
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-veracode-tutorial/tutorial_veracode_certificate.png) 
 
@@ -285,5 +284,4 @@ ms.lasthandoff: 07/28/2017
 [201]: ./media/active-directory-saas-veracode-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-veracode-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-veracode-tutorial/tutorial_general_203.png
-
 

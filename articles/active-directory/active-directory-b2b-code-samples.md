@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2B 协作代码和 PowerShell 示例 | Microsoft 文档"
+title: "Azure Active Directory B2B 协作代码和 PowerShell 示例 |Microsoft 文档"
 description: "有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例"
 services: active-directory
 documentationcenter: 
@@ -15,22 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 008227496dc7d685b1ce7d178a87640037a23500
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
-
+ms.openlocfilehash: cae69f57627b3058bf96c3d1eea7dadc81147153
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B 协作代码和 PowerShell 示例
 
 ## <a name="powershell-example"></a>PowerShell 示例
-可通过已存储在 .CSV 文件中的电子邮件地址批量邀请外部用户加入组织。
+你可以大容量的邀请外部用户组织到从存储中的电子邮件地址。CSV 文件。
 
-1. 准备 .CSV 文件：创建一个新的 CSV 文件，并将其命名为 invitations.csv。 在此示例中，该文件保存在 C:\data 中，并包含以下信息：
+1. 准备。CSV 文件创建新的 CSV 文件，并将它命名 invitations.csv。 在此示例中，该文件保存在 C:\data，并包含以下信息：
   
   Name                  |  InvitedUserEmailAddress
   --------------------- | --------------------------
@@ -38,9 +34,9 @@ ms.lasthandoff: 04/13/2017
   Outlook B2B 被邀请者   | b2binvitee@outlook.com
 
 
-2. 获取最新的 Azure AD PowerShell：若要使用新的 cmdlet，必须安装更新的 Azure AD PowerShell 模块，可以从 [Powershell 模块发布页](https://www.powershellgallery.com/packages/AzureADPreview)下载该模块
+2. 获取最新的 Azure AD PowerShell 以使用新的 cmdlet，则必须安装的更新的 Azure AD PowerShell 模块，你可以从下载[Powershell 模块的发布页](https://www.powershellgallery.com/packages/AzureADPreview)
 
-3. 登录到租户
+3. 登录到你的租户
 
     ```
     $cred = Get-Credential
@@ -56,13 +52,13 @@ ms.lasthandoff: 04/13/2017
   foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
   ```
 
-此 cmdlet 会将邀请发送到 invitations.csv 中的电子邮件地址。 此 cmdlet 的其他功能包括：
-- 电子邮件中的自定义文本
+此 cmdlet 在 invitations.csv 发送到电子邮件地址的邀请。 此 cmdlet 的其他功能包括：
+- 自定义的电子邮件中的文本
 - 包括受邀用户的显示名称
-- 将邮件发送给抄送人或完全禁止电子邮件
+- 将消息发送到 CCs 或完全禁止显示电子邮件
 
 ## <a name="code-sample"></a>代码示例
-下面将演示如何调用邀请 API，在“仅应用”模式下，获取要邀请 B2B 用户加入的资源的兑换 URL。 目标是发送自定义邀请电子邮件。 可使用 HTTP 客户端撰写电子邮件，以便自定义其外观并通过图形 API 发送。
+此处我们将演示如何调用邀请 API，在"仅应用程序"模式下，若要兑换 URL 获取要向其邀请 B2B 用户资源。 目标是发送自定义的邀请电子邮件。 可由 HTTP 客户端，该电子邮件用户可以自定义其外观，通过 Graph API 发送它。
 
 ```
 namespace SampleInviteApp
@@ -237,16 +233,15 @@ namespace SampleInviteApp
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+浏览我们在 Azure AD B2B 协作的其他文章：
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [B2B 协作用户属性](active-directory-b2b-user-properties.md)
 * [向角色添加 B2B 协作用户](active-directory-b2b-add-guest-to-role.md)
 * [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
 * [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
-* [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
-* [B2B 协作用户令牌](active-directory-b2b-user-token.md)
+* [配置 B2B 协作的 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
+* [B2B 协作的用户令牌](active-directory-b2b-user-token.md)
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
-
+* [B2B 协作当前限制](active-directory-b2b-current-limitations.md)

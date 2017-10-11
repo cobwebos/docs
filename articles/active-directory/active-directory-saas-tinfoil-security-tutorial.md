@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 614e4de3335574f4b56c7d641af4fcfafdb17d12
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>教程：Azure Active Directory 与 TINFOIL SECURITY 集成
 
@@ -86,7 +85,7 @@ ms.lasthandoff: 07/20/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TINFOIL SECURITY 测试用户](#create-a-tinfoil-security-test-user)** - 以在 TINFOIL SECURITY 中拥有对应的 Britta Simon 用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+3. **[创建一个 TINFOIL SECURITY 测试用户](#create-a-tinfoil-security-test-user)** -若要链接到用户的 Azure AD 表示的 TINFOIL SECURITY 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -121,13 +120,13 @@ ms.lasthandoff: 07/20/2017
     | ------------------- | -------------------- |
     | 帐户 ID | UXXXXXXXXXXXXX |
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加用户属性”。
+    a. 单击“添加用户属性”。
     
     ![添加属性](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_attribute.png "属性")
     
     ![添加属性](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_addatt.png "属性")
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“属性名称”文本框中，键入“accountid”。
+    b. 在“属性名称”文本框中，键入“accountid”。
     
     c. 在“属性值”文本框中，粘贴稍后将在教程中获取的帐户 ID 值。
     
@@ -155,7 +154,7 @@ ms.lasthandoff: 07/20/2017
    
     ![单一登录](./media/active-directory-saas-tinfoil-security-tutorial/ic798973.png "单一登录")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“启用 SAML”。
+    a. 选择“启用 SAML”。
    
     b.保留“数据库类型”设置，即设置为“共享”。 单击“手动配置”。
    
@@ -194,7 +193,7 @@ ms.lasthandoff: 07/20/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -225,7 +224,7 @@ ms.lasthandoff: 07/20/2017
 
 **若要将 Britta Simon 分配到 TINFOIL SECURITY，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -273,5 +272,4 @@ ms.lasthandoff: 07/20/2017
 [201]: ./media/active-directory-saas-tinfoil-security-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tinfoil-security-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tinfoil-security-tutorial/tutorial_general_203.png
-
 

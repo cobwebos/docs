@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: 44ff168599e9078506e1afdd0f1dc4657ef0964d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C：使用 OAuth 2.0 隐式流的单页应用登录
 
@@ -51,7 +49,7 @@ Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了�
 ## <a name="send-authentication-requests"></a>发送身份验证请求
 当 Web 应用需要对用户进行身份验证并执行策略时，它会将用户定向到 `/authorize` 终结点。 这是流程的交互部分，在此部分中，用户会根据策略执行一些操作。 用户会从 Azure AD 终结点获取 ID 令牌。
 
-在此请求中，客户端指示在 `scope` 参数中需要从用户处获取的权限。 在 `p` 参数中，它指示要执行的策略。 下面有三个示例（为方便阅读，提供了换行符），每个示例都使用不同的策略。 若要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。
+在此请求中，客户端指示在 `scope` 参数中需要从用户处获取的权限。 在 `p` 参数中，它指示要执行的策略。 下面有三个示例（为方便阅读，提供了换行符），每个示例都使用不同的策略。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。
 
 ### <a name="use-a-sign-in-policy"></a>使用登录策略
 ```
@@ -104,7 +102,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | p |必选 |要执行的策略。 它是在 Azure AD B2C 租户中创建的策略的名称。 策略名称值应以“b2c\_1\_”开头。 有关详细信息，请参阅 [Azure AD B2C 内置策略](active-directory-b2c-reference-policies.md)。 |
 | prompt |可选 |需要的用户交互类型。 目前唯一有效的值是 `login`。 这会强制用户在该请求上输入其凭据。 单一登录不会生效。 |
 
-此时，要求用户完成策略的工作流。 这可能涉及用户输入其用户名和密码、使用社交标识登录、注册目录，或任何其他若干步骤。 用户操作取决于策略是如何定义的。
+此时，要求用户完成策略的工作流。 这可能涉及用户输入其用户名和密码、使用社交标识登录、注册目录，或任何其他步骤。 用户操作取决于策略是如何定义的。
 
 用户完成策略后，Azure AD 会在你用于 `redirect_uri` 的值处将响应返回到应用。 它使用在 `response_mode` 参数中指定的方法。 对于每种用户操作情况，响应完全相同，与执行的策略无关。
 
@@ -126,7 +124,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | access_token |应用请求的访问令牌。  访问令牌不得进行解码或检查， 可以被视为不透明的字符串。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
 | expires_in |访问令牌有效的时间长度（以秒为单位）。 |
-| 作用域 |令牌有效的范围。 还可使用范围来缓存令牌，以供以后使用。 |
+| 作用域 |令牌的有效范围。 还可使用范围来缓存令牌，以供以后使用。 |
 | id_token |应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。 |
 | state |如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
 
@@ -149,7 +147,7 @@ error=access_denied
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 收到 ID 令牌并不表示可以对用户进行身份验证。 还必须根据应用的要求，验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。
 
-许多开放源代码库都可用于验证 JWT，具体取决于你的首选语言。 请考虑浏览可用的开放源代码库，而不是实现自己的验证逻辑。 可以使用本文中的信息了解如何正确使用这些库。
+许多开放源代码库是可用于验证 Jwt，具体取决于你希望使用的语言。 请考虑浏览可用的开放源代码库，而不是实现自己的验证逻辑。 可以使用本文中的信息了解如何正确使用这些库。
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终结点在运行时提取 Azure AD B2C 的相关信息。 此信息包括终结点、令牌内容和令牌签名密钥。 Azure AD B2C 租户中的每个策略都有一个 JSON 元数据文档。 例如，fabrikamb2c.onmicrosoft.com 租户中的 b2c_1_sign_in 策略的元数据文档位于以下位置：
 
@@ -170,7 +168,7 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终�
 * 验证 `aud` 声明以确保已为应用颁发 ID 令牌。 其值应为应用的应用程序 ID。
 * 验证 `iat` 和 `exp` 声明以确保 ID 令牌未过期。
 
-其他一些需要执行的验证在 [OpenID Connect 核心规范](http://openid.net/specs/openid-connect-core-1_0.html)中有详细说明。 根据你的情况，你可能还希望验证其他声明。 一些常见的验证包括：
+其他一些需要执行的验证在 [OpenID Connect 核心规范](http://openid.net/specs/openid-connect-core-1_0.html)中有详细说明。 根据情况，可能还希望验证其他声明。 一些常见的验证包括：
 
 * 确保用户或组织已注册应用。
 * 确保用户拥有正确的授权和权限。
@@ -289,5 +287,4 @@ p=b2c_1_sign_in
 
 * [使用 Node.js 创建单页应用](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
 * [使用 .NET 创建单页应用](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-
 

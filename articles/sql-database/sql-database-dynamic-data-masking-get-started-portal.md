@@ -6,7 +6,7 @@ documentationcenter:
 author: ronitr
 manager: jhubbard
 editor: 
-ms.assetid: 2
+ms.assetid: "2"
 ms.service: sql-database
 ms.custom: security
 ms.devlang: NA
@@ -15,13 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 11/22/2016
 ms.author: ronitr; ronmat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07913359addaa49fe8d408a8e363f554419e4de2
-ms.openlocfilehash: 16db41c83ca5c582aca7581ae9b6a03a3d99ab15
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
-
+ms.openlocfilehash: 15184e14d4e1e23b56126bbf9f972c1619dcba80
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure 门户的 SQL 数据库动态数据掩码入门
 
@@ -30,13 +28,13 @@ ms.lasthandoff: 02/16/2017
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>使用 Azure 门户为数据库设置动态数据屏蔽
 1. 启动 Azure 门户 [https://portal.azure.com](https://portal.azure.com)。
-2. 导航到你要屏蔽的敏感数据所在数据库的设置边栏选项卡。
+2. 导航到要屏蔽的敏感数据所在数据库的设置边栏选项卡。
 3. 单击“动态数据屏蔽”磁贴，这会启动“动态数据屏蔽”配置边栏选项卡。
    
    * 或者，可以向下滚动到“操作”部分并单击“动态数据屏蔽”。
      
      ![导航窗格](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)<br/><br/>
-4. 在“动态数据屏蔽”配置边栏选项卡中，你可能会看到一些数据库列，建议引擎已将这些列标记为需要进行屏蔽。 若要接受这些建议，可直接针对一个或多个列单击“添加屏蔽”，然后系统就会根据该列的默认类型来创建屏蔽。 你可以更改屏蔽函数，只需单击屏蔽规则，然后将屏蔽字段格式编辑成你所选择的其他格式即可。 请确保单击“保存”以保存你的设置。
+4. 在“动态数据掩码”配置边栏选项卡中，可能会看到一些数据库列，建议引擎已将这些列标记为需要进行掩码。 要接受这些建议，可直接针对一个或多个列单击“添加屏蔽”，系统就会根据该列的默认类型来创建屏蔽。 用户可以更改掩码函数，只需单击掩码规则，并将掩码字段格式编辑成用户所选择的其他格式即可。 请确保单击“保存”以保存设置。
    
     ![导航窗格](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)<br/><br/>
 5. 若要为数据库中的任意列添加屏蔽，请在“动态数据屏蔽”配置边栏选项卡的顶部单击“添加屏蔽”以打开“添加屏蔽规则”配置边栏选项卡

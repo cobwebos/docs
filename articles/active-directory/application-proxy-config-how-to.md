@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 9abec188a5677942fd9eb9192c4067d2851a1969
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: c8f98536048a85ebb3f061d840457130579196d9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-configure-an-application-proxy-application"></a>如何配置应用程序代理应用程序
 
 本文帮助了解如何在 Azure AD 内配置应用程序代理应用程序，以将本地应用程序公开到云。
@@ -37,7 +35,7 @@ ms.lasthandoff: 04/18/2017
 
 如果按照[使用 Azure AD 应用程序代理发布应用程序](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)文档中的步骤操作，但在创建应用程序时出错，请参阅错误详细信息以获取有关如何修复应用程序的信息和建议。 大多数的错误消息都包含建议的修复方法。 为避免常见的错误，请验证：
 
--   你是有权创建应用程序代理应用程序的管理员
+-   是有权创建应用程序代理应用程序的管理员
 
 -   内部 URL 唯一
 
@@ -75,4 +73,3 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
-

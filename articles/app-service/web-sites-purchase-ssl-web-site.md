@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: fb38555f1f299352f06deae1ca231895163068e5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: 191dd7240ad15b4936a72bc27a2d0162350f3afb
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -92,7 +91,7 @@ SSL 证书购买过程完成之后，需要打开“[应用服务证书](https:/
 ## <a name="step-5---assign-certificate-to-app-service-app"></a>步骤 5 - 将证书分配到应用服务应用
 
 > [!NOTE]
-> 在执行本部分中的这些步骤之前，必须将某个自定义域名与你的应用相关联。 有关详细信息，请参阅 **[为 Web 应用配置自定义域名](app-service-web-tutorial-custom-domain.md)**。
+> 在执行本部分中的这些步骤之前，必须将某个自定义域名与应用相关联。 有关详细信息，请参阅 **[为 Web 应用配置自定义域名](app-service-web-tutorial-custom-domain.md)**。
 >
 
 在 [Azure 门户](https://portal.azure.com/)中，单击页面左侧的“应用服务”选项。
@@ -105,7 +104,7 @@ SSL 证书购买过程完成之后，需要打开“[应用服务证书](https:/
 
 ![插入导入证书的图像](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-在“SSL 绑定”部分中单击“添加绑定”，使用下拉菜单选择要使用 SSL 保护的域名，然后选择要使用的证书。 还可以选择是要使用**[服务器名称指示 (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
+在“SSL 绑定”部分中单击“添加绑定”，使用下拉菜单选择要使用 SSL 保护的域名，并选择要使用的证书。 还可以选择是要使用**[服务器名称指示 (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
 
 ![插入 SSL 绑定的图像](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
@@ -122,11 +121,11 @@ SSL 证书购买过程完成之后，需要打开“[应用服务证书](https:/
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[主要](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "将自定义 SSL 证书绑定到 Web 应用")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "将自定义 SSL 证书绑定到 Web 应用")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[主要](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "将自定义 SSL 证书绑定到 Web 应用")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "将自定义 SSL 证书绑定到 Web 应用")]
 
 ## <a name="advanced"></a>高级
 
@@ -137,7 +136,7 @@ SSL 证书购买过程完成之后，需要打开“[应用服务证书](https:/
 #### <a name="mail-verification"></a>邮件验证
 
 验证电子邮件已发送到与此自定义域关联的电子邮件地址。
-若要完成电子邮件验证步骤，请打开电子邮件，然后单击验证链接。
+要完成电子邮件验证步骤，请打开电子邮件，并单击验证链接。
 
 ![插入电子邮件验证图像](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
 
@@ -170,15 +169,15 @@ SSL 证书购买过程完成之后，需要打开“[应用服务证书](https:/
 
 ### <a name="assign-certificate-to-app-service-app"></a>将证书分配到应用服务应用
 
-如果选择了“基于 IP 的 SSL”，并且你的自定义域是使用 A 记录配置的，则必须执行以下附加步骤：
+如果选择了“基于 IP 的 SSL”，并且自定义域是使用 A 记录配置的，则必须执行以下附加步骤：
 
-配置基于 IP 的 SSL 绑定后，将会向你的应用分配专用 IP 地址。 可以在“自定义域”页面中应用设置的下面（紧靠在“主机名”部分的上方）找到此 IP 地址。 此 IP 地址作为“外部 IP 地址”列出
+配置基于 IP 的 SSL 绑定后，会向应用分配专用 IP 地址。 可以在“自定义域”页面中应用设置的下面（紧靠在“主机名”部分的上方）找到此 IP 地址。 此 IP 地址作为“外部 IP 地址”列出
 
 ![插入 IP SSL 的图像](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
 
 请注意，此 IP 地址与先前配置域的 A 记录时所用的虚拟 IP 地址不同。 若要配置为使用基于 SNI 的 SSL，或未配置为使用 SSL，则不会为此条目列出任何地址。
 
-通过使用您的域名注册机构所提供的工具，修改您的自定义域名的 A 记录以指向上一步中的 IP 地址。
+通过使用域名注册机构所提供的工具，修改自定义域名的 A 记录以指向上一步中的 IP 地址。
 
 ## <a name="rekey-and-sync-the-certificate"></a>重新生成密钥并同步证书
 

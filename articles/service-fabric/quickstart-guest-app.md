@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/13/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 3601b73872bbea4b4e5324382eb97b7384ca6e13
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
 本快速入门教程帮助你将现有的应用程序（本示例中为 Node.js）部署到在 Azure 上运行的 Service Fabric 群集。
@@ -55,7 +53,7 @@ ms.lasthandoff: 09/20/2017
 
 | 设置                   | 值 |
 | ------------------------- | ------ |
-| 代码包文件夹       | _&lt;包含 Node.js 应用的文件夹&gt;_ |
+| 代码包文件夹       | _&lt;具有 Node.js 应用程序的文件夹&gt;_ |
 | 代码包行为     | 将文件夹内容复制到项目 |
 | 节目                   | node.exe |
 | 参数                 | server.js |
@@ -76,7 +74,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 用于部署/升级应用程序的 PowerShell 脚本。
 
 * 应用程序定义  
-包括 ApplicationPackageRoot 下的应用程序清单。 关联应用程序参数文件位于 *ApplicationParameters*下，它们定义应用程序并使您可以专门为给定环境对其进行配置。
+包括 ApplicationPackageRoot 下的应用程序清单。 关联应用程序参数文件位于 *ApplicationParameters* 下，它们定义应用程序并使你可以专门为给定环境对其进行配置。
     
 有关服务项目的内容概述，请参阅 [Reliable Services 入门](service-fabric-reliable-services-quick-start.md)。
 

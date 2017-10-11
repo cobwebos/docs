@@ -14,14 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure 上的 SAP HANA（大型实例）的基础结构和连接 
 
 阅读本指南前，请先了解一些定义。 在 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中，我们引入了两类不同的 HANA 大型实例单元，其中包括：
@@ -179,9 +177,9 @@ ms.lasthandoff: 08/12/2017
 定义所有 IP 地址范围并从 Microsoft 获取数据后，可以开始将前面创建的 VNet 连接到 HANA 大型实例。 创建 Azure VNet 后，必须在 VNet 中创建 ExpressRoute 网关，以便将 VNet 链接到与大型实例戳记上的客户租户相连接的 ExpressRoute 线路。
 
 > [!NOTE] 
-> 此步骤可能需要长达 30 分钟才能完成，因为需要在指定的 Azure 订阅中创建新的网关，然后将其连接到指定的 Azure VNet。
+> 此步骤可能需要长达 30 分钟才能完成，因为需要在指定的 Azure 订阅中创建新的网关，并将其连接到指定的 Azure VNet。
 
-如果网关已存在，请检查它是否为 ExpressRoute 网关。 如果不是，则必须删除该网关，然后重新创建 ExpressRoute 网关。 如果已建立 ExpressRoute 网关，请转到下面的“链接 VNet”部分，因为 Azure VNet 已连接到用于建立本地连接的 ExpressRoute 线路。
+如果网关已存在，请检查它是否为 ExpressRoute 网关。 如果不是，则必须删除该网关，并重新创建 ExpressRoute 网关。 如果已建立 ExpressRoute 网关，请转到下面的“链接 VNet”部分，因为 Azure VNet 已连接到用于建立本地连接的 ExpressRoute 线路。
 
 - 使用（新的）[Azure 门户](https://portal.azure.com/)或 PowerShell 创建与 VNet 连接的 ExpressRoute VPN 网关。
   - 如果使用 Azure 门户，请添加新的“虚拟网关”，再选择“ExpressRoute”作为网关类型。
@@ -299,6 +297,5 @@ Azure.com 上有关删除 VNet 的专门指南中所述的过程，就是添加 
 若要删除附加的 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路，请向 Azure 上的 SAP HANA 服务管理部门提出应删除此线路的 Azure 支持请求。 在 Azure 订阅中，可以根据需要删除或保留 VNet。 但是，必须删除 HANA 大型实例 ExpressRoute 线路与链接的 VNet 网关之间的连接。
 
 如果还想要删除某个 VNet，请遵循上一部分中有关删除 VNet 的指导。
-
 
 

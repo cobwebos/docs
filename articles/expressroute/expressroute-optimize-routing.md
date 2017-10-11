@@ -1,6 +1,6 @@
 ---
-title: "优化 ExpressRoute 路由：Azure | Microsoft Docs"
-description: "本页详细说明当 Microsoft 与企业网络之间存在多个 ExpressRoute 连接线路时如何优化路由。"
+title: "优化 ExpressRoute 路由： Azure |Microsoft 文档"
+description: "此页提供有关如何优化路由时你有多个连接 Microsoft 和 corp 网络之间的 ExpressRoute 线路的详细信息。"
 documentationcenter: na
 services: expressroute
 author: charwen
@@ -14,65 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2017
 ms.author: charwen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
-当你有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，你所采用的路由可能不是最理想的 - 也就是说，你的流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达你的网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文将详述此问题，并说明如何使用标准路由技术来优化路由。
+当你有多条 ExpressRoute 线路时，必须要连接到 Microsoft 的多个路径。 因此，并非最佳路由可能会发生的即你的流量可能需要较长的路径来访问 Microsoft 和 Microsoft 到你的网络。 较长的网络路径，更高的延迟。 造成延迟有直接影响应用程序性能和用户体验。 本文将说明这一问题，并介绍如何优化使用标准的路由技术进行路由。
 
-## <a name="suboptimal-routing-from-customer-to-microsoft"></a>从客户到 Microsoft 的欠佳路由
-让我们通过一个示例来详细了解路由问题。 假设你在美国有两个办公室，一个在洛杉矶，一个在纽约。 你的办公室通过广域网 (WAN) 进行连接，该广域网可能是你自己的主干网络，也可能是你服务提供商的 IP VPN。 你有两个 ExpressRoute 线路，一个在美国西部，一个在美国东部，也通过 WAN 连接。 显然，你可以通过两个路径连接到 Microsoft 网络。 现在，假设你在美国西部和美国东部都有 Azure 部署（例如 Azure 应用服务）。 你的目的是将洛杉矶的用户连接到 Azure 美国西部，将纽约的用户连接到 Azure 美国东部，因为你的服务管理员宣称每个办公室的用户都能够访问附近的 Azure 服务以获取最佳体验。 遗憾的是，此计划适用于东海岸用户，但不适用于西海岸用户。 以下是问题的原因。 在每个 ExpressRoute 线路上，我们会向你播发 Azure 美国东部的前缀 (23.100.0.0/16) 和 Azure 美国西部的前缀 (13.100.0.0/16)。 如果你不知道哪个前缀是来自哪个区域，则无法进行区别对待。 你的 WAN 网络可能会认为这两种前缀更靠近美国东部而非美国西部，因此会将两个办公室的用户都路由到美国东部的 ExpressRoute 线路。 结果就是，洛杉矶办公室的许多用户会很不满意。
+## <a name="suboptimal-routing-from-customer-to-microsoft"></a>并非最佳从客户路由到 Microsoft
+通过一个示例，让我们仔细查看一下路由问题。 假设你有两个在美国，一个在洛杉矶，一个在纽约办公室。 您的办公室连接上广域网 (WAN)，它可以是你自己 backbone 网络或服务提供商的 IP VPN。 你具有两个 ExpressRoute 线路，一个在美国西部，一个在美国东部，还连接在广域网上。 显然，您必须连接到 Microsoft 网络的两个路径。 现在在美国西部和美国东部假设你有 Azure 部署 （例如，Azure 应用程序服务）。 您的意图是你在洛杉矶的用户连接到 Azure 美国西部和你的用户位于纽约到 Azure 美国东部，因为你的服务管理员在播发中每个办事处的用户访问的附近的 Azure 服务的最佳体验。 遗憾的是，计划制定出适用于东海岸用户但不是能为西海岸用户。 问题的原因如下所示。 在每条 ExpressRoute 线路，我们播发给你在 Azure 美国东部 (23.100.0.0/16) 的前缀和 Azure 美国西部 (13.100.0.0/16) 中的前缀。 如果你不知道哪个前缀是从哪个区域，你不能将其以不同的方式。 你的 WAN 网络可能会认为这两个前缀更接近于美国东部比美国西部，并因此将这两个 office 用户路由到 ExpressRoute 线路在美国东部。 在结束时，你将洛杉矶办公室中有许多是用户。
 
-![ExpressRoute 案例 1 问题 - 从客户到 Microsoft 的路由欠佳](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
+![ExpressRoute 情况 1 问题-并非最佳从客户路由到 Microsoft](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
-### <a name="solution-use-bgp-communities"></a>解决方案：使用 BGP 社区
-若要优化两个办公室的用户的路由，你需要知道哪个前缀来自 Azure 美国西部，哪个前缀来自 Azure 美国东部。 我们使用 [BGP 社区值](expressroute-routing.md)对此信息进行编码。 我们向每个 Azure 区域分配了唯一的 BGP 社区值，例如：为美国东部分配“12076:51004”，为美国西部分配“12076:51006”。 现在，你知道了哪个前缀来自哪个 Azure 区域，因此可以配置哪个 ExpressRoute 线路应该为首选线路。 由于我们使用 BGP 来交换路由信息，因此你可以使用 BGP 的“本地首选项”来影响路由。 在我们的示例中，你可以在美国西部将比美国东部更高的本地首选项值分配给 13.100.0.0/16。类似地，你可以在美国东部将比美国西部更高的本地首选项值分配给 23.100.0.0/16。 此配置将确保当通往 Microsoft 的两个路径都可用时，你在洛杉矶的用户将使用美国西部的 ExpressRoute 线路连接到 Azure 美国西部，而你在纽约的用户将使用美国东部的 ExpressRoute 连接到 Azure 美国东部。 两边的路由都获得了优化。 
+### <a name="solution-use-bgp-communities"></a>解决方案： 使用 BGP 社区
+若要优化的这两个 office 用户路由，你需要知道哪个前缀是从 Azure 美国西部和从 Azure 美国东部。 我们对此信息进行编码使用[BGP 社区值](expressroute-routing.md)。 我们已分配一个唯一的 BGP 社区值给每个 Azure 区域例如"12076:51004"对于美国东部、"12076:51006"有关美国西部。 既然你知道哪个前缀是从哪个 Azure 区域，你可以配置哪些 ExpressRoute 线路应为首选。 因为我们使用 BGP 交换路由的信息，你可以使用 BGP 的本地首选项来影响路由。 在本示例中，可以将更高版本本地首选项值转换为 13.100.0.0/16 中比在美国东部、 美国西部并与此类似，一个更高版本的本地首选项值分配给 23.100.0.0/16 中比在美国西部的美国东部。 此配置将确保，Microsoft 这两个路径可用时，你在洛杉矶的用户将在美国西部，而你的用户位于纽约到 Azure 美国东部在美国东部采用 ExpressRoute 连接到 Azure 美国西部花费 ExpressRoute 线路。 两端上的路由进行了优化。 
 
-![ExpressRoute 案例 1 解决方法 - 使用 BGP 社区](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
+![ExpressRoute 情况 1 的解决方案使用 BGP 社区](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 
 > [!NOTE]
-> 对于从客户到 Azure 虚拟网络的路由，同样可以应用“本地首选项”技术。 我们不会在从 Azure 播发到你的网络的前缀中标记 BGP 社区值。 但是，由于你知道哪个虚拟网络部署靠近你的哪间办公室，因此可以相应地配置路由器，以优先使用某一条 ExpressRoute 线路。
+> 相同的技术，使用本地首选项，可以应用于从客户路由到 Azure 虚拟网络。 我们不标记 BGP 社区值于播发从 Azure 到你的网络的前缀。 但是，由于你知道哪些虚拟网络的部署即将其办公室，你可以配置你的路由器相应地首选到另一条 ExpressRoute 线路。
 >
 >
 
-## <a name="suboptimal-routing-from-microsoft-to-customer"></a>从 Microsoft 到客户的欠佳路由
-下面是另一示例：从 Microsoft 发出的连接需要更长的路径才能到达你的网络。 在此示例中，你在 [混合环境](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx)中使用本地 Exchange 服务器和 Exchange Online。 你的办公室都连接到 WAN。 你通过两个 ExpressRoute 线路将两个办公室中的本地服务器的前缀都播发到 Microsoft。 在进行邮箱迁移等情况下，Exchange Online 会发起到本地服务器的连接。 遗憾的是，到你洛杉矶办公室的连接会在遍历整个大陆回到西海岸之前路由到美国东部的 ExpressRoute 线路。 问题原因类似于第一个。 在没有任何提示的情况下，Microsoft 网络无法判断哪个客户前缀靠近美国东部，哪个客户前缀靠近美国西部。 它碰巧选取了到你洛杉矶办公室的错误路径。
+## <a name="suboptimal-routing-from-microsoft-to-customer"></a>从 Microsoft 路由到客户并非最佳
+下面是另一个示例，其中来自 Microsoft 的连接要花费较长的路径来访问你的网络。 在这种情况下，你使用本地 Exchange 服务器和在 Exchange Online[混合环境](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx)。 您的办公室都连接到 WAN。 您播发的前缀的两个您向 Microsoft 通过两个 ExpressRoute 线路的办公室中你的本地服务器。 Exchange Online 将启动到在情况下，例如邮箱迁移的本地服务器的连接。 遗憾的是，到洛杉矶办公室的连接将连接到 ExpressRoute 线路在美国东部路由到西海岸遍历整个 continent 后之前。 问题的原因是类似于第一个。 而无需任何提示，Microsoft 网络无法判断哪些客户前缀即将美国东部和哪个订阅是接近美国西部。 它发生在办公室中洛杉矶到选取错误的路径。
 
-![ExpressRoute 案例 2 - 从 Microsoft 到客户的路由欠佳](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
+![ExpressRoute 情况 2-从 Microsoft 路由到客户并非最佳](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 
-### <a name="solution-use-as-path-prepending"></a>解决方案：使用 AS PATH 追加
-此问题有两种解决方案。 第一种解决方案是，直接将你洛杉矶办公室的本地前缀 177.2.0.0/31 播发到美国西部的 ExpressRoute 线路上，将你纽约办公室的本地前缀 177.2.0.2/31 播发到美国东部的 ExpressRoute 线路上。 结果就是，Microsoft 只能通过一个路径连接到你的每个办公室。 路径不再模拟两可，路由得到了优化。 使用此设计时，需要考虑故障转移策略。 在通过 ExpressRoute 连接到 Microsoft 的路径断开的情况下，需确保 Exchange Online 仍能连接到你的本地服务器。 
+### <a name="solution-use-as-path-prepending"></a>解决方案： 使用 AS 路径预先计算
+有两个问题的解决方案。 第一个参数是只需播发用于洛杉矶办公，177.2.0.0/31，在美国西部 ExpressRoute 线路上的本地前缀和本地前缀为纽约办公室，177.2.0.2/31 上在美国东部 ExpressRoute 线路。 因此，没有连接到每个办事处的 microsoft 只有一条路径。 没有歧义，且优化了路由。 利用此设计，你需要考虑你的故障转移策略。 事件中的路径通过 ExpressRoute Microsoft 已损坏，你需要确保，Exchange Online 仍可连接到你的本地服务器。 
 
-第二种解决方案是，继续将两种前缀播发到两个 ExpressRoute 线路上，但除此之外你还需提示我们哪个前缀靠近你的哪个办公室。 由于我们支持 BGP AS Path 追加，因此你可以对前缀的 AS Path 进行配置，使之影响路由。 在此示例中，你可以延长美国东部 172.2.0.0/31 的 AS PATH，这样我们就会首选美国西部的 ExpressRoute 线路来传送目标为该前缀的流量（因为我们的网络会认为在西部，到此前缀的路径较短）。 类似地，你可以延长美国西部 172.2.0.2/31 的 AS PATH，这样我们就会首选美国东部的 ExpressRoute 线路。 路由是针对这两处办公室进行优化的。 根据此设计，如果一个 ExpressRoute 线路断开，Exchange Online 仍可通过其他 ExpressRoute 线路以及你的 WAN 访问你。 
+第二个解决方案是前缀的继续播发同时在这两个 ExpressRoute 线路，前缀，并且除了你向我们提供的提示是前缀的接近您的办公室中的哪一个。 因为我们支持 BGP AS 路径预先计算，你可以配置要影响路由前缀的 AS 路径。 在此示例中，你会延长在美国东部 172.2.0.0/31 AS 路径，以便我们会更喜欢在美国西部发往此前缀 （如我们的网络，将认为此前缀到路径较短在西部） 流量的 ExpressRoute 线路。 同样会延长在美国西部 172.2.0.2/31 AS 路径，以便我们将更喜欢在美国东部 ExpressRoute 线路。 路由针对两个办公室进行优化。 与此设计中，如果一个 ExpressRoute 线路已损坏，Exchange Online 仍然可以访问你通过另一个 ExpressRoute 线路与你的 WAN。 
 
 > [!IMPORTANT]
-> 对于在 Microsoft 对等互连上接收的前缀，我们会删除 AS PATH 中的专用 AS 数字。 需在 AS PATH 中追加公共 AS 数字才能影响 Microsoft 对等互连的路由。
+> 我们删除私有 AS 编号的前缀 Microsoft 对等上接收到的 AS 路径中。 你需要追加公共 AS 编号影响 Microsoft 对等的路由将 AS 路径中。
 > 
 > 
 
-![ExpressRoute 案例 2 解决方法 - 使用 AS PATH 附加](./media/expressroute-optimize-routing/expressroute-case2-solution.png)
+![ExpressRoute 情况 2 解决方案-用作路径预先计算](./media/expressroute-optimize-routing/expressroute-case2-solution.png)
 
 > [!NOTE]
-> 尽管此处给出的示例针对的是 Microsoft 和公共对等互连，但我们也支持专用对等互连的相同功能。 此外，AS Path 追加会在单个 ExpressRoute 线路内工作，以影响主要和次要路径的选择。
+> 虽然此处提供的示例是针对 Microsoft 和公共对等互连，我们的私有对等互连支持相同的功能。 在一个单个 ExpressRoute 线路，以影响主和辅助路径的所选内容中还，AS 路径预先计算工作。
 > 
 > 
 
-## <a name="suboptimal-routing-between-virtual-networks"></a>虚拟网络之间的路由欠佳
-可以通过将虚拟网络（也称为“VNet”）链接到 ExpressRoute 线路，来实现虚拟网络之间的通信。 将 VNet 链接到多条 ExpressRoute 线路时，VNet 之间的路由可能欠佳。 我们分析一个示例。 你有两条 ExpressRoute 线路，一条在美国西部，一条在美国东部。 每个区域中有两个 VNet。 Web 服务器部署在一个 VNet 中，应用程序服务器部署在另一个 VNet 中。 为实现冗余，你将每个区域中的两个 VNet 链接到了本地 ExpressRoute 线路和远程 ExpressRoute 线路。 如下所示，一个 VNet 与另一个 VNet 之间有两条路径。 VNet 不知道哪条 ExpressRoute 线路是本地的，哪条是远程的。 由于 VNet 针对负载均衡的 VNet 间流量执行相等成本多路径 (ECMP) 路由，因此某些流量将会经历更长的路径，最终路由到远程 ExpressRoute 线路。
+## <a name="suboptimal-routing-between-virtual-networks"></a>并非最佳的虚拟网络之间路由
+使用 ExpressRoute，你可以启用虚拟网络与虚拟网络 （也称为"VNet"） 方法将其链接到 ExpressRoute 线路的通信。 当你将它们链接到多条 ExpressRoute 线路时，次优路由 Vnet 之间可能发生。 让我们考虑一个示例。 你有两个 ExpressRoute 线路，一个在美国西部，一个在美国东部。 在每个区域中，您有两个 Vnet。 在一个 VNet 中部署你的 web 服务器和另一部分中的应用程序服务器。 为实现冗余，每个区域中的两个 Vnet 链接到本地的 ExpressRoute 线路和远程的 ExpressRoute 线路。 按如下所示，从每个 VNet 有两个路径到另一个 VNet。 Vnet 不知道的 ExpressRoute 线路是本地还是远程哪一个。 因此一样相等成本多路径 (ECMP) 负载平衡虚拟网络间 VNet 流量路由到某些流量流将花费更长的路径，并且在远程的 ExpressRoute 线路路由。
 
-![ExpressRoute 案例 3 - 虚拟网络之间的路由欠佳](./media/expressroute-optimize-routing/expressroute-case3-problem.png)
+![ExpressRoute 情况 3-并非最佳的虚拟网络之间路由](./media/expressroute-optimize-routing/expressroute-case3-problem.png)
 
-### <a name="solution-assign-a-high-weight-to-local-connection"></a>解决方法：将高权重分配给本地连接
-解决方法很简单。 由于你知道 VNet 和线路的位置，因此可以告诉我们，每个 VNet 应该优先使用哪条路径。 具体而言，在本示例中，可向本地连接分配一个比远程连接更高的权重（请参阅[此处](expressroute-howto-linkvnet-arm.md#modify-a-virtual-network-connection)的配置示例）。 当 VNet 收到多个连接上的另一个 VNet 的前缀时，将优先选择具有最高权重的连接将流量发送到该前缀。
+### <a name="solution-assign-a-high-weight-to-local-connection"></a>解决方案： 将高权重分配给本地连接
+解决方法很简单。 因为你知道 Vnet 和线路所在位置，你可以告诉我们应该会希望每个 VNet 的路径。 专门为此示例中，你可以将更高版本的权重分配给比远程连接到的本地连接 (请参阅配置示例[此处](expressroute-howto-linkvnet-arm.md#modify-a-virtual-network-connection))。 VNet 接收多个连接上的其他 VNet 的前缀时它将选择具有最高权重发送发往该前缀流量连接。
 
-![ExpressRoute 案例 3 解决方法 - 将高权重分配给本地连接](./media/expressroute-optimize-routing/expressroute-case3-solution.png)
+![ExpressRoute 情况 3 解决方案-分配给本地连接的高权重](./media/expressroute-optimize-routing/expressroute-case3-solution.png)
 
 > [!NOTE]
-> 如果有多条 ExpressRoute 线路，也可以影响从 VNet 到本地网络的路由：配置连接的权重而不是应用 AS PATH 附加（上面第二种方案中所述的技术）。 对于每个前缀，我们在确定如何发送流量时，始终会查看 AS Path 长度前面的连接权重。
+> 你还可以影响路由从 VNet 到本地网络，如果你有多条 ExpressRoute 线路，通过配置的连接而不是应用 AS 路径预先计算，上面第二个方案中所述的技术的权重。 针对每个前缀，我们将始终查看之前 AS 路径长度的连接权重时决定如何发送流量。
 >
 >
-

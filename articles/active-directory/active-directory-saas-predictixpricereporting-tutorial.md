@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 62280b205f2fd691e8c75134585172b995377311
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>教程：Azure Active Directory 与 Predictix Price Reporting 的集成
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/16/2017
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Predictix Price Reporting 的集成，需备齐以下项目：
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 08/16/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Predictix Price Reporting 客户端支持团队](http://www.infor.com/company/customer-center/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_certificate.png) 
 
@@ -230,5 +229,4 @@ ms.lasthandoff: 08/16/2017
 [201]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_203.png
-
 

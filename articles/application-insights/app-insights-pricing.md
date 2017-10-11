@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: d85963681d3688ccbac4c7b4e05d24f387bafba6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: 65d11d30e23cd7671b769c3c17e4aba32c432340
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 08/17/2017
 | 方案                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
-| 3 个应用程序运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，所用计划为企业计划 | #N/A | 
+| 3 个应用程序运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，所用计划为企业计划 | 2 | 
 | 4 个应用程序的 Applications Insights 资源属于同一订阅。 每个应用程序在 16 小时的非高峰时段内运行 2 个实例，在 8 小时的高峰时段内运行 4 个实例。 | 13.33 | 
 | 云服务有 1 个辅助角色和 1 个 Web 角色，每个角色运行 2 个实例 | 4 | 
 | 5 节点型 Service Fabric 群集运行 50 个微服务，每个微服务运行 3 个实例 | 5|
@@ -110,7 +109,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="data-rate"></a>数据速率
 发送数据时存在三种数量限值：
 
-* **采样：**可以使用此机制减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 这是你拥有的调整数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
+* **采样：**可以使用此机制减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 这是你需要优化的数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
 * **每日上限：**从 Azure 门户创建 Application Insights 资源时，此项设置为 500 GB/天。 从 Visual Studio 创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天），仅为了便于测试。 在这种情况下，可预期用户在将应用部署到生产环境之前，会提高每日上限。 除非为高流量应用程序请求了更高的最大值，否则最大上限是 500 GB/天。 设置每日上限时要格外小心，因为意图应是**永远不达到每日上限**，因为达到了会在当天的剩余时间内丢失数据，并且无法监视应用程序。 若要更改它，请使用从“数据量管理”边栏选项卡链接的“每日数据量上限”边栏选项卡（参见下文）。 请注意，某些订阅类型具有无法用于 Application Insights 的信用额度。 如果订阅有支出限制，“每日上限”边栏选项卡将提供如何去除此限制，并使每日上限提高到超过 32.3 MB/天的说明。  
 * **限制**：此项将数据速率限制为每秒 32000 个事件，取 1 分钟的平均值。 
 
@@ -187,5 +186,4 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
-
 

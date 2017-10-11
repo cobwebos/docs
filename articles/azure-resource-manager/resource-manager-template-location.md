@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 73e50a593c41e841dcaf184abb895406ff5001e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="set-resource-location-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中设置资源位置
 部署模板时，必须提供每个资源的位置。 本主题说明如何确定可用于每种资源类型的订阅的位置。
 
 ## <a name="determine-supported-locations"></a>确定支持的位置
 
-有关每种资源类型的支持位置的完整列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。 但是，你的订阅可能并非有权访问该列表中的所有位置。 若要查看可用于你的订阅的位置的自定义列表，请使用 Azure PowerShell 或 Azure CLI。 
+有关每种资源类型的支持位置的完整列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。 但是，订阅可能并非有权访问该列表中的所有位置。 要查看可用于订阅的位置的自定义列表，请使用 Azure PowerShell 或 Azure CLI。 
 
 以下示例使用 PowerShell 获取 `Microsoft.Web\sites` 资源类型的位置：
 
@@ -101,5 +100,4 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 ## <a name="next-steps"></a>后续步骤
 * 有关如何创建模板的建议，请参阅 [Best practices for creating Azure Resource Manager templates](resource-manager-template-best-practices.md)（创建 Azure Resource Manager 模板的最佳做法）。
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: andrl
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: 8cddc7a8c9aa677b9c93bee3a7e05c226cc1f655
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
 了解 Azure Cosmos DB 的对 JavaScript 的语言集成式事务执行如何让开发人员使用 [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript 在本机编写存储过程、触发器和用户定义的函数 (UDF)。 这使得能够编写可在数据库存储分区上直接传送和执行的数据库程序应用程序逻辑。 
@@ -294,7 +293,7 @@ JavaScript 函数也被绑定在资源消耗量上。 Cosmos DB 基于预配的�
         }
     }
 
-## <a id="trigger"></a>数据库触发器
+## <a id="trigger"></a> 数据库触发器
 ### <a name="database-pre-triggers"></a>数据库预触发器
 Cosmos DB 提供通过文档中的操作执行或触发的触发器。 例如，当创建文档时可以指定预触发器 – 此预触发器会在文档创建之前运行。 下面就是如何使用预触发器来验证正在创建的文档的属性的示例：
 
@@ -810,5 +809,4 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 * [Secure and Portable Database Extensibility](http://dl.acm.org/citation.cfm?id=276339)（安全和可移植的数据库扩展性） 
 * [面向服务的数据库体系结构](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Hosting the .NET Runtime in Microsoft SQL server](http://dl.acm.org/citation.cfm?id=1007669)（在 Microsoft SQL Server 中托管 .NET 运行时）
-
 

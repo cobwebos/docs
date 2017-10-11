@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: LuisCa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: e40b69f97878a6072a64912f017f8e5621ba6e71
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="datamarket-is-now-deprecated"></a>DataMarket 现已弃用
 
 [Microsoft DataMarket](https://datamarket.azure.com/datasets) 现已弃用，因此托管在此处的机器学习 API 现也已弃用。
@@ -40,4 +38,3 @@ ms.lasthandoff: 04/03/2017
 认知服务建议 API 支持早期 DataMarket 版本支持的所有方案，以及批处理支持和更优脱机指标等其他方案以评估模型的质量。 
 
 若要详细了解如何开始使用认知服务建议 API，请参阅[迁移到 Azure 认知服务建议 API](http://aka.ms/recomigrate)。
-

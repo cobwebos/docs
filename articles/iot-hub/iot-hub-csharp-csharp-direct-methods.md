@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: dkshir
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 9ce1fbebb6417c10618aa182e3c1d9ddf8132fb6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="use-direct-methods-netnet"></a>使用直接方法 (.NET/.NET)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
@@ -103,7 +102,7 @@ ms.lasthandoff: 07/20/2017
             Console.WriteLine("Error in sample: {0}", ex.Message);
         }
         
-1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。选择“单个启动项目”，并在下拉菜单中选择“SimulateDeviceMethods”项目。        
+1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。 选择“单个启动项目”，并在下拉菜单中选择“SimulateDeviceMethods”项目。        
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按 MSDN 文章 [暂时性故障处理][lnk-transient-faults]中所述实施重试策略（例如连接重试）。
@@ -150,7 +149,7 @@ ms.lasthandoff: 07/20/2017
         Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。选择“单个启动项目”，并在下拉菜单中选择“CallMethodOnDevice”项目。
+1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。 选择“单个启动项目”，并在下拉菜单中选择“CallMethodOnDevice”项目。
 
 ## <a name="run-the-applications"></a>运行应用程序
 现在，已准备就绪，可以运行应用程序了。
@@ -166,7 +165,7 @@ ms.lasthandoff: 07/20/2017
     ![在设备上调用的直接方法][img-directmethodinvoked]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已通过此设备标识启用模拟设备应用的相关功能，使之能够响应通过云调用的方法。 还创建了一个应用，用于调用设备上的方法并显示来自设备的响应。 
+本教程中，在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已通过此设备标识启用模拟设备应用的相关功能，使之能够响应通过云调用的方法。 还创建了一个应用，用于调用设备上的方法并显示来自设备的响应。 
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
@@ -198,4 +197,3 @@ ms.lasthandoff: 07/20/2017
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 
 [IoT 中心入门]: iot-hub-node-node-getstarted.md
-

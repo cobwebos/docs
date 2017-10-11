@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
 ms.openlocfilehash: ba55f9b62d274aa3eb91723c62b53f54de0891b5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>教程：Azure Active Directory 与 Hightail 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/22/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-hightail-from-the-gallery"></a>从库中添加 Hightail
-若要配置 Hightail 与 Azure AD 的集成，需要从库中将 Hightail 添加到托管 SaaS 应用列表。
+要配置 Hightail 与 Azure AD 的集成，需要从库中将 Hightail 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Hightail，请执行以下步骤：**
 
@@ -120,11 +119,11 @@ ms.lasthandoff: 06/22/2017
     
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url1.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“显示高级 URL 设置”。
+    a. 单击“显示高级 URL 设置”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，键入 URL：`https://www.hightail.com/loginSSO`
+    b. 在“登录 URL”文本框中，键入 URL：`https://www.hightail.com/loginSSO`
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_certificate.png) 
 
@@ -132,7 +131,7 @@ ms.lasthandoff: 06/22/2017
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_attribute.png) 
 
-6. 在“单一登录”对话框的“用户属性”部分中，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
+6. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ------------------- | -------------------- |
@@ -141,7 +140,7 @@ ms.lasthandoff: 06/22/2017
     | 电子邮件 | user.mail |    
     | UserIdentity | user.mail |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_04.png)
 
@@ -169,7 +168,7 @@ ms.lasthandoff: 06/22/2017
 
 9. 若要为应用程序配置 SSO，需要以管理员身份登录到 Hightail 租户。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在顶部菜单中，单击“帐户”选项卡，然后选择“配置 SAML”。
+    a. 在顶部菜单中，单击“帐户”选项卡，并选择“配置 SAML”。
  
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_001.png) 
 
@@ -185,7 +184,7 @@ ms.lasthandoff: 06/22/2017
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_004.png)
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 如果要在“IDP 发起的模式”下配置应用程序，请选择“标识提供者(IdP)发起的登录”。 如果使用“SP 发起的模式”，请选择“服务提供程序(SP)发起的登录”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 如果要在“IDP 发起的模式”下配置应用程序，请选择“标识提供者(IdP)发起的登录”。 如果使用“SP 发起的模式”，请选择“服务提供程序(SP)发起的登录”。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_006.png)
 
@@ -220,7 +219,7 @@ ms.lasthandoff: 06/22/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-hightail-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -232,7 +231,7 @@ ms.lasthandoff: 06/22/2017
 
 本部分的目的是在 Hightail 中创建名为“Britta Simon”的用户。 
 
-本部分不存在任何操作项。 Hightail 支持基于自定义声明进行实时用户预配。 如果已配置自定义声明（如前面的**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)**部分中所述），将自动在应用程序中创建尚不存在的用户。 
+本部分不存在任何操作项。 Hightail 支持基于自定义声明进行实时用户预配。 如果已配置自定义声明（如前面的**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)**部分中所述），会自动在应用程序中创建尚不存在的用户。 
 
 >[!NOTE]
 >如果需要手动创建用户，则需要联系 [Hightail 支持团队](mailto:support@hightail.com)。 
@@ -243,9 +242,9 @@ ms.lasthandoff: 06/22/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Hightail，请执行以下步骤：**
+**要将 Britta Simon 分配到 Hightail，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -271,7 +270,7 @@ ms.lasthandoff: 06/22/2017
 
 本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Hightail 磁贴时，你应自动登录到 Hightail 应用程序。
+单击访问面板中的 Hightail 磁贴时，应自动登录到 Hightail 应用程序。
 
 
 ## <a name="additional-resources"></a>其他资源
@@ -294,5 +293,4 @@ ms.lasthandoff: 06/22/2017
 [201]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_203.png
-
 

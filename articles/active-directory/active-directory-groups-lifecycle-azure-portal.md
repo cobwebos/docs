@@ -16,14 +16,12 @@ ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: f4efac7b74620e68e727292e02a5a904b03d6e2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.openlocfilehash: 8a43df84fd050d7b4bd8d937b8c55e744cb805d3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="configure-office-365-groups-expiration-preview"></a>配置 Office 365 组过期（预览版）
 
 现在可以通过为所选的任何 Office 365 组设置过期来管理 Office 365 组的生命周期。 设置过期后，会要求组的所有者续订这些组（如果仍需要）。 将删除所有未续订的 Office 365 组。 组所有者或管理员可在 30 日内还原任何被删除的 Office 365 组。  
@@ -81,4 +79,3 @@ ms.lasthandoff: 08/08/2017
 * [管理组的成员](active-directory-groups-members-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-

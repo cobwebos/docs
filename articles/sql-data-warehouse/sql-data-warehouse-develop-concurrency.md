@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>SQL 数据仓库中的并发性和工作负荷管理
 若要大规模提供可预测性能，可以通过 Microsoft Azure SQL 数据仓库控制并发级别和资源分配（例如内存和 CPU 优先级）。 本文介绍并发性和工作负荷管理的概念，说明如何实现这两种功能，以及如何在数据仓库中控制它们。 SQL 数据仓库工作负荷管理旨在协助提供多用户环境支持。 它不适用于多租户工作负荷。
@@ -152,7 +151,7 @@ EXEC sp_addrolemember 'largerc', 'loaduser'
 ## <a name="concurrency-slot-consumption"></a>并发槽使用量  
 SQL 数据仓库对在更高资源类级别中运行的查询赋予了更多内存。 内存是固定的资源。  因此，每个查询分配的内存越多，可以执行的并发查询数就越少。 下表在单个视图中重述了上述所有概念，显示了按 DWU 分配的并发槽数，以及每个资源类使用的槽数。  
 
-### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>动态资源类并发槽的分配和使用  
+### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>分配和的动态资源类的并发槽使用量  
 | DWU | 并发查询数上限 | 分配的并发槽数 | smallrc 使用的槽数 | mediumrc 使用的槽数 | largerc 使用的槽数 | xlargerc 使用的槽数 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|
 | DW100 |4 |4 |1 |1 |2 |4 |
@@ -710,7 +709,8 @@ Removed as these two are not confirmed / supported under SQLDW
     ```sql
     EXEC sp_addrolemember 'largerc', 'newperson'
     ```
-5. **降低资源类的级别：**要将用户从工作负荷管理角色中删除，请使用以下查询。
+5. 
+            **降低资源类的级别：** 要将用户从工作负荷管理角色中删除，请使用以下查询。
    
     ```sql
     EXEC sp_droprolemember 'largerc', 'newperson';
@@ -842,4 +842,3 @@ FROM    sys.dm_pdw_wait_stats w;
 [Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
-

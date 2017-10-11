@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 1109e44ed9c6aa8a0f7305b8a50410316711589c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
 
@@ -36,7 +35,7 @@ Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows Pow
 
 完成 Web 代理配置后，可以在 Microsoft Azure StorSimple 设备管理器服务和用于 StorSimple 的 Windows PowerShell 中查看配置的 Web 代理设置。
 
-阅读本教程之后，你将能够：
+阅读本教程之后，能够：
 
 * 使用安装向导和 cmdlet 配置 Web 代理。
 * 使用 cmdlet 启用 Web 代理。
@@ -51,7 +50,7 @@ Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows Pow
 * 使用安装向导来引导完成配置步骤。
 * 使用 Windows PowerShell for StorSimple 中的 cmdlet。
 
-以下部分将介绍上述每种方法。
+以下部分介绍上述每种方法。
 
 ## <a name="configure-web-proxy-via-the-setup-wizard"></a>通过安装向导配置 Web 代理
 
@@ -156,5 +155,4 @@ Web 代理设置是通过 Windows PowerShell 界面配置的，无法在门户�
 ## <a name="next-steps"></a>后续步骤
 * 如果在部署设备或配置 Web 代理设置时遇到任何问题，请参阅[排查 StorSimple 设备的部署问题](storsimple-troubleshoot-deployment.md)。
 * 若要了解如何使用 StorSimple 设备管理器服务，请转到[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

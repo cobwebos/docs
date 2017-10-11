@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: a0a221622afe1c801a331e2319f3a7ace3111dad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>教程：Azure Active Directory 与 Cisco Spark 的集成
 
@@ -162,7 +161,7 @@ ms.lasthandoff: 06/23/2017
 
 12. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。
 
-13. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。如果测试成功，则选择“此测试成功。启用单一登录”，并单击“下一步”。
+13. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。 如果测试成功，则选择“此测试成功。启用单一登录”，并单击“下一步”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -279,5 +278,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_203.png
-
 

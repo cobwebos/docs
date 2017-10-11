@@ -2,9 +2,9 @@
 
 若要阅读这一系列的教程，可先阅读[最小可行规模集模板文章](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)。
 
-你可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以便[将规模集部署到现有的虚拟网络](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md)。
+可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以便[将规模集部署到现有的虚拟网络](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md)。
 
-你可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以便[使用自定义映像部署规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md)。
+可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以便[使用自定义映像部署规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md)。
 
 你可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以[使用基于来宾的自动缩放部署 Linux 规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)。
 

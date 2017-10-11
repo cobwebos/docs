@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 900f0b4c38f08d1e3017954db01cf32362765578
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
+ms.openlocfilehash: d58c27234ea05a82aaa3e8d72f70c1449980df09
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a>在远程监视预配置解决方案中创建自定义规则
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 03/10/2017
 
 本教程使用模拟 Node.js 的简单设备来生成动态遥测，并发送到预配置解决方案后端。 然后在 **RemoteMonitoring** Visual Studio 解决方案中添加自定义规则，并将此自定义后端部署到 Azure 订阅。
 
-若要完成本教程，你需要：
+要完成本教程，需要：
 
 * 一个有效的 Azure 订阅。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用][lnk_free_trial]。
 * [Node.js][lnk-node] 0.12.x 版本或更高版本，用于创建模拟设备。
@@ -48,7 +47,7 @@ ms.lasthandoff: 03/10/2017
 
 有关规则的信息将保留在两个位置：
 
-* **DeviceRulesNormalizedTable** 表 - 此表存储对由解决方案门户定义的规则的规范化引用。 解决方案门户显示设备规则时，它将查询此表以查找规则定义。
+* **DeviceRulesNormalizedTable** 表 - 此表存储对由解决方案门户定义的规则的规范化引用。 解决方案门户显示设备规则时，它查询此表以查找规则定义。
 * **DeviceRules** blob - 此 blob 存储为所有已注册设备定义的全部规则，并定义为 Azure 流分析作业的引用输入。
  
 在解决方案门户更新现有规则或定义新规则时，表和 blob 都会更新以反映所做的更改。 门户中显示的规则定义来自表存储，而流分析作业引用的规则定义来自 blob。 
@@ -120,7 +119,7 @@ ms.lasthandoff: 03/10/2017
 
 1. 打开提升的命令提示符，并导航到 azure-iot-remote-monitoring 存储库本地副本的根目录。
 
-2. 若要部署更新后的解决方案，请运行以下命令，将 **{deployment name}** 替换为之前记录的预配置解决方案部署的名称：
+2. 要部署更新后的解决方案，请运行以下命令，将 **{deployment name}** 替换为之前记录的预配置解决方案部署的名称：
 
     ```
     build.cmd cloud release {deployment name}
@@ -203,17 +202,17 @@ ms.lasthandoff: 03/10/2017
 
 2. 导航到“设备”面板。
 
-3. 找到创建的用于发送 **ExternalTemperature** 遥测的自定义设备，然后在“设备详细信息”面板中，单击“添加规则”。
+3. 找到创建的用于发送 **ExternalTemperature** 遥测的自定义设备，并在“设备详细信息”面板中，单击“添加规则”。
 
 4. 在“数据字段”中选择 **ExternalTemperature**。
 
-5. 将“阈值”设置为 56。 然后单击“保存并查看规则”。
+5. 将“阈值”设置为 56。 然后单击“保存并查看规则”。 
 
 6. 返回仪表板查看警报历史记录。
 
 7. 在打开的控制台窗口中，启动 Node.js 控制台应用，开始发送 **ExternalTemperature** 遥测数据。
 
-8. 请注意，触发新规则时，“警报历史记录”表将显示新警报。
+8. 请注意，触发新规则时，“警报历史记录”  表显示新警报。
  
 ## <a name="additional-information"></a>其他信息
 

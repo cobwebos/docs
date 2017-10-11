@@ -16,12 +16,11 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 7f1aa292e6c15e2702f939b9751fe13a27bc5b7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
 Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和服务的内置角色。 不能修改内置角色的定义。 但是，可以创建 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)，以满足组织的特定需要。
@@ -33,7 +32,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 - **Write** 使你可以执行 PUT、POST、PATCH 和 DELETE 操作。
 - **Read** 使你可以执行 GET 操作。
 
-本文仅针对目前存在的各种角色。 不过，向用户分配角色时，你可以通过定义作用域进一步限制允许的操作。 如果想要将某人设为网站参与者，但只针对一个资源组，则此功能很有用。
+本文仅针对目前存在的各种角色。 不过，向用户分配角色时，可以通过定义作用域进一步限制允许的操作。 如果想要将某人设为网站参与者，但只针对一个资源组，则此功能很有用。
 
 > [!NOTE]
 > Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) cmdlet 列出所有当前角色。 可以使用 `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions` 深入了解特定角色（如果适用）。 使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 列出特定 Azure 资源提供程序的操作。
@@ -873,4 +872,3 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 * [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)：了解如何创建自定义角色，以满足访问需要。
 * [创建访问权限更改历史记录报告](role-based-access-control-access-change-history-report.md)：记录 RBAC 中的角色分配更改。
 * [基于角色的访问控制故障排除](role-based-access-control-troubleshooting.md)：获取解决常见问题的建议。
-

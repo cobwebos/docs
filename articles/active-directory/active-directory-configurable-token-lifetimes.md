@@ -16,12 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: d1d72932d8156fdada44ad6f375fe81c0428846c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: d23721eba308096a05211eb6e26e1338a69cae0c
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory 中可配置的令牌生存期（公共预览版）
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
@@ -59,7 +58,7 @@ ms.lasthandoff: 07/06/2017
 ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的配置文件信息。 ID 令牌绑定到用户和客户端的特定组合。 在过期日期之前，ID 令牌保持有效。 通常，Web 应用程序会将应用程序中用户的会话生存期与针对该用户颁发的 ID 令牌的生存期进行匹配。 可以调整 ID 令牌的生存期，控制 Web 应用程序使应用程序会话过期的频率，以及要求用户在 Azure AD 上重新进行身份验证（以无提示方式或交互方式）的频率。
 
 ### <a name="single-sign-on-session-tokens"></a>单一登录会话令牌
-当用户在 Azure AD 上进行身份验证并选中“使我保持登录状态”复选框时，系统将在用户的浏览器与 Azure AD 之间建立单一登录 (SSO) 会话。 SSO 令牌采用 Cookie 形式，代表此会话。 请注意，SSO 会话令牌不会绑定到特定的资源/客户端应用程序。 SSO 会话令牌可以吊销，每次使用它们时，系统都会检查其有效性。
+当用户在 Azure AD 上进行身份验证并选中“使我保持登录状态”复选框时，系统会在用户的浏览器与 Azure AD 之间建立单一登录 (SSO) 会话。 SSO 令牌采用 Cookie 形式，代表此会话。 请注意，SSO 会话令牌不会绑定到特定的资源/客户端应用程序。 SSO 会话令牌可以吊销，每次使用它们时，系统都会检查其有效性。
 
 Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 （关闭浏览器会销毁会话 Cookie。）
 
@@ -81,8 +80,8 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 | 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor<sup>3</sup> |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
-* <sup>2</sup>如果未设置 **MaxAgeSessionSingleFactor**，此值将采用 **MaxAgeSingleFactor** 值。 如果未设置任一参数，该属性将采用默认值（直到吊销）。
-* <sup>3</sup>如果未设置 **MaxAgeSessionMultiFactor**，此值将采用 **MaxAgeMultiFactor** 值。 如果未设置任一参数，该属性将采用默认值（直到吊销）。
+* <sup>2</sup>如果未设置 MaxAgeSessionSingleFactor，此值会采用 MaxAgeSingleFactor 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
+* <sup>3</sup>如果未设置 MaxAgeSessionMultiFactor，此值会采用 MaxAgeMultiFactor 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
 
 ### <a name="exceptions"></a>异常
 | 属性 | 影响 | 默认 |
@@ -103,7 +102,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 有关应用程序对象与服务主体对象之间的关系的详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](active-directory-application-objects.md)。
 
-使用令牌时，系统会评估其有效性。 所访问的应用程序中具有最高优先级的策略将会生效。
+使用令牌时，系统会评估其有效性。 所访问的应用程序中具有最高优先级的策略会生效。
 
 > [!NOTE]
 > 下面是一个示例场景。
@@ -120,7 +119,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 >
 > 下午 12:15，用户尝试访问 Web 应用程序 B。浏览器重定向到 Azure AD 并检测会话 Cookie。 Web 应用程序 B 的服务主体已链接到令牌生存期策略 2，但同时也属于使用默认令牌生存期策略 1 的父组织。 由于链接到服务主体的策略优先级高于组织默认策略，因此令牌生存期策略 2 生效。 会话令牌最初是在过去 30 分钟内颁发的，因此被视为有效。 用户使用授予权限的 ID 令牌重定向回到 Web 应用程序 B。
 >
-> 下午 1:00，用户尝试访问 Web 应用程序 A。该用户已重定向到 Azure AD。 Web 应用程序 A 未链接到任何策略，但由于它在使用默认令牌生存期策略 1 的组织中，因此，该策略将会生效。 已检测到最初在过去 8 小时内颁发的会话 Cookie。 用户已使用新 ID 令牌以无提示方式重定向回到 Web 应用程序 A。 用户不需要进行身份验证。
+> 下午 1:00，用户尝试访问 Web 应用程序 A。该用户已重定向到 Azure AD。 Web 应用程序 A 未链接到任何策略，但由于它在使用默认令牌生存期策略 1 的组织中，因此，该策略会生效。 已检测到最初在过去 8 小时内颁发的会话 Cookie。 用户已使用新 ID 令牌以无提示方式重定向回到 Web 应用程序 A。 用户不需要进行身份验证。
 >
 > 随后，用户立即尝试访问 Web 应用程序 B。用户已重定向到 Azure AD。 如前所述，令牌生存期策略 2 生效。 由于颁发的令牌超过 30 分钟，系统会提示用户重新输入其凭据。 颁发新的会话令牌和 ID 令牌。 然后，用户可以访问 Web 应用程序 B。
 >
@@ -182,7 +181,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 减少最大期限会强制用户更频繁地进行身份验证。 由于单重身份验证的安全性不如多重身份验证，因此我们建议为此属性设置一个大于“单因素会话令牌最大期限”属性的值。
 
 ## <a name="example-token-lifetime-policies"></a>示例令牌生存期策略
-如果能够创建和管理应用、服务主体和整个组织的令牌生存期，就可以在 Azure AD 中实现各种新的方案。 本部分逐步讲解一些常见的策略方案，帮助你针对以下属性实施新规则：
+如果能够创建和管理应用、服务主体和整个组织的令牌生存期，就可以在 Azure AD 中实现各种新的方案。 本部分逐步讲解一些常见的策略方案，帮助针对以下属性实施新规则：
 
 * 令牌生存期
 * 令牌最大非活动时间
@@ -196,12 +195,12 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * 管理高级策略
 
 ### <a name="prerequisites"></a>先决条件
-以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](active-directory-howto-tenant.md)。  
+以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](active-directory-howto-tenant.md)。  
 
 若要开始，请执行以下步骤：
 
 1. 首先请下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
-2. 运行 `Connect` 命令登录到你的 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
+2. 运行 `Connect` 命令登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
     ```PowerShell
     Connect-AzureAD -Confirm
@@ -252,7 +251,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 ### <a name="example-create-a-policy-for-web-sign-in"></a>示例：为 Web 登录创建策略
 
-本示例创建一个要求用户更频繁地在 Web 应用中进行身份验证的策略。 此策略将会针对 Web 应用的服务主体设置访问/ID 令牌的生存期以及多因素会话令牌的最大期限。
+本示例创建一个要求用户更频繁地在 Web 应用中进行身份验证的策略。 此策略会针对 Web 应用的服务主体设置访问/ID 令牌的生存期以及多因素会话令牌的最大期限。
 
 1. 创建令牌生存期策略。
 
@@ -272,7 +271,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 2.  将策略分配到服务主体。 还需要获取服务主体的 **ObjectId**。 
 
-    1.  若要查看组织的所有服务主体，可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 或者，在 [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) 中登录到你的 Azure AD 帐户。
+    1.  若要查看组织的所有服务主体，可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 或者，在 [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) 中登录到 Azure AD 帐户。
 
     2.  获取服务主体的 **ObjectId** 后，运行以下命令：
 
@@ -326,7 +325,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 2. 将策略分配到服务主体。
 
-    现已创建一个要应用到整个组织的策略。 你可能想要为特定的服务主体保留这个 30 天策略，但要将组织默认策略更改为上限“直到吊销”。
+    现已创建一个要应用到整个组织的策略。 可能需要为特定的服务主体保留这个 30 天策略，但需要将组织默认策略更改为上限“直到吊销”。
 
     1.  若要查看组织的所有服务主体，可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 或者，在 [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) 中使用 Azure AD 帐户登录。
 
@@ -516,4 +515,3 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的 **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
-

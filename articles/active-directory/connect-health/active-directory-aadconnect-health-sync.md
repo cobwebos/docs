@@ -14,12 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
 ms.openlocfilehash: 4b06338cb62cc458e7b097db36023f0746d4e969
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
@@ -27,7 +26,7 @@ ms.lasthandoff: 07/19/2017
 ![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/sync-blade.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>用于同步的 Azure AD Connect Health 的警报
-用于同步的 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。 选择活动或已解决的警报后，将看到一个新的边栏选项卡，其中会显示额外信息、可用于解决警报的方法步骤以及其他文档的链接。 还可以查看过去已解决警报的相关历史数据。
+用于同步的 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。 选择活动或已解决的警报后，会看到一个新的边栏选项卡，其中将显示额外信息、可用于解决警报的方法步骤以及其他文档的链接。 还可以查看过去已解决警报的相关历史数据。
 
 选择警报后，将获取到额外信息、可用于解决警报的方法步骤以及其他文档的链接。
 
@@ -58,7 +57,7 @@ ms.lasthandoff: 07/19/2017
 默认情况下只显示 Azure AD 连接器“导出”操作的延迟。  若要查看对连接器执行的其他操作或其他连接器执行的操作，请右键单击图表，选择“编辑图表”，或者单击“编辑延迟图表”并选择特定的操作和连接器。
 
 ### <a name="sync-object-changes"></a>同步对象更改
-此功能提供正在评估并导出到 Azure AD 的更改数的图形趋势。  目前，尝试从同步日志收集此信息并不容易。  图表不仅可让你以更简单的方式监视环境中发生的更改数，而且可以提供正在发生的失败的可视化视图。
+此功能提供正在评估并导出到 Azure AD 的更改数的图形趋势。  目前，尝试从同步日志收集此信息并不容易。  图表可，监视在你的环境中发生的更改的数量，但也发生故障的直观展示不仅更简单的方法。
 
 ![同步延迟](./media/active-directory-aadconnect-health-sync/syncobjectchanges02.png)
 
@@ -68,7 +67,8 @@ ms.lasthandoff: 07/19/2017
 * 该报告涵盖同步客户端（Azure AD Connect 1.1.281.0 或更高版本）记录的错误
 * 其中包含上一次在同步引擎中执行同步操作时发生的错误。 （Azure AD 连接器中的“导出”。）
 * 为了在报告中包含最新的数据，用于同步的 Azure AD Connect Health 代理必须与所需的终结点建立出站连接。
-* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据每隔 30 分钟更新该报告。该报告提供以下重要功能
+* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据**每隔 30 分钟更新该报告**。
+  该报告提供以下重要功能
 
   * 错误分类
   * 按类别列出出错的对象

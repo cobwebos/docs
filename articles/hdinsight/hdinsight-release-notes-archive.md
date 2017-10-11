@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: 04278aac85171601b5801b0890d14a9076060444
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="release-notes-archive-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight 上的 Hadoop 组件发行说明（存档）
 
@@ -740,7 +739,7 @@ ms.lasthandoff: 08/04/2017
 </tr>
 <tr>
 <td>可以在设置群集时在群集上启用远程桌面凭据</td>
-<td>支持在创建群集时以编程方式启用远程桌面凭据。 这样就消除了先设置群集，然后启用远程桌面的双步过程。</td>
+<td>支持在创建群集时以编程方式启用远程桌面凭据。 这样就消除了先预配群集，并启用远程桌面的双步过程。</td>
 <td>SDK 中 IsInRole 中的声明</td>
 <td>全部</td>
 <td>不适用</td>
@@ -781,8 +780,8 @@ ms.lasthandoff: 08/04/2017
 <td>不适用</td>
 </tr>
 <tr>
-<td>升级到 Azure Storage SDK for Java 2.0</td>
-<td>HDInsight 版本 3.2 已升级为使用最新版本的 Azure Storage SDK for Java。 与 0.6.0 版本相比，现在包含几个重要的 bug 修复程序。</td>
+<td>升级到用于 Java 的 Azure 存储 SDK 2.0</td>
+<td>HDInsight 版本 3.2 已升级为使用最新版本的用于 Java 的 Microsoft Azure 存储 SDK。 与 0.6.0 版本相比，现在包含几个重要的 bug 修复程序。</td>
 <td>HDP</td>
 <td>全部</td>
 <td>不适用</td>
@@ -1130,7 +1129,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 <tr><th>标题</th><th>说明</th><th>组件</th><th>群集类型</th><th>JIRA（如果适用）</th></tr>
 <tr>
 <td>访问应用程序日志</td>
-<td>可让你以编程方式枚举群集上运行的应用程序，并下载相关的应用程序或容器特定日志以帮助调试有问题的应用程序。</td>
+<td>可以编程方式枚举群集上运行的应用程序，并下载相关的应用程序或容器特定日志以帮助调试有问题的应用程序。</td>
 <td>SDK 中 IsInRole 中的声明</td>
 <td>Hadoop</td>
 <td>不适用</td>
@@ -1321,7 +1320,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 借助 HBase，可以在 HDInsight 上生成各种实时工作负载 - 从用于处理大型数据集的交互式网站，到用于存储来自数百万个终结点的传感器数据与遥测数据的服务。 接下来要做的就是使用 Hadoop 作业分析这些工作负载中的数据，也可以通过 Azure PowerShell 和 Hive 群集仪表板完成这种分析。
 
 ### <a name="apache-mahout-preinstalled-on-hdinsight-31"></a>Apache Mahout 已预装在 HDInsight 3.1 上
- [Mahout](http://hortonworks.com/hadoop/mahout/) 已预装在 HDInsight 3.1 Hadoop 群集上，使你无需任何其他群集配置，就能运行 Mahout 作业。 例如，可以使用远程桌面协议 (RDP) 远程访问 Hadoop 群集，并且无需执行附加的步骤，就能运行 Hello World Mahout 命令：
+ [Mahout](http://hortonworks.com/hadoop/mahout/) 已预装在 HDInsight 3.1 Hadoop 群集上，从而无需任何其他群集配置，就能运行 Mahout 作业。 例如，可以使用远程桌面协议 (RDP) 远程访问 Hadoop 群集，并且无需执行附加的步骤，就能运行 Hello World Mahout 命令：
 
         mahout org.apache.mahout.classifier.df.tools.Describe -p /user/hdp/glass.data -f /user/hdp/glass.info -d I 9 N L
 
@@ -1516,4 +1515,3 @@ SQL Server 的 Java 数据库连接 (JDBC) 驱动程序由 HDInsight 在内部�
 
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
-

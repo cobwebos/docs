@@ -13,18 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 869e5284c71904fcc817ceee0f39d94fab1bc6f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>教程：Azure Active Directory 与 T&E Express 的集成
 
-在本教程中，了解如何将 T&E Express 与 Azure Active Directory (Azure AD) 集成。
+在本教程中，你将学习如何与 Azure Active Directory (Azure AD) 集成 （&） E Express。
 
-将 T&E Express 与 Azure AD 集成提供以下优势：
+与 Azure AD 集成 （&） E Express 提供了以下好处：
 
 - 可在 Azure AD 中控制谁有权访问 T&E Express
 - 可以让用户使用其 Azure AD 帐户自动登录到 T&E Express（单一登录）
@@ -54,7 +53,7 @@ ms.lasthandoff: 04/07/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-te-express-from-the-gallery"></a>从库中添加 T&E Express
-若要配置 T&E Express 与 Azure AD 的集成，需要从库中将 T&E Express 添加到托管 SaaS 应用列表。
+若要配置的 T 和 E Express 集成到 Azure AD，你需要将 （&） E Express 从库添加到托管的 SaaS 应用程序列表。
 
 **若要从库中添加 T&E Express，请执行以下步骤：**
 
@@ -74,28 +73,28 @@ ms.lasthandoff: 04/07/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_search.png)
 
-5. 在结果窗格中，选择“T&E Express”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“T&E Express”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 T&E Express 的 Azure AD 单一登录。
+在本部分中，可以配置和测试 Azure AD 单一登录与 T E Express 基于一个名为"Britta 人 Simon"的测试用户。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 T&E Express 用户。 换句话说，需要建立 Azure AD 用户与 T&E Express 中相关用户之间的链接关系。
 
-通过将 Azure AD 中“用户名”的值分配为 T&E Express 中“用户名”的值来建立此链接关系。
+通过分配的值建立此链接关系**用户名**作为的值的 Azure AD 中**用户名**中 （&） E Express。
 
 若要配置和测试 T&E Express 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 T&E Express 测试用户](#creating-a-te-express-test-user)** - 在 T&E Express 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 （&） E Express 测试用户](#creating-a-te-express-test-user)** -若要具有 Britta 人 Simon 中 （&） E Express 链接到的 Azure AD 表示形式她的副本。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 T&E Express 应用程序中配置单一登录。
+在本部分中，可以将 Azure AD 单一登录 Azure 管理门户中启用和配置单一登录 （&） E Express 应用程序中。
 
 **若要配置 T&E Express 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -111,14 +110,14 @@ ms.lasthandoff: 04/07/2017
 
     ![配置单一登录](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，键入 `https://<domain>.tyeexpress.com` 值
+    a. 在“标识符”文本框中，键入 `https://<domain>.tyeexpress.com` 值
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 若要获取这些值，请联系 [ 支持团队](http://www.tyeexpress.com/contacto.aspx)。
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
 
@@ -162,7 +161,7 @@ ms.lasthandoff: 04/07/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tyeexpress-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -172,7 +171,7 @@ ms.lasthandoff: 04/07/2017
  
 ### <a name="creating-a-te-express-test-user"></a>创建 T&E Express 测试用户
 
-要使 Azure AD 用户能够登录 T&E Express，必须将这些用户预配到 T&E Express 中。  
+要使 Azure AD 用户能够登录到 （&） E Express，它们必须进行设置 （&） E Express。  
 就 T&E Express 来说，预配任务需要手动完成。
 
 **若要预配用户帐户，请执行以下步骤：**
@@ -187,7 +186,7 @@ ms.lasthandoff: 04/07/2017
 
     ![添加员工](./media/active-directory-saas-tyeexpress-tutorial/tye-usershome.png)
 
-4. 输入表单中所有必须填写的详细信息，然后单击保存按钮进行保存。
+4. 输入表单中所有必须填写的详细信息，并单击保存按钮进行保存。
 
     ![添加员工](./media/active-directory-saas-tyeexpress-tutorial/tye-usersadd.png)
 
@@ -200,9 +199,9 @@ ms.lasthandoff: 04/07/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 T&E Express，请执行以下步骤：**
+**若要将 Britta 人 Simon 分配到 （&） E Express，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -250,5 +249,4 @@ ms.lasthandoff: 04/07/2017
 [201]: ./media/active-directory-saas-tyeexpress-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tyeexpress-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tyeexpress-tutorial/tutorial_general_203.png
-
 

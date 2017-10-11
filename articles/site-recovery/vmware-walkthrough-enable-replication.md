@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 470b9ddd8df4a4e74ec7174f79020c252323e502
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="step-11-enable-replication-for-vmware-virtual-machines-to-azure"></a>步骤 11：启用 VMware 虚拟机到 Azure 的复制
 
@@ -34,13 +33,13 @@ ms.lasthandoff: 06/29/2017
 - Azure 用户帐户需要特定[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)才能启用 VM 到 Azure 的复制
 - 添加或修改 VM 时，可能需要 15 分钟或更长时间，更改才会生效并显示在门户中。
 - 可以在“配置服务器” > “上次联系位置”查看上次发现 VM 的时间。
-- 若要添加 VM 而不想要等待执行计划的发现，请突出显示配置服务器（不要单击它），然后单击“刷新”。
+- 要添加 VM 而不想要等待执行计划的发现，请突出显示配置服务器（不要单击它），并单击“刷新”。
 
 
 
 ## <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 
-默认情况下将复制计算机上的所有磁盘。 你可以从复制中排除磁盘。 例如，你可能不想要复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。 [了解详细信息](site-recovery-exclude-disk.md)
+默认情况下将复制计算机上的所有磁盘。 可以从复制中排除磁盘。 例如，你可能不希望复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。 [了解详细信息](site-recovery-exclude-disk.md)
 
 ## <a name="replicate-vms"></a>复制 VM
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 06/29/2017
 2. 在“源”中选择配置服务器。
 3. 在“计算机类型”中，选择“虚拟机”。
 4. 在“vCenter/vSphere 虚拟机监控程序”中，选择管理 vSphere 主机的 vCenter 服务器，或选择该主机。
-5. 选择进程服务器。 如果尚未创建任何额外的进程服务器，该进程服务器将是配置服务器。 。
+5. 选择进程服务器。 如果尚未创建任何额外的进程服务器，该进程服务器将是配置服务器。 然后单击“确定”。
 
     ![启用复制](./media/vmware-walkthrough-enable-replication/enable-replication2.png)
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 06/29/2017
 12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 。 请注意：
 
     * 复制组中的计算机将一起复制，并在故障转移时具有在崩溃时保持一致且应用保持一致的共享恢复点。
-    * 我们建议你将 VM 和物理服务器集合在一起，使其镜像你的工作负荷。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且你需要一致性时，才应使用该设置。
+    * 我们建议将 VM 和物理服务器集合在一起，使其镜像工作负荷。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且需要一致性时，才应使用该设置。
 
     ![启用复制](./media/vmware-walkthrough-enable-replication/enable-replication7.png)
 13. 单击“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
@@ -83,4 +82,3 @@ ms.lasthandoff: 06/29/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 12：运行测试故障转移](vmware-walkthrough-test-failover.md)
-

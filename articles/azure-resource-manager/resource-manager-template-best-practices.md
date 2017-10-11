@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: a23301ba88279af3f7bf4d353ae808e9eeb0900d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>创建 Azure Resource Manager 模板的最佳做法
 这些指导可帮助创建可靠且易于使用的 Azure 资源管理器模板。 这些指导只属于建议， 除非有明确的规定，否则不一定非要遵循。 在具体的场合下，可能需要对以下方法或示例之一做出变通。
@@ -396,5 +395,4 @@ ms.lasthandoff: 08/22/2017
 * 有关为虚拟机构建解决方案的指导，请参阅[在 Azure 中运行 Windows VM](../guidance/guidance-compute-single-vm.md) 和[在 Azure 中运行 Linux VM](../guidance/guidance-compute-single-vm-linux.md)。
 * 有关设置存储帐户的指导，请参阅 [Azure 存储性能和可伸缩性清单](../storage/common/storage-performance-checklist.md)。
 * 若要了解企业如何使用 Resource Manager 有效管理订阅，请参阅 [Azure 企业基架：出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
 

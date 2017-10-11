@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: a9de327c20463469bc91d9720aa17333a36f919e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储 
 
@@ -181,7 +180,7 @@ using (ITrackedSaveOperation stdout =
 
 使用 Azure Batch 文件约定库检索保存的输出时，以任务和作业为中心的方式执行此操作。 可以请求给定任务或作业的输出，而无需知道输出在 Azure 存储中的路径，甚至不需要知道其文件名。 可以按任务 ID 或作业 ID 请求输出文件。
 
-以下代码片段将循环访问某个作业的任务，列显有关该任务的输出文件的一些信息，然后从存储下载该任务的文件。
+以下代码片段将循环访问某个作业的任务，列显有关该任务的输出文件的一些信息，然后从存储空间下载该任务的文件。
 
 ```csharp
 foreach (CloudTask task in myJob.ListTasks())
@@ -262,4 +261,3 @@ GitHub 上的用于 .NET 的 Microsoft Azure SDK 存储库中提供了文件约�
 
 [1]: ./media/batch-task-output/task-output-01.png "门户中“保存的输出文件”和“保存的日志”选择器"
 [2]: ./media/batch-task-output/task-output-02.png "Azure 门户中的“任务输出”边栏选项卡"
-

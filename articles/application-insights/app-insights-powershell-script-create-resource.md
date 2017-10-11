@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: 4a7a4b719176a1d10bee2fc4f6b65204cc77bee8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: a828af9c7d207dd84cc626fc70206018fd67e2dd
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>用于创建 Application Insights 资源的 PowerShell 脚本
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 11/17/2016
 
 可以使用 PowerShell 自动创建新的资源。
 
-例如，如果正在开发移动设备应用，应用很可能有多个已发布版本可供客户随时使用。 你不希望从混合的不同版本中获取遥测结果。 因此，将获取生成过程以便为每个生成创建新资源。
+例如，如果正在开发移动设备应用，应用很可能有多个已发布版本可供客户随时使用。 不希望从混合的不同版本中获取遥测结果。 因此，将获取生成过程以便为每个生成创建新资源。
 
 > [!NOTE]
 > 如果想要同时创建一组资源，请考虑[使用 Azure 模板创建资源](app-insights-powershell.md)。
@@ -114,5 +113,4 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 * [从模板创建 Application Insights 和 Web 测试资源](app-insights-powershell.md)
 * [使用 PowerShell 设置 Azure 诊断的监视](app-insights-powershell-azure-diagnostics.md) 
 * [使用 PowerShell 设置警报](app-insights-powershell-alerts.md)
-
 

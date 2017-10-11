@@ -15,19 +15,18 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: huvalo
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 283a296fb39863c2801be1093cc4f56904786abd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Windows Server VM 上的 Django Hello World Web 应用
 
 > [!IMPORTANT] 
 > Azure 具有用于创建和处理资源的两个不同的部署模型：[Azure Resource Manager 和经典部署模型](../../../resource-manager-deployment-model.md)。 本文介绍经典部署模型。 我们建议在大多数新部署中使用 Resource Manager 模型。
 
-本教程演示如何在 Azure 虚拟机的 Windows Server 中托管基于 Django 的网站。 本教程假定你以前没有使用过 Azure。 完成本教程之后，将能够在云中启用和运行基于 Django 的应用程序。
+本教程演示如何在 Azure 虚拟机的 Windows Server 中托管基于 Django 的网站。 本教程假定你以前没有使用过 Azure。 完成本教程后，即可在云中启动和运行基于 Django 的应用程序。
 
 了解如何：
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 08/11/2017
 2. 设置 Azure 以将来自 Web 的端口 80 通信定向到虚拟机上的端口 80：
    
    1. 在 Azure 门户中，转到仪表板并选择新创建的虚拟机。
-   2. 单击“终结点”，并单击“添加”。
+   2. 单击“终结点”，然后单击“添加”。
 
      ![添加终结点](./media/python-django-web-app/django-helloworld-add-endpoint-new-portal.png)
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 08/11/2017
 > [!IMPORTANT] 
 > 以下说明假定你已正确登录到虚拟机。 同时还假定你正在虚拟机（而非本地计算机）中发出命令。
 
-## <a id="setup"> </a>安装 Python、Django 和 WFastCGI
+## <a id="setup"></a>安装 Python、Django 和 WFastCGI
 > [!NOTE]
 > 若要使用 Internet Explorer 下载，可能需要配置 Internet Explorer“增强的安全配置”设置。 为此，请单击“开始” > “管理工具” > “服务器管理器” > “本地服务器”。 单击“IE 增强的安全配置”，然后选择“关闭”。
 
@@ -176,4 +175,3 @@ ms.lasthandoff: 08/11/2017
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [python.org]: https://www.python.org/downloads/
 [wfastcgi]: https://pypi.python.org/pypi/wfastcgi
-

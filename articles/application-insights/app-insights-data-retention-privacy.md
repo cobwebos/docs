@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: d82f27c9a657a97f23b60ade352e4d2a87166233
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: ddb9fa516da66da0484619439848583a29e1f5c1
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -27,17 +26,17 @@ ms.lasthandoff: 04/12/2017
 
 首先，简短的答案是：
 
-* “按原样”运行的标准遥测模块不太可能将敏感数据发送到服务。 遥测考虑到负载、性能和使用指标、异常报告和其他诊断数据。 诊断报告中显示的主要用户数据是 URL；但是，应用在任何情况下都不应该将敏感数据以明文形式放在 URL 中。
+* 运行"现成"的标准遥测模块不可能向服务发送敏感数据。 遥测考虑到负载、性能和使用指标、异常报告和其他诊断数据。 诊断报告中显示的主要用户数据是 URL；但是，应用在任何情况下都不应该将敏感数据以明文形式放在 URL 中。
 * 可以编写发送其他自定义遥测数据的代码，帮助进行诊断与监视使用情况。 （这种可扩展性是 Application Insights 的突出特性之一）。在编写此代码时，有可能不小心包含个人数据和其他敏感数据。 如果应用程序可处理此类数据，则应对编写的所有代码进行彻底审查。
-* 开发和测试应用时，可以轻松检查 SDK 发送的内容。 数据将显示在 IDE 和浏览器的调试输出窗口中。 
-* 数据保存在美国的 [Microsoft Azure](http://azure.com) 服务器中。 （但应用可在任何位置运行）。Azure 有[严格的安全过程，并符合各种法规标准](https://azure.microsoft.com/support/trust-center/)。 只有你和指定的团队可以访问数据。 Microsoft 工作人员只会在你知情的情况下和受限的具体情况下，才对数据拥有受限的访问权限。 数据在传输时经过加密，但在服务器中不会加密。
+* 开发和测试应用时，可以轻松检查 SDK 发送的内容。 数据会显示在 IDE 和浏览器的调试输出窗口中。 
+* 数据保存在美国的 [Microsoft Azure](http://azure.com) 服务器中。 （但应用可在任何位置运行）。Azure 有[严格的安全过程，并符合各种法规标准](https://azure.microsoft.com/support/trust-center/)。 只有你和你指定的团队有权对你的数据。 Microsoft 工作人员只会在知情的情况下和受限的具体情况下，才对数据拥有受限的访问权限。 数据在传输时经过加密，但在服务器中不会加密。
 
-本文的余下部分详细阐述上述答案。 本文的内容简单直白，因此，你可以将其转达给不属于你的直属团队的同事。
+本文的余下部分详细阐述上述答案。 本文的内容简单直白，因此，可以将其转达给不属于直属团队的同事。
 
 ## <a name="what-is-application-insights"></a>什么是 Application Insights？
-[Azure Application Insights][start] 是 Microsoft 提供的一项服务，可帮助改进实时应用程序的性能和可用性。 它在应用程序运行时全程进行监视，包括测试期间以及发布或部署之后。 Application Insights 可创建图表和表格来显示多种信息，例如，一天中的哪些时间用户最多、应用的响应能力如何，以及应用依赖的任何外部服务是否顺利地为其提供服务。 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 此外，如果应用的可用性和性能有任何变化，服务会向你发送电子邮件。
+[Azure Application Insights][start] 是 Microsoft 提供的一项服务，可帮助改进实时应用程序的性能和可用性。 它在应用程序运行时全程进行监视，包括测试期间以及发布或部署之后。 Application Insights 可创建图表和表格来显示多种信息，例如，一天中的哪些时间用户最多、应用的响应能力如何，以及应用依赖的任何外部服务是否顺利地为其提供服务。 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 和服务将向你发送电子邮件是否存在的可用性和性能的应用程序中的任何更改。
 
-若要获取此功能，需在应用程序中安装 Application Insights SDK，该 SDK 将成为应用程序代码的一部分。 当应用运行时，SDK 将监视其操作，并将遥测发送到 Application Insights 服务。 这是 [Microsoft Azure](http://azure.com) 托管的云服务。 （不过，Application Insights 适用于任何应用程序，而不只是 Azure 中托管的应用程序）。
+要获取此功能，需在应用程序中安装 Application Insights SDK，该 SDK 将成为应用程序代码的一部分。 当应用运行时，SDK 将监视其操作，并将遥测发送到 Application Insights 服务。 这是 [Microsoft Azure](http://azure.com) 托管的云服务。 （不过，Application Insights 适用于任何应用程序，而不只是 Azure 中托管的应用程序）。
 
 ![应用中的 SDK 将遥测数据发送到 Application Insights 服务。](./media/app-insights-data-retention-privacy/01-scheme.png)
 
@@ -45,7 +44,7 @@ Application Insights 服务存储并分析遥测数据。 若要查看分析或�
 
 可以从 Application Insights 服务导出数据，例如，导出到数据库或外部工具。 需要为每项工具提供从服务获取的特殊密钥。 如果需要，可以吊销该密钥。 
 
-Application Insights SDK 可用于多种应用程序类型：托管在你自己的 J2EE 或 ASP.NET 服务器中或者 Azure 中的 Web 服务；Web 客户端 - 即网页中运行的代码；桌面应用和服务；设备应用，例如 Windows Phone、iOS 和 Android。 它们都将遥测数据发送到相同的服务。
+Application Insights SDK 可用于多种应用程序类型：托管在自己的 J2EE 或 ASP.NET 服务器中或者 Azure 中的 Web 服务；Web 客户端 - 即网页中运行的代码；桌面应用和服务；设备应用，例如 Windows Phone、iOS 和 Android。 它们都将遥测数据发送到相同的服务。
 
 ## <a name="what-data-does-it-collect"></a>它收集哪些数据？
 ### <a name="how-is-the-data-is-collected"></a>它如何收集数据？
@@ -54,7 +53,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在你自己�
 * SDK。可以[在开发阶段](app-insights-asp-net.md)或者[在运行时](app-insights-monitor-performance-live-website-now.md)将它与应用集成。 不同类型的应用程序有不同的 SDK。 此外还有[网页 SDK](app-insights-javascript.md)，连同页面一起加载到用户的浏览器中。
   
   * 每个 SDK 有许多[模块](app-insights-configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
-  * 如果在开发环境中安装 SDK，则除了使用标准模块发送你自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
+  * 如果在开发环境中安装 SDK，则除了使用标准模块发送自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
 * 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [J2EE 服务器](app-insights-java-agent.md)都可能有这种代理。
 * [可用性测试](app-insights-monitor-web-app-availability.md)是 Microsoft 运行的过程，可定期将请求发送到 Web 应用。 结果将发送到 Application Insights 服务。
 
@@ -73,7 +72,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在你自己�
 [更多详细信息](#data-sent-by-application-insights)。
 
 ## <a name="how-can-i-verify-whats-being-collected"></a>如何验证收集了哪些信息？
-如果使用 Visual Studio 开发应用，请在调试模式下运行应用 (F5)。 遥测数据将显示在“输出”窗口中。 在该窗口中，可以复制遥测数据并将其格式设置为 JSON 以便于检查。 
+如果使用 Visual Studio 开发应用，请在调试模式下运行应用 (F5)。 遥测数据会显示在“输出”窗口中。 在该窗口中，可以复制遥测数据并将其格式设置为 JSON 以便于检查。 
 
 ![](./media/app-insights-data-retention-privacy/06-vs.png)
 
@@ -92,26 +91,26 @@ Application Insights SDK 可用于多种应用程序类型：托管在你自己�
 1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）可保留 90 天。
 
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
-你和你的团队成员（如果使用组织帐户）可以看到数据。 
+你和团队成员（如果使用组织帐户）可以看到数据。 
 
-你和你的团队成员可以导出数据，还可以将其复制到其他位置并传递给其他人员。
+你和团队成员可以导出数据，还可以将其复制到其他位置并传递给其他人员。
 
 #### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Microsoft 如何处理应用发送到 Application Insights 的信息？
-Microsoft 只使用这些数据来向你提供服务。
+Microsoft 仅为了向你提供该服务使用的数据。
 
 ## <a name="where-is-the-data-held"></a>数据保存在哪个位置？
 * 美国或欧洲。 创建新的 Application Insights 资源时，可以选择存储位置。 
 
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-or-europe"></a>这是否意味着必须在美国或欧洲托管我的应用？
-* 不会。 应用程序可在任何位置运行，不管是在你自己的本地主机中还是云中。
+* 不会。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
 Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](http://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
 
 数据存储在 Microsoft Azure 服务器中。 对于 Azure 门户中的帐户，将实施 [Azure Security, Privacy, and Compliance document](http://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中所述的帐户限制。
 
-Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得你的许可以及为了帮助你使用 Application Insights 而有必要访问时才访问你的数据。 
+Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得许可以及为了帮助你使用 Application Insights 而有必要访问时才访问数据。 
 
 跨所有客户应用程序（例如数据速率和平均跟踪大小）的聚合数据用于改善 Application Insights。
 
@@ -141,9 +140,9 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 本文档末尾的表格包含收集的数据的更详细说明。
 
 #### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>我是否需要负责遵守有关 PII 的法规？
-是的。 你有责任确保数据的收集与使用符合法规和 Microsoft Online Services 条款。
+是的。 有责任确保数据的收集与使用符合法规和 Microsoft Online Services 条款。
 
-你应该适当地通知客户有关应用程序所收集的数据和数据用法。
+应该适当地通知客户有关应用程序所收集的数据和数据用法。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>用户是否可以关闭 Application Insights？
 无法直接关闭。 我们未提供用户可操作的开关来关闭 Application Insights。
@@ -151,7 +150,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 但是，可以在应用程序中实现此类功能。 所有 SDK 都包括关闭遥测收集的 API 设置。 
 
 #### <a name="my-application-is-unintentionally-collecting-sensitive-information-can-application-insights-scrub-this-data-so-it-isnt-retained"></a>我的应用程序无意中收集了敏感信息。 Application Insights 是否可以擦除这些数据，以免将它保留？
-Application Insights 不会筛选或删除数据。 你应该适当地管理数据，避免将此类数据发送到 Application Insights。
+Application Insights 不会筛选或删除数据。 应该适当地管理数据，避免将此类数据发送到 Application Insights。
 
 ## <a name="data-sent-by-application-insights"></a>Application Insights 发送的数据
 不同的平台有不同的 SDK，并且有多个可安装的组件。 （请参阅 [Application Insights - 概述][start]。）每个组件发送不同的数据。
@@ -213,5 +212,4 @@ Application Insights 不会筛选或删除数据。 你应该适当地管理数�
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-
 

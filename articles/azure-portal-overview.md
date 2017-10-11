@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 71820306716c6297085a29f3ceab89b55396bfe6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="microsoft-azure-portal-overview"></a>Microsoft Azure 门户概述
-Microsoft Azure 门户是一个中心位置，可以在其中预配和管理 Azure 资源。  本教程会帮助你熟悉此门户，并且向你介绍如何使用以下一些关键功能：
+Microsoft Azure 门户是一个中心位置，可以在其中预配和管理 Azure 资源。  本教程将帮助你熟悉此门户，并介绍如何使用以下一些关键功能：
 
-* **综合应用商店**，可以在其中浏览数千个来自 Microsoft 和其他供应商的应用，可以购买这些应用和/或对其进行设置。
+* 
+            **综合应用商店**，可以在其中浏览数千个来自 Microsoft 和其他供应商的应用，可以购买这些应用和/或对其进行设置。
 * **统一且可升级的浏览体验**，使你轻松查找你关注的资源并执行各种管理操作。
 * **一致的管理页面**（或边栏选项卡），以一致的方式显示设置、操作、计费信息、运行状况监视和使用情况数据等等，使你能够管理 Azure 的各种服务。
-* **个性化体验**，可以创建自定义的开始屏幕，其中显示登录时想要看见的信息。  还可以自定义包含磁贴的任意管理边栏选项卡。
+* 
+            **个性化体验**，可以创建自定义的开始屏幕，其中显示登录时想要看见的信息。  还可以自定义包含磁贴的任意管理边栏选项卡。
   
   ![熟悉 Azure 门户 UI][UIOrientation]
 
@@ -46,7 +47,7 @@ Azure 应用商店提供数千商品，可以在一个位置集中创建商品�
 ![门户类别][PortalCategories]
 
 ## <a name="how-to-find-your-resources"></a>如何查找资源
-始终可以将经常访问的资源固定到启动板，但你也可能需要浏览不经常访问的内容。  可以通过浏览中心（如下所示）访问所有资源。  可以按订阅进行筛选、选择列/调整列大小，并能通过单击各个项导航到管理边栏选项卡。
+始终可以将经常访问的资源固定到启动板，但也可能需要浏览不经常访问的内容。  可以通过浏览中心（如下所示）访问所有资源。  可以按订阅进行筛选、选择列/调整列大小，并能通过单击各个项导航到管理边栏选项卡。
 
 ![浏览中心][BrowseHub]
 
@@ -67,13 +68,13 @@ Azure 应用商店提供数千商品，可以在一个位置集中创建商品�
 ![帮助和支持][HelpSupport]
 
 ## <a name="summary"></a>摘要
-让我们回顾一下你在本教程中学习的内容：
+让我们回顾一下本教程的讲解内容：
 
 * 学习了如何注册、获取订阅，并浏览到门户
 * 通过门户 UI 进行导航，学习了如何创建和浏览资源
 * 学习了如何创建资源和浏览资源
 * 学习了结构或管理边栏选项卡，以及如何统一管理不同类型的资源
-* 学习了如何自定义门户，以便你将关心的信息置于前面或中心位置
+* 如何自定义门户，以便将关注的信息置于前面或中心位置
 * 学习了如何使用基于角色的访问 (RBAC) 控制对资源的访问
 * 学习了如何获得帮助和支持
 
@@ -85,4 +86,3 @@ Microsoft Azure 门户大大简化了在云中构建和管理应用程序的工�
 [ManageResource]: ./media/azure-portal-how-to-use/azure_portal_4.png
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
-

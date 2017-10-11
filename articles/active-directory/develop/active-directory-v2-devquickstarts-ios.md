@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: cf1455dc3d55ea3581195f7a315556d134c23a26
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>使用 v2.0 终结点，通过图形 API 将登录添加到使用第三方库的 iOS 应用
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。 开发人员可以使用任何想要的库来与我们的服务集成。 为了帮助开发人员将我们的平台与其他库结合使用，我们撰写了数篇演练（例如本演练），演示如何配置第三方库，使其连接到 Microsoft 标识平台。 大部分实施 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749)的库都能连接到 Microsoft 标识平台。
@@ -62,7 +61,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 * 从门户复制**重定向 URI**。 必须使用默认值 `urn:ietf:wg:oauth:2.0:oob`。
 
 ## <a name="download-the-third-party-nxoauth2-library-and-create-a-workspace"></a>下载 NXOAuth2 第三方库并创建工作区
-在本演练中，将使用 GitHub 提供的 OAuth2Client，这是适用于 Mac OS X 和 iOS 的 OAuth2 库（Cocoa 和 Cocoa Touch）。 此库以 OAuth2 规范的第 10 版草稿为基础。它将实现本机应用程序配置文件，并支持用户的授权终结点。 用户需要上述各项，才能与 Microsoft 标识平台集成。
+本演练使用 GitHub 提供的 OAuth2Client，这是适用于 Mac OS X 和 iOS 的 OAuth2 库（Cocoa 和 Cocoa Touch）。 此库以 OAuth2 规范的第 10 版草稿为基础。 它将实现本机应用程序配置文件，并支持用户的授权终结点。 用户需要上述各项，才能与 Microsoft 标识平台集成。
 
 ### <a name="add-the-library-to-your-project-by-using-cocoapods"></a>使用 CocoaPods 将库添加到项目
 CocoaPods 是 Xcode 项目的依赖关系管理器。 它会自动管理上述安装步骤。
@@ -355,7 +354,7 @@ Web 视图可提示用户提供短信等附加因素（如果已配置）或向�
 ```
 
 ### <a name="provide-a-way-to-call-the-graph-api-when-someone-types-in-the-search-field"></a>提供用户在搜索字段中键入内容时调用图形 API 的方法
-当用户在框中键入搜索内容时，需要将该内容塞入图形 API。 将在以下代码中生成的 `GraphAPICaller` 类会将查找功能从演示当中分离出来。 现在，让我们编写会将任何搜索字符送入图形 API 的代码。 我们的做法是提供称为 `lookupInGraph` 的方法，其采用我们想要搜索的字符串。
+当用户在框中键入搜索内容时，需要将该内容塞入图形 API。 你会在以下代码中生成的 `GraphAPICaller` 类会将查找功能从演示当中分离出来。 现在，让我们编写会将任何搜索字符送入图形 API 的代码。 我们的做法是提供称为 `lookupInGraph` 的方法，其采用我们想要搜索的字符串。
 
 ```objc
 
@@ -490,7 +489,8 @@ if (searchText.length > 0) {
 NSString *graphURL = [NSString stringWithFormat:@"%@%@/users", data.graphApiUrlString, data.apiversion];
 ```
 
-接下来，需要指定也会提供给图形 API 调用的参数。 *切记*不要将参数放在资源终结点中，因为系统会在运行时针对所有不符合 URI 的字符擦除该终结点。 必须在参数中提供所有查询代码。
+接下来，需要指定也会提供给图形 API 调用的参数。 
+            *切记*不要将参数放在资源终结点中，因为系统会在运行时针对所有不符合 URI 的字符擦除该终结点。 必须在参数中提供所有查询代码。
 
 ```objc
 
@@ -570,5 +570,4 @@ NSArray *accounts = [store accountsWithAccountType:@"myGraphService"];
 
 ## <a name="get-security-updates-for-our-product"></a>获取产品的安全更新
 建议访问[安全技术中心](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”，以便在发生安全事件时获取相关通知。
-
 

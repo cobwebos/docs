@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>网络安全组 (NSG) 的日志分析
 
@@ -124,4 +123,3 @@ ms.lasthandoff: 08/07/2017
 ## <a name="view-and-analyze-logs"></a>查看和分析日志
 
 若要了解如何查看活动日志数据，请阅读 [Azure 活动日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 若要了解如何查看诊断日志数据，请阅读 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 如果将诊断数据发送到 Log Analytics，可以使用 [Azure 网络安全组分析](../log-analytics/log-analytics-azure-networking-analytics.md)（预览版）管理解决方案获得更多见解。 
-

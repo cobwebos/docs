@@ -1,6 +1,6 @@
 ---
 title: "如何使用 Azure 媒体服务执行实时传送视频流以通过 .NET 创建多比特率流 | Microsoft Docs"
-description: "本教程将指导你使用 .NET SDK 完成创建频道的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。"
+description: "本教程指导使用 .NET SDK 完成创建频道的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。"
 services: media-services
 documentationcenter: 
 author: anilmur
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: juliako;anilmur
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 997f1f731a7517f9dafa13097c7712eef7a099b8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.openlocfilehash: 22d63ff5e9fd33db8711b0c5125ab0882b9f6a74
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
@@ -28,12 +27,12 @@ ms.lasthandoff: 07/18/2017
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 > 
 > 
 
 ## <a name="overview"></a>概述
-本教程将指导你完成创建 **频道** 的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
+本教程介绍了创建**通道**的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
 
 有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
@@ -59,11 +58,11 @@ ms.lasthandoff: 07/18/2017
     使用此 URL 来验证频道是否正常接收实时流。
 
 5. 创建资源。
-6. 如果你想让资源在播放期间进行动态加密，请执行以下操作：
+6. 如果想让资源在播放期间进行动态加密，请执行以下操作：
 7. 创建内容密钥。
 8. 配置内容密钥授权策略。
 9. 配置资产传送策略（由动态打包和动态加密使用）。
-10. 创建节目并指定使用你创建的资产。
+10. 创建节目并指定使用创建的资产。
 11. 通过创建按需定位器发布与节目关联的资产。
 
     >[!NOTE]
@@ -75,23 +74,23 @@ ms.lasthandoff: 07/18/2017
 15. 删除节目（并选择性地删除资产）。
 
 ## <a name="what-youll-learn"></a>学习内容
-本主题演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此将使用管理长时间运行的操作的 .NET API。
+本主题演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此使用管理长时间运行的操作的 .NET API。
 
-本主题将介绍如何执行以下操作：
+本主题显示如何执行以下任务：
 
 1. 创建并启动频道。 将使用长时间运行的 API。
 2. 获取频道引入（输入）终结点。 应将此终结点提供给可以发送单比特率实时流的编码器。
 3. 获取预览终结点。 此终结点用于预览流。
-4. 创建将用于存储你的内容的资源。 还应配置资源传送策略，如此示例中所示。
-5. 创建节目并指定使用你先前创建的资源。 启动该节目。 将使用长时间运行的 API。
+4. 创建用于存储你的内容的资源。 还应配置资源传送策略，如此示例中所示。
+5. 创建节目并指定使用先前创建的资源。 启动该节目。 会使用长时间运行的 API。
 6. 为资源创建定位器，以便发布内容，并可以将内容流式传输到客户端。
-7. 显示和隐藏清单。 启动和停止广告。 将使用长时间运行的 API。
+7. 显示和隐藏清单。 启动和停止广告。 会使用长时间运行的 API。
 8. 清理频道及所有关联的资源。
 
 ## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件。
 
-* 一个 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
+* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
 * 必须使用适用于 .NET 的媒体服务 SDK 版本 3.2.0.0 或更高版本。
@@ -494,6 +493,5 @@ ms.lasthandoff: 07/18/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 
 

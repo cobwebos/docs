@@ -15,15 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: b382e545e47353a177b3b02b3931001ab22d53c8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.openlocfilehash: 7d2b498d3f84c4fd6cccf97c6d7781f293f5b395
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
-
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>使用 PowerShell 将 Windows VM 从 Amazon Web Services (AWS) 移到 Azure
 
 如果正在评估用于托管工作负荷的 Azure 虚拟机，可以导出现有 Amazon Web Services (AWS) EC2 Windows VM 实例，然后将虚拟硬盘 (VHD) 上传到 Azure。 上传 VHD 后，可以在 Azure 中从 VHD 创建新的 VM。 
@@ -71,4 +68,3 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
 - 如果导出前未运行 Sysprep，VHD 将被视为**专用化**，请参阅[将专用化的 VHD 上传到 Azure 并创建新的 VM](create-vm-specialized.md)
 
  
-

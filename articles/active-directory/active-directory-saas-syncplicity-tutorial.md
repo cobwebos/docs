@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 1321fa71bcd625d6ea754432bfb402d3919e38f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>教程：Azure Active Directory 与 Syncplicity 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Syncplicity 测试用户](#creating-a-syncplicity-test-user)** - 在 Syncplicity 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
+3. **[创建 Syncplicity 测试用户](#creating-a-syncplicity-test-user)** -若要在 Syncplicity 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -119,7 +118,7 @@ ms.lasthandoff: 06/23/2017
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Syncplicity 客户端支持团队](https://www.syncplicity.com/contact-us)获取这些值。 
  
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-syncplicity-tutorial/tutorial_syncplicity_certificate.png) 
 
@@ -134,7 +133,7 @@ ms.lasthandoff: 06/23/2017
 
 7. 登录到 **Syncplicity** 租户。
 
-8. 在顶部菜单中，单击“管理员”，选择“设置”，然后单击“自定义域和单一登录”。
+8. 在顶部菜单中，单击“管理员”，选择“设置”，并单击“自定义域和单一登录”。
    
     ![Syncplicity](./media/active-directory-saas-syncplicity-tutorial/ic769545.png "Syncplicity")
 
@@ -185,7 +184,7 @@ ms.lasthandoff: 06/23/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -194,7 +193,7 @@ ms.lasthandoff: 06/23/2017
 ### <a name="creating-a-syncplicity-test-user"></a>创建 Syncplicity 测试用户
 要使 AAD 用户能够登录，必须将这些用户预配到 Syncplicity 应用程序中。 本部分介绍如何在 Syncplicity 中创建 AAD 用户帐户。
 
-**若要将用户帐户预配到 Syncplicity，请执行以下步骤：**
+**要将用户帐户预配到 Syncplicity，请执行以下步骤：**
 
 1. 登录到 **Syncplicity** 租户（例如：`https://company.Syncplicity.com`）。
 
@@ -220,7 +219,7 @@ ms.lasthandoff: 06/23/2017
     >如果没有列出任何组，请单击“下一步”。 
     > 
 
-6. 在用户的计算机上选择要置于 Syncplicity 的控制下的文件夹，然后单击“下一步”。
+6. 选择你想要在用户的计算机上的 Syncplicity 控制之下，然后单击的文件夹**下一步**。
    
     ![Syncplicity 文件夹](./media/active-directory-saas-syncplicity-tutorial/ic769773.png "Syncplicity 文件夹")
 
@@ -235,7 +234,7 @@ ms.lasthandoff: 06/23/2017
 
 **若要将 Britta Simon 分配到 Syncplicity，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -282,5 +281,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-syncplicity-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-syncplicity-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-syncplicity-tutorial/tutorial_general_203.png
-
 

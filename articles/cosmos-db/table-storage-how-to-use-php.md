@@ -14,12 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 7a48446a11c5c6db0c9f4fdd8872b1e3c12e85c3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-use-table-storage-from-php"></a>如何通过 PHP 使用表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -35,7 +34,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序
 创建访问 Azure 表服务的 PHP 应用程序的唯一要求是从代码中引用 Azure SDK for PHP 中的类。 可以使用任何开发工具（包括“记事本”）创建应用程序。
 
-在本指南中，将使用表服务功能，这些功能可在 PHP 应用程序中本地调用，或通过在 Azure 的 Web 角色、辅助角色或网站中运行的代码调用。
+本指南涉及使用表服务功能，可在 PHP 应用程序中本地调用，或在 Azure Web 角色、辅助角色或网站中运行的代码内调用这些功能。
 
 ## <a name="get-the-azure-client-libraries"></a>获取 Azure 客户端库
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
@@ -82,7 +81,7 @@ UseDevelopmentStorage=true
   * 默认情况下，它附带了对一个外部源的支持 - 环境变量
   * 可通过扩展 **ConnectionStringSource** 类来添加新源
 
-在此处列出的示例中，将直接传递连接字符串。
+在此处列出的示例中，直接传递连接字符串。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -156,7 +155,7 @@ catch(ServiceException $e){
 
 有关表属性和类型的信息，请参阅[了解表服务数据模型][table-data-model]。
 
-**TableRestProxy** 类提供了用于插入实体的两个替代方法：**insertOrMergeEntity** 和 **insertOrReplaceEntity**。 要使用这些方法，请创建新的 **Entity**，并将其作为参数传递到上述任一方法。 如果实体不存在，则每种方法都将插入实体。 在实体已存在的情况下，如果属性已存在，则 **insertOrMergeEntity** 更新属性值；如果属性不存在，则该方法添加新属性，而 **insertOrReplaceEntity** 会完全替换现有实体。 下面的示例演示如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 为“tasksSeattle”且 `RowKey` 为“1”的实体不存在，则将插入该实体。 但是，如果之前已插入该实体（如上面的示例所示），则将更新 `DueDate` 属性并添加 `Status` 属性。 系统还将更新 `Description` 和 `Location` 属性，但使用的值实际上会使其保持不变。 如果后面两个属性不是如示例中所示添加的，但已存在于目标实体上，则其现有值将保持不变。
+**TableRestProxy** 类提供了用于插入实体的两个替代方法：**insertOrMergeEntity** 和 **insertOrReplaceEntity**。 要使用这些方法，请创建新的 **Entity**，并将其作为参数传递到上述任一方法。 如果实体不存在，则每种方法都将插入实体。 在实体已存在的情况下，如果属性已存在，则 **insertOrMergeEntity** 更新属性值；如果属性不存在，则该方法添加新属性，而 **insertOrReplaceEntity** 会完全替换现有实体。 下面的示例演示如何使用 **insertOrMergeEntity**。 如果实体具有 `PartitionKey`“tasksSeattle”并且 `RowKey`“1”不存在，则将插入该实体。 但是，如果之前已插入该实体（如上面的示例所示），则将更新 `DueDate` 属性并添加 `Status` 属性。 系统还将更新 `Description` 和 `Location` 属性，但使用的值实际上会使其保持不变。 如果后面两个属性不是如示例中所示添加的，但已存在于目标实体上，则其现有值将保持不变。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -228,7 +227,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>检索分区中的所有实体
-使用筛选器来构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。 若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition_name*”。 下面的示例演示如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
+使用筛选器来构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。 若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition_name*”。 下面的示例演示了如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -261,7 +260,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>检索分区中的一部分实体
-可以使用上一示例中使用的同一模式来检索分区中的部分实体。 检索的实体子集由所使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定的 `Location` 和早于 `DueDate` 的所有实体。
+可以使用上一示例中使用的同一模式来检索分区中的部分实体。 检索的实体子集将由所使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定的 `Location` 和早于 `DueDate` 的所有实体。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -398,7 +397,7 @@ catch(ServiceException $e){
 请注意，为了进行并发检查，可以使用 **DeleteEntityOptions->setEtag** 方法并将 **DeleteEntityOptions** 对象作为第四个参数传递到 **deleteEntity**，来为要删除的实体设置 Etag。
 
 ## <a name="batch-table-operations"></a>对表操作进行批处理
-利用 **TableRestProxy->batch** 方法，可以通过一个请求执行多个操作。 此处的模式涉及将操作添加到 **BatchRequest**对象，并将 **BatchRequest** 对象传递到 **TableRestProxy->batch** 方法。 要将操作添加到 **BatchRequest** 对象，可以多次调用以下任一方法：
+利用 **TableRestProxy->batch** 方法，可以通过一个请求执行多个操作。 此处的模式涉及将操作添加到 **BatchRequest**对象，然后将 **BatchRequest** 对象传递到 **TableRestProxy->batch** 方法。 要将操作添加到 **BatchRequest** 对象，可以多次调用以下任一方法：
 
 * **addInsertEntity**（添加 insertEntity 操作）
 * **addUpdateEntity**（添加 updateEntity 操作）
@@ -494,4 +493,3 @@ catch(ServiceException $e){
 [table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
-

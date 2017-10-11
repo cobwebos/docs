@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/24/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
 ## <a name="overview"></a>概述
@@ -39,8 +38,8 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 接着，按以下步骤打开设备包装。
 
 #### <a name="to-unpack-your-device"></a>打开设备包装
-1. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开箱子。 请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)，帮助你评估设备是否处于良好的工作状态。
-2. 打开外箱，然后取出装有主机箱和 EBOD 机箱的两个箱子。 现可打开主机箱和 EBOD 机箱的包装。 下图显示了一个机箱解包后的视图。
+1. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开箱子。 请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)来帮助你评估是否在设备处于正常工作。
+2. 打开外箱，并取出装有主机箱和 EBOD 机箱的两个箱子。 现可打开主机箱和 EBOD 机箱的包装。 下图显示了一个机箱解包后的视图。
    
     ![打开存储设备的包装](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
@@ -72,7 +71,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 接下来是安装设备的机架。
 
 ## <a name="rack-mount-your-storsimple-8600-device"></a>安装 StorSimple 8600 设备的机架
-请按照以下步骤，将 StorSimple 8600 存储设备安装在 19 英寸标准机架（带前后立柱）中。 此设备带有两个机箱：1 个主机箱和&1; 个 EBOD 机箱。 两个机箱皆需安装在机架上。
+请按照以下步骤，将 StorSimple 8600 存储设备安装在 19 英寸标准机架（带前后立柱）中。 此设备带有两个机箱：1 个主机箱和 1 个 EBOD 机箱。 两个机箱皆需安装在机架上。
 
 安装需要多个步骤，各步骤请详见以下流程。
 
@@ -104,7 +103,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 提供了 1 组用于 19 英寸机架箱的安装导轨。 导轨已经过测试，足以承担最大机箱重量。 还可在这些导轨安装多个机箱，而不会额外占用机架空间。 首先安装 EBOD 机箱。
 
 #### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>将 EBOD 机箱安装在导轨上
-1. 仅当设备上未安装内部导轨时，才需执行此步骤。 通常，出厂时内部导轨已装好。 若未安装，则将左侧和右侧导轨安装到机箱底架的侧面。 每侧使用&6; 个公制螺丝连接。 为帮助确定方向，导轨上标有 **LH – Front** 和 **RH – Front**，固定在机箱后部的导轨一端为锥形。
+1. 仅当设备上未安装内部导轨时，才需执行此步骤。 通常，出厂时内部导轨已装好。 若未安装，则将左侧和右侧导轨安装到机箱底架的侧面。 每侧使用 6 个公制螺丝连接。 为帮助确定方向，导轨上标有 **LH – Front** 和 **RH – Front**，固定在机箱后部的导轨一端为锥形。
    
     ![在机箱底部安装导轨](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
@@ -116,7 +115,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    |  2 |底架滑轨 |
 2. 将左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和**此面朝上**，可帮助正确定向。
 3. 找到导轨组件前部和后部的导轨销。 延长导轨，使其适合机架立柱间距，并将销插入前后机架立柱的垂直部件孔中。 确保导轨组件保持水平。
-4. 使用提供的&2; 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用&1; 颗螺丝。
+4. 使用提供的 2 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用 1 颗螺丝。
 5. 其他导轨组装请重复以上步骤。
    
      ![将导轨固定到机架机箱上](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
@@ -142,7 +141,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **将机箱安装到机架上**
 3. 拉松法兰帽，取下左前和右前的法兰帽。 只需将法兰帽卡到法兰上。
-4. 每个法兰左右各安装&1; 个提供的十字螺丝，将机箱固定在机架中。
+4. 每个法兰左右各安装 1 个提供的十字螺丝，将机箱固定在机架中。
 5. 将法兰帽压入到合适位置并将其卡入到位，完成法兰帽安装。
    
      ![安装法兰帽](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
@@ -172,8 +171,8 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 在开始设备布线之前，需要：
 
 * 主机箱和 EBOD 机箱（完全解包）
-* 设备随附的&4; 根电缆（主机箱和 EBOD 机箱各&2; 根）
-* 设备随附的&2; 根 SAS 电缆（用于连接 EBOD 机箱和主机箱）
+* 设备随附的 4 根电缆（主机箱和 EBOD 机箱各 2 根）
+* 设备随附的 2 根 SAS 电缆（用于连接 EBOD 机箱和主机箱）
 * 具有 2 个电源分配单位 (PDU)（推荐）
 * 网络电缆
 * 提供的串行电缆
@@ -182,7 +181,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 * [StorSimple 设备上适用于 10 GbE 网络接口的支持硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### <a name="sas-and-power-cabling"></a>SAS 和电源布线
-此设备配有&1; 个主机箱和&1; 个 EBOD 机箱。 需要将这两个单元连接到一起，才可获得串行 SCSI (SAS) 连接和电源。
+此设备配有 1 个主机箱和 1 个 EBOD 机箱。 需要将这两个单元连接到一起，才可获得串行 SCSI (SAS) 连接和电源。
 
 首次布置此设备时，要先执行 SAS 布线步骤，再完成电源布线步骤。
 
@@ -229,12 +228,12 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 
 进行设备布线时，最低配置要求为：
 
-* 每个控制器上至少连接&2; 个网络接口，分别用于云访问和 iSCSI。 DATA 0 端口已自动启用，且通过设备串行控制台配置完毕。 除 DATA 0 外，还需要通过 Azure 经典门户再配置一个数据端口。 在此情况下，将 DATA 0 端口连接到主 LAN（具有 Internet 访问的网络）。 其他数据端口可连接到网络的 SAN/iSCSI LAN (VLAN) 分段，具体取决于预期角色。
+* 每个控制器上至少连接 2 个网络接口，分别用于云访问和 iSCSI。 DATA 0 端口已自动启用，且通过设备串行控制台配置完毕。 除 DATA 0 外，还需要通过 Azure 经典门户再配置一个数据端口。 在此情况下，将 DATA 0 端口连接到主 LAN（具有 Internet 访问的网络）。 其他数据端口可连接到网络的 SAN/iSCSI LAN (VLAN) 分段，具体取决于预期角色。
 * 将每个控制器上的相同接口连接到同一网络中，确保在发生控制器故障转移时可用。 例如，如果选择对一个控制器连接 DATA 0 和 DATA 3，则需对另一控制器连接相应的 DATA 0 和 DATA 3。
 
 对于高可用性和性能，请记住：
 
-* 如果可能，可在每个控制器上配置一对用于云访问的网络接口 (1 GbE) 和另一对用于 iSCSI 的网络接口（推荐&10; GbE）。
+* 如果可能，可在每个控制器上配置一对用于云访问的网络接口 (1 GbE) 和另一对用于 iSCSI 的网络接口（推荐 10 GbE）。
 * 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。 有关详细信息，请参阅 [StorSimple 设备高可用性要求](storsimple-system-requirements.md#high-availability-requirements-for-storsimple)下的**网络接口**。
 
 > [!NOTE]
@@ -268,5 +267,4 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 
 ## <a name="next-steps"></a>后续步骤
 现即可[部署和配置本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
-
 

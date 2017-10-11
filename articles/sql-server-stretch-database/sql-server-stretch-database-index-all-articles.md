@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: DouglasL
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题
 本主题列出的每个主题都可以直接应用于 Azure **SQL Server Stretch Database** 服务。 可使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。
@@ -56,7 +55,6 @@ ms.lasthandoff: 11/17/2016
 ## <a name="backup-and-recovery"></a>备份和恢复
 | &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
-| 14 |[备份启用了延伸的数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了延伸的数据库。 |
-| 15 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了延伸的数据库。 |
-
+| 14 |[备份启用了延伸的数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了 Stretch 的数据库。 |
+| 15 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了 Stretch 的数据库。 |
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 6ddb1915c8073a7b64ba03ff6b90e701ad337c3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.openlocfilehash: 41a26e8b13fdb2531924ba441017c4c01e664995
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>适用于 Azure 虚拟网络的常见 PowerShell 命令
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 07/18/2017
 
 如果运行本文中的多个命令，以下一些变量可能将对你有用：
 
-- $location - 网络资源的位置。 可以使用 [Get-AzureRmLocation](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermlocation) 查找适合你的[地理区域](https://azure.microsoft.com/regions/)。
+- $location - 网络资源的位置。 可以使用 [Get-AzureRmLocation](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermlocation) 查找适合[地理区域](https://azure.microsoft.com/regions/)。
 - $myResourceGroup - 网络资源所在的资源组名称。
 
 ## <a name="create-network-resources"></a>创建网络资源
@@ -76,5 +75,4 @@ ms.lasthandoff: 07/18/2017
 ## <a name="next-steps"></a>后续步骤
 * 使用[创建 VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时创建的网络接口。
 * 了解如何[创建具有多个网络接口的 VM](../../virtual-network/virtual-networks-multiple-nics.md)。
-
 

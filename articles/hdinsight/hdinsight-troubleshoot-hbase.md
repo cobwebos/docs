@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 15412c3853a2b8436c5e96034c9a92a2a1094662
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 HBase 进行故障排除
 
 了解处理 Apache Ambari 中的 Apache HBase 有效负载时的最常见问题及其解决方法。
@@ -29,7 +27,7 @@ ms.lasthandoff: 08/23/2017
 
 运行 `hbase hbck` 命令时，可能会出现的一条常见错误消息是“多个区域未分配，或者区域链中出现漏洞”。
 
-在 HBase Master UI 中，可能会看到所有区域服务器中非均衡区域的数目。 然后，可以运行 `hbase hbck` 命令查看区域链中的漏洞。
+在 HBase Master UI 中，可以看到所有区域服务器中非均衡区域的数目。 然后，可以运行 `hbase hbck` 命令查看区域链中的漏洞。
 
 漏洞可能是脱机区域造成的，因此请先修复分配问题。 
 
@@ -43,7 +41,7 @@ ms.lasthandoff: 08/23/2017
 6. 再次运行 `hbase hbck` 命令（不带任何选项）。 检查此命令的输出以确保分配了所有区域。
 
 
-## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>如何解决使用用于区域分配的 hbck 命令时出现的超时问题
+## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>使用 hbck 命令进行区域分配时，如何解决超时问题
 
 ### <a name="issue"></a>问题
 
@@ -206,7 +204,7 @@ HDInsight 群集已减少到很少的节点。 节点数低于或接近于 HDFS 
    The filesystem under path '/' is HEALTHY
    ```
 
-3. 如果确定没有缺失、损坏或正在复制的块，或者这些块可以忽略，请运行以下命令使名称节点退出安全模式：
+3. 如果确定没有缺失、损坏或复制不足的块，或者这些块可以忽略，请运行以下命令使名称节点退出安全模式：
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
@@ -248,7 +246,7 @@ HDInsight 群集已减少到很少的节点。 节点数低于或接近于 HDFS 
            count 'SYSTEM.CATALOG'
    ```
 
-   此命令应当返回类似于以下内容的错误： 
+   此命令应返回类似于下方所示的错误： 
 
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
@@ -294,7 +292,7 @@ HBase Master 服务可能需要花费长达五分钟才能稳定下来并完成�
 
 ### <a name="detailed-description"></a>详细说明
 
-Linux 群集上可能会出现一条消息，指出 *hbase: meta* 表未联机。 运行 `hbck` 时可能会报告“在任何区域中都未发现 hbase: meta 表 replicaId 0”。 重启 HBase 后，问题可能变为 HMaster 无法初始化。 HMaster 日志中可能会出现以下消息：“区域 hbase: backup \<区域名称\> 的 hbase: meta 中未列出服务器地址”。  
+Linux 群集上可能会出现一条消息，指出 *hbase: meta* 表未联机。 运行 `hbck` 时可能会报告“在任何区域中都未发现 hbase: meta 表 replicaId 0”。 问题可能是重启 HBase 后，HMaster 无法初始化。 HMaster 日志中可能会出现以下消息：“区域 hbase: backup \<区域名称\> 的 hbase: meta 中未列出服务器地址”。  
 
 ### <a name="resolution-steps"></a>解决步骤
 
@@ -310,9 +308,9 @@ Linux 群集上可能会出现一条消息，指出 *hbase: meta* 表未联机�
 
 2. 删除 *hbase: namespace* 条目。 此条目可能是扫描 *hbase: namespace* 表时报告的相同错误。
 
-3. 若要使 HBase 恢复运行状态，请在 Ambari UI 中重启 Active HMaster 服务。  
+3. 为了使 HBase 恢复运行状态，在 Ambari UI 中重启 Active HMaster 服务。  
 
-4. 若要在 HBase shell 中使所有脱机表联机，请运行以下命令：
+4. 在 HBase shell 中，运行以下命令使所有脱机表联机：
 
    ```apache 
    hbase hbck -ignorePreCheckPermission -fixAssignments 
@@ -422,5 +420,4 @@ HMaster 超时且出现类似于“java.io.IOException: 等待分配命名空间
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"   
    ```
-
 

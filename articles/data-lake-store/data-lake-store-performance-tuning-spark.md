@@ -1,6 +1,6 @@
 ---
-title: "Azure Data Lake Store Spark 性能优化指南 | Microsoft 文档"
-description: "Azure Data Lake Store Spark 性能优化指南"
+title: "Azure 数据湖存储 Spark 性能优化准则 |Microsoft 文档"
+description: "Azure 数据湖存储 Spark 性能优化准则"
 services: data-lake-store
 documentationcenter: 
 author: stewu
@@ -14,110 +14,108 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.translationtype: HT
-ms.sourcegitcommit: 29d4a361f98c63dab30155855d603a809eb804c8
 ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/14/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>Spark on HDInsight 和 Azure Data Lake Store 性能优化指南
+# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>性能优化在 HDInsight 和 Azure Data Lake 存储上的 Spark 的指南
 
-在优化 Spark 的性能时，需要考虑到群集中将要运行的应用数目。  默认情况下，在 HDI 群集中可以同时运行 4 个应用（注意：默认设置可更改）。  可以使用更少的应用，这样便可以覆盖默认设置，将群集中的更多资源用于这些应用。  
+优化时在 Spark 中的性能，你需要考虑的应用程序将在你的群集上运行的数量。  默认情况下，你可以运行 4 HDI 群集上的并发的应用 (注意： 默认设置进行更改)。  你可能决定使用更少的应用，因此可以重写默认设置，还可以使用这些应用的多个群集。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 Azure Data Lake Store 中运行 Spark 群集**。  有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Store 中的数据](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **ADLS 性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 数据湖存储帐户**。 有关如何创建一个说明，请参阅[开始使用 Azure 数据湖存储](data-lake-store-get-started-portal.md)
+* **Azure HDInsight 群集**有权访问数据湖存储帐户。 请参阅[使用 Data Lake 存储创建 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保为群集启用远程桌面。
+* **Azure Data Lake 存储上运行 Spark 群集**。  有关详细信息，请参阅[使用 HDInsight Spark 群集，来分析数据湖存储区中的数据](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **性能优化指导说明了 ADLS**。  有关常规性能概念，请参阅[数据湖存储性能优化指南](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
-运行 Spark 作业时，可以优化下面这些最重要的设置，提高 ADLS 的性能：
+当运行 Spark 作业时，以下是可进行调整以增加性能 ADLS 最重要设置：
 
-* **执行器数目** - 可执行的并发任务数。
+* **Num 执行器**-并发可执行的任务数。
 
-* **执行器内存** - 分配给每个执行器的内存量。
+* **执行器内存**-分配给每个执行程序的内存量。
 
-* **执行器核心数** - 分配给每个执行器的核心数。                     
+* **执行程序内核**-分配给每个执行程序的内核数。                     
 
-**执行器数目**：执行器数目设置可并行运行的任务数上限。  可并行运行的实际任务数目受到群集中可用的内存和 CPU 资源的约束。
+**Num 执行器**Num 执行器将设置可以并行运行的任务的最大数目。  可以并行运行的任务的实际数受约束的内存和你的群集中的可用 CPU 资源。
 
-**执行器内存**：指分配给每个执行器的内存量。  每个执行器所需的内存量取决于作业。  复杂的操作所需的内存量较大。  简单的操作（如读取和写入）对内存的要求较低。  可在 Ambari 中查看每个执行器的内存量。  在 Ambari 中，导航到 Spark 并查看“配置”选项卡即可。  
+**执行器内存**这是要分配给每个执行程序的内存量。  每个执行程序所需的内存是依赖于该作业。  对于复杂的操作，内存需要更高版本使用。  对于简单的操作，如读取和写入，内存要求将较低。  可以在 Ambari 中查看的每个执行程序的内存量。  在 Ambari，导航到 Spark，并查看配置选项卡。  
 
-**执行器核心数**：设置每个执行器使用的核心数量，决定了每个执行器可以运行的并行线程数。  例如，如果执行器核心数 = 2，则每个执行器可以运行 2 个并行任务。  所需的执行器核心数取决于作业。  I/O 密集型作业在执行每个任务时不需要大量的内存，因此，每个执行器可以处理更多的并行任务。
+**执行程序内核**这设置每执行程序，确定每执行程序可以运行的并行线程数已用的内核的数量。  例如，如果执行程序内核 = 2，则每个执行程序可以运行两个并行任务中执行程序。  执行程序内核需要会依赖于该作业。  I/O 大量作业不需要大量的每个任务的内存，因此每个执行程序可以处理更多的并行任务。
 
-默认情况下，在 HDInsight 上运行 Spark 时，将为每个物理核心定义两个虚拟 YARN 核心。  此数字能够在并发性与多个线程的上下文切换次数之间提供适当的平衡。  
+默认情况下，两个虚拟 YARN 内核在 HDInsight 上运行 Spark 时为每个物理核心定义。  此数字提供良好的平衡的 concurrecy 以及上下文切换从多个线程的数量。  
 
 ## <a name="guidance"></a>指南
 
-运行 Spark 分析工作负荷处理 Data Lake Store 中的数据时，我们建议使用最新的 HDInsight 版本来获得 Data Lake Store 的最佳性能。 如果作业消耗较多的 I/O 资源，可以配置某些参数来提高性能。  Azure Data Lake Store 是一种高度可缩放的存储平台，能够应对较高的吞吐量。  如果作业主要包括读取或写入，则增大传入和传出 Azure Data Lake Store 的 I/O 的并发性可以提高性能。
+运行时 Spark 分析工作负荷使用数据湖存储区中的数据，我们建议你使用的最新的 HDInsight 版本以获取最佳性能与数据湖存储。 你的作业时更耗费 I/O 资源，则可以配置某些参数以提高性能。  Azure 数据湖存储是一个高度可扩展的存储平台，可以处理较高的吞吐量。  如果作业主要包含读取或写入，然后针对 I/O 增加并发，与其他 Azure 数据湖存储可以提高性能。
 
-可通过几种常规方法来提高 I/O 密集型作业的并发性。
+有几种常规方法可以提高 I/O 密集型作业并发性。
 
-**步骤 1：确定群集中运行的应用数目** – 应该知道群集中运行了多少个应用，包括当前正在使用的应用。  每项 Spark 设置的默认值假设同时运行了 4 个应用。  因此，每个应用只能利用群集 25% 的资源。  若要提高性能，可以通过更改执行器数目来覆盖默认值。  
+**步骤 1： 确定你的群集上运行多少应用**– 你应知道多少应用程序上群集包括当前正在运行。  有 4 的默认值对于设置假定每个 Spark 同时运行的应用。  因此，你将只能有 25%的群集可用于每个应用程序。  若要获取更好的性能，可以通过更改执行器数覆盖默认值。  
 
-**步骤 2：设置执行器内存** – 要设置的第一个参数是执行器内存。  内存取决于要运行的作业。  减少每个执行器的内存分配可以提高并发性。  如果在运行作业时看到内存不足异常，应增大此参数的值。  一种替代方法是使用具有更高内存量的群集或增大群集的大小来获得更多内存。  增加内存便可以使用更多的执行器，意味着并发性得到提高。
+**步骤 2： 设置执行器内存**– 若要设置的第一件事是执行器内存。  内存会依赖于想要运行的作业。  可以通过将每个执行程序较少内存分配来提高并发性。  如果在运行你的作业时，看到内存不足异常，则应增加此参数的值。  一种替代方法是群集的内存的通过使用具有更高版本量的群集或增加你大小获取更多内存。  更多的内存将启用详细执行器要使用，这意味着更多并发。
 
-**步骤 3：设置执行器核心数** – 对于不执行复杂操作的 I/O 密集型工作负荷而言，一开始最好是指定一个较大数值的执行器核心数，以增加每个执行器的并行任务数。  将执行器核心数设置为 4 是个不错的起点。   
+**步骤 3： 设置执行程序内核**– 为 I/O 密集型工作负荷不具有复杂的操作，最好是启动具有很多的执行程序的内核增加的每个执行程序的并行任务数。  将执行程序内核设置为 4 是一个不错的起点。   
 
     executor-cores = 4
-增加执行器核心数可以提高并行度，这样可以体验不同执行器核心数带来的效果。  对于执行较复杂操作的作业，应减少每个执行器的核心数。  如果执行器核心数设置为 4 以上，则垃圾回收可能会变得低效，并且性能会下降。
+增加的执行程序内核数将为你提供并行度使您可以具有不同的执行程序内核进行试验。  对于具有更复杂的操作的作业，你应该将每个执行程序的内核数目减少。  执行程序内核是否设置为高于 4，然后垃圾回收可能会效率低下，降低性能。
 
-**步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看“配置”选项卡即可。YARN 内存量会显示在此窗口中。  
-注意：在该窗口中操作时，还可以查看默认的 YARN 容器大小。  YARN 容器大小与每个执行器的内存量参数相同。
+**步骤 4： 确定 YARN 群集中的内存量**– Ambari 中提供了此信息。  导航到 YARN 并查看配置选项卡。  在此窗口显示 YARN 内存。  
+注意： 当你在窗口中，你还可以查看默认 YARN 容器大小。  YARN 容器大小等同于每个执行程序参数的内存。
 
     Total YARN memory = nodes * YARN memory per node
-**步骤 5：计算执行器数目**
+**步骤 5： 计算 num 执行器**
 
-**计算内存约束** - 执行器数目参数受内存或 CPU 的约束。  内存约束由应用程序的可用 YARN 内存量决定。  应该计算 YARN 内存总量，然后将该值除以执行器内存量。  需要根据应用数目重新换算约束，以便能够将它与应用数目相除。
+**计算内存约束**-num 执行器参数受内存或 CPU 限制。  内存约束由你的应用程序的可用 YARN 内存量确定。  应采取的 YARN 内存总量和除以执行器内存。  约束必须是取消缩放的应用程序数，因此我们除以的应用数。
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
-**计算 CPU 约束** - 将虚拟核心总数除以每个执行器的核心数可以计算出 CPU 约束。  每个物理核心有 2 个虚拟核心。  与内存约束类似，可以除以应用数目来计算结果。
+**计算 CPU 约束**-CPU 约束的计算方法为每个执行程序的内核数除以总虚拟内核数。  没有为每个物理核心 2 虚拟内核数。  我们与内存约束类似，可以通过应用数来除。
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
-**设置执行器数目** – 使用内存约束和 CPU 约束的最小值可以得出执行器数目参数。 
+**设置 num 执行器**– 通过获取的内存约束和 CPU 约束最小值可确定 num 执行器参数。 
 
     num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-设置较大的执行器数目不一定会提高性能。  应考虑到添加更多执行器会增加每个附加执行器的额外开销，这可能会降低性能。  执行器数目受群集资源的约束。    
+设置更多的 num 执行器并不一定增加性能。  你应考虑添加更多的执行器将添加额外的开销为每个其他执行程序，这可能会降低性能。  Num 执行器受群集资源。    
 
 ## <a name="example-calculation"></a>示例计算
 
-假设当前的某个群集由 8 个 D4v2 节点构成，该群集正在运行 2 个应用，包括要运行的应用。  
+假设你当前有运行的 2 的群集组成 8 个 D4v2 节点包括想要运行的应用。  
 
-**步骤 1：确定群集中运行的应用数目** – 已知群集中正在运行 2 个应用，包括要运行的应用。  
+**步骤 1： 确定你的群集上运行多少应用**– 你知道你具有 2 上你的群集，包括你要运行的应用。  
 
-**步骤 2：设置执行器内存** – 对于本示例，我们确定 6GB 执行器内存对于 I/O 密集型作业已足够。  
+**步骤 2： 设置执行器内存**– 对于此示例中，我们确定 6 GB 的执行器内存足以满足 I/O 密集型作业。  
 
     executor-memory = 6GB
-**步骤 3：设置执行器核心数目** – 由于这是一个 I/O 密集型作业，我们可将每个执行器的核心数设置为 4。  将每个执行器的核心数设置为大于 4 可能会导致垃圾回收出现问题。  
+**步骤 3： 设置执行程序内核**– 由于这是 I/O 密集型作业，我们可以设置为 4 到每个执行程序的内核数。  将每个执行程序内核数设置为大于 4 可能会导致垃圾回收集合问题。  
 
     executor-cores = 4
-**步骤 4：确定群集中的 YARN 内存量** – 导航到 Ambari，可以发现每个 D4v2 具有 25GB YARN 内存。  由于有 8 个节点，因此内存总量为每个节点的可用 YARN 内存量乘以 8。
+**步骤 4： 确定 YARN 群集中的内存量**– 我们导航到，Ambari 就可以找出每个 D4v2 具有 25 GB 的 YARN 内存。  由于有 8 个节点，则可用的 YARN 内存乘以 8。
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**步骤 5：计算执行器数目** – 将内存约束和 CPU 约束的最小值除以 Spark 中运行的应用数目可以得出执行器数目参数。    
+**步骤 5： 计算 num 执行器**– 通过获取的内存约束最小值可确定 num 执行器参数和 CPU 约束除以 # of Spark 上运行的应用。    
 
-**计算内存约束** – 将 YARN 内存总量除以每个执行器的内存量可以计算出内存约束。
+**计算内存约束**– 内存约束的计算方法为除以每执行程序的内存的 YARN 内存总量。
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
     Memory constraint = (200GB / 6GB) / 2   
     Memory constraint = 16 (rounded)
-**计算 CPU 约束** - 将 YARN 核心总数除以每个执行器的核心数可以计算出 CPU 约束。
+**计算 CPU 约束**-CPU 约束的计算方法为每个执行程序的内核数除以总 yarn 内核。
     
     YARN cores = nodes in cluster * # of cores per node * 2   
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
     CPU constraint = 16
-**设置执行器数目**
+**集执行器 num**
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)
     num-executors = 16    
-
 

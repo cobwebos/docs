@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 60f1ec092635910ae8c98cc0197fdfbf358f01be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: 6503034b3f5a17a2a42338c73329eef0b01f2f27
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
-设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），然后提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  
+设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  
 
 我们需要通盘审视企业的各个主要层面，了解其当前要求，以及公司的将来规划。 如果不清楚混合标识设计的长期策略，解决方案将来有可能无法随着企业的成长和变化而缩放。   下图中的示例演示了混合标识体系结构以及要为用户解锁的工作负荷。 此示例只是说明可以通过健全的混合标识策略解锁和提供的各种新机会。 
 
@@ -84,7 +83,7 @@ ms.lasthandoff: 03/22/2017
 * 组织是否有多个域，这些域是否全都使用标准身份验证或联合身份验证？
 
 ## <a name="evaluate-applications-that-run-in-your-environment"></a>评估环境中运行的应用程序
-对本地和云基础结构有所了解后，需要评估这些环境中运行的应用程序。 若要定义有关如何将这些应用程序集成到云标识管理系统的技术要求，必须执行此项评估。 务必回答以下问题：
+对本地和云基础结构有所了解后，需要评估这些环境中运行的应用程序。 要定义有关如何将这些应用程序集成到云标识管理系统的技术要求，必须执行此项评估。 务必回答以下问题：
 
 * 应用程序驻留在何处？
 * 用户是要访问本地应用程序，  还是访问云中的应用程序？ 或者访问这两种应用程序？
@@ -100,7 +99,7 @@ ms.lasthandoff: 03/22/2017
 * 如何将用户登录到云？
 
 > [!NOTE]
-> 务必记下每个答案并了解答案背后的依据。 [确定事件响应要求](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)中介绍了可用的选项，以及每个选项的优缺点。  回答了这些问题之后，就会挑选出最适合你的业务需求的选项。
+> 务必记下每个答案并了解答案背后的依据。 [确定事件响应要求](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)中介绍了可用的选项，以及每个选项的优缺点。  回答了这些问题之后，就会挑选出最适合业务需求的选项。
 > 
 > 
 
@@ -109,5 +108,4 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

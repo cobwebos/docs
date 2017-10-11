@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 4bea7f73871f8bfc755f30b9ef41a1960893152e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 65964a322f0adab4f648fb350bedb77b46bf9054
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>使用 Azure Functions 可以创建与其他 Azure 服务相连接的函数。
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 04/18/2017
 
 在连接到存储队列之前，需要创建一个函数用于加载消息队列。 此 JavaScript 函数使用计时器触发器每隔 10 秒将消息写入队列。 如果尚未创建 Azure 帐户，请查看 [Try Azure Functions](https://functions.azure.com/try)（试用 Azure Functions）主题，或[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/)。
 
-1. 转到 Azure 门户并找到你的函数应用。
+1. 转到 Azure 门户并找到函数应用。
 
 2. 单击“新建函数” > “TimerTrigger - JavaScript”。 
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 04/18/2017
 
     ![添加触发器计时器函数](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab.png)
 
-2. 在“消息参数名称”中输入 `myQueueItem`，在“队列名称”中输入 `functions-bindings`，选择现有的**存储帐户连接**或单击“新建”创建一个存储帐户连接，然后单击“保存”。  
+2. 在“消息参数名称”中输入 `myQueueItem`，在“队列名称”中输入 `functions-bindings`，选择现有的**存储帐户连接**或单击“新建”创建一个存储帐户连接，并单击“保存”。  
 
     ![创建存储队列的输出绑定](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab2.png)
 
@@ -90,18 +89,18 @@ ms.lasthandoff: 04/18/2017
 ## <a name="view-storage-updates-by-using-storage-explorer"></a>使用存储资源管理器查看存储更新
 可以通过查看所创建的队列中的消息来确认函数是否正常运行。  可以使用 Visual Studio 中的 Cloud Explorer 连接到存储队列。 但是，在门户中，可以使用 Microsoft Azure 存储资源管理器轻松连接到存储帐户。
 
-1. 在“集成”选项卡上，单击队列输出绑定，选择“文档”，然后取消隐藏存储帐户的连接字符串并复制该值。 可以使用此值连接到存储帐户。
+1. 在“集成”选项卡上，单击队列输出绑定，选择“文档”，取消隐藏存储帐户的连接字符串并复制该值。 可以使用此值连接到存储帐户。
 
     ![下载 Azure 存储资源管理器](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab3.png)
 
 
 2. 如果尚未这样做，请下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com)。 
  
-3. 在存储资源管理器中，单击“连接到 Azure 存储”图标，在字段中粘贴连接字符串，然后完成向导。
+3. 在存储资源管理器中，单击“连接到 Azure 存储”图标，在字段中粘贴连接字符串，并完成向导。
 
     ![在存储资源管理器中添加连接](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-storage-explorer.png)
 
-4. 在“本地和附加的存储”下面，展开“存储帐户”> 你的存储帐户 >“队列” > “函数绑定”，然后确认消息是否已写入队列。
+4. 在“本地和附加的存储”下面，展开“存储帐户”> 存储帐户 >“队列” > “函数绑定”，然后确认消息是否已写入队列。
 
     ![查看队列中的消息](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer.png)
 
@@ -119,7 +118,7 @@ ms.lasthandoff: 04/18/2017
 
 3. （可选）可以像前面一样通过查看存储资源管理器中的新队列来确认新函数是否正常运行。 也可以使用 Visual Studio 中的 Cloud Explorer。  
 
-4. （可选）刷新 **functions-bindings** 排队，然后可以看到项已从队列中删除。 之所以发生删除操作，是因为该函数已作为输入触发器绑定到 **functions-bindings** 队列，而该函数会读取该队列。 
+4. （可选）刷新**函数绑定**排队，并请注意，已从队列中删除项。 之所以发生删除操作，是因为该函数已作为输入触发器绑定到 **functions-bindings** 队列，而该函数会读取该队列。 
  
 ## <a name="add-a-table-output-binding"></a>添加表输出绑定
 
@@ -127,7 +126,7 @@ ms.lasthandoff: 04/18/2017
 
     ![将绑定添加到 Azure 存储表](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png) 
 
-2. 在“表名称”中输入 `functionbindings`，在“表参数名称”中输入 `myTable`，选择“存储帐户连接”或创建一个新连接，然后单击“保存”。
+2. 在“表名称”中输入 `functionbindings`，在“表参数名称”中输入 `myTable`，选择“存储帐户连接”或创建一个新连接，并单击“保存”。
 
     ![配置存储表绑定](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab2.png)
    
@@ -173,7 +172,7 @@ ms.lasthandoff: 04/18/2017
 
 4. 单击“保存”。  最后，可以通过查看存储资源管理器或 Visual Studio Cloud Explorer 中的表来确认函数是否正常运行。
 
-5. （可选）在存储资源管理器中的存储帐户内，展开“表” > “functionsbindings”，然后确认行是否已添加到表中。 在 Visual Studio 的 Cloud Explorer 中也可以执行上述操作。
+5. （可选）在存储资源管理器中的存储帐户内，展开“表” > “functionsbindings”，并确认行是否已添加到表中。 在 Visual Studio 的 Cloud Explorer 中也可以执行上述操作。
 
     ![查看表中的行](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer2.png)
 
@@ -192,5 +191,4 @@ ms.lasthandoff: 04/18/2017
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
 
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
-
 

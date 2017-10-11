@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: b6fc2098027690eb76b69b1427f0e9541b8a7a69
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>使用 Ambari API 在 HDInsight 中监视 Hadoop 群集
 学习如何使用 Ambari API 监视 HDInsight 群集。
@@ -47,11 +46,11 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
   > 在 Windows 中使用 cURL 命令时，对选项值使用双引号而非单引号。
   > 
   > 
-* **一个 Azure HDInsight 群集**。 有关群集预配的说明，请参阅[开始使用 HDInsight][hdinsight-get-started] 或[预配 HDInsight 群集][hdinsight-provision]。 你需要以下数据才能完成本教程：
+* **一个 Azure HDInsight 群集**。 有关群集预配的说明，请参阅[开始使用 HDInsight][hdinsight-get-started] 或[预配 HDInsight 群集][hdinsight-provision]。 需要以下数据才能完成本教程：
   
   | 群集属性 | Azure PowerShell 变量名 | 值 | 说明 |
   | --- | --- | --- | --- |
-  |   HDInsight 群集名称 |$clusterName | |你的 HDInsight 群集的名称。 |
+  |   HDInsight 群集名称 |$clusterName | |HDInsight 群集的名称。 |
   |   群集用户名 |$clusterUsername | |创建群集时指定的群集用户名。 |
   |   群集密码 |$clusterPassword | |群集用户密码。 |
 
@@ -124,7 +123,7 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 
 **对于 2014/10/8 版本**：
 
-使用 Ambari 终结点“https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}”时，*host_name* 字段会返回节点的完全限定域名 (FQDN)，而不是主机名。 在 2014/10/8 版本之前，此示例仅返回 "**headnode0**"。 在 2014/10/8 版本之后，你将获取 FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**"，如以上示例所示。 需要这种改变促进实现可以在一个虚拟网络 (VNET) 中部署多个群集类型（如 HBase 和 Hadoop）的方案。 例如，使用 HBase 作为 Hadoop 的后端平台时，会发生这种情况。
+使用 Ambari 终结点“https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}”时，*host_name* 字段会返回节点的完全限定域名 (FQDN)，而不是主机名。 在 2014/10/8 版本之前，此示例仅返回 "**headnode0**"。 在 2014/10/8 版本之后，将获取 FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**"，如以上示例所示。 需要这种改变促进实现可以在一个虚拟网络 (VNET) 中部署多个群集类型（如 HBase 和 Hadoop）的方案。 例如，使用 HBase 作为 Hadoop 的后端平台时，会发生这种情况。
 
 ## <a name="ambari-monitoring-apis"></a>监视 API 的 Ambari
 下表列出了一些最常用的 Ambari 监视 API 调用。 有关该 API 的详细信息，请参阅 [Ambari API 参考][ambari-api-reference]。
@@ -145,7 +144,7 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 | 获取配置信息 |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |配置类型：core-site、hdfs-site、mapred-site、hive-site |
 
 ## <a name="next-steps"></a>后续步骤
-现在你已经学习了如何使用 Ambari 监视 API 调用。 若要了解更多信息，请参阅以下文章：
+现在已经学习了如何使用 Ambari 监视 API 调用。 若要了解更多信息，请参阅以下文章：
 
 * [使用 Azure 门户管理 HDInsight 群集][hdinsight-admin-portal]
 * [使用 Azure PowerShell 管理 HDInsight 群集][hdinsight-admin-powershell]
@@ -172,4 +171,3 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
-

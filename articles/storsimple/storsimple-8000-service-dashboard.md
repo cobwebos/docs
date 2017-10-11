@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: d987a4ae170f21532a886552cbe1eb5a0d25fc3f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>使用 StorSimple 8000 系列设备的服务摘要边栏选项卡
 
@@ -76,7 +75,7 @@ StorSimple 设备管理器服务摘要边栏选项卡提供连接到 StorSimple 
 
     ![“设备”磁贴](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
-    可以单击此磁贴打开“设备”列表边栏选项卡，然后再单击单个设备，查看特定于该设备的设备摘要。 也可以从给定的设备摘要边栏选项卡执行设备特定的操作。 有关设备摘要边栏选项卡的详细信息，[请转到“设备摘要边栏选项卡”](storsimple-8000-device-dashboard.md) 。
+    可以单击此磁贴打开“设备”列表边栏选项卡，再单击单个设备，查看特定于该设备的设备摘要。 也可以从给定的设备摘要边栏选项卡执行设备特定的操作。 有关设备摘要边栏选项卡的详细信息，[请转到“设备摘要边栏选项卡”](storsimple-8000-device-dashboard.md) 。
 
     ![单击“设备”磁贴](./media/storsimple-8000-service-dashboard/service-summary9.png)
 
@@ -88,5 +87,4 @@ StorSimple 设备管理器服务摘要边栏选项卡提供连接到 StorSimple 
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

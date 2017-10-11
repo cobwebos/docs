@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 948c894cba1b8bb513a26d720cbe433b38353d03
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: a9593d5f198e05db80451a599428a296ed02e781
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>演练：使用 Application Insights 为 Microsoft Dynamics CRM Online 启用遥测
-本文演示如何使用 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 从 [Microsoft Dynamics CRM Online](https://www.dynamics.com/) 获取遥测数据。 我们将引导你完成向应用程序添加 Application Insights 脚本、捕获数据和数据可视化的完整过程。
+本文演示如何使用 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 从 [Microsoft Dynamics CRM Online](https://www.dynamics.com/) 获取遥测数据。 我们将引导完成向应用程序添加 Application Insights 脚本、捕获数据和数据可视化的完整过程。
 
 > [!NOTE]
 > [浏览示例解决方案](https://dynamicsandappinsights.codeplex.com/)。
@@ -29,7 +28,7 @@ ms.lasthandoff: 04/18/2017
 > 
 
 ## <a name="add-application-insights-to-new-or-existing-crm-online-instance"></a>向新的或现有的 CRM Online 实例添加 Application Insights
-若要监视应用程序，则将 Application Insights SDK 添加到应用程序。 SDK 会将遥测发送到 [Application Insights 门户](https://portal.azure.com)，可以在其中使用我们功能强大的分析和诊断工具，或将数据导出到存储。
+要监视应用程序，则将 Application Insights SDK 添加到应用程序。 SDK 会将遥测发送到 [Application Insights 门户](https://portal.azure.com)，可以在其中使用我们功能强大的分析和诊断工具，或将数据导出到存储。
 
 ### <a name="create-an-application-insights-resource-in-azure"></a>在 Azure 中创建 Application Insights 资源
 1. 获取 [Microsoft Azure 中的帐户](http://azure.com/pricing)。 
@@ -42,7 +41,7 @@ ms.lasthandoff: 04/18/2017
    
     ![网页中插入的代码片段](./media/app-insights-sample-mscrm/03.png)
 
-**使代码页保持打开状态**，同时在另一浏览器窗口上执行下一步。 你将很快就会需要代码。 
+**使代码页保持打开状态**，同时在另一浏览器窗口上执行下一步。 将很快就会需要代码。 
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>在 Microsoft Dynamics CRM 中创建 JavaScript Web 资源
 1. 打开 CRM Online 实例并使用管理员特权登录。
@@ -87,7 +86,7 @@ ms.lasthandoff: 04/18/2017
 ## <a name="metrics-captured"></a>指标捕获
 现在，已经为窗体设置了遥测捕获。 只要使用它，数据将发送到 Application Insights 资源。
 
-下面是你将看到的数据示例。
+下面是会看到的数据示例。
 
 #### <a name="application-health"></a>应用程序运行状况
 ![加载时间示例页面](./media/app-insights-sample-mscrm/15.png)
@@ -143,4 +142,3 @@ ms.lasthandoff: 04/18/2017
 * [什么是 Application Insights？](app-insights-overview.md)
 * [适用于网页的 Application Insights](app-insights-javascript.md)
 * [更多示例和演练](app-insights-code-samples.md)
-

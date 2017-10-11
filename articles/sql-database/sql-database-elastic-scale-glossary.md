@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ebd5224caa41efe61bdea14b4570005880f4411c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 0fda4bb948bbed1c14d468519ba67cce9bc4e6c3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="elastic-database-tools-glossary"></a>弹性数据库工具词汇表
 Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-introduction.md)功能的术语定义如下。 这些工具用于管理[分片映射](sql-database-elastic-scale-shard-map-management.md)，包括[客户端库](sql-database-elastic-database-client-library.md)、[拆分/合并工具](sql-database-elastic-scale-overview-split-and-merge.md)、[弹性池](sql-database-elastic-pool.md)和[查询](sql-database-elastic-query-overview.md)。 
@@ -73,7 +71,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 ![映射][2]
 
 ## <a name="verbs"></a>动词
-**横向缩放**：通过将分片添加到分片映射或删除分片，向外（或向内）扩展分片集合的行为。
+横向缩放：通过将分片添加到分片映射或删除分片，扩大（或缩小）分片集合的行为，如下所示。
 
 ![横向缩放与纵向缩放][3]
 
@@ -83,7 +81,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 **分片**：基于分片键对多个数据库上结构相同的数据进行水平分区的行为。
 
-**拆分**：将几个 shardlet 从一个分片移动到另一个（通常是新的）分片的行为。 由用户提供的作为拆分点的分片键。
+拆分：将几个 shardlet 从一个分片移动到另一个（通常是新的）分片的行为。 由用户提供的作为拆分点的分片键。
 
 **纵向缩放**：向上（或向下）缩放单个分片的性能水平的行为。 例如，将分片从标准版更改为高级版（这会导致需要更多的计算资源）。 
 
@@ -93,5 +91,4 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 [1]: ./media/sql-database-elastic-scale-glossary/glossary.png
 [2]: ./media/sql-database-elastic-scale-glossary/mappings.png
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
-
 

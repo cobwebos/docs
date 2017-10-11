@@ -14,12 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>在 Web 应用程序中使用 Azure Mobile Engagement API
 本文档是介绍如何[在 Web 应用程序中集成 Mobile Engagement](mobile-engagement-web-integrate-engagement.md) 的文档的补充。 它提供了有关如何使用 Azure Mobile Engagement API 报告应用程序统计信息的全部详细信息。
@@ -48,7 +47,7 @@ Mobile Engagement API 由 `engagement.agent` 对象提供。 默认的 Azure Mob
 ### <a name="user-ends-the-current-activity"></a>用户结束当前活动
     engagement.agent.endActivity();
 
-在用户完成其最后一个活动时，需要至少调用 `endActivity()` 一次。 这将通知 Mobile Engagement Web SDK，用户当前处于空闲状态，并且在会话超时过期后需要关闭用户会话。 如果在会话超时到期之前调用 `startActivity()` 则仅恢复会话。
+当用户完成其最后一个活动时，需要至少调用一次 `endActivity()`。 这会通知 Mobile Engagement Web SDK，用户当前处于空闲状态，并且在会话超时过期后需要关闭用户会话。 如果在会话超时到期之前调用 `startActivity()` 则仅恢复会话。
 
 因为当导航器窗口关闭时没有可靠的调用，所以通常很难或者无法在 Web 环境中捕获用户活动的结束。 这就是为什么 Mobile Engagement 服务器会在应用程序页面关闭后的三分钟内自动过期用户会话的原因。
 
@@ -216,4 +215,3 @@ Mobile Engagement API 由 `engagement.agent` 对象提供。 默认的 Azure Mob
 在前面的示例中，发送到服务器的 JSON 为 44 个字符的长度：
 
     {"birthdate":"1983-12-07","gender":"female"}
-

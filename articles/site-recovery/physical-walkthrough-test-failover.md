@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 94aa3bfc700cad3de9fc5516c0c9a4d86ade3fed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="step-11-run-a-test-failover-of-physical-servers-to-azure"></a>第 11 步：运行测试故障转移以便将物理服务器复制到 Azure
 
@@ -50,7 +49,7 @@ ms.lasthandoff: 08/22/2017
 - 如果未提供地址，故障转移的计算机将使用 DHCP。
 - 如果设置了在故障转移时不可用的地址，故障转移将不会正常工作。
 - 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
-- 网络适配器的数目根据你为目标虚拟机指定的大小来确定：
+- 网络适配器数目根据为目标虚拟机指定的大小来确定：
 
      - 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
      - 如果源虚拟机的适配器数大于目标大小允许的数目，则将使用目标大小允许的最大数目。
@@ -120,4 +119,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>后续步骤
 
 - 根据需要，[运行故障转移](site-recovery-failover.md)。
-

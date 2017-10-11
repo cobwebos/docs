@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - 最佳实践入门指南
 ## <a name="overview"></a>概述
@@ -113,7 +112,7 @@ Azure Mobile Engagement 计划旨在通过相关方法收集和分析详细的�
 
 ![](./media/mobile-engagement-getting-started-best-practices/unsegmented-push-notifications.png)
 
-若要确保移动设备用户的尽早参与，最好的方式是使用推送通知。 但是，为了推送通知而对用户分类时，应格外小心。 因为，如果用户觉得自己收到的是垃圾邮件或不感兴趣的通知，后果可能很糟糕。 用户只需点几下鼠标就可以删除应用程序，然后再也不会回来了。 不应向该用户发送内容泛泛的垃圾邮件，而应发送高度个性化的应用内高价值内容。
+若要确保移动设备用户的尽早参与，最好的方式是使用推送通知。 但是，为了推送通知而对用户分类时，应格外小心。 因为，如果用户觉得自己收到的是垃圾邮件或不感兴趣的通知，后果可能很糟糕。 用户只需点几下鼠标就可以删除应用程序，再也不会回来了。 不应向该用户发送内容泛泛的垃圾邮件，而应发送高度个性化的应用内高价值内容。
 
 用户积极参与以后，即可通过用户参与计划推广该应用其他方面的内容。
 
@@ -134,14 +133,15 @@ Azure Mobile Engagement 计划旨在通过相关方法收集和分析详细的�
 
 例如，如果用户非常积极地使用某个梦幻橄榄球应用，则可参与以下推送通知计划，使自己受益...
 
-*John，你真是个热忱的橄榄球迷！请登录 NFL 版块，赢取免费参与超级碗的机会！”*
+
+            *John，真是个热忱的橄榄球迷！请登录 NFL 版块，赢取免费参与超级碗的机会！”*
 
 ###### <a name="alerting-push-sequence"></a>提醒性推送序列
 如果为用户提供侧重于其兴趣的相关新闻，用户会很感激。 提醒推送序列可以根据用户明确显示的兴趣发送提醒，增强用户参与度。 当用户在应用中选择自己的兴趣时，该操作可以是显式操作。 根据用户与应用交互期间收集的数据，也可能会确定该操作是隐式操作。
 
 例如，可以通过业务 KPI 发现，电子商务应用用户可能会定期购买特定品牌的咖啡。 以下提醒可以增强该用户的应用参与度。
 
-*“Wes 你好，你喜欢的一个咖啡品牌将于 2015 年 9 月第一周进行 75 折销售活动。特将此优惠活动告知尊敬的消费者。”*
+*“Wes，好！你喜欢的一个咖啡品牌将于 2015 年 9 月第一周进行 75 折销售活动。我们感谢你作为客户和想要确保你已注意"。*
 
 ###### <a name="rentention-push-sequence"></a>保留推送序列
 此序列旨在保留用户，使用重复性推送通知活动，让用户形成经常使用应用的习惯。 如果用户喜欢交互，这可以增强应用的用户保留率。 
@@ -188,7 +188,7 @@ Azure Mobile Engagement 计划旨在通过相关方法收集和分析详细的�
 不同的类型和推送通知格式：
 
 1. **公告** ：用于在不同的时候（应用外、应用内或任何时候）向用户发送广告消息。
-2. **轮询** ：用于通过提问从最终用户收集信息。 然后，在创建条件来确定最终用户时，会提供这种答案。
+2. **轮询** ：用于通过提问从最终用户收集信息。 创建向目标最终用户的条件时，这些答案是有效的。
 3. **数据推送** ：用于发送二进制或 base64 数据文件，对应用进行更新。 包含在数据推送中的信息会发送到应用程序，在应用中个性化用户的体验。 需将应用程序设计为支持数据推送中的数据。
 4. **磁贴（仅限 Windows Phone）**：允许用户使用 Microsoft 推送通知服务 (MPNS) 发送包含 XML 数据的原生推送通知（自 SDK 版本 0.9.0 以来一直受支持。 磁贴最终的有效负载不能超过 32 千字节。）。 消息直接显示在面板的磁贴上。
 5. **Webview** ：Web 视图是包含 Web 内容的弹出窗口。 当最终用户单击了推送通知以后，会显示该弹出窗口。 可通过 Web 视图与最终用户进行更多的交互。
@@ -214,7 +214,7 @@ Azure Mobile Engagement 计划旨在通过相关方法收集和分析详细的�
 
 ## <a name="step-3-app-integration"></a>步骤 3：应用集成
 #### <a name="create-a-tag-plan"></a>创建标记计划
-若要将 Azure Mobile Engagement 集成到应用中，需创建标记计划。 标记计划是项目的基础。 标记计划定义营销规范、应用程序工作流以及在应用中收集的用于衡量 KPI 的真实标记数据的关系。 标记计划指示可在门户中看到的分析内容。 此外，也可使用标记计划定义用户类型，发送有所偏重的推送通知，提高最终用户的参与度。 定义标记计划以后，即可使用 Azure Mobile Engagement SDK 添加代码，将标记计划集成到应用中。
+要将 Azure Mobile Engagement 集成到应用中，需创建标记计划。 标记计划是项目的基础。 标记计划定义营销规范、应用程序工作流以及在应用中收集的用于衡量 KPI 的真实标记数据的关系。 标记计划指示可在门户中看到的分析内容。 此外，也可使用标记计划定义用户类型，发送有所偏重的推送通知，提高最终用户的参与度。 定义标记计划以后，即可使用 Azure Mobile Engagement SDK 添加代码，将标记计划集成到应用中。
 
 标记计划不应标记应用程序中的所有内容。 而只应包括属于移动用户参与策略的标记数据。 应用程序在这方面很可能各不相同。 可以利用 Azure Mobile Engagement 提供的[媒体攻略模板][Media Playbook link]，通过给定方法构建标记计划。 使用“标记计划”工作表作为构建标记计划的指南。
 
@@ -324,4 +324,3 @@ Engagement 计划是反复性的，应在试验应用的最佳计划过程中持
 
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
-

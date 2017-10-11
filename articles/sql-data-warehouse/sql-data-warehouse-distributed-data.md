@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 07/12/2017
 ms.author: jrj;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>适用于大规模并行处理 (MPP) 的分布式数据和分布式表
 了解用户数据在 Azure SQL 数据仓库和并行数据仓库中是如何分布的，这些仓库是 Microsoft 的大规模并行处理 (MPP) 系统。 设计数据仓库时，需考虑到有效使用分布式数据，充分利用 MPP 体系结构的查询处理优势。 某些数据库设计选择可能会对查询性能有着重大影响。  
@@ -64,7 +63,7 @@ ms.lasthandoff: 07/13/2017
 ### <a name="can-i-view-the-compute-nodes"></a>能否查看计算节点？
 每个计算节点都有一个节点 ID，可在与 SQL 数据仓库和并行数据仓库相关的系统视图中查看。  在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点。 如需系统视图的列表，请参阅 [MPP 系统视图](sql-data-warehouse-reference-tsql-statements.md)。
 
-## <a name="Replicated"></a> 复制的表
+## <a name="Replicated"></a>复制的表
 复制的表在每个计算节点上存储表的完整副本。 复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 复制表仅适用于小型表，因为将整个表存储在每个计算节点上需要额外的存储。  
 
 下图显示了一个存储在每个计算节点上的复制表。 在 SQL 数据仓库中，复制表将完整复制到每个计算节点上的分发数据库。 对于 Parallel 数据仓库，复制的表跨分配给计算节点的所有磁盘进行存储。  此磁盘策略通过 SQL Server 文件组实现。  
@@ -73,5 +72,4 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="next-steps"></a>后续步骤
 若要有效地使用分布式表，请参阅[在 SQL 数据仓库中分布表](sql-data-warehouse-tables-distribute.md)  
-
 

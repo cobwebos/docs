@@ -1,25 +1,25 @@
 ## <a name="route-tables"></a>路由表
-路由表资源包含的路由用于定义流量在 Azure 基础结构中的流动方式。 可以使用用户定义的路由 (UDR) 将所有流量从给定子网发送到某个虚拟设备，例如防火墙或入侵检测系统 (IDS)。 可以将路由表关联到子网。 
+路由表资源包含用于定义你的 Azure 基础结构内流量的流动方式的路由。 你可以使用用户定义的路由 (UDR) 将从指定的子网的所有流量发送到虚拟设备，如防火墙或入侵检测系统 (IDS)。 你可以关联到子网的路由表。 
 
 路由表包含以下属性。
 
-| 属性 | 说明 | 示例值 |
+| 属性 | 描述 | 示例值 |
 | --- | --- | --- |
-| **routes** |路由表中用户定义的路由的集合 |请参阅[用户定义路由](#User-defined-routes) |
-| **subnets** |路由表所适用的子网的集合 |请参阅[子网](#Subnets) |
+| **路由** |集合的用户定义的路由表中的路由 |请参阅[用户定义的路由](#User-defined-routes) |
+| **子网** |子网的路由表应用于集合 |请参阅[子网](#Subnets) |
 
 ### <a name="user-defined-routes"></a>用户定义的路由
-可以创建 UDR，指定应将流量发送到何处，具体取决于其目标地址。 可以将路由视为默认的网关定义（基于网络数据包的目标地址）。
+你可以创建 Udr，若要指定应将流量发送到，基于其目标地址。 可以路由看作基于网络数据包的目标地址的默认网关定义。
 
-UDR 包含以下属性。 
+Udr 包含以下属性。 
 
-| 属性 | 说明 | 示例值 |
+| 属性 | 描述 | 示例值 |
 | --- | --- | --- |
-| **addressPrefix** |地址前缀或目标的完整 IP 地址 |192.168.1.0/24, 192.168.1.101 |
-| **nextHopType** |要向其发送流量的设备的类型 |VirtualAppliance、VPN 网关、Internet |
+| **addressPrefix** |地址前缀或为目标的完整 IP 地址 |192.168.1.0/24, 192.168.1.101 |
+| **nextHopType** |类型的流量将发送到的设备 |VirtualAppliance，VPN 网关，Internet |
 | **nextHopIpAddress** |下一个跃点的 IP 地址 |192.168.1.4 |
 
-JSON 格式的示例路由表：
+以 JSON 格式的示例路由表：
 
     {
         "name": "UDR-BackEnd",
@@ -51,7 +51,7 @@ JSON 格式的示例路由表：
     }
 
 ### <a name="additional-resources"></a>其他资源
-* 获取有关 [UDR](../articles/virtual-network/virtual-networks-udr-overview.md) 的详细信息。
-* 阅读路由表的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt502549.aspx)。
-* 阅读用户定义路由 (UDR) 的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt502539.aspx)。
+* 获取其相关详细信息[Udr](../articles/virtual-network/virtual-networks-udr-overview.md)。
+* 读取[REST API 参考文档](https://msdn.microsoft.com/library/azure/mt502549.aspx)路由表。
+* 读取[REST API 参考文档](https://msdn.microsoft.com/library/azure/mt502539.aspx)用户定义的路由 (Udr)。
 

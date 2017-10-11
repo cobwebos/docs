@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: 427864fc4e494c19fcda4cfd454a9923499f6337
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>使用 Azure Cosmos DB 和 HDInsight 运行 Apache Hive、Pig 或 Hadoop 作业
 本教程演示如何在带有 Cosmos DB 的 Hadoop 连接器的 Azure HDInsight 上运行 [Apache Hive][apache-hive]、[Apache Pig][apache-pig] 和 [Apache Hadoop][apache-hadoop] MapReduce 作业。 Cosmos DB 的 Hadoop 连接器使 Cosmos DB 可以充当 Hive、Pig 以及 MapReduce 作业的源和接收器。 本教程将 Cosmos DB 用作 Hadoop 作业的数据源和目的地。
@@ -75,7 +74,7 @@ ms.lasthandoff: 07/25/2017
 >
 >
 
-## <a name="ProvisionHDInsight"></a>步骤 1：创建新的 HDInsight 群集
+## <a name="ProvisionHDInsight"></a>步骤 1：创建新的 HDInsight 群集。
 本教程使用 Azure 门户中的脚本操作自定义 HDInsight 群集。 在本教程中，我们将使用 Azure 门户来创建 HDInsight 群集。 有关如何使用 PowerShell cmdlet 或 HDInsight .NET SDK 的说明，请查看[使用脚本操作自定义 HDInsight 群集][hdinsight-custom-provision]一文。
 
 1. 登录到 [Azure 门户][azure-portal]。
@@ -141,7 +140,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 11. 创建一个新的 **资源组** 或使用 Azure 订阅下的现有资源组。
 12. 现可选中“固定到仪表板”来跟踪其部署并单击“创建”！
 
-## <a name="InstallCmdlets"></a>步骤 2：安装和配置 Azure PowerShell
+## <a name="InstallCmdlets"></a>步骤 2：安装和配置 Azure PowerShell。
 1. 安装 Azure PowerShell 中的说明进行操作。 可在[此处][powershell-install-configure]找到说明。
 
    > [!NOTE]
@@ -435,4 +434,3 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 [image-pig-query-results]: ./media/run-hadoop-with-hdinsight/pigqueryresults.PNG
 
 [powershell-install-configure]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: da28cbf5f6f91df1f89114a63bc3f2ebac0f6d73
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求的现代应用程序的云存储解决方案。 Azure 存储提供配套的安全功能：
@@ -99,4 +98,3 @@ Azure 磁盘加密使用 [Azure Key Vault](https://azure.microsoft.com/services/
 
 * [什么是 Azure 密钥保管库？](../key-vault/key-vault-whatis.md)
 * [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)
-

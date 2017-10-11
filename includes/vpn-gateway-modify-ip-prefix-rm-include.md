@@ -1,6 +1,6 @@
-### <a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
+### <a name="noconnection"></a>若要修改本地网络网关 IP 地址前缀的没有网关连接
 
-添加其他地址前缀：
+若要添加其他地址前缀：
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -8,8 +8,8 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
 ```
 
-删除地址前缀：<br>
-省去你不再需要的前缀。 在此示例中，我们不再需要前缀 20.0.0.0/24（来自前面的示例），因此我们将更新本地网关，排除该前缀。
+若要删除地址前缀：<br>
+省去你不再需要的前缀。 在此示例中，我们不再需要前缀 20.0.0.0/24 （从前面的示例），因此我们更新本地网络网关，排除该前缀。
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -17,9 +17,9 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
 ```
 
-### <a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
+### <a name="withconnection"></a>若要修改本地网络网关 IP 地址前缀的现有网关连接
 
-如果你有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，将需要按顺序执行以下步骤。 这将导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
+如果你具有网关连接，并想要添加或删除包含在本地网络网关的 IP 地址前缀，你需要执行以下步骤，按顺序。 这会导致你的 VPN 连接的一些停机时间。 在修改 IP 地址前缀，你不需要删除 VPN 网关。 只需删除的连接。
 
 
 1. 删除连接。
@@ -27,9 +27,9 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName
   ```
-2. 修改本地网关的地址前缀。
+2. 修改你本地网络网关的地址前缀。
    
-  设置 LocalNetworkGateway 的变量。
+  为 LocalNetworkGateway 设置变量。
 
   ```powershell
   $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName
@@ -41,15 +41,15 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
   ```
-3. 创建连接。 在此示例中，我们配置 IPsec 连接类型。 重新创建连接时，请使用针对配置指定的连接类型。 有关其他连接类型，请参阅 [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) 页面。
+3. 创建连接。 在此示例中，我们配置 IPsec 连接类型。 在重新创建你的连接，使用你的配置指定的连接类型。 有关其他连接类型，请参见[PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx)页。
    
-  设置 VirtualNetworkGateway 的变量。
+  为 VirtualNetworkGateway 设置变量。
 
   ```powershell
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name RMGateway  -ResourceGroupName MyRGName
   ```
    
-  创建连接。 此示例使用在步骤 2 中设置的变量 $local。
+  创建连接。 此示例使用变量 $local 步骤 2 中设置。
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `

@@ -14,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 356ceb98106d080d8c24dedc3547bee33750156e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="indexer-operations-azure-search-service-rest-api-2015-02-28-preview"></a>索引器操作（Azure 搜索服务 REST API：2015-02-28-Preview）
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 > 
 
 ## <a name="overview"></a>概述
-Azure 搜索可以与某些常见数据源直接集成，无需编写代码即可编制数据索引。 若要完成此设置，你可以调用 Azure 搜索 API 创建和管理**索引器**和**数据源**。 
+Azure 搜索可以与某些常见数据源直接集成，无需编写代码即可编制数据索引。 要完成此设置，可以调用 Azure 搜索 API 创建和管理**索引器**和**数据源**。 
 
 **索引器**是将数据源连接到目标搜索索引的资源。 可通过以下方式使用索引器： 
 
@@ -36,7 +35,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 * 在计划上同步索引与数据源中的更改。 计划是索引器定义的一部分。
 * 按需调用以根据需要更新索引。 
 
-如果你希望定期更新索引，则**索引器**很有用。 你可以设置一个内联计划作为索引器定义的一部分，也可以使用[运行索引器](#RunIndexer)按需运行它。 
+如果希望定期更新索引，则**索引器**很有用。 可以设置一个内联计划作为索引器定义的一部分，也可以使用[运行索引器](#RunIndexer)按需运行它。 
 
 **数据源**指定需要编制索引的数据、用于访问数据的凭据，以及用于启用 Azure 搜索的策略，以便有效地标识数据中的更改（如数据库表中已修改或已删除的行）。 它定义为独立的资源，以便可供多个索引器使用。
 
@@ -47,7 +46,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 * **Azure Blob 存储**，包括以下文档格式：PDF、Microsoft Office（DOCX/DOC、XSLX/XLS、PPTX/PPT、MSG）、HTML、XML、ZIP 和纯文本文件（包括 JSON）。 若要获取有针对性的演练，请参阅[本文](search-howto-indexing-azure-blob-storage.md)。
 * **Azure 表存储**。 若要获取有针对性的演练，请参阅[本文](search-howto-indexing-azure-tables.md)。
 
-我们考虑在以后添加对其他数据源的支持。 若要帮助我们确定这些决策的优先级，请在 [Azure 搜索反馈论坛](http://feedback.azure.com/forums/263029-azure-search)上提供你的反馈。
+我们考虑在以后添加对其他数据源的支持。 要帮助我们确定这些决策的优先级，请在 [Azure 搜索反馈论坛](http://feedback.azure.com/forums/263029-azure-search)上提供反馈。
 
 有关与索引器和数据源资源相关的最大限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
@@ -57,13 +56,13 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 设置自动索引编制过程通常包含四个步骤：
 
 1. 标识包含需要编制索引的数据的数据源。 请记住，Azure 搜索可能不支持数据源中的所有数据类型。 若要获取相关列表，请参阅[支持的数据类型](https://msdn.microsoft.com/library/azure/dn798938.aspx)。
-2. 创建其架构与你的数据源兼容的 Azure 搜索索引。
+2. 创建其架构与数据源兼容的 Azure 搜索索引。
 3. 根据[创建数据源](#CreateDataSource)中所述创建 Azure 搜索数据源。
 4. 根据[创建索引器](#CreateIndexer)中所述创建 Azure 搜索索引器。
 
-你应该计划为每个目标索引和数据源组合创建一个索引器。 你可以将多个索引器编写到同一索引中，也可以针对多个索引器重复使用同一数据源。 但是，一个索引器一次只能使用一个数据源，并且只能写入到单个索引。 
+应该计划为每个目标索引和数据源组合创建一个索引器。 可以将多个索引器编写到同一索引中，也可以针对多个索引器重复使用同一数据源。 但是，一个索引器一次只能使用一个数据源，并且只能写入到单个索引。 
 
-在创建索引器后，你可以使用[获取索引器状态](#GetIndexerStatus)操作检索其执行状态。 还可以使用[运行索引器](#RunIndexer)操作随时运行索引器（而不是按计划定期运行它）。
+在创建索引器后，可以使用[获取索引器状态](#GetIndexerStatus)操作检索其执行状态。 还可以使用[运行索引器](#RunIndexer)操作随时运行索引器（而不是按计划定期运行它）。
 
 <!-- MSDN has 2 art files plus a API topic link list -->
 
@@ -129,20 +128,20 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
   * `azuretable` - Azure 表存储
 * `credentials`：
   * 必需 `connectionString` 属性指定数据源的连接字符串。 连接字符串的格式取决于数据源类型： 
-    * 对于 Azure SQL，这是常用的 SQL Server 连接字符串。 如果你要使用 Azure 门户检索连接字符串，请使用 `ADO.NET connection string` 选项。
+    * 对于 Azure SQL，这是常用的 SQL Server 连接字符串。 如果要使用 Azure 门户检索连接字符串，请使用 `ADO.NET connection string` 选项。
     * 对于 Azure Cosmos DB，连接字符串必须采用以下格式：`"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"`。 所有值都是必需的。 可以在 [Azure 门户](https://portal.azure.com/)中找到这些值。  
     * 对于 Azure Blob 和表存储，这是存储帐户连接字符串。 格式如[此处](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)所述。 HTTPS 终结点协议是必需的。  
 * `container`（必需）：指定要使用 `name` 和 `query` 属性编制索引的数据： 
   * `name`（必需）：
-    * Azure SQL：指定表或视图。 你可以使用架构限定的名称，如 `[dbo].[mytable]`。
+    * Azure SQL：指定表或视图。 可以使用架构限定的名称，如 `[dbo].[mytable]`。
     * DocumentDB：指定集合。 
     * Azure Blob 存储：指定存储容器。
     * Azure 表存储：指定表的名称。 
   * `query`（可选）：
-    * DocumentDB：允许你指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。  
-    * Azure Blob 存储：允许你指定 blob 容器中的虚拟文件夹。 例如，对于 blob 路径 `mycontainer/documents/blob.pdf`，`documents` 可用作虚拟文件夹。
-    * Azure 表存储：允许你指定筛选要导入的行集的查询。
-    * Azure SQL：不支持查询。 如果你需要此功能，请为[此建议](https://feedback.azure.com/forums/263029-azure-search/suggestions/9893490-support-user-provided-query-in-sql-indexer)投票
+    * DocumentDB：允许指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。  
+    * Azure Blob 存储：允许指定 blob 容器中的虚拟文件夹。 例如，对于 blob 路径 `mycontainer/documents/blob.pdf`，`documents` 可用作虚拟文件夹。
+    * Azure 表存储：允许指定筛选要导入的行集的查询。
+    * Azure SQL：不支持查询。 如果需要此功能，请为[此建议](https://feedback.azure.com/forums/263029-azure-search/suggestions/9893490-support-user-provided-query-in-sql-indexer)投票
 * 下面介绍了可选 `dataChangeDetectionPolicy` 和 `dataDeletionDetectionPolicy` 属性。
 
 <a name="DataChangeDetectionPolicies"></a>
@@ -152,7 +151,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 
 ***高使用标记更改检测策略*** 
 
-如果你的数据源包含满足以下条件的列或属性，请使用此策略：
+如果数据源包含满足以下条件的列或属性，请使用此策略：
 
 * 所有插入都为列指定一个值。 
 * 对某个项目的所有更新也会更改该列的值。 
@@ -168,22 +167,22 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
         "highWaterMarkColumnName" : "[a row version or last_updated column name]" 
     } 
 
-在使用 Azure Cosmos DB 数据源时，你必须使用 Azure Cosmos DB 提供的 `_ts` 属性。 
+在使用 Azure Cosmos DB 数据源时，必须使用 Azure Cosmos DB 提供的 `_ts` 属性。 
 
-在使用 Azure Blob 数据源时，Azure 搜索基于 blob 的上次修改时间戳自动使用高使用标记更改检测策略；你无需自行指定此类策略。   
+在自动使用 Azure Blob 数据源，Azure 搜索时使用高水位线更改检测策略基于 blob 的上次修改时间戳;你不需要要自已指定此类策略。   
 
 ***SQL 集成的更改检测策略***
 
-如果你的 SQL 数据库支持[更改跟踪](https://msdn.microsoft.com/library/bb933875.aspx)，我们建议使用 SQL 集成的更改跟踪策略。 此策略支持最有效的更改跟踪，并允许 Azure 搜索标识删除的行，架构中无需具有显式的“软删除”列。
+如果 SQL 数据库支持[更改跟踪](https://msdn.microsoft.com/library/bb933875.aspx)，我们建议使用 SQL 集成的更改跟踪策略。 此策略支持最有效的更改跟踪，并允许 Azure 搜索标识删除的行，架构中无需具有显式的“软删除”列。
 
 从以下 SQL Server 数据库版本开始，支持集成的更改跟踪： 
 
-* SQL Server 2008 R2，如果你使用的是 Azure VM 上的 SQL Server。
-* Azure SQL 数据库 V12，如果你使用的是 Azure SQL 数据库。  
+* SQL Server 2008 R2，如果使用的是 Azure VM 上的 SQL Server。
+* Azure SQL 数据库 V12，如果使用的是 Azure SQL 数据库。  
 
 当使用 SQL 集成的更改跟踪策略时，不指定单独的数据删除检测策略 - 此策略具有对标识删除的行的内置支持。 
 
-此策略仅适用于表，不适用于视图。 需要先为要使用的表启用更改跟踪，然后才可以使用此策略。 有关说明，请参阅[启用和禁用更改跟踪](https://msdn.microsoft.com/library/bb964713.aspx)。    
+此策略仅适用于表，不适用于视图。 需要先为要使用的表启用更改跟踪，才可以使用此策略。 有关说明，请参阅[启用和禁用更改跟踪](https://msdn.microsoft.com/library/bb964713.aspx)。    
 
 构建**创建数据源**请求时，可按如下方式指定 SQL 集成的更改跟踪策略：
 
@@ -210,7 +209,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 <a name="CreateDataSourceRequestExamples"></a>
 **请求正文示例**
 
-如果你想要将数据源与按计划运行的索引器一起使用，此示例显示如何指定更改和删除检测策略： 
+如果想要将数据源与按计划运行的索引器一起使用，此示例显示如何指定更改和删除检测策略： 
 
     { 
         "name" : "asqldatasource",
@@ -222,7 +221,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }
 
-如果你只想要针对数据的一次性副本使用数据源，可以忽略策略：
+如果只想要针对数据的一次性副本使用数据源，可以忽略策略：
 
     { 
         "name" : "asqldatasource",
@@ -239,7 +238,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 <a name="UpdateDataSource"></a>
 
 ## <a name="update-data-source"></a>更新数据源
-你可以使用 HTTP PUT 请求更新现有数据源。 指定要在请求 URI 上更新的数据源的名称：
+可以使用 HTTP PUT 请求更新现有数据源。 指定要在请求 URI 上更新的数据源的名称：
 
     PUT https://[service name].search.windows.net/datasources/[datasource name]?api-version=[api-version]
     Content-Type: application/json
@@ -253,9 +252,9 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 
 请求正文语法与用于[创建数据源请求](#CreateDataSourceRequestSyntax)的语法相同。
 
-无法在现有数据源上更新某些属性。 例如，你无法更改现有数据源的类型。  
+无法在现有数据源上更新某些属性。 例如，无法更改现有数据源的类型。  
 
-如果你不想要更改现有数据源的连接字符串，则可以为连接字符串指定文本 `<unchanged>`。 这对于以下情况很有帮助：需要更新数据源，但因属于安全敏感型数据而不便于访问连接字符串。
+如果不想要更改现有数据源的连接字符串，则可以为连接字符串指定文本 `<unchanged>`。 这对于以下情况很有帮助：需要更新数据源，但因属于安全敏感型数据而不便于访问连接字符串。
 
 **响应**
 
@@ -347,7 +346,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
     api-key: [admin key]
 
 > [!NOTE]
-> 如果任何索引器引用你要删除的数据源，删除操作仍会继续。 但是，这些索引器将在下次运行时转换到错误状态。  
+> 如果任何索引器引用要删除的数据源，删除操作仍会继续。 但是，这些索引器会在下次运行时转换到错误状态。  
 > 
 > 
 
@@ -412,7 +411,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 
 * `maxFailedItems`：索引器运行被视为失败前，允许索引失败的项目数。 默认值为 0。 [获取索引器状态](#GetIndexerStatus)操作将返回有关失败的项目的信息。 
 * `maxFailedItemsPerBatch`：索引器运行被视为失败前，每批中允许索引失败的项目数。 默认值为 0。
-* `base64EncodeKeys`：指定是否对文档密钥进行 base-64 编码。 Azure 搜索会对出现在文档密钥中的字符施加限制。 但是，你的源数据中的值可能包含无效的字符。 如果有必要将此类值的索引编制为文档密钥，可以将此标志设置为 true。 默认值为 `false`。
+* `base64EncodeKeys`：指定是否对文档密钥进行 base-64 编码。 Azure 搜索会对出现在文档密钥中的字符施加限制。 但是，源数据中的值可能包含无效的字符。 如果有必要将此类值的索引编制为文档密钥，可以将此标志设置为 true。 默认值为 `false`。
 * `batchSize`：指定从数据源读取并将索引编制为单个批处理以提高性能的项数。 默认值取决于数据源类型：对于 Azure SQL 和 Azure Cosmos DB，默认值为 1000；对于 Azure Blob 存储，默认值为 10。
 
 **字段映射**
@@ -439,7 +438,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 
     "fieldMappings" : [ { "sourceFieldName" : "tags", "mappingFunction" : { "name" : "jsonArrayToStringCollection" } } ] 
 
-例如，如果源字段包含字符串 `["red", "white", "blue"]`，类型 `Collection(Edm.String)` 的目标字段将由 `"red"`、`"white"` 和 `"blue"` 这三个值填充。
+例如，如果源字段包含字符串 `["red", "white", "blue"]`，类型 `Collection(Edm.String)` 的目标字段由 `"red"`、`"white"` 和 `"blue"` 这三个值填充。
 
 请注意，`targetFieldName` 属性是可选的；如果省略，将使用 `sourceFieldName` 值。 
 
@@ -670,7 +669,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 <a name="ResetIndexer"></a>
 
 ## <a name="reset-indexer"></a>重置索引器
-**重置索引器**操作可重置与索引器关联的更改跟踪状态。 这允许你触发从头开始重新编制索引（例如，如果你的数据源架构已更改），或更改与索引器关联的数据源的数据更改检测策略。   
+**重置索引器**操作可重置与索引器关联的更改跟踪状态。 这允许触发从头开始重新编制索引（例如，如果数据源架构已更改），或更改与索引器关联的数据源的数据更改检测策略。   
 
     POST https://[service name].search.windows.net/indexers/[indexer name]/reset?api-version=[api-version]
     api-key: [admin key]
@@ -797,4 +796,3 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 <td>不支持；Azure 搜索当前仅支持基元类型和字符串集合</td>
 </tr>
 </table>
-

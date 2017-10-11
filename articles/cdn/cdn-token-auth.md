@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/11/2016
 ms.author: mezha
-ms.translationtype: HT
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 42b182c314795b1ebf69639ec7ac5583208dc7c1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure CDN 资产
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -98,7 +95,7 @@ ms.lasthandoff: 03/29/2017
 
         - ec-country-deny：拒绝从一个或多个指定国家/地区发出的请求。 将允许源自所有其他国家/地区的请求。 使用国家/地区代码来设置参数（每个国家/地区之间用逗号分隔）。 例如，如果要拒绝来自美国和法国的访问，请在列中输入 US、FR。
     
-        - ec-ref-allow：仅允许来自指定引用网站的请求。 引用网站标识链接到所请求资源的网页的 URL。 引用网站参数值不应包括协议。 可在该主机名上输入主机名和/或特定路径。 可以在单个参数中添加多个引用网站（每个应用网站之间用逗号分隔）。 如果指定了引用网站值，但由于某些浏览器配置导致请求中未发送引用网站信息，则将默认拒绝这些请求。 可以在参数中指定“缺少”或空白值，以允许这些缺少引用信息的请求。 也可以使用“*.consoto.com”来允许 consoto.com 的所有子域。例如，如果要允许来自 www.consoto.com 和 consoto2.com 下的所有子域的访问请求，以及包含空白值或缺少引用信息的请求，请在下面输入值：
+        - ec-ref-allow：仅允许来自指定引用网站的请求。 引用网站标识链接到所请求资源的网页的 URL。 引用网站参数值不应包括协议。 可在该主机名上输入主机名和/或特定路径。 可以在单个参数中添加多个引用网站（每个应用网站之间用逗号分隔）。 如果指定了引用网站值，但由于某些浏览器配置导致请求中未发送引用网站信息，则将默认拒绝这些请求。 可以在参数中指定“缺少”或空白值，以允许这些缺少引用信息的请求。 也可以使用“*.consoto.com”来允许 consoto.com 的所有子域。  例如，如果要允许来自 www.consoto.com 和 consoto2.com 下的所有子域的访问请求，以及包含空白值或缺少引用信息的请求，请在下面输入值：
         
         ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)
     
@@ -147,4 +144,3 @@ ms.lasthandoff: 03/29/2017
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN 功能和提供程序定价
 
 请参阅 [CDN 概述](cdn-overview.md)主题。
-

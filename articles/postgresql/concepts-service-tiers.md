@@ -10,12 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/31/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: e141c15b9999a33206285290b9a34c8616bf3791
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.openlocfilehash: 59ac187e50527517c402a5cc2aa871717dde5650
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL 选项和性能：了解每个定价层提供的功能
 创建 Azure Database for PostgreSQL 服务器时，需确定三个主要选项以配置为该服务器分配的资源。 这些选项会影响服务器的性能和缩放。
@@ -105,4 +104,3 @@ ms.lasthandoff: 07/26/2017
 ## <a name="next-steps"></a>后续步骤
 - 有关计算单元的详细信息，请参阅[说明计算单元](concepts-compute-unit-and-storage.md)
 - 了解如何[使用 Azure CLI 监视和缩放单个 PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)
-

@@ -14,16 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 174ac449e803ed5327468a38ea7264cb9923a877
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>将 Azure 存储用于 Jenkins 持续集成解决方案
 ## <a name="overview"></a>概述
-下列信息演示了如何将 Blob 存储用作 Jenkins 持续集成 (CI) 解决方案创建的生成项目的存储库，或者用作要在生成过程中使用的可下载文件的源。 在以下情况下，会发现这一做法很有用：你在敏捷开发环境进行编码（使用 Java 或其他语言），生成基于持续集成运行并且需要一个适用于生成项目的存储库，以便（举例来说）你能与其他组织成员、客户共享生成项目或维护存档。 另一种情况是，当生成作业本身需要其他文件时，例如需要下载依赖项作为生成输入的一部分时。
+下列信息演示了如何将 Blob 存储用作 Jenkins 持续集成 (CI) 解决方案创建的生成项目的存储库，或者用作要在生成过程中使用的可下载文件的源。 一做法对于以下情况中很有用：在敏捷开发环境进行编码（使用 Java 或其他语言），生成内容基于持续集成运行，并且需要适用于生成项目的存储库，以便与组织的其他成员或客户共享生成项目或维护存档。 另一种情况是，当生成作业本身需要其他文件时，例如需要下载依赖项作为生成输入的一部分时。
 
 在本教程中，将使用 Microsoft 提供的适用于 Jenkins CI 的 Azure 存储插件。
 
@@ -115,7 +114,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
     2. 单击“存储”。
     3. 单击用于 Jenkins 的存储帐户名称。
     4. 单击“容器”。
-    5. 单击名为 **myjob** 的容器，该名称是创建 Jenkins 作业时分配的作业名称的小写形式。 在 Azure 存储中，容器名称和 Blob 名称都是小写的（并且区分大小写）。 在名为 **myjob** 的容器的 Blob 列表中，应能看到 **hello.txt** 和 **date.txt**。 复制这两项中任一项的 URL 并在浏览器中打开。 会看到已作为生成项目上传的文本文件。
+    5. 单击名为 **myjob** 的容器，该名称是创建 Jenkins 作业时分配的作业名称的小写形式。 在 Azure 存储中，容器名称和 Blob 名称都是小写的（并且区分大小写）。 在名为 **myjob** 的容器的 Blob 列表中，应能看到 **hello.txt** 和 **date.txt**。 复制这两项中任一项的 URL 并在浏览器中打开。 可看到已作为生成项目上传的文本文件。
 
 每个作业只能创建一个用来将项目上传到 Azure Blob 存储的生成后操作。 请注意，单个生成后操作用于将项目上传到 Azure Blob 存储，它可在“要上传的项目列表”中指定不同的文件（包括通配符）和文件路径，其中使用分号作为分隔符。 例如，如果 Jenkins 内部版本在工作空间的 **build** 文件夹中生成了 JAR 文件和 TXT 文件，并且要将这两者都上传到 Azure Blob 存储，请使用以下项作为“要上传的项目列表”值：**build/\*.jar;build/\*.txt**。 还可以使用双冒号语法指定要在 Blob 名称内使用的路径。 例如，如果要在 Blob 路径中使用 **binaries** 上传 JAR 并在 Blob 路径中使用 **notices** 上传 TXT 文件，请使用以下项作为“要上传的项目列表”值：**build/\*.jar::binaries;build/\*.txt::notices**。
 
@@ -137,7 +136,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 
 * **存储帐户**：对 Azure 存储服务的所有访问都要通过存储帐户来完成。 存储帐户是访问 blob 的最高级别的命名空间。 一个帐户可以包含无限个容器，只要这些容器的总大小不超过 100 TB 即可。
 * **容器**：一个容器包含一组 blob 集。 所有 blob 必须位于相应的容器中。 一个帐户可以包含无限个容器。 一个容器可以存储无限个 Blob。
-* **Blob**：任何类型和大小的文件。 可将两类 Blob 存储到 Azure 存储中：块 Blob 和页 Blob。 大部分文件都是块 blob。 一个块 Blob 的大小可以达到 200 GB。 本教程使用的是块 Blob。 另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。 有关 Blob 的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](http://msdn.microsoft.com/library/azure/ee691964.aspx)（了解块 Blob、追加 Blob 和页 Blob）。
+* **Blob**：任何类型和大小的文件。 Azure 存储中可存储两类 Blob：块 Blob 和页 Blob。 大部分文件都是块 blob。 一个块 Blob 的大小可以达到 200 GB。 本教程使用的是块 Blob。 另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。 有关 Blob 的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](http://msdn.microsoft.com/library/azure/ee691964.aspx)（了解块 Blob、追加 Blob 和页 Blob）。
 * **URL 格式**：可使用以下 URL 格式对 Blob 寻址：
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: 416420d855505508735ebd8526e93efdb230ad53
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="installing-rstudio-with-r-server-on-hdinsight"></a>使用 R Server on HDInsight 安装 RStudio
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/20/2017
 
 2. 使用步骤 1 中提供的命名模式通过 SSH 连接到群集的边缘节点。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-3. 连接后，你将成为该群集上的 root 用户。 在 SSH 会话中，使用下列命令：
+3. 连接后，将成为该群集上的 root 用户。 在 SSH 会话中，使用下列命令：
 
         sudo su -
 
@@ -65,12 +64,12 @@ ms.lasthandoff: 06/20/2017
 
         wget http://mrsactionscripts.blob.core.windows.net/rstudio-server-community-v01/InstallRStudio.sh
 
-5. 更改自定义脚本文件的权限，然后运行该脚本。 使用以下命令：
+5. 更改自定义脚本文件的权限，并运行该脚本。 使用以下命令：
 
         chmod 755 InstallRStudio.sh
         ./InstallRStudio.sh
 
-6. 如果你在创建包含 R Server 的 HDInsight 群集时使用了 SSH 密码，则可以跳过此步骤直接转到下一步。 如果创建群集时使用了 SSH 密钥，则必须为 SSH 用户设置密码。 连接到 RStudio 时需要此密码。 运行以下命令：
+6. 如果在创建包含 R Server 的 HDInsight 群集时使用了 SSH 密码，则可以跳过此步骤直接转到下一步。 如果创建群集时使用了 SSH 密钥，则必须为 SSH 用户设置密码。 连接到 RStudio 时需要此密码。 运行以下命令：
 
         passwd USERNAME
         Current Kerberos password:
@@ -95,8 +94,8 @@ ms.lasthandoff: 06/20/2017
        还可通过添加 `-i id_rsa_key` 使用 SSH 密钥，而无需密码。        
    * 如果使用装有 PuTTY 的 Windows 客户端
 
-     1. 打开 PuTTY 并输入你的连接信息。
-     2. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，然后选择“隧道”。
+     1. 打开 PuTTY 并输入连接信息。
+     2. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，并选择“隧道”。
      3. 提供以下有关“用于控制 SSH 端口转发的选项”窗体的信息：
 
         * **源端口** - 客户端上要转发的端口。 例如 **8787**。
@@ -104,18 +103,18 @@ ms.lasthandoff: 06/20/2017
 
             ![创建 SSH 隧道](./media/hdinsight-hadoop-r-server-install-r-studio/createsshtunnel.png "创建 SSH 隧道")
 
-     4. 单击“添加”以添加设置，然后单击“打开”以打开 SSH 连接。
+     4. 单击“添加”以添加设置，并单击“打开”以打开 SSH 连接。
      5. 在系统提示时，登录到服务器以建立 SSH 会话并启用隧道。
 
 9. 打开 Web 浏览器，并根据你为隧道输入的端口输入以下 URL：
 
         http://localhost:8787/ 
 
-10. 系统将提示你输入 SSH 用户名和密码以连接到群集。 如果在创建群集时使用了 SSH 密钥，则必须输入步骤 5 中所创建的密码。
+10. 系统会提示你输入的 SSH 用户名和密码以连接到群集。 如果在创建群集时使用了 SSH 密钥，则必须输入步骤 5 中所创建的密码。
 
     ![连接到 R Studio](./media/hdinsight-hadoop-r-server-install-r-studio/connecttostudio.png "创建 SSH 隧道")
 
-11. 若要测试 RStudio 安装是否成功，可以运行测试脚本，该脚本将在群集上执行基于 R 的 MapReduce 和 Spark 作业。 要下载测试脚本并在 RStudio 中运行，请返回 SSH 控制台，然后输入下列命令：
+11. 若要测试 RStudio 安装是否成功，你可以运行在群集执行基于 R 的 MapReduce 和 Spark 作业测试脚本。 要下载测试脚本并在 RStudio 中运行，请返回 SSH 控制台，然后输入下列命令：
 
     *    如果你创建了包含 R 的 Hadoop 群集，请使用此命令：
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 06/20/2017
 
             wget http://mrsactionscripts.blob.core.windows.net/rstudio-server-community-v01/testhdi_spark.r
 
-12. 在 RStudio 中，你将看到下载的测试脚本。 双击该文件将它打开，选择文件的内容，然后单击“运行”。 “控制台”窗格中应会显示输出：
+12. 在 RStudio，你将看到你下载的测试脚本。 双击该文件以打开它，选择该文件的内容，然后单击**运行**。 “控制台”窗格中应会显示输出：
 
    ![测试安装](./media/hdinsight-hadoop-r-server-install-r-studio/test-r-script.png "测试安装")
 
@@ -134,5 +133,4 @@ ms.lasthandoff: 06/20/2017
 
 * [适用于 HDInsight 群集上的 R Server 的计算上下文选项](hdinsight-hadoop-r-server-compute-contexts.md)
 * [适用于 R Server on HDInsight 的 Azure 存储选项](hdinsight-hadoop-r-server-storage.md)
-
 

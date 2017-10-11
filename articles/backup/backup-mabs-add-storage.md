@@ -14,24 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 751b9b495fd368dff1f72429707f5f33a0ccb569
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="add-storage-to-azure-backup-server-v2"></a>将存储添加到 Azure 备份服务器 v2
 
-Azure 备份服务器 v2 附带 System Center 2016 Data Protection Manager Modern Backup Storage。 Modern Backup Storage 可提供节省 50% 的存储、快三倍的备份以及更高效的存储。 它还提供可感知工作负载的存储。 
+Azure 备份服务器 v2 附带 System Center 2016 Data Protection Manager 新式备份存储。 Modern Backup Storage 可提供节省 50% 的存储、快三倍的备份以及更高效的存储。 它还提供可感知工作负载的存储。 
 
 > [!NOTE]
-> 若要使用 Modern Backup Storage，必须在 Windows Server 2016 上运行备份服务器 v2。 如果在早期版本的 Windows Server 上运行备份服务器 v2，则 Azure 备份服务器无法利用 Modern Backup Storage。 而是采用与备份服务器 v1 相同的方式来保护工作负载。 有关详细信息，请参阅备份服务器版本[保护矩阵](backup-mabs-protection-matrix.md)。
+> 若要使用新式备份存储，必须在 Windows Server 2016 上运行备份服务器 v2。 如果在早期版本的 Windows Server 上运行备份服务器 v2，则 Azure 备份服务器无法利用新式备份存储。 而是采用与备份服务器 v1 相同的方式来保护工作负载。 有关详细信息，请参阅备份服务器版本[保护矩阵](backup-mabs-protection-matrix.md)。
 
 ## <a name="volumes-in-backup-server-v2"></a>备份服务器 v2 中的卷
 
-备份服务器 v2 可接受存储卷。 添加卷时，备份服务器会将卷格式化为 Modern Backup Storage 所需的复原文件系统 (ReFS)。 若要添加卷以及以后在需要时扩展它，建议使用以下工作流：
+备份服务器 v2 可接受存储卷。 添加卷时，备份服务器会将卷格式化为新式备份存储所需的复原文件系统 (ReFS)。 若要添加卷以及以后在需要时扩展它，建议使用以下工作流：
 
 1.  在 VM 上设置备份服务器 v2。
 2.  在存储池中的虚拟磁盘上创建卷：
@@ -41,7 +39,7 @@ Azure 备份服务器 v2 附带 System Center 2016 Data Protection Manager Moder
 3.  将卷添加到备份服务器。
 4.  配置可感知工作负载的存储。
 
-## <a name="create-a-volume-for-modern-backup-storage"></a>为 Modern Backup Storage 创建卷
+## <a name="create-a-volume-for-modern-backup-storage"></a>为新式备份存储创建卷
 
 使用具有卷的备份服务器 v2 作为磁盘存储可以帮助维护对存储的控制权。 卷可以是单个磁盘。 但是，如果要在将来扩展存储，请通过使用存储空间创建的磁盘来创建卷。 如果要为备份存储扩展卷，这可能有所帮助。 本部分提供有关使用此设置创建卷的最佳做法。
 
@@ -71,7 +69,7 @@ Azure 备份服务器 v2 附带 System Center 2016 Data Protection Manager Moder
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>将卷添加到备份服务器磁盘存储
 
-若要将卷添加到备份服务器，请在“管理”窗格中，重新扫描存储，然后选择“添加”。 可用于为备份服务器存储添加的所有卷的列表随即出现。 将可用卷添加到所选卷的列表之后，可以为它们提供友好名称以帮助管理它们。 若要将这些卷格式化为 ReFS 以便备份服务器可以利用 Modern Backup Storage 的优点，请选择“确定”。
+若要将卷添加到备份服务器，请在“管理”窗格中，重新扫描存储，然后选择“添加”。 可用于为备份服务器存储添加的所有卷的列表随即出现。 将可用卷添加到所选卷的列表之后，可以为它们提供友好名称以帮助管理它们。 若要将这些卷格式化为 ReFS 以便备份服务器可以利用新式备份存储的优点，请选择“确定”。
 
 ![添加可用卷](./media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
@@ -104,5 +102,4 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 - [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)
 - [使用备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 - [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)
-
 

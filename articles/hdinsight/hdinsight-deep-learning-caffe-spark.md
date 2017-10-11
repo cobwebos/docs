@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 14b7808c9534bce3049422d6bce1e8914b2c2fbc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 03/25/2017
 
 某些用户询问如何在 Microsoft 的 PaaS Hadoop 产品 HDInsight 上使用深度学习。 我们会在以后给大家带来更多内容，但目前只能以技术博客的方式总结一下如何使用 Caffe on HDInsight Spark。
 
-如果以前安装过 Caffe，用户会对安装该框架的困难有所体会。 在本博客中，我们将先介绍如何为 HDInsight 群集安装 [Caffe on Spark](https://github.com/yahoo/CaffeOnSpark)，然后通过内置的 MNIST 演示版演示如何使用分布式深度学习，在多个 CPU 上使用 HDInsight Spark。
+如果以前安装过 Caffe，用户会对安装该框架的困难有所体会。 在本博客中，我们先介绍如何为 HDInsight 群集安装 [Caffe on Spark](https://github.com/yahoo/CaffeOnSpark) ，然后通过内置的 MNIST 演示版演示如何使用分布式深度学习，在多个 CPU 上使用 HDInsight Spark。
 
 需完成四大步骤才能让其在 HDInsight 上运行。
 
@@ -81,7 +80,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 ## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>步骤 2：在头节点上生成 Caffe on Spark for HDInsight
 
-第二步是在头节点上生成 Caffe，然后将编译的库分发到所有工作节点。 这一步需[以 ssh 方式登录到头节点](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)，然后按 [CaffeOnSpark 生成过程](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)操作即可。使用下面的脚本，只需几项附加步骤即可生成 CaffeOnSpark。 
+第二步是在头节点上生成 Caffe，然后将编译的库分发到所有工作节点。 这一步需[以 ssh 方式登录到头节点](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)，并按 [CaffeOnSpark 生成过程](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)操作即可。使用下面的脚本，只需几项附加步骤即可生成 CaffeOnSpark。 
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive
@@ -132,7 +131,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
     failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
 
-直通运行“make clean”清除代码存储库，然后再运行“make build”即可解决该问题，前提是依赖项正确。
+直通运行“make clean”清除代码存储库，再运行“make build”即可解决该问题，前提是依赖项正确。
 
 ### <a name="troubleshooting-maven-repository-connection-time-out"></a>故障排除：Maven 存储库连接超时
 
@@ -143,7 +142,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
     Feb 01, 2017 5:14:49 AM org.apache.maven.wagon.providers.http.httpclient.impl.execchain.RetryExec execute
     INFO: I/O exception (java.net.SocketException) caught when processing request to {s}->https://repo.maven.apache.org:443: Connection timed out (Read failed)
 
-此时只需等待几分钟，然后尝试重新生成代码即可。这可能是 Maven 在以某种方式限制源自特定 IP 地址的流量。
+此时只需等待几分钟，尝试重新生成代码即可。这可能是 Maven 在以某种方式限制源自特定 IP 地址的流量。
 
 
 ### <a name="troubleshooting-test-failure-for-caffe"></a>故障排除：Caffe 测试失败
@@ -205,7 +204,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
-我们使用的是 YARN 群集模式，可将 Spark 驱动程序调度到任意容器（以及任意工作节点），因此用户会在控制台中看到类似如下的输出：
+我们使用 YARN 群集模式，可将 Spark 驱动程序调度到任意容器（以及任意工作节点），因此你会在控制台中看到类似如下的输出：
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
@@ -219,7 +218,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 ![YARN 计划程序](./media/hdinsight-deep-learning-caffe-spark/YARN-Scheduler.png)
 
-如果发生故障，可能需要查看驱动程序日志或容器日志。 若要查看驱动程序日志，可在 YARN UI 中单击应用程序 ID，然后单击“日志”按钮。 此时驱动程序日志会写入 stderr 中。
+如果发生故障，可能需要查看驱动程序日志或容器日志。 要查看驱动程序日志，可在 YARN UI 中单击应用程序 ID，并单击“日志”按钮。 此时驱动程序日志会写入 stderr 中。
 
 ![YARN UI 2](./media/hdinsight-deep-learning-caffe-spark/YARN-UI-2.png)
 
@@ -236,7 +235,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
         at java.lang.reflect.Method.invoke(Method.java:498)
         at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:627)
 
-有时候，问题可能会发生在执行程序而非驱动程序中。 在这种情况下，需检查容器日志。 你始终可以获取容器日志，然后获取发生故障的容器。 例如，用户可能会在运行 Caffe 时遇到这种故障。
+有时候，问题可能会发生在执行程序而非驱动程序中。 在这种情况下，需检查容器日志。 始终可以获取容器日志，然后获取发生故障的容器。 例如，用户可能会在运行 Caffe 时遇到这种故障。
 
     17/02/01 07:12:05 WARN YarnAllocator: Container marked as failed: container_1485916338528_0008_05_000005 on host: 10.0.0.14. Exit status: 134. Diagnostics: Exception from container-launch.
     Container id: container_1485916338528_0008_05_000005
@@ -259,7 +258,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
     Container exited with a non-zero exit code 134
 
-在这种情况下，需获取发生故障的容器的 ID（在上面的示例中，该 ID 为 container_1485916338528_0008_05_000005）。 然后需运行 
+在这种情况下，需获取发生故障的容器的 ID（在上面的示例中，该 ID 为 container_1485916338528_0008_05_000005）。 然后需要运行 
 
     yarn logs -containerId container_1485916338528_0008_03_000005
 
@@ -307,5 +306,4 @@ SampleID 表示 MNIST 数据集中的 ID，标签是模型的标识数字。
 
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
-
 

@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d1cd23eac464d48ebc6dd618c52c252444b47e21
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: d407c29f99fd7537590ec787febd84a9e3f4f353
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="leverage-other-services-with-sql-data-warehouse"></a>在 SQL 数据仓库中利用其他服务
 除了本身的核心功能以外，SQL 数据仓库还允许用户利用 Azure 中的其他许多服务。  具体而言，我们目前已采取多种措施深度集成了以下服务：
@@ -34,7 +32,7 @@ ms.lasthandoff: 04/03/2017
 我们正努力连接多个跨 Azure 生态系统的服务。
 
 ## <a name="power-bi"></a>Power BI
-借助 Power BI 集成，你可以利用 SQL 数据仓库的计算能力以及 Power BI 的动态报告和视觉效果。 Power BI 集成当前包括：
+借助 Power BI 集成，可以利用 SQL 数据仓库的计算能力以及 Power BI 的动态报告和视觉效果。 Power BI 集成当前包括：
 
 * **直接连接**：使用逻辑下推与 SQL 数据仓库建立更高级的连接。  它提供更快且更大规模的分析。
 * **在 Power BI 中打开**：“在 Power BI 中打开”按钮将实例信息传递给 Power BI，以建立更紧密的连接。
@@ -78,4 +76,3 @@ Azure 流分析是复杂、完全托管的基础结构，用于处理和使用�
 <!--MSDN references-->
 
 <!--Other Web references-->
-

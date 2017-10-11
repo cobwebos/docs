@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/31/2017
 ms.author: rajani-janaki-ram
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: fdb33ea0d08353b491f2934fcf885fcb6910b9a2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="upgrade-a-site-recovery-vault-to-an-azure-resource-manager-based-recovery-services-vault"></a>将 Site Recovery 保管库升级到基于 Azure 资源管理器的恢复服务保管库
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 08/24/2017
 * [安装最新版本的 Azure PowerShell MSI](https://github.com/Azure/azure-powershell/releases)
 * [下载恢复服务保管库升级脚本](https://aka.ms/vaultupgradescript)
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 若要将 Site Recovery 保管库升级到基于 Azure 资源管理器的恢复服务保管库，必须满足以下要求：
 
 * 最低代理版本：在服务器上安装的 Azure Site Recovery 提供程序版本必须为 5.1.1700.0 或更高版本。
@@ -81,7 +80,7 @@ ms.lasthandoff: 08/24/2017
 
 **这次升级是否会影响正在进行的复制？**
 
-不会。 正在进行的复制在升级期间和升级后仍可不间断地继续。
+不能。 正在进行的复制在升级期间和升级后仍可不间断地继续。
 
 **站点到站点 VPN 和 IP 设置等网络设置会发生什么情况？**
 
@@ -186,4 +185,3 @@ ms.lasthandoff: 08/24/2017
 在 Site Recovery 保管库中，每个保护组都配置有复制频率、恢复点保留期、应用程序一致性快照频率和其他复制设置。 恢复服务保管库中将这些设置配置为复制策略。 该策略的名称是保护组的名称或 *primarycloud_Policy*。
 
 有关复制策略的详细信息，请参阅[管理从 VMware 到 Azure 的复制策略](site-recovery-setup-replication-settings-vmware.md)。
-

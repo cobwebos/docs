@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: db9b1578a235be9018fc1985cc75a0a05ee47b3a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="implement-password-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -39,7 +38,7 @@ ms.lasthandoff: 07/18/2017
 
 此外，如果决定[使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)，则可以选择性地设置密码同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。
 
-密码同步是由 Azure AD Connect Sync 实现的目录同步功能的扩展。若要在环境中使用密码同步，需要：
+密码同步是由 Azure AD Connect Sync 实现的目录同步功能的扩展。 若要在环境中使用密码同步，需要：
 
 * 安装 Azure AD Connect。  
 * 配置本地 Azure Active Directory 实例与 Azure Active Directory 实例之间的目录同步。
@@ -88,7 +87,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 8.  当用户尝试登录到 Azure AD 并输入其密码时，将通过同一 MD4+salt+PBKDF2+HMAC-SHA256 过程运行密码。 如果生成的哈希与 Azure AD 中存储的哈希匹配，则用户输入的密码正确并进行身份验证。 
 
 >[!Note] 
->原始 MD4 哈希不会传送到 Azure AD。 与之相反，传输的是原始 MD4 哈希的 SHA256 哈希。 因此，如果获取了 Azure AD 中存储的哈希，将无法在本地“传递哈希”攻击中使用。
+>原始 MD4 哈希不会传送到 Azure AD。 与之相反，传输的是原始 MD4 哈希的 SHA256 哈希。 因此，如果获取了 Azure AD 中存储的哈希，则无法在本地“传递哈希”攻击中使用。
 
 ### <a name="how-password-synchronization-works-with-azure-active-directory-domain-services"></a>如何使用 Azure Active Directory 域服务进行密码同步
 也可以使用密码同步功能将本地密码同步到 [Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)。 在此方案中，Azure Active Directory 域服务实例以本地 Active Directory 实例中所有可用的方法验证云中的用户。 此方案的体验类似于在本地环境中使用 Active Directory 迁移工具 (ADMT)。
@@ -183,4 +182,3 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 ## <a name="next-steps"></a>后续步骤
 * [Azure AD Connect 同步：自定义同步选项](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

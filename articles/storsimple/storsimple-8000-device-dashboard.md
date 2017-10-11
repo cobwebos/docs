@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 784d3ce9d8f926b00ac1c6fbf48a05c0b04f900a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>使用 StorSimple 设备管理器服务中的设备摘要
 
@@ -34,7 +33,7 @@ StorSimple 设备摘要边栏选项卡提供特定 StorSimple 设备的概要信
 
 ## <a name="management-command-bar"></a>管理命令栏
 
-在 StorSimple 设备边栏选项卡中，你将看到用于管理 StorSimple 设备的选项。 在该边栏选项卡的顶部和左侧可看到管理命令。 使用这些选项可以添加共享或卷，也可以对设备进行更新或故障转移。
+在 StorSimple 设备边栏选项卡中，会看到用于管理 StorSimple 设备的选项。 在该边栏选项卡的顶部和左侧可看到管理命令。 使用这些选项可以添加共享或卷，也可以对设备进行更新或故障转移。
 
 ![管理命令栏](./media/storsimple-8000-device-dashboard/device-summary2.png)
 
@@ -50,7 +49,7 @@ StorSimple 设备摘要边栏选项卡提供特定 StorSimple 设备的概要信
 
     ![警报磁贴](./media/storsimple-8000-device-dashboard/device-summary4.png)
 
-    单击该磁贴可打开“警报”边栏选项卡，然后单击单个警报可查看有关该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
+    单击该磁贴可打开“警报”边栏选项卡，并单击单个警报可查看有关该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
 
     ![单击警报磁贴](./media/storsimple-8000-device-dashboard/device-summary10.png)
 
@@ -96,5 +95,4 @@ StorSimple 设备摘要边栏选项卡提供特定 StorSimple 设备的概要信
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [StorSimple 服务摘要边栏选项卡](storsimple-8000-service-dashboard.md)。
 * 了解有关如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)的详细信息。
-
 

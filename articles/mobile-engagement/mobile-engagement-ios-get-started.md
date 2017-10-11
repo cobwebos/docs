@@ -14,28 +14,27 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>适用于 Objective C 中 iOS 应用的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，并向 iOS 应用程序的细分用户发送推送通知。
-在本教程中，你将创建一个空白 iOS 应用，它使用 Apple Push Notification 系统 (APNS) 接收推送通知。
+在本教程中，将创建一个空白 iOS 应用，它使用 Apple Push Notification 系统 (APNS) 接收推送通知。
 
 本教程需要的内容如下：
 
-* XCode 8，你可以从 MAC 应用商店进行安装
+* XCode 8，可以从 MAC 应用商店进行安装
 * [Mobile Engagement iOS SDK]
 
 完成本教程是学习有关 iOS 应用的所有其他 Mobile Engagement 教程的先决条件。
 
 > [!NOTE]
-> 若要完成本教程，你必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started)。
 >
 >
 
@@ -76,7 +75,7 @@ ms.lasthandoff: 07/20/2017
               [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
               [...]
         }
-9. `setTestLogEnabled` 是一个可选语句，可启用使你能够确定问题的 SDK 日志。
+9. `setTestLogEnabled`是一个可选的语句，从而可为你确定问题的 SDK 日志。
 
 ## <a id="monitor"></a>启用实时监视
 为了开始发送数据并确保用户处于活动状态，必须将至少一个屏幕（活动）发送到 Mobile Engagement 后端。
@@ -93,24 +92,24 @@ ms.lasthandoff: 07/20/2017
 
 ## <a id="integrate-push"></a>启用推送通知和应用内消息传送
 在市场推广活动中，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与 REACH 模块和用户进行交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
-以下各部分将介绍如何设置应用以接收推送通知。
+以下各部分介绍如何设置应用以接收推送通知。
 
 ### <a name="enable-your-app-to-receive-silent-push-notifications"></a>使应用程序能够接收无提示的推送通知
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
 
-### <a name="add-the-reach-library-to-your-project"></a>将 Reach 库添加到你的项目
-1. 右键单击你的项目。
+### <a name="add-the-reach-library-to-your-project"></a>将 Reach 库添加到项目
+1. 右键单击项目。
 2. 选择“ **将文件添加到**”。
 3. 导航到在其中解压缩 SDK 的文件夹。
 4. 选择 `EngagementReach` 文件夹。
 5. 单击 **“添加”**。
 
-### <a name="modify-your-application-delegate"></a>修改你的应用程序代理
+### <a name="modify-your-application-delegate"></a>修改应用程序代理
 1. 回到 **AppDeletegate.m** 文件中，导入 Engagement Reach 模块。
 
         #import "AEReachModule.h"
         #import <UserNotifications/UserNotifications.h>
-2. 在 `application:didFinishLaunchingWithOptions` 方法中，创建 Reach 模块并将其传递到你现有的 Engagement 初始化行︰
+2. 在 `application:didFinishLaunchingWithOptions` 方法中，创建 Reach 模块并将其传递到现有的 Engagement 初始化行︰
 
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
@@ -167,4 +166,3 @@ ms.lasthandoff: 07/20/2017
 [2]: ./media/mobile-engagement-ios-get-started/xcode-select-engagement-sdk.png
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
-

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C：从 .NET Web 应用调用 .NET Web API
 
@@ -58,13 +57,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 我们的示例配置为使用演示租户的策略和客户端 ID。 如果想要使用自己的租户：
 
-1. 打开 `TaskService` 项目中的 `web.config`，然后
+1. 打开`web.config`中`TaskService`项目，然后替换为的值
 
     * 将 `ida:Tenant` 的值替换为租户名称
     * 将 `ida:ClientId` 的值替换为 Web API 应用程序 ID
     * 将 `ida:SignUpSignInPolicyId` 的值替换为“注册或登录”策略名称
 
-2. 打开 `TaskWebApp` 项目中的 `web.config`，然后
+2. 打开`web.config`中`TaskWebApp`项目，然后替换为的值
 
     * 将 `ida:Tenant` 的值替换为租户名称
     * 将 `ida:ClientId` 的值替换为 Web 应用的应用程序 ID
@@ -187,5 +186,4 @@ public async Task<ActionResult> Index()
 ## <a name="run-the-sample-app"></a>运行示例应用
 
 最后，生成并运行上述两个应用。 注册并登录，并为已登录用户创建任务。 注销并以其他用户身份登录。 为该用户创建任务。 请注意这些任务按用户存储在 API 中的方式，因为 API 从它接收的令牌中提取用户的标识。 另外，请练习使用范围。 删除“写入”权限，并尝试添加任务。 只需确保每次更改范围时注销。
-
 

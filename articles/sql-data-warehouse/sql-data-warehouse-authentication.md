@@ -16,12 +16,11 @@ ms.workload: data-management
 ms.custom: security
 ms.date: 03/21/2017
 ms.author: rortloff;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 92f48027051bc4aff4d6b8d66fdd6de81bba3657
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="authentication-to-azure-sql-data-warehouse"></a>对 Azure SQL 数据仓库进行身份验证
 > [!div class="op_single_selector"]
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/04/2017
 
 默认情况下，连接连接到 master 数据库而不是用户数据库。 若要连接到用户数据库，可以选择执行以下两项操作之一：
 
-* 在 SSDT、SSMS 或应用程序连接字符串中将您的服务器注册到 SQL Server 对象资源管理器时指定默认数据库。 例如，包含 ODBC 连接的 InitialCatalog 参数。
+* 在 SSDT、SSMS 或应用程序连接字符串中将服务器注册到 SQL Server 对象资源管理器时指定默认数据库。 例如，包含 ODBC 连接的 InitialCatalog 参数。
 * 在 SSDT 中创建会话之前先突出显示用户数据库。
 
 > [!NOTE]
@@ -79,7 +78,7 @@ Azure Active Directory 的优点包括：
 按照这些步骤配置 Azure Active Directory 身份验证。
 
 1. 创建并填充 Azure Active Directory
-2. 可选：关联或更改当前与你的 Azure 订阅关联的活动目录
+2. 可选：关联或更改当前与 Azure 订阅关联的活动目录
 3. 为 Azure SQL 数据仓库创建 Azure Active Directory 管理员。
 4. 配置客户端计算机
 5. 在映射到 Azure AD 标识的数据库中创建包含的数据库用户
@@ -99,4 +98,3 @@ Azure Active Directory 的优点包括：
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
 [Azure AD features and limitations]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: a1f3f6e6cba074647195e2b0cbcdc7b4f3dec475
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-3-plan-networking-for-hyper-v-vm-replication-to-a-secondary-vmm-site"></a>步骤 3：规划网络以将 Hyper-V VM 复制到辅助 VMM 站点
 
@@ -217,6 +216,5 @@ VMNetwork1-Chicago 的网络映射发生变化。 | VM-1 连接现映射到 VMNe
 ## <a name="next-steps"></a>后续步骤
 
 请转到[步骤 4：准备 VMM 和 Hyper-V](vmm-to-vmm-walkthrough-vmm-hyper-v.md)。
-
 
 

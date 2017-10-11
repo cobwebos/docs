@@ -15,20 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>从逻辑应用工作流连接到 Dynamics 365
 
 通过逻辑应用，可以连接到 Dynamics 365（联机），并可以创建有用的业务流，用于创建记录、更新项或返回记录列表。 借助 Dynamics 365 连接器，可以：
 
 * 根据从 Dynamics 365（联机）中获取的数据生成业务流。
-* 使用可获得响应的操作，然后使输出可用于其他操作。 例如，在 Dynamics 365（联机）中更新项后，可以使用 Office 365 发送一封电子邮件。
+* 使用可获得响应的操作，并使输出可用于其他操作。 例如，在 Dynamics 365（联机）中更新项后，可以使用 Office 365 发送一封电子邮件。
 
 本主题介绍如何创建逻辑应用，每当在 Dynamics 365 中创建一个新潜在客户时，逻辑应用会在 Dynamics 365 中创建任务。
 
@@ -40,7 +38,7 @@ ms.lasthandoff: 05/26/2017
 
 1.  [登录 Azure](https://portal.azure.com)。
 
-2.  在 Azure 搜索框中，键入“`Logic apps`”，然后按 Enter。
+2.  在 Azure 搜索框中，键入“`Logic apps`”，并按 Enter。
 
       ![查找逻辑应用](./media/connectors-create-api-crmonline/find-logic-apps.png)
 
@@ -48,7 +46,7 @@ ms.lasthandoff: 05/26/2017
 
       ![添加逻辑应用](./media/connectors-create-api-crmonline/add-logic-app.png)
 
-4.  若要创建逻辑应用，完成“名称”、“订阅”、“资源组”和“位置”字段，然后单击“创建”。
+4.  要创建逻辑应用，完成“名称”、“订阅”、“资源组”和“位置”字段，并单击“创建”。
 
 5.  选择新的逻辑应用。 收到“部署成功”通知后，请单击“刷新”。
 
@@ -65,7 +63,7 @@ ms.lasthandoff: 05/26/2017
   * **实体名称**。 选择要侦听的实体。 此事件充当触发器，用于启动逻辑应用。 
   本演练中选择“潜在客户”。
 
-  * **你想多久检查一次项？** 这些值设置逻辑应用检查触发器相关更新的频率。 默认设置为每 3 分钟检查一次更新。
+  * **要检查的项目频率如何？** 这些值设置逻辑应用检查触发器相关更新的频率。 默认设置为每 3 分钟检查一次更新。
 
     * **频率**。 选择秒、分钟、小时或天。
 
@@ -73,7 +71,7 @@ ms.lasthandoff: 05/26/2017
 
       ![逻辑应用触发器详细信息](./media/connectors-create-api-crmonline/trigger-details.png)
 
-10. 单击“新建步骤”，然后单击“添加操作”。
+10. 单击“新建步骤”，并单击“添加操作”。
 
 11. 在搜索框中，键入“`Dynamics 365`”。 从操作列表中选择“Dynamics 365 – 创建新记录”。
 
@@ -105,9 +103,9 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="set-advanced-options-for-a-logic-app-step"></a>设置逻辑应用步骤的高级选项
 
-若要指定如何在逻辑应用步骤中筛选数据，单击该步骤中的“显示高级选项”，然后添加筛选查询或顺序查询。
+要指定如何在逻辑应用步骤中筛选数据，单击该步骤中的“显示高级选项”，并添加筛选查询或顺序查询。
 
-例如，可以使用筛选查询只获取活动帐户并按帐户名称排序。 若要执行此任务，请输入 OData 筛选查询 `statuscode eq 1`，然后从动态内容列表选择“帐户名称”。 详细信息：[MSDN：$filter](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_1) 和 [$orderby](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_2)。
+例如，可以使用筛选查询只获取活动帐户并按帐户名称排序。 要执行此任务，请输入 OData 筛选查询 `statuscode eq 1`，并从动态内容列表选择“帐户名称”。 详细信息：[MSDN：$filter](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_1) 和 [$orderby](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_2)。
 
 ![逻辑应用高级选项](./media/connectors-create-api-crmonline/advanced-options.png)
 
@@ -143,16 +141,16 @@ ms.lasthandoff: 05/26/2017
 1. 打开一个记录，如帐户记录。
 
 2. 在操作工具栏上，单击“弹出”![弹出记录](./media/connectors-create-api-crmonline/popout-record.png)。
-或者，在操作工具栏上，单击“通过电子邮件发送链接”，将完整 URL 复制到你的默认电子邮件程序。
+或者，在操作工具栏上，单击“通过电子邮件发送链接”，将完整 URL 复制到默认电子邮件程序。
 
-   记录 ID 将显示在 URL 的 %7b 和 %7d 编码字符之间。
+   记录 ID 会显示在 URL 的 %7b 和 %7d 编码字符之间。
 
    ![流记录 ID 和类型帐户](./media/connectors-create-api-crmonline/recordid.png)
 
 ## <a name="troubleshooting"></a>故障排除
 若要解决逻辑应用中的失败步骤，请查看事件状态的详细信息。
 
-1. 在“逻辑应用”下，选择你的逻辑应用，然后单击“概述”。 
+1. 在“逻辑应用”下，选择你的逻辑应用，并单击“概述”。 
 
    显示“摘要”区域，该区域会提供逻辑应用的运行状态。 
 
@@ -174,4 +172,3 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="next-steps"></a>后续步骤
 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
-

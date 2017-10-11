@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Log Analytics 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -123,9 +122,9 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | 网络 | Rx 错误数总计 |
 | 网络 | Tx 错误数总计 |
 | 网络 | 冲突数总计 |
-| 物理磁盘 | 平均磁盘秒数/读取 |
-| 物理磁盘 | 平均磁盘秒数/传输 |
-| 物理磁盘 | 平均磁盘秒数/写入 |
+| 物理磁盘 | 平均 磁盘秒数/读取 |
+| 物理磁盘 | 平均 磁盘秒数/传输 |
+| 物理磁盘 | 平均 磁盘秒数/写入 |
 | 物理磁盘 | 物理磁盘字节数/秒 |
 | 进程 | 特权时间百分比 |
 | 进程 | 用户时间百分比 |
@@ -250,4 +249,3 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 * [从 Linux 应用程序收集性能计数器](log-analytics-data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
 * 将收集的数据导出到 [Power BI](log-analytics-powerbi.md) 以进行其他可视化操作和分析。
-

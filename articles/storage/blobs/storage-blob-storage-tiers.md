@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob 存储：热、冷、存档（预览版）存储层
 
@@ -92,7 +91,7 @@ Blob 存储帐户公开**访问层**属性，它允许用户将存储层指定�
 
 ## <a name="blob-level-tiering-feature-preview"></a>Blob 级分层功能（预览版）
 
-现在，使用 Blob 级分层功能即可通过名为 [“设置 Blob 层”](/rest/api/storageservices/set-blob-tier) 的单一操作在对象级别更改数据的层。 可以在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 的访问层，不需在帐户之间移动数据。 所有层更改都是即时发生的，Blob 正从存档中解除冻结的情况除外。 所有三个存储层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置继承相应的层。
+现在，使用 Blob 级分层功能即可通过名为“设置 Blob 层”的单一操作在对象级别更改数据的层。[](/rest/api/storageservices/set-blob-tier) 可以在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 的访问层，不需在帐户之间移动数据。 所有层更改都是即时发生的，Blob 正从存档中解除冻结的情况除外。 所有三个存储层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置继承相应的层。
 
 若要使用这些预览版功能，请按 [Azure 存档和 Blob 级分层博客公告](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering)中的说明操作。
 
@@ -129,7 +128,7 @@ Blob 存储帐户公开**访问层**属性，它允许用户将存储层指定�
 ## <a name="pricing-and-billing"></a>定价和计费
 Blob 存储帐户使用的定价模型适用于基于存储层的 Blob 存储。 使用 Blob 存储帐户时，请注意以下计费方式：
 
-* **存储成本**：除了存储的数据量，存储数据的成本将因存储层而异。 冷存储层每 GB 的成本比热存储层每 GB 的成本要低一些。
+* **存储成本**：除了存储的数据量，存储数据的成本因存储层而异。 冷存储层每 GB 的成本比热存储层每 GB 的成本要低一些。
 
 * 数据访问费用：对于冷存储层中的数据，需要按 GB 支付读取和写入方面的数据访问费用。
 
@@ -179,7 +178,7 @@ Blob 存储帐户使用的定价模型适用于基于存储层的 Blob 存储。
    
     有关 Azure 存储复制选项的详细信息，请参阅 [Azure 存储复制](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-7. 根据需要选择正确的存储层：将“访问层”设置为“冷”或“热”。 默认设置为“热”。 
+7. 根据需要选择正确的存储层：将“访问层”设置为“冷”或“热”。 默认值为“经常访问”。 
 
 8. 选择想在其中创建新存储帐户的订阅。
 
@@ -371,4 +370,5 @@ AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数�
 
 [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-[浏览和了解存储帐户](http://storageexplorer.com/)
+
+            [浏览和了解存储帐户](http://storageexplorer.com/)

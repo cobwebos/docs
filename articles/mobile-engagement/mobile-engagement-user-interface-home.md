@@ -14,26 +14,25 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1e3e4825d06486e6e8dfa874271ec82d203f7a7b
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-manage-your-existing-application-and-projects"></a>如何管理现有的应用程序和项目
-本文介绍了 **Mobile Engagement** 门户的“**主页**”。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，若要开始使用该门户，你首先需要创建 **Azure Mobile Engagement** 帐户。 
+本文介绍了 **Mobile Engagement** 门户的“**主页**”。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 
 
-要访问主页，请单击页面左上角的“**主页**”。 它包含作为所选集合的一部分的所有应用程序的列表。 在此页面上，你可以看到应用程序的快速概述。
+要访问主页，请单击页面左上角的“**主页**”。 它包含作为所选集合的一部分的所有应用程序的列表。 在此页面上，可以看到应用程序的快速概述。
 
-主页还包含你的所有项目，这些项目可以包括帐户中的任意应用程序。 请注意，任何人都可以通过创建帐户访问 UI 的主页，但你需要向其他用户授予权限，以便他们能够访问“**我的项目**”中的自定义应用程序。
+主页还包含所有项目，这些项目可以包括帐户中的任意应用程序。 请注意，任何人都可以通过创建帐户访问 UI 的主页，但需要向其他用户授予权限，以便他们能够访问“**我的项目**”中的自定义应用程序。
 
-你还可以查看所选应用程序的比较图。 或者，选择查看项目中选定应用程序的比较图。
+还可以查看所选应用程序的比较图。 或者，选择查看项目中选定应用程序的比较图。
 
 ![主页 1][0]
 
 ## <a name="my-applications"></a>我的应用程序
-应用程序的快速概述允许你选择要打开的应用程序以查看详细的功能区选项。 单击应用程序的名称即可返回应用程序中最近访问的功能区位置，或单击齿轮图标以直接转到应用程序的“设置”页面。 你可以对应用程序表上显示的信息进行搜索、筛选或排序。 你还可以拖放列标题以更改顺序。
+应用程序的快速概述允许选择要打开的应用程序以查看详细的功能区选项。 单击应用程序的名称即可返回应用程序中最近访问的功能区位置，或单击齿轮图标以直接转到应用程序的“设置”页面。 可以对应用程序表上显示的信息进行搜索、筛选或排序。 还可以拖放列标题以更改顺序。
 
 除此之外，应用程序概述还包括：
 
@@ -43,7 +42,7 @@ ms.lasthandoff: 12/08/2016
 * **会话**：会话是指对一个用户执行的应用程序进行一次使用，从用户开始使用到用户停止。
 * **会话趋势**：过去两周内会话的发展趋势。
 
-单击应用程序后，你就可以通过 UI 开始监视和管理应用程序。 例如：    
+单击应用程序后，便可以通过 UI 开始监视和管理应用程序。 例如：    
 
 * [监视有关应用程序的实时数据](mobile-engagement-user-interface-monitor.md)
 * [分析有关应用程序的历史记录数据](mobile-engagement-user-interface-analytics.md)
@@ -51,7 +50,7 @@ ms.lasthandoff: 12/08/2016
 * [通过推送通知与应用程序的用户联系](mobile-engagement-user-interface-reach.md)
 
 ## <a name="my-projects"></a>我的项目
-你可以使用项目对应用程序进行分组，并向其他用户授予访问应用程序的权限。 你通过提供电子邮件地址向其他用户授予权限。 “**新建项目**”按钮允许你通过只输入新项目的“名称”和“描述”来创建新项目。 创建项目后，可以单击项目名称以编辑产品的名称和描述，并选择要在此项目中查看的所有应用程序。
+可以使用项目对应用程序进行分组，并向其他用户授予访问应用程序的权限。 通过提供电子邮件地址向其他用户授予权限。 “**新建项目**”按钮允许通过只输入新项目的“名称”和“描述”来创建新项目。 创建项目后，可以单击项目名称以编辑产品的名称和描述，并选择要在此项目中查看的所有应用程序。
 
 ![主页 6][60]
 
@@ -165,4 +164,3 @@ ms.lasthandoff: 12/08/2016
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-

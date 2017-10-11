@@ -1,14 +1,14 @@
 ## <a name="application-gateway"></a>应用程序网关
-应用程序网关提供基于第 7 层负载平衡的 Azure 托管 HTTP 负载平衡解决方案。 应用程序负载平衡允许对基于 HTTP 的网络流量使用路由规则。 
+应用程序网关提供的 Azure 托管 HTTP 负载平衡基于第 7 层负载平衡解决方案。 应用程序负载平衡允许路由规则用于基于 HTTP 的网络通讯。 
 <BR>
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 | --- | --- |
-| **backendAddressPools** |后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者应是公共 IP/VIP 或专用 IP |
-| **backendHttpSettingsCollection** |每个池具有端口、协议和基于 Cookie 的相关性等设置。 这些设置绑定到池，并会应用到池中的所有服务器 |
-| **frontendPorts** |此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一 |
-| **httpListeners** |侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载） |
-| **requestRoutingRules** |规则将会绑定侦听器和后端服务器池，并定义流量应定向到的后端服务器池。 目前只能作为轮循机制使用 |
+| **backendAddressPools** |后端服务器的 IP 地址的列表。 列出的 IP 地址应属于虚拟网络子网，或者应为公共 IP/VIP 或专用 IP |
+| **backendHttpSettingsCollection** |每个池具有端口、 协议和基于 cookie 的相关性等设置。 这些设置绑定到池并将应用到池中的所有服务器 |
+| **frontendPorts** |此端口是应用程序网关上打开的公共端口。 流量抵达此端口，然后将重定向到后端服务器之一 |
+| **httpListeners** |侦听器具有前端端口、 协议 （Http 或 Https，这些是区分大小写），和 SSL 证书名称 （如果要配置 SSL 卸载） |
+| **requestRoutingRules** |规则将会绑定侦听器和后端服务器池，并定义后端服务器池应定向流量。 当前仅作为轮循机制的工作原理 |
 
 应用程序网关 Json 模板的示例：
 
@@ -217,5 +217,5 @@
 
 
 ### <a name="additional-resources"></a>其他资源
-有关详细信息，请阅读[应用程序网关 REST API](https://msdn.microsoft.com/library/azure/mt299388.aspx)。
+读取[应用程序网关 REST API](https://msdn.microsoft.com/library/azure/mt299388.aspx)有关详细信息。
 

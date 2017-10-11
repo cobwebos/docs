@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 1c009aa1fdd3140a4466cf762b6c9687e74ce4c7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>教程：Azure Active Directory 与 Picturepark 集成
 
@@ -139,11 +138,11 @@ ms.lasthandoff: 07/08/2017
 
 7. 在另一 Web 浏览器窗口中，以管理员身份登录到 Picturepark 公司站点。
 
-8. 在顶部工具栏中，单击“管理工具”，然后单击“管理控制台”。
+8. 在顶部工具栏中，单击“管理工具”，并单击“管理控制台”。
    
     ![管理控制台](./media/active-directory-saas-picturepark-tutorial/ic795062.png "管理控制台")
 
-9. 单击“身份验证”，然后单击“标识提供者”。
+9. 单击“身份验证”，并单击“标识提供者”。
    
     ![身份验证](./media/active-directory-saas-picturepark-tutorial/ic795063.png "身份验证")
 
@@ -151,9 +150,9 @@ ms.lasthandoff: 07/08/2017
    
     ![标识提供者配置](./media/active-directory-saas-picturepark-tutorial/ic795064.png "标识提供者配置")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加”。
+    a. 单击“添加”。
   
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 键入配置名称。
+    b. 键入配置名称。
    
     c. 选择“设为默认值”。
    
@@ -194,7 +193,7 @@ ms.lasthandoff: 07/08/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-picturepark-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -204,13 +203,13 @@ ms.lasthandoff: 07/08/2017
  
 ### <a name="creating-a-picturepark-test-user"></a>创建 Picturepark 测试用户
 
-若要让 Azure AD 用户登录 Picturepark，必须将其预配到 Picturepark 中。 使用 Picturepark 时，预配属手动任务。
+要让 Azure AD 用户登录 Picturepark，必须将其预配到 Picturepark 中。 使用 Picturepark 时，预配属手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
 1. 登录到 **Picturepark** 租户。
 
-2. 在顶部工具栏中，单击“管理工具”，然后单击“用户”。
+2. 在顶部工具栏中，单击“管理工具”，并单击“用户”。
    
     ![用户](./media/active-directory-saas-picturepark-tutorial/ic795067.png "用户")
 
@@ -222,9 +221,9 @@ ms.lasthandoff: 07/08/2017
    
     ![创建用户](./media/active-directory-saas-picturepark-tutorial/ic795069.png "创建用户")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“电子邮件地址”文本框中，键入用户 BrittaSimon@contoso.com 的电子邮件地址。  
+    a. 在“电子邮件地址”文本框中，键入用户 BrittaSimon@contoso.com 的电子邮件地址。  
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“密码”和“确认密码”文本框中，键入密码（“BrittaSimon”）。 
+    b. 在“密码”和“确认密码”文本框中，键入密码（“BrittaSimon”）。 
    
     c. 在“名字”文本框中，键入用户的“名字”（“Britta”）。 
    
@@ -254,7 +253,7 @@ ms.lasthandoff: 07/08/2017
 
 若要将 Britta Simon 分配到 Picturepark，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -302,5 +301,4 @@ ms.lasthandoff: 07/08/2017
 [201]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_203.png
-
 

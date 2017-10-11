@@ -15,15 +15,12 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: barclayn
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
-ms.openlocfilehash: c6aea0b7280ad8f1365c04203c78a1499ba0aa58
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
-
-
+ms.openlocfilehash: 62d8f80fa1bec3a1b75e316f0b0ee7be8cbefbff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management 订阅要求
 
 Azure AD Privileged Identity Management 作为 Azure AD 的 Premium P2 版本的一部分提供。 有关 P2 的其他功能以及它与 Premium P1 比较如何的详细信息，请参阅 [Azure Active Directory 版本](../active-directory-editions.md)。
@@ -34,14 +31,14 @@ Azure AD Privileged Identity Management 作为 Azure AD 的 Premium P2 版本的
 
 ## <a name="confirm-your-trial-or-paid-subscription"></a>确认试用版或付费版订阅
 
-如果不确定你的组织是否有试用版订阅或已购买订阅，则可以使用 Windows PowerShell V1 的 Azure Active Directory 模块中包含的命令检查你的租户中是否存在订阅。 
+如果不确定组织是否有试用版订阅或已购买订阅，则可以使用 Windows PowerShell V1 的 Azure Active Directory 模块中包含的命令检查租户中是否存在订阅。 
 1. 打开 PowerShell 窗口。
-2. 输入 `Connect-MsolService` 作为你的租户中的用户进行身份验证。
+2. 输入 `Connect-MsolService` 作为租户中的用户进行身份验证。
 3. 输入 `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`。
 
-此命令可检索你的租户中的订阅列表。 如果未返回任何行，则需要获取 Azure AD Premium P2 试用版，购买 Azure AD Premium P2 订阅或 EMS E5 订阅，以便使用 Azure AD Privileged Identity Management。  若要获取试用版并开始使用 Azure AD Privileged Identity Management，请阅读 [Azure AD Privileged Identity Management 入门](../active-directory-privileged-identity-management-getting-started.md)。
+此命令可检索租户中的订阅列表。 如果未返回任何行，则需要获取 Azure AD Premium P2 试用版，购买 Azure AD Premium P2 订阅或 EMS E5 订阅，以便使用 Azure AD Privileged Identity Management。  若要获取试用版并开始使用 Azure AD Privileged Identity Management，请阅读 [Azure AD Privileged Identity Management 入门](../active-directory-privileged-identity-management-getting-started.md)。
 
-如果此命令返回的行中 SkuPartNumber 为“AAD_PREMIUM_P2”或“EMSPREMIUM”且 IsTrial 为“True”，这指示 Azure AD Premium P2 试用版已存在于租户中。  如果未启用订阅状态，并且你未购买 Azure AD Premium P2 或 EMS E5 订阅，则必须购买 Azure AD Premium P2 订阅或 EMS E5 订阅，才能继续使用 Azure AD Privileged Identity Management。
+如果此命令返回的行中 SkuPartNumber 为“AAD_PREMIUM_P2”或“EMSPREMIUM”且 IsTrial 为“True”，这指示 Azure AD Premium P2 试用版已存在于租户中。  如果未启用的订阅状态，并且你没有购买对 Azure AD Premium P2 或 EMS E5 订阅，然后你必须购买的 Azure AD Premium P2 订阅或 EMS E5 订阅，以继续使用 Azure AD 特权标识管理。
 
 Azure AD Premium P2 通过 [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)、[开放批量许可计划](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)和[云解决方案提供商计划](https://partner.microsoft.com/en-US/cloud-solution-provider)提供。 Azure 和 Office 365 订户还可以在线购买 Azure AD Premium P2。  有关 Azure AD Premium 定价以及如何在线订购的详细信息可以在 [Azure Active Directory 定价](https://azure.microsoft.com/en-us/pricing/details/active-directory/)中找到。
 
@@ -55,13 +52,12 @@ Azure AD Premium P2 通过 [Microsoft 企业协议](https://www.microsoft.com/en
 当 Azure AD Premium P2 订阅或 EMS E5 订阅过期，或者使用处于预览状态的 Azure AD Privileged Identity Management 的组织未获取 Azure AD Premium P2 或 EMS E5 订阅时：
 
 - 对 Azure AD 角色的永久角色分配会受到影响。
-- Azure 门户中的 Azure AD Privileged Identity Management 扩展，以及 Graph API cmdlet 和 Azure AD Privileged Identity Management 的 PowerShell 接口将不再可供用户用来激活特权角色、管理特权访问或执行特权角色的访问评审。
-- 将删除 Azure AD 角色的符合条件的角色分配，因为用户将不再能够激活特权角色。
+- Azure 门户中的 Azure AD Privileged Identity Management 扩展，以及 Graph API cmdlet 和 Azure AD Privileged Identity Management 的 PowerShell 接口不再可供用户用来激活特权角色、管理特权访问或执行特权角色的访问评审。
+- 将删除 Azure AD 角色的符合条件的角色分配，因为用户不再能够激活特权角色。
 - Azure AD 角色的任何正在进行的访问评审将结束，并且将删除 Azure AD Privileged Identity Management 配置设置。
-- 角色分配更改时，Azure AD Privileged Identity Management 将不再发送电子邮件。
+- 角色分配更改时，Azure AD Privileged Identity Management 不再发送电子邮件。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure AD Privileged Identity Management 入门](../active-directory-privileged-identity-management-getting-started.md)
 - [Azure AD Privileged Identity Management 中的角色](../active-directory-privileged-identity-management-roles.md)
-

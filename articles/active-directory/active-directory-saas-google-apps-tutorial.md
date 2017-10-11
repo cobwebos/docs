@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
 ms.openlocfilehash: 065841d6b4fe50e953f01bba4d3f23de82b82726
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-google-apps"></a>教程：Azure Active Directory 与 Google Apps 集成
 
@@ -59,7 +58,7 @@ ms.lasthandoff: 07/14/2017
 
 2. **问：如果我启用单一登录，用户能够使用他们的 Azure AD 凭据登录到任何 Google 产品（例如 Google Classroom、GMail、Google Drive、YouTube 等）吗？**
    
-    答：可以，具体取决于你选择为组织启用或禁用的 [Google 应用](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583)。
+    答：可以，具体取决于选择为组织启用或禁用的 [Google 应用](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583)。
 
 3. **问：能否仅为 Google Apps 用户子集启用单一登录？**
    
@@ -138,7 +137,7 @@ ms.lasthandoff: 07/14/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Google 支持团队](https://www.google.com/contact/)。
  
-4. 在“SAML 签名证书”部分中，单击“证书”，然后将证书保存在计算机上。
+4. 在“SAML 签名证书”部分中，单击“证书”，并将证书保存在计算机上。
 
     ![配置单一登录](./media/active-directory-saas-google-apps-tutorial/tutorial_googleapps_certificate.png) 
 
@@ -164,9 +163,9 @@ ms.lasthandoff: 07/14/2017
    
     ![配置 SSO][12]
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“使用第三方标识提供者设置 SSO”。
+    a. 选择“使用第三方标识提供者设置 SSO”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在 Google Apps 中的“登录页 URL”字段中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
+    b. 在 Google Apps 中的“登录页 URL”字段中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
 
     c. 在 Google Apps 中的“注销页 URL”字段中，粘贴从 Azure 门户复制的“注销 URL”值。 
 
@@ -202,7 +201,7 @@ ms.lasthandoff: 07/14/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-google-apps-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -225,7 +224,7 @@ ms.lasthandoff: 07/14/2017
 
 若要将 Britta Simon 分配到 Google Apps，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

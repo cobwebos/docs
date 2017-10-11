@@ -14,17 +14,16 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 68213a40755ae7dc675556c595da032b408be261
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.openlocfilehash: 0462fe8ff75bdda397decb301c459795886e9e58
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure 门户中基于角色的访问控制入门
 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。
 
-使用 RBAC，你可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对你的 Azure 订阅或资源的无限权限，你可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
+使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 不是在 Azure 订阅或资源中给每个人无限制的权限，只能允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
 ## <a name="basics-of-access-management-in-azure"></a>Azure 中的访问管理的基础知识
 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 使用 Azure 门户、Azure 命令行工具或 Azure 管理 API 分配这些访问权限。
@@ -33,7 +32,7 @@ ms.lasthandoff: 07/20/2017
 
 ![Azure Active Directory 元素之间的关系 - 关系图](./media/role-based-access-control-what-is/rbac_aad.png)
 
-你分配的 RBAC 角色决定了用户、组或应用程序可以在该范围内所管理的资源。
+分配的 RBAC 角色决定了用户、组或应用程序可以在该范围内所管理的资源。
 
 ## <a name="built-in-roles"></a>内置角色
 Azure RBAC 有三种适用于所有资源类型的基本角色：
@@ -51,7 +50,7 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 * 每个**资源组**仅属于一个订阅。
 * 每个**资源**仅属于一个资源组。
 
-你在父范围授予的访问权限在子范围被继承。 例如：
+在父范围授予的访问权限在子范围被继承。 例如：
 
 * 将读取器角色分配给订阅范围内的 Azure AD 组。 该组成员可以查看订阅中的每个资源组和资源。
 * 将参与者角色分配给资源组范围内的应用程序。 它可以管理该资源组中的所有类型的资源，但不能管理该订阅中的其他资源组资源。
@@ -62,10 +61,9 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 仅 Azure 门户和新的 Azure Resource Manager API 支持 Azure RBAC。 分配了 RBAC 角色的用户和应用程序不能使用经典管理门户和 Azure 经典部署模型。
 
 ## <a name="authorization-for-management-vs-data-operations"></a>管理授权与数据操作
-Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，你可以授权某人管理存储帐户，但该人员不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
+Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，可以授权某人管理存储帐户，但该人员不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 门户中基于角色的访问控制](role-based-access-control-configure.md)入门。
 * 请参阅 [RBAC 内置角色](role-based-access-built-in-roles.md)
 * 定义你在 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)
-

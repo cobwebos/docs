@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5036ce23e602c7723f5fafef60ab45d533c1fe7d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 8e782e45b706cadec66e7404dd9abc2e01dea917
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 
 请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
-在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](http://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 你可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](http://apmtips.com/blog/2015/02/23/request-name-and-url/)中详细了解 ASP.Net Web SDK 如何处理请求名称集合。
+在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](http://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](http://apmtips.com/blog/2015/02/23/request-name-and-url/)中详细了解 ASP.Net Web SDK 如何处理请求名称集合。
 
 最大长度：1024 个字符
 
@@ -85,4 +84,3 @@ ms.lasthandoff: 04/27/2017
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 了解如何使用 Application Insights [配置 ASP.NET Core](app-insights-asp-net.md) 应用程序。
 - 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
-

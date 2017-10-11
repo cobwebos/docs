@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d47f493d0ec80318805303c8192477d7002533eb
-
-
+ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="templates"></a>模板
 ## <a name="overview"></a>概述
@@ -29,14 +29,14 @@ ms.openlocfilehash: d47f493d0ec80318805303c8192477d7002533eb
 * 客户端版本独立性
 * 易于本地化
 
-本部分提供两个深入的示例，介绍如何使用模板跨平台向你的所有设备发送与平台无关的通知，以及介绍如何针对每台设备对广播通知进行个性化设置。
+本部分提供两个深入的示例，介绍如何使用模板跨平台向所有设备发送与平台无关的通知，以及介绍如何针对每台设备对广播通知进行个性化设置。
 
 ## <a name="using-templates-cross-platform"></a>使用跨平台模板
-发送推送通知的标准方法是向平台通知服务（WNS、APNS）发送要传出的每个通知的特定负载。 例如，若要向 APNS 发送警报，负载将是以下格式的 Json 对象：
+发送推送通知的标准方法是向平台通知服务（WNS、APNS）发送要传出的每个通知的特定负载。 例如，要向 APNS 发送警报，负载将是以下格式的 Json 对象：
 
     {"aps": {"alert" : "Hello!" }}
 
-若要在 Windows 应用商店应用程序中发送类似的 toast 消息，XML 负载将如下所示：
+要在 Windows 应用商店应用程序中发送类似的 toast 消息，XML 负载将如下所示：
 
     <toast>
       <visual>
@@ -46,7 +46,7 @@ ms.openlocfilehash: d47f493d0ec80318805303c8192477d7002533eb
       </visual>
     </toast>
 
-你可以为 MPNS (Windows Phone) 和 GCM (Android) 平台创建类似的负载。
+可以为 MPNS (Windows Phone) 和 GCM (Android) 平台创建类似的负载。
 
 此要求将强制应用后端针对每个平台生成不同的负载，并有效地使后端负责应用的表示层部分。 某些考虑因素包括本地化和图形布局（尤其针对 Windows 应用商店应用，其中包含不同磁贴类型的通知）。
 
@@ -70,9 +70,9 @@ Windows 应用商店客户端应用的相应模板为：
         </visual>
     </toast>
 
-请注意，实际消息将替换表达式 $(message)。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并用常用值替换的消息。
+请注意，实际消息将替换表达式 $ (message)。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并用常用值替换的消息。
 
-如果你使用的是安装模型，则安装“templates”键会保存多个模板的 JSON。 如果你使用的是注册模型，则客户端应用程序可以创建多个注册以使用多个模板；例如，例如，用于警报消息的模板和用于磁贴更新的模板。 客户端应用程序还可以混合使用本机注册（不带模板的注册）和模板注册。
+如果使用的是安装模型，则安装“templates”键会保存多个模板的 JSON。 如果使用的是注册模型，则客户端应用程序可以创建多个注册以使用多个模板；例如，例如，用于警报消息的模板和用于磁贴更新的模板。 客户端应用程序还可以混合使用本机注册（不带模板的注册）和模板注册。
 
 通知中心将针对每个注册发送一条通知，而不考虑这些注册是否属于同一客户端应用。 可以使用此行为将与平台无关的通知转换成其他通知。 例如，可以将发送到通知中心的同一条与平台无关的消息无缝地转换成 toast 警报和磁贴更新，而无需让后端知道这一情况。 请注意，如果在短时间内发送多个通知，某些平台（例如 iOS）可能会将这些通知合并发送到同一台设备。
 
@@ -148,10 +148,4 @@ Windows 应用商店客户端应用的相应模板为：
         </binding>  
       </visual>
     </tile>
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

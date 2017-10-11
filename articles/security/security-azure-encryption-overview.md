@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ums.workload: na
 ms.date: 08/18/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 752568747ab96bc0a9c7fc5f24ff28c3bce4e09f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -206,4 +205,3 @@ Azure Key Vault 可以帮助组织减少配置、修补以及维护硬件安全�
 - [Azure 虚拟机安全概述](security-virtual-machines-overview.md)
 - [静态数据加密](azure-security-encryption-atrest.md)
 - [数据安全与加密最佳实践](azure-security-data-encryption-best-practices.md)
-

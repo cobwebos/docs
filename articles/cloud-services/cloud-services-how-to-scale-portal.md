@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e9683d4c5779450fd67fa42ab13095c7f201b4cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-how-to-scale-portal.md)
@@ -94,7 +92,7 @@ ms.lasthandoff: 08/22/2017
 配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”按钮。
 
 #### <a name="rule"></a>规则
-规则将添加到配置文件，代表触发缩放的条件。
+规则添加到配置文件，代表触发缩放的条件。
 
 规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），可以在其中添加条件值。 此外，也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
 
@@ -114,4 +112,3 @@ ms.lasthandoff: 08/22/2017
 3. 要缩放的角色实例。
 
 配置缩放设置后，请选择顶部的 **保存** 图标。
-

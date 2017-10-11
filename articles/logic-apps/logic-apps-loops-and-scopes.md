@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
-ms.openlocfilehash: 63ac171494e13f4451d585c3b704727eeed94fab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
-
-
+ms.openlocfilehash: 413a2ba9107ca259ed577825bf0a17ff5622f1ac
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>逻辑应用循环、范围和解除批处理
   
@@ -28,7 +26,7 @@ ms.lasthandoff: 01/27/2017
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach 循环和数组
   
-逻辑应用使你可以循环访问一组数据并对每个项执行操作。  这可以通过 `foreach` 操作来实现。  在设计器中，可以指定添加 for each 循环。  选择要循环访问的数组之后，可以开始添加操作。  当前每个 foreach 循环仅限于一个操作，但是此限制会在未来几周解除。  处于循环中之后，可以指定对数组的每个值应执行的操作。
+Logic Apps 可以循环访问的数据集并为每个项执行操作。  这可以通过 `foreach` 操作来实现。  在设计器中，可以指定添加 foreach 循环。  选择要循环访问的数组之后，可以开始添加操作。  当前每个 foreach 循环仅限于一个操作，但是此限制会在未来几周解除。  处于循环中之后，可以指定对数组的每个值应执行的操作。
 
 如果使用代码视图，则可以指定与以下类似的 for each 循环。  这是 for each 循环的示例，它会为包含“microsoft.com”的每个电子邮件地址都发送电子邮件：
 
@@ -119,9 +117,9 @@ ms.lasthandoff: 01/27/2017
   
 ## <a name="spliton-and-debatching"></a>SplitOn 和解除批处理
 
-有时触发器可能会收到要解除批处理并对每个项启动工作流的项数组。  这可以通过 `spliton` 命令来实现。  默认情况下，如果触发器 swagger 指定作为数组的有效负载，则 `spliton` 会添加，并对每个项启动运行。  SplitOn 只能添加到触发器。  这可以在定义代码视图中手动配置或重写。  当前 SplitOn 可以对最多包含 5,000 个项的数组解除批处理。  不能具有 `spliton` 且不能实现同步响应模式。  所有调用的工作流除具有 `spliton` 之外还具有 `response` 操作，将以异步方式运行并发送即时 `202 Accepted` 响应。  
+有时触发器可能会收到要解除批处理并对每个项启动工作流的项数组。  这可以通过 `spliton` 命令来实现。  默认情况下，如果触发器 swagger 指定作为数组的有效负载，则 `spliton` 会添加，并对每个项启动运行。  SplitOn 只能添加到触发器。  这可以在定义代码视图中手动配置或重写。  当前 SplitOn 可以对最多包含 5,000 个项的数组解除批处理。  不能具有 `spliton` 且不能实现同步响应模式。  所有调用的工作流除具有 `spliton` 之外还具有 `response` 操作，以异步方式运行并发送即时 `202 Accepted` 响应。  
 
-SplitOn 可以在代码视图中指定，如以下示例所示。  这将接收项数组并在每行上解除批处理。
+SplitOn 可以在代码视图中指定，如以下示例所示。  这会接收项数组并在每行上解除批处理。
 
 ```
 {

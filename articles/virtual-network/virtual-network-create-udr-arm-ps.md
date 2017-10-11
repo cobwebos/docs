@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
 ms.openlocfilehash: 3ab24f193c74449ae7414b4ea0675c0aae0211f4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-powershell"></a>使用 PowerShell 创建用户定义的路由 (UDR)
 
@@ -38,18 +37,18 @@ ms.lasthandoff: 03/22/2017
 > 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。
 >
 
-本文介绍资源管理器部署模型。 还可[在经典部署模型中创建 UDR](virtual-network-create-udr-classic-ps.md)。
+本文介绍 Resource Manager 部署模型。 还可[在经典部署模型中创建 UDR](virtual-network-create-udr-classic-ps.md)。
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-下面的示例 PowerShell 命令需要基于上述方案创建的简单环境。 若要运行本文档中所显示的命令，请首先通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before)构建测试环境，单击“**部署至 Azure**”，根据需要替换默认参数值，然后按照门户中的说明进行操作。
+下面的示例 PowerShell 命令需要基于上述方案创建的简单环境。 要运行本文档中所显示的命令，请首先通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before)构建测试环境，单击“**部署至 Azure**”，根据需要替换默认参数值，然后按照门户中的说明进行操作。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 ## <a name="create-the-udr-for-the-front-end-subnet"></a>为前端子网创建 UDR
 若要根据上述方案为前端子网创建所需的路由表和路由，请完成以下步骤：
 
-1. 创建一个路由，用于发送目标至后端子网 (192.168.2.0/24) 的所有流量，然后路由到 **FW1** 虚拟设备 (192.168.0.4)。
+1. 创建一个路由，用于发送目标至后端子网 (192.168.2.0/24) 的所有流量，并路由到 **FW1** 虚拟设备 (192.168.0.4)。
 
     ```powershell
     $route = New-AzureRmRouteConfig -Name RouteToBackEnd `
@@ -78,7 +77,7 @@ ms.lasthandoff: 03/22/2017
     ```
 
     > [!WARNING]
-    > 上述命令的输出显示虚拟网络配置对象的内容，该对象仅存在于运行 PowerShell 的计算机上。 若要将这些设置保存到 Azure，需要运行 **Set-AzureVirtualNetwork** cmdlet。
+    > 上述命令的输出显示虚拟网络配置对象的内容，该对象仅存在于运行 PowerShell 的计算机上。 要将这些设置保存到 Azure，需要运行 **Set-AzureVirtualNetwork** cmdlet。
     > 
 
 5. 将新的子网配置保存在 Azure 中。
@@ -139,7 +138,7 @@ ms.lasthandoff: 03/22/2017
 
 若要根据上述方案为后端子网创建所需的路由表和路由，请按照下面的步骤操作。
 
-1. 创建一个路由，用于发送目标至前端子网 (192.168.1.0/24) 的所有流量，然后路由到 **FW1** 虚拟设备 (192.168.0.4)。
+1. 创建一个路由，用于发送目标至前端子网 (192.168.1.0/24) 的所有流量，并路由到 **FW1** 虚拟设备 (192.168.0.4)。
 
     ```powershell
     $route = New-AzureRmRouteConfig -Name RouteToFrontEnd `
@@ -273,5 +272,4 @@ ms.lasthandoff: 03/22/2017
         EnableIPForwarding   : True
         NetworkSecurityGroup : null
         Primary              : True
-
 

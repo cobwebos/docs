@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 25f4520bae3089ce9f11efcf6acd176255043e70
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 814e6f93088cdd96b0a663d2a7494b5a11470d99
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="diagnose-logic-app-failures"></a>诊断逻辑应用故障
-如果逻辑应用出现问题或故障，有几种方法可以帮助你更好地了解故障原因。  
+如果使用你的 logic apps 时遇到问题或故障，有几种方法可帮助你更好地了解故障来源于何处。  
 
 ## <a name="azure-portal-tools"></a>Azure 门户工具
 Azure 门户提供了许多工具来诊断每个步骤中的每个逻辑应用。
@@ -34,7 +32,7 @@ Azure 门户提供了许多工具来诊断每个步骤中的每个逻辑应用�
 
 ![查找触发器历史记录][1]
 
-触发器历史记录列出了逻辑应用尝试的所有触发操作。 可以单击尝试的每个触发操作深入到详细信息，具体而言，即尝试的触发操作生成的任何输入或输出。 如果找到了失败的触发器，请选择尝试的触发操作，然后选择“输出”链接查看生成的任何错误消息（例如，FTP 凭据无效）。
+触发器历史记录列出了逻辑应用尝试的所有触发操作。 可以单击尝试的每个触发操作深入到详细信息，具体而言，即尝试的触发操作生成的任何输入或输出。 如果找到了失败的触发器，请选择尝试的触发操作，并选择“输出”链接查看生成的任何错误消息（例如，FTP 凭据无效）。
 
 可能会看到以下不同状态：
 
@@ -87,4 +85,3 @@ Azure 门户提供了许多工具来诊断每个步骤中的每个逻辑应用�
 [2]: ./media/logic-apps-diagnosing-failures/runhistory.png
 [3]: ./media/logic-apps-diagnosing-failures/triggeroutputslink.png
 [4]: ./media/logic-apps-diagnosing-failures/actionoutputs.png
-

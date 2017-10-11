@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 4d6f6da6bace09fbd6ab105530a1162653675c99
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教程：Azure Active Directory 与 Optimizely 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/23/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-optimizely-from-the-gallery"></a>从库中添加 Optimizely
-若要通过配置将 Optimizely 集成到 Azure AD 中，需从库将 Optimizely 添加到托管式 SaaS 应用的列表中。
+要通过配置将 Optimizely 集成到 Azure AD 中，需从库将 Optimizely 添加到托管式 SaaS 应用的列表中。
 
 **若要从库添加 Optimizely，请执行以下步骤：**
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Optimizely 测试用户](#creating-an-optimizely-test-user)** - 在 Optimizely 中创建 Britta Simon 的对应用户，它链接到用户的 Azure AD 表示形式。
+3. **[创建 Optimizely 测试用户](#creating-an-optimizely-test-user)** -若要链接到用户的 Azure AD 表示的 Optimizely 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -113,12 +112,12 @@ ms.lasthandoff: 06/23/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.optimizely.net/<instance name>`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：`urn:auth0:optimizely:contoso`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`urn:auth0:optimizely:contoso`
 
     > [!NOTE] 
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_certificate.png) 
 
@@ -134,13 +133,13 @@ ms.lasthandoff: 06/23/2017
 
 8. 在电子邮件回复中，Optimizely 会提供登录 URL（SP 发起的 SSO）和标识符（服务提供商实体 ID）值。
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 复制 Optimizely 提供的“SP 发起的 SSO URL”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分的“登录 URL”文本框中 
+    a. 复制 Optimizely 提供的“SP 发起的 SSO URL”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分的“登录 URL”文本框中 
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 复制 Optimizely 提供的“服务提供商实体 ID”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分中的“标识符”文本框中 
+    b. 复制 Optimizely 提供的“服务提供商实体 ID”，并粘贴到 Azure 门户中“Optimizely 域和 URL”部分中的“标识符”文本框中 
 
 9. 在其他浏览器窗口中，登录 Optimizely 应用程序。
 
-10. 单击右上角的帐户名称，然后单击“帐户设置”。
+10. 单击右上角的帐户名称，并单击“帐户设置”。
    
     ![Azure AD 单一登录](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_09.png)
 
@@ -177,7 +176,7 @@ ms.lasthandoff: 06/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-optimizely-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的**电子邮件地址**。
 
@@ -207,9 +206,9 @@ ms.lasthandoff: 06/23/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Optimizely，请执行以下步骤：**
+**要将 Britta Simon 分配到 Optimizely，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -257,5 +256,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_203.png
-
 

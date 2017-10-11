@@ -14,17 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>使用 ASP.NET Core 生成应用程序的 Web 服务前端
-默认情况下，Azure Service Fabric 服务不提供用于访问 Web 的公共接口。 若要向 HTTP 客户端公开应用程序的功能，需要创建一个 Web 项目作为入口点，然后从该处与单个服务进行通信。
+默认情况下，Azure Service Fabric 服务不提供用于访问 Web 的公共接口。 若要公开到 HTTP 客户端应用程序的功能，你必须创建一个 web 项目以用作入口点，然后从那里通信到各个服务。
 
-在本教程中，我们将弥补[在 Visual Studio 中创建第一个应用程序](service-fabric-create-your-first-application-in-visual-studio.md)教程中遗留的内容，在有状态计数器服务的前面添加一个 ASP.NET Core Web 服务。 如果你尚未学习上述教程，应该返回并逐步完成该教程中的步骤。
+在本教程中，我们将弥补[在 Visual Studio 中创建第一个应用程序](service-fabric-create-your-first-application-in-visual-studio.md)教程中遗留的内容，在有状态计数器服务的前面添加一个 ASP.NET Core Web 服务。 如果尚未学习上述教程，应该返回并逐步完成该教程中的步骤。
 
 ## <a name="set-up-your-environment-for-aspnet-core"></a>为 ASP.NET Core 设置环境
 
@@ -45,14 +44,14 @@ ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web 
 
 让我们将 ASP.NET Web API 项目添加到现有的应用程序。
 
-1. 在解决方案资源管理器中，右键单击应用程序项目中的“**服务**”，然后选择“**添加 > 新建 Service Fabric 服务**”。
+1. 在解决方案资源管理器中，右键单击应用程序项目中的“**服务**”，并选择“**添加”>“新建 Service Fabric 服务**”。
    
     ![将一个新服务添加到现有应用程序][vs-add-new-service]
 2. 在“**创建服务**”页上，选择 **ASP.NET Core** 并将它命名。
    
     ![在新建服务对话框中选择 ASP.NET Web 服务][vs-new-service-dialog]
 
-3. 下一页将提供一组 ASP.NET Core 项目模板。 请注意，如果 ASP.NET Core 项目是在 Service Fabric 应用程序外部创建的，则在显示这些选项的同时，还会提供少量附加代码，用于向 Service Fabric 运行时注册该服务。 本教程中，选择“Web API”。 不过你也可以运用相同的思路来构建完整的 Web 应用程序。
+3. 下一页将提供一组 ASP.NET Core 项目模板。 请注意，如果 ASP.NET Core 项目是在 Service Fabric 应用程序外部创建的，则在显示这些选项的同时，还会提供少量附加代码，用于向 Service Fabric 运行时注册该服务。 本教程中，选择“Web API”。 不过，也可运用相同的思路来构建完整的 Web 应用程序。
    
     ![选择 ASP.NET 项目类型][vs-new-aspnet-project-dialog]
    
@@ -63,23 +62,23 @@ ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web 
 
 1. 在 Visual Studio 中，按 F5 调试应用。
 2. 部署完成后，Visual Studio 将启动浏览器并打开 ASP.NET Web API 服务的根路径。 ASP.NET Core Web API 模板不提供根路径的默认行为，因此将在浏览器中看到 404 错误。
-3. 将 `/api/values` 添加到浏览器中的位置。 这将对 Web API 模板中的 ValuesController 调用 `Get` 方法。 它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
+3. 将 `/api/values` 添加到浏览器中的位置。 这将调用`Get`上 ValuesController Web API 模板中的方法。 它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
    
     ![从 ASP.NET Core Web API 模板返回的默认值][browser-aspnet-template-values]
    
     在本教程结束后，本页将显示有状态服务的最新计数器值而非默认字符串。
 
 ## <a name="connect-the-services"></a>连接服务
-在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。 在单个应用程序中，你可能拥有可通过 TCP 访问的服务、可通过 HTTP REST API 访问的其他服务，并且还有其他可通过 Web 套接字访问的服务。 有关可用选项和相关权衡取舍的背景信息，请参阅[与服务通信](service-fabric-connect-and-communicate-with-services.md)。 本教程使用 SDK 中提供的 [Service Fabric Service Remoting](service-fabric-reliable-services-communication-remoting.md)。
+在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。 在单个应用程序中，可能拥有可通过 TCP 访问的服务、可通过 HTTP REST API 访问的其他服务，并且还有其他可通过 Web 套接字访问的服务。 有关可用选项和相关权衡取舍的背景信息，请参阅[与服务通信](service-fabric-connect-and-communicate-with-services.md)。 本教程使用 SDK 中提供的 [Service Fabric Service Remoting](service-fabric-reliable-services-communication-remoting.md)。
 
 在 Service Remoting 方法（模仿远程过程调用或 RPC）中，定义一个接口以用作服务的公共约定。 然后使用该接口生成代理类，以便与服务交互。
 
 ### <a name="create-the-remoting-interface"></a>创建远程处理接口
 首先创建接口以充当有状态服务与其他服务之间的约定，在此情况下是 ASP.NET Core Web 项目。 此接口必须由使用它来进行 RPC 调用的所有服务共享，因此我们将在其自身的类库项目中创建。
 
-1. 在解决方案资源管理器中，右键单击你的解决方案并选择“**添加**” > “**新建项目**”。
+1. 在解决方案资源管理器中，右键单击解决方案并选择“**添加**” > “**新建项目**”。
 
-2. 在左侧导航窗格中选择 **Visual C#** 条目，然后选择“**类库**”模板。 确保 .NET Framework 版本已设置为 **4.5.2**。
+2. 在左侧导航窗格中选择 **Visual C#** 条目，并选择“**类库**”模板。 确保 .NET Framework 版本已设置为 **4.5.2**。
    
     ![为有状态服务创建接口项目][vs-add-class-library-project]
 
@@ -113,7 +112,7 @@ ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web 
 1. 在有状态服务中，添加对包含此接口的类库项目的引用。
    
     ![在有状态服务中添加对类库项目的引用][vs-add-class-library-reference]
-2. 找到继承自 `StatefulService` 的类（例如 `MyStatefulService`），然后扩展它以实现 `ICounter` 接口。
+2. 找到继承自 `StatefulService` 的类（例如 `MyStatefulService`），并扩展它以实现 `ICounter` 接口。
    
     ```c#
     using MyStatefulService.Interface;
@@ -206,7 +205,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
    
     拥有代理后，我们只需调用 `GetCountAsync` 方法并返回其结果。
 
-5. 再次按 F5 运行修改后的应用程序。 像前面一样，Visual Studio 将自动启动浏览器并打开 Web 项目的根路径。 添加“api/values”路径，你应会看到返回的当前计数器值。
+5. 再次按 F5 运行修改后的应用程序。 像前面一样，Visual Studio 将自动启动浏览器并打开 Web 项目的根路径。 添加“api/values”路径，应会看到返回的当前计数器值。
    
     ![浏览器中显示的有状态计数器值][browser-aspnet-counter-value]
    
@@ -219,14 +218,14 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 若要详细了解 Service Fabric 服务中的 Kestrel 和 WebListener，请参阅 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)。
 
 ## <a name="connecting-to-a-reliable-actor-service"></a>连接到 Reliable Actors 服务
-本教程着重介绍添加与有状态服务通信的 Web 前端。 但是你可以遵循十分类似的模型来与执行组件交流。 创建 Reliable Actor 项目时，Visual Studio 自动生成接口项目。 你可以使用该接口在 Web 项目中生成执行组件代理来与执行组件通信。 系统将自动提供通信通道。 因此您无需像本教程中所述的处理有状态服务一样创建 `ServiceRemotingListener`。
+本教程着重介绍添加与有状态服务通信的 Web 前端。 但是可以遵循十分类似的模型来与执行组件交流。 创建 Reliable Actor 项目时，Visual Studio 自动生成接口项目。 可以使用该接口在 Web 项目中生成执行组件代理来与执行组件通信。 系统会自动提供通信通道。 因此，无需像本教程中所述的处理有状态服务一样创建 `ServiceRemotingListener`。
 
 ## <a name="how-web-services-work-on-your-local-cluster"></a>Web 服务在本地群集上的工作方式
 一般而言，你可以将完全相同的 Service Fabric 应用程序部署到多计算机群集，该群集在本地群集上部署，并且你可以确信它能按预期运行。 这是因为，本地群集只是折叠成单个计算机的五节点配置。
 
-但是，提到 Web 服务，有一个重要的微妙之处。 当群集位于负载均衡器后面时，如同在 Azure 中一样，你必须确保 Web 服务已部署到每台计算机上，因为负载均衡器只将流量循环分配到各台计算机。 可以通过将服务的 `InstanceCount` 设置为特殊值“-1”来达到此目的。
+但是，提到 Web 服务，有一个重要的微妙之处。 当群集位于负载均衡器后面时，如同在 Azure 中一样，必须确保 Web 服务已部署到每台计算机上，因为负载均衡器只将流量循环分配到各台计算机。 可以通过将服务的 `InstanceCount` 设置为特殊值“-1”来达到此目的。
 
-相比之下，当你在本地运行 Web 服务时，必须确保服务只有一个实例正在运行。 否则，正在同一路径和端口上侦听的多个进程将发生冲突。 因此，本地部署的 Web 服务实例计数应设置为“1”。
+相比之下，在本地运行 Web 服务时，必须确保服务只有一个实例正在运行。 否则，正在同一路径和端口上侦听的多个进程将发生冲突。 因此，本地部署的 Web 服务实例计数应设置为“1”。
 
 若要了解如何针对不同环境配置不同的值，请参阅[管理多个环境的应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)。
 
@@ -252,4 +251,3 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
-

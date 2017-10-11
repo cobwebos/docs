@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 我的帐户"
-description: "了解如何使用 Azure Mobile Engagement 管理你的帐户配置文件和测试设备"
+title: "Azure Mobile Engagement 用户界面-我的帐户"
+description: "了解如何管理使用 Azure Mobile Engagement 你帐户的配置文件和测试的设备"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,52 +14,51 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-to-manage-your-account-profile-and-test-devices"></a>如何管理帐户配置文件和测试设备
-本文介绍了 **Mobile Engagement** 门户的“**主页**”。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 
+# <a name="how-to-manage-your-account-profile-and-test-devices"></a>如何管理你的帐户配置文件和测试设备
+本指南介绍了**主页**页**Mobile Engagement**门户。 你使用**Mobile Engagement**门户监视和管理您的移动应用。 
 
-要访问“**我的帐户**”页面，请单击页面顶部的帐户。
+若要获取**我的帐户**页上，单击页面顶部的您的帐户。
 
-UI 的“我的帐户”部分可让你查看和更改与帐户相关联的设置，包括你的“配置文件”设置和测试设备 ID。 也可以通过设备 API 访问这些设置包含的项。
+用户界面的我的帐户部分是可以在其中查看和更改与你的帐户，包括配置文件设置关联的设置和测试的设备 Id。 这些设置包含还可以通过设备 API 访问的项。
 
-![我的帐户&1;][7]  
+![MyAccount1][7]  
 
 ## <a name="profile"></a>配置文件：
-你可以查看或更改下面显示的任意帐户设置。 你也可以根据 [主页](mobile-engagement-user-interface-home.md) 中的电子邮件地址，将使用应用程序的权限授予其他用户。
+你可以查看或更改任何帐户设置如下所示。 你还可以授予其他用户权限，才能使用应用程序根据从其电子邮件地址[主页](mobile-engagement-user-interface-home.md)。
 
-![我的帐户&2;][8]  
+![MyAccount2][8]  
 
 ## <a name="devices"></a>设备：
-你可以查看、添加或删除测试设备的测试设备 ID，这些测试设备可用于测试**市场宣传**或**推送**活动。 当你单击“新建设备”时，将显示有关如何查找每个平台（iOS、Android、Windows Phone 等）设备的设备 ID 的上下文说明。 
+你可以查看、 添加或删除测试可用于测试的测试设备的设备 ID 你**到达**或**推送**营销活动。 有关如何查找每个平台的设备的设备 ID 的上下文说明 (iOS、 Android、 Windows Phone 等) 单击"新设备"时显示。 
 
-![我的帐户&3;][9]  
+![MyAccount3][9]  
 
-要使用推送 API 或设备 API，你需要知道用户的唯一设备标识符（deviceid 参数）。 有多种方法可检索唯一设备标识符：
+若要使用推送 API 或 Device API 你需要知道用户的唯一的设备标识符 （deviceid 参数）。 有多种方法来检索该值：
 
-1. 在后端，你可以使用 Device API的“Get”功能获取设备标识符的完整列表。
-2. 在应用中，你可以使用 SDK 获取它。 （在 Android 上，调用 Agent 类的 getDeviceID() 函数，而在 iOS 上，读取 Agent 类的 deviceid 属性。）
-3. 在市场宣传公告中，如果与公告相关联的操作 URL 包含 {device id} 模式，则将被自动替换为触发操作的设备的标识符。
-   http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata 将被替换为：http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata 
-4. 在 Reach Web 公告中，如果公告的 HTML 代码包含 {device id} 模式，则将被自动替换为显示 Web 公告的设备的标识符。
-   这是我的设备标识符：{deviceid} 将被替换为：这是我的设备标识符：XXXXXXXXXXXXXXXX
-5. 在你的设备中打开应用程序，并在已标记的应用中执行事件。
-   从“UI - 你的应用 - 监视器 - 事件 - 详细信息”中，找到你在列表中执行的事件。
-   在监视器中单击此事件。
-   你应该在执行此事件的设备列表中找到你的设备 ID。
-   然后，你可以复制此设备 ID 并在“UI - 我的帐户 - 设备 - 新建设备 - 选择你的设备平台”中注册它。
-   >（请注意，当 iOS 禁用 IDFA 时，如果你卸载并重新安装应用，设备 ID 可能会随时间而改变。）
+1. 从后端，可以使用设备 API 的"Get"功能来获取设备标识符的完整列表。
+2. 从你的应用，你可以使用 SDK 来获取它。 （在 Android 上，调用 getDeviceID() 函数的代理类，并在 iOS 上读取 deviceid 属性的代理类。）
+3. 从 Reach 公告，如果公告与关联的操作 URL 中包含的 {deviceid} 模式中，它将自动替换为设备触发操作的标识符。
+   http://<example>.com/registeruser？ deviceid = {deviceid} & otherparam = myparamdata 将被替换为： http://<example>.com/registeruser？ deviceid = XXXXXXXXXXXXXXXX otherparam = myparamdata 
+4. 从 Reach web 通知，如果公告的 HTML 代码包含的 {deviceid} 模式中，它将自动替换为显示 web 通知设备的标识符。
+   下面是我的设备标识符: {deviceid} 将替换为： 以下是我的设备标识符： XXXXXXXXXXXXXXXX
+5. 打开你的设备上的应用程序，并在你已标记的应用程序中执行事件。
+   从"UI-你的应用程序的监视器的事件的详细信息"，找到列表中执行的事件。
+   单击以在监视器中的此事件。
+   你应已执行此事件的设备列表中找到你的设备 ID。
+   然后，你可以复制此设备 ID，并在"UI-我的帐户的设备的新设备-选择你的设备平台"中注册它。
+   >（请注意，当禁用 IDFA 时适用于 iOS，设备 ID 可能更改随着时间的推移如果卸载并重新安装你的应用程序。）
 
-## <a name="troubleshooting-guide"></a>故障排除指南
-* [故障排除指南 - 服务][Link 24]
+## <a name="troubleshooting-guide"></a>疑难解答指南
+* [故障排除指南-服务][Link 24]
 
 ## <a name="see-also"></a>另请参阅
-* [UI 文档 - 主页][Link 13]
+* [UI 文档-主页][Link 13]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -155,7 +154,6 @@ UI 的“我的帐户”部分可让你查看和更改与帐户相关联的设�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
 
 
 

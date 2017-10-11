@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: daf480b7be78dc001712010eac6386d4744c3c1d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -29,7 +28,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="overview"></a>概述
 Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
 
-本指南演示如何使用 Azure Blob 存储服务执行常见方案。 示例采用 C++ 编写，并使用了[适用于 C++ 的 Azure 存储客户端库](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)。 涉及的任务包括**上传**、**列出**、**下载**和**删除** Blob。  
+本指南将演示如何使用 Azure Blob 存储服务执行常见方案。 示例采用 C++ 编写，并使用了[适用于 C++ 的 Azure 存储客户端库](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)。 涉及的任务包括**上传**、**列出**、**下载**和**删除** Blob。  
 
 > [!NOTE]
 > 本指南主要面向适用于 C++ 的 Azure 存储客户端库 1.0.0 版及更高版本。 推荐版本：存储客户端库 2.2.0（可通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获得）。
@@ -41,7 +40,7 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c-application"></a>创建 C++ 应用程序
-在本指南中，将使用存储功能，这些功能可以在 C++ 应用程序中运行。  
+本指南会使用存储功能，这些功能可以在 C++ 应用程序中运行。  
 
 为此，需要安装适用于 C++ 的 Azure 存储客户端库，并在 Azure 订阅中创建 Azure 存储帐户。   
 
@@ -120,7 +119,7 @@ catch (const std::exception& e)
 }  
 ```
 
-默认情况下，新容器是专用容器，因此，必须指定存储访问密钥才能从该容器下载 Blob。 如果要使容器中的文件 (blob) 对任何人都可用，则可以使用以下代码将容器设置为公用：  
+默认情况下，新容器是专用容器，因此，必须指定存储访问密钥才能从该容器下载 Blob。 如果要使容器中的文件 (Blob) 对任何人都可用，则可以使用以下代码将容器设置为公用：  
 
 ```cpp
 // Make the blob container publicly accessible.
@@ -134,7 +133,7 @@ Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在
 ## <a name="how-to-upload-a-blob-into-a-container"></a>如何：将 Blob 上传到容器
 Azure Blob 存储支持块 Blob 和页 Blob。 大多数情况下，推荐使用块 Blob。  
 
-要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 拥有 Blob 引用后，可以通过调用 **upload_from_stream** 方法将任何数据流上传到其中。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。  
+要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 获取 Blob 引用后，可以通过调用 upload_from_stream 方法将任何数据流上传到其中。 如果之前不存在 Blob，此操作会创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -164,10 +163,10 @@ azure::storage::cloud_block_blob blob3 = container.get_block_blob_reference(U("m
 blob3.upload_text(U("other text"));  
 ```
 
-还可以使用 **upload_from_file** 方法将文件上传到块 Blob。
+还可以使用 upload_from_file 方法将文件上传到块 Blob。
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>如何：列出容器中的 Blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **list_blobs** 方法来检索其中的 Blob 和/或目录。 若要针对一个返回的 **list_blob_item** 访问其丰富的属性和方法，必须调用 **list_blob_item.as_blob** 方法以获取一个 **cloud_blob** 对象，或调用 **list_blob.as_directory** 方法以获取 cloud_blob_directory 对象。 以下代码演示如何检索和输出 **my-sample-container** 容器中每一项的 URI：
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 list_blobs 方法来检索其中的 Blob 和/或目录。 若要针对一个返回的 **list_blob_item** 访问其丰富的属性和方法，必须调用 **list_blob_item.as_blob** 方法以获取一个 **cloud_blob** 对象，或调用 **list_blob.as_directory** 方法以获取 cloud_blob_directory 对象。 以下代码演示如何检索和输出 **my-sample-container** 容器中每一项的 URI：
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -197,7 +196,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 有关列出操作的更多详细信息，请参阅[使用 C++ 列出 Azure 存储资源](../storage-c-plus-plus-enumeration.md)。
 
 ## <a name="how-to-download-blobs"></a>如何：下载 Blob
-要下载 Blob，请首先检索 Blob 引用，然后调用 **download_to_stream** 方法。 以下示例使用 **download_to_stream** 方法将 Blob 内容传输到一个流对象，然后用户即可将该对象保存到本地文件。  
+要下载 Blob，请首先检索 Blob 引用，然后调用 **download_to_stream** 方法。 以下示例使用 download_to_stream 方法将 Blob 内容传输到一个流对象，用户即可将该对象保存到本地文件。  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -224,7 +223,7 @@ outfile.write((char *)&data[0], buffer.size());
 outfile.close();  
 ```
 
-也可以使用 **download_to_file** 方法将 Blob 的内容下载到文件。
+也可以使用 download_to_file 方法将 Blob 的内容下载到文件。
 此外，还可以使用 **download_text** 方法以文本字符串形式下载 Blob 的内容。  
 
 ```cpp
@@ -265,7 +264,7 @@ blockBlob.delete_blob();
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解 blob 存储的基础知识，请打开以下链接了解有关 Azure 存储的详细信息。  
+既然已了解 blob 存储的基础知识，请打开以下链接了解有关 Azure 存储的详细信息。  
 
 * [如何通过 C++ 使用队列存储](../storage-c-plus-plus-how-to-use-queues.md)
 * [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)
@@ -273,5 +272,4 @@ blockBlob.delete_blob();
 * [适用于 C++ 的存储客户端库参考](http://azure.github.io/azure-storage-cpp)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)
 * [使用 AzCopy 命令行实用程序传输数据](../storage-use-azcopy.md)
-
 

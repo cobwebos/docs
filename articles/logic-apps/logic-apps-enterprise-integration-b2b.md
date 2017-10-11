@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 中的 B2B 功能在逻辑应用中接收数据
 
@@ -71,7 +70,7 @@ ms.lasthandoff: 05/25/2017
 
 11. 现在，必须指定此操作的输入。 此输入是前面的 AS2 操作的输出。
 
-    实际的消息内容在 JSON 对象中并且经过 base64 编码，因此你必须指定一个表达式作为输入。 
+    实际的消息内容在 JSON 对象中并且经过 base64 编码，因此，必须指定一个表达式作为输入。 
     在“要解码的 X12 平面文件消息”输入字段中输入以下表达式：
     
     @base64ToString(body('Decode_AS2_message')?['AS2Message']?['Content'])
@@ -101,15 +100,14 @@ ms.lasthandoff: 05/25/2017
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
 
-现在已完成设置 B2B 逻辑应用。 在实际应用程序中，你可能要将解码的 X12 数据存储在业务线 (LOB) 应用或数据存储中。 若要连接自己的 LOB 应用并在逻辑应用中使用这些 API，可以添加其他操作或编写自定义 API。
+现在已完成设置 B2B 逻辑应用。 在实际应用程序中，可能要将解码的 X12 数据存储在业务线 (LOB) 应用或数据存储中。 若要连接自己的 LOB 应用并在逻辑应用中使用这些 API，可以添加其他操作或编写自定义 API。
 
 ## <a name="features-and-use-cases"></a>功能和用例
 
 * 使用 AS2 和 X12 解码和编码操作，可以在逻辑应用中通过行业标准协议在贸易合作伙伴之间交换数据。
 * 若要与贸易合作伙伴交换数据，可以使用 AS2 和/或 X12。
-* B2B 操作可帮助你轻松地在集成帐户中创建合作伙伴和协议并在逻辑应用中使用它们。
+* B2B 操作帮助你集成帐户中轻松地创建合作伙伴和协议，并在逻辑应用中使用它们。
 * 使用其他操作扩展逻辑应用时，可以在其他应用和服务（如 SalesForce）之间发送和接收数据。
 
 ## <a name="learn-more"></a>了解详细信息
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md)
-

@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: 72f1ed52c9e0f39009efc54967d7cc68517182a3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>将 Azure 虚拟机备份到恢复服务保管库
 > [!div class="op_single_selector"]
@@ -30,7 +29,7 @@ ms.lasthandoff: 03/02/2017
 >
 >
 
-本文详细介绍如何将 Azure VM（使用 Resource Manager 部署和经典模型部署）备份到恢复服务保管库。 备份 VM 的大部分工作是进行准备。 在进行备份或保护 VM 之前，必须完成[先决条件](backup-azure-arm-vms-prepare.md)中的步骤来准备好保护 VM 的环境。 完成先决条件后，可以启动备份操作来创建 VM 的快照。
+本文详细介绍了如何将 Azure VM（使用资源管理器部署和经典模型部署）备份到恢复服务保管库。 备份 VM 的大部分工作是进行准备。 在进行备份或保护 VM 之前，必须完成[先决条件](backup-azure-arm-vms-prepare.md)中的步骤来准备好保护 VM 的环境。 完成先决条件后，可以启动备份操作来创建 VM 的快照。
 
 
 [!INCLUDE [learn about backup deployment models](../../includes/backup-deployment-models.md)]
@@ -47,7 +46,7 @@ ms.lasthandoff: 03/02/2017
 若要运行初始备份作业，请执行以下操作：
 
 1. 在保管库仪表板上，单击“备份项”下的数字，或单击“备份项”磁贴。 <br/>
-  ![设置图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
+  ![“设置”图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
   “**备份项**”边栏选项卡随即打开。
 
@@ -77,11 +76,11 @@ ms.lasthandoff: 03/02/2017
 
   ![显示“立即备份”边栏选项卡](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
-5. 在“立即备份”边栏选项卡上，单击日历图标，使用日历控件选择保留此恢复点的最后一天，然后单击“备份”。
+5. 在“立即备份”边栏选项卡上，单击日历图标，使用日历控件选择保留此恢复点的最后一天，并单击“备份”。
 
   ![设置保留立即备份恢复点的最后一天](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-  部署通知会告知你备份作业已触发，并且你可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+  部署通知会告知已触发备份作业。可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 6. 若要查看或跟踪初始备份的状态，请在保管仪表板的“备份作业”磁贴上，单击“正在进行”。
 
@@ -104,6 +103,6 @@ ms.lasthandoff: 03/02/2017
 ## <a name="next-steps"></a>后续步骤
 现已保护 VM，请参阅以下文章了解 VM 管理任务以及如何还原 VM。
 
-* [管理和监视你的虚拟机](backup-azure-manage-vms.md)
+* 
+            [管理和监视虚拟机](backup-azure-manage-vms.md)
 * [恢复虚拟机](backup-azure-arm-restore-vms.md)
-

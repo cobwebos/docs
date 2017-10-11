@@ -15,18 +15,16 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d1c328ec609cc27a42fb6b30897d7f0b466134e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 14783f0464764a11d7f03a5db1c2d63728a4cb50
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>将 Azure 流分析与 SQL 数据仓库配合使用
-Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可缩放且复杂的事件处理。 可以阅读 [Azure 流分析简介][Introduction to Azure Stream Analytics]了解基本知识。 然后，可以按照 [Azure 流分析入门][Get started using Azure Stream Analytics]教程，了解如何使用流分析创建端到端解决方案。
+Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可缩放且复杂的事件处理。 可以阅读 [Azure 流分析简介][Introduction to Azure Stream Analytics]了解基本知识。 然后，你可以学习如何使用流分析创建端到端解决方案，按照[开始使用 Azure 流分析][ Get started using Azure Stream Analytics]教程。
 
-在本文中，你将学习如何使用 Azure SQL 数据仓库数据库作为流分析作业的输出接收器。
+在本文中，可以学习如何使用 Azure SQL 数据仓库数据库作为流分析作业的输出接收器。
 
 ## <a name="prerequisites"></a>先决条件
 首先，完整执行 [Azure 流分析入门][Get started using Azure Stream Analytics]教程中所述的以下步骤。  
@@ -40,10 +38,10 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>指定作业输出：Azure SQL 数据仓库数据库
 ### <a name="step-1"></a>步骤 1
-在流分析作业中，单击页面顶部的“输出”，然后单击“添加输出”。
+在流分析作业中，单击页面顶部的“输出”，并单击“添加输出”。
 
 ### <a name="step-2"></a>步骤 2
-选择“SQL 数据库”，然后单击“下一步”。
+选择“SQL 数据库”，并单击“下一步”。
 
 ![][add-output]
 
@@ -70,7 +68,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 ![][test-connection]
 
-成功连接到数据库后，门户底部会显示通知。 你可以单击底部的“测试连接”来测试与数据库的连接。
+成功连接到数据库后，门户底部会显示通知。 可以单击底部的“测试连接”来测试与数据库的连接。
 
 ## <a name="next-steps"></a>后续步骤
 有关集成的概述，请参阅 [SQL 数据仓库集成概述][SQL Data Warehouse integration overview]。
@@ -95,4 +93,3 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
-

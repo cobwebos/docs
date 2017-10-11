@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
-ms.translationtype: HT
-ms.sourcegitcommit: 8727e15448a74b68277c5bdd82c573e817254f80
 ms.openlocfilehash: da567097be38ac649c6bf1de1508de24d21cb877
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>安装和配置 Terraform 以在 Azure 中预配 VM 和其他基础结构 
 本文详细介绍安装和配置 Terraform 以在 Azure 中预配虚拟机等资源的必要步骤。 将了解如何创建和使用 Azure 凭据来启用 Terraform，从而安全地预配云资源。
 
@@ -130,4 +128,3 @@ export ARM_TENANT_ID=your_tenant_id
 
 ## <a name="next-steps"></a>后续步骤
 现已安装 Terraform 并配置 Azure 凭据，接下来可以开始将基础结构部署到 Azure 订阅。 接下来，了解如何[使用 Terraform 创建基础结构](terraform-create-complete-vm.md)。
-

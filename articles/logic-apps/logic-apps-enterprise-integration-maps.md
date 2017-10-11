@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7729890157900d0211b3a7ec05096ca315018875
-ms.openlocfilehash: 23d79fb83c1c4b103407c001dcafb8b1f3cfa5a7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
-
+ms.openlocfilehash: 4445a84a6c6425110e7d705019a28b5cc5447046
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-maps-for-xml-data-transform"></a>添加映射以进行 XML 数据转换
 
@@ -28,11 +26,11 @@ ms.lasthandoff: 02/07/2017
 
 ## <a name="why-use-maps"></a>为何使用映射？
 
-假设你从对日期使用 YYYMMDD 格式的客户定期收到 B2B 订单或发票。 但是在组织中，你采用 MMDDYYY 格式存储日期。 在将订单或发票详细信息存储在客户活动数据库中之前，可以使用映射将 YYYMMDD 日期格式转换为 MMDDYYY。
+假设定期从日期使用 YYYMMDD 格式的客户接收 B2B 订单或发票。 但组织采用 MMDDYYY 格式存储日期。 在将订单或发票详细信息存储在客户活动数据库中之前，可以使用映射将 YYYMMDD 日期格式转换为 MMDDYYY。
 
 ## <a name="how-do-i-create-a-map"></a>如何创建映射？
 
-可以使用 Visual Studio 2015 的 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "了解 enterprise integration pack") 创建 BizTalk 集成项目。 然后可以创建用于直观地在两个 XML 架构文件之间映射项目的集成映射文件。 生成此项目后，你将获得 XSLT 文档。
+可以使用 Visual Studio 2015 的 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "了解 enterprise integration pack") 创建 BizTalk 集成项目。 然后可以创建允许您以可视方式映射项两个 XML 架构文件之间的集成映射文件。 生成此项目后，会获得 XSLT 文档。
 
 ## <a name="how-do-i-add-a-map"></a>如何添加映射？
 
@@ -40,7 +38,7 @@ ms.lasthandoff: 02/07/2017
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-1.png)
 
-2. 在筛选器搜索框中输入“集成”，然后从结果列表中选择“集成帐户”。
+2. 在筛选器搜索框中输入“集成”，并从结果列表中选择“集成帐户”。
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-2.png)
 
@@ -56,7 +54,7 @@ ms.lasthandoff: 02/07/2017
 
     ![](./media/logic-apps-enterprise-integration-maps/map-2.png)  
 
-6. 为映射输入**名称**。 若要上载映射文件，请选择“映射”文本框右侧的文件夹图标。 上载过程完成之后，选择“确定”。
+6. 为映射输入**名称**。 若要上传映射文件，请选择“映射”文本框右侧的文件夹图标。 上传过程完成之后，选择“确定”。
 
     ![](./media/logic-apps-enterprise-integration-maps/map-3.png)
 
@@ -66,9 +64,9 @@ ms.lasthandoff: 02/07/2017
 
 ## <a name="how-do-i-edit-a-map"></a>如何编辑映射？
 
-必须上载包含所需更改的新映射文件。 可以先下载映射以进行编辑。
+必须上传包含所需更改的新映射文件。 可以先下载映射以进行编辑。
 
-若要上载用于替换现有映射的新映射，请执行以下步骤。
+若要上传用于替换现有映射的新映射，请执行以下步骤。
 
 1. 选择“映射”磁贴。
 
@@ -78,7 +76,7 @@ ms.lasthandoff: 02/07/2017
 
     ![](./media/logic-apps-enterprise-integration-maps/edit-1.png)
 
-4. 在文件选取器中，选择要上载的映射文件，然后选择“打开”。
+4. 在文件选取器中，选择要上载的映射文件，并选择“打开”。
 
     ![](./media/logic-apps-enterprise-integration-maps/edit-2.png)
 
@@ -100,5 +98,4 @@ ms.lasthandoff: 02/07/2017
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
 * [了解有关协议的详细信息](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
 * [了解有关转换的详细信息](logic-apps-enterprise-integration-transform.md "了解企业集成转换")  
-
 

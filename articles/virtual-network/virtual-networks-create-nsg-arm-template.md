@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 87246de343f5c810bf765b467ba0d131934f8526
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 88f7e5b2144daee7bf1c8e7312ba98e6fa967899
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>使用  Azure Resource Manager 模板创建网络安全组
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 04/27/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍资源管理器部署模型。 还可[在经典部署模型中创建 NSG](virtual-networks-create-nsg-classic-ps.md)。
+本文介绍 Resource Manager 部署模型。 还可[在经典部署模型中创建 NSG](virtual-networks-create-nsg-classic-ps.md)。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
@@ -81,7 +80,7 @@ ms.lasthandoff: 04/27/2017
   ]
 }
 ```
-若要将 NSG 关联到前端子网，需要更改模板中的子网定义，并对 NSG 使用引用 ID。
+要将 NSG 关联到前端子网，需要更改模板中的子网定义，并使用 NSG 的引用 ID。
 
 ```json
 "subnets": [
@@ -99,12 +98,12 @@ ms.lasthandoff: 04/27/2017
 请注意，需要在模板中对后端 NSG 和后端子网执行相同的操作。
 
 ## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>通过使用单击部署来部署 ARM 模板
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 若要通过单击部署的方式来部署此模板，请访问[此链接](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG)，单击“部署至 Azure”，如有必要，请替换默认参数值，然后按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG)，单击“部署至 Azure”，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
 
 ## <a name="deploy-the-arm-template-by-using-powershell"></a>使用 PowerShell 部署 ARM 模板
 若要使用 PowerShell 部署下载的 ARM 模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明操作，安装和配置 Azure PowerShell。
+1. 如果从未使用过 Azure PowerShell，请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明操作，安装和配置 Azure PowerShell。
 2. 运行 **`New-AzureRmResourceGroup`** cmdlet 以使用模板创建资源组。
 
     ```powershell
@@ -152,7 +151,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="deploy-the-arm-template-by-using-the-azure-cli"></a>使用 Azure CLI 部署 ARM 模板
 若要使用 Azure CLI 部署 ARM 模板，请执行下列步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **`azure config mode`** 命令切换到 Resource Manager 模式（如下所示）。
 
     ```azurecli
@@ -163,7 +162,7 @@ ms.lasthandoff: 04/27/2017
 
         info:    New mode is arm
 
-3. 运行 **`azure group deployment create`** cmdlet，使用你在前面下载并修改的模板和参数文件部署新 VNet。 在输出后显示的列表说明了所用的参数。
+3. 运行 **`azure group deployment create`** cmdlet，使用在前面下载并修改的模板和参数文件部署新 VNet。 在输出后显示的列表说明了所用的参数。
 
     ```azurecli
     azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' -e 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'
@@ -190,5 +189,4 @@ ms.lasthandoff: 04/27/2017
    * **-l（或 --location）**。 要创建资源组所在的 Azure 区域。
    * **-f（或 --template-file）**。 ARM 模板文件的路径。
    * **-e（或 --parameters-file）**。 ARM 参数文件的路径。
-
 

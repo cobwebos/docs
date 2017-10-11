@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: c54dbe407145a29a712acc3c0fb549a38ac26bed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>教程：Azure Active Directory 与 Samanage 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/12/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-samanage-from-the-gallery"></a>从库中添加 Samanage
-若要配置 Samanage 与 Azure AD 的集成，需要从库中将 Samanage 添加到托管 SaaS 应用列表。
+要配置 Samanage 与 Azure AD 的集成，需要从库中将 Samanage 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Samanage，请执行以下步骤：**
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 07/12/2017
 
 若要配置和测试 Samanage 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Samanage 测试用户](#creating-a-samanage-test-user) - 在 Samanage 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -118,7 +117,7 @@ ms.lasthandoff: 07/12/2017
     > [!NOTE] 
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。 有关更多详细信息，请联系 [Samanage 客户端支持团队](https://www.samanage.com/support)。    
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-samanage-tutorial/tutorial_samanage_certificate.png) 
 
@@ -144,9 +143,9 @@ ms.lasthandoff: 07/12/2017
    
     ![使用 SAML 登录](./media/active-directory-saas-samanage-tutorial/tutorial_samanage_003.png "使用 SAML 登录")
  
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“启用使用 SAML 单一登录”。  
+    a. 单击“启用使用 SAML 单一登录”。  
  
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。    
+    b. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。    
  
     c. 确认“登录 URL”匹配 Azure 门户中“Samanage 域和 URL”部分的“登录 URL”。
  
@@ -186,7 +185,7 @@ ms.lasthandoff: 07/12/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-samanage-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -228,9 +227,9 @@ ms.lasthandoff: 07/12/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Samanage，请执行以下步骤：**
+**要将 Britta Simon 分配到 Samanage，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -279,5 +278,4 @@ ms.lasthandoff: 07/12/2017
 [201]: ./media/active-directory-saas-samanage-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-samanage-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-samanage-tutorial/tutorial_general_203.png
-
 

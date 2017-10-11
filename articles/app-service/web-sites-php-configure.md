@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 应用服务 Web 应用中配置 PHP | Microsoft Docs"
-description: "了解如何在 Azure App Service 中为 Web Apps 配置默认 PHP 安装或添加自定义 PHP 安装。"
+description: "了解如何在 Azure 应用服务中为 Web 应用配置默认 PHP 安装或添加自定义 PHP 安装。"
 services: app-service
 documentationcenter: php
 author: rmcmurray
@@ -14,16 +14,15 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 52db4d82faa0db07224f48b6600e690e34808e91
-ms.lasthandoff: 04/06/2017
-
-
+ms.openlocfilehash: 624dd416f37aacdb3d2f6e59afdc2efe646e610b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-php-in-azure-app-service-web-apps"></a>在 Azure App Service Web Apps 中配置 PHP
+# <a name="configure-php-in-azure-app-service-web-apps"></a>在 Azure 应用服务 Web 应用中配置 PHP
 ## <a name="introduction"></a>介绍
-本指南将演示如何执行以下操作：在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) 中配置 Web 应用的内置 PHP 运行时，提供自定义 PHP 运行时，并启用扩展。 若要使用应用服务，请注册[免费试用版]。 若要充分利用本指南，你应先在 App Service 中创建一个 PHP Web 应用。
+本指南演示如何执行以下操作：在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) 中配置 Web 应用的内置 PHP 运行时，提供自定义 PHP 运行时，并启用扩展。 若要使用应用服务，请注册[免费试用版]。 要充分利用本指南，应先在应用服务中创建一个 PHP Web 应用。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -33,10 +32,10 @@ ms.lasthandoff: 04/06/2017
 PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要更新 PHP 版本，请使用下列方法之一：
 
 ### <a name="azure-portal"></a>Azure 门户
-1. 在 [Azure 门户](https://portal.azure.com)中浏览到 Web 应用，然后单击“设置”按钮。
+1. 在 [Azure 门户](https://portal.azure.com)中浏览到 Web 应用，并单击“设置”按钮。
    
     ![Web 应用设置][settings-button]
-2. 在“设置”边栏选项卡中选择“应用程序设置”，然后选择新的 PHP 版本。
+2. 在“设置”边栏选项卡中选择“应用程序设置”，并选择新的 PHP 版本。
    
     ![应用程序设置][application-settings]
 3. 单击“Web 应用设置”边栏选项卡顶部的“保存”按钮。
@@ -57,7 +56,7 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 ### <a name="azure-command-line-interface-linux-mac-windows"></a>Azure 命令行界面（Linux、Mac、Windows）
 若要使用 Azure 命令行界面，必须已在计算机上安装 **Node.js**。
 
-1. 打开终端，并登录到你的帐户。
+1. 打开终端，并登录到帐户。
    
         azure login
 2. 设置 Web 应用的 PHP 版本。
@@ -82,7 +81,7 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 
 ### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>更改 PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 配置设置
 1. 将 [.user.ini] 文件添加到根目录。
-2. 使用将在 `php.ini` 文件中使用的语法，将配置设置添加到 `.user.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
+2. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `.user.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
    
         ; Example Settings
         display_errors=On
@@ -98,7 +97,7 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 ### <a name="changing-phpinisystem-configuration-settings"></a>更改 PHP\_INI\_SYSTEM 配置设置
 1. 向 Web 应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
 2. 使用 Kudu 控制器 (http://&lt;site-name&gt;.scm.azurewebsite.net) 在 `d:\home\site\ini` 目录中创建一个 `settings.ini` 文件。
-3. 使用将在 php.ini 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
+3. 使用会在 php.ini 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
    
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
@@ -113,7 +112,7 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 2. 将 `.dll` 扩展文件置于 `ext` 目录中（例如 `php_xdebug.dll`）。 确保扩展与默认版本的 PHP兼容，并且是 VC9 版本且与非线程安全 (nts) 兼容。
 3. 向 Web 应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
 4. 在 `d:\home\site\ini` 中创建名为 `extensions.ini` 的 `ini` 文件。
-5. 使用将在 php.ini 文件中使用的语法，将配置设置添加到 `extensions.ini` 文件。 例如，如果想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件应包含以下文本：
+5. 使用会在 php.ini 文件中使用的语法，将配置设置添加到 `extensions.ini` 文件。 例如，如果想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件应包含以下文本：
    
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
@@ -124,10 +123,10 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 1. 将 `bin` 目录添加到根目录。
 2. 将 `.dll` 扩展文件置于 `bin` 目录中（例如 `php_xdebug.dll`）。 确保扩展与默认版本的 PHP兼容，并且是 VC9 版本且与非线程安全 (nts) 兼容。
 3. 部署 Web 应用。
-4. 在 Azure 门户中浏览到相应的 Web 应用，然后单击“设置”按钮。
+4. 在 Azure 门户中浏览到相应的 Web 应用，并单击“设置”按钮。
    
     ![Web 应用设置][settings-button]
-5. 在“设置”边栏选项卡中选择“应用程序设置”，然后滚动到“应用设置”部分。
+5. 在“设置”边栏选项卡中选择“应用程序设置”，并滚动到“应用设置”部分。
 6. 在“应用设置”部分中，创建 **PHP_EXTENSIONS** 键。 此键的值将是相对于网站根目录的一个路径：**bin\your-ext-file**。
    
     ![启用应用程序设置中的扩展][php-extensions]
@@ -145,7 +144,7 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 3. （可选）将扩展添加到 PHP 运行时并在 `php.ini` 文件中启用这些扩展。
 4. 将 `bin` 目录添加到根目录，并将包含 PHP 运行时的目录置于该目录中（例如 `bin\php`）。
 5. 部署 Web 应用。
-6. 在 Azure 门户中浏览到相应的 Web 应用，然后单击“设置”按钮。
+6. 在 Azure 门户中浏览到相应的 Web 应用，并单击“设置”按钮。
    
     ![Web 应用设置][settings-button]
 7. 从“设置”边栏选项卡选择“应用程序设置”并滚动到“处理程序映射”部分。 将 `*.php` 添加到扩展字段，并将路径添加到 `php-cgi.exe` 可执行文件。 如果将 PHP 运行时放在应用程序根目录中的 `bin` 目录下，路径将为 `D:\home\site\wwwroot\bin\php\php-cgi.exe`。
@@ -168,13 +167,14 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 1. 在 [Azure 门户](https://portal.azure.com)中，在 PHP Web 应用的边栏选项卡中，单击“工具” > “扩展”。
    
     ![Azure 门户设置边栏选项卡，用于在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-settings.png)
-2. 单击“添加”，然后单击“编辑器”。
+2. 单击“添加”，并单击“编辑器”。
    
     ![添加编辑器扩展，以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-add.png)
 3. 单击“确定”以接受法律条款。 再次单击“确定”以添加扩展。
    
-    “已安装的扩展”边栏选项卡现在将显示编辑器扩展。  
-    ![接受法律条款以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-view.png)
+    
+               **已安装扩展** 边栏选项卡不会显示编辑器扩展。  
+ ![接受法律条款以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-view.png)
 4. 现在，如上一节所示，执行 `git add`、`git commit` 和 `git push`。 现在将看到编辑器正在安装在 composer.json 中定义的依赖项。
    
     ![在 Azure 中使用编辑器自动化的 Git 部署](./media/web-sites-php-configure/composer-extension-success.png)
@@ -183,7 +183,7 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -204,5 +204,4 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
-
 

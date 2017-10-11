@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 90724099842eac513c39dccf113ad1c0a63983f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple 设备管理器服务监视硬件组件和状态
 ## <a name="overview"></a>概述
@@ -46,7 +45,7 @@ ms.lasthandoff: 07/08/2017
 ## <a name="monitor-the-hardware-status"></a>监视硬件状态
 可以执行以下步骤来查看设备组件的硬件状态：
 
-1. 导航到“设备”，然后选择一个特定的 StorSimplete 设备。 转到“监视器”>“硬件运行状况”。
+1. 导航到“设备”，并选择一个特定的 StorSimplete 设备。 转到“监视器”>“硬件运行状况”。
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
@@ -73,7 +72,7 @@ ms.lasthandoff: 07/08/2017
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. 如果遇到了未处于**正常**状态的组件，请联系 Microsoft 支持部门。 如果在设备上启用了警报，你将收到电子邮件警报。 如果需要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
+4. 如果遇到了未处于**正常**状态的组件，请联系 Microsoft 支持部门。 如果在设备上启用了警报，将收到电子邮件警报。 如果需要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple 设备的主机箱的组件列表
 下表概述了本地 StorSimple 设备的主机箱（在 8100 和 8600 中配备）中包含的物理和逻辑组件。
@@ -147,5 +146,4 @@ ms.lasthandoff: 07/08/2017
 * 如果需要排除处于降级或故障状态的设备组件的故障，请参阅 [StorSimple 监视指示器](storsimple-monitoring-indicators.md)。
 * 若要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
 * 如果继续遇到设备问题，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
-
 

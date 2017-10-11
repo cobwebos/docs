@@ -14,14 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: jlembicz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6feadcc02aa0047dc2028d016687d3ad2859eb44
 ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>在 Azure 搜索中为多语言文档创建索引
 > [!div class="op_single_selector"]
 >
@@ -36,7 +34,7 @@ ms.lasthandoff: 02/09/2017
 下面是 Azure 搜索服务的 Azure 门户边栏选项卡的屏幕截图，供用户定义索引架构。 通过此边栏选项卡，用户可以创建所有字段并为它们创建分析器属性。
 
 > [!IMPORTANT]
-> 如同从头创建新索引时，或将新字段添加到现有索引时，你只能在字段定义期间设置语言分析器。 确保在创建字段时完全指定所有属性，其中包括分析器。 保存更改后，将无法编辑属性或更改分析器类型。
+> 如同从头创建新索引时，或将新字段添加到现有索引时，只能在字段定义期间设置语言分析器。 确保在创建字段时完全指定所有属性，其中包括分析器。 保存更改后，将无法编辑属性或更改分析器类型。
 >
 >
 
@@ -48,7 +46,7 @@ ms.lasthandoff: 02/09/2017
 5. 在移动到下一个字段前，打开“分析器”选项卡。
 
 ![][1]
-*若要选择分析器，请单击“字段”边栏选项卡上的“分析器”选项卡*
+*若要选择分析器，请单击字段边栏选项卡上的分析器选项卡*
 
 ## <a name="choose-an-analyzer"></a>选择分析器
 1. 滚动以找到定义的字段。
@@ -57,16 +55,16 @@ ms.lasthandoff: 02/09/2017
 4. 选择要使用的分析器。
 
 ![][2]
-*为每个字段选择一个支持的分析器*
+*选择一个支持的每个字段的分析器*
 
 默认情况下，所有可搜索字段会使用[标准 Lucene 分析器](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)（不限语言）。 若要查看支持的分析器的完整列表，请参阅 [Azure 搜索中的语言支持](https://msdn.microsoft.com/library/azure/dn879793.aspx)。
 
-为字段选择语言分析器后，它将用于该字段的每个索引和搜索请求。 当使用不同的分析器针对多个字段发出查询时，查询将由每个字段相应的分析器独立处理。
+为字段选择语言分析器后，它用于该字段的每个索引和搜索请求。 当使用不同的分析器针对多个字段发出查询时，查询由每个字段相应的分析器独立处理。
 
 许多 Web 和移动应用程序使用不同的语言来为世界各地的用户提供服务。 可通过为每种支持的语言创建字段来为此类方案定义索引。
 
 ![][3]
-*每种支持的语言都有描述字段的索引定义*
+*使用支持每种语言的说明字段的索引定义*
 
 如果已知发出查询的代理的语言，可使用 **searchFields** 查询参数，将搜索请求的范围限制为特定字段。 以下查询将仅针对波兰文描述发出：
 
@@ -87,10 +85,9 @@ ms.lasthandoff: 02/09/2017
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2016-09-01`
 
-如果你是一名 .NET 开发人员，请注意，可以使用 [Azure 搜索 .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search) 来设置语言分析器。 最新版本还提供对 Microsoft 语言分析器的支持。
+如果是一名 .NET 开发人员，请注意，可以使用 [Azure 搜索 .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search) 来设置语言分析器。 最新版本还提供对 Microsoft 语言分析器的支持。
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png
 [2]: ./media/search-language-support/SelectAnalyzer.png
 [3]: ./media/search-language-support/IndexDefinition.png
-

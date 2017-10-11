@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35b51ab7fa40e16ebe5170c3dea33b02a653d23b
-
-
+ms.openlocfilehash: bc47589ac769d89b2aa7f7565d08555ace3119d9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="microsoft-security-response-center"></a>Microsoft 安全响应中心
 Microsoft 安全响应中心 (MSRC) 由全球一些最有经验的安全专家主持。 这些专家每天每时识别、监视、响应和解决安全事件以及本地和云的漏洞。
@@ -39,9 +39,3 @@ Microsoft 奖励计划对研究新型漏洞技术、减少新型漏洞的防范�
 若要了解有关这些计划的详细信息，请访问 [MSRC Bug 奖励](https://technet.microsoft.com/security/dn425036)页和 [MSRC 博客](https://blogs.technet.microsoft.com/msrc/)。
 
 若要了解有关 MSRC 的详细信息，请访问 [MSRC 主页](https://technet.microsoft.com/library/dn440717.aspx)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

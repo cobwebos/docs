@@ -1,2 +1,2 @@
-可以通过查看审核日志或部署操作来对部署进行故障排除。 本主题将演示这两种方法。 有关解决特定部署错误的帮助，请参阅 [Resolve common errors when deploying resources to Azure with Azure Resource Manager](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md)（解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误）。
+可以通过查看审核日志中，或部署操作来排查你的部署。 本主题说明了这两种方法。 有关解决特定部署错误的帮助，请参阅[解决常见的错误，部署到 Azure 与 Azure 资源管理器中的资源时](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md)。
 

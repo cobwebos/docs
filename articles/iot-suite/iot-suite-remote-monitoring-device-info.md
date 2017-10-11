@@ -15,16 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: cef08b7c9a50e02948a1fa495158f3d0fab416e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: f8fd452806a0a0b98cf8e434c9bd55700083a6c5
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>远程监视预配置解决方案中的设备信息元数据
 
-Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据的方法。 本文将概述此解决方案为了帮助你理解内容而采用的方法：
+Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据的方法。 本文概述此解决方案为了帮助你理解内容而采用的方法：
 
 * 解决方案存储哪些设备元数据。
 * 解决方案如何管理设备元数据。
@@ -57,7 +56,7 @@ IoT 中心为连接到远程监视解决方案的每个模拟设备和物理设�
 来自模拟设备的报告属性示例包括制造商、型号、纬度和经度。 模拟设备也以报告属性的形式返回受支持方法的列表。
 
 > [!NOTE]
-> 模拟设备代码仅使用所需的属性 **Desired.Config.TemperatureMeanValue** 和**Desired.Config.TelemetryInterval** 来更新发回给 IoT 中心的报告的属性。 将忽略所有其他的所需属性更改请求。
+> 模拟设备代码仅使用所需的属性 **Desired.Config.TemperatureMeanValue** 和**Desired.Config.TelemetryInterval** 来更新发回给 IoT 中心的报告的属性。 忽略所有其他的所需属性更改请求。
 
 存储在设备注册表 Cosmos DB 数据库中的设备信息元数据 JSON 文档具有以下结构：
 
@@ -85,7 +84,7 @@ IoT 中心为连接到远程监视解决方案的每个模拟设备和物理设�
 
 ## <a name="lifecycle"></a>生命周期
 
-首次在解决方案门户中创建设备时，解决方案将在 Cosmos DB 数据库中创建一个项来存储命令和方法历史记录。 此时，解决方案还会在设备标识注册表中为设备创建一个条目，用于生成设备向 IoT 中心进行身份验证时所用的密钥。 它还会创建设备孪生。
+首次在解决方案门户中创建设备时，解决方案会在 Cosmos DB 数据库中创建一个项来存储命令和方法历史记录。 此时，解决方案还会在设备标识注册表中为设备创建一个条目，用于生成设备向 IoT 中心进行身份验证时所用的密钥。 它还会创建设备孪生。
 
 当设备首次连接到解决方案时，将发送报告的属性和设备信息消息。 报告的属性值自动保存在设备孪生中。 报告的属性包括设备制造商、型号、序列号和受支持方法的列表。 设备信息消息包含设备支持的命令列表，其中包括有关任何命令参数的信息。 收到此消息时，解决方案将更新 Cosmos DB 数据库中的设备信息。
 
@@ -99,7 +98,7 @@ IoT 中心为连接到远程监视解决方案的每个模拟设备和物理设�
 
 ![设备详细信息窗格][img-device-edit]
 
-可以使用解决方案门户从解决方案中删除设备。 删除某个设备时，解决方案将从标识注册表中删除该设备项，然后删除设备孪生。 解决方案还会从 Cosmos DB 数据库中删除与该设备相关的信息。 必须禁用设备才可删除它。
+可以使用解决方案门户从解决方案中删除设备。 删除某个设备时，解决方案将从标识注册表中删除该设备项，并删除设备孪生。 解决方案还会从 Cosmos DB 数据库中删除与该设备相关的信息。 必须禁用设备才可删除它。
 
 ![删除设备][img-device-remove]
 
@@ -112,7 +111,7 @@ IoT 中心为连接到远程监视解决方案的每个模拟设备和物理设�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已学习如何自定义预配置解决方案，接下来你可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
+现在已学习如何自定义预配置解决方案，接下来可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
 * [预见性维护预配置解决方案概述][lnk-predictive-overview]
 * [有关 IoT 套件的常见问题][lnk-faq]
@@ -133,4 +132,3 @@ IoT 中心为连接到远程监视解决方案的每个模拟设备和物理设�
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
-

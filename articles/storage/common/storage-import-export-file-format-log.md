@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ac56267d3f1e7db083edfa2d375c21238875641f
 ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/30/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式
 当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，会将日志写入到与该作业关联的存储帐户中的块 Blob 中。  
@@ -214,7 +213,7 @@ properties-status ::=
 |-----------------|-----------------|  
 |`Completed`|页面范围或块已完成处理，未出现任何错误。|  
 |`Committed`|块已提交，但不在完整块列表中，因为其他块已失败或放置完整块列表本身已失败。|  
-|`Uncommitted`|块已上载但未提交。|  
+|`Uncommitted`|块已上传但未提交。|  
 |`Corrupted`|页面范围或块已损坏（内容与其哈希不匹配）。|  
 |`FileUnexpectedEnd`|遇到了意外的文件结束。|  
 |`BlobUnexpectedEnd`|遇到了意外的 Blob 结束。|  
@@ -360,4 +359,3 @@ properties-status ::=
 ## <a name="next-steps"></a>后续步骤
  
 * [存储导入/导出 REST API](/rest/api/storageimportexport/)
-

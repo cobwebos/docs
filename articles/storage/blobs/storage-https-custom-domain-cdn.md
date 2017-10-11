@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mihauss
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6bad04df324a374f6e8473890345cf516322abd6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="using-the-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob
 
@@ -73,4 +72,3 @@ Azure CDN 不会遵守添加到 SAS 令牌的任何限制。 例如，所有 SAS
 ## <a name="next-steps"></a>后续步骤
 
 [为 Blob 存储终结点配置自定义域名](storage-custom-domain-name.md)
-

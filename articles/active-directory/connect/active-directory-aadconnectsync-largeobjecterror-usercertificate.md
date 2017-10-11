@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: d15855bb05666961da56ff2dd5e0e473e7f7b123
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 2a5418ff61e07793fceca5a8207c1c5aa18847b4
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
 
 Azure AD 针对 **userCertificate** 属性的最大证书值数目限制为 **15** 个。 如果 Azure AD Connect 将包含超过 15 个值的对象导出到 Azure AD，Azure AD 将返回 **LargeObject** 错误和以下消息：
@@ -32,10 +30,10 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
 若要获取租户中出现 LargeObject 错误的对象列表，请使用以下方法之一：
 
- * 如果为用于同步的 Azure AD Connect Health 启用了你的租户，可以参考提供[同步错误报告](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview)。
+ * 如果为用于同步的 Azure AD Connect Health 启用了租户，可以参考提供[同步错误报告](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview)。
  
  * 每个同步周期结束时发送的有关目录同步错误的通知电子邮件包含出现 LargeObject 错误的对象列表。 
- * 如果你单击最新的“导出到 Azure AD”操作，[“同步服务管理器操作”选项卡](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)将显示出现 LargeObject 错误的对象列表。
+ * 如果单击最新的“导出到 Azure AD”操作，“同步服务管理器操作”选项卡将显示出现 LargeObject 错误的对象列表。[](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)
  
 ## <a name="mitigation-options"></a>缓解选项
 在解决 LargeObject 错误之前，对同一对象所做的其他属性更改将无法导出到 Azure AD 中。 若要解决该错误，可以考虑以下选项：
@@ -49,7 +47,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
  * 配置 Azure AD Connect，以避免将 userCertificate 属性导出到 Azure AD。 一般情况下，我们不建议使用此选项，因为 Microsoft Online Services 可能会使用该属性来实现特定的方案。 具体而言：
     * Exchange Online 和 Outlook 客户端使用 User 对象中的 userCertificate 属性进行消息签名和加密。 若要详细了解此功能，请参阅 [S/MIME for message signing and encryption](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx)（用于消息签名和加密的 S/MIME）一文。
 
-    * Azure AD 使用 Computer 对象中的 userCertificate 属性来让已加入本地域的 Windows 10 设备连接到 Azure AD。 若要详细了解此功能，请参阅 [Connect domain-joined devices to Azure AD for Windows 10 experiences](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)（体验 Windows 10 时将已加入域的设备连接到 Azure AD）一文。
+    * Azure AD 使用 Computer 对象中的 userCertificate 属性来让已加入本地域的 Windows 10 设备连接到 Azure AD。 要详细了解此功能，请参阅 [Connect domain-joined devices to Azure AD for Windows 10 experiences](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)（体验 Windows 10 时会已加入域的设备连接到 Azure AD）一文。
 
 ## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>实现同步规则以限制 userCertificate 属性的导出
 若要解决 userCertificate 属性导致的 LargeObject 错误，可在 Azure AD Connect 中实现一个出站同步规则，以便导出**包含超过 15 个证书值的对象的 null 值而不是实际值**。 本部分介绍需要执行哪些步骤来为 **User** 对象实现同步规则。 可以针对 **Contact** 和 **Computer** 对象改写这些步骤。
@@ -153,7 +151,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 2. 右键单击“AD”连接器，然后选择“运行...”
 3. 在“运行连接器”弹出窗口中选择“完全同步”步骤，然后单击“确定”。
 4. 等待完全同步步骤完成。
-5. 如果你有多个 AD 连接器，请针对剩余的 AD 连接器重复上述步骤。 通常，如果你有多个本地目录，则需要多个连接器。
+5. 如果有多个 AD 连接器，请针对剩余的 AD 连接器重复上述步骤。 通常，如果有多个本地目录，则需要多个连接器。
 
 ### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>步骤 6. 验证是否没有意外的更改正在等待导出到 Azure AD
 1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
@@ -181,5 +179,4 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
 

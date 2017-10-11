@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 Log Analytics 包括以下信息：收集的数据量、哪些计算机发送了数据、所发送数据的不同类型。  可以通过“Log Analytics 使用情况”仪表板查看发送到 Log Analytics 服务的数据量。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
@@ -52,7 +51,7 @@ Log Analytics 包括以下信息：收集的数据量、哪些计算机发送了
 4. 在“工作区”仪表板中，单击“Log Analytics 使用情况”。
 5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。  
     ![时间间隔](./media/log-analytics-usage/time.png)
-6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。  
+6. 查看使用情况类别边栏选项卡显示你感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“日志搜索”中查看更多详细信息[](log-analytics-log-searches.md)。  
     ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)
 7. 在“日志搜索”仪表板中，查看搜索返回的结果。  
     ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)
@@ -141,7 +140,7 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 + “Syslog”数据类型
   - `Type=Syslog | measure count() by Facility, SeverityLevel`
   - `Type=Syslog | measure count() by ProcessName`
-+ AzureDiagnostics 数据类型
++ **AzureDiagnostics**数据类型
   - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
 
 通过以下步骤减少所收集日志的量：
@@ -152,7 +151,7 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 | 性能计数器       | 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)如下： <br> - 降低收集频率 <br> - 减少性能计数器数 |
 | 事件日志                 | 更改[事件日志配置](log-analytics-data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
 | Syslog                     | 更改 [syslog 配置](log-analytics-data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件 |
-| AzureDiagnostics           | 更改资源日志集合，以便： <br> - 减少到 Log Analytics 的资源发送日志的数目 <br> - 仅收集必需的日志 |
+| AzureDiagnostics           | 更改到的资源日志收集： <br> -资源发送日志数减少到日志分析 <br> -收集仅需的日志 |
 | 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。 |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>查看节点数是否超出预期
@@ -173,4 +172,3 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 * 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)
 * 更改[事件日志配置](log-analytics-data-sources-windows-events.md)
 * 更改 [syslog 配置](log-analytics-data-sources-syslog.md)
-

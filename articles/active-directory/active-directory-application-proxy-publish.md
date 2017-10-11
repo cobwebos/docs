@@ -15,21 +15,19 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布应用程序
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-proxy-publish-azure-portal.md)
 > * [Azure 经典门户](active-directory-application-proxy-publish.md)
 
-Azure AD 应用程序代理可发布要通过 Internet 访问的本地应用程序，从而帮助你为远程辅助角色提供支持。 至此，应该已 [在 Azure 经典门户中启用应用程序代理](active-directory-application-proxy-enable.md)。 本文指导完成发布要在本地网络上运行并提供从网络外部进行的安全远程访问的应用程序的步骤。 阅读完成这篇文章后，能够根据个性化信息或安全要求配置该应用程序。
+Azure AD 应用程序代理可帮助你通过发布上本地应用程序通过 internet 访问远程的辅助角色提供支持。 至此，应该已 [在 Azure 经典门户中启用应用程序代理](active-directory-application-proxy-enable.md)。 本文指导完成发布要在本地网络上运行并提供从网络外部进行的安全远程访问的应用程序的步骤。 阅读完成这篇文章后，能够根据个性化信息或安全要求配置该应用程序。
 
 > [!NOTE]
 > 应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。 若要使用应用程序代理，可以[在 Azure 门户中发布应用程序](application-proxy-publish-azure-portal.md)。
@@ -104,5 +102,4 @@ Azure AD 应用程序代理可发布要通过 Internet 访问的本地应用程�
 * [使用声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-
 

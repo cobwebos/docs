@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: bca7eea5f44bbed3b784b56edaac235161b43e5e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 07/26/2017
 
 可以使用以下方法创建 IoT 中心：
 
-* “+ 新建”选项可以打开下方屏幕截图中显示的边栏选项卡。 通过此方法和通过 Marketplace 创建 IoT 中心的步骤完全相同。
+* “+ 新建”选项可以打开下方屏幕截图中显示的边栏选项卡。 通过此方法和通过应用商店创建 IoT 中心的步骤完全相同。
 * 在 Marketplace 中选择“创建”可打开下方屏幕截图中显示的边栏选项卡。
 
 以下部分将介绍创建 IoT 中心所需的几个步骤：
@@ -202,4 +201,3 @@ Azure IoT 中心自动列出用户帐户所链接的 Azure 订阅。 可以选�
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 [lnk-securing]: iot-hub-security-ground-up.md
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-

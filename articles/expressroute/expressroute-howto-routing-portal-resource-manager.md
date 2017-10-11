@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 55ccadfea55b8098ee58dcaef942f6ba54093665
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 08/02/2017
 
 ## <a name="azure-private-peering"></a>Azure 专用对等互连
 
-本部分可帮助你为 ExpressRoute 线路创建、获取、更新和删除 Azure 专用对等互连配置。
+本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 专用对等互连配置。
 
 ### <a name="to-create-azure-private-peering"></a>创建 Azure 专用对等互连
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 08/02/2017
 
 ## <a name="azure-public-peering"></a>Azure 公共对等互连
 
-本部分可帮助你为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
+本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
 
@@ -132,10 +131,10 @@ ms.lasthandoff: 08/02/2017
 
 ## <a name="microsoft-peering"></a>Microsoft 对等互连
 
-本部分可帮助你为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
+本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 
 > [!IMPORTANT]
-> 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只在将路由筛选器附加到线路之后才会播发。 有关详细信息，请参阅[配置 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)。
+> 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只有在路由筛选器附加到线路之后才会播发。 有关详细信息，请参阅[配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)。
 > 
 > 
 
@@ -151,7 +150,7 @@ ms.lasthandoff: 08/02/2017
   * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。
   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
   * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-  * **可选 -** 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
+  * **可选** - 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
   * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
   * **可选 -** MD5 哈希（如果选择使用）。
 3. 可以选择想要配置的对等互连，如以下示例中所示。 选择 Microsoft 对等互连行。
@@ -199,4 +198,3 @@ ms.lasthandoff: 08/02/2017
 * 有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](expressroute-workflows.md)。
 * 有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 * 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
-

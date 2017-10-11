@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2e3488e69d0fa56d0984bd00d6c1cc4676c9f45e
 ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
 
@@ -53,17 +52,17 @@ ms.lasthandoff: 04/06/2017
 
  Azure 导入/导出工具还会在准备每个驱动器时为其生成清单文件。 清单文件中包含：
 
--   所有要上载的文件的枚举，以及从这些文件到 Blob 的映射。
+-   所有要上传的文件的枚举，以及从这些文件到 Blob 的映射。
 
 -   每个文件的段校验和。
 
 -   有关要与每个 Blob 关联的元数据和属性的信息。
 
--   当要上载的 Blob 名称与容器中现有 Blob 的名称相同时所要执行的操作列表。 可能的选项包括：a) 使用文件覆盖 Blob，b) 保留现有 Blob 并跳过上载文件，c) 将后缀追加到名称，使之不与其他文件冲突。
+-   当要上传的 Blob 名称与容器中现有 Blob 的名称相同时所要执行的操作列表。 可能的选项包括：a) 使用文件覆盖 Blob，b) 保留现有 Blob 并跳过上传文件，c) 将后缀追加到名称，使之不与其他文件冲突。
 
 ## <a name="obtaining-your-shipping-location"></a>获取寄送位置
 
-在创建导入作业之前，需要通过调用[列出位置](/rest/api/storageimportexport/listlocations)操作获取寄送位置名称和地址。 `List Locations` 返回位置及其邮寄地址的列表。 可以从返回的列表中选择一个位置，然后将硬盘驱动器寄送到该地址。 也可以使用“`Get Location`”操作直接获取特定位置的寄送地址。
+在创建导入作业之前，需要通过调用[列出位置](/rest/api/storageimportexport/listlocations)操作获取寄送位置名称和地址。 `List Locations` 返回位置及其邮寄地址的列表。 可以从返回的列表中选择一个位置，并将硬盘驱动器寄送到该地址。 也可以使用“`Get Location`”操作直接获取特定位置的寄送地址。
 
  遵循以下步骤获取寄送位置：
 
@@ -108,4 +107,3 @@ ms.lasthandoff: 04/06/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
-

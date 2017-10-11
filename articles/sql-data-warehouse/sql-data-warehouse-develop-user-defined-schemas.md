@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="user-defined-schemas-in-sql-data-warehouse"></a>SQL 数据仓库中用户定义的架构
 传统数据仓库通常使用不同的数据库，根据工作负荷、域或安全性来创建应用程序边界。 例如，传统 SQL Server 数据仓库可能包含过渡数据库、数据仓库数据库和某些数据集市数据库。 在此拓扑中，每个数据库均作为体系结构中的工作负荷和安全边界来运行。
@@ -41,14 +40,14 @@ ms.lasthandoff: 04/03/2017
 
 如果以前尚未使用用户定义的架构，则就不会存在任何记录。 只需使用旧数据库名称作为 SQL 数据仓库数据库中用户定义架构的基础。
 
-如果已使用架构，则你可以采用以下几个选项：
+如果已使用架构，则可以采用以下几个选项：
 
 1. 删除旧架构名称并重新开始
 2. 在表名称前面附加旧架构名称，以保留旧架构名称。
 3. 在额外架构中的表上实现视图来重建旧架构结构，以保留旧架构名称。
 
 > [!NOTE]
-> 在首次检查时，选项 3 似乎像是最吸引人的选项。 但是，细节决定成败。 SQL 数据仓库中的视图为只读状态。 任何表修改或数据修改只能针对基础表执行。 选项 3 还在系统中引入了一个视图层。 如果已在体系结构中使用视图，你可以再三考虑一下此选项。
+> 在首次检查时，选项 3 似乎像是最吸引人的选项。 但是，细节决定成败。 SQL 数据仓库中的视图为只读状态。 任何表修改或数据修改只能针对基础表执行。 选项 3 还在系统中引入了一个视图层。 如果已在体系结构中使用视图，可以再三考虑一下此选项。
 > 
 > 
 
@@ -117,7 +116,7 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> 如果架构策略发生任何更改，则需要检查数据库的安全模型。 在许多情况下，你可以在架构级别分配权限，以简化安全模型。 如果需要更高粒度的权限，可以使用数据库角色。
+> 如果架构策略发生任何更改，则需要检查数据库的安全模型。 在许多情况下，可以在架构级别分配权限，以简化安全模型。 如果需要更高粒度的权限，可以使用数据库角色。
 > 
 > 
 
@@ -132,4 +131,3 @@ FROM    [edw].customer
 <!--MSDN references-->
 
 <!--Other Web references-->
-

@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 52b65b24867906d0c574a323904d980e126bcbd2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: cd53e8be32d1e98aaf9f72177895871dba69df86
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问入门
 
@@ -79,11 +78,11 @@ ms.lasthandoff: 05/05/2017
 
     ![条件性访问](./media/active-directory-conditional-access-azure-portal-get-started/06.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“选择用户和组”。
+    a. 单击“选择用户和组”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“选择”。
+    b. 单击“选择”。
 
-    c. 在“选择”边栏选项卡中选择测试用户，然后单击“选择”。
+    c. 在“选择”边栏选项卡中选择测试用户，并单击“选择”。
 
     d.单击“下一步”。 在“用户和组”边栏选项卡中，单击“完成”。
 
@@ -95,11 +94,11 @@ ms.lasthandoff: 05/05/2017
 
     ![条件性访问](./media/active-directory-conditional-access-azure-portal-get-started/08.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“选择应用”。
+    a. 单击“选择应用”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“选择”。
+    b. 单击“选择”。
 
-    c. 在“选择”边栏选项卡中选择你的云应用，然后单击“选择”。
+    c. 在“选择”边栏选项卡中选择云应用，然后单击“选择”。
 
     d.单击“下一步”。 在“云应用”边栏选项卡中，单击“完成”。
 
@@ -115,11 +114,11 @@ ms.lasthandoff: 05/05/2017
 
     ![条件性访问](./media/active-directory-conditional-access-azure-portal-get-started/11.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“配置”下面，单击“是”。
+    a. 在“配置”下面，单击“是”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“包括”下面，单击“所有位置”。
+    b. 在“包括”下面，单击“所有位置”。
 
-    c. 单击“排除”，然后单击“所有受信任的 IP”。
+    c. 单击“排除”，并单击“所有受信任的 IP”。
 
     ![条件性访问](./media/active-directory-conditional-access-azure-portal-get-started/12.png)
 
@@ -135,9 +134,9 @@ ms.lasthandoff: 05/05/2017
 
     ![条件性访问](./media/active-directory-conditional-access-azure-portal-get-started/14.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“需要多重身份验证”。
+    a. 选择“需要多重身份验证”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“选择”。
+    b. 单击“选择”。
 
 15. 在“新建”边栏选项卡中的“启用策略”下面，单击“打开”。
 
@@ -148,7 +147,7 @@ ms.lasthandoff: 05/05/2017
 
 ## <a name="testing-the-policy"></a>测试策略
 
-若要测试策略，应该从符合以下条件的设备访问你的应用： 
+要测试策略，应该从符合以下条件的设备访问应用： 
 
 1. 使用已配置的“受信任的 IP”中的某个 IP 地址 
 
@@ -160,5 +159,4 @@ ms.lasthandoff: 05/05/2017
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关条件性访问的详细信息，请参阅 [Azure Active Directory 条件性访问](active-directory-conditional-access-azure-portal.md)。
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 971f23a01b53ed6d7d19438567392e0b43b57120
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: f36f6512bb30e4b109b1bd1c3cdab10300f4edc9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-c"></a>使用 C 将 Raspberry Pi 3 连接到远程监视解决方案并启用远程固件更新
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="overview"></a>概述
 
-在本教程中，你将完成以下步骤：
+在本教程中，将完成以下步骤：
 
 * 将远程监视预配置解决方案的实例部署到 Azure 订阅。 此步骤会自动部署并配置多个 Azure 服务。
 * 将设备和传感器设置为与计算机和远程监视解决方案通信。
@@ -49,7 +48,7 @@ ms.lasthandoff: 05/03/2017
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> 远程监视解决方案在 Azure 订阅中预配一组 Azure 服务。 部署反映实际企业体系结构。 若要避免产生不必要的 Azure 使用费用，请在使用完预配置解决方案的实例后，在 azureiotsuite.com 上将其删除。 如果再次需要预配置解决方案，可以轻松地重新创建它。 若要详细了解如何在远程监视解决方案运行时减少消耗，请参阅[出于演示目的配置 Azure IoT 套件预配置解决方案][lnk-demo-config]。
+> 远程监视解决方案在 Azure 订阅中预配一组 Azure 服务。 部署反映实际企业体系结构。 要避免产生不必要的 Azure 使用费用，请在使用完预配置解决方案的实例后，在 azureiotsuite.com 上将其删除。 如果再次需要预配置解决方案，可以轻松地重新创建它。 若要详细了解如何在远程监视解决方案运行时减少消耗，请参阅[出于演示目的配置 Azure IoT 套件预配置解决方案][lnk-demo-config]。
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-solution](../../includes/iot-suite-raspberry-pi-kit-view-solution.md)]
 
@@ -85,7 +84,7 @@ yourdeviceid
 HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=yourdevicekey
 ```
 
-保存所做的更改（按 **Ctrl-O**，然后按 **Enter**），然后退出编辑器（按 **Ctrl-X**）。
+保存所做的更改（按 **Ctrl-O**，并按 **Enter**），并退出编辑器（按 **Ctrl-X**）。
 
 ## <a name="build-the-sample"></a>生成示例
 
@@ -125,7 +124,7 @@ chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.
 
 1. 在“FWPackageURI”字段中，输入 **https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit/raw/master/advanced/2.0/package/remote_monitoring.zip**。 此存档文件包含固件版本 2.0 的实现。
 
-1. 选择“InvokeMethod”。 Raspberry Pi 上的应用会将确认发送回解决方案仪表板。 然后，它通过下载新版本的固件启动固件更新过程：
+1. 选择“InvokeMethod”。 Raspberry Pi 上的应用会将确认发送回解决方案仪表板。 然后，它通过下载新版本的固件来启动固件更新过程：
 
     ![显示方法历史记录][img-method-history]
 
@@ -138,7 +137,7 @@ chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.
     ![显示更新进度][img-update-progress]
 
     > [!NOTE]
-    > 更新完成时，远程监视应用将以无提示方式重新启动。 使用 `ps -ef` 命令验证它是否正在运行。 如果要终止该过程，请使用带过程 ID 的 `kill` 命令。
+    > 更新完成时，远程监视应用以无提示方式重新启动。 使用 `ps -ef` 命令验证它是否正在运行。 如果要终止该过程，请使用带过程 ID 的 `kill` 命令。
 
 1. 可以在解决方案门户中查看设备报告的固件更新状态。 以下屏幕截图显示更新过程的每个阶段的状态和持续时间，以及新的固件版本：
 

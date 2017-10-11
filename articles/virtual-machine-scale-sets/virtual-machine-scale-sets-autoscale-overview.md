@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: adegeo
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: 06ff9d9ae1dd8256f0d22c1a60ed6a85554f1f17
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>如何使用自动缩放和虚拟机规模集
 在规模集内自动缩放虚拟机是指按需在规模集内创建或删除虚拟机，以符合性能需求。 当工作量增大时，应用程序可能需要额外的资源才能有效执行任务。
@@ -43,12 +42,12 @@ ms.lasthandoff: 07/01/2017
 },
 ```
 
-容量会识别缩放集中的虚拟机数目。 您可以部署具有不同值的模板，以便手动更改容量。 如果部署模板只是为了更改容量，则可以仅包含具有更新容量的 SKU 元素。
+容量会识别缩放集中的虚拟机数目。 可以部署具有不同值的模板，以便手动更改容量。 如果部署模板只是为了更改容量，则可以仅包含具有更新容量的 SKU 元素。
 
 可以将 autoscaleSettings 资源和诊断扩展组合使用，从而自动调整规模集的容量。
 
 ### <a name="configure-the-azure-diagnostics-extension"></a>配置 Azure 诊断扩展
-仅当缩放集中每个虚拟机上的指标收集成功时，才能完成自动缩放。 Azure 诊断扩展提供监视和诊断功能，符合自动缩放资源的指标收集需求。 您可以安装扩展作为 Resource Manager 模板的一部分。
+仅当缩放集中每个虚拟机上的指标收集成功时，才能完成自动缩放。 Azure 诊断扩展提供监视和诊断功能，符合自动缩放资源的指标收集需求。 可以安装扩展作为 Resource Manager 模板的一部分。
 
 此示例显示在模板中用来配置诊断扩展的变量：
 
@@ -228,7 +227,7 @@ autoscaleSettings 资源使用诊断扩展中的信息，以决定是增加规�
 当前使用门户可以获取有限数量的信息。
 
 * **Azure 资源浏览器**  
-要浏览规模集的当前状态，这是最适合的工具。 遵循此路径，你应该看到所创建的规模集的实例视图：  
+要浏览规模集的当前状态，这是最适合的工具。 遵循此路径，应该看到所创建的规模集的实例视图：  
 **订阅 > {你的订阅} > resourceGroups > {你的资源组} > 提供程序 > Microsoft.Compute > virtualMachineScaleSets > {你的规模集} > virtualMachines**
 
 * **Azure PowerShell**  
@@ -239,7 +238,7 @@ autoscaleSettings 资源使用诊断扩展中的信息，以决定是增加规�
   Get-Autoscalesetting -ResourceGroup rainvmss -DetailedOutput
   ```
 
-* 就像连接任何其他虚拟机一样连接到 jumpbox 虚拟机，然后可以远程访问规模集中的虚拟机，以监视单个进程。
+* 就像连接任何其他虚拟机一样连接到 jumpbox 虚拟机，并可以远程访问缩放集中的虚拟机，以监视单个进程。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[自动缩放虚拟机规模集中的虚拟机](virtual-machine-scale-sets-windows-autoscale.md)，以查看有关如何创建已配置自动缩放的规模集的示例。
@@ -251,4 +250,3 @@ autoscaleSettings 资源使用诊断扩展中的信息，以决定是增加规�
 * 了解如何[使用审核日志在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 
 * 了解[高级自动缩放方案](virtual-machine-scale-sets-advanced-autoscale.md)的相关信息。
-

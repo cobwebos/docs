@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 03/20/2017
 ms.author: douglasl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 53ae23dba61cf835c6a4826b528772b1cd2e1622
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: b6f8d327123fc0ebe13790cbb3760f6eba90f5b5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 
@@ -60,4 +59,3 @@ ms.lasthandoff: 03/29/2017
 | [GitHub Archive](https://www.githubarchive.org/) | “GitHub Archive 是一个用于记录事件公共 GitHub 时间轴，将其存档，并使其易于进行进一步分析的项目。” | 从 Web 客户端下载 .gz (Gzip) 格式的以 JSON 编码的事件存档。 |
 | [来自 GHTorrent 项目的 GitHub 活动数据](http://ghtorrent.org/) | “GHTorrent 项目正努力创建一种通过 GitHub REST API 提供的、可扩展的、可查询的脱机镜像数据。 GHTorrent 可监视 GitHub 公共事件时间轴。 它会彻底检索每个事件的内容及其依赖项。” | MySQL 数据库转储采用 CSV 格式。 |
 | [Stack Overflow 数据转储](https://archive.org/details/stackexchange) | “这是指将用户贡献的所有内容匿名转储在 Stack Exchange 网络（包括 Stack Overflow）上。” | “每个站点（如 Stack Overflow）都被格式化为一个单独的存档，其中包含通过 7-zip 使用 bzip2 压缩的 XML 文件。 每个站点存档都包括帖子、用户、投票、评论、发布历史和发布链接。” |
-

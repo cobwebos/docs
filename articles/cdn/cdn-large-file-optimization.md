@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 7a5d5d1d0de24ebb0a5115ede1e572f38454bd78
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="large-file-download-optimization-via-the-azure-content-delivery-network"></a>通过 Azure 内容交付网络实现大型文件下载优化
 
@@ -127,4 +126,3 @@ Verizon 的优化功能默认开启。 对文件大小上限没有任何限制�
 ### <a name="azure-content-delivery-network-from-verizon"></a>Verizon 的 Azure 内容交付网络
 
 常规 Web 交付优化类型能够交付大型文件。
-

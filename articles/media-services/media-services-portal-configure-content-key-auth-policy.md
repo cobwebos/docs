@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 门户配置内容密钥授权策略 | Microsoft 文档"
+title: "使用 Azure 门户配置内容密钥授权策略 | Microsoft Docs"
 description: "了解如何配置内容密钥的授权策略。"
 services: media-services
 documentationcenter: 
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 2ad1199ac4cbf40ea9eb9c55046094fd988c7325
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.openlocfilehash: 5a35c7255a1c30a693862589c14f6a22a1900790
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configure-content-key-authorization-policy"></a>配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -31,7 +30,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 本主题介绍了如何使用 Azure 门户配置内容密钥授权策略。 以后，可以使用该密钥来动态加密内容。 请注意，当前可以加密以下流格式：HLS、MPEG DASH 和平滑流式处理。 无法加密渐进式下载。
 
-当播放器请求已设置为动态加密的流时，媒体服务将使用配置的密钥通过 AES 或 DRM 加密来动态加密内容。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
+播放器请求已设置为动态加密的流时，媒体服务会使用配置的密钥通过 AES 或 DRM 加密来动态加密内容。 为了解密流，播放器会从密钥传送服务请求密钥。 为了确定用户是否有权获取密钥，该服务会评估为密钥指定的授权策略。
 
 如果计划创建多个内容密钥，或者想要指定除媒体服务密钥传送服务以外的**密钥\许可证传送服务** URL，请使用媒体服务 .NET SDK 或 REST API。
 
@@ -40,7 +39,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 [使用媒体服务 REST API 配置内容密钥授权策略](media-services-rest-configure-content-key-auth-policy.md)
 
 ### <a name="some-considerations-apply"></a>请注意以下事项：
-* 创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
+* 创建 AMS 帐户后，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
 * 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。  如果创建 ContentKeyAuthorizationPolicy 并指定使用“令牌”限制，然后对其进行测试，再将策略更新为“开放”限制，则现有策略切换到“开放”版本的策略需要大约 15 分钟。
 
@@ -61,7 +60,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 媒体服务不提供**安全令牌服务**。 可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，而且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。 有关详细信息，请参阅[使用 Azure ACS 颁发令牌](http://mingfeiy.com/acs-with-key-services)。
 
-在配置“令牌”限制策略时，必须设置“验证密钥”、“颁发者”和“受众”的值。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
+在配置“令牌”限制策略时，必须设置“验证密钥”、“颁发者”和“受众”的值。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥传送服务验证令牌中的这些值是否与模板中的值匹配。
 
 ### <a name="playready"></a>PlayReady
 使用 **PlayReady** 保护内容时，需要在授权策略中指定的项目之一是用于定义 PlayReady 许可证模板的 XML 字符串。 默认情况下，已设置以下策略：
@@ -80,5 +79,4 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-
 

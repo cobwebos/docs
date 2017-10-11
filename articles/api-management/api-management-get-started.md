@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 6376faa50613288a797e2c0683a0890fa21879e1
-
-
+ms.openlocfilehash: 6e76d1ee08f804637999ef2ebf5d25becf6a0408
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-your-first-api-in-azure-api-management"></a>在 Azure API 管理中管理第一个 API
-## <a name="overview"> </a>概述
+## <a name="overview"></a>概述
 本指南演示如何快速开始使用 Azure API 管理，并进行首次 API 调用。
 
-## <a name="concepts"> </a>什么是 Azure API 管理？
+## <a name="concepts"></a>什么是 Azure API 管理？
 可以使用 Azure API 管理处理任何后端，并基于它发布正式的 API 程序。
 
 常见方案包括：
@@ -57,9 +57,9 @@ ms.openlocfilehash: 6376faa50613288a797e2c0683a0890fa21879e1
   * 创建帐户并可以订阅以获取 API 密钥。
   * 访问他们自己的使用情况分析。
 
-## <a name="create-service-instance"> </a>创建 API 管理实例
+## <a name="create-service-instance"></a>创建 API 管理实例
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用][Azure Free Trial]。
+> 要完成本教程，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用][Azure Free Trial]。
 > 
 > 
 
@@ -93,10 +93,10 @@ API 管理服务实例在以下三层中提供：开发人员、标准和高级�
 
 创建服务实例后，下一步是创建或导入 API。
 
-## <a name="create-api"> </a>导入 API
+## <a name="create-api"></a>导入 API
 API 包含一组可以从客户端应用程序调用的操作。 API 操作代理到现有的 web 服务。
 
-可以手动创建 API（可以添加操作），也可以导入它们。 在本教程中，将为 Microsoft 提供的示例计算器 Web 服务导入 API，并在 Azure 上托管它。
+可以手动创建 API（可以添加操作），也可以导入它们。 在本教程中，将为由 Microsoft 提供并在 Azure 上托管的示例计算器 Web 服务导入 API。
 
 > [!NOTE]
 > 有关创建 API 和手动添加操作的指导，请参阅[如何创建 API](api-management-howto-create-apis.md) 和[如何将操作添加到 API](api-management-howto-add-operations.md)。
@@ -107,15 +107,15 @@ API 包含一组可以从客户端应用程序调用的操作。 API 操作代�
 
 ![发布者门户][api-management-management-console]
 
-若要导入计算器 API，请单击左侧“API 管理”菜单中的“API”，然后单击“导入 API”。
+要导入计算器 API，请单击左侧“API 管理”菜单中的“API”，并单击“导入 API”。
 
 ![“导入 API”按钮][api-management-import-api]
 
 执行以下步骤以配置计算器 API：
 
-1. 单击“来自 URL”，在“规范文档 URL”文本框中输入 **http://calcapi.cloudapp.net/calcapi.json**，然后单击“Swagger”单选按钮。
+1. 单击“来自 URL”，在“规范文档 URL”文本框中输入 **http://calcapi.cloudapp.net/calcapi.json**，并单击“Swagger”单选按钮。
 2. 在“Web API URL 后缀”文本框中键入“calc”。
-3. 单击“产品(可选)”框，然后选择“初学者”。
+3. 单击“产品(可选)”框，并选择“初学者”。
 4. 单击“保存”导入 API  。
 
 ![添加新的 API][api-management-import-new-api]
@@ -125,7 +125,7 @@ API 包含一组可以从客户端应用程序调用的操作。 API 操作代�
 > 
 > 
 
-导入 API 后，该 API 的摘要页将显示在发布者门户中。
+导入 API 后，该 API 的摘要页会显示在发布者门户中。
 
 ![API 摘要][api-management-imported-api-summary]
 
@@ -138,32 +138,32 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 
 在本教程中，导入 API 时已将基本计算器 API 添加到初学者产品中。
 
-为了调用 API，开发人员必须先订阅一个产品，以提供给他们对 API 的访问权。 开发人员可以在开发人员门户中订阅产品，管理员可以在发布者门户中为开发人员订阅产品。 你是管理员，因为你在本教程的前面步骤中已创建 API 管理实例，所以默认情况下你已订阅每个产品。
+为了调用 API，开发人员必须先订阅一个产品，以提供给他们对 API 的访问权。 开发人员可以在开发人员门户中订阅产品，管理员可以在发布者门户中为开发人员订阅产品。 是管理员，你在本教程的前面步骤中已创建 API 管理实例，所以默认情况下已订阅每个产品。
 
-## <a name="call-operation"> </a>从开发人员门户调用操作
-可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 在此教程步骤中，将调用基本计算器 API 的“添加两个整数”  操作。 单击发布者门户右上角菜单中的“开发人员门户”  。
+## <a name="call-operation"></a>从开发人员门户调用操作
+可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 在此教程步骤中，将调用基本计算器 API 的“添加两个整数”操作。 单击发布者门户右上角菜单中的“开发人员门户”  。
 
 ![开发人员门户][api-management-developer-portal-menu]
 
-单击顶部菜单中的“API”，然后单击“基本计算器”以查看可用的操作。
+单击顶部菜单中的“API”，并单击“基本计算器”以查看可用的操作。
 
 ![开发人员门户][api-management-developer-portal-calc-api]
 
-请注意，已随 API 和操作导入的示例说明和参数，将为使用此操作的开发人员提供文档。 手动添加操作时，也可以添加这些说明。
+请注意已随 API 和操作导入的示例说明和参数，它们为将要使用此操作的开发人员提供文档。 手动添加操作时，也可以添加这些说明。
 
 若要调用“添加两个整数”操作，请单击“试用”。
 
 ![试用][api-management-developer-portal-calc-api-console]
 
-可以为参数输入一些值或保留默认值，然后单击“发送” 。
+可以为参数输入一些值或保留默认值，并单击“发送” 。
 
 ![HTTP Get][api-management-invoke-get]
 
-调用操作后，开发人员门户将显示**响应状态**、**响应标头**以及任何**响应内容**。
+调用操作后，开发人员门户会显示**响应状态**、**响应标头**以及任何**响应内容**。
 
 ![响应][api-management-invoke-get-response]
 
-## <a name="view-analytics"> </a>查看分析
+## <a name="view-analytics"></a>查看分析
 若要查看基本计算器的分析，请选择开发人员门户右上角菜单中的“管理”，切换回发布者门户  。
 
 ![管理][api-management-manage-menu]
@@ -191,10 +191,10 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 
 “分析”部分包含以下四个选项卡  ：
 
-*  。
-*  。
-*  。
-*  。
+* **概览**提供总体使用情况和运行状况指标，以及最受欢迎的开发人员、最热门的产品、最热门的 API 和最常使用的操作。
+* **使用情况**提供对 API 调用和带宽的深入了解，包括地理表示形式。
+* **运行状况**着重提供有关状态代码、缓存成功率、响应时间和 API 以及服务响应时间的信息。
+* **活动**提供按开发人员、产品、API 和操作深化到特定活动的报表。
 
 ## <a name="next-steps"> </a>后续步骤
 * 了解如何 [使用速率限制保护 API](api-management-howto-product-with-rules.md)。
@@ -254,9 +254,3 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 [api-management-analytics-usage]: ./media/api-management-get-started/api-management-analytics-usage.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

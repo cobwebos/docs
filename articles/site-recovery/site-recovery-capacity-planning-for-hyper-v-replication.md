@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb078183b24cd5c5172b48f1135eced061220cf5
-ms.openlocfilehash: 3c0c00bf9e4380a682ff1e155fb6d9a3826f4b00
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/21/2017
-
-
+ms.openlocfilehash: 272b5abb5e6451164ca7900dda399b6aac65f986
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="run-the-hyper-v-capacity-planner-tool-for-site-recovery"></a>运行 Site Recovery 的 Hyper-V Capacity Planner 工具
 
@@ -51,7 +49,7 @@ ms.lasthandoff: 02/21/2017
         netsh firewall set service RemoteAdmin enable
 3. 在服务器和群集上启用性能监视，如下所示：
 
-   * 使用“**高级安全性**”管理单元打开 Windows 防火墙，然后启用以下入站规则：“**COM+ 网络访问(DCOM-IN)**”，以及“**远程事件日志管理组**”中的所有规则。
+   * 使用“**高级安全性**”管理单元打开 Windows 防火墙，并启用以下入站规则：“**COM+ 网络访问(DCOM-IN)**”，以及“**远程事件日志管理组**”中的所有规则。
 
 ## <a name="step-2-prepare-a-replica-server-on-premises-to-on-premises-replication"></a>步骤 2：准备副本服务器（本地到本地复制）
 如果要复制到 Azure，则不需要执行此操作。
@@ -61,14 +59,14 @@ ms.lasthandoff: 02/21/2017
 1. 如果想要使用群集节点作为副本，请配置 Hyper-V 副本代理：
 
    * 在“**服务器管理器**”中，打开“**故障转移群集管理器**”。
-   * 连接到群集，突出显示群集名称，然后单击“**操作**” > “**配置角色**”以打开“高可用性”向导。
-   * 在“选择角色”中，选择“Hyper-V 副本代理”。 在向导中提供“NetBIOS 名称”和“IP 地址”作为群集的连接点（称为客户端接入点）。 将配置“**Hyper-V 副本代理**”，并生成一个客户端接入点名称，你应该记下该名称。
-   * 验证 Hyper-V 副本代理角色是否已成功联机，并可以在群集的所有节点之间故障转移。 为此，请右键单击该角色，指向“**移动**”，然后单击“**选择节点**”。 选择节点 >“**确定**”。
-   * 如果你使用基于证书的身份验证，请确保每个群集节点和客户端访问点上都安装了证书。
+   * 连接到群集，突出显示群集名称，然后单击“操作” > “配置角色”，打开“高可用性”向导。
+   * 在“选择角色”中，选择“Hyper-V 副本代理”。 在向导中提供“NetBIOS 名称”和“IP 地址”作为群集的连接点（称为客户端接入点）。 将配置“**Hyper-V 副本代理**”，并生成一个客户端接入点名称，应该记下该名称。
+   * 验证 Hyper-V 副本代理角色是否已成功联机，并可以在群集的所有节点之间故障转移。 为此，请右键单击该角色，指向“移动”，然后单击“选择节点”。 选择节点 >“**确定**”。
+   * 如果使用基于证书的身份验证，请确保每个群集节点和客户端访问点上都安装了证书。
 2. 启用副本服务器：
 
-   * 针对某个群集打开“故障群集管理器”，连接到该群集，然后单击“角色”> 选择角色 >“复制设置” > “启用此群集作为副本服务器”。 如果使用群集作为副本，则还需要在主站点的群集上存在 Hyper-V 副本代理角色。
-   * 对于独立服务器，请打开“Hyper-V 管理器”。 在“**操作**”窗格中，单击想要启用的服务器的“**Hyper-V 设置**”，然后在“**复制配置**”中单击“**启用这台计算机作为副本服务器**”。
+   * 对于群集，请打开“故障群集管理器”，连接到该群集，然后单击“角色”，选择角色，然后单击“复制设置” > “启用此群集作为副本服务器”。 如果使用群集作为副本，则还需要在主站点的群集上存在 Hyper-V 副本代理角色。
+   * 对于独立服务器，请打开“Hyper-V 管理器”。 在“**操作**”窗格中，单击想要启用的服务器的“**Hyper-V 设置**”，并在“**复制配置**”中单击“**启用这台计算机作为副本服务器**”。
 3. 设置身份验证：
 
    * 在“身份验证和端口”中选择对主服务器进行身份验证的方式以及身份验证端口。 如果使用证书，请单击“选择证书”以选择一个证书。 如果主服务器和恢复 Hyper-V 主机位于同一个域或受信任的域中，请使用 Kerberos。 对于不同域或工作组部署使用证书。
@@ -86,28 +84,28 @@ ms.lasthandoff: 02/21/2017
 在准备好主站点并设置恢复服务器之后，可以运行该工具。
 
 1. 从 Microsoft 下载中心[下载](https://www.microsoft.com/download/details.aspx?id=39057)该工具。
-2. 从某个主服务器（或主群集中的某个节点）运行该工具。 右键单击 .exe 文件，然后选择“**以管理员身份运行**”。
-3. 在“开始之前”中指定收集数据的时间长度。 建议在生产期间运行该工具，以确保数据具有代表性。 如果你只想要验证网络连接，可以只收集一分钟的数据。
+2. 从某个主服务器（或主群集中的某个节点）运行该工具。 右键单击 .exe 文件，并选择“**以管理员身份运行**”。
+3. 在“开始之前”中指定收集数据的时间长度。 建议在生产期间运行该工具，以确保数据具有代表性。 如果只想要验证网络连接，可以只收集一分钟的数据。
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image2.png)
-4. 在“主站点详细信息”中，针对独立主机指定服务器名称或 FQDN，或针对群集指定客户端接受点的 FQDN、群集名称或群集中的任何节点，然后单击“下一步”。 该工具将自动检测它所在的服务器的名称。 该工具将选择你可以在其中监视指定服务器的 VM。
+4. 在“主站点详细信息”中，为独立主机指定服务器名称或 FQDN，或为群集指定客户端接受点的 FQDN、群集名称或群集中的任何节点，然后单击“下一步”。 该工具会自动检测它所在的服务器的名称。 该工具将选择可以在其中监视指定服务器的 VM。
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image3.png)
 5. 在“副本站点详细信息”中，如果要复制到 Azure 或辅助数据中心且尚未设置副本服务器，请选择“跳过涉及副本站点的测试”。 如果要复制到辅助数据中心并且已设置副本类型，请在“服务器名称(或) Hyper-V 副本代理 CAP”中输入独立服务器的 FQDN，或群集的客户端接入点。
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image4.png)
 6. 在“扩展副本详细信息”中启用“跳过涉及扩展副本站点的测试”。 Site Recovery 不支持这些测试。
-7. 在“选择要复制的 VM”中，工具将根据在“主站点详细信息”页上指定的设置连接到服务器或群集，并显示主服务器上运行的 VM 和磁盘。 将不会显示已针对复制启用或未在运行的 VM。 选择你要收集其度量值的 VM。 选择 VHD 也会自动收集 VM 的数据。
+7. 在“选择要复制的 VM”中，工具将根据在“主站点详细信息”页上指定的设置连接到服务器或群集，并显示主服务器上运行的 VM 和磁盘。 将不会显示已针对复制启用或未在运行的 VM。 选择要收集其度量值的 VM。 选择 VHD 也会自动收集 VM 的数据。
 8. 如果已配置副本服务器或群集，请在“网络信息”中指定要用于主站点和副本站点之间的近似 WAN 带宽；如果已配置证书身份验证，请选择证书。
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image5.png)
-9. 在“摘要”中检查设置，然后单击“下一步”开始收集度量值。 工具的进度和状态将显示在“**计算容量**”页上。 该工具完成运行时，请单击“查看报告”以查看输出。 默认情况下，报告和日志存储在 **%systemdrive%\Users\Public\Documents\Capacity Planner** 中。
+9. 在“摘要”中检查设置，然后单击“下一步”开始收集度量值。 工具的进度和状态将显示在“计算容量”页上。 该工具完成运行时，请单击“查看报告”以查看输出。 默认情况下，报告和日志存储在 **%systemdrive%\Users\Public\Documents\Capacity Planner** 中。
 
    ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image6.png)
 
 ## <a name="step-4-interpret-the-results"></a>步骤 4：解释结果
 
-以下是重要度量值。 你可以忽略未列在此处的度量值。 它们与站点恢复无关。
+以下是重要度量值。 可以忽略未列在此处的度量值。 它们与站点恢复无关。
 
 ### <a name="on-premises-to-on-premises-replication"></a>本地到本地复制
 
@@ -130,9 +128,8 @@ ms.lasthandoff: 02/21/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-你已完成容量计划，可以开始部署站点恢复了：
+完成容量计划之后，可以开始部署 Site Recovery：
 
 * [将 VMM 云中的 Hyper-V VM 复制到 Azure](site-recovery-vmm-to-azure.md)
 * [将 Hyper-V VM 复制（不使用 VMM）到 Azure](site-recovery-hyper-v-site-to-azure.md)
 * [在 VMM 站点之间复制 Hyper-V VM](site-recovery-vmm-to-vmm.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: 5295c5dd039b1d4746ebaaf90372932e4c3e7c26
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>更换 StorSimple 设备上的底盘
 ## <a name="overview"></a>概述
@@ -53,12 +52,11 @@ ms.lasthandoff: 01/26/2017
 3. 将驱动器安装在原来的位置和插槽中。
    
    > [!NOTE]
-   > 建议先在插槽中安装 SSD，然后再安装 HDD。
+   > 建议先在插槽中安装 SSD，再安装 HDD。
    > 
    > 
 4. 等设备安装在机架中并安装组件以后，将设备连接到适当的电源，然后将设备开机。 有关详细信息，请参阅 [StorSimple 8100 设备布线](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device)或 [StorSimple 8600 设备布线](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)。
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
-
 

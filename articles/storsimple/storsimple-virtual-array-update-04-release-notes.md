@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: cc2b025b7f3e28954c7f95409ffab03e5cbcf13d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0.4 发行说明
 
@@ -40,11 +39,11 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 
 - **备份性能改进** - 此版本进行了几处重要改进，以提高备份性能。 因此，对于涉及大量文件的备份，完整备份和增量备份的完成时间将显著减少。
 
-- **增强还原性能** - 此版本包含在使用大量文件时，可显著改进还原性能的增强功能。 如果使用 200 万 - 400 万个文件，我们建议你使用 16 GB RAM 预配虚拟阵列，以便查看这些改进。 使用小于 200 万个文件时，虚拟机的最低要求仍然是 8 GB RAM。
+- **增强还原性能** - 此版本包含在使用大量文件时，可显著改进还原性能的增强功能。 如果使用 200 万 - 400 万个文件，我们建议使用 16 GB RAM 预配虚拟阵列，以便查看这些改进。 使用小于 200 万个文件时，虚拟机的最低要求仍然是 8 GB RAM。
 
 - **对支持包的改进** - 改进包括将磁盘、CPU、内存、网络和云的统计信息记录到支持包中，从而改进了诊断/调试设备问题的过程。
 
-- **将本地固定 iSCSI 卷限制为 200 GB** - 对于本地固定卷，我们建议你将 StorSimple Virtual Array 上的 iSCSI 卷限制为 200 GB。 分层卷的本地保留空间仍为预配的卷大小的 10%，但其上限为 200 GB。 
+- **将本地固定 iSCSI 卷限制为 200 GB** - 对于本地固定卷，我们建议将 StorSimple Virtual Array 上的 iSCSI 卷限制为 200 GB。 分层卷的本地保留空间仍为预配的卷大小的 10%，但其上限为 200 GB。 
 
 - **与备份相关的 bug 修复** - 在以前的软件版本中，存在着会导致备份失败的与备份相关的问题。 此版本中已解决这些 bug。
 
@@ -75,14 +74,14 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 | **6.** |分层卷或共享 |不支持对适用于 StorSimple 分层卷的应用程序进行字节范围锁定。 如果启用了字节范围锁定，则 StorSimple 分层将不起作用。 |建议的措施包括： <br></br>在应用程序逻辑中关闭字节范围锁定。<br></br>选择将此应用程序的数据放置在本地固定卷中，而不是分层卷中。<br></br>*注意事项*：当使用本地固定卷并且已启用字节范围锁定时，即使在还原完成之前，本地固定卷也可以处于联机状态。 在这种情况下，如果正在进行还原，则必须等待还原完成。 |
 | **7.** |分层共享 |处理大型文件可能会导致分层速度变慢。 |处理大型文件时，建议最大的文件应小于共享大小的 3%。 |
 | **8.** |共享的已用容量 |即使共享上没有任何数据时，也可能会看到共享消耗。 这是因为共享的已用容量中包括元数据。 | |
-| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这将在更高版本中实现。 |
+| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这会在更高版本中实现。 |
 | **10.** |Azure PowerShell |在此版本中，不可以通过 Azure PowerShell 管理 StorSimple 虚拟设备。 |所有对虚拟设备的管理应通过 Azure 经典门户和本地 Web UI 进行。 |
 | **11.** |密码更改 |虚拟数组设备控制台仅接受 en-US 键盘格式的输入。 | |
-| **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，然后再使它们联机，以使更改生效。 |此问题将在更高版本中得以解决。 |
+| **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，再使它们联机，以使更改生效。 |此问题会在更高版本中得以解决。 |
 | **13.** |iSCSI 服务器 |在 StorSimple Manager服务和 iSCSI 主机中，为 iSCSI 卷显示的“已用存储”可能有所不同。 |iSCSI 主机具有“文件系统”视图。<br></br>设备能够查看当卷处于最大大小时所分配的快。 |
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 | **15.** |文件服务器 |不支持符号链接。 | |
-| **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时将导致不受支持的配置。  | |
+| **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时会导致不受支持的配置。  | |
 
 ## <a name="next-step"></a>后续步骤
 在 StorSimple Virtual Array 上[安装 Update 0.4](storsimple-virtual-array-install-update-04.md)。
@@ -93,5 +92,4 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 * [StorSimple Virtual Array Update 0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
-
 

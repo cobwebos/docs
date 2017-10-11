@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: c0a5a818c61f7af7ff04bf890b54e8364f3b21b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>使用 v2.0 终结点，通过图形 API 将登录添加到使用第三方库的 Android 应用
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。 开发人员可以使用任何想要的库来与我们的服务集成。 为了帮助开发人员将我们的平台与其他库结合使用，我们撰写了数篇演练（例如本演练），演示如何配置第三方库，使其连接到 Microsoft 标识平台。 大部分实施 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749)的库都能连接到 Microsoft 标识平台。
@@ -65,7 +64,7 @@ git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.g
 > 
 
 ## <a name="download-the-nxoauth2-third-party-library-and-create-a-workspace"></a>下载 NXOAuth2 第三方库并创建工作区
-在本演练中，将使用来自 GitHub 的 OIDCAndroidLib，这是基于 Google 的 OpenID Connect 代码 OAuth2 库。 它将实现本机应用程序配置文件，并支持用户的授权终结点。 这些是需要与 Microsoft 标识平台集成的所有项目。
+本演练涉及使用来自 GitHub 的 OIDCAndroidLib，这是基于 Google 的 OpenID Connect 代码 OAuth2 库。 它实现本机应用程序配置文件，并支持用户的授权终结点。 这些是需要与 Microsoft 标识平台集成的所有项目。
 
 将 OIDCAndroidLib 副本克隆到计算机。
 
@@ -83,7 +82,7 @@ git@github.com:kalemontes/OIDCAndroidLib.git
     ![目标 Android 设备](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample2.PNG)
    
     ![向手机添加活动](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample3.PNG)
-2. 要设置项目模块，请将克隆的副本移到项目位置。 还可以创建项目，然后将其直接克隆到项目位置。
+2. 要设置项目模块，请将克隆的副本移到项目位置。 用户还可以创建项目，并将其直接克隆到项目位置。
    
     ![项目模块](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample4_1.PNG)
 3. 使用上下文菜单或使用 Ctrl + Alt + Maj + S 快捷键打开项目模块设置。
@@ -107,7 +106,7 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 9. 生成示例应用程序，以确保示例正常运行。
    
     目前无法将此示例应用程序与 Azure Active Directory 配合使用。 我们需要首先配置一些终结点。 这是为了确保开始自定义示例应用程序之前没有 Android Studio 问题。
-10. 生成 `oidlib-sample` 并将其作为 Android Studio 中的目标运行。
+10. 生成  `oidlib-sample` 并将其作为 Android Studio 中的目标运行。
     
     ![oidlib-sample 的生成进度](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample9.png)
 11. 删除从项目中删除模块时留下的 `app ` 目录，因为出于安全性的考虑，Android Studio 不会删除该目录。
@@ -169,7 +168,7 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 如果使用 OAuth2 作为协议，应始终不更改这些终结点。
 
 > [!NOTE]
-> 目前 Azure Active Directory 不支持 `userInfoEndpoint` 和 `revocationEndpoint` 的终结点。 如果保留这些终结点的默认值 example.com，那么会提示这些终结点不可用于该示例中:-)
+> 目前 Azure Active Directory 不支持 `userInfoEndpoint` 和 `revocationEndpoint` 的终结点。 如果保留这些终结点的默认值 example.com，那么将提示你这些终结点不可用于该示例中:-)
 > 
 > 
 
@@ -189,5 +188,4 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 
 ## <a name="get-security-updates-for-our-product"></a>获取产品的安全更新
 建议访问[安全技术中心](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”来获取有关安全事件的通知。
-
 

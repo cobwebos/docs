@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 01fdbb43c21ac6932e8462f4a6507fc63e50542d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-integrate-engagement-on-ios"></a>如何在 iOS 上集成 Engagement
 > [!div class="op_single_selector"]
@@ -43,8 +42,8 @@ Engagement SDK 需要 iOS7+ 和 Xcode 8+：应用程序的部署目标必须至�
 
 ## <a name="embed-the-engagement-sdk-into-your-ios-project"></a>在 iOS 项目中嵌入 Engagement SDK
 * 在[此处](http://aka.ms/qk2rnj)下载 iOS SDK。
-* 将 Engagement SDK 添加到 iOS 项目：在 Xcode 中，右键单击项目，选择“**将文件添加至...**”，然后选择 `EngagementSDK` 文件夹。
-* Engagement 需要其他框架才能工作：在项目资源管理器中，打开项目窗格，并选择正确的目标。 然后，打开“**构建阶段**”选项卡，然后在“**将二进制文件链接到库**”菜单中添加框架：
+* 将 Engagement SDK 添加到 iOS 项目：在 Xcode 中，右键单击项目，选择“**将文件添加至...**”，并选择 `EngagementSDK` 文件夹。
+* Engagement 需要其他框架才能工作：在项目资源管理器中，打开项目窗格，并选择正确的目标。 然后，打开“**构建阶段**”选项卡，并在“**将二进制文件链接到库**”菜单中添加框架：
 
   * `UserNotifications.framework` - 将链接设置为`Optional`
   * `AdSupport.framework` - 将链接设置为`Optional`
@@ -108,7 +107,7 @@ Engagement SDK 需要 iOS7+ 和 Xcode 8+：应用程序的部署目标必须至�
 如果无法或不想重载 `UIViewController` 类，则可以通过直接调用 `EngagementAgent` 方法来启动活动。
 
 > [!IMPORTANT]
-> iOS SDK 将在应用程序关闭时自动调用 `endActivity()` 方法。 因此，每当用户的活动更改时，*强烈*建议调用 `startActivity` 方法，*从不*调用 `endActivity` 方法，因为调用此方法会强制结束当前的会话。
+> iOS SDK 会在应用程序关闭时自动调用 `endActivity()` 方法。 因此，每当用户的活动更改时，*强烈*建议调用 `startActivity` 方法，*从不*调用 `endActivity` 方法，因为调用此方法会强制结束当前的会话。
 >
 >
 
@@ -155,10 +154,10 @@ Apple 服务条款不允许应用程序仅出于统计信息目的而使用位�
 >
 >
 
-应用程序进入后台后，此功能的实现将调用 [startMonitoringSignificantLocationChanges]。 注意如果有新的位置事件到达，则此功能将自动在后台中重新启动应用程序。
+应用程序进入后台后，此功能的实现将调用 [startMonitoringSignificantLocationChanges]。 注意如果有新的位置事件到达，则此功能会自动在后台中重新启动应用程序。
 
 ## <a name="advanced-reporting"></a>高级报告
-此外，如果你想报告应用程序特定事件、错误和作业，则需要通过 `EngagementAgent` 类的方法使用 Engagement API。 可以通过调用 `[EngagementAgent shared]` 静态方法检索该类的对象。
+此外，如果想报告应用程序特定事件、错误和作业，则需要通过 `EngagementAgent` 类的方法使用 Engagement API。 可以通过调用 `[EngagementAgent shared]` 静态方法检索该类的对象。
 
 Engagement API 允许使用所有的 Engagement 高级功能，其详细信息位于“如何在 iOS 上使用 Engagement API”（及 `EngagementAgent` 类的技术文档中）。
 
@@ -211,4 +210,3 @@ Engagement API 允许使用所有的 Engagement 高级功能，其详细信息�
 [NSLocationAlwaysUsageDescription]:https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
 [startMonitoringSignificantLocationChanges]:http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]:https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
-

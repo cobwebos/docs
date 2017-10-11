@@ -15,16 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ba02fb8385afeefd0162ff79074352bb02275b55
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: fd2df7e1029ced11974d0b832258bed2cf3bbb27
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>使用 Azure PowerShell 管理虚拟机
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型的常见 PowerShell 命令，请参阅[此处](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关使用 Resource Manager 模型的常见 PowerShell 命令，请参阅[此处](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 每天执行的许多管理 VM 的任务都可通过使用 Azure PowerShell cmdlet 自动执行。 本文提供较简单任务的示例命令，并提供演示更复杂任务的命令的文章链接。
 
@@ -34,16 +33,16 @@ ms.lasthandoff: 04/27/2017
 > 
 
 ## <a name="how-to-use-the-example-commands"></a>如何使用示例命令
-你需要将命令中的一些文本替换为适合你的环境的文本。 < 和 > 符号指示需要替换的文本。 替换文本时，请删除符号，但将引号保留在原处。
+需要将命令中的一些文本替换为适合环境的文本。 < 和 > 符号指示需要替换的文本。 替换文本时，请删除符号，但将引号保留在原处。
 
 ## <a name="get-a-vm"></a>获取 VM
-这是你将经常使用的基本任务。 使用它可获取有关 VM 的信息、对 VM 执行任务或获取输出以存储在变量中。
+这是经常会使用的基本任务。 使用它可获取有关 VM 的信息、对 VM 执行任务或获取输出以存储在变量中。
 
 若要获取有关 VM 的信息，请运行此命令，并替换引号内的所有内容（包括 < 和 > 字符）：
 
      Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-若要将输出存储在 $vm 变量中，请运行：
+要将输出存储在 $vm 变量中，请运行：
 
     $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
@@ -73,9 +72,9 @@ ms.lasthandoff: 04/27/2017
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## <a name="attach-a-data-disk"></a>附加数据磁盘
-此任务需要几个步骤。 首先，使用 ****Add-AzureDataDisk**** cmdlet 将磁盘添加到 $vm 对象。 然后，使用 **Update-AzureVM** cmdlet 更新 VM 的配置。
+此任务需要几个步骤。 首先，使用 ****Add-AzureDataDisk**** cmdlet 将磁盘添加到 $vm 对象。 然后，使用**Update-azurevm** cmdlet 可更新 VM 的配置。
 
-你还需要确定是要附加新的磁盘还是附加包含数据的磁盘。 对于新磁盘，此命令将创建并附加 .vhd 文件。
+还需要确定是要附加新的磁盘还是附加包含数据的磁盘。 对于新磁盘，此命令创建并附加 .vhd 文件。
 
 若要附加新磁盘，请运行以下命令：
 
@@ -93,11 +92,10 @@ ms.lasthandoff: 04/27/2017
               Update-AzureVM
 
 ## <a name="create-a-windows-based-vm"></a>创建基于 Windows 的 VM
-若要在 Azure 中创建新的基于 Windows 的虚拟机，请使用[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](create-powershell.md)中的说明。 本主题将介绍如何创建 Azure PowerShell 命令集，以创建可预先配置的基于 Windows 的 VM：
+若要在 Azure 中创建新的基于 Windows 的虚拟机，请使用[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](create-powershell.md)中的说明。 本主题介绍如何创建 Azure PowerShell 命令集，以创建可预先配置的基于 Windows 的 VM：
 
 * Active Directory 域成员身份。
 * 附加磁盘。
 * 作为现有负载均衡集的成员。
 * 静态 IP 地址。
-
 

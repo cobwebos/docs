@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 90df43e22f17fd32fe642514df098b72700e77af
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>修改 StorSimple 8000 系列设备上的 DATA 0 网络接口设置
 
@@ -27,9 +26,9 @@ ms.lasthandoff: 07/12/2017
 
 Microsoft Azure StorSimple 设备有六个网络接口，分别为 DATA 0 到 DATA 5。 DATA 0 接口始终是通过 Windows PowerShell 接口或串行控制台配置的，并且自动启用云。 请注意，不能通过 Azure 门户配置 DATA 0 网络接口。
 
-DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向导配置的。 你可能需要在设备处于操作模式时重新配置 DATA 0 设置。 本教程提供了修改 DATA 0 网络设置的两种方法，两种方法都使用 Windows PowerShell for StorSimple。
+DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向导配置的。 可能需要在设备处于操作模式时重新配置 DATA 0 设置。 本教程提供了修改 DATA 0 网络设置的两种方法，两种方法都使用 Windows PowerShell for StorSimple。
 
-阅读本教程之后，你将能够：
+阅读本教程之后，能够：
 
 * 通过设置向导修改 DATA 0 网络设置
 * 通过 `Set-HcsNetInterface` cmdlet 修改 DATA 0 网络设置
@@ -69,5 +68,4 @@ DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向�
 ## <a name="next-steps"></a>后续步骤
 * 若要配置 DATA 0 之外的网络接口，可以使用[在 Azure 门户中配置网络设置](storsimple-8000-modify-device-config.md)。 
 * 如果在配置网络接口时遇到任何问题，请参阅[排除部署问题](storsimple-troubleshoot-deployment.md)。
-
 

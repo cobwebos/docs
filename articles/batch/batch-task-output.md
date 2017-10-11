@@ -14,12 +14,11 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/17/2017
 
 * **输出检索**：可以直接从池中的计算节点检索任务输出；如果已保存任务输出，则可以从 Azure 存储或其他数据存储检索任务输出。 若要直接从计算节点检索任务输出，需要获取文件名及其在节点上的输出位置。 如果将任务输出保存到 Azure 存储，则需要文件在 Azure 存储中的完整路径才能使用 Azure 存储 SDK 下载输出文件。
 
-* **查看输出**：导航到 Azure 门户中的某个 Batch 任务并选择“节点上的文件”时，将看到与该任务关联的所有文件，而不仅仅是想要查看的输出文件。 同样，计算节点上的文件仅在该节点存在时才可用，并且仅在你为任务设置的文件保留时间范围内才可用。 若要查看已保存到 Azure 存储的任务输出，可使用 Azure 门户或 Azure 存储客户端应用程序（例如 [Azure 存储资源管理器][storage_explorer]）。 若要使用门户或其他工具查看 Azure 存储中的输出数据，则必须知道文件的位置并直接导航到该文件。
+* **查看输出**：导航到 Azure 门户中的某个 Batch 任务并选择“节点上的文件”时，将看到与该任务关联的所有文件，而不仅仅是想要查看的输出文件。 同样，计算节点上的文件仅在该节点存在时才可用，并且仅在为任务设置的文件保留时间范围内才可用。 若要查看已保存到 Azure 存储的任务输出，可使用 Azure 门户或 Azure 存储客户端应用程序（例如 [Azure 存储资源管理器][storage_explorer]）。 若要使用门户或其他工具查看 Azure 存储中的输出数据，则必须知道文件的位置并直接导航到该文件。
 
 ## <a name="options-for-persisting-output"></a>保存输出的选项
 
@@ -95,7 +94,7 @@ ms.lasthandoff: 06/17/2017
 在以下情况下使用适用于 .NET 的批处理文件约定库保存任务输出：
 
 - 在任务仍在运行时，想要将数据流式传输到 Azure 存储。
-- 想要保存使用云服务配置或虚拟机配置创建的池中的数据。
+- 希望保存使用云服务配置或虚拟机配置创建的池中的数据。
 - 作业中的客户端应用程序或其他任务需要根据 ID 或用途定位并下载任务输出文件。 
 - 想要执行检查点或初始结果的早期上传。
 - 想要在 Azure 门户中查看任务输出。
@@ -127,4 +126,3 @@ GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目演示了如�
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
 [storage_explorer]: http://storageexplorer.com/
-

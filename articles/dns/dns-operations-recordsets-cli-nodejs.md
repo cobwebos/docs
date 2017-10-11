@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/20/2016
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: 307b327e4c04a0461e39930114eb193791cbda9a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="manage-dns-records-in-azure-dns-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 管理 Azure DNS 中的 DNS 记录
 
 > [!div class="op_single_selector"]
@@ -38,7 +36,7 @@ ms.lasthandoff: 05/11/2017
 * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI。
 * [Azure CLI 2.0](dns-operations-recordsets-cli.md) - 适用于资源管理部署模型的下一代 CLI。
 
-本文中的示例假设你[已安装 Azure CLI 1.0、已登录，并且已创建一个 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
+这篇文章中的示例假定你已[安装 Azure CLI 1.0，登录，并创建 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
 
 ## <a name="introduction"></a>介绍
 
@@ -54,7 +52,7 @@ ms.lasthandoff: 05/11/2017
 
 创建记录时，需指定资源组名称、区域名称、记录集名称、记录类型，以及要创建的记录的详细信息。 给定的记录集名称必须是*相对*名称，这意味着它必须排除区域名称。
 
-如果记录集不存在，此命令将会创建。 如果记录集已存在，此命令会将指定的记录添加到现有记录集。
+如果记录集不存在，此命令会创建。 如果记录集已存在，此命令会将指定的记录添加到现有记录集。
 
 如果创建了新记录集，将使用默认生存时间 (TTL) 3600。 有关如何使用不同 TTL 的说明，请参阅[创建 DNS 记录集](#create-a-dns-record-set)。
 
@@ -72,7 +70,7 @@ azure network dns record-set add-record MyResourceGroup contoso.com "@" A -a 1.2
 
 ## <a name="create-a-dns-record-set"></a>创建 DNS 记录集
 
-在上面的示例中，已将 DNS 记录添加到现有记录集，或者*隐式*创建了记录集。 也可以*显式*创建记录集，然后在其中添加记录。 Azure DNS 支持“空”记录集，此类记录集可充当占位符，用于在创建 DNS 记录之前保留某个 DNS 名称。 空记录集在 Azure DNS 控制平面可见，但不会显示在 Azure DNS 名称服务器上。
+在上面的示例中，已将 DNS 记录添加到现有记录集，或者*隐式*创建了记录集。 也可以*显式*创建记录集，并在其中添加记录。 Azure DNS 支持“空”记录集，此类记录集可充当占位符，用于在创建 DNS 记录之前保留某个 DNS 名称。 空记录集在 Azure DNS 控制平面可见，但不会显示在 Azure DNS 名称服务器上。
 
 记录集是使用 `azure network dns record-set create` 命令创建的。 有关帮助，请参阅 `azure network dns record-set create -h`。
 
@@ -213,7 +211,7 @@ azure network dns record-set delete-record MyResourceGroup contoso.com www A -a 
 
 ### <a name="to-modify-an-a-aaaa-mx-ns-ptr-srv-or-txt-record"></a>修改 A、AAAA、MX、NS、PTR、SRV 或 TXT 记录
 
-若要修改现有的类型 A、AAAA、MX、NS、PTR、SRV 或 TXT 记录，首先应该添加一条新记录，然后再删除现有记录。 有关如何删除和添加记录的详细说明，请参阅本文中前面的部分。
+要修改现有的类型 A、AAAA、MX、NS、PTR、SRV 或 TXT 记录，首先应该添加一条新记录，再删除现有记录。 有关如何删除和添加记录的详细说明，请参阅本文中前面的部分。
 
 以下示例演示如何将一条“A”记录中的 IP 地址 1.2.3.4 修改为 IP 地址 5.6.7.8：
 
@@ -224,7 +222,7 @@ azure network dns record-set delete-record MyResourceGroup contoso.com www A -a 
 
 ### <a name="to-modify-a-cname-record"></a>修改 CNAME 记录
 
-若要修改 CNAME 记录，请使用 `azure network dns record-set add-record` 添加新的记录值。 与其他记录类型不同，一个 CNAME 记录集只能包含一条记录。 因此，添加新记录时会*替换*现有记录，因此不需要单独删除现有记录。  系统会提示你是否接受这种替换。
+若要修改 CNAME 记录，请使用 `azure network dns record-set add-record` 添加新的记录值。 与其他记录类型不同，一个 CNAME 记录集只能包含一条记录。 因此，添加新记录时会*替换*现有记录，因此不需要单独删除现有记录。  系统会提示是否接受这种替换。
 
 该示例将修改资源组 *MyResourceGroup* 中的区域 *contoso.com* 内的 CNAME 记录集 *www*，使其指向“www.fabrikam.net”而不是现有值：
 
@@ -271,7 +269,7 @@ azure network dns record-set set MyResourceGroup contoso.com www A --ttl 60
 
 可以使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将特定于应用程序的数据与每个记录集相关联。 若要修改现有记录集的元数据，请使用 `azure network dns record-set set`。 有关帮助，请参阅 `azure network dns record-set set -h`。
 
-以下示例演示如何使用 `--metadata` 参数（简短格式为 `-m`）修改包含两个元数据项（“dept=finance”和“environment=production”）的记录集。 请注意，所有现有元数据将被给定的值*替换*。
+以下示例演示如何使用 `--metadata` 参数（简短格式为 `-m`）修改包含两个元数据项（“dept=finance”和“environment=production”）的记录集。 请注意，所有现有元数据会被给定的值*替换*。
 
 ```azurecli
 azure network dns record-set set MyResourceGroup contoso.com www A --metadata "dept=finance;environment=production"
@@ -297,4 +295,3 @@ azure network dns record-set delete MyResourceGroup contoso.com www A
 详细了解 [Azure DNS 中的区域和记录](dns-zones-records.md)。
 <br>
 了解如何在使用 Azure DNS 时[保护区域和记录](dns-protect-zones-recordsets.md)。
-

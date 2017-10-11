@@ -12,7 +12,7 @@
 > 
 > 
 
-使用共享密钥身份验证时，将创建一个[连接字符串](../articles/storage/common/storage-configure-connection-string.md)。 连接字符串由以下部分组成：  
+使用共享密钥身份验证时，会创建一个[连接字符串](../articles/storage/common/storage-configure-connection-string.md)。 连接字符串由以下部分组成：  
 
 * **DefaultEndpointsProtocol** - 可以选择 HTTP 或 HTTPS。 但是，强烈建议使用 HTTPS。
 * **帐户名** - 存储帐户的名称

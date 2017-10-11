@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 03bf65852b8d3cf14aebf155891a028db86e78d0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/16/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 BlueJeans 测试用户](#creating-a-bluejeans-test-user)** - 在 BlueJeans 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 BlueJeans 测试用户](#creating-a-bluejeans-test-user)** -若要具有链接到用户的 Azure AD 表示的 Britta Simon BlueJeans 中的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 06/16/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请与 [BlueJeans 客户端支持团队](https://support.bluejeans.com/contact)联系。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_certificate.png) 
 
@@ -140,17 +139,17 @@ ms.lasthandoff: 06/16/2017
    
    ![SAML 单一登录](./media/active-directory-saas-bluejeans-tutorial/IC785869.png "SAML 单一登录")   
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“SAML 单一登录”。
+   a. 选择“SAML 单一登录”。
   
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择“启用自动预配”。
+   b. 选择“启用自动预配”。
 
 10. 使用以下步骤继续：
 
     ![证书路径](./media/active-directory-saas-bluejeans-tutorial/IC785870.png "证书路径")
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“选择文件”，并上载所下载的证书。
+    a. 单击“选择文件”，并上载所下载的证书。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将“SAML 单一登录服务 URL”粘贴到“登录 URL”文本框。
+    b. 将“SAML 单一登录服务 URL”粘贴到“登录 URL”文本框。
    
     c. 将“更改密码 URL”粘贴到“密码更改 URL”文本框。
    
@@ -160,9 +159,9 @@ ms.lasthandoff: 06/16/2017
     
     ![保存更改](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "保存更改")
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    a. 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    b. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
    
     c. 单击“保存更改”。
 
@@ -193,7 +192,7 @@ ms.lasthandoff: 06/16/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-bluejeans-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -222,9 +221,9 @@ ms.lasthandoff: 06/16/2017
 
     ![添加用户](./media/active-directory-saas-bluejeans-tutorial/IC785886.png "添加用户")
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在相关文本框中键入 **BlueJeans 用户名**、**电子邮件地址**、**BlueJeans 会议 ID**、**审查方密码**、**全名**、要配置的有效 AAD 帐户的**公司**。
+    a. 在相关文本框中键入 **BlueJeans 用户名**、**电子邮件地址**、**BlueJeans 会议 ID**、**审查方密码**、**全名**、要配置的有效 AAD 帐户的**公司**。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“添加用户”。
+    b. 单击“添加用户”。
 
 >[!NOTE]
 >可使用 BlueJeans 提供的任何其他 BlueJeans 用户帐户创建工具或 API 预配 AAD 用户帐户。 
@@ -238,7 +237,7 @@ ms.lasthandoff: 06/16/2017
 
 若要将 Britta Simon 分配到 BlueJeans，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -285,5 +284,4 @@ ms.lasthandoff: 06/16/2017
 [201]: ./media/active-directory-saas-bluejeans-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-bluejeans-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-bluejeans-tutorial/tutorial_general_203.png
-
 

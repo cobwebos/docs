@@ -14,25 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: eaa87671a90ab6b090fb04f346ef551edba4d173
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/15/2017
-
+ms.openlocfilehash: aed104c9c74606e0ad69fc2d0bfb2f38d85d795d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>使用 Azure 媒体服务实现故障转移流式处理
 
-本演练演示如何将内容 (Blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容交付网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
+本演练演示如何将内容 (blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容交付网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
 
 1. 在“数据中心 A”中设置一个媒体服务帐户。
-2. 将一个夹层文件上载到源资产中。
+2. 将一个夹层文件上传到源资产中。
 3. 将该资产编码成多比特率 MP4 文件。 
 4. 创建一个只读的共享访问签名定位符。 源资产可以使用此定位符获取对关联到源资产的存储帐户中的容器的读取访问权限。
-5. 从上一步骤中创建的只读共享访问签名定位符获取源资产的容器名称。 在存储帐户之间复制 Blob 时必须使用此名称（本主题稍后将会介绍。）
+5. 从上一步骤中创建的只读共享访问签名定位符获取源资产的容器名称。 在存储帐户之间复制 Blob 时必须使用此名称（本主题稍后会介绍。）
 6. 为通过编码任务创建的资产创建源定位器。 
 
-然后，若要处理故障转移，请执行以下操作：
+然后，要处理故障转移，请执行以下操作：
 
 1. 在“数据中心 B”中设置一个媒体服务帐户。
 2. 在目标媒体服务帐户中创建一个目标空资产。
@@ -43,7 +42,7 @@ ms.lasthandoff: 03/15/2017
 
 这样，便会提供 URL 的相对路径相同（只有基本 URL 不同）的流式处理 URL。 
 
-然后，若要处理任何中断情况，可在这些源定位符的顶层创建内容交付网络。 
+然后，要处理任何中断情况，可在这些源定位符的顶层创建内容交付网络。 
 
 请注意以下事项：
 
@@ -65,9 +64,9 @@ ms.lasthandoff: 03/15/2017
 ## <a name="set-up-your-project"></a>设置项目
 在本部分，将要创建并设置一个 C# 控制台应用程序项目。
 
-1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入 **HandleRedundancyForOnDemandStreaming** 作为名称，然后单击“确定”。
-2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 **MP4Files** 文件夹。 （本示例使用 **BigBuckBunny.mp4** 文件。） 
-3. 使用 **Nuget** 添加对媒体服务相关 DLL 的引用。 在 **Visual Studio 主菜单**中，选择“工具” > “库包管理器” > “包管理器控制台”。 在控制台窗口中键入 **Install-Package windowsazure.mediaservices**，然后按 Enter。
+1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入 **HandleRedundancyForOnDemandStreaming** 作为名称，并单击“确定”。
+2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 MP4Files 文件夹。 （本示例使用 **BigBuckBunny.mp4** 文件。） 
+3. 使用 **Nuget** 添加对媒体服务相关 DLL 的引用。 在 **Visual Studio 主菜单**中，选择“工具” > “库包管理器” > “包管理器控制台”。 在控制台窗口中键入 **Install-Package windowsazure.mediaservices**，并按 Enter。
 4. 添加此项目所需的其他引用：System.Configuration、System.Runtime.Serialization 和 System.Web。
 5. 将默认添加到 **Programs.cs** 文件中的 **using** 语句替换为以下语句：
    
@@ -88,7 +87,7 @@ ms.lasthandoff: 03/15/2017
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. 将 **appSettings** 节添加到 **.config** 文件，并根据媒体服务和存储密钥与名称值更新值。 
+6. 将 appSettings 节添加到 .config 文件，并根据媒体服务和存储密钥与名称值更新值。 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -212,7 +211,7 @@ ms.lasthandoff: 03/15/2017
 3. 以下方法定义是从 Main 调用的。
 
     >[!NOTE]
-    >不同媒体服务策略的策略数限制为 1,000,000 个（例如，对于 Locator 策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数和访问权限，应使用相同的策略 ID。 例如，对于需要长期保留使用的定位符，请使用相同的策略 ID（非上载策略）。 有关详细信息，请参阅[此主题](media-services-dotnet-manage-entities.md#limit-access-policies)。
+    >不同媒体服务策略的策略数限制为 1,000,000 个（例如，对于 Locator 策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数和访问权限，应使用相同的策略 ID。 例如，对于需要长期保留使用的定位符，请使用相同的策略 ID（非上传策略）。 有关详细信息，请参阅[此主题](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
@@ -948,5 +947,4 @@ ms.lasthandoff: 03/15/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

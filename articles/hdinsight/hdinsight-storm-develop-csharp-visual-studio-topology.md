@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 3ee89b6644ba395e0a6c28ecc2c082c2f7393ac8
-ms.contentlocale: zh-cn
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
 ms.lasthandoff: 08/03/2017
-
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -413,12 +412,12 @@ return topologyBuilder;
 
 ## <a name="submit-the-topology"></a>提交拓扑
 
-1. 在“解决方案资源管理器”中，右键单击项目，然后选择“提交到 Storm on HDInsight”。
+1. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。
 
    > [!NOTE]
    > 如果出现提示，请输入 Azure 订阅的凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
-2. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，然后选择“提交”。 可使用“输出”窗口监视提交是否成功。
+2. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，并选择“提交”。 可使用“输出”窗口监视提交是否成功。
 
 3. 成功提交拓扑之后，应该会出现群集的“Storm 拓扑”。 从列表中选择“WordCount”拓扑，以查看有关正在运行的拓扑的信息。
 
@@ -494,7 +493,7 @@ SCP.NET 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 > [!NOTE]
 > 仍必须使用 **CustomizedInteropJSONSerializer** 序列化 Spout 生成的数据。
 
-## <a id="configurationmanager"></a>使用 Configuration Manager
+## <a id="configurationmanager"></a>使用 ConfigurationManager
 
 请勿使用 **ConfigurationManager** 从 Bolt 和 Spout 组件检索配置值。 这样做会导致空指针异常。 而项目的配置将作为拓扑上下文中的键值对传递到 Storm 拓扑中。 对于依赖于配置值的每个组件，必须在初始化期间从上下文中检索它们。
 
@@ -772,4 +771,3 @@ Context.Logger.Info("Component started");
 **Apache HBase on HDInsight**
 
 * [HBase on HDInsight 入门](hdinsight-hbase-tutorial-get-started.md)
-

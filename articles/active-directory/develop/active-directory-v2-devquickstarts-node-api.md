@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: d42b96b0fb02b6c2df364d5e19f3345991ee03b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 94e945a52b9df7c495de1611baa08083357670c9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>使用 Node.js 保护 Web API
 > [!NOTE]
@@ -125,7 +123,7 @@ npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许多操作系统不提供 DTrace。 可以放心地忽略此错误消息。
 
 
-## <a name="5-install-passportjs-in-your-web-api"></a>5：将在 Passport.js 安装到 Web API
+## <a name="5-install-passportjs-in-your-web-api"></a>5：将 Passport.js 安装到 Web API 中
 1.  在命令行提示符下，将目录切换到 **azuread**。
 
 2.  安装 Passport.js：
@@ -629,7 +627,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
     `$npm install -g jsontool`
 
-    这将全局安装 JSON 工具。
+    这会全局安装 JSON 工具。
 
 2.  确保 MongoDB 实例正在运行：
 
@@ -756,7 +754,7 @@ passport.use(oidcStrategy);
 Passport 对其所有策略（Twitter、Facebook 等）都使用类似的模式。 所有策略编写器都遵循该模式。 向策略传递使用令牌和 `done` 作为参数的 `function()`。 策略会在完成所有任务后返回。 存储用户和令牌，这样一来，就不需要再次请求。
 
 > [!IMPORTANT]
-> 前面的代码会将所有可以进行身份验证的用户转到服务器。 这就是所谓的自动注册。 在生产服务器上，你会希望所有人都先经历指定的注册过程，然后才能进入服务器。 通常会在消费类应用中看到这种模式。 应用可能会允许使用 Facebook 注册，但随后会要求输入其他信息。 如果在本教程中没有使用命令行程序，可从返回的令牌对象中提取电子邮件。 然后，可以要求用户输入其他信息。 由于这是测试服务器，可以直接将用户添加到内存中数据库。
+> 前面的代码会将所有可以进行身份验证的用户转到服务器。 这就是所谓的自动注册。 在生产服务器上，你会希望所有人都先经历你选择的注册过程，然后才能进入服务器。 通常会在消费类应用中看到这种模式。 应用可能会允许使用 Facebook 注册，但随后会要求输入其他信息。 如果在本教程中没有使用命令行程序，可从返回的令牌对象中提取电子邮件。 然后，可以要求用户输入其他信息。 由于这是测试服务器，可以直接将用户添加到内存中数据库。
 > 
 > 
 
@@ -846,5 +844,4 @@ next();
 
 ### <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 我们建议注册，以便在发生安全事件时获得通知。 在 [Microsoft 技术安全通知](https://technet.microsoft.com/security/dd252948)页上订阅安全顾问警报。
-
 

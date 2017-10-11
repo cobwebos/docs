@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.translationtype: HT
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
 ms.openlocfilehash: 1ad56a54f094f3c314596b3a7c9fecd09647d065
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="view-azure-activity-logs"></a>查看 Azure 活动日志
 
 ![“Azure 活动日志”符号](./media/log-analytics-activity/activity-log-analytics.png)
@@ -103,4 +101,3 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 - 在发生特定活动时创建[警报](log-analytics-alerts-creating.md)。
 - 使用[日志搜索](log-analytics-log-searches.md)查看活动日志中的详细信息。
-

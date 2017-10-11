@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3540a1d74de52e5e8cff5648dd02a92e0cfb4eb5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 571d222068e92a45b0e37bec298bab7a6825f731
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>使用 Azure 门户监视编码作业进度
 > [!div class="op_single_selector"]
@@ -31,13 +30,13 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="overview"></a>概述
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
 > 
 > 
 
-当你运行作业时，通常需要采用某种方式来跟踪作业进度。 
+运行作业时，通常需要采用某种方式来跟踪作业进度。 
 
-若要监视编码作业的进度，请单击“设置”（位于页面顶部），然后选择“作业”。
+要监视编码作业的进度，请单击“设置”（位于页面顶部），并选择“作业”。
 
 ![作业](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
@@ -53,5 +52,4 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

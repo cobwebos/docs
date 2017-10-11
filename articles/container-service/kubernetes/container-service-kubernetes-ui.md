@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: fbdd3c2450c5385b782d72eb90008a093f6a7298
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: e31f90d61fc61f17582372fe9f491a1e21f628b0
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>在 Azure 容器服务中使用 Kubernetes Web UI
 
 ## <a name="prerequisites"></a>先决条件
@@ -71,7 +69,7 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 
     此时会打开一个对话框，用户可以开始在其中创建应用程序。
 
-2. 将其命名为 `hello-nginx`。 使用 Docker](https://hub.docker.com/_/nginx/) 中的 [`nginx` 容器，部署此 Web 服务的三个副本。
+2. 将其命名为 `hello-nginx`。 使用[`nginx` Docker 中的容器](https://hub.docker.com/_/nginx/)，部署此 Web 服务的三个副本。
 
     ![Kubernetes Pod“创建”对话框](./media/container-service-kubernetes-ui/nginx.png)
 
@@ -134,5 +132,4 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 这样会删除一个 Pod，导致副本数降到 2。
 
  
-
 

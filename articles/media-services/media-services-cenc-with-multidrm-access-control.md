@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 527d011476b046add0842b1c7275fc6507be31d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.openlocfilehash: 730917b6859f8dbd800ef2cb141062f45d7779ac
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现
  
@@ -28,7 +27,7 @@ ms.lasthandoff: 07/20/2017
 
 本文档的目标读者是使用 OTT 或在线流/多屏解决方案的 DRM 子系统的工程师，或对于 DRM 子系统有兴趣的任何读者。 假设读者熟悉市场上的至少一种 DRM 技术，例如 PlayReady、Widevine、FairPlay 或 Adobe Access。
 
-在 DRM 方面，我们还将介绍使用多重 DRM 的 CENC（通用加密）。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用 CENC 与多重原生 DRM，这是从以前对于各种客户端平台使用单个 DRM 和客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
+在 DRM 方面，我们还介绍使用多重 DRM 的 CENC（通用加密）。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用 CENC 与多重原生 DRM，这是从以前对于各种客户端平台使用单个 DRM 和客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
 
 使用 CENC 与多重 DRM 的好处如下：
 
@@ -137,7 +136,7 @@ DRM 子系统可能包含以下组件：
 很容易就会发现，如果许可证传送服务是由 Azure 媒体服务等公有云提供的，则两种不同的设计会导致大不相同的许可证请求模式，进而造成许可证传送成本的不同。
 
 ## <a name="mapping-design-to-technology-for-implementation"></a>将设计映射到技术以供实现
-接下来，我们通过指定要用于每个构建块的技术，将常规设计映射到 Microsoft Azure/Azure 媒体服务平台上的技术。
+接下来，我们通过指定用于每个构建块的技术，将常规设计映射到 Microsoft Azure/Azure 媒体服务平台上的技术。
 
 下表显示了映射：
 
@@ -179,7 +178,7 @@ DRM 子系统可能包含以下组件：
    1. 密钥 ID，
    2. 内容受 CENC 保护，
    3. 许可证获取 URL。
-4. 播放器根据支持的浏览器/DRM 发出许可证获取请求。 在许可证获取请求中，还会提交密钥 ID 和 JWT 令牌。 许可证传送服务将验证 JWT 令牌，在发布所需的许可证之前包含声明。
+4. 播放器根据支持的浏览器/DRM 发出许可证获取请求。 在许可证获取请求中，还会提交密钥 ID 和 JWT 令牌。 许可证传送服务会验证 JWT 令牌，在发布所需的许可证之前包含声明。
 
 ## <a name="implementation"></a>实现
 ### <a name="implementation-procedures"></a>实现过程
@@ -187,11 +186,11 @@ DRM 子系统可能包含以下组件：
 
 1. 准备测试资产：将测试视频编码/打包为 Azure 媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 对于本教程，我们不需要密钥管理系统，因为只针对一些测试资产处理一组密钥 ID 和内容密钥；
-3. 使用 AMS API 来对测试资产配置多重 DRM 许可证传送服务。 如果使用你公司或公司供应商的自定义许可证服务器，而不是 Azure 媒体服务中的许可证服务，则可以跳过此步骤，而是在配置许可证传送的步骤中指定许可证获取 URL。 需要使用 AMS API 指定一些详细配置，例如不同 DRM 许可证服务的许可证策略限制、许可证响应模板，等等。目前，Azure 门户尚未提供此配置所需的 UI。 可以在以下 Julia Kornich 的文档中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态常用加密](media-services-protect-with-drm.md)。
+3. 使用 AMS API 来对测试资产配置多重 DRM 许可证传送服务。 如果使用公司或公司供应商的自定义许可证服务器，而不是 Azure 媒体服务中的许可证服务，则可以跳过此步骤，而是在配置许可证传送的步骤中指定许可证获取 URL。 需要使用 AMS API 指定一些详细配置，例如不同 DRM 许可证服务的许可证策略限制、许可证响应模板，等等。目前，Azure 门户尚未提供此配置所需的 UI。 可以在以下 Julia Kornich 的文档中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态常用加密](media-services-protect-with-drm.md)。
 4. 使用 AMS API 针对测试资产配置资产传送策略。 可以在以下 Julia Kornich 的文档中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态常用加密](media-services-protect-with-drm.md)。
 5. 在 Azure 中创建和配置 Azure Active Directory 租户；
 6. 在 Azure Active Directory 租户中创建一些用户帐户和组：应该至少创建“EntitledUser”组，并将用户添加到此组。 此组中的用户将可通过许可证获取的权利检查，而不在此组中的用户将无法通过身份验证检查，且无法获取任何许可证。 成为此“EntitledUser”组的成员，是由 Azure AD 发出的 JWT 令牌中所需的“组”声明。 此声明要求应该在配置多重 DRM 许可证传送服务步骤中指定。
-7. 创建 ASP.NET MVC 应用，用于托管你的视频播放器。 此 ASP.NET 应用将根据 Azure Active Directory 租户受到用户身份验证的保护。 对用户进行身份验证后，适当的声明将包含在获取的访问令牌中。 建议在此步骤中使用 OpenID Connect API。 需要安装以下 NuGet 包：
+7. 创建 ASP.NET MVC 应用，用于托管视频播放器。 此 ASP.NET 应用根据 Azure Active Directory 租户受到用户身份验证的保护。 对用户进行身份验证后，适当的声明将包含在获取的访问令牌中。 建议在此步骤中使用 OpenID Connect API。 需要安装以下 NuGet 包：
    * Install-Package Microsoft.Azure.ActiveDirectory.GraphClient
    * Install-Package Microsoft.Owin.Security.OpenIdConnect
    * Install-Package Microsoft.Owin.Security.Cookies
@@ -259,7 +258,7 @@ George 还撰写了一篇有关 [Azure 媒体服务和动态加密中的 JWT 令
 2. 客户端与 Azure AD 之间的 JWT 令牌交换（需要使用 HTTPS）；
 3. 客户端的 DRM 许可证获取，如果许可证传送由 Azure 媒体服务提供（需要使用 HTTPS）。 当然，PlayReady 产品套件不会针对许可证传送强制要求使用 HTTPS。 如果 PlayReady 许可证服务器位于 Azure 媒体服务以外的地方，则可以使用 HTTP 或 HTTPS。
 
-因此，最佳实践是让 ASP.NET 播放器应用程序使用 HTTPS。 这意味着 Azure Media Player 将在使用 HTTPS 的页面上。 不过，我们更偏向于使用 HTTP 进行流式传输，因此需要考虑混合内容问题。
+因此，最佳实践是让 ASP.NET 播放器应用程序使用 HTTPS。 这意味着 Azure Media Player 会在使用 HTTPS 的页面上。 不过，我们更偏向于使用 HTTP 进行流式传输，因此需要考虑混合内容问题。
 
 1. 浏览器不允许混合内容。 但是 Silverlight 等插件和适用于平滑流与 DASH 的 OSMF 插件允许混合内容。 混合内容存在安全隐患 - 因为能够插入恶意 JS 威胁，从而使客户数据处于风险之中。  默认情况下，浏览器将阻止此类内容，目前唯一的解决方法是在服务器（来源）端允许所有域（不管是 https 还 http）。 这可能也不是个好主意。
 2. 应该避免混合内容：都使用 HTTP，或者都使用 HTTPS。 当播放混合内容时，silverlightSS 技术需要清除混合内容警告。 flashSS 技术在没有混合内容警告的情况下处理混合内容。
@@ -268,9 +267,9 @@ George 还撰写了一篇有关 [Azure 媒体服务和动态加密中的 JWT 令
 在参考实现中，对于 DRM 保护内容，应用程序和流都使用 HTTTPS。 对于打开的内容，播放器不需要身份验证或许可证，因此可以任意使用 HTTP 或 HTTPS。
 
 ### <a name="azure-active-directory-signing-key-rollover"></a>Azure Active Directory 签名密钥滚动更新
-这是需要在实现中考虑的要点。 如果未在实现中考虑，整个系统最终将在最多 6 周之后完全停止运行。
+这是需要在实现中考虑的要点。 如果未在实现中考虑，整个系统最终会在最多 6 周之后完全停止运行。
 
-Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对令牌进行签名，然后将令牌发回给应用程序。 若要验证该令牌是否有效且确实来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的联合元数据文档中的公钥来验证令牌的签名。 此公钥 – 以及衍生它的签名密钥 – 是由 Azure AD 中所有租户使用的同一个密钥。
+Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对令牌进行签名，并将令牌发回给应用程序。 若要验证该令牌是否有效且确实来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的联合元数据文档中的公钥来验证令牌的签名。 此公钥 – 以及衍生它的签名密钥 – 是由 Azure AD 中所有租户使用的同一个密钥。
 
 以下文档提供了有关 Azure AD 密钥滚动更新的详细信息：[有关 Azure AD 中签名密钥滚动更新的重要信息](../active-directory/active-directory-signing-key-rollover.md)。
 
@@ -279,7 +278,7 @@ Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建�
 * Azure Active Directory 使用私钥生成 JWT 令牌；
 * 应用程序（例如 AMS 中的 DRM 许可证传送服务）使用公钥验证 JWT 令牌；
 
-出于安全目的，Azure Active Directory 将定期轮换此证书（每隔 6 周）。 在发生安全违规时，密钥滚动更新可随时发生。 因此，AMS 中的许可证传送服务需要在 Azure AD 轮换密钥对时更新公钥，否则 AMS 中的令牌身份验证将失败，并且不颁发任何许可证。
+出于安全目的，Azure Active Directory 将定期轮换此证书（每隔 6 周）。 在发生安全违规时，密钥滚动更新可随时发生。 因此，AMS 中的许可证传送服务需要在 Azure AD 轮换密钥对时更新公钥，否则 AMS 中的令牌身份验证会失败，并且不颁发任何许可证。
 
 这是在配置 DRM 许可证传送服务时通过设置 TokenRestrictionTemplate.OpenIdConnectDiscoveryDocument 来实现的。
 
@@ -288,7 +287,7 @@ JWT 令牌流程如下：
 1. Azure AD 使用当前私钥为已经过身份验证的用户颁发 JWT 令牌；
 2. 当播放器看到使用多重 DRM 的 CENC 保护的内容时，会先找到 Azure AD 颁发的 JWT 令牌。
 3. 播放器将包含 JWT 令牌的许可证获取请求发送到 AMS 中的许可证传送服务；
-4. AMS 中的许可证传送服务使用来自 Azure AD 的当前/有效公钥来验证 JWT 令牌，然后颁发许可证。
+4. AMS 中的许可证传送服务使用来自 Azure AD 的当前/有效公钥来验证 JWT 令牌，并颁发许可证。
 
 DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥。 Azure AD 提供的公钥是用于验证 Azure AD 所颁发 JWT 令牌的密钥。
 
@@ -324,22 +323,22 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
    https://[aad_tenant_name].onmicrosoft.com/[resource_name]；
 2. 为资源应用添加新的密钥；
 3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有以下值："groupMembershipClaims": "All"；  
-4. 在指向播放器 Web 应用的 Azure AD 应用中的“对其他应用程序的权限”部分中，添加上述步骤 1 中添加的资源应用。 在“委派权限”下面选中“访问 [资源名称]”复选框。 这样便可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果你使用 Visual Studio 和 Azure Web 应用进行开发，应该对本地和已部署版本的 Web 应用这样做。
+4. 在指向播放器 Web 应用的 Azure AD 应用中的“对其他应用程序的权限”部分中，添加上述步骤 1 中添加的资源应用。 在“委派权限”下面选中“访问 [资源名称]”复选框。 这样便可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，应该对本地和已部署版本的 Web 应用这样做。
 
 因此，Azure AD 颁发的 JWT 令牌确实是用于访问此“指针”资源的访问令牌。
 
 ### <a name="what-about-live-streaming"></a>如何使用实时流？
 前面的讨论内容将重点放在按需资产上。 如何使用实时流？
 
-好消息是，你可以使用完全相同的设计和实现来保护 Azure 媒体服务中的实时流，方法是将与节目关联的资产视为“VOD 资产”。
+好消息是，可以使用完全相同的设计和实现来保护 Azure 媒体服务中的实时流，方法是将与节目关联的资产视为“VOD 资产”。
 
-具体而言，众所周知，若要在 Azure 媒体服务中执行实时流，需要创建通道，然后在通道下面创建节目。 若要创建节目，需要创建资产，其中包含节目的实时存档。 若要使用带有多重 DRM 的 CENC 来保护实时内容，你只需要在启动节目之前将相同设置/处理应用到资产，就如同它是“VOD 资产”一样。
+具体而言，众所周知，如果要在 Azure 媒体服务中执行实时流，需要创建通道，并在通道下面创建节目。 若要创建节目，需要创建资产，其中包含节目的实时存档。 要使用带有多重 DRM 的 CENC 来保护实时内容，你只需要在启动节目之前将相同设置/处理应用到资产，就如同它是“VOD 资产”一样。
 
 ### <a name="what-about-license-servers-outside-of-azure-media-services"></a>如何使用 Azure 媒体服务外部的许可证服务器？
 通常，客户可能已在他们自己的数据中心或由 DRM 服务提供商托管的位置投资了许可证服务器场。 幸运的是，Azure 媒体服务内容保护可让在混合模式下运行：内容在 Azure 媒体服务中托管并以动态方式保护，而 DRM 许可证由 Azure 媒体服务外部的服务器传送。 在此情况下，存在以下变更注意事项：
 
 1. 安全令牌服务需要颁发令牌，许可证服务器场可接受和验证这些令牌。 例如，Axinom 提供的 Widevine 许可证服务器需要特定的 JWT 令牌，其中包含“权利消息”。 因此，需要有 STS 来颁发此类 JWT 令牌。 作者已完成此实现，并且可以在以下 [Azure 文档中心](https://azure.microsoft.com/documentation/)中的以下文档中查找详细信息：[使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务](media-services-axinom-integration.md)。
-2. 你不再需要在 Azure 媒体服务中配置许可证传送服务 (ContentKeyAuthorizationPolicy)。 你需要做的就是，在设置使用多重 DRM 的 CENC 过程中配置 AssetDeliveryPolicy 时，提供许可证获取 URL（针对 PlayReady、Widevine 和 FairPlay）。
+2. 不再需要在 Azure 媒体服务中配置许可证传送服务 (ContentKeyAuthorizationPolicy)。 需要做的就是，在设置使用多重 DRM 的 CENC 过程中配置 AssetDeliveryPolicy 时，提供许可证获取 URL（针对 PlayReady、Widevine 和 FairPlay）。
 
 ### <a name="what-if-i-want-to-use-a-custom-sts"></a>如何使用自定义 STS？
 可能有多种原因使得客户想要选择使用自定义 STS（安全令牌服务）来提供 JWT 令牌。 以下是其中一些原因：
@@ -358,27 +357,27 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 2. 非对称密钥：结合使用 X509 证书中的私钥-公钥对，私钥用于加密/生成 JWT 令牌，公钥用于验证令牌。
 
 #### <a name="tech-note"></a>技术说明
-如果你使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 这是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常：
+如果使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 这是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常：
 
 IDX10630: 用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
 
 ## <a name="the-completed-system-and-test"></a>完成的系统和测试
-我们将在完成的端到端系统中演练几种方案，让读者在获取登录帐户之前对该行为有个基本印象。
+我们会在完成的端到端系统中演练几种方案，让读者在获取登录帐户之前对该行为有个基本印象。
 
 可以在[此处](https://openidconnectweb.azurewebsites.net/)找到播放器 Web 应用程序及其登录凭据。
 
-如果你需要“非集成式”方案：托管在 Azure 媒体服务中的视频资产未受保护或受 DRM 保护，但是没有令牌身份验证（对任何提出请求的对象颁发许可证），你可以测试它而不用登录（方法是切换到 HTTP，如果视频是通过 HTTP 流式传输的）。
+如果需要“非集成式”方案：托管在 Azure 媒体服务中的视频资产未受保护或受 DRM 保护，但是没有令牌身份验证（对任何提出请求的对象颁发许可证），可以测试它而不用登录（方法是切换到 HTTP，如果视频是通过 HTTP 流式传输的）。
 
-如果你需要端到端集成方案：视频资产受 Azure 媒体服务的动态 DRM 保护，令牌身份验证与 JWT 令牌由 Azure AD 生成，则你需要登录。
+如果需要端到端集成方案：视频资产受 Azure 媒体服务的动态 DRM 保护，令牌身份验证与 JWT 令牌由 Azure AD 生成，则需要登录。
 
 ### <a name="user-login"></a>用户登录
-为了测试端到端集成 DRM 系统，你需要创建或添加一个“帐户”。
+为了测试端到端集成 DRM 系统，需要创建或添加一个“帐户”。
 
 什么帐户？
 
 尽管 Azure 最初只允许 Microsoft 帐户用户的访问，但现在它允许来自两个系统的用户的访问。 这种变化是通过以下方式实现的：让所有 Azure 属性信任 Azure AD 执行身份验证，让 Azure AD 对组织用户进行身份验证，并创建一种联合关系，在这种关系中，Azure AD 将信任 Microsoft 帐户使用者标识系统对使用者用户执行身份验证。 因此，Azure AD 能够对“来宾”Microsoft 帐户以及“本机”Azure AD 帐户进行身份验证。
 
-由于 Azure AD 信任 Microsoft 帐户 (MSA) 域，因此你可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
+由于 Azure AD 信任 Microsoft 帐户 (MSA) 域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
 | **域名** | **域** |
 | --- | --- |
@@ -386,7 +385,7 @@ IDX10630: 用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey
 | **企业域** |microsoft.com |
 | **Microsoft 帐户 (MSA) 域** |outlook.com、live.com 或 hotmail.com |
 
-你可以联系任何作者来为你创建或添加帐户。
+可以联系任何作者来创建或添加帐户。
 
 以下是不同域帐户使用的不同登录页的屏幕截图。
 
@@ -432,7 +431,7 @@ Windows 10 上的 Microsoft Edge 和 IE 11 允许支持其的 Windows 10 设备�
 ![未获授权的用户](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
 
 ### <a name="running-custom-secure-token-service"></a>运行自定义安全令牌服务
-对于运行自定义安全令牌服务 (STS) 的方案，JWT 令牌将由自定义 STS 使用对称或非对称密钥来颁发。
+对于运行自定义安全令牌服务 (STS) 的方案，JWT 令牌由自定义 STS 使用对称或非对称密钥来颁发。
 
 使用对称密钥的方案（使用 Chrome）：
 
@@ -457,4 +456,3 @@ Windows 10 上的 Microsoft Edge 和 IE 11 允许支持其的 Windows 10 设备�
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
  
-

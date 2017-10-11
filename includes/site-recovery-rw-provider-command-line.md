@@ -1,26 +1,26 @@
-UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <用于数据传输的 IP 地址] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+UnifiedSetup.exe [/ ServerMode < CS/PS >] [/ 安装驱动器<DriveLetter>] [/ MySQLCredsFilePath <MySQL credentials file path>] [/ VaultCredsFilePath <Vault credentials file path>] [/ EnvType < VMWare/NonVMWare >] [/ PSIP < IP 地址，以便用于数据传输] [/ CSIP <IP address of CS to be registered with>] [/ PassphraseFilePath <Passphrase file path>]
 
 参数：
 
-* /ServerMode：必需。 指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器。 输入值：CS、PS。
-* InstallLocation：必需。 用于安装组件的文件夹。
-* /MySQLCredsFilePath。 必需。 MySQL 服务器凭据存储到的文件路径。 该文件的格式应是：
+* / ServerMode： 必需。 指定是否应安装的配置和进程服务器，或仅在进程服务器。 输入值： CS，ps。
+* InstallLocation： 必需。 在其中安装组件的文件夹。
+* / MySQLCredsFilePath。 必需。 中的 MySQL server 凭据的存储文件路径。 此格式应为该文件：
 * [MySQLCredentials]
-* MySQLRootPassword = "<Password>"
-* MySQLUserPassword = "<Password>"
-* /VaultCredsFilePath。 必需。 保管库凭据文件的位置
-* /EnvType。 必需。 安装类型。 值：VMware、NonVMware
-* /PSIP 和 /CSIP。 必需。 进程服务器和配置服务器的 IP 地址。
-* /PassphraseFilePath。 必需。 通行短语文件的位置。
-* /BypassProxy。 可选。 指定配置服务器不使用代理连接到 Azure。
-* /ProxySettingsFilePath。 可选。 代理设置（默认代理需要身份验证，或自定义代理）。 该文件的格式应是：
+* MySQLRootPassword ="<Password>"
+* MySQLUserPassword ="<Password>"
+* / VaultCredsFilePath。 必需。 保管库凭据文件的位置
+* / EnvType。 必需。 安装类型。 值： VMware NonVMware
+* / PSIP 和 /CSIP。 必需。 进程服务器和配置服务器 IP 地址。
+* / PassphraseFilePath。 必需。 密码文件的位置。
+* / BypassProxy。 可选。 指定连接到 Azure 的配置服务器不使用代理。
+* / ProxySettingsFilePath。 可选。 （默认代理需要身份验证或自定义代理） 的代理设置。 此格式应为该文件：
 * [ProxySettings]
-* ProxyAuthentication = "Yes/No"
-* Proxy IP = "IP Address>"
-* ProxyPort = "<Port>"
-* ProxyUserName="<User Name>"
-* ProxyPassword="<Password>"
-* DataTransferSecurePort。 可选。 用于复制数据的端口号。
-* SkipSpaceCheck。 可选。 跳过缓存的空间检查。
+* ProxyAuthentication ="是/否"
+* 代理 IP ="IP 地址 >"
+* 友好 ="<Port>"
+* ProxyUserName ="<User Name>"
+* 代理 ="<Password>"
+* DataTransferSecurePort。 可选。 复制数据端口号。
+* SkipSpaceCheck。 可选。 跳过检查缓存的空间。
 * AcceptThirdpartyEULA。 必需。 接受第三方 EULA。
-* ShowThirdpartyEULA。 必需。 显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数。
+* ShowThirdpartyEULA。 必需。 显示第三方 EULA。 如果作为输入提供，则忽略所有其他参数。

@@ -10,14 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/11/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: baf456740bddd562391ed64d707f990c8921d710
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="consume-azure-managed-applications-in-the-marketplace"></a>在 Marketplace 中使用 Azure 托管应用程序
 
 如[托管应用程序概述](managed-application-overview.md)一文中所述，在端到端体验中有两种应用场景。 一种是发布者或供应商希望创建供客户使用的托管应用程序。 第二种是最终客户或使用者使用托管应用程序。 本文介绍第二种场景。 其中说明了如何从 Microsoft Azure Marketplace 部署托管应用程序。

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: b2e755b5b1b4939eac90ac55ba8398c5687124c8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix 连接器入门
 Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix 数据库中的资源。 Informix 连接器包括要在 TCP/IP 网络上与远程 Informix 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Informix）和使用本地数据网关的本地数据库。 请参阅 IBM Informix 平台和版本（在本主题中）的[受支持列表](connectors-create-api-informix.md#supported-informix-platforms-and-versions)。
@@ -55,14 +54,14 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixgetTables`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，然后选择“创建”。
+2. 输入“名称”（例如 `InformixgetTables`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
 
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。  
-4. 选择“+ 新步骤”框，然后选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 获取表(预览)”。
+3. 在**重复**触发器中，选择**编辑**，选择**频率**下拉以选择**天**，然后选择**间隔**类型**7**。  
+4. 选择“+ 新步骤”框，并选择“添加操作”。
+5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 获取表(预览)”。
    
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
 6. 在“Informix - 获取表”配置窗格中，选中“复选框”以启用“通过本地数据网关连接”。 请注意，这些设置从云更改到本地。
@@ -73,7 +72,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
    * 键入“用户名”的值。 例如，键入 `informix`。
    * 键入“密码”的值。 例如，键入 `Password1`。
    * 选择“网关”的值。 例如，选择“datagateway01”。
-7. 选择“创建”，然后选择“保存”。 
+7. 选择“创建”，并选择“保存”。 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
 8. 在“InformixgetTables”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
@@ -125,14 +124,14 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如“**InformixgetRows**”）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，然后选择“创建”。
+2. 输入“名称”（例如“**InformixgetRows**”）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
 
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，然后选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 获取行(预览)”。
+3. 在**重复**触发器中，选择**编辑**，选择**频率**下拉以选择**天**，然后选择**间隔**类型**7**。 
+4. 选择“+ 新步骤”框，并选择“添加操作”。
+5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 获取行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。
 7. 在“连接”配置窗格中，选择“新建”。 
    
@@ -147,7 +146,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 9. 选择“创建”继续操作。
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. 在“表单名称”列表中，选择“下拉箭头”，然后选择“AREA”。
+10. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
 11. 可以选择“显示高级选项”指定查询选项。
 12. 选择“保存”。 
     
@@ -162,19 +161,19 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixinsertRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，然后选择“创建”。
+2. 输入“名称”（例如 `InformixinsertRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
 
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，然后选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 插入行(预览)”。
+3. 在**重复**触发器中，选择**编辑**，选择**频率**下拉以选择**天**，然后选择**间隔**类型**7**。 
+4. 选择“+ 新步骤”框，并选择“添加操作”。
+5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 插入行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
 7. 在“连接”配置窗格中，选择一个连接。 例如，选择“hisdemo2”。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，然后选择“AREA”。
+8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
 9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`、键入 `Area 99999` 并键入“REGIONID”的 `102`。 
 10. 选择“保存”。
     
@@ -189,19 +188,19 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixgetRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，然后选择“创建”。
+2. 输入“名称”（例如 `InformixgetRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
 
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，然后选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 获取行(预览)”。
+3. 在**重复**触发器中，选择**编辑**，选择**频率**下拉以选择**天**，然后选择**间隔**类型**7**。 
+4. 选择“+ 新步骤”框，并选择“添加操作”。
+5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 获取行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
 7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，然后选择“AREA”。
+8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
 9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`。 
 10. 可以选择“显示高级选项”指定查询选项。
 11. 选择“保存”。 
@@ -217,19 +216,19 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixupdateRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，然后选择“创建”。
+2. 输入“名称”（例如 `InformixupdateRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
 
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，然后选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 更新行(预览)”。
+3. 在**重复**触发器中，选择**编辑**，选择**频率**下拉以选择**天**，然后选择**间隔**类型**7**。 
+4. 选择“+ 新步骤”框，并选择“添加操作”。
+5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 更新行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
 7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，然后选择“AREA”。
+8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
 9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`、键入 `Updated 99999` 并键入“REGIONID”的 `102`。 
 10. 选择“保存”。 
     
@@ -244,19 +243,19 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixdeleteRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，然后选择“创建”。
+2. 输入“名称”（例如 `InformixdeleteRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
 
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，然后选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 删除行(预览)”。
+3. 在**重复**触发器中，选择**编辑**，选择**频率**下拉以选择**天**，然后选择**间隔**类型**7**。 
+4. 选择“+ 新步骤”框，并选择“添加操作”。
+5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 删除行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
 7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，然后选择“AREA”。
+8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
 9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`。 
 10. 选择“保存”。 
     
@@ -278,5 +277,4 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
-
 

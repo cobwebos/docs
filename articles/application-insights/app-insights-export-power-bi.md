@@ -13,24 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 02c51e6a576b5a91044eae784c72d7529497b814
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 350a65b1c6432baf258e014c9e63133d2b29e34f
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](http://www.powerbi.com/) 是一套商业分析工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](app-insights-overview.md) 的数据。
 
 可以使用三种建议的方法将 Application Insights 数据导出到 Power BI。 可以单独使用其中一种方法，或者结合使用这些方法。
 
-* [**Power BI 适配器**](#power-pi-adapter) - 通过应用设置完整的遥测仪表板。 图表集是预定义的，但你可以从其他源任何添加自己的查询。
-* [**导出 Analytics 查询**](#export-analytics-queries) - 使用 Analytics 编写任何所需的查询，并将其导出到 Power BI。 可将此查询连同其他所有数据一起放置在仪表板上。
-* [**连续导出和流分析**](app-insights-export-stream-analytics.md) - 这需要进行更多的设置。 如果想要长时间保留数据，此方法非常有用。 否则，建议使用其他方法。
+* [**Power BI 适配器**](#power-pi-adapter) -设置从你的应用程序的遥测数据的完整仪表板。 图表集是预定义的，但可以从其他源任何添加自己的查询。
+* [**导出分析查询**](#export-analytics-queries) -编写任何查询你想使用分析，并将其导出到 Power BI。 可将此查询连同其他所有数据一起放置在仪表板上。
+* [**连续的导出和流分析**](app-insights-export-stream-analytics.md) -这涉及到设置的更多工作。 如果想要长时间保留数据，此方法非常有用。 否则，建议使用其他方法。
 
 ## <a name="power-bi-adapter"></a>Power BI 适配器
-此方法可以自动创建完整的遥测仪表板。 初始数据集是预定义的，但你可以在其中添加更多数据。
+此方法可以自动创建完整的遥测仪表板。 初始数据集是预定义的，但可以在其中添加更多数据。
 
 ### <a name="get-the-adapter"></a>获取适配器
 1. 登录到 [Power BI](https://app.powerbi.com/)。
@@ -58,13 +57,13 @@ ms.lasthandoff: 06/15/2017
 
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
 1. [打开 Analytics 并编写查询](app-insights-analytics-tour.md)。
-2. 测试并优化查询，直到你对结果满意。
+2. 测试并优化查询，直到对结果满意。
 
    **导出之前，请确保查询在 Analytics 中正常运行。**
 3. 在“导出”菜单中，选择“Power BI (M)”。 保存文本文件。
    
     ![导出 Power BI 查询](./media/app-insights-export-power-bi/analytics-export-power-bi.png)
-4. 在 Power BI Desktop 中，选择“获取数据”、“空白查询”，然后在查询编辑器的“视图”下面，选择“高级查询编辑器”。
+4. 在 Power BI Desktop 中，选择“获取数据”、“空白查询”，并在查询编辑器的“视图”下面，选择“高级查询编辑器”。
 
     将导出的 M 语言脚本粘贴到高级查询编辑器中。
 
@@ -119,5 +118,4 @@ ms.lasthandoff: 06/15/2017
 ## <a name="next-steps"></a>后续步骤
 * [Power BI - 学习](http://www.powerbi.com/learning/)
 * [Analytics 教程](app-insights-analytics-tour.md)
-
 

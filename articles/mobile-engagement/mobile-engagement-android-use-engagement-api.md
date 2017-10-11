@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-android"></a>如何在 Android 上使用 Engagement API
 此文档是文档  [Android Mobile Engagement SDK 的高级报告选项](mobile-engagement-android-advanced-reporting.md)的外接程序。 它提供了有关如何使用 Engagement API 来报告应用程序统计信息的全部详细信息。
@@ -34,7 +33,7 @@ Engagement API 由 `EngagementAgent` 类提供。 此类的实例可通过调用
 以下部分针对 Android 平台优化常见的 [Mobile Engagement 概念](mobile-engagement-concepts.md)。
 
 ### <a name="session-and-activity"></a>`Session` 和 `Activity`
-如果用户在两个*活动*间的空闲时间超过几秒以上，则其*活动*序列将被拆分为两个不同的*会话*。 这几秒被称为“会话超时”。
+如果用户在两个*活动*间的空闲时间超过几秒以上，则其*活动*序列会被拆分为两个不同的*会话*。 这几秒被称为“会话超时”。
 
 *活动*通常与应用程序的一个屏幕相关联，即，*活动*在屏幕显示时开始，并在屏幕关闭时停止：当使用 `EngagementActivity` 类对 Engagement SDK 进行集成时，会出现此情况。
 
@@ -258,7 +257,7 @@ Engagement API 由 `EngagementAgent` 类提供。 此类的实例可通过调用
 
 请注意，这些信息可以增量方式发送：仅为给定设备保留给定密钥的最新值。
 
-与事件 Extras 类似，Bundle 类被用于应用程序信息的摘要，请注意，数组或 sub-bundles 将被视为平面字符串（使用 JSON 序列化）。
+与事件 Extras 类似，Bundle 类被用于应用程序信息的摘要，请注意，数组或 sub-bundles 会被视为平面字符串（使用 JSON 序列化）。
 
 ### <a name="example"></a>示例
 以下是发送用户性别和出生日期的代码示例：
@@ -282,4 +281,3 @@ Engagement API 由 `EngagementAgent` 类提供。 此类的实例可通过调用
 在上一示例中，发送到服务器的 JSON 长度为 44 个字符：
 
             {"expiration":"2016-12-07","status":"premium"}
-

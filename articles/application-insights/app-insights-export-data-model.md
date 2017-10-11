@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3084bb344976bc542e78a55a1c27c4dedc111af0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: a485ddd555f65473d81896effc4a3562bda71410
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](app-insights-overview.md) SDK 发送到门户的遥测属性。
@@ -336,7 +335,7 @@ ms.lasthandoff: 04/12/2017
         "sampledValue": 468.71603053650279
       }
 
-目前（将来可能会变化）在所有通过标准 SDK 模块报告的值中，只有 `count==1` 以及 `name` 和 `value` 字段有用。 这些元素存在差异的唯一情况是你编写自己的 TrackMetric 调用，并在其中设置其他参数。
+目前（将来可能会变化）在所有通过标准 SDK 模块报告的值中，只有 `count==1` 以及 `name` 和 `value` 字段有用。 唯一的情况下，它们将会不同将为如果编写你自己 TrackMetric 调用在其中设置其他参数。
 
 其他字段的用途是便于在 SDK 中聚合指标，减少门户接收的流量。 例如，在发送每份指标报告之前，可求多个连续读数的平均值。 然后计算最小值、最大值、标准偏差和聚合值（总和或平均值），并将计数设置为报告呈现的读数数目。
 
@@ -351,4 +350,3 @@ ms.lasthandoff: 04/12/2017
 * [Application Insights](app-insights-overview.md)
 * [连续导出](app-insights-export-telemetry.md)
 * [代码示例](app-insights-export-telemetry.md#code-samples)
-

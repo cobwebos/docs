@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 2a7c761062dcf5da016a2e106274839f5f6c0d13
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/20/2017
-
-
+ms.openlocfilehash: 5bb6d17ffd047ae91476c52750f293414d1dfdd5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>扩大 Azure SQL 数据库
 可以使用**弹性数据库**工具轻松扩大 Azure SQL 数据库。 借助这些工具和功能，可以使用 **Azure SQL 数据库**中几乎不受限制的数据库资源来为事务工作负荷，尤其是软件即服务 (SaaS) 应用程序创建解决方案。 弹性数据库的功能包括：
@@ -40,7 +38,8 @@ ms.lasthandoff: 04/20/2017
 2. **弹性数据库客户端库**用于管理分片集。
 3. 一个数据库子集已放入**弹性池**。 （请参阅[什么是池？](sql-database-elastic-pool.md)）。
 4. **弹性数据库作业**针对所有数据库运行计划或即席的 T-SQL 脚本。
-5. **拆分/合并工具**用于将数据从一个分片移到另一个分片。
+5. 
+            **拆分/合并工具**用于将数据从一个分片移到另一个分片。
 6. 使用**弹性数据库查询**可以编写跨分片集中所有数据库运行的查询。
 7. **弹性事务**允许跨多个数据库运行事务。 
 
@@ -78,10 +77,10 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 
 在其他方案（例如从分布式设备中引入数据）中，分片可用于填充临时组织的一组数据库。 例如，可以每天或每周专门使用某个单独的数据库。 在该情况下，分片键可以是一个表示日期的整数（显示在分片表的所有行中），应用程序必须将用于检索有关日期范围的信息的查询路由到涉及相关范围的数据库子集。
 
-应用程序中的每个事务均受限于分片键的单个值时，分片效果最佳。 这可以确保所有事务都将本地放置在特定数据库中。
+应用程序中的每个事务均受限于分片键的单个值时，分片效果最佳。 这将确保所有事务都会本地放置在特定数据库中。
 
 ## <a name="multi-tenant-and-single-tenant"></a>多租户和单租户
-某些应用程序使用最简单的方法为每个租户创建一个单独的数据库。 这就是**单租户分片模式**，它提供了隔离、备份/还原功能以及根据租户粒度进行的资源缩放。 借助单租户分片，每个数据库都将与特定租户 ID 值（或客户键值）关联，而该键无需始终出现在数据本身中。 应用程序负责将每个请求路由到相应的数据库 - 客户端库可简化此操作。
+某些应用程序使用最简单的方法为每个租户创建一个单独的数据库。 这就是**单租户分片模式**，它提供了隔离、备份/还原功能以及根据租户粒度进行的资源缩放。 借助单租户分片，每个数据库都会与特定租户 ID 值（或客户键值）关联，而该键无需始终出现在数据本身中。 应用程序负责将每个请求路由到相应的数据库 - 客户端库可简化此操作。
 
 ![单租户与多租户][4]
 
@@ -105,5 +104,4 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 [2]:./media/sql-database-elastic-scale-introduction/h_versus_vert.png
 [3]:./media/sql-database-elastic-scale-introduction/overview.png
 [4]:./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
-
 

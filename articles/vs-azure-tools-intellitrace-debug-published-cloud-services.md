@@ -14,15 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 4629800edd6c89384264299aad3a638ba275acfe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: 7905dfb97cbd7578a8422567fe674839d00c21ef
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>使用 Visual Studio 和 IntelliTrace 调试已发布的 Azure 云服务
-通过 IntelliTrace，可以在某个角色实例在 Azure 中运行时记录该角色实例的大量调试信息。 如果您需要查找问题的原因，您可以从 Visual Studio 使用 IntelliTrace 日志来单步执行代码，就像它在 Azure 中运行一样。 实际上，当 Azure 应用程序以云服务的形式在 Azure 中运行时，IntelliTrace 将记录关键代码执行和环境数据，并允许从 Visual Studio 中回放已记录的数据。 
+通过 IntelliTrace，可以在某个角色实例在 Azure 中运行时记录该角色实例的大量调试信息。 如果需要查找问题的原因，可以从 Visual Studio 使用 IntelliTrace 日志来单步执行代码，就像它在 Azure 中运行一样。 实际上，当 Azure 应用程序以云服务的形式在 Azure 中运行时，IntelliTrace 将记录关键代码执行和环境数据，并允许从 Visual Studio 中回放已记录的数据。 
 
 如果已安装 Visual Studio Enterprise，且 Azure 应用程序以 .NET Framework 4 或更高版本为目标，则可使用 IntelliTrace。 IntelliTrace 收集 Azure 角色的信息。 这些角色的虚拟机始终运行 64 位操作系统。
 
@@ -37,9 +36,9 @@ ms.lasthandoff: 03/22/2017
 
 1. 当准备好部署 Azure 应用程序时，确认已将项目生成目标设置为“调试”。
 
-1. 在“解决方案资源管理器”中右键单击项目，然后从上下文菜单中选择“发布”。
+1. 在“解决方案资源管理器”中右键单击项目，并从上下文菜单中选择“发布”。
    
-1. 在“发布 Azure应用程序”对话框中，选择 Azure 订阅，然后选择“下一步”。
+1. 在“发布 Azure应用程序”对话框中，选择 Azure 订阅，并选择“下一步”。
 
 1. 在“设置”页中，选择“高级设置”选项卡。
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 03/22/2017
    
     ![IntelliTrace 设置](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC519063.png)
 
-IntelliTrace 日志是一个循环日志文件，IntelliTrace 设置中指定了该文件的最大大小（默认大小为 250 MB）。 IntelliTrace 日志将被收集到虚拟机的文件系统中的一个文件中。 当请求日志时，将及时拍摄该时刻的快照，并将该快照下载到本地计算机上。
+IntelliTrace 日志是一个循环日志文件，IntelliTrace 设置中指定了该文件的最大大小（默认大小为 250 MB）。 IntelliTrace 日志会被收集到虚拟机的文件系统中的一个文件中。 当请求日志时，将及时拍摄该时刻的快照，并将该快照下载到本地计算机上。
 
 将 Azure 云服务发布到 Azure 后，可以确定是否已从**服务器资源管理器**中的 Azure 节点启用了 IntelliTrace，如下图所示：
 
@@ -68,11 +67,11 @@ IntelliTrace 日志是一个循环日志文件，IntelliTrace 设置中指定了
 
     ![“查看 IntelliTrace 日志”菜单选项](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/view-intellitrace-logs.png)
 
-1. IntelliTrace 日志将被下载到本地计算机上某个目录中的文件中。 每当您请求 IntelliTrace 日志时，就会创建新的快照。 在下载日志时，Visual Studio 将在“Azure 活动日志”窗口中显示操作进度。 可以展开操作的行项以查看详细信息，如下图所示。
+1. IntelliTrace 日志被下载到本地计算机上某个目录中的文件中。 每次请求 IntelliTrace 日志时，就会创建新快照。 在下载日志时，Visual Studio 会在“Azure 活动日志”窗口中显示操作进度。 可以展开操作的行项以查看详细信息，如下图所示。
 
 ![VST_IntelliTraceDownloadProgress](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC745551.png)
 
-下载 IntelliTrace 日志时，可以在 Visual Studio 中继续工作。 日志下载完成后，将在 Visual Studio 中打开。
+下载 IntelliTrace 日志时，可以在 Visual Studio 中继续工作。 日志下载完成后，会在 Visual Studio 中打开。
 
 > [!NOTE]
 > IntelliTrace 日志可能包含由框架生成并进行后续处理的异常。 如果这些异常时内部框架代码生成的，它们是启动角色的正常一环，可以安全地忽略。

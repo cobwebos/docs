@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: b6ac8acc244e9029be01ede5e0865c280171217d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/24/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>教程：Azure Active Directory 与 LearnUpon 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/24/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-learnupon-from-the-gallery"></a>从库中添加 LearnUpon
-若要配置 LearnUpon 与 Azure AD 的集成，需要从库中将 LearnUpon 添加到托管 SaaS 应用列表。
+要配置 LearnUpon 与 Azure AD 的集成，需要从库中将 LearnUpon 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 LearnUpon，请执行以下步骤：**
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 06/24/2017
 
 若要配置和测试 LearnUpon 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LearnUpon 测试用户](#creating-a-learnupon-test-user)** - 在 LearnUpon 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 LearnUpon 测试用户](#creating-a-learnupon-test-user)** -若要链接到用户的 Azure AD 表示的 LearnUpon 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 06/24/2017
 
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(原始)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_certificate.png) 
 
@@ -136,7 +135,7 @@ ms.lasthandoff: 06/24/2017
    
     ![配置单一登录](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_06.png)
 
-9. 单击“单一登录 - SAML”，然后单击“常规设置”以配置 SAML 设置。
+9. 单击“单一登录 - SAML”，并单击“常规设置”以配置 SAML 设置。
    
     ![配置单一登录](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_07.png) 
 
@@ -146,7 +145,7 @@ ms.lasthandoff: 06/24/2017
   
     a. 选择“启用”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将“版本”选择为“2.0”。
+    b. 将“版本”选择为“2.0”。
 
     c. 将“跳过条件”选择为“否”。
 
@@ -160,13 +159,13 @@ ms.lasthandoff: 06/24/2017
     
     h. 单击“管理指纹”，并上载所下载的证书的指纹。
 
-11. 单击“用户设置”，然后执行以下步骤：
+11. 单击“用户设置”，并执行以下步骤：
    
      ![配置单一登录](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_11.png)  
  
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名字标识符格式”文本框中，键入相应的值，指明用户名字在 SAML 断言中所处的位置，例如：http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname。
+    a. 在“名字标识符格式”文本框中，键入相应的值，指明用户名字在 SAML 断言中所处的位置，例如：http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname。
   
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“姓氏标识符格式”文本框中，键入相应的值，指明用户姓氏在 SAML 断言中所处的位置，例如：http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname。
+    b. 在“姓氏标识符格式”文本框中，键入相应的值，指明用户姓氏在 SAML 断言中所处的位置，例如：http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -195,7 +194,7 @@ ms.lasthandoff: 06/24/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-learnupon-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -218,9 +217,9 @@ ms.lasthandoff: 06/24/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 LearnUpon，请执行以下步骤：**
+**要将 Britta Simon 分配到 LearnUpon，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -269,5 +268,4 @@ ms.lasthandoff: 06/24/2017
 [201]: ./media/active-directory-saas-learnupon-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-learnupon-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-learnupon-tutorial/tutorial_general_203.png
-
 

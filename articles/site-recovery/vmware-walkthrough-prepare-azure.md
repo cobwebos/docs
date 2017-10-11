@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 40abff72278c9f8d9f701023fd473fe52c17b421
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="step-5-prepare-azure-resources-for-vmware-replication-to-azure"></a>步骤 5：准备好 Azure 资源以便将 VMWare 复制到 Azure
 
@@ -62,4 +61,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 6：准备 VMware 资源](vmware-walkthrough-prepare-vmware.md)
-

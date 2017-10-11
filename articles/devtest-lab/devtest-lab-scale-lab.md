@@ -1,5 +1,5 @@
 ---
-title: "Azure 开发测试实验室中你自己的实验室的缩放配额和限制 | Microsoft Docs"
+title: "Azure 开发测试实验室中自己的实验室的缩放配额和限制 | Microsoft Docs"
 description: "了解如何在 Azure 开发测试实验室中缩放实验室"
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
 ms.openlocfilehash: f11ed42b474e4f208eac92689bfa33fb188d15a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>开发测试实验室中的缩放配额和限制
-在开发测试实验室中工作时，你可能会注意到，某些 Azure 资源存在某些默认的限制，这可能会影响开发测试实验室服务。 这些限制称为“配额”。
+在开发测试实验室中工作时，可能会注意到，某些 Azure 资源存在某些默认的限制，这可能会影响开发测试实验室服务。 这些限制称为“配额”。
 
 > [!NOTE]
-> 开发测试实验室服务不实施任何配额。 你可能遇到的任何配额都是整个 Azure 订阅的默认约束。
+> 开发测试实验室服务不实施任何配额。 可能遇到的任何配额都是整个 Azure 订阅的默认约束。
 
 在达到配额之前，可以随意使用每个 Azure 资源。 每个订阅都有单独的配额，使用情况按订阅跟踪。
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 05/17/2017
 以下步骤演示了如何查看订阅中特定 Azure 资源的当前配额，以及如何查看每个配额已使用的百分比。
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“更多服务”，然后从列表中选择“计费”。
+1. 选择“更多服务”，并从列表中选择“计费”。
 1. 在“计费”边栏选项卡中，选择一个订阅。
 4. 选择“使用情况 + 配额”。
 
@@ -69,4 +68,3 @@ ms.lasthandoff: 05/17/2017
 
 ### <a name="next-steps"></a>后续步骤
 * 浏览[开发测试实验室 Azure Resource Manager 快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。
-

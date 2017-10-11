@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: edfd06a06c730597fee4569ca1ce29092b45244a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 08/02/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SpringCM 测试用户](#creating-a-springcm-test-user)** - 在 SpringCM 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 SpringCM 测试用户](#creating-a-springcm-test-user)** -若要在 SpringCM 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 08/02/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [SpringCM 客户端支持团队](https://knowledge.springcm.com/support)来获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(原始)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_certificate.png) 
 
@@ -177,11 +176,11 @@ ms.lasthandoff: 08/02/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建” 。
  
 ### <a name="creating-a-springcm-test-user"></a>创建 SpringCM 测试用户
 
@@ -194,7 +193,7 @@ ms.lasthandoff: 08/02/2017
 
 1. 以管理员身份登录 **SpringCM** 公司站点。
 
-2. 单击“转到”，然后单击“通讯簿”。
+2. 单击**GOTO**，然后单击**通讯簿**。
    
     ![创建用户](./media/active-directory-saas-spring-cm-tutorial/ic797054.png "创建用户")
 
@@ -255,7 +254,7 @@ ms.lasthandoff: 08/02/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -270,5 +269,4 @@ ms.lasthandoff: 08/02/2017
 [201]: ./media/active-directory-saas-spring-cm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-spring-cm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-spring-cm-tutorial/tutorial_general_203.png
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: fa9983a3d53cf8d6278163a2b7d08c86ae2f0637
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: 06afc6b4149ea1590a2994d1638d6979a89035e3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -104,7 +103,7 @@ Azure AD Connect Health 支持以下内置角色：
 Azure AD Connect Health 支持两个级别的访问管理：
 
 * 所有服务实例：这是大多数情况下的建议路径。 它控制由 Azure AD Connect Health 监视的所有角色类型的所有服务实例（例如，AD FS 场）的访问权限。
-* 服务实例：在某些情况下，可能需要根据角色类型或服务实例来区分访问。 在此情况下，你可以在服务实例级别管理访问。  
+* 服务实例：在某些情况下，可能需要根据角色类型或服务实例来区分访问。 在此情况下，可以在服务实例级别管理访问。  
 
 如果最终用户有权在目录或服务实例级别访问，则会被授予权限。
 
@@ -157,4 +156,3 @@ Azure AD Connect Health 支持两个级别的访问管理：
 * [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
-

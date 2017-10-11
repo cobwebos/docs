@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 2bcdff44f6c3169779c3dd018706eea8275825ca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.openlocfilehash: 038d6e051be8112b9264e7efa6485965d11e32c8
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 也可以自行定义。 如果应用程序在对其具有管理访问权限的本地主机或虚拟机的 IIS 下运行，[Application Insights](app-insights-overview.md) 可以显示这些性能计数器。 图表指示实时应用程序可用的资源，并有助于确定服务器实例之间的不平衡负载。
@@ -32,13 +31,13 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 ## <a name="view-counters"></a>查看计数器
 “服务器”边栏选项卡显示一组默认的性能计数器。 
 
-若要查看其他计数器，则编辑“服务器”边栏选项卡上的图表，或打开新的[指标资源管理器](app-insights-metrics-explorer.md)边栏选项卡，然后添加新图表。 
+要查看其他计数器，则编辑“服务器”边栏选项卡上的图表，或打开新的[指标资源管理器](app-insights-metrics-explorer.md)边栏选项卡，并添加新图表。 
 
-编辑图表时，可用的计数器将以指标形式列出。
+编辑图表时，可用的计数器以指标形式列出。
 
 ![Application Insights 中报告的性能计数器](./media/app-insights-performance-counters/choose-performance-counters.png)
 
-若要在某一位置查看所有最有用的图表，请创建[仪表板](app-insights-dashboards.md)并将图表固定到它。
+要在某一位置查看所有最有用的图表，请创建[仪表板](app-insights-dashboards.md)并将图表固定到它。
 
 ## <a name="add-counters"></a>添加计数器
 如果所需的性能计数器未显示在指标列表中，这是因为 Application Insights SDK 未在 Web 服务器中收集它。 可以将它配置为执行此操作。
@@ -71,10 +70,10 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 
 `ReportAs` 对于与 `[a-zA-Z()/-_ \.]+` 不匹配的计数器名称而言是必需项，即，它们包含以下设置中没有的字符：字母、圆括号、正斜杠、连字符、下划线、空格、点。
 
-如果指定实例，它将以所报告指标的维度“CounterInstanceName”进行收集。
+如果指定一个实例，它将会收集为维度"CounterInstanceName"的报告指标。
 
 ### <a name="collecting-performance-counters-in-code"></a>收集代码中的性能计数器
-若要收集系统性能计数器并将它们发送到 Application Insights，可以改编下面的片段：
+要收集系统性能计数器并将它们发送到 Application Insights，可以改编下面的片段：
 
 
 ``` C#
@@ -118,10 +117,9 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 * *异常*是在图表的采样间隔内门户所接收的 TrackException 报告的计数。 它仅包括已将 TrackException 调用写入代码的已处理异常，并不包括所有[未经处理的异常](app-insights-asp-net-exceptions.md)。 
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](app-insights-alerts.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”边栏选项卡，然后单击“添加警报”。
+与其他指标一样，可以[设置警报](app-insights-alerts.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”边栏选项卡，并单击“添加警报”。
 
 ## <a name="next"></a>后续步骤
 * [依赖关系跟踪](app-insights-asp-net-dependencies.md)
 * [异常跟踪](app-insights-asp-net-exceptions.md)
-
 

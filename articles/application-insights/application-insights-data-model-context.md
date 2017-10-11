@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: sergkanz
-ms.translationtype: HT
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
 ms.openlocfilehash: d6a0cad8bda6ca68aa691867e84f540c5ac9f6f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -82,7 +81,7 @@ ms.lasthandoff: 05/18/2017
 
 ##<a name="anonymous-user-id"></a>匿名用户 ID
 
-匿名用户 ID。表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
+匿名用户 ID。 表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
 
 [采样](app-insights-sampling.md)是最小化遥测收集量的一种技术。 采样算法尝试在所有相关遥测内部或外部采样。 匿名用户 ID 用于生成采样得分。 所以匿名用户 ID 应为随机值。 
 
@@ -93,7 +92,7 @@ ms.lasthandoff: 05/18/2017
 
 ##<a name="authenticated-user-id"></a>已经过身份验证的用户 ID
 
-已经过身份验证的用户 ID。与匿名用户 ID 相反，此字段表示具有友好名称的用户。 由于其 PII 信息，默认情况下，大多数 SDK 不收集它。
+已经过身份验证的用户 ID。 与匿名用户 ID 相反，此字段表示具有友好名称的用户。 由于其 PII 信息，默认情况下，大多数 SDK 不收集它。
 
 最大长度：1024
 
@@ -138,4 +137,3 @@ SDK 版本。 请参阅 https://github.com/Microsoft/ApplicationInsights-Home/bl
 - 了解如何[扩展和筛选遥测](app-insights-api-filtering-sampling.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 查看标准上下文属性集合[配置](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
-

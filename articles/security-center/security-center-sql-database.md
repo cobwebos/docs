@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
 ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure 安全中心与 Azure SQL 数据库服务
 [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -27,30 +26,30 @@ ms.lasthandoff: 02/17/2017
 本文演示安全中心如何能够帮助保护 Azure SQL 数据库中的数据库。
 
 ## <a name="why-use-security-center"></a>为什么要使用安全中心？
-安全中心通过为你的所有服务器和数据库提供安全性的可见性来帮助保护 SQL 数据库中的数据。 通过安全中心，可以：
+安全中心通过为所有服务器和数据库提供安全性的可见性来帮助保护 SQL 数据库中的数据。 通过安全中心，可以：
 
 * 定义 SQL 数据库加密和审核的策略。
 * 跨所有订阅监视 SQL 数据库资源的安全性。
 * 快速识别和修复安全问题。
 * 集成来自 [Azure SQL 数据库威胁检测](../sql-database/sql-database-threat-detection.md)的警报。
 
-除帮助保护 SQL 数据库资源外，安全中心还可安全监视和管理 Azure 虚拟机、云服务、应用程序服务和虚拟网络等。 在[此处](security-center-intro.md)了解有关安全中心的详细信息。
+除帮助保护 SQL 数据库资源外，安全中心还可安全监视和管理 Azure 虚拟机、云服务、应用服务和虚拟网络等。 在[此处](security-center-intro.md)了解有关安全中心的详细信息。
 
 ## <a name="prerequisites"></a>先决条件
-若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 使用你的订阅启用安全中心的免费层。 了解有关安全中心免费层和标准层的详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
+若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 使用订阅启用安全中心的免费层。 了解有关安全中心免费层和标准层的详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
 安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。 安全中心常见问题提供有关[如何在安全中心处理权限](security-center-faq.md#permissions)的信息。
 
 ## <a name="access-security-center"></a>访问安全中心
-从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问安全中心。 [登录到门户](https://portal.azure.com/)，然后选择**安全中心选项**。
+从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问安全中心。 [登录到门户](https://portal.azure.com/)，并选择**安全中心选项**。
 
 ![安全中心选项][1]
 
-这将打开“**安全中心**”边栏选项卡。
+这会打开“**安全中心**”边栏选项卡。
 ![“安全中心”边栏选项卡][2]
 
 ## <a name="set-security-policy"></a>设置安全策略
-安全策略用于定义一组控制，这些控制是针对指定订阅或资源组中的资源建议的。 在安全中心，根据公司的安全需求、应用程序的类型或每个订阅中数据的敏感度，为你的订阅或资源组定义策略。
+安全策略用于定义一组控制，这些控制是针对指定订阅或资源组中的资源建议的。 在安全中心，根据公司的安全需求、应用程序的类型或每个订阅中数据的敏感度，为订阅或资源组定义策略。
 
 可以设置介绍 SQL 审核与 SQL 透明数据加密 (TDE) 建议的策略。
 
@@ -63,9 +62,9 @@ ms.lasthandoff: 02/17/2017
 若要了解详细信息，请参阅[设置安全策略](security-center-policies.md)。
 
 ## <a name="manage-security-recommendation"></a>管理安全建议
-安全中心定期分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议将指导你完成配置所需控件的过程。
+安全中心定期分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议指导完成配置所需控件的过程。
 
-设置安全策略之后，安全中心将分析你的资源的安全状态，以识别潜在的漏洞。 建议将以表格形式显示，其中每一行都表示一个特定的建议。 使用下表作为参考，以帮助你理解 Azure SQL 数据库的可用建议，以及应用每个建议可实现的功能。 选择一个建议会将你转到介绍如何在安全中心实现建议的文章。
+设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 建议以表格形式显示，其中每一行都表示一个特定的建议。 使用下表作为参考来帮助你了解 Azure SQL 数据库和每一项建议时将其应用所执行的可用建议。 选择一个建议会你将转到介绍如何在安全中心实现建议的文章。
 
 | 建议 | 说明 |
 | --- | --- |
@@ -77,7 +76,7 @@ ms.lasthandoff: 02/17/2017
 
 ![建议][4]
 
-如下所示，安全中心将显示未启用审核与威胁检测的 SQL 服务器。 启用审核后，可以配置威胁检测设置和电子邮件设置，以接收安全警报。 威胁检测会在检测到异常的数据库活动时向你发出警报，指出数据库有潜在的安全威胁。 警报在安全中心仪表板中显示。
+如下所示，安全中心会显示未启用审核与威胁检测的 SQL 服务器。 启用审核后，可以配置威胁检测设置和电子邮件设置，以接收安全警报。 威胁检测向你发出警报时检测到异常数据库活动指示数据库的潜在安全威胁。 警报在安全中心仪表板中显示。
 ![审核和威胁检测][5]
 
 请按照 [Azure 门户中 SQL 数据库威胁检测](../sql-database/sql-database-threat-detection-portal.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。
@@ -105,7 +104,7 @@ ms.lasthandoff: 02/17/2017
 * [安全中心常见问题](security-center-faq.md) - 查找有关如何使用服务的常见问题。
 * [安全中心规划和操作指南](security-center-planning-and-operations-guide.md) - 通过一系列步骤和任务，根据组织的安全要求和云管理模型优化安全中心的使用。
 * [安全中心数据安全](security-center-data-security.md) - 了解安全中心如何收集和处理有关 Azure 资源的数据，包括配置信息、元数据、事件日志、故障转储文件等。
-* [处理安全事件](security-center-incident.md) - 了解如何在安全中心使用安全警报功能，帮助你处理安全事件。
+* [处理安全事件](security-center-incident.md)-了解如何在安全中心中使用的安全警报功能，以帮助你在处理安全事件。
 
 <!--Image references-->
 [1]: ./media/security-center-sql-database/security-center.png
@@ -116,4 +115,3 @@ ms.lasthandoff: 02/17/2017
 [6]: ./media/security-center-sql-database/monitor-health.png
 [7]: ./media/security-center-sql-database/alert.png
 [8]: ./media/security-center-sql-database/sql-injection.png
-

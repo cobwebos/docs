@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -184,4 +183,3 @@ Microsoft 对检测过程的持续投入使得：
 
 已检测的风险事件表示保护身份的一个重要方面，还可以选择手动解决它们，或者甚至通过配置条件性访问策略实施自动的响应。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](active-directory-identityprotection.md)。
  
-

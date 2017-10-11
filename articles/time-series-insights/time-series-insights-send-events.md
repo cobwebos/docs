@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/21/2017
 ms.author: venkatja
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>通过事件中心向时序见解环境发送事件
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 07/24/2017
 
 3. 在事件中心创建“MySendPolicy”，用于在 csharp 示例中发送事件。
 
-  ![选择共享访问策略，然后单击“添加”按钮](media/send-events/shared-access-policy.png)  
+  ![选择共享访问策略，并单击“添加”按钮](media/send-events/shared-access-policy.png)  
 
   ![添加新的共享访问策略](media/send-events/shared-access-policy-2.png)  
 
@@ -238,4 +237,3 @@ namespace Microsoft.Rdx.DataGenerator
 ## <a name="next-steps"></a>后续步骤
 
 * 在[时序见解门户](https://insights.timeseries.azure.com)中查看环境
-

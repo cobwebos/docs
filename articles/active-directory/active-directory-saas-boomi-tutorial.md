@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 1121d22beddf73fd2109a4b410422f76dd37478e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>教程：Azure Active Directory 与 Boomi 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/04/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-boomi-from-the-gallery"></a>从库中添加 Boomi
-若要配置 Boomi 与 Azure AD 的集成，需要从库中将 Boomi 添加到托管 SaaS 应用列表。
+要配置 Boomi 与 Azure AD 的集成，需要从库中将 Boomi 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Boomi，请执行以下步骤：**
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 07/04/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_search.png)
 
-5. 在结果窗格中，选择“Boomi”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Boomi”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_addfromgallery.png)
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/04/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Boomi 测试用户](#creating-a-boomi-test-user)** - 在 Boomi 中创建 Britta Simon 的对应用户，该用户将链接到用户的 Azure AD 表示形式。
+3. **[创建 Boomi 测试用户](#creating-a-boomi-test-user)** -若要链接到用户的 Azure AD 表示的 Boomi 中具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -111,14 +110,14 @@ ms.lasthandoff: 07/04/2017
 
     ![配置单一登录](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<accountname>/saml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<accountname>/saml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<accountname>/saml`
 
     > [!NOTE] 
     > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [Boomi 支持团队](https://boomi.com/company/contact/)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
     
     ![配置单一登录](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_certificate.png)
 
@@ -132,7 +131,7 @@ ms.lasthandoff: 07/04/2017
     | -------------- | --------------- |
     | FEDERATION_ID | user.mail |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
     
     ![配置单一登录](./media/active-directory-saas-boomi-tutorial/tutorial_attribute_04.png)
     
@@ -154,21 +153,21 @@ ms.lasthandoff: 07/04/2017
 
 8. 在另一个 Web 浏览器窗口中，以管理员身份登录 Boomi 公司站点。 
 
-9. 导航到“公司名称”，然后转到“设置”。
+9. 导航到“公司名称”，并转到“设置”。
 
 10. 单击“SSO 选项”选项卡，并执行以下步骤。
 
     ![在应用端配置单一登录](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_11.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选中“启用 SAML 单一登录”复选框。
+    a. 选中“启用 SAML 单一登录”复选框。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“导入”，将已下载的证书从 Azure AD 上传到“标识提供者证书”。
+    b. 单击“导入”，将已下载的证书从 Azure AD 上传到“标识提供者证书”。
     
     c. 在“标识提供者登录 URL”文本框中，输入 Azure AD 应用程序配置窗口中“SAML 单一登录服务 URL”的值。
 
     d. 对于“联合 ID 位置”，选择“联合 ID 位于 FEDERATION_ID 属性元素中”单选按钮。 
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存”按钮。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存”按钮。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -197,7 +196,7 @@ ms.lasthandoff: 07/04/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-boomi-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -217,15 +216,15 @@ ms.lasthandoff: 07/04/2017
 
     ![用户](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "用户")
 
-3. 单击 **+** 图标，此时将打开“添加/维护用户角色”对话框。
+3. 单击 **+** 图标，此时会打开“添加/维护用户角色”对话框。
 
     ![用户](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "用户")
 
     ![用户](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_003.png "用户")
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“用户电子邮件地址”文本框中，键入用户的电子邮件地址（例如 BrittaSimon@contoso.com）。
+    a. 在“用户电子邮件地址”文本框中，键入用户的电子邮件地址（例如 BrittaSimon@contoso.com）。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“名字”文本框中，键入用户的名字（如“Britta”）。
+    b. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 
     c. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
     
@@ -244,9 +243,9 @@ ms.lasthandoff: 07/04/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Boomi，请执行以下步骤：**
+**要将 Britta Simon 分配到 Boomi，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -292,5 +291,4 @@ ms.lasthandoff: 07/04/2017
 [201]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_203.png
-
 

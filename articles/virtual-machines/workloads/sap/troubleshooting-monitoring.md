@@ -14,12 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: ee5be707b443cbe42bf4a492d79390e534d4b91f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>如何对 Azure 上的 SAP HANA（大型实例）进行故障排除和监视
 
@@ -39,7 +38,8 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 
 **内存消耗：**必须从 HANA 内部监视，以及从单元上的 HANA 外部监视。 在 HANA 内部，应该监视数据对 HANA 分配的内存的消耗情况，使之不会超出 SAP 规定的消耗量指导原则。 此外，还需要在大型实例级别监视内存消耗，确保其他已安装的非 HANA 软件不会消耗过多的内存，从而与 HANA 争用内存。
 
-**网络带宽：**将数据移入 Azure VNet 时，Azure VNet 网关会限制带宽，因此，监视 VNet 中的所有 Azure VM 接收的数据有助于确定与所选 Azure 网关 SKU 的限制还有多大的差距。 在 HANA 大型实例单元上，监视传入和传出的网络流量以及跟踪不同时间处理的数据量确实很有作用。
+
+            **网络带宽：**将数据移入 Azure VNet 时，Azure VNet 网关会限制带宽，因此，监视 VNet 中的所有 Azure VM 接收的数据有助于确定与所选 Azure 网关 SKU 的限制还有多大的差距。 在 HANA 大型实例单元上，监视传入和传出的网络流量以及跟踪不同时间处理的数据量确实很有作用。
 
 **磁盘空间：**磁盘空间消耗量通常会随着时间的推移而增大。 原因有多种，但最主要的原因包括：数据量增加、执行事务日志备份、存储跟踪文件，以及执行存储快照。 因此，必须监视磁盘空间用量，管理与 HANA 大型实例单元相关的磁盘空间。
 
@@ -58,7 +58,7 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 
 **SAP HANA 警报**
 
-第一步是检查当前的 SAP HANA 警报日志。 在 SAP HANA Studio 中，转到“Administration Console: Alerts: Show: all alerts”（管理控制台: 警报: 显示: 所有警报）。 此选项卡将显示超出设置的最小和最大阈值的特定值（可用物理内存、CPU 利用率等）的所有相关 SAP HANA 警报。 默认情况下，检查结果每隔 15 分钟自动刷新一次。
+第一步是检查当前的 SAP HANA 警报日志。 在 SAP HANA Studio 中，转到“Administration Console: Alerts: Show: all alerts”（管理控制台: 警报: 显示: 所有警报）。 此选项卡会显示超出设置的最小和最大阈值的特定值（可用物理内存、CPU 利用率等）的所有相关 SAP HANA 警报。 默认情况下，检查结果每隔 15 分钟自动刷新一次。
 
 ![在 SAP HANA Studio 中，转到“Administration Console: Alerts: Show: all alerts”（管理控制台: 警报: 显示: 所有警报）](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
@@ -121,7 +121,7 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 2. 分析节点间通信。
   A. 运行 SQL 脚本 [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)_。_
 
-3. 运行 Linux 命令 **ifconfig**（输出将显示是否发生了任何丢包情况）。
+3. 运行 Linux 命令 **ifconfig**（输出会显示是否发生了任何丢包情况）。
 4. 运行 Linux 命令 **tcpdump**。
 
 此外，请使用开源 [IPERF](https://iperf.fr/) 工具（或类似的工具）来测量实际的应用程序网络性能。
@@ -150,21 +150,21 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 
 ![在 SAP HANA Studio 中的“System Information”（系统信息）选项卡上，右键单击“Name”（名称）并选择“Import SQL Statements”（导入 SQL 语句）](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-选择存储在本地的 SQL Statements.zip 文件，随后将导入包含相应 SQL 语句的文件夹。 此时，可以使用这些 SQL 语句运行多种不同的诊断检查。
+选择存储在本地的 SQL Statements.zip 文件，随后会导入包含相应 SQL 语句的文件夹。 此时，可以使用这些 SQL 语句运行多种不同的诊断检查。
 
-例如，若要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，然后选择“Open”（打开）。
+例如，要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，并选择“Open”（打开）。
 
-整个 SQL 语句将会打开，允许用户更改然后执行输入参数（modification 节）。
+整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）。
 
-![整个 SQL 语句将会打开，允许用户更改然后执行输入参数（modification 节）](./media/troubleshooting-monitoring/image8-import-statements-b.png)
+![整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
 另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择“Execute”（执行）：
 
 ![另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择“Execute”（执行）](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
-随后将会返回可帮助进行故障排除的信息：
+随后会返回可帮助进行故障排除的信息：
 
-![随后将会返回可帮助进行故障排除的信息](./media/troubleshooting-monitoring/image10-import-statements-d.png)
+![随后会返回可帮助进行故障排除的信息](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
 在 HANA\_Configuration\_Minichecks 中执行与上述相同的操作，检查 _C_（严重）列中出现的所有 _X_ 标记。
 
@@ -189,5 +189,4 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 用于检查 SAP HANA 参数的 **HANA\_Configuration\_Parameters\_Rev70+**。
 
 ![用于检查 SAP HANA 参数的 HANA\_Configuration\_Parameters\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
-
 

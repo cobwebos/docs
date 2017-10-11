@@ -1,53 +1,53 @@
 <!--author=alkohli last changed: 01/18/17 -->
 
-#### <a name="to-install-updates-via-the-azure-portal"></a>通过 Azure 门户安装更新
+#### <a name="to-install-updates-via-the-azure-portal"></a>若要安装通过 Azure 门户的更新
 
-1. 转到 StorSimple 设备管理器并选择“设备”。 从连接到你的服务的设备列表中，选择并单击要更新的设备。 
+1. 转到你 StorSimple 设备管理器，并选择**设备**。 从连接到你的服务的设备列表中，选择，然后单击你想要更新的设备。 
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
-2. 在“设置”边栏选项卡中，单击“设备更新”。 
+2. 在**设置**边栏选项卡，单击**设备更新**。 
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
-3. 如果有可用的软件更新，会显示一条消息。 若要检查更新，还可以单击“扫描”。
+3. 如果软件更新可用，你会看到一条消息。 若要检查更新，你可以单击**扫描**。
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate3m1.png)
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate3m1.png)
 
-    在扫描开始和成功完成时，系统会发出通知。
+    当扫描启动并成功完成时，你将收到通知。
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate5m.png)
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate5m.png)
 
-4. 在扫描更新后，单击“下载更新”。 
+4. 一旦扫描更新，则单击**下载更新**。 
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
-5. 在“新的更新”边栏选项卡中，复查在下载更新后确认安装所需的信息。 单击 **“确定”**。
+5. 在**新更新**边栏选项卡，查看下载更新后，你需要确认安装的信息。 单击" **确定**"。
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
 
-6. 在上载开始和成功完成时，系统会发出通知。
+6. 当上载启动并成功完成时，会通知您。
 
-     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate8m.png)
+     ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate8m.png)
 
-5. 在“设备更新”边栏选项卡中，单击“安装”。
+5. 在**设备更新**边栏选项卡，单击**安装**。
 
-     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate11m1.png)   
+     ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate11m1.png)   
 
-6. 在“新的更新”边栏选项卡中，会警告该更新会造成中断。 因为虚拟阵列是单节点设备，所以设备在更新后会重新启动。 这会中断正在进行的任何 IO。 单击“确定”以安装更新。 
+6. 在**新更新**边栏选项卡，您会收到警告是否发生中断性更新。 由于虚拟数组是单个节点设备，设备重启后它将进行更新。 这会中断正在进行的任何 IO。 单击**确定**安装更新。 
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate12m.png) 
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate12m.png) 
 
-7. 当安装作业开始时，系统会发出通知。 
+7. 安装作业启动时，会通知您。 
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate13m.png)
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate13m.png)
 
-8.  在安装作业成功完成后，单击“设备更新”边栏选项卡中的“查看作业”链接来监视安装。 
+8.  安装作业成功完成后，单击**查看作业**中链接**设备更新**边栏选项卡来监视安装。 
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate15m1.png)
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate15m1.png)
 
-    这将转到“安装更新”边栏选项卡。 可以在此处查看关于该作业的详细信息。
+    将进入**安装更新**边栏选项卡。 你可以查看有关此处的作业的详细的信息。
 
-    ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
+    ![更新的设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
-9. 成功安装更新后，在“设备更新”边栏选项卡中会显示一条关于此影响的消息。 
+9. 已成功安装的更新后，你将看到一条消息中此效果给**设备更新**边栏选项卡。 

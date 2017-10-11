@@ -16,17 +16,16 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面在 HDInsight 上的 Hadoop 中使用 MapReduce
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-在本文中，你将学习如何通过使用远程桌面连接到 HDInsight 群集上的 Hadoop，然后通过使用 Hadoop 命令运行 MapReduce 作业。
+本文介绍如何使用远程桌面连接到 HDInsight 群集上的 Hadoop，并使用 Hadoop 命令运行 MapReduce 作业。
 
 > [!IMPORTANT]
 > 远程桌面只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -34,18 +33,18 @@ ms.lasthandoff: 07/28/2017
 > 有关 HDInsight 3.4 或更高版本，请参阅[将 MapReduce 与 SSH 配合使用](hdinsight-hadoop-use-mapreduce-ssh.md)，了解如何连接到 HDInsight 群集以及如何运行 MapReduce 作业。
 
 ## <a id="prereq"></a>先决条件
-若要完成本文中的步骤，你将需要：
+要完成本文中的步骤，需要：
 
 * 基于 Windows 的 HDInsight（HDInsight 上的 Hadoop）群集
 * 运行 Windows 10、Windows 8 或 Windows 7 的客户端计算机
 
 ## <a id="connect"></a>使用远程桌面进行连接
-为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)中的说明连接到该群集。
+为 HDInsight 群集启用远程桌面，并根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)中的说明连接到该群集。
 
 ## <a id="hadoop"></a>使用 Hadoop 命令
 连接到 HDInsight 群集的桌面之后，请使用以下步骤，以通过 Hadoop 命令来运行 MapReduce 作业：
 
-1. 从 HDInsight 桌面启动“Hadoop 命令行”。 这将在 **c:\apps\dist\hadoop-&lt;version number>** 目录中打开新的命令提示符。
+1. 从 HDInsight 桌面启动“Hadoop 命令行”。 这将在 c:\apps\dist\hadoop-&lt;version number> 目录中打开新的命令提示符。
 
    > [!NOTE]
    > 版本号会随着 Hadoop 更新而更改。 **HADOOP_HOME** 环境变量可用来查找路径。 例如，`cd %HADOOP_HOME%` 会将目录更改为 Hadoop 目录，而不需要你知道版本号。
@@ -55,7 +54,7 @@ ms.lasthandoff: 07/28/2017
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    这将启动 **wordcount** 类（包含在当前目录中的 **hadoop-mapreduce-examples.jar** 文件内）。 作为输入，它使用 wasbs://example/data/gutenberg/davinci.txt 文档，输出的存储位置：wasbs:///example/data/WordCountOutput。
+    这会启动 **wordcount** 类（包含在当前目录中的 **hadoop-mapreduce-examples.jar** 文件内）。 作为输入，它使用 wasbs://example/data/gutenberg/davinci.txt 文档，输出的存储位置：wasbs:///example/data/WordCountOutput。
 
    > [!NOTE]
    > 有关此 MapReduce 作业和示例数据的详细信息，请参阅<a href="hdinsight-use-mapreduce.md">在 HDInsight Hadoop 中使用 MapReduce</a>。
@@ -92,7 +91,7 @@ ms.lasthandoff: 07/28/2017
         wriggling       1
 
 ## <a id="summary"></a>摘要
-如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，然后查看作业输出。
+Hadoop 命令提供了一种简单方法，可在 HDInsight 群集上运行 MapReduce 作业，并查看作业输出。
 
 ## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 MapReduce 作业的一般信息：
@@ -103,4 +102,3 @@ ms.lasthandoff: 07/28/2017
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-

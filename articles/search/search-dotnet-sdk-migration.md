@@ -14,24 +14,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3e2ad6b466ba4885ae14576b83d4c0f3010bab67
 ms.openlocfilehash: 9782454e3bfc697b63cde8aa28a14be0c393c36b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
-如果使用的是版本 2.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于你升级应用程序，以便使用版本 3。
+如果使用的是版本 2.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 3。
 
 有关包括示例的 SDK 的更多常规演练，请参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)。
 
 版本 3 的 Azure 搜索 .NET SDK 包含了某些针对早期版本进行的更改。 这些更改主要涉及次要版本，因此更改代码的工作量并不是太大。 有关如何更改代码以使用新版 SDK 的说明，请参阅[升级步骤](#UpgradeSteps)。
 
 > [!NOTE]
-> 如果使用的是版本 1.0.2-preview 或更早版本，则应该先升级到版本 1.1，然后再升级到版本 3。 有关说明，请参阅[附录：升级到版本 1.1 的步骤](#UpgradeStepsV1)。
+> 如果使用的是版本 1.0.2-preview 或更早版本，则应该先升级到版本 1.1，再升级到版本 3。 有关说明，请参阅[附录：升级到版本 1.1 的步骤](#UpgradeStepsV1)。
 >
-> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 你可以不使用最新版本，但是我们建议迁移你的代码，以便使用最新版本。 使用 REST API 时，必须在每个请求中通过 api-version 参数指定 API 版本。 使用 .NET SDK 时，使用的 SDK 版本确定对应的 REST API 版本。 如果使用较旧的 SDK，即使已升级服务以支持较新的 API 版本，也可以继续运行代码，而不进行任何更改。
+> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 可以不使用最新版本，但是我们建议迁移代码，以便使用最新版本。 使用 REST API 时，必须在每个请求中通过 api-version 参数指定 API 版本。 使用 .NET SDK 时，使用的 SDK 版本确定对应的 REST API 版本。 如果使用较旧的 SDK，即使已升级服务以支持较新的 API 版本，也可以继续运行代码，而不进行任何更改。
 
 <a name="WhatsNew"></a>
 
@@ -48,9 +47,9 @@ ms.lasthandoff: 02/17/2017
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>升级步骤
-首先，按以下方法操作更新 `Microsoft.Azure.Search` 的 NuGet 引用：使用 NuGet 程序包管理器控制台，或者在 Visual Studio 中右键单击项目引用，然后选择“管理 NuGet 程序包...”。
+首先，请更新你 NuGet 参考`Microsoft.Azure.Search`使用 NuGet 包管理器控制台或通过右键单击项目引用，并在 Visual Studio 中选择"管理 NuGet 包..."。
 
-在 NuGet 已下载新的程序包及其依赖项后，请重新生成你的项目。 项目重新生成可能会成功，具体取决于代码的结构。 如果成功，一切准备就绪！
+在 NuGet 已下载新的程序包及其依赖项后，请重新生成项目。 项目重新生成可能会成功，具体取决于代码的结构。 如果成功，一切准备就绪！
 
 如果生成失败，应该会看到如下所示的生成错误：
 
@@ -58,9 +57,9 @@ ms.lasthandoff: 02/17/2017
 
 下一步是修复生成错误。 有关出错原因和修复方法的详细信息，请参阅[版本 3 中的重大更改](#ListOfChanges)。
 
-你可能会看到与过时方法或属性有关的其他生成警告。 这些警告将包含有关使用哪些功能来替换已弃用功能的说明。 例如，如果应用程序使用了 `IndexingParameters.Base64EncodeKeys` 属性，应该会收到显示 `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."` 的警告
+你可能会看到与已过时的方法或属性相关的其他生成警告。 这些警告将包含有关使用哪些功能来替换已弃用功能的说明。 例如，如果应用程序使用了 `IndexingParameters.Base64EncodeKeys` 属性，应该会收到显示 `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."` 的警告
 
-在修复了任何生成错误后，可以对应用程序进行更改，以利用新功能（如果你愿意）。 有关 SDK 中的新功能的详细信息，请参阅[版本 3 中的新增功能](#WhatsNew)。
+在修复了任何生成错误后，可以对应用程序进行更改，以利用新功能（如果愿意）。 有关 SDK 中的新功能的详细信息，请参阅[版本 3 中的新增功能](#WhatsNew)。
 
 <a name="ListOfChanges"></a>
 
@@ -83,7 +82,7 @@ SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName、DataType 等将不再隐式转换为字符串
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName、DataType 等不再隐式转换为字符串
 Azure 搜索 .NET SDK 中有许多派生自 `ExtensibleEnum` 的类型。 以前，这些类型都隐式转换为 `string` 类型。 但是，在这些类的 `Object.Equals` 实现中发现了 bug，修复 bug 需要禁止此隐式转换。 仍允许显式转换为 `string`。
 
 #### <a name="example"></a>示例
@@ -125,7 +124,7 @@ index.Analyzers = new Analyzer[]
 
 ### <a name="removed-obsolete-members"></a>删除了过时成员
 
-你可能会看到与版本 2.0-preview 中标记为过时的方法或属性相关的生成错误，这些方法或属性随后已在版本 3 中删除。 如果遇到此类错误，可按下面所述解决它们：
+你可能会看到与相关的生成错误方法或 2.0 预览并随后删除版本 3 中被标记为过时版本中的属性。 如果遇到此类错误，可按下面所述解决它们：
 
 - 如果使用此构造函数：`ScoringParameter(string name, string value)`，请改为使用这个：`ScoringParameter(string name, IEnumerable<string> values)`
 - 如果使用 `ScoringParameter.Value` 属性，请改为使用 `ScoringParameter.Values` 属性或 `ToString` 方法。
@@ -144,7 +143,7 @@ index.Analyzers = new Analyzer[]
 ## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅我们最近更新的[操作指南](search-howto-dotnet-sdk.md)。
 
-我们欢迎你就 SDK 提供反馈。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在你的问题标题上加前缀“Search SDK:”。
+我们欢迎你的反馈在 SDK 上。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“Search SDK:”。
 
 感谢使用 Azure 搜索！
 
@@ -156,9 +155,9 @@ index.Analyzers = new Analyzer[]
 > 
 > 
 
-首先，按以下方法操作更新 `Microsoft.Azure.Search` 的 NuGet 引用：使用 NuGet 程序包管理器控制台，或者在 Visual Studio 中右键单击项目引用，然后选择“管理 NuGet 程序包...”。
+首先，请更新你 NuGet 参考`Microsoft.Azure.Search`使用 NuGet 包管理器控制台或通过右键单击项目引用，并在 Visual Studio 中选择"管理 NuGet 包..."。
 
-在 NuGet 已下载新的程序包及其依赖项后，请重新生成你的项目。
+在 NuGet 已下载新的程序包及其依赖项后，请重新生成项目。
 
 如果之前使用的是版本 1.0.0-preview、1.0.1-preview 或 1.0.2-preview，生成应该已成功，一切准备就绪！
 
@@ -173,7 +172,7 @@ index.Analyzers = new Analyzer[]
 
 如果使用自定义类对文档建模，并且这些类具有不可为 null 的基元类型的属性（例如，C# 中的 `int` 或 `bool`），应知道 1.1 版的 SDK 中会有 Bug 修复。 有关详细信息，请参阅[版本 1.1 中的 Bug 修复](#BugFixesV1)。
 
-最后，在修复了任何生成错误后，可以对应用程序进行更改，以利用新功能（如果你愿意）。
+最后，在修复了任何生成错误后，可以对应用程序进行更改，以利用新功能（如果愿意）。
 
 <a name="ListOfChangesV1"></a>
 
@@ -278,8 +277,8 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 从版本 1.1 开始，Azure 搜索 .NET SDK 以不同方式组织操作方法：
 
 * 可选参数现已建模为默认参数，而不是附加的方法重载。 这有时可显著减少方法重载的数目。
-* 扩展方法现在对调用方隐藏了许多与 HTTP 无关的细节。 例如，较早版本的 SDK 返回响应对象时带有 HTTP 状态代码，通常不需要检查这些状态代码，因为操作方法会为指示错误的任何状态代码引发 `CloudException`。 新的扩展方法只返回模型对象，使你无需在代码中解开它们。
-* 核心接口现在反而公开了允许你在 HTTP 级别进行更多控制的方法（如果需要）。 现在可以传入要包括在请求中的自定义 HTTP 标头，并且新的 `AzureOperationResponse<T>` 返回类型使你可以直接访问操作的 `HttpRequestMessage` 和 `HttpResponseMessage`。 `AzureOperationResponse` 在 `Microsoft.Rest.Azure` 命名空间中定义，替换 `Hyak.Common.OperationResponse`。
+* 扩展方法现在对调用方隐藏了许多与 HTTP 无关的细节。 例如，较早版本的 SDK 返回响应对象时带有 HTTP 状态代码，通常不需要检查这些状态代码，因为操作方法会为指示错误的任何状态代码引发 `CloudException`。 新的扩展方法仅返回模型对象，从而使您无需解除它们包装在代码中的问题。
+* 核心接口现在反而公开了允许在 HTTP 级别进行更多控制的方法（如果需要）。 您现在可以在要包括在请求和新的自定义 HTTP 头中传递`AzureOperationResponse<T>`返回类型可直接访问`HttpRequestMessage`和`HttpResponseMessage`操作。 `AzureOperationResponse` 在 `Microsoft.Rest.Azure` 命名空间中定义，替换 `Hyak.Common.OperationResponse`。
 
 #### <a name="scoringparameters-changes"></a>ScoringParameters 更改
 名为 `ScoringParameter` 的新类已添加到最新的 SDK 中，使向搜索查询中的计分配置文件提供参数更为容易。 之前，`SearchParameters` 类的 `ScoringProfiles` 属性以 `IList<string>` 形式键入；现在它以 `IList<ScoringParameter>` 形式键入。
@@ -348,7 +347,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
     IndexerExecutionResult lastResult = status.LastResult;
 
 ##### <a name="response-classes-and-ienumerable"></a>响应类和 IEnumerable
-可能影响代码的其他更改是：保留集合的响应类不再实现 `IEnumerable<T>`。 相反，你可以直接访问集合属性。 例如，如果你的代码如下所示：
+可能影响代码的其他更改是：保留集合的响应类不再实现 `IEnumerable<T>`。 相反，可以直接访问集合属性。 例如，如果代码如下所示：
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -365,7 +364,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
     }
 
 ##### <a name="special-case-for-web-applications"></a>Web 应用程序的特例
-如果你有一个直接序列化 `DocumentSearchResponse` 以向浏览器发送搜索结果的 Web 应用程序，将需要更改你的代码，否则结果将不会正确序列化。 例如，如果你的代码如下所示：
+如果有一个直接序列化 `DocumentSearchResponse` 以向浏览器发送搜索结果的 Web 应用程序，将需要更改代码，否则结果将不会正确序列化。 例如，如果代码如下所示：
 
     public ActionResult Search(string q = "")
     {
@@ -395,7 +394,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
         };
     }
 
-你必须自己在你的代码中查找此类情况；**编译器不会警告你**，因为 `JsonResult.Data` 属于类型 `object`。
+必须自己在代码中查找此类情况；**编译器不会警告你**，因为 `JsonResult.Data` 属于类型 `object`。
 
 #### <a name="cloudexception-changes"></a>CloudException 更改
 `CloudException` 类已从 `Hyak.Common` 命名空间移动到 `Microsoft.Rest.Azure` 命名空间。 此外，其 `Error` 属性已重名为 `Body`。
@@ -405,7 +404,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 在早期版本的 SDK 中，`SearchServiceClient` 和 `SearchIndexClient` 具有需要 `HttpClient` 参数的构造函数。 这些已替换为需要 `HttpClientHandler` 和一个 `DelegatingHandler` 对象数组的构造函数。 这使得必要时安装用于预处理 HTTP 请求的自定义处理程序更为容易。
 
-最后，需要 `Uri` 和 `SearchCredentials` 的构造函数已更改。 例如，如果你的代码如下所示：
+最后，需要 `Uri` 和 `SearchCredentials` 的构造函数已更改。 例如，如果代码如下所示：
 
     var client =
         new SearchServiceClient(
@@ -419,10 +418,10 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-另请注意，凭据参数的类型已更改为 `ServiceClientCredentials`。 由于 `SearchCredentials` 派生自 `ServiceClientCredentials`，所以这不太可能影响你的代码。
+另请注意，凭据参数的类型已更改为 `ServiceClientCredentials`。 由于 `SearchCredentials` 派生自 `ServiceClientCredentials`，所以这不太可能影响代码。
 
 #### <a name="passing-a-request-id"></a>传递请求 ID
-在早期版本的 SDK 中，可以设置 `SearchServiceClient` 或 `SearchIndexClient` 上的请求 ID，它将包含在对 REST API 的每个请求中。 如果你需要与支持人员联系，这对于解决你的搜索服务的问题非常有用。 不过，为每个操作设置唯一请求 ID 更加有用，而不是将同一 ID 用于所有操作。 出于此原因，`SearchServiceClient` 和 `SearchIndexClient` 的 `SetClientRequestId` 方法已删除。 相反，可以通过可选参数 `SearchRequestOptions` 将请求 ID 传递给每个操作方法。
+在早期版本的 SDK 中，可以设置 `SearchServiceClient` 或 `SearchIndexClient` 上的请求 ID，它将包含在对 REST API 的每个请求中。 如果需要与支持人员联系，这对于解决搜索服务的问题非常有用。 不过，为每个操作设置唯一请求 ID 更加有用，而不是将同一 ID 用于所有操作。 出于此原因，`SearchServiceClient` 和 `SearchIndexClient` 的 `SetClientRequestId` 方法已删除。 相反，可以通过可选参数 `SearchRequestOptions` 将请求 ID 传递给每个操作方法。
 
 > [!NOTE]
 > 在将来版本的 SDK 中，我们会添加一个新机制，用于在客户端对象上全局设置请求 ID，这与其他 Azure SDK 使用的方法一致。
@@ -430,7 +429,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 > 
 
 #### <a name="example"></a>示例
-如果你的代码如下所示：
+如果代码如下所示：
 
     client.SetClientRequestId(Guid.NewGuid());
     ...
@@ -448,7 +447,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 * `ISearchServiceClient.DataSources` 的类型已从 `IDataSourceOperations` 更改为 `IDataSourcesOperations`。
 * `ISearchIndexClient.Documents` 的类型已从 `IDocumentOperations` 更改为 `IDocumentsOperations`。
 
-此更改不太可能影响你的代码，除非你出于测试目的创建了这些接口的模拟。
+此更改不太可能影响代码，除非出于测试目的创建了这些接口的模拟。
 
 <a name="BugFixesV1"></a>
 
@@ -458,12 +457,12 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 #### <a name="steps-to-reproduce"></a>重现步骤
 使用不可为 null 的值类型的属性创建自定义模型类。 例如，添加类型为 `int`（而不是 `int?`）的公共 `UnitCount` 属性。
 
-如果使用该类型的默认值（例如，`int` 的 0）对文档编制索引，该字段在 Azure 搜索将为 null。 如果你随后搜索该文档，`Search` 调用会引发 `JsonSerializationException`，声称无法将 `null` 转换为 `int`。
+如果使用该类型的默认值（例如，`int` 的 0）对文档编制索引，该字段在 Azure 搜索将为 null。 如果随后搜索该文档，`Search` 调用会引发 `JsonSerializationException`，声称无法将 `null` 转换为 `int`。
 
 此外，筛选器可能不会按预期工作，因为 null 已写入索引，而不是预期值。
 
 #### <a name="fix-details"></a>修复详细信息
-我们修复了版本 1.1 的 SDK 中存在的此问题。 现在，如果你的模型类如下所示：
+我们修复了版本 1.1 的 SDK 中存在的此问题。 现在，如果模型类如下所示：
 
     public class Model
     {
@@ -472,16 +471,15 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
         public int IntValue { get; set; }
     }
 
-将 `IntValue` 设置为 0，该值现在在线路上正确序列化为 0，并在索引中存储为 0。 往返过程也按预期工作。
+将 `IntValue` 设置为 0，该值现在线路上正确序列化为 0，并在索引中存储为 0。 往返过程也按预期工作。
 
 使用此方法时有一个潜在的问题需要注意：如果将模型类型与不可为 null 的属性一起使用，必须**保证**索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索 REST API 都不会帮助强制实施此检查。
 
-这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时将获得如下所示的 `JsonSerializationException`：
+这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
 由于此原因，最佳做法仍建议在模型类中使用可以为 null 的类型。
 
 有关此 Bug 和修复的更多详细信息，请参阅 [GitHub 上的此问题](https://github.com/Azure/azure-sdk-for-net/issues/1063)。
-
 

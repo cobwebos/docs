@@ -14,14 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
-ms.openlocfilehash: 078784bcdf7a3a6d4423389d2f5ca4ffdb67c89f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
-
-
-
+ms.openlocfilehash: e9036f92f6c76e8c4738ee981efa8a7b9791dcc7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 ![跨不同数据库中的表进行查询][1]
@@ -121,7 +118,8 @@ ms.lasthandoff: 02/22/2017
 ### <a name="remarks"></a>备注
 弹性查询将扩展现有的外部表语法以定义使用 RDBMS 类型的外部数据源的外部表。 垂直分区的外部表定义涉及以下几个方面： 
 
-* **架构**：外部表 DDL 定义了你的查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。 
+* 
+            **架构**：外部表 DDL 定义了查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。 
 * **远程数据库引用**：外部表 DDL 引用外部数据源。 外部数据源指定存储实际表数据的远程数据库的逻辑服务器名称和数据库名称。 
 
 使用上一节中所述的外部数据源时，用于创建外部表的语法如下： 
@@ -137,7 +135,7 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 **CREATE/DROP EXTERNAL TABLE 的权限**：外部表 DDL 需要 ALTER ANY EXTERNAL DATA SOURCE 权限，在引用基础数据源时也需要该权限。  
 
 ## <a name="security-considerations"></a>安全注意事项
-有权访问外部表的用户在使用外部数据源定义中提供的凭据时自动获得对基础远程表的访问权。 你应小心管理对外部表的访问权以避免通过外部数据源的凭据意外地提升权限。 可以使用常规 SQL 权限来授予或撤消对外部表的访问权，就像它是常规表一样。  
+有权访问外部表的用户在使用外部数据源定义中提供的凭据时自动获得对基础远程表的访问权。 应小心管理对外部表的访问权以避免通过外部数据源的凭据意外地提升权限。 可以使用常规 SQL 权限来授予或撤消对外部表的访问权，就像它是常规表一样。  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>示例：正在查询垂直分区数据库
 以下查询执行订单和订单行的两个本地表和客户的远程表之间的三向联接。 这是弹性查询的引用数据用例的示例： 
@@ -196,4 +194,3 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 
 <!--anchors-->
-

@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 63bd33bf4e09b98aa53dcfec9fcc4a0109204952
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive 连接器入门
 连接到 OneDrive 以管理文件（包括上传、获取、删除文件等）。 
 
-使用 OneDrive，你可以： 
+使用 OneDrive，可以： 
 
-* 通过在 OneDrive 中存储文件生成你的工作流，或更新 OneDrive 中的现有文件。 
+* 通过在 OneDrive 中存储文件生成工作流，或更新 OneDrive 中的现有文件。 
 * 在 OneDrive 内创建或更新文件时，使用触发器启动工作流。
 * 使用创建文件、删除文件等操作。 例如，收到带有附件的新 Office 365 电子邮件时（触发器），在 OneDrive 中新建文件（操作）。
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 05/26/2017
 若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="connect-to-onedrive"></a>连接到 OneDrive
-需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 OneDrive，首先需要 OneDrive *连接*。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此，在 OneDrive 中，将凭据输入到 OneDrive 帐户以创建连接。
+在逻辑应用能够访问任何服务前，需要先创建到该服务的*连接*。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 OneDrive，首先需要 OneDrive *连接*。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此，在 OneDrive 中，将凭据输入到 OneDrive 帐户以创建连接。
 
 ### <a name="create-the-connection"></a>创建连接
 > [!INCLUDE [Steps to create a connection to OneDrive](../../includes/connectors-create-api-onedrive.md)]
@@ -44,7 +43,7 @@ ms.lasthandoff: 05/26/2017
 > 
 
 ## <a name="use-a-trigger"></a>使用触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以你希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 1. 在逻辑应用中，键入“onedrive”获取触发器列表：  
    
@@ -53,15 +52,15 @@ ms.lasthandoff: 05/26/2017
    
     ![](./media/connectors-create-api-onedrive/sample-folder.png)
    
-    如果提示你登录，则输入登录详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)列出了相关步骤。 
+    如果提示登录，则输入登录详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)列出了相关步骤。 
    
    > [!NOTE]
-   > 在此示例中，逻辑应用在更新所选文件夹中的文件时运行。 若要查看此触发器的结果，请添加另一个向你发送电子邮件的操作。 例如，添加在更新文件时向你发送电子邮件的 Office 365 Outlook“发送电子邮件”操作。 
+   > 在此示例中，逻辑应用在更新所选文件夹中的文件时运行。 要查看此触发器的结果，请添加另一个向你发送电子邮件的操作。 例如，添加 Office 365 Outlook*发送一封电子邮件*你发送电子邮件，更新文件时的操作。 
 
-3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果你希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
+3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
    
     ![](./media/connectors-create-api-onedrive/trigger-properties.png)
-4. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
+4. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
 ## <a name="use-an-action"></a>使用操作
 操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
@@ -73,18 +72,18 @@ ms.lasthandoff: 05/26/2017
 3. 在文本框中，键入“onedrive”获取所有可用操作的列表。
    
     ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
-4. 在我们的示例中，选择“OneDrive - 创建文件”。 如果连接已存在，选择“文件夹路径”放入文件、输入“文件名”，然后选择所需的“文件内容”：  
+4. 在我们的示例中，选择“OneDrive - 创建文件”。 如果连接已存在，选择“文件夹路径”放入文件、输入“文件名”，并选择所需的“文件内容”：  
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
-    如果提示你提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)介绍了这些属性。 
+    如果提示提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)介绍了这些属性。 
    
    > [!NOTE]
-   > 在此示例中，我们在 OneDrive 文件夹中新建文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”触发器。 然后添加可在 ForEach 内使用附件和内容类型字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件。 
+   > 在此示例中，我们在 OneDrive 文件夹中新建文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”触发器。 然后添加 OneDrive*创建文件*操作使用的附件和内容类型 ForEach 在 OneDrive 中创建新的文件中的字段。 
    > 
    > ![](./media/connectors-create-api-onedrive/foreach-action.png)
 
-5. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
+5. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息

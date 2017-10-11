@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: xshi
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 6a450579c848fe6030a328ddf410f139baae2324
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather HUZZAH ESP8266 连接到云中的 Azure IoT 中心
 
@@ -73,7 +72,7 @@ ms.lasthandoff: 07/13/2017
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>将 Feather HUZZAH ESP8266 与传感器和计算机相连接
-在此部分中，将传感器连接到开发板。 然后，将设备插入计算机以作后用。
+在此部分中，将传感器连接到开发板。 然后，将设备插入计算机以供进一步使用。
 ### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-huzzah-esp8266"></a>将 DHT22 温度和湿度传感器连接到 Feather HUZZAH ESP8266
 
 按如下所示，使用试验板和跳线建立连接。 如果没有传感器，请跳过本部分，因为可以改用模拟的传感器数据。
@@ -130,13 +129,13 @@ ms.lasthandoff: 07/13/2017
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` 是在上一步骤中获取的组所有者名称。 `<username>` 是你的 Ubuntu 用户名。
+   `<group-owner-name>` 是在上一步骤中获取的组所有者名称。 `<username>` 是 Ubuntu 用户名。
 
-1. 需要注销 Ubuntu，然后重新登录，更改才会显示。
+1. 需要注销 Ubuntu，并重新登录，更改才会显示。
 
 ## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>收集传感器数据并将其发送到 IoT 中心
 
-在本部分，你将在 Feather HUZZAH ESP8266 上部署并运行一个示例应用程序。 该示例应用程序会使 Feather HUZZAH ESP8266 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
+在本部分，你会在 Feather HUZZAH ESP8266 上部署并运行一个示例应用程序。 该示例应用程序会使 Feather HUZZAH ESP8266 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
 
 ### <a name="get-the-sample-application-from-github"></a>从 GitHub 获取示例应用程序
 
@@ -159,14 +158,14 @@ ms.lasthandoff: 07/13/2017
 
 1. 在 Arduino IDE 中，单击“File”（文件） > “Preferences”（首选项）。
 1. 在“首选项”对话框中，单击“其他 Boards Manager URL”框旁边的图标。
-1. 在弹出窗口中输入以下 URL，然后单击“OK”（确定）。
+1. 在弹出窗口中输入以下 URL，并单击“OK”（确定）。
 
    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
    ![指向 Arduino IDE 中的包 url](media/iot-hub-arduino-huzzah-esp8266-get-started/11_arduino-ide-package-url.png)
 
 1. 在“Preference”（首选项）对话框中，单击“OK”（确定）。
-1. 单击“Tools”（工具） > “Board”（开发板） > “Boards Manager”，然后搜索 esp8266。
+1. 单击“Tools”（工具） > “Board”（开发板） > “Boards Manager”，并搜索 esp8266。
 
    Boards Manager 指示 ESP8266 安装了版本 2.2.0 或更高版本。
 
@@ -187,7 +186,7 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="dont-have-a-real-dht22-sensor"></a>没有真正的 DHT22 传感器？
 
-如果你没有真正的 DHT22 传感器，示例应用程序可以模拟温度和湿度数据。 若要设置示例应用程序以使用模拟的数据，请执行以下步骤：
+如果没有真正的 DHT22 传感器，示例应用程序可以模拟温度和湿度数据。 若要设置示例应用程序以使用模拟的数据，请执行以下步骤：
 
 1. 打开 `app` 文件夹中的 `config.h` 文件。
 1. 找到以下代码行并将值从 `false` 更改为 `true`：
@@ -200,7 +199,7 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>将示例应用程序部署到 Feather HUZZAH ESP8266
 
-1. 在 Arduino IDE 中，单击“Tool”（工具） > “Port”（端口），然后单击 Feather HUZZAH ESP8266 的串行端口。
+1. 在 Arduino IDE 中，单击“Tool”（工具） > “Port”（端口），并单击 Feather HUZZAH ESP8266 的串行端口。
 1. 单击 **Sketch** > **Upload** （上传），生成示例应用程序并将其部署到 Feather HUZZAH ESP8266。
 
 ### <a name="enter-your-credentials"></a>输入凭据
@@ -211,7 +210,7 @@ ms.lasthandoff: 07/13/2017
 1. 在串行监视器窗口的右下角，可以看到两个下拉列表。
 1. 在左侧下拉列表中选择“No line ending”（无行尾）。
 1. 在右侧下拉列表中选择“115200 baud”（115200 波特率）。
-1. 在串行监视器窗口顶部的输入框中输入以下信息（如果系统要求提供），然后单击“Send”（发送）。
+1. 在串行监视器窗口顶部的输入框中输入以下信息（如果系统要求提供），并单击“Send”（发送）。
    * Wi-Fi SSID
    * Wi-Fi 密码
    * 设备连接字符串
@@ -230,5 +229,4 @@ ms.lasthandoff: 07/13/2017
 现已成功将 Feather HUZZAH ESP8266 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-
 

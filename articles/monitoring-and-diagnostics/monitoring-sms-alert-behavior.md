@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 10f33898fb86bd2449994a153d99cb59dc6078d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 3e4eca174209eeb9cbce1d45111d1e5cc30af8b0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为
 ## <a name="overview"></a>概述 ##
@@ -27,7 +26,7 @@ ms.lasthandoff: 03/31/2017
 
 - **取消订阅警报：**用户可以为所有操作组或单个操作组取消订阅所有短信警报。  
 - **重新订阅通知：**用户可以为所有操作组或单个操作组重新订阅所有短信警报。  
-- **请求帮助：**用户可以询问有关短信的详细信息。 用户将被重定向到此文
+- **请求帮助：**用户可以询问有关短信的详细信息。 用户会被重定向到此文
 
 本文介绍短信警报的行为，以及用户根据其区域设置可采取的响应操作：
 
@@ -75,4 +74,3 @@ ms.lasthandoff: 03/31/2017
 获取[活动日志警报概述](monitoring-overview-alerts.md)，了解如何接收警报  
 了解有关[短信速率限制](monitoring-alerts-rate-limiting.md)的详细信息  
 详细了解[操作组](monitoring-action-groups.md)
-

@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: a9bec774b5482de87eefcd0c87844a2adbd98bbe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>使用 Site Recovery 进行本地到本地 Hyper-V 复制的测试结果
 
-你可以使用 Microsoft Azure Site Recovery 来协调和管理从虚拟机和物理服务器到 Azure 或辅助数据中心的复制。 本文提供了我们在两个本地数据中心之间进行 Hyper-V 虚拟机复制时执行的性能测试的结果。
+可以使用 Microsoft Azure Site Recovery 来协调和管理从虚拟机和物理服务器到 Azure 或辅助数据中心的复制。 本文提供了我们在两个本地数据中心之间进行 Hyper-V 虚拟机复制时执行的性能测试的结果。
 
 ## <a name="test-goals"></a>测试目标
 
@@ -86,17 +85,17 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 一个重要的注意事项是复制对在虚拟机上运行的生产工作负荷的影响。 如果主站点针对复制进行了充分的设置，则不应当对工作负荷产生任何影响。 Hyper-V 副本的轻量跟踪机制可以确保在虚拟机中运行的工作负荷在稳定状态复制期间不受影响。 下图中对此进行了解释。
 
-此图显示了在启用复制之前和之后运行各种工作负荷的虚拟机执行的 IOPS。 你可以看到两者之间没有差别。
+此图显示了在启用复制之前和之后运行各种工作负荷的虚拟机执行的 IOPS。 可以看到两者之间没有差别。
 
 ![副本影响结果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744920.png)
 
-下图显示了在启用复制之前和之后运行各种工作负荷的虚拟机的吞吐量。 你可以看到复制没有明显影响。
+下图显示了在启用复制之前和之后运行各种工作负荷的虚拟机的吞吐量。 可以看到复制没有明显影响。
 
 ![副本影响结果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
 
 ## <a name="conclusion"></a>结束语
 
-我们的结果清晰地表明，与 Hyper-V 副本配合使用的 Azure Site Recovery 可以针对大型群集以最小的开销很好地进行扩展。  Azure Site Recovery 提供了简单的部署、复制、管理和监视。 Hyper-V 副本为成功进行复制扩展提供了必要的基础结构。 为规划最佳的部署，建议你下载 [Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057)。
+我们的结果清晰地表明，与 Hyper-V 副本配合使用的 Azure Site Recovery 可以针对大型群集以最小的开销很好地进行扩展。  Azure Site Recovery 提供了简单的部署、复制、管理和监视。 Hyper-V 副本为成功进行复制扩展提供了必要的基础结构。 为规划最佳的部署，建议下载 [Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057)。
 
 ## <a name="test-environment-details"></a>测试环境详细信息
 
@@ -187,4 +186,3 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 ## <a name="next-steps"></a>后续步骤
 
 [设置两个本地 VMM 站点之间的复制](site-recovery-vmm-to-vmm.md)
-

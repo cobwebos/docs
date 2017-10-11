@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
-ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
 ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Azure Mobile Engagement 的 Android SDK 集成
 > [!div class="op_single_selector"]
@@ -37,7 +36,7 @@ ms.lasthandoff: 07/18/2017
 
 ## <a name="advanced-features"></a>高级功能
 ### <a name="reporting-features"></a>报告功能
-你可以添加以下功能：
+可以添加以下功能：
 
 1. [高级报告选项](mobile-engagement-android-advanced-reporting.md)
 2. [位置报告选项](mobile-engagement-android-location-reporting.md)
@@ -68,5 +67,4 @@ ms.lasthandoff: 07/18/2017
 
 ## <a name="upgrade-procedures"></a>升级过程
 如果已将旧版本的 SDK 集成到应用程序中，则请参阅[升级过程](mobile-engagement-android-upgrade-procedure.md)。
-
 

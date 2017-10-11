@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: d0247ba0242af05ca6dcd8049ff9116683538fa5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
 可靠集合可让你编写高度可用、可缩放且低延迟的云应用程序，就像编写单计算机应用程序一样。 **Microsoft.ServiceFabric.Data.Collections** 命名空间中的类提供一组自动使状态具备高可用性的集合。 开发人员只需面向可靠集合 API 编程，并让可靠集合管理复制状态和本地状态。
@@ -36,7 +35,7 @@ Reliable Collections 与其他高可用性技术（如 Redis、Azure 表服务�
 * 可复制：复制状态更改以实现高可用性。
 * 可保存：数据会保存至磁盘，可在发生大规模中断（例如，数据中心断电）时保障持续性。
 * 异步：API 采用异步模式，以确保在产生 IO 时不会阻止线程。
-* 事务性：API 利用事务抽象方法，让你可以在某个服务内轻松管理多个可靠集合。
+* 事务性：API 利用事务抽象方法，让可以在某个服务内轻松管理多个可靠集合。
 
 Reliable Collections 提供全新的非常一致保证，使应用程序状态推断变得更轻松。
 非常一致通过以下方法实现：确保仅对副本的多数仲裁（包括主副本）记录整个事务后，才完成事务提交。
@@ -68,4 +67,3 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
 * 其他
   * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
   * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-

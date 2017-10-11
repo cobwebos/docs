@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2a1445afa2c2fca1a31ad9c012b9c8a917ebf65c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="advanced-reporting-with-engagement-on-android"></a>在 Android 上使用 Engagement 执行高级报告
 > [!div class="op_single_selector"]
@@ -35,17 +34,17 @@ ms.lasthandoff: 11/17/2016
 ## <a name="prerequisites"></a>先决条件
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
 
-你完成的教程相当直接且简单，但是有一些你可以选择的高级选项。
+完成的教程相当直接且简单，但是有一些可以选择的高级选项。
 
-## <a name="modifying-your-activity-classes"></a>修改你的 `Activity` 类
-在[入门教程](mobile-engagement-android-get-started.md)中，你只需使你的 `*Activity` 子类继承自相应的 `Engagement*Activity` 类。 例如，如果你的旧活动扩展了 `ListActivity`，可能会使其扩展 `EngagementListActivity`。
+## <a name="modifying-your-activity-classes"></a>修改 `Activity` 类
+在[入门教程](mobile-engagement-android-get-started.md)中，只需使 `*Activity` 子类继承自相应的 `Engagement*Activity` 类。 例如，如果旧活动扩展了 `ListActivity`，可能会使其扩展 `EngagementListActivity`。
 
 > [!IMPORTANT]
 > 使用 `EngagementListActivity` 或 `EngagementExpandableListActivity` 时，请确保对 `requestWindowFeature(...);` 的任何调用在对 `super.onCreate(...);` 的调用之前进行，否则会发生崩溃。
 > 
 > 
 
-你可以在 `src` 文件夹中找到这些类，然后将其复制到你的项目中。 该类还存在于 **JavaDoc** 中。
+可以在 `src` 文件夹中找到这些类，然后将其复制到项目中。 该类还存在于 **JavaDoc** 中。
 
 ## <a name="alternate-method-call-startactivity-and-endactivity-manually"></a>备用方法：手动调用 `startActivity()` 和 `endActivity()`
 如果无法或不想重载 `Activity` 类，则可以通过直接调用 `EngagementAgent` 方法来启动和结束活动。
@@ -90,9 +89,9 @@ ms.lasthandoff: 11/17/2016
        ... Your code...
      }
 
-你可以为 `Application.onTerminate()`、`Application.onLowMemory()` 和 `Application.onConfigurationChanged(...)` 执行相同的操作。
+可以为 `Application.onTerminate()`、`Application.onLowMemory()` 和 `Application.onConfigurationChanged(...)` 执行相同的操作。
 
-你也可以扩展 `EngagementApplication`，而不是扩展 `Application`：仅在当前进程不是托管 Engagement 服务的进程时，回调 `Application.onCreate()` 执行进程检查并调用 `Application.onApplicationProcessCreate()`，相同的规则适用于其他回调。
+也可以扩展 `EngagementApplication`，而不是扩展 `Application`：仅在当前进程不是托管 Engagement 服务的进程时，回调 `Application.onCreate()` 执行进程检查并调用 `Application.onApplicationProcessCreate()`，相同的规则适用于其他回调。
 
 ## <a name="tags-in-the-androidmanifestxml-file"></a>AndroidManifest.xml 文件中的标记
 在 AndroidManifest.xml 文件的服务标记中，`android:label` 属性允许选择 Engagement 服务名称，它显示在最终用户手机的“正在运行的服务”屏幕中。 我们建议将此属性设置为 `"<Your application name>Service"`（例如，`"AcmeFunGameService"`）。
@@ -100,10 +99,9 @@ ms.lasthandoff: 11/17/2016
 指定 `android:process` 属性可确保 Engagement 服务在其自己的进程（在与应用程序相同的进程中运行 Engagement 会影响主要/UI 线程的响应能力）中运行。
 
 ## <a name="building-with-proguard"></a>使用 ProGuard 生成
-如果使用 ProGuard 生成应用程序包，则需要保留某些类。 你可以使用以下配置代码段：
+如果使用 ProGuard 生成应用程序包，则需要保留某些类。 可以使用以下配置代码段：
 
     -keep public class * extends android.os.IInterface
     -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
     <methods>;
      }
-

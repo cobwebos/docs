@@ -13,13 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: HT
-ms.sourcegitcommit: 8fc320ef8919f177e8dea433660489f00c9547bb
 ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
---- 
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
+---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence AppSource 发布指南
 
 ## <a name="overview"></a>概述
@@ -79,7 +78,7 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 ## <a name="provide-info-for-microsoft-sellers"></a>提供 Microsoft 卖家信息
 对于合作伙伴而言，AppSource 的关键价值主张之一是能够与 Microsoft 卖方协作，面向潜在客户定位合作伙伴应用。
 
-填写 [Microsoft 卖方的合作伙伴解决方案信息](https://aka.ms/aapartnerappinfo)并将其发送到 [appsourcecissupport@microsoft.com](mailto:appsourcecissupport@microsoft.com?subject=Request%20publisher%20account%20creation%20for%20%3cPartner%20Name%3e%20and%20whitelist%20owner/contributer%20AAD/MSA%20email%20IDs)。需要执行此步骤才能使 Cortana Intelligence 应用获得批准进行发布。
+填写 [Microsoft 卖方的合作伙伴解决方案信息](https://aka.ms/aapartnerappinfo)并将其发送到 [appsourcecissupport@microsoft.com](mailto:appsourcecissupport@microsoft.com?subject=Request%20publisher%20account%20creation%20for%20%3cPartner%20Name%3e%20and%20whitelist%20owner/contributer%20AAD/MSA%20email%20IDs)。 需要执行此步骤才能使 Cortana Intelligence 应用获得批准进行发布。
 
 ## <a name="build-a-compelling-customer-walkthrough-on-appsource"></a>在 AppSource 上构建具有吸引力的客户演练
 首先，在 AppSource 上查看 [Neal Analytics 库存优化](https://appsource.microsoft.com/en-us/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)。 除了试用体验的入口点之外，AppSource 中的每个应用条目还具有标题、摘要（不超过 100 个字符）、说明（不超过 1300 个字符）、图像、视频（可选）和 pdf 文档。 合作伙伴应利用所有这些信息构建具有吸引力的客户体验。
@@ -116,5 +115,4 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 通过在 AppSource 上发布应用可获得的回报水平主要取决于如何影响目标受众。 请参阅[在 AppSource 上黑客式营销 Cortana Intelligence 应用](http://aka.ms/aagrowthhackguide)，详细了解如何使回报最大化。
 
 如果有任何问题或建议，请通过以下电子邮件地址联系我们：<appsourcecissupport@microsoft.com>。
-
 

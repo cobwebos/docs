@@ -1,6 +1,6 @@
 ---
 title: "为工作或学校帐户设置双重验证 | Microsoft Docs"
-description: "如果公司已配置 Azure 多重身份验证，系统会提示注册双重验证。 了解设置方法。 "
+description: "如果公司已配置 Azure 多重身份验证，系统会提示你注册双重验证。 了解设置方法。 "
 services: multi-factor-authentication
 keywords: "如何使用 azure 目录, 云中的 active directory, active directory 教程"
 documentationcenter: 
@@ -16,15 +16,14 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 3499a7b23a7b4bdd44b5d9e8d7e750681efc3825
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>为帐户设置双重验证
-双重验证是额外的安全保障步骤，通过加大他人攻破的难度，帮助保护帐户安全。 如果正在阅读本文，可能已收到公司或学校管理员发送的有关多重身份验证的电子邮件。 或者，可能已尝试登录，但收到要求设置其他安全验证的消息。 如果是这种情况，**除非完成自动注册过程，否则无法登录**。
+双重验证是额外的安全保障步骤，通过加大他人攻破的难度，帮助保护帐户安全。 如果正在阅读本文，可能会收到来自工作或学校管理员的有关多重身份验证的电子邮件。 或者，也许会在尝试登录时收到消息，要求设置其他安全性验证。 如果是这种情况，**除非完成自动注册过程，否则无法登录**。
 
 本文可帮助你设置工作或学校帐户。 如果要为个人 Microsoft 帐户启用双重验证，请参阅[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)。
 
@@ -44,8 +43,8 @@ IT 部门要求开始使用双重验证时，会出现显示“管理员要求�
 
 | 联系方式 | 说明 |
 | --- | --- |
-| [移动应用](#use-a-mobile-app-as-the-contact-method) |- 接收验证通知。 此选项将通知推送到智能手机或平板电脑上的验证器应用。 查看通知，如果合法，则在应用中选择“身份验证”。 公司或学校可能要求在身份验证之前，输入 PIN。<br>- 使用验证码。 在此模式下，验证器应用生成每隔 30 秒更新一次的验证码。 在登录界面中输入最新验证码。<br>Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
-| [移动电话呼叫或短信](#use-your-mobile-phone-as-the-contact-method) |- 电话呼叫向你提供的手机号码进行自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证。<br>- 短信发送包含验证码的短信。 遵循短信中的提示，回复短信或在登录界面中输入提供的验证码。 |
+| [移动应用](#use-a-mobile-app-as-the-contact-method) |- **接收验证通知。** 此选项将通知推送到智能手机或平板电脑上的验证器应用。 查看通知，如果合法，则在应用中选择“身份验证”。 公司或学校可能要求在身份验证之前，输入 PIN。<br>- **使用验证码。** 在此模式下，验证器应用生成每隔 30 秒更新一次的验证码。 在登录界面中输入最新验证码。<br>Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
+| [移动电话呼叫或短信](#use-your-mobile-phone-as-the-contact-method) |- **电话呼叫**向已提供的手机号码进行自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证。<br>- **短信**发送包含验证码的短信。 遵循短信中的提示，回复短信或在登录界面中输入提供的验证码。 |
 | [办公电话呼叫](#use-your-office-phone-as-the-contact-method) |向已提供的电话号码进行自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证。 |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>使用移动应用作为联系方式
@@ -86,7 +85,7 @@ IT 部门要求开始使用双重验证时，会出现显示“管理员要求�
 1. 从下拉列表中选择“身份验证电话”。  
 
     ![设置](./media/multi-factor-authentication-end-user-first-time/phone.png)  
-2. 通过下拉列表选择国家/地区，并输入手机号码。
+2. 从下拉列表中选择国家/地区，并输入手机号码。
 3. 选择想要使用的手机通信模式：短信或呼叫。
 4. 选择“联系我”验证电话号码。 根据所选模式，我们将发送短信或拨打电话。 按照屏幕上的说明操作，并选择“验证”。
 5. 此时，系统会提示为非浏览器应用（例如 Outlook 2010 或更低版本，或 Apple 设备上的本机电子邮件应用）设置应用密码。 之所以执行此操作是因为某些应用不支持双重验证。 如果不使用这些应用，请单击“完成”并跳过其余步骤。
@@ -107,5 +106,4 @@ IT 部门要求开始使用双重验证时，会出现显示“管理员要求�
 * 更改首选项和[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)
 * 为不支持双重验证的本地设备应用设置[应用密码](multi-factor-authentication-end-user-app-passwords.md)。
 * 使用 [Microsoft Authenticator 应用](microsoft-authenticator-app-how-to.md)完成快速、安全的身份验证（即使没有手机网络服务）。
-
 

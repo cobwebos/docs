@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 1414baf9e51d648cc3a46c4f8635040b4d276910
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>如何使用 Azure CLI 2.0 管理 Azure DNS 中的 DNS 区域
 
 > [!div class="op_single_selector"]
@@ -47,15 +45,15 @@ ms.lasthandoff: 06/01/2017
 
 ### <a name="before-you-begin"></a>开始之前
 
-在开始配置之前，请确认你具有以下各项。
+在开始配置之前，请确保具备以下各项。
 
-* Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 安装最新版本的 Azure CLI 2.0（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅 [安装 Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-打开控制台窗口并使用你的凭据进行身份验证。 有关详细信息，请参见“从 Azure CLI 登录 Azure”
+打开控制台窗口并使用凭据进行身份验证。 有关详细信息，请参见“从 Azure CLI 登录 Azure”
 
 ```
 az login
@@ -198,5 +196,4 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 了解如何在 DNS 区域中[管理记录集和记录](dns-getstarted-create-recordset-cli.md)。
 
 了解如何[将域委派给 Azure DNS](dns-domain-delegation.md)。
-
 

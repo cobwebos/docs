@@ -1,6 +1,6 @@
 ---
 title: "使用 Intel NUC 将网关连接到 Azure IoT 套件 | Microsoft Docs"
-description: "使用 Microsoft IoT 商业网关工具包和远程监视预配置解决方案。 使用 Azure IoT Edge 网关连接到远程监视解决方案，将模拟的遥测数据发送到云，并响应从解决方案仪表板调用的方法。"
+description: "使用 Microsoft IoT 商业网关工具包和远程监视预配置解决方案。 使用 Azure IoT Edge 网关连接到远程监视解决方案，将模拟遥测数据发送到云，并响应从解决方案仪表板调用的方法。"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 42e82793b73a941df08e438d9e04669a386a8368
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 9ed57d3c23e2adbd42c054f33c8ed46e3d6c9792
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a>将 Azure IoT Edge 网关连接到远程监视预配置解决方案，并发送模拟遥测
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/08/2017
 
 ## <a name="overview"></a>概述
 
-在本教程中，你将完成以下步骤：
+在本教程中，将完成以下步骤：
 
 - 将远程监视预配置解决方案的实例部署到 Azure 订阅。 此步骤会自动部署并配置多个 Azure 服务。
 - 将 Intel NUC 网关设备设置为与计算机和远程监视解决方案通信。
@@ -43,11 +42,11 @@ ms.lasthandoff: 06/08/2017
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> 远程监视解决方案在 Azure 订阅中预配一组 Azure 服务。 部署反映实际企业体系结构。 若要避免产生不必要的 Azure 使用费用，请在使用完预配置解决方案的实例后，在 azureiotsuite.com 上将其删除。 如果再次需要预配置解决方案，可以轻松地重新创建它。 若要详细了解如何在远程监视解决方案运行时减少消耗，请参阅[出于演示目的配置 Azure IoT 套件预配置解决方案][lnk-demo-config]。
+> 远程监视解决方案在 Azure 订阅中预配一组 Azure 服务。 部署反映实际企业体系结构。 要避免产生不必要的 Azure 使用费用，请在使用完预配置解决方案的实例后，在 azureiotsuite.com 上将其删除。 如果再次需要预配置解决方案，可以轻松地重新创建它。 若要详细了解如何在远程监视解决方案运行时减少消耗，请参阅[出于演示目的配置 Azure IoT 套件预配置解决方案][lnk-demo-config]。
 
 [!INCLUDE [iot-suite-gateway-kit-view-solution](../../includes/iot-suite-gateway-kit-view-solution.md)]
 
-重复以前的步骤，使用设备 ID（例如 **device02**）添加第二个设备。 此示例将数据从网关中的模拟设备发送到远程监视解决方案。
+重复以前的步骤，使用设备 ID（例如 **device02**）添加第二个设备。 该示例从网关中的两台模拟设备向远程监视解决方案发送数据。
 
 [!INCLUDE [iot-suite-gateway-kit-prepare-nuc-connectivity](../../includes/iot-suite-gateway-kit-prepare-nuc-connectivity.md)]
 
@@ -77,10 +76,10 @@ sed -i -e 's/\r$//' build.sh
 
 ## <a name="configure-and-run-the-iot-edge-gateway"></a>配置和运行 IoT Edge 网关
 
-现在可以配置 IoT Edge 网关，将模拟遥测发送到远程监视仪表板。 若要详细了解如何配置网关和 IoT Edge 模块，请参阅 [Azure IoT Edge 概念][lnk-gateway-concepts]。
+现在可以配置 IoT Edge 网关，将模拟遥测数据发送到远程监视仪表板。 若要详细了解如何配置网关和 IoT Edge 模块，请参阅 [Azure IoT Edge 概念][lnk-gateway-concepts]。
 
 > [!TIP]
-> 在本教程中，你在 Intel NUC 上使用标准的 `vi` 文本编辑器。 如果以前没有用过 `vi`，则应完成入门教程（例如 [Unix - vi 编辑器教程][lnk-vi-tutorial]），让自己熟悉该编辑器。 也可使用命令 `smart install nano -y` 安装用户友好性更强的 [nano](https://www.nano-editor.org/) 编辑器。
+> 在本教程中，在 Intel NUC 上使用标准的 `vi` 文本编辑器。 如果以前没有用过 `vi`，则应完成入门教程（例如 [Unix - vi 编辑器教程][lnk-vi-tutorial]），让自己熟悉该编辑器。 也可使用命令 `smart install nano -y` 安装用户友好性更强的 [nano](https://www.nano-editor.org/) 编辑器。
 
 使用以下命令在 **vi** 编辑器中打开示例配置文件：
 
@@ -136,7 +135,7 @@ cd ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator
 
 ## <a name="view-the-telemetry"></a>查看遥测
 
-IoT Edge 网关现在正将模拟遥测发送到远程监视解决方案。 可以在解决方案仪表板上查看遥测。
+IoT Edge 网关现在正将模拟遥测数据发送到远程监视解决方案。 可以在解决方案仪表板上查看遥测。
 
 - 导航到解决方案仪表板。
 - 在“要查看的设备”下拉列表中选择在网关中配置的两个设备之一。

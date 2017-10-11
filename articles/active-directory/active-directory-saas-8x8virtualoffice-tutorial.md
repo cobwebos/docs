@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: d8dcf0171b93fec15347e810a1b525bd815dbf04
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>教程：Azure Active Directory 与 8x8 Virtual Office 的集成
 
@@ -268,5 +267,4 @@ ms.lasthandoff: 06/16/2017
 [201]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_203.png
-
 

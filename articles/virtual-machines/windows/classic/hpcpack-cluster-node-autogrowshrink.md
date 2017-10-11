@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 0dc0d15c64d8951c3c457df73588c37418a3c8a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>在 Azure 中根据群集工作负荷自动扩展和收缩 HPC Pack 群集资源
 如果在 HPC Pack 群集中部署 Azure“突发”节点，或者在 Azure VM 中创建 HPC Pack 群集，可能希望有一种方法能够根据群集上的工作负荷自动扩展或收缩群集资源（例如节点或核心）。 以这种方式缩放群集资源，可更有效地使用 Azure 资源并控制其成本。
@@ -44,7 +43,7 @@ ms.lasthandoff: 03/25/2017
 
   1. 部署群集后，远程桌面将连接到一个头节点。
 
-  2. 将证书（带私钥的 PFX 格式）上载到每个头节点并安装到 Cert:\LocalMachine\My 和 Cert:\LocalMachine\Root。
+  2. 将证书（带私钥的 PFX 格式）上传到每个头节点并安装到 Cert:\LocalMachine\My 和 Cert:\LocalMachine\Root。
 
   3. 以管理员身份启动 Azure PowerShell，并在一个头节点上运行以下命令：
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 03/25/2017
 
     其中
 
-    **DisplayName** - Azure Active 应用程序的显示名称。 如果该应用程序不存在，将在 Azure Active Directory 中创建它。
+    **DisplayName** - Azure Active 应用程序的显示名称。 如果该应用程序不存在，会在 Azure Active Directory 中创建它。
 
     **主页** - 应用程序的主页。 可以配置虚拟 URL，如前面的示例所示。
 
@@ -91,9 +90,9 @@ ms.lasthandoff: 03/25/2017
 
     或者，使用下一部分所述的 HPC PowerShell 命令在部署群集后启用 **AutoGrowShrink** 群集属性。 若要对此做好准备，先完成以下步骤：
 
-  1. 在头节点和 Azure 订阅上配置 Azure 管理证书。 对于测试部署，可以使用 HPC Pack 在头节点上安装的默认 Microsoft HPC Azure 自签名证书，然后将该证书上载到 Azure 订阅。 有关选项和步骤，请参阅 [TechNet 库指南](https://technet.microsoft.com/library/gg481759.aspx)。
+  1. 在头节点和 Azure 订阅上配置 Azure 管理证书。 对于测试部署，可以使用 HPC Pack 在头节点上安装的默认 Microsoft HPC Azure 自签名证书，然后将该证书上传到 Azure 订阅。 有关选项和步骤，请参阅 [TechNet 库指南](https://technet.microsoft.com/library/gg481759.aspx)。
 
-  2. 在头节点上运行 **regedit**，转到 HKLM\SOFTWARE\Micorsoft\HPC\IaasInfo，然后添加字符串值。 将“值”名称设置为“ThumbPrint”，将“值”数据设置为步骤 1 中的证书指纹。
+  2. 在头节点上运行 **regedit**，转到 HKLM\SOFTWARE\Micorsoft\HPC\IaasInfo，并添加字符串值。 将“值”名称设置为“ThumbPrint”，将“值”数据设置为步骤 1 中的证书指纹。
 
 ### <a name="hpc-powershell-commands-to-set-the-autogrowshrink-property"></a>用于设置 AutoGrowShrink 属性的 HPC PowerShell 命令
 下面是 HPC PowerShell 命令示例，它们可以设置 **AutoGrowShrink** 并使用其他参数来优化其行为。 请参阅本文稍后的 [AutoGrowShrink 参数](#AutoGrowShrink-parameters)以获取完整的设置列表。
@@ -150,10 +149,10 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
   > HPC Pack QFE KB3134307 将 **ParamSweepTasksPerCore** 更改为 **TasksPerResourceUnit**。 它基于作业资源类型，并且可以是节点、套接字或核心。
   >
   >
-* **GrowThreshold** - 用于触发自动扩展的排队任务的阈值。 默认值为 1，这意味着，如果有 1 个或多个任务处于排队状态，将自动扩展节点。
+* **GrowThreshold** - 用于触发自动扩展的排队任务的阈值。 默认值为 1，这意味着，如果有 1 个或多个任务处于排队状态，会自动扩展节点。
 * **GrowInterval** - 触发自动扩展的间隔（以分钟为单位）。 默认间隔为 5 分钟。
 * **ShrinkInterval** - 触发自动收缩的间隔（以分钟为单位）。 默认间隔为 5 分钟。|
-* **ShrinkIdleTimes** - 指示节点为空闲状态之前，持续检查收缩的次数。 默认值为 3 次。 例如，如果 **ShrinkInterval** 为 5 分钟，HPC Pack 将每隔 5 分钟检查一次节点是否处于空闲状态。 如果节点连续 3 次检查（15 分钟）都处于空闲状态，HPC Pack 将收缩该节点。
+* **ShrinkIdleTimes** - 指示节点为空闲状态之前，持续检查收缩的次数。 默认值为 3 次。 例如，如果 **ShrinkInterval** 为 5 分钟，HPC Pack 将每隔 5 分钟检查一次节点是否处于空闲状态。 如果节点连续 3 次检查（15 分钟）都处于空闲状态，HPC Pack 会收缩该节点。
 * **ExtraNodesGrowRatio** - 要为消息传递接口 (MPI) 作业扩展的节点附加百分比。 默认值为 1，表示 HPC Pack 针对 MPI 作业扩展节点 1%。
 * **GrowByMin** - 用于指示自动扩展策略是否基于作业所需的最少资源的开关。 默认值为 false，这意味着 HPC Pack 将基于作业所需的资源数上限为作业扩展节点。
 * **SoaJobGrowThreshold** - 传入 SOA 请求以触发自动扩展过程的阈值。 默认值为 50000。
@@ -179,7 +178,7 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
     Set-HpcClusterProperty -ExtraNodesGrowRatio 10
 
 ### <a name="soa-example"></a>SOA 示例
-默认情况下，**SoaJobGrowThreshold** 设置为 50000，**SoaRequestsPerCore** 设置为 200000。 如果提交一个包含 70000 个请求的 SOA 作业，则会有一个排队任务，并且传入请求数为 70000。 在此情况下，HPC Pack 将会针对排队任务扩展 1 个核心，并针对传入请求扩展 (70000 - 50000)/20000 = 1 个核心，因此总共为此 SOA 作业扩展了 2 个核心。
+默认情况下，**SoaJobGrowThreshold** 设置为 50000，**SoaRequestsPerCore** 设置为 200000。 如果提交一个包含 70000 个请求的 SOA 作业，则会有一个排队任务，并且传入请求数为 70000。 在此情况下，HPC Pack 会针对排队任务扩展 1 个核心，针对传入请求扩展 (70000 - 50000)/20000 = 1 个核心，因此总共为此 SOA 作业扩展 2 个核心。
 
 ## <a name="run-the-azureautogrowshrinkps1-script"></a>运行 AzureAutoGrowShrink.ps1 脚本
 ### <a name="prerequisites"></a>先决条件
@@ -199,7 +198,7 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
 
     如需 **ConfigARMAutoGrowShrinkCert.ps1** 的详细信息，请运行 `Get-Help .\ConfigARMAutoGrowShrinkCert.ps1 -Detailed`。
 
-* **对于 Azure VM（经典部署模型）中部署的群集** - 请在头节点 VM 上运行脚本，因为相关的 **Start-HpcIaaSNode.ps1** 和 **Stop-HpcIaaSNode.ps1** 脚本安装在这个位置。 这些脚本还需要 Azure 管理证书或发布设置文件（请参阅[管理 Azure 的 HPC Pack 群集中的计算节点](hpcpack-cluster-node-manage.md)）。 请确保你需要的所有计算节点 VM 都已添加到群集。 它们可能处于停止状态。
+* **对于 Azure VM（经典部署模型）中部署的群集** - 请在头节点 VM 上运行脚本，因为相关的 **Start-HpcIaaSNode.ps1** 和 **Stop-HpcIaaSNode.ps1** 脚本安装在这个位置。 这些脚本还需要 Azure 管理证书或发布设置文件（请参阅[管理 Azure 的 HPC Pack 群集中的计算节点](hpcpack-cluster-node-manage.md)）。 请确保需要的所有计算节点 VM 都已添加到群集。 它们可能处于停止状态。
 
 
 
@@ -236,7 +235,7 @@ AzureAutoGrowShrink.ps1 -UseLastConfigurations [-ArgFile <String>] [-LogFilePref
 * **ShrinkCheckIdleTimes** - 在指示节点处于空闲状态之前，连续收缩检查（由 **ShrinkCheckIntervalMins** 分隔）的次数。
 * **UseLastConfigurations** - 以前的配置保存在参数文件中。
 * **ArgFile** - 用于保存和更新运行脚本的配置的参数文件名称。
-* **LogFilePrefix** - 日志文件的前缀名称。 你可以指定一个路径。 默认情况下，日志将写入当前工作目录。
+* **LogFilePrefix** - 日志文件的前缀名称。 可以指定一个路径。 默认情况下，日志将写入当前工作目录。
 
 ### <a name="example-1"></a>示例 1
 下面的示例将使用“默认 AzureNode 模板”部署的 Azure 突发节点配置为自动增加和减少。 如果所有节点最初都处于“未部署”状态，则至少启动了 3 个节点。 如果已排队作业的数量超过 8 个，则脚本会启动节点，直至节点数量超过已排队作业数与 **NumOfQueuedJobsPerNodeToGrow** 的比。 如果发现一个节点连续 3 次闲置，则会停止此节点。
@@ -255,4 +254,3 @@ AzureAutoGrowShrink.ps1 -UseLastConfigurations [-ArgFile <String>] [-LogFilePref
 ```powershell
 .\AzureAutoGrowShrink.ps1 -NodeTemplates 'Default ComputeNode Template' -JobTemplates 'Default' -NodeType ComputeNodes -NumOfActiveQueuedTasksPerNodeToGrow 10 -NumOfActiveQueuedTasksToGrowThreshold 15 -NumOfInitialNodesToGrow 5 -GrowCheckIntervalMins 1 -ShrinkCheckIntervalMins 1 -ShrinkCheckIdleTimes 10 -ArgFile 'IaaSVMComputeNodes_Arg.xml' -LogFilePrefix 'IaaSVMComputeNodes_log'
 ```
-

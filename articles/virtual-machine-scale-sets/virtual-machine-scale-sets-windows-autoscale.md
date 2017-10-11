@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 30d8a26f337c00390b1da51e85a0c01ea0d816e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 91f731bec46c005221f4e66e95822994070d4c26
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>自动缩放虚拟机规模集中的虚拟机
 使用虚拟机规模集可以轻松地将相同的虚拟机作为集来进行部署和管理。 规模集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。 有关规模集的详细信息，请参阅[虚拟机规模集](virtual-machine-scale-sets-overview.md)。
 
 本教程演示如何创建 Windows 虚拟机的规模集，并自动缩放集中的虚拟机。 通过使用 Azure PowerShell 创建和部署 Azure Resource Manager 模板，可创建规模集并设置缩放。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解有关规模集自动缩放的详细信息，请参阅[自动缩放和虚拟机规模集](virtual-machine-scale-sets-autoscale-overview.md)。
 
-在本文章中，将部署以下资源和扩展：
+本文涉及部署以下资源和扩展：
 
 * Microsoft.Storage/storageAccounts
 * Microsoft.Network/virtualNetworks
@@ -49,7 +48,7 @@ ms.lasthandoff: 04/27/2017
 2. **创建存储帐户** - 此存储帐户是存储模板的位置。 使用 [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) 创建名为 **vmsstestsa** 的存储帐户。
 
 ## <a name="step-3-create-the-template"></a>步骤 3：创建模板
-借助 Azure Resource Manager 模板，你可以使用资源和关联部署参数的 JSON 描述来统一部署和管理 Azure 资源。
+借助 Azure Resource Manager 模板，可以使用资源和关联部署参数的 JSON 描述来统一部署和管理 Azure 资源。
 
 1. 在常用的编辑器中，创建文件 C:\VMSSTemplate.json 并添加初始 JSON 结构，以支持模板。
 
@@ -218,7 +217,7 @@ ms.lasthandoff: 04/27/2017
     },
     ```
 
-8. 添加单独虚拟机使用的网络接口资源。 由于规模集中的虚拟机不可使用公共 IP 地址访问，因此将在相同的虚拟网络中创建单独虚拟机，并使用它来远程访问虚拟机。
+8. 添加单独虚拟机使用的网络接口资源。 由于规模集中的虚拟机不可使用公共 IP 地址访问，因此会在相同的虚拟网络中创建单独虚拟机，并使用它来远程访问虚拟机。
 
     ```json  
     {
@@ -295,7 +294,7 @@ ms.lasthandoff: 04/27/2017
     },
     ```
 
-10. 添加虚拟机规模集资源，并指定将在规模集中的所有虚拟机上安装的诊断扩展。 此资源的许多设置都与虚拟机资源相似。 主要区别在于指定规模集中虚拟机数量的容量元素和指定虚拟机更新方式的 upgradePolicy。 在所有存储帐户都根据 dependsOn 元素的指定创建之前，不会创建规模集。
+10. 添加虚拟机规模集资源，并指定会在规模集中的所有虚拟机上安装的诊断扩展。 此资源的许多设置都与虚拟机资源相似。 主要区别在于指定规模集中虚拟机数量的容量元素和指定虚拟机更新方式的 upgradePolicy。 在所有存储帐户都根据 dependsOn 元素的指定创建之前，不会创建规模集。
 
     ```json
     {
@@ -519,7 +518,7 @@ ms.lasthandoff: 04/27/2017
     New-AzureStorageContainer -Name $containerName -Context $ctx  -Permission Blob
     ```
 
-5. 将模板文件上载到新容器。
+5. 将模板文件上传到新容器。
 
     ```powershell   
     $blobName = "VMSSTemplate.json"
@@ -534,7 +533,7 @@ ms.lasthandoff: 04/27/2017
 New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
 ```
 
-当你按 Enter 时，系统将提示你为所指定的变量提供值。 提供以下值：
+按 Enter 时，系统会提示为所指定的变量提供值。 提供以下值：
 
 ```powershell
 vmName: vmsstestvm1
@@ -553,12 +552,12 @@ vmName: vmsstestvm1
 > 
 
 ## <a name="step-6-monitor-resources"></a>步骤 6：监视资源
-你可以使用以下方法获取有关虚拟机规模集的一些信息：
+可以使用以下方法获取有关虚拟机规模集的一些信息：
 
 * Azure 门户 - 当前使用门户可以获取有限数量的信息。
-* [Azure 资源浏览器](https://resources.azure.com/) - 要浏览规模集的当前状态，这是最好的工具。 遵循此路径，你应该看到所创建的规模集的实例视图：
+* [Azure 资源浏览器](https://resources.azure.com/) - 要浏览规模集的当前状态，这是最好的工具。 遵循此路径，应该看到所创建的规模集的实例视图：
   
-    订阅 > {你的订阅} > resourceGroups > vmsstestrg1 > 提供程序 > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
+    订阅 > {订阅} > resourceGroups > vmsstestrg1 > 提供程序 > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
 * Azure PowerShell - 使用此命令可获取一些信息：
 
@@ -572,13 +571,13 @@ vmName: vmsstestvm1
   Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceView
   ```
 
-* 就像连接任何其他虚拟机一样连接到单独虚拟机，然后可以远程访问规模集中的虚拟机，以监视单个进程。
+* 就像连接任何其他虚拟机一样连接到单独虚拟机，并可以远程访问规模集中的虚拟机，以监视单个进程。
 
 > [!NOTE]
 > 用于获取有关规模集的信息的完整 REST API 可在[虚拟机规模集](https://msdn.microsoft.com/library/mt589023.aspx)中找到
 
 ## <a name="step-7-remove-the-resources"></a>步骤 7：删除资源
-由于你需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。 你不需要单独从资源组中删除每个资源， 删除资源组，其中包含的所有资源即会自动删除。
+由于需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。 不需要单独从资源组中删除每个资源， 删除资源组，其中包含的所有资源即会自动删除。
 
   ```powershell
   Remove-AzureRmResourceGroup -Name vmsstestrg1
@@ -596,5 +595,4 @@ vmName: vmsstestvm1
 * 在 [Azure 监视器 PowerShell 快速入门示例](../monitoring-and-diagnostics/insights-powershell-samples.md)中查找 Azure 监视器监视功能的示例
 * 若要了解有关通知功能的相关信息，请参阅[使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
 * 了解如何[使用审核日志在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
-
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scheduler-limits-and-defaults"></a>计划程序限制和默认值
 ## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>计划程序配额、限制、默认值和中止值
@@ -45,10 +45,4 @@ ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
  [Azure 计划程序的高可用性和可靠性](scheduler-high-availability-reliability.md)
 
  [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

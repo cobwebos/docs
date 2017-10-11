@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure 的 HPC Pack 群集中的 Linux 计算节点入门
 在 Azure 中设置 [Windows HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) 群集，该群集包含运行 Windows Server 的头节点和运行受支持 Linux 分发版的多个计算节点。 了解可用于在群集的 Linux 节点与 Windows 头节点之间移动数据的选项。 了解如何将 Linux HPC 作业提交到群集。
@@ -161,7 +160,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
     ![部署][deploy]
    
    > [!NOTE]
-   > 在本示例中，由于未指定 **-LogFile** 参数，脚本会自动生成日志文件。 日志不是实时写入的，而是在验证和部署结束时收集的。 如果 PowerShell 进程已停止但脚本仍在运行，一些日志会丢失。
+   > 在此示例中，由于未指定 **-LogFile** 参数，脚本会自动生成日志文件。 日志不是实时写入的，而是在验证和部署结束时收集的。 如果 PowerShell 进程已停止但脚本仍在运行，会丢失一些日志。
    > 
    > 
 
@@ -239,7 +238,7 @@ clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.windows.net/rd
 > 
 
 ### <a name="nfs-server"></a>NFS 服务器
-NFS 服务使用户能够在运行 Windows Server 2012 操作系统的计算机之间使用 SMB 协议共享和迁移文件，并在基于 Linux 的计算机之间使用 NFS 协议共享和迁移文件。 NFS 服务器和所有其他节点必须部署在同一虚拟网络中。 与 SMB 共享相比，它提供了与 Linux 节点更好的兼容性。 例如，它支持文件链接。
+NFS 服务使你能够在运行 Windows Server 2012 操作系统的计算机之间使用 SMB 协议共享和迁移文件，并在基于 Linux 的计算机之间使用 NFS 协议共享和迁移文件。 NFS 服务器和所有其他节点必须部署在同一虚拟网络中。 与 SMB 共享相比，它提供了与 Linux 节点更好的兼容性。 例如，它支持文件链接。
 
 1. 若要安装和设置 NFS 服务器，请按照[网络文件系统第一个共享端到端的服务器](http://blogs.technet.com/b/filecab/archive/2012/10/08/server-for-network-file-system-first-share-end-to-end.aspx)中的步骤操作。
    
@@ -316,4 +315,3 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) 工具�
 [nfsshare]:media/hpcpack-cluster/nfsshare.png
 [nfsperm]:media/hpcpack-cluster/nfsperm.png
 [nfsmanage]:media/hpcpack-cluster/nfsmanage.png
-

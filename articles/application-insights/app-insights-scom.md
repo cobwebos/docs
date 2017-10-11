@@ -1,6 +1,6 @@
 ---
 title: "SCOM 与 Application Insights 集成 | Microsoft 文档"
-description: "如果你是 SCOM 用户，请监视性能并诊断 Application Insights 的问题。 全面的仪表板、智能警报、功能强大的诊断工具和分析查询。"
+description: "如果是 SCOM 用户，请监视性能并诊断 Application Insights 的问题。 全面的仪表板、智能警报、功能强大的诊断工具和分析查询。"
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 68ec072b972e38d8cd020adda4dcc85cdaccfb76
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 9c205465981fabdbb696cdc44f765532bbb992b5
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>为 SCOM 使用 Application Insights 的应用程序性能监视
 如果使用 System Center Operations Manager (SCOM) 管理服务器，可在 [Azure Application Insights](app-insights-asp-net.md) 的帮助下监视性能并诊断性能问题。 Application Insights 监视 Web 应用程序的传入请求、传出 REST 和 SQL 调用、异常和日志跟踪。 它提供带有度量值图和智能警报的仪表板，以及针对此遥测的功能强大的搜索和分析查询。 
@@ -28,10 +27,10 @@ ms.lasthandoff: 11/17/2016
 ## <a name="before-you-start"></a>开始之前
 我们假设：
 
-* 你熟悉 SCOM，并且使用 SCOM 2012 R2 或 2016 管理 IIS Web 服务器。
+* 熟悉 SCOM，并且使用 SCOM 2012 R2 或 2016 管理 IIS Web 服务器。
 * 已在服务器上安装要使用 Application Insights 监视的 Web 应用程序。
 * 应用框架版本为 .NET 4.5 或更高版本。
-* 你有权访问 [Microsoft Azure](https://azure.com) 中的订阅，并且可登录 [Azure 门户](https://portal.azure.com)。 你的组织可能有订阅，并且可以将你的 Microsoft 帐户添加到它。
+* 有权访问 [Microsoft Azure](https://azure.com) 中的订阅，并且可登录 [Azure 门户](https://portal.azure.com)。 组织可能有订阅，并且可以将 Microsoft 帐户添加到它。
 
 （开发团队可能在 Web 应用中生成 [Application Insights SDK](app-insights-asp-net.md)。 此生成时检测使他们在编写自定义遥测时具有更大的灵活性。 但是，没关系：无论是否内置 SDK，都可以按照此处所述的步骤操作。）
 
@@ -45,7 +44,7 @@ ms.lasthandoff: 11/17/2016
 3. 重启 Operations Manager。
 
 ## <a name="create-a-management-pack"></a>创建管理包
-1. 在 Operations Manager 中，依次打开“创作”、“使用 Application Insights 的 .NET...”、“添加监视向导”，然后再次选择“使用 Application Insights 的 .NET...”。
+1. 在 Operations Manager 中，依次打开“创作”、“使用 Application Insights 的 .NET...”、“添加监视向导”，并再次选择“使用 Application Insights 的 .NET...”。
    
     ![](./media/app-insights-scom/020.png)
 2. 根据应用为配置命名。 （必须一次检测一个应用程序。）
@@ -55,11 +54,11 @@ ms.lasthandoff: 11/17/2016
    
      （Application Insights [管理包](https://technet.microsoft.com/library/cc974491.aspx)是一个模板，可通过它创建实例。 以后可重复使用相同实例。）
 
-    ![在“常规属性”选项卡中，键入应用名称。 单击“新建”并键入管理包的名称。 单击“确定”，然后单击“下一步”。](./media/app-insights-scom/040.png)
+    ![在“常规属性”选项卡中，键入应用名称。 单击“新建”并键入管理包的名称。 单击“确定”，并单击“下一步”。](./media/app-insights-scom/040.png)
 
 1. 选择要监视的一个应用。 搜索功能在服务器上安装的应用中搜索。
    
-    ![在“监视对象”选项卡中，键入部分应用名称、单击“搜索”、选择该应用，然后依次单击“添加”、“确定”。](./media/app-insights-scom/050.png)
+    ![在“监视对象”选项卡中，键入部分应用名称、单击“搜索”、选择该应用，并依次单击“添加”、“确定”。](./media/app-insights-scom/050.png)
    
     如果不希望监视所有服务器中的应用，可使用选填的“监视范围”字段指定服务器的子集。
 2. 在下一个向导页上，必须先提供凭据才能登录到 Microsoft Azure。
@@ -71,7 +70,7 @@ ms.lasthandoff: 11/17/2016
      
      以后可更改这些设置。
      
-     ![在“Application Insights 设置”选项卡上，单击“登录”并为 Azure 提供 Microsoft 帐户凭据。 然后选择订阅、资源组和资源。](./media/app-insights-scom/060.png)
+     ![在“Application Insights 设置”选项卡上，单击“登录”并为 Azure 提供 Microsoft 帐户凭据。 然后选择订阅、 资源组和资源。](./media/app-insights-scom/060.png)
 3. 完成该向导。
    
     ![单击创建](./media/app-insights-scom/070.png)
@@ -80,10 +79,10 @@ ms.lasthandoff: 11/17/2016
 
 如果以后需要更改设置，请从“创作”窗口重新打开监视器的属性。
 
-![在“创作”中，选择“使用 Application Insights 的 .NET 应用程序性能监视”、选择监视器，然后单击“属性”。](./media/app-insights-scom/080.png)
+![在“创作”中，选择“使用 Application Insights 的 .NET 应用程序性能监视”、选择监视器，并单击“属性”。](./media/app-insights-scom/080.png)
 
 ## <a name="verify-monitoring"></a>验证监视
-已安装的监视器将在每台服务器上搜索应用。 如果它找到应用，它会将 Application Insights 状态监视器配置为监视该应用。 如有必要，它首先在服务器上安装状态监视器。
+已安装的监视器会在每台服务器上搜索应用。 如果它找到应用，它会将 Application Insights 状态监视器配置为监视该应用。 如有必要，它首先在服务器上安装状态监视器。
 
 可验证它找到了应用的哪个实例：
 
@@ -99,5 +98,4 @@ ms.lasthandoff: 11/17/2016
 * [诊断性能问题](app-insights-detect-triage-diagnose.md)
 * [功能强大的分析查询](app-insights-analytics.md)
 * [可用性 Web 测试](app-insights-monitor-web-app-availability.md)
-
 

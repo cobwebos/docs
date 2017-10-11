@@ -1,42 +1,42 @@
-### <a name="grant-access-to-your-push-certificate-to-mobile-engagement"></a>授予 Mobile Engagement 访问推送证书的权限
-若要允许 Mobile Engagement 代表用户发送推送通知，需授予其访问证书的权限。 通过配置并将证书输入 Mobile Engagement 门户中，即可完成授权。 请确保获取 [Apple 的文档](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
+### <a name="grant-access-to-your-push-certificate-to-mobile-engagement"></a>为推送到 Mobile Engagement 证书授予访问权限
+若要允许 Mobile Engagement 替你发送推送通知，你需要授予它对你的证书访问。 这可通过配置和 Mobile Engagement 门户中输入你的证书。 请确保你获取.p12 证书中所述[Apple 的文档](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
 
-1. 导航到 Mobile Engagement 门户。 确保位于正确的位置，并单击底部的“参与”  按钮：
+1. 导航到你的 Mobile Engagement 门户。 确保你正在使用正确的然后单击**接洽**底部的按钮：
    
     ![](./media/mobile-engagement-ios-send-push/engage-button.png)
-2. 单击 Engagement 门户中的“设置”  页面。 从中单击“原生推送”  部分，上传 p12 证书：
+2. 单击**设置**Engagement 门户中的页。 从在该处单击**原生推送**部分上载你 p12 证书：
    
     ![](./media/mobile-engagement-ios-send-push/engagement-portal.png)
-3. 选择 p12、上载，并键入密码：
+3. 选择你 p12，将其上载，然后键入你的密码：
    
     ![](./media/mobile-engagement-ios-send-push/native-push-settings.png)
 
-## <a id="send"></a>向应用发送通知
-现在我们将创建一个简易的推送通知市场活动，向我们的应用发送通知：
+## <a id="send"></a>将通知发送到你的应用程序
+我们现在将创建一个简单的推送通知活动中，将向我们的应用程序发送推送：
 
-1. 导航到 Mobile Engagement 门户中的“市场宣传”  选项卡。
-2. 单击“新建公告”  创建推送市场活动
+1. 导航到**到达**Mobile Engagement 门户中的选项卡。
+2. 单击**新公告**创建你的推送活动
    
     ![](./media/mobile-engagement-ios-send-push/new-announcement.png)
-3. 设置市场活动的第一个字段：
+3. 安装你的活动的第一个字段：
    
     ![](./media/mobile-engagement-ios-send-push/campaign-first-params.png)
    
-   * 为市场活动提供 **名称** 
-   * 选择“仅应用外”作为“传递时间”：这是简易的 Apple 推送通知类型，有几行文字。
-   * 在通知文本中先键入“标题”（在推送中会在第一行显示）。
-   * 然后键入消息（会在第二行显示）
-4. 向下滚动，并在内容部分中选择“仅通知” 
+   * 提供**名称**为你的市场活动 
+   * 选择**传递时间**作为**仅应用程序外**： 这是 Apple 推送通知的简单类型功能一些文本。
+   * 在通知文本中，先键入**标题**将推送的第一行。
+   * 然后键入你**消息**将第二行
+4. 向滚动关闭，并在内容部分选择**仅通知**
    
     ![](./media/mobile-engagement-ios-send-push/campaign-content.png)
-5. 已设置完最基本的市场活动。 现在向下滚动，单击“创建”  按钮保存推送通知市场活动。 
-6. 最后，单击“激活”  发送推送通知。 
+5. 已完成设置最基本的营销活动。 现在向下滚动并单击**创建**按钮以保存你的推送通知活动。 
+6. 最后-单击**激活**发送推送通知。 
    
     ![](./media/mobile-engagement-ios-send-push/campaign-activate.png)
-7. 可以在 iOS 设备的通知中心接收通知，如下所示：
+7. 您将可以在如下所示的通知中心中接收有关你的 iOS 设备的通知：
    
     ![](./media/mobile-engagement-ios-send-push/iphone-notification.png)
-8. 如果有 Apple Watch 与此 iOS 设备进行了配对，那么在 Apple Watch 上也可以看到该通知：
+8. 如果你有与此 iOS 设备配对 Apple Watch 然后你将在 Apple Watch 上看到通知：
    
     ![](./media/mobile-engagement-ios-send-push/apple-watch.png)
 

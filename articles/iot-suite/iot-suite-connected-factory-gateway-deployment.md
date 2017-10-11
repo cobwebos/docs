@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: caa12f4ef55006cd3edbe2d9606397d34fed3a3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.openlocfilehash: b0e6ae705911d7c18643c77b7fe08fdffffa5eb1
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>在 Windows 或 Linux 上为已连接的工厂预配置解决方案部署网关
 
 需要为已连接的工厂预配置解决方案部署网关的软件具有两个组件：
@@ -98,7 +96,7 @@ ms.lasthandoff: 07/24/2017
 
 1. 浏览到已连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。 按照前面部分的步骤操作，在已连接的工厂门户和 OPC UA 服务器之间建立信任关系。 此步骤会在已连接工厂门户的证书和 OPC UA 服务器的证书间建立相互信任的关系，并创建连接。
 
-1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。如果你的设置不同，可将节点手动添加到 D:\\docker 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json 文件。
+1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。 如果你的设置不同，可将节点手动添加到 D:\\docker 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json 文件。
 
 1. 遥测现从网关设备流入。 可在已连接的工厂门户中“新工厂”下的“工厂位置”视图中查看此遥测。
 
@@ -148,7 +146,7 @@ ms.lasthandoff: 07/24/2017
 
 1. 浏览到已连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。 按照前面部分的步骤操作，在已连接的工厂门户和 OPC UA 服务器之间建立信任关系。 此步骤会在已连接工厂门户的证书和 OPC UA 服务器的证书间建立相互信任的关系，并创建连接。
 
-1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。如果你的设置不同，可将节点手动添加到 /shared 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json。
+1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击该 OPC 节点，并选择“发布”。 若要以此方式进行发布，OPC UA 服务器和发布服务器必须处于同一网络中。 换言之，如果发布服务器的完全限定的域名是 publisher.mydomain.com，则 OPC UA 服务器的完全限定的域名必须为 myopcuaserver.mydomain.com 之类的域名。 如果你的设置不同，可将节点手动添加到 /shared 文件夹中的 publishesnodes.json 文件。 OPC 节点第一次成功发布时会自动生成 publishesnodes.json。
 
 1. 遥测现从网关设备流入。 可在已连接的工厂门户中“新工厂”下的“工厂位置”视图中查看此遥测。
 

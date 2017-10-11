@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 0b64c32e1031e704d50aab0b38eaea41e27d134b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>通过用于 Linux 的 OMS 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
 [Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。  可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](log-analytics-alerts.md)一起进行分析。  本文介绍了如何配置用于 Linux 的 OMS 代理，以便收集来自这些系统的警报。
@@ -58,7 +57,7 @@ ms.lasthandoff: 06/10/2017
 
 在 Nagios 服务器上执行以下步骤来收集警报。
 
-1. 修改位于 (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) 处的配置文件。 确保以下条目存在且未注释掉。将用户名和密码更改为适合 Zabbix 环境的值。
+1. 修改位于 (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) 处的配置文件。 确保以下条目存在且未注释掉。  将用户名和密码更改为适合 Zabbix 环境的值。
 
         <source>
          type zabbix_alerts
@@ -115,4 +114,3 @@ Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 ## <a name="next-steps"></a>后续步骤
 * 在 Log Analytics 中了解[警报](log-analytics-alerts.md)。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
-

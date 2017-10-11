@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 331c03cd0819aa4935f9b486ff38f54d23d6a7fd
-ms.openlocfilehash: e3d5f89b1c8525f791e73667d6f7cd6a999ab971
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>使用 BizTalk 服务状态可以和不可以执行的操作
 
@@ -28,7 +26,7 @@ ms.lasthandoff: 11/17/2016
 
 根据 BizTalk 服务的当前状态，有一些操作不一定能够在 BizTalk 服务上完成。
 
-例如，在 Azure 经典门户中预配新的 BizTalk 服务。 在其成功完成后，BizTalk 服务处于 `active` 状态。 在活动状态下，可以停止、挂起和删除 BizTalk 服务。 如果停止 BizTalk 服务但停止失败，则 BizTalk 服务将转为 `StopFailed` 状态。 在 `StopFailed` 状态下，可以重启 BizTalk 服务。 如果尝试执行某一不允许的操作，例如恢复，将会发生以下错误：
+例如，在 Azure 经典门户中预配新的 BizTalk 服务。 在其成功完成后，BizTalk 服务处于 `active` 状态。 在活动状态下，可以停止、挂起和删除 BizTalk 服务。 如果停止 BizTalk 服务并且停止失败，则 BizTalk 服务将转到 `StopFailed` 状态。 在 `StopFailed` 状态下，可以重新启动 BizTalk 服务。 如果尝试执行某一不允许的操作，例如恢复，会发生以下错误：
 
 `Operation not allowed`
 
@@ -61,5 +59,4 @@ ms.lasthandoff: 11/17/2016
 * [BizTalk 服务中所述的限制](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 * [为 BizTalk 服务检索服务总线和访问控制颁发者名称以及颁发者密钥值](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 * [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
-
 

@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 存储空间中存储和查看诊断数据 | Microsoft Docs"
-description: "将 Azure 诊断数据转到 Azure 存储空间并进行查看"
+title: "在 Azure 存储中存储和查看诊断数据 | Microsoft Docs"
+description: "将 Azure 诊断数据转到 Azure 存储并进行查看"
 services: cloud-services
 documentationcenter: .net
 author: rboucher
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 16ce99cab9077450a5cfa8e95f7e306ffc1afb6d
-
-
+ms.openlocfilehash: 374cc179e13c00e439415e3df16e0c6d5ccba5e3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储空间中存储和查看诊断数据
-诊断数据不会永久存储，除非你将其传输到 Microsoft Azure 存储模拟器或 Azure 存储空间中。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
+# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
+诊断数据不会永久存储，除非将其传输到 Microsoft Azure 存储模拟器或 Azure 存储中。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
 
 ## <a name="specify-a-storage-account"></a>指定存储帐户
-指定你想要在 ServiceConfiguration.cscfg 文件中使用的存储帐户。 帐户信息被定义为配置设置中的连接字符串。 以下示例显示的是在 Visual Studio 中针对新的云服务项目创建的默认连接字符串：
+指定要在 ServiceConfiguration.cscfg 文件中使用的存储帐户。 帐户信息被定义为配置设置中的连接字符串。 以下示例显示的是在 Visual Studio 中针对新的云服务项目创建的默认连接字符串：
 
 ```
     <ConfigurationSettings>
@@ -32,7 +32,7 @@ ms.openlocfilehash: 16ce99cab9077450a5cfa8e95f7e306ffc1afb6d
     </ConfigurationSettings>
 ```
 
-你可以更改此连接字符串，为 Azure 存储帐户提供帐户信息。
+可以更改此连接字符串，为 Azure 存储帐户提供帐户信息。
 
 根据所要收集的诊断数据的类型，Azure 诊断使用 Blob 服务或表服务。 下表显示保留的数据源及其格式。
 
@@ -48,12 +48,12 @@ ms.openlocfilehash: 16ce99cab9077450a5cfa8e95f7e306ffc1afb6d
 | 自定义错误日志 |Blob |
 
 ## <a name="transfer-diagnostic-data"></a>传输诊断数据
-对于 SDK 2.5 及更高版本，可以通过配置文件来请求传输诊断数据。 你可以根据配置中的指定，按计划的时间间隔来传输诊断数据。
+对于 SDK 2.5 及更高版本，可以通过配置文件来请求传输诊断数据。 可以根据配置中的指定，按计划的时间间隔来传输诊断数据。
 
-对于 SDK 2.4 及更低版本，你可以请求通过配置文件来传输诊断数据，也可以通过编程方式来进行。 编程方式还可以进行按需传输。
+对于 SDK 2.4 及更低版本，可以请求通过配置文件来传输诊断数据，也可以通过编程方式来进行。 编程方式还可以进行按需传输。
 
 > [!IMPORTANT]
-> 将诊断数据传输到 Azure 存储帐户时会产生费用，具体取决于你的诊断数据所使用的存储资源。
+> 将诊断数据传输到 Azure 存储帐户时会产生费用，具体取决于诊断数据所使用的存储资源。
 > 
 > 
 
@@ -73,21 +73,15 @@ ms.openlocfilehash: 16ce99cab9077450a5cfa8e95f7e306ffc1afb6d
 * **wad-control-container** -（仅适用于 SDK 2.4 及更低版本）包含用于控制 Azure 诊断的 XML 配置文件。
 * **wad-iis-failedreqlogfiles** - 包含 IIS 失败请求日志中的信息。
 * **wad-iis-logfiles** - 包含有关 IIS 日志的信息。
-* **"custom"** - 一个自定义容器，其所基于的配置目录受诊断监视器监视。  此 blob 容器的名称将在 WADDirectoriesTable 中指定。
+* **"custom"** - 一个自定义容器，其所基于的配置目录受诊断监视器监视。  此 blob 容器的名称在 WADDirectoriesTable 中指定。
 
 ## <a name="tools-to-view-diagnostic-data"></a>用于查看诊断数据的工具
 将数据传输到存储空间以后，可以使用多个工具来查看这些数据。 例如：
 
-* Visual Studio 中的服务器资源管理器 - 如果你安装了 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储空间”节点从你的 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 有关详细信息，请参阅[使用服务器资源管理器浏览和管理存储资源](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md)。
+* Visual Studio 中的服务器资源管理器 - 如果安装了 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储”节点从 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 有关详细信息，请参阅[使用服务器资源管理器浏览和管理存储资源](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md)。
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。
-* [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) 包含 Azure 诊断管理器，可让你查看、下载和管理在 Azure 中运行的应用程序收集的诊断数据。
+* [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) 随附 Azure 诊断管理器，可用于查看、下载和管理 Azure 中运行的应用程序收集的诊断数据。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure 诊断跟踪云服务应用程序中的流](cloud-services-dotnet-diagnostics-trace-flow.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

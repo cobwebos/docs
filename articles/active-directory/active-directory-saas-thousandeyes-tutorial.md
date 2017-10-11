@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
 ms.openlocfilehash: 392add7d5f0a55598b8b90760f5c3f2d1e67ac02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>教程：Azure Active Directory 与 ThousandEyes 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/14/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ThousandEyes 测试用户](#creating-a-thousandeyes-test-user)** - 以在 ThousandEyes 中具有对应的 Britta Simon 用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+3. **[创建 ThousandEyes 测试用户](#creating-a-thousandeyes-test-user)** -若要在 ThousandEyes 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -113,7 +112,7 @@ ms.lasthandoff: 07/14/2017
 
     在“登录 URL”文本框中，键入 URL `https://app.thousandeyes.com/login/sso`
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_certificate.png) 
 
@@ -143,9 +142,9 @@ ms.lasthandoff: 07/14/2017
    
     ![设置单一登录](./media/active-directory-saas-thousandeyes-tutorial/ic790069.png "设置单一登录")
   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“启用单一登录”。
+    a. 选择“启用单一登录”。
   
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“登录页 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“登录页 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
   
     c. 在“注销页面 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。
   
@@ -181,7 +180,7 @@ ms.lasthandoff: 07/14/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-thousandeyes-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -197,7 +196,7 @@ ms.lasthandoff: 07/14/2017
 >[!NOTE]
 >可使用任何其他 ThousandEyes 用户帐户创建工具或使用 ThousandEyes 提供的 API 来预配 Azure Active Directory 用户帐户。
 
-**若要将用户帐户预配到 ThousandEyes，请执行以下步骤：**
+**要将用户帐户预配到 ThousandEyes，请执行以下步骤：**
 
 1. 以管理员身份登录 ThousandEyes 公司站点。
 
@@ -217,11 +216,11 @@ ms.lasthandoff: 07/14/2017
    
     ![添加用户帐户](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "添加用户帐户")   
   
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名称”文本框中，键入用户名（如 Britta Simon）。
+    a. 在“名称”文本框中，键入用户名（如 Britta Simon）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“电子邮件地址”文本框中，键入用户的电子邮件地址（如 brittasimon@contoso.com）。
+    b. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（如 brittasimon@contoso.com）。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“将新用户添加到帐户”。
+    b. 单击“将新用户添加到帐户”。
       
      >[!NOTE]
      >Azure Active Directory 帐户持有者会收到一封电子邮件，其中包含用于确认和激活帐户的链接。
@@ -234,7 +233,7 @@ ms.lasthandoff: 07/14/2017
 
 **若要将 Britta Simon 分配到 ThousandEyes，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -284,5 +283,4 @@ ms.lasthandoff: 07/14/2017
 [201]: ./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_203.png
-
 

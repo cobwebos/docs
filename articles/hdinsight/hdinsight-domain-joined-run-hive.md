@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.translationtype: HT
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight-preview"></a>在已加入域的 HDInsight 中配置 Hive 策略（预览版）
 了解如何为 Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
@@ -49,7 +48,7 @@ ms.lasthandoff: 06/13/2017
 在 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad)（配置已加入域的 HDInsight 群集）教程中，已创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
-本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad)（配置已加入域的 HDInsight 群集）教程中创建的。  在下一部分，会在 Excel 中测试两个策略。
+本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad)（配置已加入域的 HDInsight 群集）教程中创建的。  在下一部分中，会在 Excel 中测试这两个策略。
 
 **创建 Ranger 策略**
 
@@ -92,14 +91,14 @@ ms.lasthandoff: 06/13/2017
     Hive 服务器类型|选择“Hive Server 2”<strong></strong>
     机制|选择“Azure HDInsight 服务”<strong></strong>
     HTTP 路径|将此字段留空。
-    用户名|输入 hiveuser1@contoso158.onmicrosoft.com。如果域名不同，请更新域名。
+    用户名|输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。
     密码|输入 hiveuser1 的密码。
     </table>
 
 在保存数据源之前，请务必单击“测试”。
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>将数据从 HDInsight 导入 Excel
-在最后一个部分中，已配置两个策略。  hiveuser1 对所有列拥有 select 权限，hiveuser2 对两个列拥有 select 权限。 在本部分中，会模拟两个用户将数据导入 Excel。
+在最后一个部分中，已配置两个策略。  hiveuser1 对所有列拥有 select 权限，hiveuser2 对两个列拥有 select 权限。 在此部分中，将模拟这两个用户将数据导入到 Excel 中。
 
 1. 在 Excel 中打开新工作簿或现有工作簿。
 2. 在“数据”选项卡中，依次单击“从其他数据源”、“从数据连接向导”以启动“数据连接向导”。
@@ -111,7 +110,7 @@ ms.lasthandoff: 06/13/2017
 6. 选择 **hivesampletable**，并单击“下一步”。
 7. 单击“完成” 。
 8. 在“导入数据”对话框中，可更改或指定查询。 为此，请单击“属性”。 这可能需要几秒钟时间。
-9. 单击“定义”选项卡。命令文本为：
+9. 单击“定义”选项卡。 命令文本为：
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
@@ -145,4 +144,3 @@ ms.lasthandoff: 06/13/2017
 * 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver](hdinsight-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）
 * 要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop with the Microsoft Hive ODBC drive](hdinsight-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop）
 * 要使用 Power Query 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop by using Power Query](hdinsight-connect-excel-power-query.md)（使用 Power Query 将 Excel 连接到 Hadoop）
-

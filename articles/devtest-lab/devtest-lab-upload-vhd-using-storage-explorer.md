@@ -1,5 +1,5 @@
 ---
-title: "使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到 Azure 开发测试实验室 | Microsoft 文档"
+title: "使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到 Azure 开发测试实验室 | Microsoft Docs"
 description: "使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户"
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,19 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 502e2536fb0fd2e9dfc4c7b85a6fb4e18202f38f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-在 Azure 开发测试实验室中，可以使用 VHD 文件创建用于预配虚拟机的自定义映像。 本文演示如何使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章说明如何基于已上传的 VHD 文件创建自定义映像。 有关 Azure 中的磁盘和 VHD 的详细信息，请参阅 [About disks and VHDs for virtual machines](../virtual-machines/linux/about-disks-and-vhds.md)（关于虚拟机的磁盘和 VHD）
+在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 本文演示如何使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章说明如何基于已上传的 VHD 文件创建自定义映像。 有关 Azure 中的磁盘和 VHD 的详细信息，请参阅 [About disks and VHDs for virtual machines](../virtual-machines/linux/about-disks-and-vhds.md)（关于虚拟机的磁盘和 VHD）
 
 ## <a name="step-by-step-instructions"></a>分步说明
 
@@ -54,7 +52,7 @@ ms.lasthandoff: 08/22/2017
     
         ![使用 PowerShell 上传 VHD][0]
     
-    1. “使用 PowerShell 上传映像”边栏选项卡显示对 **Add-AzureVhd** cmdlet 的调用。 第一个参数 (*Destination*) 包含采用以下格式的实验室存储帐户名称：
+    1. “使用 PowerShell 上传映像”边栏选项卡显示对 Add-AzureVhd cmdlet 的调用。 第一个参数 (*Destination*) 包含采用以下格式的实验室存储帐户名称：
     
         https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/... 
 
@@ -100,13 +98,13 @@ ms.lasthandoff: 08/22/2017
 
 1. 使用存储资源管理器上传 VHD 文件：
 
-    1. 在存储资源管理器的右窗格中，应看到实验室存储帐户的“上 载”blob 容器中的 blob 列表。 在 blob 编辑器工具栏上，选择“上载” 
+    1. 在存储资源管理器的右窗格中，应看到实验室存储帐户的“上 载”blob 容器中的 blob 列表。 在 blob 编辑器工具栏上，选择“上传” 
         
         ![“上传”按钮][6]
     
-    1. 在“上载”下拉菜单上，选择“上载文件...”.
+    1. 在“上传”下拉菜单上，选择“上传文件...”.
     
-    1. 在“上载文件”对话框中，选择省略号。
+    1. 在“上传文件”对话框中，选择省略号。
         
         ![选择文件][8]  
 
@@ -118,7 +116,7 @@ ms.lasthandoff: 08/22/2017
 
         ![选择文件][9]  
     
-    1. 存储资源管理器的“活动日志”窗格会显示下载状态（以及用于取消上载的链接）。 上传 VHD 文件的过程可能耗时较长，具体取决于 VHD 文件的大小和连接速度。 
+    1. 存储资源管理器的“活动日志”窗格会显示下载状态（以及用于取消上传的链接）。 上传 VHD 文件的过程可能耗时较长，具体取决于 VHD 文件的大小和连接速度。 
 
         ![上传文件状态][10]  
 
@@ -138,4 +136,3 @@ ms.lasthandoff: 08/22/2017
 [8]: ./media/devtest-lab-upload-vhd-using-storage-explorer/select-file.png
 [9]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-file.png
 [10]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-status.png
-

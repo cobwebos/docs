@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 3674670e10500d2992539ab60fbdb31b666fcf9a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>升级 Windows Azure Active Directory Sync 和 Azure Active Directory Sync
 Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。 这是将 Azure AD Connect 从 Microsoft Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级的最佳时机，由于这些工具现在已弃用，并在 2017 年 4 月 13 日结束支持。
 
@@ -31,7 +29,7 @@ Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方�
 最新版 DirSync 已在 2014 年 7 月发布，最新版 Azure AD Sync 已在 2015 年 5 月发布。
 
 ## <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect
-Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两者支持的所有方案。 可以在[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)中了解详细信息。
+Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。 它结合了两者支持的所有方案。 可以在[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)中了解详细信息。
 
 ## <a name="deprecation-schedule"></a>弃用计划
 | 日期 | 注释 |
@@ -67,8 +65,7 @@ DirSync/Azure AD Sync 会在 2017 年 4 月 13 日继续工作。  但从 2017 �
 支持从当前所用的任何 DirSync 版本升级。
 
 **问：用于 FIM/MIM 的 Azure AD 连接器的情况怎样？**  
-用于 FIM/MIM 的 Azure AD 连接器**尚未**宣布弃用。 它目前处于**功能冻结**状态；其中不会添加任何功能，也不会接受任何 bug 修复。 Microsoft 建议其用户计划好迁移到 Azure AD Connect。 我们强烈建议不要使用它来启动任何新部署。 今后我们将宣布弃用此连接器。
+用于 FIM/MIM 的 Azure AD 连接器**尚未**宣布弃用。 它目前处于**功能冻结**状态；其中不会添加任何功能，也不会接受任何 bug 修复。 Microsoft 建议其用户计划好迁移到 Azure AD Connect。 我们强烈建议不要使用它来启动任何新部署。 今后我们宣布弃用此连接器。
 
 ## <a name="additional-resources"></a>其他资源
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

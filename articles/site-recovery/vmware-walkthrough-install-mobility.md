@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: bc520bd2ea54208889861a7a3b275e3008a05d53
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-10-install-the-mobility-service"></a>步骤 10：安装 Mobility Service
 
 
@@ -37,7 +35,7 @@ Mobility Service 可以捕获计算机上的数据写入，并将其转发给进
 
 1. 查看手动安装的[先决条件](site-recovery-vmware-to-azure-install-mob-svc.md#prerequisites)。
 2. 按照[这些说明](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui)操作，使用门户进行手动安装。
-3. 如果想要从命令行进行安装，请按照[这些说明](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt)进行操作。
+3. 若要通过命令行进行安装，请按照[这些说明](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt)操作。
 
 ## <a name="install-from-the-process-server"></a>从进程服务器安装
 
@@ -53,4 +51,3 @@ Mobility Service 可以捕获计算机上的数据写入，并将其转发给进
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 11：启用复制](vmware-walkthrough-enable-replication.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9fc3b38b22c3a092dc2d932d2d7471872f5ba66d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 1bb1546fb616131a1e1868a0d0610c4cad5d73e2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-powershell"></a>使用 PowerShell 将 Windows Server 虚拟机加入托管域
 > [!div class="op_single_selector"]
@@ -43,12 +42,12 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="step-1-add-your-account"></a>步骤 1：添加帐户
 1. 在 PowerShell 命令提示处，键入 **Add-AzureAccount** 并单击“Enter”。
-2. 键入与你的 Azure 订阅相关联的电子邮件地址并单击“继续”。
-3. 键入你的帐户的密码。
+2. 键入与 Azure 订阅相关联的电子邮件地址并单击“继续”。
+3. 键入帐户的密码。
 4. 单击“登录”。
 
 ## <a name="step-2-set-your-subscription-and-storage-account"></a>步骤 2：设置订阅和存储帐户
-通过在 Windows PowerShell 命令提示符处运行以下命令，设置你的 Azure 订阅和存储帐户。 将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
+通过在 Windows PowerShell 命令提示符处运行以下命令，设置 Azure 订阅和存储帐户。 将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
 
     $subscr="<subscription name>"
     $staccount="<storage account name>"
@@ -157,4 +156,3 @@ ms.lasthandoff: 04/27/2017
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
-

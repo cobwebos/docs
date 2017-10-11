@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Visual Studio Team Services 中连续集成
 若要部署 Azure 模板，需要在各个阶段执行任务：生成、测试、复制到 Azure（也称为“暂存”）和部署模板。 在 Visual Studio Team Services (VS Team Services) 中可通过两种不同的方法部署模板。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
@@ -27,7 +26,7 @@ ms.lasthandoff: 06/02/2017
 1. 在运行 PowerShell 脚本的生成定义（包含在 Azure 资源组部署项目中，即 Deploy-AzureResourceGroup.ps1）中添加一个步骤。 该脚本将复制项目，然后部署模板。
 2. 添加多个 VS Team Services 生成步骤，每个步骤执行一个阶段任务。
 
-本文演示了这两个选项。 第一个选项的优点是，在 Visual Studio 中使用开发人员所用的同一脚本，并且在整个生命周期中提供一致性。 第二个选项为内置脚本提供一个便捷替代方式。 两个过程都假设你已经在 VS Team Services 中签入 Visual Studio 部署项目。
+本文演示了这两个选项。 第一个选项的优点是，在 Visual Studio 中使用开发人员所用的同一脚本，并且在整个生命周期中提供一致性。 第二个选项为内置脚本提供一个便捷替代方式。 两个过程都假设已经在 VS Team Services 中签入 Visual Studio 部署项目。
 
 ## <a name="copy-artifacts-to-azure"></a>将项目复制到 Azure
 无论方案如何，如果具有模板部署所需的任何项目，必须向 Azure Resource Manager 授予这些项目的访问权限。 这些项目可以包括如下所述的文件：
@@ -50,20 +49,20 @@ ms.lasthandoff: 06/02/2017
 ### <a name="detailed-walkthrough-for-option-1"></a>选项 1 详细演练
 以下过程指导完成后列情况下所需的步骤：使用在项目中运行 PowerShell 脚本的单个任务，在 VS Team Services 中配置持续部署。 
 
-1. 编辑 VS Team Services 生成定义并添加 Azure PowerShell 生成步骤。 在“生成定义”类别下选择生成定义，然后选择“编辑”链接。
+1. 编辑 VS Team Services 生成定义并添加 Azure PowerShell 生成步骤。 在“生成定义”类别下选择生成定义，并选择“编辑”链接。
    
    ![编辑生成定义][0]
 2. 将新的“Azure PowerShell”生成步骤添加到生成定义，然后选择“添加生成步骤...” 按钮。
    
    ![添加生成步骤][1]
-3. 选择“部署任务”类别，选择“Azure PowerShell”任务，然后选择其“添加”按钮。
+3. 选择“部署任务”类别，选择“Azure PowerShell”任务，并选择其“添加”按钮。
    
    ![添加任务][2]
-4. 选择“Azure PowerShell”生成步骤，然后填充其值。
+4. 选择“Azure PowerShell”生成步骤，并填充其值。
    
-   1. 如果已将 Azure 服务终结点添加到 VS Team Services，请在“Azure 订阅”下拉列表框中选择订阅，然后跳到下一部分。 
+   1. 如果你已经有了 Azure 服务终结点添加到 VS Team Services，选择中的订阅**Azure 订阅**下拉列表框，然后跳到下一节。 
       
-      如果 VS Team Services 中没有 Azure 服务终结点，则需要添加一个。 本小节将引导你完成整个过程。 如果 Azure 帐户使用 Microsoft 帐户（例如 Hotmail），则必须执行以下步骤以获取服务主体身份验证。
+      如果 VS Team Services 中没有 Azure 服务终结点，则需要添加一个。 本小节将引导完成整个过程。 如果 Azure 帐户使用 Microsoft 帐户（例如 Hotmail），则必须执行以下步骤以获取服务主体身份验证。
    2. 选择“Azure 订阅”下拉列表框旁边的“管理”链接。
       
       ![管理 Azure 订阅][3]
@@ -91,13 +90,13 @@ ms.lasthandoff: 06/02/2017
       
       `azure account show`
    8. 若要获取服务主体 ID、服务主体密钥和租户 ID，请遵循[使用门户创建 Active Directory 应用程序和服务主体](resource-group-create-service-principal-portal.md)或[通过 Azure Resource Manager 对服务主体进行身份验证](resource-group-authenticate-service-principal.md)中的过程。
-   9. 向“添加 Azure 订阅”对话框添加服务主体 ID、服务主体密钥和租户 ID 值，然后选择“确定”按钮。
+   9. 向“添加 Azure 订阅”对话框添加服务主体 ID、服务主体密钥和租户 ID 值，并选择“确定”按钮。
       
-      现在，你已获得了用于运行 Azure PowerShell 脚本的有效服务主体。
+      现在，已获得了用于运行 Azure PowerShell 脚本的有效服务主体。
 5. 编辑生成定义并选择 **Azure PowerShell** 生成步骤。 在“Azue 订阅”下拉列表框中选择订阅。 （如果订阅未出现，请选择“管理”链接旁边的“刷新”按钮。） 
    
    ![安装 Azure PowerShell 生成任务][8]
-6. 提供 Deploy-AzureResourceGroup.ps1 PowerShell 脚本的路径。 为此，请选择“脚本路径”框旁边的省略号 (…) 按钮，导航到项目的 **Scripts** 文件夹中的 Deploy-AzureResourceGroup.ps1 PowerShell 脚本，选择该脚本，然后选择“确定”按钮。    
+6. 提供 Deploy-AzureResourceGroup.ps1 PowerShell 脚本的路径。 为此，请选择“脚本路径”框旁边的省略号 (…) 按钮，导航到项目的 **Scripts** 文件夹中的 Deploy-AzureResourceGroup.ps1 PowerShell 脚本，选择该脚本，并选择“确定”按钮。    
    
    ![选择脚本的路径][9]
 7. 选择该脚本后，更新脚本的路径，以便从 Build.StagingDirectory（与 *ArtifactsLocation* 设置到的目录相同）运行脚本。 可以通过在脚本路径的开头添加“$(Build.StagingDirectory)/”来执行此操作。
@@ -127,21 +126,21 @@ ms.lasthandoff: 06/02/2017
    完成之后，“脚本参数”框应类似于以下列表：
    
    ![脚本参数][11]
-9. 将所有必需的项添加 Azure PowerShell 生成步骤之后，请选择“队列”生成按钮来生成项目。 “生成”屏幕将显示 PowerShell 脚本的输出。
+9. 将所有必需的项添加 Azure PowerShell 生成步骤之后，请选择“队列”生成按钮来生成项目。 “生成”屏幕会显示 PowerShell 脚本的输出。
 
 ### <a name="detailed-walkthrough-for-option-2"></a>选项 2 详细演练
 以下过程演练使用内置任务在 VS Team Services 中配置持续部署的必要步骤。
 
-1. 编辑 VS Team Services 生成定义以添加两个新的生成步骤。 在“生成定义”类别下选择生成定义，然后选择“编辑”链接。
+1. 编辑 VS Team Services 生成定义以添加两个新的生成步骤。 在“生成定义”类别下选择生成定义，并选择“编辑”链接。
    
    ![编辑生成定义][12]
 2. 使用“添加生成步骤...”，将新的生成步骤添加到生成定义 按钮。
    
    ![添加生成步骤][13]
-3. 依次选择“部署任务”类别、“Azure 文件复制”任务，然后选择其“添加”按钮。
+3. 依次选择“部署任务”类别、“Azure 文件复制”任务，并选择其“添加”按钮。
    
    ![添加 Azure 文件复制任务][14]
-4. 选择“Azure 资源组部署”任务、选择其“添加”按钮，然后**关闭**“任务目录”。
+4. 选择“Azure 资源组部署”任务、选择其“添加”按钮，并**关闭**“任务目录”。
    
    ![添加 Azure 资源组部署任务][15]
 5. 选择“Azure 文件复制”任务，并填充其值。
@@ -161,7 +160,7 @@ ms.lasthandoff: 06/02/2017
    * 存储容器 SAS 令牌 - 输入 **artifactsLocationSasToken**
    
    ![配置 Azure 文件复制任务][16]
-6. 选择“Azure 资源组部署”生成步骤，然后填充其值。
+6. 选择“Azure 资源组部署”生成步骤，并填充其值。
    
    * Azure 连接类型 - 选择“Azure Resource Manager”
    * Azure RM 订阅 - 在“Azure 订阅”下拉列表框中选择用于部署的订阅。 这通常是上一步中使用的同一订阅
@@ -197,4 +196,3 @@ ms.lasthandoff: 06/02/2017
 [15]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough16.png
 [16]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough17.png
 [17]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough18.png
-

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -30,10 +29,10 @@ ms.lasthandoff: 06/30/2017
 
 可以在单个批处理帐户中运行多个批处理工作负荷，或者在相同订阅的不同 Azure 区域的批处理帐户之间分散工作负荷。
 
-如果你打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线[客户支持请求](#increase-a-quota)。
+如果打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线[客户支持请求](#increase-a-quota)。
 
 > [!NOTE]
-> 配额是一种信用限制，不附带容量保证。 如果你有大规模的容量需求，请联系 Azure 支持。
+> 配额是一种信用限制，不附带容量保证。 如果有大规模的容量需求，请联系 Azure 支持。
 > 
 > 
 
@@ -42,7 +41,7 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="quotas-in-user-subscription-mode"></a>用户订阅模式中的配额
 
-对于池分配模式设置为**用户订阅**的批处理帐户，将在创建池时，在订阅中直接创建批处理 VM 和其他资源（例如存储帐户）。 Azure Batch 核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。 在 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)中详细了解这些配额。
+对于池分配模式设置为**用户订阅**的批处理帐户，会在创建池时，在订阅中直接创建批处理 VM 和其他资源（例如存储帐户）。 Azure Batch 核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。 在 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)中详细了解这些配额。
 
 针对在用户订阅模式下创建的帐户规划资源用量时，请注意，每 40 个 Linux VM 或每 20 个 Windows VM 需要以下批处理资源（此外，还需要计算核心）：
 
@@ -79,7 +78,7 @@ ms.lasthandoff: 06/30/2017
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
 可在 [Azure 门户][portal]中查看批处理帐户配额。
 
-1. 在门户中选择“Batch 帐户”，然后选择所需的 Batch 帐户。
+1. 在门户中选择“Batch 帐户”，并选择所需的 Batch 帐户。
 2. 在批处理帐户的菜单边栏选项卡中选择“属性”。
 3. “属性”边栏选项卡显示了当前应用于 Batch 帐户的**配额**
    
@@ -87,7 +86,7 @@ ms.lasthandoff: 06/30/2017
 
 对于在用户订阅模式下创建的批处理帐户，可在 Azure 门户中查看相关的订阅配额。
 
-1. 选择“订阅”，然后选择用于批处理帐户的订阅。
+1. 选择“订阅”，并选择用于批处理帐户的订阅。
 
 2. 在“订阅”边栏选项卡中，选择“用量 + 配额”。
 
@@ -104,9 +103,9 @@ ms.lasthandoff: 06/30/2017
 2. 选择“新建支持请求” > “基本”。
 3. 在“基本”边栏选项卡上：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 “问题类型” > “配额”
+    a. “问题类型” > “配额”
    
-    b.保留“数据库类型”设置，即设置为“共享”。 选择你的订阅。
+    b. 选择订阅。
    
     c. “配额类型” > “Batch”
    
@@ -115,16 +114,16 @@ ms.lasthandoff: 06/30/2017
     单击“下一步”。
 4. 在“问题”边栏选项卡上：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 根据[业务影响情况][support_sev]选择“严重性”。
+    a. 根据[业务影响情况][support_sev]选择“严重性”。
    
     b. 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
    
     单击“下一步”。
 5. 在“联系信息”边栏选项卡上：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“首选联系方法”。
+    a. 选择“首选联系方法”。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 输入并确认所需的联系人详细信息。
+    b. 输入并确认所需的联系人详细信息。
    
     单击“创建”提交支持请求。
 
@@ -132,7 +131,7 @@ ms.lasthandoff: 06/30/2017
 
 ### <a name="increase-a-subscription-cores-quota"></a>提高订阅核心配额
 
-如果批处理帐户是在**用户订阅**模式下创建的，而你需要更多的区域核心或 VM 系列核心，可以请求提高订阅中的配额。 有关步骤，请参阅 [Resource Manager 核心配额增加请求](../azure-supportability/resource-manager-core-quotas-request.md)。
+如果批处理帐户是在**用户订阅**模式下创建的，而需要更多的区域核心或 VM 系列核心，可以请求提高订阅中的配额。 有关步骤，请参阅 [Resource Manager 核心配额增加请求](../azure-supportability/resource-manager-core-quotas-request.md)。
 
 
 
@@ -146,4 +145,3 @@ ms.lasthandoff: 06/30/2017
 [support_sev]: http://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
-

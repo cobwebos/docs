@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 5638434270ee82d2b9737ea8eed8b5a8c62f7121
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/03/2017
 ---
-
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
 Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的分配和管理与集成到 Azure AD 以进行单一登录的第三方 SaaS 应用程序或其他应用程序略有不同。
@@ -59,7 +57,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
   * 请确保在 Azure Active Directory 中**用户的帐户存在**。 [检查在 Azure Active Directory 中是否存在用户帐户](#problems-with-the-users-account)
 
-  * 确保用户帐户**已启用**进行登录。[检查用户的帐户状态](#problems-with-the-users-account)
+  * 确保用户帐户**已启用**进行登录。 [检查用户的帐户状态](#problems-with-the-users-account)
 
   * 确保用户的**密码未过期或遗忘**。 [重置用户的密码](#reset-a-users-password)或[启用自助服务密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -436,7 +434,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 7.  检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
 
    >[!NOTE]
-   >可能需要暂时禁用此策略，确保它不影响登录。为此，请将“启用策略”切换按钮设置为“否”，然后单击“保存”按钮。
+   >可能需要暂时禁用此策略，确保它不影响登录。 为此，请将“启用策略”切换按钮设置为“否”，然后单击“保存”按钮。
    >
    >
 
@@ -468,7 +466,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 9.  检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
 
      >[!NOTE]
-     >可能需要暂时禁用此策略，确保它不影响登录。为此，请将“启用策略”切换按钮设置为“否”，然后单击“保存”按钮。
+     >可能需要暂时禁用此策略，确保它不影响登录。 为此，请将“启用策略”切换按钮设置为“否”，然后单击“保存”按钮。
      >
      >
 
@@ -528,5 +526,4 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ## <a name="next-steps"></a>后续步骤
 [使用管理员许可终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
-
 

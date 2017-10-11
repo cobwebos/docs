@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2 Windows 桌面入门 - 安装 | Microsoft Docs"
-description: "Windows 桌面 .NET (XAML) 应用程序如何通过 Azure Active Directory v2 终结点调用需要访问令牌的 API"
+title: "Azure AD v2 Windows 桌面获取已启动 – 设置 |Microsoft 文档"
+description: "如何 Windows 桌面.NET (XAML) 应用程序可以调用一个 API，由 Azure Active Directory v2 终结点需要访问令牌"
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -15,41 +15,40 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 4065727aef04d7969d438c6ef79127bb44568be1
-ms.contentlocale: zh-cn
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
+## <a name="set-up-your-project"></a>设置你的项目
 
-## <a name="set-up-your-project"></a>设置项目
+本部分提供有关如何创建新项目的分步说明来演示如何将 Windows 桌面.NET 应用程序 (XAML) 集成*在使用 Microsoft 登录*，它可以查询需要使用令牌的 Web Api。
 
-本部分提供分步说明，介绍如何创建新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“登录 Microsoft”集成，使其能查询需要令牌的 Web API。
+本指南所创建的应用程序公开用于图形，并在屏幕和注销按钮上显示结果的按钮。
 
-本指南创建的应用程序将公开一个用于在屏幕上绘制和显示结果的按钮，以及一个注销按钮。
-
-> 想要改为下载此示例的 Visual Studio 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)并跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
+> 希望改为下载此示例的 Visual Studio 项目？ [下载的项目](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)并跳到[配置步骤](#create-an-application-express)配置在执行之前的代码示例。
 
 
-### <a name="create-your-application"></a>创建应用程序
+### <a name="create-your-application"></a>创建你的应用程序
 1. 在 Visual Studio 中：`File` > `New` > `Project`<br/>
-2. 在“模板”下，选择 `Visual C#`
-3. 选择 `WPF App`（根据所用 Visual Studio 版本，该选项可能显示为“WPF 应用程序”）
+2. 下*模板*，选择`Visual C#`
+3. 选择`WPF App`(或*WPF 应用程序*具体取决于你的 Visual Studio 的版本)
 
-## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>向项目添加 Microsoft 身份验证库 (MSAL)
+## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>将 Microsoft 身份验证库 (MSAL) 添加到你的项目
 1. 在 Visual Studio 中：`Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. 在“程序包管理器控制台”窗口中复制/粘贴以下命令：
+2. 复制/粘贴程序包管理器控制台窗口中的以下：
 
 ```powershell
 Install-Package Microsoft.Identity.Client -Pre
 ```
 
-> 以上包将安装 Microsoft 身份验证库 (MSAL)。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2 保护的 API 的用户令牌。
+> 上述程序包将安装 Microsoft 身份验证库 (MSAL)。 MSAL 处理获取、 缓存和刷新用户 toskens 用于访问受 Azure Active Directory v2 的 Api。
 
 ## <a name="add-the-code-to-initialize-msal"></a>添加代码以初始化 MSAL
-此步骤将帮助你创建用于处理与 MSAL 库的交互（例如令牌处理）的类。
+此步骤将帮助你创建一个类以处理与 MSAL 库交互，如对令牌的处理。
 
-1. 打开 `App.xaml.cs` 文件，将 MSAL 库的引用添加到类：
+1. 打开`App.xaml.cs`文件并将 MSAL 库的引用添加到类：
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -57,7 +56,7 @@ using Microsoft.Identity.Client;
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-将 App 类更新为：
+更新为以下 App 类：
 </li>
 </ol>
 
@@ -73,10 +72,10 @@ public partial class App : Application
 }
 ```
 
-## <a name="create-your-applications-ui"></a>创建应用程序 UI
-下一节说明应用程序可如何查询受保护的后端服务器，例如 Microsoft Graph。 项目模板中应自动创建了 MainWindow.xaml 文件。 打开此文件，然后按照下面的说明进行操作：
+## <a name="create-your-applications-ui"></a>创建你的应用程序 UI
+下面的部分说明如何应用程序可以查询受保护后端服务器，例如，Microsoft Graph。 MainWindow.xaml 文件自动应作为你的项目模板的一部分创建。 打开此文件的此文件，然后执行下面的说明：
 
-将应用程序的 `<Grid>` 替换为以下内容：
+将你的应用程序`<Grid>`替换为以下：
 
 ```xml
 <Grid>
@@ -92,4 +91,3 @@ public partial class App : Application
     </StackPanel>
 </Grid>
 ```
-

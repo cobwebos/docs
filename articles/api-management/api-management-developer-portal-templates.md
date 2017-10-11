@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2434762c2a1174a40d9c6daad6c317bc3ca8f374
 ms.openlocfilehash: 40d25726d31d2018785b77d169a8811c565316bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 02/23/2017
 
 ![开发人员门户菜单][api-management-developer-portal-menu]
 
-若要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，然后单击“模板”。
+要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”。
 
 ![开发人员门户模板][api-management-customize-menu]
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 02/23/2017
 新发布的模板在开发人员门户中立即生效。
 
 ## <a name="to-revert-a-template-to-the-previous-version"></a>将模板还原到以前版本
-若要将模板还原到以前发布的版本，请单击模板编辑器中的“还原”。
+要将模板还原到以前发布的版本，请单击模板编辑器中的“还原”。
 
 ![还原模板][api-management-revert-template]
 
@@ -170,7 +169,7 @@ ms.lasthandoff: 02/23/2017
 还原操作完成后，模板的以前发布的版本在开发人员门户中生效。
 
 ## <a name="to-restore-a-template-to-the-default-version"></a>将模板还原到默认版本
-将模板还原到其默认版本的过程分为两步。 首先必须还原模板，然后必须发布已还原的版本。
+将模板还原到其默认版本的过程分为两步。 首先，必须还原模板，然后必须发布还原后的版本。
 
 若要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
 
@@ -184,7 +183,7 @@ ms.lasthandoff: 02/23/2017
 
 ![还原模板][api-management-restore-templates]
 
-然后，还原的模板必须按照[发布模板](#to-publish-a-template)中的步骤单独或全部同时发布。
+然后，必须按照[发布模板](#to-publish-a-template)中的步骤分别或一起发布还原后的所有模板。
 
 ## <a name="next-steps"></a>后续步骤
 有关开发人员门户模板、字符串资源、图标和页面控件的参考信息，请参阅 [API 管理开发人员门户模板参考](api-management-developer-portal-templates-reference.md)。
@@ -212,7 +211,6 @@ ms.lasthandoff: 02/23/2017
 [api-management-reset-template]: ./media/api-management-developer-portal-templates/api-management-reset-template.png
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
-
 
 
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 12484338f5b4d489604d70a657ef0992b6267297
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/06/2017
 > 
 > 
 
-在对卷启动还原之前，请确保卷处于脱机状态。 首先需要在主机上使卷脱机，然后在设备上使卷脱机。 请按照[使卷脱机](storsimple-manage-volumes.md#take-a-volume-offline)中的步骤操作。 执行以下步骤从备份集中还原卷。
+在对卷启动还原之前，请确保卷处于脱机状态。 你将需要使主机上的卷脱机第一个，然后设备。 请按照[使卷脱机](storsimple-manage-volumes.md#take-a-volume-offline)中的步骤操作。 执行以下步骤从备份集中还原卷。
 
 ### <a name="to-restore-from-a-backup-set"></a>从备份集中还原
 1. 在“StorSimple Manager 服务”页上，单击“备份目录”选项卡。
@@ -75,10 +74,10 @@ ms.lasthandoff: 07/06/2017
    > 
    > 
 4. 选择一个备份集。 单击页面底部的“还原”。
-5. 系统将提示进行确认。 
+5. 系统会提示进行确认。 
    
     ![“确认”页](./media/storsimple-restore-from-backup-set/HCS_ConfirmRestore.png)
-6. 查看还原信息，然后单击选中图标![选中图标](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png)。 这将启动可通过访问“作业”页面进行查看的还原作业。 
+6. 查看还原信息，并单击选中图标![选中图标](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png)。 这会启动可通过访问“作业”页面进行查看的还原作业。 
 7. 还原完成后，可验证卷的内容是否已由备份中的卷所替换。
 
 ![可用视频](./media/storsimple-restore-from-backup-set/Video_icon.png)**可用视频**
@@ -88,5 +87,4 @@ ms.lasthandoff: 07/06/2017
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 卷](storsimple-manage-volumes.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

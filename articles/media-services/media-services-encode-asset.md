@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4d35bdd88998d30435e9e5e916a18b3ce3bc7978
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: 538a6ab60168735c2626a93cdeedd8d4999a6efc
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>概述并比较 Azure 点播媒体编码器
 ## <a name="encoding-overview"></a>编码概述
@@ -35,7 +34,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 >
 >此外，将源文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流式处理文件（本教程稍后将演示编码步骤）。
 
-媒体服务支持将在本文中介绍的以下按需编码器：
+媒体服务支持在本文中介绍的以下按需编码器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [媒体编码器高级工作流](media-services-encode-asset.md#media-encoder-premium-workflow)
@@ -43,9 +42,9 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 本文简要概述了点播媒体编码器，并提供了指向介绍更多详细信息的文章的链接。 本主题还提供对编码器的比较。
 
 >[!NOTE]
->默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。 你可以保留编码单元，使用它们可以同时运行多个编码任务，你购买的每个编码保留单位对应一个任务。 有关信息，请参阅[缩放编码单位](media-services-scale-media-processing-overview.md)。
+>默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。 可以保留编码单元，使用它们可以同时运行多个编码任务，购买的每个编码保留单位对应一个任务。 有关信息，请参阅[缩放编码单位](media-services-scale-media-processing-overview.md)。
 
-## <a name="media-encoder-standard"></a>媒体编码器标准版
+## <a name="media-encoder-standard"></a>Media Encoder Standard
 ### <a name="how-to-use"></a>如何使用
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)
 
@@ -97,4 +96,3 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-

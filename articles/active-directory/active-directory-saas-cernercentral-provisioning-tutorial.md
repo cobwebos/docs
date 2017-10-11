@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Cerner Central 中的用户名单以及取消其预配而需要在 Cerner Central 和 Azure AD 中执行的步骤。 
@@ -136,4 +134,3 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何查看日志并获取有关预配活动的报表](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)。
-

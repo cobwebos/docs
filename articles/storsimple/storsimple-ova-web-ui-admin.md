@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6c5fa51bdaad808d90cac6c8b8adeafe7d1cafc9
 ms.openlocfilehash: 989e7b697f9b527df549fb32be18edd1d3c8d224
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/01/2016
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>使用 Web UI 管理 StorSimple Virtual Array
 ![安装流程](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -52,8 +51,8 @@ ms.lasthandoff: 12/01/2016
 1. 在本地 Web UI 中，转到“故障排除” > “诊断测试”。
    
     ![运行诊断 1](./media/storsimple-ova-web-ui-admin/image29.png)
-2. 在页面底部，单击“运行诊断测试”。 这将启动测试以诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 用户将收到设备正在运行测试的通知。
-3. 测试完成后，将显示结果。 以下示例显示诊断测试的结果。 请注意，此设备上未配置 Web 代理设置，因此没有运行 Web 代理测试。 针对网络设置、DNS 服务器和时间设置的所有其他测试均已成功完成。
+2. 在页面底部，单击“运行诊断测试”。 这会启动测试以诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 用户将收到设备正在运行测试的通知。
+3. 测试完成后，会显示结果。 以下示例显示诊断测试的结果。 请注意，此设备上未配置 Web 代理设置，因此没有运行 Web 代理测试。 针对网络设置、DNS 服务器和时间设置的所有其他测试均已成功完成。
    
     ![运行诊断 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 12/01/2016
    
     ![生成日志包 2](./media/storsimple-ova-web-ui-admin/image32.png)
    
-    在成功创建包后，用户将收到通知，并且将更新页面以指示创建包的时间和日期。
+    在成功创建包后，用户将收到通知，页面将更新以指示创建包的时间和日期。
    
     ![生成日志包 3](./media/storsimple-ova-web-ui-admin/image33.png)
 3. 单击“下载日志包”。 压缩包将下载到系统上。
@@ -77,14 +76,14 @@ ms.lasthandoff: 12/01/2016
 4. 可以解压缩下载的日志包并查看系统日志文件。
 
 ## <a name="shut-down-and-restart-your-device"></a>关闭和重启设备
-可使用本地 Web UI 关闭或重启虚拟设备。 建议在重启之前，首先使卷或共享在主机上脱机，然后在设备上脱机。 这能在最大程度上减少发生数据损坏的可能性。 
+可使用本地 Web UI 关闭或重启虚拟设备。 我们建议你重新启动之前，请执行卷或主机和移动设备上的共享脱机。 这能在最大程度上减少发生数据损坏的可能性。 
 
 #### <a name="to-shut-down-your-virtual-device"></a>关闭虚拟设备
 1. 在本地 Web UI 中，转到“维护” > “电源设置”。
 2. 在页面底部，单击“关闭”。
    
     ![关闭设备 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. 会出现一条警告消息，表明关闭设备将使中断任何正在进行的 IO，从而导致停机。 单击选中图标  ![选中图标](./media/storsimple-ova-web-ui-admin/image3.png)。
+3. 会出现一条警告消息，表明关闭设备将使任何正在进行的 IO 中断，从而导致停机。 单击选中图标  ![选中图标](./media/storsimple-ova-web-ui-admin/image3.png)。
    
     ![设备关闭警告](./media/storsimple-ova-web-ui-admin/image37.png)
    
@@ -99,7 +98,7 @@ ms.lasthandoff: 12/01/2016
 2. 在页面底部，单击“重启”。
    
     ![设备重启](./media/storsimple-ova-web-ui-admin/image36.png)
-3. 会出现一条警告消息，表明重启设备将使中断任何正在进行的 IO，从而导致停机。 单击选中图标  ![选中图标](./media/storsimple-ova-web-ui-admin/image3.png)。
+3. 会出现一条警告消息，表明重启设备将使任何正在进行的 IO 中断，从而导致停机。 单击选中图标  ![选中图标](./media/storsimple-ova-web-ui-admin/image3.png)。
    
     ![重启警告](./media/storsimple-ova-web-ui-admin/image37.png)
    
@@ -111,5 +110,4 @@ ms.lasthandoff: 12/01/2016
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[使用 StorSimple Manager 服务管理设备](storsimple-virtual-array-manager-service-administration.md)。
-
 
