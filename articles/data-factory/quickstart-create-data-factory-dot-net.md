@@ -14,10 +14,10 @@ ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ebd2520813cd27280171c0e05637eb5a8bd58a29
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: d78176eca6bdbf32d6b4400ad2812dea98703d67
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -29,12 +29,12 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 存储帐户**。 可以将 blob 存储同时用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅 [创建存储帐户] 来创建一个。 请参阅 (../storage/common/storage-create-storage-account.md#create-a-storage-account) 一文获取创建步骤。 
-* 在 Blob 存储中创建一个 **blob 容器**，在该容器中创建一个输入**文件夹**，并向该文件夹上传一些文件。 
+* **Azure 存储帐户**。 可以将 blob 存储同时用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)创建一个。 
+* 在 Blob 存储中创建一个 **blob 容器**，在该容器中创建一个输入**文件夹**，并向该文件夹上传一些文件。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具连接到 Azure Blob 存储、创建 Blob 容器、上传输入文件，以及验证输出文件。
 * **Visual Studio** 2013、2015 或 2017。 本文中的演练使用 Visual Studio 2017。
 * **下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)**。
 * 按照[这些说明](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下稍后要使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 根据同一文章中的以下说明将应用程序分配到“参与者”角色。 
-* [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。 可以使用此工具连接到 Azure Blob 存储、创建 blob 容器、上传输入文件，以及验证输出文件。 
+*  
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -49,12 +49,13 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
 1. 单击“工具” -> “NuGet 包管理器” -> “包管理器控制台”。
-2. 在程序包管理器控制台中运行以下命令以安装包：
+2. 在“包管理器控制台”中，运行以下命令来安装包：
 
     ```
     Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
     Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+
     ```
 
 ## <a name="create-a-data-factory-client"></a>创建数据工厂客户端
@@ -83,7 +84,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     string resourceGroup = "<your resource group where the data factory resides>";
     // Currently, Data Factory V2 allows you to create data factories only in the East US and East US2 regions. 
     // Note that the data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions
-    string region = "East US";
+    string region = "East US 2";
     string dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
     string storageAccount = "<your storage account name to copy data>";
     string storageKey = "<your storage account key>";
@@ -131,7 +132,7 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 ## <a name="create-a-linked-service"></a>创建链接服务
 
-向 **Main** 方法中添加用于创建 **Azure 存储链接服务**的以下代码。
+在 **Main** 方法中添加用于创建 **Azure 存储链接服务**的以下代码。
 
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在此快速入门中，只需创建一个同时作为复制源和接收器存储的 Azure 存储链接服务，在示例中名为“AzureStorageLinkedService”。
 
@@ -249,7 +250,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>监视管道运行
 
-1. 向 **Main** 方法中添加以下代码来持续检查管道运行状态，直到它完成数据复制为止。
+1. 在 **Main** 方法中添加以下代码用于持续检查管道运行状态，直到它完成数据复制为止。
 
     ```csharp
     // Monitor the pipeline run
@@ -266,7 +267,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. 向 **Main** 方法中添加以下代码，以检索复制活动运行详细信息，例如，读取/写入的数据大小。
+2. 在 **Main** 方法中添加以下代码用于检索复制活动运行详细信息，例如，读取/写入的数据大小。
 
     ```csharp
     // Check the copy activity run details
@@ -274,13 +275,10 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    
     List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
     resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
- 
-
     if (pipelineRun.Status == "Succeeded")
         Console.WriteLine(activityRuns.First().Output);
     else
         Console.WriteLine(activityRuns.First().Error);
-
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -289,7 +287,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 生成并启动应用程序，然后验证管道执行。
 
-控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，它检查管道运行状态。 请等待，直至看到包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
+控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等待，直至看到包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
 
 ### <a name="sample-output"></a>示例输出： 
 ```json

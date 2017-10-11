@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: hero-article
 ms.date: 09/20/2017
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 91d2f47a528050f644973044f96c0354b91dba25
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: bb3ac21d2e8b8efd7b4f6943fcc3256f18cbdd68
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -27,7 +27,13 @@ Azure 机器学习是一个集成式的端到端数据科学和高级分析解�
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
-目前，Azure Machine Learning Workbench 只能安装在以下操作系统上：Windows 10、Windows Server 2016 和 macOS Sierra。
+目前，Azure Machine Learning Workbench 桌面应用只能安装在以下操作系统上： 
+- Windows 10
+- Windows Server 2016
+- macOS Sierra
+
+>[!NOTE]
+>尚不支持 macOS High Sierra。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -118,7 +124,7 @@ Azure 机器学习是一个集成式的端到端数据科学和高级分析解�
 
 5. Azure Machine Learning Workbench 现已安装到以下目录中： 
 
-   _/Applications/AmlWorkbench.app_
+   `/Applications/AmlWorkbench.app`
 
 ## <a name="run-azure-machine-learning-workbench-to-log-in-the-first-time"></a>运行 Azure Machine Learning Workbench 以完成首次登录
 1. 安装过程完成后，请在安装程序的最后一个屏幕上单击“启动 Workbench”按钮。 如果已关闭安装程序，请在桌面上找到 Machine Learning Workbench 的快捷方式，并通过名为“Azure Machine Learning Workbench”的菜单启动该应用。
