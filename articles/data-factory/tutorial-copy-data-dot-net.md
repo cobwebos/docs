@@ -3,7 +3,7 @@ title: "将数据从 Azure Blob 存储复制到 SQL 数据库 | Microsoft Docs"
 description: "本教程提供有关将数据从 Azure Blob 存储复制到 Azure SQL 数据库的分步说明。"
 services: data-factory
 documentationcenter: 
-author: sharonlo101
+author: linda33wj
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2017
-ms.author: shlo
+ms.date: 09/26/2017
+ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 80abdd1524160427c17e05bd0086d2c7f6a54910
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 6f1a93c2906eaab82dcfb9bae1ee4a54dce300bd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
@@ -41,7 +41,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 存储帐户**。 可以将 blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+* **Azure 存储帐户**。 可将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
 * **Azure SQL 数据库**。 将数据库用作**接收器**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
 * **Visual Studio** 2015 或 2017。 本文中的演练使用 Visual Studio 2017。
 * **下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)**。
@@ -82,7 +82,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
     1. 单击左侧的“更多服务”中心，并单击“SQL Server”。
     2. 选择服务器，并单击“设置”下的“防火墙”。
-    3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”所对应的“打开”。
+    3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。
 
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
@@ -98,7 +98,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
 1. 单击“工具” -> “NuGet 包管理器” -> “包管理器控制台”。
-2. 在程序包管理器控制台中运行以下命令以安装包：
+2. 在“包管理器控制台”中，运行以下命令来安装包：
 
     ```
     Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
@@ -226,7 +226,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.Ser
 
 ## <a name="create-datasets"></a>创建数据集
 
-在本部分中，将创建两个数据集：一个用于源，另一个用于接收器。 
+在本部分中创建两个数据集：一个用于源，另一个用于接收器。 
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>为源 Azure Blob 创建数据集
 
@@ -343,7 +343,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>监视管道运行
 
-1. 向 **Main** 方法中添加以下代码来持续检查管道运行状态，直到它完成数据复制为止。
+1. 在 **Main** 方法中添加以下代码用于持续检查管道运行状态，直到它完成数据复制为止。
 
     ```csharp
     // Monitor the pipeline run
@@ -360,7 +360,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. 向 **Main** 方法中添加以下代码，以检索复制活动运行详细信息，例如，读取/写入的数据大小。
+2. 在 **Main** 方法中添加以下代码用于检索复制活动运行详细信息，例如，读取/写入的数据大小。
 
     ```csharp
     // Check the copy activity run details
@@ -510,7 +510,6 @@ Checking copy activity run details...
   "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)",
   "usedCloudDataMovementUnits": 2,
   "billedDuration": 2
-
 }
 
 Press any key to exit...

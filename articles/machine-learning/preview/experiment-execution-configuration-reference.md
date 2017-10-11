@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/17/2017
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 68958dd42ef2382caaa740c52fc4f20c1cd3eff0
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: e1356439385cc7fe66985bd2b84e4121386ec23d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -113,7 +113,7 @@ packages:
 ## <a name="run-configuration"></a>运行配置
 若要指定特定的运行配置，需要一对文件。 它们通常使用 CLI 命令生成。 但也可以克隆现有文件、重命名它们，并对其进行编辑。
 
-```shell
+```azurecli
 # create a compute target pointing to a VM via SSH
 $ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of VM> -u <username> -w <password> --type remotedocker
 
@@ -126,8 +126,8 @@ $ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of 
 >[!NOTE]
 > 运行配置文件的本地或 docker 名称是任意的。 为方便起见，在你创建一个空白项目时，Azure ML Workbench 会添加这两个运行配置。 你可以重命名附带项目模板的“<run configuration name>.runconfig”文件，或使用任意名称创建新文件。
 
-### <a name="compute-target-namecompute"></a><compute target name>.compute
-<compute target name>.compute 文件指定计算目标的连接和配置信息。 它是一个名称/值对列表。 以下是支持的设置。
+### <a name="compute-target-namecompute"></a>\<compute target name>.compute
+_\<compute target name>.compute_ 文件指定计算目标的连接和配置信息。 它是一个名称/值对列表。 以下是支持的设置。
 
 类型：计算环境类型。 支持的值是：
   - local
@@ -135,7 +135,7 @@ $ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of 
   - remotedocker
   - cluster
 
-baseDockerImage：用于运行 Python/PySpark 脚本的 Docker 映像。 默认值为 microsoft/mmlspark:plus-0.7.dev7_2.gcfbc920。 我们还支持另一个映像：microsoft/mmlspark:plus-gpu-0.7.dev7_2.gcfbc920，这将给予主机的 GPU 访问权限（如果存在 GPU）。
+baseDockerImage：用于运行 Python/PySpark 脚本的 Docker 映像。 默认值为 _microsoft/mmlspark:plus-0.7.91_。 我们还支持另一个映像：_microsoft/mmlspark:plus-gpu-0.7.91_，它授予主机的 GPU 访问权限（如果存在 GPU）。
 
 address：虚拟机的 IP 地址或 FQDN（完全限定域名），或 HDInsight 群集头节点。
 
@@ -149,8 +149,8 @@ nvidiaDocker：当设置为 true 时，此标志指示 Azure ML Workbench 执行
 
 nativeSharedDirectory：此属性指定基目录（例如：_~/.azureml/share/_），可以在其中保存文件，以便在同一计算目标上运行时共享。 如果在 Docker 容器上运行时使用此设置，则 sharedVolumes 必须设置为 true。 否则，执行将失败。
 
-### <a name="run-configuration-namerunconfig"></a><run configuration name>.runconfig
-<run configuration name>.runconfig 指定 Azure ML Workbench 的执行行为。 它指定 runconfiguration 行为，例如跟踪运行历史记录或与其他许多计算目标一起使用的计算目标。 运行配置文件的名称用于填充 Azure ML Workbench 桌面应用程序中的执行上下文下拉列表。
+### <a name="run-configuration-namerunconfig"></a>\<run configuration name>.runconfig
+_\<run configuration name>.runconfig_ 指定 Azure ML Workbench 的执行行为。 可以配置执行行为，例如跟踪运行历史记录、要使用的计算目标，等等。 运行配置文件的名称用于填充 Azure ML Workbench 桌面应用程序中的执行上下文下拉列表。
 
 ArgumentVector：此部分指定要作为此执行一部分运行的脚本以及该脚本的参数。 例如，如果你在“<run configuration name>.runconfig”文件中有以下代码段 
 
@@ -212,4 +212,6 @@ DataSourceSubstitutions:
 ```
 df = datasource.load_datasource('mylocal.dsource')
 ```
+## <a name="next-steps"></a>后续步骤
+详细了解[执行环境配置](experiment-execution-configuration.md)
 
