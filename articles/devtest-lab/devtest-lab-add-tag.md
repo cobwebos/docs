@@ -64,7 +64,7 @@ ms.lasthandoff: 09/13/2017
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-### <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 * 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[设置策略和计划](devtest-lab-set-lab-policy.md)。
 * 浏览[开发测试实验室 Azure Resource Manager 快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。
 
