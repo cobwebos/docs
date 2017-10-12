@@ -90,7 +90,7 @@ ms.lasthandoff: 08/31/2017
     | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
     | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
-2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
+2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
 
 ## <a name="file-download-error-target-uri-is-not-specified"></a>文件下载错误：未指定目标 URI
 
@@ -147,7 +147,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 证书 &lt;*证书 ID*&gt; 的数据无效。
+**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 证书 &lt;*证书 ID*&gt; 的数据无效。**
 
 ### <a name="cause"></a>原因 
 
@@ -182,7 +182,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效。
+**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效**。
 
 ### <a name="cause"></a>原因
 

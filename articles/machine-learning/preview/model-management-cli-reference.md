@@ -193,7 +193,7 @@ ms.lasthandoff: 09/25/2017
 
 可以选择先创建映像的清单，然后再创建映像。 
 
-`az ml image create -n [image name] -manifest-id [the manifest ID]`
+`az ml image create -n [image name] --manifest-id [the manifest ID]`
 
 也可以通过单个命令同时创建清单和映像。 
 
