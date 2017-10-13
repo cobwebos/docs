@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/11/2016
 ms.author: v-sharos
 ms.openlocfilehash: 31ed9dad8ba56a3746873b7b35e678e97743fbfe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-volumes"></a>使用 StorSimple Manager 服务管理卷
 [!INCLUDE [storsimple-version-selector-manage-volumes](../../includes/storsimple-version-selector-manage-volumes.md)]
@@ -92,7 +92,7 @@ StorSimple Manager 服务是 Azure 经典门户的一个扩展，可让用户通
 > 
 
 ### <a name="to-modify-a-volume"></a>修改卷
-1. 在“设备”页上，选择设备、双击它，并单击“卷容器”选项卡。 此页以表格格式列出与设备关联的所有卷容器。
+1. 在“设备”页上，选择设备、双击它，并单击“卷容器”选项卡。此页以表格格式列出与设备关联的所有卷容器。
 2. 选择并单击一个卷容器可以显示该容器中所有卷的列表。
 3. 在“卷”页上，选择一个卷并单击“修改”。
 4. 在“修改卷向导”中的“基本设置”下，可以执行以下操作：
@@ -133,7 +133,7 @@ StorSimple Manager 服务是 Azure 经典门户的一个扩展，可让用户通
 2. 先在主机上使卷脱机。 这样可以消除任何造成卷上数据损坏的潜在风险。 有关具体的步骤，请参阅适用于主机操作系统的说明。
 3. 在主机上脱机后，执行以下步骤在设备上使卷脱机：
    
-   1. 在“设备”页上，选择设备、双击它，并单击“卷容器”选项卡。 “卷容器”选项卡以表格格式列出与设备关联的所有卷容器。
+   1. 在“设备”页上，选择设备、双击它，并单击“卷容器”选项卡。“卷容器”选项卡以表格格式列出与设备关联的所有卷容器。
    2. 选择并单击一个卷容器可以显示该容器中所有卷的列表。
    3. 选择一个卷并单击“脱机”。
    4. 出现确认提示时，单击“是”。 该卷随即会脱机。
