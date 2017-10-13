@@ -159,7 +159,7 @@
           href: sql-database-advisor.md
         - name: 自动优化
           href: sql-database-automatic-tuning.md
-        - name: 智能见解
+        - name: Intelligent Insights
           href: sql-database-intelligent-insights.md
         - name: 智能见解诊断日志
           href: sql-database-intelligent-insights-use-diagnostics-log.md
@@ -169,8 +169,6 @@
           href: sql-database-operate-query-store.md
         - name: 扩展的事件
           href: sql-database-xevent-db-diff-from-svr.md
-        - name: 兼容级别
-          href: sql-database-compatibility-level-query-performance-130.md
         - name: 监视内存中存储
           href: sql-database-in-memory-oltp-monitoring.md
     - name: 向外扩展
@@ -266,6 +264,12 @@
         - name: 通过 PowerShell 配置虚拟网络规则
           href: sql-database-vnet-service-endpoint-rule-powershell.md
     - name: 业务连续性
+      items:
+        - name: 配置保管库 - 备份
+          href: sql-database-long-term-backup-retention-configure.md
+        - name: 异地复制 - 门户
+          href: sql-database-geo-replication-portal.md
+    - name: 加载和移动数据
       items:
         - name: 使用 BCP 加载数据
           href: sql-database-load-from-csv-with-bcp.md

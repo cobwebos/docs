@@ -20,7 +20,7 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
 
 ![启用自动缩放](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 使用 Azure Monitor 的自动缩放功能，可以基于[指标](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md)增加或减少正在运行的 VM 数量。 默认情况下，VM 针对磁盘、网络和 CPU 使用情况提供基本的主机级别指标。 使用诊断扩展配置诊断数据收集时，额外的来宾 OS 性能计数器将可用于磁盘、CPU 和内存。
 
@@ -46,7 +46,7 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
 
 如果使用 Azure PowerShell，则需要使用 [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) 获取规模集对象。 然后将 **sku.capacity** 属性设置为所需 VM 的数量，并使用 [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) 更新规模集。 如果使用 Azure CLI，则使用 [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#scale) 命令的 **--new-capacity** 参数更改容量。
 
-### <a name="vertical"></a>纵向
+### <a name="vertical"></a>垂直
 
 可以在 Azure 门户中的“大小”屏幕上手动更改规模集的 VM 大小。 可以在 Azure PowerShell 中使用 Get-AzureRmVmss，设置映像引用 sku 属性，然后使用 [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) 和 [Update-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance)。
 

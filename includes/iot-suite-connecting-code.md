@@ -1,21 +1,21 @@
-## <a name="specify-the-behavior-of-the-iot-device"></a>指定行为的 IoT 设备
+## <a name="specify-the-behavior-of-the-iot-device"></a>指定 IoT 设备的行为
 
-IoT 中心序列化程序客户端库使用模型来指定与 IoT 中心的设备交换的消息格式。
+IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心交换的消息的格式。
 
-1. 添加以下变量声明之后`#include`语句。 替换占位符值 [设备 Id] 和 [设备 Key] 与你为你的设备远程监视解决方案仪表板中记下的值。 使用解决方案仪表板从 IoT 中心主机名来替换 [IoTHub 名称]。 例如，如果你的 IoT 中心主机名是**contoso.azure devices.net**，将 [IoTHub Name] 替换**contoso**:
+1. 在 `#include` 语句之后添加以下变量声明。 将占位符值 [Device Id] 和 [Device Key] 替换为在远程监视解决方案仪表板中记下的设备值。 使用解决方案仪表板中的 IoT 中心主机名替换 [IoTHub Name]。 例如，如果 IoT 中心主机名是 **contoso.azure-devices.net**，则将 [IoTHub Name] 替换为 **contoso**：
    
     ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
 
-1. 添加以下代码以定义模型，使设备与 IoT 中心通信。 此模型指定设备：
+1. 添加以下代码以定义使设备可以与 IoT 中心通信的模型。 此模型指定设备：
 
-   - 可以发送作为遥测温度、 外部温度、 湿度和设备 id。
-   - 可以将设备有关的元数据发送到 IoT 中心。 设备将基本元数据发送**DeviceInfo**在启动时的对象。
-   - 可以向在 IoT 中心设备双向发送报告的属性。 这些报告的属性都分组到配置、 设备和系统属性。
-   - 可以接收和处理在 IoT 中心内设备双向中设置的所需属性。
-   - 可响应**重新启动**和**InitiateFirmwareUpdate**直接通过解决方案门户调用的方法。 设备将发送有关直接的方法的信息它支持使用报告属性。
+   - 可以将温度、外部温度、湿度和设备 ID 作为遥测数据进行发送。
+   - 可以将关于设备的元数据发送到 IoT 中心。 设备在启动时会发送 **DeviceInfo** 对象中的基本元数据。
+   - 可以向 IoT 中心中的设备孪生发送已报告的属性。 这些报告的属性划分为配置、设备和系统属性。
+   - 可以接收和处理在 IoT 中心的设备孪生中设置的所需属性。
+   - 可以响应通过解决方案门户调用的 **Reboot** 和 **InitiateFirmwareUpdate** 直接方法。 设备使用报告的属性发送有关其支持的直接方法的信息。
    
     ```c
     // Define the Model
@@ -85,10 +85,10 @@ IoT 中心序列化程序客户端库使用模型来指定与 IoT 中心的设�
     END_NAMESPACE(Contoso);
     ```
 
-## <a name="implement-the-behavior-of-the-device"></a>实现的行为的设备
+## <a name="implement-the-behavior-of-the-device"></a>实现设备的行为
 现在添加实现模型中定义的行为的代码。
 
-1. 添加以下处理所需的属性，在解决方案仪表板中设置的函数。 模型中定义这些所需的属性：
+1. 添加以下函数，处理在解决方案仪表板中设置的所需属性。 模型中定义了这些所需属性：
 
     ```c
     void onDesiredTemperatureMeanValue(void* argument)
@@ -107,7 +107,7 @@ IoT 中心序列化程序客户端库使用模型来指定与 IoT 中心的设�
     }
     ```
 
-1. 添加以下函数处理的直接方法调用通过 IoT 中心。 模型中定义这些直接的方法：
+1. 添加以下函数，处理通过 IoT 中心调用的直接方法。 模型中定义了这些直接方法：
 
     ```c
     /* Handlers for direct methods */
@@ -130,7 +130,7 @@ IoT 中心序列化程序客户端库使用模型来指定与 IoT 中心的设�
     }
     ```
 
-1. 添加将消息发送到预配置解决方案的以下函数：
+1. 添加以下函数，向预配置解决方案发送消息：
    
     ```c
     /* Send data to IoT Hub */
@@ -158,7 +158,7 @@ IoT 中心序列化程序客户端库使用模型来指定与 IoT 中心的设�
     }
     ```
 
-1. 添加以下回调处理程序运行时设备已发送到预配置解决方案的新报告的属性值：
+1. 添加以下回调处理程序，当设备向预配置解决方案发送新的报告属性值后将运行该处理程序：
 
     ```c
     /* Callback after sending reported properties */
@@ -169,16 +169,16 @@ IoT 中心序列化程序客户端库使用模型来指定与 IoT 中心的设�
     }
     ```
 
-1. 添加以下函数以将设备连接到云中的预配置解决方案并与其交换数据。 此函数将执行以下步骤：
+1. 添加以下函数，将设备连接到云中的预配置解决方案，并交换数据。 此函数执行以下步骤：
 
     - 初始化平台。
-    - 向序列化库中注册的 Contoso 命名空间。
-    - 初始化具有设备的连接字符串的客户端。
-    - 创建的实例**调温器**模型。
-    - 创建并发送报告的属性值。
-    - 发送**DeviceInfo**对象。
-    - 创建一个循环将遥测发送每隔一秒。
-    - 取消初始化的所有资源。
+    - 向序列化库注册 Contoso 命名空间。
+    - 使用设备连接字符串初始化客户端。
+    - 创建 **Thermostat** 模型的实例。
+    - 创建并发送报告属性值。
+    - 发送 **DeviceInfo** 对象。
+    - 创建循环以便每秒发送遥测数据。
+    - 取消初始化所有资源。
 
       ```c
       void remote_monitoring_run(void)
@@ -296,7 +296,7 @@ IoT 中心序列化程序客户端库使用模型来指定与 IoT 中心的设�
       }
     ```
    
-    作为参考，下面是一个示例**遥测**消息发送到预配置解决方案：
+    下面提供发送到预配置解决方案的示例**遥测数据**消息，以供参考：
    
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}

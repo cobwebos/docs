@@ -1,65 +1,65 @@
-Azure 客户每月可解锁 25,000 封免费电子邮件。 这些 25,000 封免费每月电子邮件将允许访问的高级报告和分析和[所有 Api] [ all APIs] （Web、 SMTP、 事件、 分析和的详细信息）。 有关 SendGrid 提供的其他服务的信息，请访问[SendGrid 解决方案][ SendGrid Solutions]页。
+Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 25,000 封免费电子邮件，将可使用高级报告和分析以及[所有 API][all APIs]（Web、SMTP、事件、分析等）。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
 
-### <a name="to-sign-up-for-a-sendgrid-account"></a>若要注册的 SendGrid 帐户
-1. 登录到[Azure 管理门户][Azure Management Portal]。
-2. 在左侧菜单中，单击**新建**。
+### <a name="to-sign-up-for-a-sendgrid-account"></a>注册 SendGrid 帐户
+1. 登录到 [Azure 管理门户][Azure Management Portal]。
+2. 在左侧菜单中，单击“新建”。
 
-    ![命令栏新][command-bar-new]
-3. 单击**外接程序**然后**SendGrid 电子邮件传递**。
+    ![command-bar-new][command-bar-new]
+3. 单击“外接程序”，并单击“SendGrid 电子邮件传递”。
 
-    ![sendgrid 应用商店][sendgrid-store]
-4. 完成注册表单，然后选择**创建**。
+    ![sendgrid-store][sendgrid-store]
+4. 完成注册表单，并选择“创建”。
 
-    ![sendgrid 的创建][sendgrid-create]
-5. 输入**名称**以标识 Azure 设置中的 SendGrid 服务。 名称必须介于 1 和 100 个字符的长度之间，并且包含仅字母数字字符、 短划线、 点和下划线。 名称必须是唯一的订阅的 Azure 应用商店项目列表中。
-6. 输入并确认你**密码**。
-7. 选择你**订阅**。
-8. 创建一个新**资源组**或使用现有。
-9. 在**定价层**部分，选择你想要注册的 SendGrid 计划。
+    ![sendgrid-create][sendgrid-create]
+5. 输入“名称”标识 Azure 设置中的 SendGrid 服务。 名称的长度必须介于 1 到 100 个字符之间，并只能包含字母字符、短划线、句点和下划线。 名称在订阅的 Azure 应用商店项目的列表中必须是唯一的。
+6. 输入并确认“密码”。
+7. 选择“订阅”。
+8. 新建“资源组”或使用现有资源组。
+9. 在“定价层”对话框中，选择要注册的 SendGrid 计划。
 
-    ![sendgrid 定价][sendgrid-pricing]
-10. 输入**促销代码**如果你有一个。
-11. 输入你**联系信息**。
-12. 查看并接受**法律条款**。
-13. 确认你的购买后你将看到**部署成功**弹出窗口，你将看到你的帐户中列出**的所有资源**部分。
+    ![sendgrid-pricing][sendgrid-pricing]
+10. 如果有“促销代码”，请输入。
+11. 输入“联系信息”。
+12. 查看并接受“法律条款”。
+13. 确认购买后，将出现“部署成功”弹出窗口，并在“所有资源”部分列出用户帐户。
 
-    ![所有资源][all-resources]
+    ![all-resources][all-resources]
 
-    在完成购买并单击后**管理**按钮来启动电子邮件验证过程，你将收到一封电子邮件来自 SendGrid 要求你验证你的帐户。 如果你不接收此电子邮件，或验证你的帐户的问题，请参阅此常见问题。
+    完成购买并单击“管理”按钮启动电子邮件验证过程后，用户将收到一封来自 SendGrid 的电子邮件，要求验证其帐户。 如果拒绝接收此电子邮件，或验证用户帐户时出错，请参阅此常见问题解答。
 
-    ![管理][manage]
+    ![manage][manage]
 
-    **在验证你的帐户之前，你仅可以发送最多 100 个电子邮件/每日。**
+    **验证帐户之前，用户每天最多只能发送 100 封电子邮件。**
 
-    若要修改订阅计划或查看 SendGrid 联系人设置，请单击 SendGrid 服务以打开 SendGrid 应用商店仪表板的名称。
+    若要修改订阅计划或查看 SendGrid 联系人设置，请单击 SendGrid 服务的名称以打开 SendGrid 应用商店仪表板。
 
     ![设置][settings]
 
-    若要发送电子邮件使用 SendGrid，必须提供你的 API 密钥。
+    若要使用 SendGrid 发送电子邮件，必须提供 API 密钥。
 
-### <a name="to-find-your-sendgrid-api-key"></a>若要查找你的 SendGrid API 密钥
-1. 单击“管理” 。
+### <a name="to-find-your-sendgrid-api-key"></a>查找 SendGrid API 密钥
+1. 单击“管理”。
 
-    ![管理][manage]
-2. SendGrid 仪表板，在选择**设置**然后**API 密钥**左侧菜单中。
+    ![manage][manage]
+2. 在 SendGrid 仪表板中，选择“设置”，并选择左侧菜单中的“API 密钥”。
 
-    ![api 密钥][api-keys]
+    ![api-keys][api-keys]
 
-3. 单击**创建 API 密钥**下拉列表中，然后选择**常规 API 密钥**。
+3. 单击“创建 API 密钥”下拉列表，并选择“常规 API 密钥”。
 
-    ![常规 api 密钥][general-api-key]
-4. 在最低限度上，提供**此密钥名称**并提供完全访问权限**邮件发送**和选择**保存**。
+    ![general-api-key][general-api-key]
+4. 至少提供“此密钥名称”和对“邮件发送”的完全访问权限，并选择“保存”。
 
-    ![访问][access]
-5. 你的 API 将显示在此点一次。 请务必将其安全地存储。
+    ![access][access]
+5. 此时会显示一次 API。 请务必安全存储该 API。
 
 ### <a name="to-find-your-sendgrid-credentials"></a>查找 SendGrid 凭据
-1. 单击密钥图标来查找你**用户名**。
+1. 单击密钥图标，查找“用户名”。
 
     ![key][key]
-2. 密码是你选择在安装程序。 你可以选择**更改密码**或**重置密码**需进行任何更改。
+2. 密码是用户设置时选择的密码。 若需进行任何更改，可选择“更改密码”或“重置密码”。
 
-若要管理电子邮件传达能力设置，请单击**管理按钮**。 这将重定向到你的 SendGrid 仪表板。
+若要管理电子邮件传递设置，请单击“管理”按钮。 此操作将重定向到 SendGrid 仪表板。
 
     ![manage][manage]
 

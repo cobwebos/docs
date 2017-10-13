@@ -1,6 +1,6 @@
 ---
-title: "Azure AD.NET 协议概述 |Microsoft 文档"
-description: "如何使用 HTTP 消息来授予对 web 应用程序和你使用 Azure AD 的租户中的 web Api 的访问权限。"
+title: "Azure AD .NET 协议概述 | Microsoft Docs"
+description: "如何使用 Azure AD，通过 HTTP 消息来授权访问租户中的 Web 应用程序和 Web API。"
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 01/21/2016
 ms.author: priyamo
 ms.openlocfilehash: 42ce8dfd30cda7d4085778954350550fd9fdf13d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-## 向你的 AD 租户中注册你的应用程序
-首先，你将需要向 Azure Active Directory (Azure AD) 租户中注册你的应用程序。 这将为你提供你的应用程序，应用程序 ID，以及使其能够接收令牌。
+## 将应用程序注册到 AD 租户
+首先，需要将应用程序注册到 Azure Active Directory (Azure AD) 租户。 这会为应用程序分配一个应用程序 ID，并且使该应用程序可以接收令牌。
 
-* 登录到[Azure 门户](https://portal.azure.com)。
-* 通过单击页面右上角你的帐户选择你的 Azure AD 租户。
-* 在左侧导航窗格中，单击**Azure Active Directory**。
-* 单击**应用程序注册**，然后单击**添加**。
-* 按照提示进行操作，并创建新的应用程序。 它不重要如果它是 web 应用程序或本教程中，本机应用程序，但如果你想要特定示例 web 应用程序或本机应用程序，请查看我们[快速入门](../articles/active-directory/develop/active-directory-developers-guide.md)。
-  * 对于 Web 应用程序，提供**登录 URL**这是您的应用程序的基 URL 的用户可以登录例如`http://localhost:12345`。
+* 登录到 [Azure 门户](https://portal.azure.com)。
+* 通过在页面右上角单击帐户选择 Azure AD 租户。
+* 在左侧的导航窗格中，单击“Azure Active Directory”。
+* 单击“应用注册”并单击“添加”。
+* 根据提示创建新的应用程序。 本教程简要介绍了 Web 应用程序和本机应用程序的操作步骤，如果想要查看 Web 应用程序或本机应用程序的具体示例，请参阅[快速入门](../articles/active-directory/develop/active-directory-developers-guide.md)。
+  * 对于 Web 应用程序，请在用户登录页面（如 `http://localhost:12345`）提供“登录 URL”，即应用的基 URL。
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
-  * 对于本机应用程序，提供**重定向 URI**，Azure AD 将使用它来返回令牌响应。 输入你的应用程序中，于特定的值。 例如`http://MyFirstAADApp`
-* Azure AD 完成注册后，将分配你的应用程序的唯一客户端标识符，应用程序 id。 你将需要此值在下一步的部分中，因此，复制从应用程序页。
+  * 对于本机应用程序，请提供“重定向 URI”，Azure AD 将用其返回令牌响应。 输入特定于应用程序的值，例如 `http://MyFirstAADApp`
+* 完成注册后，Azure AD 将为应用程序分配一个唯一的客户端标识符，即应用程序 ID。 在后面的部分中会用到此值，因此，请从应用程序页复制此值。

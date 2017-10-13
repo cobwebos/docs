@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2 ASP.NET Web 服务器获取已启动 – 设置 |Microsoft 文档"
-description: "与传统 web 基于浏览器应用程序使用 OpenID Connect 标准在 ASP.NET 解决方案上实现 Microsoft 登录"
+title: "Azure AD v2 ASP.NET Web 服务器入门 - 设置 | Microsoft Docs"
+description: "通过基于传统 Web 浏览器的使用 OpenID Connect 标准的应用程序，对 ASP.NET 解决方案实现 Microsoft 登录"
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,30 +16,30 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: ebf54f5a203adb7f0e5b0c47dcc07595e269e218
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-## <a name="set-up-your-project"></a>设置你的项目
+## <a name="set-up-your-project"></a>设置项目
 
-本部分显示的步骤来安装和配置在 ASP.NET 项目使用 OpenID Connect OWIN 中间件通过身份验证管道。 
+本部分介绍使用 OpenID Connect 通过 OWIN 中间件在 ASP.NET 项目上安装和配置身份验证管道的步骤。 
 
-> 希望改为下载此示例的 Visual Studio 项目？ [下载的项目](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)并跳到[配置步骤](#create-an-application-express)配置在执行之前的代码示例。
+> 想要改为下载此示例的 Visual Studio 项目？ [下载项目](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)并跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
 
 <!--start-collapse-->
 > ### <a name="create-your-aspnet-project"></a>创建 ASP.NET 项目
 
 > 1. 在 Visual Studio 中：`File` > `New` > `Project`<br/>
-> 2. 下*Visual C# \Web*，选择`ASP.NET Web Application (.NET Framework)`。
-> 3. 将你的应用程序，然后单击*确定*
-> 4. 选择`Empty`和选中复选框可添加`MVC`引用
+> 2. 在 *Visual C#\Web* 下，选择 `ASP.NET Web Application (.NET Framework)`。
+> 3. 命名应用程序，并单击“确定”
+> 4. 选择 `Empty` 并选中复选框，添加 `MVC` 引用
 <!--end-collapse-->
 
 ## <a name="add-authentication-components"></a>添加身份验证组件
 
 1. 在 Visual Studio 中：`Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. 添加*OWIN 中间件 NuGet 包*下在 Package Manager Console 窗口中键入以下命令：
+2. 在包管理器控制台窗口中键入以下命令，添加 *OWIN 中间件 NuGet 包*：
 
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -48,22 +48,22 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 <!--start-collapse-->
-> ### <a name="about-these-libraries"></a>有关这些库
+> ### <a name="about-these-libraries"></a>关于这些库
 
->上面的库启用单一登录 (SSO) 通过基于 cookie 的身份验证使用 OpenID Connect。 完成身份验证并代表用户令牌发送到你的应用程序之后，OWIN 中间件创建会话 cookie。 浏览器然后在后续请求使用此 cookie 使用户无需重新键入密码，并且需要任何其他验证。
+>上述库通过基于 Cookie 的身份验证使用 OpenID Connect 启用单一登录 (SSO)。 完成身份验证后，代表用户的令牌会发送到应用程序，OWIN 中间件会创建会话 Cookie。 浏览器随后对后续请求使用此 Cookie，这样一来，用户就无需重新键入自己的密码，也不需要任何其他验证。
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>配置身份验证管道
-下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，将自动执行此类。
+下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，会自动执行此类。
 
-> 如果你的项目不具有`Startup.cs`的根文件夹中的文件：<br/>
-> 1. 右键单击项目的根文件夹： >`Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. 将其命名为`Startup.cs`
+> 如果项目的根文件夹中没有 `Startup.cs` 文件，请执行以下操作：<br/>
+> 1. 右键单击项目的根文件夹：>    `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. 将其命名为 `Startup.cs`
 
-> 请确保选定的类是 OWIN Startup 类而不是标准 C# 类。 通过检查如果你看到确认这`[assembly: OwinStartup(typeof({NameSpace}.Startup))]`上面命名空间。
+> 确保选择的类是 OWIN Startup 类，而不是标准 C# 类。 通过检查是否在命名空间上看到 `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` 来进行确认。
 
 
-1. 添加*OWIN*和*Microsoft.IdentityModel*引用`Startup.cs`:
+1. 向 `Startup.cs` 添加 *OWIN* 和 *Microsoft.IdentityModel* 引用：
 
 ```csharp
 using Microsoft.Owin;
@@ -77,7 +77,7 @@ using Microsoft.Owin.Security.Notifications;
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Startup 类替换为以下代码：
+使用以下代码替换 Startup 类：
 </li>
 </ol>
 
@@ -145,8 +145,8 @@ public class Startup
 
 ```
 <!--start-collapse-->
-> ### <a name="more-information"></a>详细信息
+> ### <a name="more-information"></a>更多信息
 
-> 在中提供的参数*OpenIDConnectAuthenticationOptions*充当应用程序可以与 Azure AD 通信的坐标。 由于 OpenID Connect 中间件在后台使用 cookie，还需要将 cookie 身份验证设置为上面所示的代码。 *并且 ValidateIssuer*值告知 OpenIdConnect 不到一个特定的组织中限制访问。
+> 在 *OpenIDConnectAuthenticationOptions* 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。 OpenID Connect 中间件会在后台使用 Cookie，因此，还需要设置 Cookie 身份验证，如以上代码所示。 *ValidateIssuer* 值告知 OpenIdConnect 不要限制某个特定组织的访问权限。
 <!--end-collapse-->
 

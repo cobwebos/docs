@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2 ASP.NET Web 服务器获取已启动 – 简介 |Microsoft 文档"
-description: "与传统 web 基于浏览器应用程序使用 OpenID Connect 标准在 ASP.NET 解决方案上实现 Microsoft 登录"
+title: "Azure AD v2 ASP.NET Web 服务器入门 - 简介 | Microsoft Docs"
+description: "通过基于传统 Web 浏览器的使用 OpenID Connect 标准的应用程序，对 ASP.NET 解决方案实现 Microsoft 登录"
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,32 +16,32 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 8062923b6270ec6253dc231a3db4333cf4666b42
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>在使用 Microsoft 登录添加到 ASP.NET web 应用程序
+# <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
-本指南演示如何使用 Microsoft ASP.NET MVC 解决方案使用传统的 web 浏览器基于的应用程序使用 OpenID Connect 实现登录。 
+本指南演示如何通过基于传统 Web 浏览器的使用 OpenID Connect 的应用程序，使用 ASP.NET MVC 解决方案实现 Microsoft 登录。 
 
-在本指南结束时，你的应用程序将能够接受的登录单元的个人帐户 （包括 outlook.com、 live.com 和其他） 以及工作和学校帐户从任何公司或组织与 Azure Active Directory 集成。 
+在本指南结束时，应用程序将能接受使用个人帐户（包括 outlook.com、live.com 和其他帐户）以及与 Azure Active Directory 集成的任何公司或组织的工作和学校帐户进行登录。 
 
-> 本指南需要 Visual Studio 2015 Update 3 或 Visual Studio 2017。  没有它？  [免费下载 Visual Studio 2017](https://www.visualstudio.com/downloads/)
+> 本指南需要 Visual Studio 2015 Update 3 或 Visual Studio 2017。  尚未安装？  [免费下载 Visual Studio 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="how-this-guide-works"></a>本指南的工作原理
 
 ![本指南的工作原理](media/active-directory-serversidewebapp-aspnetwebappowin-intro/aspnetbrowsergeneral.png)
 
-本指南基于浏览器访问 ASP.NET web 站点的位置的方案请求用户通过登录按钮进行身份验证。 在此方案中，大部分工作来呈现网页出现服务器端。
+本指南基于这样的情景：浏览器访问 ASP.NET 网站，要求用户通过登录按钮进行身份验证。 在此方案中，呈现网页的大部分工作在服务器端完成。
 
 ## <a name="libraries"></a>库
 
 本指南使用以下库：
 
-|库|描述|
+|库|说明|
 |---|---|
-|[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|可让应用程序使用 OpenIdConnect 进行身份验证中间件|
-|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|可让应用程序维护用户会话使用 cookie 的中间件|
-|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|使基于 OWIN 的应用程序可以在使用 ASP.NET 请求管道的 IIS 上运行|
+|[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|让应用程序可使用 OpenIdConnect 进行身份验证的中间件|
+|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|允许应用程序使用 Cookie 维持用户会话的中间件|
+|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|允许基于 OWIN 的应用程序使用 ASP.NET 请求管道在 IIS 上运行|
 

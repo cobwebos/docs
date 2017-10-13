@@ -13,16 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/13/2017
+ms.date: 10/11/2017
 ms.author: carlrab
+ms.openlocfilehash: dbc01dac6cf31916bef1cba9432e5653751dc625
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 2ad643d5f099457018d02a43252db4c259f5b613
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
-
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 
 Azure SQL 数据库是 Microsoft Azure 中的托管数据库，通过一组定义的[针对不同工作负载的计算和存储资源](sql-database-service-tiers.md)在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建而成。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。 
@@ -146,25 +144,25 @@ Azure 数据库逻辑服务器：
 
 | Cmdlet | 说明 |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#create) |创建数据库|
-|[az sql db list](/cli/azure/sql/db#list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
-|[az sql db list-editions](/cli/azure/sql/db#list-editions)|列出可用的服务目标和存储上限|
-|[az sql db list-usages](/cli/azure/sql/db#list-usages)|返回数据库使用情况|
-|[az sql db show](/cli/azure/sql/db#show)|获取数据库或数据仓库|
-|[az sql db update](/cli/azure/sql/db#update)|更新数据库|
-|[az sql db delete](/cli/azure/sql/db#delete)|删除数据库|
-|[az group create](/cli/azure/group#create)|创建资源组|
-|[az sql server create](/cli/azure/sql/server#create)|创建服务器|
-|[az sql server list](/cli/azure/sql/server#list)|列出服务器|
-|[az sql server list-usages](/cli/azure/sql/server#list-usages)|返回服务器使用情况|
-|[az sql server show](/cli/azure/sql/server#show)|获取服务器|
-|[az sql server update](/cli/azure/sql/server#update)|更新服务器|
-|[az sql server delete](/cli/azure/sql/server#delete)|删除服务器|
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#create)|配置服务器防火墙规则|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#list)|列出服务器上的防火墙规则|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#show)|显示防火墙规则的详细信息|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule#update)|更新防火墙规则|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#delete)|删除防火墙规则|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |创建数据库|
+|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
+|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|列出可用的服务目标和存储上限|
+|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|返回数据库使用情况|
+|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|获取数据库或数据仓库|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|更新数据库|
+|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|删除数据库|
+|[az group create](/cli/azure/group#az_group_create)|创建资源组|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|创建服务器|
+|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|列出服务器|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|返回服务器使用情况|
+|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|获取服务器|
+|[az sql server update](/cli/azure/sql/server#az_sql_server_update)|更新服务器|
+|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|删除服务器|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|配置服务器防火墙规则|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|列出服务器上的防火墙规则|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|显示防火墙规则的详细信息|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|更新防火墙规则|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|删除防火墙规则|
 
 > [!TIP]
 > 有关 Azure CLI 快速入门教程，请参阅[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-get-started-cli.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。

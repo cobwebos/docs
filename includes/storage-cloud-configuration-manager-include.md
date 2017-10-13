@@ -1,12 +1,12 @@
-[用于.NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)提供类，用于分析从配置文件的连接字符串。 [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx)类分析而不考虑是否将客户端应用程序运行在桌面上，在移动设备上，在 Azure 虚拟机中，或在 Azure 云服务中的配置设置。
+[适用于 .NET 的 Microsoft Azure Configuration Manager 库](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) 提供用于分析配置文件中连接字符串的类。 无论客户端应用程序是在台式机、移动设备、Azure 虚拟机还是在 Azure 云服务中运行，都可以使用 [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) 类分析配置设置。
 
-若要引用 CloudConfigurationManager 包，添加以下`using`指令：
+若要引用 CloudConfigurationManager 包，请添加下面的 `using` 指令：
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager
 ```
 
-下面是演示如何从配置文件中检索连接字符串示例：
+下面的示例演示了如何检索配置文件中的连接字符串：
 
 ```csharp
 // Parse the connection string and return a reference to the storage account.
@@ -14,5 +14,5 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 ```
 
-使用 Azure 配置管理器是可选的。 你还可以使用像.NET Framework 的 API [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)类。
+可以选择使用 Azure Configuration Manager。 还可以使用 API，例如 .NET Framework 的 [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) 类。
 
