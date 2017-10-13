@@ -291,4 +291,3 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 
 [云服务的大小](cloud-services/cloud-services-sizes-specs.md)
 
-
