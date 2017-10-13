@@ -16,10 +16,10 @@ ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.openlocfilehash: cf25772bd9d92b59401aa5da76e6bbd5fa5ee3e5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>列出 Azure Active Directory 应用程序库中的应用程序
 若要列出 [Azure AD 库](https://azure.microsoft.com/marketplace/active-directory/all/)中支持使用 Azure Active Directory 进行单一登录的应用程序，该应用程序首先需要实现下列集成模式之一：
