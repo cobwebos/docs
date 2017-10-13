@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
 ms.openlocfilehash: b753bfb4bd69bd9aacf4eebd8999397394c28bc4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>为 Azure 应用商店创建解决方案模板指南
 完成步骤 1 [帐户创建和注册][link-acct-creation]后，我们已通过[创建解决方案模板的技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)指导创建 Azure 兼容的解决方案模板。 现在，我们指导完成在 Azure 应用商店的[发布门户][link-pubportal]上为多个 VM 创建解决方案模板的步骤。

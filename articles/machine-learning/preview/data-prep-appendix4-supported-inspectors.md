@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bc14c051fb0f518b1cff2236a61d24cb052700f0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-inspectors-for-this-preview"></a>此预览版支持的检查器
 本文档概述了可用于此预览版的一组检查器。
 
@@ -113,4 +111,3 @@ X 轴上具有时间感知的折线图
 ### <a name="actions"></a>操作
 此检查器支持通过在图上选择点来进行筛选。 按 Ctrl 键，然后单击并使用鼠标拖动以在点周围形成矩形。 然后按前面所述应用筛选器。
 通过按映射左侧的 **E**，可以快速调整图的大小以显示所有可能的点和不再显示更多的点。
-

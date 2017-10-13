@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2017
 ms.author: iainfou
 ms.openlocfilehash: d176187fe465264b5f433260de5178b48ca9dd4a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 打开 Linux VM 的端口和终结点
 通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）放在网络安全组中，并附加到将接收流量的资源。 让我们在端口 80 上使用 Web 流量的常见示例。 本文说明如何使用 Azure CLI 2.0 打开 VM 的端口。 还可以使用 [Azure CLI 1.0](nsg-quickstart-nodejs.md) 执行这些步骤。
@@ -50,7 +50,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-借助 [az 网络 nic 更新](/cli/azure/network/nic#update)将网络安全组与 VM 的网络接口 (NIC) 相关联。 以下示例将名为 *myNic* 的现有 NIC 与名为 *myNetworkSecurityGroup* 的网络安全组相关联：
+借助 [az 网络 nic 更新](/cli/azure/network/nic#update)将网络安全组与 VM 的网络接口 (NIC) 相关联。 以下示例将名为 myNic 的现有 NIC 与名为 myNetworkSecurityGroup 的网络安全组相关联：
 
 ```azurecli
 az network nic update \
@@ -59,7 +59,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-或者，也可以借助 [az 网络 vnet 子网更新](/cli/azure/network/vnet/subnet#update)将网络安全组与虚拟网络的子网相关联，而不是只与单个 VM 上的网络接口相关联。 以下示例将 *myVnet* 虚拟网络中名为 *mySubnet* 的现有子网与名为 *myNetworkSecurityGroup* 的网络安全组相关联：
+或者，也可以借助 [az 网络 vnet 子网更新](/cli/azure/network/vnet/subnet#update)将网络安全组与虚拟网络的子网相关联，而不是只与单个 VM 上的网络接口相关联。 以下示例将 myVnet 虚拟网络中名为 mySubnet 的现有子网与名为 myNetworkSecurityGroup 的网络安全组相关联：
 
 ```azurecli
 az network vnet subnet update \

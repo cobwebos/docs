@@ -1,6 +1,6 @@
 ---
 title: "使用 Intel NUC 将网关连接到 Azure IoT 套件 | Microsoft Docs"
-description: "使用 Microsoft IoT 商业网关工具包和远程监视预配置解决方案。 使用 Azure IoT Edge 网关连接到远程监视解决方案，将模拟遥测数据发送到云，并响应从解决方案仪表板调用的方法。"
+description: "使用 Microsoft IoT 商业网关工具包和远程监视预配置解决方案。 使用 Azure IoT Edge 网关连接到远程监视解决方案，将模拟的遥测数据发送到云，并响应从解决方案仪表板调用的方法。"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
 ms.openlocfilehash: 9ed57d3c23e2adbd42c054f33c8ed46e3d6c9792
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a>将 Azure IoT Edge 网关连接到远程监视预配置解决方案，并发送模拟遥测
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/03/2017
 
 [!INCLUDE [iot-suite-gateway-kit-view-solution](../../includes/iot-suite-gateway-kit-view-solution.md)]
 
-重复以前的步骤，使用设备 ID（例如 **device02**）添加第二个设备。 该示例从网关中的两台模拟设备向远程监视解决方案发送数据。
+重复以前的步骤，使用设备 ID（例如 **device02**）添加第二个设备。 此示例将数据从网关中的模拟设备发送到远程监视解决方案。
 
 [!INCLUDE [iot-suite-gateway-kit-prepare-nuc-connectivity](../../includes/iot-suite-gateway-kit-prepare-nuc-connectivity.md)]
 
@@ -76,7 +76,7 @@ sed -i -e 's/\r$//' build.sh
 
 ## <a name="configure-and-run-the-iot-edge-gateway"></a>配置和运行 IoT Edge 网关
 
-现在可以配置 IoT Edge 网关，将模拟遥测数据发送到远程监视仪表板。 若要详细了解如何配置网关和 IoT Edge 模块，请参阅 [Azure IoT Edge 概念][lnk-gateway-concepts]。
+现在可以配置 IoT Edge 网关，将模拟遥测发送到远程监视仪表板。 若要详细了解如何配置网关和 IoT Edge 模块，请参阅 [Azure IoT Edge 概念][lnk-gateway-concepts]。
 
 > [!TIP]
 > 在本教程中，在 Intel NUC 上使用标准的 `vi` 文本编辑器。 如果以前没有用过 `vi`，则应完成入门教程（例如 [Unix - vi 编辑器教程][lnk-vi-tutorial]），让自己熟悉该编辑器。 也可使用命令 `smart install nano -y` 安装用户友好性更强的 [nano](https://www.nano-editor.org/) 编辑器。
@@ -135,7 +135,7 @@ cd ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator
 
 ## <a name="view-the-telemetry"></a>查看遥测
 
-IoT Edge 网关现在正将模拟遥测数据发送到远程监视解决方案。 可以在解决方案仪表板上查看遥测。
+IoT Edge 网关现在正将模拟遥测发送到远程监视解决方案。 可以在解决方案仪表板上查看遥测。
 
 - 导航到解决方案仪表板。
 - 在“要查看的设备”下拉列表中选择在网关中配置的两个设备之一。

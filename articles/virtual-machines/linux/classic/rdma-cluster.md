@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
 ms.openlocfilehash: 4b2ceb64b1737918458f6d5c692fc2bfbc0f12ed
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>设置 Linux RDMA 群集以运行 MPI 应用程序
 了解如何在 Azure 中使用[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)设置 Linux RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
@@ -30,10 +30,9 @@ ms.lasthandoff: 08/03/2017
 ## <a name="cluster-deployment-options"></a>群集部署选项
 以下是可用于创建 Linux RDMA 群集的方法（使用或不使用作业计划程序）。
 
-* **Azure CLI 脚本**：如本文后面所示，使用 [Azure 命令行接口](../../../cli-install-nodejs.md) (CLI) 为支持 RDMA 的 VM 群集部署编写脚本。 服务管理模式下的 CLI 会在经典部署模型中连续创建群集节点，因此，如果要部署许多计算节点，可能需要几分钟。 若要在使用经典部署模型时启用 RDMA 网络连接，请在同一云服务中部署 VM。
-* **Azure Resource Manager 模板**：也可以使用 Resource Manager 部署模型部署连接到 RDMA 网络且支持 RDMA 的 VM 群集。 可以[创建自己的模板](../../../resource-group-authoring-templates.md)，或查看 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)，获取 Microsoft 或社区贡献的模板来部署所需的解决方案。 Resource Manager 模板可以提供快速可靠的方式来部署 Linux 群集。 若要在使用 Resource Manager 部署模型时启用 RDMA 网络连接，请在同一可用性集中部署 VM。
-* 
-            **HPC Pack**：在 Azure 中创建 Microsoft HPC Pack 群集，并添加支持 RDMA 的计算节点，这些节点运行受支持的 Linux 分发版来访问 RDMA 网络。 有关详细信息，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](hpcpack-cluster.md)。
+* **Azure CLI 脚本**：如本文后面所示，使用 [Azure 命令行接口](../../../cli-install-nodejs.md) (CLI) 为支持 RDMA 的 VM 群集部署编写脚本。 服务管理模式下的 CLI 会在经典部署模型中连续创建群集节点，因此，如果要部署许多计算节点，可能需要几分钟。 使用经典部署模型时，要启用 RDMA 网络连接，请将 VM 部署在相同的云服务中。
+* **Azure Resource Manager 模板**：也可以使用 Resource Manager 部署模型部署连接到 RDMA 网络且支持 RDMA 的 VM 群集。 可以[创建自己的模板](../../../resource-group-authoring-templates.md)，或查看 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)，获取 Microsoft 或社区贡献的模板来部署所需的解决方案。 Resource Manager 模板可以提供快速可靠的方式来部署 Linux 群集。 使用 Resource Manager 部署模型时，要启用 RDMA 网络连接，请将 VM 部署在相同的可用性集中。
+* **HPC Pack**：在 Azure 中创建 Microsoft HPC Pack 群集，并添加运行受支持 Linux 分发版且支持 RDMA 的计算节点，以便访问 RDMA 网络。 有关详细信息，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](hpcpack-cluster.md)。
 
 ## <a name="sample-deployment-steps-in-the-classic-model"></a>经典模型中的示例部署步骤
 下列步骤显示如何使用 Azure CLI 从 Azure Marketplace 部署 SUSE Linux Enterprise Server (SLES) 12 SP1 HPC VM、将它自定义，并创建自定义 VM 映像。 然后，可以使用该映像为支持 RDMA 的 VM 群集部署编写脚本。
@@ -161,10 +160,10 @@ azure vm capture -t <vm-name> <image-name>
 
 ```
 
-运行这些命令之后，会捕获 VM 映像供你使用并删除 VM。 现已准备好用于部署群集的自定义映像。
+运行这些命令之后，将捕获 VM 映像供你使用并删除 VM。 现已准备好用于部署群集的自定义映像。
 
 ### <a name="deploy-a-cluster-with-the-image"></a>使用映像部署群集
-使用环境的相应值修改以下 Bash 脚本，并从客户端计算机运行该脚本。 由于 Azure 在经典部署模型中依序部署 VM，因此将需要几分钟时间才能部署此脚本中建议的八个 A9 VM。
+使用环境的相应值修改以下 Bash 脚本，并从客户端计算机运行它。 由于 Azure 在经典部署模型中依序部署 VM，因此将需要几分钟时间才能部署此脚本中建议的八个 A9 VM。
 
 ```
 #!/bin/bash -x

@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
-ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
 ms.openlocfilehash: 3d032593b8eba89479829121a9745692e0f1f456
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>使用 PowerShell 将托管服务标识 (MSI) 访问权限分配给一个资源
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -51,12 +49,12 @@ ms.lasthandoff: 09/14/2017
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果资源的 MSI 未显示在可用标识列表中，请验证是否已正确启用 MSI。 在本例中，我们可以返回到 [Azure 门户](https://portal.azure.com)中的 Azure VM 并：
+如果资源的 MSI 未显示在可用标识列表中，请验证是否已正确启用 MSI。 在此示例中，可以在 [Azure 门户](https://portal.azure.com)中返回到 Azure VM，并执行以下操作：
 
-- 查看“配置”页，确保“MSI 已启用”=“是”。
+- 查看“配置”页，并确保“MSI 已启用”配置为“是”。
 - 查看“扩展”页，确保已成功部署 MSI 扩展。
 
-如果任一项不正确，可能需要在资源上重新部署 MSI，或对部署失败进行故障排除。
+如果有任一项不正确，可能都需要在资源上再次重新部署 MSI，或排查部署故障。
 
 ## <a name="related-content"></a>相关内容
 
@@ -64,5 +62,4 @@ ms.lasthandoff: 09/14/2017
 - 若要在 Azure VM 上启用 MSI，请参阅[使用 PowerShell 配置 Azure VM 托管服务标识 (MSI)](msi-qs-configure-powershell-windows-vm.md)。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
-
 

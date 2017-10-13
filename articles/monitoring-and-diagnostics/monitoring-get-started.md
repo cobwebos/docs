@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ba4e8fe0d54deb4a980174ff7d0904854c794d3d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-monitor"></a>Azure 监视器入门
 Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单一源。 通过 Azure 监视器，可直观显示、查询、路由和存档来自 Azure 内部资源的度量和日志并对其采取操作。 可使用监视器门户边栏选项卡、[监视器 PowerShell Cmdlet](insights-powershell-samples.md)、[跨平台 CLI](insights-cli-samples.md) 或 [Azure 监视器 REST API](https://msdn.microsoft.com/library/dn931943.aspx) 来处理此数据。 在本文中，我们将使用门户进行演示，了解 Azure 监视器的几个关键组件。
@@ -103,4 +102,3 @@ Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单�
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Azure 监视器概述](monitoring-overview.md)
-

@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
+ms.openlocfilehash: 6412445f4e7a9b639ae9a38a44ff51038c6fcc00
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b31d38fe2f7060597956a1ee9c66f43ce39d7240
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
 Azure Application Insights SDK 自动跟踪传入的 HTTP 请求和对依赖服务的调用，比如 HTTP 请求和 SQL 查询。 通过跟踪和关联请求及依赖项，可了解由微服务组成的应用程序对这些微服务的整体响应能力和可靠性。 
@@ -477,4 +475,3 @@ public async Task RunMyTaskAsync()
 - 向 Application Insights 报告自定义[事件和指标](app-insights-api-custom-events-metrics.md)。
 - 查看上下文属性集合的标准[配置](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
 - 查看 [System.Diagnostics.Activity 用户指南](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)，了解如何关联遥测。
-

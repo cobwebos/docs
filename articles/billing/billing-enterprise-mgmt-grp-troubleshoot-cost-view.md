@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: eca1ac9ed51e6c2243be451a074792fbec2840d2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题 
 
 在企业注册中，存在多种可能导致注册中的用户无法查看成本的设置。  如果注册并非直接通过 Microsoft 购买，那么这些设置由注册管理员或合作伙伴管理。  本文可以帮助你了解具体设置以及它们对注册的影响。 这些设置独立于 [Azure RBAC 角色](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)。 
@@ -43,11 +41,10 @@ ms.lasthandoff: 09/25/2017
 
 
 ## <a name="asset-is-unavailable"></a>资产不可用？ 
-如果在尝试访问订阅或管理组时收到错误消息“此资产不可用”，则你不具备相应的角色来查看此项目。  
+如果在尝试访问订阅或管理组时收到错误消息“此资产不可用”，则不具有正确角色来查看此项目。  
 
-![资产未找到](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![asset-not-found](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 联系订阅或管理组的管理员以获得访问权限。  
-* 对于订阅，参考[ Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) 文档来帮助你了解需要哪个角色。
+* 对于订阅，请参考 [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) 文档，有助于了解需要哪个角色。
 * 对于管理组，RBAC 访问不可用，但即将推出。 请联系企业门户管理员以分配访问权限。   
-

@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 ms.openlocfilehash: 91f731bec46c005221f4e66e95822994070d4c26
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>自动缩放虚拟机规模集中的虚拟机
 使用虚拟机规模集可以轻松地将相同的虚拟机作为集来进行部署和管理。 规模集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。 有关规模集的详细信息，请参阅[虚拟机规模集](virtual-machine-scale-sets-overview.md)。
 
 本教程演示如何创建 Windows 虚拟机的规模集，并自动缩放集中的虚拟机。 通过使用 Azure PowerShell 创建和部署 Azure Resource Manager 模板，可创建规模集并设置缩放。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解有关规模集自动缩放的详细信息，请参阅[自动缩放和虚拟机规模集](virtual-machine-scale-sets-autoscale-overview.md)。
 
-本文涉及部署以下资源和扩展：
+在本文章中，将部署以下资源和扩展：
 
 * Microsoft.Storage/storageAccounts
 * Microsoft.Network/virtualNetworks

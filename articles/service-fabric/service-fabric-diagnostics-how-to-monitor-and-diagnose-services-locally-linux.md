@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: 4bc73f581f4855ebc724df19dd56fab8bf103854
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/18/2017
 
 对于 Java 应用程序，可以使用[多个记录框架](http://en.wikipedia.org/wiki/Java_logging_framework)。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  以下内容说明如何配置 `java.util.logging` 框架。
 
-使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以通过创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。
+使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。
 
 以下代码片段包含一个示例配置：
 
@@ -71,13 +71,13 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 可以使用多个框架在 Linux 上跟踪 CoreCLR 应用程序。 有关详细信息，请参阅 [GitHub：日志记录](http:/github.com/aspnet/logging)。  由于 C# 开发者熟悉 EventSource，因此本文使用 EventSource 在 Linux 上跟踪 CoreCLR 示例。
 
-第一步是添加 System.Diagnostics.Tracing，以便可以将日志写入内存、输出流或控制台文件。  要使用 EventSource 进行日志记录，请将以下项目添加到 project.json：
+第一步是添加 System.Diagnostics.Tracing，以便可以将日志写入内存、输出流或控制台文件。  要使用 EventSource 进行日志记录，请将以下项目添加到 project.json 中：
 
 ```
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-可以使用自定义 EventListener 侦听服务事件，并将它们相应地重定向到跟踪文件。 以下代码片段展示了使用 EventSource 和自定义 EventListener 进行日志记录的实现示例：
+可以使用自定义 EventListener 侦听服务事件，然后将其相应地重定向到跟踪文件。 以下代码片段展示了使用 EventSource 和自定义 EventListener 进行日志记录的实现示例：
 
 
 ```csharp
@@ -130,7 +130,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ```
 
 
-上述代码片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下代码片段：
+上述片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件中。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下片段：
 
 ```csharp
 public static TextWriter Out = Console.Out;

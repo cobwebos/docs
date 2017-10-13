@@ -15,26 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 3606df64b619b62f8b9e5aec2abc4efc994c37e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: 9fec253fbf9136cf86a84a6c7b407ea522996226
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具
 
-HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果你一直在使用 Azure PowerShell、Azure CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议你跟随潮流，使用基于 Azure Resource Manager (ARM) 的 PowerShell、CLI 和.NET SDK 版本。 本文章提供有关如何迁移到基于 ARM 的新方法的指导。 本文还将指出适用于 HDInsight 的 ASM 与 ARM 方法之间的差异（如果适用）。
+HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果一直在使用 Azure PowerShell、Azure CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议跟随潮流，使用基于 Azure Resource Manager (ARM) 的 PowerShell、CLI 和.NET SDK 版本。 本文章提供有关如何迁移到基于 ARM 的新方法的指导。 本文还将指出适用于 HDInsight 的 ASM 与 ARM 方法之间的差异（如果适用）。
 
 > [!IMPORTANT]
-> **2017 年 1 月 1 日**，对基于 ASM 的 PowerShell CLI 和 .NET SDK 的支持将会终止。
+> **2017 年 1 月 1 日**，对基于 ASM 的 PowerShell CLI 和 .NET SDK 的支持会终止。
 > 
 > 
 
 ## <a name="migrating-azure-cli-to-azure-resource-manager"></a>将 Azure CLI 迁移到 Azure Resource Manager
 Azure CLI 目前默认为 Azure Resource Manager (ARM) 模式，但如果从以前的安装版本升级则例外，在此情况下，可能需要使用 `azure config mode arm` 命令切换到 ARM 模式。
 
-Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基本命令与使用 ARM 时相同；不过，某些参数和开关可能有新名称，并且在使用 ARM 时，有许多新参数可供使用。 例如，你现在可以使用 `azure hdinsight cluster create` 来指定创建群集所在的 Azure 虚拟网络，或者 Hive 和 Oozie 的元存储信息。
+Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基本命令与使用 ARM 时相同；不过，某些参数和开关可能有新名称，并且在使用 ARM 时，有许多新参数可供使用。 例如，现在可以使用 `azure hdinsight cluster create` 来指定创建群集所在的 Azure 虚拟网络，或者 Hive 和 Oozie 的元存储信息。
 
 用于通过 Azure Resource Manager 使用 HDInsight 的基本命令包括：
 
@@ -94,7 +93,7 @@ Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基
 
 Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  ARM 模式下的 cmdlet 名称中包含 *AzureRmHDInsight*，而在 ASM 模式下则包含 *AzureHDInsight*。  例如，前者为 *New-AzureRmHDInsightCluster*，后者为*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用 ARM 时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
 
-在使用这些 HDInsight cmdlet 之前，必须先连接到你的 Azure 帐户并创建新资源组：
+在使用这些 HDInsight cmdlet 之前，必须先连接到 Azure 帐户并创建新资源组：
 
 * Login-AzureRmAccount 或 [Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx)。 请参阅[使用 Azure Resource Manager 对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
@@ -144,7 +143,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 * **Get-AzureRmHDInsightPersistedScriptAction**：获取群集的持久性脚本操作，并按时间顺序列出这些操作，或获取有关指定持久性脚本操作的详细信息。 
 * **Get-AzureRmHDInsightScriptActionHistory**：获取群集的脚本操作历史记录，并按时间顺序逆序列出这些操作，或获取有关以前执行的脚本操作的详细信息。 
 * **Remove-AzureRmHDInsightPersistedScriptAction**：从 HDInsight 群集中删除持久性脚本操作。
-* **Set-AzureRmHDInsightPersistedScriptAction**：将以前执行的脚本操作设置为持久性脚本操作。
+* **Set-AzureRmHDInsightPersistedScriptAction**：以前执行的脚本操作设置为持久性脚本操作。
 * **Submit-AzureRmHDInsightScriptAction**：将新的脚本操作提交到 Azure HDInsight 群集。 
 
 有关其他用法信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
@@ -363,5 +362,4 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 * 新命令 (ARM)
   
         client.Clusters.Delete(resourceGroup, dnsname);
-
 

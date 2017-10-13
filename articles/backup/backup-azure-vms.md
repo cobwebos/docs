@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: markgal;trinadhk;
 ms.openlocfilehash: e1da8bce96078a43c656f84005cefc8bbe81c9e3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-azure-virtual-machines-classic-portal"></a>备份 Azure 虚拟机（经典门户）
 > [!div class="op_single_selector"]
@@ -81,7 +81,7 @@ ms.lasthandoff: 08/03/2017
 
     ![完成发现](./media/backup-azure-vms/discovery-complete.png)
 
-    发现新项后，转到步骤 2 并注册 VM。
+    发现新项后，请转到步骤 2 并注册 VM。
 
 ## <a name="step-2---register-azure-virtual-machines"></a>步骤 2 - 注册 Azure 虚拟机
 注册 Azure 虚拟机即可将其与 Azure 备份服务相关联。 这通常是一次性活动。
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/03/2017
     ![注册状态 2](./media/backup-azure-vms/register-status02.png)
 
 ## <a name="step-3---protect-azure-virtual-machines"></a>步骤 3 - 保护 Azure 虚拟机
-现可为虚拟机设置备份和保留策略。 只需单个保护操作即可保护多个虚拟机。
+现在，可以设置虚拟机的备份和保留策略。 只需单个保护操作即可保护多个虚拟机。
 
 2015 年 5 月之后创建的 Azure 备份保管库内置了默认策略。 此默认策略随附默认 30 天保留期和每日一次的备份计划。
 
@@ -123,12 +123,12 @@ ms.lasthandoff: 08/03/2017
     ![在门户中选择工作负荷](./media/backup-azure-vms/select-workload.png)
 3. 单击页面底部的“ **保护** ”。
 
-    此时将显示“保护项向导”。 此向导只列出已注册但不受保护的虚拟机。 选择要保护的虚拟机。
+    此时会显示“**保护项向导**”。 此向导只列出已注册但不受保护的虚拟机。 选择要保护的虚拟机。
 
     如果存在两个以上的同名虚拟机，请使用云服务来区别虚拟机。
 
    > [!TIP]
-   > 可同时保护多个虚拟机。
+   > 可以一次保护多个虚拟机。
    >
    >
 
@@ -166,7 +166,7 @@ ms.lasthandoff: 08/03/2017
     ![配置保护作业](./media/backup-azure-vms/protect-configureprotection.png)
 
 ## <a name="initial-backup"></a>初始备份
-使用策略保护虚拟机后，虚拟机将会出现在“受保护的项”选项卡下，其状态为“受保护 - (等待初始备份)”。 默认情况下，第一个计划的备份是 *初始备份*。
+使用策略保护虚拟机后，虚拟机会出现在“**受保护的项**”选项卡下，其状态为“*受保护 -（等待初始备份）*”。 默认情况下，第一个计划的备份是 *初始备份*。
 
 若要在配置保护后立即触发初始备份，请执行以下操作：
 
@@ -182,7 +182,7 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-完成初始备份后，“受保护的项”选项卡中的虚拟机状态将显示为“受保护”。
+完成初始备份后，“**受保护的项**”选项卡中的虚拟机状态会显示为“*受保护*”。
 
 ![已使用恢复点备份虚拟机](./media/backup-azure-vms/protect-backedupvm.png)
 
@@ -197,6 +197,5 @@ ms.lasthandoff: 08/03/2017
 如果在备份虚拟机时遇到问题，请参阅 [VM 故障排除文章](backup-azure-vms-troubleshoot.md)以获取帮助。
 
 ## <a name="next-steps"></a>后续步骤
-* 
-            [管理和监视虚拟机](backup-azure-manage-vms.md)
+* [管理和监视虚拟机](backup-azure-manage-vms.md)
 * [恢复虚拟机](backup-azure-restore-vms.md)

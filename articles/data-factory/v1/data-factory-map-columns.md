@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f97e41b9ee614da7ca852a15f101da1c91c86efb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>将源数据集列映射到目标数据集列
 使用列映射可以指定如何将源表“结构”中指定的列映射到接收器表“结构”中指定的列。 可以在复制活动的 **typeProperties** 节中使用 **ColumnMapping** 属性。
 
@@ -183,4 +181,3 @@ ms.lasthandoff: 09/25/2017
 有关使用复制活动的教程，请参阅以下文章： 
 
 - [将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-

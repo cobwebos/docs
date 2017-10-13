@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1e3dc7e1375488ae9473cdd26f4d00871a091fbd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure 机器学习新增功能
 
@@ -53,5 +52,4 @@ ms.lasthandoff: 09/25/2017
 * 提供新的 Batch 执行服务测试页面，并附有示例数据和作业提交历史记录。
 
 此外，机器学习工作室已更新，支持部署到新 Web 服务模型，或继续部署到经典 Web 服务模型。 
-
 

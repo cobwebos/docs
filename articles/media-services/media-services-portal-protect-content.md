@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
 ms.openlocfilehash: 67b3fa9936daebeafb7e87fe3a7b0c7e0105b3b3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-content-protection-policies-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
 > [!NOTE]
@@ -81,7 +81,7 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 有关 Widevine 权限模板的详细信息，请参阅 [Widevine 许可证模板概述](media-services-widevine-license-template-overview.md)。
 
 ### <a name="basic"></a>基本
-选择“基本” 时，会使用所有默认值创建模板。
+如果选择“基本”，将使用所有默认值创建模板。
 
 ### <a name="advanced"></a>高级
 有关 Widevine 配置的高级选项的详细说明，请参阅[此](media-services-widevine-license-template-overview.md)主题。
@@ -93,7 +93,7 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 
 ![保护内容](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
-## <a name="apply-dynamic-encryption-to-your-asset"></a>向资产应用动态加密
+## <a name="apply-dynamic-encryption-to-your-asset"></a>将动态加密应用于资产
 要利用动态加密，需要将源文件编码为一组自适应比特率 MP4 文件。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>选择要加密的资产
@@ -105,7 +105,7 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 在资产上按“加密”后，有两种选择：**AES** 或 **DRM**。 
 
 #### <a name="aes"></a>AES
-所有流式处理协议上都会启用 AES 明文密钥加密：平滑流式处理、HLS 和 MPEG-DASH。
+将对所有流式处理协议启用 AES 明文密钥加密：平滑流式处理、HLS 和 MPEG DASH。
 
 ![保护内容](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
@@ -113,9 +113,9 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 如果选择“DRM”选项卡，可选择不同的内容保护策略（此时必须已配置）以及一组流式处理协议。
 
 * **将 PlayReady 和 Widevine 应用于 MPEG-DASH** - 将使用 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。
-* **PlayReady/Widevine 与 MPEG-DASH + FairPlay 与 HLS** 会使用 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。 还会使用 FairPlay 加密 HLS 流。
-* **仅 PlayReady 与平滑流式处理、HLS 和 MPEG-DASH** 会使用 PlayReady DRM 动态加密平滑流式处理、HLS、MPEG-DASH 流。
-* **仅 Widevine 与 MPEG-DASH** 会使用 Widevine DRM 动态加密 MPEG-DASH 流。
+* **将 PlayReady 和 Widevine 应用于 MPEG-DASH + 将 FairPlay 应用于 HLS** - 将使用 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。 还将使用 FairPlay 加密 HLS 流。
+* **仅 PlayReady 应用于平滑流式处理、HLS 和 MPEG-DASH** - 将使用 PlayReady DRM 动态加密平滑流式处理、HLS、MPEG-DASH 流。
+* **仅 Widevine 应用于 MPEG-DASH** - 将使用 Widevine DRM 动态加密 MPEG-DASH。
 * **仅 FairPlay 应用于 HLS** - 将使用 FairPlay 动态加密 HLS 流。
 
 若要启用 FairPlay 加密，则需要通过“内容保护”设置边栏选项卡的“FairPlay 配置”选项提供应用证书和应用程序密钥 (ASK)。

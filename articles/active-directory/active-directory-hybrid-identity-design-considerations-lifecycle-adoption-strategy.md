@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 18b40486a66d8e092a8af299460145989a1ab99d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -41,8 +41,7 @@ ms.lasthandoff: 08/03/2017
 Azure AD RBAC 使公司能够限制有权访问 Azure 管理门户的个人可以执行的操作数。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委派访问权限：
 
 * **基于组的角色分配**：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
-* 
-            **充分利用 Azure 中的内置角色**：可以使用三个角色 - 所有者、参与者和阅读人员，以确保用户和组仅具有完成工作所需任务的权限。
+* **充分利用 Azure 中的内置角色**：可以使用三个角色 - 所有者、参与者和阅读人员，以确保用户和组仅具有完成工作所需任务的权限。
 * **对资源的细致访问**：针对特定的订阅、资源组或单独的 Azure 资源（例如，网站或数据库），可以将角色分配给用户和组。 这样，可以确保用户有权访问所有所需资源，并且无权访问不需要管理的资源。
 
 ## <a name="provisioning-and-other-customization-options"></a>预配和其他自定义选项

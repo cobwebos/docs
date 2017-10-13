@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
+ms.openlocfilehash: f3d3d2b1ef0957417e09bb2c9b3913cd366aaa4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: ece2549a607ffa06602c26cf77db93f67112d029
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 SSL 策略版本和密码套件
 
 了解如何在应用程序网关上配置 SSL 策略版本和密码套件。 [预定义策略列表](#predefined-ssl-policies)中包含各种 SSL 策略版本配置和启用的密码套件，你可从中进行选择。 此外，还可基于自身需求定义[自定义 SSL 策略](#configure-a-custom-ssl-policy)。

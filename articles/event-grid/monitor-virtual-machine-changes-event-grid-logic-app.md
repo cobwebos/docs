@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/18/2017
 > * 添加一个专门检查虚拟机更改的条件。
 > * 虚拟机更改时发送电子邮件。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 来自 [Azure 逻辑应用所支持的任何电子邮件提供程序](../connectors/apis-list.md)用于发送通知的电子邮件帐户，如 Office 365 Outlook、Outlook.com 或 Gmail。 本教程使用 Office 365 Outlook。
 

@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff1cc256ff9ba84504a9df16c33888a920f62cd6
-ms.openlocfilehash: da4f6ab3c7f0c4f96440b3008e6ac62d94ea2406
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 4dd3048aabd00e761ee5e85c8b9540955c070733
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-machines-documentation"></a>虚拟机文档
 
@@ -61,6 +60,5 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>    
 </ul>
-
 
 

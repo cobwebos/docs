@@ -50,7 +50,7 @@
 ## [表格模型脚本语言 (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # 资源
-## [GitHub 上的 Analysis Services 代码示例](https://github.com/Microsoft/Analysis-Services)
+## [示例](analysis-services-samples.md)
 ## [Analysis Services 团队博客](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)

@@ -1,6 +1,6 @@
 ---
-title: "配置负载平衡器 TCP 空闲超时 | Microsoft Docs"
-description: "配置负载平衡器 TCP 空闲超时"
+title: "配置负载均衡器 TCP 空闲超时 | Microsoft Docs"
+description: "配置负载均衡器 TCP 空闲超时"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -11,23 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 7b8a292bd27792844eb6f620f7564e5091e3d8bc
-
+ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>为 Azure 负载均衡器配置 TCP 空闲超时设置
 
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>为 Azure Load Balancer 配置 TCP 空闲超时设置
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-在默认配置中，Azure Load Balancer 的空闲超时设置为 4 分钟。 如果处于非活动状态的时间超过超时值，则不能保证在客户端和云服务之间保持 TCP 或 HTTP 会话。
+在默认配置中，Azure 负载均衡器的空闲超时设置为 4 分钟。 如果处于非活动状态的时间超过超时值，则不能保证在客户端和云服务之间保持 TCP 或 HTTP 会话。
 
 当连接关闭时，客户端应用程序可能收到以下错误消息：“基础连接已关闭: 应保持连接状态的连接已由服务器关闭”。
 
 常见的做法是使用 TCP 保持连接状态。 这种做法可以将连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 在启用保持连接状态的情况下，在连接处于非活动状态时发送数据包。 这些用于保持连接状态的数据包可以确保始终达不到空闲超时值，于是就可以长时间维持连接。
 
-此设置仅适用于入站连接。 为了避免断开连接，必须将 TCP 保持连接的时间间隔配置为小于空闲超时设置，或者增加空闲超时值。 我们已允许对空闲超时进行配置，以便支持这样的情况。 现在，你可以将空闲超时的持续时间设置为 4 到 30 分钟。
+此设置仅适用于入站连接。 为了避免断开连接，必须将 TCP 保持连接的时间间隔配置为小于空闲超时设置，或者增加空闲超时值。 我们已允许对空闲超时进行配置，以便支持这样的情况。 现在，可以将空闲超时的持续时间设置为 4 到 30 分钟。
 
 TCP 保持连接状态非常适用于不受电池寿命限制的情况。 不建议将其用于移动应用程序。 在移动应用程序中使用 TCP 保持连接状态可能会加快设备电池的耗尽速度。
 
@@ -71,9 +73,9 @@ Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>在负载平衡的终结点集上设置 TCP 超时
+## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>在负载均衡的终结点集上设置 TCP 超时
 
-如果终结点是负载平衡的终结点集的一部分，则必须在负载平衡的终结点集上设置 TCP 超时。 例如：
+如果终结点是负载均衡的终结点集的一部分，则必须在负载均衡的终结点集上设置 TCP 超时。 例如：
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
@@ -110,7 +112,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Prot
 
 ## <a name="rest-api-example"></a>REST API 示例
 
-可以通过使用服务管理 API 配置 TCP 空闲超时。 请确保 `x-ms-version` 标头设置为版本 `2014-06-01` 或更高版本。 通过一次部署，在所有虚拟机上更新指定的负载平衡的输入终结点的配置。
+可以通过使用服务管理 API 配置 TCP 空闲超时。 请确保 `x-ms-version` 标头设置为版本 `2014-06-01` 或更高版本。 通过一次部署，在所有虚拟机上更新指定的负载均衡的输入终结点的配置。
 
 ### <a name="request"></a>请求
 
@@ -151,14 +153,8 @@ Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Prot
 
 ## <a name="next-steps"></a>后续步骤
 
-[内部负载平衡器概述](load-balancer-internal-overview.md)
+[内部负载均衡器概述](load-balancer-internal-overview.md)
 
-[开始配置面向 Internet 的负载平衡器](load-balancer-get-started-internet-arm-ps.md)
+[开始配置面向 Internet 的负载均衡器](load-balancer-get-started-internet-arm-ps.md)
 
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

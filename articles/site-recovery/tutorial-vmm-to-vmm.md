@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9764e48e04eb0c83afea09934ce64d2485ab15d5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>对 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 09/25/2017
 > * 设置源复制环境和目标复制环境。 
 > * 设置网络映射（如果 Hyper-V 由 System Center VMM 托管）
 > * 创建复制策略
-> * 为 VM 启用复制
+> * 为虚拟机启用复制
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -138,9 +137,9 @@ ms.lasthandoff: 09/25/2017
     - 如果选择“Kerberos”，将使用 Kerberos 票证执行主机服务器的相互身份验证。 Kerberos 仅适用于在 Windows Server 2012 R2 或更高版本上运行的 Hyper-V 主机服务器。
 1. 在“复制频率” 中，指定要在初始复制后复制增量数据的频率（每隔 30 秒、5 或 15 分钟）。
 2. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）。 复制的计算机可以恢复到某个时段内的任意时间点。
-3. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。 Hyper-V 使用两种快照类型：
+3. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。 Hyper-V 使用两种类型的快照：
     - 标准快照：提供整个虚拟机的增量快照。
-    - 应用一致快照：拍摄 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保应用在拍摄快照时处于一致状态。 启用应用程序一致性快照会影响源 VM 的应用性能。 确保设置的值小于所配置的附加恢复点数量。
+    - 应用一致快照：拍摄虚拟机内应用程序数据的时点快照。 卷影复制服务 (VSS) 确保应用在拍摄快照时处于一致状态。 启用应用程序一致性快照会影响源 VM 的应用性能。 确保设置的值小于所配置的附加恢复点数量。
 4. 在“数据传输压缩”中，指定是否应压缩所传输的复制数据。
 5. 选择“删除副本 VM”，指定禁用对源 VM 的保护时应删除副本虚拟机。 如果启用此设置，禁用对源 VM 的保护时，将从站点恢复控制台中删除该 VM、在 VMM 控制台中删除 VMM 的站点恢复设置，并删除副本。
 6. 如果要通过网络进行复制，请在“初始复制方法”中指定是要启动还是计划初始复制。 要节省网络带宽，可以将它计划在非高峰时间运行。 然后单击“确定”。
@@ -163,4 +162,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>后续步骤
 
 [运行灾难恢复演练](tutorial-dr-drill-secondary.md)
-

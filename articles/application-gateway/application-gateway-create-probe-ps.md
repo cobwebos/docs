@@ -1,6 +1,6 @@
 ---
 title: "创建自定义探测 - Azure 应用程序网关 - PowerShell | Microsoft Docs"
-description: "了解如何使用资源管理器中的 PowerShell 创建应用程序网关的自定义探测"
+description: "了解如何使用 Resource Manager 中的 PowerShell 创建应用程序网关的自定义探测"
 services: application-gateway
 documentationcenter: na
 author: davidmu1
@@ -15,14 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b54fe5267d87a41eb9e81d5d1dc9b1b16c5c5e88
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 344d6922d1649449e26f2500e538b5a0b440476d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure Resource Manager 的 PowerShell 创建 Azure 应用程序网关的自定义探测
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
@@ -64,7 +63,7 @@ ms.lasthandoff: 04/27/2017
   New-AzureRmResourceGroup -Name appgw-rg -Location 'West US'
   ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
 
@@ -206,5 +205,4 @@ DnsSettings              : {
 ## <a name="next-steps"></a>后续步骤
 
 访问[配置 SSL 卸载](application-gateway-ssl-arm.md)，了解如何配置 SSL 卸载
-
 

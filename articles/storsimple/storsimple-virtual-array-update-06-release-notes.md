@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: af202cf652300ee7897eb2dede33f38058fc2837
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array 更新 0.6 发行说明
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 功能 | 问题 |
 | --- | --- | --- |
 | 1 |“安全”| 此版本包含重要的 Windows 安全更新。 建议立即安装此更新。|
-| 2 |还原| 还原过程中存在阻止还原工作完成的争用条件。 Bug 修补程序解决了此争用条件。|
+| #N/A |还原| 还原过程中存在阻止还原工作完成的争用条件。 Bug 修补程序解决了此争用条件。|
 
 
 ## <a name="known-issues-in-the-update-06"></a>更新 0.6 中的已知问题

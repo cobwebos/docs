@@ -15,12 +15,11 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: a91f9b6693476f68ef0e64fb0283ded2cedec29f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-php-web-app-in-azure"></a>在 Azure 中创建 PHP Web 应用
 
@@ -160,4 +159,3 @@ git push azure master
 
 > [!div class="nextstepaction"]
 > [带 MySQL 的 PHP](app-service-web-tutorial-php-mysql.md)
-

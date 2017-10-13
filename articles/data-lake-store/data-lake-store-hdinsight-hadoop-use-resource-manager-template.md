@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 6f43423096f0e74f41afea275e4ec9801dc2cea5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/19/2017
-
+ms.openlocfilehash: f6121a447acec69d354f5c1fbc7499561f471197
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含 Data Lake Store的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -45,7 +44,7 @@ ms.lasthandoff: 05/19/2017
 本文中将设置 Hadoop 群集，其中 Data Lake Store 作为其他存储。 有关如何将 Data Lake Store 用作默认存储来创建 Hadoop 群集的说明，请参阅[使用 Azure 门户创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
+在开始阅读本教程前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
@@ -75,13 +74,13 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 ## <a name="set-relevant-acls-on-the-sample-data"></a>对示例数据设置相关 ACL
 若要确保上传的示例数据可从该 HDInsight 群集访问，必须确保用于在该 HDInsight 群集和 Data Lake Store 之间建立标识的 Azure AD 应用程序具有要尝试访问的文件/文件夹的访问权限。 为此，请执行以下步骤。
 
-1. 找到与该 HDInsight 群集和 Data Lake Store 关联的 Azure AD 应用程序的名称。 查找该名称的一个方式是打开使用 Resource Manager 模板创建的 HDInsight 群集的边栏选项卡，单击“群集 AAD 标识”选项卡，然后查找“服务主体显示名称”的值。
+1. 找到与该 HDInsight 群集和 Data Lake Store 关联的 Azure AD 应用程序的名称。 查找该名称的一个方式是打开使用 Resource Manager 模板创建的 HDInsight 群集的边栏选项卡，单击“群集 AAD 标识”选项卡，并查找“服务主体显示名称”的值。
 2. 现在，在要从该 HDInsight 群集访问的文件/文件夹上向此 Azure AD 应用程序提供访问权限。 若要对 Data Lake Store 中的文件/文件夹设置正确的 ACL，请参阅[保护 Data Lake Store 中的数据](data-lake-store-secure-data.md#filepermissions)。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Store
 配置 HDInsight 群集后，可在该群集上运行测试作业来测试该 HDInsight 群集是否可访问 Data Lake Store。 为此，我们会运行示例 Hive 作业，该作业会使用先前已上传至 Data Lake Store 的示例数据创建一个表。
 
-在本部分中，通过 SSH 连接到 HDInsight Linux 群集，然后运行示例 Hive 查询。 如果使用 Windows 客户端，我们建议使用 **PuTTY**，可以从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载它。
+在本部分中，通过 SSH 连接到 HDInsight Linux 群集，并运行示例 Hive 查询。 如果使用 Windows 客户端，我们建议使用 **PuTTY**，可以从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载它。
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 
@@ -98,7 +97,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
    SELECT * FROM vehicles LIMIT 10;
    ```
 
-   你应该会看到与下面类似的输出：
+   应该会看到与下面类似的输出：
 
    ```
    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
@@ -117,7 +116,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>使用 HDFS 命令访问 Data Lake Store
 配置 HDInsight 群集使用 Data Lake Store 后，可使用 HDFS shell 命令访问此存储。
 
-在本部分中，通过 SSH 连接到 HDInsight Linux 群集，然后运行 HDFS 命令。 如果使用 Windows 客户端，我们建议使用 **PuTTY**，可以从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载它。
+在本部分中，通过 SSH 连接到 HDInsight Linux 群集，并运行 HDFS 命令。 如果使用 Windows 客户端，我们建议使用 **PuTTY**，可以从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载它。
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 
@@ -135,9 +134,8 @@ Found 1 items
 -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
 ```
 
-可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
+可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，并使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
 
 ## <a name="next-steps"></a>后续步骤
 * [从 Azure 存储 blob 复制数据到 Data Lake Store](data-lake-store-copy-data-wasb-distcp.md)
-

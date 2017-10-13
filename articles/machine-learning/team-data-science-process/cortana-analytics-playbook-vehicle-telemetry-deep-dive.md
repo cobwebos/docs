@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4050fdc2056df395bbcc37e3783f61eebd90f80a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>车辆遥测分析解决方案操作手册：深入探讨解决方案
 此**菜单**链接至此操作手册的该部分： 
@@ -699,5 +698,4 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 
 ## <a name="summary"></a>摘要
 本文档包含对车辆遥测分析解决方案的详细深入分析。 这展示了一种 lambda 体系结构模式，用于实时和批处理分析，包括预测和操作。 此模式适用于需要热路径（实时）和冷路径（批处理）分析的各种的示例。 
-
 

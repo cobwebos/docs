@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
 ms.openlocfilehash: 0e7d7f44a70278a7777ba6c32c8e546074953fdc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>使用 StorSimple Device Manager 服务管理 StorSimple 设备
 
@@ -72,8 +72,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 | 修改设备管理员密码</br>修改 StorSimple Snapshot Manager 密码 |[更改 StorSimple 密码](storsimple-8000-change-passwords.md) |
 | 配置远程管理 |[远程连接到 StorSimple 设备](storsimple-8000-remote-connect.md) |
 | 配置警报设置 |[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md) |
-| 为 StorSimple 设备配置 CHAP |
-            [为 StorSimple 设备配置 CHAP](storsimple-configure-chap.md) |
+| 为 StorSimple 设备配置 CHAP |[为 StorSimple 设备配置 CHAP](storsimple-configure-chap.md) |
 | 添加备份策略</br>添加或修改计划</br>删除备份策略</br>创建手动备份</br>创建包含多个卷和计划的自定义备份策略 |[管理备份策略](storsimple-8000-manage-backup-policies-u2.md) |
 | 停止设备控制器</br>重新启动设备控制器</br>关闭设备控制器</br>将设备重置为出厂默认设置</br>（以上内容仅适用于本地设备） |[维护 StorSimple 设备控制器](storsimple-8000-manage-device-controller.md) |
 | 了解 StorSimple 硬件组件</br>监视硬件状态</br>（以上内容仅适用于本地设备） |[监视硬件组件](storsimple-8000-monitor-hardware-status.md) |

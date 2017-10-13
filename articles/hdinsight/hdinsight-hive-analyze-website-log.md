@@ -17,10 +17,10 @@ ms.date: 05/17/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: e1cdb786bb6049980aafc0213abf53013e342618
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>将 Hive 与基于 Windows 的 HDInsight 配合使用以分析来自网站的日志
 了解如何通过将 HiveQL 与 HDInsight 配合使用来分析来自网站的日志。 网站日志分析可用于根据类似活动分类受众，按人口统计分类站点访问者，以及了解他们查看的内容和这些内容来自的网站等。
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 > [!IMPORTANT]
 > 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-在此示例中，将使用 HDInsight 群集来分析网站日志文件，以深入了解每天从外部网站访问网站的频率。 你还会生成用户遇到的网站错误的摘要。 可以了解如何执行以下操作：
+在此示例中，将使用 HDInsight 群集来分析网站日志文件，以深入了解每天从外部网站访问网站的频率。 还将生成用户遇到的网站错误的摘要。 将了解如何执行以下操作：
 
 * 连接到 Azure Blob 存储，其中包含网站日志文件。
 * 创建 HIVE 表以查询这些日志。

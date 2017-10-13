@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 10828d78f6e16b57c21f4d05b6d6116428ea4039
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="discover-jupyter-notebooks-in-the-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现 Jupyter 笔记本
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -31,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 ## <a name="discover"></a>发现
   若要浏览库中的 Notebook，请打开[库](http://gallery.cortanaintelligence.com)，并单击库主页顶部的“Notebook”。
 
- **[Jupyter Notebook](https://gallery.cortanaintelligence.com/notebooks)** 页显示最受欢迎的 Notebook 列表。
+ **[Jupyter Notebook](https://gallery.cortanaintelligence.com/notebooks)** 页将显示最受欢迎的 Notebook 列表。
 单击“查看所有”以查看所有笔记本。
 在本页中，可以浏览库中的所有笔记本。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 
@@ -70,5 +69,4 @@ ms.lasthandoff: 09/25/2017
 **[将我转到库 >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 

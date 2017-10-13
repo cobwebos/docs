@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
 ms.openlocfilehash: acd768c0219ec23c0453a65c575faf5213d9c616
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="passing-credentials-to-the-azure-dsc-extension-handler"></a>将凭据传递到 Azure DSC 扩展处理程序
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -60,7 +60,7 @@ configuration Main
 } 
 ```
 
-必须将 *node localhost* 包含为配置的一部分。 缺少该语句就无法进行以下步骤，因为扩展处理程序会专门查找节点 localhost 语句。 另外，必须包含 typecast *[PsCredential]*，因为此特定类型将触发扩展来加密凭据。 
+必须将 *node localhost* 包含为配置的一部分。 如果此语句缺失，则以下步骤将无法执行，因为扩展处理程序会专门查找节点 localhost 语句。 另外，必须包含 typecast *[PsCredential]*，因为此特定类型将触发扩展来加密凭据。 
 
 将此脚本发布到 Blob 存储：
 
@@ -80,7 +80,7 @@ $vm = Set-AzureVMDSCExtension -VM $vm -ConfigurationArchive $configurationArchiv
 $vm | Update-AzureVM
 ```
 ## <a name="how-credentials-are-secured"></a>如何保护凭据
-运行此代码时会出现输入凭据的提示。 提供的凭据随即会存储在内存中。 使用 `Set-AzureVmDscExtension` cmdlet 发布凭据时，凭据通过 HTTPS 传输到 VM，Azure 会使用本地 VM 证书以加密形式将该凭据存储在 VM 的磁盘上。 然后，凭据将即时在内存中解密再重新加密，以便传递给 DSC。
+运行此代码时会出现输入凭据的提示。 提供的凭据随即会存储在内存中。 使用 `Set-AzureVmDscExtension` cmdlet 发布凭据时，凭据将通过 HTTPS 传输到 VM，Azure 将使用本地 VM 证书以加密形式将该凭据存储在 VM 的磁盘上。 然后，凭据将即时在内存中解密再重新加密，以便传递给 DSC。
 
 此行为不同于[使用不带扩展处理程序的安全配置](https://msdn.microsoft.com/powershell/dsc/securemof)。 使用 Azure 环境可以通过证书安全地传输配置数据。 使用 DSC 扩展处理程序时，无需在 ConfigurationData 中提供 $CertificatePath 或 $CertificateID / $Thumbprint 条目。
 

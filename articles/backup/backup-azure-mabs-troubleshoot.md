@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 71da98bf6d53ab50df4f6e40cf0b548752d10f93
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
 可参考下表中所列的信息，排查使用 Azure 备份服务器时遇到的错误。
@@ -89,4 +87,3 @@ ms.lasthandoff: 09/28/2017
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
 | 尝试使用 Office365 帐户设置电子邮件通知。 | 获取错误 ID：2013| 原因：<br/> 尝试使用 Office 365 帐户 <br/> 建议的操作<br/> 首先要确保的是，Exchange 上已设置用于 DPM 服务器的“在接收连接器上允许匿名中继”。 请前往 http://technet.microsoft.com/zh-cn/library/bb232021.aspx 了解该操作的配置方法 <br/> 如果无法使用内部的 SMTP 中继，而需要使用 Office 365 服务器进行设置，可以设置 IIS 作为此中继。 <br/> 需要配置 DPM 服务器，使其能够使用 IIS 将 SMTP 中继到 O365：https://technet.microsoft.com/zh-cn/library/aa995718(v=exchg.65).aspx <br/> 重要说明：在步骤 3->g->ii，请务必使用 user@domain.com 格式而不是“域\用户” <br/> 点 DPM 将本地服务器名用作 SMTP 服务器、端口 587，然后用作应从中接收电子邮件的用户电子邮件。 <br/> DPM SMTP 设置页上的用户名和密码应是 DPM 所在域中的域帐户。 <br/> 注意：更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开以确保反映出新值。  仅更改和测试不总是采用新的设置，因此通过此方式测试是最佳做法。 <br/> 在此过程期间，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：<br/> HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 密钥。 <br/> 重新启动时，可以在用户界面中再次添加它们。
-

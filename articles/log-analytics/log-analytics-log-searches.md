@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: bwren
 ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>在 Log Analytics 中使用日志搜索查找数据
 
@@ -556,7 +556,7 @@ Countdistinct 函数计算每个组内的非重复值的数目。 例如，可�
 ## <a name="use-the-measure-interval-command"></a>使用 Measure interval 命令
 通过接近实时的性能数据收集，可收集和可视化 Log Analytics 中的任意性能计数器。 只需输入查询“**Type:Perf**”即可返回数千个基于 Log Analytics 环境中的计数器数和服务器数的度量值图表。 通过按需度量值聚合，可在高级别下查看环境中的整体度量值，并根据需要深入了解更具体的数据。
 
-假设想要了解跨所有计算机的平均 CPU。 查看每个计算机的平均 CPU 可能没有什么帮助，因为结果可能会被消除。 若要查看详细信息，可在更小的时间窗口区块中聚合结果，并跨不同维度查看时间序列。 例如，可跨所有计算机执行 CPU 使用情况的每小时平均值，如下所示：
+假设想要了解跨所有计算机的平均 CPU。 查看每个计算机的平均 CPU 可能没有什么帮助，因为结果可能会被消除。若要查看详细信息，可在更小的时间窗口区块中聚合结果，并跨不同维度查看时间序列。 例如，可跨所有计算机执行 CPU 使用情况的每小时平均值，如下所示：
 
 ```
 Type:Perf CounterName="% Processor Time" InstanceName="_Total" | measure avg(CounterValue) by Computer Interval 1HOUR

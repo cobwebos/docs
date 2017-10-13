@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: xibingao;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b32aa2325a507f18ffc8b47cddde8637a0a8aabf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-an-azure-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>将 Azure 虚拟机设置为用于高级分析的 IPython Notebook 服务器
 本主题介绍如何针对高级分析预配和配置 Azure 虚拟机以便可用作数据科学环境的一部分。 Windows 虚拟机使用支持工具（例如 IPython Notebook、Azure 存储资源管理器、AzCopy 以及其他可用于高级分析项目的实用程序）进行配置。 例如，Azure 存储资源管理器和 AzCopy 提供了从本地计算机将数据上传到 Azure blob 存储或从 blob 存储下载到本地计算机的便捷方法。
@@ -135,4 +134,3 @@ Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未
 [27]: ./media/setup-virtual-machine/create-virtual-machine-4.png
 [28]: ./media/setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/setup-virtual-machine/create-virtual-machine-6.png
-

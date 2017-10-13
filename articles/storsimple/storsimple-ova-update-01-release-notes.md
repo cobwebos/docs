@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
 ## <a name="overview"></a>概述
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 功能 | 问题 |
 | --- | --- | --- |
 | 1 |VMDK |在某些 VMware 版本中，OS 磁盘偶尔会引起警报并干扰正常操作。 在此版本中已修复了此问题。 |
-| 2 |iSCSI 服务器 |在上一版本中，用户需要为 StorSimple 虚拟设备每个已启用的网络接口指定网关。 此版本中已更改了此行为，使用户只需为所有已启用的网络接口至少配置一个网关即可。 |
+| #N/A |iSCSI 服务器 |在上一版本中，用户需要为 StorSimple 虚拟设备每个已启用的网络接口指定网关。 此版本中已更改了此行为，使用户只需为所有已启用的网络接口至少配置一个网关即可。 |
 | 3 |支持包 |在软件的早期版本中，当包大小超过 1 GB 时，支持包集合则会失败。 在此版本中已修复了此问题。 |
 | 4 |云访问 |在上一版本中，如果 StorSimple Virtual Array 没有网络连接并且进行了重启，本地 UI 则会出现连接问题。 在此版本中已修复了此问题。 |
 | 5 |监视图表 |在之前的版本中，在进行了设备故障转移操作后，云容量利用率图表在 Azure 经典门户中会显示不正确的值。 在当前版本中已修复了此问题。 |

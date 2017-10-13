@@ -16,10 +16,10 @@ ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
 ms.openlocfilehash: 1ecc2bdef5ff7ef8ed8dded7dc12428ce9657821
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的应用密码是什么？
 某些非浏览器应用（例如使用 Exchange Active Sync 的 Apple 本机电子邮件客户端）目前不支持 Multi-Factor Authentication。 Multi-Factor Authentication 是按用户启用的。  这意味着，用户在以下情况下不能使用多重身份验证：
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/29/2017
 3. 在验证页的顶部选择应用密码
 4. 单击“创建” 。
 5. 输入应用密码的名称，并单击“下一步”
-6. 将应用密码复制到剪贴板，并将它粘贴到用户的应用。
+6. 将应用密码复制到剪贴板，然后将它粘贴到应用。
    
    ![云](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
 

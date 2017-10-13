@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3ca1710c969b9bc5a1f56dc53f52c706e1ed07cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="combine-columns-by-example-transformation"></a>“按示例合并列”转换
 此转换允许用户通过组合多个列的值来添加一个新列。 用户可以指定分隔符或提供组合值的示例来执行此转换。 在用户提供组合示例时，将由“按示例派生列”转换中使用的同一个“按示例”引擎来处理转换。
 
@@ -74,5 +72,4 @@ ms.lasthandoff: 09/25/2017
 |16|1 月|2017|22|34|56|16-Jan-2016 15:01:56 PDT|
 |23|3 月|2017|01|55|25|2016 年 3 月 23 日 15:01:25（太平洋夏令时）|
 |16|4 月|2017|11|34|36|16-Apr-2016 15:01:36 PDT|
-
 

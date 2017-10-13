@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 013c99045621e4651a44ab99c9f695fff6004654
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="split-column-by-example-transformation"></a>“按示例拆分列”转换
 此转换预先在有意义的边界拆分列内容，无需用户输入。 拆分算法在分析列内容后选择边界。 可以通过以下项定义这些边界
 * 固定的分隔符，
@@ -178,4 +176,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="technical-notes"></a>技术说明
 
 拆分转换功能基于**预测程序合成**技术。 在这种技术中，基于输入数据自动学习数据转换程序。 这些程序是用特定领域的语言合成的。 DSL 基于特定正则表达式上下文中出现的分隔符和字段。 有关此技术的更多信息，可以在[最近关于此主题的出版物](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/)中找到。 
-

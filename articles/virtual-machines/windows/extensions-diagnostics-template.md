@@ -17,16 +17,16 @@ ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6955e3d8c7b032ee898be11e611080905b5069ba
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>将监视和诊断与 Windows VM 和 Azure Resource Manager 模板配合使用
-Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure Resource Manager 模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure Resource Manager 模板](template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#extensions)。 本文介绍了如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  
+Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure Resource Manager 模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure Resource Manager 模板](template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#extensions)。 本文介绍如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>将 Azure 诊断扩展添加到 VM 资源定义中
-若要在 Windows 虚拟机上启用诊断扩展，需要将该扩展添加为 Resource Manager 模板中的 VM 资源。
+要在 Windows 虚拟机上启用诊断扩展，需要将该扩展添加为 Resource Manager 模板中的 VM 资源。
 
 对于基于 Resource Manager 的简单虚拟机，请将扩展配置添加到该虚拟机的 *resources* 数组： 
 
@@ -66,7 +66,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
     "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
     "type": "Microsoft.Compute/virtualMachines/extensions",
 
-扩展始终与虚拟机关联，你可以直接在虚拟机的资源节点下定义扩展，也可以在基础级别定义扩展并使用分层命名约定将其与虚拟机关联。
+扩展始终与虚拟机关联，可以直接在虚拟机的资源节点下定义扩展，也可以在基础级别定义扩展并使用分层命名约定将其与虚拟机关联。
 
 对于虚拟机规模集，扩展配置在 *VirtualMachineProfile* 的 *extensionProfile* 属性中指定。
 
@@ -76,7 +76,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 
 *typeHandlerVersion* 指定要使用的扩展的版本。 将 *autoUpgradeMinorVersion* 次要版本设置为 **true** 可确保获得可用的最新扩展次要版本。 强烈建议始终将 *autoUpgradeMinorVersion* 设置为 **true**，这样就可以随时获得并使用具有所有新功能和缺陷修复的最新的可用诊断扩展。 
 
-*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 *xmlcfg* 属性包含诊断日志基于 xml 的配置、性能计数器等等，这些项目将由诊断代理收集。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](https://msdn.microsoft.com/library/azure/dn782207.aspx)。 常见的做法是将实际的 xml 配置存储为 Azure Resource Manager 模板中的变量，然后再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 *storageAccount* 属性指定要向其传输诊断数据的存储帐户名称。 
+*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 *xmlcfg* 属性包含诊断日志基于 xml 的配置、性能计数器等等，这些项目由诊断代理收集。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](https://msdn.microsoft.com/library/azure/dn782207.aspx)。 常见的做法是将实际的 xml 配置存储为 Azure Resource Manager 模板中的变量，然后再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 *storageAccount* 属性指定要向其传输诊断数据的存储帐户名称。 
 
 *protectedSettings* 中的属性（有时称为专用配置）可设置，但在设置之后无法读回。 *protectedSettings* 的只写性质使其非常适合存储类似存储帐户密钥（写入诊断数据的位置）这样的密码。    
 
@@ -96,7 +96,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
               }
         }
 
-最佳做法是在不同于虚拟机资源组的其他资源组中指定诊断存储帐户。 资源组可以视为具有自己的生存期的部署单位，可以部署虚拟机以及在新配置更新时重新部署，但是你可能想要跨这些虚拟机部署继续在相同的存储帐户中存储诊断数据。 在不同的资源中拥有存储帐户可让存储帐户接受来自各种虚拟机部署的数据，方便解决各种版本之间的问题。
+最佳做法是在不同于虚拟机资源组的其他资源组中指定诊断存储帐户。 资源组可以被视为具有自己的生存期的部署单位，可以部署虚拟机以及在新配置更新时重新部署，但是你可能想要跨这些虚拟机部署继续在相同的存储帐户中存储诊断数据。 在不同的资源中拥有存储帐户可让存储帐户接受来自各种虚拟机部署的数据，方便解决各种版本之间的问题。
 
 > [!NOTE]
 > 如果从 Visual Studio 创建 Windows 虚拟机模板，默认存储帐户可能会设置为使用将虚拟机 VHD 上传到的存储帐户。 这是为了简化 VM 的初始设置。 应该重构模板以使用可以当作参数传入的不同存储帐户。 
@@ -143,7 +143,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 MetricAggregation 值 *PT1H* 和 *PT1M* 表示一分钟的聚合和一小时的聚合。
 
 ## <a name="wadmetrics-tables-in-storage"></a>存储中的 WADMetrics 表
-上述指标配置将在你的诊断存储帐户中生成具有以下命名约定的表：
+上述指标配置会在诊断存储帐户中生成具有以下命名约定的表：
 
 * **WADMetrics**：所有 WADMetrics 表的标准前缀
 * **PT1H** 或 **PT1M**：表示表中包含 1 小时或 1 分钟的聚合数据

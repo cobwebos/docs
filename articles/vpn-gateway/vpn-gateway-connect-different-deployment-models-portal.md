@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: ad5700f1a85567a3e7f4ef80b778183929cb0d68
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -99,7 +98,7 @@ VPN 类型 = 基于路由 <br>
 
 ### 1.<a name="local"></a>配置本地站点
 
-打开 [Azure 门户](https://ms.portal.azure.com)，然后使用 Azure 帐户登录。
+打开 [Azure 门户](https://ms.portal.azure.com)，并使用 Azure 帐户登录。
 
 1. 导航到“所有资源”并在列表中找到“ClassicVNet”。
 2. 在“概述”边栏选项卡的“VPN 连接”部分中，单击“网关”图形，创建网关。
@@ -232,7 +231,7 @@ Add-AzureAccount
 
 在 Azure 门户中创建 VNet 时，Azure 使用的全名在 Azure 门户中不可见。 例如，在 Azure 门户中命名为“ClassicVNet”的 VNet 在网络配置文件中可能具有更长的名称。 该名称可能如下所示：“Group ClassicRG ClassicVNet”。 在这些步骤中，将下载网络配置文件并查看值。
 
-在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 C:\AzureNet。
+在计算机上创建一个目录，并将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 C:\AzureNet。
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
@@ -271,4 +270,3 @@ Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
 ## <a name="faq"></a>VNet 到 VNet 常见问题解答
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
-

@@ -16,10 +16,10 @@ ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 81de65b0e825dec64383f52b02c5ee56c9434807
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>v2.0 终结点有什么不同？
 如果熟悉 Azure Active Directory 或过去已将应用与 Azure AD 集成，v2.0 终结点中可能有一些预料不到的差异。  本文档汇总了这些差异来帮助你了解。
@@ -29,14 +29,14 @@ ms.lasthandoff: 07/11/2017
 >
 
 ## <a name="microsoft-accounts-and-azure-ad-accounts"></a>Microsoft 帐户和 Azure AD 帐户
-v2.0 终结点允许开发人员编写可接受使用单一身份验证终结点同时从 Microsoft 帐户和 Azure AD 帐户登录的应用。  这样即可编写完全与帐户无关的应用；可以忽略用户登录时所用的帐户类型。  当然，*可以*让应用知道特定会话中所使用的帐户类型，但不必这么做。
+v2.0 终结点允许开发人员编写可接受使用单一身份验证终结点同时从 Microsoft 帐户和 Azure AD 帐户登录的应用。  这样，便可以编写完全不可认知帐户的应用；可以忽略用户登录时所用的帐户类型。  当然，*可以*让应用知道特定会话中所使用的帐户类型，但不必这么做。
 
 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则企业用户可使用某些附加功能和数据，例如 SharePoint 站点或目录数据。  但对于许多操作（例如[阅读用户邮件](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message)），针对 Microsoft 帐户和 Azure AD 帐户编写的代码可以完全相同。  
 
 将应用与 Microsoft 帐户和 Azure AD 帐户集成现在是一个简单的过程。  可以使用一组终结点、单个资源库和单个应用注册来进入消费者和企业的世界。  若要深入了解 v2.0 终结点，请查看[概述](active-directory-appmodel-v2-overview.md)。
 
 ## <a name="new-app-registration-portal"></a>新的应用注册门户
-若要注册使用 v2.0 终结点的应用，必须使用新的应用注册门户：[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)。  可以在此门户获取应用程序 ID、自定义应用程序登录页面的外观等等。  访问门户时唯一需要的是 Microsoft 支持的帐户 — 个人帐户或工作/学校帐户。
+若要注册使用 v2.0 终结点的应用，必须使用新的应用注册门户：[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)。可以在此门户获取应用程序 ID、自定义应用程序登录页面的外观等等。  访问门户时唯一需要的是 Microsoft 支持的帐户 — 个人帐户或工作/学校帐户。
 
 ## <a name="one-app-id-for-all-platforms"></a>所有平台使用同一个应用 ID
 如果使用过 Azure Active Directory，可能已为一个项目注册多个不同应用。  例如，如果同时构建了网站和 iOS 应用，就必须使用两个不同的应用程序 ID 分别注册它们。 以前，Azure AD 应用注册门户强制用户在注册过程中作出以下区分：

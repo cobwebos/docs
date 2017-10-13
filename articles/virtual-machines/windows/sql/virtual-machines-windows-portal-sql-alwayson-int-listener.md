@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/01/2017
 ms.author: mikeray
 ms.openlocfilehash: 09fed7e785708d4afe64905de973becc188181d7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>在 Azure 中为 Always On 可用性组配置负载均衡器
 本文说明如何在使用 Azure Resource Manager 运行的 Azure 虚拟机中为 SQL Server Always On 可用性组创建负载均衡器。 当 SQL Server 实例位于 Azure 虚拟机上时，AlwaysOn 可用性组需要负载均衡器。 负载均衡器存储可用性组侦听器的 IP 地址。 如果可用性组跨多个区域，则每个区域都需要一个负载均衡器。
@@ -69,7 +69,7 @@ ms.lasthandoff: 07/11/2017
    | **虚拟网络** |选择 SQL Server 实例所在的虚拟网络。 |
    | **子网** |选择 SQL Server 实例所在的子网。 |
    | **IP 地址分配** |**静态** |
-   | **专用 IP 地址** |指定子网中的某个可用 IP 地址。 在群集上创建侦听器时，请使用此 IP 地址。 本文稍后的 PowerShell 脚本会将此地址用于 `$ILBIP` 变量。 |
+   | **专用 IP 地址** |指定子网中的某个可用 IP 地址。 在群集上创建侦听器时，将使用此 IP 地址。 本文稍后的 PowerShell 脚本会将此地址用于 `$ILBIP` 变量。 |
    | **订阅** |如果有多个订阅，可能会显示此字段。 选择要与此资源关联的订阅。 它通常是与可用性组的所有资源相同的订阅。 |
    | **资源组** |选择 SQL Server 实例所在的资源组。 |
    | **位置** |选择 SQL Server 实例所在的 Azure 位置。 |
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
 Azure 将创建负载均衡器。 该负载均衡器属于特定的网络、子网、资源组和位置。 在 Azure 完成任务后，请在 Azure 中验证负载均衡器设置。 
 
 ### <a name="step-2-configure-the-back-end-pool"></a>步骤 2：配置后端池。
-Azure 将后端地址池称作“后端池”。 在本例中，后端池是可用性组中两个 SQL Server 实例的地址。 
+Azure 将后端地址池称作*后端池*。 在本例中，后端池是可用性组中两个 SQL Server 实例的地址。 
 
 1. 在资源组中，单击已创建的负载均衡器。 
 
@@ -201,7 +201,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 每个可用性组使用单独的侦听器。 每个侦听器都有自己的 IP 地址。 使用同一个负载均衡器以保留其他侦听器的 IP 地址。 创建可用性组后，请将 IP 地址添加到负载均衡器，然后配置侦听器。
 
-若要使用 Azure 门户将 IP 地址添加到负载均衡器，请执行以下操作：
+要使用 Azure 门户将 IP 地址添加到负载均衡器，请执行以下操作：
 
 1. 在 Azure 门户中，打开包含负载均衡器的资源组，并单击负载均衡器。 
 
@@ -214,7 +214,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 5. 设置侦听器的 IP 地址。 
    
    >[!TIP]
-   >可将 IP 地址设置为静态，并键入子网中当前未使用的地址。 也可将 IP 地址设置为动态，并保存新的前端 IP 池。 执行此操作时，Azure 门户会自动向池分配可用的 IP 地址。 然后可以重新打开前端 IP 池，并将分配更改为静态。 
+   >可将 IP 地址设置为静态，并键入子网中当前未使用的地址。 或者可将 IP 地址设置为动态，并保存新的前端 IP 池。 执行此操作时，Azure 门户会自动向池分配可用的 IP 地址。 然后可以重新打开前端 IP 池，并将分配更改为静态。 
 
 6. 保存侦听器的 IP 地址。 
 

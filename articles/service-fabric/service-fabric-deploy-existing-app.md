@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a8579c66cbfb0968a3659316aa5f03b798f4e332
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>将来宾可执行文件部署到 Service Fabric
 可以在 Azure Service Fabric 中运行任何类型的代码（如 Node.js、Java 或 C++）作为服务。 Service Fabric 将这些类型的服务称为来宾可执行文件。
@@ -241,8 +240,7 @@ WorkingFolder 用于设置正确的工作目录，以便应用程序或初始化
 在上面的示例中，`Endpoint` 元素指定应用程序可以侦听的终结点。 在此示例中，Node.js 应用程序在端口 3000 上侦听 http。
 
 此外，可以请求 Service Fabric 将此终结点发布到命名服务，以便其他服务可以发现指向此服务的终结点地址。 这样便能够在来宾可执行文件服务之间进行通信。
-已发布的终结点地址格式为 `UriScheme://IPAddressOrFQDN:Port/PathSuffix`。 `UriScheme` 和 `PathSuffix` 是可选属性。 
-            `IPAddressOrFQDN` 是此可执行文件所在节点的 IPAddress 或完全限定域名，并且自动计算。
+已发布的终结点地址格式为 `UriScheme://IPAddressOrFQDN:Port/PathSuffix`。 `UriScheme` 和 `PathSuffix` 是可选属性。 `IPAddressOrFQDN` 是此可执行文件所在节点的 IPAddress 或完全限定域名，并且自动计算。
 
 在下面的示例中，在服务部署后，便会在 Service Fabric Explorer 中看到为服务实例发布的终结点，类似于 `http://10.1.4.92:3000/myapp/`。 如果是在本地计算机上，会看到 `http://localhost:3000/myapp/`。
 
@@ -354,4 +352,3 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 * [使用 REST 通过命名服务进行通信的两种来宾可执行文件（C# 和 nodejs）示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [部署多个来宾可执行文件](service-fabric-deploy-multiple-apps.md)
 * [使用 Visual Studio 创建第一个 Service Fabric 应用程序](service-fabric-create-your-first-application-in-visual-studio.md)
-

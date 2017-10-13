@@ -16,19 +16,17 @@ ms.topic: article
 ms.date: 09/20/2017
 ms.author: mblythe
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 120f5d69441c5e01ffafbdb8dccb179bf00bdb0a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-a-function-from-microsoft-flow"></a>从 Microsoft Flow 调用函数
 
 通过 [Microsoft Flow](https://flow.microsoft.com/)，可在喜爱的应用和服务之间轻松自动执行工作流和业务流程。 专业开发人员可以使用 Azure Functions 扩展 Microsoft Flow 的功能，同时使流构建者摆脱技术细节。
 
-本主题基于风力涡轮机的维护方案生成流。 该主题介绍如何调用在[为函数创建 OpenAPI 定义](functions-openapi-definition.md)中定义的函数。 此函数确定风力涡轮机上的紧急修复是否经济高效。 如果经济高效，该流会发送一封电子邮件，建议进行修复。
+本主题基于风力涡轮机的维护方案生成流。 介绍如何调用在[为函数创建 OpenAPI 定义](functions-openapi-definition.md)中定义的函数。 此函数确定风力涡轮机上的紧急修复是否经济高效。 如果经济高效，该流会发送一封电子邮件，建议进行修复。
 
 有关从 PowerApps 调用同一函数的信息，请参阅[从 PowerApps 调用函数](functions-powerapps-scenario.md)。
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
 ms.openlocfilehash: 1aadd604e676659475f00760af3b0bdfb13a4792
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
@@ -127,7 +127,7 @@ $Parameters = @{
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "ParametersExample" -Parameters $Parameters
 ```
 
-要了解如何将 PSCredentials 作为参数传递，请参阅下面的 <a href="#credential-assets">**凭据资产**</a> 。
+详细了解如何将 PSCredentials 作为参数传入，请参阅下面的<a href="#credential-assets">**凭据资产**</a>。
 
 ## <a name="configurationdata"></a>ConfigurationData
 通过 **ConfigurationData** 可在使用 PowerShell DSC 时区分结构化配置与任何环境特定配置。 有关 **ConfigurationData** 的详细信息，请参阅[区分 PowerShell DSC 中的“What”与“Where”](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx)。

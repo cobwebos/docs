@@ -16,10 +16,10 @@ ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
 ms.openlocfilehash: 7f726436b2d459b8c16abb02e07de099abfd8974
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-spring-boot-application-on-a-kubernetes-cluster-in-the-azure-container-service"></a>在 Azure 容器服务中将 Spring Boot 应用程序部署于 Kubernetes 群集上
 

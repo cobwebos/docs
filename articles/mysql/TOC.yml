@@ -111,6 +111,8 @@
       items:
         - name: Azure 门户
           href: howto-server-parameters.md
+        - name: Azure CLI
+          href: howto-configure-server-parameters-using-cli.md
 - name: 引用
   items:
     - name: Azure CLI
@@ -119,6 +121,8 @@
       href: /rest/api/mysql
 - name: 资源
   items:
+    - name: 部署模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定价

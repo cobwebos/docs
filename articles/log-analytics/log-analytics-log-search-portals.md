@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: magoedte; bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: b205f226d95d94b938a70a834ac0147e76d459ea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>用于在 Azure Log Analytics 中创建和编辑日志查询的门户
 
@@ -47,5 +46,4 @@ ms.lasthandoff: 09/27/2017
 
 - 完成有关使用[日志搜索](log-analytics-tutorial-viewdata.md)的教程，了解如何使用查询语言创建查询
 - 试用[高级分析门户](https://go.microsoft.com/fwlink/?linkid=856587)，创建复杂查询并将其用作日志搜索的开发环境。
-
 

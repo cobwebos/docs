@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: hangzh;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 238b7d6bb6289b5f2e8d2a20f4335724087dfd48
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 的工作原理：使用 Azure HDInsight Hadoop 群集
 通过本演练，我们在使用 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)的端到端方案中借助 [Team Data Science Process (TDSP)](overview.md)，对公开发布的[纽约市出租车行程](http://www.andresmh.com/nyctaxitrips/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 数据模型是使用 Azure 机器学习构建的，用于处理二元分类、多类分类和回归预测任务。
@@ -837,4 +836,3 @@ b. 对于回归问题，我们通过查看预测中的平方误差，决定系�
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-

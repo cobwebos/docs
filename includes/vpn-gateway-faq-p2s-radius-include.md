@@ -6,7 +6,7 @@ VpnGw1、VpnGw2 和 VpnGw3 SKU 支持 RADIUS 身份验证。 如果使用的是�
  
 ### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>经典部署模型是否支持 RADIUS 身份验证？
  
-不会。 经典部署模型不支持 RADIUS 身份验证。
+不能。 经典部署模型不支持 RADIUS 身份验证。
  
 ### <a name="are-3rd-party-radius-servers-supported"></a>是否支持第三方 RADIUS 服务器？
 
@@ -18,7 +18,7 @@ VpnGw1、VpnGw2 和 VpnGw3 SKU 支持 RADIUS 身份验证。 如果使用的是�
  
 ### <a name="can-traffic-to-an-on-premises-radius-server-from-the-azure-vpn-gateway-be-routed-over-an-expressroute-connection"></a>是否可以通过 ExpressRoute 连接来传送（从 Azure VPN 网关）流向本地 RADIUS 服务器的流量？
 
-不会。 它只能通过站点到站点连接进行传送。
+不能。 它只能通过站点到站点连接进行传送。
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>RADIUS 身份验证支持的 SSTP 连接数是否有变化？ 支持的最大 SSTP 和 IKEv2 连接数是多少？
 

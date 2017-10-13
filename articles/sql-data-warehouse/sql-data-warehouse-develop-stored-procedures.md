@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stored-procedures-in-sql-data-warehouse"></a>SQL 数据仓库中的存储过程
 SQL 数据仓库支持 SQL Server 中提供的许多 Transact-SQL 功能。 更重要的是，我们可以利用特定的扩大功能将解决方案的性能最大化。
@@ -45,7 +45,7 @@ SQL 数据仓库最多支持 8 个嵌套级别。 这与 SQL Server 稍有不同
 ```sql
 EXEC prc_nesting
 ```
-如果存储过程还调用另一个 EXEC，则嵌套级别增加到 2
+如果存储过程还调用另一个 EXEC，则嵌套级别将增加到 2
 
 ```sql
 CREATE PROCEDURE prc_nesting

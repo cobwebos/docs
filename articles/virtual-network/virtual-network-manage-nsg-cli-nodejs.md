@@ -16,10 +16,10 @@ ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2e53c3ff2ffbef95d6b72ca6afb3b4de377f0389
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 管理网络安全组
 
@@ -213,7 +213,7 @@ azure network nsg rule delete --resource-group RG-NSG \
 可将 NSG 关联到子网和 NIC。 还可取消 NSG 与任何相关联的资源之间的关联。
 
 ### <a name="associate-an-nsg-to-a-nic"></a>将 NSG 关联到 NIC
-若要将 **NSG-FrontEnd** NSG 关联到 **TestNICWeb1** NIC，请运行以下命令：
+要将 **NSG-FrontEnd** NSG 关联到 **TestNICWeb1** NIC，请运行以下命令：
 
 ```azurecli
 azure network nic set --resource-group RG-NSG \
@@ -313,7 +313,7 @@ azure network vnet subnet set --resource-group RG-NSG \
     info:    network vnet subnet set command OK
 
 ### <a name="associate-an-nsg-to-a-subnet"></a>将 NSG 关联到子网
-若要再次将 **NSG-FrontEnd** NSG 关联到 **FronEnd** 子网，请运行以下命令：
+要再次将 **NSG-FrontEnd** NSG 关联到 **FronEnd** 子网，请运行 以下命令：
 
 ```azurecli
 azure network vnet subnet set --resource-group RG-NSG \

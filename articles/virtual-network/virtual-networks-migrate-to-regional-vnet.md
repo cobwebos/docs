@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.openlocfilehash: b9b3bd0f2184ac85261166d5fe2ab67e1bf319d4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>将虚拟网络（经典）从地缘组迁移到区域
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 08/03/2017
 3. 保存所做的更改，并将网络配置[导入](virtual-networks-using-network-configuration-file.md#import)到 Azure。
 
 > [!NOTE]
-> 此迁移不会导致你的服务出现任何停机情况。
+> 此迁移不会导致服务出现任何停机情况。
 > 
 > 
 

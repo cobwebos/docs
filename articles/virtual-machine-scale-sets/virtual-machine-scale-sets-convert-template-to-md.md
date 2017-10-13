@@ -17,16 +17,16 @@ ms.topic: article
 ms.date: 5/18/2017
 ms.author: negat
 ms.openlocfilehash: 2f5cb85703888c5056611d466f508547ee72e44b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
 
 使用 Resource Manager 模板创建不使用托管磁盘的规模集的客户可能希望修改该模板以使用托管磁盘。 本文演示如何执行此操作，以 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)（适用于示例 Resource Manager 模板的社区主导存储库）中的拉取请求为例。 可在此处查看完整的拉取请求：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)，差异的相关部分如下，并进行了说明：
 
-## <a name="making-the-os-disks-managed"></a>托管 OS 磁盘
+## <a name="making-the-os-disks-managed"></a>将 OS 磁盘设为托管磁盘
 
 在下面的差异部分中，我们可以看到我们已删除与存储帐户和磁盘属性相关的多个变量。 不再需要存储帐户类型（Standard_LRS 是默认值），但我们仍可以指定它（如果我们想要这么做）。 托管磁盘仅支持 Standard_LRS 和 Premium_LRS。 旧模板中使用了新存储帐户后缀、唯一的字符串数组和 sa 计数来生成存储帐户名称。 在新模板中这些变量不再需要，因为托管磁盘会自动以客户的名义创建存储帐户。 同样，vhd 容器名称和 os 磁盘名称也不再需要，因为托管磁盘会自动命名基础存储 blob 容器和磁盘。
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="data-disks"></a>数据磁盘数
 
-进行上述更改后，规模集对 OS 磁盘使用托管磁盘，但是如果要使用数据磁盘呢？ 若要添加数据磁盘，请在与“osDisk”同一级别的“storageProfile”下添加“dataDisks”属性。 该属性的值是 JSON 对象列表，其中每个对象均具有属性“lun”（必须对于 VM 上的每个数据磁盘唯一）、“createOption”（“empty”是当前唯一支持的选项）和“diskSizeGB”（磁盘的大小，以 GB 为单位；必须大于 0 且小于 1024）， 如以下示例所示： 
+进行上述更改后，规模集将使用托管磁盘作为 OS 磁盘，但数据磁盘怎么办？ 若要添加数据磁盘，请在与“osDisk”同一级别的“storageProfile”下添加“dataDisks”属性。 该属性的值是 JSON 对象列表，其中每个对象均具有属性“lun”（必须对于 VM 上的每个数据磁盘唯一）、“createOption”（“empty”是当前唯一支持的选项）和“diskSizeGB”（磁盘的大小，以 GB 为单位；必须大于 0 且小于 1024）， 如以下示例所示： 
 
 ```
 "dataDisks": [
@@ -137,7 +137,7 @@ ms.lasthandoff: 07/11/2017
 ]
 ```
 
-如果在此数组中指定 `n` 个磁盘，则规模集中的每个 VM 将获得 `n` 个数据磁盘。 但是，请注意，这些数据磁盘是原始设备。 它们未进行格式化。 在使用这些磁盘之前，由客户负责附加它们并对其进行分区和格式化。 （可选）还可以在每个数据磁盘对象中指定 `"managedDisk": { "storageAccountType": "Premium_LRS" }`，以指定它应是高级数据磁盘。 只有 VM sku 中带大写或小写“s”的 VM 可以使用高级磁盘。
+如果在此数组中指定 `n` 个磁盘，则规模集中的每个 VM 会获得 `n` 个数据磁盘。 但是，请注意，这些数据磁盘是原始设备。 它们未进行格式化。 在使用这些磁盘之前，由客户负责附加它们并对其进行分区和格式化。 （可选）还可以在每个数据磁盘对象中指定 `"managedDisk": { "storageAccountType": "Premium_LRS" }`，以指定它应是高级数据磁盘。 只有 VM sku 中带大写或小写“s”的 VM 可以使用高级磁盘。
 
 若要详细了解如何在规模集中使用数据磁盘，请参阅[此文](./virtual-machine-scale-sets-attached-disks.md)。
 

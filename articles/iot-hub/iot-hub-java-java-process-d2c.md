@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.openlocfilehash: d1aca8f39e305105d4ec9f63fbe7bee95487e294
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-java"></a>处理 IoT 中心设备到云的消息 (Java)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
-Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一个解决方案后端之间实现安全可靠的双向通信。 其他教程（[simulated-device]和[使用 IoT 中心发送“云到设备”消息][lnk-c2d]）介绍了如何使用 IoT 中心的“设备到云”和“云到设备”的基本消息传递功能。
+Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一个解决方案后端之间实现安全可靠的双向通信。 其他教程（[IoT 中心入门]和[使用 IoT 中心发送“云到设备”消息][lnk-c2d]）介绍了如何使用 IoT 中心的“设备到云”和“云到设备”的基本消息传递功能。
 
-本教程以 [simulated-device]教程中所示的代码为基础，说明如何按可缩放的方式通过消息路由处理设备到云的消息。 本教程描述了如何处理需要解决方案后端立即执行操作的消息。 例如，设备可能将发送一条警报消息，触发在 CRM 系统中插入票证。 与此相反，数据点消息仅送入分析引擎。 例如，设备中存储便于日后分析的温度遥测是数据点消息。
+本教程以 [IoT 中心入门]教程中所示的代码为基础，说明如何按可缩放的方式通过消息路由处理设备到云的消息。 本教程描述了如何处理需要解决方案后端立即执行操作的消息。 例如，设备可能将发送一条警报消息，触发在 CRM 系统中插入票证。 与此相反，数据点消息仅送入分析引擎。 例如，设备中存储便于日后分析的温度遥测是数据点消息。
 
 在本教程最后，会运行 3 个 Java 控制台应用：
 
-* **simulated-device**（在 [simulated-device]教程中创建的应用的修改版本）会每秒发送一次数据点设备到云的消息，每 10 秒发送一次互动设备到云的消息。 此应用使用 AMQP 协议来与 IoT 中心通信。
+* **simulated-device**（在 [IoT 中心入门]教程中创建的应用的修改版本）会每秒发送一次数据点设备到云的消息，每 10 秒发送一次互动设备到云的消息。 此应用使用 AMQP 协议来与 IoT 中心通信。
 * **read-d2c-messages** 显示设备应用发送的遥测数据。
 * **read-critical-queue** 从附加到 IoT 中心的服务总线队列中取消关键消息的排队。
 
@@ -39,7 +39,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 要完成本教程，需要以下各项：
 
-* [simulated-device]教程的完整工作版本。
+* [IoT 中心入门]教程的完整工作版本。
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * 有效的 Azure 帐户。 （如果你没有帐户，只需花费几分钟就能创建一个 [免费帐户][lnk-free-trial]。）
@@ -47,9 +47,9 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 应具备 [Azure 存储]和 [Azure 服务总线]的一些基础知识。
 
 ## <a name="send-interactive-messages-from-a-device-app"></a>从设备应用发送交互式消息
-在本部分中，会修改在 [simulated-device]教程中创建的设备应用，不定期发送需要立即处理的消息。
+在本部分中，会修改在 [IoT 中心入门]教程中创建的设备应用，不定期发送需要立即处理的消息。
 
-1. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。 本文件包含用于 **IoT 中心入门** 教程中创建的 [simulated-device] 应用的代码。
+1. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。 本文件包含你在 [IoT 中心入门]教程中创建的 **simulated-device** 应用的代码。
 
 2. 使用以下代码替换 **MessageSender** 类：
 
@@ -201,7 +201,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 [IoT 中心开发人员指南]: iot-hub-devguide.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
-[simulated-device]: iot-hub-java-java-getstarted.md
+[IoT 中心入门]: iot-hub-java-java-getstarted.md
 [Azure IoT 开发人员中心]: https://azure.microsoft.com/develop/iot
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh675232.aspx
 

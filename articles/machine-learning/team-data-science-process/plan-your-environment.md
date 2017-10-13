@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
+ms.openlocfilehash: 42d1de8a27f8979db5662094e8bd74a6f5ccac55
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: de46e5a6833809f8413d6a2de62a8cb9fe178130
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 将环境设置为对数据集执行高级分析处理时，应计划包括哪些资源？ 本文为一系列提出的问题提供建议，有助于确定与用户情况相关的任务和资源。 [什么是 Team Data Science Process (TDSP)？](overview.md)中概述了预测分析的高级步骤顺序。 每个步骤都需要与用户特定情况相关的任务特定资源。 确定方案的关键问题涉及数据物流、特征、数据集的质量以及执行分析要使用的工具和语言。
@@ -29,8 +28,7 @@ ms.lasthandoff: 09/25/2017
 ## <a name="logistic-questions-data-locations-and-movement"></a>物流问题：数据位置和移动
 物流问题涉及**数据源**的位置、Azure 中的**目标**和移动数据的要求，包括时间安排、数量和涉及的资源。 在分析过程中可能需要移动几次数据。 一种常见方案是先将本地数据移到 Azure 上某种形式的存储中，再移到机器学习工作室。
 
-1. 
-            **数据源是什么？** 位于本地还是在云中？ 例如：
+1. **数据源是什么？** 位于本地还是在云中？ 例如：
    
    * 数据可通过 HTTP 地址公开发布。
    * 数据驻留在本地/网络文件位置。
@@ -106,5 +104,4 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>确定高级分析方案
 解答了上一部分中的问题后，便可确定最适合情况的方案。 [用于 Azure 机器学习中高级分析的方案](plan-sample-scenarios.md)中概述了示例方案。
-
 

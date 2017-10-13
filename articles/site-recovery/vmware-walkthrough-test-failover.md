@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
+ms.openlocfilehash: f1c0052862dd2b97dbea500615f7ac4eabc97217
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f1a6df56a2bb0094d972d2e659057cc124156b88
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-12-run-a-test-failover-to-azure-for-vmware-vms"></a>步骤 12： 运行 VMware VM 到 Azure 的测试故障转移
 
@@ -50,7 +49,7 @@ ms.lasthandoff: 08/22/2017
 - 如果未提供地址，故障转移的计算机将使用 DHCP。
 - 如果设置了在故障转移时不可用的地址，故障转移将不会正常工作。
 - 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
-- 网络适配器的数目根据你为目标虚拟机指定的大小来确定：
+- 网络适配器数目根据你为目标虚拟机指定的大小来确定：
 
      - 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
      - 如果源虚拟机的适配器数大于目标大小允许的数目，则将使用目标大小允许的最大数目。
@@ -114,4 +113,3 @@ ms.lasthandoff: 08/22/2017
 - [详细了解](site-recovery-failover.md)不同类型的故障转移，以及如何运行它们。
 - 如果要迁移计算机而不执行复制和故障回复，请[阅读详细信息](site-recovery-migrate-to-azure.md#migrate-on-premises-vms-and-physical-servers)。
 - [详细了解故障回复](site-recovery-failback-azure-to-vmware.md)，以便将 Azure VM 故障回复和复制回本地主站点。
-

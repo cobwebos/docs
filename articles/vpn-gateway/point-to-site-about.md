@@ -1,5 +1,5 @@
 ---
-title: "关于 Azure 点到站点 VPN 连接 | Microsoft 文档"
+title: "关于 Azure 点到站点 VPN 连接 | Microsoft Docs"
 description: "可以借助本文了解点到站点连接，并确定要使用的 P2S VPN 网关身份验证类型。"
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: f19b58ad8f12169acefd74bfe86a28ad950dad34
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 09/25/2017
 如果在混合客户端环境中包括 Windows 和 Mac 设备，请同时配置 SSTP 和 IKEv2。
 
 >[!NOTE]
->IKEv2 for P2S 目前处于预览状态。
+>IKEv2 for P2S 目前以预览版提供。
 >
 
 ## <a name="authentication"></a>如何对 P2S VPN 客户端进行身份验证？

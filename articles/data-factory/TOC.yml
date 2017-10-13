@@ -194,7 +194,7 @@
       items:
         - name: Azure 集成运行时
           href: create-azure-integration-runtime.md
-        - name: 自承载集成运行时
+        - name: 自我托管集成运行时
           href: create-self-hosted-integration-runtime.md
         - name: Azure-SSIS 集成运行时
           href: create-azure-ssis-integration-runtime.md

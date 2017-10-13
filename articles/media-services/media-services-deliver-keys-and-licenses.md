@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
 ms.openlocfilehash: 263a381dc72105eea60ad9b39434599ff04a4531
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>使用 Azure 媒体服务传送 DRM 许可证或 AES 密钥
-Azure 媒体服务 (AMS) 可让你引入、编码、添加内容保护，以及流式传输内容（有关详细信息，请参阅[此文章](media-services-protect-with-drm.md)）。 但是，有些客户只想使用 AMS 来传送许可证和/或密钥，并使用他们的本地服务器来进行编码、加密和流式传输。 本文说明如何使用 AMS 来传送 PlayReady 和/或 Widevine 许可证，但使用本地服务器来完成其余部分。 
+Azure 媒体服务 (AMS) 可让你引入、编码、添加内容保护，以及流式传输内容（有关详细信息，请参阅[此](media-services-protect-with-drm.md)文章）。 但是，有些客户只想使用 AMS 来传送许可证和/或密钥，并使用他们的本地服务器来进行编码、加密和流式传输。 本文说明如何使用 AMS 来传送 PlayReady 和/或 Widevine 许可证，但使用本地服务器来完成其余部分。 
 
 ## <a name="overview"></a>概述
 媒体服务提供传送 PlayReady 和 Widevine DRM 许可证及 AES-128 密钥的服务。 媒体服务还提供用于配置所需权限和限制的 API，这样当用户播放 DRM 保护的内容时，DRM 运行时便会强制实施这些权限和限制。 当用户请求受保护的内容时，播放器应用程序将从 AMS 许可证服务请求许可证。 AMS 许可证服务将向播放器颁发许可证（如果播放器已获授权）。 PlayReady 和 Widevine 许可证包含客户端播放器用来对内容进行解密和流式传输的解密密钥。

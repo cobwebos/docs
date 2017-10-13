@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 06/21/2016
 ms.author: janeng
 ms.openlocfilehash: 57178352e0a402f3559c94ce25f125dcbefd1374
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Azure SQL 数据库基准检验概述
 ## <a name="overview"></a>概述
@@ -74,8 +74,8 @@ ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数�
 | Update Lite |20 |
 | Update Heavy |3 |
 | Insert Lite |3 |
-| Insert Heavy |2 |
-| 删除 |2 |
+| Insert Heavy |#N/A |
+| 删除 |#N/A |
 | CPU Heavy |10 |
 
 ## <a name="users-and-pacing"></a>用户和步调
@@ -94,7 +94,7 @@ ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数�
 ## <a name="scaling-rules"></a>缩放规则
 用户数由数据库大小（以缩放比例单位数表示）确定。 每个五个缩放比例单位有一个用户。 由于步调延迟，一个用户平均每秒最多可以生成一个事务。
 
-例如，比例因子为 500 (SF = 500) 的数据库将具有 100 个用户，并且可以实现的最大速率为 100 TPS。 若要驱动更高的 TPS 速率，需要更多的用户和更大的数据库。
+例如，缩放比例为 500 (SF = 500) 的数据库将具有 100 个用户，并且可以实现的最大速率为 100 TPS。 若要驱动更高的 TPS 速率，需要更多的用户和更大的数据库。
 
 下表显示了为每个服务层和性能级别实际保留的用户数。
 

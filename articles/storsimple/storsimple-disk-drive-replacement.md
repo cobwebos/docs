@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 ms.openlocfilehash: 0659ab9d304dbfcce72e8c3c79edad68e70b9630
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-device"></a>更换 StorSimple 设备上的磁盘驱动器
 ## <a name="overview"></a>概述
@@ -51,7 +51,7 @@ ms.lasthandoff: 07/11/2017
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |指示灯小孔 |
-   | 2 |防伪锁 |
+   | #N/A |防伪锁 |
 2. 以逆时针方向旋转锁钥，直至锁钥上方小孔中的红色指示灯不亮。
 3. 拔出锁钥。
    

@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2cd3656156b77c71be85a1a18567232f4466fc68
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>在 Azure 存储资源管理器（预览版）中管理 Azure Cosmos DB
 
@@ -153,5 +152,4 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>后续步骤
 
 现在你已将 Azure 存储资源管理器连接到你的 Azure Cosmos DB 帐户，可在[存储资源管理器（预览版）入门](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)中详细了解存储资源管理器并连接更多服务。
-
 

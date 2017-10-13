@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.custom: mvc
+ms.openlocfilehash: bbd0658a3bafc1b82ff6ddd39a4d23d015188337
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 54a4a37d581f023610cd61835bdc76814fbd46e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 虚拟网络和 Windows 虚拟机
 
 Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程介绍了如何在虚拟网络中创建多个虚拟机 (VM)，以及如何在虚拟机之间配置网络连接。 学习如何：
@@ -281,4 +279,3 @@ New-AzureRmVM `
 
 > [!div class="nextstepaction"]
 > [在 Azure 中备份 Windows 虚拟机](./tutorial-backup-vms.md)
-

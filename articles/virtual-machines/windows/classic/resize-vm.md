@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
 ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>调整经典部署模型中创建的 Windows VM 大小
 本文介绍使用 Azure Powershell 调整在经典部署模型中创建的 Windows VM 大小。
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 4. 单击“登录”。 
 
 ## <a name="resize-in-the-same-hardware-cluster"></a>在相同的硬件群集中调整大小
-要将 VM 的大小调整为托管 VM 的硬件群集中可用的大小，请执行以下步骤。
+要将 VM 大小调整为在托管该 VM 的硬件群集中可用的大小，请执行以下步骤。
 
 1. 运行以下 PowerShell 命令以列出在托管包含该 VM 的云服务的硬件群集中可用的 VM 大小。
    
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
     ```
 
 ## <a name="resize-on-a-new-hardware-cluster"></a>在新硬件群集中调整大小
-要将 VM 的大小调整为托管 VM 的硬件群集中不可用的大小，必须重新创建云服务和云服务中的所有 VM。 每个云服务托管在单个硬件群集中，因此云服务中的所有 VM 都必须是在硬件群集中受支持的大小。 以下步骤介绍如何通过删除并重新创建云服务来调整 VM 大小。
+要将 VM 大小调整为在托管该 VM 的硬件群集中不可用的大小，必须重新创建云服务和云服务中的所有 VM。 每个云服务托管在单个硬件群集中，因此云服务中的所有 VM 都必须是在硬件群集中受支持的大小。 以下步骤介绍如何通过删除并重新创建云服务调整 VM 大小。
 
 1. 运行以下 PowerShell 命令以列出在区域中可用的 VM 大小。 
    

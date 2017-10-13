@@ -3,7 +3,7 @@ title: "配置 Web 应用程序防火墙：Azure 应用程序网关 | Microsoft 
 description: "本文将简要介绍如何在现有的或新的应用程序网关上开始使用 Web 应用程序防火墙。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 670b9732-874b-43e6-843b-d2585c160982
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: e8106805d21b325e33fb3ab376db75cd783b9042
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 3d01763709e58d25047a6dec4361bcf6553d54e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway"></a>在新的或现有应用程序网关上配置 Web 应用程序防火墙
 
@@ -236,4 +235,3 @@ DnsSettings              : {
 若要了解如何配置诊断日志记录，以记录通过 WAF 检测到或阻止的事件，请参阅[应用程序网关诊断](application-gateway-diagnostics.md)。
 
 [scenario]: ./media/application-gateway-web-application-firewall-powershell/scenario.png
-

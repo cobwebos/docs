@@ -16,14 +16,14 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 
-本文指导你完成 Azure 多重身份验证 (MFA) 服务器 v6.0 或更高版本的升级过程。 如果需要升级旧版 PhoneFactor 代理，请参阅[将 PhoneFactor 代理升级到 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-upgrade.md)。
+本文指导完成 Azure 多重身份验证 (MFA) 服务器 v6.0 或更高版本的升级过程。 如果需要升级旧版 PhoneFactor 代理，请参阅[将 PhoneFactor 代理升级到 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-upgrade.md)。
 
 如果要从 v6.x 或更低版本升级到 v7.x 或更高版本，所有组件都需从 .NET 2.0 更改为 .NET 4.5。 所有组件还需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本。 MFA 服务器安装程序将安装这些组件的 x86 和 x64 版本（如果尚未安装）。 如果用户门户和移动应用 Web 服务在不同的服务器上运行，则需要先安装这些包，才能对这些组件升级。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/)搜索最新的 Microsoft Visual C++ 2015 Redistributable 更新。 
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
   
 5. 如果系统提示安装 Microsoft Visual C++ 2015 Redistributable 更新包，则接受提示。 将同时安装更新包的 x86 和 x64 版本。
 5. 如果使用 Web 服务 SDK，系统会提示安装新 Web 服务 SDK。 在安装新的 Web 服务 SDK 时，请确保虚拟目录名称与以前安装的虚拟目录（例如，MultiFactorAuthWebServiceSdk）相匹配。
-6. 在所有从属服务器上重复以上步骤。 将其中一个从属服务器提升为新的主服务器，并升级旧的主服务器。 
+6. 在所有从属服务器上重复以上步骤。 将其中一个从属服务器提升为新的主服务器，然后升级旧的主服务器。 
 
 ## <a name="upgrade-the-user-portal"></a>升级用户门户
 

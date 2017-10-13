@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 63c9e530a4982e2e6e478fea56e015fc77851e1d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: e9cb4b5b886cec46c0483287460c720855867f38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>如何使用表 API 设置 Azure Cosmos DB 全局分发
 
-本文介绍如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，然后使用表 API（预览版）进行连接。
+本文介绍如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，并使用表 API（预览版）进行连接。
 
 本文涵盖以下任务： 
 

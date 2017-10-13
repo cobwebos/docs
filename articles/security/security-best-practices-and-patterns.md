@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: terrylan
 ms.openlocfilehash: 1cc0d2d1e9a62ff8531f963413ff573713d508ad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全最佳实践和模式
 我们当前提供了以下 Azure 安全最佳实践和模式文章。 请务必定期访问此网站，我们的 Azure 安全最佳实践和模式列表会持续更新：  

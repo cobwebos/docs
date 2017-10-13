@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/24/2017
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 456daea494ed1daed9bd809b68ae12fceb800299
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>使用服务器资源管理器浏览和管理存储资源
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -27,7 +26,7 @@ ms.lasthandoff: 09/06/2017
 ## <a name="overview"></a>概述
 如果已安装 Azure Tools for Microsoft Visual Studio，可以从 Azure 的存储帐户中查看 Blob、队列和表数据。 服务器资源管理器中的 Azure“存储”节点显示了位于本地存储模拟器帐户和其他 Azure 存储帐户中的数据。
 
-若要在 Visual Studio 中查看服务器资源管理器，请在菜单栏上选择“查看” > “服务器资源管理器”。 “存储”节点显示要连接到的每个 Azure 订阅或证书下的所有存储帐户。 如果存储帐户未出现，可以遵循[本主题下文中](#add-storage-accounts-by-using-server-explorer)的说明来添加帐户。
+若要在 Visual Studio 中查看服务器资源管理器，请在菜单栏上选择“查看” > “服务器资源管理器”。 “存储”节点显示已连接的每个 Azure 订阅或证书下的所有存储帐户。 如果存储帐户未出现，可以遵循[本主题下文中](#add-storage-accounts-by-using-server-explorer)的说明来添加帐户。
 
 从 Azure SDK 2.7 开始，也可使用 Cloud Explorer 来查看和管理 Azure 资源。 有关详细信息，请参阅[使用 Cloud Explorer 管理 Azure 资源](vs-azure-tools-resources-managing-with-cloud-explorer.md)。
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 09/06/2017
 
 若要查看存储模拟器帐户的资源，请展开“开发”节点。 展开“开发”节点时，如果尚未启动存储模拟器，它会自动启动。 这可能需要数秒钟的时间。 当存储模拟器启动时，可以继续在 Visual Studio 的其他区域中工作。
 
-若要查看存储帐户中的资源，请在服务器资源管理器中展开存储帐户的节点。 将出现以下子节点：
+若要查看存储帐户中的资源，请在服务器资源管理器中展开存储帐户的节点。 可以看到以下子节点：
 
 * **Blob**
 * **队列**
@@ -95,19 +94,19 @@ ms.lasthandoff: 09/06/2017
 * 删除文件夹中的所有文件。
   
 > [!NOTE]
-> 由于 Blob 容器中的文件夹是虚拟文件夹，因此无法创建空文件夹。 也无法删除文件夹并删除其文件内容。 只有删除了文件夹的整个内容才能删除文件夹本身。
+> 由于 Blob 容器中的文件夹是虚拟文件夹，因此无法创建空文件夹。 也无法删除文件夹并删除其文件内容。 只有删除了文件夹的全部内容才能删除文件夹本身。
 > 
 > 
 
 ### <a name="to-filter-blobs-in-a-container"></a>在容器中筛选 Blob
 可以通过指定常用前缀来筛选显示的 Blob。
 
-例如，如果在筛选器文本框中输入前缀“hello”，并选择“执行”(!) 按钮，则只会显示以“hello”开头的 Blob。
+例如，如果在筛选文本框中输入前缀“hello”，并选择“执行”(!) 按钮，则只会显示以“hello”开头的 Blob。
 
 ![筛选文本框](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC519076.png)
 
 > [!NOTE]
-> 筛选文本框区分大小写，并且不支持使用通配符筛选。 只能按前缀筛选 Blob。 如果使用分隔符以虚拟层次结构形式组织 Blob，则前缀可能包含分隔符。 例如，针对前缀“HelloFabric/”进行筛选将返回以该字符串开头的所有 Blob。
+> 筛选文本框区分大小写，并且不支持使用通配符筛选。 只能按前缀筛选 Blob。 如果使用分隔符组织虚拟层次结构中的 Blob，则前缀可以包含分隔符。 例如，针对前缀“HelloFabric/”进行筛选将返回以该字符串开头的所有 Blob。
 > 
 > 
 
@@ -123,7 +122,7 @@ Blob 下载的进度会显示在“Azure 活动日志”窗口中。
   
 Blob 数据在本地缓存，并且对照 Azure Blob 存储中 Blob 的最后修改时间检查此类数据。 如果 Blob 自上次下载以来已进行了更新，则将再次下载它。 否则，将从本地磁盘中加载 Blob。 
 
-默认情况下，Blob 下载到临时目录中。 要将 Blob 下载到特定目录，请打开所选 Blob 名称的快捷菜单，然后选择“另存为”。 当通过这种方式保存 Blob 时，不会打开 Blob 文件，并且创建具有读/写特性的本地文件。
+默认情况下，Blob 下载到临时目录中。 要将 Blob 下载到特定目录，请打开所选 Blob 名称的快捷菜单，然后选择“另存为”。 如果通过这种方式保存 Blob 时，则会在不打开 Blob 文件的情况下，创建具有读/写特性的本地文件。
 
 ### <a name="to-upload-blobs"></a>上传 Blob
 * 当容器处于打开状态，可以在 Blob 容器视图中查看时，选择“上传 Blob”按钮。
@@ -216,7 +215,7 @@ Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据
 3. 查询生成完毕后，关闭该对话框。 所生成文本格式的查询以 WCF 数据服务筛选器的形式显示在文本框中。
 4. 若要运行查询，请选择绿色三角形图标。
    
-如果在筛选器文本框中直接输入 WCF Data Services 筛选器字符串，还可以筛选“表设计器”中显示的实体数据。 此类字符串类似 SQL WHERE 语句，但它以 HTTP 请求的形式发送到服务器。 有关如何生成筛选器字符串的信息，请参阅 [Constructing Filter Strings for the Table Designer](https://msdn.microsoft.com/library/azure/ff683669.aspx)（生成表设计器的筛选字符串）。
+如果在筛选文本框中直接输入 WCF Data Services 筛选器字符串，还可以筛选“表设计器”中显示的实体数据。 此类字符串类似 SQL WHERE 语句，但它以 HTTP 请求的形式发送到服务器。 有关如何生成筛选器字符串的信息，请参阅 [Constructing Filter Strings for the Table Designer](https://msdn.microsoft.com/library/azure/ff683669.aspx)（生成表设计器的筛选字符串）。
    
 下图显示了有效筛选字符串的示例：
    
@@ -287,5 +286,4 @@ Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何使用 Azure 存储服务，请参阅[访问 Azure 存储服务](https://msdn.microsoft.com/library/azure/ee405490.aspx)。
-
 

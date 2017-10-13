@@ -15,12 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 6fd0e32374827b249f5aba1cbfc39117c88c6272
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: ac0399867e0cdab1825022c4ed73ce003cc8c7e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 本主题介绍了如何使用 Azure Functions 创建计划作业，以清理 Azure SQL 数据库中的表的行。 根据 Azure 门户中预定义的计时器触发器模板新建 C# 函数。 若要支持此方案，还必须在函数应用中设置数据库连接字符串。 该方案使用针对数据库的大容量操作。 若要让函数处理移动应用表中的单个 CRUD 操作，应改为使用[移动应用绑定](functions-bindings-mobile-apps.md)。
@@ -125,4 +124,3 @@ Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置
   ，用于编码函数和定义触发器及绑定的程序员参考。
 * [测试 Azure Functions](functions-test-a-function.md)  
   介绍可用于测试函数的各种工具和技巧。  
-

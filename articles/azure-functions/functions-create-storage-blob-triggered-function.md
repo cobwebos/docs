@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: a55f28fad4c70e49e417d2856568791b313ad1eb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: db95f3991cfc36e0588f94aa7053bf3f5a794222
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
 
@@ -72,15 +71,15 @@ ms.lasthandoff: 06/20/2017
 
     ![获取存储帐户连接凭据。](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. 运行 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”，然后单击“下一步”。
+1. 运行 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”，并单击“下一步”。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 
-1. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”，然后单击“连接”。 
+1. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”，并单击“连接”。 
 
     ![输入存储凭据和连接。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 展开附加的存储帐户，右键单击“Blob 容器”，单击“创建 blob 容器”，键入 `mycontainer`，然后按 Enter。
+1. 展开附加的存储帐户，右键单击“Blob 容器”，单击“创建 blob 容器”，键入 `mycontainer`，并按 Enter。
 
     ![创建存储队列。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -88,13 +87,13 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 返回到 Azure 门户中，浏览到你的函数，展开页面底部的“日志”并确保日志流式处理未暂停。
+1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”并确保日志流式处理未暂停。
 
-1. 在存储资源管理器中，依次展开你的存储帐户、“Blob 容器”和 **mycontainer**。 依次单击“上传”、“上传文件...”。
+1. 在存储资源管理器中，依次展开存储帐户、“Blob 容器”和 **mycontainer**。 依次单击“上传”、“上传文件...”。
 
     ![将文件上传到 blob 容器。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 
-1. 在“上传文件”对话框中，单击“文件”字段。 浏览到本地计算机上的文件（如图像文件），选择它并单击“打开”，然后单击“上传”。
+1. 在“上传文件”对话框中，单击“文件”字段。 浏览到本地计算机上的文件（如图像文件），选择它并单击“打开”，并单击“上传”。
 
 1. 返回到函数日志并验证是否已读取 blob。
 
@@ -114,4 +113,3 @@ ms.lasthandoff: 06/20/2017
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 有关 Blob 存储触发器的详细信息，请参阅 [Azure Functions Blob 存储绑定](functions-bindings-storage-blob.md)。
-

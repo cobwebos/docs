@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
 ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>针对方案优化 Azure 内容传送
 
@@ -95,7 +95,7 @@ Verizon 的 Azure 内容传送网络使用常规 Web 传送优化类型来提供
 若要详细了解媒体流式处理优化，请参阅[媒体流式处理优化](cdn-media-streaming-optimization.md)。
 
 > [!NOTE]
-> 如果终结点主要用于点播视频内容，请使用此优化类型。 这种优化与常规媒体流式处理优化的主要区别在于连接重试超时。 实时传送视频流方案的超时时间要短得多。
+> 如果终结点主要用于点播视频内容，请使用此优化类型。 这种优化与常规媒体流式处理优化的主要区别在于连接重试超时。实时传送视频流方案的超时时间要短得多。
 
 ### <a name="large-file-download"></a>大文件下载
 

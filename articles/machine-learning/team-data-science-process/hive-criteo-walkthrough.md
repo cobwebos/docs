@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 13dc1b516946aadc9c8a57a55768113bc925e63e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
 
@@ -438,8 +437,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 1. 为“数据源”选择“Hive 查询”
 2. 在“Hive 数据库查询”框中，一个简单的SELECT * FROM <\_数据集\_名称.\_表\_名称> - 就足够了。
-3. 
-            **Hcatalog 服务器 URI**：如果群集是“abc”，则其简化形式为：https://abc.azurehdinsight.net
+3. **Hcatalog 服务器 URI**：如果群集是“abc”，则其简化形式为：https://abc.azurehdinsight.net
 4. **Hadoop 用户帐户名称**：调试群集时选择的用户名。 （不是远程访问用户名！）
 5. **Hadoop 用户帐户密码**：调试群集时为用户名选择的密码。 （不是远程访问密码！）
 6. **输出数据的位置**：选择“Azure”
@@ -632,5 +630,4 @@ Web 服务发布后，会重定向到一个如下所示的页面：
 我们看到，对于所询问的两个测试示例（在 JSON 框架的 python 脚本中），会以“评分标签，得分概率”的形式得到返回答案。 注意，在此情况下，我们选择固有代码提供的默认值（所有数值列为 0，所有分类列为字符串“value”）。
 
 最后，我们的端到端演练将展示如何使用 Azure 机器学习处理大规模数据集。 我们从 1 TB 的数据开始，构建了一个预测模型，并在云中将其部署为 Web 服务。
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.openlocfilehash: 372bc89f75ad4730f0defbf9d6f9f041ae5ce1bf
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-table-storage-from-ruby"></a>如何通过 Ruby 使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -61,7 +61,7 @@ Azure.config.storage_access_key = "<your azure storage access key>"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到要使用的存储帐户。
 3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”。
-4. 在显示的“访问密钥”边栏选项卡中，可看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。
+4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。
 5. 单击复制图标以将键复制到剪贴板。
 
 ## <a name="create-a-table"></a>创建表
@@ -101,7 +101,7 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-使用 **update\_entity()** 和 **merge\_entity()** 时，如果要更新的实体不存在，则更新操作会失败。 因此，如果希望存储某个实体而不用考虑它是否已存在，则应改用 **insert\_or\_replace\_entity()** 或 **insert\_or\_merge\_entity()**。
+对于 **update\_entity()** 和 **merge\_entity()**，如果要更新的实体不存在，更新操作会失败。 因此，如果希望存储某个实体而不用考虑它是否已存在，则应改用 **insert\_or\_replace\_entity()** 或 **insert\_or\_merge\_entity()**。
 
 ## <a name="work-with-groups-of-entities"></a>使用实体组
 有时，有必要批量同时提交多项操作以确保通过服务器进行原子处理。 要完成此操作，首先要创建一个 **Batch** 对象，然后对 **TableService** 使用 **execute\_batch()** 方法。 下面的示例演示在一个批次中提交 RowKey 为 2 和 3 的两个实体。 请注意，这仅适用于具有相同 PartitionKey 的实体。

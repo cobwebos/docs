@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
 ms.openlocfilehash: 9a69253129cdedc4f5d7e736d5bd8d6a68f95a1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明
 ## <a name="overview"></a>概述
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/11/2017
 #### <a name="known-issues"></a>已知问题
 服务器资源管理器的“槽”节点下面不会出现 Web 应用部署槽节点，而云资源管理器下面不会加载 Web 应用部署槽的子节点。 此问题已解决，下一个 SDK 版本不再发生。 
 
-### <a name="cloud_explorer"></a>适用于 Visual Studio 2015 的云资源管理器
+### <a name="cloud_explorer"></a>用于 Visual Studio 2015 的 Cloud Explorer
 Azure SDK 2.7 包含用于 Visual Studio 2015 的 Cloud Explorer，通过 Cloud Explorer，可在 Visual Studio 中查看 Azure 资源、检查其属性，以及执行重要的开发人员操作。 
 
 云资源管理器支持以下功能：
@@ -92,7 +92,7 @@ Azure Resource Manager 工具已更新为使用基于角色的访问控制 (RBAC
 * **基于模板的创作**：选择基于用例的模板、数据移动模板或数据处理模板，部署端到端数据集成解决方案，以及快速开始使用数据工厂。 
 * **与解决方案资源管理器集成，方便创作和部署数据工厂实体**：创建和部署管道与相关实体作为 Visual Studio 项目。 
 * **与图表视图集成，以便在创作时进行可视互动**：借助图表视图，以可视方式创作管道和数据集。 
-* **与服务器资源管理器集成，方便浏览已部署的实体并与之互动**：利用服务器资源管理器浏览已部署的数据工厂和相应的实体。 将已部署的数据工厂或任何实体（管道、链接服务、数据集）导入项目。 
+* **与服务器资源管理器集成，方便浏览已部署的实体并与之互动**：利用服务器资源管理器浏览已部署的数据工厂和相应的实体。 将已部署的数据工厂或任何实体（管道、链接的服务、数据集）导入项目。 
 * **使用架构验证与丰富智能感知进行 JSON 编辑**：使用丰富智能感知与架构验证，有效地配置和编辑数据工厂实体的 JSON 文档 
 * **多环境发布**：通过为每个环境创建不同的配置文件，将创作的管道发布到开发、测试或生产环境。
 * **支持基于 Pig、Hive 和 .Net 的数据处理**：支持在数据工厂项目中使用 Pig 和 Hive 脚本。 支持引用 C# 项目来管理 .Net 活动。

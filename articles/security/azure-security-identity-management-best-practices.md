@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
 ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 许多人将标识视为安全性的新边界层，从传统的以网络为中心的角度来看可以接管这种角色。 安全关注与投资主轴的这种演变来源于这样一个事实：网络周边的漏洞越来越多，在 [BYOD](http://aka.ms/byodcg) 设备和云应用程序呈爆炸性增长之前，周边防御不如以前那么有效。
 
 本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../active-directory/active-directory-whatis.md) 经验和客户经验。
 
-对于每项最佳实践，我们会说明：
+对于每项最佳实践，我们将说明：
 
 * 最佳实践是什么
 * 为何要启用该最佳实践
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
 * 主动监视可疑活动
 
 ## <a name="centralize-your-identity-management"></a>集中化标识管理
-保护标识安全性的一项重要措施是确保 IT 部门可以从创建帐户的单个位置管理帐户。 大多数企业 IT 组织都会主要帐户目录部署在本地，而混合云部署正呈上升趋势，因此，必须了解如何集成本地目录和云目录，并向最终用户提供无缝的体验。
+保护标识安全性的一项重要措施是确保 IT 部门可以从创建帐户的单个位置管理帐户。 大多数企业 IT 组织都将主要帐户目录部署在本地，而混合云部署正呈上升趋势，因此，必须了解如何集成本地目录和云目录，并向最终用户提供无缝的体验。
 
 若要实现这种[混合标识](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md)方案，建议采用两种做法：
 
@@ -133,5 +133,5 @@ ms.lasthandoff: 07/11/2017
 
 相比之下，Azure AD Identity Protection 是一种主动监视系统，它会在自身的仪表板上标记当前风险。 除此之外，还会通过电子邮件收到每日摘要通知。 我们建议根据业务要求调整风险级别。 某个风险事件的风险级别指示该风险事件的严重性（高、中或低）。 风险级别可帮助标识保护用户确定他们为了减少组织遇到的风险，而必须采取的措施的优先级。
 
-不主动监视其标识系统的组织会面临用户凭据透露的风险。 如果不知道有人正在使用这些凭据实施可疑活动，组织就无法缓解这种类型的威胁。
+不主动监视其标识系统的组织将面临用户凭据透露的风险。 如果不知道有人正在使用这些凭据实施可疑活动，组织就无法缓解这种类型的威胁。
 有关 Azure 标识保护的详细信息，请阅读 [Azure Active Directory 标识保护](../active-directory/active-directory-identityprotection.md)。

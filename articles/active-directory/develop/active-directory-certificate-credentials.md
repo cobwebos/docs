@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 08bb5140bb35bbd120aaa506afeab8ad247f81e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
@@ -81,7 +81,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>使用 Azure AD 注册证书
-若要将 Azure AD 中的证书凭据与客户端应用程序相关联，则需要编辑应用程序清单。
+要将 Azure AD 中的证书凭据与客户端应用程序相关联，则需要编辑应用程序清单。
 拥有证书后需计算：
 - `$base64Thumbprint`，证书哈希的 base64 编码
 - `$base64Value`，证书原始数据的 base64 编码

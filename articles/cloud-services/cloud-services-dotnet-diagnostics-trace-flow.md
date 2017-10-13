@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: robb
 ms.openlocfilehash: 35b4a4270846c54a1ca760e803ef7adba60cf03b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>使用 Azure 诊断跟踪云服务应用程序的流
 跟踪是在应用程序运行时监视其执行情况的一种方式。 可以使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx)、[System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx) 和 [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) 类在日志、文本文件或其他设备中记录与错误及应用程序执行情况相关的信息，供以后进行分析。 有关跟踪的详细信息，请参阅[跟踪和检测应用程序](https://msdn.microsoft.com/library/zs6s4h68.aspx)。
@@ -28,10 +28,10 @@ ms.lasthandoff: 07/11/2017
 
 有关如何放置 Trace 语句的信息，请参阅[如何：向应用程序代码添加 Trace 语句](https://msdn.microsoft.com/library/zd83saa2.aspx)。
 
-通过在代码中放置 [Trace 开关](https://msdn.microsoft.com/library/3at424ac.aspx) ，可以控制是否进行跟踪以及跟踪的范围。 这样即可在生产环境中监视应用程序的状态。 这在业务应用程序中特别重要，因为业务应用程序会在多个计算机中使用多个运行的组件。 有关详细信息，请参阅[如何：配置 Trace 开关](https://msdn.microsoft.com/library/t06xyy08.aspx)。
+可以将 [Trace 开关](https://msdn.microsoft.com/library/3at424ac.aspx)放置到代码中，从而控制是否进行跟踪以及跟踪的范围。 这样即可在生产环境中监视应用程序的状态。 这在业务应用程序中特别重要，因为业务应用程序会在多个计算机中使用多个运行的组件。 有关详细信息，请参阅[如何：配置 Trace 开关](https://msdn.microsoft.com/library/t06xyy08.aspx)。
 
 ## <a name="configure-the-trace-listener-in-an-azure-application"></a>在 Azure 应用程序中配置跟踪侦听器
-Trace、Debug 和 TraceSource 都要求设置“侦听器”来收集和记录已发送的消息。 侦听器可收集、存储和路由跟踪消息。 它们会将跟踪输出传输到适当的目标，如日志、窗口或文本文件。 Azure 诊断使用 [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) 类。
+Trace、Debug 和 TraceSource 都要求设置“侦听器”来收集和记录已发送的消息。 侦听器将收集、存储和路由跟踪消息。 它们会将跟踪输出传输到适当的目标，如日志、窗口或文本文件。 Azure 诊断使用 [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) 类。
 
 完成以下过程之前，必须初始化 Azure 诊断监视器。 若要执行此操作，请参阅[在 Microsoft Azure 中启用诊断](cloud-services-dotnet-diagnostics.md)。
 

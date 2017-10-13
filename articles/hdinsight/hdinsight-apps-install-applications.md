@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 08/16/2017
 ms.author: jgao
 ms.openlocfilehash: 3b3ff8d33959978ddd648e59a6a301f00c247964
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Hadoop 应用程序
 
@@ -95,7 +95,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中单击“HDInsight 群集”  。  如果未看到，请单击“浏览”，并单击“HDInsight 群集”。
 3. 单击某个 HDInsight 群集。
-4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。 “已安装的应用”边栏选项卡列出所有已安装的应用程序。 
+4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。 “已安装的应用”边栏选项卡将列出所有已安装的应用程序。 
    
     ![HDInsight 应用程序已安装的应用](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. 单击其中一个已安装的应用程序，以显示属性。 属性边栏选项卡会列出：

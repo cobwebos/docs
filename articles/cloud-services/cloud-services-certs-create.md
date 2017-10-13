@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 689977491e6df37e48536f59234bf4ddba6a1575
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)，适用于使用 Azure 经典门户而不是非经典 Azure 门户的场合）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其[部署](#deploy)到 Azure。
@@ -97,5 +96,4 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 [将服务证书上传到 Azure 经典门户](cloud-services-configure-ssl-certificate.md)（或 [Azure 门户](cloud-services-configure-ssl-certificate-portal.md)）。
 
 将[管理 API 证书](../azure-api-management-certs.md)上传到 Azure 经典门户。 Azure 门户不使用管理证书进行身份验证。
-
 

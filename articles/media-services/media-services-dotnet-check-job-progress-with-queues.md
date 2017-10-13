@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: juliako
 ms.openlocfilehash: 5ee89d0ae4c3c56d164aff4e321ee99f015ba4fb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 队列存储通过 .NET 监视媒体服务作业通知
 运行编码作业时，通常需要采用某种方式来跟踪作业进度。 你可以配置媒体服务将通知传送到 [Azure 队列存储](../storage/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
 
 用户可以从任何位置访问已传给到队列存储中的消息。 队列存储消息体系结构十分可靠，且伸缩性极高。 建议使用其他方法轮询消息的队列存储。
 
-一种常见的媒体服务通知侦听方案是：正在开发一个内容管理系统，完成编码作业后，该系统需要执行一些其他任务（例如触发工作流的下一步骤或者发布内容）。
+一种常见的媒体服务通知侦听方案是：你正在开发一个内容管理系统，完成编码作业后，该系统需要执行一些其他任务（例如触发工作流的下一步骤或者发布内容）。
 
 本主题说明如何从队列存储获取通知消息。  
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 08/29/2017
 2. 从 app.config 文件中加载媒体服务和存储帐户信息。 本代码示例使用此信息创建 **CloudMediaContext** 和 **CloudQueue** 对象。
 3. 创建接收编码作业相关通知消息的队列。
 4. 创建一个映射到队列的通知终结点。
-5. 将通知终结点附加到作业，并提交编码作业。 可以将多个通知终结点附加到一个作业。
+5. 将通知终结点附加到作业，然后提交编码作业。 可以将多个通知终结点附加到一个作业。
 6. 将 **NotificationJobState.FinalStatesOnly** 传递到 **AddNew** 方法。 （本例中，只想了解作业处理的最终状态。）
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 45106b499b9a541d5e6120538cfe1715608be118
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>教程：Azure Active Directory 与 New Relic 集成
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 09/01/2017
     > [!NOTE] 
     > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [New Relic 客户端支持团队](https://support.newrelic.com/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-new-relic-tutorial/tutorial_new-relic_certificate.png) 
 
@@ -273,5 +272,4 @@ ms.lasthandoff: 09/01/2017
 [201]: ./media/active-directory-saas-new-relic-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-new-relic-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-new-relic-tutorial/tutorial_general_203.png
-
 

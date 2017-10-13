@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/01/2017
 ms.author: maxluk
+ms.openlocfilehash: 48c6a24f6c820eaf09da6fa3a0a496ddbef1e7a0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 108b2e25dee63a15ac703d2a9b617bfb155f95da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-spark-from-the-spark-shell"></a>从 Spark Shell 运行 Spark
 
@@ -79,5 +78,4 @@ Spark Shell 命令（`spark-shell`、`pyspark` 或 `sparkR`）支持多个命令
 - 有关概述，请参阅 [Azure HDInsight 上的 Spark 简介](hdinsight-apache-spark-overview.md)。
 - 若要使用 Spark 群集和 SparkSQL，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 - 若要编写使用 Spark 处理流数据的应用程序，请参阅[什么是 Spark 结构化流式处理？](hdinsight-spark-streaming-overview.md)。
-
 

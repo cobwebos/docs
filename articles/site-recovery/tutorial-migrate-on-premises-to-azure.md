@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/16/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bbee77e669f49bdebb57121df8672a9253945b3c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 09/25/2017
 > * 部署本地管理服务器
 > * 设置复制策略并启用复制
 > * 运行灾难恢复演练以确保一切正常
-> * 运行 Azure 的一次性故障转移
+> * 面向 Azure 运行一次性故障转移
 
 ## <a name="overview"></a>概述
 
@@ -108,13 +107,12 @@ ms.lasthandoff: 09/25/2017
 
 
 > [!WARNING]
-> 请勿在进行时取消故障转移：在故障转移开始前，将停止 VM 复制。 如果在进行时取消故障转移，则故障转移会停止，但 VM 将不再进行复制。
+> **请勿取消正在进行的故障转移**：在故障转移开始前，停止 VM 复制。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
-在某些情况下，故障转移需要大约 8-10 分钟的时间完成其他进程。 你可能注意到，物理服务器、VMware Linux 计算机、未启用 DHCP 服务的 VMware VM，以及未安装启动驱动程序（storvsc、vmbus、storflt、intelide、atapi）的 VMware VM 需要更长的测试故障转移时间。
+在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 你可能注意到物理服务器、VMware Linux 计算机、未启用 DHCP 服务的 VMware VM 和未安装以下启动驱动程序：storvsc、vmbus、storflt、intelide、atapi 的 VMware VM 需要更长的测试故障转移时间。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [在迁移到 Azure 后，将 Azure VM 复制到另一个区域](site-recovery-azure-to-azure-after-migration.md)
-

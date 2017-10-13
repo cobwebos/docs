@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
 ms.openlocfilehash: 68ee013cff4e0be15af30239e0314f779f50177a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>筛选入站和出站 VM 网络流量
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="sample-script"></a>示例脚本
 
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/virtual-network/filter-network-traffic/filter-network-traffic.sh  "筛选器 VM 网络流量")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/filter-network-traffic/filter-network-traffic.sh  "Filter VM network traffic")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 

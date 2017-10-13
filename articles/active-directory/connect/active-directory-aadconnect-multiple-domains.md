@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 8e3f496c2868cc3430e0efd47805aec2205168aa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/03/2017
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
-当我们想要添加多个顶级域时，问题便油然而生。  例如，假设已设置 Azure AD 和本地环境之间的联合。  在本文中我使用 bmcontoso.com。  现在我已添加第二个顶级域 bmfabrikam.com。
+当我们想要添加多个顶级域时，问题便油然而生。  例如，假设已设置 Azure AD 和本地环境之间的联合。  在本文中我使用 bmcontoso.com。现在我已添加第二个顶级域 bmfabrikam.com。
 
 ![域](./media/active-directory-multiple-domains/domains.png)
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="support-for-sub-domains"></a>子域的支持
 添加子域时，因为 Azure AD 处理域的方式，导致子域继承父项的设置。  这表示 IssuerUri 需要与父项匹配。
 
-假设我有 bmcontoso.com，后来再添加 corp.bmcontoso.com。  这意味着 corp.bmcontoso.com 中的用户 IssuerUri 必须为 **http://bmcontoso.com/adfs/services/trust**。  但是，为 Azure AD 实施的上述标准规则将包含颁发者的令牌生成为 **http://corp.bmcontoso.com/adfs/services/trust。** 这与域的所需值不匹配，身份验证将失败。
+假设我有 bmcontoso.com，后来再添加 corp.bmcontoso.com。这意味着 corp.bmcontoso.com 中的用户 IssuerUri 必须为 **http://bmcontoso.com/adfs/services/trust**。  但是，为 Azure AD 实施的上述标准规则将包含颁发者的令牌生成为 **http://corp.bmcontoso.com/adfs/services/trust。** 这与域的所需值不匹配，身份验证会失败。
 
 ### <a name="how-to-enable-support-for-sub-domains"></a>如何启用子域的支持
 若要解决此问题，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。 

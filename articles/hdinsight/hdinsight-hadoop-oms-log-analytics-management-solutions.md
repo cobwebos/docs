@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 21b474e37ef0a6037e05ee1fe8e5088cb3e3601d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-hdinsight-cluster-management-solutions-to-log-analytics-preview"></a>将 HDInsight 群集管理解决方案添加到 Log Analytics（预览）
 
@@ -30,7 +29,7 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytic
 
 ## <a name="prerequisites"></a>先决条件
 
-* 必须已配置 HDInsight 群集以使用 Azure Log Analytics。 如需说明，请参阅[通过 HDInsight 群集使用 Azure Log Analytics](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
+* 必须先配置 HDInsight 群集，才能使用 Azure Log Analytics。 如需说明，请参阅[通过 HDInsight 群集使用 Azure Log Analytics](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
 
 ## <a name="add-cluster-specific-management-solutions"></a>添加特定于群集的管理解决方案
 
@@ -64,4 +63,3 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytic
 
 * [使用 OMS Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [在 Log Analytics 中创建警报规则](../log-analytics/log-analytics-alerts-creating.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/31/2017
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 75dcc603327b50718b279f3ce055663ec0bc2596
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>从服务器资源管理器访问 Azure 虚拟机
 通过使用 Visual Studio 中的服务器资源管理器可以显示有关 Azure 托管的虚拟机的信息。
@@ -52,5 +51,4 @@ ms.lasthandoff: 09/01/2017
 
 ## <a name="next-steps"></a>后续步骤
 要了解有关在 Visual Studio 中使用 Azure 角色的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](vs-azure-tools-remote-desktop-roles.md)。
-
 

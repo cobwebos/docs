@@ -1,6 +1,6 @@
 ---
 title: "在 Visual Studio 中使用连接服务添加 Azure 存储 | Microsoft Docs"
-description: "使用 Visual Studio 的“添加连接服务”对话框将 Azure 存储添加到你的应用"
+description: "使用 Visual Studio 的“添加连接服务”对话框将 Azure 存储添加到应用"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2017
 ms.author: kraigb
 ms.openlocfilehash: 35638083cd75e1b751d00a9c8163a3bc7480f0cd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务添加 Azure 存储
 在 Visual Studio 中，通过使用“添加连接服务”对话框可将以下任何服务连接到 Azure 存储：
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/29/2017
 1. 该存储连接服务会显示在项目的“服务引用”节点下。
    
 ## <a name="how-your-project-is-modified"></a>项目的修改情况
-完成该对话框后，Visual Studio 会添加引用并修改特定配置文件。 具体更改情况取决于项目类型： 
+完成该对话框后，Visual Studio 将添加引用并修改特定配置文件。 具体更改情况取决于项目类型： 
 
 - ASP.NET 项目 - [完成的操作 – ASP.NET 项目](http://go.microsoft.com/fwlink/p/?LinkId=513126)
 - ASP.NET Core 项目 - [完成的操作 – ASP.NET 5 项目](http://go.microsoft.com/fwlink/p/?LinkId=513124) 

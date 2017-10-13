@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 ms.openlocfilehash: 010f4b05b35fa1f31c14f34a5fae9298fcd831e4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 * [为 Azure 准备 CentOS 6.x 虚拟机](#centos-6x)
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/11/2017
    
         # sudo chkconfig network on
 
-8. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，请使用以下存储库替换 `/etc/yum.repos.d/CentOS-Base.repo` 文件。  这还会添加包含 Azure Linux 代理等其他包的 **[openlogic]** 存储库：
+8. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，则将 `/etc/yum.repos.d/CentOS-Base.repo` 文件替换为以下存储库。  这还会添加包含 Azure Linux 代理等其他包的 **[openlogic]** 存储库：
 
         [openlogic]
         name=CentOS-$releasever - openlogic packages for $basearch
@@ -124,7 +124,7 @@ ms.lasthandoff: 07/11/2017
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
     >[!Note]
-    本指南的余下部分假设用户至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
+    本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
 
 
 9. 将下列行添加到 /etc/yum.conf：
@@ -200,7 +200,7 @@ ms.lasthandoff: 07/11/2017
 
 为 Azure 准备 CentOS 7 虚拟机非常类似于 CentOS 6，但有几个值得注意的重要区别：
 
-* NetworkManager 包不再与 Azure Linux 代理冲突。 默认会安装此包，建议不要删除。
+* NetworkManager 包不再与 Azure Linux 代理冲突。 默认情况下将安装此包，建议不要删除它。
 * GRUB2 现在用作默认引导加载程序，因此用于编辑内核参数的过程已更改（请参见下文）。
 * XFS 现在是默认文件系统。 如果需要，仍可以使用 ext4 文件系统。
 
@@ -271,7 +271,7 @@ ms.lasthandoff: 07/11/2017
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
     >[!Note]
-    本指南的余下部分假设用户至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
+    本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
 
 7. 运行以下命令以清除当前 yum 元数据并安装所有更新：
    

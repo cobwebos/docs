@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>用于 DMZ 的示例应用程序
 [返回安全边界最佳实践页面][HOME]
@@ -193,7 +193,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 ```
 
 ## <a name="dns01---dns-server-installation-script"></a>DNS01 - DNS 服务器安装脚本
-此示例应用程序中没有包括设置 DNS 服务器的脚本。 如果防火墙规则、NSG 或 UDR 测试需要包括 DNS 流量，则需要手动设置 DNS01 服务器。 两个示例的网络配置 xml 文件和 Resource Manager 模板都包括 DNS01（作为主 DNS 服务器）和由级别 3 托管的公共 DNS 服务器（作为备份 DNS 服务器）。 第 3 级 DNS 服务器是非本地流量使用的实际 DNS 服务器，若未安装 DNS01，就不会有本地网络 DNS。
+此示例应用程序中没有包括设置 DNS 服务器的脚本。 如果防火墙规则、NSG 或 UDR 测试需要包括 DNS 流量，则需要手动设置 DNS01 服务器。 两个示例的网络配置 xml 文件和 Resource Manager 模板都包括 DNS01（作为主 DNS 服务器）和由级别 3 托管的公共 DNS 服务器（作为备份 DNS 服务器）。 级别 3 DNS 服务器会成为用作非本地流量的实际 DNS 服务器，由于未设置 DNS01，因此不会发生本地网络 DNS。
 
 ## <a name="next-steps"></a>后续步骤
 * 在 IIS 服务器上运行 IIS01 脚本

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 中的 IP 地址类型和分配方法（经典）
 可以将 IP 地址分配到与其他 Azure 资源通信的 Azure 资源，也可以将其分配到本地网络和 Internet。 可以在 Azure 中使用两种类型的 IP 地址：公共地址和专用地址。
@@ -58,7 +58,7 @@ ms.lasthandoff: 08/29/2017
 
 云服务可以包含多个 IaaS VM 或 PaaS 角色实例，通过同一云服务 VIP 公开。 还可以[向云服务分配多个 VIP](../load-balancer/load-balancer-multivip.md)，这样可以启用多 VIP 方案，如包含基于 SSL 的网站的多租户环境。
 
-可以使用称为[保留 IP](virtual-networks-reserved-public-ip.md) 的*静态*公共 IP 地址，确保云服务的公共 IP 地址保持不变，即使所有角色实例均已停止，也是如此。 你可以在特定位置中创建静态（保留）IP 资源并将其分配到该位置中的任何云服务。 不能为保留 IP 指定实际 IP 地址，该地址从创建它的位置中的可用的 IP 地址池分配。 除非显式删除，否则不会释放该 IP 地址。
+可以使用称为[保留 IP](virtual-networks-reserved-public-ip.md) 的*静态*公共 IP 地址，确保云服务的公共 IP 地址保持不变，即使所有角色实例均已停止，也是如此。 可以在特定位置中创建静态（保留）IP 资源并将其分配到该位置中的任何云服务。 不能为保留 IP 指定实际 IP 地址，该地址从创建它的位置中的可用的 IP 地址池分配。 除非显式删除，否则不会释放该 IP 地址。
 
 静态（保留）公共 IP 地址通常用于云服务满足以下条件的方案：
 
@@ -118,7 +118,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 
 如果是虚拟网络中部署的云服务，资源将获取从关联子网（在其网络配置中指定）的地址范围中分配的专用 IP 地址。 此专用 IP 地址可用于 VNet 中所有 VM 之间的通信。
 
-此外，如果是 VNet 中的云服务，则默认*动态*（使用 DHCP）分配专用 IP 地址。 停止和启动该资源时，该地址可能更改。 要确保 IP 地址保持不变，则需要将分配方法设置为 静态，并提供相应地址范围内的有效 IP 地址。
+此外，如果是 VNet 中的云服务，则默认*动态*（使用 DHCP）分配专用 IP 地址。 停止和启动该资源时，该地址可能更改。 要确保 IP 地址保持不变，需要将分配方法设置为*静态*并提供相应的地址范围中的有效 IP 地址。
 
 静态专用 IP 地址通常用于：
 

@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
 ms.openlocfilehash: ba390a5973ad33405f1d4217d60d7989f04db3b4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>将数据移动到和移出 Azure 存储
-如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合的方法因具体情况而异。 本文会提供不同方案以及针对每个方案的适当产品/服务的快速概述。
+如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合方法将取决于方案。 本文将提供不同方案以及针对每个方案的适当产品/服务的快速概述。
 
 ## <a name="building-applications"></a>构建应用程序
 如果正在构建应用程序，针对 REST API 或我们的许多客户端库之一进行开发是将数据移动到和移出 Azure 存储的一个好办法。
@@ -56,7 +56,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 请参阅[通过 Azure 存储使用 Azure CLI](../storage-azure-cli.md) 了解详细信息。
 
 ## <a name="moving-large-amounts-of-data-with-a-slow-network"></a>在速度缓慢的网络上移动大量数据
-与移动大量数据相关的最大挑战之一是传输时间。 若要从 Azure 存储放入/取出数据而不支付网络成本或编写代码，那么 Azure 导入/导出是合适的解决方案。
+与移动大量数据相关的最大挑战之一是传输时间。 如果想要在无需担心网络成本或编写代码的情况下将数据放入 Azure 存储或从中获取数据，那么 Azure 导入/导出是合适的解决方案。
 
 请参阅 [Azure 导入/导出](../storage-import-export-service.md)了解详细信息。
 
@@ -71,7 +71,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 请参阅 [StorSimple](../../storsimple/storsimple-overview.md) 了解详细信息。
 
 ## <a name="recovering-your-data"></a>恢复数据
-拥有本地工作负荷和应用程序时，需要让业务能够在发生灾难时继续运行的解决方案。 Azure Site Recovery 可以处理虚拟机和物理服务器的复制、故障转移与恢复。 复制的数据存储在 Azure 存储中，因此不再需要辅助现场数据中心。
+拥有本地工作负荷和应用程序时，需要一个解决方案，允许业务在发生灾难时继续运行。 Azure Site Recovery 可以处理虚拟机和物理服务器的复制、故障转移与恢复。 复制的数据存储在 Azure 存储中，使你不再需要辅助现场数据中心。
 
 请参阅 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 了解详细信息。
 ### <a name="moving-data-faq"></a>数据移动常见问题解答：

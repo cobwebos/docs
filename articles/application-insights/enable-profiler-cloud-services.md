@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: 65ba755f35df7bd09dd652ac6fccf96a878c6ca9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-application-insights-profiler-on-an-azure-cloud-services-resource"></a>在 Azure 云服务资源上启用 Azure Application Insights Profiler
 
 本演练演示如何在 Azure 云服务资源托管的 ASP.NET 应用程序上启用 Azure Application Insights Profiler。 示例包括对 Azure 虚拟机、虚拟机规模集和 Azure Service Fabric 的支持。 所有示例依赖于支持 Azure 资源管理器部署模型的模板。 若要详细了解部署模型，请查看 [Azure 资源管理器与经典部署：了解部署模型和资源状态](/azure-resource-manager/resource-manager-deployment-model)。
@@ -289,4 +287,3 @@ Commenting out these sections for now
 - 在[探查器故障排除](app-insights-profiler.md#troubleshooting)中获得有关排查探查器问题的帮助。
 
 - 在 [Application Insights Profiler](app-insights-profiler.md) 中详细了解探查器。
-

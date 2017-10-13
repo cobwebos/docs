@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 79b215eed38959efd630e21633d235cbc857abd8
 ms.openlocfilehash: dde9d9b8be1faede7d2e9e45597070e6ce51ac02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="describing-a-service-fabric-cluster"></a>描述 Service Fabric 群集
 Service Fabric 群集 Resource Manager 提供多种机制用于描述群集。 在运行时，群集 Resource Manager 使用此信息来确保群集中运行的服务的高可用性。 实施这些重要规则时，群集资源管理器还会尝试优化群集中的资源消耗。
 
@@ -133,14 +131,14 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 | **UD2** | | |R2 | | |1 |
 | **UD3** | | | |R3 | |1 |
 | **UD4** | | | | |R4 |1 |
-| **FDTotal** |2 |0 |1 |1 |1 |- |
+| **FDTotal** |#N/A |0 |1 |1 |1 |- |
 
 此布局违反了容错域约束的定义。 FD0 有 2 个副本，而 FD1 有 0 个，FD0 与 FD1 之间的总差为 2。 群集 Resource Manager 不允许这种排列方式。 同样，如果选择 N2 和 N6（而不是 N1 和 N2），则会得到：
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
-| **UD1** |R5 |R1 | | | |2 |
+| **UD1** |R5 |R1 | | | |#N/A |
 | **UD2** | | |R2 | | |1 |
 | **UD3** | | | |R3 | |1 |
 | **UD4** | | | | |R4 |1 |
@@ -382,7 +380,7 @@ Service Fabric 使用 `Metrics` 表示资源。 指标是你想要向 Service Fa
 
 请务必注意，像放置约束和节点属性一样，Service Fabric 群集 Resource Manager 无法理解指标名称的含义。 指标名称只是一些字符串。 为避免混淆，最好是将单位声明为所创建的指标名称的一部分。
 
-## <a name="capacity"></a>容量
+## <a name="capacity"></a>Capacity
 如果关闭所有的资源均衡功能，Service Fabric 群集资源管理器仍会确保最终不会有任何节点超出其容量。 对容量溢出进行管理是可能的，除非群集过于饱和或工作负荷大于任何节点。 容量是群集 Resource Manager 用来了解节点包含的资源量的另一个*约束*。 系统还会跟踪整个群集的剩余容量。 服务级别的容量和消耗量均以指标来表示。 因此举例而言，指标可能是“ClientConnections”，给定的节点可能拥有 32768 个单位的“ClientConnections”容量。 其他节点可能有其他限制。在该节点上运行的某一服务可以声明其当前正在消耗 32256 个单位的指标“ClientConnections”。
 
 在运行时，群集资源管理器会跟踪群集中和节点上的剩余容量。 群集资源管理器通过从运行服务的节点容量中减去每个服务的使用量来跟踪容量。 使用此信息，Service Fabric 群集 Resource Manager 可找出要放置或移动副本的位置，使节点不会超过容量。
@@ -529,4 +527,3 @@ LoadMetricInformation     :
 [Image5]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-layout-different-workloads.png
 [Image6]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
-

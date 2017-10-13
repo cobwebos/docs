@@ -17,10 +17,10 @@ ms.date: 06/28/2017
 ms.author: micflan
 ms.custom: accessibility
 ms.openlocfilehash: f8718e240eaefb47b18b6098be083e335ccbc89d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Azure 门户支持的浏览器和设备
 可在所有最新的台式机、平板设备和浏览器上运行 [Azure 门户](https://portal.azure.com)。

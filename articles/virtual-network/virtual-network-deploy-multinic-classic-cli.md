@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b62421b7289650818748d0016dccfdf42ef0a768
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建具有多个 NIC 的 VM（经典）
 
@@ -43,9 +43,9 @@ ms.lasthandoff: 07/11/2017
 ## <a name="deploy-the-back-end-vms"></a>部署后端 VM
 后端 VM 取决于以下资源的创建：
 
-* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
-* **NIC**。 每个 VM 都会具有两个 NIC，一个用于数据库访问，另一个用于管理。
-* **可用性集**。 所有数据库服务器都会添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
+* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘将使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
+* **NIC**。 每个 VM 都将具有两个 NIC，一个用于数据库访问，另一个用于管理。
+* **可用性集**。 所有数据库服务器都将添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
 
 ### <a name="step-1---start-your-script"></a>步骤 1 - 启动脚本
 可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh)下载所用的完整 bash 脚本。 完成以下步骤，以更改要在环境中使用的脚本：
@@ -142,7 +142,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="step-4---run-the-script"></a>步骤 4 - 运行脚本
 现在，已根据需要下载并更改了脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
 
-1. 保存该脚本并从 **Bash** 终端运行它。 会看到最初的输出，如下所示。
+1. 保存该脚本并从 **Bash** 终端运行它。 将看到最初的输出，如下所示。
 
         info:    Executing command service create
         info:    Creating cloud service

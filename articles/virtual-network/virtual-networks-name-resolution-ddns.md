@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
 ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>使用动态 DNS 在自己的 DNS 服务器中注册主机名
 [Azure 为虚拟机 (VM) 和角色实例提供名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 但是，如果需要 Azure 所提供的名称解析之外的名称解析，则可以提供自己的 DNS 服务器。 这样可以量身定制 DNS 解决方案以满足自己的特定需求。 例如，可能需要通过 Active Directory 域控制器来访问本地资源。
@@ -28,10 +28,10 @@ ms.lasthandoff: 07/11/2017
 ## <a name="windows-clients"></a>Windows 客户端
 在启动时或其 IP 地址更改时，未加入域的 Windows 客户端将尝试不安全的动态 DNS (DDNS) 更新。 DNS 名称为主机名加上的主 DNS 后缀。 Azure 将保留主 DNS 后缀为空，但可以通过 [UI](https://technet.microsoft.com/library/cc794784.aspx) 或[使用自动化](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix)在 VM 中对其进行设置。
 
-已加入域的 Windows 客户端通过使用安全的动态 DNS 将其 IP 地址注册到域控制器。 域加入过程在客户端上设置主 DNS 后缀并创建和维护信任关系。
+已加入域的 Windows 客户端通过使用安全的动态 DNS 将其 IP 地址注册到域控制器。 域加入过程会在客户端上设置主 DNS 后缀并创建和维护信任关系。
 
 ## <a name="linux-clients"></a>Linux 客户端
-Linux 客户端通常在启动时注册到 DNS 服务器，并假设 DHCP 服务器执行此操作。 Azure 的 DHCP 服务器没有能力也没有凭据在 DNS 服务器中注册记录。  可以使用名为 *nsupdate* 的工具发送动态 DNS 更新，该工具包含在绑定包中。 由于动态 DNS 协议是标准化的，所以即使在 DNS 服务器上未使用绑定时，也可以使用 *nsupdate*。
+Linux 客户端通常在启动时注册到 DNS 服务器，并假设 DHCP 服务器将执行此操作。 Azure 的 DHCP 服务器没有能力也没有凭据在 DNS 服务器中注册记录。  可以使用名为 *nsupdate* 的工具发送动态 DNS 更新，该工具包含在绑定包中。 由于动态 DNS 协议是标准化的，所以即使在 DNS 服务器上未使用绑定时，也可以使用 *nsupdate*。
 
 可以使用 DHCP 客户端提供的挂钩在 DNS 服务器中创建和维护主机名条目。 在 DHCP 周期中，客户端将执行 */etc/dhcp/dhclient-exit-hooks.d/* 中的脚本。 通过使用 *nsupdate* 可将其用于注册新的 IP 地址。 例如：
 

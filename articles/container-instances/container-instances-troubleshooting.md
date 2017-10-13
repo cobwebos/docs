@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: ff6da0ce95d0405714602c3872da34a2bff344d3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>排查 Azure 容器实例的部署问题
 
 本文展示了如何排查向 Azure 容器实例部署容器时出现的问题。 还介绍了一些可能遇到的常见问题。
@@ -226,4 +224,3 @@ microsoft/aci-helloworld               latest              7f78509b568e        1
 * 为容器指定较低的 CPU 和内存设置
 * 部署到其他 Azure 区域
 * 稍后部署
-

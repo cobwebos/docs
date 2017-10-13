@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: b64413e9cc916837dc779b92117f90293c4f1d87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # v2.0 协议 — OAuth 2.0 授权代码流
 OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。  使用应用模型 v2.0 的 OAuth 2.0 实现，可以将登录名及 API 访问添加到移动应用和桌面应用。  本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |建议 |同样随令牌响应返回的请求中所包含的值。  它可以是你想要的任何内容的字符串。  随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。  该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | prompt |可选 |表示需要的用户交互类型。  此时唯一有效的值为“login”、“none”和“consent”。  `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。  `prompt=none` 完全相反，它将确保无论如何都不会向用户显示任何交互提示。  如果请求无法通过单一登录静默完成，该 v2.0 终结点将返回一个错误。  `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。  通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
-| domain_hint |可选 |可以是 `consumers` 或 `organizations` 之一。  如果包含，它跳过用户在 v2.0 登录页面上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。  通常，应用将在重新身份验证期间使用此参数，方法是从上次登录提取 `tid`。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
+| domain_hint |可选 |可以是 `consumers` 或 `organizations` 之一。  如果包含，它跳过用户在 v2.0 登录页面上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。  通常，应用会在重新身份验证期间使用此参数，方法是从前次登录提取 `tid`。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
 
 此时，请求用户输入其凭据并完成身份验证。  v2.0 终结点也将确保用户已经同意 `scope` 查询参数中指示的权限。  如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。  [此处提供了权限、许可与多租户应用](active-directory-v2-scopes.md)的详细信息。
 
@@ -116,7 +116,7 @@ error=access_denied
 | invalid_resource |目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 |这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 
 ## 请求访问令牌
-已获取 authorization_code 并获得用户授权，现可通过将 `POST` 请求发送到 `/token` 终结点，兑换 `code` 以获取所需资源的 `access_token`：
+已获取 authorization_code 并获得用户授权，现在可以将 `POST` 请求发送到 `/token` 终结点，兑换 `code` 以获取所需资源的 `access_token`：
 
 ```
 // Line breaks for legibility only

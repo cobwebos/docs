@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: glenga
 ms.openlocfilehash: f2bed0a7124517319cc82405c4ab6b4d79aacfe1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -115,12 +115,12 @@ ms.lasthandoff: 08/03/2017
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
 在此示例中，仅在启动时和请求同步时才调用 **SyncAsync** 方法。  若要在 Android 或 iOS 应用中启动同步，请下拉项目列表；对于 Windows，请使用“同步”按钮。 在实际应用程序中，还可以在网络状态发生更改时触发同步。
 
-如果对一个表执行拉取操作，并且该表具有由上下文跟踪的未完成的本地更新，那么该拉取操作自动触发之前的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
+对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发在前面执行的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
 
 在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分[2]。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
-现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 稍后，模拟脱机场景，并在应用处于脱机状态时修改本地存储中的数据。
+现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
 
 ## <a name="update-the-sync-behavior-of-the-client-app"></a>更新客户端应用的同步行为
 在本部分中，修改客户端项目，通过对后端使用无效的应用程序 URL 来模拟脱机情况。 或者可以通过将设备切换到“飞行模式”来关闭网络连接。  添加或更改数据项时，这些更改将保存在本地存储中，但在重新建立连接之前，不会同步到后端数据存储中。

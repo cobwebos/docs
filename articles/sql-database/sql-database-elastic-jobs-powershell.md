@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
@@ -523,7 +523,7 @@ ms.lasthandoff: 08/29/2017
     Write-Output $job
 
 ## <a name="data-collection-across-databases"></a>跨数据库收集数据
-用户可以使用作业跨一组数据库来执行查询，并将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
+可以使用作业跨一组数据库来执行查询，并将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
 
 如果不存在指定的目标表，则自动创建该表。 新表与返回的结果集的架构相符。 如果脚本返回多个结果集，弹性数据库作业只将第一个结果集发送到目标表。
 

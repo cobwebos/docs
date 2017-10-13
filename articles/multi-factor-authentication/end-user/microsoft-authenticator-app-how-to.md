@@ -15,14 +15,12 @@ ms.date: 08/15/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
+ms.openlocfilehash: e1e979319e53d222be33032acd0a79697dd09ab6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 6bcb6d9f7a1e9b241fa70690016b03d6eb5887ab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 Microsoft Authenticator 应用在工作或学校帐户（例如，bsimon@contoso.com）或 Microsoft 帐户（例如，bsimon@outlook.com）中提供了附加安全级别。
 
@@ -109,4 +107,3 @@ iOS 上的 Microsoft Authenticator 应用支持 Touch ID。  Azure 多重身份�
 将帐户添加到应用后，可能会提示执行测试验证来确保所有事项都已正确配置。 之后，大功告成！ 在下次登录之前，不需要执行任何其他操作。
 
 如果选择在应用中使用验证码，则会在主页上看到它们。 它们每 30 秒更改一次，以便你在需要验证码时始终有新的验证码可用。 但是，在登录且系统提示输入验证码之前，不需要对它们执行任何操作。  
-

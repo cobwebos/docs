@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 5ef87e606f055359ca325befd6048353ce57ca2b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-directory-synchronization-requirements"></a>确定目录同步要求
 同步就是基于用户的本地标识向用户提供一个云中的标识。 无论用户是否会将已同步的帐户用于身份验证或联合身份验证，用户仍需要具有一个云中的标识。  需要定期维护和更新此标识。  可以进行多种形式的更新（从标题更改到密码更改）。  

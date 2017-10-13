@@ -15,15 +15,15 @@ ms.date: 07/13/2017
 ms.author: andredm
 ms.reviewer: rqureshi
 ms.openlocfilehash: 0462fe8ff75bdda397decb301c459795886e9e58
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure 门户中基于角色的访问控制入门
 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。
 
-使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 不是在 Azure 订阅或资源中给每个人无限制的权限，只能允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
+使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
 ## <a name="basics-of-access-management-in-azure"></a>Azure 中的访问管理的基础知识
 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 使用 Azure 门户、Azure 命令行工具或 Azure 管理 API 分配这些访问权限。

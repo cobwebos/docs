@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
 ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>在 Azure Log Analytics 中使用日志搜索门户创建日志搜索
 
@@ -103,7 +103,7 @@ Syslog | where (SeverityLevel == "err")
 ![按计算机分组](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 
 ## <a name="work-with-results"></a>处理结果
-日志搜索门户具有用于处理查询结果的各种功能。  可以对结果进行排序、筛选和分组，由此对数据进行分析，而无需修改实际查询。  默认情况下未排序的查询的结果。
+日志搜索门户具有用于处理查询结果的各种功能。  可以对结果进行排序、筛选和分组，由此对数据进行分析，而无需修改实际查询。  默认情况下，查询结果不会进行排序。
 
 若要以表的形式查看数据 - 这种形式可提供其他用于筛选和排序的选项，请单击“表”。  
 

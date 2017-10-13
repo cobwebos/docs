@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 2bb7fe165fc88df62a2b12ccf666da0a7965d43b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.openlocfilehash: e36baddffd634cb7d601d09ccebaf40b27798c7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 #<a name="active-directory-b2c-documentation"></a>Active Directory B2C 文档
 
 了解如何使用 Active Directory B2C 在云中设置和管理综合性的使用者标识管理。 教程、参考和其他文档介绍了如何使用安全登录保护面向使用者的 Web 应用程序和移动应用程序。
@@ -188,5 +186,4 @@ ms.lasthandoff: 03/27/2017
         </a>
     </li>
 </ul>
-
 

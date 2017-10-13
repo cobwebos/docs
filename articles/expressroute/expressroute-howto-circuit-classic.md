@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 93ddc2975db34053c6a776d1c3b931536f3f8ec7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 创建和修改 ExpressRoute 线路（经典）
 > [!div class="op_single_selector"]
@@ -346,5 +345,4 @@ ExpressRoute 线路处于以下状态时，才能使用它：
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-classic.md)
 * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
-
 

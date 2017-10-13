@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
+ms.openlocfilehash: d30a99044e335723e5d2c4bbd71fab7e4fd51145
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: b9fac8796b9cb36418d4494eaaf8080744321e19
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 存储指标（预览）
 
 使用 Azure 存储的指标可以分析使用趋势、跟踪请求，以及诊断存储帐户的问题。
@@ -267,4 +265,3 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 ## <a name="see-also"></a>另请参阅
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
-

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/21/2017
 ms.author: kraigb
 ms.openlocfilehash: 7905dfb97cbd7578a8422567fe674839d00c21ef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>使用 Visual Studio 和 IntelliTrace 调试已发布的 Azure 云服务
 通过 IntelliTrace，可以在某个角色实例在 Azure 中运行时记录该角色实例的大量调试信息。 如果需要查找问题的原因，可以从 Visual Studio 使用 IntelliTrace 日志来单步执行代码，就像它在 Azure 中运行一样。 实际上，当 Azure 应用程序以云服务的形式在 Azure 中运行时，IntelliTrace 将记录关键代码执行和环境数据，并允许从 Visual Studio 中回放已记录的数据。 
@@ -67,7 +67,7 @@ IntelliTrace 日志是一个循环日志文件，IntelliTrace 设置中指定了
 
     ![“查看 IntelliTrace 日志”菜单选项](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/view-intellitrace-logs.png)
 
-1. IntelliTrace 日志被下载到本地计算机上某个目录中的文件中。 每次请求 IntelliTrace 日志时，就会创建新快照。 在下载日志时，Visual Studio 会在“Azure 活动日志”窗口中显示操作进度。 可以展开操作的行项以查看详细信息，如下图所示。
+1. IntelliTrace 日志会被下载到本地计算机上某个目录中的文件中。 每次请求 IntelliTrace 日志时，就会创建新快照。 在下载日志时，Visual Studio 会在“Azure 活动日志”窗口中显示操作进度。 可以展开操作的行项以查看详细信息，如下图所示。
 
 ![VST_IntelliTraceDownloadProgress](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC745551.png)
 

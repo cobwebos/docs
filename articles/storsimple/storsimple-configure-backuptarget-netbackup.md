@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
+ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 4d5acd0be4a237f46d79800a44124b8c4269c5b9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
 ## <a name="overview"></a>概述
@@ -506,7 +504,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 1.  [安装 Azure PowerShell](/powershell/azure/overview)。
 2. 下载和安装 [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell 脚本。
-3. 在运行脚本的服务器上，以管理员身份运行 PowerShell。 确保通过 `-WhatIf $true` 来运行脚本，以查看该脚本将带来哪些更改。 在完成验证后，将传递 `-WhatIf $false`。 运行下列命令：
+3. 在运行脚本的服务器上，以管理员身份运行 PowerShell。 确保运行脚本时使用 `-WhatIf $true`，以查看该脚本会导致哪些变化。 完成验证后，立即传递 `-WhatIf $false`。 运行下列命令：
 ```powershell
 .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
 ```
@@ -545,4 +543,3 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 - 详细了解如何[从备份集还原](storsimple-restore-from-backup-set-u2.md)。
 - 详细了解如何执行[设备故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。
-

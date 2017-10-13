@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/31/2017
 ms.author: arijitt
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 84b78fe4eb60162f3cad0ae4ae7f98864d5bbf2b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Spark 进行故障排除
 
 了解处理 Apache Ambari 中的 Apache Spark 有效负载时的最常见问题及其解决方法。
@@ -228,5 +226,4 @@ java.lang.OutOfMemoryError
 
 - [Spark 内存管理概述](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 - [在 HDInsight 群集上调试 Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
-
 

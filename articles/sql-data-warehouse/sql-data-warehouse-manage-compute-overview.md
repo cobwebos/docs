@@ -16,10 +16,10 @@ ms.custom: manage
 ms.date: 03/22/2017
 ms.author: elbutter
 ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>管理 Azure SQL 数据仓库中的计算能力（概述）
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ SQL 数据仓库的体系结构由控制节点、计算节点和跨 60 个分布
 | DWU  | 计算节点的 \# | 每个节点的分布区 \# |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
-| 200  | 2                  | 30                           |
+| 200  | #N/A                  | 30                           |
 | 300  | 3                  | 20                           |
 | 400  | 4                  | 15                           |
 | 500  | 5                  | 12                           |
@@ -54,7 +54,7 @@ SQL 数据仓库的体系结构由控制节点、计算节点和跨 60 个分布
 | 1200 | 12                 | 5                            |
 | 1500 | 15                 | 4                            |
 | 2000 | 20                 | 3                            |
-| 3000 | 30                 | 2                            |
+| 3000 | 30                 | #N/A                            |
 | 6000 | 60                 | 1                            |
 
 用于管理计算的三个主要功能是：

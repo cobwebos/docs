@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: bdd4c7948608c03447d1e040a746ed0eb7b0771b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>配对命名空间实现详细信息和成本影响
 使用 [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] 实例的 [PairNamespaceAsync][PairNamespaceAsync] 方法代表你执行可见任务。 因为使用该功能时需考虑到成本，所以理解这些任务是有用的，以便在行为发生时可以预期到。 该 API 代表你进行下列自动行为：
@@ -120,4 +119,3 @@ ms.lasthandoff: 08/31/2017
 [0]: ./media/service-bus-paired-namespaces/IC673405.png
 [1]: ./media/service-bus-paired-namespaces/IC673406.png
 [2]: ./media/service-bus-paired-namespaces/IC673407.png
-

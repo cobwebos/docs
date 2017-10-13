@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 9062aea7813d62e9ef67e82d86ff4f63791f3355
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bynder"></a>教程：Azure Active Directory 与 Bynder 集成
 
@@ -230,5 +229,4 @@ ms.lasthandoff: 09/01/2017
 [201]: ./media/active-directory-saas-bynder-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-bynder-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-bynder-tutorial/tutorial_general_203.png
-
 

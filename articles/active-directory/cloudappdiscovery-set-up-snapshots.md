@@ -16,14 +16,12 @@ ms.date: 09/22/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.custom: it-pro
+ms.openlocfilehash: dd4cf725689739ce4c8b86a4d8203ffc5aff016b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 38e3f71fb4817de7aa95b99e662856f586e72530
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-cloud-app-discovery-snapshot-reports"></a>创建 Cloud App Discovery 快照报表
 
 在设置自动日志收集器之前，请手动上传日志并让 Cloud App Security 对其进行分析。 如果还没有日志，并且想要查看日志样式的示例，请使用以下过程下载示例日志文件以了解日志应有的样式。
@@ -56,4 +54,3 @@ ms.lasthandoff: 09/25/2017
 * [开始在 Azure AD 中使用 Cloud App Discovery](cloudappdiscovery-get-started.md)
 * [配置用于持续报告的自动日志上传](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 * [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-

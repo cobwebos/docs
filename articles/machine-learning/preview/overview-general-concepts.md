@@ -9,14 +9,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3d4ba2ca6f7adc8b51030c02d9e9eeb2b9995bb4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-machine-learning---concepts"></a>Azure 机器学习 - 概念
 
 本文阐明并介绍了使用 Azure 机器学习时需要知道的概念。 
@@ -58,4 +56,3 @@ ms.lasthandoff: 09/25/2017
 - **映像：**可以使用清单生成（和重新生成）Docker 映像。 容器化 Docker 映像可以灵活地在云中、在本地计算机上或者在 IoT 设备上运行。 映像是自包含的，并且包含使用模型对新数据进行评分所需的所有依赖项。 
 
 - **服务：**借助模型管理，可以将模型部署为 Web 服务。 Web 服务逻辑和依赖项封装到映像中。 每个 Web 服务都是一组基于映像的容器，可以为发往给定 URL 的服务请求提供服务。 一个 Web 服务计为单个部署。
-

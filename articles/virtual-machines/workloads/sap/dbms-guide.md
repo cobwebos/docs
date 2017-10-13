@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1046d32a0b4b6ede027ef1931314a188c64c94bb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -679,7 +679,7 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 2. SQL 2012 CU4 之前的 SQL Server 版本可以使用重定向功能备份到 VHD，而且写入流基本上会流向已配置的 Azure 存储位置。 请参阅 [SQL Server 2012 SP1 CU3 和更低版本][dbms-guide-5.5.2]一章。
 3. 最后一种方法是在磁盘设备上执行传统的“从 SQL Server 备份到磁盘”命令。 这与本地部署模式完全相同，本文档不详加讨论。
 
-#### <a name="0fef0e79-d3fe-4ae2-85af-73666a6f7268"></a>SQL Server 2012 SP1 CU4 和更高版本
+#### <a name="0fef0e79-d3fe-4ae2-85af-73666a6f7268"></a>SQL Server 2012 SP1 CU4 及更高版本
 此功能可让你直接备份到 Azure BLOB 存储。 如果没有此方法，则必须备份到其他磁盘，从而耗用磁盘和 IOPS 容量。 其基本理念如下：
 
  ![使用 SQL Server 2012 备份到 Microsoft Azure 存储 BLOB][dbms-guide-figure-400]

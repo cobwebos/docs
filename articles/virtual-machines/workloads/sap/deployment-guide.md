@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.openlocfilehash: 7d0400c834767736f63bc30a7bc2495dc6ee6e36
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -387,7 +387,7 @@ ms.lasthandoff: 08/29/2017
 ## <a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Azure VM 上 SAP 软件的部署方案
 有多个选项可用于在 Azure 中部署 VM 和关联的磁盘。 了解这些部署选项之间的区别非常重要，你可能需要根据所选的部署类型采取不同的步骤为部署准备 VM。
 
-### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>方案 1：从 Azure 应用商店为 SAP 部署 VM
+### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>方案 1：从 Azure Marketplace 为 SAP 部署 VM
 可以使用 Azure 应用商店中由 Microsoft 或第三方提供的映像来部署 VM。 应用商店提供了 Windows Server 和各种 Linux 分发的一些标准 OS 映像。 还可以部署包括数据库管理系统 (DBMS) SKU（例如 Microsoft SQL Server）的映像。 有关使用包含 DBMS SKU 的映像的详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]。
 
 下面的流程图显示了从 Azure 应用商店部署 VM 时特定于 SAP 的步骤序列：

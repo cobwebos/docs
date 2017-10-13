@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 ms.openlocfilehash: 67386b03ae4cc683fe00e11e8dad19d1442eff09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>如何将应用服务应用程序配置为使用 Microsoft 帐户登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 本主题说明如何将 Azure 应用服务配置为使用 Microsoft 帐户作为身份验证提供程序。 
 
-## <a name="register-microsoft-account"> </a>将应用注册到 Microsoft 帐户
+## <a name="register-microsoft-account"> </a>使用 Microsoft 帐户注册应用
 1. 登录到 [Azure 门户]并导航到应用程序。 复制 **URL**，随后会用于使用 Microsoft 帐户来配置应用。
 2. 在 Microsoft 帐户开发人员中心内导航到[我的应用程序]页，并根据需要使用 Microsoft 帐户登录。
 3. 单击“添加应用”，键入应用程序名称，并单击“创建应用程序”。
@@ -42,20 +42,20 @@ ms.lasthandoff: 08/29/2017
     > [!IMPORTANT]
     > 密码是一个非常重要的安全凭据。 请不要与任何人共享密码或者在客户端应用程序中分发它。
 
-## <a name="secrets"> </a>将 Microsoft 帐户信息添加到应用服务应用程序
+## <a name="secrets"> </a>向应用服务应用程序添加 Microsoft 帐户信息
 1. 返回 [Azure 门户]，导航到应用程序，并单击“设置” > “身份验证/授权”。
 2. 如果“身份验证/授权”功能未启用，请将它切换为“打开”。
-3. 单击“Microsoft 帐户”。 粘贴前面获取的应用程序 ID 和密码值，启用应用程序所需的任何范围（可选）。 。
+3. 单击“Microsoft 帐户”。 粘贴前面获取的应用程序 ID 和密码值，启用应用程序所需的任何范围（可选）。 然后单击“确定”。
    
     ![][1]
    
     默认情况下，应用服务提供身份验证但不限制对站点内容和 API 的已授权访问。 必须在应用代码中为用户授权。
-4. （可选）若要限制只有通过 Microsoft 帐户身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“Microsoft 帐户”。 这会要求对所有请求进行身份验证，所有未经身份验证的请求将重定向到 Microsoft 帐户进行身份验证。
+4. （可选）要限制只有通过 Microsoft 帐户身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“Microsoft 帐户”。 这会要求对所有请求进行身份验证，所有未经身份验证的请求将重定向到 Microsoft 帐户进行身份验证。
 5. 单击“保存” 。
 
 现在，可以使用 Microsoft 帐户在应用中进行身份验证。
 
-## <a name="related-content"> </a>相关内容
+## <a name="related-content"></a>相关内容
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->

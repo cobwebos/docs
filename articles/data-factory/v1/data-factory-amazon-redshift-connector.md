@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 数据工厂从 Amazon Redshift 移动数据 |Microsoft Docs"
+title: "使用 Azure 数据工厂从 Amazon Redshift 移动数据 | Microsoft Docs"
 description: "了解如何使用 Azure 数据工厂复制活动从 Amazon Redshift 移动数据。"
 services: data-factory
 documentationcenter: 
@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 09/06/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d423304c84bd03477f5e9ee2edb4763e2ae8d5b5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-amazon-redshift-connector.md)
+> * [版本 1 - GA](data-factory-amazon-redshift-connector.md)
 > * [版本 2 - 预览版](../connector-amazon-redshift.md)
 
 > [!NOTE]
@@ -66,7 +65,7 @@ ms.lasthandoff: 09/25/2017
 | --- | --- | --- |
 | **类型** |该属性必须设置为 **AmazonRedshift**。 |是 |
 | **server** |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
-| **端口** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
+| **port** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
 | **database** |Amazon Redshift 数据库的名称。 |是 |
 | **username** |有权访问数据库的用户的名称。 |是 |
 | **password** |用户帐户的密码。 |是 |
@@ -91,10 +90,10 @@ ms.lasthandoff: 09/25/2017
 | --- | --- | --- |
 | **query** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
 | **redshiftUnloadSettings** | 使用 Redshift **UNLOAD** 命令时包含属性组。 | 否 |
-| **s3LinkedServiceName** | 用作临时存储的 Amazon S3。 使用 **AwsAccessKey** 类型的 Azure 数据工厂名称指定链接服务。 | 使用 **redshiftUnloadSettings** 属性时需要该服务 |
+| **s3LinkedServiceName** | 要用作临时存储的 Amazon S3。 使用 **AwsAccessKey** 的 Azure 数据工厂的名称类型指定链接服务。 | 使用 **redshiftUnloadSettings** 属性时需要该服务 |
 | **bucketName** | 指示存储临时数据所使用的 Amazon S3 存储桶。 如果未提供该属性，复制活动会自动生成存储桶。 | 使用 **redshiftUnloadSettings** 属性时需要该服务 |
 
-或者，也可以将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 部分中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
+或者，也可将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 节中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
@@ -106,7 +105,7 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
 
 **示例：将数据从 Amazon Redshift 复制到 Azure SQL 数据仓库**
 
-该示例将数据从 Amazon Redshift 复制到 Azure SQL 数据仓库。 该示例使用 Redshift **UNLOAD** 命令、临时复制数据和 Microsoft PolyBase。
+此示例将数据从 Amazon Redshift 复制到 Azure SQL 数据仓库。 该示例使用 Redshift **UNLOAD** 命令、临时复制数据和 Microsoft PolyBase。
 
 对于该示例用例，复制活动首先将数据从 Amazon Redshift 卸载到 Amazon S3（如 **redshiftUnloadSettings** 选项中所配置）。 接下来，数据从 Amazon S3 复制到 Azure Blob 存储（如 **stagingSettings** 选项中所指定）。 最后，PolyBase 将数据加载到 SQL 数据仓库。 所有临时格式均由复制活动处理。
 
@@ -356,4 +355,3 @@ Amazon Redshift [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNL
 
 ## <a name="next-steps"></a>后续步骤
 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-

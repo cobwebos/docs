@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: f5358e2395d5380841894e62a694a6d1253c9126
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/25/2017
-
+ms.openlocfilehash: 3f66f61651aab5f1cf0850cdbbd069b0a9a65543
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services 文档
 
@@ -122,6 +121,5 @@ ms.lasthandoff: 04/25/2017
         </div>
     </li>
 </ul>
-
 
 

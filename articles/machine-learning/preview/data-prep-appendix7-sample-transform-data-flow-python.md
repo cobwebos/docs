@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f43f65ca89349fc790684e9bd7acd2f19e15abe5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sample-of-custom-data-flow-transforms-python"></a>自定义数据流转换示例 (Python) 
 此转换在菜单中的名称为“转换数据流（脚本）” 阅读本附录前，先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)
 
@@ -84,5 +82,4 @@ ms.lasthandoff: 09/25/2017
 |Texas         |Texas         |达拉斯     |
 |              |Texas         |San Antonio|
 |              |Texas         |Houston    |
-
 

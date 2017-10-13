@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 52015dc2f8450bb1af1587df8c0ccc3bda3c9db8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
 过去，服务总线应用程序有两种不同的授权模型可以选择。一种是服务总线直接提供的[共享访问签名 (SAS)](service-bus-sas.md) 令牌模型。另一种是联合模型，其中授权规则是由 [Azure Active Directory](/azure/active-directory/) 访问控制服务 (ACS) 在内部进行管理，从 ACS 获取的令牌会传递到服务总线，以授予对相应功能的访问权限。
@@ -43,7 +41,7 @@ ACS 和服务总线是通过签名密钥这一共用概念进行集成。 ACS �
 
 2.  **包含简单规则的自定义服务标识**： 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”、“侦听”和“管理”权限。
 
-3.  **包含复杂规则的自定义服务标识**： 很少有客户使用复杂规则集。在这些集中，外部颁发的令牌映射到中继上的权限，或在多个命名空间路径上通过多个规则为一个服务标识分配不同的权限。
+3.  **包含复杂规则的自定义服务标识**。 很少有客户使用复杂规则集。在这些集中，外部颁发的令牌映射到中继上的权限，或在多个命名空间路径上通过多个规则为一个服务标识分配不同的权限。
 
 有关复杂规则集迁移方面的帮助，可以联系 [Azure 支持部门](https://azure.microsoft.com/support/options/)。 前两个方案启用的是直接迁移。
 
@@ -59,7 +57,7 @@ ACS 和服务总线是通过签名密钥这一共用概念进行集成。 ACS �
 
 ### <a name="complex-rules"></a>复杂规则
 
-SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因此，如果应用程序创建多个服务标识，并向它们授予对多个实体或整个命名空间的访问权限，仍需要使用令牌颁发中介。 若要获取此类中介的相关指南，可以[联系支持部门](https://azure.microsoft.com/support/options/)。
+SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因此，在应用程序创建多个服务标识并向其授予访问多个实体或整个命名空间权限的情况下，仍需要令牌颁发中介。 若要获取此类中介的相关指南，可以[联系支持部门](https://azure.microsoft.com/support/options/)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -68,5 +66,4 @@ SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因
 * [服务总线身份验证和授权](service-bus-authentication-and-authorization.md)
 * [附有共享访问签名的服务总线身份验证](service-bus-sas.md)
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
-
 

@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 63f69756b3933fecdec75cc677e1098447e5b94e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
 本主题介绍 Azure AD Connect 同步（也称为同步引擎）中的 内置计划程序。
@@ -44,10 +44,10 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 
 若在运行此 cmdlet 时看到“此同步命令或 cmdlet 不可用”，则 PowerShell 模块未加载。 如果在 PowerShell 限制级别高于默认设置的域控制器或服务器上运行 Azure AD Connect，则可能会发生这种问题。 如果看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
 
-* **AllowedSyncCycleInterval**。 Azure AD 允许的同步周期间的最短时间间隔。 不能比这一设置更频繁地同步，但仍会支持。
+* **AllowedSyncCycleInterval**。 Azure AD 允许的同步周期间的最短时间间隔。 不能比这种设置更频繁地同步，但仍会支持。
 * **CurrentlyEffectiveSyncCycleInterval**。 当前生效的计划。 如果它不比 AllowedSyncInterval 更频繁，它具有与 CustomizedSyncInterval 相同的值（如果已设置）。 如果使用早于 1.1.281 的版本，且更改了 CustomizedSyncCycleInterval，该更改会在下一个同步周期后生效。 从版本 1.1.281 开始，更改将立即生效。
-* **CustomizedSyncCycleInterval**。 如果希望计划程序以默认 30 分钟以外的任何其他频率运行，则可配置此设置。 在上图中，计划程序已改为设置为每隔一小时运行一次。 如果此项设置为低于 AllowedSyncInterval 的值，则使用后者。
-* **NextSyncCyclePolicyType**。 Delta 或 Initial。 定义下次运行是只应处理增量更改，还是应执行完全导入和同步。 后者将重新处理任何新的或更改的规则。
+* **CustomizedSyncCycleInterval**。 如果希望计划程序以默认 30 分钟以外的任何其他频率运行，则可配置此设置。 在上图中，计划程序已改为设置为每隔一小时运行一次。 如果将此项设置为低于 AllowedSyncInterval 的值，则将使用后者。
+* **NextSyncCyclePolicyType**。 Delta 或 Initial。 定义下次运行是只应处理增量更改，还是应执行完全导入和同步。后者将重新处理任何新的或更改的规则。
 * **NextSyncCycleStartTimeInUTC**。 计划程序将启动下一个同步周期的时间。
 * **PurgeRunHistoryInterval**。 操作日志应保留的时间。 可以在 Synchronization Service Manager 中查看这些日志。 默认设置是保留这些日志 7 天。
 * **SyncCycleEnabled**。 指示计划程序是否正在运行导入、同步和导出过程作为其操作的一部分。
@@ -55,7 +55,7 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 * **StagingModeEnabled**。 显示是否启用了[暂存模式](active-directory-aadconnectsync-operations.md#staging-mode)。 若启用此设置，它将取消导出运行，但仍将运行导入和同步。
 * **SchedulerSuspended**。 由 Connect 在升级期间设置，用于暂时阻止计划程序运行。
 
-可以使用 `Set-ADSyncScheduler`更改上述一些设置。 可以修改以下参数：
+可以使用 `Set-ADSyncScheduler` 更改上述一些设置。 可以修改以下参数：
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -65,7 +65,7 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 
 在早期版本的 Azure AD Connect 中，已在 Set-ADSyncScheduler 中公开 **isStagingModeEnabled**。 **不支持**设置此属性。 应只有 Connect 能修改属性 **SchedulerSuspended**。 **不支持**使用 PowerShell 直接对其进行设置。
 
-计划程序配置存储在 Azure AD 中。 如果具有暂存服务器，主服务器上的任何更改还将影响暂存服务器（IsStagingModeEnabled 除外）。
+计划程序配置存储在 Azure AD 中。 如果设有暂存服务器，主服务器上的任何更改还将影响暂存服务器（IsStagingModeEnabled 除外）。
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 语法：`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
@@ -78,7 +78,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 这些更改将计划程序更改为每天运行一次。
 
 ### <a name="disable-the-scheduler"></a>禁用计划程序  
-若需要对配置进行更改，则要禁用该计划程序。 例如，[配置筛选](active-directory-aadconnectsync-configure-filtering.md)或[更改同步规则](active-directory-aadconnectsync-change-the-configuration.md)时。
+若需要对配置进行更改，则要禁用该计划程序。 例如，要[配置筛选](active-directory-aadconnectsync-configure-filtering.md)或[对同步规则进行更改](active-directory-aadconnectsync-change-the-configuration.md)。
 
 若要禁用计划程序，请运行 `Set-ADSyncScheduler -SyncCycleEnabled $false`。
 
@@ -96,7 +96,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 * 在所有连接器上增量同步
 * 在所有连接器上导出
 
-有时可能有必须立即同步的紧急更改，这就是为什么需要手动运行周期的原因。 如果需要手动运行周期，则从 PowerShell 运行 `Start-ADSyncSyncCycle -PolicyType Delta`。
+可能会有必须立即同步的紧急更改，这就是为什么需要手动运行周期的原因。 如果需要手动运行周期，则从 PowerShell 运行 `Start-ADSyncSyncCycle -PolicyType Delta`。
 
 **完全同步周期**  
 如果进行了以下任一配置更改，则需要运行完全同步周期（也称为 Initial）：
@@ -122,9 +122,9 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 
 1. 先要使用 PowerShell cmdlet `Stop-ADSyncSyncCycle` 指示计划程序停止其当前周期。
 2. 如果使用 1.1.281 之前的版本，停止计划程序并不会使当前连接器停止执行其当前任务。 若要强制停止连接器，请执行以下操作：![StopAConnector](./media/active-directory-aadconnectsync-feature-scheduler/stopaconnector.png)
-   * 从“开始”菜单启动“同步服务”。 转到“连接器”，突出显示状态为“正在运行”的连接器，然后从“操作”中选择“停止”。
+   * 从“开始”菜单启动“同步服务”。 转到“连接器”，突出显示状态为“正在运行”的连接器，并从“操作”中选择“停止”。
 
-计划程序仍处于活动状态，并在下次有机会时重新启动。
+计划程序仍处于活动状态，并会在下次有机会时重新启动。
 
 ## <a name="custom-scheduler"></a>自定义计划程序
 本部分所述的 cmdlet 仅在内部版本 [1.1.130.0](active-directory-aadconnect-version-history.md#111300) 及更高版本中提供。
@@ -166,7 +166,7 @@ Get-ADSyncConnectorRunStatus
 在上图中，第一行来自同步引擎处于空闲的状态。 第二行来自 Azure AD 连接器正在运行时。
 
 ## <a name="scheduler-and-installation-wizard"></a>计划程序和安装向导
-如果启动安装向导，则计划程序将暂时暂停。 此行为是因为它认为用户将进行配置更改，如果同步引擎正处于活动运行状态，则不能应用这些设置。 出于此原因，不要让安装向导处于打开状态，因为将使同步引擎停止执行任何同步操作。
+如果启动安装向导，则计划程序将暂时暂停。 此行为是因为它假定你将进行配置更改，如果同步引擎正处于活动运行状态，将不能应用这些设置。 出于此原因，不要让安装向导处于打开状态，因为将使同步引擎停止执行任何同步操作。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

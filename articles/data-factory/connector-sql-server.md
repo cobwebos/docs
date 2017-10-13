@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
+ms.openlocfilehash: 13297eafd957d926dfd311a14c4ba9351e55e2bc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ac51126fa1f71b2efc1d3054b2cee328bae94bca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +59,7 @@ SQL Server 链接服务支持以下属性：
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 将此字段标记为 SecureString。 |是 |
 | userName |如果使用的是 Windows 身份验证，请指定用户名。 示例：**域名\\用户名**。 |否 |
 | password |指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString。 |否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自我托管集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例 1：使用 SQL 身份验证**
 
@@ -141,11 +140,11 @@ SQL Server 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 SQL Server 源和接收器支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 SQL Server 源和接收器支持的属性列表。
 
 ### <a name="sql-server-as-source"></a>SQL Server 作为源
 
-要从 SQL Server 复制数据，请将复制活动中的源类型设置为“SqlSource”。 复制活动源部分支持以下属性：
+要从 SQL Server 复制数据，请将复制活动中的源类型设置为“SqlSource”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -262,7 +261,7 @@ GO
 | preCopyScript |每次运行时，将数据写入到 SQL Server 之前，指定复制活动要执行的 SQL 查询。 此属性可用于清理预先加载的数据。 |否 |
 
 > [!TIP]
-> 将数据复制到 SQL Server 时，默认情况下复制活动将数据追加到接收器表。 要执行 UPSERT 或其他业务逻辑，请在 SqlSink 中使用存储过程。 通过[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)了解更多详细信息。
+> 将数据复制到 SQL Server 时，默认情况下复制活动将数据追加到接收器表。 要执行 UPSERT 或其他业务逻辑，请在 SqlSink 中使用存储过程。 参阅[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)，了解更多详细信息。
 
 **示例 1：追加数据**
 
@@ -298,7 +297,7 @@ GO
 
 **示例 2：在 upsert 的复制过程中调用存储过程**
 
-通过[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)了解更多详细信息。
+参阅[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)，了解更多详细信息。
 
 ```json
 "activities":[
@@ -410,7 +409,7 @@ create table dbo.TargetTbl
 
 内置的复制机制无法使用时，可使用存储过程。 在最后一次将源数据插入目标表前需要完成 upsert（插入+更新）或额外处理（合并列、查找其他值、插入到多个表等）时，通常使用此过程。
 
-以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”表中各具有三列：ProfileID、状态和类别。 基于“ProfileID”列执行 upsert，并仅用于特定类别。
+以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”表中各具有三列：ProfileID、状态和类别。 基于“ProfileID”列执行 upsert，仅应用于特定类别。
 
 **输出数据集**
 
@@ -535,4 +534,4 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

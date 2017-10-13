@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
+ms.openlocfilehash: eb519aab87c13e8836bf1d41992812762f0cd737
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fbfb3d026540b45a28751d6c3ab0f8dce444e0cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure 中的指标概述
 本文介绍 Microsoft Azure 中的指标及其优点，以及如何开始使用它们。  
 
@@ -127,23 +125,6 @@ Azure Monitor 预览版还提供全新的指标制图体验。 通过这种体�
  ![Azure 监视器中的指标和自动缩放](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
 ## <a name="learn-about-supported-services-and-metrics"></a>了解支持的服务和指标
-Azure 监视器是全新的指标基础结构。 它支持 Azure 门户中的以下 Azure 服务和新版 Azure Monitor API：
-
-* VM（基于 Azure Resource Manager）
-* 虚拟机规模集
-* 批处理
-* 事件中心命名空间
-* 服务总线命名空间（仅限高级 SKU）
-* SQL 数据库（版本 12）
-* SQL 弹性池
-* 网站
-* Web 服务器场
-* 逻辑应用
-* IoT 中心
-* Redis 缓存
-* 网络：应用程序网关
-* 搜索
-
 可以在 [Azure 监视器指标 - 每种资源类型支持的指标](monitoring-supported-metrics.md)中查看所有受支持服务及其指标的详细列表。
 
 ## <a name="next-steps"></a>后续步骤
@@ -152,4 +133,3 @@ Azure 监视器是全新的指标基础结构。 它支持 Azure 门户中的以
 * [自动缩放的常用指标](insights-autoscale-common-metrics.md)
 * [如何创建警报规则](insights-alerts-portal.md)
 * [使用 Log Analytics 分析 Azure 存储中的日志](../log-analytics/log-analytics-azure-storage.md)
-

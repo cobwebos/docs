@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 537dd6d64fe49093dd73d8040cde5a9153a7bd5c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
 本操作说明将介绍下一代 Azure Monitor 指标图表体验（目前处于公开预览状态）。 该新体验同时支持呈现多维指标的图表和基本指标（不包含维度）的图表。 可以绘制覆盖不同资源类型、多个资源组和订阅的指标的图表。 可以通过应用维度筛选器及分组自定义多维指标图表。 所有图表（包括自定义图表）均可固定到仪表板。

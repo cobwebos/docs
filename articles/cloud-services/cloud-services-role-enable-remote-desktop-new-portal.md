@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: mmccrory
 ms.openlocfilehash: 0ff7fde5f3753aa6a24fb0af54d68d0dc0bd96a4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>为 Azure 云服务中的角色设置远程桌面连接
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 
     ![云服务远程桌面](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
-2. 选择希望为单个角色还是所有角色启用远程桌面，并将切换器的值更改为“已启用” 。
+2. 选择想要为单个角色还是所有角色启用远程桌面，然后将切换器的值更改为“已启用”。
 
 3. 填写用户名、密码、到期时间和证书必填字段。
 

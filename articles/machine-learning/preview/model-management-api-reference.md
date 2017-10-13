@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4c4391cecaf10428b5d4cacf3b39e6a08d417053
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure 机器学习模型管理帐户 API 参考
 
@@ -77,7 +76,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 注册模型
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -103,14 +102,14 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 查询帐户中的模型列表。 可以使用标记和名称筛选结果列表。 如果未传递任何筛选器，查询会列出给定帐户中的所有模型。 返回的列表会分页，每个页中的项数是一个可选参数
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
 | accountName | path | 模型管理帐户的名称 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌，应类似于“Bearer XXXXXX” | 是 | 字符串 |
-| name | query | 对象名称 | 否 | 字符串 |
+| 名称 | query | 对象名称 | 否 | 字符串 |
 | 标记 | query | 模型标记 | 否 | 字符串 |
 | 计数 | query | 要在页中检索的项数 | 否 | 字符串 |
 | $skipToken | 用于检索下一页的继续标记 | 否 | 字符串 |
@@ -132,7 +131,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 按 ID 获取模型
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -158,7 +157,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 将清单注册到已注册的模型及其所有依赖项
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -184,7 +183,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 查询帐户中的清单列表。 可以使用模型 ID 和清单名称筛选结果列表。 如果未传递任何筛选器，查询会列出给定帐户中的所有清单。 返回的列表会分页，每个页中的项数是一个可选参数
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -213,7 +212,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 按 ID 获取清单
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -239,7 +238,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 在 ACR 中创建 Docker 映像形式的映像
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -265,7 +264,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 查询帐户中的映像列表。 可以使用清单 ID 和名称筛选结果列表。 如果未传递任何筛选器，查询会列出给定帐户中的所有映像。 返回的列表会分页，每个页中的项数是一个可选参数。
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -294,7 +293,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 按 ID 获取映像
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -321,7 +320,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 从映像创建服务
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -348,7 +347,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 查询帐户中的服务列表。 可以使用模型名称/ID、清单名称/ID、映像 ID、服务名称或机器学习计算资源 ID 筛选结果列表。如果未传递任何筛选器，查询会列出帐户中的所有服务。 返回的列表会分页，每个页中的项数是一个可选参数。
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -382,7 +381,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 按 ID 获取服务
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -408,7 +407,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 更新现有服务
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -436,7 +435,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 删除服务
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -463,7 +462,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 获取服务密钥
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -489,7 +488,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 重新生成并返回服务密钥
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -516,7 +515,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 查询帐户中的部署列表。 可以使用服务 ID 筛选结果列表，以便仅返回针对特定服务创建的部署。 如果未传递任何筛选器，查询会列出给定帐户中的所有部署。
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -542,7 +541,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 按 ID 获取部署
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -568,7 +567,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 按操作 ID 获取异步操作状态
 
 ### <a name="parameters"></a>parameters
-| 名称 | 所在位置 | 说明 | 必选 | 架构
+| Name | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure 订阅 ID | 是 | 字符串 |
 | resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
@@ -593,7 +592,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 创建 Docker 映像期间所需的资产对象
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**id**  <br>（可选）|资产 ID|字符串|
 |**mimeType**  <br>（可选）|模型内容的 MIME 类型。 有关 MIME 类型的详细信息，请打开 https://www.iana.org/assignments/media-types/media-types.xhtml|字符串|
@@ -613,7 +612,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 操作状态
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**createdTime**  <br>（可选）  <br>（只读）|异步操作创建时间 (UTC)|字符串（日期时间）|
 |**endTime**  <br>（可选）  <br>（只读）|异步操作结束时间 (UTC)|字符串（日期时间）|
@@ -629,7 +628,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 服务的身份验证密钥
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**primaryKey**  <br>（可选）|主密钥|字符串|
 |**secondaryKey**  <br>（可选）|辅助密钥|字符串|
@@ -640,7 +639,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 自动缩放器的设置
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**autoscaleEnabled**  <br>（可选）|启用或禁用自动缩放器|布尔值|
 |**maxReplicas**  <br>（可选）|要扩展到的最大 pod 副本数。  <br>**最小值**：`1`|integer|
@@ -654,7 +653,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 机器学习计算资源
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**id**  <br>（可选）|资源 ID|字符串|
 |**类型**  <br>（可选）|资源的类型|枚举 (Cluster)|
@@ -665,7 +664,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 有关在群集中预留容器资源的配置
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**cpu**  <br>（可选）|指定 CPU 预留。 Kubernetes 格式：https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu|字符串|
 |**memory**  <br>（可选）|指定内存预留。 Kubernetes 格式：https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory|字符串|
@@ -676,7 +675,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 Azure 机器学习部署的实例
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**createdAt**  <br>（可选）  <br>（只读）|部署创建时间 (UTC)|字符串（日期时间）|
 |**expiredAt**  <br>（可选）  <br>（只读）|部署过期时间 (UTC)|字符串（日期时间）|
@@ -698,7 +697,7 @@ Azure 机器学习部署的实例
 模型管理服务错误详细信息。
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**code**  <br>（必需）|错误代码|字符串|
 |**message**  <br>（必需）|错误消息|字符串|
@@ -709,7 +708,7 @@ Azure 机器学习部署的实例
 模型管理服务错误对象。
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**code**  <br>（必需）|错误代码|字符串|
 |**details**  <br>（可选）|错误详细信息对象的数组。|< [ErrorDetail](#errordetail) > array|
@@ -722,7 +721,7 @@ Azure 机器学习部署的实例
 Auzre 机器学习映像
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**computeResourceId**  <br>（可选）|机器学习计算中创建的环境的 ID|字符串|
 |**createdTime**  <br>（可选）|映像创建时间 (UTC)|字符串（日期时间）|
@@ -743,7 +742,7 @@ Auzre 机器学习映像
 请求创建 Auzre 机器学习映像
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**computeResourceId**  <br>（必需）|机器学习计算中创建的环境的 ID|字符串|
 |**说明**  <br>（可选）|映像说明文本|字符串|
@@ -764,7 +763,7 @@ Auzre 机器学习映像
 Azure 机器学习清单
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**assets**  <br>（必需）|资产列表|< [Asset](#asset) > 数组|
 |**createdTime**  <br>（可选）  <br>（只读）|清单创建时间 (UTC)|字符串（日期时间）|
@@ -784,7 +783,7 @@ Azure 机器学习清单
 Azure 机器学习模型的实例
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**createdAt**  <br>（可选）  <br>（只读）|模型创建时间 (UTC)|字符串（日期时间）|
 |**说明**  <br>（可选）|模型说明文本|字符串|
@@ -802,7 +801,7 @@ Azure 机器学习模型的实例
 模型数据收集信息
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**eventHubEnabled**  <br>（可选）|为服务启用事件中心|布尔值|
 |**storageEnabled**  <br>（可选）|为服务启用存储|布尔值|
@@ -813,7 +812,7 @@ Azure 机器学习模型的实例
 映像的分页列表
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
 |**value**  <br>（可选）|模型对象的数组|< [Image](#image) > 数组|
@@ -824,7 +823,7 @@ Azure 机器学习模型的实例
 清单的分页列表。
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
 |**value**  <br>（可选）|清单对象的数组。|< [Manifest](#manifest) > 数组|
@@ -835,7 +834,7 @@ Azure 机器学习模型的实例
 模型的分页列表。
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
 |**value**  <br>（可选）|模型对象的数组。|< [Model](#model) > 数组|
@@ -846,7 +845,7 @@ Azure 机器学习模型的实例
 服务的分页列表。
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
 |**value**  <br>（可选）|服务对象的数组。|< [ServiceResponse](#serviceresponse) > 数组|
@@ -857,7 +856,7 @@ Azure 机器学习模型的实例
 请求创建服务
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**appInsightsEnabled**  <br>（可选）|为服务启用 Application Insights|布尔值|
 |**autoScaler**  <br>（可选）||[AutoScaler](#autoscaler)|
@@ -875,7 +874,7 @@ Azure 机器学习模型的实例
 请求为服务重新生成密钥
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**keyType**  <br>（可选）|指定要重新生成哪个密钥|枚举（Primary、Secondary）|
 
@@ -885,7 +884,7 @@ Azure 机器学习模型的实例
 服务的详细状态
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**createdAt**  <br>（可选）|服务创建时间 (UTC)|字符串（日期时间）|
 |**id**  <br>（可选）|服务 ID|字符串|
@@ -911,7 +910,7 @@ Azure 机器学习模型的实例
 请求更新服务
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**appInsightsEnabled**  <br>（可选）|为服务启用 Application Insights|布尔值|
 |**autoScaler**  <br>（可选）||[AutoScaler](#autoscaler)|
@@ -927,9 +926,8 @@ Azure 机器学习模型的实例
 目标运行时的类型。
 
 
-|名称|说明|架构|
+|Name|说明|架构|
 |---|---|---|
 |**properties**  <br>（必需）||< string, string > 映射|
 |**runtimeType**  <br>（必需）|指定运行时|枚举（SparkPython、Python）|
-
 

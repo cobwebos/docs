@@ -17,10 +17,10 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: cd3d87bb4384971e28d3330cd5c1a3d351129036
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>将 VHD 上传到 Azure 并创建新 VM 的示例脚本
 
@@ -136,7 +136,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 | [New-AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | 创建一个可配置的映像对象。                                                                                                                                                 |
 | [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | 设置映像对象的操作系统磁盘属性。                                                                                                                        |
 | [New-AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | 新建映像。                                                                                                                                                                 |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中会使用此配置。                                                                                |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。                                                                                |
 | [New-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | 创建虚拟网络。                                                                                                                                                           |
 | [New-AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | 创建公共 IP 地址。                                                                                                                                                         |
 | [New-AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | 创建网络接口。                                                                                                                                                         |

@@ -3,7 +3,7 @@ title: "使用 IPv6 创建 Azure 面向 Internet 的负载均衡器 - PowerShell
 description: "了解如何使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 keywords: "ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot"
@@ -13,34 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 5eff828095cd58732c78d4af43b5ff5420dfe8fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: a84fd69c568e26bbd1ff06b699b804c70e0e9c09
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-<a id="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager" class="xliff"></a>
-
-# 开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
+# <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
-Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负载平衡器可以在云服务或负载平衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
-<a id="example-deployment-scenario" class="xliff"></a>
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-## 示例部署方案
+Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
+
+## <a name="example-deployment-scenario"></a>示例部署方案
 
 下图演示了要在本文中部署的负载均衡解决方案。
 
-![负载平衡器方案](./media/load-balancer-ipv6-internet-ps/lb-ipv6-scenario.png)
+![负载均衡器方案](./media/load-balancer-ipv6-internet-ps/lb-ipv6-scenario.png)
 
 在此方案中，将创建以下 Azure 资源：
 
@@ -50,25 +47,21 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
 * 两个虚拟机 (VM)
 * 虚拟网络接口，用于每个已分配 IPv4 和 IPv6 地址的 VM
 
-<a id="deploying-the-solution-using-the-azure-powershell" class="xliff"></a>
-
-## 使用 Azure PowerShell 部署解决方案
+## <a name="deploying-the-solution-using-the-azure-powershell"></a>使用 Azure PowerShell 部署解决方案
 
 以下步骤说明如何使用 Azure Resource Manager 和 PowerShell 创建面向 Internet 的负载均衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
 
 若要部署负载均衡器，需要创建并配置以下对象：
 
 * 前端 IP 配置 - 包含传入网络流量的公共 IP 地址。
-* 后端地址池 - 包含从负载平衡器接收网络流量的虚拟机网络接口 (NIC)。
-* 负载平衡规则 - 包含将负载平衡器上的公共端口映射到后端地址池中的端口的规则。
-* 入站 NAT 规则 - 包含将负载平衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
+* 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
+* 负载均衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
+* 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
 有关详细信息，请参阅 [Azure Resource Manager 对负载均衡器的支持](load-balancer-arm.md)。
 
-<a id="set-up-powershell-to-use-resource-manager" class="xliff"></a>
-
-## 将 PowerShell 设置为使用 Resource Manager
+## <a name="set-up-powershell-to-use-resource-manager"></a>将 PowerShell 设置为使用 Resource Manager
 
 确保具备 Azure Resource Manager 模块的最新生产版本才可用于 PowerShell。
 
@@ -98,9 +91,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
     New-AzureRmResourceGroup -Name NRP-RG -location "West US"
     ```
 
-<a id="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool" class="xliff"></a>
-
-## 为前端 IP 池创建虚拟网络和公共 IP 地址
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>为前端 IP 池创建虚拟网络和公共 IP 地址
 
 1. 创建一个包含子网的虚拟网络。
 
@@ -119,9 +110,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
     > [!IMPORTANT]
     > 负载均衡器将公共 IP 的域标签用作 FQDN 的前缀。 在本示例中，FQDN 为 *lbnrpipv4.westus.cloudapp.azure.com* 和 *lbnrpipv6.westus.cloudapp.azure.com*。
 
-<a id="create-a-front-end-ip-configurations-and-a-back-end-address-pool" class="xliff"></a>
-
-## 创建前端 IP 配置和后端地址池
+## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>创建前端 IP 配置和后端地址池
 
 1. 创建使用所创建公共 IP 地址的前端地址配置。
 
@@ -137,9 +126,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
     $backendpoolipv6 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv6"
     ```
 
-<a id="create-lb-rules-nat-rules-a-probe-and-a-load-balancer" class="xliff"></a>
-
-## 创建 LB 规则、NAT 规则、探测器和负载均衡器
+## <a name="create-lb-rules-nat-rules-a-probe-and-a-load-balancer"></a>创建 LB 规则、NAT 规则、探测器和负载均衡器
 
 下例会创建以下项：
 
@@ -187,9 +174,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
     $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName NRP-RG -Name 'myNrpIPv6LB' -Location 'West US' -FrontendIpConfiguration $FEIPConfigv4,$FEIPConfigv6 -InboundNatRule $inboundNATRule1v6,$inboundNATRule1v4 -BackendAddressPool $backendpoolipv4,$backendpoolipv6 -Probe $healthProbe,$RDPprobe -LoadBalancingRule $lbrule1v4,$lbrule1v6,$RDPrule
     ```
 
-<a id="create-nics-for-the-back-end-vms" class="xliff"></a>
-
-## 为后端 VM 创建 NIC
+## <a name="create-nics-for-the-back-end-vms"></a>为后端 VM 创建 NIC
 
 1. 获取需要创建 NIC 的虚拟网络和虚拟网络子网。
 
@@ -210,9 +195,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
     $nic2 = New-AzureRmNetworkInterface -Name 'myNrpIPv6Nic1' -IpConfiguration $nic2IPv4,$nic2IPv6 -ResourceGroupName NRP-RG -Location 'West US'
     ```
 
-<a id="create-virtual-machines-and-assign-the-newly-created-nics" class="xliff"></a>
-
-## 创建虚拟机并分配新建的 NIC
+## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>创建虚拟机并分配新建的 NIC
 
 有关创建 VM 的详细信息，请参阅[使用 Resource Manager 和 Azure PowerShell 创建并预先配置 Windows 虚拟机](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
@@ -247,13 +230,10 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
     New-AzureRmVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 [开始配置内部负载均衡器](load-balancer-get-started-ilb-arm-ps.md)
 
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bbec5773987b29eb62d10d17b88efcda29889612
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>将 ITSM 产品/服务与 IT Service Management Connector（预览版）相连接
 本文提供有关如何将 ITSM 产品/服务连接到 OMS 中的 IT Service Management Connector，以集中管理工作项的信息。 有关 IT Service Management Connector 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -369,4 +368,3 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
  - [从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
 
 - [查看连接的日志分析](log-analytics-itsmc-overview.md#using-the-solution)
-

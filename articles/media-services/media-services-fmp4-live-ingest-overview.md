@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
 ms.openlocfilehash: 6250b73504bec765b8299060a29e84e771791cc9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务零碎的 MP4 实时引入规范
 本规范适用于 Azure 媒体服务，描述基于分片 MP4 的实时传送视频流引入的协议和格式。 媒体服务提供实时传送视频流服务，让客户使用 Azure 作为云平台来实时流式传输实时事件和广播内容。 此外，本文档还介绍了有关构建高度冗余和稳健的实时引入机制的最佳实践。

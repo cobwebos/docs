@@ -15,17 +15,17 @@ ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.openlocfilehash: 2b9b31abd5d11d02935a74e47d26be9803cdc920
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-a-process-server-running-in-azure-resource-manager"></a>管理在 Azure (Resource Manager) 中运行的进程服务器
 > [!div class="op_single_selector"]
 > * [Resource Manager](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
 > * [经典](./site-recovery-vmware-setup-azure-ps-classic.md)
 
-故障回复期间，如果 Azure 虚拟网络与本地网络之间存在高延迟，建议在 Azure 中部署进程服务器。 本指南介绍如何设置、配置和管理在 Azure 中运行的进程服务器。
+故障回复期间，如果 Azure 虚拟网络与本地网络之间存在高延迟，建议将进程服务器部署在 Azure 中。 本指南介绍如何设置、配置和管理在 Azure 中运行的进程服务器。
 
 > [!NOTE]
 > 如果在故障转移期间使用了 **Resource Manager** 部署模型作为虚拟机的部署模型，则要使用本文。 如果使用**经典**部署模型作为部署模型，请按照[如何设置和配置故障回复进程服务器（经典）](./site-recovery-vmware-setup-azure-ps-classic.md)中的步骤进行操作
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/11/2017
 |**字段名称**|**值**|
 |-|-|
 |选择要部署进程服务器的位置|选择值“在 Azure 中部署故障回复进程服务器” |
-|订阅|选择在其中故障转移了虚拟机的 Azure 订阅|
+|订阅|选择已将虚拟机故障转移到的 Azure 订阅|
 |资源组|可以创建资源组以部署此进程服务器，或者选择在现有资源组中部署进程服务器|
 |位置|选择虚拟机已故障转移到的 Azure 数据中心|
 |Azure 网络|选择虚拟机已故障转移到的 Azure 虚拟网络(VNet)。 如果已将虚拟机故障转移到多个 Azure VNet，则需要为每个 VNet 部署一个进程服务器|
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 |服务器名称|进程服务器虚拟机的显示名称和主机名|
 | 用户名|成为该虚拟机上的管理员的用户名|
 |存储帐户|放置虚拟机的虚拟磁盘的存储帐户名称|
-|子网|虚拟机连接到的 Azure VNet 的子网|
+|子网|虚拟机将连接到的 Azure VNet 的子网|
 | IP 地址|想要进程服务器在启动后采用的 IP 地址|
 5. 单击“确定”按钮开始部署进程服务器虚拟机。
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 ms.openlocfilehash: d30cc74778e0b36dd632c2f040ce80d1ca8af5a5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>使用弹性作业创建和管理扩大的 Azure SQL 数据库（预览）
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 07/11/2017
     INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime());
     GO
 
-然后，此脚本更新以前创建的表。
+然后，此脚本将更新以前创建的表。
 
     IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation')
     BEGIN

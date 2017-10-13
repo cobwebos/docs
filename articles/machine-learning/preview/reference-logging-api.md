@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 1906425c6657fb6232a9dc306b05f9171c9c7bef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="logging-api-reference"></a>日志记录 API 参考
 
 Azure 机器学习的日志记录库允许程序发出可由历史记录服务跟踪的指标和文件，供以后进行分析。 目前，支持少量的基本类型的指标和文件，随着将来 Python 包版本的发布，支持的类型集会不断增加。
@@ -88,4 +86,3 @@ $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to cr
 ## <a name="next-steps"></a>后续步骤
 - 完成整个[鸢尾花分类教程第 2 部分](tutorial-classifying-iris-part-2.md)，了解日志记录 API 的工作方式。
 - 查看[如何在 Azure Machine Learning Workbench 中使用运行历史记录和模型指标](how-to-use-run-history-model-metrics.md)，更深入地了解如何在运行历史记录中使用日志记录 API。
-

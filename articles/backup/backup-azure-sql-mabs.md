@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: pullabhk
 ms.openlocfilehash: 2af9ebaa8f52690ed63406cbd85b77544d2d900d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 本文将引导使用 Microsoft Azure 备份服务器 (MABS) 来完成 SQL Server 数据库的备份配置步骤。
@@ -37,11 +37,11 @@ ms.lasthandoff: 07/11/2017
 2. 单击“**新建**”创建新的保护组。
 
     ![创建保护组](./media/backup-azure-backup-sql/protection-group.png)
-3. MABS 会显示开始屏幕，其中包含有关如何创建**保护组**的指南。 单机“下一步”
+3. MABS 会显示开始屏幕，其中包含有关如何创建**保护组**的指南。 单击“下一步”。
 4. 选择“**服务器**”。
 
     ![选择保护组类型 -“服务器”](./media/backup-azure-backup-sql/pg-servers.png)
-5. 展开要备份的数据库所在的 SQL Server 计算机。 MABS 会显示各种可以从该服务器备份的数据源。 展开“**所有 SQL 共享**”，选择要备份的数据库（在本示例中，我们选择了 ReportServer$MSDPM2012 和 ReportServer$MSDPM2012TempDB）。 单机“下一步”
+5. 展开要备份的数据库所在的 SQL Server 计算机。 MABS 会显示各种可以从该服务器备份的数据源。 展开“**所有 SQL 共享**”，选择要备份的数据库（在本示例中，我们选择了 ReportServer$MSDPM2012 和 ReportServer$MSDPM2012TempDB）。 单击“下一步”。
 
     ![选择 SQL DB](./media/backup-azure-backup-sql/pg-databases.png)
 6. 提供保护组的名称，并选中“**我需要在线保护**”复选框。
@@ -67,7 +67,7 @@ ms.lasthandoff: 07/11/2017
     默认情况下，MABS 将针对每个数据源（SQL Server 数据库）创建一个用于初始备份副本的卷。 使用此方法时，逻辑磁盘管理器 (LDM) 会限制 MABS 最多只能保护 300 个数据源（SQL Server 数据库）。 若要解决此限制，请选择“**在 DPM 存储池中共置数据**”选项。 如果使用此选项，MABS 会对多个数据源使用单个卷，这可以让 MABS 保护多达 2000 个 SQL 数据库。
 
     如果选择了“自动增大卷”选项，MABS 可以随着生产数据的增长考虑增大备份卷。 如果未选择“自动增大卷”选项，则 MABS 会限制保护组中用于备份数据源的备份存储的大小。
-9. 管理员可以选择手动传输此初始备份（脱离网络），以免网络出现带宽拥塞现象。 管理员还可以配置初始传输发生的时间。 单机“下一步”
+9. 管理员可以选择手动传输此初始备份（脱离网络），以免网络出现带宽拥塞现象。 管理员还可以配置初始传输发生的时间。 单击“下一步”。
 
     ![初始复制方法](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -140,12 +140,12 @@ ms.lasthandoff: 07/11/2017
 2. 右键单击数据库名称，并单击“**恢复**”。
 
     ![从 Azure 恢复](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM 会显示恢复点的详细信息。 单机“下一步” 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 单机“下一步”
+3. DPM 会显示恢复点的详细信息。 单击“下一步”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 单击“下一步”。
 
     ![恢复到原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     在此示例中，DPM 允许将数据库恢复到另一个 SQL Server 实例或独立的网络文件夹。
-4. 在“**指定恢复选项**”屏幕上，可以选择恢复选项（例如“网络带宽使用限制”），以便限制恢复操作所使用的带宽。 单机“下一步”
+4. 在“**指定恢复选项**”屏幕上，可以选择恢复选项（例如“网络带宽使用限制”），以便限制恢复操作所使用的带宽。 单击“下一步”。
 5. 在“**摘要**”屏幕上，会看到目前提供的所有恢复配置。 单击“**恢复**”。
 
     恢复状态显示数据库正在恢复。 可以单击“**关闭**”关闭向导，然后在“**监视**”工作区中查看进度。

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
 ms.openlocfilehash: 0d034e2c3827b297173262d294a2e566a6b45fac
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard 架构
 本主题描述 [Media Encoder Standard 预设](media-services-mes-presets-overview.md)基于的 XML 架构的一些元素和类型。 本主题说明元素及其有效值。 完整架构会在以后发布。  
 
-## <a name="Preset"></a> 预设（根元素）
+## <a name="Preset"></a>预设（根元素）
 定义编码预设。  
 
 ### <a name="elements"></a>元素
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | **版本**<br/><br/> 必选 |**xs:decimal** |预设版本。 以下限制适用：xs:fractionDigits 值 =“1”和 xs:minInclusive 值 =“1”，例如，**版本 =“1.0”**。 |
 
-## <a name="Encoding"></a> 编码
+## <a name="Encoding"></a>编码
 包含以下元素序列。  
 
 ### <a name="elements"></a>元素
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/29/2017
 | **PngImage** |[PngImage](media-services-mes-schema.md#PngImage) |Png 图像设置。 |
 | **JpgImage** |[JpgImage](media-services-mes-schema.md#JpgImage) |Jpg 图像设置。 |
 
-## <a name="H264Video"></a> H264Video
+## <a name="H264Video"></a>H264Video
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | **条件** |**xs:string** | 当输入不包含视频时，建议强制编码器插入单色视频轨。为此，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly"（仅在最低比特率处插入视频）或 Condition="InsertBlackIfNoVideo"（在所有输出比特率处插入视频）。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)主题。|
 
-## <a name="H264Layers"></a> H264Layers
+## <a name="H264Layers"></a>H264Layers
 
 默认情况下，如果向编码器发送仅包含音频而不包含视频的输入，那么输出资产文件仅包含音频数据。 某些播放器可能无法处理此类输出流。 在这种情况下，可使用 H264Video 的 InsertBlackIfNoVideo 属性设置，强制编码器将视频轨添加到输出中。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)主题。
               
@@ -74,7 +74,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 层的集合。 |
 
-## <a name="H264Layer"></a> H264Layer
+## <a name="H264Layer"></a>H264Layer
 > [!NOTE]
 > 视频限制基于 [H264 级别](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels)表中描述的值。  
 > 
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/29/2017
 | **AdaptiveBFrame**<br/><br/> minOccurs=“0” |**xs: boolean** |从 Azure 媒体编码器复制 |
 | **切片**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“0” |**xs:int** |确定将帧切分成多少片。 建议使用默认值。 |
 
-## <a name="AACAudio"></a> AACAudio
+## <a name="AACAudio"></a>AACAudio
  包含以下元素和组的序列。  
 
  有关 AAC 的详细信息，请参阅 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)。  
@@ -117,7 +117,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs=“0” |请参阅 [ AudioGroup](media-services-mes-schema.md#AudioGroup) 的说明，了解可为每个配置文件设置的适当通道数、采样率和比特率。 |
 
-## <a name="AudioGroup"></a> AudioGroup
+## <a name="AudioGroup"></a>AudioGroup
 有关每个配置文件的有效值的详细信息，请参阅后面的“音频编解码器详细信息”表。  
 
 ### <a name="elements"></a>元素
@@ -135,14 +135,14 @@ ms.lasthandoff: 08/29/2017
 **HEAACV2**|2:<br/><br/> - 22050 : 8 &lt;= 比特率 &lt;= 10<br/><br/> - 24000 : 8 &lt;= 比特率 &lt;= 10<br/><br/> - 32000 : 12 &lt;= 比特率 &lt;= 64<br/><br/> - 44100 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 48000 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 88200 : 64 &lt;= 比特率 &lt;= 64  
   
 
-## <a name="Clip"></a> 剪辑
+## <a name="Clip"></a>剪裁
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |指定演示文稿的开始时间。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 |
 | **持续时间** |**xs:duration** |指定演示文稿的持续时间（例如，视频中覆盖的外观）。 |
 
-## <a name="Output"></a> 输出
+## <a name="Output"></a>输出
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -160,7 +160,7 @@ ms.lasthandoff: 08/29/2017
 | **{Extension}** |继承自输出文件的“类型”属性。 输出文件名将具有以下扩展名之一：“mp4”、“ts”、“jpg”、“png”或“bmp”。 |
 | **{Index}** |对于缩略图是必需的。 只应存在一次。 |
 
-## <a name="Video"></a> 视频（继承自编解码器的复杂类型）
+## <a name="Video"></a>视频（继承自编解码器的复杂类型）
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -169,7 +169,7 @@ ms.lasthandoff: 08/29/2017
 | **范围** |**xs:string** | |
 | **PreserveResolutionAfterRotation** |**xs: boolean** |有关详细说明，请参阅以下部分：[PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
-### <a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
+### <a name="PreserveResolutionAfterRotation"></a>PreserveResolutionAfterRotation
 建议使用 PreserveResolutionAfterRotation 标志结合以百分比表示的分辨率值（宽度 =“100％”，高度 =“100％”）。  
 
 默认情况下，Media Encoder Standard (MES) 预设中的编码分辨率设置（宽度、高度）针对 0 度旋转的视频。 例如，如果输入视频为 1280x720，且为零度旋转，则默认预设确保输出具有相同的分辨率。 请参阅下图。  
@@ -184,7 +184,7 @@ ms.lasthandoff: 08/29/2017
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
-## <a name="FormatGroup"></a> FormatGroup（组）
+## <a name="FormatGroup"></a>FormatGroup（组）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -192,7 +192,7 @@ ms.lasthandoff: 08/29/2017
 | **PngFormat** |**PngFormat** | |
 | **JpgFormat** |**JpgFormat** | |
 
-## <a name="BmpLayer"></a> BmpLayer
+## <a name="BmpLayer"></a>BmpLayer
 ### <a name="element"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -204,7 +204,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
-## <a name="PngLayer"></a> PngLayer
+## <a name="PngLayer"></a>PngLayer
 ### <a name="element"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -216,7 +216,7 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
-## <a name="JpgLayer"></a> JpgLayer
+## <a name="JpgLayer"></a>JpgLayer
 ### <a name="element"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -229,37 +229,37 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
-## <a name="PngLayers"></a> PngLayers
+## <a name="PngLayers"></a>PngLayers
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
-## <a name="BmpLayers"></a> BmpLayers
+## <a name="BmpLayers"></a>BmpLayers
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
-## <a name="JpgLayers"></a> JpgLayers
+## <a name="JpgLayers"></a>JpgLayers
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
-## <a name="BmpImage"></a> BmpImage（继承自视频的复杂类型）
+## <a name="BmpImage"></a>BmpImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
-## <a name="JpgImage"></a> JpgImage（继承自视频的复杂类型）
+## <a name="JpgImage"></a>JpgImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
-## <a name="PngImage"></a> PngImage（继承自视频的复杂类型）
+## <a name="PngImage"></a>PngImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |

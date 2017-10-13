@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: v-livech
 ms.openlocfilehash: 278bf1785aac71068ab94cf9916af69a204c44be
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-users-ssh-and-check-or-repair-disks-on-azure-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-10"></a>配合使用 VMAccess 扩展和 Azure CLI 1.0 管理用户、SSH，并检查或修复 Azure Linux VM 上的磁盘
 本文说明如何使用 Azure VMAcesss 扩展检查或修复磁盘、重置用户访问权限、管理用户帐户，或重置 Linux 上的 SSHD 配置。 本文需要以下条件：
@@ -42,7 +42,7 @@ ms.lasthandoff: 08/18/2017
 * 使用 Azure CLI 1.0 和所需参数。
 * 使用 VMAccess 处理和操作的原始 JSON 文件。
 
-在快速命令部分，我们使用 Azure CLI 1.0 `azure vm reset-access` 方法。 在以下命令示例中，请将包含“example”的值替换为自己环境中的值。
+在快速命令部分，将使用 Azure CLI 1.0 `azure vm reset-access` 方法。 在以下命令示例中，请将包含“example”的值替换为自己环境中的值。
 
 ## <a name="create-a-resource-group-and-linux-vm"></a>创建资源组和 Linux VM
 ```bash

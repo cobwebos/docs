@@ -16,10 +16,10 @@ ms.date: 02/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 5358404881b65d217ab36a41ca04a73f2c462c86
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Java Web 应用登录和注销
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -256,7 +256,7 @@ ms.lasthandoff: 08/03/2017
     </beans>
     ```
 
- 此代码让 Web 应用使用 Spring，并指示用于查找 JSP 文件（在下一部分中编写）的位置。
+ 此代码告知 Web 应用要使用 Spring，以及在哪里查找我们会在下一部分编写的 JSP 文件。
 
 ## <a name="step-4-create-the-jsp-view-files-for-basicfilter-mvc"></a>步骤 4：创建 JSP 视图文件（适用于 BasicFilter MVC）
 在 WEB-INF 中设置 Web 应用的过程目前只完成了一半。 接下来，需要为 Web 应用将要执行的 BasicFilter 模型视图控制器 (MVC) 创建 JSP 文件。 我们已经提示过需要在配置过程中创建一些文件。
@@ -324,7 +324,7 @@ ms.lasthandoff: 08/03/2017
     </html>
     ```
 
-    此页会重定向到特定请求，BasicFilter servlet 使用 ADAJ4J 读取并执行这些请求。
+    此页将重定向到 BasicFilter Servlet 读取的特定请求，然后使用 ADAJ4J 执行该请求。
 
 现在需要设置 Java 文件，使 Servlet 能够执行其工作。
 
@@ -1297,7 +1297,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="step-7-create-the-authentication-model-and-controller-files-for-basicfilter"></a>步骤 7：创建身份验证模型和控制器文件（适用于 BasicFilter）
 我承认 Java 代码可能相当冗长，但我们很快就要完成了。 在编写 BasicFilter Servlet 来处理请求之前，需要编写 ADAL4J 所需的其他一些帮助器文件。
 
-1. 创建名为 AuthHelper.java 的文件，该文件提供用于确定已登录用户状态的方法。 方法包括：
+1. 创建名为 AuthHelper.java 的文件，它会提供用于确定已登录用户状态的方法。 方法包括：
 
  * **isAuthenticated()**：返回有关用户是否已登录的信息。
  * **containsAuthenticationData()**：返回有关令牌是否包含数据的信息。

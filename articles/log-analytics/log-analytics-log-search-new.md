@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: db271f5157fee29a5cc0c4534768bdb3c769ba74
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>了解 Log Analytics 中的日志搜索
 
@@ -91,4 +90,3 @@ Log Analytics 中日志搜索的核心是[扩展的查询语言](https://docs.lo
 
 - 了解[用于创建并编辑日志搜索的门户](log-analytics-log-search-portals.md)。
 - 查看使用新查询语言的[查询编写教程](log-analytics-tutorial-viewdata.md)。
-

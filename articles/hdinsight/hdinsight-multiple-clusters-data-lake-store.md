@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 043141e8496a947f54564d29a1d7fb724fac5cda
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.openlocfilehash: 08f860dcf0f1d6c69cee02261b2a4989fc5c694a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集
 
@@ -60,7 +59,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 - 在将存储帐户用于群集**之前**，Data Lake Store 管理员必须使用适当的权限创建并预配双级文件夹结构 (**/clusters/finance/**)。 创建群集时不会自动创建此结构。
 - 上面的示例建议将拥有组 **/clusters/finance** 设置为 **FINGRP**，并允许 FINGRP 对从根目录开始的整个文件夹层次结构进行 **r-x** 访问。 这可以确保 FINGRP 的成员能够导航从根目录开始的文件夹结构。
 - 如果不同的 AAD 服务主体可以在 **/clusters/finance** 下创建群集，则粘性位（如果已针对 **finance** 文件夹设置）可确保一个服务主体创建的文件夹不能被另一个服务主体删除。
-- 设置好文件夹结构和权限后，HDInsight 群集创建过程将在 **/clusters/finance/** 下面创建一个特定于群集的存储位置。 例如，名为 fincluster01 的群集的存储可以是 **/clusters/finance/fincluster01**。 下表显示了 HDInsight 群集创建的文件夹的所有权和权限。
+- 设置好文件夹结构和权限后，HDInsight 群集创建过程会在 **/clusters/finance/** 下面创建一个特定于群集的存储位置。 例如，名为 fincluster01 的群集的存储可以是 **/clusters/finance/fincluster01**。 下表显示了 HDInsight 群集创建的文件夹的所有权和权限。
 
     |文件夹  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -86,13 +85,13 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 
 ### <a name="publicly-visible-localized-yarn-resources"></a>公开可见的本地化 YARN 资源
 
-创建新的 Azure Data Lake Store 帐户时，将自动预配访问 ACL 权限位设置为 770 的根目录。 根文件夹的拥有用户设置为创建帐户的用户（Data Lake Store 管理员），拥有组设置为创建帐户的用户的主要组。 不会为“其他对象”提供任何访问权限。
+创建新的 Azure Data Lake Store 帐户时，会自动预配访问 ACL 权限位设置为 770 的根目录。 根文件夹的拥有用户设置为创建帐户的用户（Data Lake Store 管理员），拥有组设置为创建帐户的用户的主要组。 不会为“其他对象”提供任何访问权限。
 
-这些设置已知将会影响 [YARN 247](https://hwxmonarch.atlassian.net/browse/YARN-247) 中捕获的一个特定 HDInsight 用例。 作业提交可能失败并出现类似于下面的错误消息：
+这些设置已知会影响 [YARN 247](https://hwxmonarch.atlassian.net/browse/YARN-247) 中捕获的一个特定 HDInsight 用例。 作业提交可能失败并出现类似于下面的错误消息：
 
     Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
 
-如前面链接的 YARN JIRA 中所述，本地化公共资源时，本地化程序将通过检查所有被请求资源对远程文件系统的权限，来验证这些资源是否确实是公共资源。 不符合该条件的任何 LocalResource 将被拒绝本地化。 检查权限，包括“其他对象”对文件的读取访问权限。 如果将 HDInsight 群集托管在 Azure Data Lake 上，则无法现成地运行此方案，因为 Azure Data Lake 会拒绝“其他对象”在根文件夹级别的访问。
+如前面链接的 YARN JIRA 中所述，本地化公共资源时，本地化程序将通过检查所有被请求资源对远程文件系统的权限，来验证这些资源是否确实是公共资源。 不符合该条件的任何 LocalResource 会被拒绝本地化。 检查权限，包括“其他对象”对文件的读取访问权限。 如果将 HDInsight 群集托管在 Azure Data Lake 上，则无法现成地运行此方案，因为 Azure Data Lake 会拒绝“其他对象”在根文件夹级别的访问。
 
 #### <a name="workaround"></a>解决方法
 通过层次结构为**其他对象**设置读取-执行权限，例如，在上表中所示的 **/**、**/clusters** 和 **/clusters/finance** 级别。
@@ -100,6 +99,5 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 ## <a name="see-also"></a>另请参阅
 
 * [创建包含 Data Lake Store（作为存储）的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
-
 
 

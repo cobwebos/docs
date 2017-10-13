@@ -1,6 +1,6 @@
 ---
-title: "将 XML 数据与转换-Azure 逻辑应用转换 |Microsoft 文档"
-description: "创建转换或 mapps 将 XML 数据中使用企业集成 SDK 逻辑应用的格式之间转换"
+title: "使用转换转换 XML 数据 - Azure 逻辑应用 | Microsoft 文档"
+description: "使用 Enterprise Integration SDK 创建转换或映射将 XML 数据在逻辑应用的格式之间转换"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -15,60 +15,60 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
 ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enterprise-integration-with-xml-transforms"></a>与 XML 转换的企业集成
+# <a name="enterprise-integration-with-xml-transforms"></a>企业集成与 XML 转换
 ## <a name="overview"></a>概述
-企业集成转换连接器将数据从一种格式转换为另一种格式。 例如，你可能具有包含 YearMonthDay 格式中的当前日期的传入消息。 转换可用于重新设置格式的日期，采用 MonthDayYear 格式。
+企业集成转换连接器可将数据从一种格式转换为另一种格式。 例如，传入消息可能包含 YearMonthDay 格式的当前日期。 可以使用转换将日期格式重新设置为 MonthDayYear 格式。
 
 ## <a name="what-does-a-transform-do"></a>转换的作用是什么？
-转换，这是也称为地图，由源 XML 架构 （输入） 和目标 XML 架构 （输出） 组成。 你可以使用不同的内置函数帮助操作或控制的数据，包括字符串操作、 条件分配、 算术表达式、 日期时间格式化程序，并甚至循环构造。
+转换（也称为映射）由源 XML 架构（输入）和目标 XML 架构（输出）组成。 可以使用不同的内置函数帮助操作或控制数据，包括字符串操作、条件分配、算术表达式、日期时间格式化程序甚至是循环构造。
 
 ## <a name="how-to-create-a-transform"></a>如何创建转换？
-可以通过使用 Visual Studio 中创建转换/映射[企业集成 SDK](https://aka.ms/vsmapsandschemas)。 创建和测试转换完成后，你将转换上载到你的集成的帐户。 
+可以使用 Visual Studio [企业集成 SDK](https://aka.ms/vsmapsandschemas) 创建转换/映射。 完成转换的创建和测试之后，需将转换上传到集成帐户中。 
 
 ## <a name="how-to-use-a-transform"></a>如何使用转换
-将转换/映射上载到你的集成帐户后，可用于创建逻辑应用。 每次触发逻辑应用 （和需要进行转换的输入内容） 时，逻辑应用运行您的转换。
+将转换或映射上传到集成帐户中之后，可以使用它创建逻辑应用。 逻辑应用随后会在每次触发逻辑应用（以及存在需要进行转换的输入内容）时运行转换。
 
-**下面是用于转换的步骤**:
+**下面是使用转换的步骤**：
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 * 创建集成帐户并向其中添加映射  
 
-现在，在您注意的系统必备组件，它是时候创建逻辑应用：  
+现在已满足了先决条件，可以创建逻辑应用了：  
 
-1. 创建逻辑应用和[将其链接到你的集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")包含的映射。
-2. 添加**请求**逻辑应用到的触发器  
+1. 创建逻辑应用并[将它链接到包含映射的集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。
+2. 将“请求”触发器添加到逻辑应用  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. 添加**转换 XML**操作通过先选择**添加操作**   
+3. 通过首先选择“添加操作”来添加“转换 XML”操作   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. 输入 word*转换*在搜索框中，以筛选器为你想要使用的所有操作  
+4. 在搜索框中输入“转换”一词，以便在所有操作中筛选出要使用的操作  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. 选择**转换 XML**操作   
-6. 添加 XML**内容**，您将转换。 你可以使用作为 HTTP 请求中接收任何 XML 数据**内容**。 在此示例中，选择触发逻辑应用的 HTTP 请求的正文。
-7. 选择的名称**映射**你想要用于执行转换。 映射已必须在你集成的帐户。 在前面的步骤，您已为你包含你的代码图的集成帐户提供逻辑应用访问。      
+5. 选择“转换 XML”操作   
+6. 添加转换的 XML“内容”。 可使用在 HTTP 请求中收到的任何 XML 数据作为“内容”。 在此示例中，选择触发逻辑应用的 HTTP 请求的正文。
+7. 选择要用于执行转换的“映射”的名称。 该映射必须已处于集成帐户中。 在前面的步骤中，已向逻辑应用授予了对包含映射的集成帐户的访问权限。      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
-8. 保存你的工作  
+8. 保存工作  
     ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
-此时，您已完成设置你的代码图。 在实际应用中，你可能想要存储的 LOB 应用程序，例如 SalesForce 中的转换后的数据。 您可以轻松地为要转换的输出发送到 Salesforce 的操作。 
+此时，已完成映射设置。 在实际应用程序中，可能要将转换的数据存储在 LOB 应用程序中，如 SalesForce。 可以轻松地添加操作以将转换的输出发送给 Salesforce。 
 
-现在可以通过 HTTP 终结点向发出请求来测试你的转换。  
+现在可以通过向 HTTP 终结点发出请求来测试转换。  
 
 ## <a name="features-and-use-cases"></a>功能和用例
-* 在映射中创建的转换可以是简单的如将一个名称和地址，从一个文档复制到另一个。 或者，你可以创建更复杂的转换使用的现成可用映射操作。  
-* 多个映射操作或函数是易于使用，包括字符串、 日期时间函数，等等。  
-* 你可以执行架构之间的直接数据副本。 在 SDK 中包含的映射器，这非常简单，绘制线条与目标架构中的对应连接的源架构中的元素。  
-* 在创建地图时，你可以查看的图形表示形式映射，其中显示了所有的关系和你创建的链接。
-* 使用测试映射功能添加的示例 XML 消息。 简单单击一下，你可以测试创建，该图，并查看生成的输出。  
-* 上载现有的映射  
+* 在映射中创建的转换可以非常简单，如将名称和地址从一个文档复制到另一个文档。 或者，可以使用现成可用的映射操作创建更复杂的转换。  
+* 有多个映射操作或函数现成可用，包括字符串、日期时间函数等等。  
+* 可以在架构之间执行直接数据复制。 在 SDK 中包含的映射程序中，这简单到只需绘制一条线将源架构中的元素与目标架构中的对应项连接。  
+* 创建映射时，可查看映射的图形表示形式，其中会显示创建的所有关系和链接。
+* 使用“测试映射”功能可添加示例 XML 消息。 只需进行简单的单击，便可以测试创建的映射，并查看生成的输出。  
+* 上传现有映射  
 * 包括对 XML 格式的支持。
 
 ## <a name="learn-more"></a>了解详细信息
-* [了解有关企业集成包](../logic-apps/logic-apps-enterprise-integration-overview.md "了解企业集成包")  
-* [了解地图](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成映射")  
+* [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
+* [了解有关映射的详细信息](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成映射")  
 

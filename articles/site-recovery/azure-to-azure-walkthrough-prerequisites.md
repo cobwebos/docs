@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: d38fc766d5226be7161433555da9622e006c80e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-2-before-you-start"></a>步骤 2：开始之前
 
 查看用于通过 [Azure Site Recovery](site-recovery-overview.md) 在 Azure 区域之间复制 Azure 虚拟机 (VM) 的[体系结构](azure-to-azure-walkthrough-architecture.md)之后，请参考本文检查先决条件。
@@ -74,4 +72,3 @@ ms.lasthandoff: 08/31/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[步骤 3：规划网络](azure-to-azure-walkthrough-network.md)设置出站连接。
-

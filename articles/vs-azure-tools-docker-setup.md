@@ -15,14 +15,14 @@ ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
 ms.openlocfilehash: e9465afb560a73d74f853c19094b3ee75b8c470c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-docker-host-with-virtualbox"></a>使用 VirtualBox 配置 Docker 主机
 ## <a name="overview"></a>概述
-本文将引导你完成使用 Docker Machine 和 VirtualBox 配置默认 Docker 实例的过程。 如果使用的是 [Docker for Windows beta](http://beta.docker.com/)，则无需进行此配置。
+本文将引导完成使用 Docker Machine 和 VirtualBox 配置默认 Docker 实例的过程。 如果使用的是 [Docker for Windows beta](http://beta.docker.com/)，则无需进行此配置。
 
 ## <a name="prerequisites"></a>先决条件
 需要安装以下工具。

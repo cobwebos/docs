@@ -15,14 +15,12 @@ ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 47b17c0d81e8597d3125949b26906cc356a9af11
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
 本文介绍如何将 Azure Active Directory (Azure AD) 应用程序代理连接器配置为使用出站代理服务器。 本文的目标读者为在网络环境中包含现有代理的客户。
@@ -189,4 +187,3 @@ SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果�
 - [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
 
 - 如果有任何关于连接器连接的问题，请在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD)提问，或创建一个支持团队票证。
-

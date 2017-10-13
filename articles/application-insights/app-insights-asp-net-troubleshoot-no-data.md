@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
+ms.openlocfilehash: 8772a9a21a0c99994ac9bcf10ea7b13c35bac6c2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 77527c893227eb3ef060648eafa21d9eea18146d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -159,11 +158,9 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 ## <a name="no-performance-data"></a>没有性能数据
 性能数据（CPU、IO 速率等）适用于 [Java Web 服务](app-insights-java-collectd.md)、[Windows 桌面应用](app-insights-windows-desktop.md)、[IIS Web 应用和服务（如果安装了状态监视器）](app-insights-monitor-performance-live-website-now.md)以及 [Azure 云服务](app-insights-azure.md)。 可在“设置”、“服务器”下面看到这些数据。
 
-这些数据不适用于 Azure 网站。
-
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>将应用发布到服务器后未看到（服务器）数据
 * 请检查是否确实将 Microsoft. ApplicationInsights DLL 连同 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll 一起复制到了服务器。
-* 在防火墙中，可能需要[打开某些 TCP 端口](app-insights-ip-addresses.md#data-access-api)。
+* 在防火墙中，可能需要[打开某些 TCP 端口](app-insights-ip-addresses.md)。
 * 如果必须使用代理在企业网络外部发送数据，请在 Web.config 中设置 [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx)
 * Windows Server 2008：确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
 
@@ -184,5 +181,4 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
-
 

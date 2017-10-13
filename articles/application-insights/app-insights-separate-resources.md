@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: bwren
 ms.openlocfilehash: f51fa4639aaa60686cc349683713c6e5f9732bb9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/18/2017
 * A | B 测试 - 使用单个资源 创建遥测初始值设定项来向遥测添加用于标识各个变体的属性。
 
 
-## <a name="dynamic-ikey"></a>动态检测密钥
+## <a name="dynamic-ikey"></a> 动态检测密钥
 
 为了在代码在不同生产阶段中移动时更轻松地更改 ikey，请在代码中而非在配置文件中设置 ikey。
 

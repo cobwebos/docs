@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
 ms.openlocfilehash: 4e125406d2e798138c45e3fbbf61a610afab69fc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-network--business-continuity"></a>虚拟网络 - 业务连续性
 ## <a name="overview"></a>概述
-虚拟网络 (VNet) 是网络在云中的逻辑表示形式。 这样一来，可以定义自己的专用 IP 地址空间，并将网络划分为子网。 VNet 用作托管计算资源（如 Azure 虚拟机和云服务（Web/辅助角色））的信任边界。 VNet 允许在其中托管的资源之间建立直接的专用 IP 通信。 虚拟网络也可通过混合选项（例如 VPN 网关或 ExpressRoute）链接到本地网络。
+虚拟网络 (VNet) 是网络在云中的逻辑表示形式。 这样一来，可以定义自己的专用 IP 地址空间，并将网络划分为子网。 VNet 用作托管计算资源（如 Azure 虚拟机和云服务（Web/辅助角色））的信任边界。 VNet 允许在其中托管的资源之间建立直接的专用 IP 通信。 还可以通过一个混合选项（如 VPN 网关或 ExpressRoute），将虚拟网络链接到本地网络。
 
 VNet 是在区域范围内创建。 可以在两个不同的区域创建具有相同地址空间的 VNet（即美国东部和美国西部，但相互之间无法直接连接）。 
 
@@ -31,7 +31,7 @@ VNet 是在区域范围内创建。 可以在两个不同的区域创建具有�
 
 **问：如果发生整个区域中断（即，如果某区域因自然灾害而完全中断），该怎么办？区域中托管的虚拟网络会怎样？**
 
-答：在服务中断期间，受影响区域中的虚拟网络和资源始终保持无法访问的状态。
+答：在服务中断期间，受影响区域的虚拟网络和资源将无法访问。
 
 ![简单虚拟网络示意图](./media/virtual-network-disaster-recovery-guidance/vnet.png)
 

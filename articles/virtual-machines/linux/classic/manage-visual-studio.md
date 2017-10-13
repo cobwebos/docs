@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: kraigb
 ms.openlocfilehash: fb91e6cf1fd32833d1e9711a55b41dfa410fee5d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-linux-virtual-machines-in-visual-studio"></a>在 Visual Studio 中创建和管理 Linux 虚拟机
 [!INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../../../includes/virtual-machines-common-classic-manage-visual-studio.md)]

@@ -107,6 +107,8 @@
       href: /rest/api/postgresql
 - name: 资源
   items:
+    - name: 部署模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定价
@@ -124,4 +126,4 @@
     - name: 支持选项
       href: 'https://azure.microsoft.com/support/options/'
     - name: 客户案例
-      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL%20"'
+      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'

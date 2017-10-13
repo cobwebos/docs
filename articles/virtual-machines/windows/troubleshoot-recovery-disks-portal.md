@@ -1,5 +1,4 @@
 ---
-
 title: "在 Azure 门户中使用 Windows 故障排除 VM | Microsoft Docs"
 description: "了解如何通过使用 Azure 门户将 OS 磁盘连接到恢复 VM，对 Azure 中的 Windows 虚拟机问题进行故障排除"
 services: virtual-machines-windows
@@ -9,20 +8,17 @@ manager: timlt
 editor: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/26/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5fbda281470de3d8215bccdb8c13fc68cb7df1c8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: a4775b6b78b27a07cd39cc58f2088f67fd1b083b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，然后重新创建原始 VM。
 
@@ -39,7 +35,7 @@ ms.lasthandoff: 03/31/2017
 ## <a name="determine-boot-issues"></a>确定启动问题
 若要确定 VM 不能正常启动的原因，请检查启动诊断 VM 屏幕截图。 一个常见示例是应用程序更新失败，或底层虚拟硬盘已删除或移动。
 
-在门户中选择你的 VM，然后向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”查看屏幕截图。 记下任何特定的错误消息或错误代码，帮助确定 VM 遇到问题的原因。 以下示例显示一个 VM 正在等待系统停止服务：
+在门户中选择 VM，然后向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”查看屏幕截图。 记下任何特定的错误消息或错误代码，帮助确定 VM 遇到问题的原因。 以下示例显示一个 VM 正在等待系统停止服务：
 
 ![查看 VM 启动诊断控制台日志](./media/troubleshoot-recovery-disks-portal/screenshot-error.png)
 
@@ -49,11 +45,11 @@ ms.lasthandoff: 03/31/2017
 ## <a name="view-existing-virtual-hard-disk-details"></a>查看现有虚拟硬盘的详细信息
 在将虚拟硬盘附加到另一个 VM 之前，需要标识虚拟硬盘 (VHD) 的名称。 
 
-在门户中选择资源组，然后选择存储帐户。 单击“Blob”，如以下示例中所示：
+在门户中选择资源组，并选择存储帐户。 单击“Blob”，如以下示例中所示：
 
 ![选择存储 Blob](./media/troubleshoot-recovery-disks-portal/storage-account-overview.png)
 
-通常，虚拟硬盘存储在一个名为 **vhds** 的容器中。 请选择该容器查看虚拟硬盘的列表。 记下 VHD 的名称（前缀通常是你的 VM 的名称）：
+通常，虚拟硬盘存储在一个名为 **vhds** 的容器中。 请选择该容器查看虚拟硬盘的列表。 记下 VHD 的名称（前缀通常是 VM 的名称）：
 
 ![标识存储容器中的 VHD](./media/troubleshoot-recovery-disks-portal/storage-container.png)
 
@@ -67,17 +63,17 @@ ms.lasthandoff: 03/31/2017
 
 恢复 VM 的第一步是删除 VM 资源本身。 删除 VM 时会将虚拟硬盘留在存储帐户中。 删除 VM 后，可将虚拟硬盘附加到另一个 VM，以排查和解决这些错误。
 
-在门户中选择你的 VM，然后单击“删除”：
+在门户中选择 VM，然后单击“删除”：
 
 ![显示启动错误的 VM 启动诊断屏幕截图](./media/troubleshoot-recovery-disks-portal/stop-delete-vm.png)
 
-等到 VM 完成删除，然后将虚拟硬盘附加到另一个 VM。 虚拟硬盘上将其与 VM 关联的租约需要释放，然后才能将虚拟硬盘附加到另一个 VM。
+等到 VM 已完成删除，然后再将虚拟硬盘附加到另一个 VM。 虚拟硬盘上将其与 VM 关联的租约需要释放，才能将虚拟硬盘附加到另一个 VM。
 
 
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>将现有虚拟硬盘附加到另一个 VM
 在后续几个步骤中，将使用另一个 VM 进行故障排除。 将现有虚拟硬盘附加到此故障排除 VM，以便浏览和编辑磁盘的内容。 例如，此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 选择或创建另一个 VM 用于故障排除。
 
-1. 在门户中选择资源组，然后选择故障排除 VM。 选择“磁盘”，然后单击“附加现有磁盘”：
+1. 在门户中选择资源组，并选择故障排除 VM。 选择“磁盘”，并单击“附加现有磁盘”：
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal/attach-existing-disk.png)
 
@@ -85,7 +81,7 @@ ms.lasthandoff: 03/31/2017
 
     ![浏览现有 VHD](./media/troubleshoot-recovery-disks-portal/select-vhd-location.png)
 
-3. 选择存储帐户和容器，然后单击现有的 VHD。 单击“选择”按钮确认所做的选择：
+3. 选择存储帐户和容器，并单击现有的 VHD。 单击“选择”按钮确认所做的选择：
 
     ![选择现有 VHD](./media/troubleshoot-recovery-disks-portal/select-vhd.png)
 
@@ -100,11 +96,11 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="mount-the-attached-data-disk"></a>装载附加的数据磁盘
 
-1. 打开到 VM 的远程桌面连接。 在门户中选择 VM，然后单击“连接”。 下载并打开 RDP 连接文件。 输入登录 VM 所需的凭据，如下所示：
+1. 打开到 VM 的远程桌面连接。 在门户中选择 VM，并单击“连接”。 下载并打开 RDP 连接文件。 输入登录 VM 所需的凭据，如下所示：
 
     ![使用远程桌面登录 VM](./media/troubleshoot-recovery-disks-portal/open-remote-desktop.png)
 
-2. 打开“服务器管理器”，然后选择“文件和存储服务”。 
+2. 打开“服务器管理器”，并选择“文件和存储服务”。 
 
     ![在“服务器管理器”中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal/server-manager-select-storage.png)
 
@@ -120,32 +116,32 @@ ms.lasthandoff: 03/31/2017
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>卸载并分离原始虚拟硬盘
 解决错误后，可从故障排除 VM 中分离现有虚拟硬盘。 在将虚拟硬盘附加到故障排除 VM 的租约释放前，不能将该虚拟硬盘用于任何其他 VM。
 
-1. 在到 VM 的 RDP 会话中，打开“服务器管理器”，然后选择“文件和存储服务”：
+1. 在到 VM 的 RDP 会话中，打开“服务器管理器”，并选择“文件和存储服务”：
 
     ![在“服务器管理器”中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal/server-manager-select-storage.png)
 
-2. 选择“磁盘”，然后选择数据磁盘。 右键单击数据磁盘，然后选择“脱机”：
+2. 选择“磁盘”，并选择数据磁盘。 右键单击数据磁盘，并选择“脱机”：
 
     ![在“服务器管理器”中将数据磁盘设置为脱机](./media/troubleshoot-recovery-disks-portal/server-manager-set-disk-offline.png)
 
-3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，然后单击“磁盘”。 选择现有的虚拟硬盘，然后单击“分离”：
+3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，并单击“磁盘”。 选择现有的虚拟硬盘，并单击“分离”：
 
     ![分离现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal/detach-disk.png)
 
-    等到 VM 成功分离数据磁盘，然后继续操作。
+    等到 VM 成功分离数据磁盘，并继续操作。
 
 ## <a name="create-vm-from-original-hard-disk"></a>从原始硬盘创建 VM
 若要从原始虚拟硬盘创建 VM，请使用[此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)。 该模板使用前面命令中的 VHD URL 将 VM 部署到现有虚拟网络。 单击“部署到 Azure”按钮，如下所示：
 
 ![从 Github 中的模板部署 VM](./media/troubleshoot-recovery-disks-portal/deploy-template-from-github.png)
 
-模板已载入 Azure 门户进行部署。 请输入新 VM 和现有 Azure 资源的名称，然后粘贴现有虚拟硬盘的 URL。 若要开始部署，请单击“购买”：
+模板已载入 Azure 门户进行部署。 请输入新 VM 和现有 Azure 资源的名称，并粘贴现有虚拟硬盘的 URL。 若要开始部署，请单击“购买”：
 
 ![从模板部署 VM](./media/troubleshoot-recovery-disks-portal/deploy-from-image.png)
 
 
 ## <a name="re-enable-boot-diagnostics"></a>重新启用启动诊断
-从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。 若要检查启动诊断的状态并根据需要打开启动诊断，请在门户中选择你的 VM。 在“监视”下面，单击“诊断设置”。 确保状态为“打开”，并检查“启动诊断”旁边的复选标记是否为选中状态。 如果做了任何更改，请单击“保存”：
+从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。 要检查启动诊断的状态并根据需要打开启动诊断，请在门户中选择 VM。 在“监视”下面，单击“诊断设置”。 确保状态为“打开”，并检查“启动诊断”旁边的复选标记是否为选中状态。 如果做了任何更改，请单击“保存”：
 
 ![更新启动诊断设置](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
 

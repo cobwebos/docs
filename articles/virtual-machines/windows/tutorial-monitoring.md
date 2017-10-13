@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a37aed8b3321d3518ffd73e09f5bb21266a7e577
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>使用 Azure PowerShell 监视和更新 Windows 虚拟机
 
 Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据存储在 Azure 存储中，并使其可供通过门户、Azure PowerShell 模块和 Azure CLI 进行访问。 使用更新管理可以管理 Azure Windows VM 的更新和修补程序。
@@ -107,18 +105,18 @@ Windows VM 在 Azure 中有一个与它交互的专用主机 VM。 系统会自�
 为 VM 启用更新管理：
  
 1. 在屏幕的左侧，选择“虚拟机”。
-2. 从列表中选择一个 VM。
+2. 从列表中选择一个虚拟机。
 3. 在 VM 屏幕上的“操作”部分，单击“更新管理”。 “启用更新管理”屏幕随即打开。
 
 执行验证以确定是否为该 VM 启用了更新管理。 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
 
 Log Analytics 工作区用于收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。 要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化运行针对 VM 的脚本，例如下载和应用更新。
 
-验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。 此代理用于与 VM 通信并获取关于更新状态的信息。 
+验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。 此代理用于与虚拟机通信并获取关于更新状态的信息。 
 
 如果未满足这些先决条件，则会显示横幅，可在其中选择启用该解决方案。
 
-![更新管理板载配置横幅](./media/tutorial-monitoring/manageupdates-onboard-solution-banner.png)
+![更新管理载入配置横幅](./media/tutorial-monitoring/manageupdates-onboard-solution-banner.png)
 
 单击横幅以启用该解决方案。 如果在验证后发现缺少下列任何先决条件，将自动添加这些条件：
 
@@ -126,7 +124,7 @@ Log Analytics 工作区用于收集由功能和服务（如更新管理）生成
 * [自动化](../../automation/automation-offering-get-started.md)
 * VM 上已启用[混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
-“启用更新管理”屏幕随即打开。 配置此设置，然后单击“启用”。
+“启用更新管理”屏幕随即打开。 配置设置，然后单击“启用”。
 
 ![启用“更新管理解决方案”](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
@@ -141,7 +139,7 @@ Log Analytics 工作区用于收集由功能和服务（如更新管理）生成
 
 ### <a name="schedule-an-update-deployment"></a>计划更新部署
 
-要安装更新，请计划一个遵循发布计划和服务窗口的部署。
+若要安装更新，请计划一个遵循你的发布时间和服务窗口的部署。
 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
 
 单击“更新管理”屏幕顶部的“计划更新部署”，计划用于虚拟机的新的更新部署。 在“新建更新部署”屏幕中，指定以下信息：

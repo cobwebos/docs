@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/12/2017
 ms.author: danlep
+ms.openlocfilehash: c9b35ff5f3fbd33639805b5a4f105df32562a691
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 630f555b003b0efc45b372a7009dbf036aa8c737
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>如何使用 Azure PowerShell 在 Azure Marketplace 中查找 Windows VM 映像
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 07/14/2017
 ## <a name="find-specific-images"></a>查找特定映像
 
 
-使用 Azure Resource Manager 创建新的虚拟机时，在某些情况下，你需要使用以下映像属性组合来指定映像：
+使用 Azure Resource Manager 创建新的虚拟机时，在某些情况下，需要使用以下映像属性组合来指定映像：
 
 * 发布者
 * 产品
@@ -70,14 +69,14 @@ $locName="<Azure location, such as West US>"
 Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
 ```
 
-填写选择的发布者名称，然后运行以下命令：
+填写选择的发布者名称，并运行以下命令：
 
 ```azurepowershell-interactive
 $pubName="<publisher>"
 Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 ```
 
-填写选择的产品名称，然后运行以下命令：
+填写选择的产品名称，并运行以下命令：
 
 ```azurepowershell-interactive
 $offerName="<offer>"
@@ -155,8 +154,7 @@ Skus
 2016-Nano-Server
 ```
 
-从上面的列表中复制选择的 SKU 名称，你已获得 `Set-AzureRMVMSourceImage` PowerShell cmdlet 或资源组模板的所有信息。
+从上面的列表中复制选择的 SKU 名称，已获得 `Set-AzureRMVMSourceImage` PowerShell cmdlet 或资源组模板的所有信息。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以确切地选择想要使用的映像。 若要使用刚找到的映像信息快速创建虚拟机，请参阅[使用 PowerShell 创建 Windows 虚拟机](quick-create-powershell.md)。
-
+现在，可以确切地选择想要使用的映像。 若要使用刚找到的映像信息快速创建虚拟机，请参阅[使用 PowerShell 创建 Windows 虚拟机](quick-create-powershell.md)。

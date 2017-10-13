@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/25/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 0e7431332d46ba3891dff0cf70685be0277d4ddd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: c901562753be86613ac4ca4dec1e727d1383e626
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="data-catalog-documentation"></a>数据目录文档
 
@@ -80,6 +79,5 @@ ms.lasthandoff: 06/02/2017
         </div>
     </li>
 </ul>
-
 
 

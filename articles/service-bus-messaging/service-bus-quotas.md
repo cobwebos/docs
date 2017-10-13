@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm
 ms.openlocfilehash: 9a364adad3342b211a647eb743776a47812b75f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-quotas"></a>服务总线配额
 本部分列出了 Microsoft Azure 服务总线消息传送的基本配额和限制阈值。

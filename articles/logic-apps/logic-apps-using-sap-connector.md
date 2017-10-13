@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-an-on-premises-sap-system-from-logic-apps-with-the-sap-connector"></a>使用 SAP 连接器从逻辑应用连接到本地 SAP 系统 
 

@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -191,7 +191,7 @@ Data Lake Analytics 支持以下数据源：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
-3. 在**“运行作业的最大数”**下，移动滑块选择一个值，或在文本框中输入值。 
+3. 在“运行作业的最大数”下，移动滑块选择一个值，或在文本框中输入值。 
 4. 单击“保存” 。
 
 > [!NOTE]
@@ -205,7 +205,7 @@ Data Lake Analytics 支持以下数据源：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
-3. 在**“保留作业查询的天数”**下，移动滑块选择一个值，或在文本框中输入值。  
+3. 在“保留作业查询的天数”下，移动滑块选择一个值，或在文本框中输入值。  
 4. 单击“保存” 。
 
 ### <a name="job-level-policies"></a>作业级策略

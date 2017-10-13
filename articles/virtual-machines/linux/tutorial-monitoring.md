@@ -16,12 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 70c17d9a8f7bf6d9106efcb56eee7cd996460c18
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>如何监视和更新 Azure 中的 Linux 虚拟机
 
@@ -180,19 +179,19 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 执行验证以确定是否为该虚拟机启用了更新管理。 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
 
-Log Analytics 工作区用于收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。 若要在需要更新的虚拟机上执行其他操作，Azure 自动化可运行针对虚拟机的脚本，如下载和应用更新。
+Log Analytics 工作区用于收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。 要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化运行针对 VM 的脚本，例如下载和应用更新。
 
-此外，验证过程还会检查虚拟机是否预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。 此代理用于与虚拟机通信并获取关于更新状态的信息。 
+验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。 此代理用于与虚拟机通信并获取关于更新状态的信息。 
 
-如果未满足这些先决条件，则会显示一个横幅，以选择启用该解决方案。
+如果未满足这些先决条件，则会显示横幅，可在其中选择启用该解决方案。
 
 ![更新管理载入配置横幅](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
 
-单击横幅以启用该解决方案。 如果在验证后发现缺少下列任何先决条件，它们将自动添加：
+单击横幅以启用该解决方案。 如果在验证后发现缺少下列任何先决条件，将自动添加这些条件：
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区。
+* [Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区
 * [自动化](../../automation/automation-offering-get-started.md)
-* [混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)已在虚拟机上启用
+* VM 上已启用[混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
 “启用更新管理”屏幕随即打开。 配置设置，然后单击“启用”。
 
@@ -215,7 +214,7 @@ Log Analytics 工作区用于收集由功能和服务（如更新管理）生成
 
 * 名称 - 提供用于标识更新部署的唯一名称。
 * 要排除的更新 - 选择此项，可输入要从更新中排除的程序包的名称。
-* 计划设置 - 可以接受默认的日期和时间，即当前时间后 30 分钟，或指定不同的时间。 还可以指定部署是发生一次还是设置定期计划。 在“重复周期”下单击“重复执行”选项以设置定期计划。
+* 计划设置 - 可以接受默认的日期和时间，即当前时间后 30 分钟，或指定不同的时间。 还可以指定部署是发生一次还是设置定期计划。 单击“重复周期”下的“重复执行”选项可设置定期计划。
 
   ![更新计划设置屏幕](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
 
@@ -232,13 +231,13 @@ Log Analytics 工作区用于收集由功能和服务（如更新管理）生成
 ### <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 
 在计划的部署开始后，可以在“更新管理”屏幕的“更新部署”选项卡上查看该部署的状态。
-如果当前正在运行，则其状态显示为“正在进行”。 完成后，如果成功，其状态会更改为“已成功”。
+如果部署当前正在运行，则状态显示为“正在运行”。 完成后，如果成功，其状态会更改为“已成功”。
 如果部署中有一个或多个更新失败，则状态为“已失败”。
 单击完成的更新部署以查看该更新部署的仪表板。
 
-![更新部署状态仪表板以进行特定部署](./media/tutorial-monitoring/manage-updates-view-results.png)
+![特定部署的更新部署状态仪表板](./media/tutorial-monitoring/manage-updates-view-results.png)
 
-在“更新结果”磁贴中，是虚拟机上更新和部署结果总数的汇总。
+在“更新结果”中，磁贴总结了 VM 上更新和部署结果的总数。
 右侧的表格详细列出了每个更新的细目以及安装结果，结果可能是以下值之一：
 
 * 未尝试 - 由于定义的维护时段时长不足，因而未安装更新。
@@ -290,4 +289,3 @@ az vm extension set \
 
 > [!div class="nextstepaction"]
 > [管理 VM 安全性](./tutorial-azure-security.md)
-

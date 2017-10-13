@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的备用电池模块
 ## <a name="overview"></a>概述
@@ -49,7 +49,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | 2 |PCM 1 |
+   | #N/A |PCM 1 |
    | 3 |控制器 0 |
    | 4 |控制器 1 |
    
@@ -62,7 +62,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |交流电源故障 |
-   | 2 |风扇故障 |
+   | #N/A |风扇故障 |
    | 3 |电池故障 |
    | 4 |PCM 正常 |
    | 5 |直流电源故障 |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
 ms.openlocfilehash: 39bb294c96ce0c12d91cf8b3488ac3e1a7b2f7b2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
 > [!div class="op_single_selector"]
@@ -52,13 +52,13 @@ Azure 经典门户还允许用户[为 Azure 云服务中的角色启用远程桌
    
     如果由于代码中的兼容性要求而需要云服务在不同的操作系统版本上运行，则可选择操作系统系列和版本。 选择一个特定的操作系统版本时，云服务的自动操作系统更新便挂起。 需要确保操作系统接收更新。
    
-    如果使用最新版本的操作系统解决了应用程序中的所有兼容性问题，则可通过将操作系统版本设置成“自动”来启用自动操作系统更新。 
+    如果使用最新版本的操作系统解决了应用程序中的所有兼容性问题，则可通过将操作系统版本设置成“**自动**”来启用自动操作系统更新。 
    
     ![操作系统设置](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage_OSSettings.png)
 5. 要保存配置设置，并将其推送至角色实例，请单击“保存”。 （单击“**丢弃**”可取消更改。）更改设置后，命令栏中会出现“**保存**”和“**丢弃**”。
 
 ## <a name="update-a-cloud-service-configuration-file"></a>更新云服务配置文件
-1. 下载包含当前配置的云服务配置文件 (.cscfg)。 在云服务的“**配置**”页上，单击“**下载**”。 然后单击“保存”或“另存为”，以保存文件。
+1. 下载包含当前配置的云服务配置文件 (.cscfg)。 在云服务的“**配置**”页上，单击“**下载**”。 然后单击“**保存**”或单击“**另存为**”以保存文件。
 2. 更新服务配置文件后，上传并应用配置更新：
    
    1. 在“配置”页上，单击“上传”。

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是最简单的云服务到 Service Fabric 迁移路径。
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 ![辅助角色到无状态服务][4]
 
 ## <a name="web-role-to-stateless-service"></a>Web 角色到无状态服务
-与辅助角色类似，Web 角色也代表无状态的工作负荷，因此在概念上也能映射到 Service Fabric 无状态服务。 不过，与 Web 角色不同的是，Service Fabric 不支持 IIS。 要将 Web 应用程序从 Web 角色迁移到无状态服务，需要先移动到可以自托管且不依赖 IIS 或 System.Web 的 Web 框架（例如 ASP.NET Core 1）。
+与辅助角色类似，Web 角色也代表无状态的工作负荷，因此在概念上也能映射到 Service Fabric 无状态服务。 不过，与 Web 角色不同的是，Service Fabric 不支持 IIS。 要将 Web 应用程序从 Web 角色迁移到无状态服务，需要先移动到可以自我托管且不依赖 IIS 或 System.Web 的 Web 框架（例如 ASP.NET Core 1）。
 
 | **应用程序** | **支持** | **迁移路径** |
 | --- | --- | --- |

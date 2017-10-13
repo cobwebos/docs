@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: bb528c424bc71f0309439e741c30e16d0d13c7d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>缩放 Kubernetes Pod 和 Kubernetes 基础结构
 
 如果已按照教程执行，则你在 Azure 容器服务中具有工作 Kubernetes 群集，并且部署了 Azure 投票应用。 
@@ -160,5 +158,4 @@ az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-co
 
 > [!div class="nextstepaction"]
 > [在 Kubernetes 中更新应用程序](./container-service-tutorial-kubernetes-app-update.md)
-
 

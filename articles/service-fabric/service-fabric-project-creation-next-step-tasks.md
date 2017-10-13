@@ -12,20 +12,18 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 09/28/2017
 ms.author: rwike77
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 8208a1a41388a8cc36f3702bd0cad2bb82e16403
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 4523c63493bc9cb3f96713c4abbc1dd1da9130d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
-已创建你的 Azure Service Fabric 应用程序。 本文说明项目的构成以及有可能要执行的一些后续步骤。
+已创建 Azure Service Fabric 应用程序。 本文说明项目的构成以及有可能要执行的一些后续步骤。
 
-## <a name="your-application"></a>你的应用程序
+## <a name="your-application"></a>应用程序
 每个新应用程序都包含一个应用程序项目。 根据选择的服务类型，可能有一个或两个附加的项目。
 
 ### <a name="the-application-project"></a>应用程序项目
@@ -38,18 +36,18 @@ ms.lasthandoff: 03/31/2017
 * 用于描述应用程序的应用程序清单。 可以在 ApplicationPackageRoot 文件夹下查找清单。
 
 ### <a name="stateless-service"></a>无状态服务
-当添加新的无状态服务时，Visual Studio 将在解决方案中添加一个服务项目，其中包含继承自 `StatelessService` 的类型。 该服务将递增计数器中的本地变量。
+当添加新的无状态服务时，Visual Studio 会在解决方案中添加一个服务项目，其中包含继承自 `StatelessService` 的类型。 该服务将递增计数器中的本地变量。
 
 ### <a name="stateful-service"></a>有状态服务
-当添加新的有状态服务时，Visual Studio 将在解决方案中添加一个服务项目，其中包含继承自 `StatefulService` 的类型。 该服务将在其 `RunAsync` 方法中递增计数器，并将结果存储在 `ReliableDictionary` 中。
+当添加新的有状态服务时，Visual Studio 会在解决方案中添加一个服务项目，其中包含继承自 `StatefulService` 的类型。 该服务会在其 `RunAsync` 方法中递增计数器，并将结果存储在 `ReliableDictionary` 中。
 
 ### <a name="actor-service"></a>执行组件服务
-当你添加新的可靠执行组件时，Visual Studio 会将两个项目添加到你的解决方案：执行组件项目和接口项目。
+添加新的可靠执行组件时，Visual Studio 会将两个项目添加到解决方案：执行组件项目和接口项目。
 
 执行组件项目提供所需的方法用于设置和获取可靠保存在执行组件状态中的计数器的值。 接口项目提供其他服务可用来调用执行组件的接口。
 
 ### <a name="stateless-web-api"></a>无状态 Web API
-无状态 Web API 项目提供一个基本 Web 服务，可用于向外部客户端打开你的应用程序。 有关如何构建该项目的信息，请参阅 [Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)。
+无状态 Web API 项目提供一个基本 Web 服务，可用于向外部客户端打开应用程序。 有关如何构建该项目的信息，请参阅 [Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)。
 
 
 ### <a name="aspnet-core"></a>ASP.NET core
@@ -64,7 +62,7 @@ Service Fabric“来宾”是指不使用平台编程模型生成的服务。 �
 Service Fabric SDK 提供一个用于开发和测试的本地群集。 若要在 Azure 中创建群集，请参阅[从 Azure 门户设置 Service Fabric 群集][create-cluster-in-portal]。
 
 ### <a name="publish-your-application-to-azure"></a>将应用程序发布到 Azure
-可以直接从 Visual Studio 将应用程序发布到 Azure 群集。 若要了解操作方法，请参阅[将应用程序发布到 Azure][publish-app-to-azure]。
+可以直接从 Visual Studio 将应用程序发布到 Azure 群集。 要了解操作方法，请参阅[将应用程序发布到 Azure][publish-app-to-azure]。
 
 ### <a name="use-service-fabric-explorer-to-visualize-your-cluster"></a>使用 Service Fabric Explorer可视化群集
 Service Fabric Explorer 提供一种用于可视化群集（包括已部署的应用程序和物理布局）的简易方法。 有关详细信息，请参阅[使用 Service Fabric Explorer 可视化群集][visualize-with-sfx]。
@@ -85,4 +83,3 @@ Service Fabric 支持单独对应用程序中的独立服务进行版本控制�
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 [aspnet-webapi]: https://docs.asp.net/en/latest/tutorials/first-web-api.html
 [aspnet-webapp]: https://docs.asp.net/en/latest/tutorials/first-mvc-app/index.html
-

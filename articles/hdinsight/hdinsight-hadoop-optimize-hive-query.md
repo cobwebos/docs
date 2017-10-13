@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 04/26/2016
 ms.author: jgao
 ms.openlocfilehash: edbf797e6277a65b5311e4939f5ab72776b11557
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Hive 查询
 
@@ -90,8 +90,7 @@ Hive 分区的实现方法是将未经处理的数据刷新成新的目录，而
 
 创建分区表后，可以创建静态分区或动态分区。
 
-* 
-            **静态分区**表示已在相应目录中创建了分片数据，可以请求根据目录位置在 Hive 中手动分区。 以下代码片段是一个示例。
+* **静态分区**表示已在相应目录中创建了分片数据，可以请求根据目录位置在 Hive 中手动分区。 以下代码片段是一个示例。
   
         INSERT OVERWRITE TABLE lineitem_part
         PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
@@ -100,8 +99,7 @@ Hive 分区的实现方法是将未经处理的数据刷新成新的目录，而
   
         ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
         LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
-* 
-            **动态分区**表示希望 Hive 自动创建分区。 由于已基于暂存表创建了分区表，因此需要做的就是将数据插入分区表：
+* **动态分区**表示希望 Hive 自动创建分区。 由于我们已基于暂存表创建了分区表，因此我们需要做的就是将数据插入分区表：
   
         SET hive.exec.dynamic.partition = true;
         SET hive.exec.dynamic.partition.mode = nonstrict;

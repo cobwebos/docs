@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
+ms.openlocfilehash: bd9289ea528c3a80f63380daf52161d2477a6771
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 174e06402dce9d1707df5a3b4a9a6087da841f40
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 本主题概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 移动到 Azure 虚拟机上的 SQL Server 的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
@@ -214,4 +213,3 @@ SQL Server Management Studio 中的数据库备份/还原选项的屏幕快照�
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png
-

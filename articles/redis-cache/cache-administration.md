@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: sdanie
 ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 
 * **主** - 重新启动主节点时，Azure Redis 缓存将故障转移到副本节点，并将其提升为主节点。 在此故障转移期间，可能会有一个较短的时间间隔无法连接到缓存。
 * **从属** - 重新启动从属节点时，通常不会影响缓存客户端。
-* **主和从属** - 同时重新启动这两个缓存节点时，缓存中的所有数据将丢失，并且无法连接到缓存，直到主节点重新联机。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在最新备份后发生的所有缓存写入都将丢失。
+* **主和从属** - 同时重新启动这两个缓存节点时，缓存中的所有数据将丢失，并且无法连接到缓存，直到主节点重新联机。 如果已配置 [数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在最新备份后发生的所有缓存写入都将丢失。
 * **已启用群集的高级缓存的节点** - 重新启动已启用群集的高级缓存的一个或多个节点时，所选节点的行为与重新启动非群集缓存的对应节点时相同。
 
 > [!IMPORTANT]
@@ -61,17 +61,17 @@ ms.lasthandoff: 07/11/2017
 若要针对缓存的主节点故障测试应用程序的复原能力，请重新启动**主**节点。 若要针对辅助节点的故障测试应用程序的复原能力，请重新启动**从属**节点。 若要针对缓存的总故障测试应用程序的复原能力，请同时重新启动这**两个**节点。
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>能否通过重新启动缓存来清除客户端连接？
-能，如果重新启动缓存，将清除所有客户端连接。 当所有客户端连接均已用完（由于客户端应用程序中的逻辑错误或 bug）时，重新启动会很有用。 每个定价层对于不同大小都有不同的[客户端连接数限制](cache-configure.md#default-redis-server-configuration)，达到这些限制后，将不再接受客户端连接。 通过重新启动缓存可以清除所有客户端连接。
+能，如果重新启动缓存，将清除所有客户端连接。 当所有客户端连接均已用完（由于客户端应用程序中的逻辑错误或 bug）时，重新启动会很有用。 每个定价层对于不同大小都有不同的[客户端连接数限制](cache-configure.md#default-redis-server-configuration)，达到这些限制后，不再接受客户端连接。 通过重新启动缓存可以清除所有客户端连接。
 
 > [!IMPORTANT]
-> 如果通过重新启动缓存来清除客户端连接，则一旦 Redis 节点重回联机状态，StackExchange.Redis 就会自动重新连接。 如果未解决这一基本问题，客户端连接会继续用完。
+> 如果重新启动缓存以清除客户端连接，StackExchange.Redis 会在 Redis 节点重新联机后自动重新连接。 如果未解决这一基本问题，客户端连接可能将继续用完。
 > 
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>如果我执行重新启动，是否会丢失缓存中的数据？
-如果同时重新启动**主**节点和**从属**节点，则缓存中或该分片中（如果用户使用的是已启用群集的高级缓存）的所有数据都会丢失。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
+如果同时重新启动**主**节点和**从属**节点，则缓存中或该分片中（如果用户使用的是已启用群集的高级缓存）的所有数据都会丢失。 如果已配置 [数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
 
-如果只重新启动其中一个节点，数据通常不会丢失，但仍可能会丢失。 例如，如果重新启动主节点时正在进行缓存写入，则缓存写入的数据会丢失。 发生数据丢失的另一种情况是，重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)（Redis 中的数据发生了什么情况？）
+如果只重新启动其中一个节点，数据通常不会丢失，但仍可能会丢失。 例如，如果重新启动主节点时正在进行缓存写入，则缓存写入的数据将丢失。 发生数据丢失的另一种情况是，重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)（Redis 中的数据发生了什么情况？）
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>能否使用 PowerShell、CLI 或其他管理工具重新启动缓存？
 能，有关 PowerShell 说明，请参阅[重新启动 Redis 缓存](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache)。

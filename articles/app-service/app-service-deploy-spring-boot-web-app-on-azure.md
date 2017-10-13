@@ -14,14 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 8776142d5452bf5057990702c89aa1a541382ffc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-spring-boot-application-to-the-azure-app-service"></a>将 Spring Boot 应用程序部署到 Azure 应用服务
 
 [Spring Framework] 是一种开源解决方案，帮助 Java 开发者创建企业级应用程序，在该平台上构建的较常见的项目之一是 [Spring Boot]，它为创建独立的 Java 应用程序提供了一种简化的方法。
@@ -52,7 +50,7 @@ ms.lasthandoff: 09/20/2017
    cd /users/robert/SpringBoot
    ```
 
-1. 将 [Spring Boot 启动入门] 示例项目克隆到刚刚创建的目录；例如：
+1. 将 [Spring Boot 启动入门]示例项目克隆到刚刚创建的目录；例如：
    ```
    git clone https://github.com/spring-guides/gs-spring-boot.git
    ```
@@ -243,4 +241,3 @@ ms.lasthandoff: 09/20/2017
 [AZ08]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ08.png
 [AZ09]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ09.png
 [AZ10]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ10.png
-

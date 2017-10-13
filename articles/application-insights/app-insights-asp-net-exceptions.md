@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: bwren
+ms.openlocfilehash: d7603f47d985e1abbab96e931e46e37a8ecb4bc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: 6baffb1fb14a3b7ede5a754029b9efbaf543ea07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -33,8 +32,8 @@ ms.lasthandoff: 09/21/2017
 * 在某些应用程序框架中或者使用某些设置时，需要执行一些额外的步骤来捕获异常：
   * [Web 窗体](#web-forms)
   * [MVC](#mvc)
-  * [Web API 1*](#web-api-1)
-  * [Web API 2*](#web-api-2)
+  * [Web API 1*](#web-api-1x)
+  * [Web API 2*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>使用 Visual Studio 诊断异常
@@ -81,8 +80,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 有几种选项：
 
 * [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](app-insights-diagnostic-search.md)所依据的字符串属性和数值指标。
-* 
-            [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) 允许发送较长的数据，例如 POST 信息。
+* [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) 允许发送较长的数据，例如 POST 信息。
 * [TrackException()](#exceptions) 可发送堆栈跟踪。 [有关异常的详细信息](#exceptions)。
 * 如果已使用 Log4Net 或 NLog 等记录框架，可以[捕获这些日志](app-insights-asp-net-trace-logs.md)并在诊断搜索中查看它们以及请求和异常数据。
 
@@ -446,4 +444,3 @@ VB
 * [监视 REST、SQL 以及其他对依赖项的调用](app-insights-asp-net-dependencies.md)
 * [监视器页面加载时间、浏览器异常和 AJAX 调用](app-insights-javascript.md)
 * [监视性能计数器](app-insights-performance-counters.md)
-

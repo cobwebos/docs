@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bd0ddfcffdb6f946f9a3786f3d0add1740be861b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="energy-demand-time-series-forecasting"></a>能源需求时序预测
 
 
@@ -55,7 +53,7 @@ Azure Machine Learning Workbench 能够为过程建模的每个步骤提供帮�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 [Azure 帐户](https://azure.microsoft.com/free/)（可以使用免费试用帐户）。
+- [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
 - 遵循[安装快速入门指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
 - 本示例假设在本地装有 [Docker 引擎](https://www.docker.com/)的 Windows 10 上运行 Azure ML Workbench。 如果使用 macOS，操作说明大致相同。
 - 已根据此[指南](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md)中所述，设置了装有本地开发环境的 Azure 机器学习操作化，并创建了模型管理帐户。
@@ -69,7 +67,7 @@ Azure Machine Learning Workbench 能够为过程建模的每个步骤提供帮�
     
 ## <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目
 
-将本示例用作模板，创建新的项目：
+使用本示例作为模板，创建一个新项目：
 1.  打开 Azure Machine Learning Workbench
 2.  在“项目”页上单击 + 号，然后选择“新建项目”
 3.  在“新建项目”窗格中，填写新项目的信息
@@ -195,4 +193,3 @@ python evaluate-all-models.py
 本示例演示了如何生成端到端时序预测解决方案用于预测能源需求。 可将本示例中探讨的许多原理延伸到其他预测方案和行业。
 
 本方案演示了 Azure Machine Learning Workbench 如何通过 Jupyter Notebook 环境和指标日志记录等功能，帮助数据科学家开发真实解决方案。 本示例还引导读者了解如何使用 Azure 机器学习操作化 CLI 来操作化和部署模型。 部署后，Web 服务 API 可让开发人员或数据工程师将预测模型集成到更广泛的数据管道中。
-

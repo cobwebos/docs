@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>示例 2 – 构建外围网络以通过防火墙和 NSG 保护应用程序
 [返回安全边界最佳实践页面][HOME]
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/11/2017
 上述 NSG 规则与[示例 1 - 使用 NSG 构建简单的外围网络][Example1]中的 NSG 规则非常相似。 请查看该文档中的 NSG 说明，详细了解每个 NSG 规则及其属性。
 
 ## <a name="firewall-rules"></a>防火墙规则
-电脑上必须安装管理客户端才能管理防火墙和创建所需的配置。 有关如何管理设备的信息，请参阅防火墙（或其他 NVA）供应商提供的文档。 本部分的其余内容将介绍如何通过供应商的管理客户端（即，不使用 Azure 门户或 PowerShell）来配置防火墙本身。
+电脑上必须安装管理客户端才能管理防火墙和创建所需的配置。 有关如何管理设备的信息，请参阅防火墙（或其他 NVA）供应商提供的文档。 本部分的其余内容介绍如何通过供应商的管理客户端（即，不使用 Azure 门户或 PowerShell）来配置防火墙本身。
 
 有关下载客户端和连接到本示例所用 Barracuda 的说明，可在以下位置找到：[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/11/2017
 
 创建一条新规则并为其命名，例如“WebTraffic”。 
 
-目标 NAT 规则图标类似于： ![目标 NAT 图标][2]
+“目标 NAT 规则”图标类似于：![“目标 NAT”图标][2]
 
 规则的外观类似于：
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 07/11/2017
 
 另外，对于“来自 Internet 的目标规则”，还要指明连接方法，最好选择“动态 SNAT”。 
 
-尽管只创建了一条规则，但正确设置其优先级仍然很重要。 如果在防火墙上所有规则的网格中，此新规则位于底部（在“BLOCKALL”规则之下），它将永远不会派上用场。 请确保针对 Web 流量新建的规则位于 BLOCKALL 规则之上。
+尽管只创建了一条规则，但正确设置其优先级仍然很重要。 如果在防火墙上所有规则的网格中，此新规则位于底部（在“BLOCKALL”规则之下），它将永远不会起作用。 请确保针对 Web 流量新建的规则位于 BLOCKALL 规则之上。
 
 创建规则后，必须将其推送到防火墙并激活，否则，规则更改不会生效。 以下部分介绍了推送和激活过程。
 

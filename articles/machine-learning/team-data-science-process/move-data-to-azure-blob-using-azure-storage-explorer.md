@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 12caf933b04258065039a51f45d531a30865f8d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器将数据移入和移出 Azure Blob 存储
 Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Windows、macOS 和 Linux 上处理 Azure 存储数据。 本主题介绍如何使用它从 Azure Blob 存储上传和下载数据。 该工具可以从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)下载。
@@ -55,5 +54,4 @@ Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Wi
 7. 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![存储帐户](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
 8. 单击“文件”框右侧的“...”，选择要从文件系统上载的一个或多个文件，并单击“上载”开始上载文件。![上载文件](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. 要下载数据，请在相应容器中选择要下载的 blob，并单击“**下载**”。 ![下载文件](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
-
 

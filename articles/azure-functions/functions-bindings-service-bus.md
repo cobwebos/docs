@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: glenga
+ms.openlocfilehash: 71149aaacc940a62e085cf1ce103a0214d05bd1c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 58b6d5c6ef40891e56ea4811f5e778286bdb8bc3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Functions 服务总线绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -68,13 +67,13 @@ Azure Functions 支持对服务总线队列和主题的触发器和输出绑定�
 
 注意以下事项：
 
-* 对于 `connection`，[在函数应用中创建一个应用设置](functions-how-to-use-azure-function-app-settings.md)，其中包含指向服务总线命名空间的连接字符串，然后在触发器的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
+* 对于 `connection`，[在函数应用中创建一个应用设置](functions-how-to-use-azure-function-app-settings.md)，其中包含指向服务总线命名空间的连接字符串，并在触发器的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
   必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。
   如果将 `connection` 留空，触发器假定已在名为 `AzureWebJobsServiceBus` 的应用设置中指定默认服务总线连接字符串。
 * 对于 `accessRights`，可用的值是 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为 `listen`。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。
 
 ## <a name="trigger-behavior"></a>触发器行为
-* **单线程** - 默认情况下，Functions 运行时同时处理多个消息。 若要指示运行时一次只处理单个队列或主题消息，请在 host.json 中将 `serviceBus.maxConcurrentCalls` 设置为 1。 
+* **单线程** - 默认情况下，Functions 运行时同时处理多个消息。 要指示运行时一次只处理单个队列或主题消息，请在 host.json 中将 `serviceBus.maxConcurrentCalls` 设置为 1。 
   有关 host.json 的信息，请参阅[文件夹结构](functions-reference.md#folder-structure)和 [host.json](https://github .com/Azure/azure-webjobs-sdk-script/wiki/host.json)。
 * **有害消息处理** - 服务总线执行自己的有害消息处理，此操作无法在 Azure Functions 配置或代码中控制或配置。 
 * **PeekLock 行为** - Functions 运行时接收 [`PeekLock` 模式](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) 的消息，并且在函数成功完成时，对此消息调用 `Complete`；如果函数失败，则调用 `Abandon`。 
@@ -185,7 +184,7 @@ module.exports = function(context, myQueueItem) {
 
 注意以下事项：
 
-* 对于 `connection`，[在函数应用中创建一个应用设置](functions-how-to-use-azure-function-app-settings.md)，其中包含指向服务总线命名空间的连接字符串，然后在输出绑定的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
+* 对于 `connection`，[在函数应用中创建一个应用设置](functions-how-to-use-azure-function-app-settings.md)，其中包含指向服务总线命名空间的连接字符串，并在输出绑定的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
   必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。
   如果将 `connection` 留空，输出绑定假定已在名为 `AzureWebJobsServiceBus` 的应用设置中指定默认服务总线连接字符串。
 * 对于 `accessRights`，可用的值是 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为 `listen`。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。
@@ -302,5 +301,4 @@ module.exports = function (context, myTimer) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

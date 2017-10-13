@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 网络观察程序安全组视图分析网络安全性 - PowerShell | Microsoft 文档"
-description: "本文将介绍如何使用 PowerShell 通过安全组视图分析虚拟机安全性。"
+description: "本文介绍如何使用 PowerShell 通过安全组视图分析虚拟机安全性。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 363fdd9f1de933bb4050f91e1e111aaf3e419058
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 3983055cd580c263d39b908c61a16ed14353c9a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>使用 PowerShell 通过安全组视图分析虚拟机安全性
 
 > [!div class="op_single_selector"]
@@ -36,7 +34,7 @@ ms.lasthandoff: 05/26/2017
 
 在此方案中，运行 `Get-AzureRmNetworkWatcherSecurityGroupView` cmdlet 检索安全规则信息。
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 ## <a name="scenario"></a>方案
 
@@ -131,6 +129,5 @@ NetworkInterfaces : [
 ## <a name="next-steps"></a>后续步骤
 
 请访问[使用网络观察程序审核网络安全组 (NSG)](network-watcher-nsg-auditing-powershell.md)，了解如何自动执行网络安全组的验证。
-
 
 

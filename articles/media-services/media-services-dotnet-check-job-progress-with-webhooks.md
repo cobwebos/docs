@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知
 运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用 Azure Webhook 或 [Azure 队列存储](media-services-dotnet-check-job-progress-with-queues.md)监视媒体服务作业通知。 本主题演示如何使用 Webhook。
@@ -46,7 +45,7 @@ ms.lasthandoff: 08/31/2017
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 了解[如何使用 Azure Functions](../azure-functions/functions-overview.md)。 另请查看 [Azure Functions HTTP 和 Webhook 绑定](../azure-functions/functions-bindings-http-webhook.md)。
 
-## <a name="create-a-function-app"></a>创建 Function App
+## <a name="create-a-function-app"></a>创建函数应用
 
 1. 转到 [Azure 门户](http://portal.azure.com)，然后使用 Azure 帐户登录。
 2. 根据[此文](../azure-functions/functions-create-function-app-portal.md)中所述创建 Function App。
@@ -57,7 +56,7 @@ ms.lasthandoff: 08/31/2017
 
 [应用程序设置](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)部分定义了本主题中所定义的 Webhook 中使用的参数。 还向应用设置添加以下参数。 
 
-|名称|定义|示例| 
+|Name|定义|示例| 
 |---|---|---|
 |SigningKey |签名密钥。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | webhook 终结点地址。 Webhook 函数创建后即可从“获取函数 URL”链接中复制 URL。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
@@ -513,4 +512,3 @@ Webhook 触发后，上述示例会生成以下输出，值会有所变化。
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: haining
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9d1fcc761115c64fafb811d6ca1c2389babfdc15
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的应用程序生命周期管理
 Azure 机器学习工作室是一个在 Azure 云平台中运行的工具，用于开发机器学习实验。 它类似于将 Visual Studio IDE 和可缩放云服务合并到单个平台。 可以将标准的应用程序生命周期管理 (ALM) 实践（从各种资产的版本管理到自动执行和部署）合并到 Azure 机器学习工作室中。 本文介绍一些选项和方法。
@@ -101,4 +100,3 @@ ALM 的一个重要方面是能够自动化应用程序的执行和部署过程�
 * 下载 [Azure 机器学习工作室 PowerShell](http://aka.ms/amlps) 模块，并开始自动执行 ALM 任务。
 * 了解如何通过 PowerShell 和重新训练 API，[只使用单个实验创建和管理大量 ML 模型](create-models-and-endpoints-with-powershell.md)。
 * 详细了解如何[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
-

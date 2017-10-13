@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: d09f59715ac4dac1482e6ca5f79e8426f1f01ced
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-container-images-to-be-used-with-azure-container-service"></a>创建要与 Azure 容器服务一起使用的容器映像
 
 在本教程的第 1 部分（共 7 部分），将准备一个要在 Kubernetes 中使用的多容器应用程序。 已完成的步骤包括：  
@@ -142,4 +140,3 @@ docker-compose down
 
 > [!div class="nextstepaction"]
 > [向 Azure 容器注册表推送映像](./container-service-tutorial-kubernetes-prepare-acr.md)
-

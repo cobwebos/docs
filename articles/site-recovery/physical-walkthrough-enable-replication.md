@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
 ms.openlocfilehash: 42f35c53eec06a346281fd90c97aecfd2269307d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-10-enable-replication-for-physical-servers-to-azure"></a>步骤 10：将物理服务器复制到 Azure
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="before-you-start"></a>开始之前
 
 - 服务器必须[安装有移动服务组件](physical-walkthrough-install-mobility.md)。
-- 如果已为推送安装准备了 VM，那么在启用复制时，进程服务器自动安装移动服务。
+- 如果已为推送安装准备了 VM，那么在启用复制时，进程服务器会自动安装移动服务。
 - 启用计算机的复制时，你的 Azure 用户帐户需要特定[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)来确保你能够使用 Azure 存储并创建 Azure VM。
 - 添加或修改服务器的 IP 地址时，可能需要 15 分钟或更长时间，更改才会生效并显示在门户中。
 
@@ -44,20 +44,20 @@ ms.lasthandoff: 07/11/2017
 1. 单击“步骤 2: 复制应用程序” > “源”。
 2. 在“源”中选择配置服务器。
 3. 在“计算机类型”中选择“物理计算机”。
-4. 选择进程服务器。 如果尚未创建任何额外的进程服务器，该进程服务器将是配置服务器。 。
+4. 选择进程服务器。 如果尚未创建任何额外的进程服务器，该进程服务器将是配置服务器。 然后单击“确定”。
 5. 在“目标”中，选择要创建故障转移 VM 的订阅和资源组。 选择要在 Azure 中用于故障转移 VM 的部署模型（经典或资源管理）。
 6. 选择要用于复制数据的 Azure 存储帐户。 如果不想使用已设置的帐户，可以创建一个新帐户。
 7. 选择 Azure VM 在故障转移后所要连接的 Azure 网络和子网。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 如果不想使用现有网络，可以创建一个网络。
 
     ![启用复制](./media/physical-walkthrough-enable-replication/targetsettings.png)
 
-8. 在“物理计算机”中，单击“+物理计算机”，然后输入“名称”和“IP 地址”。 选择要复制的计算机的操作系统。 发现计算机并将其显示在列表中需要几分钟。
+8. 在“物理机”中，单击“+物理机”，并输入“名称”和“IP 地址”。 选择要复制的计算机的操作系统。 发现计算机并将其显示在列表中需要几分钟。
 9. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
-10. 默认情况下会复制所有磁盘。 单击“所有磁盘”并清除不想要复制的所有磁盘。 。 可以稍后再设置其他 VM 属性。
+10. 默认情况下会复制所有磁盘。 单击“所有磁盘”并清除不想要复制的所有磁盘。 然后单击“确定”。 可以稍后再设置其他 VM 属性。
 
     ![启用复制](./media/physical-walkthrough-enable-replication/enable-replication6.png)
 11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 如果修改策略，更改将应用到复制计算机和新计算机。
-12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 。 请注意：
+12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 然后单击“确定”。 请注意：
 
     * 复制组中的计算机将一起复制，并在故障转移时具有在崩溃时保持一致且应用保持一致的共享恢复点。
     * 我们建议你将物理服务器集合在一起，使其镜像你的工作负荷。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且需要一致性时，才应使用该设置。

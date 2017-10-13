@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
 ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 
 流量管理器由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Microsoft DNS 服务器中的记录将保留不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
 
-DNS 名称解析速度会加快，结果将被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果按照 DNS 生存时间 (TTL) 的持续时间缓存。 流量管理器的默认 TTL 为 300 秒。
+DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果按照 DNS 生存时间 (TTL) 的持续时间缓存。 流量管理器的默认 TTL 为 300 秒。
 
 流量不会通过流量管理器。 完成 DNS 查找后，客户端便获得了网站实例的 IP 地址。 客户端直接连接到该地址，而不通过流量管理器。 选择的流量管理器策略对 DNS 性能没有影响。 但是，“性能”路由方法可能会对应用程序体验产生负面影响。 例如，如果策略将来自北美的流量重定向到亚洲托管的实例，与这些会话之间的网络延迟可能会造成性能问题。
 

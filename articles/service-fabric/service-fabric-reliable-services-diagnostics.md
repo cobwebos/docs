@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
 ms.openlocfilehash: 63a7707f16bbf037c0c91da1d02093e2314dc06e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 | 事件名称 | 事件 ID | 级别 | 事件说明 |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |信息性 |在服务 RunAsync 任务启动时发出 |
-| StatefulRunAsyncCancellation |2 |信息性 |在服务 RunAsync 任务取消时发出 |
+| StatefulRunAsyncCancellation |#N/A |信息性 |在服务 RunAsync 任务取消时发出 |
 | StatefulRunAsyncCompletion |3 |信息性 |在服务 RunAsync 任务完成时发出 |
 | StatefulRunAsyncSlowCancellation |4 |警告 |在服务 RunAsync 任务完成取消所用时间过长时发出 |
 | StatefulRunAsyncFailure |5 |错误 |在服务 RunAsync 任务引发异常时发出 |

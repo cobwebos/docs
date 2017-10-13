@@ -1,6 +1,6 @@
 ---
-title: "桥 Android WebView 与本机 Mobile Engagement Android SDK"
-description: "描述如何创建 WebView 运行 Javascript 和本机 Mobile Engagement Android SDK 之间的桥梁"
+title: "使用原生 Mobile Engagement Android SDK 桥接 Android WebView"
+description: "介绍如何在运行 Javascript 的 WebView 和原生 Mobile Engagement Android SDK 之间创建网桥"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>桥 Android WebView 与本机 Mobile Engagement Android SDK
+# <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>使用原生 Mobile Engagement Android SDK 桥接 Android WebView
 > [!div class="op_single_selector"]
-> * [Android 桥](mobile-engagement-bridge-webview-native-android.md)
-> * [iOS 桥](mobile-engagement-bridge-webview-native-ios.md)
+> * [Android 网桥](mobile-engagement-bridge-webview-native-android.md)
+> * [iOS 网桥](mobile-engagement-bridge-webview-native-ios.md)
 > 
 > 
 
-某些移动应用程序，旨在用作其中使用本机 Android 开发开发该应用程序自身但 Android WebView 中呈现的部分或甚至全部屏幕的混合应用。 你仍可以在此类应用程序中使用 Mobile Engagement Android SDK 和本教程介绍如何执行此操作。 下面的示例代码基于 Android 文档[此处](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)。 它介绍如何无法使用此有案可稽的方法来实现相同的移动服务 Android SDK 的常用方法，以便从混合应用 Webview 还可以通过我们的 Android SDK 通过管道将它们同时启动到跟踪事件、 作业、 错误、 应用程序信息的请求。 
+一些移动应用被设计为混合应用，其中应用本身是使用原生 Android 开发所开发的，但一些或者甚至所有的屏幕都会在 Android WebView 中呈现。 仍然可以在这些应用中使用 Mobile Engagement Android SDK，本教程介绍如何进行此操作。 以下代码示例基于[此处](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)的 Android 文档。 本文档介绍了如何使用这种文档化的方法来实现 Mobile Engagement Android SDK 的常用方法，以便在通过 Android SDK 发送事件、作业、错误和应用信息时，混合应用的 Webview 也可以发起跟踪它们的请求。 
 
-1. 首先，你需要确保你已经通过我们[入门教程](mobile-engagement-android-get-started.md)集成 Mobile Engagement 混合应用程序中的 Android SDK。 一旦你做，你`OnCreate`方法将如下所示。  
+1. 首先，需要确保已完成我们的[入门教程](mobile-engagement-android-get-started.md)，以便在混合应用中集成 Mobile Engagement Android SDK。 完成入门教程后，`OnCreate` 方法将如下所示。  
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ ms.lasthandoff: 07/11/2017
             engagementConfiguration.setConnectionString("<Mobile Engagement Conn String>");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
         }
-2. 现在，请确保你的混合应用程序对其具有与 WebView 屏幕。 它的代码将类似于以下我们要在其中加载本地的 HTML 文件**Sample.html**中 Webview 中`onCreate`屏幕的方法。 
+2. 现在请确保混合应用有一个包含 Web 视图的屏幕。 其代码将类似于以下内容，我们会在屏幕的 `onCreate` 方法的 Webview 中加载本地 HTML 文件 **Sample.html**。 
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
             ...
             SetWebView();
         }
-3. 现在，创建名为的桥文件**WebAppInterface**这对某些中通常创建包装器使用 Mobile Engagement Android SDK 方法使用`@JavascriptInterface`方法中所述[Android 文档](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript):
+3. 现在创建一个名为 **WebAppInterface** 的网桥文件，它使用 [Android 文档](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)中所述的 `@JavascriptInterface` 方法在一些常用的 Mobile Engagement Android SDK 方法之间创建了一个包装器：
    
         import android.content.Context;
         import android.os.Bundle;
@@ -110,7 +110,7 @@ ms.lasthandoff: 07/11/2017
                 return extras;
             }
         }  
-4. 一旦我们已经创建了上述的桥文件，我们需要确保与我们 Webview 关联。 对于这种情况，你需要编辑你`SetWebview`方法，以便它如下所示：
+4. 在创建上述网桥文件后，我们需要确保它与我们的 Webview 关联。 为了实现关联，需要编辑 `SetWebview` 方法，使其看上去如下所示：
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -119,8 +119,8 @@ ms.lasthandoff: 07/11/2017
             webSettings.setJavaScriptEnabled(true);
             myWebView.addJavascriptInterface(new WebAppInterface(this), "EngagementJs");
         }
-5. 在上面的段中，我们调用`addJavascriptInterface`要与我们 Webview 关联我们桥的类和还创建名为的句柄**EngagementJs**从桥文件调用方法。 
-6. 现在创建以下文件调用**Sample.html**在你的项目文件夹中名为**资产**它将被加载到 Webview 和我们将从桥文件调用的方法。
+5. 在上面的代码段中，我们调用 `addJavascriptInterface` 以将网桥类与 Webview 相关联，还创建了一个名为 **EngagementJs** 的句柄，以便从网桥文件中调用这些方法。 
+6. 现在，在项目中名为 **assets** 的文件夹中创建一个名为 **Sample.html** 的以下文件，该文件将加载到 Webview 中并且我们会从其中调用网桥文件的方法。
    
         <!doctype html>
         <html>
@@ -197,16 +197,16 @@ ms.lasthandoff: 07/11/2017
                 </div>
             </body>
         </html>
-7. 请注意上面的 HTML 文件有关的以下几点：
+7. 关于上述 HTML 文件，请注意以下几点：
    
-   * 它包含一组提供作为你事件、 作业、 错误、 应用程序信息的名称使用的数据的位置的输入框。 单击它旁边的按钮时，对 Javascript 的最终要传递到移动服务 Android SDK 此调用的桥文件从调用的方法进行调用。 
-   * 我们将标记上对事件、 作业和甚至错误，以演示如何这样做一些静态额外信息。 此额外信息会发送 JSON 字符串，如果你查看`WebAppInterface`文件、 分析并置于 Android`Bundle`和以及发送事件，作业，错误传递。 
-   * 移动用户参与策略作业将启动与在输入框中，指定为 10 秒运行和关闭的名称。 
-   * Mobile Engagement appinfo 或标记与女士作为静态的密钥，你输入中的值为输入标记的值一起传递。 
-8. 运行应用程序，你将看到以下。 现在提供如下所示的测试事件某个名称，然后单击**发送**它下面。 
+   * 它包含一组输入框，可以在其中提供要用作事件、作业、错误和应用信息的名称的数据。 在单击它旁边的按钮时，将调用 Javascript，最终调用桥接文件中的方法将此调用传递到 Mobile Engagement Android SDK。 
+   * 我们对事件、作业和甚至是错误标记某些静态额外信息，以演示这是如何完成的。 如果查看 `WebAppInterface` 文件，此额外信息会以 JSON 字符串形式发送，JSON 字符串会经过解析并放入 Android `Bundle`中，并在发送事件、作业和错误时一起传递。 
+   * 启动一个 Mobile Engagement 作业，名称在输入框中指定的名称，运行 10 秒并关闭。 
+   * 系统会传递 Mobile Engagement 应用信息或标记，以“customer name”作为静态密钥，并会在输入框中输入的值作为标记的值。 
+8. 运行该应用，会看到以下内容。 现在为测试事件提供一些名称，如下所示，并单击其下方的“**发送**”。 
    
     ![][1]
-9. 现在，如果你转到**监视器**的应用和下的外观的选项卡**事件-> 详细信息**，你将看到显示静态应用程序的信息就向您发送以及此事件。 
+9. 如果现在转到应用的“**监视器**”选项卡，查看“**事件 -> 详细信息**”，会看到此事件以及我们发送的静态应用信息。 
    
    ![][2]
 

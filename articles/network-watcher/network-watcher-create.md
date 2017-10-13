@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 2aeaffdd5ab552e18677cbd1a24a748dd14bf172
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: 687e5b65e89ae2a79d8e9aa5c4345c91b4943d3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
 网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 使用方案级别监视可以诊断端到端网络级别视图的问题。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
@@ -77,7 +75,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已有网络观察程序实例，请了解可用功能：
+现在，已有网络观察程序实例，请了解可用功能：
 
 * [拓扑](network-watcher-topology-overview.md)
 * [数据包捕获](network-watcher-packet-capture-overview.md)
@@ -90,7 +88,6 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 创建网络观察程序实例后，可以按照[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)一文配置包捕获
 
 [1]: ./media/network-watcher-create/figure1.png
-
 
 
 

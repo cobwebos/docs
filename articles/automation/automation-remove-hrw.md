@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte
+ms.openlocfilehash: 68031ba2ce5c47870c3e60dc469dcda2971b4d87
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: bf4f7befa4a66b739e72d0ea3d632b95f9b31c47
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="remove-azure-automation-hybrid-runbook-workers"></a>删除 Azure 自动化混合 Runbook 辅助角色
 
 可以 

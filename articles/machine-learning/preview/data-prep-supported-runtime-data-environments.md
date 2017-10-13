@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 02e0ca96bff7781c242b4c5e965b229065e71725
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-matrix-for-this-release"></a>针对此版本的支持矩阵 
 如果获取任一 Pandas 或 Spark 数据帧，那么当代码使用数据源或数据准备加载数据时，以下试验计算环境和数据位置的组合将受到支持：
@@ -39,4 +38,3 @@ ms.lasthandoff: 09/25/2017
 **使用 Maven JDBC SQL Server 驱动程序 6.2.1。 必须确保此包（或一个兼容包）包含在计算环境的 spark_dependencies.yml 文件中。
 
 ***假如可从计算环境访问数据库，则支持 Azure SQL 数据库、Azure SQL 数据仓库或 Microsoft SQL Server。 
-

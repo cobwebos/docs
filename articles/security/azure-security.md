@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 54bbd7dd1d0ecad79f86e0ab16be3a48854093ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
 我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 将 Azure 用于应用程序和服务的最合理原因之一是可以利用其各种安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 提供具备保密性、完整性和可用性的客户数据，同时还能实现透明的问责制。
@@ -202,8 +200,7 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 #### <a name="route-control-and-forced-tunneling"></a>路由控制和强制隧道
 在 Azure 虚拟网络上控制路由行为的能力是关键的网络安全和访问控制功能。 例如，如果要确保与 Azure 虚拟网络之间的所有流量都通过该虚拟安全设备，则必须能够控制和自定义路由行为。 可以通过在 Azure 中配置用户定义的路由实现此操作。
 
-[用户定义的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)允许用户为进出单个虚拟机或子网的流量自定义入站和出站路径，以确保最安全的路由。 
-            [强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动到 Internet 上的设备的连接。
+[用户定义的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)允许用户为进出单个虚拟机或子网的流量自定义入站和出站路径，以确保最安全的路由。 [强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动到 Internet 上的设备的连接。
 
 这不同于能够接受传入连接然后对其作出响应。 前端 Web 服务器需要响应来自 Internet 主机的请求，因此允许源自 Internet 的流量传入到这些 Web 服务器，而且这些 Web 服务器可以作出响应。
 
@@ -399,4 +396,3 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 - [在 Azure 安全中心进行安全运行状况监视](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
 
 Azure 安全中心的监视功能，用于监视策略符合性。
-

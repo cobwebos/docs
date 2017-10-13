@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: casoper
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: c92f1e20acf55b8bd791fad43f17e162a5cb3847
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-or-disable-https-on-an-azure-content-delivery-network-custom-domain"></a>在 Azure 内容交付网络自定义域上启用或禁用 HTTPS
 
@@ -184,6 +183,5 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在Azure CDN 终结点上设置自定义域](./cdn-map-content-to-custom-domain.md)
-
 
 

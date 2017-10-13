@@ -13,16 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.date: 08/21/2017
 ms.author: davidmu
+ms.openlocfilehash: 91b61fe23fc7ac8bf58014f031957b86bc48414a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: e8d369e0f4ad0d114c976042d5ad6c51d736121e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automatically-scale-virtual-machines-in-azure"></a>自动缩放 Azure 中的虚拟机
 
 [!INCLUDE [virtual-machines-autoscale](../../../includes/virtual-machines-autoscale.md)]
-
 

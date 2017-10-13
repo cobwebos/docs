@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: kgremban
 ms.openlocfilehash: 8f4d5f9e84ad7bb4fff501370036e7f0da589bf3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 身份验证和 Azure 多重身份验证服务器
 默认情况下，Azure 多重身份验证服务器配置为从 Active Directory 导入或同步用户。 但是，可以将它配置为绑定到不同 LDAP 目录，如 ADAM 目录或特定的 Active Directory 域控制器。 通过 LDAP 连接到目录后，Azure 多重身份验证服务器可以充当 LDAP 代理来执行身份验证。 它还允许将 LDAP 绑定用作 RADIUS 目标，使用 IIS 身份验证对用户进行预身份验证，或者在 Azure MFA 用户门户中进行主要身份验证。
@@ -56,15 +56,15 @@ ms.lasthandoff: 07/11/2017
 
 5. 通过单击“测试”按钮来测试 LDAP 连接。
 6. 如果 LDAP 连接测试成功，请单击“确定”按钮。
-7. 单击“筛选器”选项卡。 该服务器已预配置为从 Active Directory 加载容器、安全组和用户。 若要绑定到其他 LDAP 目录，可能需要编辑显示的筛选器。 有关筛选器的详细信息，请单击“帮助”链接。
-8. 单击“属性”选项卡。 该服务器已预配置为从 Active Directory 映射属性。
+7. 单击“筛选器”选项卡。该服务器已预配置为从 Active Directory 加载容器、安全组和用户。 若要绑定到其他 LDAP 目录，可能需要编辑显示的筛选器。 有关筛选器的详细信息，请单击“帮助”链接。
+8. 单击“属性”选项卡。该服务器已预配置为从 Active Directory 映射属性。
 9. 若要绑定到其他 LDAP 目录或更改预配置的属性映射，请单击“编辑...”
 10. 在“编辑属性”对话框中，修改目录的 LDAP 属性映射。 可以通过单击每个字段旁边的“...” 按钮来键入或选择属性名称。 有关属性的详细信息，请单击“帮助”链接。
 11. 单击“确定”按钮。
 12. 单击“公司设置”图标，并选择“用户名解析”选项卡。
 13. 如果从已加入域的服务器连接到 Active Directory，请将“使用 Windows 安全标识符 (SID) 匹配用户名”单选按钮保持选中状态。 否则，请选中“使用 LDAP 唯一标识符属性匹配用户名”单选按钮。 
 
-“使用 LDAP 唯一标识符属性匹配用户名”单选按钮处于选中状态时，Azure 多重身份验证服务器会尝试将每个用户名解析为 LDAP 目录中的唯一标识符。 将对“目录集成 -> 属性”选项卡中定义的用户名属性执行 LDAP 搜索。 当用户进行身份验证时，将用户名解析为 LDAP 目录中的唯一标识符。 该唯一标识符用于匹配 Azure 多重身份验证数据文件中的用户。 这允许不区分大小写的比较以及长、短用户名格式。
+“使用 LDAP 唯一标识符属性匹配用户名”单选按钮处于选中状态时，Azure 多重身份验证服务器会尝试将每个用户名解析为 LDAP 目录中的唯一标识符。 将对“目录集成 -> 属性”选项卡中定义的用户名属性执行 LDAP 搜索。当用户进行身份验证时，将用户名解析为 LDAP 目录中的唯一标识符。 该唯一标识符用于匹配 Azure 多重身份验证数据文件中的用户。 这允许不区分大小写的比较以及长、短用户名格式。
 
 完成上述步骤后，MFA 服务器会在配置的端口上侦听来自配置的客户端的 LDAP 访问请求，并充当代理将这些请求发送到 LDAP 目录进行身份验证。
 

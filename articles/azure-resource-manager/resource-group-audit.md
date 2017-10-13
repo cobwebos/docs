@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
 ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>查看活动日志以审核对资源的操作
 通过活动日志，可以确定：
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
    
     ![选择活动日志](./media/resource-group-audit/select-monitor.png)
 
-   或者，若要自动筛选特定资源或资源组的活动日志，请从该资源边栏选项卡中选择“活动日志”。 请注意，会通过所选资源对活动日志进行自动筛选。
+   或者，若要自动筛选特定资源或资源组的活动日志，请从该资源边栏选项卡中选择“活动日志”。 请注意，将通过所选资源对活动日志进行自动筛选。
    
     ![按资源筛选](./media/resource-group-audit/filtered-by-resource.png)
 2. 在“活动日志”边栏选项卡中，可以看到最近操作的摘要。
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/11/2017
     ![查看操作](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
-1. 若要检索日志条目，请运行 **Get-AzureRmLog** 命令。 可以提供附加参数来筛选条目列表。 如果未指定开始和结束时间，则返回最后一个小时的条目。 例如，若要检索过去一小时针对某个资源组的操作，请运行：
+1. 若要检索日志条目，请运行 **Get-AzureRmLog** 命令。 可以提供附加参数来筛选条目列表。 如果未指定开始和结束时间，将返回最后一个小时的条目。 例如，若要检索过去一小时针对某个资源组的操作，请运行：
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup
@@ -124,7 +124,7 @@ ms.lasthandoff: 07/11/2017
    
         ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
    
-    返回：
+    将返回：
    
         code           message                                                                        
         ----           -------                                                                        

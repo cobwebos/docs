@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7e3b396d290212d3875385521bd7ae92da196b95
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Azure Functions 外部文件绑定（预览版）
 本文说明如何在函数中利用内置绑定处理不同 SaaS 提供程序（例如 OneDrive、Dropbox）中的文件。 Azure Functions 支持外部文件的触发器、输入和输出绑定。
@@ -364,4 +363,3 @@ module.exports = function(context) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-

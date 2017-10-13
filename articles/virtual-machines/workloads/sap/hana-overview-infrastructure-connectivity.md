@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure 上的 SAP HANA（大型实例）的基础结构和连接 
 
@@ -177,9 +177,9 @@ ms.lasthandoff: 08/18/2017
 定义所有 IP 地址范围并从 Microsoft 获取数据后，可以开始将前面创建的 VNet 连接到 HANA 大型实例。 创建 Azure VNet 后，必须在 VNet 中创建 ExpressRoute 网关，以便将 VNet 链接到与大型实例戳记上的客户租户相连接的 ExpressRoute 线路。
 
 > [!NOTE] 
-> 此步骤可能需要长达 30 分钟才能完成，因为需要在指定的 Azure 订阅中创建新的网关，并将其连接到指定的 Azure VNet。
+> 此步骤可能需要长达 30 分钟才能完成，因为需要在指定的 Azure 订阅中创建新的网关，然后将其连接到指定的 Azure VNet。
 
-如果网关已存在，请检查它是否为 ExpressRoute 网关。 如果不是，则必须删除该网关，并重新创建 ExpressRoute 网关。 如果已建立 ExpressRoute 网关，请转到下面的“链接 VNet”部分，因为 Azure VNet 已连接到用于建立本地连接的 ExpressRoute 线路。
+如果网关已存在，请检查它是否为 ExpressRoute 网关。 如果不是，则必须删除该网关，然后重新创建 ExpressRoute 网关。 如果已建立 ExpressRoute 网关，请转到下面的“链接 VNet”部分，因为 Azure VNet 已连接到用于建立本地连接的 ExpressRoute 线路。
 
 - 使用（新的）[Azure 门户](https://portal.azure.com/)或 PowerShell 创建与 VNet 连接的 ExpressRoute VPN 网关。
   - 如果使用 Azure 门户，请添加新的“虚拟网关”，再选择“ExpressRoute”作为网关类型。

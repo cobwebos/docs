@@ -17,10 +17,10 @@ ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: edbdbe0230f742cd7228f04a4a83c9bd567527e8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>将 Intel Edison 连接到 Azure IoT 中心 (C)
 
@@ -157,14 +157,14 @@ ms.lasthandoff: 08/03/2017
 ### <a name="set-password"></a>设置密码
 1. 在`Set up options`页面上，单击`Enable Security`。
 2. 可为 Intel® Edison 开发板设置自定义名称。 这是可选的。
-3. 为开发板键入密码，然后单击`Set password`。
+3. 为开发板键入密码，并单击`Set password`。
 4. 记下密码，稍后会用到此密码。
 
 ### <a name="connect-wi-fi"></a>连接 Wi-Fi
 1. 在`Set up options`页面上，单击`Connect Wi-Fi`。 计算机将扫描可用的 Wi-Fi 网络，此过程最长可能需要 1 分钟。
 2. 从`Detected Networks`下拉列表中，选择网络。
 3. 从`Security`下拉列表中，选择网络的安全类型。
-4. 提供登录名和密码信息，然后单击`Configure Wi-Fi`。
+4. 提供登录名和密码信息，并单击`Configure Wi-Fi`。
 5. 记下 IP 地址，稍后会用到此地址。
 
 > [!NOTE]

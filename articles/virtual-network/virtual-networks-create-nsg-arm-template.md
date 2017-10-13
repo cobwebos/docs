@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 88f7e5b2144daee7bf1c8e7312ba98e6fa967899
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>使用  Azure Resource Manager 模板创建网络安全组
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 07/11/2017
   ]
 }
 ```
-要将 NSG 关联到前端子网，需要更改模板中的子网定义，并使用 NSG 的引用 ID。
+要将 NSG 关联到前端子网，需要更改模板中的子网定义，并对 NSG 使用引用 ID。
 
 ```json
 "subnets": [

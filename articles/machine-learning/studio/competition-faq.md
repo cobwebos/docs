@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: haining;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 809df66042f6c765ed56836db40f72a5cd8ca7f6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence Competition 常见问题
 **什么是 Cortana Intelligence Competition？**
@@ -114,5 +113,4 @@ Microsoft 会验证专用排行榜的结果，然后我们将与你联系。 请
 **我们会保留用户的竞赛解决方案和竞赛项吗？**
 
 仅保留用户项用于评估，以确定获胜的解决方案。 请参考[条款和条件](http://aka.ms/comptermsandconditions)，了解详细信息。
-
 

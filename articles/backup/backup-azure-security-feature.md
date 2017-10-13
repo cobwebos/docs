@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
 ms.openlocfilehash: 8ef9ddc345fb553b93815022dc3e6a796cae8b3a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现提供可保护混合备份的安全功能。 本文介绍如何通过 Azure 恢复服务代理和 Azure 备份服务器来启用和使用这些功能。 这些功能包括：
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/29/2017
 
     ![Azure 门户“浏览”选项的屏幕截图](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
-    此时显示恢复服务保管库列表。 从此列表中，选择一个保管库。 此时会打开选定的保管库仪表板。
+    此时会显示恢复服务保管库列表。 从此列表中，选择一个保管库。 此时会打开选定的保管库仪表板。
 3. 从保管库下显示的项目列表中，单击“设置”下的“属性”。
 
     ![恢复服务保管库选项的屏幕截图](./media/backup-azure-security-feature/vault-list-properties.png)
@@ -54,7 +54,7 @@ ms.lasthandoff: 08/29/2017
 
     ![恢复服务保管库属性的屏幕截图](./media/backup-azure-security-feature/security-settings-update.png)
 
-    更新链接会打开“安全设置”边栏选项卡，其中提供功能摘要，并允许启用它们。
+    更新链接将打开“安全设置”边栏选项卡，其中提供功能摘要，并允许启用它们。
 5. 从下拉列表“是否已配置 Azure 多重身份验证?”中选择一个值，确认是否已启用 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)。 如果已启用，则在登录到 Azure 门户时，系统会要求从另一设备（例如移动电话）进行身份验证。
 
    在备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用多重身份验证相当于增加了一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
@@ -84,7 +84,7 @@ ms.lasthandoff: 08/29/2017
 已添加检查，确保只有效用户才可执行各种操作。 这些检查包括：添加额外的身份验证层，以及为恢复目的而保持一个最小的保留期时间范围。
 
 ### <a name="authentication-to-perform-critical-operations"></a>执行关键操作的身份验证
-在为关键操作添加额外身份验证层的过程中，在执行“停止保护并删除数据”和“更改密码”操作时，系统会提示输入安全 PIN。
+在为关键操作添加额外身份验证层的过程中，在执行**停止保护并删除数据**和**更改密码**操作时，系统会提示输入安全 PIN。
 
 若要接收此 PIN，请执行以下操作：
 

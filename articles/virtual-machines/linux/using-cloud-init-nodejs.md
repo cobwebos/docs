@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/26/2016
 ms.author: v-livech
 ms.openlocfilehash: 0b6150bca333188666935b3c9aa02c4b33690db9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>通过 Azure CLI 1.0 使用 cloud-init 在创建期间自定义 Linux VM
 本文说明如何制作 cloud-init 脚本来设置主机名、更新已安装的包及管理用户帐户。  在 VM 创建期间可以从 Azure CLI 调用 cloud-init 脚本。  本文需要以下条件：
@@ -181,7 +181,7 @@ myservername
 apt_upgrade: true
 ```
 
-Linux 启动后，所有已安装的包都会通过 `apt-get` 进行更新。
+启动 Linux 后，所有已安装的包将通过 `apt-get` 进行更新。
 
 ```azurecli
 azure vm create \

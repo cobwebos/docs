@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/15/2017
 ms.author: tomfitz
 ms.openlocfilehash: 3c5826d58887ff1af4df8e66999d9c1a1643bcc7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-cli-to-create-a-service-principal-to-access-resources"></a>使用 Azure CLI 创建服务主体来访问资源
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 08/03/2017
    azure ad sp create -n exampleapp -p {your-password}
    ```
      
-   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为 `Client ID`。 
+   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。在示例应用程序中，此值称为 `Client ID`。 
      
    ```azurecli
    info:    Executing command ad sp create
@@ -172,7 +172,7 @@ ms.lasthandoff: 08/03/2017
    azure ad sp create -n exampleapp --cert-value {certificate data}
    ```
      
-   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为“客户端 ID”。 
+   将返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随“服务主体名称”一起列出的 GUID。 此 GUID 的值与应用 ID 相同。在示例应用程序中，此值称为“客户端 ID”。 
      
    ```azurecli
    info:    Executing command ad sp create
@@ -256,7 +256,7 @@ ms.lasthandoff: 08/03/2017
    azure login --service-principal --tenant {tenant-id} -u 4fd39843-c338-417d-b549-a545f584a745 --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
    ```
 
-现在，你已作为所创建 Azure Active Directory 应用程序的服务主体进行身份验证。
+现在，已作为所创建 Azure Active Directory 应用程序的服务主体进行身份验证。
 
 ## <a name="change-credentials"></a>更改凭据
 
@@ -278,7 +278,7 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 创建服务主体时，可能会遇到以下错误：
 
-* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。 请要求管理员向你分配管理员角色，或让用户能够注册应用。
+* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。请要求管理员向你分配管理员角色，或让用户能够注册应用。
 
 * 帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。 - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员你将添加到用户访问管理员角色。
 

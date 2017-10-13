@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: roalexan
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 53a6b18fb74db46ccb66c7c70851a9bf364e927c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>了解如何使用 API 管理来管理 AzureML Web 服务
 ## <a name="overview"></a>概述
@@ -365,4 +364,3 @@ AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行�
         time.sleep(1) # wait one second
     return
     invokeBatchExecutionService()
-

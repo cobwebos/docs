@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: juliako
 ms.openlocfilehash: 538a6ab60168735c2626a93cdeedd8d4999a6efc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>概述并比较 Azure 点播媒体编码器
 ## <a name="encoding-overview"></a>编码概述
@@ -34,7 +34,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 >
 >此外，将源文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流式处理文件（本教程稍后将演示编码步骤）。
 
-媒体服务支持在本文中介绍的以下按需编码器：
+媒体服务支持会在本文中介绍的以下按需编码器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [媒体编码器高级工作流](media-services-encode-asset.md#media-encoder-premium-workflow)

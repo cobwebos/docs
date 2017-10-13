@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 67f66f9b8703f2cab93a2274a90c161a55848c34
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>将硬盘驱动器上某个文件中的训练数据导入机器学习工作室
 [!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
@@ -44,4 +43,3 @@ ms.lasthandoff: 09/25/2017
 数据上传后，将存储在数据集模块中，并且可用于工作区中的任何实验。
 
 编辑实验时，可以在模块选项板中的“已保存数据集”列表下的“我的数据集”列表中找到已创建的数据集。 如果希望将数据集用于进一步分析和机器学习，可以将数据集拖放到实验画布。
-

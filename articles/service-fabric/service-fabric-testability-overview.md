@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍
-故障分析服务是在 Microsoft Azure Service Fabric 基础上专为测试服务构建的。 借助故障分析服务，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
+故障分析服务是在 Microsoft Azure Service Fabric 基础上专为测试服务构建的。 借助故障分析服务，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案将执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
 
 操作指用于测试某个服务的单独故障。 服务开发人员可将这些操作用作构造块来编写复杂的方案。 例如：
 
@@ -61,7 +61,7 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
    
     b. 如果找到该节点，则它应该仅返回节点是否关闭。
 
-从测试角度看，为了验证故障，需要知道当引入故障时，故障实际发生的情况。 Service Fabric 提供的保证是当命令抵达节点时，该节点要么即将关闭，要么已经关闭。 在任何一种情况下，测试都应能够正确推断状态，并且在其验证中正确得出成功或失败的结论。 未采用 Service Fabric 来实现的提供相同故障的系统会遇到大量的网络、硬件和软件问题，这些问题会妨碍其提供上述保证。 在出现上述问题时，Service Fabric 会重新配置群集状态以解决问题，因此，故障分析服务仍然能够提供正确的保证。
+从测试角度看，为了验证故障，需要知道当引入故障时，故障实际发生的情况。 Service Fabric 提供的保证是当命令抵达节点时，该节点要么即将关闭，要么已经关闭。 在任何一种情况下，测试都应能够正确推断状态，并且在其验证中正确得出成功或失败的结论。 未采用 Service Fabric 来实现的提供相同故障的系统会遇到大量的网络、硬件和软件问题，这些问题会妨碍其提供上述保证。 在出现上述问题时，Service Fabric 将重新配置群集状态以解决问题，因此，故障分析服务仍然能够提供正确的保证。
 
 ### <a name="generating-required-events-and-scenarios"></a>生成需要的事件和方案
 尽管以一致的方式模拟真实故障开始就很难，但生成相关的故障则难上加难。 例如在发生以下情况时，在有状态持久化服务中出现数据丢失：
@@ -93,7 +93,7 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 
 **PowerShell**
 
-若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块自动加载以供使用。
+若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块会自动加载以供使用。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建真正的云级服务，必须确保在部署之前和之后，服务能够承受现实的故障。 在当今的服务世界中，能够快速创新以及将代码投入生产环境非常重要。 故障分析服务能够帮助服务开发人员确切实现该目的。

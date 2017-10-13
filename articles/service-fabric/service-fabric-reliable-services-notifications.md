@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: c6a53d851510ed5e6eec1f3ac0f636ad034a6d4c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
 通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 两种类型的对象支持通知：*可靠状态管理器*和*可靠字典*。
@@ -211,9 +211,9 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 
 * 通知会在执行操作的过程中触发。 例如，在还原操作的最后一个步骤触发还原通知。 处理通知事件之前，不会完成还原。
 * 由于通知会在应用操作的过程中触发，因此，客户端只会看见本地提交操作的通知。 而且因为操作只保证会在本地提交（亦即记录），所以它们不一定可在未来恢复。
-* 在恢复路径上，会针对每个应用的操作触发单个通知。 这表示，如果事务 T1 包含 Create(X)、Delete(X) 和 Create(X)，用户将依次收到一个针对 X 创建的通知，一个针对删除的通知，再收到一个针对创建的通知。
-* 对于包含多个操作的事务，操作按用户在主要副本上收到它们的顺序应用。
-* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，可以看到一条针对 Delete(X) 的通知。
+* 在恢复路径上，会针对每个应用的操作触发单个通知。 这表示，如果事务 T1 包含 Create(X)、Delete(X) 和 Create(X)，将依次收到一个针对 X 创建的通知，一个针对删除的通知，然后再收到一个针对创建的通知。
+* 对于包含多个操作的事务，操作将按用户在主要副本上收到它们的顺序应用。
+* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，会看到一条针对 Delete(X) 的通知。
 
 ## <a name="next-steps"></a>后续步骤
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)

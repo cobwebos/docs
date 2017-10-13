@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2017
 ms.author: rclaus
 ms.openlocfilehash: 9174f7c8d16ff311312980fbe4d35996ec7ac832
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle 解决方案及其部署
 本文介绍在 Microsoft Azure 上成功部署各种 Oracle 解决方案所需的信息。 这些解决方案以 Oracle 在 Azure 应用商店中发布的虚拟机映像为基础。 若要获取当前可用映像的列表，请运行以下命令：

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 697fbcdb4c5d5a900deb980db7cca9cf2f9fa36d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-1-review-the-architecture-for-physical-server-replication-to-azure"></a>第 1 步：查看体系结构以便将物理服务器复制到 Azure
 
 本文介绍了使用 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Windows/Linux 物理服务器复制到 Azure 所需使用的组件和进程。
@@ -88,4 +86,3 @@ ms.lasthandoff: 09/27/2017
 ## <a name="next-steps"></a>后续步骤
 
 转到[第 2 步：验证先决条件和限制](physical-walkthrough-prerequisites.md)
-

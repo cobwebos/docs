@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/24/2017
 ms.author: venkatja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 4b8d5fdab1744b2db658917f91d6dac05db30d2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.openlocfilehash: 4e10a009eb67706d927ece5692134d802094cdf9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>在时序见解环境中诊断并解决问题
 
@@ -66,7 +65,7 @@ Azure 时序见解目前仅支持 JSON 数据。 有关 JSON 示例，请参阅[
 #### <a name="recommended-steps"></a>建议的步骤
 若要解决延迟问题，请增加环境的 SKU 容量。 有关详细信息，请参阅[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
 
-### <a name="youre-pushing-historical-data-and-causing-slow-ingress"></a>你正在推送历史数据，导致引入速度缓慢
+### <a name="youre-pushing-historical-data-and-causing-slow-ingress"></a>正在推送历史数据，导致引入速度缓慢
 如果正在连接现有事件源，则 IoT 中心或事件中心内可能已存在数据。 因此，环境将开始从事件源消息保留期的起始时间点拉取数据。 
 
 此行为是默认行为，且无法被替代。 可能会触发限制，且需要一段时间才能捕获引入的历史数据。
@@ -80,4 +79,3 @@ Azure 时序见解目前仅支持 JSON 数据。 有关 JSON 示例，请参阅[
 请确保名称和值符合以下规则：
 * 时间戳属性名称区分大小写。
 * 来自事件源的时间戳属性值（作为 JSON 字符串）的格式应为 yyyy-MM-ddTHH:mm:ss.FFFFFFFK。 “2008-04-12T12:53Z”即是此类字符串的一个示例。
-

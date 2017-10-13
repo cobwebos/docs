@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.openlocfilehash: 7cfec8e9ac12d43095483696a15c0580776d3114
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
 
@@ -233,7 +233,7 @@ ms.lasthandoff: 08/03/2017
     d.单击“下一步”。 单击“创建” 。
  
 ### <a name="create-a-workcom-test-user"></a>创建 Work.com 测试用户
-要使 Azure Active Directory 用户能够登录，必须将这些用户预配到 Work.com 中。 对于 Work.com，需要手动执行预配。
+要使 Azure Active Directory 用户能够登录，必须将这些用户预配到 Work.com 中。对于 Work.com，需要手动执行预配。
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
 1. 以管理员身份登录到 Work.com 公司站点。

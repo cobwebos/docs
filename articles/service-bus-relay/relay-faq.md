@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
 ms.openlocfilehash: e8c146f4b6d02449be6ad9e991e52db8dfd58e04
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题
 
@@ -86,7 +86,7 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 | [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) 和 [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) 中继的消息大小 |系统级 |静态 |- |不受限制 |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>中继是否具有任何使用率配额？
-默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 我们了解，有时候，需求可能会超过这些限制。 你可以随时联系客户服务人员，以便我们了解你的需求并相应地调整这些限制。 对于服务总线，聚合的使用率配额为如下所示：
+默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 我们了解，有时候，需求可能会超过这些限制。 可以随时联系客户服务人员，以便我们了解需求并相应地调整这些限制。 对于服务总线，聚合的使用率配额为如下所示：
 
 * 50 亿条消息
 * 200 万个中继小时
@@ -99,15 +99,15 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？
 
-可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 命令，将命名空间从一个 Azure 订阅移到另一个订阅。 若要将命名空间移到另一个订阅，该命名空间必须处于活动状态。 运行这些命令的用户必须是源订阅和目标订阅的管理员用户。
+可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 命令，将命名空间从一个 Azure 订阅移到另一个订阅。 要将命名空间移到另一个订阅，该命名空间必须处于活动状态。 运行这些命令的用户必须是源订阅和目标订阅的管理员用户。
 
 #### <a name="azure-portal"></a>Azure 门户
 
-若要使用 Azure 门户将 Azure 中继命名空间从一个订阅迁移到另一个订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md#use-portal)。 
+要使用 Azure 门户将 Azure 中继命名空间从一个订阅迁移到另一个订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md#use-portal)。 
 
 #### <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 将命名空间从一个 Azure 订阅移到另一个订阅，请使用以下命令序列。 若要执行此操作，该命名空间必须已经处于活动状态，并且运行 PowerShell 命令的用户必须同时是源和目标订阅上的管理员用户。
+要使用 PowerShell 将命名空间从一个 Azure 订阅移到另一个订阅，请使用以下命令序列。 若要执行此操作，该命名空间必须已经处于活动状态，并且运行 PowerShell 命令的用户必须同时是源和目标订阅上的管理员用户。
 
 ```powershell
 # Create a new resource group in the target subscription.

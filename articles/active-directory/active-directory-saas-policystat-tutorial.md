@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 704afd5515b02ce2a4fbf35da65fad74dc506271
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 08/03/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [PolicyStat 客户端支持团队](http://www.policystat.com/support/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_certificate.png) 
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 08/03/2017
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_04.png)
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 08/03/2017
 
 8. 在另一 Web 浏览器窗口中，以管理员身份登录到 PolicyStat 公司站点。
 
-9. 单击“管理员”选项卡，然后单击左侧导航窗格中的“单一登录配置”。
+9. 单击“管理员”选项卡，并单击左侧导航窗格中的“单一登录配置”。
    
     ![管理员菜单](./media/active-directory-saas-policystat-tutorial/ic808633.png "管理员菜单")
 
@@ -163,13 +163,13 @@ ms.lasthandoff: 08/03/2017
    
     ![单一登录配置](./media/active-directory-saas-policystat-tutorial/ic808634.png "单一登录配置")
 
-11. 单击“配置属性”，然后在“配置属性”部分执行以下步骤：
+11. 单击“配置属性”，并在“配置属性”部分执行以下步骤：
    
     ![单一登录配置](./media/active-directory-saas-policystat-tutorial/ic808635.png "单一登录配置")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“用户名属性”文本框中，键入“uid”。
+    a. 在“用户名属性”文本框中，键入“uid”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“名字属性”文本框中，键入用户的名字，如 Britta。
+    b. 在“名字属性”文本框中，键入用户的名字，如 Britta。
 
     c. 在“姓氏属性”文本框中，键入用户的姓氏，如 Simon。
 
@@ -177,13 +177,13 @@ ms.lasthandoff: 08/03/2017
 
     e. 单击“保存更改”。
 
-12. 单击“IDP 元数据”，然后在“IDP 元数据”部分执行以下步骤：
+12. 单击“IDP 元数据”，并在“IDP 元数据”部分执行以下步骤：
    
     ![单一登录配置](./media/active-directory-saas-policystat-tutorial/ic808636.png "单一登录配置")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 打开下载的元数据文件，复制其内容，然后将其粘贴到“标识提供者元数据”文本框中。
+    a. 打开下载的元数据文件，复制其内容，然后将其粘贴到“标识提供者元数据”文本框中。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“保存更改”。
+    b. 单击“保存更改”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -212,7 +212,7 @@ ms.lasthandoff: 08/03/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-policystat-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -222,7 +222,7 @@ ms.lasthandoff: 08/03/2017
  
 ### <a name="creating-a-policystat-test-user"></a>创建 PolicyStat 测试用户
 
-若要让 Azure AD 用户登录 PolicyStat，必须将其预配到 PolicyStat 中。  
+要让 Azure AD 用户登录 PolicyStat，必须将其预配到 PolicyStat 中。  
 
 PolicyStat 支持实时用户预配。 这意味着你不需手动将用户添加到 PolicyStat。 系统会在用户首次通过 SSO 登录时自动将其添加到其中。
 
@@ -238,7 +238,7 @@ PolicyStat 支持实时用户预配。 这意味着你不需手动将用户添�
 
 若要将 Britta Simon 分配到 PolicyStat，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

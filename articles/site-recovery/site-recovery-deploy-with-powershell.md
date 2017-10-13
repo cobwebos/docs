@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: bsiva
 ms.openlocfilehash: 581daaaa5cc0cf8be782f834c6bdb3f27ee413fb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-vms-to-azure-with-powershell-in-the-classic-portal"></a>在经典门户中使用 PowerShell 将 Hyper-V VM 复制到 Azure
 > [!div class="op_single_selector"]
@@ -98,7 +98,7 @@ $AzureSubscription = Select-AzureSubscription -SubscriptionName $AzureSubscripti
 将“< >”中的元素替换为特定信息。
 
 ## <a name="step-2-create-a-site-recovery-vault"></a>步骤 2：创建 Site Recovery 保管库
-在 PowerShell 中，将“< >”中的元素替换为特定信息，然后运行以下命令：
+在 PowerShell 中，将“< >”中的元素替换为特定信息，并运行以下命令：
 
 ```
 
@@ -272,12 +272,12 @@ marsagentinstaller.exe /q /nu
 
 请注意，如果目标网络具有多个子网，并且其中一个子网与源虚拟机所在的子网同名，则在故障转移后副本虚拟机将连接到该目标子网。 如果没有具有匹配名称的目标子网，则虚拟机将连接到网络中的第一个子网。
 
-第一条命令获取当前 Azure Site Recovery 保管库的服务器。 该命令将 Microsoft Azure Site Recovery 服务器存储在 $Servers 数组变量中。
+第一条命令将获取当前 Azure Site Recovery 保管库的服务器。 该命令将 Microsoft Azure Site Recovery 服务器存储在 $Servers 数组变量中。
 
     $Servers = Get-AzureSiteRecoveryServer
 
 
-第二条命令会获取 $Servers 数组中第一个服务器的 Site Recovery 网络。 该命令在 $Networks 变量中存储网络。
+第二条命令将获取 $Servers 数组中第一个服务器的站点恢复网络。 该命令在 $Networks 变量中存储网络。
 
     $Networks = Get-AzureSiteRecoveryNetwork -Server $Servers[0]
 
@@ -321,7 +321,7 @@ marsagentinstaller.exe /q /nu
 
 
 ## <a name="test-your-deployment"></a>测试部署
-若要测试部署，可针对一台虚拟机运行测试故障转移，或者创建一个包括多个虚拟机的恢复计划并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟故障转移和恢复机制。 请注意：
+要测试部署，可针对一台虚拟机运行测试故障转移，或者创建一个包括多个虚拟机的恢复计划并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟故障转移和恢复机制。 请注意：
 
 * 如果想要在故障转移之后使用远程桌面连接到 Azure 中的虚拟机，请在虚拟机上启用远程桌面连接，并运行测试故障转移。
 * 故障转移后，将要使用公共 IP 地址通过远程桌面连接到 Azure 中的虚拟机。 如果要执行此操作，请确保没有任何域策略阻止使用公共地址连接到虚拟机。
@@ -329,7 +329,7 @@ marsagentinstaller.exe /q /nu
 若要检查作业是否完成，请遵循[监视活动](#monitor)中的步骤。
 
 ### <a name="create-a-recovery-plan"></a>创建恢复计划
-1. 使用以下数据创建 .xml 文件作为恢复计划模板，然后将它保存为“C:\RPTemplatePath.xml”。
+1. 使用以下数据创建 .xml 文件作为恢复计划模板，并将它保存为“C:\RPTemplatePath.xml”。
 2. 更改 RecoveryPlan 节点 ID、Name、PrimaryServerId 和 SecondaryServerId。
 3. 更改 ProtectionEntity 节点 PrimaryProtectionEntityId（来自 VMM 的 vmid）。
 4. 可以通过添加更多 ProtectionEntity 节点来添加更多 VM。
@@ -382,7 +382,7 @@ marsagentinstaller.exe /q /nu
         $jobIDResult = Start-AzureSiteRecoveryTestFailoverJob -RecoveryPlan $RPObject -Direction PrimaryToRecovery;
 
 
-## <a name=monitor></a> 监视活动
+## <a name=monitor></a>监视活动
 使用以下命令来监视活动。 请注意，必须在执行不同的作业之前等待处理完成。
 
     Do

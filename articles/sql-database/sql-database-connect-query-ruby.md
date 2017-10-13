@@ -15,14 +15,12 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 07/14/2017
 ms.author: carlrab
+ms.openlocfilehash: 7322b1f36017adb32735c4c1e1f0af73bff70c97
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 25ff9a9cfaa5494dbb006c84e235099fe51e6545
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>使用 Ruby 查询 Azure SQL 数据库
 
 本快速入门教程演示如何使用 [Ruby](https://www.ruby-lang.org) 创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句查询数据。
@@ -47,7 +45,7 @@ ms.lasthandoff: 07/17/2017
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
+2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“概述”页中，查看完全限定的服务器名称。 可将鼠标悬停在服务器名称上打开“单击以复制”选项，如下图所示：
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
@@ -99,4 +97,3 @@ end
 - [TinyTDS 的 GitHub 存储库](https://github.com/rails-sqlserver/tiny_tds)
 - [针对 TinyTDS 报告问题或提问](https://github.com/rails-sqlserver/tiny_tds/issues)
 - [用于 SQL Server 的 Ruby 驱动程序](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)
-

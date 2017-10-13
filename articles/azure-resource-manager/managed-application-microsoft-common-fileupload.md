@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 217e9e63eb7cd198f70cee42b418867df9f1f993
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: bd5bae5678e2ec12fd1ddd2a81e63acca08da2c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 元素
 一个允许用户指定要上传的一个或多个文件的控件。 [创建 Azure 托管应用程序](managed-application-publishing.md)时使用此元素。
@@ -50,7 +49,7 @@ ms.lasthandoff: 05/13/2017
 ## <a name="remarks"></a>备注
 - `constraints.accept` 指定在浏览器的文件对话框中显示的文件类型。 有关允许的值，请参阅 [HTML5 规范](http://www.w3.org/TR/html5/forms.html#attr-input-accept)。 默认值为 **null**。
 - 如果 `options.multiple` 设置为 **true**，则会允许用户在浏览器的文件对话框中选择多个文件。 默认值为 **false**。
-- 此元素支持基于 `options.uploadMode` 的值以两种模式上传文件。 如果指定了 **file**，则输出会以 blob 形式包含文件的内容。 如果指定了 **url**，则文件会被上传到一个临时位置，并且输出会包含 blob 的 URL。 临时 blob 在 24 小时后将被清除。 默认值为 **file**。
+- 此元素支持基于 `options.uploadMode` 的值以两种模式上传文件。 如果指定了 **file**，则输出会以 blob 形式包含文件的内容。 如果指定了 **url**，则文件会被上传到一个临时位置，并且输出会包含 blob 的 URL。 临时 blob 在 24 小时后会被清除。 默认值为 **file**。
 - `options.openMode` 的值决定了如何读取文件。 如果文件应当为纯文本，请指定 **text**；否则，请指定 **binary**。 默认值为 **text**。
 - 如果 `options.uploadMode` 设置为 **file** 并且 `options.openMode` 设置为 **binary**，则输出将是 base64 编码的。
 - `options.encoding` 指定在读取文件时要使用的编码。 默认值为 **UTF-8**，并且仅当 `options.openMode` 设置为 **text** 时使用。
@@ -88,11 +87,10 @@ ms.lasthandoff: 05/13/2017
 ]
 ```
 
-测试 CreateUiDefinition 时，某些浏览器（例如 Google Chrome）在浏览器控制台中会截断由 Microsoft.Common.FileUpload 元素生成的 URL。 你可能需要右键单击各个链接来复制完整 URL。
+测试 CreateUiDefinition 时，某些浏览器（例如 Google Chrome）在浏览器控制台中会截断由 Microsoft.Common.FileUpload 元素生成的 URL。 可能需要右键单击各个链接来复制完整 URL。
 
 
 ## <a name="next-steps"></a>后续步骤
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](managed-application-createuidefinition-elements.md)。
-

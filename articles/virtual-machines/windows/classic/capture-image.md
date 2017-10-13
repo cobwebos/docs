@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 6032263848c469ce2f416306e5c91c29f4cb30e4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像。
 > [!IMPORTANT]
@@ -46,7 +46,7 @@ Azure 将映像存储在“VM 映像(经典)”下，这是查看所有 Azure �
 ## <a name="capture-the-virtual-machine"></a>捕获虚拟机
 1. 在 [Azure 门户](http://portal.azure.com)中，**连接**到虚拟机。 有关说明，请参阅[如何登录到运行 Windows Server 的虚拟机][How to sign in to a virtual machine running Windows Server]。
 2. 以管理员身份打开“命令提示符”窗口。
-3. 将目录更改为 `%windir%\system32\sysprep`，运行 sysprep.exe。
+3. 将目录更改为 `%windir%\system32\sysprep`，然后运行 sysprep.exe。
 4. 此时会显示“系统准备工具”对话框。 请执行以下操作：
 
    * 在“系统清理操作”中，选择“进入系统全新体验(OOBE)”，并确保选中“通用化”。 有关使用 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介][How to Use Sysprep: An Introduction]。
@@ -55,13 +55,13 @@ Azure 将映像存储在“VM 映像(经典)”下，这是查看所有 Azure �
 
    ![运行 Sysprep](./media/capture-image/SysprepGeneral.png)
 5. Sysprep 将关闭虚拟机，这会在 Azure 门户中将虚拟机的状态更改为“已停止”。
-6. 在 Azure 门户中，单击“虚拟机(经典)”，然后选择要捕获的虚拟机。 查看“更多服务”时，“VM 映像(经典)”组在“计算”下列出。
+6. 在 Azure 门户中，单击“虚拟机(经典)”，并选择要捕获的虚拟机。 查看“更多服务”时，“VM 映像(经典)”组在“计算”下列出。
 
 7. 在命令栏中，单击“捕获”。
 
    ![捕获虚拟机](./media/capture-image/CaptureVM.png)
 
-   此时显示“捕获虚拟机”对话框。
+   此时会显示“捕获虚拟机”对话框。
 
 8. 在“映像名称”中，键入新映像的名称。 在“映像标签”中，键入新映像的标签。
 

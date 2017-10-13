@@ -14,10 +14,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/31/2017
 ms.author: rajani-janaki-ram
 ms.openlocfilehash: fdb33ea0d08353b491f2934fcf885fcb6910b9a2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-a-site-recovery-vault-to-an-azure-resource-manager-based-recovery-services-vault"></a>将 Site Recovery 保管库升级到基于 Azure 资源管理器的恢复服务保管库
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 08/29/2017
 * [安装最新版本的 Azure PowerShell MSI](https://github.com/Azure/azure-powershell/releases)
 * [下载恢复服务保管库升级脚本](https://aka.ms/vaultupgradescript)
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 若要将 Site Recovery 保管库升级到基于 Azure 资源管理器的恢复服务保管库，必须满足以下要求：
 
 * 最低代理版本：在服务器上安装的 Azure Site Recovery 提供程序版本必须为 5.1.1700.0 或更高版本。

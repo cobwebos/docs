@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 4f58177f540c14172d7ece8b4bc8c8a2b9787f8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-web-apis-for-nodejs"></a>用于 Node.js 的 Web API 入门
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -103,7 +103,7 @@ ms.lasthandoff: 07/11/2017
 
     `npm install restify`
 
-    此命令安装 Restify。
+    此命令将安装 Restify。
 
 #### <a name="did-you-get-an-error"></a>遇到了错误吗？
 在某些操作系统上使用 NPM 时，可能会出现“错误: EPERM，chmod '/usr/local/bin/..'” 并建议尝试以管理员身份运行帐户。 如果发生这种情况，请使用 sudo 命令以更高的特权级别运行 NPM。

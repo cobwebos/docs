@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: denlee
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c38b5345bd67008de0e15f9288b4016935837978
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: d05295f6b952209e6df88d9015153893fbbb9903
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>如何使用图形 API 设置 Azure Cosmos DB 全局分发
 
-本文介绍了如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，然后使用图形 API 进行连接（预览版）。
+本文介绍了如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，并使用图形 API 进行连接（预览版）。
 
 本文涵盖以下任务： 
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 05/31/2017
 
 图形 API 在 DocumentDB SDK 上作为扩展库公开。
 
-为了利用[全局分发](distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 可通过设置连接策略来实现此目的。 SDK 将会根据 Azure Cosmos DB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
+为了利用[全局分发](distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 可通过设置连接策略来实现此目的。 SDK 会根据 Azure Cosmos DB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
 
 此优先顺序列表是在使用 SDK 初始化连接时指定的。 SDK 接受可选参数“PreferredLocations”，这是 Azure 区域的顺序列表。
 
@@ -95,5 +94,4 @@ await docClient.OpenAsync().ConfigureAwait(false);
 > [通过模拟器在本地开发](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
-
 

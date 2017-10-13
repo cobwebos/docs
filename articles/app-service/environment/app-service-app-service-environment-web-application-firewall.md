@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: naziml
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 4c0e2d649f71d7797efbfe2c8e93ea0c844152df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
-[Azure 应用商店中的](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) Web 应用程序防火墙[如 Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)可以通过检查入站 Web 流量来阻止 SQL 注入、跨站脚本、恶意上传和应用程序 DDoS 及其他攻击，从而帮助保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 与隔离功能以及应用服务环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。
+[Azure 应用商店中的 Web](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) 应用程序防火墙[如 Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) 可以通过检查入站 Web 流量来阻止 SQL 注入、跨站脚本、恶意上传和应用程序 DDoS 及其他攻击，从而帮助保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 与隔离功能以及应用服务环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
@@ -110,4 +109,3 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 由于
 [TrafficManagerEndpoint]: ./media/app-service-app-service-environment-web-application-firewall/TrafficManagerEndpoint.png
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
-

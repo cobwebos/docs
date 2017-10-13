@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
 指标是服务关切的、由群集中的节点提供的资源。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
@@ -27,7 +26,7 @@ ms.lasthandoff: 08/19/2017
 像内存、磁盘和 CPU 使用率等信息，都是指标的示例。 这些指标是物理指标，即对应于节点上需要管理的物理资源的资源。 指标也可以是（且通常是）逻辑指标。 逻辑指标类似于“MyWorkQueueDepth”或“MessagesToProcess”或“TotalRecords”。 逻辑指标是应用程序定义的，并间接对应于某些物理资源消耗。 逻辑指标很常见，因为可能难以在每个服务的基础上测量和报告物理资源消耗量。 测量和报告自己的物理指标的复杂度也是 Service Fabric 提供一些默认指标的原因。
 
 ## <a name="default-metrics"></a>默认指标
-假设你想开始编写和部署服务。 但此时你不知道该服务要消耗哪些物理或逻辑资源。 这样就可以了！ 未指定其他任何指标时，Service Fabric 群集资源管理器会使用一些默认指标。 它们具有以下特点：
+假设你想开始编写和部署服务。 但此时你不知道该服务要消耗哪些物理或逻辑资源。 这样就可以了！ 未指定其他任何指标时，Service Fabric 群集资源管理器会使用一些默认指标。 它们是：
 
   - PrimaryCount - 节点上的主副本计数 
   - ReplicaCount - 节点上的有状态副本总计数
@@ -273,4 +272,3 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png
 [Image3]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
 [Image4]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
-

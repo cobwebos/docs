@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: bwren
 ms.openlocfilehash: ef63e06c0621753e0a706d6efb709b943e38ee42
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -105,7 +105,7 @@ ms.lasthandoff: 08/18/2017
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>筛选出匿名用户或经过身份验证的用户
 如果用户要登录，可以设置[经过身份验证的用户 ID](app-insights-api-custom-events-metrics.md#authenticated-users)。（不会自动设置此 ID。）
 
-然后，你可以：
+然后，可以：
 
 * 按特定的用户 ID 搜索
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 08/18/2017
 如果想要查看用户列表以及他们查看过哪些页面或登录频率等相关数据，可以使用两个选项：
 
 * [设置经过身份验证的用户 ID](app-insights-api-custom-events-metrics.md#authenticated-users)，[导出到数据库](app-insights-code-sample-export-sql-stream-analytics.md)，并使用适当的工具分析用户数据。
-* 如果只有少量的用户，可以发送自定义事件或指标，并在其中使用所需的数据作为指标值或事件名称，将用户 ID 设置为属性。 若要分析页面视图，可以替换标准的 JavaScript trackPageView 调用。 要分析服务器端遥测数据，可以使用遥测初始值设定项，将用户 ID 添加到所有服务器遥测数据。 然后可以筛选器和段的度量值和上的用户 id 的搜索。
+* 如果只有少量的用户，可以发送自定义事件或指标，并在其中使用所需的数据作为指标值或事件名称，将用户 ID 设置为属性。 若要分析页面视图，可以替换标准的 JavaScript trackPageView 调用。 要分析服务器端遥测数据，可以使用遥测初始值设定项，将用户 ID 添加到所有服务器遥测数据。 然后可以筛选和细分指标，并按用户 ID 执行搜索。
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>减少从应用到 Application Insights 的流量
 * 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中，禁用所有不需要用到的模块，例如性能计数器收集器。
@@ -159,5 +159,5 @@ ms.lasthandoff: 08/18/2017
 * **Unix 服务器** - [安装 collectd](app-insights-java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>显示更多性能计数器
-* 首先，[添加一个新图](app-insights-metrics-explorer.md)和查看计数器是否在我们提供基本集中。
+* 首先[添加一个新图表](app-insights-metrics-explorer.md)，然后查看计数器是否出现在提供的基本集内。
 * 如果没有，请[将计数器添加到性能计数器模块收集的集内](app-insights-performance-counters.md)。

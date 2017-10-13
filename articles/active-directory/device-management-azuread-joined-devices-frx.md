@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/27/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: b07386eeb0d3e05a0b4545be39030066fbdafd3d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>首次运行期间使用 Azure AD 加入新的 Windows 10 设备
 
@@ -87,4 +86,3 @@ Windows 全新体验中不支持加入本地 Active Directory (AD) 域。 如果
 - 有关更多详细信息，请参阅 [Azure Active Directory 中的设备管理简介](device-management-introduction.md)。
 
 - 有关在 Azure AD 门户中管理设备的详细信息，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)。
-

@@ -11,14 +11,12 @@ ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins, devcenter
+ms.openlocfilehash: 3a2635ac968d843226f05dc51cf4a5f078235c11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: dcc60feb4c0b3a961689f3d365d49ac1690696a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>使用 Jenkins 设置 Azure 应用服务的持续集成和部署
 
 本教程使用 Jenkins 设置通过 [Spring Boot](http://projects.spring.io/spring-boot/) 框架开发的示例 Java Web 应用的持续集成和部署 (CI/CD)，并推送到 [Linux 上的 Azure 应用服务 Web 应用](/azure/app-service/containers/app-service-linux-intro)。
@@ -187,4 +185,3 @@ ms.lasthandoff: 09/29/2017
 - [使用 Azure VM 作为生成代理](/azure/jenkins/jenkins-azure-vm-agents)
 - [使用 Azure CLI 管理作业和管道中的资源](/azure/jenkins/execute-cli-jenkins-pipeline)
  
-

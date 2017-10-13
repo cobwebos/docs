@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
 ms.openlocfilehash: e5ce666f1d826c7901c9fd5e7fafe6171139c3ad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 > [!div class="op_single_selector"]
@@ -49,9 +49,9 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 可以通过[此处](cloud-services-model-and-package.md)了解有关这些内容以及如何创建包的详细信息。
 
 ## <a name="prepare-your-app"></a>准备应用程序
-部署云服务之前，必须根据应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 SDK，并使用选择用于开发应用程序代码的语言。
+在可以部署云服务之前，必须根据应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 SDK，并使用选择用于开发应用程序代码的语言。
 
-导出服务包之前，三种云服务功能需要特殊的配置：
+在导出服务包之前，三种云服务功能需要特殊的配置：
 
 * 如果要部署使用安全套接字层 (SSL) 进行数据加密的云服务，请[为应用程序配置](cloud-services-configure-ssl-certificate-portal.md#modify) SSL。
 * 如果要配置与角色实例的远程桌面连接，请[为这些角色配置](cloud-services-role-enable-remote-desktop-new-portal.md)远程桌面。

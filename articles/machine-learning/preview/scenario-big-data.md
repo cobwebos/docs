@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b76253fad43be231591023c4d4466bf6e3f329a0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="server-workload-forecasting-on-terabytes-data"></a>基于 TB 数据的服务器工作负荷预测
 
 此示例说明数据科学家如何使用 Azure ML Workbench 开发需要使用大数据的解决方案。 我们介绍用户如何通过使用 Azure ML Workbench 顺利地完成从单个大型数据集示例开始遍历数据准备、功能设计和机器学习，然后最终将此过程延伸至整个大型数据集。 
@@ -50,7 +48,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-运行该示例的先决条件如下所示：
+运行此示例的先决条件如下所示：
 
 * [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
 * 按照[快速入门安装指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
@@ -86,9 +84,9 @@ DSVM IP 地址 | xxx|
 
 ## <a name="create-a-new-workbench-project"></a>新建 Workbench 项目
 
-将该示例用作模板新建项目：
+使用本示例作为模板，创建一个新项目：
 1.  打开 Azure Machine Learning Workbench
-2.  在“项目”页，单击**+**“登录”并选择“新建项目”
+2.  在“项目”页上单击 + 号，然后选择“新建项目”
 3.  在“新建项目”窗格中，填写新项目的信息
 4.  在“搜索项目模板”搜索框中，键入“TB 数据的工作负荷预测”，并选择模板
 5.  单击“创建” 
@@ -128,7 +126,7 @@ DSVM IP 地址 | xxx|
 
 ## <a name="scenario-structure"></a>场景结构
 
-将该示例中的文件组织如下。
+本示例中的文件按如下方式组织。
 
 | 文件名 | 类型 | 说明 |
 |-----------|------|-------------|
@@ -433,4 +431,3 @@ run_logger.log("Test Accuracy", testAccuracy)
 
 用户可以扩展代码以了解交叉验证和超参数优化。 若要了解有关交叉验证和超参数优化的详细信息，请参阅 https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning。  
 若要了解有关时序预测的详细信息，请参阅 https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting。
-

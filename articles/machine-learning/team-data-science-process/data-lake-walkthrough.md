@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 5c4ec4578d7d59ae128448be7378f6104d0ce601
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](http://aka.ms/datascienceprocess) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
@@ -686,4 +685,3 @@ Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，
 * [运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](hive-walkthrough.md)
 * [Team Data Science Process：使用 SQL Server](sql-walkthrough.md)
 * [有关使用 Spark on Azure HDInsight 的 Data Science Process 概述](spark-overview.md)
-

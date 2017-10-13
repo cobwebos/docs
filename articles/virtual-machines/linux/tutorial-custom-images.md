@@ -16,17 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/21/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: d32980f05ad17a76793021d0a5355d597974a4e4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 23212bc947dc523561acdf9d1ca784d1bab2c84c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a>使用 CLI 创建 Azure VM 的自定义映像
 
-自定义映像类似于 Marketplace 映像，不同的是自定义映像的创建者是你自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 你将学习如何：
+自定义映像类似于应用商店映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 学习如何：
 
 > [!div class="checklist"]
 > * 预配和通用化 VM
@@ -44,11 +42,11 @@ ms.lasthandoff: 06/20/2017
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便用于创建新 VM 实例。
 
-若要完成本教程中的示例，必须具备现有虚拟机。 如果需要，此[脚本示例](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md)可替你创建一个虚拟机。 通过教程操作时，根据需要替换资源组和 VM 名称。
+若要完成本教程中的示例，必须具备现有虚拟机。 必要时，此[脚本示例](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md)可为你创建一个。 通过教程操作时，根据需要替换资源组和 VM 名称。
 
 ## <a name="create-a-custom-image"></a>创建自定义映像
 
-若要创建虚拟机的映像，需通过以下方式准备 VM：取消设置、解除分配，然后将源 VM 标记为通用化。 准备好 VM 后，可以创建映像。
+要创建虚拟机的映像，需通过以下方式准备 VM：取消设置、解除分配，然后将源 VM 标记为通用化。 准备好 VM 后，可以创建映像。
 
 ### <a name="deprovision-the-vm"></a>取消设置 VM 
 
@@ -145,5 +143,4 @@ az image delete \
 
 > [!div class="nextstepaction"]
 > [创建高度可用的 VM](tutorial-availability-sets.md)。
-
 

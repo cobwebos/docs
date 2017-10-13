@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
 ms.openlocfilehash: 80eb68346dd05c256c60725eb082aa0651fe7cbd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ ms.lasthandoff: 08/18/2017
 必须注意，用于创建和打开侦听器与 runAsync 的调用之间没有一定的顺序。 可在启动 runAsync 之前打开侦听器。 同样，在通信侦听器打开甚至构造之前，即可结束调用 runAsync。 如果需要进行任何同步，这是实现器的任务。 常见解决方法：
 
 * 有时，在创建其他某些信息或者完成工作之前，侦听器无法正常运行。 对于无状态服务，这种工作通常在服务的构造函数中、在 `createServiceInstanceListeners()` 调用期间或者在构造侦听器本身的过程中完成。
-* 有时，在侦听器打开之前，runAsync 中的代码不希望启动。 在这种情况下，必须进行更多的协调。 一种常见的解决方法是在侦听器中使用某个标志来指示工作已完成，系统会先在 runAsync 中检查该标志，并继续执行实际工作。
+* 有时，在侦听器打开之前，runAsync 中的代码不希望启动。 在这种情况下，必须进行更多的协调。 一种常见的解决方法是在侦听器中使用某个标志来指示工作已完成，系统会先在 runAsync 中检查该标志，然后继续执行实际工作。
 
 ## <a name="stateless-service-shutdown"></a>无状态服务关闭
 关闭无状态服务，将遵循相同的模式，只不过遵循的顺序相反：
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="notes-on-service-lifecycle"></a>有关服务生命周期的说明
 * `runAsync()` 方法和 `createServiceInstanceListeners` 调用都是可选的。 服务可能使用其中的一个或两个，或者都不使用。 例如，如果服务执行的所有工作都只是为了响应用户调用，则无需实现 `runAsync()`。 只需提供通信侦听器及其关联的代码。 同样，创建和返回通信侦听器的操作也是可选的，因为服务可能只需执行后台工作，在这种情况下，只需实现 `runAsync()`
 * 服务成功完成 `runAsync()` 并从中返回即可。 这不被视为一种错误状态，只是表示正在完成服务的后台工作。 对于有状态可靠服务，如果服务已从主副本降级，然后重新升级为主副本，则会再次调用 `runAsync()`。
-* 如果服务通过引发某种意外的异常而从 `runAsync()` 退出，则这就属于一种失败状态，在此情况下，会关闭服务对象并报告运行状况错误。
+* 如果服务通过引发某种意外的异常而从 `runAsync()` 退出，则就属于一种失败状态，在此情况下，将关闭服务对象并报告运行状况错误。
 * 虽然从这些方法返回没有时间限制，但会立即丧失写入的能力，并因此无法完成任何实际工作。 建议尽快在收到取消请求后返回。 如果服务在合理的时间内未响应这些 API 调用，Service Fabric 可能会强行终止服务。 通常，只有在应用程序升级期间或删除服务时，才发生这种情况。 此超时默认为 15 分钟。
 * `onCloseAsync()` 路径中的失败会导致调用 `onAbort()`，服务可以凭借这最后一个机会，尽最大努力清理并释放它们所占用的资源。
 

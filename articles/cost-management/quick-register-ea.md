@@ -10,18 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 5b2fa44eaf801715d50282b4c1460c58d3631637
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>注册 Azure 企业协议并查看成本数据
 
-可使用 Azure 企业协议注册由 Cloudyn 提供的 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 它还演示如何立即开始查看成本数据。
+可使用 Azure 企业协议注册由 Cloudyn 提供的 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -30,7 +27,7 @@ ms.lasthandoff: 09/25/2017
 ## <a name="create-a-trial-registration"></a>创建试用注册
 
 1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。
-2. 在“概述”下，单击“成本管理”  
+2. 在“概览”下，单击“成本管理”  
     ![“成本管理”页](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. 在“成本管理”页上，单击“转到成本管理”，在新窗口中打开“Cloudyn 注册”页。
 4. 在 Cloudyn 门户试用注册页上，键入公司名称，然后选择“Azure 企业合约管理员”。  
@@ -52,4 +49,3 @@ ms.lasthandoff: 09/25/2017
 
 > [!div class="nextstepaction"]
 > [查看成本数据](./tutorial-review-usage.md)
-

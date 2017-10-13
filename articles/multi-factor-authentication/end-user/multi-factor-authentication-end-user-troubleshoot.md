@@ -16,12 +16,11 @@ ms.date: 07/06/2017
 ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4af968ec596540be428898cc4928b0d4c37bf6ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: e43ec0bf5b1e5d96eae413687e168a3230e2fe86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
 本文解答有关双重验证的最常见问题。
@@ -61,7 +60,7 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 若要使用备用电话号码登录，请执行以下步骤：
 
 1. 如往常一样登录。
-2. 当系统提示你进一步验证帐户时，选择“使用其他验证选项”。
+2. 当系统提示进一步验证帐户时，选择“使用其他验证选项”。
 
    ![其他验证方法](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
 
@@ -96,4 +95,3 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 ## <a name="related-topics"></a>相关主题
 * [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)  
 * [Microsoft Authenticator 应用程序常见问题](microsoft-authenticator-app-faq.md)
-

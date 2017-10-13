@@ -12,12 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
+ms.openlocfilehash: c5331a7f658feacba4b03dd3b5ba8ddb23738051
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e46609b3f1cc2cae3814e729ea74cfb8b24bea68
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-services-included-with-azure-free-account"></a>创建 Azure 免费帐户包含的服务
 
@@ -37,4 +36,3 @@ Azure 免费帐户包含数量有限的免费服务，使用期限为 12 个月�
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-

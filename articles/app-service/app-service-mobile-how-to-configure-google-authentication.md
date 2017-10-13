@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 ms.openlocfilehash: d6c1707f67d986487e5a45e76ffc9a02ddf16eb1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>如何将应用服务应用程序配置为使用 Google 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -27,7 +27,7 @@ ms.lasthandoff: 08/29/2017
 
 要完成本主题中的过程，必须拥有一个包含已验证电子邮件地址的 Google 帐户。 若要新建一个 Google 帐户，请转到 [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302)。
 
-## <a name="register"></a>向 Google 注册你的应用程序
+## <a name="register"> </a>向 Google 注册应用程序
 1. 登录到 [Azure 门户]并导航到应用程序。 复制 **URL**，稍后将用此来配置 Google 应用。
 2. 导航到 [Google API](http://go.microsoft.com/fwlink/p/?LinkId=268303) 网站，使用 Google 帐户凭据登录，单击“创建项目”，提供“项目名称”，并单击“创建”。
 3. 在“社交 API”下，单击“Google+ API”，并单击“启用”。
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/29/2017
     > 客户端密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。
 
 
-## <a name="secrets"></a>到你的应用程序添加 Google 信息
+## <a name="secrets"></a>向应用程序添加 Google 信息
 1. 返回 [Azure 门户]，导航到应用程序。 依次单击“设置”和“身份验证/授权”。
 2. 如果“身份验证/授权”功能未启用，请切换为“打开”。
 3. 单击“Google”。 粘贴前面获取的应用 ID 和应用密钥值，启用应用程序所需的任何范围（可选）。 然后单击“确定”。

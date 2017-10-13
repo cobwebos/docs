@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 073/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: a8616eb51b177a9447a7c466c9d934b9139afedf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的磁盘驱动器
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 09/02/2017
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |指示灯小孔 |
-   | 2 |防伪锁 |
+   | #N/A |防伪锁 |
 2. 以逆时针方向旋转锁钥，直至锁钥上方小孔中的红色指示灯不亮。
 3. 拔出锁钥。
    
@@ -111,5 +110,4 @@ StorSimple 设备支持类似 RAID 10 的存储空间配置。 这意味着它�
   
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-8000-hardware-component-replacement.md)。
-
 

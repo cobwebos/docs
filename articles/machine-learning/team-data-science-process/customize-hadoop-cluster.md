@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 522e33b399f2648427464b439bc4405e9e8097cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-azure-hdinsight-hadoop-clusters-for-the-team-data-science-process"></a>为 Team Data Science Process 自定义 Azure HDInsight Hadoop 群集
 本文介绍群集设置为 HDInsight 服务时，如何通过在每个节点上安装 64 位的 Anaconda (Python 2.7) 来自定义 HDInsight Hadoop 群集。 另外，演示如何访问头节点，将自定义作业提交到群集。 在用户指定来处理群集中的 Hive 记录的函数 (UDFs)中，自定义让 Anaconda 中许多常用的 Python 模板方便可用。 有关此方案中所用步骤的说明，请参阅 [如何提交 Hive 查询](move-hive-tables.md#submit)。
@@ -89,5 +88,4 @@ ms.lasthandoff: 09/25/2017
 进一步的分析过程中的下一个步骤映射在[团队数据科学进程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中，并且可能包括将数据移到 HDInsight 的步骤，然后对该步骤进行采样、处理，以便使用 Azure 机器学习来学习数据。
 
 请参阅 [如何提交 Hive 查询](move-hive-tables.md#submit)如何访问从函数 (UDFs) - 即用户指定来处理群集中的 Hive 记录的函数 - 中的群集头节点纳入 Anaconda 的 Python 模块。
-
 

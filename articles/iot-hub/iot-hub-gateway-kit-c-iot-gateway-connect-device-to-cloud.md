@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
 ms.openlocfilehash: 4fb77ed0241d15338c2574fd22828507c3e40cb3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>使用 IoT 网关将设备连接到云 - 将 SensorTag 连接到 Azure IoT 中心
+# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>使用 IoT 网关将设备连接到 Azure IoT 中心的云 - SensorTag
 
 > [!NOTE]
 > 在开始本教程前，请确保[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)已完成。 在[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)中，用户将 Intel NUC 设备设置为 IoT 网关。
@@ -35,7 +35,7 @@ ms.lasthandoff: 08/03/2017
 - 创建 IoT 中心。
 - 在 IoT 中心内为 SensorTag 注册一台设备。
 - 启用 IoT 网关和 SensorTag 之间的连接。
-- 运行 BLE 示例应用程序，将 SensorTag 数据发送到 IoT 中心。
+- 运行 BLE 示例应用程序，以将 SensorTag 数据发送到 IoT 中心。
 
 ## <a name="what-you-need"></a>所需条件
 

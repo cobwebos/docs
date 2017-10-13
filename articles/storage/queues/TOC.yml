@@ -104,14 +104,18 @@
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: 资源管理器
-          href: /dotnet/api/microsoft.azure.management.storage
-        - name: 数据移动
-          href: /dotnet/api/microsoft.windowsazure.storage.datamovement
         - name: Blob、队列、表和文件
-          href: 'https://docs.microsoft.com/en-us/dotnet/api/overview/azure/storage?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client?view=azure-dotnet'
+        - name: 数据移动
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement?view=azure-dotnet'
+        - name: 资源管理器
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management?view=azure-dotnet'
     - name: Java
-      href: 'http://azure.github.io/azure-storage-java/'
+      items:
+        - name: Blob、队列、表和文件
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/clientlibrary'
+        - name: 资源管理器
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/managementapi'
     - name: Node.js
       href: 'http://azure.github.io/azure-storage-node'
     - name: Ruby

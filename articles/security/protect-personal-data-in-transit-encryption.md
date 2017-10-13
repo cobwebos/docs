@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
+ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 8c59fa7e9315922af4fab5f8492194b50459ef8b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure 加密技术：使用加密保护传输中的个人数据
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 09/20/2017
 
 Azure 服务提供多种工具和技术来帮助保护传输中的个人数据。
 
-### <a name="azure-storage"></a>Azure 存储
+### <a name="azure-storage"></a>Azure 存储空间
 
 云中存储的数据必须从客户端（可以在世界上的任何实际位置）传输到 Azure 数据中心。 当用户检索数据时，数据以相反的方向再次传输。 通过公共 Internet 传输的数据始终存在被攻击者截获的风险。 在不同的位置之间移动个人数据时，必须使用传输级加密来保护数据，以确保数据的隐私性。
 
@@ -195,4 +194,3 @@ Microsoft 使用加密来保护在客户与 Azure 云服务之间传输的数据
 - [VPN 网关常见问题](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vpn-faq)
 
 - [为 Azure 应用服务购买和配置 SSL 证书](https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site)
-

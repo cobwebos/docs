@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
 ms.openlocfilehash: 9a30bcca720ff135d0180d73f46e78403e9bca43
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 集成
 本教程的目的是说明 Azure 与 SCC LifeCycle 的集成。  

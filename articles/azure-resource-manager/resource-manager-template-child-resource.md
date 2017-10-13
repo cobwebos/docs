@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>在 Resource Manager 模板中设置子资源的名称和类型
 创建模板时，通常需要包括与父资源相关的子资源。 例如，模板可以包括 SQL Server 和数据库。 SQL Server 是父资源，数据库是子资源。 
@@ -40,7 +40,7 @@ ms.lasthandoff: 07/11/2017
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
 ## <a name="nested-child-resource"></a>嵌套的子资源
-要定义子资源，最简单的方式是将其嵌套在父资源中。 以下示例演示了 SQL Server 中嵌套的 SQL 数据库。
+定义子资源的最简单方法是将其嵌套在父资源中。 以下示例演示了 SQL Server 中嵌套的 SQL 数据库。
 
 ```json
 {

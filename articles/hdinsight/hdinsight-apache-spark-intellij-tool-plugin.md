@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: nitinme
 ms.openlocfilehash: 19cb8f436fa4d86f323013a5d4b3b50bf6c80a1a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/29/2017
 > 此插件仅可用于在 Linux 上的 HDInsight Spark 群集中创建和提交应用程序。
 > 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 - Oracle Java 开发工具包。 可以从 [Oracle 网站](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装它。
@@ -201,7 +201,7 @@ ms.lasthandoff: 08/29/2017
 3. 在“Spark 历史记录服务器”仪表板上，可以使用应用程序名称查找刚运行完的应用程序。 在上述代码中，已使用 `val conf = new SparkConf().setAppName("MyClusterApp")` 设置了应用程序名称。 因此，Spark 应用程序名称为 **MyClusterApp**。
 
 ### <a name="start-the-ambari-portal"></a>启动 Ambari 门户
-1. 在“Azure 资源管理器”中，展开“HDInsight”，右键单击 Spark 群集名称，然后选择“打开群集管理门户(Ambari)”。 
+1. 在“Azure 资源管理器”中，展开“HDInsight”，右键单击 Spark 群集名称，并选择“打开群集管理门户(Ambari)”。 
 
 2. 出现提示时，请输入群集的管理员凭据。 在群集设置过程中已指定这些凭据。
 

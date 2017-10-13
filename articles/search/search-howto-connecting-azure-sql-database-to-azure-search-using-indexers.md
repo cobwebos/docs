@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
 ms.openlocfilehash: 49f614fdf3ba84de238139387ea97ee62077b072
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>使用索引器将 Azure SQL 数据库连接到 Azure 搜索
 
@@ -242,7 +242,7 @@ Azure 搜索使用**增量索引编制**来避免索引器每次运行时都必�
     }
 
 > [!WARNING]
-> 如果源表在高使用标记列上没有索引，SQL 索引器使用的查询可能会超时。 特别是，当表中包含多个行时，`ORDER BY [High Water Mark Column]` 子句需要索引才能有效运行。
+> 如果源表在高使用标记列上没有索引，SQL 索引器使用的查询可能会超时。特别是，当表中包含多个行时，`ORDER BY [High Water Mark Column]` 子句需要索引才能有效运行。
 >
 >
 

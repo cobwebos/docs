@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
+ms.openlocfilehash: 7b8b9072d0e2fd054ca07873c0a9ce772dc2941e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: b1f22104d530315318685fa4896b710b003ac3cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-hybrid-connections"></a>创建和管理混合连接
 
 > [!IMPORTANT]
-> BizTalk 混合连接已停用，并由应用服务混合连接替代。 有关详细信息，包括如何管理现有 BizTalk 混合连接，请参阅 [Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)。
+> BizTalk 混合连接已停用，并由应用服务混合连接替代。 有关详细信息，包括如何管理现有 BizTalk 混合连接，请参阅 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)。
 
 
 ## <a name="overview-of-the-steps"></a>步骤概述
@@ -156,4 +155,3 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png 
-

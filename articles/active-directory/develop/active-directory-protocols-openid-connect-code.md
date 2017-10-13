@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 1bb944997caa0c43354e82bf9b1a70e3e104a476
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # 使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 是构建在 OAuth 2.0 协议顶层的简单标识层。 OAuth 2.0 定义了一些机制用于获取和使用**访问令牌**来访问受保护资源，但未定义用于提供标识信息的标准方法。 OpenID Connect 实现身份验证，作为对 OAuth 2.0 授权过程的扩展。 它以 `id_token` 的形式提供有关最终用户的信息，可验证用户的标识，并提供有关用户的基本配置文件信息。
@@ -85,15 +85,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。  独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击“Azure Active Directory”，单击“应用注册”，选择应用程序并在应用程序页上找到应用程序 ID。 |
 | response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。  还可以包含其他 response_type，例如 `code`。 |
-| 作用域 |必填 |范围的空格分隔列表。  对于 OpenID Connect，它必须包含范围 `openid`，该范围在同意 UI 中会转换为“将你登录”权限。  也可以在此请求中包含其他范围，以请求同意。 |
+| 作用域 |必填 |范围的空格分隔列表。  针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。  也可以在此请求中包含其他范围，以请求同意。 |
 | nonce |必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。  此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
 | redirect_uri |建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。  其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 |
-| response_mode |建议 |指定将生成的 authorization_code 送回到应用程序所应使用的方法。  *HTTP 窗体发布*支持的值为 `form_post`，*URL 片段*支持的值为 `fragment`。  对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
-| state |建议 |随令牌响应返回的请求中所包含的值。  可以是想要的任何内容的字符串。  随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。  该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
+| response_mode |建议 |指定将生成的 authorization_code 送回到应用程序所应该使用的方法。  *HTTP 窗体发布*支持的值为 `form_post`，*URL 片段*支持的值为 `fragment`。  对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
+| state |建议 |随令牌响应返回的请求中所包含的值。  它可以是你想要的任何内容的字符串。  随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。  该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | prompt |可选 |表示需要的用户交互类型。  当前唯一有效的值为“login”、“none”和“consent”。  `prompt=login` 强制用户在该请求上输入其凭据，从而使单一登录无效。  `prompt=none` 完全相反，它会确保无论如何都不会向用户显示任何交互提示。  如果请求无法通过单一登录静默完成，则终结点将返回一个错误。  `prompt=consent` 在用户登录后触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。  通常，应用在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
 
-此时，系统会要求用户输入凭据并完成身份验证。
+此时，系统将要求用户输入凭据并完成身份验证。
 
 ### 示例响应
 下面是在对用户进行身份验证后的示例响应：
@@ -143,7 +143,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 ## 验证 id_token
 仅接收 `id_token` 不足以对用户进行身份验证，必须验证签名，并按照应用的要求验证 `id_token` 中的声明。 Azure AD 终结点使用 JSON Web 令牌 (JWT) 和公钥加密对令牌进行签名并验证其是否有效。
 
-可以选择验证客户端代码中的 `id_token`，但常见的做法是将 `id_token` 发送到后端服务器，并在那里执行验证。 验证 `id_token` 的签名后，需要验证一些声明。
+可以选择验证客户端代码中的 `id_token`，但是常见的做法是将 `id_token` 发送到后端服务器，并在那里执行验证。 验证 `id_token` 的签名后，需要验证一些声明。
 
 可能还希望根据自己的方案验证其他声明。 一些常见的验证包括：
 
@@ -154,9 +154,9 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 验证 `id_token` 后，即可开始与用户的会话，并使用 `id_token` 中的声明来获取应用中的用户相关信息。 此信息可以用于显示、记录和授权，等等。有关令牌类型和声明的详细信息，请阅读[支持的令牌和声明类型](active-directory-token-and-claims.md)。
 
 ## 发送注销请求
-如果希望用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。  还必须将用户重定向到 `end_session_endpoint` 才能注销。  如果不这样做，用户可能不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 Azure AD 终结点之间仍然存在有效的单一登录会话。
+如果希望用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。  还必须将用户重定向到 `end_session_endpoint` 才能注销。如果不这样做，用户可能不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 Azure AD 终结点之间仍然存在有效的单一登录会话。
 
-只需将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint` ：
+只需将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint`：
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/logout?

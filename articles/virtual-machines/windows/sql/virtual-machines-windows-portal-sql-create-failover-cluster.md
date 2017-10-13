@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2017
 ms.author: mikeray
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 1bbfd7cc63d534d7f9c360ad4afd05bd4e225725
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
 本文介绍如何在 Resource Manager 模型中的 Azure 虚拟机上创建 SQL Server 故障转移群集实例 (FCI)。 此解决方案使用 [Windows Server 2016 Datacenter Edition 存储空间直通 \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) 作为基于软件的虚拟 SAN，在 Windows 群集中的节点 (Azure VM) 之间同步存储（数据磁盘）。 S2D 是 Windows Server 2016 中的新增功能。
@@ -98,8 +96,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
    - 单击“创建” 。
    - 在“创建可用性集”边栏选项卡中设置以下值：
       - **名称**：可用性集的名称。
-      - 
-            **订阅**：Azure 订阅。
+      - **订阅**：Azure 订阅。
       - **资源组**：如果想要使用现有的组，请单击“使用现有项”并从下拉列表中选择该组。 否则，请选择“新建”并键入组的名称。
       - **位置**：设置要在其中创建虚拟机的位置。
       - **容错域**：使用默认值 (3)。
@@ -355,13 +352,10 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
    - **虚拟网络**：虚拟机所在的同一网络。
    - **子网**：虚拟机所在的同一子网。
    - **专用 IP 地址**：分配给 SQL Server FCI 群集网络资源的同一 IP 地址。
-   - 
-            **订阅**：Azure 订阅。
-   - 
-            **资源组**：使用虚拟机所在的同一资源组。
-   - 
-               **位置**：使用虚拟机所在的同一 Azure 位置。
-参阅下图：
+   - **订阅**：Azure 订阅。
+   - **资源组**：使用虚拟机所在的同一资源组。
+   - **位置**：使用虚拟机所在的同一 Azure 位置。
+   参阅下图：
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
 
@@ -496,4 +490,3 @@ Azure 虚拟机上的 FCI 不支持 Microsoft 分布式事务处理协调器 (DT
 [Storage Space Direct Overview](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)（存储空间直通概述）
 
 [SQL Server support for S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)（S2D 的 SQL Server 支持）
-

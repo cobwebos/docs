@@ -16,10 +16,10 @@ ms.date: 03/19/2017
 ms.author: kraigb
 ms.custom: aaddev
 ms.openlocfilehash: a756316054dd3bb63f3b0a9f59621bb1345bc693
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-active-directory-and-visual-studio-connected-services-webapi-projects"></a>开始使用 Azure Active Directory 和 Visual Studio 连接服务（WebApi 项目）
 > [!div class="op_single_selector"]

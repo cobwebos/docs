@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 网络观察程序“下一跃点”功能查找下一跃点 - Azure CLI 1.0 | Microsoft Docs"
-description: "本文将介绍如何使用 Azure CLI 通过“下一跃点”功能查找下一跃点类型和 ip 地址。"
+description: "本文介绍如何使用 Azure CLI 通过“下一跃点”功能查找下一跃点类型和 ip 地址。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: ff88e945060ae033717ceb29db1352e112f05a3f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: e849f7952962d177f40ce99307ef1c305e089827
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-10"></a>使用 Azure CLI 1.0 通过 Azure 网络观察程序中的“下一跃点”功能找到下一跃点类型
 
 > [!div class="op_single_selector"]
@@ -39,7 +37,7 @@ ms.lasthandoff: 05/26/2017
 
 在此方案中，将使用 Azure CLI 来查找下一跃点类型和 IP 地址。
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
 
 ## <a name="scenario"></a>方案
 
@@ -81,4 +79,3 @@ info:    network watcher next-hop command OK
 ## <a name="next-steps"></a>后续步骤
 
 通过访问[使用网络观察程序进行 NSG 审核](network-watcher-nsg-auditing-powershell.md)，了解如何以编程方式查看网络安全组设置
-

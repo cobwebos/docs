@@ -8,14 +8,12 @@ ms.author: markgal
 ms.date: 09/16/2017
 ms.topic: article
 ms.service: backup
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f144db921a8b2d01dbfe883a48574c4fabdae6f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
 在 Azure 中备份数据时，数据存储在名为恢复服务保管库的 Azure 资源中。 恢复服务保管库资源位于大多数 Azure 服务的“设置”菜单中。 在大多数 Azure 服务的“设置”菜单中集成恢复服务保管库的好处在于显著简化数据备份。 但是，单独使用公司中的每个数据库或虚拟机非常麻烦。 如果将所有虚拟机的数据备份到一个部门或一个位置，会发生什么情况？ 通过创建备份策略和将此策略应用到目标虚拟机，可轻松备份多个虚拟机。 本教程介绍了如何完成以下操作：
@@ -187,4 +185,3 @@ ms.lasthandoff: 09/25/2017
 
 > [!div class="nextstepaction"]
 > [使用 CLI 还原 VM](./tutorial-restore-disk.md)
-

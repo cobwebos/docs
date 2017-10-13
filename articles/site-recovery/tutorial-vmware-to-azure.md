@@ -11,12 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ee445c8af2fc6620385d9c462d4c6551da3d7367
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
@@ -172,7 +171,7 @@ Azure 政府云的 URL：
 4. 选择“+vCenter”，以连接到 vCenter 服务器或 vSphere ESXi 主机。
 5. 在“添加 vCenter”中，为服务器指定一个友好名称。 然后，指定 IP 地址或 FQDN。
 6. 除非 VMware 服务器在不同的端口上侦听请求，否则请保持端口设置为 443。
-7. 选择要用于连接到服务器的帐户。 单击**“确定”**。
+7. 选择要用于连接到服务器的帐户。 单击 **“确定”**。
 
 Site Recovery 将使用指定的设置连接到 VMware 服务器，并且将发现 VM。
 
@@ -232,4 +231,3 @@ Site Recovery 将使用指定的设置连接到 VMware 服务器，并且将发�
 
 > [!div class="nextstepaction"]
 > [运行灾难恢复演练](site-recovery-test-failover-to-azure.md)
-

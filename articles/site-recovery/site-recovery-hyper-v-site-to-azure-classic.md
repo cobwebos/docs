@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 ms.openlocfilehash: 438f32ee3605e2dd0c46de7993a359cc269262fe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-between-on-premises-hyper-v-virtual-machines-and-azure-without-vmm-with-azure-site-recovery"></a>使用 Azure Site Recovery 在本地 Hyper-V 虚拟机与 Azure 之间复制（不使用 VMM）
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 * 建议始终运行最新版本的提供程序和代理。 可以在站点恢复门户中获取这些程序。
 * 保管库中的所有 Hyper-V 服务器应有相同版本的提供程序和代理。
-* 服务器上运行的提供程序通过 Internet 连接到站点恢复。 可以使用当前在 Hyper-V 服务器上配置的代理设置或者使用在安装提供程序期间配置的自定义代理设置，在不使用代理的情况下完成部署。 需确保要使用的代理服务器可以访问这些 URL 以连接到 Azure：
+* 服务器上运行的提供程序通过 Internet 连接到站点恢复。 可以使用 Hyper-V 服务器上当前配置的代理设置或者使用在安装提供程序期间配置的自定义代理设置，在不使用代理的情况下完成部署。 需确保要使用的代理服务器可以访问这些 URL 以连接到 Azure：
 
   * *.accesscontrol.windows.net
   * *.backup.windowsazure.com
@@ -93,7 +93,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
     ![新保管库](./media/site-recovery-hyper-v-site-to-azure-classic/vault.png)
 
-检查状态栏以确认保管库已成功创建。 保管库会以“活动”形式列在主要的“恢复服务”页上 。
+检查状态栏以确认保管库已成功创建。 保管库以“活动”形式列在主要的“恢复服务”页上。
 
 ## <a name="step-2-create-a-hyper-v-site"></a>步骤 2：创建 Hyper-V 站点
 1. 在“恢复服务”页中，单击保管库以打开“快速启动”页。 也可随时使用该图标打开“快速启动”。
@@ -107,7 +107,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
     ![Hyper-V 站点](./media/site-recovery-hyper-v-site-to-azure-classic/create-site.png)
 
 ## <a name="step-3-install-the-provider-and-agent"></a>步骤 3：安装提供程序和代理
-在要保护的 VM 所在的每台 Hyper-V 服务器上安装提供程序和代理。
+在要保护的 VM 所在的每个 Hyper-V 服务器上安装提供程序和代理。
 
 如果要在 Hyper-V 群集上进行安装，请在故障转移群集中的每个节点上执行步骤 5-11。 在注册所有节点并启用保护后，即使跨群集中的节点迁移虚拟机，这些虚拟机也会受到保护。
 
@@ -135,7 +135,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 10. 注册过程将开始在保管库中注册服务器。
 
     ![服务器注册](./media/site-recovery-hyper-v-site-to-azure-classic/provider15.PNG)
-11. 完成注册后，Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器将显示在保管库中“服务器”页上的“Hyper-V 站点”选项卡上。
+11. 完成注册后，Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器会显示在保管库中“**服务器**”页上的“**Hyper-V 站点**”选项卡上。
 
 ### <a name="install-the-provider-from-the-command-line"></a>从命令行安装提供程序
 或者，可以从命令行安装 Azure Site Recovery 提供程序。 如果要在运行 Windows Server Core 2012 R2 的计算机上安装提供程序，则应该使用此方法。 从命令行运行如下所示的命令：
@@ -171,7 +171,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 >
 
 ## <a name="step-5-create-and-configure-protection-groups"></a>步骤 5：创建并配置保护组
-保护组是用户想要使用相同保护设置保护的虚拟机的逻辑分组。 可以将保护设置应用到保护组，这些设置将应用到在组添加的所有虚拟机。
+保护组是要使用相同的保护设置保护的虚拟机的逻辑分组。 可以将保护设置应用到保护组，这些设置将应用到在组添加的所有虚拟机。
 
 1. 在“**创建和配置保护组**”中，单击“**创建保护组**”。 如果缺少任何必备组件，系统将发出一条消息，可以单击“**查看详细信息**”来了解详细信息。
 2. 在“**保护组**”选项卡中，添加一个保护组。 指定名称、源 Hyper-V 站点、目标 **Azure**、 Azure Site Recovery 订阅名称和 Azure 存储帐户。
@@ -219,8 +219,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
      * **Azure 网络**：指定虚拟机应故障转移到的网络。 如果虚拟机有多个网络适配器，所有适配器应连接到同一个 Azure 网络。
      * **子网**：对于虚拟机上的每个网络适配器，请在 Azure 网络中选择故障转移后计算机应连接到的子网。
-     * 
-            **目标 IP 地址**：如果源虚拟机的网络适配器配置为使用静态 IP 地址，那么可以指定目标虚拟机的 IP 地址，以确保计算机在故障转移后具有相同的 IP 地址。  如果不指定 IP 地址，会在故障转移时分配任何可用的地址。 如果指定了正在使用的地址，故障转移会失败。
+     * **目标 IP 地址**：如果源虚拟机的网络适配器配置为使用静态 IP 地址，那么可以指定目标虚拟机的 IP 地址，以确保计算机在故障转移后具有相同的 IP 地址。  如果不指定 IP 地址，会在故障转移时分配任何可用的地址。 如果指定了正在使用的地址，故障转移会失败。
 
      > [!NOTE]
      > 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../azure-resource-manager/resource-group-move-resources.md)。
@@ -232,7 +231,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 
 ## <a name="step-7-create-a-recovery-plan"></a>步骤 7：创建恢复计划
-为了对部署进行测试，可以针对单个虚拟机或单个恢复计划（其中包含一个或多个虚拟机）运行测试故障转移。 [详细了解](site-recovery-create-recovery-plans.md)如何创建恢复计划。
+为了对部署进行测试，可以针对单个虚拟机或单个恢复计划（其中包含一个或多个虚拟机）运行测试性故障转移。 [详细了解](site-recovery-create-recovery-plans.md)如何创建恢复计划。
 
 ## <a name="step-8-test-the-deployment"></a>步骤 8：测试部署
 可通过两种方式运行到 Azure 的测试故障转移。
@@ -240,11 +239,11 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 * **没有 Azure 网络的测试故障转移**- 此类型的测试故障转移检查虚拟机是否可以在 Azure 中正常运行。 在故障转移后，虚拟机不会连接到任何 Azure 网络。
 * **使用 Azure 网络的测试故障转移**—此类型的故障转移检查整个复制环境是否可以按预期运行，并且在故障转移后，虚拟机是否连接到指定的目标 Azure 网络。 请注意，对于测试故障转移，会根据副本虚拟机的子网确定测试虚拟机的子网。 这不同于常规复制，在常规复制中，副本虚拟机的子网是根据源虚拟机的子网确定的。
 
-如果想要运行测试故障转移而未指定 Azure 网络，不需要做任何准备。
+如果想要运行测试故障转移而未指定 Azure 网络，则不需要做任何准备。
 
-若要运行具有目标 Azure 网络的测试性故障转移，你将需要创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（你在 Azure 中新建网络时的默认行为）。 阅读[运行测试故障转移](site-recovery-failover.md)以获取更多详细信息。
+要运行具有目标 Azure 网络的测试性故障转移，需要创建一个与 Azure 生产网络相隔离的新 Azure 网络（在 Azure 中新建网络时的默认行为）。 阅读[运行测试故障转移](site-recovery-failover.md)以获取更多详细信息。
 
-若要完全测试复制和网络部署，需要设置基础结构，以便复制的虚拟机按预期工作。 一种做法是将虚拟机设置为使用 DNS 的域控制器，并使用站点恢复将其复制到 Azure，以通过运行测试故障转移在测试网络中创建该域控制器。  [阅读](site-recovery-active-directory.md#test-failover-considerations)有关 Active Directory 测试故障转移注意事项的详细信息。
+要完全测试复制和网络部署，需要设置基础结构，以便复制的虚拟机按预期工作。 一种做法是将虚拟机设置为使用 DNS 的域控制器，并使用站点恢复将其复制到 Azure，以通过运行测试故障转移在测试网络中创建该域控制器。  [阅读](site-recovery-active-directory.md#test-failover-considerations)有关 Active Directory 测试故障转移注意事项的详细信息。
 
 按如下所述运行测试故障转移：
 
@@ -257,20 +256,20 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 2. 在“**确认测试故障转移**”页上，选择“**无**”或选择一个特定的 Azure 网络。  请注意，如果选择了“**无**”，则测试故障转移会检查虚拟机是否可以正确复制到 Azure，但不会检查复制网络配置。
 
     ![测试故障转移](./media/site-recovery-hyper-v-site-to-azure-classic/test-nonetwork.png)
-3. 在“作业”选项卡上，可以跟踪故障转移进度。 在 Azure 门户中，应当也能够看到虚拟机测试副本。 如果已设置为从本地网络访问虚拟机，可以启动与虚拟机的远程桌面连接。
+3. 在“作业”选项卡上，可以跟踪故障转移进度。 在 Azure 门户中，应当也能够看到虚拟机测试副本。 如果已设置为从本地网络访问虚拟机，则可以启动与虚拟机的远程桌面连接。
 4. 在故障转移到达**完成测试**阶段时，单击“**完成测试**”以结束测试故障转移。 可以向下钻取到“作业”选项卡来跟踪故障转移进度和状态以及执行所需的任何操作。
-5. 在故障转移后，你将能够在 Azure 门户中看到虚拟机测试副本。 如果已设置为从本地网络访问虚拟机，可以启动与虚拟机的远程桌面连接。
+5. 在故障转移后，能够在 Azure 门户中看到虚拟机测试副本。 如果已设置为从本地网络访问虚拟机，则可以启动与虚拟机的远程桌面连接。
 
    1. 验证虚拟机成功启动。
    2. 如果想要在故障转移之后使用远程桌面连接到 Azure 中的虚拟机，请在虚拟机上启用远程桌面连接，并运行测试故障转移。 还需要在虚拟机上添加 RDP 终结点。 可以利用 [Azure 自动化 Runbook](site-recovery-runbook-automation.md)来执行此操作。
-   3. 故障转移后，如果想要通过远程桌面使用公共 IP 地址连接到 Azure 中的虚拟机，请确保没有任何域策略阻止使用公共地址连接到虚拟机。
+   3. 故障转移后，如果要通过远程桌面使用公共 IP 地址连接到 Azure 中的虚拟机，请确保没有任何域策略阻止使用公共地址连接到虚拟机。
 6. 完成测试后，执行以下操作：
 
    * 单击“测试故障转移已完成” 。 清理测试环境以自动关闭电源，并删除测试虚拟机。
    * 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果  。
 7. 当故障转移达到“**完成测试**”阶段时，请按如下所述完成验证：
    1. 在 Azure 门户中查看副本虚拟机。 验证虚拟机是否启动成功。
-   2. 如果已设置为从本地网络访问虚拟机，可以启动与虚拟机的远程桌面连接。
+   2. 如果已设置为从本地网络访问虚拟机，则可以启动与虚拟机的远程桌面连接。
    3. 单击“完成测试”以完成测试  。
    4. 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果  。
    5. 单击“测试故障转移已完成” 。 清理测试环境以自动关闭电源，并删除测试虚拟机。

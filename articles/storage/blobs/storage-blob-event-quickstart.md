@@ -8,14 +8,12 @@ ms.author: cbrooks
 ms.date: 08/18/2017
 ms.topic: article
 ms.service: storage
+ms.openlocfilehash: 1a489f199bcc955fd14e82d16670d854305b00c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: a68d5c4ee8ad69cd888765a96566a7ca6c13cff3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>将 Blob 存储事件路由到自定义 Web 终结点（预览版）
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 订阅 Blob 存储事件，然后触发可查看结果的事件。 
@@ -145,4 +143,3 @@ az group delete --name <resource_group_name>
 
 - [对 Blob 存储事件作出反应](storage-blob-event-overview.md)
 - [关于事件网格](../../event-grid/overview.md)
-

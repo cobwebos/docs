@@ -14,12 +14,11 @@ ms.date: 09/25/2017
 ms.author: jeffgilb
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 48b26bfcce67ce915c404a0ab2ac0f399c3b821d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enabling-linkedin-integration-in-azure-active-directory"></a>在 Azure Active Directory 中启用 LinkedIn 集成
 启用 LinkedIn 集成，可让用户从 Microsoft 应用中访问公共 LinkedIn 数据及其个人 LinkedIn 网络（如果用户选择）。 每个用户可以独立地选择将其工作帐户连接到其 LinkedIn 帐户。

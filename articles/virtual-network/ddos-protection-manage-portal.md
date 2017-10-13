@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 5c599b4cc867dbc9a081af3a081195b998f63954
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
 >[!IMPORTANT]
->Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护仅在美国东部、美国西部和美国中西部区域可用。 在预览版期间，使用该服务不用付费。
+>Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源在选定的区域中支持 DDoS 保护。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你以指导你完成启用过程。 DDoS 保护仅在美国东部、美国西部和美国中西部区域可用。 在预览版期间，使用该服务无需付费。
 
 这篇文章演示了如何使用 Azure 门户来启用 DDoS 保护、禁用 DDoS 保护以及如何使用遥测来缓解攻击。 
 
@@ -93,7 +91,7 @@ ms.lasthandoff: 09/26/2017
 
 ## <a name="use-ddos-protection-telemetry"></a>使用 DDoS 保护遥测
 
-对攻击的遥测是通过 Azure Monitor 实时提供的。 遥测仅在公用 IP 地址处于风险缓解的期间可用。 在攻击缓解之前或之后，都不会看到遥测。
+对攻击的遥测是通过 Azure Monitor 实时提供的。 遥测仅在公用 IP 地址处于风险缓解期间可用。 在攻击缓解之前或之后，都不会看到遥测。
 
 1. 单击“监视器”，然后单击“指标”。 
 2. 在“指标”屏幕上，选择资源组、资源类型“公用 IP 地址”和你的 Azure 公用 IP。 屏幕的左侧将显示一系列可用指标。 当选中时，将在概述屏幕上的 Azure Monitor 指标图表中绘制这些指标。 

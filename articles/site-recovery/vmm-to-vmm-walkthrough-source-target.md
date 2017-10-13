@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
 ms.openlocfilehash: 07135e9b5e619971a59cc22ec68a0a4e8bcaabe1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-6-set-up-the-replication-source-and-target"></a>步骤 6：设置复制源和目标
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/03/2017
 12. 单击“下一步”以完成此过程。 注册后，Azure Site Recovery 将检索 VMM 服务器中的元数据。 服务器显示在保管库中“服务器”页上的“VMM 服务器”选项卡中。
 
     ![服务器](./media/vmm-to-vmm-walkthrough-source-target/provider13.png)
-13. 当服务器出现在 Site Recovery 控制台中后，请在“源” > “准备源”中选择 VMM 服务器，并选择 Hyper-V 主机所在的云。 。
+13. 当服务器出现在 Site Recovery 控制台中后，请在“源” > “准备源”中选择 VMM 服务器，并选择 Hyper-V 主机所在的云。 然后单击“确定”。
 
 还可从命令行安装提供程序：
 

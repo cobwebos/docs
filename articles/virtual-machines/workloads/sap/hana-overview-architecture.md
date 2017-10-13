@@ -11,15 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 63e1820033e051b72601291c5206772192e68769
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 0fa1ac4f9e9711332c568e84f86d132508eb185f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 
@@ -183,7 +182,7 @@ Azure 大型实例模具本身包含以下组件：
 | SKU | 内存大小 | 存储大小 | 使用多个数据库时的大小 |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768 GB HANA 实例<br /> 或 1x512 GB 实例 + 1x256 GB 实例<br /> 或 3x256 GB 实例 | 
-| S72m | 768 GB | 3 TB | 3x512GB HANA 实例<br />或 1x512 GB 实例 + 1x1 TB 实例<br />或 6x256 GB 实例<br />或 1x1.5 TB 实例 | 
+| S72m | 1.5 TB | 6 TB | 3x512GB HANA 实例<br />或 1x512 GB 实例 + 1x1 TB 实例<br />或 6x256 GB 实例<br />或 1x1.5 TB 实例 | 
 | S192m | 4 TB | 16 TB | 8x512 GB 实例<br />或 4x1 TB 实例<br />或 4x512 GB 实例 + 2x1 TB 实例<br />或 4x768 GB 实例 + 2x512 GB 实例<br />或 1x4 TB 实例 |
 | S384xm | 8 TB | 22 TB | 4x2 TB 实例<br />或 2x4 TB 实例<br />或 2x3 TB 实例 + 1x2 TB 实例<br />或 2x2.5 TB 实例 + 1x3 TB 实例<br />或 1x8 TB 实例 |
 
@@ -483,6 +482,5 @@ HANA 大型实例未建立直接 Internet 连接。 这会限制某些功能，�
 
 > [!IMPORTANT] 
 > 如果使用了多个 ExpressRoute 线路，则应当使用“AS 路径前追加”和“本地首选 BGP”设置来确保对流量进行正确路由。
-
 
 

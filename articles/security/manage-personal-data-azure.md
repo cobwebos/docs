@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 3b57c92bd744644ea81878712b4272ed3ece4e2e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>在 Microsoft Azure 中管理个人数据
 
 本文提供有关如何在 Azure Active Directory 和 Azure SQL 数据库中更正、更新、删除和导出个人数据的指南。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
-一家总部位于都柏林的公司面向本地和国际客户群，为在爱尔兰和世界各地举办高端婚礼提供一站式购物服务。 他们的办公室、客户、员工和供应商遍布世界各地，可以为各场地提供全面的服务。
+一家总部位于都柏林的公司面向本地和国际客户群，为在爱尔兰和世界各地举办的高端婚礼提供一站式购物服务。 他们的办公室、客户、员工和供应商遍布世界各地，可以为各场地提供全面的服务。
 
-该公司提供的其他服务包括跟踪请柬答复，了解食物过敏和饮食偏好等信息。 婚礼来宾可以报名参加各种活动，如骑马、冲浪、划船等，甚至可以在婚礼前的几个月内在中心网页上进行互动。 该公司从员工、供应商、客户和婚礼来宾处收集个人信息。 由于业务具有国际性质，该公司必须遵守多个级别的法规。
+该公司可以跟踪请柬答复，了解食物过敏和饮食偏好等信息，还提供许多其他服务。 在婚礼前的几个月内，婚礼来宾可以在同一个网页上报名参加各种活动，如骑马、冲浪、划船等，甚至可以进行互动。 该公司从员工、供应商、客户和婚礼来宾处收集个人信息。 由于业务具有国际性质，该公司必须遵守多个级别的法规。
 
 ## <a name="problem-statement"></a>问题陈述
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 08/30/2017
 ### <a name="azure-active-directory-rectifycorrect-inaccurate-or-incomplete-personal-data-and-erasedelete-personal-datauser-profiles"></a>Azure Active Directory：纠正/更正不准确或不完整的个人数据并擦除/删除个人数据/用户个人资料
 
 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的基于云的多租户目录和标识管理服务。
-在 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) (AAD) 环境中，可通过使用 [Azure 门户](https://portal.azure.com/)更正、更新或删除客户和员工的用户个人资料和用户工作信息，包含个人数据，如用户姓名、工作头衔、地址或电话号码。
+在 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) (AAD) 环境中，可通过使用 [Azure 门户](https://portal.azure.com/)更正、更新或删除客户和员工的用户个人资料和用户工作信息中包含的个人数据，如用户姓名、工作头衔、地址或电话号码。
 
 必须使用目录的全局管理员帐户登录。
 
@@ -129,5 +128,4 @@ BACPAC 文件包括 SQL 数据库数据和元数据，是带有 BACPAC 扩展名
 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/?v=16.50) 
 
 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
-
 

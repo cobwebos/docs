@@ -17,16 +17,16 @@ ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
 ms.openlocfilehash: 4292f9d8cd181073fdf0adff99fcb9624e0e9f55
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中使用 Windows VMSS 和 Desired State Configuration
 本文介绍 [Desired State Configuration 扩展处理程序](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的 Resource Manager 模板。 
 
 ## <a name="template-example-for-a-windows-vm"></a>Windows VM 模板示例
-模板的“资源”部分中要使用以下代码片段。
+将以下代码片段放入模板的 Resource 节。
 
 ```json
             "name": "Microsoft.Powershell.DSC",
@@ -146,7 +146,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 | settings.configuration.function |字符串 |指定 DSC 配置的名称。 命名的配置必须包含在 configuration.script 定义的脚本中。 如果已定义 settings.configuration.url 和/或 settings.configuration.function，则需要此属性。 |
 | settings.configurationArguments |集合 |定义想要传递到 DSC 配置的任何参数。 此属性未加密。 |
 | settings.configurationData.url |字符串 |指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationDataUrlSasToken 属性设置为 SAS 令牌的值。 |
-| settings.privacy.dataEnabled |字符串 |启用或禁用遥测数据收集。 此属性的可能值只有“Enable”、“Disable”、'' 或 $null。 将此属性保留为空或 null 可启用遥测。 默认值为 ''。 [详细信息](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) |
+| settings.privacy.dataEnabled |字符串 |启用或禁用遥测数据收集。 此属性的可能值只有“Enable”、“Disable”、'' 或 $null。 将此属性留空或 null 可启用遥测。 默认值为 ''。 [详细信息](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) |
 | settings.advancedOptions.downloadMappings |集合 |定义要从中下载 WMF 的备选位置。 [详细信息](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx) |
 | protectedSettings.configurationArguments |集合 |定义想要传递到 DSC 配置的任何参数。 此属性已加密。 |
 | protectedSettings.configurationUrlSasToken |字符串 |指定用于访问 configuration.url 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
@@ -191,7 +191,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 ```
 
 ## <a name="updating-from-the-previous-format"></a>从以前的格式进行更新
-以前格式（包含 ModulesUrl、ConfigurationFunction、SasToken 或 Properties 等公共属性）中的所有设置都将自动调整为当前格式，并直接按以前的方式运行。
+以前格式（包含 ModulesUrl、ConfigurationFunction、SasToken 或 Properties 等公共属性）中的所有设置会自动调整为当前格式，并按以前的相同方式运行。
 
 上述 settings 架构如下所示：
 
@@ -293,7 +293,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 * 删除需要缺失属性的属性。
 
 ## <a name="next-steps"></a>后续步骤
-在[将虚拟机规模集与 Azure DSC 扩展配合使用](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)中了解 DSC 和虚拟机规模集
+在[将虚拟机规模集与 Azure DSC 扩展配合使用](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)中了解 DSC 和虚拟机规模集。
 
 在 [DSC 的安全凭据管理](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中了解更多详细信息。 
 

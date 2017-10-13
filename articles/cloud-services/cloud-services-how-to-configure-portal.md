@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
 ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都会应用于所有角色实例。
+可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都将应用于所有角色实例。
 
 还可以管理云服务角色的实例，或者通过远程桌面进入这些角色中。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 
 
 >[!IMPORTANT]
-> 选择特定 OS 版本会禁用自动 OS 更新，用户需要自行负责修补工作。 务必确保角色示例可以接收更新，否则应用程序可能存在安全漏洞。
+> 选择特定 OS 版本将禁用自动 OS 更新，用户则需要自行负责修补工作。 务必确保角色示例可以接收更新，否则应用程序可能存在安全漏洞。
 
 ## <a name="monitoring"></a>监视
 可将警报添加到云服务。 单击“**设置**” > “**警报规则**” > “**添加警报**”。

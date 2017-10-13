@@ -16,10 +16,10 @@ ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9049f526243cb4659aaf86b3d31146abe8f5f3ef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
 本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](active-directory-editions.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
@@ -92,7 +92,7 @@ ms.lasthandoff: 08/03/2017
 
 分配用户后，Azure AD 可为该用户颁发令牌，并在用户的访问面板中显示此应用程序的磁贴。 如果用户使用 Office 365，则 Office 365 应用程序启动器中也会显示一个应用程序磁贴。 
 
-可以在应用程序的**“配置”**选项卡中使用**“上传徽标”**按钮来上传应用程序的磁贴徽标。 
+可以在应用程序的“配置”选项卡中使用“上传徽标”按钮来上传应用程序的磁贴徽标。 
 
 ### <a name="customizing-the-claims-issued-in-the-saml-token"></a>自定义在 SAML 令牌中颁发的声明
 当用户在应用程序中进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 
@@ -119,14 +119,14 @@ ms.lasthandoff: 08/03/2017
 
 捕获登录页后，可以分配用户和组，并且可以像在[密码 SSO 应用](active-directory-appssoaccess-whatis.md)中一样设置凭据策略。
 
-注意：可以在应用程序的**“配置”**选项卡中使用**“上传徽标”**按钮来上传应用程序的磁贴徽标。 
+注意：可以在应用程序的“配置”选项卡中使用“上传徽标”按钮来上传应用程序的磁贴徽标。 
 
 ## <a name="existing-single-sign-on"></a>现有的单一登录
 选择此选项可将应用程序的链接添加到组织的 Azure AD 访问面板或 Office 365 门户。 可以使用此选项来添加当前正在使用 Azure Active Directory 联合身份验证服务（或其他联合身份验证服务）而不是 Azure AD 进行身份验证的自定义 Web 应用的链接。 或者，可以添加特定 SharePoint 页面或想要在用户访问面板上显示的其他网页的深层链接。 
 
 选择“下一步”后，系统会提示输入要链接到的应用程序的 URL。 完成上述操作后，可将用户和组分配到应用程序，使应用程序显示在这些用户的 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)中。
 
-注意：可以在应用程序的**“配置”**选项卡中使用**“上传徽标”**按钮来上传应用程序的磁贴徽标。
+注意：可以在应用程序的“配置”选项卡中使用“上传徽标”按钮来上传应用程序的磁贴徽标。
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 28526c05c7f364f0fcaaa362fc97857f850040ee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: f9b679f167952076db6df17711dc124931a0880c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接节点 API 概述
 
 ## <a name="overview"></a>概述
@@ -192,7 +190,7 @@ var wss = WebSocket.createRelayedServer(
 var server = createRelayedServer([options], [connectCallback] )
 ```
 
-此方法调用构造函数以创建 RelayedServer 的新实例，然后订阅提供的 'connection' 事件的回调。
+此方法调用构造函数以创建 RelayedServer 的新实例，并订阅提供的 'connection' 事件的回调。
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
@@ -213,4 +211,3 @@ WebSocket.relayedConnect(
 若要了解有关 Azure 中继的详细信息，请访问以下链接：
 * [什么是 Azure 中继？](relay-what-is-it.md)
 * [可用的中继 API](relay-api-overview.md)
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/21/2017
 ms.author: genli
+ms.openlocfilehash: 873d728971c9ebc5713d23a625ab0c5aeb802dc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 9bed14975ea54c44876fd604f1fc04ca2c2a264f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="i-cant-sign-in-to-manage-my-azure-subscription"></a>无法登录以管理 Azure 订阅
 本文介绍了一些解决登录问题的最常见方法。
@@ -51,5 +50,4 @@ ms.lasthandoff: 08/31/2017
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)以快速解决问题。 
-
 

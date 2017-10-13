@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.openlocfilehash: 246f5958478fd6d9afc9ba990413ab08429bd25d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 向 Windows VM 应用策略
 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文将介绍如何使用 Azure Resource Manager 策略，为组织中的虚拟机定义相应行为。
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-使用 anyOf 来修改前面的策略，以允许任何 Windows Server 2012 R2 Datacenter 或更高版本的映像：
+使用 anyOf 将上述策略修改为允许任何 Windows Server 2012 R2 Datacenter 或更高版本的映像：
 
 ```json
 {

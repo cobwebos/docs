@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
 ms.openlocfilehash: 2ba9676ed2afce7f18446642527971f5001b5ca7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
 
 三步操作进行云服务更新（包括其角色和来宾 OS）。 首先，必须上传新云服务或 OS 版本的二进制文件和配置文件。 其次，Azure 会根据新云服务版本的要求，保留云服务的计算资源和网络资源。 最后，Azure 将执行滚动升级，以增量方式将租户更新到新版本或来宾 OS，同时保留可用性。 本文介绍最后一个步骤 - 滚动升级的详细信息。
 
 ## <a name="update-an-azure-service"></a>更新 Azure 服务
-Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD) 是角色实例的逻辑集，将以组的方式进行更新。  Azure 每次更新一个 UD 的一个云服务，使其他 UD 中的实例能够继续处理流量。
+Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD) 是角色实例的逻辑集，以组方式进行更新。  Azure 每次更新一个 UD 的一个云服务，使其他 UD 中的实例能够继续处理流量。
 
 升级域的默认数量为 5 个。 可以在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性以指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息，请参阅 [WebRole 架构](https://msdn.microsoft.com/library/azure/gg557553.aspx)或 [WorkerRole 架构](https://msdn.microsoft.com/library/azure/gg557552.aspx)。
 
@@ -150,7 +150,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 
 回滚更新可能是非常有用的，其中的一个例子是，在手动模式下使用“[升级部署](https://msdn.microsoft.com/library/azure/ee460793.aspx)”操作来控制为 Azure 托管服务部署主要就地升级的速度。
 
-在升级部署期间，可以在手动模式下调用“[升级部署](https://msdn.microsoft.com/library/azure/ee460793.aspx)”并开始依次更新升级域。 在监视升级时，如果你在某些时候注意到检查的第一批升级域中的某些角色实例停止响应，则可以在部署上调用[回滚更新或升级](https://msdn.microsoft.com/library/azure/hh403977.aspx)操作，这会将尚未升级的实例保持不变，并将已升级的实例回滚到以前的服务包和配置。
+在升级部署期间，可以在手动模式下调用“[升级部署](https://msdn.microsoft.com/library/azure/ee460793.aspx)”并开始依次更新升级域。 在监视升级时，如果在某些时候注意到检查的第一批升级域中的某些角色实例停止响应，则可以在部署上调用“[回滚更新或升级](https://msdn.microsoft.com/library/azure/hh403977.aspx)”操作，这会将尚未升级的实例保持不变，并将已升级的实例回滚到以前的服务包和配置。
 
 <a name="multiplemutatingoperations"></a>
 

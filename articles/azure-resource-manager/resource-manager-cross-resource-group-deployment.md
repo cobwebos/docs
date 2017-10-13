@@ -14,20 +14,20 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: tomfitz
 ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>将 Azure 资源部署到多个资源组
 
-通常情况下，将模板中的所有资源部署到单个资源组。 不过，在某些情况下，你可能希望将一组资源一起部署但将其放置在不同的资源组中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 Resource Manager 允许你使用嵌套的模板将不同于父模板所用资源组的多个不同资源组作为目标。
+通常情况下，将模板中的所有资源部署到单个资源组。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 Resource Manager 允许使用嵌套的模板将不同于父模板所用资源组的多个不同资源组作为目标。
 
-资源组是应用程序及其资源集合的生命周期容器。 可在模板外部创建资源组，并在部署期间指定要用作目标的资源组。 有关资源组的简介，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
+资源组是应用程序及其资源集合的生命周期容器。 将在模板外部创建资源组，并指定在部署期间要用作目标的资源组。 有关资源组的简介，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
 
 ## <a name="example-template"></a>示例模板
 
-若要将不同的资源作为目标，在部署期间必须使用嵌套模板或链接模板。 `Microsoft.Resources/deployments` 资源类型提供 `resourceGroup` 参数，使用该参数可以为嵌套部署指定不同资源组。 在运行部署之前，所有资源组都必须存在。 下面的示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在名为 `crossResourceGroupDeployment` 的资源组中：
+要将不同的资源作为目标，在部署期间必须使用嵌套的或链接的模板。 `Microsoft.Resources/deployments` 资源类型提供 `resourceGroup` 参数，使用该参数可以为嵌套部署指定不同资源组。 在运行部署之前，所有资源组都必须存在。 下面的示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在名为 `crossResourceGroupDeployment` 的资源组中：
 
 ```json
 {
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署将失败。 如果没有为 `resourceGroup` 提供值，则 Resource Manager 将使用父资源组。  
+如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署会失败。 如果没有为 `resourceGroup` 提供值，则 Resource Manager 将使用父资源组。  
 
 ## <a name="deploy-the-template"></a>部署模板
 

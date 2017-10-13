@@ -16,13 +16,13 @@ ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
 ms.openlocfilehash: ef124a8983fa112d499252460bff9ed2fcccc02b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>在 Azure 中的 Linux RDMA 群集上运行 OpenFoam 和 Microsoft HPC Pack
-本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 在本文中，会在 Azure 上部署具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用 Marketplace 中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
+本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 此处，会在 Azure 上部署一个具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 来运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用 Marketplace 中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -91,7 +91,7 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行大型 H
 5. 如果在一个 Linux 节点上生成 RSA 密钥对，请记住在使用完成后删除这些密钥。 如果找到现有的 id_rsa 文件或 id_rsa.pub 文件，HPC Pack 不会建立互信关系。
 
 > [!IMPORTANT]
-> 我们不建议在共享群集上以群集管理员的身份运行 Linux 作业，因为由管理员提交的作业会在 Linux 节点的根帐户下运行。 但是，由非管理员用户提交的作业会在本地 Linux 用户帐户（名称与作业用户相同）下运行。 在这种情况下，HPC Pack 跨分配给作业的节点为此 Linux 用户建立互信关系。 在运行作业之前，可以在 Linux 节点上手动设置 Linux 用户，也可以在提交作业时由 HPC Pack 自动创建用户。 如果 HPC Pack 创建了一个用户，则作业完成后 HPC Pack 会删除此用户。 为了减少安全威胁，HPC Pack 会在完成作业后删除密钥。
+> 我们不建议在共享群集上以群集管理员的身份运行 Linux 作业，因为由管理员提交的作业会在 Linux 节点的根帐户下运行。 但是，由非管理员用户提交的作业会在本地 Linux 用户帐户（名称与作业用户相同）下运行。 在这种情况下，HPC Pack 会在该作业分配到的所有节点中为这位 Linux 用户建立互信关系。 在运行作业之前，可以在 Linux 节点上手动设置 Linux 用户，也可以在提交作业时由 HPC Pack 自动创建用户。 如果 HPC Pack 创建了一个用户，则作业完成后 HPC Pack 会删除此用户。 为了减少安全威胁，HPC Pack 会在完成作业后删除密钥。
 > 
 > 
 
@@ -263,7 +263,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    
    **Bash 脚本包装**
    
-   如果有多个 Linux 节点，并且希望作业仅在部分节点上运行，则最好不要使用固定的主机文件，因为不知道哪些节点会分配给作业。 在这种情况下，可为 **mpirun** 编写一个 bash 脚本包装，以便自动创建主机文件。 可以在本文末尾找到一个名为 hpcimpirun.sh 的示例 bash 脚本包装，请将它另存为 /openfoam/hpcimpirun.sh。 此示例脚本执行以下任务：
+   如果有多个 Linux 节点，并且希望作业仅在部分节点上运行，则最好不要使用固定的主机文件，因为不知道哪些节点会分配给作业。 在这种情况下，可为 **mpirun** 编写一个 bash 脚本包装，以便自动创建主机文件。 可以在本文末尾找到一个名为 hpcimpirun.sh 的示例 bash 脚本包装，请将它另存为 /openfoam/hpcimpirun.sh。此示例脚本执行以下任务：
    
    1. 设置 **mpirun** 的环境变量以及其他命令参数，通过 RDMA 网络运行 MPI 作业。 在本例中，将设置以下变量：
       
@@ -332,7 +332,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
      * 为任务分配一个节点
      * **命令行** - `source /openfoam/settings.sh && reconstructPar > /openfoam/reconstructPar${CCP_JOBID}.log`
      * **工作目录** - /openfoam/sloshingTank3D
-   * **任务 4**。 并行运行 **foamToEnsight** ，将 OpenFOAM 结果文件转换成 EnSight 格式，并将 EnSight 文件置于示例目录的名为 Ensight 的目录中。
+   * **任务 4**。 并行运行 **foamToEnsight**，将 OpenFOAM 结果文件转换成 EnSight 格式，并将 EnSight 文件置于示例目录的名为 Ensight 的目录中。
      
      * 为任务分配两个节点
      * **命令行** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh foamToEnsight -parallel > /openfoam/foamToEnsight${CCP_JOBID}.log`

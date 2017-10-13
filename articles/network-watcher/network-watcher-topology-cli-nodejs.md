@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 9178c485a92e04564c95dae8073f045b5c639bb7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: bf12e1bde56c06e496d29ad27ba3da65cd94629e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="view-network-watcher-topology-with-azure-cli-10"></a>使用 Azure CLI 1.0 查看网络观察程序拓扑
 
 > [!div class="op_single_selector"]
@@ -30,7 +28,7 @@ ms.lasthandoff: 05/26/2017
 > - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST API](network-watcher-topology-rest.md)
 
-网络观察程序的拓扑功能提供订阅中网络资源的可视表示形式。 在此门户中，将自动向你显示此可视化效果。 可以通过 PowerShell 检索此门户中拓扑视图背后的信息。
+网络观察程序的拓扑功能提供订阅中网络资源的可视表示形式。 在此门户中，会自动向你显示此可视化效果。 可以通过 PowerShell 检索此门户中拓扑视图背后的信息。
 此功能使拓扑信息更为通用，因为这些数据可由其他工具用于构建出可视化效果。
 
 本文使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 1.0。 
@@ -54,7 +52,7 @@ ms.lasthandoff: 05/26/2017
 
 在此方案中，使用 `network watcher topology` cmdlet 检索拓扑信息。 还有一篇关于如何[使用 REST API 检索网络拓扑](network-watcher-topology-rest.md)的文章。
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 ## <a name="scenario"></a>方案
 
@@ -116,4 +114,3 @@ azure network watcher topology -g resourceGroupName -n networkWatcherName -r top
 ## <a name="next-steps"></a>后续步骤
 
 请访问[安全组视图概述](network-watcher-security-group-view-overview.md)，了解有关应用于网络资源的安全规则的详细信息
-

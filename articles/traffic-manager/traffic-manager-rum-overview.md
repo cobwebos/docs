@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a7e8ae605b6234341d9ab8b790f4c54d8627f29f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="traffic-manager-real-user-measurements-overview"></a>流量管理器的实际用户度量概述
 
 >[!NOTE]
@@ -49,5 +47,4 @@ ms.lasthandoff: 09/25/2017
 - 详细了解 [Mobile Center](https://docs.microsoft.com/mobile-center/)
 - 详细了解流量管理器支持的[流量路由方法](traffic-manager-routing-methods.md)
 - 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)
-
 

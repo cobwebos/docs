@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b320581011c27a2efc49fa784f184a37bdb7f6fe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
 [Draft](https://aka.ms/draft) 是一种新的开放源工具，使用它可轻松地开发基于容器的应用程序并将其部署到 Kubernetes 群集，而无需了解大量有关 Docker 和 Kubernetes 的信息，甚至无需安装它们。 使用 Draft 之类的工具，你和你的团队可专注于使用 Kubernetes 生成应用程序，而不用太过关注基础结构。
@@ -290,7 +288,6 @@ Hello World, I'm Java!
 ## <a name="next-steps"></a>后续步骤
 
 现在有了 ACS Kubernetes 群集，可以使用 [Azure 容器注册表](../../container-registry/container-registry-intro.md)进行研究，创建此种方案的更多不同部署。 例如，可以创建 draft.basedomain.toplevel 域 DNS 记录集，控制特定 ACS 部署的更深子域中的内容。
-
 
 
 

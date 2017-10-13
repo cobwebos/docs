@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 3da53852eaad7a37f19d906d2ee27b72d35c513f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -82,5 +81,4 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 [开始编写代码](active-directory-developers-guide.md#get-started)。
 
 [使用 Azure AD 登录用户](active-directory-authentication-scenarios.md)
-
 

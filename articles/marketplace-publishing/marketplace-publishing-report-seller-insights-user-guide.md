@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-dabosl
 ms.openlocfilehash: cd5db703ab0b89b8597c99c0d536bc07f883ebc6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-azure-marketplace-seller-insights-portal"></a>如何使用 Microsoft Azure Marketplace 卖方 Insights 门户
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="orders-and-usage"></a>订单和用途
 ### <a name="overview"></a>概述
 
-在“面板 A”中，可以选择“订单和用途”选项卡。  在此处可以从“报告类型”中选择“订单”或“用途”，并使用滑块选择所需的数据。
+在“面板 A”中，可以选择“订单和用途”选项卡。在此处可以从“报告类型”中选择“订单”或“用途”，并使用滑块选择所需的数据。
 
 在“面板 B”中，可以选择每月数据。 根据在面板 A 的“报告类型”中选择的内容选择“订单”或“用途”。显示的数据将反映所输入的日期，以及在面板 A 中使用滑块应用的筛选器。
 

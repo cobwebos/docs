@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 6714e8ad77693f0cdefe3e40c99153299e1c72d0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>如何使用适用于 Apache Spark 的 Microsoft 机器学习库
 
@@ -88,4 +87,3 @@ Azure Machine Learning Workbench 将 spark 作业提交到群集。 用户可以
 有关 MMLSpark 库的信息和示例，请参阅 [MMLSpark GitHub 存储库](https://github.com/Azure/mmlspark)
 
 *Apache®、Apache Spark 和 Spark® 是 Apache Software Foundation 在美国和/或其他国家/地区的商标或注册商标。*
-

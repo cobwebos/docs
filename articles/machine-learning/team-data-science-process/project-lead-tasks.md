@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ed3dc8d441989239f02e12231f06d22fbef9d3dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="project-lead-tasks"></a>项目主管任务
 
 本教程概述项目主管预期要在其项目团队中完成的任务。 目标在于创建致力于标准化 [Team Data Science Process](overview.md) (TDSP) 的协作型团队环境。 TDSP 是 Microsoft 开发的一个框架，它提供结构化的活动序列，可高效地执行基于云的预测分析解决方案。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
@@ -54,8 +52,8 @@ ms.lasthandoff: 09/25/2017
 - 团队主管已在计划使用的代码托管平台上你的组帐户下设置了 **TeamProjectTemplate 存储库** (R3)。
 - 团队主管**已授权**你在团队的组帐户中创建存储库。
 - 计算机上必须安装 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
-- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，单击“最新安装程序”。 随后会转到最新安装程序页。 在此处下载并运行 .exe 安装程序。 
-- 如果使用的是 **Linux DSVM**，请在 DSVM 上创建一个 SSH 公钥，并将它添加到组 VSTS 服务器。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
+- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 随后会转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
+- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 VSTS 服务器。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
 
 
 ## <a name="1-create-a-project-repository-r5"></a>1.创建项目存储库 (R5)
@@ -204,7 +202,7 @@ ms.lasthandoff: 09/25/2017
     git config --global user.name <your name>
     git config --global user.email <your email address>
  
-> 如果要提交到多个 Git 存储库，请每次提交时都使用相同的姓名和电子邮件地址。 使用相同的姓名和电子邮件地址经证实可在今后构建 PowerBI 仪表板来跟踪多个存储库上的 Git 活动时提供方便。
+> 如果要提交到多个 Git 存储库，请每次提交时都使用相同的姓名和电子邮件地址。 事实证明，使用相同的姓名和电子邮件地址在以后构建 PowerBI 仪表板来跟踪多个存储库上的 Git 活动时提供了不少方便。
 
 ![15](./media/project-lead-tasks/project-leads-15-git-config-name.png)
 
@@ -216,7 +214,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-以下是 Team Data Science Process 定义的角色和任务的详细说明链接：
+下面是 Team Data Science Process 定义的角色和任务的详细说明链接：
 
 - [数据科学团队的组管理员任务](group-manager-tasks.md)
 - [数据科学团队的团队主管任务](team-lead-tasks.md)

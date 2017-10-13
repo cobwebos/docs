@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: raymondl;garye;v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c56ce659766536772d203d0366ef6b53e544a82b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>以编程方式重新训练机器学习模型
 在本演练中，学习如何使用 C# 和机器学习批处理执行服务以编程方式重新训练 Azure 机器学习 Web 服务。
@@ -187,4 +186,3 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-

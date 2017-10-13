@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: e6399831fe7c6cc727e92b13719df3b69e9981bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
 
 Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指标。 [Azure 门户](https://portal.azure.com)提供这些指标的聚合视图；对于更精细的指标，可查看客户端 SDK 和[诊断日志](./logging.md)。
@@ -101,4 +99,3 @@ QueryMetrics 提供执行各查询组件所用时长的详细信息。 查询运
 
 * [执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)
 * [Azure Cosmos DB 性能提示](performance-tips.md)
-

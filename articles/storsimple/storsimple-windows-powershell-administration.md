@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/18/2016
 ms.author: alkohli@microsoft.com
 ms.openlocfilehash: af135518f66eb8c94c183f28191f016fcd601ae1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 ## <a name="overview"></a>概述
@@ -94,8 +94,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 可以从以下设置中选择：
 
 1. **以完全访问权限登录**：选择此选项可以（使用正确的凭据）连接到本地控制器上的 **SSAdminConsole** 运行空间。 （本地控制器是你当前正在通过 StorSimple 设备的串行控制台访问的控制器。）此选项还可以用于让 Microsoft 支持部门访问不受限制的运行空间（某个支持会话）以解决任何可能存在的设备问题。 在使用选项 1 登录之后，可以通过运行某个特定的 cmdlet 让 Microsoft 支持部门的工程师访问不受限制的运行空间。 有关详细信息，请参阅[启动支持会话](storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)。
-2. 
-               **以完全访问权限登录对等控制器**：此选项与选项 1 相同，区别在于使用此选项可以连接（使用正确的凭据）到对等控制器上的 **SSAdminConsole** 运行空间。 因为 StorSimple 设备是带有采用主动-被动配置的两台控制器的一台高可用性设备，所以对等方指的是正在通过串行控制台访问的设备中的另一台控制器。
+2. **以完全访问权限登录对等控制器**：此选项与选项 1 相同，区别在于使用此选项可以连接（使用正确的凭据）到对等控制器上的 **SSAdminConsole** 运行空间。 因为 StorSimple 设备是带有采用主动-被动配置的两台控制器的一台高可用性设备，所以对等方指的是正在通过串行控制台访问的设备中的另一台控制器。
    与选项 1 相似，此选项也可以用于让 Microsoft 支持部门访问对等控制器上不受限制的运行空间。
 3. **以有限访问权限连接**：此选项用于在受限模式下访问 Windows PowerShell 界面。 不会提示输入访问凭据。 与选项 1 和选项 2 相比，此选项连接到一个受限制更多的运行空间。  通过选项 1 可以执行而**无法*在此运行空间中执行的任务包括：
    
@@ -139,8 +138,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 | 目标 | 请遵循以下过程。 |
 | --- | --- |
 | 注册设备 |[使用 Windows PowerShell for StorSimple 配置和注册设备](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
-| 配置 Web 代理</br>查看 Web 代理设置 |
-            [为 StorSimple 设备配置 Web 代理](storsimple-configure-web-proxy.md) |
+| 配置 Web 代理</br>查看 Web 代理设置 |[为 StorSimple 设备配置 Web 代理](storsimple-configure-web-proxy.md) |
 | 修改设备上的 DATA 0 网络接口设置 |[修改 StorSimple 设备上的 DATA 0 网络接口](storsimple-modify-data-0.md) |
 | 停止控制器 </br> 重新启动或关闭控制器 </br> 关闭设备</br>将设备重置为出厂默认设置 |[管理设备控制器](storsimple-manage-device-controller.md) |
 | 安装维护模式更新和修补程序 |[更新设备](storsimple-update-device.md) |

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
 ms.openlocfilehash: d933f488fdda0c1d37892be65f2712cf0eb5694e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>适用于 Windows 的 OMS 虚拟机扩展
 
@@ -159,7 +159,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-扩展执行输出记录到在以下目录中发现的文件：
+扩展执行输出将记录到在以下目录中发现的文件：
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 02dafa60f19df88123358446ac72d9be85577554
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="physical-server-to-azure-replication-architecture"></a>物理服务器到 Azure 复制体系结构
 
 本文介绍了使用 [Azure Site Recovery](site-recovery-overview.md) 服务在本地站点与 Azure 之间对物理 Windows 和 Linux 服务器进行复制、故障转移和恢复时使用的体系结构和过程。
@@ -70,18 +68,18 @@ ms.lasthandoff: 09/27/2017
 
 1. 对单台计算机进行故障转移，或者创建恢复计划来同时对多台计算机进行故障转移。
 2. 运行故障转移时，将使用 Azure 存储中的已复制数据创建 Azure VM。
-3. 在触发初始故障转移后，提交它以开始从 Azure VM 中访问工作负荷。
+3. 触发初始故障转移之后，可提交它来开始访问 Azure VM 中的工作负荷。
 
 当本地主站点再次可用时，便可以故障回复。
 
 1. 需要设置故障回复基础结构，包括：
     - **Azure 中的临时进程服务器**：若要从 Azure 进行故障回复，需要设置用作进程服务器的 Azure VM，以处理从 Azure 进行的复制。 故障回复完成后，可以删除此 VM。
     - **VPN 连接**：若要进行故障回复，需要设置从 Azure 网络到本地站点的 VPN 连接（或 Azure ExpressRoute）。
-    - **单独的主目标服务器**：默认情况下，在本地 VMware VM 上与配置服务器安装在一起的主目标服务器用于处理故障回复。 不过，如果需要对大量流量进行故障回复，应设置专用于此用途的单独的本地主目标服务器。
+    - **单独的主目标服务器**：默认情况下，在本地 VMware VM 上与配置服务器一起安装的主目标服务器用于处理故障回复。 不过，如果需要对大量流量进行故障回复，应设置专用于此用途的单独的本地主目标服务器。
     - **故障回复策略**：若要复制回到本地站点，需要创建故障回复策略。 这是在创建从本地到 Azure 的复制策略时自动创建的。
     - **VMware 基础结构**： 需要一个用于故障回复的 VMware 基础结构。 不能故障回复到物理服务器。
 2. 所有组件均就位后，故障回复分三个阶段进行：
-    - 第 1 阶段： 重新保护 Azure VM，以便它们可以从 Azure 复制回本地 VMware VM。
+    - 第 1 阶段：重新保护 Azure VM，以便它们可以从 Azure 复制回本地 VMware VM。
     - 第 2 阶段：运行到本地站点的故障转移。
     - 第 3 阶段：在工作负荷进行故障回复后，重新启用复制。
 

@@ -14,10 +14,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
 ms.openlocfilehash: ca5bec5cf1152e6259b9fe7a869edd2d62b88e1a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-9-set-up-a-replication-policy-for-hyper-v-vm-replication-to-azure"></a>步骤 9： 为将 Hyper-V VM 复制到 Azure 设置复制策略
 
@@ -45,7 +45,7 @@ Hyper-V 使用两种类型的快照 — 标准快照，它提供整个虚拟机�
 
 4. 在“恢复点保留期”中，针对每个恢复点指定保留期窗口的长度（以小时为单位）。 VM 可以恢复到某个时段内的任意时间点。
 5. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。
-6. 在“初始复制开始时间”中，指定开始初始复制的时间。 复制通过 Internet 带宽进行，因此，可能需要将它安排在非繁忙时间。 。
+6. 在“初始复制开始时间”中，指定开始初始复制的时间。 复制通过 Internet 带宽进行，因此，可能需要将它安排在非繁忙时间。 然后单击“确定”。
 
     ![复制策略](./media/hyper-v-site-walkthrough-replication/gs-replication2.png)
 

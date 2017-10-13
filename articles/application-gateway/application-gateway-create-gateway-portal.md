@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
+ms.openlocfilehash: 17d09ce98c40717d1db0927f791a7c97ea7835e0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: d3c39cfe3159cd4059a81f966fb551175188278b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-with-the-portal"></a>使用门户创建应用程序网关
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 08/01/2017
    |**Name**|AdatumAppGateway|应用程序网关的名称|
    |层|标准|可用值为标准和 WAF。 若要了解有关 WAF 的详细信息，请访问 [Web 应用程序防火墙](application-gateway-web-application-firewall-overview.md)。|
    |**SKU 大小**|中型|选择标准层时，选项为小型、中型和大型。 选择 WAF 层时，选项只有中型和大型。|
-   |**实例计数**|2|实现高可用性时应用程序网关的实例数。 实例计数 1 仅应用于测试目的。|
+   |**实例计数**|#N/A|实现高可用性时应用程序网关的实例数。 实例计数 1 仅应用于测试目的。|
    |**订阅**|[订阅]|选择要在其中创建应用程序网关的订阅。|
    |**资源组**|**新建：**AdatumAppGatewayRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|美国西部||
@@ -128,4 +127,3 @@ ms.lasthandoff: 08/01/2017
 [4]: ./media/application-gateway-create-gateway-portal/figure4.png
 [5]: ./media/application-gateway-create-gateway-portal/figure5.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
-

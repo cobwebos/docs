@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: sstein
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 53bfbd602c2c395d510529eacd5b8075b20437ab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-recommendations"></a>性能建议
 
@@ -81,6 +80,5 @@ Azure SQL 数据库持续监视执行中的查询，并发现可以提升性能�
 * 请参阅 [Azure SQL 智能见解](sql-database-intelligent-insights.md)，了解借助自动诊断和性能问题的根本原因分析自动监视数据库性能。
 * 请参阅 [Azure 门户中的性能建议](sql-database-advisor-portal.md)，了解如何在 Azure 门户中使用性能建议。
 * 若要了解和查看排名靠前的查询的性能影响，请参阅[查询性能见解](sql-database-query-performance.md)。
-
 
 

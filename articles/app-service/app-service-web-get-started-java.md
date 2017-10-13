@@ -15,12 +15,11 @@ ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
+ms.openlocfilehash: d12e3be2d6658d2a6cc18ed6ad9a149235b8b581
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: d4b84efa3370308d1d99a9361acad1801aa5330b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>在 Azure 中创建第一个 Java Web 应用
 
@@ -200,4 +199,3 @@ Azure 工具包创建 Web 应用，并显示进度对话框。
 
 > [!div class="nextstepaction"]
 > [映射自定义域](app-service-web-tutorial-custom-domain.md)
-

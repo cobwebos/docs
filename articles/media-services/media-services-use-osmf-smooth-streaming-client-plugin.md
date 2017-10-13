@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 ms.openlocfilehash: 9c764f176ae75085320882de3fb26d8e7d52daaf
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件
 ## <a name="overview"></a>概述
@@ -359,7 +359,7 @@ package {
 
 
 
-1. 将平滑流式处理 OSMF 插件添加到 embed 代码中，并保存。
+1. 将平滑流式处理 OSMF 插件添加到 embed 代码中，然后保存。
    
         <html>
         <object width="920" height="640"> 

@@ -15,10 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.openlocfilehash: 01f9c01c9e04e02dbb548b68cf99684ba6ddd57e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure 自动化方案 - 自动化源代码管理与 Visual Studio Team Services 的集成
 
@@ -65,9 +65,9 @@ VSToken | 要创建的安全变量资产，包含 VSTS 个人访问令牌。 可
 
 参数 | 说明| 
 --------|------------|
-WebhookData | 包含 VSTS 服务挂钩发送的签入信息。 此参数应为空。| 
+WebhookData | 包含 VSTS 服务挂钩发送的签入信息。 应将此参数留空。| 
 resourceGroup | 这是自动化帐户所在的资源组的名称。|
-AutomationAccountName | 要与 VSTS 同步的自动化帐户的名称。|
+AutomationAccountName | 将与 VSTS 同步的自动化帐户的名称。|
 VSFolder | VSTS 中的、Runbook 和配置所在的文件夹的名称。|
 VSAccount | Visual Studio Team Services 帐户的名称。| 
 VSAccessTokenVariableName | 保存 VSTS 个人访问令牌的安全变量的名称 (VSToken)。| 
@@ -79,8 +79,8 @@ VSAccessTokenVariableName | 保存 VSTS 个人访问令牌的安全变量的名�
 
 参数 | 说明|
 --------|------------|
-WebhookData | 包含 VSTS 服务挂钩发送的签入信息。 此参数应为空。| resourceGroup | 这是自动化帐户所在的资源组的名称。|
-AutomationAccountName | 要与 VSTS 同步的自动化帐户的名称。|
+WebhookData | 包含 VSTS 服务挂钩发送的签入信息。 应将此参数留空。| resourceGroup | 这是自动化帐户所在的资源组的名称。|
+AutomationAccountName | 将与 VSTS 同步的自动化帐户的名称。|
 VSAccount | Visual Studio Team Services 帐户的名称。|
 VSProject | VSTS 中的、Runbook 和配置所在的项目的名称。|
 GitRepo | Git 存储库的名称。|

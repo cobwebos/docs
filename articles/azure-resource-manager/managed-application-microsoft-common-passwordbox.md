@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 196a4b8f77145f83e46b4b23e148bb3a9dffc1b5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: 7b2277f9e1446b42d85180e2a8baa2bcc0df147f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI 元素
 一个可以用来提供和确认密码的控件。 [创建 Azure 托管应用程序](managed-application-publishing.md)时使用此元素。
@@ -51,7 +50,7 @@ ms.lasthandoff: 05/13/2017
 ## <a name="remarks"></a>备注
 - 此元素不支持 `defaultValue` 属性。
 - 有关 `constraints` 的实现详细信息，请参阅 [Microsoft.Common.TextBox](managed-application-microsoft-common-textbox.md)。
-- 如果 `options.hideConfirmation` 设置为 **true**，则用于确认用户密码的第二个文本框将被隐藏。 默认值为 **false**。
+- 如果 `options.hideConfirmation` 设置为 **true**，则用于确认用户密码的第二个文本框会被隐藏。 默认值为 **false**。
 
 ## <a name="sample-output"></a>示例输出
 ```json
@@ -62,4 +61,3 @@ ms.lasthandoff: 05/13/2017
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](managed-application-createuidefinition-elements.md)。
-

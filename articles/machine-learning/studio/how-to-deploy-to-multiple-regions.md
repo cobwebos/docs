@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8e616bd6f13c4f97886a3eae225e188afadb2305
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>如何将 Web 服务部署到多个区域
 借助新的 Azure Web 服务，无需多个订阅或工作区即可轻松地将 Web 服务部署到多个区域。 
@@ -49,5 +48,4 @@ ms.lasthandoff: 09/25/2017
 9. 从“存储帐户”下拉列表中，选择要存储 Web 服务的存储帐户。
 10. 从“价格计划”下拉列表中，选择步骤 8 中所选的区域中的计划。
 11. 单击“复制”。
-
 

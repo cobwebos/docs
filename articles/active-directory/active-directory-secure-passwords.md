@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Azure AD 密码安全性多层方法
 
@@ -86,4 +85,3 @@ Microsoft 会持续分析[数据破解](https://www.privacyrights.org/data-breac
 * [如何更新自己的密码](active-directory-passwords-update-your-own-password.md)
 * [Azure 标识管理基础知识](fundamentals-identity.md)
 * [报告密码重置活动](active-directory-passwords-reporting.md)
-

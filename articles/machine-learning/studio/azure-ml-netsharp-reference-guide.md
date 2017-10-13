@@ -1,5 +1,5 @@
 ---
-title: "有关 Net# 神经网络规范语言的指南 | Microsoft 文档"
+title: "有关 Net# 神经网络规范语言的指南 | Microsoft Docs"
 description: "有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 在 Microsoft Azure ML 中创建自定义神经网络模型的示例"
 services: machine-learning
 documentationcenter: 
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeannt
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 54bef3e257363300ee1a13f7f45fc983e465ddbf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>有关 Azure 机器学习的 Net# 神经网络规范语言的指南
 ## <a name="overview"></a>概述
@@ -190,7 +189,7 @@ Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映�
 有两组控制填充的属性，这两个属性相互排斥：
 
 * **Padding**：（可选）确定是否应该使用**默认填充方案**来填充输入。 值可以是单个布尔值或布尔值的元组（其长度为捆绑的实参数量）。 单个布尔值扩展为正确长度的元组，所有组件都等于指定值。 如果维度值为 True，则使用零值单元格将源按逻辑填充到维度以支持其他内核应用程序，从而使该维度中第一个和最后一个内核的中央节点称为源层的维度中的第一个和最后一个节点。 因此，每个维度中的“虚拟”节点数将自动确定，以使 *(InputShape[d] - 1) / Stride[d] + 1* 内核完全符合填充的源层。 如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
-* **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：**当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些参数后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。 若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
+* **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：**当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。 若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
   * **LowerPad** 的每个组件必须准确小于 KernelShape[d]/2。 
   * **UpperPad** 的每个组件必须准确小于 KernelShape[d]/2。 
   * 这些属性的默认值为一个元组，其所有组件都等于 0。 
@@ -415,5 +414,4 @@ Net # 可选择支持定义具有共享权重的多个捆绑。 如果任意两�
 用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure ML - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure ML 中的神经网络 - Net# 简介）
 
 [1]:./media/azure-ml-netsharp-reference-guide/formula_large.gif
-
 

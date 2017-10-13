@@ -17,10 +17,10 @@ ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ecb4fb4608628f5a1bd54fac6af19fecfa4508f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户管理网络安全组
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 07/11/2017
     ![Azure 门户 - 子网设置](./media/virtual-networks-create-nsg-arm-pportal/figure16.png)
 
 ## <a name="create-the-nsg-backend-nsg"></a>创建 NSG-BackEnd NSG
-若要创建 **NSG-BackEnd** NSG 并将它关联到 **BackEnd** 子网，请执行以下步骤。
+要创建 **NSG-BackEnd** NSG 并将它关联到 **BackEnd** 子网，请执行以下步骤。
 
 1. 重复[创建 NSG-FrontEnd NSG](#Create-the-NSG-FrontEnd-NSG) 中的步骤以创建名为 *NSG-BackEnd* 的 NSG
 2. 重复[在现有 NSG 中创建规则](#Create-rules-in-an-existing-NSG)中的步骤以创建下表中的**入站**规则。
@@ -89,7 +89,7 @@ ms.lasthandoff: 07/11/2017
    | 入站规则 | 出站规则 |
    | --- | --- |
    | ![Azure 门户 - 入站规则](./media/virtual-networks-create-nsg-arm-pportal/figure17.png) |![Azure 门户 - 出站规则](./media/virtual-networks-create-nsg-arm-pportal/figure18.png) |
-3. 重复执行[将 NSG 关联到 FrontEnd 子网](#Associate-the-NSG-to-the-FrontEnd-subnet)中的步骤，将 **NSG-Backend** NSG 关联到 **BackEnd** 子网。
+3. 重复[将 NSG 关联到 FrontEnd 子网](#Associate-the-NSG-to-the-FrontEnd-subnet)中的步骤以将 **NSG-Backend** NSG 关联到 **BackEnd** 子网。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理现有 NSG](virtual-network-manage-nsg-arm-portal.md)

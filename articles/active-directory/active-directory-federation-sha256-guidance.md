@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 ms.openlocfilehash: c581b1468630a9f28204592c936360b72f42f0d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ Active Directory 联合身份验证服务 (AD FS) 会在 Microsoft Azure Active 
 >Microsoft 建议使用 SHA256 作为令牌签名算法，因为它比 SHA1 更安全，但 SHA1 仍受支持。
 
 ## <a name="change-the-token-signing-algorithm"></a>更改令牌签名算法
-使用下面两个过程之一设置签名算法后，AD FS 使用 SHA256 为 Office 365 信赖方信任令牌签名。 无需进行任何额外的配置更改，并且这种更改不影响你访问 Office 365 或其他 Azure AD 应用程序的能力。
+使用下面两个过程之一设置签名算法后，AD FS 将使用 SHA256 为 Office 365 信赖方信任令牌签名。 无需进行任何额外的配置更改，并且这种更改不影响你访问 Office 365 或其他 Azure AD 应用程序的能力。
 
 ### <a name="ad-fs-management-console"></a>AD FS 管理控制台
 1. 在 AD FS 主服务器上打开 AD FS 管理控制台。

@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric 安全性概述 | Microsoft 文档"
+title: "Azure Service Fabric 安全性概述 | Microsoft Docs"
 description: "本文简要介绍 Azure Service Fabric 安全性。"
 services: security
 documentationcenter: na
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 908bdaf002e42035567974b204f5b39e73e82024
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。
@@ -193,4 +192,3 @@ Azure Service Fabric 安全性能够保护群集中以不同用户帐户运行�
 ## <a name="next-steps"></a>后续步骤
 - 有关群集安全性的概念信息，请参阅[使用 Azure 资源管理器创建 Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)和 [Azure 门户](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)。
 - 若要了解有关 Service Fabric 中群集安全性的详细信息，请参阅 [Service Fabric 群集安全性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
-

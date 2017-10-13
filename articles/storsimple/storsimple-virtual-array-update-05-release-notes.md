@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 4d020ff2b998da4cb52fe91e4d7d4b93544965a8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>StorSimple 虚拟阵列更新 0.5 发行说明
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 功能 | 问题 |
 | --- | --- | --- |
 | 1 |备份复原能力| 在早期版本中，仅在出现特定异常时重试备份。 此版本包含一个修补程序，它通过重试所有备份异常来增强备份复原能力。|
-| 2 |监视| 2017 年 6 月 30 起将弃用对 StorSimple 虚拟设备系列的存储使用情况监视。 此操作会影响在 StorSimple 虚拟阵列（1200 型）上运行的 StorSimple 设备管理器服务上的监视图表。 此版本包含允许用户在 2017 年 6 月 30 日后对虚拟阵列继续使用存储使用情况监视的更新。|
+| #N/A |监视| 2017 年 6 月 30 起将弃用对 StorSimple 虚拟设备系列的存储使用情况监视。 此操作会影响在 StorSimple 虚拟阵列（1200 型）上运行的 StorSimple 设备管理器服务上的监视图表。 此版本包含允许用户在 2017 年 6 月 30 日后对虚拟阵列继续使用存储使用情况监视的更新。|
 | 3 |文件服务器| 在早期版本中，用户可能误将加密文件复制到虚拟阵列。 此版本包含不允许将加密文件复制到虚拟阵列的修补程序。 如果设备上已有早于此更新的加密文件，则从系统中删除加密文件前，备份将继续失败。 |
 
 

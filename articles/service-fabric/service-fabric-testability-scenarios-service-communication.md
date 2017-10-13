@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: c182cc2062ada40029504de5b2b64b021c614ce6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric 可测试性方案：服务通信
 在 Azure Service Fabric 中，自然显露了微服务和面向服务的体系结构风格。 在这些类型的分布式体系结构中，组件化微服务应用程序通常由需要相互通信的多个服务组成。 即使在最简单的情况下，一般至少有一个无状态 Web 服务和一个有状态数据存储服务，这些服务都需要通信。
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
 
 适当地处理这些方案对于系统的顺畅运行非常重要。 若要这样做，请记住：
 
-* 可以连接的每个服务都有一个它要侦听的*地址*（例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （它已经移到另一个节点，具有不同的 IP 地址。）） 如果使用内置通信组件，它们会处理服务地址的重新解析。
+* 可以连接的每个服务都有一个它要侦听的*地址*（例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （它已经移到另一个节点，具有不同的 IP 地址。）如果使用内置通信组件，则它们将处理服务地址的重新解析。
 * 服务延迟有可能暂时性增大，因为服务实例再次启动其侦听程序。 这取决于服务在移动之后有多快启动侦听程序。
 * 在服务打开新的节点后，任何现有连接都需要关闭并重新打开。 正常的节点关闭或重新启动会等待现有连接正常关闭。
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/11/2017
     ```
 2. 停止一个节点。
    
-    节点停止时，Service Fabric 将该驻留在该节点上的所有服务实例或分区移到群集中的其他可用节点上。 用此来测试一种情形，在这种情形中，群集丢失了一个节点，并且该节点上的所有服务实例和副本都必须移动。
+    当一个节点停止时，Service Fabric 将该驻留在节点上的所有服务实例或分区移到群集中的其他可用节点上。 用此来测试一种情形，在这种情形中，群集丢失了一个节点，并且该节点上的所有服务实例和副本都必须移动。
    
     可以使用 PowerShell **Stop-ServiceFabricNode** cmdlet 来停止节点：
    
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="maintain-service-availability"></a>维持服务可用性
 作为一款平台，Service Fabric 旨在为服务提供高可用性。 但是，底层基础结构问题在极端情况下仍然可能导致服务不可用。 因此也必须测试这些方案。
 
-有状态服务使用基于仲裁的系统来复制状态以获得高可用性。 这意味着副本的仲裁必须可用才能执行写操作。 在极少数情况下，例如普遍出现的硬件故障，副本的仲裁可能不可用。 在这种情况下，不能执行写入操作，但是仍然能够执行读取操作。
+有状态服务使用基于仲裁的系统来复制状态以获得高可用性。 这意味着副本的仲裁必须可用才能执行写操作。 在极少数情况下，例如普遍出现的硬件故障，副本的仲裁可能不可用。 在这种情况下，将不能执行写操作，但是仍然能够执行读操作。
 
 ### <a name="test-it-write-operation-unavailability"></a>测试：写操作不可用
 使用 Service Fabric 中的可测试性工具可以注入一个引入仲裁丢失的故障作为测试。 尽管这种情况很少见，但是取决于有状态服务的客户端和服务准备好处理无法向有状态服务进行写请求的情形非常重要。 有状态服务本身知晓这种可能性并且能够以得当的方式将其告知调用方也非常重要。
@@ -87,7 +87,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-在本示例中，我们将 `QuorumLossMode` 设置为 `QuorumReplicas`，指出我们希望引入仲裁丢失而不关闭所有副本。 这样就仍然能够进行读操作。 要测试整个分区不可用的情形，可将此开关设置为 `AllReplicas`。
+在本示例中，我们将 `QuorumLossMode` 设置为 `QuorumReplicas` 以指出我们希望引入仲裁丢失而不关闭所有副本。 这样就仍然能够进行读操作。 要测试整个分区不可用的情形，可将此开关设置为 `AllReplicas`。
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关可测试性操作的详细信息](service-fabric-testability-actions.md)

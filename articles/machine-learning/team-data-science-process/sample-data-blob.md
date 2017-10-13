@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ff9ce56afb68ce0d8e88c3a832fe2a8c6372bf02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="heading"></a>对 Azure blob 存储中的数据采样
 本文档介绍对在 Azure blob 存储中数据进行取样的方法：通过以编程方式下载，并使用以 Python 编写的过程对其进行采样。
@@ -101,5 +100,4 @@ ms.lasthandoff: 09/25/2017
 3. 使用 Azure 机器学习[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)从 Azure blob 中读取数据，如下图中所示：
 
 ![blob 读取器](./media/sample-data-blob/reader_blob.png)
-
 

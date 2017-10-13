@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae37f49916445a9486457af61aa9bf8bc1d7eb87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
 
@@ -68,9 +68,9 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 | 组件 | # 存在 | 插件模块？ | 更换过程 |
 |:--- |:--- |:--- |:--- |
 | 底盘 |1 |否 |[更换 StorSimple 设备上的底盘](storsimple-chassis-replacement.md) |
-| 主控制器 |2 |是 |[更换 StorSimple 设备上的控制器模块](storsimple-controller-replacement.md) |
-| 764W 电源和散热模块 (PCM) |2 |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-power-cooling-module-replacement.md) |
-| 备用电池 |2 |是 |[更换 StorSimple 设备上的备用电池模块](storsimple-battery-replacement.md) |
+| 主控制器 |#N/A |是 |[更换 StorSimple 设备上的控制器模块](storsimple-controller-replacement.md) |
+| 764W 电源和散热模块 (PCM) |#N/A |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-power-cooling-module-replacement.md) |
+| 备用电池 |#N/A |是 |[更换 StorSimple 设备上的备用电池模块](storsimple-battery-replacement.md) |
 | 磁盘驱动器 |12 |是 |[更换 StorSimple 设备上的磁盘驱动器](storsimple-disk-drive-replacement.md) |
 
 **表 1** 主机箱中的硬件组件
@@ -80,8 +80,8 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 | 组件 | # 存在 | 插件模块？ | 更换过程 |
 |:--- |:--- |:--- |:--- |
 | 底盘 |1 |否 |[更换 StorSimple 设备上的底盘](storsimple-chassis-replacement.md) |
-| EBOD 控制器 |2 |是 |[更换 StorSimple 设备上的 EBOD 控制器](storsimple-ebod-controller-replacement.md) |
-| 580W 电源和散热模块 (PCM) |2 |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-power-cooling-module-replacement.md) |
+| EBOD 控制器 |#N/A |是 |[更换 StorSimple 设备上的 EBOD 控制器](storsimple-ebod-controller-replacement.md) |
+| 580W 电源和散热模块 (PCM) |#N/A |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-power-cooling-module-replacement.md) |
 | 磁盘驱动器 |12 |是 |[更换 StorSimple 设备上的磁盘驱动器](storsimple-disk-drive-replacement.md) |
 
 **表 2** EBOD 机箱中的硬件组件
@@ -105,7 +105,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 | 标签 | 说明 |
 |:--- |:--- |
 | 1 |PCM 0 |
-| 2 |PCM 1 |
+| #N/A |PCM 1 |
 | 3 |控制器 0 |
 | 4 |控制器 1 |
 
@@ -116,7 +116,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 | 标签 | 说明 |
 |:--- |:--- |
 | 1 |PCM 0 |
-| 2 |PCM 1 |
+| #N/A |PCM 1 |
 | 3 |EBOD 控制器 0 |
 | 4 |EBOD 控制器 1 |
 

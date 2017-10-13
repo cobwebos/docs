@@ -11,14 +11,12 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
+ms.openlocfilehash: c6cfca299dabba253757d959411c0cac8f90fa2e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: a3bfa3a17f0d7300f9d1ceb529410bbbb7bb2fee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 
 本教程介绍如何使用 Jenkins [Azure VM 代理插件](https://plugins.jenkins.io/azure-vm-agents)通过在 Azure 中运行的 Linux 虚拟机添加按需容量。
@@ -147,5 +145,4 @@ ms.lasthandoff: 08/29/2017
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [CI/CD 到 Azure App Service](deploy-jenkins-app-service-plugin.md)
-
+> [CI/CD 到 Azure 应用服务](java-deploy-webapp-tutorial.md)

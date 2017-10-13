@@ -13,16 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 04/18/2017
+ms.date: 10/9/2017
 ms.author: mobandyo;bryanla
+ms.openlocfilehash: 26217d6f4e14166a89fbb561cb12d0af78ae6f4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 85b53620a886625920e8e057a14e1ed5fa3e5333
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>使用 Azure 计费 API 以编程方式洞察 Azure 用量
 使用 Azure 计费 API 将用量和资源数据提取到偏好的数据分析工具。 Azure 资源用量和 RateCard API 可以帮助你准确预测及管理成本。 这些 API 作为资源提供程序实现，属于 Azure Resource Manager 公开的 API 系列。  
 
@@ -63,8 +61,6 @@ ms.lasthandoff: 09/28/2017
   * 还可以确定其他 Azure 产品/服务类型是否提供更优惠的 Azure 资源费率。
   
 ## <a name="partner-solutions"></a>合作伙伴解决方案
-[Microsoft Azure 使用情况和 RateCard API 启用 Cloudyn 为客户提供 ITFM](billing-usage-rate-card-partner-solution-cloudyn.md) 介绍了 Azure 计费 API 合作伙伴 [Cloudyn](https://www.cloudyn.com/microsoft-azure/) 提供的集成体验。 此文介绍了体验范围，通过一个视频演示如何使用 Cloudyn 和 Azure 计费 API 洞察 Azure 消耗数据。
-
 [Cloud Cruiser 和 Microsoft Azure 计费 API 集成](billing-usage-rate-card-partner-solution-cloudcruiser.md)介绍了 [Cloud Cruiser 的 Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) 如何直接从 Windows Azure Pack (WAP) 门户运行。 可以顺畅地在一个用户界面中管理 Microsoft Azure 私有云或托管公有云的运营和财务方面。   
 
 ## <a name="next-steps"></a>后续步骤
@@ -78,5 +74,4 @@ ms.lasthandoff: 09/28/2017
 * 若要了解有关 Azure Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。 
 
 * 有关有助于了解云费用所需工具套件的其他信息，请参阅 Gartner 文章 [IT 财务管理 (ITFM) 工具的市场指南](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb)。
-
 

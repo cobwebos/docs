@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors 状态管理
 Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组件在 Reliable Services 上运行，因此，它们可以使用 Reliable Services 所用的相同持久性和复制机制可靠地维护状态。 这样，执行组件就不会在发生故障之后、在内存回收后重新激活时或者由于资源平衡和升级的原因而在群集中的节点之间移动时丢失其状态。
 
 ## <a name="state-persistence-and-replication"></a>状态持久性和复制
-所有 Reliable Actors 被视为 *有状态* 的原因在于，每个执行组件实例都会映射到唯一的 ID。 这意味着，对同一个执行组件 ID 所做的重复调用将路由到同一个执行组件实例。 与此相反，在无状态系统中，客户端调用不一定每次都路由到同一台服务器。 出于此原因，执行组件服务永远都是有状态服务。
+之所以认为所有 Reliable Actors *有状态*，是因为每个执行组件实例将映射到唯一的 ID。 这意味着，对同一个执行组件 ID 所做的重复调用将路由到同一个执行组件实例。 与此相反，在无状态系统中，客户端调用不一定每次都路由到同一台服务器。 出于此原因，执行组件服务永远都是有状态服务。
 
 即使执行组件被视为有状态，也并不表示它们必须以可靠的方式存储状态。 执行组件可以根据其数据存储要求来选择状态持久性和复制的级别：
 

@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 02/01/2016
 ms.author: mingzhan
 ms.openlocfilehash: 0ee70bda954cf0a193d43b5b47702e7b2c37844d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-install-mysql-on-azure"></a>如何在 Azure 上安装 MySQL
-本文介绍如何在运行 Linux 的 Azure 虚拟机上安装和配置 MySQL。
+在本文中，将了解如何在运行 Linux 的 Azure 虚拟机上安装和配置 MySQL。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 我们将使用存储库包来安装 MySQL5.6，作为本文中的示例。 实际上，MySQL5.6 在性能上相对于 MySQL5.5 而言有更大的改进。  [此处](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/)提供更多信息。
 
 ### <a name="how-to-install-mysql56-on-ubuntu"></a>如何在 Ubuntu 上安装 MySQL5.6
-此处将使用 Azure 中的 Linux VM（Ubuntu）。
+我们在这里会将 Linux VM 与 Azure 中的 Ubuntu 一起使用。
 
 * 步骤 1：为 `root` 用户安装 MySQL Server 5.6 开关：
   
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
 
 * 步骤 2：登录 MySQL Server
   
-    MySQL Server 安装完成后，将自动启动 MySQL 服务。 可以使用 `root` 用户登录 MySQL Server。
+    在 MySQL Server 安装完成后，会自动启动 MySQL 服务。 可以使用 `root` 用户登录 MySQL Server。
     使用以下命令登录并输入密码。
   
              #[root@mysqlnode ~]# mysql -uroot -p
@@ -83,9 +83,9 @@ ms.lasthandoff: 07/11/2017
              #[root@mysqlnode ~]# service mysql restart
 
 ### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>如何在 Red Hat OS 系列（例如 CentOS、Oracle Linux）上安装 MySQL
-此处会将 Linux VM 与 CentOS 或 Oracle Linux 一起使用。
+在这里，我们会将 Linux VM 用于 CentOS 或 Oracle Linux。
 
-* 步骤 1：添加 MySQL Yum 存储库   切换到 `root` 用户：
+* 步骤 1：将 MySQL Yum 存储库开关添加到 `root` 用户：
   
             #[azureuser@mysqlnode:~]sudo su -
   

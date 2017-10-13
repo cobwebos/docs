@@ -12,16 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-f1_keywords:
-- sql13.swb.windowsazurestorage.connect.f1
+f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 01/23/2017
 ms.author: tamram
+ms.openlocfilehash: cdca35f8ae339d02b44490cd61e2684d81d88365
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 848f6b07e51b58b00b81dd42ca1d478fdba20d06
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-azure-storage-accounts"></a>关于 Azure 存储帐户
 [!INCLUDE [storage-selector-portal-create-storage-account](../../../includes/storage-selector-portal-create-storage-account.md)]
@@ -149,5 +147,4 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 * [配置 Azure 存储连接字符串](../storage-configure-connection-string.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * 访问 [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
-
 

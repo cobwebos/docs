@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 578ccb162e91d3ec7befb53b09400fc49c5ba37a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](http://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
@@ -60,5 +59,4 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 通过优化产品建议策略并将其与业务目标对齐，本解决方案可满足在线零售商的商品销售和市场营销目标。 此外，他们还能够以高效、可靠且经济高效的方式优化和管理产品建议工作流。 他们通过本方法可以很方便地根据销售单击转换成功率测量结果更新模型和优化效果。 通过使用 Azure 数据工厂，他们可以摆脱耗时且成本高昂的手动云资源管理，改用按需式云资源管理。 因此，他们可节省时间和资金，并减少解决方案的部署时间。 通过在 Azure 门户可用的直观式数据工厂监视和管理 UI，可以很方便地显示数据沿袭视图和操作服务运行状况并进行相关故障排除。 他们现在可以安排和管理解决方案，以便以可靠方式完成数据并呈现给用户，并且可以自动管理数据和处理依赖项，无需人工操作。
 
 通过提供这种个性化购物体验，在线零售商创造了更具竞争力、更有吸引力的客户体验，因此增加了销售和整体客户满意度。
-
 

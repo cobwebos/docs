@@ -17,14 +17,14 @@ ms.date: 03/01/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: 34072574f83b51280e60e2f8766c6c5d5a33c307
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑
 
-通过 Storm 仪表板可以使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果使用 Visual Studio，则适用于 Visual Studio 的 HDInsight 工具会提供 Visual Studio 中的类似功能。
+Storm 仪表板可让你使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果使用 Visual Studio，则 HDInsight Tools for Visual Studio 会提供 Visual Studio 中的类似功能。
 
 HDInsight Tools 中的 Storm 仪表板和 Storm 功能依赖于 Storm REST API，此 API 可用于创建自己的监视和管理解决方案。
 

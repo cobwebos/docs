@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 07759a590e3a4e061a1c5727428d2c7c2a655f51
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>如何在 Azure 机器学习工作台中使用 Jupyter Notebook
 
@@ -109,5 +108,4 @@ $ az ml notebook start
 ## <a name="next-steps"></a>后续步骤
 - 若要了解如何使用 Jupyter Notebook，请访问 [Jupyter 官方文档](http://jupyter-notebook.readthedocs.io/en/latest/)。    
 - 若要更深入地了解 Azure ML 实验执行环境，请查看 [Azure 机器学习试验执行服务概述](experiment-execution-configuration.md)
-
 

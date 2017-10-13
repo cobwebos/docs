@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: rajanaki
 ms.openlocfilehash: 34086044db752f09f1282517b59856091e85c2fc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure Resource Manager 将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
 > [!div class="op_single_selector"]
@@ -227,7 +227,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 1. 第一条命令将获取当前 Azure Site Recovery 保管库的服务器。 该命令将 Microsoft Azure Site Recovery 服务器存储在 $Servers 数组变量中。
 
         $Servers = Get-AzureRmSiteRecoveryServer
-2. 第二条命令会获取 $Servers 数组中第一个服务器的 Site Recovery 网络。 该命令在 $Networks 变量中存储网络。
+2. 第二条命令将获取 $Servers 数组中第一个服务器的站点恢复网络。 该命令在 $Networks 变量中存储网络。
 
         $Networks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]
 
@@ -285,7 +285,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -AzureVMNetworkId <string>  
 
-## <a name=monitor></a> 监视活动
+## <a name=monitor></a>监视活动
 使用以下命令来监视活动。 请注意，必须在执行不同的作业之前等待处理完成。
 
     Do

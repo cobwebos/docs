@@ -1,6 +1,6 @@
 ---
 title: "Azure 机器学习模型管理安装和配置 | Microsoft Docs"
-description: "本文档介绍了在 Azure 机器学习中安装和配置模型管理所涉及的步骤和概念。"
+description: "本文档介绍了安装和配置 Azure 机器学习中的模型管理时所涉及的步骤和概念。"
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
@@ -10,35 +10,34 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 61ecea71874b05c2c5f7572aa6128fc320422b1f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="model-management-setup"></a>模型管理设置
+# <a name="model-management-setup"></a>模型管理安装
 
-本文档首先为你介绍使用 Azure ML 模型管理将机器学习模型作为 Web 服务来部署和管理。 
+本文档首先为你介绍如何使用 Azure ML 模型管理将机器学习模型作为 Web 服务进行部署和管理。 
 
 使用 Azure ML 模型管理，可以高效部署和管理使用许多框架（包括 SparkML、Keras、TensorFlow、Microsoft 认知工具包或 Python）构建的机器学习模型。 
 
-在本文档结尾，你应该能够设置好模型管理环境，并随时可以部署机器学习模型。
+读完本文档后，你应该能够设置模型管理环境，并随时可以部署机器学习模型。
 
 ## <a name="what-you-need-to-get-started"></a>入门所需操作
-为了充分利用本指南，你应该拥有对可将模型部署到的 Azure 订阅的所有者访问权限。
-CLI 预安装在 Azure Machine Learning Workbench 和 [Azure DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) 上。
+为了充分利用本指南，你对可将模型部署到的 Azure 订阅应该拥有所有者访问权限。
+Azure Machine Learning Workbench 和 [Azure DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) 上预安装了 CLI。
 
 ## <a name="using-the-cli"></a>使用 CLI
 若要从 Workbench 使用命令行接口 (CLI)，请单击“文件” -> “打开命令提示符”。 
 
-在数据科学虚拟机上，连接并打开命令提示符。 键入 `az ml -h` 查看选项。 有关命令的详细信息，请使用 --help 标志。
+在数据科学虚拟机上，连接并打开命令提示符。 键入 `az ml -h` 以查看选项。 有关命令的详细信息，请使用 --help 标志。
 
-在所有其他系统中，你将必须安装 CLI。
+在所有其他系统中，将必须安装 CLI。
 
 ### <a name="installing-or-updating-on-windows"></a>在 Windows 上安装（或更新）
 
-从 https://www.python.org/ 安装 Python。 确保你已选择以安装 pip。
+从 https://www.python.org/ 安装 Python。 确保已选择了安装 pip。
 
 使用“以管理员身份运行”打开命令提示符，然后运行以下命令：
 
@@ -48,7 +47,7 @@ pip install azure-cli-ml
 ```
  
 >[!NOTE]
->如果使用较早的版本，请先使用以下命令卸载它：
+>如果已安装了较早的版本，请先使用以下命令卸载它：
 >
 
 ```cmd
@@ -76,16 +75,16 @@ pip install azure-cli-ml
 ## <a name="deploying-your-model"></a>部署模型
 使用 CLI 将模型部署为 Web 服务。 可在本地部署 Web 服务，也可以部署到群集。
 
-从本地部署开始，验证模型和代码是否有效，然后部署到群集以供大规模生产使用。
+从本地部署开始，验证模型和代码是否正常工作，然后部署到群集以供大规模生产使用。
 
-首先，需要设置部署环境。 环境设置是一次性任务。 设置完成后，你可以重复使用环境进行后续部署。 有关详细信息，请参阅以下部分。
+首先，需要设置部署环境。 环境设置是一个一次性任务。 设置完成后，可以重复使用环境进行后续部署。 有关详细信息，请参阅下一部分。
 
 完成环境设置后：
 - 系统会提示你登录到 Azure。 若要登录，请使用 Web 浏览器打开页面 https://aka.ms/devicelogin，然后输入提供的代码进行身份验证。
-- 在身份验证过程中，系统会提示你输入帐户进行身份验证。 重要说明：选择具有有效 Azure 订阅和足够权限的帐户，以在帐户中创建资源。- 登录完成后，会显示订阅信息，并提示你是否要继续使用所选帐户。
+- 在身份验证过程中，系统会提示你输入帐户进行身份验证。 重要说明：选择一个具有有效 Azure 订阅和足够权限的帐户，以在帐户中创建资源。登录完成后，会显示订阅信息，并且会提示你确认是否要继续使用所选帐户。
 
 ### <a name="environment-setup"></a>环境设置
-要启动设置过程，需要通过输入以下命令来注册环境提供程序：
+若要启动设置过程，需要通过输入以下命令来注册环境提供程序：
 
 ```azurecli
 az provider register -n Microsoft.MachineLearningCompute
@@ -113,9 +112,9 @@ az ml env set -n [environment name] -g [resource group]
 ```
 
 #### <a name="cluster-deployment"></a>群集部署
-将群集部署用于大规模生产场景。 它将 Kubernetes 作为业务流程协调程序设置 ACS 群集。 可以扩展 ACS 群集，以处理更高的 Web 服务调用吞吐量。
+对于大规模生产方案，请使用群集部署。 它设置一个 ACS 群集，并且使用 Kubernetes 作为业务流程协调程序。 可以横向扩展 ACS 群集，以处理更高的 Web 服务调用吞吐量。
 
-要将 Web 服务部署到生产环境，请首先使用以下命令设置环境：
+若要将 Web 服务部署到生产环境，请首先使用以下命令设置环境：
 
 ```azurecli
 az ml env setup --cluster -n [your environment name] -l [Azure region e.g. eastus2] [-g [resource group]]
@@ -124,7 +123,7 @@ az ml env setup --cluster -n [your environment name] -l [Azure region e.g. eastu
 群集环境设置命令在订阅中创建以下资源：
 - 资源组（如果未提供，或者如果提供的名称不存在）
 - 存储帐户
-- Azure 容器注册表 (ACR)
+- 一个 Azure 容器注册表 (ACR)
 - Azure 容器服务 (ACS) 群集上的 Kubernetes 部署
 - Application Insights 帐户
 
@@ -146,7 +145,7 @@ az ml env set -n [environment name] -g [resource group]
 ```
 
 >[!NOTE] 
-> 创建环境后，对于后续部署，你只需要使用上面的设置命令重复使用它即可。
+> 创建环境后，对于后续部署，只需要使用上面的设置命令重复使用它即可。
 >
 
 ### <a name="create-a-model-management-account"></a>创建模型管理帐户
@@ -158,13 +157,13 @@ az ml env set -n [environment name] -g [resource group]
 az ml account modelmanagement create -l [Azure region, e.g. eastus2] -n [your account name] -g [resource group name] --sku-instances [number of instances, e.g. 1] --sku-name [Pricing tier for example S1]
 ```
 
-要使用现有帐户，请使用以下命令：
+若要使用现有帐户，请使用以下命令：
 ```azurecli
 az ml account modelmanagement set -n [your account name] -g [resource group it was created in]
 ```
 
 ### <a name="deploy-your-model"></a>部署模型
-你现在便已准备好将你保存的模型部署为 Web 服务。 
+现在可以将已保存模型部署为 Web 服务了。 
 
 ```azurecli
 az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
@@ -172,4 +171,3 @@ az ml service create realtime --model-file [model file/folder path] -f [scoring 
 
 ## <a name="next-steps"></a>后续步骤
 尝试库中的诸多示例之一。
-

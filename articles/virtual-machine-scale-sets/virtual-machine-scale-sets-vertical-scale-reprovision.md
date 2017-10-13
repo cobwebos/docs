@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: guybo
 ms.openlocfilehash: 9159a5a9041864fe06785829121233379c46bb03
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关 VM 的垂直缩放（规模集中不存在），请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
@@ -78,7 +78,7 @@ ms.lasthandoff: 07/11/2017
 * [Azure 自动化 Webhook](../automation/automation-webhooks.md)
 
 > [!NOTE]
-> 在关闭 Webhook 对话框之前，请务必复制 Webhook URI，因为在下一部分要用到它。
+> 在关闭 Webhook 对话框之前，请务必复制 Webhook URI，因为在下一部分将要用到它。
 > 
 > 
 

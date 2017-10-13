@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
 ms.openlocfilehash: 606e2d3d0e31b9d80200105e812f9d7bbbcf939c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-7-map-networks-for-hyper-v-vm-replication-to-a-secondary-site"></a>步骤 7：映射网络以便将 Hyper-V VM 复制到辅助站点
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/03/2017
 1. 在“网络映射” > “网络映射”中，单击“+网络映射”。
 2. 在“添加网络映射”选项卡中，选择源和目标 VMM 服务器。 系统将检索与 VMM 服务器关联的 VM 网络。
 3. 在“源网络”中，从与主 VMM 服务器关联的 VM 网络列表中选择要使用的网络。
-4. 在“目标网络”中，选择要在辅助 VMM 服务器上使用的网络。 。
+4. 在“目标网络”中，选择要在辅助 VMM 服务器上使用的网络。 然后单击“确定”。
 
     ![网络映射](./media/vmm-to-vmm-walkthrough-network-mapping/network-mapping2.png)
 

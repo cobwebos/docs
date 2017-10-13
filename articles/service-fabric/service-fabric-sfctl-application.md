@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: dc57c813a6aecabc21ac3931b7294bce909778d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
 
@@ -68,14 +66,14 @@ ms.lasthandoff: 09/26/2017
 | --metrics            | 应用程序容量指标说明的 JSON 编码列表。 指标定义为一个名称，与应用程序所在的每个节点的一组容量关联。|
 | --min-node-count     | Service Fabric 为此应用程序保留的容量的最小节点数。 这并不表示此应用程序的服务放置在所有这些节点上。|
 | --parameters         | 创建应用程序时应用的应用程序参数替代的 JSON 编码列表。|
-| --timeout -t         | 服务器超时（以秒为单位）。  默认值：60。|
+| --timeout -t         | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug              | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h            | 显示此帮助信息并退出。|
+| --debug              | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h            | 显示此帮助消息并退出。|
 | --output -o          | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query              | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose            | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -100,8 +98,8 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --debug                 | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h               | 显示此帮助信息并退出。|
+| --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -124,8 +122,8 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --debug                 | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h               | 显示此帮助信息并退出。|
+| --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -151,8 +149,8 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --debug                                 | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                               | 显示此帮助信息并退出。|
+| --debug                                 | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                               | 显示此帮助消息并退出。|
 | --output -o                             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query                                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -176,8 +174,8 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --debug                      | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                    | 显示此帮助信息并退出。|
+| --debug                      | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                    | 显示此帮助消息并退出。|
 | --output -o                  | 输出格式。  允许的值：json、jsonc、table、tsv。             默认值：json。|
 | --query                      | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -209,8 +207,8 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --debug                      | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                    | 显示此帮助信息并退出。|
+| --debug                      | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                    | 显示此帮助消息并退出。|
 | --output -o                  | 输出格式。  允许的值：json、jsonc、table、tsv。             默认值：json。|
 | --query                      | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -238,8 +236,8 @@ ms.lasthandoff: 09/26/2017
 ### <a name="global-arguments"></a>全局参数
 |参数|说明|
 | --- | --- |
-|--debug                    | 提高日志记录详细程度，显示所有调试日志。|
-    --help -h                  | 显示此帮助信息并退出。|
+|--debug                    | 提高日志记录详细程度，以显示所有调试日志。|
+    --help -h                  | 显示此帮助消息并退出。|
     --output -o                | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：
                                  json。|
     --query                    | JMESPath 查询字符串。 有关详细信息和示例，
@@ -255,16 +253,16 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --application-type-name [必需]| 应用程序类型的名称。|
+| --application-type-name    [必需]| 应用程序类型的名称。|
 | --application-type-version [必需]| 应用程序类型的版本。|
-| --timeout -t                      | 服务器超时（以秒为单位）。  默认值：60。|
+| --timeout -t                      | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug                           | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                         | 显示此帮助信息并退出。|
+| --debug                           | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                         | 显示此帮助消息并退出。|
 | --output -o                       | 输出格式。  允许的值：json、jsonc、table、tsv。                  默认值：json。|
 | --query                           | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                         | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -279,14 +277,14 @@ ms.lasthandoff: 09/26/2017
 |参数|说明|
 | --- | --- |
 | --application-type-build-path [必需]| 应用程序包的相对映像存储区路径。|
-| --timeout -t                         | 服务器超时（以秒为单位）。  默认值：60。|
+| --timeout -t                         | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug                              | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                            | 显示此帮助信息并退出。|
+| --debug                              | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                            | 显示此帮助消息并退出。|
 | --output -o                          | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query                              | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                            | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -305,14 +303,14 @@ ms.lasthandoff: 09/26/2017
 | --continuation-token           | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。|
 | --exclude-application-parameters  | 该标志指定应用程序参数是否排除在结果之外。|
 | --max-results                  | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。|
-| --timeout -t                   | 服务器超时（以秒为单位）。  默认值：60。|
+| --timeout -t                   | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug                        | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                      | 显示此帮助信息并退出。|
+| --debug                        | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                      | 显示此帮助消息并退出。|
 | --output -o                    | 输出格式。  允许的值：json、jsonc、table、tsv。               默认值：json。|
 | --query                        | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                      | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -326,16 +324,16 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --application-type-name [必需]| 应用程序类型的名称。|
+| --application-type-name    [必需]| 应用程序类型的名称。|
 | --application-type-version [必需]| 应用程序类型版本。|
-| --timeout -t                      | 服务器超时（以秒为单位）。  默认值：60。|
+| --timeout -t                      | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug                           | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                         | 显示此帮助信息并退出。|
+| --debug                           | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                         | 显示此帮助消息并退出。|
 | --output -o                       | 输出格式。  允许的值：json、jsonc、table、tsv。                  默认值：json。|
 | --query                           | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                         | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -358,8 +356,8 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --debug                     | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h                   | 显示此帮助信息并退出。|
+| --debug                     | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h                   | 显示此帮助消息并退出。|
 | --output -o                 | 输出格式。  允许的值：json、jsonc、table、tsv。            默认值：json。|
 | --query                     | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                   | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
@@ -382,13 +380,13 @@ ms.lasthandoff: 09/26/2017
 
 |参数|说明|
 | --- | --- |
-| --debug       | 提高日志记录详细程度，显示所有调试日志。|
-| --help -h     | 显示此帮助信息并退出。|
+| --debug       | 提高日志记录详细程度，以显示所有调试日志。|
+| --help -h     | 显示此帮助消息并退出。|
 | --output -o   | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query       | JMESPath 查询字符串。 有关详细信息和示例，
                        请参阅 http://jmespath.org/。|
 | --verbose     | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md) Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
