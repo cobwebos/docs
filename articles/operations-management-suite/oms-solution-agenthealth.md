@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: magoedte
 ms.openlocfilehash: b810e37e393ddab55500f636b72450789285a4f0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS 中的代理运行状况解决方案
 OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 OMS 工作区报告或向连接到 OMS 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -114,22 +114,22 @@ OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 
 
 
 >[!NOTE]
-> 如果你的工作区升级到[新日志分析查询语言](../log-analytics/log-analytics-log-search-upgrade.md)，则上面的查询将会更改为以下。
+> 如果工作区已升级到[新 Log Analytics 查询语言](../log-analytics/log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
 >
 >| 查询 | 说明 |
 |:---|:---|
-| 检测信号 &#124;不同的计算机 |代理总数 |
-| 检测信号 &#124;汇总 LastCall = max(TimeGenerated) 由计算机 &#124;其中 LastCall < ago(24h) |过去 24 小时内无响应代理的计数 |
-| 检测信号 &#124;汇总 LastCall = max(TimeGenerated) 由计算机 &#124;其中 LastCall < ago(15m) |过去 15 分钟内无响应代理的计数 |
-| 检测信号 &#124;其中 TimeGenerated > ago(24h) 和中的计算机 ((检测信号 &#124; where TimeGenerated > ago(24h) &#124; 不同的计算机)) &#124;汇总 LastCall = max(TimeGenerated) 计算机 |（过去 24 小时内）处于联机状态的计算机数 |
-| 检测信号 &#124;其中 TimeGenerated > ago(24h) 和计算机 ！ 中 ((检测信号 &#124; where TimeGenerated > ago(30m) &#124; 不同的计算机)) &#124;汇总 LastCall = max(TimeGenerated) 计算机 |（过去 24 小时中）过去 30 分钟内处于脱机状态的代理总数 |
-| 检测信号 &#124;汇总 AggregatedValue = 通过 OSType dcount(Computer) |了解某个时段内按 OSType 划分的代理数的趋势|
-| 检测信号 &#124;汇总 AggregatedValue = 通过 OSType dcount(Computer) |按 OS 类型进行的分布 |
-| 检测信号 &#124;汇总 AggregatedValue = dcount(Computer) 版本 |按代理版本进行的分布 |
-| 检测信号 &#124;汇总 AggregatedValue = count （） by 类别 |按代理类别进行的分布 |
-| 检测信号 &#124;汇总 AggregatedValue = 通过 ManagementGroupName dcount(Computer) | 按管理组进行的分布 |
-| 检测信号 &#124;汇总 AggregatedValue = 通过 RemoteIPCountry dcount(Computer) |代理的地理位置 |
-| 检测信号 &#124;其中 iff(isnotnull(toint(IsGatewayInstalled))，IsGatewayInstalled = = true，IsGatewayInstalled = ="true") = = true &#124;不同的计算机 |已安装 OMS 网关数 |
+| Heartbeat &#124; distinct Computer |代理总数 |
+| Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |过去 24 小时内无响应代理的计数 |
+| Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(15m) |过去 15 分钟内无响应代理的计数 |
+| Heartbeat &#124; where TimeGenerated > ago(24h) and Computer in ((Heartbeat &#124; where TimeGenerated > ago(24h) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |（过去 24 小时内）处于联机状态的计算机数 |
+| Heartbeat &#124; where TimeGenerated > ago(24h) and Computer !in ((Heartbeat &#124; where TimeGenerated > ago(30m) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |（过去 24 小时中）过去 30 分钟内处于脱机状态的代理总数 |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |了解某个时段内按 OSType 划分的代理数的趋势|
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |按 OS 类型进行的分布 |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |按代理版本进行的分布 |
+| Heartbeat &#124; summarize AggregatedValue = count() by Category |按代理类别进行的分布 |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | 按管理组进行的分布 |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |代理的地理位置 |
+| Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |已安装 OMS 网关数 |
 
 ## <a name="next-steps"></a>后续步骤
 

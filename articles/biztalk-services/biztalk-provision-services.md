@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
 ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>使用 Azure 门户创建 BizTalk 服务
 

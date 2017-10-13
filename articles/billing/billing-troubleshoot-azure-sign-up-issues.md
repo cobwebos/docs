@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 5f9d4e580b0d4d7c3ea39c53b1bf4067a59d4d52
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>排查 Azure 注册问题
 如果不能注册 Azure，请使用本文中的提示来解决常见问题。 如果在注册期间遇到信用卡问题，请参阅[借记卡或信用卡在注册 Azure 时被拒绝](billing-credit-card-fails-during-azure-sign-up.md)。 如果有 Azure 帐户但无法登录，请参阅[无法登录以管理 Azure 订阅](billing-cannot-login-subscription.md)。
@@ -91,4 +90,3 @@ ms.lasthandoff: 09/23/2017
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-

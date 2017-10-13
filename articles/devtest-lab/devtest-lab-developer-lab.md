@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
 ms.openlocfilehash: b829ebd90034031721dfe2e97427e624306da1e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室
 可使用 Azure 开发测试实验室来实现许多关键方案，但其中一个主要方案涉及使用开发测试实验室为开发人员托管开发计算机。 在此方案中，开发测试实验室具有以下优势：
@@ -132,8 +131,7 @@ ms.lasthandoff: 09/05/2017
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用 Resource Manager 模板在 Azure 开发测试实验室中创建实验室。 |
+   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用资源管理器模板在 Azure 开发测试实验室中创建实验室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-
 

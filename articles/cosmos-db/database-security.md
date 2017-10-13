@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 73d5c33cec1ebec76ea738e03cd29e88d482b905
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB 数据库安全性
 
 本文介绍数据库安全最佳做法以及 Azure Cosmos DB 提供的关键功能，帮助防范、检测和应对数据库入侵。
@@ -98,4 +96,3 @@ ms.lasthandoff: 09/25/2017
 有关审核日志的详细信息，请参阅 [Azure Cosmos DB 诊断日志记录](logging.md)。
 
 有关 Microsoft 认证的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。
-

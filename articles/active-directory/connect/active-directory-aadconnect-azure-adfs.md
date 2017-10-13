@@ -17,10 +17,10 @@ ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>在 Azure 中部署 Active Directory 联合身份验证服务
 AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 与 Azure AD 或 O365 联合可让用户使用本地凭据进行身份验证，并访问云中的所有资源。 这样，就必须建立高可用性的 AD FS 基础结构来确保能够访问本地和云中的资源。 在 Azure 中部署 AD FS 有助于以最少量的工作实现所需的高可用性。
@@ -29,16 +29,14 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 * **高可用性** – 借助 Azure 可用性集的强大功能可以确保建立高可用性的基础结构。
 * **易于缩放** – 需要更高的性能？ 只需在 Azure 中按几下鼠标就能轻松迁移到更强大的计算机
 * **异地冗余** – 使用 Azure 异地冗余可以确保基础结构在全球各地均具有高可用性
-* 
-            **易于管理** – 通过 Azure 门户中高度简化的管理选项可以轻松省心地管理基础结构 
+* **易于管理** – 通过 Azure 门户中高度简化的管理选项可以轻松省心地管理基础结构 
 
 ## <a name="design-principles"></a>设计原理
 ![部署设计](./media/active-directory-aadconnect-azure-adfs/deployment.png)
 
 上图显示了用于在 Azure 中部署 AD FS 基础结构的建议基本拓扑。 下面列出了该拓扑的各个组件幕后的原理：
 
-* 
-            **DC/ADFS 服务器**：如果用户数目少于 1,000，则可以直接在域控制器上安装 AD FS 角色。 如果不希望影响域控制器的性能，或者用户数目超过 1,000，请在不同的服务器上部署 AD FS。
+* **DC/ADFS 服务器**：如果用户数目少于 1,000，则可以直接在域控制器上安装 AD FS 角色。 如果不希望影响域控制器的性能，或者用户数目超过 1,000，请在不同的服务器上部署 AD FS。
 * **WAP 服务器** ：必须部署 Web 应用程序代理服务器，以便不在公司网络中的用户可以连接到 AD FS。
 * **外围网络**：Web 应用程序代理服务器将位于外围网络，外围网络与内部子网之间只允许进行 TCP/443 访问。
 * **负载均衡器**：为了确保 AD FS 和 Web 应用程序代理伺服器具有高可用性，建议针对 AD FS 服务器使用内部负载均衡器，并针对 Web 应用程序代理服务器使用 Azure 负载均衡器。
@@ -75,7 +73,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 ![创建 NSG](./media/active-directory-aadconnect-azure-adfs/creatensg1.png)
 
-创建 NSG 后，将有 0 个入站规则和 0 个出站规则。 各个服务器上的角色安装完成并正常运行后，可以根据所需的安全级别创建入站和出站规则。
+创建 NSG 后，将有 0 个入站规则和 0 个出站规则。 相应服务器上的角色已安装并正常运行后，可以根据所需的安全级别创建入站和出站规则。
 
 ![初始化 NSG](./media/active-directory-aadconnect-azure-adfs/nsgint1.png)
 
@@ -98,7 +96,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 * 虚拟网络站点到站点
 * ExpressRoute
 
-建议使用 ExpressRoute。 借助 ExpressRoute，可在 Azure 数据中心与本地环境或并置环境中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet 。 它们能够提供可靠性、速度、延迟和安全性这几个方面均比基于 Internet 的典型连接更胜一筹的专用连接。
+建议使用 ExpressRoute。 使用 ExpressRoute，可在 Azure 数据中心与本地环境或并置环境中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet 。 它们能够提供可靠性、速度、延迟和安全性这几个方面均比基于 Internet 的典型连接更胜一筹的专用连接。
 尽管建议使用 ExpressRoute，但你也可以选择最适合组织的任何连接方法。 有关详细了解 ExpressRoute 以及如何使用 ExpressRoute 的各种连接选项，请阅读 [ExpressRoute technical overview](https://aka.ms/Azure/ExpressRoute)（ExpressRoute 技术概述）。
 
 ### <a name="2-create-storage-accounts"></a>2.创建存储帐户
@@ -151,7 +149,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 ### <a name="6-deploying-internal-load-balancer-ilb"></a>6.部署内部负载均衡器 (ILB)
 **6.1.创建 ILB**
 
-若要部署 ILB，请在 Azure 门户中选择“负载均衡器”，然后单击“添加”(+)。
+要部署 ILB，请在 Azure 门户选择“负载均衡器”，并单击“添加”(+)。
 
 > [!NOTE]
 > 如果菜单中未显示“负载均衡器”，请单击门户左下角的“浏览”并向下滚动，直到看到“负载均衡器”。  然后，单击黄色星号将它添加到菜单中。 现在，请选择新负载均衡器的图标打开面板，并开始配置负载均衡器。
@@ -212,7 +210,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 ### <a name="7-configuring-the-web-application-proxy-server"></a>7.配置 Web 应用程序代理服务器
 **7.1.配置 Web 应用程序代理服务器以访问 AD FS 服务器**
 
-为了确保 Web 应用程序代理服务器能够访问 ILB 后面的 AD FS 服务器，请在 %systemroot%\system32\drivers\etc\hosts 中为 ILB 创建一条记录。 请注意，可分辨名称 (DN) 应是联合身份验证服务的名称，例如 fs.contoso.com。 IP 条目应是 ILB 的 IP 地址条目（如示例中的 10.3.0.8）。
+为了确保 Web 应用程序代理服务器能够访问 ILB 后面的 AD FS 服务器，请在 %systemroot%\system32\drivers\etc\hosts 中为 ILB 创建一条记录。 请注意，可分辨名称 (DN) 应是联合身份验证服务的名称，例如 fs.contoso.com。IP 条目应是 ILB 的 IP 地址条目（如示例中的 10.3.0.8）。
 
 **7.2.安装 Web 应用程序代理角色**
 
@@ -240,7 +238,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 1. 单击该公共 IP 地址。 此时会打开公共 IP 及其设置的面板
 2. 单击“配置”
-3. 提供 DNS 标签。 此标签将成为可从任意位置访问的公共 DNS 标签，例如 contosofs.westus.cloudapp.azure.com。 可以在外部 DNS 中添加用于联合身份验证服务的条目（例如 fs.contoso.com），该条目将解析为外部负载均衡器的 DNS 标签 (contosofs.westus.cloudapp.azure.com)。
+3. 提供 DNS 标签。 此标签将成为可从任意位置访问的公共 DNS 标签，例如 contosofs.westus.cloudapp.azure.com。可以在外部 DNS 中添加用于联合身份验证服务的条目（例如 fs.contoso.com），该条目将解析为外部负载均衡器的 DNS 标签 (contosofs.westus.cloudapp.azure.com)。
 
 ![配置面向 Internet 的负载均衡器](./media/active-directory-aadconnect-azure-adfs/elbdeployment3.png) 
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/18/2017
 ms.author: magoedte
+ms.openlocfilehash: e3c18c7886c8338efc6168464b63a9557909a769
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 85ae54f76fff47b16d7a365ccee87866d0424f82
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 本主题介绍如何通过 Azure 门户创建自动化帐户，其前提是，需要在不包括其他管理解决方案或不与 OMS Log Analytics 集成的情况下，评估和了解 Azure 自动化，以便对 Runbook 作业进行高级监视。  可以在将来随时添加这些管理解决方案或集成 Log Analytics。  使用自动化帐户，可以对在 Azure Resource Manager 部署或 Azure 经典部署中管理资源的 Runbook 进行身份验证。
 
@@ -92,4 +90,3 @@ ms.lasthandoff: 09/13/2017
 * 若要开始使用 PowerShell Runbook，请参阅[我的第一个 PowerShell Runbook](automation-first-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)。
 * 若要开始使用 Python2 runbook，请参阅[第一个 Python2 runbook](automation-first-runbook-textual-python2.md)。
-

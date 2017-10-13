@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mimig
+ms.openlocfilehash: cf7ba26369b3978bb0c2ad5e903a7aee804017ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: cab019480a14de1a1481abee800553c6545add70
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tips-for-azure-cosmos-db"></a>Azure Cosmos DB 性能提示
 Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 使用 Cosmos DB 时，无需对体系结构进行重大更改或编写复杂的代码就能缩放数据库。 扩展和缩减操作就像执行单个 API 调用或 [SDK 方法调用](set-throughput.md#set-throughput-sdk)一样简单。 但是，由于 Cosmos DB 是通过网络调用访问的，因此可以通过客户端优化来获得最高性能。
@@ -145,14 +144,8 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     - 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位平台”来完成。
 
 ## <a name="indexing-policy"></a>索引策略
-1. **使用延迟索引加快高峰时的引入速率**
-
-    Cosmos DB 允许在集合级别指定索引策略，通过该策略可选择是否要对集合中的文档自动编制索引。  此外，还可以在同步（一致）和异步（延迟）索引更新之间进行选择。 默认情况下，每次在集合中插入、替换或删除文档时同步更新索引。 同步模式使查询可以与文档读取采用相同的[一致性级别](consistency-levels.md)，而不会因同步索引出现任何延迟。
-
-    当发生数据写入喷发，以及想要延长时间来分摊编制内容索引所需的任务时，可考虑延迟索引。 延迟索引可以有效地使用预配的吞吐量，并在高峰时以最少的延迟为写入请求提供服务。 但请务必注意，启用延迟索引功能后，无论为 Cosmos DB 帐户配置的一致性级别为何，查询结果最终仍保持一致。
-
-    因此，一致索引模式（IndexingPolicy.IndexingMode 设置为 Consistent）会在每次写入时产生最高请求单位费用，而延迟索引模式（IndexingPolicy.IndexingMode 设置为 Lazy）和无索引（IndexingPolicy.Automatic 设置为 False）在写入时的索引成本为零。
-2. **从索引中排除未使用的路径以加快写入速度**
+ 
+1. **从索引中排除未使用的路径以加快写入速度**
 
     Cosmos DB 的索引策略还允许使用索引路径（IndexingPolicy.IncludedPaths 和 IndexingPolicy.ExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示了如何使用“*”通配符 从索引中排除文档的整个部分（也称为子树）。
 
@@ -214,4 +207,3 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 有关用于评估 Cosmos DB 以使用少量客户端计算机实现高性能的示例应用程序，请参阅[执行 Cosmos DB 性能和缩放测试](performance-testing.md)。
 
 此外，若要了解如何设计应用程序以实现缩放和高性能的详细信息，请参阅 [Azure Cosmos DB 中的分区和缩放](partition-data.md)。
-

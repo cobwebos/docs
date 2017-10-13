@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
+ms.openlocfilehash: 0347e90fa97a083865e8b783c96034d30a859031
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: f610afbdfac7b5dd9a1a5eb6812c86d8ce0d63e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started"></a>在资源管理器中，透过使用 PowerShell 来创建网络面向的负载均衡器
 
 > [!div class="op_single_selector"]
@@ -319,4 +317,3 @@ Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: cynthn
 ms.openlocfilehash: 187642db18806f4034dcecf4c25b5c71028fdfe3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-images-for-linux-virtual-machines"></a>关于 Linux 虚拟机的映像
 > [!IMPORTANT]
@@ -33,4 +33,4 @@ ms.lasthandoff: 07/11/2017
 有关这些工具的示例，请参阅 [Common Azure CLI commands on Linux and Mac](../cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Linux 和 Mac 上的常用 Azure CLI 命令）。
 
 ## <a name="next-steps"></a>后续步骤
-还可以上传自己的映像。
+还可以[上传自己的映像](create-upload-vhd.md)。

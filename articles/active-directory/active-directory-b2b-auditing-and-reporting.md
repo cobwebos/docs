@@ -16,10 +16,10 @@ ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
 ms.openlocfilehash: ba782270f3280e52235bc13148d232284b55762a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>审核和报告 B2B 协作用户
 对于来宾用户，具有与成员用户类似的审核功能。 下面是受邀人 Sam Oogle 的邀请和兑换历史记录的示例：

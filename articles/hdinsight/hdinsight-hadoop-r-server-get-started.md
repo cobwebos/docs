@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 89fa80b3e3409b7cd2f600776fffdeb3a5271b5d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>开始使用 R Server on HDInsight
 
@@ -788,4 +787,3 @@ Microsoft R Server 当前未通过 Yarn 管理。 如果辅助角色节点未解
 * [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中安装）](hdinsight-hadoop-r-server-install-r-studio.md)
 * [适用于 HDInsight 上的 R Server 的计算上下文选项](hdinsight-hadoop-r-server-compute-contexts.md)
 * [适用于 R Server on HDInsight 的 Azure 存储选项](hdinsight-hadoop-r-server-storage.md)
-

@@ -1,5 +1,5 @@
 ---
-title: "从 Azure 备份服务器恢复数据 | Microsoft Docs"
+title: "从 Azure 备份服务器恢复数据 | Microsoft 文档"
 description: "将所保护的数据从任意 Azure 备份服务器恢复到恢复服务保管库，前提是服务器已注册到该保管库。"
 services: backup
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2017
 ms.author: adigan;giridham;trinadhk;markgal
 ms.openlocfilehash: 688d155b68bc2d76d53f78d251bc2f659582845f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 可使用 Azure 备份服务器恢复已备份到恢复服务保管库的数据。 用于执行此操作的过程已集成到 Azure 备份服务器管理控制台中，且与其他 Azure 备份组件的恢复工作流类似。

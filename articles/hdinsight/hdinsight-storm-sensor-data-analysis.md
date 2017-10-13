@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/09/2017
 ms.author: larryfr
+ms.openlocfilehash: 3c66f9ea025a2d245cdf907be9f3c586f1ed45ba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 0d1cc959c87bd64ed728f8b56c9b9156fa492a8b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>使用 Apache Storm、事件中心和 HDInsight 中的 HBase (Hadoop) 分析传感器数据
 
@@ -524,4 +523,3 @@ dashboard.uri: http://localhost:3000
 有关以 .NET 创建拓扑的信息，请参阅[使用 Visual Studio 为 Apache Storm on HDInsight 开发 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)。
 
 [azure-portal]: https://portal.azure.com
-

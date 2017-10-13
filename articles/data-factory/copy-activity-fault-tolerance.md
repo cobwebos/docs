@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d96c89ed3650c09ac6465e30754ef1155b06d601
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 - 通过添加容错并跳过不兼容数据行，可继续复制所有数据。 此外，还可将不兼容行记录在 Azure Blob 存储中。 然后，可以检查日志了解失败原因，修复数据源上的数据，并重试复制活动。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 数据工厂。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动容错](v1/data-factory-copy-activity-fault-tolerance.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动容错](v1/data-factory-copy-activity-fault-tolerance.md)。
 
 
  ## <a name="supported-scenarios"></a>支持的方案
@@ -101,6 +100,5 @@ data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewi
 
 - [复制活动概述](copy-activity-overview.md)
 - [复制活动性能](copy-activity-performance.md)
-
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Toolkit for 于 IntelliJ： 通过 SSH 远程调试 Spark 应用程序 |Microsoft 文档"
-description: "如何在 Azure Toolkit for 于 IntelliJ 中使用 HDInsight Tools 调试远程在 HDInsight 上的应用程序的循序渐进指南群集通过 SSH"
+title: "Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 | Microsoft Docs"
+description: "逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序"
 keywords: "远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试"
 services: hdinsight
 documentationcenter: 
@@ -18,29 +18,29 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: Jenny Jiang
 ms.openlocfilehash: 19053e31d6eb097bc91a04ef9c6af5772aaa16da
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="debug-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>调试在 Azure Toolkit 与 HDInsight 群集上为通过 SSH 于 IntelliJ 的 Spark 应用程序
+# <a name="debug-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用用于 IntelliJ 的 Azure 工具包通过 SSH 调试 HDInsight 群集上的 Spark 应用程序
 
-本文提供有关如何在 Azure Toolkit for 于 IntelliJ 中使用 HDInsight 工具调试远程在 HDInsight 群集上的应用程序的分步指南。 若要调试你的项目，你还可以查看[于 IntelliJ 应用的调试 HDInsight Spark 程序与 Azure Toolkit](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)视频。
+本文逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具远程调试 HDInsight 群集上的应用程序。 要调试项目，还可以观看 [Debug HDInsight Spark applications with Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)（使用用于 IntelliJ 的 Azure 工具包调试 HDInsight Spark 应用程序）视频。
 
 **先决条件**
 
-* **Azure Toolkit for IntelliJ 中的 HDInsight 工具**。 此工具是 Azure Toolkit for 于 IntelliJ 的一部分。 有关详细信息，请参阅[于 IntelliJ 有关安装 Azure Toolkit](https://docs.microsoft.com/en-us/azure/azure-toolkit-for-intellij-installation)。
-* **Azure Toolkit for IntelliJ**。 使用此工具包来创建 HDInsight 群集的应用程序的 Spark。 有关详细信息，请按照中的说明[使用 Azure Toolkit for 于 IntelliJ 来创建 HDInsight 群集的应用程序的 Spark](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)。
-* **HDInsight SSH 服务使用用户名和密码管理**。 有关详细信息，请参阅[连接到 hdinsight (Hadoop) 配合使用 SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和[使用 SSH 隧道访问 Ambari web UI、 JobHistory、 NameNode、 Oozie 和其他 web Ui](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel)。 
+* **Azure Toolkit for IntelliJ 中的 HDInsight 工具**。 此工具是用于 IntelliJ 的 Azure 工具包的一部分。 有关详细信息，请参阅[安装用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/en-us/azure/azure-toolkit-for-intellij-installation)。
+* **Azure Toolkit for IntelliJ**。 使用此工具包为 HDInsight 群集创建 Spark 应用程序。 有关详细信息，请遵循[使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)中的说明。
+* **可管理用户名和密码的 HDInsight SSH 服务**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) 和[使用 SSH 隧道访问 Ambari Web UI、JobHistory、NameNode、Oozie 和其他 Web UI](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel)。 
  
 
 ## <a name="create-a-spark-scala-application-and-configure-it-for-remote-debugging"></a>创建 Spark Scala 应用程序并配置它以进行远程调试
 
 1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作：
 
-   a. 选择**HDInsight**。 
+   a. 选择“HDInsight”。 
 
-   b. 选择 Java 或 Scala 模板基于您的首选项。 选择以下两个选项：
+   b. 根据偏好选择 Java 或 Scala 模板。 选择下列选项之一：
 
       - **Spark on HDInsight (Scala)**
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/29/2017
 
       - **Spark on HDInsight 群集运行示例(Scala)**
 
-      此示例使用**HDInsight 群集运行示例 (Scala) 上的 Spark**模板。
+      本示例使用“Spark on HDInsight 群集运行示例(Scala)”模板。
 
    c. 在“生成工具”列表中，根据需要选择以下选项之一：
 
@@ -60,32 +60,32 @@ ms.lasthandoff: 08/29/2017
 
    d.单击“下一步”。 选择“下一步”。     
  
-3. 在下一个**新项目**窗口中，执行以下操作：
+3. 在下一个“新建项目”窗口中执行以下操作：
 
    ![选择 Spark SDK](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-new-project.png)
 
    a. 输入项目名称和项目位置。
 
-   b. 在**项目 SDK**下拉列表中，选择**Java 1.8**为**Spark 2.x**群集或选择**Java 1.7**为**Spark 1.x**群集。
+   b. 在“项目 SDK”下拉列表中，选择适用于 Spark 2.x 群集的“Java 1.8”或选择适用于 Spark 1.x 群集的“Java 1.7”。
 
-   c. 在**Spark 版本**下拉列表中，Scala 项目创建向导 Spark SDK 和 Scala SDK 集成的正确版本。 如果 spark 群集版本早于 2.0，请选择**Spark 1.x**。 否则，请选择“Spark 2.x”。 本示例使用“Spark 2.0.2 (Scala 2.11.8)”。
+   c. 在“Spark 版本”下拉列表中，Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的正确版本。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”。 否则，请选择“Spark 2.x”。 本示例使用“Spark 2.0.2 (Scala 2.11.8)”。
 
    d.单击“下一步”。 选择“完成”。
 
-4. 选择“src” > “main” > “scala”，在项目中打开代码。 此示例使用**SparkCore_wasbloTest**脚本。
+4. 选择“src” > “main” > “scala”，在项目中打开代码。 本示例使用“SparkCore_wasbloTest”脚本。
 
-5. 访问**编辑配置**菜单上，选择右上角的图标。 在此菜单中，可以创建或编辑配置以进行远程调试。
+5. 要访问“编辑配置”菜单，请选择右上角的图标。 在此菜单中，可以创建或编辑配置以进行远程调试。
 
    ![编辑配置](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-edit-configurations.png) 
 
-6. 在**运行/调试配置**对话框框中，选择加号 (**+**)。 然后选择“提交 Spark 作业”选项。
+6. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择“提交 Spark 作业”选项。
 
-   ![添加新的配置](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-add-new-Configuration.png)
+   ![添加新配置](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-add-new-Configuration.png)
 7. 为“名称”、“Spark 群集”和“Main 类名”输入信息。 然后选择“高级配置”。 
 
    ![运行调试配置](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-run-debug-configurations.png)
 
-8. 在“Spark 提交高级配置”对话框中，选择“启用 Spark 远程调试”。 输入 SSH 用户名，然后输入密码或使用私钥文件。 若要保存配置，选择**确定**。
+8. 在“Spark 提交高级配置”对话框中，选择“启用 Spark 远程调试”。 输入 SSH 用户名，然后输入密码或使用私钥文件。 要保存配置，请选择“确定”。
 
    ![启用 Spark 远程调试](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-enable-spark-remote-debug.png)
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 08/29/2017
 ## <a name="learn-how-to-perform-remote-debugging"></a>了解如何执行远程调试
 ### <a name="scenario-1-perform-remote-run"></a>情景 1：执行远程运行
 
-在本部分中，我们向你演示如何调试驱动程序和执行器。
+本部分演示如何调试驱动程序和执行程序。
 
     import org.apache.spark.{SparkConf, SparkContext}
 
@@ -154,16 +154,16 @@ ms.lasthandoff: 08/29/2017
     }
 
 
-1. 安装了换行点，然后选择**调试**图标。
+1. 设置断点，然后选择“调试”图标。
 
-   ![选择调试图标](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debug-icon.png)
+   ![选择“调试”图标](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debug-icon.png)
 
-2. 当程序执行过程抵达换行点时，你会看到**驱动程序**选项卡和第二个**执行程序**中使用 tab 键**调试器**窗格。 选择**恢复程序**图标以继续运行代码，这会到达下一个断点，然后侧重于相应**执行程序**选项卡。你可以查看到相应的执行日志**控制台**选项卡。
+2. 程序执行到达断点时，会在“调试程序”窗格中显示一个“驱动程序”选项卡和两个“执行程序”选项卡。 选择“恢复程序”图标继续运行代码，这会到达下一个断点，并且焦点位于相应“执行程序”选项卡上。可以在相应的“控制台”选项卡上查看执行日志。
 
    ![“调试”选项卡](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debugger-tab.png)
 
-### <a name="scenario-2-perform-remote-debugging-and-bug-fixing"></a>方案 2： 执行远程调试和 bug 修复
-本部分演示如何使用 IntelliJ 调试功能动态更新变量值，以进行简单修复。 在下面的代码示例中，将引发异常，因为目标文件已存在。
+### <a name="scenario-2-perform-remote-debugging-and-bug-fixing"></a>情景 2：执行远程调试和 bug 修复
+本部分演示如何使用 IntelliJ 调试功能动态更新变量值，以进行简单修复。 在下面的代码示例中，由于已存在目标文件而引发异常。
   
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
@@ -190,25 +190,25 @@ ms.lasthandoff: 08/29/2017
 
 
 #### <a name="to-perform-remote-debugging-and-bug-fixing"></a>执行远程调试和 bug 修复
-1. 设置两个断点，然后选择**调试**图标以启动远程调试过程。
+1. 设置两个断点，然后选择“调试”图标启动远程调试过程。
 
-2. 在代码停止的首个重大，和中所示的参数和变量信息**变量**窗格。 
+2. 代码在第一个断点处停止，“变量”窗格中显示参数和变量信息。 
 
-3. 选择**恢复程序**图标以继续。 代码在第二个断点处停止。 按预期方式捕获该异常。
+3. 选择“恢复程序”图标继续运行。 代码在第二个断点处停止。 按预期方式捕获异常。
 
   ![引发错误](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-throw-error.png) 
 
-4. 选择**恢复程序**试图标。 **HDInsight Spark 提交**窗口将显示"作业运行失败"错误。
+4. 再次选择“恢复程序”图标。 “HDInsight Spark 提交”窗口随即显示“作业运行失败”错误。
 
   ![错误提交](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-error-submission.png) 
 
-5. 若要使用调试功能，于 IntelliJ 动态更新变量的值，选择**调试**试。 **变量**窗格中会再次出现。 
+5. 要使用 IntelliJ 调试功能动态更新变量值，请再次选择“调试”。 “变量”窗格会再次出现。 
 
-6. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，为变量输入一个新值。 然后选择 **Enter** 保存该值。 
+6. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。 
 
   ![设置值](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-set-value.png) 
 
-7. 选择**恢复程序**图标以继续运行程序。 这一次，不是捕获到异常。 可以看到项目成功运行，无任何异常。
+7. 选择“恢复程序”图标继续运行程序。 这一次不会捕获到异常。 可以看到项目成功运行，无任何异常。
 
   ![调试后无异常](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debug-without-exception.png)
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="demo"></a>演示
 * 创建 Scala 项目（视频）：[Create Spark Scala Applications](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)（创建 Spark Scala 应用程序）
-* 远程调试 （视频）：[使用 Azure Toolkit for 于 IntelliJ 调试远程在 HDInsight 群集上的 Spark 应用程序](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* 远程调试（视频）：[Use Azure Toolkit for IntelliJ to debug Spark applications remotely on an HDInsight cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)（使用用于 IntelliJ 的 Azure 工具包远程调试 HDInsight 群集上的 Spark 应用程序）
 
 ### <a name="scenarios"></a>方案
 * [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](hdinsight-apache-spark-use-bi-tools.md)
@@ -231,12 +231,12 @@ ms.lasthandoff: 08/29/2017
 * [使用 Livy 在 Spark 群集中远程运行作业](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和扩展
-* [使用 Azure Toolkit for 于 IntelliJ 创建 HDInsight 群集的应用程序的 Spark](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
-* [内核可用于 HDInsight 的 Spark 群集中的 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [可用于 HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 

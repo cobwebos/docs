@@ -15,10 +15,10 @@ ms.date: 08/17/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.openlocfilehash: 51962c14a3c32bbfa9a613fa203cc48cfea50c0b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
 ms.openlocfilehash: 502e2536fb0fd2e9dfc4c7b85a6fb4e18202f38f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 

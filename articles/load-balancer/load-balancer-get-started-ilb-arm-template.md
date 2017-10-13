@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5559f610a2556aaecff61eabd19759250904c379
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: f3f89bd85e6e91e84b603abc9824a51b54ccee47
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用模板创建内部负载均衡器
 
 > [!div class="op_single_selector"]
@@ -41,13 +39,13 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>通过单击部署方式部署模板
 
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 若要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”，如有必要，请替换默认参数值，然后按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署模板
 
 若要使用 PowerShell 部署下载的模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择订阅。
 2. 将参数文件下载到本地磁盘。
 3. 编辑该文件并将其保存。
 4. 运行 **New-AzureRmResourceGroupDeployment** cmdlet 以使用模板创建资源组。
@@ -62,8 +60,8 @@ ms.lasthandoff: 04/27/2017
 
 若要使用 Azure CLI 部署模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
-2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+2. 运行 **azure config mode** 命令以切换到 Resource Manager 模式，如下所示。
 
     ```azurecli
     azure config mode arm
@@ -85,5 +83,4 @@ ms.lasthandoff: 04/27/2017
 [使用源 IP 关联配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
 

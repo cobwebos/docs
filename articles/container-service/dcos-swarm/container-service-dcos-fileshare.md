@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
+ms.openlocfilehash: a5905cac12f52f94a5722cc01495d5c1168634f8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: a44f8ab0c3e96a5b96156a7a4326fe337ca2eaa5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>创建文件共享并将其装载到 DC/OS 群集
 本教程详细介绍了如何在 Azure 中创建文件共享并将其装载到 DC/OS 群集的每个代理和主节点上。 设置文件共享可以更轻松地跨群集共享文件（如配置、访问权限和日志等）。 本教程中将完成以下任务：
@@ -70,20 +69,20 @@ az storage share create -n $DCOS_PERS_SHARE_NAME
 存储帐户名称：
 
 ```azurecli-interactive
-STORAGE_ACCT=$(az storage account list --resource-group myResourceGroup --query "[?contains(name,'mystorageaccount')].[name]" -o tsv)
+STORAGE_ACCT=$(az storage account list --resource-group $DCOS_PERS_RESOURCE_GROUP --query "[?contains(name, '$DCOS_PERS_STORAGE_ACCOUNT_NAME')].[name]" -o tsv)
 echo $STORAGE_ACCT
 ```
 
 存储帐户访问密钥：
 
 ```azurecli-interactive
-az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCT --query "[0].value" -o tsv
+az storage account keys list --resource-group $DCOS_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCT --query "[0].value" -o tsv
 ```
 
 接下来，获取 DC/OS 主节点的 FQDN，并将其存储在变量中。
 
 ```azurecli-interactive
-FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
+FQDN=$(az acs list --resource-group $DCOS_PERS_RESOURCE_GROUP --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
 将私钥复制到主节点。 需要使用此密钥与群集中的所有节点建立 ssh 连接。 如果创建群集时使用了非默认值，请更新用户名。 
@@ -106,6 +105,7 @@ ssh azureuser@$FQDN
 #!/bin/bash
 
 # Azure storage account name and access key
+SHARE_NAME=dcosshare
 STORAGE_ACCT_NAME=mystorageaccount
 ACCESS_KEY=mystorageaccountKey
 
@@ -113,10 +113,10 @@ ACCESS_KEY=mystorageaccountKey
 sudo apt-get update && sudo apt-get -y install cifs-utils
 
 # Create the local folder that will contain our share
-if [ ! -d "/mnt/share/dcosshare" ]; then sudo mkdir -p "/mnt/share/dcosshare" ; fi
+if [ ! -d "/mnt/share/$SHARE_NAME" ]; then sudo mkdir -p "/mnt/share/$SHARE_NAME" ; fi
 
 # Mount the share under the previous local folder created
-sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/dcosshare /mnt/share/dcosshare -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/$SHARE_NAME /mnt/share/$SHARE_NAME -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
 ```
 创建第二个文件，命名为 getNodesRunScript.sh，并将以下内容复制到该文件中。 
 

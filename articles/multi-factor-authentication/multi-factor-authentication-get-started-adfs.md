@@ -14,26 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/25/2017
 ms.author: kgremban
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 564e98a4b6b9bd8bf9b58f06cee0027bfdf84458
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure Multi-Factor Authentication 服务器和 Active Directory 联合身份验证服务入门
+# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure 多重身份验证服务器和 Active Directory 联合身份验证服务入门
 <center>![云](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
-如果组织已使用 AD FS 将本地 Active Directory 与 Azure Active Directory 联合，则使用 Azure Multi-Factor Authentication 有两个选项。
+如果组织已使用 AD FS 将本地 Active Directory 与 Azure Active Directory 联合，则使用 Azure 多重身份验证有两个选项。
 
-* 使用 Azure Multi-Factor Authentication 或 Active Directory 联合身份验证服务保护 Azure Active Directory 资源
-* 使用 Azure Multi-Factor Authentication 服务器保护云和本地资源
+* 使用 Azure 多重身份验证或 Active Directory 联合身份验证服务保护云资源
+* 使用 Azure 多重身份验证服务器保护云和本地资源
 
-下表总结了使用 Azure Multi-Factor Authentication 和 AD FS 保护资源的验证体验
+下表总结了使用 Azure 多重身份验证和 AD FS 保护资源的验证体验
 
 | 验证体验 - 基于浏览器的应用 | 验证体验 - 非基于浏览器的应用 |
 |:--- |:--- |:--- |
-| 使用 Azure Multi-Factor Authentication 保护 Azure AD 资源 |<li>使用 AD FS 在本地执行第一个验证步骤。</li> <li>第二步是使用云身份验证实施基于手机的验证方法。</li> |
+| 使用 Azure 多重身份验证保护 Azure AD 资源 |<li>使用 AD FS 在本地执行第一个验证步骤。</li> <li>第二步是使用云身份验证实施基于手机的验证方法。</li> |
 | 使用 Active Directory 联合身份验证服务保护 Azure AD 资源 |<li>使用 AD FS 在本地执行第一个验证步骤。</li><li>遵循声明在本地执行第二步。</li> |
 
 有关联合用户的应用密码注意事项：
@@ -45,7 +44,6 @@ ms.lasthandoff: 09/20/2017
 
 有关设置 Azure 多重身份验证或具有 AD FS 的 Azure 多重身份验证服务器的信息，请参阅以下文章：
 
-* [使用 Azure Multi-Factor Authentication 和 Azure AD 保护云资源](multi-factor-authentication-get-started-adfs-cloud.md)
-* [将 Azure Multi-Factor Authentication 服务器与 Windows Server 2012 R2 AD FS 配合使用来保护云和本地资源](multi-factor-authentication-get-started-adfs-w2k12.md)
-* [将 Azure Multi-Factor Authentication 服务器与 AD FS 2.0 配合使用来保护云和本地资源](multi-factor-authentication-get-started-adfs-adfs2.md)
-
+* [使用 Azure 多重身份验证和 AD FS 保护云资源](multi-factor-authentication-get-started-adfs-cloud.md)
+* [将 Azure 多重身份验证服务器与 Windows Server 2012 R2 AD FS 配合使用来保护云和本地资源](multi-factor-authentication-get-started-adfs-w2k12.md)
+* [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云和本地资源](multi-factor-authentication-get-started-adfs-adfs2.md)

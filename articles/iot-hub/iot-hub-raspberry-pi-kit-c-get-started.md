@@ -17,16 +17,16 @@ ms.date: 7/12/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b8fda17a8d1d1796d5299e3aba4b0fd5e719a4c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后学习如何使用 [Azure IoT 中心](iot-hub-what-is-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](http://www.windowsondevices.com/)。
+在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](iot-hub-what-is-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](http://www.windowsondevices.com/)。
 
 还没有工具包？ 请尝试 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://azure.microsoft.com/develop/iot/starter-kits)购买新工具包。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 08/03/2017
    1. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 1. 将 Raspbian 安装到 microSD 卡。
    1. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
-   1. 运行 Etcher 并选择已在步骤 1 中解压缩的 Raspbian 映像。
+   1. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
    1. 选择 microSD 卡驱动器。 注意，Etcher 可能已选择了正确的驱动器。
    1. 单击“刷机”，将 Raspbian 安装到 microSD 卡。
    1. 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接移除 microSD 卡，因为在完成时 Etcher 会自动弹出或卸载 microSD 卡。
@@ -92,12 +92,12 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="enable-ssh-and-spi"></a>启用 SSH 和 SPI
 
-1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
+1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
 1. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
    ![Raspbian 首选项菜单](media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
 
-1. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，然后单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
+1. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
    ![在 Raspberry Pi 上启用 SPI 和 SSH](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 

@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 79b3183171e3c28276c8e4e6d4fe3998e0109643
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 Eclipse 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 08/30/2017
         }
 5. 在 HDInsight Spark 群集中运行该应用程序：
    
-   a. 在“包资源管理器”中，右键单击项目名称，然后选择“将 Spark 应用程序提交到 HDInsight”。        
+   a. 在“包资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。        
    b. 在“Spark 提交”对话框中提供以下值，然后选择“提交”：
       
       * 对于“群集名称”，选择要在其上运行应用程序的 HDInsight Spark 群集。
@@ -247,5 +246,4 @@ ms.lasthandoff: 08/30/2017
 ### <a name="managing-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](hdinsight-apache-spark-job-debugging.md)
-
 

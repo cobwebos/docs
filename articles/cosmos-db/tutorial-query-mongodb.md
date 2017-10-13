@@ -16,10 +16,10 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB：如何使用 MongoDB API 进行查询？
 
@@ -299,7 +299,7 @@ Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 支持 [MongoDB shell 查
 
 **结果**
 
-不返回任何结果，因为子女数不超过 2。 仅当参数为 2 时此查询才能成功，并返回完整的文档。
+将不返回任何结果，因为子女数不超过 2。 仅当参数为 2 时此查询才能成功，并返回完整的文档。
 
 ## <a name="next-steps"></a>后续步骤
 

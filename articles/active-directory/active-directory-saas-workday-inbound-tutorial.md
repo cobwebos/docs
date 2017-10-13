@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: asmalser
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 86f5591cd2d67d7f734b7148b79c8ee388336283
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>教程：使用本地 Active Directory 和 Azure Active Directory 为 Workday 配置自动用户预配
 本教程旨在说明需要执行哪些步骤才能将用户从 Workday 导入 Active Directory 和 Azure Active Directory，并有选择性地将某些属性写回到 Workday。 
@@ -652,4 +651,3 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解如何查看日志并获取有关预配活动的报告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
-

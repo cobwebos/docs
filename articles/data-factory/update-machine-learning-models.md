@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 062d82d1bb2126a5b135796a2b5fa00ccf02511d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是 Azure 数据工厂和 Azure 机器学习集成主要文章[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
@@ -61,9 +60,9 @@ ms.lasthandoff: 09/25/2017
 
 
 
-| 属性                      | 说明                              | 必需 |
+| 属性                      | 说明                              | 必选 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | 管道中活动的名称     | 是      |
+| 名称                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |
 | type                          | 对于 Azure 机器学习“更新资源”活动，活动类型为 **AzureMLUpdateResource**。 | 是      |
 | linkedServiceName             | 包含 updateResourceEndpoint 属性的 Azure 机器学习链接服务。 | 是      |
@@ -311,4 +310,3 @@ Azure 存储保留以下数据：
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)
-

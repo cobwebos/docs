@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: d803e814828132aa5c8355de6192e45cd9e902b0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-ad-access-reviews-preview"></a>Azure AD 访问评审（预览）
 
 访问评审可以使组织有效地管理组成员身份和对企业应用程序的访问权限。 
@@ -38,7 +36,6 @@ ms.lasthandoff: 09/27/2017
 
 - [使用 Azure AD 访问评审管理用户访问权限](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 - [使用 Azure AD 访问评审管理来宾访问权限](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-- [管理 Azure AD 访问评审的程序和控件](active-directory-azure-ad-controls-manage-programs-controls.md)
+- [管理 Azure AD 访问评审的计划和控制措施](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [创建对组成员的访问评审或对应用程序的访问](active-directory-azure-ad-controls-create-access-review.md)
-- [创建对 Azure AD 管理角色中的用户的访问评审](active-directory-privileged-identity-management-how-to-start-security-review.md)
-
+- [针对充当 Azure AD 管理角色的用户创建访问评审](active-directory-privileged-identity-management-how-to-start-security-review.md)

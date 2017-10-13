@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.openlocfilehash: 8e7e7bc7633370057f8dc596ad04a3f1d796a7d2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Azure AD B2C：身份验证协议
 通过支持两种行业标准协议（OpenID Connect 和 OAuth 2.0），Azure Active Directory B2C (Azure AD B2C) 为应用提供标识即服务。 这是符合标的服务，但这些协议的任意两个实现之间仍然存在微妙的差异。 
@@ -49,8 +49,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 * **资源所有者**通常是最终用户。 它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
 
-* 
-            **OAuth 客户端**是应用。 它由其应用程序 ID 标识。 通常作为最终用户与之交互的一方。 还会从授权服务器请求令牌。 资源所有者必须授予客户端授权才能访问资源。
+* **OAuth 客户端**是应用。 它由其应用程序 ID 标识。 通常作为最终用户与之交互的一方。 还会从授权服务器请求令牌。 资源所有者必须授予客户端授权才能访问资源。
 
 * **资源服务器**是资源或数据所在的位置。 它信任授权服务器，以安全地对 OAuth 客户端进行验证和授权。 它还会使用持有者访问令牌，确保可以授予对资源的访问权限。
 

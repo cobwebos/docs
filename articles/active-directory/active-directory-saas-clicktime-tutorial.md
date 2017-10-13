@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
 ms.openlocfilehash: 0e0123a40d52dfd7a2e29c29cb2239e979089ca9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 的集成
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/18/2017
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 ClickTime 的集成，需要具有以下项：
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 08/18/2017
     | `https://app.clicktime.com/Login/` |
     | `https://app.clicktime.com/App/Login/Consume.aspx` |
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_certificate.png) 
 

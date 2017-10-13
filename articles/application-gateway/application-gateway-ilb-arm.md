@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: davidmu
+ms.openlocfilehash: 8d96af009055a5c0349f0ac17054bebee4e54d36
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: d218eab7e9f124e4825a8a781b4eeb0dcca58b4a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 创建具有内部负载均衡器 (ILB) 的应用程序网关
 
@@ -41,14 +40,14 @@ ms.lasthandoff: 07/13/2017
 
 * **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网但位于应用程序网关的不同子网中，或者是公共 IP/VIP。
 * **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
-* **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
+* **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
-* **规则：** 规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
+* **规则：**规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
 使用 Azure 经典部署和 Azure Resource Manager 部署的差别在于创建应用程序网关的顺序和需要配置的项。
-使用 Resource Manager 时，组成应用程序网关的所有项都将单独配置，然后放在一起创建应用程序网关资源。
+使用 Resource Manager 时，组成应用程序网关的所有项都将单独配置，并放在一起创建应用程序网关资源。
 
 以下是创建应用程序网关所需执行的步骤：
 
@@ -57,9 +56,9 @@ ms.lasthandoff: 07/13/2017
 3. 创建应用程序网关配置对象
 4. 创建应用程序网关资源
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
 
-确保切换 PowerShell 模式，以便使用 Azure Resource Manager cmdlet。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
+确保切换 PowerShell 模式，以便使用 Azure 资源管理器 cmdlet。 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -75,7 +74,7 @@ Login-AzureRmAccount
 Get-AzureRmSubscription
 ```
 
-系统将提示用户使用凭据进行身份验证。
+系统会提示用户使用凭据进行身份验证。
 
 ### <a name="step-3"></a>步骤 3
 
@@ -99,7 +98,7 @@ Azure Resource Manager 要求所有资源组指定一个位置。 此位置将�
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
-以下示例演示如何使用 Resource Manager 创建虚拟网络：
+以下示例演示如何使用资源管理器创建虚拟网络：
 
 ### <a name="step-1"></a>步骤 1
 
@@ -192,7 +191,7 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 此步骤会配置应用程序网关的实例大小。
 
 > [!NOTE]
-> *InstanceCount* 的默认值为 2，最大值为 10。 *GatewaySize* 的默认值为 Medium。 你可以在 Standard_Small、Standard_Medium 和 Standard_Large 之间进行选择。
+> *InstanceCount* 的默认值为 2，最大值为 10。 *GatewaySize* 的默认值为 Medium。 可以在 Standard_Small、Standard_Medium 和 Standard_Large 之间进行选择。
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>使用 New-AzureApplicationGateway 创建应用程序网关
 
@@ -267,7 +266,7 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
+如果要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
 
 如果要将应用程序网关配置为与 ILB 配合使用，请参阅 [创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
 
@@ -275,5 +274,4 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 * [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: 07c0265490cfae733133b6e0c938f90f9b392da4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 通过 Azure API 管理选择发布和管理 API，即可充分利用了许多容错和基础结构功能，否则必须设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
@@ -116,7 +116,7 @@ namespace GetTokenResourceManagerRequests
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-## <a name="step1"> </a>备份 API 管理服务
+## <a name="step1"></a>备份 API 管理服务
 若要备份 API 管理服务问题，请发送以下 HTTP 请求：
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
@@ -152,7 +152,7 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 * 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实现定期备份，以及在对 API 管理服务进行重大更改后执行按需备份。
 * 备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所作的**更改****可能不包含在备份中，因此将丢失**。
 
-## <a name="step2"> </a>还原 API 管理服务
+## <a name="step2"></a>还原 API 管理服务
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`

@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: b8f747b15bf491b7221a71b5beaa595aa7f1b49b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="run-applications-in-kubernetes"></a>在 Kubernetes 中运行应用程序
 
 在本教程中（第 4 部分，共 7 部分），示例应用程序会部署到 Kubernetes 群集中。 已完成的步骤包括：

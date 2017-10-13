@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/19/2017
 ms.author: cabailey
 ms.openlocfilehash: 3b679a2a8ba91a8a9dec0534a3d8930fcaa7afcf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
@@ -44,7 +44,7 @@ Key Vault 简化了密钥管理过程，可让我们控制用于访问和加密�
 * 配置密钥用法（例如，签名或加密）
 * 监视密钥用法
 
-然后，此管理员会为开发人员提供可从其应用程序调用的 URI，并为其安全管理员提供密钥用法日志记录信息。 
+然后，此管理员将为开发人员提供可从其应用程序调用的 URI，并为其安全管理员提供密钥用法日志记录信息。 
 
    ![Azure 密钥保管库概述][1]
 

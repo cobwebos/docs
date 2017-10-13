@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c2c5aee3db11255be5a6fe405424c2cbb92c5b95
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>使用 Azure AD 针对组成员或应用程序访问权限创建访问评审
 
 当用户不再需要访问权限时，访问权限分配会“过时”。  为了降低与访问权限分配状态相关的风险，管理员可以通过创建访问评审，要求评审已分配到应用程序的组成员或用户。 [管理用户访问权限](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)和[管理来宾访问权限](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)指南提供了有关这些方案的详细信息。  
@@ -51,6 +49,5 @@ ms.lasthandoff: 09/20/2017
 启动访问评审后，Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到电子邮件，可以向他们发送[如何评审访问权限](active-directory-azure-ad-controls-perform-access-review.md)中的说明。  
 
 访问评审期限结束后，或者管理员停止了访问评审后，请遵循[完成访问评审](active-directory-azure-ad-controls-complete-access-review.md)中的步骤查看并应用结果。
-
 
 

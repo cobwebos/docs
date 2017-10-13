@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/13/2017
 ms.author: mimig
+ms.openlocfilehash: 0a05f4ee86d2dcca40dc0b5ec2c503ba0b8bfe8c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 63b2d20c74df4fd6173994ee1a727594ba8afba3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-documentdb-api-sql-syntax-reference"></a>Azure Cosmos DB DocumentDB API：SQL 语法引用
 
 Azure Cosmos DB DocumentDB API 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言），无需显示架构或创建辅助索引。 该主题提供 DocumentDB API SQL 查询语言的引用文档。
@@ -688,7 +686,7 @@ ORDER BY <sort_specification>
 |函数|说明|  
 |--------------|-----------------|  
 |[数学函数](#bk_mathematical_functions)|每个数学函数均执行一个计算，通常基于作为参数提供的输出值，并返回数值。|  
-|[类型检查函数](#bk_type_checking_functions)|通过类型检查函数可以检查 SQL 查询内表达式的类型。|  
+|[类型检查函数](#bk_type_checking_functions)|类型检查函数使你能够检查 SQL 查询内表达式的类型。|  
 |[字符串函数](#bk_string_functions)|该字符串函数对字符串输入值执行操作，并返回字符串、数值或布尔值。|  
 |[数组函数](#bk_array_functions)|该数组函数对数组输入值执行操作，并返回数值、布尔值或数组值。|  
 |[空间函数](#bk_spatial_functions)|该空间函数对控件对象输入值执行操作，并返回数值或布尔值。|  
@@ -2773,4 +2771,3 @@ SELECT ST_ISVALIDDETAILED({
  [Azure Cosmos DB 文档](https://docs.microsoft.com/en-us/azure/cosmos-db/)  
   
   
-

@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
 ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
@@ -66,7 +66,7 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
 | 服务器要求 | 说明|
 |---|---|
-|分析和吞吐量测量| <ul><li>操作系统：Microsoft Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置应设置为 2 或更高级别</li><li>允许 443 端口： ASR 部署计划程序使用此端口连接到 vCenter 服务器/ESXi 主机</ul></ul>|
+|分析和吞吐量测量| <ul><li>操作系统：Microsoft Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置应设置为 2 或更高级别</li><li>允许 443 端口：ASR Deployment Planner 使用此端口连接到 vCenter 服务器/ESXi 主机</ul></ul>|
 | 报告生成 | 装有 Microsoft Excel 2013 或更高版本的 Windows 电脑或 Windows Server |
 | 用户权限 | 用于在分析期间访问 VMware vCenter 服务器/VMware vSphere ESXi 主机的用户帐户的只读权限 |
 
@@ -113,11 +113,11 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
 1. 登录到在其中安装了 VMware vSphere PowerCLI 的 VM。
 2. 打开 VMware vSphere PowerCLI 控制台。
-3. 确保启用脚本的执行策略。 如果已禁用，请以管理员模式启动 VMware vSphere PowerCLI 控制台，然后运行以下命令将它启用：
+3. 确保启用脚本的执行策略。 如果已禁用，请以管理员模式启动 VMware vSphere PowerCLI 控制台，并运行以下命令将它启用：
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. 你可能 optionly 需运行以下命令，如果连接 VIServer 不被识别为 cmdlet 的名称。
+4. 如果系统不将 Connect-VIServer 视为 cmdlet 的名称，则可能需要运行以下命令。
  
             Add-PSSnapin VMware.VimAutomation.Core 
 
@@ -128,7 +128,7 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
-6. 在记事本中打开输出文件，然后将要分析的所有 VM 的名称复制到另一文件（例如 ProfileVMList.txt）中，每行一个 VM 名称。 此文件将用作命令行工具的 *-VMListFile* 参数的输入。
+6. 在记事本中打开输出文件，并将要分析的所有 VM 的名称复制到另一文件（例如 ProfileVMList.txt）中，每行一个 VM 名称。 此文件将用作命令行工具的 *-VMListFile* 参数的输入。
 
     ![Deployment Planner 中的 VM 名称列表](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
@@ -256,7 +256,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 ## <a name="growth-factor-considerations"></a>增长系数考虑因素
 **为何在对部署进行计划时应考虑增长系数？**
 
-假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
+假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护，再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
 
 例如，假设你目前的 VM 适合标准存储复制帐户。 在随后的三个月中，可能会发生多项变化：
 
@@ -294,7 +294,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的 VM 名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Environment | （可选）这是目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府版或 Azure 中国云时，请使用此参数。 |
 
-该工具创建几个 64 MB asrvhdfile <> #.vhd 文件 （其中"#"是文件数） 上指定的目录。 该工具会将这些文件上传到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储或本地服务器中删除这些文件。 需要手动删除这些文件。
+该工具将在指定的目录中创建多个 64 MB 的 asrvhdfile<#>.vhd 文件（其中“#”是文件编号）。 该工具会将这些文件上传到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储或本地服务器中删除这些文件。 需要手动删除这些文件。
 
 吞吐量是根据指定时间点测量的，也是在其他所有系数保持相同的前提下，Site Recovery 可实现的最大吞吐量。 例如，如果任何应用程序在相同的网络中开始消耗更多的带宽，则在复制期间实际吞吐量会有所变化。 如果从配置服务器运行 GetThroughput 命令，该工具无法识别任何受保护的 VM 和正在进行的复制。 如果是在受保护 VM 的数据变动量高时运行 GetThroughput 操作，则所测吞吐量的结果会有所不同。 建议在分析期间的不同时间点运行该工具，了解在不同时间能够达到的吞吐量水平。 在报告中，该工具会显示最后一个测得的吞吐量。
 

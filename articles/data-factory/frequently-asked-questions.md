@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 95b088d2fdc331dc33e973172d32892693fcb648
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 本文适用于 Azure 数据工厂服务版本 2。 它提供了常见问题 (FAQ) 及其解答的列表。  
@@ -47,7 +46,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 - 控制流：
     - 在管道中将活动按顺序链接起来
     - 在管道中对活动进行分支
-    - 参数
+    - parameters
         - 可在管道级别定义参数，并且在按需或从触发器调用管道时传递自变量
         - 活动可以使用传递给管道的参数
     - 自定义状态传递
@@ -125,7 +124,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 ### <a name="pipeline-runs"></a>管道运行
 管道运行是管道执行实例。 管道运行通常是通过将自变量传递给管道中定义的参数来实例化的。 自变量可手动传递，也可在触发器定义中传递
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 参数是只读配置的键值对。  参数是在管道中定义的，所定义的参数的自变量是在执行期间通过由触发器创建的运行上下文传递的或通过手动执行的管道传递的。 管道中的活动使用参数值。
 数据集是强类型参数和可重用/可引用的实体。 活动可以引用数据集并且可以使用数据集定义中所定义的属性
 
@@ -163,7 +162,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 对于大多数活动而言，数据集不再是必需的实体。 对于使用数据集中的架构和其他元数据信息进行转换的复制、机器学习、查找、验证和自定义活动，数据集还是必需的。 其余活动不再需要数据集。
 
 ### <a name="can-i-chain-two-activities-without-a-dataset-in-version-2"></a>在版本 2 中，在没有数据集的情况下，是否可以将两个活动链接在一起？
-可以。 在版本 2 中，不需要使用数据集便可将活动链接在一起。 可以在管道的 JSON 定义中使用 **dependsOn** 属性来链接活动。 
+是的。 在版本 2 中，不需要使用数据集便可将活动链接在一起。 可以在管道的 JSON 定义中使用 **dependsOn** 属性来链接活动。 
 
 ### <a name="are-all-the-version-1-activities-supported-in-version-2"></a>版本 2 是否支持版本 1 中的所有活动？ 
 是的，它支持版本 1 中的所有活动。
@@ -175,24 +174,23 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 可以，在版本 2 中，参数是头等的顶层概念。 可以在管道级别定义参数，并且在按需或使用触发器执行管道运行时传递自变量。  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>是否可以为管道参数定义默认值？ 
-可以。 可以为管道中的参数定义默认值。 
+是的。 可以为管道中的参数定义默认值。 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-passed-to-a-pipeline-run"></a>管道中的活动是否可以使用传递给管道运行的自变量？ 
-可以。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
+是的。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>活动输出属性是否可以在其他活动中使用？ 
-可以。 在后续活动中可以通过 @activity 构造来使用活动输出。
+是的。 在后续活动中可以通过 @activity 构造来使用活动输出。
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>如何得体地处理活动输出中的 NULL 值？ 
 可以在表达式中使用 `@coalesce` 构造来得体地处理 NULL 值。 
 
 ### <a name="can-i-use-retries-timeouts-at-the-activity-level-in-version-2"></a>在版本 2 中，是否可以在活动级别使用重试和超时？
-可以。 与在版本 1 中一样，在版本 2 中，可以在活动级别配置重试和超时来控制活动的执行。 
+是的。 与在版本 1 中一样，在版本 2 中，可以在活动级别配置重试和超时来控制活动的执行。 
 
 ## <a name="next-steps"></a>后续步骤
 有关创建版本 2 的数据工厂的分步说明，请参阅以下教程：
 
 - [快速入门：创建数据工厂](quickstart-create-data-factory-dot-net.md)
 - [教程：在云中复制数据](tutorial-copy-data-dot-net.md)
-
 

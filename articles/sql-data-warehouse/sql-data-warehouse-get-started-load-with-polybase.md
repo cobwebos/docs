@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/01/2017
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 1a26fe127448f794bbad11043aa3c8770bc2ac8c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用 PolyBase 加载数据
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-本教程说明如何使用 AzCopy 和 PolyBase 将数据载入 SQL 数据仓库。 完成后，可以了解如何：
+本教程说明如何使用 AzCopy 和 PolyBase 将数据载入 SQL 数据仓库。 完成后，将了解如何：
 
 * 使用 AzCopy 将数据复制到 Azure Blob 存储
 * 创建数据库对象以定义数据
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/29/2017
 ### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. 将示例文件复制到 Azure Blob 存储
 要将数据复制到 Azure Blob 存储，请执行以下操作：
 
-1. 打开命令提示符，并将目录更改为 AzCopy 安装目录。 此命令可你将切换到 64 位 Windows 客户端上的默认安装目录。
+1. 打开命令提示符，然后将目录切换到 AzCopy 安装目录。 此命令可你将切换到 64 位 Windows 客户端上的默认安装目录。
    
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
@@ -115,16 +115,16 @@ ms.lasthandoff: 08/29/2017
 
 1. 返回 Blob 服务边栏选项卡。
 2. 在“容器”下，双击“datacontainer”。
-3. 如果要浏览数据的路径，请单击文件夹 **datedimension**，并将看到已上传的文件 **DimDate2.txt**。
+3. 要浏览数据的路径，请单击文件夹 **datedimension**，然后将看到已上传的文件 **DimDate2.txt**。
 4. 若要查看属性，请单击“DimDate2.txt”。
 5. 请注意，在 Blob 属性边栏选项卡中，可以下载或删除该文件。
    
     ![查看 Azure 存储 Blob](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
 ## <a name="step-2-create-an-external-table-for-the-sample-data"></a>步骤 2：为示例数据创建外部表
-在本部分中，我们创建一个用于定义示例数据的外部表。
+在本部分，我们将创建一个用于定义示例数据的外部表。
 
-PolyBase 使用外部表来访问 Azure Blob 存储中的数据。 由于数据不是存储在 SQL 数据仓库中，PolyBase 使用数据库范围的凭据处理对外部数据的身份验证。
+PolyBase 使用外部表来访问 Azure Blob 存储中的数据。 由于数据不是存储在 SQL 数据仓库中，PolyBase 将使用数据库范围的凭据来处理对外部数据的身份验证。
 
 本步骤中的示例使用这些 Transact-SQL 语句来创建外部表。
 
@@ -134,7 +134,7 @@ PolyBase 使用外部表来访问 Azure Blob 存储中的数据。 由于数据�
 * [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]：指定数据的格式。
 * [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)]：指定表定义和数据的位置。
 
-请针对 SQL 数据仓库数据库运行此查询。 它会在 dbo 架构中创建指向 Azure Blob 存储中 DimDate2.txt 示例数据的外部表（名为 DimDate2External）。
+请针对 SQL 数据仓库数据库运行此查询。 它会在 dbo 架构中创建指向 Azure Blob 存储中 DimDate2.txt 示例数据的、名为 DimDate2External 的外部表。
 
 ```sql
 -- A: Create a master key.
@@ -212,7 +212,7 @@ SELECT count(*) FROM dbo.DimDate2External;
 ## <a name="step-3-load-data-into-sql-data-warehouse"></a>步骤 3：将数据载入 SQL 数据仓库
 创建外部表后，可以将数据载入新表，或将其插入到现有表。
 
-* 要将数据载入新表，请运行 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 新表包含查询中指定的列。 列的数据类型将与外部表定义中的数据类型匹配。
+* 要将数据载入新表，请运行 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 新表将包含查询中指定的列。 列的数据类型将与外部表定义中的数据类型匹配。
 * 要将数据载入现有表，请使用 [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] 语句。
 
 ```sql
@@ -231,7 +231,7 @@ SELECT * FROM [dbo].[DimDate2External];
 ## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>步骤 4：基于新加载的数据创建统计信息
 SQL 数据仓库不会自动创建或自动更新统计信息。 因此，若要实现较高的查询性能，必须在首次加载后基于每个表的每个列创建统计信息。 此外，在对数据做出重大更改后，必须更新统计信息。
 
-本示例基于新的 DimDate2 表创建单列统计信息。
+本示例将基于新的 DimDate2 表创建单列统计信息。
 
 ```sql
 CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);

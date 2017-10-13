@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>在 Azure AD 中设置 Cloud App Discovery
 
 在 Azure AD 中，新的 Cloud App Discovery 增强功能现已随 Azure Active Directory Premium P1 许可证一同提供。 这些增强功能基于与 Microsoft Cloud App Security 的集成。 Cloud App Discovery 会比较超过 15,000 种云应用的 Cloud App Security 目录的流量日志，以便提供关于云使用和影子 IT 的实时信息。 

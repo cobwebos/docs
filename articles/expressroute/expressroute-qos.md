@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: cherylmc
 ms.openlocfilehash: c097a9ccba91f59b323215d42d37e6d85e0981ce
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 要求
 Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式各有差异。 如果打算通过 ExpressRoute 使用语音服务，应遵守以下所述要求。
@@ -42,7 +42,7 @@ Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式�
 
 * 应该将工作负荷分类，并标记正确的 DSCP 值。 遵循 [此处](https://technet.microsoft.com/library/gg405409.aspx) 提供的指导，了解如何在网络中设置 DSCP 标记。
 * 应在网络中配置并支持多个 QoS 队列。 语音必须是独立的类，并可接收 RFC 3246 中指定的 EF 处理方式。 
-* 可以确定每个流量类的队列机制、阻塞检测策略和带宽分配。 但是，必须预留 Skype for Business 工作负荷的 DSCP 标记。 如果使用上面未列出的 DSCP 标记（例如 AF31 (26)），则必须先将此 DSCP 值重写为 0，再将数据包发送到 Microsoft。 Microsoft 只发送使用上表所示 DSCP 值标记的数据包。 
+* 可以确定每个流量类的队列机制、阻塞检测策略和带宽分配。 但是，必须预留 Skype for Business 工作负荷的 DSCP 标记。 如果使用上面未列出的 DSCP 标记（例如 AF31 (26)），则必须先将此 DSCP 值重写为 0，然后再将数据包发送到 Microsoft。 Microsoft 只发送使用上表所示 DSCP 值标记的数据包。 
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[路由](expressroute-routing.md)和 [NAT](expressroute-nat.md) 的要求。

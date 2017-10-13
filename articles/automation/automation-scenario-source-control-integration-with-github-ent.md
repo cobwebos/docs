@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: magoedte
+ms.openlocfilehash: 2b3ca90382a1c4fb6446799ad539ab8ee603aefc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 62793dcdbbf4c83161e95d1c165d5c231245f7c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure 自动化方案 - 与 GitHub Enterprise 集成的自动化源代码管理
 
 自动化目前支持源代码管理集成，用于会自动化帐户中的 Runbook 关联到 GitHub 源代码管理存储库。  但是，那些已部署 [GitHub Enterprise](https://enterprise.github.com/home) 来支持其 DevOps 实践的客户也需要使用它管理 Runbook 的生命周期，开发这些 Runbook 的目的是实现业务流程和服务管理操作的自动化。  
@@ -92,4 +90,3 @@ GitHRWCredential | 创建的凭据资产，其中包含具有混合辅助角色�
 
 -  若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)
 -  有关 PowerShell 脚本支持功能的详细信息，请参阅 [Azure 自动化中的本机 PowerShell 脚本支持](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-

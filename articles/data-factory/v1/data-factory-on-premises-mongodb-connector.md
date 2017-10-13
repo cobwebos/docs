@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d8d45bad6205f0dbc449c86c453c9efc1bbb3da4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -372,4 +371,3 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 
 ## <a name="next-steps"></a>后续步骤
 有关创建数据管道以将数据从本地数据存储移动到 Azure 数据存储的分布说明，请参阅[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
-

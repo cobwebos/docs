@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/21/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
+ms.openlocfilehash: 3be46c8c02ad136edb1936fbb39560d479b27277
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: c303235ead2af7cfaa368a5b5f00567ae44cfb86
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-new-azvm-preview-in-cloud-shell"></a>在 Azure Cloud Shell 中使用 New-AzVM（预览版）创建 Windows 虚拟机 
 
 New-AzVM（预览版）cmdlet 是使用 PowerShell 创建新 VM的简化方法。 本指南详细介绍如何在预装了 New-AzVM cmdlet 的 Azure Cloud Shell 中，使用 PowerShell 创建运行 Windows Server 2016 的新 Azure 虚拟机。 部署完成后，我们使用 RDP 连接到服务器。  
@@ -83,4 +81,3 @@ Remove-AzureRmResourceGroup -Name myVMResourceGroup
 
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)
-

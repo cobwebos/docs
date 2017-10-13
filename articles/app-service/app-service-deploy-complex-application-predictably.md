@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
+ms.openlocfilehash: 3719e037f1564411a8f94d1ca962ba1ef6b5d435
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 87592410e6471219d3262cdcc7b47ee1b0686961
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](/services/app-service/)中由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
@@ -89,7 +88,7 @@ ms.lasthandoff: 09/20/2017
 可数十、数百或数千次地部署此同一的应用程序，并且每次都具有完全相同的配置。 这种方法的可重复性和可预见性使你能够轻松、自信地部署高扩展性应用程序。
 
 ## <a name="examine-or-edit-azuredeployjson"></a>检查（或编辑）AZUREDEPLOY.JSON
-现在让我们看看如何设置 GitHub 存储库。 将使用 Azure.NET SDK 中的 JSON 编辑器，所以如果尚未安装 [Azure .NET SDK 2.6](/downloads/)，请立刻安装。
+现在让我们看看如何设置 GitHub 存储库。 将使用 Azure.NET SDK 中的 JSON 编辑器，所以如果尚未安装 [Azure .NET SDK 2.6](https://azure.microsoft.com/downloads/)，请立刻安装。
 
 1. 使用最喜欢的 git 工具克隆 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 存储库。 在下面的屏幕快照中，我会在 Visual Studio 2013 的团队资源管理器中执行此操作。
    
@@ -269,5 +268,4 @@ Web 应用取决于两个不同的资源。 这意味着只有在创建应用服
 * [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
 * [将 Azure PowerShell 与 Azure Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 * [Azure 中的资源组部署故障排除](../azure-resource-manager/resource-manager-common-deployment-errors.md)
-
 

@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: asteen
+ms.openlocfilehash: 4302436244de95d865ba5f68ae5d3116dcc93524
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: deec642a240cb6f088210748b0ef3a3636a88405
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reset-a-password-for-a-user-in-the-azure-classic-portal"></a>在 Azure 经典门户中重置用户的密码
 > [!div class="op_single_selector"]
@@ -46,4 +45,3 @@ Azure Active Directory (Azure AD) 针对以下情况简化了重置用户密码�
 * [管理 Azure AD](active-directory-administer.md)
 * [在 Azure AD 中管理密码](active-directory-manage-passwords.md)
 * [在 Azure AD 中管理组](active-directory-manage-groups.md)
-

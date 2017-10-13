@@ -1,6 +1,6 @@
 ---
 title: "将 Apache Kafka 与 Storm on HDInsight 配合使用 - Azure | Microsoft Docs"
-description: "同时安装 Apache Kafka 和 Apache Storm on HDInsight。 了解如何使用 Storm 随附的 KafkaBolt 和 KafkaSpout 组件向 Kafka 写入数据，并从中读取数据。 此外，还了解如何使用 Flux 框架来定义和提交 Storm 拓扑。"
+description: "同时安装 Apache Kafka 和 Apache Storm on HDInsight。 了解如何使用 Storm 附带的 KafkaBolt 和 KafkaSpout 组件写入到 Kafka，并从中进行读取。 此外，还了解如何使用 Flux 框架来定义和提交 Storm 拓扑。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 07/21/2017
 ms.author: larryfr
 ms.openlocfilehash: e8895ef3c11aea48513e4060a20f5f49b11fc961
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>将 Apache Kafka（预览版）与 Storm on HDInsight 配合使用
 

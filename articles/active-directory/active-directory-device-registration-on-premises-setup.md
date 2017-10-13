@@ -16,10 +16,10 @@ ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.openlocfilehash: 1a6f1c6566468188daa71939db8345280b7a529f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 当你要求用户在工作区将其个人设备加入到 Azure Active Directory (Azure AD) 设备注册服务时，他们的设备会被标记为组织已知的设备。 以下是在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
@@ -111,7 +111,7 @@ ms.lasthandoff: 08/03/2017
    
    1. 添加域。
    2. 使用 [Azure AD Connect 的自定义安装](connect/active-directory-aadconnect-get-started-custom.md)中的说明安装并运行 Azure AD Connect。
-   3. 验证和管理目录同步 此步骤提供了有关单一登录的说明。
+   3. 验证和管理目录同步此步骤提供了有关单一登录的说明。
    
    另外，使用 AD FS 配置联合身份验证，如 [Azure AD Connect 的自定义安装](connect/active-directory-aadconnect-get-started-custom.md)中所述。
 
@@ -208,8 +208,7 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
     Set-AdfsRelyingPartyWebContent -Name "relying party trust name" -ErrorPageAuthorizationErrorMessage
 在访问此应用程序之前，必须先注册设备。
 
-
-            **如果使用 iOS 设备，请选择此链接加入设备**：
+**如果使用 iOS 设备，请选择此链接加入设备**：
 
     a href='https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/yourdomain.com
 

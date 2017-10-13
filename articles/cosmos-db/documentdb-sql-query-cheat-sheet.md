@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
 ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB：DocumentDB API SQL 查询备忘单 PDF
 Azure Cosmos DB：DocumentDB API SQL 查询备忘单通过在易于打印的 PDF 参考表中显示常见的数据库查询、关键字、内置函数和运算符，帮助快速编写用于 DocumentDB API 数据的查询。 

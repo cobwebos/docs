@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: bb3ac21d2e8b8efd7b4f6943fcc3256f18cbdd68
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>创建 Azure 机器学习预览帐户并安装 Azure Machine Learning Workbench
 Azure 机器学习是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
@@ -190,4 +188,3 @@ Azure 机器学习是一个集成式的端到端数据科学和高级分析解�
 
 > [!div class="nextstepaction"]
 > [鸢尾花分类教程](tutorial-classifying-iris-part-1.md)
-

@@ -16,10 +16,10 @@ ms.date: 08/22/2017
 ms.author: jeffgilb
 custom: it-pro
 ms.openlocfilehash: c4509cdb003687083d0456c1957b19cf35ee056a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中向用户发放许可
 基于许可证的 Azure AD 服务的工作原理是在 Azure AD 租户中激活 Azure Active Directory (Azure AD) 订阅。 激活订阅之后，服务功能由 Azure AD 管理员管理，并由获得许可的用户使用。 当购买企业移动性 + 安全性、Azure AD Premium 或 Azure AD Basic 时，租户会随着订阅更新，包括其有效期和预付许可证。 可以在 Azure 门户中的 Azure Active Directory 下打开“许可证”磁贴查看订阅信息，包括已分配或可用的许可证数目。 “许可证”边栏选项卡也是管理许可证分配的最佳场所。

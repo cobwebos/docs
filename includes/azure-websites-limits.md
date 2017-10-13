@@ -28,8 +28,7 @@
 | SLA | |<p> |99.9% |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
 
 <sup>1</sup>除非特别说明，否则应用和存储配额依每个应用服务计划为准。  
-
-            <sup>2</sup>可以在这些计算机上托管的应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
+<sup>2</sup>可以在这些计算机上托管的应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
 <sup>3</sup>专用实例可有不同的大小。 有关详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/)。  
 <sup>4</sup>高级层在使用应用服务环境时最多允许 50 个计算实例（取决于可用性）和 500 GB 的磁盘空间，否则为 20 个计算实例和 250 GB 的存储。  
 <sup>5</sup>存储限制是跨相同应用服务计划中所有应用的内容总大小。 [应用服务环境](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)中提供了更多存储选项  

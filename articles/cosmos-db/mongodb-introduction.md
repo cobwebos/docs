@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: anhoh
 ms.openlocfilehash: 4dbf91a3c1d6a287d7337647f9e059566c7ddbe5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB: API for MongoDB 简介
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 08/03/2017
 
 可弹性增减的吞吐量和存储：轻松增大或减小 MongoDB 数据库规模来满足应用程序需求。 数据存储在固态硬盘 (SSD) 上，以实现可预测的低延迟。 Cosmos DB 支持几乎可以扩展到无限存储大小和预配吞吐量的 MongoDB 集合。 随着应用程序规模的增长，可以灵活无缝地扩展 Cosmos DB 且其性能可以预测。 
 
-多区域复制：Cosmos DB 以透明方式将数据复制到与 MongoDB 帐户关联的所有区域，使你可以开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 Cosmos DB 提供具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储。 在[全局分发数据](distribute-data-globally.md)中了解详细信息。
+多区域复制：Cosmos DB 以透明方式将数据复制到与 MongoDB 帐户关联的所有区域，使用户能够开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 Cosmos DB 提供具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储。 在[全局分发数据](distribute-data-globally.md)中了解详细信息。
 
-MongoDB 兼容性：可使用现有 MongoDB 专业知识、应用程序代码和工具。 可以使用 MongoDB 来开发应用程序，并使用完全托管的全局分布式 Cosmos DB 服务将其部署到生产环境。
+MongoDB 兼容性：可使用现有 MongoDB 专业知识、应用程序代码和工具。 可使用 MongoDB 开发应用程序，并使用完全托管的全球分布式 Cosmos DB 服务将其部署到生产环境。
 
 无需管理服务器：无需管理和缩放 MongoDB 数据库。 Cosmos DB 是完全托管的服务，这意味着无需自己管理任何基础结构或虚拟机。 Cosmos DB 在 30 多个 [Azure 区域](https://azure.microsoft.com/regions/services/)中可用。
 

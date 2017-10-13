@@ -1,4 +1,3 @@
-
 ---
 title: "Azure 数据工厂 - 客户案例研究 | Microsoft Docs"
 description: "了解一些客户是怎样使用 Azure 数据工厂的。"
@@ -16,12 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1868e4b96f3d062de1efb7c56c86aae3b0de9097
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure 数据工厂 - 客户案例研究
 数据工厂是一项基于云的信息管理服务，可以自动移动和转换数据。 各个行业的用户通过数据工厂和其他 Azure 服务生成其分析管道以及解决业务问题。  直接通过客户了解其如何以及为什么使用数据工厂。
@@ -49,4 +47,3 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="microsoft-studio"></a>Microsoft Studio
 [通过每天分析数千亿个游戏事件提供史诗般的 Xbox 体验故事](https://customers.microsoft.com/en-us/story/xboxunlimited)
-

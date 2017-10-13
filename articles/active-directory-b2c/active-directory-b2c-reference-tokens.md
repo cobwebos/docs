@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: parakhj
+ms.openlocfilehash: 92087e4553580a5fe14e647d014e493bc7e47b67
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 7f98637264d1acb209d0379e4800e542fc91955b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌引用
+# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
 
 Azure Active Directory B2C (Azure AD B2C) 在处理每个[身份验证流](active-directory-b2c-apps.md)时颁发多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。
 
@@ -155,5 +154,4 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 | ID 令牌 |一小时 |ID 令牌的有效期通常为 1 小时。 Web 应用可使用此生存期维护其与用户的会话（推荐）。 也可以选择不同的会话生存期。 如果应用需要获取新的 ID 令牌，只需要对 Azure AD 发出新的登录请求即可。 如果用户与 Azure AD 具有有效的浏览器会话，则可能不会要求该用户再次输入凭据。 |
 | 刷新令牌 |最长 14 天 |单个刷新令牌的有效期最长为 14 天。 但是，刷新令牌可能随时会因为很多原因失效。 应用应继续尝试使用刷新令牌，直到该请求失败，或直到应用使用新的刷新令牌替换该刷新令牌。 如果自用户上次输入凭据已过 90 天，刷新令牌也可能失效。 |
 | 授权代码 |五分钟 |授权代码均有意设定为短期有效。 在收到授权代码时，应立即兑换访问令牌、ID 令牌或刷新令牌。 |
-
 

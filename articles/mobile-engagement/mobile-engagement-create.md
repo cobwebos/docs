@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
 ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>创建 Azure Mobile Engagement 应用
 本文介绍如何使用 **Quick Create** 方法创建新的 **Azure Mobile Engagement** 应用。 本文还介绍如何导航到 **Mobile Engagement** 门户，以便对应用开始进行监视和管理。 

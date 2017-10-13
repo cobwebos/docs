@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: df4d85d0556a62311c112f24431b54d042333c7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-an-azure-subscription-or-management-group"></a>查找 Azure 订阅或管理组
 
 如果在 Azure 中找不到某个订阅或管理组，可能是在错误的目录中进行了查找。 当一个帐户存在于多个 Azure Active Directory 时，可能发生这种情况。 每个 [Active Directory 都是独立的](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-directory-independence)，目录之间不继承访问权限。      
@@ -55,7 +53,6 @@ ms.lasthandoff: 09/25/2017
 
 
  
-
 
 
 

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
 ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob 存储：热、冷、存档（预览版）存储层
 
@@ -128,7 +128,7 @@ Blob 存储帐户公开**访问层**属性，它允许用户将存储层指定�
 ## <a name="pricing-and-billing"></a>定价和计费
 Blob 存储帐户使用的定价模型适用于基于存储层的 Blob 存储。 使用 Blob 存储帐户时，请注意以下计费方式：
 
-* **存储成本**：除了存储的数据量，存储数据的成本因存储层而异。 冷存储层每 GB 的成本比热存储层每 GB 的成本要低一些。
+* **存储成本**：除了存储的数据量，存储数据的成本将因存储层而异。 冷存储层每 GB 的成本比热存储层每 GB 的成本要低一些。
 
 * 数据访问费用：对于冷存储层中的数据，需要按 GB 支付读取和写入方面的数据访问费用。
 
@@ -178,7 +178,7 @@ Blob 存储帐户使用的定价模型适用于基于存储层的 Blob 存储。
    
     有关 Azure 存储复制选项的详细信息，请参阅 [Azure 存储复制](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-7. 根据需要选择正确的存储层：将“访问层”设置为“冷”或“热”。 默认值为“经常访问”。 
+7. 根据需要选择正确的存储层：将“访问层”设置为“冷”或“热”。 默认设置为“热”。 
 
 8. 选择想在其中创建新存储帐户的订阅。
 
@@ -277,7 +277,7 @@ Blob 存储帐户使用的定价模型适用于基于存储层的 Blob 存储。
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
 
 > [!NOTE]
-> 如需更详细的示例来了解如何计算热或冷存储层的使用费用，请参阅 *Azure Storage Pricing Page*（Azure 存储定价）页 中名为“ [什么是‘热’和‘冷’访问层以及如何确定应使用哪一个？](https://azure.microsoft.com/pricing/details/storage/)。
+> 如需更详细的示例来了解如何计算热或冷存储层的使用费用，请参阅 *Azure Storage Pricing Page*（Azure 存储定价）页 中标题为“[什么是‘热’和‘冷’访问层以及如何确定应使用哪一个？](https://azure.microsoft.com/pricing/details/storage/)”的常见问题解答。
  
 ## <a name="migrating-existing-data"></a>迁移现有数据
 
@@ -318,7 +318,7 @@ AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数�
 
 3. **是否可以将现有存储帐户转换成 Blob 存储帐户？**
    
-    不会。 Blob 存储帐户是一种不同的存储帐户，必须新建它并如上文所述迁移数据。
+    不能。 Blob 存储帐户是一种不同的存储帐户，必须新建它并如上文所述迁移数据。
 
 4. **是否可以将对象存储在同一帐户中的两个存储层中？**
    
@@ -370,5 +370,4 @@ AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数�
 
 [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-
-            [浏览和了解存储帐户](http://storageexplorer.com/)
+[浏览和了解存储帐户](http://storageexplorer.com/)

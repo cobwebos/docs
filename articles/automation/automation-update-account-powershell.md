@@ -1,6 +1,6 @@
 ---
 title: "使用 PowerShell 创建 Azure 自动化运行方式帐户 | Microsoft Docs"
-description: "本文介绍如何使用 PowerShell 通过升级自动化帐户来创建运行方式帐户（如果你尚未在初始创建过程中通过门户执行此步骤）。"
+description: "本文介绍如何使用 PowerShell 通过升级自动化帐户来创建运行方式帐户（如果尚未在初始创建过程中通过门户执行此步骤）。"
 services: automation
 documentationcenter: 
 author: eslesar
@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d34bb4a285f77f5c21a4af2d544bda3221d59e8d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: fb23b3ea41910687fd586f80e5dd327344991e0f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="update-automation-run-as-account-using-powershell"></a>使用 PowerShell 更新自动化运行方式帐户
 在以下情况下，可以使用 PowerShell 来更新现有的自动化帐户：
 
-* 你创建了自动化帐户，但不想要创建运行方式帐户。
+* 创建了自动化帐户，但不想要创建运行方式帐户。
 * 已使用一个自动化帐户来管理 Resource Manager 资源，并且想要更新该帐户，以包含可用于 Runbook 身份验证的运行方式帐户
 * 已使用一个自动化帐户来管理经典资源，并且想要对它进行更新以使用经典运行方式帐户，而不是创建新的帐户并将 Runbook 和资产迁移到该帐户。   
-* 你想要使用企业证书颁发机构 (CA) 颁发的证书创建运行方式帐户和经典运行方式帐户。
+* 想要使用企业证书颁发机构 (CA) 颁发的证书创建运行方式帐户和经典运行方式帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +35,7 @@ ms.lasthandoff: 04/27/2017
 * 在以下 PowerShell 脚本中作为 *–AutomationAccountName* 和 *-ApplicationDisplayName* 参数值引用的自动化帐户。
 
 若要获取 *SubscriptionID*、*ResourceGroup* 和 *AutomationAccountName* 的值（脚本的必需参数），请执行以下操作：
-1. 在 Azure 门户上的“自动化帐户”边栏选项卡中选择你的自动化帐户，然后选择“所有设置”。 
+1. 在 Azure 门户上的“自动化帐户”边栏选项卡中选择自动化帐户，然后选择“所有设置”。 
 2. 在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。 
 3. 请记下“属性”边栏选项卡中的值。
 
@@ -65,7 +63,7 @@ ms.lasthandoff: 04/27/2017
 * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
 
 >[!NOTE]
-> 如果选择任一选项来创建经典运行方式帐户，则在执行脚本后，请将公共证书（.cer 文件扩展名）上载到创建自动化帐户的订阅的管理存储中。
+> 如果选择任一选项来创建经典运行方式帐户，则在执行脚本后，请将公共证书（.cer 文件扩展名）上传到创建自动化帐户的订阅的管理存储中。
 > 
 
 1. 将以下脚本保存到计算机。 在本示例中，请使用文件名 *New-RunAsAccount.ps1* 保存。
@@ -260,16 +258,15 @@ ms.lasthandoff: 04/27/2017
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment`
 
     > [!NOTE]
-    > 执行脚本后，系统将提示你在 Azure 上进行身份验证。 请以订阅管理员角色成员和订阅共同管理员的帐户登录。
+    > 执行脚本后，系统会提示在 Azure 上进行身份验证。 请以订阅管理员角色成员和订阅共同管理员的帐户登录。
     >
     >
 
 成功执行脚本后，请注意以下事项：
 * 如果使用自签名公共证书（.cer 文件）创建了经典运行方式帐户，该脚本将创建该帐户，并将其保存到计算机上用于执行 PowerShell 会话的用户配置文件下方的临时文件夹（*%USERPROFILE%\AppData\Local\Temp*）。
-* 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 遵循有关[将管理 API 证书上载到 Azure 经典门户](../azure-api-management-certs.md)的说明，然后参考[用于通过 Azure 经典部署资源进行身份验证的示例代码](automation-verify-runas-authentication.md#classic-run-as-authentication)，使用经典部署资源来验证凭据配置。 
+* 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 遵循有关[将管理 API 证书上传到 Azure 经典门户](../azure-api-management-certs.md)的说明，然后参考[用于通过 Azure 经典部署资源进行身份验证的示例代码](automation-verify-runas-authentication.md#classic-run-as-authentication)，使用经典部署资源来验证凭据配置。 
 * 如果*未*创建经典运行方式帐户，请参考[用于通过服务管理资源进行身份验证的示例代码](automation-verify-runas-authentication.md#automation-run-as-authentication)，使用 Resource Manager 资源进行身份验证并验证凭据配置。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。
 * 有关证书和 Azure 服务的详细信息，请参阅 [Azure 云服务证书概述](../cloud-services/cloud-services-certs-create.md)。
-

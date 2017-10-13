@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
+ms.openlocfilehash: 21e4ae78653977efc7a47f984bc309afac870a59
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 91ffe6fa182f0d5e4294031787b853c33ea460df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>在 Application Insights 中查看日志浏览 .NET 跟踪日志
 如果针对 ASP.NET 应用程序中的诊断跟踪使用了 NLog、log4Net 或 System.Diagnostics.Trace，请将日志发送到 [Azure Application Insights][start]，然后可在其中浏览和搜索日志。 日志将与来自应用程序的其他遥测合并，以便可以标识与处理每个用户请求关联的跟踪，并将它们与其他事件和异常报告相关联。
@@ -213,4 +212,3 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 [portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-

@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 50a1cc0bf9e00cf5b866b88b3e88c62b06a2376b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 身份验证库
 [Azure Active Directory (Azure AD) v2.0 终结点](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare)支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 可以对 v2.0 终结点使用 Microsoft 和其他组织提供的各种库。
@@ -130,4 +129,3 @@ Azure AD v2.0 终结点适用于两种类型的库：
 [ServerLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
 [ServerLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad/
 [ServerLib-Node-Sample]: https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-devquickstarts-node-web/
-
