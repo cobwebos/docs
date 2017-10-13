@@ -17,16 +17,16 @@ ms.workload: big-data
 ms.date: 08/17/2017
 ms.author: jgao
 ms.openlocfilehash: da1247070ade11f78b505524f5e970e18eb16d10
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>解决 Azure HDInsight 中的 Hive 内存不足错误
 
 了解处理大型表时如何通过配置 Hive 内存设置解决 Hive 内存不足错误。
 
-## <a name="run-hive-query-against-large-tables"></a>对大型表运行 Hive 查询
+## <a name="run-hive-query-against-large-tables"></a>针对大型表运行 Hive 查询
 
 客户运行了 Hive 查询：
 

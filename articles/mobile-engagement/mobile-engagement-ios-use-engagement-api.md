@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>如何在 iOS 上使用 Engagement API
 本文档是“如何在 iOS 上集成 Engagement”文档的附加内容：它提供了有关如何使用 Engagement API 报告应用程序统计信息的全部详细信息。

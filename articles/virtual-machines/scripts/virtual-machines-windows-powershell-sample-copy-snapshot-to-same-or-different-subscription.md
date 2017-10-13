@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 064b5355da10fe683563fa078cfafc65080f7ea2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>使用 PowerShell 将托管磁盘的快照复制到同一订阅或不同订阅
 
 此脚本在同一订阅或不同订阅中创建某个快照的副本。 使用此脚本将快照移动到不同的订阅以保留数据。 将快照存储在不同的订阅中可以在你意外删除主订阅中的快照时提供保护。 

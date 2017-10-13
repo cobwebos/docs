@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: adegeo
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b99c54e85f22c5745a852e10bb66368da3b5d8f9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
 
 此脚本示例将连接到 Service Fabric 群集并列出所有预配的应用程序。
@@ -38,4 +36,3 @@ ms.lasthandoff: 09/25/2017
 有关详细信息，请参阅 [Service Fabric CLI 文档](../service-fabric-cli.md)。
 
 在 [Service Fabric CLI 示例](../samples-cli.md)中可找到 Azure Service Fabric 的其他 Service Fabric CLI 示例。
-

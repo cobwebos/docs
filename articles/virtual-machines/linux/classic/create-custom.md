@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.openlocfilehash: 8ddbacbbb70c0cf1a2537fab4d981a316610a4d7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>如何使用 Azure CLI 1.0 创建经典 Linux VM
 > [!IMPORTANT] 

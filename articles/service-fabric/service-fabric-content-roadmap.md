@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2017
 ms.author: ryanwi
+ms.openlocfilehash: 3b20583d04a820d925260b4da574a4cb304efbe2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bbad2e501acf024fb5b7f5c62ebe5fa81e19cce7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -185,7 +184,7 @@ Service Fabric 组件报告包含群集中所有实体的运行状况。 [系统
 
 Service Fabric 提供了多种方式查看在运行状况存储中聚合的[运行状况报告](service-fabric-view-entities-aggregated-health.md)：
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 或其他可视化工具。
-* 运行状况查询（通过 [PowerShell](/powershell/module/ServiceFabric/)、[C# FabricClient Api](/api/system.fabric.fabricclient.healthclient) 和 [Java FabricClient API](/java/api/system.fabric._health_client) 或 [REST API](/rest/api/servicefabric)）。
+* 运行状况查询（通过 [PowerShell](/powershell/module/ServiceFabric/)、[C# FabricClient Api](/dotnet/api/system.fabric.fabricclient.healthclient) 和 [Java FabricClient API](/java/api/system.fabric._health_client) 或 [REST API](/rest/api/servicefabric)）。
 * 常规查询，返回将运行状况作为属性之一的实体的列表（通过 PowerShell、API 或 REST）。
 
 以下 Microsoft Virtual Academy 视频介绍 Service Fabric 运行状况模型及其用法：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
@@ -206,4 +205,3 @@ Service Fabric 提供了多种方式查看在运行状况存储中聚合的[运�
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
-

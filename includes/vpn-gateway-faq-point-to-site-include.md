@@ -1,47 +1,47 @@
-### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a>使用点到站点可以使用哪些客户端操作系统？
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a>点到站点连接允许使用哪些客户端操作系统？
 
 支持以下客户端操作系统：
 
-* Windows 7 （32 位和 64 位）
-* Windows Server 2008 R2 （仅限 64 位）
-* Windows 8 （32 位和 64 位）
-* Windows 8.1 （32 位和 64 位）
-* Windows Server 2012 （仅限 64 位）
-* Windows Server 2012 R2 （仅限 64 位）
+* Windows 7（32 位和 64 位）
+* Windows Server 2008 R2（仅 64 位）
+* Windows 8（32 位和 64 位）
+* Windows 8.1（32 位和 64 位）
+* Windows Server 2012（仅 64 位）
+* Windows Server 2012 R2（仅 64 位）
 * Windows 10
 
-### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp"></a>可以为点到站点支持 SSTP 的使用任何软件 VPN 客户端？
+### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp"></a>能否使用任何支持 SSTP 的点到站点软件 VPN 客户端？
 
-否。 支持仅仅限于上面列出的 Windows 操作系统版本。
+否。 仅支持上面列出的 Windows 操作系统版本。
 
-### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中可以有多少 VPN 客户端终结点？
+### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 
-我们支持最多 128 个 VPN 客户端能够在同一时间连接到虚拟网络。
+我们最多支持 128 个 VPN 客户端可同时连接到一个虚拟网络。
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>能否使用我自己的内部 PKI 根 CA 用于点到站点连接？
+### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>能否将我自己的内部 PKI 根 CA 用于点到站点连接？
 
-是。 以前，无法使用仅自签名的根证书。 你仍可上载 20 的根证书。
+是的。 以前只可使用自签名根证书。 仍可上传 20 个根证书。
 
-### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>可以遍历代理和防火墙使用点到站点功能？
+### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>能否使用点到站点功能穿越代理和防火墙？
 
-是。 作为隧道穿越防火墙，我们使用 SSTP （安全套接字隧道协议）。 此隧道将显示为 HTTPs 连接。
+是的。 我们使用 SSTP（安全套接字隧道协议）作为隧道穿越防火墙。 此隧道会显示为 HTTPS 连接。
 
-### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>如果重新启动配置用于点到站点的客户端计算机，将自动重新连接 VPN？
+### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>如果重新启动进行过点到站点配置的客户端计算机，是否会自动重新连接 VPN？
 
-默认情况下，客户端计算机将不重新建立 VPN 连接自动。
+默认情况下，客户端计算机将不自动重新建立 VPN 连接。
 
-### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>没有点到站点支持自动重新连接和 DDNS VPN 客户端上的？
+### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>点到站点在 VPN 客户端上是否支持自动重新连接和 DDNS？
 
-自动重新连接和 DDNS 是目前不支持点到站点 Vpn。
+点到站点 VPN 中当前不支持自动重新连接和 DDNS。
 
-### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>我是否可以拥有站点到站点和点到站点配置共存为同一虚拟网络？
+### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>对于同一虚拟网络，站点到站点和点到站点配置能否共存？
 
-是。 如果你在为网关 RouteBased VPN 类型，这两种这些解决方案将起作用。 对于经典部署模型中，你需要动态网关。 我们做不支持点到站点的静态路由 VPN 网关或使用的网关`-VpnType PolicyBased`cmdlet。
+是的。 如果网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 不支持对静态路由 VPN 网关或使用 `-VpnType PolicyBased` cmdlet 的网关使用点到站点连接。
 
-### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>可以配置点到站点客户端同时连接到多个虚拟网络？
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
-是，可能。 虚拟网络不能具有重叠 IP 前缀，但在虚拟网络之间的点到站点地址空间不得重叠。
+是的，可以这样做。 但虚拟网络的 IP 前缀不得重叠，并且点到站点地址空间在虚拟网络之间不得重叠。
 
-### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>可以预计通过站点到站点或点到站点连接多少吞吐量？
+### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>预计通过站点到站点连接或点到站点连接的吞吐量有多少？
 
-很难维护 VPN 隧道的准确吞吐量。 IPsec 和 SSTP 是重重加密的 VPN 协议。 吞吐量也受限制的延迟和你的本地和 Internet 之间的带宽。
+很难维持 VPN 隧道的准确吞吐量。 IPsec 和 SSTP 是重重加密的 VPN 协议。 本地网络与 Internet 之间的延迟和带宽也限制了吞吐量。

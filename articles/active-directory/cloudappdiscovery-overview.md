@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 59af2a5de5936d15456058aaeacfc334b9b34d4c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-app-discovery-enhancements-in-azure-active-directory"></a>Azure Active Directory 中 Cloud App Discovery 的增强功能 
 超过 80% 的员工承认出于工作目的而使用未经批准的 SaaS 应用。 我们现在已将 Azure AD 中的 Cloud App Discovery 与 Microsoft Cloud App Security 数据和分析功能集成在一起，以便可以更轻松地识别更多非托管的云应用。 这一新集成需要执行与以前不同的设置步骤。

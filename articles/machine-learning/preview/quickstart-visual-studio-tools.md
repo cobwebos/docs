@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: get-started-article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 680c1afab1af31cfef51b1c82d2db49f452ba6ab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="visual-studio-code-tools-for-ai"></a>用于 AI 的 Visual Studio Code 工具
 用于 AI 的 Visual Studio Code 工具是一个开发扩展，用于生成、测试和部署深度学习 / AI 解决方案。 它具有与 Azure 机器学习的无缝集成，尤其是运行历史记录视图，其中详细列出了以前的训练和自定义指标的性能。 它还提供了一个示例资源管理器视图，允许通过 [Microsoft Cognitive Toolkit（以前称为 CNTK）](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org) 和其他深度学习框架浏览和启动新项目。 最后，它针对计算目标提供了一个资源管理器，可以使用该资源管理器提交作业以在远程环境（例如 Azure 虚拟机或具有 GPU 的 Linux 服务器）中训练模型。 
  
@@ -83,4 +81,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [如何配置 Azure 机器学习以使用 IDE](./how-to-configure-your-IDE.md)
-

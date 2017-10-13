@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 42b18eab9cb419e6ada72ba72dc8be8d7f7b2eed
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/03/2017
 现在，我们已为“HR Department”组指定一个许可证模板。 Azure AD 中已启动一个后台进程来处理该组的所有现有成员。 这项初始操作可能需要花费一段时间，具体时间取决于组的当前大小。 在下一步骤中，我们介绍如何验证该过程是否完成，并确定是否需要采取进一步的措施来解决问题。
 
 > [!NOTE]
-> 也可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。 单击边栏选项卡顶部的“分配”按钮会打开许可证分配边栏选项卡。
+> 也可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。单击边栏选项卡顶部的“分配”按钮会打开许可证分配边栏选项卡。
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>步骤 2：验证初始分配是否已完成
 

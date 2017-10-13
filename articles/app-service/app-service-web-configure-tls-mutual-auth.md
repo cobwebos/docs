@@ -15,24 +15,23 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
 ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>如何为 Web 应用配置 TLS 相互身份验证
 ## <a name="overview"></a>概述
 通过为 Azure Web 应用启用不同类型的身份验证可以限制对网站的访问。 执行此操作的方法之一是在通过 TLS/SSL 发送请求时使用客户端证书进行身份验证。 此机制称为 TLS 相互身份验证或客户端证书身份验证，本文将详细说明如何将 Web 应用设置为使用客户端证书身份验证。
 
-> 
-            **注意：** 如果你通过 HTTP 而不是 HTTPS 访问你的站点，你不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则不应允许通过 HTTP 对应用程序发出请求。
+> **注意：**如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则不应允许通过 HTTP 对应用程序发出请求。
 > 
 > 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="configure-web-app-for-client-certificate-authentication"></a>将 Web 应用配置为使用客户端证书身份验证
-要将 Web 应用设置为要求使用客户端证书，你需要为 Web 应用添加 clientCertEnabled 站点设置并将该设置指定为 true。 目前无法通过门户中的管理体验进行此设置，需要使用 REST API 来实现此目的。
+要将 Web 应用设置为要求使用客户端证书，需要为 Web 应用添加 clientCertEnabled 站点设置并将该设置指定为 true。 目前无法通过门户中的管理体验进行此设置，需要使用 REST API 来实现此目的。
 
 可以使用 [ARMClient 工具](https://github.com/projectkudu/ARMClient)轻松创建 REST API 调用。 使用该工具登录之后，需要发出以下命令：
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="accessing-the-client-certificate-from-your-web-app"></a>从 Web 应用访问客户端证书
-如果要使用 ASP.NET 并将应用配置为使用客户端证书身份验证，可通过 **HttpRequest.ClientCertificate** 属性使用证书。 对于其他应用程序堆栈，可以通过“X-ARR-ClientCert”请求标头中的 base64 编码值在应用中使用客户端证书。 应用程序可以基于此值创建证书，并将它用于应用程序中的身份验证和授权。
+如果要使用 ASP.NET 并将应用配置为使用客户端证书身份验证，可通过 **HttpRequest.ClientCertificate** 属性使用证书。 对于其他应用程序堆栈，可以通过“X-ARR-ClientCert”请求标头中的 base64 编码值在应用中使用客户端证书。 应用程序可以基于此值创建证书，然后将它用于应用程序中的身份验证和授权。
 
 ## <a name="special-considerations-for-certificate-validation"></a>有关证书验证的特殊注意事项
 Azure Web 应用平台不会针对发送到应用程序的客户端证书进行任何验证。 验证此证书是 Web 应用的责任。 下面是为了进行身份验证而验证证书属性的示例 ASP.NET 代码。

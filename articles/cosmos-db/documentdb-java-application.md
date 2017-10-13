@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 7b1053a7ec879294cb2240c9d6b4cd32f923ef9c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>使用 Azure Cosmos DB 和 DocumentDB API 构建 Java Web 应用程序
 > [!div class="op_single_selector"]
@@ -757,4 +756,3 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 22. 要将项目部署到 Azure 网站，请参阅[步骤 6. 将应用程序部署到 Azure 网站](#Deploy)。
 
 [1]: media/documentdb-java-application/keys.png
-

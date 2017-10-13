@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.openlocfilehash: 68ccc1cac22e593b099729fe68c6bee63df44d9b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics"></a>创建具有多个 NIC 的 VM（经典）
 可以在 Azure 中创建虚拟机 (VM)，然后将多个网络接口 (NIC) 附加到每个 VM。 多 NIC 是许多网络虚拟设备（例如应用程序传送和 WAN 优化解决方案）所必需的。 多 NIC 还会在 NIC 之间提供流量隔离。
@@ -48,7 +48,7 @@ ms.lasthandoff: 07/11/2017
 详细了解[网络安全组](virtual-networks-nsg.md)以及如何基于与子网、VM 和 NIC 的关联应用它们。
 
 ## <a name="how-to-configure-a-multi-nic-vm-in-a-classic-deployment"></a>如何在经典部署中配置多 NIC VM
-下面的说明指导你创建包含 3 个 NIC（1 个默认 NIC，2 个其他 NIC）的多 NIC VM。 这些配置步骤会创建一个 VM，该 VM 会根据下面的服务配置文件片段进行配置：
+下面的说明指导创建包含 3 个 NIC（1 个默认 NIC，2 个其他 NIC）的多 NIC VM。 这些配置步骤会创建一个 VM，该 VM 会根据下面的服务配置文件片段进行配置：
 
     <VirtualNetworkSite name="MultiNIC-VNet" Location="North Europe">
     <AddressSpace>
@@ -135,7 +135,7 @@ ms.lasthandoff: 07/11/2017
 * 配置后，只要不删除或重新创建，具有单个 NIC 的 VM 不能使用多个 NIC 配置（反之亦然）。
 
 ## <a name="secondary-nics-access-to-other-subnets"></a>辅助 NIC 对其他子网的访问
-默认情况下，辅助 NIC 不会配置默认网关，因为辅助 NIC 上的通信流会限制在同一子网内。 如果用户要启用辅助 NIC 以在自身的子网之外进行对话，则必须在路由表中添加一个条目来配置网关，如下所述。
+默认情况下，由于辅助 NIC 的流量流会限制在相同的子网中，辅助 NIC 将不会使用默认网关进行配置。 如果用户要启用辅助 NIC 以在自身的子网之外进行对话，则必须在路由表中添加一个条目来配置网关，如下所述。
 
 > [!NOTE]
 > 2015 年 7 月之前创建的 VM 可对所有 NIC 配置默认网关。 除非重新启动这些 VM，否则不会删除辅助 NIC 的默认网关。 在使用弱主机路由模型的操作系统（如 Linux）中，如果流入和出口流量使用不同的 NIC，Internet 连接可能会中断。
@@ -196,7 +196,7 @@ ms.lasthandoff: 07/11/2017
          20...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
         ===========================================================================
 2. 请注意，表中的第二个条目具有索引 27（在此示例中）。
-3. 在命令提示符下运行 **route add** 命令，如下所示。 在此示例中，你指定 192.168.2.1 作为辅助 NIC 的默认网关：
+3. 在命令提示符下运行 **route add** 命令，如下所示。 在此示例中，将指定 192.168.2.1 作为辅助 NIC 的默认网关：
    
         route ADD -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5000 IF 27
 4. 若要测试连接，请返回到命令提示符并尝试 ping 与辅助 NIC 不同的子网，如以下示例所示：

@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/30/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1f646016158c212747d7f9841449c348b41f9a15
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Data Lake Store 数据灾难恢复指南
 
@@ -46,5 +45,4 @@ Azure Data Lake Store 帐户中的数据可通过自动化副本，弹性应对�
 ## <a name="next-steps"></a>后续步骤
 * [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
-
 

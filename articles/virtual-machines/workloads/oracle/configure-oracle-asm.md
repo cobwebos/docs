@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
 ms.openlocfilehash: 117212a2e7e3da7c3e249798eec804a652e0ef58
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
@@ -428,7 +428,7 @@ ssh <publicIpAddress>
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。 在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
+6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
 
    ![SSH 身份验证选项屏幕截图](./media/oracle-asm/setprivatekey.png)
 

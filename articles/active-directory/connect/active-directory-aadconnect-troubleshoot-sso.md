@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 7eea3621a52bf13dc44e89c342c503905ff24a0d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
 本文可帮助你找到有关 Azure AD 无缝单一登录常见问题的故障排除信息。
@@ -122,4 +120,3 @@ ms.lasthandoff: 09/28/2017
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5. 在租户上启用此功能
 
 调用 `Enable-AzureADSSO` 并在 `Enable: ` 提示符处键入“true”，以在租户中启用此功能。
-

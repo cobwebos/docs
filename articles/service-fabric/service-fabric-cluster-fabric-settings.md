@@ -1,4 +1,3 @@
-
 ---
 title: "更改 Azure Service Fabric 群集设置 | Microsoft Docs"
 description: "本文介绍可以自定义的结构设置和结构升级策略。"
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: cedfba78d8d1186618cf4f61154c5d88a00eb12b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
 本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板完成自定义。
@@ -615,5 +613,4 @@ ms.lasthandoff: 09/28/2017
 有关群集管理的详细信息，请阅读以下文章：
 
 [在 Azure 群集中添加、滚动更新和删除证书](service-fabric-cluster-security-update-certs-azure.md) 
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4acc29dc74a37d16a9e90101aa9b7706c55af58e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +59,7 @@ ODBC 链接服务支持以下属性：
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString。 | 否 |
 | credential | 连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`"RefreshToken=<secret refresh token>;"`。 将此字段标记为 SecureString。 | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，自我托管集成运行时是必需的。 |是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例 1：使用 Basic 身份验证**
 
@@ -152,11 +151,11 @@ ODBC 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 ODBC 源支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 ODBC 源支持的属性列表。
 
 ### <a name="odbc-as-source"></a>ODBC 作为源
 
-要从与 ODBC 兼容的数据存储复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+要从与 ODBC 兼容的数据存储复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -330,4 +329,4 @@ ODBC 链接服务支持以下属性：
 5. 单击“测试连接”以测试数据存储的连接。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

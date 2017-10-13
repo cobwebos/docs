@@ -3,7 +3,7 @@ title: "使用 Web 应用程序防火墙创建或更新应用程序网关 | Micr
 description: "了解如何使用门户创建具有 Web 应用程序防火墙的应用程序网关"
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,15 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: bfc06c1b44974fd17a3794654503d21d6407a917
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: e747d4777bdf515e8b7bd54f44ff48b8539ed765
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-application-gateway-with-a-web-application-firewall-by-using-the-portal"></a>使用门户创建具有 Web 应用程序防火墙的应用程序网关
 
 > [!div class="op_single_selector"]
@@ -99,7 +97,7 @@ Azure 应用程序网关中的 WAF 可保护 Web 应用程序，使其免受常�
    |**Name**|AdatumAppGateway|应用程序网关的名称。|
    |**层**|WAF|可用值为标准和 WAF。 若要了解有关 WAF 的详细信息，请参阅 [Web 应用程序防火墙](application-gateway-web-application-firewall-overview.md)。|
    |**SKU 大小**|中型|标准层选项包括“小型”、“中型”，和“大型”。 WAF 层选项只有“中型”和“大型”。|
-   |**实例计数**|2|实现高可用性时应用程序网关的实例数。 仅出于测试目的，可使用 1 作为实例计数。|
+   |**实例计数**|#N/A|实现高可用性时应用程序网关的实例数。 仅出于测试目的，可使用 1 作为实例计数。|
    |**订阅**|[订阅]|选择用于创建应用程序网关的订阅。|
    |**资源组**|**新建：**AdatumAppGatewayRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|美国西部||
@@ -166,4 +164,3 @@ Azure 应用程序网关中的 WAF 可保护 Web 应用程序，使其免受常�
 [3]: ./media/application-gateway-web-application-firewall-portal/figure3.png
 [10]: ./media/application-gateway-web-application-firewall-portal/figure10.png
 [scenario]: ./media/application-gateway-web-application-firewall-portal/scenario.png
-

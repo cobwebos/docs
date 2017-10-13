@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d51039881673189697f1826d474546f24ffd5479
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 ## <a name="overview"></a>概述
@@ -501,4 +500,3 @@ while (response != null);
 请参阅以下示例，该示例使用 .NET SDK 创建将数据从 Azure blob 存储复制到 Azure SQL 数据库的管道： 
 
 - [创建用于将数据从 Blob 存储复制到 SQL 数据库的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-

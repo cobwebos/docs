@@ -15,15 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 89bb5d255db9ab266d04169a3101e2b694236029
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>数据科学虚拟机 (DSVM) 的示例
 
 DSVM 附带了以 Jupyter 笔记本形式完整编制的示例，其中一些示例并非基于 Jupyter。 你可以通过单击桌面或应用程序菜单上的 `Jupyter` 图标访问 Jupyter。  
@@ -106,5 +103,4 @@ Windows DSVM
 
 ## <a name="xgboost"></a>XGBoost 
 <br/>![XGBoost 示例](./media/xgboost-samples.png)<br/>
-
 

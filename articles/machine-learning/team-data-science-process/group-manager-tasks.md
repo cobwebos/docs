@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cd73aed14f672351b72e09d682909a47c63b9026
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="group-manager-tasks"></a>组管理员任务
 
 本主题概述了组管理员应为他/她的数据科学组织完成的任务。 目的在于创建致力于标准化[团队数据科学流程](overview.md) (TDSP) 的团队协作环境。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅[团队数据科学流程角色和任务](roles-tasks.md)。
@@ -300,7 +297,7 @@ VSTS 组服务器的存储库安装包括两个任务：
     git config --global user.name <your name>
     git config --global user.email <your email address>
  
->如果要提交到多个 Git 存储库，则在提交到每个存储库时使用相同的姓名和电子邮件地址。 使用相同的姓名和电子邮件地址证明了以后构建 PowerBI 仪表板来跟踪多个存储库上的 Git 活动时会很方便。
+>如果要提交到多个 Git 存储库，则在提交到每个存储库时请使用相同的姓名和电子邮件地址。 使用相同的姓名和电子邮件地址证明了以后构建 PowerBI 仪表板来跟踪多个存储库上的 Git 活动时会很方便。
 
 
 - 使用缩写的存储库名称，这是这些脚本实现的功能：
@@ -316,7 +313,7 @@ VSTS 组服务器的存储库安装包括两个任务：
 
 ## <a name="next-steps"></a>后续步骤
 
-以下是团队数据科学进程定义的角色和任务的详细说明链接：
+下面是 Team Data Science Process 定义的角色和任务的详细说明链接：
 
 - [数据科学团队的组管理员任务](group-manager-tasks.md)
 - [数据科学团队的团队主管任务](team-lead-tasks.md)

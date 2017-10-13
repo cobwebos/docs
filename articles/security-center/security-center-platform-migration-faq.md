@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 4b88b5015fcf44e8979b8b1a3aa1eb26f0fbb704
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-center-platform-migration-faq"></a>安全中心平台迁移常见问题解答
 2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent 收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。 此常见问题解答会回答有关平台迁移的问题。
@@ -53,7 +52,7 @@ ms.lasthandoff: 09/15/2017
 >
 
 ### <a name="am-i-billed-for-log-analytics-or-oms-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Log Analytics 或 OMS 是否会产生费用？
-不会。 OMS 配置为按节点计费时，安全中心创建的工作区不会产生 OMS 费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+不能。 OMS 配置为按节点计费时，安全中心创建的工作区不会产生 OMS 费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - 免费层 – 安全中心在默认工作区中安装“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - 标准层 – 安全中心在默认工作区中安装“SecurityCenterFree”和“Security”解决方案。
@@ -195,4 +194,3 @@ ms.lasthandoff: 09/15/2017
 [4]: ./media/security-center-platform-migration-faq/solutions.png
 [5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
 [6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png
-

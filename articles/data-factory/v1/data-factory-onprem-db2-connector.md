@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: eacecb9f084ead76633cf802751d3a603cb2f0d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -363,4 +362,3 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="performance-and-tuning"></a>性能和优化
 在[复制活动性能和优化指南](data-factory-copy-activity-performance.md)中了解影响复制活动性能的关键因素以及各种性能优化方法。
-

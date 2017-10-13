@@ -11,14 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
 ms.openlocfilehash: 7c355e2feb5ebe5971d8391b326422a1abec1497
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="publish-multiple-versions-of-your-api-in-a-predictable-way"></a>以可预测的方式发布 API 的多个版本
 本教程介绍如何设置 API 的版本，以及选择 API 开发人员调用这些版本的方式。
 
@@ -75,4 +73,3 @@ ms.lasthandoff: 09/14/2017
 3. 选择“v1”。
 4. 请注意列表中第一个操作的“请求 URL”。 其中显示 API URL 路径包含“v1”。
 ![开发人员门户上显示的版本](media/api-management-getstarted-publish-versions/VersionDevPortal.PNG)
-

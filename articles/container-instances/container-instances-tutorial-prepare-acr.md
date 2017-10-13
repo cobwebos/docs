@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
 这是三部分教程的第二部分。 在[上一步](./container-instances-tutorial-prepare-app.md)中，介绍了如何为采用 [Node.js](http://nodejs.org) 编写的简单 Web 应用程序创建容器映像。 在本教程中，此映像会被推送到 Azure 容器注册表。 若尚未创建容器映像，请返回[教程 1 - 创建容器映像](./container-instances-tutorial-prepare-app.md)。 
@@ -166,4 +164,3 @@ v1
 
 > [!div class="nextstepaction"]
 > [将容器部署到 Azure 容器实例](./container-instances-tutorial-deploy-app.md)
-

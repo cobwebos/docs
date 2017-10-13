@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.openlocfilehash: 7f92b1e14a514e9eda39f7ca94f63fc761dfdf41
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-table-storage-from-java"></a>如何通过 Java 使用表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -122,7 +122,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-add-an-entity-to-a-table"></a>如何：向表中添加实体
-实体映射到 Java 对象，该对象使用可实现 **TableEntity** 的自定义类。 为方便起见，TableServiceEntity 类实现 TableEntity，并使用反射将属性映射到以属性本身命名的 getter 和 setter 方法。 要将实体添加到表，首先要创建用于定义实体的属性的类。 以下代码定义了将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度可以快于查询分区键不同的实体的速度。
+实体映射到 Java 对象，该对象使用可实现 **TableEntity** 的自定义类。 为方便起见，**TableServiceEntity** 类实现 **TableEntity**，并使用反射将属性映射到以属性本身命名的 getter 和 setter 方法。 要将实体添加到表，首先要创建用于定义实体的属性的类。 以下代码定义了将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度可以快于查询分区键不同的实体的速度。
 
 ```java
 public class CustomerEntity extends TableServiceEntity {
@@ -154,7 +154,7 @@ public class CustomerEntity extends TableServiceEntity {
 }
 ```
 
-涉及实体的表操作需要 **TableOperation** 对象。 此对象用于定义要对实体执行的操作，该操作可使用 **CloudTable** 对象执行。 以下代码可创建包含要存储某些客户数据的 **CustomerEntity** 类的新实例。 接下来，该代码调用 TableOperation.insertOrReplace 来创建 TableOperation 对象，以便将实体插入表中，并将新的 CustomerEntity 与之关联。 最后，该代码对 CloudTable 对象调用 execute 方法，并指定“people”表和新的 TableOperation，后者随后向存储服务发送新请求，以便将新客户实体插入“people”表，或在实体已存在的情况下替换实体。
+涉及实体的表操作需要 **TableOperation** 对象。 此对象用于定义要对实体执行的操作，该操作可使用 **CloudTable** 对象执行。 以下代码可创建包含要存储某些客户数据的 **CustomerEntity** 类的新实例。 接下来，该代码调用 **TableOperation.insertOrReplace** 来创建 **TableOperation** 对象，以便将实体插入表中，并将新的 **CustomerEntity** 与之关联。 最后，该代码对 **CloudTable** 对象调用 **execute** 方法，并指定“people”表和新的 **TableOperation**，后者随后向存储服务发送将新客户实体插入“people”表或在实体已存在的情况下替换实体的请求。
 
 ```java
 try
@@ -188,7 +188,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-insert-a-batch-of-entities"></a>如何：插入一批实体
-可以通过一次写入操作将一批实体插入到表服务。 以下代码创建一个 **TableBatchOperation** 对象，并向其中添加三个插入操作。 每个插入操作的添加方法如下：创建一个新的实体对象，设置它的值，然后对 TableBatchOperation 对象调用 insert 方法，将实体与新插入操作相关联。 然后，该代码对 CloudTable 对象调用 execute，并指定“people”表和 TableBatchOperation 对象，后者会在单个请求中向存储服务发送一批表操作。
+可以通过一次写入操作将一批实体插入到表服务。 以下代码创建一个 **TableBatchOperation** 对象，并向其中添加三个插入操作。 每个插入操作的添加方法如下：创建一个新的实体对象，设置它的值，然后对 **TableBatchOperation** 对象调用 **insert** 方法以将实体与新插入操作相关联。 然后，该代码对 **CloudTable** 对象调用 **execute**，并指定“people”表和 **TableBatchOperation** 对象，后者会在单个请求中向存储服务发送一批表操作。
 
 ```java
 try
@@ -242,7 +242,7 @@ catch (Exception e)
 * 批处理操作的数据负载限制为 4MB。
 
 ## <a name="how-to-retrieve-all-entities-in-a-partition"></a>如何：检索分区中的所有实体
-若要对表查询分区中的实体，可以使用 **TableQuery**。 调用 **TableQuery.from** 可创建一个针对特定表的查询，该查询返回指定的结果类型。 以下代码指定了一个筛选器，用于筛选其中的分区键是“Smith”的实体。 **TableQuery.generateFilterCondition** 是一个用于创建查询筛选器的帮助器方法。 对 **TableQuery.from** 方法返回的引用调用 **where** 可对查询应用筛选器。 对 CloudTable 对象调用 execute 来执行查询时，该查询将返回指定了 CustomerEntity 结果类型的 Iterator。 然后，可以利用在 for each 循环中返回的 **Iterator** 来使用结果。 此代码会将查询结果中每个实体的字段打印到控制台。
+若要对表查询分区中的实体，可以使用 **TableQuery**。 调用 **TableQuery.from** 可创建针对特定表的查询，该查询将返回指定的结果类型。 以下代码指定了一个筛选器，用于筛选其中的分区键是“Smith”的实体。 **TableQuery.generateFilterCondition** 是一个用于创建查询筛选器的帮助器方法。 对 **TableQuery.from** 方法返回的引用调用 **where** 可对查询应用筛选器。 通过对 **CloudTable** 对象调用 **execute** 来执行查询时，该查询将返回指定了 **CustomerEntity** 结果类型的 **Iterator**。 然后，可以利用在 for each 循环中返回的 **Iterator** 来使用结果。 此代码会将查询结果中每个实体的字段打印到控制台。
 
 ```java
 try
@@ -347,7 +347,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-retrieve-a-single-entity"></a>如何：检索单个实体
-可以编写查询以检索单个特定实体。 以下代码使用分区键和行键参数调用 **TableOperation.retrieve** 来指定客户“Jeff Smith”，而不是创建 **TableQuery** 并使用筛选器来执行同一操作。 执行的检索操作将只返回一个实体，而不会返回一个集合。 getResultAsType 方法会将结果转换为分配目标的类型 - CustomerEntity 对象。 如果此类型与为查询指定的类型不兼容，则会引发异常。 如果没有实体具有完全匹配的分区键和行键，则会返回 null 值。 在查询中指定分区键和行键是从表服务中检索单个实体的最快方法。
+可以编写查询以检索单个特定实体。 以下代码使用分区键和行键参数调用 **TableOperation.retrieve** 来指定客户“Jeff Smith”，而不是创建 **TableQuery** 并使用筛选器来执行同一操作。 执行的检索操作将只返回一个实体，而不会返回一个集合。 **getResultAsType** 方法会将结果转换为分配目标的类型 - **CustomerEntity** 对象。 如果此类型与为查询指定的类型不兼容，则会引发异常。 如果没有实体具有完全匹配的分区键和行键，则会返回 null 值。 在查询中指定分区键和行键是从表服务中检索单个实体的最快方法。
 
 ```java
 try
@@ -387,7 +387,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-modify-an-entity"></a>如何：修改实体
-要修改实体，请从表服务中检索它，对实体对象进行更改，然后通过替换或合并操作将更改保存回表服务。 以下代码将更改现有客户的电话号码。 此代码将调用 TableOperation.replace，而不是像执行插入时那样调用 TableOperation.insert。 **CloudTable.execute** 方法将调用表服务，并替换该实体，除非在此应用程序检索到该实体之后另一个应用程序对它进行了更改。 如果出现这种情况，则会引发异常，必须再次检索、修改并保存该实体。 此乐观并发重试模式在分布式存储系统中很常见。
+要修改实体，请从表服务中检索它，对实体对象进行更改，然后通过替换或合并操作将更改保存回表服务。 以下代码将更改现有客户的电话号码。 此代码将调用 **TableOperation.replace**，而不是像执行插入时那样调用 **TableOperation.insert**。 **CloudTable.execute** 方法将调用表服务，并替换该实体，除非在此应用程序检索到该实体之后另一个应用程序对它进行了更改。 如果出现这种情况，则会引发异常，必须再次检索、修改并保存该实体。 此乐观并发重试模式在分布式存储系统中很常见。
 
 ```java
 try
@@ -469,7 +469,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-insert-or-replace-an-entity"></a>如何：插入或替换实体
-经常需要将某个实体添加到表中，但又不知道该实体是否已存在于表中。 利用插入或替换操作，可以提出一个以下形式的请求：如果实体不存在，则插入一个实体；如果实体存在，则将其替换为现有实体。 以下代码基于前面的示例针对“Walter Harp”插入或替换实体。 创建新实体后，此代码调用 **TableOperation.insertOrReplace** 方法。 此代码随后使用表和插入或将表操作替换为参数对 CloudTable 对象调用 execute。 若要只更新实体的一部分，可以改用 **TableOperation.insertOrMerge** 方法。 请注意，本地存储模拟器不支持插入或替换，因此，此代码仅在使用表服务中的帐户时才能运行。 可以在此 [Azure 表：Upsert 和查询投影简介][Azure Tables: Introducing Upsert and Query Projection]中更加详细地了解插入或替换和插入或合并。
+经常需要将某个实体添加到表中，但又不知道该实体是否已存在于表中。 利用插入或替换操作，可以提出一个以下形式的请求：如果实体不存在，则插入一个实体；如果实体存在，则将其替换为现有实体。 以下代码基于前面的示例针对“Walter Harp”插入或替换实体。 创建新实体后，此代码调用 **TableOperation.insertOrReplace** 方法。 此代码随后使用表和插入或将表操作替换为参数对 **CloudTable** 对象调用 **execute**。 若要只更新实体的一部分，可以改用 **TableOperation.insertOrMerge** 方法。 请注意，本地存储模拟器不支持插入或替换，因此，此代码仅在使用表服务中的帐户时才能运行。 可以在此 [Azure 表：Upsert 和查询投影简介][Azure Tables: Introducing Upsert and Query Projection]中更加详细地了解插入或替换和插入或合并。
 
 ```java
 try
@@ -503,7 +503,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-delete-an-entity"></a>如何：删除实体
-可以在检索到实体后轻松将其删除。 检索到实体后，对要删除的实体调用 **TableOperation.delete**。 然后对 CloudTable 对象调用 execute。 以下代码检索并删除一个客户实体。
+可以在检索到实体后轻松将其删除。 检索到实体后，对要删除的实体调用 **TableOperation.delete**。 然后对 **CloudTable** 对象调用 **execute**。 以下代码检索并删除一个客户实体。
 
 ```java
 try

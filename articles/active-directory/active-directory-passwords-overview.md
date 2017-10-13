@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
 ms.openlocfilehash: de2d41d8c2787ffdc80daddf959487f6031da87d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>面向 IT 专业人员的 Azure AD 自助服务密码重置
 
@@ -94,5 +93,4 @@ Azure AD 中的自助服务密码重置由以下组件构成：
 * [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
 * [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
-
 

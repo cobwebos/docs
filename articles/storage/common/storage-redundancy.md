@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: tamram
+ms.openlocfilehash: f16692d1241082dddb9f8687d18f6bf1c1aba2eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 09c6f525bb608d95c60ba7907aae4b4e70923544
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-storage-replication"></a>Azure 存储复制
 始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性。 复制可在同一数据中心内或向第二个数据中心复制数据，具体取决于所选的复制选项。 复制可保护数据，并在发生暂时性硬件故障时保留应用程序正常运行时间。 如果数据复制到第二个数据中心，还可以保护数据，以免主要位置发生灾难性故障。
 
@@ -128,5 +126,4 @@ ms.lasthandoff: 09/25/2017
 * [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
 * [Microsoft Azure Storage redundancy options and read access geo redundant storage ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)（Microsoft Azure 存储冗余选项和读取访问异地冗余存储）
 * [SOSP Paper - Azure Storage: A highly available cloud storage service with strong consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储：具有高度一致性的高可用性云存储服务）
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/19/2017
 ms.author: jovanpop
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 64abcf680199938c54be5005ee96670a8e580270
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化
 
@@ -48,4 +47,3 @@ Azure SQL 数据库标识可优化数据库的“创建索引”、“删除索�
 - 若要使用手动优化，请参阅 [Azure 门户中的优化建议](sql-database-advisor-portal.md)，然后手动应用一些可提高查询性能的建议。
 - 详细了解可优化 [Azure SQL 数据库](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)的内置智能。
 - 详细了解 Azure SQL 数据库和 SQL Server 2017 中的[自动优化](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)。
-

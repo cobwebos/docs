@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
 ms.openlocfilehash: 01ba8ddfcf90e1368ac147296fd180f99420d96f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hubs-namespace"></a>将 Azure 诊断日志流式传输到事件中心命名空间
 可将 **[Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)**以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在诊断设置中启用服务总线规则 ID。

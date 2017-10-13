@@ -15,14 +15,12 @@ ms.topic: overview
 ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: fe4c79f4e71d885e22bbcf31869b809f5d7fe1a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 只需单击一个按钮，即可通过 Azure Cosmos DB 跨任意数量的 Azure 地理区域弹性且独立地缩放吞吐量和存储。 它通过综合[服务级别协议](https://aka.ms/acdbsla) (SLA) 提供吞吐量、延迟、可用性和一致性保证，这是其他数据库服务无法提供的。
@@ -100,4 +98,3 @@ Azure Cosmos DB 提供关系数据库和非关系数据库的最佳功能。
 * [开始使用 Azure Cosmos DB 的 MongoDB API](create-mongodb-nodejs.md)
 * [开始使用 Azure Cosmos DB 的图形 API](create-graph-dotnet.md)
 * [开始使用 Azure Cosmos DB 的表 API](create-table-dotnet.md)
-

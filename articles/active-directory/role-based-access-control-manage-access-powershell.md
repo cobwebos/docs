@@ -15,10 +15,10 @@ ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
 ms.openlocfilehash: d7b11df21650b5cb27f9c3dd8306f8d12664185e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>使用 Azure PowerShell 管理基于角色的访问控制
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/29/2017
 
 在使用 PowerShell 管理 RBAC 之前，必须具备以下先决条件：
 
-* Azure PowerShell 0.8.8 版或更高版本。 若要安装最新版本并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* Azure PowerShell 0.8.8 版或更高版本。 要安装最新版本并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * Azure Resource Manager cmdlets。 在 PowerShell 中安装 [Azure Resource Manager cmdlet](/powershell/azure/overview)。
 
 ## <a name="list-roles"></a>列出角色
@@ -137,7 +137,7 @@ Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT Operatio
 ```
 
 ### <a name="create-role-with-psroledefinitionobject"></a>使用 PSRoleDefinitionObject 创建角色
-使用 PowerShell 创建自定义角色时，可以从头开始或使用某个[内置角色](role-based-access-built-in-roles.md)作为起点。 本部分中的示例以内置角色开始，并为它自定义更多的特权。 编辑属性，添加所需的 Actions、notActions 或 scopes，然后将所做的更改另存为新角色。
+使用 PowerShell 创建自定义角色时，可以从头开始或使用某个[内置角色](role-based-access-built-in-roles.md)作为起点。 本部分中的示例以内置角色开始，并为它自定义更多的特权。 编辑属性以添加所需的 *Actions*、*notActions* 或 *scopes*，并将所做的更改保存为新角色。
 
 以下示例从*虚拟机参与者*角色开始，使用该角色创建名为*虚拟机操作员*的自定义角色。 该新角色授权访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作，并授权访问启动、重新启动和监视虚拟机。 该自定义角色可以在两个订阅中使用。
 

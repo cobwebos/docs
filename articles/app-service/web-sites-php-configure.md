@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: 624dd416f37aacdb3d2f6e59afdc2efe646e610b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>在 Azure 应用服务 Web 应用中配置 PHP
 ## <a name="introduction"></a>介绍
@@ -172,9 +172,8 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
     ![添加编辑器扩展，以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-add.png)
 3. 单击“确定”以接受法律条款。 再次单击“确定”以添加扩展。
    
-    
-               **已安装扩展** 边栏选项卡不会显示编辑器扩展。  
- ![接受法律条款以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-view.png)
+    “已安装的扩展”边栏选项卡现在会显示编辑器扩展。  
+    ![接受法律条款以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-view.png)
 4. 现在，如上一节所示，执行 `git add`、`git commit` 和 `git push`。 现在将看到编辑器正在安装在 composer.json 中定义的依赖项。
    
     ![在 Azure 中使用编辑器自动化的 Git 部署](./media/web-sites-php-configure/composer-extension-success.png)

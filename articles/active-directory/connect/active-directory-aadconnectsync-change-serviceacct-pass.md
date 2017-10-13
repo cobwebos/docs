@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: bf6234d0810f870909957ee1c1e33c225a4922b9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>更改 Azure AD Connect 同步服务帐户密码
 如果更改了 Azure AD Connect 同步服务帐户密码，则无法正常启动同步服务，除非已弃用加密密钥并重新初始化 Azure AD Connect 同步服务帐户密码。 
@@ -87,7 +87,7 @@ Azure AD Connect 是同步服务的一部分，使用加密密钥来存储 AD DS
 3. 选择与本地 AD 对应的“AD 连接器”。 如果有多个 AD 连接器，请针对每个连接器重复以下步骤。
 4. 在“操作”下面，选择“属性”。
 5. 在弹出对话框中，选择“连接到 Active Directory 林”：
-6. 在“密码”文本框中输入 AD DS 帐户的密码。 如果不知道该密码，则必须将其设置为某个已知值，再执行此步骤。
+6. 在“密码”文本框中输入 AD DS 帐户的密码。 如果不知道该密码，则必须将其设置为某个已知值，然后再执行此步骤。
 7. 单击“确定”保存新密码并关闭弹出对话框。
 ![Azure AD Connect 同步加密密钥实用工具](media/active-directory-aadconnectsync-encryption-key/key6.png)
 

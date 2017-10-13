@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: kgremban
 ms.openlocfilehash: 7288f8fa173f8018570cd17aa7274f56a4eead41
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
-重视安全的大型组织都希望迁移到 Office 365 等云服务中，但需要知道，其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果 SaaS 应用在公有云中托管并在类似于 outlook.office.com 和 login.microsoftonline.com 的共享域名中运行，则这种做法会失败。 阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
+重视安全的大型组织都希望迁移到 Office 365 等云服务中，但需要知道，其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果 SaaS 应用在公有云中托管并在类似于 outlook.office.com 和 login.microsoftonline.com 的共享域名中运行，则这种做法会失败。阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
 
 为了解决这个难题，Azure Active Directory 推出了一项称作“租户限制”的功能。 租户限制可让组织根据应用程序用于单一登录的 Azure AD 租户来控制对 SaaS 云应用程序的访问。 例如，你可能希望允许用户访问你所在组织的 Office 365 应用程序，同时阻止他们访问其他组织中这些应用程序的实例。  
 
@@ -126,7 +126,7 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 2.  根据 [Fiddler 的帮助文档](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)，配置 Fiddler 来解密 HTTPS 流量。
 3.  配置 Fiddler，使用自定义规则插入 *Restrict-Access-To-Tenants* 和 *Restrict-Access-Context* 标头：
   1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...” 打开 CustomRules 文件。
-  2. 在 *OnBeforeRequest* 函数的开头添加以下行。 将 \<tenant domain\> 替换为已注册到租户的域，例如 contoso.onmicrosoft.com。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
+  2. 在 *OnBeforeRequest* 函数的开头添加以下行。 将 \<tenant domain\> 替换为已注册到租户的域，例如 contoso.onmicrosoft.com。将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
 
   ```
   if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}

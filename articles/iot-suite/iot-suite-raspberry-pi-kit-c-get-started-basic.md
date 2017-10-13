@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
 ms.openlocfilehash: 418108e8236518d2671abca0f06f1ae8159d6442
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-telemetry-from-a-real-sensor-using-c"></a>使用 C 将 Raspberry Pi 3 连接到远程监视解决方案，并从实际传感器发送遥测数据
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="overview"></a>概述
 
-本教程会完成以下步骤：
+在本教程中，将完成以下步骤：
 
 - 将远程监视预配置解决方案的实例部署到 Azure 订阅。 此步骤会自动部署并配置多个 Azure 服务。
 - 将设备和传感器设置为与计算机和远程监视解决方案通信。

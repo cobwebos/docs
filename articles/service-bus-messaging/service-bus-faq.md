@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm
 ms.openlocfilehash: 1403184d96388cb03b2c767c4da342ec1c6fe236
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 本文回答了一些关于 Microsoft Azure 服务总线的常见问题。 还可以访问 [Azure 支持常见问题解答](http://go.microsoft.com/fwlink/?LinkID=185083)了解常规的 Azure 定价和支持信息。

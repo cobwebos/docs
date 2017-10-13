@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 084fdf2f9a65eed3e444851afb88390aacf33738
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>配置 Service Fabric 服务的群集 Resource Manager 设置
 使用 Service Fabric 群集资源管理器可以精细地控制用于管控每个命名服务的规则。 每个命名服务均可为它在群集中的分配方式指定规则。 每个命名服务还可以定义要报告的指标集，包括指标集对该服务的重要程度。 配置服务的过程分为 3 个不同的任务：
@@ -48,4 +47,3 @@ ms.lasthandoff: 08/19/2017
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 - 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
-

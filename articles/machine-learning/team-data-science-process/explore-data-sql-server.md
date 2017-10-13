@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4777a6acbf3b45ab207d64feb7cba52f61f38eeb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
 本文档介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。
@@ -72,5 +71,4 @@ Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据
 
 ## <a name="cortana-analytics-process-in-action-example"></a>操作示例中的 Cortana Analytics 过程
 有关 Cortana Analytics 过程中使用公用数据集的端到端演练示例，请参阅[操作中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
-
 

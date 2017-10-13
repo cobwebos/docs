@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraig
 ms.openlocfilehash: e953c7978705379a28581213e8f1c665473ddd60
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -42,11 +42,11 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 ### <a name="create-an-mvc-controller"></a>创建 MVC 控制器 
 
-1. 在“解决方案资源管理器”中右键单击“控制器”，然后从上下文菜单中选择“添加”->“控制器”。
+1. 在“解决方案资源管理器”中右键单击“控制器”，并从上下文菜单中选择“添加”->“控制器”。
 
     ![将控制器添加到 ASP.NET MVC 应用](./media/vs-storage-aspnet-getting-started-blobs/add-controller-menu.png)
 
-1. 在“添加基架”对话框中选择“MVC 5 控制器 - 空”，然后选择“添加”。
+1. 在“添加基架”对话框中选择“MVC 5 控制器 - 空”，并选择“添加”。
 
     ![指定 MVC 控制器类型](./media/vs-storage-aspnet-getting-started-blobs/add-controller.png)
 
@@ -115,11 +115,11 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     ViewBag.BlobContainerName = container.Name;
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“Blob”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“Blob”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 CreateBlobContainer 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **CreateBlobContainer** 作为视图名称，并选择“添加”。
 
-1. 打开 `CreateBlobContainer.cshtml`并对其进行修改，使其看起来如以下代码片段所示：
+1. 打开 `CreateBlobContainer.cshtml`，并按以下代码片段所示对其进行修改：
 
     ```csharp
     @{
@@ -131,7 +131,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -139,7 +139,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     <li>@Html.ActionLink("Create blob container", "CreateBlobContainer", "Blobs")</li>
     ```
 
-1. 运行该应用程序，并选择“创建 Blob 容器”  查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“创建 Blob 容器”，查看结果是否与以下屏幕截图类似：
   
     ![创建 Blob 容器](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
 
@@ -200,9 +200,9 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     }
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“Blob”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“Blob”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -210,7 +210,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     <li>@Html.ActionLink("Upload blob", "UploadBlob", "Blobs")</li>
     ```
 
-1. 运行该应用程序，然后选择“上传 blob”。  
+1. 运行该应用程序，并选择“上传 Blob”。  
   
 [列出 Blob 容器中的 Blob](#list-the-blobs-in-a-blob-container) 部分说明如何列出 Blob 容器中的 Blob。    
 
@@ -307,11 +307,11 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
         dir1/bar.png
         dir2/baz.png
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“Blob”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“Blob”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 ListBlobs 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **ListBlobs** 作为视图名称，并选择“添加”。
 
-1. 打开 `ListBlobs.cshtml`并对其进行修改，使其看起来如以下代码片段所示：
+1. 打开 `ListBlobs.cshtml`，并按以下代码片段所示对其进行修改：
 
     ```html
     @model List<string>
@@ -329,7 +329,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     </ul>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -337,7 +337,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     <li>@Html.ActionLink("List blobs", "ListBlobs", "Blobs")</li>
     ```
 
-1. 运行该应用程序，并选择“列出 Blob”  来查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“列出 blob”，查看结果是否与以下屏幕截图类似：
   
     ![Blob 列表](./media/vs-storage-aspnet-getting-started-blobs/listblobs.png)
 
@@ -383,7 +383,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
     ```
 
-1. 若要下载 Blob，请使用 **CloudBlockBlob.DownloadToStream** 或 **CloudPageBlob.DownloadToStream** 方法，具体取决于 Blob 类型。 以下代码片段使用 CloudBlockBlob.DownloadToStream 方法将 blob 的内容传输到流对象，然后将该对象保存到本地文件：（将 &lt;local-file-name> 更改为表示要将 blob 下载到的位置的完全限定的文件名。） 
+1. 若要下载 Blob，请使用 **CloudBlockBlob.DownloadToStream** 或 **CloudPageBlob.DownloadToStream** 方法，具体取决于 Blob 类型。 以下代码片段使用 **CloudBlockBlob.DownloadToStream** 方法将 Blob 的内容传输到流对象，并将该对象保存到本地文件：（将 *&lt;local-file-name>* 更改为表示要将 blob 下载到的位置的完全限定文件名。） 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -392,7 +392,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     }
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -400,7 +400,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     <li>@Html.ActionLink("Download blob", "DownloadBlob", "Blobs")</li>
     ```
 
-1. 运行该应用程序，然后选择“下载 blob”下载 blob。 在 **CloudBlobContainer.GetBlockBlobReference** 方法调用中指定的 Blob 将下载到在 **File.OpenWrite** 方法调用中指定的位置。 
+1. 运行该应用程序，并选择“下载 Blob”下载 Blob。 在 **CloudBlobContainer.GetBlockBlobReference** 方法调用中指定的 Blob 将下载到在 **File.OpenWrite** 方法调用中指定的位置。 
 
 ## <a name="delete-blobs"></a>删除 Blob
 
@@ -462,7 +462,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     <li>@Html.ActionLink("Delete blob", "DeleteBlob", "Blobs")</li>
     ```
 
-1. 运行该应用程序，然后选择“删除 blob”删除 CloudBlobContainer.GetBlockBlobReference 方法调用中指定的 blob。 
+1. 运行该应用程序，并选择“删除 Blob”删除 **CloudBlobContainer.GetBlockBlobReference** 方法调用中指定的 Blob。 
 
 ## <a name="next-steps"></a>后续步骤
 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。

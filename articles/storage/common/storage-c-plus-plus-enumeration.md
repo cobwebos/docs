@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.openlocfilehash: 9844412739f4f6f95416f81347f0f2eeeca62bea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="list-azure-storage-resources-in-c"></a>使用 C++ 列出 Azure 存储资源
 使用 Azure 存储进行开发时，很多情况下列表操作很重要。 本文介绍如何使用用于 C++ 的 Microsoft Azure 存储客户端库中提供的列表 API 最有效率地枚举 Azure 存储中的对象。
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-存储客户端库提供了多种方法，用于列出或查询 Azure 存储中的对象。 本文探讨以下方案：
+存储客户端库提供了多种方法，用于列出或查询 Azure 存储中的对象。 本文将探讨以下方案：
 
 * 列出帐户中的容器
 * 列出容器或虚拟 blob 目录中的 blob
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/29/2017
 * 列出帐户中的表
 * 查询表中的实体
 
-使用不同的重载针对不同的方案演示上述每种方法。
+将使用不同的重载针对不同的方案演示上述每种方法。
 
 ## <a name="asynchronous-versus-synchronous"></a>异步与同步
 由于 C++ 的存储客户端库是在 [C++ REST 库](https://github.com/Microsoft/cpprestsdk)基础上构建的，因此我们实际上也支持使用 [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) 进行异步操作。 例如：
@@ -64,7 +64,7 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 分段列表操作的响应包括：
 
 * <i>_segment</i>，其中包含针对列表 API 进行单个调用时返回的结果集。
-* continuation_token，将传递给下一个调用，以获取下一页结果。 当不再有需要返回的结果时，继续标记为 null。
+* *continuation_token*，会传递给下一个调用，以获取下一页结果。 当不再有需要返回的结果时，继续标记为 null。
 
 例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码段可能如下所示。 我们的[示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中提供了该代码：
 

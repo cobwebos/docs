@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 712b29a347e246ad5afbf842930b0e01749c1203
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 本文概述了如何使用数据工厂将本地数据存储与云数据存储之间的数据进行集成。 本文内容基于[数据移动活动](data-factory-data-movement-activities.md)一文和其他数据工厂核心概念文章：[数据集](data-factory-create-datasets.md)和[管道](data-factory-create-pipelines.md)。
@@ -413,4 +412,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>后续步骤
 * 有关数据管理网关的所有详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 * 要深入了解如何使用“复制活动”将数据从源数据存储移动到接收器数据存储，请参阅[将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-

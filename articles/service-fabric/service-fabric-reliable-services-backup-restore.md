@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: mcoskun
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 8d81abec1c879ac6edbd4610dafdfd43ec7cf903
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
 Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的此内置冗余对某些情况来说可能已足够用了，但在特定情况下，仍需要服务备份数据（到外部存储）。
@@ -269,5 +268,4 @@ class MyCustomActorService : ActorService
   - [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services 配置](service-fabric-reliable-services-configuration.md)
   - [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
 

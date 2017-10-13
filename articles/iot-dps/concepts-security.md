@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 3ccbaaf55d2bdfedffcdb5ca069798328e2d75fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 
 
 IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式预配数百万台设备。 本文概述了设备预配中涉及的安全性概念。 本文涉及设备部署准备工作中提及的所有角色。
@@ -67,4 +65,3 @@ TPM 可引用适用于安全存储用于对平台进行身份验证的密钥的�
 ## <a name="leaf-certificate"></a>分支证书
 
 分支证书（或称最终实体证书）用于标识证书持有者，其根证书位于证书链中。 分支证书不用于对任何其他证书进行签名。
-

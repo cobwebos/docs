@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>配置已加入域的 HDInsight 群集（预览版）
 
@@ -68,7 +68,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 5. 创建 HDInsight 群集。
 
 > [!NOTE]
-> 本教程假设读者没有 Azure AD。 如果已有 Azure AD，可跳过步骤 2 中的部分。
+> 本教程假设你没有 Azure AD。 如果已有 Azure AD，可跳过步骤 2 中的部分。
 > 
 > 
 
@@ -160,7 +160,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
    * **域服务的 DNS 域名**：这会显示 Azure 目录的默认 DNS 名称。 例如 contoso.onmicrosoft.com。
    * **将域服务连接到此虚拟网络**：选择之前创建的经典虚拟网络，例如 **contosoaadvnet**。
 4. 单击页面底部的“保存”。 “对该目录启用域服务”旁边会显示“挂起...”。  
-5. 请等待“挂起...”消失和“IP 地址”填好。 两个 IP 地址都要填写。 这些 IP 地址属于域服务预配的域控制器。 在预配并准备好相应的域控制器后，会显示每个 IP 地址。 记下这两个 IP 地址。 稍后需要它们。
+5. 请等待“挂起...”消失和“IP 地址”填好。 两个 IP 地址都要填写。 这些 IP 地址属于域服务预配的域控制器。 相应的域控制器进行了预配并准备就绪之后，会显示每个 IP 地址。 记下这两个 IP 地址。 稍后需要它们。
 
 有关详细信息，请参阅 [Azure AD 域服务（预览版）- 启用 Azure AD 域服务](../active-directory-domain-services/active-directory-ds-getting-started-enableaadds.md)。
 
@@ -201,8 +201,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
    * **地址空间**：10.2.0.0/16。 请确保地址范围与经典 VNet 的 IP 地址范围不重叠。
    * **子网名称**：Subnet1
    * **子网地址范围**：10.2.0.0/24
-   * 
-            **订阅**：（选择 Azure 订阅。）
+   * **订阅**：（选择 Azure 订阅。）
    * **资源组**：contosohdirg
    * **位置**：（选择与 Azure AD VNet 相同的位置，例如 contosoaadvnet。）
 5. 单击“创建” 。
@@ -270,7 +269,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
          * **域名**：contoso.onmicrosoft.com
          * **域用户名**：输入域用户名。 此域必须具有以下特权：将计算机加入域并放置在群集创建期间指定的组织单位中；在群集创建期间指定的组织单位内创建服务主体；创建反向 DNS 项。 此域用户将成为此已加入域的 HDInsight 群集的管理员。
          * **域密码**：输入域用户密码。
-         * **组织单位**：输入要用于 HDInsight 群集的 OU 的可分辨名称。 例如：OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。 如果此 OU 不存在，HDInsight 群集将尝试创建此 OU。 确保 OU 已存在，或域帐户有权创建一个新的 OU。 如果使用的域帐户属于 AADDC 管理员，将具有创建 OU 所需的权限。
+         * **组织单位**：输入要用于 HDInsight 群集的 OU 的可分辨名称。 例如：OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。如果此 OU 不存在，HDInsight 群集将尝试创建此 OU。 确保 OU 已存在，或域帐户有权创建一个新的 OU。 如果使用的域帐户属于 AADDC 管理员，将具有创建 OU 所需的权限。
          * **LDAPS URL**：ldaps://contoso.onmicrosoft.com:636
          * **访问用户组**：指定其用户要同步到群集的安全组。 例如，HiveUsers。
            
@@ -294,8 +293,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="./media/hdinsight-domain-joined-configure/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. 在“参数”边栏选项卡中，输入以下值：
    
-   * 
-            **订阅**：（选择 Azure 订阅）。
+   * **订阅**：（选择 Azure 订阅）。
    * **资源组**：单击“使用现有的”，并指定正在使用的同一资源组。  例如，contosohdirg。 
    * **位置**：指定资源组位置。
    * **群集名称**：为将创建的 Hadoop 群集输入名称。 例如，contosohdicluster。
@@ -316,7 +314,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
    * **固定到仪表板**：（检查）
 3. 单击“购买”。 此时会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
 
-完成教程之后，可能要删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
+完成教程之后，可能要删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。

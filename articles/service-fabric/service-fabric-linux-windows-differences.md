@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/19/2017
 ms.author: subramar
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux 上的 Service Fabric 与 Windows 上的 Service Fabric 之间的差异
 
@@ -99,4 +98,3 @@ Windows 和 Linux 的开发工具也不相同。 Visual Studio、Powershell、VS
 * [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [在 Linux 上创建第一个 CSharp 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [使用 Service Fabric CLI 管理应用程序](service-fabric-application-lifecycle-sfctl.md)
-

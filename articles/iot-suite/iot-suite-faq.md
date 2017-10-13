@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: corywink
+ms.openlocfilehash: 5039dd30f85278b4e3bbba938ef40077af2c5c75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 85867fb8d18377637b3aa848555831a8d9b53512
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>有关 IoT 套件的常见问题
 
@@ -122,4 +121,3 @@ ms.lasthandoff: 08/25/2017
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-remote-monitoring-github]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-predictive-maintenance-github]: https://github.com/Azure/azure-iot-predictive-maintenance
-

@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 03c4b6d225dce99d79ef6c1ba2af43af8dea3eae
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-with-a-windows-phone-app"></a>将 Azure AD 与 Windows Phone 应用程序集成
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/03/2017
 2. 安装并配置 ADAL。
 3. 使用 ADAL 从 Azure AD 获取令牌。
 
-若要开始，请[下载框架项目](https://github.com/AzureADQuickStarts/NativeClient-WindowsPhone/archive/skeleton.zip)或[下载已完成示例](https://github.com/AzureADQuickStarts/NativeClient-WindowsPhone/archive/complete.zip)。  每个下载项目都是 Visual Studio 2013 解决方案。  还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。  如果没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
+若要开始，请[下载框架项目](https://github.com/AzureADQuickStarts/NativeClient-WindowsPhone/archive/skeleton.zip)或[下载已完成示例](https://github.com/AzureADQuickStarts/NativeClient-WindowsPhone/archive/complete.zip)。  每个下载项目都是 Visual Studio 2013 解决方案。  还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。  如果还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 ## <a name="1-register-the-directory-searcher-application"></a>1.注册目录搜索器应用程序
 若要让应用程序获取令牌，首先需要在 Azure AD 租户中注册该应用程序，并授予它访问 Azure AD Graph API 的权限：
@@ -58,7 +58,7 @@ ms.lasthandoff: 08/03/2017
 3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”并选择“添加”。
 5. 根据提示创建一个新的“本机客户端应用程序”。
-  * 应用程序的“名称”向最终用户描述应用程序 
+  * 应用程序的“名称”向最终用户描述应用程序
   * “重定向 URI”是 Azure AD 要用来返回令牌响应的方案与字符串组合。  暂时输入一个占位符值，例如 `http://DirectorySearcher`。  稍后我们会替换此值。
 6. 完成注册后，AAD 将为应用分配唯一的应用程序 ID。  在后面的部分中会用到此值，因此，请从应用程序选项卡中复制此值。
 7. 在“设置”页上，依次选择“所需的权限”和“添加”。 选择“Microsoft Graph”作为 API，并在“委派的权限”下添加“读取目录数据”权限。  这样，应用程序便可以在 Graph API 中查询用户。
@@ -75,7 +75,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 * 在 DirectorySearcher 项目中，打开 `MainPage.xaml.cs`。  替换 `Config Values` 区域中的值，以反映你在 Azure 门户中输入的值。  只要使用 ADAL，代码就会引用这些值。
   * `tenant` 是 Azure AD 租户的域，例如 contoso.onmicrosoft.com
   * `clientId` 是从门户复制的应用程序 clientId。
-* 现在需要发现 Windows Phone 应用的回调 URI。  在 `MainPage` 方法中的此行上设置一个断点：
+* 现在需要发现 Windows Phone 应用程序的回调 URI。  在 `MainPage` 方法中的此行上设置一个断点：
 
 ```
 redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
@@ -91,7 +91,7 @@ ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-
 ## <a name="3-use-adal-to-get-tokens-from-aad"></a>3.使用 ADAL 从 AAD 获取令牌
 ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 `authContext.AcquireToken(…)`，ADAL 就会负责其余的工作。  
 
-* 第一步是初始化应用程序的 `AuthenticationContext`（ADAL 的主类）。  你会在此处传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
+* 第一步是初始化应用程序的 `AuthenticationContext`（ADAL 的主类）。  将在此处传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
 
 ```C#
 public MainPage()
@@ -103,7 +103,7 @@ public MainPage()
 }
 ```
 
-* 现在查找 `Search(...)` 方法，当用户在应用程序的 UI 中单击“搜索”按钮时，将调用该方法。  此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。  但是若要查询图形 API，需要在请求的 `Authorization` 标头中包含 access_token - 这是 ADAL 传入的位置。
+* 现在查找 `Search(...)` 方法，当用户在应用程序的 UI 中单击“搜索”按钮时，将调用该方法。  此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。  但是，要查询 Graph API，需要在请求的 `Authorization` 标头中包含 access_token - 这是 ADAL 传入的位置。
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)
@@ -139,7 +139,7 @@ public async void ContinueWebAuthentication(WebAuthenticationBrokerContinuationE
 }
 ```
 
-* 现在，可以使用 ADAL 返回给应用程序的 `AuthenticationResult`。  在 `QueryGraph(...)` 回调中，将获取的 access_token 附加到 Authorization 标头中的 GET 请求：
+* 现在，可以使用 ADAL 返回给应用程序的 `AuthenticationResult`。  在 `QueryGraph(...)` 回调中，在 Authorization 标头内将获取的 access_token 附加到 GET 请求：
 
 ```C#
 private async void QueryGraph(AuthenticationResult result)
@@ -174,7 +174,7 @@ private void SignOut()
 }
 ```
 
-祝贺你！ 现在，已创建一个有效的 Windows Phone 应用，它可以对用户进行身份验证，使用 OAuth 2.0 安全调用 Web API，并获取有关用户的基本信息。  如果尚未这样做，可以在租户中填充一些用户。  运行 DirectorySearcher 应用，并使用这些用户之一进行登录。  根据用户的 UPN 搜索其他用户。  关闭应用程序，并重新运行它。  请注意，用户的会话将保持不变。  注销，并以其他用户身份重新登录。
+祝贺你！ 现在，已创建一个有效的 Windows Phone 应用程序，它可以对用户进行身份验证，使用 OAuth 2.0 安全调用 Web API，并获取有关用户的基本信息。  如果尚未这样做，可以在租户中填充一些用户。  运行 DirectorySearcher 应用程序，并使用这些用户之一进行登录。  根据用户的 UPN 搜索其他用户。  关闭应用程序，并重新运行它。  请注意，用户的会话将保持不变。  注销，并以其他用户身份重新登录。
 
 使用 ADAL 可以方便地将所有这些常见标识功能合并到应用程序中。  它会负责所有的繁琐工作 - 缓存管理、OAuth 协议支持、向用户显示登录名 UI、刷新已过期的令牌，等等。  只需要真正了解一个 API 调用，即 `authContext.AcquireToken*(…)`。
 

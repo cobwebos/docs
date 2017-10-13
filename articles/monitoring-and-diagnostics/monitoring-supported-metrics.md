@@ -1,5 +1,5 @@
 ---
-title: "Azure Monitor 指标 - 每种资源类型支持的指标 | Microsoft 文档"
+title: "Azure Monitor 指标 - 每种资源类型支持的指标 | Microsoft Docs"
 description: "可在 Azure Monitor 中为每种资源类型使用的指标的列表。"
 author: anirudhcavale
 manager: ashwink
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 05830547a5b8a24a59571edf6dd44d101b660189
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。
@@ -404,7 +403,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |JobEndedSuccess|成功作业数|计数|总计|成功作业计数。|无维度|
-|JobEndedFailure|失败的作业数|计数|总计|失败作业计数。|无维度|
+|JobEndedFailure|失败作业数|计数|总计|失败作业计数。|无维度|
 |JobEndedCancelled|取消的作业数|计数|总计|取消的作业计数。|无维度|
 |JobAUEndedSuccess|成功 AU 时间|秒|总计|成功作业的总 AU 时间。|无维度|
 |JobAUEndedFailure|失败的 AU 时间|秒|总计|失败作业的总 AU 时间。|无维度|
@@ -1000,4 +999,3 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 * [了解 Azure Monitor 中的指标](monitoring-overview-metrics.md)
 * [针对指标创建警报](insights-receive-alert-notifications.md)
 * [将指标导出到存储、事件中心或 Log Analytics](monitoring-overview-of-diagnostic-logs.md)
-

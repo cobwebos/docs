@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a6d9cd05eb370399fc95cc64bae892e8b5a73fe2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -236,5 +235,4 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
 
 * [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
 * [Microsoft Azure Cost Estimator Tool (desktop)](http://www.microsoft.com/download/details.aspx?id=43376)
-
 

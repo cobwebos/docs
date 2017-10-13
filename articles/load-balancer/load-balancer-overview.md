@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ecf1fc38d2b9fd54fe5b00db616224a0848179fe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
 
 Azure 负载均衡器可提高应用程序的可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载均衡集中定义的运行状况良好的服务实例之间分配传入流量。
@@ -103,5 +101,4 @@ Azure 负载均衡器可提高应用程序的可用性和网络性能。 它是�
 - 创建[面向 Internet 的负载均衡器](load-balancer-get-started-internet-portal.md)
 
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)
-
 

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/29/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c9175cce0cb93e73009fb8d751e54f631603d482
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-storage-account-using-powershell"></a>使用 PowerShell 创建存储帐户
 
 Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 此指南详细介绍如何使用 PowerShell 创建 Azure 存储帐户。 
@@ -39,7 +37,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 Login-AzureRmAccount
 ```
 
-如果你不知道要使用哪个位置，则可以列出可用的位置。 显示列表后，找到要使用的位置。 此示例将使用 eastus。 将其存储在变量中，并使用该变量，这样你可以在一个位置更改它。
+如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 本示例使用 eastus。 将其存储在变量中，并使用该变量，这样就可以在某个位置更改它。
 
 ```powershell
 Get-AzureRmLocation | select Location 

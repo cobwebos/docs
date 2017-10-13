@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: cjiang
 ms.openlocfilehash: bad37f2447ac8de727326914b611f81effc9cf3f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="your-debit-card-or-credit-card-is-declined-at-azure-sign-up"></a>借记卡或信用卡在注册 Azure 时被拒绝
 如果在注册 Azure 时借记卡或信用卡被拒绝或不被接受，可能表示出现了以下问题之一：

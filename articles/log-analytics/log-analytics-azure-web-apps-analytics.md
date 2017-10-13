@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: banders
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 9ef26d4b6bfd92925a70b7bbdf8979e287c73445
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>查看所有 Azure Web 应用资源的指标的分析数据
 
 ![Web 应用符号](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
@@ -144,4 +142,3 @@ Azure Web 应用分析解决方案从 Azure 中收集两组指标：
 
 - 为特定指标创建[警报](log-analytics-alerts-creating.md)。
 - 使用[日志搜索](log-analytics-log-searches.md)查看活动日志中的详细信息。
-

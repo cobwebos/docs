@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 649c656b08c03ca9c902b0d80e77d9b3b662635b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>如何通过 Node.js 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -345,4 +344,3 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 
 [生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) [Azure 存储团队博客]：http://blogs.msdn.com/b/windowsazurestorage/ [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]：https://www.microsoft.com/web/webmatrix/
-

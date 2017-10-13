@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: maxluk
+ms.openlocfilehash: e64720efa168a84193dc3f351def0e58979f7f86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 78051b9df15c62d4caf56d800c9a5f4421ea2254
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -46,8 +45,7 @@ ms.lasthandoff: 09/13/2017
 
     ![使用 Azure Resource Manager 模板创建 HDInsight Spark 群集](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "使用 Azure Resource Manager 模板在 HDInsight 中创建 Spark 群集")
 
-    * 
-            **订阅**：为此群集选择 Azure 订阅。
+    * **订阅**：为此群集选择 Azure 订阅。
     * **资源组**：创建资源组，或选择现有的资源组。 资源组用于管理项目的 Azure 资源。
     * **位置**：选择资源组的位置。 模板将此位置用于创建群集，以及用于默认群集存储。
     * ClusterName：为要创建的 HDInsight 群集输入名称。
@@ -132,7 +130,6 @@ Spark SQL 同时支持将 SQL 和 HiveQL 作为查询语言。 其功能包括�
 
 > [!div class="nextstepaction"]
 >[在 HDInsight Spark 群集上运行交互式查询](hdinsight-apache-spark-load-data-run-query.md)
-
 
 
 

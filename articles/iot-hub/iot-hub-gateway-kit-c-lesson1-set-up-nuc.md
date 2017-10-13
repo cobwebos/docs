@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
 ms.openlocfilehash: 1a3a92ab8d08c6ed6f047208217c46022027157e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>将 Intel NUC 设置为 IoT 网关
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/03/2017
 
 本课介绍以下内容：
 
-- 如何将 Intel NUC 与外设连接。
+- 如何将 Intel NUC 与外围设备连接。
 - 如何使用智能包管理器在 Intel NUC 上安装和更新所需的包。
 - 如何运行“hello_world”示例应用程序来验证网关功能。
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 08/03/2017
 
 ![网关工具包](media/iot-hub-gateway-kit-lessons/lesson1/kit.png)
 
-## <a name="connect-intel-nuc-with-the-peripherals"></a>将 Intel NUC 与外设连接
+## <a name="connect-intel-nuc-with-the-peripherals"></a>将 Intel NUC 与外围设备连接
 
 下图是已连接到各种外围设备的 Intel NUC 示例：
 
@@ -110,7 +110,7 @@ Azure IoT Edge 包中包含 IoT Edge 及其依赖项的预编译二进制文件�
    rpm --import iot_pub2.key  
    ```
 
-   `rpm` 命令导入 rpm 密钥。 `smart channel`命令将 rpm 通道添加到智能包管理器。 运行 `smart update` 命令前，会看到如下输出。
+   `rpm` 命令导入 rpm 密钥。 `smart channel` 命令将 rpm 通道添加到智能包管理器。 运行 `smart update` 命令前，将看到如下输出。
 
    ![rpm 和智能通道命令输出](media/iot-hub-gateway-kit-lessons/lesson1/rpm_smart_channel.png)
 
@@ -140,7 +140,7 @@ Azure IoT Edge 包中包含 IoT Edge 及其依赖项的预编译二进制文件�
 
 ## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>运行 Azure IoT Edge“hello_world”示例应用程序
 
-以下示例应用程序通过 `hello_world.json` 文件创建网关，并使用 Azure IoT Edge 体系结构的基本组件每隔 5 秒将“hello world”消息记录到文件 (log.txt)。
+此示例应用程序通过 `hello_world.json` 文件创建网关，并使用 Azure IoT Edge 体系结构的基本组件每隔 5 秒将“hello world”消息记录到文件 (log.txt)。
 
 可以通过执行以下命令来运行 Hello World 示例：
 
@@ -149,7 +149,7 @@ cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 ./hello_world hello_world.json
 ```
 
-允许 Hello World 应用程序运行几分钟，并点击 Enter 键来将其停止。
+允许 Hello World 应用程序运行几分钟，然后点击 Enter 键来将其停止。
 ![应用程序输出](media/iot-hub-gateway-kit-lessons/lesson1/hello_world.png)
 
 > 可以忽略后按 Enter，会显示任何参数无效 handle(NULL) 错误。
@@ -162,14 +162,14 @@ cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 vim log.txt
 ```
 
-然后，用户将看到 log.txt，将每隔 5 秒编写的网关 Hello World 模块的日志记录消息的 JSON 格式输出的内容。
+然后，会看到 log.txt，将每隔 5 秒编写的网关 Hello World 模块的日志记录消息的 JSON 格式输出的内容。
 ![log.txt 目录视图](media/iot-hub-gateway-kit-lessons/lesson1/logtxtview.png)
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 
 ## <a name="summary"></a>摘要
 
-祝贺！ 已将 Intel NUC 设置为网关。 接下来可进入下一课，了解如何设置主机、创建 Azure IoT 中心以及注册 Azure IoT 中心逻辑设备。
+祝贺你！ 现已将 Intel NUC 设置为网关。 接下来可进入下一课，了解如何设置主机、创建 Azure IoT 中心以及注册 Azure IoT 中心逻辑设备。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 IoT 网关将设备连接到 Azure IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)

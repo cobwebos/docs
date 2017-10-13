@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
 ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 上传自定义磁盘映像并从其创建 Linux VM
 本文说明如何使用 Resource Manager 部署模型将虚拟硬盘 (VHD) 上传到 Azure，并从此自定义映像创建 Linux VM。 此功能可让你安装并配置 Linux 分发以满足需求，然后使用该 VHD 快速创建 Azure 虚拟机 (VM)。
@@ -112,15 +112,15 @@ azure config mode arm
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-image-to-be-uploaded"></a>准备要上传的映像
-Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章指导用户准备 Azure 上支持的各种 Linux 分发版：
+Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章指导如何准备 Azure 上支持的各种 Linux 分发：
 
-* **[基于 CentOS 的分发版](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[基于 CentOS 的分发](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[其他 - 非认可分发](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[其他 - 非认可分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 另请参阅 **[Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)**，以获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
 
@@ -168,7 +168,7 @@ data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w
 info:    storage account keys list command OK
 
 ```
-记下 `key1` ，因为你会在后续步骤中使用它与存储帐户进行交互。
+记下 `key1`，你会在后续步骤中使用它与存储帐户进行交互。
 
 ## <a name="create-a-storage-container"></a>创建存储容器
 在存储帐户内创建容器以整理虚拟磁盘和映像，其方式与创建各种目录以便通过逻辑方式整理本地文件系统相同。 一个存储帐户可以包含任意数目的容器。 

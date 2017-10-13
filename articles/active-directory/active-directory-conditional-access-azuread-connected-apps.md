@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4720d168f5ecd3a5e39cdcad812efb52755fb59a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 1dd3088137b5bd4ff3407c5e5735d93de373ecd5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-active-directory-conditional-access"></a>Azure Active Directory 条件性访问入门
 借助用于 [SaaS](https://azure.microsoft.com/overview/what-is-saas/) 应用的 Azure Active Directory 条件性访问和与 Azure AD 连接的应用，可以基于组、位置和应用程序敏感性配置条件性访问。 
@@ -38,7 +37,7 @@ ms.lasthandoff: 12/29/2016
 
 1. 使用身为 Azure AD 全局管理员的帐户登录到 Azure 经典门户。
 2. 在左窗格中选择“Active Directory”。
-3. 在“目录”选项卡中选择你的目录。
+3. 在“目录”选项卡中选择目录。
 4. 选择“应用程序”选项卡。
 5. 选择要为其配置规则的应用程序。
 6. 选择“配置”  选项卡。
@@ -63,7 +62,7 @@ ms.lasthandoff: 12/29/2016
 ### <a name="access-rule-options"></a>访问规则选项
 可以使用以下选项：
 
-* **需要多重身份验证**：要求要向其应用访问规则的用户先完成多重身份验证，然后才能访问策略所应用到的应用程序。
+* **需要多重身份验证**：要求要向其应用访问规则的用户先完成多重身份验证，才能访问策略所应用到的应用程序。
 * **不在工作网络时要求多重身份验证**：来自受信任 IP 地址的用户不需要执行多重身份验证。 可以在 Multi-Factor Authentication 设置页上配置受信任的 IP 地址范围。
 * **不在工作网络时阻止访问**：阻止不是来自受信任 IP 地址的用户。 可以在 Multi-Factor Authentication 设置页上配置受信任的 IP 地址范围。
 
@@ -76,7 +75,7 @@ ms.lasthandoff: 12/29/2016
 ### <a name="configure-federation-services-to-provide-multi-factor-authentication"></a>配置联合身份验证服务以提供多重身份验证
 对于联合租户，MFA 可能通过 Azure Active Directory 或本地 AD FS 服务器执行。
 
-默认情况下，MFA 将在由 Azure Active Directory 托管的页上进行。 若要在本地配置 MFA，必须使用适用于 Windows PowerShell 的 Azure AD 模块，在 Azure Active Directory 中将 **–SupportsMFA** 属性设置为 **true**。
+默认情况下，MFA 会在由 Azure Active Directory 托管的页上进行。 要在本地配置 MFA，必须使用适用于 Windows PowerShell 的 Azure AD 模块，在 Azure Active Directory 中将 **–SupportsMFA** 属性设置为 **true**。
 
 以下示例演示如何在 contoso.com 租户上使用 [Set-MsolDomainFederationSettings cmdlet](https://msdn.microsoft.com/library/azure/dn194088.aspx) 启用本地 MFA：
 
@@ -87,5 +86,4 @@ ms.lasthandoff: 12/29/2016
 ## <a name="related-articles"></a>相关文章
 * [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
 

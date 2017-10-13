@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
+ms.openlocfilehash: bfeba57036338b4e325d2f122443f2cde0373eed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 701a8febb3f897fd7f1a81a00adb4635df153d3a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-powershell"></a>使用 PowerShell 在可用性区域中创建公共 IP 地址
 
 可以在 Azure 可用性区域（预览）中部署公共 IP 地址。 可用性区域是 Azure 区域中物理上独立的区域。 了解如何：
@@ -34,7 +32,7 @@ ms.lasthandoff: 09/25/2017
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本文需要已安装 4.4.0 版或更高版本的 AzureRM 模块。 若要查找版本，请运行 `Get-Module -ListAvailable AzureRM`。 如果需要安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM)安装最新版本的 AzureRM 模块。
+本文需要已安装 4.4.0 版或更高版本的 AzureRM 模块。 若要查找版本，请运行 `Get-Module -ListAvailable AzureRM`。 如果需要进行安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM)安装最新版本的 AzureRM 模块。
 
 > [!NOTE]
 > 可用性区域处于预览状态，已准备好在开发和测试方案中使用。 可为选择 Azure 资源、区域和 VM 大小系列提供支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。

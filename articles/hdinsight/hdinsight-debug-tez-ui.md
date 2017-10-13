@@ -16,13 +16,13 @@ ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: 3889fa1c3523eb0330cbe3b7640fd8590a5ceadf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业
-Tez UI 是一个网页，可用于了解和调试在基于 Windows 的 HDInsight 群集上将 Tez 用作执行引擎的作业。 利用 Tez UI，可以将作业显示为包含已连接项目的图形、深入了解每个项目并检索统计信息和日志记录信息。
+Tez UI 是一个网页，可用于了解和调试在基于 Windows 的 HDInsight 群集上将 Tez 用作执行引擎的作业。 利用 Tez UI，可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -92,9 +92,9 @@ Tez UI 包含数据的前提是使用 Tez 引擎的作业当前正在运行或�
 
     ![Tez UI](./media/hdinsight-debug-tez-ui/tezui.png)
 
-    在 Tez UI 加载时，会看到群集中当前正在运行或过去曾经运行过的 DAG 列表。 默认视图包括“DAG 名称”、“ID”、“提交者”、“状态”、“开始时间”、“结束时间”、“持续时间”、“应用程序 ID”和“队列”。 使用页面右侧的齿轮图标可以添加更多列。
+    在 Tez UI 加载以后，会看到群集中当前正在运行或过去曾经运行过的 DAG 的列表。 默认视图包括“DAG 名称”、“ID”、“提交者”、“状态”、“开始时间”、“结束时间”、“持续时间”、“应用程序 ID”和“队列”。 使用页面右侧的齿轮图标可以添加更多列。
 
-    如果只有一个条目，则该条目对应于在前一部分运行的查询。 如果有多个条目，可在 DAG 上方的字段中输入搜索条件，并按 **Enter** 进行搜索。
+    如果只有一个条目，则该条目是针对你在前一部分运行的查询的。 如果有多个条目，可在 DAG 上方的字段中输入搜索条件，并按 **Enter** 进行搜索。
 6. 选择最新的 DAG 条目的 **DAG 名称**。 此时会显示有关 DAG 的信息，以及用于下载 JSON Zip 文件（其中包含有关 DAG 的信息）的选项。
 
     ![DAG 详细信息](./media/hdinsight-debug-tez-ui/dagdetails.png)

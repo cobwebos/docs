@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1aac856d154724e3dcd282e2d34c27571cd1cb02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 本文有助于对数据管理网关配置高可用性和可伸缩性解决方案。    
@@ -250,4 +249,3 @@ Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如�
 请参阅以下文章：
 - [数据管理网关](data-factory-data-management-gateway.md) - 提供对网关的详细概述。
 - [在本地和云数据存储间移动数据](data-factory-move-data-between-onprem-and-cloud.md) - 包含使用单节点网关的分布说明演练。 
-

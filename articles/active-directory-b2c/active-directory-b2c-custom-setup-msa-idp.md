@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
 ms.openlocfilehash: 8c981046ff41d3927ff60d6dc4f40366ae25ba74
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/29/2017
 
 本文演示如何通过使用[自定义策略](active-directory-b2c-overview-custom.md)，使用户能够从 Microsoft 帐户 (MSA) 进行登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
 这些步骤包括：

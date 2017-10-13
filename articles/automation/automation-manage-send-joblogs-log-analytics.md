@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2017
 ms.author: magoedte
+ms.openlocfilehash: 21923adaa8f8118995799319c1fd496a6e449faa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 878149521edc969dc3e15e198ff3b2ead978cf86
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>将作业状态和作业流从自动化转发到 Log Analytics (OMS)
 自动化可以将 Runbook 作业状态和作业流发送到 Microsoft Operations Management Suite (OMS) Log Analytics 工作区。  可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，使用 Log Analytics，可以：
@@ -207,4 +206,3 @@ Log Analytics 可以更直观地显示自动化作业的运行情况，并且可
 * 若要了解如何创建输出和错误消息以及从 Runbook 检索此类消息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md)
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅 [Track a runbook job](automation-runbook-execution.md)（跟踪 Runbook 作业）
 * 若要了解有关 OMS Log Analytics 和数据收集源的详细信息，请参阅 [Collecting Azure storage data in Log Analytics overview](../log-analytics/log-analytics-azure-storage.md)（在 Log Analytics 中收集 Azure 存储数据概述）
-

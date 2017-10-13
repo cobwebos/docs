@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/23/2017
 ms.author: genli
+ms.openlocfilehash: 76ab1600903705aad7f18f48f41cb7119c3c09bf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: f6e068e60e8c7b3b095e10cb7e109eb68a483de4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -182,7 +181,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效**。
+**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效。**
 
 ### <a name="cause"></a>原因
 
@@ -264,4 +263,3 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 ### <a name="solution"></a>解决方案
 
 若要解决此问题，请从 C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections 删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
-

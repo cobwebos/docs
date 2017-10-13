@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/11/2017
 ms.author: yurid
 ms.openlocfilehash: 0e0a0ce5c0795cec0e47cd5f729099f4762381a2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。

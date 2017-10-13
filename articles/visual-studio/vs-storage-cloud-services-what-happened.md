@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
 ms.openlocfilehash: 4c9de56f6daf07097c0f593db37d14dce3bce05f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>我的云服务项目（Visual Studio Azure 存储连接服务）发生了什么情况？
 ## <a name="references-added"></a>已添加引用

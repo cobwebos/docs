@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: b67bb30fa259fa08e37e11afec724c8b8c3eb633
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-azure-deployment-errors"></a>了解 Azure 部署错误
 本主题介绍部署错误，以及如何了解有关错误的详细信息。 有关常见部署错误的解决方法，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
@@ -162,7 +162,7 @@ ms.lasthandoff: 07/29/2017
 
    ![选择部署历史记录](./media/resource-manager-troubleshoot-tips/select-deployment.png)
 
-2. 从历史记录中选择一个部署，并选择“事件” 。
+2. 从历史记录中选择一个部署，并选择“事件”。
 
    ![选择部署事件](./media/resource-manager-troubleshoot-tips/select-deployment-events.png)
 

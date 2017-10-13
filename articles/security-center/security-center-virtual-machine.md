@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 48314788dbe4618f271f0235f106dbe15ef004b8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: 2e5cce26bc8bebbe6b9f8ba3c3d03e8c3db8c87c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
 可以在 [Azure 门户](https://portal.azure.com/)中监视 Azure Cosmos DB 帐户。 对于每个 Azure Cosmos DB 帐户，一整套指标可用于监视吞吐量、存储、可用性、延迟和一致性。
@@ -87,5 +86,4 @@ ms.lasthandoff: 09/21/2017
 
 ## <a name="next-steps"></a>后续步骤
 若要深入了解 Azure Cosmos DB 容量规划，请参阅 [Azure Cosmos DB Capacity Planner 计算器](https://www.documentdb.com/capacityplanner)。
-
 

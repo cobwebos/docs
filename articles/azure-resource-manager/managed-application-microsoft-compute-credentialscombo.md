@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 254f383ee6f7cb9f7051fa135d85319a22c3c369
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: 9a35d6d8631e02fd7b3745cc15efd92a1556de53
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 元素
 一组控件，其中包含针对 Windows 和 Linux 密码及 SSH 公钥的内置验证。 [创建 Azure 托管应用程序](managed-application-publishing.md)时使用此元素。
@@ -85,9 +84,9 @@ ms.lasthandoff: 05/13/2017
 ## <a name="remarks"></a>备注
 - 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。
 - 如果 `constraints.required` 设置为 **true**，则密码或 SSH 公钥文本框中必须包含值才能成功通过验证。 默认值为 **true**。
-- 如果 `options.hideConfirmation` 设置为 **true**，则用于确认用户密码的第二个文本框将被隐藏。 默认值为 **false**。
-- 如果 `options.hidePassword` 设置为 **true**，则使用密码身份验证这一选项将被隐藏。 只有当 `osPlatform` 为 **Linux** 时才能使用它。 默认值为 **false**。
-- 可以使用 `customPasswordRegex` 属性实现对允许的密码的其他约束。 当密码没有通过自定义验证时，将显示 `customValidationMessage` 中的字符串。 两个属性的默认值都是 **null**。
+- 如果 `options.hideConfirmation` 设置为 **true**，则用于确认用户密码的第二个文本框会被隐藏。 默认值为 **false**。
+- 如果 `options.hidePassword` 设置为 **true**，则使用密码身份验证这一选项会被隐藏。 只有当 `osPlatform` 为 **Linux** 时才能使用它。 默认值为 **false**。
+- 可以使用 `customPasswordRegex` 属性实现对允许的密码的其他约束。 当密码没有通过自定义验证时，会显示 `customValidationMessage` 中的字符串。 两个属性的默认值都是 **null**。
 
 ## <a name="sample-output"></a>示例输出
 如果 `osPlatform` 为 **Windows**，或者用户提供了密码而非 SSH 公钥，则应当会生成以下输出：
@@ -111,4 +110,3 @@ ms.lasthandoff: 05/13/2017
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](managed-application-createuidefinition-elements.md)。
-

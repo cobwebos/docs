@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: 9adbc9cc13f0b4cafa3a3a7703c46f8085b15232
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>将设备连接到远程监视预配置解决方案 (Linux)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
@@ -61,7 +61,7 @@ git clone https://github.com/kgabis/parson.git
 - 创建四个文件：**main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、**CMakeLists.txt**。
 - 创建名为 **parson** 的文件夹。
 
-将“parson.c”和“parson.h”文件从 Parson 存储库的本地副本复制到“remote\_monitoring/parson”文件夹。
+将 **parson.c** 和 **parson.h** 文件从 Parson 存储库的本地副本复制到 **remote\_monitoring/parson** 文件夹。
 
 在文本编辑器中，打开 **remote\_monitoring.c** 文件。 添加以下 `#include` 语句：
    

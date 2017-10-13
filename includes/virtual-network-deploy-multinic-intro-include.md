@@ -1,4 +1,4 @@
-可以在 Azure 中创建虚拟机 (Vm)，还可以将多个网络接口 (Nic) 附加到每个 Vm。 多 NIC 是许多网络虚拟设备，例如应用程序传送和 WAN 优化解决方案所必需的。 多 NIC 还提供更多的网络流量管理功能，包括前面之间的流量隔离结束 NIC，并将从管理平面流量的最终 nic 进行通信，或者将数据平面流量。
+可以在 Azure 中创建虚拟机 (VM)，然后将多个网络接口 (NIC) 附加到每个 VM。 多 NIC 是许多网络虚拟设备（例如应用程序传送和 WAN 优化解决方案）所必需的。 多 NIC 还提供更多的网络流量管理功能，包括在前端 NIC 和后端 NIC 之间进行流量隔离，或者将数据平面流量与管理平面流量进行隔离。
 
-你可以在 Vm 中实现多 Nic 之前，有必要了解何时可以使用多 Nic，以及如何使用它们。 读取[多 NIC 概述](../articles/virtual-network/virtual-networks-multiple-nics.md)若要了解有关使用多个 Nic 的虚拟机的详细信息。
+在 VM 中实现多 NIC 之前，有必要了解何时可以使用多 NIC，以及如何使用它们。 若要详细了解具有多个 NIC 的 VM，请阅读[多 NIC 概述](../articles/virtual-network/virtual-networks-multiple-nics.md)。
 

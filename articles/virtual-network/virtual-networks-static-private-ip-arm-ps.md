@@ -17,10 +17,10 @@ ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2810190897c44c944912ef3325b1f40479aa3078
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>使用 PowerShell 为虚拟机配置专用 IP 地址
 
@@ -201,7 +201,7 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
 ## <a name="change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>更改分配给网络接口的专用 IP 地址的分配方法
 
-专用 IP 地址通过静态或动态分配方法分配给 NIC。 在启动之前处于已停止（已解除分配）状态的 VM 后，动态 IP 地址可能会改变。 如果 VM 托管着需要同一 IP 地址的服务，则这可能会导致问题，即使在从已停止（已解除分配）状态重新启动后也是如此。 静态 IP 地址会一直保留，直到 VM 被删除。 要更改 IP 地址的分配方法，请运行以下脚本，这会将分配方法从动态更改为静态。 如果当前专用 IP 地址的分配方法为静态，请在执行脚本前将“静态”更改为“动态”。
+专用 IP 地址通过静态或动态分配方法分配给 NIC。 在启动之前处于已停止（已解除分配）状态的 VM 后，动态 IP 地址可能会改变。 如果 VM 托管着需要同一 IP 地址的服务，则这可能会导致问题，即使在从已停止（已解除分配）状态重新启动后也是如此。 静态 IP 地址会一直保留，直到 VM 被删除。 要更改 IP 地址的分配方法，请运行以下脚本，这会将分配方法从动态更改为静态。 如果当前专用 IP 地址的分配方法为静态，请在执行脚本前将*静态*更改为*动态*。
 
 ```powershell
 $RG = "TestRG"

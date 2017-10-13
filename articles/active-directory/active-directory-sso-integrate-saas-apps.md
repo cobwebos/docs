@@ -17,10 +17,10 @@ ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: aaronsm
 ms.openlocfilehash: fc0d297598c334ca8f6f8a2bd3ae948c87956342
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-active-directory-single-sign-on-with-saas-apps"></a>将 Azure Active Directory 单一登录与 SaaS 应用相集成
 > [!div class="op_single_selector"]
@@ -37,9 +37,9 @@ ms.lasthandoff: 08/18/2017
 > Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 有关如何在 Azure AD 管理中心分配管理员角色的信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-enterprise-apps-manage-sso.md)。
 
 ## <a name="authentication"></a>身份验证
-对于支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议的应用程序，Azure Active Directory 使用签名证书来建立信任关系。 有关详细信息，请参阅[管理联合单一登录的证书](active-directory-sso-certs.md)。
+对于支持 SAML 2.0、WS-联合身份验证或 OpenID Connect 协议的应用程序，Azure Active Directory 将使用签名证书来建立信任关系。 有关详细信息，请参阅[管理联合单一登录的证书](active-directory-sso-certs.md)。
 
-对于仅支持基于 HTML 表单的登录的应用程序，Azure Active Directory 使用“密码保管”来建立信任关系。 这样，组织中的用户便可以使用 SaaS 应用程序中的用户帐户信息自动登录到 SaaS 应用程序。 Azure AD 将收集并安全地存储用户帐户信息和相关密码。 有关详细信息，请参阅[基于密码的单一登录](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)。
+对于仅支持基于 HTML 窗体的登录的应用程序，Azure Active Directory 将使用“密码保管库”来建立信任关系。 这样，组织中的用户便可以使用 SaaS 应用程序中的用户帐户信息自动登录到 SaaS 应用程序。 Azure AD 将收集并安全地存储用户帐户信息和相关密码。 有关详细信息，请参阅[基于密码的单一登录](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)。
 
 ## <a name="authorization"></a>授权
 预配的帐户通过单一登录身份验证之后，可授权用户使用应用程序。 用户预配可以手动完成，在某些情况下，可以根据 Azure Active Directory 中所做的更改在 SaaS 应用程序中添加和删除用户信息。 有关使用现有 Azure AD 连接器自动化预配的详细信息，请参阅 [SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)。

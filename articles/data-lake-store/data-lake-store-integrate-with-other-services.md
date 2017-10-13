@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: de7aff6b31d937576da65498c5fcce2ae9abdbf1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>集成 Data Lake Store 和其他 Azure 服务
 Azure Data Lake Store 可和其他 Azure 服务结合使用来提供更多的方案。 下面的文章列出了可和 Data Lake Store 集成的服务。
@@ -71,5 +70,4 @@ Azure Data Lake Store 提供命令行工具 AdlCopy，可从 Azure 存储 Blob �
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [通过门户实现 Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * [通过 PowerShell 实现 Data Lake Store 入门](data-lake-store-get-started-powershell.md)  
-
 

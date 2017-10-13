@@ -15,12 +15,11 @@ ms.devlang: rest-api
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
+ms.openlocfilehash: 16bd85065f77612ac342ae4a8b500e0c7fa2a078
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 160fbc98e0f3dcc7d17cbe0c7f7425811596a896
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 [Azure Cosmos DB](../cosmos-db/introduction.md) 是快速灵活的全球复制数据库服务，用于存储大量事务与操作数据，读取和写入时的延迟为个位数的毫秒且可预测。 它非常适合用于 IoT、游戏、零售和操作日志记录应用程序。 这些应用程序中的一种常见设计模式是跟踪对 Azure Cosmos DB 数据所做的更改、更新具体化的视图、执行实时分析、将数据存档到冷存储，以及在发生特定事件时根据这些更改触发通知。 使用 Azure Cosmos DB 中的更改源支持，可针对每种模式构建高效、可扩展的解决方案。
@@ -532,4 +531,3 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 ## <a name="next-steps"></a>后续步骤
 * 试用 [GitHub 上的 Azure Cosmos DB 更改源代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)
 * 使用 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 开始编写代码。
-

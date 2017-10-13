@@ -15,22 +15,21 @@ ms.topic: article
 ms.date: 08/12/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 94c820b23a91f3493a0fbc8e1fd38c86d371e985
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-create-pipelines.md)
+> * [版本 1 - GA](data-factory-create-pipelines.md)
 > * [版本 2 - 预览版](../concepts-pipelines-activities.md)
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的管道](../concepts-pipelines-activities.md)。
 
-本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端对端数据驱动工作流。  
+本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。  
 
 > [!NOTE]
 > 本文假定已浏览 [Azure 数据工厂简介](data-factory-introduction.md)。 如果还没有亲身体验如何创建数据工厂，请浏览[数据转换教程](data-factory-build-your-first-pipeline.md)和/或[数据移动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，以便更好地理解该文章。  
@@ -362,5 +361,4 @@ ms.lasthandoff: 09/25/2017
 - 有关数据集的详细信息，请参阅[创建数据集](data-factory-create-datasets.md)文章。 
 - 若要深入了解如何计划和执行管道，请参阅[在 Azure 数据工厂中计划和执行](data-factory-scheduling-and-execution.md)一文。 
   
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
 ms.openlocfilehash: 141919ab4506b3de4c4a69670dcf54c60ee6409c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>计划程序 PowerShell Cmdlet 参考
 下表介绍 Azure 计划程序中每个主要 cmdlet 的参考页并链接到该页。

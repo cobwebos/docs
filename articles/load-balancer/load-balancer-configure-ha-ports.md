@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 7256548b988812c64ca9a9f8a84fec377646635d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>如何为内部负载均衡器配置高可用性端口
 
 本文提供了在内部负载均衡器上部署高可用性 (HA) 端口的示例。 有关特定于网络虚拟设备的配置，请参阅相应的提供程序网站。
@@ -90,4 +88,3 @@ azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb -
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[高可用性端口](load-balancer-ha-ports-overview.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 204c415a6dc77af1be78f8b28a1a5cbcd2fa7883
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 Service Fabric 是一种分布式系统平台，可让你轻松打包、部署和管理可缩放、可靠的微服务。 本主题详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
@@ -47,8 +46,7 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 有两种类型的服务：
 
 * **无状态：**服务的持久状态存储在 Azure 存储、Azure SQL 数据库、Azure Cosmos DB 等外部存储服务中时，请使用无状态服务。 当服务根本没有永久性存储时，请使用无状态服务。 以计算器服务为例，首先要将值传递给该服务，然后服务使用这些值执行计算并返回结果。
-* 
-            **有状态：**如果要让 Service Fabric 通过其 Reliable Collections 或 Reliable Actors 编程模型管理服务状态，请使用有状态服务。 创建命名服务时，请指定要将状态分布于其中的分区数量（实现伸缩性）。 此外，指定跨节点复制状态的次数（实现可靠性）。 每个命名服务都有一个主副本和多个辅助副本。 通过写入主要副本修改命名服务的状态。 然后，Service Fabric 会将此状态复制到所有次要副本以使状态保持同步。当主要副本失败时，Service Fabric 会自动检测到此状态，并将现有的次要副本升级为主要副本。 然后，Service Fabric 会创建新的次要副本。  
+* **有状态：**如果要让 Service Fabric 通过其 Reliable Collections 或 Reliable Actors 编程模型管理服务状态，请使用有状态服务。 创建命名服务时，请指定要将状态分布于其中的分区数量（实现伸缩性）。 此外，指定跨节点复制状态的次数（实现可靠性）。 每个命名服务都有一个主副本和多个辅助副本。 通过写入主要副本修改命名服务的状态。 然后，Service Fabric 会将此状态复制到所有次要副本以使状态保持同步。当主要副本失败时，Service Fabric 会自动检测到此状态，并将现有的次要副本升级为主要副本。 然后，Service Fabric 会创建新的次要副本。  
 
 副本或实例是指已部署或运行中的服务的代码（和有状态服务的状态）。 请参阅[副本和实例](service-fabric-concepts-replica-lifecycle.md)
 
@@ -104,5 +102,4 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 * [Service Fabric 概述](service-fabric-overview.md)
 * [为什么通过微服务的方法构建应用程序？](service-fabric-overview-microservices.md)
 * [应用程序方案](service-fabric-application-scenarios.md)
-
 

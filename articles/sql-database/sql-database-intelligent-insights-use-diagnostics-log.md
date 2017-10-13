@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4890baa4ead3323834a82b3f9340cf751bf0c755
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
 本页提供使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)、[Azure 事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
@@ -147,7 +145,6 @@ Intelligent Insights 性能日志可与 [Azure Log Analytics]( https://docs.micr
 - 了解[使用 Intelligent Insights 解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)
 - 了解[使用 Azure SQL Analytics 监视 Azure SQL 数据库](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)
 - [从 Azure 资源收集和使用日志数据](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-
 
 
 

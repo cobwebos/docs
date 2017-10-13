@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;hillaryc
 ms.openlocfilehash: 5a4e69ea7e13cb017f8fb432c524c6a8ce9228a8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="partitioned-queues-and-topics"></a>分区的队列和主题
 Azure 服务总线使用多个消息中转站来处理消息，并用多个消息传送存储来存储消息。 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 服务总线*分区*允许跨多个消息中转站和消息存储对队列和主题或*消息实体*进行分区。 这意味着分区实体的总吞吐量不再受单个消息中转站或消息存储的性能所限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。 分区的队列和主题可以包含所有先进的服务总线功能，如事务和会话支持。

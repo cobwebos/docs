@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2017
+ms.date: 09/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 07b292064178aee9ff94dc47554be2b0098ef807
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: cb77c61fe0fb649a9098745b99a5c8d62be85971
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
 
@@ -71,7 +70,7 @@ ms.lasthandoff: 07/08/2017
 **Source code**：这些示例的源代码包含在 `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` 处的 HDInsight 群集上。
 
 > [!NOTE]
-> 路径中的 `2.2.4.9-1` 是 HDInsight 群集的 Hortonworks 数据平台的版本，对于你的群集，该版本可能会不同。
+> 路径中的 `2.2.4.9-1` 是 HDInsight 群集的 Hortonworks 数据平台的版本，对于群集，该版本可能会不同。
 
 ## <a name="run-the-wordcount-example"></a>运行 wordcount 示例
 
@@ -97,7 +96,7 @@ ms.lasthandoff: 07/08/2017
 
     此消息表示可以为源文档提供多个输入路径。 最后的路径是存储输出（源文档中的单词计数）的位置。
 
-4. 使用以下语句来计算《达芬奇笔记》（已作为示例数据提供给你的群集）中所有单词的数目：
+4. 使用以下语句来计算《达芬奇笔记》（已作为示例数据提供给群集）中所有单词的数目：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -106,7 +105,7 @@ ms.lasthandoff: 07/08/2017
     将从 `/example/data/gutenberg/davinci.txt` 读取此作业的输入。 此示例的输出存储于 `/example/data/davinciwordcount` 中。 两个路径皆位于群集的默认存储，而不是本地文件系统。
 
    > [!NOTE]
-   > 如字数统计示例帮助中所述，你还可以指定多个输入文件。 例如，`hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` 会计算 davinci.txt 和 ulysses.txt 中单词的数目。
+   > 如字数统计示例帮助中所述，还可以指定多个输入文件。 例如，`hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` 会计算 davinci.txt 和 ulysses.txt 中单词的数目。
 
 5. 作业完成后，使用以下命令查看输出：
 
@@ -185,13 +184,13 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
 
 * **TeraSort**：以输入数据为例，使用 MapReduce 将数据排序到总序中
 
-    TeraSort 是一种标准 MapReduce 排序，但自定义的分区程序除外。 此分区程序使用 N-1 个抽样键（用于定义每次化简的键范围）的已排序列表。 具体说来，sample[i-1] <= key < sample[i] 的所有键都将会发送到化简变量 i。 此分区程序可确保化简变量 i 的输出全都小于化简变量 i+1 的输出。
+    TeraSort 是一种标准 MapReduce 排序，但自定义的分区程序除外。 此分区程序使用 N-1 个抽样键（用于定义每次化简的键范围）的已排序列表。 具体说来，sample[i-1] <= key < sample[i] 之类的所有键都将会发送到化简变量 i。 此分区程序可确保化简变量 i 的输出全都小于化简变量 i+1 的输出。
 
 * **TeraValidate**：一个 MapReduce 程序，用于验证输出是否已全局排序
 
     它在输出目录中对于每个文件创建一个映射，每个映射都确保每个键均小于或等于前一个键。 此映射函数生成每个文件第一个和最后一个键的记录。 化简函数确保文件 i 的第一个键大于文件 i-1 的最后一个键。 任何问题都会报告为包含故障键的化简阶段的输出结果。
 
-使用以下步骤来生成数据，排序，然后对输出进行验证：
+使用以下步骤来生成数据，排序，并对输出进行验证：
 
 1. 生成 10 GB 数据，这些数据被存储到 HDInsight 群集在 `/example/data/10GB-sort-input` 处的默认存储：
 
@@ -199,7 +198,7 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    `-Dmapred.map.tasks` 告诉 Hadoop 多少个映射任务将用于此作业。 最后两个参数指示作业创建 10 GB 数据并将其存储在 `/example/data/10GB-sort-input` 处。
+    `-Dmapred.map.tasks` 告诉 Hadoop 多少个映射任务用于此作业。 最后两个参数指示作业创建 10 GB 数据并将其存储在 `/example/data/10GB-sort-input` 处。
 
 2. 使用以下命令对数据排序：
 
@@ -207,7 +206,7 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    `-Dmapred.reduce.tasks` 告诉 Hadoop 多少个化简任务将用于此作业。 最后两个参数只是数据的输入和输出位置。
+    `-Dmapred.reduce.tasks` 告诉 Hadoop 多少个化简任务用于此作业。 最后两个参数只是数据的输入和输出位置。
 
 3. 使用以下方法来验证排序所生成的数据：
 
@@ -217,7 +216,7 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你学习了如何运行基于 Linux 的 HDInsight 群集附带的示例。 有关 Pig、Hive 和 MapReduce 如何与 HDInsight 配合使用的教程，请参阅以下主题：
+在本文中，学习了如何运行基于 Linux 的 HDInsight 群集附带的示例。 有关 Pig、Hive 和 MapReduce 如何与 HDInsight 配合使用的教程，请参阅以下主题：
 
 * [将 Pig 与 Hadoop on HDInsight 配合使用][hdinsight-use-pig]
 * [将 Hive 与 Hadoop on HDInsight 配合使用][hdinsight-use-hive]
@@ -235,4 +234,3 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-

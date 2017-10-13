@@ -17,12 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: eabe7f667aab866b8513661110fa416a61988824
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -441,7 +440,7 @@ SAP 通常被视为企业中最关键的应用程序之一。 通常，这些应
 * 最终用户需要通过 Internet 连接来利用终端服务，以便连接到 Azure 中托管的 VM。 根据来宾 OS，可以使用终端服务/RDS 或 VNC/ssh 来访问 VM，以履行培训任务或执行演示。 如果还可公开 3200、3300 和 3600 等 SAP 端口，则可以从任何连接到 Internet 的桌面访问 SAP 应用程序实例。
 * SAP 系统（和 VM）代表 Azure 中的独立方案，这种方案只要求建立公共 Internet 连接，使最终用户能够访问 VM，而不要求与 Azure 中的其他 VM 建立连接。
 * 直接在 VM 中安装并运行 SAPGUI 和浏览器。
-* 要求快速将 VM 重置到原始状态，然后在该原始状态下重新部署。
+* 要求快速将 VM 重置到原始状态，并在该原始状态下重新部署。
 * 如果演示和培训方案是在多个 VM 中实现的，则每组 VM 都需要有一个 Active Directory/OpenLDAP 和/或 DNS 服务。
 
 ![代表 Azure 云服务中的一个演示或培训方案的 VM 组][planning-guide-figure-200]
@@ -504,7 +503,7 @@ Azure 平台减少了采购前沿技术和基础结构的需要。 它可以按�
 * G 系列 VM 类型：高内存 VM 类型。
 * GS 系列 VM 类型：类似于 G 系列，但包含使用 Azure 高级存储的选项（请参阅本文档中的 [Azure 高级存储][planning-guide-3.3.2]一章）。 使用 GS 系列 VM 作为数据库服务器时，必须对 DB 数据和事务日志文件使用高级存储
 
-你可能会在不同的虚拟机系列中发现相同的 CPU 和内存配置。 但是，查阅这些不同系列 VM 的吞吐量性能时，可能会看到明显的差异， 而不管它们是否有相同的 CPU 和内存配置。 这是因为引入不同 VM 类型的基础主机服务器硬件具有不同的吞吐量特征。  通常，不同 VM 的价格也反映了吞吐量性能中显示的差异。
+你可能会在不同的 VM 系列中发现相同的 CPU 和内存配置。 但是，查阅这些不同系列 VM 的吞吐量性能时，可能会看到明显的差异， 而不管它们是否有相同的 CPU 和内存配置。 这是因为引入不同 VM 类型的基础主机服务器硬件具有不同的吞吐量特征。  通常，不同 VM 的价格也反映了吞吐量性能中显示的差异。
 
 并非每个 Azure 区域都提供所有不同的 VM 系列（有关 Azure 区域，请参阅下一章）。 另请注意，并非所有 VM 或 VM 系列都已通过 SAP 认证。
 
@@ -519,7 +518,7 @@ Microsoft 允许将虚拟机部署到所谓的“Azure 区域”。 Azure 区域
 ### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Microsoft Azure 虚拟机的概念
 Microsoft Azure 提供基础结构即服务 (IaaS) 解决方案用于托管与本地虚拟化解决方案具有类似功能的虚拟机。 可以在 Azure 门户、PowerShell 或 CLI 中创建虚拟机，这些工具还提供部署和管理功能。
 
-Azure 资源管理器可让你使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 可在应用程序生命周期的每个阶段中使用相同模板重复部署应用程序。
+Azure Resource Manager 可让你使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 可在应用程序生命周期的每个阶段中使用相同模板重复部署应用程序。
 
 有关使用资源管理器模板的详细信息，请参阅以下文档：
 
@@ -688,7 +687,7 @@ Azure 中的每个虚拟机都需要连接到虚拟网络。
 虚拟网络卡的 MAC 地址可能会发生更改，例如，在调整大小后，Windows 或 Linux 来宾 OS 会选择新的网卡，并自动使用 DHCP 来分配 IP 和 DNS 地址。
 
 ##### <a name="static-ip-assignment"></a>静态 IP 分配
-可以将固定或保留的 IP 地址分配给 Azure 虚拟网络中的 VM。 在 Azure 虚拟网络中运行虚拟机，可让你更有机会在需要实施某些方案时使用此功能。 IP 配置在整个 VM 存在期间保持有效，而无论 VM 是在运行还是已关机。 因此，当为虚拟网络定义 IP 地址范围时，必须考虑 VM（正在运行和已停止的 VM）总数。 在删除 VM 及其网络接口之前，或者在 IP 地址再次取消分配之前，保持分配此 IP 地址。 有关详细信息，请阅读[此文][virtual-networks-static-private-ip-arm-pportal]。
+可以将固定或保留的 IP 地址分配给 Azure 虚拟网络中的 VM。 在 Azure 虚拟网络中运行 VM 可让你更有机会在需要进行某些方案时使用此功能。 IP 配置在整个 VM 存在期间保持有效，而无论 VM 是在运行还是已关机。 因此，当为虚拟网络定义 IP 地址范围时，必须考虑 VM（正在运行和已停止的 VM）总数。 在删除 VM 及其网络接口之前，或者在 IP 地址再次取消分配之前，保持分配此 IP 地址。 有关详细信息，请阅读[此文][virtual-networks-static-private-ip-arm-pportal]。
 
 ##### <a name="multiple-nics-per-vm"></a>每个 VM 可以有多个 NIC
 可以为一个 Azure 虚拟机定义多个虚拟网络接口卡 (vNIC)。 由于可拥有多个 vNIC，因此可以开始设置网络流量分隔，例如通过一个 vNIC 路由客户端流量，并通过第二个 vNIC 路由后端流量。 不同的 VM 类型有不同的 vNIC 数目限制。 有关确切详细信息、功能和限制，请参阅以下文章：
@@ -1648,7 +1647,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 #### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>使用局域网打印机从 Azure 中的 SAP 实例打印
 ##### <a name="printing-over-tcpip-in-cross-premises-scenario"></a>通过跨界方案中的 TCP/IP 打印
-总体上，在 Azure VM 中设置基于本地 TCP/IP 的网络打印机的操作与在企业网络中的操作相同，但你必须确实已经建立了 VPN 站点到站点隧道或 ExpressRoute 连接。
+在 Azure VM 中设置基于本地 TCP/IP 的打印机的操作总体上与在企业网络中的操作相同，但假设前提是你确实已经建立了 VPN 站点到站点隧道或 ExpressRoute 连接。
 
 - - -
 > ![Windows][Logo_Windows] Windows
@@ -1728,8 +1727,8 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 #### <a name="including-sap-systems-in-the-transport-domain"></a>在传输域中包含 SAP 系统
 在传输域中包含 SAP 系统的操作顺序如下所述：
 
-* 在 Azure 中的 DEV 系统上，转到传输系统（客户端 000）并调用事务 STMS。 从对话框中选择“其他配置”，然后选择“将系统包含在域中”。 将域控制器指定为目标主机（[传输域中包含 SAP 系统](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)）。 现在，该系统正在等待包含到传输域中。
-* 出于安全原因，现在必须返回到域控制器以确认请求。 选择“系统概览”，并选择“审批”以审批等待中的系统。 然后确认提示消息，随后会分发该配置。
+* 在 Azure 中的 DEV 系统上，转到传输系统（客户端 000）并调用事务 STMS。 从对话框中选择“其他配置”，并选择“将系统包含在域中”。 将域控制器指定为目标主机（[传输域中包含 SAP 系统](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)）。 现在，该系统正在等待包含到传输域中。
+* 出于安全原因，现在必须返回到域控制器以确认请求。 选择“系统概览”，并选择“审批”以审批等待中的系统。 然后确认提示消息，随后将会分发该配置。
 
 现在，此 SAP 系统已包含有关传输域中所有其他 SAP 系统的必要信息。 同时，新 SAP 系统的地址数据已发送到所有其他 SAP 系统，并且该 SAP 系统已输入到传输控制程序的传输配置文件中。 检查 RFC 是否正常工作，以及是否能够访问域的传输目录。
 
@@ -1942,7 +1941,7 @@ SIOS DataKeeper 解决方案通过以下方式将共享磁盘群集资源提供�
 #### <a name="end-to-end-high-availability-for-the-complete-sap-system"></a>整个 SAP 系统的端到端高可用性
 下面是 Azure 中整个 SAP NetWeaver HA 体系结构的两个示例 - 一个适用于 Windows，另一个适用于 Linux。
 
-仅限非托管磁盘：部署许多 SAP 系统，并且所部署的 VM 数目将超过每个订阅的存储帐户上限时，可能需要稍微折衷以下所述的概念。 在此情况下，VM 的 VHD 需要合并到一个存储帐户中。 通常，你需要通过合并不同 SAP 系统的 SAP 应用程序层虚拟机的 VHD 来实现此目的。  也可以将不同 SAP 系统的不同 DBMS VM 的不同 VHD 合并到一个 Azure 存储帐户中。 因此，请记住 Azure 存储帐户的 IOPS 限制 (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
+仅限非托管磁盘：部署许多 SAP 系统，并且所部署的 VM 数目将超过每个订阅的存储帐户上限时，可能需要稍微折衷以下所述的概念。 在此情况下，VM 的 VHD 需要合并到一个存储帐户中。 通常你会通过合并不同 SAP 系统的 SAP 应用程序层 VM 的 VHD 来实现此目的。  也可以将不同 SAP 系统的不同 DBMS VM 的不同 VHD 合并到一个 Azure 存储帐户中。 因此，请记住 Azure 存储帐户的 IOPS 限制 (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
 ##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows] Windows 上的 HA
@@ -2048,4 +2047,3 @@ Azure 中 SAP 系统的高可用性要点如下：
 * 若要备份 SAP DBMS 层，请参阅 [DBMS Guide][dbms-guide]（DBMS 指南）。
 * 备份 SAP 对话实例没有太大帮助，因为重新部署简单的对话实例通常更快。
 * 备份包含 SAP 系统全局目录的 VM 和不同实例的所有配置文件很有帮助，应该通过 Windows 备份或者诸如 Linux 上的 tar 来执行此操作。 由于 Windows Server 2008 (R2) 与 Windows Server 2012 (R2) 之间存在差异，因此使用更新版 Windows Server 可以更轻松地进行备份，建议运行 Windows Server 2012 (R2) 作为 Windows 来宾操作系统。
-

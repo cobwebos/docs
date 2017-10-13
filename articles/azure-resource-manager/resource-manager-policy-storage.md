@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/05/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6612ee61f5c50e743241b92030660cea7ae7094d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apply-resource-policies-to-storage-accounts"></a>将资源策略应用于存储帐户
 本主题介绍多个可以应用于 Azure 存储帐户的[资源策略](resource-manager-policy.md)。 这些策略可确保组织中部署的存储帐户的一致性。 

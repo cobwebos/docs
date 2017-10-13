@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
 ms.author: sethm;clemensv
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: ffab5b058420d61be17d386a46a29391d5728859
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>事件中心身份验证和安全模型概述
 
@@ -95,9 +94,9 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 
 客户端向事件中心发送数据时，客户端会使用令牌标记其发送请求。 为了防止攻击者窃听和盗取令牌，客户端与事件中心之间的通信必须通过加密通道进行。
 
-### <a name="blacklisting-clients"></a>将客户端列入黑名单
+### <a name="blacklisting-clients"></a>将客户端列入方块列表
 
-如果令牌被攻击者盗取，攻击者可能会模拟令牌已被盗的客户端。 将客户端列入黑名单会导致客户端不可用，直至该客户端收到使用其他发布者的新令牌。
+如果令牌被攻击者盗取，攻击者可能会模拟令牌已被盗的客户端。 将客户端列入方块列表会导致客户端不可用，直至该客户端收到使用其他发布者的新令牌。
 
 ## <a name="authentication-of-back-end-applications"></a>后端应用程序的身份验证
 
@@ -118,5 +117,4 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 [事件中心概述]: event-hubs-what-is-event-hubs.md
 [使用事件中心的示例应用程序]: https://github.com/Azure/azure-event-hubs/tree/master/samples
 [共享访问签名概述]: ../service-bus-messaging/service-bus-sas.md
-
 

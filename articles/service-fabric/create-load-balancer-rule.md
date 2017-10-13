@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/22/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: d152444f38e7a09b97ce7cb9778d8c67a0a5a421
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="open-ports-for-a-service-fabric-cluster"></a>为 Service Fabric 群集打开端口
 
 使用 Azure Service Fabric 群集部署的负载均衡器将流量定向到在节点上运行的应用。 如果将应用更改为使用另一端口，必须在 Azure 负载均衡器中公开该端口（或路由另一端口）。

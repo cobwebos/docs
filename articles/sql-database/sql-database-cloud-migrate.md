@@ -17,10 +17,10 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 ms.openlocfilehash: 90c78007368c2679e1c5afdb9369869adde77f0d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>将 SQL Server 数据库迁移到云中的 SQL 数据库
 本文介绍两种将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库的主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。

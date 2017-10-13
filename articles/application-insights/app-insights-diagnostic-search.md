@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
 ms.openlocfilehash: e2d12f807756b778a64920b12a66fba184a99844
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 搜索是 [Application Insights](app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。

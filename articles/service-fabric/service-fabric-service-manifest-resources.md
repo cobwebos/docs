@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: subramar
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 615b758d6aa48f94ec8c9159d4f52e32f413c8d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -201,4 +200,3 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 并且应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 仍由 ServiceFabric 决定端口。 而协议将 TCP。
 
 假设指定了错误值。 例如，对于“端口”，你指定了字符串值“Foo”而不是 int。新的 ServiceFabricApplication 命令将失败并出现错误：“ResourceOverrides”部分中的名称“ServiceEndpoint1”属性“Port1”的替代参数无效。 指定的值为“Foo”，而要求的值为“int”。
-

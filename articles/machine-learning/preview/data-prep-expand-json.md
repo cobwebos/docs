@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 57f461f9a39e8069654985d86bfe3ae23dd0855a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="expand-json-transformation"></a>“展开 JSON”转换
 通过“展开 JSON” 转换，用户可以将包含有效 JSON 文本的现有列展开为多列。
 
@@ -39,5 +37,4 @@ ms.lasthandoff: 09/25/2017
 |---------------------------------------------------------|-----------------|----------------|
 | { "Name" : "Carrie Dodson", "Phone" : "123-4567-890"}   | Carrie Dodson   | 123-4567-890   |
 | { "Name" : "Leonard Robledo", "Phone" : "456-7890-123"} | Leonard Robledo | 456-7890-123   |
-
 

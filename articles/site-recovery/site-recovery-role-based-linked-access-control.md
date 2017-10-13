@@ -1,6 +1,6 @@
 ---
-title: "使用基于角色的访问控制来管理 Azure Site Recovery |Microsoft 文档"
-description: "本文介绍如何应用并使用基于角色的访问控制 (RBAC) 来管理 Azure Site Recovery 部署"
+title: "使用基于角色的访问控制管理 Azure Site Recovery | Microsoft Docs"
+description: "本文介绍如何应用基于角色的访问控制 (RBAC)，并利用它来管理 Azure Site Recovery 部署"
 services: site-recovery
 documentationcenter: 
 author: mayanknayar
@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: manayar
 ms.openlocfilehash: 9dd74014bf05234a83c7678b67b42b96cd8b8d64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>使用基于角色的访问控制来管理 Azure Site Recovery 部署
+# <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>使用基于角色的访问控制管理 Azure Site Recovery
 
-Azure 基于角色的访问控制 (RBAC) 启用 Azure 的精细访问权限管理。 使用 RBAC，可以分离团队内的职责，并仅特定访问权限授予用户所需执行特定作业。
+Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 通过 RBAC 可分离团队中的职责，并按需仅向用户授予执行特定作业的特定访问权限。
 
-Azure Site Recovery 提供了 3 的内置角色，以控制站点恢复管理操作。 了解详细信息，请参阅[Azure RBAC 内置角色](../active-directory/role-based-access-built-in-roles.md)
+Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../active-directory/role-based-access-built-in-roles.md)
 
-* [站点恢复参与者](../active-directory/role-based-access-built-in-roles.md#site-recovery-contributor)-此角色具有管理恢复服务保管库中的 Azure Site Recovery 操作所需的所有权限。 用户使用此角色，但是，不能创建或删除恢复服务保管库或分配给其他用户的访问权限。 此角色最适合用于灾难恢复管理员可以启用和管理应用程序或整个组织的灾难恢复，具体情况而定。
-* [站点恢复运算符](../active-directory/role-based-access-built-in-roles.md#site-recovery-operator)-此角色具有的权限来执行和管理器故障转移和故障回复操作。 具有此角色的用户不能启用或禁用复制、 创建或删除保管库、 注册新的基础结构或可以分配给其他用户的访问权限。 此角色在最适合用于灾难恢复，则操作员可以故障转移虚拟机或应用程序的应用程序所有者和一个实际或模拟灾难情况，如 DR 中的 IT 管理员指示时钻取。 Post 分辨率高达灾难，DR 运算符可以重新保护和故障回复虚拟机。
-* [站点恢复读取器](../active-directory/role-based-access-built-in-roles.md#site-recovery-reader)-此角色有权查看所有站点恢复管理操作。 此角色是最适合的 IT 监视主管，也可以监视保护的当前状态并发出支持票证，如果需要。
+* [Site Recovery 参与者](../active-directory/role-based-access-built-in-roles.md#site-recovery-contributor) - 此角色拥有管理恢复服务保管库中 Azure Site Recovery 操作所需的全部权限。 不过，拥有此角色的用户既无法创建或删除恢复服务保管库，也无法向其他用户分配访问权限。 此角色最适合分配给灾难恢复管理员，这样他们就可以为应用程序或整个组织（视情况而定）启用和管理灾难恢复。
+* [Site Recovery 操作员](../active-directory/role-based-access-built-in-roles.md#site-recovery-operator) - 此角色有权执行和管理故障转移和故障回复操作。 拥有此角色的用户无法启用或禁用复制、无法创建或删除保管库，也无法注册新的基础结构或向其他用户分配访问权限。 此角色最适合分配给灾难恢复操作员，这样他们就可以在实际或模拟灾难情形（如 DR 钻取）下，遵循应用程序所有者或 IT 管理员的指示，对虚拟机或应用程序进行故障转移。 灾难解决后，DR 操作员可以重新保护和故障回复虚拟机。
+* [Site Recovery 读者](../active-directory/role-based-access-built-in-roles.md#site-recovery-reader) - 此角色有权查看所有 Site Recovery 管理操作。 此角色最适合分配给 IT 监视主管，这样他们就可以在需要时监视当前保护状态并创建支持票证。
 
-如果你寻找来定义自己的角色进行更多控制，请参阅如何[生成自定义角色](../active-directory/role-based-access-control-custom-roles.md)在 Azure 中。
+若要定义自己的角色以便实现进一步控制，请参阅如何[在 Azure 中生成自定义角色](../active-directory/role-based-access-control-custom-roles.md)。
 
-## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>新的虚拟机启用复制到所需的权限
-当新的虚拟机复制到 Azure 中使用 Azure Site Recovery 中时，将验证关联的用户的访问级别，以确保用户具有所需的权限，用于提供到 Site Recovery 的 Azure 资源。
+## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>为新虚拟机启用复制时所需的权限
+使用 Azure Site Recovery 将新虚拟机复制到 Azure 时，会验证相关用户的访问级别，确保用户具有使用提供给 Site Recovery 的 Azure 资源所需的权限。
 
-若要启用的新的虚拟机复制，用户必须具有：
-* 在所选的资源组中创建虚拟机权限
-* 在所选的虚拟网络中创建虚拟机权限
-* 要写入到所选的存储帐户的权限
+若要为新虚拟机启用复制，用户必须具有：
+* 在所选资源组中创建虚拟机的权限
+* 在所选虚拟网络中创建虚拟机的权限
+* 写入所选存储帐户的权限
 
-用户需要以下权限的新的虚拟机完成复制。
+用户需要以下权限来完成新虚拟机的复制。
 
 > [!IMPORTANT]
->确保将每个部署模型添加相关的权限 (资源管理器 / 经典) 用于资源部署。
+>确保根据用于资源部署的部署模型（Resource Manager/经典）添加相关权限。
 
-| **资源类型** | **部署模型** | **Permission** |
+| **资源类型** | 部署模型 | 权限 |
 | --- | --- | --- |
 | 计算 | 资源管理器 | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
@@ -73,12 +73,12 @@ Azure Site Recovery 提供了 3 的内置角色，以控制站点恢复管理操
 | 资源组 | 资源管理器 | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
-请考虑使用虚拟机参与者和经典虚拟机参与者[内置角色](../active-directory/role-based-access-built-in-roles.md)资源管理器和经典部署模型分别。
+考虑分别为 Resource Manager 和经典部署模型使用[内置角色](../active-directory/role-based-access-built-in-roles.md)“虚拟机参与者”和“经典虚拟机参与者”。
 
 ## <a name="next-steps"></a>后续步骤
-* [基于角色的访问控制](../active-directory/role-based-access-control-configure.md)： 在 Azure 门户中开始使用 RBAC。
-* 了解如何使用管理访问权限：
+* [基于角色的访问控制](../active-directory/role-based-access-control-configure.md)：Azure 门户中的 RBAC 入门。
+* 了解如何通过以下方式管理访问权限：
   * [PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
   * [Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md)
   * [REST API](../active-directory/role-based-access-control-manage-access-rest.md)
-* [基于角色的访问控制的故障排除](../active-directory/role-based-access-control-troubleshooting.md)： 获取有关如何解决常见的问题的建议。
+* [基于角色的访问控制故障排除](../active-directory/role-based-access-control-troubleshooting.md)：获取解决常见问题的建议。

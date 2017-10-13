@@ -10,14 +10,12 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 636dc0fcae1bc2647cd59add5957884971015ce2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>审核和接收关于 Azure 订阅中重要操作的通知
 
 Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供有关由谁创建、更新或删除什么资源，以及何时进行操作的信息。 可创建活动日志警报，以便在发生与警报条件匹配的活动时接收电子邮件、短信或 webhook 通知。 此快速入门逐步介绍如何创建简单的网络安全组、浏览活动日志了解发生的事件，然后创建活动日志警报，以便在将来创建任何网络安全组时收到通知。
@@ -101,4 +99,3 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 > [!div class="nextstepaction"]
 > [存档监视数据](./monitor-tutorial-archive-monitoring-data.md)
-

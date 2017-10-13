@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 50d635191ff65f8b892595c954673b2820b22ecb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>在 Azure SQL 数据库中监视数据库性能
 若要监视 Azure 中的 SQL 数据库的性能，首先需要监视所选数据库性能级别相关的资源利用率。 监视功能可帮助确定数据库是否超出容量，或者因资源超限而遇到问题，并确定是否有必要调整数据库的性能级别和 [服务层](sql-database-service-tiers.md)。 可以使用 [Azure 门户](https://portal.azure.com)中的图形工具或使用 SQL [动态管理视图](https://msdn.microsoft.com/library/ms188754.aspx)来监视数据库。
@@ -217,4 +216,3 @@ Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_
 
 - 使用 [Azure SQL 数据库自动优化](sql-database-automatic-tuning.md)自动优化数据库索引和查询执行计划。
 - 使用 [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) 自动监视数据库性能。 此功能提供性能问题的诊断信息和根本原因分析。
-

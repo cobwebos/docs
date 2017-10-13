@@ -16,10 +16,10 @@ ms.custom: manage
 ms.date: 07/25/2017
 ms.author: elbutter
 ms.openlocfilehash: 24e43205c0c562fca9b1c2c0e5eed4da54e17ed7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-rest"></a>管理 Azure SQL 数据仓库中的计算能力 (REST)
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Content-Type: application/json; charset=UTF-8
 ## <a name="pause-compute"></a>暂停计算
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-若要暂停数据库，请使用[暂停数据库][Pause Database] REST API。 以下示例暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用[暂停数据库][Pause Database] REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -66,7 +66,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ## <a name="resume-compute"></a>恢复计算
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-若要启动数据库，请使用[恢复数据库][Resume Database] REST API。 以下示例启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
+若要启动数据库，请使用[恢复数据库][Resume Database] REST API。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1

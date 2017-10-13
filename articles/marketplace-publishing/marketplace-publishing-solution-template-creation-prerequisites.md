@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/28/2016
 ms.author: hascipio; v-divte
 ms.openlocfilehash: 40f0e2b1b1b6144b2f9aa5814a4408b4964ede97
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>为 Azure 应用商店创建解决方案模板的技术先决条件
 在开始之前，请仔细阅读过程，并了解执行每个步骤的位置和原因。 在开始产品/服务创建过程前，应尽可能多地准备公司信息和其他数据、下载必需的工具和/或创建技术组件。  

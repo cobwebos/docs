@@ -9,14 +9,12 @@ ms.service: search
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 15469e8a2d28bdf00d6e8d8c9f823c51975ee90e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="searching-blob-storage-with-azure-search"></a>使用 Azure 搜索来搜索 Blob 存储
 
 在 Azure Blob 存储中存储的各种内容类型之间进行搜索可能是一个很难解决的问题。 但是，使用 Azure 搜索，只需单击几下，便可以为 Blob 中的内容编制索引以及对其进行搜索。 在 Blob 存储中进行搜索需要预配 Azure 搜索服务。 可以在[定价页](https://aka.ms/azspricing)上找到 Azure 搜索的各种服务限制和定价层。
@@ -54,5 +52,4 @@ JSON 解析当前不可通过门户进行配置。 [了解有关 Azure 搜索中
 单击“添加 Azure 搜索”将启动一个工作流，可以在其中选择现有 Azure 搜索服务或创建一个新服务。 如果创建新服务，则会离开存储帐户的门户。 可以导航回存储门户页并重新选择“添加 Azure 搜索”选项，然后可以选择现有服务。
 
 ### <a name="next-steps"></a>后续步骤
-在完整[文档](https://aka.ms/azsblobindexer)中详细了解 Azure Search Blob 索引器。
-
+在完整[文档](https://aka.ms/azsblobindexer)中详细了解 Azure 搜索 Blob 索引器。

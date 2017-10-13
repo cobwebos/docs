@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: arramac
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
 ms.openlocfilehash: 862594bcbd6df8a2c62a12340ceb8096fb6bd691
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API 的 SQL 查询
 Microsoft Azure Cosmos DB 通过将 SQL（结构化查询语言）用作 JSON 查询语言来支持查询文档。 Cosmos DB 是真正无架构的。 凭借其对数据库引擎内 JSON 数据模型的直接承诺，它可以提供 JSON 文档的自动索引，而无需显式架构或创建辅助索引。 
@@ -167,7 +166,7 @@ Microsoft Azure Cosmos DB 通过将 SQL（结构化查询语言）用作 JSON �
 
 根据我们目前已看到的示例，请注意 Cosmos DB 查询语言一些值得注意的方面：  
 
-* 由于 DocumentDB API SQL 适用于 JSON 值，因此它可以处理三种形式的实体，而不是行和列。 因此，通过该语言可以在任意深度引用树的节点（如 `Node1.Node2.Node3…..Nodem`），这类似于引用 `<table>.<column>` 的两部分引用的关系 SQL。   
+* 由于 DocumentDB API SQL 适用于 JSON 值，因此它可以处理三种形式的实体，而不是行和列。 因此，该语言可让你在任意深度引用树的节点，如 `Node1.Node2.Node3…..Nodem`，这类似于引用 `<table>.<column>` 的两个部分引用的关系 SQL。   
 * 结构化查询语言适用于无架构的数据。 因此，需要动态绑定类型系统。 相同的表达式在不同文档上可能会产生不同的类型。 查询的结果是一个有效的 JSON 值，但不保证它为固定的架构。  
 * Cosmos DB 仅支持严格的 JSON 文档。 这意味着类型系统和表达式仅限于处理 JSON 类型。 有关更多详细信息，请参阅 [JSON 规范](http://www.json.org/)。  
 * Cosmos DB 集合是 JSON 文档的一个无架构容器。 集合中，文档内和跨文档的数据实体的关系是按包含关系隐式捕获的，而不是按主键和外键关系。 考虑到稍后会在本文中讨论文档内联接，因此这是一个值得注意的重要方面。
@@ -534,7 +533,7 @@ Undefined </td>
 
 了更快地执行查询，请记得创建索引策略，该策略对在 BETWEEN 子句中筛选的任何数值属性/路径使用范围索引类型。 
 
-在 DocumentDB API 与在 ANSI SQL 中使用 BETWEEN 的主要不同之处在于，前者支持对混合类型的属性执行快速范围查询 - 例如，可以在某些文档中将“grade”设置为数字 (5)，并在其他文档中将其设置为字符串（“grade4”）。 在这些情况下（如在 JavaScript 中），在两种不同类型之间进行比较的结果为“undefined”，将会跳过文档。
+在 DocumentDB API 与在 ANSI SQL 中使用 BETWEEN 的主要不同之处在于，前者支持对混合类型的属性执行快速范围查询 - 例如，可以在某些文档中将“grade”设置为数字 (5)，并在其他文档中将其设置为字符串（“grade4”）。 在这些情况下（如在 JavaScript 中），在两种不同类型之间进行比较的结果为“undefined”，会跳过文档。
 
 ### <a name="logical-and-or-and-not-operators"></a>逻辑（AND、OR 和 NOT）运算符
 逻辑运算符对布尔值进行运算。 下表显示了这些运算符的逻辑真值表。
@@ -1358,7 +1357,7 @@ Cosmos DB 是一个 JSON 数据库，与 JavaScript 运算符及其评估语义�
 ## <a name="parameterized-sql-queries"></a>参数化 SQL 查询
 Cosmos DB 支持通过常用 @ 表示法表示的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。 
 
-例如，可以编写一个将姓氏和省/自治区地址作为参数的查询，然后基于用户输入针对姓氏和省/自治区地址执行此查询。
+例如，可以编写一个将姓氏和省/自治区地址作为参数的查询，并基于用户输入针对姓氏和省/自治区地址执行此查询。
 
     SELECT * 
     FROM Families f
@@ -1441,7 +1440,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 与 ANSI SQL 相比，Cosmos DB 的函数的主要差异在于它们可以良好地适用于无架构和混合架构数据。 例如，如果有一个缺少 Size 属性或有一个非数值的值（如“unknown”）的文档，那么会跳过该文档，而不是返回错误。
 
 ### <a name="type-checking-functions"></a>类型检查函数
-通过类型检查函数可以检查 SQL 查询内表达式的类型。 当类型是变量或未知时，可使用类型检查函数动态确定文档内属性的类型。 以下是受支持的内置类型检查函数表。
+类型检查函数使你能够检查 SQL 查询内表达式的类型。 当类型是变量或未知时，可使用类型检查函数动态确定文档内属性的类型。 以下是受支持的内置类型检查函数表。
 
 <table>
 <tr>
@@ -2210,7 +2209,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 可以使用 Azure
 
 .NET 客户端自动遍历 foreach 块中所有的查询结果页，如上所示。 在 REST API 部分介绍的查询选项也适用于 CreateDocumentQuery 方法中使用 `FeedOptions` 和 `FeedResponse` 的 .NET SDK。 可使用 `MaxItemCount` 设置控制页面的数量。 
 
-还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，然后读取 ` ResponseContinuationToken` 值并将它们作为 `FeedOptions` 中的 `RequestContinuationToken` 向回传递，从而显式控制分页。 当配置的索引策略不支持查询时，可将 `EnableScanInQuery` 设置为启用扫描。 对于分区集合，可以使用 `PartitionKey` 针对单个分区运行查询（尽管 Cosmos DB 可以自动从查询文本中提取此内容），还可以使用 `EnableCrossPartitionQuery` 来运行可能需要针对多个分区运行的查询。 
+还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，并读取 ` ResponseContinuationToken` 值并将它们作为 `FeedOptions` 中的 `RequestContinuationToken` 向回传递，从而显式控制分页。 当配置的索引策略不支持查询时，可将 `EnableScanInQuery` 设置为启用扫描。 对于分区集合，可以使用 `PartitionKey` 针对单个分区运行查询（尽管 Cosmos DB 可以自动从查询文本中提取此内容），还可以使用 `EnableCrossPartitionQuery` 来运行可能需要针对多个分区运行的查询。 
 
 有关包含查询的更多示例，请参阅 [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-documentdb-net)。 
 

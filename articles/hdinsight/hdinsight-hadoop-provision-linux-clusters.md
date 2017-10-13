@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
+ms.openlocfilehash: 8118570071aa5af6ec74c971a711b2eab07fb1b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 8517c09d4dc4bd7907fc6e5260de119fbdd8f5e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>使用 Hadoop、Spark、Kafka 等等在 HDInsight 中设置群集
 
@@ -254,4 +253,3 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 - [什么是 HDInsight、Hadoop 生态系统和 Hadoop 群集？](hdinsight-hadoop-introduction.md)
 - [使用 HDInsight 中的 Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [使用 Windows 电脑在 HDInsight 上的 Hadoop 中工作](hdinsight-hadoop-windows-tools.md)
-

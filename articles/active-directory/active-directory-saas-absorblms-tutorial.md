@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 549e353bb41f1f31bc0441294d0a8066779402e6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
@@ -146,9 +145,9 @@ ms.lasthandoff: 09/28/2017
     
     c. 在“ID 属性”框中，选择在 Azure AD 中配置为用户标识符的属性。 例如，如果在已 Azure AD 中选择“userPrincipalName”，请选择“用户名”。
 
-    d. 在“登录 URL”框中，粘贴 Azure 门户应用程序的“属性”页中的“用户访问 URL”。
+    d.单击“下一步”。 在“登录 URL”框中，粘贴 Azure 门户应用程序的“属性”页中的“用户访问 URL”。
 
-    e. 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。
 
 12. 将“仅允许 SSO 登录”切换为“启用”。
 
@@ -167,7 +166,7 @@ ms.lasthandoff: 09/28/2017
 
 若要在 Azure AD 中创建测试用户，请执行以下步骤：
 
-1. 在“Azure 门户”的左窗格中，选择“Azure Active Directory”。
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”。
 
     ![“Azure Active Directory”按钮](./media/active-directory-saas-absorblms-tutorial/create_aaduser_01.png) 
 
@@ -223,9 +222,9 @@ ms.lasthandoff: 09/28/2017
     
     c. 在“用户名”框中键入全名，例如 Britta Simon。
 
-    d. 在“密码”框中，键入 Britta Simon 的密码。
+    d.单击“下一步”。 在“密码”框中，键入 Britta Simon 的密码。
 
-    e. 在“确认密码”框中，重新键入该密码。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“确认密码”框中，重新键入该密码。
     
     f. 将“是否活动”设置切换为“活动”。  
 
@@ -287,5 +286,4 @@ ms.lasthandoff: 09/28/2017
 [201]: ./media/active-directory-saas-absorblms-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-absorblms-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-absorblms-tutorial/tutorial_general_203.png
-
 

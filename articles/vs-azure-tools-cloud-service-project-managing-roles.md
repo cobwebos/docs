@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 03/21/2017
 ms.author: kraigb
 ms.openlocfilehash: 6ed857b857cf8c14506ca39725c214a7fea4fc95
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-roles-in-azure-cloud-services-with-visual-studio"></a>使用 Visual Studio 管理 Azure 云服务中的角色
 创建 Azure 云服务后，即可向其添加新角色或从中删除现有角色。 也可以导入现有项目并将其转换为角色。 例如，可以导入 ASP.NET Web 应用程序并将其指定为 Web 角色。
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/29/2017
 
 1. 在“解决方案资源管理器”中，展开项目节点
 
-1. 右键单击“角色”节点以显示上下文菜单。 从上下文菜单中，选择“添加”，并从当前解决方案中选择现有 Web 角色或辅助角色，或创建新的 Web 或辅助角色项目。 还可以选择适当的项目（如 ASP.NET Web 应用程序项目），并将其与角色项目相关联。
+1. 右键单击“角色”节点以显示上下文菜单。 从上下文菜单中，选择“添加”，并从当前解决方案中选择现有 Web 角色或辅助角色，或创建新的 Web 或辅助角色项目。 还可以选择适当的项目（如 ASP.NET Web 应用程序项目），然后将其与角色项目相关联。
 
     ![向 Azure 云服务项目添加角色的菜单选项](media/vs-azure-tools-cloud-service-project-managing-roles/add-role.png)
 

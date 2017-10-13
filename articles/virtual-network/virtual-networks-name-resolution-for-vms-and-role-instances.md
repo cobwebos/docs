@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/06/2016
 ms.author: telmos
 ms.openlocfilehash: 479cf8cf358d0b242d8ce030d8639b493e4767d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="name-resolution-for-vms-and-role-instances"></a>VM 和角色实例的名称解析
 可能需要允许 VM 和创建的角色实例相互通信，具体取决于如何使用 Azure 托管 IaaS、PaaS 和混合解决方案。 尽管这种通信可以通过使用 IP 地址完成，但使用容易记住且不会更改的名称要简单得多。 
@@ -144,7 +144,7 @@ DNS 转发还可用于在 VNet 之间进行 DNS 解析，可以通过本地计�
 * 禁止从 Internet 进行访问，减少外部代理带来的威胁。
 
 > [!NOTE]
-> 为了获得最佳性能，在将 Azure VM 用作 DNS 服务器时，应禁用 IPv6，并且[实例层级公共 IP](virtual-networks-instance-level-public-ip.md) 应分配到每个 DNS 服务器 VM。  如果选择使用 Windows Server 作为 DNS 服务器，则可参阅[此文](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)，其中提供了其他性能分析和优化措施。
+> 为了获得最佳性能，在将 Azure VM用作 DNS 服务器时，应禁用 IPv6，并且[实例层级公共 IP](virtual-networks-instance-level-public-ip.md) 应分配给每个 DNS 服务器 VM。  如果选择使用 Windows Server 作为 DNS 服务器，则可参阅[此文](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)，其中提供了其他性能分析和优化措施。
 > 
 > 
 

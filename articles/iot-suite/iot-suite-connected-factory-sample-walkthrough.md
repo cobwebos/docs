@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>已连接好的工厂预配置解决方案演练
 
@@ -34,7 +34,7 @@ IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutio
 
 可以将其用作自己实现的起点，并可以根据特定的业务要求[自定义][lnk-customize]该解决方案。
 
-本文分步讲解连接工厂解决方案的一些关键要素，以帮助你了解其工作原理。 这一知识有助于：
+本文将分步讲解已连接好的工厂解决方案的一些关键要素，以帮助你了解其工作原理。 这一知识有助于：
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。

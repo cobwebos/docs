@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 990215d9e82b67256363ff195d2af9a91dc0706a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -190,4 +189,3 @@ Web 作业旨在用于后台处理。 可以在 Web 作业中根据需要执行�
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>如何使用 Visual Studio 远程调试应用服务Web 应用？
 
 有关演示如何使用 Visual Studio 调试 Web 应用的详细演练，请参阅[远程调试应用服务 Web 应用](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/)。
-

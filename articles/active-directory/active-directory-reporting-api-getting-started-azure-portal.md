@@ -16,10 +16,10 @@ ms.date: 08/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 9944cbd2b1b7c4acb18d37da1394c0bbc170f77d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -36,8 +36,7 @@ Azure Active Directory 可向你提供各种报告。 对于应用程序（如 S
    
    * [使用审核 API 的示例](active-directory-reporting-api-audit-samples.md) 
    * [使用登录活动报告 API 的示例](active-directory-reporting-api-sign-in-activity-samples.md)
-3. 
-            **自定义** - 创建自己的解决方案： 
+3. **自定义** - 创建自己的解决方案： 
    
    * [使用审核 API 参考](active-directory-reporting-api-audit-reference.md) 
    * [使用登录活动报告 API 参考](active-directory-reporting-api-sign-in-activity-reference.md)

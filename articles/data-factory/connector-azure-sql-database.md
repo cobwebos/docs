@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b9582ccab1e0c580fe09de39e55ea0660c3866d0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +40,7 @@ ms.lasthandoff: 09/25/2017
 - 作为接收器，在复制期间将数据追加到目标表，或调用带有自定义逻辑的存储过程。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板通过复制活动创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 对于特定于 Azure SQL 数据库连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -111,7 +110,7 @@ Azure SQL 数据库链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure SQL 数据库源和接收器支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure SQL 数据库源和接收器支持的属性列表。
 
 ### <a name="azure-sql-database-as-source"></a>Azure SQL 数据库作为源
 
@@ -119,7 +118,7 @@ Azure SQL 数据库链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**SqlSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为：SqlSource | 是 |
 | sqlReaderQuery |使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 |否 |
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为：名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
@@ -128,7 +127,7 @@ Azure SQL 数据库链接的服务支持以下属性：
 
 - 如果为 SqlSource 指定 **sqlReaderQuery**，则复制活动针对 Azure SQL 数据库源运行此查询可获取数据。 此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程使用参数）。
 - 如果不指定“sqlReaderQuery”或“sqlReaderStoredProcedureName”，则使用在数据集 JSON 的“结构”部分定义的列，构建针对 Azure SQL 数据库运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义不具备该“结构”，则从表中选择所有列。
-- 使用 **sqlReaderStoredProcedureName** 时，仍需指定数据集 JSON 中虚拟的“tableName”属性。
+- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName属性。
 
 **示例：使用 SQL 查询**
 
@@ -223,7 +222,7 @@ GO
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**SqlSink** | 是 |
+| type | 复制活动源的 type 属性必须设置为：SqlSink | 是 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 | sqlWriterStoredProcedureName |在目标表中更新/插入数据的存储过程的名称。 |否 |

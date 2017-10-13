@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 116eaa59eb60833036ad4d3c975c0b86e525f625
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="team-lead-tasks"></a>团队主管任务
 
 本主题概述了数据科学团队的团队主管应该完成的任务。 目标在于创建致力于标准化 [Team Data Science Process](overview.md) (TDSP) 的协作型团队环境。 TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析解决方案和智能应用程序。 它设计用于帮助改进协作和团队学习。 该过程对 Microsoft 和行业实行的最佳做法和结构进行升华，是成功实现数据科学计划以帮助公司充分发挥其分析程序的优势所必需的。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅[团队数据科学流程角色和任务](roles-tasks.md)。
@@ -90,7 +88,7 @@ ms.lasthandoff: 09/25/2017
 - 转到组的 VSTS 服务器主页，URL 为 `https://<VSTS Server Name\>.visualstudio.com`。 
 - 单击“新建”创建团队项目。 
 
-    ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
+    ![#N/A](./media/team-lead-tasks/team-leads-2-create-new-team.png)
 
 - “创建团队项目”窗口会要求 输入项目名称（在此示例中为 **MyTeam**）。 确保选择“敏捷”作为“过程模板”，选择“Git”作为“版本控制”。 
 

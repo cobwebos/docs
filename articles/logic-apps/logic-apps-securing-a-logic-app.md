@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="secure-access-to-your-logic-apps"></a>安全访问逻辑应用
 
 可以借助许多工具来保护逻辑应用。
@@ -275,4 +273,3 @@ POST
 [异常处理](logic-apps-exception-handling.md)  
 [监视逻辑应用](logic-apps-monitor-your-logic-apps.md)  
 [诊断逻辑应用的错误和问题](logic-apps-diagnosing-failures.md)  
-

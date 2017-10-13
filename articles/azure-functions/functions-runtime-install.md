@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
 ms.openlocfilehash: 1e4188313a87d07f396e5f8edc8969dd5da2c436
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-the-azure-functions-runtime-preview"></a>安装 Azure Functions 运行时预览版
 
@@ -75,19 +75,19 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
     
     ![Azure Functions 运行时预览版数据库配置][7]
 
-1. 单击“凭据”选项卡。  在此屏幕上，必须为托管所有 Azure Functions 的文件共享创建两个凭据。  为**文件共享所有者**和**文件共享用户****指定用户名和密码**组合，并单击“应用”。
+1. 单击“凭据”选项卡。在此屏幕上，必须为托管所有 Azure Functions 的文件共享创建两个凭据。  为**文件共享所有者**和**文件共享用户****指定用户名和密码**组合，并单击“应用”。
 
     ![Azure Functions 运行时预览版凭据][8]
 
-1. 单击“文件共享”选项卡。  在此屏幕中，必须指定**文件共享位置**的详细信息。  系统可以创建此位置，也可以选择一个现有文件共享并单击“应用”。  如果选择了新的文件共享位置，则必须指定一个目录供 Azure Functions 运行时使用。
+1. 单击“文件共享”选项卡。在此屏幕中，必须指定**文件共享位置**的详细信息。  系统可以创建此位置，也可以选择一个现有文件共享并单击“应用”。  如果选择了新的文件共享位置，则必须指定一个目录供 Azure Functions 运行时使用。
     
     ![Azure Functions 运行时预览版文件共享][9]
 
-1. 单击“IIS”选项卡。  此选项卡显示 Azure Functions 运行时安装会在 IIS 中创建的网站的详细信息。  **单击“应用”**以完成操作。
+1. 单击“IIS”选项卡。此选项卡显示 Azure Functions 运行时安装会在 IIS 中创建的网站的详细信息。  **单击“应用”**以完成操作。
 
     ![Azure Functions 运行时预览版 IIS][10]
 
-1. 单击“服务”选项卡。  此选项卡显示 Azure Functions 运行时安装中的服务的状态。  在初始配置后，如果 **Azure Functions 主机激活服务**没有运行，请单击“启动服务”
+1. 单击“服务”选项卡。此选项卡显示 Azure Functions 运行时安装中的服务的状态。  在初始配置后，如果 **Azure Functions 主机激活服务**没有运行，请单击“启动服务”
 
     ![Azure Functions 运行时预览版配置完成][11]
 

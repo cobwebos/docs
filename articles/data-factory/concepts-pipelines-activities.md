@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6dcc5c55fae5e2494526c492a1453747b4d6e179
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - 正式版](v1/data-factory-create-pipelines.md)
@@ -172,9 +170,9 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 ```
 JSON 名称 | 说明 | 允许值 | 必选
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | Timespan | 不会。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 不会。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不会。 默认为 20 秒
+timeout | 指定活动运行的超时。 | Timespan | 不能。 默认超时为 7 天。
+retry | 最大重试次数 | Integer | 不能。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不能。 默认为 20 秒
 
 ### <a name="control-activity"></a>控制活动
 控制活动具有以下顶级结构。
@@ -395,4 +393,3 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 - [构建包含复制活动的管道](quickstart-create-data-factory-powershell.md)
 - [使用数据转换活动生成管道](tutorial-transform-data-spark-powershell.md)
-

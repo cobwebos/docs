@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e25bdc04f5436e2f9c48aebe868538f22ef80bd8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure PowerShell 示例
 
 下表包括了适用于 Azure 数据工厂的示例 Azure PowerShell 脚本的链接。
@@ -32,7 +30,6 @@ ms.lasthandoff: 09/25/2017
 |[使用 Spark 群集转换数据](scripts/transform-data-spark-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本通过在 Spark 群集上运行程序来转换数据。 |
 |**将 SSIS 包直接迁移到 Azure**||
 |[创建 Azure-SSIS 集成运行时](scripts/deploy-azure-ssis-integration-runtime-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本预配 Azure-SSIS 集成运行时，以便在 Azure 中运行 SQL Server Integration Services (SSIS) 包。 |
-
 
 
 

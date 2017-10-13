@@ -16,10 +16,10 @@ ms.date: 05/04/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 356083fbaabfcd2ec7581adf319fa22b810df0d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Azure Active Directory v2.0 和 OAuth 2.0 代理流
 OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服务/web API，而后者又需要调用另一个服务/web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Azure Active Directory (Azure AD) 提供的访问令牌。

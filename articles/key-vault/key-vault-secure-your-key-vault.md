@@ -15,16 +15,16 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
 ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-your-key-vault"></a>保护密钥保管库
 Azure 密钥保管库是一种云服务，用于保护云应用程序的加密密钥和机密（例如证书、连接字符串、密码）。 因为此数据是敏感数据和业务关键数据，会希望保护对密钥保管库的访问，以便只有得到授权的应用程序和用户可以访问密钥保管库。 本文章提供对密钥保管库访问模型的概述，介绍身份验证和授权，并举例描述如何保护对云应用程序的密钥保管库的访问。
 
 ## <a name="overview"></a>概述
-通过两个单独的接口控制对密钥保管库的访问：管理平面和数据平面。 对于这两个平面，在调用方（用户或应用程序）可以访问密钥保管库前，需要适当的身份验证和授权。 身份验证建立调用方的标识，授权确定允许调用方执行哪些操作。
+通过两个单独的接口控制对密钥保管库的访问：管理平面和数据平面。 对于这两个平面，在调用方（用户或应用程序）可以访问密钥保管库前，需要适当的身份验证和授权。 身份验证将建立调用方的标识，而授权将确定调用方允许执行的操作。
 
 对于身份验证，管理平面和数据平面都使用 Azure Active Directory。 对于授权，管理平面使用基于角色的访问控制 (RBAC)，而数据平面使用密钥保管库访问策略。
 
@@ -34,7 +34,7 @@ Azure 密钥保管库是一种云服务，用于保护云应用程序的加密�
 
 [管理平面和数据平面](#management-plane-and-data-plane) - 管理平面和数据平面是用于访问密钥保管库的两个访问平面。 每个访问平面都支持特定的操作。 本部分介绍访问终结点、支持的操作，以及每个平面使用的访问控制方法。 
 
-[管理平面访问控制](#management-plane-access-control) - 此部分介绍如何使用基于角色的访问控制来访问管理平面操作。
+[管理平面访问控制](#management-plane-access-control) - 在此部分中，将说明如何使用基于角色的访问控制允许访问管理平面操作。
 
 [数据平面访问控制](#data-plane-access-control) - 此部分介绍如何使用密钥保管库访问策略来控制数据平面访问。
 
@@ -48,12 +48,12 @@ Azure 密钥保管库是一种云服务，用于保护云应用程序的加密�
 
 在这两种类型的应用程序中，应用程序均通过 Azure Active Directory 使用任一[支持的身份验证方法](../active-directory/active-directory-authentication-scenarios.md)进行身份验证，并获取令牌。 所使用的身份验证方法取决于应用程序类型。 然后，应用程序会使用此令牌，并将 REST API 请求发送到密钥保管库。 如果是管理平面访问，则将通过 Azure Resource Manager 终结点路由请求。 如果访问的是数据平面，则应用程序直接与密钥保管库终结点交流。 请参阅[整个身份验证流](../active-directory/active-directory-protocols-oauth-code.md)上的更多详细信息。 
 
-应用程序为其请求令牌的资源名称是不同的，具体取决于应用程序是访问管理平面还是数据平面。 因此，根据具体的 Azure 环境，资源名称是本部分稍后提供的表格中所述的管理平面或数据平面终结点。
+应用程序为其请求令牌的资源名称是不同的，具体取决于应用程序是访问管理平面还是数据平面。 因此资源名称要么是管理平面终结点，要么便是数据平面终结点（这会在后面部分的表中进行介绍），具体取决于 Azure 环境。
 
 对于管理平面和数据平面，具有单一的身份验证机制有着其自己的优点：
 
 * 组织可以集中控制其组织中的对所有密钥保管库的访问
-* 离职的用户会立即失去对组织中所有密钥保管库的访问权限
+* 如果某个用户离开，则他们将立即失去对组织中所有密钥保管库的访问权限
 * 组织可以通过 Azure Active Directory 中的选项自定义身份验证（例如，启用多重身份验证以提高安全性）
 
 ## <a name="management-plane-and-data-plane"></a>管理平面和数据平面
@@ -76,7 +76,7 @@ Azure 密钥保管库是一种可通过 Azure Resource Manager 部署模型使�
 
 使用 Azure Resource Manager 模型可以在资源组中创建密钥保管库，并使用 Azure Active Directory 来控制对该密钥保管库的管理平面的访问。 例如，可以向用户或组授予管理特定资源组中的密钥保管库的功能。
 
-可以通过分配相应的 RBAC 角色，向特定范围内的用户、组和应用程序授予访问权限。 例如，若要向用户授予管理密钥保管库的访问权限，需要将预定义的角色“密钥保管库参与者”分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或特定的密钥保管库。 在订阅级别分配的角色适用于该订阅中的所有资源组和资源。 在资源组级别分配的角色适用于该资源组中的所有资源。 为特定资源分配的角色仅适用于该资源。 有几个预定义的角色（请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)），并且如果预定义的角色不满足需求，也可以定义自己的角色。
+可以通过分配相应的 RBAC 角色，向特定范围内的用户、组和应用程序授予访问权限。 例如，要向用户授予管理密钥保管库的访问权限，需要将预定义的角色“密钥保管库参与者”分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或特定的密钥保管库。 在订阅级别分配的角色适用于该订阅中的所有资源组和资源。 在资源组级别分配的角色适用于该资源组中的所有资源。 为特定资源分配的角色仅适用于该资源。 有几个预定义的角色（请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)），并且如果预定义的角色不满足需求，也可以定义自己的角色。
 
 > [!IMPORTANT]
 > 请注意，如果用户具有密钥保管库管理平面的参与者权限 (RBAC)，则该用户可以通过设置密钥保管库访问策略（它控制对数据平面的访问）向自己授予数据平面的访问权限。 因此，建议严格控制具有密钥保管库“参与者”权限的人员，以确保只有获得授权的人员可以访问和管理密钥保管库、密钥、机密和证书。
@@ -97,7 +97,7 @@ Azure 密钥保管库是一种可通过 Azure Resource Manager 部署模型使�
 > 
 
 ## <a name="example"></a>示例
-假设开发中的某个应用程序使用证书进行 SSL 访问，使用 Azure 存储来存储数据，使用 RSA 2048 位密钥执行签名操作。 再假设此应用程序正在 VM（或 VM 规模集）中运行。 可以使用密钥保管库存储所有应用程序机密，并使用密钥保管库存储由应用程序使用来通过 Azure Active Directory 进行身份验证的启动证书。
+假设你正在开发一个应用程序，该应用程序使用 SSL 证书，使用 Azure 存储进行数据存储，且使用 RSA 2048 位密钥进行签名操作。 再假设此应用程序正在 VM（或 VM 规模集）中运行。 可以使用密钥保管库存储所有应用程序机密，并使用密钥保管库存储由应用程序使用来通过 Azure Active Directory 进行身份验证的启动证书。
 
 所以，以下是要存储在密钥保管库中的所有密钥和机密的汇总。
 
@@ -106,7 +106,7 @@ Azure 密钥保管库是一种可通过 Azure Resource Manager 部署模型使�
 * **RSA 2048 位密钥** - 用于签名操作
 * **启动证书** - 用于向 Azure Active Directory 进行身份验证，以获取对密钥保管库的访问权限，从而提取存储密钥并使用 RSA 密钥进行签名。
 
-现在，让我们看看管理、部署和审核此应用程序的人员。 本示例使用了三个角色。
+现在，让我们看看管理、部署和审核此应用程序的人员。 我们会在本示例中使用三个角色。
 
 * **安全团队** - 他们通常是来自“首席安全官 (Chief Security Officer) 办公室”或其类似部门的 IT 人员，负责机密（如 SSL 证书、用于签名的 RSA 密钥、数据库的连接字符串、存储帐户密钥）的安全保护。
 * **开发人员/操作员** - 他们是开发此应用程序然后将其部署到 Azure 的人员。 通常情况下，他们不是安全团队的一部分，因此他们不具有访问任何敏感数据（如 SSL 证书、RSA 密钥）的权限，但他们部署的应用程序应有权访问这些数据。
@@ -155,7 +155,7 @@ Azure 密钥保管库是一种可通过 Azure Resource Manager 部署模型使�
 * **ContosoAppRG** 是包含所有资源的资源组。 **contosologstorage** 是日志的存储位置。 
 * 密钥保管库 **ContosoKeyVault** 和用于密钥保管库日志 **contosologstorage** 的存储帐户必须位于相同的 Azure 位置
 
-首先，订阅管理员向安全小组分配“密钥保管库参与者”和“用户访问管理员”角色。 这使安全团队可管理其他资源的访问权限并管理资源组 ContosoAppRG 中的密钥保管库。
+首先，订阅管理员将“密钥保管库参与者”和“用户访问管理员”角色分配给安全团队。 这使安全团队可管理其他资源的访问权限并管理资源组 ContosoAppRG 中的密钥保管库。
 
 ```
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
@@ -192,9 +192,9 @@ New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso A
 Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso App Auditors')[0].Id -PermissionsToKeys list -PermissionsToSecrets list
 ```
 
-自定义的角色只能分配给创建 ContosoAppRG 资源组所在的订阅。 如果要为其他订阅中的其他项目使用相同的自定义角色，应该在角色范围中添加更多的订阅。
+仅可将定义的自定义角色分配给其中创建了 ContosoAppRG 资源组的订阅。 如果将相同的自定义角色用于其他订阅中的其他项目，则可在其范围内添加更多订阅。
 
-具有“部署/操作”权限的开发人员/操作员的自定义角色分配的范围限定为资源组。 这样，只有在资源组“ContosoAppRG”中创建的 VM 才能获取机密（SSL 证书和启动证书）。 开发/操作团队成员在其他资源组中创建的任何 VM 都无法获取这些机密，即使它们知道机密 URI。
+具有“部署/操作”权限的开发人员/操作员的自定义角色分配的范围限定为资源组。 这样，只有在资源组“ContosoAppRG”中创建的 VM 才能获取机密（SSL 证书和启动证书）。 开发/操作团队成员在其他资源组中创建的任何 VM 将不能获取这些机密，即使它们知道机密 URI。
 
 此示例描述了一个简单的场景。 现实的方案可能更复杂，需要你根据需求调整对密钥保管库的权限。 例如，在本示例中，假设安全团队将提供开发人员/操作员团队需要用来在其应用程序中进行引用的密钥和机密引用（URI 和指纹）。 这样，它们便无需向开发人员/操作员授予任何数据平面访问权限。 此外，还请注意本示例重点介绍对密钥保管库的保护。 应对类似的情形予以考虑，以保护 [VM](https://azure.microsoft.com/services/virtual-machines/security/)、[存储帐户](../storage/common/storage-security-guide.md)和其他 Azure 资源。
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: b810618b485b631e1d72b24c2a9587017d635cc4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-architecture"></a>服务总线体系结构
 本文介绍 Azure 服务总线的消息处理体系结构。
@@ -48,6 +47,5 @@ ms.lasthandoff: 09/06/2017
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [使用服务总线队列的队列消息解决方案](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
-
 
 

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 74571fc6e1a0b2d6a903cdd992a247f4d5dfa700
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-hive-queries-using-powershell"></a>使用 PowerShell 运行 Hive 查询
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
@@ -121,4 +120,3 @@ Get-AzureRmHDInsightJobOutput `
 
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-

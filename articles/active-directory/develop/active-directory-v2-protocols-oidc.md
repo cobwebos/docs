@@ -16,13 +16,13 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: d63692f02b3dec50a1e7df034b8915bb450b4cfd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Azure Active Directory v2.0 和 OpenID Connect 协议
-OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于将用户安全登录到 Web 应用程序。 使用 OpenID Connect 的 v2.0 终结点的实现时，可以将登录和 API 访问权限添加到基于 Web 的应用中。 本文说明如何在各种语言中执行此操作。 本文介绍在不使用任何 Microsoft 开放源代码库的情况下，如何发送和接收 HTTP 消息。
+OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于将用户安全登录到 Web 应用程序。 使用 OpenID Connect 的 v2.0 终结点的实现时，可以将登录和 API 访问权限添加到基于 Web 的应用中。 本文将演示执行此操作的方法（无论何种语言）。 本文介绍在不使用任何 Microsoft 开放源代码库的情况下，如何发送和接收 HTTP 消息。
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
@@ -105,17 +105,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
 | response_type |必选 |必须包含 OpenID Connect 登录的 `id_token`。 它可能还包括其他 `response_types` 值，例如 `code`。 |
 | redirect_uri |建议 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
-| 作用域 |必选 |范围的空格分隔列表。 对于 OpenID Connect，它必须包含范围 `openid`，该范围在同意 UI 中会转换为“将你登录”权限。 也可以在此请求中包含其他范围，以请求同意。 |
-| nonce |必选 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可验证此值，以减少令牌重放攻击。 此值通常是随机的唯一字符串，可用于识别请求的来源。 |
+| 作用域 |必选 |范围的空格分隔列表。 针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。 也可以在此请求中包含其他范围，以请求同意。 |
+| nonce |必选 |应用生成并包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可验证此值，以减少令牌重放攻击。 此值通常是随机的唯一字符串，可用于识别请求的来源。 |
 | response_mode |建议 |指定应用于将生成的授权代码发送回应用的方法。 可以是 `query`、`form_post` 或 `fragment` 之一。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
 | state |建议 |同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于身份验证请求出现前（例如用户所在页面或视图），对有关用户在应用中状态的信息进行编码。 |
-| prompt |可选 |表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。 `prompt=login` 声明强制用户在该请求上输入凭据，从而使单一登录无效。 而 `prompt=none` 声明截然相反。 它会确保无论如何都不会向用户显示任何交互提示。 如果请求无法通过单一登录静默完成，则 v2.0 终结点将返回一个错误。 `prompt=consent` 声明将在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 |
-| login_hint |可选 |如果事先知道用户名，可使用此参数预先填充用户登录页面的用户名和电子邮件地址字段。 通常，应用在重新身份验证期间已使用 `preferred_username` 声明从前次登录提取用户名之后，会使用此参数。 |
+| prompt |可选 |表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。 `prompt=login` 声明将强制用户在该请求上输入凭据，从而取消单一登录。 而 `prompt=none` 声明截然相反。 此声明将确保无论如何都不会向用户显示任何交互提示。 如果请求无法通过单一登录静默完成，则 v2.0 终结点将返回一个错误。 `prompt=consent` 声明会在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 |
+| login_hint |可选 |如果事先知道用户名，可使用此参数预先填充用户登录页面的用户名和电子邮件地址字段。 通常，应用在已经使用 `preferred_username` 声明从前次登录提取用户名后，会在重新身份验证时使用此参数。 |
 | domain_hint |可选 |此值可为 `consumers` 或 `organizations`。 如果已包含在内，它将跳过用户在 v2.0 登录页面上经历的基于电子邮件的发现过程，从而实现更加流畅的用户体验。 通常，应用在重新身份验证时使用此参数，方法是从 ID 令牌提取 `tid` 声明。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。 |
 
 此时，系统会提示用户输入凭据并完成身份验证。 v2.0 终结点会验证用户是否已经同意 `scope` 查询参数中指示的权限。 如果用户尚未同意这些权限中的任何一项，v2.0 终结点会提示用户同意所需权限。 可以深入了解[权限、许可和多租户应用](active-directory-v2-scopes.md)。
 
-用户经过身份验证并许可后，v2.0 终结点会使用 `response_mode` 参数中指定的方法，将响应返回到位于指定重定向 URI 处的应用。
+用户经过身份验证并授予许可后，v2.0 终结点会使用 `response_mode` 参数中指定的方法，将响应返回位于所指示的重定向 URI 的应用。
 
 ### 成功的响应
 使用 `response_mode=form_post` 时，成功的响应如下所示：
@@ -179,7 +179,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 完全验证 ID 令牌后，可以开始与用户的会话。 使用 ID 令牌中的声明来获取应用中用户的相关信息。 可以将此信息用于显示、记录、授权等。
 
 ## 发送注销请求
-如果希望将用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。 还必须将用户重定向到 v2.0 终结点才能注销。 如果不这样做，用户不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 v2.0 终结点之间仍然存在有效的单一登录会话。
+如果希望将用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。 还必须将用户重定向到 v2.0 终结点才能注销。如果不这样做，用户不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 v2.0 终结点之间仍然存在有效的单一登录会话。
 
 可以将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint`：
 
@@ -190,7 +190,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | 参数 | 条件 | 说明 |
 | ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | 建议 | 用户在成功注销后将重定向到的 URL。 如果不包括参数，将向用户显示一条 v2.0 终结点生成的常规消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。  |
+| post_logout_redirect_uri | 建议 | 用户在成功注销后将重定向到的 URL。如果不包括参数，将向用户显示一条 v2.0 终结点生成的常规消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。  |
 
 ## 单一登录
 将用户重定向到 `end_session_endpoint` 时，v2.0 终结点将从浏览器中清除用户的会话。 但是，用户可能仍登录到其他使用 Microsoft 帐户进行身份验证的应用程序。 要使这些应用程序能够同时注销用户，v2.0 终结点会将 HTTP GET 请求发送到用户当前登录到的所有应用程序的注册 `LogoutUrl`。 应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。  如果要在应用程序中支持单一注销，必须在应用程序代码中实现此类 `LogoutUrl`。  可以从应用注册门户设置 `LogoutUrl`。
@@ -242,7 +242,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | 参数 | 说明 |
 | --- | --- |
 | id_token |应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 |
-| 代码 |应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码生存期非常短。 通常，授权代码在大约 10 分钟后即会过期。 |
+| 代码 |应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码生存期非常短。 通常情况下，授权代码会在约 10 分钟后过期。 |
 | state |如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
 
 ### 错误响应

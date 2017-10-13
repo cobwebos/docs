@@ -17,10 +17,10 @@ ms.date: 05/16/2016
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 72f5a3cd6463befd5108040ed166984281bfc5f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resize-a-linux-vm-with-azure-cli-10"></a>使用 Azure CLI 1.0 调整 Linux VM 的大小
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="resize-a-linux-vm"></a>调整 Linux VM 的大小
 若要调整 VM 的大小，请执行以下步骤。
 
-1. 运行以下 CLI 命令。 此命令列出托管 VM 的硬件群集上的可用 VM 大小。
+1. 运行以下 CLI 命令。 此命令将列出托管 VM 的硬件群集上的可用 VM 大小。
    
     ```azurecli
     azure vm sizes -g myResourceGroup --vm-name myVM
@@ -55,10 +55,10 @@ ms.lasthandoff: 07/11/2017
         --boot-diagnostics-storage-uri https://mystorageaccount.blob.core.windows.net/ 
     ```
    
-    在此过程中，VM 重新启动。 重新启动后，现有 OS 和数据磁盘会重新映射。 临时磁盘上的所有内容会丢失。
+    在此过程中，VM 将重新启动。 重新启动后，现有 OS 和数据磁盘将重新映射。 临时磁盘上的所有内容会丢失。
    
     使用 `--enable-boot-diagnostics` 选项启用[启动诊断][boot-diagnostics]，以记录所有与启动相关的错误。
-3. 如果未列出所需大小，请运行以下命令来解除分配 VM、调整其大小，并将它重新启动。
+3. 如果未列出所需大小，请运行以下命令来解除分配 VM、调整其大小，然后将它重新启动。
    
     ```azurecli
     azure vm deallocate -g myResourceGroup myVM
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/11/2017
    > 
 
 ## <a name="next-steps"></a>后续步骤
-若要提高伸缩性，请运行多个 VM 实例并进行横向扩展。 有关详细信息，请参阅[自动缩放虚拟机规模集中的 Linux 计算机][scale-set]。 
+若要提高伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅[自动缩放虚拟机规模集中的 Linux 计算机][scale-set]。 
 
 <!-- links -->
 

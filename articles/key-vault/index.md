@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 41db3ea23bc1e9895893201078b1ada3297418cb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 3267373f6db336c34d13709cc0392631531313f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="key-vault-documentation"></a>密钥保管库文档
 
 了解如何使用 Azure 密钥保管库来保护及管理云应用程序与服务使用的加密密钥和机密。 教程、API 参考和其他文档介绍了如何创建及维护用于访问和加密资源与解决方案的密钥。
@@ -175,5 +173,4 @@ ms.lasthandoff: 05/10/2017
 </ul>
 
 ---
-
 

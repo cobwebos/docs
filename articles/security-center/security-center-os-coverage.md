@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c80e78b39b3fba4dcd9523e1e679822758822805
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure 安全中心支持的平台
 使用经典部署模式和 Resource Manager 部署模式创建的虚拟机 (VM) 支持安全状态监视和建议。
@@ -63,4 +62,3 @@ ms.lasthandoff: 09/25/2017
 - [Azure 安全中心按类型划分的安全警报](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) - 了解关于安全中心中虚拟机行为分析和故障转储内存分析的详细信息
 - [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
 - [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
-

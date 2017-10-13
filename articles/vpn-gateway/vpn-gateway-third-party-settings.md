@@ -10,20 +10,17 @@ tags: azure-vpn-gateway
 ms.assetid: 
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: delhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: c3182f14623fc53482ab13fbf4abf58e4e2c50d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
-
+ms.openlocfilehash: 421d114632e1794a3cd5bd23fdecb0fadd476c6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
 
 本文针对与 Azure VPN 网关一起使用的第三方 VPN 或防火墙设备提供了几种建议的解决方案。
@@ -53,5 +50,4 @@ ms.lasthandoff: 06/26/2017
 [Azure 网关设置](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices#a-nameipsecaipsecike-parameters)
 
 [已知的兼容设备](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices#validated-vpn-devices)
-
 

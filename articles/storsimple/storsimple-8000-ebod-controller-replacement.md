@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 45699c267d1009c4884dd164fd3f2950d6d5f555
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>更换 StorSimple 设备上的 EBOD 控制器
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/11/2017
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |故障 LED |
-   | 2 |电源 LED |
+   | #N/A |电源 LED |
    | 3 |SAS 连接器 |
    | 4 |SAS LED |
    | 5 |仅供工厂使用的串行端口 |
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |主机箱 |
-   | 2 |PCM 0 |
+   | #N/A |PCM 0 |
    | 3 |PCM 1 |
    | 4 |控制器 0 |
    | 5 |控制器 1 |

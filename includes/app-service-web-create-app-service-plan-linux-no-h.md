@@ -8,7 +8,7 @@
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
 ```
 
-创建应用服务计划后，Azure CLI 将显示类似于以下示例的信息：
+创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
 
 ```json
 { 

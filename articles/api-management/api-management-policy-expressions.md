@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 33bcc51466fa0918bf4484c58fac813d07ae14da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 策略表达式语法为 C# 6.0 版。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。  
@@ -203,4 +202,3 @@ ms.lasthandoff: 08/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-

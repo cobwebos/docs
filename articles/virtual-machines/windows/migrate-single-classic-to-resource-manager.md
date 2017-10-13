@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>手动将经典 VM 从 VHD 迁移到新的 ARM 托管磁盘 VM 
 

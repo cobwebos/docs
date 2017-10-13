@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
+ms.openlocfilehash: 2ae53d5aceab21b08ccdae5bf5192529cd7f09da
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 595d611aac4f57b7ab5b7ab4e46edf1eff796185
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
 ## <a name="general"></a>常规
@@ -329,4 +327,3 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关应用程序网关的详细信息，请访问 [Introduction to Application Gateway](application-gateway-introduction.md)（应用程序网关简介）。
-

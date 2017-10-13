@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 4eb2c04c940dd6ad15a491a331aed76c237f0387
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序的联合单一登录时遇到的问题
 
@@ -59,7 +59,7 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  转到“SAML 签名证书”部分，然后单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
+8.  转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
 Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文件进行检索。
 

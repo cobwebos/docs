@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: 21d4cf3a28e2b21e606663be32e001b8b4e91bb7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-encompass"></a>教程：Azure Active Directory 与 Encompass 的集成
 
@@ -226,5 +225,4 @@ ms.lasthandoff: 09/19/2017
 [201]: ./media/active-directory-saas-encompass-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-encompass-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-encompass-tutorial/tutorial_general_203.png
-
 

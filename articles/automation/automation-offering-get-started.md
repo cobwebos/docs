@@ -1,4 +1,4 @@
---- 
+---
 title: "Azure 自动化入门 | Microsoft Docs"
 description: "本文概述了 Azure 自动化服务，探讨了 Azure 应用商店产品/服务的载入准备过程涉及的设计和实现细节。"
 services: automation
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
+ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="getting-started-with-azure-automation"></a>Azure 自动化入门
 
 本入门指南介绍了与 Azure 自动化部署相关的核心概念。 不管是 Azure 自动化新手，还是已有自动化工作流软件（例如 System Center Orchestrator）使用经验，都可以通过本指南了解如何准备和载入自动化。  之后便可开始开发 runbook，支持流程自动化需求。 
@@ -191,6 +189,5 @@ Azure 自动化 DSC 可用于管理各种计算机：
 ## <a name="next-steps"></a>后续步骤
 * 可以参阅[测试 Azure 自动化运行方式帐户身份验证](automation-verify-runas-authentication.md)一文，确认新的自动化帐户能否针对 Azure 资源进行身份验证。
 * 若要开始创建 runbook，请在开始创作前，先查看支持的[自动化 runbook 类型](automation-runbook-types.md)和相关注意事项。
-
 
 

@@ -56,7 +56,7 @@ SA 生存期是本地规范，不需匹配。
 | **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度 |
 | ---                       | ---                      | ---          | ---            |
 | 1                         | DHGroup1                 | PFS1         | 768 位 MODP   |
-| 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
+| #N/A                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 位 MODP  |
 | 19                        | ECP256                   | ECP256       | 256 位 ECP    |
 | 20                        | ECP384                   | ECP284       | 384 位 ECP    |

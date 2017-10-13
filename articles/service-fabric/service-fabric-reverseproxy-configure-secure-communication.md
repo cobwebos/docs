@@ -14,10 +14,10 @@ ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: 568f9638c59282bcd7d3fae058a1588a889c22dc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 

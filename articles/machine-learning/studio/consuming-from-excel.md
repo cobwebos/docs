@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/13/2017
 ms.author: tedway
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9a8b39853e1a90815758af1d8fd772db7cc18ac5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>使用 Excel 中的 Azure 机器学习 Web 服务
  Azure 机器学习工作室可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
@@ -74,4 +73,3 @@ ms.lasthandoff: 09/25/2017
 [2]: ./media/consuming-from-excel/enableeditting.png
 [3]: ./media/consuming-from-excel/enablecontent.png
 [4]: ./media/consuming-from-excel/sampletable.png
-

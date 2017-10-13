@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: c0e9b19e95cc037374d587686346f41116e46e84
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-vm-with-wordpress"></a>使用 WordPress 创建 VM
 
 此脚本将创建一个虚拟机，然后使用 Azure 虚拟机自定义脚本扩展安装 WordPress。 运行脚本后，可在 `http://<public IP of VM>/wordpress` 访问 WordPress 配置站点。 
@@ -61,4 +59,3 @@ az group delete --name myResourceGroup
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
-

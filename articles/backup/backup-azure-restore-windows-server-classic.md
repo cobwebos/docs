@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: saurse;trinadhk;markgal;
 ms.openlocfilehash: 300b2b17b44e21ed446fd63d572a2461e2fc1343
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-the-classic-deployment-model"></a>使用经典部署模型将文件还原到 Windows Server 或 Windows 客户端计算机
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/18/2017
 本文介绍如何从备份保管库中恢复数据并将其还原到服务器或计算机。 自 2017 年 3 月起，无法再在经典门户中创建备份保管库。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> **2017 年 10 月 15 日之后**，无法使用 PowerShell 创建备份保管库。 <br/> **从 2017 年 11 月 1 日起**：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 <br/> 从 2017 年 11 月 1 日起：
 >- 其余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
@@ -125,7 +125,7 @@ ms.lasthandoff: 08/18/2017
     ![恢复选项](./media/backup-azure-restore-windows-server-classic/recoveroptions.png)
 
    * 可以选择还原到原始位置（将覆盖其中的文件/文件夹），或者同一台计算机中的另一个位置。
-   * 如果要还原的文件/文件夹在目标位置存在，可创建副本（同一文件的两个版本）、覆盖目标位置的文件，或者跳过目标中存在文件的恢复。
+   * 如果要还原的文件/文件夹在目标位置存在，则可以创建副本（同一文件的两个版本）、覆盖目标位置中的文件，或者跳过目标中存在的文件的恢复。
    * 强烈建议保留所要恢复的文件中的 ACL 还原默认选项。
 8. 提供这些输入后，单击“**下一步**”。 将文件还原到此计算机的恢复工作流会开始。
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 08/18/2017
 7. 选择“**搜索文件**”或“**浏览文件**”选项。 对于本部分，我们将使用“**搜索文件**”选项。
 
     ![搜索](./media/backup-azure-restore-windows-server-classic/search.png)
-8. 在下一屏幕中选择卷和日期。 搜索要还原的文件夹/文件的名称。
+8. 在下一屏幕中选择卷和日期。 搜索要还原的文件夹/文件名称。
 
     ![搜索项](./media/backup-azure-restore-windows-server-classic/searchitems.png)
 9. 选择这些文件需要还原到的位置。
@@ -199,7 +199,7 @@ ms.lasthandoff: 08/18/2017
 
     如果保管库凭据文件无效（或已过期），请在 Azure 门户中从“示例保管库”下载新的保管库凭据文件。 提供有效的保管库凭据后，会显示相应备份保管库的名称。
 
-6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择“源计算机”并提供通行短语。 。
+6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择“源计算机”并提供通行短语。 然后单击“下一步”。
 
     ![计算机列表](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 

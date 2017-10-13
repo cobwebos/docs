@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4e1935a7830b8174796ac12792fbbc0ed110d081
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-prep-python-extensions"></a>数据准备 Python 扩展
 作为一种填补内置功能数据准备之间功能差距的方法，它包含多个级别的扩展性。 在本文档中，我们将通过 Python 脚本概述扩展性。 
 
@@ -361,4 +359,3 @@ def newvalue(row):
     else: 
         return row["Score"] 
 ```  
-

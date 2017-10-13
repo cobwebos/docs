@@ -8,14 +8,12 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: babanisa
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: 358c1f4bca2ced207caf599db2fb1453ca8bc41e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
 通过 Azure 事件网格，可使用基于事件的体系结构轻松生成应用程序。 你可以选择要订阅的 Azure 资源，并提供要向其发送事件的事件处理程序或 WebHook 终结点。 事件网格包含来自 Azure 服务对事件的内置支持，如存储 blob 和资源组。 事件网格还可以使用自定义主题和自定义 webhook 对应用程序和第三方事件提供自定义支持。 

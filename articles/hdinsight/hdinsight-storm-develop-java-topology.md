@@ -17,12 +17,11 @@ ms.workload: big-data
 ms.date: 09/28/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: c72de1c83fe73019ac3ad8b8487aa25bbd078555
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
@@ -793,5 +792,4 @@ Trident 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident �
 * [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
 如需更多 Storm 拓扑示例，请访问 [Storm on HDInsight 示例拓扑](hdinsight-storm-example-topology.md)。
-
 

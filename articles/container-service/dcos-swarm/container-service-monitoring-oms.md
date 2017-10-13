@@ -17,10 +17,10 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.openlocfilehash: 9b8f96b34b53982c469273a3df9751ceb7930d60
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集
 
@@ -76,7 +76,7 @@ Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理
 
 ### <a name="azure-portal"></a>Azure 门户 
 
-在 <https://portal.microsoft.com/> 中登录到 Azure 门户。 转到“Marketplace”，选择“监视 + 管理”，并单击“查看全部”。 然后键入`containers`在搜索中。 搜索结果中将显示“容器”。 选择“容器”，并单击“创建”。
+在 <https://portal.microsoft.com/> 中登录到 Azure 门户。 转到“Marketplace”，选择“监视 + 管理”，并单击“查看全部”。 然后在搜索中键入 `containers`。 搜索结果中将显示“容器”。 选择“容器”，并单击“创建”。
 
 ![](media/container-service-monitoring-oms/image9.png)
 

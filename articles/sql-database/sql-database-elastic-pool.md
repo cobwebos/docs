@@ -11,19 +11,17 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.devlang: NA
-ms.date: 08/25/2017
+ms.date: 10/11/2017
 ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.openlocfilehash: 38c8c83909fe6a68e8850c9ac9d796784c38c70a
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 2af5be1c2250c3ec363b97c21bc3fa05c8ace984
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
-
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
 SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管理和缩放具有不断变化且不可预测的使用需求的多个数据库。 同一弹性池中的所有数据库都位于单个 Azure SQL 数据库服务器上，并以固定价格共享固定数量的资源（[弹性数据库事务单位](sql-database-what-is-a-dtu.md) (eDTU)）。 Azure SQL 数据库中的弹性池可使 SaaS 开发人员将一组数据库的价格性能优化在规定的预算内，同时为每个数据库提供性能弹性。 
@@ -122,7 +120,7 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 1. 通过如下方式来估算池所需的 eDTU：
 
    MAX（<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>
-   <*并发高峰数据库的数目* X *每一数据库的高峰 DTU 使用率*）
+   <并发高峰数据库的数目** X 每一数据库的高峰 DTU 使用率**）
 2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。 有关基于 eDTU 池大小的池存储限制，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels)。
 3. 选择步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。
 4. 请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)，查找大于步骤 3 中估计值的最低 eDTU 池大小。
@@ -329,12 +327,12 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 
 | Cmdlet | 说明 |
 | --- | --- |
-|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#create)|创建弹性池。|
-|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#list)|返回服务器中弹性池的列表。|
-|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#list-dbs)|返回弹性池中数据库的列表。|
-|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#list-editions)|还包括可用的池 DTU 设置、存储限制和每数据库设置。 为了降低冗长，默认情况下会隐藏附加的存储限制以及每数据库设置。|
-|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#update)|更新弹性池。|
-|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#delete)|删除弹性池。|
+|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|创建弹性池。|
+|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|返回服务器中弹性池的列表。|
+|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|返回弹性池中数据库的列表。|
+|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|还包括可用的池 DTU 设置、存储限制和每数据库设置。 为了降低冗长，默认情况下会隐藏附加的存储限制以及每数据库设置。|
+|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|更新弹性池。|
+|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|删除弹性池。|
 
 ## <a name="manage-databases-within-elastic-pools-using-transact-sql"></a>使用 Transact-SQL 管理弹性池中的数据库
 
@@ -382,4 +380,3 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 * 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 * 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 * 有关使用弹性池的 SaaS 教程，请参阅 [Wingtip SaaS 应用程序简介](sql-database-wtp-overview.md)。
-

@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
+ms.openlocfilehash: d61b29f1327f57bc32b2c53de3fe58e53fcf3cac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 81aec340d595371a314ec0c1361f77a37c406a1e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>使用网络安全功能保护个人数据：Azure 应用程序网关和网络安全组
 
@@ -150,4 +149,3 @@ NSG 规则包含九个属性：名称、协议（TCP、 UDP 或 \*，包括 ICMP
 [获取有关网络安全组的信息](https://docs.microsoft.com/rest/api/network/virtualnetwork/get-information-about-a-network-security-group)
 
 [Web 应用程序防火墙 (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview)
-

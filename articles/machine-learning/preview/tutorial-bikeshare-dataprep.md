@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 722657c9bbae23a051a63972a8800d3cc40e7e40
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>共享自行车教程：使用 Azure Machine Learning Workbench 执行高级数据准备
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
@@ -118,7 +116,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    > * __提升标题模式__：使用来自第一个文件的标题
 
    数据预览应当显示以下列：
-   * **Path**
+   * **路径**
    * **DATE**
    * **REPORTTYPE**
    * **HOURLYDRYBULBTEMPF**
@@ -661,4 +659,3 @@ df.to_csv('Your Training Data File Path here')
 接下来，可以了解有关数据准备的更多信息：
 > [!div class="nextstepaction"]
 > [数据准备用户指南](data-prep-user-guide.md)
-

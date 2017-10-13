@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: kraigb
 ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>在 Azure 中持续交付云服务
 本文中所述过程向你演示如何设置对 Azure 云应用程序的持续交付。 此过程使你能够在签入每个代码后，自动创建服务包并将其部署到 Azure。 本文中介绍的包生成过程与 Visual Studio 中的 **Package** 命令等效，而发布步骤与 Visual Studio 中的 **Publish** 命令等效。
@@ -74,9 +74,9 @@ ms.lasthandoff: 08/29/2017
    构造并测试相应的 MSBuild 命令行以生成项目并将其并入一个 Azure 包后，可将此命令行添加到生成脚本中。 如果生成服务器使用自定义脚本，则此过程将依赖自定义生成过程的细节。 如果要将 TFS 用作生成环境，则可按照下一步中的说明操作来将 Azure 包生成添加到生成过程中。
 
 ## <a name="3-build-a-package-using-tfs-team-build"></a>3：使用 TFS Team Build 生成包
-如果已将 Team Foundation Server (TFS) 设置为生成控制器并将生成服务器设置为 TFS 生成计算机，则可以选择为 Azure 包设置自动化生成。 有关如何设置 Team Foundation Server 并将其用作生成系统的信息，请参阅[扩大生成系统][Scale out your build system]。 具体而言，以下过程假设已根据 [部署和配置生成服务器][Deploy and configure a build server]中所述配置了生成服务器，而且已创建了一个团队项目并在该团队项目中创建了一个云服务项目。
+如果已将 Team Foundation Server (TFS) 设置为生成控制器并将生成服务器设置为 TFS 生成计算机，则可以选择为 Azure 包设置自动化生成。 有关如何设置 Team Foundation Server 并将其用作生成系统的信息，请参阅[扩大生成系统][Scale out your build system]。 具体而言，以下过程假设已根据[部署和配置生成服务器][Deploy and configure a build server]中所述配置了生成服务器，并且已创建了一个团队项目并在该团队项目中创建了一个云服务项目。
 
-若要配置 TFS 以生成 Azure 包，请执行下列步骤：
+要将 TFS 配置为生成 Azure 包，请执行下列步骤：
 
 1. 在开发计算机上的 Visual Studio 中，从“视图”菜单中选择“**团队资源管理器**”，或选择 Ctrl+\\Ctrl+M。 在“团队资源管理器”窗口中，展开“**生成**”节点，或者选择“**生成**”页，并选择“**新建生成定义**”。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 08/29/2017
 2. 选择“**触发器**”选项卡，并为希望生成包的时间指定所需条件。 例如，指定“**持续集成**”可在进行源控件签入时生成包。
 3. 选择“**源设置**”选项卡，并确保项目文件夹已列在“**源控件文件夹”**列中，并且状态为“**活动**”。
 4. 选择“**生成默认值**”选项卡，并在生成控制器下确认生成服务器的名称。  此外，选择“**将生成输出复制到以下放置文件夹**”选项并指定所需的放置位置。
-5. 选择“**进程**”选项卡。在“进程”选项卡上选择默认模板，在“生成”下选择项目（如果尚未选择），然后展开网格“生成”部分中的“高级” 部分。
+5. 选择“**进程**”选项卡。在“进程”选项卡上选择默认模板，在“**生成**”下选择项目（如果尚未选择），并展开网格“**生成**”部分中的“**高级**”部分。
 6. 选择“**MSBuild 参数**”，并按上面步骤 2 中所述设置相应的 MSBuild 命令行参数。 例如，输入 **/t:Publish /p:PublishDir=\\\\myserver\\drops\\** 可以生成一个包并将包文件复制到位置 \\\\myserver\\drops\\：
 
    ![MSBuild 参数][2]
@@ -118,7 +118,7 @@ ms.lasthandoff: 08/29/2017
    * 若要创建新的云服务，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 云服务名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。
 
          New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
-   * 若要创建新的存储帐户，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。 可尝试使用与云服务相同的名称。
+   * 若要创建新的存储帐户，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。 可以尝试使用与云服务相同的名称。
 
          New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 8. 直接从 Azure PowerShell 调用脚本，或将此脚本连接到在包生成后进行的主机生成自动化。
@@ -163,9 +163,9 @@ ms.lasthandoff: 08/29/2017
    -->
    **升级部署与删除部署 -\> 新建部署**
 
-   默认情况下，此脚本将在未传入参数或显式传递值 1 时执行升级部署 ($enableDeploymentUpgrade = 1)。 对于单一实例，此部署相对于完整部署的好处是，花费的时间更少。 对于需要高可用性的实例，此部署的好处是，在升级一些实例的同时使其他实例保持运行（检查更新域）且不会删除你的 VIP。
+   默认情况下，此脚本会在未传入参数或显式传递值 1 时执行升级部署 ($enableDeploymentUpgrade = 1)。 对于单一实例，此部署相对于完整部署的好处是，花费的时间更少。 对于需要高可用性的实例，此部署的好处是，在升级一些实例的同时使其他实例保持运行（检查更新域）且不会删除 VIP。
 
-   可使用脚本 ($enableDeploymentUpgrade = 0) 或通过将 -enableDeploymentUpgrade 0 作为参数传递（这会将脚本行为更改为首先删除任何现有部署，然后创建新的部署）来禁用升级部署。
+   可使用脚本 ($enableDeploymentUpgrade = 0) 或通过将 *-enableDeploymentUpgrade 0* 作为参数传递（这会将脚本行为更改为首先删除任何现有部署，并创建新的部署）来禁用升级部署。
 
    > [!IMPORTANT]
    > 默认情况下，此脚本将始终删除或替换现有部署（如果检测到这些部署）。 这对于从没有用户/操作员提示的自动化中启用持续交付是必需的。

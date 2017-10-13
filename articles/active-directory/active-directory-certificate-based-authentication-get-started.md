@@ -14,10 +14,10 @@ ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 8ebc6f2dd7502fd75ffdd4d5d68338382cb1a46b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="add"></a>添加
 
-若要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet，并将 **crlDistributionPoint** 属性设为正确的值： 
+要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet，并将 **crlDistributionPoint** 属性设为正确的值： 
    
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]" 
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation 
@@ -155,11 +155,11 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="step-3-configure-revocation"></a>步骤 3：配置吊销
 
-若要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。 将定期引用 CRL，以撤销对该列表中证书的访问权限。
+要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。 将定期引用 CRL，以撤销对该列表中证书的访问权限。
 
 如果需要更即时的吊销（例如，如果用户丢失了设备），可以使用户的授权令牌失效。 若要使授权令牌失效，请使用 Windows PowerShell 为此特定用户设置 **StsRefreshTokenValidFrom** 字段。 必须为要撤销其访问权限的每个用户更新 **StsRefreshTokenValidFrom** 字段。
 
-若要确保撤销仍然有效，必须将 CRL 的**生效日期**设置为晚于 **StsRefreshTokenValidFrom** 所设置的值，并确保相关的证书在 CRL 中。
+要确保撤销仍然有效，必须将 CRL 的**生效日期**设置为晚于 **StsRefreshTokenValidFrom** 所设置的值，并确保相关的证书在 CRL 中。
 
 以下步骤概述了通过设置 **StsRefreshTokenValidFrom** 字段更新授权令牌并使其失效的过程。 
 
@@ -214,7 +214,7 @@ EAS 配置文件必须包含以下信息：
 
 - EAS 终结点（例如 outlook.office365.com）
 
-若要配置 EAS 配置文件并将其放置在设备上，可以使用移动设备管理 (MDM)，例如 Intune，也可以手动将 EAS 配置文件中的证书放置在设备上。  
+通过使用 Intune 等移动设备管理 (MDM) 或者手动将 EAS 配置文件中的证书放置在设备上，可以配置 EAS 配置文件并将其放置在设备上。  
 
 ### <a name="testing-eas-client-applications-on-android"></a>在 Android 上测试 EAS 客户端应用程序
 

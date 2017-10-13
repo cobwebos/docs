@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 2a6559551f608cf435e89997392a6a0ba995c583
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>流分析开窗函数简介
 在许多实时流方案中，只需要对临时窗口中包含的数据执行操作。 开窗函数的本机支持是 Azure 流分析的重要功能，可对编写复杂流处理作业的开发人员工作效率造成重大影响。 流分析支持开发人员使用[**翻转**](https://msdn.microsoft.com/library/dn835055.aspx)、[**跳跃**](https://msdn.microsoft.com/library/dn835041.aspx)和[**滑动**](https://msdn.microsoft.com/library/dn835051.aspx)窗口对流数据执行临时操作。 值得注意的是，所有[开窗](https://msdn.microsoft.com/library/dn835019.aspx)操作都在窗口**结束**时输出结果。 窗口的输出是基于所用聚合函数的单个事件。 该事件包含窗口的结束时间戳，所有开窗函数都以固定的长度定义。 最后，请务必注意，所有开窗函数只能在 [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx) 子句中使用。
@@ -51,5 +50,4 @@ ms.lasthandoff: 08/29/2017
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

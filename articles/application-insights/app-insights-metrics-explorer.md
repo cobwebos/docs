@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: bwren
 ms.openlocfilehash: a13500284caab79bbe221060ccf3d925ffb1fab5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
 [Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。

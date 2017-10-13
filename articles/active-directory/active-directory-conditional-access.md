@@ -17,19 +17,18 @@ ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.custom: oldportal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: b19fd8c0c41638ffec5fda32b6b1a855be2abc7b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: e93bfacfd74c0e8f34bc1bab372cc287193e992f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="conditional-access-in-the-azure-classic-portal"></a>Azure 经典门户中的条件访问
 
 本主题介绍 Azure 经典门户中的条件访问。 有关 Azure Active Directory 中条件访问的最新信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
 
 
-Azure Active Directory (Azure AD) 条件性访问中的控制功能是帮助保护云中和本地的资源的一种简单方式。 条件性访问策略如多重身份验证可帮助抵御凭据被盗和被骗的风险。 其他条件性访问策略可帮助维持组织的数据的安全。 例如，除了要求提供凭据，你可能还有一个策略，即只有在移动设备管理系统中（如 Microsoft Intune）注册的设备才可以访问你组织的敏感服务。
+Azure Active Directory (Azure AD) 条件性访问中的控制功能是帮助保护云中和本地的资源的一种简单方式。 条件性访问策略如多重身份验证可帮助抵御凭据被盗和被骗的风险。 其他条件性访问策略可帮助维持组织的数据的安全。 例如，除了要求提供凭据，可能还有一个策略，即只有在移动设备管理系统中（如 Microsoft Intune）注册的设备才可以访问你组织的敏感服务。
 
 ## <a name="prerequisites"></a>先决条件
 Azure AD 条件性访问是 [Azure Active Directory Premium](http://www.microsoft.com/identity) 的一项功能。 访问应用了条件性访问策略的应用程序的所有用户都必须拥有 Azure AD Premium 许可证。 可以在[未经授权用户报表](https://aka.ms/utc5ix)中了解有关许可证要求的更多信息。
@@ -51,9 +50,9 @@ Azure AD 条件性访问是 [Azure Active Directory Premium](http://www.microsof
 ## <a name="controls"></a>控制
 以下是可用于执行条件性访问策略的控件：
 
-* **多重身份验证**。 可以要求在多重身份验证过程中进行强身份验证。 可以通过以下方式使用多重身份验证：使用 Azure 多重身份验证，或使用与 Active Directory 联合服务 (AD FS) 结合的本地多重身份验证提供程序。 对于可能已获有效用户的凭据的访问权限的未授权用户，使用多重身份验证可帮助防止其访问你的资源。
+* **多重身份验证**。 可以要求在多重身份验证过程中进行强身份验证。 可以通过以下方式使用多重身份验证：使用 Azure 多重身份验证，或使用与 Active Directory 联合服务 (AD FS) 结合的本地多重身份验证提供程序。 对于可能已获有效用户的凭据的访问权限的未授权用户，使用多重身份验证可帮助防止其访问资源。
 * **阻止**。 可以应用如用户位置的条件来阻止用户访问。 例如，当用户不在受信任的网络中时阻止访问。
-* **合规的设备**。 可以在设备级别设置条件性访问策略。 你可以设置一个策略，以便只有已加入域的计算机或在移动设备管理应用程序中注册的移动设备才可以访问你组织的资源。 例如，可以使用 Intune 来检查设备的合规性，然后在用户尝试访问应用程序时将其报告给 Azure AD 以执行策略。 有关如何使用 Intune 保护应用和数据的详细指南，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune/deploy-use/protect-apps-and-data-with-microsoft-intune)。 此外还可以使用 Intune 保护丢失或被盗设备的数据。 有关详细信息，请参阅[使用 Microsoft Intune 的完全擦除或选择性擦除保护数据](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)。
+* **合规的设备**。 可以在设备级别设置条件性访问策略。 可以设置一个策略，以便只有已加入域的计算机或在移动设备管理应用程序中注册的移动设备才可以访问你组织的资源。 例如，可以使用 Intune 来检查设备的合规性，然后在用户尝试访问应用程序时将其报告给 Azure AD 以执行策略。 有关如何使用 Intune 保护应用和数据的详细指南，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune/deploy-use/protect-apps-and-data-with-microsoft-intune)。 此外还可以使用 Intune 保护丢失或被盗设备的数据。 有关详细信息，请参阅[使用 Microsoft Intune 的完全擦除或选择性擦除保护数据](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)。
 
 ## <a name="applications"></a>应用程序
 可以在应用程序级别执行条件性访问策略。 设置云中或本地应用程序和服务的访问级别。 直接将策略应用于网站或服务。 对浏览器的访问和对访问服务的应用程序的访问执行策略。
@@ -74,7 +73,7 @@ Azure AD 条件性访问是 [Azure Active Directory Premium](http://www.microsof
   * **Windows 10 Mobile 工作或个人设备**。 由 Intune 或支持的第三方移动设备管理系统管理。
   * **iOS 和 Android 设备**。 由 Intune 管理。
 
-对于受基于设备的证书颁发机构策略保护的应用程序，用户必须从满足此策略的要求的设备访问此应用程序。 如果在不满足策略要求的设备上进行尝试，那么访问将被拒绝。
+对于受基于设备的证书颁发机构策略保护的应用程序，用户必须从满足此策略的要求的设备访问此应用程序。 如果在不满足策略要求的设备上进行尝试，那么访问会被拒绝。
 
 有关如何在 Azure AD 中配置基于设备的证书颁发机构策略的信息，请参阅[为与 Azure Active Directory 连接的应用程序设置基于设备的条件性访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 
@@ -97,5 +96,4 @@ Azure AD 条件性访问是 [Azure Active Directory Premium](http://www.microsof
 ### <a name="next-steps"></a>后续步骤
 * [条件性访问常见问题解答](active-directory-conditional-faqs.md)
 * [技术参考](active-directory-conditional-access-technical-reference.md)
-
 

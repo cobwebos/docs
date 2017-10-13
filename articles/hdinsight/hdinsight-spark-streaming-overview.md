@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: ramoha
+ms.openlocfilehash: e80b69fa3e60618dbaccd612114200a941019854
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 7608951ffb79d945ce3271792e7cf1a0d0b254b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-spark-streaming"></a>Spark 流式处理概述
 
@@ -187,7 +186,7 @@ Spark 流式处理应用程序是一个长时间运行的应用程序，从引�
 | value | time |
 | --- | --- |
 | 1 | 1497316294139 |
-| 2 | 1497316299158
+| #N/A | 1497316299158
 | 3 | 1497316304178
 | 4 | 1497316309204
 | 5 | 1497316314224

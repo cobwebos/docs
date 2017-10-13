@@ -15,10 +15,10 @@ ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.openlocfilehash: e5c01de19917235c34c035415df86291b9152bf0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-a-scale-out-process-server"></a>管理横向扩展进程服务器
 
@@ -28,8 +28,7 @@ ms.lasthandoff: 07/11/2017
 以下是建议的设置横向扩展进程服务器所需的硬件、软件和网络配置。
 
 > [!NOTE]
-> 
-            [容量规划](site-recovery-capacity-planner.md)是一个重要的步骤，用于确保使用符合负载要求的配置部署横向扩展进程服务器。 请阅读有关[横向扩展进程服务器的扩展特征](#sizing-requirements-for-a-configuration-server)的更多信息。
+> [容量规划](site-recovery-capacity-planner.md)是一个重要的步骤，用于确保使用符合负载要求的配置部署横向扩展进程服务器。 请阅读有关[横向扩展进程服务器的扩展特征](#sizing-requirements-for-a-configuration-server)的更多信息。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 

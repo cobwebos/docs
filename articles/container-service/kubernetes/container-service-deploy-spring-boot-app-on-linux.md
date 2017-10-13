@@ -16,10 +16,10 @@ ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
 ms.openlocfilehash: 5f0b470bd46cfeaf00b3092dbe9db507ed50f622
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-spring-boot-application-on-linux-in-the-azure-container-service"></a>在 Azure 容器服务中将 Spring Boot 应用程序部署于 Linux 上
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/18/2017
 
 本教程将指导用户完成以下步骤：使用 Docker 在 [Azure 容器服务 (ACS)] 中开发 Spring Boot 应用程序并将其部署到 Linux 主机。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成本教程中的步骤需要具备以下先决条件：
 

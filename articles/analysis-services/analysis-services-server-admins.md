@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
 ms.openlocfilehash: a1b58125dafdf73f245b6a8cd0f4917513b22ea9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 服务器管理员必须是 Azure Active Directory (Azure AD) 中服务器所在租户的有效用户或组。 可以为 Azure 门户中的服务器使用控制边栏选项卡中的“Analysis Services 管理员”，或使用 SSMS 中的“服务器属性”来管理服务器管理员。 

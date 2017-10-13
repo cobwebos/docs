@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
 ms.openlocfilehash: d5c735a4adbc59e9526ec4fd40720c5ec136d63d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>通过 Azure IoT Edge，使用 IoT 网关进行传感器数据转换
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/03/2017
 > * [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 > * [使用 IoT 网关将事项连接到云 - SensorTag 到 Azure IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
-IoT 网关的一个用途是在将收集的数据发送到云之前，先处理这些数据。 Azure IoT Edge 引入了可创建并组合形成数据处理工作流的模块。 模块接收消息，对其执行某些操作，并将其转手供其他模块处理。
+IoT 网关的一个目的是在将收集的数据发送到云之前，先处理这些数据。 Azure IoT Edge 引入了可创建并组合形成数据处理工作流的模块。 模块接收消息，对其执行某些操作，然后将其转手供其他模块处理。
 
 ## <a name="what-you-learn"></a>学习内容
 
@@ -80,7 +80,7 @@ sed -i -e "s/\r$//" build.sh
 ./build.sh
 ```
 
-编译完成后会获取 `libmy_module.so` 文件。 记下此文件的绝对路径。
+编译完成后将获取 `libmy_module.so` 文件。 记下此文件的绝对路径。
 
 ## <a name="add-the-module-to-the-ble-sample-application"></a>将模块添加到 BLE 示例应用程序
 
@@ -96,7 +96,7 @@ sed -i -e "s/\r$//" build.sh
    vi ble_gateway.json
    ```
 
-1. 将以下代码插入 `modules` 节以添加模块。
+1. 将以下代码插入 `modules` 部分以添加模块。
 
    ```json
    {

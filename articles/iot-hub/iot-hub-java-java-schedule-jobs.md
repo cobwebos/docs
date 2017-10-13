@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 9009afc83b40064c6dbf10100f514c681af9b96b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>计划和广播作业 (Java)
 
@@ -480,10 +479,9 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 创建了运行两个作业的后端应用。 第一个作业设置了所需的属性值，第二个作业调用了直接方法。
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 创建了运行两个作业的后端应用。 第一个作业设置了所需的属性值，第二个作业调用了直接方法。
 
 使用下列资源了解如何执行以下操作：
 
 * 通过 [IoT 中心入门](iot-hub-java-java-getstarted.md)教程学习如何从设备发送遥测数据。
 * 通过[使用直接方法](iot-hub-java-java-direct-methods.md)教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。
-

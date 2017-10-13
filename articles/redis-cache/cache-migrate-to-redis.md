@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: sdanie
 ms.openlocfilehash: 0fbfb945c66926794721f2ce8cc183dac51ecb27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>从托管缓存服务迁移到 Azure Redis 缓存
 在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本主题介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。

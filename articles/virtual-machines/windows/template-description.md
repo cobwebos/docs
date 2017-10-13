@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: d45a43d1d4304fd0028d15b4797228a22cc6e76f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
 本文介绍 Azure Resource Manager 模板中与虚拟机相关的方面。 本文不会介绍用于创建虚拟机的完整模板；在完整的模板中，需要提供存储帐户、网络接口、公共 IP 地址和虚拟网络的资源定义。 有关如何统一定义这些资源的详细信息，请参阅 [Resource Manager 模板演练](../../azure-resource-manager/resource-manager-template-walkthrough.md)。
@@ -460,4 +458,3 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 - 参考[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)创建自己的模板。
 - 参考[使用 Resource Manager 模板创建 Windows 虚拟机](ps-template.md)部署创建的模板。
 - 通过查看[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的 VM。
-

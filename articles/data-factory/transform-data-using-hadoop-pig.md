@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7745f273283ff998b41fe59a10e705e7564a7bd3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Pig 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +27,7 @@ ms.lasthandoff: 09/25/2017
 数据工厂[管道](concepts-pipelines-activities.md)中的 HDInsight Pig 活动会在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 Pig 活动](v1/data-factory-pig-activity.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 Pig 活动](v1/data-factory-pig-activity.md)。
 
 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 09/25/2017
 | 定义             | 在 Pig 脚本中指定参数作为键/值对，以供引用。 | 否       |
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章了解如何以其他方式转换数据： 
+参阅以下文章了解如何以其他方式转换数据： 
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
@@ -82,6 +81,5 @@ ms.lasthandoff: 09/25/2017
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 679819618452d65847c6163569e04945ba8a414d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
 
@@ -132,5 +131,4 @@ ms.lasthandoff: 09/01/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [将 Git 项目存储库添加到实验室](devtest-lab-add-artifact-repo.md)。
-
 

@@ -16,10 +16,10 @@ ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 1e286044fb1a1b367fcac2dc14c47f68d5ed120d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>在单个应用中登录 Microsoft 帐户和 Azure AD 用户
 在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory 中的工作帐户的应用开发人员需要集成两个单独的系统。  **Azure AD v2.0 终结点**推出了新的身份验证 API 版本，可让你通过一个简单的集成登录这两种类型的帐户。  使用 v2.0 终结点的应用还可以通过其中一种帐户从 [Microsoft Graph](https://graph.microsoft.io) 使用 REST API。

@@ -15,12 +15,11 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: c1b3feb79328269f4692d744e7a473397d0328c1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="web-apps-overview"></a>Web 应用概述
 *应用服务 Web 应用* 是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 Microsoft Azure 提供的这个 [平台即服务](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) 产品使你可重点关注业务逻辑，同时 Azure 负责维护用于运行和扩展应用的基础结构。
@@ -76,4 +75,3 @@ ms.lasthandoff: 09/28/2017
 > 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
 > 
 > 
-

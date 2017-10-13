@@ -44,7 +44,7 @@
 如果以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。 有关详细信息，请参阅 [查看和复制存储访问密钥](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
 
 > [!NOTE]
-> 可以指向存储模拟器以避免引发与 Azure 存储有关的任何费用。 但是，如果您确实选择指向云中的 Azure 存储帐户，则执行此教程的费用会忽略不计。
+> 可以指向存储模拟器以避免引发与 Azure 存储有关的任何费用。 但是，如果确实选择指向云中的 Azure 存储帐户，则执行此教程的费用会忽略不计。
 > 
 > 
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
 ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-metrics"></a>性能指标
 
@@ -30,10 +30,10 @@ ms.lasthandoff: 08/03/2017
 
 | 计数器类别 | 计数器名称 |
 | --- | --- |
-| PhysicalDisk(per Disk) | 平均 磁盘读取队列长度 |
-| PhysicalDisk(per Disk) | 平均 磁盘写入队列长度 |
-| PhysicalDisk(per Disk) | 平均 磁盘秒数/读取 |
-| PhysicalDisk(per Disk) | 平均 磁盘秒数/写入 |
+| PhysicalDisk(per Disk) | 平均磁盘读取队列长度 |
+| PhysicalDisk(per Disk) | 平均磁盘写入队列长度 |
+| PhysicalDisk(per Disk) | 平均磁盘秒数/读取 |
+| PhysicalDisk(per Disk) | 平均磁盘秒数/写入 |
 | PhysicalDisk(per Disk) | 磁盘读取数/秒 |
 | PhysicalDisk(per Disk) | 磁盘读取字节数/秒 |
 | PhysicalDisk(per Disk) | 磁盘写入数/秒 |

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 07/05/2017
 ms.author: jroth
 ms.openlocfilehash: 1959871141f196ba80ffd7b37e62e5ea5b42dba3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-自动修补为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，这可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 自动修补依赖于 [SQL Server IaaS 代理扩展](../classic/sql-server-agent-extension.md)。
+自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，这可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 自动修补依赖于 [SQL Server IaaS 代理扩展](../classic/sql-server-agent-extension.md)。
 
 > [!IMPORTANT] 
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 若要查看本文的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中自动修补 SQL Server](../sql/virtual-machines-windows-sql-automated-patching.md)。
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
 | **修补程序类别** |重要说明 |要下载并安装的更新类别。 |
 
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
-以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 **New-AzureVMSqlServerAutoPatchingConfig** 命令可为自动更新配置新的维护时段。
+以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 **New-AzureVMSqlServerAutoPatchingConfig** 命令将为自动更新配置新的维护时段。
 
     $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 

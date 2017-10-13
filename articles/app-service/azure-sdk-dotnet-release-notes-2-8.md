@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
 ms.openlocfilehash: 0b9f55d69c824e86245738a082f95fc529583f58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>Azure SDK for .NET 2.8、2.8.1 和 2.8.2
 ## <a name="overview"></a>概述
@@ -43,7 +43,7 @@ Azure.NET SDK 2.8 允许创建 .NET 4.5.2 云服务包。 不过，.NET 4.5.2 Fr
 
 ### <a name="azure-resource-manager-tools"></a>Azure Resource Manager 工具
 #### <a name="breaking-changes"></a>重大变化
-Azure 资源组项目提供的 PowerShell 脚本在此版本中已更新，可以配合新的 Azure PowerShell cmdlet 1.0 版使用。  使用 2.8 以前的 SDK 版本时，无法从 Visual Studio 使用此新脚本。  
+Azure 资源组项目提供的 PowerShell 脚本在此版本中已更新，可以配合新的 Azure PowerShell cmdlet 1.0 版使用。  使用 2.8 以前的 SDK 版本时，将无法从 Visual Studio 使用此新脚本。  
 
 使用 2.8 SDK 时，无法从 Visual Studio 运行在旧版 SDK 上创建的项目中的脚本。  如果使用适当的 Azure PowerShell cmdlet 版本，所有脚本可继续在 Visual Studio 外部运行。  
 

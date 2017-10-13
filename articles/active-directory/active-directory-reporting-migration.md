@@ -16,10 +16,10 @@ ms.date: 07/19/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -57,7 +57,7 @@ Azure 经典门户中的报告分为以下类别：
 
 ![“登录”视图](./media/active-directory-reporting-migration/483.png "“登录”视图")
 
-“登录”视图包含所有用户登录。 可以使用此信息获取应用程序使用情况信息。 还可以在“管理”部分的**企业应用程序**概述中查看应用程序使用情况信息。
+“登录”视图包含所有用户登录。可以使用此信息获取应用程序使用情况信息。 还可以在“管理”部分的**企业应用程序**概述中查看应用程序使用情况信息。
 
 ![企业应用程序](./media/active-directory-reporting-migration/484.png "企业应用程序")
 
@@ -82,7 +82,7 @@ Azure 经典门户中的报告分为以下类别：
 
 ### <a name="application-usage"></a>应用程序使用情况
 
-若要查看有关所有应用或单个应用的应用程序使用情况的详细信息，请在“活动”下选择“登录”。 若要缩小结果范围，可以按用户名或应用程序名称进行筛选。
+若要查看有关所有应用或单个应用的应用程序使用情况的详细信息，请在“活动”下选择“登录”。若要缩小结果范围，可以按用户名或应用程序名称进行筛选。
 
 ![“筛选登录事件”页](./media/active-directory-reporting-migration/07.png "“筛选登录事件”页")
 

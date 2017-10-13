@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1a9c9354b665294778886441cc6d7f02adb1163f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -889,4 +888,3 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [8]: ./media/storage-monitoring-diagnosing-troubleshooting/wireshark-screenshot-3.png
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
-

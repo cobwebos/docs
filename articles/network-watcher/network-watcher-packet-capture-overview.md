@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 4fdd007c2cfad7b42f26ab2cacfba06d95c8dad3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: 152cc8fb61aa6115c7b5863e4d798db9e7aa5b7c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 网络观察程序中的可变数据包捕获简介
 
 使用网络观察程序可变数据包捕获，可以创建数据包捕获会话以跟踪进出虚拟机的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。
@@ -31,7 +29,7 @@ ms.lasthandoff: 05/27/2017
 > [!IMPORTANT]
 > 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
-若要将捕获的信息减少到仅为所需的信息，可以将以下选项用于数据包捕获会话：
+要将捕获的信息减少到仅为所需的信息，可以将以下选项用于数据包捕获会话：
 
 **捕获配置**
 
@@ -59,7 +57,6 @@ ms.lasthandoff: 05/27/2017
 
 <!--Image references-->
 [1]: ./media/network-watcher-packet-capture-overview/figure1.png
-
 
 
 

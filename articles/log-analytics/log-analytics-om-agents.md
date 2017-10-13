@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 387ec757ec17799408ef45bfeb523eb98a5b1013
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 OMS 工作区集成。  这会允许利用 OMS 的机会，同时继续使用 Operations Manager 执行以下操作：
 
@@ -299,6 +297,5 @@ ms.lasthandoff: 09/23/2017
 
 ## <a name="next-steps"></a>后续步骤
 若要添加功能并收集数据，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。
-
 
 

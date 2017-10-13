@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aafa395f8c0593d9597f74cd5cd2a41f26897c6f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预测维护的 Cortana Intelligence 解决方案模板操作手册
 ## <a name="executive-summary"></a>执行摘要
@@ -369,5 +368,4 @@ ms.lasthandoff: 09/25/2017
 图 8。 用于预测维护的示例解决方案体系结构
 
 有关体系结构的每个组件的详细信息，请参阅 [Azure](https://azure.microsoft.com/) 文档。
-
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
 ms.openlocfilehash: efb0cfa4b7950a2d9418282965a23498a67cbffc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-architecture-overview"></a>安全体系结构概述
 当确保 Azure 中的解决方案部署的安全时，具有很强的体系结构基础是成功的关键之一。 掌握这一点，能够通过提出正确的问题和查找问题的正确答案，更好地了解需求。 获取正确问题的正确答案会有效地优化部署的安全性。

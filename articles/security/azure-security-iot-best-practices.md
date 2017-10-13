@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
 ms.openlocfilehash: 8efc0053458e338ac1afe98d9ce970c1d5cbfa81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="internet-of-things-security-best-practices"></a>物联网安全最佳实践
 保护物联网 (IoT) 基础结构是参与 IoT 解决方案的所有人员需要执行的一项关键任务。 由于涉及的设备数和这些设备的分布式性质，危害数以百万计的 IoT 设备的相关安全事件不容小视，具有广泛的影响。

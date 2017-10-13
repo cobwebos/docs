@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 506b625905abf52963230a787af66f956bc292b5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
@@ -59,7 +58,7 @@ ms.lasthandoff: 09/25/2017
 5. 为存储冗余选择默认的“RA-GRS”。
 6. 选择想在其中创建新存储帐户的订阅。
 7. 指定新的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 在本系列教程中，我们将使用名称 ContosoRG。
-8. 选择存储帐户的地理区域。 存储帐户必须与恢复服务保管库位于相同区域中。 对于这些教程中，我们将使用位置西欧。
+8. 选择存储帐户的地理区域。 存储帐户必须位于与恢复服务保管库相同的区域。 对于这些教程中，我们将使用位置西欧。
 
    ![create-storageacct](media/tutorial-prepare-azure/create-storageacct.png)
 
@@ -91,7 +90,7 @@ ms.lasthandoff: 09/25/2017
    - 我们本教程中不需要子网。
    - 选择要在其中创建网络的订阅。
    - 选择位置“西欧”。 该网络必须位于与恢复服务保管库相同的区域中。
-3. 单击“创建”。
+3. 单击“创建” 。
 
    ![create-network](media/tutorial-prepare-azure/create-network.png)
 
@@ -101,4 +100,3 @@ ms.lasthandoff: 09/25/2017
 
 > [!div class="nextstepaction"]
 > [准备本地 VMware基础结构以对 Azure 进行灾难恢复](tutorial-prepare-on-premises-vmware.md)
-

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
 ms.openlocfilehash: 30151b7bdc544bc36e959cc3528d37897198fc7e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用 iothub-explorer 在设备与 IoT 中心之间发送和接收消息
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 08/29/2017
    iothub-explorer send <device-id> <message>
    ```
 
-该命令将闪烁连接到设备的 LED，并将消息发送到设备。
+该命令将闪烁连接到设备的 LED，然后将消息发送到设备。
 
 > [!Note]
 > 设备收到消息后，不需要向 IoT 中心发送单独的确认命令。

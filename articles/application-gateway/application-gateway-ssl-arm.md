@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
+ms.openlocfilehash: ee48ca45ae0d337b5b919dbbb28341caf8af0d45
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 4bcd002a805f1584323f5baf75f791f2fb64201f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-resource-manager"></a>使用 Azure 资源管理器配置应用程序网关以进行 SSL 卸载
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 08/30/2017
 
 * 后端服务器池：后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP/VIP。
 * 后端服务器池设置：每个池都有一些设置，例如端口、协议和基于 Cookie 的相关性。 这些设置绑定到池，并会应用到池中的所有服务器。
-* 前端端口：此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
+* 前端端口：此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
 * 侦听器：侦听器具有前端端口、协议（Http 或 Https；这些设置区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
 * 规则：规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时要定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
 
@@ -272,4 +271,3 @@ DnsSettings              : {
 
 * [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

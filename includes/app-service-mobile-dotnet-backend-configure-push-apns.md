@@ -1,13 +1,13 @@
 
-* **.NET 后端 (C#)**:      
+* **.NET 后端 (C#)**：      
   
-  1. 在 Visual Studio 中，右键单击服务器项目，然后单击**管理 NuGet 包**，搜索`Microsoft.Azure.NotificationHubs`，然后单击**安装**。 这将安装为从后端发送通知的通知中心库。
-  2. 在后端的 Visual Studio 项目中，打开**控制器** > **TodoItemController.cs**。 在文件的顶部，添加以下`using`语句：
+  1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”。 这会安装通知中心库，以便从后端发送通知。
+  2. 在后端的 Visual Studio 项目中，依次打开“控制器” > “TodoItemController.cs”。 在文件的顶部，添加以下 `using` 语句：
      
           using Microsoft.Azure.Mobile.Server.Config;
           using Microsoft.Azure.NotificationHubs;
 
-    3. 替换`PostTodoItem`方法替换为以下代码：  
+    3. 将 `PostTodoItem`方法替换为以下代码：  
 
             public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
             {
@@ -49,10 +49,10 @@
 
     4. 重新发布服务器项目。
 
-* **Node.js 后端**: 
+* **Node.js 后端**： 
   
-  1. 如果尚未这样做[下载快速入门项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或其他使用[Azure 门户中的联机编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。    
-  2. Todoitem.js 表脚本替换为以下代码：
+  1. 如果尚未执行此操作，请[下载快速入门项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。    
+  2. 用以下代码替换 todoitem.js 表脚本：
 
             var azureMobileApps = require('azure-mobile-apps'),
                 promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -91,4 +91,4 @@
 
             module.exports = table;
 
-    2. 在编辑本地计算机上的文件，重新发布服务器项目。
+    2. 编辑本地计算机上的文件时，请重新发布服务器项目。

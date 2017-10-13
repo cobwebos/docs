@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 网络观察程序安全组视图分析网络安全性 - REST API | Microsoft 文档"
-description: "本文将介绍如何使用 PowerShell 通过安全组视图分析虚拟机安全性。"
+description: "本文介绍如何使用 PowerShell 通过安全组视图分析虚拟机安全性。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: afced52b3ae6f3b7f400364f5ec7d049aa166590
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 0eec45630fe3467db26620787038f6dd5a05cc72
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API 通过安全组视图分析虚拟机安全性
 
 > [!div class="op_single_selector"]
@@ -34,9 +32,9 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-在此方案中，你将调用网络观察程序 Rest API 获取虚拟机的安全组视图。 ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
+在此方案中，将调用网络观察程序 Rest API 获取虚拟机的安全组视图。 ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
 
 ## <a name="scenario"></a>方案
 
@@ -184,6 +182,5 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ## <a name="next-steps"></a>后续步骤
 
 请访问[使用网络观察程序审核网络安全组 (NSG)](network-watcher-security-group-view-powershell.md)，了解如何自动执行网络安全组的验证。
-
 
 

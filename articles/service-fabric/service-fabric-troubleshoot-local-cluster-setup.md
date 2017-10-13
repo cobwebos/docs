@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: mikkelhegn
 ms.openlocfilehash: aa393f884b564cee81fcf75cc2eff895efea9471
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>排除本地开发群集安装的故障
 如果在与本地 Azure Service Fabric 开发群集交互时遇到问题，请查看以下建议以获得可能的解决方案。
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="cluster-connection-failures"></a>群集连接失败
 ### <a name="service-fabric-powershell-cmdlets-are-not-recognized-in-azure-powershell"></a>Azure PowerShell 不能识别 Service Fabric PowerShell cmdlet
 #### <a name="problem"></a>问题
-如果你尝试运行任何 Service Fabric PowerShell cmdlet（例如，在 Azure PowerShell 窗口中运行 `Connect-ServiceFabricCluster` ），该操作会失败，指出无法识别该 cmdlet。 发生这种失败的原因是 Azure PowerShell 使用 32 位版本的 Windows PowerShell（即使在 64 位操作系统版本中），而 Service Fabric cmdlet 只能在 64 位环境中工作。
+如果尝试运行任何 Service Fabric PowerShell cmdlet（例如，在 Azure PowerShell 窗口中运行 `Connect-ServiceFabricCluster`），该操作会失败，指出无法识别该 cmdlet。 发生这种失败的原因是 Azure PowerShell 使用 32 位版本的 Windows PowerShell（即使在 64 位操作系统版本中），而 Service Fabric cmdlet 只能在 64 位环境中工作。
 
 #### <a name="solution"></a>解决方案
 始终直接从 Windows PowerShell 运行 Service Fabric cmdlet。
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="type-initialization-exception"></a>类型初始化异常
 #### <a name="problem"></a>问题
-在 PowerShell 中连接到群集时，你会看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
+在 PowerShell 中连接到群集时，会看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
 
 #### <a name="solution"></a>解决方案
 在安装期间未正确设置路径变量。 从 Windows 注销并重新登录。 这将刷新你的路径。

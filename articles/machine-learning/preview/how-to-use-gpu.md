@@ -10,15 +10,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
+ms.openlocfilehash: 7c0dab5ab2d7342ce4de8899040478a6143c184b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b75b9d82bd6c1e7e7a98fcff6497dbf3a765dcb8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>如何在 Azure 机器学习中使用 GPU
-图形处理单元 (GPU) 广泛用于处理通常在训练某些深度神经网络模型时发生的计算密集型任务。 使用 GPU 可以显著减少模型的训练时间。 在本文档中，可了解如何配置 Azure ML 工作台，以使用配备 GPU（作为执行目标）的 [DSVM（数据科学虚拟机）](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview)。 
+图形处理单元 (GPU) 广泛用于处理通常在训练某些深度神经网络模型时发生的计算密集型任务。 使用 GPU 可以显著减少模型的训练时间。 在本文档中，可了解如何配置 Azure ML 工作台，以使用配备 GPU（作为执行目标）的 [DSVM（数据科学虚拟机）](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)。 
 
 ## <a name="prerequisites"></a>先决条件
 - 若要分步完成此操作方法指南，需要先[安装 Azure ML 工作台](quickstart-installation.md)。
@@ -152,4 +151,3 @@ Free memory: 11.11GiB
 
 ## <a name="next-steps"></a>后续步骤
 在 Azure ML 库中查看使用 GPU 加速深度神经网络训练的示例。
-

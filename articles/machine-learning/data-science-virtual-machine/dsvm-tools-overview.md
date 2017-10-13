@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c6948447ea7bfa6219bf70d46d14f82724fa0c60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>了解数据科学虚拟机
 
@@ -38,4 +37,3 @@ DSVM 中包含的工具、平台、实用程序分为以下几部分：
 6. **[数据探索和可视化工具](dsvm-tools-explore-and-visualize.md)**
 7. **[数据平台](dsvm-data-platforms.md)**
 8. **[示例和演练](dsvm-samples-and-walkthroughs.md)**
-

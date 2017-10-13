@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 461da2528d515072bf04a82bb8ba64a853443f98
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构
 
@@ -136,4 +135,3 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 * [基于 Wingtip SaaS 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [管理扩大的云数据库](sql-database-elastic-jobs-overview.md)
 * [创建和管理扩大的云数据库](sql-database-elastic-jobs-create-and-manage.md)
-

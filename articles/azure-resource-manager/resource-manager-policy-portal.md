@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: tomfitz
 ms.openlocfilehash: 868b2cc1559053057d17b34c03e2e31347f399bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-portal-to-assign-and-manage-resource-policies"></a>使用 Azure 门户分配和管理资源策略
 通过 Azure 门户，可以将资源策略分配给资源组和订阅。 借助用户界面，可以轻松选择想要分配的策略，并为该策略指定参数值以自定义策略设置。 

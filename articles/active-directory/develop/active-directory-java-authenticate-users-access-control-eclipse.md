@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: 698403d181e1fee09bb4692290c92203ded97ba4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>如何使用 Eclipse 在 Azure Access Control 服务上对 Web 用户进行身份验证
 本指南将说明如何在 Azure Toolkit for Eclipse 中使用 Azure 访问控制服务 (ACS)。 有关 ACS 的详细信息，请参阅[后续步骤](#next_steps)部分。
@@ -96,14 +96,14 @@ Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创�
 6. 如果具有多个订阅，请选择用于 ACS 命名空间的订阅。
 7. 单击“创建” 。
 
-Azure 创建并激活该命名空间。 请等到新命名空间的状态变为“活动”，再继续操作。 
+Azure 将创建并激活该命名空间。 请等到新命名空间的状态变为“活动”，再继续操作。 
 
 ## <a name="add-identity-providers"></a>添加标识提供程序
-在此任务中，添加用于 RP 应用的 IP 来进行身份验证。 出于演示目的，此任务将说明如何将 Windows Live 作为 IP 添加，但你可使用 ACS 管理门户中列出的任何 IP。
+在此任务中，将添加与 RP 应用程序一起使用的 IP 来进行身份验证。 出于演示目的，此任务将说明如何将 Windows Live 作为 IP 添加，但你可使用 ACS 管理门户中列出的任何 IP。
 
 1. 在 [Azure 管理门户][Azure Management Portal]中，单击“Active Directory”，选择一个访问控制命名空间，并单击“管理”。 这会打开 ACS 管理门户。
 2. 在 ACS 管理门户的左侧导航窗格中，单击“标识提供者”。
-3. Windows Live ID 会在默认情况下启用且无法删除。 在本教程中，仅使用 Windows Live ID。 不过，可通过单击“添加”按钮在此屏幕中添加其他 IP。
+3. Windows Live ID 在默认情况下将启用且无法删除。 在本教程中，仅使用 Windows Live ID。 不过，可通过单击“添加”按钮在此屏幕中添加其他 IP。
 
 Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Java Web 应用程序（稍后将创建）指定为 RP。
 
@@ -226,7 +226,7 @@ Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Ja
 9. 在 Eclipse 对话框的“安全性”部分，如果需要使用现有证书，请单击“浏览”，导航到要使用的证书，选中它，并单击“打开”。 或者，如果需要创建新证书，请单击“新建”以显示“新建证书”对话框，并为新证书指定密码、.cer 文件的名称和 .pfx 文件的名称。
 10. 让“在 WAR 文件中嵌入证书”保持选中状态，假使用户要在 WAR 文件中嵌入证书。
 11. [可选] 让“需要 HTTPS 连接”保持选中状态。 如果设置此选项，则将需要使用 HTTPS 协议访问应用程序。 如果不需要 HTTPS 连接，请取消选中此选项。
-12. 对于到 Azure 的部署，相应的“Azure ACS 筛选器”设置与下图中所示类似。
+12. 对于到 Azure 的部署，Azure ACS 筛选器设置将与下图中所示类似。
     
     ![用于生产部署的 Azure ACS 筛选器设置][add_acs_filter_lib_production]
 13. 单击“完成”关闭“编辑库”对话框。
@@ -259,7 +259,7 @@ Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Ja
        ![添加证书组件][add_cert_component]
    5. 单击“确定”。
 
-此时，证书包含在部署中。 请注意，无论你是在 WAR 文件中嵌入证书还是将其作为组件添加到部署中，都需要将证书上传到命名空间，如[将证书上传到 ACS 命名空间][Upload a certificate to your ACS namespace] 部分中所述。
+此时，证书将包含在部署中。 请注意，无论是在 WAR 文件中嵌入证书还是将其作为组件添加到部署中，都需要将证书上传到命名空间，如[将证书上传到 ACS 命名空间][Upload a certificate to your ACS namespace]部分中所述。
 
 [What is ACS?]: #what-is
 [Concepts]: #concepts

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aa378c167c81617bc13baa65335335a749d13516
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -216,7 +215,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 
-运行测试故障转移时会发生下列操作：
+运行测试故障转移时需执行下列操作：
 
 1. 运行必备项检查，确保故障转移所需的所有条件都已就绪。
 2. 故障转移处理数据，以便创建 Azure VM。 如果选择最新恢复点，则根据该数据创建恢复点。
@@ -227,14 +226,14 @@ ms.lasthandoff: 09/25/2017
 1. 在保管库的相应页上，转到“受保护的项” > “复制的项”> 单击该 VM >“+ 测试故障转移”。
 
 2. 选择要用于故障转移的恢复点：
-    - **最新处理**：将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 将显示时间戳。 使用此选项时，不用花时间处理数据，因此它提供较低的 RTO（恢复时间目标）。
+    - **最新处理**：将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低。
     - **最新的应用一致**：此选项将所有 VM 故障转移到最新的应用一致恢复点。 将显示时间戳。
     - **自定义**：选择任何恢复点。
 3. 在“测试故障转移”中，选择 Azure VM 在故障转移之后要连接到的目标 Azure 网络。 它应该是在[准备 Azure 资源](#prepare-azure-resources)部分中创建的网络。
-4. 单击“确定”开始故障转移。 可以通过单击 VM 打开其属性来跟踪进度。 也可以在保管库相应页面上的“监视和报告”**** > “作业”**** >
+4. 单击“确定”开始故障转移。 可以通过单击虚拟机打开其属性来跟踪进度。 也可以在保管库相应页面上的“监视和报告”**** > “作业”**** >
    “Site Recovery 作业”****中单击“测试故障转移”****作业。
-5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。 请确保 VM 的大小适当、已连接到正确的网络，并且正在运行。
-6. 现在应该能够连接到 Azure 中复制的 VM。
+5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。 请确保虚拟机的大小适当、已连接到正确的网络，并且正在运行。
+6. 现在应该能够连接到 Azure 中复制的虚拟机。
 7. 若要删除在测试故障转移期间创建的 Azure VM，请在恢复计划上单击“清理测试故障转移”。 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。
 
 在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 
@@ -264,4 +263,3 @@ ms.lasthandoff: 09/25/2017
 
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](../virtual-machines/windows/tutorial-manage-vm.md)
-

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户登录到 Windows 虚拟机
 在 Azure 门户中，使用“连接”按钮启动远程桌面会话，并登录到 Windows VM。
@@ -64,4 +64,4 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 
     ![Reset-password](./media/connect-logon/virtualmachine_dashboard_reset_password.png)
 
-如果这些提示不起作用或不是所需的内容，请参阅[对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 此文指导你完成诊断和解决常见问题。
+如果这些提示不起作用或不是所需的内容，请参阅[对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 此文指导完成诊断和解决常见问题。

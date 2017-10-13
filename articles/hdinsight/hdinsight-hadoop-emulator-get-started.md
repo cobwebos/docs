@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: b701879464205860edd1c097651b532f87bae388
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 40706ca30795d72120ff3edd728087d025a8b6c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>在虚拟机上开始使用 Hadoop 沙盒和 Hadoop 仿真器
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 07/01/2017
 ## <a name="start-the-virtual-machine"></a>启动虚拟机
 
 1. 打开 Oracle VM VirtualBox。
-2. 在“文件”菜单上，单击“导入设备”，然后指定 Hortonworks 沙盒映像。
+2. 在“文件”菜单上，单击“导入设备”，并指定 Hortonworks 沙盒映像。
 1. 选择 Hortonworks 沙盒，依次单击“启动”、“正常启动”。 虚拟机完成启动过程后，显示登录说明。
    
     ![正常启动](./media/hdinsight-hadoop-emulator-get-started/normal-start.png)
@@ -87,5 +86,4 @@ ms.lasthandoff: 07/01/2017
 * [了解如何将 Visual Studio 与 Hortonworks 沙盒配合使用](hdinsight-hadoop-emulator-visual-studio.md)
 * [学习 Hortonworks 沙盒的重要知识](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop 教程 - HDP 入门](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
-
 

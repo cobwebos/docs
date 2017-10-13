@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
 ms.openlocfilehash: aef9c15636ccaecce07d4fa218a40ed26ebad9df
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>适用于 R Server on HDInsight 的 Azure 存储解决方案
 

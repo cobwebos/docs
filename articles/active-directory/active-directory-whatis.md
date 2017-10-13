@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.custom: it-pro
 ms.openlocfilehash: b6746afd508832afbd54153851b6f2ae404af147
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 Azure Active Directory (Azure AD) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 Azure AD 将核心目录服务、高级标识监管和应用程序访问管理相结合。 Azure AD 还提供功能丰富、基于标准的平台，该平台支持开发人员根据集中的策略和规则为应用程序提供访问控制。 
@@ -32,12 +32,12 @@ Azure AD 还包含整套标识管理功能，例如多重身份验证、设备�
 
 此外，只需[单击四下](./connect/active-directory-aadconnect-get-started-express.md)，Azure AD 就能与现有的 Windows Server Active Directory 集成，使组织能够运用现有的本地标识管理系统投资来管理对基于云的 SaaS 应用程序的访问。
 
-Office 365、Azure 或 Dynamics CRM Online 的客户可能不知道自己已在使用 Azure AD。 每个 Office 365、Azure 和 Dynamics CRM 租户实际上都已经是 Azure AD 租户。 每当有需要时，就可以开始使用该租户来为 Azure AD 集成的其他数千种云应用程序管理访问权限！
+Office 365、Azure 或 Dynamics CRM Online 的客户可能不知道自己已在使用 Azure AD。 每个 Office 365、Azure 和 Dynamics CRM 租户实际上都已经是 Azure AD 租户。 每当有需要时，便可以开始使用该租户来为 Azure AD 集成的其他数千种云应用程序管理访问权限！
 
 ![Azure AD Connect 堆栈](./media/active-directory-whatis/Azure_Active_Directory.png)
 
 ## <a name="how-reliable-is-azure-ad"></a>Azure AD 的可靠性如何？
-Azure AD 的多租户、地理分布、高可用性设计意味着可以依赖它来解决最关键的业务需求。 在全球运转有 28 个可自动故障转移的数据中心，这让人能够体会到 Azure AD 的高度可靠，即使数据中心发生服务中断，目录数据也至少会在两个以上的地域分散的数据中心内保留副本，并且提供立即访问权限。
+Azure AD 的多租户、地理分布、高可用性设计意味着可以依赖它来解决最关键的业务需求。 在全球运转的 28 个可自动故障转移的数据中心使你能够体会到 Azure AD 的高度可靠，即使数据中心发生服务中断，目录数据也至少会在两个以上的地域分散的数据中心保留副本，而且可让你立即访问。
 
 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
@@ -50,7 +50,7 @@ Azure AD 的多租户、地理分布、高可用性设计意味着可以依赖�
 > 有关这些版本的定价选项，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。 中国地区目前不支持 Azure Active Directory Premium P1、Premium P2 和 Azure Active Directory Basic。 有关详细信息，请通过 Azure Active Directory 论坛与我们联系。
 >
 
-* **Azure Active Directory Basic** - 面向具有云优先需求的任务工作者，此版本提供以云为中心的应用程序访问和自助标识管理解决方案。 使用 Azure Active Directory 基本版，可以提高工作效率并获得成本缩减功能，例如基于组的访问管理、用于云应用程序的自助密码重置、Azure Active Directory 应用程序代理（使用 Azure Active Directory 发布本地 Web 应用程序），所有这些都由 99.9% 正常运行时间的企业级 SLA 提供支持。
+* **Azure Active Directory Basic** - 面向具有云优先需求的任务工作者，此版本提供以云为中心的应用程序访问和自助标识管理解决方案。 使用 Azure Active Directory 基本版，可以增强工作效率并获得成本缩减功能，例如基于组的访问管理、用于云应用程序的自助密码重置、Azure Active Directory 应用程序代理（使用 Azure Active Directory 发布本地 Web 应用程序），以及 99.9％ 正常运行时间的企业级 SLA。
 * **Azure Active Directory Premium P1** - Azure Active Directory Premium 版添加了丰富的企业级标识管理功能，并允许各类用户无缝访问本地与云功能，旨在满足组织更加严苛的标识和访问管理需求。 此版本为混合环境中的信息工作者和标识管理员提供一切必要的功能，让他们执行应用程序访问、自助标识和访问管理 (IAM)、标识保护及实现云中的安全性。 它支持动态组和自助服务组管理等高级管理与委派资源。 它包含 Microsoft 标识管理器（一个本地标识与访问管理套件），并提供云写回功能，使本地用户能够使用自助密码重置等解决方案。
 * **Azure Active Directory Premium P2** - 这款新产品包含 Azure AD Premium P1，以及新的 Identity Protection 和 Privileged Identity Management 中的所有功能，旨在为所有用户和管理员提供高级保护。 Azure Active Directory Identity Protection 利用数十亿信号，针对应用程序和重要公司数据提供基于风险的条件访问。 此外，我们还使用 Azure Active Directory Privileged Identity Management 帮助管理和保护特权帐户，方便发现、限制和监视管理员以及他们对资源的访问，并在需要时提供实时访问。  
 

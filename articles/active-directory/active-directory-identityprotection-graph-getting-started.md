@@ -16,10 +16,10 @@ ms.date: 08/17/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 9b01ff86da6a1fd4a439a6ba59ea15ed6480cdad
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection 和 Microsoft Graph 入门
 Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory Identity Protection](active-directory-identityprotection.md) API 的主页。 使用第一个 API **identityRiskEvents** 可以在 Microsoft Graph 中查询[风险事件](active-directory-identityprotection-risk-events-types.md)列表和相关信息。 可以参考本文开始查询此 API。 如需深入介绍、完整文档和访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)。

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 55b857bd5b3d0c32553a60ff0649aeeb721cd6da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>将 Azure CLI 1.0 用于 Azure 存储
 
@@ -242,4 +241,3 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 * [Azure 服务管理模式下的 Azure CLI 命令](../../cli-install-nodejs.md)
 
 你可能还想尝试将 [Azure CLI 2.0](../storage-azure-cli.md)（使用 Python 编写的下一代 CLI）与 Resource Manager 部署模型配合使用。
-

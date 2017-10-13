@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 413f12d301a0e2c47048d23b2d4fb7de6423256d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-azure-ml-batch-execution-activity.md)
+> * [版本 1 - GA](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [版本 2 - 预览版](transform-data-using-machine-learning.md)
 
 通过 [Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)，可以生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
@@ -32,7 +31,7 @@ ms.lasthandoff: 09/25/2017
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。  
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的机器学习批处理执行活动](v1/data-factory-azure-ml-batch-execution-activity.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的机器学习批处理执行活动](v1/data-factory-azure-ml-batch-execution-activity.md)。
 
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
@@ -134,7 +133,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 
 | 属性          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | 管道中活动的名称     | 是      |
+| 名称              | 管道中活动的名称     | 是      |
 | description       | 描述活动用途的文本。  | 否       |
 | type              | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **AzureMLBatchExecution**。 | 是      |
 | linkedServiceName | Azure 机器学习链接服务的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
@@ -229,7 +228,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章了解如何以其他方式转换数据： 
+参阅以下文章了解如何以其他方式转换数据： 
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
@@ -239,4 +238,3 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)
-

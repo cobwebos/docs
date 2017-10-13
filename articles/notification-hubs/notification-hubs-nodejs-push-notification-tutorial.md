@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: yuaxu
 ms.openlocfilehash: dc4987b16b2e930641c6c90eff8b65c1bf8d573c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -93,7 +93,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 * **通用 Windows 平台** — 使用 **WnsService** 对象，该对象可从 **notificationHubService.wns** 中获取
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>如何：向 Android 应用程序发送推送通知
-GcmService 对象提供 send 方法，该方法可用于将推送通知发送到 Android 应用程序。 该 **send** 方法接受以下参数：
+**GcmService** 对象提供 **send** 方法，该方法可用于将推送通知发送到 Android 应用程序。 该 **send** 方法接受以下参数：
 
 * **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有客户端。
 * **Payload** — 消息的 JSON 或原始字符串的有效负载。
@@ -101,7 +101,7 @@ GcmService 对象提供 send 方法，该方法可用于将推送通知发送到
 
 有关有效负载格式的详细信息，请参阅 [Implementing GCM Server](http://developer.android.com/google/gcm/server.html#payload)（实现 GCM 服务器）文档中的 **Payload**（有效负载）部分。
 
-以下代码使用由 NotificationHubService 公开的 GcmService 实例将一条推送通知发送到所有已注册的客户端。
+以下代码使用由 **NotificationHubService** 公开的 **GcmService** 实例将一条推送通知发送到所有已注册的客户端。
 
     var payload = {
       data: {
@@ -115,7 +115,7 @@ GcmService 对象提供 send 方法，该方法可用于将推送通知发送到
     });
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>如何：向 iOS 应用程序发送推送通知
-与上述 Android 应用程序一样，ApnsService 对象提供可用于将推送通知发送到 iOS 应用程序的 send 方法。 该 **send** 方法接受以下参数：
+与上述 Android 应用程序一样，**ApnsService** 对象提供可用于将推送通知发送到 iOS 应用程序的 **send** 方法。 该 **send** 方法接受以下参数：
 
 * **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有客户端。
 * **Payload** — 消息的 JSON 或字符串的有效负载。
@@ -123,7 +123,7 @@ GcmService 对象提供 send 方法，该方法可用于将推送通知发送到
 
 有关有效负载格式的详细信息，请参阅 [Local and Push Notification Programming Guide](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)（本地通知和推送通知编程指南）文档中的 **Notification Payload**（通知有效负载）部分。
 
-以下代码使用由 NotificationHubService 公开的 ApnsService 实例将一条警报消息发送给所有客户端：
+以下代码使用由 **NotificationHubService** 公开的 **ApnsService** 实例将一条警报消息发送给所有客户端：
 
     var payload={
         alert: 'Hello!'
@@ -135,7 +135,7 @@ GcmService 对象提供 send 方法，该方法可用于将推送通知发送到
     });
 
 ### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>如何：向 Windows Phone 应用程序发送推送通知
-MpnsService 对象提供可用于将推送通知发送到 Windows Phone 应用程序的 send 方法。 该 **send** 方法接受以下参数：
+**MpnsService** 对象提供可用于将推送通知发送到 Windows Phone 应用程序的 **send** 方法。 该 **send** 方法接受以下参数：
 
 * **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有客户端。
 * **Payload** — 消息的 XML 有效负载。
@@ -156,7 +156,7 @@ MpnsService 对象提供可用于将推送通知发送到 Windows Phone 应用�
     });
 
 ### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>如何：向通用 Windows 平台 (UWP) 应用程序发送推送通知
-WnsService 对象提供可用于将推送通知发送到通用 Windows 平台应用程序的 send 方法。  该 **send** 方法接受以下参数：
+**WnsService** 对象提供可用于将推送通知发送到通用 Windows 平台应用程序的 **send** 方法。  该 **send** 方法接受以下参数：
 
 * **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有已注册的客户端。
 * **Payload** — XML 消息有效负载。
@@ -166,7 +166,7 @@ WnsService 对象提供可用于将推送通知发送到通用 Windows 平台应
 
 有关有效的类型和请求标头的列表，请参阅[推送通知服务请求和响应标头](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
 
-以下代码使用由 NotificationHubService 公开的 WnsService 实例将 toast 推送通知发送到 UWP 应用：
+以下代码使用由 **NotificationHubService** 公开的 **WnsService** 实例将 toast 推送通知发送到 UWP 应用：
 
     var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
     notificationHubService.wns.send(null, payload , 'wns/toast', function(error){

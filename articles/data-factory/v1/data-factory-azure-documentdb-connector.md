@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 32b72577002962f049f446d6f3c2353189867e92
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-azure-documentdb-connector.md)
+> * [版本 1 - GA](data-factory-azure-documentdb-connector.md)
 > * [版本 2 - 预览版](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
@@ -499,4 +498,3 @@ Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
-

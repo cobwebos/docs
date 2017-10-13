@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 13a17eb3d78e70a09864bf218f1027d6e98486a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Azure VPN 网关的 BGP 概述
 本文概述了 Azure VPN 网关中支持的 BGP（边界网关协议）。
@@ -56,5 +55,4 @@ BGP 使多个网关可以从不同网络获知和传播前缀，而无论它们�
 
 ## <a name="next-steps"></a>后续步骤
 有关为跨界连接和 VNet 到 VNet 连接配置 BGP 的步骤，请参阅 [Azure VPN 网关上的 BGP 入门](vpn-gateway-bgp-resource-manager-ps.md) 。
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>通过 Azure 内容交付网络实现媒体流式处理优化 
  
@@ -98,5 +97,4 @@ Verizon 的 Azure 内容交付网络可直接使用常规 Web 交付优化类型
 ### <a name="cache-fill-wait-time"></a>缓存填充等待时间
 
  缓存填充等待时间功能强制边缘服务器保留对相同资源的任何后续请求，直到 HTTP 响应标头从源服务器到达。 如果来自源的 HTTP 响应标头在计时器过期前到达，则可以从不断增长的缓存提供被保留的所有请求。 同时，由来自源的数据填充缓存。 默认情况下，缓存填充等待时间设为 3,000 毫秒。 
-
 

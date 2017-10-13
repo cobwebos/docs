@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/9/2017
 ms.author: cwatson
+ms.openlocfilehash: c19b5156bc23b06de48bc7a6dc786f576f78127d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a7527b12f4f0d2b45713a0c0109d81ff51293fd8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>使用托管快照创建一个存储为 Azure 托管磁盘的 VHD 的副本
 获取托管磁盘的快照以用于备份，或从快照创建托管磁盘，并将其附加到测试虚拟机进行故障排除。 托管快照是 VM 托管磁盘的完整时间点副本。 它创建 VHD 的只读副本，并且默认将其存储为标准托管磁盘。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -82,6 +81,5 @@ $snapshot =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -CreateOption Copy -L
 New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName 
 ```
 如果计划使用快照创建托管磁盘并将其附加到需要高性能的 VM，请使用 New-AzureRmSnapshot 命令中的参数 `-AccountType Premium_LRS`。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘比标准托管磁盘费用高。 因此使用该参数前，请确保确实需要使用高级托管磁盘。
-
 
 

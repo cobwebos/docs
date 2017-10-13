@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7028cdacf7d597c238bf29bd26bbd44705d66224
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="devtest-labs-concepts"></a>开发测试实验室概念
 ## <a name="overview"></a>概述
@@ -91,4 +90,3 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 
 ## <a name="next-steps"></a>后续步骤
 [在开发测试实验室中创建实验室](devtest-lab-create-lab.md)
-

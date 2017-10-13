@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9841b61c21586976ee06ffc1fe4d01e3fc3428b6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure 机器学习 Web 服务：部署和使用
 可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
@@ -97,4 +96,3 @@ ms.lasthandoff: 09/25/2017
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这些 API，例如 .NET、Python、R、Java 等。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
-

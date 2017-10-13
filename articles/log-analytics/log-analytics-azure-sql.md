@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: banders
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 0b0d91b130172eb3506fdebb9547ab6ba5cc3780
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
 ![Azure SQL Analytics 符号](./media/log-analytics-azure-sql/azure-sql-symbol.png)
@@ -170,4 +167,3 @@ AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "
 - 使用 Log Analytics 中的[日志搜索](log-analytics-log-searches.md)查看 Azure SQL 的详细数据。
 - [创建自己的仪表板](log-analytics-dashboards.md)，显示 Azure SQL 数据。
 - 发生特定 Azure SQL 事件时[创建警报](log-analytics-alerts.md)。
-

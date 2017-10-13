@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: larryfr
 ms.openlocfilehash: 28450d72f19a5467d88bc787d11f6c37c5afbf9a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>通过 HDInsight (SSH) 中基于 Linux 的 Hadoop 使用 Apache Mahout 生成电影推荐
 
@@ -45,7 +45,7 @@ Mahout 是适用于 Apache Hadoop 的[机器学习][ml]库。 Mahout 包含用�
 
 ## <a name="recommendations"></a>了解建议
 
-由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析，以确定：偏好某个项的用户也偏好其他类似项。 随后，Mahout 确定拥有类似项偏好的用户，这些偏好可用于推荐。
+由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析，以确定：偏好某个项的用户也偏好其他类似项。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于做出推荐。
 
 下面的工作流是使用电影数据的简化示例：
 
@@ -168,7 +168,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     按 **Ctrl-X**、**Y**，最后按 **Enter** 来保存数据。
 
-4. 运行 Python 脚本。 以下命令假设用户处于内含所有已下载文件的目录中：
+4. 运行 Python 脚本。 以下命令假设已处于所有文件都已下载的目录中：
 
     ```bash
     python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
@@ -202,7 +202,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 
 ## <a name="next-steps"></a>后续步骤
 
-既已学习如何使用 Mahout，可探索在 HDInsight 上处理数据的其他方式：
+现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
 
 * [Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
 * [Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)

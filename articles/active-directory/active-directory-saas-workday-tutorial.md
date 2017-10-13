@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 164d5c644f120fa86e2b690649241892764b64b7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
@@ -110,15 +110,15 @@ ms.lasthandoff: 08/03/2017
 
     ![配置单一登录](./media/active-directory-saas-workday-tutorial/tutorial_workday_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，键入 `https://impl.workday.com/<tenant>/login-saml2.htmld` 值
+    a. 在“登录 URL”文本框中，键入 `https://impl.workday.com/<tenant>/login-saml2.htmld` 值
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 回复 URL 必须具有一个子域（例如：www、wd2、wd3、wd3-impl、wd5 和 wd5-impl）。 可以使用类似于“*http://www.myworkday.com*”的 URL，但不能使用“*http://myworkday.com*”的 URL。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。 
  
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-workday-tutorial/tutorial_workday_certificate.png) 
 
@@ -148,9 +148,9 @@ ms.lasthandoff: 08/03/2017
    
     ![重定向 URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "重定向 URL")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加行”。
+    a. 单击“添加行”。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“登录重定向 URL”文本框和“移动重定向 URL”文本框中，键入在 Azure 门户的“Workday 域和 URL”部分中输入的登录 URL。
+    b. 在“登录重定向 URL”文本框和“移动重定向 URL”文本框中，键入在 Azure 门户的“Workday 域和 URL”部分中输入的登录 URL。
    
     c. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”，然后将其粘贴到“注销重定向 URL”文本框。
    
@@ -165,7 +165,7 @@ ms.lasthandoff: 08/03/2017
    
     ![SAML 设置](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML 设置")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  选择“启用 SAML 身份验证”。
+    a.  选择“启用 SAML 身份验证”。
    
     b.  单击“添加行”。
 
@@ -173,15 +173,15 @@ ms.lasthandoff: 08/03/2017
    
     ![SAML 标识提供者](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML 标识提供者")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识提供者名称”文本框中，键入提供者名称（例如：SPInitiatedSSO）。
+    a. 在“标识提供者名称”文本框中，键入提供者名称（例如：SPInitiatedSSO）。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在 Azure 门户的“配置登录”窗口中，复制“SAML 实体 ID”值，然后将其粘贴到“颁发者”文本框。
+    b. 在 Azure 门户的“配置登录”窗口中，复制“SAML 实体 ID”值，然后将其粘贴到“颁发者”文本框。
    
     c. 选择“启用 Workday 发起的注销”。
    
     d. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”值，然后将其粘贴到“注销请求 URL”文本框。
 
-    e. 单击“标识提供者公钥证书”，然后单击“创建”。 
+    e. 单击“标识提供者公钥证书”，并单击“创建”。 
 
     ![创建](./media/active-directory-saas-workday-tutorial/IC782928.png "创建")
 
@@ -194,9 +194,9 @@ ms.lasthandoff: 08/03/2017
    
     ![查看 x509 公钥](./media/active-directory-saas-workday-tutorial/IC782930.png "查看 x509 公钥") 
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名称”文本框中，键入证书名称（例如：PPE\_SP）。
+    a. 在“名称”文本框中，键入证书名称（例如：PPE\_SP）。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在**有效起始日期**文本框中，键入证书的“有效起始日期”属性值。
+    b. 在**有效起始日期**文本框中，键入证书的“有效起始日期”属性值。
    
     c.  在**有效截止日期**文本框中，键入证书的“有效截止日期”属性值。
    
@@ -205,7 +205,7 @@ ms.lasthandoff: 08/03/2017
     > 
     >
    
-    d.  在记事本中打开 Base-64 编码的证书，然后复制其内容。
+    d.  在记事本中打开 Base-64 编码的证书，并复制其内容。
    
     e.  在“证书”文本框中，粘贴剪贴板的内容。
    
@@ -215,7 +215,7 @@ ms.lasthandoff: 08/03/2017
    
     ![SSO 配置](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguratio.png "SSO 配置")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  启用“x509 私钥对”。
+    a.  启用“x509 私钥对”。
    
     b.  在“服务提供商 ID”文本框中，键入 **http://www.workday.com**。
    
@@ -261,7 +261,7 @@ ms.lasthandoff: 08/03/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-workday-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -282,7 +282,7 @@ ms.lasthandoff: 08/03/2017
 
 若要将 Britta Simon 分配到 Workday，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

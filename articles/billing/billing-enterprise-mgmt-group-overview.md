@@ -12,15 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 18541c68b02ae1b59ae4a6a85122dff614c9978c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组组织资源 
 
 如果你有多个订阅，则可以将它们组织成名为“管理组”的容器，以帮助你跨订阅管理访问、策略、成本和合规性。 例如，你可以将策略应用于限制可以创建哪些资源类型的管理组。
@@ -93,6 +90,5 @@ Azure 门户中的管理组处于预览状态，并且在该初始版本中是�
 
 > [!Note]
 > 无法跨目录强制实施策略。 
-
 
 

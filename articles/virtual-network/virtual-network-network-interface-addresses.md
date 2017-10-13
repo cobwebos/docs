@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 254d5d43f0f665f64ddfe276fe31702f66f16758
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
 了解如何为网络接口添加、更改和删除网公共和专用 IP 地址。 通过分配给网络接口的专用 IP 地址，虚拟机能够与 Azure 虚拟网络和所连接的网络中的其他资源进行通信。 通过专用 IP 地址，还能够使用不可预测的 IP 地址实现到 Internet 的出站通信。 通过分配给网络接口的[公共 IP 地址](virtual-network-public-ip-address.md)，可以实现从 Internet 到虚拟机的入站通信。 通过此地址，还能够使用不可预测的 IP 地址实现从虚拟机到 Internet 的出站通信。 有关详细信息，请参阅[了解 Azure 中的出站连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 
@@ -195,7 +193,7 @@ ms.lasthandoff: 09/25/2017
 公共 IP 地址是使用基本或标准 SKU 创建的。  有关 SKU 差异的详细信息，请参阅[管理公共 IP 地址](virtual-network-public-ip-address.md)。
 
 > [!NOTE]
-> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建和关联网络安全组并显式允许所需流量之后，才可与资源通信。
+> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建具有不同 IP 配置的虚拟机，请阅读以下文章：
@@ -205,4 +203,3 @@ ms.lasthandoff: 09/25/2017
 |创建具有多个 NIC 的 VM|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |创建具有多个 IPv4 地址的单 NIC VM|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
 |创建具有专用 IPv6 地址的单 NIC VM（在 Azure 负载均衡器后）|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-

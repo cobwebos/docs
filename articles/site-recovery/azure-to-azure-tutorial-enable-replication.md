@@ -12,12 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 09/18/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9a92bf402863fd1ee688fba7c20d3a2cd3e299da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>为 Azure VM 设置到辅助 Azure 区域的灾难恢复（预览版）
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 09/25/2017
 > * 创建恢复服务保管库
 > * 验证目标资源设置
 > * 为 VM 设置出站访问
-> * 为 VM 启用复制
+> * 为虚拟机启用复制
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -165,4 +164,3 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 你可�
 
 > [!div class="nextstepaction"]
 > [运行灾难恢复演练](azure-to-azure-tutorial-dr-drill.md)
-

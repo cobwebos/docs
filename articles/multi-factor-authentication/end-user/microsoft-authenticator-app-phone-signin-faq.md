@@ -15,12 +15,11 @@ ms.date: 08/12/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 9fb25f9f26a220c90f82add02fa5bdb954a926c3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>使用手机（而不是密码）登录
 
@@ -92,4 +91,3 @@ iOS 和 Android 设备提供此功能，此功能适用于 Microsoft 个人帐�
 如果尚未下载 Microsoft Authenticator 应用，请查看。此应用适用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)，用于 [Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) 的 Microsoft Authenticator 应用提供手机登录功能。
 
 如果有关于此应用的常见问题，请参阅 [Microsoft Authenticator 常见问题解答](microsoft-authenticator-app-faq.md)
-

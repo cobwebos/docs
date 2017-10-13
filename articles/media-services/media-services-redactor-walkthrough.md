@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
 ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -133,4 +132,3 @@ ms.lasthandoff: 09/08/2017
 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [宣布推出 Azure 媒体分析的面部修订](https://azure.microsoft.com/blog/azure-media-redactor/)
-

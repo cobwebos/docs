@@ -15,14 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
+ms.openlocfilehash: 355cb2cef52b5dfecddae228d0cc24a069d3b695
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 90720774f956149dc159de1d5457e556a52ddc82
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
 ## <a name="overview"></a>概述 
@@ -456,7 +454,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>依赖项
 
-依赖项不会自动显示，但可以编写自定义代码来显示依赖项。 [C# 自定义遥测部分](#create-custom-telemetry-data-in-c-function-code)中的示例代码显示相关方式。 该示例代码会导致 Application Insights 中出现如下所示的应用程序映射：
+依赖项不会自动显示，但可以编写自定义代码来显示依赖项。 [C# 自定义遥测部分](#custom-telemetry-in-c-functions)中的示例代码显示相关方式。 该示例代码会导致 Application Insights 中出现如下所示的应用程序映射：
 
 ![应用程序映射](media/functions-monitoring/app-map.png)
 
@@ -521,4 +519,3 @@ PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
 
 > [!div class="nextstepaction"]
 > [了解有关 Functions 使用的日志记录框架的详细信息](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
-

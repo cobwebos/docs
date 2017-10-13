@@ -12,12 +12,11 @@ ms.topic: landing-page
 ms.date: 06/20/2017
 ms.author: carolz
 ms.custom: Jenkins
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: e2f5caf8c4d3eab600bb015db5a4403314a4f6e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 <div class="content">
     <h1>Azure 上的 Jenkins®</h1>
@@ -46,4 +45,3 @@ ms.lasthandoff: 08/31/2017
 <h4>      
 Jenkins® 是 Public Interest, Inc. 的软件注册商标。[Jenkins® 徽标](https://wiki.jenkins.io/display/JENKINS/Logo)已从 [Jenkins 项目](https://jenkins.io)中通过 [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) 获得许可。</h4>
 </div>
-

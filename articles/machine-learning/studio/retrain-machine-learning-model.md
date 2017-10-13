@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 0270a43f79202d102a8cdfe9cba7011a882e8117
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retrain-a-machine-learning-model"></a>重新训练机器学习模型
 作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 
@@ -99,5 +98,4 @@ ms.lasthandoff: 09/25/2017
 <!--image links-->
 [1]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE01.png
 [7]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE07.png
-
 

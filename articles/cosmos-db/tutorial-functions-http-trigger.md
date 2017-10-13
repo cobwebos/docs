@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: mvc
 ms.date: 09/25/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 86a660309fd3fd80f10f706ff460af2309c12174
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器
 
 Azure Cosmos DB 是无架构、无服务器的全球分布式多模型数据库。 Azure Functions 是一种无服务器计算服务，可用于按需运行代码。 将这两个 Azure 服务搭配使用可以建立无服务器体系结构的基础，专注于生成完美的应用，无需考虑如何根据计算与数据库需求预配和维护服务器。
@@ -277,4 +275,3 @@ Azure Cosmos DB 是无架构、无服务器的全球分布式多模型数据库�
 > [全局分发](distribute-data-globally.md) 
 
 本文基于 [Brady Gaster 的“Schemaless & Serverless”（无架构，无服务器）](http://www.bradygaster.com/category/%20Serverless%20&%20Schemaless)博客连载中的一篇文章。 请访问他的博客，阅读连载中的其他文章。
-

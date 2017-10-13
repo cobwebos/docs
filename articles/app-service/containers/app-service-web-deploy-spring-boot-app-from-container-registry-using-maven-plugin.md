@@ -14,19 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
+ms.openlocfilehash: b087003b3a1e236e4a306678904107b8bf99395e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: f47ee59d72ea49d62be2cb435ebaf8bc841e4198
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="how-to-use-the-maven-plugin-for-azure-web-apps-to-deploy-a-spring-boot-app-in-azure-container-registry-to-azure-app-service"></a>如何使用适用于 Azure Web 应用的 Maven 插件将 Azure 容器注册表中的 Spring Boot 应用部署到 Azure App Service
+# <a name="how-to-use-the-maven-plugin-for-azure-web-apps-to-deploy-a-spring-boot-app-in-azure-container-registry-to-azure-app-service"></a>如何使用适用于 Azure Web 应用的 Maven 插件将 Azure 容器注册表中的 Spring Boot 应用部署到 Azure 应用服务
 
 [Spring Framework] 是一种常用的开源框架，可帮助 Java 开发人员创建 Web、移动和 API 应用程序。 本教程使用通过 [Spring Boot] 创建的示例应用，其为使用 Spring 进行快速入门的惯例方法。
 
-本文演示如何将示例 Spring Boot 应用程序部署到 Azure 容器注册表以及在此之后如何使用适用于 Azure Web 应用的 Maven 插件将应用程序部署到 Azure App Service。
+本文演示如何将示例 Spring Boot 应用程序部署到 Azure 容器注册表以及在此之后如何使用适用于 Azure Web 应用的 Maven 插件将应用程序部署到 Azure 应用服务。
 
 > [!NOTE]
 >
@@ -208,7 +206,7 @@ ms.lasthandoff: 08/10/2017
    `<client>` | 包含服务主体的 `appId` 值。
    `<tenant>` | 包含服务主体的 `tenant` 值。
    `<key>` | 包含服务主体的 `password` 值。
-   `<environment>` | 定义目标 Azure 云环境，此示例中为 `AZURE`。 （[适用于 Azure Web 应用的 Maven插件]文档中提供了完整的环境列表）
+   `<environment>` | 定义目标 Azure 云环境，此示例中为 `AZURE`。 （[适用于 Azure Web 应用的 Maven 插件]文档中提供了完整的环境列表）
 
 1. 保存并关闭 settings.xml 文件。
 
@@ -301,15 +299,15 @@ ms.lasthandoff: 08/10/2017
    </plugin>
    ```
 
-可以为 Maven 插件修改几个值，[适用于 Azure Web 应用的 Maven插件]文档中提供了这些元素各自的详细描述。 尽管如此，在本文中有仍几个值得注意的值：
+可以为 Maven 插件修改几个值，[适用于 Azure Web 应用的 Maven 插件]文档中提供了这些元素各自的详细描述。 尽管如此，在本文中有仍几个值得注意的值：
 
 元素 | 说明
 ---|---|---
-`<version>` | 指定[适用于 Azure Web 应用的 Maven插件]的版本。 应检查 [Maven 中央存储库](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22)中列出的版本，确保使用最新版本。
+`<version>` | 指定[适用于 Azure Web 应用的 Maven 插件]的版本。 应检查 [Maven 中央存储库](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22)中列出的版本，确保使用最新版本。
 `<authentication>` | 指定 Azure 的身份验证信息，该信息在本示例中含有包含 `azure-auth` 的 `<serverId>` 元素；Maven 使用该值查找在本文前面部分定义的 Maven settings.xml 文件中的 Azure 服务主体值。
 `<resourceGroup>` | 指定目标资源组，在此示例中为 `wingtiptoysresources`。 如果资源组不存在，则会在部署过程中进行创建。
 `<appName>` | 指定 Web 应用的目标名称。 在此示例中，目标名称为 `maven-linux-app-${maven.build.timestamp}`，此示例附加​​了 `${maven.build.timestamp}` 后缀以避免冲突。 （时间戳是可选项；可为应用名称指定任何唯一的字符串。）
-`<region>` | 指定目标区域，在此示例中为 `westus`。 （[适用于 Azure Web 应用的 Maven插件]文档中提供了完整列表。）
+`<region>` | 指定目标区域，在此示例中为 `westus`。 （[适用于 Azure Web 应用的 Maven 插件]文档中提供了完整列表。）
 `<containerSettings>` | 指定包含容器名称和 URL 的属性。
 `<appSettings>` | 指定 Maven 在将 Web 应用部署到 Azure 时使用的任何唯一设置。 在此示例中，`<property>` 元素包含指定应用端口的子元素的名称/值对。
 
@@ -364,7 +362,7 @@ Web 部署完成后即可使用 [Azure 门户]进行管理。
 
 有关本文中讨论的各项技术的详细信息，请参阅以下文章：
 
-* [适用于 Azure Web 应用的 Maven插件]
+* [适用于 Azure Web 应用的 Maven 插件]
 
 * [通过 Azure CLI 登录到 Azure](/azure/xplat-cli-connect)
 
@@ -380,7 +378,7 @@ Web 部署完成后即可使用 [Azure 门户]进行管理。
 [Azure Container Service (ACS)]: https://azure.microsoft.com/services/container-service/
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Azure 门户]: https://portal.azure.com/
-[适用于 Azure Web 应用的 Maven插件]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
+[适用于 Azure Web 应用的 Maven 插件]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
 [Create a private Docker container registry using the Azure portal]: /azure/container-registry/container-registry-get-started-portal
 [Using a custom Docker image for Azure Web App on Linux]: tutorial-custom-docker-image.md
 [Docker]: https://www.docker.com/
@@ -401,4 +399,3 @@ Web 部署完成后即可使用 [Azure 门户]进行管理。
 [CR01]: ./media/app-service-web-deploy-spring-boot-app-from-container-registry-using-maven-plugin/CR01.png
 [AP01]: ./media/app-service-web-deploy-spring-boot-app-from-container-registry-using-maven-plugin/AP01.png
 [AP02]: ./media/app-service-web-deploy-spring-boot-app-from-container-registry-using-maven-plugin/AP02.png
-

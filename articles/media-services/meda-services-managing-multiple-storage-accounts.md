@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: juliako
 ms.openlocfilehash: 0b407c3b092fd2c706775154cee3164a9869315a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产
 从 Microsoft Azure 媒体服务 2.2 开始，可以将多个存储帐户附加到一个媒体服务帐户。 将多个存储帐户附加到一个媒体服务帐户这一功能具有以下优势：
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/29/2017
 * 附加到媒体服务帐户的所有存储帐户必须与媒体服务帐户位于同一数据中心。
 * 目前，存储帐户一旦附加到指定的媒体服务帐户便无法断开。
 * 主存储帐户是在创建媒体服务帐户创建时指定的帐户。 目前，无法更改默认存储帐户。 
-* 目前，如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型且设置为“非主”。
+* 目前，如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型，且必须设置为非主帐户。
 
 其他注意事项：
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="to-attach-storage-accounts"></a>附加存储帐户  
 
-若要将存储帐户附加到 AMS 帐户，请使用 [Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) 和 [Powershell](/powershell/module/azurerm.media)，如以下示例所示。
+要将存储帐户附加到 AMS 帐户，请使用 [Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) 和 [Powershell](/powershell/module/azurerm.media)，如以下示例所示。
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="support-for-cool-storage"></a>支持冷存储
 
-目前，如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型且设置为“非主”。
+目前，如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型，且必须设置为非主帐户。
 
 ## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产
 以下代码使用最新的媒体服务 SDK 执行下列任务：

@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 11/16/2016
 ms.author: garye
 ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>机器学习 REST API 错误代码
  
@@ -67,7 +67,7 @@ ms.lasthandoff: 07/11/2017
 | MissingWebServicePackage | 未提供 Web 服务包。 请提供有效的 Web 服务包，并重试。 |
 | MissingWorkspaceId | 未提供工作区 ID。 请提供有效的工作区 ID，并重试。 |
 | ModelConfigurationInvalid | 模型包中的模型配置无效。 请确保模型配置包含输出终结点定义、std 错误终结点和 std out 终结点，并重试。 |
-| ModelPackageIdInvalid | 模型包 ID 无效。 请检查模型包 ID 是否正确，并重试。 |
+| ModelPackageIdInvalid | 模型包 ID 无效。请检查模型包 ID 是否正确，并重试。 |
 | RequestBodyInvalid | 未提供请求正文，或者反序列化请求正文时出错。 |
 | RequestIsEmpty | 未提供请求。 请提供有效请求，并重试。 |
 | UnexpectedParameter | 提供了意外的参数。 请检查所有参数名称是否拼写正确，只传递所需的参数，并重试。 |

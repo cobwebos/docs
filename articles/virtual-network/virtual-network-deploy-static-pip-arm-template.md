@@ -17,10 +17,10 @@ ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2f503aa60fdd9b7cf66ef482a1041e34c88e5c01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建具有静态公共 IP 地址的 VM
 
@@ -181,7 +181,7 @@ ms.lasthandoff: 07/11/2017
 
         info:    New mode is arm
 
-3. 打开 [参数文件](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json)，选择其内容，并将其保存到计算机上的文件中。 在本示例中，参数已保存到名为 *parameters.json* 的文件中。 如果需要，请更改文件中的参数值，但建议至少将 adminPassword 参数的值更改为唯一的复杂密码。
+3. 打开[参数文件](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json)，选择其内容，然后将其保存到计算机上的文件中。 在本示例中，参数已保存到名为 *parameters.json* 的文件中。 如果需要，请更改文件中的参数值，但建议至少将 adminPassword 参数的值更改为唯一的复杂密码。
 4. 运行 `azure group deployment create` 命令，使用前面下载并修改的模板和参数文件部署新 VNet。 在以下命令中，请将 <path> 替换为文件保存到的目标路径。 
 
     ```azurecli

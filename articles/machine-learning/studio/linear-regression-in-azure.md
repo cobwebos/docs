@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: kbaroni;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 218f2b141e3551180a2152570f99fdb427980dd7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>在 Azure 机器学习中使用线性回归
 > *Kate Baroni* 和 *Ben Boatman* 是 Microsoft 数据科学卓越中心中的企业解决方案架构师。 在本文中，他们将描述使用 Azure 机器学习将现有的回归分析套件迁移到基于云的解决方案的经验。 
@@ -156,5 +155,4 @@ ms.lasthandoff: 09/25/2017
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
 

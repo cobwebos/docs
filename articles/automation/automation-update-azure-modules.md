@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: ed8c97b642d406a05817ec6c67f31a1b4bce93b0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.openlocfilehash: 6bd259f3da1005228b8137415c30660221507909
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>如何在 Azure 自动化中更新 Azure PowerShell 模块
 
 默认情况下，每个自动化帐户中都提供最常见的 Azure PowerShell 模块。  Azure 团队会定期更新 Azure 模块，因此在自动化帐户中，我们提供了一种方法，用于在门户中有新版本时更新帐户中的模块。  
@@ -54,6 +52,6 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解集成模块以及如何创建自定义模块以进一步将自动化与其他系统、服务或解决方案集成，请参阅[集成模块](automation-integration-modules.md)。
+* 要详细了解集成模块以及如何创建自定义模块以进一步会自动化与其他系统、服务或解决方案集成，请参阅[集成模块](automation-integration-modules.md)。
 
 * 考虑使用 [GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) 或 [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) 进行源控件集成，以集中管理和控制自动化 runbook 和配置组合的发布。  

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: 9efe10fa35c6a7c84e0d448bbe53127d16d20870
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
@@ -197,7 +196,6 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 [usage]: app-insights-web-track-usage.md
 [livestream]: app-insights-live-stream.md
 [snapshot]: app-insights-snapshot-debugger.md
-
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: "通过 PowerShell 为 Azure 应用创建标识 | Microsoft 文档"
+title: "通过 PowerShell 为 Azure 应用创建标识 | Microsoft Docs"
 description: "介绍如何使用 Azure PowerShell 创建 Azure Active Directory 应用程序和服务主体，并通过基于角色的访问控制向其授予资源访问权限。 它演示如何使用密码或证书对应用程序进行身份验证。"
 services: azure-resource-manager
 documentationcenter: na
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: tomfitz
+ms.openlocfilehash: df5d705a4451950110c11b7d468bf7d59e5474d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 9d4ab890c35eebb2e59a9f4fa96843c854636272
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>使用 Azure PowerShell 创建服务主体来访问资源
 
@@ -426,5 +425,4 @@ Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。 
 * 有关 Azure Active Directory 身份验证的详细信息，请参阅 [Authentication Scenarios for Azure AD](../active-directory/active-directory-authentication-scenarios.md)（Azure AD 的身份验证方案）。
 * 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure Resource Manager 资源提供程序操作](../active-directory/role-based-access-control-resource-provider-operations.md)。
-
 

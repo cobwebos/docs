@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
+ms.openlocfilehash: 2369bc893d28cf6f6174376eb961049b651c66a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 79724bced613619406b693b4b352037e2c5ec9f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 简介
 本主题提供在 Azure 中运行 FreeBSD 虚拟机的概述。
@@ -120,9 +119,9 @@ ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
 在 Azure 上部署 FreeBSD 虚拟机时，用户名必须与已经存在于虚拟机中的系统帐户 (UID <100) 的名称（例如“root”）相符。
 目前仅支持 RSA SSH 密钥。 多行 SSH 密钥必须以 `---- BEGIN SSH2 PUBLIC KEY ----` 开头，以 `---- END SSH2 PUBLIC KEY ----` 结尾。
 
-## <a name="obtaining-superuser-privileges"></a>获取超级用户特权
+## <a name="obtaining-superuser-privileges"></a>获取超级用户权限
 在 Azure 上部署虚拟机实例的过程中指定的用户帐户是特权帐户。 sudo 的包已安装在所发布的 FreeBSD 映像中。
-通过此用户帐户登录后，即可使用命令语法以 root 用户身份运行命令。
+通过此用户帐户登录后，即可使用命令语法以 root 身份运行命令。
 
 ```
 $ sudo <COMMAND>
@@ -136,4 +135,3 @@ $ sudo <COMMAND>
 ## <a name="next-steps"></a>后续步骤
 * 转到 [Azure 应用商店](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)创建 FreeBSD VM。
 * 如果要将自己的 FreeBSD 放入 Azure，请参阅 [Create and upload a FreeBSD VHD to Azure](classic/freebsd-create-upload-vhd.md)（创建 FreeBSD VHD 并将其上传到 Azure）。
-

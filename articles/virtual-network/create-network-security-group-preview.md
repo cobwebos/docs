@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 035eb44432081ef52c758a5d311b4d2ba2c6108d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>使用网络和应用程序安全组（预览版）筛选网络流量
 
@@ -457,5 +456,4 @@ az group delete --name myResourceGroup --yes
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
-
 

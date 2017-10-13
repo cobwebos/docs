@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b6a333d075e0391adca4f37bbff8918391a22fde
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机开发工具
 
 数据科学虚拟机 (DSVM) 通过捆绑多种常用工具和 IDE 提供高效的开发环境。 以下是 DSVM 中提供的一些工具。 
@@ -83,5 +81,4 @@ ms.lasthandoff: 09/25/2017
 | 典型用途      |  数据可视化和构建仪表板   |
 | 如何使用/运行它？      | 桌面快捷方式 (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、Juno      |
-
 

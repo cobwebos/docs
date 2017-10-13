@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: adegeo
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 06ff9d9ae1dd8256f0d22c1a60ed6a85554f1f17
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>如何使用自动缩放和虚拟机规模集
 在规模集内自动缩放虚拟机是指按需在规模集内创建或删除虚拟机，以符合性能需求。 当工作量增大时，应用程序可能需要额外的资源才能有效执行任务。

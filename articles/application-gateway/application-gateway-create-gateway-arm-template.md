@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
+ms.openlocfilehash: 305a0529b6f6ad8bd96ac10da5f7ebc48317df45
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: f44e33ef722cd30787a9d2942ec55ceb73174978
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建应用程序网关
 
@@ -142,7 +141,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
     Get-AzureRmSubscription
     ```
 
-    系统将提示用户使用凭据进行身份验证。
+    系统会提示用户使用凭据进行身份验证。
 
 1. 选择要使用的 Azure 订阅。
 
@@ -244,5 +243,4 @@ az group delete --name appgatewayRG
 
 * [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
 

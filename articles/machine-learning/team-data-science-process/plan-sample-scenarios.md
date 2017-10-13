@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1dbc47b8a56fb2d295adfea0920b7eea45be69a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -266,4 +265,3 @@ ms.lasthandoff: 09/25/2017
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-

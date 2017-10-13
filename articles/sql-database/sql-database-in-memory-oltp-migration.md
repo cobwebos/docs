@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
 ms.openlocfilehash: 50eed9aed417778bd497f55e20c8e732fdae9cf9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 [内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级](sql-database-service-tiers.md) Azure SQL 数据库中的事务处理、数据引入的性能以及暂时性数据状况，且不需要提高定价层。 
@@ -79,7 +79,7 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
 1. 使用 SSMS 连接到测试数据库。
 2. 在“对象资源管理器”中，右键单击该表，并单击“内存优化顾问”。
    
-   * 此时将显示“表内存优化顾问”向导。
+   * 此时会显示“表内存优化顾问”向导。
 3. 在向导中，单击“迁移验证”（或“下一步”按钮），以查看该表是否有任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
    
    * [内存优化顾问中的](http://msdn.microsoft.com/library/dn284308.aspx)*内存优化清单*。

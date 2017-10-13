@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2f2125e739b738847e03ce429d65801969611685
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
 数据科学虚拟机 (DSVM) 提供了几种预建语言和开发工具，用于构建 AI 应用程序。 以下是一些功能突出的语言和开发工具。 
@@ -103,7 +101,7 @@ DSVM 上的默认 Python 环境是所有用户均可访问的全局环境。 但
 | ------------- | ------------- |
 | 支持的语言版本 | Microsoft R Open 3.x（与 CRAN-R 完全兼容<br /> Microsoft R Server 9.x 开发人员版（一个可扩展的企业就绪型 R 平台）|
 | 支持的 DSVM 版本      | Linux、Windows     |
-| 如何在 DSVM 上配置 /安装它？  | Windows：`C:\Program Files\Microsoft\R Server\R_SERVER` <br />Linux：` /usr/lib64/microsoft-r/3.3/lib64/R`    |
+| 如何在 DSVM 上配置/安装它？  | Windows：`C:\Program Files\Microsoft\R Server\R_SERVER` <br />Linux：` /usr/lib64/microsoft-r/3.3/lib64/R`    |
 | 到示例的链接      | 适用于 R 的示例 Jupyter 笔记本包括在内     |
 | DSVM 上的相关工具      | SparkR、Python、Julia      |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？    
@@ -199,6 +197,5 @@ Java：OpenJDK 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路�
 node.js：node.js 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路径上进行设置。 你可以在 Windows 中的命令提示符或 Linux 中的 bash shell 上键入 `node` 或 `npm` 命令来使用 node.js。 在 Windows 上，安装了用于 Visual Studio 扩展的 Node.js 工具，以提供图形化 IDE 来开发 node.js 应用程序。 
 
 F#：在 Windows 上可用，并可通过 Visual Studio Community Edition 访问，或在 `Developer Command Prompt for Visual Studio` 上只需运行 `fsc` 命令即可进行访问。 
-
 
 

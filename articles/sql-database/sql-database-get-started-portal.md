@@ -16,18 +16,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/25/2017
 ms.author: carlrab
+ms.openlocfilehash: e1e9dcd5b2b58e02b0c320c808f9042f7e032d50
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 6bf1b94b38fffe31dd67a5146c3c9c5e9367084e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库
 
 本快速入门教程逐步讲解如何在 Azure 中创建 SQL 数据库。 Azure SQL 数据库是一种“数据库即服务”产品，可用于在云中运行和缩放高可用性 SQL Server 数据库。 本快速入门教程介绍如何开始使用 Azure 门户创建 SQL 数据库。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 08/30/2017
 
 1. 单击 Azure 门户左上角的“新建”按钮。
 
-2. 从“新建”页中选择“数据库”，然后在“新建”页的“SQL 数据库”下选择“创建”。
+2. 从“新建”页中选择“数据库”，然后从“新建”页的“SQL 数据库”中选择“创建”。
 
    ![创建数据库 - 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -70,7 +69,7 @@ ms.lasthandoff: 08/30/2017
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
 
    > [!IMPORTANT]
-   > 在此处指定的服务器管理员登录名和密码是以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。 
+   > 在此处指定的服务器管理员登录名和密码是你以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。 
    >  
 
    ![创建数据库 - 服务器](./media/sql-database-get-started-portal/create-database-server.png)
@@ -127,7 +126,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 5. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-6. 单击“确定”，然后关闭“防火墙设置”页。
+6. 单击“确定”，并关闭“防火墙设置”页。
 
 现在可以使用之前创建的服务器管理员帐户通过 SQL Server Management Studio 或其他所选工具从此 IP 地址连接到 SQL 数据库服务器及其数据库。
 
@@ -160,7 +159,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-6. 单击“运行”，并在“结果”窗格中查看查询结果。
+6. 单击“运行”，然后在“结果”窗格中查看查询结果。
 
    ![查询编辑器结果](./media/sql-database-get-started-portal/query-editor-results.png)
 
@@ -171,8 +170,8 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 若要转到[后续步骤](#next-steps)，以便了解如何使用多种不同的方法连接和查询数据库，请保存这些资源。 但如果希望删除在本快速入门中创建的资源，请执行以下步骤。 
 
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击“myResourceGroup”。 
-2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，并单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。 
+2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -186,4 +185,3 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 - [Java](sql-database-connect-query-java.md)
 - [Python](sql-database-connect-query-python.md)
 - [Ruby](sql-database-connect-query-ruby.md)
-

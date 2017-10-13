@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
+ms.openlocfilehash: b69f6b2190362b970420ba81450978ac9faecd86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 2d74331ec1625a53d1af5ab5058b733651271f37
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -300,5 +299,4 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 [Autoswap1]: ./media/web-sites-staged-publishing/AutoSwap01.png
 [Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
-
 

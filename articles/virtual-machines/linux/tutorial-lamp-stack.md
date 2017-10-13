@@ -15,12 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: danlep
+ms.openlocfilehash: c00e6a190633348411f47490808739d570cafd69
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9148ac9646e4e1cfeff8f20c096e390499437e78
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-lamp-web-server-on-an-azure-vm"></a>在 Azure VM 上安装 LAMP Web 服务器
 本文逐步讲解如何在 Azure 中的 Ubuntu VM 上部署 Apache Web 服务器、MySQL 和 PHP（LAMP 堆栈）。 如果想要部署 NGINX Web 服务器，请参阅 [LEMP 堆栈](tutorial-lemp-stack.md)教程。 若要了解 LAMP 服务器的运作情况，可以选择性地安装并配置 WordPress 站点。 本教程介绍如何执行下列操作：
@@ -76,7 +75,7 @@ apache2 -v
 使用以下命令检查 MySQL 版本（请注意大写的 `V` 参数）：
 
 ```bash
-msql -V
+mysql -V
 ```
 
 建议运行以下脚本来帮助保护 MySQL 的安装：

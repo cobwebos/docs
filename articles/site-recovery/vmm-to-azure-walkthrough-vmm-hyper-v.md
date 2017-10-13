@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
 ms.openlocfilehash: ec118ed837dbf140083b3ae1e4ecd41c81562018
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-6-prepare-vmm-servers-and-hyper-v-hosts-for-hyper-v-replication-to-azure"></a>步骤 6：准备 VMM 服务器和 Hyper-V 主机以将 Hyper-V 复制到 Azure
 

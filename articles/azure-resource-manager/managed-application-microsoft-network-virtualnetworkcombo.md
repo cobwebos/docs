@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 8bb255b76ac5c3de570fa569a1cfb3ee953f9687
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: 35f4400a9c9f8e1dd03ac24ab3e023b91d774673
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 元素
 一组用于选择新的或现有虚拟网络的控件。 [创建 Azure 托管应用程序](managed-application-publishing.md)时使用此元素。
@@ -89,7 +88,7 @@ ms.lasthandoff: 05/13/2017
 - 必须指定 `subnets`，并且必须为每个子网指定 `constraints.minAddressPrefixSize`。
 - 创建新的虚拟网络时，会根据虚拟网络的地址前缀和相应的 `addressPrefixSize` 自动计算每个子网的地址前缀。
 - 使用现有虚拟网络时，任何小于相应 `constraints.minAddressPrefixSize` 的子网都不可供选择。 另外，如果指定，则没有包含至少 `minAddressCount` 个可用地址的子网也不可供选择。
-默认值为 **0**。 若要确保可用地址是连续的，请将 `requireContiguousAddresses` 指定为 **true**。 默认值为 **true**。
+默认值为 **0**。 要确保可用地址是连续的，请将 `requireContiguousAddresses` 指定为 **true**。 默认值为 **true**。
 - 不支持在现有虚拟网络中创建子网。
 - 如果 `options.hideExisting` 为 **true**，则用户无法选择现有虚拟网络。 默认值为 **false**。
 
@@ -119,4 +118,3 @@ ms.lasthandoff: 05/13/2017
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](managed-application-createuidefinition-elements.md)。
-

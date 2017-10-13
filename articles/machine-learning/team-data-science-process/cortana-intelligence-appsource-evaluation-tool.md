@@ -13,13 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8340ae1231b7f40f739d7bbb63cee1bf0f095ab5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
---- 
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
+---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence 解决方案评估工具
 ## <a name="overview"></a>概述
 可以使用 Cortana Intelligence 解决方案评估工具来评估高级分析解决方案是否符合 Microsoft 推荐的最佳做法。 Microsoft 很高兴能与我们的合作伙伴 (ISV/SI) 协作，为客户、经销商和实现过程提供高质量解决方案。 本指南演示使用解决方案评估工具评估解决方案的过程，并描述检查中的具体最佳做法。
@@ -199,5 +198,4 @@ Azure机器学习 (AzureML) 提供了易于使用的工具，用于创建和部�
 [通过 Microsoft Azure 认证发展云业务](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
 
 [Microsoft Azure Cortana Intelligence 认证](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
-
 

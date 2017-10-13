@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: ef93d43bbd0c58950027810c8c335d9076574326
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建公共 IP 地址
 
 可以在 Azure 可用性区域（预览）中部署公共 IP 地址。 可用性区域是 Azure 区域中物理上独立的区域。 了解如何：
@@ -61,4 +59,3 @@ az network public-ip show --resource-group myResourceGroup --name myPublicIp
 
 - 了解有关[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)的详细信息
 - 了解有关[公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)的详细信息 
-

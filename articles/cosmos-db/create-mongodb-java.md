@@ -15,12 +15,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 1683afd842294b3b45ae4d0e53bbecdccadc1ed5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: 81bf338d3be18905fd04e07a53284432b5feb491
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户生成 MongoDB API 控制台应用
 
@@ -49,7 +48,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在让我们从 github 克隆 MongoDB API 应用、设置连接字符串，并运行。 你将看到以编程方式处理数据是多么容易。 
+现在让我们从 github 克隆 MongoDB API 应用、设置连接字符串，并运行。 会看到以编程方式处理数据是多么容易。 
 
 1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
 
@@ -119,15 +118,14 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，你已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合和运行控制台应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
+在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合和运行控制台应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
 
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)
-
 
 

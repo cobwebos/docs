@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2017
 ms.author: yurid
+ms.openlocfilehash: d610a4ae97657013f6bb784790f073c3d986959f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 4752199803f1fab04608e6a8618e3294e85fb38a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>在 Azure 安全中心进行安全运行状况监视
 本文介绍如何通过 Azure 安全中心的监视功能监视合规性。
@@ -70,7 +69,7 @@ ms.lasthandoff: 09/07/2017
 “缺失的系统更新”以图形格式汇总了关键更新，分别适用于 Windows 和 Linux。 第二部分有一个表，其中包含以下信息：
 
 * 名称：所缺更新的名称。
-* VM 和计算机数：缺少该更新的 VM 和计算机的总数。
+* **VM 和计算机数：缺少该更新的 VM 和计算机的总数。
 * **状态**：该建议的当前状态：
   * **未解决**：建议尚未得到处理。
   * **正在进行**：目前已将建议应用到相关资源，不需用户采取行动。
@@ -222,4 +221,3 @@ ms.lasthandoff: 09/07/2017
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题](security-center-faq.md)：查找有关使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
-

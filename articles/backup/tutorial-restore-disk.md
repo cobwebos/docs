@@ -1,29 +1,27 @@
 ---
 title: "使用 Azure 备份还原 VM 磁盘 | Microsoft 文档"
 description: "了解如何在 Azure 中使用备份和恢复服务还原磁盘并创建恢复的 VM。"
-services: virtual-machines, azure-backup
+services: backup, virtual-machines
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
-ms.service: virtual-machines, azure-backup
+ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 09/28/2017
 ms.author: iainfou
 ms.custom: mvc
+ms.openlocfilehash: 01c266fcede8e4783cdea529bd1e7e9301bb23e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: a704d3f9e37951e38fb395612e001501f322d754
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>在 Azure 中还原磁盘并创建恢复的 VM
 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以还原单个文件。 本文将介绍如何还原完整的 VM。 本教程介绍如何执行下列操作：
 
@@ -52,7 +50,7 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
 ## <a name="list-available-recovery-points"></a>列出可用的恢复点
 若要还原磁盘，请选择恢复点作为恢复数据的源。 由于默认策略每天创建一个恢复点并保留 30 天，因此，可以保留一组恢复点，以便可以选择一个特定的时点用于恢复。 
 
-若要查看可用恢复点的列表，请使用 az backup recoverypoint list 命令。 将使用恢复点名称恢复磁盘。 在本教程中，我们希望最近的恢复点可用。 `--query [0].name` 参数可选择最近的恢复点名称，如下所示：
+若要查看可用恢复点的列表，请使用 az backup recoverypoint list[](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list) 命令。 将使用恢复点名称恢复磁盘。 在本教程中，我们希望最近的恢复点可用。 `--query [0].name` 参数可选择最近的恢复点名称，如下所示：
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -68,7 +66,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>还原 VM 磁盘
 若要从恢复点恢复磁盘，请先创建 Azure 存储帐户。 此存储帐户用于存储还原的磁盘。 在其他步骤中，将使用还原的磁盘创建 VM。
 
-1. 若要创建存储帐户，请使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) 命令。 存储帐户名称必须全部为小写，且全局唯一。 将 mystorageaccount 替换为你自己唯一的名称：
+1. 若要创建存储帐户，请使用 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) 命令。 存储帐户名称必须全部为小写，且全局唯一。 将 mystorageaccount 替换为你自己唯一的名称：
 
     ```azurecli-interactive
     az storage account create \
@@ -77,7 +75,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. 使用 az backup restore restore-disks 从你的恢复点还原磁盘。 将 mystorageaccount 替换为你在前一个命令中创建的存储帐户的名称。 将 myRecoveryPointName 替换为你在前面的 az backup recoverypoint list 命令输出中获得的恢复点名称：
+2. 使用 az backup restore restore-disks[](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az_backup_restore_restore_disks) 从你的恢复点还原磁盘。 将 mystorageaccount 替换为你在前一个命令中创建的存储帐户的名称。 将 myRecoveryPointName 替换为你在前面的 az backup recoverypoint list[](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list) 命令输出中获得的恢复点名称：
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -91,7 +89,7 @@ az backup recoverypoint list \
 
 
 ## <a name="monitor-the-restore-job"></a>监视还原作业
-若要监视还原作业的状态，请使用 az backup job list：
+若要监视还原作业的状态，请使用 az backup job list[](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list)：
 
 ```azurecli-interactive 
 az backup job list \
@@ -116,7 +114,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>将还原的磁盘转换为托管磁盘
 还原作业将创建一个非托管磁盘。 若要从磁盘创建 VM，必须首先将该磁盘转换为托管磁盘。
 
-1. 使用 [az storage account show-connection-string](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_show_connection_string) 命令获取存储帐户的连接信息。 将 mystorageaccount 替换为你的存储名称帐户，如下所示：
+1. 使用 [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_show_connection_string) 命令获取存储帐户的连接信息。 将 mystorageaccount 替换为你的存储名称帐户，如下所示：
     
     ```azurecli-interactive
     export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
@@ -133,7 +131,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
     uri=$(az storage blob url --container-name $container --name $blob -o tsv)
     ```
 
-3. 现在，可以使用 [az disk create](/cli/azure/disk?view=azure-cli-latest#az_disk_create) 从恢复的磁盘创建托管磁盘。 使用上一步创建的 uri 变量作为托管磁盘的源。
+3. 现在，可以使用 [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az_disk_create) 从恢复的磁盘创建托管磁盘。 使用上一步创建的 uri 变量作为托管磁盘的源。
 
     ```azurecli-interactive
     az disk create \
@@ -183,5 +181,4 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 > [!div class="nextstepaction"]
 > [将文件还原到 Azure 中的虚拟机](tutorial-restore-files.md)
-
 

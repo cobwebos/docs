@@ -16,10 +16,10 @@ ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>将 Azure 自动化资源添加到 OMS 管理解决方案（预览版）
 > [!NOTE]

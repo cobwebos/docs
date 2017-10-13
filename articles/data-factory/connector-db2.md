@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aef796aa4f2604e6cd06452f3d3c6f648850aa38
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +70,7 @@ DB2 链接服务支持以下属性：
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自我托管集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
 
@@ -132,7 +131,7 @@ DB2 链接服务支持以下属性：
 
 ### <a name="db2-as-source"></a>DB2 作为源
 
-要从 DB2 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分中支持以下属性：
+要从 DB2 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

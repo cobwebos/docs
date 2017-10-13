@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
+ms.openlocfilehash: 592a8716dd15b25b14fed145c11e5f5714cdd41c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4a0b047ce5c6706b51e96e8cc160c610625869e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 ## <a name="overview"></a>概述
@@ -518,7 +517,7 @@ Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户
 
    **资源**
 
-* [为何建议不再使用“FIPS 模式”](http://blogs.technet.com/b/secguide/archive/2014/04/07/why-we-re-not-recommending-fips-mode-anymore.aspx)
+* [为何建议不再使用“FIPS 模式”](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   此博客文章提供 FIPS 概述，并说明他们为什么默认不启用 FIPS 模式。
 * [FIPS 140 Validation](https://technet.microsoft.com/library/cc750357.aspx)（FIPS 140 验证）
@@ -527,4 +526,3 @@ Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户
 * [“系统加密：使用 FIPS 兼容的算法来加密、哈希和签名”在 Windows XP 和更高版本的 Windows 中的安全设置影响](https://support.microsoft.com/kb/811833)
 
   此文介绍如何在较旧版 Windows 计算机中使用 FIPS 模式。
-

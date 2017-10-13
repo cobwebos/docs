@@ -16,14 +16,12 @@ ms.workload: storage-backup-recovery
 ms.date: 09/07/2017
 ms.author: markgal
 ms.custom: mvc
+ms.openlocfilehash: 4376add4a2e51806bd5db228ad2fe2afcf2e4f57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 321a034340fb31efc1b539ba1a5ab5a34661cb63
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>使用 PowerShell 备份已加密 Azure 虚拟机
 
 此脚本为已加密 Azure 虚拟机创建包含异地冗余存储 (GRS) 的恢复服务保管库。 默认保护策略已应用到此保管库。 此策略为虚拟机生成每日备份，并将每个备份保留 30 天。 该脚本还将触发虚拟机的初始恢复点，并将该恢复点保留 365 天。 
@@ -65,5 +63,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
-
 

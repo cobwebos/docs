@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 72936a4d38f809934ddea74e5ae4a6029450a97c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
 本主题介绍数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。  
@@ -358,4 +357,3 @@ ms.lasthandoff: 08/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-

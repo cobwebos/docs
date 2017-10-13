@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: tamram
+ms.openlocfilehash: 87594d2688e3cd01f5e7db8f5be8ca513969e774
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 7a432a22c5c2c2fc5e42cfe000dd34262ba4c85e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>通过 .NET 开始使用 Azure Blob 存储
 
@@ -377,8 +376,7 @@ Console.WriteLine(appendBlob.DownloadText());
 默认情况下，存储帐户中的 Blob 数据仅供存储帐户所有者访问。 默认情况下，验证对 Blob 存储的请求需要帐户访问密钥。 不过，你可能想要让特定的 Blob 数据可供其他用户使用。 可以使用两个选项：
 
 * **匿名访问** ：你可让容器或其 Blob 公开供匿名访问。 有关详细信息，请参阅 [管理对容器和 Blob 的匿名读取访问](storage-manage-access-to-resources.md) 。
-* 
-            **共享访问签名** ：可以为客户端提供共享访问签名 (SAS)，该共享访问签名可利用所指定的权限在所指定的时间间隔内，针对存储帐户中的资源提供委派访问权限。 有关详细信息，请参阅 [使用共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 。
+* **共享访问签名** ：可以为客户端提供共享访问签名 (SAS)，该共享访问签名可利用所指定的权限在所指定的时间间隔内，针对存储帐户中的资源提供委派访问权限。 有关详细信息，请参阅 [使用共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 。
 
 ### <a name="encrypting-blob-data"></a>加密 Blob 数据
 Azure 存储支持在客户端和服务器上加密 Blob 数据：
@@ -403,4 +401,3 @@ Azure 存储支持在客户端和服务器上加密 Blob 数据：
 * [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [开始使用适用于 .NET 的文件存储](../files/storage-dotnet-how-to-use-files.md)
 * [如何通过 WebJobs SDK 使用 Azure Blob 存储](https://github.com/Azure/azure-webjobs-sdk/wiki)
-

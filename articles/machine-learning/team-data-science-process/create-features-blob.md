@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ea6712fcedcc61c9f88e9daa8d576ac3d202da51
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>使用 Panda 创建 Azure blob 存储数据功能
 此文档展示如何使用 [Pandas](http://pandas.pydata.org/) Python 包为存储在 Azure blob 容器中的数据创建功能。 在概括了如何加载数据到 Panda 数据帧后，文档介绍如何通过指示器值和装箱功能使用 Python 脚本生成分类功能。
@@ -124,5 +123,4 @@ ms.lasthandoff: 09/25/2017
 3. 现在可使用 Azure 机器学习的[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)模块从 blob 读取数据，如下方屏幕截图所示：
 
 ![blob 读取器](./media/data-blob/reader_blob.png)
-
 

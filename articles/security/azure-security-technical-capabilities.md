@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: a32693a274c2615a515838306d72dbe64a5d1763
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -530,4 +529,3 @@ Resource Manager 提供多种优势：
 - [网络安全](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
 - [威胁管理](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
-

@@ -16,13 +16,13 @@ ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 0e90171afd9c4c782fbb18375ab2d147497ef442
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---nodejs"></a>将登录凭据添加到 AngularJS 单页应用 - NodeJS
-在本文中，我们使用 Azure Active Directory v2.0 终结点将 Microsoft 支持的帐户的登录凭据添加到 AngularJS 应用。 使用 v2.0 终结点可以在应用中执行单一集成，并使用个人和工作/学校帐户对用户进行身份验证。
+在本文中，我们将使用 Azure Active Directory v2.0 终结点将 Microsoft 支持的帐户的登录凭据添加到 AngularJS 应用。 v2.0 终结点可让你在应用中执行单一集成，以及使用个人和工作/学校帐户对用户进行身份验证。
 
 本示例是一个可在后端 REST API 存储任务的简单待办事项列表单页应用，它是使用 NodeJS 编写的，并使用 Azure AD 的 OAuth 持有者令牌进行保护。  AngularJS 应用使用我们的开源 JavaScript 身份验证库 [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) 来处理整个登录过程，并获取用于调用 REST API 的令牌。  可以应用与此相同的模式来验证其他 REST API，例如 [Microsoft Graph](https://graph.microsoft.com) 或 Azure Resource Manager API。
 
@@ -236,7 +236,7 @@ return $http.get('/api/tasks');
 node server.js
 ```
 
-在浏览器中，导航到 `http://localhost:8080`。  使用个人 Microsoft 帐户或工作/学校帐户登录。  将任务添加到用户的待办事项列表，然后注销。  尝试使用其他类型的帐户登录。 如果需要一个 Azure AD 租户来创建工作/学校用户，请[在此处了解如何获取租户](active-directory-howto-tenant.md)（免费）。
+在浏览器中，导航到 `http://localhost:8080`。  使用个人 Microsoft 帐户或工作/学校帐户登录。  将任务添加到用户的待办事项列表，然后注销。尝试使用其他类型的帐户登录。 如果需要一个 Azure AD 租户来创建工作/学校用户，请[在此处了解如何获取租户](active-directory-howto-tenant.md)（免费）。
 
 若要继续了解 v2.0 终结点，请返回 [v2.0 开发人员指南](active-directory-appmodel-v2-overview.md)。  有关更多资源，请查看：
 

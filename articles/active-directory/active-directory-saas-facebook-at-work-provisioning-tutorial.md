@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: a347eedbf5511dc83e1bc7721667441cfb87cb59
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-user-provisioning"></a>教程：配置 Workplace by Facebook 以进行用户预配
 
 本教程展示了从 Azure Active Directory (Azure AD) 到 Workplace by Facebook 对用户账户进行自动预配和取消预配所需的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 

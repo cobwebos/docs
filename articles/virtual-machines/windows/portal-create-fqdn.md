@@ -17,10 +17,10 @@ ms.date: 07/05/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2d5a555cd873222efcdb29e8eb3aaf128a24414b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>在 Azure 门户中为 Windows VM 创建完全限定的域名
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
 现在可以使用此 DNS 名称（例如远程桌面协议 (RDP)）远程连接至 VM。
 
 ## <a name="next-steps"></a>后续步骤
-你的 VM 已经有公共 IP 和 DNS 名称，现在可以部署常用应用程序框架或服务，例如 IIS、SQL 或 SharePoint。
+VM 已经有公共 IP 和 DNS 名称，现在可以部署通用应用程序框架或服务，例如 IIS、SQL 或 SharePoint。
 
-也可以深入了解如何[使用 Resource Manager](../../azure-resource-manager/resource-group-overview.md)，以获取生成 Azure 部署的相关提示。
+也可以深入了解[使用 Resource Manager](../../azure-resource-manager/resource-group-overview.md)，以获取生成 Azure 部署的相关提示。
 

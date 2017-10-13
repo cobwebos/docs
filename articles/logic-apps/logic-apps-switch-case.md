@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: LADocs; deli
 ms.openlocfilehash: 338b6a5b549d7bf81186550295608438ac4aee32
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>使用 Switch 语句在逻辑应用中执行不同操作
 

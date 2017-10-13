@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8ff0d38a679b673b148dd808050eda82060cfe80
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric 概述
 Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。 Service Fabric 还解决了开发和管理云本机应用程序面临的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 Service Fabric 代表了下一代平台，用于生成和管理在容器中运行的企业级单层云规模应用程序。
@@ -96,4 +95,3 @@ Service Fabric 与 [Visual Studio Team Services](https://www.visualstudio.com/te
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
-

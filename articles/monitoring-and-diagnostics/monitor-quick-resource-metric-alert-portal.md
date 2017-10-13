@@ -10,14 +10,12 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 08d63d47a99bdf9480299a74634bc0e9a09e691e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>当指标值满足条件时接收通知
 
 Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关资源的性能和运行状况。 在许多情况下，指标值可以指出某个资源发生错误。 可以创建指标警报以监视异常行为，并在异常行为发生时收到通知。 本快速入门分步介绍了如何创建逻辑应用、创建作业，并使逻辑应用的指标可视化。 然后，它将完成创建警报，并接收逻辑应用资源的指标的通知。
@@ -116,4 +114,3 @@ Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关�
 
 > [!div class="nextstepaction"]
 > [Azure Monitor 订阅操作警报](./monitor-quick-audit-notify-action-in-subscription.md )
-

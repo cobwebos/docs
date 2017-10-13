@@ -1,6 +1,6 @@
 ---
 title: "搭配使用 Azure 应用程序网关和内部负载均衡器 | Microsoft Docs"
-description: "本页说明如何配置具有内部负载平衡终结点的 Azure 应用程序网关"
+description: "本页说明如何配置具有内部负载均衡终结点的 Azure 应用程序网关"
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -14,25 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: d6f3af61934c8c645be1f2c6b4c056fc7ee2e3aa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: 7ca9307e8a78f6dade4b231fa3a0d83a68af3f21
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载平衡器 (ILB) 的应用程序网关
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载均衡器 (ILB) 的应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 经典 PowerShell](application-gateway-ilb.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ilb-arm.md)
 
-可以配置使用面向 Internet 的虚拟 IP 或不向 Internet 公开的内部终结点（也称为内部负载平衡器 (ILB) 终结点）的应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务/层也很有用，但仍需要执行循环负载分散、会话粘性或 SSL 终止。 本文介绍了配置具有 ILB 的应用程序网关的步骤。
+可以配置使用面向 Internet 的虚拟 IP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务/层也很有用，但仍需要执行循环负载分散、会话粘性或 SSL 终止。 本文介绍了配置具有 ILB 的应用程序网关的步骤。
 
 ## <a name="before-you-begin"></a>开始之前
 
 1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页面](https://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
-2. 请确认你已创建包含有效子网、可正常运行的虚拟网络。
+2. 请确认已创建包含有效子网、可正常运行的虚拟网络。
 3. 请确认后端服务器位于虚拟网络中，或者为后端服务器分配了公共 IP/VIP。
 
 若要创建应用程序网关，请按所列顺序执行以下步骤。 
@@ -45,7 +44,7 @@ ms.lasthandoff: 01/24/2017
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关：
 
-**若要创建网关**，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换为你自己的值。 请注意，此时不会开始计收网关的费用。 计费将在后面已成功启动网关时开始。
+**要创建网关**，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换成自己的值。 请注意，此时不会开始计收网关的费用。 计费会在后面已成功启动网关时开始。
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -91,7 +90,7 @@ DnsName:
 * **后端服务器池设置：**每个池具有端口、协议和基于 Cookie 的相关性等设置。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：**此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
 * **侦听器：**侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。 
-* **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
+* **规则：**规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
 
 可以通过创建配置对象或使用配置 XML 文件来构造配置。 若要使用配置 XML 文件构造配置，请使用以下示例。
 
@@ -158,7 +157,7 @@ DnsName:
 
 
 ## <a name="set-the-gateway-configuration"></a>设置网关配置
-接下来，你将设置应用程序网关。 可以对配置对象或配置 XML 文件使用 `Set-AzureApplicationGatewayConfig` cmdlet。 
+接下来，将设置应用程序网关。 可以对配置对象或配置 XML 文件使用 `Set-AzureApplicationGatewayConfig` cmdlet。 
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -219,9 +218,8 @@ DnsName       : appgw-b2a11563-2b3a-4172-a4aa-226ee4c23eed.cloudapp.net
 ```
 
 ## <a name="next-steps"></a>后续步骤
-如需负载平衡选项的其他常规信息，请参阅：
+如需负载均衡选项的其他常规信息，请参阅：
 
-* [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
 

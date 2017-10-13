@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/05/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 156dd1b7f928df22b3feb9e7a13396d3b53a91d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 中的漫游和协作
 本文档逐步讲解如何借助 Azure Machine Learning Workbench 在不同的计算机上实现项目漫游，并实现与团队成员的协作。 
 
@@ -125,5 +123,4 @@ Azure 机器学习试验帐户、工作区和项目都是 Azure 资源管理器�
 在“所有资源”视图中找到想要将用户添加到的资源。 在页面中单击“访问控制(IAM)”链接。 添加用户 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
-
 

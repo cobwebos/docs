@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 23f1bbb066c5b6481988ee841ad8979d78abf084
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 发行说明
 
@@ -68,7 +68,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 | 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |故障转移 |在早期版本中，当故障转移后，会在客户站点观察到与清理相关的问题。 在此版本中已修复了此问题。 |是 |是 |
-| 2 |本地固定卷 |在之前版本中，为本地固定卷创建卷时会出现导致卷创建失败的问题。 在此版本中已找到此问题的根本原因并进行了修复。 |是 |否 |
+| #N/A |本地固定卷 |在之前版本中，为本地固定卷创建卷时会出现导致卷创建失败的问题。 在此版本中已找到此问题的根本原因并进行了修复。 |是 |否 |
 | 3 |支持包 |之前版本中存在与支持包相关的问题，该问题会导致 System.OutOfMemory 异常，或支持包创建失败的其他错误。 在此版本中已修复这些 bug。 |是 |是 |
 | 4 |监视 |在之前版本中，当监视本地固定卷的图表时会出现占用量显示在 EB 中的问题。 在此版本中已修复了此 bug。 |是 |是 |
 | 5 |迁移 |在之前版本中，当从 5000-7000 系列迁移到 8000 系列设备时，会出现若干与迁移可靠性相关的问题。 此版本中已解决这些问题。 |是 |是 |

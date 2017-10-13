@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 08/10/2017
 ms.author: larryfr
 ms.openlocfilehash: a36a41c231472ceeeb46d02ddb65549b1c79728a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Hadoop 群集
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/18/2017
 
 了解如何使用 Azure Resource Manager 模板和 Azure REST API 创建 HDInsight 群集。
 
-使用 Azure REST API，可以对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
+Azure REST API 允许对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
 
 > [!IMPORTANT]
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -218,7 +218,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 本文档中的步骤会使用此示例。 将 Parameters 部分中的示例值替换为用于群集的值。
 
 > [!IMPORTANT]
-> 此模板对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果计划使用 32 个以上的辅助角色节点，则必须选择至少具有 8 个核心和 14GB ram 的头节点大小。
+> 此模板对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果计划使用 32 个以上的辅助角色节点，则必须选择至少具有 8 个核心和 14 GB ram 的头节点大小。
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
@@ -245,7 +245,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换为自己的值。 为新的 Active Directory 条目提供密码。
+    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换成自己的值。 为新的 Active Directory 条目提供密码。
 
    > [!NOTE]
    > `--home-page` 和 `--identifier-uris` 值无需引用在 Internet 上承载的实际网页。 它们必须是唯一的 URI。
@@ -282,7 +282,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 将 `$TENANTID`、`$APPID` 和 `$PASSWORD` 设置为以前获取或使用的值。
 
-如果此请求成功，你将收到 200 系列响应，且响应正文包含一个 JSON 文档。
+如果此请求成功，将收到 200 系列响应，且响应正文包含一个 JSON 文档。
 
 此请求返回的 JSON 文档包含一个名为 **access_token** 的元素。 **access_token** 的值用来对针对 REST API 的请求进行身份验证。
 

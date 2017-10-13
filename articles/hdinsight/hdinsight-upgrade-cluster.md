@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: bhanupr
 ms.openlocfilehash: fa2e37bd922690322ccc3d8f68128180d013b701
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集升级到更新版本
 要利用最新的 HDInsight 功能，我们建议将 HDInsight 群集升级到最新版本。 遵循以下准则升级 HDInsight 群集版本。
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 
 1. 请阅读本文档的每个部分，了解在升级 HDInsight 群集时可能需要进行的更改。
 2. 创建群集作为测试/质量保证环境。 有关创建群集的详细信息，请参阅[了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
-3. 将现有作业、数据源及接收器复制到新环境。 有关详细信息，请参阅[将数据复制到测试环境](hdinsight-migrate-from-windows-to-linux.md#copy-data-to-the-test-environment) 。
+3. 将现有作业、数据源及接收器复制到新环境。 有关详细信息，请参阅[将数据复制到测试环境](hdinsight-migrate-from-windows-to-linux.md#copy-data-to-the-test-environment)。
 4. 执行验证测试，以确保作业在新群集上按预期工作。
 
 

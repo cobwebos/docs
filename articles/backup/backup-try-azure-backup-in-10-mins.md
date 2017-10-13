@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 7a016ed92c68ce624aeb09d766adbc6fc8ba2b42
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>初步了解：在 Resource Manager 部署中备份文件和文件夹
 本文介绍如何通过 Resource Manager 部署将 Windows Server（或 Windows 计算机）文件和文件夹备份到 Azure。 本教程旨在引导完成基本操作。 如果想要开始使用 Azure 备份，本文的内容非常合适。
@@ -205,7 +204,7 @@ ms.lasthandoff: 09/07/2017
 8. 在“**选择保留策略**”页上，为备份复制选择“**保留策略**”。
 
     保留策略指定备份数据的存储时长。 可以根据备份的创建时间指定不同的保留策略，不需为所有备份点指定一个“通用的策略”。 可以根据需要修改每日、每周、每月和每年保留策略。
-9. 在“选择初始备份类型”页上，选择初始备份类型。 将“**自动通过网络**”选项保持选中状态，然后单击“**下一步**”。
+9. 在“选择初始备份类型”页上，选择初始备份类型。 将“**自动通过网络**”选项保持选中状态，并单击“**下一步**”。
 
     可以通过网络自动备份，或者脱机备份。 本文的余下部分介绍自动备份过程。 如果想要执行脱机备份，请查看 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md) 以了解更多信息。
 10. 在“确认”页上复查信息，并单击“**完成**”。
@@ -215,7 +214,7 @@ ms.lasthandoff: 09/07/2017
 1. 在恢复服务代理中单击“ **立即备份** ”，以通过网络完成初始种子设定。
 
     ![立即备份 Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
-2. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“备份”。
+2. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“**备份**”。
 3. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
 
 完成初始备份后，备份控制台中会显示“**作业已完成**”状态。
@@ -229,4 +228,3 @@ ms.lasthandoff: 09/07/2017
 * 详细了解如何 [备份 Windows 计算机](backup-configure-vault.md)。
 * 备份文件和文件夹后，可以 [管理保管库和服务器](backup-azure-manage-windows-server.md)。
 * 如果需要还原备份，请参阅[将文件还原到 Windows 计算机](backup-azure-restore-windows-server.md)一文。
-

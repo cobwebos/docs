@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
 ms.openlocfilehash: 1115408443e11c8b0d26b83217c5f63e4b6ba819
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 本文档包含最常见的导入和导出文件格式的列表，可以将这些格式与 Media Encoder Standard 配合使用。

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: sngun
+ms.openlocfilehash: e5a2afdc0dbe6171b27c11400f460eac46147f37
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 6486f3963b18edee8490446cad1f6f2697db699b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -286,5 +285,4 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 * 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)。
 * 若要编辑文本 Runbook，请参阅[编辑文本 Runbook](automation-edit-textual-runbook.md)。
 * 若要编辑图形 Runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
-
 

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: maquaran
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 239b590a1e3a83fe0205dd8169697db745d7f75e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="documentdb-net-change-feed-processor-sdk-download-and-release-notes"></a>DocumentDB .NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -81,5 +80,4 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。 
-
 

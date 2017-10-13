@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: db1360fa54d82c50adc04194697d994925338296
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>在 Azure 上预配深度学习虚拟机 
 
@@ -87,4 +86,3 @@ Linux DLVM 已通过 X2Go 服务器进行预配并且可接受客户端连接。
 通过 X2Go 客户端使用 SSH 客户端或 XFCE 图形桌面登录 VM 后，即可开始使用 VM 上安装和配置的工具。 在 XFCE 上，可看到许多工具的应用程序菜单快捷方式和桌面图标。
 
 创建并预配 VM 后，便可以开始使用其上安装并配置的工具。 许多工具带有开始菜单磁贴和桌面图标。 
-

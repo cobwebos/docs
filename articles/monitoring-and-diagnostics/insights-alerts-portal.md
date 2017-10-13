@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>在 Azure Monitor 中为 Azure 服务创建指标警报 - Azure 门户
 > [!div class="op_single_selector"]
@@ -98,4 +97,3 @@ ms.lasthandoff: 09/25/2017
 * 了解关于 [Azure 自动化 Runbook](../automation/automation-starting-a-runbook.md) 的详细信息。
 * 获取[诊断日志概述](monitoring-overview-of-diagnostic-logs.md)收集有关服务的详细高频率指标。
 * 获取[指标集合概述](insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
-

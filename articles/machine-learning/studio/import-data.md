@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: garye;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 98a8fa15922ef100a7f8cadd92fb7ffef0d3bcde
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习工作室
 若要在机器学习工作室中，使用自己的数据来开发和训练预测分析，可执行以下操作： 
@@ -96,4 +95,3 @@ ms.lasthandoff: 09/25/2017
 [convert-to-dataset]: https://msdn.microsoft.com/library/azure/72bf58e0-fc87-4bb1-9704-f1805003b975/
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-

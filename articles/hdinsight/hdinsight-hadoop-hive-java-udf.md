@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/26/2017
 ms.author: larryfr
+ms.openlocfilehash: 896874f66457ddf29379fa6585953a117587c032
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>在 HDInsight 中通过 Hive 使用 Java UDF
 
@@ -138,9 +137,9 @@ ms.lasthandoff: 07/28/2017
 
     一旦进行了更改，请保存该文件。
 
-4. 将 **exampleudf/src/main/java/com/microsoft/examples/App.java** 重命名为 **ExampleUDF.java**，然后在编辑器中打开该文件。
+4. 将 **exampleudf/src/main/java/com/microsoft/examples/App.java** 重命名为 **ExampleUDF.java**，并在编辑器中打开该文件。
 
-5. 将 **ExampleUDF.java** 文件的内容替换为以下代码，然后保存该文件。
+5. 将 **ExampleUDF.java** 文件的内容替换为以下代码，并保存该文件。
 
     ```java
     package com.microsoft.examples;
@@ -185,7 +184,7 @@ ms.lasthandoff: 07/28/2017
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    将 `myuser` 替换为群集的 SSH 用户帐户。 将 `mycluster` 替换为群集名称。 如果使用密码保护 SSH 帐户，系统将提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。
+    将 `myuser` 替换为群集的 SSH 用户帐户。 将 `mycluster` 替换为群集名称。 如果使用密码保护 SSH 帐户，系统会提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。
 
 3. 使用 SSH 连接到群集。
 
@@ -227,7 +226,7 @@ ms.lasthandoff: 07/28/2017
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    此查询将从表中选择设备平台（Android、Windows、iOS 等），然后将字符串转换为小写字符串，并显示它们。 显示的输出类似于以下文本：
+    此查询将从表中选择设备平台（Android、Windows、iOS 等），将字符串转换为小写字符串，并显示它们。 显示的输出类似于以下文本：
 
         +----------+--+
         |   _c0    |
@@ -249,4 +248,3 @@ ms.lasthandoff: 07/28/2017
 有关使用 Hive 的其他方式，请参阅[将 HDInsight 与 Hive 配合使用](hdinsight-use-hive.md)。
 
 有关 Hive 用户定义函数的详细信息，请参阅 apache.org 网站上的 Hive wiki 的 [Hive 运算符和用户定义函数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)部分。
-

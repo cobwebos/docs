@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 215b774c20d80a67b1cefa2634131bd44860c692
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-write-queries-in-stream-analytics"></a>如何使用流分析编写查询
 针对 Azure 流分析中的流处理逻辑编写查询将作为一种“现有查询”来实施，该查询在作业启动前定义并在数据抵达作业时对数据执行。 使用一种类似于 SQL 的查询语言来表示数据转换，这种语言大部分是 T-SQL 的一个子集，但增加了某些用于表示临时语义的语言扩展，例如 [Windowing](https://msdn.microsoft.com/library/azure/dn835019.aspx)。
@@ -54,8 +53,7 @@ ms.lasthandoff: 08/29/2017
 2. 系统会提示为查询中引用的每个输入指定文件。 在本示例中，模板查询保持原样，因此对话框提示提供一个名为 "yourinputalias" 的输入。
    
    ![测试数据查询](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)  
-3. 浏览到一个测试文件。 
-            [github](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) 提供了几个样本文件，还可以通过输入选项卡上的“样本数据”功能，从自己的数据流输入获取样本数据。
+3. 浏览到一个测试文件。 [github](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) 提供了几个样本文件，还可以通过输入选项卡上的“样本数据”功能，从自己的数据流输入获取样本数据。
    
    ![查询输入](./media/stream-analytics-write-queries/5-stream-analytics-write-queries.png)  
 4. 在关闭对话框后，查询将使用测试数据运行，并且可在“查询”页的底部看到结果。
@@ -71,5 +69,4 @@ ms.lasthandoff: 08/29/2017
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

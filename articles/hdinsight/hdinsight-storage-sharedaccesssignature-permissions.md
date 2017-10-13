@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
 ms.openlocfilehash: 2e4b1a307fae06c0639d93b9804c6f0f703d5900
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -220,7 +220,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
     对 MapReduce2 和 YARN 重复此过程。
 
-7. 重新启动这些服务后，选择每个服务并从“服务操作”  下拉列表中选择“禁用维护模式”。
+7. 重启这些服务后，请选择每个服务，并从“服务操作”下拉列表中禁用维护模式。
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: szark
 ms.openlocfilehash: c631ddf3acf6df7364c03eb4691b78be0493e0d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 * Hyper-V 和 Azure 不支持 Oracle 的 UEK2，因为它不包括所需的驱动程序。
 * Azure 不支持 VHDX 格式，仅支持**固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。
 * 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 由于低于 2.6.37 的 Linux 内核版本中的 bug，更大的 VM 不支持 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的分发。 手动安装的 Azure Linux 代理 (waagent) 将自动在 Linux 内核的 GRUB 配置中禁用 NUMA。 可以在下面的步骤中找到有关此内容的详细信息。
+* 由于低于 2.6.37 的 Linux 内核版本中的 bug，更大的 VM 不支持 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的分发。 手动安装的 Azure Linux 代理 (waagent) 会自动在 Linux 内核的 GRUB 配置中禁用 NUMA。 可以在下面的步骤中找到有关此内容的详细信息。
 * 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，以在临时资源磁盘上创建交换文件。  可以在下面的步骤中找到有关此内容的详细信息。
 * 所有 VHD 的大小必须是 1 MB 的倍数。
 * 请确保已启用 `Addons` 存储库。 编辑文件 `/etc/yum.repo.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repo.d/public-yum-ol7.repo`(Oracle Linux)，并在此文件中 **[ol6_addons]** 或 **[ol7_addons]** 下将行 `enabled=0` 更改为 `enabled=1`。
@@ -47,8 +47,7 @@ ms.lasthandoff: 07/11/2017
    
         # sudo rpm -e --nodeps NetworkManager
    
-    
-            **注意：** 如果尚未安装此包，则该命令会失败，并显示错误消息。 这是正常情况。
+    **注意：**如果尚未安装此包，则此命令会失败，并显示一条错误消息。 这是正常情况。
 4. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
    
         NETWORKING=yes
@@ -76,7 +75,7 @@ ms.lasthandoff: 07/11/2017
    
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
    
-   这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 由于 Oracle 的 Red Hat 兼容内核中的一个 bug，这将禁用 NUMA。
+   这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 由于 Oracle 的 Red Hat 兼容内核中的 bug，这会禁用 NUMA。
    
    除此之外，建议*删除*以下参数：
    
@@ -114,7 +113,7 @@ ms.lasthandoff: 07/11/2017
 为 Azure 准备 Oracle Linux 7 虚拟机非常类似于 Oracle Linux 6，但有几个值得注意的重要区别：
 
 * 在 Azure 中同时支持 Red Hat 兼容内核和 Oracle 的 UEK3。  建议使用 UEK3 内核。
-* NetworkManager 包不再与 Azure Linux 代理冲突。 默认会安装此包，建议不要删除。
+* NetworkManager 包不再与 Azure Linux 代理冲突。 默认情况下将安装此包，建议不要删除它。
 * GRUB2 现在用作默认引导加载程序，因此用于编辑内核参数的过程已更改（请参见下文）。
 * XFS 现在是默认文件系统。 如果需要，仍可以使用 ext4 文件系统。
 

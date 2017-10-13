@@ -10,14 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 411e10367f02846261f9fcc7717b5abb147b2c09
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 32311136a670261952d9bd0cf372e10a83cfe745
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
 Azure Application Insights 从应用程序收集遥测，以帮助分析操作和性能。  可以使用此信息确定可能发生的问题，或识别对用户影响最大的应用程序改进。  本教程将从应用程序服务器组件和客户端这两方面介绍分析性能的过程。  学习如何：
@@ -127,4 +125,3 @@ Application Insights 不仅可以识别要优化的服务器进程，还可以�
 
 > [!div class="nextstepaction"]
 > [根据应用程序运行状况发出警报](app-insights-tutorial-alert.md)
-

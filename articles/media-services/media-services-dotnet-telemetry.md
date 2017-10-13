@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
 ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>使用 .NET 配置 Azure 媒体服务遥测
 

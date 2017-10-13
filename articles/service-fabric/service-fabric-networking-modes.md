@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 1ecded3af6396f50e67dc5d2a9ef8337699046ea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
@@ -179,7 +178,7 @@ Service Fabric 群集中提供的容器服务的默认网络模式是 `nat` 网�
 
 3. 仅对 Windows 群集设置一个 NSG 规则，该规则通过以下值为 vNET 打开端口 UDP/53：
 
-   | Priority |    名称    |    源      |  目标   |   服务    | 操作 |
+   | Priority |    Name    |    源      |  目标   |   服务    | 操作 |
    |:--------:|:----------:|:--------------:|:--------------:|:------------:|:------:|
    |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | ALLOW  |
 
@@ -224,4 +223,3 @@ Service Fabric 群集中提供的容器服务的默认网络模式是 `nat` 网�
 * [Service Fabric 服务清单资源](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources)
 * [将 Windows 容器部署到 Windows Server 2016 上的 Service Fabric](service-fabric-get-started-containers.md)
 * [将 Docker 容器部署到 Linux 上的 Service Fabric](service-fabric-get-started-containers-linux.md)
-

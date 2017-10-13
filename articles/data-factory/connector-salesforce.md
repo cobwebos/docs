@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c819b3e3e715427632e793ce77d31554914d248e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-salesforce-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +49,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误。 有关详细信息，请参阅 [Salesforce Developer Limits](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)（Salesforce 开发人员限制）文章中的"API 请求限制"一节。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板通过复制活动创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 对于特定于 Salesforce 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -96,7 +95,7 @@ Salesforce 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
+| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
 | tableName | Salesforce 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 > [!IMPORTANT]
@@ -125,7 +124,7 @@ Salesforce 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Salesforce 源支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Salesforce 源支持的属性列表。
 
 ### <a name="salesforce-as-source"></a>以 Salesforce 作为源
 
@@ -133,7 +132,7 @@ Salesforce 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
 | query |使用自定义查询读取数据。 可以使用 SQL-92 查询或 [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm)（Salesforce 对象查询语言 (SOQL)）查询。 例如：`select * from MyTable__c`。 | 否（如果指定了数据集中的“tableName”） |
 
 > [!IMPORTANT]

@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 953f090f775da5e48b2f4ed36550a5624ae4596b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customer-acceptance"></a>客户验收
 
-本主题概述与团队数据科学过程的**客户验收阶段**相关的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 生命周期概括了项目通常执行且经常重复的主要阶段：
+本主题概述与团队数据科学过程的**客户验收阶段**相关的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
 * **了解业务**
 * **数据采集和理解**
@@ -53,7 +52,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接指向团队数据科学过程生命周期中的每个步骤：
+以下是 Team Data Science Process 生命周期中每个步骤的链接：
 
 * [1.了解业务](lifecycle-business-understanding.md)
 * [2.数据采集和理解](lifecycle-data.md)
@@ -61,6 +60,6 @@ ms.lasthandoff: 09/25/2017
 * [4.部署](lifecycle-deployment.md)
 * [5.客户验收](lifecycle-acceptance.md)
 
-还提供了完整的、端到端的演练，演示**特定方案**处理过程中的所有步骤。 [示例演练](walkthroughs.md)主题中列出了这些演练，并提供了缩略图说明链接。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
+还提供了完整的、端到端的演练，演示**特定方案**处理过程中的所有步骤。 在[示例演练](walkthroughs.md)主题中，列出了相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
 
 有关在团队数据科学过程中执行使用 Azure 机器学习工作室的步骤的示例，请参阅[使用 Azure ML](http://aka.ms/datascienceprocess) 学习路径。

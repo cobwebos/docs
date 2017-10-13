@@ -16,10 +16,10 @@ ms.author: andredm
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e8028ab43ed02ef0c0a1374326b07f72f97d9d9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>为基于角色的访问控制创建访问报告
 无论何时授予或撤销订阅中的访问权限，更改都将记录在 Azure 事件中。 可创建访问权限更改历史记录报告来查看过去 90 天的所有更改。

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: bwren
+ms.openlocfilehash: 3cc8b5c5394a031575ad0a840f57ee5e97012c17
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: a2ddc932343d54963a378ee27dc962a790326b2a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
@@ -123,5 +122,4 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
-
 

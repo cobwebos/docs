@@ -16,10 +16,10 @@ ms.date: 02/20/2016
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 369802f1a42b8720aa730d5ac7e5576ed20eeddf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-a-windows-universal-app-using-the-v20-endpoint"></a>使用 v2.0 终结点向 Windows 通用应用添加登录
   适用于 Windows 通用应用的快速入门教程并未完全准备好...稍后返回检查并在 Twitter 的 @AzureAD 中查找更新。

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: db18a9f7f68fe47a85e9a160e4e919fc57b1b8e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 数据管理网关是必须安装到本地环境中的客户端代理，用于在云和本地数据存储之间复制数据。 [支持的数据源](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分列出了数据工厂支持的本地数据存储。
@@ -537,4 +536,3 @@ Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName A
 
 ## <a name="next-steps"></a>后续步骤
 * 有关详细信息，请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 在本演练中，将创建一个管道，该管道使用网关将数据从本地 SQL Server 数据库移至 Azure Blob。  
-

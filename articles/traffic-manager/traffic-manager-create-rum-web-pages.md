@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ce5d333ad5d339b64d1fc1d081651052f71a8b67
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器
 
 >[!NOTE]
@@ -76,5 +74,4 @@ ms.lasthandoff: 09/25/2017
 - 了解[流量管理器工作原理](traffic-manager-overview.md)
 - 详细了解流量管理器支持的[流量路由方法](traffic-manager-routing-methods.md)
 - 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)
-
 

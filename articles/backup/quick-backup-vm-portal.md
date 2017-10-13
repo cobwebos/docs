@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/18/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 9e486e2e4ff2a08b161db44f9cc4785c5d174954
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="back-up-a-virtual-machine-in-azure"></a>在 Azure 中备份虚拟机
 可以通过 Azure 门户创建 Azure 备份。 此方法提供基于浏览器的用户界面用于创建和配置 Azure 备份及所有相关的资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure 门户备份虚拟机 (VM)。 
 
@@ -99,4 +97,3 @@ VM 的“备份”窗口中显示了备份的状态，以及已完成的还原�
 
 > [!div class="nextstepaction"]
 > [备份多个 Azure VM](./tutorial-backup-vm-at-scale.md)
-

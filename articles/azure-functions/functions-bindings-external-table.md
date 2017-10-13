@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: e6aa6913bdb2cf8e581b76b7680d0a96c9858bd1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Azure Functions 外部表绑定（预览版）
 本文演示如何在函数中使用内置绑定处理 SaaS 提供程序（例如 Sharepoint、Dynamics）中的表格数据。 Azure Functions 支持外部表的输入和输出绑定。
@@ -168,9 +167,7 @@ module.exports = function(context) {
 };
 ```
 -->
-<a name="datasourcesettings">
-
-</a>
+<a name="datasourcesettings"></a>
 ## 数据源设置
 
 ### <a name="sql-server"></a>SQL Server
@@ -202,4 +199,3 @@ dataSetName 为“default”。
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-

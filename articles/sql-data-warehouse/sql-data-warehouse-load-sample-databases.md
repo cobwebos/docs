@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>将示例数据载入 SQL 数据仓库
 请遵循以下简单步骤，加载并查询 Adventure Works 示例数据库。 这些脚本首先使用 sqlcmd 运行 SQL，这会创建表和视图。 创建了表之后，脚本会使用 bcp 加载数据。  如果尚未安装 sqlcmd 和 bcp，请单击以下链接[安装 bcp][install bcp] 并[安装 sqlcmd][install sqlcmd]。

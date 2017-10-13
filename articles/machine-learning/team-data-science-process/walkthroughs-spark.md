@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 99b9f047525f46f68dc2c1029f6d53fbda87b69e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 数据科学演练
 
 这些演练在 Azure Spark 群集上使用 PySpark 和 Scala 执行预测分析。 它们遵循 Team Data Science Process 中所述的步骤。 有关 Team Data Science Process 的概述，请参阅[数据科学过程](overview.md)。 有关 Spark on HDInsight 的概述，请参阅 [Spark on HDInsight 简介](../../hdinsight/hdinsight-apache-spark-overview.md)。
@@ -53,5 +50,4 @@ ms.lasthandoff: 09/25/2017
 有关构成 Team Data Science Process 的关键组件的讨论，请参阅 [Team Data Science Process 概述](overview.md)。
 
 有关可用于构建数据科学项目的 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 生命周期概述了执行项目时，其从开始到结束所遵循的步骤。 
-
 

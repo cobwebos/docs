@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/25/2017
+ms.date: 9/10/2017
 ms.author: markgal;trinadhk;
+ms.openlocfilehash: 35b40f80c5a9ccc67830429a5a75d2974d0d138c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 072efdccaa8df5d430314d753a437b524986b53c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-your-environment-to-back-up-azure-virtual-machines"></a>进行备份 Azure 虚拟机所需的环境准备
 > [!div class="op_single_selector"]
@@ -182,19 +181,18 @@ Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
 Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
 ```
 
-
-            *确保使用与部署相对应的详细信息替换示例中的名称。*
+*确保使用与部署相对应的详细信息替换示例中的名称。*
 
 ## <a name="vm-agent"></a>VM 代理
 在备份 Azure 虚拟机之前，应确保 Azure VM 代理已正确安装到虚拟机上。 由于创建虚拟机时 VM 代理是可选组件，因此请确保选中 VM 代理的复选框，才能对虚拟机进行预配。
 
 ### <a name="manual-installation-and-update"></a>手动安装和更新
-VM 代理已存在于从 Azure 库创建的 VM 中。 但是，从本地数据中心迁移的虚拟机上未安装 VM 代理。 对于此类 VM，必须显式安装 VM 代理。 阅读有关[在现有 VM 上安装 VM 代理](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)的详细信息。
+VM 代理已存在于从 Azure 库创建的 VM 中。 但是，从本地数据中心迁移的虚拟机上未安装 VM 代理。 对于此类 VM，必须显式安装 VM 代理。 
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| 安装 VM 代理 |<li>下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。 <li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |<li> 从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent) 。 需要有管理员权限才能完成安装。 <li> [更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |
-| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br><br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)上的说明进行操作。 <br><br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
+| 安装 VM 代理 |下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |<li> 安装最新的 [Linux 代理](../virtual-machines/linux/agent-user-guide.md)。 需要有管理员权限才能完成安装。 我们建议从分发存储库安装代理。 我们**不建议**直接从 github 安装 Linux VM 代理。  |
+| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的说明进行操作。 我们建议从分发存储库更新代理。 我们**不建议**直接从 github 更新 Linux VM 代理。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
 | 验证 VM 代理安装 |<li>导航到 Azure VM 中的 *C:\WindowsAzure\Packages* 文件夹。 <li>应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 |不适用 |
 
 了解 [VM 代理](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)以及[如何安装它](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)。
@@ -213,4 +211,3 @@ VM 代理已存在于从 Azure 库创建的 VM 中。 但是，从本地数据�
 * [备份虚拟机](backup-azure-vms.md)
 * [规划 VM 备份基础结构](backup-azure-vms-introduction.md)
 * [管理虚拟机备份](backup-azure-manage-vms.md)
-

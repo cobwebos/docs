@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 357307a034b277e8c37e99bda1ed6a9a76e13f41
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>对 Azure HDInsight Hive 表中的数据进行采样
 本文介绍使用 Hive 查询向下采样 Azure HDInsight Hive 表中存储的数据。 将介绍三种常用的采样方法：
@@ -108,5 +107,4 @@ ms.lasthandoff: 09/25/2017
 
 
 有关 Hive 中可用的更多高级采样方法的信息，请参阅 [LanguageManual Sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)（LanguageManual 采样）。
-
 

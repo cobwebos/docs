@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: b03265b52886b30e4b9de0b0293e5dadd6d2413a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](azure-diagnostics.md)。
@@ -300,4 +299,3 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 - 如果性能计数器名称中使用了通配符(\*)，门户将无法关联配置和收集的计数器。
 
 缓解措施：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。 如果希望门户为主要消费体验，还要确保不使用通配符。
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
+ms.openlocfilehash: a37c92e1aa58184ed29185742ec727c120fe593f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 0d5091b682d1b25c47b224394bcc2c46366eeb2a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
 虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视这些网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对虚拟网关和连接进行故障排除的功能。 可通过门户、PowerShell、CLI 或 REST API 进行调用。 调用后，网络观察程序将对虚拟网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。一旦诊断完毕，就会返回结果。
@@ -219,4 +217,3 @@ Elapsed Time            330 sec
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png
 [2]: ./media/network-watcher-troubleshoot-overview/portal.png
-

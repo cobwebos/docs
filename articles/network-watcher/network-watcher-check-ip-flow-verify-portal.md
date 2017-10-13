@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 7db29c186cf6e6f3b40a680ab76f1d2763f806ba
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 8333ccfd1e4cc917c8af4b3006292e43b77ecc7f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>使用 Azure 网络观察程序的组件（即“IP 流验证”功能）检查是允许还是拒绝进出 VM 的流量
 
@@ -39,13 +38,13 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="scenario"></a>方案
 
-此方案使用“IP 流验证”功能来验证虚拟机是否可以通过端口 443 与其他计算机通信。 如果拒绝了流量，它将返回拒绝该流量的安全规则。 若要了解有关 IP 流验证的详细信息，请访问 [IP 流验证概述](network-watcher-ip-flow-verify-overview.md)
+此方案使用“IP 流验证”功能来验证虚拟机是否可以通过端口 443 与其他计算机通信。 如果流量被拒绝，此方案将返回拒绝该流量的安全规则。 若要了解有关 IP 流验证的详细信息，请访问 [IP 流验证概述](network-watcher-ip-flow-verify-overview.md)
 
 ### <a name="run-ip-flow-verify"></a>运行“IP 流验证”
 
-导航到网络观察程序并单击“IP 流验证”。 选择要从中验证流量的虚拟机和网络接口。 输入任何其他筛选信息，然后单击“检查”。
+导航到网络观察程序并单击“IP 流验证”。 选择要从中验证流量的虚拟机和网络接口。 输入任何其他筛选信息，并单击“检查”。
 
-单击“检查”后，将基于你提供的标准检查流。 结果是**允许访问**或**拒绝访问**。 如果拒绝访问，则提供阻止流量的网络安全组 (NSG) 和安全规则。 如果拒绝流量是预期的行为，则该规则已成功。
+单击“检查”后，将基于提供的标准检查流。 结果是**允许访问**或**拒绝访问**。 如果拒绝访问，则提供阻止流量的网络安全组 (NSG) 和安全规则。 如果拒绝流量是预期的行为，则该规则已成功。
 
 > [!NOTE]
 > “IP 流验证”功能要求 VM 资源已分配。
@@ -64,7 +63,6 @@ ms.lasthandoff: 05/26/2017
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png
-
 
 
 

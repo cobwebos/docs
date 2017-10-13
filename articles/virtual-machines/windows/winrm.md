@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
 ms.openlocfilehash: 2d6533462400bc1d93d0d3b0227769784e2658a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
 ## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>Azure Service Management 中的 WinRM 与 Azure Resource Manager
@@ -62,7 +62,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $
 ```
 
 ## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：获将自签名证书上传到密钥保管库
-将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本允许你执行该操作
+将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本将允许执行该操作
 
 ```
 $fileName = "<Path to the .pfx file>"

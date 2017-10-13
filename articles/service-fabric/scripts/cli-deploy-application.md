@@ -15,14 +15,12 @@ ms.topic: sample
 ms.date: 08/22/2017
 ms.author: adegeo
 ms.custom: mvc
+ms.openlocfilehash: 2bbf689820a92cfa01b26fdbacb4526ade8956ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: f376be776f4de00bc317d8de2be8384e80d6f4b7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>将应用程序部署到 Service Fabric 群集
 
 此示例脚本将应用程序包复制到群集映像存储，在群集中注册应用程序类型，并从应用程序类型创建应用程序实例。 此时还将创建任何默认服务。
@@ -42,4 +40,3 @@ ms.lasthandoff: 09/02/2017
 有关详细信息，请参阅 [Service Fabric CLI 文档](../service-fabric-cli.md)。
 
 在 [Service Fabric CLI 示例](../samples-cli.md)中可找到 Azure Service Fabric 的其他 Service Fabric CLI 示例。
-

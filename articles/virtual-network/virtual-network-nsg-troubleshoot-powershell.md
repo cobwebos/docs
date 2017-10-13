@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: 5edaf7197576ac1c0bd1fc6bed21fd65ed135106
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>使用 Azure PowerShell 排查网络安全组问题
 > [!div class="op_single_selector"]
@@ -161,7 +161,7 @@ ms.lasthandoff: 07/11/2017
    * **Association** 显示与给定的 NSG 相关联的资源（子网或 NIC）。 如果在移动 NSG 资源/解除 NSG 资源的关联之后紧接着运行此命令，可能需要等待几秒钟时间，更改才会反映在命令输出中。 
    * 以 *defaultSecurityRules* 开头的规则名称：创建 NSG 时，也会在其中创建几个默认安全规则。 无法删除默认规则，但可以使用更高优先级的规则将其覆盖。
      请参阅 [NSG 概述](virtual-networks-nsg.md#default-rules)一文，详细了解 NSG 默认安全规则。
-   * **ExpandedAddressPrefix** 扩展 NSG 默认标记的地址前缀。 标记代表多个地址前缀。 对 VM 与特定地址前缀的连接进行故障排除时，扩展标记很有用。 例如，如果有 VNET 对等互连，VIRTUAL_NETWORK 标记将在上述输出中扩展，显示对等互连的 VNet 前缀。
+   * **ExpandedAddressPrefix** 扩展 NSG 默认标记的地址前缀。 标记代表多个地址前缀。 对 VM 与特定地址前缀的连接进行故障排除时，扩展标记很有用。 例如，如果有 VNET 对等互连，VIRTUAL_NETWORK 标记会在上述输出中扩展，显示对等互连的 VNet 前缀。
      
      > [!NOTE]
      > 仅当 NSG 与子网和/或 NIC 关联时，该命令才显示有效规则。 一个 VM 可能有多个应用了不同 NSG 的 NIC。 故障排除时，请针对每个 NIC 运行该命令。
@@ -181,7 +181,7 @@ ms.lasthandoff: 07/11/2017
    > 一个 VM 上可以附加多个 NIC。 每个 NIC 可以连接到不同的子网。 由于上一步骤中的命令是针对 NIC 运行的，因此请务必指定连接失败的 NIC。 如果不确定要指定哪个 NIC，可以针对附加到 VM 的每个 NIC 运行这些命令。
    > 
    > 
-5. 若要使用 RDP 连接到 VM1，请在 **Subnet1-NSG** NSG 中将 *DenyRDP (3389)* 规则更改为 *AllowRDP (3389)*。 打开与 VM 的 RDP 连接或使用 PsPing 工具，确认 TCP 端口 3389 是否已打开。 有关 PsPing 的详细信息，请参阅 [PsPing 下载页](https://technet.microsoft.com/sysinternals/psping.aspx)
+5. 要使用 RDP 连接到 VM1，请在 **Subnet1-NSG** NSG 中将 *DenyRDP (3389)* 规则更改为 *AllowRDP (3389)*。 打开与 VM 的 RDP 连接或使用 PsPing 工具，确认 TCP 端口 3389 是否已打开。 有关 PsPing 的详细信息，请参阅 [PsPing 下载页](https://technet.microsoft.com/sysinternals/psping.aspx)
    
     可以使用以下命令输出中的信息删除 NSG 中的规则：
    

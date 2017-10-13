@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 7f478a61ee448d2d18b3ac7bc0a579b6e341c30d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Site Recovery 中 Hyper-V 虚拟机的故障回复
 
 本文介绍了如何对由 Site Recovery 保护的虚拟机进行故障回复。
@@ -98,4 +96,3 @@ Azure 是具有高可用性的环境，虚拟机将始终可用。 故障回复�
 完成故障回复作业后，**提交**虚拟机。 提交会删除 Azure 虚拟机及其磁盘，并准备要再次保护的 VM。
 
 在**提交**后，可以启动*反向复制*。 这会通过从本地复制回 Azure 的方式开始保护虚拟机。 请注意，这只会复制在 Azure 中关闭 VM 后发生的更改，因此只会发送差异更改。
-

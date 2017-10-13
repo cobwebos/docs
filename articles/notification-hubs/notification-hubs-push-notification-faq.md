@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
 ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
 ## <a name="general"></a>常规

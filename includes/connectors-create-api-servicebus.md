@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>必备条件
-你必须具有[Service Bus](https://azure.microsoft.com/services/service-bus/)帐户。  
+### <a name="prerequisites"></a>先决条件
+必须具有一个[服务总线](https://azure.microsoft.com/services/service-bus/)帐户。  
 
-你可以在逻辑应用程序中使用 Azure Service Bus 帐户之前，你必须向授权逻辑应用，使连接到服务总线帐户。 幸运的是，你可以轻松地从 Azure 门户上的应用程序逻辑中。  
+可以在逻辑应用中使用 Azure 服务总线帐户之前，必须先授权该逻辑应用可以连接到服务总线帐户。 好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。  
 
-下面是授权逻辑应用程序，以连接到服务总线帐户的步骤：  
+下面介绍授权逻辑应用连接到服务总线帐户的步骤：  
 
-1. 若要创建与服务总线的连接逻辑应用程序设计器中，选择**显示 Microsoft 托管 Api**下拉列表中。 然后输入**服务总线**的搜索框中。 选择你想要使用的操作的触发器。  
-    ![Service Bus 连接图像 1](./media/connectors-create-api-servicebus/servicebus-1.png)  
-2. 如果你尚未创建任何连接到服务总线之前，系统将提示提供你的服务总线凭据。 这些凭据用于授权你逻辑应用程序连接到和访问服务总线帐户的数据。 Service Bus 连接器需要的服务总线命名空间的连接字符串。 它还要求**管理**权限。 知道你的连接字符串是否为命名空间，或特定实体是如果它包含一种好方法`EntityPath`参数。 如果是这样，它不逻辑应用正确的连接字符串。  
+1. 若要创建与服务总线的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”。 然后在搜索框中输入“服务总线”。 选择要使用的触发器或操作。  
+    ![服务总线连接图像 1](./media/connectors-create-api-servicebus/servicebus-1.png)  
+2. 如果以前尚未创建任何与服务总线的连接，系统会提示提供服务总线凭据。 这些凭据用于授权逻辑应用连接到服务总线帐户，然后访问该帐户中的数据。 服务总线连接器需要适用于服务总线命名空间的连接字符串。 还需要**管理**权限。 知道连接字符串是适用于该命名空间还是适用于特定实体的好方法是：该连接字符串是否包含 `EntityPath` 参数。 如果包含，则该连接字符串不适用于逻辑应用。  
     ![服务总线连接字符串](./media/connectors-create-api-servicebus/connectionstring.png)
-3. 你收到了命名空间的连接字符串后，你可以使用它 Logic Apps 中的 API 连接。  
-    ![Service Bus 连接图像 2](./media/connectors-create-api-servicebus/servicebus-2.png)  
-4. 请注意已创建的连接，并且你现在可以自由地继续执行应用程序逻辑中的其他步骤。  
-    ![Service Bus 连接图像 3](./media/connectors-create-api-servicebus/servicebus-3.png)   
+3. 收到适用于命名空间的连接字符串后，可以将它用于逻辑应用中的 API 连接。  
+    ![服务总线连接图像 2](./media/connectors-create-api-servicebus/servicebus-2.png)  
+4. 请注意，连接已创建，现在可以随时在逻辑应用中继续执行其他步骤。  
+    ![服务总线连接图像 3](./media/connectors-create-api-servicebus/servicebus-3.png)   
 

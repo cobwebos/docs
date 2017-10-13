@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk
 ms.openlocfilehash: ae4a73d12898c62fe2c5cf3683bc7c1c8c845fdf
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 Azure 备份服务提供两种类型的保管库：备份保管库和恢复服务保管库。 备份保管库优先级最高。 随后是恢复服务保管库，用于支持扩展的资源管理器部署。 由于扩展的功能和信息依赖项必须存储在保管库中，删除备份或恢复服务保管库可能会令人感到困惑。 本文介绍如何在经典门户和 Azure 门户中删除保管库。  

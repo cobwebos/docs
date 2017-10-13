@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/23/2017
 ms.author: sethm
 ms.openlocfilehash: 1af1ac78398d65e6a87f0d24d6198f3dfbc82ffd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>如何将 Azure Relay WCF 中继与 .NET 配合使用
 本文介绍如何使用 Azure 中继服务。 相关示例用 C# 编写并使用服务总线程序集中包含的 Windows Communication Foundation (WCF) API 及扩展。 有关 Azure 中继的详细信息，请参阅 [Azure 中继概述](relay-what-is-it.md)。
@@ -193,7 +193,7 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-终结点定义移到 App.config 文件中。 以下示例（与前面列出的代码相同）应紧接在 `<system.serviceModel>` 元素下面。 在此，与之前一样，必须将占位符替换为中继命名空间和 SAS 密钥。
+终结点定义将移到 App.config 文件中。 以下示例（与前面列出的代码相同）应紧接在 `<system.serviceModel>` 元素下面。 在此，与之前一样，必须将占位符替换为中继命名空间和 SAS 密钥。
 
 ```xml
 <client>

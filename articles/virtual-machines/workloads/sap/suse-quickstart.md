@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.translationtype: HT
-ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
 ms.openlocfilehash: f7dd532e96540fa297cac8fa3736f9f4a6ccd82f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>运行 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver
 此文介绍在 Microsoft Azure SUSE Linux 虚拟机 (VM) 上运行 SAP NetWeaver 时应注意的各个事项。 自 2016 年 5 月 19 日起，Azure 上的 SUSE Linux VM 已正式支持 SAP NetWeaver。 有关 Linux 版本、SAP 内核版本和其他必备组件的所有详细信息，请参阅 SAP 说明 1928533“Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型”。
@@ -164,5 +163,4 @@ SUSE 提供了一个名为“sapconf”的包，该包可管理一组特定于 S
 
 ## <a name="sap-support-for-oracle-on-linux-in-the-cloud"></a>对云中 Linux 上 Oracle 的 SAP 支持
 在虚拟化环境中，对于Linux 上的 Oracle 有支持限制。 尽管此支持限制不是特定于 Azure 的主题，但请务必了解其中所述的信息。 SAP 不支持 Azure 等公有云中的 SUSE 或 Red Hat 上的 Oracle。 若要讨论此主题，请直接联系 Oracle。
-
 

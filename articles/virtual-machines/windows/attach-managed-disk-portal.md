@@ -1,6 +1,6 @@
 ---
 title: "将托管数据磁盘附加到 Windows VM - Azure | Microsoft Docs"
-description: "如何使用资源管理器部署模型在 Azure 门户中将新的托管数据磁盘附加到 Windows VM。"
+description: "如何使用 Resource Manager 部署模型在 Azure 门户中将新的托管数据磁盘附加到 Windows VM。"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: cynthn
 ms.openlocfilehash: f0cf88a06c5470ef173b22e7213419a6c8760723
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>如何在 Azure 门户中将托管数据磁盘附加到 Windows VM
 

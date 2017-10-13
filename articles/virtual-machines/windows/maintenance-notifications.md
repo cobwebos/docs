@@ -15,22 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: zivr
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 90129bee5771534b01ac12473c6cfed77840ae20
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>处理 Windows 虚拟机的计划内维护通知
 
 Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 更新包括如下更改：修补托管环境或升级以及解除硬件授权。 大多数此类更新在执行时不会影响托管的虚拟机。 但是，也会存在更新产生影响的情况：
 
 - 如果维护不需重启，Azure 会在更新主机时使用就地迁移来暂停 VM。
 
-- 如果维护需重启，你会收到一个通知，其中会说明计划维护的时间。 在这些情况下，系统会提供一个时间窗口，方便你在适合自己的时间自行启动维护。
+- 如果维护需重启，你会收到一个通知，其中会说明计划维护的时间。 在这些情况下，系统会提供一个时间窗口，方便我们在适当的时间自行启动维护。
 
 
 需要重新启动的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。

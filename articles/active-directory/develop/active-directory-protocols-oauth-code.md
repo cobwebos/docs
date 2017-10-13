@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 916652f2d6336da625be91431c3771a730204a73
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # 使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序
 Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。 本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -379,4 +378,3 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | correlation_id |帮助跨组件诊断的请求唯一标识符。 |
 
 有关错误代码的描述和建议的客户端操作，请参阅[令牌终结点错误的错误代码](#error-codes-for-token-endpoint-errors)。
-

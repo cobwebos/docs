@@ -12,14 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
 本文面向需要更深入了解 Azure 搜索中 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 搜索都会顺利地提供预期结果，但偶尔也会收到看上去“不靠谱”的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
@@ -256,7 +254,7 @@ Spacious,||air-condition*+"Ocean view"
 | 术语 | 文档列表 |
 |------|---------------|
 | atman | 1 |
-| beach | 2 |
+| beach | #N/A |
 | hotel | 1, 3 |
 | ocean | 4  |
 | playa | 3 |
@@ -275,17 +273,17 @@ Spacious,||air-condition*+"Ocean view"
 | conditioned | 3
 | comfortable | 3
 | distance | 1
-| island | 2
-| kauaʻi | 2
-| located | 2
-| north | 2
+| island | #N/A
+| kauaʻi | #N/A
+| located | #N/A
+| north | #N/A
 | ocean | 1, 2, 3
-| of | 2
-| on |2
+| of | #N/A
+| on |#N/A
 | quiet | 4
 | rooms  | 1, 3
 | secluded | 4
-| shore | 2
+| shore | #N/A
 | spacious | 1
 | the | 1, 2
 | to | 1
@@ -410,4 +408,3 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 [2]: ./media/search-lucene-query-architecture/azSearch-queryparsing-should2.png
 [3]: ./media/search-lucene-query-architecture/azSearch-queryparsing-must2.png
 [4]: ./media/search-lucene-query-architecture/azSearch-queryparsing-spacious2.png
-

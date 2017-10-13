@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 0ec9ceb63c3e1872e9815a7895b624276fc46123
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>使用 Azure 报告工具来阐述对个人数据的保护
 
@@ -55,7 +54,7 @@ Microsoft Azure 提供综合性的监视、日志记录和诊断工具，来帮�
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-[Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 的基于云的多租户目录和标识管理服务。 该服务的登录和审核报告功能提供详细的登录和应用程序使用活动信息，帮助确保以正确的方式访问客户和员工的个人数据。
+[Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的基于云的多租户目录和标识管理服务。 该服务的登录和审核报告功能提供详细的登录和应用程序使用活动信息，帮助确保以正确的方式访问客户和员工的个人数据。
 
 有两种类型的活动报告：
 
@@ -276,4 +275,3 @@ Azure 诊断扩展可将收集的数据传输到 Azure 存储帐户，或者发�
 [Microsoft Azure 监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
 
 [Azure 活动日志简介（视频）](https://azure.microsoft.com/resources/videos/intro-activity-log/)
-

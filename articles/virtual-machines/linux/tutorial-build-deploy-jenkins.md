@@ -14,19 +14,17 @@ ms.workload: infrastructure
 ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
+ms.openlocfilehash: feaced0d0784b5724fb1e30be5e66cb7c808d77f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a40e26a8681df31fad664e4d1df4c1513311900d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-your-app-to-linux-vms-using-jenkins-and-team-services"></a>使用 Jenkins 和 Team Services 将应用部署到 Linux VM
 
 持续集成 (CI) 和持续部署 (CD) 是一个管道，可以通过它生成、发布和部署代码。 Team Services 针对到 Azure 的部署提供了一组完整的功能完备的 CI/CD 自动化工具。 Jenkins 是一个流行的基于 CI/CD 服务器的第三方工具，也提供 CI/CD 自动化功能。 可以组合使用以上两者来自定义如何提供云应用或服务。
 
-在本教程中，你将使用 Jenkins 生成一个 **Node.js web 应用**，并使用 Visual Studio Team Services 将其部署到包含 Linux 虚拟机的[部署组](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/)。
+本教程使用 Jenkins 生成一个 **Node.js web 应用**，并使用 Visual Studio Team Services 将其部署到包含 Linux 虚拟机的[部署组](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/)。
 
 你将执行以下任务：
 
@@ -56,10 +54,10 @@ ms.lasthandoff: 08/22/2017
 
 1. 创建此应用的一个分支并记下位置 (URL) 以便在本教程的后续步骤中使用。
 
-1. 使此分支成为**公共的**以方便在后面连接到 GitHub。
+1. 使此分支成为**公共**分支，以便简化稍后的 GitHub 连接过程。
 
 > [!NOTE]
-> 有关详细信息，请参阅[创建存储库分支](https://help.github.com/articles/fork-a-repo/)和[使专用存储库成为公共的](https://help.github.com/articles/making-a-private-repository-public/)。
+> 有关详细信息，请参阅 [Fork a repo](https://help.github.com/articles/fork-a-repo/)（创建存储库分支）和 [Making a private repository public](https://help.github.com/articles/making-a-private-repository-public/)（使专用存储库成为公共存储库）。
 
 > [!NOTE]
 > 此应用是使用 [Yeoman](http://yeoman.io/learning/index.html) 构建的；它使用了 **Express**、**bower** 和 **grunt**；它以某些 **npm** 程序包作为依赖项。
@@ -97,7 +95,7 @@ ms.lasthandoff: 08/22/2017
 
 1. 在“生成触发器”选项卡中，选择“轮询 SCM”并输入计划 `H/03 * * * *` 以便每三分钟轮询一次 Git 存储库来查询更改。 
 
-1. 在“生成环境”选项卡中，选择“提供节点和 npm bin/ 文件路径”并输入 `NodeJS` 作为 Node JS 安装值。 将“npmrc 文件”保留设置为“使用系统默认值”。
+1. 在“生成环境”选项卡中，选择“提供节点和 npm bin/ 文件路径”并输入 `NodeJS` 作为 Node JS 安装值。 将“npmrc 文件”的设置保留为“使用系统默认值”。
 
 1. 在“生成”选项卡中，输入命令 `npm install` 以确保更新所有依赖项。
 
@@ -105,7 +103,7 @@ ms.lasthandoff: 08/22/2017
 
 1. 在“生成后操作”选项卡中，对于“要存档的文件”，输入 `**/*` 以包括所有文件。
 
-1. 对于“TFS/Team Services 中的触发器发布”，输入帐户的完整 URL（例如 `https://your-account-name.visualstudio.com`）、项目名称、（以后创建的）发布定义的名称，以及用于连接到帐户的凭据。
+1. 对于“触发 TFS/Team Services 中发布”，输入帐户的完整 URL（例如 `https://your-account-name.visualstudio.com`）、项目名称、（稍后创建的）发布定义的名称，以及用于连接到帐户的凭据。
    需要使用之前创建的用户名和 PAT。 
 
    ![配置 Jenkins 生成后操作](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
@@ -120,7 +118,7 @@ ms.lasthandoff: 08/22/2017
 
    ![添加 Jenkins 终结点](media/tutorial-build-deploy-jenkins/add-jenkins-endpoint.png)
 
-1. 输入将用来引用此连接的名称。
+1. 输入用于引用此连接的名称。
 
 1. 输入 Jenkins 服务器的 URL，并选中“接受不受信任的 SSL 证书”选项。
 
@@ -139,15 +137,15 @@ ms.lasthandoff: 08/22/2017
 1. 为部署组输入名称和可选说明。
    选择“创建”。
 
-Azure 资源组部署任务将在它运行时使用 Azure 资源管理器模板创建并注册 VM。
+Azure 资源组部署任务将在运行时使用 Azure 资源管理器模板创建并注册 VM。
 你不需要自己创建并注册虚拟机。
 
 ## <a name="create-a-release-definition"></a>创建发布定义
 
-发布定义指定在部署应用将执行的过程。
+发布定义指定 Team Services 在部署应用时执行的流程。
 若要在 Team Services 中创建发布定义，请执行以下操作：
 
-1. 打开“生成和发布”中心的“生成”选项卡，打开发布定义列表中的 **+** 下拉列表，然后选择“创建发布定义”。**&amp;** 
+1. 打开“生成和发布”中心的“发布”选项卡，打开发布定义列表中的 **+** 下拉列表，然后选择“创建发布定义”。**&amp;** 
 
 1. 选择“空”模板并选择“下一步”。
 
@@ -176,7 +174,7 @@ Azure 资源组部署任务将在它运行时使用 Azure 资源管理器模板�
 
 * **Azure 订阅：**从“可用 Azure 服务连接”下的列表中选择一个连接。 
   如果没有显示任何连接，则依次选择“管理”、“新建服务终结点”和“Azure 资源管理器”，并根据提示进行操作。
-  返回到你的发布定义，刷新“AzureRM 订阅”列表并选择你已创建的连接。
+  返回发布定义，刷新“AzureRM 订阅”列表并选择已创建的连接。
 
 * **资源组**：输入之前创建的资源组的名称。
 
@@ -190,7 +188,7 @@ Azure 资源组部署任务将在它运行时使用 Azure 资源管理器模板�
 
 * **模板参数链接**：`{your-git-repo}/ARM-Templates/UbuntuWeb1.parameters.json`
 
-* **替代模板参数**：替代值的列表，例如：`-location {location} -virtualMachineName {machine] -virtualMachineSize Standard_DS1_v2 -adminUsername {username} -virtualNetworkName fabrikam-node-rg-vnet -networkInterfaceName fabrikam-node-websvr1 -networkSecurityGroupName fabrikam-node-websvr1-nsg -adminPassword $(adminpassword) -diagnosticsStorageAccountName fabrikamnodewebsvr1 -diagnosticsStorageAccountId Microsoft.Storage/storageAccounts/fabrikamnodewebsvr1 -diagnosticsStorageAccountType Standard_LRS -addressPrefix 172.16.8.0/24 -subnetName default -subnetPrefix 172.16.8.0/24 -publicIpAddressName fabrikam-node-websvr1-ip -publicIpAddressType Dynamic`。<br />对于 {占位符}，请插入你自己的具体值。 
+* **替代模板参数**：替代值的列表，例如：`-location {location} -virtualMachineName {machine] -virtualMachineSize Standard_DS1_v2 -adminUsername {username} -virtualNetworkName fabrikam-node-rg-vnet -networkInterfaceName fabrikam-node-websvr1 -networkSecurityGroupName fabrikam-node-websvr1-nsg -adminPassword $(adminpassword) -diagnosticsStorageAccountName fabrikamnodewebsvr1 -diagnosticsStorageAccountId Microsoft.Storage/storageAccounts/fabrikamnodewebsvr1 -diagnosticsStorageAccountType Standard_LRS -addressPrefix 172.16.8.0/24 -subnetName default -subnetPrefix 172.16.8.0/24 -publicIpAddressName fabrikam-node-websvr1-ip -publicIpAddressType Dynamic`。<br />请在 {占位符} 处插入自己的具体值。 
 
 * **启用先决条件**：`Configure with Deployment Group agent`
 
@@ -202,7 +200,7 @@ Azure 资源组部署任务将在它运行时使用 Azure 资源管理器模板�
 
 * **部署组**：输入用于**资源组**参数的同一部署组名称。
 
-Azure 资源组部署任务的默认设置是用于创建或更新资源，并且以增量方式执行该操作。 该任务在它首次运行时创建 VM，之后只是对它们进行更新。
+Azure 资源组部署任务的默认设置是创建或更新资源，并且以增量方式执行该操作。 该任务在它首次运行时创建 VM，之后只是对它们进行更新。
 
 ## <a name="configure-the-shell-script-task"></a>配置 Shell 脚本任务
 
@@ -216,9 +214,9 @@ Azure 资源组部署任务的默认设置是用于创建或更新资源，并�
    
 ## <a name="rename-and-save-the-release-definition"></a>重命名并保存发布定义
 
-1. 将发布定义的名称编辑为你在 Jenkins 中在生成的“生成后操作”选项卡中指定的名称。 Jenkins 要求此名称能够在源项目更新时触发新的发布。
+1. 将发布定义的名称编辑为你在 Jenkins 中在生成的“生成后操作”选项卡中指定的名称。 必须提供此名称，Jenkins 才能在源项目更新时触发新的发布。
 
-1. （可选）通过单击环境名称来更改该名称。 
+1. （可选）通过单击环境名称对其进行更改。 
 
 1. 选择“保存”，然后选择“确定”。
 
@@ -237,13 +235,13 @@ Azure 资源组部署任务的默认设置是用于创建或更新资源，并�
 ## <a name="start-a-cicd-deployment"></a>启动 CI/CD 部署
 
 1. 在发布定义中，在 Azure 资源组部署任务的设置的“控制选项”部分中取消选中“已启用”复选框。
-   对于到现有部署组的将来部署，不需要重新执行此任务。
+   如果将来要部署到现有部署组，不需要重新执行此任务。
 
 1. 转到源 Git 存储库并修改文件 [app/views/index.jade](https://github.com/azooinmyluggage/fabrikam-node/blob/master/app/views/index.jade) 中 **h1** 标题的内容。
 
 1. 提交更改。
 
-1. 几分钟后，你会在 Team Services 或 TFS 的“发布”页面中看到新创建的发布。 打开此发布可以看到部署正在进行。 祝贺你！
+1. 几分钟后，可以在 Team Services 或 TFS 的“发布”页面中看到新创建的发布。 打开此发布可以看到部署正在进行。 祝贺你！
 
 ## <a name="next-steps"></a>后续步骤
 

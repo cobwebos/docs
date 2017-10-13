@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/19/2017
 ms.author: cynthn
 ms.openlocfilehash: d802ba16ecb4e32e2adb7be3a8e99c72a1625841
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新的 VM
 
@@ -81,7 +81,7 @@ Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要
     ```
 
 ## <a name="get-the-storage-account"></a>获取存储帐户
-需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新存储帐户。 
+需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新的存储帐户。 
 
 如果将使用 VHD 为 VM 创建托管磁盘，存储帐户位置必须与要创建 VM 的位置相同。
 

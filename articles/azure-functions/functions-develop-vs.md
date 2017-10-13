@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 5f0b346ec1c4a42d11ef74ab8ac8701dd45b00eb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -138,4 +137,3 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 
 若要详细了解 Azure Functions 核心工具，请参阅[在本地编写 Azure 函数代码并对其进行测试](functions-run-local.md)。  
 若要详细了解如何将函数作为 .NET 类库进行开发，请参阅[搭配使用 Azure Functions 和 .Net 类库](functions-dotnet-class-library.md)。 本主题还举例说明了如何使用属性来声明 Azure Functions 支持的各种类型的绑定。    
-

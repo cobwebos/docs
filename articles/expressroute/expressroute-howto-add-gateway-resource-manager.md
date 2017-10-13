@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: charwen
 ms.openlocfilehash: 3aeddd03e0be548933775164ae790ba208fc13ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-本文将演示为预先存在的 VNet 添加虚拟网络 (VNet) 网关、重设其大小并进行删除的步骤。 此配置的步骤专用于使用 Resource Manager 部署模型创建的、将在 ExpressRoute 配置中使用的 VNet。 有关 ExpressRoute 的虚拟网络网关和网关配置设置的详细信息，请参阅[关于 ExpressRoute 的虚拟网络网关](expressroute-about-virtual-network-gateways.md)。 
+本文将演示为预先存在的 VNet 添加虚拟网络 (VNet) 网关、重设其大小并进行删除的步骤。 此配置的步骤专用于使用 Resource Manager 部署模型创建的、会在 ExpressRoute 配置中使用的 VNet。 有关 ExpressRoute 的虚拟网络网关和网关配置设置的详细信息，请参阅[关于 ExpressRoute 的虚拟网络网关](expressroute-about-virtual-network-gateways.md)。 
 
 
 ## <a name="before-beginning"></a>开始之前

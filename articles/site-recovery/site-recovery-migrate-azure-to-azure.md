@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 86806c5dbafc1fd88c434dcee6292683d050cd2a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-azure-iaas-virtual-machines-between-azure-regions-with-azure-site-recovery"></a>使用 Azure Site Recovery 在 Azure 区域之间迁移 Azure IaaS 虚拟机
 ## <a name="overview"></a>概述
@@ -53,4 +52,3 @@ ms.lasthandoff: 08/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解其他复制方案，请参阅[什么是 Azure Site Recovery？](site-recovery-overview.md)
-

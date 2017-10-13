@@ -1,6 +1,6 @@
 ---
-title: "管理使用 Azure CLI 的 Azure Redis 缓存 |Microsoft 文档"
-description: "了解如何在任何平台上安装 Azure CLI、 如何使用它来连接到你的 Azure 帐户，以及如何创建和管理 Redis 缓存从 Azure CLI。"
+title: "使用 Azure CLI 管理 Azure Redis 缓存 | Microsoft 文档"
+description: "了解如何在任何平台上安装 Azure CLI、如何使用它连接到 Azure 帐户，以及如何从 Azure CLI 创建和管理 Redis 缓存。"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -15,56 +15,56 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
 ms.openlocfilehash: ba078a870a3998568170cc197bd6698b97b7fadb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>如何创建和管理 Azure Redis 缓存使用 Azure 命令行界面 (Azure CLI)
+# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>如何使用 Azure 命令行界面 (Azure CLI) 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
 > * [Azure CLI](cache-manage-cli.md)
 >
 >
 
-Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 这篇文章演示了如何创建和管理你使用 Azure CLI 的 Azure Redis 缓存实例。
+Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演示了如何使用 Azure CLI 创建和管理 Azure Redis 缓存实例。
 
 > [!NOTE]
-> 本文适用于以前版本的 Azure CLI。 有关最新的 Azure CLI 2.0 示例脚本，请参阅[Azure CLI Redis cache 示例](cli-samples.md)。
+> 本文适用于以前版本的 Azure CLI。 有关最新的 Azure CLI 2.0 示例脚本，请参阅 [Azure CLI Redis 缓存示例](cli-samples.md)。
 > 
 > 
 
-## <a name="prerequisites"></a>必备条件
-若要创建和管理使用 Azure CLI 的 Azure Redis 缓存实例，必须完成以下步骤。
+## <a name="prerequisites"></a>先决条件
+若要使用 Azure CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
 
-* 你必须具有 Azure 帐户。 如果你没有帐户，则可以创建[免费帐户](https://azure.microsoft.com/pricing/free-trial/)只需几分钟。
+* 必须具有 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * [安装 Azure CLI](../cli-install-nodejs.md)。
-* 连接你的 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户，并从 Azure CLI 使用登录`azure login`命令。 若要了解差别并进行选择，请参阅[连接到 Azure 订阅从 Azure 命令行界面 (Azure CLI)](../xplat-cli-connect.md)。
-* 在运行任何以下命令之前, 将 Azure CLI 切换到资源管理器模式通过运行`azure config mode arm`命令。 有关详细信息，请参阅[使用 Azure CLI 管理 Azure 资源和资源组](../xplat-cli-azure-resource-manager.md)。
+* 将 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户关联，然后使用 `azure login` 命令从 Azure CLI 登录。 若要了解差别并进行选择，请参阅[从 Azure 命令行界面 (Azure CLI) 连接到 Azure 订阅](../xplat-cli-connect.md)。
+* 在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将 Azure CLI 切换到 Resource Manager 模式下。 有关更多详细信息，请参阅[使用 Azure CLI 管理 Azure 资源和资源组](../xplat-cli-azure-resource-manager.md)。
 
 ## <a name="redis-cache-properties"></a>Redis 缓存属性
-创建和更新 Redis 缓存实例时，将使用以下属性。
+在创建和更新 Redis 缓存实例时使用以下属性。
 
-| 属性 | 开关 | 描述 |
+| 属性 | Switch | 说明 |
 | --- | --- | --- |
-| name |-n，--名称 |Redis 缓存的名称。 |
-| 资源组 |-g、--资源组 |资源组的名称。 |
-| 位置 |-l、--location |若要创建缓存的位置。 |
-| 大小 |-z，--大小 |Redis 缓存的大小。 有效值: [C0、 C1、 C2、 C3，C4，C5，C6、 P1、 P2、 P3、 P4] |
-| Sku |-x，-sku |Redis SKU。 应为之一: [基本、 标准、 高级] |
-| enableNonSslPort |-e，--启用的非 ssl-端口 |Redis 缓存的 EnableNonSslPort 属性。 如果你想要启用非 SSL 端口，以便你的缓存进行，添加此标志 |
-| Redis 配置 |-c，--redis 配置 |Redis 配置。 输入配置项和值此处的 JSON 格式的字符串。 格式:"{"":""，"":""}" |
-| Redis 配置 |-f、-redis 配置文件 |Redis 配置。 输入包含配置密钥和值的文件的路径。 文件条目的格式: {"":""，"":""} |
-| 分片计数 |-r，--分片计数 |若要在高级群集缓存群集上创建的分片数。 |
-| 虚拟网络 |-v、--虚拟网络 |当承载你的 VNET 中的缓存时，指定要部署的 redis 缓存中的虚拟网络的确切 ARM 资源 ID。 示例格式： /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| 密钥类型 |-t，-密钥类型 |要续订的密钥的类型。 有效值: [Primary，Secondary] |
-| StaticIP |-p，---static-ip < 静态 ip > |当承载你的 VNET 中的缓存时，指定唯一的 IP 地址的缓存子网中。 如果未提供，一个会为你选择子网中。 |
-| 子网 |t、--子网<subnet> |当承载你的 VNET 中的缓存时，指定在其中部署缓存子网的名称。 |
-| VirtualNetwork |-v、--虚拟网络 < 虚拟网络 > |当承载你的 VNET 中的缓存时，指定要部署的 redis 缓存中的虚拟网络的确切 ARM 资源 ID。 示例格式： /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| 订阅 |-s，--subscription |订阅标识符。 |
+| 名称 |-n, --name |Redis 缓存的名称。 |
+| 资源组 |-g, --resource-group |资源的名称。 |
+| location |-l, --location |要创建缓存的位置。 |
+| size |-z, --size |Redis 缓存的大小。 有效的值: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
+| sku |-x, --sku |Redis SKU。 应为以下值之一：[Basic、Standard、Premium] |
+| EnableNonSslPort |-e, --enable-non-ssl-port |Redis 缓存的 EnableNonSslPort 属性。 如果要为缓存启用非 SSL 端口，请添加此标志 |
+| Redis 配置 |-c, --redis-configuration |Redis 配置。 在此处输入配置键和值的 JSON 格式字符串。 格式："{"":"","":""}" |
+| Redis 配置 |-f, --redis-configuration-file |Redis 配置。 在此处输入包含配置键和值的文件的路径。 文件输入项的格式：{"":"","":""} |
+| 分片计数 |-r, --shard-count |要在启用群集的高级群集缓存上创建的分片数。 |
+| 虚拟网络 |-v, --virtual-network |在 VNET 中托管缓存时，指定要在其中部署 Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| key type |-t, --key-type |要续订的密钥类型。 有效值：[Primary, Secondary] |
+| StaticIP |-p, --static-ip <static-ip> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 |
+| 子网 |t, --subnet <subnet> |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 |
+| VirtualNetwork |-v, --virtual-network <virtual-network> |在 VNET 中托管缓存时，指定要在其中部署 Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| 订阅 |-s, --subscription |订阅标识符。 |
 
 ## <a name="see-all-redis-cache-commands"></a>查看所有 Redis 缓存命令
-若要查看所有 Redis 缓存命令和其参数，请使用`azure rediscache -h`命令。
+若要查看所有 Redis 缓存命令及其参数，请使用 `azure rediscache -h` 命令。
 
     C:\>azure rediscache -h
     help:    Commands to manage your Azure Redis Cache(s)
@@ -100,7 +100,7 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 这篇文�
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 
-有关此命令的详细信息，请运行`azure rediscache create -h`命令。
+有关此命令的详细信息，请运行 `azure rediscache create -h` 命令。
 
     C:\>azure rediscache create -h
     help:    Create a Redis Cache
@@ -133,7 +133,7 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 这篇文�
 
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
 
-有关此命令的详细信息，请运行`azure rediscache delete -h`命令。
+有关此命令的详细信息，请运行 `azure rediscache delete -h` 命令。
 
     C:\>azure rediscache delete -h
     help:    Delete an existing Redis Cache
@@ -156,7 +156,7 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 这篇文�
 
     azure rediscache list [options]
 
-有关此命令的详细信息，请运行`azure rediscache list -h`命令。
+有关此命令的详细信息，请运行 `azure rediscache list -h` 命令。
 
     C:\>azure rediscache list -h
     help:    List all Redis Caches within your Subscription or Resource Group
@@ -178,7 +178,7 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 这篇文�
 
     azure rediscache show [--name <name> --resource-group <resource-group>]
 
-有关此命令的详细信息，请运行`azure rediscache show -h`命令。
+有关此命令的详细信息，请运行 `azure rediscache show -h` 命令。
 
     C:\>azure rediscache show -h
     help:    Show properties of an existing Redis Cache
@@ -203,7 +203,7 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 这篇文�
 
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 
-有关此命令的详细信息，请运行`azure rediscache set -h`命令。
+有关此命令的详细信息，请运行 `azure rediscache set -h` 命令。
 
     C:\>azure rediscache set -h
     help:    Change settings of an existing Redis Cache
@@ -224,13 +224,13 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 这篇文�
     help:    Current Mode: arm (Azure Resource Management)
 
 ## <a name="renew-the-authentication-key-for-an-existing-redis-cache"></a>为现有 Redis 缓存续订身份验证密钥
-若要为现有 Redis 缓存续订身份验证密钥，使用以下命令：
+若要为现有 Redis 缓存续订身份验证密钥，请使用以下命令：
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
 
-Specify `Primary` or `Secondary` for `key-type`.
+为 `key-type` 指定 `Primary` 或 `Secondary`。
 
-有关此命令的详细信息，请运行`azure rediscache renew-key -h`命令。
+有关此命令的详细信息，请运行 `azure rediscache renew-key -h` 命令。
 
     C:\>azure rediscache renew-key -h
     help:    Renew the authentication key for an existing Redis Cache
@@ -249,12 +249,12 @@ Specify `Primary` or `Secondary` for `key-type`.
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-primary-and-secondary-keys-of-an-existing-redis-cache"></a>现有 Redis 缓存的列表主密钥和辅助密钥
-列出现有 Redis 缓存的主密钥和辅助密钥，使用以下命令：
+## <a name="list-primary-and-secondary-keys-of-an-existing-redis-cache"></a>列出现有 Redis 缓存的主密钥和辅助密钥
+若要列出现有 Redis 缓存的主密钥和辅助密钥，请使用以下命令：
 
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
 
-有关此命令的详细信息，请运行`azure rediscache list-keys -h`命令。
+有关此命令的详细信息，请运行 `azure rediscache list-keys -h` 命令。
 
     C:\>azure rediscache list-keys -h
     help:    Lists Primary and Secondary key of an existing Redis Cache

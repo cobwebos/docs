@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 41796a8cdde0756e5157ba276463a56b07679d04
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: aca03ba4137893157fcbe6650336782ab88cd234
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -194,7 +193,7 @@ Web 浏览器是通过 HTTP 来触发函数的一种简单方法。 可以对不
 
         A text file for blob trigger function testing.
 4. 运行 [Azure 存储资源管理器](http://storageexplorer.com/) 并连接到存储帐户中要监视的 blob 容器。
-5. 单击“上载”以上载该文本文件。
+5. 单击“上传”以上传该文本文件。
 
     ![存储资源管理器的屏幕截图](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
@@ -444,4 +443,3 @@ static void Main(string[] args)
 <!-- URLs. -->
 
 [Azure 门户]: https://portal.azure.com
-

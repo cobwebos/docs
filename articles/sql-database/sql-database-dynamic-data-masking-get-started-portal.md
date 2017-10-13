@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 11/22/2016
 ms.author: ronitr; ronmat
 ms.openlocfilehash: 15184e14d4e1e23b56126bbf9f972c1619dcba80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure 门户的 SQL 数据库动态数据掩码入门
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
    * 或者，可以向下滚动到“操作”部分并单击“动态数据屏蔽”。
      
      ![导航窗格](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)<br/><br/>
-4. 在“动态数据掩码”配置边栏选项卡中，可能会看到一些数据库列，建议引擎已将这些列标记为需要进行掩码。 要接受这些建议，可直接针对一个或多个列单击“添加屏蔽”，系统就会根据该列的默认类型来创建屏蔽。 用户可以更改掩码函数，只需单击掩码规则，并将掩码字段格式编辑成用户所选择的其他格式即可。 请确保单击“保存”以保存设置。
+4. 在“动态数据屏蔽”配置边栏选项卡中，可能会看到一些数据库列，建议引擎已将这些列标记为需要进行屏蔽。 要接受这些建议，可直接针对一个或多个列单击“添加屏蔽”，系统就会根据该列的默认类型来创建屏蔽。 可以更改屏蔽函数，只需单击屏蔽规则，然后将屏蔽字段格式编辑成你所选择的其他格式即可。 请确保单击“保存”以保存设置。
    
     ![导航窗格](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)<br/><br/>
 5. 若要为数据库中的任意列添加屏蔽，请在“动态数据屏蔽”配置边栏选项卡的顶部单击“添加屏蔽”以打开“添加屏蔽规则”配置边栏选项卡

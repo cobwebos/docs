@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: 1deb3d91049d45fe26791783e13bd23e0a7d9f95
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Azure AD 应用程序代理如何提供单一登录？
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/29/2017
 
 如果已经为本地标识设置了单一登录解决方案，请选择“链接登录”。 此选项可让 Azure Active Directory 利用现有的 SSO 解决方案，但仍允许用户远程访问应用程序。 
 
-有关链接上登录 （以前称为现有单一登录） 的信息，请参阅[应用程序访问与单一登录与 Azure Active Directory 是什么？](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)。
+有关链接登录的信息（以前称为现有单一登录），请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)。
 
 ## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
 

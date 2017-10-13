@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.openlocfilehash: 65509a65c2b34553822cc02d7a7fa5a614adc57f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中监视用户查询
 在 SQL 数据仓库中监视用户查询时的注意事项、最佳实践和任务的概述。

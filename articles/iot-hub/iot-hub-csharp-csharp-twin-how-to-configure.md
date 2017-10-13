@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: dkshir
 ms.openlocfilehash: 679cda28bf3ce9fb207fe3693a3453b355f1de15
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-desired-properties-to-configure-devices"></a>使用所需属性配置设备
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
@@ -223,7 +223,7 @@ ms.lasthandoff: 07/29/2017
 1. 生成解决方案，单击 **F5** 从 Visual Studio 运行设备应用。 在输出控制台中，应会看到消息指示模拟设备正在检索设备孪生、设置遥测，并等待所需属性发生更改。 保持运行该应用。
 
 ## <a name="create-the-service-app"></a>创建服务应用
-在本部分中，将创建一个 .NET 控制台应用，该应用通过新的遥测配置对象更新与 **myDeviceId** 关联的设备孪生的所需属性。 该应用随后会查询存储在 IoT 中心的设备孪生，并显示设备的所需配置与报告配置之间的差异。
+在本部分中，将创建一个 .NET 控制台应用，该应用通过新的遥测配置对象更新与 **myDeviceId** 关联的设备孪生的所需属性。 然后，它会查询在 IoT 中心内存储的设备孪生，并显示所需的设备配置与报告的设备配置之间的差异。
 
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **SetDesiredConfigurationAndQuery**。
    
@@ -275,7 +275,7 @@ ms.lasthandoff: 07/29/2017
             }
         }
    
-    **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 此代码将初始化 **Registry** 对象，并检索 **myDeviceId** 的设备孪生，并使用新的遥测配置对象更新其所需属性。
+    **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 此代码将初始化 **Registry** 对象，检索 **myDeviceId** 的设备孪生，并使用新的遥测配置对象更新其所需属性。
     然后，该代码会每隔 10 秒钟查询一次存储在 IoT 中心的设备孪生，并打印所需遥测配置和报告遥测配置。 请参阅 [IoT 中心查询语言][lnk-query]以了解如何跨所有设备生成丰富的报告。
    
    > [!IMPORTANT]

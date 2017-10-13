@@ -17,10 +17,10 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9179319095c31d5eb454860e173ffa7c65fc9f73
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 为虚拟机配置专用 IP 地址
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 07/11/2017
     info:    vm show command OK
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>如何从 VM 中删除静态专用 IP 地址
-无法在用于 Resource Manager 的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须创建使用动态 IP 的新 NIC，从 VM 删除以前的 NIC，并将新 NIC 添加到 VM。 若要更改上述命令使用的 VM 的 NIC，请执行以下步骤。
+无法在用于 Resource Manager 的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须创建使用动态 IP 的新 NIC，从 VM 中删除以前的 NIC，然后将新 NIC 添加到 VM 中。 若要更改上述命令使用的 VM 的 NIC，请执行以下步骤。
 
 1. 运行 **azure network nic create** 命令，以使用动态 IP 分配创建新 NIC。 请注意，这次不需要指定 IP 地址。
    

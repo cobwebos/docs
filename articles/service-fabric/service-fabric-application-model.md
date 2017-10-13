@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: ryanwi
 ms.openlocfilehash: e30482427b88eb3e58d39075c7f0734664b79aa2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中对应用程序建模
 本文概述 Azure Service Fabric 应用程序模型以及如何通过清单文件定义应用程序和服务。
@@ -82,7 +82,7 @@ ms.lasthandoff: 08/18/2017
 
 **Version** 特性是未结构化的字符串，并且不由系统进行分析。 版本特性用于对每个组件进行版本控制，以进行升级。
 
-**ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 在清单级别而不是代码包级别声明服务类型。 因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，都会激活所有代码包。
+**ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 在清单级别而不是代码包级别声明服务类型。 因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都会被激活。
 
 **SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果进程总是终止或出现故障，则监视并重启所产生的过程（再次从“SetupEntryPoint”开始）。  
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 08/18/2017
 
 **EnvironmentVariables** 提供为此代码包设置的环境变量列表。 环境变量可以在 `ApplicationManifest.xml` 中重写，以便为不同的服务实例提供不同的值。 
 
-**DataPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程将在运行时使用的静态数据。
+**DataPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程会在运行时使用的静态数据。
 
 **ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此设置文件包含用户定义的键值对设置部分，进程可在运行时读回这些设置。 升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 下面是 *Settings.xml* 文件的一个示例：
 
@@ -124,7 +124,7 @@ For more information about other features supported by service manifests, refer 
 -->
 
 ## <a name="describe-an-application"></a>描述应用程序
-应用程序清单以声明方式描述应用程序类型和版本。 它指定服务组合元数据（如稳定名称、分区方案、实例计数/复制因子、安全/隔离策略、布置约束、配置替代和成分服务类型）。 此外还描述用于容纳应用程序的负载均衡域。
+应用程序清单以声明方式描述应用程序类型和版本。 它指定服务组合元数据（如稳定名称、分区方案、实例计数/复制因子、安全/隔离策略、布置约束、配置替代和成分服务类型）。 此外还描述了会在其中放置应用程序的负载均衡域。
 
 因此，应用程序清单在应用程序级别描述元素，并引用了一个或多个服务清单，以组成应用程序类型。 下面是应用程序清单的简单示例：
 
@@ -156,7 +156,7 @@ For more information about other features supported by service manifests, refer 
 **ServiceManifestImport** 包含对组成此应用程序类型的服务清单的引用。 导入的服务清单将确定此应用程序类型中哪些服务类型有效。 在 ServiceManifestImport 中，可以重写 Settings.xml 中的配置值和 ServiceManifest.xml 文件中的环境变量。 
 
 
-**DefaultServices** 声明每当一个应用程序依据此应用程序类型进行实例化时自动创建的服务实例。 默认服务只是提供便利，创建后，它们的行为在每个方面都与常规服务类似。 它们与应用程序实例中的任何其他服务一起升级，也可将其删除。
+**DefaultServices** 声明每当一个应用程序依据此应用程序类型进行实例化时自动创建的服务实例。 默认服务只是提供便利，创建后，它们的行为在每个方面都与常规服务类似。 它们与应用程序实例中的任何其他服务一起升级，并且也可以将它们删除。
 
 > [!NOTE]
 > 应用程序清单可以包含多个服务清单导入和默认服务。 可对每个服务清单导入进行独立的版本控制。

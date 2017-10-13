@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 849eccff114c2fd6d952e44d095d0cc89a238675
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
 ## <a name="overview"></a>概述
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 | 案例 | 更换方案 | 适用的过程 |
 |:--- |:--- |:--- |
 | 1 |一个控制器处于故障状态，另一个控制器处于正常活动状态。 |[单控制器更换](#replace-a-single-controller)，其中描述了[单控制器更换背后的逻辑](#single-controller-replacement-logic)，以及[更换步骤](#single-controller-replacement-steps)。 |
-| 2 |两个控制器都发生故障，需要更换。 机箱、磁盘和磁盘盒都工作正常。 |[双控制器更换](#replace-both-controllers)，其中描述了[双控制器更换背后的逻辑](#dual-controller-replacement-logic)，以及[更换步骤](#dual-controller-replacement-steps)。 |
+| #N/A |两个控制器都发生故障，需要更换。 机箱、磁盘和磁盘盒都工作正常。 |[双控制器更换](#replace-both-controllers)，其中描述了[双控制器更换背后的逻辑](#dual-controller-replacement-logic)，以及[更换步骤](#dual-controller-replacement-steps)。 |
 | 3 |切换来自同一个设备或不同设备的控制器。 机箱、磁盘和磁盘盒都工作正常。 |将显示插槽不匹配警报消息。 |
 | 4 |一个控制器缺失，另一个控制器发生故障。 |[双控制器更换](#replace-both-controllers)，其中描述了[双控制器更换背后的逻辑](#dual-controller-replacement-logic)，以及[更换步骤](#dual-controller-replacement-steps)。 |
 | 5 |一个或两个控制器发生故障。 无法通过串行控制台或 Windows PowerShell 远程处理功能访问设备。 |请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)，了解手动更换控制器的过程。 |
@@ -92,7 +92,7 @@ ms.lasthandoff: 07/11/2017
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | 2 |PCM 1 |
+   | #N/A |PCM 1 |
    | 3 |控制器 0 |
    | 4 |控制器 1 |
 4. 在发生故障的控制器上，从数据端口拔下所有连接的网络电缆。 如果使用的是 8600 型号，也请拔下将该控制器连接到 EBOD 控制器的 SAS 电缆。

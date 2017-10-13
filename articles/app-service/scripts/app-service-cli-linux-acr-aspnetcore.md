@@ -16,14 +16,12 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 0a1c05647d2a01e2b228b654a3347a0c8375ca81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry"></a>在 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core Web 应用
 
 在此方案中，学习如何创建资源组、Linux 应用服务计划和 Web 应用，并使用 Docker 容器通过 Azure 容器注册表部署 ASP.NET Core 应用程序。
@@ -37,7 +35,7 @@ ms.lasthandoff: 09/09/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux Azure 容器注册表")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux Azure Container Registry")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -57,4 +55,3 @@ ms.lasthandoff: 09/09/2017
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
 可以在 [Azure 应用服务文档](../app-service-cli-samples.md)中找到其他应用服务 CLI 脚本示例。
-

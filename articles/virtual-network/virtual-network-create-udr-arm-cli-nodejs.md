@@ -1,6 +1,6 @@
 ---
-title: "控制路由和虚拟设备使用 Azure CLI 1.0 |Microsoft 文档"
-description: "了解如何控制路由和虚拟设备使用 Azure CLI 1.0。"
+title: "使用 Azure CLI 1.0 控制路由和虚拟设备 | Microsoft 文档"
+description: "了解如何使用 Azure CLI 1.0 控制路由和虚拟设备。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,47 +15,47 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2017
 ms.author: jdial
 ms.openlocfilehash: 5f21bc7a4fcd9507ea9d6b2b752a2328a7b834f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-user-defined-routes-udr-using-the-azure-cli-10"></a>创建用户定义路由 (UDR) 使用 Azure CLI 1.0
+# <a name="create-user-defined-routes-udr-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建用户定义的路由 (UDR)
 
 > [!div class="op_single_selector"]
 > * [PowerShell](virtual-network-create-udr-arm-ps.md)
 > * [Azure CLI](virtual-network-create-udr-arm-cli.md)
 > * [模板](virtual-network-create-udr-arm-template.md)
-> * [PowerShell （经典）](virtual-network-create-udr-classic-ps.md)
-> * [CLI （经典）](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
+> * [CLI（经典）](virtual-network-create-udr-classic-cli.md)
 
-创建自定义路由和使用 Azure CLI 的虚拟设备。
+使用 Azure CLI 创建自定义路由和虚拟设备。
 
-## <a name="cli-versions-to-complete-the-task"></a>要完成任务的 CLI 版本 
+## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本 
 
-你可以完成该任务使用以下的 CLI 版本之一： 
+可以使用以下 CLI 版本之一完成任务： 
 
-- [Azure CLI 1.0](#Create-the-UDR-for-the-front-end-subnet) – 我们适用于经典部署模型和资源管理部署模型 （本文） CLI
-- [Azure CLI 2.0](virtual-network-create-udr-arm-cli.md) -我们下一代 CLI 用于资源管理部署模型 
+- [Azure CLI 1.0](#Create-the-UDR-for-the-front-end-subnet) – 用于经典部署模型和资源管理部署模型（本文）的 CLI
+- [Azure CLI 2.0](virtual-network-create-udr-arm-cli.md) - 适用于资源管理部署模型的下一代 CLI 
 
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-下面的示例 Azure CLI 命令需要已根据上述方案创建一个简单的环境。 如果你想要运行本文档中所显示的命令，首先需要构建测试环境通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before)，单击**部署到 Azure**，替换默认参数值，如有必要，然后按照门户中的说明。
+下面的示例 Azure CLI 命令需要一个已经基于上述方案创建的简单环境。 要运行本文档中所显示的命令，请首先通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before)构建测试环境，单击“**部署至 Azure**”，根据需要替换默认参数值，然后按照门户中的说明进行操作。
 
 
 ## <a name="create-the-udr-for-the-front-end-subnet"></a>为前端子网创建 UDR
-若要创建的路由表和所需的基于上述方案前端子网的路由，请按照下面的步骤。
+若要根据上述方案为前端子网创建所需的路由表和路由，请按照下面的步骤操作。
 
-1. 运行以下命令以创建前端子网的路由表：
+1. 运行以下命令为前端子网创建路由表：
 
     ```azurecli
     azure network route-table create -g TestRG -n UDR-FrontEnd -l uswest
     ```
    
-    输出:
+    输出：
    
         info:    Executing command network route-table create
         info:    Looking up route table "UDR-FrontEnd"
@@ -71,16 +71,16 @@ ms.lasthandoff: 07/11/2017
    
     参数：
    
-   * **-g （或---resource-group）**。 将在其中创建 UDR 的资源组的名称。 对于我们的方案， *TestRG*。
-   * **-l （或--位置）**。 将在其中创建新的 UDR 的 azure 区域。 对于我们的方案， *westus*。
-   * **-n （或--名称）**。 新的 UDR 的名称。 对于我们的方案， *Udr-frontend*。
-2. 运行以下命令以创建路由表中的发送目标至后端子网 (192.168.2.0/24) 所有流量路由到**FW1** VM (192.168.0.4):
+   * **-g（或 --resource-group）**。 要在其中创建 UDR 的资源组的名称。 对于我们的方案，为 *TestRG*。
+   * **-l（或 --location）**。 要在其中创建新 UDR 的 Azure 区域。 对于我们的方案，为 *westus*。
+   * **-n（或 --name）**。 新 UDR 的名称。 对于我们的方案，为 *UDR-FrontEnd*。
+2. 运行以下命令，在路由表中创建路由，将目标为后端子网 (192.168.2.0/24) 的所有流量发送到 **FW1** VM (192.168.0.4)：
 
     ```azurecli
     azure network route-table route create -g TestRG -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -y VirtualAppliance -p 192.168.0.4
     ```
    
-    输出:
+    输出：
    
         info:    Executing command network route-table route create
         info:    Looking up route "RouteToBackEnd" in route table "UDR-FrontEnd"
@@ -97,17 +97,17 @@ ms.lasthandoff: 07/11/2017
    
     参数：
    
-   * **-r （或--路由表名称）**。 将在其中添加的路由的路由表的名称。 对于我们的方案， *Udr-frontend*。
-   * **-a （或---address-prefix）**。 数据包的目标的子网的地址前缀。 对于我们的方案， *192.168.2.0/24*。
-   * **-y （或---next-hop-type）**。 类型的对象流量将发送到。 可能的值为*VirtualAppliance*， *VirtualNetworkGateway*， *VNETLocal*， *Internet*，或*无*。
-   * **-p (或--下一个跃点 ip 地址**)。 下一个跃点的 IP 地址。 对于我们的方案， *192.168.0.4*。
-3. 运行以下命令以将与上面创建的路由表关联**前端**子网：
+   * **-r（或 --route-table-name）**。 要添加路由的路由表的名称。 对于我们的方案，为 *UDR-FrontEnd*。
+   * **-a（或 --address-prefix）**。 数据包的目标子网的地址前缀。 对于我们的方案，为 *192.168.2.0/24*。
+   * **-y（或 --next-hop-type）**。 要发送的对象流量的类型。 可能的值为 *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet* 或 *None*。
+   * **-p（或 --next-hop-ip-address**）。 下一个跃点的 IP 地址。 对于我们的方案，为 *192.168.0.4*。
+3. 运行以下命令，将上面创建的路由表与**前端**子网关联：
 
     ```azurecli
     azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -r UDR-FrontEnd
     ```
    
-    输出:
+    输出：
    
         info:    Executing command network vnet subnet set
         info:    Looking up the subnet "FrontEnd"
@@ -133,39 +133,39 @@ ms.lasthandoff: 07/11/2017
    
     参数：
    
-   * **-e （或--vnet-name）**。 子网所在的 VNet 的名称。 对于我们的方案， *TestVNet*。
+   * **-e（或 --vnet-name）**。 子网所在的 VNet 的名称。 对于我们的方案，为 *TestVNet*。
 
 ## <a name="create-the-udr-for-the-back-end-subnet"></a>为后端子网创建 UDR
-若要创建的路由表和路由所需的基于上述方案后端子网，请完成以下步骤：
+若要根据上述方案创建后端子网所需的路由表和路由，请完成以下步骤：
 
-1. 运行以下命令以创建后端子网的路由表：
+1. 运行以下命令为后端子网创建路由表：
 
     ```azurecli
     azure network route-table create -g TestRG -n UDR-BackEnd -l westus
     ```
 
-2. 运行以下命令以创建路由表中的发送目标至前端子网 (192.168.1.0/24) 所有流量路由到**FW1** VM (192.168.0.4):
+2. 运行以下命令，在路由表中创建路由，将目标为前端子网 (192.168.1.0/24) 的所有流量发送到 **FW1** VM (192.168.0.4)：
 
     ```azurecli
     azure network route-table route create -g TestRG -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -y VirtualAppliance -p 192.168.0.4
     ```
 
-3. 运行以下命令以将路由表与关联**后端**子网：
+3. 运行以下命令将路由表与 **BackEnd** 子网关联：
 
     ```azurecli
     azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -r UDR-BackEnd
     ```
 
-## <a name="enable-ip-forwarding-on-fw1"></a>FW1 上启用 IP 转发
-若要使用的 NIC 中启用 IP 转发**FW1**，完成以下步骤：
+## <a name="enable-ip-forwarding-on-fw1"></a>在 FW1 上启用 IP 转发
+若要在 **FW1** 使用的 NIC 中启用 IP 转发，请完成以下步骤：
 
-1. 运行该命令之后，请注意的值**启用 IP 转发**。 它应设置为*false*。
+1. 运行下面的命令，注意**启用 IP 转发**的值。 它应设置为 *false*。
 
     ```azurecli
     azure network nic show -g TestRG -n NICFW1
     ```
 
-    输出:
+    输出：
    
         info:    Executing command network nic show
         info:    Looking up the network interface "NICFW1"
@@ -197,7 +197,7 @@ ms.lasthandoff: 07/11/2017
     azure network nic set -g TestRG -n NICFW1 -f true
     ```
    
-    输出:
+    输出：
    
         info:    Executing command network nic set
         info:    Looking up the network interface "NICFW1"
@@ -228,5 +228,5 @@ ms.lasthandoff: 07/11/2017
    
     参数：
    
-   * **-f （或--启用 ip 转发）**。 *true* or *false*.
+   * **-f（或 --enable-ip-forwarding）**。 *true* 或 *false*。
 

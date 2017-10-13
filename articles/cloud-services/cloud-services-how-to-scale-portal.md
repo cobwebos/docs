@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
 ms.openlocfilehash: e9683d4c5779450fd67fa42ab13095c7f201b4cd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 > [!div class="op_single_selector"]
@@ -92,7 +92,7 @@ ms.lasthandoff: 08/29/2017
 配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”按钮。
 
 #### <a name="rule"></a>规则
-规则添加到配置文件，代表触发缩放的条件。
+规则将添加到配置文件，代表触发缩放的条件。
 
 规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），可以在其中添加条件值。 此外，也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 66649bb6ae317eb227dcdf45aa084905967c117f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-service"></a>sfctl service
 创建、删除和管理服务、服务类型与服务包。
@@ -316,7 +315,7 @@ ms.lasthandoff: 09/27/2017
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

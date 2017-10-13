@@ -1,6 +1,6 @@
 ---
-title: "Windows 通用应用 SDK 内容"
-description: "了解的 Azure Mobile Engagement 的 Windows 通用应用 SDK 的内容"
+title: "Windows Universal 应用 SDK 内容"
+description: "了解 Azure Mobile Engagement 的 Windows Universal 应用 SDK 的内容"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: b28d525ab16487b963772e23fdecd11f94dcabd1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="windows-universal-apps-sdk-content"></a>Windows 通用应用 SDK 内容
-本文档列出并描述部署的应用程序中的 SDK 的内容。
+# <a name="windows-universal-apps-sdk-content"></a>Windows Universal 应用 SDK 内容
+本文档列出并介绍 SDK 在应用程序中部署的内容。
 
-## <a name="the-resources-folder"></a>`/Resources`文件夹
-此文件夹包含 Mobile Engagement 需要的所有资源。 你还可以自定义它们以适应你的应用程序。
+## <a name="the-resources-folder"></a>`/Resources` 文件夹
+此文件夹中包含 Mobile Engagement 需要的所有资源。 还可以自定义这些资源以适用于应用。
 
-* `EngagementConfiguration.xml`: Mobile Engagement 的配置文件，这是可以在其中自定义移动用户参与策略设置 （Mobile Engagement 连接字符串，报表崩溃...）。
+* `EngagementConfiguration.xml`：Mobile Engagement 的配置文件，可在此处自定义 Mobile Engagement 设置（Mobile Engagement 连接字符串、报告故障等）。
 
 ### <a name="html-folder"></a>/html 文件夹
-* `EngagementNotification.html`: `Notification` Web 应用内横幅的视图 html 设计。
-* `EngagementAnnouncement.html`: `Announcement` Web 应用内间隙视图的视图 html 设计。
+* `EngagementNotification.html`：应用内横幅的 `Notification` Web 视图 html 设计。
+* `EngagementAnnouncement.html`：应用内插播式视图的 `Announcement` Web 视图 html 设计。
 
 ### <a name="images-folder"></a>/images 文件夹
-* `EngagementIconNotification.png`： 显示一个通知，左侧的品牌图标替换此品牌图标。
-* `EngagementIconOk.png`: `Ok` Reach 内容页的操作或验证按钮的图标。
-* `EngagementIconNOK.png`: `NOK` Reach 内容页的验证按钮被禁用时使用的图标。
-* `EngagementIconClose.png`: `Close` Reach 通知和消除按钮的内容的图标。
+* `EngagementIconNotification.png`：通知左侧显示的品牌图标，将其替换为品牌图标。
+* `EngagementIconOk.png`：操作或验证按钮的市场宣传内容页的 `Ok` 图标。
+* `EngagementIconNOK.png`：当市场宣传内容页面的验证按钮被禁用时使用的 `NOK` 图标。
+* `EngagementIconClose.png`：消除按钮的市场宣传通知和内容的 `Close` 图标。
 
 ### <a name="overlay-folder"></a>/overlay 文件夹
-* `EngagementPageOverlay.cs`： 添加此服务负责贴页面访问给其子级中应用程序 UI。
+* `EngagementPageOverlay.cs`：负责将 Engagement 市场宣传应用内 UI 添加到其子级的覆盖页。
 

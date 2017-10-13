@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: f52988f2a67f2cafe93a7e0a358c599658d068b2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-analysis-and-visualization-with-oms"></a>使用 OMS 进行事件分析和可视化
 
 Operations Management Suite (OMS) 集中了管理服务，有助于监视和诊断云中托管的应用程序的服务。 若要深入了解 OMS 及其功能的详述概况，请参阅[什么是 OMS？](../operations-management-suite/operations-management-suite-overview.md)

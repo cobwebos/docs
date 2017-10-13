@@ -17,10 +17,10 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建虚拟网络
 
@@ -39,7 +39,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 - [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
 
-可了解如何从 GitHub 下载并修改现有 ARM 模板，以及如何通过 GitHub、PowerShell 和 Azure CLI 部署该模板。
+将了解如何从 GitHub 下载并修改现有 ARM 模板，以及如何通过 GitHub、PowerShell 和 Azure CLI 部署该模板。
 
 如果只是直接从 GitHub 部署 ARM 模板，而不进行任何更改，请跳到 [从 github 部署模板](#deploy-the-arm-template-by-using-click-to-deploy)。
 
@@ -71,7 +71,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 6. 查看 **resources** 下的内容，并注意以下项：
    
    * **type**。 模板创建的资源的类型。 在此实例中为 **Microsoft.Network/virtualNetworks**，表示 VNet。
-   * **name**。 资源的名称。 请注意使用 **[parameters('vnetName')]**，这意味着在部署过程中将以用户输入或参数文件的形式提供该名称。
+   * **name**。 资源的名称。 请注意使用 **[parameters('vnetName')]**，这意味着在部署过程中由用户或参数文件作为输入提供该名称。
    * **properties**。 资源的属性列表。 此模板在 VNet 创建期间使用地址空间和子网属性。
 7. 导航回 [示例模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)。
 8. 单击 **azuredeploy-paremeters.json**，并单击 **RAW**。
@@ -241,4 +241,4 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 - 阅读文章[创建 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-portal.md)，将虚拟机 (VM) 连接到虚拟网络。 不要根据这两篇文章的步骤创建 VNet 和子网，可以选择要将 VM 连接到的现有 VNet 和子网。
 - 阅读[连接 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) 一文，将一个虚拟网络连接到其他虚拟网络。
-- 使用站点到站点虚拟专用网络 (VPN) 或 ExpressRoute 线路，将虚拟网络连接到本地网络。 阅读文章[使用站点到站点 VPN 将 VNet 连接到本地网络](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)和[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-arm.md)，了解相关操作方法。
+- 使用站点到站点虚拟专用网络 (VPN) 或 ExpressRoute 线路，将本地网络连接到虚拟网络。 阅读文章[使用站点到站点 VPN 将 VNet 连接到本地网络](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)和[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-arm.md)，了解相关操作方法。

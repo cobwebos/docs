@@ -11,14 +11,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-serverless-api-using-azure-functions"></a>使用 Azure Functions 创建无服务器 API
 
 本教程介绍如何使用 Azure Functions 构建高度可缩放的 API。 Azure Functions 附带了一系列内置 HTTP 触发器和绑定，方便使用各种语言（包括 Node.JS、C# 等等）创建终结点。 在本教程中，将自定义一个 HTTP 触发器来处理 API 设计中的特定操作。 此外，还要通过将 API 与 Azure Functions 代理集成并设置模拟 API，来准备扩展 API。 所有这些操作会在 Functions 无服务器计算环境的顶层完成，因此，不需要考虑如何缩放资源 - 只需专注于自己的 API 逻辑。
@@ -195,4 +193,3 @@ ms.lasthandoff: 09/20/2017
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
 [使用 Azure Functions 代理（预览版）]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
-

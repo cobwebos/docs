@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
+ms.openlocfilehash: 9b1498d76680185b45edf9ac7e1747bfa6794eec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 8274d48db034c8a2634ab28bd634c024b8ea055c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>打包容器并将其部署为 Service Fabric 应用程序
 
 本教程是一个系列中的第二部分。 在本教程中，模板生成器工具 (Yeoman) 用于生成 Service Fabric 应用程序定义。 然后此应用程序可用于将容器部署到 Service Fabric。 本教程介绍如何执行下列操作： 
@@ -375,6 +373,5 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
 
 [votingapp]: ./media/service-fabric-tutorial-deploy-run-containers/votingapp.png
 [sfx]: ./media/service-fabric-tutorial-deploy-run-containers/containerspackagetutorialsfx.png
-
 
 

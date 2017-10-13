@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
 ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 资源提供程序操作
 
@@ -1315,7 +1315,7 @@ ms.lasthandoff: 07/11/2017
 | 操作 | 说明 |
 |---|---|
 |/register/action|将订阅注册到资源提供程序。|
-|/linkTargets/read|列出不与 Azure 订阅关联的现有帐户。 若要将此 Azure 订阅链接到工作区，请使用此操作在“创建工作区”操作的客户 ID 属性中返回的客户 ID。|
+|/linkTargets/read|列出不与 Azure 订阅关联的现有帐户。 要将此 Azure 订阅链接到工作区，请使用此操作在“创建工作区”操作的客户 ID 属性中返回的客户 ID。|
 |/workspaces/write|创建新的工作区，或者通过提供现有工作区中的客户 ID 链接到现有工作区。|
 |/workspaces/read|获取现有工作区|
 |/workspaces/delete|删除工作区。 如果该工作区在创建时已链接到现有工作区，则不会删除它链接到的工作区。|

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: chrande
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 1cb2ec7aa927eceafdf91c35c1184fceecddc49a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -134,5 +133,4 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 * [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [Azure Functions：Azure 应用服务团队博客之旅](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)。 Azure Functions 的开发历史。
-
 

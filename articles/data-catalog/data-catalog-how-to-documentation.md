@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
 ms.openlocfilehash: ffe951f60afb57524568fe1ed3b3668d0088e124
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="document-data-sources"></a>记录数据源
 ## <a name="introduction"></a>介绍
@@ -34,8 +34,7 @@ ms.lasthandoff: 08/18/2017
 ![](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>记录数据资产
-
-            **Azure 数据目录**文档的优点让可以使用数据目录作为内容存储库，创建完整的数据资产叙述。 可以浏览描述容器和表的详细内容。 如果其他内容存储库中已有内容（例如 SharePoint 或文件共享），可以添加资产文档链接来参考现有内容。 此功能使现有文档更容易被发现。
+**Azure 数据目录**文档的优点让可以使用数据目录作为内容存储库，创建完整的数据资产叙述。 可以浏览描述容器和表的详细内容。 如果其他内容存储库中已有内容（例如 SharePoint 或文件共享），可以添加资产文档链接来参考现有内容。 此功能使现有文档更容易被发现。
 
 > [!NOTE]
 > 文档不包括在搜索索引中。

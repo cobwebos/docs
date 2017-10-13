@@ -16,10 +16,10 @@ ms.date: 09/16/2016
 ms.author: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: c60499c425a7fd800f7ca9a5bac1fed5af73b801
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="app-registration-reference"></a>应用注册参考
 本文档提供可在 Microsoft 应用注册门户 [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 中找到的各种功能的上下文和说明。
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 
 每个应用都能在任何指定时间点包含两个有效的应用程序密码。  通过维护两个密码，就能够在应用程序的整个环境中执行定期的密钥滚动更新。  将应用程序的全部内容移迁移到新密码之后，可能会删除旧密码，并预配一个新密码。
 
-目前，应用注册门户中只允许两种类型的应用程序密码。  如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，以供在应用程序中使用。  如果选择“生成新密钥对”，将创建一个可供下载的新公钥/私钥对，以供向 Azure AD 进行客户端身份验证。
+目前，应用注册门户中只允许两种类型的应用程序密码。  如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。  如果选择“生成新密钥对”，将创建一个新的公钥/私钥对，可下载并用来向 Azure AD 进行客户端身份验证。
 
 ## <a name="profile"></a>配置文件
 应用注册门户的配置文件部分可以用来自定义应用程序的登录页面。  目前，可以更改登录页面的应用程序徽标、服务条款 URL 和隐私声明。  徽标必须是 GIF、PNG 或 JPEG 文件中透明的 48 x 48 或 50 x 50 像素图像，且大小不超过 15 KB。  请尝试更改这些值，并查看所生成的登录页面！

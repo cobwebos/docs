@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tarcher
 ms.openlocfilehash: b3000ed769e8c60eccb21e26f53ce7ccb7e68d7f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="staging-an-application-in-azure"></a>在 Azure 中暂存应用程序
-可以先将要测试的已打包应用程序部署到 Azure 中的过渡环境，再将该应用程序移动到用户可通过 Internet 对其进行访问的生产环境。 过渡环境与生产环境完全一样，只不过访问暂存应用程序时必须使用由 Azure 生成的经过模糊处理的 URL。 在确认应用程序能够正常运行后，可以通过执行虚拟 IP (VIP) 交换将其部署到生产环境。
+可以先将要测试的已打包应用程序部署到 Azure 中的过渡环境，然后再将该应用程序移动到用户可通过 Internet 对其进行访问的生产环境。 过渡环境与生产环境完全一样，只不过访问暂存应用程序时必须使用由 Azure 生成的经过模糊处理的 URL。 在验证应用程序能够正常运行后，可以通过执行虚拟 IP (VIP) 交换将其部署到生产环境。
 
 > [!NOTE]
 > 本文中的步骤仅适用于托管为 Azure 云服务的 Node 应用程序。
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="step-1-stage-an-application"></a>步骤 1：暂存应用程序
 此任务包括如何使用 **Microsoft Azure PowerShell** 暂存应用程序。
 
-1. 发布服务时，只需将 -Slot 参数传递给 Publish-AzureServiceProject cmdlet。
+1. 在发布服务时，只需将 **-Slot** 参数传递给 **Publish-AzureServiceProject** cmdlet。
    
    ```powershell
    Publish-AzureServiceProject -Slot staging
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/18/2017
 2. 从“**仪表板**”中选择“**暂存**”，并单击页面底部的“**交换**”。 将打开“VIP 交换”对话框。
    
    ![“VIP 交换”对话框][vip-swap-dialog]
-3. 检查信息，并单击“**确定**”。 当过渡部署切换到生产部署，而生产部署切换到过渡部署时，两个部署开始更新。
+3. 检查信息，并单击“**确定**”。 当过渡部署切换到生产部署，而生产部署切换到过渡部署时，两个部署将开始更新。
 
 通过与过渡环境中的部署交换 VIP，成功地暂存了部署并升级了生产部署。
 

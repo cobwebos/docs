@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 011b454bc9cf13811c2f6b66cdd02e26e842b4e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中执行 Python 机器学习脚本
 
 本主题介绍了 Azure 机器学习中当前对 Python 脚本支持下的设计原则。 此外，还概述了主要功能，包括：
 
 - 执行基本使用方案
-- 为 Web 服务中的试验评分
+- 为 Web 服务中的实验评分
 - 支持导入现有代码
 - 导出可视化效果
 - 执行受监管的特征选择
@@ -48,7 +47,7 @@ Python 广泛应用于通常在机器学习建模中使用的工作流的所有�
 - 模型验证
 - 模型部署
 
-Azure 机器学习工作室支持在 Microsoft Azure 上将 Python 脚本嵌入机器学习试验的各个部分，也支持将它们无缝发布为 Web 服务。
+Azure 机器学习工作室支持在 Microsoft Azure 上将 Python 脚本嵌入机器学习实验的各个部分，也支持将它们无缝发布为 Web 服务。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -66,7 +65,7 @@ Azure 机器学习工作室中 Python 主接口通过图 1 中所示的[执行 P
 Azure 机器学习工作室中的[执行 Python 脚本][execute-python-script]模块接受最多三个输入，生成最多两个输出（如下一部分所述），就像 R 模拟一样，即[执行 R 脚本][execute-r-script]模块。 要执行的 Python 代码输入参数框，作为名为 `azureml_main` 的特殊命名的入口点函数。 以下是用于实现此模块的关键设计原则：
 
 1. *必须是 Python 用户常用。* 大多数 Python 用户将他们的代码视为模块中的函数。 因此将大量可执行语句放入顶层模块的情况相对较少。 因此，脚本框对一系列语句采用特殊命名的 Python 函数。 在函数中显示的对象都是标准的 Python 库类型，例如 [Pandas](http://pandas.pydata.org/) 数据帧和 [NumPy](http://www.numpy.org/) 数组。
-2. *在本地和云执行之间必须具有高保真度。* 用于执行 Python 代码的后端基于 [Anaconda](https://store.continuum.io/cshop/anaconda/)，这是跨平台科学分配 Python，已在广泛使用。 它附带接近 200 个最常用的 Python 程序包。 因此，数据科学家可在本地 Azure 机器学习兼容的 Anaconda 环境中调试和限制代码。 然后使用 [IPython](http://ipython.org/) Notebook 或[用于 Visual Studio 的 Python 工具](http://aka.ms/ptvs)等现有开发环境将其作为 Azure 机器学习试验的一部分运行。 `azureml_main` 入口点是普通 Python 函数，因此****可在没有 Azure 机器学习特定代码或不安装 SDK 的情况下编写。
+2. *在本地和云执行之间必须具有高保真度。* 用于执行 Python 代码的后端基于 [Anaconda](https://store.continuum.io/cshop/anaconda/)，这是跨平台科学分配 Python，已在广泛使用。 它附带接近 200 个最常用的 Python 程序包。 因此，数据科学家可在本地 Azure 机器学习兼容的 Anaconda 环境中调试和限制代码。 然后使用 [IPython](http://ipython.org/) Notebook 或[用于 Visual Studio 的 Python 工具](http://aka.ms/ptvs)等现有开发环境将其作为 Azure 机器学习实验的一部分运行。 `azureml_main` 入口点是普通 Python 函数，因此****可在没有 Azure 机器学习特定代码或不安装 SDK 的情况下编写。
 3. *必须与其他 Azure 机器学习模块无缝组合。* 作为输入和输出，[执行 Python 脚本][execute-python-script]模块接受标准的 Azure 机器学习数据集。 基础框架透明且有效地连接 Azure 机器学习和 Python 运行时。 因此，Python 可与现有的 Azure 机器学习工作流一起使用，包括调入 R 和 SQLite 的工作流。 因此，数据科学家可以这样设想工作流：
    * 将 Python 和 Pandas 用于数据预处理和清理
    * 将数据传送到 SQL 转换，集合多个数据集形成特征
@@ -106,7 +105,7 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 
 ## <a name="operationalizing-python-scripts"></a>实现 Python 脚本
 
-任何在评分试验中使用的[执行 Python 脚本][execute-python-script]模块在发布为 Web 服务时都将受到调用。 例如，图 3 显示包含代码的评分试验可评估单个 Python 表达式。 
+任何在评分实验中使用的[执行 Python 脚本][execute-python-script]模块在发布为 Web 服务时都将受到调用。 例如，图 3 显示包含代码的评分实验可评估单个 Python 表达式。 
 
 ![Image4](./media/execute-python-scripts/figure3a.png)
 
@@ -114,7 +113,7 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 
 图 3。 评估 Python 表达式的 Web 服务。
 
-基于此试验创建的 Web 服务：
+基于此实验创建的 Web 服务：
 
 - 将 Python 表达式（字符串）用作输入
 - 将此字符串发送到 Python 解释器 
@@ -123,7 +122,7 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 
 ## <a name="importing-existing-python-script-modules"></a>导入现有的 Python 脚本模块
 
-许多数据科学家常用的用例是将现有 Python 脚本包含到 Azure 机器学习试验。 [执行 Python 脚本][execute-python-script]模块不需要连接所有代码并将它们粘贴到单个脚本框中，而可接受一个 zip 文件，其中包含第三个输入端口处的 Python 模块。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。
+许多数据科学家常用的用例是将现有 Python 脚本包含到 Azure 机器学习实验。 [执行 Python 脚本][execute-python-script]模块不需要连接所有代码并将它们粘贴到单个脚本框中，而可接受一个 zip 文件，其中包含第三个输入端口处的 Python 模块。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。
 
 例如，请考虑包含简单“Hello, World”函数的 Hello.py 文件。
 
@@ -137,13 +136,13 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 
 图 5。 包含用户定义的 Python 代码的 zip 文件。
 
-将此 zip 文件作为数据集上传到 Azure 机器学习工作室。 然后，在 Hello.zip 文件中使用 Python 代码的试验附加到“执行 Python 脚本”模块的第三个输入端口，创建并运行该试验，如下图所示。
+将此 zip 文件作为数据集上传到 Azure 机器学习工作室。 然后，在 Hello.zip 文件中使用 Python 代码的实验附加到“执行 Python 脚本”模块的第三个输入端口，创建并运行该实验，如下图所示。
 
 ![image8](./media/execute-python-scripts/figure6a.png)
 
 ![image9](./media/execute-python-scripts/figure6b.png)
 
-图 6。 用户定义的 Python 代码上传为 zip 文件的试验示例。
+图 6。 用户定义的 Python 代码上传为 zip 文件的实验示例。
 
 模块输出显示，zip 文件未打包，并且函数 `print_hello` 已运行。
  
@@ -169,7 +168,7 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 
 图 8。 将 MatplotLib 图形保存为图像的代码。
 
-图 9 显示通过第二个输出端口使用之前显示的脚本返回图形的试验。
+图 9 显示通过第二个输出端口使用之前显示的脚本返回图形的实验。
 
 ![image2v](./media/execute-python-scripts/figure-v2-9a.png) 
 
@@ -189,12 +188,12 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 ![image11](./media/execute-python-scripts/figure8.png)
 
 图 10. 根据得分对功能排名的函数。
-  以下试验在 Azure 机器学习的“Pima Indian Diabetes”数据集中计算并返回功能的重要性得分：
+  以下实验在 Azure 机器学习的“Pima Indian Diabetes”数据集中计算并返回功能的重要性得分：
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
 
-图 11. 对 Pima Indian Diabetes 数据集中的功能排名的试验。
+图 11. 对 Pima Indian Diabetes 数据集中的功能排名的实验。
 
 ## <a name="limitations"></a>限制
 [执行 Python 脚本][execute-python-script]当前具有以下限制：
@@ -215,4 +214,3 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 <!-- Module References -->
 [execute-python-script]: https://msdn.microsoft.com/library/azure/cdb56f95-7f4c-404d-bde7-5bb972e6f232/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: liwong
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: a3af12ba0598d60b55b3714ae1690fe3e5b54a42
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门将指导用户在实验室中进行创建、启动、连接、更新和清理开发计算机等操作。 

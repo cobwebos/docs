@@ -19,6 +19,7 @@
 # 如何
 
 ## 安全策略
+### [概述](security-center-policies-overview.md)
 ### [数据收集](security-center-enable-data-collection.md)
 ### [安全策略](security-center-policies.md)
 ### [电子邮件通知](security-center-provide-security-contact-details.md)
@@ -53,7 +54,6 @@
 #### [安装终结点保护](security-center-install-endpoint-protection.md)
 #### [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md)
-#### [解决终结点保护运行状况警报](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [更新 OS 版本](security-center-update-os-version.md)
 #### [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md)
 ### [监视安全运行状况](security-center-monitoring.md)

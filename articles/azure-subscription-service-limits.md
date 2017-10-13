@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: byvinyal
+ms.openlocfilehash: e2c67bed2162773156ebf1f0f99593aeb2adf019
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: f9f7449fbfc6a1f2fe96e19dd2b13845e602946d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -39,9 +38,9 @@ ms.lasthandoff: 09/13/2017
 在下面的限制中，添加了一个新表以反映在使用 Azure 资源管理器时限制中的任何差异。 例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure 资源管理器**表。 如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。 除非另有说明，否则限制是跨所有区域的全局限制。
 
 > [!NOTE]
-> 请务必强调 Azure 资源组中的资源配额是用户的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。 我们来使用核心配额作为示例。 如果需要根据对核心的支持请求增加配额，则需要决定想要在哪个区域中使用多少核心，并针对希望的 Azure 资源组核心配额的数量和区域进行特定请求。 因此，如果需要在西欧使用 30 个核心以在那里运行应用程序，则应专门在西欧请求 30 个核心。 但这不会增加在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
+> 请务必强调 Azure 资源组中的资源配额是用户的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。 我们来使用核心配额作为示例。 如果要根据对核心的支持请求增加配额，则需要决定要在哪个区域中使用多少核心，然后针对希望的 Azure 资源组核心配额的数量和区域进行特定请求。 因此，如果需要在西欧使用 30 个核心以在那里运行应用程序，则应专门在西欧请求 30 个核心。 但这不会增加在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
 > <!-- -->
-> 因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。 请参阅[部署问题疑难解答](resource-manager-common-deployment-errors.md)，获取有关发现你特定区域的当前配额的更多帮助。
+> 因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。 请参阅[部署问题疑难解答](resource-manager-common-deployment-errors.md)，了解有关发现你特定区域的当前配额的更多帮助。
 > 
 > 
 

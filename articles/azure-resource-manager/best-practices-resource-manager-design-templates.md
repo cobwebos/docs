@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 ms.openlocfilehash: dcc31f7a8c85a8f7fbd554371a66fb1e348bca17
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-patterns-for-azure-resource-manager-templates-when-deploying-complex-solutions"></a>配置复杂解决方案时设计 Azure Resource Manager 模板的模式
 使用基于 Azure Resource Manager 模板的灵活方法，可以快速、一致地部署复杂的拓扑。 随着核心产品的发展，用户可以轻松地调整这些部署或适应外来方案或客户的变化。

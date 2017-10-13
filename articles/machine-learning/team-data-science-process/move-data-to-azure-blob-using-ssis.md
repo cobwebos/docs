@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 53570d3bd92712e96090ee995bcb5f7483a6d498
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
 [用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
@@ -89,5 +88,4 @@ SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例�
 
 * 若要使用 SSIS 在 Azure HDInsight 群集上运行 Hive 脚本，请使用 [Azure HDInsight Hive 任务](https://msdn.microsoft.com/library/mt146771.aspx)。
 * 若要使用 SSIS 在 Azure HDInsight 群集上运行 Pig 脚本，请使用 [Azure HDInsight Pig 任务](https://msdn.microsoft.com/library/mt146781.aspx)。
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 64bd0a3ec0598fd7f78e93e510f0a6443f3edbd1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Data Lake Store 作为默认存储的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -44,16 +43,16 @@ ms.lasthandoff: 06/09/2017
 * **一个 Azure 订阅**：转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更高版本**：参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到[适用于 Windows 10 的下载内容和工具](https://dev.windows.com/en-us/downloads)。 该 SDK 用于创建安全证书。
-* **Azure Active Directory 服务主体**：本教程将介绍如何在 Azure Active Directory (Azure AD) 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
+* **Azure Active Directory 服务主体**：本教程介绍如何在 Azure Active Directory (Azure AD) 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
     >[!NOTE]
-    >仅当你是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 必须根据[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)中所述，使用证书创建服务主体。
+    >仅是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，才能创建包含 Data Lake Store 的 HDInsight 群集。 必须根据[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)中所述，使用证书创建服务主体。
     >
 
 ## <a name="create-a-data-lake-store-account"></a>创建 Data Lake Store 帐户
 若要创建 Data Lake Store 帐户，请执行以下操作：
 
-1. 在桌面上打开 PowerShell 窗口，然后输入以下代码片段。 出现登录的提示时，请以订阅管理员或所有者的身份登录： 
+1. 在桌面上打开 PowerShell 窗口，并输入以下代码片段。 出现登录的提示时，请以订阅管理员或所有者的身份登录： 
 
         # Sign in to your Azure account
         Login-AzureRmAccount
@@ -68,7 +67,7 @@ ms.lasthandoff: 06/09/2017
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > 如果在注册 Data Lake Store 资源提供程序时收到类似于 `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是你的订阅未列入 Data Lake Store 的允许列表。 若要在 Data Lake Store 公共预览版中启用你的 Azure 订阅，请遵循[通过 Azure 门户开始使用 Azure Data Lake Store](data-lake-store-get-started-portal.md) 中的说明。
+    > 如果在注册 Data Lake Store 资源提供程序时收到类似于 `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是订阅未列入 Data Lake Store 的允许列表。 要在 Data Lake Store 公共预览版中启用 Azure 订阅，请遵循[通过 Azure 门户开始使用 Azure Data Lake Store](data-lake-store-get-started-portal.md) 中的说明。
     >
 
 2. Data Lake Store 帐户与 Azure 资源组关联。 首先请创建资源组。
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/09/2017
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
         ...
         ProvisioningState           : Succeeded
@@ -106,7 +105,7 @@ ms.lasthandoff: 06/09/2017
         Location                    : East US 2
         Tags                        : {}
 
-4. 若要将 Data Lake Store 用作默认存储，需要指定一个根路径，在创建群集过程中将复制此路径下的特定于群集的文件。 若要创建根路径（在代码片段中为 **/clusters/hdiadlcluster**），请使用以下 cmdlet：
+4. 要将 Data Lake Store 用作默认存储，需要指定一个根路径，在创建群集过程中将复制此路径下的特定于群集的文件。 若要创建根路径（在代码片段中为 **/clusters/hdiadlcluster**），请使用以下 cmdlet：
 
         $myrootdir = "/"
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/clusters/hdiadlcluster
@@ -115,14 +114,14 @@ ms.lasthandoff: 06/09/2017
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>对 Data Lake Store 设置基于角色访问的身份验证
 每个 Azure 订阅都与一个 Azure AD 实体相关联。 使用 Azure 门户或 Azure Resource Manager API 访问订阅资源的用户和服务首先必须使用 Azure AD 进行身份验证。 通过在 Azure 资源上为这些用户和服务分配相应角色，向其授予访问权限。 对于服务，服务主体用于标识 Azure AD 中的服务。
 
-本部分说明如何向应用程序服务（例如 HDInsight）授予对 Azure 资源（前面创建的 Data Lake Store 帐户）的访问权限。 为此，可为应用程序创建一个服务主体，然后通过 PowerShell 向其分配角色。
+本部分说明如何向应用程序服务（例如 HDInsight）授予对 Azure 资源（前面创建的 Data Lake Store 帐户）的访问权限。 为此，可为应用程序创建一个服务主体，并通过 PowerShell 向其分配角色。
 
 若要为 Azure Data Lake 设置 Active Directory 身份验证，请执行以下两个部分中的任务。
 
 ### <a name="create-a-self-signed-certificate"></a>创建自签名证书
-继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须事先创建一个目录例如 *C:\mycertdir*，将在该目录中创建证书。
+继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须事先创建一个目录例如 *C:\mycertdir*，会在该目录中创建证书。
 
-1. 在 PowerShell 窗口中，转到安装 Windows SDK 的位置（通常为 *C:\Program Files (x86)\Windows Kits\10\bin\x86*），然后使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥。 使用以下命令：
+1. 在 PowerShell 窗口中，转到安装 Windows SDK 的位置（通常为 *C:\Program Files (x86)\Windows Kits\10\bin\x86*），并使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥。 使用以下命令：
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
@@ -248,11 +247,10 @@ ms.lasthandoff: 06/09/2017
 
     hdfs dfs -ls adl:///
 
-可以使用 `hdfs dfs -put` 命令将一些文件上载到 Data Lake Store，并使用 `hdfs dfs -ls` 验证是否已成功上载这些文件。
+可以使用 `hdfs dfs -put` 命令将一些文件上传到 Data Lake Store，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 门户：创建使用 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
-

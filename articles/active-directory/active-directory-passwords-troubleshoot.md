@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: d33e516628c56a7aa038e37b4498461de17f8433
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>如何排查自助密码重置问题
 
@@ -280,4 +279,3 @@ Azure AD Connect 需要 AD“重置密码”权限才能执行密码写回。 �
 * [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
 * [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
 * [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 始终要问的问题的答案
-

@@ -10,14 +10,12 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 445901a740920a74f259aaa9c6b862680c1c807e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="archive-azure-monitoring-data"></a>Azure 监视数据存档
 
 Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和指标数据。 Log Analytics 或 Azure Monitor 中的数据超过保留期之后，你可能需要执行此操作，在不可搜索的低成本存储空间中保留某时间段内监视数据的历史记录。 本教程逐步介绍如何配置 Azure 环境以将数据存档到存储帐户。
@@ -164,4 +162,3 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 > [!div class="nextstepaction"]
 > [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)
-

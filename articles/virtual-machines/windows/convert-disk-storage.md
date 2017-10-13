@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
+ms.openlocfilehash: 5d2360efba8d4336b584f1563274ac7016764aaf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 9e5c73ceb0ff7d9c18c9cf7128b69e40b9796874
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure 标准与高级托管磁盘存储的相互转换
 
 托管磁盘提供两种存储选项：[高级](../../storage/storage-premium-storage.md)（基于 SSD）和[标准](../../storage/storage-standard-storage.md)（基于 HDD）。 它可让你基于性能需求在这两个选项之间轻松切换，并保障最短停机时间。 非托管磁盘不具备此功能。 但可以轻松[转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便在这两个选项之间轻松切换。
@@ -117,5 +115,4 @@ Start-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ## <a name="next-steps"></a>后续步骤
 
 使用[快照](snapshot-copy-managed-disk.md)获取 VM 的只读副本。
-
 

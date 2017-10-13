@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a9f61ec7c051ccdd867aec94121347db19b059b5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 R Server 和开放源代码 R 功能简介
 
@@ -104,4 +103,3 @@ HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 �
 * [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中安装）](hdinsight-hadoop-r-server-install-r-studio.md)
 * [适用于 HDInsight 上的 R Server 的计算上下文选项](hdinsight-hadoop-r-server-compute-contexts.md)
 * [适用于 R Server on HDInsight 的 Azure 存储选项](hdinsight-hadoop-r-server-storage.md)
-

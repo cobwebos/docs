@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 网络观察程序“下一跃点”功能查找下一跃点 - REST | Microsoft 文档"
-description: "本文将介绍如何使用 Azure REST API 通过“下一跃点”功能查找下一跃点类型和 ip 地址"
+description: "本文介绍如何使用 Azure REST API 通过“下一跃点”功能查找下一跃点类型和 ip 地址"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 644713d365191bf5e51517d0cc565efbc2abc144
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: b541cd5cb7e49468af2c522b16c3a3b9fe75fd54
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-aure-network-watcher-using-azure-rest-api"></a>使用 Azure REST API 通过 Azure 网络观察程序中的“下一跃点”功能找到下一跃点类型
 
 > [!div class="op_single_selector"]
@@ -37,13 +35,13 @@ ms.lasthandoff: 05/26/2017
 
 ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 ## <a name="scenario"></a>方案
 
 本文中介绍的方案使用“下一跃点”（网络观察程序的一项功能）找出资源的下一跃点类型和 IP 地址。 若要了解有关下一跃点的详细信息，请访问[下一跃点概述](network-watcher-next-hop-overview.md)。
 
-在此方案中，你将：
+在此方案中，将：
 
 * 检索虚拟机的下一跃点。
 
@@ -132,7 +130,6 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ## <a name="next-steps"></a>后续步骤
 
 能够找出虚拟机的下一跃点后，可以通过访问[安全视图概述](network-watcher-security-group-view-overview.md)查看网络资源的安全性
-
 
 
 

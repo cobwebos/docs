@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 85cf9175bb4a5f253c7b47b2edc3ac8b00616ba2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>对 Azure 机器学习经典 Web 服务重新训练进行故障排除
 ## <a name="retraining-overview"></a>重新训练概述
@@ -112,4 +111,3 @@ ms.lasthandoff: 09/25/2017
 [image5]: ./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png
 [image6]: ./media/troubleshooting-retraining-a-model/retraining-output.png
 [image7]: ./media/troubleshooting-retraining-a-model/web-services-tab.png
-

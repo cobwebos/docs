@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/21/2017
 ms.author: kraigb
 ms.openlocfilehash: 25b3ca9af2639860d9cfcb1492aef745fb47beb9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>使用 Visual Studio“发布 Azure 应用程序”向导 | Microsoft Docs
 在 Visual Studio 中开发 Web 应用程序后，可以使用**发布 Azure 应用程序**向导将该应用程序发布到 Azure 云服务。 
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/29/2017
    
 **存储帐户** - 选择要用于此部署的存储帐户，或者单击“&lt;新建>”创建一个存储帐户。 每个存储帐户的数据中心均显示在括号中。 建议存储帐户的数据中心位置与云服务的数据中心位置相同（常用设置）。  
    
-Azure 存储帐户存储应用程序部署的包。 部署应用程序之后，从存储帐户中删除该包。
+Azure 存储帐户将存储应用程序部署的包。 部署应用程序之后，将从存储帐户中删除该包。
 
 **失败时删除部署** - 选择此选项可在发布期间遇到任何错误时会部署删除。 如果要保留云服务的不变虚拟 IP 地址，则应取消选中此项。
 
@@ -107,7 +107,7 @@ Azure 存储帐户存储应用程序部署的包。 部署应用程序之后，�
 **目标配置文件** - 可以选择基于所选的设置创建发布配置文件。 例如，可以创建一个配置文件用于测试环境，并创建另一个配置文件用于生产环境。 若要保存此配置文件，请选择“保存”图标。 向导将创建配置文件并将它保存在 Visual Studio 项目中。 要修改配置文件名称，请打开“目标配置文件”列表，并选择“<管理…>”。
    
    > [!NOTE]
-   > 发布配置文件出现在 Visual Studio 的解决方案资源管理器中，配置文件设置将写入扩展名为.azurePubxml 的文件。 设置将保存为 XML 标记的属性。
+   > 发布配置文件将出现在 Visual Studio 的解决方案资源管理器中，配置文件设置将写入扩展名为.azurePubxml 的文件。 设置将保存为 XML 标记的属性。
    > 
    > 
 

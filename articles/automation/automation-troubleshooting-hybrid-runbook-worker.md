@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: magoedte
+ms.openlocfilehash: 1a72fcf2493396b4744a49b01f3c6da8eed0de40
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 9d1ceda5a072f494651a751a25a8ccf66e4c72ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的故障排除提示
 
 本文介绍如何解决可能遇到的自动化混合 Runbook 辅助角色相关错误，并提供可能的解决方案建议。

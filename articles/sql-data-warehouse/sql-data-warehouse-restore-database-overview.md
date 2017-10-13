@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 ms.openlocfilehash: ea42b7135d0695b66d569095e70bb3d9f8b9594b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL 数据仓库还原
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ SQL 数据仓库提供本地和异地还原功能，这是其数据仓库灾难�
 * [业务连续性概述](../sql-database/sql-database-business-continuity.md)
 
 ## <a name="data-warehouse-restore-points"></a>数据仓库还原点
-使用 Azure 高级存储的好处是，SQL 数据仓库可以使用 Azure 存储 Blob 快照备份主数据仓库。 每个快照都有一个还原点，代表启动快照的时间。 如果要还原数据仓库，请选择一个还原点，并发出还原命令。  
+使用 Azure 高级存储的好处是，SQL 数据仓库可以使用 Azure 存储 Blob 快照备份主数据仓库。 每个快照都有一个还原点，代表启动快照的时间。 要还原数据仓库，请选择一个还原点，并发出还原命令。  
 
 SQL 数据仓库始终将备份还原到新的数据仓库。 可以保留还原的数据仓库和当前的数据仓库，也可以删除其中一个。 要将当前的数据仓库替换为还原的数据仓库，将其重命名即可。
 

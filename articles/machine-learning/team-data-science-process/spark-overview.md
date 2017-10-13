@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d9964ace6b59fa65f0f5d4caff28a4291047c8a5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -187,5 +186,4 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 **模型使用：**若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
 
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据浏览和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
-
 

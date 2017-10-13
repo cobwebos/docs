@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d0b597cb734518ed8cc55d52e33f6f88917ec09d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-salesforce-connector.md)
+> * [版本 1 - GA](data-factory-salesforce-connector.md)
 > * [版本 2 - 预览版](../connector-salesforce.md)
 
 > [!NOTE]
@@ -315,4 +314,3 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
-

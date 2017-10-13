@@ -14,10 +14,10 @@ ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 45a6f63bd920c9a70c25b8dfae084ea030256cf4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
@@ -51,7 +51,7 @@ Azure AD 可以检测到与用户帐户相关的可疑操作。 每检测到一�
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory 免费版和基本版
 
-Azure Active Directory 免费版和基本版提供为用户检测到的有风险的登录列表。 此报表列出：
+Azure Active Directory 免费版和基本版提供为用户检测到的有风险的登录列表。 此报告列出：
 
 - **用户** - 在登录操作期间使用的用户的名称
 - **IP** - 用于连接到 Azure Active Directory 的设备的 IP 地址
@@ -73,10 +73,10 @@ Azure Active Directory 免费版和基本版提供为用户检测到的有风险
 
 有关更多详细信息，请参阅[手动关闭风险事件](active-directory-identityprotection.md#closing-risk-events-manually)。
 
-此报表为你提供的选项：
+此报告提供的选项用于：
 
 - 搜索资源
-- 下载报表数据
+- 下载报告数据
 
 
 ![有风险的登录](./media/active-directory-reporting-security-risky-sign-ins/93.png)

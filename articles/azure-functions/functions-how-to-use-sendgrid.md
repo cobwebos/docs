@@ -12,12 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/31/2017
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b95fcfa1ed4ea4cf1051f4920b9c05bb40a19cab
-ms.openlocfilehash: 05c9f4e4a4351219da68af8b702c25f21d7d4d02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
-
+ms.openlocfilehash: 563bdac30176de131f6d8fd194713f482ceb75d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-sendgrid-in-azure-functions"></a>如何在 Azure Functions 中使用 Send Grid
 
@@ -25,9 +24,9 @@ ms.lasthandoff: 02/22/2017
 
 Azure Functions 支持 SendGrid 输出绑定，使函数能够通过几行代码和 SendGrid 帐户发送电子邮件消息。
 
-若要在 Azure Function 中使用 SendGrid API，必须具有 [SendGrid 帐户](http://SendGrid.com)。 此外，还必须具有 SendGrid API 密钥。 登录到你的 SendGrid 帐户，然后依次单击“设置”和“API 密钥”来生成 API 密钥。 使此密钥保持可用，因为在即将执行的步骤中将使用此密钥。
+若要在 Azure Function 中使用 SendGrid API，必须具有 [SendGrid 帐户](http://SendGrid.com)。 此外，还必须具有 SendGrid API 密钥。 登录到 SendGrid 帐户，然后依次单击“设置”和“API 密钥”来生成 API 密钥。 使此密钥保持可用，因为在即将执行的步骤中将使用此密钥。
 
-现在，你已准备就绪，可以创建 Azure Function App 了。
+现在，已准备就绪，可以创建 Azure Function App 了。
 
 ## <a name="create-an-azure-function-app"></a>创建 Azure Function App 
 
@@ -41,7 +40,7 @@ Azure Function App 是一个或多个 Azure 函数的容器。 Azure 函数只�
 
 ## <a name="configure-sendgrid-for-use-in-an-azure-function-app"></a>配置 SendGrid 以在 Azure Function App 中使用
 
-必须将 SendGrid API 密钥存储为应用设置才能将其用于函数中。 ApiKey 字段不是你的实际 SendGrid API 密钥，而是你定义的代表实际 API 密钥的应用设置。 以此方式存储密钥是为了保证安全性，因为它独立于可能会签入到源代码控制中的任何代码或文件。
+必须将 SendGrid API 密钥存储为应用设置才能将其用于函数中。 ApiKey 字段不是实际 SendGrid API 密钥，而是你定义的代表实际 API 密钥的应用设置。 以此方式存储密钥是为了保证安全性，因为它独立于可能会签入到源代码控制中的任何代码或文件。
 
 - 在 Function App 的“应用程序设置”中创建一个 **AppSettings** 密钥。
 
@@ -74,9 +73,9 @@ SendGrid 可用作 Azure 函数输出绑定。 若要创建 SendGrid 输出绑�
 }
 ```
 
-如果你愿意，可以自己直接修改此文件。
+如果愿意，可以自己直接修改此文件。
 
-现在，你已创建并配置了 Function App 和函数，可以编写代码来发送电子邮件了。
+现在，已创建并配置了 Function App 和函数，可以编写代码来发送电子邮件了。
 
 ## <a name="write-code-that-creates-and-sends-email"></a>编写用于创建和发送电子邮件的代码
 
@@ -110,11 +109,11 @@ public static void Run(TraceWriter log, string input, out Mail message)
 }
 ```
 
-注意，第一行包含 ```#r``` 指令，它引用了 SendGrid 程序集。 然后，你可以使用 ```using``` 语句更轻松地访问该命名空间中的对象。 在代码中，从 SendGrid API 中创建构成电子邮件的 ```Mail```、```Personalization``` 和 ```Content``` 对象的实例。 当返回消息时，SendGrid 会传送该消息。 
+注意，第一行包含 ```#r``` 指令，它引用了 SendGrid 程序集。 然后，可以使用 ```using``` 语句更轻松地访问该命名空间中的对象。 在代码中，从 SendGrid API 中创建构成电子邮件的 ```Mail```、```Personalization``` 和 ```Content``` 对象的实例。 当返回消息时，SendGrid 会传送该消息。 
 
 函数的签名还包含一个额外的类型为 ```Mail``` 且名为 ```message``` 的 out 参数。 输入和输出绑定在代码中都将其自己表达为函数参数。 
 
-2. 通过以下方式测试代码：单击“测试”并在“请求正文”中输入一条消息，然后单击“运行”按钮。
+2. 通过以下方式测试代码：单击“测试”并在“请求正文”中输入一条消息，并单击“运行”按钮。
 
  ![测试代码](./media/functions-how-to-use-sendgrid/functions-develop-test-sendgrid.png)
 

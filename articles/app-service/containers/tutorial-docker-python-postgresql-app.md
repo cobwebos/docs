@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 36cf3c0bb4a28a4ccfd5fc94b72fba023516a9ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用
 
@@ -245,7 +244,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-在浏览器中导航至 http://127.0.0.1:5000 。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
+在浏览器中导航至 http://127.0.0.1:5000。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
 
 ![在本地运行的 Python Flask 应用程序](./media/tutorial-docker-python-postgresql-app/local-app.png)
 
@@ -555,4 +554,3 @@ http://<app_name>.azurewebsites.net
 
 > [!div class="nextstepaction"] 
 > [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)
-

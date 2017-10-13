@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 96e5027adfb443aba18895213e8d83894e3f060a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
 
@@ -38,9 +37,9 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程：
+完成本教程：
 
-- 确保了解[方案体系结构和组件](concepts-hyper-v-to-azure-architecture.md)。
+- 请确保了解[方案体系结构和组件](concepts-hyper-v-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](site-recovery-support-matrix-to-azure.md)。
 - 确保想要复制的虚拟机符合 [Azure VM 要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 - 要规划容量计划：
@@ -57,9 +56,9 @@ ms.lasthandoff: 09/25/2017
 
 获取 Microsoft [Azure 帐户](http://azure.microsoft.com/)。
 
-- 可以从[免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
-- 了解有关 [Site Recovery 定价](site-recovery-faq.md#pricing)的信息，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
-- 了解 Site Recovery 所[支持的区域](https://azure.microsoft.com/pricing/details/site-recovery/)。
+- 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
+- 了解 [Site Recovery 定价](site-recovery-faq.md#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
+- 了解 Site Recovery [支持的区域](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
 ### <a name="verify-azure-account-permissions"></a>验证 Azure 帐户权限
 
@@ -82,7 +81,7 @@ ms.lasthandoff: 09/25/2017
 设置 [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，将从存储中创建 Azure VM。
-- 存储帐户必须与恢复服务保管库位于相同区域中。
+- 存储帐户必须位于与恢复服务保管库相同的区域。
 - 存储帐户可以是标准帐户，也可以是[高级](../storage/common/storage-premium-storage.md)帐户。
 - 如果创建的是高级帐户，则还需要一个标准帐户来记录数据。
 
@@ -169,7 +168,7 @@ ms.lasthandoff: 09/25/2017
 
 在添加到 Hyper-V 站点的每个 Hyper-V 主机上安装提供程序。 如果要在 Hyper-V 群集上进行安装，则在每个群集节点上运行安装程序。 通过安装并注册每个 Hyper-V 群集节点，可确保 VM 即使在节点之间迁移也会受到保护。
 
-1. 在“Microsoft 更新”中，可以选择进行更新，以便根据 Microsoft 更新策略安装提供程序更新。
+1. 在“Microsoft 更新” 中，可以选择进行更新，以便根据 Microsoft 更新策略安装提供程序更新。
 2. 在“安装”中接受或修改默认提供程序安装位置，并单击“安装”。
 4. 在“保管库设置”中，单击“浏览”以选择所下载的保管库密钥文件。 指定 Azure Site Recovery 订阅、保管库名称和 Hyper-V 服务器属于的 Hyper-V 站点。
 5. 在“代理设置”中，指定提供程序在 VMM 服务器上运行的方式，或 Hyper-V 主机通过 Internet 连接到 Site Recovery 的方式。
@@ -203,7 +202,7 @@ Hyper-V 主机上的恢复服务代理需有权通过 Internet 访问 Azure 才�
 
 #### <a name="install-the-provider-on-the-vmm-server-hyper-v-with-vmm"></a>安装 VMM 服务器上的提供程序（含有 VMM 的 Hyper-V）
 
-1. 在“Microsoft 更新”中，可以选择进行更新，以便根据 Microsoft 更新策略安装提供程序更新。
+1. 在“Microsoft 更新” 中，可以选择进行更新，以便根据 Microsoft 更新策略安装提供程序更新。
 2. 在“安装”中接受或修改默认提供程序安装位置，并单击“安装”。 
 3. 现在，在保管库中注册 VMM 服务器。 在“保管库设置”中，单击“浏览”以选择所下载的保管库密钥文件。 指定 Azure Site Recovery 订阅和保管库名称。
 
@@ -249,15 +248,15 @@ Hyper-V 主机上的恢复服务代理需有权通过 Internet 访问 Azure 才�
 
 1. 单击“准备基础结构” > “复制设置” > “+创建和关联”。
 2. 在“创建和关联策略”中指定策略名称。
-3. 在“复制频率”中，指定要在初始复制后复制增量数据的频率（每隔 30 秒、5 或 15 分钟）。
+3. 在“复制频率” 中，指定要在初始复制后复制增量数据的频率（每隔 30 秒、5 或 15 分钟）。
 
     > [!NOTE]
     >  复制到高级存储时，不支持 30 秒的频率。 该限制取决于高级存储支持的每 blob 快照数 (100)。 [了解详细信息](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)。
 
 4. 在“恢复点保留期”中，针对每个恢复点指定保留期的时长（以小时为单位）。 受保护的计算机可以恢复到某个时段内的任意时间点。
-5. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。 Hyper-V 使用两种类型的快照：
+5. 在“应用一致性快照频率” 中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。 Hyper-V 使用两种类型的快照：
     - 标准快照：提供整个虚拟机的增量快照。
-    - 应用一致快照：拍摄虚拟机内应用程序数据的时点快照。 卷影复制服务 (VSS) 可确保应用在拍摄快照时处于一致状态。 启用应用程序一致性快照会影响源虚拟机上的应用性能。 设置一个小于配置的附加恢复点数的值。
+    - 应用一致快照：拍摄虚拟机内应用程序数据的时点快照。 卷影复制服务 (VSS) 可确保应用在拍摄快照时处于一致状态。 启用应用程序一致性快照会影响源虚拟机上的应用性能。 确保设置的值小于所配置的附加恢复点数量。
 6. 在“初始复制开始时间”中，指定开始初始复制的时间。 复制通过 Internet 带宽进行，因此，最好将它安排在非繁忙时间。
 7. 在“加密 Azure 上存储的数据”中，指定是否加密 Azure 存储中的静态数据。 然后单击“确定”。
 
@@ -279,4 +278,3 @@ Hyper-V 主机上的恢复服务代理需有权通过 Internet 访问 Azure 才�
 
 ## <a name="next-steps"></a>后续步骤
 [运行灾难恢复演练](tutorial-dr-drill-azure.md)
-

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
 ms.openlocfilehash: b8d6a998bc86337b286a3434f44f762cca9b7e68
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
@@ -99,7 +99,7 @@ Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup1" `
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
-扩展执行输出记录到在以下目录中发现的文件：
+扩展执行输出将记录到在以下目录中发现的文件：
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\

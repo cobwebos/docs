@@ -15,14 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 86c01a55304c5f5179e0e94d67f318e42075fd48
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-cluster-in-azure-using-powershell"></a>使用 PowerShell 在 Azure 中创建 Windows 群集
 本教程介绍如何创建一个在 Azure 中运行的 Windows Service Fabric 群集。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。
 
@@ -146,7 +144,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 Service Fabric 群集
@@ -157,4 +155,3 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
 接下来，转到以下教程了解如何部署现有应用程序。
 > [!div class="nextstepaction"]
 > [使用 Docker Compose 部署现有的 .NET 应用程序](service-fabric-host-app-in-a-container.md)
-

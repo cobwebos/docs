@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 50d185294131e42aaf8b541ab17495fcb40c89dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。
@@ -182,7 +181,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

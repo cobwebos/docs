@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.openlocfilehash: 49b9d2e21dbcb612828a25f21ed4382327d6f64c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>设置源环境（物理服务器到 Azure）
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ ms.lasthandoff: 07/11/2017
 #### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
 
 > [!TIP]
-> 如果计算机上的系统时钟时间与本地时间相差 5 分钟以上，则配置服务器注册会失败。 在开始安装之前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
+> 如果计算机上的系统时钟时间与本地时间相差 5 分钟以上，则配置服务器注册会失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 

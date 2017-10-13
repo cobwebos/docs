@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/13/2017
 ms.author: ryanwi
+ms.openlocfilehash: 705212675fc0a869a4374f621d5f2d7e035294dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 1cadb543660b636ce7f0285973e6fb4141841b99
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-api-management-with-service-fabric"></a>部署 API 管理与 Service Fabric
 本教程是一个系列中的第二部分。 本教程演示如何设置 [Azure API 管理](../api-management/api-management-key-concepts.md)与 Service Fabric，以在 Service Fabric 中将流量路由至后端服务。  完成后，即已将 API 管理部署到 VNET，并已将 API 操作配置为将流量发送到后端无状态服务。 若要详细了解使用 Service Fabric 的 Azure API 管理方案，请参阅[概述](service-fabric-api-management-overview.md)一文。
 
@@ -353,7 +351,7 @@ az group delete --name $ResourceGroupName
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 部署 API 管理

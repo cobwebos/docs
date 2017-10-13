@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/18/2017
 ms.author: yurid
 ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite 安全和审核解决方案中的 Web 基线评估
 本文档有助于使用 OMS 安全和审核 Web 基线评估功能来评估被监视资源的安全状态。

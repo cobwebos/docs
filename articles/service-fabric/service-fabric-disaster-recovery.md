@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
 提供高可用性的关键一环是确保服务能够经受各种不同类型的故障。 对于计划外和不受控制的故障，这一点尤其重要。 本文介绍一些常见的故障模式，如果未正确建模和管理，这些故障可能成为灾难。 本文还介绍发生灾难时应采取的缓解措施和行动。 目标是在发生计划内或其他故障时，限制或消除停机或数据丢失风险。
@@ -154,4 +153,3 @@ Service Fabric 具有种子节点的概念。 种子节点可以维护基础群�
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
-

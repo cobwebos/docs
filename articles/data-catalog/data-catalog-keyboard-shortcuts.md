@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/17/2017
 ms.author: spelluru
 ms.openlocfilehash: d498eac2d0dfe7d271bdb5e47159faa113545ab4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>适用于 Azure 数据目录的键盘快捷方式
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>适用于数据目录数据源注册工具的键盘快捷方式

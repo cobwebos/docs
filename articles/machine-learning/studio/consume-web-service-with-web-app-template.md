@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;raymondl
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1c182403409966923440f359cb2514af7b7df9f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consume-an-azure-machine-learning-web-service-with-a-web-app-template"></a>使用 Azure 机器学习 web 服务与 web 应用模板
 
@@ -131,4 +130,3 @@ Web 应用会显示含有作业状态的页面。
 [image5]: media/consume-web-service-with-web-app-template/create-web-app.png
 [image6]: media/consume-web-service-with-web-app-template/web-service-info.png
 [image7]: media/consume-web-service-with-web-app-template/storage.png
-

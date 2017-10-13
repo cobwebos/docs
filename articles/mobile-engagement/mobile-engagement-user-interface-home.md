@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-your-existing-application-and-projects"></a>如何管理现有的应用程序和项目
 本文介绍了 **Mobile Engagement** 门户的“**主页**”。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 

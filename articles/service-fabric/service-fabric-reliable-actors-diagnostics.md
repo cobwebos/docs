@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: abhisram
 ms.openlocfilehash: 1c53a6bbe0152f6f2b9666e6059af7c6d02e481f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视
 Reliable Actors 运行时发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件和[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解运行时的运行状况以及进行故障排除和性能监视。
@@ -141,7 +141,7 @@ Reliable Actors 运行时发出以下与[执行组件副本](service-fabric-reli
 | 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |信息性 |0x1 |执行组件副本将角色更改为“主要”。 这意味着在此副本内创建此分区的执行组件。 |
-| ReplicaChangeRoleFromPrimary |2 |信息性 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 正在进行中的任何请求完成后会销毁执行组件。 |
+| ReplicaChangeRoleFromPrimary |#N/A |信息性 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 正在进行中的任何请求完成后会销毁执行组件。 |
 
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>执行组件激活和停用事件以及性能计数器
 Reliable Actors 运行时发出以下与[执行组件激活和停用](service-fabric-reliable-actors-lifecycle.md)相关的事件。

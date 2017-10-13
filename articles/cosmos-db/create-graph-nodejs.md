@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: denlee
-ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
 ms.openlocfilehash: 228d739ac4505d9f16c43bb484dd8050631f084e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 Node.js 应用程序
 
@@ -161,4 +160,3 @@ module.exports = config;
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
-

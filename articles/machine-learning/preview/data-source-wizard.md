@@ -7,14 +7,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bed026e8f75618403efa3eed475371d1d2746bc5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-source-wizard"></a>数据源向导 #
 
 借助数据源向导，无需使用代码即可快速轻松地将数据集载入 Azure ML Workbench。 此向导还可用于选择数据集的采样策略。 
@@ -74,4 +72,3 @@ ms.lasthandoff: 09/25/2017
 ![步骤 7](media/data-source-wizard/step6.png)
 
 单击“完成”后，项目中会添加新的数据源。 在数据视图中，可在“数据源”组下找到它；在**文件视图**中，可看到它以 .dsource 文件的形式显示。
-

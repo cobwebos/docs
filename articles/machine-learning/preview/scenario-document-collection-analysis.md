@@ -9,14 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 669fc7a9ec5dfb446ef2755919c498fe6f60c9df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="document-collection-analysis"></a>文档集分析
 
 该方案演示如何使用 Azure ML Workbench 总结和分析大型文档集，包括短语学习、主题建模和主题模型分析等技术。 Azure Machine Learning Workbench 可轻松扩展非常大的文档集，并提供了在各种计算环境中定型和调整模型的机制，从本地计算到数据科学虚拟机到 Spark 群集均包含在内。 通过 Jupyter 笔记本在 Azure Machine Learning Workbench 中提供了轻松开发。
@@ -65,9 +63,9 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="create-a-new-workbench-project"></a>新建 Workbench 项目
 
-将该示例用作模板新建项目：
+使用本示例作为模板，创建一个新项目：
 1.  打开 Azure Machine Learning Workbench
-2.  在“项目”页上单击 + 符号，然后选择“新建项目”
+2.  在“项目”页上单击 + 号，然后选择“新建项目”
 3.  在“新建项目”窗格中，填写新项目的信息
 4.  在“搜索项目模板”搜索框中，键入“Document Collection Analysis”并选择模板
 5.  单击“创建” 
@@ -246,4 +244,3 @@ Notebook `5_Topic_Model_Analysis.ipynb` 演示如何分析文档集的主题内�
 * **Timothy J. Hazen**, [_Latent Topic Modeling for Audio Corpus Summarization_](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf). 12th Annual Conference of the International Speech Communication Association. 2011.
 
 * **Michael Roder, Andreas Both, Alexander Hinneburg**, [_Exploring the Space of Topic Coherence Measures_](http://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf). Proceedings of the eighth ACM international conference on Web search and data mining. ACM, 2015.
-

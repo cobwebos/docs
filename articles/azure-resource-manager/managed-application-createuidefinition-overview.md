@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 176b891538f85c5638a2321561c3d8bd377d245b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.openlocfilehash: 077012a2fe9b4b6e6e042fdeb9be2b1d37685bc9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-createuidefinition"></a>CreateUiDefinition 入门
 本文档介绍了 CreateUiDefinition 的核心概念，该元素由 Azure 门户用来生成用于创建托管应用程序的用户界面。
@@ -70,4 +69,4 @@ CreateUiDefinition 本身具有一个简单的架构。 它的实际深度来自
 
 以下位置提供了CreateUiDefinition 的当前 JSON 架构：https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json。 
 
-更高版本也将在同一位置提供。 请将 URL 的 `0.1.2-preview` 部分和 `version` 值替换为你打算使用的版本标识符。 当前支持的版本标识符为 `0.0.1-preview`、`0.1.0-preview`、`0.1.1-preview` 和 `0.1.2-preview`。
+更高版本也会在同一位置提供。 请将 URL 的 `0.1.2-preview` 部分和 `version` 值替换成打算使用的版本标识符。 当前支持的版本标识符为 `0.0.1-preview`、`0.1.0-preview`、`0.1.1-preview` 和 `0.1.2-preview`。

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: fe8775bd39173b2adf1f82d32f5e851ef1c19931
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教程：Azure Active Directory 与 Help Scout 集成
 
@@ -262,5 +261,4 @@ Help Scout 使用电子邮件地址作为登录名，因此，若要建立链接
 [201]: ./media/active-directory-saas-helpscout-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-helpscout-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-helpscout-tutorial/tutorial_general_203.png
-
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>将 System Center Configuration Manager 与 OMS 更新管理集成 [预览版]
 
 在软件更新管理 (SUM) 周期中，已经投资购买 System Center Configuration Manager 来管理电脑、服务器和移动设备的客户还可以依赖其在管理软件更新方面的优势和成熟度。  
@@ -56,5 +54,4 @@ ms.lasthandoff: 09/25/2017
 若要从是 Configuration Manager 客户端的 Windows Server VM 管理更新，需要配置客户端策略来为由此解决方案管理的所有客户端禁用软件更新管理功能。  默认情况下，客户端设置以层次结构中的所有设备为应用目标。  有关此策略设置以及如何配置此设置的详细信息，请查看[如何在 System Center Configuration Manager 中配置客户端设置](https://docs.microsoft.com/sccm/core/clients/deploy/configure-client-settings)。  
 
 在执行此配置更改后，根据[创建更新部署](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment)中介绍的步骤创建一个新部署，并从下拉列表中选择表示为 OMS 计算机组的相应 Configuration Manager 集合。 
-
 

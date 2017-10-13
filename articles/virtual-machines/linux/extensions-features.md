@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
 ms.openlocfilehash: 8a5b39351f665c51ae7d83f755329e54ff3cf786
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -39,7 +39,7 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在虚拟机上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](extensions-customscript.md)（Linux VM“自定义脚本”扩展）。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 每个虚拟机扩展可能都有其自己的一组先决条件。 例如，Docker VM 扩展有支持的 Linux 分发的先决条件。 特定于扩展的文档中详细介绍了各个扩展的要求。
 
@@ -51,7 +51,7 @@ Azure VM 代理可管理 Azure 虚拟机与 Azure 结构控制器之间的交互
 
 ## <a name="discover-vm-extensions"></a>发现 VM 扩展
 
-有许多不同的 VM 扩展可与 Azure 虚拟机配合使用。 要查看完整列表，请使用 Azure CLI 运行以下命令，并将示例位置替换为所选位置。
+有许多不同的 VM 扩展可与 Azure 虚拟机配合使用。 要查看完整列表，请使用 Azure CLI 运行以下命令，并将命令中的示例位置替换成选择的位置。
 
 ```azurecli
 az vm extension image list --location westus -o table
@@ -95,7 +95,7 @@ info:    vm extension set command OK
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自 Resource Manager 模板。 该模板会在每个 VM 上部署一组负载均衡的虚拟机、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自 Resource Manager 模板。 该模板将在每个 VM 上部署一组负载均衡的虚拟机、一个 Azure SQL 数据库，并安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
 
 有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
@@ -217,11 +217,11 @@ AutoUpgradeMinorVersion    Location    Name          ProvisioningState    Publis
 True                       westus      customScript  Succeeded            Microsoft.Azure.Extensions  exttest                             2  customScript
 ```
 
-此外，还可以在 Azure 门户中找到扩展执行状态。 如果要查看扩展的状态，请选择虚拟机，选择“扩展” ，并选择所需的扩展。
+此外，还可以在 Azure 门户中找到扩展执行状态。 要查看扩展的状态，请选择虚拟机，选择“扩展”，并选择所需的扩展。
 
 ### <a name="rerun-a-vm-extension"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行虚拟机扩展。 如果要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 Azure CLI 模块运行以下命令。 请将示例参数名称替换成自己的值。
+在某些情况下，可能需要重新运行虚拟机扩展。 要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 Azure CLI 模块运行以下命令。 请将示例参数名称替换成自己的值。
 
 ```azurecli
 az vm extension delete --name customScript --resource-group myResourceGroup --vm-name myVM

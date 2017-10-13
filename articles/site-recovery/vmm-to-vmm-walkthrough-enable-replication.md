@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
 ms.openlocfilehash: 6673d192dbc18bfc955d9e7e3c55893512511ffb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-9-enable-replication-to-a-secondary-site-for-hyper-v-vms"></a>步骤 9：实现将 Hyper-V VM 复制到辅助站点
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 08/03/2017
 
     ![启用复制](./media/vmm-to-vmm-walkthrough-enable-replication/enable-replication1.png)
 
-2. 在“源”中，选择 VMM 服务器和要复制的 Hyper-V 主机所在的云。 。
+2. 在“源”中，选择 VMM 服务器和要复制的 Hyper-V 主机所在的云。 然后单击“确定”。
 
     ![启用复制](./media/vmm-to-vmm-walkthrough-enable-replication/enable-replication2.png)
 3. 在“目标”中，确认辅助 VMM 服务器和云。

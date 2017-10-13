@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
 ms.openlocfilehash: a470a8bc70365a1891fc57efc6d2d4391162fd17
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 在启动并运行 Azure 多重身份验证后，可以参考本文进行管理。  本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。  并非所有版本的 Azure 多重身份验证都提供了这些功能。
@@ -297,7 +297,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 ![不再询问 - 屏幕截图](./media/multi-factor-authentication-whats-next/trusted.png)
 
 ## <a name="selectable-verification-methods"></a>可选择验证方法
-可以选择用户可以使用哪些验证方法。 下表提供每个方法的简要概述。
+可以选择哪些验证方法可供用户使用。 下表提供每个方法的简要概述。
 
 当用户注册 MFA 帐户时，可以选择已启用选项之外的首选验证方法。 [设置我的双重验证帐户](multi-factor-authentication-end-user-first-time.md)中介绍了注册过程指导
 

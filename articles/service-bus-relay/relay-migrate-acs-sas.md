@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
 ms.openlocfilehash: fb331bf6e11ac8378004c6da73b589130f9a8ddf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
 过去，Azure 中继应用程序有两种不同的授权模型可以选择。一种是中继服务直接提供的[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 令牌模型。另一种是联合模型，其中授权规则是由 [Azure Active Directory](/azure/active-directory/) 访问控制服务 (ACS) 在内部进行管理，从 ACS 获取的令牌会传递到中继，以授予对相应功能的访问权限。
@@ -47,7 +45,7 @@ ACS 和中继通过签名密钥这一共用概念进行集成。 ACS 命名空�
 
 有关复杂规则集迁移方面的帮助，可以联系 [Azure 支持部门](https://azure.microsoft.com/support/options/)。 前两个方案启用的是直接迁移。
 
-### <a name="unchanged-defaults"></a>未更改的默认值
+### <a name="unchanged-defaults"></a>未更改默认值
 
 如果应用程序未更改 ACS 默认值，可以将使用的所有 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 替换为 [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 对象，并使用命名空间预配置的 RootManageSharedAccessKey，而不是 ACS 所有者帐户。 请注意，即使使用 ACS 所有者帐户，通常也都不建议使用这种配置（现在仍不建议），因为此帐户/规则提供对命名空间的完整管理权限，包括删除任何实体的权限。
 
@@ -67,6 +65,5 @@ SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因
 
 * [Azure 中继身份验证和授权](relay-authentication-and-authorization.md)
 * [附有共享访问签名的服务总线身份验证](../service-bus-messaging/service-bus-sas.md)
-
 
 

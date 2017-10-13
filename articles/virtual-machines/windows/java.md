@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
 ms.openlocfilehash: b9e739a07c5863577285fb3a221b372b385c6762
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 

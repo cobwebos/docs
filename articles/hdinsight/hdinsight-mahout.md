@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: larryfr
 ms.openlocfilehash: 934de9ca2df48b29ef7a56d5729d59d77875ea7b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>将 Apache Mahout 与 HDInsight (PowerShell) 中的 Hadoop 配合使用生成电影推荐
 
@@ -73,7 +73,7 @@ user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` �
 使用以下 Windows PowerShell 脚本来运行作业，以将 Mahout 推荐引擎用于电影数据：
 
 > [!NOTE]
-> 此文件会提示你输入用于连接到 HDInsight 群集和运行作业的信息。 完成作业和下载 output.txt 文件可能需要几分钟时间。
+> 此文件会提示输入用于连接到 HDInsight 群集和运行作业的信息。 完成作业和下载 output.txt 文件可能需要几分钟时间。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
@@ -208,11 +208,11 @@ foreach($blob in $blobs)
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-如果要运行使用这些类的作业，请使用 SSH 连接到 HDInsight 群集，并从命令行运行这些作业。 有关使用 SSH 运行 Mahout 作业的示例，请参阅[使用 Mahout 和 HDInsight (SSH) 生成电影推荐](hdinsight-hadoop-mahout-linux-mac.md)。
+要运行使用这些类的作业，请使用 SSH 连接到 HDInsight 群集，并从命令行运行这些作业。 有关使用 SSH 运行 Mahout 作业的示例，请参阅[使用 Mahout 和 HDInsight (SSH) 生成电影推荐](hdinsight-hadoop-mahout-linux-mac.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-既已学习如何使用 Mahout，可探索在 HDInsight 上处理数据的其他方式：
+现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
 
 * [Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
 * [Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)

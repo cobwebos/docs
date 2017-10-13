@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 6b4b0e3ab126e70e4b27b971b15127aae0486bed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
 
@@ -354,5 +353,4 @@ ms.lasthandoff: 09/23/2017
 [201]: ./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_general_203.png
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a5bbf899fd13de4c5a7d3379e2231828c102b372
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
 本主题演示如何使用 Azure 数据工厂 (ADF)，通过 Azure Blob 存储将数据从本地 SQL Server 数据库移到 SQL Azure 数据库。
@@ -326,4 +325,3 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 在管道执行后，应能看到数据显示在为 blob 选择的容器中，每天一个文件。
 
 请注意：我们并未使用 ADF 提供的功能以用管道增量输送数据。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。
-

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.openlocfilehash: ad87534af448356b8cc80d8ddd278bfb8a9165e7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>教程：将 Azure Active Directory 与 vxMaintain 集成
 

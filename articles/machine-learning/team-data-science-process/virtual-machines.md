@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 88fe9673176cdade92faad4bbdcb2e1bd11f4a55
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-azure-data-science-virtual-machines-as-ipython-notebook-servers"></a>将 Azure 数据科学虚拟机设置为 IPython Notebook 服务器
 此处介绍如何设置 Azure VM 和以 SQL 服务作为 IPython Notebook 服务器的 Azure VM。 使用支持工具配置 Windows 虚拟机，如 IPython Notebook、Azure 存储资源管理器和 AzCopy 以及其他可用于对数据科学项目的实用程序。 例如，Azure 存储资源管理器和 AzCopy 提供了从本地计算机将数据上传到 Azure 存储或从存储下载到本地计算机的便捷方法。 
@@ -44,5 +43,4 @@ ms.lasthandoff: 09/25/2017
 > Azure 虚拟机定价为**只为自己使用的东西付费**。 为了确保不会在不使用虚拟机时付费，它必须位于 [Azure 经典门户](http://manage.windowsazure.com/)的“已停止(已解除分配)”状态。 有关分步说明或如何解除分配虚拟机的信息，请参阅[关闭并在不使用虚拟机时取消分配](../data-science-virtual-machine/setup-virtual-machine.md#shutdown)
 > 
 > 
-
 

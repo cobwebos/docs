@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/25/2017
 ms.author: cbrooks
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: de52e9cb32e28d2f40a56743ed759b5d5d0a63f0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -367,4 +366,3 @@ az storage account update --resource-group "myresourcegroup" --name "mystorageac
 详细了解[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)中的 Azure 网络服务终结点。
 
 深入了解 [Azure 存储安全指南](storage-security-guide.md)中的 Azure 存储安全。
-

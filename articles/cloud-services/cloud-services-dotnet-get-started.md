@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: bb5897a392e500de685421769c414441ddfeb6a3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
@@ -401,7 +400,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 ### <a name="add-code-files"></a>添加代码文件
 在本部分，将代码文件从已下载的解决方案复制到新的解决方案。 以下各节会显示并解释此代码的关键部分。
 
-要将文件添加到某个项目或文件夹，请右键单击该项目或文件夹，然后单击“添加” “现有项” - 。 选择所需的文件，并单击“添加” 。 如果询问你是否想要替换现有文件，请单击“是”。
+要将文件添加到某个项目或文件夹，请右键单击该项目或文件夹，然后单击“添加”&amp;gt;“现有项” - 。 选择所需的文件，并单击“添加” 。 如果询问你是否想要替换现有文件，请单击“是”。
 
 1. 在 ContosoAdsCommon 项目中，删除 *Class1.cs* 文件，并在其原位置添加来自下载项目的 *Ad.cs* 和 *ContosoAdscontext.cs* 文件。
 2. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
@@ -780,4 +779,3 @@ Contoso 广告应用程序有意保持入门教程的简单性。 例如，它�
 * [如何管理云服务](cloud-services-how-to-manage.md)
 * [Azure 存储](/documentation/services/storage/)
 * [如何选择云服务提供商](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-

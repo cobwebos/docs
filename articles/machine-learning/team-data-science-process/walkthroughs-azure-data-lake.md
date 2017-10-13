@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 100f75c5d21d5723bd7438b49e982ff116b75908
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>使用 U-SQL 的 Azure Data Lake 数据科学演练
 
 这些演练在 Azure Data Lake 中使用 U-SQL 进行预测分析。 它们遵循 Team Data Science Process 中所述的步骤。 有关 Team Data Science Process 的概述，请参阅[数据科学过程](overview.md)。 有关 Azure Data Lake 的简介，请参阅 [Azure Data Lake Store 概述](../../data-lake-store/data-lake-store-overview.md)。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.openlocfilehash: 5f099201d9018a6f8577cb3daf127d09560fb94b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -55,7 +55,7 @@ ms.lasthandoff: 08/18/2017
 2. 找到域名管理页后，再找允许编辑 DNS 记录的链接。 此链接可能作为“区域文件”、“DNS 记录”或“高级”配置链接列出。
    
    * 该页面将很可能有几个已经创建的记录，例如将 '**@**' 或 '\*' 与“域驻留”页面关联的条目。 它还可能包含用于常见子域（例如 **www**）的记录。
-   * 该页将涉及 **CNAME 记录**，或者提供用于选择记录类型的下拉列表。 它还可能涉及其他记录，例如 **A 记录**和 **MX 记录**。 在某些情况下，CNAME 记录会通过其他名称（例如**别名记录**）调用。
+   * 该页将涉及 **CNAME 记录**，或者提供用于选择记录类型的下拉列表。 它还可能涉及其他记录，例如 **A 记录**和 **MX 记录**。 在某些情况下，CNAME 记录将通过其他名称（例如**别名记录**）调用。
    * 该页还提供了用于从 **主机名** 或 **域名** **映射** 到另一域名的字段。
 3. 虽然各个注册机构的具体情况不同，但是一般而言，是 *从* 自定义域名（例如 **contoso.com**）映射 *到* 用于 Web 应用的流量管理器域名 (**contoso.trafficmanager.net**)。
    

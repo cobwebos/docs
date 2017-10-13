@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
 ms.openlocfilehash: 1b26d7925fe5bd39905d9f51d22433b1eea43af6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测
 
@@ -126,7 +126,7 @@ IncomingBitrate|实际传入比特率|784548
 OverlapCount|引入中的重叠|0
 DiscontinuityCount|轨道的中断|0
 LastTimestamp|上次引入数据的时间戳|1800488800
-NonincreasingCount|由于非递增时间戳而丢弃的片段计数|2
+NonincreasingCount|由于非递增时间戳而丢弃的片段计数|#N/A
 UnalignedKeyFrames|是否收到关键帧不一致的片段（跨音质级别） |True
 UnalignedPresentationTime|是否收到演示时间不一致的片段（跨音质级别/轨道）|True
 UnexpectedBitrate|如果音频/视频轨道的计算/实际比特率 > 40,000 bps 且 IncomingBitrate == 0，或者 IncomingBitrate 和 actualBitrate 相差 50%，则为 true |True

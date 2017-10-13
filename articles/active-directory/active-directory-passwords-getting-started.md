@@ -16,12 +16,11 @@ ms.topic: get-started-article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: 8497c6c6d7cfc6c4457073783d20f48a722ea18e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 07c7f3ad066c735054cb339f6e09aa4d7d23f23a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-azure-ad-self-service-password-reset"></a>快速入门：Azure AD 自助密码重置
 
@@ -47,8 +46,7 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
         * **电子邮件**：向用户配置的身份验证电子邮件地址发送含代码的电子邮件
         * **手机**：允许用户选择是通过其配置的手机号码接电话，还是接收含代码的短信
         * **办公电话**：通过用户配置的办公电话号码呼叫用户，告知其代码
-        * 
-            **安全问题**：要求选择
+        * **安全问题**：要求选择
             * 注册所需的问题数 - 成功注册所需的最少问题数，即用户可以选择回答更多的问题，以便创建一个问题池，其中的问题可供抽取。 此选项可以设置为 3-5 个问题，该数目必须大于或等于重置所需的问题数。
                 * 可以添加自定义问题，只需在选择安全问题时单击“自定义”按钮即可
             * 重置所需的问题数 - 可以设置为 3-5 个问题，用户必须正确回答这些问题才能重置或解锁密码。
@@ -99,5 +97,4 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 
 > [!div class="nextstepaction"]
 > [启用自助服务密码重置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
-
 

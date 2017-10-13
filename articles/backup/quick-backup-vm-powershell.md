@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/18/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 3ca0e9d905e23e25b57b46454399ad12e2890d52
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
 Azure PowerShell 模块用于从命令行或脚本创建和管理 Azure 资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure PowerShell 模块备份虚拟机 (VM)。 也可以使用 [Azure CLI](quick-backup-vm-cli.md) 或 [Azure 门户](quick-backup-vm-portal.md)执行这些步骤。
 

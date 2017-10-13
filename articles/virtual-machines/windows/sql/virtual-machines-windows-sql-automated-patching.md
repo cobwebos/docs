@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 07/05/2017
 ms.author: jroth
 ms.openlocfilehash: 7d501ab45a85010a8dbfd6135d77f18f1743354e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-自动修补为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，此限制可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 自动修补依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
+自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，此限制可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 自动修补依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="settings"></a>设置
-下表描述了可为自动修补配置的选项。 实际配置步骤根据使用的是 Azure 门户还是 Azure Windows PowerShell 命令而有所不同。
+下表描述了可为自动修补配置的选项。 实际配置步骤根据你使用的是 Azure 门户还是 Azure Windows PowerShell 命令而有所不同。
 
 | 设置 | 可能的值 | 说明 |
 | --- | --- | --- |
@@ -102,7 +102,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
 预配 SQL VM 后，使用 PowerShell 配置自动修补。
 
-以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 **AzureRM.Compute\New-AzureVMSqlServerAutoPatchingConfig** 命令可以为自动更新配置新的维护时段。
+以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 **AzureRM.Compute\New-AzureVMSqlServerAutoPatchingConfig** 命令将为自动更新配置新的维护时段。
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"

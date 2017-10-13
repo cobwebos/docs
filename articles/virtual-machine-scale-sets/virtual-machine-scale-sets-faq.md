@@ -16,14 +16,12 @@ ms.topic: article
 ms.date: 9/14/2017
 ms.author: negat
 ms.custom: na
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: cc5a0ba5474827cedc5b6a42651c206d5f2540b7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
 获取有关 Azure 虚拟机规模集常见问题的解答。
@@ -703,5 +701,4 @@ IP 地址是从指定的子网中选择的。
 - 想要更快速地启动一组 VM，而不是扩大虚拟机规模集。
   - 出于这种方案，可能创建了自己的自动缩放引擎，并希望以更快的速度完成端到端缩放。
 - 虚拟机规模集未均匀分布在容错域或更新域。 这可能是由于有选择地删除了 VM，或者因为过度预配后，VM 被删除。 在虚拟机规模集上先运行 `stop deallocate`，然后运行 `start`，可以将 VM 均匀地分布到容错域或更新域。
-
 

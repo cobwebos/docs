@@ -16,12 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/25/2017
 ms.author: sashan
-ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
 ms.openlocfilehash: 4963598837b71e812ad3750aad9d20c8460111d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -158,4 +157,3 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 
 ## <a name="next-steps"></a>后续步骤
 若要探讨为独立数据库和弹性池设计应用程序时的注意事项，请参阅[设计用于云灾难恢复的应用程序](sql-database-designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
-

@@ -7,18 +7,16 @@ ms.author: salonis
 manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
-ms.custom: mvc
+ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/15/2017
+ms.openlocfilehash: 342e7dfd35ce890cda4a1d98613592353a63d7e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 481e2552e2a2cd91d026774438788143109b28df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Python 进行连接并查询数据
 本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure Database for PostgreSQL， 同时还演示了如何通过 macOS、Ubuntu Linux 和 Windows 平台，使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Python 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
@@ -211,4 +209,3 @@ conn.close()
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
-

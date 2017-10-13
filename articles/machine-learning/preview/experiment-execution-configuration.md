@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/17/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bb1c7d318939c42edb9a51e28dec31593f2485f9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-azure-machine-learning-experiment-execution-service"></a>Azure 机器学习试验执行服务概览
 凭借 Azure ML（Azure 机器学习）试验执行服务，数据科学家可使用 Azure ML 的执行和运行管理功能来执行其试验。 它通过快速迭代提供敏捷试验的框架。 使用 Azure ML Workbench，可从计算机上的本地运行开始，轻松纵向和横向扩展到其他环境，如使用 GPU 的远程数据科学 VM 或运行 Spark 的 HDInsight 群集。
 
@@ -254,4 +252,3 @@ Azure ML Workbench 使用 Conda 在 HDInsight 群集上准备和管理执行环�
 ## <a name="next-steps"></a>后续步骤
 * [创建和安装 Azure 机器学习](quickstart-installation.md)
 * [模型管理](model-management-overview.md)
-

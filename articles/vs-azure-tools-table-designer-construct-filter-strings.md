@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: kraigb
 ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>为表设计器构造筛选字符串
 ## <a name="overview"></a>概述
@@ -65,22 +65,22 @@ WCF 数据服务基于[开放数据协议](http://go.microsoft.com/fwlink/p/?Lin
 ## <a name="filtering-on-numeric-properties"></a>针对数值属性进行筛选
 若要对整数或浮点数进行筛选，请指定不带引号的数字。
 
-此示例返回 Age 属性值大于 30 的所有实体：
+此示例将返回 Age 属性值大于 30 的所有实体：
 
     Age gt 30
 
-此示例返回 AmountDue 属性值小于或等于 100.25 的所有实体：
+此示例将返回 AmountDue 属性值小于或等于 100.25 的所有实体：
 
     AmountDue le 100.25
 
 ## <a name="filtering-on-boolean-properties"></a>针对布尔值属性进行筛选
 若要对布尔值进行筛选，请指定 **true** 或 **false**（不带引号）。
 
-以下示例返回 IsActive 属性设置为 **true**的所有实体：
+以下示例将返回 IsActive 属性设置为 **true** 的所有实体：
 
     IsActive eq true
 
-也可以在不使用逻辑运算符的情况下编写此筛选器表达式。 在以下示例中，表服务还会返回 IsActive 为 **true** 的所有实体：
+也可以在不使用逻辑运算符的情况下编写此筛选器表达式。 在以下示例中，表服务还将返回 IsActive 为 **true** 的所有实体：
 
     IsActive
 
@@ -91,6 +91,6 @@ WCF 数据服务基于[开放数据协议](http://go.microsoft.com/fwlink/p/?Lin
 ## <a name="filtering-on-datetime-properties"></a>针对日期时间属性进行筛选
 若要对日期时间值进行筛选，请指定 **datetime** 关键字，后接单引号括起来的日期/时间常量。 日期/时间常量必须采用组合的 UTC 格式，如 [Formatting DateTime Property Values](http://go.microsoft.com/fwlink/p/?LinkId=400449)（设置 DateTime 属性值格式）中所述。
 
-以下示例返回 CustomerSince 属性等于 2008-07-10 的实体：
+以下示例将返回 CustomerSince 属性等于 2008-07-10 的实体：
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 ms.openlocfilehash: 325be23cffc9c728a8af6f92a0f3dce6d31da4ae
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy"></a>在经典门户（旧版）中使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/29/2017
 ## <a name="overview"></a>概述
 组织需要制定 BCDR 策略来确定应用、工作负荷和数据如何在计划和非计划停机期间保持运行和可用，并尽快恢复正常运行情况。 BCDR 策略应保持业务数据的安全性和可恢复性，并确保在发生灾难时工作负荷持续可用。
 
-站点恢复是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，可以故障回复到主要位置。 在 [什么是 Azure Site Recovery？](site-recovery-overview.md)
+站点恢复是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，可以故障转移回到主要位置。 在 [什么是 Azure Site Recovery？](site-recovery-overview.md)
 
 > [!WARNING]
 > 本文介绍的是**旧版说明**。 进行新部署时请勿参考本文， 相反，[请按这些说明操作](site-recovery-vmware-to-azure.md)，在 Azure 门户中部署 Site Recovery，或[参考这些说明](site-recovery-vmware-to-azure-classic.md)，在经典门户中配置增强型部署。 如果已使用本文所述方法进行了部署，我们建议在经典部门中迁移到增强型部署。
@@ -41,7 +41,7 @@ ms.lasthandoff: 08/29/2017
 >
 
 ## <a name="migrate-to-the-enhanced-deployment"></a>迁移到增强型部署
-仅当已使用本文中的说明部署了 Site Recovery 时，本部分才有关。
+仅已使用本文中的说明部署了站点恢复时，本部分才有关。
 
 若要迁移现有的部署，需执行以下操作：
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 08/29/2017
 
 * 建议设置迁移的维护时段。
 * 只有在现有保护组已在旧部署过程中创建的情况下，“**迁移计算机**”选项才可用。
-* 完成迁移步骤以后，可能需要 15 分钟或更长的时间才能完成凭据的刷新以及虚拟机的发现和刷新（刷新后才能将其添加到保护组）。 可以手动刷新，而无需等待。
+* 完成迁移步骤以后，可能需要 15 分钟或更长的时间才能完成凭据的刷新以及虚拟机的发现和刷新（刷新后才能将其添加到保护组）。 可以手动刷新，而不必等待。
 
 按如下方式进行迁移：
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/29/2017
 1. 在“**指定帐户**”中，选择已为进程服务器创建的用于访问计算机的帐户，从而推送新版移动服务。
 
    ![添加帐户](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration4.png)
-2. Site Recovery 会将已复制数据迁移到所提供的 Azure 存储帐户。 可以选择性地重复使用旧部署中使用的存储帐户。
+2. Site Recovery 会将已复制数据迁移到所提供的 Azure 存储帐户。 （可选）可以重复使用在旧部署中使用的存储帐户。
 3. 作业完成后，虚拟机会自动同步。 同步完成后，可以从旧保护组中删除虚拟机。
 4. 所有计算机都迁移完以后，可以删除旧保护组。
 5. 请记住，在同步完成后，需要指定计算机的故障转移属性以及 Azure 网络设置。
@@ -107,7 +107,7 @@ ms.lasthandoff: 08/29/2017
 | **本地计算机** |本地 VMware 虚拟机，或运行 Windows 或 Linux 的物理服务器。 |配置要应用到一个或多个计算机的复制设置。 可以将故障转移单个计算机，更常见的做法是在恢复方案中聚合多个计算机。 |
 | **移动服务** |在要保护的每个虚拟机或物理服务器上安装<br/><br/> 可以手动安装，也可以在启用计算机复制时由进程服务器自动推送并安装。 |移动服务在初始复制（重新同步）期间将数据发送到进程服务器。 当计算机处于受保护的状态后（重新同步完成后），移动服务将捕获内存中的磁盘写入，并将其发送到进程服务器。 Windows 服务器的应用程序一致性是使用 VSS 实现的。 |
 | **Azure Site Recovery 保管库** |使用 Azure 订阅创建 Site Recovery 保管库，并在保管库中注册服务器。 |保管库可协调和安排本地站点与 Azure 之间的数据复制、故障转移和恢复。 |
-| **复制机制** |**通过 Internet** 通过 Internet 使用安全 SSL/TLS 通道通信，并将数据从受保护的本地服务器复制到 Azure。 这是默认选项。<br/><br/> **VPN/ExpressRoute** - 通过 VPN 连接通信，并在本地服务器与 Azure 之间复制数据。 需要在本地站点与 Azure 网络之间设置站点到站点 VPN 或 ExpressRoute 连接。<br/><br/> 请选择在站点恢复部署期间要如何进行复制。 配置机制后，无法在不影响现有计算机的复制的前提下更改该机制。 |无论是哪个选项，都不需要在受保护的计算机上打开任何入站网络端口。 所有网络通信都从本地站点启动。 |
+| **复制机制** |**通过 Internet** 通过 Internet 使用安全 SSL/TLS 通道通信，并将数据从受保护的本地服务器复制到 Azure。 这是默认选项。<br/><br/> **VPN/ExpressRoute** - 通过 VPN 连接通信，并在本地服务器与 Azure 之间复制数据。 需要在本地站点与 Azure 网络之间设置站点到站点 VPN 或 ExpressRoute 连接。<br/><br/> 需要选择在站点恢复部署期间要如何进行复制。 配置机制后，无法在不影响现有计算机的复制的前提下更改该机制。 |无论是哪个选项，都不需要在受保护的计算机上打开任何入站网络端口。 所有网络通信都从本地站点启动。 |
 
 ## <a name="capacity-planning"></a>容量规划
 需要考虑的主要方面：
@@ -199,8 +199,8 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | **Azure 帐户** |需要一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 | |
 | **Azure 存储** |需要使用 Azure 存储帐户来存储复制的数据<br/><br/> 帐户应为[标准异地冗余存储帐户](../storage/common/storage-redundancy.md#geo-redundant-storage)或[高级存储帐户](../storage/common/storage-premium-storage.md)。<br/><br/> 该帐户必须位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅相关联。 我们不支持跨资源组移动使用[新 Azure 门户](../storage/common/storage-create-storage-account.md)创建的存储帐户。<br/><br/> 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md) | |
-| **Azure 虚拟网络** |需要 Azure 虚拟网络，配置服务器和主目标服务器都部署在该网络上。 它应该位于 Azure Site Recovery 保管库所在的订阅和区域中。 如果希望通过 ExpressRoute 或 VPN 连接复制数据，Azure 虚拟网络必须通过 ExpressRoute 连接或站点到站点 VPN 连接到本地网络。 | |
-| **Azure 资源** |确保拥有足够的 Azure 资源用于部署所有组件。 详细了解 [Azure 订阅限制](../azure-subscription-service-limits.md)。 | |
+| **Azure 虚拟网络** |需要 Azure 虚拟网络，配置服务器和主目标服务器将部署在该网络上。 它应该位于 Azure Site Recovery 保管库所在的订阅和区域中。 如果要通过 ExpressRoute 或 VPN 连接复制数据，Azure 虚拟网络必须通过 ExpressRoute 连接或站点到站点 VPN 连接到本地网络。 | |
+| **Azure 资源** |确保有足够的 Azure 资源用于部署所有组件。 详细了解 [Azure 订阅限制](../azure-subscription-service-limits.md)。 | |
 | **Azure 虚拟机** |要保护的虚拟机应符合 [Azure 先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。<br/><br/> **磁盘计数** - 单个受保护的服务器最多可以支持 31 个磁盘<br/><br/> **磁盘大小** - 单个磁盘的容量不能超过 1023 GB<br/><br/> **群集** - 不支持群集服务器<br/><br/> **启动** - 不支持统一可扩展固件接口 (UEFI)/可扩展固件接口 (EFI) 启动<br/><br/> **卷** - 不支持 Bitlocker 加密卷<br/><br/> **服务器名称** - 名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 在计算机受到保护后，可以修改 Azure 名称。 | |
 | **配置服务器** |在订阅中针对配置服务器创建基于 Azure Site Recovery Windows Server 2012 R2 库映像的标准 A3 虚拟机。 它将作为第一个实例在新的云服务中创建。 如果选择“公共 Internet”作为配置服务器的连接类型，将使用保留的公共 IP 地址创建云服务。<br/><br/> 安装路径应该只包含英文字符。 | |
 | **主目标服务器** |Azure 虚拟机（标准 A4、D14 或 DS4）。<br/><br/> 安装路径应该只包含英文字符。 例如，对于运行 Linux 的主目标服务器，路径应为 **/usr/local/ASR**。 | |
@@ -250,7 +250,7 @@ ms.lasthandoff: 08/29/2017
    * 指定要分配到该服务器的内部 IP 地址和子网。 请注意，任何子网中的前四个 IP 地址保留给 Azure 内部使用。 请使用任何其他可用的 IP 地址。
 
      ![部署配置服务器](./media/site-recovery-vmware-to-azure-classic-legacy/cs-details.png)
-5. 单击“确定”  时，会在订阅中针对配置服务器创建基于 Azure Site Recovery Windows Server 2012 R2 库映像的标准 A3 虚拟机。 它将作为第一个实例在新的云服务中创建。 如果选择通过 Internet 建立连接，则会使用保留的公共 IP 地址创建云服务。 可以在“**作业**”选项卡中监视进度。
+5. 在单击“**确定**”时，会在订阅中针对配置服务器创建基于 Azure Site Recovery Windows Server 2012 R2 库映像的标准 A3 虚拟机。 它将作为第一个实例在新的云服务中创建。 如果选择通过 Internet 建立连接，则会使用保留的公共 IP 地址创建云服务。 可以在“**作业**”选项卡中监视进度。
 
     ![监视进度](./media/site-recovery-vmware-to-azure-classic-legacy/monitor-cs.png)
 6. 如果要通过 Internet 建立连接，请在部署配置服务器后，在 Azure 门户中的“**虚拟机**”页上记录分配给它的公共 IP 地址。 然后，在“终结点”选项卡中，记录映射到专用端口 443 的公用 HTTPS 端口。 稍后将主目标服务器和处理服务器注册到配置服务器时，需要用到这些信息。 配置服务器使用以下终结点部署：
@@ -283,8 +283,8 @@ ms.lasthandoff: 08/29/2017
 5. 在“**Internet 设置**”中，指定配置服务器连接 Internet 的方式。 请注意：
 
    * 如果希望使用自定义代理，则应当在安装该提供程序之前设置它。
-   * 单击“下一步”  时，会运行测试来检查代理连接。
-   * 如果确实使用了自定义代理，或者默认代理要求进行身份验证，则需要输入代理详细信息，包括地址、端口和凭据。
+   * 单击“**下一步**”时，会运行测试来检查代理连接。
+   * 如果确实使用自定义代理，或者默认代理要求进行身份验证，则需要输入代理详细信息，包括地址、端口和凭据。
    * 应可通过代理访问以下 URL：
      * *.hypervrecoverymanager.windowsazure.com
      * *.accesscontrol.windows.net
@@ -306,7 +306,7 @@ ms.lasthandoff: 08/29/2017
    * 选择“为 Cspsconfigtool 创建桌面图标”，在配置服务器上添加桌面快捷方式，以便能够随时打开“管理帐户”对话框，而无需重新运行向导。
 
      ![完成注册](./media/site-recovery-vmware-to-azure-classic-legacy/register-final.png)
-9. 单击“**完成**”，完成向导。 此时会生成一个通行短语。 将其复制到安全位置。 需要使用该通行短语，通过配置服务器对进程和主目标服务器进行身份验证和注册。 它还可用于确保配置服务器通信中的通道完整性。 可以重新生成该通行短语，但是此后，需要使用新通行短语重新注册主目标服务器和进程服务器。
+9. 单击“**完成**”，完成向导。 此时会生成一个通行短语。 将其复制到安全位置。 需要它进行身份验证，并将处理服务器和主目标服务器注册到配置服务器。 它还可用于确保配置服务器通信中的通道完整性。 可以重新生成该通行短语，但是此后，需要使用新通行短语重新注册主目标服务器和进程服务器。
 
     ![通行短语](./media/site-recovery-vmware-to-azure-classic-legacy/passphrase.png)
 
@@ -316,7 +316,7 @@ ms.lasthandoff: 08/29/2017
 在部署期间，Site Recovery 将请求以下操作的凭据：
 
 * 一个 VMware 帐户，可让站点恢复自动发现 vCenter 服务器或 vSphere 主机上的 VM。
-* 添加要保护的计算机，以便 Site Recovery 可在这些计算机上安装移动服务。
+* 添加要保护的计算机，以便  Site Recovery 可在这些计算机上安装移动服务时。
 
 注册配置服务器后，可以打开“**管理帐户**”对话框，添加和管理要用于这些操作的帐户。 可通过多种方式实现此目的：
 
@@ -361,7 +361,7 @@ ms.lasthandoff: 08/29/2017
    * 自定义 1：进程服务器使用公用端口来通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器。
    * PowerShell：专用端口 5986
    * 远程桌面：专用端口 3389
-2. 将使用这些终结点创建 Linux 主目标服务器 VM。 请注意，仅当通过 Internet 进行连接时，才创建公共终结点。
+2. 将使用这些终结点创建 Linux 主目标服务器 VM。 请注意，仅通过 Internet 进行连接时，才创建公共终结点。
 
    * 自定义：进程服务器使用公用端口通过 Internet 发送复制数据。 处理服务器使用专用端口 9443 来通过 VPN 将复制数据发送到主目标服务器。
    * 自定义 1：进程服务器使用公用端口通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器
@@ -374,12 +374,12 @@ ms.lasthandoff: 08/29/2017
 3. 在“**虚拟机**”中，等待虚拟机启动。
 
    * 如果它是 Windows 服务器，请记下远程桌面详细信息。
-   * 如果它是 Linux 服务器，并且需要通过 VPN 连接，请记下虚拟机的内部 IP 地址。 如果要通过 Internet 连接，请记下公用 IP 地址。
+   * 如果它是 Linux 服务器，并且要通过 VPN 连接，请记下虚拟机的内部 IP 地址。 如果要通过 Internet 连接，请记下公用 IP 地址。
 4. 登录到该服务器以完成安装，并将其注册到配置服务器。
 5. 如果运行的是 Windows，请执行以下操作：
 
-   1. 启动到虚拟机的远程桌面连接。 首次登录时，会在 PowerShell 窗口中运行一个脚本。 请勿将其关闭。 待其完成后，主机代理配置工具自动打开以注册服务器。
-   2. 在“**主机代理配置**”中，指定配置服务器的内部 IP 地址和端口 443。 可以使用内部地址和专用端口 443，即使没有通过 VPN 连接，因为虚拟机附加到配置服务器所在的 Azure 网络。 选中“**使用 HTTPS**”。 输入以前记下的配置服务器的密码。 单击“**确定**”，注册服务器。 可以忽略 NAT 选项。 这些选项不会用到。
+   1. 启动到虚拟机的远程桌面连接。 在首次登录时，会在 PowerShell 窗口中运行一个脚本。 请勿将其关闭。 在它完成之后，主机代理配置工具会自动打开以注册服务器。
+   2. 在“**主机代理配置**”中，指定配置服务器的内部 IP 地址和端口 443。 可以使用内部地址和专用端口 443，即使你没有通过 VPN 连接，因为虚拟机附加到配置服务器所在的 Azure 网络。 选中“**使用 HTTPS**”。 输入以前记下的配置服务器的密码。 单击“**确定**”，注册服务器。 可以忽略 NAT 选项。 这些选项不会用到。
    3. 如果估计的保留驱动器要求超过 1 TB，可以使用虚拟磁盘和[存储空间](http://blogs.technet.com/b/askpfeplat/archive/2013/10/21/storage-spaces-how-to-configure-storage-tiers-with-windows-server-2012-r2.aspx)来配置保留卷 (R:)
 
    ![Windows 主目标服务器](./media/site-recovery-vmware-to-azure-classic-legacy/target-register.png)
@@ -433,7 +433,7 @@ ms.lasthandoff: 08/29/2017
    ![选择适配器](./media/site-recovery-vmware-to-azure-classic-legacy/ps-nic.png)
 3. 在“**配置服务器详细信息**”中：
 
-   * 对于 IP 地址和端口，如果想要通过 VPN 连接，请指定配置服务器的内部 IP 地址和端口 443。 否则，请指定公用虚拟 IP 地址和映射的公用 HTTP 终结点。
+   * 对于 IP 地址和端口，如果要通过 VPN 连接，请指定配置服务器的内部 IP 地址和端口 443。 否则，请指定公用虚拟 IP 地址和映射的公用 HTTP 终结点。
    * 键入配置服务器的密码。
    * 如果要在使用自动推送安装服务时禁用验证，请取消选中“**验证移动服务软件签名**”。 签名验证需要来自处理器的 Internet 连接。
    * 单击“资源组名称” 的 Azure 数据工厂。
@@ -529,7 +529,7 @@ ms.lasthandoff: 08/29/2017
 * 手动安装该服务。
 
 ### <a name="install-the-mobility-service-automatically"></a>自动安装移动服务
-在向保护组添加计算机时，进程服务器自动推送移动服务，并将其安装在每台计算机上。
+在向保护组添加计算机时，进程服务器会自动推送移动服务，并将其安装在每个计算机上。
 
 **在 Windows 服务器上自动推送安装移动服务：**
 
@@ -538,7 +538,7 @@ ms.lasthandoff: 08/29/2017
 3. 将 Windows 防火墙配置为允许“**文件和打印机共享**”和“**Windows Management Instrumentation**”。 在 Windows 防火墙设置中，选择“允许应用或功能通过防火墙”选项，并选择应用程序，如下图所示。 对于属于某个域的计算机，可以使用 GPO 配置防火墙策略。
 
     ![防火墙设置](./media/site-recovery-vmware-to-azure-classic-legacy/push-firewall.png)
-4. 用于执行推式安装的帐户必须位于要保护的计算机上的“管理员”组中。 这些凭据仅用于推送移动服务的安装，向保护组添加计算机时，需要提供这些凭据。
+4. 用于执行推式安装的帐户必须位于要保护的计算机上的“管理员”组中。 这些凭据仅用于推送移动服务的安装，在向保护组添加计算机时，将要提供这些凭据。
 5. 如果提供的帐户不是域帐户，需要在本地计算机上禁用远程用户访问控制。 为此，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 下添加值为 1 的 LocalAccountTokenFilterPolicy DWORD 注册表项。 若要从 CLI 添加注册表项，请打开 cmd 或 powershell 并输入 **`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**。
 
 **在 Linux 服务器上自动推送安装移动服务：**
@@ -579,14 +579,14 @@ ms.lasthandoff: 08/29/2017
 4. 选择“**移动服务**”作为角色，并单击“**下一步**”。
 
     ![安装移动服务](./media/site-recovery-vmware-to-azure-classic-legacy/ms-install.png)
-5. 将安装目录保留为默认安装路径，并单击“安装” 。
+5. 将安装目录保留为默认安装路径，然后单击“**安装**”。
 6. 在“**主机代理配置**”中，指定配置服务器的 IP 地址与 HTTPS 端口。
 
    * 如果通过 Internet 进行连接，请指定公共虚拟 IP 地址和公共 HTTPS 终结点作为端口。
    * 如果通过 VPN 进行连接，请指定内部 IP 地址和端口 443。 选中“**使用 HTTPS**”。
 
      ![安装移动服务](./media/site-recovery-vmware-to-azure-classic-legacy/ms-install2.png)
-7. 指定配置服务器通行短语，并单击“确定”  将移动服务注册到配置服务器。
+7. 指定配置服务器通行短语，然后单击“**确定**”将移动服务注册到配置服务器。
 
 **若要通过命令行运行，请执行以下操作：**
 
@@ -650,7 +650,7 @@ ms.lasthandoff: 08/29/2017
    >
 
     ![vCenter 服务器](./media/site-recovery-vmware-to-azure-classic-legacy/machine-resources.png)
-5. 在“**指定帐户**”中，选择用于在受保护的计算机上安装移动服务的帐户。 需要使用帐户凭据来自动安装移动服务。 如果无法选择帐户，请确保按步骤 2 中所述进行设置。 请注意，Azure 无法访问此帐户。 对于 Windows 服务器，帐户应该对源服务器具有管理员权限。 对于 Linux，帐户必须是 root。
+5. 在“**指定帐户**”中，选择用于在受保护的计算机上安装移动服务的帐户。 需要使用帐户凭据来自动安装移动服务。 如果无法选择帐户，请确保按步骤 2 中所述设置一个。 请注意，Azure 无法访问此帐户。 对于 Windows 服务器，帐户应该对源服务器具有管理员权限。 对于 Linux，帐户必须是 root。
 
     ![Linux 凭据](./media/site-recovery-vmware-to-azure-classic-legacy/mobility-account.png)
 6. 单击复选标记以完成向保护组添加计算机，并对每个计算机启动初始复制。 可以在“**作业**”页上监视状态。
@@ -662,7 +662,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="set-protected-machine-properties"></a>设置受保护的计算机属性
 1. 在计算机的状态为“**受保护**”后，可以配置其故障转移属性。 在“保护组详细信息”中，选择计算机，并打开“**配置**”选项卡。
-2. 故障转移后，便可以在 Azure 中修改要提供给计算机的名称，以及 Azure 虚拟机大小。 还可以选择故障转移后要将计算机连接到的 Azure 网络。
+2. 在故障转移后，可以在 Azure 中修改要提供给计算机的名称，以及 Azure 虚拟机大小。 还可以选择故障转移后要将计算机连接到的 Azure 网络。
 
    > [!NOTE]
    > 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../resource-group-move-resources.md)。
@@ -675,7 +675,7 @@ ms.lasthandoff: 08/29/2017
 
 * Azure 计算机的名称必须符合 Azure 要求。
 * 默认情况下，Azure 中的复制虚拟机不连接到 Azure 网络。 如果希望复制的虚拟机进行通信，请确保为其设置相同的 Azure 网络。
-* 如果调整了 VMware 虚拟机或物理服务器上卷的大小，它会进入关键状态。 如果需要修改大小，请执行以下操作：
+* 如果调整了 VMware 虚拟机或物理服务器上卷的大小，它将进入关键状态。 如果需要修改大小，请执行以下操作：
 
   * a) 更改大小设置。
   * b) 在“**虚拟机**”选项卡中选择虚拟机，并单击“**删除**”。
@@ -688,7 +688,7 @@ ms.lasthandoff: 08/29/2017
 目前只能为受保护的 VMware 虚拟机和物理服务器运行非计划的故障转移。 注意以下事项：
 
 * 启动故障转移之前，请确保配置服务器和主目标服务器正常运行， 否则故障转移会失败。
-* 在执行非计划的故障转移期间，源计算机不会关闭。 执行非计划的故障转移会停止受保护服务器的数据复制。 需要从保护组中删除计算机并重新添加，才能在未计划的故障转移完成之后再次开始保护计算机。
+* 在执行非计划的故障转移期间，源计算机不会关闭。 执行非计划的故障转移会停止受保护服务器的数据复制。 需要从保护组中删除计算机并重新添加，才能在非计划的故障转移完成之后再次开始保护计算机。
 * 如果想要故障转移而不丢失任何数据，请确保主站点虚拟机在启动故障转移之前已关闭。
 
 1. 在“**恢复计划**”页上，添加恢复计划。 指定该计划的详细信息，并选择“**Azure**”作为目标。
@@ -697,7 +697,7 @@ ms.lasthandoff: 08/29/2017
 2. 在“**选择虚拟机**”中，选择保护组，并选择该组中要添加到恢复计划的计算机。 [详细了解](site-recovery-create-recovery-plans.md)恢复计划。
 
     ![添加虚拟机](./media/site-recovery-vmware-to-azure-classic-legacy/rplan2.png)
-3. 如果有需要，可以自定义该计划以创建组，并排列顺序，恢复计划中的计算机以该顺序进行故障转移。 还可以添加手动操作和脚本的提示。 在恢复到 Azure 时，可以使用 [Azure 自动化 Runbook](site-recovery-runbook-automation.md) 添加脚本。
+3. 如果需要，可以自定义该计划以创建组，并排列顺序，恢复计划中的计算机以该顺序进行故障转移。 还可以添加手动操作和脚本的提示。 在恢复到 Azure 时，可以使用 [Azure 自动化 Runbook](site-recovery-runbook-automation.md) 添加脚本。
 4. 在“**恢复计划**”页中，选择该计划，并单击“**非计划的故障转移**”。
 5. 在“**确认故障转移**”中，确认故障转移方向（到 Azure），并选择要故障转移到的恢复点。
 6. 等待故障转移作业完成，验证故障转移是否按预期工作，以及复制的虚拟机是否在 Azure 中成功启动。
@@ -706,14 +706,14 @@ ms.lasthandoff: 08/29/2017
 [详细了解](site-recovery-failback-azure-to-vmware-classic-legacy.md)如何将 Azure 中运行的已故障转移的计算机恢复到本地环境。
 
 ## <a name="manage-your-process-servers"></a>管理进程服务器
-进程服务器将复制数据发送到 Azure 中的主目标服务器，并发现已添加到 vCenter 服务器的新 VMware 虚拟机。 在以下情况中，可能需要更改部署中的进程服务器：
+进程服务器将复制数据发送到 Azure 中的主目标服务器，并发现已添加到 vCenter 服务器的新 VMware 虚拟机。 在以下情况下，可能要更改部署中的进程服务器：
 
 * 如果当前进程服务器已关闭
 * 如果恢复点目标 (RPO) 提升到组织无法接受的程度。
 
 如果需要，可以将部分或所有本地 VMware 虚拟机和物理服务器的复制转移到另一台进程服务器。 例如：
 
-* **故障** - 如果进程服务器发生故障或不可用，可以将受保护的计算机复制转移到另一台进程服务器。 源计算机和副本计算机的元数据将转移到新的进程服务器并且会重新同步。 新的进程服务器自动连接到 vCenter 服务器以执行自动发现。 可以在 Site Recovery 仪表板上监视进程服务器的状态。
+* **故障** - 如果进程服务器发生故障或不可用，可以将受保护的计算机复制转移到另一台进程服务器。 源计算机和副本计算机的元数据将转移到新的进程服务器并且会重新同步。 新的进程服务器会自动连接到 vCenter 服务器以执行自动发现。 可以在 Site Recovery 仪表板上监视进程服务器的状态。
 * **负载平衡以调整 RPO** - 若要改善负载平衡，你可以在 Site Recovery 门户中选择其他进程服务器，然后将一台或多台计算机的复制转移到该服务器，以手动进行负载平衡。 在此情况下，选择的源和副本计算机的元数据将转移到新的进程服务器。 原始进程服务器仍然连接到 vCenter 服务器。
 
 ### <a name="monitor-the-process-server"></a>监视进程服务器
@@ -727,7 +727,7 @@ ms.lasthandoff: 08/29/2017
 3. 在“**更改进程服务器**” > “**目标进程服务器**”中选择要使用的新服务器，并选择要复制到新服务器的虚拟机。 单击服务器名称旁边的信息图标，以查看可用空间和已用内存的详细信息。 随后会显示将每个所选虚拟机复制到新进程服务器所需的平均空间，以帮助你做出负载决策。
 
     ![更改进程服务器 2](./media/site-recovery-vmware-to-azure-classic-legacy/change-ps2.png)
-4. 单击复选标记以开始复制到新的进程服务器。 请注意，如果从某个重要的进程服务器中删除所有虚拟机，仪表板中应不再会显示关键警告。
+4. 单击复选标记以开始复制到新的进程服务器。 请注意，如果从某个重要的进程服务器中删除所有虚拟机，仪表板中应该不再会显示关键警告。
 
 ## <a name="third-party-software-notices-and-information"></a>第三方软件通知和信息
 Do Not Translate or Localize

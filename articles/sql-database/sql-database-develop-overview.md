@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
 ms.openlocfilehash: 47d119e4e4fd1420186e8600c8c085ab939fa6a5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
@@ -77,4 +76,3 @@ Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据�
 
 ## <a name="next-steps"></a>后续步骤
 浏览所有 [SQL 数据库的功能](sql-database-technical-overview.md)。
-

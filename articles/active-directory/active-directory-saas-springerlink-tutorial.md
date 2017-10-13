@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: jeedes
 ms.openlocfilehash: b9aec6f8f293cdd31456a7f50e3efe792804c7c8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>教程：Azure Active Directory 与 Springer Link 集成
 

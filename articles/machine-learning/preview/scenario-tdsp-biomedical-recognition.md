@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a13bbd5d32eaab96dfb97e60652dbe9bcbdfb1b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>使用 Team Data Science Process (TDSP) 模板的生物医学实体识别
 
 这个真实场景旨在重点介绍如何使用 Azure 机器学习工作台来解决复杂的自然语言处理 (NLP) 任务，如非结构化文本的实体提取：
@@ -269,5 +267,4 @@ Vanilla RNN 实际上会受到[梯度消失问题](https://en.wikipedia.org/wiki
 * [循环神经网络](https://www.tensorflow.org/tutorials/recurrent)
 * [使用 Spark ml Word2Vec 遇到的问题](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/problems-encountered-with-spark-ml-word2vec/)
 * [Spark Word2Vec：经验教训](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/spark-word2vec-lessons-learned/)
-
 

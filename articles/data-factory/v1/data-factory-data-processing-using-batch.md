@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 75213a4d0297c96ec32200158d8b60db4b8b2da4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>使用数据工厂和批处理来处理大规模数据集
 本文介绍示例解决方案的体系结构，该解决方案通过计划的自动方式移动并处理大规模数据集。 它还提供使用 Azure 数据工厂和 Azure Batch 来实现此解决方案的端到端演练。
@@ -911,4 +910,3 @@ test custom activity Microsoft test custom activity Microsoft
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
-

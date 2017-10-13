@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
 ms.openlocfilehash: 29cf8e68de5e15e2b570fa2f546d8644c5cf57b1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>如何使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-本教程介绍了创建**通道**的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
+本教程指导完成创建 **频道** 的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
 
 > [!NOTE]
 > 有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
@@ -54,14 +54,14 @@ ms.lasthandoff: 08/29/2017
    
     使用此 URL 来验证频道是否正常接收实时流。
 5. 创建事件/节目（这也会创建资产）。 
-6. 发布事件（这将为关联的资产创建点播定位符）。    
+6. 发布事件（这会为关联的资产创建点播定位符）。    
 7. 在准备好开始流式传输和存档时，启动事件。
 8. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
 9. 要停止流式传输并存档事件时，停止事件。
 10. 删除事件（并选择性地删除资产）。   
 
 ## <a name="in-this-tutorial"></a>本教程的内容
-本教程使用 Azure 门户完成以下任务： 
+在本教程中，将使用 Azure 门户完成以下任务： 
 
 1. 创建能够执行实时编码的通道。
 2. 获取引入 URL，以便将其提供给实时编码器。 实时编码器将使用此 URL 将流引入通道。
@@ -158,7 +158,7 @@ ms.lasthandoff: 08/29/2017
    
     ![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
    
-    如果保留选中“立即发布此现场活动”  ，会创建事件 PUBLISHING URL。
+    如果保持选中“立即发布此实时事件”，会创建事件的发布 URL。
    
     准备好流式传输事件时，可以按“启动” 。
    
@@ -183,10 +183,10 @@ ms.lasthandoff: 08/29/2017
 
 * 停止从编码器推送流。
 * 停止通道。 停止通道后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
-* 除非你想要继续以点播流形式提供实时事件的存档，否则可以停止流式处理终结点。 如果通道处于停止状态，则不会产生任何费用。
+* 除非你想要继续以点播流形式提供实时事件的存档，否则可以停止流式处理终结点。 如果通道处于停止状态，不会产生任何费用。
 
 ## <a name="view-archived-content"></a>查看存档的内容
-即使停止并删除了事件，只要没有删除资产，用户也能够按需将你的已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
+即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
 若要管理资产，请选择“设置”，再单击“资产”。
 

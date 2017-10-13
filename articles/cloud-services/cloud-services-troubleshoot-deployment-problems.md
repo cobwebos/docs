@@ -1,6 +1,6 @@
 ---
 title: "解决云服务部署问题 | Microsoft Docs"
-description: "将云服务部署到 Azure 时，你可能会遇到几个常见问题。 本文提供了部分问题的解决方案。"
+description: "将云服务部署到 Azure 时，可能会遇到几个常见问题。 本文提供了部分问题的解决方案。"
 services: cloud-services
 documentationcenter: 
 author: simonxjx
@@ -10,25 +10,24 @@ tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
 ms.service: cloud-services
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2017
 ms.author: v-six
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fae727ec3496737fca37236b4f36b4accf0afc63
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 29529978a2f6a1454c7a97b5f5baac214a90d63b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>排查云服务部署问题
-将云服务应用程序包部署到 Azure 时，可通过 Azure 门户中的“属性”窗格获取有关部署的信息。 你可以使用此窗格中的详细信息来帮助你解决云服务的问题，还可以在提交新的支持请求时将此信息提供给 Azure 支持人员。
+将云服务应用程序包部署到 Azure 时，可通过 Azure 门户中的“属性”窗格获取有关部署的信息。 可以使用此窗格中的详细信息来帮助你解决云服务的问题，还可以在提交新的支持请求时将此信息提供给 Azure 支持人员。
 
 可按如下所述找到“属性”窗格：
 
 * 在 Azure 门户中，依次单击云服务的部署、“所有设置”“属性”。
-* 在 Azure 经典门户中，依次单击云服务的部署、“仪表板”，然后定位到页面右下角（位于“速览”下）。 请注意，此窗格中没有“属性”标签。
+* 在 Azure 经典门户中，依次单击云服务的部署、“仪表板”，并定位到页面右下角（位于“速览”下）。 请注意，此窗格中没有“属性”标签。
 
 > [!NOTE]
 > 可以通过单击“属性”窗格右上角的图标将该窗格的内容复制到剪贴板。
@@ -38,14 +37,14 @@ ms.lasthandoff: 11/17/2016
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>问题：我无法访问我的网站，但我的部署已启动且所有角色实例均已就绪
-在门户中显示的网站 URL 链接不包括该端口。 网站的默认端口为 80。 如果你的应用程序已配置为在其他端口中运行，则必须在访问网站时向 URL 添加正确的端口号。
+在门户中显示的网站 URL 链接不包括该端口。 网站的默认端口为 80。 如果应用程序已配置为在其他端口中运行，则必须在访问网站时向 URL 添加正确的端口号。
 
 1. 在 Azure 门户中，单击云服务的部署。
 2. 在 Azure 门户的“属性”窗格中，检查角色实例（位于“输入终结点”下）的端口。
-3. 如果端口不是 80，请在访问应用程序时将正确的端口值添加到 URL。 若要指定非默认端口，请键入 URL，后跟冒号 (:) 以及端口号（无空格）。
+3. 如果端口不是 80，请在访问应用程序时会正确的端口值添加到 URL。 若要指定非默认端口，请键入 URL，后跟冒号 (:) 以及端口号（无空格）。
 
 ## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>问题：我的角色实例在我未执行任何操作的情况下被回收
-当 Azure 检测到问题节点并因此将角色实例移到新节点时，系统会自动进行服务修复。 当发生这种情况时，你可能会看到角色实例自动回收。 若要查看是否进行了服务修复，请执行以下操作：
+当 Azure 检测到问题节点并因此将角色实例移到新节点时，系统会自动进行服务修复。 当发生这种情况时，可能会看到角色实例自动回收。 若要查看是否进行了服务修复，请执行以下操作：
 
 1. 在 Azure 门户中，单击云服务的部署。
 2. 在 Azure 门户的“属性”窗格中查看相关信息，确定在观察角色回收期间是否进行了服务修复。
@@ -56,15 +55,15 @@ ms.lasthandoff: 11/17/2016
 ## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>问题：无法进行 VIP 交换并收到错误
 如果部署更新正在进行，则不能进行 VIP 交换。 出现以下情况时，部署更新可能会自动进行：
 
-* 新的来宾操作系统已发布，而你已配置为自动进行更新。
+* 新的来宾操作系统已发布，而已配置为自动进行更新。
 * 进行了服务修复。
 
-若要了解是否是自动更新阻止你执行 VIP 交换，请执行以下操作：
+要了解是否是自动更新阻止你执行 VIP 交换，请执行以下操作：
 
 1. 在 Azure 门户中，单击云服务的部署。
 2. 在 Azure 门户的“属性”窗格中，查看“状态”的值。 如果状态为“就绪”，则请检查“上次操作”，查看最近是否进行了更新，因为更新可能会阻止执行 VIP 交换。
 3. 重复进行生产部署所需的步骤 1 和步骤 2。
-4. 如果自动更新正在进行，则请等待其完成，然后再尝试进行 VIP 交换。
+4. 如果自动更新正在进行，则请等待其完成，再尝试进行 VIP 交换。
 
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>问题：角色实例在“已启动”、“正在初始化”、“忙碌”和“已停止”这几种状态之间循环往复
 这种情况可能表示应用程序代码、包或配置文件存在问题。 在这种情况下，应能看到状态每隔几分钟更改一次，而 Azure 门户则可能会显示“正在回收”、“忙”或“正在初始化”之类的内容。 这表示应用程序存在问题，导致角色实例无法运行。
@@ -75,16 +74,15 @@ ms.lasthandoff: 11/17/2016
 1. 在 Azure 门户中，单击角色实例。
 2. 在 Azure 门户的“属性”窗格中，考虑是否存在以下情况，以便解决问题：
    * 如果角色实例最近停止过（可查看“中止计数”的值），则可能是因为部署正在进行更新。 等待，看角色实例是否会自行恢复运行。
-   * 如果角色实例处于“忙”状态，请检查应用程序代码，以查看是否已处理了 [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) 事件。 你可能需要添加或修复处理此事件的某些代码。
+   * 如果角色实例处于“忙”状态，请检查应用程序代码，以查看是否已处理了 [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) 事件。 可能需要添加或修复处理此事件的某些代码。
    * 浏览博客文章 [Azure PaaS Compute Diagnostics Data](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)（Azure PaaS 计算诊断数据）中的诊断数据和故障排除方案。
 
 > [!WARNING]
-> 如果你回收云服务，请重置部署的属性，以便有效清除有关原始问题的信息。
+> 如果回收云服务，请重置部署的属性，以便有效清除有关原始问题的信息。
 >
 >
 
 ## <a name="next-steps"></a>后续步骤
-查看更多针对云服务的[故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)。
+查看更多针对云服务的[故障排除文章](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-allocation-failures)。
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
-

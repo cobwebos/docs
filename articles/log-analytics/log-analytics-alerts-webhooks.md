@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: bwren
 ms.openlocfilehash: 55b66132f7ec5c26c0a7cac1ec0a5c403dbd1082
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-alert-webhook-action-in-oms-log-analytics-to-send-message-to-slack"></a>在 OMS Log Analytics 中创建警报 webhook 操作以将消息发送到 Slack
 响应 [Log Analytics 警报](log-analytics-alerts.md)可以运行的操作之一是 *Webhook*，它令可以通过单个 HTTP 请求调用外部进程。  如需了解警报和 Webhook 的详细信息，请参阅 [Log Analytics 中的警报](log-analytics-alerts.md)

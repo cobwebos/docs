@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
 ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>监视和设置用于在集成帐户中进行 B2B 通信的诊断日志记录
 

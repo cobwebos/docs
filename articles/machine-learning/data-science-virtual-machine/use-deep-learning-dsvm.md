@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9bc56d242abde919f6150b88c81921d409e1d94c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>使用深度学习虚拟机
 
@@ -36,7 +35,6 @@ DLVM 上针对人工智能提供了多个工具。 [“深度学习和人工智�
 2. [生成端到端解决方案以检测映像中产品的操作方法指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：映像检测是一种技术，可以在映像中查找对象并对其进行分类。 此技术有可能在多个实际生活业务域中带来巨大回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
 
 3. [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何使用用于深度学习的 Keras API 构建和训练两种不同的神经网络体系结构（分层网络和长短期记忆网络 (LSTM) ）对文本文档进行分类。 Keras 是三个最受欢迎的深度学习框架（Microsoft 认知工具包、TensorFlow 和 Theano）的前端。
-
 
 
 

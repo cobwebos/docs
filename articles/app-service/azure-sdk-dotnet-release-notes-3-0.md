@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
 ms.openlocfilehash: eea4e569ac2d0192ed7872d2fcb9bed03614832b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Azure SDK for .NET 3.0 发行说明
 
@@ -31,17 +31,17 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="visual-studio-2017-rtw"></a>Visual Studio 2017 RTW
 
-- 在 Visual Studio 2017 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 从目前开始，进行 Azure 开发所需的所有工具都会成为 Visual Studio 2017 的一部分。 对于 Visual Studio 2015，仍可通过 WebPI 获取 SDK。 既然已发布 Visual Studio 2017，我们已停止使用适用于 Visual Studio 2013 的 Azure SDK.NET 发行版。
+- 在 Visual Studio 2017 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 从目前开始，进行 Azure 开发所需的所有工具都将成为 Visual Studio 2017 的一部分。 对于 Visual Studio 2015，仍可通过 WebPI 获取 SDK。 既然已发布 Visual Studio 2017，我们已停止使用适用于 Visual Studio 2013 的 Azure SDK.NET 发行版。
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
-- 针对云服务诊断存储连接字符串更改了行为，以便仅存储部分连接字符串并将密钥替换为令牌。 实际存储密钥现存储在用户配置文件文件夹中，以便可控制其访问。 Visual Studio 会在本地调试和发布过程中从用户配置文件文件夹中读取存储密钥。 
+- 针对云服务诊断存储连接字符串更改了行为，以便仅存储部分连接字符串并将密钥替换为令牌。 实际存储密钥现存储在用户配置文件文件夹中，以便可控制其访问。 Visual Studio 将从用户配置文件文件夹中读取存储密钥，以便进行本地调试和发布过程。 
 - 针对上述更改，Visual Studio Online 团队增强了 Azure 云服务部署任务模板，以便以持续集成和部署发布到 Azure 时，用户可为设置诊断扩展指定存储密钥。
 - 现在可存储 Azure 诊断 (WAD) 的安全连接字符串和词汇切分，以帮助解决跨环境配置的问题。
  
 ### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016 虚拟机
 
-- Visual Studio 现在支持将云服务部署到操作系统系列 5 (Windows Server 2016) 虚拟机。 对于现有云服务，可更改设置以面向新的 OS 系列。 创建新的云服务时，如果选择使用 .net 4.6 或更高版本创建服务，则服务默认使用 OS 系列 5。  有关详细信息，可查看[来宾 OS 系列支持表](../cloud-services/cloud-services-guestos-update-matrix.md)。
+- Visual Studio 现在支持将云服务部署到操作系统系列 5 (Windows Server 2016) 虚拟机。 对于现有云服务，可更改设置以面向新的 OS 系列。 创建新的云服务时，如果选择创建使用 .NET 4.6 或更高版本的服务，则该服务将默认使用 OS 系列 5。  有关详细信息，可查看[来宾 OS 系列支持表](../cloud-services/cloud-services-guestos-update-matrix.md)。
 
 ### <a name="known-issues"></a>已知问题
 

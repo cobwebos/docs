@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e36c28ef1c05dcdcebc7372316c7f144c92fd02f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Linux CentOS 数据科学虚拟机
 
@@ -374,5 +373,4 @@ Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 
 * 通过尝试本文中介绍的工具，探索数据科学 VM 上的各种数据科学工具。 还可以在虚拟机内的 shell 上运行 *dsvm-more-info*，获取有关 VM 上安装的工具的基本介绍和详细信息。  
 * 通过使用 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)，了解如何系统地构建端到端分析解决方案。
 * 若要了解使用 Cortana Analytics 套件的机器学习和数据分析示例，请访问 [Cortana Analytics 库](http://gallery.cortanaanalytics.com)。
-
 

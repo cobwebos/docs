@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: d222bcbd64f288d4091acb0ecd2922b9ceee57e5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>将设备连接到远程监视预配置解决方案 (Windows)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
@@ -40,9 +40,9 @@ ms.lasthandoff: 08/29/2017
    * Microsoft.Azure.IoTHub.MqttTransport
 6. 在“**解决方案资源管理器**”中，右键单击 **RMDevice** 项目，并单击“**属性**”打开该项目的“**属性页**”对话框。 有关详细信息，请参阅[设置 Visual C++ 项目属性][lnk-c-project-properties]。 
 7. 单击 **Linker** 文件夹，并单击“**输入**”属性页。
-8. 将 crypt32.lib 添加到“其他依赖项”属性。 单击“**确定**”，并再次单击“**确定**”以保存项目属性值。
+8. 将 **crypt32.lib** 添加到“**其他依赖项**”属性。 单击“**确定**”，并再次单击“**确定**”以保存项目属性值。
 
-将 Parson JSON 库添加到 RMDevice 项目，并添加所需的 `#include` 语句：
+将 Parson JSON 库添加到 **RMDevice** 项目，并添加所需的 `#include` 语句：
 
 1. 在计算机的适当文件夹中，使用以下命令克隆 Parson GitHub 存储库：
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/29/2017
 
 添加调用 **remote\_monitoring\_run** 函数的代码，生成并运行设备应用程序。
 
-1. 将 main 函数替换为以下代码以调用 remote\_monitoring\_run 函数：
+1. 将 **main** 函数替换为以下代码以调用 **remote\_monitoring\_run** 函数：
    
     ```c
     int main()

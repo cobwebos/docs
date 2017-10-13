@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/30/2017
 ms.author: alkohli
 ms.openlocfilehash: 7dc2f29db64218b9db17eaf555c43a7ad282ea07
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 4
 

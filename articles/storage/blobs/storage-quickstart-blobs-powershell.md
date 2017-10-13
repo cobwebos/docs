@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1a9941b21b92c70dd0a46ce2e4c75142e1786650
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-azure-powershell"></a>使用 Azure PowerShell 将对象转移到 Azure Blob 存储或从中转移对象
 
 Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 此指南详细介绍如何使用 PowerShell 在本地磁盘和 Azure Blob 存储之间传输文件。

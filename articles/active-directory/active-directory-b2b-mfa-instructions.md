@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 09/11/2017
 ms.author: sasubram
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: d3917754069ad961ffd9233d852aab6fa172eaef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件性访问
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户的多重身份验证
@@ -121,4 +119,3 @@ Contoso 为其公司数据启用基于设备的条件访问策略时，会阻止
 * [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
 * [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-

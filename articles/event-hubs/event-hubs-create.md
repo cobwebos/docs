@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: sethm
 ms.openlocfilehash: 816bf1426704d3391550e80c0700f1b011683a94
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>使用 Azure 门户创建事件中心命名空间和事件中心
 

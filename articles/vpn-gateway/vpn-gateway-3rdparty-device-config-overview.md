@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: b3806d16d3b78347e183ecbd2ab5a463a2142110
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
 本文提供有关配置用于连接到 Azure VPN 网关的本地 VPN 设备的概述。 示例 Azure 虚拟网络和 VPN 网关设置用于演示如何使用相同参数连接到不同的本地 VPN 设备配置。
@@ -156,5 +155,4 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupNam
 
 ## <a name="next-steps"></a>后续步骤
 有关设置主动 - 主动 VPN 网关的分布说明，请参阅[为跨界连接和 VNet 到 VNet 连接配置主动 - 主动 VPN 网关](vpn-gateway-activeactive-rm-powershell.md)。
-
 

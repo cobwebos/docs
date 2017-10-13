@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 8ddd582ed159e10add896252c40feb19780c42fb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 09/25/2017
 > [!NOTE]
 > 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。  创建并关联网络安全组以及显式允许所需流量后与资源的通信故障才会结束。
 
-标准 SKU 以预览版提供。 创建标准 SKU 公共 IP 地址之前，必须先注册预览版，并在支持的位置创建该地址。 若要注册预览版，请参阅[注册标准 SKU 预览版](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)。 有关受支持位置（区域）的列表，请参阅[区域可用性](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability)；有关其他区域支持，请密切关注 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
+标准 SKU 以预览版提供。 创建标准 SKU 公共 IP 地址之前，必须先注册预览版，并在支持的位置创建该地址。 若要注册预览版，请参阅[注册标准 SKU 预览版](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)。 有关支持的位置（区域）的列表，请参阅[区域可用性](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability)；有关其他区域支持，请密切关注 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 
 
 ### <a name="allocation-method"></a>分配方法
@@ -193,4 +192,3 @@ Azure 中的[网络限制](../azure-subscription-service-limits.md?toc=%2fazure%
 * [使用 Azure 门户通过静态公共 IP 部署 VM](virtual-network-deploy-static-pip-arm-portal.md)
 * [使用模板通过静态公共 IP 部署 VM](virtual-network-deploy-static-pip-arm-template.md)
 * [通过 Azure 门户使用静态专用 IP 地址部署 VM](virtual-networks-static-private-ip-arm-pportal.md)
-

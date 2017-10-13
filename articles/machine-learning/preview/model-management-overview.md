@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 31b859d86e82c92839462280721c5f84f1d923cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure 机器学习模型管理
 
@@ -122,8 +121,7 @@ Azure 机器学习模型管理提供可用于重新训练模型的 API。 还可
 
 - 是否可对多个 Web 服务终结点使用同一个计算机或群集？
 
-   完全可以。 可在同一个群集上运行 100 倍个服务/终结点。 
+   绝对是。 可在同一个群集上运行 100 倍个服务/终结点。 
 
 ## <a name="next-steps"></a>后续步骤
 若要开始使用模型管理，请参阅[配置模型管理](model-management-configuration.md)。
-

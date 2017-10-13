@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 9d91c59d3e4d73879d95ab193949d54f7b86d6cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
 ## <a name="how-to-deploy-seamless-sso"></a>如何部署无缝 SSO
@@ -157,4 +155,3 @@ Mozilla Firefox 不会自动执行 Kerberos 身份验证。 每个用户必须�
 - [**常见问题**](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
-

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: juliako;anilmur
 ms.openlocfilehash: 22d63ff5e9fd33db8711b0c5125ab0882b9f6a74
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/29/2017
 > 
 
 ## <a name="overview"></a>概述
-本教程介绍了创建**通道**的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
+本教程指导完成创建 **频道** 的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
 
 有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
@@ -74,17 +74,17 @@ ms.lasthandoff: 08/29/2017
 15. 删除节目（并选择性地删除资产）。
 
 ## <a name="what-youll-learn"></a>学习内容
-本主题演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此使用管理长时间运行的操作的 .NET API。
+本主题演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此将使用管理长时间运行的操作的 .NET API。
 
-本主题显示如何执行以下任务：
+本主题介绍如何执行以下操作：
 
 1. 创建并启动频道。 将使用长时间运行的 API。
 2. 获取频道引入（输入）终结点。 应将此终结点提供给可以发送单比特率实时流的编码器。
 3. 获取预览终结点。 此终结点用于预览流。
-4. 创建用于存储你的内容的资源。 还应配置资源传送策略，如此示例中所示。
-5. 创建节目并指定使用先前创建的资源。 启动该节目。 会使用长时间运行的 API。
+4. 创建用于存储内容的资源。 还应配置资源传送策略，如此示例中所示。
+5. 创建节目并指定使用先前创建的资源。 启动该节目。 将使用长时间运行的 API。
 6. 为资源创建定位器，以便发布内容，并可以将内容流式传输到客户端。
-7. 显示和隐藏清单。 启动和停止广告。 会使用长时间运行的 API。
+7. 显示和隐藏清单。 启动和停止广告。 将使用长时间运行的 API。
 8. 清理频道及所有关联的资源。
 
 ## <a name="prerequisites"></a>先决条件

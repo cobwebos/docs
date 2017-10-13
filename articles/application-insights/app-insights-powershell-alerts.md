@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: bwren
 ms.openlocfilehash: 64675c51abf80daa3a55220f910aa8fdee1042ca
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 可以在 [Application Insights](app-insights-overview.md) 中自动配置[警报](app-insights-alerts.md)。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure 导入/导出服务元数据和属性文件格式
 可将一个或多个 Blob 的元数据和属性指定为导入作业或导出作业的一部分。 要设置将创建为导入作业一部分的 Blob 的元数据或属性，应在包含所要导入数据的硬盘驱动器上提供一个元数据或属性文件。 对于导出作业，元数据和属性将写入到在返回的硬盘驱动器上包含的元数据或属性文件。  

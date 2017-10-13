@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 09/06/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
+ms.openlocfilehash: 3d9e7a4eb6d94067af6b5c64e71910694d5a6077
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 8baa8e950164de64d1cd91c0c5bb51d324bbc807
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
@@ -108,5 +107,4 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 + 若要了解如何配置项目，使之支持其他类型的触发器和绑定，请参阅 [Azure Functions Tools for Visual Studio](functions-develop-vs.md) 中的[配置进行本地开发的项目](functions-develop-vs.md#configure-the-project-for-local-development)部分。
 + 若要详细了解如何使用 Azure Functions Core Tools 进行本地测试和调试，请参阅[在本地进行 Azure Functions 的编码和测试](functions-run-local.md)。 
 + 若要详细了解如何将函数作为 .NET 类库进行开发，请参阅[搭配使用 Azure Functions 和 .Net 类库](functions-dotnet-class-library.md)。 
-
 

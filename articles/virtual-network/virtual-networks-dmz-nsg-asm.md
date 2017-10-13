@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>示例 1 - 将 NSG 与经典 PowerShell 配合使用构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 > 
 >
 
-本示例创建一个基本的外围网络，其中包含四个 Windows 服务器和网络安全组。 本示例介绍了每个相关的 PowerShell 命令，帮助用户更好地理解每一步。 另外还提供了“流量方案”部分，让你逐步深入了解流量如何流经外围网络的各个防御层。 最后的“参考”部分提供了完整的代码，并说明如何构建此环境来测试和试验各种方案。 
+本示例创建一个基本的外围网络，其中包含四个 Windows 服务器和网络安全组。 本示例将说明每个相关 PowerShell 命令，让读者更加深入地了解每个步骤。 另外还提供了“流量方案”部分，让你逐步深入了解流量如何流经外围网络的各个防御层。 最后的“参考”部分提供了完整的代码，并说明如何构建此环境来测试和试验各种方案。 
 
 ![使用 NSG 的入站外围网络][1]
 

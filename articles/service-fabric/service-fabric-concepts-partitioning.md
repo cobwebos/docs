@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
 ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 上获取。
 
 ## <a name="partitioning"></a>分区
-分区并不是 Service Fabric 所独有的。 事实上，它是构建可缩放服务的核心模式。 从更广泛的意义来说，可将分区视为将状态（数据）和计算划分为更小的可访问单元，以提高可伸缩性和性能的一种概念。 一种众所周知的分区形式是[数据分区][wikipartition]，也称为分片。
+分区并不是 Service Fabric 所独有的。 事实上，它是构建可缩放服务的核心模式。 从更广泛的意义来说，分区就是将状态（数据）和计算划分为更小的可访问单元，以提高伸缩性和性能的一个概念。 一种众所周知的分区形式是[数据分区][wikipartition]，也称为分片。
 
 ### <a name="partition-service-fabric-stateless-services"></a>Service Fabric 无状态服务分区
 对于无状态服务，可以将分区视为包含服务的一个或多个实例的逻辑单元。 图 1 显示一个无状态服务，其五个实例使用一个分区在群集中分布。
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 
 在任一情况下，对无状态服务进行分区都是非常少见的方案 — 通常通过添加更多实例来实现可伸缩性和可用性。 对于无状态服务实例要考虑多个分区的唯一情况是在需要满足特殊路由请求时。
 
-例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 可对无状态服务进行分区的情况的另一个示例是在用户具有真正分区的后端（例如分片 SQL 数据库）并且要控制哪个服务实例应写入数据库分片（或是在无状态服务中执行的其他准备工作需要的分区信息与后端中使用的信息相同）时。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
+例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 可以对无状态服务进行分区的情况的另一个示例是在具有真正分区后端（例如分片 SQL 数据库）并且要控制哪个服务实例应写入数据库分片（或是在无状态服务中执行的其他准备工作需要的分区信息与后端中使用的信息相同）时。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
 
 本演练的其余部分侧重于有状态服务。
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/11/2017
 
 在 Service Fabric 有状态服务的上下文中进行分区是指确定特定服务分区负责服务完整状态的某个部分的过程。 （如前所述，分区是一组[副本](service-fabric-availability-services.md)）。 Service Fabric 的一大优点是它将分区置于不同节点上。 这使它们可以按照节点的资源限制来增长。 随着数据需求的增长，分区也会增长，Service Fabric 会在节点间重新平衡分区。 这可确保硬件资源的持续高效使用。
 
-例如，假设开始时拥有一个 5 节点群集，以及一个配置为具有 10 个分区并且目标为 3 个副本的服务。 在这种情况下，Service Fabric 会在群集间平衡和分布副本 — 最后每个节点会有两个主[副本](service-fabric-availability-services.md)。
+为了提供一个示例，假设你开始时有一个 5 节点群集，以及一个配置为具有 10 个分区并且目标为 3 个副本的服务。 在这种情况下，Service Fabric 会在群集间平衡和分布副本 — 最后每个节点会有两个主[副本](service-fabric-availability-services.md)。
 如果现在需要将群集扩大到 10 个节点，则 Service Fabric 会在所有 10 个节点间重新平衡主[副本](service-fabric-availability-services.md)。 同样，如果重新缩小为 5 个节点，则 Service Fabric 会在 5 个节点间重新平衡所有副本。  
 
 图 2 显示缩放群集之前和之后的 10 个分区的分布。
@@ -54,11 +54,11 @@ ms.lasthandoff: 07/11/2017
 这样，便因为来自客户端的请求在计算机间进行分布而实现了扩大，提高了应用程序的整体性能，并减少了对数据区块的访问争用。
 
 ## <a name="plan-for-partitioning"></a>规划分区
-实现服务之前，应始终考虑扩大所需的分区策略。 可使用不同方式，但所有方式都注重应用程序需要实现的功能。 由于本文的背景，我们来考虑一些更重要的方面。
+实现服务之前，应始终考虑扩大所需的分区策略。可使用不同方式，但所有方式都注重应用程序需要实现的功能。 由于本文的背景，我们来考虑一些更重要的方面。
 
 一个不错的方法是将需要进行分区的状态的结构视为第一步。
 
-我们来看一个简单的示例。 如果要为全国投票生成一个服务，则可以为该国家/地区中的每个城市创建一个分区。 随后可以在对应于城市的分区中为城市中的每个人存储投票。 图 3 显示一组人及其所在的城市。
+我们来看一个简单的示例。 如果要为全县投票构建一个服务，则可以为县中的每个城市创建一个分区。 随后可以在对应于城市的分区中为城市中的每个人存储投票。 图 3 显示一组人及其所在的城市。
 
 ![简单分区屏幕截图](./media/service-fabric-concepts-partitioning/cities.png)
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
 
 在极少数情况下，可能最终需要比最初选择更多的分区。 因为无法在事后更改分区计数，所以需要应用一些高级分区方法，如创建相同服务类型的新服务实例。 还需要实现某种可基于客户端代码必须维护的客户端知识，将请求路由到正确服务实例的客户端逻辑。
 
-分区规划的另一个注意事项是可用计算机资源。 由于需要访问和存储状态，因此你一定会遵循以下各项：
+分区规划的另一个注意事项是可用计算机资源。 因为需要对状态进行访问和存储，所以一定要遵循以下各项：
 
 * 网络带宽限制
 * 系统内存限制
@@ -115,7 +115,7 @@ Service Fabric 提供了三个分区方案可供选择：
 有关选择常规哈希代码算法的良好资源是[哈希函数的维基百科网页](http://en.wikipedia.org/wiki/Hash_function)。
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>构建具有多个分区的有状态服务
-我们来创建具有多个分区的第一个可靠有状态服务。 在此示例中，会生成一个非常简单的应用程序，在其中要以相同字母开头的所有姓氏存储在相同分区中。
+我们来创建具有多个分区的第一个可靠有状态服务。 在此示例中，会构建一个非常简单的应用程序，在其中要以相同字母开头的所有姓氏存储在相同分区中。
 
 编写任何代码之前，需要考虑分区和分区键。 需要 26 个分区（字母表中的每个字母各一个分区），但是低键和高键是怎样的呢？
 因为我们确实是对每个字母使用一个分区，所以可以使用 0 作为低键，使用 25 作为高键，因为每个字母都是自己的键。
@@ -241,7 +241,7 @@ Service Fabric 提供了三个分区方案可供选择：
     `ProcessInternalRequest` 会读取用于调用分区的查询字符串参数值，并调用 `AddUserAsync` 以将姓氏添加到可靠字典 `dictionary`。
 10. 我们来将一个无状态服务添加到项目，以查看如何调用特定分区。
     
-    此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，并将它发送到 Alphabet.Processing 服务进行处理。
+    此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，然后将它发送到 Alphabet.Processing 服务进行处理。
 11. 在“**创建服务**”对话框中，选择“**无状态**”服务并将它称为“Alphabet.Web”，如下所示。
     
     ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)。
@@ -312,7 +312,7 @@ Service Fabric 提供了三个分区方案可供选择：
     }
     ```
     
-    让我们逐步演练其步骤。 此代码将查询字符串参数 `lastname` 的第一个字母读入一个字符中。 随后，它通过从姓氏第一个字母的十六进制值减去 `A` 的十六进制值，来确定字母的分区键。
+    让我们逐步演练其步骤。 代码将查询字符串参数 `lastname` 的第一个字母为读入到一个字符中。 随后，它通过从姓氏第一个字母的十六进制值减去 `A` 的十六进制值，来确定字母的分区键。
     
     ```CSharp
     string lastname = context.Request.QueryString["lastname"];
@@ -357,7 +357,7 @@ Service Fabric 提供了三个分区方案可供选择：
 16. 完成部署之后，便可以在 Service Fabric Explorer 中检查服务及其所有分区。
     
     ![Service Fabric Explorer 屏幕截图](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. 在浏览器中，可以通过输入 `http://localhost:8081/?lastname=somename` 来测试分区逻辑。 会看到以相同字母开头的每个姓氏都存储在相同分区中。
+17. 在浏览器中，可以通过输入 `http://localhost:8081/?lastname=somename` 来测试分区逻辑。 会看到以相同字母开头的每个姓氏都存储在相同区域中。
     
     ![浏览器屏幕截图](./media/service-fabric-concepts-partitioning/samplerunning.png)
 

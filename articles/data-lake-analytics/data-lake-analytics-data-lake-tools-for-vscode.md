@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/14/2017
 ms.author: jejiang
+ms.openlocfilehash: 4be6e2ef1cfba31dd3cf06f44e6a71ffd5900856
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 833d14af47454a01fa3c97ffa854d688dd35871f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
 了解如何使用针对 Visual Studio Code (VS Code) 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。 这些信息也包含在以下视频中：
@@ -104,7 +102,7 @@ ext install usql-vscode-ext
     ![针对 Visual Studio Code 设备的 Data Lake 工具登录信息](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
 3. 按住 Ctrl 键并单击登录 URL：https://aka.ms/devicelogin 以打开登录网页。 在文本框中输入代码 **G567LX42V** 并选择“继续”。
 
-   ![针对 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
+   ![用于 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
 4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
 
     > [!NOTE] 
@@ -164,7 +162,7 @@ ext install usql-vscode-ext
         > [!NOTE] 
         > 如果设置无效，则使用默认值。
 
-    ![针对 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
 
     需要使用 Data Lake Analytics 计算帐户编译并运行 U-SQL 作业。 必须先配置此计算机帐户，才能编译和运行 U-SQL 作业。
     
@@ -303,14 +301,14 @@ OUTPUT @d1
 3.  等待显示帐户的作业列表
 4.  从作业列表中选择作业，Data Lake 工具会在 Azure 门户中打开作业详细信息，并在 VS Code 中显示 JobInfo 文件。
 
-![针对 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
+![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
 
-## <a name="azure-data-lake-storage-integration"></a>Azure Data Lake Storage 集成
+## <a name="azure-data-lake-storage-integration"></a>Azure Data Lake 存储集成
 
-可以使用 Azure Data Lake Storage 相关的命令来执行以下操作：
- - 浏览 Azure Data Lake Storage 资源。 
- - 预览 Azure Data Lake Storage 文件。  
- - 在 VS Code 中将文件上传到 Azure Data Lake Storage。 
+可以使用 Azure Data Lake 存储相关的命令来执行以下操作：
+ - 浏览 Azure Data Lake 存储资源。 
+ - 预览 Azure Data Lake 存储文件。  
+ - 在 VS Code 中将文件上传到 Azure Data Lake 存储。 
 
 ### <a name="list-the-storage-path"></a>列出存储路径 
 可以通过命令面板或右键单击来列出存储路径。
@@ -332,11 +330,11 @@ OUTPUT @d1
     
 3. 选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
 
-    ![针对 Visual Studio Code 的 Data Lake 工具选择“更多”](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具选择“更多”](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
 
 4. 选择“更多”可列出更多 Data Lake Analytics 帐户并选择 Data Lake Analytics 帐户。
 
-    ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
 
 5.  输入 Azure 存储路径。 例如 /output。
 
@@ -360,7 +358,7 @@ OUTPUT @d1
 
 3.  选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
 
-       ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+       ![用于 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
 
 4.  结果：命令面板列出当前路径的文件夹和文件。
 
@@ -381,7 +379,7 @@ OUTPUT @d1
 
 3.  选择“更多”可列出更多 Data Lake Analytics 帐户并选择 Data Lake Analytics 帐户。
 
-       ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
+       ![用于 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
 
 4.  输入 Azure 存储路径或文件。 例如 /output/SearchLog.txt。
 
@@ -389,7 +387,7 @@ OUTPUT @d1
 
 5.  结果：命令面板基于输入内容列出路径信息。
 
-       ![针对 Visual Studio Code 的 Data Lake 工具预览文件结果](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
+       ![用于 Visual Studio Code 的 Data Lake 工具预览文件结果](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
 
 **通过右键单击列出存储路径**
 
@@ -399,11 +397,11 @@ OUTPUT @d1
 
 2.  选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
 
-       ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+       ![用于 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
 
 3.  结果：VS Code 显示文件的预览结果。
 
-       ![针对 Visual Studio Code 的 Data Lake 工具预览文件结果](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
+       ![用于 Visual Studio Code 的 Data Lake 工具预览文件结果](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
 
 ### <a name="upload-a-file"></a>上传文件 
 
@@ -485,16 +483,16 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
     - U-SQL 函数
     - U-SQL 开窗函数
  
-    ![针对 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
  
 -   IntelliSense 自动完成 Data Lake Analytics 元数据：Data Lake 工具在本地下载 Data Lake Analytics 元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据中的对象，包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
  
-    ![针对 Visual Studio Code 的 Data Lake 工具 IntelliSense 元数据](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 元数据](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
 
 -   IntelliSense 错误标记：Data Lake 工具使用下划线标出 U-SQL 和 C# 编辑错误。 
 -   语法突出显示：Data Lake 工具使用不同颜色来区分变量、关键字、数据类型和函数等项。 
 
-    ![针对 Visual Studio Code 的 Data Lake 工具语法突出显示](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具语法突出显示](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -502,7 +500,6 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
 - 有关 Data Lake Analytics 的入门信息，请参阅[教程：Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
 - 有关用于 Visual Studio 的 Data Lake 工具的信息，请参阅[教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 - 有关开发程序集的信息，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)。
-
 
 
 

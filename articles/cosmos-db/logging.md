@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 34c46fb282ad154225f5ee8ef544bc8da1c50016
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
 
@@ -315,7 +314,7 @@ $blobs | Get-AzureStorageBlobContent `
 | resourceId |为其启用日志的 Azure Cosmos DB 帐户。|
 | category |对于 Azure Cosmos DB 日志，DataPlaneRequests 是唯一可用的值。 |
 | operationName |操作的名称。 此值可以是以下任意操作：创建、更新、读取、ReadFeed、删除、替换、执行、SqlQuery、查询、JSQuery、Head、HeadFeed 或 Upsert。   |
-| properties |此字段的内容如下表所述。 |
+| 属性 |此字段的内容如下表所述。 |
 
 下表列出了在属性字段内记录的字段。
 
@@ -349,4 +348,3 @@ $blobs | Get-AzureStorageBlobContent `
    - [什么是 Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)？
    - [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 - 请参阅[从 Azure 存储下载指标和诊断日志](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
-

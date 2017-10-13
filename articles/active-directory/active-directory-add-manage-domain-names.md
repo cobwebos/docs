@@ -16,12 +16,11 @@ ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
+ms.openlocfilehash: 06e2dd05bdf21074ed060057cbc61e93f304399a
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 5ae19bb370064de96cf466ca09b13d02563d65a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 域名可以是许多目录资源的重要标识符，作为以下项的一部分：
@@ -78,5 +77,4 @@ Azure Active Directory (Azure AD) 中的资源可包含已验证为目录（包�
 ## <a name="next-steps"></a>后续步骤
 * [了解 Azure AD 中的域名](active-directory-add-domain-concepts.md)
 * [管理自定义域名](active-directory-add-manage-domain-names.md)
-
 

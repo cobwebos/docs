@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cdccd4ce7b87f47d21578076653bde901748188b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>疑难解答指南：创建并连接到机器学习工作区
 本指南介绍了设置 Azure 机器学习工作区时一些常见难题的解决方案。
@@ -71,4 +70,3 @@ ms.lasthandoff: 09/25/2017
 [screen4]:media/troubleshooting-creating-ml-workspace/screen4.png
 [screen5]:media/troubleshooting-creating-ml-workspace/screen5.png
 [screen6]:media/troubleshooting-creating-ml-workspace/screen6.png
-

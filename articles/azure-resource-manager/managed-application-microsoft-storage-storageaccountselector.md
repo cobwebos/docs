@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 15e69c0deb4bce64b7413b557eb69db5165bde73
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: 8971232f9700bc85830c4ac37f6c37f1bb5df0b8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI 元素
 一个用于选择新的或现有存储帐户的控件。 [创建 Azure 托管应用程序](managed-application-publishing.md)时使用此元素。
@@ -51,7 +50,7 @@ ms.lasthandoff: 05/13/2017
 ## <a name="remarks"></a>备注
 - 如果指定，则会自动验证 `defaultValue.name` 的唯一性。 如果存储帐户名称不唯一，则用户必须指定一个不同的名称或选择现有存储帐户。
 - `defaultValue.type` 的默认值为 **Premium_LRS**。
-- 将隐藏未在 `constraints.allowedTypes` 中指定的任何类型，将显示未在 `constraints.excludedTypes` 中指定的任何类型。
+- 将隐藏未在 `constraints.allowedTypes` 中指定的任何类型，会显示未在 `constraints.excludedTypes` 中指定的任何类型。
 `constraints.allowedTypes` 和 `constraints.excludedTypes` 都是可选的，并且不能同时使用。
 - 如果 `options.hideExisting` 为 **true**，则用户无法选择现有存储帐户。 默认值为 **false**。
 
@@ -70,4 +69,3 @@ ms.lasthandoff: 05/13/2017
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](managed-application-createuidefinition-elements.md)。
-

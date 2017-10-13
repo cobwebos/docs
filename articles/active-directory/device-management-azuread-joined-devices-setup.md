@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 415086809efe779c6bcae32719d8be1b48764905
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>设置已加入 Azure Active Directory 的设备
 
@@ -125,7 +124,6 @@ ms.lasthandoff: 09/20/2017
 - [Azure Active Directory 中的设备管理简介](device-management-introduction.md)
 - [使用 Azure 门户管理设备](device-management-azure-portal.md)
 - 
-
 
 
 

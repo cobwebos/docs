@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>如何处理具有 UNH2.5 段的 EDIFACT 文档
 EDIFACT 文档中存在 UNH2.5 时，它用于架构查找。 

@@ -1,10 +1,10 @@
-1. 名为的项目中创建一个新类`ToDoBroadcastReceiver`。
-2. 添加以下 using 语句**ToDoBroadcastReceiver**类：
+1. 在名为 `ToDoBroadcastReceiver` 的项目中创建一个新类。
+2. 将以下 using 语句添加到 **ToDoBroadcastReceiver** 类：
    
         using Gcm.Client;
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
-3. 添加以下权限请求之间**使用**语句和**命名空间**声明：
+3. 在 **using** 语句和 **namespace** 声明之间添加以下权限请求：
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -14,7 +14,7 @@
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-4. 将现有**ToDoBroadcastReceiver**类替换为以下定义：
+4. 将现有的 **ToDoBroadcastReceiver** 类定义替换为以下代码：
    
         [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, 
@@ -29,8 +29,8 @@
             public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
         }
    
-    在上述代码中，你必须将 *`<PROJECT_NUMBER>`* 替换设置 Google 开发人员门户中的应用程序时 Google 分配的项目编号。 
-5. 在 ToDoBroadcastReceiver.cs 项目文件中，添加以下代码以定义**PushHandlerService**类：
+    在上述代码中，必须将 *`<PROJECT_NUMBER>`* 替换为在 Google 开发人员门户中设置应用程序时 Google 分配的项目编号。 
+5. 在 ToDoBroadcastReceiver.cs 项目文件中，添加定义 **PushHandlerService** 类的以下代码：
    
         // The ServiceAttribute must be applied to the class.
         [Service] 
@@ -41,13 +41,13 @@
             public PushHandlerService() : base(ToDoBroadcastReceiver.senderIDs) { }
         }
    
-    请注意，此类派生自**GcmServiceBase**且**服务**属性必须应用于此类。
+    请注意，此类派生自 **GcmServiceBase**，“服务”属性必须应用于此类。
    
    > [!NOTE]
-   > **GcmServiceBase**类实现**onregistered （)**， **onunregistered （)**， **onmessage （)**和**onerror （)**方法。 必须重写这些方法中的**PushHandlerService**类。
+   > **GcmServiceBase** 类实现 **OnRegistered()**、**OnUnRegistered()**、**OnMessage()** 和 **OnError()** 方法。 必须在 **PushHandlerService** 类中重写这些方法。
    > 
    > 
-6. 以下代码添加到**PushHandlerService**类，并重写**OnRegistered**事件处理程序。 
+6. 将以下代码添加到 **PushHandlerService** 类，以便重写 **OnRegistered** 事件处理程序。 
    
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -86,8 +86,8 @@
             }
         }
    
-    此方法使用返回的 GCM 注册 ID 向 Azure 注册推送通知。 将在创建后，则仅可以向注册添加标记。 有关详细信息，请参阅[如何： 将标记添加到设备安装，以启用推送到标记](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)。
-7. 重写**OnMessage**中的方法**PushHandlerService**替换为以下代码：
+    此方法使用返回的 GCM 注册 ID 向 Azure 注册以获取推送通知。 仅能在创建注册后向其添加标记。 有关详细信息，请参阅[如何：将标记添加到设备安装以启用“推送到标记”](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)。
+7. 在 **PushHandlerService** 中使用以下代码重写 **OnMessage** 方法：
    
        protected override void OnMessage(Context context, Intent intent)
        {          
@@ -122,7 +122,7 @@
    
            }
        }
-8. 重写**onunregistered （)**和**onerror （)**方法替换为以下代码。
+8. 使用以下代码重写 **OnUnRegistered()** 和 **OnError()** 方法。
    
        protected override void OnUnRegistered(Context context, string registrationId)
        {

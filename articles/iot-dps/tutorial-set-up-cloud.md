@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 088d127521ce89d3a82e30ad8797fe5746ae7e03
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
 本教程演示如何利用 IoT 中心设备预配服务来设置云资源以进行自动设备预配。 本教程介绍如何执行下列操作：
@@ -107,4 +105,3 @@ ms.lasthandoff: 09/06/2017
 
 > [!div class="nextstepaction"]
 > [设置设备以进行预配](tutorial-set-up-device.md)
-

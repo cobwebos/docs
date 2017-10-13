@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
 ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -323,7 +323,7 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
   | **1434** |UDP |SQL Server Browser。 当 VM 加入到域时需要。 |
   | **2382** |TCP |SQL Server Browser。 |
   | **2383** |TCP |SQL Server Analysis Services 默认实例和群集命名实例。 |
-  | **用户定义** |TCP |为用户选择的端口号创建一个静态 Analysis Services 命名实例端口，并在防火墙中解锁该端口号。 |
+  | **用户定义** |TCP |为选择的端口号创建一个静态 Analysis Services 命名实例端口，然后在防火墙中解锁该端口号。 |
 
 有关创建终结点的详细信息，请参阅以下资源：
 

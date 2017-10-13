@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
+ms.openlocfilehash: edf15e72c822ea5e045895c6f03477c613c0a6c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 12876bff2de5738068f033ecc4ef14b81a68f0f6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="usage-analysis-for-web-applications-with-application-insights"></a>使用 Application Insights 的 Web 应用程序使用情况分析
 
 Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](app-insights-overview.md) 可帮助你有效地深入分析人们如何使用 Web 应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
@@ -90,7 +88,7 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
 
 ![保留](./media/app-insights-usage-overview/retention.png) 
 
-使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回归。  
+使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回头。  
 
 [有关保留工具的详细信息](app-insights-usage-retention.md)
 
@@ -176,4 +174,3 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
    - [用户流](app-insights-usage-flows.md)
    - [工作簿](app-insights-usage-workbooks.md)
    - [添加用户上下文](app-insights-usage-send-user-context.md)
-

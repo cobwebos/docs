@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 45f1c61189b338d38681c8e93be01953da65913f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>对复制到 Azure 的 VMware VM 和物理服务器进行故障转移和故障回复
 
@@ -154,4 +153,3 @@ ms.lasthandoff: 09/25/2017
 2. 选择用于将复制数据发送到 Azure 的进程服务器，然后单击“确定”。
 
 重新保护完成后，该 VM 将复制回 Azure，此时可按需运行故障转移。
-

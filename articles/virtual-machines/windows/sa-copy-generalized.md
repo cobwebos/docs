@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ms.openlocfilehash: d7f4a9558175835eba9096e6845726f21c7459d3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何从 Azure VM 创建非托管 VM 映像
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="create-the-image"></a>创建映像
 
-使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统自动创建。
+使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统会自动创建。
    
 ```powershell
 Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `

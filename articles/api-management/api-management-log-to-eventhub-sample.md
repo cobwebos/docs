@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: 70ee752c5639c90f77dde104ce85eec0a1062300
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>使用 Azure API 管理、事件中心和 Runscope 监视 API
-[API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后将响应返回给 API 使用者。 API 管理服务保留要在发布者门户仪表板中显示的 API 一些重要统计信息，但除此之外不显示详细信息。
+[API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在发布者门户仪表板中显示的 API 一些重要统计信息，但除此之外不显示详细信息。
 
 在 API 管理服务中使用 [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) [策略](api-management-howto-policies.md)，可将请求和响应的详细信息发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 想要从发送到 API 的 HTTP 消息生成事件的原因包罗万象。 示例包括更新审核线索、使用情况分析、异常警报和第三方集成。   
 
-本文演示如何捕获整个 HTTP 请求和响应消息，将其发送到事件中心，然后将该消息中继到可提供 HTTP 日志记录和监视服务的第三方服务。
+本文演示如何捕获整个 HTTP 请求和响应消息、将其发送到事件中心，然后将该消息中继到可提供 HTTP 日志记录和监视服务的第三方服务。
 
 ## <a name="why-send-from-api-management-service"></a>为何要从 API 管理服务发送？
 可以编写能够插入到 HTTP API 框架中的 HTTP 中间件，以捕获 HTTP 请求和响应并将其馈送到日志记录和监视系统。 此方法的缺点是 HTTP 中间件必须集成到后端 API，并且必须与 API 的平台匹配。 如果有多个 API，每个 API 都必须部署中间件。 后端 API 无法升级往往是有原因的。
@@ -188,7 +188,7 @@ async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumera
 }
 ```
 
-EventData 对象的列表将传递到此方法，我们需要迭代该列表。 每个方法的字节会分析成 HttpMessage 对象，该对象会传递到 IHttpMessageProcessor 的实例。
+EventData 对象的列表将传递到此方法，我们需要迭代该列表。 每个方法的字节将分析成 HttpMessage 对象，该对象将传递到 IHttpMessageProcessor 的实例。
 
 ### <a name="httpmessage"></a>HttpMessage
 `HttpMessage` 实例包含三个数据片段：

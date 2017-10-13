@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 02/08/2017
 ms.author: heidist
 ms.openlocfilehash: 26f5e71f3d00161a92de702209e224008ec8a5ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>在 Azure 搜索中缩放用于查询和索引工作负荷的资源级别
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。

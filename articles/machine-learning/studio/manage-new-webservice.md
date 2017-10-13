@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2fc71d3a03ff978485104bcd1cd9391c1d5ee392
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>使用 Azure 机器学习 Web 服务门户管理 Web 服务
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
@@ -188,5 +187,4 @@ ms.lasthandoff: 09/25/2017
 > ”**登录到机器学习工作室**“链接会使用当前登录的 Microsoft 帐户打开机器学习工作室。 用于登录 Azure 经典门户以创建工作区的 Microsoft 帐户不会自动具有打开工作区的权限。 若要打开工作区，则必须登录到已定义为工作区所有者的 Microsoft 帐户，或者需要收到所有者发出的邀请以加入工作区。
 > 
 > 
-
 

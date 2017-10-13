@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 脚本示例的流量进行负载平衡到 Vm 以实现高可用性 |Microsoft 文档"
-description: "Azure PowerShell 脚本示例的流量进行负载平衡到 Vm 以实现高可用性"
+title: "Azure PowerShell 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性 | Microsoft Docs"
+description: "Azure PowerShell 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性"
 services: load-balancer
 documentationcenter: load-balancer
 author: georgewallace
@@ -16,26 +16,26 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
 ms.openlocfilehash: c77def8906b151f2cc6e4bbc4188be8ecbeac732
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="load-balance-traffic-to-vms-for-high-availability"></a>流量进行负载平衡到 Vm 以实现高可用性
+# <a name="load-balance-traffic-to-vms-for-high-availability"></a>对传入 VM 的流量进行负载均衡以实现高可用性
 
-该脚本示例创建运行多个 Windows 虚拟机配置在一个高可用性和负载平衡的配置所需的一切。 运行脚本后，你将具有三个虚拟机，加入到 Azure 可用性集，并且通过 Azure 负载平衡器可访问。
+此脚本示例创建运行多个 Windows 虚拟机（使用高度可用且负载均衡的配置进行配置）所需的所有项。 运行脚本后，即可拥有已加入到 Azure 可用性集并可通过 Azure 负载均衡器访问的 3 个虚拟机。
 
-如果需要安装 Azure PowerShell 中使用的指令中找到[Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)，然后运行`Login-AzureRmAccount`若要创建与 Azure 的连接。
+必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell，并运行 `Login-AzureRmAccount` 创建与 Azure 的连接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[主要](../../../powershell_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.ps1 "快速创建 VM")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.ps1 "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行以下命令以删除资源组、 VM，以及所有相关的资源。
+运行以下命令来删除资源组、VM 和所有相关资源。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -43,28 +43,28 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令以创建资源组、 虚拟机、 可用性集、 负载平衡器和所有相关的资源。 命令特定文档的表链接中的每个命令。
+此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注意 |
+| 命令 | 说明 |
 |---|---|
-| [新 AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建资源组中的所有资源的都存储。 |
-| [新 AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | 创建子网配置。 此配置用于虚拟网络创建过程。 |
-| [新 AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | 创建一个 Azure 虚拟网络和子网。 |
-| [新 AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)  | 创建具有静态 IP 地址和关联的 DNS 名称的公共 IP 地址。 |
-| [新 AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer)  | 创建一个 Azure 负载平衡器。 |
-| [新 AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig) | 创建负载平衡器探测。 负载平衡器探测用于监视每个虚拟机中的负载平衡器集。 如果任何 VM 变得无法访问，流量不会路由到 VM。 |
-| [新 AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerruleconfig) | 创建负载平衡器规则。 在此示例中，为端口 80 创建一个规则。 根据 HTTP 流量在到达负载平衡器，它被路由到端口 80 中负载平衡器集的虚拟机之一。 |
-| [新 AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerinboundnatruleconfig) | 创建负载平衡器网络地址转换 (NAT) 规则。  NAT 规则将负载平衡器端口映射到 VM 上的端口。 在此示例中，为 SSH 流量引导至每个 VM 中的负载平衡器集创建 NAT 规则。  |
-| [新 AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) | 创建网络安全组 (NSG)，这是 internet 和虚拟机之间的安全边界。 |
-| [新 AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | 创建允许入站的流量的 NSG 规则。 在此示例中，为 SSH 流量打开端口 22。 |
-| [新 AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | 创建虚拟网络卡，并将其附加到虚拟网络、 子网和 NSG。 |
-| [新 AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) | 创建一个可用性集。 可用性集确保通过分散物理资源的虚拟机，以便如果失败，则不会影响整个集的应用程序运行时间。 |
-| [新 AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | 创建虚拟机配置。 此配置包括 VM 名称、 操作系统和管理凭据等信息。 在 VM 创建期间使用的配置。 |
-| [新 AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)  | 创建虚拟机并将其连接到网络卡、 虚拟网络、 子网和 NSG。 此命令还指定要使用和管理凭据的虚拟机映像。  |
-| [Remove-azurermresourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 删除资源组包括所有嵌套的资源。 |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |
+| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | 创建 Azure 虚拟网络和子网。 |
+| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)  | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
+| [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer)  | 创建 Azure 负载均衡器。 |
+| [New-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量将不会路由到该 VM。 |
+| [New-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerruleconfig) | 创建负载均衡器规则。 在此示例中，将为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到负载均衡器集中某个 VM 的端口 80。 |
+| [New-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerinboundnatruleconfig) | 创建负载均衡器网络地址转换 (NAT) 规则。  NAT 规则将负载均衡器的端口映射到 VM 上的端口。 在本示例中，将为发往负载均衡器集中的每个 VM 的 SSH 流量创建 NAT 规则。  |
+| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |
+| [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | 创建虚拟网卡并将其连接到虚拟网络、子网和 NSG。 |
+| [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) | 创建可用性集。 可用性集通过将虚拟机分布到各个物理资源上（以便发生故障时，不会影响整个集）来确保应用程序运行时间。 |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间将使用此配置。 |
+| [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)  | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 的详细信息，请参阅[Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
 
-在找不到其他网络的 PowerShell 脚本示例[Azure 网络概述文档](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)。
+可在 [Azure 网络概述文档](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)中找到其他网络 PowerShell 脚本示例。

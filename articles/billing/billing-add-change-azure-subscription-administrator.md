@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/12/2017
 ms.author: genli
+ms.openlocfilehash: 0252a084061c89f3d0198fc9a08e8ee65581524b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 38742fd84dafc3fb68829a55ab7be0827ad0b451
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>添加或更改管理订阅或服务的 Azure 管理员角色
 
@@ -116,4 +115,3 @@ ms.lasthandoff: 09/23/2017
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-

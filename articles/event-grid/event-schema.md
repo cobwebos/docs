@@ -8,14 +8,12 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: babanisa
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: a61357b6ba75566e0ad4d3300cc602333ece0563
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
 本文提供事件的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象包含特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
@@ -235,4 +233,3 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-

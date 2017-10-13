@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: owend
 ms.openlocfilehash: e9a3aedfb6e55696e1525e226fada1062fd5eda8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-model-from-ssdt"></a>从 SSDT 部署模型
 在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 SQL Server Data Tools (SSDT) 可用于生成和部署正在处理的表格模型项目。 
@@ -29,8 +29,7 @@ ms.lasthandoff: 08/18/2017
 
 * Azure 中的 **Analysis Services 服务器**。 若要了解详细信息，请参阅[创建 Azure Analysis Services 服务器](analysis-services-create-server.md)。
 * SSDT 中的表格模型项目或兼容级别为 1200 或更高的现有表格模型。 从未创建过？ 尝试 [Adventure Works Internet 销售表格建模教程](https://msdn.microsoft.com/library/hh231691.aspx)。
-* 
-            **本地网关** - 如果组织的网络中有一个或多个本地数据源，则需要安装[本地数据网关](analysis-services-gateway.md)。 网关对于云中的服务器是必需的，可帮助服务器连接到本地数据源，以在模型中处理和刷新数据。
+* **本地网关** - 如果组织的网络中有一个或多个本地数据源，则需要安装[本地数据网关](analysis-services-gateway.md)。 网关对于云中的服务器是必需的，可帮助服务器连接到本地数据源，以在模型中处理和刷新数据。
 
 > [!TIP]
 > 在部署之前，请确保可以在表中处理数据。 在 SSDT 中，单击“模型” > “处理” > “全部处理”。 如果处理失败，将无法成功部署。

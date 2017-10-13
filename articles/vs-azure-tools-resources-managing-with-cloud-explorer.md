@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 03/25/2017
 ms.author: kraigb
 ms.openlocfilehash: 6e6d8d559f0251b71bfa6d529ead82a246cb3235
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源
 通过 Cloud Explorer，可在 Visual Studio 中查看 Azure 资源和资源组、检查其属性，以及执行重要的开发人员诊断操作。 
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/29/2017
 
 1. 登录要浏览其资源的 Azure 帐户。 
 
-1. 登录到 Azure 帐户以后，会显示与该帐户关联的订阅。 选中要浏览的帐户订阅的复选框，并选择“应用”。 
+1. 登录 Azure 帐户后，会显示与该帐户关联的订阅。 选中要浏览的帐户订阅的复选框，并选择“应用”。 
  
     ![Cloud Explorer：选择要显示的 Azure 订阅](media/vs-azure-tools-resources-managing-with-cloud-explorer/select-subscriptions.png)
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 08/29/2017
 
 ![](./media/vs-azure-tools-resources-managing-with-cloud-explorer/actions-and-properties.png)
 
-每个资源都有“在门户中打开”操作。 选择此操作时，Cloud Explorer 会在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中显示所选的资源。 在导航到深度嵌套的资源时，**在门户中打开**功能特别方便。
+每个资源都有“在门户中打开”操作。 选择此操作时，云资源管理器会在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中显示所选的资源。 在导航到深度嵌套的资源时，**在门户中打开**功能特别方便。
 
 根据 Azure 资源，还可能会显示其他操作和属性值。 例如，除了“在门户中打开”以外，Web 应用和逻辑应用还提供了“在浏览器中打开”和“附加调试器”操作。 当选择存储帐户 Blob、队列或表时，会显示用于打开编辑器的操作。 Azure 应用具有“URL”和“状态”属性，而存储资源具有键和连接字符串属性。
 

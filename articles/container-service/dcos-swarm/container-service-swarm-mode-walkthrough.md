@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nepeters
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 01357ceca1d78c80c901c9fbec08ce85f02fb958
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-docker-ce-cluster"></a>部署 Docker CE 群集
 
 在本快速入门中，将使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。

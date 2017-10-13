@@ -13,21 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: f40e0501eed8d5f296e7c79d8a35705a695ae6fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: b6b7b0b2d7a7f33facaf72bbd2d7937364770673
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>为云服务配置多个 VIP
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-你可以使用 Azure 提供的 IP 地址通过公共 Internet 访问 Azure 云服务。 此公共 IP 地址称为 VIP（虚拟 IP），因为它链接到 Azure 负载均衡器，而不是云服务中的虚拟机 (VM) 实例。 你可以使用单个 VIP 访问云服务中的任何 VM 实例。
+可以使用 Azure 提供的 IP 地址通过公共 Internet 访问 Azure 云服务。 此公共 IP 地址称为 VIP（虚拟 IP），因为它链接到 Azure 负载均衡器，而不是云服务中的虚拟机 (VM) 实例。 可以使用单个 VIP 访问云服务中的任何 VM 实例。
 
-但是，在某些情况下，你可能需要多个 VIP 作为同一云服务的入口点。 例如，云服务可能托管了多个网站，而这些网站需要使用默认端口 443 建立 SSL 连接，因为每个站点是针对不同的客户或租户托管的。 在此情况下，每个网站都需要有不同的面向公众的 IP 地址。 下图阐明了一个典型的多租户 Web 托管，它需要在同一个公共端口上使用多个 SSL 证书。
+但是，在某些情况下，可能需要多个 VIP 作为同一云服务的入口点。 例如，云服务可能托管了多个网站，而这些网站需要使用默认端口 443 建立 SSL 连接，因为每个站点是针对不同的客户或租户托管的。 在此情况下，每个网站都需要有不同的面向公众的 IP 地址。 下图阐明了一个典型的多租户 Web 托管，它需要在同一个公共端口上使用多个 SSL 证书。
 
 ![多 VIP SSL 方案](./media/load-balancer-multivip/Figure1.png)
 
@@ -36,7 +34,7 @@ ms.lasthandoff: 07/06/2017
 > [!NOTE]
 > 需要使用多个 VIP 的另一种情形是在同一组虚拟机器上托管多个 SQL AlwaysOn 可用性组侦听器。
 
-默认情况下，VIP 是动态的，这意味着，分配给云服务的实际 IP 地址会随着时间改变。 为了防止发生这种情况，你可以为服务保留 VIP。 若要了解有关保留 VIP 的详细信息，请参阅[保留的公共 IP](../virtual-network/virtual-networks-reserved-public-ip.md)。
+默认情况下，VIP 是动态的，这意味着，分配给云服务的实际 IP 地址会随着时间改变。 为了防止发生这种情况，可以为服务保留 VIP。 若要了解有关保留 VIP 的详细信息，请参阅[保留的公共 IP](../virtual-network/virtual-networks-reserved-public-ip.md)。
 
 > [!NOTE]
 > 有关 VIP 和保留 IP 的定价信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
@@ -53,7 +51,7 @@ ms.lasthandoff: 07/06/2017
 这些限制都是暂时性的，以后随时可能更改。 请务必重新访问此页，以了解将来发生的更改。
 
 ## <a name="how-to-add-a-vip-to-a-cloud-service"></a>如何将 VIP 添加到云服务
-若要将 VIP 添加到你的服务，请运行以下 PowerShell 命令：
+要将 VIP 添加到服务，请运行以下 PowerShell 命令：
 
 ```powershell
 Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
@@ -73,7 +71,7 @@ Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
 > [!IMPORTANT]
-> 你只能删除没有任何关联终结点的 VIP。
+> 只能删除没有任何关联终结点的 VIP。
 
 
 ## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>如何从云服务检索 VIP 信息
@@ -106,15 +104,15 @@ $deployment.VirtualIPs
 
 在此示例中，云服务有 3 个 VIP：
 
-* **Vip1** 是默认 VIP，你知道这一点的原因是 IsDnsProgrammedName 的值设置为 true。
+* **Vip1** 是默认 VIP，知道这一点的原因是 IsDnsProgrammedName 的值设置为 true。
 * **Vip2** 和 **Vip3** 未使用，因为它们没有任何 IP 地址。 仅当已将某个终结点关联到 VIP 时，才会使用相应的 VIP。
 
 > [!NOTE]
-> 你的订阅将只收取额外的 VIP 费用（在 VIP 与终结点关联后收取）。 有关定价的详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
+> 订阅将只收取额外的 VIP 费用（在 VIP 与终结点关联后收取）。 有关定价的详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
 
 ## <a name="how-to-associate-a-vip-to-an-endpoint"></a>如何将 VIP 关联到终结点
 
-若要将云服务上的 VIP 关联到终结点，请运行以下 PowerShell 命令：
+要将云服务上的 VIP 关联到终结点，请运行以下 PowerShell 命令：
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -153,7 +151,7 @@ $deployment.VirtualIPs
 
 ## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>如何在特定 VIP 上启用负载均衡
 
-可以将单个 VIP 与多个虚拟机相关联，以实现负载均衡。 例如，你有名为 *myService* 的云服务，以及名为 *myVM1* 和 *myVM2* 的两个虚拟机。 而你的云服务有多个 VIP，其中一个名为 *Vip2*。 要确保发往 *Vip2* 上端口 *81* 的所有流量都在端口 *8181* 上的 *myVM1* 与 *myVM2* 之间平衡，请运行以下 PowerShell 脚本：
+可以将单个 VIP 与多个虚拟机相关联，以实现负载均衡。 例如，有名为 *myService* 的云服务，以及名为 *myVM1* 和 *myVM2* 的两个虚拟机。 而云服务有多个 VIP，其中一个名为 *Vip2*。 要确保发往 *Vip2* 上端口 *81* 的所有流量都在端口 *8181* 上的 *myVM1* 与 *myVM2* 之间平衡，请运行以下 PowerShell 脚本：
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -165,7 +163,7 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
     Update-AzureVM
 ```
 
-你也可以更新你的负载均衡器，以使用不同的 VIP。 例如，如果运行以下 PowerShell 命令，则会将负载均衡集更改为使用名为 Vip1 的 VIP：
+也可以更新负载均衡器，以使用不同的 VIP。 例如，如果运行以下 PowerShell 命令，则会将负载均衡集更改为使用名为 Vip1 的 VIP：
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
@@ -182,4 +180,3 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
 
 [保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
-

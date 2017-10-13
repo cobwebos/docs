@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 22b4f5fbaef9c9bfd00b374d459da7f981af30ec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - GA](v1/data-factory-onprem-file-system-connector.md)
@@ -60,7 +58,7 @@ ms.lasthandoff: 09/25/2017
 | 主机 | 指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\"”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 | 是 |
 | userid | 指定有权访问服务器的用户的 ID。 | 是 |
 | password | 设置用户的密码 (userid)。 将此字段标记为 SecureString。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自我托管集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>链接服务和数据集定义示例
 
@@ -103,8 +101,8 @@ ms.lasthandoff: 09/25/2017
 | type | 数据集的 type 属性必须设置为：FileShare |是 |
 | folderPath | 文件夹路径。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
 | fileName | 如果需要向/从特定文件复制，则在 folderPath 中指定文件名。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件作为源，并自动生成文件名。<br/><br/>**接收器的 fileName 自动生成：**如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 preserveHierarchy，则复制活动会生成采用以下模式的文件名： <br/>- `Data_[activity run id]_[GUID].[format].[compression if configured]`。 例如： `Data_0a405f8a-93ff-4c6f-b3be-f69616f1df7a_0d143eda-d5b8-44df-82ec-95c50895ff80.txt.gz` <br/>- 或 `[Table name].[format].[compression if configured]` 用作关系源（如果未指定查询）。 例如：MySourceTable.orc。 |否 |
-| fileFilter | 指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 仅当未指定文件名时应用。 <br/><br/>允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileFilter": "*.log"`<br/>- 示例 2：`"fileFilter": 2017-09-??.txt"` |否 |
-| 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果需要分析或生成具有特定格式的文件，则下面是支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
+| fileFilter | 指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 仅当未指定 fileName 时应用。 <br/><br/>允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileFilter": "*.log"`<br/>- 示例 2：`"fileFilter": 2017-09-??.txt"` |否 |
+| 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果想要分析或生成具有特定格式的文件，则下面是支持的文件格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为：**最佳**和**最快**。 |否 |
 
 
@@ -138,16 +136,16 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供文件系统源和接收器支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供文件系统源和接收器支持的属性列表。
 
 ### <a name="file-system-as-source"></a>文件系统作为源
 
-要从文件系统复制数据，请将复制活动中的源类型设置为 FileSystemSource。 复制活动源部分支持以下属性：
+要从文件系统复制数据，请将复制活动中的源类型设置为 FileSystemSource。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource |是 |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。<br/>允许的值为：true（默认值）、false | 否 |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。<br/>允许的值为：true（默认）、false | 否 |
 
 **示例：**
 
@@ -188,7 +186,7 @@ ms.lasthandoff: 09/25/2017
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：FileSystemSink |是 |
-| copyBehavior | 源是基于文件的数据存储中的文件时，请定义复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并为一个文件。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 | 否 |
+| copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 | 否 |
 
 **示例：**
 
@@ -237,4 +235,4 @@ ms.lasthandoff: 09/25/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

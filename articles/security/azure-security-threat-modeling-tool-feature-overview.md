@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
 
 Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此工具的基本简介，请参阅 [Threat Modeling Tool 入门](./azure-security-threat-modeling-tool-getting-started.md)。
@@ -210,4 +208,3 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 * 若要为社区提供模板，请转到我们的 [GitHub](https://github.com/Microsoft/threat-modeling-templates) 页。 
 * 若要开始使用此工具，请转到[下载](https://aka.ms/tmtpreview)页。
-

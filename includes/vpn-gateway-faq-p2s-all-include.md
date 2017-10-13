@@ -38,7 +38,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
-不会。 点到站点客户端只能连接到虚拟网络网关所在的 VNet 中的资源。
+不能。 点到站点客户端只能连接到虚拟网络网关所在的 VNet 中的资源。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>预计通过站点到站点连接或点到站点连接的吞吐量有多少？
 
@@ -46,11 +46,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>是否可以将任何软件 VPN 客户端用于支持 SSTP 和/或 IKEv2 的点到站点配置？
 
-不会。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 请参阅支持的客户端操作系统的列表。
-
-### <a name="can-i-access-the-internet-when-i-am-connected-over-p2s-vpn"></a>通过 P2S VPN 连接时是否可以访问 Internet？
-
-是的，在 P2S VPN 中可以访问 Internet。
+不能。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 请参阅支持的客户端操作系统的列表。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 

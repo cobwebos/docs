@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: alkohli
 ms.openlocfilehash: 93df79c9d349c294b692148a19c9d881c4de4f7b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple Manager 服务监视硬件组件和状态
 ## <a name="overview"></a>概述

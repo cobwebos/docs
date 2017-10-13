@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
 ms.openlocfilehash: fd8c31a727dae3b011aa8294a81f005bad72a278
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 > [!div class="op_single_selector"]
@@ -117,7 +117,7 @@ FROM    t1
 > 
 
 ## <a name="dropping-temporary-tables"></a>删除临时表
-创建新会话时，应不存在任何临时表。  但是，如果要调用使用相同名称创建临时表的同一存储过程来确保 `CREATE TABLE` 语句成功执行，可以使用带 `DROP` 的简单预存在检查，如下面的示例所示：
+创建新会话时，应不存在任何临时表。  但是，如果调用同一存储过程，它将使用相同名称创建临时表，要确保 `CREATE TABLE` 语句成功执行，可以使用带 `DROP` 的简单预存在检查，如下面的示例中所示：
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL

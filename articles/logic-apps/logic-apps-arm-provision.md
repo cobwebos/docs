@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; mandia
 ms.openlocfilehash: 161adeacd6da2b15225c8a4ddae171e19e539967
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-logic-app-using-a-template"></a>使用模板创建逻辑应用
 若要在逻辑应用中使用不同的连接器，可以使用模板这种快速方法。 逻辑应用包括 Azure Resource Manager 模板，方便用户创建可以用来定义业务工作流的逻辑应用。 可以定义要部署的资源，以及定义在部署逻辑应用时如何定义参数。 可将此模板用于自己的业务方案，或根据需要自定义此模板。

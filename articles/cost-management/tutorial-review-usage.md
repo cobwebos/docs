@@ -10,15 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 4440ca81545978ab7438f1684ce71ded24c326e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="review-usage-and-costs"></a>查看使用情况和成本
 
 通过 Cloudyn 提供的 Azure 成本管理将显示使用情况和成本，以便可以跟踪趋势、检测低效情况并创建警报。 所有使用情况和成本数据都将显示在 Cloudyn 仪表板和报表中。 本教程中将举例说明如何使用仪表板和报表查看使用情况和成本。 本教程介绍如何执行下列操作：
@@ -89,7 +86,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 跟踪使用情况和成本趋势
@@ -101,4 +98,3 @@ ms.lasthandoff: 09/25/2017
 
 > [!div class="nextstepaction"]
 > [控制对数据的访问](tutorial-user-access.md)
-

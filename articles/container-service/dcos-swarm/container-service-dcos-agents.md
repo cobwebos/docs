@@ -17,10 +17,10 @@ ms.date: 01/04/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: da4a196b1a73c78dfff7d8310edcc349b8d10665
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Azure 容器服务的 DC/OS 代理池
 Azure 容器服务中的 DC/OS 群集包含两个池（公共池和专用池）中的代理节点。 可将应用程序部署到任一个池，从而影响容器服务中计算机之间的可访问性。 计算机可以向 Internet 公开（公共）或保持在内部（专用）。 本文简要概述了使用公共池和专用池的原因。

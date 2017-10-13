@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d1a31bc95b249c3fa1caced138bbf3459eb6282c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>演练步骤 6：访问 Azure 机器学习 Web 服务
 
@@ -49,5 +48,4 @@ Web 服务是一种 Azure Web 服务，可以两种方式之一使用 REST API �
 还可使用 R、C# 和 Python 编程语言中提供的起始代码开发自定义应用程序，以访问 Web 服务。
 
 可以在[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)找到完整的详细信息。
-
 

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 89b4f7cee6d00b5bbbca4799eeca74a280147fc7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点
 
 本主题说明如何使用 Azure 门户管理流式处理终结点。 
@@ -123,5 +121,4 @@ ms.lasthandoff: 09/13/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

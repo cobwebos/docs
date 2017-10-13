@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: 214fdcfe20f3fa4ebcbe41308404f8b7e7d15310
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-php-web-and-worker-roles"></a>如何创建 PHP Web 角色和辅助角色
 ## <a name="overview"></a>概述
-本指南将说明如何执行以下操作：在 Windows 开发环境中创建 PHP Web 角色或辅助角色，从提供的“内置”版本中选择特定版本的 PHP，更改 PHP 配置，启用扩展，最后部署到 Azure。 它还介绍了如何将 Web 角色或辅助角色配置为使用你提供的 PHP 运行时（带自定义配置和扩展）。
+本指南将说明如何执行以下操作：在 Windows 开发环境中创建 PHP Web 角色或辅助角色，从提供的“内置”版本中选择特定版本的 PHP，更改 PHP 配置，启用扩展，最后部署到 Azure。 它还介绍了如何将 Web 角色或辅助角色配置为使用提供的 PHP 运行时（带自定义配置和扩展）。
 
 ## <a name="what-are-php-web-and-worker-roles"></a>什么是 PHP Web 角色和辅助角色？
 Azure 提供了三种计算模型以运行应用程序：Azure 应用服务、Azure 虚拟机和 Azure 云服务。 这三种模型都支持 PHP。 云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。 在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。 辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
@@ -74,7 +74,7 @@ PHP 5.3.17          http://nodertncu.blob.core...   True
 PHP 5.4.0           http://nodertncu.blob.core...   False
 ```
 
-可以将 PHP 运行时版本设置为列出的任意 PHP 版本。 例如，若要将 PHP 版本（对于名为 `roleName` 的角色）设置为 5.4.0，请使用以下命令：
+可以将 PHP 运行时版本设置为列出的任意 PHP 版本。 例如，要将 PHP 版本（对于名为 `roleName` 的角色）设置为 5.4.0，请使用以下命令：
 
     PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
@@ -90,13 +90,13 @@ PHP 5.4.0           http://nodertncu.blob.core...   False
 
 1. 将一个名为 `php` 的新文件夹添加到 Web 角色的 `bin` 目录。 对于辅助角色，将该文件夹添加到角色的根目录。
 2. 在 `php` 文件夹中，创建另一个名为 `ext` 的文件夹。 将要启用的任何扩展名为 `.dll` 的文件（例如，`php_mongo.dll`）置于此文件夹中。
-3. 将 `php.ini` 文件添加到 `php` 文件夹中。 启用任何自定义扩展，并在此文件中设置任何 PHP 指令。 例如，若要打开 `display_errors` 并启用 `php_mongo.dll` 扩展，则 `php.ini` 文件的内容将如下所示：
+3. 将 `php.ini` 文件添加到 `php` 文件夹中。 启用任何自定义扩展，并在此文件中设置任何 PHP 指令。 例如，要打开 `display_errors` 并启用 `php_mongo.dll` 扩展，则 `php.ini` 文件的内容将如下所示：
 
         display_errors=On
         extension=php_mongo.dll
 
 > [!NOTE]
-> 所提供的 `php.ini` 文件中未显式设置的所有设置都将自动设为其默认值。 但请记住，可以添加整个 `php.ini` 文件。
+> 所提供的 `php.ini` 文件中未显式设置的所有设置都会自动设为其默认值。 但请记住，可以添加整个 `php.ini` 文件。
 >
 >
 

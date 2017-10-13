@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 383f0a466f92a230e49c3d1e96d306a0b7d67da2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习模型如何从实验逐步变为运营 Web 服务
 Azure 机器学习工作室提供交互式画布，允许开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
@@ -119,5 +118,4 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 * [机器学习教程：在 Azure 机器学习工作室中创建第一个实验](create-experiment.md)
 * [演练：在 Azure 机器学习中为信用风险评估开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
-
 

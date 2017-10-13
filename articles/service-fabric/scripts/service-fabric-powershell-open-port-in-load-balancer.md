@@ -15,14 +15,12 @@ ms.topic: sample
 ms.date: 08/15/2017
 ms.author: ryanwi
 ms.custom: mvc
+ms.openlocfilehash: 76c1e44d7ad2325ce695dd134cf891727d385610
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 24f12f5d1f1ef34f2f483534b61ba120ccaf0e45
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>打开 Azure 负载均衡器中的应用程序端口
 
 正在 Azure 中运行的 Service Fabric 应用程序位于 Azure 负载均衡器后。 此示例脚本将打开 Azure 负载均衡器中的端口，以便 Service Fabric 应用程序可与外部客户端通信。 根据需要自定义参数。 
@@ -51,4 +49,3 @@ ms.lasthandoff: 09/02/2017
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
 
 可以在 [Azure PowerShell 示例](../service-fabric-powershell-samples.md)中找到 Azure Service Fabric 的其他 Powershell 示例。
-

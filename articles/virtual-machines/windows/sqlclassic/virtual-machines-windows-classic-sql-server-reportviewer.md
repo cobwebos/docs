@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c4f7c829e6fe3890342bd973185e679dd3ea2df5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>在 Azure 中托管的网站中使用 ReportViewer
 > [!IMPORTANT] 
@@ -50,8 +49,7 @@ ms.lasthandoff: 09/20/2017
 
 在远程处理模式下，ReportViewer 控件使用以下程序集：
 
-* 
-            **Microsoft.ReportViewer.WebForms.dll**：包含 ReportViewer 代码，需要在页面中使用 ReportViewer。 将 ReportViewer 控件拖到项目中的一个 ASP.NET 页时，此程序集的引用会被添加到该项目中。
+* **Microsoft.ReportViewer.WebForms.dll**：包含 ReportViewer 代码，需要在页面中使用 ReportViewer。 将 ReportViewer 控件拖到项目中的一个 ASP.NET 页时，此程序集的引用会被添加到该项目中。
 * **Microsoft.ReportViewer.Common.dll**：包含 ReportViewer 控件在运行时使用的类。 它不会自动添加到项目。
 
 ### <a name="to-add-a-reference-to-microsoftreportviewercommon"></a>添加对 Microsoft.ReportViewer.Common 的引用
@@ -94,5 +92,4 @@ ReportViewer 需要使用正确的凭据向报表服务器进行身份验证，�
 [Azure 虚拟机中的 SQL Server Business Intelligence](../classic/ps-sql-bi.md)
 
 [使用 PowerShell 创建运行本机模式报表服务器的 Azure VM](../classic/ps-sql-report.md)
-
 

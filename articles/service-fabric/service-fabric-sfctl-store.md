@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 2af6dff4ffcdf295731f2d61b5f9e35af40615e5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-store"></a>sfctl store
-针对群集映像存储区执行基本文件级别操作。
+针对群集映像存储执行基本文件级别操作。
 
 ## <a name="commands"></a>命令
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 09/26/2017
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

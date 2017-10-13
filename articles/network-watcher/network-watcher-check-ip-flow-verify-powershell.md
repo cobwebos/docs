@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: bf0c01a9af0e28647d11ad89a9d164716d5c8312
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: 5257a70aa2dbc25bfe4eca5e2e0db87ca5e6b6fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>使用 Azure 网络观察程序的组件（即“IP 流验证”功能）检查系统是允许还是拒绝进出 VM 的流量
 
@@ -60,7 +59,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="get-the-nics"></a>获取 NIC
 
-需要虚拟机上的 NIC 的 IP 地址。在此示例中，我们将在虚拟机上检索 NIC。 如果已知道要在虚拟机上测试的 IP 地址，则可以跳过此步骤。
+需要虚拟机上的 NIC 的 IP 地址，在此示例中我们会在虚拟机上检索 NIC。 如果已知道要在虚拟机上测试的 IP 地址，则可以跳过此步骤。
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -95,7 +94,6 @@ Allow  defaultSecurityRules/AllowInternetOutBound
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png
-
 
 
 

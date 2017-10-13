@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 04/14/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
 ms.openlocfilehash: da3399b9c6642435dc7b40ed1c843217c984d15e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)
 本文介绍数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)，以及达到最大 DTU 或 eDTU 时发生的情况。  
@@ -65,4 +64,3 @@ ms.lasthandoff: 08/30/2017
 * 有关适用于单一数据库和弹性池上的 DTU 和 eDTU，以及除 CPU、内存、数据 I/O 和事务日志 I/O 之外的其他资源限制的信息，请参阅[服务层](sql-database-service-tiers.md)。
 * 请参阅 [SQL 数据库 Query Performance Insight](sql-database-query-performance.md) 以了解 (DTU) 使用情况。
 * 要了解用于确定 DTU 混合比例的 OLTP 基准工作负荷所依据的方法，请参阅 [SQL 数据库基准概述](sql-database-benchmark-overview.md) 。
-

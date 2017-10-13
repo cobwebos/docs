@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/12/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 4eb0e7bcc14722010121c2a5945509d6ed736f4f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.openlocfilehash: 16da4e1732445b2480daf18130ea74935c6e6c49
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>使用 .NET Framework 将事件发送到 Azure 事件中心
 
@@ -40,13 +39,13 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="create-a-sender-console-application"></a>创建发送方控制台应用程序
 
-在此部分中，你将编写用于将事件发送到事件中心的 Windows 控制台应用。
+在此部分中，将编写用于将事件发送到事件中心的 Windows 控制台应用。
 
 1. 在 Visual Studio 中，使用 **控制台应用程序** 项目模板创建一个新的 Visual C# 桌面应用项目。 将该项目命名为 **Sender**。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
-2. 在解决方案资源管理器中，右键单击“Sender”项目，然后单击“为解决方案管理 NuGet 包”。 
-3. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。 
+2. 在解决方案资源管理器中，右键单击“Sender”项目，并单击“为解决方案管理 NuGet 包”。 
+3. 单击“浏览”选项卡，并搜索 `WindowsAzure.ServiceBus`。 单击“安装” 并接受使用条款。 
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/14/2017
   using System.Threading;
   using Microsoft.ServiceBus.Messaging;
   ```
-5. 将以下字段添加到 **Program** 类，并将占位符值分别替换为你在上一节中创建的事件中心的名称和前面保存的命名空间级别连接字符串。
+5. 将以下字段添加到 **Program** 类，并将占位符值分别替换成在上一节中创建的事件中心的名称和前面保存的命名空间级别连接字符串。
    
   ```csharp
   static string eventHubName = "{Event Hub name}";
@@ -114,5 +113,4 @@ ms.lasthandoff: 06/14/2017
 [20]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj2.png
 [21]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs1.png
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
-
 

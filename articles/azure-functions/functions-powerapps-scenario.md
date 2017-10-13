@@ -16,18 +16,16 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
-[PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用生成器摆脱技术细节。
+[PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用构建者摆脱技术细节。
 
-本主题基于风力涡轮机的维护方案生成应用。 该主题介绍如何调用在[为函数创建 OpenAPI 定义](functions-openapi-definition.md)中定义的函数。 此函数确定风力涡轮机上的紧急修复是否经济高效。
+本主题基于风力涡轮机的维护方案生成应用。 介绍如何调用在[为函数创建 OpenAPI 定义](functions-openapi-definition.md)中定义的函数。 此函数确定风力涡轮机上的紧急修复是否经济高效。
 
 ![PowerApps 中已完成的应用](media/functions-powerapps-scenario/finished-app.png)
 
@@ -47,30 +45,30 @@ ms.lasthandoff: 09/25/2017
 ## <a name="prerequisites"></a>先决条件
 
 + 一个有效的 [PowerApps 帐户](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md)，其中登录凭据与 Azure 帐户相同。 
-+ Excel，因为将使用 Excel 作为应用的数据源。
++ Excel，因为要使用 Excel 作为应用的数据源。
 + 完成[为函数创建 OpenAPI 定义](functions-openapi-definition.md)教程。
 
 
 ## <a name="prepare-sample-data-in-excel"></a>在 Excel 中准备示例数据
-通过准备应用中使用的示例数据开始。 将下表复制到 Excel。 
+首先准备应用中使用的示例数据。 将下表复制到 Excel。 
 
-| 标题      | 纬度  | 经度  | LastServiceDate | MaxOutput | ServiceRequired | EstimatedEffort | InspectionNotes                            |
+| 标题      | 纬度  | 经度  | 上次维修日期 | 最大输出 | 需要维修 | 预计工作量 | 检查备注                            |
 |------------|-----------|-------------|-----------------|-----------|-----------------|-----------------|--------------------------------------------|
-| 涡轮机 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | 是             | 6               | 这是本月的第二次问题。       |
+| 涡轮机 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | 是             | 6               | 这是本月的第二个问题。       |
 | 涡轮机 4  | 47.433385 | -121.383767 | 5/8/2017        | 5400      | 是             | 6               |                                            |
 | 涡轮机 33 | 47.428229 | -121.404641 | 6/20/2017       | 2800      |                 |                 |                                            |
 | 涡轮机 34 | 47.463637 | -121.358824 | 2/19/2017       | 2800      | 是             | 7               |                                            |
 | 涡轮机 46 | 47.471993 | -121.298949 | 3/2/2017        | 1200      |                 |                 |                                            |
 | 涡轮机 47 | 47.484059 | -121.311171 | 8/2/2016        | 3350      |                 |                 |                                            |
-| 涡轮机 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | 是             | 40               | 我们有一些为此推出的部件。 |
+| 涡轮机 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | 是             | 40               | 我们为这台涡轮机采购了一些即将到货的部件。 |
 
-1. 在 Excel 中，选择数据，在“主页”选项卡上，单击“套用表格式”。
+1. 在 Excel 中，选择数据，在“开始”选项卡上，单击“套用表格格式”。
 
-    ![套用表格式](media/functions-powerapps-scenario/format-table.png)
+    ![套用表格格式](media/functions-powerapps-scenario/format-table.png)
 
 1. 选择任意样式，单击“确定”。
 
-1. 选择表后，在“设计”选项卡上，输入 `Turbines` 作为“表名”。
+1. 选择表后，在“设计”选项卡上，输入 `Turbines` 作为“表名称”。
 
     ![表名称](media/functions-powerapps-scenario/table-name.png)
 
@@ -85,7 +83,7 @@ ms.lasthandoff: 09/25/2017
 
     ![PowerApps 连接](media/functions-powerapps-scenario/powerapps-connections.png)
 
-1. 单击“新建连接”，向下滚动到单击“涡轮机修复”连接器。
+1. 单击“新建连接”，向下滚动到“涡轮机修复”连接器并在其上单击。
 
     ![新建连接](media/functions-powerapps-scenario/new-connection.png)
 
@@ -105,7 +103,7 @@ ms.lasthandoff: 09/25/2017
 
     ![创建平板电脑应用](media/functions-powerapps-scenario/create-phone-app.png)
 
-    将在 Web PowerApps Studio 中打开应用。 下图显示了 PowerApps Studio 的各种部件。 此图显示的是已完成的应用；先介绍中间窗格的空白屏幕。
+    应用在 Web PowerApps Studio 中打开。 下图显示了 PowerApps Studio 的各部分。 此图显示的是已完成的应用；中间窗格最初是空白屏幕。
 
     ![PowerApps Studio](media/functions-powerapps-scenario/powerapps-studio.png)
 
@@ -131,7 +129,7 @@ ms.lasthandoff: 09/25/2017
 
         ![添加数据源](media/functions-powerapps-scenario/add-static-data.png)
 
-        通常情况下，可以从外部数据源中读取和写入数据，但需要将 Excel 数据添加为静态数据用作示例。
+        通常情况下是从外部数据源中读取和写入数据，但这里是将 Excel 数据添加为静态数据，因为这是一个示例。
 
     1. 导航到保存的 Excel 文件，选择“涡轮机”表，再单击“连接”。
 
@@ -145,7 +143,7 @@ ms.lasthandoff: 09/25/2017
 
         ![涡轮机修复连接器](media/functions-powerapps-scenario/turbine-connector.png)
 
-## <a name="add-controls-to-view-data-in-the-app"></a>添加控件以查看应用中的数据
+## <a name="add-controls-to-view-data-in-the-app"></a>添加控件以在应用中查看数据
 现在应用中已具有数据源，接下来可以将屏幕添加到应用，以查看涡轮机数据。
 
 1. 在“主页”选项卡上，单击“新建屏幕” > “列表屏幕”。
@@ -154,7 +152,7 @@ ms.lasthandoff: 09/25/2017
 
     PowerApps 将添加一个屏幕，该屏幕包含的“库”可显示项和其他可进行搜索、排序和筛选的控件。
 
-1. 将标题栏更改为 `Turbine Repair` 并重设库的大小，以便为其下面的更多控件留出空间。
+1. 将标题栏更改为 `Turbine Repair` 并重设库的大小，在其下方留出添加更多控件所需的空间。
 
     ![更改标题和重设库的大小](media/functions-powerapps-scenario/gallery-title.png)
 
@@ -172,9 +170,9 @@ ms.lasthandoff: 09/25/2017
 
     ![更改库字段](media/functions-powerapps-scenario/change-fields.png)
     
-    + **Body1** = LastServiceDate
-    + **Subtitle2** = ServiceRequired
-    + **Title2** = Title 
+    + **Body1** = 上次维修时间
+    + **Subtitle2** = 需要维修
+    + **Title2** = 标题 
 
 1. 选择库后，将“TemplateFill”属性设置为以下公式：`If(ThisItem.IsSelected, Orange, White)`。
 

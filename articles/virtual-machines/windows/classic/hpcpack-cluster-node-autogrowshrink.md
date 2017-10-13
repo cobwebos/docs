@@ -15,10 +15,10 @@ ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
 ms.openlocfilehash: 0dc0d15c64d8951c3c457df73588c37418a3c8a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>在 Azure 中根据群集工作负荷自动扩展和收缩 HPC Pack 群集资源
 如果在 HPC Pack 群集中部署 Azure“突发”节点，或者在 Azure VM 中创建 HPC Pack 群集，可能希望有一种方法能够根据群集上的工作负荷自动扩展或收缩群集资源（例如节点或核心）。 以这种方式缩放群集资源，可更有效地使用 Azure 资源并控制其成本。
@@ -152,7 +152,7 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
 * **GrowThreshold** - 用于触发自动扩展的排队任务的阈值。 默认值为 1，这意味着，如果有 1 个或多个任务处于排队状态，会自动扩展节点。
 * **GrowInterval** - 触发自动扩展的间隔（以分钟为单位）。 默认间隔为 5 分钟。
 * **ShrinkInterval** - 触发自动收缩的间隔（以分钟为单位）。 默认间隔为 5 分钟。|
-* **ShrinkIdleTimes** - 指示节点为空闲状态之前，持续检查收缩的次数。 默认值为 3 次。 例如，如果 **ShrinkInterval** 为 5 分钟，HPC Pack 将每隔 5 分钟检查一次节点是否处于空闲状态。 如果节点连续 3 次检查（15 分钟）都处于空闲状态，HPC Pack 会收缩该节点。
+* **ShrinkIdleTimes** - 指示节点为空闲状态之前，持续检查收缩的次数。 默认值为 3 次。 例如，如果 **ShrinkInterval** 为 5 分钟，HPC Pack 将每隔 5 分钟检查一次节点是否处于空闲状态。 如果节点连续 3 次检查（15 分钟）都处于空闲状态，HPC Pack 将收缩该节点。
 * **ExtraNodesGrowRatio** - 要为消息传递接口 (MPI) 作业扩展的节点附加百分比。 默认值为 1，表示 HPC Pack 针对 MPI 作业扩展节点 1%。
 * **GrowByMin** - 用于指示自动扩展策略是否基于作业所需的最少资源的开关。 默认值为 false，这意味着 HPC Pack 将基于作业所需的资源数上限为作业扩展节点。
 * **SoaJobGrowThreshold** - 传入 SOA 请求以触发自动扩展过程的阈值。 默认值为 50000。
@@ -178,7 +178,7 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
     Set-HpcClusterProperty -ExtraNodesGrowRatio 10
 
 ### <a name="soa-example"></a>SOA 示例
-默认情况下，**SoaJobGrowThreshold** 设置为 50000，**SoaRequestsPerCore** 设置为 200000。 如果提交一个包含 70000 个请求的 SOA 作业，则会有一个排队任务，并且传入请求数为 70000。 在此情况下，HPC Pack 会针对排队任务扩展 1 个核心，针对传入请求扩展 (70000 - 50000)/20000 = 1 个核心，因此总共为此 SOA 作业扩展 2 个核心。
+默认情况下，**SoaJobGrowThreshold** 设置为 50000，**SoaRequestsPerCore** 设置为 200000。 如果提交一个包含 70000 个请求的 SOA 作业，则会有一个排队任务，并且传入请求数为 70000。 在此情况下，HPC Pack 会针对排队任务扩展 1 个核心，并针对传入请求扩展 (70000 - 50000)/20000 = 1 个核心，因此总共为此 SOA 作业扩展了 2 个核心。
 
 ## <a name="run-the-azureautogrowshrinkps1-script"></a>运行 AzureAutoGrowShrink.ps1 脚本
 ### <a name="prerequisites"></a>先决条件

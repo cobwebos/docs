@@ -16,19 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 41275f8264353e7158ca42e5cfc089b2fbaa556d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: 96d897d4e4eb50abae2b145abd4f794523da6a2b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Spark 群集配合使用来分析网站日志
 
 此笔记本演示如何将自定义库与 HDInsight 上的 Spark 配合使用来分析网站日志数据。 我们使用的自定义库是一个名为 **iislogparser.py** 的 Python 库。
 
 > [!TIP]
-> 本教程也适用于在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你笔记本本身运行 Python 代码段。 若要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，然后运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”。
+> 本教程也适用于在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，并运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”。
 >
 >
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 06/07/2017
 将数据保存为 Hive 表之后，下一部分我们将使用 Power BI 和 Tableau 等 BI 工具来连接该 Hive 表。
 
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
-2. 在 Spark 群集边栏选项卡中单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+2. 在 Spark 群集边栏选项卡中单击“群集仪表板”，并单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -54,13 +53,13 @@ ms.lasthandoff: 06/07/2017
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
+3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
 
     ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
-4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
+4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
 
     ![提供笔记本的名称](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "提供笔记本的名称")
-5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
+5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
 
         from pyspark.sql import Row
         from pyspark.sql.types import *
@@ -75,7 +74,7 @@ ms.lasthandoff: 06/07/2017
 
         logs.take(5)
 
-    你应该会看到与下面类似的输出：
+    应该会看到与下面类似的输出：
 
         # -----------------
         # THIS IS AN OUTPUT
@@ -90,7 +89,7 @@ ms.lasthandoff: 06/07/2017
 ## <a name="analyze-log-data-using-a-custom-python-library"></a>使用自定义 Python 库分析日志数据
 1. 在上面的输出中，前几行包括标头信息，其余的每一行均与此标头中描述的架构相匹配。 分析此类日志可能很复杂。 因此，可使用自定义 Python 库 (**iislogparser.py**)，它能使分析这类日志变得容易得多。 默认情况下，此库包含在 **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py** 中 HDInsight 上的 Spark 群集中。
 
-    但是，此库不在 `PYTHONPATH` 中，因此不能通过 `import iislogparser` 等导入语句来使用它。 若要使用此库，必须将其分发给所有从节点。 运行以下代码段。
+    但是，此库不在 `PYTHONPATH` 中，因此不能通过 `import iislogparser` 等导入语句来使用它。 要使用此库，必须将其分发给所有从节点。 运行以下代码段。
 
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
@@ -121,7 +120,7 @@ ms.lasthandoff: 06/07/2017
        print 'There are', numErrors, 'errors and', numLines, 'log entries'
        errors.map(lambda p: str(p)).saveAsTextFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
 
-   你应该看到如下输出：
+   应该看到如下输出：
 
        # -----------------
        # THIS IS AN OUTPUT
@@ -139,7 +138,7 @@ ms.lasthandoff: 06/07/2017
 
        avgTimeTakenByKey(logLines.map(lambda p: (p.cs_uri_stem, p))).top(25, lambda x: x[1])
 
-   你应该看到如下输出：
+   应该看到如下输出：
 
        # -----------------
        # THIS IS AN OUTPUT
@@ -203,7 +202,7 @@ ms.lasthandoff: 06/07/2017
    应该会显示如下输出：
 
    ![Matplotlib 输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
-8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
+8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
@@ -229,4 +228,3 @@ ms.lasthandoff: 06/07/2017
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](hdinsight-apache-spark-job-debugging.md)
-

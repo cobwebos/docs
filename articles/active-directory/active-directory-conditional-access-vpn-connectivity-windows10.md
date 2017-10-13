@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 540d8974ee2c02f80bccf28764b4d0d243e98d85
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-conditional-access-for-virtual-private-network-connectivity-preview"></a>针对虚拟专用网络连接的 Azure Active Directory 条件性访问（预览）
 
@@ -180,5 +179,4 @@ VPN 证书是 Windows 10 客户端面向 Azure 进行身份验证以实现 VPN �
 ## <a name="next-steps"></a>后续步骤
 
 要深入了解 Microsoft 如何实现此功能，请参阅[使用自动 VPN 配置文件加强 Windows 10 中的远程访问](https://www.microsoft.com/itshowcase/Article/Content/894/Enhancing-remote-access-in-Windows-10-with-an-automatic-VPN-profile)。    
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 设备管理器服务监视 StorSimple 设备
 ## <a name="overview"></a>概述
@@ -90,7 +89,7 @@ ms.lasthandoff: 08/30/2017
 
 
 ### <a name="local-storage-usage"></a>本地存储使用情况
-这些图表说明了设备的总使用情况，由于其中包含了 SSD 线性层，因此其使用率将比主存储使用率高。 该层包含也存在于设备的其他层上的许多数据。 SSD 线性层中的容量是循环利用的，以便新数据可以进来，并且旧数据将移动到 HDD 层（彼时会删除重复数据项并对数据进行压缩），随后将移动到云。
+这些图表显示设备的总使用量，这会大于主存储使用量，因为它包括 SSD 线性层。 该层包含也存在于设备的其他层上的许多数据。 SSD 线性层中的容量是循环利用的，以便新数据可以进来，并且旧数据将移动到 HDD 层（彼时会删除重复数据项并对数据进行压缩），随后将移动到云。
 
 随着时间的推移，使用的主存储和本地存储很可能会一起增加，直到数据开始分层存储到云。 那时，使用的本地存储将可能开始达到平稳状态，但使用的主存储将随着更多数据的写入而增加。
 
@@ -135,5 +134,4 @@ ms.lasthandoff: 08/30/2017
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用 StorSimple 设备管理器服务设备仪表板](storsimple-device-dashboard.md)。
 * 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

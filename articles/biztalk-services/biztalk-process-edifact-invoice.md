@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
 ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>指南：使用 Azure BizTalk 服务处理 EDIFACT 发票
 

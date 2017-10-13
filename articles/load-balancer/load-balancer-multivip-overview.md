@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: chkuhtz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: d9e88b859020be2a96a57a01e5624052ed134b64
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 1045a18f5fd9739a6028198deea129e9e621f127
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="multiple-vips-for-azure-load-balancer"></a>Azure 负载均衡器的多个 VIP
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
@@ -37,7 +35,7 @@ ms.lasthandoff: 03/21/2017
 | VIP | IP 地址 | 协议 | 端口 |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
-| 2 |65.52.0.1 |TCP |*8080* |
+| #N/A |65.52.0.1 |TCP |*8080* |
 | 3 |65.52.0.1 |*UDP* |80 |
 | 4 |*65.52.0.2* |TCP |80 |
 
@@ -61,7 +59,7 @@ Azure Load Balancer 允许在相同的负载均衡器配置中混用这两种规
 | VIP | IP 地址 | 协议 | 端口 |
 | --- | --- | --- | --- |
 | ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) #N/A |*65.52.0.2* |TCP |80 |
 
 DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一端口上的所需服务。 此服务通过规则定义与前端关联。
 
@@ -70,14 +68,14 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 | 规则 | 映射前端 | 目标后端池 |
 | --- | --- | --- |
 | 1 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| #N/A |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 现在，Azure 负载均衡器的完整映射如下：
 
 | 规则 | VIP IP 地址 | 协议 | 端口 | 目标 | 端口 |
 | --- | --- | --- | --- | --- | --- |
 | ![规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP 地址 |80 |
-| ![规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP 地址 |81 |
+| ![规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) #N/A |65.52.0.2 |TCP |80 |DIP IP 地址 |81 |
 
 每个规则必须生成具有目标 IP 地址和目标端口唯一组合的流量。 通过改变流量的目标端口，多个规则可将流量发送到不同端口上的相同 DIP。
 
@@ -111,21 +109,21 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 | VIP | IP 地址 | 协议 | 端口 |
 | --- | --- | --- | --- |
 | ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) #N/A |*65.52.0.2* |TCP |80 |
 
 我们定义了两个规则：
 
 | 规则 | 映射前端 | 目标后端池 |
 | --- | --- | --- |
 | 1 |![规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80（在 VM1 和 VM2 中） |
-| 2 |![规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80（在 VM1 和 VM2 中） |
+| #N/A |![规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80（在 VM1 和 VM2 中） |
 
 下表显示负载均衡器中的完整映射：
 
 | 规则 | VIP IP 地址 | 协议 | 端口 | 目标 | 端口 |
 | --- | --- | --- | --- | --- | --- |
 | ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |与 VIP 相同 (65.52.0.1) |与 VIP 相同 (80) |
-| ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |与 VIP 相同 (65.52.0.2) |与 VIP 相同 (80) |
+| ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) #N/A |65.52.0.2 |TCP |80 |与 VIP 相同 (65.52.0.2) |与 VIP 相同 (80) |
 
 入站流量的目标是 VM 中环回接口上的 VIP 地址。 每个规则必须生成具有目标 IP 地址和目标端口唯一组合的流量。 通过改变流量的目标 IP 地址，可以在同一 VM 上重复使用端口。 通过将服务绑定到 VIP 的 IP 地址和相应环回接口的端口，可以向负载均衡器公开服务。
 
@@ -136,7 +134,6 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 ## <a name="limitations"></a>限制
 
 * 只有 IaaS VM 支持多个 VIP 配置。
-* 使用浮点 IP 规则时，应用程序必须为出站流量使用 DIP。 如果应用程序绑定到来宾 OS 中环回接口上配置的 VIP 地址，则无法使用 SNAT 来重写出站流量，此时流量处理将会失败。
+* 使用浮点 IP 规则时，应用程序必须为出站流量使用 DIP。 如果应用程序绑定到来宾 OS 中环回接口上配置的 VIP 地址，则无法使用 SNAT 来重写出站流量，此时流量处理会失败。
 * 公共 IP 地址会影响计费。 有关详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-subscription-service-limits.md#networking-limits)。
-

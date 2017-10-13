@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/24/2017
 ms.author: denlee
+ms.openlocfilehash: 090a786b77cbe7b228f42f98dcb5f066b6fe62a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 0273072c7c10e219ab8d6c85eb252badafc17147
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建图形数据库
 
@@ -110,7 +109,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     设置|建议的值|说明
     ---|---|---
-    主机|[***.graphs.azure.com]|请参看此表后面的屏幕截图。 此值是 Azure 门户“概览”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值：删除 https:// ，将 documents 更改为 graphs 并删除尾部的 :443/ 即可。
+    主机|[***.graphs.azure.com]|请参看此表后面的屏幕截图。 此值是 Azure 门户“概览”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值：删除 https://，将 documents 更改为 graphs 并删除尾部的 :443/ 即可。
     用户名|/dbs/sample-database/colls/sample-graph|采用 `/dbs/<db>/colls/<coll>` 格式的资源，其中，`<db>` 是现有数据库名称，`<coll>` 是现有集合名称。
     密码|*主密钥*|请参看此表后面的第二个屏幕截图。 此值是主键，可以从 Azure 门户的“键”页上的“主键”框中检索到。 使用该框右侧的复制按钮复制该值。
 
@@ -204,5 +203,4 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
-
 

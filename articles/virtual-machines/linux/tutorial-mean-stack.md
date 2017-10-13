@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 1d74ead08dfb63276afb08bdcb7f4e3e3db5bfd3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>在 Azure 中的 Linux VM 上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
 本教程介绍如何在 Azure 中的 Linux VM 上实现 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈。 通过创建的 MEAN 堆栈，可以在数据库中添加、删除和列出书籍。 学习如何：
@@ -355,4 +353,3 @@ sudo apt-get install -y nodejs
 
 > [!div class="nextstepaction"]
 > [使用 SSL 保护 Web 服务器](tutorial-secure-web-server.md)
-

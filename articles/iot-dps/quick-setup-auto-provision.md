@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: a96f64e41b090cb60bbbb007a3913fd23ce8f609
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-the-iot-hub-device-provisioning-service-preview-with-the-azure-portal"></a>使用 Azure 门户设置 IoT 中心设备预配服务（预览版）
 
 以下步骤演示了如何在门户中设置用于预配设备的 Azure 云资源。 其中包括：如何创建 IoT 中心、如何创建新的 IoT 中心设备预配服务并将两个服务链接到一起。 
@@ -84,4 +82,3 @@ ms.lasthandoff: 09/09/2017
 
 > [!div class="nextstepaction"]
 > [创建模拟设备快速入门](./quick-create-simulated-device.md)
-

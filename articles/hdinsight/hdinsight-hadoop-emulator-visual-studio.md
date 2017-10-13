@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
 ms.openlocfilehash: 574ccaa8b2d9448a60ddf8adc7f92fa3683b1d61
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 
@@ -45,7 +45,7 @@ Azure Data Lake 包含用于处理常规 Hadoop 群集的工具。 本文档提�
 
 1. 打开 Visual Studio，选择“视图”，然后选择“服务器资源管理器”。
 
-2. 在“服务器资源管理器”中，右键单击“HDInsight”项，然后选择“连接到 HDInsight Emulator”。
+2. 在“服务器资源管理器”中，右键单击“HDInsight”项，并选择“连接到 HDInsight Emulator”。
 
     ![突出显示“连接到 HDInsight 模拟器”的服务器资源管理器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
 
@@ -126,7 +126,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
 1. 在 Visual Studio 中，依次选择“文件”、“新建”、“项目”。
 
-2. 在项目列表中，依次展开“模板”、“Azure Data Lake”，然后选择“HIVE (HDInsight)”。 在模板列表中，选择“Hive 示例”。 输入名称和位置，然后选择“确定”。
+2. 在项目列表中，展开“模板”、“Azure Data Lake”，然后选择“HIVE (HDInsight)”。 在模板列表中，选择“Hive 示例”。 输入名称和位置，然后选择“确定”。
 
     ![突出显示“Azure Data Lake”、“HIVE”、“Hive 示例”和“确定”的“新建项目”窗口屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
@@ -136,7 +136,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
 Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数据执行转换来工作。 Pig 提供了一种语言 (Pig Latin)，可用于开发转换管道。 若要在本地群集上使用 Pig，请执行以下步骤：
 
-1. 打开 Visual Studio，依次选择“文件”、“新建”、“项目”。 在项目列表中，依次展开“模板”、“Azure Data Lake”，然后选择“Pig (HDInsight)”。 在模板列表中，选择“Pig 应用程序”。 输入名称和位置，然后选择“确定”。
+1. 打开 Visual Studio，依次选择“文件”、“新建”、“项目”。 在项目列表中，展开“模板”、“Azure Data Lake”，然后选择“Pig (HDInsight)”。 在模板列表中，选择“Pig 应用程序”。 输入名称和位置，并选择“确定”。
 
     ![突出显示“Azure Data Lake”、“Pig”、“Pig 应用程序”和“确定”的“新建项目”窗口屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
@@ -179,7 +179,7 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 ## <a name="view-hive-databases"></a>查看 Hive 数据库
 
-1. 在“服务器资源管理器”中，展开“HDInsight 本地群集”项，然后展开“Hive 数据库”。 此时将显示本地群集上的“默认”和“xademo”数据库。 展开数据库可显示该数据库中的表。
+1. 在“服务器资源管理器”中，展开“HDInsight 本地群集”项，并展开“Hive 数据库”。 此时会显示本地群集上的“默认”和“xademo”数据库。 展开数据库可显示该数据库中的表。
 
     ![展开了数据库的服务器资源管理器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
 

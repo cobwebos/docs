@@ -16,14 +16,14 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 8a1650a65e7980f4a13fa4edc7918b0099bb5464
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="configure-your-aspnet-web-app-with-the-applications-registration-information"></a>使用应用程序的注册信息配置 ASP.NET Web 应用
 
-此步将配置项目以使用 SSL，然后使用 SSL URL 配置应用程序的注册信息。 此后通过 web.config 将应用程序注册信息添加到解决方案。
+此步将配置项目以使用 SSL，并使用 SSL URL 配置应用程序的注册信息。 此后通过 web.config 将应用程序注册信息添加到解决方案。
 
 1.  在解决方案资源管理器中，选择项目并查看`Properties`窗口（如果看不到“属性”窗口，请按 F4）
 2.  将 `SSL Enabled` 更改为 `True`

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
 可以从各种源中收集 Log Analytics 中的大量数据，包括代理上的[数据源](../log-analytics/log-analytics-data-sources.md)以及[从 Azure 中收集的数据](../log-analytics/log-analytics-azure-storage.md)。  尽管某些情况下，需要收集无法通过这些标准源访问的数据。  这时，可以使用 [HTTP 数据收集器 API](../log-analytics/log-analytics-data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。  一种执行此数据收集的常用方法是使用 Azure 自动化中的 runbook。   

@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 6503034b3f5a17a2a42338c73329eef0b01f2f27
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
 设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  

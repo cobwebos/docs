@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3a536c432f3a095d75beb57f8203f10afc074fdf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>执行 Team Data Science Process 的演练
 
@@ -47,5 +46,4 @@ ms.lasthandoff: 09/25/2017
 有关可用于构建数据科学项目的 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 生命周期概述了执行项目时，其从开始到结束所遵循的步骤。 
 
 获取主题概述，了解包含 Azure 中数据科学过程的任务，请参阅[数据科学过程](http://aka.ms/datascienceprocess)。 
-
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 864185e62fb6c3cef4116824b36ee7e5d3447662
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/04/2017
-
+ms.openlocfilehash: bb2ca0486b3b3d27a77b70927cb3cbfbeac12c7c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-next-hop-in-azure-network-watcher"></a>Azure 网络观察程序中的“下一跃点”简介
 
 来自 VM 的流量将基于与 NIC 关联的有效路由发送到目标。 “下一跃点”功能可获取来自特定虚拟机和 NIC 的数据包的下一跃点类型和 IP 地址。 这可帮助确定是将数据包定向到目标，还是将流量定向到黑洞。 用户进行的不正确的路由配置（将流量定向到本地位置或虚拟设备）可能会导致连接问题。 “下一跃点”功能也返回与下一跃点关联的路由表。 查询下一跃点时，如果路由定义为用户定义的路由，则将返回该路由。 否则，“下一跃点”功能返回“系统路由”。
@@ -44,7 +42,6 @@ ms.lasthandoff: 03/04/2017
 
 <!--Image references-->
 [1]: ./media/network-watcher-next-hop-overview/figure1.png
-
 
 
 

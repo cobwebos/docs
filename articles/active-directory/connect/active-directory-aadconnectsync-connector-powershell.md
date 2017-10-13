@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 0e5ccf5a38072e31d85bbc63eb0c608b0c34cfc2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-powershell-connector-technical-reference"></a>Windows PowerShell 连接器技术参考
 本文介绍 Windows PowerShell 连接器。 本文适用于以下产品：
@@ -134,7 +134,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 | 启用增量导入 |选中时，连接器可以从导入脚本请求增量。 |
 | 启用导出 |选中时，连接器将通过导出脚本导出数据。 |
 | 启用完整导出 |选中时，导出脚本可支持导出整个连接器空间。 若要使用此选项，还必须选中“启用导出”。 |
-| 第一个导出阶段没有引用值 |选中时，在第二个导出阶段导出引用属性。 |
+| 第一个导出阶段没有引用值 |选中时，会在第二个导出阶段导出引用属性。 |
 | 启用对象重命名 |选中时，可以修改可分辨名称。 |
 | 删除-添加用作替换 |选中时，将删除-添加操作导出为单个替换。 |
 | 启用密码操作 |选中时，可支持密码同步脚本。 |
@@ -218,7 +218,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 与连接器的导入体系结构一样，支持导出的连接器必须实现三个脚本。
 
 **开始导出**  
-开始导出脚本在导出运行步骤开始时运行。 在此步骤中，可以连接到源系统并执行任何预备步骤，并将数据导出到连接的系统。
+开始导出脚本在导出运行步骤开始时运行。 在此步骤中，可以连接到源系统并执行任何预备步骤，然后将数据导出到连接的系统。
 
 开始导出脚本将从连接器接收以下参数：
 
@@ -244,7 +244,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 | OpenExportConnectionRunStep |[OpenExportConnectionRunStep][oecrs] |告知脚本导出运行的类型（增量或完整）、分区、层次结构和预期的页面大小。 |
 | 类型 |[Schema][schema] |要导出的连接器空间的架构。 |
 
-导出数据脚本必须将 [PutExportEntriesResults][peeres] 对象返回到管道中。 此对象不需要包含每个导出连接器的结果信息，除非发生定位点属性错误或更改。 例如，要将 PutExportEntriesResults 对象返回到管道中： `Write-Output (New-Object Microsoft.MetadirectoryServices.PutExportEntriesResults)`
+导出数据脚本必须将 [PutExportEntriesResults][peeres] 对象返回到管道中。 此对象不需要包含每个导出连接器的结果信息，除非发生定位点属性错误或更改。 例如，要将 PutExportEntriesResults 对象返回到管道中：`Write-Output (New-Object Microsoft.MetadirectoryServices.PutExportEntriesResults)`
 
 **结束导出**  
 在导出运行结束时，将运行结束导出脚本。 此脚本应该执行任何必要的清理任务（例如断开系统连接和对失败做出响应）。

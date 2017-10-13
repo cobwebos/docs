@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: garye;krishnan
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 79ae5cd78ce07fcc84be49c2693773d58a15771e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>在 Azure 机器学习中使用本地 SQL Server 数据库中的数据执行高级分析
 
@@ -149,4 +148,3 @@ ms.lasthandoff: 09/25/2017
 实验运行结束后，可以可视化从数据库中导入的数据，方法是单击“导入数据”模块的输出端口并选择“可视化”。
 
 完成实验开发后，即可部署并操作模型。 通过使用 Batch 执行服务，可读取在“导入数据”模块中配置的本地 SQL Server 数据库中的数据，并将该数据用于评分。 尽管可以将请求响应服务用于评分本地数据，但 Microsoft 还是建议使用 [Excel 加载项](excel-add-in-for-web-services.md)。 目前，通过“导出数据”写入本地 SQL Server 数据库在实验和已发布的 Web 服务中都不受支持。
-

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: afa863e2a900d4f823b77453d92f034db7d5a93f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 本文介绍了 Microsoft Azure 中的各种警报来源、这些警报的目的、警报优点以及警报的使用方法。 本文特别适用于 Azure Monitor，但也提供了其他带有警报服务的链接。 警报提供了一种在 Azure 中监视的方法，允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
@@ -92,4 +91,3 @@ Azure Monitor 提供的数据有三种类型的警报 - 指标警报、准实时
 * 详细了解[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
 * 详细了解[服务通知](monitoring-service-notifications.md)
 * 详细了解[操作组](monitoring-action-groups.md)
-

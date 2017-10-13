@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.openlocfilehash: ec9e0fc7d67537a47d5c0d3bb376b60dc6ccffcd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>介绍
 
 ### <a name="overview"></a>概述
-我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 针对应用程序和服务使用 Azure 的最合理原因之一是可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 必须提供保密、完整且可用的客户数据，并实现透明问责。
+我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 为应用程序和服务使用 Azure 其中一个最合理原因就是：可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 必须提供保密、完整且可用的客户数据，并实现透明问责。
 
 为帮助客户更好地从客户和 Microsoft 操作这两个角度了解 Microsoft Azure 中实施的一系列安全控件，特编写本白皮书《Azure 操作安全性》，全面介绍通过 Microsoft Azure 实现的操作安全性。
 

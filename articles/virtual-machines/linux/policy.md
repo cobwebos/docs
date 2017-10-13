@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
 ms.openlocfilehash: 58eaab4fa03afc1e6a5e38bef691cce62a921ea9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 向 Linux VM 应用策略
 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文将介绍如何使用 Azure Resource Manager 策略，为组织中的虚拟机定义相应行为。

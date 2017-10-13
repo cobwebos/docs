@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Solr
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/11/2017
         <tr><td>节点类型</td>
             <td>指定在其上运行自定义脚本的节点。 可以选择“所有节点”<b></b>、“仅限头节点”<b></b>或“仅限辅助角色节点”<b></b>。
         <tr><td>parameters</td>
-            <td>根据脚本的需要，指定参数。 用于安装 Solr 的脚本不需要任何参数，因此，可将此项保留为空。</td></tr>
+            <td>根据脚本的需要，指定参数。 用于安装 Solr 的脚本不需要任何参数，因此，可以将此项保留为空。</td></tr>
     </table>
 
     可以添加多个脚本操作，以在群集上安装多个组件。 在添加了脚本后，单击复选标记以开始创建群集。
@@ -69,7 +69,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="use-solr"></a>使用 Solr
 必须从使用一些数据文件为 Solr 编制索引开始。 然后，可以使用 Solr 对索引数据运行搜索查询。 执行以下步骤，以在 HDInsight 群集中使用 Solr：
 
-1. **使用远程桌面协议 (RDP) 远程连接到安装有 Solr 的 HDInsight 群集**。 在 Azure 门户中，对创建的安装有 Solr 的群集启用远程桌面，然后远程连接到该群集。 有关说明，请参阅[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)。
+1. **使用远程桌面协议 (RDP) 远程连接到安装有 Solr 的 HDInsight 群集**。 在 Azure 门户中，对创建的安装有 Solr 的群集启用远程桌面，并远程连接到该群集。 有关说明，请参阅[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)。
 2. **通过上传数据文件为 Solr 编制索引**。 在为 Solr 编制索引时，应将可能需要搜索的文档放置在其中。 要为 Solr 编制索引，请使用 RDP 远程连接到群集，导航到桌面，打开 Hadoop 命令行，并导航到 **C:\apps\dist\solr-4.7.2\example\exampledocs**。 运行以下命令：
 
         java -jar post.jar solr.xml monitor.xml

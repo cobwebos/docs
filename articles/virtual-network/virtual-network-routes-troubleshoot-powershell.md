@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: 141e3c571d744470fd07e99538b6e38d4144e8d7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>使用 Azure PowerShell 排查路由问题
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ ms.lasthandoff: 07/11/2017
   * 系统（默认）路由
     
     对于有效路由，只能查看基于所有可用路由匹配 LPM 的有效路由。 如果显示了如何针对给定 NIC 实际评估路由，因此可以更方便地对可能影响 VM 连接的特定路由进行故障排除。
-* 如果使用 UDR 并且要将流量发送到网络虚拟设备 (NVA)（*VirtualAppliance* 为 **nextHopType**），请确保接收流量的 NVA 已启用 IP 转发，否则数据包将被丢弃。 
+* 如果使用 UDR 并且要将流量发送到网络虚拟设备 (NVA)（*VirtualAppliance* 为 **nextHopType**），请确保接收流量的 NVA 已启用 IP 转发，否则数据包会被丢弃。 
 * 如果启用了强制隧道，所有出站 Internet 流量将路由到本地。 根据本地处理此流量的方式，可能无法使用此设置通过 RDP/SSH 从 Internet 连接到 VM。 
   符合以下条件时，可以启用强制隧道：
   * 使用站点到站点 VPN 时，将用户定义的路由 (UDR) 的 nextHopType 设置为 VPN 网关

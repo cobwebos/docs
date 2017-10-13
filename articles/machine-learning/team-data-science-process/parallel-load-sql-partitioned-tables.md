@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 899f20b3642612386f2513c9c8649cd845be826e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据
 本文档介绍如何构建分区表来快速将数据并行批量导入 SQL Server 数据库。 要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
@@ -180,5 +179,4 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>操作示例中的高级分析流程和技术
 有关 Cortana Analytics 过程中使用公用数据集的端到端演练示例，请参阅[操作中的 Cortana Analytics 过程：SQL Server](sql-walkthrough.md)。
-
 

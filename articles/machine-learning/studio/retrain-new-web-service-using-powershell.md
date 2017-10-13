@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 77bc78e7ed27f1566e5e5f6a3539c93c9aa73e2d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>使用机器学习管理 PowerShell cmdlet 重新训练新的基于 Resource Manager 的 Web 服务
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。  
@@ -107,5 +106,4 @@ ms.lasthandoff: 09/25/2017
 
 * 使用新数据定期重新训练模型。
 * 向客户分配模型，以便他们可以使用自己的数据重新训练模型。
-
 

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 ms.openlocfilehash: aed104c9c74606e0ad69fc2d0bfb2f38d85d795d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>使用 Azure 媒体服务实现故障转移流式处理
 
-本演练演示如何将内容 (blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容交付网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
+本演练演示如何将内容 (Blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容交付网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
 
 1. 在“数据中心 A”中设置一个媒体服务帐户。
 2. 将一个夹层文件上传到源资产中。
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/29/2017
 在本部分，将要创建并设置一个 C# 控制台应用程序项目。
 
 1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入 **HandleRedundancyForOnDemandStreaming** 作为名称，并单击“确定”。
-2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 MP4Files 文件夹。 （本示例使用 **BigBuckBunny.mp4** 文件。） 
+2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 **MP4Files** 文件夹。 （本示例使用 **BigBuckBunny.mp4** 文件。） 
 3. 使用 **Nuget** 添加对媒体服务相关 DLL 的引用。 在 **Visual Studio 主菜单**中，选择“工具” > “库包管理器” > “包管理器控制台”。 在控制台窗口中键入 **Install-Package windowsazure.mediaservices**，并按 Enter。
 4. 添加此项目所需的其他引用：System.Configuration、System.Runtime.Serialization 和 System.Web。
 5. 将默认添加到 **Programs.cs** 文件中的 **using** 语句替换为以下语句：
@@ -87,7 +87,7 @@ ms.lasthandoff: 08/29/2017
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. 将 appSettings 节添加到 .config 文件，并根据媒体服务和存储密钥与名称值更新值。 
+6. 将 **appSettings** 节添加到 **.config** 文件，并根据媒体服务和存储密钥与名称值更新值。 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>

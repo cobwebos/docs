@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 ms.openlocfilehash: 2bd51d0838dd0bd88beb66a40b4256a85e8dbea1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-virtual-machine-extensions"></a>管理虚拟机扩展
 介绍如何在 Azure 上查找、添加、修改或删除 Windows 或 Linux 虚拟机的 VM 扩展。

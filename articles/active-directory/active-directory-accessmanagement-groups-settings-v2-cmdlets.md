@@ -13,20 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: rodejo
+ms.openlocfilehash: 5cad44dc7bf415002b3c9872fffdcf0d54bb6ad6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: f1ce76178baa44428afca5631c749c2739ad779e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-groups-create-azure-portal.md)
-> * [Azure 经典门户](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 >
 >
@@ -172,7 +170,7 @@ ms.lasthandoff: 09/15/2017
 
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要作为成员添加到组的用户的 ObjectID。
+#NAME?
 
 若要获取组的现有成员，请使用 Get-AzureADGroupMember cmdlet，如以下示例所示：
 
@@ -247,4 +245,3 @@ ObjectId 参数是要将所有者添加到的组的 ObjectID，-RefObjectId 是�
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

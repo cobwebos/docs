@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 6c9b7423fa56886104bc6060d25904277b75f30c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。

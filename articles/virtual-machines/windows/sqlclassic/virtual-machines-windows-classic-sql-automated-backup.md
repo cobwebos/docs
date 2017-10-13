@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 07/05/2017
 ms.author: jroth
 ms.openlocfilehash: f7664291c2f45c422d52f682d08dbb67ab32b099
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ ms.lasthandoff: 07/11/2017
 | **自动备份** |启用/禁用（已禁用） |为运行 SQL Server 2014 Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** |1-30 天（30 天） |保留备份的天数。 |
 | **存储帐户** |Azure 存储帐户（为指定的 VM 创建的存储帐户） |用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和计算机名称。 |
-| **加密** |启用/禁用（已禁用） |启用或禁用加密。 启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 automaticbackup 容器中的指定存储帐户内。 如果密码发生更改，则使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
+| **加密** |启用/禁用（已禁用） |启用或禁用加密。 启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 automaticbackup 容器中的指定存储帐户内。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** |密码文本（无） |加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 | **备份系统数据库** | 启用/禁用（已禁用） | 完整备份 Master、Model 和 MSDB |
 | **配置备份计划** | 手动/自动（自动） | 选择“自动”可根据日志增长自动进行完整备份和日志备份。 选择“手动”可指定完整备份和日志备份的计划。 |
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 可能需要花费几分钟来安装和配置 SQL Server IaaS 代理。
 
-若要启用加密，请修改上述脚本，使其将 EnableEncryption 参数连同 CertificatePassword 参数的密码（安全字符串）一起传递。 以下脚本启用上一示例中的自动备份设置，并添加加密。
+要启用加密，请修改上述脚本，使其将 EnableEncryption 参数连同 CertificatePassword 参数的密码（安全字符串）一起传递。 以下脚本启用上一示例中的自动备份设置，并添加加密。
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: adegeo
 ms.openlocfilehash: 32af01aa545c541688128a7ae6bbb82a0e046f2d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-deploy-a-virtual-machine-scale-set"></a>创建和部署虚拟机规模集
 使用虚拟机规模集可以轻松地将相同的虚拟机作为集来进行部署和管理。 规模集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。 有关规模集的详细信息，请参阅[虚拟机规模集](virtual-machine-scale-sets-overview.md)。

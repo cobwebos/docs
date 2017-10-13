@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c53725806845095c55add65fb65a247d8873dc74
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -89,15 +88,15 @@ ms.lasthandoff: 09/25/2017
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧菜单中单击“新建”，并依次单击“智能 + 分析”、“数据工厂”。
+2. 在左侧菜单中单击“新建”，然后依次单击“智能 + 分析”、“数据工厂”。
 
     ![新建数据工厂](media/data-factory-stored-proc-activity/new-data-factory.png)    
-3. 在“新建数据工厂”边栏选项卡中，输入 **SProcDF** 作为名称。 Azure 数据工厂名称必须**全局唯一**。 必须将姓名作为数据工厂的名称前缀，才能成功创建工厂。
+3. 在“新建数据工厂”边栏选项卡中，输入 **SProcDF** 作为名称。 Azure 数据工厂名称必须**全局唯一**。 必须将你的姓名作为数据工厂的名称前缀，才能成功创建工厂。
 
    ![新建数据工厂](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
 4. 选择 **Azure 订阅**。
 5. 对于**资源组**，请执行以下步骤之一：
-   1. 单击“新建”，并为资源组输入名称。
+   1. 单击“新建”，然后为资源组输入名称。
    2. 单击“使用现有资源组”并选择一个现有的资源组。  
 6. 选择数据工厂的**位置**。
 7. 选择“固定到仪表板”以便在下次登录时在仪表板上看到数据工厂。
@@ -128,7 +127,7 @@ ms.lasthandoff: 09/25/2017
 ### <a name="create-an-output-dataset"></a>创建输出数据集
 必须为存储过程活动指定输出数据集，即使存储过程不生成任何数据也是如此。 这是因为活动的计划（活动的运行频率 - 每小时、每天等）取决于输出数据集。 输出数据集必须使用**链接服务**，其指代 Azure SQL 数据库或 Azure SQL 数据仓库或要在其中运行存储过程的 SQL Server 数据库。 输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 在某些情况下，输出数据集可能是虚拟数据集（这种数据集指向实际不包含存储过程输出的表）。 此虚拟数据集仅用于指定运行存储过程活动的计划。 
 
-1. 在工具栏上单击“...更多”**详细信息**，并依次单击“新建数据集”和“Azure SQL”。 单击命令栏上的“新建数据集”并选择“Azure SQL”。
+1. 在工具栏上单击“...更多”，然后依次单击“新建数据集”和“Azure SQL”。 单击命令栏上的“新建数据集”并选择“Azure SQL”。
 
     ![包含链接服务的树视图](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 将以下 JSON 脚本复制/粘贴到 JSON 编辑器。
@@ -199,7 +198,7 @@ ms.lasthandoff: 09/25/2017
 3. 若要部署管道，请单击工具栏上的“部署”。  
 
 ### <a name="monitor-the-pipeline"></a>监视管道
-1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，并单击“图示”。
+1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
 2. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
 ms.openlocfilehash: 43e5cf1ab3bc3121d7e3915ea0785998e0ee2fc6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>如何在使用经典部署模型创建的 Windows VM 中重置远程桌面服务或其登录密码
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 
 ![浏览 Azure VM](./media/reset-rdp/Portal-Select-Classic-VM.png)
 
-选择 Windows 虚拟机，并单击“重置远程...”。 此时显示以下用于重置远程桌面配置的对话框：
+选择 Windows 虚拟机，并单击“重置远程...”。重置远程桌面配置时会显示以下对话：
 
 ![重置 RDP 配置页](./media/reset-rdp/Portal-RDP-Reset-Windows.png)
 
@@ -75,7 +75,7 @@ Set-AzureVMAccessExtension –vm $vm -UserName $cred.GetNetworkCredential().User
     -Password $cred.GetNetworkCredential().Password  | Update-AzureVM
 ```
 
-如果键入不同于当前帐户的名称，VMAccess 扩展将重命名本地管理员帐户，将密码分配给该帐户，并发出远程桌面注销命令。 如果禁用本地管理员帐户，则 VMAccess 扩展会启用它。
+如果键入不同于当前帐户的名称，VMAccess 扩展将重命名本地管理员帐户，将密码分配给该帐户，并发出远程桌面注销命令。如果本地管理员帐户处于禁用状态，则 VMAccess 扩展将启用它。
 
 这些命令也重置远程桌面服务配置。
 

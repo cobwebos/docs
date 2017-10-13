@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d92c8df7ad8cf522079bdea86e7b33d8441452ab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="team-data-science-process-overview"></a>Team Data Science Process 概述
 
@@ -45,7 +44,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 此生命周期面向作为智能应用程序一部分交付的数据科学项目。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索数据科学项目或即席分析项目也可从使用此过程获益。 但在这种情况下可能不需要某些所述的步骤。    
 
-生命周期概括了项目通常执行且经常重复的主要阶段：
+该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
 * **了解业务**
 * **数据采集和理解**
@@ -108,4 +107,3 @@ TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 ## <a name="next-steps"></a>后续步骤
 
 [Team Data Science Process：角色和任务](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)概述了致力于标准化此过程的数据科学团队的关键人员角色及其相关任务。 
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
 ms.openlocfilehash: 5e81d5e0af9871099b7f921f355cf94249e4d30c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何通过 C++ 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c-application"></a>创建 C++ 应用程序
-本指南会使用存储功能，这些功能可以在 C++ 应用程序中运行。
+在本指南中，将使用存储功能，这些功能可以在 C++ 应用程序中运行。
 
 为此，需要安装适用于 C++ 的 Azure 存储客户端库，并在 Azure 订阅中创建 Azure 存储帐户。
 
@@ -87,7 +87,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 ```
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-**cloud_queue_client** 对象可用于获取队列的引用对象。 以下代码创建 **cloud_queue_client** 对象。
+**cloud_queue_client** 对象可用于获取队列的引用对象。 以下代码将创建 **cloud_queue_client** 对象。
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -108,7 +108,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>如何：在队列中插入消息
-要将消息插入到现有队列中，请先创建新的 **cloud_queue_message**。 接下来，调用 **add_message** 方法。 可以从字符串或**字节**数组创建 **cloud_queue_message**。 以下代码创建队列（如果该队列不存在）并插入消息“Hello, World”：
+要将消息插入到现有队列中，请先创建新的 **cloud_queue_message**。 接下来，调用 **add_message** 方法。 可以从字符串或**字节**数组创建 **cloud_queue_message**。 以下代码将创建队列（如果该队列不存在）并插入消息“Hello, World”：
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -149,7 +149,7 @@ std::wcout << U("Peeked message content: ") << peeked_message.content_as_string(
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>如何：更改已排队消息的内容
-可以更改队列中现有消息的内容。 如果消息表示工作任务，可使用此功能来更新该工作任务的状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。 这会保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。 可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。 通常保留重试计数，当消息重试次数超过 n 时再删除此该消息。 这可避免每次处理某条消息时都触发应用程序错误。
+可以更改队列中现有消息的内容。 如果消息表示工作任务，则可以使用此功能来更新该工作任务的状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。 这会保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。 可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。 通常，还可以保留重试计数，如果某条消息的重试次数超过 n，将删除此消息。 这可避免每次处理某条消息时都触发应用程序错误。
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -175,7 +175,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 ```
 
 ## <a name="how-to-de-queue-the-next-message"></a>如何：取消下一条消息的排队
-代码通过两个步骤来取消对队列中某条消息的排队。 调用 **get_message** 时，会获得队列中的下一条消息。 从 **get_message** 返回的消息对从此队列读取消息的其他任何代码不可见。 若要完成从队列中删除消息，还必须调用 **delete_message**。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 **delete_message**。
+代码通过两个步骤来取消对队列中某条消息的排队。 调用 **get_message** 时，将获取队列中的下一条消息。 从 **get_message** 返回的消息对从此队列读取消息的其他任何代码不可见。 若要完成从队列中删除消息，还必须调用 **delete_message**。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 **delete_message**。
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -196,7 +196,7 @@ queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>如何：使用其他方法取消对消息的排队
-可以通过两种方式自定义队列中的消息检索。 首先，可获取一批消息（最多 32 条）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。 以下代码示例使用 **get_messages** 方法来在一次调用中获取 20 条消息。 然后，它会使用 **for** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，将对所有消息同时启动 5 分钟的超时设置，因此调用 **get_messages** 的 5 分钟后，任何尚未删除的消息都会再次可见。
+可以通过两种方式自定义队列中的消息检索。 首先，可以获取一批消息（最多 32 个）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。 以下代码示例使用 **get_messages** 方法来在一次调用中获取 20 条消息。 然后，它会使用 **for** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，将对所有消息同时启动 5 分钟的超时设置，因此调用 **get_messages** 的 5 分钟后，任何尚未删除的消息都将再次可见。
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -264,7 +264,7 @@ queue.delete_queue_if_exists();
 ```
 
 ## <a name="next-steps"></a>后续步骤
-已了解队列存储的基本知识，可通过以下链接了解有关 Azure 存储的详细信息。
+现在，已了解队列存储的基础知识，请打开以下链接了解有关 Azure 存储的详细信息。
 
 * [如何通过 C++ 使用 Blob 存储](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)

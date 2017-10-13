@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: milanga;cenkdin;juliako
 ms.openlocfilehash: 304e72e0d2d4a7e95df513e6d5481def9eae3f68
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>轮转存储访问密钥后更新媒体服务
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="overview"></a>概述
 
-创建新的存储帐户后，Azure 会生成两个 512 位存储访问密钥，用于对对存储帐户的访问进行身份验证。 要保持存储连接的安全性，我们建议定期重新生成并轮转存储访问密钥。 将提供两个访问密钥（主密钥和辅助密钥），以便在你重新生成其中一个访问密钥时，始终能够使用另一个访问密钥连接到存储帐户。 此过程也称为“轮转访问密钥”。
+在创建新的存储帐户后，Azure 将生成两个 512 位存储访问密钥，用于对你存储帐户的访问进行身份验证。 要保持存储连接的安全性，我们建议定期重新生成并轮转存储访问密钥。 将提供两个访问密钥（主密钥和辅助密钥），以便在重新生成其中一个访问密钥时，始终能够使用另一个访问密钥连接到存储帐户。 此过程也称为“轮转访问密钥”。
 
 媒体服务依赖于为它提供的存储密钥。 具体而言，用于流式传输或下载资产的定位符依赖于指定的存储访问密钥。 创建 AMS 帐户时，媒体服务默认依赖于主存储访问密钥，但用户可以更新 AMS 的存储密钥。 必须遵照本主题中所述的步骤，确保媒体服务知晓要使用的密钥。  
 

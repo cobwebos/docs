@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 22389ba85edb119acdd21b63f2deae2d71f31373
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-preparation-user-guide"></a>数据准备用户指南 
 数据准备体验提供了大量的丰富功能，下面记录了最深体验部分。
@@ -110,4 +109,3 @@ ms.lasthandoff: 09/25/2017
 [附录 8 - Python 中的示例数据源](data-prep-appendix8-sample-source-connections-python.md)  
 [附录 9 - Python 中的示例目标连接](data-prep-appendix9-sample-destination-connections-python.md)  
 [附录 10 - Python 中的示例列转换](data-prep-appendix10-sample-custom-column-transforms-python.md)  
-

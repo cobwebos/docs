@@ -18,10 +18,10 @@ ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
 ms.openlocfilehash: 92cdbe20e7a2974a734dfed5294c547866050290
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-container-service-for-kubernetes"></a>用于 Kubernetes 的 Azure 容器服务简介
 有了用于 Kubernetes 的 Azure 容器服务，即可轻松创建、配置和管理虚拟机群集，这些虚拟机已经过预配置，可以运行容器化应用程序。 通过此服务，用户可使用现有技能或利用不断增加的大量社区专业知识，在 Microsoft Azure 上部署和管理基于容器的应用程序。

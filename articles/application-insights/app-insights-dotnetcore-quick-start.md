@@ -10,14 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
+ms.openlocfilehash: 558c3c65a811a228f9d8ecae7ce41798ac8178c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 44296c282f60a98b22dfd59265876645ccef092b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
 使用 Azure Application Insights，可轻松监视 Web 应用程序的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 
@@ -128,5 +126,4 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [查找和诊断性能问题](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics)
-
+> [查找和诊断运行时异常](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-tutorial-runtime-exceptions)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
 ms.openlocfilehash: 304323c1816302e8c1f68f36a029aee55e02c54e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>为 Android 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/03/2017
 
 添加数据项时，它们保存在本地 SQLite 存储中，但直到按下“刷新”按钮才同步到移动服务。 根据数据需要同步的时间，其他应用可能具有不同的要求，但出于演示目的，本教程让用户显式请求它。
 
-按下该按钮时，将启动新的后台任务。 该任务先使用同步上下文推送对本地存储所做的所有更改，并将所有更改的数据从 Azure 拉取到本地表。
+按下该按钮时，将启动新的后台任务。 首先它会使用同步上下文推送对本地存储所做的所有更改，然后将所有更改数据从 Azure 拉取到本地表。
 
 ### <a name="offline-testing"></a>脱机测试
 1. 将设备或模拟器置于*飞行模式*中。 这会创建脱机方案。

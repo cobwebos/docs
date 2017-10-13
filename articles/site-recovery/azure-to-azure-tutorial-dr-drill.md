@@ -12,14 +12,12 @@ ms.topic: article
 ms.date: 09/18/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a3b453028b7fd32bd3ed22823a337f7a978d9aa7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region-preview"></a>针对 Azure 次要区域的 Azure VM 运行灾难恢复演练（预览）
 
 [Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外停机期间使商业应用程序保持启动和运行可用状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
@@ -56,4 +54,3 @@ ms.lasthandoff: 09/25/2017
 
 > [!div class="nextstepaction"]
 > [运行生产故障转移](azure-to-azure-tutorial-failover-failback.md)
-

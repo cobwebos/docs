@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 3a0a097afa0ef5efe11cb5044bf9ea5d399e463f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -343,6 +342,5 @@ ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out*
 ```
 
 在这种情况下，输入文件仍从 /datalake/input 文件夹中获取，输出文件仍在 /datalake/output 文件夹中生成。 文件名则根据切片开始时间动态产生。  
-
 
 

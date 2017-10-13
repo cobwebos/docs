@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: bwren
 ms.openlocfilehash: 4e8a77e3644bb726d1b8e2050dab61893ccfa3c9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 了解网页或应用的性能和使用情况。 如果将 [Application Insights](app-insights-overview.md) 添加到页面脚本，可以获取页面加载和 AJAX 调用的时间、浏览器异常和 AJAX 失败的计数和详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
@@ -97,7 +97,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 
 
-## <a name="run"></a>运行你的应用
+## <a name="run"></a>运行应用
 运行 Web 应用，使用它生成遥测数据，并等待几秒钟。 可以在开发计算机上使用 **F5** 键运行应用，或者发布应用供用户操作。
 
 如果想要检查 Web 应用发送到 Application Insights 的遥测数据，请使用浏览器的调试工具（许多浏览器支持的**F12** 键）。 数据将发送到 dc.services.visualStudio.com。
@@ -219,7 +219,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 * [了解使用情况跟踪](app-insights-web-track-usage.md)
 * [了解自定义事件和指标 API。](app-insights-api-custom-events-metrics.md)
 
-## <a name="video"></a>视频
+## <a name="video"></a> 视频
 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]

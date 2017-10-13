@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: elioda
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 05006a78cc7d82bc048ec5706465f7140eb40e94
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中心定价信息
 
 [Azure IoT 中心定价][lnk-pricing]概述了 IoT 中心的不同 SKU 和定价。 本文还详述了 IoT 中心如何按消息对各种 IoT 中心功能计费。
@@ -62,4 +60,3 @@ ms.lasthandoff: 08/29/2017
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
 [lnk-message-size]: iot-hub-devguide-messages-construct.md
-

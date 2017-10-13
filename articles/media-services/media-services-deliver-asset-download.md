@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
 ms.openlocfilehash: d8e740e969f68c85842f42c109328423da1b4414
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>如何：通过下载交付资产
 本主题介绍已上传到媒体服务的媒体资产的交付选项。 可以采用众多的应用程序方案来交付媒体服务内容。 可以下载媒体资产，或使用定位器访问媒体资产。 可以将媒体内容发送到其他应用程序或其他内容提供商。 为了提高性能和伸缩性，还可以使用内容传送网络 (CDN) 来传送内容。
 
-此示例演示如何将媒体资产从媒体服务下载到本地计算机。 该代码将按作业 ID 查询与媒体服务帐户关联的作业，并访问其 OutputMediaAssets 集合（即运行作业后生成的、包含一个或多个输出媒体资产的集）。 此示例演示如何通过作业下载输出媒体资产，但也可运用相同的方法下载其他资产。
+此示例演示如何将媒体资产从媒体服务下载到本地计算机。 该代码将按作业 ID 查询与媒体服务帐户关联的作业，并访问其 **OutputMediaAssets** 集合（即运行作业后生成的、包含一个或多个输出媒体资产的集）。 此示例演示如何通过作业下载输出媒体资产，但也可运用相同的方法下载其他资产。
 
 >[!NOTE]
 >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。

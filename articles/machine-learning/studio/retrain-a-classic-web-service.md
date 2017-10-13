@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 04e019501be6880fcc7e92de690a9f31195282e4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retrain-a-classic-web-service"></a>重新训练经典 Web 服务
 部署的预测 Web 服务是默认的评分终结点。 默认终结点与原始训练和评分实验保持同步，因此不能替换默认终结点的训练模型。 要重新训练 Web 服务，必须将新的终结点添加到 Web 服务。 
@@ -146,5 +145,4 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 [Azure 机器学习经典 Web 服务重新训练的故障排除](troubleshooting-retraining-models.md)
-
 

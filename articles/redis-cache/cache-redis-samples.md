@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
 ms.openlocfilehash: 7841fcf0b5f4dcb409abf8bfb804c2e03dad6d3a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis 缓存示例
-本主题提供了 Azure Redis 缓存示例的列表，涵盖了诸如连接到缓存、从缓存中读取数据以及向其中写入数据、以及使用 ASP.NET Redis 缓存提供程序之类的方案。 有些示例是可下载的项目，有些示例提供了分步指南并包含代码片段但没有链接到可下载的项目。
+本主题提供 Azure Redis 缓存示例的列表，包括连接到缓存、从缓存读取数据和将数据写入缓存，以及使用 ASP.NET Redis 缓存提供程序等方案。 有些示例是可下载的项目，有些示例提供了分步指南并包含代码片段但没有链接到可下载的项目。
 
 ## <a name="hello-world-samples"></a>Hello world 示例
 本部分中的示例显示了使用各种语言和 Redis 客户端连接到 Azure Redis 缓存实例、从缓存中读取数据以及向其中写入数据方面的基础知识。

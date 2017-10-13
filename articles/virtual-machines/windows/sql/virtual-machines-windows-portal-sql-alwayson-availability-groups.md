@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>在 Azure 虚拟机中自动配置 AlwaysOn 可用性组：Resource Manager
 
@@ -208,6 +208,6 @@ SQL Server 的新实例会在连接到 Internet 的 IP 地址上运行。 可以
 4. 在“sqlserver-0”边栏选项卡中，单击“连接”。 浏览器将询问是要打开还是要保存远程连接对象。 单击“打开”。
 5. “远程桌面连接”可能会发出警告：无法识别此远程连接的发布者。 单击“连接”。
 6. Windows 安全性会提示输入凭据，以便连接到主域控制器的 IP 地址。 单击“使用另一帐户”。 对于“用户名”，请键入 **contoso\DomainAdmin**。 此帐户是在模板中设置管理员用户名时配置的。 当配置了模板时，请使用所选的复杂密码。
-7. “远程桌面”可能会发出警告：由于安全证书存在问题，无法验证远程计算机。 它会显示安全证书名称。 如果按照本教程操作，该名称为 **sqlserver-0.contoso.com**。 单击 **“是”**。
+7. “远程桌面”可能会发出警告：由于安全证书存在问题，无法验证远程计算机。 它会显示安全证书名称。 如果按照本教程操作，该名称为 **sqlserver-0.contoso.com**。单击 **“是”**。
 
 现在，已通过 RDP 连接到 SQL Server 虚拟机。 可打开 SQL Server Management Studio，连接到 SQL Server 的默认实例，并验证可用性组是否已配置。

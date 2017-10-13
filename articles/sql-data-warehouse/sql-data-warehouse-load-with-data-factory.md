@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>使用数据工厂将数据载入 SQL 数据仓库
 
 可以使用 Azure 数据工厂将数据从任何[支持的源数据存储](../data-factory/copy-activity-overview.md)载入 Azure SQL 数据仓库。 例如，可以使用数据工厂将数据从 Azure SQL 数据库或 Oracle 数据库载入 SQL 数据仓库。 本文中的教程介绍如何将数据从本地 SQL Server 数据库载入 SQL 数据仓库。
@@ -165,4 +163,3 @@ ms.lasthandoff: 09/25/2017
 
 <!-- Azure references -->
 [Azure 门户]: https://portal.azure.com
-

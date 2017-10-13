@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
 ms.openlocfilehash: 303be1d303df8074283cb1d37c74923cca80ae59
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>已加入域的 HDInsight 群集（预览版）的 Hadoop 安全性简介
 

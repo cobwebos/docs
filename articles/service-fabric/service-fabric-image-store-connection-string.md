@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: alexwun
+ms.openlocfilehash: 49003c16c262180afcdba22c5557c91297cb2840
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: f497006a8ba48da0032b82113702d8014952ca20
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>了解 ImageStoreConnectionString 设置
 
@@ -57,4 +56,3 @@ Service Fabric 起初是一个供许多不同团队在内部 Microsoft 使用的
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-cluster-creation-via-portal.md
 [12]: service-fabric-publish-app-remote-cluster.md
-

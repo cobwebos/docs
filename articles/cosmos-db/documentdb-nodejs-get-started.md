@@ -15,12 +15,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: anhoh
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 02e98aadc6a001c7275266d89a196a57bb366b3c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nodejs-tutorial-use-the-documentdb-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js 教程：在 Azure Cosmos DB 中使用 DocumentDB API 创建 Node.js 控制台应用程序
 > [!div class="op_single_selector"]
@@ -631,4 +630,3 @@ Azure Cosmos DB 支持删除 JSON 文档。
 
 [create-account]: create-documentdb-dotnet.md#create-account
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
-

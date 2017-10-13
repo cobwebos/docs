@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
 ms.openlocfilehash: 94b629a62c3a54eee69ee397b2f27e3f20b753d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-8-set-up-the-source-and-target-for-vmware-replication-to-azure"></a>步骤 8：设置源和目标以便将 VMware 复制到 Azure
 
@@ -89,8 +89,8 @@ ms.lasthandoff: 07/11/2017
 
 设置目标环境前，请确保已创建 Azure 存储帐户和虚拟网络。
 
-1. 单击“准备基础结构” > “目标”，然后选择要使用的 Azure 订阅。
-2. 指定目标部署模型是基于 Resource Manager 还是基于经典部署。
+1. 单击“准备基础结构” > “目标”，并选择要使用的 Azure 订阅。
+2. 指定目标部署模型是基于 Resource Manager 的还是经典的。
 3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
    ![目标](./media/vmware-walkthrough-source-target/gs-target.png)

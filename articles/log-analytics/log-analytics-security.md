@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: magoedte
+ms.openlocfilehash: 91af774560860b35913e57b49fb7a1dd59f5640f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9ae1629462d375c1061d9c7b25975c789ee661c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 Microsoft 致力于保护隐私和数据安全，同时提供软件和服务来帮助你管理组织的 IT 基础结构。 我们认识到，授信他人访问数据时，这种信任需要极高的安全性。 从服务的编码到运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -165,4 +164,3 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 
 ## <a name="next-steps"></a>后续步骤
 * [开始使用 Log Analytics](log-analytics-get-started.md)，以快速了解有关 Log Analytics 的更多信息并使 Log Analytics 开始运行。
-

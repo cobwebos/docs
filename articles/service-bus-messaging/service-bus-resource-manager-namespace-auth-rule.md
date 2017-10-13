@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
 ms.openlocfilehash: fbd2372829a1aefa2c080c0a8a72b9ff4375b16f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板为命名空间和队列创建服务总线授权规则
 
-本文介绍如何使用为服务总线命名空间和队列创建[授权规则](service-bus-authentication-and-authorization.md#shared-access-signature-authentication)的 Azure Resource Manager 模板。 了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何使用为服务总线命名空间和队列创建[授权规则](service-bus-authentication-and-authorization.md#shared-access-signature-authentication)的 Azure Resource Manager 模板。 将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
 有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 08/18/2017
 > 
 
 ## <a name="what-will-you-deploy"></a>将部署什么内容？
-利用此模板，你将为命名空间和消息传送实体（在此情况下为队列）部署服务总线授权规则。
+利用此模板，将为命名空间和消息传送实体（在此情况下为队列）部署服务总线授权规则。
 
 此模板使用[共享访问签名 (SAS)](service-bus-sas.md) 进行身份验证。 SAS 使应用程序能够使用在命名空间或在关联了特定权限的消息传送实体（队列或主题）上配置的访问密钥向服务总线进行身份验证。 然后，可以使用此密钥生成 SAS 令牌，客户端反过来可用它向服务总线进行身份验证。
 

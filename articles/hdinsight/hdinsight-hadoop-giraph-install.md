@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: f0eb5c1f457380600463a370043f03e6d655a02c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Giraph
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/03/2017
 
     将 tiny_graph.txt 文件上传到 HDInsight 群集的主存储。 有关如何上传数据的说明，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
 
-    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。 每一行代表 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
+    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。每一行代表 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
 
     使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 08/03/2017
 
     SimpleShortestPathComputation 示例硬编码为从对象 ID 1 开始查找与其他对象间的最短路径。 因此，输出应显示为 `destination_id distance`，其中，distance 为对象 ID 1 与目标 ID 的边缘之间的行程值（或权重）。
 
-    在可视化此数据的情况下，可以通过行经 ID 1 与所有其他对象之间的最短路径来验证结果。 请注意，ID 1 和 ID 4 之间的最短路径为 5。 这是从 <span style="color:orange">ID 1 到 ID 3</span>，再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
+    在可视化此数据的情况下，可以通过体验 ID 1 与所有其他对象之间的最短路径来验证结果。 请注意，ID 1 和 ID 4 之间的最短路径为 5。 这是从 <span style="color:orange">ID 1 到 ID 3</span>，再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
 
     ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 

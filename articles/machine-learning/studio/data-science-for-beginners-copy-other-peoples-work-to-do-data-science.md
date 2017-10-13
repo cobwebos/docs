@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1c767a3fc6605c3e2400bda637d91031393360a5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
@@ -95,4 +94,3 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习](https://a
 ## <a name="next-steps"></a>后续步骤
 * [使用 Azure 机器学习尝试第一个数据科学实验](create-experiment.md)
 * [在 Microsoft Azure 上获取机器学习简介](what-is-machine-learning.md)
-

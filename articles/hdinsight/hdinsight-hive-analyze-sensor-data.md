@@ -17,10 +17,10 @@ ms.date: 04/14/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: 3abb71c12b4769bebd808276f8bdd832aad22d7a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>使用 HDInsight 中 Hadoop上的 Hive 查询控制台分析传感器数据
 

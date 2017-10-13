@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 06/01/2017
 ms.author: valthom; ladocs
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 9fb0258df3f45d121cda49d3b5c274bd9548c832
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>使用 MQ 连接器从逻辑应用连接到 IBM MQ 服务器 
 
 Microsoft Connector for MQ 会发送和检索存储在 MQ 服务器本地或 Azure 中的消息。 此连接器包括要在 TCP/IP 网络上与远程 IBM MQ 服务器计算机通信的 Microsoft MQ 客户端。 本文档是使用 MQ 连接器的初学者指南。 建议首先浏览队列中的单个消息，然后尝试其他操作。    
@@ -51,7 +49,7 @@ MQ 连接器包括以下操作。 没有任何触发器。
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。 
-2. 输入“名称”（如 MQTestApp）、“订阅”、“资源组”和“位置”（使用在其中配置本地数据网关连接的位置）。 选择“固定到仪表板”，然后选择“创建”。  
+2. 输入“名称”（如 MQTestApp）、“订阅”、“资源组”和“位置”（使用在其中配置本地数据网关连接的位置）。 选择“固定到仪表板”，并选择“创建”。  
 ![创建逻辑应用](media/connectors-create-api-mq/Create_Logic_App.png)
 
 ## <a name="add-a-trigger"></a>添加触发器
@@ -126,4 +124,3 @@ MQ 连接器包括以下操作。 没有任何触发器。
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
-

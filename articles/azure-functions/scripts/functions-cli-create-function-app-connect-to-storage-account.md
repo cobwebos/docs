@@ -16,12 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: af90702601d1bd05836dbf2b20cd3e318832b07c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-function-app-into-azure-storage-account"></a>将 Function App 集成到 Azure 存储帐户中
 
@@ -63,4 +62,3 @@ ms.lasthandoff: 09/09/2017
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
 可以在 [Azure Functions 文档](../functions-cli-samples.md)中找到其他 Azure Functions CLI 脚本示例。
-

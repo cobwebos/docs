@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
 ms.openlocfilehash: bafbd43d65a0f46f87a13cea4a2a6299d3bf43ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用
 
 [**下载模拟器**](https://aka.ms/cosmosdb-emulator)
@@ -108,4 +106,3 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
 > [!div class="nextstepaction"]
 > [通过从 Azure Cosmos DB 输入创建 Azure Function](tutorial-functions-http-trigger.md) 
-

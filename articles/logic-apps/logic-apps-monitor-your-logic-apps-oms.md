@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.translationtype: HT
-ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
 ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>使用 Operations Management Suite (OMS) 和 Log Analytics 监视和获取有关逻辑应用运行的见解
 
 有关监视和更丰富的调试信息，可在创建逻辑应用的同时启用 Log Analytics。 Log Analytics 提供了诊断日志记录并通过 Operations Management Suite (OMS) 门户监视逻辑应用运行。 将逻辑应用管理解决方案添加到 OMS 时，你将获得逻辑应用运行的聚合状态，同时获得特定详细信息，如状态、执行时间、重新提交状态和关联 ID。
@@ -140,4 +138,3 @@ ms.lasthandoff: 09/20/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [监视 B2B 消息](../logic-apps/logic-apps-monitor-b2b-message.md)
-

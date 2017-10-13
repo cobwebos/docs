@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e5f04f3b9135167c0f339c58323ebd931b260109
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 09/25/2017
 2. 使用所选方法安装代理
 3. 如有需要，配置代理或添加额外的工作区
 
-以下图表显示在安装并配置代理后，Windows 计算机与 OMS 之间的关系。
+安装并配置代理后，以下图表显示 Windows 计算机和 OMS 之间的关系。
 
 ![oms-direct-agent-diagram](./media/log-analytics-windows-agents/oms-direct-agent-diagram.png)
 
@@ -78,24 +77,24 @@ ms.lasthandoff: 09/25/2017
 ## <a name="download-the-agent-setup-file-from-oms"></a>从 OMS 下载代理安装程序文件
 1. 在 [OMS 门户](https://www.mms.microsoft.com)的“概述”页上，单击“设置”磁贴。  单击顶部的“**相连的源**”选项卡。  
     ![“相连的源”选项卡](./media/log-analytics-windows-agents/oms-direct-agent-connected-sources.png)
-2. 单击“Windows 服务器”，然后单击适用于计算机的处理器类型的“下载 Windows 代理”，以下载安装程序文件。
+2. 单击“Windows 服务器”，然后单击适用于计算机处理器类型的“下载 Windows 代理”，以下载安装程序文件。
 3. 在“工作区 ID”右侧单击复制图标，并将该 ID 粘贴到记事本中。
-4. 单击“主键”右侧的复制图标，并将该键粘贴到记事本中。     
+4. 在“主键”右侧单击复制图标，并将该键粘贴到记事本中。     
 
 ## <a name="install-the-agent-using-setup"></a>使用安装程序安装代理
 1. 在想要管理的计算机上运行安装程序以安装代理。
 2. 在“欢迎”页面上，单击“**下一步**”。
-3. 在“许可条款”页面上阅读许可协议，并单击“**我接受**”。
-4. 在“目标文件夹”页面上更改或保留默认安装文件夹，并单击“**下一步**”。
-5. 在“代理安装程序选项”页面上，可选择将代理连接到 Azure Log Analytics (OMS)、Operations Manager，如果想要稍后配置代理，也可将选项保留为空。 单击“下一步”。   
-    - 如果选择连接到 Azure Log Analytics (OMS)，粘贴在前面的过程中复制到记事本中的**工作区 ID** 和**工作区键（主键）**，并单击“**下一步**”。  
+3. 在“许可条款”页面上阅读许可协议，然后单击“**我接受**”。
+4. 在“目标文件夹”页面上更改或保留默认安装文件夹，然后单击“**下一步**”。
+5. 在“代理安装程序选项”页面上，可选择将代理连接到 Operations Manager 中的 Azure Log Analytics (OMS)，或者如果想要稍候配置代理，可将选项保留为空。 单击“资源组名称” 的 Azure 数据工厂。   
+    - 如果选择连接到 Azure Log Analytics (OMS)，粘贴在前面的过程中复制到记事本中的**工作区 ID** 和**工作区键（主键）**，然后单击“**下一步**”。  
         ![粘贴工作区 ID 和主键](./media/log-analytics-windows-agents/connect-workspace.png)
-    - 如果选择连接到 Operations Manager，请键入**管理组名称**、**管理服务器**名称和**管理服务器端口**，并单击“**下一步**”。 在“代理操作帐户”页面上，选择本地系统帐户或本地域帐户，并单击“**下一步**”。  
+    - 如果选择连接到 Operations Manager，请键入**管理组名称**、**管理服务器**名称和**管理服务器端口**，然后单击“**下一步**”。 在“代理操作帐户”页面上，选择本地系统帐户或本地域帐户，然后单击“**下一步**”。  
         ![管理组配置](./media/log-analytics-windows-agents/oms-mma-om-setup01.png)![代理操作帐户](./media/log-analytics-windows-agents/oms-mma-om-setup02.png)
 
-6. 在“准备安装”页面上，查看已选内容，并单击“**安装**”。
+6. 在“准备安装”页面上，查看已选内容，然后单击“**安装**”。
 7. 在“配置已成功完成”页面上，单击“**完成**”。
-8. 完成后，**Microsoft Monitoring Agent** 会显示在“**控制面板**”中。 可在该处查看配置并验证代理是否已连接到 Operational Insights (OMS)。 如果连接到 OMS，代理会显示一条消息，指出：**Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务。**
+8. 完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 可在该处查看配置并验证代理是否已连接到 Operational Insights (OMS)。 如果连接到 OMS，代理会显示一条消息，指出：**Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务。**
 
 ## <a name="configure-proxy-settings"></a>配置代理设置
 
@@ -211,7 +210,7 @@ $mma.ReloadConfiguration()
 >[!NOTE]
 此过程和脚本示例不会升级现有代理。
 
-1. 从 [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 将 xPSDesiredStateConfiguration DSC 模块导入 Azure 自动化。  
+1. 将 [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 的 xPSDesiredStateConfiguration DSC 模块导入到 Azure 自动化。  
 2.  为 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 创建 Azure 自动化变量资产。 将 *OPSINSIGHTS_WS_ID* 设置为 OMS Log Analytics 工作区 ID，将 *OPSINSIGHTS_WS_KEY* 设置为工作区的主键。
 3.  请使用以下脚本，将其另存为 MMAgent.ps1
 4.  修改后参照以下示例使用 Azure 自动化中的 DSC 安装代理。 通过使用 Azure 自动化界面或 cmdlet 将 MMAgent.ps1 导入 Azure 自动化。
@@ -285,18 +284,18 @@ foreach ($Application in $InstalledApplications)
 如果已安装代理但没有进行配置，或者希望代理向多个工作区报告，可使用以下信息来启用代理或重新配置代理。 配置代理后，会在代理服务中注册代理，并会获得必要的配置信息和包含解决方案信息的管理包。
 
 1. 安装 Microsoft Monitoring Agent 后，打开“**控制面板**”。
-2. 打开 **Microsoft Monitoring Agent**，并单击“**Azure Log Analytics (OMS)**”选项卡。   
+2. 打开 **Microsoft Monitoring Agent**，然后单击“**Azure Log Analytics (OMS)** ”选项卡。   
 3. 单击“**添加**”以打开“**添加 Log Analytics 工作区**”框。
-4. 为想要添加的工作区粘贴在前面的过程中复制到记事本中的**工作区 ID** 和**工作区键（主键）**，并单击“**确定**”。  
+4. 为想要添加的工作区粘贴在前面的过程中复制到记事本中的**工作区 ID** 和**工作区键（主键）**，然后单击“**确定**”。  
     ![配置 Operational Insights](./media/log-analytics-windows-agents/add-workspace.png)
 
-收集代理所监视的计算机中的数据后，在 OMS 门户中，OMS 监视的计算机数会在“**设置**”中“**相连的源**”选项卡上显示为“**已连接的服务器数**”。
+收集代理所监视的计算机中的数据后，在 OMS 门户中，OMS 监视的计算机数将在“**设置**”中“**相连的源**”选项卡上显示为“**已连接的服务器数**”。
 
 
 ## <a name="to-disable-an-agent"></a>禁用代理
 1. 安装代理后，打开“**控制面板**”。
-2. 打开 Microsoft Monitoring Agent，并单击“**Azure Log Analytics (OMS)**”选项卡。
-3. 选择工作区，并单击“**移除**”。 对所有其他工作区重复此步骤。
+2. 打开 Microsoft Monitoring Agent，然后单击“**Azure Log Analytics (OMS)**”选项卡。
+3. 选择工作区，然后单击“**移除**”。 对所有其他工作区重复此步骤。
 
 
 ## <a name="optionally-configure-agents-to-report-to-an-operations-manager-management-group"></a>可选择将代理配置为向 Operations Manager 管理组报告
@@ -305,7 +304,7 @@ foreach ($Application in $InstalledApplications)
 
 ### <a name="to-configure-mma-agents-to-report-to-an-operations-manager-management-group"></a>将 MMA 代理配置为向 Operations Manager 管理组报告
 1.  在安装代理的计算机上打开“**控制面板**”。  
-2.  打开 **Microsoft Monitoring Agent**，并单击“**Operations Manager**”选项卡。  
+2.  打开 **Microsoft Monitoring Agent**，然后单击“**Operations Manager**”选项卡。  
     ![Microsoft Monitoring Agent Operations Manager 选项卡](./media/log-analytics-windows-agents/om-mg01.png)
 3.  如果 Operations Manager 服务器与 Active Directory 集成，请单击“**自动更新 AD DS 中的管理组分配**”。
 4.  单击“**添加**”以打开“**添加管理组**”对话框。  
@@ -320,4 +319,3 @@ foreach ($Application in $InstalledApplications)
 ## <a name="next-steps"></a>后续步骤
 
 - [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
-

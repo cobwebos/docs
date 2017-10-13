@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 7772381e9796ddc2e0db215bab4f230473eaa462
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker Machine 在 Azure 中创建主机
 本文详细介绍如何使用 [Docker Machine](https://docs.docker.com/machine/) 在 Azure 中创建主机。 `docker-machine` 命令在 Azure 中创建一个 Linux 虚拟机 (VM)，然后安装 Docker。 然后，可以使用相同的本地工具和工作流来管理 Azure 中的 Docker 主机。 若要在 Windows 10 中使用 docker-machine，必须使用 Linux bash。
@@ -138,4 +137,3 @@ docker-machine ip myvmdocker
 
 ## <a name="next-steps"></a>后续步骤
 也可以使用 [Docker VM 扩展](dockerextension.md)创建主机。 有关使用 Docker Compose 的示例，请参阅 [Azure 中的 Docker 和 Compose 入门](docker-compose-quickstart.md)。
-

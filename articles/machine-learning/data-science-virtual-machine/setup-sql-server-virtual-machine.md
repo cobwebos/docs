@@ -1,5 +1,5 @@
 ---
-title: "将 SQL Server 虚拟机设置为 IPython Notebook 服务器 | Microsoft 文档"
+title: "将 SQL Server 虚拟机设置为 IPython Notebook 服务器 | Microsoft Docs"
 description: "使用 SQL Server 和 IPython Server 设置数据科学虚拟机。"
 services: machine-learning
 documentationcenter: 
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: xibingao;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ac39de97174e58964b48601d559abeba5e624c21
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-an-azure-sql-server-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器
 本主题介绍如何预配和配置 SQL Server 虚拟机，以便用作基于云的数据科学环境的一部分。 使用支持工具配置 Windows 虚拟机，如 IPython Notebook、Azure 存储资源管理器和 AzCopy 以及其他可用于对数据科学项目的实用程序。 例如，Azure 存储资源管理器和 AzCopy 提供了从本地计算机将数据上传到 Azure blob 存储或从 blob 存储下载到本地计算机的便捷方法。
@@ -274,5 +273,4 @@ Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未
 [12]: ./media/setup-sql-server-virtual-machine/25sysadmin.png
 [13]: ./media/setup-sql-server-virtual-machine/amlreader.png
 [15]: ./media/setup-sql-server-virtual-machine/vmshutdown.png
-
 

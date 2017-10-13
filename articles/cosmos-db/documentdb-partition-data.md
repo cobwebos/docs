@@ -16,10 +16,10 @@ ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 81010d91ac7fe8fa7149c52ed56af304cf4e83d9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-documentdb-api"></a>使用 DocumentDB API 在 Azure Cosmos DB 中进行分区
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="partition-keys"></a>分区键
 
-在 DocumentDB API 中，以 JSON 路径的形式指定分区键定义。 下表显示分区键定义以及与每个定义相对应的值的示例。 分区键指定为路径，例如 `/department` 表示属性 department。 
+在 DocumentDB API 中，以 JSON 路径的形式指定分区键定义。 下表演示分区键定义和对应于每个定义的值。 分区键指定为路径，例如 `/department` 表示属性 department。 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>

@@ -247,7 +247,6 @@
             - name: 安装 NVIDIA GPU 驱动程序
               href: n-series-driver-setup.md
     - name: 管理存储
-      href: about-disks-and-vhds.md
       items:
         - name: 了解托管磁盘
           href: managed-disks-overview.md

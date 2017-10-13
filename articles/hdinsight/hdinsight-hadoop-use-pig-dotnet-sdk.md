@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: larryfr
 ms.openlocfilehash: e40d152821b36852c447d5a3adfd39114edbbace
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>使用 HDInsight 中的 .NET SDK for Hadoop 运行 Pig 作业
 
@@ -45,7 +45,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。
 
-1. 在 Visual Studio 的“文件”菜单中，选择“新建”，然后选择“项目”。
+1. 在 Visual Studio 的“文件”菜单中，选择“新建”，并选择“项目”。
 
 2. 对于新项目，请键入或选择以下值：
 
@@ -57,7 +57,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 3. 单击“确定”以创建该项目  。
 
-4. 从“工具”菜单中选择“库包管理器”或“Nuget 包管理器”，然后选择“包管理器控制台”。
+4. 从“工具”菜单中选择“库包管理器”或“Nuget 包管理器”，并选择“包管理器控制台”。
 
 5. 若要安装 .NET SDK 包，请使用以下命令：
 

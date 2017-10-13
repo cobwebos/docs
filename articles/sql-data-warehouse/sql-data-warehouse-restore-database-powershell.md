@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0b6f4fa657a16196ba8f42c2137dc3c245d25a07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: 6c17c2ff522ae5a77c15ba287f50157882d5f2c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>还原 Azure SQL 数据仓库 (PowerShell)
 > [!div class="op_single_selector"]
@@ -31,7 +30,7 @@ ms.lasthandoff: 12/08/2016
 > 
 > 
 
-在本文中，你将学习如何使用 PowerShell 还原 Azure SQL 数据仓库。
+在本文中，学习如何使用 PowerShell 还原 Azure SQL 数据仓库。
 
 ## <a name="before-you-begin"></a>开始之前
 **验证 DTU 容量。** 每个 SQL 数据仓库都由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。  在还原 SQL 数据仓库之前，请确保 SQL Server 的剩余 DTU 配额足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][Request a DTU quota change]。
@@ -43,7 +42,7 @@ ms.lasthandoff: 12/08/2016
 若要从快照还原数据库，请使用 [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] PowerShell cmdlet。
 
 1. 打开 Windows PowerShell。
-2. 连接到你的 Azure 帐户，并列出与你的帐户关联的所有订阅。
+2. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 3. 选择包含要还原的数据库的订阅。
 4. 列出数据库的还原点。
 5. 使用 RestorePointCreationDate 选取所需的还原点。
@@ -91,7 +90,7 @@ $RestoredDatabase.status
 若要还原已删除的数据库，请使用 [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] cmdlet。
 
 1. 打开 Windows PowerShell。
-2. 连接到你的 Azure 帐户，并列出与你的帐户关联的所有订阅。
+2. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 3. 选择包含要还原的已删除数据库的订阅。
 4. 获取特定的已删除数据库。
 5. 还原已删除的数据库。
@@ -127,7 +126,7 @@ $RestoredDatabase.status
 若要恢复数据库，请使用 [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] cmdlet。
 
 1. 打开 Windows PowerShell。
-2. 连接到你的 Azure 帐户，并列出与你的帐户关联的所有订阅。
+2. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 3. 选择包含要还原的数据库的订阅。
 4. 获取要恢复的数据库。
 5. 创建对数据库的恢复请求。
@@ -177,4 +176,3 @@ $GeoRestoredDatabase.status
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
-

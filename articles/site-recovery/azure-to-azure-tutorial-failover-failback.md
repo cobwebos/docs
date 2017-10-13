@@ -12,12 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 09/18/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6a66528bfeb7249add9f589830293760c238e7db
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>对 Azure 区域（预览）之间的 Azure VM 进行故障转移和故障回复
 
@@ -73,4 +72,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="fail-back-to-the-primary-region"></a>故障回复到主要区域
 
 VM 重新受保护后，可以根据需要故障回复到主要区域。 若要执行此操作，请按照[故障转移](#run-a-failover)说明进行操作。
-

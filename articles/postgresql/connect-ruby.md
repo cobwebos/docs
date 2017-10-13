@@ -12,10 +12,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/30/2017
 ms.openlocfilehash: 9153a5a843dd5c18f27a3af232fea3b152240fe1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Ruby 进行连接并查询数据
 本快速入门演示了如何使用 [Ruby](https://www.ruby-lang.org) 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Ruby 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。

@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
 ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure 数据目录入门
 Azure 数据目录是一个完全托管的云服务，具有企业数据资产的注册系统和发现系统的功能。 有关详细的概述，请参阅 [What is Azure Data Catalog](data-catalog-what-is-data-catalog.md)（什么是 Azure 数据目录）。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
 ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>使用经典部署模型管理 Azure 备份保管库和服务器
 > [!div class="op_single_selector"]
@@ -110,7 +110,7 @@ ms.lasthandoff: 08/29/2017
 ![代理控制台操作](./media/backup-azure-manage-windows-server-classic/console-actions.png)
 
 > [!NOTE]
-> 若要恢复数据，请参阅[将文件还原到 Windows Server 或 Windows 客户端计算机](backup-azure-restore-windows-server.md)。
+> 要**恢复数据**，请参阅 [Restore files to a Windows server or Windows client machine](backup-azure-restore-windows-server.md)（将文件还原到 Windows Server 或 Windows 客户端计算机）。
 >
 >
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 08/29/2017
 1. 在 Microsoft Azure 备份代理中，单击“**计划备份**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server-classic/schedule-backup.png)
-2. 在计划备份向导中，将“更改备份项或时间”选项保留选中状态，然后单击“下一步”。
+2. 在**计划备份向导**中，将“**更改备份项或时间**”选项保留选中状态，并单击“**下一步**”。
 
     ![修改计划的备份](./media/backup-azure-manage-windows-server-classic/modify-or-stop-a-scheduled-backup.png)
 3. 如果要添加或更改项，请在“**选择要备份的项**”屏幕中单击“**添加项**”。
@@ -166,7 +166,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 2. 在 Microsoft Azure 备份代理中，单击“**计划备份**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server-classic/schedule-backup.png)
-3. 在计划备份向导中，将“更改备份项或时间”选项保留选中状态，然后单击“下一步”。
+3. 在计划备份向导中，将“**更改备份项或时间**”选项保留选中状态，并单击“**下一步**”。
 
     ![修改计划](./media/backup-azure-manage-windows-server-classic/modify-or-stop-a-scheduled-backup.png)
 4. 单击“**排除设置**”。

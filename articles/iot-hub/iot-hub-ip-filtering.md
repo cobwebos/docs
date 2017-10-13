@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: boltean
 ms.openlocfilehash: 85f5f044faddd5180f0c19d3f2c235b20f6373d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 
 IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。
 
-与 IoT 中心的拒绝 IP 规则匹配的 IP 地址发出的任何连接尝试都会收到“未授权”401 状态代码和说明。 响应消息不会提及 IP 规则。
+来自与 IoT 中心内的拒绝 IP 规则匹配的 IP 地址的任何连接尝试都将收到未经授权 401 状态代码和说明。 响应消息不会提及 IP 规则。
 
 ## <a name="default-setting"></a>默认设置
 
@@ -75,7 +75,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 
-IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定了是采取接受操作还是拒绝操作。
+IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
 例如，如果希望接受 192.168.100.0/22 范围中的地址并拒绝任何其他地址，则网格中的第一个规则应接受 192.168.100.0/22 地址范围。 下一个规则应通过使用 0.0.0.0/0 范围拒绝所有地址。
 

@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
+ms.openlocfilehash: 4ba4155515e587038ffe2dbca064ad27aca97445
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: b67f95847ac3228aa1d04d89af7e9fe4eeff3220
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 ## <a name="what-is-app-service-authentication--authorization"></a>什么是应用服务身份验证/授权？
@@ -150,11 +149,11 @@ ms.lasthandoff: 09/20/2017
 
 * [使用适用于 iOS 的 Google 登录 SDK](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
-### <a name="api-applications"></a>API 应用程序
-以下教程介绍了如何保护 API 应用：
+<!-- ### API applications
+The following tutorials show how to protect your API apps:
 
-* [Azure 应用服务中 API 应用的用户身份验证][apia-user]
-* [Azure 应用服务中 API 应用的服务主体身份验证][apia-service]
+* [User authentication for API Apps in Azure App Service][apia-user]
+* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
@@ -175,4 +174,3 @@ ms.lasthandoff: 09/20/2017
 [ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
-

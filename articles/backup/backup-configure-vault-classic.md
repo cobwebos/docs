@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk;
 ms.openlocfilehash: a8daa6a4655b72936b6299c0fa5b80459ffa5da3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-a-windows-server-or-workstation-to-azure-using-the-classic-portal"></a>使用经典门户将 Windows 服务器或工作站备份到 Azure
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 > [!IMPORTANT]
 > 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
 >
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> **2017 年 10 月 15 日之后**，无法使用 PowerShell 创建备份保管库。 <br/> **从 2017 年 11 月 1 日起**：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 <br/> 从 2017 年 11 月 1 日起：
 >- 其余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
@@ -71,7 +71,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
 
 ### <a name="to-download-install-and-register-the-agent"></a>下载、安装和注册代理
 1. 单击“**恢复服务**”，然后选择要向其注册服务器的备份保管库。
-2. 在“快速启动”页上，单击“**Windows Server、System Center Data Protection Manager 或 Windows 客户端的代理**”。 。
+2. 在“快速启动”页上，单击“**Windows Server、System Center Data Protection Manager 或 Windows 客户端的代理**”。 然后单击“保存”。
 
     ![保存代理](./media/backup-configure-vault-classic/agent.png)
 3. 下载 MARSagentinstaller.exe 后，单击“**运行**”（或双击保存位置中的 **MARSAgentInstaller.exe**）。
@@ -86,7 +86,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：Resource
     确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果遇到访问相关的错误，请将保管库凭据文件复制到同一台计算机中的临时位置，并重试操作。
 
     如果遇到保管库凭据错误（例如“提供的保管库凭据无效”），则表示该文件已损坏，或者没有与恢复服务关联的最新凭据。 请在从门户下载新的保管库凭据文件后重试该操作。 如果用户快速连续单击“**下载保管库凭据**”选项，则可能会出现此错误。 在这种情况下，只有最后一个保管库凭据文件有效。
-9. 在“加密设置”页上，可生成一个通行短语，或者提供一个通行短语（最少包含 16 个字符）。 请记住将通行短语保存在安全位置。
+9. 在“加密设置”页上，可以生成一个通行短语，或者提供一个通行短语（最少包含 16 个字符）。 请记住将通行短语保存在安全位置。
 10. 单击“完成” 。 注册服务器向导会在备份中注册服务器。
 
     > [!WARNING]

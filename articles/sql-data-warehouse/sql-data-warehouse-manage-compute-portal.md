@@ -16,10 +16,10 @@ ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>管理 Azure SQL 数据仓库中的计算能力（Azure 门户）
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 1. 打开 [Azure 门户][Azure portal]，并打开数据库。 请注意，状态为“联机”。
 
     ![联机状态][6]
-2. 若要挂起计算和内存资源，请单击“暂停”，随后将显示确认消息。 单击“是”以确认或“否”以取消。
+2. 要挂起计算和内存资源，请单击“暂停”，随后会显示确认消息。 单击“是”以确认或“否”以取消。
 
     ![确认暂停][7]
 3. 当 SQL 数据仓库正在启动数据库时，状态为“正在暂停”。
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
 1. 打开 [Azure 门户][Azure portal]，并打开数据库。 请注意，状态为“已暂停”。
 
     ![暂停数据库][4]
-2. 若要恢复数据库，请单击“启动”，随后将显示确认消息。 单击“是”以确认或“否”以取消。
+2. 要恢复数据库，请单击“启动”，随后会显示确认消息。 单击“是”以确认或“否”以取消。
 
     ![确认恢复][5]
 3. 当 SQL 数据仓库正在启动数据库时，状态为“正在恢复”。

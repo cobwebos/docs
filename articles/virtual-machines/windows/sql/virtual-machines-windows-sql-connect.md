@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/14/2017
 ms.author: jroth
 ms.openlocfilehash: 67ba43f9456bbeffbf602067586143c4c68af672
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-resource-manager"></a>连接到 Azure (Resource Manager) 上的 SQL Server 虚拟机
 > [!div class="op_single_selector"]

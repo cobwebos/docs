@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: jgao
 ms.openlocfilehash: e21dabcc6999b1f1047d334e782f723d0c03c2cb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Hadoop 群集上使用空边缘节点
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 08/29/2017
 **将空边缘节点添加到现有群集**
 
 1. 创建一个 HDInsight 群集（如果没有）。  请参阅 [Hadoop 教程：开始使用 HDInsight 中的 Hadoop](hdinsight-hadoop-linux-tutorial-get-started.md)。
-2. 单击以下图像登录到 Azure，然后在 Azure 门户中打开 Azure Resource Manager 模板。 
+2. 单击以下图像登录到 Azure，并在 Azure 门户中打开 Azure Resource Manager 模板。 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. 配置以下属性：

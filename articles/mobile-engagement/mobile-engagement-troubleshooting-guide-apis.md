@@ -1,6 +1,6 @@
 ---
-title: "故障排除指南-Api 的 azure Mobile Engagement"
-description: "故障诊断 Azure Mobile Engagement 的 Api 的指南"
+title: "Azure Mobile Engagement 故障排除指南 - API"
+description: "Azure Mobile Engagement 故障排除指南 - API"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -15,45 +15,45 @@ ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
 ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="troubleshooting-guide-for-api-issues"></a>针对 API 问题的疑难解答指南
-以下是可能存在的问题，你可能会遇到管理员如何与通过 Api 的 Azure Mobile Engagement 交互。
+# <a name="troubleshooting-guide-for-api-issues"></a>API 问题故障排除指南
+以下是在管理员如何通过 API 与 Azure Mobile Engagement 进行交互这一方面可能会遇到的问题。
 
 ## <a name="syntax-issues"></a>语法问题
 ### <a name="issue"></a>问题
-* 使用的 API （或意外的行为） 的语法错误。
+* 使用 API 的语法错误（或意外行为）。
 
 ### <a name="causes"></a>原因
 * 语法问题：
-  * 请务必检查你用于确认的选项可用的特定 api 的语法。
-  * 使用 API 使用情况的一个常见问题是混淆 Reach API 和推送 API （应使用 Reach API 而不是推送 API 执行大多数任务）。 
-  * 使用 SDK 集成和 API 使用的另一个常见问题是混淆 SDK 密钥和 API 密钥。
-  * 连接到 Api 的脚本需要发送至少每隔 10 分钟的数据或连接将超时 （尤其是常见侦听数据的监视器 API 脚本中）。 若要防止超时，让您发送符合 XMPP ping 每隔 10 分钟保持会话存在与服务器的脚本。
+  * 请务必检查正在使用的特定 API 的语法，以确认相应的选项可用。
+  * API 使用的常见问题是混淆 Reach API 和 Push API（大部分任务应使用 Reach API 而非 Push API 执行）。 
+  * SDK 集成和 API 使用方面的其他常见问题是混淆 SDK 密钥和 API 密钥。
+  * 连接到 API 的脚本需要至少每 10 分钟发送数据一次，否则连接会超时（在侦听数据的监视器 API 脚本中尤其常见）。 若要避免超时，每 10 分钟让脚本发送一个 XMPP ping，以保持会话在服务器在处于活动状态。
 
 ### <a name="see-also"></a>另请参阅
 * [API 文档][Link 4]
-* [符合 XMPP 协议信息](http://xmpp.org/extensions/xep-0199.html)
+* [XMPP 协议信息](http://xmpp.org/extensions/xep-0199.html)
 
-## <a name="unable-to-use-the-api-to-perform-the-same-action-available-in-the-azure-mobile-engagement-ui"></a>无法使用 API 来执行 Azure Mobile Engagement UI 中提供的相同操作
+## <a name="unable-to-use-the-api-to-perform-the-same-action-available-in-the-azure-mobile-engagement-ui"></a>无法使用 API 执行在 Azure Mobile Engagement UI 中可用的同一操作
 ### <a name="issue"></a>问题
-* 从 Azure Mobile Engagement UI 中工作的操作相关的 Azure Mobile Engagement API 从不起作用。
+* 在 Azure Mobile Engagement UI 中起作用的操作在关联的 Azure Mobile Engagement API 中不起作用。
 
 ### <a name="causes"></a>原因
-* 确认你可以从 Azure Mobile Engagement UI 执行的相同操作显示，已正确使用 SDK 集成的 Azure Mobile Engagement 这一功能。
+* 确认在 Azure Mobile Engagement UI 中可以执行同一操作，这说明已正确使用 SDK 集成 Azure Mobile Engagement 的此功能。
 
 ### <a name="see-also"></a>另请参阅
 * [UI 文档][Link 1]
 
 ## <a name="error-messages"></a>错误消息
 ### <a name="issue"></a>问题
-* 使用 API 在运行时或在日志中显示的错误代码。
+* 在运行时或日志中显示的使用 API 的错误代码。
 
 ### <a name="causes"></a>原因
-* 下面是一个复合的参考和基本故障排除的公共 API 状态代码数字列表：
+* 这是常见 API 状态代码编号的组合列表，可供参考并进行初步的故障排除：
   
         200        Success.
         200        Account updated: device registered, associated, updated, or removed from the current account.
@@ -76,18 +76,18 @@ ms.lasthandoff: 07/11/2017
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
 ### <a name="see-also"></a>另请参阅
-* [API 文档的每个具体的 api 的详细错误][Link 4]
+* [API 文档 - 适用于每个特定 API 上的详细错误][Link 4]
 
 ## <a name="silent-failures"></a>无提示故障
 ### <a name="issue"></a>问题
-* API 操作失败并显示在运行时或在日志中没有错误消息。
+* API 操作失败后，在运行时或日志中未显示错误消息。
 
 ### <a name="causes"></a>原因
-* 多个项将被禁用 Azure Mobile Engagement UI 中，如果它们不正确，集成，但将从 API 以静默方式失败，因此请务必先测试以查看其是否工作正常的 UI 中的相同功能。
-* Azure Mobile Engagement，并具有许多高级的功能的 Azure Mobile Engagement 你尝试使用，需要单独集成到你的应用使用 SDK 作为单独的步骤才能使用它们。
+* 如果未正确集成项目，则许多项目会在 Azure Mobile Engagement UI 中禁用，但还是会在 API 中无提示地失败，因此请务必在 UI 中测试相同的功能，以检查其是否能正常工作。
+* Azure Mobile Engagement 和尝试使用的 Azure Mobile Engagement 的许多高级功能，都需要先作为单独的步骤使用 SDK 分别集成到应用，才能使用这些功能。
 
 ### <a name="see-also"></a>另请参阅
-* [故障排除指南-SDK][Link 25]
+* [故障排除指南 - SDK][Link 25]
 
 <!--Link references-->
 [Link 1]: mobile-engagement-user-interface-home.md

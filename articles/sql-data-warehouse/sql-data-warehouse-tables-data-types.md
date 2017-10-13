@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 06/02/2017
 ms.author: shigu;barbkess
 ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表定义数据类型的指南
 使用这些建议定义与 SQL 数据仓库兼容的表数据类型。 除兼容性外，最大限度降低数据类型大小将提高查询性能。

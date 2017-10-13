@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/16/2017
 ms.author: markvi
 ms.openlocfilehash: 8d4460b3059558de2253c6f6a2d2fc8e7564d6d9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -105,7 +105,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 - - -
 ## <a name="password-management"></a>密码管理
-**问：是否可以使用 Azure AD 密码写回但不使用密码同步？（在这种情况下，是否可以结合密码写回使用 Azure AD 自助密码重置 (SSPR)，而不将密码存储在云中？）**
+**问：是否可以使用 Azure AD 密码写回但不使用密码同步？（在这种情况下，是否可以结合密码写回使用 Azure AD 自助服务密码重置 (SSPR)，而不将密码存储在云中？）**
 
 **答：**无需将 Active Directory 密码同步到 Azure AD 即可启用写回。 在联合环境中，Azure AD 单一登录 (SSO) 依赖本地目录对用户进行身份验证。 在这种情况下，并不需要在 Azure AD 中跟踪本地密码。
 
@@ -190,8 +190,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 - - -
 **问：是否可以添加本地运行的应用程序？**
 
-
-            **答：**Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。 可以像访问 Azure AD 中的软件即服务 (SaaS) 应用一样访问这些应用程序。 不需要设置 VPN 或更改网络基础结构。  
+**答：**Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。 可以像访问 Azure AD 中的软件即服务 (SaaS) 应用一样访问这些应用程序。 不需要设置 VPN 或更改网络基础结构。  
 
 有关详细信息，请参阅[如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)。
 

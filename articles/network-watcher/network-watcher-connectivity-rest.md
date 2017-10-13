@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
+ms.openlocfilehash: 802658b50d8e398451507ad11c76fedd0db697df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: ca62bea581acb59d3c3c0b8a204cc9d42de2b27f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>使用 Azure 门户通过 Azure 网络观察程序检查连接性
 
 > [!div class="op_single_selector"]
@@ -86,7 +84,7 @@ armclient login
 以下代码需要以下变量的值：
 
 - subscriptionId - 要使用的订阅 ID。
-- resourceGroupName - 包含虚拟机的资源组的名称。
+- **resourceGroupName** - 包含虚拟机的资源组的名称。
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -503,7 +501,6 @@ null
 访问[查看“IP 流验证”](network-watcher-check-ip-flow-verify-portal.md)，了解是否允许某些流量传入和传出 VM
 
 <!-- Image references -->
-
 
 
 

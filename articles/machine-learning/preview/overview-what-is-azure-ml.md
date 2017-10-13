@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
+ms.openlocfilehash: 3bf9227a7ee432f036c57dd9d1c3807c7a867f3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4919fb679eeb4d25eb0066b9bf617b057d44354
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
 Azure 机器学习是集成式的端到端数据科学和高级分析解决方案。 它可让数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -179,7 +177,7 @@ Azure 容器服务 (ACS) 中运行的 Kubernetes 用于云中的扩展部署。 
 - 在 Hadoop 或 Spark 群集上大规模分发 R 和 Python 训练
 
 ### <a name="data-science-virtual-machine"></a>数据科学虚拟机
-[数据科学虚拟机 (DSVM)](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 中和基于 OpenLogic 7.2 CentOS 的 Linux 发行版上提供了 Linux 版本的 DSVM。 
+[数据科学虚拟机 (DSVM)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 中和基于 OpenLogic 7.2 CentOS 的 Linux 发行版上提供了 Linux 版本的 DSVM。 
 
 需要在单个节点上运行或托管作业时，可以使用数据科学虚拟机。 或者，需要在单个计算机上远程扩展处理能力时，也可以使用它。 支持将数据科学虚拟机用作 Azure 机器学习试验和 Azure 机器学习模型管理的目标。 
 
@@ -219,4 +217,3 @@ Microsoft 认知服务可用于开发跨设备和平台的应用。 API 不断�
 
 ## <a name="next-steps"></a>后续步骤
 * [安装和创建 Azure 机器学习](quickstart-installation.md)
-

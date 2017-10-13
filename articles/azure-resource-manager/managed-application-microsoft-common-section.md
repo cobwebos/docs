@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 34c0f2f88e6af5a0f822ec116e7e2334e4e29e8d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: 605c56ba30357343db02856db9390385935a7ce3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素
 一个将一个或多个元素分组到同一标题下的控件。 [创建 Azure 托管应用程序](managed-application-publishing.md)时使用此元素。
@@ -65,4 +64,3 @@ basics('section1').element1
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](managed-application-createuidefinition-elements.md)。
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5eef2116f238b477fa8de46ce7b25728c393739c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 51320d93689da3e37c0946d8877b27a11793d9c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="advisor-cost-recommendations"></a>顾问成本建议
 
 通过识别闲置和未充分利用的资源，顾问有助于优化和降低 Azure 总支出。 可在顾问仪表板的“成本”选项卡获取成本建议。
@@ -29,9 +27,9 @@ ms.lasthandoff: 03/31/2017
 ![顾问“成本”选项卡](./media/advisor-cost-recommendations/advisor-cost-tab2.png)
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-underutilized-instances"></a>通过调整未充分利用的实例来优化虚拟机花费 
-虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 顾问可监视虚拟机 14 天的使用情况，并识别出利用率较低的虚拟机。 如果在 4 天或 4 天以上，虚拟机的 CPU 利用率都小于或等于 5% 且网络使用率小于或等于 7 MB，则将被视为利用率较低的虚拟机。
+虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 顾问可监视虚拟机 14 天的使用情况，并识别出利用率较低的虚拟机。 如果在 4 天或 4 天以上，虚拟机的 CPU 利用率都小于或等于 5% 且网络使用率小于或等于 7 MB，则会被视为利用率较低的虚拟机。
 
-顾问将显示继续运行虚拟机的预估成本，以便你选择关闭它还是对其进行调整。  
+顾问会显示继续运行虚拟机的预估成本，以便你选择关闭它还是对其进行调整。  
 
 ![显示调整虚拟机大小的顾问成本建议](./media/advisor-cost-recommendations/advisor-cost-resizevms.png)
 
@@ -51,7 +49,7 @@ ms.lasthandoff: 03/31/2017
 
 4. 在顾问仪表板中，单击“成本”选项卡。
 
-5. 选择要接收建议的订阅，然后单击“获取建议”。
+5. 选择要接收建议的订阅，并单击“获取建议”。
 
 > [!NOTE]
 > 若要访问顾问建议，必须先向顾问*注册订阅*。 订阅所有者启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是*一次性操作*。 注册订阅后，可通过订阅、资源组或特定资源的所有者、参与者或读者身份访问顾问建议。
@@ -64,4 +62,3 @@ ms.lasthandoff: 03/31/2017
 * [顾问性能建议](advisor-cost-recommendations.md)
 * [顾问高可用性建议](advisor-cost-recommendations.md)
 * [顾问安全性建议](advisor-cost-recommendations.md)
-

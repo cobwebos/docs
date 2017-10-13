@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
 ms.openlocfilehash: f4128b6b049aa876e170c56dcf2e40720644dc3d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT 中心物理设备入门教程
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/29/2017
 
 | IoT 设备                       | 编程语言 |
 |---------------------------------|----------------------|
-| Raspberry Pi                    | [Python][Pi_Py]， [Node.js][Pi_Nd]， [C][Pi_C]  |
+| Raspberry Pi                    | [Python][Pi_Py]、[Node.js][Pi_Nd]、[C][Pi_C]  |
 | IoT DevKit                      | [VSCode 中的 Arduino][DevKit]     |
 | Intel Edison                    | [Node.js][Ed_Nd]、[C][Ed_C]           |
 | Adafruit Feather HUZZAH ESP8266 | [Arduino][Hu_Ard]              |

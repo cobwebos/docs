@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
+ms.openlocfilehash: d64425d067df92998538c78d1ca3a1650502b77a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f45a9bd265991a3c2234f12af428b27b7659cb6b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 ## <a name="general-questions"></a>一般问题
@@ -206,4 +205,3 @@ Pipeline 1: dataset4->activity4->dataset5
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
-

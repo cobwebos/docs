@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/10/2017
 ms.author: eugenesh
 ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>使用 Azure 搜索编制 Azure 表存储的索引
 本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。

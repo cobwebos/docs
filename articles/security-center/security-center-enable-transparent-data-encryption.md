@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 ms.openlocfilehash: 2a2963affdbff3710ad08f86c6ed4e6304335559
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>启用 Azure 安全中心的透明数据加密
 如果尚未启用 TDE，则 Azure 安全中心建议在 SQL 数据库上启用透明数据加密 (TDE)。 TDE 通过加密静态数据库、关联备份和事务日志文件但无需更改应用程序来保护数据，并帮助满足合规性要求。 信息信息参见[借助 Azure SQL 数据库实现透明数据加密](https://msdn.microsoft.com/library/dn948096)。

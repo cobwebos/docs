@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 290ca66048281de5e031b0404919bed84ab19ffa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序的联合单一登录时遇到的问题
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/03/2017
 
 若要了解应用程序预配置的模式，请执行以下操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 

@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
+ms.openlocfilehash: 16ceef9c923b6a933a5caf752991b466346e0ebc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: c29f5afe59f57112fe1f115df6bc53645f3c0d34
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-connectivity-check-in-azure-network-watcher"></a>Azure 网络观察程序中的连接检查简介
 
 网络观察程序的连接功能可以检查虚拟机 (VM) 之间的直接 TCP 连接、完全限定的域名 (FQDN)、URI 或 IPv4 地址。 网络方案比较复杂，它们是使用网络安全组、防火墙、用户定义的路由和 Azure 提供的资源实现的。 复杂的配置给连接问题的排查带来了困难。 网络观察程序有助于减少查找和检测连接问题的时间。 通过返回的结果，可以分析连接问题是平台问题还是用户配置问题造成的。 可以使用 [PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md) 和 [REST API](network-watcher-connectivity-rest.md) 检查连接。
@@ -90,5 +88,4 @@ ms.lasthandoff: 08/23/2017
 
 <!--Image references-->
 [1]: ./media/network-watcher-next-hop-overview/figure1.png
-
 

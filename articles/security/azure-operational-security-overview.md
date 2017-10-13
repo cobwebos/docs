@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
 ms.openlocfilehash: f2153e783adb955cf9055b09ba9aa2592f51e4b4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是一个框架，它融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。

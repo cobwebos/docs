@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraigb
 ms.openlocfilehash: 32a57e77bf6fe3cff88b9d6772ede9e6669ec75f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -42,11 +42,11 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
 ### <a name="create-an-mvc-controller"></a>创建 MVC 控制器 
 
-1. 在“解决方案资源管理器”中右键单击“控制器”，然后从上下文菜单中选择“添加”->“控制器”。
+1. 在“解决方案资源管理器”中右键单击“控制器”，并从上下文菜单中选择“添加”->“控制器”。
 
     ![将控制器添加到 ASP.NET MVC 应用](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
 
-1. 在“添加基架”对话框中选择“MVC 5 控制器 - 空”，然后选择“添加”。
+1. 在“添加基架”对话框中选择“MVC 5 控制器 - 空”，并选择“添加”。
 
     ![指定 MVC 控制器类型](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
 
@@ -67,7 +67,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
 本文中的许多示例使用名为 **CustomerEntity** 的 **TableEntity** 派生类。 以下步骤逐步指导用户将此类声明为模型类：
 
-1. 在“解决方案资源管理器”中，右键单击“模型”，然后从上下文菜单中选择“添加”->“类”。
+1. 在“解决方案资源管理器”中右键单击“模型”，并从上下文菜单中选择“添加”->“类”。
 
 1. 在“添加新项”对话框中，将类命名为 **CustomerEntity**。
 
@@ -146,11 +146,11 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     ViewBag.TableName = table.Name;
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“表”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 CreateTable 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **CreateTable** 作为视图名称，并选择“添加”。
 
-1. 打开 `CreateTable.cshtml`并对其进行修改，使其看起来如以下代码片段所示：
+1. 打开 `CreateTable.cshtml`，并按以下代码片段所示对其进行修改：
 
     ```csharp
     @{
@@ -162,7 +162,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -170,7 +170,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. 运行该应用程序，并选择“创建表”  以查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“创建表”，查看结果是否与以下屏幕截图类似：
   
     ![创建表](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
@@ -249,11 +249,11 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     ViewBag.Result = result.HttpStatusCode;
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“表”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 AddEntity 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **AddEntity** 作为视图名称，并选择“添加”。
 
-1. 打开 `AddEntity.cshtml`并对其进行修改，使其看起来如以下代码片段所示：
+1. 打开 `AddEntity.cshtml`，并按以下代码片段所示对其进行修改：
 
     ```csharp
     @{
@@ -264,7 +264,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -272,7 +272,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. 运行该应用程序，并选择“添加实体”  以查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“添加实体”，查看结果是否与以下屏幕截图类似：
   
     ![添加实体](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
@@ -353,9 +353,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(results);
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“表”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 AddEntities 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **AddEntities** 作为视图名称，并选择“添加”。
 
 1. 打开 `AddEntities.cshtml` 并对其进行修改，使之看起来如下所示。
 
@@ -384,7 +384,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     </table>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -392,7 +392,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. 运行该应用程序，并选择“添加多个实体”  以查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“添加实体”，查看结果是否与以下屏幕截图类似：
   
     ![添加实体](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
@@ -456,11 +456,11 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(result);
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“表”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 GetSingle 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **GetSingle** 作为视图名称，并选择“添加”。
 
-1. 打开 `GetSingle.cshtml`并对其进行修改，使其看起来如以下代码片段所示：
+1. 打开 `GetSingle.cshtml`，并按以下代码片段所示对其进行修改：
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -486,7 +486,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     </table>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -494,7 +494,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. 运行该应用程序，并选择“获取单个”  以查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“获取单个实体”，查看结果是否与以下屏幕截图类似：
   
     ![获取单个实体](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -565,11 +565,11 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(customers);
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“表”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 GetPartition 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **GetPartition** 作为视图名称，并选择“添加”。
 
-1. 打开 `GetPartition.cshtml`并对其进行修改，使其看起来如以下代码片段所示：
+1. 打开 `GetPartition.cshtml`，并按以下代码片段所示对其进行修改：
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -596,7 +596,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     </table>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -604,7 +604,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. 运行该应用程序，并选择“获取分区”  以查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“获取分区”，查看结果是否与以下屏幕截图类似：
   
     ![获取分区](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -667,11 +667,11 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(result);
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“表”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
 
-1. 在“添加视图”对话框中，输入 DeleteEntity 作为视图名称，然后选择“添加”。
+1. 在“添加视图”对话框中，输入 **DeleteEntity** 作为视图名称，并选择“添加”。
 
-1. 打开 `DeleteEntity.cshtml`并对其进行修改，使其看起来如以下代码片段所示：
+1. 打开 `DeleteEntity.cshtml`，并按以下代码片段所示对其进行修改：
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -696,7 +696,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，然后打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -704,7 +704,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. 运行该应用程序，并选择“删除实体”  以查看类似于以下屏幕截图所示的结果：
+1. 运行应用程序，并选择“删除实体”，查看结果是否与以下屏幕截图类似：
   
     ![获取单个实体](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 

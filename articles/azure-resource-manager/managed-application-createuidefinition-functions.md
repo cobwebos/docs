@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: tomfitz
+ms.openlocfilehash: 856ccd7433a46187a5d7bad27b79c804e7931eb9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 62ee10eb8e6f33cc4d828cf01b405c846bef8aa4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 本部分包含 CreateUiDefinition 支持的所有函数的签名。
 
-若要使用函数，请将声明放在方括号内。 例如：
+要使用函数，请将声明放在方括号内。 例如：
 
 ```json
 "[function()]"
@@ -788,5 +787,4 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 的简介，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
-
 

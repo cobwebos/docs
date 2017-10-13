@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 811a2538f0a138074feea1bd4608a7ba00660fd1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -641,4 +640,3 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响复制活动性能的因素以及优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)一文。
-

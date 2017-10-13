@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/07/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 218e818f48adee0b4e7ecb0b184098a9e3273afd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>在 HDInsight 上部署和管理 Apache Storm 拓扑
 
@@ -245,4 +244,3 @@ Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行�
 了解如何 [使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)。
 
 有关更多示例拓扑的列表，请参阅 [Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)。
-

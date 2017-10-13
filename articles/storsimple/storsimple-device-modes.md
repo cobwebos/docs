@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/17/2016
 ms.author: alkohli
 ms.openlocfilehash: 33c65bf2eecff3914f3227c76f7d638a4507e1f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>更改 StorSimple 设备上的设备模式
 本文简要介绍了适合 StorSimple 设备运行的各种模式。 StorSimple 设备客户端可在下述三种模式下运行：正常、维护和恢复。 

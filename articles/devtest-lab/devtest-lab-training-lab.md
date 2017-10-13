@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
 ms.openlocfilehash: 3bad7538121e1049af953e3937fc679b1d9184d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>使用 Azure 开发测试实验室培训
 除开发/测试外，Azure 开发测试实验室可用于执行许多关键方案。 这些方案之一是为培训设置实验室。 Azure 开发测试实验室允许创建实验室，可在其中提供自定义模板，每个学员都可使用该模板创建相同和隔绝的培训环境。 可应用策略以确保为每个学员提供培训环境（需要时）并包含培训所需的足够资源（例如虚拟机）。 最后，可轻松与学员共享实验室（学员通过单击即可访问）。
@@ -99,8 +98,7 @@ Azure 开发测试实验室满足在任意虚拟环境中进行培训所需的�
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用 Resource Manager 模板在 Azure 开发测试实验室中创建实验室。 |
+   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用资源管理器模板在 Azure 开发测试实验室中创建实验室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-
 

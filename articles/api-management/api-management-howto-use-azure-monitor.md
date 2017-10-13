@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 717e033aa4bbd4dd8ebcc727c3f551aee81770dc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-api-management-with-azure-monitor"></a>使用 Azure Monitor 监视 API 管理
 Azure Monitor 作为一项 Azure 服务，提供单一资源来监视所有 Azure 资源。 通过 Azure Monitor，可对来自 Azure 资源（例如 API 管理）的指标和日志进行可视化、查询、路由、存档和执行操作。 
@@ -143,4 +142,3 @@ API 管理当前提供有关单个 API 请求的诊断日志（每小时进行�
 [activity-logs-blade]: ./media/api-management-azure-monitor/api-management-activity-logs-blade.png
 [alert-rules-blade]: ./media/api-management-azure-monitor/api-management-alert-rules-blade.png
 [diagnostic-logs-blade]: ./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png
-

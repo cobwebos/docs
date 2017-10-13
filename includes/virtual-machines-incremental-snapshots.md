@@ -71,7 +71,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 
 1. 为高级存储磁盘创建备份页 blob，方法是拍摄名为 mypremiumdisk_ss1 的 mypremiumdisk 的快照。
 2. 将此快照复制到 mybackupstdaccount，用作名为 mybackupstdpageblob 的页 Blob。
-3. 使用[创建 Blob 快照](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob)为 *mybackupstdpageblob* 创建名为 *mybackupstdpageblob_ss1* 的快照，并将其存储在 *mybackupstdaccount* 中。
+3. 使用[快照 Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) 获取名为 mybackupstdpageblob_ss1 的 mybackupstdpageblob 快照，并将其存储在 mybackupstdaccount 中。
 4. 在备份时段内，创建 mypremiumdisk 的快照（即 mypremiumdisk_ss2），并将其存储在 mypremiumaccount 中。
 5. 在 **prevsnapshot** 参数设置为 mypremiumdisk_ss1 时间戳的情况下，在 mypremiumdisk_ss2 使用 [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) 获取两个快照（mypremiumdisk_ss2 与 mypremiumdisk_ss1）之间的增量更改。 将这些增量更改写入 mybackupstdaccount 中的备份页 Blob mybackupstdpageblob。 如果增量更改中有已删除的范围，则必须从备份页 Blob 中清除这些范围。 使用 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) 将增量更改写入备份页 Blob。
 6. 获取名为 mybackupstdpageblob_ss2 的备份页 Blob mybackupstdpageblob 快照。 从高级存储帐户删除以前的快照 mypremiumdisk_ss1。
@@ -85,9 +85,9 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 1. 确定要将高级磁盘还原到的时间点。 假设这是存储在备份存储帐户 mybackupstdaccount 中的快照 mybackupstdpageblob_ss2。
 2. 在 mybackupstdaccount 中，将快照 mybackupstdpageblob_ss2 升级为新的备份基本页 Blob mybackupstdpageblobrestored。
 3. 获取这个已还原备份页 Blob 的、名为 mybackupstdpageblobrestored_ss1 的快照。
-4. 将已还原页 Blob *mybackupstdpageblobrestored* 从 *mybackupstdaccount* 复制到 *mypremiumaccount*，作为新的高级磁盘 *mypremiumdiskrestored*。
-5. 为 *mypremiumdiskrestored* 创建名为 *mypremiumdiskrestored_ss1* 的快照，以便将来执行增量备份。
-6. 将 DS 系列 VM 指向已还原的磁盘 *mypremiumdiskrestored*，并从 VM 分离旧的 *mypremiumdisk*。
+4. 将已还原页 Blob mybackupstdpageblobrestored 从 mybackupstdaccount 复制到 mypremiumaccount，用作新的高级磁盘 mypremiumdiskrestored。
+5. 获取名为 mypremiumdiskrestored_ss1 的 mypremiumdiskrestored 快照，以便将来执行增量备份。
+6. 将 DS 系列 VM 指向已还原的磁盘 mypremiumdiskrestored，并从 VM 分离旧的 mypremiumdisk。
 7. 使用 mybackupstdpageblobrestored 作为备份页 Blob，根据前一部分中所述，开始针对已还原的磁盘 mypremiumdiskrestored 执行备份过程。
 
 ![从快照还原磁盘](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)

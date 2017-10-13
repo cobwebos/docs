@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: robb
 ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure 中的度量值概述
 所有 Azure 服务都会跟踪使你可以监视你服务的运行状况、性能、可用性和使用情况的关键指标。 可以在 Azure 门户中查看这些度量值，也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) 或 [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) 以编程方式访问完整的度量值集。
 
-对于某些服务，可能需要打开诊断以便查看任何指标。 对于其他服务（如虚拟机），用户会获得基本指标集，但需要启用完整高频率指标集。 有关详细信息，请参阅[启用监视和诊断](insights-how-to-use-diagnostics.md)。
+对于某些服务，可能需要打开诊断以便查看任何指标。 对于其他服务（如虚拟机），会获得基本指标集，但需要启用完整高频率指标集。 有关详细信息，请参阅[启用监视和诊断](insights-how-to-use-diagnostics.md)。
 
 ## <a name="using-monitoring-charts"></a>使用监视图表
 可以在所选的任何时间段内绘制任何指标的图表。
@@ -33,12 +33,12 @@ ms.lasthandoff: 08/03/2017
 3. 单击任何图表都会显示“度量值”边栏选项卡。 在该边栏选项卡中，除了该图之外还有一个表，其中显示指标（例如在所选时间范围内的平均值、最小值和最大值）的聚合。 下面是资源的警报规则。
     ![度量值边栏选项卡](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
 4. 若要自定义显示的折线图，请单击图表上的“编辑”按钮，或单机度量值边栏选项卡上的“编辑图表”命令。
-5. 在“编辑查询”边栏选项卡上，可执行三个操作：
+5. 在“编辑查询”边栏选项卡上，可以执行三个操作：
    
    * 更改时间范围
    * 在条形图与折线图之间切换外观
    * 选择不同的度量值![编辑查询](./media/insights-how-to-customize-monitoring/Insights_EditQuery.png)
-6. 更改时间范围十分轻松，只需选择不同的范围（例如“前一个小时”），并单击边栏选项卡底部的“保存”即可。 还可选择“自定义”，由此选择过去两周内的任何时间段。 例如，可查看整个两周，或仅查看昨天的 1 小时。 在文本框中键入一个不同的小时即可。
+6. 更改时间范围十分轻松，只需选择不同的范围（例如“前一个小时”），并单击边栏选项卡底部的“保存”即可。 还可选择“自定义”，由此选择过去两周内的任何时间段。 例如，可以查看整个两周，或仅仅是昨天的 1 小时。 在文本框中键入一个不同的小时即可。
     ![自定义时间范围](./media/insights-how-to-customize-monitoring/Insights_CustomTime.png)
 7. 在时间范围的下面，可以选择要在图表上显示的任意数目的度量值。
 8. 单击“保存”时，会针对该特定资源保存更改。 例如，如果有两个虚拟机，并且对其中一个更改了图表，则不会影响另一个。
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/03/2017
 1. 在边栏选项卡顶部的“...”菜单中，单击“添加磁贴”：  
     ![添加菜单](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
 2. 然后可从屏幕右侧的“库”中选择图表：![库](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
-3. 如果看不到所需指标，则始终可以添加一个预设指标，然后“编辑”图表以显示所需指标。
+3. 如果看不到所需度量值，则始终可以添加一个预设度量值，并“编辑”图表以显示所需度量值。
 
 ## <a name="monitoring-usage-quotas"></a>监视使用配额
 大多数指标都会显示随时间推移的趋势，但某些数据（如使用配额）是具有阈值的时间点信息。

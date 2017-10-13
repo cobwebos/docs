@@ -15,10 +15,10 @@ ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>使用 Azure Active Directory 管理应用程序
 除了实际工作流或内容以外，企业对所有应用程序还会提出两个基本要求：
@@ -58,7 +58,7 @@ Azure Active Directory 是 Microsoft 的综合性标识即服务 (IDaaS) 解决�
 
 如果需要实施未在应用程序库中列出的应用程序怎么办？ 尽管这比为应用程序库中的应用程序配置 SSO 更加耗时，但 Azure AD 提供的向导可以帮助你完成配置。
 
-Azure AD 的价值“不只是”体现在云应用程序方面。 也可以通过提供安全的远程访问，将它用于本地应用程序。 有了安全的远程访问，就不再需要 VPN 或其他传统的远程访问管理实施。
+Azure AD 的价值“不只是”体现在云应用程序方面。 也可以通过提供安全的远程访问，将它与本地应用程序搭配使用。 有了安全的远程访问，就不再需要 VPN 或其他传统的远程访问管理实施。
 
 Azure AD 为所有应用程序提供中心访问管理和单一登录 (SSO)，可以解决主要数据安全和工作效率问题。
 

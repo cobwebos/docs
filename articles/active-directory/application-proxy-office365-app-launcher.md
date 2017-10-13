@@ -15,14 +15,12 @@ ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 811adc81424b8e53a740ec34f77a7610fc2a72a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
 本文讨论如何配置应用以将用户定向到自定义主页。 当你使用应用程序代理发布应用程序时，你需要设置内部 URL，但有时不是你的用户首先看到的页面。 请设置自定义主页，以便用户可以在访问应用程序时转到正确的页面。 无论用户是通过 Azure Active Directory 访问面板，还是通过 Office 365 应用启动器访问应用程序，都会看到设置的自定义主页。
@@ -144,4 +142,3 @@ ms.lasthandoff: 09/09/2017
 
 - [使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-enable-remote-access-sharepoint.md)
 - [在 Azure 门户中启用应用程序代理](active-directory-application-proxy-enable.md)
-

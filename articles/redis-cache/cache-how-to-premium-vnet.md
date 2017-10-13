@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: sdanie
 ms.openlocfilehash: 59d46990e02c0719d2b4df01e216a97fd649c509
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能的选择上具有灵活性，其中包括高级层功能，如群集、暂留和虚拟网络支持。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -38,7 +38,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-选择高级定价层后，可以通过选择与缓存相同的订阅和位置的 VNet 来配置 Redis VNet 集成。 若要使用新 VNet，请先创建 VNet，方法是遵循[使用 Azure 门户创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)或[使用 Azure 门户创建虚拟网络（经典）](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)中的步骤，然后返回“新建 Redis 缓存”边栏选项卡来创建和配置高级缓存。
+选择高级定价层后，可以通过选择与缓存相同的订阅和位置的 VNet 来配置 Redis VNet 集成。 要使用新 VNet，请先创建 VNet，方法是遵循[使用 Azure 门户创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)或[使用 Azure 门户创建虚拟网络（经典））](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)中的步骤，并返回“新 Redis 缓存”边栏选项卡来创建和配置高级缓存。
 
 要为新缓存配置 VNet，请单击“新建 Redis 缓存”边栏选项卡上的“虚拟网络”，并从下拉列表中选择所需的 VNet。
 

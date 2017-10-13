@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
 ms.openlocfilehash: 28cfcf12b2e369f96664c163c0b6f2aa8a6ddcb9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-5-create-a-vault-for-hyper-v-replication-to-a-secondary-site"></a>步骤 5：创建保管库以将 Hyper-V 复制到辅助站点
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/03/2017
 1. 单击“Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
 2. 选择“到恢复站点”，并选择“是，使用 Hyper-V”。
 3. 选择“是”，指示将使用 VMM 管理 Hyper-V 主机。
-4. 如果具有辅助 VMM 服务器，请选择“是”。 如果要在单个 VMM 服务器上的云之间部署复制，请单击“否”。 。
+4. 如果具有辅助 VMM 服务器，请选择“是”。 如果要在单个 VMM 服务器上的云之间部署复制，请单击“否”。 然后单击“确定”。
 
     ![选择目标](./media/vmm-to-vmm-walkthrough-create-vault/choose-goals.png)
 

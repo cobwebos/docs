@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.openlocfilehash: c469dfaccf515bcd1ced43279decfefe6be8375b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 使用 Azure MFA 服务器的“目录集成”部分可与 Active Directory 或其他 LDAP 目录集成。 可以配置属性来匹配目录架构，并设置用户自动同步。
@@ -95,7 +95,7 @@ Azure 多重身份验证提供以下三个筛选选项：
 | 分机 |输入用户记录中包含电话号码分机的属性的属性名称。  分机字段的值只用作主电话号码的分机。  默认为空。 <br><br>如果未指定“分机”属性，则分机可以包含在“电话”属性中。 在这种情况下，请在分机前面加上“x”，以便正常分析该号码。  例如，如果输入 555-123-4567 x890，系统会将 555-123-4567 视为电话号码，将 890 视为分机号码。 |
 | “还原默认值”按钮 |单击“还原默认值”可将所有属性还原为默认值。  默认值会在标准 Active Directory 或 ADAM 架构中正常工作。 |
 
-若要编辑属性，请在“属性”选项卡上单击“编辑”。  此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。
+若要编辑属性，请在“属性”选项卡上单击“编辑”。此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。
 
 ![编辑属性](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
 

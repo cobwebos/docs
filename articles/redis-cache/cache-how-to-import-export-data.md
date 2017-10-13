@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: sdanie
 ms.openlocfilehash: 5e6d731f0a1cecc1a191c74a45e37a9b94fd98ee
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>在 Azure Redis 缓存中导入和导出数据
 导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Redis 缓存数据库 (RDB) 快照以及将 Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的 blob 来相应地将数据导入到 Azure Redis 缓存以及从 Azure Redis 缓存导出数据。 
@@ -116,7 +116,7 @@ ms.lasthandoff: 08/29/2017
 能，除了导入从 Azure Redis 缓存实例导出的数据外，还可以从任何云或环境中运行的任何 Redis 服务器导入 RDB 文件，如 Linux、Windows 或云提供程序（如 Amazon Web Services）。 为此，请从所需的 Redis 服务器将 RDB 文件上传到 Azure 存储帐户中的页 blob 或块 blob，然后将其导入到高级 Azure Redis 缓存实例中。 例如，建议从生产缓存导出数据，并将其导入到用作过渡环境的一部分的缓存，用于测试或迁移。
 
 > [!IMPORTANT]
-> 使用页 blob 时，要成功导入从非 Azure Redis 缓存的 Redis 服务器导出的数据，页 blob 大小必须在 512 字节边界上对齐。 有关用于执行任何所需的字节填充的示例代码，请参阅[示例页博客上载](https://github.com/JimRoberts-MS/SamplePageBlobUpload)。
+> 使用页 blob 时，要成功导入从非 Azure Redis 缓存的 Redis 服务器导出的数据，页 blob 大小必须在 512 字节边界上对齐。 有关用于执行任何所需的字节填充的示例代码，请参阅[示例页 blob 上传](https://github.com/JimRoberts-MS/SamplePageBlobUpload)。
 > 
 > 
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: corywink
+ms.openlocfilehash: babd39d5e2f290d9e3f7fc3a232937c6ccfc85c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 35cf824210a14410d7ea2aedddde0040309901f9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>有关 IoT 套件连接工厂预配置解决方案的常见问题
 

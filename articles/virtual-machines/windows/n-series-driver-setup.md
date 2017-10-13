@@ -17,10 +17,10 @@ ms.date: 07/07/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b480d10df777a2757c073ff77e1845d33d63163a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>为运行 Windows Server 的 N 系列 VM 安装 GPU 驱动程序
 若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，请安装支持的 NVIDIA 图形驱动程序。 部署 N 系列 VM 后，本文提供了驱动程序安装步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序安装信息。

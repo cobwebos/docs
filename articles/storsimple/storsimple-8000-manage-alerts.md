@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/22/2017
 ms.author: alkohli
 ms.openlocfilehash: b7f9a2b7eb3dbf4cc97fac9a410359e068e67eb1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 设备管理器服务查看和管理 StorSimple 警报
 

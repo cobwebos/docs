@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: sdanie
 ms.openlocfilehash: 8996f5ce03e39557d9cc9c3de1ec214f5cd664b4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>如何监视 Azure Redis 缓存
 Azure Redis 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
@@ -99,7 +99,7 @@ Azure Redis 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monito
 | --- | --- |
 | 缓存命中数 |在指定的报告间隔期间，成功的键查找次数。 此值映射到 Redis [INFO](http://redis.io/commands/info) 命令输出中的 `keyspace_hits`。 |
 | 缓存未命中数 |在指定的报告间隔期间，失败的键查找次数。 此值映射到 Redis INFO 命令输出中的 `keyspace_misses`。 缓存未命中并不一定意味着缓存出现了问题。 例如，在使用缓存端编程模式时，应用程序会首先查找缓存中的项。 如果该项不存在（缓存未命中），则将从数据库中检索该项并将其添加到下一次缓存中。 对于缓存端编程模式，缓存未命中是正常行为。 如果缓存未命中数大于预期值，请检查从缓存中填充并读取的应用程序逻辑。 如果由于内存压力而导致项目从缓存中逐出，则可能存在一些缓存未命中的情况，但度量值 `Used Memory` 或 `Evicted Keys` 可以更好的监视内存压力。 |
-| 连接的客户端数 |指定的报告间隔期间，客间户端与缓存的连接数。 此值映射到 Redis INFO 命令输出中的 `connected_clients`。 一旦达到了[连接限制](cache-configure.md#default-redis-server-configuration)，则对缓存的后续连接尝试将失败。 注意，即使没有任何活动的客户端应用程序，由于内部进程和连接，仍可能存在一些连接的客户端的实例。 |
+| 连接的客户端数 |指定的报告间隔期间，客间户端与缓存的连接数。 此值映射到 Redis INFO 命令输出中的 `connected_clients`。 一旦达到了[连接限制](cache-configure.md#default-redis-server-configuration)，则对缓存的后续连接尝试会失败。 注意，即使没有任何活动的客户端应用程序，由于内部进程和连接，仍可能存在一些连接的客户端的实例。 |
 | 逐出的密钥数 |由于 `maxmemory` 限制，指定的报告间隔期间从缓存中逐出的项目数。 此值映射到 Redis INFO 命令输出中的 `evicted_keys`。 |
 | 过期的密钥数 |指定的报告间隔期间，缓存中过期的项目数。 此值映射到 Redis INFO 命令输出中的 `expired_keys`。 |
 | 总密钥数  | 上一个报表时期中，缓存中的最大密钥数。 此值映射到 Redis INFO 命令输出中的 `keyspace`。 由于基本指标系统的限制，对于启用了群集的缓存，“总密钥数”返回报告间隔期间具有最大密钥数的分片的最大密钥数。  |

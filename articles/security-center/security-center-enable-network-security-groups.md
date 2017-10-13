@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 ms.openlocfilehash: 1e034d59d8847f237fa0d4c772344d45cd618576
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>在 Azure 安全中心启用网络安全组
 Azure 安全中心建议启用网络安全组 (NSG)（如果尚未启用）。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可以通过将 NSG 直接关联到单个 VM，对流向该 VM 的流量进行进一步的限制。 有关详细信息，请参阅 [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)（什么是网络安全组 (NSG)？）

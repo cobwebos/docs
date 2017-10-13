@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 6404940da460461632616fe49f055d50c2a7aba3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的访问控制要求
 组织在设计混合标识解决方案时，也可以借机评审正在规划中的、用户对资源的访问权限要求。 数据访问权限涉及到标识的所有四个重要组成部分：

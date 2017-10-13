@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 5b038f73cadc43207d86995a5323db6b5fe9b65d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 
@@ -167,4 +166,3 @@ ms.lasthandoff: 09/09/2017
 - 了解如何[使用用于 Eclipse 的 Azure 工具包中的 HDInsight 工具创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)。
 
 - 有关用于 Eclipse 的 HDInsight 工具的视频，请参阅[通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序](https://mix.office.com/watch/1rau2mopb6fha)。
-

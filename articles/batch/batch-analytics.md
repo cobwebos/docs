@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
 ms.openlocfilehash: 7d634e1bb595a84b8af339e5bc5a483a7849e7f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="batch-analytics"></a>批处理分析
 批处理分析中的主题包含可用于批处理服务资源的事件和警报的参考信息。

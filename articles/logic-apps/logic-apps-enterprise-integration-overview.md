@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/08/2016
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 9462707db03ecfcc3d5186ce7ded8655ad3bdcc9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>概述：使用 Enterprise Integration Pack 实现 B2B 方案和通信
 

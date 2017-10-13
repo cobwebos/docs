@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: garye;haining
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 47d005e584b6cb87d27a77f56ff619d342481aaa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Microsoft Azure 机器学习 PowerShell 模块
 Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你可以使用 Windows PowerShell 来管理工作区、试验、数据集、经典 Web 服务等。
@@ -63,4 +62,3 @@ Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你�
 可以 [https://aka.ms/amlps](https://aka.ms/amlps) 处找到 PowerShell 模块的完整文档。 
 
 有关如何在实际方案中使用该模块的扩展示例，请查看深入用例[使用 PowerShell 从一个实验中创建多个机器学习模型和 Web 服务终结点](create-models-and-endpoints-with-powershell.md)。
-

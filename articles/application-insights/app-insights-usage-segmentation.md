@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
 ms.openlocfilehash: b154a01d1690bff4950ebc1ff5a5b89894d4d111
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -30,12 +30,9 @@ ms.lasthandoff: 08/18/2017
 
 三个使用情况边栏选项卡使用相同的工具从三个视角对来自 Web 应用的遥测进行切片和切块。 通过对数据进行筛选和拆分，可以洞察不同页面和功能的相对使用情况。
 
-* 
-            **“用户”工具**：多少人使用了应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
-* 
-            **“会话”工具**：用户活动的多少会话包括了应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
-* 
-            **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](app-insights-javascript.md)。 
+* **“用户”工具**：多少人使用了应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
+* **“会话”工具**：用户活动的多少会话包括了应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
+* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](app-insights-javascript.md)。 
 
     自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](app-insights-api-custom-events-metrics.md#trackevent)。
 

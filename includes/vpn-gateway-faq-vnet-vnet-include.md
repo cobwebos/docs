@@ -22,11 +22,11 @@ VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 若要了解
 
 ### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>如果 VNet 不在同一订阅中，订阅是否需要与相同的 AD 租户相关联？
 
-不会。
+不能。
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>能否在单独的 Azure 实例中使用 VNet 到 VNet 通信来连接虚拟网络？ 
 
-不会。 VNet 到 VNet 通信支持在同一 Azure 实例中连接虚拟网络。 例如，不能在公共 Azure 和中国/德国/美国政府 Azure 实例之间创建连接。 对于上述情形，可考虑使用站点到站点 VPN 连接。
+不能。 VNet 到 VNet 通信支持在同一 Azure 实例中连接虚拟网络。 例如，不能在公共 Azure 和中国/德国/美国政府 Azure 实例之间创建连接。 对于上述情形，可考虑使用站点到站点 VPN 连接。
 
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>能否将 VNet 到 VNet 用于多站点连接？
 

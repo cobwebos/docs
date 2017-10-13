@@ -10,15 +10,12 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 3eff97a9e7568566cd01a4eb3c7ee66806eac4cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="what-is-azure-database-for-mysql-service-introduction"></a>什么是用于 MySQL 的 Azure 数据库？ 服务简介
 用于 MySQL 的 Azure 数据库是 Microsoft 云中基于 [MySQL 社区版](https://www.mysql.com/products/community/)数据库引擎的一种关系数据库服务。  用于 MySQL 的 Azure 数据库提供以下功能：
 
@@ -59,4 +56,3 @@ Azure 数据库沿袭了 Azure Database for MySQL 的若干数据安全性功能
 - 有关成本比较和计算器，请参阅定价页。 [定价](https://azure.microsoft.com/pricing/details/mysql/)
 - 从创建第一个服务器开始。 [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](quickstart-create-mysql-server-database-using-azure-portal.md)
 - 使用 Python、PHP、Ruby、C\#、Java、Node.js 构建第一个应用：[用来连接到用于 MySQL 的 Azure 数据库的连接库](concepts-connection-libraries.md)
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6f11d4184b5edbcb80411f146ae01ecfe62b6e91
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +44,7 @@ ms.lasthandoff: 09/25/2017
 要从不可公开访问的 MongoDB 数据库复制数据，需要设置自承载集成运行时。 要了解详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。 集成运行时提供内置 MongoDB 驱动程序，因此从/向 MongoDB 复制数据时，无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板通过复制活动创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 对于特定于 MongoDB 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -62,7 +61,7 @@ MongoDB 链接的服务支持以下属性：
 | authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许的值为：Basic 和 Anonymous。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString。 |是（如果使用基本身份验证）。 |
-| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不会。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
+| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不能。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
@@ -121,7 +120,7 @@ MongoDB 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 MongoDB 源支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 MongoDB 源支持的属性列表。
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 

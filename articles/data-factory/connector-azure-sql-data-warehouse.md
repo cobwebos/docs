@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: fb67c70d1e85307c38a185e2b47729880880d55b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +52,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureSqlDW** | 是 |
 | connectionString |为 connectionString 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 仅支持基本身份验证。 将此字段标记为 SecureString。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自我托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 
 > [!IMPORTANT]
@@ -116,7 +115,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 ### <a name="azure-sql-data-warehouse-as-source"></a>Azure SQL 数据仓库作为源
 
-要从 Azure SQL 数据仓库复制数据，请将复制活动中的源类型设置为“SqlDWSource”。 复制活动源部分中支持以下属性：
+要从 Azure SQL 数据仓库复制数据，请将复制活动中的源类型设置为“SqlDWSource”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -129,7 +128,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 - 如果为 SqlDWSource 指定 sqlReaderQuery，则复制活动针对 Azure SQL 数据仓库源运行此查询以获取数据。 此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程使用参数）。
 - 如果不指定“sqlReaderQuery”或“sqlReaderStoredProcedureName”，则使用在数据集 JSON 的“结构”部分定义的列来构造针对 Azure SQL 数据仓库运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义不具备该“结构”，则从表中选择所有列。
-- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的“tableName”属性。
+- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName属性。
 
 **示例：使用 SQL 查询**
 

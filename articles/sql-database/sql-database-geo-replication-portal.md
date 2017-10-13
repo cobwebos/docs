@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 03/06/2016
 ms.author: carlrab
 ms.openlocfilehash: db90fad2fe397f0c8466db6bdc1bd8c8d1cf8f15
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
 
 该命令会立即将辅助数据库切换为主数据库角色。 
 
-切换角色时，有一小段时间无法使用这两个数据库（大约为 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。 
+切换角色时，有一小段时间无法使用这两个数据库（大约为 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令会自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。 
 
 > [!NOTE]
 > 此命令旨在快速恢复已中断的数据库。 它将触发故障转移但不进行数据同步（强制故障转移）。  如果发出命令时主数据库处于在线状态且正在提交事务，则可能会丢失某些数据。 

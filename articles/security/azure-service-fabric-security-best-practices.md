@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 5f02b6be1fde4026057000bed4e8014cb56ccf9a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。
@@ -186,4 +185,3 @@ Service Fabric 使用 X.509 证书保护群集，并提供应用程序安全功�
 ## <a name="next-steps"></a>后续步骤
 - 设置 Service Fabric [开发环境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)。
 - 了解 [Service Fabric 支持选项](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)。
-

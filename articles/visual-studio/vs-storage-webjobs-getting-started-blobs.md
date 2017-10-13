@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7d683f950e8847a18f38158a8f8727b1274fc711
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -220,5 +219,4 @@ Blob 回执存储在 AzureWebJobsStorage 连接字符串指定的 Azure 存储�
 
 ## <a name="next-steps"></a>后续步骤
 本文提供了代码示例，演示如何处理用于操作 Azure blob 的常见方案。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](http://go.microsoft.com/fwlink/?linkid=390226)。
-
 

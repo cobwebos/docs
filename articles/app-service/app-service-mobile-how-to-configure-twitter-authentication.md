@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 ms.openlocfilehash: afde020b7817dc58ecea24eb4a09cf93d0986eb2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>如何将应用服务应用程序配置为使用 Twitter 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/03/2017
 3. 为新应用输入“名称”和“描述”。 在“网站”值中，粘贴应用程序的 **URL**。 然后，在“回调 URL”中，粘贴先前复制的“回调 URL”。 这是追加了路径 */.auth/login/twitter/callback* 的移动应用程序网关。 例如，`https://contoso.azurewebsites.net/.auth/login/twitter/callback`。 请务必使用 HTTPS 方案。
 4. 在页面底部，请阅读并接受条款。 然后单击“创建 Twitter 应用程序”。 随即会注册应用程序并显示应用程序详细信息。
 5. 单击“设置”选项卡，选中“允许使用此应用程序进行 Twitter 登录”，并单击“更新设置”。
-6. 选择“密钥和访问令牌”选项卡。 记下“使用者密钥(API 密钥)”和“使用者机密(API 机密)”的值。
+6. 选择“密钥和访问令牌”选项卡。记下“使用者密钥(API 密钥)”和“使用者机密(API 机密)”的值。
    
    > [!NOTE]
    > 使用者机密是一个非常重要的安全凭据。 请勿与任何人分享此密钥或将密钥随应用分发。

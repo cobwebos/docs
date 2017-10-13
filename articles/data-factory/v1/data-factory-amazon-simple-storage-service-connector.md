@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: d2681e629d478208301091571d77a3c283a8e774
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -368,4 +367,3 @@ ms.lasthandoff: 09/26/2017
 * 若要了解影响数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
 
 * 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-

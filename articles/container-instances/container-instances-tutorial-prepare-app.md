@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: ca4cd00b3e9e58fd1137b896e7aac96549bf6d05
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-container-for-deployment-to-azure-container-instances"></a>创建部署到 Azure 容器实例的容器
 
 使用 Azure 容器实例可以将 Docker 容器部署到 Azure 基础结构中，不需预配任何虚拟机，也不需采用任何更高级别的服务。 本教程将使用 Node.js 生成简单的 Web 应用程序并将其打包到容器中，然后即可使用 Azure 容器实例运行该容器。 内容涵盖：

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b876881af6ead69906c14cf7aeeab70130ba66ad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="internet-of-things-security-from-the-ground-up"></a>物联网安全基础知识
 物联网 (IoT) 使全球企业面临独特的安全、隐私权与合规性挑战。 不同于传统网络技术（这些问题是以软件及其实现方式为中心），IoT 在意的是当网络与物理世界融合时会发生什么情况。 保护 IoT 解决方案要求确保安全预配设备，保护这些设备与云之间的连接，以及在处理和存储期间保护云中数据的安全。 但是，针对此类功能运行的是资源受限的设备、根据地理位置分布的部署，以及解决方案中的大量设备。
 
@@ -124,4 +122,3 @@ Microsoft Azure IoT 套件根据设计将构建安全措施，启用安全的资
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-faq]: iot-suite-faq.md
 [lnk-devguide-security]: ../iot-hub/iot-hub-devguide-security.md
-

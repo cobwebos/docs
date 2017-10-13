@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: bb1144519db84e5685fbae1a2f55854e1102120a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
 本主题介绍如何使用 [Azure 门户]配置 Web 应用。
@@ -177,4 +176,3 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 [configure01]: ./media/web-sites-configure/configure01.png
 [configure02]: ./media/web-sites-configure/configure02.png
 [configure03]: ./media/web-sites-configure/configure03.png
-

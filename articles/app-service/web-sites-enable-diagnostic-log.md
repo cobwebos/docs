@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 42644bd97443e827b523503989b0b25d3d48028c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
@@ -287,4 +286,3 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 ## <a name="whats-changed"></a>发生的更改
 * 有关从网站更改为应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 * 有关从旧门户更改为新门户的指南，请参阅：[有关在 Azure 门户中导航的参考](http://go.microsoft.com/fwlink/?LinkId=529715)
-

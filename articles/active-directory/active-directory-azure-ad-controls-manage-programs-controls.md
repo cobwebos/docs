@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: f6d7c2a1a3e3bf78b568f2f6b079476e403b9911
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-programs-and-their-controls"></a>管理程序及其控件 
 
 Azure AD 包括组成员和应用程序访问权限的访问评审，这些访问评审是确保监督谁有权访问的控件示例。 组织使用这些控件可以有效地解决其监管、风险管理和合规性要求。  
@@ -37,5 +35,4 @@ Azure AD 包括组成员和应用程序访问权限的访问评审，这些访�
 ## <a name="next-steps"></a>后续步骤
 
 - [创建对组成员的访问评审或对应用程序的访问](active-directory-azure-ad-controls-create-access-review.md)
-
 

@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
 ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中配置 Service Fabric 应用程序的升级
 Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群集的升级支持。 在测试和调试期间将应用程序升级到较新的版本而不是替换应用程序的三种方案：
@@ -39,10 +39,10 @@ Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群�
 每种升级模式都需要不同的参数集。 若要深入了解可用的升级选项，请参阅[应用程序升级参数](service-fabric-application-upgrade-parameters.md)。
 
 ## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中升级 Service Fabric 应用程序
-如果要使用 Visual Studio Service Fabric 工具升级 Service Fabric应用程序，可以选中“升级应用程序”复选框，将发布程序指定为升级而不是常规部署。
+如果要使用 Visual Studio Service Fabric 工具升级 Service Fabric应用程序，可以选中“**升级应用程序**”复选框，将发布程序指定为升级而不是常规部署。
 
 ### <a name="to-configure-the-upgrade-parameters"></a>配置升级参数
-1. 单击复选框旁边的“**设置**”按钮。 此时将显示“编辑升级参数”对话框。 “**编辑升级参数**”对话框支持 Monitored、UnmonitoredAuto 和 UnmonitoredManual 升级模式。
+1. 单击复选框旁边的“**设置**”按钮。 此时会显示“**编辑升级参数**”对话框。 “**编辑升级参数**”对话框支持 Monitored、UnmonitoredAuto 和 UnmonitoredManual 升级模式。
 2. 选择想要使用的升级模式，并填写参数网格。
 
     每个参数都有默认值。 可选参数 *DefaultServiceTypeHealthPolicy* 采用哈希表输入。 下面是 *DefaultServiceTypeHealthPolicy* 的哈希表输入格式示例：

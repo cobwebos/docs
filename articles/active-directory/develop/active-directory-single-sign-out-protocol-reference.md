@@ -16,10 +16,10 @@ ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
 ms.openlocfilehash: 45e4705f53d80b5fe852c484b5e64d18a8e24f09
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # 单一注销 SAML 协议
 Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配置文件。 要使单一注销正常工作，必须在应用程序注册期间向 Azure AD 显式注册应用程序的 **LogoutURL**。 Azure AD 使用 LogoutURL 在用户注销后重定向。
@@ -64,7 +64,7 @@ Azure AD 在响应 `LogoutRequest` 元素时发送 `LogoutResponse`。 以下摘
 ```
 
 ### LogoutResponse
-Azure AD 会在 `LogoutResponse` 元素中设置 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
+Azure AD 将设置 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
 
 ### 颁发者
 Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，其中，<TenantIdGUID> 是 Azure AD 租户的租户 ID。
@@ -72,4 +72,4 @@ Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，�
 若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的**应用 ID URI** 值。
 
 ### 状态
-Azure AD 使用 `Status` 元素中的 `StatusCode` 元素指示注销的成功或失败。 如果注销尝试失败，`StatusCode` 元素值还包含自定义错误消息。
+Azure AD 使用 `Status` 元素中的 `StatusCode` 元素指示注销的成功或失败。如果注销尝试失败，`StatusCode` 元素值还包含自定义错误消息。

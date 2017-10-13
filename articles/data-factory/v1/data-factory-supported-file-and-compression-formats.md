@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 706a1151897f50d41ef6690f28a926ad8cb56d4b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure 数据工厂支持的文件和压缩格式
 *本主题适用于以下连接器：[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[文件系统](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md) 和 [SFTP](data-factory-sftp-connector.md)。*
 
@@ -400,7 +398,7 @@ Azure 数据工厂支持以下文件格式类型：
 ```
 
 ## <a name="avro-format"></a>AVRO 格式
-若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为“AvroFormat”。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -416,7 +414,7 @@ Azure 数据工厂支持以下文件格式类型：
 * 不支持[复杂数据类型](http://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
 ## <a name="orc-format"></a>ORC 格式
-若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为“OrcFormat”。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为 **OrcFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -436,7 +434,7 @@ Azure 数据工厂支持以下文件格式类型：
 * ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
 
 ## <a name="parquet-format"></a>Parquet 格式
-若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为“ParquetFormat”。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -513,4 +511,3 @@ Azure 数据工厂支持以下文件格式类型：
 - [HDFS](data-factory-hdfs-connector.md)
 - [文件系统](data-factory-onprem-file-system-connector.md)
 - [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
-

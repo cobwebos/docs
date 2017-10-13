@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
 ## <a name="overview"></a>概述
-本文说明如何使用 PowerShell 来创建和管理 Azure 通知中心。 本主题演示以下常见自动化任务。
+本文说明如何使用 PowerShell 来创建和管理 Azure 通知中心。 本主题中将演示以下常见自动化任务。
 
 * 创建通知中心
 * 设置凭据
@@ -73,7 +73,7 @@ catch [System.Exception]
 ## <a name="create-the-namespacemanager-class"></a>创建 NamespaceManager 类
 若要预配通知中心，请从 SDK 创建 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) 类的实例。 
 
-可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 检索用于提供连接字符串的授权规则。 我们将在 `$NamespaceManager` 变量中存储对 `NamespaceManager` 实例的引用。 我们将使用 `$NamespaceManager` 设置通知中心。
+可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 检索用于提供连接字符串的授权规则。 我们会在 `$NamespaceManager` 变量中存储对 `NamespaceManager` 实例的引用。 我们将使用 `$NamespaceManager` 设置通知中心。
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -87,7 +87,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 ## <a name="provisioning-a-new-notification-hub"></a>设置新通知中心
 若要预配新的通知中心，请使用[通知中心的 .NET API]。
 
-你在脚本的这个部分设置四个本地变量。 
+将在脚本的这个部分设置四个本地变量。 
 
 1. `$Namespace`：将此变量设置为要创建通知中心的命名空间的名称。
 2. `$Path`：将此路径设置为新通知中心的名称。  例如“MyHub”。    

@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 01/10/2017
 ms.author: carlrab
 ms.openlocfilehash: d9b007d29e06e672db71b4a8415673f258c3fd89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视 Azure SQL 数据库
 Microsoft Azure SQL 数据库支持通过一部分动态管理视图来诊断性能问题，这些问题可能由查询受阻或长时间运行、资源瓶颈、不良查询计划等原因造成。 本主题提供有关如何通过使用动态管理视图检测常见性能问题的信息。
@@ -80,7 +80,7 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> 执行 **sys.dm_exec_requests** 和 **sys.dm_exec_sessions views** 视图时，如果具有对数据库的 **VIEW DATABASE STATE** 权限，将会看到数据库上正在执行的所有会话；否则，只会看到当前会话。
+> 在执行 **sys.dm_exec_requests** 和 **sys.dm_exec_sessions views** 视图时，如果具有对数据库的 **VIEW DATABASE STATE** 权限，会看到数据库上所有正在执行的会话；否则，只会看到当前会话。
 > 
 > 
 

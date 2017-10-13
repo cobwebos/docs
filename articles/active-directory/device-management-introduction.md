@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: fdc597c9e88e932eace5962c79af4dc3805685a0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory 中的设备管理简介
 
@@ -155,6 +154,5 @@ Azure AD Join 面向云优先/仅使用云的组织。 这些组织通常是不�
     - 若要设置已注册 Azure Active Directory 的 Windows 10 设备，请参阅[如何配置已注册 Azure Active Directory 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
     - 若要设置已加入 Azure Active Directory 的设备，请参阅[如何配置已加入 Azure Active Directory 的设备](device-management-azuread-joined-devices-setup.md)
     - 若要设置已加入混合 Azure AD 的设备，请参阅[如何配置已加入混合 Azure Active Directory 的设备](device-management-hybrid-azuread-joined-devices-setup.md)。
-
 
 

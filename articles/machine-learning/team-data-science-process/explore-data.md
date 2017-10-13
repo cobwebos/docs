@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 983a3d22c73721c643b8283679040a0b6f7beedf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>在 Team Data Science Process 中浏览数据
 本文档介绍如何浏览通常用于 Data Science Process 的四种不同存储环境中的数据：
@@ -32,5 +31,4 @@ ms.lasthandoff: 09/25/2017
 以下**菜单**链接到相关主题，这些主题介绍如何使用这些工具浏览不同存储环境中的数据。 
 
 [!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
-
 

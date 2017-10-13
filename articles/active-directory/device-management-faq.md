@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 3b37033e0c96e01c73bef15af1b85116f404c354
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -168,5 +167,4 @@ ms.lasthandoff: 09/27/2017
 - 请参阅[排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](device-management-troubleshoot-hybrid-join-windows-legacy.md)
  
 ---
-
 

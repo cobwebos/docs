@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
 ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
 预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中概述的步骤。

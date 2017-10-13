@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 07c4b4cb920dca7d95caa2fc5f98b0d33ea51dff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？ 
 
@@ -172,4 +171,3 @@ SQL 数据库支持在 MacOS、Linux 和 Windows 上使用 Python、Java、Node.
 - 如需一组 Azure CLI 和 PowerShell 的示例，请参阅：
   - [适用于 SQL 数据库的 Azure CLI 示例](sql-database-cli-samples.md)
   - [适用于 SQL 数据库的 Azure PowerShell 示例](sql-database-powershell-samples.md)
-

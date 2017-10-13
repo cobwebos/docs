@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 22223923f6783f11178b44c3c3087f17eb8dc41b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>限制 Service Fabric 群集资源管理器
 即使已正确配置群集 Resource Manager，但群集有时也会中断。 例如，可能同时发生节点和容错域故障 - 升级时如果发生这种情况会怎么样？ 群集资源管理器始终尝试修复所有问题，同时占用群集的资源，尝试重新整理和修复群集。 限制有助于提供一个停止机制，让群集可以使用资源进行稳定 - 节点恢复正常、网络分区修复、部署已更正的部分。
 
@@ -95,4 +93,3 @@ Service Fabric 具有两种机制用于限制副本移动数。 Service Fabric 5
 ## <a name="next-steps"></a>后续步骤
 - 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
-

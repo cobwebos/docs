@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
 ms.openlocfilehash: 470b9ddd8df4a4e74ec7174f79020c252323e502
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-11-enable-replication-for-vmware-virtual-machines-to-azure"></a>步骤 11：启用 VMware 虚拟机到 Azure 的复制
 
@@ -63,15 +63,15 @@ ms.lasthandoff: 07/11/2017
 8. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 如果不想使用现有网络，可以创建一个网络。
 
     ![启用复制](./media/vmware-walkthrough-enable-replication/enable-rep3.png)
-9. 在“虚拟机” > “选择虚拟机”中，单击并选择要复制的每个计算机。 只能选择可以启用复制的计算机。 。
+9. 在“虚拟机” > “选择虚拟机”中，单击并选择要复制的每个计算机。 只能选择可以启用复制的计算机。 然后单击“确定”。
 
     ![启用复制](./media/vmware-walkthrough-enable-replication/enable-replication5.png)
 10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
-11. 默认情况下会复制所有磁盘。 单击“所有磁盘”并清除不想要复制的所有磁盘。 。 可以稍后再设置其他 VM 属性。
+11. 默认情况下会复制所有磁盘。 单击“所有磁盘”并清除不想要复制的所有磁盘。 然后单击“确定”。 可以稍后再设置其他 VM 属性。
 
     ![启用复制](./media/vmware-walkthrough-enable-replication/enable-replication6.png)
 11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 如果修改策略，更改将应用到复制计算机和新计算机。
-12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 。 请注意：
+12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 然后单击“确定”。 请注意：
 
     * 复制组中的计算机将一起复制，并在故障转移时具有在崩溃时保持一致且应用保持一致的共享恢复点。
     * 我们建议将 VM 和物理服务器集合在一起，使其镜像工作负荷。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且需要一致性时，才应使用该设置。

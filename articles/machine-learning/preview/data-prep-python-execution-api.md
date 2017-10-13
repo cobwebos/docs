@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ceecc718f8198e9a88cae4acbe97e7f26d95f984
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="executing-data-sources-and-data-preparation-packages-from-python"></a>从 Python 执行数据源和数据准备包
 
@@ -51,4 +50,3 @@ ms.lasthandoff: 09/25/2017
 - `dataflow_idx` 是包中要执行的数据流的从零开始的索引。 如果指定的数据流引用其他数据流或数据源，也会执行这些数据流或数据源。
 - `secrets` 是到密钥的可选字典映射密钥。
 - `spark` 是一个可选的布尔值，用于指定是返回 Spark 数据帧还是返回 Pandas 数据帧。 默认情况下，Azure ML Workbench 会根据上下文确定运行时返回哪种数据帧。
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a5be3c9bcdd99128217e441d62ce9650c9764580
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: edd4702ccab9162329bf83993d236eec9ec40b3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
 该发票提供了收费摘要和有关付款的说明。 可以从 [Azure 门户](https://portal.azure.com/)下载可移植文档格式 (.pdf) 的发票，也可通过电子邮件获取。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
@@ -79,7 +78,7 @@ ms.lasthandoff: 07/08/2017
 | --- | --- |
 | 使用费 |使用费是当前计费周期中，对订阅收取的每月总费用|
 | 折扣 |应用到当前计费周期的服务折扣|
-| 调整 |应用于当前计费周期的其他信用额度（免费使用、信用额度等）或未付费用。<br/><br/>例如，如果你享有 Visual Studio Enterprise with MSDN 优惠，你会看到每月信用额度。 如果取消订阅，你会看到超出通过订阅产品/服务获得的每月信用额度的所有每月使用费用。 从当前计费周期的开始计费，直到订阅取消日期。 |
+| 调整 |应用于当前计费周期的其他信用额度（免费使用、信用额度等）或未付费用。<br/><br/>例如，如果享有 Visual Studio Enterprise with MSDN 优惠，会看到每月信用额度。 如果取消订阅，会看到超出通过订阅产品/服务获得的每月信用额度的所有每月使用费用。 从当前计费周期的开始计费，直到订阅取消日期。 |
 
 #### <a name="sold-to-and-payment-instructions"></a>买方和付款说明
 
@@ -117,4 +116,3 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
 ms.openlocfilehash: a336907b605da962f835b8057ac6071f480cd85e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-media-services-entities-with-rest"></a>使用 REST 管理媒体服务实体 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
 本主题演示如何使用 REST 管理 Azure 媒体服务实体。
 
 >[!NOTE]
-> 从 2017 年 4 月 1 日开始，用户帐户中任何超过 90 天的作业记录及其关联的任务记录都会被系统自动删除，即使记录总数低于最大配额。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
+> 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
 
 ## <a name="considerations"></a>注意事项  
 

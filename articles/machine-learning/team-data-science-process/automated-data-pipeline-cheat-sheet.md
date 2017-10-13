@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mithal;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a2b14dd39c0247c35ef006385eceebfa4fbe82d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure 机器学习预测中自动化数据管道的速查表
 **Microsoft Azure 机器学习自动化数据管道速查表**帮助你浏览各项技术，这些技术可用来将数据移到预测分析模型可对其进行评分的机器学习 Web 服务中。
@@ -43,5 +42,4 @@ ms.lasthandoff: 09/25/2017
 * 有关如何使用评分 Web 服务的说明，请参阅[如何使用 Azure 机器学习 Web 服务](../studio/consume-web-services.md)。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 

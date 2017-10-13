@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 3212631ede7125bd849c2d9ba86ba2a0747d69ca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-application-groups"></a>应用程序组简介
 Service Fabric 的群集 Resource Manager 通常通过将负载（通过[指标](service-fabric-cluster-resource-manager-metrics.md)表示）平均分散到整个群集来管理群集资源。 Service Fabric 管理群集中节点的容量，并通过[容量](service-fabric-cluster-resource-manager-cluster-description.md)管理整个群集。 指标和容量非常适合用于许多工作负荷，但大量使用不同 Service Fabric 应用程序实例的模式还有其他要求。 例如，你可以采取以下建议：
@@ -217,4 +216,3 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
-

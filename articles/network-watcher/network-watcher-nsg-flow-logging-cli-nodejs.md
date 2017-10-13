@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 2ea8543857c062e76f96da99fb295ce831c3c5f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 466b146a0c39c1151e52e3ea936ae50705f29c64
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli-10"></a>使用 Azure CLI 1.0 配置网络安全组流日志
 
 > [!div class="op_single_selector"]
@@ -77,4 +74,3 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 了解如何[使用 PowerBI 直观地显示 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 了解如何[使用开源工具直观地显示 NSG 流日志](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d7847f695a77ad469f56a20518cb979c41384d1e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-python"></a>使用 Python 将数据移入和移出 Azure Blob 存储
 本主题介绍如何使用 Python API 列出、上传和下载 Blob。 使用 Azure SDK 中提供的 Python API，可以：
@@ -60,9 +59,9 @@ ms.lasthandoff: 09/25/2017
 请使用以下方法将数据上传到 Blob：
 
 1. put\_block\_blob\_from\_path（从指定路径上传文件内容）
-2. put\_block_blob\_from\_file（从已经打开的文件/流上载内容）
+2. put\_block_blob\_from\_file（从已经打开的文件/流上传内容）
 3. put\_block\_blob\_from\_bytes（上载字节数组）
-4. put\_block\_blob\_from\_text（使用指定的编码上载指定的文本值）
+4. put\_block\_blob\_from\_text（使用指定的编码上传指定的文本值）
 
 以下示例代码将本地文件上传到容器：
 
@@ -129,4 +128,3 @@ ms.lasthandoff: 09/25/2017
             blob_service.get_blob_to_path(CONTAINER_NAME, blob.name, local_file)
         except:
             print "something wrong happened when downloading the data %s"%blob.name
-

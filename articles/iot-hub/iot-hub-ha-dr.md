@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: elioda
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: b3ca2ed90dd14350d3962a558aaac41f2e007bbd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 作为一项 Azure 服务，IoT 中心在 Azure 区域级别使用冗余来提供高可用性 (HA)，而解决方案不需要执行任何额外的工作。 此外，Microsoft Azure 平台还包含了相关功能来帮助你构建提供灾难恢复 (DR) 功能或跨区域可用性的解决方案。 如果希望为设备或用户提供全局性的跨区域高可用性，请设计并编制解决方案来利用这些 Azure DR 功能。 [Azure 业务持续性技术指南](../resiliency/resiliency-technical-guidance.md)一文描述了针对业务连续性和 DR 的 Azure 内置功能。 [Azure 应用程序的灾难恢复和高可用性][Disaster recovery and high availability for Azure applications]一文针对 Azure 应用程序的 HA 和 DR 实现策略提供了体系结构指导。
@@ -60,4 +59,3 @@ IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内�
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
-

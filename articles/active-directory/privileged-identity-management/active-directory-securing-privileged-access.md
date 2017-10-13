@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: 849637fb391576954307bc84bb02e1d8579bf1cf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>保护 Azure AD 中的特权访问
 保护特权访问是帮助保护现代组织中的业务资产的首要步骤。 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
@@ -78,4 +77,3 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 [2]: ../media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ../media/active-directory-identityprotection/29.png
 [4]: ../media/active-directory-conditional-access/conditionalaccess-saas-apps.png
-

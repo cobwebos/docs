@@ -16,14 +16,12 @@ ms.topic: quickstart
 ms.date: 09/05/2017
 ms.author: wesmc
 ms.custom: mvc
+ms.openlocfilehash: 28b0b50c68fa7c16a354fd16b7dfd930436c6b4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: da47bc9dd6fd980a37e2fdb57485858c2f1b2a73
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>在用于容器的 Azure Web 应用中运行自定义 Docker 中心映像 #
 
 在 Linux 上，应用服务提供预定义的应用程序堆栈，并支持特定版本，例如 PHP 7.0 和 Node.js 4.5。 还可使用自定义 Docker 映像将 Web 应用部署到尚未在 Azure 中定义的应用程序堆栈。 本快速入门介绍了如何创建 Web 应用并向其部署 Python 映像。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用。
@@ -79,4 +77,3 @@ http://<app_name>.azurewebsites.net
 
 > [!div class="nextstepaction"]
 > [在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用](tutorial-docker-python-postgresql-app.md)
-

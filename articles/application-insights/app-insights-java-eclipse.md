@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: bwren
 ms.openlocfilehash: f2f696a3bbe7893c1f521a3e5588f4f93805d6a2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>通过 Eclipse 中的 Java 开始使用 Application Insights
 Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用户能够分析使用情况和性能。 适用于 Application Insights 的 Eclipse 插件自动在项目中安装 SDK，使用户能够获取现成的遥测功能，另外，还可以使用一个 API 来编写自定义遥测。   

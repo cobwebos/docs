@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: bryanla
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: e77915c1d982ccf6262ffcbc09dc91dfd986dac5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 授予托管服务标识 (MSI) 对资源的访问权限
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -76,5 +74,4 @@ ms.lasthandoff: 09/26/2017
 - 若要在 Azure VM 上启用 MSI，请参阅[使用 Azure CLI 配置 Azure VM 托管服务标识 (MSI)](msi-qs-configure-cli-windows-vm.md)。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
-
 

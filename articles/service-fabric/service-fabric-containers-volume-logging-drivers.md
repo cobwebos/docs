@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
+ms.openlocfilehash: 37436f7be4f09c14febef6174faf956fa07255ec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: b12ef95add6347621f7d4865fac46568f91a1e12
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="specifying-volume-plugins-and-logging-drivers-for-your-container"></a>为容器指定卷插件和日志记录驱动程序
 
 Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)和 [Docker 日志记录驱动程序](https://docs.docker.com/engine/admin/logging/overview/)。 如以下清单所示，应用程序清单中指定了这些插件：
@@ -76,5 +74,4 @@ Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs.docke
 
 
 [在 Service Fabric 上部署容器](service-fabric-deploy-container.md)
-
 

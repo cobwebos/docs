@@ -15,14 +15,12 @@ ms.date: 09/05/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: df2ffb8958a7d4b881f0a6904fb9ca13c3614040
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>通过 Microsoft Teams 访问本地应用程序
 
 无论身在何处，都可使用 Azure Active Directory 应用程序代理单一登录到本地应用程序。 Microsoft Teams 通过单一位置简化了用户的协作过程。 将两者集成意味着用户可在任何情况下与队友高效合作。 
@@ -58,4 +56,3 @@ ms.lasthandoff: 09/06/2017
 
 - 了解如何使用应用程序代理[发布本地 SharePoint 站点](application-proxy-enable-remote-access-sharepoint.md)。
 - 将应用配置为使用[自定义域](active-directory-application-proxy-custom-domains.md)作为其外部 URL。 
-

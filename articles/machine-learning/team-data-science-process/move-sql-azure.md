@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2d0c36990ba897bef83601bd4295518618224733
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>将数据转移到 Azure SQL 数据库以便在 Azure 机器学习中处理
 本主题概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 中存储的数据移到 Azure SQL 数据库的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
@@ -78,4 +77,3 @@ ms.lasthandoff: 09/25/2017
 有关使用 Azure 数据工厂 (ADF) 将数据移动到 Azure SQL 数据库的过程，可参阅[使用 Azure 数据工厂将数据从本地 SQL 服务器移动到 SQL Azure](move-sql-azure-adf.md) 主题。 本主题演示如何使用 ADF，通过 Azure Blob 存储将数据从本地 SQL Server 数据库移动到 Azure SQL 数据库。
 
 请在以下情况考虑使用 ADF：在可访问本地和云资源的混合方案中，需要连续迁移数据；需要处理或修改数据；或者已在迁移期间添加业务逻辑。 ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定期管理数据移动。 ADF 还具有其他功能，例如支持复杂操作。
-

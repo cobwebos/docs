@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: bwren
 ms.openlocfilehash: 450ca10613d137393090578619f3766734d1d493
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>在 Application Insights 中浏览 HockeyApp 数据
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) 是建议用于监视实时桌面和移动应用的平台。 可以从 HockeyApp 发送自定义和跟踪遥测数据，以监视使用情况和帮助进行诊断（此外，还能获取崩溃数据）。 使用 [Azure Application Insights](app-insights-overview.md) 的强大 [Analytics](app-insights-analytics.md) 功能可以查询此遥测数据流。 此外，可以[导出自定义和跟踪遥测数据](app-insights-export-telemetry.md)。 要启用这些功能，可以设置用于将 HockeyApp 自定义数据转发到 Application Insights 的网桥。

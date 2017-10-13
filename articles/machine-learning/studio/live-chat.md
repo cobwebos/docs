@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2bf63d41c9a06e724b971c2edb9e3127fe878b8e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-help-from-machine-learning-live-chat-support"></a>获得机器学习实时聊天支持人员的帮助
 [Azure 机器学习工作室](what-is-ml-studio.md)为构建机器学习模型提供了直观的界面。 有一个[库](gallery-how-to-use-contribute-publish.md)，其中包含社区提供的示例以帮助你入门。 并且有一个[论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)，可以在其中提出问题以帮助你继续前进。 
@@ -39,5 +38,4 @@ ms.lasthandoff: 09/25/2017
 可随时在[机器学习论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)上发布问题，机器学习团队成员以及其他知识渊博的数据科学家和开发人员会查看这些问题。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 

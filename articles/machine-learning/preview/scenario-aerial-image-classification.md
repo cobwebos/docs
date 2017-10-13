@@ -8,14 +8,12 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 09/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 43b124fc3eb72adc5d299b218c9e16ec83d1a240
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="aerial-image-classification"></a>航拍图像分类
 
 本示例演示了如何使用 Azure Machine Learning Workbench 来协调图像分类模型的分布式定型和实施。 我们通过 [Microsoft Machine Learning for Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) 软件包，使用预先定型的 CNTK 模型对图像进行特征化，并使用派生的功能定型分类器。 然后以并行方式对云中的大型图像集应用定型的模型。 这些步骤是在 [Azure HDInsight Spark](https://azure.microsoft.com/en-us/services/hdinsight/apache-spark/) 群集上执行的，以便我们可以通过添加或删除工作节点来提高定型和实施的速度。
@@ -68,7 +66,7 @@ ms.lasthandoff: 09/25/2017
 
 #### <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目
 
-将本示例用作模板，创建新的项目：
+使用本示例作为模板，创建一个新项目：
 1.  打开 Azure Machine Learning Workbench
 2.  在“项目”页上单击 + 号，然后选择“新建项目”
 3.  在“新建项目”窗格中，填写新项目的信息
@@ -270,4 +268,3 @@ To dive deeper into this example:
 - Examine the sample scripts for statements calling the `blob_service`. Check that you understand how trained models and predictions are stored and retrieved from the cloud.
 - Explore the contents of the containers created in your blob storage account. Ensure that you understand which script or command is responsible for creating each group of files.
 - Modify the training script to train a different MMLSpark model type or to change the model hyperparameters. Use the run history feature to determine whether your changes increased or decreased the model's accuracy.
-

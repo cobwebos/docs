@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.openlocfilehash: d01543955bdf6a274571f67eafdff5f637863d5c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>教程：Azure Active Directory 与 Wikispaces 的集成
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 08/03/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Wikispaces 客户端支持团队](https://www.wikispaces.com/site/help)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-wikispaces-tutorial/tutorial_wikispaces_certificate.png) 
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 08/03/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-wikispaces-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -180,7 +180,7 @@ ms.lasthandoff: 08/03/2017
    
     ![邀请人员](./media/active-directory-saas-wikispaces-tutorial/ic787208.png "邀请人员")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在相关文本框中键入要预配的有效 AAD 帐户的“用户名或电子邮件地址”。
+    a. 在相关文本框中键入要预配的有效 AAD 帐户的“用户名或电子邮件地址”。
    
     b. 单击“发送”。  
       
@@ -198,7 +198,7 @@ ms.lasthandoff: 08/03/2017
 
 若要将 Britta Simon 分配到 Wikispaces，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

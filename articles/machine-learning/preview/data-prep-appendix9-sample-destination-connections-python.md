@@ -12,15 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e85ab5d52c2265536f72fa7301c0a25fa3a112cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="sample-of-destination-connections-python"></a>目标连接示例 (Python) 
 阅读本附录前，先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)
 
@@ -44,4 +41,3 @@ df.to_excel('c:\dev\data\Output\Customer.xlsx', sheet_name='Sheet1')
 ```python
 df.to_excel('c:/dev/data/Output/Customer.xlsx', sheet_name='Sheet1')
 ```
-

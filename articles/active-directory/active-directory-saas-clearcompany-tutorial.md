@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: ed8adf38d7e4ed1525e8174497cef6fda5b6f4b0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>教程：Azure Active Directory 与 ClearCompany 集成
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 09/01/2017
     > [!NOTE] 
     > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [ClearCompany 客户端支持团队](http://www.clearcompany.com/support)来获取此值。 
 
-5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-clearcompany-tutorial/tutorial_clearcompany_certificate.png) 
 
@@ -228,5 +227,4 @@ ms.lasthandoff: 09/01/2017
 [201]: ./media/active-directory-saas-clearcompany-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-clearcompany-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-clearcompany-tutorial/tutorial_general_203.png
-
 

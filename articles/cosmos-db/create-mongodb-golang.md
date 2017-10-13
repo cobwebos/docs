@@ -9,14 +9,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: cb123107178f5e7c0207524c19331a6fa4658739
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
@@ -247,4 +245,3 @@ if err != nil {
 
 > [!div class="nextstepaction"]
 > [将 MongoDB API 的数据导入 Azure Cosmos DB](mongodb-migrate.md)
-

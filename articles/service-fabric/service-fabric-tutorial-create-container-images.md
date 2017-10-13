@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
+ms.openlocfilehash: 08b3cc4a52c09ee03818b563794ef9b009d12ef4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e84a0a05cbe1952d8325a9aed1c1df411bfcb877
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-container-images-for-service-fabric"></a>创建 Service Fabric 的容器映像
 
 本教程是演示如何在 Linux Service Fabric 群集中使用容器的教程系列的第 1 部分。 本教程中准备了一个要用于 Service Fabric 的多容器应用程序。 在后续教程中，这些映像用作 Service Fabric 应用程序的一部分。 本教程介绍如何执行下列操作： 
@@ -57,12 +55,7 @@ ms.lasthandoff: 09/25/2017
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-containers.git
 
-```
-
-在克隆的目录中，使用以下命令进入工作目录。 
-
-```bash 
-cd Linux/container-tutorial/
+cd service-fabric-dotnet-containers/Linux/container-tutorial/
 ```
 
 “container-tutorial”目录包含一个名为“azure-vote”的文件夹。 “azure-vote”文件夹包含前端源代码和 Dockerfile，可用于生成前端。 “container-tutoria”目录还包含“redis”目录，其中包含 Dockerfile，可用于生成 redis 映像。 这些目录包含本组教程所需的资产。 
@@ -242,4 +235,3 @@ azure-vote-front
 
 > [!div class="nextstepaction"]
 > [打包容器并将其部署为 Service Fabric 应用程序](service-fabric-tutorial-package-containers.md)
-

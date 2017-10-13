@@ -11,14 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7029eb7e4af3bb22dff3d841e28c5b348944cd17
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-review-your-access"></a>如何评审访问权限
 
 Azure Active Directory 使用称为“访问评审”的功能，简化了企业对 Azure AD 及其他 Microsoft Online Services 中应用程序和组成员的访问的管理方式。  你可能收到过来自 Microsoft 的电子邮件，要求你评审访问权限 - 有权访问应用程序的组成员或用户。 
@@ -40,7 +38,6 @@ Azure Active Directory 使用称为“访问评审”的功能，简化了企业
 ## <a name="next-steps"></a>后续步骤
 
 请注意，不会立即删除被拒绝的访问权限，因此，如果想要更改回答并批准，请重置回复，并选择新回复。  可以在访问评审完成之前执行此操作。
-
 
 
 

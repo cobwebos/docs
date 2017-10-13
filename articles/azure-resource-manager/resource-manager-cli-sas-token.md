@@ -1,6 +1,6 @@
 ---
-title: "部署使用 SAS 令牌和 Azure CLI 的 Azure 模板 |Microsoft 文档"
-description: "使用 Azure 资源管理器和 Azure CLI 从模板使用 SAS 令牌保护将资源部署到 Azure。"
+title: "使用 SAS 令牌和 Azure CLI 部署 Azure 模板 | Microsoft Docs"
+description: "使用 Azure Resource Manager 和 Azure CLI 从使用 SAS 令牌保护的模板将资源部署到 Azure。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,25 +15,25 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
 ms.openlocfilehash: 22387aadd8f53a65efb76a29a9403c46a2c25954
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>部署使用 SAS 令牌和 Azure CLI 的专用资源管理器模板
+# <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>使用 SAS 令牌和 Azure CLI 部署专用 Resource Manager 模板
 
-当你的模板驻留在存储帐户中时，可以限制对模板的访问并在部署过程中提供的共享的访问签名 (SAS) 令牌。 本主题说明如何使用资源管理器模板与 Azure PowerShell 在部署过程中提供的 SAS 令牌。 
+如果模板驻留在存储帐户中，可以限制对该模板的访问，并在部署过程中提供共享访问签名 (SAS) 令牌。 本主题介绍如何将 Azure PowerShell 与 Resource Manager 模板配合使用在部署过程中提供 SAS 令牌。 
 
 ## <a name="add-private-template-to-storage-account"></a>将专用模板添加到存储帐户
 
-可以将你的模板添加到存储帐户和到它们在与 SAS 令牌的部署过程中的链接。
+可以将模板添加到存储帐户，并在部署过程中使用 SAS 令牌链接到这些模板。
 
 > [!IMPORTANT]
-> 通过执行以下步骤，包含模板的 blob 是可供只有帐户所有者访问。 但是，创建 blob 的 SAS 令牌，blob 时，该 URI 的任何人都可以访问。 另一个用户截获 URI，该用户能够访问的模板。 使用 SAS 令牌是限制对你的模板，访问的一种好方法，但不是应直接在模板中包含密码等敏感数据。
+> 通过执行以下步骤，只有帐户所有者可以访问包含模板的 blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 使用 SAS 令牌是限制对模板的访问的好方法，但不应直接在模板中包括密码等敏感数据。
 > 
 > 
 
-下面的示例设置专用存储帐户容器，并将上载一个模板：
+以下示例设置一个专用存储帐户容器并上传一个模板：
    
 ```azurecli
 az group create --name "ManageGroup" --location "South Central US"
@@ -58,8 +58,8 @@ az storage blob upload \
     --connection-string $connection
 ```
 
-### <a name="provide-sas-token-during-deployment"></a>在部署过程提供 SAS 令牌
-若要部署的存储帐户中的专用模板，生成 SAS 令牌并将其包括在模板的 URI。 设置允许足够时间来完成部署的到期时间。
+### <a name="provide-sas-token-during-deployment"></a>在部署期间提供 SAS 令牌
+要在存储帐户中部署专用模板，请生成 SAS 令牌，并将其包括在模板的 URI 中。 设置到期时间以允许足够的时间来完成部署。
    
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -82,10 +82,10 @@ url=$(az storage blob url \
 az group deployment create --resource-group ExampleGroup --template-uri $url?$token
 ```
 
-与链接的模板使用 SAS 令牌的示例，请参阅[使用与 Azure 资源管理器中的链接的模板](resource-group-linked-templates.md)。
+有关将 SAS 令牌与链接模板配合使用的示例，请参阅[将已链接的模版与 Azure Resource Manager 配合使用](resource-group-linked-templates.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 部署模板的简介，请参阅[部署使用资源管理器模板和 Azure PowerShell 的资源](resource-group-template-deploy-cli.md)。
-* 部署模板的完整示例脚本，请参阅[部署资源管理器模板脚本](resource-manager-samples-cli-deploy.md)
+* 有关部署模板的简介，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](resource-group-template-deploy-cli.md)。
+* 有关用于部署模板的完整示例脚本，请参阅[部署 Resource Manager 模板脚本](resource-manager-samples-cli-deploy.md)
 * 若要在模板中定义参数，请参阅[创作模板](resource-group-authoring-templates.md#parameters)。
-* 有关企业如何使用资源管理器能够有效地管理订阅的指南，请参阅[Azure 企业基架的规范性订阅监管](resource-manager-subscription-governance.md)。
+* 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。

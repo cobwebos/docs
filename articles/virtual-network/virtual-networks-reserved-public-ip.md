@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 ms.openlocfilehash: 5e9c83cebec96c6bc8afd53b0c637d7af899746f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reserved-ip-addresses-classic"></a>保留 IP 地址（经典）
 
@@ -103,7 +103,7 @@ New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US" -Ser
 ```
 
 ## <a name="associate-a-reserved-ip-to-a-new-cloud-service"></a>将保留 IP 关联到新的云服务
-下面的脚本将创建新的保留 IP，并将其关联到名为 TestService 的新云服务。
+下面的脚本将创建新的保留 IP，然后将其关联到名为 TestService 的新云服务。
 
 ```powershell
 New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
@@ -131,7 +131,7 @@ Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName Test
 > 
 
 ## <a name="associate-a-reserved-ip-to-a-running-deployment"></a>将保留 IP 关联到正在运行的部署
-以下命令使用名为 TestVM2 的新 VM 创建名为 TestService2 的云服务。 然后，名为 MyReservedIP 的现有保留 IP 将关联到云服务。
+以下命令将使用名为 TestVM2 的新 VM 创建名为 TestService2 的云服务。 然后，名为 MyReservedIP 的现有保留 IP 将关联到云服务。
 
 ```powershell
 $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}

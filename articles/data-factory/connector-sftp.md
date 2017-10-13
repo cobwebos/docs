@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6726198687b9fa32930a7861bde6f9b994e2a3ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +39,7 @@ ms.lasthandoff: 09/25/2017
 - 按原样复制文件，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析文件。
 
 ## <a name="get-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板通过复制活动创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 对于特定于 SFTP 的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -176,7 +175,7 @@ SFTP 链接的服务支持以下属性：
 | type | 数据集的 type 属性必须设置为：FileShare |是 |
 | folderPath | 文件夹路径。 例如：folder/subfolder/ |是 |
 | fileName | 如果需要从特定文件复制，则在“folderPath”中指定文件名。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件作为源。 |否 |
-| fileFilter | 指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 仅当未指定 fileName 时适用。 <br/><br/>允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileFilter": "*.log"`<br/>- 示例 2：`"fileFilter": 2017-09-??.txt"` |否 |
+| fileFilter | 指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 仅当未指定 fileName 时应用。 <br/><br/>允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileFilter": "*.log"`<br/>- 示例 2：`"fileFilter": 2017-09-??.txt"` |否 |
 | 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果需要分析具有特定格式的文件，支持分析以下文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为：**最佳**和**最快**。 |否 |
 
@@ -210,7 +209,7 @@ SFTP 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 SFTP 源支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 SFTP 源支持的属性列表。
 
 ### <a name="sftp-as-source"></a>以 SFTP 作为源
 

@@ -8,14 +8,12 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 643cea5cc134a2eb25a0dec4abefd9edca726332
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 执行超参数的分布式优化
 
 此方案展示了如何使用 Azure Machine Learning Workbench 来横向扩展实现了 scikit-learn API 的机器学习算法的超参数的优化。 我们展示了如何配置和使用远程 Docker 容器和 Spark 群集作为执行后端来优化超参数。
@@ -35,7 +33,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
+* [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
 * 按照用于安装 Workbench 并创建帐户的[安装和创建快速入门](./quickstart-installation.md)安装的 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 副本。
 * 此方案假设在本地装有 Docker 引擎的 Windows 10 或 MacOS 上运行 Azure ML Workbench。 
 * 若要使用远程 Docker 容器运行此方案，请按照[说明](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm)预配 Ubuntu 数据科学虚拟机 (DSVM)。 建议使用至少具有 8 个核心和 28 GB 内存的虚拟机。 虚拟机的 D4 实例具有这样的容量。 
@@ -165,7 +163,7 @@ load_data() 函数中的以下代码下载单个文件：
 
 注意，不需要手动运行 load_data.py 文件。 以后将从其他文件调用该文件。
 
-### <a name="feature-engineering"></a>特征工程
+### <a name="feature-engineering"></a>特性工程
 用于计算所有特征的代码位于 feature\_engineering.py 文件中。 不需要手动运行 feature_engineering.py 文件。 以后将从其他文件调用该文件。
 
 我们将创建多个特征集：
@@ -312,7 +310,6 @@ Xgboost 有八个超参数：
 ## <a name="references"></a>参考
 
 [1] T. Chen 和 C. Guestrin 合著的 [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/abs/1603.02754)。 KDD 2016 年出版。
-
 
 
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: davidmu
+ms.openlocfilehash: f2797864d7f0bda35d4d84ee78b157879451f889
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: b1ed7d5693ff7e6730255462411d462694b730e1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-by-using-path-based-routing"></a>使用基于路径的路由创建应用程序网关
 
@@ -221,7 +220,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 配置后端池的 URL 规则路径。 这一步配置应用程序网关使用的相对路径，并定义 URL 路径与分配为处理传入流量的后端池之间的映射。
 
 > [!IMPORTANT]
-> 每个路径都必须以“/”开头，并且只能以星号结尾。 有效示例包括 /xyz、/xyz* 或 /xyz/*。 馈送到路径匹配程序的字符串在第一个“?”或“#”之后就不会有任何文本，而且也禁止使用这些字符。 
+> 每个路径都必须以“/”开头，并且只能以星号结尾。 有效示例包括 /xyz、/xyz *或 /xyz/*。 馈送到路径匹配程序的字符串在第一个“?”或“#”之后就不会有任何文本，而且也禁止使用这些字符。 
 
 下面的示例创建两个规则：一个用于“/image/”路径，将流量路由到后端 pool1；另一个用于“/video/”路径，将流量路由到后端 pool2。 这些规则可确保将每组 URL 的流量路由到后端。 例如，http://contoso.com/image/figure1.jpg 流量路由到 pool1，而 http://contoso.com/video/example.mp4 流量路由到 pool2。
 
@@ -296,5 +295,4 @@ DnsSettings              : {
 ## <a name="next-steps"></a>后续步骤
 
 若要了解安全套接字层 (SSL) 卸载，请参阅[使用 Azure 资源管理器配置应用程序网关以进行 SSL 卸载](application-gateway-ssl-arm.md)。
-
 

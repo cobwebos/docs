@@ -13,12 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
+ms.openlocfilehash: 13d01e63cfecdc826eba19b8eb0dc539019409dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1aa40c4de48c0117e9d3f9d434972adecccdb548
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储度量值和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -133,7 +132,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
     ```
 
 ### <a name="configure-net-client-side-logging"></a>配置 .NET 客户端日志记录
-若要为 .NET 应用程序配置客户端日志记录，请在应用程序的配置文件（web.config 或 app.config）中启用 .NET 诊断。 有关详细信息，请参阅 MSDN 上的 [Client-side Logging with the .NET Storage Client Library](http://msdn.microsoft.com/library/azure/dn782839.aspx)（使用 .NET 存储客户端库进行的客户端日志记录）和 [Client-side Logging with the Microsoft Azure Storage SDK for Java](http://msdn.microsoft.com/library/azure/dn782844.aspx)（通过 Microsoft Azure Storage SDK for Java 进行的客户端日志记录）。
+若要为 .NET 应用程序配置客户端日志记录，请在应用程序的配置文件（web.config 或 app.config）中启用 .NET 诊断。 有关详细信息，请参阅 MSDN 上的 [Client-side Logging with the .NET Storage Client Library](http://msdn.microsoft.com/library/azure/dn782839.aspx)（使用 .NET 存储客户端库进行的客户端日志记录）和 [Client-side Logging with the Microsoft Azure Storage SDK for Java](http://msdn.microsoft.com/library/azure/dn782844.aspx)（通过用于 Java 的 Microsoft Azure 存储 SDK 进行的客户端日志记录）。
 
 客户端日志包括有关客户端准备请求以及接收和处理响应的详细信息。
 
@@ -374,4 +373,3 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 * [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide](http://technet.microsoft.com/library/jj649776.aspx)（Microsoft Message Analyzer 操作指南）
-

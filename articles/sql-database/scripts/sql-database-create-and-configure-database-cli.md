@@ -14,13 +14,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 10/11/2017
 ms.author: janeng
-ms.openlocfilehash: 908898ca691d2b53b9f54afa60c41e091163bd50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.openlocfilehash: c7c90d2d7a2d3631ffc63be88f2b8b95e2eb26a8
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>使用 CLI 创建单一 Azure SQL 数据库并配置防火墙规则
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "创建 SQL 数据库")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -50,10 +50,10 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az sql server create](/cli/azure/sql/server#create) | 创建用于托管 SQL 数据库的逻辑服务器。 |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。 |
-| [az sql db create](/cli/azure/sql/db#create) | 在逻辑服务器中创建 SQL 数据库。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | 创建用于托管 SQL 数据库的逻辑服务器。 |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。 |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | 在逻辑服务器中创建 SQL 数据库。 |
 | [az group delete](/cli/azure/resource#delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

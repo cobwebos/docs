@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
 ms.openlocfilehash: 070e848f753452953b9e5dfe94799e7c0a314530
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pen-testing"></a>渗透测试
 使用 Microsoft Azure 进行应用程序测试和部署的最大优势之一是，无需为了开发、测试和部署应用程序而汇总本地基础结构。 所有基础结构均由 Microsoft Azure 平台服务管理。 不必为请求、获取以及“搭架和堆叠”本地硬件担心。

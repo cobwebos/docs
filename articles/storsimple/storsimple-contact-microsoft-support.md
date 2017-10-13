@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli;anbacker
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="contact-microsoft-support-for-your-storsimple"></a>请联系 StorSimple 的 Microsoft 支持部门
 若在使用 Microsoft Azure StorSimple 解决方案时遇到问题，可以创建服务请求以获取技术支持。 在与支持工程师进行联机会话时，可能还需在 StorSimple 设备上启动支持会话。 本文介绍：

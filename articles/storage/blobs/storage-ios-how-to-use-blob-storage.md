@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -70,7 +69,7 @@ ms.lasthandoff: 09/09/2017
 
 1. 首先，下载或克隆 [azure-storage-ios repo](https://github.com/azure/azure-storage-ios)。
 2. 转到“azure-storage-ios” -> “Lib” -> “Azure 存储客户端库”，并在 Xcode 中打开 `AZSClient.xcodeproj`。
-3. 在 Xcode 的左上方，将活动方案从“Azure Storage Client Library”更改为“Framework”。
+3. 在 Xcode 的左上方，将活动方案从“Azure 存储客户端库”更改为“Framework”。
 4. 生成项目 (⌘+B)。 这会在桌面上创建 `AZSClient.framework` 文件。
 
 可以通过执行以操作将框架文件导入到应用程序：
@@ -393,5 +392,4 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 
 如果对此库有任何疑问，可随时会问题发布到我们的 [MSDN Azure 论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)或 [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)。
 如果有关于 Azure 存储的功能建议，请将建议发布到 [Azure 存储反馈](https://feedback.azure.com/forums/217298-storage/)。
-
 

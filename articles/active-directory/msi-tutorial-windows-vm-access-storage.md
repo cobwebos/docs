@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: elkuzmen
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 09d4f81b190329421fc9fd2ebf98b941cb033a08
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage"></a>使用 Windows VM 托管服务标识访问 Azure 存储
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -76,7 +74,7 @@ ms.lasthandoff: 09/20/2017
 2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
 3. 输入存储帐户的名称，稍后将使用该名称。  
 4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
-5. 确保**订阅**和**资源组**与上一步中创建 VM 时指定的名称匹配。
+5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。
 6. 单击“创建” 。
 
     ![新建存储帐户](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
@@ -88,7 +86,7 @@ ms.lasthandoff: 09/20/2017
 1. 导航回新创建的存储帐户。
 2. 在左侧导航栏上的“Blob 服务”下单击“容器”链接。
 3. 单击页面顶部的“+ 容器”，将滑出“新建容器”面板。
-4. 为容器指定名称，选择访问级别，然后单击“确定”。 在本教程中的后面部分将使用所指定的名称。 
+4. 为容器指定名称，选择访问级别，单击“确定”。 在本教程中的后面部分将使用所指定的名称。 
 
     ![创建存储容器](media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
@@ -197,7 +195,6 @@ ContinuationToken :
 Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
-
 
 
 

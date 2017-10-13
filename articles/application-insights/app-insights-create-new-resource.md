@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: bwren
 ms.openlocfilehash: 5f8814ee943424c1c278ab3732129d4459f83819
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此创建新资源属于[设置 Application Insights 来监视新应用程序][start]的一个环节。 在许多情况下，IDE 可以自动完成资源创建。 但在某些情况下需要手动创建资源（例如，创建分别用于应用程序开发和产品构建的资源）。

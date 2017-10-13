@@ -1,6 +1,6 @@
 ---
-title: "数据湖分析使用 REST API 入门 |Microsoft 文档"
-description: "使用 WebHDFS REST Api 执行对数据湖分析操作"
+title: "通过 REST API 开始使用 Data Lake Analytics | Microsoft 文档"
+description: "使用 WebHDFS REST API 对 Data Lake Analytics 执行操作"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -15,42 +15,42 @@ ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
 ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>要开始使用 Azure 数据湖分析使用 REST Api
+# <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>通过 REST API 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-了解如何使用 WebHDFS REST Api 和数据湖分析 REST Api 来管理数据湖分析帐户、 作业和目录。 
+了解如何使用 WebHDFS REST API 和 Data Lake Analytics REST API 来管理 Data Lake Analytics 帐户、作业与目录。 
 
-## <a name="prerequisites"></a>必要條件
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序进行身份验证数据湖分析应用程序与 Azure AD。 有不同的方法来使用 Azure AD 进行身份验证作为**最终用户身份验证**或**服务到服务身份验证**。 有关说明以及如何进行身份验证的详细信息，请参阅[与数据湖分析使用 Azure Active Directory 进行身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
-* [cURL](http://curl.haxx.se/)。 本文章将使用 cURL 演示如何执行针对数据湖分析帐户的 REST API 调用。
+## <a name="prerequisites"></a>先决条件
+* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Analytics 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅 [Authenticate with Data Lake Analytics using Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)（使用 Azure Active Directory 对 Data Lake Analytics 进行身份验证）。
+* [cURL](http://curl.haxx.se/)。 本文使用 cURL 演示如何对 Data Lake Analytics 帐户进行 REST API 调用。
 
 ## <a name="authenticate-with-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
-有两种方法来使用 Azure Active Directory 进行身份验证。
+使用 Azure Active Directory 进行身份验证的方法有两种。
 
-### <a name="end-user-authentication-interactive"></a>最终用户身份验证 （交互）
-使用此方法，应用程序将提示用户登录和用户的上下文中执行所有的操作。 
+### <a name="end-user-authentication-interactive"></a>最终用户身份验证（交互式）
+使用此方法时，应用程序会提示用户登录，所有操作会在用户的上下文中执行。 
 
-请按照下列步骤进行交互式身份验证：
+遵循以下步骤进行交互式身份验证：
 
-1. 通过应用程序，将用户重定向到以下 URL:
+1. 通过应用程序将用户重定向至以下 URL：
    
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<重定向 URI > 需要 url 编码。 因此，对于 https://localhost，使用`https%3A%2F%2Flocalhost`)
+   > \<REDIRECT-URI> 需要经过编码才能在 URL 中使用。 因此，对于 https://localhost，请使用 `https%3A%2F%2Flocalhost`）
    > 
    > 
    
-    就本教程来说，你可以替换上述 URL 中的占位符值，并将其粘贴在 web 浏览器的地址栏中。 你将重定向以使用你的 Azure 登录名进行身份验证。 你成功登录后，响应将显示在浏览器的地址栏中。 响应将采用以下格式：
+    在本教程中，可以替换上述 URL 中的占位符值，并将此值粘贴到 Web 浏览器地址栏中。 随后用户将重定向，以便使用 Azure 登录名进行身份验证。 成功登录后，响应会显示在浏览器地址栏中。 响应格式如下：
    
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
-2. 捕获响应中的授权代码。 对于本教程，你可以从 web 浏览器的地址栏复制授权代码，并将其传递为 POST 请求中到令牌终结点，如下所示：
+2. 捕获响应中的授权代码。 在本教程中，可以从 Web 浏览器的地址栏复制授权代码，然后在 POST 请求中将其传递给令牌终结点，如下所示：
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -60,13 +60,13 @@ ms.lasthandoff: 07/11/2017
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
-   > 在这种情况下，\<重定向 URI > 需要对其进行编码。
+   > 在此情况下，\<REDIRECT-URI> 不需要编码。
    > 
    > 
-3. 响应是一个包含访问令牌的 JSON 对象 (例如， `"access_token": "<ACCESS_TOKEN>"`) 和刷新令牌 (例如， `"refresh_token": "<REFRESH_TOKEN>"`)。 你的应用程序使用访问令牌访问 Azure 数据湖存储和刷新令牌时获取另一个访问令牌时访问令牌过期。
+3. 响应是一个 JSON 对象，包含访问令牌（例如 `"access_token": "<ACCESS_TOKEN>"`）和刷新令牌（例如 `"refresh_token": "<REFRESH_TOKEN>"`）。 应用程序在访问 Azure Data Lake Store 时使用访问令牌，在访问令牌过期时使用刷新令牌获取另一个访问令牌。
    
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
-4. 当访问令牌到期时，你可以请求新的访问令牌使用刷新令牌，如下所示：
+4. 访问令牌过期时，可以使用刷新令牌请求新的访问令牌，如下所示：
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -74,10 +74,10 @@ ms.lasthandoff: 07/11/2017
              -F client_id=<CLIENT-ID> \
              -F refresh_token=<REFRESH-TOKEN>
 
-交互式用户身份验证的详细信息，请参阅[授权代码授予流](https://msdn.microsoft.com/library/azure/dn645542.aspx)。
+有关交互式用户身份验证的详细信息，请参阅 [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx)（授权代码授予流）。
 
-### <a name="service-to-service-authentication-non-interactive"></a>服务到服务身份验证 （非交互）
-使用此方法，应用程序提供其自己的凭据来执行操作。 为此，你必须发出 POST 请求类似如下所示： 
+### <a name="service-to-service-authentication-non-interactive"></a>服务到服务身份验证（非交互式）
+使用此方法时，应用程序提供自身的凭据来执行操作。 为此，必须发出 POST 请求，如下所示： 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -85,20 +85,20 @@ ms.lasthandoff: 07/11/2017
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-此请求的输出将包含的授权令牌 (由表示`access-token`在下面的输出)，随后将会传递与你的 REST API 调用。 保存在文本文件中; 此身份验证令牌您将需要它在本文后面。
+此请求的输出包含授权令牌（在以下输出中以 `access-token` 表示），随后要连同 REST API 调用传递该令牌。 将此身份验证令牌保存在文本文件中；本文稍后要用到此令牌。
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-本文章将使用**非交互式**方法。 非交互式 （服务间调用） 的详细信息，请参阅[到服务的服务调用使用凭据](https://msdn.microsoft.com/library/azure/dn645543.aspx)。
+本文使用 **非交互式** 方法。 有关非交互式（服务到服务的调用）的详细信息，请参阅 [Service to service calls using credentials](https://msdn.microsoft.com/library/azure/dn645543.aspx)（使用凭据执行服务到服务的调用）。
 
-## <a name="create-a-data-lake-analytics-account"></a>创建数据湖分析帐户
-你可以创建数据湖分析帐户之前，必须创建 Azure 资源组和 Data Lake 存储帐户。  请参阅[创建 Data Lake 存储帐户](../data-lake-store/data-lake-store-get-started-rest-api.md#create-a-data-lake-store-account)。
+## <a name="create-a-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
+只有在创建 Azure 资源组和 Data Lake Store 帐户之后，才可以创建 Data Lake Analytics 帐户。  请参阅 [Create a Data Lake Store account](../data-lake-store/data-lake-store-get-started-rest-api.md#create-a-data-lake-store-account)（创建 Data Lake Store 帐户）。
 
-以下 Curl 命令演示如何创建一个帐户：
+以下 Curl 命令演示如何创建帐户：
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<NewAzureDataLakeAnalyticsAccountName>?api-version=2016-11-01 -d@"C:\tutorials\adla\CreateDataLakeAnalyticsAccountRequest.json"
 
-替换\< `REDACTED` \>与授权令牌， \< `AzureSubscriptionID` \>替换为订阅 ID， \< `AzureResourceGroupName` \>与一个现有的 Azure 资源组名称，并\< `NewAzureDataLakeAnalyticsAccountName` \>具有新的数据湖分析帐户名称。 中包含此命令请求负载**CreateDatalakeAnalyticsAccountRequest.json**为提供的文件`-d`上面的参数。 Input.json 文件的内容如下所示：
+将 \<`REDACTED`\> 替换为授权令牌，将 \<`AzureSubscriptionID`\> 替换为订阅 ID，将 \<`AzureResourceGroupName`\> 替换为现有的 Azure 资源组名称，将 \<`NewAzureDataLakeAnalyticsAccountName`\> 替换为新的 Data Lake Analytics 帐户名称。 此命令的请求有效负载包含在提供给上述 `-d` 参数的 **CreateDatalakeAnalyticsAccountRequest.json** 文件中。 input.json 文件的内容如下所示：
 
     {  
         "location": "East US 2",  
@@ -115,12 +115,12 @@ ms.lasthandoff: 07/11/2017
     }  
 
 
-## <a name="list-data-lake-analytics-accounts-in-a-subscription"></a>列表数据湖分析帐户订阅中
-以下 Curl 命令显示如何列出订阅中的帐户：
+## <a name="list-data-lake-analytics-accounts-in-a-subscription"></a>列出订阅中的 Data Lake Analytics 帐户
+以下 Curl 命令演示如何列出订阅中的帐户：
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/providers/Microsoft.DataLakeAnalytics/Accounts?api-version=2016-11-01
 
-替换\< `REDACTED` \>与授权令牌， \< `AzureSubscriptionID` \>替换为订阅 id。 输出为类似于：
+将 \<`REDACTED`\> 替换为授权令牌，将 \<`AzureSubscriptionID`\> 替换为订阅 ID。 输出类似于：
 
     {
         "value": [
@@ -157,12 +157,12 @@ ms.lasthandoff: 07/11/2017
         ]
     }
 
-## <a name="get-information-about-a-data-lake-analytics-account"></a>获取有关数据湖分析帐户的信息
+## <a name="get-information-about-a-data-lake-analytics-account"></a>获取有关 Data Lake Analytics 帐户的信息
 以下 Curl 命令演示如何获取帐户信息：
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>?api-version=2015-11-01
 
-替换\< `REDACTED` \>与授权令牌， \< `AzureSubscriptionID` \>替换为订阅 ID， \< `AzureResourceGroupName` \>与一个现有的 Azure 资源组名称，并\< `DataLakeAnalyticsAccountName` \>替换现有数据湖分析帐户的名称。 输出为类似于：
+将 \<`REDACTED`\> 替换为授权令牌，将 \<`AzureSubscriptionID`\> 替换为订阅 ID，将 \<`AzureResourceGroupName`\> 替换为现有的 Azure 资源组名称，将 \<`DataLakeAnalyticsAccountName`\> 替换为现有 Data Lake Analytics 帐户的名称。 输出类似于：
 
     {
         "properties": {
@@ -189,12 +189,12 @@ ms.lasthandoff: 07/11/2017
         "type": "Microsoft.DataLakeAnalytics/accounts"
     }
 
-## <a name="list-data-lake-stores-of-a-data-lake-analytics-account"></a>列表数据湖存储的数据湖分析帐户
-以下 Curl 命令显示如何列出的帐户的数据湖存储区：
+## <a name="list-data-lake-stores-of-a-data-lake-analytics-account"></a>列出 Data Lake Analytics 帐户的 Data Lake Store
+以下 Curl 命令演示如何列出帐户的 Data Lake Store：
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>/DataLakeStoreAccounts/?api-version=2016-11-01
 
-替换\< `REDACTED` \>与授权令牌， \< `AzureSubscriptionID` \>替换为订阅 ID， \< `AzureResourceGroupName` \>与一个现有的 Azure 资源组名称，并\< `DataLakeAnalyticsAccountName` \>替换现有数据湖分析帐户的名称。 输出为类似于：
+将 \<`REDACTED`\> 替换为授权令牌，将 \<`AzureSubscriptionID`\> 替换为订阅 ID，将 \<`AzureResourceGroupName`\> 替换为现有的 Azure 资源组名称，将 \<`DataLakeAnalyticsAccountName`\> 替换为现有 Data Lake Analytics 帐户的名称。 输出类似于：
 
     {
         "value": [
@@ -209,12 +209,12 @@ ms.lasthandoff: 07/11/2017
         ]
     }
 
-## <a name="submit-u-sql-jobs"></a>提交 U SQL 作业
-下面的 Curl 命令演示如何将提交 U SQL 作业：
+## <a name="submit-u-sql-jobs"></a>提交 U-SQL 作业
+以下 Curl 命令演示如何提交 U-SQL 作业：
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
 
-替换\< `REDACTED` \>与授权令牌， \< `DataLakeAnalyticsAccountName` \>替换现有数据湖分析帐户的名称。 中包含此命令请求负载**SubmitADLAJob.json**为提供的文件`-d`上面的参数。 Input.json 文件的内容如下所示：
+将 \<`REDACTED`\> 替换为授权令牌，将 \<`DataLakeAnalyticsAccountName`\> 替换为现有 Data Lake Analytics 帐户的名称。 此命令的请求有效负载包含在提供给上述 `-d` 参数的 **SubmitADLAJob.json** 文件中。 input.json 文件的内容如下所示：
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -230,7 +230,7 @@ ms.lasthandoff: 07/11/2017
         }
     }
 
-输出为类似于：
+输出类似于：
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -266,14 +266,14 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-## <a name="list-u-sql-jobs"></a>列出 U SQL 作业
-以下 Curl 命令显示如何列出 U SQL 作业：
+## <a name="list-u-sql-jobs"></a>列出 U-SQL 作业
+以下 Curl 命令演示如何列出 U-SQL 作业：
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
 
-替换\< `REDACTED` \>与授权令牌，和\< `DataLakeAnalyticsAccountName` \>替换现有数据湖分析帐户的名称。 
+将 \<`REDACTED`\> 替换为授权令牌，将 \<`DataLakeAnalyticsAccountName`\> 替换为现有 Data Lake Analytics 帐户的名称。 
 
-输出为类似于：
+输出类似于：
 
     {
     "value": [
@@ -322,11 +322,11 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="get-catalog-items"></a>获取目录项
-以下 Curl 命令演示如何从目录中获取的数据库：
+以下 Curl 命令演示如何从目录中获取数据库：
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/catalog/usql/databases?api-version=2016-11-01
 
-输出为类似于：
+输出类似于：
 
     {
     "@odata.context":"https://myadla0831.azuredatalakeanalytics.net/sqlip/$metadata#databases","value":[
@@ -339,10 +339,10 @@ ms.lasthandoff: 07/11/2017
     }
 
 ## <a name="see-also"></a>另请参阅
-* 若要查看更复杂的查询，请参阅[使用 Azure 数据湖分析分析网站日志](data-lake-analytics-analyze-weblogs.md)。
-* 若要开始开发 U SQL 应用程序，请参阅[使用 Data Lake Tools for Visual Studio 的开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
-* 若要了解 U-SQL，请参阅[开始使用 Azure 数据湖分析 U-SQL 语言](data-lake-analytics-u-sql-get-started.md)。
-* 有关管理任务，请参阅[管理 Azure 数据湖分析使用 Azure 门户](data-lake-analytics-manage-use-portal.md)。
-* 若要获取的数据湖分析概述，请参阅[Azure 数据湖分析概述](data-lake-analytics-overview.md)。
-* 若要查看使用其他工具的同一教程，请单击页面顶部的选项卡上选择器。
+* 若要查看更复杂的查询，请参阅 [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)（使用 Azure Data Lake Analytics 分析网站日志）。
+* 若要着手开发 U-SQL 应用程序，请参阅 [使用 Data Lake Tools for Visual Studio 开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
+* 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。
+* 有关管理任务，请参阅 [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)（使用 Azure 门户管理 Azure Data Lake Analytics）。
+* 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
+* 若要了解使用其他工具来完成此教程，请单击页面顶部的选项卡选择器。
 

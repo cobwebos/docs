@@ -8,12 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: babanisa
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e2f48b6e72072ce6bf019b3adc138ae83c162f25
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -238,4 +237,3 @@ az role assignment create --assignee <user name> --role "<name of role>"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关事件网格的介绍，请参阅[关于事件网格](overview.md)
-

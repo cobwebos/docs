@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: ec11decbff4cf2f6c39b40228e349312fd86da00
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>教程：Azure Active Directory 与 Kantega SSO for Confluence 集成
 
@@ -270,7 +270,7 @@ ms.lasthandoff: 07/29/2017
 
     ![添加员工](./media/active-directory-saas-kantegassoforconfluence-tutorial/user1.png) 
 
-3. 在“用户”部分，单击“添加用户”选项卡。 在“添加用户”对话框页上，执行以下步骤：
+3. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
     ![添加员工](./media/active-directory-saas-kantegassoforconfluence-tutorial/user2.png) 
 

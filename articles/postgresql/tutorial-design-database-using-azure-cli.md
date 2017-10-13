@@ -12,10 +12,10 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 06/13/2017
 ms.openlocfilehash: cf536fce8925f9173b541b845af25a8d8c38eabd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>使用 Azure CLI 设计第一个 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：

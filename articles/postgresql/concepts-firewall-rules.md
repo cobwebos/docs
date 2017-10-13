@@ -10,10 +10,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 05/10/2017
 ms.openlocfilehash: 150c4f53c5ab6a6425b6af7d286d4c1518b006f8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-postgresql-server-firewall-rules"></a>Azure Database for PostgreSQL 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -47,8 +47,7 @@ ms.lasthandoff: 08/29/2017
 例如，使用 JDBC 客户端可能会出现以下错误。
 > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "yourusername"
 
-* 
-            **动态 IP 地址：**如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
+* **动态 IP 地址：**如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
 
 * 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for PostgreSQL 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
 

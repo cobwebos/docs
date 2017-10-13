@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
 ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>准备使用 Azure 备份服务器来备份工作负荷
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![创建恢复服务保管库步骤 2](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
 
-    此时将打开“恢复服务保管库”边栏选项卡，其中会提示你提供“名称”、“订阅”、“资源组”和“位置”。
+    此时会打开恢复服务保管库边栏选项卡，其中会提示提供“名称”、“订阅”、“资源组”和“位置”。
 
     ![创建恢复服务保管库步骤 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
 4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
@@ -104,7 +104,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 若要编辑存储复制设置，请执行以下操作：
 
-1. 选择你的保管库，打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
+1. 选择保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
 2. 在“设置”边栏选项卡中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡。 在“备份配置”边栏选项卡中，选择保管库的存储复制选项。
 
     ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
@@ -117,7 +117,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 2. 如果已打开恢复服务保管库，请转到步骤 3。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中单击“浏览”。
 
    * 在资源列表中，键入“恢复服务”。
-   * 开始键入时，会根据输入内容筛选该列表。 出现“恢复服务保管库”时，请单击它。
+   * 开始键入时，会根据输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
 
      ![创建恢复服务保管库步骤 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -153,7 +153,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![快速启动向导更改](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. 在打开的“准备基础结构”边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接转到“下载中心”，可从中下载软件包。
+6. 在打开的“准备基础结构”边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接，会转到“下载中心”，可以从中下载软件包。
 
     ![为 Azure 备份服务器准备基础结构](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 

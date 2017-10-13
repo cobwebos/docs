@@ -1,4 +1,3 @@
-
 ---
 title: "Service Fabric 中的服务远程处理 | Microsoft 文档"
 description: "Service Fabric 远程处理允许客户端和服务使用远程过程调用来与服务进行通信。"
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 655bc3dd3735a35fbe7437e8dda92b2adf15f7bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>通过 Reliable Services 进行服务远程处理
 对于不依赖于特定的通信协议或堆栈的服务，如 WebAPI、Windows Communication Foundation (WCF) 或其他服务，Reliable Services 框架提供一种远程处理机制，以便快速而轻松地为这些服务设置远程过程调用。
@@ -392,4 +390,3 @@ Remoting V2 与 V1（上一个 Remoting 堆栈）不兼容，因此遵循以下�
 * [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [通过 Reliable Services 进行 WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 * [确保 Reliable Services 的通信安全](service-fabric-reliable-services-secure-communication.md)
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: mimig
 ms.openlocfilehash: 0c46f04786ba4b62bd7ca22c5e25643123e6e136
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-table-storage-in-python"></a>如何在 Python 中使用表存储
 
@@ -55,16 +55,16 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-如果要添加实体，首先创建一个表示实体的对象，然后将该对象传递给 [TableService][py_TableService].[insert_entity][py_insert_entity] 方法。 实体对象可以是字典或类型为[实体][py_Entity]的对象，同时定义实体的属性名称和值。 除包含用户为实体定义的任何其他属性外，每个实体还必须包含必需的 [PartitionKey 和 RowKey](#partitionkey-and-rowkey) 属性。
+要添加实体，请先创建一个表示实体的对象，然后将该对象传递给 [TableService][py_TableService].[insert_entity][py_insert_entity] 方法。 实体对象可以是字典或类型为[实体][py_Entity]的对象，同时定义实体的属性名称和值。 除包含用户为实体定义的任何其他属性外，每个实体还必须包含必需的 [PartitionKey 和 RowKey](#partitionkey-and-rowkey) 属性。
 
-此示例将创建一个表示实体的字典对象，并将该对象传递给 [insert_entity][py_insert_entity] 方法以将其添加到表：
+此示例创建表示实体的字典对象，然后将其传递给 [insert_entity][py_insert_entity]方法，以将其添加到表中：
 
 ```python
 task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
 table_service.insert_entity('tasktable', task)
 ```
 
-此示例将创建一个[实体][py_Entity]对象，并将该对象传递给 [insert_entity][py_insert_entity] 方法以将其添加到表：
+此示例创建[实体][py_Entity]对象，然后将其传递给[insert_entity][py_insert_entity]方法，以将其添加到表中：
 
 ```python
 task = Entity()
@@ -90,7 +90,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take o
 table_service.update_entity('tasktable', task)
 ```
 
-如果要更新的实体尚不存在，更新操作会失败。 如果要存储实体（无论其存在与否），请使用 [insert_or_replace_entity][py_insert_or_replace_entity]。 在下面的示例中，第一次调用会替换现有实体。 第二次调用将插入新实体，因为表中不存在具有指定的 PartitionKey 和 RowKey 的实体。
+如果要更新的实体尚不存在，更新操作会失败。 如果要存储实体（无论其存在与否），请使用 [insert_or_replace_entity][py_insert_or_replace_entity]。 在下面的示例中，第一次调用将替换现有实体。 第二次调用将插入新实体，因为表中不存在具有指定的 PartitionKey 和 RowKey 的实体。
 
 ```python
 # Replace the entity created earlier
@@ -107,7 +107,7 @@ table_service.insert_or_replace_entity('tasktable', task)
 
 ## <a name="modify-multiple-entities"></a>修改多个实体
 
-若要确保表服务自动处理请求，可批量提交多个操作。 首先，使用 [TableBatch][py_TableBatch]类，将多个操作添加到单个批次。 接下来，调用 [TableService][py_TableService].[commit_batch][py_commit_batch] 以原子操作的形式提交操作。 要批量修改的所有实体必须位于同一分区。
+若要确保表服务自动处理请求，可批量提交多个操作。 首先，使用 [TableBatch][py_TableBatch]类，将多个操作添加到单个批次。 然后，调用 [TableService][py_TableService].[commit_batch][py_commit_batch]，以在一个原子操作中提交这些操作。 要批量修改的所有实体必须位于同一分区。
 
 此示例将两个实体一起添加到批处理：
 
@@ -134,7 +134,7 @@ with table_service.batch('tasktable') as batch:
 
 ## <a name="query-for-an-entity"></a>查询实体
 
-要查询表中的实体，请将 PartitionKey 和 RowKey 传递给 [TableService][py_TableService].[get_entity][py_get_entity] 方法。
+要查询表中的实体，请将其 PartitionKey 和 RowKey 传递给 [TableService][py_TableService].[get_entity][py_get_entity] 方法。
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')

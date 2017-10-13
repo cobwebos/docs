@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 10/24/2016
 ms.author: ddove
 ms.openlocfilehash: 099f40d00753b7c86ba726a818f17d440a125221
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库
 使用 Azure SQL 数据库数据库工具（例如[弹性数据库客户端库](sql-database-elastic-database-client-library.md)）轻松管理现有的扩展共享数据库。 必须先转换现有数据库集，以使用[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)。 
@@ -71,16 +71,15 @@ ms.lasthandoff: 07/11/2017
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组）。 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
+多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
 
 ![范围映射][2]
 
-或者可以使用“列表映射”  实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
+或者可以使用*列表映射*来实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
 
 ![单一数据库上的多个租户][3] 
 
-
-            **根据选择，选择以下选项之一：**
+**根据选择，选择以下选项之一：**
 
 ### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>选项 1：为列表映射创建分片映射
 使用 ShardMapManager 对象创建分片映射。 

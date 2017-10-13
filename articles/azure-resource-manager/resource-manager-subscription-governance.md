@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
 ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure 企业基架 - 出于合规目的监管订阅
 为了敏捷性和灵活性，企业越来越多地采用公有云。 它们利用云的优势来产生营收或优化企业资源。 Microsoft Azure 提供多种不同的服务，企业可以像构建块一样将它们组合，解决广泛的工作负荷与应用程序需求。 

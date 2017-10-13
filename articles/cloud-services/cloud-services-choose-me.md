@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e8053b74e0e4d721523f49bcbb9e33b08bb7a1dc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>是应选择云服务还是其他服务？
 Azure 云服务是适合选择吗？ Azure 提供了用于运行应用程序的不同托管模型。 每种模型提供一组不同服务，而你选择哪种模型完全取决于要做什么。
@@ -63,5 +62,4 @@ Azure 云服务是适合选择吗？ Azure 提供了用于运行应用程序的�
 [在 Node.js 中创建云服务应用](cloud-services-nodejs-develop-deploy-app.md)  
 [在 PHP 中创建云服务应用](../cloud-services-php-create-web-role.md)  
 [在 Python 中创建云服务应用](cloud-services-python-ptvs.md)
-
 

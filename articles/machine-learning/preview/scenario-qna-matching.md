@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 ms.manager: tihazen
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8edc21fb8f42ee5897c4e938045cc1f42aedb3ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 进行问答匹配
 回答开放式问题很难，通常需要行业专家 (SME) 提供人力帮助。 公司通常会创建常见问题解答 (FAQ) 的列表，作为一种协助用户的手段，同时也可以降低对内部 SME 的需求。 本示例介绍了各种有效的机器学习方法，将开放式查询与预先存在的常见问题解答的问答对进行匹配。 本示例演示了如何通过简单的开发过程，使用 Azure Machine Learning Workbench 生成此类解决方案。 
 
@@ -42,7 +40,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-运行本示例的先决条件如下：
+运行此示例的先决条件如下所示：
 
 1. [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
 2. 按照[快速入门安装指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
@@ -162,4 +160,3 @@ ms.lasthandoff: 09/25/2017
 Timothy J. Hazen, Fred Richardson, [_Modeling Multiword Phrases with Constrained Phrases Tree for Improved Topic Modeling of Conversational Speech_](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf). Spoken Language Technology Workshop (SLT), 2012 IEEE. IEEE, 2012.
 
 Timothy J. Hazen, [_MCE Training Techniques for Topic Identification of Spoken Audio Documents_](http://ieeexplore.ieee.org/abstract/document/5742980/) in IEEE Transactions on Audio, Speech, and Language Processing, vol. 19, no. 8, pp. 2451-2460, Nov. 2011.
-

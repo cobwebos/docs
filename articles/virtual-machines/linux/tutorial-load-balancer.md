@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
+ms.openlocfilehash: 25e2538e220327a078a6527e667dfcd6cb838b1e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 7b3a089d2f6386afcc46cbc4377594be0d758fc6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>如何在 Azure 中均衡 Linux 虚拟机负载以创建高可用性应用程序
 负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 学习如何：
 
@@ -308,4 +306,3 @@ az network nic ip-config address-pool add \
 
 > [!div class="nextstepaction"]
 > [管理 VM 和虚拟网络](tutorial-virtual-network.md)
-

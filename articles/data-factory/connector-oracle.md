@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ad9807fc72e3a6e0a6d3916d2d9e042af1fa83ed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +58,7 @@ Oracle 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Oracle | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 将此字段标记为 SecureString。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自我托管集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
 
@@ -114,11 +113,11 @@ Oracle 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Oracle 源和接收器支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Oracle 源和接收器支持的属性列表。
 
 ### <a name="oracle-as-source"></a>Oracle 作为源
 
-要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”。 复制活动源部分支持以下属性：
+要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -166,7 +165,7 @@ Oracle 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：OracleSink | 是 |
-| writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认为 10000） |
+| writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 10000） |
 | writeBatchTimeout | 超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：Timespan。 示例：00:30:00（30 分钟）。 | 否 |
 | preCopyScript | 每次运行时，将数据写入到 Oracle 之前，指定复制活动要执行的 SQL 查询。 此属性可用于清理预先加载的数据。 | 否 |
 
@@ -234,4 +233,4 @@ Oracle 链接服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

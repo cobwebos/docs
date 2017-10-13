@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
 ms.openlocfilehash: 47f4441612be4f363ba82cc22b09786a6f3bfdc3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Compute context options for R Server on HDInsight（适用于 HDInsight 上的 R Server 的计算上下文选项）
 
@@ -31,7 +31,7 @@ Microsoft R Server on Azure HDInsight 通过设置计算上下文来控制执行
 [Microsoft R Server on Azure HDInsight](hdinsight-hadoop-r-server-overview.md) 提供最新的基于 R 的分析功能。 它可以使用 [Azure Blob](../storage/common/storage-introduction.md "Azure Blob 存储")存储帐户、Data Lake Store 或本地 Linux 文件系统中 HDFS 容器内的数据。 由于 R Server 基于开放源代码的 R 构建，因此你构建的基于 R 的应用程序可以应用超过 8000 个任意开放源代码 R 包。 这些应用程序还可以利用 [RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler)（R Server 附带的 Microsoft 的大数据分析包）中的例程。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>边缘节点的计算上下文
-一般而言，在边缘节点上的 R Server 中运行的 R 脚本在该节点上的 R 解释程序内运行。 但是，调用 ScaleR 函数的步骤例外。 ScaleR 调用会在计算环境中运行，而计算环境取决于如何设置 ScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
+一般而言，在边缘节点上的 R Server 中运行的 R 脚本会在该节点上的 R 解释程序内运行。 但是，调用 ScaleR 函数的步骤例外。 ScaleR 调用会在计算环境中运行，而计算环境取决于如何设置 ScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
 
 - 本地顺序（“local”）
 - 本地并行（“localpar”）

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
 ms.openlocfilehash: ae9fbd97a1747d8f14c561f247a0973bb11fd039
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-samples"></a>事件中心示例 
 
@@ -31,7 +31,7 @@ Azure 事件中心集示例集演示了 [Azure 事件中心](/azure/event-hubs/)
 
 有关 .NET Framework 的不同版本的详细信息，请参阅[框架和目标](/dotnet/articles/standard/frameworks)。
 
-后续会添加更多示例，因此请时常回访本网站获取更新。
+将随着时间的推移添加更多示例，因此请经常返回查看是否有更新。
 
 ## <a name="net-standard"></a>.NET Standard
 

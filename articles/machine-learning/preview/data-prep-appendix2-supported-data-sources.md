@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 0a77b31e07f118155094fab4d3393ffdb37c9c6f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-data-sources-for-this-release"></a>适用于本版本的受支持数据源 
 以下文档概要列出目前在数据准备中受到支持的数据源。
 
@@ -90,5 +88,4 @@ Parquet 格式在存储中可采用各种形式。 对于较小的数据集，�
 
 ### <a name="azure-blob"></a>Azure BLOB
 Azure 存储 (BLOB)，需要 Azure 订阅
-
 

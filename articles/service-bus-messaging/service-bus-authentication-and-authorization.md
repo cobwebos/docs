@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: b4b9d5d272bdb172f1d40db379a519a4f617550a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 
@@ -54,5 +53,4 @@ Azure.NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SA
 - 有关 SAS 的详细信息，请继续阅读[使用共享访问签名进行服务总线身份验证](service-bus-sas.md)。
 - [更改为启用 ACS 的命名空间。](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)
 - 有关 Azure 中继身份验证和授权的相关信息，请参阅 [Azure 中继身份验证和授权](../service-bus-relay/relay-authentication-and-authorization.md)。 
-
 

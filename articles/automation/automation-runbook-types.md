@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
+ms.openlocfilehash: 4bf4a3d755afeee9930204a2dbae9ff9fada3517
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 63e66196e2adb6010e33ea5bac35750820b1b57f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  以下各个部分提供了每种类型的详细信息，包括如何选择在何时使用每种类型。
@@ -99,5 +98,4 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 * 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
 * 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅[了解 Windows PowerShell 工作流](automation-powershell-workflow.md)
 * 有关如何创建或导入 Runbook 的详细信息，请参阅[创建或导入 Runbook](automation-creating-importing-runbook.md)
-
 

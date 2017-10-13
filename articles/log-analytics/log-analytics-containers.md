@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: magoedte;banders
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 562a7a73e2d440c0c3e3e8ab9e94ffd6c1fba7d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -615,8 +614,7 @@ KEY:    88 bytes
 解决特定错误时，它可以帮助你查看环境中发生错误的位置。 以下日志类型将帮助你创建查询以返回所需的信息。
 
 
-- 
-            **ContainerImageInventory** – 尝试查找按映像组织的信息并查看映像 ID 或大小等映像信息时，请使用此类型。
+- **ContainerImageInventory** – 尝试查找按映像组织的信息并查看映像 ID 或大小等映像信息时，请使用此类型。
 - **ContainerInventory** – 当需要有关容器位置、容器名称和容器中运行的映像的信息时，请使用此类型。
 - **ContainerLog** – 想要查找特定的错误日志信息和条目时，请使用此类型。
 - ContainerNodeInventory_CL - 如果需要容器所在主机/节点的信息时，可使用此类型。 它可提供 Docker 版本、业务流程类型、存储和网络信息。
@@ -667,4 +665,3 @@ Type=Perf <containerName>
 
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看详细的容器数据记录。
-

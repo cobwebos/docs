@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 47257bdb054b069c864ebf545b0c00bdfb05a9ad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科学视频 1：5 个数据科学问题的解答
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
@@ -142,4 +141,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)
 * [在 Microsoft Azure 上获取机器学习简介](what-is-machine-learning.md)
-

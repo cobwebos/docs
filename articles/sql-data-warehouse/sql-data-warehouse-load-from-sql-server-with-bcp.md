@@ -16,12 +16,12 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 ms.openlocfilehash: dae7b5f7456f4ec0daf60d55f9c38b780896ff83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-flat-files"></a>将数据从 SQL Server 加载到 Azure SQL 数据仓库（平面文件）
+# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-flat-files"></a>将数据从 SQL Server 载入 Azure SQL 数据仓库（平面文件）
 > [!div class="op_single_selector"]
 > * [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 > * [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
@@ -79,7 +79,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2.创建源数据文件
-打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
+打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
 
 ```
 20150301,1,3
@@ -124,15 +124,15 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20150101 |1 |3 |
 | 20150201 |1 |3 |
 | 20150301 |1 |3 |
-| 20150401 |2 |4 |
-| 20150501 |2 |4 |
-| 20150601 |2 |4 |
+| 20150401 |#N/A |4 |
+| 20150501 |#N/A |4 |
+| 20150601 |#N/A |4 |
 | 20150701 |3 |1 |
 | 20150801 |3 |1 |
 | 20150801 |3 |1 |
-| 20151001 |4 |2 |
-| 20151101 |4 |2 |
-| 20151201 |4 |2 |
+| 20151001 |4 |#N/A |
+| 20151101 |4 |#N/A |
+| 20151201 |4 |#N/A |
 
 ## <a name="4-create-statistics"></a>4.创建统计信息
 SQL 数据仓库尚不支持自动创建或自动更新统计信息。 为了获得最佳查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。 有关统计信息的详细说明，请参阅[统计信息][Statistics]。 

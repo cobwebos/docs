@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: 1b6e368df4914e58eb3f8d6481132f25d27312b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: ee58d0c6703d7e6688ba9959a7f75c3b52a9411c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -57,9 +56,9 @@ ADFS 管理员可以使用[添加登录页说明](https://docs.microsoft.com/win
 
 ## <a name="customize-the-sign-in-and-access-panel-look-and-feel"></a>自定义登录页和访问面板的外观
 
-可以自定义用户访问登录页时显示的徽标以及登录页的图像，使之符合你的公司品牌形象。
+可以自定义用户访问登录页时显示的徽标以及登录页的图像，使之符合公司品牌形象。
 
-在以下情况下，将显示这些图形：
+在以下情况下，会显示这些图形：
 
 * 用户键入其用户名后
 * 用户访问自定义的 URL
@@ -80,7 +79,7 @@ ADFS 管理员可以使用[添加登录页说明](https://docs.microsoft.com/win
 使用以下设置可在组织相关的登录页中添加文本。 可在“Azure Active Directory”>“公司品牌”>“编辑公司品牌”下面找到这些设置
 
 * 在“用户名提示”中，可将示例文本 someone@example.com 替换为更适合用户的某些内容。支持内部和外部用户时，我们建议保留默认值
-* “登录页文本”的长度最大为 256 个字符。 此文本将显示在用户在线登录到的任何位置，以及 Windows 10 上的 Azure AD Join 体验中。 通过此文本向用户显示使用条款、说明和提示。 **任何人都可以看到你的登录页，因此，请不要在此处提供任何敏感信息。**
+* “登录页文本”的长度最大为 256 个字符。 此文本会显示在用户在线登录到的任何位置，以及 Windows 10 上的 Azure AD Join 体验中。 通过此文本向用户显示使用条款、说明和提示。 **任何人都可以看到登录页，因此，请不要在此处提供任何敏感信息。**
 
 ### <a name="keep-me-signed-in-disabled"></a>已禁用“使我保持登录状态”
 
@@ -106,8 +105,7 @@ SharePoint Online 和 Office 2010 的某些功能取决于用户能否勾选此�
 * [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
 * [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
 * [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
+* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
 * [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
-
 

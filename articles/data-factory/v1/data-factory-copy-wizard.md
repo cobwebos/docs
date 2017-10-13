@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2302f4bfe98c3e731685f5c63774b060caa8c3a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure 数据工厂复制向导轻松复制或移动数据
 Azure 数据工厂复制向导用于简化数据引入过程，这通常是端到端数据集成方案中的第一步。 使用 Azure 数据工厂复制向导时，不需要了解有关链接服务、数据集和管道的任何 JSON 定义。 但是，完成向导中的所有步骤后，向导会自动创建管道，将数据从所选数据源复制到所选目标。 此外，复制向导可帮助用户在创作时验证正在引入的数据，从而节省大量时间（尤其是第一次从数据源引入数据时）。 若要启动复制向导，请单击数据工厂主页上的“复制数据”磁贴。
@@ -91,5 +90,4 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 
 ## <a name="next-steps"></a>后续步骤
 有关使用数据工厂复制向导创建具有复制活动的管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
-
 

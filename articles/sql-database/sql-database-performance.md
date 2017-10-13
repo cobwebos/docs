@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
 ms.openlocfilehash: 522b932ab055978c52f085dbaa36095bb6b77962
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优化操作和建议来建议可以提高工作负荷性能的操作。

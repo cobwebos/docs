@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 128b91c685b5f7e494a69ca5b04165a0ee7cbb78
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 83cf027d95018de61ea906268d8f24700203e0c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-internal-load-balancer-by-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
 
 > [!div class="op_single_selector"]
@@ -47,7 +45,7 @@ ms.lasthandoff: 03/21/2017
 
 * **前端 IP 配置**：包含传入网络流量的公共 IP 地址
 * **后端地址池**：包含使虚拟机可以从负载均衡器接收网络流量的网络接口 (NIC)
-* **负载平衡规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池的端口上
+* **负载均衡规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池的端口上
 * **入站 NAT 规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口
 * **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器
 
@@ -84,7 +82,7 @@ ms.lasthandoff: 03/21/2017
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure Resource Manager 中的所有资源将与资源组关联。 创建资源组（如果你尚未这样做）。
+Azure Resource Manager 中的所有资源将与资源组关联。 创建资源组（如果尚未这样做）。
 
 ```azurecli
 azure group create <resource group name> <location>
@@ -94,7 +92,7 @@ azure group create <resource group name> <location>
 
 1. 创建内部负载均衡器
 
-    在以下方案中，将在美国东部区域中创建一个名为 nrprg 的资源组。
+    在以下方案中，会在美国东部区域中创建一个名为 nrprg 的资源组。
 
     ```azurecli
     azure network lb create --name nrprg --location eastus
@@ -121,7 +119,7 @@ azure group create <resource group name> <location>
 
 4. 为内部负载均衡器创建负载均衡器规则。
 
-    按照前面的步骤执行时，该命令将创建负载均衡器规则，以侦听前端池中的端口 1433，还使用端口 1433 将经过负载平衡的网络流量发送到后端地址池。
+    按照前面的步骤执行时，该命令将创建负载均衡器规则，以侦听前端池中的端口 1433，还使用端口 1433 将经过负载均衡的网络流量发送到后端地址池。
 
     ```azurecli
     azure network lb rule create --resource-group nrprg --lb-name ilbset --name ilbrule --protocol tcp --frontend-port 1433 --backend-port 1433 --frontend-ip-name feilb --backend-address-pool-name beilb
@@ -139,7 +137,7 @@ azure group create <resource group name> <location>
 
 6. 为负载均衡器创建运行状况探测器。
 
-    运行状况探测器将检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。
+    运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。
 
     ```azurecli
     azure network lb probe create --resource-group nrprg --lb-name ilbset --name ilbprobe --protocol tcp --interval 300 --count 4
@@ -147,11 +145,11 @@ azure group create <resource group name> <location>
 
     > [!NOTE]
     > Microsoft Azure Platform 对各种管理方案使用一个公开可路由的静态 IPv4 地址。 该 IP 地址为 168.63.129.16。 此 IP 地址不应被任何防火墙阻止，因为这可能会导致意外行为。
-    > 对于 Azure 内部负载平衡，此 IP 地址用于监视负载均衡器中的探测器，以确定负载平衡集中虚拟机的运行状况状态。 如果网络安全组用于将流量限制到内部负载均衡集中的 Azure 虚拟机或应用于虚拟网络子网，请确保添加网络安全规则以允许来自 168.63.129.16 的流量。
+    > 对于 Azure 内部负载均衡，此 IP 地址用于监视负载均衡器中的探测器，以确定负载均衡集中虚拟机的运行状况状态。 如果网络安全组用于将流量限制到内部负载均衡集中的 Azure 虚拟机或应用于虚拟网络子网，请确保添加网络安全规则以允许来自 168.63.129.16 的流量。
 
 ## <a name="create-nics"></a>创建 NIC
 
-你需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载均衡器规则和探测器。
+需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载均衡器规则和探测器。
 
 1. 创建名为 *lb-nic1-be* 的 NIC，然后将其与 *rdp1* NAT 规则和 *beilb* 后端地址池相关联。
 
@@ -218,5 +216,4 @@ azure network lb delete --resource-group nrprg --name ilbset
 [使用源 IP 关联配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
 

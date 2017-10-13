@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: a99f96db0c1e8bcd0cf29c564e5badf0eb728e56
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-intrinsically-parallel-workloads-with-batch"></a>使用 Batch 运行固有并行的工作负荷
 
@@ -61,7 +60,7 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 在此常见方案中，应用程序或服务执行以下步骤，在 Azure Batch 中处理计算工作负荷：
 
 1. 将**输入文件**和处理这些文件的**应用程序**上传到 Azure 存储帐户。 输入文件可以是应用程序要处理的任何数据，例如金融建模数据或要转码的视频文件。 应用程序文件可以是任何用于处理数据的应用程序，例如 3D 渲染应用程序或媒体转码器。
-2. 在 Batch 帐户中创建计算节点的 Batch **池** - 这些节点是将执行任务的虚拟机。 需要指定属性，例如[节点大小](../cloud-services/cloud-services-sizes-specs.md)、其操作系统，以及节点加入池时要安装的应用程序在 Azure 存储中的位置（在步骤 1 中上载的应用程序）。 用户还可以配置池，使之随任务生成的工作负荷[自动缩放](batch-automatic-scaling.md)。 自动缩放可动态调整池中的计算节点数。
+2. 在 Batch 帐户中创建计算节点的 Batch **池** - 这些节点是将执行任务的虚拟机。 需要指定属性，例如[节点大小](../cloud-services/cloud-services-sizes-specs.md)、其操作系统，以及节点加入池时要安装的应用程序在 Azure 存储中的位置（在步骤 1 中上传的应用程序）。 用户还可以配置池，使之随任务生成的工作负荷[自动缩放](batch-automatic-scaling.md)。 自动缩放可动态调整池中的计算节点数。
 3. 创建 Batch **作业** ，在计算节点池上运行工作负荷。 创建作业时，需要将它与 Batch 池关联。
 4. 将 **任务** 添加到作业。 将任务添加到作业时，Batch 服务会自动计划任务在池中的计算节点上执行。 每项任务使用上传的应用程序来处理输入文件。
    
@@ -87,4 +86,3 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
-

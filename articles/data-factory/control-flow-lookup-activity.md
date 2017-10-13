@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 30173f8eea2ccbbcd44018596cf34b3769a64b50
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。 
@@ -32,7 +31,7 @@ ms.lasthandoff: 09/25/2017
 当你想要从配置文件或数据源动态检索文件/记录/表列表时，查找活动会很有帮助。 活动输出可以进一步供其他活动使用，仅对这些项执行特定处理。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
 
 
 ## <a name="example"></a>示例
@@ -230,18 +229,17 @@ ms.lasthandoff: 09/25/2017
 
 
 
-## <a name="type-properties"></a>类型属性
-名称 | 说明 | 类型 | 必选
+## <a name="type-properties"></a>Type 属性
+Name | 说明 | 类型 | 必选
 ---- | ----------- | ---- | --------
 dataset | 该数据集属性为查找提供数据集引用。 目前，支持的数据集类型包括：<ul><li>FileShareDataset</li><li>AzureBlobDataset</li><li>AzureSqlTableDataset</li><li>AzureTableDataset</li> | 键/值对 | 是
 源 | 特定于数据集的源属性，与复制活动源相同 | 键/值对 | 否
 firstRowOnly | 返回第一行或所有行。 | 布尔值 | 否
 
 ## <a name="next-steps"></a>后续步骤
-请参阅数据工厂支持的其他控制流活动： 
+查看数据工厂支持的其他控制流活动： 
 
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
 - [Get Metadata 活动](control-flow-get-metadata-activity.md)
 - [Web 活动](control-flow-web-activity.md)
-

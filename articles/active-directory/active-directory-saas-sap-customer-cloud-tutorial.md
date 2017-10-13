@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
 ms.openlocfilehash: e4d945525a45704f34e1d9e742220928a516f341
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>教程：将 Azure Active Directory 与 SAP Cloud for Customer 集成
 

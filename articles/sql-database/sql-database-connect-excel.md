@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: jhubbard
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 68eadf7a7eef4ba5e6bcd9af1279227a01efdf70
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库并创建报表
 
@@ -80,5 +79,4 @@ ms.lasthandoff: 09/29/2017
 * 了解如何 [使用 SQL Server Management Studio 连接到 SQL 数据库](sql-database-connect-query-ssms.md) ，以便进行高级查询和分析。
 * 了解 [弹性池](sql-database-elastic-pool.md)的优点。
 * 了解如何 [创建与后端 SQL 数据库连接的 Web 应用程序](../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)。
-
 

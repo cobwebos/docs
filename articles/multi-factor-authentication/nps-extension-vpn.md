@@ -16,14 +16,12 @@ ms.date: 08/15/2017
 ms.author: kgremban
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: b47e9b321b2fd0d0db9762003531b0fe9f045f07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="integrate-your-vpn-infrastructure-with-azure-multi-factor-authentication-mfa-using-the-network-policy-server-nps-extension-for-azure"></a>使用 Azure 的网络策略服务器 (NPS) 扩展将 VPN 基础结构与 Azure 多重身份验证 (MFA) 进行集成。
 
 ## <a name="overview"></a>概述
@@ -476,5 +474,4 @@ NPS 扩展需要安装在安装了网络策略和访问服务 (NPS) 角色并在
 [使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-rdg.md)
 
 [将本地目录与 Azure Active Directory 进行集成](../active-directory/connect/active-directory-aadconnect.md)
-
 

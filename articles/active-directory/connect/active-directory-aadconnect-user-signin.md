@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，帮助选择登录到 Azure AD 时需要使用的标识。
@@ -176,4 +175,3 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 ## <a name="next-steps"></a>后续步骤
 - 了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 - 了解有关 [Azure AD Connect 设计概念](active-directory-aadconnect-design-concepts.md)的详细信息。
-

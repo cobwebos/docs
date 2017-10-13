@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e83bc42d658c4d6304f98b99d0e0942595bd65d2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>在 Azure AD 中完成组成员或用户对应用程序进行访问的访问评审
 
 管理员可以通过[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)，要求评审已分配到应用程序的组成员或用户。 Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到电子邮件，可以向他们发送[如何评审访问权限](active-directory-azure-ad-controls-perform-access-review.md)中的说明。  访问评审期限结束后，或者管理员停止了访问评审后，请遵循本文中的步骤查看并应用结果。
@@ -59,4 +57,3 @@ ms.lasthandoff: 09/20/2017
 - [管理 Azure AD 访问评审的计划和控制措施](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [创建对组成员的访问评审或对应用程序的访问](active-directory-azure-ad-controls-create-access-review.md)
 - [针对充当 Azure AD 管理角色的用户创建访问评审](active-directory-privileged-identity-management-how-to-start-security-review.md)
-

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b502a586cdb7351d5b22c6b0db966723b8ebb7b4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和任务
 
 Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的结构化方法可以有效地生成预测分析解决方案和智能应用程序。 本文概述了关键的人员角色及其关联的任务，这些任务由致力于标准化此流程的数据科学团队处理。 
@@ -134,7 +132,7 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 ## <a name="next-steps"></a>后续步骤
 
-以下是 Team Data Science Process 定义的角色和任务的详细说明链接：
+下面是 Team Data Science Process 定义的角色和任务的详细说明链接：
 
 - [数据科学团队的组管理员任务](group-manager-tasks.md)
 - [数据科学团队的团队主管任务](team-lead-tasks.md)

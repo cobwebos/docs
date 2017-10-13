@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c1061811d205494969047fa3f91cbf449a25d8ab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>在 HDInsight 中使用 Azure 数据工厂创建按需 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -596,4 +595,3 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 ```
 
 容器名称为 *adfgetstarted*。 请保留该名称。 否则，需要更新 Resource Manager 模板。 如果需要关于此 CLI 脚本的帮助，请参阅[将 Azure CLI 用于 Azure 存储](../storage/common/storage-azure-cli.md)。
-

@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
 ms.openlocfilehash: 19be1d693fe13af0f6c1ab0cb6f7bc829b9fad5a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>使用 HPC Pack 设置一个运行 MPI 应用程序的 Windows RDMA 群集
 在 Azure 中使用 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 和[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)设置 Windows RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 在 HPC Pack 群集中设置支持 RDMA 且基于 Windows Server 的节点时，MPI 应用程序会在 Azure 中利用基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络实现高效通信。
@@ -180,7 +180,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
   > 
 * HPC Pack 使用 CCP_MPI_NETMASK 群集环境变量为 MPI 通信指定可接受地址范围。 从 HPC Pack 2012 R2 开始，CCP_MPI_NETMASK 群集环境变量仅影响已加入域的群集计算节点（在本地或 Azure VM 中）之间的 MPI 通信。 该变量会被已添加到“迸发到 Azure”配置中的节点忽略。
 * MPI 作业不能跨部署在不同云服务中的 Azure 实例运行（例如，不能在使用不同节点模板的“迸发到 Azure”部署中或部署在多个云服务中的 Azure VM 计算节点上运行）。 如果有使用不同节点模板启动的多个 Azure 节点部署，则 MPI 作业必须仅在一组 Azure 节点上运行。
-* 在向群集添加 Azure 节点并且使它们处于联机状态时，HPC 作业计划程序服务会立即尝试启动这些节点上的作业。 如果只有一部分的工作负荷可以在 Azure 上运行，请确保更新或创建作业模板以定义可在 Azure 上运行的作业类型。 例如，若要确保使用某一作业模板提交的作业仅在 Azure 节点上运行，可以向该作业模板中添加“节点组”属性并且选择 AzureNodes 作为所需值。 若要为 Azure 节点创建自定义组，可以使用 Add-HpcGroup HPC PowerShell cmdlet。
+* 在向群集添加 Azure 节点并且使它们处于联机状态时，HPC 作业计划程序服务会立即尝试启动这些节点上的作业。 如果只有一部分的工作负荷可以在 Azure 上运行，请确保更新或创建作业模板以定义可在 Azure 上运行的作业类型。 例如，要确保使用某一作业模板提交的作业仅在 Azure 节点上运行，可以向该作业模板中添加“节点组”属性并且选择 AzureNodes 作为所需值。 要为 Azure 节点创建自定义组，可以使用 Add-HpcGroup HPC PowerShell cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 HPC Pack 的替代方法是使用 Azure Batch 服务进行开发，以便在 Azure 中的计算节点池上运行 MPI 应用程序。 请参阅[在 Azure Batch 中使用多实例任务运行消息传递接口 (MPI) 应用程序](../../../batch/batch-mpi.md)。

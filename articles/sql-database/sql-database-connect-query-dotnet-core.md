@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/05/2017
 ms.author: carlrab
+ms.openlocfilehash: 12837cf3b080c63d494993b53efdc209ea93f389
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 046322624d3b89bb983acee863534256fee94b60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>使用 .NET Core (C#) 查询 Azure SQL 数据库
 
@@ -73,7 +72,7 @@ ms.lasthandoff: 07/28/2017
 
     ```xml
     <ItemGroup>
-        <PackageReference Include="System.Data.SqlClient" Version="4.3.0" />
+        <PackageReference Include="System.Data.SqlClient" Version="4.4.0" />
     </ItemGroup>
     ```
 
@@ -155,4 +154,3 @@ namespace sqltest
 - 了解如何[使用 .NET Framework 和 Visual Studio 连接和查询 Azure SQL 数据库](sql-database-connect-query-dotnet-visual-studio.md)。  
 - 了解如何[使用 SSMS 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database.md)，或者如何[使用 .NET 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database-csharp.md)。
 - 有关 .NET 的详细信息，请参阅 [.NET 文档](https://docs.microsoft.com/dotnet/)。
-

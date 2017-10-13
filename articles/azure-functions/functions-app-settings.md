@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2017
 ms.author: tdykstra
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: ce7bf2cf650b0df7e8998766b2d3f5a37c4a1b72
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
 函数应用中的应用设置包含对该函数应用的所有函数产生影响的全局配置选项。 在本地运行时，这些设置出现在环境变量中。 本文列出可在函数应用中使用的应用设置。
@@ -162,4 +160,3 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 > [!div class="nextstepaction"]
 > [查看 host.json 文件中的全局设置](functions-host-json.md)
-

@@ -16,10 +16,10 @@ ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 6a185d96447c2e1b0b463439dd062081e783da5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>管理 Azure SQL 数据仓库中的计算能力 (PowerShell)
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -Requested
 ## <a name="pause-compute"></a>暂停计算
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-若要暂停数据库，请使用 [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase] cmdlet。 以下示例暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用 [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase] cmdlet。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 > [!NOTE]
 > 注意，如果服务器是 foo.database.windows.net，请使用“foo”作为 Powershell cmdlet 中的 -ServerName。
@@ -92,7 +92,7 @@ $resultDatabase
 ## <a name="resume-compute"></a>恢复计算
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-若要启动数据库，请使用 [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase] cmdlet。 以下示例启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要启动数据库，请使用 [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase] cmdlet。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `

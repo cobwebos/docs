@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: c62520846ebdc102204e42b50e52383167c6aa14
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>构建使用 Azure Cosmos DB 的 Python Flask Web 应用程序
 > [!div class="op_single_selector"]
@@ -370,9 +369,9 @@ def vote():
 1. 右键单击解决方案资源管理器中的项目（确保不再在本地运行它），并选择“发布” 。  
    
      ![解决方案资源管理器中选中的教程的屏幕截图，其中突出显示了“发布”选项](./media/documentdb-python-application/image20.png)
-2. 在“发布”对话框中，依次选择“Microsoft Azure App Service”和“新建”，然后单击“发布”。
+2. 在“发布”对话框中，依次选择“Microsoft Azure 应用服务”和“新建”，然后单击“发布”。
    
-    ![“发布 Web 窗口”的屏幕截图，其中突出显示了 Microsoft Azure App Service](./media/documentdb-python-application/cosmos-db-python-publish.png)
+    ![“发布 Web 窗口”的屏幕截图，其中突出显示了 Microsoft Azure 应用服务](./media/documentdb-python-application/cosmos-db-python-publish.png)
 3. 在“创建应用服务”对话框中，输入 Web 应用名称、订阅、资源组和应用服务计划，然后单击“创建”。
    
     ![“Microsoft Azure Web 应用窗口”窗口的屏幕截图](./media/documentdb-python-application/cosmos-db-python-create-app-service.png)
@@ -403,4 +402,3 @@ def vote():
 [3]: https://www.microsoft.com/download/details.aspx?id=44266
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [Azure portal]: http://portal.azure.com
-

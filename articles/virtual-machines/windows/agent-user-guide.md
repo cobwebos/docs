@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: nepeters
 ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 
-Microsoft Azure 虚拟机代理（AM 代理）是受保护的轻型进程，用于管理 VM 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对虚拟机进行部署后配置，例如安装和配置软件。 虚拟机扩展还可启用恢复功能，例如重置虚拟机的管理密码。 没有 Azure VM 代理，虚拟机扩展无法运行。
+Microsoft Azure 虚拟机代理（AM 代理）是受保护的轻型进程，用于管理 VM 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对虚拟机进行部署后配置，例如安装和配置软件。 虚拟机扩展还可启用恢复功能，例如重置虚拟机的管理密码。 没有 Azure VM 代理，虚拟机扩展将无法运行。
 
 本文档详细介绍如何安装、检测和删除 Azure 虚拟机代理。
 
@@ -35,7 +35,7 @@ Azure VM 代理默认安装在任何通过 Azure 库映像部署的 Windows 虚�
 
 ### <a name="manual-installation"></a>手动安装
 
-可以使用 Windows 安装程序包手动安装 Windows VM 代理。 创建要部署在 Azure 中的自定义虚拟机映像时，可能需要手动安装。 若要手动安装 Windows VM 代理，可从以下位置下载 VM 代理安装程序：[Windows Azure VM 代理下载](http://go.microsoft.com/fwlink/?LinkID=394789)。 
+可以使用 Windows 安装程序包手动安装 Windows VM 代理。 创建将部署在 Azure 中的自定义虚拟机映像时，可能需要手动安装。 若要手动安装 Windows VM 代理，可从以下位置下载 VM 代理安装程序：[Windows Azure VM 代理下载](http://go.microsoft.com/fwlink/?LinkID=394789)。 
 
 双击 Windows 安装程序文件即可安装 VM 代理。 若要以自动或无人参与方式安装 VM 代理，请运行以下命令。
 

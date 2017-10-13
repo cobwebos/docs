@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ccea92dda99c3b76cbb7d37b20ce810b210a8217
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
@@ -714,4 +713,3 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 * [SQL 用户的备忘单](https://aka.ms/sql-analytics)转换最常见的惯用语言。
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-

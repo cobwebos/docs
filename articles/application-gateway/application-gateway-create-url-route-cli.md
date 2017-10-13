@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
+ms.openlocfilehash: 10d01d5d80e2d111d6b39598eed3612f80162b23
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: c617006bcb122cd3191f5da3ff08191e3c55b04b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-by-using-path-based-routing-with-azure-cli-20"></a>使用 Azure CLI 2.0，通过基于路径的路由创建应用程序网关
 
@@ -52,13 +51,13 @@ az login -u "username"
 
 输入前面的命令后，将收到一个代码。 在浏览器中转到 https://aka.ms/devicelogin，继续登录过程。
 
-![显示设备登录信息的 Cmd][1]
+![显示设备登录信息的命令提示符][1]
 
-在浏览器中，输入收到的代码。 它会将你重定向到登录页面。
+在浏览器中，输入收到的代码。 这样，可以重定向到登录页。
 
 ![用于输入代码的浏览器][2]
 
-输入代码进行登录，然后关闭浏览器以继续操作。
+输入代码进行登录，再关闭浏览器，以便继续操作。
 
 ![已成功登录][3]
 
@@ -124,4 +123,3 @@ az network application-gateway url-path-map create \
 [1]: ./media/application-gateway-create-url-route-cli/figure1.png
 [2]: ./media/application-gateway-create-url-route-cli/figure2.png
 [3]: ./media/application-gateway-create-url-route-cli/figure3.png
-

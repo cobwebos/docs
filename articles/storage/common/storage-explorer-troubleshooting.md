@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
 Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 应用可连接到托管在 Azure、Sovereign Clouds 和 Azure Stack 上的存储帐户。
@@ -182,4 +180,3 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 为此，请单击“帮助”菜单，然后单击“发送反馈”。
 
 ![反馈](./media/storage-explorer-troubleshooting/4022503_en_1.png)
-

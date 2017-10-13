@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/16/2017
 ms.author: snmuvva
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aeeb6c2fb87e6c19991ef243ee7230f4e8f4e251
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="near-real-time-metric-alerts-preview"></a>准实时指标警报（预览版）
 Azure Monitor 现在支持一种称为准实时指标警报（预览版）的新型指标警报。 此功能目前处于公开预览状态。
 这些警报与常规指标警报有一些不同
@@ -71,7 +69,7 @@ Azure Monitor 现在支持一种称为准实时指标警报（预览版）的新
 
     ![“添加准实时指标警报”按钮](./media/monitoring-near-real-time-metric-alerts/AddNRTAlertButton.png)
 
-4. 命名警报规则，并选择也在通知电子邮件中显示的“说明”。
+4. **命名**警报规则，并选择也在通知电子邮件中显示的“说明”。
 5. 选择想要监视的“指标”，然后为该指标依次选择“条件”、“时间聚合”和“阈值”。 也可以选择想要监视的另一个“指标”，然后为其依次选择“条件”、“时间聚合”和“阈值”。 
 
     ![添加准实时指标警报1](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert1.png) ![添加准实时指标警报2](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert2.png)
@@ -95,7 +93,6 @@ Azure Monitor 现在支持一种称为准实时指标警报（预览版）的新
 * 查看显示指标的阈值和前一天实际值的关系图。
 * 编辑或删除其。
 * 如果想要暂时停止或恢复接收该警报的通知，可**禁用**或**启用**它。
-
 
 
 

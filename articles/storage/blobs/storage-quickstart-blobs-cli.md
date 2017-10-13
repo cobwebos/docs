@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: marsma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c9b7e7a1fbc6b67821183ce31bdf2527de490c92
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>使用 Azure CLI 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速入门详细介绍了如何使用 Azure CLI 将数据上传和下载到 Azure Blob 存储或从 Azure Blob 存储上传和下载数据。
@@ -109,4 +107,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [如何通过 Azure CLI 对 Blob 存储执行操作](storage-how-to-use-blobs-cli.md)
-

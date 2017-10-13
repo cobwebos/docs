@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
 ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>规划和设计 Azure 虚拟网络
 创建用于试验的 VNet 非常简单，但却可能是，会在一段时间内部署多个 VNet 以支持组织的生产需要。 通过进行一些规划和设计，能够更有效地部署 VNet 和连接所需的资源。 如果不熟悉 VNet，我们建议先[了解 VNet](virtual-networks-overview.md) 以及[如何部署](virtual-networks-create-vnet-arm-pportal.md) VNet，再继续阅读本文。

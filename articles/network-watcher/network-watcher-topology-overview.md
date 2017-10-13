@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fa79ab0ab80481c8969c6fa653e92b10985cab3b
-ms.openlocfilehash: 42443f614b76b8180ac163b9889163021adbf048
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: d5cb5ba431eeae1956a9dbf1d48561c66faef9a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-topology-in-azure-network-watcher"></a>Azure 网络观察程序中的拓扑简介
 
 拓扑返回虚拟网络中的网络资源图。 此图描绘了资源之间的相互关系以表示端到端网络连接。
@@ -33,7 +31,7 @@ ms.lasthandoff: 03/31/2017
 > [!NOTE]
 > 要在其上运行拓扑的每个区域都需要网络观察程序实例。
 
-返回资源时，将在两种关系下为资源之间的连接建模。
+返回资源时，会在两种关系下为资源之间的连接建模。
 
 - **包含** - 示例：虚拟网络包含一个包含 NIC 的子网
 - **已关联** - 示例：NIC 与 VM 相关联
@@ -45,4 +43,3 @@ ms.lasthandoff: 03/31/2017
 <!--Image references-->
 
 [1]: ./media/network-watcher-topology-overview/topology.png
-

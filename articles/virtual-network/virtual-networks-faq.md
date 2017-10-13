@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
+ms.openlocfilehash: c71e188b74ebfd9420f840957e83190cf476b584
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 9520e4c2680e1dd0158a35b4ee65496a42a02563
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -216,4 +215,3 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 - 使用 Azure 门户通过 [Azure 资源管理器](virtual-networks-create-vnet-arm-pportal.md)和[经典](virtual-networks-create-vnet-classic-pportal.md)部署模型部署 VNet。
 - 使用 PowerShell 管理通过[资源管理器](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network.md)和[经典](/powershell/module/azure/?view=azuresmps-3.7.0)部署模型部署的 VNet。
 - 使用 [Azure 命令行接口 (CLI)](../virtual-machines/azure-cli-arm-commands.md#azure-network-commands-to-manage-network-resources) 来管理通过这两种部署模型部署的 VNet。  
-

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
 ms.openlocfilehash: 4688fc4bc74a9e0e04487cfbe965006070fd9a7b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-11-run-a-test-failover-for-hyper-v-replication-with-vmm-to-azure"></a>步骤 11：运行测试故障转移以将 Hyper-V（包含 VMM）复制到 Azure
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 08/29/2017
 ## <a name="network-considerations"></a>网络注意事项
     
 - 你可以设置要为故障转移后的 Azure VM 使用的目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移会失败。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
-- 网络适配器数目根据为目标虚拟机指定的大小来确定，如下所述：
+- 网络适配器数目根据你为目标虚拟机指定的大小来确定，如下所述：
     - 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
     - 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
     - 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。     

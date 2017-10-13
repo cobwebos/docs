@@ -17,10 +17,10 @@ ms.date: 08/12/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>创建由通用 webhook 触发的函数
 
@@ -28,7 +28,7 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 
 ![Azure 门户中通用 webhook 触发的函数](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
 完成本教程：
 

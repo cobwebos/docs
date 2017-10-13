@@ -1,53 +1,53 @@
-## <a name="prerequisites"></a>必备条件
-我们可以编写 CDN 管理代码之前，我们需要先完成一些准备工作，以便我们的代码进行交互与 Azure 资源管理器。  若要执行此操作，你需要：
+## <a name="prerequisites"></a>先决条件
+在编写 CDN 管理代码之前，需要做好一些准备工作，使代码能够与 Azure Resource Manager 交互。  为此需要：
 
-* 创建一个资源组包含本教程中我们创建的 CDN 配置文件
-* 配置 Azure Active Directory 的我们的应用程序提供身份验证
-* 将权限应用于资源组，以便只有授权的用户从我们的 Azure AD 租户可以与我们的 CDN 配置文件进行交互
+* 创建一个资源组，其中包含本教程创建的 CDN 配置文件
+* 配置 Azure Active Directory，为应用程序提供身份验证
+* 将权限应用到资源组，以便只有来自 Azure AD 租户的已授权用户可与 CDN 配置文件交互
 
 ### <a name="creating-the-resource-group"></a>创建资源组
-1. 登录到[Azure 门户](https://portal.azure.com)。
-2. 单击**新建**左上角中的按钮，然后**管理**，和**资源组**。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 单击左上角的“新建”按钮，并依次单击“管理”、“资源组”。
 
-    ![创建新的资源组](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
-3. 调用你的资源组*CdnConsoleTutorial*。  选择你的订阅并选择你附近的位置。  如果您愿意，您可以单击**固定到仪表板**复选框可在门户中固定到仪表板中的资源组。  这将使更轻松地查找更高版本。  你所做选择后，单击**创建**。
+    ![创建新资源组](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
+3. 将资源组命名为 *CdnConsoleTutorial*。  选择订阅，并选择离你最近的位置。  可以根据需要单击“固定到仪表板”复选框，将资源组固定到门户中的仪表板。  这可以方便稍后查找该资源组。  完成选择后，单击“创建”。
 
-    ![命名的资源组](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
-4. 创建资源组，如果未将其固定到仪表板后，您可以通过单击查找它**浏览**，然后**资源组**。  单击资源组，以将其打开。  记下你**订阅 ID**。  我们将更高版本需要它。
+    ![为资源组命名](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+4. 创建资源组之后，如果未将它固定到仪表板，可以依次单击“浏览”和“资源组”找到它。  单击该资源组将它打开。  记下**订阅 ID**。  稍后需要用到此信息。
 
-    ![命名的资源组](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![为资源组命名](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
-### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>创建 Azure AD 应用程序和应用权限
-有两种方法来与 Azure Active Directory 的应用程序身份验证： 单个用户或服务主体。 服务主体是类似于 Windows 中的服务帐户。  而不是与 CDN 配置文件进行交互权限授予特定用户，我们将改为授予对服务主体的权限。  服务主体通常用于自动化的非交互式进程。  即使本教程编写一个交互式控制台应用程序，我们将重点的服务主体方法。
+### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>创建 Azure AD 应用程序并应用权限
+可使用以下两种方式在 Azure Active Directory 中进行应用身份验证：个人用户或服务主体。 服务主体类似于 Windows 中的服务帐户。  我们不是向特定用户授权来与 CDN 配置文件交互，而是将权限授予服务主体。  服务主体通常用于自动化的非交互式过程。  尽管本教程涉及到编写交互式控制台应用，但重点介绍服务主体身份验证方式。
 
-创建一个服务主体包含多个步骤，包括创建 Azure Active Directory 应用程序。  为此，我们将为[遵循本教程](../articles/resource-group-create-service-principal-portal.md)。
+创建服务主体的过程由多个步骤构成，其中包括创建 Azure Active Directory 应用程序。  为此，请[遵循此教程](../articles/resource-group-create-service-principal-portal.md)。
 
 > [!IMPORTANT]
-> 请务必遵循中的所有步骤[链接的教程](../articles/resource-group-create-service-principal-portal.md)。  它是*极其重要*你严格按所述完成。  请务必请注意你**租户 ID**，**租户域名**(通常*。 onmicrosoft.com*域除非你指定自定义的域)，**客户端 ID**，和**客户端身份验证密钥**，因为我们将需要这些更高版本。  要非常小心地保护你**客户端 ID**和**客户端身份验证密钥**，因为这些凭据可使用的任何人，作为服务主体执行操作。
+> 请务必遵循[链接的教程](../articles/resource-group-create-service-principal-portal.md)中的所有步骤。  必须完全按照说明完成操作，这一点*极为重要*。  请务必记下**租户 ID**、**租户域名**（除非指定了自定义域，否则通常是 *.onmicrosoft.com* 域）、**客户端 ID** 和**客户端身份验证密钥**，因为稍后需要用到这些信息。  请妥善保护**客户端 ID** 和**客户端身份验证密钥**，因为任何人都可以使用这些凭据以服务主体的身份执行操作。
 >
-> 当你获取到名为配置多租户应用程序的步骤时，请选择**否**。
+> 执行“Configure multi-tenant application”（配置多租户应用程序）步骤时，请选择“No”（否）。
 >
-> 当你到达步骤[分配到角色的应用程序](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)，使用更早版本，我们创建的资源组*CdnConsoleTutorial*，但而不是**读取器**角色，分配**CDN 配置文件参与者**角色。  分配应用程序后**CDN 配置文件参与者**在资源组，返回到本教程上的角色。 
+> 执行“Assign application to role”（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。[](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
 >
 >
 
-一旦创建服务主体并分配**CDN 配置文件参与者**角色，**用户**边栏选项卡为你的资源组应类似于此。
+创建服务主体并分配“CDN 配置文件参与者”角色之后，资源组的“用户”边栏选项卡看起来应如下所示。
 
-![用户边栏选项卡](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
+![“用户”边栏选项卡](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
 
 ### <a name="interactive-user-authentication"></a>交互式用户身份验证
-如果，而不是服务主体，你希望让交互式单个用户身份验证，则过程是非常类似于服务主体。  事实上，你将需要按照相同的过程，但进行一些小的更改。
+如果想要使用交互式个人用户身份验证而不是服务主体身份验证，操作过程与适用于服务主体的过程非常类似。  事实上，需要遵循的过程基本相同，只是要做一些轻微的更改。
 
 > [!IMPORTANT]
-> 如果你要选择而不是服务主体使用单个用户身份验证，仅按照这些后续步骤。
+> 仅当选择使用个人用户身份验证而不是服务主体身份验证时，才要执行后续步骤。
 >
 >
 
-1. 创建你的应用程序，而不时**Web 应用程序**，选择**本机应用程序**。
+1. 创建应用程序时，请选择“本机应用程序”而不是“Web 应用程序”。
 
     ![本机应用程序](./media/cdn-app-dev-prep/cdn-native-application-include.png)
-2. 在下一页上，您将被提示输入**重定向 URI**。  URI 不会进行验证，但请记住你的输入。  将为需要更高版本。
-3. 若要创建无需**客户端身份验证密钥**。
-4. 而不是分配到服务主体**CDN 配置文件参与者**角色，我们要将单个用户或组分配。  在此示例中，你可以看到，已分配*CDN 演示用户*到**CDN 配置文件参与者**角色。  
+2. 在下一页上，系统会提示输入**重定向 URI**。  系统不会验证 URI，但请记住输入的 URI。  稍后需要用到此信息。
+3. 不需要创建**客户端身份验证密钥**。
+4. 我们不会向“CDN 配置文件参与者”角色分配服务主体，而是分配个人用户或组。  在本示例中，可以看到已将“CDN 演示用户”分配到“CDN 配置文件参与者”角色。  
 
-    ![单个用户访问](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
+    ![个人用户访问权限](./media/cdn-app-dev-prep/cdn-aad-user-include.png)

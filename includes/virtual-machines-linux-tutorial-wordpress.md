@@ -21,7 +21,7 @@ sudo apt install wordpress
 ```bash
 sudo sensible-editor /etc/wordpress/config-localhost.php
 ```
-将以下行复制到文件中，并将 *yourPassword* 替换为自己的数据库密码（其他值不变）。 然后保存文件。
+将以下行复制到文件中，并将 yourPassword 替换为自己的数据库密码（其他值不变）。 然后保存文件。
 
 ```php
 <?php
@@ -39,7 +39,7 @@ define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
 sudo sensible-editor wordpress.sql
 ```
 
-添加以下命令，将 *yourPassword* 替换为自己的数据库密码（其他值不变）。 然后保存文件。
+添加以下命令，将 yourPassword 替换为自己的数据库密码（其他值不变）。 然后保存文件。
 
 ```sql
 CREATE DATABASE wordpress;

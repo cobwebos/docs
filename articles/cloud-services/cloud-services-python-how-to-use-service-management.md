@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
 ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-service-management-from-python"></a>如何从 Python 使用服务管理
 本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [用于 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) 中的 **ServiceManagementService** 类支持以编程方式访问 [Azure 经典门户][management-portal]中提供的众多与服务管理相关的功能（例如**创建、更新和删除云服务、部署、数据管理服务和虚拟机**）。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
@@ -28,13 +28,13 @@ ms.lasthandoff: 08/29/2017
 
 若要使用服务管理 API，需要[创建 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="Concepts"> </a>概念
+## <a name="Concepts"></a>概念
 Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后者是 REST API。 所有 API 操作都是通过 SSL 执行的，并且使用 X.509 v3 证书互相进行身份验证。 可以从在 Azure 中运行的服务访问管理服务，或直接通过 Internet 从可发送 HTTPS 请求和接收 HTTPS 响应的任意应用程序访问管理服务。
 
-## <a name="Installation"> </a>安装
+## <a name="Installation"></a>安装
 `azure-servicemanagement-legacy` 包中提供了本文介绍的所有功能，可以使用 pip 安装该包。 有关安装的详细信息（例如，如果刚开始接触 Python），请参阅此文：[安装 Python 和 Azure SDK](../python-how-to-install.md)
 
-## <a name="Connect"> </a>如何：连接到服务管理
+## <a name="Connect"></a>如何：连接到服务管理
 要连接到服务管理终结点，需要 Azure 订阅 ID 和有效管理证书。 可以通过 [Azure 经典门户][management-portal]获取订阅 ID。
 
 > [!NOTE]
@@ -72,7 +72,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-该命令将创建 `.cer` 文件，然后将该文件安装在“个人”证书存储中。 有关详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。
+该命令将创建 `.cer` 文件，然后将该文件安装到“**个人**”证书存储中。 有关详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。
 
 创建证书后，需要通过 [Azure 经典门户][management-portal]的“设置”选项卡的“上传”操作，将 `.cer` 文件上传到 Azure。
 
@@ -88,7 +88,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 在前面的示例中，`sms` 是一个 **ServiceManagementService** 对象。 **ServiceManagementService** 类是用于管理 Azure 服务的主类。
 
-## <a name="ListAvailableLocations"> </a>如何：列出可用位置
+## <a name="ListAvailableLocations"></a>如何：列出可用位置
 若要列出可用于托管服务的位置，请使用 **list\_locations** 方法：
 
     from azure import *
@@ -100,7 +100,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
     for location in result:
         print(location.name)
 
-创建云服务或存储服务时，需要提供有效位置。 **list\_locations** 方法将始终返回当前可用位置的最新列表。 截止到本文撰写时为止，可用位置为：
+在创建云服务或存储服务时，需要提供有效位置。 **list\_locations** 方法将始终返回当前可用位置的最新列表。 截止到本文撰写时为止，可用位置为：
 
 * 欧洲西部
 * 欧洲北部
@@ -118,8 +118,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 * 澳大利亚东南部
 
 ## <a name="CreateCloudService"></a>如何：创建云服务
-创建应用程序并在 Azure 中运行该应用程序时，相关代码和配置统称为 Azure [云服务][cloud service]（在早期版本的 Azure 中称为*托管服务*）。 
-            **create\_hosted\_service** 方法允许通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建新的托管服务。
+创建应用程序并在 Azure 中运行该应用程序时，相关代码和配置统称为 Azure [云服务][cloud service]（在早期版本的 Azure 中称为*托管服务*）。 **create\_hosted\_service** 方法允许通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建新的托管服务。
 
     from azure import *
     from azure.servicemanagement import *
@@ -143,7 +142,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-如果希望获得有关特定托管服务的信息，可以通过将托管服务名称传递给 get\_hosted\_service\_properties 方法来实现此目的：
+如果希望获得有关特定托管服务的信息，可以通过将托管服务名称传递给 **get\_hosted\_service\_properties** 方法来实现此目的：
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -151,16 +150,16 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
     print('Management URL: ' + hosted_service.url)
     print('Location: ' + hosted_service.hosted_service_properties.location)
 
-创建云服务后，可使用 create\_deployment 方法将代码部署到服务。
+在创建云服务后，可以使用 **create\_deployment** 方法将代码部署到服务。
 
-## <a name="DeleteCloudService"> </a>如何：删除云服务
-可通过将服务名称传递给delete\_hosted\_service  方法来删除云服务：
+## <a name="DeleteCloudService"></a>如何：删除云服务
+可以通过将服务名称传递到 **delete\_hosted\_service** 方法来删除云服务：
 
     sms.delete_hosted_service('myhostedservice')
 
 必须先删除服务的所有部署，然后才能删除服务。 （有关详细信息，请参阅[如何：删除部署](#DeleteDeployment)。）
 
-## <a name="DeleteDeployment"> </a>如何：删除部署
+## <a name="DeleteDeployment"></a>如何：删除部署
 若要删除部署，请使用 **delete\_deployment** 方法。 下面的示例演示如何删除名为 `v1` 的部署。
 
     from azure import *
@@ -170,8 +169,8 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
     sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"> </a>如何：创建存储服务
-利用[存储服务](../storage/common/storage-create-storage-account.md)，可以访问 Azure [Blob](../storage/blobs/storage-python-how-to-use-blob-storage.md)、[表](../cosmos-db/table-storage-how-to-use-python.md)和[队列](../storage/queues/storage-python-how-to-use-queue-storage.md)。 若要创建存储服务，需要提供服务名称（3 至 24 个小写字符且在 Azure 中唯一）、说明、标签（最多 100 个字符，自动编码为 base64）以及位置。 下面的示例演示如何通过指定位置来创建存储服务。
+## <a name="CreateStorageService"></a>如何：创建存储服务
+利用[存储服务](../storage/common/storage-create-storage-account.md)，可以访问 Azure [Blob](../storage/blobs/storage-python-how-to-use-blob-storage.md)、[表](../cosmos-db/table-storage-how-to-use-python.md)和[队列](../storage/queues/storage-python-how-to-use-queue-storage.md)。 要创建存储服务，需要服务名称（3 至 24 个小写字符且在 Azure 中是唯一的）、说明、标签（最多 100 个字符，自动编码为 base64）以及位置。 下面的示例演示如何通过指定位置来创建存储服务。
 
     from azure import *
     from azure.servicemanagement import *
@@ -203,8 +202,8 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
         print('Location: ' + account.storage_service_properties.location)
         print('')
 
-## <a name="DeleteStorageService"> </a>如何：删除存储服务
-可通过将存储服务名称传递给 delete\_storage\_account 方法来删除存储服务。 删除存储服务会删除该服务中存储的所有数据（Blob、表和队列）。
+## <a name="DeleteStorageService"></a>如何：删除存储服务
+可以通过将存储服务名称传递给 **delete\_storage\_account** 方法来删除存储服务。 删除存储服务会删除该服务中存储的所有数据（Blob、表和队列）。
 
     from azure import *
     from azure.servicemanagement import *
@@ -213,7 +212,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
     sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"> </a>如何：列出可用操作系统
+## <a name="ListOperatingSystems"></a>如何：列出可用操作系统
 若要列出可用于托管服务的操作系统，请使用 **list\_operating\_systems** 方法：
 
     from azure import *
@@ -240,8 +239,8 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
                 print('Version: ' + os.version)
         print('')
 
-## <a name="CreateVMImage"> </a>如何：创建操作系统映像
-若要将操作系统映像添加到映像存储库中，请使用 add\_os\_image 方法：
+## <a name="CreateVMImage"></a>如何：创建操作系统映像
+要将操作系统映像添加到映像存储库中，请使用 **add\_os\_image** 方法：
 
     from azure import *
     from azure.servicemanagement import *
@@ -272,7 +271,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
         print('Media link: ' + image.media_link)
         print('')
 
-## <a name="DeleteVMImage"> </a>如何：删除操作系统映像
+## <a name="DeleteVMImage"></a>如何：删除操作系统映像
 若要删除用户映像，请使用 **delete\_os\_image** 方法：
 
     from azure import *
@@ -285,8 +284,8 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>如何：创建虚拟机
-若要创建虚拟机，首先需要创建[云服务](#CreateCloudService)。  然后使用 create\_virtual\_machine\_deployment 方法创建虚拟机部署：
+## <a name="CreateVM"></a>如何：创建虚拟机
+若要创建虚拟机，首先需要创建[云服务](#CreateCloudService)。  然后使用 **create\_virtual\_machine\_deployment** 方法来创建虚拟机部署：
 
     from azure import *
     from azure.servicemanagement import *
@@ -323,7 +322,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
         os_virtual_hard_disk=os_hd,
         role_size='Small')
 
-## <a name="DeleteVM"> </a>如何：删除虚拟机
+## <a name="DeleteVM"></a>如何：删除虚拟机
 若要删除虚拟机，请首先使用 **delete\_deployment** 方法来删除部署：
 
     from azure import *
@@ -334,7 +333,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-然后可以使用 delete\_hosted\_service 方法删除云服务：
+然后可以使用 **delete\_hosted\_service** 方法来删除云服务：
 
     sms.delete_hosted_service(service_name='myvm')
 
@@ -399,7 +398,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 若要了解有关如何捕获 Windows 虚拟机的详细信息，请参阅[如何捕获 Windows 虚拟机](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-## <a name="What's Next"> </a>后续步骤
+## <a name="What's Next"></a>后续步骤
 现在，已学习了有关服务管理的基础知识，接下来可以访问 [Azure Python SDK 的完整 API 参考文档](http://azure-sdk-for-python.readthedocs.org/)，并轻松执行复杂的任务来管理 python 应用程序。
 
 有关详细信息，请参阅 [Python 开发人员中心](/develop/python/)。

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2016
 ms.author: bwren
 ms.openlocfilehash: 02df117908fc1790e8cfb9ec0a7218c1b8be856c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>排查 Application Insights 中的分析问题
 [Application Insights Analytics](app-insights-analytics.md) 出现了问题？ 从此处开始。 Analytics 是 Azure Application Insights 的强大搜索工具。
@@ -31,21 +31,21 @@ ms.lasthandoff: 08/18/2017
 
 请禁用该扩展，或使用不同的浏览器。
 
-## <a name="e-a"></a>"错误"
+## <a name="e-a"></a>“意外的错误”
 ![“意外的错误”屏幕](./media/app-insights-analytics-troubleshooting/010.png)
 
 在门户运行时期间发生内部错误 – 未经处理的异常。
 
 * 清除浏览器的缓存。 
 
-## <a name="e-b"></a>403...请尝试重新加载
+## <a name="e-b"></a>403 ... 请尝试重新加载
 ![403 ... 请尝试重新加载](./media/app-insights-analytics-troubleshooting/020.png)
 
 发生身份验证相关的错误（在身份验证期间或生成访问令牌期间）。 如果不更改浏览器设置，门户可能无法恢复。
 
 * 检查是否在浏览器中[启用了第三方 Cookie](#cookies)。 
 
-## <a name="authentication"></a>403...验证安全区域
+## <a name="authentication"></a>403 ... 验证安全区域
 ![403 ... 验证安全区域](./media/app-insights-analytics-troubleshooting/030.png)
 
 发生身份验证相关的错误（在身份验证期间或生成访问令牌期间）。 如果不更改浏览器设置，门户可能无法恢复。
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/18/2017
 1. 检查是否在浏览器中[启用了第三方 Cookie](#cookies)。 
 2. 是否使用了收藏夹、书签或保存的链接来打开 Analytics 门户？ 登录时使用的凭据与保存链接时使用的凭据是否不同？
 3. 尝试使用 InPrivate/incognito 浏览器窗口（在关闭所有此类窗口之后）。 需要提供凭据。 
-4. 打开另一个（普通）浏览器窗口并转到 [Azure](https://portal.azure.com)。 注销。然后打开你的链接并使用正确的凭据登录。
+4. 打开另一个（普通）浏览器窗口并转到 [Azure](https://portal.azure.com)。 注销。然后打开链接并使用正确的凭据登录。
 5. 如果受信任区域设置不受支持，Edge 和 Internet Explorer 的用户也会收到此错误。
    
     检查 [Analytics 门户](https://analytics.applicationinsights.io)和 [Azure Active Directory 门户](https://portal.azure.com)是否位于相同的安全区域：
@@ -94,16 +94,16 @@ ms.lasthandoff: 08/18/2017
 
 URL 无效。 
 
-* 在 [Application Insights 门户](https://portal.azure.com)中打开应用资源。 然后，使用分析按钮。
+* 在 [Application Insights 门户](https://portal.azure.com)中打开应用资源。 然后使用“Analytics”按钮。
 
-## <a name="e-h"></a>404...页不存在
+## <a name="e-h"></a>404 ... 页面不存在
 ![404 ...页面不存在](./media/app-insights-analytics-troubleshooting/080.png)
 
 URL 无效。
 
-* 在 [Application Insights 门户](https://portal.azure.com)中打开应用资源。 然后，使用分析按钮。
+* 在 [Application Insights 门户](https://portal.azure.com)中打开应用资源。 然后使用“Analytics”按钮。
 
-## <a name="cookies"></a>启用第三方 cookie
+## <a name="cookies"></a>启用第三方 Cookie
   请参阅[如何禁用第三方 Cookie](http://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers)，但请注意，我们需要**启用**它们。
 
 

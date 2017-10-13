@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
 ms.openlocfilehash: 58f4eab190e40e16ed261c165ffdfc8155eeb434
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
@@ -72,8 +72,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="scale-your-service"></a>扩展服务
 创建服务可能需要几分钟（至少 15 分钟，具体取决于层）。 预配服务后，可以对其进行扩展以满足需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
 
-
-            ***分区***允许服务存储和搜索更多文档。
+***分区***允许服务存储和搜索更多文档。
 
 ***副本***允许服务处理负载更高的搜索查询。
 
@@ -103,7 +102,7 @@ ms.lasthandoff: 07/11/2017
 > 在 Azure 搜索中，无法分离索引工作负荷和查询工作负荷；因此永远无需为分离的工作负荷创建多个服务。 查询索引时，始终是在创建该索引时所在的服务中查询（不能在一个服务中创建索引，然后将其复制到另一个服务）。
 >
 
-无需为实现高可用性添加第二个服务。 在同一服务中使用 2 个或更多个副本，便可实现查询的高可用性。 副本更新是连续的，这意味着当服务更新推出时，至少有一个副本能正常工作。 有关运行时间的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
+无需为实现高可用性添加第二个服务。 在同一服务中使用 2 个或更多个副本，便可实现查询的高可用性。 副本更新是连续的，这意味着当服务更新推出时，至少有一个副本能正常工作。有关运行时间的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
 预配 Azure 搜索服务后，即可[定义索引](search-what-is-an-index.md)，从而上传和搜索数据。

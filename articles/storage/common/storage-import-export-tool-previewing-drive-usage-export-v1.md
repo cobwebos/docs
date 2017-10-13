@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>预览导出作业的驱动器使用情况
 在创建导出作业之前，需要选择一组要导出的 blob。 Microsoft Azure 导入/导出服务允许使用一系列 blob 路径或 blob 前缀来表示选定的 blob。  

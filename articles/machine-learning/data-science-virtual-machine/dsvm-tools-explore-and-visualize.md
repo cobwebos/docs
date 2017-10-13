@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d8f0616f17dbaa02082492cc1c68f1d989ea5aae
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机上的数据浏览和可视化工具
 
 数据科学的关键步骤之一是了解数据。 可视化和数据浏览工具可帮助加速数据理解。 DSVM 上提供了以下工具，可为这一关键步骤提供辅助。 
@@ -65,5 +63,4 @@ ms.lasthandoff: 09/25/2017
 | 典型用途      |  数据可视化和构建仪表板   |
 | 如何使用/运行它？      | 桌面快捷方式 (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、Juno      |
-
 

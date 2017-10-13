@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/09/2017
 ms.author: tomfitz
 ms.openlocfilehash: 060680fd4a7ce6e0cde406cc4a8f6f3a21d3c588
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager 与经典部署：了解部署模型和资源状态
 本主题介绍 Azure Resource Manager 和经典部署模型、资源的状态，以及使用不同模型来部署资源的原因。 Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 通过两个不同的 API 集来处理它们，且部署的资源可能包含重要差异。 这两个模型相互不完全兼容。 本主题介绍这些差异。
@@ -208,7 +208,7 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
 
 **我能通过 Resource Manager API 继续使用自动化脚本来预配虚拟机、虚拟网络和存储帐户资源吗？**
 
-已经构建的所有自动化和脚本继续适用于在 Azure 服务管理模式下创建的现有虚拟机和虚拟网络。 然而，必须更新这些脚本以使用新的架构，通过 Resource Manager 模式来创建相同的资源。
+所构建的所有自动化和脚本将继续适用于在 Azure 服务管理模式下创建的现有虚拟机和虚拟网络。 然而，必须更新这些脚本以使用新的架构，通过 Resource Manager 模式来创建相同的资源。
 
 **在哪里可以找到 Azure Resource Manager 模板的示例？**
 

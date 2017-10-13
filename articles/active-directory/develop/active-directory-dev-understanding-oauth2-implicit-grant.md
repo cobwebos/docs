@@ -16,10 +16,10 @@ ms.date: 11/15/2016
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 241c744737515ee0c8d5d833a51121808877e559
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>了解 Azure Active Directory (AD) 中的 OAuth2 隐式授权流
 OAuth2 隐式授权是 OAuth2 规范中安全疑虑最多的授权方式，因此让人诟病。 然而，这却是 ADAL JS 的实现方式，也是我们建议用于编写 SPA 应用程序的方法。 这是怎么回事呢？ 不外乎是一种权衡利弊之后的结果：事实证明，对于通过 JavaScript 从浏览器使用 Web API 的应用程序而言，隐式授权是所能找到的最好方法。
@@ -45,7 +45,7 @@ OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌�
 * 会话或本地存储等 HTML5 功能可授予令牌缓存和生存期管理的完全控制权，但是 Cookie 管理对于应用而言是不透明的
 * 访问令牌不容易遭受跨站点请求伪造 (CSRF) 攻击
 
-隐式授权流不颁发刷新令牌，这主要是出于安全考虑。 刷新令牌的范围不像访问令牌那么窄，前者授予更大的权力，因此万一泄露，会造成更大的损害。 在隐式流中，令牌在 URL 中传递，因此遭到拦截的风险高于授权代码授予。
+隐式授权流不颁发刷新令牌，这主要是出于安全考虑。 刷新令牌的范围不像访问令牌那么窄，前者授予更大的权力，因此万一泄露，将造成更大的损害。在隐式流中，令牌在 URL 中传递，因此遭到拦截的风险高于授权代码授予。
 
 不过请注意，JavaScript 应用程序提供另一种可任其处置的机制，可用于续订访问令牌，且不会重复提示用户输入凭据。 应用程序可以使用隐藏的 iframe 来针对 Azure AD 的授权终结点执行新的令牌请求：只要浏览器仍然针对 Azure AD 域提供活动会话（读取：有会话 Cookie），则身份验证请求就可以成功且不需要用户交互。
 
@@ -54,13 +54,13 @@ OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌�
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>隐式授权适合我的应用吗？
 隐式授权带来的风险高于其他授权，有相应的文档介绍了需要注意的地方。 例如，[在隐式流中误用访问令牌来模拟资源所有者][OAuth2-Spec-Implicit-Misuse]和 [OAuth 2.0 威胁模型和安全注意事项][OAuth2-Threat-Model-And-Security-Implications]）。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
 
-如果应用程序是本机客户端，则隐式流并不太适合。 在使用本机客户端的情况下，如果没有 Azure AD 会话 Cookie，应用程序无法长时间维持一个会话。 这意味着，在为新资源获取访问令牌时，应用程序会反复提示用户。
+如果应用程序是本机客户端，则隐式流并不太适合。 在使用本机客户端的情况下，如果没有 Azure AD 会话 Cookie，应用程序将无法长时间维持一个会话。 这意味着，在为新资源获取访问令牌时，应用程序会反复提示用户。
 
 如果要开发包含后端的 Web 应用程序，并需要从其后端代码使用 API，则也不适合使用隐式流。 其他授权可以提供更强大的功能。 例如，授予 OAuth2 客户端凭据即可获取的令牌能够反映分配给应用程序本身的权限，这不同于用户委派。 这意味着，即使在用户未积极参与某个会话这样的情况下，客户端也可始终对资源进行程序性的访问。 不仅如此，此类授权还提供更严格的安全保证。 例如，访问令牌从不在用户浏览器中传输，因此不会有被保存在浏览器历史记录中的风险，诸如此类。 在请求令牌时，客户端应用程序还可以进行严格的身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关开发人员资源的完整列表，包括 Azure AD 支持的协议和 OAuth2 授权流的参考信息，请参阅 [Azure AD 开发人员指南][AAD-Developers-Guide]
-* 要更深入了解应用程序集成过程，请参阅 [How to integrate an application with Azure AD][ACOM-How-To-Integrate] （如何将应用程序与 Azure AD 集成）。
+* 要更深入地了解应用程序集成过程，请参阅[如何将应用程序与 Azure AD 集成][ACOM-How-To-Integrate]。
 
 <!--Image references-->
 

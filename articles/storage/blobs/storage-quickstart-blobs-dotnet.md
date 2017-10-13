@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/01/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 97bacc2c1285fe4a467a54f224bb9fabbd851fee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>使用 .NET 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 
 本快速入门介绍如何使用 C#.NET 在 Windows 中上传、下载和列出 Azure Blob 存储的容器中的块 blob。
@@ -219,4 +217,3 @@ File.Delete(fileAndPath2);
 > [Blob 存储操作说明](storage-dotnet-how-to-use-blobs.md)
 
 若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
-
