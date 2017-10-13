@@ -1,4 +1,3 @@
-
 ---
 title: "用于使用 Azure Site Recovery 复制到辅助站点的支持矩阵 | Microsoft Docs"
 description: "汇总了 Azure Site Recovery 支持的操作系统和组件"
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 69c5d09b6608484210870e1a69c51b112b497810
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>用于使用 Azure Site Recovery 复制到辅助站点的支持矩阵
 
@@ -139,4 +137,3 @@ RDM | 是 | 不适用
 
 - [将 VMM 云中的 Hyper-V VM 复制到辅助站点](site-recovery-vmm-to-vmm.md)
 - [将 VMware VM 和物理服务器复制到辅助站点](site-recovery-vmware-to-vmware.md)
-

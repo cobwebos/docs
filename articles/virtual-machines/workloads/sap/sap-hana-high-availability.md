@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
 ms.openlocfilehash: 951150e621d21037b0adde7287b9f985290d8d11
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure 虚拟机 (VM) 上的 SAP HANA 高可用性
 
@@ -450,7 +450,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
 
 1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。 这是**租户 ID**。
+   转到“属性”并记下目录 ID。这是**租户 ID**。
 1. 单击“应用注册”
 1. 单击“添加”
 1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost），并单击“创建”
@@ -458,7 +458,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
 1. 记下值。 此值用作服务主体的**密码**
-1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的**登录 ID**）
+1. 记下应用程序 ID。此 ID 用作服务主体的用户名（以下步骤中的**登录 ID**）
 
 默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。
 

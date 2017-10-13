@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
 ms.openlocfilehash: caa287a2ed8774965ef722685e4e950336e5e0ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-people"></a>教程：Azure Active Directory 与 People 的集成
 

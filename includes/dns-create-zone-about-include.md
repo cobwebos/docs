@@ -1,14 +1,14 @@
-DNS 区域用于承载特定域的 DNS 记录。 若要启动托管在 Azure DNS 中的域，你需要创建该域名的 DNS 区域。 此 DNS 区域内然后创建你的域每个 DNS 记录。
+DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。
 
-例如，contoso.com 的域可能包含多个 DNS 记录，如 mail.contoso.com （适用于邮件服务器） 和 www.contoso.com （适用于网站）。
+例如，域“contoso.com”可能包含几条 DNS 记录，如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。
 
-当在 Azure DNS 中创建 DNS 区域：
+在 Azure DNS 中创建 DNS 区域时：
 
-* 区域的名称必须是唯一在资源组中，并且必须已存在该区域。 否则，该操作将失败。
-* 在不同的资源组或不同的 Azure 订阅，可以重复使用相同的区域名称。
-* 多个区域共享相同的名称，其中每个实例分配不同的名称服务器地址。 可以使用的域名注册机构配置仅一组地址。
+* 在资源组中，区域名称必须是唯一的，不能存在该域。 否则，操作会失败。
+* 可在不同资源组或不同 Azure 订阅中重复使用同一区域名称。
+* 当多个区域共享相同的名称时，将为每个实例分配不同的名称服务器地址。 使用域名注册机构仅可配置一组地址。
 
 > [!NOTE]
-> 无需拥有要创建使用 Azure DNS 中该域名的 DNS 区域的域名。 但是，你需要拥有要将 Azure DNS 名称服务器配置为使用域注册机构的域名的正确名称服务器的域。
+> 不必拥有域名即可在 Azure DNS 中以该域名创建 DNS 区域。 但是，需要拥有域才能通过域名注册机构将 Azure DNS 名称服务器配置为域名的正确名称服务器。
 > 
-> 有关详细信息，请参阅[委托到 Azure DNS 域](../articles/dns/dns-domain-delegation.md)。
+> 有关详细信息，请参阅 [向 Azure DNS 委派域](../articles/dns/dns-domain-delegation.md)。

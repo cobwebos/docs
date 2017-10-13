@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 7ddfe44918b358a1749640d1c93dba490855cc5a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户
 > [!div class="op_single_selector"]
@@ -64,6 +63,5 @@ ms.lasthandoff: 09/01/2017
 * 了解如何[对上传的资产进行编码](media-services-portal-encode.md)。
 
 * 还可以使用 Azure Functions，在文件到达所配置的容器时触发编码作业。 有关详细信息，请参阅 [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/)（媒体服务： 将 Azure 媒体服务与 Azure Functions 和逻辑应用集成）中的示例。
-
 
 

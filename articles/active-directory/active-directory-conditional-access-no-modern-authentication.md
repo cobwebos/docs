@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 5d09021627ca60a94cb1984b29b8dc7913d093d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online 
 
 使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)，可以控制用户访问云应用的方式。 若要使用条件访问来控制对 SharePoint Online 和 Exchange Online 的访问，需要：
@@ -183,7 +181,6 @@ ms.lasthandoff: 09/14/2017
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access.md)
-
 
 
 

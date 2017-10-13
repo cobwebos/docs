@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 635e44a7ec6f9244f5fe75eb5ad947cdd8ae59a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: 69c06c9607e13c2bcffa946d6bbff9bad310ccf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
 本文介绍了 CreateUiDefinition 的所有受支持元素的架构和属性。 [创建 Azure 托管应用程序](managed-application-publishing.md)时使用这些元素。 大多数元素的架构如下所示：
@@ -44,7 +43,7 @@ ms.lasthandoff: 05/13/2017
 | toolTip | 否 | 要在元素的工具提示中显示的文本。 与 `label` 类似，某些元素支持多个工具提示字符串。 可以使用 Markdown 语法嵌入内联链接。
 | constraints | 否 | 用来自定义元素的验证行为的一个或多个属性。 constraints 支持的属性因元素类型而异。 某些元素类型不支持自定义验证行为，因此没有 constraints 属性。 |
 | options | 否 | 用于自定义元素行为的其他属性。 与 `constraints` 类似，支持的属性因元素类型而异。 |
-| visible | 否 | 指示是否显示此元素。 如果为 `true`，则将显示此元素及其相应的子元素。 默认值为 `true`。 可使用[逻辑函数](managed-application-createuidefinition-functions.md#logical-functions)动态控制此属性的值。
+| visible | 否 | 指示是否显示此元素。 如果为 `true`，则会显示此元素及其相应的子元素。 默认值为 `true`。 可使用[逻辑函数](managed-application-createuidefinition-functions.md#logical-functions)动态控制此属性的值。
 
 ## <a name="elements"></a>元素
 
@@ -67,4 +66,3 @@ ms.lasthandoff: 05/13/2017
 ## <a name="next-steps"></a>后续步骤
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
-

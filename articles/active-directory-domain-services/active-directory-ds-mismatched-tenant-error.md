@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ca9ff29f5f91b8d796a29706ab49a82e417d1ecd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 118773be1f03701246051b8832695c591d76b1e5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 拥有使用 Azure 经典门户启用的现有托管域。 导航到新的 Azure 门户并查看托管域时，会看到以下错误消息：
@@ -64,4 +63,3 @@ ms.lasthandoff: 07/08/2017
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [故障排除指南 - Azure AD 域服务](active-directory-ds-troubleshooting.md)
-

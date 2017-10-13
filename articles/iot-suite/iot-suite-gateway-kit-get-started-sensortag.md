@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
 ms.openlocfilehash: bda16be1094276fcecef1e708f9d7db307d94a89
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-telemetry-from-a-sensortag"></a>将 Azure IoT Edge 网关连接到远程监视预配置解决方案，并从 SensorTag 发送遥测数据
+# <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-telemetry-from-a-sensortag"></a>将 Azure IoT Edge 网关连接到远程监视预配置解决方案，并从 SensorTag 发送遥测
 
 [!INCLUDE [iot-suite-gateway-kit-selector](../../includes/iot-suite-gateway-kit-selector.md)]
 
@@ -134,7 +134,7 @@ sed -i -e 's/\r$//' build.sh
 
 ## <a name="configure-and-run-the-iot-edge-gateway"></a>配置和运行 IoT Edge 网关
 
-现在可以配置 IoT Edge 网关，将遥测数据从 SensorTag 设备发送到远程监视仪表板。 若要详细了解如何配置网关和 IoT Edge 模块，请参阅 [Azure IoT Edge 概念][lnk-gateway-concepts]。
+现在可以配置 IoT Edge 网关，将遥测从 SensorTag 设备发送到远程监视仪表板。 若要详细了解如何配置网关和 IoT Edge 模块，请参阅 [Azure IoT Edge 概念][lnk-gateway-concepts]。
 
 > [!TIP]
 > 在本教程中，在 Intel NUC 上使用标准的 `vi` 文本编辑器。 如果以前没有用过 `vi`，则应完成入门教程（例如 [Unix - vi 编辑器教程][lnk-vi-tutorial]），让自己熟悉该编辑器。 也可使用命令 `smart install nano -y` 安装用户友好性更强的 [nano](https://www.nano-editor.org/) 编辑器。
@@ -192,7 +192,7 @@ cd ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/basic
 /usr/share/azureiotgatewaysdk/samples/ble_gateway/ble_gateway remote_monitoring.json
 ```
 
-IoT Edge 网关在 Intel NUC 上启动，并将遥测数据从 SensorTag 发送到远程监视解决方案：
+IoT Edge 网关在 Intel NUC 上启动，并将遥测从 SensorTag 发送到远程监视解决方案：
 
 ![IoT Edge 网关从 SensorTag 发送遥测][img-telemetry]
 
@@ -200,7 +200,7 @@ IoT Edge 网关在 Intel NUC 上启动，并将遥测数据从 SensorTag 发送�
 
 ## <a name="view-the-telemetry"></a>查看遥测
 
-网关现在正将遥测从 SensorTag 设备发送到远程监视解决方案。 可以在解决方案仪表板上查看遥测。 此外，可以在解决方案仪表板中通过通过网关向 SensorTag 设备发送命令。
+网关现在正将遥测从 SensorTag 设备发送到远程监视解决方案。 可以在解决方案仪表板上查看遥测。 也可在解决方案仪表板中通过网关将命令发送到 SensorTag 设备。
 
 - 导航到解决方案仪表板。
 - 在“要查看的设备”下拉列表中，选择在网关中配置的代表 SensorTag 的设备。

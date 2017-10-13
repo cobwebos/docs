@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: 565bcba848de1c518b25ff4c55a9a47aaa45bfb4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-azure-blob-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure Blob 存储操作
 
 Azure Blob 存储是用于存储大量非结构化对象数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 本文介绍 Azure Blob 存储的基本操作，如上传、下载和删除 Blob。 学习如何：
@@ -42,7 +40,7 @@ Azure Blob 存储是用于存储大量非结构化对象数据（例如文本或
 
 ## <a name="create-a-container"></a>创建容器
 
-始终将 Blob 上传到容器中。 容器类似于计算机上的目录，允许在容器中组织成组的 Blob，就好比在计算机上的文件夹中组织文件。 存储帐户可以有任意数量的容器；它仅受到存储帐户中所占用空间的限制（最大 500TB）。 
+始终将 blob 上传到容器中。 容器类似于计算机上的目录，允许在容器中组织成组的 Blob，就好比在计算机上的文件夹中组织文件。 存储帐户可以有任意数量的容器；它仅受到存储帐户中所占用空间的限制（最大 500TB）。 
 
 创建容器时，可以设置访问级别，这有助于定义谁可以访问该容器中的 Blob。 例如，它们可以是专用的（访问级别 = `Off`），这意味着如果没有共享访问签名或存储帐户的访问密钥，就无法访问它们。 如果你在创建容器时未指定访问级别，则默认为专用。
 
@@ -59,9 +57,9 @@ New-AzureStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 ## <a name="upload-blobs-into-a-container"></a>将 Blob 上传到容器中
 
-Azure Blob 存储支持块 Blob、追加 Blob 和页 Blob。  用于备份 IaaS VM 的 VHD 文件是页 Blob。 追加 Blob 用于日志记录，例如需要写入到文件，然后持续添加更多信息的情况。 存储在 Blob 存储中的大多数文件都是块 Blob。 
+Azure Blob 存储支持块 Blob、追加 Blob 和页 Blob。  用于备份 IaaS VM 的 VHD 文件是页 Blob。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 Blob 存储中存储的大多数文件都是块 blob。 
 
-要将文件上传到块 Blob，请获取容器引用，然后获取对该容器中的块 Blob 的引用。 获取 Blob 引用后，可以通过使用 [Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) 将数据上传到其中。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 已存在）。
+要将文件上传到块 blob，请获取容器引用，然后获取对该容器中的块 blob 的引用。 获取 Blob 引用后，可以通过使用 [Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) 将数据上传到其中。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 已存在）。
 
 下面介绍如何将 Blob 上传到容器。 首先，设置指向文件所在本地计算机上的目录的变量，并为要上传的文件的名称设置一个变量。 如果你希望重复执行相同的操作，这样做很有用。 上传几个文件，以便在容器中列出 Blob 时可以看到多个条目。
 
@@ -89,7 +87,7 @@ Set-AzureStorageBlobContent -File $localFile `
   -Context $ctx
 ```
 
-上传所需数量的文件，然后继续操作。
+上传尽可能多的文件，然后继续操作。
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
@@ -101,7 +99,7 @@ Get-AzureStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>下载 Blob
 
-将 Blob 下载到本地磁盘。 首先，设置一个指向要将 Blob 下载到的本地文件夹的变量。 然后，对于要下载的每个 Blob，请设置名称并调用 [ Get-AzureStorageBlobContent ](/powershell/module/azure.storage/get-azurestorageblobcontent) 以下载 Blob。
+将 blob 下载到本地磁盘。 首先，设置一个指向要将 Blob 下载到的本地文件夹的变量。 然后，对于要下载的每个 Blob，请设置名称并调用 [ Get-AzureStorageBlobContent ](/powershell/module/azure.storage/get-azurestorageblobcontent) 以下载 Blob。
 
 本示例将 Blob 复制到本地磁盘上的 D:\\_TestImages\Downloads。 
 

@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d5785c81fb597e7d30eb7d3a880e7194d8358ed5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
 本文介绍 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中的地理空间功能。 在阅读本文之后，能够回答以下问题：
@@ -392,7 +392,7 @@ DocumentDB .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用�
 > 
 
 ## <a name="next-steps"></a>后续步骤
-学会如何开始使用 Azure Cosmos DB 中的地理空间支持之后，现在可以：
+已经学会如何开始使用 Azure Cosmos DB 中的地理空间支持，现在可以：
 
 * 使用 [GitHub 上的地理空间 .NET 代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)开始编写代码
 * 在 [Azure Cosmos DB 查询板块](http://www.documentdb.com/sql/demo#geospatial)中实际操作地理空间查询

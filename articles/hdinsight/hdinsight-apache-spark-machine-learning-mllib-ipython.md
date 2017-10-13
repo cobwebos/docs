@@ -17,19 +17,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 47cbb4ba34bb075f51306cc9481afd308ff672b4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: fef4a48c6356addad0dc12a2df5799e1acb4ddc3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Spark MLlib 生成机器学习应用程序并分析数据集
 
 了解如何使用 Spark **MLlib** 创建机器学习应用程序，以便对打开的数据集执行简单预测分析。 在 Spark 的内置机器学习库中，本示例通过逻辑回归使用*分类*。 
 
 > [!TIP]
-> 本示例也适用于在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你笔记本本身运行 Python 代码段。 若要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)。 然后运行 **Python** 文件夹中的笔记本“机器学习：使用 MLlib.ipynb 对食品检测数据进行预测分析”。
+> 本示例也适用于在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 若要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)。 然后运行 **Python** 文件夹中的笔记本“机器学习：使用 MLlib.ipynb 对食品检测数据进行预测分析”。
 >
 >
 
@@ -56,7 +55,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 ## <a name="start-building-a-spark-mmlib-machine-learning-app"></a>开始生成 Spark MMLib 机器学习应用
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
-1. 在 Spark 群集边栏选项卡中单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+1. 在 Spark 群集边栏选项卡中单击“群集仪表板”，并单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -64,13 +63,13 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-1. 创建笔记本。 单击“新建”，然后单击“PySpark”。
+1. 创建笔记本。 单击“新建”，并单击“PySpark”。
 
     ![创建 Jupyter 笔记本](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-create-jupyter.png "创建新的 Jupyter 笔记本")
-1. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
+1. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
 
     ![提供笔记本的名称](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-name-jupyter.png "提供笔记本的名称")
-1. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 可以通过导入此方案需要的类型来创建机器学习应用程序。 为此，请将光标放在单元格中，然后按“SHIFT+ENTER”。
+1. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 可以通过导入此方案需要的类型来创建机器学习应用程序。 为此，请将光标放在单元格中，然后按“SHIFT+ENTER”。
 
         from pyspark.ml import Pipeline
         from pyspark.ml.classification import LogisticRegression
@@ -98,7 +97,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
         inspections.take(1)
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
         # -----------------
         # THIS IS AN OUTPUT
@@ -137,7 +136,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
         df.show(5)
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
         # -----------------
         # THIS IS AN OUTPUT
@@ -158,7 +157,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
         df.select('results').distinct().show()
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
         # -----------------
         # THIS IS AN OUTPUT
@@ -197,7 +196,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
         plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
         plt.axis('equal')
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
     ![Spark 机器学习应用程序输出：包含五个不同检测结果的饼图](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark 机器学习结果输出")
 1. 可以看到一个检测可以有 5 个不同结果：
@@ -225,7 +224,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
         labeledData.take(1)
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
         # -----------------
         # THIS IS AN OUTPUT
@@ -236,7 +235,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>从输入数据帧创建逻辑回归模型
 最后一项任务是将标签数据转换为逻辑回归可分析的格式。 逻辑回归算法的输入应是一组*标签功能向量对*，其中“功能向量”是表示输入点的数字向量。 因此，需要将“违规行为”列（半结构化，并且包含许多任意文本格式的注释）转换为计算机能轻松理解的实数组。
 
-处理自然语言的一种标准机器学习方法是为每个不同单词分配一个“索引”，然后将一个向量传递到机器学习算法，以便每个索引值包含文本字符串中该单词的相对频率。
+处理自然语言的一种标准机器学习方法是为每个不同单词分配一个“索引”，并将一个向量传递到机器学习算法，以便每个索引值包含文本字符串中该单词的相对频率。
 
 MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 将使用“管道”按顺序执行所有这些步骤。
 
@@ -260,7 +259,7 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
         predictionsDf.registerTempTable('Predictions')
         predictionsDf.columns
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
         # -----------------
         # THIS IS AN OUTPUT
@@ -329,7 +328,7 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
         plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
         plt.axis('equal')
 
-    你应该会看到以下输出：
+    应该会看到以下输出：
 
     ![Spark 机器学习应用程序输出：失败食品检测百分比饼图。](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark 机器学习结果输出")
 
@@ -362,4 +361,3 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](hdinsight-apache-spark-job-debugging.md)
-

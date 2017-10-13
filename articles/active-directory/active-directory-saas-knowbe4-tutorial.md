@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 2a81495c54cfe293700aa0ef0d82f13933dcc4aa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>教程：Azure Active Directory 与 KnowBe4 安全意识培训集成
 
@@ -210,7 +209,7 @@ ms.lasthandoff: 09/01/2017
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
   
 单击访问面板中的 KnowBe4 安全意识培训磁贴时，应自动登录到 KnowBe4 安全意识培训应用程序。 
 
@@ -232,5 +231,4 @@ ms.lasthandoff: 09/01/2017
 [201]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_203.png
-
 

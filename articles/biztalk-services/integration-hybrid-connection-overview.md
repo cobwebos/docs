@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
+ms.openlocfilehash: 992c438ab2dac8dc20ba284bd095afbcd801a62f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8584c74f86b72679c3d6c287a7dbf3ea8bcf7149
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hybrid-connections-overview"></a>混合连接概述
 
 > [!IMPORTANT]
-> BizTalk 混合连接已停用，并由应用服务混合连接替代。 有关详细信息，包括如何管理现有 BizTalk 混合连接，请参阅 [Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)。
+> BizTalk 混合连接已停用，并由应用服务混合连接替代。 有关详细信息，包括如何管理现有 BizTalk 混合连接，请参阅 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)。
 
 混合连接的简介，其中列出了受支持的配置和所需的 TCP 端口。
 
@@ -100,4 +99,3 @@ ms.lasthandoff: 09/07/2017
 [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
-

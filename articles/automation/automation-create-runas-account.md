@@ -3,7 +3,7 @@ title: "创建 Azure 自动化运行方式帐户 | Microsoft Docs"
 description: "本文介绍如何使用 PowerShell 或通过门户更新自动化帐户并创建运行方式帐户。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 09ddca83fc0f39d7911813e488317f9434fdcfc8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 8a42f73fbe33b422b7881f8a17a1f421e2b5dfc8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>使用运行方式帐户更新自动化帐户身份验证 
 在以下情况下，可以通过门户或使用 PowerShell 更新现有自动化帐户：
 
-* 你创建了自动化帐户，但不想要创建运行方式帐户。
+* 创建了自动化帐户，但不想要创建运行方式帐户。
 * 已使用一个自动化帐户来管理 Resource Manager 资源，并且想要更新该帐户，以包含可用于 Runbook 身份验证的运行方式帐户
 * 已使用一个自动化帐户来管理经典资源，并且想要对它进行更新以使用经典运行方式帐户，而不是创建新的帐户并将 Runbook 和资产迁移到该帐户。   
-* 你想要使用企业证书颁发机构 (CA) 颁发的证书创建运行方式帐户和经典运行方式帐户。
+* 想要使用企业证书颁发机构 (CA) 颁发的证书创建运行方式帐户和经典运行方式帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +36,7 @@ ms.lasthandoff: 06/30/2017
 
 若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请执行以下操作：
 
-1. 在 Azure 门户上的“自动化帐户”边栏选项卡中选择你的自动化帐户，然后选择“所有设置”。  
+1. 在 Azure 门户上的“自动化帐户”边栏选项卡中选择自动化帐户，然后选择“所有设置”。  
 2. 在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。 
 3. 请记下“属性”边栏选项卡中的值。<br><br> ![自动化帐户的“属性”边栏选项卡](media/automation-create-runas-account/automation-account-properties.png)  
 
@@ -288,7 +286,7 @@ ms.lasthandoff: 06/30/2017
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment`
 
     > [!NOTE]
-    > 执行脚本后，系统将提示你在 Azure 上进行身份验证。 请以订阅管理员角色成员和订阅共同管理员的帐户登录。
+    > 执行脚本后，系统会提示在 Azure 上进行身份验证。 请以订阅管理员角色成员和订阅共同管理员的帐户登录。
     >
     >
 

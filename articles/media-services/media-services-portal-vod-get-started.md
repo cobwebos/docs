@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: fb981f3240799c924464c828b2c835ac5d9879ed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 门户按需传送内容入门
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -76,7 +75,7 @@ ms.lasthandoff: 09/01/2017
 上传完成后，新资产列在“资产”窗格中。 
 
 ## <a name="encode-assets"></a>对资产进行编码
-若要利用动态打包，必须将源文件编码为一组多比特率 MP4 文件。 本部分演示编码步骤。
+要利用动态打包，必须将源文件编码为一组多比特率 MP4 文件。 本部分演示编码步骤。
 
 ### <a name="encode-assets-in-the-portal"></a>在门户中对资产进行编码
 若要在 Azure 门户中使用 Media Encoder Standard 对内容进行编码，请执行以下操作：
@@ -99,18 +98,18 @@ ms.lasthandoff: 09/01/2017
 ## <a name="publish-content"></a>发布内容
 若要为用户提供一个可用来流式传输内容或下载内容的 URL，首先必须通过创建定位符来发布资产。 定位符提供对资产中文件的访问权限。 Azure 媒体服务支持两种类型的定位符： 
 
-* 流式处理 (OnDemandOrigin) 定位符。 流式处理定位符用于自适应流式处理。 自适应流式处理示例包括：HLS、平滑流式处理和 MPEG-DASH。 若要创建流式处理定位符，资产必须包括一个 .ism 文件。 
-* 渐进式（共享访问签名）定位符。 渐进式定位符用于通过渐进式下载来传输视频。
+* **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理示例包括：HLS、平滑流式处理和 MPEG-DASH。 若要创建流式处理定位符，资产必须包括一个 .ism 文件。 
+* **渐进式（共享访问签名）定位符**。 渐进式定位符用于通过渐进式下载来传输视频。
 
-若要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL：
+要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL：
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
-若要生成流式处理 URL 来播放平滑流资产，请使用以下 URL 格式：
+要生成流式处理 URL 来播放平滑流资产，请使用以下 URL 格式：
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
 
-若要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL：
+要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL：
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
@@ -157,4 +156,3 @@ URL 将添加到“已发布 URL”列表。
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-

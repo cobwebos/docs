@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
 ms.openlocfilehash: 11492b85e95ddb39489e36c572af2a168b4c7af8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
 
@@ -279,7 +279,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-启用闪回（这会使恢复轻松很多）并将 STANDBY\_FILE\_MANAGEMENT 设置为 auto。 此后退出 SQL*Plus。
+启用闪回（这会使恢复轻松很多）并将 STANDBY\_FILE\_MANAGEMENT 设置为 auto。此后退出 SQL*Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;

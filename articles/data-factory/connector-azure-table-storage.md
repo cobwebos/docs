@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2fa03b82750585454430da0c29392db57b20d3c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,7 +36,7 @@ ms.lasthandoff: 09/25/2017
 具体而言，此 Azure 表连接器支持使用帐户密钥和服务 SAS（共享访问签名）身份验证复制数据。
 
 ## <a name="get-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板通过复制活动创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 对于特定于 Azure 表存储的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -77,7 +76,7 @@ ms.lasthandoff: 09/25/2017
 
 此外，还可以通过使用共享访问签名 (SAS) 创建 Azure 存储链接的服务，SAS 为数据工厂提供对存储中所有/特定资源的有限/限时访问权限。
 
-共享访问签名 (SAS) 用于对存储帐户中的资源进行委托访问。 这样便可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 传入到相应的构造函数或方法。 有关 SAS 的详细信息，请参阅[共享访问签名：了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+共享访问签名 (SAS) 提供对存储帐户中的资源的委托访问权限。 这样便可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 传入到相应的构造函数或方法。 有关 SAS 的详细信息，请参阅[共享访问签名：了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 > [!IMPORTANT]
 > Azure 数据工厂现仅支持**服务 SAS**，而不支持帐户 SAS。 有关这两种类型及其构建方式的详细信息，请参阅[共享访问签名的类型](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)。 通过 Azure 门户或存储资源管理器生成的 SAS URL 是不受支持的帐户 SAS。
@@ -159,7 +158,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 表源和接收器支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 表源和接收器支持的属性列表。
 
 ### <a name="azure-table-as-source"></a>以 Azure 表作为源
 

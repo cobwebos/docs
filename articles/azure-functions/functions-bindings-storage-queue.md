@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: glenga
+ms.openlocfilehash: 8f7227071edc519e588d55a9f06b77aeaf31aa37
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: f39f674bf576a2661a0e03710b9005b0515b3aa5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-queue-storage-bindings"></a>Azure Functions 队列存储绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -161,7 +160,7 @@ module.exports = function (context) {
 ```
 
 ### <a name="handling-poison-queue-messages"></a>处理有害队列消息
-队列触发函数失败时，Azure Functions 对于给定队列消息重试该函数最多 5 次（包括第一次尝试）。 如果 5 次尝试全部失败，函数运行时会将消息添加到名为 &lt;originalqueuename>-poison 的队列存储。 你可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。 
+队列触发函数失败时，Azure Functions 对于给定队列消息重试该函数最多 5 次（包括第一次尝试）。 如果 5 次尝试全部失败，函数运行时会将消息添加到名为 &lt;originalqueuename>-poison 的队列存储。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。 
 
 若要手动处理有害消息，请检查队列消息的 `dequeueCount`（请参阅[队列触发器元数据](#meta)）。
 
@@ -293,4 +292,3 @@ module.exports = function(context) {
 <!-- LINKS -->
 
 [`CloudQueueMessage`]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
-

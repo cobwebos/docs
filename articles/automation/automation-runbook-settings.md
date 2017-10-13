@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ac8b5372aa06eac8c9a701f0621dbb675fbb565c
-ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 534ea7e3f2f8e5640db4d351c2bb3245f29b6eec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="runbook-settings"></a>Runbook 设置
-Azure 自动化中的每个 Runbook 都提供了多个设置用于帮助标识自身，以及更改它的日志记录行为。 下面将会描述其中的每个设置，然后再介绍修改设置的过程。
+Azure 自动化中的每个 Runbook 都提供了多个设置用于帮助标识自身，以及更改它的日志记录行为。 下面会描述其中的每个设置，然后再介绍修改设置的过程。
 
 ## <a name="settings"></a>设置
 ### <a name="name-and-description"></a>名称和说明
@@ -32,14 +31,14 @@ Azure 自动化中的每个 Runbook 都提供了多个设置用于帮助标识�
 使用标记可以指定不同的单词和短语用于帮助标识 Runbook。 例如，在向 [PowerShell 库](https://www.powershellgallery.com/)提交 Runbook 时，可以指定特定的标记来标识应将该 Runbook 列入的类别。 可为一个 Runbook 指定多个标记并用逗号分隔各个标记。
 
 ### <a name="logging"></a>日志记录
-默认情况下，“详细”和“进度”记录不会写入作业历史记录。 你可以更改特定 Runbook 的设置以记录这些记录。 有关这些记录的详细信息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md)。
+默认情况下，“详细”和“进度”记录不会写入作业历史记录。 可以更改特定 Runbook 的设置以记录这些记录。 有关这些记录的详细信息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md)。
 
 ## <a name="changing-runbook-settings"></a>更改 Runbook 设置
 
 ### <a name="changing-runbook-settings-with-the-azure-portal"></a>使用 Azure 门户更改 Runbook 设置
 可以在 Azure 门户中通过 Runbook 的“设置”边栏选项卡更改 Runbook 的设置。
 
-1. 在 Azure 门户中，选择“自动化”，然后单击自动化帐户的名称。
+1. 在 Azure 门户中，选择“自动化”，并单击自动化帐户的名称。
 2. 选择“Runbook”选项卡。
 3. 单击 Runbook 的名称，转到 Runbook 的“设置”边栏选项卡。 可在此处指定或修改标记、Runbook 描述，配置日志记录和跟踪设置，以及访问有助于解决问题的支持工具。     
 
@@ -59,5 +58,4 @@ Azure 自动化中的每个 Runbook 都提供了多个设置用于帮助标识�
 ## <a name="next-steps"></a>后续步骤
 * 若要学习如何创建输出和错误消息以及从 Runbook 检索此类消息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md) 
 * 若要了解如何添加已由社区或其他源开发的 Runbook，或创建自己的 Runbook，请参阅[创建或导入 Runbook](automation-creating-importing-runbook.md) 
-
 

@@ -15,13 +15,13 @@ ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
 ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Azure 门户中的 Azure 计划程序入门
-在 Azure 计划程序中创建计划的作业很简单。 本教程介绍如何创建作业。 还会学习计划程序的监视和管理功能。
+在 Azure 计划程序中创建计划的作业很简单。 在本教程中，将了解如何创建作业。 还将学习计划程序的监视和管理功能。
 
 ## <a name="create-a-job"></a>创建作业
 1. 登录到 [Azure 门户](https://portal.azure.com/)。  
@@ -31,8 +31,7 @@ ms.lasthandoff: 07/11/2017
 3. 让我们来创建一个作业，这只需要使用 GET 请求访问 http://www.microsoft.com/。 在“计划程序作业”  屏幕上，输入以下信息：
    
    1. **名称：**`getmicrosoft`  
-   2. 
-            **订阅：**Azure 订阅   
+   2. **订阅：**Azure 订阅   
    3. **作业集合：**选择现有的作业集合，或者单击“新建”>“输入名称”。
 4. 接下来，在“操作设置” 中，定义以下值：
    
@@ -52,7 +51,7 @@ ms.lasthandoff: 07/11/2017
 6. 单击“创建” 
 
 ## <a name="manage-and-monitor-jobs"></a>管理和监视作业
-作业创建完成后，出现在 Azure 主仪表板中。 单击该作业，将打开具有以下选项卡的新窗口：
+作业创建完成后，将出现在 Azure 主仪表板中。 单击该作业，将打开具有以下选项卡的新窗口：
 
 1. 属性  
 2. 操作设置  

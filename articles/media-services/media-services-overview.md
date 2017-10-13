@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 07/04/2017
 ms.author: juliako;anilmur
 ms.openlocfilehash: 2a175aed40b9775d9a4de6877eb3467b43819568
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
@@ -36,7 +36,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始使用 Azure 媒体服务，应该具备以下条件：
+要开始使用 Azure 媒体服务，应该具备以下条件：
 
 * 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
@@ -47,7 +47,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 ## <a name="sdks-and-tools"></a>SDK 和工具
 
-若要构建媒体服务解决方案，可以使用：
+要构建媒体服务解决方案，可以使用：
 
 * [媒体服务 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 可用的客户端 SDK 之一：
@@ -71,9 +71,9 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 ## <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 
 * 对于媒体服务编码，我们保证 REST API 事务可实现 99.9% 的可用性。
-* 对于流式处理，如果用户购买了标准或高级流式处理终结点，则在其请求现有媒体内容时，我们会成功处理该请求，确保可用性达到 99.9%。
+* 如果客户购买了标准或高级流式处理终结点，则对于流式处理，我们以 99.9% 的可用性保证成功处理现有媒体内容的请求。
 * 对于实时频道，我们保证运行中的频道在至少 99.9% 的时间都能建立外部连接。
-* 对于内容保护，我们保证至少 99.9% 的时间内将成功完成关键请求。
+* 对于内容保护，我们保证会在至少 99.9% 的时间成功满足密钥请求。
 * 对于索引器，我们将使用编码保留单位在 99.9% 的时间成功处理索引器任务请求。
 
 有关详细信息，请参阅 [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)。

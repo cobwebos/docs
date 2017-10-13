@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 24f15168fd716cf317087b8a2ad19b66574ce569
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-use-custom-activities.md)
+> * [版本 1 - GA](v1/data-factory-use-custom-activities.md)
 > * [版本 2 - 预览版](transform-data-using-dotnet-custom-activity.md)
 
 在 Azure 数据工厂管道中可使用两类活动。
@@ -106,9 +105,9 @@ ms.lasthandoff: 09/25/2017
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| 属性              | 说明                              | 必需 |
+| 属性              | 说明                              | 必选 |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | 管道中活动的名称     | 是      |
+| 名称                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
 | type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
@@ -261,4 +260,3 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [Spark 活动](transform-data-using-spark.md)
 * [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)
-

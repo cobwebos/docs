@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/16/2017
 ms.author: xshi
+ms.openlocfilehash: 9b278735ce3af9e6e61a85c5e95ea218622361c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 8eee4b2eea165176bddf0896685636bbac4db321
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather M0 WiFi 连接到云中的 Azure IoT 中心
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 07/13/2017
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="connect-feather-m0-wifi-with-the-sensor-and-your-computer"></a>将 Feather M0 WiFi 与传感器和计算机相连接
-在此部分中，将传感器连接到开发板。 然后，将设备插入计算机以供进一步使用。
+在此部分中，将传感器连接到开发板。 然后，将设备插入计算机以作后用。
 
 ### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-m0-wifi"></a>将 DHT22 温度和湿度传感器连接到 Feather M0 WiFi
 
@@ -134,7 +132,7 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>收集传感器数据并将其发送到 IoT 中心
 
-在本部分中，将在 Feather M0 WiFi 上部署并运行一个示例应用程序。 该示例应用程序会使 Feather M0 WiFi 上的 LED 闪烁。 然后，它将从 BME280 传感器收集的温度和湿度数据发送到 IoT 中心。
+在本部分中，会在 Feather M0 WiFi 上部署并运行一个示例应用程序。 该示例应用程序会使 Feather M0 WiFi 上的 LED 闪烁。 然后，它将从 BME280 传感器收集的温度和湿度数据发送到 IoT 中心。
 
 ### <a name="get-the-sample-application-from-github-and-prepare-the-arduino-ide"></a>从 GitHub 获取示例应用程序并准备 Arduino IDE
 
@@ -161,7 +159,7 @@ ms.lasthandoff: 07/13/2017
 1. 单击“文件” > “首选项”(Windows/Linux) 或“Arduino” > “首选项”(Mac)，将以下链接复制并粘贴到 Arduino IDE 首选项中的“其他开发板管理器 URL”选项中。
    
    ```
-   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json, https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
    ```
 
 1. 依次单击“工具” > “开发板” > “开发板管理器”，然后安装 `Arduino SAMD Boards` 版本 `1.6.2` 或更高版本。 
@@ -208,7 +206,7 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="deploy-the-sample-application-to-feather-m0-wifi"></a>将示例应用程序部署到 Feather M0 WiFi
 
-1. 在 Arduino IDE 中，依次单击“工具” > “端口”，然后单击 Feather M0 WiFi 的串行端口。
+1. 在 Arduino IDE 中，依次单击“工具” > “端口”，并单击 Feather M0 WiFi 的串行端口。
 
 2. 依次单击“草图” > “上传”，生成示例应用程序并将其部署到 Feather M0 WiFi。
 
@@ -240,5 +238,4 @@ ms.lasthandoff: 07/13/2017
 现已成功将 Feather M0 WiFi 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-
 

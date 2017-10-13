@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8dbc951416d577fa7f534c2eab1605c6bee61fce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 6616c26ede13919b94a098dc38bdd6e2f0fc0b5b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>开始为云服务创建内部负载均衡器（经典）
 
 > [!div class="op_single_selector"]
@@ -39,7 +37,7 @@ ms.lasthandoff: 06/28/2017
 在云服务中创建第一个部署期间必须设置内部负载均衡器配置，如下面的示例中所示。
 
 > [!IMPORTANT]
-> 运行以下步骤的先决条件是已为云部署创建虚拟网络。 你需要虚拟网络名称和子网名称，以便创建内部负载均衡。
+> 运行以下步骤的先决条件是已为云部署创建虚拟网络。 需要虚拟网络名称和子网名称，以便创建内部负载均衡。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -98,5 +96,4 @@ ms.lasthandoff: 06/28/2017
 [使用源 IP 关联配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
 

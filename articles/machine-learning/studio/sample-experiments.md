@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/28/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f798ac1b46d702dbb96a2384d96f2d14eb3cac0e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-example-experiments-to-create-new-machine-learning-experiments"></a>复制示例试验以创建新的机器学习试验
 了解如何从“[Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)”启动示例试验，而不是从头开始创建机器学习试验。 可以使用这些示例构建自己的机器学习解决方案。
@@ -69,4 +68,3 @@ ms.lasthandoff: 09/25/2017
 * [从各种源导入数据](import-data.md)
 * [适用于机器学习的 R 语言快速入门教程](r-quickstart.md)
 * [部署机器学习 Web 服务](publish-a-machine-learning-web-service.md)
-

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
 ms.openlocfilehash: 33b3ec24432ff1268860b9a2e9d5098600a8dedc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>将域委托给 Azure DNS
 
@@ -299,7 +299,7 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“contosorg”资源组。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contosorg”， 轻松访问资源组。
 1. 在“contosorg”边栏选项卡中，单击“删除”按钮。
-1. 门户会要求用户键入资源组的名称，以便确认用户需要删除它。 键入“contosorg”作为资源组名称，然后单击“删除”。 删除资源组会删除资源组中的所有资源，因此在删除资源组之前，请确保始终确认其内容。 门户将删除资源组中包含的所有资源，然后删除资源组本身。 此过程需要几分钟。
+1. 门户会要求用户键入资源组的名称，以便确认用户需要删除它。 键入“contosorg”作为资源组名称，然后单击“删除”。 删除资源组会删除资源组中的所有资源，因此在删除资源组之前，请确保始终确认其内容。 门户会先删除包含在资源组中的所有资源，然后删除资源组本身。 此过程需要几分钟。
 
 ## <a name="next-steps"></a>后续步骤
 

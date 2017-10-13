@@ -15,14 +15,12 @@ ms.date: 08/04/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 426056d394af0a9ded28202615cb80c7b50e59fc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>如何提供对本地应用程序的安全远程访问
 
 现今的员工想要随时随地都能在任何设备上高效工作。 他们想要在自己的设备上工作，无论设备是平板电脑、手机还是笔记本电脑。 而且他们期望能够访问其所有的应用程序：云中的 SaaS 应用和本地的公司应用。 传统上，提供本地应用程序访问权限会涉及虚拟专用网络 (VPN) 或外围网络 (DMZ)。 这些解决方案不仅复杂且难以确保安全性，而且设置和管理成本也很高。
@@ -96,12 +94,10 @@ Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应�
 发布第一个应用后，还可以使用应用程序代理执行其他许多操作：
 
 * [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
-* 
-            [使用自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
+* [使用自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
 * [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
 * [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md) 
 * [设置自定义主页](application-proxy-office365-app-launcher.md)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-
 

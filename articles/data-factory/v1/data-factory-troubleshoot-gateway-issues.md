@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d8ad132ec47a81971a3405970eeddab3b1598ff3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
 本文提供有关解决数据管理网关使用问题的信息。
@@ -287,4 +286,3 @@ ms.lasthandoff: 09/25/2017
  解决网关相关问题时，在事件查看器中查找错误级别事件。
 
 ![数据管理网关 - 事件查看器中的日志](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
-

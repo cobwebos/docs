@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 413e72e9a39fcde84f56bfc61a6bc72dbadf1c97
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>为 Azure 云服务中的角色设置远程桌面连接
 
@@ -82,7 +82,7 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
 此方法允许在开发过程中为应用程序启用远程桌面。 此方法需要将加密的密码存储在服务配置文件中，并且如果对远程桌面配置进行了任何更新，将需要重新部署应用程序。 如果想要避免这些弊端，应使用上面所述的基于远程桌面扩展的方法。  
 
 可以通过服务定义文件方法使用 Visual Studio [启用远程桌面连接](../vs-azure-tools-remote-desktop-roles.md)。  
-下面的步骤介绍了要启用远程桌面需要对服务模型文件进行的更改。 发布时，Visual Studio 会自动进行这些更改。
+下面的步骤介绍了要启用远程桌面需要对服务模型文件进行的更改。 在发布时，Visual Studio 会自动进行这些更改。
 
 ### <a name="set-up-the-connection-in-the-service-model"></a>在服务模型中设置连接
 使用 **Imports** 元素将 **RemoteAccess** 模块和 **RemoteForwarder** 模块导入到 [ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) 文件中。

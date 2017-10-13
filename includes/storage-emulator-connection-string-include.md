@@ -1,4 +1,4 @@
-存储模拟器支持单一固定的帐户和众所周知的身份验证密钥的共享密钥身份验证。 此帐户和密钥是允许用于存储模拟器的唯一共享密钥凭据。 它们是：
+存储模拟器支持单一固定的帐户和众所周知的用于共享密钥身份验证的身份验证密钥。 此帐户和密钥是允许用于存储模拟器的唯一共享密钥凭据。 它们具有以下特点：
 
 ```
 Account name: devstoreaccount1
@@ -6,13 +6,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> 存储仿真程序支持的身份验证密钥仅用于测试客户端身份验证代码的功能。 它不用于任何安全用途。 不能使用存储仿真程序中使用你的生产存储帐户和密钥。 你应将开发帐户用于生产数据。
+> 存储模拟器支持的身份验证密钥仅用于测试客户端身份验证代码的功能。 它没有任何安全用途。 不能在存储模拟器中使用生产存储帐户和密钥。 不应将开发帐户用于生产数据。
 > 
-> 存储模拟器支持仅通过 HTTP 连接。 但是，HTTPS 是用于访问的生产 Azure 存储帐户中的资源的建议的协议。
+> 存储模拟器仅支持通过 HTTP 进行连接。 但是，若要访问生产性 Azure 存储帐户中的资源，建议使用 HTTPS 协议。
 > 
 
-#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>连接到使用快捷方式的仿真程序帐户
-从你的应用程序连接到存储模拟器的最简单方法是在你的应用程序配置文件引用快捷方式配置连接字符串`UseDevelopmentStorage=true`。 下面是存储仿真程序中的连接字符串的示例*app.config*文件： 
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>使用快捷方式连接到模拟器帐户
+从应用程序连接到存储模拟器的最简单方式是在应用程序的配置文件内配置一个引用快捷方式 `UseDevelopmentStorage=true` 的连接字符串。 以下是 *app.config* 文件中指向存储模拟器的连接字符串示例： 
 
 ```xml
 <appSettings>
@@ -20,8 +20,8 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 </appSettings>
 ```
 
-#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>连接到使用的已知帐户名称和密钥的仿真程序帐户
-若要创建的连接字符串的引用的仿真程序帐户名称和密钥，必须为每个你想要使用的模拟器中的连接字符串从服务中指定的终结点。 这是必需的因此，连接字符串将引用有别于那些生产存储帐户的模拟器终结点。 例如，你的连接字符串的值将如下所示：
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>使用从众所周知的帐户名称和密钥连接到存储模拟器
+要创建引用存储模拟器帐户名称和密钥的连接字符串，必须在连接字符串中希望从模拟器中使用的每个服务指定终结点。 这是必须的，这样连接字符串将引用与生产存储帐户中的终结点不同的模拟器终结点。 例如，连接字符串的值将如下所示：
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -31,10 +31,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-此值等同于如上所示的快捷方式`UseDevelopmentStorage=true`。
+此值等同于如上所示的快捷方式 `UseDevelopmentStorage=true`。
 
-#### <a name="specify-an-http-proxy"></a>指定一个 HTTP 代理
-你还可以指定您要测试你针对存储模拟器的服务时要使用 HTTP 代理。 这可用于当调试针对存储服务的操作时观察 HTTP 请求和响应。 若要指定代理，将添加`DevelopmentStorageProxyUri`选项设为连接字符串，并将其值设置为代理 URI。 例如，下面是指向存储模拟器并配置 HTTP 代理的连接字符串：
+#### <a name="specify-an-http-proxy"></a>指定 HTTP 代理
+还可以指定一个 HTTP 代理，以便在针对存储模拟器测试服务时进行使用。 针对存储服务调试操作时，这对观察 HTTP 请求和响应很有用。 要指定代理，请将 `DevelopmentStorageProxyUri` 选项添加到连接字符串，并将它的值设置为代理 URI。 例如，下面是一个指向存储模拟器并配置 HTTP 代理的连接字符串：
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

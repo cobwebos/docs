@@ -15,18 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: fde5cd9a9efc3a13e731a91962ced5c086a72355
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 9995ad39d9e3fd1a211c513d4097398e99eefc54
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supplemental-lesson---detail-rows"></a>补充课程 - 详细信息行
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-在本补充课程中，你将使用 DAX 编辑器来定义自定义详细信息行表达式。 详细信息行表达式是关于度量值的一个属性，向最终用户提供关于度量值的聚合结果的详细信息。 
+在本补充课程中，将使用 DAX 编辑器来定义自定义详细信息行表达式。 详细信息行表达式是关于度量值的一个属性，向最终用户提供关于度量值的聚合结果的详细信息。 
   
 本课预计完成时间：**10 分钟**  
   
@@ -73,9 +72,9 @@ ms.lasthandoff: 06/03/2017
 
     ```
 
-    此表达式指定了当用户双击数据透视表或报表中的聚合结果时将从 FactInternetSales 表和相关表中返回的名称、列和度量值结果。
+    此表达式指定了当用户双击数据透视表或报表中的聚合结果时会从 FactInternetSales 表和相关表中返回的名称、列和度量值结果。
 
-4. 回到 Excel 中，删除在第 3 步中创建的工作表，然后双击某个聚合值。 此时，由于为该度量值定义了一个详细信息行表达式属性，因此，打开的新工作表包含许多更为有用的数据。
+4. 回到 Excel 中，删除在第 3 步中创建的工作表，并双击某个聚合值。 此时，由于为该度量值定义了一个详细信息行表达式属性，因此，打开的新工作表包含许多更为有用的数据。
 
     ![aas-lesson-detail-rows-detailsheet](../tutorials/media/aas-lesson-detail-rows-detailsheet.png)
 
@@ -86,4 +85,3 @@ ms.lasthandoff: 06/03/2017
 [SELECTCOLUMNS 函数 (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
 [补充课程 - 动态安全性](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [补充课程 - 不规则层次结构](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
-

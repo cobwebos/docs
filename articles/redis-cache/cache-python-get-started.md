@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sdanie
 ms.openlocfilehash: cdbee52574d0ffbe82ef3dc98f2848f4d00ba2ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-redis-cache-with-python"></a>如何将 Azure Redis 缓存与 Python 配合使用
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/11/2017
     b'bar'
 
 
-将 `<name>` 替换为你的缓存名称，将 `key` 替换为你的缓存访问密钥。
+将 `<name>` 替换为缓存名称，将 `key` 替换为缓存访问密钥。
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

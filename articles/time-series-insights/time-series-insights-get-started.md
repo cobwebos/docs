@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: eb710795916a2d7beea75a6408a0982fb4dc8750
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/26/2017
-
+ms.openlocfilehash: 5a159ed0ba38899b21212518d41ff995895904ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 门户中创建新的时序见解环境
 
 时序见解环境是一种 Azure 资源，具有入口容量和存储容量。 客户通过 Azure 门户使用所需容量对环境进行预配。
@@ -37,7 +35,7 @@ ms.lasthandoff: 04/26/2017
 
   ![创建时序见解环境](media/get-started/getstarted-create-environment1.png)
 
-4.  选择“时序见解”，然后单击“创建”。
+4.  选择“时序见解”，并单击“创建”。
 
   ![创建时序见解资源组](media/get-started/getstarted-create-environment2.png)
 
@@ -56,4 +54,3 @@ ms.lasthandoff: 04/26/2017
 * 在[时序见解门户](https://insights.timeseries.azure.com)中[定义数据访问策略](time-series-insights-data-access.md)，以便访问环境
 * [创建事件源](time-series-insights-add-event-source.md)
 * [发送事件](time-series-insights-send-events.md)到事件源
-

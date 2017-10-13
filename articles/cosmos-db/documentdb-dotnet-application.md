@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 985962c4f2db21526291981ad5180fc0a16e2ab8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 开发 Web 应用程序
 > [!div class="op_single_selector"]
@@ -149,8 +148,7 @@ ms.lasthandoff: 09/13/2017
             public bool Completed { get; set; }
         }
    
-    Azure Cosmos DB 中的所有数据都会通过线路传递，并存储为 JSON。 若要通过 JSON.NET 控制对象的序列化/反序列化方式，可以使用刚才创建的 **Item** 类中所示的 **JsonProperty** 属性。 
-            **不一定** 要这样做，但我想确保所有属性都按照 JSON camelCase 命名约定命名。 
+    Azure Cosmos DB 中的所有数据都会通过线路传递，并存储为 JSON。 若要通过 JSON.NET 控制对象的序列化/反序列化方式，可以使用刚才创建的 **Item** 类中所示的 **JsonProperty** 属性。 **不一定** 要这样做，但我想确保所有属性都按照 JSON camelCase 命名约定命名。 
    
     使用 JSON 时，不但可以控制属性名称的格式，还可以像我命名 **Description** 属性一样重命名 .NET 属性。 
 
@@ -520,8 +518,8 @@ ms.lasthandoff: 09/13/2017
     ![屏幕截图：选中了“已完成”框的“索引”视图](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 5. 完成应用测试后，按 Ctrl+F5 停止调试应用。 可以开始部署了！
 
-## <a name="_Toc395637774"></a>步骤 7：将应用程序部署到 Azure App Service 
-现在，已经拥有了可以使用 Azure Cosmos DB 正常工作的完整应用程序，接下来我们要将此 Web 应用部署到 Azure App Service。  
+## <a name="_Toc395637774"></a>步骤 7：将应用程序部署到 Azure 应用服务 
+现在，已经拥有了可以使用 Azure Cosmos DB 正常工作的完整应用程序，接下来我们要将此 Web 应用部署到 Azure 应用服务。  
 
 1. 要发布此应用程序，只需要右键单击“解决方案资源管理器”中的项目，单击“发布”即可。
    
@@ -531,11 +529,11 @@ ms.lasthandoff: 09/13/2017
 
     ![Visual Studio 中的“发布”对话框](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
 
-3. 如果具有现有的 Azure App Service 配置文件，请输入订阅名称。 使用“视图”按资源组或资源类型进行筛选，然后选择 Azure App Service。 
+3. 如果具有现有的 Azure 应用服务配置文件，请输入订阅名称。 使用“视图”按资源组或资源类型进行筛选，然后选择 Azure 应用服务。 
    
     ![Visual Studio 中的“应用服务”对话框](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-app-service.png)
 
-4. 若要创建新的 Azure App Service 配置文件，请单击“发布”对话框中的“新建”。 在“创建应用服务”对话框中，输入 Web 应用名称和相应的订阅、资源组和应用服务计划，然后单击“创建”。
+4. 若要创建新的 Azure 应用服务配置文件，请单击“发布”对话框中的“新建”。 在“创建应用服务”对话框中，输入 Web 应用名称和相应的订阅、资源组和应用服务计划，然后单击“创建”。
 
     ![Visual Studio 中的“创建应用服务”对话框](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
 
@@ -554,4 +552,3 @@ ms.lasthandoff: 09/13/2017
 [Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
 [Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
-

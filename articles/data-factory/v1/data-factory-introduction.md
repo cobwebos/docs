@@ -15,16 +15,15 @@ ms.topic: get-started-article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8d4d574dee4b993d8a464482b244e1f63ade8a57
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-introduction.md)
+> * [版本 1 - GA](data-factory-introduction.md)
 > * [版本 2 - 预览版](../introduction.md)
 
 > [!NOTE]
@@ -66,7 +65,7 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 将转换的数据从云传输到本地源（如 SQL Server），或将它保留在云存储源中，供商业智能 (BI) 和分析工具以及其他应用程序使用。
 
 ## <a name="key-components"></a>关键组件
-一个 Azure 订阅可能有多个数据工厂，或者有一个或多个 Azure 数据工厂实例。 Azure 数据工厂由四个关键组件组成，这些组件组合起来提供一个平台，供你在上面编写数据驱动型工作流，通过各种步骤来移动和转换数据。 
+一个 Azure 订阅可能有多个数据工厂，或者有一个或多个 Azure 数据工厂实例。 Azure 数据工厂由四个关键组件组成，这些组件组合起来提供一个平台，供你在上面编写数据驱动型工作流（其中包含用来移动和转换数据的步骤）。 
 
 ### <a name="pipeline"></a>管道
 数据工厂可以包含一个或多个管道。 管道是一组活动。 管道中的活动可以共同执行一项任务。 例如，一个管道可能包含一组活动，这些活动从 Azure Blob 引入数据，并在 HDInsight 群集上运行 Hive 查询，以便对数据分区。 这样做的好处是，可以通过管道以集而非单独的形式管理活动。 例如，可以部署和计划管道，而不需单独对活动进行操作。 
@@ -130,4 +129,3 @@ Azure 数据工厂本身不存储任何数据。 它允许创建数据驱动型�
 | [在两个云数据存储之间移动数据](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |此教程介绍如何创建一个包含管道的数据工厂，该管理可将数据从 Blob 存储 **移动** 到 SQL 数据库。 |
 | [使用 Hadoop 群集转换数据](data-factory-build-your-first-pipeline.md) |此教程介绍如何构建第一个包含数据管道的 Azure 数据工厂，该数据管道可以通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本来 **处理数据** 。 |
 | [使用数据管理网关在本地数据存储与云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md) |此教程介绍如何构建一个包含管道的数据工厂，该管道可将数据从**本地** SQL Server 数据库**移动**到 Azure Blob。 在演练过程中，需要在计算机上安装并配置数据管理网关。 |
-

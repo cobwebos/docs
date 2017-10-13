@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
 ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>使用模板部署自动缩放应用
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/29/2017
 部署 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)模板最简单的方式是使用 GitHub 的自述文件中的“部署到 Azure”按钮。  也可使用 PowerShell 或 Azure CLI 部署示例模板。
 
 ### <a name="powershell"></a>PowerShell
-将 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)文件从 GitHub 存储库复制到本地计算机上的文件夹。  打开 azuredeploy.parameters.json 文件并更新 `vmssName`、`adminUsername` 和 `adminPassword` 参数的默认值。 以下 PowerShell 将脚本保存到*deploy.ps1*在所在的文件夹*azuredeploy.json*模板。 若要部署示例模板，请从 PowerShell 命令窗口运行 deploy.ps1 脚本。
+将 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)文件从 GitHub 存储库复制到本地计算机上的文件夹。  打开 azuredeploy.parameters.json 文件并更新 `vmssName`、`adminUsername` 和 `adminPassword` 参数的默认值。 将以下 PowerShell 脚本保存到 azuredeploy.json 模板所在文件夹中的 deploy.ps1。 若要部署示例模板，请从 PowerShell 命令窗口运行 deploy.ps1 脚本。
 
 ```powershell
 param(

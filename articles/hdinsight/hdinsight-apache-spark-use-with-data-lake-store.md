@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: beafd2c65b0506844ff9ea152037ed6f2866e650
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>使用 HDInsight Spark 群集分析 Data Lake Store 中的数据
 
 本教程使用适用于 HDInsight Spark 群集的 Jupyter Notebook 运行作业，从 Data Lake Store 帐户中读取数据。
@@ -143,4 +141,3 @@ ms.lasthandoff: 08/29/2017
 * [创建要在 Apache Spark 群集上运行的独立 Scala 应用程序](hdinsight-apache-spark-create-standalone-application.md)
 * [使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)
-

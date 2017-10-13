@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: cbee070c6bfe17135f37a82c545bf8ee7db2db43
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-redirection-on-application-gateway-with-powershell"></a>使用 PowerShell 在应用程序网关上配置重定向
 
 应用程序网关支持基于定义的配置重定向流量的功能。 若要详细了解有关重定向的一般信息，请访问[应用程序网关重定向概述](application-gateway-redirect-overview.md)。 本文提供 HTTP 到 HTTPS 的重定向、基于路径的重定向、多站点重定向以及到外部站点的重定向的示例。

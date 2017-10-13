@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d4741921806e443d92c385a04b781cec296c2ae8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>管理 Azure CDN 中 Azure 存储 Blob 的过期问题
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ class Program
 ## <a name="other-methods"></a>其他方法
 * [Azure 命令行接口](../cli-install-nodejs.md)
   
-    上传 blob 时，使用  开关来设置 cacheControl 属性。  此示例将 TTL 设置为 1 小时（3600 秒）。
+    上传 blob 时，使用 `-p` 开关来设置 *cacheControl* 属性。  此示例将 TTL 设置为 1 小时（3600 秒）。
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt

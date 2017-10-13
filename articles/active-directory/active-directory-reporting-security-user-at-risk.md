@@ -14,10 +14,10 @@ ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 04f15384a7cd0fa03300acdf159d371569ecf9fc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 
@@ -63,9 +63,9 @@ Azure Active Directory 免费版和基本版中“标记为风险用户”报告
 ![有风险的登录](./media/active-directory-reporting-security-user-at-risk/46.png)
 
 
-此对话框为你提供的选项：
+此对话框提供的选项用于：
 
-- 下载报表
+- 下载报告
 
 - 搜索用户
 

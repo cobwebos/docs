@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d9f86ac19044fd13e77d35d6c3dd9964c3852001
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 09/25/2017
 #### <a name="view-workspace-information-in-the-azure-portal"></a>在 Azure 门户中查看工作区信息
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户的左下角，单击“更多服务”。  在资源列表中，键入 **Log Analytics**。 开始键入时，会根据输入筛选该列表。 单击“Log Analytics”。  
+2. 在 Azure 门户的左下角，单击“更多服务”。  在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 单击“Log Analytics”。  
     ![Azure 中心](./media/log-analytics-manage-access/hub.png)  
 3. 在 Log Analytics 订阅边栏选项卡中选择一个工作区。
 4. 工作区边栏选项卡会显示有关工作区的详细信息，以及其他信息的链接。  

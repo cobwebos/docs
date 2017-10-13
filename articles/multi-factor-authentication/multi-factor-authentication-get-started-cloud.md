@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: kgremban
 ms.openlocfilehash: 19f3228b874fc4e37bf83388dae4341428226482
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>云中的 Azure 多重身份验证入门
 本文介绍如何在云中开始使用 Azure 多重身份验证。

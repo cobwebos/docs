@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 ms.openlocfilehash: d09a020b903e5f43afe03b86c675bcc1eb536cbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>在虚拟机规模集中管理虚拟机
 使用本文中的任务在虚拟机规模集中管理虚拟机。
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="display-information-about-a-scale-set"></a>显示有关规模集的信息
 可获取有关规模集的常规信息，也称为实例视图。 或者，可以获取更多特定信息，如规模集中资源的信息。
 
-将带引号的值替换为资源组和规模集的名称，并运行该命令：
+将带引号的值替换为资源组和规模集的名称，然后运行该命令：
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
@@ -205,11 +205,11 @@ ms.lasthandoff: 07/11/2017
 不使用 -InstanceId 参数即可一次性删除整个虚拟机规模集。
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>更改规模集的容量
-可以通过更改规模集的容量添加或删除虚拟机。 获取要更改的规模集，按需设置容量，并使用新容量更新规模集。 在这些命令中，将带引号的值替换为资源组和规模集的名称。
+可以通过更改规模集的容量添加或删除虚拟机。 获取想要更改的规模集，将其容量设置为所期望的容量，然后将规模集的容量更新为新容量。 在这些命令中，将带引号的值替换为资源组和规模集的名称。
 
     $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
     $vmss.sku.capacity = 5
     Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
-如果要从规模集中删除虚拟机，则首先需要删除 ID 最高的虚拟机。
+如果要从规模集中删除虚拟机，则首先将删除 ID 最高的虚拟机。
 
