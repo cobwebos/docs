@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 73d0dabe5b8b179cbc0847c2819947febd6ef4d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Accessing diagnostic logs for Azure Data Lake Store（访问 Azure Data Lake Store 的诊断日志）
 了解如何启用 Data Lake Store 帐户诊断日志记录以及如何查看为帐户收集的日志。
@@ -183,5 +182,4 @@ Azure Data Lake Store 提供如何处理和分析日志数据的示例。 可在
 ## <a name="see-also"></a>另请参阅
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
-
 

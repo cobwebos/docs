@@ -14,16 +14,15 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 48c56e2de40a3166f22db88850c6df2489a35e8e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-sftp-connector.md)
+> * [版本 1 - GA](data-factory-sftp-connector.md)
 > * [版本 2 - 预览版](../connector-sftp.md)
 
 > [!NOTE]
@@ -417,4 +416,3 @@ ms.lasthandoff: 09/25/2017
 请参阅以下文章：
 
 * [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，了解创建包含复制活动的管道的分步说明。
-
