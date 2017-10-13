@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure 存储安全指南 | Microsoft Docs"
 description: "详细介绍保护 Azure 存储的多种方法，包括但不限于 RBAC、存储服务加密、客户端加密、SMB 3.0 和 Azure 磁盘加密。"
 services: storage
