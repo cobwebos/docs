@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 10/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9ca423e8d752271fadbb5b51f38e691a0316576c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 9ca423e8d752271fadbb5b51f38e691a0316576c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/25/2017
+
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell-preview"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell（预览版）
 
@@ -164,7 +165,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 1. 为 RADIUS 机密创建安全字符串。
 
   ```powershell
-  $Secure_Secret=Read-Host -AsSecureStrinng -Prompt "RadiusSecret"
+  $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
   ```
 
 2. 系统会提示输入 RADIUS 机密。 输入的字符不会显示，而是被“*”字符取代。
@@ -252,3 +253,4 @@ VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。 若�
 ## <a name="next-steps"></a>后续步骤
 
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
+

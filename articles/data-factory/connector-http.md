@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: b27e852b70651cec34b200bde362ff0efae30226
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b27e852b70651cec34b200bde362ff0efae30226
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/25/2017
+
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 此连接器与 [Web 表连接器](connector-web-table.md)之间的差异在于，后者用于从 HTML 网页提取表内容。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板通过复制活动创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 对于特定于 HTTP 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -74,7 +75,7 @@ HTTP 链接的服务支持以下属性：
     "name": "HttpLinkedService",
     "properties":
     {
-        "type": "Http",
+        "type": "HttpServer",
         "typeProperties":
         {
             "authenticationType": "Basic",
@@ -215,7 +216,7 @@ HTTP 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 HTTP 源支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 HTTP 源支持的属性列表。
 
 ### <a name="http-as-source"></a>HTTP 作为源
 
