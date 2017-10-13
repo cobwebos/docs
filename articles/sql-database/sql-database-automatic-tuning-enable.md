@@ -3,7 +3,7 @@ title: "为 Azure SQL 数据库启动自动优化 | Microsoft Docs"
 description: "可轻松对 Azure SQL 数据库启用自动优化。"
 services: sql-database
 documentationcenter: 
-author: vvasic
+author: veljko-msft
 manager: drasumic
 editor: vvasic
 ms.assetid: 
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/19/2016
-ms.author: vvasic
+ms.author: veljko-msft
 ms.translationtype: HT
 ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 378e5a6a8cea80a551666c3692f8aa650620f66d
