@@ -53,6 +53,8 @@
               href: log-analytics-azure-vm-extension.md
             - name: Azure 资源
               href: log-analytics-azure-storage.md
+            - name: Azure 存储中的诊断或日志数据
+              href: log-analytics-azure-storage-iis-table.md
             - name: Operations Manager
               href: log-analytics-om-agents.md
             - name: 配置管理器
@@ -92,6 +94,8 @@
           items:
             - name: 正则表达式
               href: log-analytics-log-searches-regex.md
+            - name: 跨工作区搜索
+              href: log-analytics-cross-workspace-search.md
         - name: 从搜索结果执行操作
           href: log-analytics-log-search-takeaction.md
         - name: 计算机组
@@ -229,6 +233,10 @@
       href: /powershell/module/azurerm.operationalinsights
     - name: REST
       href: /rest/api/loganalytics
+    - name: 视图设计器磁贴参考
+      href: log-analytics-view-designer-tiles.md
+    - name: 视图设计器可视化部分参考
+      href: log-analytics-view-designer-parts.md
 - name: 资源
   items:
     - name: Azure 路线图

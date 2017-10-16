@@ -27,7 +27,7 @@
       href: overview-general-concepts.md
 - name: 操作指南
   items:
-    - name: 使用 Machine Learning Workbench
+    - name: 使用 Workbench
       items:
         - name: 使用 Python IDE
           href: how-to-configure-your-IDE.md
@@ -35,15 +35,15 @@
           href: how-to-use-jupyter-notebooks.md
         - name: 与 Git 存储库集成
           href: using-git-ml-project.md
-        - name: 使用 TDSP 将项目结构化
+        - name: 使用 TDSP 构造项目
           href: how-to-use-tdsp-in-azure-ml.md
-        - name: 如何执行漫游和协作
+        - name: 漫游和协作
           href: roaming-and-collaboration.md
-    - name: 使用 Visual Studio 工具
+    - name: 使用用于 AI 的 Visual Studio Code 工具
       href: quickstart-visual-studio-tools.md
     - name: 配置计算环境
       items:
-        - name: 配置执行目标
+        - name: 配置试验
           href: experiment-execution-configuration.md
         - name: 创建 DSVM 和 HDI Spark 群集
           href: how-to-create-dsvm-hdi.md
@@ -51,13 +51,14 @@
           href: how-to-use-gpu.md
     - name: 获取和了解数据
       items:
-        - name: 使用数据源向导访问数据
+        - name: 添加数据源
           href: data-source-wizard.md
-        - name: 数据准备入门
-          href: data-prep-getting-started.md
         - name: 数据准备指南
+          href: data-prep-getting-started.md
+        - name: 高级数据准备
           href: data-prep-user-guide.md
         - name: 数据准备转换
+          href: data-prep-appendix3-supported-transforms.md
           items:
             - name: 按示例合并列
               href: data-prep-combine-columns-by-example.md
@@ -73,22 +74,26 @@
           href: tutorial-iris-azure-cli.md
         - name: 跟踪运行历史记录和模型指标
           href: how-to-use-run-history-model-metrics.md
-        - name: 如何查找准确性最高且持续时间最短的运行
+        - name: 查找具有最高准确性的运行
           href: how-to-find-best-accuracy-cli.md
         - name: 读取和写入文件
           href: how-to-read-write-files.md
-        - name: MMLSpark 库
+        - name: 使用 MMLSpark 库
           href: how-to-use-mmlspark.md
-    - name: 部署模型
+    - name: 使模型可操作化
       items:
         - name: 设置模型管理
           href: deployment-setup-configuration.md
+        - name: 缩放群集和服务
+          href: how-to-scale-clusters.md
         - name: 部署 Web 服务
           href: model-management-service-deploy.md
         - name: 使用 Web 服务
           href: model-management-consumption.md
-        - name: 如何使用模型数据集合
+        - name: 收集模型数据
           href: how-to-use-model-data-collection.md
+        - name: 部署故障排除指南
+          href: how-to-deploy-troubleshooting-guide.md
     - name: 真实示例
       items:
         - name: 文档集合分析
@@ -121,8 +126,6 @@
           href: data-prep-python-extensibility-overview.md
         - name: 支持的数据源
           href: data-prep-appendix2-supported-data-sources.md
-        - name: 支持的转换
-          href: data-prep-appendix3-supported-transforms.md
         - name: 支持的检查器
           href: data-prep-appendix4-supported-inspectors.md
         - name: 支持的数据目标
@@ -131,7 +134,7 @@
           href: data-prep-supported-runtime-data-environments.md
         - name: Python 中的筛选表达式示例
           href: data-prep-appendix6-sample-filter-expressions-python.md
-        - name: Python 中的自定义数据流转换示例
+        - name: 以 Python 编写的自定义数据流转换示例
           href: data-prep-appendix7-sample-transform-data-flow-python.md
         - name: Python 中的源连接示例
           href: data-prep-appendix8-sample-source-connections-python.md
@@ -143,7 +146,7 @@
           href: data-prep-python-execution-api.md
     - name: 试验
       items:
-        - name: 执行配置
+        - name: 试验服务配置
           href: experiment-execution-configuration-reference.md
         - name: 日志记录 API
           href: reference-logging-api.md
@@ -159,7 +162,7 @@
   items:
     - name: 常见问题
       href: frequently-asked-questions.md
-    - name: 已知问题和故障排除指南
+    - name: 已知问题和故障排除
       href: known-issues-and-troubleshooting-guide.md
     - name: Team Data Science Process 文档
       href: ../team-data-science-process/overview.md
@@ -170,7 +173,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
     - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=MachineLearning'
+      href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
     - name: 视频

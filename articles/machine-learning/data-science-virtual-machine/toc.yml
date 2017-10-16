@@ -1,6 +1,7 @@
 - name: 数据科学虚拟机文档
   items: null
 - name: 概述
+  expanded: true
   items:
     - name: 什么是数据科学 VM？
       href: overview.md
@@ -25,7 +26,10 @@
     - name: 使用深度学习 VM
       href: use-deep-learning-dsvm.md
 - name: 引用
+  expanded: true
   items:
+    - name: 发现 DSVM
+      href: dsvm-tools-overview.md
     - name: 深度学习和人工智能框架
       href: dsvm-deep-learning-ai-frameworks.md
     - name: 机器学习和数据科学工具

@@ -58,6 +58,7 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
+### [使用管理组组织订阅](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [监管示例](resource-manager-subscription-examples.md)
 
 ## 控制访问

@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="discover"></a>发现
   要浏览库中的解决方案，请打开[库](http://gallery.cortanaintelligence.com)，并单击库主页顶部的“解决方案”。
 
- “解决方案”**[](https://gallery.cortanaintelligence.com/solutions)**页显示最近添加的解决方案列表。
+ **[解决方案](https://gallery.cortanaintelligence.com/solutions)**页显示最近添加的解决方案列表。
 单击“查看所有”可查看所有解决方案。
 在本页中，可以浏览库中的所有解决方案。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 

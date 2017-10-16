@@ -90,7 +90,7 @@ Azure AD 应用程序库中的所有“特别推荐的”应用均支持自动�
 
 * 必须为 Azure AD 预配服务提供“管理员凭据”，使其能够连接到应用程序提供的用户管理 API。
 
-* 可以配置“属性映射”，用于指定要将源系统（例如 Azure AD）中的哪些字段内容同步到目标系统（例如 ServiceNow）中的哪些字段。 除了用户帐户的预配以外，还可在本部分中选择性地配置组的预配（如果目标应用程序支持这样做）。 使用“匹配的属性”可以选择要将哪些字段用于匹配系统之间的帐户。 使用“表达式”可先修改和转换从源系统检索的值，然后将其写入目标系统。[](active-directory-saas-writing-expressions-for-attribute-mappings.md) 有关详细信息，请参阅[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)。
+* 可以配置“属性映射”，用于指定要将源系统（例如 Azure AD）中的哪些字段内容同步到目标系统（例如 ServiceNow）中的哪些字段。 除了用户帐户的预配以外，还可在本部分中选择性地配置组的预配（如果目标应用程序支持这样做）。 使用“匹配的属性”可以选择要将哪些字段用于匹配系统之间的帐户。 使用[表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)可先修改和转换从源系统检索的值，然后将其写入目标系统。 有关详细信息，请参阅[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)。
 
 ![设置](./media/active-directory-saas-app-provisioning/provisioning_settings1.PNG)
 
@@ -123,7 +123,7 @@ Azure AD 应用程序库中的所有“特别推荐的”应用均支持自动�
 
 在完成初始完全同步后，Azure AD 预配服务通常每隔 20 分钟检查更改。 
 
-如果 SaaS 应用返回几个错误（例如无效的管理员凭据），则 Azure AD 将逐渐降低频率到每天一次，直到完成错误修复。 在此情况下，Azure AD 预配作业进入“隔离”状态，并在“预配摘要报告”中指示此状态。[](active-directory-saas-provisioning-reporting.md)
+如果 SaaS 应用返回几个错误（例如无效的管理员凭据），则 Azure AD 将逐渐降低频率到每天一次，直到完成错误修复。 在此情况下，Azure AD 预配作业进入“隔离”状态，并在[预配摘要报告](active-directory-saas-provisioning-reporting.md)中指示此状态。
 
 **预配我的用户需要多长时间？**
 

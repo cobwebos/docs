@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 (https://portal.azure.com)。 
+登录 Azure 门户 ( https://portal.azure.com )。 
 
 ## <a name="create-a-zonal-public-ip-address"></a>创建分区的公共 IP 地址
 
