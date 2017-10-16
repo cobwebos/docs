@@ -91,9 +91,9 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [创建 Resource Manager 模板](../../../resource-group-authoring-templates.md)
 ## [社区模板](https://azure.microsoft.com/documentation/templates)
-## [计算 REST](/rest/api/compute)
-## [网络 REST](/rest/api)
-## [存储 REST](/rest/api/storageservices)
+## [计算 REST](https://msdn.microsoft.com/library/jj157206.aspx)
+## [网络 REST](https://msdn.microsoft.com/library/jj157182.aspx)
+## [存储 REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=compute)
