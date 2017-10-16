@@ -1,4 +1,4 @@
---- 
+---
 title: "Azure Time Series Insights 文档 - 教程和 API 参考 | Microsoft Docs"
 description: "了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。"
 services: time-series-insights
@@ -12,13 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: d22a3f0484da78d03dbe8411e74eb408185b1f30
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
---- 
+ms.openlocfilehash: ca41dab4f1488c0d172513e61b1960f236c7ebf0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
+---
 # <a name="azure-time-series-insights-documentation"></a>Azure Time Series Insights 文档 
  
 了解如何设置 Time Series Insights 环境、浏览和分析 IoT 解决方案或所连接对象的时序数据。 文档共享先决条件、操作方法、API 参考和其他文档，可帮助你在几分钟内入门。 

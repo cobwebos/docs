@@ -88,7 +88,6 @@
 ### [ScaleR 和 SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## 使用 HBase
 ### [使用 Phoenix 和 SQLLine](hdinsight-hbase-phoenix-squirrel-linux.md)
-### [分析实时推文](hdinsight-hbase-analyze-twitter-sentiment.md)
 ### [在虚拟网络上创建群集](hdinsight-hbase-provision-vnet.md)
 ### [配置 HBase 复制](hdinsight-hbase-replication.md)
 ### [使用 Java 开发应用](hdinsight-hbase-build-java-maven-linux.md)
@@ -100,7 +99,7 @@
 #### [使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)
 #### [使用 Hadoop 工具开发 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 #### [使用 C# 拓扑处理事件](hdinsight-storm-develop-csharp-event-hub-topology.md)
-#### [使用 Java 拓扑处理事件](hdinsight-storm-develop-java-event-hub-topology.md)
+#### [使用 Java 拓扑处理事件](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
 #### [分析实时传感器数据](hdinsight-storm-sensor-data-analysis.md)
 #### [关联各个时间的事件](hdinsight-storm-correlation-topology.md)
 #### [使用 Python 开发拓扑](hdinsight-storm-develop-python-topology.md)

@@ -1,5 +1,5 @@
 # 概述
-## [Azure VM 上的 SQL Server 是什么？](../sql/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
+## [Windows SQL Server VM](../sql/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 ## [常见问题](../sql/virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 

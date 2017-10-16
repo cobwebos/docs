@@ -117,8 +117,6 @@
               href: app-insights-snapshot-debugger.md
         - name: J2EE
           items:
-            - name: Eclipse
-              href: app-insights-java-eclipse.md
             - name: 日志跟踪
               href: app-insights-java-trace-logs.md
             - name: Unix 指标
@@ -140,8 +138,6 @@
               href: app-insights-proactive-failure-diagnostics.md
             - name: 性能异常
               href: app-insights-proactive-performance-diagnostics.md
-        - name: Dynamics CRM
-          href: app-insights-sample-mscrm.md
         - name: 创建资源
           href: app-insights-create-new-resource.md
     - name: 分析
@@ -188,14 +184,8 @@
           items:
             - name: 概述
               href: app-insights-analytics.md
-            - name: 教程
-              href: app-insights-analytics-tour.md
-            - name: 使用
-              href: app-insights-analytics-using.md
-            - name: 导入
+            - name: 导入自定义日志
               href: app-insights-analytics-import.md
-            - name: 诊断
-              href: app-insights-analytics-diagnostics.md
     - name: 自动化
       items:
         - name: Azure PowerShell 配置
@@ -259,7 +249,7 @@
           href: app-insights-java-troubleshoot.md
 - name: 引用
   items:
-    - name: 分析
+    - name: Analytics 查询语言
       href: 'https://docs.loganalytics.io/'
     - name: .NET
       href: 'https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights'

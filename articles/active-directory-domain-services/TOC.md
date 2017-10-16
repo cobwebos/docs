@@ -15,9 +15,9 @@
 
 # 如何
 ## 加入托管域
-### [加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
+### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [使用 PowerShell 加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-### [RedHat Enterprise Linux](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [RedHat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## 管理托管域
 ### [管理托管域](active-directory-ds-admin-guide-administer-domain.md)

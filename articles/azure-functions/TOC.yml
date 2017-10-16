@@ -15,6 +15,8 @@
       href: functions-create-first-azure-function-azure-cli.md
     - name: 创建函数 - Visual Studio
       href: functions-create-your-first-function-visual-studio.md
+    - name: 创建函数 - Java/Maven
+      href: functions-create-first-java-maven.md
     - name: 触发器
       items:
         - name: Blob 存储
@@ -67,12 +69,46 @@
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
+        - name: Java
+          href: functions-reference-java.md
     - name: 性能注意事项
       href: functions-best-practices.md
     - name: Functions 代理
       href: functions-proxies.md
     - name: Functions 运行时
       href: functions-runtime-overview.md
+    - name: Durable Functions
+      items:
+        - name: 概述
+          href: durable-functions-overview.md
+        - name: 绑定
+          href: durable-functions-bindings.md
+        - name: 检查点和重播
+          href: durable-functions-checkpointing-and-replay.md
+        - name: 实例管理
+          href: durable-functions-instance-management.md
+        - name: HTTP API
+          href: durable-functions-http-api.md
+        - name: 错误处理。
+          href: durable-functions-error-handling.md
+        - name: 诊断
+          href: durable-functions-diagnostics.md
+        - name: 计时器
+          href: durable-functions-timers.md
+        - name: 外部事件
+          href: durable-functions-external-events.md
+        - name: 永久业务流程
+          href: durable-functions-eternal-orchestrations.md
+        - name: 单独业务流程
+          href: durable-functions-singletons.md
+        - name: 子业务流程
+          href: durable-functions-sub-orchestrations.md
+        - name: 任务中心
+          href: durable-functions-task-hubs.md
+        - name: 版本控制
+          href: durable-functions-versioning.md
+        - name: 性能和缩放性
+          href: durable-functions-perf-and-scale.md
 - name: 操作指南
   items:
     - name: 开发
@@ -94,7 +130,11 @@
         - name: 本地函数
           href: functions-runtime-install.md
     - name: 配置
-      href: functions-how-to-use-azure-function-app-settings.md
+      items:
+        - name: 管理函数应用
+          href: functions-how-to-use-azure-function-app-settings.md
+        - name: 设置运行时版本
+          href: functions-versions.md
     - name: 监视
       href: functions-monitoring.md
     - name: 集成
@@ -111,6 +151,18 @@
           href: functions-flow-scenario.md
         - name: 使用托管服务标识
           href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Durable Functions
+      items:
+        - name: 安装
+          href: durable-functions-install.md
+        - name: 链接
+          href: durable-functions-sequence.md
+        - name: 扇出/扇入
+          href: durable-functions-cloud-backup.md
+        - name: 有状态的单一实例
+          href: durable-functions-counter.md
+        - name: 人机交互
+          href: durable-functions-phone-verification.md
 - name: 引用
   items:
     - name: 绑定
