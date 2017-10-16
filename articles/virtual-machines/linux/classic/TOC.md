@@ -72,9 +72,9 @@
 ## [Java](/java/api)
 ## [创建资源管理器模板](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [社区模板](https://azure.microsoft.com/documentation/templates)
-## [计算 REST](/rest/api/compute)
-## [网络 REST](/rest/api)
-## [存储 REST](/rest/api/storageservices)
+## [计算 REST](https://msdn.microsoft.com/library/jj157206.aspx)
+## [网络 REST](https://msdn.microsoft.com/library/jj157182.aspx)
+## [存储 REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
 
 # 资源
