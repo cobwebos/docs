@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 10/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: c56a9b06a11d25cf046a0faeb29af1d78d9a4a89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: c56a9b06a11d25cf046a0faeb29af1d78d9a4a89
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/25/2017
+
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication-preview"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件（预览版）
 
@@ -49,7 +50,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供的�
 使用以下命令创建 VPN 客户端配置：
 
 ```powershell 
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW" -AuthenticationMethod "EapMSChapv2"
+New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
 运行命令后，会返回一个链接。 将链接复制并粘贴到 Web 浏览器中，下载名为“VpnClientConfiguration.zip”的压缩文件。 解压缩该文件会看到以下文件夹： 
@@ -63,7 +64,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGat
 若要检索以前生成的客户端配置文件，请使用以下命令：
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW"
+Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
  
 ### <a name="adwincli"></a>设置 Windows VPN 客户端
@@ -122,7 +123,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGat
 使用以下命令创建 VPN 客户端配置：
  
 ```powershell
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root>
+New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root>
 ```
 
 cmdlet 结果返回一个链接。 将链接复制并粘贴到 Web 浏览器中，下载名为“VpnClientConfiguration.zip”的压缩文件。 解压缩该文件会看到以下文件夹：
@@ -135,7 +136,7 @@ cmdlet 结果返回一个链接。 将链接复制并粘贴到 Web 浏览器中�
 若要检索以前生成的客户端配置文件，请使用以下命令：
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW"
+Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
  
 ### <a name="certwincli"></a>设置 Windows VPN 客户端
@@ -203,3 +204,4 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGat
 ## <a name="next-steps"></a>后续步骤
 
 返回到相关文章，[完成 P2S 配置](point-to-site-how-to-radius-ps.md)。
+

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/10/2017
 ms.author: a-crradu
-ms.openlocfilehash: cccd0af0c991efe330567c2459717798d116e68f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: cccd0af0c991efe330567c2459717798d116e68f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/20/2017
+
 ---
 ## <a name="intro-on-role-based-access-control"></a>基于角色的访问控制简介
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 * 获取 Azure 订阅的所有者角色。
 * 有权访问 [Azure 门户](https://portal.azure.com)
 * 确保为用户订阅注册以下资源提供程序：**Microsoft.Authorization**。 有关如何注册资源提供程序的详细信息，请参阅 [Resource Manager 提供程序、区域、API 版本和架构](/azure-resource-manager/resource-manager-supported-services.md)。
-<!---Loc Comment: Link [Resource Manager providers, regions, API versions and schemas] is broken with an error message "404 - Content Not Found--->
+<!---Loc Comment: Link [Resource Manager providers, regions, API versions and schemas] is broken with an error message "404 - Content Not Found---->
 
 > [!NOTE]
 > 从 O365 门户预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：Azure Active Directory 访问权限）不符合 RBAC 的使用条件。
@@ -77,7 +78,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 ![在 Azure 门户的访问控制 IAM 功能中添加新用户](./media/role-based-access-control-create-custom-roles-for-internal-external-users/2.png)
 
 下一步是选择要分配的角色，以及要将 RBAC 角色分配到的用户。 在“角色”下拉菜单中，管理员用户只会看到 Azure 中提供的内置 RBAC 角色。 有关每个角色及其可分配范围的详细说明，请参阅[用于 Azure 基于角色的访问控制的内置角色](/active-directory/role-based-access-built-in-roles.md)。
-<!---Loc Comment: Link [Built-in roles for Azure Role-Based Access Control] is broken with an error message "404 - Content Not Found--->
+<!---Loc Comment: Link [Built-in roles for Azure Role-Based Access Control] is broken with an error message "404 - Content Not Found---->
 
 然后，管理员用户需要添加外部用户的电子邮件地址。 预期的行为不在现有租户中显示外部用户。 邀请外部用户后，“订阅”>“访问控制(IAM)”下面会显示该用户，以及当前在订阅范围分配有 RBAC 角色的所有当前用户。
 
@@ -349,3 +350,4 @@ azure role create --inputfile <path>
 
 
 ![Azure Cloud Shell](./media/role-based-access-control-create-custom-roles-for-internal-external-users/27.png)
+

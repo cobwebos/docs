@@ -12,14 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 10/15/2017
 ms.author: dekapur
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 3c472904641108b7383cd0f1416c47460f8de11a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
+
 ---
+
 # <a name="application-and-service-level-event-and-log-generation"></a>应用程序和服务级别事件和日志生成
 
 ## <a name="instrumenting-the-code-with-custom-events"></a>检测带有自定义事件的代码
@@ -29,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 某些产品可自动检测代码。 尽管这些解决方案能够正常运行，但几乎始终都要执行手动检测。 最后，必须提供足够的信息来对应用程序进行取证式的调试。 本文将介绍检测代码的不同方法，以及如何在不同的方法之间做出选择。
 
 ## <a name="eventsource"></a>EventSource
-在 Visual Studio 中通过模板创建 Service Fabric 解决方案时，将生成 **EventSource** 派生类（**ServiceEventSource** 或 **ActorEventSource**）。 会创建一个模板，可将应用程序或服务的事件添加到其中。 **EventSource** 名称**必须**唯一，应该将它重命名，不要使用默认的模板字符串 MyCompany-&lt;solution&gt;-&lt;project&gt;。 使用多个同名的 **EventSource** 定义会导致运行时出现问题。 每个定义的事件必须具有唯一标识符。 如果标识符不唯一，将发生运行时失败。 某些组织为标识符预先分配了值范围，避免不同的开发团队之间发生冲突。 有关详细信息，请参阅 [Vance 的博客](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)或 [MSDN 文档](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx)。
+在 Visual Studio 中通过模板创建 Service Fabric 解决方案时，将生成 **EventSource** 派生类（**ServiceEventSource** 或 **ActorEventSource**）。 将会创建一个模板，可将应用程序或服务的事件添加到其中。 **EventSource** 名称**必须**唯一，应该将它重命名，不要使用默认的模板字符串 MyCompany-&lt;solution&gt;-&lt;project&gt;。 使用多个同名的 **EventSource** 定义会导致运行时出现问题。 每个定义的事件必须具有唯一标识符。 如果标识符不唯一，将发生运行时失败。 某些组织为标识符预先分配了值范围，避免不同的开发团队之间发生冲突。 有关详细信息，请参阅 [Vance 的博客](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)或 [MSDN 文档](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx)。
 
 ### <a name="using-structured-eventsource-events"></a>使用结构化 EventSource 事件
 
@@ -65,7 +67,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="using-eventsource-generically"></a>一般情况下使用 EventSource
 
-由于特定的事件可能难以定义，许多用户都会使用一组常用的参数来定义少量的事件，这些参数通常以字符串的形式输出其信息。 因此，大部分结构化信息已丢失，使结果搜索和筛选变得更加困难。 使用此方法时，会定义一些通常对应于日志记录级别的事件。 以下代码片段定义调试和错误消息：
+由于特定的事件可能难以定义，许多用户都会使用一组常用的参数来定义少量的事件，这些参数通常以字符串的形式输出其信息。 因此，大部分结构化信息已丢失，使结果搜索和筛选变得更加困难。 使用此方法时，将会定义一些通常对应于日志记录级别的事件。 以下代码片段定义调试和错误消息：
 
 ```csharp
     [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -131,7 +133,7 @@ ms.lasthandoff: 10/11/2017
 
 某些第三方提供程序（包括 [Serilog](https://serilog.net/)、[NLog](http://nlog-project.org/) 和 [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)）可以使用上一部分所述的方法。 可将其中的每个提供程序插入 ASP.NET Core 日志记录，也可以单独使用。 Serilog 中的某个功能可以扩充记录器发出的所有消息。 此功能对服务名称、类型和分区信息的输出可能很有作用。 若要在 ASP.NET Core 基础结构中使用此功能，请执行以下步骤：
 
-1. 将 Serilog、Serilog.Extensions.Logging 和 Serilog.Sinks.Observable NuGet 包添加到项目。 对于以下示例，还应该添加 Serilog.Sinks.Literate。 本文稍后介绍一种更好的方法。
+1. 将 Serilog、Serilog.Extensions.Logging 和 Serilog.Sinks.Observable NuGet 包添加到项目。 对于以下示例，还应该添加 Serilog.Sinks.Literate。 本文稍后将介绍一种更好的方法。
 2. 在 Serilog 中创建 LoggerConfiguration 和记录器实例。
 
   ```csharp
@@ -176,3 +178,4 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 选择了用于检测应用程序和服务的日志记录提供程序之后，需要将日志和事件聚合才能将其发送到任何的分析平台。 阅读有关 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 和 [WAD](service-fabric-diagnostics-event-aggregation-wad.md) 的信息，以便更好地了解一些推荐选项。
+
