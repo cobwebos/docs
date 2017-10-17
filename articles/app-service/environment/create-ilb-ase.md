@@ -173,9 +173,9 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
     b. 若要测试 Web 部署发布或访问高级控制台，请为 _mytestapp.scm.ilbase.com_ 创建一条记录。
 
-7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com。（或者转到域中的任意 Web 应用名称。）
+7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com 。（或者转到域中的任意 Web 应用名称。）
 
-8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com。如果使用自签名证书，则需接受安全性不足的缺点。
+8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com 。如果使用自签名证书，则需接受安全性不足的缺点。
 
     ILB 的 IP 地址在“IP 地址”下列出。 此列表还包含由外部 VIP 用于入站流量管理的 IP 地址。
 
