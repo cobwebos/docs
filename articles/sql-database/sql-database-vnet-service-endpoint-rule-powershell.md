@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 本文将着重介绍名为 New-AzureRmSqlServerVirtualNetworkRule 的 cmdlet，它用于将子网终结点添加到 Azure SQL 数据库服务器的访问控制列表 (ACL)，从而创建规则。
 
-下面的列表显示准备对 New-AzureRmSqlServerVirtualNetworkRule 进行调用时必须运行的其他主要 cmdlet 的序列。 在本文中，这些调用出现在脚本 3 [虚拟网络规则](#a-script-30) 中：
+下面的列表显示准备对 New-AzureRmSqlServerVirtualNetworkRule 进行调用时必须运行的其他主要 cmdlet 的序列。 在本文中，这些调用出现在[脚本 3 虚拟网络规则](#a-script-30) 中：
 
 1. [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig)：创建子网对象。
 
