@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/11/2017
 ms.author: jgao
+ms.openlocfilehash: 822c5f2302fb32d0d5a05ba69132282c050b7b8b
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 17fac0327c3c454a8ea5c4d91b2d3e23de71f4ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>将交互式查询与 HDInsight 配合使用
 交互式查询（也称为 Hive LLAP 或 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式查询支持内存中缓存，可提高 Hive 查询速度和交互性。 
@@ -30,7 +29,6 @@ ms.lasthandoff: 09/27/2017
 交互式查询群集与 Hadoop 群集有所不同。 交互式 Hive 群集只包含 Hive 服务。 
 
 > [!NOTE]
-> MapReduce、Pig、Sqoop、Oozie，以及其他服务很快将从此群集类型中删除。
 > 仅可通过 Ambari Hive 视图、Beeline 和 Microsoft Hive 开放式数据库连接驱动程序 (Hive ODBC) 访问交互式查询群集中的 Hive 服务。 不能通过 Hive 控制台、Templeton、Azure 命令行工具 (Azure CLI) 或 Azure PowerShell 对其进行访问。 
 > 
 > 
@@ -86,5 +84,4 @@ ms.lasthandoff: 09/27/2017
 * 了解如何[将 Hive 视图与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)
 * 了解如何[使用 Beeline 在 HDInsight 中提交 Hive 查询](hdinsight-hadoop-use-hive-beeline.md)。
 * 了解如何[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop](hdinsight-connect-excel-hive-odbc-driver.md)。
-
 
