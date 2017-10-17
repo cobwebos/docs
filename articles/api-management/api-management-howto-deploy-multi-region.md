@@ -3,7 +3,7 @@ title: "将 Azure API 管理服务部署到多个 Azure 区域 | Microsoft 文�
 description: "了解如何将 Azure API 管理服务实例部署到多个 Azure 区域。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 47389ad6-f865-4706-833f-846115e22e4d
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 1c39fee739c2f5fd4b928e1e76e1ea57f072b5f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/31/2017
+
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 API 管理多区域部署，该部署可使 API 发布者在任意数量的所需 Azure 区域中分配单个 API 管理服务。 这有助于减少地理上分散的 API 使用者所感知的请求延迟，并且还改善其中一个区域处于离线状态时的服务可用性。 
@@ -50,7 +51,7 @@ API 管理多区域部署，该部署可使 API 发布者在任意数量的所�
 
 单击“添加”将选择放置在“位置”表中。 
 
-重复此过程，直到配置所有位置，并单击工具栏中的“保存”，启动部署过程。
+重复此过程，直到配置所有位置，然后单击工具栏中的“保存”，启动部署过程。
 
 ## <a name="remove-region"> </a>从位置中删除 API 管理服务实例
 在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”页。 
@@ -61,7 +62,7 @@ API 管理多区域部署，该部署可使 API 发布者在任意数量的所�
 
 ![删除区域][api-management-remove-region]
 
-确认删除，并单击“保存”应用所做的更改。
+确认删除，然后单击“保存”应用所做的更改。
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 
@@ -78,4 +79,5 @@ API 管理多区域部署，该部署可使 API 发布者在任意数量的所�
 
 [unit]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
+
 
