@@ -33,7 +33,7 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>可以使用哪些虚拟硬盘类型？
 Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHDX，需先使用 Hyper-V 管理器或 [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) cmdlet 对其进行转换。 然后，使用 [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet（在“服务管理”模式下）将 VHD 上传到 Azure 的存储帐户，用于虚拟机。
 
-* 有关 Linux 说明，请参阅创建并上传包含 Linux 操作系统的虚拟硬盘。[](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* 有关 Linux 说明，请参阅创建并上传包含 [Linux 操作系统的虚拟硬盘](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
 * 有关 Windows 说明，请参阅[创建 Windows Server VHD 并将其上传到 Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="are-these-virtual-machines-the-same-as-hyper-v-virtual-machines"></a>这些虚拟机是否与 Hyper-V 虚拟机相同？
