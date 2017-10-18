@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
 ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>将安全产品连接到 Operations Management Suite (OMS) 安全性和审核解决方案 
 本文档帮助读者将安全产品连接到 OMS 安全性和审核解决方案。 支持以下源：
@@ -63,7 +63,7 @@ OMS 安全性支持通过 Syslogs 和 [Cisco ASA](https://blogs.technet.microsof
     log { source(src); filter(f_local4_oms); destination(security_oms); };
     
 3. 下载文件 *security_events.conf* 并将它放置在 OMS 代理计算机上的 */etc/opt/microsoft/omsagent/conf/omsagent.d/* 中。
-4. 键入以下命令以重新启动 syslog 守护程序：*的 syslog ng 运行：*
+4. 键入以下命令重启 syslog 后台程序：*针对 syslog-ng，请运行：*
     
     ```
     sudo service rsyslog restart
@@ -101,7 +101,7 @@ OMS 安全性支持通过 Syslogs 和 [Cisco ASA](https://blogs.technet.microsof
    
 ![OMS 安全和审核基线评估](./media/oms-security-connect-products/oms-security-connect-products-fig1.png)
 
-可以针对一家供应商细化此搜索，例如，若要可视化 Cisco 联机日志，请键入：*Type=CommonSecurityLog DeviceVendor=Cisco*。 对于任何 CEF 标头，包括基本 extensios，任何其他扩展时，无论它"自定义扩展"，将被插入到"AdditionalExtensions"字段，"CommonSecurityLog"已预定义字段。 可以使用“自定义字段”功能获取专用字段。 
+可以针对一家供应商细化此搜索，例如，若要可视化 Cisco 联机日志，请键入：*Type=CommonSecurityLog DeviceVendor=Cisco*。 “CommonSecurityLog”对所有 CEF 标头使用预定义字段来包含基本扩展；其他所有扩展（不管是否为“自定义扩展”）将插入“AdditionalExtensions”字段。 可以使用“自定义字段”功能获取专用字段。 
 
 ### <a name="accessing-computers-missing-baseline-assessment"></a>评估缺少基线评估的计算机
 OMS 支持 Windows Server 2008 R2 到 Windows Server 2012 R2 上的域成员基线配置文件。 Windows Server 2016 基线尚未完成，会在其发布时尽快添加。 通过 OMS 安全和审核基线评估扫描的所有其他操作系统显示在“缺少基线评估的计算机”部分下。

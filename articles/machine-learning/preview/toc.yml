@@ -158,6 +158,10 @@
           href: model-management-cli-reference.md
         - name: 模型数据集合 API
           href: model-data-collection-api-reference.md
+    - name: 发行说明
+      items:
+        - name: 冲刺 (sprint) 0 - 2017 年 10 月
+          href: release-notes-sprint-0.md
 - name: 资源
   items:
     - name: 常见问题

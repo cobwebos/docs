@@ -22,6 +22,7 @@
 
 # 如何
 ## 规划和设计
+### [异地灾难恢复和异地复制](event-hubs-geo-dr.md)
 ### [专用事件中心](event-hubs-dedicated-overview.md)
 ### [身份验证和安全模型概述](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性和一致性](event-hubs-availability-and-consistency.md)

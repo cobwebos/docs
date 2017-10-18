@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: tomfitz
 ms.openlocfilehash: f82f59f363507b69a729580302c2d11202e93a87
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
-使用 Visual Studio 和 [Azure SDK](https://azure.microsoft.com/downloads/)可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，然后将该基础结构与代码一起部署。 或者，可以定义虚拟机、虚拟网络和存储帐户，然后连同虚拟机上执行的脚本一起部署该基础结构。 **Azure 资源组**部署项目允许通过单个可重复的的操作部署全部所需的资源。 有关部署和管理资源的详细信息，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
+使用 Visual Studio 和 [Azure SDK](https://azure.microsoft.com/downloads/)可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，然后将该基础结构与代码一起部署。 或者，可以定义虚拟机、虚拟网络和存储帐户，然后连同虚拟机上执行的脚本一起部署该基础结构。 使用 Azure 资源组部署项目，只需单个可重复的操作即可部署所有需要的资源。 有关部署和管理资源的详细信息，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
 
 Azure 资源组项目包含 Azure Resource Manager JSON 模板，用于定义部署到 Azure 的资源。 若要了解 Resource Manager 模板的元素，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。 Visual Studio 允许编辑这些模板，并提供工具来简化模板的使用。
 
@@ -55,8 +55,7 @@ Azure 资源组项目包含 Azure Resource Manager JSON 模板，用于定义部
    
    | 文件名 | 说明 |
    | --- | --- |
-   | Deploy-AzureResourceGroup.ps1 |一个 PowerShell 脚本，调用 PowerShell 命令以部署到 Azure Resource Manager。<br />
-            **请注意** Visual Studio 使用此 PowerShell 脚本来部署模板。 对此脚本进行任何更改会影响 Visual Studio 中的部署，因此请务必小心。 |
+   | Deploy-AzureResourceGroup.ps1 |一个 PowerShell 脚本，调用 PowerShell 命令以部署到 Azure Resource Manager。<br />**请注意** Visual Studio 使用此 PowerShell 脚本来部署模板。 对此脚本进行任何更改会影响 Visual Studio 中的部署，因此请务必小心。 |
    | WebSiteSQLDatabase.json |Resource Manager 模板，定义要部署到 Azure 的基础结构，以及在部署期间可以提供的参数。 它还定义各资源之间的依赖关系，以便 Resource Manager 按正确的顺序部署资源。 |
    | WebSiteSQLDatabase.parameters.json |包含模板所需值的参数文件。 需要传入这些参数值来自定义每个部署。 |
    
@@ -102,7 +101,7 @@ Visual Studio 编辑器提供了工具来帮助编辑 Resource Manager 模板。
 }
 ```
 
-Visual Studio 还提供了 Intellisense 来帮助你了解编辑模板时可以使用哪些属性。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的描述。
+Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些属性可用。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的描述。
 
 ![显示 Intellisense](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
@@ -122,7 +121,7 @@ Visual Studio 还提供了 Intellisense 来帮助你了解编辑模板时可以�
    
     ![“部署”>“新建部署”菜单项](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
    
-    此时显示“部署到资源组”对话框  。
+    此时会显示“部署到资源组”对话框。
    
     ![部署到资源组对话框](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployment.png)
 2. 在“资源组”下拉框中，选择现有资源组或创建新资源组。 要创建资源组，请打开“资源组”下拉框，并选择“新建”。

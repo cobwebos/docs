@@ -15,16 +15,16 @@ ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: cabailey
 ms.openlocfilehash: e9a4f16f048833dab49f7db79892fe47a5aeff37
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
 
 ## <a name="introduction"></a>介绍
-创建一个或多个密钥保管库后，您可能希望监视你的密钥保管库如何以及何时将访问，以及更改者。 为此，可以启用密钥保管库日志记录，以便在提供的 Azure 存储帐户中保存信息。 系统自动指定的存储帐户创建了名为 **insights-logs-auditevent** 的新容器，可以使用同一个存储帐户来收集多个密钥保管库的日志。
+在创建一个或多个密钥保管库之后，可能需要监视密钥保管库的访问方式、时间和访问者。 为此，可以启用密钥保管库日志记录，以便在提供的 Azure 存储帐户中保存信息。 系统自动指定的存储帐户创建了名为 **insights-logs-auditevent** 的新容器，可以使用同一个存储帐户来收集多个密钥保管库的日志。
 
 最多在执行密钥保管库操作 10 分钟后，就能访问其日志记录信息。 但大多数情况下不用等待这么长时间。  存储帐户中的日志完全由你管理：
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/03/2017
 
     Get-AzureRmSubscription
 
-然后，若要指定与你将日志记录密钥保管库关联的订阅，请键入：
+然后，键入以下命令以指定与要记录的密钥保管库关联的订阅：
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-## <a id="identify"></a>标识日志密钥保管库
+## <a id="identify"></a>标识用于保存日志的密钥保管库
 在入门教程中，密钥保管库名为 **ContosoKeyVault**，因此继续使用该名称，并将详细信息存储到名为 **kv** 的变量中：
 
     $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
@@ -181,7 +181,7 @@ ms.lasthandoff: 08/03/2017
 * 若要查询密钥保管库资源的诊断设置状态：`Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
 * 若要禁用密钥保管库资源的日志记录： `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
-## <a id="interpret"></a>解释密钥保管库日志
+## <a id="interpret"></a>解释 Key Vault 日志
 每个 Blob 存储为文本，并格式化为 JSON Blob。 以下是运行 `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`后得到的示例日志条目：
 
     {
@@ -222,7 +222,7 @@ ms.lasthandoff: 08/03/2017
 | callerIpAddress |发出请求的客户端的 IP 地址。 |
 | correlationId |一个可选 GUID，客户端可传递此 GUID 来使客户端日志与服务端（密钥保管库）日志相关联。 |
 | identity |发出 REST API 请求时提供的令牌中的标识。 与通过 Azure PowerShell cmdlet 发出请求一样，这通常是“用户”、“服务主体”，或者“用户+应用程序 ID”的组合。 |
-| properties |此字段根据操作 (operationName) 包含不同的信息。 在大多数情况下，包含客户端信息（客户端传递的 useragent 字符串）、确切的 REST API 请求 URI 和 HTTP 状态代码。 此外，如果某个对象返回请求 （例如，KeyCreate 或 VaultGet） 的结果它将包含密钥 URI （作为"id")、 保管库 URI 或机密 URI。 |
+| properties |此字段根据操作 (operationName) 包含不同的信息。 在大多数情况下，包含客户端信息（客户端传递的 useragent 字符串）、确切的 REST API 请求 URI 和 HTTP 状态代码。 此外，在根据请求（例如，KeyCreate 或 VaultGet）返回对象时，此字段还将包含密钥 URI（“id”形式）、保管库 URI 或机密 URI。 |
 
 **operationName** 字段值采用 ObjectVerb 格式。 例如：
 
@@ -262,7 +262,7 @@ ms.lasthandoff: 08/03/2017
 | SecretList |[列出保管库中的机密](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
 | SecretListVersions |[列出机密的版本](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
 
-## <a id="loganalytics"></a>使用日志分析
+## <a id="loganalytics"></a>使用 Log Analytics
 
 可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。 有关详细信息，包括如何进行设置，请参阅 [Log Analytics 中的Azure Key Vault 解决方案](../log-analytics/log-analytics-azure-key-vault.md)。 如果需要从 Log Analytics 预览版提供的旧 Key Vault 解决方案进行迁移，且之前在该方案中，首先将日志路由到了 Azure 存储帐户，并将 Log Analytics 配置为了从此处读取，则本文也可提供指导。
 

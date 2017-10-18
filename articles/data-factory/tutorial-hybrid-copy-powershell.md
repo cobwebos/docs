@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/14/2017
 ms.author: jingwang
+ms.openlocfilehash: 74e2a57aa933c7025db952fa09de236f5dabb8c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 60641ddfef7846f0e8b5d850e716b2652bf62367
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-data-between-on-premises-and-cloud"></a>在本地与云之间复制数据
 Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。 
 
@@ -218,12 +216,12 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
         "name": "SqlServerLinkedService"
     }
    ```
-2. 若要在本地自我托管的集成运行时中加密 JSON 有效负载中的敏感数据，可以运行 **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** 并传递上述 JSON 有效负载。 这种加密可确保使用数据保护应用程序编程接口 (DPAPI) 加密凭据，并将其存储在自我托管的集成运行时节点本地。 可将输出的有效负载重定向到包含已加密凭据的另一个 JSON 文件（在本例中为“encryptedLinkedService.json”）。 
+2. 若要在本地自我托管的集成运行时中加密 JSON 有效负载中的敏感数据，可以运行 **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** 并传递上述 JSON 有效负载。 这种加密可确保使用数据保护应用程序编程接口 (DPAPI) 加密凭据，并将其存储在自我托管的集成运行时节点本地。 可将输出的有效负载重定向到包含已加密凭据的另一个 JSON 文件（在本例中为“encryptedLinkedService.json”）。 
 
     在运行该命令之前，请将 **&lt;integration runtime name&gt;** 替换为集成运行时的名称。
 
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 3. 使用前一步骤中的 JSON 运行以下命令，创建 **SqlServerLinkedService**：

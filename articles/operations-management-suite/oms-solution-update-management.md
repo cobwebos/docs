@@ -3,7 +3,7 @@ title: "更新 OMS 中的管理解决方案 | Microsoft Docs"
 description: "本文旨在帮助你了解如何使用此解决方案来管理 Windows 和 Linux 计算机的更新。"
 services: operations-management-suite
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
@@ -13,19 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
-ms.author: magoedte
+ms.author: eslesar
+ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-management-solution-in-oms"></a>更新 OMS 中的管理解决方案
 
 ![“更新管理”符号](./media/oms-solution-update-management/update-management-symbol.png)
 
 可以使用 OMS 中的更新管理解决方案，为部署在 Azure、本地环境或其他云提供程序中的 Windows 和 Linux 计算机管理操作系统安全更新。  可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
+
+## <a name="update-management-in-azure-automation"></a>Azure 自动化中的更新管理
+
+可以直接通过 [Azure 自动化](../automation/automation-offering-get-started.md)帐户为虚拟机启用“更新管理”。
+若要了解如何通过自动化帐户为虚拟机启用更新管理，请参阅[管理多个虚拟机的更新](../automation/manage-update-multi.md)。
 
 
 ## <a name="solution-overview"></a>解决方案概述
@@ -104,10 +108,10 @@ ms.lasthandoff: 07/31/2017
 
 可以使用下述方法部署解决方案：
 
-* Azure 门户中的 Azure Marketplace：选择“自动化与控制”服务或“更新管理”解决方案
+* Azure 门户中的 Azure 应用商店：选择“自动化与控制”服务或“更新管理”解决方案
 * OMS 工作区中的 OMS 解决方案库
 
-如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化和控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure Marketplace 选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
+如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化和控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure 应用商店选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
 
 ### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>确认 OMS 代理和 Operations Manager 管理组已连接到 OMS
 
@@ -166,9 +170,9 @@ ms.lasthandoff: 07/31/2017
 对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，即可通过创建“更新部署”安装所需的更新。  更新部署是为一台或多台计算机计划的所需更新安装。  除了应包括在部署范围内的计算机或计算机组，还请指定部署的日期和时间。  若要详细了解计算机组，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)。  在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。  不会反映对组所做的后续更改。  要解决此问题，请删除计划的更新部署，并重新创建它。
 
 > [!NOTE]
-> 默认情况下，从 Azure Marketplace 部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。  将此解决方案或 Windows VM 添加到工作区后，该行为不会改变。  如果不主动通过此解决方案管理更新，系统会应用默认行为（即自动应用更新）。  
+> 默认情况下，从 Azure 应用商店部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。  将此解决方案或 Windows VM 添加到工作区后，该行为不会改变。  如果不主动通过此解决方案管理更新，系统会应用默认行为（即自动应用更新）。  
 
-对于从 Azure Marketplace 中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
+对于从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
 
 ### <a name="viewing-update-deployments"></a>查看更新部署
 单击“更新部署” 磁贴以查看现有的更新部署列表。  这些对象按状态分组 – **已计划**、**正在运行**和 **已完成**。<br><br> ![更新部署计划页](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
@@ -307,11 +311,17 @@ ms.lasthandoff: 07/31/2017
 | Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |具有解决了关键或安全漏洞的所有可用更新包的列表 | 
 | Type:UpdateRunProgress &#124; measure Count() by UpdateRunName |列出哪些更新部署对计算机进行了修改 | 
 | Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |在此更新运行中进行了更新的计算机（请将相关值替换为更新部署名称） | 
-| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |具有任何可用更新的“Ubuntu”计算机的列表 | 
+| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |具有任何可用更新的“Ubuntu”计算机的列表 |
+
+## <a name="integrate-with-system-center-configuration-manager"></a>集成 System Center Configuration Manager
+
+在软件更新管理 (SUM) 周期中，已经投资购买 System Center Configuration Manager 来管理电脑、服务器和移动设备的客户还可以依赖其在管理软件更新方面的优势和成熟度。
+
+若要了解如何将 OMS 更新管理解决方案与 Sytem Center Configuration Manager 集成，请参阅[将 System Center Configuration Manager 与 OMS 更新管理集成](../automation/oms-solution-updatemgmt-sccmintegration.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 
-此部分介绍如何排查“更新管理”解决方案的问题。  
+此部分介绍如何排查“更新管理”解决方案的问题。
 
 ### <a name="how-do-i-troubleshoot-onboarding-issues"></a>如何排查载入问题？
 如果在尝试载入解决方案或虚拟机时遇到问题，请查看“应用程序和服务日志\Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件。  下表突出显示了特定的错误消息，以及每个消息的可能解决方案。  
@@ -331,6 +341,5 @@ ms.lasthandoff: 07/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 使用[Log Analytics](../log-analytics/log-analytics-log-searches.md)中的日志搜索可查看详细的更新数据。
-* [创建自己的仪表板](../log-analytics/log-analytics-dashboards.md)显示你管理的计算机的更新符合性。
+* [创建自己的仪表板](../log-analytics/log-analytics-dashboards.md)显示所管理计算机的更新符合性。
 * [创建警报](../log-analytics/log-analytics-alerts.md)检测到计算机缺少关键更新或计算机禁用了自动更新时发出警报。  
-

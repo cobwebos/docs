@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/03/2017
+ms.date: 10/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.openlocfilehash: fd95d055bedbec89027e1a75bcd4c9addab18ed3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: df0feb51469333bac42c779d860192d46f24ac62
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Hadoop)
 
@@ -45,6 +44,11 @@ HDInsight 可以使用 Linux (Ubuntu) 作为 Hadoop 群集中节点的操作系�
 > 如果群集包含边缘节点，建议__始终连接到边缘节点__（使用 SSH）。 头节点托管的服务对于 Hadoop 运行状况而言至关重要。 边缘节点只会运行其上放置的软件。
 >
 > 有关使用边缘节点的详细信息，请参阅 [Use edge nodes in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node)（在 HDInsight 中使用边缘节点）。
+
+> [!TIP]
+> 首先连接到 HDInsight 时，SSH 客户端可能会显示一个警告，指出无法验证主机。 当系统提示时，请选择“是”，将主机添加到 SSH 客户端的受信任服务器列表。
+>
+> 如果此前已使用同一名称连接到某个服务器，则可能会收到一个警告，指出存储的主机密钥与服务器的主机密钥不匹配。 发生这种情况时，SSH 客户端可能拒绝连接到群集。 请参阅 SSH 客户端的文档，了解如何删除服务器名称的现有条目。
 
 ## <a name="ssh-clients"></a>SSH 客户端
 

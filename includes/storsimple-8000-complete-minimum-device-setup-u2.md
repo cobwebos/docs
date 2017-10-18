@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 01/12/17-->
+<!--author=alkohli last changed: 09/28/17-->
 
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最低要求的 StorSimple 设备设置
 
@@ -21,7 +21,7 @@
 
             ![StorSimple 最低要求设备设置网络接口](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
-            控制器的固定 IP 地址用于为设备提供更新。 因此，这些固定 IP 必须可路由并能够连接到 Internet。 可以使用 [Test-HcsmConnection][Test] cmdlet 检查固定控制器 IP 是否可路由。 下面的示例演示固定控制器 IP 路由到 Internet，并且可以访问 Microsoft Update 服务器。
+            控制器的固定 IP 地址用于为设备提供更新以及垃圾回收。 因此，这些固定 IP 必须可路由并能够连接到 Internet。 可以使用 [Test-HcsmConnection][Test] cmdlet 检查固定控制器 IP 是否可路由。 下面的示例演示固定控制器 IP 路由到 Internet，并且可以访问 Microsoft Update 服务器。
 
             ![Test-HcsmConnection 显示可路由的 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 

@@ -15,17 +15,17 @@ ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>通知中心入门（Kindle 应用）
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>概述
 本教程演示如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。
-你将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
+将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
 
 ## <a name="prerequisites"></a>先决条件
 本教程需要的内容如下：
@@ -43,10 +43,10 @@ ms.lasthandoff: 07/11/2017
 3. 在门户中单击应用的名称，并单击“设备消息”选项卡。
    
     ![][2]
-4. 单击“创建新的安全配置文件”，并创建一个新的安全配置文件（例如 **TestAdm security profile**）。 。
+4. 单击“创建新的安全配置文件”，并创建一个新的安全配置文件（例如 **TestAdm security profile**）。 然后单击“保存”。
    
     ![][3]
-5. 单击“安全配置文件”以查看你刚刚创建的安全配置文件。 复制“客户端 ID”和“客户端密码”值以供稍后使用。
+5. 单击“安全配置文件”，查看刚创建的安全配置文件。 复制“客户端 ID”和“客户端密码”值以供稍后使用。
    
     ![][4]
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/11/2017
 将 ADM 库添加到 Eclipse 项目：
 
 1. 若要获取 ADM 库，请 [下载 SDK]。 解压缩 SDK zip 文件。
-2. 在 Eclipse 中右键单击你的项目，然后单击“属性”。 在左侧选择“Java 生成路径”，然后选择顶部的“库”选项卡。 单击“添加外部 Jar”，并从提取 Amazon SDK 的目录中选择文件 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`。
+2. 在 Eclipse 中右键单击项目，然后单击“属性”。 在左侧选择“Java 生成路径”，并选择顶部的“库”选项卡。**** 单击“添加外部 Jar”，并从提取 Amazon SDK 的目录中选择文件 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`。
 3. 下载 NotificationHubs Android SDK（链接）。
 4. 解压缩该包，然后在 Eclipse 中将文件 `notification-hubs-sdk.jar` 拖放到 `libs` 文件夹中。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/11/2017
 
         xmlns:amazon="http://schemas.amazon.com/apk/res/android"
 
-1. 在清单元素下添加权限作为第一个元素。 将 [YOUR PACKAGE NAME] 替换为用于创建应用的包。
+1. 在清单元素下添加权限作为第一个元素。 将 **[YOUR PACKAGE NAME]** 替换为用于创建应用的包。
    
         <permission
          android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
@@ -100,7 +100,7 @@ ms.lasthandoff: 07/11/2017
    
         <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-2. 插入以下元素作为应用程序元素的第一个子级。 请记得将 [YOUR SERVICE NAME] 替换为你在下一部分中创建的 ADM 消息处理程序的名称（包括包），并将 [YOUR PACKAGE NAME] 替换为创建应用时所用的包名称。
+2. 插入以下元素作为应用程序元素的第一个子级。 请记得将 **[YOUR SERVICE NAME]** 替换成在下一部分中创建的 ADM 消息处理程序的名称（包括包），并将 **[YOUR PACKAGE NAME]** 替换为创建应用时所用的包名称。
    
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
@@ -227,7 +227,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="add-your-api-key-to-your-app"></a>将 API 密钥添加到应用
 1. 在 Eclipse 中，在项目的目录资产中创建名为 **api_key.txt** 的新文件。
-2. 打开该文件，并复制你在 Amazon 开发人员门户中生成的 API 密钥。
+2. 打开文件，复制在 Amazon 开发人员门户中生成的 API 密钥。
 
 ## <a name="run-the-app"></a>运行应用程序
 1. 启动模拟器。

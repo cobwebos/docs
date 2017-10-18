@@ -13,15 +13,13 @@
 ## [规划和操作](security-center-planning-and-operations-guide.md)
 ## [权限](security-center-permissions.md)
 ## [支持的平台](security-center-os-coverage.md)
-## [合作伙伴集成](security-center-partner-integration.md)
 ## [常见问题](security-center-faq.md)
 
 # 如何
-
-## 安全策略
-### [概述](security-center-policies-overview.md)
+## [安全策略](security-center-policies-overview.md)
 ### [数据收集](security-center-enable-data-collection.md)
 ### [安全策略](security-center-policies.md)
+### [使用 Azure 策略的安全策略](security-center-azure-policy.md)
 ### [电子邮件通知](security-center-provide-security-contact-details.md)
 ### [定价层](security-center-pricing.md)
 
@@ -30,6 +28,10 @@
 ## [搜索](security-center-search.md)
 
 ## 预防
+### [安全解决方案](security-center-partner-integration.md)
+#### [监视已连接的解决方案](security-center-partner-solutions.md)
+#### [连接 Microsoft ATA](security-center-ata-integration.md)
+#### [连接 Azure AD Identity Protection](security-center-aadip-integration.md)
 ### [实施安全建议](security-center-recommendations.md)
 ### [应用程序建议](security-center-application-recommendations.md)
 #### [添加 Web 应用程序防火墙](security-center-add-web-application-firewall.md)
@@ -57,7 +59,6 @@
 #### [更新 OS 版本](security-center-update-os-version.md)
 #### [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md)
 ### [监视安全运行状况](security-center-monitoring.md)
-### [监视合作伙伴解决方案](security-center-partner-solutions.md)
 ### [标识和访问](security-center-identity-access.md)
 
 ## 检测和响应

@@ -50,11 +50,11 @@
           href: msi-qs-configure-powershell-windows-vm.md
         - name: 使用 Azure CLI
           href: msi-qs-configure-cli-windows-vm.md
-        - name: 使用 Azure 资源管理器模板
+        - name: 使用 Azure Resource Manager 模板
           href: msi-qs-configure-template-windows-vm.md
         - name: 使用 Azure SDK
           href: msi-qs-configure-sdk-windows-vm.md
-    - name: 将 MSI 访问权限分配给 Azure 资源
+    - name: 向 VM MSI 授予对资源管理器的访问权限
       items:
         - name: 使用 Azure 门户
           href: msi-howto-assign-access-portal.md
@@ -62,23 +62,31 @@
           href: msi-howto-assign-access-powershell.md
         - name: 使用 Azure CLI
           href: msi-howto-assign-access-cli.md
-    - name: 使用 MSI 访问 Azure 资源管理器
+    - name: 使用 VM MSI 访问 Azure 资源管理器
       items:
-        - name: 在 Windows VM 上
+        - name: 从 Windows VM 访问
           href: msi-tutorial-windows-vm-access-arm.md
-        - name: 在 Linux VM 上
+        - name: 从 Linux VM 访问
           href: msi-tutorial-linux-vm-access-arm.md
-    - name: 使用 MSI 访问 Azure 存储
+    - name: 使用 VM MSI 访问 Azure SQL
       items:
-        - name: 在 Windows VM 上
+        - name: 从 Windows VM 访问
+          href: msi-tutorial-windows-vm-access-sql.md
+    - name: 使用 VM MSI 访问 Azure 存储
+      items:
+        - name: 使用访问密钥从 Windows VM 访问
           href: msi-tutorial-windows-vm-access-storage.md
-        - name: 在 Linux VM 上
+        - name: 使用 SAS 从 Windows VM 访问
+          href: msi-tutorial-windows-vm-access-storage-sas.md
+        - name: 使用访问密钥从 Linux VM 访问
           href: msi-tutorial-linux-vm-access-storage.md
-    - name: 使用 MSI 访问非 Azure AD 资源
+        - name: 使用 SAS 从 Linux VM 访问
+          href: msi-tutorial-linux-vm-access-storage-sas.md
+    - name: 使用 VM MSI 访问 Azure Key Vault
       items:
-        - name: 在 Windows VM 上
+        - name: 从 Windows VM 访问
           href: msi-tutorial-windows-vm-access-nonaad.md
-        - name: 在 Linux VM 上
+        - name: 从 Linux VM 访问
           href: msi-tutorial-linux-vm-access-nonaad.md
     - name: 反馈和已知问题
       href: msi-known-issues.md

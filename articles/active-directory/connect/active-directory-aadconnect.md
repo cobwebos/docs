@@ -13,14 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/13/2017
+ms.date: 10/02/2017
 ms.author: billmath
+ms.openlocfilehash: c7aca7b67f4773cf7d19f84253487ed060e0db73
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 97f89cd6cf37d92ac50f149336e1d1143de991ec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>将本地目录与 Azure Active Directory 集成
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
@@ -127,6 +126,15 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 |更改默认配置 | [更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>配置联合身份验证功能
+
+Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进行联合身份验证以及管理联合身份验证信任的过程。 Azure AD Connect 支持 Windows Server 2012R2 或更高版本上的 AD FS。
+
+[更新 AD FS 场的 SSL 证书](active-directory-aadconnectfed-ssl-update.md)，即使不使用 Azure AD Connect 来管理联合身份验证信任。
+
+向场[添加 AD FS 服务器](active-directory-aadconnect-federation-management.md#addadfsserver)，以便根据需要扩展场。
+
+[修复信任](active-directory-aadconnect-federation-management.md#repairthetrust)（针对 Azure AD），只需单击数下即可。
+
 可将 ADFS 配置为支持 [多个域](active-directory-aadconnect-multiple-domains.md)。 例如，可能在联合身份验证功能中需要使用多个顶级域。
 
 如果 ADFS 服务器未配置为自动更新 Azure AD 中的证书，或者如果使用非 ADFS 解决方案，则在需要 [更新证书](active-directory-aadconnect-o365-certs.md)时会通知你。
@@ -157,5 +165,4 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player]
 > 
 > 
-
 

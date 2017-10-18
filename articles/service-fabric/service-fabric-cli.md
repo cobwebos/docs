@@ -8,12 +8,11 @@ ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
+ms.openlocfilehash: a938e300b1510a4f5f4eac3bd3d9a8bb728241ea
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: f246ee8aaecf3a398182debdea07832c75c1bd9c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -25,11 +24,28 @@ Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用�
 
 在安装之前，请确保环境中已安装 Python 和 pip。 有关详细信息，请参阅 [pip 快速入门文档](https://pip.pypa.io/en/latest/quickstart/)和官方的 [Python 安装文档](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
-尽管 Python 2.7 和 Python 3.6 都受支持，但我们建议使用 Python 3.6。 以下部分介绍如何安装所有必备组件和 CLI。
+CLI 支持 Python 2.7、3.5 和 3.6 版。 建议使用 Python 3.6 版，因为很快会终止对 Python 2.7 的支持。
+
+### <a name="service-fabric-target-runtime"></a>Service Fabric 目标运行时
+
+Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 使用下表确定应安装哪个版本的 CLI：
+
+| CLI 版本   | 支持的运行时版本 |
+|---------------|---------------------------|
+| 最新 (~=2)  | 最新 (~=6.0)            |
+| 1.1.0         | 5.6, 5.7                  |
+
+为 `pip install` 命令添加 `==<version>` 后缀即可选择性地指定要安装的 CLI 的目标版本。 例如，版本 1.1.0 的语法为：
+
+```
+pip install -I sfctl==1.1.0
+```
+
+视需要将以下 `pip install` 命令替换为此前提到过的命令。
 
 ## <a name="install-pip-python-and-the-service-fabric-cli"></a>安装 pip、Python 和 Service Fabric CLI
 
- 可以通过多种方式在平台上安装 pip 和 Python。 按照以下步骤可在主流操作系统上快速安装 Python 3.6 和 pip。
+可以通过多种方式在平台上安装 pip 和 Python。 按照以下步骤可在主流操作系统上快速安装 Python 3 和 pip。
 
 ### <a name="windows"></a>Windows
 
@@ -52,47 +68,45 @@ pip --version
 
 然后运行以下命令，安装 Service Fabric CLI：
 
-```
+```bat
 pip install sfctl
 sfctl -h
 ```
 
-如果遇到错误，指出“未找到 `sfctl`”，请运行以下命令：
+### <a name="ubuntu-and-windows-subsystem-for-linux"></a>适用于 Linux 的 Ubuntu 和 Windows 子系统
+
+若要安装 Service Fabric CLI，请运行以下命令：
 
 ```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-### <a name="ubuntu"></a>Ubuntu
-
-对于 Ubuntu 16.04 桌面版，可以使用第三方个人软件包存档 (PPA) 安装 Python 3.6。
-
-从终端运行以下命令：
-
-```bash
-sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo apt-get update
-sudo apt-get install python3.6
+sudo apt-get install python3
 sudo apt-get install python3-pip
+pip3 install sfctl
 ```
 
-若要仅为了安装 Python 3.6 而安装 Service Fabric CLI，请运行以下命令：
+然后即可通过以下方式测试安装情况：
 
 ```bash
-python3.6 -m pip install sfctl
 sfctl -h
 ```
 
-如果遇到错误，指出“未找到 `sfctl`”，请运行以下命令：
+如果收到“找不到命令”错误，例如：
+
+`sfctl: command not found`
+
+请确保可从 `$PATH` 访问 `~/.local/bin`：
 
 ```bash
 export PATH=$PATH:~/.local/bin
 echo "export PATH=$PATH:~/.local/bin" >> .bashrc
 ```
 
-这些步骤不影响系统安装的 Python 3.5 和 Python 2.7。 如果不熟悉 Ubuntu，请勿尝试修改这些安装。
+如果因文件夹权限不正确而导致适用于 Linux 的 Windows 子系统上的安装失败，则可能需要使用提升的权限再试：
 
+```bash
+sudo pip3 install sfctl
+```
+
+<a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
 
 对于 MacOS，建议使用 [HomeBrew 包管理器](https://brew.sh)。 如果尚未安装 HomeBrew，请通过运行以下命令安装它：
@@ -108,17 +122,6 @@ brew install python3
 pip3 install sfctl
 sfctl -h
 ```
-
-
-如果遇到错误，指出“未找到 `sfctl`”，请运行以下命令：
-
-```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-
-这些步骤不修改系统安装的 Python 2.7。
 
 ## <a name="cli-syntax"></a>CLI 语法
 
@@ -239,13 +242,11 @@ sfctl application create -h
 若要更新 Service Fabric CLI，请运行以下命令（根据在原始安装期间所选的内容将 `pip` 替换为 `pip3`）：
 
 ```bash
-pip uninstall sfctl 
-pip install sfctl 
+pip uninstall sfctl
+pip install sfctl
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure Service Fabric CLI 部署应用程序](service-fabric-application-lifecycle-sfctl.md)
 * [Linux 上的 Service Fabric 入门](service-fabric-get-started-linux.md)
-
