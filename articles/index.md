@@ -3,11 +3,11 @@ layout: HubPage
 hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
-ms.openlocfilehash: 05a288bf8ccbc70bb5ce5c52b0e85e0f784c7f3e
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: e87391e9662991a542ad58eafd9b4c2714f30d66
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -159,8 +159,7 @@ ms.lasthandoff: 10/11/2017
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web 应用</a></li>
                                                     <li><a class="barLink" href="/azure/azure-functions/">无服务器函数</a></li>
-                                                    <li><a class="barLink" href="/azure/container-instances/">容器实例</a></li>
-                                                    <li><a class="barLink" href="/azure/container-service/kubernetes/">将容器与 Kubernetes 配合使用</a></li>
+                                                    <li><a class="barLink" href="/azure/containers/">容器</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">将微服务与 Service Fabric 配合使用</a></li>
                                                 </ul>
                                             </div>
@@ -635,7 +634,7 @@ ms.lasthandoff: 10/11/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-spell-check/proof-text">
+                                            <a href="/azure/cognitive-services/bing-spell-check/">
                                                 <img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />
                                                 <p>必应拼写检查</p>
                                             </a>
@@ -671,31 +670,31 @@ ms.lasthandoff: 10/11/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-news-search/search-the-web">
+                                            <a href="/azure/cognitive-services/Bing-news-Search/search-the-web">
                                                 <img src="media/index/API_Sear_BingNewsSearch.svg" alt="" />
                                                 <p>必应新闻</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-video-search/search-the-web">
+                                            <a href="/azure/cognitive-services/Bing-Video-Search/search-the-web">
                                                 <img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />
                                                 <p>必应视频搜索</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-web-search/search-the-web">
+                                            <a href="/azure/cognitive-services/bing-web-search/">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>必应 Web 搜索</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms">
+                                            <a href="/azure/cognitive-services/Bing-Autosuggest">
                                                 <img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />
                                                 <p>必应自动建议</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-custom-search/overview">
+                                            <a href="/azure/cognitive-services/bing-custom-search">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>必应自定义搜索</p>
                                             </a>
@@ -707,7 +706,7 @@ ms.lasthandoff: 10/11/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-image-search/search-the-web">
+                                            <a href="/azure/cognitive-services/bing-image-search">
                                                 <img src="media/index/API_Sear_BingImageSearch.svg" alt="" />
                                                 <p>必应图像搜索</p>
                                             </a>
@@ -2613,7 +2612,7 @@ ms.lasthandoff: 10/11/2017
                                                         <h3>语言</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/proof-text"><img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />必应拼写检查</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />必应拼写检查</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/luis/home"><img src="media/index/API_Lang_LanguageUnderstanding.svg" alt="" /><span>语言理解智能服务 (LUIS)&nbsp;<sup style="font-size:70%">预览</sup></span></a>
@@ -2678,22 +2677,21 @@ ms.lasthandoff: 10/11/2017
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Sear_BingNewsSearch.svg" alt="" />必应新闻</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-video-search/search-the-web"><img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />必应视频搜索</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/search-the-web"><img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />必应视频搜索</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" />必应 Web 搜索</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="media/index/API_Sear_BingSearch.svg" alt="" />必应 Web 搜索</a>
+                                                            </li>
+                                                            <li>                                                 <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />必应自动建议</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />必应自动建议</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>必应自定义搜索</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>必应自定义搜索</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>必应实体搜索&nbsp;<sup style="font-size:70%">预览版</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>必应实体搜索</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search/search-the-web"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />必应图像搜索</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />必应图像搜索</a>
                                                             </li>
                                                         </ul>
                                                     </div>

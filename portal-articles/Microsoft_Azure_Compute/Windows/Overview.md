@@ -1,6 +1,6 @@
 ---
-title: "Windows 虚拟机概述 |Microsoft 文档"
-description: "在 Azure 门户中的 Windows 虚拟机概述的帮助内容"
+title: "Windows 虚拟机概述 | Microsoft Docs"
+description: "Azure 门户中 Windows 虚拟机概述的帮助内容"
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
 
@@ -28,7 +28,7 @@ Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性�
 
 ## <a name="step-by-step-tutorials"></a>分步教程
 
-了解如何部署、 管理和监视在 Azure 上的 Windows Vm。
+了解如何在 Azure 上部署、管理和监视 Windows VM。
 
 - [创建和管理 Windows VM](/azure/virtual-machines/windows/tutorial-manage-vm)
 - [创建和管理 VM 磁盘](/azure/virtual-machines/windows/tutorial-manage-data-disk)
@@ -58,5 +58,5 @@ Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性�
 
 ## <a name="more"></a>更多
 
-- [请访问文档以了解详细信息](/azure/virtual-machines/windows/index)
+- [若要了解详细信息，请参阅文档](/azure/virtual-machines/windows/index)
 - [了解所有 Azure 服务](https://aka.ms/j3wr7y)

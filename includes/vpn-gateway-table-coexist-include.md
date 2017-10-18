@@ -1,6 +1,1 @@
-|  | **经典部署** | **Resource Manager 部署** |
-| --- | --- | --- |
-| **经典门户** |不支持 |不支持 |
-| **Azure 门户** |不支持 |不支持 |
-| **PowerShell** |[文章](../articles/expressroute/expressroute-howto-coexist-classic.md) |[文章](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
-
+|**部署模型/方法** | **Azure 门户** | **PowerShell** | |---|---|---| | 资源管理器 | **不支持** | [文章](../articles/expressroute/expressroute-howto-coexist-resource-manager.md)| | 经典 | **不支持** | [文章](../articles/expressroute/expressroute-howto-coexist-classic.md) |

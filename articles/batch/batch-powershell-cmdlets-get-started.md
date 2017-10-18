@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/03/2017
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
-然后，在资源组中，指定的名称中的帐户的创建批处理帐户 <*account_name*> 和的位置和资源组的名称。 创建 Batch 帐户可能需要一些时间才能完成。 例如：
+然后，在资源组中创建一个批处理帐户，为 <*account_name*> 中的帐户指定帐户名，另外请指定资源组的位置和名称。 创建 Batch 帐户可能需要一些时间才能完成。 例如：
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 08/03/2017
 > 
 
 ### <a name="get-account-access-keys"></a>获取帐户访问密钥
-**Get-AzureRmBatchAccountKeys** 显示与 Azure Batch 帐户关联的访问密钥。 例如，运行以下命令可获取你创建的帐户的主要密钥和辅助密钥。
+**Get-AzureRmBatchAccountKeys** 显示与 Azure Batch 帐户关联的访问密钥。 例如，运行以下命令可获取所创建的帐户的主要密钥和辅助密钥。
 
     $Account = Get-AzureRmBatchAccountKeys –AccountName <account_name>
 
@@ -181,7 +181,7 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
     Remove-AzureRmBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
 
 > [!NOTE]
-> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除的应用程序当前存在应用程序包，则会收到“冲突”错误。
+> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除当前具有应用程序包的应用程序，会发生“冲突”错误。
 > 
 > 
 

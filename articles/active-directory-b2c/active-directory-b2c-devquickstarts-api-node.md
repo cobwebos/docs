@@ -14,13 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
-ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/14/2017
-
-
+ms.openlocfilehash: 2315f5d0ebb142561c65224cd9d06299466a7ee4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C：使用 Node.js 保护 Web API
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -28,20 +26,20 @@ ms.lasthandoff: 02/14/2017
 借助 Azure Active Directory (Azure AD) B2C，可以使用 OAuth 2.0 访问令牌来保护 Web API。 这些令牌允许使用 Azure AD B2C 的客户端应用对 API 进行身份验证。 本文说明如何创建一个“待办事项列表”API，使用户能够添加和列出任务。 Web API 使用 Azure AD B2C 进行保护，只允许经过身份验证的用户管理其待办事项列表。
 
 > [!NOTE]
-> 将使用 [iOS B2C 示例应用程序](active-directory-b2c-devquickstarts-ios.md)连接到这个编写的示例。 请先完成当前演练，然后遵循该示例。
+> 将使用 [iOS B2C 示例应用程序](active-directory-b2c-devquickstarts-ios.md)连接到这个编写的示例。 请首先完成当前的演练，然后完成该示例。
 >
 >
 
-**Passport** 是 Node.js 的身份验证中间件。 Passport 极其灵活且采用模块化结构，可以在不造成干扰的情况下安装在任何基于 Express 的应用程序或 Resitify Web 应用程序中。 一套综合性策略支持使用用户名和密码、Facebook、Twitter 等进行身份验证。 我们针对 Azure Active Directory (Azure AD) 开发了一个策略。 请安装此模块，然后添加 Azure AD `passport-azure-ad` 插件。
+**Passport** 是 Node.js 的身份验证中间件。 Passport 极其灵活且采用模块化结构，可以在不造成干扰的情况下安装在任何基于 Express 的应用程序或 Resitify Web 应用程序中。 一套综合性策略支持使用用户名和密码、Facebook、Twitter 等进行身份验证。 我们针对 Azure Active Directory (Azure AD) 开发了一个策略。 请安装此模块，并添加 Azure AD `passport-azure-ad` 插件。
 
 若要执行本示例，需要：
 
-1. 将一个应用程序注册到 Azure AD。
-2. 将应用程序设置为使用 Passport 的 `azure-ad-passport` 插件。
+1. 将应用程序注册到 Azure AD。
+2. 将应用程序设置为使用 Passport 的 `passport-azure-ad` 插件。
 3. 配置一个客户端应用程序用于调用“待办事项列表”Web API。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。  如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，然后再继续。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。  如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建一个应用，以便为 Azure AD 提供一些必要信息，使它与应用安全通信。 在本例中，由于客户端应用与 Web API 构成一个逻辑应用，因此由单个 **应用程序 ID**表示。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。 请务必：
@@ -127,7 +125,7 @@ gyp ERR! not ok
 npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
 
-Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许多操作系统不提供 DTrace。 你可以安全地忽略这些错误。
+Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许多操作系统不提供 DTrace。 可以安全地忽略这些错误。
 
 命令输出应类似于以下文本：
 
@@ -286,7 +284,7 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 >
 
 ## <a name="add-configuration-to-your-serverjs-file"></a>将配置添加到 server.js 文件
-若要从创建的 `config.js` 文件中读取值，请在应用程序中添加 `.config` 文件作为必需资源，然后将全局变量设置为 `config.js` 文档中的值。
+要从创建的 `config.js` 文件中读取值，请在应用程序中添加 `.config` 文件作为必需资源，然后将全局变量设置为 `config.js` 文档中的值。
 
 在命令行中，将目录切换到 `azuread`（如果不在此目录中）：
 
@@ -337,7 +335,7 @@ var log = bunyan.createLogger({
 
 在本演练中，请如前所述使用 MongoDB 来存储任务。
 
-在 `config.js` 文件中，将数据库命名为 **tasklist**。 该名称也是在 `mongoose_auth_local` 连接 URL 末尾处输入的内容。 不需要在 MongoDB 中事先创建此数据库。 首次运行服务器应用程序时，将自动创建该数据库。
+在 `config.js` 文件中，将数据库命名为 **tasklist**。 该名称也是在 `mongoose_auth_local` 连接 URL 末尾处输入的内容。 不需要在 MongoDB 中事先创建此数据库。 首次运行服务器应用程序时，会自动创建该数据库。
 
 在告诉服务器要使用哪个 MongoDB 数据库之后，需要编写一些额外的代码，为服务器任务创建模型和架构。
 
@@ -382,7 +380,7 @@ var TaskSchema = new Schema({
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-首先创建架构，然后创建模型对象，在定义 **路由**时用于存储整个代码中的数据。
+首先创建架构，然后创建模型对象。在定义路由时，该对象用于在代码中存储数据。
 
 ## <a name="add-routes-for-your-rest-api-task-server"></a>添加 REST API 任务服务器的路由
 现已创建可以使用的数据库模型，接下来请添加用于 REST API 服务器的路由。
@@ -720,10 +718,10 @@ var oidcStrategy = new OIDCBearerStrategy(options,
 passport.use(oidcStrategy);
 ```
 
-Passport 对其所有策略使用相同的模式。 需要向它传递 `function()`，其中包含 `token` 和 `done` 作为参数。 策略在完成所有工作之后将会返回。 然后，应该存储用户并保存令牌，以便不需要再次请求。
+Passport 对其所有策略使用相同的模式。 需要向它传递 `function()`，其中包含 `token` 和 `done` 作为参数。 策略在完成所有工作之后会返回。 然后应存储用户并保存令牌，这样就不需要再次请求。
 
 > [!IMPORTANT]
-> 上述代码接受正好向服务器进行身份验证的任何用户。 此过程称为自动注册。 在生产服务器中，除非用户先完成注册过程，否则不允许他们访问 API。 此过程是使用者应用中常见的模式，允许使用 Facebook 来注册，但然后要求填写其他信息。 如果此程序不是命令行程序，就只能从返回的令牌对象中提取电子邮件，然后要求用户填写其他信息。 由于这是一个示例，我们要将其添加到内存中的数据库。
+> 上述代码接受正好向服务器进行身份验证的任何用户。 此过程称为自动注册。 在生产服务器中，除非用户先完成注册过程，否则不允许他们访问 API。 此过程是使用者应用中常见的模式，允许使用 Facebook 来注册，但要求填写其他信息。 如果此程序不是命令行程序，就只能从返回的令牌对象中提取电子邮件，并要求用户填写其他信息。 由于这是一个示例，我们要将其添加到内存中的数据库。
 >
 >
 
@@ -756,10 +754,9 @@ Transfer-Encoding: chunked
 401 错误是所需的响应。 它表示 Passport 层正在尝试重定向到授权终结点。
 
 ## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a>现已创建了一个使用 OAuth2 的 REST API 服务
-已使用 Restify 和 OAuth 实现 REST API！ 现在已经有足够的代码可以继续开发服务，并在本示例的基础上构建应用。 这就是在不使用 OAuth2 兼容客户端的情况下，此服务器能够带来的最大优势。 接下来，我们将学习其他演练，例如 [Connect to a web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md) （使用 iOS 和 B2C 连接到 Web API）演练。
+已使用 Restify 和 OAuth 实现 REST API！ 现在已经有足够的代码可以继续开发服务，并在本示例的基础上构建应用。 这就是在不使用 OAuth2 兼容客户端的情况下，此服务器能够带来的最大优势。 接下来，我们将学习其他演练，例如 [Connect to a web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md)（使用 iOS 和 B2C 连接到 Web API）演练。
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以转到更高级主题，例如：
 
 [Connect to a web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md)
-

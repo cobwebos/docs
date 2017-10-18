@@ -135,12 +135,16 @@
           href: sql-database-disaster-recovery.md
         - name: 执行恢复演练
           href: sql-database-disaster-recovery-drills.md
-    - name: 加载和移动数据
+    - name: 迁移到 SQL 数据库
       items:
         - name: 迁移 SQL Server DB
           href: sql-database-cloud-migrate.md
         - name: T-SQL 的更改
           href: sql-database-transact-sql-information.md
+        - name: 在迁移后管理数据库
+          href: sql-database-manage-after-migration.md
+    - name: 加载和移动数据
+      items:
         - name: 复制 DB
           href: sql-database-copy.md
         - name: 导入 DB

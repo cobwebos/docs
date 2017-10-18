@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
+ms.openlocfilehash: 98559cbb0acab91c4b2c30c6d0129e955eef85f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 63a313d9035422207a1ce56f0da8b388e2747685
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="network-security"></a>网络安全
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 09/27/2017
 
 |属性  |说明  |
 |---------|---------|
-|名称|网络安全组中的唯一名称。|
+|Name|网络安全组中的唯一名称。|
 |Priority | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
 |源或目标| 值为“任何”，或者单个 IP 地址、CIDR 块（例如 10.0.0.0/24）、服务标记或应用程序安全组。 详细了解[服务标记](#service-tags)和[应用程序安全组](#application-security-groups)。 指定范围、服务标记或应用程序安全组可以减少创建的安全规则数。 在一个规则中指定多个单独的 IP 地址和范围（不能指定多个服务标记或应用程序组）的功能以预览版提供，称为扩充式安全规则。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能指定多个 IP 地址和 IP 地址范围。|
 |协议     | TCP、UDP 或“任何”，包括 TCP、UDP 和 ICMP。 不能仅指定 ICMP，因此，如果需要 ICMP，则必须使用“任何”。 |
@@ -59,8 +58,8 @@ ms.lasthandoff: 09/27/2017
 
 **注意事项**
 
-- **主机节点的虚拟 IP**：基本的基础结构服务（例如 DHCP、DNS 和运行状况监视）是通过虚拟化主机 IP 地址 168.63.129.16 和 169.254.169.254 提供的。 这些公共 IP 地址属于 Microsoft，是仅有的用于所有区域的虚拟化 IP 地址，没有其他用途。 此 IP 地址映射到托管 VM 的服务器计算机（主机节点）的物理 IP 地址。 主机节点充当 DHCP 中继、DNS 递归解析器，以及进行负载均衡器运行状况探测和计算机运行状况探测的探测源。 与这些 IP 地址的通信不是攻击。 如果阻止发往或发自这些 IP 地址的流量，虚拟机可能无法正常工作。
-- **许可（密钥管理服务）**：在 VM 中运行的 Windows 映像必须获得许可。 为了确保许可，会向处理此类查询的密钥管理服务主机服务器发送请求。 该请求是通过端口 1688 以出站方式提出的。
+- **主机节点的虚拟 IP**：基本的基础结构服务（例如 DHCP、DNS 和运行状况监视）是通过虚拟化主机 IP 地址 168.63.129.16 和 169.254.169.254 提供的。 这些公共 IP 地址属于 Microsoft，是仅有的用于所有区域的虚拟化 IP 地址，没有其他用途。 此地址映射到托管虚拟机的服务器计算机（主机节点）的物理 IP 地址。 主机节点充当 DHCP 中继、DNS 递归解析器，以及进行负载均衡器运行状况探测和计算机运行状况探测的探测源。 与这些 IP 地址的通信不是攻击。 如果阻止发往或发自这些 IP 地址的流量，虚拟机可能无法正常工作。
+- **许可（密钥管理服务）**：在虚拟机中运行的 Windows 映像必须获得许可。 为了确保许可，会向处理此类查询的密钥管理服务主机服务器发送请求。 该请求是通过端口 1688 以出站方式提出的。
 - **负载均衡池中的虚拟机**：应用的源端口和地址范围来自源计算机，而不是来自负载均衡器。 目标端口和地址范围是目标计算机的，而不是负载均衡器的。
 - **Azure 服务实例**：在虚拟网络子网中部署了多个 Azure 服务的实例，例如 HDInsight、应用程序服务环境和虚拟机规模集。 在将网络安全组应用到部署了资源的子网之前，请确保熟悉每个服务的端口要求。 如果拒绝服务所需的端口，服务将无法正常工作。 
 
@@ -126,7 +125,7 @@ ms.lasthandoff: 09/27/2017
 
 * **VirtualNetwork**（资源管理器）（如果是经典部署模型，则为 *VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间（为虚拟网络定义的所有 CIDR 范围）、所有连接的本地地址空间，以及[对等互连](virtual-network-peering-overview.md)的虚拟网络，或已连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的虚拟网络。
 * **AzureLoadBalancer** (Resource Manager)（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
-* **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示 Azure 公共 IP 地址空间。 [Azure 拥有的公共 IP 空间](https://www.microsoft.com/download/details.aspx?id=41653)文档（会定期更新）中列出了此标记包含的地址。
+* **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。 地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。
 * **AzureTrafficManager**（仅限资源管理器）：此标记表示 Azure 流量管理器服务的 IP 地址空间。
 * **Storage**（仅限资源管理器）：此标记表示 Azure 存储服务的 IP 地址空间。 如果指定 *Storage* 作为值，则会允许或拒绝发往存储的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的存储进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure 存储，可以指定 *Storage.EastUS* 作为服务标记。 其他可用的区域服务标记：Storage.AustraliaEast、Storage.AustraliaSoutheast、Storage.EastUS、Storage.UKSouth、Storage.WestCentralUS、Storage.WestUS 和 Storage.WestUS2。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。
 * **Sql**（仅限资源管理器）：此标记表示 Azure SQL 数据库和 Azure SQL 数据仓库服务的地址前缀。 只能为此服务标记指定特定的区域。 例如，如果希望只允许访问美国东部区域中的 Azure SQL 数据库，可以指定 *Sql.EastUS* 作为服务标记。 不能针对所有 Azure 区域单独指定 Sql，而必须单独指定区域。 其他可用的区域服务标记：Sql.AustraliaEast、Sql.AustraliaSoutheast、Sql.EastUS、Sql.UKSouth、Sql.WestCentralUS、Sql.WestUS 和 Sql.WestUS2。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 Azure SQL 数据库。
@@ -152,7 +151,7 @@ ms.lasthandoff: 09/27/2017
  
 若要了解创建应用程序安全组以及在安全规则中指定应用程序安全组时的相关限制，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-应用程序安全组以预览版提供。 在使用网络安全组之前，必须完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md#powershell)中的步骤 1-5 来注册使用这些功能，并阅读[预览功能](#preview-features)了解重要信息。 在预览期间，应用程序安全组仅限于虚拟网络范围。 不会应用通过交叉引用对等互连到网络安全组中的应用程序安全组的虚拟网络。 
+应用程序安全组以预览版提供。 在使用应用程序安全组之前，必须完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md#powershell)中的步骤 1-5 来注册使用这些功能，并阅读[预览功能](#preview-features)，了解重要信息。 在预览期间，应用程序安全组仅限于虚拟网络范围。 不会应用通过交叉引用对等互连到网络安全组中的应用程序安全组的虚拟网络。 
 
 预览版功能的可用性和可靠性级别与正式版不同。 在使用应用程序安全组之前，必须先注册使用这些功能。 这些功能仅在以下区域提供：美国中西部。
 
@@ -160,4 +159,3 @@ ms.lasthandoff: 09/27/2017
 
 * 完成[创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)教程
 * 完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md)教程
-

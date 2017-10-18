@@ -51,6 +51,8 @@
       href: concepts-physical-to-azure-architecture.md
     - name: Hyper-V 到辅助站点体系结构
       href: concepts-hyper-v-to-secondary-architecture.md
+    - name: Azure 到 Azure 支持矩阵
+      href: site-recovery-support-matrix-azure-to-azure.md
     - name: 本地到 Azure 支持矩阵
       href: site-recovery-support-matrix-to-azure.md
     - name: 本地到辅助站点支持矩阵

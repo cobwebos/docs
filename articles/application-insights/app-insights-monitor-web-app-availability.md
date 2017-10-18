@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 05/25/2017
 ms.author: bwren
 ms.openlocfilehash: 6c7f52fc3998b0b29301206ffbc6a5a0c4134f6a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
 
-对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置可用性测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是你的站点： 无法测试你所依赖的 REST API 服务。
+对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置可用性测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是站点：可以测试你所依赖的 REST API 服务。
 
 有两种类型的可用性测试：
 
@@ -85,15 +85,15 @@ ms.lasthandoff: 08/18/2017
 
 可以将筛选器应用于测试名称、位置以分析特定测试和/或位置的趋势。
 
-## <a name="edit"></a>检查和编辑测试
+## <a name="edit"></a> 检查和编辑测试
 
 从摘要页面选择特定的测试。 可以在该处查看具体结果，对其进行编辑或者临时禁用它。
 
 ![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
 
-你可能想要禁用可用性测试或在服务上执行维护时与它们关联的警报规则。 
+对服务执行维护时，可能需要禁用可用性测试或与这些测试关联的警报规则。 
 
-## <a name="failures"></a>如果你看到失败
+## <a name="failures"></a>如果看到失败
 单击红点。
 
 ![单击红点](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
@@ -136,7 +136,7 @@ ms.lasthandoff: 08/18/2017
 2. 打开 .webtest 文件并开始录制。
 
     ![打开 .webtest 文件并单击“录制”。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
-3. 执行要在测试中模拟的用户操作：打开网站、将产品加入购物车，等等。 然后停止你的测试。
+3. 执行要在测试中模拟的用户操作：打开网站、将产品加入购物车，等等。 然后停止测试。
 
     ![Web 测试录制程序在 Internet Explorer 中运行。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-record.png)
 
@@ -240,7 +240,7 @@ Web 测试插件提供时间参数化方式。
 ## <a name="performance-tests"></a>性能测试
 可以在网站上运行负载测试。 与可用性测试一样，可以从全球各地的站点发送简单请求或多步骤请求。 与可用性测试不同的是，发送的许多请求可以模拟多个并发用户。
 
-在“概述”边栏选项卡中，打开“设置”、“性能测试”。 当你创建一个测试时，你受邀连接到或创建一个 Visual Studio Team Services 帐户。
+在“概述”边栏选项卡中，打开“设置”、“性能测试”。 创建测试时，系统会邀请你连接或创建 Visual Studio Team Services 帐户。
 
 测试完成时，会显示响应时间和成功率。
 
@@ -255,7 +255,7 @@ Web 测试插件提供时间参数化方式。
 * [使用 PowerShell 脚本自动设置可用性测试](app-insights-powershell.md#add-an-availability-test)。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
-## <a name="qna"></a>问题？ 遇到问题？
+## <a name="qna"></a>有疑问？ 遇到问题？
 * *是否可以从 Web 测试调用代码？*
 
     不可以。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。

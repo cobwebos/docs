@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 10/03/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 7533fe3758860111ae6c26630effedd673734b63
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/04/2017
-
-
+ms.openlocfilehash: 43582ae805d560e72fb8d03ab8e0abee4c4325b7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Azure Data Lake Store 中的访问控制
 
@@ -202,7 +200,7 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
 
-在以下示例中，掩码设置为 **R-X**。 这意味着，它在执行访问检查时将**关闭****命名用户**、**拥有组**和**命名组**的“写入”权限。
+在以下示例中，掩码设置为 **R-X**。 这意味着，它在执行访问检查时会**关闭****命名用户**、**拥有组**和**命名组**的“写入”权限。
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
 
@@ -217,7 +215,7 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 
 ## <a name="permissions-on-new-files-and-folders"></a>新文件和文件夹权限
 
-在现有文件夹下面创建新文件或文件夹时，父文件夹的默认 ACL 将会确定：
+在现有文件夹下面创建新文件或文件夹时，父文件夹的默认 ACL 会确定：
 
 - 子文件夹的默认 ACL 和访问 ACL。
 - 子文件的访问 ACL（文件没有默认 ACL）。
@@ -306,7 +304,7 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>使用 Azure 门户时，为什么有时会在 ACL 中看到 GUID？
 
-如果用户在 Azure AD 中不再存在，将显示 GUID。 当用户离职，或者其帐户已在 Azure AD 中删除时，往往会发生这种情况。
+如果用户在 Azure AD 中不再存在，会显示 GUID。 当用户离职，或者其帐户已在 Azure AD 中删除时，往往会发生这种情况。
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Data Lake Store 是否支持 ACL 继承？
 
@@ -342,4 +340,3 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 ## <a name="see-also"></a>另请参阅
 
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-

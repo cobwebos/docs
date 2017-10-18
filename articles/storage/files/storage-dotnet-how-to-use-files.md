@@ -14,14 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 98e5964f4a2dffd728dae1c452facfa6ea488167
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3ff076f1b5c708423ee40e723875c221847258b0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发 
 > [!NOTE]
 > 本文介绍如何使用 .NET 代码管理 Azure 文件。 若要详细了解 Azure 文件，请参阅 [Azure 文件简介](storage-files-introduction.md)。
@@ -32,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="about-this-tutorial"></a>关于本教程
-本教程将演示使用 .NET 开发应用程序或服务的基础知识，这些应用程序或服务可以使用 Azure 文件来存储文件数据。 在本教程中，我们将创建一个简单的控制台应用程序，并演示如何通过 .NET 和 Azure 文件执行基本的操作：
+本教程将演示使用 .NET 开发应用程序或服务的基础知识，这些应用程序或服务可以使用 Azure 文件来存储文件数据。 在本教程中，我们创建一个简单的控制台应用程序，并演示如何通过 .NET 和 Azure 文件执行基本的操作：
 
 * 获取文件内容
 * 设置文件共享的配额（最大大小）。
@@ -326,6 +324,80 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ```
 
 可以用相同的方式将一个 Blob 复制到一个文件。 如果源对象是一个 Blob，则创建一个 SAS 以复制操作期间验证对该 Blob 的访问。
+
+## <a name="share-snapshots-preview"></a>共享快照（预览版）
+从 Azure 存储客户端库的 8.5 版开始，可以创建共享快照（预览版）。 还可以列出或浏览共享快照，以及删除共享快照。 共享快照的状态为只读，因此不允许对共享快照执行写入操作。
+
+**创建共享快照**
+
+下面的示例创建文件共享快照。
+
+```csharp
+storageAccount = CloudStorageAccount.Parse(ConnectionString); 
+fClient = storageAccount.CreateCloudFileClient(); 
+string baseShareName = "myazurefileshare"; 
+CloudFileShare myShare = fClient.GetShareReference(baseShareName); 
+var snapshotShare = myShare.Snapshot();
+
+```
+**列出共享快照**
+
+下面的示例列出共享上的共享快照。
+
+```csharp
+var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
+```
+
+**浏览共享快照中的文件和目录**
+
+下面的示例浏览共享快照中的文件和目录。
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); 
+var rootDirectory = mySnapshot.GetRootDirectoryReference(); 
+var items = rootDirectory.ListFilesAndDirectories();
+```
+
+**列出共享和共享快照，以及从共享快照还原文件共享或文件** 
+
+拍摄文件共享的快照即可在将来恢复单个文件或整个文件共享。 
+
+查询文件共享的共享快照即可从文件共享快照还原文件。 然后，可以检索属于特定共享快照的文件，并使用该版本直接进行读取和比较，或者进行还原。
+
+```csharp
+CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
+var rootDirOfliveShare = liveShare.GetRootDirectoryReference();
+
+       var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
+var fileInliveShare = dirInliveShare.GetFileReference(fileName);
+
+           
+CloudFileShare snapshot = fClient.GetShareReference(baseShareName, snapshotTime);
+var rootDirOfSnapshot = snapshot.GetRootDirectoryReference();
+
+       var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
+var fileInSnapshot = dir1InSnapshot.GetFileReference(fileName);
+
+string sasContainerToken = string.Empty;
+       SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
+       sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+       sasConstraints.Permissions = SharedAccessFilePermissions.Read;
+       //Generate the shared access signature on the container, setting the constraints directly on the signature.
+sasContainerToken = fileInSnapshot.GetSharedAccessSignature(sasConstraints);
+
+string sourceUri = (fileInSnapshot.Uri.ToString() + sasContainerToken + "&" + fileInSnapshot.SnapshotTime.ToString()); ;
+fileInliveShare.StartCopyAsync(new Uri(sourceUri));
+
+```
+
+
+**删除共享快照**
+
+下面的示例删除文件共享快照。
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
+```
 
 ## <a name="troubleshooting-azure-files-using-metrics"></a>使用指标对 Azure 文件进行故障排除
 Azure 存储分析现在支持用于 Azure 文件的指标。 使用指标数据，可以跟踪请求和诊断问题。

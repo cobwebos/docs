@@ -16,12 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 5fa08049fd0b13945de307e9d28224ea0d5a1307
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: bdd0fd0d1919f61fe586f495adadaf4eabde2dae
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>什么是 Azure 中的虚拟机规模集？
 虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
@@ -34,7 +33,12 @@ ms.lasthandoff: 09/02/2017
 * [Guy Bowerman 介绍虚拟机规模集](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>创建和管理规模集
-可以在 [Azure 门户](https://portal.azure.com)中创建规模集，方法是：选择“新建”，并在搜索栏中键入“规模”。 结果中会列出“虚拟机规模集”。 从这里，可以填写必填字段，自定义和部署规模集。 还可以使用相应的选项根据 CPU 使用率设置基本的自动缩放规则。
+可以在 [Azure 门户](https://portal.azure.com)中创建规模集，方法是：选择“新建”，并在搜索栏中键入“规模”。 结果中会列出“虚拟机规模集”。 从这里，可以填写必填字段，自定义和部署规模集。 还可以使用相应的选项根据 CPU 使用率设置基本的自动缩放规则。 
+
+规模集可以部署到[可用性区域](../availability-zones/az-overview.md)。
+
+> [!NOTE]
+> 当前，虚拟机规模集仅支持部署到单个可用性区域。 将来会支持多区域部署。
 
 也可以使用 JSON 模板与 [REST API](https://msdn.microsoft.com/library/mt589023.aspx) 来定义和部署规模集，就像定义和部署单个 Azure Resource Manager VM 一样。 因此，可以使用任何标准的 Azure Resource Manager 部署方法。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
@@ -167,4 +171,3 @@ Add-AzureRmAutoscaleSetting -Location $location -Name "autosetting1" -ResourceGr
 **答：** 是的。 规模集是包含 5 个容错域和 5 个更新域的隐式可用性集。 规模集如果包含 100 个以上的 VM，则会跨多个*位置组*，等效于多个可用性集。 有关位置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
 
 可在 [Azure 虚拟机规模集常见问题](virtual-machine-scale-sets-faq.md)中找到有关规模集的更多常见问题解答。
-

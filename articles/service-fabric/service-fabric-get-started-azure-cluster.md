@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: ryanwi
+ms.openlocfilehash: de7fa7e6445e6eaf08bdcc8ae812611f20a98c34
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ecf9554554c8b7acbd8b8f5aa9122ce1678c6502
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-service-fabric-cluster-on-azure"></a>在 Azure 上创建第一个 Service Fabric 群集
 [Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 本快速入门可帮助你在数分钟内通过 [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) 或 [Azure 门户](http://portal.azure.com)创建一个运行在 Windows 或 Linux 上的五节点型群集。  
 
@@ -251,6 +249,17 @@ az sf cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 az sf cluster health
 ```
 
+### <a name="connect-to-the-nodes-directly"></a>直接连接到节点 
+
+若要连接到 Linux 群集中的节点，可以使用 SSH 连接到节点，只需指定端口号（3389 以上）即可。 例如，对于此前创建的五个节点群集，命令如下所示：
+```bash
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3389
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3390
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3391
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3392
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3393
+```
+
 ## <a name="next-steps"></a>后续步骤
 设置开发群集以后，可尝试以下操作：
 * [使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)
@@ -266,4 +275,3 @@ az sf cluster health
 [cluster-delete]: ./media/service-fabric-get-started-azure-cluster/delete.png
 [ps-list]: ./media/service-fabric-get-started-azure-cluster/pslist.PNG
 [ps-out]: ./media/service-fabric-get-started-azure-cluster/psout.PNG
-

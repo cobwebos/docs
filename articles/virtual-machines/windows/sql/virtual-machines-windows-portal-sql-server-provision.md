@@ -1,6 +1,6 @@
 ---
-title: "预配 SQL Server 虚拟机 | Microsoft Docs"
-description: "使用门户在 Azure 中创建 SQL Server 虚拟机并与其进行连接。 本教程使用 Resource Manager 模式。"
+title: "在 Azure 中创建 Windows SQL Server 2017 VM | Microsoft Docs"
+description: "本教程介绍如何在 Azure 门户中创建 Windows SQL Server 2017 虚拟机。"
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -12,55 +12,54 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 08/14/2017
+ms.date: 10/10/2017
 ms.author: jroth
+ms.openlocfilehash: 48f9f97d6e0aee6b2c84444289a427bebcb296e2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: c923f9aae4c7a1b8bd4f5760d0ec4f33923b9321
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="provision-a-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 SQL Server 虚拟机
+# <a name="provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Windows SQL Server 虚拟机
+
 > [!div class="op_single_selector"]
 > * [门户](virtual-machines-windows-portal-sql-server-provision.md)
 > * [PowerShell](virtual-machines-windows-ps-sql-create.md)
-> 
-> 
+> * [Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
 
-本端到端教程说明如何使用 Azure 门户来预配运行 SQL Server 的虚拟机。
-
-Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只需单击几下鼠标，就可从库中选择一个 SQL VM 映像，并将其预配到 Azure 环境中。
+在本快速入门教程中，请使用 Azure 门户创建安装了 SQL Server 的 Windows 虚拟机。
 
 在本教程中，将：
 
-* [从库中选择 SQL VM 映像](#select-a-sql-vm-image-from-the-gallery)
-* [配置和创建 VM](#configure-the-vm)
-* [使用远程桌面打开 VM](#open-the-vm-with-remote-desktop)
-* [远程连接到 SQL Server](#connect-to-sql-server-remotely)
+* [从库中选择 SQL VM 映像](#select)
+* [配置和创建 VM](#configure)
+* [使用远程桌面打开 VM](#remotedesktop)
+* [远程连接到 SQL Server](#connect)
 
-## <a name="select-a-sql-vm-image-from-the-gallery"></a>从库中选择 SQL VM 映像
+## <a id="select"></a> 从库中选择 SQL VM 映像
 
 1. 使用帐户登录到 [Azure 门户](https://portal.azure.com)。
 
    > [!NOTE]
    > 如果没有 Azure 帐户，请访问 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-2. 在 Azure 门户中，单击“新建”。 该门户将打开“新建”窗口。
+1. 在 Azure 门户中，单击“新建”。 该门户将打开“新建”窗口。
 
-3. 在“新建”窗口中，单击“计算”，然后单击“全部查看”。
+1. 在“新建”窗口中，单击“计算”，然后单击“全部查看”。
 
    ![“新建计算”窗口](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
 
-4. 在搜索字段中，键入“SQL Server”，然后按 Enter。
+1. 在搜索字段中，键入“SQL Server 2017”，然后按 Enter。
 
-5. 然后单击“筛选器”图标，选择“Microsoft”作为发布者。 在筛选器窗口中单击“完成”，将结果筛选为 Microsoft 发布的 SQL Server 映像。
+1. 然后单击“筛选器”图标。
+
+1. 在“筛选器”窗口针对发布者勾选“基于 Windows”子类别和“Microsoft”。 然后单击“完成”，将结果筛选为 Microsoft 发布的 Windows SQL Server 映像。
 
    ![Azure 虚拟机窗口](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. 查看可用的 SQL Server 映像。 每个映像均可标识 SQL Server 版本和操作系统。
+1. 查看可用的 SQL Server 映像。 每个映像均可标识 SQL Server 版本和操作系统。
 
-6. 选择名为“免费许可证: 基于 Windows Server 2016 的 SQL Server 2016 SP1 Developer”的映像。
+1. 选择名为“免费 SQL Server 许可证: 基于 Windows Server 2016 的 SQL Server 2017 Developer”的映像。
 
    > [!TIP]
    > 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 但是，你可以随意选择在本教程中使用的任何映像。
@@ -70,13 +69,13 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
    >
    > 有关这些选项的详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
-7. 在“选择部署模型”下面，确认已选择“Resource Manager”。 对于新虚拟机，建议使用“Resource Manager”部署模型。 
+1. 在“选择部署模型”下面，确认已选择“Resource Manager”。 对于新虚拟机，建议使用“Resource Manager”部署模型。 
 
-8. 单击“创建” 。
+1. 单击“创建” 。
 
     ![使用 Resource Manager 创建 SQL VM](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
-## <a name="configure-the-vm"></a>配置 VM
+## <a id="configure"></a> 配置 VM
 有五个用于配置 SQL Server 虚拟机的窗口。
 
 | 步骤 | 说明 |
@@ -156,7 +155,7 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 | [自动修补](#automated-patching) |
 | [自动备份](#automated-backup) |
 | [Azure 密钥保管库集成](#azure-key-vault-integration) |
-| [R 服务](#r-services) |
+| [SQL Server 机器学习服务](#sql-server-machine-learning-services) |
 
 ### <a name="connectivity"></a>连接
 
@@ -257,14 +256,11 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
 有关详细信息，请参阅 [为 Azure VM 上的 SQL Server 配置 Azure 密钥保管库集成](virtual-machines-windows-ps-sql-keyvault.md)。
 
-### <a name="r-services"></a>R 服务
+### <a name="sql-server-machine-learning-services"></a>SQL Server 机器学习服务
 
-可以选择启用 [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx)。 这样便可以使用 SQL Server 2016 的高级分析功能。 在“SQL Server 设置”窗口中单击“启用”。
+可以选择启用 [SQL Server 机器学习服务](https://msdn.microsoft.com/library/mt604845.aspx)。 这样便可以使用 SQL Server 2017 的高级分析功能。 在“SQL Server 设置”窗口中单击“启用”。
 
-> [!NOTE]
-> 门户错误地禁用了 SQL Server 2016 Developer Edition 的此选项。 对于 Developer Edition，必须在创建 VM 后手动启用 R 服务。
-
-![启用 SQL Server R 服务](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
+![启用 SQL Server 机器学习服务](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
 配置完 SQL Server 设置后，单击“ **确定**”。
 
@@ -275,9 +271,9 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 可以从 Azure 门户监视部署情况。 屏幕顶部的“ **通知** ”按钮显示部署的基本状态。
 
 > [!NOTE]
-> 为了让你了解部署时间，我已使用默认设置将一个 SQL VM 部署到美国东部区域。 此测试部署总共花费了 26 分钟才完成。 但是根据你所在的区域和选择的设置，花费的部署时间会更长或更短。
+> 为了让你了解部署时间，我已使用默认设置将一个 SQL VM 部署到美国东部区域。 此测试部署花费了约 12 分钟才完成。 但是根据你所在的区域和选择的设置，花费的部署时间会更长或更短。
 
-## <a name="open-the-vm-with-remote-desktop"></a>使用远程桌面打开 VM
+## <a id="remotedesktop"></a> 使用远程桌面打开 VM
 
 使用以下步骤通过远程桌面连接到 SQL Server 虚拟机：
 
@@ -295,7 +291,7 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
 > [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-to-sql-server-remotely"></a>远程连接到 SQL Server
+## <a id="connect"></a> 远程连接到 SQL Server
 
 在本教程中，我们选择了虚拟机的“公共”访问权限和“SQL Server 身份验证”。 这些设置将虚拟机自动配置为允许任何客户端通过 Internet 来与 SQL Server 建立连接（假设这些客户端可提供正确的 SQL 登录名）。
 

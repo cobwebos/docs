@@ -15,14 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
+ms.openlocfilehash: 0a0fe6f0e353e33cec80a9e06a61e772931cdea6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: e2359bc6002bd5c823467a33a4660ebccd116374
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="virtual-network-service-endpoints-preview"></a>虚拟网络服务终结点（预览）
 
 虚拟网络 (VNet) 服务终结点可通过直接连接将 VNet 的虚拟网络专用地址空间和标识扩展到 Azure 服务。 使用终结点可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 从 VNet 发往 Azure 服务的流量始终保留在 Microsoft Azure 主干网络中。
@@ -57,8 +55,11 @@ ms.lasthandoff: 09/26/2017
 
 - 虚拟网络服务终结点为 Azure 服务提供虚拟网络的标识。 在虚拟网络中启用服务终结点后，可以通过将虚拟网络规则添加到资源，在虚拟网络中保护 Azure 服务资源。
 - 当前，来自虚拟网络的 Azure 服务流量使用公共 IP 地址作为源 IP 地址。 使用服务终结点时，服务流量会在通过虚拟网络访问 Azure 服务时改用虚拟网络专用地址作为源 IP 地址。 通过这种切换，无需 IP 防火墙中使用的保留公共 IP 地址即可访问服务。
-- 保护从本地进行的 Azure 服务访问：默认情况下，无法从本地网络访问在虚拟网络中保护的 Azure 服务资源。 如果想要允许来自本地的流量，还必须允许来自本地或 ExpressRoute 线路的 NAT IP 地址。 可通过 Azure 服务资源的 IP 防火墙配置添加 NAT IP 地址。
-- ExpressRoute：如果从本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，每条 ExpressRoute 线路会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这两个 IP 地址。 若要查找 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+- __保护从本地进行的 Azure 服务访问__：
+
+  默认情况下，无法从本地网络访问在虚拟网络中保护的 Azure 服务资源。 若要允许来自本地的流量，还必须允许来自本地或 ExpressRoute 的公共（通常为 NAT）IP 地址。 可通过 Azure 服务资源的 IP 防火墙配置添加这些 IP 地址。
+
+  ExpressRoute：如果从本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，则对于公共对等互连，每条 ExpressRoute 线路会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这两个公共 IP 地址。 若要查找 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。详细了解[用于 ExpressRoute 公共对等互连的 NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
 
 ![在虚拟网络中保护 Azure 服务](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -76,9 +77,9 @@ ms.lasthandoff: 09/26/2017
 
   IP 地址切换只会影响自己的虚拟网络发出的服务流量， 而不会影响到发往或发自分配给虚拟机的公共 IPv4 地址的其他任何流量。 对于 Azure 服务，如果现有的防火墙规则使用 Azure 公共 IP 地址，这些规则会阻止切换到虚拟网络专用地址。
 - 使用服务终结点时，Azure 服务的 DNS 条目会保持不变，继续解析为分配给 Azure 服务的公共 IP 地址。
-- 使用服务终结点的网络安全组：
-  - 仍允许出站 Internet 流量发往 Internet，因此，也允许来自虚拟网络的流量发往 Azure 服务的公共 IP 地址。
-  - 可以在网络安全组中使用[服务标记](security-overview.md#service-tags)，拒绝流量发往除 Azure 服务地址以外的其他公共 IP 地址。 可以在网络安全组规则中将受支持的 Azure 服务指定为目标。 每个标记下面的 IP 地址的维护由 Azure 提供。
+- 使用服务终结点的网络安全组 (NSG)：
+  - 默认情况下，NSG 允许出站 Internet 流量，因此，也允许来自 VNet 的流量发往 Azure 服务。 使用服务终结点时，处理方式仍旧如此。 
+  - 如果想要拒绝所有出站 Internet 流量并只允许发往特定 Azure 服务的流量，可以在 NSG 中使用“Azure 服务标记”。 可以在 NSG 规则中将受支持的 Azure 服务指定为目标，每个标记下面的 IP 地址的维护由 Azure 提供。 有关详细信息，请参阅 [NSG 的 Azure 服务标记](https://aka.ms/servicetags)。 
 
 ### <a name="scenarios"></a>方案
 
@@ -89,7 +90,7 @@ ms.lasthandoff: 09/26/2017
 ### <a name="logging-and-troubleshooting"></a>日志记录和故障排除
 
 为特定的服务配置服务终结点后，请通过以下方式验证服务终结点路由是否生效： 
-
+ 
 - 验证服务诊断中任何服务请求的源 IP 地址。 使用服务终结点的所有新请求会将请求的源 IP 地址显示为分配给从虚拟网络发出请求的客户端的虚拟网络专用地址。 如果不使用终结点，此地址是 Azure 公共 IP 地址。
 - 查看子网中任何网络接口上的有效路由。 服务的路由：
   - 显示更具体的默认路由用于寻址每个服务的前缀范围
@@ -121,5 +122,4 @@ ms.lasthandoff: 09/26/2017
 - 了解如何[在虚拟网络中保护 Azure 存储帐户](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - 了解如何[在虚拟网络中保护 Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - 了解[虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
-
 
