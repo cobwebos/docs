@@ -12,33 +12,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 09/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 1fe2b4b6c84e3c4d96677e3da5a94b9462e2a7bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
-
+ms.openlocfilehash: 3428c3852f156df850f4b9e8833d15f4ae32729d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Store
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
-> * [Java SDK](data-lake-store-get-started-java-sdk.md)
-> * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
-> * [Node.js](data-lake-store-manage-use-nodejs.md)
-> * [Python](data-lake-store-get-started-python.md)
 >
 >
 
 了解如何使用 Azure PowerShell 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
@@ -47,7 +39,7 @@ ms.lasthandoff: 06/08/2017
 本文对 Data Lake Store 使用一种较为简单的身份验证方法，其中会提示输入 Azure 帐户凭据。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="create-an-azure-data-lake-store-account"></a>创建 Azure Data Lake Store 帐户
-1. 在桌面上，打开一个新的 Windows PowerShell 窗口，输入以下代码段登录到 Azure 帐户，然后设置订阅，并注册 Data Lake Store 提供程序。 当系统提示输入登录信息时，请确保以订阅管理员/所有者身份登录：
+1. 从桌面打开新的 Windows PowerShell 窗口。 输入以下代码片段以登录到 Azure 帐户，设置订阅，并注册 Data Lake Store 提供程序。 当系统提示输入登录信息时，请确保以订阅管理员/所有者身份登录：
 
         # Log in to your Azure account
         Login-AzureRmAccount
@@ -76,7 +68,7 @@ ms.lasthandoff: 06/08/2017
 
         Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-    此输出应为 **True**。
+    cmdlet 的输出应为 True。
 
 ## <a name="create-directory-structures-in-your-azure-data-lake-store"></a>在 Azure Data Lake Store 中创建目录结构
 可以在 Azure Data Lake Store 帐户下创建目录，用于管理和存储数据。
@@ -91,12 +83,12 @@ ms.lasthandoff: 06/08/2017
 
         Get-AzureRmDataLakeStoreChildItem -AccountName $dataLakeStoreName -Path $myrootdir
 
-    应该会显示如下输出：
+    显示的输出应该如以下屏幕截图所示：
 
     ![验证目录](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "验证目录")
 
 ## <a name="upload-data-to-your-azure-data-lake-store"></a>将数据上传到 Azure Data Lake Store
-可以直接将数据上传到 Data Lake Store 的根级别，也可以上传到在帐户中创建的目录。 下面的代码段演示了如何将一些示例数据上传到上一节中创建的目录 (**mynewdirectory**)。
+可以直接将数据上传到 Data Lake Store 的根级别，也可以上传到在帐户中创建的目录。 此节中的代码片段演示了如何将一些示例数据上传到上一节中创建的目录 (**mynewdirectory**)。
 
 如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。 下载文件，并将其存储在计算机的本地目录中，如 C:\sampledata\。
 
@@ -120,88 +112,16 @@ ms.lasthandoff: 06/08/2017
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
-## <a name="delete-your-azure-data-lake-store-account"></a>删除你的 Azure Data Lake Store 帐户
+## <a name="delete-your-azure-data-lake-store-account"></a>删除 Azure Data Lake Store 帐户
 使用以下命令删除 Data Lake Store 帐户。
 
     Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
 出现提示时，输入 **Y** 删除帐户。
 
-## <a name="performance-guidance-while-using-powershell"></a>使用 PowerShell 时的性能指南
-
-使用 PowerShell 操作 Data Lake Store 时，调整下面这个最重要的设置可以获得最佳性能：
-
-| 属性            | 默认 | 说明 |
-|---------------------|---------|-------------|
-| PerFileThreadCount  | 10      | 使用此参数可以选择用于上传或下载每个文件的并行线程数。 此数字表示可以针对每个文件分配的最大线程数，但根据具体的方案，获得的线程可能少于此数目（例如，如果只是上传 1KB 的文件，则即使请求了 20 个线程，也只能获得一个线程）。  |
-| ConcurrentFileCount | 10      | 此参数专门为上传或下载文件夹。 此参数确定可上传或下载的并发文件数。 此数字表示一次性可上传或下载的最大并发文件数，但根据具体的方案，获得的并发性可能少于此数目（例如，如果只是上传两个文件，则即使请求 15 个并发文件上传进程，也只能获得两个）。 |
-
-**示例**
-
-此命令针对每个文件使用 20 个线程以及 100 个并发文件，将 Azure Data Lake Store 中的文件下载到用户的本地驱动器。
-
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Store account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
-
-### <a name="how-do-i-determine-the-value-to-set-for-these-parameters"></a>如何确定要为这些参数设置多大的值？
-
-请参考下面的指导。
-
-* **步骤 1：确定线程总数** - 首先，请计算要使用的线程总数。 一般指导原则是，应该为每个物理核心使用 6 个线程。
-
-        Total thread count = total physical cores * 6
-
-    **示例**
-
-    假设在包含 16 个核心 D14 VM 中运行 PowerShell 命令
-
-        Total thread count = 16 cores * 6 = 96 threads
-
-
-* **步骤 2：计算 PerFileThreadCount** - 根据文件的大小计算 PerFileThreadCount。 对于小于 2.5GB 的文件，没有必要更改此参数，因为默认值 10 就已足够。 对于大于 2.5GB 的文件，应该为前 2.5GB 使用 10 个线程作为基础，文件大小每增加 256MB，就多使用 1 个线程。 如果要复制文件大小有很大变化的文件夹，请考虑根据类似的文件大小将这些文件分组。 文件大小有差异可能会导致性能不佳。 如果无法将类似大小的文件分组，应该根据最大文件大小设置 PerFileThreadCount。
-
-        PerFileThreadCount = 10 threads for the first 2.5GB + 1 thread for each additional 256MB increase in file size
-
-    **示例**
-
-    假设有 100 个文件，其大小范围为 1GB 到 10GB，可以在公式中使用 10GB 作为最大文件大小，如下所示。
-
-        PerFileThreadCount = 10 + ((10GB - 2.5GB) / 256MB) = 40 threads
-
-* **步骤 3：计算 ConcurrentFilecount** - 根据以下公式，使用线程总数和 PerFileThreadCount 计算 ConcurrentFileCount。
-
-        Total thread count = PerFileThreadCount * ConcurrentFileCount
-
-    **示例**
-
-    沿用前面使用的示例值
-
-        96 = 40 * ConcurrentFileCount
-
-    **ConcurrentFileCount** 为 **2.4**，舍入为 **2**。
-
-### <a name="further-tuning"></a>进一步调整
-
-由于要处理的文件大小有很大的差异，因此可能需要进一步调整。 如果所有或大多数文件都比较大，接近 10GB，则可以有效地利用上述计算公式。 但是，如果文件大小差异很大，许多文件都比较小，则可以减小 PerFileThreadCount。 减小 PerFileThreadCount 即可增大 ConcurrentFileCount。 假设大多数文件小于 5GB，我们可根据以下公式重新计算：
-
-    PerFileThreadCount = 10 + ((5GB - 2.5GB) / 256MB) = 20
-
-现在，**ConcurrentFileCount** 是 96/20，即 4.8，舍入为 **4**。
-
-可以根据文件大小的分布，通过调大或调小 **PerFileThreadCount** 来继续调整这些设置。
-
-### <a name="limitation"></a>限制
-
-* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 **ConcurrentFileCount** ，应该减小 **ConcurrentFileCount** ，使其等于文件数。 可以使用所有剩余线程来增大 **PerFileThreadCount**。
-
-* **线程过多**：如果在不增加群集大小的情况下大幅增加线程计数，将会面临性能下降的风险。 在 CPU 上执行上下文切换时，可能会出现资源争用的问题。
-
-* **并发性不足**：如果并发性不足，可能表示群集太小。 可以在群集中增加节点数目，这样即可提高并发性。
-
-* **限制错误**：并发性过高时，可能会出现限制错误。 如果看到限制错误，应该降低并发性，或者与我们联系。
-
 ## <a name="next-steps"></a>后续步骤
+* [将 PowerShell 与 Azure Data Lake Store 配合使用的性能优化指南](data-lake-store-performance-tuning-powershell.md)
+* [使用 Azure Data Lake Store 满足大数据要求](data-lake-store-data-scenarios.md) 
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-

@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: d7a761310782faab1dda023785f93cf90742e2ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-cordovaphonegap"></a>开始将 Azure Mobile Engagement 用于 Cordova/Phonegap
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-## <a id="setup-azme"></a>安装程序为 Cordova 应用的移动用户参与策略
+## <a id="setup-azme"></a>为 Cordova 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
 ## <a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
@@ -119,7 +119,7 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
 ## <a id="monitor"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>启用推送通知和应用内消息传递
+## <a id="integrate-push"></a>启用推送通知和应用内消息传送
 进行营销活动时，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与用户交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
 以下各部分介绍如何设置应用以接收推送通知。
 

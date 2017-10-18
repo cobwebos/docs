@@ -7,6 +7,7 @@
 ## [常见问题](active-directory-faq.md)
 
 # 入门
+## [Azure AD 入门](get-started-azure-ad.md)
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
 ## [添加自定义域名](add-custom-domain.md)
 ## [配置公司品牌](customize-branding.md)
@@ -43,6 +44,7 @@
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
+#### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [重置密码](active-directory-users-reset-password-azure-portal.md)
 ### [管理用户工作信息](active-directory-users-work-info-azure-portal.md)
@@ -64,6 +66,7 @@
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
+#### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
 ### [启用专用组](active-directory-accessmanagement-dedicated-groups.md)
@@ -136,7 +139,7 @@
 ### 任务
 #### [设置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
 #### [设置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
-#### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
 ### 故障排除
@@ -203,6 +206,7 @@
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 #### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
+####[在 Azure Active Directory 中隐藏用户体验](active-directory-coreapps-hide-third-party-app.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)

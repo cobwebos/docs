@@ -10,17 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/03/2017
+ms.date: 10/02/2017
 ms.topic: get-started-article
 ms.author: tomfitz
+ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>创建和部署第一个 Azure 资源管理器模板
 本主题介绍如何通过相关步骤创建第一个 Azure Resource Manager 模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。 如果有现成的资源，需要为这些资源获取模板，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
 
@@ -97,58 +95,21 @@ ms.lasthandoff: 09/06/2017
 
 部署完成后，存储帐户就会存在于资源组中。
 
-## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
+[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-可以使用 [Cloud Shell](../cloud-shell/overview.md) 来运行 Azure CLI 命令，以便部署模板。 但是，必须先将模板加载到 Cloud Shell 的文件共享。 如果尚未使用过 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../cloud-shell/overview.md)，了解如何设置它。
+对于 Azure CLI，请使用下列命令：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。   
+```azurecli-interactive
+az group create --name examplegroup --location "South Central US"
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
+```
 
-2. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
+目前在 Cloud Shell 中提供预览版的 PowerShell。 对于 PowerShell，请使用以下命令：
 
-   ![选择资源组](./media/resource-manager-create-first-template/select-cs-resource-group.png)
-
-3. 选择适用于 Cloud Shell 的存储帐户。
-
-   ![选择存储帐户](./media/resource-manager-create-first-template/select-storage.png)
-
-4. 选择“文件”。
-
-   ![选择文件](./media/resource-manager-create-first-template/select-files.png)
-
-5. 选择 Cloud Shell 的文件共享。 名称模式为 `cs-<user>-<domain>-com-<uniqueGuid>`。
-
-   ![选择文件共享](./media/resource-manager-create-first-template/select-file-share.png)
-
-6. 选择“添加目录”。
-
-   ![添加目录](./media/resource-manager-create-first-template/select-add-directory.png)
-
-7. 将其命名为“模板”，然后选择“确定”。
-
-   ![为目录命名](./media/resource-manager-create-first-template/name-templates.png)
-
-8. 选择新目录。
-
-   ![选择目录](./media/resource-manager-create-first-template/select-templates.png)
-
-9. 选择“上传”。
-
-   ![选择“上传”](./media/resource-manager-create-first-template/select-upload.png)
-
-10. 找到并上传模板。
-
-   ![上传文件](./media/resource-manager-create-first-template/upload-files.png)
-
-11. 打开提示符。
-
-   ![打开 Cloud Shell](./media/resource-manager-create-first-template/start-cloud-shell.png)
-
-12. 在 Cloud Shell 中输入以下命令：
-
-   ```azurecli
-   az group create --name examplegroup --location "South Central US"
-   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-   ```
+```powershell
+New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
+```
 
 部署完成后，存储帐户就会存在于资源组中。
 
@@ -445,4 +406,3 @@ az group delete --name examplegroup
 * 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 * 若要了解存储帐户的属性，请查看[存储帐户模板参考](/azure/templates/microsoft.storage/storageaccounts)。
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
-

@@ -9,6 +9,8 @@
   items:
     - name: 收集 - Azure VM
       href: log-analytics-quick-collect-azurevm.md
+    - name: 收集 - Linux 计算机
+      href: log-analytics-quick-collect-linux-computer.md
 - name: 教程
   items:
     - name: 1 - 分析数据

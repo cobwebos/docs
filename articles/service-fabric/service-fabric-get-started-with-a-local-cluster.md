@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 07/13/2017
 ms.author: ryanwi;mikhegn
 ms.openlocfilehash: 359677972c7e1fa3f7435052021ddfae5b1ed85e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>在本地群集上部署和升级应用程序入门
-Azure Service Fabric SDK 包括完整的本地开发环境，它可用于快速开始使用部署和管理本地群集上的应用程序。 在本文中，会从 Windows PowerShell 创建本地群集、将现有应用程序部署到该群集，然后将该应用程序升级为新版本。
+Azure Service Fabric SDK 包含完整的本地开发环境，可让你快速地在本地群集上开始部署和管理应用程序。 在本文中，会从 Windows PowerShell 创建本地群集、将现有应用程序部署到该群集，然后将该应用程序升级为新版本。
 
 > [!NOTE]
 > 本文假设已[设置开发环境](service-fabric-get-started.md)。
@@ -36,7 +36,7 @@ Service Fabric 群集代表一组可在其中部署应用程序的硬件资源�
 SDK 提供两种方式来设置本地群集：Windows PowerShell 脚本和本地群集管理器系统托盘应用。 在本教程中，我们使用 PowerShell 脚本。
 
 > [!NOTE]
-> 如果已通过从 Visual Studio 部署应用程序创建了本地群集，可跳过本节。
+> 如果已通过从 Visual Studio 部署应用程序创建了本地群集，则可以跳过本部分。
 > 
 > 
 
@@ -47,7 +47,7 @@ SDK 提供两种方式来设置本地群集：Windows PowerShell 脚本和本地
     & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
     ```
    
-    群集设置需要一段时间。 完成设置后，应会看到类似如下的输出：
+    群集设置需要一段时间。 完成设置后，会看到类似于下面的输出：
    
     ![群集设置输出][cluster-setup-success]
    
@@ -82,10 +82,10 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
    Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
     ```
    
-    如果一切正常，应会看到如下所示的输出：
+    如果一切正常，应会看到下面的输出：
    
     ![将应用程序部署到本地群集][deploy-app-to-local-cluster]
-7. 若要查看应用程序的操作情况，请启动浏览器并导航到 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)。 应会显示以下内容：
+7. 若要查看应用程序的操作情况，请启动浏览器并导航到 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)。 应会看到：
    
     ![已部署的应用程序 UI][deployed-app-ui]
    
@@ -122,7 +122,7 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
    
     ![在 PowerShell 中查看服务分区][ps-getsfpartitions]
    
-    所用命令集（例如所有 Service Fabric PowerShell 命令）可用于可（本地或远程）连接的任何群集。
+    使用的命令集（例如所有 Service Fabric PowerShell 命令）可用于任何可以连接的群集（本地或远程）。
    
     若要以更直观的方式来与群集交互，可以在浏览器中导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) ，以使用基于 Web 的 Service Fabric Explorer 工具。
    
@@ -139,16 +139,16 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 新版应用程序现在只计算以元音开头的单词。 推出升级后，我们会看到应用程序的行为出现两项变化。 首先，计数增长的速率应该变慢，因为计算的单词比较少。 其次，由于第一个分区有两个元音（A 和 E），而其他每个分区只包含一个元音，因此第一个分区的计数最终会超出其他分区。
 
 1. [下载 WordCount v2 包](http://aka.ms/servicefabric-wordcountappv2)并将其保存到已下载的 v1 包的同一位置。
-2. 返回到 PowerShell 窗口并使用 SDK 的升级命令在群集中注册新版本。 然后开始升级 fabric: / WordCount 应用程序。
+2. 返回到 PowerShell 窗口并使用 SDK 的升级命令在群集中注册新版本。 然后开始升级 fabric:/WordCount 应用程序。
    
     ```powershell
     Publish-UpgradedServiceFabricApplication -ApplicationPackagePath C:\ServiceFabric\WordCountV2.sfpkg -ApplicationName "fabric:/WordCount" -UpgradeParameters @{"FailureAction"="Rollback"; "UpgradeReplicaSetCheckTimeout"=1; "Monitored"=$true; "Force"=$true}
     ```
    
-    开始升级时，可在 PowerShell 中看到如下所示的输出。
+    开始升级时，应会在 PowerShell 中看到如下所示的输出。
    
     ![在 PowerShell 中查看升级进度][ps-appupgradeprogress]
-3. 升级进行时，从 Service Fabric Explorer 监视其状态可能更加轻松。 启动浏览器窗口并导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 展开左侧树中的“应用程序”，并选择“WordCount”，最后选择“fabric:/WordCount”。 在“基本信息”选项卡中，随着群集升级域的不断升级，可以看到升级状态。
+3. 当升级正在进行时，可能发现从 Service Fabric 资源管理器监视其状态会更加轻松。 启动浏览器窗口并导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 展开左侧树中的“应用程序”，并选择“WordCount”，最后选择“fabric:/WordCount”。 在“基本信息”选项卡中，随着群集升级域的不断升级，可以看到升级状态。
    
     ![在 Service Fabric 资源管理器中查看升级进度][sfx-upgradeprogress]
    
@@ -190,7 +190,7 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 4. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”  。 此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。 仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才删除本地群集。
 
 ## <a name="one-node-and-five-node-cluster-mode"></a>单节点或 5 节点群集模式
-开发应用程序时，通常会发现自己快速迭代编写代码、调试、更改代码、调试等。 为有助于优化此过程，本地群集可采用两种模式运行：单节点或 5 节点模式。 这两种群集模式各有优点。 在五节点群集模式下，可以操作实际群集。 可以使用多个实例和服务副本测试故障转移方案。 单节点群集模式经过优化，能够快速执行服务部署和注册，从而帮助使用 Service Fabric 运行时快速验证代码。
+开发应用程序时，通常会发现自己快速迭代编写代码、调试、更改代码、调试等。 为有助于优化此过程，本地群集可采用两种模式运行：单节点或 5 节点模式。 这两种群集模式各有优点。 5 节点群集模式使你能够使用真正的群集。 可以使用多个实例和服务副本测试故障转移方案。 单节点群集模式经过优化，能够快速执行服务部署和注册，从而帮助使用 Service Fabric 运行时快速验证代码。
 
 单节点群集模式和 5 节点群集模式都不是仿真器或模拟器。 本地开发群集运行多台计算机群集中使用的同一平台代码。
 
@@ -212,7 +212,7 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
     & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
     ```
    
-    群集设置需要一段时间。 完成设置后，应会看到类似如下的输出：
+    群集设置需要一段时间。 完成设置后，会看到类似于下面的输出：
    
     ![群集设置输出][cluster-setup-success-1-node]
 

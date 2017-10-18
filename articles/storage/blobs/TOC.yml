@@ -28,6 +28,8 @@
           href: storage-secure-access-application.md
         - name: 4 - 监视存储和排查存储问题
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: 在云存储中搜索非结构化数据
+      href: storage-unstructured-search.md
 - name: 示例
   items:
     - name: Azure PowerShell

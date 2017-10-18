@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>在云中监视本地标识基础结构和同步服务
-Azure Active Directory (Azure AD) 连接运行状况可帮助你监视和深入了解本地标识基础结构和同步服务。 它针对重要的标识组件 - 例如 Active Directory 联合身份验证服务 (AD FS) 服务器、Azure AD Connect 服务器（也称为同步引擎）、Active Directory 域控制器等 - 提供监视功能，以便与 Office 365 和 Microsoft Online Services 建立可靠的连接。它还可以让用户轻松访问有关这些组件的关键数据点，获取使用情况信息和其他重要见解来做出明智的决策。
+Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。 它针对重要的标识组件 - 例如 Active Directory 联合身份验证服务 (AD FS) 服务器、Azure AD Connect 服务器（也称为同步引擎）、Active Directory 域控制器等 - 提供监视功能，以便与 Office 365 和 Microsoft Online Services 建立可靠的连接。它还可以让用户轻松访问有关这些组件的关键数据点，获取使用情况信息和其他重要见解来做出明智的决策。
 
 这些信息显示在 [Azure AD Connect Health 门户](https://aka.ms/aadconnecthealth)中。 在 Azure AD Connect Health 门户中，可以查看警报、性能监视、使用情况分析和其他信息。 Azure AD Connect Health 在一个集中的位置提供重要标识组件的运行状况单一可重用功能区。
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) 连接运行状况可帮助你监视和深入�
 随着 Azure AD Connect Health 中的功能日益增多，门户通过标识可重用功能区提供单个仪表板。 可以创建一个更稳健、更健全的集成环境，让用户提高其工作效率。
 
 ## <a name="why-use-azure-ad-connect-health"></a>为何使用 Azure AD Connect Health？
-将本地目录与 Azure AD 集成可以提高用户的工作效率，因为他们可以使用一个通用标识来访问云和本地资源。 但是，这种集成带来的挑战是，必须确保此环境正常运行，才能让用户从任何设备可靠地访问本地和云中的资源。 Azure AD Connect Health 可帮助你监视和深入了解你的本地标识基础结构用于访问 Office 365 或其他 Azure AD 应用程序。 这种方法就像在每个本地标识服务器上安装代理那样简单。
+将本地目录与 Azure AD 集成可以提高用户的工作效率，因为他们可以使用一个通用标识来访问云和本地资源。 但是，这种集成带来的挑战是，必须确保此环境正常运行，才能让用户从任何设备可靠地访问本地和云中的资源。 Azure AD Connect Health 可帮助你监视和深入分析用于访问 Office 365 或其他 Azure AD 应用程序的本地标识基础结构。 这种方法就像在每个本地标识服务器上安装代理那样简单。
 
 ## <a name="azure-ad-connect-health-for-ad-fsactive-directory-aadconnect-health-adfsmd"></a>[适用于 AD FS 的 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
 适用于 AD FS 的 Azure AD Connect Health 支持 Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 中的 AD FS 2.0。 它还支持监视为 Extranet 访问提供身份验证支持的 AD FS 代理或 Web 应用程序代理服务器。 轻松安装费用低廉的 Health 代理后，适用于 AD FS 的 Azure AD Connect Health 可提供以下重要功能集：

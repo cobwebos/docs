@@ -15,16 +15,16 @@ ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 6e76d1ee08f804637999ef2ebf5d25becf6a0408
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-first-api-in-azure-api-management"></a>在 Azure API 管理中管理第一个 API
 ## <a name="overview"></a>概述
 本指南演示如何快速开始使用 Azure API 管理，并进行首次 API 调用。
 
-## <a name="concepts"></a>什么是 Azure API 管理？
+## <a name="concepts"> </a>什么是 Azure API 管理？
 可以使用 Azure API 管理处理任何后端，并基于它发布正式的 API 程序。
 
 常见方案包括：
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
   * 创建帐户并可以订阅以获取 API 密钥。
   * 访问他们自己的使用情况分析。
 
-## <a name="create-service-instance"></a>创建 API 管理实例
+## <a name="create-service-instance"> </a>创建 API 管理实例
 > [!NOTE]
 > 要完成本教程，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用][Azure Free Trial]。
 > 
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/11/2017
 
 为服务实例选择所需的**订阅**、**资源组**和**位置**。
 
-输入 **Contoso Ltd.** 作为**组织名称**，并在“管理员电子邮件”字段中输入电子邮件地址。
+输入“Contoso Ltd.”作为“组织名称”，并在“管理员电子邮件”字段中输入电子邮件地址。
 
 > [!NOTE]
 > 此电子邮件地址用于来自 API 管理系统的通知。 有关详细信息，请参阅[如何在 Azure API 管理中配置通知和电子邮件模板][How to configure notifications and email templates in Azure API Management]。
@@ -93,10 +93,10 @@ API 管理服务实例在以下三层中提供：开发人员、标准和高级�
 
 创建服务实例后，下一步是创建或导入 API。
 
-## <a name="create-api"></a>导入 API
+## <a name="create-api"> </a>导入 API
 API 包含一组可以从客户端应用程序调用的操作。 API 操作代理到现有的 web 服务。
 
-可以手动创建 API（可以添加操作），也可以导入它们。 在本教程中，将为由 Microsoft 提供并在 Azure 上托管的示例计算器 Web 服务导入 API。
+可以手动创建 API（可以添加操作），也可以导入它们。 在本教程中，将为 Microsoft 提供的示例计算器 Web 服务导入 API，并在 Azure 上托管它。
 
 > [!NOTE]
 > 有关创建 API 和手动添加操作的指导，请参阅[如何创建 API](api-management-howto-create-apis.md) 和[如何将操作添加到 API](api-management-howto-add-operations.md)。
@@ -140,7 +140,7 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 
 为了调用 API，开发人员必须先订阅一个产品，以提供给他们对 API 的访问权。 开发人员可以在开发人员门户中订阅产品，管理员可以在发布者门户中为开发人员订阅产品。 是管理员，你在本教程的前面步骤中已创建 API 管理实例，所以默认情况下已订阅每个产品。
 
-## <a name="call-operation"></a>从开发人员门户调用操作
+## <a name="call-operation"> </a>从开发人员门户调用操作
 可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 在此教程步骤中，将调用基本计算器 API 的“添加两个整数”操作。 单击发布者门户右上角菜单中的“开发人员门户”  。
 
 ![开发人员门户][api-management-developer-portal-menu]
@@ -149,7 +149,7 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 
 ![开发人员门户][api-management-developer-portal-calc-api]
 
-请注意已随 API 和操作导入的示例说明和参数，它们为将要使用此操作的开发人员提供文档。 手动添加操作时，也可以添加这些说明。
+请注意，已随 API 和操作导入的示例说明和参数，将为使用此操作的开发人员提供文档。 手动添加操作时，也可以添加这些说明。
 
 若要调用“添加两个整数”操作，请单击“试用”。
 
@@ -163,7 +163,7 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 
 ![响应][api-management-invoke-get-response]
 
-## <a name="view-analytics"></a>查看分析
+## <a name="view-analytics"> </a>查看分析
 若要查看基本计算器的分析，请选择开发人员门户右上角菜单中的“管理”，切换回发布者门户  。
 
 ![管理][api-management-manage-menu]
@@ -191,10 +191,10 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 
 “分析”部分包含以下四个选项卡  ：
 
-* **概览**提供总体使用情况和运行状况指标，以及最受欢迎的开发人员、最热门的产品、最热门的 API 和最常使用的操作。
-* **使用情况**提供对 API 调用和带宽的深入了解，包括地理表示形式。
-* **运行状况**着重提供有关状态代码、缓存成功率、响应时间和 API 以及服务响应时间的信息。
-* **活动**提供按开发人员、产品、API 和操作深化到特定活动的报表。
+* **速览**：提供总体使用情况和运行状况指标，以及顶级开发人员、顶级产品、顶级 API 和顶级操作。
+* **使用情况**：深入介绍 API 调用和带宽，包括地理表示。
+* **运行状况**：侧重于状态代码、缓存成功率、响应时间、API 和服务响应时间。
+* **活动**：提供的报告按开发人员、产品、API 和操作向下钻取了特定的活动。
 
 ## <a name="next-steps"> </a>后续步骤
 * 了解如何 [使用速率限制保护 API](api-management-howto-product-with-rules.md)。

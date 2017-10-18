@@ -101,6 +101,7 @@
 ##### [管理卷容器](storsimple-8000-manage-volume-containers.md)
 ##### [管理卷 - 最新版](storsimple-8000-manage-volumes-u2.md)
 ###### [常见问题：本地固定卷](storsimple-8000-local-volume-faq.md)
+##### [基于角色的访问控制](storsimple-8000-role-based-access-control.md)
 ##### [管理 ACR](storsimple-8000-manage-acrs.md)
 ##### [管理带宽模板](storsimple-8000-manage-bandwidth-templates.md)
 ##### [查看和管理作业](storsimple-8000-manage-jobs-u2.md)
@@ -188,7 +189,7 @@
 #### [Release - GA](storsimple-july-2014-release-notes.md)
 
 ## 引用
-### [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
+### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [Windows PowerShell for StorSimple cmdlet](https://technet.microsoft.com/library/dn688168.aspx)
 
 # StorSimple 8000 系列（经典门户）

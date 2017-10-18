@@ -1,6 +1,6 @@
 ---
-title: "Azure 函数概述 |Microsoft 文档"
-description: "帮助 Azure 函数概述在 Azure 门户中的内容"
+title: "Azure Functions 概述 | Microsoft Docs"
+description: "Azure 门户中 Azure Functions 概述的帮助内容"
 services: functions
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: fa593eef1c01311d20216f3ab3af7ffcb54e12f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-documentation"></a>Azure Functions 文档
 
@@ -20,16 +20,16 @@ Azure Functions 是一个无服务器计算服务，使用它可以按需运行�
 
 ## <a name="5-minute-quickstarts"></a>5 分钟快速入门
 
-了解如何创建 Hello World 函数使用：
+了解如何使用以下方法创建 Hello World 函数：
 
 - [在 Azure 应用服务中创建 Java Web 应用](/azure/azure-functions/functions-create-first-azure-function)
 - [Azure CLI](/azure/azure-functions/functions-create-first-azure-function-azure-cli)
 
 ## <a name="step-by-step-tutorials"></a>分步教程
 
-了解如何构建和管理 Azure 功能。
+了解如何生成和管理 Azure Functions。
 
-- [生成无服务器的社交媒体仪表板](/azure/azure-functions/functions-twitter-email)
+- [构建无服务器社交媒体仪表板](/azure/azure-functions/functions-twitter-email)
 - [使用 Azure Functions 创建无服务器 API](/azure/azure-functions/functions-create-serverless-api)
 
 ## <a name="samples"></a>示例
@@ -40,5 +40,5 @@ Azure Functions 是一个无服务器计算服务，使用它可以按需运行�
 
 ## <a name="more"></a>更多
 
-- [请访问文档以了解详细信息](/azure/app-functions/index)
+- [若要了解详细信息，请参阅文档](/azure/app-functions/index)
 - [了解所有 Azure 服务](https://aka.ms/j3wr7y)

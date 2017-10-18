@@ -12,22 +12,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/14/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: d290ee8a3cee1242f14726b5cf7ca531a3f5830a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: b5f44d2ae42ffc6f75887a64c9ef988fe6d8fd69
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-the-azure-iot-hub-service"></a>Azure IoT 中心服务概述
 
 欢迎使用 Azure IoT 中心。 本文概述 Azure IoT 中心，并描述应该使用此服务实现物联网 (IoT) 解决方案的原因。 Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备和一个解决方案后端之间实现安全可靠的双向通信。 Azure IoT 中心：
 
-* 提供了多个设备到云和云到设备的通信选项，包括单向消息传递、文件传输和请求-答复方法。
+* 提供多个设备到云和云到设备通信选项。 这些选项包括单向消息传递、文件传输以及请求-答复方法。
 * 将内置的声明性消息路由到其他 Azure 服务。
 * 为设备元数据和同步的状态信息提供可查询存储。
 * 使用每个设备的安全密钥或 X.509 证书来实现安全的通信和访问控制。
@@ -59,19 +57,19 @@ IoT 中心和设备库可帮助你应对挑战，即如何以可靠且安全的�
 
 ## <a name="why-use-azure-iot-hub"></a>为何使用 Azure IoT 中心？
 
-除了一套丰富的“[设备到云][lnk-d2c-guidance]”和“[云到设备][lnk-c2d-guidance]”通信选项（包括消息传递、文件传输和请求-答复方法），Azure IoT 中心还通过以下方式解决设备连接问题：
+Azure IoT 中心提供一大组[设备到云][lnk-d2c-guidance]和[云到设备][lnk-c2d-guidance]通信选项。 另外，Azure IoT 中心还通过以下方式解决在以可靠且安全的方法连接到设备时遇到的难题：
 
-* **设备孪生**。 可以使用[设备孪生][lnk-twins]存储、同步和查询设备元数据和状态信息。 设备孪生是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。
+* **设备孪生**。 可以使用[设备孪生][lnk-twins]存储、同步和查询设备元数据和状态信息。 设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备克隆。
 
 * **每个设备的身份验证和安全连接性**。 可以为每台设备预配独有的[安全密钥][lnk-devguide-security]，让它连接到 IoT 中心。 [IoT 中心标识注册表][lnk-devguide-identityregistry]会在解决方案中存储设备标识和密钥。 解决方案后端可添加单独的设备，允许或拒绝列表完全控制设备访问权限。
 
 * **基于声明性规则将设备到云的消息路由到 Azure 服务**。 IoT 中心根据路由规则定义消息路由，用于控制中心发送设备到云消息的位置。 路由规则不要求用户编写任何代码，并且可以代替自定义的引入后消息调度程序。
 
-* **设备连接操作监视**。 你可以收到有关设备标识管理操作与设备连接事件的详细操作日志。 这种监视功能使 IoT 解决方案能够标识连接问题，例如，尝试使用错误凭据进行连接的设备、消息发送太频繁，或拒绝所有云到设备的消息。
+* **设备连接操作监视**。 可以收到有关设备标识管理操作与设备连接事件的详细操作日志。 IoT 解决方案可以通过此监视功能确定连接问题。 使用这些日志，可以确定那些提供错误凭据、发送消息过于频繁或拒绝了所有云到设备消息的设备。
 
 * **一组丰富的设备库**。 [Azure IoT 设备 SDK][lnk-device-sdks] 适用于各种语言和平台 - C 面向很多 Linux 分发版、Windows 和实时操作系统。 Azure IoT 设备 SDK 也支持 C#、Java 和 JavaScript 等托管语言。
 
-* **IoT 协议和可扩展性**。 如果解决方案无法使用设备库，则 IoT 中心会公开一个公共协议，它使设备可以通过本机方式使用 MQTT v3.1.1、HTTP 1.1 或 AMQP 1.0 协议。 还可以通过以下方式扩展 IoT 中心，以便为自定义协议提供支持：
+* **IoT 协议和可扩展性**。 如果解决方案无法使用设备库，则 IoT 中心会公开一个公共协议，它使设备可以通过本机方式使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议。 还可以通过以下方式扩展 IoT 中心，以便为自定义协议提供支持：
 
   * 使用 [Azure IoT Edge][lnk-iot-edge] 创建现场网关，以便将自定义协议转换为 IoT 中心所理解的三个协议之一。
   * 自定义 [Azure IoT 协议网关][protocol-gateway]（在云中运行的一个开放源代码组件）。
@@ -88,7 +86,7 @@ IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-iotedg
 
 ## <a name="how-does-iot-hub-work"></a>IoT 中心如何运作？
 
-Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模式，调节设备与解决方案后端之间的交互。 服务辅助通信的目标是在控制系统（例如 IoT 中心）与专用设备（部署在不受信任的物理空间中）之间，建立可信任的双向通信路径。 该模式会建立下列原则：
+Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模式，调节设备与解决方案后端之间的交互。 服务辅助通信的目标是在控制系统（例如 IoT 中心）与专用设备（位于不受信任的物理空间中）之间，建立可信任的双向通信路径。 该模式会建立下列原则：
 
 * 安全性的优先级高于其他所有功能。
 
@@ -100,11 +98,11 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 
 * 系统级别的授权和身份验证以每个设备的标识为基础。 它们可让访问凭据和权限近乎实时地撤销。
 
-* 对于因为电源或连接性而导致连接不稳定的设备而言，可通过保留命令和设备通知直到设备连接并接收它们，进而促进其双向通信。 IoT 中心为发送的命令维护特定于设备的队列。
+* 对于因为电源或连接性而导致连接不稳定的设备而言，可通过保留命令和通知直到设备在连接后接收它们，从而进行双向通信。 IoT 中心为发送的命令维护特定于设备的队列。
 
 * 针对通过网关到特定服务的受保护传输，应用程序有效负载数据会受到单独保护。
 
-移动行业已大规模地使用服务辅助通信模式实现推送通知服务，例如 [Windows 推送通知服务][lnk-wns]、[Google Cloud Messaging][lnk-google-messaging] 和 [Apple Push Notification 服务][lnk-apple-push]。
+移动行业已使用服务辅助通信模式实现推送通知服务，例如 [Windows 推送通知服务][lnk-wns]、[Google Cloud Messaging][lnk-google-messaging] 和 [Apple Push Notification 服务][lnk-apple-push]。
 
 支持通过 ExpressRoute 的公共对等互连路径访问 IoT 中心。
 
@@ -142,4 +140,3 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
 
 [lnk-security-ground-up]: iot-hub-security-ground-up.md
-

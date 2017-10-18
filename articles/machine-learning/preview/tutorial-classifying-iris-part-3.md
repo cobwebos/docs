@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/27/2017
+ms.openlocfilehash: 2325d0ffd369d85b9a21e2274a98dcb673d240e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 28d74eb9da4210f59758b90ae88ce5a5eb62621a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="classifying-iris-part-3-deploy-a-model"></a>“鸢尾花”分类第 3 部分：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
@@ -36,8 +34,12 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ## <a name="prerequisites"></a>先决条件
 先完成本系列教程的前两个部分：
-- 首先，遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建 Azure 机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
-- 其次，遵循[生成模型教程](tutorial-classifying-iris-part-2.md)在 Azure 机器学习中创建逻辑回归模型。
+
+1. 遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建 Azure 机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
+
+2. 遵循[生成模型教程](tutorial-classifying-iris-part-2.md)在 Azure 机器学习中创建逻辑回归模型。
+
+3. 需安装 Docker 引擎并在本地运行它。 也可以将其部署到 Azure 中的 Azure 容器服务群集。
 
 ## <a name="download-the-model-pickle-file"></a>下载模型 pickle 文件
 在本教程的前一部分中，已在 Azure Machine Learning Workbench 本地运行了 **iris_sklearn.py** 脚本。 该操作已使用流行的 Python 对象序列化包 **[pickle](https://docs.python.org/2/library/pickle.html)** 序列化了逻辑回归模型。 
@@ -334,5 +336,4 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 接下来，可以执行高级数据准备：
 > [!div class="nextstepaction"]
 > [高级数据准备](tutorial-bikeshare-dataprep.md)
-
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
 ms.openlocfilehash: 8bad198488c4940a83eb32ec02122a91d47ca86c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>预见性维护预配置解决方案概述
 
@@ -56,7 +56,7 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器监视�
 
 Azure IoT 预测性维护解决方案使用通过此模板创建的回归模型。 该模型将部署到 Azure 订阅，通过自动生成的 API 公开。 该解决方案包含代表 4 个（共 100 个）引擎和 4 个（共 21 个）传感器数据流的测试数据的子集。 该数据可通过已训练模型提供精确的结果。
 
-*\[1\] A. Saxena 和 K. Goebel (2008)。"Turbofan Engine Degradation Simulation Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
+*\[1\] A. Saxena and K. Goebel (2008)."Turbofan Engine Degradation Simulation Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="get-started-with-predictive-maintenance"></a>预见性维护入门
 
@@ -98,7 +98,7 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 
 ### <a name="observing-the-behavior-of-the-cloud-solution"></a>观察云解决方案的行为
 
-在 Azure 门户中，可导航到带所选解决方案名称的资源组，查看预配解决方案。
+在 Azure 门户中，导航到具有你选定的解决方案名称的资源组，以查看已预配的资源。
 
 ![][img-resource-group]
 
@@ -114,7 +114,7 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 
 ![][img-simulation-running]
 
-当 RUL 小于 160 时（出于演示目的而选择的任意阈值），解决方案门户会在 RUL 显示器旁边显示警告符号。 解决方案门户也会以黄色突出显示飞机引擎。 请注意 RUL 值如何整体下滑但倾向于上下波动。 此行为是因为周期长度和模型精确度不同的缘故。
+当 RUL 小于 160 时（出于演示目的而选择的任意阈值），解决方案门户会在 RUL 显示器旁边显示警告符号。 解决方案门户也会以黄色突出显示飞机引擎。 你会注意到 RUL 值有整体向下的趋势，但呈上下波动形式。 此行为是因为周期长度和模型精确度不同的缘故。
 
 ![][img-simulation-warning]
 
