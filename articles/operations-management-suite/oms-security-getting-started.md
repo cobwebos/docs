@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
 ms.openlocfilehash: eb5283c8f32fddaa8a20a565e4b877821de979a4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite 安全和审核解决方案入门
-本文档可帮助你快速开始使用 Operations Management Suite (OMS) 安全和审核解决方案功能的指导您完成每个选项。
+本文档通过带你了解每个选项，助你快速入门 Operations Management Suite (OMS) 安全和审核解决方案功能。
 
 ## <a name="what-is-oms"></a>什么是 OMS？
 Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。 有关 OMS 的详细信息，请参阅文章 [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx)。
@@ -117,7 +117,7 @@ OMS 安全和审核仪表板有四个主要类别：
 > 
 > 
 
-通过监视身份活动，能够在事件发生前主动采取措施，或事后采取针对性措施停止攻击。 **标识和访问**仪表板提供标识状态，包括若干登录尝试失败、 已在这些尝试期间使用的用户的帐户、 已锁定的帐户、 具有已更改或重置密码的帐户和当前登录的帐户数的概述。 
+通过监视身份活动，能够在事件发生前主动采取措施，或事后采取针对性措施停止攻击。 “身份和访问”仪表板提供身份状态概述，包括登录尝试失败数、失败尝试期间所用的用户帐户、已锁定的帐户、具有已更改或已重置密码的帐户，以及当前登录的帐户数。 
 
 在“身份和访问”磁贴中单击时会看到以下仪表板：
 

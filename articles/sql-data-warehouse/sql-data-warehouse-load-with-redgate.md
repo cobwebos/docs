@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 ms.openlocfilehash: a38b237d5bfc0450c1ca79b53a5784dbb9bf8602
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-redgate-data-platform-studio"></a>使用 Redgate Data Platform Studio 加载数据
 > [!div class="op_single_selector"]
@@ -96,7 +96,7 @@ DPS 会提示用户输入暂存数据的位置。 从订阅中选择一个现有
 ![][4]
 
 ## <a name="step-6-select-a-data-warehouse"></a>步骤 6：选择数据仓库
-接下来，选择一个要将数据导入到的联机 [Azure SQL 数据仓库](http://aka.ms/sqldw)数据库。 选择数据库以后，需输入连接到数据库所需的凭据，并选择“下一步”。
+接下来，选择一个要将数据导入到其中的联机 [Azure SQL 数据仓库数据库](http://aka.ms/sqldw)。 选择数据库以后，需输入连接到数据库所需的凭据，并选择“下一步”。
 
 ![][5]
 

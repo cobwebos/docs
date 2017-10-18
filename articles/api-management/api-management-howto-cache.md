@@ -1,6 +1,6 @@
 ---
-title: "添加缓存以提高性能，在 Azure API 管理 |Microsoft 文档"
-description: "了解如何改进延迟、 带宽消耗和 API 管理服务调用的 web 服务负载。"
+title: "添加缓存以提高 Azure API 管理中的性能 | Microsoft Docs"
+description: "了解如何改善滞后时间、带宽消耗和 API 管理服务调用的 web 服务负载。"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -15,70 +15,70 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 59c595f0d5ce849f44c46fdb6cab0b44d35fffa0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高性能，在 Azure API 管理
-API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、 带宽消耗和 web 服务负载不经常更改的数据。
+# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
+API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、带宽消耗和不经常更改数据的 web 服务负载。
 
-本指南演示如何添加对你的 API 的响应缓存并配置示例 Echo API 操作的策略。 然后，可以从开发人员门户，以验证操作中的缓存调用该操作。
-
-> [!NOTE]
-> 有关使用策略表达式的键的缓存项的信息，请参阅[缓存 Azure API 管理中自定义](api-management-sample-cache-by-key.md)。
-> 
-> 
-
-## <a name="prerequisites"></a>必要條件
-按照此指南中的步骤，你必须具有一个 API 的 API 管理服务实例前后产品配置。 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例][ Create an API Management service instance]中[开始使用 Azure API 管理][ Get started with Azure API Management]教程。
-
-## <a name="configure-caching"></a>配置用于缓存的操作
-在此步骤中，你将查看缓存设置**GET 资源 （缓存）**示例 Echo API 的操作。
+本指南介绍如何为 API 添加响应缓存，以及为示例 Echo API 操作配置策略。 然后，可以从开发人员门户调用操作以验证缓存起作用。
 
 > [!NOTE]
-> 每个 API 管理服务实例是预配置 Echo api 可以用于试验和了解 API 管理。 有关详细信息，请参阅[开始使用 Azure API 管理][Get started with Azure API Management]。
+> 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 > 
 > 
 
-若要开始，单击**发布者门户**Azure 门户中的 API 管理系统服务。 将你转到 API 管理发布者门户。
+## <a name="prerequisites"></a>先决条件
+执行本指南中的步骤之前，API 管理服务实例必须已配置 API 和产品。 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
+
+## <a name="configure-caching"> </a>为缓存配置操作
+在此步骤中，将查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
+
+> [!NOTE]
+> 每个预先配置 Echo API 的 API 管理服务实例，都可用于试验和了解 API 管理。 有关详细信息，请参阅 [Azure API 管理入门][Get started with Azure API Management]。
+> 
+> 
+
+若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
 
 ![发布者门户][api-management-management-console]
 
-单击**Api**从**API 管理**左侧的菜单，然后单击**Echo API**。
+在左侧“API 管理”菜单中，单击“API”，并单击“Echo API”。
 
 ![Echo API][api-management-echo-api]
 
-单击**操作**选项卡上，并依次**GET 资源 （缓存）**操作从**操作**列表。
+单击“操作”选项卡，并在“操作”列表中单击“GET 资源(已缓存)”操作。
 
 ![Echo API 操作][api-management-echo-api-operations]
 
-单击**Caching**选项卡以查看此操作的缓存设置。
+单击“ **缓存** ”选项卡查看此操作的缓存设置。
 
-![高速缓存选项卡][api-management-caching-tab]
+![缓存选项卡][api-management-caching-tab]
 
-若要启用缓存的操作，请选择**启用**复选框。 在此示例中，启用缓存。
+要为操作启用缓存，请选中“ **启用** ”复选框。 在此示例中，已启用缓存。
 
-每个操作响应进行键控中的值基于**随查询字符串参数变化**和**Vary 标头**字段。 如果你想要缓存基于查询字符串参数或标头的多个响应，你可以在这两个字段中对它们进行配置。
+每个操作的响应基于根据“查询字符串参数变化”和“标头变化”字段中的值进行键控。 如果要缓存基于查询字符串参数或标头的多个响应，可以在这两个字段中对它们进行配置。
 
-**持续时间**指定缓存响应的过期时间间隔。 在此示例中的时间间隔是**3600**秒，相当于一小时。
+**持续时间** 指定缓存响应的过期时间间隔。 在此示例中，时间间隔是 **3600** 秒，相当于一小时。
 
-在此示例中，对第一个请求中使用的缓存配置**GET 资源 （缓存）**操作返回来自后端服务的响应。 将缓存此响应，由指定的标头和查询字符串参数进行键控。 到具有匹配参数的操作的后续调用会返回，直到缓存持续时间间隔已过期的缓存的响应。
+在此示例中使用缓存配置，对“ **GET 资源（缓存）** ”操作的第一个请求将从后端服务返回一个响应。 将缓存此响应，由指定的标头和查询字符串参数进行键控。 采用匹配的参数，对操作的后续调用会返回缓存的响应，直到缓存时间间隔过期。
 
-## <a name="caching-policies"></a>查看缓存策略
-在此步骤中，你查看的缓存设置**GET 资源 （缓存）**示例 Echo API 的操作。
+## <a name="caching-policies"> </a>查看缓存策略
+在此步骤中，会查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
 
-当缓存设置都配置为一个操作上**Caching**选项卡上，缓存策略添加操作。 可查看并在策略编辑器中编辑这些策略。
+在“ **缓存** ”选项卡上为操作配置缓存设置时，为操作添加缓存策略。 可以在策略编辑器中查看并编辑这些策略。
 
-单击**策略**从**API 管理**左侧的菜单，然后选择**Echo API 获取资源 （缓存） /**从**操作**下拉列表。
+在左侧“API 管理”菜单中单击“策略”，并从“操作”下拉列表中选择“Echo API/GET 资源(已缓存)”。
 
 ![策略范围操作][api-management-operation-dropdown]
 
-这将在策略编辑器中显示此操作的策略。
+这会在策略编辑器中显示此操作的策略。
 
 ![API 管理策略编辑器][api-management-policy-editor]
 
-此操作的策略定义包括定义缓存配置使用审核策略**Caching**上一步中的选项卡。
+此操作的策略定义包括定义缓存配置的策略，使用上一步中“ **缓存** ”选项卡进行审核。
 
 ```xml
 <policies>
@@ -98,50 +98,50 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 ```
 
 > [!NOTE]
-> 在策略编辑器中的缓存策略所做的更改将反映在**Caching**选项卡上的操作，反之亦然。
+> 在策略编辑器中对缓存策略进行的更改将反映在操作的“ **缓存** ”选项卡中，反之亦然。
 > 
 > 
 
-## <a name="test-operation"></a>调用操作和测试缓存
-若要查看缓存的作用，我们可以从开发人员门户调用该操作。 单击**开发人员门户**右上方菜单中。
+## <a name="test-operation"> </a>调用操作和测试缓存
+要查看作用的缓存，我们可以从开发人员门户调用操作。 单击右上方菜单中的“ **开发人员门户** ”。
 
 ![开发人员门户][api-management-developer-portal-menu]
 
-单击**Api**在顶部菜单中，，然后选择**Echo API**。
+单击顶部菜单中的“API”，并选择“Echo API”。
 
 ![Echo API][api-management-apis-echo-api]
 
-> 如果必须只有一个 API 得到配置或对你的帐户可见，然后单击 Api 使您直接进入该 API 的操作。
+> 如果必须只有一个 API 得到配置或对你的帐户可见，并单击 API 使你直接进入该 API 的操作。
 > 
 > 
 
-选择**GET 资源 （缓存）**操作，，然后单击**打开的控制台**。
+选择“GET 资源(已缓存)”操作，并单击“打开控制台”。
 
 ![打开控制台][api-management-open-console]
 
-控制台允许你调用直接从开发人员门户的操作。
+控制台允许直接从开发人员门户调用操作。
 
 ![控制台][api-management-console]
 
-保留默认值为**param1**和**param2**。
+保留 param1 和 param2 的默认值。
 
-选择所需的密钥从**订阅密钥**下拉列表。 如果你的帐户具有只有一个订阅，它已被选中。
+从“ **订阅密钥** ”下拉列表中选择所需的密钥。 如果帐户只有一个订阅，则已处于选中状态。
 
-输入**sampleheader: value1**中**请求标头**文本框。
+在“请求标头”文本框中输入“sampleheader:value1”。
 
-单击**HTTP Get**并记下响应标头。
+单击“ **HTTP Get** ”并记下响应标头。
 
-输入**sampleheader: value2**中**请求标头**文本中，然后单击**HTTP Get**。
+在“请求标头”文本框中输入“sampleheader:value2”，并单击“HTTP Get”。
 
-请注意，值**sampleheader**仍**value1**在响应中。 请尝试一些不同的值，并请注意，返回第一次调用的缓存的响应。
+请注意，sampleheader 的值仍是响应中的 value1。 尝试一些不同的值，请注意返回来自第一次调用的缓存响应。
 
-输入**25**到**param2**字段，然后再单击**HTTP Get**。
+将“25”输入“param2”字段，然后单击“HTTP Get”。
 
-请注意，值**sampleheader**在响应现在是**value2**。 因为操作结果由查询字符串进行键控，没有返回以前缓存的响应。
+请注意，响应中 sampleheader 的值现在是 value2。 因为操作结果都由查询字符串进行键控，所以没有返回以前缓存的响应。
 
-## <a name="next-steps"></a>后续步骤
-* 有关缓存策略的详细信息，请参阅[缓存策略][ Caching policies]中[API 管理策略参考][API Management policy reference]。
-* 有关使用策略表达式的键的缓存项的信息，请参阅[缓存 Azure API 管理中自定义](api-management-sample-cache-by-key.md)。
+## <a name="next-steps"> </a>后续步骤
+* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
+* 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

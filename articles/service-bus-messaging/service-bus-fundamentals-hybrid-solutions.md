@@ -15,14 +15,14 @@ ms.topic: get-started-article
 ms.date: 06/15/2017
 ms.author: sethm
 ms.openlocfilehash: af8b10f0a460e695a39879718174e81f78934ef8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-bus"></a>Azure 服务总线
 
-无论应用程序或服务是在云中还是在本地运行，通常都需要与其他应用程序或服务交互。 若要提供的常用方法，为此，Microsoft Azure 提供 Service Bus。 本文将探讨这项技术，并介绍其概念以及为何要使用它。
+无论应用程序或服务是在云中还是在本地运行，通常都需要与其他应用程序或服务交互。 Microsoft Azure 提供服务总线，使你可以通过更多实用的方法实现此目的。 本文将探讨这项技术，并介绍其概念以及为何要使用它。
 
 ## <a name="service-bus-fundamentals"></a>服务总线基础知识
 

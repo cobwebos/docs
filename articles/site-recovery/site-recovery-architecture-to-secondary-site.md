@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/29/2017
 ms.author: raynew
 ms.openlocfilehash: fca95c63964b955db7ddfbe53250702cc8af122e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-does-on-premises-machine-replication-to-a-secondary-site-work-in-site-recovery"></a>如何使用 Site Recovery 将本地计算机复制到辅助站点？
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 07/11/2017
 1. 可以在本地站点之间运行计划内或计划外[故障转移](site-recovery-failover.md)。 如果运行计划的故障转移，源 VM 将关闭以确保不会丢失数据。
 2. 可以故障转移单台计算机，或创建[恢复计划](site-recovery-create-recovery-plans.md)来协调多台计算机的故障转移。
 4. 如果执行了到辅助站点的计划外故障转移，在故障转移后，不会为辅助位置中的计算机启用保护或复制。 如果执行了计划内故障转移，在故障转移后，辅助位置中的计算机将受保护。
-5. 然后，用户提交故障转移，开始从副本 VM 访问工作负荷。
+5. 然后提交故障转移，开始从副本 VM 访问工作负荷。
 6. 当主站点再次可用时，启动从辅助站点到主站点的反向复制。 反向复制会使虚拟机进入受保护状态，但辅助数据中心仍是活动位置。
 7. 要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，再次启动反向复制。
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 07/11/2017
 **组件** | **位置** | **详细信息**
 --- | --- | ---
 **Azure** | InMage Scout。 | 若要获取 InMage Scout，需要 Azure 订阅。<br/><br/> 创建恢复服务保管库后，可以下载 InMage Scout 并安装最新的更新，以设置部署。
-**进程服务器** | 位于主站点 | 可以部署进程服务器来处理缓存、压缩和数据优化操作。<br/><br/> 它还可以将安装的统一代理推送到你要保护的计算机。
+**进程服务器** | 位于主站点 | 可以部署进程服务器来处理缓存、压缩和数据优化操作。<br/><br/> 它还可以将安装的统一代理推送到要保护的计算机。
 **配置服务器** | 位于辅助站点 | 配置服务器可以通过管理网站或 vContinuum 控制台管理、配置和监视部署。
 **vContinuum 服务器** | 可选。 安装在配置服务器所在的同一位置。 | 它提供一个控制台用于管理和监视受保护的环境。
 **主目标服务器** | 位于辅助站点 | 主目标服务器保存复制的数据。 它从进程服务器接收数据，在辅助站点中创建副本地器，并保存数据保留点。<br/><br/> 需要的主目标服务器数目取决于要保护的计算机数目。<br/><br/> 如果希望故障转移到主站点，则主站点上也需要有一个主目标服务器。 在此服务器上安装统一代理。

@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 安全中心处理安全警报 | Microsoft 文档"
-description: "本文档可帮助你使用 Azure 安全中心功能来处理安全事件。"
+description: "本文档旨在帮助你使用 Azure 安全中心功能来处理安全事件。"
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: yurid
 ms.openlocfilehash: a302f8cb2555eef469a24da2523fdd9b97cc5730
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>处理 Azure 安全中心的安全事件
-会审和调查安全警报可能会非常耗时，即使对于技术高超的安全分析员也是如此，并且很多人不知道从何处开始。 通过使用[分析](security-center-detection-capabilities.md)连接之间不同的信息[安全警报](security-center-managing-and-responding-alerts.md)，安全中心可让你的攻击营销活动及其所有相关的警报的单一视图 – 您可以快速了解攻击者执行哪些操作和影响了哪些资源。
+会审和调查安全警报可能会非常耗时，即使对于技术高超的安全分析员也是如此，并且很多人不知道从何处开始。 通过使用[分析](security-center-detection-capabilities.md)来连接不同的[安全警报](security-center-managing-and-responding-alerts.md)之间的信息，安全中心可以提供攻击活动及其所有相关警报的单一视图，让你快速了解攻击者所采取的操作以及哪些资源受到了影响。
 
-本文档讨论了如何在安全中心中使用安全警报功能，以帮助你处理安全事件。
+本文档介绍如何在安全中心使用安全警报功能，帮助你处理安全事件。
 
 ## <a name="what-is-a-security-incident"></a>什么是安全事件？
 在安全中心，安全事件是对资源的所有警报汇总，与 [网络攻击链](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) 模式保持一致。 事件显示在 [安全警报](security-center-managing-and-responding-alerts.md) 磁贴和边栏选项卡中。 事件会显示相关警报列表，可使你获取有关每个匹配项的详细信息。

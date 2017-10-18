@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 07/17/2017
 ms.author: piyushjo
 ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>适用于 Objective C 中 iOS 应用的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -75,7 +75,7 @@ ms.lasthandoff: 08/03/2017
               [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
               [...]
         }
-9. `setTestLogEnabled`是一个可选的语句，从而可为你确定问题的 SDK 日志。
+9. `setTestLogEnabled` 是一个可选语句，可启用使你能够确定问题的 SDK 日志。
 
 ## <a id="monitor"></a>启用实时监视
 为了开始发送数据并确保用户处于活动状态，必须将至少一个屏幕（活动）发送到 Mobile Engagement 后端。

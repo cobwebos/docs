@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: piyushjo
 ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-swift"></a>适用于 Swift 中 iOS 应用的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -106,7 +106,7 @@ ms.lasthandoff: 07/11/2017
 ## <a id="monitor"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>启用推送通知和应用内消息传递
+## <a id="integrate-push"></a>启用推送通知和应用内消息传送
 在市场推广活动中，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与 REACH 模块和用户进行交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
 以下各部分介绍如何设置应用以接收推送通知。
 

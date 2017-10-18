@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 ms.openlocfilehash: 808fc10ef1ebb3288facbdf2e9e817b27d4fc6bc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>通过 Azure 通知中心向 Android 发送推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="configure-a-new-notification-hub"></a>配置新通知中心
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6.   在“设置”边栏选项卡中选择“通知服务”，并选择“Google (GCM)”。 输入 API 密钥，然后单击**保存**。
+&emsp;&emsp;6.   在“设置”边栏选项卡中选择“通知服务”，并选择“Google (GCM)”。 输入 API 密钥，然后单击“保存”。
 
 &emsp;&emsp;![Azure 通知中心 - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 07/11/2017
        }
 2. 使用上述步骤，添加另一个名为 `MyInstanceIDService`的新类。 这是我们的实例 ID 侦听器服务实现。
    
-    此类的代码调用 `IntentService` 以在后台 [刷新 GCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) 。
+    此类的代码将调用 `IntentService` 以在后台 [刷新 GCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
    
         import android.content.Intent;
         import android.util.Log;
@@ -243,7 +243,7 @@ ms.lasthandoff: 07/11/2017
         import android.util.Log;
         import android.widget.TextView;
         import android.widget.Toast;
-3. 将以下私有成员添加到类的顶部。 我们使用这些成员来[检查 Google 推荐的 Google Play 服务的可用性](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)。
+3. 将以下私有成员添加到类的顶部。 我们将使用这些成员来 [检查 Google 推荐的 Google Play 服务的可用性](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)。
    
         public static MainActivity mainActivity;
         public static Boolean isVisible = false;    
@@ -629,7 +629,7 @@ ms.lasthandoff: 07/11/2017
       ![测试 Android - 通知][21]
 
 ## <a name="next-steps"></a>后续步骤
-建议下一步学习 [使用通知中心向用户推送通知] 教程。 它显示如何使用标记从 ASP.NET 后端将通知发送到目标特定的用户。
+建议下一步学习 [使用通知中心向用户推送通知] 教程。 它会显示如何使用标记从 ASP.NET 后端将通知发送到目标特定的用户。
 
 如果要按兴趣组划分用户，可以查看 [Use Notification Hubs to send breaking news] （使用通知中心发送最新消息）教程。
 

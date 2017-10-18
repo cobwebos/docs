@@ -15,16 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
+ms.openlocfilehash: e0e79cb3b4c71c5d424f3b46af72fcb8b2f63ead
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: d66dece63d2ba944c8f3828ba68c6202485d47e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Azure IoT 套件预配置解决方案是什么？
 
-Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的常见 IoT 解决方案模式的实现。 你可以使用预配置解决方案实现以下目的：
+Azure IoT 套件预配置解决方案是可以使用订阅部署到 Azure 的常见 IoT 解决方案模式的实现。 可以使用预配置解决方案实现以下目的：
 
 * 将其用作自己的 IoT 解决方案的起点。
 * 了解 IoT 解决方案设计和开发中的常见模式。
@@ -47,8 +46,8 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 * *数据提取*：向云中大规模输入数据。
 * *设备标识*：管理唯一设备标识，并控制对解决方案的设备访问权限。
 * *设备管理*管理设备元数据，并执行设备重新启动和固件升级等操作。
-* 命令和控制：从云中向设备发送消息，使设备采取操作。
-* 规则和操作：解决方案后端使用规则作用于特定的设备到云的数据。
+* *命令和控制*：从云中向设备发送消息，使设备采取操作。
+* *规则和操作*：解决方案后端使用规则作用于特定的设备到云的数据。
 * *预测分析*：解决方案后端对设备到云数据进行分析，由此预测应何时采取特定操作。 例如，分析飞机发动机遥测数据来确定发动机维护何时到期。
 
 ## <a name="remote-monitoring-preconfigured-solution-overview"></a>远程监控预配置解决方案概述
@@ -127,7 +126,7 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 
 ## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>设备标识注册表、设备孪生和 Cosmos DB
 
-每个 IoT 中心都包括存储设备密钥的[设备标识注册表][lnk-identity-registry]。 IoT 中心使用此信息对设备进行身份验证 - 设备必须已注册，并具有有效的密钥，然后才能连接到中心。
+每个 IoT 中心都包括存储设备密钥的[设备标识注册表][lnk-identity-registry]。 IoT 中心使用此信息对设备进行身份验证 - 设备必须已注册，并具有有效的密钥，才能连接到中心。
 
 [设备孪生][lnk-device-twin]是由 IoT 中心管理的 JSON 文档。 设备的设备孪生包含：
 
@@ -143,7 +142,7 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 
 ![解决方案门户][img-dashboard]
 
-解决方案门户是基于 Web 的 UI，作为预配置解决方案的一部分部署到云。 通过解决方案门户你可以：
+解决方案门户是基于 Web 的 UI，作为预配置解决方案的一部分部署到云。 通过解决方案门户可以：
 
 * 查看仪表板中的遥测数据和警报历史记录。
 * 设置新设备。
@@ -176,4 +175,3 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
-

@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
 ms.openlocfilehash: f7eff70ece5e8dc7e0c5983871d40bd1f6eafff2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>使用用于 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/29/2017
 5. 在“服务器资源管理器”中，会看到现有 HDInsight 群集的列表。 如果没有任何群集，可以使用 Azure 门户、Azure PowerShell 或 HDInsight SDK 创建一个群集。 有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
    
    ![用于 Visual Studio 的 Data Lake 工具服务器资源管理器群集列表](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.server.explorer.png "用于 Visual Studio 的 Data Lake 工具服务器资源管理器")
-6. 展开 HDInsight 群集。 此时将显示“Hive 数据库”、默认存储帐户、链接的存储帐户，以及“Hadoop 服务日志”。 可以进一步展开条目。
+6. 展开 HDInsight 群集。 此时会显示“Hive 数据库”、默认存储帐户、链接的存储帐户，以及“Hadoop 服务日志”。 可以进一步展开条目。
 
 连接到 Azure 订阅后，可以执行以下操作：
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 08/29/2017
 
 1. 在“服务器资源管理器”中，展开“Azure”，并展开“HDInsight 群集”。
 2. 右键单击要运行查询的群集，并单击“编写 Hive 查询”。
-3. 输入 Hive 查询。 请注意，Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，当键入“SELECT * FROM”时，IntelliSense 将列出所有建议的表名称。 在指定表名称后，IntelliSense 将列出列名称。 该工具几乎支持所有的 Hive DML 语句、子查询和内置 UDF。
+3. 输入 Hive 查询。 请注意，Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，键入“SELECT * FROM”时，IntelliSense 将列出所有建议的表名称。 在指定表名称后，IntelliSense 将列出列名称。 该工具几乎支持所有的 Hive DML 语句、子查询和内置 UDF。
    
     ![Data Lake 工具：HDInsight Visual Studio Tools IntelliSense](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.table.names.png "U-SQL IntelliSense")
    
@@ -161,7 +161,7 @@ ms.lasthandoff: 08/29/2017
 **创建和运行 Hive 解决方案**
 
 1. 在“文件”菜单中，单击“新建”，并单击“项目”。
-2. 从左窗格中选择“HDInsight”，在中间窗格中选择“Hive 应用程序”，输入属性，然后单击“确定”。
+2. 从左窗格中选择“HDInsight”，在中间窗格中选择“Hive 应用程序”，输入属性，并单击“确定”。
    
     ![Data Lake 工具：HDInsight Visual Studio 工具新建 hive 项目](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "从 Visual Studio 创建 Hive 应用程序")
 3. 在“解决方案资源管理器”中，双击“Script.hql”将其打开。
@@ -175,7 +175,7 @@ ms.lasthandoff: 08/29/2017
 **查看 Hive 作业**
 
 1. 在“服务器资源管理器”中，展开“Azure”，并展开“HDInsight”。
-2. 右键单击 HDInsight 群集，并单击“查看作业”。 你将会看到群集上运行的 Hive 作业的列表。
+2. 右键单击 HDInsight 群集，并单击“查看作业”。 会看到群集上运行的 Hive 作业的列表。
 3. 单击作业列表中的作业以将其选定，然后使用“Hive 作业摘要”窗口以打开“作业查询”、“作业输出”、“作业日志”或“Yarn 日志”。
    
     ![Data Lake 工具：HDInsight Visual Studio 工具查看 Hive 作业](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "查看 Hive 作业")
@@ -210,16 +210,16 @@ Data Lake 工具用于通过 [WebHCat](https://cwiki.apache.org/confluence/displ
 | 关闭窗口 |通过 HiveServer2 执行是一种“同步”方式，因此必须保持窗口打开状态；如果窗口关闭，会取消执行查询。 |通过 WebHCat 提交是一种“异步”方式，因此可以通过 WebHCat 提交查询，然后关闭 Visual Studio。 随时可以回来查看结果。 |
 
 ### <a name="tez-hive-job-performance-graph"></a>Tez Hive 作业性能图
-Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业的性能图。 有关启用 Tez 的信息，请参阅[使用 HDInsight 中的 Hive](hdinsight-use-hive.md)。 提交 Visual Studio 中的 Hive 作业后，Visual Studio 将在作业完成时显示图形。  可能需要单击“刷新”按钮来获取最新的作业状态。
+Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业的性能图。 有关启用 Tez 的信息，请参阅[使用 HDInsight 中的 Hive](hdinsight-use-hive.md)。 提交 Visual Studio 中的 Hive 作业后，Visual Studio 会在作业完成时显示图形。  可能需要单击“刷新”按钮来获取最新的作业状态。
 
 > [!NOTE]
-> 此功能仅适用于高于 3.2.4.593 版的 HDInsight 群集，并且只能用于已完成的作业（如果你通过 WebHCat 提交作业，将在通过 HiveServer2 执行查询时显示此图形）。 它适用于基于 Windows 和 Linux 的群集。
+> 此功能仅适用于高于 3.2.4.593 版的 HDInsight 群集，并且只能用于已完成的作业（如果通过 WebHCat 提交作业，会在通过 HiveServer2 执行查询时显示此图形）。 它适用于基于 Windows 和 Linux 的群集。
 > 
 > 
 
 ![hadoop hive tez 性能图](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png "作业状态")
 
-为了帮助用户更好地了解 Hive 查询，该工具在此版中添加了“Hive 运算符”视图。 只需双击作业图的相应顶点，即可查看顶点中的所有运算符。 也可将鼠标悬停在特定运算符上方，以查看该运算符的更多详细信息。
+为了帮助你更好地了解 Hive 查询，该工具在此版中添加了“Hive 运算符”视图。 只需双击作业图的相应顶点，即可查看顶点中的所有运算符。 也可将鼠标悬停在特定运算符上方，以查看该运算符的更多详细信息。
 
 ### <a name="task-execution-view-for-hive-on-tez-jobs"></a>适用于 Tez 上的 Hive 作业的任务执行视图
 适用于 Tez 上的 Hive 作业的任务执行视图可用于获取结构化和可视化 Hive 作业的信息，以及获取更多作业详细信息。 出现性能问题时，可以使用此视图来获取更多详细信息。 例如，获取每个任务的运行方式和有关每个任务的详细信息（数据读取/写入、计划/开始时间/结束时间等），以便根据可视化信息优化作业配置或系统体系结构。

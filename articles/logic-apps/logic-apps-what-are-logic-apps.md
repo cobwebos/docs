@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/23/2017
 ms.author: klam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 64af585f81d39daaa5373d7cf080404ee5f1b037
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 59d35852d6c703f3c96089a8bf426b57660441a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-logic-apps"></a>什么是逻辑应用？
 逻辑应用提供了用于在云中简化并实现可缩放的集成和工作流的方式。 它提供了可视化设计器，用于为流程建模并将流程作为一系列步骤（称为工作流）自动执行。  云中和本地有 [多个连接器](../connectors/apis-list.md) 可跨服务和协议快速集成。  逻辑应用以触发器开头（例如，“当将帐户添加到 Dynamics CRM 时”），在触发之后许多组合操作、转换和条件逻辑才能开始。
@@ -50,7 +49,7 @@ ms.lasthandoff: 06/28/2017
 
 此外，还可以使用[企业集成帐户][biztalk]借助 [XML 消息处理][xml]、[贸易合作伙伴管理][tpm]等功能扩展为成熟的集成方案。
 
-* **易于使用的设计工具** - 可以在浏览器中或使用 Visual Studio 工具端到端地设计逻辑应用。 从设计触发器开始 - 从一个简单的计划到创建 GitHub 问题时。 然后使用丰富的连接器库安排任意数量的操作。
+* **易于使用的设计工具** - 可以在浏览器中或使用 Visual Studio 工具端到端地设计逻辑应用。 从设计触发器开始 - 从一个简单的计划到创建 GitHub 问题时。 然后使用内容丰富的连接器库协调任意数目的操作。
 * **轻松连接 API** - 甚至可以实现易于描述但很难用代码实现的组合任务。 使用逻辑应用可以轻松连接不同的系统。 想要将云营销解决方案连接到本地计费系统？ 想要使用企业服务总线跨 API 和系统集中消息传送？ 逻辑应用是为这些问题提供解决方案的最快捷、最可靠的方法。
 * **从模板快速入门** - 为帮助用户入门，我们提供了[模板库][templates]，使用户能够快速创建一些常见的解决方案。 提供的模板从高级 B2B 解决方案到简单的 SaaS 连接，甚至有几个模板只是为了“增添些乐趣”- 模板库是开始使用逻辑应用的强大功能的最快捷方法。
 * **内嵌的可扩展性** - 看不到所需的连接器？ 逻辑应用旨在让用户使用自己的 API 和代码；用户可以轻松创建自己的 API 应用以用作自定义连接器，或者调用 [Azure 函数](https://functions.azure.com) 按需执行代码段。 
@@ -78,4 +77,3 @@ ms.lasthandoff: 06/28/2017
 [tpm]: logic-apps-enterprise-integration-accounts.md
 [xml]: logic-apps-enterprise-integration-b2b.md
 [templates]: logic-apps-use-logic-app-templates.md
-

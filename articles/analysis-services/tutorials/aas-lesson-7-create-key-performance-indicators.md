@@ -13,25 +13,24 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: d78808421dd5acd907aa9e9000bb3b770a42c061
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 9671136eea4e390a7763404e402cf94f1d351cac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-7-create-key-performance-indicators"></a>第 7 课：创建关键绩效指标
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-在本课中，你将创建关键绩效指标 (KPI)。 KPI 用于衡量由基本度量值定义的某个值的绩效（与同样由度量值或绝对值定义的目标值进行对比）。 在报告客户端应用程序中，KPI 可以为业务专业人员提供一种快速简单的方法来了解业务成功摘要情况或查明趋势。 若要了解详细信息，请参阅 [KPI](https://docs.microsoft.com/sql/analysis-services/tabular-models/kpis-ssas-tabular)
+在本课中，将创建关键绩效指标 (KPI)。 KPI 用于衡量由基本度量值定义的某个值的绩效（与同样由度量值或绝对值定义的目标值进行对比）。 在报告客户端应用程序中，KPI 可以为业务专业人员提供一种快速简单的方法来了解业务成功摘要情况或查明趋势。 若要了解详细信息，请参阅 [KPI](https://docs.microsoft.com/sql/analysis-services/tabular-models/kpis-ssas-tabular)
   
 本课预计完成时间：**15 分钟**  
   
 ## <a name="prerequisites"></a>先决条件  
-本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，你应当已完成上一课：[第 6 课：创建度量值](../tutorials/aas-lesson-6-create-measures.md)。   
+本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 6 课：创建度量值](../tutorials/aas-lesson-6-create-measures.md)。   
   
 ## <a name="create-key-performance-indicators"></a>创建关键绩效指标  
   
@@ -49,11 +48,11 @@ ms.lasthandoff: 06/03/2017
 
     此度量值用作 KPI 的基本度量值。  
   
-4.  右键单击“InternetCurrentQuarterSalesPerformance”，然后单击“创建 KPI”。 >    
+4.  在度量值网格中，右键单击“InternetCurrentQuarterSalesPerformance” > “创建 KPI”。   
   
-5.  在“关键绩效指标 (KPI)”对话框中，在“目标”中选择“绝对值”，然后键入“1.1”。  
+5.  在“关键绩效指标 (KPI)”对话框中，在“目标”中选择“绝对值”，并键入“1.1”。  
   
-7.  在左侧的（下限）滑块字段中，键入“1”，然后在右侧的（上限）滑块字段中键入“1.07”。  
+7.  在左侧的（下限）滑块字段中，键入“1”，并在右侧的（上限）滑块字段中键入“1.07”。  
   
 8.  在“选择图标样式”中，选择菱形（红色）、三角形（黄色）、圆形（绿色）图标类型。
   
@@ -76,16 +75,15 @@ ms.lasthandoff: 06/03/2017
     InternetCurrentQuarterMarginPerformance :=IF([InternetPreviousQuarterMarginProportionToQTD]<>0,([InternetCurrentQuarterMargin]-[InternetPreviousQuarterMarginProportionToQTD])/[InternetPreviousQuarterMarginProportionToQTD],BLANK())  
     ```
  
-3.  右键单击“InternetCurrentQuarterMarginPerformance”，然后单击“创建 KPI”。 >   
+3.  右键单击“InternetCurrentQuarterMarginPerformance”，并单击“创建 KPI”。 >   
   
-4.  在“关键绩效指标 (KPI)”对话框中，在“目标”中选择“绝对值”，然后键入“1.25”。   
+4.  在“关键绩效指标 (KPI)”对话框中，在“目标”中选择“绝对值”，并键入“1.25”。   
   
-5.  在左侧的（下限）滑块字段中，滑动至此字段显示“0.8”，然后滑动右侧的（上限）滑块字段，直至此字段显示“1.03”。  
+5.  在左侧的（下限）滑块字段中，滑动至此字段显示“0.8”，并滑动右侧的（上限）滑块字段，直至此字段显示“1.03”。  
   
-6.  在“选择图标样式”中，选择菱形（红色）、三角形（黄色）、圆形（绿色）图标类型，然后单击“确定”。  
+6.  在“选择图标样式”中，选择菱形（红色）、三角形（黄色）、圆形（绿色）图标类型，并单击“确定”。  
   
 ## <a name="whats-next"></a>后续步骤
 [第 8 课：创建透视](../tutorials/aas-lesson-8-create-perspectives.md)。
   
   
-

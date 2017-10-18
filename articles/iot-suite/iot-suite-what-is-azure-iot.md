@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: 320190488bb4c7b8192421f9dd50a5264f558584
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
@@ -28,7 +28,7 @@ Microsoft Azure IoT 套件是企业级解决方案，让用户能够通过一组
 
 预配置的解决方案是可以正常工作的完整端到端解决方案，其中包括：
 
-- 帮助入门的模拟设备。
+- 可帮助你入门的模拟设备。
 - 预配置的 Azure 服务，例如 [Azure IoT 中心][Azure IoT Hub]、[Azure 事件中心][Azure Event Hubs]、[Azure 流分析][Azure Stream Analytics]、[Azure 机器学习][Azure Machine Learning]和 [Azure 存储][Azure storage]。
 - 解决方案特定的管理控制台。
 

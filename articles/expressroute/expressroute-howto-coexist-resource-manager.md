@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: charwen,cherylmc
 ms.openlocfilehash: b29147a37f9a90fc80e16b350ac9b91daac1d7f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>设置 ExpressRoute 和站点到站点并存连接
 > [!div class="op_single_selector"]
@@ -64,19 +64,19 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="selecting-the-steps-to-use"></a>选择要使用的步骤
-有两组不同的过程可供选择。 选择的配置过程取决于是要连接到现有虚拟网络，还是要创建新的虚拟网络。
+有两组不同的过程可供选择。 选择的配置过程将取决于有要连接到的现有虚拟网络，还是要创建新的虚拟网络。
 
 * 我没有 VNet，需要创建一个。
   
-    如果没有虚拟网络，此过程将指导你使用 Resource Manager 部署模型创建新的虚拟网络，然后创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置虚拟网络，请遵循[创建新的虚拟网络和并存连接](#new)中的步骤。
+    如果还没有虚拟网络，此过程指导使用 Resource Manager 部署模型创建新的虚拟网络，然后创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置虚拟网络，请遵循[创建新的虚拟网络和并存连接](#new)中的步骤。
 * 我已有一个 Resource Manager 部署模型 VNet。
   
-    可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 [为现有的 VNet 配置并存连接](#add)部分将指导你删除网关，然后创建新的 ExpressRoute 连接和站点到站点 VPN 连接。 在创建新连接时，必须按照特定的顺序完成步骤。 不要按照其他文章中的说明来创建网关和连接。
+    可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 [为现有的 VNet 配置并存连接](#add) 部分指导删除网关，然后创建新的 ExpressRoute 连接和站点到站点 VPN 连接。 在创建新连接时，必须按照特定的顺序完成步骤。 不要按照其他文章中的说明来创建网关和连接。
   
-    在此过程中，创建可以共存的连接需要你删除网关，然后配置新网关。 在删除并重新创建网关和连接时，跨界连接将会停止工作，但你无需将任何 VM 或服务迁移到新的虚拟网络。 在配置网关时，如果进行了相应配置，VM 和服务仍可以通过负载均衡器与外界通信。
+    在此过程中，创建可以共存的连接需要删除网关，并配置新网关。 在删除并重新创建网关和连接时，跨界连接会停止工作，但你无需将任何 VM 或服务迁移到新的虚拟网络。 在配置网关时，如果进行了相应配置，VM 和服务仍可以通过负载均衡器与外界通信。
 
 ## <a name="new"></a>创建新的虚拟网络和并存连接
-本过程将指导你创建 VNet 以及将共存的站点到站点连接和 ExpressRoute 连接。
+本过程指导创建 VNet 以及将共存的站点到站点连接和 ExpressRoute 连接。
 
 1. 安装最新版本的 Azure PowerShell cmdlet。 有关安装 cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。
 2. 登录帐户并设置环境。
@@ -207,7 +207,7 @@ ms.lasthandoff: 07/11/2017
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. 此时，你拥有不带网关的 VNet。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可以在前一组步骤中找到）。
+5. 此时，拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可以在前一组步骤中找到）。
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>将点到站点配置添加到 VPN 网关
 可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。

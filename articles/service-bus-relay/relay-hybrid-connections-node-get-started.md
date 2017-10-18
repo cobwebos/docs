@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
 ms.openlocfilehash: c3bfc45969f250059988129f532edd12dfe3dcfe
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>中继混合连接入门
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="what-will-be-accomplished"></a>将要完成的任务
 
-由于混合连接要求客户端和服务器组件，我们会在本教程中创建两个控制台应用程序。 下面是相关步骤：
+由于混合连接要求客户端和服务器组件，我们将在本教程中创建两个控制台应用程序。 下面是相关步骤：
 
 1. 使用 Azure 门户创建中继命名空间。
 2. 使用 Azure 门户创建混合连接。

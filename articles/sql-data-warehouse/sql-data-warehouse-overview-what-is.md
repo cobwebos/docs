@@ -16,10 +16,10 @@ ms.custom: overview
 ms.date: 2/28/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 575c49f83c8845edcea984459f3907490c62d269
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>什么是 Azure SQL 数据仓库？
 Azure SQL 数据仓库是一种可进行大型并发处理 (MPP) 的基于云的向外扩展关系数据库，可以处理大量数据。 
@@ -53,8 +53,7 @@ SQL 数据仓库是一种大规模并行处理 (MPP) 分布式数据库系统。
 
 **计算节点：**计算节点将充当 SQL 数据仓库背后的强大功能。 它们是用于存储数据并处理查询的 SQL 数据库。 添加数据时，SQL 数据仓库向计算节点分配行。 计算节点是对数据运行并行查询的工作节点。 在处理后，它们将结果传递回控制节点。 若要完成查询，控制节点聚合结果并返回最终结果。
 
-
-            **存储：**数据存储在 Azure Blob 存储中。 当计算节点与数据进行交互时，它们直接将数据写入到 blob 存储中并直接从 blob 存储读取数据。 由于 Azure 存储可以透明和大幅地进行扩展，因此 SQL 数据仓库也可以这样做。 由于计算与存储是独立的，因此 SQL 数据仓库可自动将缩放存储与缩放计算分开进行，反之亦然。 Azure Blob 存储还可以完全容错，并简化了备份和还原过程。
+**存储：**数据存储在 Azure Blob 存储中。 当计算节点与数据进行交互时，它们直接将数据写入到 blob 存储中并直接从 blob 存储读取数据。 由于 Azure 存储可以透明和大幅地进行扩展，因此 SQL 数据仓库也可以这样做。 由于计算与存储是独立的，因此 SQL 数据仓库可自动将缩放存储与缩放计算分开进行，反之亦然。 Azure Blob 存储还可以完全容错，并简化了备份和还原过程。
 
 **数据移动服务：** 数据移动服务 (DMS) 可在节点之间移动数据。 DMS 向计算节点提供访问进行联接和聚合所需数据的权限。 DMS 不是一项 Azure 服务。 它是在所有节点上与 SQL 数据库一起运行的 Windows 服务。 DMS 是一个后台进程，不能直接与之交互。 但是，用户可以通过查看查询计划来了解 DMS 操作的发生时间，因为在并行运行每个查询时数据移动是必需的。
 
@@ -105,7 +104,7 @@ SQL 数据仓库还集成了 SQL Server 用户可能会熟悉的许多工具。 
 **第三方工具：**许多第三方工具提供商都已证明其工具能够与 SQL 数据仓库集成。 有关完整列表，请参阅 [SQL 数据仓库解决方案合作伙伴][SQL Data Warehouse solution partners]。
 
 ## <a name="hybrid-data-sources-scenarios"></a>混合数据源方案
-Polybase 可让你使用熟悉的 T-SQL 命令利用不同源中的数据。 Polybase 使你可以像查询普通表一样查询 Azure Blob 存储中的非关系数据。 使用 Polybase 可以查询非关系数据，或者将非关系数据导入 SQL 数据仓库。
+Polybase 可让你使用熟悉的 T-SQL 命令来利用不同源中的数据。 Polybase 使你可以像查询普通表一样查询 Azure Blob 存储中的非关系数据。 使用 Polybase 可以查询非关系数据，或者将非关系数据导入 SQL 数据仓库。
 
 * PolyBase 使用外部表访问非关系数据。 表定义存储在 SQL 数据仓库中，可以使用 SQL 和用于访问普通关系数据的工具进行访问。
 * Polybase 并不知道其集成状态。 它为支持的所有源提供相同的特性和功能。 Polybase 可读取各种格式的数据，包括分隔文件或 ORC 文件。

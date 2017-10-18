@@ -12,28 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 09/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: c5971a137d9081be8c5978f481ec42a1f91e5a56
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
-
+ms.openlocfilehash: 431c974401c201a76b6d20de9837e44374716417
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure Data Lake Store 入门（使用 Azure CLI 2.0）
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
-> * [Java SDK](data-lake-store-get-started-java-sdk.md)
-> * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
-> * [Node.js](data-lake-store-manage-use-nodejs.md)
-> * [Python](data-lake-store-get-started-python.md)
 >
->
+> 
 
 了解如何使用 Azure CLI 2.0 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
 
@@ -41,7 +34,7 @@ Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它
 
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本文前，你必须具有：
+在开始阅读本文前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -60,9 +53,9 @@ Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它
     az login
     ```
 
-    你会获得可在下一步使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin，输入代码进行身份验证。 系统会提示你使用凭据登录。
+    将获得要在下一步骤中使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin，输入代码进行身份验证。 系统会提示使用凭据登录。
 
-2. 你登录后，窗口会列出与帐户相关联的所有 Azure 订阅。 通过以下命令来使用特定订阅。
+2. 登录后，窗口会列出与帐户相关联的所有 Azure 订阅。 通过以下命令来使用特定订阅。
    
     ```azurecli
     az account set --subscription <subscription id> 
@@ -164,7 +157,7 @@ az dls fs list --account mydatalakestore --path /mynewfolder
     az dls fs delete --account mydatalakestore --path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-    若要在一个命令中将文件夹 **mynewfolder** 和文件 **vehicle1_09142014_copy.csv** 一起删除，请使用 --recurse 参数
+    要在一个命令中将文件夹 **mynewfolder** 和文件 **vehicle1_09142014_copy.csv** 一起删除，请使用 --recurse 参数
 
     ```azurecli
     az dls fs delete --account mydatalakestore --path /mynewfolder --recurse
@@ -240,11 +233,7 @@ az dls account delete --account mydatalakestore
 出现提示时，输入 **Y** 删除帐户。
 
 ## <a name="next-steps"></a>后续步骤
-
-* [Azure Data Lake Store CLI 2.0 参考](https://docs.microsoft.com/cli/azure/dls)
+* [使用 Azure Data Lake Store 满足大数据要求](data-lake-store-data-scenarios.md) 
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-[azure-command-line-tools]: ../xplat-cli-install.md
-

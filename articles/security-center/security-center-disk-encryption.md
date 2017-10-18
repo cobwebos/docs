@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>加密 Azure 虚拟机
 如果用户的虚拟机未加密，Azure 安全中心会向用户发送警报。 这些警报会显示为“高严重级别”，建议加密这些虚拟机。
@@ -117,7 +117,7 @@ Azure 磁盘加密先决条件脚本会要求用户在启动脚本后提供以�
 
 **$resourceGroupName = <’Virtual_Machine_RG’>**
 
-将 **< Virtual_Machine_RG >** 替换为包含虚拟机的资源组的名称，使用单括号。 然后按**ENTER**。
+将 **< Virtual_Machine_RG >** 替换为包含虚拟机的资源组的名称，使用单括号。 然后按 **ENTER**。
 若要确认是否输入了正确的资源组名称，请在 PowerShell ISE 控制台中输入以下内容：
 
 **$resourceGroupName**
@@ -149,7 +149,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 键入该命令后，按 **ENTER**。
 
-第二种方法是脚本的单击 （PowerShell ISE 的顶部窗格） 中的脚本窗格中，并向下滚动到底部。 突出显示上面列出的命令，然后右键单击它，然后单击**运行选定内容**或按**F8**键盘上。
+第二种方法是先单击脚本窗格（PowerShell ISE 的顶部窗格），然后向下滚动到脚本底部。 突出显示上面列出的命令，然后右键单击该命令，再单击“运行所选命令”或按键盘上的 **F8**。
 
 ![PowerShell ISE](./media/security-center-disk-encryption/security-center-disk-encryption-fig8.png)
 

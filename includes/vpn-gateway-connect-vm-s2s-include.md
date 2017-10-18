@@ -1,10 +1,10 @@
-你可以连接到 VM 部署到你的 VNet 的创建与你的 VM 的远程桌面连接。 最初验证你可以连接到你的 VM 的最佳方法是使用其专用 IP 地址，而不是计算机名称进行连接。 这样一来，你要测试以查看您是否可以连接，是否名称解析配置不正确。
+可以连接到已部署到 VNet 的 VM，方法是创建到 VM 的远程桌面连接。 若要通过初始验证来确认能否连接到 VM，最好的方式是使用其专用 IP 地址而不是计算机名称进行连接。 这种方式是测试能否进行连接，而不是测试名称解析是否已正确配置。
 
-1. 找到的专用 IP 地址。 可以采用多种方式来找到 VM 的专用 IP 地址。 下面，我们展示的 Azure 门户和 powershell 的步骤。
+1. 定位专用 IP 地址。 可通过多种方式查找 VM 的专用 IP 地址。 下方展示用于 Azure 门户和 PowerShell 的步骤。
 
-  - Azure 门户-在 Azure 门户中找到你的虚拟机。 查看 VM 的属性。 列出专用的 IP 地址。
+  - Azure 门户 - 在 Azure 门户中定位虚拟机。 查看 VM 的属性。 专用 IP 地址已列出。
 
-  - PowerShell-使用此示例以查看 Vm 的专用 IP 列表地址从资源组。 你不必在使用它之前修改此示例。
+  - PowerShell - 通过此示例查看资源组中的 VM 和专用 IP 地址的列表。 在使用此示例之前不需对其进行修改。
 
     ```powershell
     $VMs = Get-AzureRmVM
@@ -19,15 +19,15 @@
     }
     ```
 
-2. 验证你已连接到你的 VNet 使用 VPN 连接。
-3. 打开**远程桌面连接**通过在任务栏上的搜索框中键入"RDP"远程桌面连接"，然后选择远程桌面连接。 你也可以打开在 PowerShell 中使用 mstsc 命令的远程桌面连接。 
-4. 在远程桌面连接中，输入 VM 的专用 IP 地址。 你可以单击"显示选项"以调整其他设置，然后连接。
+2. 验证你是否已使用 VPN 连接连接到 VNet。
+3. 打开**远程桌面连接**，方法是：在任务栏的搜索框中键入“RDP”或“远程桌面连接”，并选择“远程桌面连接”。 也可在 PowerShell 中使用“mstsc”命令打开远程桌面连接。 
+4. 在远程桌面连接中，输入 VM 的专用 IP 地址。 可以通过单击“显示选项”来调整其他设置，并进行连接。
 
-### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>若要解决连接到 VM 的 RDP 连接
+### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>排查到 VM 的 RDP 连接的问题
 
-如果你不能通过你的 VPN 连接连接到虚拟机，检查下列项目：
+如果无法通过 VPN 连接连接到虚拟机，请查看以下项目：
 
-- 验证你的 VPN 连接成功。
-- 验证你为 VM 连接到专用的 IP 地址。
-- 如果你可以连接到虚拟机使用专用的 IP 地址，但不是计算机名称，请验证你已正确配置 DNS。 有关名称解析用于虚拟机的工作原理的详细信息，请参阅[Vm 的名称解析](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
-- 有关 RDP 连接的详细信息，请参阅[解决远程桌面连接到 VM](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)。
+- 验证 VPN 连接是否成功。
+- 验证是否已连接到 VM 的专用 IP 地址。
+- 如果可以使用专用 IP 地址连接到 VM，但不能使用计算机名称进行连接，则请验证是否已正确配置 DNS。 若要详细了解如何对 VM 进行名称解析，请参阅[针对 VM 的名称解析](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
+- 若要详细了解 RDP 连接，请参阅[排查远程桌面连接到 VM 的问题](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)。

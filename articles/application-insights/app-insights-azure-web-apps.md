@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: bwren
+ms.openlocfilehash: dd6c2a1acdcd3b933bed536fd2bb1d83e1e593c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 110a4d26e90f46e823a3e1c9ebece3360fbdf0c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-web-app-performance"></a>监视 Azure Web 应用性能
 在 [Azure 门户](https://portal.azure.com)中，可为 [Azure Web 应用](../app-service/app-service-web-overview.md)设置应用程序性能监视。 [Azure Application Insights](app-insights-overview.md) 将检测应用，将其活动的相关遥测数据发送到 Application Insights 服务，以便在其中存储和分析。 此处的指标图表和搜索工具可用于帮助诊断问题、改善性能以及评估使用情况。
@@ -120,5 +119,4 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 * 每当操作事件发生或指标超过阈值时[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](app-insights-javascript.md)。
 * [设置可用性 Web 测试](app-insights-monitor-web-app-availability.md)，以便在站点关闭时发出警报。
-
 

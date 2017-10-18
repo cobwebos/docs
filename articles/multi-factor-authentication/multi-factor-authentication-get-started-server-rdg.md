@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.openlocfilehash: 3b4181701c5df03a3df7e0446b313eac201ad99e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器
 通常情况下，远程桌面 (RD) 网关使用本地网络策略服务 (NPS) 进行身份验证。 本文介绍如何将来自远程桌面网关（通过本地 NPS）的 RADIUS 请求路由到多重身份验证服务器。 将 Azure MFA 与 RD 网关结合使用意味着，用户可以从任何地方访问其工作环境，同时进行强身份验证。 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 4. 为每个服务器创建共享机密。
 
 ## <a name="configure-nps"></a>配置 NPS
-RD 网关使用 NPS 将 RADIUS 请求发送到 Azure 多重身份验证。 若要配置 NPS，请首先更改超时设置，防止 RD 网关在完成双重验证之前超时。 然后，更新 NPS 从 MFA 服务器接收 RADIUS 身份验证。 使用以下过程可配置 NPS：
+RD 网关使用 NPS 将 RADIUS 请求发送到 Azure 多重身份验证。 若要配置 NPS，请首先更改超时设置，防止 RD 网关在完成双重验证之前超时。 然后对 NPS 进行更新，以便从 MFA 服务器接收 RADIUS 身份验证。 使用以下过程可配置 NPS：
 
 ### <a name="modify-the-timeout-policy"></a>修改超时策略
 

@@ -16,12 +16,11 @@ ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
+ms.openlocfilehash: 30dbd21c6d21aa55c2c7e84c315fba098674ddd8
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 399230584d01986dd0f793a6ff8245ef2b4f8fb1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 07/26/2017
 > [!IMPORTANT]
 > Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 若要了解如何在 Azure AD 管理中心添加 B2B 协作来宾用户，请参阅[什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-默认情况下，添加的用户没有管理员权限，但你随时可以向他们分配角色。
+默认情况下添加的用户没有管理员权限，但随时可以为其分配角色。
 
 ## <a name="add-a-user"></a>添加用户
 1. 使用充当目录全局管理员的帐户登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
@@ -80,4 +79,3 @@ ms.lasthandoff: 07/26/2017
 * [管理 Azure AD](active-directory-administer.md)
 * [在 Azure AD 中管理密码](active-directory-manage-passwords.md)
 * [在 Azure AD 中管理组](active-directory-manage-groups.md)
-

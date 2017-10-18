@@ -16,16 +16,16 @@ ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
 ms.openlocfilehash: c14ac7592efabfec8668d7437463e2d8771ee072
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connectors-list"></a>连接器列表
 > [!TIP]
 > （本主题中的）[A-Z 完整列表](#az)列出了所有可以用在逻辑应用中的连接器。 [连接器详细信息](/connectors/)列出了在 Swagger 中定义的触发器和操作，同时还列出了每个连接器的限制。
 
-在创建逻辑应用时，连接器是不可或缺的一部分。 使用这些连接器，你可以真正展开你的本地和云应用程序来执行不同操作使用你所创建的数据和已有的数据。 提供的连接器有以下类别： 
+在创建逻辑应用时，连接器是不可或缺的一部分。 使用这些连接器可以真正地扩展本地应用程序和云应用程序，对你创建的数据以及已经拥有的数据执行不同的操作。 提供的连接器有以下类别： 
 
 * **标准连接器**：在使用逻辑应用时自动提供。 示例包括服务总线、Power BI、Oracle 数据库、OneDrive 等。
 
@@ -42,13 +42,13 @@ ms.lasthandoff: 08/03/2017
 
 | |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>存储**][AzureBlobStoragedoc] | 如果需要自动完成存储帐户的任务，则应使用此连接器。 支持 CRUD（创建、读取、更新、删除）操作。 | [![API 图标][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | 创建运行 C# 或 node.js 自定义代码片段的函数，并在逻辑应用中使用这些函数。  |
+| [![API 图标][AzureBlobStorageicon]<br/>**Azure Blob<br/>存储**][AzureBlobStoragedoc] | 如果需要自动完成存储帐户的任务，则应使用此连接器。 支持 CRUD（创建、读取、更新、删除）操作。 | [![API 图标][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | 创建运行 C# 或 node.js 自定义代码片段的函数，并在逻辑应用中使用这些函数。  |
 | [![API 图标][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | 最受欢迎的连接器之一。 它包含触发器和操作、有助于自动完成潜在客户的工作流，等等。 | [![API 图标][Event-Hubs-icon]<br/>**事件中心**][event-hubs-doc] | 在事件中心使用和发布事件。 例如，可以通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 |
-| [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | 如果可以从 Internet 访问 FTP 服务器，则可自动完成用于处理文件和文件夹的工作流。 <br/><br/>也可通过 SFTP 连接器来使用 SFTP。 | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | 使用逻辑应用与任何基于 HTTP 的终结点通信。 |
-| [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | 大量的触发器，以及数量更多的操作，便于在工作流中使用 Office 365 电子邮件和事件。 <br/><br/>此连接器包括“审批电子邮件”操作，用于审批休假请求、费用报表等。 <br/><br/>也可通过 Office 365 用户连接器使用 Office 365 用户。| [![API 图标][HTTP-Requesticon]<br/>**请求/响应**][HTTP-Requestdoc] | 此连接器提供 HTTPS URL。 当逻辑应用收到向此 URL 发出的请求时，逻辑应用就会启动。 |
-| [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | 轻松使用 Salesforce 帐户登录，以便访问各种对象，例如潜在客户等。 |  [![API Icon][Service-Busicon]<br/>**服务总线**][Service-Busdoc] | 逻辑应用中最常用的连接器，其包括的触发器和操作适用于异步消息传送，以及队列、订阅和主题的发布/订阅。 |
-|  [![API 图标][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | 如果通过 SharePoint 进行操作，并且可以利用自动化，则建议使用此连接器。 可以与本地 SharePoint 以及 SharePoint Online 配合使用。 | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | 使用次数最多的连接器之一，可以连接到本地 SQL Server 以及 Azure SQL 数据库。 | 
-| [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | 轻松使用 Twitter 帐户登录，并在有新推文发布时启动工作流。 然后，将这些推文保存到 SQL 数据库或 SharePoint 列表。 | | | 
+| [![API 图标][FTPicon]<br/>**FTP**][FTPdoc] | 如果可以从 Internet 访问 FTP 服务器，则可自动完成用于处理文件和文件夹的工作流。 <br/><br/>也可通过 SFTP 连接器来使用 SFTP。 | [![API 图标][HTTPicon]<br/>**HTTP**][httpdoc] | 使用逻辑应用与任何基于 HTTP 的终结点通信。 |
+| [![API 图标][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | 大量的触发器，以及数量更多的操作，便于在工作流中使用 Office 365 电子邮件和事件。 <br/><br/>此连接器包括“审批电子邮件”操作，用于审批休假请求、费用报表等。 <br/><br/>也可通过 Office 365 用户连接器使用 Office 365 用户。| [![API 图标][HTTP-Requesticon]<br/>**请求/响应**][HTTP-Requestdoc] | 此连接器提供 HTTPS URL。 当逻辑应用收到向此 URL 发出的请求时，逻辑应用就会启动。 |
+| [![API 图标][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | 轻松使用 Salesforce 帐户登录，以便访问各种对象，例如潜在客户等。 |  [![API 图标][Service-Busicon]<br/>**服务总线**][Service-Busdoc] | 逻辑应用中最常用的连接器，其包括的触发器和操作适用于异步消息传送，以及队列、订阅和主题的发布/订阅。 |
+|  [![API 图标][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | 如果通过 SharePoint 进行操作，并且可以利用自动化，则建议使用此连接器。 可以与本地 SharePoint 以及 SharePoint Online 配合使用。 | [![API 图标][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | 使用次数最多的连接器之一，可以连接到本地 SQL Server 以及 Azure SQL 数据库。 | 
+| [![API 图标][Twittericon]<br/>**Twitter**][Twitterdoc] | 轻松使用 Twitter 帐户登录，并在有新推文发布时启动工作流。 然后，将这些推文保存到 SQL 数据库或 SharePoint 列表。 | | | 
 
 ## <a name="integration-account-connectors"></a>集成帐户连接器 
 
@@ -56,9 +56,9 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][as2icon]<br/>**AS2</br> 解码**][as2decode] | [![API Icon][as2icon]<br/>**AS2</br> 编码**][as2encode] | [![API Icon][x12icon]<br/>**EDIFACT</br> 解码**][EDIFACTdecode] | [![API Icon][x12icon]<br/>**EDIFACT</br> 编码**][EDIFACTencode] |
-[![API Icon][flatfileicon]<br/>**平面文件</br>编码**][flatfiledoc] | [![API Icon][flatfiledecodeicon]<br/>**平面文件</br>解码**][flatfiledecodedoc] | [![API 图标][integrationaccounticon]<br/>**集成<br/>帐户**][integrationaccountdoc] | [![API 图标][xmltransformicon]<br/>**转换<br/>XML**][xmltransformdoc] |
-| [![API Icon][x12icon]<br/>**X12</br> 解码**][x12decode] | [![API Icon][x12icon]<br/>**X12</br> 解码**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>验证**][xmlvalidatedoc] | |
+| [![API 图标][as2icon]<br/>**AS2</br> 解码**][as2decode] | [![API 图标][as2icon]<br/>**AS2</br> 编码**][as2encode] | [![API 图标][x12icon]<br/>**EDIFACT</br> 解码**][EDIFACTdecode] | [![API 图标][x12icon]<br/>**EDIFACT</br> 编码**][EDIFACTencode] |
+[![API 图标][flatfileicon]<br/>**平面文件</br>编码**][flatfiledoc] | [![API 图标][flatfiledecodeicon]<br/>**平面文件</br>解码**][flatfiledecodedoc] | [![API 图标][integrationaccounticon]<br/>**集成<br/>帐户**][integrationaccountdoc] | [![API 图标][xmltransformicon]<br/>**转换<br/>XML**][xmltransformdoc] |
+| [![API 图标][x12icon]<br/>**X12</br> 解码**][x12decode] | [![API 图标][x12icon]<br/>**X12</br> 编码**][x12encode] | [![API 图标][xmlvalidateicon]<br/>**XML <br/>验证**][xmlvalidatedoc] | |
 
 ## <a name="enterprise-connectors"></a>企业连接器
 
@@ -66,21 +66,21 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 |  |  |
 | --- | --- |
-|[![API 图标][MQicon]<br/>MQ][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API 图标][MQicon]<br/>**MQ**][mqdoc]|[![API 图标][SAPicon]<br/>**SAP**][sapconnector]|
 
 
-## <a name="az"></a>A 到 Z 的完整列表
+## <a name="az"></a>A-Z 完整列表
 
 [连接器详细信息](/connectors/)列出了在 Swagger 中定义的触发器和操作，同时还列出了每个连接器的限制。
 
 | | | | | | | | | | | | | |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [**1**](#1) | [**A**](#a) | [**B**](#b) | [**C**](#c) | [**D**](#d) | [**E**](#e) | [**F**](#f) | [**G**](#g) | [**H**](#h) | [**我**](#i) | [**J**](#j) | [**L**](#l) | [**M**](#m) |
+| [**1**](#1) | [**A**](#a) | [**B**](#b) | [**C**](#c) | [**D**](#d) | [**E**](#e) | [**F**](#f) | [**G**](#g) | [**H**](#h) | [**I**](#i) | [**J**](#j) | [**L**](#l) | [**M**](#m) |
 | [**N**](#n) | [**O**](#o) | [**P**](#p) | [**R**](#r) | [**S**](#s) | [**T**](#t) | [**U**](#u) | [**V**](#v) | [**W**](#w) | [**X**](#x) | [**Y**](#y) | [**Z**](#z) | | 
 
 | | |
 |---|---|
-|<a name="1"></a>10to8 约会日程安排<br/><br/><a name="a"></a>Act ！<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API 管理<br/>Azure 应用服务<br/>Azure 应用程序<br/>Azure 自动化<br/>[Azure Blob 存储][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure 逻辑应用][nested-logic-appdoc]<br/>AzureML<br/>Azure 队列<br/>Azure Resource Manager<br/>[Azure SQL 数据库][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>批处理<br/>Benchmark Email<br/>必应搜索<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito Forms<br/>认知服务计算机视觉 API<br/>认知服务人脸 API<br/>认知服务 LUIS<br/>认知服务文本分析<br/>Common Data Service<br/>内容转换<br/>Control-Terminate<br/>[自定义 API/Web 应用][api/web-appdoc]<br/><br/><a name="d"></a>数据操作<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>轻松 Redmine<br/>EDIFACT<br/>[事件中心][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[文件系统][filesystemdoc]<br/>[平面文件][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>Freshservice<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Calendar<br/>Google Contacts<br/>Google Drive<br/>Google Sheets<br/>Google Tasks<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>收集<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>集成帐户<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>中型<br/>Microsoft Forms<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN 天气<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 用户<br/>Office 365 视频<br/>OneDrive<br/>OneDrive for Business<br/>OneNote（企业）<br/>[Oracle 数据库][oracle-db-doc]<br/>Outlook 客户管理器<br/>Outlook 任务<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[请求/响应][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[计划][recurrencedoc]<br/>范围<br/>SendGrid<br/>将消息发送到批处理<br/>[服务总线][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointserver]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>团队协作项目<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[转换 XML][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>变量<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML 验证][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
+|<a name="1"></a>10to8 约会安排<br/><br/><a name="a"></a>Act!<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API 管理<br/>Azure 应用服务<br/>Azure 应用程序<br/>Azure 自动化<br/>[Azure Blob 存储][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure 逻辑应用][nested-logic-appdoc]<br/>AzureML<br/>Azure 队列<br/>Azure Resource Manager<br/>[Azure SQL 数据库][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>批处理<br/>Benchmark Email<br/>必应搜索<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito Forms<br/>认知服务计算机视觉 API<br/>认知服务人脸 API<br/>认知服务 LUIS<br/>认知服务文本分析<br/>Common Data Service<br/>内容转换<br/>Control-Terminate<br/>[自定义 API/Web 应用][api/web-appdoc]<br/><br/><a name="d"></a>数据操作<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[事件中心][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[文件系统][filesystemdoc]<br/>[平面文件][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>Freshservice<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Calendar<br/>Google Contacts<br/>Google Drive<br/>Google Sheets<br/>Google Tasks<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>集成帐户<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>中型<br/>Microsoft Forms<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN 天气<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 用户<br/>Office 365 视频<br/>OneDrive<br/>OneDrive for Business<br/>OneNote（企业）<br/>[Oracle 数据库][oracle-db-doc]<br/>Outlook 客户管理器<br/>Outlook 任务<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[请求/响应][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[计划][recurrencedoc]<br/>范围<br/>SendGrid<br/>将消息发送到批处理<br/>[服务总线][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointserver]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teamwork Projects<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[转换 XML][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>Variables<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML 验证][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
 
 > [!TIP]
 > 若要在注册 Azure 帐户之前开始使用 Azure 逻辑应用，请转到[试用逻辑应用](https://tryappservice.azure.com/?appservice=logic)。 可立即创建短期的初学者逻辑应用。 不需要使用信用卡，也不需要做出承诺。
@@ -139,73 +139,73 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 <!--Connectors Documentation-->
 
-[api/web-appdoc]: ../logic-apps/logic-apps-custom-hosted-api.md "将逻辑 apps 与 App Service API Apps 集成"
-[azureblobstoragedoc]: ./connectors-create-api-azureblobstorage.md "管理与 Azure blob 存储连接器 blob 容器中的文件"
-[azure-functionsdoc]: ../logic-apps/logic-apps-azure-functions.md "将逻辑 apps 与 Azure 函数集成"
-[db2doc]: ./connectors-create-api-db2.md "连接到在云中或本地的 IBM DB2。更新行、获取表，等等"
-[Dynamics-365doc]: ./connectors-create-api-crmonline.md "连接到 Dynamics CRM Online，因此你可以使用 CRM Online 数据"
+[api/web-appdoc]: ../logic-apps/logic-apps-custom-hosted-api.md "将逻辑应用与应用服务 API 应用集成"
+[azureblobstoragedoc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 存储连接器管理 Blob 容器中的文件"
+[azure-functionsdoc]: ../logic-apps/logic-apps-azure-functions.md "将逻辑应用与 Azure Functions 集成"
+[db2doc]: ./connectors-create-api-db2.md "连接到云中或本地的 IBM DB2。更新行、获取表，等等"
+[Dynamics-365doc]: ./connectors-create-api-crmonline.md "连接到 Dynamics CRM Online，以便使用 CRM Online 数据"
 [event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "连接到 Azure 事件中心。在逻辑应用与事件中心之间接收和发送事件"
 [filesystemdoc]: ../logic-apps/logic-apps-using-file-connector.md "连接到本地文件系统"
-连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上传、获取、删除文件，等等
-[httpdoc]: ./connectors-native-http.md "执行与 HTTP 连接器的 HTTP 调用"
-[http-requestdoc]: ./connectors-native-reqres.md "添加用于 HTTP 请求和响应你的 logic apps 操作"
-[http-swaggerdoc]: ./connectors-native-http-swagger.md "请使用 HTTP + Swagger 的 HTTP 调用连接器"
-[informixdoc]: ./connectors-create-api-informix.md "连接到 Informix 在云中还是在本地。读取行、列出表，等等"
+[ftpdoc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上传、获取、删除文件，等等"
+[httpdoc]: ./connectors-native-http.md "通过 HTTP 连接器进行 HTTP 调用"
+[http-requestdoc]: ./connectors-native-reqres.md "向逻辑应用添加 HTTP 请求和响应的操作"
+[http-swaggerdoc]: ./connectors-native-http-swagger.md "通过 HTTP + Swagger 连接器进行 HTTP 调用"
+[informixdoc]: ./connectors-create-api-informix.md "连接到云中或本地的 Informix。读取行、列出表，等等"
 [nested-logic-appdoc]: ../logic-apps/logic-apps-http-endpoint.md "将逻辑应用与嵌套工作流集成"
 [office365-outlookdoc]: ./connectors-create-api-office365-outlook.md "连接到 Office 365 帐户。发送和接收电子邮件、管理日历和联系人，等等"
-[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库来添加、 插入、 删除行和详细信息"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库以添加、插入和删除行以及执行其他操作"
 [mqdoc]: ./connectors-create-api-mq.md "连接到 MQ 本地或 Azure，并发送和接收消息"
-[recurrencedoc]:  ./connectors-native-recurrence.md "触发对于 logic apps 的重复执行操作"
-[salesforcedoc]: ./connectors-create-api-salesforce.md "连接到你的 Salesforce 帐户。管理帐户、潜在客户、商机等"
+[recurrencedoc]:  ./connectors-native-recurrence.md "针对逻辑应用触发重复执行的操作"
+[salesforcedoc]: ./connectors-create-api-salesforce.md "连接到 Salesforce 帐户。管理帐户、潜在客户、商机等"
 [sapconnector]: ../logic-apps/logic-apps-using-sap-connector.md "连接到本地 SAP 系统"
-[service-busdoc]: ./connectors-create-api-servicebus.md "从 Service Bus 队列和主题发送消息和从 Service Bus 队列和订阅接收消息"
+[service-busdoc]: ./connectors-create-api-servicebus.md "从服务总线队列和主题发送消息，并从服务总线队列和订阅接收消息"
 [sharepointdoc]: ./connectors-create-api-sharepointonline.md "连接到 SharePoint Online。管理文档、列出项，等等"
-[sharepointserver]: ./connectors-create-api-sharepointserver.md "连接到 SharePoint 服务器上的本地。管理文档、列出项，等等"
-[sql-serverdoc]: ./connectors-create-api-sqlazure.md "连接到 Azure SQL 数据库或 SQL server。在 SQL 数据库表中创建、更新、获取和删除条目。"
+[sharepointserver]: ./connectors-create-api-sharepointserver.md "连接到 SharePoint 本地服务器。管理文档、列出项，等等"
+[sql-serverdoc]: ./connectors-create-api-sqlazure.md "连接到 Azure SQL 数据库或 SQL Server。在 SQL 数据库表中创建、更新、获取和删除条目。"
 [twitterdoc]: ./connectors-create-api-twitter.md "连接到 Twitter。获取时间线、发布推文，等等"
-[webhookdoc]: ./connectors-native-webhook.md "将 Webhook 操作和触发器添加到你的 logic apps"
+[webhookdoc]: ./connectors-native-webhook.md "向逻辑应用添加 Webhook 操作和触发器"
 
-[as2doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "了解有关企业集成 AS2。"
-[x12doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "了解有关企业集成 X12"
+[as2doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "了解企业集成 AS2。"
+[x12doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "了解企业集成 X12"
 [flatfiledoc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "了解企业集成平面文件。"
 [flatfiledecodedoc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "了解企业集成平面文件。"
-[xmlvalidatedoc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "了解有关企业集成 XML 验证。"
-[xmltransformdoc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "了解有关企业集成转换。"
-[as2decode]: ../logic-apps/logic-apps-enterprise-integration-as2-decode.md "了解有关 AS2 解码的企业集成"
-[as2encode]:../logic-apps/logic-apps-enterprise-integration-as2-encode.md "了解有关企业集成 AS2 编码"
-[X12decode]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "了解有关企业集成 X12 解码"
-[X12encode]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "了解有关企业集成 X12 编码"
-[EDIFACTdecode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "了解有关 EDIFACT 解码的企业集成"
-[EDIFACTencode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "了解有关企业集成 EDIFACT 编码"
-[integrationaccountdoc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "查找架构、 地图、 合作伙伴和集成帐户中的详细信息"
+[xmlvalidatedoc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "了解企业集成 XML 验证。"
+[xmltransformdoc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "了解企业集成转换。"
+[as2decode]: ../logic-apps/logic-apps-enterprise-integration-as2-decode.md "了解企业集成 AS2 解码"
+[as2encode]:../logic-apps/logic-apps-enterprise-integration-as2-encode.md "了解企业集成 AS2 编码"
+[X12decode]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "了解企业集成 X12 解码"
+[X12encode]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "了解企业集成 X12 编码"
+[EDIFACTdecode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "了解企业集成 EDIFACT 解码"
+[EDIFACTencode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "了解企业集成 EDIFACT 编码"
+[integrationaccountdoc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "在集成帐户中查找架构、映射、合作伙伴等内容"
 
 
-[boxDoc]: ./connectors-create-api-box.md "连接到框中。上传、获取、删除、列出文件，等等"
+[boxDoc]: ./connectors-create-api-box.md "连接到 Box。上传、获取、删除、列出文件，等等"
 [delaydoc]: ./connectors-native-delay.md "执行延迟的操作"
 [dropboxdoc]: ./connectors-create-api-dropbox.md "连接到 Dropbox。上传、获取、删除、列出文件，等等"
 [facebookdoc]: ./connectors-create-api-facebook.md "连接到 Facebook。发布到时间线、获取页面源，等等"
-[githubdoc]: ./connectors-create-api-github.md "连接到 GitHub 和跟踪问题"
-[google-drivedoc]: ./connectors-create-api-googledrive.md "连接到 GoogleDrive，这样你可以使用你的数据"
-[google-sheetsdoc]: ./connectors-create-api-googlesheet.md "连接到 Google 工作表，因此您可以修改可以将表"
-[google-tasksdoc]: ./connectors-create-api-googletasks.md "连接到 Google 任务，以便您可以管理你的任务"
-[google-calendardoc]: ./connectors-create-api-googlecalendar.md "连接到 Google 日历并可以管理日历。"
-[http-responsedoc]: ./connectors-native-reqres.md "添加用于 HTTP 请求和响应你的 logic apps 操作"
+[githubdoc]: ./connectors-create-api-github.md "连接到 GitHub，对问题进行跟踪"
+[google-drivedoc]: ./connectors-create-api-googledrive.md "连接到 GoogleDrive，以便使用数据"
+[google-sheetsdoc]: ./connectors-create-api-googlesheet.md "连接到 Google Sheets，以便修改表"
+[google-tasksdoc]: ./connectors-create-api-googletasks.md "连接到 Google Tasks，以便管理任务"
+[google-calendardoc]: ./connectors-create-api-googlecalendar.md "连接到 Google Calendar 即可管理日历。"
+[http-responsedoc]: ./connectors-native-reqres.md "向逻辑应用添加 HTTP 请求和响应的操作"
 [instagramdoc]: ./connectors-create-api-instagram.md "连接到 Instagram。触发事件或针对事件进行操作"
-[mailchimpdoc]: ./connectors-create-api-mailchimp.md "连接到你的 MailChimp 帐户。管理邮件和自动执行邮件操作"
-[mandrilldoc]: ./connectors-create-api-mandrill.md "连接到 Mandrill 的通信"
+[mailchimpdoc]: ./connectors-create-api-mailchimp.md "连接到 MailChimp 帐户。管理邮件和自动执行邮件操作"
+[mandrilldoc]: ./connectors-create-api-mandrill.md "连接到 Mandrill 进行通信"
 [microsoft-translatordoc]: ./connectors-create-api-microsofttranslator.md "连接到 Microsoft Translator。翻译文字、检测语言，等等" 
 [office365-usersdoc]: ./connectors-create-api-office365-users.md 
-[office365-videodoc]: ./connectors-create-api-office365-video.md "获取 Office 365 视频的视频信息、 视频列表和通道和播放 Url"
+[office365-videodoc]: ./connectors-create-api-office365-video.md "获取视频信息、视频列表和频道，以及 Office 365 视频的播放 URL"
 [onedrivedoc]: ./connectors-create-api-onedrive.md "连接到个人 Microsoft OneDrive。上传、删除、列出文件，等等"
-[onedrive-for-businessdoc]: ./connectors-create-api-onedriveforbusiness.md "连接到你的业务 Microsoft OneDrive。上传、删除、列出文件，等等"
+[onedrive-for-businessdoc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Microsoft OneDrive。上传、删除、列出文件，等等"
 [outlook.comdoc]: ./connectors-create-api-outlook.md "连接到 Outlook 邮箱。管理电子邮件、日历、联系人等"
 [project-onlinedoc]: ./connectors-create-api-projectonline.md "连接到 Microsoft Project Online。管理项目、任务、资源等"
-[querydoc]: ./connectors-native-query.md "选择和筛选的查询操作的阵列"
-[rssdoc]: ./connectors-create-api-rss.md "发布和检索源的项，触发器操作的新项时发布到 RSS 源。"
+[querydoc]: ./connectors-native-query.md "通过查询操作选择和筛选数组"
+[rssdoc]: ./connectors-create-api-rss.md "发布和检索源项，在新项发布到 RSS 源时触发操作。"
 [sendgriddoc]: ./connectors-create-api-sendgrid.md "连接到 SendGrid。发送电子邮件和管理收件人列表"
 [sftpdoc]: ./connectors-create-api-sftp.md "连接到 SFTP 帐户。上传、获取、删除文件，等等"
 [slackdoc]: ./connectors-create-api-slack.md "连接到 Slack，并将消息发布到 Slack 通道"
-[smtpdoc]: ./connectors-create-api-smtp.md "连接到 SMTP 服务器和发送带附件的电子邮件"
+[smtpdoc]: ./connectors-create-api-smtp.md "连接到 SMTP 服务器，发送带附件的电子邮件"
 [sparkpostdoc]: ./connectors-create-api-sparkpost.md "连接到 SparkPost 进行通信"
 [trellodoc]: ./connectors-create-api-trello.md "连接到 Trello。管理项目，与任何人一起组织任何事情"
 [twiliodoc]: ./connectors-create-api-twilio.md "连接到 Twilio。发送和获取消息、获取可用号码，管理来电号码，等等"

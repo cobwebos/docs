@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/28/2017
 ms.author: saveenr, yanacai
+ms.openlocfilehash: a48ce209bf3d5b7e5060acf2850144df5418828d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 7bbbb08ff635477a88403a3ae6bd3486d31838ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -111,6 +110,5 @@ OUTPUT @a
 ## <a name="next-steps"></a>后续步骤
 
 * [在自己的工作站上运行 U-SQL 脚本进行测试和调试](data-lake-analytics-data-lake-tools-local-run.md)
-* [Debug C# code in U-SQL jobs（在 U-SQL 作业中调试 C# 代码）](data-lake-analytics-debug-u-sql-jobs.md)
+* [使用 Azure Data Lake Tools for Visual Studio Code 在 U-SQL 作业中调试 C# 代码](data-lake-tools-for-vscode-local-run-and-debug.md)
 * [使用用于 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)
-
