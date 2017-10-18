@@ -3,7 +3,7 @@ title: "Azure 自动化中基于角色的访问控制 | Microsoft Docs"
 description: "基于角色的访问控制 (RBAC) 可用于对 Azure 资源进行访问管理。 本文介绍如何设置 Azure 自动化中的 RBAC。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "自动化 rbac, 基于角色的访问控制, azure rbac"
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 09/30/2016
 ms.author: magoedte;sngun
+ms.openlocfilehash: 946d80d40ac0566db72c787f260f2d4faff01e6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 ## <a name="role-based-access-control"></a>基于角色的访问控制
@@ -42,7 +41,7 @@ ms.lasthandoff: 12/08/2016
 > 
 > 
 
-在本文中，我们指导在 Azure 自动化中设置 RBAC。 不过，首先让我们仔细地看一下授予参与者、读者、自动化操作员和用户访问管理员的各个权限，以便我们在授予任何人对自动化帐户的权限之前更好地理解这些权限。  否则，它可能导致意外或不良后果。     
+本文详细介绍了如何在 Azure 自动化中设置 RBAC。 不过，首先让我们仔细地看一下授予参与者、读者、自动化操作员和用户访问管理员的各个权限，以便我们在授予任何人对自动化帐户的权限之前更好地理解这些权限。  否则，它可能导致意外或不良后果。     
 
 ## <a name="contributor-role-permissions"></a>“参与者”角色权限
 下表列出了可以由自动化中的“参与者”角色执行的特定操作。
@@ -128,8 +127,8 @@ ms.lasthandoff: 12/08/2016
 | 自动化 Webhook |![绿色状态](media/automation-role-based-access-control/green-checkmark.png) | | | |
 
 ## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>使用 Azure 门户为自动化帐户配置 RBAC
-1. 登录到 [Azure 门户](https://portal.azure.com/)，然后从“自动化帐户”边栏选项卡中打开自动化帐户。  
-2. 单击右上角的“访问”控件  。 此时会打开“用户”边栏选项卡，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色。  
+1. 登录到 [Azure 门户](https://portal.azure.com/)，然后从“自动化帐户”页打开自动化帐户。  
+2. 单击右上角的“访问”控件  。 此时会打开“用户”页，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色。  
    
    ![访问按钮](media/automation-role-based-access-control/automation-01-access-button.png)  
 
@@ -139,24 +138,24 @@ ms.lasthandoff: 12/08/2016
 > 
 
 ### <a name="add-a-new-user-and-assign-a-role"></a>添加新用户并分配角色
-1. 在“用户”边栏选项卡中，单击“添加”打开“添加访问权限”边栏选项卡，以便添加用户、组或应用程序并向其分配角色。  
+1. 在“用户”页中，单击“添加”打开“添加访问权限”页，以便添加用户、组或应用程序并向其分配角色。  
    
    ![添加用户](media/automation-role-based-access-control/automation-02-add-user.png)  
 2. 从可用角色列表中选择一个角色。 我们将选择“读者”角色，但可以选择自动化帐户所支持的任何可用的内置角色，或者你所定义的任何自定义角色。  
    
    ![选择角色](media/automation-role-based-access-control/automation-03-select-role.png)  
-3. 单击“添加用户”打开“添加用户”边栏选项卡。 如果已经添加过管理订阅的用户、组或应用程序，系统会列出这些用户，可以选择他们来添加访问权限。 如果未列出任何用户或者想要添加的用户未列出，则单击“邀请”打开“邀请来宾”边栏选项卡，可在其中邀请具有有效 Microsoft 帐户电子邮件地址（如 Outlook.com、OneDrive 或 Xbox Live Id）的用户。 输入用户的电子邮件地址以后，请单击“选择”以添加用户，并单击“确定”。 
+3. 单击“添加用户”打开“添加用户”页。 如果已经添加过管理订阅的用户、组或应用程序，系统会列出这些用户，可以选择他们来添加访问权限。 如果未列出任何用户或者想要添加的用户未列出，则单击“邀请”打开“邀请来宾”页，可在其中邀请具有有效 Microsoft 帐户电子邮件地址（如 Outlook.com、OneDrive 或 Xbox Live Id）的用户。 输入用户的电子邮件地址以后，请单击“选择”以添加用户，并单击“确定”。 
    
    ![添加用户](media/automation-role-based-access-control/automation-04-add-users.png)  
    
-   现在，会看到添加到“用户”边栏选项卡且被分配了“读者”角色的用户。  
+   现在，会看到添加到“用户”页且被分配了“读者”角色的用户。  
    
    ![列出用户](media/automation-role-based-access-control/automation-05-list-users.png)  
    
-   也可以通过“角色”边栏选项卡向用户分配角色。 
-4. 单击“用户”边栏选项卡中的“角色”打开“角色”边栏选项卡。 在该边栏选项卡中，可以查看角色的名称以及分配给该角色的用户和组的数目。
+   也可以通过“角色”页向用户分配角色。 
+4. 单击“用户”页中的“角色”打开“角色”页。 在这里，可以查看角色的名称以及分配给该角色的用户和组的数目。
    
-    ![从用户边栏选项卡分配角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
+    ![从用户页分配角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
    
    > [!NOTE]
    > 基于角色的访问控制只能在自动帐户级别设置，不能在自动帐户下的任何资源上设置。
@@ -170,8 +169,8 @@ ms.lasthandoff: 12/08/2016
 ### <a name="remove-a-user"></a>删除用户
 可以删除不管理自动化帐户或不再为组织工作的用户的访问权限。 下面是删除用户的步骤： 
 
-1. 在“用户”边栏选项卡中，选择要删除的角色分配  。
-2. 单击“分配详细信息”边栏选项卡中的“删除”按钮  。
+1. 在“用户”页中，选择要删除的角色分配。
+2. 单击“分配详细信息”页中的“删除”按钮。
 3. 单击“是”以确认删除  。 
    
    ![删除用户](media/automation-role-based-access-control/automation-08-remove-users.png)  
@@ -182,7 +181,7 @@ ms.lasthandoff: 12/08/2016
 ![默认目录](media/automation-role-based-access-control/automation-09-default-directory-in-role-assigned-user.png)  
 
 ### <a name="user-experience-for-automation-operator-role"></a>自动化操作员角色的用户体验
-已分配“自动化操作员”角色的用户在查看被分配到的自动化帐户时，只能查看在自动化帐户中创建的 Runbook、Runbook 作业和计划的列表，而不能查看其定义。 该用户可以启动、停止、暂停、恢复或计划 Runbook 作业。 该用户将无法访问其他自动化资源，例如配置、混合辅助角色组或 DSC 节点。  
+已分配“自动化操作员”角色的用户在查看被分配到的自动化帐户时，只能查看在自动化帐户中创建的 Runbook、Runbook 作业和计划的列表，而不能查看其定义。 该用户可以启动、停止、暂停、恢复或计划 Runbook 作业。 该用户无法访问其他自动化资源，例如配置、混合辅助角色组或 DSC 节点。  
 
 ![不能访问资源](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)  
 
@@ -190,7 +189,7 @@ ms.lasthandoff: 12/08/2016
 
 ![无权编辑 runbook](media/automation-role-based-access-control/automation-11-no-access-to-edit-runbook.png)  
 
-用户将具有查看和创建计划的访问权限，但没有任何其他资产类型的访问权限。  
+用户具有查看和创建计划的访问权限，但没有任何其他资产类型的访问权限。  
 
 ![不能访问资产](media/automation-role-based-access-control/automation-12-no-access-to-assets.png)  
 
@@ -230,5 +229,4 @@ ms.lasthandoff: 12/08/2016
 * 有关为 Azure 自动化配置 RBAC 的不同方式的信息，请参阅 [使用 Azure PowerShell 管理 RBAC](../active-directory/role-based-access-control-manage-access-powershell.md)。
 * 有关以不同方式启动 Runbook 的详细信息，请参阅 [启动 Runbook](automation-starting-a-runbook.md)
 * 有关不同 Runbook 类型的信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)
-
 

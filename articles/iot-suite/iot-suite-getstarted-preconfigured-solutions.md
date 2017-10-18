@@ -16,15 +16,14 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: 466825ab78a5ac9773d8beff69cca90ff9db6c01
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-preconfigured-solutions"></a>预配置的解决方案入门
 
-Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，提供可实现常见 IoT 商业应用场景的端到端解决方案。 
-            *远程监视*预配置解决方案会连接并监视设备。 可以利用该解决方案分析设备发出的数据流，并通过让流程自动响应该数据流提升业务绩效。
+Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，提供可实现常见 IoT 商业应用场景的端到端解决方案。 *远程监视* 预配置解决方案会连接并监视设备。 可以利用该解决方案分析设备发出的数据流，并通过让流程自动响应该数据流提升业务绩效。
 
 本教程演示如何预配远程监视预配置解决方案。 此外还将逐步讲解预配置解决方案的基本功能。 可以通过随预配置解决方案一起部署的解决方案*仪表板* 来访问其中的多项功能：
 
@@ -103,7 +102,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 若只需显示那些发送意外温度值的设备，可使用筛选器。 远程监视预配置解决方案包含一个“不正常设备”筛选器，用于显示平均温度值超过 60 的设备。 用户还可以[创建自己的筛选器](#add-a-filter)。
 
-1. 选择“打开保存的筛选器”以显示可用筛选器的列表。 Then choose <bpt id="p1">**</bpt>Unhealthy devices<ept id="p1">**</ept> to apply the filter:
+1. 选择“打开保存的筛选器”以显示可用筛选器的列表。 然后选择“不正常设备”应用该筛选器：
 
     ![显示筛选器列表][img-unhealthy-filter]
 
@@ -142,7 +141,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 此固件版本可能是温度值不正常的根本原因，因为已确定其他正常设备最近更新到了 2.0 版。 用户可以使用内置的“旧固件设备”筛选器确定固件版本过旧的设备， 然后在门户中远程更新仍运行旧版固件的所有设备：
 
-1. 选择“打开保存的筛选器”以显示可用筛选器的列表。 Then choose <bpt id="p1">**</bpt>Old firmware devices<ept id="p1">**</ept> to apply the filter:
+1. 选择“打开保存的筛选器”以显示可用筛选器的列表。 然后选择“旧固件设备”应用该筛选器：
 
     ![显示筛选器列表][img-old-filter]
 
@@ -176,7 +175,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 ## <a name="scenario-review"></a>方案审核
 
-在此方案中，用户使用仪表板上的警报历史记录和筛选器确定了某些远程设备的一个潜在问题， 然后使用筛选器和作业对设备进行了远程配置，使其能够提供有助于诊断问题的详细信息。 最后，用户通过筛选器和作业在受影响设备上对维护进行了计划。 如果返回到仪表板，则可查看是否不再有任何警报来自解决方案中的设备。 可以使用筛选器来验证固件在解决方案中的所有设备上是否为最新，以及是否不再有不正常设备：
+在此方案中，用户使用仪表板上的警报历史记录和筛选器确定了某些远程设备的一个潜在问题， 然后通过筛选器和作业对设备进行了远程配置，使之能够提供有助于诊断问题的详细信息。 最后，用户通过筛选器和作业在受影响设备上对维护进行了计划。 如果返回到仪表板，则可查看是否不再有任何警报来自解决方案中的设备。 可以使用筛选器来验证固件在解决方案中的所有设备上是否为最新，以及是否不再有不正常设备：
 
 ![显示所有设备的固件均为最新的筛选器][img-updated]
 
@@ -267,11 +266,11 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
     ![添加设备规则][img-adddevicerule2]
 
-1. 从命令列表中选择“ChangeSetPointTemp”并将“SetPointTemp”设置为 45。 Then choose <bpt id="p1">**</bpt>Send Command<ept id="p1">**</ept>:
+1. 从命令列表中选择“ChangeSetPointTemp”并将“SetPointTemp”设置为 45。 然后选择“发送命令”：
 
     ![添加设备规则][img-adddevicerule3]
 
-1. 导航回仪表板。 片刻之后，当新设备报告的温度超过 47 度阙值时，“警报历史记录”  窗格中会显示新条目：
+1. 导航回仪表板。 一小段时间之后，会在新设备所报告的温度超过 47 度阈值时，在“警报历史记录”窗格中看到新的条目：
 
     ![添加设备规则][img-adddevicerule4]
 

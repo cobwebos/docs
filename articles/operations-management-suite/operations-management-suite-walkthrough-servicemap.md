@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: bwren
 ms.openlocfilehash: c3548d24c74f8ad865b22d6af3490d0b5cc77a84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operations-management-suite-oms-self-paced-demo---service-map"></a>Operations Management Suite (OMS) 自控进度型演示 - 服务映射
-本文为自控进度型演示，介绍了如何在 Operations Management Suite (OMS) 中使用[服务映射解决方案](operations-management-suite-service-map.md)来确定和诊断 Web 应用程序中的模拟问题。  服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。  它还合并数据收集由其他 OMS 服务以帮助你分析性能并确定问题。  还将使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)深入分析收集的数据，以便确定根本问题。
+本文为自控进度型演示，介绍了如何在 Operations Management Suite (OMS) 中使用[服务映射解决方案](operations-management-suite-service-map.md)来确定和诊断 Web 应用程序中的模拟问题。  服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。  它还整合其他 OMS 服务收集的数据，协助你分析性能并确定问题。  还将使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)深入分析收集的数据，以便确定根本问题。
 
 
 ## <a name="scenario-description"></a>方案描述
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
 
 ![“服务映射”磁贴](media/operations-management-suite-walkthrough-servicemap/tile.png)
 
-此时会显示服务映射控制台。  在左窗格中是安装了服务映射代理环境中的计算机的列表。  请从该列表中选择要查看的计算机。
+此时会显示服务映射控制台。  左窗格中是你环境中安装了服务映射代理的计算机的列表。  请从该列表中选择要查看的计算机。
 
 ![计算机列表](media/operations-management-suite-walkthrough-servicemap/computer-list.png)
 
@@ -74,13 +74,13 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="6-view-performance"></a>6.查看性能
 
-让我们细看一下 **acmetomcat**。  单击 **acmetomcat** 右上角，选择“加载服务器映射”，以便显示此计算机的详细信息和依赖项。 我们然后可以查看这些性能计数器来验证我们怀疑到更多。  选择“性能”选项卡，显示相应时间范围内 [Log Analytics 收集的性能计数器](../log-analytics/log-analytics-data-sources-performance-counters.md)。  可以看到，处理器和内存定期出现峰值。
+让我们细看一下 **acmetomcat**。  单击 **acmetomcat** 右上角，选择“加载服务器映射”，以便显示此计算机的详细信息和依赖项。 然后，我们可以更详细地查看这些性能计数器，验证我们的怀疑。  选择“性能”选项卡，显示相应时间范围内 [Log Analytics 收集的性能计数器](../log-analytics/log-analytics-data-sources-performance-counters.md)。  可以看到，处理器和内存定期出现峰值。
 
 ![性能](./media/operations-management-suite-walkthrough-servicemap/performance.png)
 
 
 ### <a name="7-view-change-tracking"></a>7.查看更改跟踪
-让我们看看，能否找出导致使用率如此之高的原因。  单击“摘要”选项卡。  该选项卡提供 OMS 从计算机收集的信息，例如失败的连接、严重警报、软件更改。  包含最新相关信息的部分应已展开，可以展开其他部分，检查其所包含的信息。
+让我们看看，能否找出导致使用率如此之高的原因。  单击“摘要”选项卡。该选项卡提供 OMS 从计算机收集的信息，例如失败的连接、严重警报、软件更改。  包含最新相关信息的部分应已展开，可以展开其他部分，检查其所包含的信息。
 
 
 如果“更改跟踪”尚未打开，则请将其展开。  此时会显示[更改跟踪解决方案](../log-analytics/log-analytics-change-tracking.md)收集的信息。  看起来在此时间窗口进行了软件更改。  单击“软件”获取详细信息。  凌晨 4:00 刚过时，计算机上添加了一个备份进程，看起来这就是资源过度使用的原因。
@@ -90,13 +90,13 @@ ms.lasthandoff: 07/11/2017
 
 
 ### <a name="8-view-details-in-log-search"></a>8.在日志搜索中查看详细信息
-我们可以查看 Log Analytics 存储库中收集的详细性能信息，进一步对此进行验证。  单击**警报**试选项卡，然后在其中一个**高 CPU**警报。  单击“在日志搜索中显示”。  此时会打开“日志搜索”窗口，可以在其中针对存储库中存储的任何数据执行[日志搜索](../log-analytics/log-analytics-log-searches.md)。  服务映射中已经填充了一个查询，供我们检索感兴趣的警报。  
+我们可以查看 Log Analytics 存储库中收集的详细性能信息，进一步对此进行验证。  再次单击“警报”选项卡，然后单击某个“CPU 过高”警报。  单击“在日志搜索中显示”。  此时会打开“日志搜索”窗口，可以在其中针对存储库中存储的任何数据执行[日志搜索](../log-analytics/log-analytics-log-searches.md)。  服务映射中已经填充了一个查询，供我们检索感兴趣的警报。  
 
 ![日志搜索](./media/operations-management-suite-walkthrough-servicemap/log-search.png)
 
 
 ### <a name="9-open-saved-search"></a>9.打开保存的搜索
-让我们看看，能否获取性能收集方面的更多详细信息（正是此方面的异常生成了该警报），并验证我们的怀疑，即问题是由该备份进程导致的。  将时间范围更改为“6 小时”。  然后单击**收藏夹**和向下的滚动到已保存搜索**服务映射**。  这些是我们专为此分析创建的查询。  单击“acmetomcat 的前 5 个进程(按 CPU)”。
+让我们看看，能否获取性能收集方面的更多详细信息（正是此方面的异常生成了该警报），并验证我们的怀疑，即问题是由该备份进程导致的。  将时间范围更改为“6 小时”。  然后单击“收藏夹”，向下滚动到针对“服务映射”保存的搜索。  这些是我们专为此分析创建的查询。  单击“acmetomcat 的前 5 个进程(按 CPU)”。
 
 ![保存的搜索](./media/operations-management-suite-walkthrough-servicemap/saved-search.png)
 
@@ -107,9 +107,8 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="summary-points"></a>要点
-- 
-            [服务映射](operations-management-suite-service-map.md)提供整个应用程序的视图，即使你不知道其所有服务器和依赖项。
-- 服务映射呈现数据收集由其他 OMS 解决方案来帮助你确定与你的应用程序和其底层基础结构问题。
+- [服务映射](operations-management-suite-service-map.md)提供整个应用程序的视图，即使你不知道其所有服务器和依赖项。
+- 服务映射可呈现其他 OMS 解决方案收集的数据，帮助你确定应用程序及其底层基础结构存在的问题。
 - [日志搜索](../log-analytics/log-analytics-log-searches.md)用于深入分析 Log Analytics 存储库中收集的具体数据。    
 
 ## <a name="next-steps"></a>后续步骤
