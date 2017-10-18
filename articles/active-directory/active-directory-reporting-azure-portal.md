@@ -16,10 +16,10 @@ ms.date: 07/13/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory 报告
 
@@ -44,9 +44,9 @@ ms.lasthandoff: 08/03/2017
 Azure Active Directory 中的安全报表有助于保护组织的标识。  
 Azure Active Directory 中有两种类型的安全报表：
 
-- **用户标记为进行风险**-从[用户标记为进行风险安全报告](active-directory-reporting-security-user-at-risk.md)，获取已泄露的用户帐户的概述。
+- 标记为存在风险的用户 - 可以通过[标记为存在风险的用户的安全报表](active-directory-reporting-security-user-at-risk.md)大致了解可能已遭到入侵的用户帐户。
 
-- **危险登录**-使用[危险登录安全报告](active-directory-reporting-security-risky-sign-ins.md)，指示器获取可能的人不是用户帐户的合法所有者执行的登录尝试。 
+- 风险登录 - 可以通过[风险登录安全报表](active-directory-reporting-security-risky-sign-ins.md)了解可能由非用户帐户合法拥有者进行的登录尝试。 
 
 访问安全报表需要什么 Azure AD 许可证？  
 所有版本的 Azure Active Directory 都提供标记为存在风险的用户的报表和风险登录报表。  
@@ -54,18 +54,18 @@ Azure Active Directory 中有两种类型的安全报表：
 
 - 在“Azure Active Directory 免费版和基本版”中，你已经获得了一个列表，其中包含标记为存在风险的用户和风险登录。 
 
-- **Azure Active Directory 高级 1**版本，还使您能够检查每个报表未检测到的基础的风险事件的某些扩展此模型。 
+- Azure Active Directory Premium 1 版本还允许你检查每个报表中检测到的部分潜在性风险事件，从而扩展了该模型。 
 
-- **Azure Active Directory 高级版 2**版本为您提供有关基础的风险事件的最详细信息，还使您可以配置自动响应所配置的风险级别的安全策略。
+- Azure Active Directory Premium 2 版本提供有关潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
 
 
 ## <a name="activity-reports"></a>活动报表
 
 Azure Active Directory 中有两种类型的活动报表：
 
-- **审核日志**-[审核日志活动报告](active-directory-reporting-activity-audit-logs.md)提供你有权访问在你的租户中执行的每项任务的历史记录。
+- 审核日志 - 可以通过[审核日志活动报表](active-directory-reporting-activity-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 
-- **登录**-使用[登录活动报告](active-directory-reporting-activity-sign-ins.md)，你可以确定谁具有执行报告的审核日志报告的任务。
+- 登录 -  可以通过[登录活动报表](active-directory-reporting-activity-sign-ins.md)来确定谁执行了审核日志报表所报告的任务。
 
 
 
@@ -99,7 +99,7 @@ Azure Active Directory 中有两种类型的活动报表：
 
 ## <a name="programmatic-access"></a>以编程方式访问
 
-除了用户界面，Azure Active Directory 报告还允许[以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)报告数据。 对于你的应用程序（如 SIEM 系统、审核）和商业智能工具，这些报告的数据可能非常有用。 Azure AD 报告 API 通过一组基于 REST 的 API，可提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。 
+除了用户界面，Azure Active Directory 报告还允许[以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)报告数据。 对于应用程序（如 SIEM 系统、审核）和商业智能工具，这些报告的数据可能非常有用。 Azure AD 报告 API 通过一组基于 REST 的 API，可提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。 
 
 
 ## <a name="next-steps"></a>后续步骤

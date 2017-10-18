@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 10/03/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 956c7a4fb91c1b1a45e24128e92d6a6b1213eeb2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store 概述
 Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 使用 Azure Data Lake 可以在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析。
@@ -30,7 +28,7 @@ Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于�
 > 
 > 
 
-使用与 WebHDFS 兼容的 REST API，可以从 Hadoop（HDInsight 群集提供）访问 Azure Data Lake Store。 该服务专为存储数据分析而设计，并已针对数据分析方案优化了性能。 它现成地包含了现实企业用例不可或缺的所有企业级功能：安全性、可管理性、可缩放性、可靠性和可用性。
+使用与 WebHDFS 兼容的 REST API，可以从 Hadoop（HDInsight 群集提供）访问 Azure Data Lake Store。 该服务专为存储数据分析而设计，并已针对数据分析方案优化了性能。 它现成地包含了现实企业用例不可或缺的所有企业级功能：安全性、可管理性、伸缩性、可靠性和可用性。
 
 ![Azure Data Lake](./media/data-lake-store-overview/data-lake-store-concept.png)
 
@@ -62,9 +60,9 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证，使用�
 
 | 功能 | 说明 |
 | --- | --- |
-| 身份验证 |Azure Data Lake Store 与 Azure Active Directory (AAD) 集成，可对 Azure Data Lake Store 中存储的所有数据进行标识与访问管理。 因为这种集成，Azure Data Lake 可受益于所有 AAD 功能，包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报等。Azure Data Lake Store 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 |
+| 身份验证 |Azure Data Lake Store 与 Azure Active Directory (AAD) 集成，可对 Azure Data Lake Store 中存储的所有数据进行标识与访问管理。 因为这种集成，Azure Data Lake 可受益于所有 AAD 功能，包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报等。Azure Data Lake Store 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 请参阅 [Data Lake Store 身份验证](data-lakes-store-authentication-using-azure-active-directory.md)|
 | 访问控制 |Azure Data Lake Store 通过支持 WebHDFS 协议公开的 POSIX 样式权限来提供访问控制。 在 Data Lake Store 公共预览版中（当前发行版），在根文件夹、子文件夹和个人文件上启用 ACL。 有关 ACL 在 Data Lake Store 上下文中的工作原理的详细信息，请参阅 [Data Lake Store 中的访问控制](data-lake-store-access-control.md)。 |
-| 加密 |Data Lake Store 还针对帐户中存储的数据提供加密。 创建 Data Lake Store 帐户时可以指定加密设置。 可以选择加密或不加密数据。 有关如何提供加密相关配置的详细信息，请参阅[通过 Azure 门户开始使用 Azure Data Lake Store](data-lake-store-get-started-portal.md)。 |
+| 加密 |Data Lake Store 还针对帐户中存储的数据提供加密。 创建 Data Lake Store 帐户时可以指定加密设置。 可以选择加密或不加密数据。 有关详细信息，请参阅 [Data Lake Store 中的加密](data-lake-store-encryption.md)。 有关如何提供加密相关配置的说明，请参阅 [Azure Data Lake Store 入门（使用 Azure 门户）](data-lake-store-get-started-portal.md)。 |
 
 如果想要详细了解如何在 Data Lake Store 中保护数据， 请访问以下链接。
 
@@ -84,7 +82,7 @@ Azure Data Lake Store 与 Hadoop 生态系统中的大多数开源组件兼容�
 可以使用 `adl://<data_lake_store_name>.azuredatalakestore.net`访问 Data Lake Store 中的数据。 有关如何访问 Data Lake Store 中的数据的详细信息，请参阅 [View properties of the stored data](data-lake-store-get-started-portal.md#properties)
 
 ## <a name="how-do-i-start-using-azure-data-lake-store"></a>如何开始使用 Azure Data Lake Store？
-请参阅 [Get Started with Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md)（通过 Azure 门户开始使用 Data Lake Store），了解如何使用 Azure 门户预配 Data Lake Store。 预配 Azure Data Lake Store 后，即可知道如何配合 Data Lake Store 使用大数据产品，例如 Azure Data Lake Analytics 或 Azure HDInsight。 还可以创建 .NET 应用程序来建立 Azure Data Lake Store 帐户，以及执行数据上载、数据下载等操作。
+请参阅 [Get Started with Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md)（通过 Azure 门户开始使用 Data Lake Store），了解如何使用 Azure 门户预配 Data Lake Store。 预配 Azure Data Lake Store 后，即可知道如何配合 Data Lake Store 使用大数据产品，例如 Azure Data Lake Analytics 或 Azure HDInsight。 还可以创建 .NET 应用程序来建立 Azure Data Lake Store 帐户，以及执行数据上传、数据下载等操作。
 
 * [Get Started with Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
@@ -103,5 +101,4 @@ Azure Data Lake Store 与 Hadoop 生态系统中的大多数开源组件兼容�
 * [Use Apache Sqoop to move data between relational sources and Azure Data Lake Store](https://mix.office.com/watch/1butcdjxmu114)
 * [Data Orchestration using Azure Data Factory for Azure Data Lake Store](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Securing Data in the Azure Data Lake Store](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
 

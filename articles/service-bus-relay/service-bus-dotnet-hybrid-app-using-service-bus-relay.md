@@ -14,20 +14,18 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 366922a083b9d18ef50e04eb8b459d2725315e1e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
-
+ms.openlocfilehash: d15c30dad9fb4bbe9082d6a3c72cd20ed42bbc3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
 ## <a name="introduction"></a>介绍
 
-本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 本教程假定你之前未使用过 Azure。 在不到 30 分钟的时间内，你就能让使用多个 Azure 资源的应用程序在云中启动并运行。
+本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 本教程假定你之前未使用过 Azure。 在不到 30 分钟的时间内，就能让使用多个 Azure 资源的应用程序在云中启动并运行。
 
-你将学习以下内容：
+将学习以下内容：
 
 * 如何创建或修改现有 Web 服务以供 Web 解决方案使用。
 * 如何使用 Azure WCF 中继服务在 Azure 应用程序和托管于其他某处的 Web 服务之间共享数据。
@@ -43,11 +41,11 @@ ms.lasthandoff: 06/16/2017
 [Azure 中继](https://azure.microsoft.com/services/service-bus/)的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。 虽然此类中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的中继服务。 Azure 中继还会通过使用[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 身份验证来保护这些服务，以阻止未经授权的访问。
 
 ## <a name="solution-scenario"></a>解决方案应用场景
-在本教程中，你将创建一个 ASP.NET 网站，用于查看产品库存页上的产品列表。
+在本教程中，将创建一个 ASP.NET 网站，用于查看产品库存页上的产品列表。
 
 ![][0]
 
-本教程假定你的产品信息位于现有的本地系统中，而且你使用 Azure 中继来访问该系统。 这是由在简单的控制台应用程序中运行的 Web 服务模拟的，并由一系列内存中产品提供支持。 你将能够在你自己的计算机上运行此控制台应用程序并将 Web 角色部署到 Azure 中。 通过此操作，你将看到在 Azure 数据中心运行的 Web 角色确实会调入你的计算机，即使你的计算机几乎肯定会驻留在至少一个防火墙和一个网络地址转换 (NAT) 层后面，情况也是如此。
+本教程假定产品信息位于现有的本地系统中，而且你使用 Azure 中继来访问该系统。 这是由在简单的控制台应用程序中运行的 Web 服务模拟的，并由一系列内存中产品提供支持。 将能够在自己的计算机上运行此控制台应用程序并将 Web 角色部署到 Azure 中。 通过此操作，会看到在 Azure 数据中心运行的 Web 角色确实会调入计算机，即使计算机几乎肯定会驻留在至少一个防火墙和一个网络地址转换 (NAT) 层后面，情况也是如此。
 
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 
@@ -55,9 +53,9 @@ ms.lasthandoff: 06/16/2017
 
 1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
 2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤适用于 Visual Studio 2015，但也适用于 Visual Studio 2017。
-3. 当提示你是要运行还是保存安装程序时，单击“运行” 。
-4. 在“Web 平台安装程序”中，单击“安装”，然后继续安装。
-5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
+3. 当提示是要运行还是保存安装程序时，单击“运行”。
+4. 在“Web 平台安装程序”中，单击“安装”，并继续安装。
+5. 安装完成后，就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
 
 ## <a name="create-a-namespace"></a>创建命名空间
 
@@ -65,28 +63,28 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="create-an-on-premises-server"></a>创建本地服务器
 
-首先，你将构建 (mock) 本地产品目录系统。 这将非常简单；可以认为，此系统代表一个实际存在的本地产品目录系统，其中包含我们将尝试集成的完整服务图面。
+首先，将构建 (mock) 本地产品目录系统。 这会非常简单；可以认为，此系统代表一个实际存在的本地产品目录系统，其中包含我们将尝试集成的完整服务图面。
 
 此项目是一个 Visual Studio 控制台应用程序，它使用 [Azure 服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 来包含服务总线库和配置设置。
 
 ### <a name="create-the-project"></a>创建项目
 
-1. 使用管理员特权启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，然后单击“以管理员身份运行”。
-2. 在 Visual Studio 的“文件”菜单中，单击“新建”，然后单击“项目”。
+1. 使用管理员特权启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并单击“以管理员身份运行”。
+2. 在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
 3. 从“已安装的模板”的“Visual C#”下，单击“控制台应用(.NET Framework)”。 在“名称”框中，键入名称“ProductsServer”：
 
    ![][11]
 4. 单击“确定”以创建“ProductsServer”项目。
-5. 如果你已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击 [安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 按照提示操作以安装 NuGet 包管理器，然后重新启动 Visual Studio。
-6. 在解决方案资源管理器中，右键单击“ProductsServer”项目，然后单击“管理 NuGet 程序包”。
-7. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。 选择“WindowsAzure.ServiceBus”包。
+5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击 [安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 按照提示操作以安装 NuGet 包管理器，并重新启动 Visual Studio。
+6. 在解决方案资源管理器中，右键单击“ProductsServer”项目，并单击“管理 NuGet 程序包”。
+7. 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 选择“WindowsAzure.ServiceBus”包。
 8. 单击“安装” 并接受使用条款。
 
    ![][13]
 
    请注意，现已引用所需的客户端程序集。
-8. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目，单击“添加”，然后单击“类”。
-9. 在“名称”框中，键入名称 **ProductsContract.cs**。 。
+8. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目，单击“添加”，并单击“类”。
+9. 在“名称”框中，键入名称 **ProductsContract.cs**。 然后，单击“添加”。
 10. 在“ProductsContract.cs”中，将命名空间定义替换为以下代码，以定义服务的协定。
 
     ```csharp
@@ -213,13 +211,13 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="create-an-aspnet-application"></a>创建 ASP.NET 应用程序
 
-在本部分中，你将生成一个简单的 ASP.NET 应用程序，以便显示你的产品服务中检索到的数据。
+在本部分中，会生成一个简单的 ASP.NET 应用程序，以便显示产品服务中检索到的数据。
 
 ### <a name="create-the-project"></a>创建项目
 
 1. 确保使用管理员权限运行 Visual Studio。
-2. 在 Visual Studio 的“文件”菜单中，单击“新建”，然后单击“项目”。
-3. 从“已安装的模板”的“Visual C#”下，单击“ASP.NET Web 应用程序(.NET Framework)”。 **ProductsPortal**。 。
+2. 在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
+3. 从“已安装的模板”的“Visual C#”下，单击“ASP.NET Web 应用程序(.NET Framework)”。 **ProductsPortal**。 然后单击“确定”。
 
    ![][15]
 
@@ -232,8 +230,8 @@ ms.lasthandoff: 06/16/2017
     ![][18]
 
 7. 回到“新建 ASP.NET Web 应用程序”对话框，单击“确定”创建 MVC 应用。
-8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service-web/app-service-web-get-started-dotnet.md)的步骤操作。 然后，返回到本教程并继续执行下一步。
-10. 在解决方案资源管理器中，右键单击“模型”，然后依次单击“添加”和“类”。 在“名称”框中，键入名称“Product.cs”。 。
+8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service/app-service-web-get-started-dotnet.md)的步骤操作。 然后，返回到本教程并继续执行下一步。
+10. 在解决方案资源管理器中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“Product.cs”。 然后，单击“添加”。
 
     ![][17]
 
@@ -333,14 +331,14 @@ ms.lasthandoff: 06/16/2017
 下一步是将本地产品服务器与 ASP.NET 应用程序挂钩。
 
 1. 如果尚未打开在 [创建 ASP.NET 应用程序](#create-an-aspnet-application) 一节中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
-2. 采用与“创建本地服务器”部分类似的步骤，将 NuGet 包添加到项目“引用”中。 在解决方案资源管理器中，右键单击“ProductsPortal”项目，然后单击“管理 NuGet 程序包”。
+2. 采用与“创建本地服务器”部分类似的步骤，将 NuGet 包添加到项目“引用”中。 在解决方案资源管理器中，右键单击“ProductsPortal”项目，并单击“管理 NuGet 程序包”。
 3. 搜索“服务总线”，然后选择“WindowsAzure.ServiceBus”项。 然后，完成安装过程并关闭此对话框。
-4. 在解决方案资源管理器中，右键单击“ProductsPortal”项目，然后单击“添加”，再单击“现有项”。
-5. 从 **ProductsServer** 控制台项目导航到 **ProductsContract.cs** 文件。 单击以突出显示 ProductsContract.cs。 单击“添加”旁边的向下箭头，然后单击“添加为链接”。
+4. 在解决方案资源管理器中，右键单击“ProductsPortal”项目，并单击“添加”，再单击“现有项”。
+5. 从 **ProductsServer** 控制台项目导航到 **ProductsContract.cs** 文件。 单击以突出显示 ProductsContract.cs。 单击“添加”旁边的向下箭头，并单击“添加为链接”。
 
    ![][24]
 
-6. 现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码。 确保将 yourServiceNamespace 替换为你的服务命名空间的名称，并将 yourKey 替换为你的 SAS 密钥。 这将使客户端能够调用本地服务，并返回调用的结果。
+6. 现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码。 确保将 yourServiceNamespace 替换为服务命名空间的名称，并将 yourKey 替换为 SAS 密钥。 这会使客户端能够调用本地服务，并返回调用的结果。
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -381,7 +379,7 @@ ms.lasthandoff: 06/16/2017
        }
    }
    ```
-7. 在解决方案资源管理器中，右键单击 **productsportal** 解决方案（确保右键单击解决方案，而不是项目）。 单击“添加”，然后单击“现有项目”。
+7. 在解决方案资源管理器中，右键单击 **productsportal** 解决方案（确保右键单击解决方案，而不是项目）。 单击“添加”，并单击“现有项目”。
 8. 导航到 **ProductsServer** 项目，然后双击“ProductsServer.csproj”解决方案文件以将其添加。
 9. **ProductsServer** 必须正在运行，才能在 **ProductsPortal** 上显示数据。 在解决方案资源管理器中，右键单击“ProductsPortal”解决方案并单击“属性”。 **属性页** ”对话框。
 10. 在左侧，单击“启动项目”。 在右侧，单击“多个启动项目”。 确保 **ProductsServer** 和 **ProductsPortal** 按此顺序显示，并且将“启动”设置为两者的操作。
@@ -394,17 +392,17 @@ ms.lasthandoff: 06/16/2017
 
     ![][26]
 
-14. 单击你正在使用的 Visual Studio 版本的“安装 SDK”  in the **属性页** ”。
+14. 单击你正在使用的 Visual Studio 版本的“安装 SDK”in the **属性页** ”。
 
 ## <a name="run-the-project-locally"></a>在本地运行项目
 
-若要在本地测试应用程序，请在 Visual Studio 中按 **F5**。 本地服务器 (**ProductsServer**) 应该会先启动，然后 **ProductsPortal** 应用程序应该会在浏览器窗口中启动。 这次，你将看到产品库存列出了从产品服务本地系统中检索到的数据。
+若要在本地测试应用程序，请在 Visual Studio 中按 **F5**。 本地服务器 (**ProductsServer**) 应该会先启动，然后 **ProductsPortal** 应用程序应该会在浏览器窗口中启动。 这次，会看到产品库存列出了从产品服务本地系统中检索到的数据。
 
 ![][10]
 
 按“ProductsPortal”页上的“刷新”。 每次刷新该页面时，都会看到服务器应用在调用来自 **ProductsServer** 的 `GetProducts()` 时显示一条消息。
 
-关闭这两个应用程序，然后再继续执行下一步。
+关闭这两个应用程序，再继续执行下一步。
 
 ## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>将 ProductsPortal 项目部署到 Azure Web 应用
 
@@ -413,11 +411,11 @@ ms.lasthandoff: 06/16/2017
 1. 在“解决方案资源管理器”中，右键“ProductsPortal”项目并单击“发布”。 然后，在发布页中单击“发布”。
 
   > [!NOTE]
-  > 在部署后自动启动 **ProductsPortal** Web 项目时，你可能会在浏览器窗口中看到错误消息。 这在意料之中，因为 **ProductsServer** 应用程序尚未运行。
+  > 在部署后自动启动 **ProductsPortal** Web 项目时，可能会在浏览器窗口中看到错误消息。 这在意料之中，因为 **ProductsServer** 应用程序尚未运行。
 >
 >
 
-2. 复制已部署 Web 应用的 URL，因为你在下一个步骤中需要用到该 URL。 你也可以从 Visual Studio 的“Azure 应用服务活动”窗口中获取此 URL：
+2. 复制已部署 Web 应用的 URL，你在下一个步骤中需要用到该 URL。 也可以从 Visual Studio 的“Azure 应用服务活动”窗口中获取此 URL：
 
   ![][9]
 
@@ -429,7 +427,7 @@ ms.lasthandoff: 06/16/2017
 
 1. 在 Visual Studio 中，右键单击“ProductsPortal”项目，然后单击“属性”。
 2. 在左侧列中，单击 **Web**。
-3. 在“启动操作”部分中，单击“启动 URL”按钮，然后在文本框中输入你先前部署的 Web 应用的 URL；例如 `http://productsportal1234567890.azurewebsites.net/`。
+3. 在“启动操作”部分中，单击“启动 URL”按钮，并在文本框中输入先前部署的 Web 应用的 URL；例如 `http://productsportal1234567890.azurewebsites.net/`。
 
     ![][27]
 
@@ -443,7 +441,7 @@ ms.lasthandoff: 06/16/2017
    ![][1]
 
    > [!IMPORTANT]
-   > **ProductsServer** 控制台应用程序必须正在运行，而且能够为 **ProductsPortal** 应用程序提供数据。 如果浏览器显示错误，请再多等几秒钟，让 **ProductsServer** 加载并显示以下消息。 然后按浏览器中的“ **刷新** ”。
+   > **ProductsServer** 控制台应用程序必须正在运行，而且能够为 **ProductsPortal** 应用程序提供数据。 如果浏览器显示错误，请再多等几秒钟，让 **ProductsServer** 加载并显示以下消息。 然后按浏览器中的“刷新”。
    >
    >
 
@@ -483,4 +481,3 @@ ms.lasthandoff: 06/16/2017
 [38]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-service2.png
 [41]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-

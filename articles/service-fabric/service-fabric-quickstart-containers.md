@@ -12,16 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2017
+ms.date: 10/02/2017
 ms.author: ryanwi
+ms.openlocfilehash: bc7bee3caed2eba0a3f49d79241cd8685333ba13
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: c4f8c94e23a165b22533ffd74e04c9a7310f2d22
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>在 Azure 上部署 Service Fabric Windows 容器应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。 
 
@@ -51,7 +49,7 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
 
 从“服务模板”列表中选择“容器”。
 
-在“映像名称”中输入“nanoserver/iis”，即 [Windows Server 2016 Nano Server 和 IIS 基映像](https://hub.docker.com/r/nanoserver/iis/)。 
+在“映像名称”中输入“microsoft/iis:nanoserver”，即 [Windows Server Nano Server 和 IIS 基映像](https://hub.docker.com/r/microsoft/iis/)。 
 
 将服务命名为“MyContainerService”，然后单击“确定”。
 
@@ -68,6 +66,7 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
 ```xml
 <ServiceManifestImport>
 ...
+  <ConfigOverrides />
   <Policies>
     <ContainerHostPolicies CodePackageRef="Code">
       <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
@@ -92,9 +91,9 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
 
 在解决方案资源管理器中右键单击“MyFirstContainer”，选择“发布”。 此时，“发布”对话框显示。
 
-![“发布”对话框](./media/service-fabric-quickstart-dotnet/publish-app.png)
+![发布对话框](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-在“连接终结点”字段中，键入群集的连接终结点，再单击“发布”。 注册合作群集时，浏览器中会提供连接终结点，例如 `winh1x87d1d.westus.cloudapp.azure.com:19000`。
+在“连接终结点”字段中，键入群集的连接终结点。 注册合作群集时，浏览器中会提供连接终结点，例如 `winh1x87d1d.westus.cloudapp.azure.com:19000`。  单击“发布”，应用程序进行部署。
 
 打开浏览器并导航到 http://winh1x87d1d.westus.cloudapp.azure.com:80 。 此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
 
@@ -120,7 +119,7 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
     <EntryPoint>
       <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
       <ContainerHost>
-        <ImageName>nanoserver/iis</ImageName>
+        <ImageName>microsoft/iis:nanoserver</ImageName>
       </ContainerHost>
     </EntryPoint>
     <!-- Pass environment variables to your container: -->
@@ -198,4 +197,3 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png
-

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: sethm
 ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 ## <a name="introduction"></a>介绍
@@ -80,13 +80,13 @@ ms.lasthandoff: 07/11/2017
 1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”程序图标，并单击“以管理员身份运行”。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
    
    在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
-2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 。
+2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 然后单击“确定”。
    
    ![][9]
 3. 在“.NET Framework 4.5”角色中，双击“ASP.NET Web 角色”。
    
    ![][10]
-4. 将鼠标指针停留在“Azure 云服务解决方案”下的“WebRole1”上，单击铅笔图标，并将 Web 角色重命名为“FrontendWebRole”。 。 （请确保输入“Frontend”而不是“FrontEnd”，此处为小写“e”。）
+4. 将鼠标指针停留在“Azure 云服务解决方案”下的“WebRole1”上，单击铅笔图标，并将 Web 角色重命名为“FrontendWebRole”。 然后单击“确定”。 （请确保输入“Frontend”而不是“FrontEnd”，此处为小写“e”。）
    
    ![][11]
 5. 从“新建 ASP.NET 项目”对话框的“选择模板”列表中，单击“MVC”。
@@ -102,7 +102,7 @@ ms.lasthandoff: 07/11/2017
    ![][13]
    
    请注意，现已引用所需的客户端程序集并已添加部分新代码文件。
-10. 在“解决方案资源管理器”中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“OnlineOrder.cs”。 。
+10. 在“解决方案资源管理器”中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“OnlineOrder.cs”。 然后，单击“添加”。
 
 ### <a name="write-the-code-for-your-web-role"></a>为 Web 角色编写代码
 在本部分，将创建应用程序显示的各种页面。
@@ -119,7 +119,7 @@ ms.lasthandoff: 07/11/2017
        }
    }
    ```
-2. 在“解决方案资源管理器”中，双击“Controllers\HomeController.cs”。 添加以下**使用**语句以包括你刚刚创建，以及服务总线的模型的命名空间的文件的顶部。
+2. 在“解决方案资源管理器”中，双击“Controllers\HomeController.cs”。 在文件顶部添加以下 **using** 语句以包括针对你刚创建的模型以及服务总线的命名空间。
    
    ```csharp
    using FrontendWebRole.Models;
@@ -324,9 +324,9 @@ ms.lasthandoff: 07/11/2017
 4. 在“添加新角色项目”对话框中，单击“服务总线队列的辅助角色”。
    
    ![][23]
-5. 在“名称”框中，将项目命名为“OrderProcessingRole”。 。
+5. 在“名称”框中，将项目命名为“OrderProcessingRole”。 然后，单击“添加”。
 6. 将在“创建服务总线命名空间”部分的步骤 9 中获取的连接字符串复制到剪贴板。
-7. 在**解决方案资源管理器**，右键单击**OrderProcessingRole**步骤 5 中创建 (确保右键单击**OrderProcessingRole**下**角色**，而不是类)。 然后单击**属性**。
+7. 在“解决方案资源管理器”中，右键单击在步骤 5 中创建的“OrderProcessingRole”（确保右键单击“角色”下的“OrderProcessingRole”而不是类）。 然后单击“属性”。
 8. 在“属性”对话框的“设置”选项卡中，在“Microsoft.ServiceBus.ConnectionString”的“值”框内单击，并粘贴在步骤 6 中复制的终结点值。
    
    ![][25]
