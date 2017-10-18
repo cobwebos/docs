@@ -1,118 +1,118 @@
 
 
 ## <a name="generate-the-certificate-signing-request-file"></a>生成证书签名请求文件
-Apple 推送通知服务 (APNS) 使用证书进行身份验证的推送通知。 按照这些说明来创建发送和接收通知的所需推送证书。 有关这些概念的详细信息，请参阅官方[Apple 推送通知服务](http://go.microsoft.com/fwlink/p/?LinkId=272584)文档。
+Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。 请遵照这些说明来创建用于发送和接收通知的所需推送证书。 有关这些概念的详细信息，请参阅 [Apple Push Notification 服务](http://go.microsoft.com/fwlink/p/?LinkId=272584) 文档。
 
-生成证书签名请求 (CSR) 文件，Apple 用它来生成一个签名的推送证书。
+生成证书签名请求 (CSR) 文件，Apple 将使用该文件生成签名的推送证书。
 
-1. 在 Mac 上，运行 Keychain Access 工具。 它可以从打开**实用工具**文件夹或**其他**在启动板上的文件夹。
-2. 单击**Keychain Access**，展开**证书助手**，然后单击**从证书颁发机构请求证书...**.
+1. 在 Mac 上，运行 Keychain Access 工具。 可以从启动板上的“Utilities”或“Other”文件夹中打开该工具。
+2. 单击“Keychain Access”，展开“Certificate Assistant”（证书助理），并单击“Request a Certificate from a Certificate Authority...”（从证书颁发机构请求证书...）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
-3. 选择你**用户电子邮件地址**和**公用名**，请确保**已保存到磁盘**已选择，然后单击**继续**。 保留**CA 电子邮件地址**保留空白，因为它不是必需的字段。
+3. 选择“用户电子邮件地址”和“公用名”，确保已选择“保存到磁盘”，并单击“继续”。 将“CA Email Address”（CA 电子邮件地址）字段保留空白，因为它不是必填字段。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
-4. 为中的证书签名请求 (CSR) 文件键入一个名称**另存为**中, 选择一个位置**其中**，然后单击**保存**。
+4. 在“Save As”（另存为）中为证书签名请求 (CSR) 文件键入一个名称，在“Where”（位置）中选择一个位置，并单击“Save”（保存）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
    
-      这将 CSR 文件保存到选定位置;默认位置是桌面。 请记住为此文件选择的位置。
+      此操作会将 CSR 文件保存到选定位置；默认位置是桌面。 请记住为此文件选择的位置。
 
-接下来，你将向 Apple 注册你的应用程序、 启用推送通知，并上载此导出的 CSR 以创建一个推送证书。
+接下来，将要向 Apple 注册应用程序、启用推送通知并上传这个导出的 CSR 以创建一个推送证书。
 
-## <a name="register-your-app-for-push-notifications"></a>你的应用程序注册推送通知
-若要能够将推送通知发送到 iOS 应用程序，必须向 Apple 注册你的应用程序，并还注册推送通知。  
+## <a name="register-your-app-for-push-notifications"></a>为推送通知注册应用程序
+要将推送通知发送到 iOS 应用程序，必须向 Apple 注册应用程序，还要注册推送通知。  
 
-1. 如果尚未注册你的应用程序，导航到<a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 设置门户</a>在 Apple 开发人员中心，使用你的 Apple ID，登录单击**标识符**，然后单击**应用 Id**，最后单击上 **+** 符号以注册新的应用程序。
+1. 如果尚未注册应用程序，请导航到 Apple 开发人员中心的 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 设置门户</a>，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用 ID），最后单击“+”号注册新的应用。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
       
-2. 更新为新应用程序的以下三个字段，然后单击**继续**:
+2. 更新新应用的以下三个字段，并单击“Continue”（继续）： 
    
-   * **名称**： 键入你的应用程序的描述性名称**名称**字段**应用程序 ID 说明**部分。
-   * **捆绑标识符**： 下**显式应用 ID**部分中，输入**捆绑标识符**形式`<Organization Identifier>.<Product Name>`中所述[应用程序分发指南](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)。 *组织标识符*和*产品名称*必须与在创建 XCode 项目时将使用的组织标识符与产品名称匹配。 在下面的屏幕截图*NotificationHubs*用作组织标识符和*GetStarted*用作产品名称。 确保这与将在 XCode 项目中使用的值相匹配，从而将允许你使用 XCode 的正确的发布配置文件。 
-   * **推送通知**： 检查**推送通知**选项**应用程序服务**部分中。
+   * **Name（名称）**：在“App ID Description”（应用 ID 说明）部分的“Name”（名称）字段中为应用键入一个描述性名称。
+   * **Bundle Identifier**（捆绑标识符）：在“Explicit App ID”（显式应用 ID）部分下，使用[应用分发指南](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)中所述的 `<Organization Identifier>.<Product Name>` 格式输入“Bundle Identifier”（捆绑标识符）。 使用的“Organization Identifier”（组织标识符）和“Product Name”（产品名称）必须与自己在创建 XCode 项目时要使用的组织标识符与产品名称匹配。 在下面的屏幕截图中，*NotificationHubs* 用作组织标识符，*GetStarted* 用作产品名称。 如果确保这些信息与要在 XCode 项目中使用的值匹配，则就可以在 XCode 中使用正确的发布配置文件。 
+   * **Push Notifications（推送通知）**：在“App Services”（应用服务）部分选中“Push Notifications”（推送通知）选项。
      
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
      
-      这会生成你的应用程序 ID 并请求你确认信息。 单击**注册**以确认新的应用程序 id。
+      此时会生成应用 ID 并请求你确认信息。 单击“注册”  以确认新的应用 ID。
      
-      单击后**注册**，你将看到**注册完成**屏幕上，如下所示。 单击“完成”。
+      单击“注册”后，会看到如下所示的“注册已完成”屏幕。 单击“Done”（完成） 。
       
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 
-1. 在开发人员中心，在应用 Id 下找到你刚刚创建，并单击其所在行的应用程序 ID。
+1. 在开发人员中心的“App IDs”（应用 ID）下，找到刚刚创建的应用 ID，然后单击其所在行。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
    
-      单击应用程序 id 会显示应用详细信息。 单击**编辑**底部的按钮。
+      单击应用程序 ID 会显示应用程序详细信息。 单击底部的“Edit”（编辑）按钮。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
       
-2. 滚动到屏幕，底部并单击**创建证书...**部分下的按钮**开发推送 SSL 证书**。
+2. 滚动到屏幕底部并单击“Development Push SSL Certificate”（开发推送 SSL 证书 ）部分下的“Create Certificate...”（创建证书...）按钮。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
    
-      此时将显示"添加 iOS 证书"助手。
+      将显示“Add iOS Certificate”（添加 iOS 证书）助手。
    
    > [!NOTE]
-   > 本教程使用开发证书。 注册生产证书时使用相同的过程。 只需确保发送通知时使用相同的证书类型。
+   > 本教程使用开发证书。 注册生产证书时使用相同的过程。 只需确保在发送通知时使用相同的证书类型。
    > 
    > 
-3. 单击**选择文件**，浏览到保存在第一个任务中，创建的 CSR 文件的位置，然后单击**生成**。
+3. 单击“Choose File”（选择文件），浏览到在第一个任务中创建的 CSR 文件保存到的位置，并单击“Generate”（生成）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-cert-choose-csr.png)
-4. 门户创建证书后，单击**下载**按钮，然后单击**完成**。
+4. 门户创建证书之后，请单击“Download”（下载）按钮，并单击“Done”（完成）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
    
-      下载证书并将其保存到计算机上的 Downloads 文件夹。
+      随后将下载证书并将其保存到计算机上的 Downloads 文件夹。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
    
    > [!NOTE]
-   > 默认情况下，下载的文件的开发证书名为**aps_development.cer**。
+   > 默认情况下，下载的文件（开发证书）名为 **aps_development.cer**。
    > 
    > 
-5. 双击下载的推送证书**aps_development.cer**。
+5. 双击下载的推送证书 **aps_development.cer**。
    
-      这将安装新的证书密钥链，如下所示：
+      将在 Keychain 中安装新证书，如下所示：
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
    
    > [!NOTE]
-   > 证书中的名称可能不同，但它将使用作为前缀**Apple Development iOS Push Services:**。
+   > 证书中的名称可能不同，但以 **Apple Development iOS Push Services:**作为前缀。
    > 
    > 
-6. 在 Keychain Access 中，右键单击你在中创建的新推送证书**证书**类别。 单击**导出**，命名该文件，选择**.p12**格式，并依次**保存**。
+6. 在 Keychain Access 中，右键单击在“Certificates”（证书）类别中创建的新推送证书。 单击“导出”，为文件命名，选择“.p12”格式，并单击“保存”。
    
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
    
-    记下文件名称和导出的.p12 证书的位置。 它将用于使用 APNS 启用身份验证。
+    记下导出的 .p12 证书的文件名和位置。 它用于启用 APNS 身份验证。
    
    > [!NOTE]
-   > 本教程将创建 QuickStart.p12 文件。 文件名和位置可能不同。
+   > 本教程会创建 QuickStart.p12 文件。 文件名和位置可能不同。
    > 
    > 
 
-## <a name="create-a-provisioning-profile-for-the-app"></a>创建应用程序的预配配置文件
-1. 返回<a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 设置门户</a>，选择**预配配置文件**，选择**所有**，然后单击 **+** 按钮以创建新的配置文件。 这将启动**添加 iOS 设置配置文件**向导
+## <a name="create-a-provisioning-profile-for-the-app"></a>为应用程序创建配置文件
+1. 返回 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 预配门户</a>，选择“Provisioning Profiles”（预配配置文件），选择“All”（全部），并单击 **+** 按钮创建一个新的配置文件。 此时会启动“Add iOS Provisiong Profile”（添加 iOS 设置配置文件）向导 
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
-2. 选择**iOS 应用程序开发**下**开发**作为设置配置文件类型，然后单击**继续**。 
-3. 接下来，选择刚创建的应用程序 ID**应用程序 ID**下拉列表中，然后单击**继续**
+2. 选择“Development”（开发）下的“iOS App Development”（iOS 应用程序开发）作为设置配置文件类型，并单击“Continue”（继续）。 
+3. 接下来，从“App ID”（应用 ID）下拉列表中选择刚创建的应用 ID，并单击“Continue”（继续）
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
-4. 在**选择证书**屏幕中，选择你经常开发证书用于代码签名，然后单击**继续**。 这不是你刚刚创建的推送证书。
+4. 在“Select certificates”（选择证书）屏幕中，选择经常用于代码签名的开发证书，并单击“Continue”（继续）。 这不是你刚刚创建的推送证书。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
-5. 接下来，选择**设备**用于测试，并单击**继续**
+5. 接下来，选择要用于测试的“Devices”（设备），并单击“Continue”（继续）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
-6. 最后，选择在配置文件的名称**配置文件名称**，单击**生成**。
+6. 最后，在“Profile Name”（配置文件名称）中为配置文件选取一个名称，并单击“Generate”（生成）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
-7. 创建新的预配配置文件时单击以下载它并在你的 Xcode 开发计算机上安装它。 然后单击**完成**。
+7. 创建新的预配配置文件后，请单击下载该文件，并将其安装在 Xcode 开发计算机上。 然后单击“Done”（完成）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)

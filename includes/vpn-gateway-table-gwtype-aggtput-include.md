@@ -1,6 +1,6 @@
 Azure 提供以下 VPN 网关 SKU：
 
-|**SKU**   | S2S/VNet 到 VNet<br>隧道 | P2S<br>连接 | **聚合<br>吞吐量基准** |
+|**SKU**   | S2S/VNet 到 VNet<br>隧道 | P2S<br>连接 | 聚合<br>吞吐量基准 |
 |---       | ---                             | ---                    | ---                         |
 |VpnGw1| 最大 30                         | 最大 128               | 650 Mbps                    |
 |VpnGw2| 最大 30                         | 最大 128               | 1 Gbps                      |

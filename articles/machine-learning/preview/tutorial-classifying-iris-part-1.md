@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/28/2017
+ms.openlocfilehash: 975a86c1f9d9692f6eadd232177f33cbbbeeff2f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: d6463c57bdd33434e9f94cfae3b25bac5f6df739
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="classifying-iris-part-1-prepare-data"></a>鸢尾花分类教程第 1 部分：准备数据
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
@@ -30,11 +28,14 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 为方便起见，本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 屏幕截图与 Windows 相关，但 macOS 上的体验几乎相同。
 
-## <a name="launch-azure-machine-learning-workbench"></a>启动 Azure Machine Learning Workbench
-遵循[安装和创建快速入门](quickstart-installation.md)安装 Azure Machine Learning Workbench 应用程序。 该项安装还包括命令行接口 (CLI)。 启动 Azure Machine Learning Workbench 应用程序，并根据需要登录。
+## <a name="prerequisites"></a>先决条件
+- 创建 Azure 机器学习试验帐户
+- 安装 Azure Machine Learning Workbench
 
-## <a name="create-a-new-project"></a>创建新项目
-1. 在“项目”窗格中，单击 **+** 图标创建**新项目**。
+可以遵循[安装和创建快速入门](quickstart-installation.md)安装 Azure Machine Learning Workbench 应用程序。 该项安装还包括命令行接口 (CLI)。
+
+## <a name="create-a-new-project-in-azure-ml-workbench"></a>在 Azure ML Workbench 中创建新项目
+1. 启动 Azure Machine Learning Workbench 应用程序，并根据需要登录。 在“项目”窗格中，单击 **+** 图标创建**新项目**。
 
    ![新工作区](media/tutorial-classifying-iris/new_ws.png)
 
@@ -149,4 +150,3 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 现在，可以转到系列教程的下一部分来生成机器学习模型。
 > [!div class="nextstepaction"]
 > [生成模型](tutorial-classifying-iris-part-2.md)
-

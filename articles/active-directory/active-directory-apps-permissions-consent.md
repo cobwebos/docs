@@ -18,10 +18,10 @@ ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Azure Active Directory 中的应用、权限和许可
 在 Azure Active Directory，可以将应用程序添加到目录。  应用程序根据类型的不同而异。  要在经典门户中查看某个应用程序，请选择一个目录，并选择应用程序。
@@ -40,9 +40,8 @@ ms.lasthandoff: 08/03/2017
 
 
 2. **多租户应用**
-    - 
-                **其他人可以许可的多租户应用** - 类似于“组织开发的单租户应用”。 除了应用自身内部的逻辑不同之外，主要差别还在于其他租户中的用户也可以许可并登录到该应用。</br>
-![](media/active-directory-apps-permissions-consent/apps4.png)
+    - **其他人可以许可的多租户应用** - 类似于“组织开发的单租户应用”。 除了应用自身内部的逻辑不同之外，主要差别还在于其他租户中的用户也可以许可并登录到该应用。</br>
+    ![](media/active-directory-apps-permissions-consent/apps4.png)
     - **其他人开发的、Contoso 可以许可的多租户应用**。 （简称“已许可的应用”。）此类应用与“组织开发的多租户应用”相反。 当其他组织开发多租户应用时，组织中的用户可以许可和登录到该应用。
     - **Microsoft 第一方应用** - 代表 Microsoft 服务的应用。 注册服务即表示许可该应用。 某些第一方应用有时附带特殊的用户界面 (UX) 和逻辑，围绕应用的访问建立策略时，经常会用到该界面和逻辑。</br>
     ![](media/active-directory-apps-permissions-consent/apps3.png)
@@ -115,7 +114,7 @@ ms.lasthandoff: 08/03/2017
 
 
 
-- 可以控制在哪些条件下能够访问应用程序（即条件性访问）。 请注意，这同时适用于客户端应用和资源应用。 因此，假设设置的条件访问策略是：仅可从合规的计算机访问“Office 365 Exchange Online”应用。  当用户尝试使用请求 Exchange Online 权限的客户端应用时，也会触发此策略。
+- 可以控制在哪些条件下能够访问应用程序（即条件性访问）。 请注意，这同时适用于客户端应用和资源应用。 假设你设置了一个条件性访问策略，指定只能从合规的计算机访问“Office 365 Exchange Online”应用。  当用户尝试使用请求 Exchange Online 权限的客户端应用时，也会触发此策略。
 
 
 

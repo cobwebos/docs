@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
+ms.openlocfilehash: b49a894365dd344afb2f3cab51e7cfd28d930b1a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 0e91d249116d39675d6e4bdf429442b6bc8af391
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C：注册应用程序
 
@@ -50,6 +49,8 @@ ms.lasthandoff: 09/01/2017
 ### <a name="register-a-web-app"></a>注册 Web 应用
 
 [!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
+
+### <a name="create-a-web-app-client-secret"></a>创建 Web 应用客户端机密
 
 如果 Web 应用程序调用受 Azure AD B2C 保护的 Web API，请执行以下步骤：
    1. 创建应用程序机密，方法是：转到“密钥”边栏选项卡，并单击“生成密钥”按钮。 记下“应用密钥”值。 在应用程序的代码中将该值用作应用程序机密。

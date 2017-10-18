@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2017
 ms.author: yurid
 ms.openlocfilehash: 10f7b8f20cc41a5ebb1b1376e2bf17be02600ae4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-insights-from-azure-security-center-data-with-power-bi"></a>使用 Power BI 从 Azure 安全中心数据获得见解
 Azure 安全中心的 [Power BI 仪表板](http://aka.ms/azure-security-center-power-bi) 允许用户从包括移动设备在内的任何位置查看、分析和筛选建议和安全警报。 使用 Power BI 仪表板揭示趋势和攻击模式 - 按资源或源 IP 地址查看安全警告，按资源或时间查看未处理的安全风险。
@@ -76,7 +76,7 @@ Azure 安全中心链接可将用户重定向到 Azure 门户。 可以通过图
 >
 >
 
-“一段时间内的警报数”、“受攻击的资源”和“攻击者 IP”磁贴对于单击操作具有类似的输出。 这是因为报表汇总有关所有这些三个变量的信息，并调用它**下攻击资源**下面的屏幕中所示：
+“一段时间内的警报数”、“受攻击的资源”和“攻击者 IP”磁贴对于单击操作具有类似的输出。 之所以发生这种情况，是因为报表聚合的信息涉及这所有三个变量，并将其称之为“受攻击的资源”，如以下屏幕所示：
 
 ![受攻击的资源](./media/security-center-powerbi/security-center-powerbi-fig1-new7.png)
 

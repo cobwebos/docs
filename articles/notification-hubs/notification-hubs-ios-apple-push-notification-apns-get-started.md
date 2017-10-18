@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
 ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-to-ios-with-azure-notification-hubs"></a>通过 Azure 通知中心向 iOS 发送推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>针对 iOS 推送通知配置通知中心
-本部分引导你使用创建的 **.p12** 推送证书创建新的通知中心并配置 APNS 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
+本部分将引导使用创建的 **.p12** 推送证书创建新的通知中心并配置 APNS 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 07/11/2017
     如果屏幕未显示在 Xcode 中创建的新预配配置文件，请尝试刷新签名标识的配置文件。 单击菜单栏上的“Xcode”，再依次单击“首选项”、“帐户”选项卡、“查看详细信息”按钮、签名标识，然后单击右下角的刷新按钮。
    
     ![Xcode — 预配配置文件][9]
-4. 下载[移动服务 iOS SDK version 1.2.4]，然后将文件解压缩。 在 Xcode 中，右键单击项目，然后单击“将文件添加到”选项，将 WindowsAzureMessaging.framework 文件夹添加到 Xcode 项目。 选择“需要时复制项”，并单击“添加”。
+4. 下载[移动服务 iOS SDK version 1.2.4]，然后将文件解压缩。 在 Xcode 中，右键单击项目，然后单击“将文件添加到”选项，将 **WindowsAzureMessaging.framework** 文件夹添加到 Xcode 项目。 选择“需要时复制项”，并单击“添加”。
    
    > [!NOTE]
    > 通知中心 SDK 目前不支持 Xcode 7 上的 Bitcode。  必须在项目的“生成选项”中将“启用 Bitcode”设置为“否”。
@@ -98,7 +98,7 @@ ms.lasthandoff: 07/11/2017
    > 
    
     ![解压缩 Azure SDK][10]
-5. 将新的标头文件添加到名为 `HubInfo.h`的项目。 此文件将保存通知中心的常量。  添加以下定义，然后将字符串文本占位符替换为中心名称以及前面记下的 DefaultListenSharedAccessSignature。
+5. 将新的标头文件添加到名为 `HubInfo.h`的项目。 此文件将保存通知中心的常量。  添加以下定义，然后将字符串文本占位符替换为*中心名称*以及前面记下的 *DefaultListenSharedAccessSignature*。
    
         #ifndef HubInfo_h
         #define HubInfo_h
@@ -206,7 +206,7 @@ ms.lasthandoff: 07/11/2017
    
         #import <CommonCrypto/CommonHMAC.h>
         #import "HubInfo.h"
-5. 在 `ViewController.m` 中，将以下代码添加到接口实现。 此代码会分析你的 *DefaultFullSharedAccessSignature* 连接字符串。 如 [REST API 参考](http://msdn.microsoft.com/library/azure/dn495627.aspx)中所述，此类已分析的信息用于生成 **Authorization** 请求标头的 SaS 令牌。
+5. 在 `ViewController.m` 中，将以下代码添加到接口实现。 此代码会分析 *DefaultFullSharedAccessSignature* 连接字符串。 如 [REST API 参考](http://msdn.microsoft.com/library/azure/dn495627.aspx)中所述，此类已分析的信息用于生成 **Authorization** 请求标头的 SaS 令牌。
    
         NSString *HubEndpoint;
         NSString *HubSasKeyName;
@@ -267,7 +267,7 @@ ms.lasthandoff: 07/11/2017
 
 
 
-1. 如 [REST API 参考](http://msdn.microsoft.com/library/azure/dn495627.aspx)中所述，在 `ViewController.m` 中，将以下代码添加到接口实现，以生成将在 Authorization 标头中提供的 SaS 授权令牌。
+1. 如 [REST API 参考](http://msdn.microsoft.com/library/azure/dn495627.aspx)中所述，在 `ViewController.m` 中，将以下代码添加到接口实现，以生成会在**Authorization** 标头中提供的 SaS 授权令牌。
    
         -(NSString*) generateSasToken:(NSString*)uri
         {

@@ -1,6 +1,6 @@
 ---
-title: "开始使用专用模板 |Microsoft 文档"
-description: "添加、 管理和共享专用模板使用 Azure 门户、 Azure CLI 或 PowerShell。"
+title: "专用模板入门 | Microsoft Docs"
+description: "使用 Azure 门户、Azure CLI 或 PowerShell 添加、管理和共享专用模板。"
 services: marketplace-customer
 documentationcenter: 
 author: VybavaRamadoss
@@ -17,119 +17,119 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
 ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-private-templates-on-the-azure-portal"></a>开始使用 Azure 门户上的专用模板
-[Azure 资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)模板是用于定义你的部署的声明性模板。 你可以定义资源来部署有关的解决方案，并指定参数和变量，您可以输入不同的环境的值。 模板中包含的 JSON 和可用于构造部署值的表达式。
+# <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure 门户中的专用模板入门
+[Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) 模板是声明性模板，用于定义部署。 可以定义要为解决方案部署的资源，以及指定可让用户根据不同的环境输入值的参数和变量。 模板中包含可用于构造部署值的 JSON 和表达式。
 
-你可以使用新**模板**中的功能[Azure 门户](https://portal.azure.com)连同**Microsoft.Gallery**资源提供程序中的扩展作为[Azure 应用商店](https://azure.microsoft.com/marketplace/)以使用户能够创建、 管理和部署个人库中的专用模板。
+可以将 [Azure 门户](https://portal.azure.com)中新的**模板**功能与作为 [Azure 应用商](https://azure.microsoft.com/marketplace/)店扩展的 **Microsoft.Gallery** 资源提供程序一起使用，使用户能够从个人库创建、管理和部署专用模板。
 
-本文档将指导你完成添加、 管理和共享私有**模板**使用 Azure 门户。
+本文介绍如何使用 Azure 门户添加、管理和共享专用 **模板** 。
 
-## <a name="guidance"></a>指导
-以下建议将帮助你充分利用**模板**使用你的解决方案时：
+## <a name="guidance"></a>指南
+以下建议可帮助用户在使用解决方案时充分利用 **模板** ：
 
-* A**模板**是一种封装资源包含资源管理器模板和其他元数据。 它的行为非常类似于应用商店中的项。 主要区别是它是专用项而不是公共应用商店项。
-* **模板**库非常适用于需要自定义其部署的用户。
-* **模板**适用于需要在 Azure 中的简单存储库的用户工作。
-* 开始使用现有的资源管理器模板。 查找中的模板[github](https://github.com/Azure/azure-quickstart-templates)或[导出模板](../azure-resource-manager/resource-manager-export-template.md)从现有资源组。
-* **模板**绑定到的用户将其发布。 发布服务器名称是对有权读取它的每个人可见。
-* **模板**是资源管理器资源，不能一次发布重命名。
+* **模板** 是一种封装的资源，其中包含 Resource Manager 模板和其他元数据。 它的行为非常类似于应用商店中的项目。 关键区别是，与公共应用商店项目完全不同，它是私有项目。
+* **模板** 库非常适合需要自定义部署的用户。
+* **模板** 非常适合在 Azure 中需要简单存储库的用户。
+* 从现有的 Resource Manager 模板开始。 在 [github](https://github.com/Azure/azure-quickstart-templates) 中查找模板，或者从现有的资源组[导出模板](../azure-resource-manager/resource-manager-export-template.md)。
+* **模板** 与发布它们的用户相关联。 对模板具有读取权限的所有用户都可以看到发布者名称。
+* **模板** 是 Resource Manager 资源，发布之后便不能重命名。
 
 ## <a name="add-a-template-resource"></a>添加模板资源
-有两种方法来创建**模板**在 Azure 门户中的资源。
+有两种方法可在 Azure 门户中创建 **模板** 资源。
 
-### <a name="method-1--create-a-new-template-resource-from-a-running-resource-group"></a>方法 1： 从正在运行的资源组中创建新的模板资源
-1. 导航到 Azure 门户上的现有资源组。 选择**导出模板**中**设置**。
-2. 资源管理器模板导出后，使用**另存为模板**按钮以将其保存到**模板**存储库。 找到完整的详细信息导出模板[此处](../azure-resource-manager/resource-manager-export-template.md)。
+### <a name="method-1--create-a-new-template-resource-from-a-running-resource-group"></a>方法 1：从正在运行的资源组新建模板资源
+1. 导航到 Azure 门户中的现有资源组。 在“设置”中选择“导出模板”。
+2. 导出 Resource Manager 模板后，使用“保存模板”按钮将其保存到“模板”存储库。 可在 [此处](../azure-resource-manager/resource-manager-export-template.md)找到有关导出模板的完整详细信息。
    <br /><br />
-   ![资源组导出](media/rg-export-portal1.PNG)  <br />
-3. 选择**将保存到模板**命令按钮。
+   ![导出资源组](media/rg-export-portal1.PNG)  <br />
+3. 选择“保存到模板”  命令按钮。
    <br /><br />
 4. 输入以下信息：
    
-   * 名称 – 模板对象的名称 (请注意： 这是基于 Azure 资源管理器名称。 所有命名限制，而且无法更改一次创建）。
-   * 说明 – 有关该模板的快速摘要。
+   * 名称 - 模板对象的名称（请注意：这是基于 Azure Resource Manager 的名称。 所有命名限制均适用，而且创建后便不能更改）。
+   * 说明 - 有关模板的快速摘要。
      
      ![保存模板](media/save-template-portal1.PNG)  <br />
-5. 单击 **“保存”**。
+5. 单击“保存” 。
    
    > [!NOTE]
-   > 导出模板边栏选项卡显示通知时已导出的资源管理器模板出现错误，但你仍将能够将此资源管理器模板保存到模板。 确保你检查并修复任何资源管理器模板问题，然后重新部署已导出的资源管理器模板。
+   > 当导出的 Resource Manager 模板有错误时，“导出模板”边栏选项卡会显示通知，但用户仍能够将此 Resource Manager 模板保存到“模板”。 在重新部署导出的 Resource Manager 模板之前，请确保检查并修复任何 Resource Manager 模板问题。
    > 
    > 
 
-### <a name="method-2--add-a-new-template-resource-from-browse"></a>方法 2： 从浏览添加新的模板资源
-你还可以添加一个新**模板**从暂存使用 + 中的添加命令按钮**浏览 > 模板**。 你将需要提供名称、 描述和资源管理器模板 JSON。
+### <a name="method-2--add-a-new-template-resource-from-browse"></a>方法 2：通过浏览新增模板资源
+还可以使用“浏览”>“模板”中的“+添加”命令按钮从头开始新增一个模板。 需要提供名称、说明和 Resource Manager 模板 JSON。
 
 ![添加模板](media/add-template-portal1.PNG)  <br />
 
 > [!NOTE]
-> Microsoft.Gallery 是租户基于 Azure 资源提供程序。 模板资源与创建它的用户。 它位于未与任何特定的订阅。 订阅需要仅在部署模板时，才选择。
+> Microsoft.Gallery 是基于租户的 Azure 资源提供程序。 模板资源与创建它的用户相关联， 而不与任何特定订阅相关联。 仅在部署模板时，才需要选择订阅。
 > 
 > 
 
 ## <a name="view-template-resources"></a>查看模板资源
-所有**模板**供可以观察到的**浏览 > 模板**。 这包括**模板**已创建以及那些使用不同的权限级别与你共享。 中的更多详细信息[访问控制](#access-control-for-a-tenant-resource-provider)下面一节。
+在“浏览”>“模板”中可以看到用户可用的所有模板。 这包括用户已创建的**模板**以及在各种权限级别与用户共享的模板。 在下面的[访问控制](#access-control-for-a-tenant-resource-provider)部分中提供更多详细信息。
 
 ![查看模板](media/view-template-portal1.PNG)  <br />
 
-你可以查看的详细信息**模板**通过单击列表中的一个项。
+单击列表中的项目即可查看 **模板** 的详细信息。
 
 ![查看模板](media/view-template-portal2c.png)  <br />
 
 ## <a name="edit-a-template-resource"></a>编辑模板资源
-你可以启动的编辑流**模板**通过右键单击浏览列表上的项或通过选择编辑命令按钮。
+右键单击“浏览”列表中的项目或选择“编辑”命令按钮即可启动 **模板** 的编辑流程。
 
 ![编辑模板](media/edit-template-portal1a.PNG)  <br />
 
-你可以编辑说明或资源管理器模板文本。 您无法编辑该名称，因为它是资源管理器资源名称。 当您编辑资源管理器模板 JSON 我们将对其进行验证以确保它是有效的 JSON。 选择**确定**然后**保存**以保存你更新的模板。
+可以编辑说明或 Resource Manager 模板文本。 不能编辑名称，因为它是 Resource Manager 资源名称。 用户编辑 Resource Manager 模板 JSON 时，我们将进行验证以确保它是有效的 JSON。 选择“确定”，并单击“保存”保存已更新的模板。
 
 ![编辑模板](media/edit-template-portal2a.PNG)  <br />
 
-一次**模板**保存你将看到确认通知。
+保存 **模板** 后，用户将看到确认通知。
 
 ![编辑模板](media/edit-template-portal3b.png)  <br />
 
 ## <a name="deploy-a-template-resource"></a>部署模板资源
-你可以部署任何**模板**必须**读取**上的权限。 部署流将启动标准 Azure 模板部署边栏选项卡。 填写要继续进行部署的资源管理器模板参数的值。
+用户可以部署他具有**读取**权限的任何**模板**。 部署流将启动标准的“Azure 模板部署”边栏选项卡。 填写 Resource Manager 模板参数的值，以便继续进行部署。
 
 ![部署模板](media/deploy-template-portal1b.png)  <br />
 
-## <a name="share-a-template-resource"></a>共享的模板资源
-A**模板**可以与你的同事共享资源。 共享的行为方式类似于[Azure 上的任何资源的角色分配](../active-directory/role-based-access-control-configure.md)。 **模板**所有者提供给其他用户可以进行交互的模板资源的权限。 个人或组共享的人员**模板**与将能够看到资源管理器模板和其库属性。
+## <a name="share-a-template-resource"></a>共享模板资源
+可以与同事共享 **模板** 资源。 共享行为类似于 [Azure 上的任何资源的角色分配](../active-directory/role-based-access-control-configure.md)。 **模板** 所有者向可以与模板资源进行交互的其他用户提供权限。 与之共享 **模板** 的用户或用户组能够看到 Resource Manager 模板及其库属性。
 
-### <a name="access-control-for-the-microsoftgallery-resources"></a>Microsoft.Gallery 资源的访问控制
+### <a name="access-control-for-the-microsoftgallery-resources"></a>对 Microsoft.Gallery 资源的访问控制
 | 角色 | 权限 |
 | --- | --- |
-| 所有者 |允许包括共享的模板资源的完全控制 |
-| 读取器 |允许读取和 Execute(Deploy) 上的模板资源 |
-| Contributor |允许在模板资源上编辑和删除权限。 用户不能与其他人共享的模板 |
+| 所有者 |允许对模板资源进行完全控制，包括共享 |
+| 读取器 |允许对模板资源进行读取和执行（部署）操作 |
+| 参与者 |允许对模板资源具有编辑和删除权限。 用户不能与其他人共享模板 |
 
-选择**共享**浏览项通过右键单击或上的特定项的视图边栏选项卡上。 这将启动共享体验。
+通过右键单击或在特定项的视图边栏选项卡上可对浏览项选择“共享”  。 这会启动共享体验。
 
 ![共享模板](media/share-template-portal1a.png)  <br />
 
- 你现在可以选择一个角色的用户或组，以提供对特定的访问**模板**。 可用的角色是所有者、 读取和参与者。 中的更多详细信息[访问控制](#access-control-for-a-tenant-resource-provider)上面一节。
+ 现在可以选择角色和用户或组，以提供对特定 **模板**的访问权限。 可用的角色是“所有者”、“读者”和“参与者”。 在下面的 [访问控制](#access-control-for-a-tenant-resource-provider) 部分中提供更多详细信息。
 
 ![共享模板](media/share-template-portal2b.png)  <br />
 
 ![共享模板](media/share-template-portal3b.png)  <br />
 
-单击**选择**和**确定**。 你现在可以看到的用户或组添加到资源。
+单击“选择”和“确定”。 现在可以看到已添加到资源的用户或组。
 
 ![共享模板](media/share-template-portal4b.png)  <br />
 
 > [!NOTE]
-> 在相同的 Azure Active Directory 租户中仅与用户和组共享一个模板。 如果你不在你的租户的电子邮件地址共用一个模板，邀请将发送询问用户加入作为来宾租户。
+> 只能与同一 Azure Active Directory 租户中的用户和组共享模板。 如果与不在同一租户中的电子邮件地址共享模板，将发送邀请请求该用户以来宾身份加入该租户。
 > 
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何创建资源管理器模板，请参阅[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)
-* 若要了解可以使用资源管理器模板中的函数，请参阅[模板函数](../azure-resource-manager/resource-group-template-functions.md)
-* 有关如何设计你的模板的指南，请参阅[用于设计 Azure 资源管理器模板的最佳做法](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
+* 若要了解有关创建 Resource Manager 模板的信息，请参阅 [创作模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* 若要了解可在 Resource Manager 模板中使用的函数，请参阅 [模板函数](../azure-resource-manager/resource-group-template-functions.md)
+* 有关如何设计模板的指南，请参阅 [设计 Azure Resource Manager 模板的最佳实践](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
 

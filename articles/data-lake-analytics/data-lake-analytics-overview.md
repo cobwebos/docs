@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
 ms.openlocfilehash: 8817b511d779029421491194b50120d51ec9dbad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-microsoft-azure-data-lake-analytics"></a>Microsoft Azure Data Lake Analytics 概述
 ## <a name="what-is-azure-data-lake-analytics"></a>什么是 Azure Data Lake Analytics？
@@ -30,12 +30,11 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
     Data Lake Analytics 是针对云缩放和性能需求进行构建的。  它能动态地预配资源并让你以千吉字节甚至百亿亿字节为单位进行分析。 当作业完成时，它自动释放资源，仅需为所用的处理功能付费。 增加或减少存储数据的大小或使用的计算资源量时，无需重写代码。 用户可仅关注自己的业务逻辑，而非如何处理和存储大数据集。
 * **使用熟悉的工具更快开发、更智能调试和优化**
   
-    数据湖分析具有与 Visual Studio 中，深度集成，因此你可以使用熟悉的工具来运行、 调试和优化你的代码。 U-SQL 作业可视化允许看见代码如何大规模运行，因此可以轻松找到性能瓶颈并优化成本。
+    Data Lake Analytics 与 Visual Studio 深度集成，从而你可以使用熟悉的工具运行、调试和调整代码。 U-SQL 作业可视化允许看见代码如何大规模运行，因此可以轻松找到性能瓶颈并优化成本。
 * **U-SQL：简单熟悉、功能强大且易于扩展**
   
     Data Lake Analytics 包含 U-SQL，这是一种查询语言，扩展了 SQL 的简单熟悉的声明性本质和 C# 的表现力。 U-SQL 语言基于在 Microsoft 内部支持大数据系统的同一分布式运行时。 现在，数以百万计的 SQL 和 .NET 开发人员可以凭借自身已有的技能处理和分析自己的数据。
-* 
-            **与 IT 投资无缝集成**
+* **与 IT 投资无缝集成**
   
     Data Lake Analytics 可以使用现有的 IT 投资进行识别、管理、安全和数据仓库工作来应对这个挑战。 此方法简化了数据管理，使当前的数据应用程序更容易扩展。 Data Lake Analytics 与适用于用户管理和权限的 Active Directory 集成且随附内置监视与审核功能。
 * **价格合理且经济高效**

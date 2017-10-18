@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 336d4f80f0357796fb29eb9314c11edfce831a69
-ms.openlocfilehash: bd08eb476a4bd7298c5650977b88ba0b24deddec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
-
+ms.openlocfilehash: 89baf60d0204a1701e93309f09b90bc94c4ca57b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>在 Azure API 管理中自定义开发人员门户的样式
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
@@ -40,11 +39,11 @@ ms.lasthandoff: 02/23/2017
 
 ![发布者门户上的开发人员门户链接][api-management-pp-dp-link]
 
-若要打开自定义工具栏，请将鼠标移到自定义图标上（或选择它），然后从工具栏单击“样式”。
+要打开自定义工具栏，请将鼠标移到自定义图标上（或选择它），并从工具栏单击“样式”。
 
 ![自定义工具栏按钮][api-management-customization-toolbar-button]
 
-有两种主要方式来编辑样式规则 - 可以查看任意位置使用的所有样式规则的列表（这些规则是默认显示的），然后根据需要修改样式；也可以选择“选择页面上的元素”，然后单击页面任意位置即可只查看该元素的样式。 
+有两种主要方式来编辑样式规则 - 可以查看任意位置使用的所有样式规则的列表（这些规则是默认显示的），并根据需要修改样式；也可以选择“选择页面上的元素”，并单击页面任意位置即可只查看该元素的样式。 
 
 ![自定义工具栏][api-management-customization-toolbar]
 
@@ -58,11 +57,11 @@ ms.lasthandoff: 02/23/2017
 
 ![颜色选取器][api-management-customization-toolbar-color-picker]
 
-所做更改是实时预览的，但仅对管理员可见。 要使这些更改对每个人都可见，请单击样式编辑器中的“发布”按钮，然后确认所做的更改。
+所做更改是实时预览的，但仅对管理员可见。 要使这些更改对每个人都可见，请单击样式编辑器中的“发布”按钮，并确认所做的更改。
 
 ![发布菜单][api-management-customization-toolbar-publish-form]
 
-> 若要更改应用于页面上任何其他元素的样式规则，请按照对标题所执行的相同步骤进行操作。 在样式编辑器中单击“选择页面上的元素”，选择感兴趣的元素，然后开始修改显示在屏幕上的样式规则的值。
+> 若要更改应用于页面上任何其他元素的样式规则，请按照对标题所执行的相同步骤进行操作。 在样式编辑器中单击“选择页面上的元素”，选择感兴趣的元素，并开始修改显示在屏幕上的样式规则的值。
 > 
 > 
 
@@ -88,4 +87,3 @@ ms.lasthandoff: 02/23/2017
 
 [bootstrap]: http://getbootstrap.com/
 [LESS variables]: http://getbootstrap.com/css/
-

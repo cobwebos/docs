@@ -1,6 +1,6 @@
 ---
 title: "使用 Aspera 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs"
-description: "本教程将指导你一步步地将文件上载到媒体服务帐户使用与关联的存储帐户 * * Aspera 服务器上需 * * Azure 上的服务。"
+description: "本教程逐步讲解如何使用 Azure 上的 Aspera Server On Demand 服务将文件上传到与媒体服务帐户关联的存储帐户。****"
 services: media-services
 documentationcenter: 
 author: johndeu
@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
 ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On Demand 服务将文件上传到媒体服务帐户
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/29/2017
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
-4. 单击“定价层”，并在子面板中选择所需的每月用量。 在“计划详细信息”面板中选择“确定”。 然后，在**选择定价层**面板中，单击**选择**。
+4. 单击“定价层”，并在子面板中选择所需的每月用量。 在“计划详细信息”面板中选择“确定”。 然后，在“选择定价层”面板中单击“选择”。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera004.png)
 
@@ -72,11 +72,11 @@ ms.lasthandoff: 08/29/2017
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera006.png)
 
-7. Azure 仪表板会告知正在预配该服务。  完成预配后，可通过在资源中搜索服务的名称来找到新订阅。 找到该服务后，双击它启动服务管理门户。
+7. Azure 仪表板将告知正在预配该服务。  完成预配后，可通过在资源中搜索服务的名称来找到新订阅。 找到该服务后，双击它启动服务管理门户。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera007.png)
 
-8. 启动 Aspera 管理门户。 找到新的 Aspera 服务后，可通过单击该服务访问管理门户。  此时会启动新面板。 在该新面板中，需要单击新服务的**资源名称**。  在以下屏幕截图中，资源名称为“AsperaTransferDemo”。 单击资源名称后，另一个面板启动。 新启动的面板中有一个“管理”链接。 单击“管理”链接即可启动 Aspera 管理门户。
+8. 启动 Aspera 管理门户。 找到新的 Aspera 服务后，可通过单击该服务访问管理门户。  此时会启动新面板。 在该新面板中，需要单击新服务的**资源名称**。  在以下屏幕截图中，资源名称为“AsperaTransferDemo”。 单击资源名称后，将启动另一个面板。 新启动的面板中有一个“管理”链接。 单击“管理”链接即可启动 Aspera 管理门户。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera008.png)
 

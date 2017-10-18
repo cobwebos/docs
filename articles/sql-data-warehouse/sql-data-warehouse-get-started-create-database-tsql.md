@@ -17,10 +17,10 @@ ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 10d8aa2b3ab8d7d8a9b91e95ffccf03faa89d237
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>使用 Transact-SQL (TSQL) 创建 SQL 数据仓库数据库
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-本文说明如何使用 T-SQL 创建 SQL 数据仓库。
+本文介绍如何使用 T-SQL 创建 SQL 数据仓库。
 
 ## <a name="prerequisites"></a>先决条件
 要开始，需要：

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
-ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
-ms.lasthandoff: 12/06/2016
-
-
+ms.openlocfilehash: 6f4cfda6f367cb8a68d038fa0a3390442be034c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite 安全和审核解决方案中的基线评估
 本文档有助于使用 [Operations Management Suite (OMS) 安全和审核解决方案](operations-management-suite-overview.md)基线评估功能来评估被监视资源的安全状态。
@@ -40,7 +39,7 @@ Microsoft 及全球的产业和政府组织定义了一个代表高安全度服�
 > 
 
 ## <a name="security-baseline-assessment"></a>安全基线评估
-通过使用“安全和审核”仪表板，可查看 OMS 安全和审核所监测的所有计算机的当前安全基线评估。  执行以下步骤来访问安全基线评估仪表板：
+通过使用“安全和审核”仪表板，可查看 OMS 安全和审核所监测的所有计算机的当前安全基线评估。 执行以下步骤来访问安全基线评估仪表板：
 
 1. 在“Microsoft Operations Management Suite”主仪表板中，单击“安全和审核”磁贴。
 2. 在“安全和审核”仪表板中，单击“安全域”下的“基线评估”。 “安全基线评估”仪表板如下图显示：
@@ -77,7 +76,7 @@ Microsoft 及全球的产业和政府组织定义了一个代表高安全度服�
 > 
 
 ### <a name="accessing-computers-missing-baseline-assessment"></a>评估缺少基线评估的计算机
-OMS 支持 Windows Server 2008 R2 到 Windows Server 2012 R2 上的域成员和域控制器基线配置文件。 Windows Server 2016 基线尚未完成，将在其发布时尽快添加。 通过 OMS 安全和审核基线评估扫描的所有其他操作系统显示在“缺少基线评估的计算机”部分下。
+OMS 支持 Windows Server 2008 R2 到 Windows Server 2012 R2 上的域成员和域控制器基线配置文件。 Windows Server 2016 基线尚未完成，会在其发布时尽快添加。 通过 OMS 安全和审核基线评估扫描的所有其他操作系统显示在“缺少基线评估的计算机”部分下。
 
 ## <a name="see-also"></a>另请参阅
 本文档介绍了有关 OMS 安全和审核基线评估。 若要了解有关 OMS 安全的详细信息，请参阅以下文章：
@@ -85,5 +84,4 @@ OMS 支持 Windows Server 2008 R2 到 Windows Server 2012 R2 上的域成员和�
 * [Operations Management Suite (OMS) 概述](operations-management-suite-overview.md)
 * [监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](oms-security-responding-alerts.md)
 * [监视 Operations Management Suite 安全和审核解决方案中的资源](oms-security-monitoring-resources.md)
-
 

@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
 ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="configure-the-service-url-and-api-key"></a>配置服务 URL 和 API 密钥
 1. 在“项目资源管理器”中，双击 **config.properties** 编辑包含服务器名称和 API 密钥的配置设置。
 2. 请参考本文中前面的步骤，在 [Azure 门户](https://portal.azure.com)中找到服务 URL 和 API 密钥，获取现在会在 **config.properties**中输入的值。
-3. 在**config.properties**，替换为你的服务的 api 密钥替换"Api 密钥"。 接下来，使用服务名称（URL http://servicename.search.windows.net 的第一部分）替换同一文件中的“service name”。
+3. 在 **config.properties**中，将“Api Key”替换为服务的 API 密钥。 接下来，使用服务名称（URL http://servicename.search.windows.net 的第一部分）替换同一文件中的“service name”。
    
     ![][5]
 

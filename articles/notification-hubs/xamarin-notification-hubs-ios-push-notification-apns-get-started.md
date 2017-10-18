@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 72a81fa0deb34ace77b8fb9b1a4e6b24ee164b35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ios-push-notifications-with-notification-hubs-for-xamarin-apps"></a>使用通知中心针对 Xamarin 应用发送 iOS 推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 本教程演示如何使用 Azure 通知中心将推送通知发送到 iOS 应用程序。
-你将创建一个空白 Xamarin.iOS 应用，它使用 [Apple Push Notification 服务 (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)接收推送通知。 完成后，能够使用通知中心将推送通知广播到运行应用的所有设备。 [NotificationHubs 应用][GitHub]示例中提供了完成的代码。
+将创建一个空白 Xamarin.iOS 应用，它使用 [Apple Push Notification 服务 (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)接收推送通知。 完成后，能够使用通知中心将推送通知广播到运行应用的所有设备。 [NotificationHubs 应用][GitHub]示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单推送消息广播方案。
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/11/2017
 * [Xamarin Studio]
   
   > [!NOTE]
-  > 由于 iOS 推送通知配置要求，你必须在物理 iOS 设备（iPhone 或 iPad）而不是在模拟器上部署和测试示例应用程序。
+  > 由于 iOS 推送通知配置要求，必须在物理 iOS 设备（iPhone 或 iPad）而不是在模拟器上部署和测试示例应用程序。
   > 
   > 
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub"></a>配置通知中心
-本部分引导你使用创建的 **.p12** 推送证书创建新的通知中心并配置 APNS 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
+本部分将引导使用创建的 **.p12** 推送证书创建新的通知中心并配置 APNS 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/11/2017
 
 <p>如果想要配置 APNS 连接，则在 Azure 门户中打开通知中心设置，单击“通知服务”<b></b>，并单击列表中的“Apple (APNS)”<b></b>项。 完成后单击“上传证书”<b></b>，并选择前面导出的 <b>p12</b> 证书以及证书的密码。</p>
 
-<p>请务必选择“沙盒”模式，因为将在开发环境发送推送消息<b></b>。 仅当想要将推送通知发送给从应用商店购买了应用的用户时，才使用“生产”<b></b>设置。</p>
+<p>请务必选择“沙盒”<b></b>模式，因为会在开发环境发送推送消息。 仅当想要将推送通知发送给从应用商店购买了应用的用户时，才使用“生产”<b></b>设置。</p>
 </li>
 </ol>
 &emsp;&emsp;![](./media/notification-hubs-ios-get-started/notification-hubs-apns.png)
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>将应用连接到通知中心
 #### <a name="create-a-new-project"></a>创建新项目
-1. 在 Xamarin Studio 中，创建新的 iOS 项目，然后选择“Unified API” > “单视图应用程序”模板。
+1. 在 Xamarin Studio 中，创建新的 iOS 项目，并选择“统一 API” > “单视图应用程序”模板。
    
      ![Xamarin Studio - 选择应用程序类型][31]
 2. 添加对 Azure 消息传送组件的引用。 在“解决方案”视图中，右键单击项目的“Components”文件夹，并选择“获取更多组件”。 搜索“Azure 消息传送”组件，并向项目添加该组件。
@@ -170,7 +170,7 @@ ms.lasthandoff: 07/11/2017
         }
    
    > [!NOTE]
-   > 可以选择覆盖 **FailedToRegisterForRemoteNotifications()** 以处理无网络连接等情况。 如果用户可能会在脱机模式下（例如飞行模式）下启动你的应用程序，并且你想要处理应用特定的推送消息方案，则此操作特别重要。
+   > 可以选择覆盖 **FailedToRegisterForRemoteNotifications()** 以处理无网络连接等情况。 如果用户可能会在脱机模式下（例如飞行模式）下启动应用程序，并且你想要处理应用特定的推送消息方案，则此操作特别重要。
    > 
    > 
 10. 在设备上运行应用程序。
@@ -205,7 +205,7 @@ ms.lasthandoff: 07/11/2017
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    这将使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 程序包</a>添加对 Azure 通知中心 SDK 的引用。
+    这会使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 包</a>添加对 Azure 通知中心 SDK 的引用。
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 4. 打开 `Program.cs` 文件，并添加以下 `using` 语句，确保我们可以使用 Azure 类和你主类中的函数：
@@ -258,7 +258,7 @@ ms.lasthandoff: 07/11/2017
                 }
             }
         );
-6. 单击底部栏上的“运行一次”。 你应在设备上收到警报。
+6. 单击底部栏上的“运行一次”。 应在设备上收到警报。
 
 ## <a name="next-steps"></a>后续步骤
 在这个简单的示例中，已将推送通知广播到所有 iOS 设备。 要针对特定客户，请参考教程 [使用通知中心将通知推送到用户]。 如果要按兴趣组划分用户，可以阅读 [使用通知中心发送突发新闻]。 请在[通知中心指南]和[适用于 iOS 的通知中心操作方法指南]中了解有关如何使用通知中心的详细信息。
