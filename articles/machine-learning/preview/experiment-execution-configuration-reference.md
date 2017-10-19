@@ -10,12 +10,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/17/2017
-ms.openlocfilehash: e1356439385cc7fe66985bd2b84e4121386ec23d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: e1356439385cc7fe66985bd2b84e4121386ec23d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/27/2017
+
 ---
+
 # <a name="azure-machine-learning-workbench-execution-configuration-files"></a>Azure Machine Learning Workbench 执行配置文件
 
 当为 Azure Machine Learning (Azure ML) Workbench 提交脚本时，由“aml_config”文件夹中的文件控制执行行为。 此文件夹位于你的项目文件夹根目录下。 请务必了解这些文件的内容，以便以最佳方式实现你期望的执行结果。
@@ -116,7 +118,7 @@ packages:
 $ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of VM> -u <username> -w <password> --type remotedocker
 
 # create a compute context pointing to an HDI cluster head-node via SSH
-$ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of HDI cluster> -u <username> -w <password> -type cluster
+$ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of HDI cluster> -u <username> -w <password> --type cluster
 ```
 
 此命令创建一对基于指定计算目标的文件。 假设计算目标命名为 foo。 此命令会在你的 aml_config 文件夹生成 foo.compute 和 foo.runconfig。
@@ -212,3 +214,4 @@ df = datasource.load_datasource('mylocal.dsource')
 ```
 ## <a name="next-steps"></a>后续步骤
 详细了解[执行环境配置](experiment-execution-configuration.md)
+

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/17/2017
 ms.author: markvi
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 7a8700e70f64851a0c5e5e8c6b31ec7a6884a96c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
+
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，可在运行 Microsoft 的同步工具之一时消除 **UserPrincipalName** 和 **ProxyAddress** 冲突所造成的不便。
@@ -40,7 +41,7 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 “***<OriginalPrefix>+<4DigitNumber>@<InitialTenantDomain>.onmicrosoft.com***”。  
 如果不需要此属性（例如 **ProxyAddress**），则 Azure Active Directory 只隔离冲突属性并继续创建或更新对象。
 
-隔离属性后，有关冲突的信息以旧行为中使用的相同错误报告电子邮件发送。 但是，此信息只出现在错误报告中一次，发生隔离时，将不继续记录在以后的电子邮件中。 此外，由于此对象已成功导出，因此同步客户端不会记录错误，并且不会在后续的同步周期中重试创建/更新操作。
+隔离属性后，有关冲突的信息将以旧行为中使用的相同错误报告电子邮件发送。 但是，此信息只出现在错误报告中一次，发生隔离时，将不继续记录在以后的电子邮件中。 此外，由于此对象已成功导出，因此同步客户端不会记录错误，并且不会在后续的同步周期中重试创建/更新操作。
 
 为了支持此行为，已向 User、Group 和 Contact 对象类添加新属性：  
 **DirSyncProvisioningErrors**
@@ -60,7 +61,7 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> 为租户启用“重复属性复原”功能之前，将不再能够使用 Set-MsolDirSyncFeature cmdlet 来主动启用该功能。 若要能够测试该功能，需创建新的 Azure Active Directory 租户。
+> 为租户启用“重复属性复原”功能之前，将不再能够使用 Set-MsolDirSyncFeature cmdlet 主动启用“重复属性复原”功能。 若要能够测试该功能，将需要创建新的 Azure Active Directory 租户。
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>识别具有 DirSyncProvisioningErrors 的对象
 目前有两种方法可识别因为重复属性冲突而发生错误的对象：Azure Active Directory PowerShell 和 Office 365 管理门户。 我们已计划将来扩展到其他基于门户的报告。
@@ -73,7 +74,7 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 
 首先，应运行 **Connect-MsolService** 并输入租户管理员的凭据。
 
-然后，使用以下 cmdlet 和运算符以不同方式查看错误：
+然后，使用以下 cmdlet 和运算符以不同的方式查看错误：
 
 1. [查看全部](#see-all)
 2. [按属性类型](#by-property-type)
@@ -87,7 +88,7 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-随后会生成如下所示的结果：  
+随后将生成如下所示的结果：  
  ![Get-MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")  
 
 #### <a name="by-property-type"></a>按属性类型
@@ -126,7 +127,7 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 使用此新行为处理具有重复属性冲突的对象时，通知将包含在标准标识同步错误报告电子邮件中，而该电子邮件将发送给租户的技术通知联系人。 但是，此行为有一项重大变化。 在过去，有关重复属性冲突的信息包含在每个后续错误报告中，直到解决冲突为止。 使用此新行为，给定冲突的错误通知只出现一次 - 在冲突属性被隔离时。
 
 ProxyAddress 冲突的电子邮件通知示例如下所示：  
-    ![活动用户](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "活动用户")  
+    ![活动用户](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Active Users")  
 
 ## <a name="resolving-conflicts"></a>解决冲突
 针对这些错误的故障排除策略和解决技巧不应与过去处理重复属性错误的方式不同。 唯一的差别在于，计时器任务将扫描服务端的租户，以便在冲突解决后，自动将有问题的属性添加到适当的对象。
@@ -141,21 +142,21 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 1. 具有特定属性配置的对象继续收到导出错误，而不是重复属性被隔离。  
    例如：
    
-    a. 新用户在 AD 中创建，其 UPN 为 **Joe@contoso.com**，ProxyAddress 为 **smtp:Joe@contoso.com**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 新用户在 AD 中创建，其 UPN 为 **Joe@contoso.com**，ProxyAddress 为 **smtp:Joe@contoso.com**。
    
     b. 此对象的属性与现有组发生冲突，其中 ProxyAddress 为 **SMTP:Joe@contoso.com**。
    
     c. 导出时，将引发 **ProxyAddress 冲突**错误，而非隔离冲突属性。 此操作在每个后续的同步周期中重试，就如同在启用复原之前一样。
-2. 如果在本地创建两个具有相同 SMTP 地址的组，则其中一个组在首次尝试预配时会失败并返回标准的重复 **ProxyAddress** 错误。 但是，重复值会在下一个同步周期被适当隔离。
+2. 如果在本地创建两个具有相同 SMTP 地址的组，则其中一个组在首次尝试预配时会失败并返回标准的重复 **ProxyAddress** 错误。 但是，重复值将在下一个同步周期被适当隔离。
 
 **Office 门户报告**：
 
 1. UPN 冲突集中两个对象的详细错误消息是相同的。 这意味着，它们的 UPN 都已更改/隔离，此时，实际上只有其中一个对象的数据发生更改。
 2. UPN 冲突的详细错误消息对已更改/隔离其 UPN 的用户显示不正确的 displayName。 例如：
    
-    a. **用户 A** 首先使用 **UPN = User@contoso.com** 同步。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **用户 A** 首先使用 **UPN = User@contoso.com** 同步。
    
-    b. 然后，尝试使用 **UPN = User@contoso.com** 同步**用户 B**。
+    b. 然后，尝试使用 **UPN = User@contoso.com** 同步 **User B**。
    
     c. **用户 B** 的 UPN 已更改为 **User1234@contoso.onmicrosoft.com**，**User@contoso.com** 已添加到 **DirSyncProvisioningErrors**。
    
@@ -163,13 +164,14 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 
 **标识同步错误报告**：
 
-“关于如何解决此问题的步骤”链接不正确：  
-    ![活动用户](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "活动用户")  
+*关于如何解决此问题的步骤*链接不正确：  
+    ![活动用户](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Active Users")  
 
-该链接应指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。
+它应指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。
 
 ## <a name="see-also"></a>另请参阅
 * [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
 * [识别 Office 365 中的目录同步错误](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+
 

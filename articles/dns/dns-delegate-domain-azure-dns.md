@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 33b3ec24432ff1268860b9a2e9d5098600a8dedc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
+
 ---
+
 # <a name="delegate-a-domain-to-azure-dns"></a>将域委托给 Azure DNS
 
 使用 Azure DNS 可以托管 DNS 区域，以及管理 Azure 中域的 DNS 记录。 要使域的 DNS 查询才能抵达 Azure DNS，必须将该域从其父域委托给 Azure DNS。 请记住，Azure DNS 不是域注册机构。 本文说明如何将域委派给 Azure DNS。
@@ -30,16 +32,16 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
 1. 登录到 Azure 门户
-1. 在“中心”菜单上，单击“新建”>“网络”，并单击“DNS 区域”以打开“创建 DNS 区域”边栏选项卡。
+1. 在“中心”菜单上，单击“新建”>“网络”，然后单击“DNS 区域”以打开“创建 DNS 区域”边栏选项卡。
 
     ![DNS 区域](./media/dns-domain-delegation/dns.png)
 
-1. 在“创建 DNS 区域”边栏选项卡上，输入以下值，并单击“创建”：
+1. 在“创建 DNS 区域”边栏选项卡上，输入以下值，然后单击“创建”：
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
    |**Name**|contoso.net|DNS 区域的名称|
-   |**订阅**|[订阅]|选择要在其中创建应用程序网关的订阅。|
+   |**订阅**|[你的订阅]|选择要在其中创建应用程序网关的订阅。|
    |**资源组**|**新建：**contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|美国西部||
 
@@ -85,7 +87,7 @@ Metadata          :
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-az network dns record-set show --resource-group contosoRG --zone-name contoso.net --type NS --name @
+az network dns record-set list --resource-group contosoRG --zone-name contoso.net --type NS --name @
 ```
 
 以下示例是响应。
@@ -161,16 +163,16 @@ default TTL = 300 (5 mins)
 ### <a name="create-a-dns-zone"></a>创建 DNS 区域
 
 1. 登录到 Azure 门户
-1. 在“中心”菜单上，单击“新建”>“网络”，并单击“DNS 区域”以打开“创建 DNS 区域”边栏选项卡。
+1. 在“中心”菜单上，单击“新建”>“网络”，然后单击“DNS 区域”以打开“创建 DNS 区域”边栏选项卡。
 
     ![DNS 区域](./media/dns-domain-delegation/dns.png)
 
-1. 在“创建 DNS 区域”边栏选项卡上，输入以下值，并单击“创建”：
+1. 在“创建 DNS 区域”边栏选项卡上，输入以下值，然后单击“创建”：
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
    |**Name**|partners.contoso.net|DNS 区域的名称|
-   |**订阅**|[订阅]|选择要在其中创建应用程序网关的订阅。|
+   |**订阅**|[你的订阅]|选择要在其中创建应用程序网关的订阅。|
    |**资源组**|**使用现有：**contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|美国西部||
 
@@ -191,7 +193,7 @@ Azure DNS 自动在包含所分配名称服务器的区域中创建权威 NS 记
 
 1. 导航到 Azure 门户中的 **contoso.net** DNS 区域。
 1. 单击“+ 记录集”
-1. 在“添加记录集”边栏选项卡中，输入以下值，并单击“确定”：
+1. 在“添加记录集”边栏选项卡中，输入以下值，然后单击“确定”：
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
@@ -306,3 +308,4 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 [Manage DNS zones](dns-operations-dnszones.md)
 
 [Manage DNS records](dns-operations-recordsets.md)
+

@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 10/18/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
+
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 
@@ -149,3 +150,4 @@ SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工�
 ## <a name="next-steps"></a>后续步骤
 
 有关报告的概述，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。
+
