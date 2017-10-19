@@ -346,7 +346,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 - 配置单元脚本文件，**partitionweblogs.hql**，被存储在 Azure 存储帐户中（由 scriptLinkedService 指定，调用 AzureStorageLinkedService），并位于容器 `adfgetstarted` 中的脚本文件夹中。
 - `defines` 部分用于指定以配置单元配置值传递到配置单元脚本的运行时设置（例如，$`{hiveconf:inputtable}`，`${hiveconf:partitionedtable}`）。
 
-每个转换活动的 typeProperties 节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击“数据转换活动”[](#data-transformation-activities)中的转换活动。
+每个转换活动的 typeProperties 节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
 
 有关创建此管道的完整演练，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-powershell.md)。 
 
