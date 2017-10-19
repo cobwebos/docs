@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 18f5aea960bca34699d2d265d4801797291a3e3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 18f5aea960bca34699d2d265d4801797291a3e3a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/25/2017
+
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
-集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。 
+集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的版本 2 数据工厂。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
@@ -30,20 +31,20 @@ ms.lasthandoff: 10/11/2017
 本文档介绍了如何创建和配置自承载 IR。
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>安装自承载 IR 的高级步骤
-1.  创建自承载集成运行时。 下面是 PowerShell 示例： 
+1.  创建自承载集成运行时。 下面是 PowerShell 示例：
 
     ```powershell
-    New-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
 2.  下载和安装自承载集成运行时（在本地计算机上）。
-3.  检索身份验证密钥并使用密钥注册自承载集成运行时。 下面是 PowerShell 示例： 
+3.  检索身份验证密钥并使用密钥注册自承载集成运行时。 下面是 PowerShell 示例：
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
-    
+
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
-在本地和云之间移动数据时，该活动使用自承载集成运行时将数据从本地数据源传输到云，反之亦然。 
+在本地和云之间移动数据时，该活动使用自承载集成运行时将数据从本地数据源传输到云，反之亦然。
 
 下面是使用自承载 IR 复制的步骤摘要的高级数据流：
 
@@ -66,7 +67,7 @@ ms.lasthandoff: 10/11/2017
 - 即使使用 **ExpressRoute**，也要将数据源视为本地数据源（位于防火墙之后）。 使用自承载集成运行时在服务和数据源之间建立连接。
 - 即使数据存储位于 **Azure IaaS 虚拟机**上的云中，也必须使用自承载集成运行时。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 - 支持的**操作系统**版本有 Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。 **不支持在域控制器**上安装自承载集成运行时。
 - 需要 **.NET Framework 4.6.1 或更高版本**。 如果在 Windows 7 计算机上安装自承载集成运行时，请安装 .NET Framework 4.6.1 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](/dotnet/framework/get-started/system-requirements)。
@@ -77,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="installation-best-practices"></a>安装最佳做法
 可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载 MSI 安装程序包来安装自承载集成运行时。 请参阅文章[在本地和云之间移动数据](tutorial-hybrid-copy-powershell.md)以获取分步说明。
-  
+
 - 在主机上为自承载集成运行时配置电源计划，从而让计算机不要休眠。 如果主机进入休眠状态，则自承载集成运行时将转为离线。
 - 定期备份与自承载集成运行时相关的凭据。
 
@@ -103,14 +104,14 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
-一个自承载集成运行时可与多台本地计算机相关联。 这些计算机称为节点。 至多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下： 
+一个自承载集成运行时可与多台本地计算机相关联。 这些计算机称为节点。 至多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：
 1. 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与 Azure 数据工厂集成的云数据中的单点故障，从而确保最多 4 个节点的连续性。
 2. 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
 
-如[教程](tutorial-hybrid-copy-powershell.md)中所述，可以通过简单地从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时软件，并通过从 New-AzureRmDataFactoryV2IntegrationRuntimeKey cmdlet 中获取的任一身份验证密钥进行注册来关联多个节点 
+如[教程](tutorial-hybrid-copy-powershell.md)中所述，可以通过简单地从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时软件，并通过从 New-AzureRmDataFactoryV2IntegrationRuntimeKey cmdlet 中获取的任一身份验证密钥进行注册来关联多个节点
 
 > [!NOTE]
-> 不需要为关联每个节点而创建新的自承载集成运行时。 
+> 不需要为关联每个节点而创建新的自承载集成运行时。
 
 ## <a name="system-tray-icons-notifications"></a>系统托盘图标/通知
 如果将游标移动到系统托盘图标/通知消息上，可以查看自承载集成运行时状态的详细信息。
@@ -137,7 +138,7 @@ ms.lasthandoff: 10/11/2017
 >
 > 对于部分云数据库（例如，Azure SQL 数据库、Azure Data Lake 等），可能需要在其防火墙配置中将自承载集成运行时计算机的 IP 地址列入白名单。
 
-### <a name="copy-data-from-a-source-to-a-sink"></a>将数据从源复制到接收器 
+### <a name="copy-data-from-a-source-to-a-sink"></a>将数据从源复制到接收器
 确保在企业防火墙、自承载集成运行时计算机上的 Windows 防火墙和数据存储上正确启用防火墙规则。 启用这些规则可以让自承载集成运行时成功连接到源和接收器。 为复制操作涉及的每个数据存储启用规则。
 
 例如，若要从**本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器**，请执行以下步骤：
@@ -200,8 +201,8 @@ ms.lasthandoff: 10/11/2017
               <proxy bypassonlocal="true" proxyaddress="http://proxy.domain.org:8888/" />
         </defaultProxy>
     </system.net>
-    ``` 
-    
+    ```
+
     允许在代理标记中使用其他属性，以指定所需设置（如 scriptLocation）。 关于语法，请参阅[代理元素（网络设置）](https://msdn.microsoft.com/library/sa91de1e.aspx)。
 
     ```xml
@@ -221,7 +222,7 @@ ms.lasthandoff: 10/11/2017
 2.  打开集成运行时配置管理器时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器”>“应用程序和服务日志”>“Microsoft 集成运行时”下，会看到错误消息，例如以下错误：
 
     ```
-    Unable to connect to the remote server 
+    Unable to connect to the remote server
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
