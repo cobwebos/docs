@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 6bfce3d4ec243779229cc4f39e1c22149229a66a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 6bfce3d4ec243779229cc4f39e1c22149229a66a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/06/2017
+
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>快速入门：在 Azure AD 登录页中添加公司品牌元素
 许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory (Azure AD) 提供了此功能，允许用户使用自己的公司徽标和自定义的颜色方案来自定义登录页外观。 登录页是登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时显示的页面。 用户与此页进行交互以输入其凭据。
@@ -82,11 +83,11 @@ Azure AD 登录为用户提供当关闭并重新打开其浏览器时保持登�
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
 
-   ![打开“用户管理”](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
+   ![打开“用户管理”](./media/customize-branding/user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“公司品牌元素”。
 4. 在“用户和组 - 公司品牌元素”边栏选项卡上，选择“编辑”命令。
 
-    ![编辑自定义品牌元素](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
+    ![编辑自定义品牌元素](./media/customize-branding/edit-branding.png)
 5. 修改要自定义的元素。 所有元素都是可选的。
 6. 单击“保存” 。
 
@@ -97,11 +98,11 @@ Azure AD 登录为用户提供当关闭并重新打开其浏览器时保持登�
 1. 使用目录的全局管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 2. 在文本框中选择“用户和组”，然后按 Enter。
 
-   ![打开“用户管理”](./media/active-directory-branding-localize-azure-portal/user-management.png)
+   ![打开“用户管理”](./media/customize-branding/user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“公司品牌元素”。
 4. 在“用户和组 - 公司品牌元素”边栏选项卡上，选择“添加语言”命令。
 
-    ![添加特定于语言的品牌元素](./media/active-directory-branding-localize-azure-portal/add-language.png)
+    ![添加特定于语言的品牌元素](./media/customize-branding/add-language.png)
 5. 修改要自定义的元素。 所有元素都是可选的。
 6. 单击“保存” 。
 
