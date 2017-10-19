@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 03/10/2017
 ms.author: xerners
 ms.openlocfilehash: c85b8f8434d1e837ac96ac63b9b37f990677ed6e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C：将登录添加到 Node.js Web 应用
 
@@ -299,7 +299,7 @@ app.get('/logout', function(req, res){
 
 这些方法详述如下：
 - `/` 路由将重定向到 `index.ejs` 视图，并在请求中传递用户（如果存在）。
-- ph x="1" /> 路由首先验证你是否经过身份验证（具体实施见下）， 它随后将传递用户在请求中，以便你可以获取有关用户的其他信息。
+- `/account` 路由首先验证你是否经过身份验证（具体实施见下）， 然后在请求中传递用户，以便你获取该用户的其他信息。
 - `/login` 路由从 `passport-azure-ad` 调用 `azuread-openidconnect` 验证器。 如果不成功，该路由会将用户重定向回 `/login`。
 - `/logout` 直接调用 `logout.ejs`（及其路由）。 此操作会清除 Cookie，然后将用户返回到 `index.ejs`。
 
@@ -332,7 +332,7 @@ app.listen(3000);
 
 ## <a name="create-the-views-and-routes-in-express-to-call-your-policies"></a>在 Express 中创建调用策略所需的视图和路由
 
-`app.js` 现已完成。 只需添加路由和视图，以便调用登录和注册策略。 这些还处理`/logout`和`/login`你创建的路由。
+`app.js` 现已完成。 只需添加路由和视图，以便调用登录和注册策略。 这些策略也会处理你所创建的 `/logout` 和 `/login` 路由。
 
 在根目录下创建 `/routes/index.js` 路由。
 
@@ -362,7 +362,7 @@ exports.list = function(req, res){
 
 这些简单的路由会将请求一路传递到视图。 请求中包括用户（如果存在）。
 
-在根目录下创建 `/views/index.ejs` 视图。 这是一个简单的页面，用于调用登录和注销策略。 也可将其用于获取帐户信息。 请注意，在请求中传递用户时，可以使用条件性的 `if (!user)`，提供用户已登录的证据。
+在根目录下创建 `/views/index.ejs` 视图。 这是一个简单的页面，用于调用登录和注销策略。也可将其用于获取帐户信息。 请注意，在请求中传递用户时，可以使用条件性的 `if (!user)`，提供用户已登录的证据。
 
 ```JavaScript
 <% if (!user) { %>
