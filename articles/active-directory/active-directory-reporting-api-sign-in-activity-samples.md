@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 10/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
 ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/17/2017
+
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Azure Active Directory 登录活动报告 API 示例
 本主题包含在有关 Azure Active Directory 报告 API 的主题集合中。  
-Azure AD 报告向你提供了一个允许使用代码或相关工具访问登录活动数据的 API。  
-本主题的作用域是为你提供的示例代码**登录活动 API**。
+Azure AD 报告向你提供了一个允许你使用代码或相关工具访问登录活动数据的 API。  
+本主题用于向你提供**登录活动 API** 的示例代码。
 
 请参阅：
 
@@ -33,7 +34,7 @@ Azure AD 报告向你提供了一个允许使用代码或相关工具访问登�
 
 
 ## <a name="prerequisites"></a>先决条件
-需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)，才能使用本主题中的示例。  
+需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)，然后才能使用本主题中的示例。  
 
 ## <a name="powershell-script"></a>PowerShell 脚本
     # This script will require the Web Application and permissions setup in Azure Active Directory
@@ -81,10 +82,11 @@ Azure AD 报告向你提供了一个允许使用代码或相关工具访问登�
 ## <a name="executing-the-script"></a>执行脚本
 完成脚本编辑后，运行该脚本并确认从审核日志报告返回预期的数据。
 
-此脚本以 JSON 格式从登录报告返回输出。 它还将创建具有相同输出的 `SigninActivities.json` 文件。 可通过修改脚本以从其他报告返回数据来进行实验，并注释掉不需要的输出格式。
+此脚本以 JSON 格式从登录报告返回输出。 它还将创建具有相同输出的 `SigninActivities.json` 文件。 你可通过修改脚本以从其他报告返回数据来进行实验，并注释掉你不需要的输出格式。
 
 ## <a name="next-steps"></a>后续步骤
 * 是否要自定义本主题中的示例？ 请查看 [Azure Active Directory 登录活动 API 参考](active-directory-reporting-api-sign-in-activity-reference.md)。 
-* 如果想要查看使用 Azure Active Directory 报告 API 的完整概述，请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
-* 如果要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
+* 如果你想要查看使用 Azure Active Directory 报告 API 的完整概述，请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
+* 如果你要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
+
 

@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2a1b7b87df2cd8fa2e98f217480b46f5f6334297
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 2a1b7b87df2cd8fa2e98f217480b46f5f6334297
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/17/2017
+
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的登录活动报告错误代码
 
@@ -100,4 +101,5 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 如需更多详细信息，请参阅 [Azure Active Directory 门户中的登录活动报告](active-directory-reporting-activity-sign-ins.md)。
+
 
