@@ -113,7 +113,7 @@ public IDictionary<string, string> Execute(
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
      <li>单击“确定”以创建该项目 <b></b> 。</li>
    </ol>
-2. 单击“工具”指向“NuGet 包管理器”，并单击“程序包管理器控制台”。************
+2. 单击**“工具”**指向**“NuGet 包管理器”**，并单击**“程序包管理器控制台”**。
 3. 在“包管理器控制台”中，执行以下命令导入 **Microsoft.Azure.Management.DataFactories**。
 
     ```PowerShell
