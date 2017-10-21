@@ -17,11 +17,12 @@ ms.topic: article
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14cd30f4f9ed77dca369452a680d621eb81d5a4e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 709541a88b2b15924b93c630693ad7a3f276e29c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/25/2017
+
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>将基于时间的 Oozie 协调器与 HDInsight 中的 Hadoop 配合使用以定义工作流和协调作业
 在本文中，学习如何定义工作流和协调器，以及如何基于时间触发协调器作业。 阅读本文前，浏览[将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]很有帮助。 除了 Oozie，还可以使用 Azure 数据工厂计划作业。 要了解 Azure 数据工厂，请参阅[将 Pig 和 Hive 用于数据工厂](../data-factory/transform-data.md)。
@@ -662,7 +663,8 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
     # killOozieJob($oozieJobId)
     ```
 
-    如果要运行这些附加的功能，请删除这些 # 号。
+如果要运行这些附加的功能，请删除这些 # 号。
+
 9. 如果 HDinsight 群集是 2.1 版的，请将“https://$clusterName.azurehdinsight.net:443/oozie/v2/”替换为“https://$clusterName.azurehdinsight.net:443/oozie/v1/”。 HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
 10. 单击“运行脚本” 或按 **F5** 以运行该脚本。 输出结果会类似于：
 
@@ -761,3 +763,4 @@ $conn.close()
 [img-runworkflow-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+
