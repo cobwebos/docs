@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/23/2017
 ms.author: bwren
+ms.openlocfilehash: 50713d69f6dce6b7b154b6b4a6df3f679eb7b7c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 10b7f3ad23d9c5451bc7ff82b8927c260230f6da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>转换到 Azure Log Analytics 新查询语言
 
 > [!NOTE]
@@ -50,7 +48,7 @@ ms.lasthandoff: 08/28/2017
 |                        | Type=Event Computer=RegEx("@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
 | 日期比较        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
 |                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &#124; where TimeGenerated between (datetime(2017-05-01) .. datetime(2017-05-31)) |
-| 布尔比较     | Type=Heartbeat IsGatewayInstalled=false  | 检测信号 | where IsGatewayInstalled == false |
+| 布尔比较     | Type=Heartbeat IsGatewayInstalled=false  | 检测信号 \| where IsGatewayInstalled == false |
 | 排序                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | Event \| sort by Computer asc, EventLog desc, EventLevelName asc |
 | 区别               | Type=Event &#124; dedup Computer \| select Computer | Event &#124; summarize by Computer, EventLog |
 | 扩展列         | Type=Perf CounterName="% Processor Time" &#124; EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION | Perf &#124; where CounterName == "% Processor Time" \| extend Utilization = iff(CounterValue > 50, "HIGH", "LOW") |
@@ -65,4 +63,3 @@ ms.lasthandoff: 08/28/2017
 ## <a name="next-steps"></a>后续步骤
 - 查看使用新查询语言的[查询编写教程](https://go.microsoft.com/fwlink/?linkid=856078)。
 - 若要深入了解新查询语言的所有命令、运算符和函数，请参阅[查询语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。  
-
