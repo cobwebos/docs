@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/19/2017
+ms.date: 10/11/2017
 ms.author: larryfr
+ms.openlocfilehash: d1f629ffb4ec3e6473e0a9a87c4e397d63310e9a
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 10dc8789e8f4a2b27fd3a4c6fec2ab28c674170a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入 HDFS
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 07/20/2017
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
-可以在开发工作站上安装 Java 和 JDK 时设置以下环境变量。 不过，你应该检查它们是否存在并且包含系统的正确值。
+可以在开发工作站上安装 Java 和 JDK 时设置以下环境变量。 不过，应该检查它们是否存在并且包含系统的正确值。
 
 * `JAVA_HOME` - 应该指向 JDK 的安装目录。
 * `PATH` - 应该包含以下路径：
@@ -80,8 +79,12 @@ components:
     constructorArgs:
       - 1000
 
+  # Rotate files when they hit 5 MB
   - id: "rotationPolicy"
-    className: "org.apache.storm.hdfs.bolt.rotation.NoRotationPolicy"
+    className: "org.apache.storm.hdfs.bolt.rotation.FileSizeRotationPolicy"
+    constructorArgs:
+      - 5
+      - "MB"
 
   - id: "fileNameFormat"
     className: "org.apache.storm.hdfs.bolt.format.DefaultFileNameFormat"
@@ -137,13 +140,15 @@ bolts:
 
 默认情况下，Storm on HDInsight 不会在 Storm 的类路径中包含 HdfsBolt 用来与 Azure 存储或 Data Lake Store 通信的组件。 使用以下脚本操作可将这些组件添加到群集上 Storm 的 `extlib` 目录：
 
-|脚本 URI | 脚本要应用到的节点| 参数 | | `https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh` | Nimbus、Supervisor | 无 |
+* 脚本 URI：`https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh`
+* 要应用于的节点：Nimbus、Supervisor
+* 参数：无
 
 有关在群集中使用此脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](./hdinsight-hadoop-customize-cluster-linux.md)文档。
 
 ## <a name="build-and-package-the-topology"></a>生成和打包拓扑
 
-1. 从 [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) 将示例项目下载到你的开发环境。
+1. 从 [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) 将示例项目下载到开发环境。
 
 2. 从命令提示符、终端或 Shell 会话将目录更改为所下载项目的根目录。 若要生成和打包拓扑，请使用以下命令：
    
@@ -182,7 +187,7 @@ bolts:
     > [!IMPORTANT]
     > 本示例假设群集将 Azure 存储帐户用作默认存储。 如果群集使用 Azure Data Lake Store，请改用 `hdfs.url: adl:///`。
     
-    若要保存文件，请使用 __Ctrl + X__，然后输入 __Y__，最后按 __Enter__。 此文件中的值用于设置 Data Lake Store URL 和数据写入到的目录名称。
+    要保存文件，请使用 __Ctrl + X__，并输入 __Y__，最后按 __Enter__。 此文件中的值用于设置 Data Lake Store URL 和数据写入到的目录名称。
 
 3. 使用以下命令启动拓扑：
    
@@ -201,13 +206,11 @@ bolts:
 以下列表是由前面的命令所返回的数据的示例：
 
     Found 30 items
-    -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
-    -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-1-1488568404567.txt
-    -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-10-1488568408678.txt
-    -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-11-1488568411636.txt
-    -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-12-1488568411884.txt
-    -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-13-1488568412603.txt
-    -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-14-1488568415055.txt
+    -rw-r-----+  1 sshuser sshuser       488000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
+    -rw-r-----+  1 sshuser sshuser       444000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-1-1488568404567.txt
+    -rw-r-----+  1 sshuser sshuser       502000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-10-1488568408678.txt
+    -rw-r-----+  1 sshuser sshuser       582000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-11-1488568411636.txt
+    -rw-r-----+  1 sshuser sshuser       464000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-12-1488568411884.txt
 
 ## <a name="stop-the-topology"></a>停止拓扑
 
@@ -222,5 +225,4 @@ Storm 拓扑会一直运行，直到被停止或群集被删除。 若要停止�
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用 Storm 写入 Azure 存储和 Azure Data Lake Store 后，接下来请学习其他 [HDInsight 的 Storm 示例](hdinsight-storm-example-topology.md)。
-
 
