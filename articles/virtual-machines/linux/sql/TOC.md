@@ -1,6 +1,6 @@
 # 概述
 ## [Linux SQL Server VM](sql-server-linux-virtual-machines-overview.md)
-## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)
+## [定价](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)
 ## [常见问题](sql-server-linux-faq.md)
 
 # 入门
