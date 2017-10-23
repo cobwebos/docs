@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
-ms.openlocfilehash: a992fa17a07d6167297c4cf5fe9fb3b58181d7df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/20/2017
-
+ms.openlocfilehash: a11ba47d6ec69d31360e9142b7bce97803809c57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-query-action"></a>查询操作入门
 通过使用查询操作，可使用批处理和数组完成工作流，以便：
@@ -50,7 +49,9 @@ ms.lasthandoff: 01/20/2017
     此操作将输出仅包含满足筛选要求的结果的新数组。
 6. 单击工具栏左上角保存，逻辑应用将保存并发布（激活）。
 
-## <a name="query-action"></a>查询操作
+\*如果调用 HTTP 终结点并接收 JSON 响应，请使用 _Parse JSON_ 操作分析 JSON 响应。 如果不执行此步骤，_Filter Array_ 将仅看到正文而不了解 JSON 有效负载的结构。
+
+## <a name="query-action"></a>Query 操作
 下面是此连接器支持的操作的详细信息。 连接器具有一个可能的操作。
 
 | 操作 | 说明 |
@@ -80,5 +81,4 @@ ms.lasthandoff: 01/20/2017
 
 ## <a name="next-steps"></a>后续步骤
 现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
-
 

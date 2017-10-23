@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
 ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>为 Azure 应用商店创建产品/服务的一般先决条件
 了解推进其他产品/服务过程所需的一般、以业务流程为中心的先决条件。
@@ -26,13 +26,11 @@ ms.lasthandoff: 07/11/2017
 ## <a name="ensure-that-you-are-registered-as-a-seller-with-microsoft"></a>确保向 Microsoft 注册为卖家
 有关向 Microsoft 注册卖家帐户的详细说明，请转到[帐户创建和注册](marketplace-publishing-accounts-creation-registration.md)。
 
-* 
-            **如果公司已在开发人员中心中注册为卖家，并且希望创建新的产品/服务**，则使用完成开发人员中心注册所使用的相同电子邮件 ID 登录到发布门户。 为了使开发人员中心和发布门户相互链接，必需执行此步骤。
-* 
-            **如果公司已在开发人员中心中注册为卖家，并且希望编辑现有产品/服务**，则使用管理员帐户或在发布门户中添加为共同管理员的帐户登录到发布门户。 下面提供了添加共同管理员帐户的步骤。
+* **如果公司已在开发人员中心中注册为卖家，并且希望创建新的产品/服务**，则使用完成开发人员中心注册所使用的相同电子邮件 ID 登录到发布门户。 为了使开发人员中心和发布门户相互链接，必需执行此步骤。
+* **如果公司已在开发人员中心中注册为卖家，并且希望编辑现有产品/服务**，则使用管理员帐户或在发布门户中添加为共同管理员的帐户登录到发布门户。 下面提供了添加共同管理员帐户的步骤。
 
 ## <a name="steps-to-add-a-co-admin-in-the-publishing-portal"></a>在发布门户中添加共同管理员的步骤
-发布门户的管理员可添加公司的其他成员，这些成员在发布门户中以共同管理员身份处理应用程序。 **假设你是管理员，**下面给出是的步骤添加共同管理员。
+发布门户的管理员可添加公司的其他成员，这些成员在发布门户中以共同管理员身份处理应用程序。 **假设你是管理员，**下面提供了添加共同管理员的步骤。
 
 > [!NOTE]
 > 对于新用户，在发布门户中添加共同管理员之前，请确保已在发布门户中创建至少一个应用程序。 这是必需的，因为“发布者”选项卡仅在发布门户中创建至少一个应用程序后显示。
@@ -51,7 +49,7 @@ ms.lasthandoff: 07/11/2017
 8. 如果遇到任何开发人员中心注册问题，请使用此[链接](https://developer.microsoft.com/en-us/windows/support)提出票证。
 
 ## <a name="steps-to-delete-a-co-admin-in-the-publishing-portal"></a>在发布门户中删除共同管理员的步骤
-**假设你是管理员，**下面给出是的步骤删除共同管理员。
+**假设你是管理员，**下面提供了删除共同管理员的步骤。
 
 1. 使用管理员电子邮件 ID 登录到发布门户。
 2. 导航到“发布者”->依次选择帐户->“管理员” -> “共同管理员”。

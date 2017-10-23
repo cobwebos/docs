@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: bwren
 ms.openlocfilehash: 4e56998382610ad3d7224e6a8de5aee5419ebe43
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、异常和执行时间
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 08/18/2017
 * **依赖项：**有关应用程序对其他组件的调用的数据，包括：
   * 通过 HttpClient、OkHttp 和 RestTemplate (Spring) 发出的 **REST 调用**。
   * 通过 Jedis 客户端发出的 **Redis** 调用。 如果调用时间长于 10 秒，代理还会提取调用参数。
-  * **[JDBC 调用](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** -MySQL、 SQL Server、 PostgreSQL、 SQLite、 Oracle DB 或 Apache Derby DB。 支持“executeBatch”调用。 对于 MySQL 和 PostgreSQL，如果调用时间长于 10 秒，代理将报告查询计划。
+  * **[JDBC 调用](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - MySQL、SQL Server、PostgreSQL、SQLite、Oracle DB 或 Apache Derby DB。 支持“executeBatch”调用。 对于 MySQL 和 PostgreSQL，如果调用时间长于 10 秒，代理将报告查询计划。
 * **捕获的异常：**代码处理的异常相关数据。
 * **方法执行时间：**有关执行特定方法所花费的时间的数据。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/18/2017
 1. 在运行 Java 服务器的计算机上[下载该代理](https://aka.ms/aijavasdk)。
 2. 编辑应用程序服务器启动脚本，并添加以下 JVM：
    
-    `javaagent:`*在代理 JAR 文件的完整路径*
+    `javaagent:`*代理 JAR 文件的完整路径*
    
     例如，在 Linux 计算机上的 Tomcat 中：
    

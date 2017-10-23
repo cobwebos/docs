@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
 ms.openlocfilehash: 0301f71c76872714aa1bf727a6c21dd7a63db036
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Azure Mobile Engagement Android SDK 的高级配置
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字
           android:name="engagement:agent:settings:mode"
           android:value="0" />
 
-然后，可以添加`CheckBoxPreference`在你首选项布局中以下所示：
+然后，可在首选项布局中添加 `CheckBoxPreference`，如下所示：
 
     <CheckBoxPreference
       android:key="engagement:enabled"

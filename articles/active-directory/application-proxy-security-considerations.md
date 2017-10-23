@@ -15,14 +15,12 @@ ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: 031632aa9e01c66e836d607d588ededb7140589f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 4eef4f00bb407f97a68d09a39f3e99d1bc325d0e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
 本文介绍了在使用 Azure Active Directory 应用程序代理时，能够保证用户和应用程序安全的组件。
@@ -87,7 +85,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 应用程序代理服务监视试图访问应用程序和网络的流量。 如果请求远程访问应用程序的设备数量激增，Microsoft 就会限制对网络的访问。 
 
-Microsoft 统一监视各个应用程序和订阅的流量模式。 如果某应用程序收到的请求数高于正常水平，那么请求访问应用程序将会在短时间内遭到拒绝。 如果跨整个订阅收到的请求数高于正常水平，那么请求访问任何应用程序都会遭到拒绝。 这一预防措施可以防止应用程序服务器因远程访问请求而重载，以便本地用户能够一直访问应用程序。 
+Microsoft 统一监视各个应用程序和订阅的流量模式。 如果某应用程序收到的请求数高于正常水平，那么请求访问应用程序将会在短时间内遭到拒绝。 如果跨整个订阅收到的请求数高于正常水平，那么请求访问任何应用都会遭到拒绝。 这一预防措施可以防止应用程序服务器因远程访问请求而重载，以便本地用户能够一直访问应用程序。 
 
 ## <a name="under-the-hood"></a>揭秘
 
@@ -187,4 +185,3 @@ Azure AD 应用程序代理由两个部分组成：
 [使用 Azure AD 应用程序代理时的网络拓扑注意事项](application-proxy-network-topology-considerations.md)
 
 [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
-

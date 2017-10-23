@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: bwren
+ms.openlocfilehash: 5b4b31b58c7a4bcb93277333502bc082da2062ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>使用 HTTP 数据收集器 API 将数据发送到 Log Analytics
+# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将数据发送到 Log Analytics
 本文说明如何使用 HTTP 数据收集器 API 从 REST API 客户端将数据发送到 Log Analytics。  它说明对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Log Analytics 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
+
+> [!NOTE]
+> Log Analytics HTTP 数据收集器 API 以公共预览版形式提供。
 
 ## <a name="concepts"></a>概念
 可以使用 HTTP 数据收集器 API 从任何可以调用 REST API 的客户端将数据发送到 Log Analytics。  这可能是 Azure 自动化中从 Azure 或另一个云收集管理数据的 runbook，也可能是使用 Log Analytics 合并并分析数据的备用管理系统。
@@ -92,7 +94,7 @@ POST\n1024\napplication/json\nx-ms-date:Mon, 04 Apr 2016 08:00:00 GMT\n/api/logs
 Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
-以下部分中的示例都具有示例代码，可帮助你创建授权标头。
+后续部分中的示例提供了示例代码，可帮助你创建授权标头。
 
 ## <a name="request-body"></a>请求正文
 消息正文必须采用 JSON 格式。 它必须包括一个或多个记录，其中包含采用以下格式的属性名称和值对：
@@ -185,7 +187,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 | 400 |错误的请求 |UnsupportedContentType |内容类型未设为“application/json”。 |
 | 403 |禁止 |InvalidAuthorization |服务未能对请求进行身份验证。 验证工作区 ID 和连接密钥是否有效。 |
 | 404 |未找到 | | 提供的 URL 不正确，或请求太大。 |
-| 429 |请求过多 | | 服务遇到来自你帐户的大量数据。 请稍后重试请求。 |
+| 429 |请求过多 | | 服务遇到来自帐户的大量数据。 请稍后重试请求。 |
 | 500 |内部服务器错误 |UnspecifiedError |服务遇到内部错误。 请重试请求。 |
 | 503 |服务不可用 |ServiceUnavailable |服务当前不可用，无法接收请求。 请重试请求。 |
 
@@ -325,7 +327,8 @@ namespace OIAPIExample
         {
             // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
-            string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
+            var jsonBytes = Encoding.UTF8.GetBytes(message);
+            string stringToHash = "POST\n" + jsonBytes.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;
 
@@ -462,4 +465,3 @@ post_data(customer_id, shared_key, body, log_type)
 
 ## <a name="next-steps"></a>后续步骤
 - 使用[日志搜索 API](log-analytics-log-search-api.md) 从 Log Analytics 存储库中检索数据。
-

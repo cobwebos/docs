@@ -18,10 +18,10 @@ ms.date: 08/09/2017
 ms.author: jgao
 ms.custom: hdiseo17may2017
 ms.openlocfilehash: d06bf8ff4a21e4f4b29593bac32bfa2b32601fc4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>使用 Microsoft Avro Library 序列化 Hadoop 中的数据
 
@@ -71,7 +71,7 @@ Microsoft Avro Library 以 NuGet 包发行，可以使用以下过程在 Visual 
 [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) 中提供了 Microsoft Avro Library 源代码。
 
 ## <a name="compile-schemas-using-avro-library"></a>使用 Avro Library 编译架构
-Microsoft Avro Library 包含代码生成实用工具，可让你自动根据先前定义的 JSON 架构来创建 C# 类型。 代码生成实用工具不是以二进制可执行文件的形式分发的，但你可使用以下过程轻松生成：
+Microsoft Avro Library 包含代码生成实用工具，可让你自动根据先前定义的 JSON 架构来创建 C# 类型。 代码生成实用工具不是以二进制可执行文件的形式分发的，但可通过以下过程轻松生成：
 
 1. 从 <a href="http://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">Microsoft .NET SDK For Hadoop</a> 下载包含最新版 HDInsight SDK 源代码的 ZIP 文件。 （单击“下载”图标，而不是“下载”选项卡。）
 2. 将 HDInsight SDK 解压缩到已安装 .NET Framework 4.0 并连接到 Internet 的计算机上的目录，以下载必要的依赖项 NuGet 包。 下面我们假设源代码已解压缩到 C:\SDK。

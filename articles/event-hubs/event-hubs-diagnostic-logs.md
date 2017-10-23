@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/27/2017
-ms.author: sethm;babanisa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: bcc8427d57a001f73d321fbf35c5226a047b68d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-diagnostic-logs"></a>事件中心诊断日志
 
@@ -29,6 +28,7 @@ ms.lasthandoff: 07/08/2017
 * **[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 可配置诊断日志，更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
+
 诊断日志默认已禁用。 启用诊断日志：
 
 1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”。
@@ -136,5 +136,4 @@ Example:
 ## <a name="next-steps"></a>后续步骤
 * [事件中心简介](event-hubs-what-is-event-hubs.md)
 * [事件中心 API 概述](event-hubs-api-overview.md)
-* [事件中心入门](event-hubs-csharp-ephcs-getstarted.md)
-
+* [事件中心入门](event-hubs-dotnet-standard-getstarted-send.md)

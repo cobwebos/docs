@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: bwren
 ms.openlocfilehash: 9c205465981fabdbb696cdc44f765532bbb992b5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>为 SCOM 使用 Application Insights 的应用程序性能监视
 如果使用 System Center Operations Manager (SCOM) 管理服务器，可在 [Azure Application Insights](app-insights-asp-net.md) 的帮助下监视性能并诊断性能问题。 Application Insights 监视 Web 应用程序的传入请求、传出 REST 和 SQL 调用、异常和日志跟踪。 它提供带有度量值图和智能警报的仪表板，以及针对此遥测的功能强大的搜索和分析查询。 
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/18/2017
      
      以后可更改这些设置。
      
-     ![在“Application Insights 设置”选项卡上，单击“登录”并为 Azure 提供 Microsoft 帐户凭据。 然后选择订阅、 资源组和资源。](./media/app-insights-scom/060.png)
+     ![在“Application Insights 设置”选项卡上，单击“登录”并为 Azure 提供 Microsoft 帐户凭据。 然后选择订阅、资源组和资源。](./media/app-insights-scom/060.png)
 3. 完成该向导。
    
     ![单击创建](./media/app-insights-scom/070.png)

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 3325aa48db36426a8cf1c9859390c357267ee5fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 4580075df9fce74664b22aa24065ba1885692384
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -133,8 +132,9 @@ cmdlet：
 
 `Initialize-ADSyncDomainJoinedComputerSync` cmdlet：
 
-- 使用 Active Directory PowerShell 模块，依赖于域控制器中运行的 Active Directory Web 服务。 运行 Windows Server 2008 R2 和更高版本的域控制器支持 Active Directory Web 服务。
+- 使用 Active Directory PowerShell 模块和 AD DS 工具，这些模块和工具依赖于域控制器中运行的 Active Directory Web 服务。 运行 Windows Server 2008 R2 和更高版本的域控制器支持 Active Directory Web 服务。
 - 仅受 MSOnline PowerShell 模块 1.1.166.0 版支持。 要下载此模块，请使用此[链接](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)。   
+- 如果未安装 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 将失败。  可以通过服务器管理器（在“功能”-“远程服务器管理工具”-“角色管理工具”下）安装 AD DS 工具。
 
 对于运行 Windows Server 2008 或更低版本的域控制器，可使用以下脚本创建服务连接点。
 
@@ -583,4 +583,3 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access-automatic-device-registration-setup/12.png
-

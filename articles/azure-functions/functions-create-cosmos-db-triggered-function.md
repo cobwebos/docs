@@ -13,15 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 10/02/2017
 ms.author: glenga
 ms.custom: 
+ms.openlocfilehash: 1ff4c2e024faba777fc479b3cd5864e097bbfce1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 04da2dda961eb2c6bc53f0aed1c0cd12372a2332
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -66,11 +65,11 @@ ms.lasthandoff: 09/25/2017
     | 集合名称 | Items | 要监视的集合的名称。 |
     | **创建租赁集合（如果不存在）** | 已选中 | 集合不存在，因此创建集合。 |
 
-4. 选择“Azure Cosmos DB 帐户连接”标签旁边的“新建”，然后选择“+ 新建”。 
+4. 选择“Azure Cosmos DB 帐户连接”标签旁边的“新建”，然后选择现有的 Cosmos DB 帐户或“+ 新建”。 
  
     ![配置 Azure Cosmos DB 连接](./media/functions-create-cosmos-db-triggered-function/functions-create-CosmosDB.png)
 
-6. 使用表中指定的“新建帐户”设置。
+6. 创建新的 Cosmos DB 帐户时，请按照表中的指定使用“新帐户”设置。
 
     | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -151,4 +150,3 @@ ms.lasthandoff: 09/25/2017
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 有关队列存储触发器的详细信息，请参阅 [Azure Functions 存储队列绑定](functions-bindings-storage-queue.md)。
-

@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: 29f245fdeaadd6f95755f7fd7564dfa7f6b2981f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 8c6ff4a6b8617cda9b12be060c7c7bed62cb3f44
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -50,13 +49,13 @@ Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运�
 
 在内部，群集中每个节点都具有一个名称，该名称在群集配置期间分配。 若要查找群集名称，请参阅 Ambari Web UI 上的“主机”页面。 还可以使用以下方法从 Ambari REST API 返回主机列表：
 
-    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-将 **PASSWORD** 替换为管理员帐户的密码，并将 **CLUSTERNAME** 替换为群集名称。 此命令返回包含群集中主机列表的 JSON 文档。 Jq 用于为每个主机提取 `host_name` 元素值。
+将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入管理员帐户的密码。 此命令返回包含群集中主机列表的 JSON 文档。 Jq 用于为每个主机提取 `host_name` 元素值。
 
 如果要查找某个特定服务的节点名称，可以查询该组件的 Ambari。 例如，若要查找 HDFS 名称节点的主机，请使用以下命令：
 
-    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
 此命令返回一个描述该服务的 JSON 文档，jq 只拉取主机的 `host_name` 值。
 
@@ -146,26 +145,26 @@ HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认�
 
 可使用 Ambari 检索群集的默认存储配置。 使用以下命令可使用 curl 检索 HDFS 配置信息，并使用 [jq](https://stedolan.github.io/jq/) 进行筛选：
 
-```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
+```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
 
 > [!NOTE]
-> 这会返回应用到服务器的第一个配置 (`service_config_version=1`)，其中包含此信息。 可能需要列出所有配置版本，以查找最新的版本。
+> 此命令会返回应用到服务器的第一个配置 (`service_config_version=1`)，其中包含此信息。 可能需要列出所有配置版本，以查找最新的版本。
 
 此命令会返回类似于以下 URI 的值：
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net`（如果使用 Azure 存储帐户）。
 
-    帐户名称是 Azure 存储帐户的名称，而容器名称是作为群集存储器根目录的 blob 容器。
+    帐户名是 Azure 存储帐户的名称。 容器名称是作为群集存储的根的 blob 容器。
 
 * `adl://home`（如果使用 Azure Data Lake Store）。 要获取 Data Lake Store 名称，请使用以下 REST 调用：
 
-    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
+    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
     此命令返回以下主机名：`<data-lake-store-account-name>.azuredatalakestore.net`。
 
     要获取作为 HDInsight 根目录的存储中的目录，请使用以下 REST 调用：
 
-    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
+    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
 
     此命令返回如下所示的路径：`/clusters/<hdinsight-cluster-name>/`。
 
@@ -245,12 +244,11 @@ HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认�
 
 HDInsight 是一个托管服务。 如果 Azure 检测到群集问题，可以删除有故障的节点，并创建一个节点来取代它。 如果在群集节点上手动安装组件，则发生此操作时，这些组件不会保留。 应该改用 [HDInsight 脚本操作](hdinsight-hadoop-customize-cluster.md)。 脚本操作可用于进行以下更改：
 
-* 安装并配置服务或网站，如 Spark 或 Hue。
-* 安装并配置需要在群集中多个节点上更改配置的组件。 例如，必需的环境变量，创建日志目录，或创建配置文件。
+* 安装并配置服务或网站。
+* 安装并配置需要在群集中多个节点上更改配置的组件。
 
-脚本操作是 Bash 脚本。 该脚本在群集预配期间运行，可用于在群集上安装并配置其他组件。 提供了用于安装以下组件的示例脚本：
+脚本操作是 Bash 脚本。 该脚本在群集创建期间运行，用于安装并配置其他组件。 提供了用于安装以下组件的示例脚本：
 
-* [Hue](hdinsight-hadoop-hue-linux.md)
 * [Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [Solr](hdinsight-hadoop-solr-install-linux.md)
 
@@ -258,7 +256,7 @@ HDInsight 是一个托管服务。 如果 Azure 检测到群集问题，可以�
 
 ### <a name="jar-files"></a>jar 文件
 
-某些 Hadoop 技术以自包含 jar 文件形式提供，这些文件是包含函数，用作 MapReduce 作业的一部分，或在 Pig 或 Hive 内部使用。 虽然可以使用脚本操作安装这些技术，但通常不需要任何设置，预配后即可上传到群集，并直接使用。 如需确保组件在群集重置映像后仍存在，可将 jar 文件存储在群集的默认存储（WASB 或 ADL）中。
+某些 Hadoop 技术以自包含 jar 文件形式提供，这些文件是包含函数，用作 MapReduce 作业的一部分，或在 Pig 或 Hive 内部使用。 它们通常不需要进行任何设置，并可以在创建后上传到群集和直接使用。 如需确保组件在群集重置映像后仍存在，可将 jar 文件存储在群集的默认存储（WASB 或 ADL）中。
 
 例如，如果要使用 [DataFu](http://datafu.incubator.apache.org/) 的最新版本，可以下载包含项目的 jar，并将其上传到 HDInsight 群集。 然后按照 DataFu 文档（关于如何从 Pig 或 Hive 中使用它）操作。
 
@@ -282,4 +280,3 @@ HDInsight 是一个托管服务。 如果 Azure 检测到群集问题，可以�
 * [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-

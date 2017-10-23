@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: a33fb729cff5007e40820af696cfec823a3ecfde
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同步：防止意外删除
 本主题说明 Azure AD Connect 中的防止意外删除功能。
@@ -32,13 +32,13 @@ ms.lasthandoff: 08/03/2017
 * 已删除 OU 中的所有对象。
 * 已重命名某个 OU，因此其中的所有对象被视为超出同步范围。
 
-可以使用 PowerShell 的 `Enable-ADSyncExportDeletionThreshold` 进行更改的默认值是 500 个对象。 应对此值进行配置以适合组织的规模。 由于同步计划程序每隔 30 分钟运行一次，因此该值是 30 分钟内看到的删除数目。
+可以使用 PowerShell 的 `Enable-ADSyncExportDeletionThreshold` 进行更改的默认值是 500 个对象。 应将此值配置为符合组织的大小。 由于同步计划程序每隔 30 分钟运行一次，因此该值是 30 分钟内看到的删除数目。
 
 如果暂存了太多要导出到 Azure AD 的删除项目，就不会继续导出，并且会收到一封内容如下所示的电子邮件：
 
 ![有关防止意外删除的电子邮件](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
-> *你好（技术联系人）。标识同步服务在（时间）检测到删除数目超过了为（组织名称）配置的删除阈值。在此次标识同步运行期间，总共已发送（数目）个对象进行删除。这达到或超过了配置的删除阈值，即（数目）个对象。在继续之前，我们需要你确认应该处理这些删除。有关此电子邮件中所列错误的详细信息，请参阅“防止意外删除”。*
+> *Hello（技术联系人）。标识同步服务在（时间）检测到删除数目超过了为（组织名称）配置的删除阈值。在此次标识同步运行期间，总共已发送（数目）个对象进行删除。这达到或超过了配置的删除阈值，即（数目）个对象。在继续操作之前，我们需要你提供确认：应处理这些删除操作。有关此电子邮件中所列错误的详细信息，请参阅“防止意外删除”。*
 >
 > 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 08/03/2017
 2. 转到“连接器”。
 3. 选择 **Azure Active Directory** 类型的连接器。
 4. 在右侧的“操作”下，选择“搜索连接器空间”。
-5. 在“范围”下的弹出框中选择“连接断开起始时间”，并选择过去的一个时间。 单击“搜索”。 可以在此页上查看所有即将删除的对象。 单击每个项可以获取有关该对象的更多信息。 也可以单击“列设置”，添加要在网格中显示的其他属性。
+5. 在“范围”下的弹出框中选择“连接断开起始时间”，并选择过去的一个时间。 单击“搜索”。 此页提供所有即将删除的对象的视图。 单击每个项可以获取有关该对象的更多信息。 也可以单击“列设置”，添加要在网格中显示的其他属性。
 
 ![搜索连接器空间](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/searchcs.png)
 

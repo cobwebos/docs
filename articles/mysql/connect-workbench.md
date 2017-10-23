@@ -9,15 +9,13 @@ editor: seanli1988
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 08/23/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 024db86b8760c8edb8347679eec6c68ceab3cd35
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 20a1f31ce42abb924504c4008f85420fc49aec89
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 进行连接并查询数据
 本快速入门演示如何使用 MySQL Workbench 应用程序连接到 Azure Database for MySQL。 
 
@@ -34,17 +32,17 @@ ms.lasthandoff: 08/25/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 在 Azure 门户中的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器，例如 **myserver4demo**。
+2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 myserver4demo）。
 
 3. 单击服务器名称。
 
-4. 选择服务器的“属性”页。 记下“服务器名称”和“服务器管理员登录名”。
+4. 选择服务器的“属性”页，然后记下“服务器名称”和“服务器管理员登录名”。
 
  ![Azure Database for MySQL 服务器名称](./media/connect-workbench/1-server-properties-name-login.png)
  
-5. 如果忘了服务器的登录信息，请导航到“概览”页，以查看服务器管理员登录名并重置密码（如果需要）。
+5. 如果忘了服务器的登录信息，请导航到“概述”页，以查看服务器管理员登录名并重置密码（如果需要）。
 
-## <a name="connect-to-the-server-using-mysql-workbench"></a>使用 MySQL Workbench 连接服务器 
+## <a name="connect-to-the-server-by-using-mysql-workbench"></a>使用 MySQL Workbench 连接服务器 
 若要使用 GUI 工具 MySQL Workbench 连接到 Azure MySQL 服务器，请执行以下操作：
 
 1.  启动计算机上的 MySQL Workbench 应用程序。 
@@ -68,10 +66,10 @@ ms.lasthandoff: 08/25/2017
 
 5.   在“MySQL 连接”列表中，单击与服务器对应的磁贴并等待建立连接。
 
-6.   将打开一个新的 SQL 选项卡，该选项卡包含一个可在其中键入查询的空白编辑器。
-
-    > [!NOTE]
-    > 默认情况下，SSL 连接安全性是必需的，并且在 Azure Database for MySQL 服务器上强制执行。 通常，不需要对 SSL 证书进行额外的配置，MySQL Workbench 即可连接到服务器。 有关 SSL 的详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。  如果需要禁用 SSL，请访问 Azure 门户，然后单击“连接安全性”页来禁用“强制实施 SSL 连接”切换按钮。
+        将打开一个新的 SQL 选项卡，该选项卡包含一个可在其中键入查询的空白编辑器。
+    
+        > [!NOTE]
+        > 默认情况下，SSL 连接安全性是必需的，并且在 Azure Database for MySQL 服务器上强制执行。 通常，不需要对 SSL 证书进行额外的配置，MySQL Workbench 即可连接到服务器。 有关 SSL 的详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。  如果需要禁用 SSL，请访问 Azure 门户，然后单击“连接安全性”页来禁用“强制实施 SSL 连接”切换按钮。
 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>创建表、插入数据、读取数据、更新数据、删除数据
 1. 将示例 SQL 代码复制并粘贴到一个空白 SQL 选项卡中，以阐释一些示例数据。
@@ -116,4 +114,3 @@ ms.lasthandoff: 08/25/2017
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./concepts-migrate-import-export.md)
-

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
 ms.openlocfilehash: 6867e4f910970121df3858516c6bab3114c3c6f9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-partners-to-deliver-widevine-licenses-to-azure-media-services"></a>使用合作伙伴将 Widevine 许可证传送到 Azure 媒体服务
 ## <a name="overview"></a>概述
-Microsoft Azure Media Services，你可以传送使用根据常用加密 (CENC) 规范加密的 Widevine DRM 保护的 MPEG-DASH。
+使用 Microsoft Azure 媒体服务，可以传送根据通用加密 (CENC) 规范加密、受 Widevine DRM 保护的 MPEG-DASH。
 
 从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
 

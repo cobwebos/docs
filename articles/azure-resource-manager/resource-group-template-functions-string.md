@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
+ms.openlocfilehash: eeb3e46d9b8a5822b1aea3cc62bb214f3c3fec43
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 9d007e2ce7cc4291eeebe26b887874085c6438b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的字符串函数
 
@@ -35,6 +34,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [empty](#empty)
 * [endsWith](#endswith)
 * [first](#first)
+* [guid](#guid)
 * [indexOf](#indexof)
 * [last](#last)
 * [lastIndexOf](#lastindexof)
@@ -853,6 +853,89 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
+## <a name="guid"></a>guid
+
+`guid (baseString, ...)`
+
+基于以参数形式提供的值创建一个采用全局唯一标识符格式的值。
+
+### <a name="parameters"></a>parameters
+
+| 参数 | 必选 | 类型 | 说明 |
+|:--- |:--- |:--- |:--- |
+| baseString |是 |字符串 |哈希函数中用于创建 GUID 的值。 |
+| 根据需要使用其他参数 |否 |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
+
+### <a name="remarks"></a>备注
+
+当需要以全局唯一标识符格式创建值时，此功能十分有用。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。
+
+返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 36 个字符。 并非全局唯一。
+
+以下示例演示如何使用 guid 创建常用级别唯一值。
+
+仅对订阅唯一
+
+```json
+"[guid(subscription().subscriptionId)]"
+```
+
+仅对资源组唯一
+
+```json
+"[guid(resourceGroup().id)]"
+```
+
+仅对资源组的部署唯一
+
+```json
+"[guid(resourceGroup().id, deployment().name)]"
+```
+
+### <a name="return-value"></a>返回值
+
+包含 36 个字符的全局唯一标识符格式的字符串。
+
+### <a name="examples"></a>示例
+
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json)从 guid 返回结果：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "guidPerSubscription": {
+            "value": "[guid(subscription().subscriptionId)]",
+            "type": "string"
+        },
+        "guidPerResourceGroup": {
+            "value": "[guid(resourceGroup().id)]",
+            "type": "string"
+        },
+        "guidPerDeployment": {
+            "value": "[guid(resourceGroup().id, deployment().name)]",
+            "type": "string"
+        }
+    }
+}
+```
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
+```
+
 <a id="indexof" />
 
 ## <a name="indexof"></a>indexOf
@@ -911,7 +994,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
-| firstString | int | 2 |
+| firstString | int | #N/A |
 | lastString | int | 0 |
 | notFound | int | -1 |
 
@@ -1050,7 +1133,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
-| firstString | int | 2 |
+| firstString | int | #N/A |
 | lastString | int | 0 |
 | notFound | int | -1 |
 
@@ -2232,5 +2315,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）。
-
 

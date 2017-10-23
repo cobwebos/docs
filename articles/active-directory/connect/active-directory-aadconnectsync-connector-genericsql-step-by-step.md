@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 3fdc1b405b95180d031aa4ad45b406f7fc149d8f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generic-sql-connector-step-by-step"></a>通用 SQL 连接器分步说明
-本主题是一份循序渐进的指南。 其中将会创建一个简单的示例 HR 数据库，并使用它导入一些用户及其组成员身份。
+本主题是一份循序渐进的指南。 其中会创建一个简单的示例 HR 数据库，然后使用它导入一些用户及其组成员身份。
 
 ## <a name="prepare-the-sample-database"></a>准备示例数据库
 在运行 SQL Server 的服务器上，运行[附录 A](#appendix-a) 中的 SQL 脚本。此脚本创建名为 GSQLDEMO 的示例数据库。 创建的数据库的对象模型如下图所示：  
@@ -62,7 +62,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="create-the-generic-sql-connector"></a>创建通用 SQL 连接器
 1. 在同步服务管理器 UI 中，依次选择“连接器”和“创建”。 选择“通用 SQL (Microsoft)”，并为它指定描述性的名称。  
    ![Connector1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector1.png)
-2. 找到在上一部分中创建的 DSN 文件并将其上传到服务器。 提供用于连接到数据库的凭据。  
+2. 找到在上一节中创建的 DSN 文件并将其上传到服务器。 提供用于连接到数据库的凭据。  
    ![Connector2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector2.png)
 3. 在本演练中，可以简单地说有两种对象类型：“用户”和“组”。
    ![Connector3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector3.png)

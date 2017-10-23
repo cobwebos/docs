@@ -16,10 +16,10 @@ ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 2ecd07faed785fa6aa179ac1cca35a70d965e1dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 此操作手册有助于：
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/03/2017
 * 设置基于风险的条件访问策略并测试这些策略的影响
 
 ## <a name="simulating-risk-events"></a>模拟风险事件
-本部分提供你步骤用于模拟以下风险事件类型：
+本部分向你提供模拟以下风险事件类型的步骤：
 
 * 从匿名 IP 地址登录（简单）
 * 从不熟悉的位置登录（中等）
@@ -74,7 +74,7 @@ Azure Active Directory Identity Protection：
 **若要模拟不可能前往异常位置，请执行以下步骤**：
 
 1. 使用标准浏览器，导航到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。  
-2. 输入你想要生成的不可能的距离风险事件的帐户的凭据。
+2. 输入你想要为其生成不可能前往风险事件的帐户的凭据。
 3. 更改用户代理。 可以在 Internet Explorer 中通过开发人员工具更改用户代理，或者在 Firefox 或 Chrome 中使用用户代理切换器加载项更改用户代理。
 4. 更改 IP 地址。 可以在不同的数据中心中通过使用 VPN、Tor 加载项或在 Azure 中启动新计算机更改 IP 地址。
 5. 像往常一样使用相同凭据并在上次登录后的数分钟内登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
@@ -109,7 +109,7 @@ Azure Active Directory Identity Protection：
 11. 单击“保存” 。
 12. 现在通过使用具有提升的风险级别的用户登录，可以测试基于风险的条件访问。 如果用户风险为中等，根据策略配置，登录将受阻止或强制你更改密码。 
     <br><br>
-    ![操作手册](./media/active-directory-identityprotection-playbook/201.png "操作手册")
+    ![演练手册](./media/active-directory-identityprotection-playbook/201.png "演练手册")
     <br>
 
 ## <a name="sign-in-risk"></a>登录风险
@@ -119,7 +119,7 @@ Azure Active Directory Identity Protection：
 2. 导航到 **Identity Protection**。
 3. 在主“Azure AD Identity Protection”边栏选项卡上，单击“设置”。 
 4. 在“门户设置”边栏选项卡上的“安全规则”下，单击“登录风险”。
-5. 在 * * 在风险登录 * * 边栏选项卡，选择**上**下**启用规则**。 
+5. 在“登录风险”边栏选项卡上的“启用规则”下，选择“开”。 
 6. 选择以下选项之一：
    
    a. 若要阻止，请选择“阻止登录”下的“中等”。

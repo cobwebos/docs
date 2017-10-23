@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.openlocfilehash: 8e2b5c704230ee2ba1395dc76a1551aaa8e7af7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C：构建 Windows 桌面应用
-通过使用 Azure Active Directory (Azure AD) B2C，只需几个简短的步骤即可将强大的自助服务标识管理功能添加到桌面应用。 本文将说明如何创建包括用户注册、 签入和配置文件管理的.NET Windows Presentation Foundation (WPF)"待办事项列表"应用。 该应用将支持使用用户名或电子邮件进行注册和登录。 该应用还将支持使用社交帐户（如 Facebook 和 Google）进行注册和登录。
+通过使用 Azure Active Directory (Azure AD) B2C，只需几个简短的步骤即可将强大的自助服务标识管理功能添加到桌面应用。 本文将说明如何创建 .NET Windows Presentation Foundation (WPF)“待办事项列表”应用，其中包括用户注册、登录和配置文件管理。 该应用将支持使用用户名或电子邮件进行注册和登录。 该应用还将支持使用社交帐户（如 Facebook 和 Google）进行注册和登录。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
 只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，然后继续执行本指南中的步骤。
@@ -289,7 +289,7 @@ private async void GetTodoList()
 ```
 
 ## <a name="sign-the-user-out"></a>注销用户
-最后，用户选择“注销”时，可以使用 MSAL 结束用户与该应用的会话。  使用 MSAL 时，清除令牌缓存中的所有令牌即可完成此操作：
+最后，用户选择“注销”时，可以使用 MSAL 结束用户与该应用的会话。使用 MSAL 时，清除令牌缓存中的所有令牌即可完成此操作：
 
 ```C#
 private void SignOut(object sender, RoutedEventArgs e)

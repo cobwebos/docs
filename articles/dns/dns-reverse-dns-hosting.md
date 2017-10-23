@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
 ms.openlocfilehash: 3e10b25d2f9b91c96af2958fef6dc6a4fdbff301
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hosting-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中托管反向 DNS 查找区域
 
@@ -246,7 +246,7 @@ Get-AzureRmDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -Reso
 
 是的。 完全支持在 Azure DNS 托管自己的 IP 范围的反向查找 (ARPA) 区域。
 
-按照本文所述步骤在 Azure DNS 中创建反向查找区域，然后使用 ISP [委托区域](dns-domain-delegation.md)。  然后，你可以在与其他记录类型相同的方式来管理每个反向查找的 PTR 记录。
+按照本文所述步骤在 Azure DNS 中创建反向查找区域，然后使用 ISP [委托区域](dns-domain-delegation.md)。  然后，便可以像处理其他记录类型一样，管理每个反向查找的 PTR 记录。
 
 ### <a name="how-much-does-hosting-my-reverse-dns-lookup-zone-cost"></a>托管反向 DNS 查找区域的成本是多少？
 

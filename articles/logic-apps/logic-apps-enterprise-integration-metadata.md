@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>在集成帐户中为逻辑应用管理项目元数据
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 
 1. 在逻辑应用中，添加触发器、用于合作伙伴的“集成帐户 - 集成帐户项目查找”操作和“HTTP”。
 
-    ![将触发器、 项目查找和"HTTP"添加到逻辑应用](media/logic-apps-enterprise-integration-metadata/image4.png)
+    ![将触发器、项目查找和“HTTP”添加到逻辑应用](media/logic-apps-enterprise-integration-metadata/image4.png)
 
 2. 若要检索 URI，请转到逻辑应用的代码视图。 逻辑应用定义应如以下示例所示：
 

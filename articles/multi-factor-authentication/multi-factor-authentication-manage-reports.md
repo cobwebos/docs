@@ -3,7 +3,7 @@ title: "用于 Azure MFA 的访问和使用情况报告 | Microsoft Docs"
 description: "介绍如何使用 Azure 多重身份验证功能 - 报告。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 3f6b33c4-04c8-47d4-aecb-aa39a61c4189
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: kgremban
+ms.author: joflore
+ms.reviewer: alexwe
+ms.openlocfilehash: 77d6742faadfaf3d7afccfbe888b910c80278737
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 42a87adef740cc2c1d77c9f02eef8aaa5f207258
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
-Azure 多重身份验证提供了几个报告供你和组织使用。 可以通过多重身份验证管理门户访问这些报告。 以下是可用报告的列表：
+
+Azure 多重身份验证提供了几个报告供你和组织使用。 可以通过多重身份验证管理门户访问这些报告。 下表列出了可用的报告：
 
 | 报表 | 说明 |
 |:--- |:--- |
@@ -34,6 +35,7 @@ Azure 多重身份验证提供了几个报告供你和组织使用。 可以通�
 | 已排队 |列出排队等待处理的报告及其状态。 报告完成后，将提供下载或查看报告的链接。 |
 
 ## <a name="view-reports"></a>查看报告
+
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左侧选择“Active Directory”。
 3. 选择这两个选项之一，具体取决于是否使用身份验证提供程序：
@@ -43,9 +45,17 @@ Azure 多重身份验证提供了几个报告供你和组织使用。 可以通�
 
 <center>![云](./media/multi-factor-authentication-manage-reports/report.png)</center>
 
+## <a name="powershell-reporting"></a>Powershell 报告
+
+使用后面的 Powershell 标识已注册 MFA 的用户。
+
+```Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
+
+使用后面的 Powershell 标识未注册 MFA 的用户。
+
+```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
 **其他资源**
 
 * [面向用户](end-user/multi-factor-authentication-end-user.md)
 * [MSDN 上的 Azure 多重身份验证](https://msdn.microsoft.com/library/azure/dn249471.aspx)
-

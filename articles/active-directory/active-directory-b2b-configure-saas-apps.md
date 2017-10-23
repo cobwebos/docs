@@ -16,10 +16,10 @@ ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
 ms.openlocfilehash: 149a493f7b369415f0a2726dd6a576f0195c13d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
  d. 要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
 
- e. 元数据文件转发给框支持团队，这将为你的单一登录配置。
+ e. 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
 
 3. 为了在 Azure AD 中启用自动用户设置，请在左窗格中选择“预配”，并选择“授权”。
 

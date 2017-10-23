@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/11/2017
 
     ![添加记录](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. 单击边栏选项卡顶部的“保存”以保存设置。 然后关闭边栏选项卡。
+3. 单击边栏选项卡顶部的“保存”以保存设置。 然后关闭该边栏选项卡。
 4. 将在角落中看到正在保存该记录。
 
     ![保存记录集](./media/dns-operations-recordsets-portal/saving150.png)
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 Azure 门户可用于从记录集中删除记录。 请注意，从记录集中删除最后一条记录不会删除记录集。
 
 1. 在记录集的“**记录集属性**”边栏选项卡中，搜索记录。
-2. 单击你想要删除的记录。 然后选择**删除**。
+2. 单击要删除的记录。 然后选择“删除”。
 
     ![删除记录](./media/dns-operations-recordsets-portal/removerecord500.png)
 

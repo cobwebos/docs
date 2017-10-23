@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>如何通过推送通知与应用程序的用户联系
 本文介绍了 **Mobile Engagement** 门户的“市场宣传”选项卡。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 有关详细信息，请参阅[创建 Azure Mobile Engagement 帐户](mobile-engagement-create.md)。
@@ -32,7 +32,7 @@ UI 的“市场宣传”部分是可以在其中创建/编辑/激活/完成/监�
 
 ## <a name="four-types-of-push-notifications"></a>推送通知的四种类型
 1. 公告 - 使你能够将广告消息发送给用户，这会将用户重定向到应用内的另一个位置，或者将他们带到应用外部的某个网页或应用商店。 
-2. 轮询-允许你从最终用户通过其命名为提问收集信息。
+2. 轮询 - 使你能够通过提问从最终用户收集信息。
 3. 数据推送 - 允许发送二进制或 base64 数据文件。 包含在数据推送中的信息会发送到应用程序，改变用户在应用中的当前体验。 应用程序需要能够处理数据推送中的数据。
 
 ## <a name="campaign-details"></a>市场活动详细信息
@@ -71,7 +71,7 @@ UI 的“市场宣传”部分是可以在其中创建/编辑/激活/完成/监�
      1. 直接单击通知上的关闭按钮。 
      2. 轻扫或删除通知。 
      3. 包含文本/Web 内容和投票的应用内通知通常分两步显示给应用用户。 用户首先会看到一个通知，当其单击它时，会看到随后的文本/Web/投票内容。 应用用户可以使用上述任一步骤退出通知，“高级”视图中的详细信息会捕获此操作。 
-5. **已操作** - 这指定由应用用户明确操作过的消息数量。 这是最有趣的数，因为这将告知多少应用程序用户已感兴趣的推送通知中的消息。 
+5. **已操作** - 这指定由应用用户明确操作过的消息数量。 这是最有意义的数字，因为这会显示有多少应用用户对你在通知中推送的消息感兴趣。 
 
 > [!NOTE]
 > 在 iOS 和 Windows 平台上，如果用户已打开应用，并且市场活动是一个“随时”市场活动，那么就有可能同时显示应用外通知和应用内通知。 这可能导致已显示数量高于已送达数量。 如果用户与操作进行了交互或操作了通知，那么甚至用户交互数量/已操作数量也可能会大于已送达数量。 

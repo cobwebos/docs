@@ -16,17 +16,16 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
 ms.custom: end-user
+ms.openlocfilehash: 87c92265d4f377e76d3697e6957c5f739413f2b4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: b701172c2345313e236a037f5aa16939cfaac440
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="register-for-self-service-password-reset"></a>注册自助密码重置
 
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置密码](active-directory-passwords-update-your-own-password.md)。
+> 你是否因登录时遇到问题而浏览至此？ 如果是这样，[可按以下方式更改和重置密码](active-directory-passwords-update-your-own-password.md)。
 
 作为最终用户，可以使用自助密码重置 (SSPR) 来重置密码或解锁帐户，而不需求助他人。 在使用此功能之前，必须注册身份验证方法或确认管理员填充的预定义身份验证方法。
 
@@ -67,4 +66,3 @@ ms.lasthandoff: 08/08/2017
 * [无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
 [Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "密码重置注册页，其中显示已注册的方法和“完成”按钮"
-

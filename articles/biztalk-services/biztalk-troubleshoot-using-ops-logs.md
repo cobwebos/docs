@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
 ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk 服务：利用操作日志进行故障排除
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
 ## <a name="what-are-the-operation-logs"></a>什么是操作日志
-操作日志是在 Azure 经典门户，您可以查看对你的 Azure 服务，包括 BizTalk 服务执行的操作的历史日志中可用的管理服务功能。 这允许查看与 BizTalk 服务订阅的管理操作相关的历史数据，时间可以追溯到 180 天前。
+操作日志是 Azure 经典门户中提供的一项管理服务功能，可让你查看针对 Azure 服务（包括 BizTalk 服务）执行的操作的历史日志。 这允许查看与 BizTalk 服务订阅的管理操作相关的历史数据，时间可以追溯到 180 天前。
 
 > [!NOTE]
 > 此功能只捕获 BizTalk 服务的管理操作的日志，例如服务的启动时间、备份时间等。 可跟踪此类操作，无论其通过 Azure 经典门户还是 [BizTalk 服务 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx) 执行，都是如此。 有关使用管理服务跟踪的操作的完整列表，请参阅[使用 Azure 管理服务跟踪的操作](#bizops)。<br/><br/>

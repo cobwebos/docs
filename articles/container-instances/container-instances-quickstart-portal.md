@@ -17,17 +17,15 @@ ms.workload: na
 ms.date: 09/25/2017
 ms.author: marsma
 ms.custom: mvc
+ms.openlocfilehash: 0179107ece1e150246ab40836783d810425be3ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 16ae3d77c084651416cbc3bb1c5d28fee5e9124b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
-可以通过 Azure 容器实例在 Azure 中轻松创建和管理容器。 在此快速入门教程中，将在 Azure 中创建容器，再通过公共 IP 地址将容器向 Internet 公开。 通过使用 Azure 门户完成此操作。 只需单击几下，就会在浏览器中看到以下图像：
+可以通过 Azure 容器实例在 Azure 中轻松创建和管理容器。 在此快速入门中，将在 Azure 中创建容器，再通过公共 IP 地址向 Internet 公开该容器。 通过使用 Azure 门户完成此操作。 只需单击几下，就会在浏览器中看到以下图像：
 
 ![在浏览器中显示的使用 Azure 容器实例部署的应用][aci-app-browser]
 
@@ -83,7 +81,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，从公共 Docker 中心存储库中的映像创建了 Azure 容器实例。 若要尝试使用 Azure 容器注册表自行生成容器并将其部署到 Azure 容器实例，请继续阅读 Azure 容器实例教程。
+在本快速入门中，从公共 Docker 中心存储库中的映像创建了 Azure 容器实例。 若要尝试使用 Azure 容器注册表自行生成容器并将其部署到 Azure 容器实例，请继续阅读 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](./container-instances-tutorial-prepare-app.md)

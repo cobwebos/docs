@@ -17,15 +17,15 @@ ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5e8d4fbd8afc54c8bbc1a9a71c66d7022a7d5986
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>从远程桌面连接运行 Pig 作业
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-本文档演练了如何使用 Pig 命令从到基于 Windows 的 HDInsight 群集的远程桌面连接运行 Pig Latin 语句。 Pig Latin 允许通过描述数据转换创建 MapReduce 应用程序，而不是创建映射和化简函数。
+本文档演练了如何使用 Pig 命令从到基于 Windows 的 HDInsight 群集的远程桌面连接运行 Pig Latin 语句。 Pig Latin 可让你通过描述数据转换来创建 MapReduce 应用程序，而不是创建映射和化简函数。
 
 > [!IMPORTANT]
 > 远程桌面只能在使用 Windows 作为操作系统的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/03/2017
 * 运行 Windows 10、Windows 8 或 Windows 7 的客户端计算机
 
 ## <a id="connect"></a>使用远程桌面进行连接
-为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)中的说明连接到该群集。
+为 HDInsight 群集启用远程桌面，并根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)中的说明连接到该群集。
 
 ## <a id="pig"></a>使用 Pig 命令
 1. 在建立远程桌面连接后，通过使用桌面上的图标来启动 **Hadoop 命令行**。
@@ -52,7 +52,7 @@ ms.lasthandoff: 08/03/2017
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
 
-    此命令会将 sample.log 文件的内容加载到 LOGS 文件中。 可以通过使用以下命令查看该文件的内容：
+    此命令会将 sample.log 文件的内容加载到 LOGS 文件中。 可以通过使用以下方法查看该文件的内容：
 
         DUMP LOGS;
 4. 通过应用正则表达式从每个记录中仅提取日志记录级别来转换数据：
@@ -84,7 +84,7 @@ ms.lasthandoff: 08/03/2017
         STORE RESULT into 'wasb:///example/data/pigout'
 
    > [!NOTE]
-   > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，会收到错误消息。
+   > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，则会收到错误消息。
    >
    >
 7. 若要退出 grunt 提示符，请输入以下语句。

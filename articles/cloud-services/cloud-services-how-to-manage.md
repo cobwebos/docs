@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
 ms.openlocfilehash: 2ee76dfcb579e53975b1f61a6590f8d78dc0961b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
 > [!div class="op_single_selector"]
@@ -88,16 +88,16 @@ ms.lasthandoff: 07/11/2017
 ## <a name="how-to-link-a-resource-to-a-cloud-service"></a>如何：将资源链接到云服务
 要显示云服务对其他资源的依赖性，可将 Azure SQL 数据库实例或存储帐户链接到云服务。 可以在“链接的资源”页上链接和取消链接资源，并在云服务仪表板上监视其使用情况。 如果链接的存储帐户启用了监视，可在云服务仪表板上监视“请求总数”。
 
-使用“链接”可将新的或现有的 SQL 数据库实例或存储帐户链接到云服务。 然后，可以缩放数据库以及正使用它在云服务角色**缩放**页。 （存储帐户可在使用率增加时自动缩放。）有关详细信息，请参阅[如何缩放云服务和链接的资源](cloud-services-how-to-scale.md)。
+使用“链接”可将新的或现有的 SQL 数据库实例或存储帐户链接到云服务。 然后即可在“缩放”页上缩放数据库以及正使用它的云服务角色。 （存储帐户可在使用率增加时自动缩放。）有关详细信息，请参阅[如何缩放云服务和链接的资源](cloud-services-how-to-scale.md)。
 
 还可在 Azure 经典门户的“数据库”节点中监视、管理和缩放数据库。
 
-从这个意义上说，“链接”某资源并不将应用连接到该资源。 如果使用“链接”创建新数据库，需将连接字符串添加到应用程序代码，并升级云服务 。 如果应用程序使用链接的存储帐户中的资源，则还需添加连接字符串。
+从这个意义上说，“链接”某资源并不将应用连接到该资源。 如果使用“链接”创建新数据库，则需要将连接字符串添加到应用程序代码，然后升级云服务。 如果应用程序使用链接的存储帐户中的资源，则还需添加连接字符串。
 
 以下过程描述了如何将部署在新 SQL 数据库服务器上的新 SQL 数据库实例链接到云服务。
 
 ### <a name="to-link-a-sql-database-instance-to-a-cloud-service"></a>将 SQL 数据库实例链接到云服务
-1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“云服务”。 然后单击云服务的名称打开仪表板。
+1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“云服务”。 然后单击云服务的名称以打开仪表板。
 2. 单击“链接的资源”。
 
     “链接的资源”页随即打开。
@@ -119,9 +119,9 @@ ms.lasthandoff: 07/11/2017
     链接完成时，可在云服务仪表板上监视链接的资源的状态。 有关缩放链接的 SQL 数据库的信息，请参阅[如何缩放云服务和链接的资源](cloud-services-how-to-scale.md)。
 
 ### <a name="to-unlink-a-linked-resource"></a>取消链接链接的资源
-1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“云服务”。 然后单击云服务的名称打开仪表板。
+1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“云服务”。 然后单击云服务的名称以打开仪表板。
 2. 单击“链接的资源”，并选择相应资源。
-3. 单击“取消链接”。 然后单击**是**在出现确认提示。
+3. 单击“取消链接”。 然后在出现确认提示时，单击“是”。
 
     取消链接 SQL 数据库对该数据库或应用程序与该数据库的连接没有任何影响。 仍可在 Azure 经典门户的“SQL 数据库”区域中管理该数据库。
 
@@ -139,9 +139,9 @@ ms.lasthandoff: 07/11/2017
 
     ![“删除”菜单](./media/cloud-services-how-to-manage/CloudServices_DeleteMenu.png)
 
-3. 若要删除部署，请单击“删除生产部署”或“删除过渡部署”。 然后，在出现确认提示时单击“是”。
+3. 若要删除部署，请单击“删除生产部署”或“删除过渡部署”。 然后在出现确认提示时单击“是”。
 4. 如果要删除云服务，请在需要时重复步骤 3 以删除其他部署。
-5. 要删除云服务，则单击“删除云服务”。 然后，在出现确认提示时单击“是”。
+5. 要删除云服务，则单击“删除云服务”。 然后在出现确认提示时单击“是”。
 
 > [!NOTE]
 > 如果为云服务配置了详细监视，那么在删除云服务时，Azure 不会从存储帐户中删除监视数据。 需要手动删除这些数据。 有关在何处查找指标表的信息，请参阅[如何监视云服务](cloud-services-how-to-monitor.md)中的“如何：在 Azure 经典门户外部访问详细监视数据”。

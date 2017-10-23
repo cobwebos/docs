@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/15/2017
 ms.author: jeedes
 ms.openlocfilehash: 6ad28cb3adaa63ddc3d3769a650d26ca6a7e2695
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>教程：Azure Active Directory 与 LinkedIn Learning 的集成
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LinkedIn 学习测试用户](#creating-a-linkedin-learning-test-user)** -若要测试 Azure AD 单一登录与 Britta 人 Simon。
+3. **[创建 LinkedIn Learning 测试用户](#creating-a-linkedin-learning-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

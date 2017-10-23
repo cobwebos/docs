@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
+ms.openlocfilehash: 96103e7014212ecaa3e4e9238ae3b9c7a851cca9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: e836ccd204ff06e1eb0494cb392e781f29fdf421
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions 的 host.json 参考
 
 *host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出可用的设置。 http://json.schemastore.org/host 上提供了 JSON 架构。
@@ -32,7 +30,7 @@ ms.lasthandoff: 09/29/2017
 
 以下示例 *host.json* 文件中指定的所有可能的选项。
 
-```javascript
+```json
 {
     "aggregator": {
         "batchSize": 1000,
@@ -101,7 +99,7 @@ ms.lasthandoff: 09/29/2017
 
 指定在[计算 Application Insights 的指标](functions-monitoring.md#configure-the-aggregator)时要聚合多少个函数调用。 
 
-```javascript
+```json
 {
     "aggregator": {
         "batchSize": 1000,
@@ -121,7 +119,7 @@ ms.lasthandoff: 09/29/2017
 
 控制 [Application Insights 中的采样功能](functions-monitoring.md#configure-sampling)。
 
-```javascript
+```json
 {
     "applicationInsights": {
         "sampling": {
@@ -141,7 +139,7 @@ ms.lasthandoff: 09/29/2017
 
 [事件中心触发器和绑定](functions-bindings-event-hubs.md)的配置设置。
 
-```javascript
+```json
 {
     "eventHub": {
       "maxBatchSize": 64,
@@ -161,7 +159,7 @@ ms.lasthandoff: 09/29/2017
 
 作业宿主要运行的函数列表。  空数组表示运行所有函数。  仅供在[本地运行](functions-run-local.md)时使用。 在函数应用中，请使用 *function.json* `disabled` 属性，而不要在 *host.json* 中使用此属性。
 
-```javascript
+```json
 {
     "functions": [ "QueueProcessor", "GitHubWebHook" ]
 }
@@ -171,7 +169,7 @@ ms.lasthandoff: 09/29/2017
 
 指示所有函数的超时持续时间。 在消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。 在应用服务计划中没有限制，默认值为 null（表示无超时）。
 
-```javascript
+```json
 {
     "functionTimeout": "00:05:00"
 }
@@ -181,7 +179,7 @@ ms.lasthandoff: 09/29/2017
 
 [http 触发器和绑定](functions-bindings-http-webhook.md)的配置设置。
 
-```javascript
+```json
 {
     "http": {
         "routePrefix": "api",
@@ -203,7 +201,7 @@ ms.lasthandoff: 09/29/2017
 
 作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure Functions 中运行时，如果省略 `id`，会自动生成 ID。
 
-```javascript
+```json
 {
     "id": "9f4ea53c5136457d883d685e57164f08"
 }
@@ -213,7 +211,7 @@ ms.lasthandoff: 09/29/2017
 
 控制 [ILogger 对象](functions-monitoring.md#write-logs-in-c-functions)或 [context.log](functions-monitoring.md#write-logs-in-javascript-functions) 写入的日志的筛选。
 
-```javascript
+```json
 {
     "logger": {
         "categoryFilter": {
@@ -238,7 +236,7 @@ ms.lasthandoff: 09/29/2017
 
 [存储队列触发器和绑定](functions-bindings-storage-queue.md)的配置设置。
 
-```javascript
+```json
 {
     "queues": {
       "maxPollingInterval": 2000,
@@ -262,7 +260,7 @@ ms.lasthandoff: 09/29/2017
 
 [服务总线触发器和绑定](functions-bindings-service-bus.md)的配置设置。
 
-```javascript
+```json
 {
     "serviceBus": {
       "maxConcurrentCalls": 16,
@@ -282,7 +280,7 @@ ms.lasthandoff: 09/29/2017
 
 单一实例锁行为的配置设置。 有关详细信息，请参阅[有关单一实例支持的 GitHub 问题](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)。
 
-```javascript
+```json
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -305,7 +303,7 @@ ms.lasthandoff: 09/29/2017
 
 使用 `TraceWriter` 对象创建的日志的配置设置。 请参阅 [C# 日志记录](functions-reference-csharp.md#logging)和 [Node.js 日志记录](functions-reference-node.md#writing-trace-output-to-the-console)。 
 
-```javascript
+```json
 {
     "tracing": {
       "consoleLevel": "verbose",
@@ -323,11 +321,26 @@ ms.lasthandoff: 09/29/2017
 
 应该监视其更改情况的一组[共享代码目录](functions-reference-csharp.md#watched-directories)。  确保当这些目录中的代码发生更改时，函数会拾取这些更改。
 
-```javascript
+```json
 {
     "watchDirectories": [ "Shared" ]
 }
 ```
+
+## <a name="durabletask"></a>durableTask
+
+[Durable Functions](durable-functions-overview.md) 的[任务中心](durable-functions-task-hubs.md)名称。
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub"
+  }
+}
+```
+
+任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](durable-functions-task-hubs.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -336,4 +349,3 @@ ms.lasthandoff: 09/29/2017
 
 > [!div class="nextstepaction"]
 > [查看环境变量中的全局设置](functions-app-settings.md)
-

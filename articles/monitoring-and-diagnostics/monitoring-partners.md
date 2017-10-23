@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 8/16/2017
 ms.author: johnkem
 ms.openlocfilehash: 46b6ec12655b64b8fce6e103d5d71a4e8021890e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
 | --- | --- | --- |
-| [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [![Partner Logo][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |
-| [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![Partner Logo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |
-| [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
-| [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
+| [![合作伙伴徽标][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![合作伙伴徽标][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![合作伙伴徽标][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
+| [![合作伙伴徽标][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![合作伙伴徽标][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![合作伙伴徽标][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |
+| [![合作伙伴徽标][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![合作伙伴徽标][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![合作伙伴徽标][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |
+| [![合作伙伴徽标][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![合作伙伴徽标][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![合作伙伴徽标][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
+| [![合作伙伴徽标][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![合作伙伴徽标][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![合作伙伴徽标][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 Alert Logic Log Manager 通过 Azure Monitor API 收集 VM、应用程序和 Azure 平台日志进行安全分析和数据保留，包括 Azure 活动日志。  使用这些信息可以检测不法行为，确保满足合规性要求。
@@ -88,7 +88,7 @@ PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提
 [查看相关文档。][pagerduty-doc]
 
 ## <a name="sciencelogic"></a>ScienceLogic
-ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任何技术。  ScienceLogic 在一个平台中提供必要的规模、安全性、自动化和复原性，简化不断扩展的管理任务（管理持续运行的 IT 资源、服务和应用程序）。  ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。  使用 ScienceLogic 可以实时查看 Azure 服务和资源，以便了解何时某个功能不正常工作，并可以更快地解决它。 还可将 Azure 与其他云、数据中心系统以及服务一起管理。
+ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任何技术。  ScienceLogic 在一个平台中提供必要的规模、安全性、自动化和复原性，简化不断扩展的管理任务（管理持续运行的 IT 资源、服务和应用程序）。  ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。  ScienceLogic 提供 Azure 服务和资源的实时可见性，让你了解某些内容出现故障并能更快解决。 还可将 Azure 与其他云、数据中心系统以及服务一起管理。
 
 [了解详细信息。][sciencelogic-doc]
 

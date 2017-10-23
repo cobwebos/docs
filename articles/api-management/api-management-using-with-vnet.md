@@ -12,14 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 09/19/2017
 ms.author: apimpm
+ms.openlocfilehash: 4ff634e039080fc15e7f4f44bc3ab42f280f3ad5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: f152682f4d584f5a94d1f757009892047c19c69d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -29,48 +28,59 @@ ms.lasthandoff: 09/13/2017
 > [!NOTE]
 > Azure API 管理同时支持经典 VNet 和 Azure Resource Manager VNet。
 >
->
+
+## <a name="prerequisites"></a>先决条件
+
+若要执行本文中所述的步骤，必须具有：
+
++ 一个有效的 Azure 订阅。
+
+    [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
++ APIM 实例。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ VNET 连接在“高级”和“开发人员”层级中可用，请按[升级和缩放](upgrade-and-scale.md#upgrade-and-scale)主题中所述切换到这些层级之一。
 
 ## <a name="enable-vpn"></a>启用 VNET 连接
-> [!NOTE]
-> **高级**层和**开发人员**层中提供了 VNET 连接。 要在层之间切换，请在 Azure 门户中打开 API 管理服务，并打开“规模和定价”选项卡。在“定价层”部分下，选择“高级”层或“开发人员”层，并单击“保存”。
->
-
-要启用 VNET 连接，请在 Azure 门户中打开 API 管理服务，并打开“虚拟网络”页。
-
-![API 管理的虚拟网络菜单][api-management-using-vnet-menu]
-
-选择所需的访问类型：
-
-* **外部**：可以通过外部负载均衡器从公共 Internet 访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
-
-![公共对等互连][api-management-vnet-public]
-
-* **内部**：只能通过内部负载均衡器从虚拟网络内部访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
-
-![专用对等互连][api-management-vnet-private]
-
-此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了在配置的区域中设置的 Azure 订阅中可用的经典和 Resource Manager 虚拟网络。
 
 > [!NOTE]
-> 上图中的**服务终结点**包括网关/代理、发布者门户、开发人员门户、GIT 和直接管理终结点。
-> 上图中的**管理终结点**是托管在服务上用于通过 Azure 门户和 Powershell 管理配置的终结点。
-> 另请注意：即使图示中显示了各个终结点的 IP 地址，但 API 管理服务**仅**对其配置的主机名作出响应。
+>  VNET 连接在“高级”和“开发人员”层级中可用，请按[升级和缩放](upgrade-and-scale.md#upgrade-and-scale)主题中所述切换到这些层级之一。
 
-> [!IMPORTANT]
-> 将 Azure API 管理实例部署到 Resource Manager VNET 时，该服务必须位于除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的 Resource Manager VNET 子网，则部署会失败。
->
->
+### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>使用 Azure 门户启用 VNET 连接
 
-![选择 VPN][api-management-setup-vpn-select]
+1. 在 [Azure 门户](https://portal.azure.com/)中导航到 APIM 实例。
+2. 选择“自定义域和 SSL”。
+3. 配置要在虚拟网络内部署的 API 管理实例。
 
-单击屏幕顶部的“保存”。
+    ![API 管理的虚拟网络菜单][api-management-using-vnet-menu]
+4. 选择所需的访问类型：
+    
+    * **外部**：可以通过外部负载均衡器从公共 Internet 访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
+    
+    ![公共对等互连][api-management-vnet-public]
+    
+    * **内部**：只能通过内部负载均衡器从虚拟网络内部访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
+    
+    ![专用对等互连][api-management-vnet-private]`
+
+    此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了在配置的区域中设置的 Azure 订阅中可用的经典和 Resource Manager 虚拟网络。
+    
+    > [!NOTE]
+    > 上图中的**服务终结点**包括网关/代理、发布者门户、开发人员门户、GIT 和直接管理终结点。
+    > 上图中的**管理终结点**是托管在服务上用于通过 Azure 门户和 Powershell 管理配置的终结点。
+    > 另请注意：即使图示中显示了各个终结点的 IP 地址，但 API 管理服务**仅**对其配置的主机名作出响应。
+    
+    > [!IMPORTANT]
+    > 将 Azure API 管理实例部署到 Resource Manager VNET 时，该服务必须位于除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的 Resource Manager VNET 子网，则部署会失败。
+    >
+
+    ![选择 VPN][api-management-setup-vpn-select]
+
+5. 单击屏幕顶部的“保存”。
 
 > [!NOTE]
 > 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。  
 > 当 API 管理从**外部**移动到**内部**时或者反向移动时，VIP 地址也会更改。
 >
-
 
 > [!IMPORTANT]
 > 如果从 VNET 中删除 API 管理或更改在其中部署的 API 管理，则之前使用的 VNET 可最多 4 小时保持锁定状态。 在此期间，无法删除该 VNET 或向其部署新资源。
@@ -157,4 +167,3 @@ ms.lasthandoff: 09/13/2017
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
 [Network Security Group]: ../virtual-network/virtual-networks-nsg.md
-

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: gangan
 ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sku-series-unavailable"></a>SKU 系列不可用
 在某些地区，某些 SKU 未自动在新订阅上可用。  当[某个区域中引入更强大的 SKU 而传统 SKU 的受欢迎程度下降](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/)时，可能会出现这种情况。
-消息"*某些 SKU 系列不可用于此区域的选定订阅*"创建支持请求以增加计算核心配额时显示。
+当创建支持请求以增加计算核心配额时，会显示消息“对于该区域的选定订阅，某些 SKU 系列不可用”。
 
 可以在 [按区域的 Azure 服务](https://azure.microsoft.com/regions/#services) 页上查看 SKU 可用性。 
 

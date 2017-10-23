@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm
 ms.openlocfilehash: c8142d8edfd3a527b13d655bac21acf5332f2d14
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建服务总线资源
 
 本文介绍如何使用 Azure Resource Manager 模板、PowerShell 和服务总线资源提供程序创建和部署服务总线资源。
 
-Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关编写 Azure Resource Manager 模板的详细信息，以及模板格式的讨论，请参阅 [Azure Resource Manager 模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 资源管理器模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关编写 Azure Resource Manager 模板的详细信息，以及模板格式的讨论，请参阅 [Azure Resource Manager 模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 > [!NOTE]
 > 本文中的示例演示如何使用 Azure Resource Manager 来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问 [Azure 快速启动模板库][Azure Quickstart Templates gallery]并搜索“服务总线”。
@@ -161,7 +161,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 Login-AzureRmAccount
 ```
 
-系统会提示你登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅。
+系统会提示登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅。
 
 ```powershell
 Get-AzureRMSubscription
@@ -201,7 +201,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>创建部署
 
-若要创建新部署，请运行 `New-AzureRmResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 Mode 参数，则将使用默认值 Incremental。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)。
+若要创建新部署，请运行 `New-AzureRmResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)。
 
 以下命令会提示在 PowerShell 窗口中输入三个参数：
 
@@ -221,7 +221,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-若要运行[完整](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)部署，请将 Mode 参数设置为 Complete：
+要运行[完整](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)部署，请将 **Mode** 参数设置为 **Complete**：
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

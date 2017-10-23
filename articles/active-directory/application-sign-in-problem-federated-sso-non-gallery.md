@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 3afc7bca878caef424d3fa3c64aa17df0fda7de5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的非库应用程序时出现的问题
 
@@ -105,7 +105,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 **解决方法**
 
-若要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
+要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 

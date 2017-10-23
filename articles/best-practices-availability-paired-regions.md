@@ -12,16 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2017
+ms.date: 09/27/2017
 ms.author: raynew
+ms.openlocfilehash: 27491e34ad9e47aec2f424cfc439fad614f0e435
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2984daa3b99fa9c858d43c3dcfb930add2040e2e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
 ## <a name="what-are-paired-regions"></a>什么是配对区域？
@@ -51,9 +49,8 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 日本 |日本东部 |日本西部 |
 | 巴西 |巴西南部 (1) |美国中南部 |
 | 美国政府 |美国政府爱荷华州 |美国政府弗吉尼亚州 |
-| 美国政府 |美国政府弗吉尼亚州 |美国德克萨斯州政府 |
-| 美国政府 |美国德克萨斯州政府 |美国亚利桑那州政府 |
 | 美国政府 |美国亚利桑那州政府 |美国德克萨斯州政府 |
+| 美国国防部 |美国 DoD 东部 |美国 DoD 中部 |
 | 英国 |英国西部 |英国南部 |
 | 德国 |德国中部 |德国东北部 |
 
@@ -99,4 +96,3 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 ![数据](./media/best-practices-availability-paired-regions/9Orange.png)
 **数据驻留** - 一个区域驻留在与其配对区域相同的地理位置（巴西南部除外），以符合税务和执法管辖范围方面的数据驻留要求。
-

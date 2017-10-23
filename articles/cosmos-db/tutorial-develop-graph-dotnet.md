@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: denlee
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 94909fd1db426267eb60e5d7f4d753de82ca0377
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: b1419e5aad9446b9d96450cfad79b200cda9a518
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用图形 API 进行开发
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值，及图形数据库，它们均受益于 Azure Cosmos DB 最核心的全球分布和水平缩放功能。 
@@ -42,7 +41,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 Gremlin 是功能性编程语言，支持写入操作 (DML) 与查询和遍历操作。 本文提供有关 Gremlin 入门的几个示例。 有关 Azure Cosmos DB 中可用的 Gremlin 功能的详细演练，请参阅 [Gremlin 查询](gremlin-support.md)。 
 
 ## <a name="prerequisites"></a>先决条件
-请确保你具有以下内容：
+请确保具有以下内容：
 
 * 有效的 Azure 帐户。 如果没有，可以注册 [免费帐户](https://azure.microsoft.com/free/)。 
     * 或者，也可以在本教程中使用 [Azure DocumentDB Emulator](local-emulator.md)。
@@ -54,8 +53,8 @@ Gremlin 是功能性编程语言，支持写入操作 (DML) 与查询和遍历�
 
 > [!TIP]
 > * 已有一个 Azure Cosmos DB 帐户？ 如果有，请跳到[设置 Visual Studio 解决方案](#SetupVS)
-> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，你可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
-> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
+> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
+> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，并直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
 >
 > 
 
@@ -63,11 +62,11 @@ Gremlin 是功能性编程语言，支持写入操作 (DML) 与查询和遍历�
 
 ## <a id="SetupVS"></a>设置 Visual Studio 解决方案
 1. 在计算机上打开 Visual Studio。
-2. 在“文件”菜单中，选择“新建”，然后选择“项目”。
-3. 在“新建项目”对话框中，选择“模板” / “Visual C#” / “控制台应用(.NET Framework)”，为项目命名，然后单击“确定”。
-4. 在“解决方案资源管理器”中，右键单击 Visual Studio 解决方案下方的新控制台应用程序，然后单击“管理 NuGet 包...”
-5. 在“NuGet”选项卡上单击“浏览”，然后在搜索框中键入 Microsoft.Azure.Graphs，并选中“包括预发布版本”。
-6. 在结果中找到“Microsoft.Azure.Graphs”，然后单击“安装”。
+2. 在“文件”菜单中，选择“新建”，并选择“项目”。
+3. 在“新建项目”对话框中，选择“模板” / “Visual C#” / “控制台应用(.NET Framework)”，为项目命名，并单击“确定”。
+4. 在“解决方案资源管理器”中，右键单击 Visual Studio 解决方案下方的新控制台应用程序，并单击“管理 NuGet 包...”
+5. 在“NuGet”选项卡上单击“浏览”，并在搜索框中键入 Microsoft.Azure.Graphs，并选中“包括预发布版本”。
+6. 在结果中找到“Microsoft.Azure.Graphs”，并单击“安装”。
    
    如果获得有关查看解决方案更改的消息，请单击“确定”。 如果获得有关接受许可证的消息，请单击“我接受”。
    
@@ -83,7 +82,7 @@ string authKey = ConfigurationManager.AppSettings["AuthKey"];
 ``` 
 接下来，返回到 [Azure 门户](https://portal.azure.com)检索终结点 URL 和主密钥。 终结点 URL 和主密钥是必需的，可让应用程序知道要连接的对象，使 Azure Cosmos DB 信任应用程序的连接。 
 
-在 Azure 门户中，导航到 Azure Cosmos DB 帐户，单击“密钥”，然后单击“读写密钥”。 
+在 Azure 门户中，导航到 Azure Cosmos DB 帐户，单击“密钥”，并单击“读写密钥”。 
 
 从门户复制 URI，并将其粘贴到上述终结点属性中的 `Endpoint` 上。 然后从门户复制“PRIMARY KEY”并将其粘贴到上述 `AuthKey` 属性。 
 
@@ -118,7 +117,7 @@ DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync
 ## <a id="serializing"></a>序列化 .NET 对象的顶点和边缘
 Azure Cosmos DB 使用 [GraphSON 传输格式](gremlin-support.md)，后者定义了用于顶点、边缘和属性的 JSON 架构。 Azure Cosmos DB .NET SDK 包括 JSON.NET（作为依赖项），由此可将 GraphSON 序列化/反序列化为可在代码中使用的 .NET 对象。
 
-为举例，现来处理四个人的简易社交网络。 来看看如何创建 `Person` 顶点、在它们之间添加 `Knows` 关系，然后查询并遍历该图形来查找“朋友的朋友”关系。 
+为举例，现来处理四个人的简易社交网络。 来看看如何创建 `Person` 顶点、在它们之间添加 `Knows` 关系，并查询并遍历该图形来查找“朋友的朋友”关系。 
 
 `Microsoft.Azure.Graphs.Elements` 命名空间提供 `Vertex`、`Edge`、`Property` 和 `VertexProperty` 类，用于反序列化对明确定义的 .NET 对象的 GraphSON 响应。
 
@@ -243,7 +242,7 @@ IDocumentQuery<string> firstNames = client.CreateGremlinQuery<string>(
   $"g.V().hasLabel('person').values('firstName')");
 ```
 
-目前为止，我们仅介绍了适用于任何数据库的查询运算符。 如需导航到相关边缘和顶点，可以使用图快速高效地进行遍历操作。 查找 Thomas 的所有朋友。 为此，可使用 Gremlin 的 `outE` 步骤从 Thomas 中查找所有外缘，然后使用 Gremlin 的 `inV` 步骤从这些边缘遍历至内顶点：
+目前为止，我们仅介绍了适用于任何数据库的查询运算符。 如需导航到相关边缘和顶点，可以使用图快速高效地进行遍历操作。 查找 Thomas 的所有朋友。 为此，可使用 Gremlin 的 `outE` 步骤从 Thomas 中查找所有外缘，并使用 Gremlin 的 `inV` 步骤从这些边缘遍历至内顶点：
 
 ```cs
 // Run a traversal (find friends of Thomas)
@@ -269,8 +268,8 @@ IDocumentQuery<Vertex> friendsOfFriendsOfThomas = client.CreateGremlinQuery<Vert
 
 如果不打算继续使用此应用，请使用以下步骤删除本教程在 Azure 门户中创建的所有资源。  
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -287,4 +286,3 @@ IDocumentQuery<Vertex> friendsOfFriendsOfThomas = client.CreateGremlinQuery<Vert
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
-

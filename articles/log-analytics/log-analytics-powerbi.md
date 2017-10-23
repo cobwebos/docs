@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: bwren
+ms.openlocfilehash: 271747e25f319c76195ec643025d24c6b7cdc9c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 98befb16d27387e8f65a27771a2a32c264119d74
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="export-log-analytics-data-to-power-bi"></a>将 Log Analytics 数据导出到 Power BI
 
 >[!NOTE]
-> 如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则将 Log Analytics 数据导出到 Power BI 的此过程将不再工作。  将禁用升级前创建的任何现有计划。 
+> 如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则将 Log Analytics 数据导出到 Power BI 的此过程将不再工作。  将禁用升级前创建的任何现有计划。 还将不会再在“设置”的“预览功能”下看到启用 Power BI 导出的功能，因为该功能已在升级后的工作区中完全发布。 
 >
 > 升级后，Azure Log Analytics 会将同一平台用作 Application Insights，将 Log Analytics 查询导出到 Power BI 的过程与[将 Application Insights 查询导出到 Power BI 的过程](../application-insights/app-insights-export-power-bi.md#export-analytics-queries)相同。  可按该文章中所述，使用分析控制台导出查询，也可以在日志搜索门户的屏幕顶部选择“Power BI”按钮。
+>
+> 用户将需要访问 Azure 中的工作区资源，才能在升级后的工作区中使用 Power BI 导出功能。 如果没有访问权限，用户在将查询导入到他们没有访问权限的 Power BI Desktop 时将看到一条错误消息。
 
 
 
@@ -126,4 +127,3 @@ ms.lasthandoff: 07/28/2017
 ## <a name="next-steps"></a>后续步骤
 * 了解有关[日志搜索](log-analytics-log-searches.md)的信息以生成可导出到 Power BI 的查询。
 * 了解有关 [Power BI](http://powerbi.microsoft.com) 的详细信息以基于 Log Analytics 导出内容生成可视化结果。
-

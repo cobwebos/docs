@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: bwren
 ms.openlocfilehash: c979a8bfbeecacc7c0bbc112e02a4b68e874c219
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 通过使用 [Microsoft Azure 中基于角色的访问控制](../active-directory/role-based-access-control-configure.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
@@ -38,14 +38,14 @@ ms.lasthandoff: 08/18/2017
 
 <a name="resource-group"></a>
 
-* [**资源组**] [ group] -每个资源属于一个组。 组是一种管理相关资源的简便方式，对于访问控制尤其如此。 例如，可以将 Web 应用放入资源组中，监视应用和存储资源以保存导出的数据。
+* [**资源组**][group] - 每个资源都属于一个组。 组是一种管理相关资源的简便方式，对于访问控制尤其如此。 例如，可以将 Web 应用放入资源组中，监视应用和存储资源以保存导出的数据。
 
     ![依次选择“浏览”、“资源组”，并选择某个组](./media/app-insights-resources-roles-access-control/11-group.png)
 
-* [**订阅**](https://manage.windowsazure.com) -若要使用 Application Insights 或其他 Azure 资源，请登录到 Azure 订阅。 每个资源组都属于一个 Azure 订阅，从中选择价格封装，并选择成员及其访问权限（如果它是组织订阅）。
-* [**Microsoft 帐户**] [ account] -用户名和密码，你用于登录到 Microsoft Azure 订阅、 XBox Live、 Outlook.com 和其他 Microsoft 服务。
+* [**订阅**](https://manage.windowsazure.com) - 若要使用 Application Insights 或其他 Azure 资源，则登录到 Azure 订阅。 每个资源组都属于一个 Azure 订阅，从中选择价格封装，并选择成员及其访问权限（如果它是组织订阅）。
+* [**Microsoft 帐户**][account] - 用于登录到 Microsoft Azure 订阅、XBox Live、Outlook.com 和其他 Microsoft 服务的用户名和密码。
 
-## <a name="access"></a>资源组中的控制访问
+## <a name="access"></a> 控制资源组中的访问
 请务必了解，除了为应用程序创建的资源外，也有为警报和 Web 测试单独隐藏的资源。 它们会附加到与应用程序相同的[资源组](#resource-group)。 还可以在其中放置其他 Azure 服务，例如网站或存储。
 
 ![Application Insights 中的资源](./media/app-insights-resources-roles-access-control/00-resources.png)

@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>使用 Azure 门户对 Azure Data Lake Analytics 作业进行疑难解答
 了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。
@@ -59,7 +59,7 @@ OUTPUT @searchlog
     ![Azure Data Lake Analytics 作业管理](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
     作业管理提供作业状态概览。 请注意没有失败的作业。
-3. 单击“作业管理”磁贴，以查看作业。 在“正在运行”、“已排队”和“已结束”部分对作业进行了分类。 可在“已结束”部分查看失败的作业。 它是列表中的第一个。 如果你有大量的作业，你可以单击**筛选器**来帮助你查找作业。
+3. 单击“作业管理”磁贴，以查看作业。 在“正在运行”、“已排队”和“已结束”部分对作业进行了分类。 可在“已结束”部分查看失败的作业。 它是列表中的第一个。 有大量作业时，可以单击“筛选”来帮助找到作业。
 
     ![Azure Data Lake Analytics 筛选作业](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
 4. 从列表中单击失败的作业，在新的边栏选项卡上打开作业详细信息：
@@ -71,7 +71,7 @@ OUTPUT @searchlog
 
     ![Azure Data Lake Analytics 失败的作业](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
-    它告诉你找不到源文件夹。
+    它会告诉你找不到源文件夹。
 6. 单击“重复脚本”。
 7. 将 **FROM** 路径更新到到以下：
 

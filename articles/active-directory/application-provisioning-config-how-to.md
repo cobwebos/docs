@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 2e38fcb30ea7632339a3ba8815a536872cfcc69e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>如何为 Azure AD 库应用程序配置用户预配
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 08/03/2017
 启用和配置自动化预配所需的实际步骤因具体应用程序而异。
 
 >[!NOTE]
->你应首先查找安装教程特定于设置你的应用程序，预配和以下这些步骤来配置应用程序和 Azure AD，以创建预配的连接。 
+>首先，应找到特定于设置应用程序预配的设置教程，然后按照这些步骤操作配置应用和 Azure AD 以创建预配连接。 
 >
 >
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 8d79626fa8516f226a82d3dac693c2033904c91d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings"></a>使用查询字符串控制 Azure CDN 缓存行为
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 * **缓存每个唯一的 URL**：此模式将具有查询字符串的每个请求视为具有其自己的缓存的唯一资产。  例如，来自于源对 *foo.ashx?q=bar* 的请求做出的响应将缓存在边缘节点，并为具有该查询字符串的后续缓存返回该响应。  对 *foo.ashx?q=somethingelse* 做出的请求将作为具有其自己的生存时间的单独资产来缓存。
 
 ## <a name="changing-query-string-caching-settings-for-standard-cdn-profiles"></a>为标准 CDN 配置文件更改查询字符串缓存设置
-1. 从 CDN 配置文件的边栏选项卡，单击你想要管理的 CDN 终结点。
+1. 从“CDN 配置文件”边栏选项卡，单击要管理的 CDN 终结点。
    
     ![CDN 配置文件边栏选项卡终结点](./media/cdn-query-string/cdn-endpoints.png)
    

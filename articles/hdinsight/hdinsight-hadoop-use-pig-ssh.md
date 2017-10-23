@@ -1,6 +1,6 @@
 ---
 title: "在 HDInsight 群集上将 Hadoop Pig 与 SSH 配合使用 — Azure | Microsoft Docs"
-description: "了解如何使用 SSH 连接到基于 Linux 的 Hadoop 群集，然后使用 Pig 命令以交互方式或以批处理作业形式运行 Pig Latin 语句。"
+description: "了解如何使用 SSH 连接到基于 Linux 的 Hadoop 群集，并使用 Pig 命令以交互方式或以批处理作业形式运行 Pig Latin 语句。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/03/2017
 ms.author: larryfr
+ms.openlocfilehash: 303a8de4f644b11bda68136fe42af6bc091bb892
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: e4c893ef4bfa573dd9fbc9c9b0ae296720769842
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>使用 Pig 命令 (SSH) 在基于 Linux 的群集上运行 Pig 作业
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 07/13/2017
 
         pig
 
-    稍后，你应该会看到 `grunt>` 提示符。
+    稍后，应该会看到 `grunt>` 提示符。
 
 2. 输入以下语句：
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 07/13/2017
     > [!TIP]
     > 使用 `DUMP` 查看每个步骤后的转换结果。
 
-5. 你也可以使用 `STORE` 语句保存转换结果。 例如，以下语句将 `RESULT` 保存到群集的默认存储的 `/example/data/pigout` 目录：
+5. 也可以使用 `STORE` 语句保存转换结果。 例如，以下语句将 `RESULT` 保存到群集的默认存储的 `/example/data/pigout` 目录：
 
         STORE RESULT into '/example/data/pigout';
 
@@ -93,13 +92,13 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="pig-latin-batch-files"></a>Pig Latin 批处理文件
 
-你也可以使用 Pig 命令运行文件中包含的 Pig Latin。
+也可以使用 Pig 命令运行文件中包含的 Pig Latin。
 
 1. 退出 grunt 提示符之后，请使用以下命令将 STDIN 发送到名为 `pigbatch.pig` 的文件中。 此文件创建于 SSH 用户帐户的主目录中。
 
         cat > ~/pigbatch.pig
 
-2. 输入或粘贴以下行，然后在完成后按 Ctrl+D。
+2. 输入或粘贴以下行，并在完成后按 Ctrl+D。
 
         LOGS = LOAD '/example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
@@ -133,4 +132,3 @@ ms.lasthandoff: 07/13/2017
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-

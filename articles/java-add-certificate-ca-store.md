@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
+ms.openlocfilehash: b6e1a305e19415ab1c4b4c208dac98ad1e2689c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4f3ec837588c6e959e82108ca25ab4289e40d3f5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-a-certificate-to-the-java-ca-certificates-store"></a>将证书添加到 Java CA 证书存储
 以下步骤演示如何将证书颁发机构 (CA) 证书添加到 Java CA 证书 (cacerts) 存储。 使用的示例适用于 Twilio 服务所需的 CA 证书。 本主题中稍后提供的信息介绍如何安装 Azure 服务总线的 CA 证书。 
@@ -27,7 +26,7 @@ ms.lasthandoff: 08/22/2017
 在压缩 JDK 并将其添加到 Azure 项目的 **approot** 文件夹之前，可使用 keytool 添加 CA 证书，也可以运行使用 keytool 的启动任务添加证书。 此示例假定你在压缩 JDK 之前将添加 CA 证书。 此示例中还将使用特定 CA 证书，但获取其他 CA 证书并将其导入 cacerts 存储的步骤将类似。
 
 ## <a name="to-add-a-certificate-to-the-cacerts-store"></a>将证书添加到 cacerts 存储
-1. 在设置为 JDK 的 **jdk\jre\lib\security** 文件夹的命令提示符下，运行以下命令可查看将安装的证书：
+1. 在设置为 JDK 的 **jdk\jre\lib\security** 文件夹的管理员命令提示符下，运行以下命令可查看将安装的证书：
    
     `keytool -list -keystore cacerts`
    
@@ -56,5 +55,4 @@ Baltimore 证书可能已安装到 cacerts 存储中，因此请务必先运行 
 有关 Azure 使用的根证书的详细信息，请参阅 [Azure 根证书迁移](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)。
 
 有关 Java 的详细信息，请参阅[面向 Java 开发人员的 Azure](/java/azure)。
-
 

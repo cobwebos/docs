@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/10/2017
 ms.author: jeedes
 ms.openlocfilehash: ecf4e31ecea00d003fc47ea4cebb781ca58957f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教程：Azure Active Directory 与 SilkRoad Life Suite 集成
 本教程的目的是说明如何将 SilkRoad Life Suite 与 Azure Active Directory (Azure AD) 集成。 
@@ -93,11 +93,11 @@ ms.lasthandoff: 07/11/2017
 
 若要配置和测试 SilkRoad Life Suite 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[Azure AD 单一登录配置](#configuring-azure-ad-single-single-sign-on)** -若要使用户可以使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SilkRoad 生命套件测试用户](#creating-a-silkroad-life-suite-test-user)** -若要链接到的 Azure AD 表示形式她的 SilkRoad 生命套件中具有 Britta 人 Simon 的副本。
+3. **[创建 SilkRoad Life Suite 测试用户](#creating-a-silkroad-life-suite-test-user)** - 在 SilkRoad Life Suite 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[单一登录测试](#testing-single-sign-on)** -若要验证是否配置是否正常工作。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 本部分旨在介绍如何在 Azure 经典门户中启用 Azure AD SSO 并在 SilkRoad Life Suite 应用程序中配置 SSO。

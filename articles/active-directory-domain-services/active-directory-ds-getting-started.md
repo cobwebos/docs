@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 域服务：入门 | Microsoft Docs"
-description: "通过 Azure 门户（预览版）启用 Azure Active Directory 域服务"
+description: "使用 Azure 门户启用 Azure Active Directory 域服务"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,29 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/26/2017
 ms.author: maheshu
+ms.openlocfilehash: d86b9e99619dea408e784f32d76ba6296948bdc0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: d2d570bc2bab3bfd28282cd95b0a1be65e96743d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>通过 Azure 门户（预览版）启用 Azure Active Directory 域服务
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户启用 Azure Active Directory 域服务 (Azure AD DS)。
 
 若要启动“启用 Azure AD 域服务”向导，请完成以下步骤：
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 在左窗格中，单击“新建”。
-3. 在“新建”边栏选项卡中，在搜索栏中输入“域服务”。
+3. 在“新建”页中，在搜索栏中输入“域服务”。
 
     ![搜索域服务](./media/getting-started/search-domain-services.png)
 
-4. 单击以从搜索建议列表中选择“Azure AD 域服务”。 在“Azure AD 域服务”边栏选项卡上，单击“创建”按钮。
+4. 单击以从搜索建议列表中选择“Azure AD 域服务”。 在“Azure AD 域服务”页上，单击“创建”按钮。
 
-    ![“域服务”边栏选项卡](./media/getting-started/domain-services-blade.png)
+    ![“域服务”视图](./media/getting-started/domain-services-blade.png)
 
 5. “启用 Azure AD 域服务”向导随即启动。
 
@@ -65,6 +64,10 @@ ms.lasthandoff: 08/29/2017
 
 3. 选择“虚拟网络类型”。 默认情况下选择“资源管理器”虚拟网络类型。 我们建议对所有新创建的托管域使用此类型的虚拟网络。
 
+    > [!TIP]
+    > **计划要将经典虚拟网络支持弃用。** 请为所有新部署选择“资源管理器”虚拟网络类型。 新部署不久将不再支持经典虚拟网络。 将继续支持经典虚拟网络中部署的现有托管域。
+    >
+
 4. 选择要在其中创建托管域的 Azure“订阅”。
 
 5. 选择托管域应属于的“资源组”。 可以选择“新建”或“使用现有”选项以选择资源组。
@@ -76,4 +79,3 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="next-step"></a>后续步骤
 [任务 2：配置网络设置](active-directory-ds-getting-started-network.md)
-

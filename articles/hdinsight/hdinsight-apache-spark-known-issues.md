@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 3a493a2c35a6cdd31bb1e4ff66113a8f8d97d4f4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: bccab1c58a4740e7c60a98f51eadf685a32b3d7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
 
@@ -76,7 +75,7 @@ ms.lasthandoff: 06/07/2017
 下面是与 Jupyter 笔记本相关的一些已知问题。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>笔记本的文件名中包含非 ASCII 字符
-可在 Spark HDInsight 群集中使用的 Jupyter 笔记本的文件名不应包含非 ASCII 字符。 如果尝试通过 Jupyter UI 上传文件名中包含非 ASCII 字符的文件，操作将会失败且不发出提示（即，Jupyter 不允许上传该文件，但同时也不引发可视的错误）。 
+可在 Spark HDInsight 群集中使用的 Jupyter 笔记本的文件名不应包含非 ASCII 字符。 如果尝试通过 Jupyter UI 上传文件名中包含非 ASCII 字符的文件，操作会失败且不发出提示（即，Jupyter 不允许上传该文件，但同时也不引发可视的错误）。 
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>加载大型笔记本时发生错误
 加载大型笔记本时，可能会看到错误 **`Error loading notebook`**。  
@@ -135,5 +134,4 @@ ms.lasthandoff: 06/07/2017
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](hdinsight-apache-spark-job-debugging.md)
-
 

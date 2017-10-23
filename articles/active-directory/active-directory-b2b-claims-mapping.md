@@ -16,16 +16,16 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.openlocfilehash: 5f8559450b24effd40a38879aeae3a8dd03944a3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 协作用户声明映射
 
 Azure Active Directory (Azure AD) 支持自定义 B2B 协作用户的 SAML 令牌中颁发的声明。 当用户向应用程序进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 可以在“属性”选项卡下查看或编辑通过 SAML 令牌发送到应用程序的声明。
 
-有两个可能的原因，为什么你可能需要编辑的 SAML 令牌中颁发的声明。
+有两个可能的原因使你可能需要编辑 SAML 令牌中颁发的声明。
 
 1. 应用程序已编写为需要一组不同的声明 URI 或声明值
 

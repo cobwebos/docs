@@ -15,10 +15,10 @@ ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
 ms.openlocfilehash: 188a00db59b0aa8d26facc678fb52d96272183b6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>从访问面板登录应用程序时出现的问题
 
@@ -142,7 +142,7 @@ ms.lasthandoff: 08/03/2017
 
 若要为应用程序配置单一登录，请按照以下步骤操作：
 
-1.  <span id="_Hlk477187909" class="anchor"><span id="_Hlk477001983" class="anchor"></span></span>打开[ **Azure 门户**](https://portal.azure.com/)并以登录**全局管理员**或**共同管理员。**
+1.  <span id="_Hlk477187909" class="anchor"><span id="_Hlk477001983" class="anchor"></span></span>打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 

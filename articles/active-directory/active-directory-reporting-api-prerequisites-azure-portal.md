@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: 5fafd83c337e3c73260d89cdad7409a01ce5855b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>访问 Azure AD 报告 API 的先决条件
 
@@ -189,5 +188,4 @@ ms.lasthandoff: 08/07/2017
 ## <a name="next-steps"></a>后续步骤
 * 是否要以编程方式从 Azure AD 报告 API 中访问数据？ 请查看 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
 * 如果要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
-
 

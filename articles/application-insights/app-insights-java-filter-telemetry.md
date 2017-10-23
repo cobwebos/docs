@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
 ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/18/2017
 * 特定事件名称
 
 > [!NOTE]
-> 筛选器会使应用的指标产生偏差。 例如，你可能决定，以便诊断响应速度慢，你将设置筛选器以放弃快速的响应时间。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
+> 筛选器会使应用的指标产生偏差。 例如，为了诊断缓慢响应，你可能会决定设置一个排除快速响应时间的筛选器。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
 > 如果这是一个问题，请改用[采样](app-insights-sampling.md)。
 
 ## <a name="setting-filters"></a>设置筛选器

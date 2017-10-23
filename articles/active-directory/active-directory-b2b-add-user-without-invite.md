@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.openlocfilehash: 91b9477cdb679851e7d8d2942c06999a05f64e46
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>在没有邀请的情况下添加 B2B 协作来宾用户
 
-可允许用户（例如合作伙伴代表）将用户从合作伙伴添加到组织，而无需兑换邀请。 必须执行的只是授予该用户将用于合作伙伴组织的目录中的枚举特权 
+可允许用户（例如合作伙伴代表）将用户从合作伙伴添加到组织，而无需兑换邀请。 而你要做的只是在用于合作伙伴组织的目录中授予该用户枚举特权。 
 
 在以下情况下授予这些特权：
 

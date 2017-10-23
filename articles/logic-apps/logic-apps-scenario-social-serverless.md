@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
 ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建实时客户见解仪表板
 
@@ -47,7 +47,7 @@ Functions 在云中提供无服务器计算。  在此方案中，我们将使�
 
    ![Twitter 触发器示例][1]
 
-现在，只要出现新推文，此应用就会触发。  然后，我们可以采用该推文数据，并了解多个表示的观点。  为此，我们使用 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)来检测文本观点。
+现在，只要出现新推文，此应用就会触发。  然后，我们就可以根据该推文数据，对所表达的观点进行更深入的了解。  为此，我们使用 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)来检测文本观点。
 
 1. 单击“新步骤”
 1. 选择或搜索“文本分析”连接器

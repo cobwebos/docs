@@ -16,15 +16,15 @@ ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
 ms.openlocfilehash: a98ed60221eeba1d9c92df846aeae2deafb8ae60
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中执行访问权限审查
 Azure Active Directory (AD) Privileged Identity Management 简化了企业管理以特权身份访问 Azure AD 中的资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的方式。  
 
-如果已被分配到某个管理角色，组织中的特权角色管理员可能要求定期确认仍然需要使用该角色来完成工作。 你可能会收到一封电子邮件，其中包含一个链接，或者可以直接转[Azure 门户](https://portal.azure.com)。 请遵循本文中的步骤对分配的角色执行自我审查。
+如果已被分配到某个管理角色，组织中的特权角色管理员可能要求定期确认仍然需要使用该角色来完成工作。 可以通过你所收到的电子邮件中的链接，或者直接转到 [Azure 门户](https://portal.azure.com)来执行此操作。 请遵循本文中的步骤对分配的角色执行自我审查。
 
 如果是特权角色管理员并且想要了解访问权限审查，请参阅[如何开始进行访问权限审查](active-directory-privileged-identity-management-how-to-start-security-review.md)中的详细信息。
 
@@ -37,12 +37,12 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序会打开。
 
 ## <a name="approve-or-deny-access"></a>批准或拒绝访问权限
-在批准或拒绝访问时，你会只告诉审阅者是否仍或不使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。 状态不会立即更改，只会在审查人应用结果之后才更改。
+批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。 状态不会立即更改，只会在审查人应用结果之后才更改。
 请遵循以下步骤来查找并完成访问权限审查：
 
 1. 在 PIM 应用程序中，选择“审查特权访问权限”。 如果有任何挂起的访问权限审查，它们会显示在 Azure AD 的“访问权限审查”边栏选项卡中。
 2. 选择想要完成的审查。
-3. 除非你将创建评论，显示为评审中的唯一用户。 选中姓名旁边的复选标记。
+3. 除非该审查是由你创建的，否则你会显示为该审查中的唯一用户。 选中姓名旁边的复选标记。
 4. 选择“批准”或“拒绝”。 可能需要在“提供原因”文本框中提供做出该决定的原因。  
 5. 关闭“审查 Azure AD 角色”边栏选项卡。
 

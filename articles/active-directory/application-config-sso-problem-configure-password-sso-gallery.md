@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 58d29996a922fac6d295e753ba5d66d32e745a57
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/03/2017
 
 但是，尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，但是有时我们仍然无法立即找到这些问题，或者这些问题需要一些时间去解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
 
-除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>凭据已填写并提交，但页面却显示凭据不正确
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 08/03/2017
 
 但是，尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，但是有时我们仍然无法立即找到这些问题，或者这些问题需要一些时间去解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
 
-除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>扩展在 Chrome 和 Firefox 中有效，但在 Internet Explorer 中无效
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/03/2017
 
    * 不幸的是，这种情况会根据浏览器的版本、计算机的速度或被访问的站点而有所变化。 在这种情况下，我们建议联系支持，这样可以解决具体应用程序的集成。
 
-除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>检查应用程序的登录页面近期是否已变更，或需要其他字段
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/03/2017
 
 尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，可有时我们仍然无法立即找到这些问题。 否则，这些问题只需一些时间即可解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
 
-除此之外，**是否与此应用程序的供应商联系****向他们发送我们**以便我们可以像使用它们将其应用程序与 Azure Active Directory 本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 

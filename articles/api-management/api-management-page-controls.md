@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 925aff209056f5a63b927dcb95ef6621967a0ffb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: 6aa7a25a9addceee78abe027fb3a19351940464e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
 Azure API 管理提供以下控件，适用于开发人员门户模板。  
   
- 若要使用控件，请将其放在开发人员门户模板中的所需位置。 某些控件（例如 [app-actions](#app-actions) 控件）有参数，如以下示例所示。  
+ 要使用控件，请将其放在开发人员门户模板中的所需位置。 某些控件（例如 [app-actions](#app-actions) 控件）有参数，如以下示例所示。  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
@@ -116,7 +115,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [产品列表](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a> providers  
+##  <a name="providers"></a> 提供程序  
  `providers` 控件提供了一个控件，用于选择开发人员门户的登录页中的身份验证提供程序。  
   
  ![提供程序控件](./media/api-management-page-controls/APIM-providers-control.png "APIM 提供程序控件")  

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
 ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 
 Azure DNS 提供全球分布的高可用性名称服务器基础结构，可将其用于托管域。 通过在 Azure DNS 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具、计费和支持来管理 DNS 记录。
 
-Azure DNS 当前不支持购买域名。 如果想要购买域名，需要使用第三方域名注册机构。 注册机构通常收取小额年费。 域然后可以在 Azure DNS 中的 DNS 记录管理的托管。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
+Azure DNS 当前不支持购买域名。 如果想要购买域名，需要使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
 
 ## <a name="dns-zones"></a>DNS 区域
 

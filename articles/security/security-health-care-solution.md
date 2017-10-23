@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 中设计安全卫生保健解决方案的实用指南 | Microsoft 文档"
-description: " 这篇文章可帮助你了解如何使用 Azure 服务和你配置的功能提高卫生保健解决方案的安全性。 "
+description: " 本文有助于了解如何通过使用 Azure 服务和配置的功能提升卫生保健解决方案的安全性。 "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: terrylan
 ms.openlocfilehash: 34ded89eb7fe005be2341f96e5b883ec73d9e0a5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>在 Azure 中设计安全卫生保健解决方案的实用指南
 考虑迁移到 Azure 的健康行业初创公司、系统集成商 (SI)、独立软件供应商 (ISV) 和医疗保健组织，无一不在寻找能够帮助他们纳入安全控制，以满足其合规性要求的指南。
 
-[Microsoft Azure 中设计安全卫生保健解决方案实践指南](https://aka.ms/azureindustrysecurity)帮助你了解如何可以提高安全性，你的解决方案使用的 Azure 服务和功能，你可以配置基于你的要求。
+[在 Microsoft Azure 中设计安全卫生保健解决方案的实践指南](https://aka.ms/azureindustrysecurity)可帮助你了解：如何可使用根据要求加以配置的 Azure 服务和功能，提高解决方案的安全性。
 该内容分为三个主要部分：
 
 1. 使用云技术的注意事项指南，包括风险管理、责任分担、建立信息安全管理系统、了解行业和当地法规，以及建立标准操作过程。

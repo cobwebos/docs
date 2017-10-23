@@ -17,25 +17,23 @@ ms.workload: na
 ms.date: 09/26/2017
 ms.author: marsma
 ms.custom: mvc
+ms.openlocfilehash: fbd1bee04c5180beda23c04607b313eec9edcab4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 8b499bbbe5f30e5bf0f0cde5882ae17d5ade3cc9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
 使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。
 
-在此快速入门教程中，将在 Azure 中创建 Windows 容器，然后通过公共 IP 地址向 Internet 公开该容器。 此操作通过单个命令完成。 只需几分钟，浏览器就会显示如下内容：
+在此快速入门中，将在 Azure 中创建 Windows 容器，然后通过公共 IP 地址向 Internet 公开该容器。 此操作通过单个命令完成。 只需几分钟，浏览器就会显示如下内容：
 
 ![在浏览器中显示的使用 Azure 容器实例部署的应用][qs-powershell-01]
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本快速入门需要 Azure PowerShell 模块 4.4 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本快速入门需要 Azure PowerShell 模块 4.4 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 

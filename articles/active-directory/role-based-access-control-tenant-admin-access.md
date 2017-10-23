@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andredm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 0fa44799a0bd49d3d96a1916f32e6452405abce8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: 22b62be1773c5042ecf6ee078e68a4ffdf791d53
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>通过基于角色的访问控制，作为租户管理员提升访问权限
 
@@ -27,11 +26,22 @@ ms.lasthandoff: 05/17/2017
 
 此功能非常重要，因为它允许租户管理员查看组织中存在的所有订阅。 它还允许自动化应用（如开票和审核）访问所有订阅，并针对计费或资产管理提供有关组织状态的准确观点。  
 
-## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>如何使用 elevateAccess 提供租户访问权限
+## <a name="how-to-use-elevateaccess-for-tenant-access-with-azure-ad-admin-center"></a>如何通过 Azure AD 管理中心使用 elevateAccess 进行租户访问
+
+在 [Azure Active Directory 管理中心](https://aad.portal.azure.com)内，可以通过**属性**调用此功能。
+此功能称为“全局管理员可以管理 Azure 订阅”。 印象中这是 Azure Active Directory 的全局属性，但是，它对于当前已登录用户基于每个用户工作。 如果在 Azure Active Directory 中具有全局管理员权限，可以对当前已登录到 Azure Active Directory 管理中心的用户调用 elevateAccess 功能。
+
+依次选择“是”、“保存”：这将为当前已登录到门户的用户**分配**根目录“/”（根范围）下的“用户访问管理员”角色。
+
+依次选择“否”、“保存”：这将为当前已登录到门户的用户**删除**根目录“/”（根范围）下的“用户访问管理员”角色。
+
+![Azure AD 管理中心 - 属性 - Globaladmin 可以管理 Azure 订阅 - 屏幕截图](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+
+## <a name="how-to-use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>如何通过 REST API 使用 elevateAccess 提供租户访问权限
 
 基本过程包含以下步骤：
 
-1. 使用 REST，调用 *elevateAccess*，这将授予“/”范围的用户访问管理员角色。
+1. 使用 REST 调用 *elevateAccess*，这将授予“/”范围的用户访问管理员角色。
 
     ```
     POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
@@ -56,7 +66,7 @@ ms.lasthandoff: 05/17/2017
 4. 撤销用户访问管理员特权，直至需要再次使用时。
 
 
-## <a name="how-to-undo-the-elevateaccess-action"></a>如何撤消 elevateAccess 操作
+## <a name="how-to-undo-the-elevateaccess-action-with-the-rest-api"></a>如何使用 REST API 撤消 elevateAccess 操作
 
 调用 *elevateAccess* 时，会为自己创建角色分配，因此若要撤消这些特权，需删除该分配。
 
@@ -81,7 +91,7 @@ ms.lasthandoff: 05/17/2017
 
     保存名称参数的 GUID，在本例中为 **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**。
 
-2. 调用 [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get)，其中 principalId = 自己的 ObjectId。 这将列出租户中的所有分配。 查找范围为“/”、RoleDefinitionId 以步骤 1 中找到的角色名称 GUID 结尾的分配。 角色分配应为如下所示：
+2. 调用 [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get)，其中 principalId = 自己的 ObjectId。 这会列出租户中的所有分配。 查找范围为“/”、RoleDefinitionId 以步骤 1 中找到的角色名称 GUID 结尾的分配。 角色分配应为如下所示：
 
     ```
     {"value":[{"properties":{
@@ -107,4 +117,3 @@ ms.lasthandoff: 05/17/2017
 - 了解有关[使用 REST 管理基于角色的访问控制](role-based-access-control-manage-access-rest.md)的详细信息
 
 - 在 Azure 门户中[管理访问权限分配](role-based-access-control-manage-assignments.md)
-

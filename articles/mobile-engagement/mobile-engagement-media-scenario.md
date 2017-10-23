@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>对媒体应用实现 Mobile Engagement
 ## <a name="overview"></a>概述
@@ -58,7 +58,7 @@ John 根据与之见面的关键利益干系人的会面结果，定义了自己
 ## <a name="engagement-program-and-integration"></a>用户参与计划和集成
 至此，John 已确定了自己的 KPI，接下来他开始进行他的用户参与战略阶段，他定义了以下 4 个参与计划及对应目标：![][1]
 
-然后 John 就更深入详细说明每个程序的推送通知。 推送通知按照以下五个元素进行定义：
+然后 John 就更深入地详细说明每个计划的推送通知。 推送通知按照以下五个元素进行定义：
 
 1. 目标：通知的目标是什么
 2. 将如何达到目标

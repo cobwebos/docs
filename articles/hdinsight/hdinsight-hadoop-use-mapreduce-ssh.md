@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.openlocfilehash: eaf6278f97cd5ddd7e049ff4745181f39d7949a0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Hadoop 配合使用
 
@@ -95,7 +95,7 @@ ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    此命令显示列表中包含的单词**wasb://example/data/gutenberg/davinci.txt**文件和每个单词出现次数。 以下文本是文件中所含数据的示例：
+    此命令会显示一个列表，其内容为 wasb://example/data/gutenberg/davinci.txt 文件中包含的单词以及每个单词出现的次数。 以下文本是文件中所含数据的示例：
 
         wreathed        3
         wreathing       1
@@ -107,7 +107,7 @@ ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 
 ## <a id="summary"></a>摘要
 
-如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，然后查看作业输出。
+如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，并查看作业输出。
 
 ## <a id="nextsteps"></a>后续步骤
 

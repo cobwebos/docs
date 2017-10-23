@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: c407e01e6d881cb8adcfe55faa246468669be883
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>步骤 3：将 ExpressRoute 线路转移到 Resource Manager 部署模型
 
-现在，可以将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型。 在继续下之前，请先查看[将 ExpressRoute 线路从经典部署模型移动到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。
+现在，可以将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型。 在继续下一步之前，请先参阅[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。
 
 若要转移线路，请修改并运行以下代码段：
 
@@ -112,7 +112,7 @@ Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -L
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. 将“允许经典操作”设置为“TRUE”。
+2. 将“允许经典操作”设置为 TRUE。
 
   ```powershell
   $ckt.AllowClassicOperations = $true
@@ -145,13 +145,13 @@ Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -L
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. 将“允许经典操作”设置为“FALSE”。
+2. 将“允许经典操作”设置为 FALSE。
 
   ```powershell
   $ckt.AllowClassicOperations = $false
   ```
 
-3. 更新线路。 成功完成此操作后，你无法在经典部署模型中查看线路。
+3. 更新线路。 成功完成此操作后，将无法在经典部署模型中查看线路。
 
   ```powershell
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt

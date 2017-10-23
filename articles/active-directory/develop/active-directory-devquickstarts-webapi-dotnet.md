@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: f44d75f45073a5d9aa9b1863ed227aba4efcf785
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-protect-a-web-api-by-using-bearer-tokens-from-azure-ad"></a>使用 Azure AD 提供的持有者令牌帮助保护 Web API
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 如果正在生成的应用程序会提供对受保护资源的访问，则需要知道如何防止有人在未经授权的情况下访问这些资源。
 借助 Azure Active Directory (Azure AD)，只需编写几行代码，即可使用 OAuth 2.0 持有者访问令牌简单直接地保护 Web API。
 
-在 ASP.NET Web 应用中，可以使用 .NET Framework 4.5 中包含的社区驱动 OWIN 中间件的 Microsoft 实现来完成保护。 现在，我们使用 OWIN 来生成“待办事项列表”Web API：
+在 ASP.NET Web 应用中，可以使用 .NET Framework 4.5 中包含的社区驱动 OWIN 中间件的 Microsoft 实现来完成保护。 现在，我们将使用 OWIN 来生成“待办事项列表”Web API：
 
 * 指定要保护哪些 API。
 * 验证 Web API 调用是否包含有效的访问令牌。
@@ -57,12 +57,12 @@ ms.lasthandoff: 07/11/2017
 
 6. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 输入租户特定的标识符。 例如，输入 `https://contoso.onmicrosoft.com/TodoListService`。
 
-7. 保存配置。 保持门户的打开的因为你还需要很快注册客户端应用程序。
+7. 保存配置。 让门户保持打开状态，因为稍后你还需要注册客户端应用程序。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>步骤 2：将应用设置为使用 OWIN 身份验证管道
 要验证传入的请求和令牌，需要将应用程序设置为与 Azure AD 通信。
 
-1. 如果要开始，请打开解决方案，并使用包管理器控制台将 OWIN 中间件 NuGet 包添加到 TodoListService 项目。
+1. 要开始，请打开解决方案，然后使用 Package Manager Console 将 OWIN 中间件 NuGet 包添加到 TodoListService 项目。
 
     ```
     PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-4. 打开文件 `App_Start\Startup.Auth.cs` 并实现 `ConfigureAuth(…)` 方法。 在 `WindowsAzureActiveDirectoryBearerAuthenticationOptions` 中提供的参数充当应用与 Azure AD 通信时使用的坐标。
+4. 打开文件 `App_Start\Startup.Auth.cs` 并实现 `ConfigureAuth(…)` 方法。 在 `WindowsAzureActiveDirectoryBearerAuthenticationOptions` 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。
 
     ```C#
     public void ConfigureAuth(IAppBuilder app)
@@ -126,7 +126,7 @@ ms.lasthandoff: 07/11/2017
 
 7. 打开位于 TodoListService 项目根目录中的 `web.config` 文件，并在 `<appSettings>` 节中输入配置值。
   * `ida:Tenant` 是 Azure AD 租户的名称 - 例如，contoso.onmicrosoft.com。
-  * `ida:Audience` 是在 Azure 门户中为应用程序输入的应用 ID URI。
+  * `ida:Audience` 是在 Azure 门户中输入的应用程序的应用 ID URI。
 
 ## <a name="step-3-configure-a-client-application-and-run-the-service"></a>步骤 3：配置客户端应用程序并运行服务
 需要先配置待办事项列表客户端，使它能够从 Azure AD 获取令牌并可调用服务，才能看到待办事项服务的运行情况。
@@ -145,7 +145,7 @@ ms.lasthandoff: 07/11/2017
 
   * `ida:Tenant` 是 Azure AD 租户的名称 - 例如，contoso.onmicrosoft.com。
   * `ida:ClientId` 是从 Azure 门户复制的应用 ID。
-  * `todo:TodoListResourceId`是的待办事项列表服务应用程序在 Azure 门户中输入的应用程序 ID URI。
+  * `todo:TodoListResourceId` 是在 Azure 门户中为待办事项列表服务应用程序输入的应用 ID URI。
 
 ## <a name="next-steps"></a>后续步骤
 最后，清理、生成并运行每个项目。 现在可以使用 *.onmicrosoft.com 域在租户中创建一个新的用户（如果尚未这样做）。 使用该用户登录到待办事项列表客户端，并向用户的待办事项列表添加一些任务。

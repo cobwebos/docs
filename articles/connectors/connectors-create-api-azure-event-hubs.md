@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
 ms.openlocfilehash: 2ca27fb8269d1796fb1181fc4d0a8744a592d548
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>通过事件中心连接器监视、接收和发送事件
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 
 1.  登录 [Azure 门户](https://portal.azure.com "Azure portal")。 
 
-2.  转到事件中心命名空间，而不是特定的事件中心。 在命名空间边栏选项卡的“设置”下，选择“共享访问策略”。 下**声明**，必须检查**管理**为该命名空间的权限。
+2.  转到事件中心命名空间，而不是特定的事件中心。 在命名空间边栏选项卡的“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否有该命名空间的“管理”权限。
 
     ![管理事件中心命名空间的权限](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 07/11/2017
 
     ![与“当事件中心接收新事件时”相对应的触发器设置](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-3.  输入或选择要监视的事件中心的名称。 选择频率和间隔，你想要检查事件中心的频率。
+3.  输入或选择要监视的事件中心的名称。 根据你想多久检查一次事件中心，选择频率和时间间隔。
 
     > [!TIP]
     > （可选）若要选择一个用于读取事件的使用者组，请选择“显示高级选项”。 

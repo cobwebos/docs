@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 在 Azure API 管理中，策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包括从 XML 到 JSON 的格式转换，并调用速率限制来限制从一名开发人员的传入调用。 许多策略开箱即用。
 
 请参阅[策略参考][Policy Reference]了解政策说明完整列表及其设置。
 
-策略在网关内部应用，该网关位于 API 使用者和托管 API 之间。 该网关接收所有请求，并通常将其原封不动地转发到基础 API。 但是策略可以将更改应用于入站请求和出站响应。
+策略在网关内部应用，该网关位于 API 使用者和托管 API 之间。 该网关接收所有请求，并通常将其原封不动地转发到基础 API。 但是策略可以将更改应用于入站的请求和出站响应。
 
 在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流][Control flow]和[设置变量][Set variable]策略）基于策略表达式。 有关详细信息，请参阅[高级策略][Advanced policies]和[策略表达式][Policy expressions]。
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/11/2017
 
 [策略参考][Policy Reference]提供策略语句的完整列表以及其设置。
 
-例如，要添加新的语句以限制到指定 IP 地址的入站请求，请直接将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。
+例如，要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。
 
 ![限制策略][policies-restrict]
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 07/11/2017
 </policies>
 ```
 
-在上述示例策略定义中，`cross-domain` 语句会在执行任何更高级策略前执行，而这些策略之后又是 `find-and-replace` 策略。 
+在上述示例策略定义中，`cross-domain` 语句会在执行任何更高版本的策略前执行，之后是 `find-and-replace` 策略。 
 
 若要在策略编辑器中查看当前范围的策略，请单击“重新计算所选范围的有效策略”。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
 ## <a name="prerequisites"></a>先决条件
-本主题以你在[通知中心入门][get-started]中创建的应用为基础。 在开始本教程之前，必须先阅读 [通知中心入门][get-started]。
+本主题以你在[通知中心入门][get-started]中创建的应用为基础。 在开始本教程之前，必须先完成[通知中心入门][get-started]教程的学习。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 第一步是向现有 Storyboard 添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在通知中心创建设备注册。
@@ -128,7 +128,7 @@ ms.lasthandoff: 07/11/2017
    > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
    > 
    > 
-3. 在 AppDelegate.m 的 **didRegisterForRemoteNotificationsWithDeviceToken** 方法中，使用以下代码来替换方法中的代码，以将设备令牌传递给 notifications 类。 notifications 类将通知注册到类别。 如果用户更改类别选择，我们会调用 `subscribeWithCategories` 方法来响应“订阅”按钮，以进行更新。
+3. 在 AppDelegate.m 的 **didRegisterForRemoteNotificationsWithDeviceToken** 方法中，使用以下代码来替换方法中的代码，以将设备令牌传递给 notifications 类。 notifications 类将通知注册到类别。 如果用户更改类别选择，我们将调用 `subscribeWithCategories` 方法以响应“ **订阅**”按钮来进行更新。
    
    > [!NOTE]
    > 由于 Apple Push Notification 服务 (APNS) 分配的设备标记随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
@@ -147,18 +147,18 @@ ms.lasthandoff: 07/11/2017
             }
         }];
 
-    请注意，此时 **didRegisterForRemoteNotificationsWithDeviceToken** 方法中应没有其他代码。
+    请注意，此时 **didRegisterForRemoteNotificationsWithDeviceToken** 方法中应该没有其他代码。
 
-1. 完成 [通知中心入门][get-started] 教程时，以下方法应已经出现在 AppDelegate.m 中。  否则，请添加这些方法。
+1. 通过完成[通知中心入门][get-started]教程，以下方法应该已存在于 AppDelegate.m 中。  否则，请添加这些方法。
    
-    -(void) MessageBox:(NSString *) 标题消息:(NSString *) messageText {
+    -(void)MessageBox:(NSString *)title message:(NSString *)messageText  {
    
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
             cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
    
-   * (void) 应用程序:(UIApplication *) 应用程序 didReceiveRemoteNotification: (NSDictionary *) userInfo {NSLog (@"%@"，userInfo);  [self MessageBox:@"Notification"消息: [[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];}
+   * (void)application:(UIApplication *)application didReceiveRemoteNotification:   (NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]]; }
    
    此方法通过显示简单的 **UIAlert** 处理运行应用程序时收到的通知。
 2. 在 ViewController.m 中，添加 AppDelegate.h 的导入语句，并将以下代码复制到 XCode 生成的 **subscribe** 方法中。 此代码将更新通知注册，以使用用户在用户界面中选择的新类别标记。
@@ -186,7 +186,7 @@ ms.lasthandoff: 07/11/2017
            }
        }];
    
-   此方法创建一个类别的 **NSMutableArray** 并使用 **Notifications** 类将该列表存储在本地存储中，将相应的标记注册到通知中心。 更改类别时，使用新类别重新创建注册。
+   此方法创建一个类别的 **NSMutableArray** 并使用 **Notifications** 类将该列表存储在本地存储区中，将相应的标记注册到通知中心。 更改类别时，使用新类别重新创建注册。
 3. 在 ViewController.m 中，在 **viewDidLoad**方法中添加以下代码，以根据前面保存的类别来设置用户界面。
 
         // This updates the UI on startup based on the status of previously saved categories.
@@ -204,7 +204,7 @@ ms.lasthandoff: 07/11/2017
 
 
 
-应用程序现在可以在设备的本地存储区中存储一组类别，每当应用程序启动时，会使用这些类别注册到通知中心。  用户可以在运行时更改选择的类别，并单击 **subscribe** 方法来更新设备注册。 接下来，将更新应用程序，以直接从应用本身发送突发新闻通知。
+应用程序现在可以在设备的本地存储区中存储一组类别，每当应用程序启动时，将使用这些类别注册到通知中心。  用户可以在运行时更改选择的类别，并单击 **subscribe** 方法来更新设备注册。 接下来，将更新应用程序，以直接从应用本身发送突发新闻通知。
 
 ## <a name="optional-sending-tagged-notifications"></a>（可选）发送带标记的通知
 如果无权访问 Visual Studio，可以跳到下一部分，并从应用内部发送通知。 还可以在 [Azure 经典门户]中使用通知中心的调试选项卡发送适当的模板通知。 
@@ -212,7 +212,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="optional-send-notifications-from-the-device"></a>（可选）从设备发送通知
-通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，需要更新[通知中心入门][get-started]教程中所定义的 `SendNotificationRESTAPI` 方法。
+通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，我们需要更新[通知中心入门][get-started]教程中所定义的 `SendNotificationRESTAPI` 方法。
 
 1. 在 ViewController.m 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](notification-hubs-templates-cross-platform-push-messages.md)通知。
    
@@ -272,7 +272,7 @@ ms.lasthandoff: 07/11/2017
    
             [dataTask resume];
         }
-2. 在 ViewController.m 中，更新“**发送通知**”操作（如以下代码所示）。 使其通过每个标记分别发送通知，并发送到多个平台。
+2. 在 ViewController.m 中，更新“**发送通知**”操作（如以下代码所示）。 因此，它将使用每个标记分别发送通知，并发送到多个平台。
 
         - (IBAction)SendNotificationMessage:(id)sender
         {
@@ -298,7 +298,7 @@ ms.lasthandoff: 07/11/2017
    
     ![][1]
    
-    选择“订阅”时，应用将所选类别转换为标记，并针对所选标记从通知中心请求注册新设备。
+    选择“**订阅**”时，应用程序将所选类别转换为标记并针对所选标签从通知中心请求注册新设备。
 2. 输入要以突发新闻形式发送的消息，并按“**发送通知**”按钮。 或者，运行 .NET 控制台应用以生成通知。
    
     ![][2]

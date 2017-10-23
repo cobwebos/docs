@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明"
+title: "在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明 | Microsoft Docs"
+description: "了解如何在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明"
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.custom: aaddev
+ms.openlocfilehash: 73f63300e65e1f6bc25edf7f28ec2769acbb7c9e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 6d232759630fcc567788a8326b566b659f89d17a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-pre-integrated-apps-in-azure-active-directory"></a>在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明
-Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成的应用程序，其中有 360 个以上的应用程序支持使用 SAML 2.0 协议的单一登录。 当用户通过 Azure AD 使用 SAML 对应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户的信息片段（称为“声明”）。
+# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明
+目前，Azure Active Directory 支持使用大多数企业应用程序进行单一登录，包括 Azure AD 应用库中预集成的两个应用程序以及自定义应用程序。 当用户通过 Azure AD 使用 SAML 2.0 协议向应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户的信息片段（称为“声明”）。
 
 在标识交谈中，“声明”是标识提供者在为某个用户颁发的令牌中陈述的有关该用户的信息。 在 [SAML 令牌](http://en.wikipedia.org/wiki/SAML_2.0)中，此数据通常包含在 SAML 属性语句中。 用户的唯一 ID（也称为名称标识符）通常显示在 SAML 主题中。
 

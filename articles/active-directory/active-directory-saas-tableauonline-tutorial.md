@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
 ms.openlocfilehash: 443fab1198a91a4d5749e6421f7b8603fc75a81e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>教程：Azure Active Directory 与 Tableau Online 集成
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Tableau 联机测试用户](#creating-a-tableau-online-test-user)** -若要在 Tableau 联机链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
+3. **[创建 Tableau Online 测试用户](#creating-a-tableau-online-test-user)** - 在 Tableau Online 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-tableauonline-tutorial/tutorial_general_400.png)
 
-6. 在另一个浏览器窗口中，登录 Tableau Online 应用程序。 转到**设置**然后**身份验证**。
+6. 在另一个浏览器窗口中，登录 Tableau Online 应用程序。 转到“设置”，然后到“身份验证”。
    
     ![配置单一登录](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_09.png)
     
@@ -130,7 +130,7 @@ ms.lasthandoff: 07/11/2017
    
     ![配置单一登录](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. 向下滚动到“将元数据文件导入 Tableau Online”部分。  单击“浏览”并导入已从 Azure AD 下载的元数据文件。 然后，单击**应用**。
+8. 向下滚动到“将元数据文件导入 Tableau Online”部分。  单击“浏览”并导入已从 Azure AD 下载的元数据文件。 然后，单击“应用”。
    
    ![配置单一登录](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_13.png)
 
@@ -200,7 +200,7 @@ ms.lasthandoff: 07/11/2017
 
 在本部分中，会在 Tableau Online 中创建一个名为“Britta Simon”的用户。
 
-1. 上**Tableau 联机**，单击**设置**然后**身份验证**部分。 向下滚动到“选择用户”部分。 依次单击“添加用户”、“输入电子邮件地址”。
+1. 在“Tableau Online”上，单击“设置”，然后单击“身份验证”部分。 向下滚动到“选择用户”部分。 依次单击“添加用户”、“输入电子邮件地址”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_15.png)
 2. 选择“添加要进行单一登录(SSO)身份验证的用户”。 在“输入电子邮件地址”文本框中添加 britta.simon@contoso.com

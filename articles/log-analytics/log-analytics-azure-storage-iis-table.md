@@ -16,10 +16,10 @@ ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用
 
@@ -33,7 +33,7 @@ Log Analytics 可以读取将诊断写入到表存储或将 IIS 日志写入到 
 
 诊断已启用后，可以使用 Azure 门户或 PowerShell 配置 Log Analytics 收集日志。
 
-Azure 诊断是可使您能够从辅助角色、 web 角色或在 Azure 中运行的虚拟机收集诊断数据的 Azure 扩展。 该数据存储在 Azure 存储帐户中，可以由 Log Analytics 进行收集。
+Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机收集诊断数据的 Azure 扩展。 该数据存储在 Azure 存储帐户中，可以由 Log Analytics 进行收集。
 
 为了使 Log Analytics 能够收集这些 Azure 诊断日志，这些日志必须位于以下位置：
 

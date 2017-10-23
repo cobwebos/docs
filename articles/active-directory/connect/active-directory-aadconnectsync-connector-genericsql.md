@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: a84096ba53a308855beedd76d9dec827c025cd57
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>泛型 SQL 连接器技术参考
 本指南介绍泛型 SQL 连接器。 本文适用于以下产品：
@@ -85,7 +85,7 @@ ms.lasthandoff: 08/03/2017
 
 * 连接器仅支持一个对象类型。 因此，所有引用属性只能引用相同的对象类型。
 
-**导出类型: 对象替换**：在导出期间，只有一些属性已更改时，包含所有属性的整个对象将会导出并替换现有对象。
+**导出类型: 对象替换**：在导出期间，只有一些属性已更改时，包含所有属性的整个对象会导出并替换现有对象。
 
 ### <a name="schema-1-detect-object-types"></a>架构 1（检测对象类型）
 此页面上，将配置连接器要如何在数据库中查找不同的对象类型。
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/03/2017
 * **SQL 查询**：使用此选项可以提供 SQL 查询，返回包含属性名称的单个列，例如 `SELECT [Column Name] FROM TABLENAME`。 返回的列必须是字符串类型 (varchar)。
 
 ### <a name="schema-3-define-anchor-and-dn"></a>架构 3（定义定位点和 DN）
-使用此页可为每个检测到的对象类型配置定位点和 DN 属性。 可以选择多个属性，让定位点变成唯一。
+此页面可让你为每个检测到的对象类型配置定位点和 DN 属性。 可以选择多个属性，让定位点变成唯一。
 
 ![schema3a](./media/active-directory-aadconnectsync-connector-genericsql/schema3a.png)
 
@@ -136,7 +136,7 @@ ms.lasthandoff: 08/03/2017
 说明：
 
 * 如果连接器无法检测属性类型，则使用字符串数据类型。
-* 可将嵌套表视为包含一个列的数据库表。 Oracle 不以任何特定顺序存储嵌套表的行。 但是，将嵌套表检索到 PL/SQL 变量时，行便有从 1 开始的连续下标。 通过该下标可获得单个行的类似于数组的访问。
+* 可将嵌套表视为包含一个列的数据库表。 Oracle 不以任何特定顺序存储嵌套表的行。 但是，将嵌套表检索到 PL/SQL 变量时，行便有从 1 开始的连续下标。 它授予你对单个行的类似于数组的访问。
 * 连接器不支持 **VARRYS**。
 
 ### <a name="schema-5-define-partition-for-reference-attributes"></a>架构 5（定义引用属性的分区）
@@ -233,7 +233,7 @@ ms.lasthandoff: 08/03/2017
 **表/视图**  
 若要导入对象的多值属性，必须在“多值表/视图名称”中提供逗号分隔的表/视图名称，以及在父表的“联接条件”中提供各自的联接条件。
 
-示例：想要导入员工对象及其所有多值属性。 有两个表：“员工”（主表）和“部门”（多值）。
+示例：你想要导入员工对象及其所有的多值属性。 有两个表：“员工”（主表）和“部门”（多值）。
 请执行以下操作：
 
 * 在“表/视图/SP”中键入“员工”。
@@ -246,7 +246,7 @@ ms.lasthandoff: 08/03/2017
 
 * 如果有大量的数据，建议实现存储过程的分页。
 * 若要让存储过程支持分页，需要提供起始索引和结束索引。 请参阅：[有效进行大量数据的分页](https://msdn.microsoft.com/library/bb445504.aspx)。
-* 在执行时，将已在“配置步骤”页面上设置的各自页面大小值替换 @StartIndex 和 @EndIndex。 例如，当连接器检索第一个页面并且页面大小设置为 500 时，@StartIndex 将是 1，@EndIndex 将是 500。 当连接器检索后续页面并更改 @StartIndex 和 @EndIndex 值时，这些值将会增大。
+* 在执行时，以在“配置步骤”页面上设置的各自页面大小值替换 @StartIndex 和 @EndIndex。 例如，当连接器检索第一个页面并且页面大小设置为 500 时，@StartIndex 将是 1，@EndIndex 将是 500。 当连接器检索后续页面并更改 @StartIndex 和 @EndIndex 值时，这些值将会增大。
 * 若要执行参数化存储过程，请以 `[Name]:[Direction]:[Value]` 格式提供参数。 独行输入每个参数（使用 Ctrl+Enter 来换行）。
 * 泛型 SQL 连接器还支持从 Microsoft SQL Server 中链接服务器的导入操作。 如果要从链接的服务器中的表检索信息，则以 `[ServerName].[Database].[Schema].[TableName]` 格式提供表。
 * 泛型 SQL 连接器仅支持在运行步骤信息和架构检测之间具有类似结构（包括别名和数据类型）的对象。 如果架构中选择的对象与在运行步骤提供的信息不同，则 SQL 连接器无法支持此类方案。

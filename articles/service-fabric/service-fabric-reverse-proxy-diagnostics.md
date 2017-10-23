@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
+ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 3bc631606afbc93d5bca94f4955fd2ef816fa9fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>了解如何监视和诊断在反向代理处处理的请求
 
@@ -158,11 +157,11 @@ ms.lasthandoff: 08/09/2017
     
     如果仅针对严重/错误事件启用收集，你会发现有一个事件将包含超时详细信息和解析尝试次数。 
     
-    如果服务打算将 404 状态代码返回给用户，应附带一个“X ServiceFabric”标头。 修复此问题后，你将发现反向代理会将状态代码转发回客户端。  
+    想要向用户发送回 404 状态代码的服务应在响应中添加一个“X-ServiceFabric”标头。 将该标头添加到响应后，反向代理会将状态代码转发回客户端。  
 
 4. 客户端与请求断开连接时的情况。
 
-    下面的事件在反向代理将向客户端转发响应但客户端断开连接时进行记录：
+    当反向代理要将响应转发给客户端但客户端断开连接时，将记录以下事件：
 
     ```
     {
@@ -180,6 +179,18 @@ ms.lasthandoff: 08/09/2017
       }
     }
     ```
+5. 反向代理返回 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
+
+    如果未为服务清单中的服务终结点指定 URI 方案，则返回 FABRIC_E_SERVICE_DOES_NOT_EXIST 错误。
+
+    ```
+    <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>
+    ```
+
+    若要解决此问题，请在清单中指定 URI 方案。
+    ```
+    <Endpoint Name="ServiceEndpointHttp" UriScheme="http" Port="80" Protocol="http" Type="Input"/>
+    ```
 
 > [!NOTE]
 > 当前不记录与 websocket 请求处理相关的事件。 下一个版本将添加此功能。
@@ -189,4 +200,3 @@ ms.lasthandoff: 08/09/2017
 * 若要在 Visual Studio 中查看 Service Fabric 事件，请参阅[本地监视和诊断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。
 * 请参阅[将反向代理配置为连接到安全服务](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services)了解 Azure Resource Manager 模板示例，使用其他服务证书验证选项配置安全反向代理。
 * 若要了解详细信息，请参阅 [Service Fabric 反向代理](service-fabric-reverseproxy.md)。
-

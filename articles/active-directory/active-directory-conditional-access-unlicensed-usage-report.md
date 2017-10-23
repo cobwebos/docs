@@ -1,6 +1,6 @@
 ---
 title: "未授权用户使用情况报表 | Microsoft Docs"
-description: "未授权的使用情况报表可帮助您识别未授权的用户使用 Azure AD 付费功能。"
+description: "未授权用户使用情况报表可帮助你识别正在使用付费 Azure AD 功能的未授权用户。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.openlocfilehash: c0b4f455f067e825362bdecc02ea62d7984f0d31
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="unlicensed-usage-report"></a>未授权用户使用情况报表
-未授权的使用情况报表可帮助您识别未授权的用户使用 Azure AD 付费功能。 这使您能够更好地使用你购买的许可证，以标识你知道时可能需要额外的许可证。 
+未授权用户使用情况报表可帮助你识别正在使用付费 Azure AD 功能的未授权用户。 这样可以更好地使用已购买的许可证，并且让你知道何时可能需要其他许可证。 
 
 该报表显示最近 30 天付费功能的有效使用情况。 
 

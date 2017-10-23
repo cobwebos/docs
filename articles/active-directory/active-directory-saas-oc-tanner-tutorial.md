@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: jeedes
 ms.openlocfilehash: 9af12372b30d9ee1575e46be3b4144fc3b73ec69
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>教程：Azure Active Directory 与 O.C. Tanner - AppreciateHub
 
@@ -69,11 +69,11 @@ ms.lasthandoff: 07/11/2017
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“O.C. Tanner - AppreciateHub”。**
+4. 在搜索框中，键入“O.C. Tanner - AppreciateHub”。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
-5. 在结果面板中，选择“O.C. Tanner - AppreciateHub”****，然后单击“添加”**按钮添加该应用程序。
+5. 在结果面板中，选择“O.C. Tanner - AppreciateHub”**，然后单击“添加”**按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_addfromgallery.png)
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_400.png)
 
-6. 要在 O.C.Tanner-AppreciateHub** 端配置单一登录，需要将下载的元数据 XML 发送到 [O.C.Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)。
+6. 要在 O.C.Tanner-AppreciateHub 端配置单一登录，需要将下载的元数据 XML 发送到 [O.C.Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

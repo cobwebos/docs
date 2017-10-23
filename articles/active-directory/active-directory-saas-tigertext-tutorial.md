@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
 ms.openlocfilehash: e101e5fc84b032b66dd0636bab8bff128791f77c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>教程：Azure Active Directory 与 TigerText Secure Messenger 集成
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 08/03/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建一个 TigerText 安全 Messenger 测试用户](#create-a-tigertext-secure-messenger-test-user)** -若要在 TigerText 安全的 Messenger 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
+3. **[创建 TigerText Secure Messenger 测试用户](#create-a-tigertext-secure-messenger-test-user)** - 在 TigerText Secure Messenger 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 

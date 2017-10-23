@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: bb3fc7877f4e7cafc3904fc67abd87b897874d8a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>添加非库应用程序的问题
 
-本文帮助你了解问题的人员面临的常见添加时**自定义非库应用程序**和可以执行哪些操作来解决这些问题。 
+本文可帮助你了解添加**自定义非库应用程序**时常见的问题，以及可以执行哪些操作来解决这些问题。 
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>单击“添加”按钮后，应用程序要很长时间才显示
 

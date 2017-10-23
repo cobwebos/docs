@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: terrylan
 ms.openlocfilehash: c5ebc3cb13359d824f022859078e4feb2b6869a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Microsoft Virtual Academy 中的 Azure 安全性课程
 Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和数据专业人员以及学生了解最新技术、构建自己的技能并提升他们的职业生涯。
@@ -35,7 +35,7 @@ Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和
 
 [保护云安全](https://mva.microsoft.com/en-us/training-courses/secure-the-cloud-14037?l=lQIkkst0B_5300115881)
 
-在本课中，了解 Microsoft 如何帮助你满足全局法规遵从性要求，如 ISO 27001 / 27018，FedRAMP、 PCI 和 HIPAA、 使用新的安全控制。 这些控制的范围从待用数据加密、密钥管理、VM 保护、日志记录和监视，到反恶意软件服务、身份管理、访问控制等等。
+在本课中，了解 Microsoft 如何帮助你使用新的安全控制满足全局合规性要求，例如 ISO 27001/27018、FedRAMP、PCI 和 HIPAA。 这些控制的范围从待用数据加密、密钥管理、VM 保护、日志记录和监视，到反恶意软件服务、身份管理、访问控制等等。
 
 [设计和实现云数据平台解决方案](https://mva.microsoft.com/en-us/training-courses/design-and-implement-cloud-data-platform-solutions-15711?l=jbCdW0j1B_3005244527)
 
@@ -55,11 +55,11 @@ Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和
 
 [开始适用于 IT 专业人员的 Azure 安全性](https://mva.microsoft.com/training-courses/getting-started-with-azure-security-for-the-it-professional-11165?l=HfHzCXSAB_7404300474)
 
-演示填充，本课程一个团队的安全专家和 Azure 工程师将您带超出基本认证，并探讨什么是 Azure 内可能。 了解如何设计和使用各种技术，确保具有在云中启动项目所需的安全性和体系结构。 深入了解数据中心运营、VM 配置、网络体系结构和存储基础结构。
+在此提供丰富演示内容的课程中，由安全专家和 Azure 工程师组成的团队将带你通过基本认证并探索 Azure 中的可能性。 了解如何设计和使用各种技术，确保具有在云中启动项目所需的安全性和体系结构。 深入了解数据中心运营、VM 配置、网络体系结构和存储基础结构。
 
 [深入了解 Azure Resource Manager 方案和模式](https://mva.microsoft.com/en-us/training-courses/deep-dive-into-azure-resource-manager-scenarios-and-patterns-13793?l=i1m06ZJYB_7001937557)
 
-与团队的专家，向你显示脚本和工具，可方便地启动或停止的应用程序基础结构元素旋转浏览 Azure 资源管理器。 探索如何使用基于角色的访问控制 (RBAC) ，以使用 Azure Resource Manager 实现安全性。
+与专家团队一起探索 Azure 资源管理器，这些专家将向你展示可轻松启动或停止应用程序基础结构元素的脚本和工具。 探索如何使用基于角色的访问控制 (RBAC) ，以使用 Azure Resource Manager 实现安全性。
 
 [Azure Rights Management Services 核心技能](https://mva.microsoft.com/en-us/training-courses/azure-rights-management-services-core-skills-10500?l=QLoxMwuCB_1805094681)
 

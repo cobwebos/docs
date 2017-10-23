@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.openlocfilehash: 3ef74c8d5d5b75eb2bca4e6c994f4718b5226db8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
@@ -51,7 +51,7 @@ ms.lasthandoff: 08/03/2017
 | 错误 | 建议的步骤 |
 | ----- | ----------------- |
 | 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：“发生了一个或多个错误。” | 如果关闭了注册窗口但没有登录到 Azure AD，请再次运行连接器向导并注册连接器。 <br><br> 如果注册窗口打开后立即关闭，无法进行登录，则可能看到此错误。 当系统上存在网络错误时，可能出现此错误。 确保可从浏览器连接到公共网站，并且端口以[应用程序代理先决条件](active-directory-application-proxy-enable.md)中所指定的方式打开。 |
-| 注册窗口中出现明确错误。 无法继续 | 如果你看到此错误并且该窗口将关闭然后，你输入错误的用户名或密码。 重试。 |
+| 注册窗口中出现明确错误。 无法继续 | 如果看到此错误，然后窗口关闭，这意味着输入的用户名或密码错误。 重试。 |
 | 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：AADSTS50059: 未在请求中找到或所提供的任何凭据均未暗示任何租户识别信息，并且服务主体 URI 的搜索已失败。 | 正尝试使用 Microsoft 帐户登录，而不是使用作为正尝试登录的目录组织 ID 一部分的域进行登录。 确保管理员是租户域的相同域名的一部分，例如，如果 Azure AD 域为 contoso.com，则管理员应为 admin@contoso.com。 |
 | 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。 <br><br>1.打开组策略编辑器。<br>2.依次转到“计算机配置” > “管理模板” > “Windows 组件” > **“Windows PowerShell”** ，并双击“打开脚本执行”。<br>3.可将执行策略设置为“未配置”或“已启用”。 如果设置为“已启用”，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”或“允许所有脚本”。 |
 | 连接器无法下载配置。 | 用于身份验证的连接器客户端证书已过期。 如果将连接器安装在代理后，则可能发生此情况。 在此情况下，连接器无法访问 Internet，并且将无法向远程用户提供应用程序。 在 Windows PowerShell 中使用 `Register-AppProxyConnector` cmdlet 手动续订信任。 如果连接器在代理后，则必须向连接器帐户“网络服务”和“本地系统”授予 Internet 访问权限。 可通过向它们授予代理访问权限或将它们设置为绕过代理来实现此目的。 |

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mimig
+ms.openlocfilehash: 192bdde86e12472a6fd87ba50fd597ea8b01247d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 084dacc6a07b64500652481fbcabf1b0fc44306c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
 无服务器计算涉及关注可重复和无状态的各部分逻辑的功能。 这些部分无需基础结构管理，并且仅消耗几秒或几毫秒运行占用的资源。 无服务器计算移动的核心是函数，这些函数在 Azure 生态系统中通过 [Azure Functions](https://azure.microsoft.com/services/functions) 使用。
@@ -136,7 +134,7 @@ Azure Functions 提供创建可扩展工作单元的功能，或者提供按需�
 
 * **全局复制**。 可以[全局](distribute-data-globally.md)复制 Azure Cosmos DB 数据以减少延迟，因为这样可以使数据在地理位置上最靠近用户。 对于全部 Azure Cosmos DB 查询，事件驱动的触发器的数据从最靠近用户的 Azure Cosmos DB 读取。
 
-如果要寻求与 Azure Functions 集成以存储数据并且无需深层索引，或者如果需要存储附件和媒体文件，[Azure 博客存储触发器](../azure-functions/functions-bindings-storage-blob.md)可能是一个更好的选择。
+如果要寻求与 Azure Functions 集成以存储数据并且无需深层索引，或者如果需要存储附件和媒体文件，[Azure Blob 存储触发器](../azure-functions/functions-bindings-storage-blob.md)可能是一个更好的选择。
 
 Azure Functions 的优点： 
 
@@ -159,7 +157,6 @@ Azure Functions 的优点：
 
 
  
-
 
 
 

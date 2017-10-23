@@ -16,10 +16,10 @@ ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
 ms.openlocfilehash: 0c32a6719292aa903aa32dfdc4a31114e7a28346
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory 中企业应用程序管理的新增功能 
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 
 下面是 [Azure 门户](https://portal.azure.com)中的 Azure AD 的一些增强功能。
 
-- 改进的应用程序库遇到了一个简化的应用程序创建模型和支持你习惯于的所有应用程序类型。 
+- 改进了应用程序库体验，提供简化的应用程序创建模型，支持你惯于使用的所有应用程序类型。 
 - 全新的快速入门体验，可帮助用户开始试运行应用程序。 
 - 只需单击几下鼠标，即可配置自助服务策略。 
 - 对应用程序代理、单一登录配置和引入自己的应用程序体验做出改进，让用户可以比以前完成更多任务。
@@ -109,7 +109,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 
 启用新的联合 SSO 配置：
 1. 在左侧导航菜单中打开联合应用程序的“单一登录”边栏选项卡，并确保“基于 SAML 的登录”模式处于选中状态。 
-2. 一次，启用下的复选框**用户属性**传递到该应用程序的标题以修改所有的 SAML 令牌中包含的特性。
+2. 然后，启用“用户属性”标题下面的复选框，修改传递给该应用程序的 SAML 令牌中包含的所有属性。
 
 还可以创建、滚动更新和管理用于联合单一登录的证书，以及编辑证书即将过期时收到通知的人员。 在同一个“单一登录”边栏选项卡上的“证书”标题下面可以看到这些新选项。
  

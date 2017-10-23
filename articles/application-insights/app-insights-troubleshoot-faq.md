@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: bwren
 ms.openlocfilehash: 0b6f9e8192a4c6808beb61acb0f93ef5ec73e956
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/18/2017
 * 在 Application Insights 资源中打开“功能 + 定价”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
 
-## <a name="q14"></a>Application Insights 在项目中修改什么？
+## <a name="q14"></a>Application Insights 在我的项目中修改哪些内容？
 详细信息取决于项目类型。 对于 Web 应用程序：
 
 * 将这些文件添加到项目：
@@ -88,8 +88,8 @@ ms.lasthandoff: 08/18/2017
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>如何从较早的 SDK 版本升级？
 请参阅[发行说明](app-insights-release-notes.md)了解对应于应用程序类型的 SDK。
 
-## <a name="update"></a>如何更改我的项目将数据发送到的 Azure 资源？
-在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选择"全部更新"，它也会更改在网页中的显示位置的密钥。
+## <a name="update"></a>如何更改项目向哪个 Azure 资源发送数据？
+在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
 
 ## <a name="what-is-status-monitor"></a>什么是状态监视器？
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 08/18/2017
 可以[使用 Power BI](app-insights-export-power-bi.md) 在映射中显示请求遥测。
 
 
-## <a name="data"></a>数据保留在门户中的多长时间？ 是否安全？
+## <a name="data"></a>数据在门户中保留多长时间？ 是否安全？
 请参阅[数据保留和隐私][data]。
 
 ## <a name="might-personally-identifiable-information-pii-be-sent-in-the-telemetry"></a>遥测中有可能发送个人身份信息 (PII) 吗？
@@ -166,8 +166,8 @@ ms.lasthandoff: 08/18/2017
 * 将两个单独 iKey（独立的 Application Insights 资源）分别用于客户端和服务器数据。 或
 * 编写一个在服务器中运行的代理，并使 Web 客户端通过该代理发送数据。
 
-## <a name="post"></a>如何查看诊断搜索中的 POST 数据？
-我们不自动记录 POST 数据，但可以使用 TrackTrace 调用：将数据放置在消息参数中。 尽管你无法筛选，则此项数超过了限制对字符串属性的长度大小限制。
+## <a name="post"></a>如何在诊断搜索中查看 POST 数据？
+我们不自动记录 POST 数据，但可以使用 TrackTrace 调用：将数据放置在消息参数中。 相比对字符串属性的限制，这具有更长的大小限制，尽管你无法对其进行筛选。
 
 ## <a name="should-i-use-single-or-multiple-application-insights-resources"></a>应使用单个 Application Insights 资源还是多个 Application Insights 资源？
 
@@ -188,7 +188,7 @@ ms.lasthandoff: 08/18/2017
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
 * 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContect()](app-insights-api-custom-events-metrics.md#authenticated-users) 的调用。
 
-## <a name="q17"></a>我已启用 Application Insights 中的所有内容？
+## <a name="q17"></a> 我是否已在 Application Insights 中启用所有内容？
 | 应看到 | 如何获取 | 为何需要它 |
 | --- | --- | --- |
 | 可用性图表 |[Web 测试](app-insights-monitor-web-app-availability.md) |知道 Web 应用已启动 |
@@ -231,7 +231,7 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="how-can-i-set-an-alert-on-an-event"></a>如何设置事件警报？
 
-Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越值阈值的自定义指标。 然后在该度量值上设置警报。 请注意：指标在任一方向跨越阈值时，都会收到通知；无论初始值高低，都不会在首次跨越前收到通知；总是有几分钟的延迟。
+Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越值阈值的自定义指标。 然后在该指标上设置警报。 请注意：指标在任一方向跨越阈值时，都会收到通知；无论初始值高低，都不会在首次跨越前收到通知；总是有几分钟的延迟。
 
 ## <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Azure Web 应用和 Application Insights 之间是否有数据传输费用？
 

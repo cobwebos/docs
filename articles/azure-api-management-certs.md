@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
+ms.openlocfilehash: 89c08f2d1e0e244503e3fc4355cad0b4391618e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 9dc438e927acd9aef38f06807fabf3dda9b021c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-an-azure-management-api-management-certificate"></a>上传 Azure Management API 管理证书
 管理证书使你可以使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
@@ -32,6 +31,8 @@ ms.lasthandoff: 08/05/2017
 若要深入了解 Azure 证书（包括创建自签名的证书）的详细信息，请参阅 [Azure 云服务的证书概述](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)。
 
 还可以使用 [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) 对客户端代码进行身份验证，以用于自动化目的。
+
+**注意：**必须是订阅的共同管理员，才能在“管理证书”下执行任何操作。 [了解](https://go.microsoft.com/fwlink/?linkid=849300)有关如何在新的 Azure 门户中添加或删除共同管理员 
 
 ## <a name="upload-a-management-certificate"></a>上传管理证书
 创建管理证书后（仅使用公钥的 .cer 文件），可将其上传到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人都可通过 Management API 连接并访问与订阅相关联的资源。
@@ -55,4 +56,3 @@ ms.lasthandoff: 08/05/2017
 
 ## <a name="next-steps"></a>后续步骤
 将管理证书与订阅关联之后，（在本地安装匹配的证书后）可以编程的方式连接到[经典部署模型 REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) 并自动执行各种与该订阅关联的 Azure 资源。
-

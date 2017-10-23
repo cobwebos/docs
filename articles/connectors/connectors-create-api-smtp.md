@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 1cf96bbf8bd215d7ddb3c99860a5cb4e668be3c2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-smtp-connector"></a>SMTP 连接器入门
 连接到 SMTP 以发送电子邮件。
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="use-an-smtp-trigger"></a>使用 SMTP 触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
-在此示例中，由于 SMTP 没有自己的触发器，因此使用“Salesforce - 创建对象时”触发器。 在 Salesforce 中创建一个新对象时，会激活此触发器。 对于此示例，我们将设置为每次在 Salesforce 中新建潜在客户时，通过 SMTP 连接器发生“发送电子邮件”操作，并附带要创建的新潜在客户的通知。
+在此示例中，由于 SMTP 没有自己的触发器，因此使用“Salesforce - 创建对象时”触发器。 此触发器在 Salesforce 中新建对象时激活。 对于此示例，我们将设置为每次在 Salesforce 中新建潜在客户时，通过 SMTP 连接器发生“发送电子邮件”操作，并附带要创建的新潜在客户的通知。
 
 1. 在逻辑应用设计器上的搜索框中输入“salesforce”，并选择“Salesforce - 创建对象时”触发器。  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  

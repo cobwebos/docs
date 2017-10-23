@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 29b18aecff783cebf617995e2a19f16f0b68b51b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Windows Phone Silverlight Engagement SDK 集成
 > [!div class="op_single_selector"]
@@ -164,7 +164,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
         </engagement:EngagementPage >
 
 #### <a name="override-the-default-behavior"></a>重写默认行为
-默认情况下，页面的类名被报告为活动名，无其他附加内容。 类使用的"页"后缀，如果用户参与策略还将删除它。
+默认情况下，页面的类名被报告为活动名，无其他附加内容。 如果类使用“Page”后缀，Engagement 也会将其删除。
 
 如果想要重写名称的默认行为，只需将此内容添加到代码中即可：
 
@@ -205,7 +205,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 > 
 
 ## <a name="advanced-reporting"></a>高级报告
-或者，你可能需要对报表应用程序特定事件、 错误和作业，为此，请使用其他方法中找到`EngagementAgent`类。 Engagement API 允许使用 Engagement 的所有高级功能。
+根据需要，可能要报告应用程序特定事件、错误和作业，为此，可使用在 `EngagementAgent` 类中找到的其他方法。 Engagement API 允许使用 Engagement 的所有高级功能。
 
 有关详细信息，请参阅[如何在 Windows Phone Silverlight 应用中使用高级 Mobile Engagement 标记 API](mobile-engagement-windows-phone-use-engagement-api.md)。
 
@@ -218,7 +218,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 > 
 > 
 
-若要禁用自动故障报告，只需自定义配置，具体取决于你声明的方法：
+若要禁用自动故障报告，只需根据声明它的方式自定义配置即可：
 
 #### <a name="from-engagementconfigurationxml-file"></a>在 `EngagementConfiguration.xml` 文件中
 将报告崩溃设置为 `<reportCrash>` 和 `</reportCrash>` 标记之间的 `false`。

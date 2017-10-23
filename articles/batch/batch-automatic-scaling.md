@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f0e49cd8a64a48c53f5b6104703164a597c797f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动缩放公式
 
@@ -39,7 +39,7 @@ Azure Batch 可以根据定义的参数自动缩放池。 通过自动缩放，B
 >
 
 ## <a name="automatic-scaling-formulas"></a>自动缩放公式
-自动缩放公式是一个你定义的包含一个或多个语句的字符串值。 自动缩放公式会分配给池的 [autoScaleFormula][rest_autoscaleformula] 元素 (Batch REST) 或 [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] 属性 (Batch .NET)。 Batch 服务使用公式来确定池中可供下一个处理间隔使用的目标计算节点数。 公式字符串不能超过 8 KB，最多可以包含 100 个以分号分隔的语句，可以包括换行符和注释。
+自动缩放公式是一个定义的包含一个或多个语句的字符串值。 自动缩放公式会分配给池的 [autoScaleFormula][rest_autoscaleformula] 元素 (Batch REST) 或 [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] 属性 (Batch .NET)。 Batch 服务使用公式来确定池中可供下一个处理间隔使用的目标计算节点数。 公式字符串不能超过 8 KB，最多可以包含 100 个以分号分隔的语句，可以包括换行符和注释。
 
 可以将自动缩放公式视为 Batch 自动缩放“语言”。 公式语句是自由形式的表达式，可以包括服务定义的变量（由 Batch 服务定义的变量）和用户定义的变量（定义的变量）。 公式语句可以通过内置类型、运算符和函数对这些值执行各种操作。 例如，语句可以采用以下格式：
 
@@ -452,7 +452,7 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 可以在将公式应用于池之前对其进行评估。 这样，便可以测试公式，以便在将公式放入生产之前查看其语句的评估方式。
 
-若要评估自动缩放公式，必须先通过有效的公式对池启用自动缩放。 若要在尚未启用自动缩放的池上测试公式，请在首次启用自动缩放时使用单行公式 `$TargetDedicatedNodes = 0`。 然后，使用以下任何一个方法来计算想要测试的公式：
+若要评估自动缩放公式，必须先通过有效的公式对池启用自动缩放。 若要在尚未启用自动缩放的池上测试公式，请在首次启用自动缩放时使用单行公式 `$TargetDedicatedNodes = 0`。 然后使用以下方法之一来评估要测试的公式：
 
 * [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) 或 [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 

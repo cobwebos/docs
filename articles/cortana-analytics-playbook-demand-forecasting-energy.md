@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
 ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册
 ## <a name="executive-summary"></a>执行摘要
@@ -118,7 +118,7 @@ SLTF 解决方案也可能引起大量的预测调用（服务请求），因为
 | 典型准确度 |5% 或更低的 MAPE* |25% 或更低的 MAPE* |
 | 预测频率 |每小时或每 24 小时生成一次 |每月、每季或每年生成一次 |
 
-\*[映射](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)– 意味着平均百分比错误
+\*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) - 平均百分比误差
 
 从此表格可以看出，区别短期和长期预测方案相当重要，因为这些参数代表不同的业务需求，可能有不同的部署和用电模式。
 
@@ -327,17 +327,17 @@ Cortana Intelligence Suite 支持最常见的数据格式，例如 CSV、TSV、J
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA （移动平均线）**](https://www.otexts.org/fpp/6/2)
+#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA（移动平均）**](https://www.otexts.org/fpp/6/2)
 移动平均是时序预测的第一代分析技巧之一，目前仍很常用。 它也是更高级预测技巧的基础。 使用移动平均时，可将 K 个最近数据点算出平均值，预测下一个数据点，其中 K 表示移动平均的顺序。
 
 移动平均技巧具有将预测平滑化的效果，因此可能无法处理数据中的急剧波动。
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS （指数平滑）**](https://www.otexts.org/fpp/7/5)
+#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS（指数平滑）**](https://www.otexts.org/fpp/7/5)
 指数平滑 (ETS) 由一系列方法组成，使用最近数据点的加权平均来预测下一个数据点。 其思路是将较高权重分配给较新的值，而对于较旧的测量值，逐渐降低此权重。 此方法系列包括许多不同的方法，其中一些方法可处理数据中的季节性，例如 [Holt-Winters 季节性方法](https://www.otexts.org/fpp/7/5)。
 
 还有一些方法也会考虑数据的季节性。
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA （自动回归集成移动平均值）**](https://www.otexts.org/fpp/8)
+#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA（自动回归集成移动平均）**](https://www.otexts.org/fpp/8)
 自动回归集成移动平均 (ARIMA) 是常用于时序预测的另一种方法系列。 实际上是结合自动回归方法与移动平均。 自动回归方法使用回归模型时获取以前的时序值来计算下一个日期点。 ARIMA 方法也利用差异性方法，包括计算数据点之间的差异，以及使用它们而不是原始的测量值。 最后，ARIMA 也使用上面所述的移动平均技巧。 以各种方式将所有这些方法组合起来，就构成 ARIMA 方法系列。
 
 ETS 和 ARIMA 现在广泛用于能源需求预测和其他许多的预测问题。 在许多情况下，这些结合起来可提供非常准确的结果。
@@ -356,7 +356,7 @@ ETS 和 ARIMA 现在广泛用于能源需求预测和其他许多的预测问题
 ### <a name="typical-evaluation-techniques"></a>典型评估方法
 有多种方法可以测量和量化预测误差。 本部分侧重于介绍有关时序的预测技巧，尤其是能源需求预测。
 
-#### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**映射**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
+#### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**MAPE**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
 MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩写。 使用 MAPE 来计算每一个预测点和该点的实际值之间的差异。 然后，计算差异相对于实际值的比例，量化每个点的误差。 在最后一个步骤，求这些值的平均。 MAPE 使用的数学公式如下：
 
 ![MAPE 公式](media/cortana-analytics-playbook-demand-forecasting-energy/mape-formula.png)
@@ -372,7 +372,7 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 
 ![Web 服务部署和使用](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 
-Web 服务部署和使用由此可知，Web 服务部署在 Cortana Intelligence Suite 云中，并通过其公开的 REST API 终结点来调用。 位于不同域中的各种不同的客户端可以通过 Web API 服务来同时调用服务。 Web 服务也可以扩展，以便支持数千个并发调用。
+由此可知，Web 服务部署在 Cortana Intelligence Suite 云中，并通过其公开的 REST API 终结点来调用。 位于不同域中的各种不同的客户端可以通过 Web API 服务来同时调用服务。 Web 服务也可以扩展，以便支持数千个并发调用。
 
 ### <a name="a-typical-solution-architecture"></a>典型的解决方案体系结构
 在部署能源需求预测解决方案时，我们的兴趣是部署端到端解决方案，超越预测 Web 服务，并加速整个数据流。 调用新预测时，必须确保可向模型馈送最新的数据特征。 这意味着，需要不断地引入、处理和转换新收集的原始数据，成为赖以创建模型的必要特征。 同时，还要将预测的数据提供给最终使用方客户端使用。 下图演示了一个示例数据流周期（或数据管道）：

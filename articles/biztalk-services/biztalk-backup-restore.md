@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
 ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
 
@@ -60,7 +60,7 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
 
 完成备份后，在存储帐户中创建一个使用输入的备份名称的容器。 此容器包含 BizTalk 服务备份配置。
 
-#### <a name="backupschedule"></a>计划的备份
+#### <a name="backupschedule"></a>计划备份
 1. 在 Azure 经典门户中，选择“BizTalk 服务”，选择要计划备份的 BizTalk 服务名称，并选择“配置”选项卡。
 2. 将“备份状态”设置为“自动”。 
 3. 选择用于存储备份的“存储帐户”，输入创建备份的“频率”，以及保留备份的时长（**保留天数**）：

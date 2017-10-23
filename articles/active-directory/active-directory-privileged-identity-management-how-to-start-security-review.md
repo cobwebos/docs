@@ -16,13 +16,13 @@ ms.date: 05/04/2017
 ms.author: billmath
 ms.custom: pim
 ms.openlocfilehash: 2b516e2f05aa883c5e37f5864e5ee8a2b37d3a46
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中开始访问审阅
-当用户具有特别访问权，不再需要它们时，角色分配会"过时"。 为了降低与这些过时角色分配相关联的风险，特权角色管理员应定期审阅用户的已分配角色。 本文档包含在 Azure AD Privileged Identity Management (PIM) 中开始访问审阅的相关步骤。
+当用户有不再需要的特权访问时，角色分配将变为“过时”。 为了降低与这些过时角色分配相关联的风险，特权角色管理员应定期审阅用户的已分配角色。 本文档包含在 Azure AD Privileged Identity Management (PIM) 中开始访问审阅的相关步骤。
 
 ## <a name="start-an-access-review"></a>开始访问审阅
 > [!NOTE]
@@ -63,10 +63,8 @@ ms.lasthandoff: 07/11/2017
     ![选择审阅者 - 屏幕快照][4]
 2. 选择以下选项之一：
    
-   * 
-            **选择审阅者**：如果不知道谁需要访问，请使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
-   * 
-            **我**：如果想要预览访问审阅的工作原理，或者你想要代表无法执行此操作的用户进行审阅，此选项很有用。
+   * **选择审阅者**：如果不知道谁需要访问，请使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
+   * **我**：如果想要预览访问审阅的工作原理，或者你想要代表无法执行此操作的用户进行审阅，此选项很有用。
    * **成员自我审阅**：使用此选项让用户审阅自己的角色分配。
 
 ### <a name="start-the-review"></a>开始审阅

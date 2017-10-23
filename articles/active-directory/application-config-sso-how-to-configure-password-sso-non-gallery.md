@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: f629ec99824199306ebf825901beaa99d83d434d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
-除了 Azure AD 应用程序库中存在的选项外，还可以在所需应用程序未在此处列出时选择添加**非库应用程序**。 使用此功能，您可以添加你的组织中已存在的任何应用程序或任何第三方应用程序可能使用从供应商不是已属于[Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)。
+除了 Azure AD 应用程序库中存在的选项外，还可以在所需应用程序未在此处列出时选择添加**非库应用程序**。 使用此功能，可以添加已存在于组织中的任何应用程序或任何你可能使用的来自供应商（该供应商尚不在 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)中）的第三方应用程序。
 
 添加非库应用程序后，可以通过在 [Azure 门户](https://portal.azure.com/)中的“企业应用程序”上选择“单一登录”导航项，来配置此应用程序使用的单一登录方法。
 
 可用的单一登录方法之一是[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)选项。 通过**添加非库应用程序**体验，可以集成任何呈现基于 HTML 的用户名和密码输入字段的应用程序，即使该应用程序不在我们的预集成应用程序集中。
 
-此处的原理是页面抓取技术，该技术是“访问面板”扩展的一部分，允许自动检测用户名和密码输入字段，并为特定应用程序实例安全地存储这些字段。 然后安全地重播的用户名和密码对这些字段当某个用户导航到该应用程序在应用程序访问面板上。
+此处的原理是页面抓取技术，该技术是“访问面板”扩展的一部分，允许自动检测用户名和密码输入字段，并为特定应用程序实例安全地存储这些字段。 然后在用户通过应用程序访问面板导航到该应用程序时，安全地向这些字段重播用户名和密码。
 
 这是开始将任何类型的应用程序快速集成到 Azure AD 中的绝佳方式，并且可以：
 

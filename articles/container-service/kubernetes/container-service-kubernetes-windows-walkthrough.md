@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: 467a08b1ba9f7c0070dfa0cf3df18326cf49ca70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 6a03f668c6b9e18bf80cb04ea9feddeef4b6bd9e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>为 Windows 容器部署 Kubernetes 群集
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍如何在 [Azure 容器服务](../container-service-intro.md)中使用 Azure CLI 部署 [Kubernetes](https://kubernetes.io/docs/home/) 群集。 部署群集后，使用 Kubernetes `kubectl` 命令行工具连接到群集，并部署第一个 Windows 容器。
@@ -168,7 +166,7 @@ iis      1/1          Running       0           32s
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-通过使用此命令，Kubernetes 创建服务，并使用该服务公共 IP 地址创建 [Azure 负载均衡器规则](container-service-kubernetes-load-balancing.md)。 
+通过使用此命令，Kubernetes 创建服务，并使用该服务公共 IP 地址创建 Azure 负载均衡器规则。 
 
 运行以下命令，以便查看服务的状态。
 
@@ -203,4 +201,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [管理 ACS Kubernetes 群集](container-service-tutorial-kubernetes-prepare-app.md)
-

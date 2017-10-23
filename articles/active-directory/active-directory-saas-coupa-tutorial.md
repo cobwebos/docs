@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
 ms.openlocfilehash: c952975919cfd948f1b9ea93ff2ac2641a53f923
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 本教程的目标是展示 Azure 与 Coupa 的集成。  
@@ -142,7 +142,7 @@ ms.lasthandoff: 07/11/2017
 **要将用户分配到 Coupa，请执行以下步骤：**
 
 1. 在 Azure 经典门户中，创建一个测试帐户。
-2. 在 * * Coupa * * 应用程序集成页上，单击**将用户分配**。
+2. 在“Coupa”应用程序集成页上，单击“分配用户”。
    
    ![分配用户](./media/active-directory-saas-coupa-tutorial/IC791911.png "分配用户")
 3. 选择测试用户，单击“分配”，并单击“是”确认分配。

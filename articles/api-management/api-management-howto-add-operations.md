@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 105fc51c2d1152a40a5757985da47330e0b7b8cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-add-operations-to-an-api-in-azure-api-management"></a>如何将操作添加到 Azure API 管理中的 API
 在可使用 API 管理中的 API 之前，必须添加操作。 本指南演示如何添加和配置不同类型的 API 操作到 API 管理。
 
 ## <a name="add-operation"> </a>添加操作
-可以在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。
+在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。
 
 ![发布者门户][api-management-management-console]
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 
 ![操作][api-management-operations]
 
-单击“添加操作”添加新操作。 将显示“新建操作”，并且默认情况下将选择“签名”选项卡。
+单击“添加操作”添加新操作。 将显示“新操作”，并且在默认情况下将选择“签名”选项卡。
 
 ![添加操作][api-management-add-operation]
 
@@ -75,14 +75,14 @@ ms.lasthandoff: 07/11/2017
 
 “持续时间”指定在此期间操作响应保留在缓存中的时间段。 默认值为 3600 秒或 1 小时。
 
-缓存键用来区分响应，以便与每个不同缓存键对应的响应会获得自己单独的缓存值。 （可选）分别输入特定的查询字符串参数，和/或要在“通过查询字符串参数变化”和“按标头变化”文本框中的计算缓存键值的 HTTP 标头。 如果指定无，完整请求 URL 和以下 HTTP 标头值用在缓存密钥生成过程中：“接受”和“Accept-Charset”。
+缓存键用于区分这两个响应，以便与每个不同缓存键对应的响应会获得自己单独的缓存值。 （可选）分别输入特定的查询字符串参数，和/或要在“通过查询字符串参数变化”和“按标头变化”文本框中的计算缓存键值的 HTTP 标头。 如果指定无，完整请求 URL 和以下 HTTP 标头值用在缓存密钥生成过程中：“接受”和“Accept-Charset”。
 
 > 有关缓存和缓存策略的详细信息，请参阅[如何在 Azure API 管理中缓存操作结果][How to cache operation results in Azure API Management]。
 > 
 > 
 
 ## <a name="request-parameters"> </a>请求参数
-在“参数”选项卡上管理操作参数。 “签名”选项卡上的“URL 模板”中指定的参数会自动添加，并且只能在编辑 URL 模板时更改。 可以手动输入其他参数。
+在“参数”选项卡上管理操作参数。“签名”选项卡上的“URL 模板”中指定的参数会自动添加，并且只能在编辑 URL 模板时更改。 可以手动输入其他参数。
 
 若要添加新的查询参数，请单击“添加查询参数”并输入以下信息：
 

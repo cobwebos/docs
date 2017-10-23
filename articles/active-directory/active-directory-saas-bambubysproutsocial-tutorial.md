@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
 ms.openlocfilehash: 985966d26f6ed0dcd4db47589abf94260ce62bf0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>教程：Azure Active Directory 与 Bambu by Sprout Social 集成
 
@@ -96,7 +96,7 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建由社交 Sprout 测试用户 Bambu](#creating-a-bambu-by-sprout-social-test-user)**  -若要在通过 Sprout 社交链接到的 Azure AD 表示形式她 Bambu 具有 Britta 人 Simon 的副本。
+3. **[创建 Bambu by Sprout Social 测试用户](#creating-a-bambu-by-sprout-social-test-user)** - 在 Bambu by Sprout Social 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
 ms.openlocfilehash: edd2f9446515531f1147a8abf99295b618b89b25
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamwork"></a>教程：Azure Active Directory 与 Teamwork 的集成
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，可以配置和使用基于一个名为"Britta 人 Simon"的测试用户的团队协作测试 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Teamwork 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Teamwork 用户。 换句话说，需要在 Azure AD 用户与 Teamwork 中的相关用户之间建立链接关系。
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建的团队协作测试用户](#creating-a-teamwork-test-user)** -若要链接到的 Azure AD 表示形式她的团队协作中具有 Britta 人 Simon 的副本。
+3. **[创建 Teamwork 测试用户](#creating-a-teamwork-test-user)** - 在 Teamwork 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_03.png)   
 
-5. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击**保存**按钮。
+5. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_general_300.png)
 

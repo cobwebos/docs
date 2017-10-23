@@ -16,16 +16,16 @@ ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b6ecd0d09589fec85c1633f528afc1165c346b7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>使用 Log Analytics 监视 Surface Hub 以跟踪其运行状况
 
 ![“Surface Hub”符号](./media/log-analytics-surface-hubs/surface-hub-symbol.png)
 
-本文介绍如何使用 Log Analytics 中的 Surface Hub 解决方案来监视具有 Microsoft Operations Management Suite (OMS) 的 Microsoft Surface Hub 设备。 日志分析可帮助你跟踪你面中心的运行状况以及了解如何使用它们。
+本文介绍如何使用 Log Analytics 中的 Surface Hub 解决方案来监视具有 Microsoft Operations Management Suite (OMS) 的 Microsoft Surface Hub 设备。 Log Analytics 可帮助你跟踪 Surface Hub 的运行状况以及了解其使用情况。
 
 每个 Surface Hub 都安装了 Microsoft Monitoring Agent。 通过代理，可以将数据从 Surface Hub 发送到 OMS。 日志文件从 Surface Hub 读取，并发送到 OMS 服务。 类似于服务器处于脱机状态、日历不同步，或设备帐户无法登录 Skype 等这些问题都会显示在 Surface Hub 仪表板的 OMS 中。 通过使用仪表板中的数据，可以确定未运行或遇到其他问题的设备，并潜在解决检测到的问题。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 使用以下信息来安装和配置解决方案。 为了从 Microsoft Operations Management Suite (OMS) 管理 Surface Hub，需要设置以下各项：
 
 * 有效订阅 [OMS](http://www.microsoft.com/oms)。
-* [OMS 订阅](https://azure.microsoft.com/pricing/details/log-analytics/)级别将支持你想要监视的设备的数目。 根据注册设备的数量以及处理的数据量，OMS 定价会有所不同。 在规划 Surface Hub 的部署时需要考虑这一点。
+* [OMS 订阅](https://azure.microsoft.com/pricing/details/log-analytics/)级别，用于支持要监视的设备数。 根据注册设备的数量以及处理的数据量，OMS 定价会有所不同。 在规划 Surface Hub 的部署时需要考虑这一点。
 
 接下来，需要将 OMS 订阅添加到现有的 Microsoft Azure 订阅，或者直接通过 OMS 门户新建一个工作区。 有关上述任一方法的详细使用说明，请参阅 [Log Analytics 入门](log-analytics-get-started.md)。 在设置 OMS 订阅后，有两种方法可注册 Surface Hub 设备：
 
@@ -87,4 +87,4 @@ Intune 随后会在 OMS 工作区中注册设备，将 OMS 设置与目标组中
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)，查看详细的 Surface Hub 数据。
-* 创建[警报](log-analytics-alerts.md)Surface Hub 出现问题时通知你。
+* 创建[警报](log-analytics-alerts.md)，以便在 Surface Hub 出现问题时通知你。

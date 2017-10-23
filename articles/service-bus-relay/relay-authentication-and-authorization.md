@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/03/2017
+ms.date: 10/05/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 95589ca169926362fa77f0e307afd449014c8402
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 4ef8cbf22f2fcd7017af16083240608e5ca0fb5e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure 中继身份验证和授权
-应用程序可以使用共享访问签名 (SAS) 身份验证对 Azure 中继进行身份验证。 与[服务总线消息传送](../service-bus-messaging/service-bus-authentication-and-authorization.md)类似，通过 SAS 身份验证，应用程序能够使用在中继命名空间上配置的访问密钥向 Azure 中继服务进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向中继服务进行身份验证。
+
+应用程序可以使用共享访问签名 (SAS) 身份验证对 Azure 中继进行身份验证。 通过 SAS 身份验证，应用程序能够使用在中继命名空间中配置的访问密钥向 Azure 中继服务进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向中继服务进行身份验证。
 
 ## <a name="shared-access-signature-authentication"></a>共享访问签名身份验证
 通过 [SAS 身份验证](../service-bus-messaging/service-bus-sas.md)可向具有特定权限的用户授予对 Azure 中继资源的访问权限。 SAS 身份验证涉及配置具有资源相关权限的加密密钥。 客户端随后即可通过提供 SAS 令牌获取该资源的访问权限，该令牌由要访问的资源 URI 和签有已配置密钥的过期时间组成。

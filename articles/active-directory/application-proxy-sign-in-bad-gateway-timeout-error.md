@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 78ff8763a461162cbcfa04c6a86123973271928a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
-本文将帮助你解决你在 Azure AD 应用程序代理应用程序上看到"无法访问此企业应用程序"错误时面临的常见问题。
+本文可帮助解决在 Azure AD 应用程序代理应用程序上看到“无法访问此公司应用”错误时面临的常见问题。
 
 ## <a name="overview"></a>概述
 当出现此错误时，页面上还会显示状态代码。 该代码可能是以下代码中的一个：

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
 ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP 操作入门
 
@@ -198,7 +198,7 @@ Azure AD OAuth 身份验证需要以下身份验证对象。 * 表示它是必�
 | 机密* |secret |正在请求令牌的客户端的机密 |
 
 > [!TIP]
-> 你可以使用`securestring`参数和`@parameters()`[工作流定义函数](http://aka.ms/logicappdocs)是使用一个参数不会在保存后的定义在可读。
+> 可使用 `securestring` 参数和 `@parameters()` [工作流定义函数](http://aka.ms/logicappdocs)在定义中使用保存后不可读的参数。
 > 
 > 
 

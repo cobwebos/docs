@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6b77dd4e9a6d361a05382397e89b575896fdad84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>如何在 Azure Active Directory 中将经许可的用户添加到组以进行许可
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 07/11/2017
 
 6. 考虑删除原始的直接分配；可以“分阶段”逐步执行该操作，先观察这种操作对一部分用户的影响。
 
-  你可以在用户上，保留原始的直接分配，但在用户离开时它们仍将保留原始许可，它可能是其授权的组不希望所需。
+  可以保留用户的原始直接分配，但在用户离开他们的许可组后，仍会保留原始许可证，这可能不是你想要的结果。
 
 ## <a name="an-example"></a>示例
 

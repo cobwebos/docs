@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
+ms.openlocfilehash: f79910ba4fea81e88fce90dd67ba7cb4db2e8220
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 8a8d4a9e9246bca5513787e776e91e7e3f2eed68
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
 
@@ -26,26 +24,48 @@ ms.lasthandoff: 09/28/2017
 
 ![检查版本号](media/known-issues-and-troubleshooting-guide/buildno.png)
 
-## <a name="how-to-get-help"></a>如何获取帮助
-可通过多种不同的方式获取帮助。
+## <a name="machine-learning-msdn-forum"></a>机器学习 MSDN 论坛
+我们开通了 MSDN 论坛，可以在其上发布问题。 产品团队会主动监视该论坛。 论坛 URL 为 [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum)。 
 
-### <a name="post-to-msdn-forum"></a>在 MSDN 论坛发贴
-我们开通了 MSDN 论坛，可以在其上发布问题。 产品团队会主动监视该论坛。 论坛网址为 [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum)。
+## <a name="gather-diagnostics-information"></a>收集诊断信息
+如果在请求帮助时可以提供诊断信息，有时会很有帮助。 下面是日志文件所在的位置：
 
-### <a name="gather-diagnostics-information"></a>收集诊断信息
-有时，我们可能会请求发送特定执行的诊断信息。 可使用以下命令打包相关的文件：
+### <a name="installer"></a>安装程序
+如果在安装过程中遇到问题，可在此处找到安装程序日志文件：
+
+```
+# Windows:
+%TEMP%\amlinstaller\logs\*
+
+# macOS:
+/tmp/amlinstaller/logs/*
+```
+可以打包这些目录的内容，然后将它发送给我们进行诊断。
+
+### <a name="workbench-desktop-app"></a>Workbench 桌面应用
+如果 Workbench 桌面崩溃，可以在此处找到日志文件：
+```
+# Windows
+%APPDATA%\AmlWorkbench
+
+# macOS
+~/Library/Application Support/AmlWorkbench
+``` 
+可以打包这些目录的内容，然后将它发送给我们进行诊断。
+
+### <a name="experiment-execution"></a>执行试验
+如果从桌面应用提交的过程中某个特定脚本执行失败，请尝试通过 CLI 使用 `az ml experiment submit` 命令将其重新提交。 此命令应以 JSON 格式提供完整的错误消息，最重要的是它包含**操作 ID** 值。 请向我们发送包含**操作 ID** 的 JSON 文件，我们可以帮助诊断。 
+
+如果某个特定脚本在提交时成功，但在执行时失败，它应输出**运行 ID** 来标识该特定的运行。 可使用以下命令打包相关日志文件：
 
 ```azurecli
-# Find out the run id first
-$ az ml history list -o table
-
 # Create a ZIP file that contains all the diagnostics information
 $ az ml experiment diagnostics -r <run_id> -t <target_name>
 ```
 
-`az ml experiment diagnostics` 命令在项目根文件夹中生成 `diagnostics.zip` 文件。 此 ZIP 包包含整个项目文件夹，其中包括项目在执行时的状态，以及日志记录信息。 向我们发送诊断文件之前，请务必删除不想要包含的任何敏感信息。
+`az ml experiment diagnostics` 命令在项目根文件夹中生成 `diagnostics.zip` 文件。 此 ZIP 包包含处于执行时状态的整个项目文件夹，以及日志记录信息。 向我们发送诊断文件之前，请务必删除不想要包含的任何敏感信息。
 
-### <a name="send-us-a-frown-or-a-smile"></a>发送哭脸（或笑脸）
+## <a name="send-us-a-frown-or-a-smile"></a>发送哭脸（或笑脸）
 
 在 Azure ML Workbench 中操作时，还可以单击应用程序 shell 左下角的笑脸图标向我们发送哭脸（或笑脸）。 可以选择性地包含自己的电子邮件地址（以方便我们做出回复）和/或当前状态的屏幕截图。 
 

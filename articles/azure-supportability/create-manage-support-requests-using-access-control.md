@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
 ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>使用 Azure 基于角色的访问控制 (RBAC) 控制用于创建和管理支持请求的访问权限
 
@@ -90,7 +90,7 @@ Joe 是同事，他是此订阅中某些资源组的资源所有者，并对此�
 
     ![新建支持请求](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. 单击"所有支持请求"Joe 可以查看为此订阅创建支持请求的列表![用例详细信息视图](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. Joe 单击“所有支持请求”可以看到已为此订阅创建的支持请求列表 ![案例详细信息视图](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>在 Azure 门户中删除支持请求访问权限
 

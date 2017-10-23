@@ -12,14 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2017
+ms.date: 09/19/2017
 ms.author: sasolank
+ms.openlocfilehash: df21b7213a647a66a16a84889bf7a24fde03c493
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8131ded6b74e9c544bf70b1a4659ed07e5def04d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
 
@@ -32,6 +31,16 @@ ms.lasthandoff: 08/23/2017
 * 使用同时供内部使用者和外部使用者使用的相同 API 管理资源。
 * 使用单个 API 管理资源，并向外部使用者提供在 API 管理中定义的一部分 API。
 * 提供配套的方式让客户启用和禁用通过公共 Internet 对 API 管理的访问。 
+
+## <a name="prerequisites"></a>先决条件
+
+若要执行本文中所述的步骤，必须具有：
+
++ 一个有效的 Azure 订阅。
+
+    [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
++ 一个 APIM 实例。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 ##<a name="scenario"> </a> 方案
 本文介绍如何对内部和外部使用者使用单个 API 管理服务，并使其充当本地和云 API 的单一前端。 另外，介绍如何使用应用程序网关中提供的 PathBasedRouting 功能，仅公开一部分 API（在示例中以绿色突出显示）供外部使用。
@@ -349,4 +358,3 @@ VNET 中配置的 Azure API 管理为配置的所有 API 提供单个网关接�
 * 详细了解 API 管理和 VNET
   * [只能在 VNET 内使用 API 管理](api-management-using-with-internal-vnet.md)
   * [在 VNET 中使用 API 管理](api-management-using-with-vnet.md)
-

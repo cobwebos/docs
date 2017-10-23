@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/10/2016
 ms.author: piyushjo
 ms.openlocfilehash: 8381edb569e19a85c1259f7791b477cfa6e51ea3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-demo-app"></a>Azure Mobile Engagement 演示应用
-我们已发布的 Azure Mobile Engagement 演示应用程序**iOS**， **Android**，和**Windows**平台来帮助你查找有用的资源和了解有关 Mobile Engagement 的详细信息。
+我们已经发布适用于 **iOS**、**Android** 和 **Windows** 平台的 Azure Mobile Engagement 演示应用，从而帮助你找到有用的资源并了解有关 Mobile Engagement 的详细信息。
 
-应用程序可帮助你：
+此应用可帮助你：
 
 * 轻松找到 Mobile Engagement 资源（如视频、文档、支持论坛以及在何处可以提交功能请求）的有用链接。
 * 体验 Mobile Engagement 所支持的示例通知，从而设计自己的移动应用程序。
@@ -66,8 +66,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 * 在设备上安装应用后，可以浏览左侧菜单中的链接，查找有关 Mobile Engagement 的有用资源。
-* 
-            [服务的 RSS 源](https://aka.ms/azmerssfeed)已添加到此应用程序，因此，始终都会获得最新的产品更新。
+* [服务的 RSS 源](https://aka.ms/azmerssfeed)已添加到此应用程序，因此，始终都会获得最新的产品更新。
 * 还可以浏览示例通知方案，以体验 Mobile Engagement 针对不同平台所支持的通知类型。 在本地即可体验这些通知，也就是说可以单击屏幕上的按钮来展示通知体验，这就相当于从 Mobile Engagement 平台发送通知。
 
 ![适用于 Windows 的应用菜单][4]
@@ -81,7 +80,7 @@ ms.lasthandoff: 07/11/2017
 * 接下来遵循 [SDK 集成的基本步骤](mobile-engagement-windows-store-dotnet-get-started.md)，以便能将此应用连接到其自身的 Mobile Engagement 后端实例。
   * 需要在应用中配置连接字符串。
   * 还需要为应用配置推送通知平台。
-* 你会注意到，使用 Mobile Engagement 检测在应用程序。 因此，将应用连接到后端之后再打开该应用时，可以在“监视”选项卡上看到用户会话、活动、事件等等。
+* 你会注意到，应用本身已在 Mobile Engagement 的检测之下。 因此，将应用连接到后端之后再打开该应用时，可以在“监视”选项卡上看到用户会话、活动、事件等等。
 * 还可以从自己的 Mobile Engagement 实例将通知发送到此应用，而不必使用本地通知。
   
   * 此处可以使用应用中的“获取设备 ID”菜单项添加设备作为测试设备。 这样你就有了一个设备 ID 来将测试设备注册到平台后端实例。
@@ -138,7 +137,7 @@ ms.lasthandoff: 07/11/2017
 
 **iOS**，**Android**
 
-* Mobile Engagement 还支持发送无提示**数据推送**通知。 使用这些通知，你可以将数据发送从你的服务 （如下面的示例中的 JSON 数据），你可以在你的应用程序中处理和采取某项操作。 比如通过使用数据推送通知有选择地更改某个商品的价格。
+* Mobile Engagement 还支持发送无提示**数据推送**通知。 通过这些通知，可以发送来自服务的数据（如下例中的 JSON 数据），然后可以在应用中处理这些数据，并执行某个操作。 比如通过使用数据推送通知有选择地更改某个商品的价格。
   
     ![数据推送通知][33]
   

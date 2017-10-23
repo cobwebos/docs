@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-manager-core-quota-increase-requests"></a>Resource Manager 核心配额增加请求
 
@@ -24,11 +24,11 @@ ms.lasthandoff: 07/11/2017
 > [!NOTE]
 > 了解如何在 Azure 门户中[创建支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
 
-1. 在新的支持请求页上，选择作为"配额"问题类型和作为"内核"的配额类型。
+1. 在“新建支持请求”页上，将问题类型选择为“配额”，将配额类型选择为“核心”。
 
     ![“配额基本信息”边栏选项卡](./media/resource-manager-core-quotas-request/Basics-blade.png)
 
-2. 选择部署模型为"资源管理器"并选择一个位置。
+2. 将部署模型选择为“资源管理器”并选择一个位置。
 
     ![“配额问题”边栏选项卡](./media/resource-manager-core-quotas-request/Problem-step.png)
 

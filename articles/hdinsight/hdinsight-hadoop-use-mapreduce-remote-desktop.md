@@ -17,15 +17,15 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面在 HDInsight 上的 Hadoop 中使用 MapReduce
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-本文介绍如何使用远程桌面连接到 HDInsight 群集上的 Hadoop，并使用 Hadoop 命令运行 MapReduce 作业。
+本文介绍如何通过使用远程桌面连接到 HDInsight 群集上的 Hadoop，并通过使用 Hadoop 命令运行 MapReduce 作业。
 
 > [!IMPORTANT]
 > 远程桌面只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -44,7 +44,7 @@ ms.lasthandoff: 08/03/2017
 ## <a id="hadoop"></a>使用 Hadoop 命令
 连接到 HDInsight 群集的桌面之后，请使用以下步骤，以通过 Hadoop 命令来运行 MapReduce 作业：
 
-1. 从 HDInsight 桌面启动“Hadoop 命令行”。 这将在 c:\apps\dist\hadoop-&lt;version number> 目录中打开新的命令提示符。
+1. 从 HDInsight 桌面启动“Hadoop 命令行”。 这将在 **c:\apps\dist\hadoop-&lt;版本号>** 目录中打开新的命令提示符。
 
    > [!NOTE]
    > 版本号会随着 Hadoop 更新而更改。 **HADOOP_HOME** 环境变量可用来查找路径。 例如，`cd %HADOOP_HOME%` 会将目录更改为 Hadoop 目录，而不需要你知道版本号。
@@ -91,7 +91,7 @@ ms.lasthandoff: 08/03/2017
         wriggling       1
 
 ## <a id="summary"></a>摘要
-Hadoop 命令提供了一种简单方法，可在 HDInsight 群集上运行 MapReduce 作业，并查看作业输出。
+如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，并查看作业输出。
 
 ## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 MapReduce 作业的一般信息：

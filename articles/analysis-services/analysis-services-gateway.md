@@ -1,5 +1,5 @@
 ---
-title: "本地数据网关 | Microsoft 文档"
+title: "本地数据网关 | Microsoft Docs"
 description: "如果 Azure 中的 Analysis Services 服务器要连接到本地数据源，则本地网关是必需的。"
 services: analysis-services
 documentationcenter: 
@@ -13,31 +13,26 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/21/2017
+ms.date: 10/06/2017
 ms.author: owend
+ms.openlocfilehash: 31e4913aceb1c4b51ddc7cde6381bc21b50187c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 514b5404e8cbfa0baa657eb41736e20cad502638
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>使用 Azure 本地数据网关连接到本地数据源
 本地数据网关的作用好似一架桥，提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 你可以将同一区域中的多个服务与单个网关进行关联。 
 
- Azure Analysis Services 需要同一区域中的网关资源。 例如，如果你在美国东部 2 区域中部署有 Azure Analysis Services 服务器，则需要在美国东部 2 区域中有一个网关资源。 美国东部 2 中的多个服务器可以使用同一个网关。
-
 首次设置网关的过程分为四个部分：
 
-- 下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。
+- 下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
 
-- 注册网关 - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。
+- 注册网关 - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源**必须在 Analysis Services 服务器所在的同一区域中注册**。 
 
 - 在 Azure 中创建网关资源 - 在这一步中，在你的 Azure 订阅中创建网关资源。
 
-- 将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。
-
-为你的订阅配置网关资源后，即可将多个服务器以及其他服务连接到该网关资源。 如果在其他区域中有服务器或其他服务，则只需安装不同的网关并创建其他网关资源即可。
+- 将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。 可以将多个服务器和其他资源连接到它，前提是它们在该区域中。
 
 若要立即开始，请参阅[安装和配置本地数据网关](analysis-services-gateway-install.md)。
 
@@ -100,15 +95,15 @@ ms.lasthandoff: 08/25/2017
 ### <a name="general"></a>常规
 
 问：对于云中的数据源（如 Azure SQL 数据库），是否需要网关？ <br/>
-**答**：不需要。 网关只连接到本地数据源。
+**答**：不需要。 如果仅连接到本地数据源，则网关是必需的。
 
 **问**：网关是否必须安装在与数据源相同的计算机上？ <br/>
-**答**：不需要。 网关使用提供的连接信息连接到数据源。 从这种意义上讲，可将网关视为客户端应用程序。 网关只需能够连接到提供的服务器名称即可，通常在同一个网络上。
+**答**：不需要。 网关只需能够连接到服务器即可，通常在同一个网络上。
 
 <a name="why-azure-work-school-account"></a>
 
 **问**：为何需要使用工作或学校帐户登录？ <br/>
-**答**：安装本地数据网关时只能使用 Azure 工作或学校帐户。 登录帐户存储在由 Azure Active Directory (Azure AD) 管理的租户中。 通常，Azure AD 帐户的用户主体名称 (UPN) 与电子邮件地址匹配。
+**答**：安装本地数据网关时只能使用组织工作或学校帐户。 而且，该帐户必须与要在其中配置网关资源的订阅在同一租户中。 登录帐户存储在由 Azure Active Directory (Azure AD) 管理的租户中。 通常，Azure AD 帐户的用户主体名称 (UPN) 与电子邮件地址匹配。
 
 **问**：凭据存储在何处？ <br/>
 **答**：为数据源输入的凭据将会加密，并存储在网关云服务中。 凭据在本地数据网关中解密。
@@ -151,7 +146,7 @@ ms.lasthandoff: 08/25/2017
 还可以查看数据源用于跟踪查询的工具。 例如，可以使用 SQL Server 的扩展事件或 SQL 事件探查器以及 Analysis Services。
 
 **问**：网关日志在何处？ <br/>
-**答**：请参阅本主题后面的“日志”。
+**答**：请参阅本文中后面的“日志”。
 
 ### <a name="update"></a>更新到最新版本
 
@@ -201,6 +196,6 @@ ms.lasthandoff: 08/25/2017
 
 
 ## <a name="next-steps"></a>后续步骤
+* [安装并配置本地数据网关](analysis-services-gateway-install.md)。   
 * [管理 Analysis Services](analysis-services-manage.md)
 * [从 Azure Analysis Services 获取数据](analysis-services-connect.md)
-

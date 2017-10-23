@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a id="unity-roll-a-ball"></a>创建 Unity 回滚球游戏
+# <a id="unity-roll-a-ball"></a>创建 Unity 滚球游戏
 本教程介绍了稍经修改的 [Unity 滚动球教程](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)的主要步骤。 此示例游戏包含一个“Player”球形对象（该对象由应用程序用户控制），而这款游戏的目标是通过将 Player 对象与可收集对象碰撞以“收集”这些可收集对象。 本教程假定用户基本熟悉 Unity 编辑器的环境。 如果遇到任何问题，请参考完整教程。 
 
 ### <a name="setting-up-the-game"></a>设置游戏
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 3. 将刚才创建的默认场景另存为新项目的一部分（名为 **MiniGame**，位于 **Assets** 文件夹下新建的 **\_ Scenes** 文件夹中）：
    
     ![][53]
-4. 创建**三维对象-> 平面**作为播放字段和重命名此平面对象作为**接地**
+4. 创建 **3D 对象 -> 平面**作为游戏场，并将此平面对象重命名为 **Ground**
    
     ![][1]
 5. 重置该 **Ground** 对象的转换组件，使其位于原点。 
@@ -47,11 +47,11 @@ ms.lasthandoff: 07/11/2017
 7. 将 **Ground** 对象的 **Scale** 组件更新至 [X = 2、Y = 1、 Z = 2]。 
    
     ![][5]
-8. 添加新**三维对象-> 球**到的项目和重命名此球面对象作为**播放器**。 
+8. 向项目添加新的 **3D 对象 -> 球体**，并将此球体对象重命名为 **Player**。 
    
     ![][6]
 9. 选择 **Player** 对象并单击与 Plane 对象类似的“重置转换”。 
-10. 更新**转换-> 位置-> Y 坐标**为 0.5 播放器 Y 分量。  
+10. 将 Player Y 的“转换 -> 位置 -> Y 坐标”组件更新为 0.5。  
     
     ![][7]
 11. 在项目中，新建名为“材质”的文件夹（我们会在此处对 Player 对象创建颜色材质）。 
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/11/2017
 14. 将此材质拖动到场景视图，以向 **Ground** 对象应用颜色。 
     
     ![][10]
-15. 最后更新**转换-> 旋转-> Y**到 60 为清楚起见定向光对象上。 
+15. 最后，将定向光对象上的“转换 -> 旋转 -> Y”更新至 60，以确保清晰度。 
     
     ![][12]
 
@@ -144,10 +144,10 @@ ms.lasthandoff: 07/11/2017
 ### <a name="setting-up-the-play-area"></a>设置 Play 区域
 以下步骤来自 [Unity 教程](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141)。 我们会在 Ground 周围创建 Walls，以免 Player Ball 对象在移动中跌落到游戏区域以外。 
 
-1. 单击**创建-> 创建空白-> 游戏对象**并将其命名**墙**
+1. 单击“创建 -> 创建空项 -> 游戏对象”，并将其命名为“Walls”
    
     ![][19]
-2. 在此墙对象-下创建一个新**三维对象-> 多维数据集**并将其命名为"西部 wall"。 
+2. 在此 Walls 对象下，创建新的“3D 对象 -> 立方体”，并将其命名为“West wall”。 
    
     ![][20]
 3. 为该 West Wall 对象更新“转换 -> 位置”和“转换 -> 缩放”。 
@@ -195,7 +195,7 @@ ms.lasthandoff: 07/11/2017
 8. 创建名为 **Pickups** 的**空游戏对象**。 将它的位置重置到原始位置，然后将 Pickup 对象拖动到该游戏对象下。  
    
     ![][29]
-9. 重复**拾取**对象的限制，扩展上**接地**对象周围**播放器**通过更新对象**Transform.Position 的 X 和 Z**适当值。 
+9. 重复 **Pickup** 对象，并通过适当更新 **Transform.Position 的 X 和 Z** 值将该对象分散到 **Player** 对象周围的 **Ground** 对象。 
    
     ![][30]
 10. 创建名为 **Pickup** 的**新材质**，并通过更新 **Albedo 属性**（与更新 Ground 对象的方法类似）将该材质更新为红色。 
@@ -262,7 +262,7 @@ ms.lasthandoff: 07/11/2017
 7. 在 Unity 编辑器中单击“Play”即可启动**滚动球**游戏，该游戏使用键盘键作为方向输入来移动 Player 对象。 
 
 ### <a name="updating-the-game-for-mobile-play"></a>更新游戏以在移动设备上运行
-前面的部分总结了来自 Unity 的基本教程。 现在，我们将对游戏进行修改，以使其能够更友好地在移动设备上运行。 请注意，目前我们对游戏使用的是键盘输入进行测试。 现在，我们将对其进行修改，以通过使用手机动作等来控制 Player。 将加速计用作输入。 
+前面的部分总结了来自 Unity 的基本教程。 现在，我们将对游戏进行修改，以使其能够更友好地在移动设备上运行。 请注意，目前我们对游戏使用的是键盘输入进行测试。 现在，我们将对其进行修改，以通过使用手机动作（即，将加速计用作输入）来控制 Player。 
 
 打开 **PlayerController** 脚本进行编辑，并更新 **FixedUpdate** 方法，以使用加速计的动作来移动 Player 对象。 
 

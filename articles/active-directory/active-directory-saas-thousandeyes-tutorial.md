@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/15/2017
 ms.author: jeedes
 ms.openlocfilehash: 392add7d5f0a55598b8b90760f5c3f2d1e67ac02
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>教程：Azure Active Directory 与 ThousandEyes 集成
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/03/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ThousandEyes 测试用户](#creating-a-thousandeyes-test-user)** -若要在 ThousandEyes 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
+3. **[创建 ThousandEyes 测试用户](#creating-a-thousandeyes-test-user)** - 在 ThousandEyes 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

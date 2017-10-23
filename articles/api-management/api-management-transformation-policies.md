@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/11/2017
   
 -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。  
   
-##  <a name="ConvertJSONtoXML">将 JSON 转换为 XML</a>  
+##  <a name="ConvertJSONtoXML"></a> 将 JSON 转换为 XML  
  `json-to-xml` 策略将请求或响应正文从 JSON 转换为 XML。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -277,11 +277,11 @@ ms.lasthandoff: 07/11/2017
  使用 `set-body` 策略设置传入和传出请求的消息正文。 可以使用 `context.Request.Body` 属性或 `context.Response.Body` 访问消息正文，具体取决于策略是在入站节中还是在出站节中。  
   
 > [!IMPORTANT]
->  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 若要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。  
+>  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。  
 >   
 >  在使用 `set-body` 策略时，请注意以下事项。  
 >   
->  -   若要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，因为是在显式提供全新的正文内容。  
+>  -   要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，你是在显式提供全新的正文内容。  
 > -   将响应的内容保留在入站管道中并不合理，因为尚无响应。  
 > -   将请求的内容保留在出站管道中并不合理，因为请求此时已发送到后端。  
 > -   如果在没有消息正文的情况下使用此策略（例如在入站 GET 中使用），则会引发异常。  

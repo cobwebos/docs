@@ -15,10 +15,10 @@ ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.openlocfilehash: e3cc6bddd67b70f603d5c0d26af6563ae207e3db
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -62,7 +62,7 @@ ms.lasthandoff: 08/03/2017
 联合单一登录适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对联合应用程序的访问权限](#managing-access-to-applications)。
 
 ### <a name="password-based-single-sign-on-account-sharing-and-sso-for-non-federated-apps"></a>基于密码的单一登录：非联合应用的帐户共享和 SSO
-为了实现单一登录到不支持联合身份验证的应用程序，Azure AD 提供了密码管理功能，这些功能可安全地将密码存储到 SaaS 应用并自动将用户登录到这些应用。 可以轻松分发新建帐户的凭据，并与多人共享团队帐户。 用户无需要知道他们有权访问的帐户凭据。
+要启用单一登录到应用程序不支持联合身份验证，Azure AD 提供的密码管理功能，可安全地存储密码的 SaaS 应用并自动将用户登录到这些应用。 可以轻松分发新建帐户的凭据，并与多人共享团队帐户。 用户无需要知道他们有权访问的帐户凭据。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -79,8 +79,7 @@ ms.lasthandoff: 08/03/2017
 | 文章指南 |  |
 |:---:| --- |
 | Azure AD 应用程序代理及其工作原理的概述 |[提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md) |
-| 有关如何配置应用程序代理以及如何发布第一个应用的教程 |[如何设置 Azure AD 应用代理](active-directory-application-proxy-enable.md)<br /><br />[如何以无提示方式安装应用代理连接器](active-directory-application-proxy-silent-installation.md)<br /><br />[如何使用应用代理发布应用程序](active-directory-application-proxy-publish.md)<br /><br />
-            [如何使用自己的域名](active-directory-application-proxy-custom-domains.md) |
+| 有关如何配置应用程序代理以及如何发布第一个应用的教程 |[如何设置 Azure AD 应用代理](active-directory-application-proxy-enable.md)<br /><br />[如何以无提示方式安装应用代理连接器](active-directory-application-proxy-silent-installation.md)<br /><br />[如何使用应用代理发布应用程序](active-directory-application-proxy-publish.md)<br /><br />[如何使用自己的域名](active-directory-application-proxy-custom-domains.md) |
 | 如何对使用应用代理发布的应用程序启用单一登录和条件性访问 |[使用应用程序代理的单一登录](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[条件性访问和应用程序代理](active-directory-application-proxy-conditional-access.md) |
 | 有关如何对以下方案使用应用程序代理的指导 |[如何支持本机客户端应用程序](active-directory-application-proxy-native-client.md)<br /><br />[如何支持声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[如何支持在单独网络和位置上发布的应用程序](active-directory-application-proxy-connectors.md) |
 | 应用程序代理故障排除指南 |[应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
@@ -145,7 +144,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。
 
 ### <a name="building-applications-that-integrate-with-azure-ad"></a>构建与 Azure AD 集成的应用程序
-如果你的组织正在开发或维护业务线 (LoB) 应用程序，或者如果你是 Azure Active Directory 客户的应用开发人员，以下教程可帮助你将应用程序与 Azure AD 集成。
+如果组织正在开发或维护业务线 (LoB) 应用程序，或者如果是 Azure Active Directory 客户的应用开发人员，以下教程可帮助将应用程序与 Azure AD 集成。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -157,7 +156,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 
 ## <a name="managing-access-to-applications"></a>管理对应用程序的访问
 ### <a name="using-groups-and-self-service-to-manage-who-has-access-to-which-apps"></a>使用组和自助服务管理谁可以访问哪些应用
-为了帮助你管理应该有权访问哪些资源，Azure Active Directory，可使用组的规模设置分配和权限。 IT 可以选择启用自助功能，以便在需要时，用户可以直接请求权限。
+为了帮助管理谁有权访问哪些资源，Azure Active Directory 允许使用组大规模地设置分配和权限。 IT 可以选择启用自助功能，以便在需要时，用户可以直接请求权限。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -194,7 +193,7 @@ B2B 协作目前适用于[所有版本的 Azure Active Directory](https://azure.
 访问面板适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ### <a name="reports-easily-audit-app-access-changes-and-monitor-sign-ins-to-apps"></a>报告：轻松审核应用访问更改及监视应用登录
-Azure Active Directory 提供了多个报告和警报来帮助你监视你的组织访问应用程序。 可以在应用发生异常登录时收到警报，还可以跟踪用户访问应用程序的时间及更改原因。
+Azure Active Directory 提供多个报告和警报，帮助你监视组织对应用程序的访问。 可以在应用发生异常登录时收到警报，还可以跟踪用户访问应用程序的时间及更改原因。
 
 | 文章指南 |  |
 |:---:| --- |

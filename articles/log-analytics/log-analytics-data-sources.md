@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2017
 ms.author: bwren
 ms.openlocfilehash: 00d030a502cf70ea9a5dea767f560cdf2919573e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics 中的数据源
-Log Analytics 从 OMS 工作区中已连接的源收集数据并将其存储在 OMS 存储库中。  从每个收集的数据由你配置数据源定义。  OMS 存储库中的数据作为一组记录进行存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
+Log Analytics 从 OMS 工作区中已连接的源收集数据并将其存储在 OMS 存储库中。  从每个源收集的数据由所配置的数据源定义。  OMS 存储库中的数据作为一组记录进行存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
 
 ![Log Analytics - 数据收集](./media/log-analytics-data-sources/overview.png)
 
@@ -65,4 +65,4 @@ Log Analytics 所收集的所有数据都作为记录存储在 OMS 存储库。 
 ## <a name="next-steps"></a>后续步骤
 * 了解[解决方案](log-analytics-add-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到 OMS 存储库。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
-* 配置[警报](log-analytics-alerts.md)以主动通知你从数据源和解决方案收集的关键数据。
+* 配置[警报](log-analytics-alerts.md)以便主动向你通知从数据源和解决方案中收集的关键数据。

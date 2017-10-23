@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 ms.openlocfilehash: 4e1aae6c041e4572e7e2281203f969e7649e1480
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建多 VM 环境和 PaaS 资源
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/11/2017
 
     ![配置和策略](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. 从“配置和策略”设置列表中选择“存储库”。 “存储库”边栏选项卡列出已添加到实验室的存储库。 名为的存储库`Public Repo`自动为所有 labs、 生成和连接到[DevTest 实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)，其中包含供你使用的多个 VM 项目。
+1. 从“配置和策略”设置列表中选择“存储库”。 “存储库”边栏选项卡列出已添加到实验室的存储库。 名为 `Public Repo` 的存储库是系统自动为所有实验室生成的，它连接到包含你所用的多个 VM 项目的[开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)。
 
     ![公共存储库](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 

@@ -13,15 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: e4e298475d7be7d51c8bd55be498371ed6ce77a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
-
+ms.openlocfilehash: db49780e359258898a62f3b95e87f54b78055c86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
 
 U-SQL 是为大数据类型的工作负荷设计的查询语言。 U-SQL 的一个独有特点是将类似 SQL 的声明性语言与 C# 提供的可扩展性和可编程性结合起来。 本指南着重介绍通过 C# 实现的 U-SQL 语言的可扩展性和可编程性。
@@ -113,7 +110,7 @@ DateTime.Now.ToString("M/d/yyyy")
 
 
 ## <a name="using-net-assemblies"></a>使用 .NET 程序集
-U-SQL 扩展性模型很大程度取决于添加自定义代码的能力。 目前，U-SQL 提供添加你自己的基于 Microsoft .NET 的代码的简单方法（具体而言是 C#）。 但是，你也可以添加用其他 .NET 语言编写的自定义代码，例如 VB.NET 或 F#。 
+U-SQL 扩展性模型很大程度取决于添加自定义代码的能力。 目前，U-SQL 提供添加自己的基于 Microsoft .NET 的代码的简单方法（具体而言是 C#）。 但是，也可以添加用其他 .NET 语言编写的自定义代码，例如 VB.NET 或 F#。 
 
 ### <a name="register-a-net-assembly"></a>注册 .NET 程序集
 
@@ -200,7 +197,7 @@ public static string GetFiscalPeriod(DateTime dt)
 
 它能简单地计算会计月份及季度并返回字符串值。 对于 6 月（第一个会计季度的第一个月），我们使用“Q1:P1”。 对于 7 月，我们使用“Q1:P2”，以此类推。
 
-这是将用于 U-SQL 项目的一个常规 C# 函数。
+这是用于 U-SQL 项目的一个常规 C# 函数。
 
 下面是此方案中代码隐藏部分的样子：
 
@@ -476,7 +473,7 @@ the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\
 USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
-若要在输出器中处理 UDT，则必须使用 ToString() 方法将其序列化，或创建一个自定义输出器。
+要在输出器中处理 UDT，则必须使用 ToString() 方法将其序列化，或创建一个自定义输出器。
 
 目前不能在 GROUP BY 中使用 UDT。 如果在 GROUP BY 中使用 UDT，将引发以下错误：
 
@@ -1509,7 +1506,7 @@ USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
 ## <a name="use-user-defined-processors"></a>使用用户定义的处理器
-用户定义的处理器或称 UDP 是一种 U-SQL UDO，可让你通过应用可编程性功能处理传入的行。 使用 UDP 可以根据需要合并列、修改值和添加新列。 从基本意义上说，它有助于处理行集，以生成所需的数据元素。
+用户定义的处理器 (UDP) 是一种 U-SQL UDO，可让你通过应用可编程性功能处理传入的行。 使用 UDP 可以根据需要合并列、修改值和添加新列。 从基本意义上说，它有助于处理行集，以生成所需的数据元素。
 
 若要定义 UDP，需使用 `SqlUserDefinedProcessor` 属性创建 `IProcessor` 接口，这对于 UDP 是可选的。
 
@@ -2123,7 +2120,7 @@ public class EmptyUserReducer : IReducer
 **SqlUserDefinedReducer** 是用户定义的化简器定义的可选属性。 可用于定义 IsRecursive 属性。
 
 * bool     IsRecursive    
-* **true** = 指示此减除器是否是幂等的
+* **true** = 指示此化简器是否关联和可交换
 
 主要可编程性对象是输入和输出。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
 
@@ -2184,7 +2181,7 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-在此用例场景中，化简器将跳过具有空用户名的行。 对于行集中的每一行，它读取所需的每一列，然后计算用户名的长度。 仅当用户名值长度大于 0 时，它才输出实际行。
+在此用例场景中，化简器将跳过具有空用户名的行。 对于行集中的每一行，它读取所需的每一列，并计算用户名的长度。 仅当用户名值长度大于 0 时，它才输出实际行。
 
 下面是使用自定义化简器的基本 U-SQL 脚本：
 
@@ -2220,4 +2217,3 @@ OUTPUT @rs2
     TO @output_file 
     USING Outputters.Text();
 ```
-

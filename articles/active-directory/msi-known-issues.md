@@ -12,16 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 09/22/2017
+ms.date: 10/07/2017
 ms.author: skwan
+ms.openlocfilehash: c091ea7cec35099d8ad2ab47361cd4c1278fdab6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 3cfd1eb55a031696635270a56ed5028e3b249543
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答和已知问题
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -58,6 +56,16 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 
 ## <a name="known-issues"></a>已知问题
 
+### <a name="automation-script-fails-when-attempting-schema-export-for-msi-extension"></a>尝试对 MSI 扩展进行架构导出时，“自动化脚本”失败
+
+如果在 VM 上启用了托管服务标识，当尝试将“自动化脚本”功能用于 VM 或其资源组时，将显示以下错误：
+
+![MSI 自动化脚本导出错误](media/msi-known-issues/automation-script-export-error.png)
+
+托管服务标识 VM 扩展当前不支持将其架构导出到资源组模板的功能。 因此，生成的模板不显示用于在资源上启用托管服务标识的配置参数。 可以按照[使用模板配置 VM 托管服务标识](msi-qs-configure-template-windows-vm.md)中的示例，手动添加这些节。
+
+当 MSI VM 扩展的架构导出功能变为可用时，它将在[导出包含 VM 扩展的资源组](../virtual-machines/windows/extensions-export-templates.md#supported-virtual-machine-extensions)中列出。
+
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Azure 门户中不显示“配置”边栏选项卡
 
 如果 VM 中不显示“VM 配置”边栏选项卡，表明所在区域的门户中尚未启用 MSI。  请稍后再看看。  也可以使用 [PowerShell](msi-qs-configure-powershell-windows-vm.md) 或 [Azure CLI](msi-qs-configure-cli-windows-vm.md) 为 VM 启用 MSI。
@@ -87,4 +95,3 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-

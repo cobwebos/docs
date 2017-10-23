@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
 ms.openlocfilehash: 5b9955b2af7f20a79981315fa33a0eb5380a5465
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-b2c-tenant-to-pay-for-usage-charges"></a>将 Azure 订阅链接到 Azure B2C 租户以支付使用费
 
@@ -44,7 +44,7 @@ https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 Azure AD B2C 资源创建对话框中包含以下参数：
 
-1. Azure AD B2C 租户 – 从下拉列表中选择一个 Azure AD B2C 租户。  此时仅显示符合条件的 Azure AD B2C 租户。  符合条件的 B2C 租户满足这些条件： 是 B2C 租户的全局管理员和 B2C 租户不是当前关联到 Azure 订阅
+1. Azure AD B2C 租户 – 从下拉列表中选择一个 Azure AD B2C 租户。  此时仅显示符合条件的 Azure AD B2C 租户。  符合条件的 B2C 租户满足以下条件：你是 B2C 租户的全局管理员，B2C 租户目前未关联到 Azure 订阅
 
 2. Azure AD B2C 资源名称 - 已预先选定，与 B2C 租户的域名匹配
 
@@ -55,7 +55,7 @@ Azure AD B2C 资源创建对话框中包含以下参数：
 5. 固定到仪表板可以十分方便地访问 B2C 租户计费信息和 B2C 租户设置 ![创建 B2C 资源](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="step-4---manage-your-b2c-tenant-resources-optional"></a>步骤 4 - 管理 B2C 租户资源（可选）
-部署完成后，新的"B2C 租户"资源在和中创建的目标资源组相关的 Azure 订阅。  应会看到添加了一个“B2C 租户”类型的新资源以及其他 Azure 资源。
+完成部署后，将在目标资源组和相关的 Azure 订阅中创建新的“B2C 租户”资源。  应会看到添加了一个“B2C 租户”类型的新资源以及其他 Azure 资源。
 
 ![创建 B2C 资源](./media/active-directory-b2c-how-to-enable-billing/b2cresourcedashboard.png)
 

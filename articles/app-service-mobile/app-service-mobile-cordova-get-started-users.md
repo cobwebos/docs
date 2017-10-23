@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
 ms.openlocfilehash: b7362b7f26859de541f792e714502851d74c98e5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/03/2017
 
 [观看显示类似步骤的视频](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+## <a name="permissions"></a>将权限限制为已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 现在，可以验证是否已禁用对后端的匿名访问。 在 Visual Studio 中：
@@ -42,7 +42,7 @@ ms.lasthandoff: 08/03/2017
 
 接下来，需要更新应用程序，以便在从移动应用后端请求资源之前对用户进行身份验证。
 
-## <a name="add-authentication"></a>向应用程序添加身份验证
+## <a name="add-authentication"></a>向应用添加身份验证
 1. 在 **Visual Studio** 中打开项目，并打开 `www/index.html` 文件进行编辑。
 2. 找到 head 节中的 `Content-Security-Policy` 元标记。  将 OAuth 主机添加到允许的源列表。
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 08/03/2017
     login() 方法开始对提供程序进行身份验证。 login() 方法是返回 JavaScript Promise 的异步函数。  初始化的剩余部分放置在 promise 响应中，因此在 login() 方法完成之前不会执行。
 
 4. 在刚刚添加的代码中，将 `SDK_Provider_Name` 替换为登录提供程序的名称。 例如，对于 Azure Active Directory，请使用 `client.login('aad')`。
-5. 运行项目。  项目完成初始化后，应用程序针对所选的身份验证提供程序显示 OAuth 登录页。
+5. 运行项目。  当项目已完成初始化后，应用程序将针对所选的身份验证提供程序显示 OAuth 登录页。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关 Azure 应用服务中的[关于身份验证]。

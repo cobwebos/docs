@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3d5ad974c01e0ee3954da4f990da87338b2d1756
-ms.openlocfilehash: 3a3d5c8bf4da9255015fab64f2b59637c4c030ea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
-
-
+ms.openlocfilehash: ec25d4375647a2c8983d7573b9912e544fc3e7b2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0 令牌引用
 Azure Active Directory (Azure AD) v2.0 在每个[身份验证流](active-directory-v2-flows.md)中发出多种安全令牌。 此引用说明每种令牌的格式、安全特征和内容。
@@ -51,7 +49,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 ```
 
 > [!TIP]
-> 练习时，若要检查示例 ID 令牌中的声明，请将示例 ID 令牌粘贴到 [calebb.net](http://calebb.net/)。
+> 练习时，要检查示例 ID 令牌中的声明，请将示例 ID 令牌粘贴到 [calebb.net](http://calebb.net/)。
 >
 >
 
@@ -70,9 +68,9 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | nonce |`nonce` |`12345` |Nonce 是缓和令牌重放攻击的策略。 应用可通过使用 `nonce` 查询参数，在授权请求中指定 nonce。 在请求中提供的值会在 ID 令牌的 `nonce` 声明中发出（未经修改）。 应用可根据在请求上指定的值验证此值，使应用会话与特定 ID 令牌相关联。 应用可在 ID 令牌验证过程中执行这项验证。 |
 | name |`name` |`Babe Ruth` |此名称声明提供了标识令牌使用者的用户可读值。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
 | email |`email` |`thegreatbambino@nyy.onmicrosoft.com` |与用户帐户关联的主要电子邮件地址（如果有）。 其值可变，并可能随时间而不断改变。 需要 `email` 范围才能接收此声明。 |
-| 首选用户名 |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |表示 v2.0 终结点中用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 需要 `profile` 范围才能接收此声明。 |
+| 首选用户名 |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |表示 v2.0 终结点中用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于此值是可变的，因此它不能用于做出授权决定。 需要 `profile` 范围才能接收此声明。 |
 | subject |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。  因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。  这不一定是所需的，具体取决于体系结构和隐私要求。 |
-| 对象 ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。  还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序将在 `oid` 声明中收到相同值。  这意味着，对 Microsoft Online Services（如 Microsoft Graph）进行查询时可以使用它。  Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。  因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
+| 对象 ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。  还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。  这意味着，对 Microsoft Online Services（如 Microsoft Graph）进行查询时可以使用它。  Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。  因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
 
 ### <a name="access-tokens"></a>访问令牌
 目前，仅 Microsoft 服务可以使用 v2.0 终结点发布的访问令牌。 在任何目前支持的方案中，应用应该无需执行任何的访问令牌验证或检查。 可将访问令牌视作完全不透明。 它们只是应用可通过 HTTP 请求传递给 Microsoft 的字符串。
@@ -96,7 +94,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 目前，应用需执行的唯一令牌验证就是验证 ID 令牌。 若要验证 ID 令牌，应用需验证 ID 令牌签名和 ID 令牌中的声明。
 
 <!-- TODO: Link -->
-Microsoft 提供库和代码示例以演示如何轻松处理令牌验证。 在后续部分，我们将介绍基本流程。 多个第三方开源库也可用于 JWT 验证。 几乎所有平台和语言都有至少一个库选项。
+Microsoft 提供库和代码示例以演示如何轻松处理令牌验证。 在后续部分，我们介绍基本流程。 多个第三方开源库也可用于 JWT 验证。 几乎所有平台和语言都有至少一个库选项。
 
 ### <a name="validate-the-signature"></a>验证签名
 JWT 包含三个段（以 `.` 字符分隔）。 第一个段称为标头，第二个段称为主体，第三个段称为签名。 签名段可用于验证 ID 令牌的真实性，使应用信任它。
@@ -155,4 +153,3 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 刷新令牌（个人帐户） |最长 1 年 |单个刷新令牌的有效期最长为 1 年。 但是，刷新令牌可能由于任何原因而随时失效，因此应用需继续尝试使用刷新令牌，直至失败。 |
 | 授权代码（工作或学校帐户） |10 分钟 |授权代码的生存期有意缩短，应在收到此令牌时立即将其兑换为访问令牌和刷新令牌。 |
 | 授权代码（个人帐户） |5 分钟 |授权代码的生存期有意缩短，应在收到此令牌时立即将其兑换为访问令牌和刷新令牌。 代表个人帐户颁发的授权代码只能使用一次。 |
-

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
 ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 
 现在，让我们学习 ODBC 驱动程序的入门知识。
 
-## <a id="install"></a>第 1 步：安装 Azure Cosmos DB ODBC 驱动程序
+## <a id="install"></a>步骤 1：安装 Azure Cosmos DB ODBC 驱动程序
 
 1. 下载适用于环境的驱动程序：
 
@@ -49,7 +49,7 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 
     ![Azure Cosmos DB ODBC 数据源管理器](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>第 2 步：连接到 Azure Cosmos DB 数据库
+## <a id="connect"></a>步骤 2：连接到 Azure Cosmos DB 数据库
 
 1. [安装 Azure Cosmos DB ODBC 驱动程序](#install)后，请在“ODBC 数据源管理器”窗口中单击“添加”。 可以创建一个用户 DSN 或系统 DSN。 在本示例中，我们将创建一个用户 DSN。
 2. 在“创建新数据源”窗口中选择“Microsoft Azure Cosmos DB ODBC 驱动程序”，并单击“完成”。
@@ -115,12 +115,12 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
     - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以“_”开头的所有 Azure Cosmos DB 系统必需属性。
     - “Id”列是唯一不能隐藏的字段，因为它用作规范化架构中的主键。 
 6. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。
-7. 返回“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口，单击“高级选项”。 然后，在**架构文件**框中，导航到已保存的架构文件并单击**确定**。 再次单击“确定”保存 DSN。 这会将创建的架构保存到 DSN。 
+7. 返回“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口，单击“高级选项”。 然后，在“架构文件”框中，导航到保存的架构文件并单击“确定”。 再次单击“确定”保存 DSN。 这会将创建的架构保存到 DSN。 
 
 ## <a name="optional-creating-views"></a>（可选）创建视图
 可在采样过程中定义和创建视图。 这些视图相当于 SQL 视图。 它们是只读的，并且是定义的 Azure Cosmos DB SQL 的选择和投影范围。 
 
-若要创建数据的视图，请在“架构编辑器”窗口中的“视图定义”列内，单击要采样的集合行中的“添加”。 然后在**视图定义**窗口中，执行以下操作：
+若要创建数据的视图，请在“架构编辑器”窗口中的“视图定义”列内，单击要采样的集合行中的“添加”。 然后在“视图定义”窗口中执行以下操作：
 1. 单击“新建”，输入视图的名称（例如 EmployeesfromSeattleView），并单击“确定”。
 2. 在“编辑视图”窗口中，输入一个 Azure Cosmos DB 查询。 输入内容必须是 Azure Cosmos DB SQL 查询，例如 `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`。并单击“确定”。
 
@@ -135,8 +135,8 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 3. 在“获取数据”窗口中，单击“其他” | “ODBC” | “连接”。
 4. 在“从 ODBC”窗口中，选择创建的数据源名称，并单击“确定”。 可将“高级选项”项保留空白。
 5. 在“使用 ODBC 驱动程序访问数据源”窗口中，选择“默认或自定义”，并单击“连接”。 不需要包括“凭据连接字符串属性”。
-6. 在“导航器”  窗口的左窗格中，展开数据库和架构，并选择表。 结果窗格包含使用所创建的架构的数据。
-7. 如果要在 Power BI Desktop 中可视化数据，请选中表名称前面的框，并单击“加载” 。
+6. 在“导航器”窗口的左窗格中，展开数据库和架构，并选择表。 结果窗格包含使用创建的架构的数据。
+7. 要在 Power BI Desktop 中可视化数据，请选中表名称前面的框，并单击“加载”。
 8. 在 Power BI Desktop 中的最左侧，选择“数据”选项卡 ![Power BI Desktop 中的“数据”选项卡](./media/odbc-driver/odbc-driver-data-tab.png) 确认数据是否已导入。
 9. 现在，可以使用 Power BI 创建视觉对象：单击“报表”选项卡![Power BI Desktop 中的“报表”选项卡](./media/odbc-driver/odbc-driver-report-tab.png)，单击“新建视觉对象”，并自定义磁贴。 有关在 Power BI Desktop 中创建可视化效果的详细信息，请参阅 [Power BI 中的可视化效果类型](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)。
 

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
 ms.openlocfilehash: b38eb3a011d46f2239891ea1d1bcac2a4059a866
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-8-set-up-the-source-and-target-for-hyper-v-replication-to-azure"></a>步骤 8：为到 Azure 的 Hyper-V 复制设置源和目标
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 07/11/2017
 1. 在“准备基础结构”中，单击“源”。 若要添加新的 Hyper-V 站点作为 Hyper-V 主机或群集的容器，请单击“+Hyper-V 站点”。
 
     ![设置源](./media/hyper-v-site-walkthrough-source-target/set-source1.png)
-2. 在“创建 Hyper-V 站点”中指定站点的名称。 。 现在，请选择已创建的站点，然后单击“+Hyper-V 服务器”向站点添加服务器。
+2. 在“创建 Hyper-V 站点”中指定站点的名称。 然后单击“确定”。 现在，请选择已创建的站点，并单击“+Hyper-V 服务器”向站点添加服务器。
 
     ![设置源](./media/hyper-v-site-walkthrough-source-target/set-source2.png)
 
 3. 在“添加服务器” > “服务器类型”中，确保显示“Hyper-V 服务器”。
 
     - 确保要添加的 Hyper-V 服务器符合[先决条件](#on-premises-prerequisites)并且能够访问指定的 URL。
-    - 下载 Azure Site Recovery 提供程序安装文件。 运行此文件，以在每个 Hyper-V 主机上安装提供程序和恢复服务代理。
+    - 下载 Azure Site Recovery 提供程序安装文件。 将运行此文件，以在每个 Hyper-V 主机上安装提供程序和恢复服务代理。
 
     ![设置源](./media/hyper-v-site-walkthrough-source-target/set-source3.png)
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 07/11/2017
 5. 在“代理设置”中，指定 Hyper-V 主机上运行的提供程序如何通过 Internet 连接到 Azure Site Recovery。
 
     * 如果希望提供程序直接进行连接，请选择“不使用代理直接连接 Azure Site Recovery”。
-    * 如果现有代理要求身份验证，或者你想要使用自定义代理进行填充程序连接，请选择“使用代理服务器连接 Azure Site Recovery”。
+    * 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用代理服务器连接 Azure Site Recovery”。
     * 如果使用代理，请执行以下操作：
         - 指定地址、端口和凭据
         - 确保允许通过代理访问[先决条件](#prerequisites)中所述的 URL。

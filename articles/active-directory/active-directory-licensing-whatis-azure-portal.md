@@ -17,14 +17,12 @@ ms.date: 06/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 52dd48ce4e4acaf48f31edc51bbb657f8cd249cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: d6c76af713a73b965e87a2f470125f2e65565975
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可基础知识
 
 使用 Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynamics CRM 和其他类似产品）需要许可证。 这些许可证将分配给需要访问这些服务的每个用户。 若要管理许可证，管理员可以使用某种管理门户（Office 或 Azure）和 PowerShell cmdlet。 Azure Active Directory (Azure AD) 是支持所有 Microsoft 云服务的标识管理的底层基础结构。 Azure AD 存储有关用户许可证分配状态的信息。
@@ -43,7 +41,7 @@ ms.lasthandoff: 06/30/2017
 
 - 支持需要用户级许可的所有 Microsoft 云服务。 这包括所有 Office 365 产品、企业移动性 + 安全性和 Dynamics CRM。
 
-- 基于组的许可目前仅通过 [Azure 门户](https://portal.azure.com)提供。 如果你主要使用其他管理门户（例如 Office 365 门户）来管理用户和组，可以继续这样做。 但是，应该使用 Azure 门户在组级别管理许可证。
+- 基于组的许可目前仅通过 [Azure 门户](https://portal.azure.com)提供。 如果主要使用其他管理门户（例如 Office 365 门户）来管理用户和组，可以继续这样做。 但是，应该使用 Azure 门户在组级别管理许可证。
 
 - Azure AD 会自动管理由组成员身份更改导致的许可证修改。 通常，在组成员身份发生更改时，许可证修改在几分钟内就会生效。
 
@@ -52,6 +50,10 @@ ms.lasthandoff: 06/30/2017
 - 在某些情况下，无法向用户分配许可证。 例如，当租户中可用许可证不足时，或者同时分配了冲突服务时。 对于 Azure AD 无法为其完全处理组许可证的用户，管理员有权访问其信息。 然后，可以根据这些信息采取纠正措施。
 
 - 在公共预览期，租户需要 Azure AD 基本版或高级版的付费或试用订阅才能使用基于组的许可证管理。
+
+## <a name="your-feedback-is-welcome"></a>我们欢迎反馈！
+
+如果有反馈或功能请求，请使用[此论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/317677-group-based-licensing)将其与我们共享。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -62,4 +64,3 @@ ms.lasthandoff: 06/30/2017
 * [识别和解决 Azure Active Directory 中组的许可问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 * [Azure Active Directory 基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
-

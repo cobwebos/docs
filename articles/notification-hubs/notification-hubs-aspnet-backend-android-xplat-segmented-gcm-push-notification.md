@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 76ec01c874fceedab7d76b2ef58e4b45b5489f58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
 ## <a name="prerequisites"></a>先决条件
-本主题以你在[通知中心入门][get-started]中创建的应用为基础。 在开始本教程之前，必须先阅读 [通知中心入门][get-started]。
+本主题以你在[通知中心入门][get-started]中创建的应用为基础。 在开始本教程之前，必须先完成[通知中心入门][get-started]教程的学习。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 第一步是向现有主活动添加 UI 元素，以允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在通知中心创建设备注册。
@@ -173,7 +173,7 @@ ms.lasthandoff: 07/11/2017
         // private GoogleCloudMessaging gcm;
         // private NotificationHub hub;
         private Notifications notifications;
-5. 然后，在**onCreate**方法中，删除的初始化**中心**字段和**registerWithNotificationHubs**方法。 然后，添加将初始化 **Notifications** 类实例的以下行。 
+5. 然后，在 **onCreate** 方法中，删除 **hub** 字段和 **registerWithNotificationHubs** 方法的初始化。 然后，添加将初始化 **Notifications** 类实例的以下行。 
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -193,7 +193,7 @@ ms.lasthandoff: 07/11/2017
     > [AZURE.NOTE] 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
 
-1. 然后，添加以下导入和`subscribe`方法以处理订阅按钮单击事件：
+1. 然后，添加以下导入项和 `subscribe` 方法以处理订阅按钮单击事件：
    
         import android.widget.CheckBox;
         import java.util.HashSet;
@@ -241,7 +241,7 @@ ms.lasthandoff: 07/11/2017
         notifications.subscribeToCategories(notifications.retrieveCategories());
    
     这确保每次应用程序启动时，它从本地存储区检索类别并请求注册这些类别。 
-2. 然后更新`onStart()`方法`MainActivity`类，如下所示：
+2. 然后更新 `MainActivity` 类的 `onStart()` 方法，如下所示：
    
     @Override  protected void onStart() {
    
@@ -266,7 +266,7 @@ ms.lasthandoff: 07/11/2017
    
     这会基于以前保存的类别状态更新主活动。
 
-应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时会使用这些类别注册到通知中心。 接下来，我们会定义一个后端，它可将类别通知发送到此应用程序。
+应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时会使用这些类别注册到通知中心。 接下来，我们将定义一个后端，它可将类别通知发送到此应用程序。
 
 ## <a name="sending-tagged-notifications"></a>发送带标记的通知
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]

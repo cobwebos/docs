@@ -1,6 +1,6 @@
 ---
-title: "了解 Azure IoT 中心查询语言 |Microsoft 文档"
-description: "开发人员指南-用于检索有关设备 twins 和作业信息从你的 IoT 中心的类似 SQL 的 IoT 中心查询语言的说明。"
+title: "了解 Azure IoT 中心查询语言 | Microsoft Docs"
+description: "开发人员指南 - 介绍类似 SQL 的 IoT 中心查询语言，该语言用于在 IoT 中心检索设备孪生和作业的相关信息。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 05/25/17
 ms.author: elioda
 ms.openlocfilehash: a7650104eda58923558892f6f0f6666d16dbce28
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="reference---iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>参考-IoT 中心设备 twins、 作业和邮件路由的查询语言
+# <a name="reference---iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>参考 - 设备孪生、作业和消息路由的 IoT 中心查询语言
 
-IoT 中心提供功能强大的类似 SQL 的语言，以检索信息有关[设备 twins] [ lnk-twins]和[作业][lnk-jobs]，和[邮件路由][lnk-devguide-messaging-routes]。 本文提供以下内容：
+IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生][lnk-twins]、[作业][lnk-jobs]和[消息路由][lnk-devguide-messaging-routes]的信息。 本文内容：
 
-* IoT 中心查询语言 （） 的主要功能的简介和
-* 语言详细的说明。
+* IoT 中心查询语言的主要功能简介，以及
+* 语言的详细说明。
 
-## <a name="get-started-with-device-twin-queries"></a>要开始使用设备双向查询
-[设备 twins] [ lnk-twins]可以包含任意 JSON 对象作为标记和属性。 IoT 中心可让你对查询设备 twins 作为包含所有设备的双向信息的单个 JSON 文档。
-例如，假设你的 IoT 中心设备 twins 具有以下结构：
+## <a name="get-started-with-device-twin-queries"></a>设备孪生查询入门
+[设备孪生][lnk-twins]可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生作为包含所有设备孪生信息的 JSON 文档进行查询。
+例如，假设 IoT 中心设备孪生采用以下结构：
 
 ```json
 {
@@ -70,25 +70,25 @@ IoT 中心提供功能强大的类似 SQL 的语言，以检索信息有关[设�
 }
 ```
 
-IoT 中心将作为一个名为的文档集合公开设备 twins**设备**。
-因此，以下查询检索设备 twins 的整个集：
+IoT 中心将设备孪生公开为名为**设备**的文档集合。
+因此，以下查询将检索设备孪生的整个集：
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT Sdk] [ lnk-hub-sdks]支持分页的大型结果。
+> [Azure IoT SDK][lnk-hub-sdks] 支持将大型结果分页：
 
-IoT 中心允许您检索设备 twins 使用任意条件进行筛选。 例如，
+IoT 中心允许使用任意条件检索设备孪生筛选结果。 例如，
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-检索与设备 twins **location.region**标记设置为**美国**。
-布尔运算符和算术比较支持例如
+检索 **location.region** 标记设置为 **US** 的设备孪生。
+也支持布尔运算符和算术比较，例如
 
 ```sql
 SELECT * FROM devices
@@ -96,23 +96,23 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-检索位于配置为发送遥测通常少于每隔一分钟美国的所有设备 twins。 为方便起见，它还可使用与数组常量**IN**和**NIN** （不在） 运算符。 例如，
+检索位于美国、配置为以小于一分钟的频率发送遥测数据的所有设备孪生。 方便起见，还可将数组常量与 **IN** 和 **NIN**（不包含）运算符结合使用。 例如，
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-检索所有设备 twins 报告 WiFi 或有线连接。 它通常是标识包含特定属性的所有设备 twins 所需的。 IoT 中心支持函数`is_defined()`为此目的。 例如，
+检索报告了 WiFi 或有线连接的所有设备孪生。 通常需要它才能识别包含特定属性的所有设备孪生。 为此，IoT 中心支持函数 `is_defined()`。 例如，
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-检索定义的所有设备 twins`connectivity`报告属性。 请参阅[WHERE 子句][ lnk-query-where]筛选功能完整的参考部分。
+检索定义 `connectivity` 报告属性的所有设备孪生。 有关筛选功能的完整参考，请参阅 [WHERE 子句][lnk-query-where]部分。
 
-此外支持分组和聚合。 例如，
+此外还支持分组与聚合。 例如，
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -121,7 +121,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-返回每个遥测配置状态中的设备的计数。
+返回处于每种遥测配置状态的设备计数。
 
 ```json
 [
@@ -140,11 +140,11 @@ GROUP BY properties.reported.telemetryConfig.status
 ]
 ```
 
-前面的示例阐释了其中三个设备报告成功的配置，两个仍要将应用配置，并且其中一个报告错误的情况。
+上述示例阐释了以下情景：3 个设备报告配置成功，2 个设备仍在应用配置，1 个设备报告错误。
 
 ### <a name="c-example"></a>C# 示例
-查询功能公开的[C# 服务 SDK] [ lnk-hub-sdks]中**RegistryManager**类。
-下面是查询的一个简单的示例：
+查询功能由 [C# 服务 SDK][lnk-hub-sdks] 在 **RegistryManager** 类中公开。
+下面是一个简单的查询示例：
 
 ```csharp
 var query = registryManager.CreateQuery("SELECT * FROM devices", 100);
@@ -158,12 +158,12 @@ while (query.HasMoreResults)
 }
 ```
 
-请注意如何**查询**页大小 （最多 1000 个），实例化对象，然后可通过调用检索多个页**GetNextAsTwinAsync**方法多次。
-请注意，查询对象公开多个**下一步\***，取决于使用投影时，使用所需的查询，例如设备双向或作业对象或纯 JSON 反序列化选项。
+请注意如何使用页面大小（最大 1000）实例化 **query** 对象，并通过调用 **GetNextAsTwinAsync** 方法多次来检索多个页面。
+请注意，查询对象会公开多个 **Next\***，具体取决于查询所需的反序列化选项（如设备孪生或作业对象）或者使用投影时要用的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
-查询功能公开的[Azure IoT 服务 SDK for Node.js] [ lnk-hub-sdks]中**注册表**对象。
-下面是查询的一个简单的示例：
+查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK][lnk-hub-sdks] 在 **Registry** 对象中公开。
+下面是一个简单的查询示例：
 
 ```nodejs
 var query = registry.createQuery('SELECT * FROM devices', 100);
@@ -184,18 +184,18 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-请注意如何**查询**页大小 （最多 1000 个），实例化对象，然后可通过调用检索多个页**nextAsTwin**方法多次。
-请注意，查询对象公开多个**下一步\***，取决于使用投影时，使用所需的查询，例如设备双向或作业对象或纯 JSON 反序列化选项。
+请注意如何使用页面大小（最大 1000）实例化 **query** 对象，并通过调用 **nextAsTwin** 方法多次来检索多个页面。
+请注意，查询对象会公开多个 **next\***，具体取决于查询所需的反序列化选项（如设备孪生或作业对象）或者使用投影时要用的普通 JSON。
 
 ### <a name="limitations"></a>限制
 > [!IMPORTANT]
-> 查询结果可以在设备 twins 有几分钟的延迟方面的最新值。 如果按 id 查询单个设备 twins，将始终优先使用检索设备双向 API 的说明进行操作，后者始终包含的最新值并具有更高版本节流限制。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，将始终优先使用检索设备孪生 API，它始终包含最新值并具有较高的限制。
 
-目前，比较支持仅之间基元类型 （没有对象），例如`... WHERE properties.desired.config = properties.reported.config`这些属性具有基元值的情况下，才支持。
+目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
-## <a name="get-started-with-jobs-queries"></a>要开始使用作业查询
-[作业][ lnk-jobs]提供一种执行套设备上的操作。 每个设备双向包含其中它是一个名为集合中的一部分的作业的信息**作业**。
-在逻辑上，
+## <a name="get-started-with-jobs-queries"></a>作业查询入门
+使用[作业][lnk-jobs]可对一组设备执行操作。 每个设备孪生包含名为**作业**的集合中该设备参与的作业的信息。
+从逻辑上讲，
 
 ```json
 {
@@ -226,22 +226,22 @@ query.nextAsTwin(onResults);
 }
 ```
 
-目前，此集合是可作为查询**devices.jobs** IoT 中心内查询语言。
+目前，可以使用 IoT 中心查询语言以 **devices.jobs** 形式查询此集合。
 
 > [!IMPORTANT]
-> 目前，作业属性从不返回查询设备 twins （即包含设备的查询） 时。 它可直接通过使用查询进行访问`FROM devices.jobs`。
+> 目前，查询设备孪生（即包含“FROM devices”的查询）时不会返回作业属性。 它仅可使用 `FROM devices.jobs` 通过查询直接访问。
 >
 >
 
-例如，若要获取影响单个设备的所有作业 （过去和计划），你可以使用以下查询：
+例如，若要获取影响单个设备的所有作业（过去和计划的作业），可以使用以下查询：
 
 ```sql
 SELECT * FROM devices.jobs
 WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-请注意此查询如何提供特定于设备的状态 （和可能的直接方法响应） 的返回每个作业。
-还有可能使用中的所有对象属性的任意布尔条件进行筛选**devices.jobs**集合。
+请注意此查询如何提供每个返回的作业的设备特定状态（可能还会提供直接方法响应）。
+还可针对 **devices.jobs** 集合中的所有对象属性，使用任意布尔条件进行筛选。
 例如，以下查询：
 
 ```sql
@@ -252,9 +252,9 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-检索所有已完成设备双向更新作业设备**myDeviceId** 2016 年 9 月之后创建的。
+检索 2016 年 9 月后为设备 **myDeviceId** 创建的所有已完成设备孪生更新作业。
 
-还有可能要检索单个作业的每个设备结果。
+还可以检索单个作业在每个设备上的结果。
 
 ```sql
 SELECT * FROM devices.jobs
@@ -262,21 +262,21 @@ WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>限制
-目前，查询上**devices.jobs**不支持：
+目前，对 **devices.jobs** 的查询不支持：
 
-* 投影，因此，仅`SELECT *`一点的。
-* 除了作业属性 （请参阅上一节） 设备双向引用的条件。
-* 执行聚合，例如计数、 平均值、 分组依据。
+* 投影，因此仅可使用 `SELECT *`。
+* 引用设备孪生和作业属性的条件（参见上一节）。
+* 执行聚合，例如 count、avg、group by。
 
-## <a name="get-started-with-device-to-cloud-message-routes-query-expressions"></a>要开始使用设备到云消息路由查询表达式
+## <a name="get-started-with-device-to-cloud-message-routes-query-expressions"></a>设备到云的消息路由查询表达式入门
 
-使用[设备到云路由][lnk-devguide-messaging-routes]，你可以配置 IoT 中心以设备到云将消息调度到不同的终结点基于针对各个消息计算的表达式。
+可使用[设备到云的路由][lnk-devguide-messaging-routes]配置 IoT 中心，根据按各消息计算的表达式将设备到云的消息分派给不同的终结点。
 
-路由[条件][ lnk-query-expressions]使用相同的 IoT 中心查询语言作为双向和作业的查询中的条件。 在消息标头和正文计算路由条件。 路由的查询表达式可能涉及到仅消息头，只有消息正文，和/或文件名消息标头消息正文。 IoT 中心假定的标头和消息正文的特定架构以便将消息，路由和以下各节描述了 IoT 中心以正确地将路由的要求：
+在克隆和作业查询中，路由[条件][lnk-query-expressions]使用相同的 IoT 中心查询语言作为条件。 基于消息标题和正文评估路由条件。 路由查询表达式可能只涉及消息标题、只涉及消息正文或同时涉及消息标题和正文。 IoT 中心假设标题和消息正文的特定架构以路由消息，以下部分介绍了 IoT 中心正常路由的所需条件：
 
-### <a name="routing-on-message-headers"></a>在消息标头路由
+### <a name="routing-on-message-headers"></a>基于消息标题路由
 
-IoT 中心假定邮件路由的消息头的以下 JSON 表示的形式：
+IoT 中心假设以下 JSON 表现形式的消息标题用于消息路由：
 
 ```json
 {
@@ -298,41 +298,41 @@ IoT 中心假定邮件路由的消息头的以下 JSON 表示的形式：
 }
 ```
 
-消息的系统属性带有前缀`'$'`符号。
-名称始终访问用户属性。 如果用户属性名恰好与系统的属性，同时发生 (如`$to`)，将使用检索用户属性`$to`表达式。
-你始终可以访问系统属性使用方括号`{}`： 例如，你可以使用表达式`{$to}`若要访问系统属性`to`。 括在括号中的属性名称始终检索相应的系统属性。
+消息系统属性以 `'$'` 符号为前缀。
+用户属性始终使用其名称进行访问。 如果用户属性名恰好与系统属性（例如 `$to`）完全一致，则将使用 `$to` 表达式检索用户属性。
+始终可以使用括号 `{}` 访问系统属性：例如，可以使用表达式 `{$to}` 访问系统属性 `to`。 将属性名称括在括号中始终可检索相应的系统属性。
 
-请记住，属性名称区分大小写。
+请记住，属性名称不区分大小写。
 
 > [!NOTE]
-> 所有消息属性都是字符串。 系统属性，如中所述[开发人员指南][lnk-devguide-messaging-format]，当前不能在查询中使用。
+> 消息属性均为字符串。 如[开发人员指南][lnk-devguide-messaging-format]所述，目前不能在查询中使用系统属性。
 >
 
-例如，如果你使用`messageType`属性，你可能想要将所有遥测都路由到一个终结点和到另一个终结点的所有警报。 你可以编写以下表达式将路由遥测数据：
+例如，如果使用 `messageType` 属性，可能需要将所有遥测和所有警报路由到两个不同的终结点。 可编写以下表达式进行遥测路由：
 
 ```sql
 messageType = 'telemetry'
 ```
 
-和下列表达式以将警报消息路由：
+编写以下表达式进行警报消息路由：
 
 ```sql
 messageType = 'alert'
 ```
 
-此外支持布尔表达式和函数。 此功能使您能够区分严重性级别，例如：
+此外，还支持布尔表达式和函数。 通过此功能可区分严重性级别，例如：
 
 ```sql
 messageType = 'alerts' AND as_number(severity) <= 2
 ```
 
-请参阅[表达式和条件][ lnk-query-expressions]部分支持的运算符和函数的完整列表。
+请参阅[表达式和条件][lnk-query-expressions]部分，了解受支持的运算符和函数的完整列表。
 
-### <a name="routing-on-message-bodies"></a>消息正文上的路由
+### <a name="routing-on-message-bodies"></a>基于消息正文路由
 
-IoT 中心可以仅路由根据消息正文内容正确消息正文是否格式正确的 JSON 采用 utf-8、 utf-16 或 utf-32 编码。 必须设置为消息的内容类型`application/json`和要允许 IoT 中心基于正文内容将消息路由的消息标头中的受支持 UTF 编码之一的内容编码。 如果在任一标头未指定，IoT 中心将不尝试评估涉及对消息正文的任何查询表达式。 如果你的消息不是 JSON 消息，或者如果消息未指定的内容类型和内容编码，您仍可以使用消息路由基于消息标头将消息路由。
+如果消息正文是使用 UTF-8、UTF-16 或 UTF-32 编码的正确格式的 JSON，则 IoT 中心只能基于消息正文内容路由。 必须将消息的内容类型设置为 `application/json`，并将内容编码设置为消息标题中的一个受支持 UTF 编码，以使 IoT 中心基于正文内容路由消息。 如果未指定标题，IoT 中心不会尝试对消息评估涉及正文的任何查询表达式。 如果消息不是 JSON 消息，或者如果消息未指定内容类型和内容编码，仍可以使用消息路由基于消息标题路由该消息。
 
-你可以使用`$body`在查询表达式将消息路由。 在查询表达式，可以使用简单的正文引用、 正文数组引用或正文中的多个引用。 查询表达式也可以组合使用的消息标头引用的正文引用。 例如，以下是所有的有效查询表达式：
+可以在查询表达式中使用 `$body` 路由消息。 可以在查询表达式中使用简单的正文引用、正文数组引用或多个正文引用。 查询表达式也可以将正文引用和消息标题引用结合使用。 例如，以下所有查询表达式都有效：
 
 ```sql
 $body.message.Weather.Location.State = 'WA'
@@ -342,8 +342,8 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
-## <a name="basics-of-an-iot-hub-query"></a>IoT 中心查询的基础知识
-IoT 中心的每个查询包括的 SELECT FROM 子句和可选的 WHERE 和 GROUP BY 子句。 每个查询的 JSON 文档，例如设备 twins 的集合上运行。 FROM 子句指明上循环的文档集合 (**设备**或**devices.jobs**)。 然后，将应用 WHERE 子句中的筛选器。 此步骤的结果分组为包含聚合，指定在 GROUP BY 子句中，并为每个组，行生成 SELECT 子句中指定。
+## <a name="basics-of-an-iot-hub-query"></a>IoT 中心查询基础知识
+每个 IoT 中心查询包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合（**devices** 或 **devices.jobs**）。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，根据 GROUP BY 子句中的指定将此步骤的结果分组；对于每个组，会根据 SELECT 子句中的指定生成一行。
 
 ```sql
 SELECT <select_list>
@@ -353,18 +353,18 @@ FROM <from_specification>
 ```
 
 ## <a name="from-clause"></a>FROM 子句
-**从 < from_specification >**子句可以假定只有两个值：**从设备**，若要查询设备 twins 或**从 devices.jobs**，若要查询作业每个设备详细信息。
+**FROM <from_specification>** 子句只能采用两个值：**FROM devices** - 查询设备孪生；**FROM devices.jobs** - 查询每个设备上的作业详细信息。
 
 ## <a name="where-clause"></a>WHERE 子句
-**其中 < filter_condition >**子句是可选的。 它指定 JSON 文档 FROM 集合中的一个或多个条件必须满足要的结果的一部分。 任何 JSON 文档的计算结果必须指定的条件为"true"，以包含在结果。
+**WHERE <filter_condition>** 子句是可选的。 它指定要将 FROM 集合中的 JSON 文档内含在结果中时需满足的一项或多项条件。 任何 JSON 文档必须将指定的条件求值为“true”才能包含在结果中。
 
-允许的条件部分所述[表达式和条件][lnk-query-expressions]。
+[表达式和条件][lnk-query-expressions]部分介绍了允许的条件。
 
 ## <a name="select-clause"></a>SELECT 子句
-SELECT 子句 (**选择 < select_list >**) 是必需的并指定将从查询检索哪些值。 它指定要用于生成新的 JSON 对象的 JSON 值。
-对于 FROM 集合筛选 （和 （可选） 分组） 一部分的每个元素，投影阶段生成一个新的 JSON 对象，使用 SELECT 子句中指定的值构造的。
+SELECT 子句 (**SELECT <select_list>**) 是必需的，用于指定要从查询中检索的值。 它指定用于生成新 JSON 对象的 JSON 值。
+对于 FROM 集合中已筛选子集（且可选择性分组）的每个元素，投影阶段将生成一个新 JSON 对象，其由 SELECT 子句中指定的值构造而成。
 
-下面是 SELECT 子句的语法：
+SELECT 子句的语法如下：
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -386,14 +386,14 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-其中**attribute_name**引用从集合中的 JSON 文档的任何属性。 SELECT 子句的一些示例可在[设备双向查询入门][ lnk-query-getstarted]部分。
+其中，**attribute_name** 引用 FROM 集合中 JSON 文档的任一属性。 在[设备孪生查询入门][lnk-query-getstarted]部分可以找到 SELECT 子句的一些示例。
 
-目前，所选内容子句不同于**选择\***仅支持在设备 twins 上聚合查询中。
+目前，仅支持在针对设备孪生执行的聚合查询中使用除 **SELECT \*** 以外的选择子句。
 
 ## <a name="group-by-clause"></a>GROUP BY 子句
-**GROUP BY < group_specification >**子句是一个可选步骤，可以指定在 WHERE 子句中，和之前在选择所指定的筛选器之后执行。 它将若干文档属性的值。 这些组用于生成作为 SELECT 子句中指定的聚合的值。
+**GROUP BY <group_specification>** 子句是可选步骤，可在 WHERE 子句中指定的筛选器后、在 SELECT 中指定的投影前执行该子句。 它根据属性值来分组文档。 这些组用于生成 SELECT 子句中指定的聚合值。
 
-是一个查询使用 GROUP BY 的示例：
+下面是使用 GROUP BY 的查询示例：
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -402,7 +402,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-分组依据的正式语法是：
+GROUP BY 的正式语法为：
 
 ```
 GROUP BY <group_by_element>
@@ -411,19 +411,19 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-其中**attribute_name**引用从集合中的 JSON 文档的任何属性。
+其中，**attribute_name** 引用 FROM 集合中 JSON 文档的任一属性。
 
-目前，查询设备 twins 时，仅支持 GROUP BY 子句。
+目前，仅在查询设备孪生时才支持使用 GROUP BY 子句。
 
 ## <a name="expressions-and-conditions"></a>表达式和条件
-在高级别，*表达式*:
+从较高层面讲，*表达式*可以：
 
-* 计算结果为 （如布尔值、 数字、 字符串、 数组或对象），JSON 类型的实例和
-* 由操作数据来自设备 JSON 文档和常量使用内置运算符和函数定义。
+* 求值为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象），以及
+* 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
 
-*条件*是计算结果为一个布尔值的表达式。 不同于布尔值任何常量**true**操作均被视为**false** (包括**null**，**未定义**，任何对象或数组的实例，任意字符串，并清楚地布尔值**false**)。
+条件是求值为布尔值的表达式。 除布尔值 **true** 以外的任何常量均被视为 **false**（包括 **null**、**undefined**、任何对象或数组实例、任何字符串，当然还有布尔值 **false**）。
 
-表达式的语法是：
+表达式的语法为：
 
 ```
 <expression> ::=
@@ -455,72 +455,72 @@ GROUP BY <group_by_element>
 
 | 符号 | 定义 |
 | --- | --- |
-| attribute_name | 中的 JSON 文档的任何属性**FROM**集合。 |
-| binary_operator | 中列出的任何二元运算符[运算符](#operators)部分。 |
-| function_name| 中列出的任何函数[函数](#functions)部分。 |
+| attribute_name | **FROM** 集合中 JSON 文档的任一属性。 |
+| binary_operator | [运算符](#operators)部分列出的任意二进制运算符。 |
+| function_name| [函数](#functions)部分列出的任一函数。 |
 | decimal_literal |以十进制表示法表示的浮点数。 |
-| hexadecimal_literal |一个由字符串"0x"跟十六进制数字的字符串表示的数字。 |
-| 字符串文字 |字符串文字是由零个或多个 Unicode 字符序列或转义序列表示的 Unicode 字符串。 字符串文字括在单引号 (撇号:) 或双引号 (引号:")。 允许使用转义符： `\'`， `\"`， `\\`，`\uXXXX`由 4 位十六进制数字定义的 Unicode 字符。 |
+| hexadecimal_literal |以字符串“0x”后接十六进制数字符串表示的数字。 |
+| string_literal |字符串文本是以零个或多个 Unicode 字符序列或转义符序列表示的 Unicode 字符串。 字符串文本括在单引号 (') 或双引号 (") 中。 允许的转义符：`\'`、`\"`、`\\`、`\uXXXX`（由 4 个十六进制数字定义的 Unicode 字符）。 |
 
 ### <a name="operators"></a>运算符
 支持以下运算符：
 
 | 系列 | 运算符 |
 | --- | --- |
-| 算术运算 |+,-,*,/,% |
-| 逻辑 |并且，或不 |
-| 比较 |=, !=, <, >, <=, >=, <> |
+| 算术 |+,-,*,/,% |
+| 逻辑 |AND、OR、NOT |
+| 比较 |=、!=、<、>、<=、>=、<> |
 
 ### <a name="functions"></a>函数
-当查询 twins 和作业唯一受支持的函数是：
+查询克隆和作业时唯一受支持的函数是：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
-| IS_DEFINED(property) | 返回一个布尔值，该值指示是否属性已被分配一个值 (包括`null`)。 |
+| IS_DEFINED(property) | 返回一个布尔值，指示是否已向属性分配值（包括 `null`）。 |
 
-在路由情况下，支持以下的数学函数：
+在路由情况下，支持以下数学函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
-| ABS(x) | 返回指定数值表达式的绝对 （正） 值。 |
-| EXP(x) | 返回指定数值表达式的指数值 (e ^ x)。 |
-| POWER(x,y) | 返回指定表达式的值的指定次幂 (x ^ y)。|
+| ABS(x) | 返回指定数值表达式的绝对（正）值。 |
+| EXP(x) | 返回指定数值表达式 (e^x) 的指数值。 |
+| POWER(x,y) | 返回指定表达式相对指定幂 (x^y) 的值。|
 | SQUARE(x) | 返回指定数字值的平方。 |
-| CEILING(x) | 大于或等于指定数值表达式，则返回的最小的整数值。 |
+| CEILING(x) | 返回大于或等于指定数值表达式的最小整数值。 |
 | FLOOR(x) | 返回小于或等于指定数值表达式的最大整数。 |
-| SIGN(x) | 返回的正 (+ 1)、 零 (0) 号或负号 (-1) 的指定数值表达式。|
-| 传感器 | 返回指定数字值的平方。 |
+| SIGN(x) | 返回指定数值表达式的正数 (+1)、零 (0) 或负数 (-1)。|
+| SQRT(x) | 返回指定数字值的平方。 |
 
-在路由情况下，支持以下类型检查和强制转换函数：
+在路由情况下，支持以下检查和强制转换类型的函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
-| AS_NUMBER | 将输入的字符串转换为数字。 `noop`如果输入是一个数字;`Undefined`如果字符串不表示一个数字。|
-| IS_ARRAY | 返回一个布尔值，该值指示是否指定的表达式的类型一个数组。 |
-| IS_BOOL | 返回一个布尔值，该值指示指定表达式的类型是否为一个布尔值。 |
-| IS_DEFINED | 返回一个布尔值，该值指示是否属性已被分配一个值。 |
-| IS_NULL | 返回一个布尔值，该值指示指定表达式的类型是否为 null。 |
-| IS_NUMBER | 返回一个布尔值，该值指示是否指定的表达式的类型为一个数字。 |
-| IS_OBJECT | 返回一个布尔值，该值指示指定表达式的类型是否为 JSON 对象。 |
-| IS_PRIMITIVE | 返回一个布尔值，该值指示指定表达式的类型是否为基元 (字符串、 布尔型数字或`null`)。 |
-| IS_STRING | 返回一个布尔值，该值指示是否指定的表达式的类型为 string。 |
+| AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
+| IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
+| IS_BOOL | 返回一个布尔值，指示指定表达式的类型是否为布尔表达式。 |
+| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 |
+| IS_NULL | 返回一个布尔值，指示指定表达式的类型是否为 null。 |
+| IS_NUMBER | 返回一个布尔值，指示指定表达式的类型是否为数字。 |
+| IS_OBJECT | 返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。 |
+| IS_PRIMITIVE | 返回一个布尔值，指示指定表达式的类型是否为基元（字符串、布尔值、数字或 `null`）。 |
+| IS_STRING | 返回一个布尔值，指示指定表达式的类型是否为字符串。 |
 
-在路由条件支持下列字符串函数：
+在路由情况下，支持以下字符串函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
-| CONCAT(x,...) | 返回一个字符串，它连接两个或多个字符串值的结果。 |
-| LENGTH(x) | 返回指定的字符串表达式的字符数。|
-| LOWER(x) | 返回将大写字符数据转换成小写后的字符串表达式。 |
-| UPPER(x) | 返回将小写字符数据转换为大写后的字符串表达式。 |
-| 子字符串 （字符串、 开始 [、 长度]） | 返回从指定的字符的从零开始位置开始的字符串表达式的一部分并继续到指定的长度或字符串的末尾。 |
-| INDEX_OF (片段中的字符串） | 返回第二个中的第一个匹配项的起始位置字符串内第一个指定的字符串表达式，则为-1 的表达式，如果未找到该字符串。|
-| STARTS_WITH （x，y） | 返回一个布尔值，该值指示是否的第一个字符串表达式开头第二个。 |
-| ENDS_WITH （x，y） | 返回一个布尔值，该值指示是否的第一个字符串表达式的第二个结束。 |
-| CONTAINS(x,y) | 返回一个布尔值，该值指示是否的第一个字符串表达式包含第二个。 |
+| CONCAT(x, …) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
+| LENGTH(x) | 返回指定字符串表达式的字符数。|
+| LOWER(x) | 返回在将大写字符数据转换为小写后的字符串表达式。 |
+| UPPER(x) | 返回在将小写字符数据转换为大写后的字符串表达式。 |
+| SUBSTRING(string, start [, length]) | 返回字符串表达式的部分内容，该内容起于指定字符从零开始的位置，继续到指定长度或字符串结尾。 |
+| INDEX_OF(string, fragment) | 返回第一个指定的字符串表达式中第一次出现第二个字符串表达式的起始位置，如果未找到字符串，则返回 -1。|
+| STARTS_WITH(x, y) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。 |
+| ENDS_WITH(x, y) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。 |
+| CONTAINS(x,y) | 返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。 |
 
 ## <a name="next-steps"></a>后续步骤
-了解如何使用应用程序中执行查询[Azure IoT Sdk][lnk-hub-sdks]。
+了解如何使用 [Azure IoT SDK][lnk-hub-sdks] 在应用中执行查询。
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
 [lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions

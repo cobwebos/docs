@@ -16,10 +16,10 @@ ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 在 Azure Active Directory 实例中查看应用程序列表时，最初让令人费解的事情之一是不知道应用程序来自何处，以及它们为何会出现在那里。  本文将全面概述如何在目录中表示应用程序，并提供上下文帮助你了解应用程序如何进入目录。
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 * 用户设置和同步
 * 基于角色的访问控制；使用目录定义应用程序角色，以便在应用程序中执行基于角色的授权检查。
 * oAuth 授权服务（Office 365 和其他 Microsoft 应用程序使用这些服务来授予对 API/资源的访问权限。）
-* 应用程序发布和代理；将应用程序从专用网络发布到 Internet
+* 应用程序发布和代理；将应用从专用网络发布到 Internet
 
 ## <a name="how-are-applications-represented-in-the-directory"></a>如何在目录中表示应用程序？
 Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象和服务主体对象。  “home”/“owner”或“publishing”目录中注册了一个应用程序对象；此外，有一个或多个服务主体对象表示运行应用程序的每个目录中的应用程序。  
@@ -96,8 +96,8 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 * 注册/登录到 [Office 365](http://products.office.com/) 等 Microsoft Online Services
   * 订阅 Office 365 或开始试用时，会在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
   * 某些 Office 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
-* 在 Azure 管理门户，请参阅中添加正在开发的应用程序： https://msdn.microsoft.com/library/azure/dn132599.aspx
-* 使用 Visual Studio 添加你正在开发的应用程序，具体请参阅：
+* 在 Azure 管理门户中添加正在开发的应用，请参阅：https://msdn.microsoft.com/library/azure/dn132599.aspx
+* 使用 Visual Studio 添加正在开发的应用，请参阅：
   * [ASP.Net 身份验证方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
   * [连接的服务](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 * 添加要用于使用 [Azure AD 应用程序代理](https://msdn.microsoft.com/library/azure/dn768219.aspx)的应用

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/09/2017
 ms.author: vidarmsft
 ms.openlocfilehash: b4d575587eec1bcf43c33c7faeb8360ec67b5214
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 ## <a name="overview"></a>概述
@@ -101,7 +101,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    6. 创建卷容器，并创建卷。 （这些卷供文件服务器 VM 上的文件共享使用）。 创建卷时，请复制发起程序名称并为“访问控制记录”提供适当的名称。
    7. 选择“配置”选项卡并记下设备的 IP 地址。
    8. 在本地 VM 上，再次转到“iSCSI 发起程序”，并在“快速连接”部分中输入 IP。 单击“快速连接”（设备现在应已连接）。
-   9. 打开 Azure 门户，并选择“卷和设备”选项卡。 单击“自动配置”。 应会出现刚刚创建的卷。
+   9. 打开 Azure 门户，并选择“卷和设备”选项卡。单击“自动配置”。 应会出现刚刚创建的卷。
    10. 在门户中选择“设备”选项卡，并选择“创建新虚拟设备”。 （此虚拟设备会在发生故障转移时使用）。 可将此新虚拟设备保持脱机状态，以免产生额外的费用。 要使虚拟机脱机，请转到门户的“虚拟机”部分，并关闭该虚拟机。
    11. 返回本地 VM 并打开磁盘管理（按 Windows 键 + X 并选择“磁盘管理”）。
    12. 可以看到一些附加的磁盘（数量取决于创建的卷数）。 右键单击第一个磁盘，选择“初始化磁盘”，并选择“确定”。 右键单击“未分配”部分，选择“新建简单卷”，为卷分配一个盘符，并完成向导操作。
@@ -162,7 +162,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
      ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
 
-5. 通过选择 runbook 的自动化帐户中发布所有脚本和单击**编辑** &gt; **都发布**然后**是**以验证消息。 完成此步骤后，“Runbook”选项卡将如下所示：
+5. 通过以下方式发布所有脚本：在自动化帐户中选择 runbook，依次单击“编辑”&gt;“发布”，然后在显示验证消息时单击“是”。 完成此步骤后，“Runbook”选项卡将如下所示：
 
     ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
 
@@ -178,7 +178,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    * *RecoveryPlanName***-StorageAccountName**：存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名。 可以是具有一些空间暂时存储脚本的任何存储帐户。
    * *RecoveryPlanName***-StorageAccountKey**：上述存储帐户的访问密钥。
    * *RecoveryPlanName***-ScriptContainer**：存储脚本的云容器的名称。 如果该容器不存在，系统会创建该容器。
-   * *RecoveryPlanName***-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每个 VM分配唯一 ID，该 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，选择**恢复服务**选项卡，单击**受保护的项** &gt; **玂臔竤舱** &gt; **机** &gt; **属性**。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
+   * *RecoveryPlanName***-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每个 VM分配唯一 ID，该 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”选项卡，然后依次单击“受保护的项”&gt;“保护组”&gt;“计算机”&gt;“属性”。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
    * *RecoveryPlanName***-AutomationAccountName** – 已在其中添加 Runbook 和资产的自动化帐户的名称。
 
   例如，如果恢复计划名称为 fileServerpredayRP，在添加了所有资产后，“凭据” & “变量”选项卡应如下所示。

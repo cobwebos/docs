@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
+ms.openlocfilehash: 83cbc622975344ec2a5700d2e10a5c77371e9899
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 7a4efc0fb9b3855b9dbbe445768ceb2a9940d0b2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 现已推出：Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)。 了解[估计吞吐量需求](request-units.md#estimating-throughput-needs)。
@@ -40,7 +39,7 @@ Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图�
 * 如何评估应用程序的请求单位需求？
 * 如果超过集合的请求单位容量会发生什么情况？
 
-由于 Azure Cosmos DB 是多模型数据库，请务必为文档 API 引用集合/文档，为图形 API 引用图形/节点，为表 API 引用表/实体。 在本文档中，吞吐量将通用化为容器/项的概念。
+由于 Azure Cosmos DB 是多模型数据库，请务必为文档 API 引用集合/文档，为图形 API 引用图形/节点，为表 API 引用表/实体。 在本文档中，将通用化到容器/项的概念。
 
 ## <a name="request-units-and-request-charges"></a>请求单位和请求费用
 Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满足应用程序的吞吐量需求。  由于应用程序加载和访问模式会随着时间推移而更改，借助 Azure Cosmos DB，可以轻松增加或减少保留供应用程序使用的吞吐量。
@@ -365,4 +364,3 @@ API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
 [6]: ./media/request-units/api-for-mongodb-metrics.png
-

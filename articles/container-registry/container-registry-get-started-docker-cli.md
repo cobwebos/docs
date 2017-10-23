@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: b6c26f28aa1e574ba3aabe53eda359cb6bf2edcc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.openlocfilehash: 10f01e4e8c86bbbfa17cf2559caca645ff13bdcc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 Azure 容器注册表存储和管理专用 [Docker](http://hub.docker.com) 容器映像，其方式类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 映像。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他操作。
@@ -33,7 +32,7 @@ Azure 容器注册表存储和管理专用 [Docker](http://hub.docker.com) 容�
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI 2.0](container-registry-get-started-azure-cli.md)。
-* **Docker CLI** - 若要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
+* **Docker CLI** - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 运行 `docker login`，使用[注册表凭据](container-registry-authentication.md)登录到容器注册表。
@@ -117,4 +116,3 @@ docker rmi myregistry.azurecr.io/samples/nginx
 
 ## <a name="next-steps"></a>后续步骤
 了解基础知识后，便可以开始使用注册表了！ 例如，开始将容器映像部署到 [Azure 容器服务](https://azure.microsoft.com/documentation/services/container-service/)群集。
-

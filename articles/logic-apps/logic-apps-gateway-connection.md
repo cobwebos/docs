@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 07/13/2017
-ms.author: LADocs; dimazaid; estfan
+ms.date: 09/14/2017
+ms.author: LADocs; millopis; estfan
+ms.openlocfilehash: f385d832deed2eaf8ea21eb75d62944cbbf3d13d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 4744405b2c294be564dedee308b4cba95cfcc3c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>通过本地数据网关，从逻辑应用访问本地数据源
+# <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>通过本地数据网关，从逻辑应用连接到本地数据源
 
 要从逻辑应用访问本地数据源，请设置一个本地数据网关，以便逻辑应用将其与支持的连接器配合使用。 该网关充当一个桥梁，在本地数据源和逻辑应用之间进行快速的数据传输和加密。 网关通过 Azure 服务总线中继来自加密频道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 详细了解[数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。 
 
@@ -59,6 +58,11 @@ ms.lasthandoff: 09/15/2017
 
 * 网关安装不能已被 Azure 网关资源声明。 只能将网关安装关联到一个 Azure 网关资源。 声明发生在创建网关资源的时候，一旦声明，安装就不能供其他资源使用。
 
+* 本地数据网关以 Windows 服务的形式运行，并设置为使用 `NT SERVICE\PBIEgwService` 作为 Windows 服务登录凭据。 若要创建和维护 Azure 门户中的网关资源，[Windows 服务帐户](../logic-apps/logic-apps-gateway-install.md)必须至少具有“参与者”权限。 
+
+  > [!NOTE]
+  > Windows 服务帐户与用于连接到本地数据源的帐户或用于登录到云服务的 Azure 工作或学校帐户不同。
+
 ## <a name="set-up-the-data-gateway-connection"></a>设置数据网关连接
 
 ### <a name="1-install-the-on-premises-data-gateway"></a>1.安装本地数据网关
@@ -66,17 +70,18 @@ ms.lasthandoff: 09/15/2017
 请执行[安装本地数据网关的步骤](logic-apps-gateway-install.md)（如果尚未安装）。 在继续执行其他步骤之前，请确保已在本地计算机上安装数据网关。
 
 <a name="create-gateway-resource"></a>
+
 ### <a name="2-create-an-azure-resource-for-the-on-premises-data-gateway"></a>2.创建本地数据网关的 Azure 资源
 
 在本地计算机上安装网关以后，必须在 Azure 中以资源形式创建数据网关。 此步骤还将网关资源与 Azure 订阅相关联。
 
 1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 请确保所使用的 Azure 工作或学校电子邮件地址是曾经用于安装网关的。
 
-2. 在 Azure 中的左菜单上，选择“新建” > “企业集成” > “本地数据网关”，如下所示：
+2. 在 Azure 主菜单上，选择“新建” > “企业集成” > “本地数据网关”，如下所示：
 
    ![查找“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
-3. 在“创建连接网关”边栏选项卡上提供以下详细信息，创建数据网关资源：
+3. 在“创建连接网关”页上提供以下详细信息，创建数据网关资源：
 
     * 名称：输入网关资源的名称。 
 
@@ -104,11 +109,12 @@ ms.lasthandoff: 09/15/2017
 
     ![提供创建本地数据网关所需的详细信息](./media/logic-apps-gateway-connection/createblade.png)
 
-    若要随时查找或查看数据网关，请从 Azure 左主菜单中，转到“更多服务”>“企业集成”>“本地数据网关”。
+    若要随时查找或查看数据网关，请从 Azure 主菜单中，转到“更多服务”>“企业集成”>“本地数据网关”。
 
     ![转到“更多服务”、“企业集成”、“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
+
 ### <a name="3-connect-your-logic-app-to-the-on-premises-data-gateway"></a>3.将逻辑应用连接到本地数据网关
 
 创建数据网关资源并将 Azure 订阅与该资源关联以后，即可在逻辑应用和数据网关之间创建一个连接。
@@ -135,15 +141,15 @@ ms.lasthandoff: 09/15/2017
 
 1. 若要查找网关连接，请执行以下操作：
 
-   * 在“逻辑应用”边栏选项卡的“开发工具”下，选择“API 连接”。 
+   * 在“逻辑应用”菜单的“开发工具”下，选择“API 连接”。 
    
      “API 连接”窗格显示与逻辑应用关联的所有 API 连接，包括网关连接。
 
      ![转到逻辑应用，选择“API 连接”。](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * 或者，从 Azure 左侧主菜单依次转到“更多服务”>“Web + 移动”>“API 连接”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。 
+   * 或者，从 Azure 主菜单依次转到“更多服务”>“Web + 移动”>“API 连接”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。 
 
-   * 或者，在 Azure 左主菜单上转到“所有资源”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。
+   * 或者，在 Azure 主菜单上转到“所有资源”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。
 
 2. 选择要查看或编辑的网关连接，并选择“编辑 API 连接”。
 
@@ -155,7 +161,7 @@ ms.lasthandoff: 09/15/2017
 
 要创建其他网关资源、将网关与其他资源相关联，或者移除网关资源，则可删除网关资源，不影响网关安装。 
 
-1. 从 Azure 左主菜单中，转到“所有资源”。 
+1. 从 Azure 主菜单中转到“所有资源”。 
 2. 找到并选择数据网关资源。
 3. 选择“本地数据网关”，并在资源工具栏上，选择“删除”。
 
@@ -168,4 +174,3 @@ ms.lasthandoff: 09/15/2017
 
 * [保护逻辑应用](./logic-apps-securing-a-logic-app.md)
 * [逻辑应用的常见示例和方案](./logic-apps-examples-and-scenarios.md)
-

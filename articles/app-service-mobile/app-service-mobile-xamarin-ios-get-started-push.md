@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: glenga
 ms.openlocfilehash: bf922e49c4c92d0065817a5dd6c7d10a04737304
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -99,7 +99,7 @@ ms.lasthandoff: 08/03/2017
         }
 
 
-1. 然后，重写**DidReceivedRemoteNotification**事件：
+1. 然后，重写 **DidReceivedRemoteNotification** 事件：
    
         public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
@@ -119,7 +119,7 @@ ms.lasthandoff: 08/03/2017
 
 应用现已更新，可支持推送通知。
 
-## <a name="test"></a>在应用程序中测试推送通知
+## <a name="test"></a>在应用中测试推送通知
 1. 在支持 iOS 的设备中按“运行”按钮，生成项目并启动应用，并单击“确定”接受推送通知。
    
    > [!NOTE]
@@ -128,7 +128,7 @@ ms.lasthandoff: 08/03/2017
    > 
 2. 在应用中，键入一项任务，并单击加号 (**+**) 图标。
 3. 检查是否已收到通知，并单击“确定”取消通知。
-4. 重复步骤 2 并立即关闭应用，并检查是否已显示通知。
+4. 重复步骤 2 并立即关闭应用，然后验证是否显示通知。
 
 已成功完成本教程。
 

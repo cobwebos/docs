@@ -12,19 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
-ms.author: darosa;sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 6ef92be812bb0adcb2c817926eeeebbc8e55a5a7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: 5fb691ec53fed20e5df4f581da10b964c07e09b2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-hubs-capture-walkthrough-python"></a>事件中心捕获演练：Python
 
-事件中心捕获是事件中心的一项功能，用户可借助该功能自动将事件中心内的流数据传递到所选的 Azure Blob 存储帐户。 此功能使对实时流数据执行批处理操作变得轻松容易。 本文介绍如何通过 Python 使用事件中心捕获功能。 有关事件中心捕获的详细信息，请参阅[概述文章](event-hubs-archive-overview.md)。
+事件中心捕获是事件中心的一项功能，用户可借助该功能自动将事件中心内的流数据传递到所选的 Azure Blob 存储帐户。 此功能使对实时流数据执行批处理操作变得轻松容易。 本文介绍如何通过 Python 使用事件中心捕获功能。 有关事件中心捕获的详细信息，请参阅[概述文章](event-hubs-capture-overview.md)。
 
 此示例使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 来演示捕获功能。 Sender.py 程序以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心配置为使用捕获功能将此数据成批地写入到 Blob 存储。 然后 capturereader.py 应用读取这些 blob，为每个设备创建一个附加文件，然后将数据写入到 .csv 文件中。
 
@@ -47,10 +45,10 @@ ms.lasthandoff: 07/01/2017
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 1. 登录到 [Azure 门户][Azure portal]。
 2. 在门户的左侧导航窗格中，依次单击“新建”、“存储”和“存储帐户”。
-3. 完成“存储帐户”边栏选项卡中的字段，然后单击“创建”。
+3. 完成“存储帐户”边栏选项卡中的字段，并单击“创建”。
    
    ![][1]
-4. 看到“部署成功”消息后，单击新存储帐户名，然后在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 将容器命名为“capture”，然后关闭“Blob 服务”边栏选项卡。
+4. 看到“部署成功”消息后，单击新存储帐户名，并在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 将容器命名为“capture”，然后关闭“Blob 服务”边栏选项卡。
 5. 单击左侧边栏选项卡中的“访问密钥”，复制存储帐户名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>创建用于将事件发送到事件中心的 Python 脚本
@@ -81,7 +79,7 @@ ms.lasthandoff: 07/01/2017
 
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>创建用于读取捕获文件的 Python 脚本
 
-1. 填写边栏选项卡，然后单击“创建”。
+1. 填写边栏选项卡，并单击“创建”。
 2. 创建名为 capturereader.py 的脚本。 此脚本读取捕获的文件，并为每个设备创建一个文件，用于仅写入该设备的数据。
 3. 将以下代码粘贴到 capturereader.py 中：
    
@@ -130,7 +128,7 @@ ms.lasthandoff: 07/01/2017
 4. 请务必在调用 `startProcessing` 时粘贴存储帐户名称和密钥的相应值。
 
 ## <a name="run-the-scripts"></a>运行脚本
-1. 打开其路径中包含 Python 的命令提示符，然后运行以下命令，安装 Python 必备组件包：
+1. 打开其路径中包含 Python 的命令提示符，并运行以下命令，安装 Python 必备组件包：
    
   ```
   pip install azure-storage
@@ -165,16 +163,12 @@ ms.lasthandoff: 07/01/2017
 访问以下链接可以了解有关事件中心的详细信息：
 
 * [事件中心捕获概述][Overview of Event Hubs Capture]
-* [使用事件中心的完整示例应用程序][sample application that uses Event Hubs]。
-* [使用事件中心扩大事件处理][Scale out Event Processing with Event Hubs]示例。
+* [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 * [事件中心概述][Event Hubs overview]
 
 [Azure portal]: https://portal.azure.com/
-[Overview of Event Hubs Capture]: event-hubs-archive-overview.md
+[Overview of Event Hubs Capture]: event-hubs-capture-overview.md
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
 [About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
-[Event Hubs overview]: event-hubs-overview.md
-[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
+[Event Hubs overview]: event-hubs-what-is-event-hubs.md

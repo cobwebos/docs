@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 328e2039bbaa8988dc35b46712fd0de6f8bcbee8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino 连接器技术参考
 本指南介绍 Lotus Domino 连接器。 本文适用于以下产品：
@@ -135,7 +135,7 @@ ServerName/DirectoryName 格式是此属性的首选格式，因为它可在连�
 在“架构选项”中，可以使用以下选项：
 
 * **默认架构**。 连接器检测 Domino 服务器中的架构。 此选项是默认选项。
-* **DSML 架构**。 只在 Domino 服务器不公开架构时使用。 然后，用户可以使用此架构创建 DSML 文件，并导入此文件。 有关 DSML 的详细信息，请参阅 [OASIS](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dsml)。
+* **DSML 架构**。 只在 Domino 服务器不公开架构时使用。 然后，可以使用此架构创建 DSML 文件，并导入此文件。 有关 DSML 的详细信息，请参阅 [OASIS](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dsml)。
 
 单击“下一步”时，会验证 UserID 和密码配置参数。
 
@@ -253,7 +253,7 @@ Lotus Domino 中有许多属性具有多个值。 相对应的 Metaverse 属性�
 #### <a name="certifiers"></a>认证者
 连接器列出所有组织/组织单位。 为了能够将 person 对象导出到主要通讯簿，必须有认证者及其密码。
 
-如果所有认证者具有相同的密码，就能使用“密码适用于所有认证者”。 然后可以在此输入密码，并只指定认证者文件。
+如果所有认证者具有相同的密码，就能使用“密码适用于所有认证者”。 然后可以在此处输入密码，并仅指定认证者文件。
 
 如果只要导入，则不必指定任何认证者。
 
@@ -300,7 +300,7 @@ Person 对象代表组织和组织单位中的用户。 除了默认属性，Dom
 | 资源的类型 | 资源类型属性 |
 | --- | --- |
 | 会议室 |1 |
-| 资源（其他） |2 |
+| 资源（其他） |#N/A |
 | 在线会议 |3 |
 
 要使资源对象类型正常工作，必须满足以下条件：
@@ -356,7 +356,7 @@ Lotus Domino 连接器只支持使用 HTTP 密码的操作。
 Lotus Domino 连接器支持对 Internet 密码执行以下操作：
 
 * 设置密码：设置密码将对 Domino 用户设置新的 HTTP/Internet 密码。 默认情况下还将解锁帐户。 同步引擎的 WMI 接口上将公开解锁标志。
-* 更改密码：在此方案中，用户可能想要更改密码，或收到在指定时间后更改密码的提示。 若要让此操作进行，必须同时拥有两者（旧密码和新密码）。 更改后，密码会在 Lotus Domino 中更新。
+* 更改密码：在此方案中，用户可能想要更改密码，或收到在指定时间后更改密码的提示。 若要让此操作进行，必须同时拥有两者（旧密码和新密码）。 更改后，会在 Lotus Domino 中更新密码。
 
 有关详细信息，请参阅：
 
@@ -443,7 +443,7 @@ Domino 连接器依赖**目录助手**功能来查找辅助通讯簿。 如果�
    * 让属性默认值和提供给该属性的名称保持相同（例如，如果属性名称是 MyPersonAttribute，请让默认值保有相同名称）。
    * 保存包含更新值的 ${ObjectName}InheritableSchema 子窗体。
 3. 按照[这些步骤](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html)，将 Domino 目录模板 {PUBNAMES.NTF} 替换为新的自定义模板 {CONTOSO.NTF}。
-4. 关闭 Domino Admin，并打开 Domino 控制台以重新启动 LDAP 服务，并重新加载 LDAP 架构：
+4. 关闭 Domino Admin，打开 Domino 控制台以重新启动 LDAP 服务，并重新加载 LDAP 架构：
    * 在 Domino 控制台中，于“Domino 命令”文本字段下插入命令以重新启动 LDAP 服务 - [重新启动任务 LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html)。
    * 若要重新加载 LDAP 架构，请使用 Tell LDAP 命令 - Tell LDAP ReloadSchema
 5. 打开 Domino Admin，并选择“人员和组”选项卡以查看添加的属性是否已在 Domino“添加人员”中反映。
@@ -460,7 +460,7 @@ Domino 连接器依赖**目录助手**功能来查找辅助通讯簿。 如果�
    * 在“名称”属性旁，输入辅助对象类的名称，例如 TestSubform。
    * 将“选项”属性“包含在插入子窗体...对话框”保持为选中状态
    * 取消选择“选项”属性“在 Notes 中呈现传递 HTML”。
-   * 将其他属性保持不变，并关闭“子窗体属性”框。
+   * 将其他属性保持不变，然后关闭“子窗体属性”框。
    * 保存并关闭新子窗体。
 6. 执行以下操作来添加字段，以定义辅助对象类：
    * 打开创建的子窗体。
@@ -475,7 +475,7 @@ Domino 连接器依赖**目录助手**功能来查找辅助通讯簿。 如果�
 7. 打开“${ObjectName}ExtensibleSchema”子窗体（其中 {ObjectName} 是默认结构化对象类的名称，例如 Person）。
 8. 插入“资源”并选择子窗体（刚才创建的，例如 TestSubform），并保存 ${ObjectName}ExtensibleSchema 子窗体。
 9. 按照[这些步骤](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html)，将 Domino 目录模板 {PUBNAMES.NTF} 替换为新的自定义模板 {CONTOSO.NTF}。
-10. 关闭 Domino Admin，并打开 Domino 控制台以重新启动 LDAP 服务，并重新加载 LDAP 架构：
+10. 关闭 Domino Admin，打开 Domino 控制台以重新启动 LDAP 服务，并重新加载 LDAP 架构：
     * 在 Domino 控制台中，于“Domino 命令”文本字段下插入命令以重新启动 LDAP 服务 - [重新启动任务 LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html)。
     * 若要重新加载 LDAP 架构，请使用 Tell LDAP 命令 **Tell LDAP ReloadSchema**。
 11. 打开 Domino Admin，选择“人员和组”选项卡查看添加的属性是否已在 Domino“添加人员”中反映（在“其他”选项卡下）。

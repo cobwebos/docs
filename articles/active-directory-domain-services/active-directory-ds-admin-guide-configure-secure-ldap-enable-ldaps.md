@@ -12,34 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 09/26/2017
 ms.author: maheshu
+ms.openlocfilehash: 245ad4948cf4b8c2d44a0dafb61923b0b4267856
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 3b19f078b0d6dc3e02d951014056406fd1b099a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 
 ## <a name="before-you-begin"></a>开始之前
 请确保已完成[任务 2 - 将安全 LDAP 证书导出到 .PFX 文件](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)。
 
-选择是使用 Azure 门户预览版体验还是使用 Azure 经典门户来完成此任务。
-> [!div class="op_single_selector"]
-> * Azure 门户（预览版）：[使用 Azure 门户启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-> * Azure 经典门户：[使用经典 Azure 门户启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
->
->
 
-
-## <a name="task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview"></a>任务 3：使用 Azure 门户（预览版）为托管域启用安全 LDAP
+## <a name="task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>任务 3：使用 Azure 门户为托管域启用安全 LDAP
 若要启用安全 LDAP，请执行以下配置步骤：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“搜索资源”搜索框中搜索“域服务”。 从搜索结果中“选择 Azure AD 域服务”。 “Azure AD 域服务”边栏选项卡将列出托管域。
+2. 在“搜索资源”搜索框中搜索“域服务”。 从搜索结果中“选择 Azure AD 域服务”。 “Azure AD 域服务”页将列出托管域。
 
     ![查找正在预配的托管域](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
@@ -49,12 +41,16 @@ ms.lasthandoff: 08/16/2017
 
 3. 在导航窗格中单击“安全 LDAP”。
 
-    ![“域服务 - 安全 LDAP”边栏选项卡](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
+    ![“域服务 - 安全 LDAP”页](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
 
 4. 默认情况下，已禁用对托管域的安全 LDAP 访问。 将“安全 LDAP”切换为“启用”。
 
     ![启用安全 LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
 5. 默认情况下，已禁用通过 Internet 对托管域的安全 LDAP 访问。 将“允许通过 Internet 进行安全 LDAP 访问”切换为“启用”。 
+
+    > [!TIP]
+    > 如果允许通过 Internet 进行安全 LDAP 访问，我们建议设置 NSG 以将访问锁定到所需的源 IP 地址范围。 请参阅[通过 Internet 锁定对托管域的 LDAPS 访问](#task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet)的说明。
+    >
 
 6. 单击具有安全 LDAP 证书的 .PFX 文件后面的文件夹图标。 指定具有证书的 PFX 文件的路径，以便对托管域进行安全 LDAP 访问。
 
@@ -81,7 +77,7 @@ ms.lasthandoff: 08/16/2017
 
 开始此任务之前，请确保已完成[任务 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview) 中所述的步骤。
 
-为托管域启用通过 Internet 的安全 LDAP 访问后，需要更新 DNS，使客户端计算机能够找到此托管域。 在任务 3 的最后阶段，“LDAPS 访问的外部 IP 地址”中的“属性”边栏选项卡中会显示外部 IP 地址。
+为托管域启用通过 Internet 的安全 LDAP 访问后，需要更新 DNS，使客户端计算机能够找到此托管域。 在任务 3 的最后阶段，“LDAPS 访问的外部 IP 地址”中的“属性”选项卡中会显示外部 IP 地址。
 
 请配置外部 DNS 提供程序，使托管域的 DNS 名称（例如“ldaps.contoso100.com”）指向此外部 IP 地址。 在本例中，需要创建以下 DNS 条目：
 
@@ -119,4 +115,3 @@ ms.lasthandoff: 08/16/2017
 * [管理 Azure AD 域服务托管域上的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 * [网络安全组](../virtual-network/virtual-networks-nsg.md)
 * [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
-

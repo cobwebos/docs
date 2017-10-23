@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: 940440688ec770a4aeb932b574bd6be173f494d4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 进行 Service Fabric 应用程序升级的教程
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 ![Service Fabric 应用程序的上下文菜单][image1]
 
-选择“发布”会显示一个弹出窗口，可以将“目标配置文件”设置为 **PublishProfiles\Local.xml**。 在单击“**发布**”之前，该窗口应如下所示。
+选择“**发布**”会显示一个弹出窗口，可以将“**目标配置文件**”设置为 **PublishProfiles\Local.xml**。 在单击“**发布**”之前，该窗口应如下所示。
 
 ![发布 Service Fabric 应用程序][image2]
 
@@ -45,7 +45,7 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 **注意：** 如果部署到 `Cloud.xml` 配置文件 (Azure Service Fabric)，则可以在 **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** 访问应用程序。 请确保在负载均衡器中配置了 `8081/TCP`（在与 Service Fabric 实例相同的资源组中找到负载均衡器）。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新可视对象示例
-你可能会注意到，使用步骤 1 中部署的版本，视觉对象不会旋转。 让我们将此应用程序升级到视觉对象也会旋转的版本。
+你可能会注意到，使用步骤 1 中部署的版本，可视对象不会旋转。 让我们将此应用程序升级到可视对象也会旋转的版本。
 
 选择 VisualObjects 解决方案中的 VisualObjects.ActorService 项目，并打开 **VisualObjectActor.cs** 文件。 在该文件中，转到 `MoveObject` 方法，注释掉 `visualObject.Move(false)`，并取消注释 `visualObject.Move(true)`。 此代码更改可在升级服务后旋转对象。  **现在可以生成（不是重新生成）解决方案**，这会生成修改后的项目。 如果选择“*全部重新生成*”，则必须更新所有项目的版本。
 

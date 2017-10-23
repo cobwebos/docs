@@ -17,13 +17,13 @@ ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 079d16bbf75cd2b3b94269d684e1ae1a0e6aa967
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
-Azure AD Identity Protection 发送两种类型的自动的通知电子邮件来帮助你管理用户风险和风险事件：
+Azure AD Identity Protection 会发送两种类型的自动生成的通知电子邮件，帮助你管理用户风险和风险事件：
 
 * 用户受威胁的警报电子邮件
 * 每周摘要电子邮件
@@ -41,7 +41,7 @@ Azure AD Identity Protection 发送两种类型的自动的通知电子邮件来
 * 指向 Identity Protection 中相关报告的链接
 
 <br>
-![修正](./media/active-directory-identityprotection-notifications/400.png "修正")
+![补救](./media/active-directory-identityprotection-notifications/400.png "补救")
 <br>
 
 可以关闭每周摘要电子邮件发送。

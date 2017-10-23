@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
 ms.openlocfilehash: 44c0d26b2d7d28322d436d4bda319d728c31a635
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -55,11 +55,11 @@ ms.lasthandoff: 08/03/2017
    self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
    client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
    ```
-   此方法使用移动应用 SDK 提供的接口 `MSCoreDataStore` 创建本地存储。 或者，也可以通过实现 `MSSyncContextDataSource` 协议提供不同的本地存储。 此外，**MSSyncContext** 的第一个参数用于指定冲突处理程序。 由于已传递 `nil`，因此会获取默认的冲突处理程序，但该处理程序在发生任何冲突时会失败。
+   此方法将使用移动应用 SDK 中提供的 `MSCoreDataStore` 接口创建本地存储。 或者，也可以通过实现 `MSSyncContextDataSource` 协议提供不同的本地存储。 此外，**MSSyncContext** 的第一个参数用于指定冲突处理程序。 由于已传递 `nil`，因此我们将获取默认冲突处理程序，该处理程序在发生任何冲突时会失败。
 
 现在，让我们执行实际的同步操作，从远程后端获取数据：
 
-* **Objective-C**。 `syncData`先推送新的更改，然后调用**pullData**从远程的后端获取数据。 接下来，**pullData** 方法获取符合查询的新数据：
+* **Objective-C**。 `syncData` 首先推送新更改，然后调用 **pullData** 从远程后端获取数据。 接下来，**pullData** 方法获取符合查询的新数据：
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -122,13 +122,13 @@ ms.lasthandoff: 08/03/2017
    }
    ```
 
-在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是同步表本身）的成员，因为它会将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 pullData 帮助程序，后者再调用 MSSyncTable.pullWithQuery 以检索远程数据并将其存储在本地数据库中。
+在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是异步表本身）的成员，因为它将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 **pullData** 帮助器，该帮助器调用 **MSSyncTable.pullWithQuery** 检索远程数据并将其存储在本地数据库中。
 
 在 Swift 版本中，由于推送操作不是绝对必需的，因此不存在对 **pushWithCompletion** 的调用。 如果同步上下文中正在进行推送操作的表存在任何挂起的更改，则提取始终会先发出推送。 但是，如果有多个同步表，则最好显式调用推送，确保所有内容在相关表中保持一致。
 
 在 Objective-C 和 Swift 版本中，可以使用 **pullWithQuery** 方法指定查询，筛选想要检索的记录。 在此示例中，查询会检索远程 `TodoItem` 表中的所有记录。
 
-**pullWithQuery** 的第二个参数是用于*增量同步*的查询 ID。 增量同步使用记录的 `UpdatedAt` 时间戳（在本地存储中称为 `updatedAt`），仅检索自上次同步以来修改的记录。查询 ID 应对于应用程序中的每个逻辑查询都是唯一的描述性字符串。 若选择不使用增量同步，请传递 `nil` 作为查询 ID。 此方法可能会降低效率，因为它会检索每个提取操作的所有记录。
+**pullWithQuery** 的第二个参数是用于*增量同步*的查询 ID。增量同步使用记录的 `UpdatedAt` 时间戳（在本地存储中称为 `updatedAt`），仅检索自上次同步以来修改的记录。查询 ID 应对于应用程序中的每个逻辑查询都是唯一的描述性字符串。 若选择不使用增量同步，请传递 `nil` 作为查询 ID。 此方法可能会降低效率，因为它会检索每个提取操作的所有记录。
 
 在修改或添加数据时，在用户执行刷新手势时，以及在启动时，Objective-C 应用会同步。
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 08/03/2017
   * TodoItem：存储待办事项。 系统列 **createdAt**、**updatedAt** 和 **version** 都是可选的系统属性。
 
 > [!NOTE]
-> 移动应用 SDK 会保留以“**``**”开头的列名称。 请不要在系统列以外的其他列中使用此前缀。 否则，在使用远程后端时，列名称会被修改。
+> 移动应用 SDK 会保留以“**``**”开头的列名称。 请不要将此前缀用于系统列以外的任何项。 否则，在使用远程后端时，列名称会被修改。
 >
 >
 
@@ -232,7 +232,7 @@ ms.lasthandoff: 08/03/2017
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>测试应用程序
+## <a name="test-app"></a>测试应用
 在本部分，将连接到无效的 URL，以模拟脱机方案。 添加数据项时，数据项将保存在本地 Core Data 存储中，而不会与移动应用后端同步。
 
 1. 将 **QSTodoService.m** 中的移动应用 URL 更改为无效 URL，然后再次运行该应用：
@@ -253,7 +253,7 @@ ms.lasthandoff: 08/03/2017
 
 4. 验证新项是否*未*与服务器同步。
 
-5. 将 **QSTodoService.m**中的 URL 更改回正确的 URL，并重新运行应用。
+5. 将 **QSTodoService.m** 中的 URL 更改回正确的 URL，然后重新运行应用。
 
 6. 通过下拉项列表来执行刷新手势。  
 此时会显示进度微调控件。

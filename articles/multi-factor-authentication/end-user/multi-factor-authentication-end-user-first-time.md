@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: barlan
 ms.custom: end-user
+ms.openlocfilehash: 492d5dc4e20f67bcb9f72a022fec19f5ba86caac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: b05672744dadb15f2780af100f3dd41412e55265
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>为帐户设置双重验证
 双重验证是额外的安全保障步骤，通过加大他人攻破的难度，帮助保护帐户安全。 如果正在阅读本文，可能已收到公司或学校管理员发送的有关多重身份验证的电子邮件。 或者，可能已尝试登录，但收到要求设置其他安全验证的消息。 如果是这种情况，**除非完成自动注册过程，否则无法登录**。
@@ -30,7 +29,7 @@ ms.lasthandoff: 08/16/2017
 
 ## <a name="set-up-your-account"></a>设置帐户
 
-IT 部门要求开始使用双重验证时，会出现显示“管理员要求你设置此帐户，以进行额外安全验证”的屏幕：
+IT 部门要求开始使用双重验证时，会出现显示“管理员要求你将此帐户设置为进行额外安全验证”的屏幕：
 
 ![设置](./media/multi-factor-authentication-end-user-first-time/first.png)
 
@@ -107,4 +106,3 @@ IT 部门要求开始使用双重验证时，会出现显示“管理员要求�
 * 更改首选项和[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)
 * 为不支持双重验证的本地设备应用设置[应用密码](multi-factor-authentication-end-user-app-passwords.md)。
 * 使用 [Microsoft Authenticator 应用](microsoft-authenticator-app-how-to.md)完成快速、安全的身份验证（即使没有手机网络服务）。
-

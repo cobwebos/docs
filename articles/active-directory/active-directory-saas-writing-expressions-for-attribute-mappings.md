@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: markvi
 ms.openlocfilehash: c944a355c07b96c27dcdd477f625638284eabdf3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/11/2017
 属性映射的表达式语法让人联想到 Visual Basic for Applications (VBA) 函数。
 
 * 必须定义整个表达式的函数，函数中的名称后跟带括号的参数： <br>
-  *FunctionName (<< 参数 1 >>，<<argument N>>)*
+  *FunctionName(<<argument 1>>,<<argument N>>)*
 * 函数之间可以相互嵌套。 例如： <br> *FunctionOne(FunctionTwo(<<argument1>>))*
 * 可以将三种不同类型的参数传递给函数：
   

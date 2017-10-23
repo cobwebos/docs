@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.openlocfilehash: f877a1dd844c40c913f3121e5288952653c312cd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>教程：Azure Active Directory 与 eDigitalResearch 的集成
 
@@ -86,9 +86,9 @@ ms.lasthandoff: 08/03/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建一个 eDigitalResearch 测试用户](#create-a-edigitalresearch-test-user)** -若要具有在链接到用户的 Azure AD 表示的 eDigitalResearch Britta 人 Simon 的副本。
+3. **[创建 eDigitalResearch 测试用户](#create-a-edigitalresearch-test-user)** - 在 eDigitalResearch 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[单一登录测试](#test-single-sign-on)**以验证配置是否适用。
+5. **[测试单一登录](#test-single-sign-on)**以验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 

@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-connectors-in-a-logic-app"></a>在逻辑应用中使用连接器
-连接器提供对服务、协议和平台上的事件、数据和操作的快速访问。  逻辑应用支持的连接器完整列表可[在此处找到](apis-list.md)。  连接器可以用作一个触发器，还是在逻辑应用中，操作，并且可能需要一个已配置*连接*使用 (例如： 授权若要访问或发布代表你的 Twitter 帐户)。
+连接器提供对服务、协议和平台上的事件、数据和操作的快速访问。  逻辑应用支持的连接器完整列表可[在此处找到](apis-list.md)。  连接器可在逻辑应用中用作触发器或操作，并且可能需要使用已配置的*连接*（例如：授权 Twitter 帐户代表你进行访问或发布）。
 
 ## <a name="basics"></a>基础知识
-连接器是可作为逻辑应用一部分访问的托管服务，用于与其他服务（如 Dynamics、Azure、Salesforce [等](apis-list.md)）集成。  它们部署和管理由 Microsoft，以便你可以生成具有小数位数、 吞吐量和安全注意你集成工作流。  要将连接器添加到逻辑应用，可以在“显示 Microsoft 托管 API”下搜索并选择连接器操作或触发器。
+连接器是可作为逻辑应用一部分访问的托管服务，用于与其他服务（如 Dynamics、Azure、Salesforce [等](apis-list.md)）集成。  它们由 Microsoft 部署和管理，因此可在考虑到规模、吞吐量和安全性的情况下生成集成工作流。  要将连接器添加到逻辑应用，可以在“显示 Microsoft 托管 API”下搜索并选择连接器操作或触发器。
 
 ![用于选择触发器的操作菜单][1]
 

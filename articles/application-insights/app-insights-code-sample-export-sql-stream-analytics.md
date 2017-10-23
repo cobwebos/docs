@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/06/2015
 ms.author: bwren
 ms.openlocfilehash: d51e80509ffb63cef0d01133a2295d58757d5b1a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
@@ -35,7 +35,7 @@ ms.lasthandoff: 08/18/2017
 
 1. [为网页设置 Application Insights](app-insights-javascript.md)。 
    
-    (在此示例中，我们将重点处理页查看数据，从客户端浏览器，但你可能还设置 Application Insights 的服务器端你[Java](app-insights-java-get-started.md)或[ASP.NET](app-insights-asp-net.md)应用和处理请求、 依赖项和其他服务器遥测。)
+    （本示例侧重于处理来自客户端浏览器的页面视图数据，但你也可以针对 [Java](app-insights-java-get-started.md) 或 [ASP.NET](app-insights-asp-net.md) 应用的服务器端设置 Application Insights，并处理请求、依赖项和其他服务器遥测数据。）
 2. 发布应用，并观察 Application Insights 资源中出现的遥测数据。
 
 ## <a name="create-storage-in-azure"></a>在 Azure 中创建存储

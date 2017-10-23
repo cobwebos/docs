@@ -16,10 +16,10 @@ ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
 ms.openlocfilehash: 458a2cab13b7e83f120e0926a95d454070181dfb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>B2B 协作邀请电子邮件的元素
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/11/2017
 让我们看看电子邮件的几个元素，以便了解如何充分利用其功能。
 
 ### <a name="subject"></a>使用者
-电子邮件的主题应遵循以下模式： 诚邀您参加&lt;tenantname&gt;组织
+电子邮件的主题遵循以下模式：诚邀你加入 &lt;tenantname&gt; 组织
 
 ### <a name="from-address"></a>发件人地址
 对“发件人地址”使用类似于 LinkedIn 的模式。  应明确邀请方是谁，来自哪家公司，同时澄清该电子邮件发自某个 Microsoft 电子邮件地址。 格式为：&lt;租户名称&gt; 的 &lt;邀请方显示名称&gt;（通过 Microsoft）<invites@microsoft.com&gt;
@@ -44,9 +44,9 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="call-to-action"></a>行动号召
 行动号召由两个部分组成：解释收件人为什么会收到该邮件，请求收件人采取哪种行动。
-- 可以使用以下模式解决"原因"部分： 你已被邀请访问中的应用程序&lt;tenantname&gt;组织
+- 可以使用以下模式填写“为什么”部分：诚邀你访问 &lt;tenantname&gt; 组织中的应用程序
 
-- 和"什么正在系统将要求你执行操作"部分将由是否存在**开始**按钮。 如果无需发出邀请即会添加收件人，则不显示此按钮。
+- “请求你采取哪种行动”部分可通过提供“开始”按钮来指明。 如果无需发出邀请即会添加收件人，则不显示此按钮。
 
 ### <a name="inviters-information"></a>邀请方的信息
 邀请方的显示名称包含在电子邮件中。 此外，如果为 Azure AD 帐户设置了个人资料图片，邀请电子邮件也会包含该图片。 这两项信息旨在增强收件人对电子邮件的信任。

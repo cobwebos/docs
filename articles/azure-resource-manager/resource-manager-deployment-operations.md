@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
 ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>使用 Azure Resource Manager 查看部署操作
 
 
-可以通过 Azure 门户查看部署操作。 在部署过程中收到错误时，可能最想要查看操作，因此本文将重点介绍如何查看已失败的操作。 该门户提供了一个界面让你轻松找到错误并确定可能的解决方法。
+可以通过 Azure 门户查看部署操作。 在部署过程中收到错误时，可能最想要查看操作，因此本文将重点介绍如何查看已失败的操作。 该门户提供一个界面，可用于轻松查找错误并确定潜在修复。
 
 [!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 07/11/2017
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
-    它返回多个操作，其中每个操作采用以下格式：
+    它将返回多个操作，其中每个操作采用以下格式：
 
   ```powershell
   Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/11/2017
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
-    它返回所有失败的操作，其中每个操作采用以下格式：
+    它将返回所有失败的操作，其中每个操作采用以下格式：
 
   ```powershell
   provisioningOperation : Create
@@ -107,14 +107,14 @@ ms.lasthandoff: 07/11/2017
                           resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
   ```
 
-    注意操作的 serviceRequestId 和 trackingId。 与技术支持人员合作排查部署问题时，serviceRequestId 非常有用。 会在下一步使用 trackingId 重点关注特定操作。
+    注意操作的 serviceRequestId 和 trackingId。 与技术支持人员合作排查部署问题时，serviceRequestId 非常有用。 将在下一步使用 trackingId 重点关注特定操作。
 4. 若要获取特定失败操作的状态消息，请使用以下命令：
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
   ```
 
-    返回：
+    将返回：
 
   ```powershell
   code           message                                                                        details
@@ -213,7 +213,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-* 如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
+* 有关解决特定部署错误的帮助，请参阅 [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md)（解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误）。
 * 若要了解如何使用活动日志监视其他类型的操作，请参阅[通过查看活动日志管理 Azure 资源](resource-group-audit.md)。
 * 若要在执行部署之前验证部署，请参阅 [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署资源组）。
 

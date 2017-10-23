@@ -17,10 +17,10 @@ ms.date: 06/29/2017
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 04278aac85171601b5801b0890d14a9076060444
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="release-notes-archive-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight 上的 Hadoop 组件发行说明（存档）
 
@@ -739,7 +739,7 @@ ms.lasthandoff: 08/18/2017
 </tr>
 <tr>
 <td>可以在设置群集时在群集上启用远程桌面凭据</td>
-<td>支持在创建群集时以编程方式启用远程桌面凭据。 这样就消除了先预配群集，并启用远程桌面的双步过程。</td>
+<td>支持在创建群集时以编程方式启用远程桌面凭据。 这样就消除了先预配群集，然后启用远程桌面的双步过程。</td>
 <td>SDK 中 IsInRole 中的声明</td>
 <td>全部</td>
 <td>不适用</td>
@@ -1060,7 +1060,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 </tr>
 <tr>
 <td><a href = "hdinsight-hadoop-customize-cluster.md" target="_blank">群集自定义功能正式发布</a></td>
-<td><p>自定义可让你自定义 Azure HDInsight 群集，以搭配使用 Apache Hadoop 生态系统的项目。 使用这项新功能，现在可以试验并部署 Hadoop 项目到 Azure HDInsight。 这可通过**脚本操作**功能启用，该功能可以使用自定义脚本，以任意方式修改 Hadoop 群集。 此自定义适用于所有类型的 HDInsight 群集，包括 Hadoop、HBase 和 Storm。 为了演示这项强大功能，我们记录了过程以安装流行的 <a href = "hdinsight-hadoop-spark-install.md" target="_blank">Spark</a>、<a href = "hdinsight-hadoop-r-scripts.md" target="_blank">R</a>、<a href = "hdinsight-hadoop-solr-install.md" target="_blank">Solr</a> 和 <a href = "hdinsight-hadoop-giraph-install.md" target="_blank">Giraph</a> 模块。 这个版本也添加让客户通过 Azure 管理门户指定其自定义脚本操作的功能、提供如何使用帮助器方法生成自定义脚本操作的指导方针最佳作法和最佳作法，并提供有关如何测试脚本操作的指导方针。 </p></td>
+<td><p>自定义可让你使用从 Apache Hadoop 生态系统获得的项目自定义 Azure HDInsight 群集。 使用这项新功能，现在可以试验并部署 Hadoop 项目到 Azure HDInsight。 这可通过**脚本操作**功能启用，该功能可以使用自定义脚本，以任意方式修改 Hadoop 群集。 此自定义适用于所有类型的 HDInsight 群集，包括 Hadoop、HBase 和 Storm。 为了演示这项强大功能，我们记录了过程以安装流行的 <a href = "hdinsight-hadoop-spark-install.md" target="_blank">Spark</a>、<a href = "hdinsight-hadoop-r-scripts.md" target="_blank">R</a>、<a href = "hdinsight-hadoop-solr-install.md" target="_blank">Solr</a> 和 <a href = "hdinsight-hadoop-giraph-install.md" target="_blank">Giraph</a> 模块。 这个版本也添加让客户通过 Azure 管理门户指定其自定义脚本操作的功能、提供如何使用帮助器方法生成自定义脚本操作的指导方针最佳作法和最佳作法，并提供有关如何测试脚本操作的指导方针。 </p></td>
 <td>功能正式发布</td>
 <td>全部</td>
 <td>不适用</td>
@@ -1129,7 +1129,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 <tr><th>标题</th><th>说明</th><th>组件</th><th>群集类型</th><th>JIRA（如果适用）</th></tr>
 <tr>
 <td>访问应用程序日志</td>
-<td>可以编程方式枚举群集上运行的应用程序，并下载相关的应用程序或容器特定日志以帮助调试有问题的应用程序。</td>
+<td>可让你以编程方式枚举群集上运行的应用程序，并下载相关的应用程序特定或容器特定日志以帮助调试有问题的应用程序。</td>
 <td>SDK 中 IsInRole 中的声明</td>
 <td>Hadoop</td>
 <td>不适用</td>
@@ -1173,7 +1173,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 <td>为 Azure 网站与存储日志分析预先生成作业</td>
 <td>HDInsight 查询控制台有一个入门库，它支持处理数据或示例数据的解决方案。
 <p>**处理数据的解决方案**：<br>
-我们已经为最常见的部分数据分析方案创建作业，作为创建自己的解决方案的起点。 可以运行作业来使用自己的数据，以查看其运作方式。 就绪后，使用已学得的知识来创建你在预先生成作业后所制作的解决方案模型。</p>
+我们已经为最常见的部分数据分析方案创建作业，作为创建自己的解决方案的起点。 可以运行作业来使用自己的数据，以查看其运作方式。 就绪后，使用已学得的知识来创建在预先生成作业后建模的解决方案。</p>
 <p>**处理示例数据的解决方案**：<br>
 逐步运行部分基本方案（例如分析 Web 日志和传感器数据）来了解如何使用 HDInsight。 不只学习如何使用 HDInsight 来分析此类数据，也学习如何将其他应用程序和服务连接到此数据。 通过连接到 Microsoft Excel 来提供此强大方案示例，以此可视化数据。</p></td>
 <td>查询控制台</td>
@@ -1320,7 +1320,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 借助 HBase，可以在 HDInsight 上生成各种实时工作负载 - 从用于处理大型数据集的交互式网站，到用于存储来自数百万个终结点的传感器数据与遥测数据的服务。 接下来要做的就是使用 Hadoop 作业分析这些工作负载中的数据，也可以通过 Azure PowerShell 和 Hive 群集仪表板完成这种分析。
 
 ### <a name="apache-mahout-preinstalled-on-hdinsight-31"></a>Apache Mahout 已预装在 HDInsight 3.1 上
- [Mahout](http://hortonworks.com/hadoop/mahout/) 已预装在 HDInsight 3.1 Hadoop 群集上，从而无需任何其他群集配置，就能运行 Mahout 作业。 例如，可以使用远程桌面协议 (RDP) 远程访问 Hadoop 群集，并且无需执行附加的步骤，就能运行 Hello World Mahout 命令：
+ [Mahout](http://hortonworks.com/hadoop/mahout/) 已预装在 HDInsight 3.1 Hadoop 群集上，使你无需任何其他群集配置，就能运行 Mahout 作业。 例如，可以使用远程桌面协议 (RDP) 远程访问 Hadoop 群集，并且无需执行附加的步骤，就能运行 Hello World Mahout 命令：
 
         mahout org.apache.mahout.classifier.df.tools.Describe -p /user/hdp/glass.data -f /user/hdp/glass.info -d I 9 N L
 

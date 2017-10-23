@@ -17,17 +17,15 @@ ms.workload: na
 ms.date: 09/26/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: 0aaf199d309be289b215a75bb4c222e76e1fb1b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 71a16c71a18b63efe039d3a47ab6f2ce7244caba
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
-使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。 在此快速入门教程中，将在 Azure 中创建容器，再通过公共 IP 地址将容器向 Internet 公开。 此操作通过单个命令完成。 短短几秒内，浏览器就会显示如下内容：
+使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。 在此快速入门中，将在 Azure 中创建容器，再通过公共 IP 地址向 Internet 公开该容器。 此操作通过单个命令完成。 短短几秒内，浏览器就会显示如下内容：
 
 ![在浏览器中显示的使用 Azure 容器实例部署的应用][aci-app-browser]
 

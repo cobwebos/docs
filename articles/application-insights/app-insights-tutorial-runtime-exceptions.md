@@ -3,21 +3,19 @@ title: "使用 Azure Application Insights 诊断运行时异常 | Microsoft Docs
 description: "本教程介绍如何使用 Azure Application Insights 查找并诊断应用程序中的运行时异常。"
 services: application-insights
 keywords: 
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/19/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 11e0f2f19acc843f1c558b5d0cfe84291035a6a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 58c69e9c75f3a97c04b2c5b2e3b9acfc7065c658
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
 Azure Application Insights 从应用程序收集遥测数据，帮助确定和诊断运行时异常。  本教程引导完成对应用程序执行此流程的步骤。  学习如何：
@@ -39,6 +37,7 @@ Azure Application Insights 从应用程序收集遥测数据，帮助确定和�
     - ASP.NET 和 Web 开发
     - Azure 开发
 - 下载并安装 [Visual Studio Snapshot Debugger](http://aka.ms/snapshotdebugger)。
+- 启用 [Visual Studio 快照调试器](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger)
 - 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](app-insights-asp-net.md)。 
 - 本教程跟踪应用程序中异常的标识，以便在开发或测试环境中修改代码来生成异常。 
 

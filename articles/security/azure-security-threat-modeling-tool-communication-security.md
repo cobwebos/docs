@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
+ms.openlocfilehash: 68bf128824a40afb25b3e088965f38a4cb4d1332
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: b85003a94df3b97f5c64eb3b7e62071f07674c5e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
@@ -102,7 +100,7 @@ ms.lasthandoff: 08/23/2017
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
-| **参考**              | [为 Azure 应用服务中的应用启用 HTTPS](https://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/) |
+| **参考**              | [为 Azure 应用服务中的应用启用 HTTPS](../app-service/app-service-web-tutorial-custom-ssl.md) |
 | **步骤** | 默认情况下，Azure 已使用 *.azurewebsites.net 域的通配符证书为每个应用启用了 HTTPS。 但是，就像所有通配符域一样，这不如将自定义域与自己的证书配合使用那么安全。[参考](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) 建议针对用于访问所部署应用的自定义域启用 SSL|
 
 ## <a id="appservice-https"></a>强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输
@@ -113,7 +111,7 @@ ms.lasthandoff: 08/23/2017
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
-| **参考**              | [在 Azure 应用服务中强制 HTTPS]https://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/#4-enforce-https-on-your-app) |
+| **参考**              | [对 Azure 应用服务强制执行 HTTPS](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
 | **步骤** | <p>尽管 Azure 已使用 *.azurewebsites.net 域的通配符证书为 Azure 应用服务启用了 HTTPS，但它并不强制 HTTPS。 访问者仍可使用 HTTP 访问应用，这可能会损害应用的安全性，因此必须显式强制 HTTPS。 ASP.NET MVC 应用程序应使用 [RequireHttps 筛选器](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)，强制要求通过 HTTPS 重新发送不安全的 HTTP 请求。</p><p>或者，可以使用 Azure 应用服务随附的 URL 重写模块来强制 HTTPS。 开发人员可以使用 URL 重写模块来定义将请求传递给应用程序之前应用到传入请求的规则。 URL 重写规则在 web.config 文件中定义，该文件存储在应用程序根目录中。</p>|
 
 ### <a name="example"></a>示例
@@ -175,7 +173,7 @@ ms.lasthandoff: 08/23/2017
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| **组件**               | Azure 存储空间 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -186,7 +184,7 @@ ms.lasthandoff: 08/23/2017
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| **组件**               | Azure 存储空间 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -208,7 +206,7 @@ ms.lasthandoff: 08/23/2017
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| **组件**               | Azure 存储空间 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Windows Phone |
 | **属性**              | 不适用  |
@@ -407,4 +405,3 @@ public class ValuesController : ApiController
 | **属性**              | 不适用  |
 | **参考**              | [选择通信协议](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
 | **步骤** | 使用 SSL/TLS 保护 HTTP/AMQP 或 MQTT 协议。 |
-

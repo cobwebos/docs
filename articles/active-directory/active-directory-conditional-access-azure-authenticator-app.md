@@ -1,6 +1,6 @@
 ---
 title: "适用于 Android 的 Azure 验证器 | Microsoft 文档"
-description: "Microsoft Azure 身份验证器应用可用于登录以访问工作资源。 Azure 验证器应用程序会通知你有待处理的双因素验证请求通过向你的移动设备显示警报。"
+description: "Microsoft Azure 身份验证器应用可用于登录以访问工作资源。 Azure 验证器应用通过向移动设备显示警报，通知你有一个未完成的双因素验证请求。"
 services: active-directory
 documentationcenter: 
 author: femila
@@ -16,15 +16,15 @@ ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
 ms.openlocfilehash: 60a5cc2ecc550c76ca3cb1f1d4d20070b3e3b035
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-authenticator-for-android"></a>适用于 Android 的 Azure 验证器
 IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作资源。 此应用程序提供以下两个登录选项：
 
-* 多因素身份验证允许你保护使用双重验证工作或学校帐户。 使用知道的某个事物（例如密码）登录，并以拥有的某个事物（此应用提供的安全密钥）进一步保护帐户。 Azure 验证器应用程序会通知你有待处理的双因素验证请求通过向你的移动设备显示警报。 只需在该应用中查看此请求并点击验证或取消。 或者，系统可能会提示输入应用中显示的密码。
+* 多重身份验证可让你通过双重验证来保护工作帐户或学校帐户。 使用知道的某个事物（例如密码）登录，并以拥有的某个事物（此应用提供的安全密钥）进一步保护帐户。 Azure 验证器应用通过向移动设备显示警报，通知你有一个未完成的双因素验证请求。 只需在该应用中查看此请求并点击验证或取消。 或者，系统可能会提示输入应用中显示的密码。
 * 工作帐户可让你将 Android 手机或平板电脑转变成受信任的设备，并提供对公司应用程序的单一登录 (SSO)。 IT 管理员可以要求添加一个工作帐户，以便访问公司资源。 SSO 可让你在登录一次后，自动登录到公司提供的所有应用程序。
 
 ## <a name="installing-the-azure-authenticator-app"></a>安装 Azure 验证器应用
@@ -37,7 +37,7 @@ IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作
 
 1. 在应用程序的主页屏幕上，接受最终用户许可协议 (EULA)。
 2. 在“激活帐户”屏幕上，单击右侧的上下文菜单，并选择“工作帐户”。
-3. 添加帐户在屏幕上，选择工作帐户。
+3. 在“添加帐户”屏幕上，选择“工作帐户”。
 4. 在“激活设备管理员”屏幕上，单击“激活”。
 5. 在“隐私政策”屏幕上，选中相应的复选框并单击“确认”。
 6. 在“工作区加入”屏幕上，输入组织提供的用户 ID，并单击“加入”。

@@ -16,10 +16,10 @@ ms.date: 07/20/2017
 ms.author: asmalser-msft
 ms.reviewer: asmalser
 ms.openlocfilehash: 3cb49a4abb26c34a938c963c4cf326b5ccd490de
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configuring-slack-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Slack
 
@@ -48,7 +48,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 *   建议将单个 Azure AD 用户分配到 Slack 以测试预配配置。 其他用户和/或组可以稍后分配。
 
-*   在将用户分配到 Slack，必须选择**用户**或在分配对话框的"组"角色。 “默认访问权限”角色不可用于预配。
+*   将用户分配到 Slack 时，必须在分配对话框中选择“用户”或“组”角色。 “默认访问权限”角色不可用于预配。
 
 
 ## <a name="configuring-user-provisioning-to-slack"></a>为 Slack 配置用户预配 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 0fc5a8eb3d033d60bf6082d61bf1698924ab91c6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的库应用程序时出现的问题
 
@@ -221,7 +221,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 8.  刷新 Azure AD，并从 Azure AD 库添加应用程序。 然后，配置应用程序
 
-<span id="_Hlk477190176" class="anchor"></span>后重新配置应用程序，你应该能够登录到应用程序。
+<span id="_Hlk477190176" class="anchor"></span>重新配置应用程序后，应该能登录到该应用程序。
 
 ## <a name="certificate-or-key-not-configured"></a>证书或密钥未配置
 

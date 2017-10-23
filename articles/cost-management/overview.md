@@ -5,19 +5,17 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2017
+ms.date: 09/29/2017
 ms.topic: overview
 ms.service: Cost Management
 manager: carmonm
 ms.custom: mvc
+ms.openlocfilehash: 9edcfa20b25d7048c2066fba86203a29ba1f84fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: d68e11757717ed23e2413c683d6e82c44c719010
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-cost-management"></a>Azure 成本管理是什么？
 
 使用 Cloudyn 提供的 Azure 成本管理可以跟踪 Azure 资源和其他云提供商（包括 AWS 和 Google）的云使用量和开支。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 成本管理通过确定可供稍后管理和调整的未充分利用的资源，帮助优化云支出。
@@ -39,11 +37,11 @@ ms.lasthandoff: 09/25/2017
 
 访问控制通过确保用户和团队仅访问他们所需的成本管理数据帮助管理成本。 通过将实体结构、用户管理和计划报告与收件人列表结合使用来分配访问权限。
 
-警报功能可在发生异常支出或超支时自动通知用户，从而帮助管理成本。 出现支出异常和超支风险时，警报功能也会自动通知其他利益相关者。 各种报告根据预算和成本阈值支持警报。
+警报功能可在发生异常支出或超支时自动通知用户，从而帮助管理成本。 出现支出异常和超支风险时，警报功能也会自动通知其他利益相关者。 各种报告根据预算和成本阈值支持警报。 但是，目前 CSP 合作伙伴帐户或订阅不支持警报。
 
 ## <a name="improve-efficiency"></a>提升效率
 
-借助成本管理，可以确定最佳 VM 使用情况并识别空闲 VM，或者删除空闲 VM 和未附加的磁盘。 使用大小优化和低效报告中的信息，可以创建一个计划以缩小或删除空闲 VM。
+借助成本管理，可以确定最佳 VM 使用情况并识别空闲 VM，或者删除空闲 VM 和未附加的磁盘。 使用大小优化和低效报告中的信息，可以创建一个计划以缩小或删除空闲 VM。 但是，目前 CSP 合作伙伴帐户或订阅不支持优化报告。
 
 ![大小建议](.\media\overview\sizing.png)
 
@@ -54,4 +52,3 @@ ms.lasthandoff: 09/25/2017
 既然已熟悉成本管理，下一步就是注册云环境并开始探索你的数据。
 
 - [注册一个单独的 Azure 订阅](quick-register-azure-sub.md)
-

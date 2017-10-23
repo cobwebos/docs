@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2017
 ms.author: bwren
 ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>使用 Log Analytics 中的警报规则
 警报通过警报规则创建，警报规则定期自动运行日志搜索。  如果结果符合特定的条件，警报规则将创建警报记录。  然后，该规则可自动运行一个或多个操作以主动通知你存在警报或调用另一个进程。   
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
 
-若要使用 OMS 门户创建警报规则，首先请针对应该调用警报的记录创建日志搜索。  **警报**按钮使你可以创建和配置警报的规则将会可用。
+若要使用 OMS 门户创建警报规则，首先请针对应该调用警报的记录创建日志搜索。  然后，就可以使用“警报”按钮创建和配置警报规则。
 
 >[!NOTE]
 > 当前在 OMS 工作区中最多可以创建 250 个警报规则。 
@@ -93,7 +93,7 @@ ms.lasthandoff: 07/11/2017
 
 | 属性 | 说明 |
 |:--- |:---|
-| 阻止警报 | 如果打开警报规则的阻止功能，则新建警报之后会在定义的时间段内禁用该规则的操作。 此规则仍在运行中，并且会在满足条件的情况下创建警报记录。 这是为了让你有时间以更正此问题，而无需运行重复操作。 |
+| 阻止警报 | 如果打开警报规则的阻止功能，则新建警报之后会在定义的时间段内禁用该规则的操作。 此规则仍在运行中，并且会在满足条件的情况下创建警报记录。 这是为了让你有时间更正问题，而无需运行重复操作。 |
 
 #### <a name="number-of-results-alert-rules"></a>结果警报规则数
 

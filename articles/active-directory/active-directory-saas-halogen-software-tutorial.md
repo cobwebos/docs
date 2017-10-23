@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
 ms.openlocfilehash: e09fa93038965e4880a23002bac6917ad2a077f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>教程：Azure Active Directory 与 Halogen Software 集成
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建台卤素软件测试用户](#creating-a-halogen-software-test-user)** -若要链接到用户的 Azure AD 表示台卤素软件中具有 Britta 人 Simon 的副本。
+3. **[创建 Halogen Software 测试用户](#creating-a-halogen-software-test-user)** - 在 Halogen Software 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

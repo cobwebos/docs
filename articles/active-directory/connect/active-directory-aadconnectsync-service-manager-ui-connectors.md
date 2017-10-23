@@ -16,10 +16,10 @@ ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c0fae4b1755ca95466eeffb5ce61c1c7855d7381
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/03/2017
 这两个选项都会同步所有对象，并更新 Metaverse 对象。 这是一个长时间运行的操作。
 
 ### <a name="configure-run-profiles"></a>配置运行配置文件
-使用此选项可查看为连接器配置的运行配置文件。
+此选项可让你查看为连接器配置的运行配置文件。
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 08/03/2017
 
 先选择一个“范围”。 可以基于数据（RDN、DN、定位点、子树）或对象状态（所有其他选项）进行搜索。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
-例如，如果进行子树搜索，会获取某个 OU 中的所有对象。  
+例如，如果进行子树搜索，将获取某个 OU 中的所有对象。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
 可以从此网格中选择一个对象，选择“属性”，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)。
 

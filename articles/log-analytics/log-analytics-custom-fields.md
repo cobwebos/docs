@@ -1,6 +1,6 @@
 ---
 title: "Log Analytics 中的自定义字段 | Microsoft Docs"
-description: "日志分析的自定义字段功能允许你可从添加到收集记录的属性的 OMS 数据创建你自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。"
+description: "Log Analytics 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 OMS 数据创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
 ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics 中的自定义字段
-**自定义字段**日志分析的功能允许你通过添加你自己的可搜索字段来扩展 OMS 存储库中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
+Log Analytics 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 OMS 存储库中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
 
 ![自定义字段概述](media/log-analytics-custom-fields/overview.png)
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="creating-a-custom-field"></a>创建自定义字段
-创建自定义字段时，Log Analytics 必须了解应该使用哪些数据填充其值。  将使用由 Microsoft Research 开发的 FlashExtract 技术来快速找出此数据。  无需你提供显式说明，日志分析知道你想要从你提供的示例中提取的数据。
+创建自定义字段时，Log Analytics 必须了解应该使用哪些数据填充其值。  将使用由 Microsoft Research 开发的 FlashExtract 技术来快速找出此数据。  不需要你提供确切说明，Log Analytics 就会获知要从所提供示例中提取的数据。
 
 以下各节提供了创建自定义字段的步骤。  本文末尾部分提供了示例提取的演练。
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 07/11/2017
 
 1. 突出显示示例记录中要用于填充自定义字段的文本。  然后会显示一个对话框，用于命名字段并执行初始提取。  将自动附加字符 **\_CF**。
 2. 单击“提取”以执行已收集记录的分析。  
-3. **摘要**和**搜索结果**各节显示提取的结果，因此你可以检查其准确性。  “摘要”显示用于确定记录的条件以及已确定的每个数据值的计数。  “搜索结果”提供匹配条件的记录的详细列表。
+3. “摘要”和“搜索结果”部分会显示提取的结果，使你可以检查提取的准确性。  “摘要”显示用于确定记录的条件以及已确定的每个数据值的计数。  “搜索结果”提供匹配条件的记录的详细列表。
 
 ### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>步骤 3 - 验证提取的准确性并创建自定义字段
 完成执行初始提取后，Log Analytics 将基于已收集的数据显示提取结果。  如果觉得结果准确，可以创建自定义字段（无需进行更多工作）。  如果结果不准确，可以优化结果，以便 Log Analytics 可以改善其逻辑。
@@ -86,7 +86,7 @@ ms.lasthandoff: 07/11/2017
 
 ![查询](media/log-analytics-custom-fields/query.png)
 
-然后，我们将选择与事件 ID 为 7036 的任何记录。
+然后，我们选择事件 ID 为 7036 的任一记录。
 
 ![源记录](media/log-analytics-custom-fields/source-record.png)
 

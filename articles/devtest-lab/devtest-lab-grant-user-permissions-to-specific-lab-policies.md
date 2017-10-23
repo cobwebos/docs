@@ -14,23 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: fa7c1e4435106d0fc25cb7f77f195eb48705772d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>向用户授予特定实验室策略的权限
 ## <a name="overview"></a>概述
-本文说明了如何使用 PowerShell 向用户授予某个特定实验室策略的权限。 这样一来，可基于每个用户的需求应用权限。 例如，你可能想向摸个特定用户授予更改 VM 策略设置的权限，但不想授予成本策略权限。
+本文说明了如何使用 PowerShell 向用户授予某个特定实验室策略的权限。 这样一来，可基于每个用户的需求应用权限。 例如，你可能想向某个特定用户授予更改 VM 策略设置的权限，但不想授予成本策略权限。
 
 ## <a name="policies-as-resources"></a>将策略作为资源
-正如 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)一文所述，可通过 RBAC 对 Azure 进行细致的访问管理。 使用 RBAC，你可以在开发运营团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
+正如 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)一文所述，可通过 RBAC 对 Azure 进行细致的访问管理。 使用 RBAC，可以在开发运营团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
 
 在开发测试实验室中，策略是一种资源类型，可启用 RBAC 操作 **Microsoft.DevTestLab/labs/policySets/policies/**。 每个实验室策略都是策略资源类型中的一种资源，并可作为作用域分配给 RBAC 角色。
 
-例如，为了向用户分配**允许的 VM 大小**的可读/写入权限，需要创建一个适用于 **Microsoft.DevTestLab/labs/policySets/policies/** 的自定义角色，然后将作用域 *Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** 中的此自定义角色分配给相应的用户。
+例如，为了向用户授予对“允许的 VM 大小”策略的读取/写入权限，需要创建一个使用“Microsoft.DevTestLab/labs/policySets/policies/*”操作的自定义角色，然后将相应的用户分配给作用域 **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** 中的此自定义角色。
 
 若要了解有关 RBAC 中自定义角色的详细信息，请参阅[自定义角色的访问控制](../active-directory/role-based-access-control-custom-roles.md)。
 
@@ -93,5 +92,4 @@ ms.lasthandoff: 11/17/2016
 * [创建实验室模板](devtest-lab-create-template.md)。
 * [创建适用于 VM 的自定义项目](devtest-lab-artifact-author.md)。
 * [将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
-
 

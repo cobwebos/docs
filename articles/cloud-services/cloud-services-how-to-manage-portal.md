@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 4650cebe18153e3b10bbec685a66a590348c99e9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ Azure 门户不会像当前 Azure 经典门户一样将资源链接在一起。 
     ![云服务交换](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 
 4. 单击底部的“删除”按钮。
-5. 要删除云服务，则单击“删除云服务”。 然后，在出现确认提示时单击“是”。
+5. 要删除云服务，则单击“删除云服务”。 然后在出现确认提示时单击“是”。
 
 > [!NOTE]
 > 删除云服务时，如果已配置详细监视，则必须从存储帐户中手动删除数据。 有关在何处查找度量值表的信息，请参阅[此](cloud-services-how-to-monitor.md)文章。

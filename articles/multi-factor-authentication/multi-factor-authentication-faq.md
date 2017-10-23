@@ -16,10 +16,10 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 023dee623ca6ec35ab77578c97e5bf197b4bfe75
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
@@ -120,7 +120,7 @@ ms.lasthandoff: 07/11/2017
 
 如果组织仍然使用传统客户端，并且[允许使用应用密码](multi-factor-authentication-whats-next.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](./end-user/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
 
-如果你的组织不具有旧客户端，不应允许你创建应用密码的用户。
+如果组织不使用传统客户端，则应不允许用户创建应用密码。
 
 > [!NOTE]
 > 适用于 Office 2013 客户端的新式验证

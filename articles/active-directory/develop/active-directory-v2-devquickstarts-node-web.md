@@ -1,6 +1,6 @@
 ---
-title: "Node.js web 应用程序登录的 azure Active Directory v2.0 |Microsoft 文档"
-description: "了解如何构建 Node.js web 应用，使用个人 Microsoft 帐户和工作或学校帐户登录用户进行签名。"
+title: "Azure Active Directory v2.0 Node.js Web 应用登录 | Microsoft Docs"
+description: "了解如何生成使用 Microsoft 个人帐户和工作/学校帐户来让用户登录的 Node.js Web 应用。"
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -16,41 +16,41 @@ ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-sign-in-to-a-nodejs-web-app"></a>将登录添加到 Node.js web 应用
+# <a name="add-sign-in-to-a-nodejs-web-app"></a>向 Node.js Web 应用添加登录
 
 > [!NOTE]
-> 并非所有 Azure Active Directory 方案和功能都处理 v2.0 终结点。 若要确定是否应使用 v2.0 终结点或 v1.0 终结点，请阅读有关[v2.0 限制](active-directory-v2-limitations.md)。
+> 并非所有 Azure Active Directory 方案和功能都可与 v2.0 终结点配合使用。 若要确定是应该使用 v2.0 终结点还是应该使用 v1.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
 > 
 
-在本教程中，我们使用 Passport 来执行以下任务：
+在本教程中，我们使用 Passport 执行以下任务：
 
-* 在 web 应用中，在登录用户通过使用 Azure Active Directory (Azure AD) 和 v2.0 终结点。
+* 在 Web 应用中，使用 Azure Active Directory (Azure AD) 和 v2.0 终结点让用户登录。
 * 显示有关用户的信息。
-* 用户从应用程序中注销。
+* 从应用中注销用户。
 
-**Passport**是 Node.js 身份验证中间件。 灵活且模块化 Passport 可以轻松放入任何基于 Express 的或 restify web 应用程序。 在 Passport，一组全面的策略通过使用用户名和密码、 Facebook、 Twitter 或其他选项来支持身份验证。 Azure ad，我们开发了一个策略。 在本文中，我们向你展示如何安装该模块，并将 Azure AD`passport-azure-ad`插件。
+**Passport** 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用模块化结构，可以在不造成干扰的情况下放入任何基于 Express 的应用程序或 Resitify Web 应用程序。 在 Passport 中，有一套综合性策略支持使用用户名和密码、Facebook、Twitter 或其他选项进行身份验证。 我们针对 Azure AD 开发了一项策略。 本文介绍如何安装该模块及添加 Azure AD `passport-azure-ad` 插件。
 
 ## <a name="download"></a>下载
-对于本教程代码维护[GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)。 若要遵循本教程，您可以[下载.zip 文件形式的应用程序的框架](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)或克隆该骨架：
+本教程的代码 [在 GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)维护。 若要按照本教程操作，可以[下载 .zip 文件格式的应用框架](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)，或克隆该框架：
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-你还可以获取完成本教程末尾的应用程序。
+还可以在本教程结束时获得完整的应用程序。
 
-## <a name="1-register-an-app"></a>1： 注册某个应用程序
-创建新的应用程序在[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)，或按照[这些详细步骤](active-directory-v2-app-registration.md)注册应用程序。 请确保：
+## <a name="1-register-an-app"></a>1：注册应用
+在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 上创建新应用，或按照[以下详细步骤](active-directory-v2-app-registration.md)注册应用。 确保：
 
-* 复制**应用程序 Id**分配给你的应用程序。 对于本教程中需要它。
-* 添加**Web**平台，用于你的应用程序。
-* 复制**重定向 URI**从门户。 你必须使用的默认 URI 值`urn:ietf:wg:oauth:2.0:oob`。
+* 复制分配给应用的**应用程序 ID**。 在本教程中需要用到它。
+* 为应用添加 **Web** 平台。
+* 从门户复制**重定向 URI**。 必须使用默认的 URI 值 `urn:ietf:wg:oauth:2.0:oob`。
 
-## <a name="2-add-prerequisities-to-your-directory"></a>2： 将 prerequisities 添加到你的目录
-在命令提示符下，将目录更改转到根文件夹，如果你尚不存在。 运行以下命令：
+## <a name="2-add-prerequisities-to-your-directory"></a>2. 向目录添加先决条件
+在命令提示符下更改目录，转到根文件夹（如果尚未位于此处）。 运行以下命令：
 
 * `npm install express`
 * `npm install ejs`
@@ -65,22 +65,22 @@ ms.lasthandoff: 07/11/2017
 * `npm install express-session`
 * `npm install cookie-parser`
 
-此外，我们使用`passport-azure-ad`在的主干中的快速入门：
+此外，我们在快速入门的框架中使用 `passport-azure-ad`：
 
 * `npm install passport-azure-ad`
 
-这将安装这些库的`passport-azure-ad`使用。
+这会安装 `passport-azure-ad` 使用的库。
 
-## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3： 将你的应用程序设置为使用 passport 节点 js 策略
-将 Express 中间件设置为使用 OpenID Connect 身份验证协议。 使用 Passport 发出登录和注销请求、 管理用户的会话和获取有关用户，以及其他用途的信息。
+## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3. 将应用设置为使用 passport-node-js 策略
+将 Express 中间件设置为使用 OpenID Connect 身份验证协议。 使用 Passport 发出登录和注销请求、管理用户的会话、获取关于用户的信息，等等。
 
-1.  在项目的根目录，打开 Config.js 文件。 在`exports.creds`部分中，输入你的应用的配置值。
+1.  在项目的根目录中，打开 Config.js 文件。 在 `exports.creds` 部分，输入应用的配置值。
   
-  * `clientID`:**应用程序 Id** ，分配给你在 Azure 门户中的应用。
-  * `returnURL`:**重定向 URI**在门户中输入。
-  * `clientSecret`: 在门户中生成的密钥。
+  * `clientID`：在 Azure 门户中分配给应用的**应用程序 ID**。
+  * `returnURL`：在门户中输入的**重定向 URI**。
+  * `clientSecret`：在门户中生成的密码。
 
-2.  在项目根中，打开 App.js 文件。 若要调用 OIDCStrategy stratey，它具有`passport-azure-ad`，添加以下调用：
+2.  在项目的根目录中，打开 App.js 文件。 若要调用 `passport-azure-ad` 随附的 OIDCStrategy 策略，可添加以下调用：
 
   ```JavaScript
   var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/11/2017
   });
   ```
 
-3.  若要处理登录请求，使用刚刚提到的策略：
+3.  若要处理登录请求，可使用刚才引用的策略：
 
   ```JavaScript
   // Use the OIDCStrategy within Passport (section 2)
@@ -131,14 +131,14 @@ ms.lasthandoff: 07/11/2017
   ));
   ```
 
-Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）。 所有策略写入器都遵循模式。 传递策略`function()`，它使用令牌和`done`作为参数。 完成了所有其任务后，将返回策略。 存储用户并隐藏令牌，因此无需再次请求它。
+Passport 对其所有策略（Twitter、Facebook 等）都使用类似的模式。 所有策略编写器都遵循该模式。 向策略传递使用令牌和 `done` 作为参数的 `function()`。 策略会在完成所有任务后返回。 存储用户和令牌，这样一来，就不需要再次请求。
 
   > [!IMPORTANT]
-  > 前面的代码将任何用户都可以进行身份验证转到你的服务器。 这称为自动注册。 在生产服务器上，你不想要让任何人都必须先经历你选择的注册过程。 这通常是在使用者应用中看到的模式。 应用程序可能会允许您向 Facebook 注册，但它，然后要求你输入其他信息。 如果您没有在本教程中使用命令行程序，则无法从返回的令牌对象中提取电子邮件。 然后，你可能会要求用户输入其他信息。 由于这是测试服务器，你可以直接对内存中的数据库添加用户。
+  > 前面的代码会将所有可以进行身份验证的用户转到服务器。 这就是所谓的自动注册。 在生产服务器上，会希望所有人都先经历指定的注册过程，才能进入服务器。 通常会在消费类应用中看到这种模式。 应用可能会允许使用 Facebook 注册，但随后会要求输入其他信息。 如果在本教程中没有使用命令行程序，可从返回的令牌对象中提取电子邮件。 然后，可以要求用户输入其他信息。 由于这是测试服务器，可以直接将用户添加到内存中数据库。
   > 
   > 
 
-4.  添加方法，用于跟踪的用户登录，根据 Passport 的要求。 这包括序列化和反序列化用户的信息：
+4.  根据 Passport 的要求，添加用于跟踪已登录用户的方法。 这包括将用户信息序列化和反序列化：
 
   ```JavaScript
 
@@ -173,7 +173,7 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
   };
   ```
 
-5.  添加代码加载 Express 引擎。 使用的默认 /views 和 /routes 模式 Express 提供：
+5.  添加加载 Express 引擎的代码。 使用 Express 提供的默认 /views 和 /routes 模式：
 
   ```JavaScript
 
@@ -199,7 +199,7 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
 
   ```
 
-6.  添加发布将路由将实际登录请求发送到该移交`passport-azure-ad`引擎：
+6.  添加 POST 路由，以便将实际登录请求递交到 `passport-azure-ad` 引擎：
 
   ```JavaScript
 
@@ -245,10 +245,10 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
     });
   ```
 
-## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4： 使用 Passport 向 Azure AD 发出登录和注销请求
-现在将您的应用程序设置为使用 OpenID Connect 身份验证协议与 v2.0 终结点通信。 `passport-azure-ad`策略将负责创建身份验证消息、 验证从 Azure AD 的令牌和维护用户会话的所有详细信息。 所有剩下所要做旨在为你的用户提供一种方法来登录和注销，并收集有关已登录的用户的详细信息。
+## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4. 使用 Passport 向 Azure AD 发出登录和注销请求
+现在，应用已设置为使用 OpenID Connect 身份验证协议与 v2.0 终结点通信。 `passport-azure-ad` 策略负责处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的所有细节。 剩下需要做的就是为用户提供登录和注销方式，以及收集有关已登录用户的详细信息。
 
-1.  添加**默认**，**登录**，**帐户**，和**注销**到 App.js 文件的方法：
+1.  在 App.js 文件中添加 **default**、**login**、**account** 和 **logout** 方法：
 
   ```JavaScript
 
@@ -278,12 +278,12 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
 
   以下是详细信息：
     
-    * `/`路由将重定向到 index.ejs 视图。 （如果存在），它将在请求中传递用户。
-    * `/account`首先路由*可确保你进行身份验证*（你实现，在下面的代码）。 然后，它将在请求中传递用户。 这是以便您可以获取有关用户的详细信息。
-    * `/login`路由调用你`azuread-openidconnect`从身份验证器`passport-azuread`。 如果不成功，它将用户重定向回`/login`。
-    * `/logout`路由调用 logout.ejs 视图 （和路由）。 这清除 cookie，并随后将返回给 index.ejs 用户。
+    * `/` 路由重定向到 index.ejs 视图。 它在请求中传递用户（如果存在）。
+    * `/account` 路由首先*确保用户进行身份验证*（在下面的代码中实现）。 然后，它在请求中传递用户。 这样一来，可以获取有关用户的详细信息。
+    * `/login` 路由从 `passport-azuread` 调用 `azuread-openidconnect` 验证器。 如果不成功，它会将用户重定向回 `/login`。
+    * `/logout` 路由调用 logout.ejs 视图（和路由）。 此操作会清除 Cookie，然后将用户返回到 index.ejs。
 
-2.  添加**EnsureAuthenticated**上文中使用的方法`/account`:
+2.  添加之前在 `/account` 中使用的 **EnsureAuthenticated** 方法：
 
   ```JavaScript
 
@@ -300,7 +300,7 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
 
   ```
 
-3.  在 App.js，创建服务器：
+3.  在 App.js 中，创建服务器：
 
   ```JavaScript
 
@@ -309,10 +309,10 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
   ```
 
 
-## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>5： 在网站上显示你的用户的 Express 中创建的视图和路由
-添加的路由和向用户显示信息的视图。 路由和视图还处理`/logout`和`/login`你创建的路由。
+## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>5. 在 Express 中创建在网站上向用户显示的视图和路由
+添加向用户显示信息的路由和视图。 路由和视图还会处理创建的 `/logout` 和 `/login` 路由。
 
-1. 在根目录下，创建`/routes/index.js`路由。
+1. 在根目录下创建 `/routes/index.js` 路由。
 
   ```JavaScript
 
@@ -325,7 +325,7 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
   };
   ```
 
-2.  在根目录下，创建`/routes/user.js`路由。
+2.  在根目录下创建 `/routes/user.js` 路由。
 
   ```JavaScript
 
@@ -338,9 +338,9 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
   };
   ```
 
-  `/routes/index.js`和`/routes/user.js`请求传递到你的视图，包括用户，如果存在的简单路由。
+  `/routes/index.js` 和 `/routes/user.js` 是简单路由，可将请求传递到视图（包括用户，如果存在）。
 
-3.  在根目录下，创建`/views/index.ejs`视图。 此页将调用你**登录**和**注销**方法。 你还使用`/views/index.ejs`视图以捕获帐户信息。 你可以使用条件性`if (!user)`作为在请求中传递的用户。 它是已登录用户的证据。
+3.  在根目录下创建 `/views/index.ejs` 视图。 此页将调用 **login** 和 **logout** 方法。 还可使用 `/views/index.ejs` 视图捕获帐户信息。 可使用条件性 `if (!user)` 作为要在请求中传递的用户。 它是已让用户登录的证据。
 
   ```JavaScript
   <% if (!user) { %>
@@ -353,7 +353,7 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
   <% } %>
   ```
 
-4.  在根目录下，创建`/views/account.ejs`视图。 `/views/account.ejs`视图允许你查看其他信息，`passport-azuread`将放置在用户请求。
+4.  在根目录下创建 `/views/account.ejs` 视图。 `/views/account.ejs` 视图允许查看 `passport-azuread` 放在用户请求中的其他信息。
 
   ```Javascript
   <% if (!user) { %>
@@ -372,7 +372,7 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
   <% } %>
   ```
 
-5.  添加布局。 在根目录下，创建`/views/layout.ejs`视图。
+5.  添加布局。 在根目录下创建 `/views/layout.ejs` 视图。
 
   ```HTML
 
@@ -399,26 +399,26 @@ Passport 使用类似的模式为所有其策略 （Twitter 和 Facebook 等）�
   </html>
   ```
 
-6.  若要生成并运行你的应用程序，运行`node app.js`。 然后，请转到`http://localhost:3000`。
+6.  若要生成并运行应用，请运行 `node app.js`。 然后，转到 `http://localhost:3000`。
 
-7.  使用个人 Microsoft 帐户或工作或学校帐户登录。 请注意，用户的标识反映 /account 列表中。 
+7.  使用 Microsoft 个人帐户或工作/学校帐户登录。 请注意，用户的标识在 /account 列表中反映。 
 
-你现在可以使用行业标准协议保护的 web 应用。 通过使用其个人和工作单位或学校帐户，可以验证用户身份应用程序中。
+现在拥有使用行业标准协议进行保护的 Web 应用。 可使用用户的个人和工作/学校帐户，在应用中验证用户的身份。
 
 ## <a name="next-steps"></a>后续步骤
-对于引用，已完成的示例 （无需你的配置值） 提供作为[.zip 文件](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)。 你还可以将其克隆到从 GitHub:
+某个 [.zip 文件](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)提供了完整的示例（不包括配置值）供参考。 还可以从 GitHub 中进行克隆：
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-接下来，你可以移到更高级的主题。 你可能想要尝试：
+接下来，可以转到更高级的主题。 可能需要：
 
-[通过使用 v2.0 终结点保护 Node.js web API](active-directory-v2-devquickstarts-node-api.md)
+[使用 v2.0 终结点保护 Node.js Web API](active-directory-v2-devquickstarts-node-api.md)
 
 下面是一些其他资源：
 
 * [Azure AD v2.0 开发人员指南](active-directory-appmodel-v2-overview.md)
-* [堆栈溢出"azure active directory"标记](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Stack Overflow“azure-active-directory”标记](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-### <a name="get-security-updates-for-our-products"></a>获取我们的产品的安全更新
-我们鼓励你注册以使用安全事件发生时通知。 上[Microsoft 技术的安全通知](https://technet.microsoft.com/security/dd252948)页上，安全通报警报订阅。
+### <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
+我们建议注册，以便在发生安全事件时获得通知。 在 [Microsoft 技术安全通知](https://technet.microsoft.com/security/dd252948)页上订阅安全顾问警报。
 

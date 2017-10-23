@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-procedures"></a>升级过程
 如果已将我们较旧版本的 SDK 集成到应用程序中，则在升级 SDK 时必须考虑以下几点。
 
-如果错过了几个版本的 SDK，则可能需要执行多个过程。 例如，如果你将从迁移 1.4.0 到你必须首先按照"发件人到 1.5.0 1.4.0"步骤的 1.6.0 然后"发件人到 1.6.0 1.5.0"过程。
+如果错过了几个版本的 SDK，则可能需要执行多个过程。 例如，如果从 1.4.0 迁移至 1.6.0，则必须首先按照“从 1.4.0 至 1.5.0”的过程操作，然后按照“从 1.5.0 至 1.6.0”的过程操作。
 
 无论从哪个版本升级，都必须使用新版本替换 `mobile-engagement-VERSION.jar`。
 
@@ -395,7 +395,7 @@ Google Play 和 SmartAd 跟踪已从 SDK 中删除，只需将其删除即可，
 
             protected void onXMPPMessageReceived(android.content.Context context, android.os.Bundle message)
 
-然后在删除任何调用**EngagementAgent**为：
+然后删除以下项对 **EngagementAgent** 的任何调用：
 
             sendMessageToDevice(java.lang.String deviceId, java.lang.String payload, java.lang.String packageName)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
 ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>按国家/地区限制 Azure CDN 内容
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="step-1-define-the-directory-path"></a>步骤 1：定义目录路径
 在门户内选择终结点，并在左侧导航中找到“地区筛选”选项卡，以查找此功能。
 
-在配置国家/地区筛选器时，必须指定允许或拒绝用户访问的位置的相对路径。 可使用“/”对所有文件应用地区筛选，也可通过指定目录路径“/pictures/”对选定文件夹应用该筛选。 你还可以应用异地筛选到一个文件中通过指定该文件，并省略尾部反斜杠"/ pictures/city.png"。
+在配置国家/地区筛选器时，必须指定允许或拒绝用户访问的位置的相对路径。 可使用“/”对所有文件应用地区筛选，也可通过指定目录路径“/pictures/”对选定文件夹应用该筛选。 还可通过指定单个文件并省略尾部斜杠“/pictures/city.png”将地区筛选应用到该文件。
 
 目录路径筛选器示例：
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 07/11/2017
 **允许：**仅允许来自指定国家/地区的用户通过该递归路径访问所请求的资产。
 
 ## <a name="step-3-define-the-countries"></a>步骤 3：定义国家/地区
-选择你想要阻止或允许的路径的国家/地区。 
+针对该路径，选择要阻止或允许的国家/地区。 
 
 例如，如果规则阻止 /Photos/Strasbourg/，则会筛选下述文件：
 

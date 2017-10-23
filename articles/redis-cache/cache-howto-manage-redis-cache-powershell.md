@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: sdanie
 ms.openlocfilehash: 0a5c95eab3fd01f611fc049e80c5c506857e0b81
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -655,7 +655,7 @@ ms.lasthandoff: 08/03/2017
     PS C:\>Import-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
 
 ## <a name="to-export-a-redis-cache"></a>导出 Redis 缓存
-可以使用 `Export-AzureRmRedisCache`cmdlet 将数据从 Azure Redis 缓存实例导出。
+可以使用 `Export-AzureRmRedisCache` cmdlet 将数据从 Azure Redis 缓存实例导出。
 
 > [!IMPORTANT]
 > 导入/导出仅适用于[高级层](cache-premium-tier-intro.md)缓存。 有关导入/导出的详细信息，请参阅[在 Azure Redis 缓存中导入和导出数据](cache-how-to-import-export-data.md)。
@@ -784,5 +784,5 @@ ms.lasthandoff: 08/03/2017
 * [使用资源组来管理 Azure 资源](../azure-resource-manager/resource-group-template-deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
 * [Azure 博客](http://blogs.msdn.com/windowsazure)：了解 Azure 中的新功能。
 * [Windows PowerShell 博客](http://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。
-* [“你好，脚本编写专家！”博客](http://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
+* [“你好，脚本专家！”博客](http://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
 

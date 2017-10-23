@@ -1,98 +1,110 @@
 ---
-title: "Azure 容器注册表存储库 | Microsoft Docs"
-description: "如何使用 Azure 容器注册表存储库存储 Docker 映像"
+title: "快速入门 - 使用 PowerShell 在 Azure 中创建专用 Docker 注册表"
+description: "快速了解如何使用 PowerShell 创建专用 Docker 容器注册表。"
 services: container-registry
 documentationcenter: 
-author: cristy
-manager: balans
-editor: dlepow
+author: neilpeterson
+manager: timlt
+editor: tysonn
 ms.service: container-registry
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2017
-ms.author: cristyg
+ms.date: 09/07/2017
+ms.author: nepeters
+ms.openlocfilehash: 15046d1d2aabafd72df590233f416dd266c661de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1e5d5ea5b1ec121fe008abc48178b1d58f540ce1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="create-an-azure-container-registry-using-powershell"></a>使用 PowerShell 创建 Azure 容器注册表
 
-# <a name="create-a-private-docker-container-registry-using-the-azure-powershell"></a>使用 Azure PowerShell 创建专用 Docker 容器注册表
-使用 [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview) 中的命令从 Windows 计算机创建容器注册表并管理其设置。 也可以使用 [Azure 门户](container-registry-get-started-portal.md)、[Azure CLI](container-registry-get-started-azure-cli.md) 或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
+Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 PowerShell 创建 Azure 容器注册表实例。
 
+本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
-* 有关背景和概念，请参阅[概述](container-registry-intro.md)
-* 有关支持的 cmdlet 的完整列表的信息，请参阅 [Azure 容器注册表管理 Cmdlet](https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/)。
+还必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
 
+## <a name="log-in-to-azure"></a>登录 Azure
 
-## <a name="prerequisites"></a>先决条件
-* **Azure PowerShell**：若要安装和开始使用 Azure PowerShell，请参阅[安装说明](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)。 运行 `Login-AzureRMAccount` 登录到 Azure 订阅。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/en-us/powershell/azure/get-started-azurep)。
-* **资源组**：在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 Azure PowerShell 创建资源组，请参阅 [PowerShell 参考](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps#create-a-resource-group)。
-* **存储帐户**（可选）：创建一个标准的 Azure [存储帐户](../storage/common/storage-introduction.md)，用于在同一位置备份容器注册表。 如果使用 `New-AzureRMContainerRegistry` 创建注册表时未指定存储帐户，该命令会自动创建一个存储帐户。 若要使用 PowerShell 创建存储帐户，请参阅 [PowerShell 参考](https://docs.microsoft.com/en-us/powershell/module/azure/new-azurestorageaccount)。 当前不支持高级存储。
-* **服务主体**（可选）：使用 PowerShell 创建注册表时，默认情况下不会为该注册表设置访问权限。 可以根据需要将现有 Azure Active Directory 服务主体分配到注册表，也可以创建并分配新的服务主体。 或者，可以启用注册表的管理员用户帐户。 请参阅本文稍后的部分。 有关注册表访问权限的详细信息，请参阅 [Authenticate with the container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。
+使用 `Login-AzureRmAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+
+```powershell
+Login-AzureRmAccount
+```
+
+## <a name="create-resource-group"></a>创建资源组
+
+使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+
+```powershell
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+```
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
-运行 `New-AzureRMContainerRegistry` 命令可以创建容器注册表。
 
-> [!TIP]
-> 创建注册表时，请指定仅包含字母和数字的全局唯一顶级域名。 示例中的注册表名称为 `MyRegistry`，但需要将它替换成自己的唯一名称。
->
->
+使用 [New-AzureRMContainerRegistry](/powershell/module/containerregistry/New-AzureRMContainerRegistry) 命令创建 ACR 实例。
 
-以下命令使用少量的参数在美国中南部位置的资源组 `MyResourceGroup` 中创建容器注册表 `MyRegistry`：
+注册表的名称必须唯一。 下面的示例中使用了 *myContainerRegistry007*。 请将其更新为一个唯一值。
 
 ```PowerShell
-$Registry = New-AzureRMContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+$Registry = New-AzureRMContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-* `-StorageAccountName` 是可选项。 如果未指定，则会创建一个存储帐户，其名称由注册表名称以及指定资源组中的一个时间戳组成。
+## <a name="log-in-to-acr"></a>登录到 ACR
 
-## <a name="assign-a-service-principal"></a>分配服务主体
-使用 PowerShell 命令可将 Azure Active Directory [服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md)分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
+在推送和拉取容器映像之前，必须登录到 ACR 实例。 首先，使用 [Get-AzureRmContainerRegistryCredential](/powershell/module/containerregistry/get-azurermcontainerregistrycredential) 命令来获取 ACR 实例的管理员凭据。
 
-### <a name="create-a-service-principal"></a>创建服务主体
-在以下命令中，创建新的服务主体。 使用 `-Password` 参数指定一个强密码。
-
-```PowerShell
-$ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName ApplicationDisplayName -Password "MyPassword"
+```powershell
+$creds = Get-AzureRmContainerRegistryCredential -Registry $Registry
 ```
 
-### <a name="assign-a-new-or-existing-service-principal"></a>分配新的或现有的服务主体
-可以将新的或现有的服务主体分配到注册表。 若要为它分配对注册表的“所有者”角色访问权限，请运行类似于以下示例的命令：
+接下来，运行 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令以登录到 ACR 实例。
 
-```PowerShell
-New-AzureRMRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Registry.Id
+```bash
+docker login $Registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
-##<a name="sign-in-to-the-registry-with-the-service-principal"></a>通过服务主体登录到注册表
-将服务主体分配到注册表后，可以使用以下命令登录：
+完成后，该命令会返回“登录成功”消息。
 
-```PowerShell
-docker login -u $ServicePrincipal.ApplicationId -p myPassword
+## <a name="push-image-to-acr"></a>将映像推送到 ACR
+
+若要将映像推送到 Azure 容器注册表中，首先必须具有一个映像。 如有必要，请运行以下命令，从 Docker 中心拉取预先创建的映像。
+
+```bash
+docker pull microsoft/aci-helloworld
 ```
 
-## <a name="manage-admin-credentials"></a>管理管理员凭据
-管理员帐户是为每个容器注册表自动创建的，默认情况下已禁用。 以下示例演示 PowerShell 命令如何管理容器注册表的管理员凭据。
+必须使用 ACR 登录服务器名称标记此映像。 运行 [Get-AzureRmContainerRegistry](/powershell/module/containerregistry/Get-AzureRmContainerRegistry) 命令来返回 ACR 实例的登录服务器名称。
 
-### <a name="obtain-admin-user-credentials"></a>获取管理员用户凭据
-```PowerShell
-Get-AzureRMContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+```powershell` Get-AzureRmContainerRegistry | Select Loginserver
 ```
 
-### <a name="enable-admin-user-for-an-existing-registry"></a>为现有注册表启用管理员用户
-```PowerShell
-Update-AzureRMContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -EnableAdminUser
+Tag the image using the [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) command. Replace *acrLoginServer* with the login server name of your ACR instance.
+
+```bash
+docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
-### <a name="disable-admin-user-for-an-existing-registry"></a>为现有注册表禁用管理员用户
-```PowerShell
-Update-AzureRMContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -DisableAdminUser
+最后，使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 将映像推送到 ACR 实例。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
+
+```bash
+docker push <acrLoginServer>/aci-helloworld:v1
+```
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要资源组、ACR 实例和所有容器映像，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令将其删除。
+
+```powershell
+Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)
 
+在本快速入门中，你已使用 Azure CLI 创建了一个 Azure 容器注册表。 如果要将 Azure 容器注册表用于 Azure 容器实例，请继续学习 Azure 容器实例教程。
+
+> [!div class="nextstepaction"]
+> [Azure 容器实例教程](../container-instances/container-instances-tutorial-prepare-app.md)

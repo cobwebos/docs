@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
 ms.openlocfilehash: dc3cab0a6a8b4a56ab0fba1a02e5bba9d0ed1b1f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>将推送通知添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="update-the-server-project"></a>更新服务器项目
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="add-push-to-app"></a>修改你的 Cordova 应用
+## <a name="add-push-to-app"></a>修改 Cordova 应用
 确保 Apache Cordova 应用项目已准备就绪，可通过安装 Cordova 推送插件和任何平台特定的推送服务来处理推送通知。
 
 #### <a name="update-the-cordova-version-in-your-project"></a>更新项目中的 Cordova 版本。
@@ -160,12 +160,12 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 ## <a name="optional-configure-and-run-the-app-on-android"></a>（可选）在 Android 上配置并运行应用
 完成此部分以启用 Android 的推送通知。
 
-#### <a name="enable-gcm"></a>启用 Firebase 云消息传送
+#### <a name="enable-gcm"></a>启用 Firebase Cloud Messaging
 由于我们最初面向的是 Google Android 平台，因此必须启用 Firebase Cloud Messaging。
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>配置移动应用程序后端，以发送推送请求使用 FCM
+#### <a name="configure-backend"></a>使用 FCM 配置移动应用后端以发送推送请求
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>配置适用于 Android 的 Cordova 应用
@@ -183,7 +183,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
             wns: {}
         });
 
-#### <a name="configure-device"></a>配置 Android 设备的 USB 调试
+#### <a name="configure-device"></a>配置 Android 设备以进行 USB 调试
 需要启用 USB 调试才能将应用部署到 Android 设备。  在 Android 手机上执行以下步骤：
 
 1. 转到“设置”>“关于手机”，然后点击“内部版本号”，直到启用开发人员模式（大约七次）。
@@ -209,7 +209,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 * **在物理设备上：**使用 USB 线缆将 Android 设备连接到开发计算机。  不是使用 **Google Android 模拟器**，而是选择“设备”。 Visual Studio 会将应用程序部署到设备，并运行应用程序。  可以随后在该设备上与该应用程序进行交互。
 
-  提升开发体验。  如共享应用程序的屏幕[Mobizen] [ 20]可以帮助您开发 Android 应用程序。  Mobizen 会将 Android 屏幕投影到电脑上的 Web 浏览器。
+  提升开发体验。  屏幕共享应用程序（如 [Mobizen][20]）可以帮助你开发 Android 应用程序。  Mobizen 会将 Android 屏幕投影到电脑上的 Web 浏览器。
 
 * **在 Android 模拟器中：**在模拟器中运行时，还需要其他配置步骤。
 

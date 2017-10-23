@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: beace24fa00c85a5038a3c39ae8f76af5fd12111
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
 使用本文中介绍的操作流程，根据组织的需要和要求自定义 Azure Active Directory (Azure AD) Connect。  
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="start-a-scheduled-synchronization-task"></a>启动计划的同步任务
 如果需要运行同步任务，可以通过再次运行 Azure AD Connect 向导来执行此操作。  需要提供 Azure AD 凭据。  在向导中，选择“自定义同步选项”任务，并一直单击“下一步”完成向导。 最后，请确保已选中“初始配置完成后立即开始同步过程”框。
 
-<center>![启动同步](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
+<center>![开始同步](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
 
 有关 Azure AD Connect 同步计划程序的详细信息，请参阅 [Azure AD Connect 计划程序](active-directory-aadconnectsync-feature-scheduler.md)。
 

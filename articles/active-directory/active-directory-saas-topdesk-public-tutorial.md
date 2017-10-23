@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
 ms.openlocfilehash: f21fe0b363776974108ff460060e4c15a51a58a3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/03/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TOPdesk-公共测试用户](#create-a-topdesk---public-test-user)** -若要在 TOPdesk 链接到用户的 Azure AD 表示的公共具有 Britta 人 Simon 的副本。
+3. **[创建 TOPdesk - Public 测试用户](#create-a-topdesk---public-test-user)** - 在 TOPdesk - Public 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -177,9 +177,9 @@ ms.lasthandoff: 08/03/2017
     
     a. 若要从 Azure 门户上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
-    b. 若要上传证书文件，请在**“证书(RSA)”**下，单击**“浏览”**。
+    b. 若要上载证书文件，请在“证书(RSA)”下，单击“浏览”。
 
-    c. 若要上传从 TOPdesk 支持团队获得的徽标文件，请在**“徽标图标”**下，单击**“浏览”**。
+    c. 若要上载从 TOPdesk 支持团队获得的徽标文件，请在“徽标图标”下，单击“浏览”。
 
     d.单击“下一步”。 在“用户名属性”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 

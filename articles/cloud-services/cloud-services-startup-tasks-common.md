@@ -1,6 +1,6 @@
 ---
 title: "云服务的常见启动任务 |Microsoft Docs"
-description: "提供了一些可能需要在云服务 Web 角色或辅助角色中执行的常见启动任务示例。"
+description: "提供你可能想要以云服务 web 角色或辅助角色执行的一些常见启动任务的示例。"
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
 ms.openlocfilehash: cee23da5b089b02bfc0ef10afd60f0f2272585b1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
-本文提供了一些可能需要在云服务中执行的常见启动任务示例。 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
+本文提供你可能想要在云服务中执行的一些常见启动任务的示例。 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
 
 参阅[本文](cloud-services-startup-tasks.md)可了解启动任务的工作方式，特别是如何创建定义启动任务的条目。
 
@@ -249,7 +249,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>通过启动任务在本地存储中创建文件
 可以使用本地存储资源来存储应用程序稍后将访问的启动任务创建的文件。
 
-若要创建本地存储资源，请将 [LocalResources] 部分添加到 [ServiceDefinition.csdef] 文件，然后添加 [LocalStorage] 子元素。 为本地存储资源指定唯一名称，并为启动任务指定合适大小。
+要创建本地存储资源，请将 [LocalResources] 节添加到 [ServiceDefinition.csdef] 文件，然后添加 [LocalStorage] 子元素。 为本地存储资源指定唯一名称，并为启动任务指定合适大小。
 
 若要在启动任务中使用本地存储资源，需要创建一个环境变量以引用本地存储资源位置。 然后，启动任务和应用程序能够在本地存储资源中读取和写入文件。
 
@@ -303,7 +303,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ## <a name="run-in-the-emulator-or-cloud"></a>在模拟器或云中运行
 与在计算模拟器中运行时相比，可以让启动任务在云中运行时执行不同的步骤。 例如，仅当在模拟器中运行时，才可能需要使用 SQL 数据的新副本。 或者，可能需要为云做一些性能优化，而在模拟器中运行时不需要做这些优化。
 
-可以通过在 [ServiceDefinition.csdef] 文件中创建一个环境变量来实现在计算模拟器中和云中执行不同操作的能力。 然后，在启动任务中针对某个值测试该环境变量。
+可以通过在 [ServiceDefinition.csdef] 文件中创建一个环境变量来实现在计算模拟器中和云中执行不同操作的能力。 然后，会在启动任务中测试该环境变量的值。
 
 若要创建环境变量，请添加 [变量]/[RoleInstanceValue] 元素并创建 `/RoleEnvironment/Deployment/@emulated` 的 XPath 值。 在计算模拟器中运行时，**%ComputeEmulatorRunning%** 环境变量的值为 `true`，而在云中运行时，该值为 `false`。
 
@@ -382,13 +382,13 @@ EXIT /B 0
 以下是在配置 web 角色或辅助角色的任务时应遵循的一些最佳做法。
 
 ### <a name="always-log-startup-activities"></a>始终记录启动活动
-Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（**stdout** 和 **stderr**），可以在尝试调试和修复批处理文件时提供重要信息。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，若要在 **%PathToApp1Install%** 目录中执行 setup.exe，请执行以下操作：
+Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（**stdout** 和 **stderr**），可以在尝试调试和修复批处理文件时提供重要信息。 要记录 **%TEMP%** 环境变量指向的目录中 StartupLog.txt 文件的 **stdout** 和 **stderr**，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，若要在 **%PathToApp1Install%** 目录中执行 setup.exe，请执行以下操作：
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
 若要简化 xml，可以创建一个包装器 cmd 文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
 
-你可能会发现在每个启动任务的末尾都使用 `>> "%TEMP%\StartupLog.txt" 2>&1` 很是恼人。 可以通过创建一个包装器来处理日志记录以强制执行任务日志记录。 此包装器调用要运行的实际批处理文件。 来自目标批处理文件的任何输出都将重定向到 Startuplog.txt 文件。
+不过，你可能发现在每个启动任务的末尾使用 `>> "%TEMP%\StartupLog.txt" 2>&1` 令人烦恼。 可以通过创建一个包装器来处理日志记录以强制执行任务日志记录。 此包装器调用要运行的实际批处理文件。 来自目标批处理文件的任何输出都将重定向到 Startuplog.txt 文件。
 
 以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件将创建调用 logwrap.cmd 的启动任务。 logwrap.cmd 调用 Startup2.cmd，并将所有输出都重定向到 **%TEMP%\\StartupLog.txt**。
 

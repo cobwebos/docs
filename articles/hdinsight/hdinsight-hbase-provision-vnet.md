@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/17/2017
 ms.author: jgao
+ms.openlocfilehash: 77ddfc0210fdbd6aea44bc50e18406e4d9c285c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: c78f1b16328c5b3a92f530ca06e6f5aeaeefca78
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虚拟网络中的 HDInsight 上创建 HBase 群集
 了解如何在 [Azure 虚拟网络][1]中创建 Azure HDInsight HBase 群集。
@@ -63,7 +62,7 @@ ms.lasthandoff: 07/18/2017
 2. 在“自定义部署”边栏选项卡中输入以下属性：
 
    * **订阅**：选择用来创建 HDInsight 群集的 Azure 订阅、相关存储帐户和 Azure 虚拟网络。
-   * **资源组**：选择“新建”，然后指定新的资源组名称。
+   * **资源组**：选择“新建”，并指定新的资源组名称。
    * **位置**：选择资源组的位置。
    * **ClusterName**：为要创建的 Hadoop 群集输入名称。
    * **群集登录名和密码**：默认登录名是 **admin**。
@@ -71,7 +70,7 @@ ms.lasthandoff: 07/18/2017
    * **我同意上述条款和条件**：（选择）
 3. 单击“购买”。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
 
-完成教程之后，你可能要删除群集。 有了 HDInsight，你就可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，你还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
+完成教程之后，可能要删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
 
 要开始处理新 HBase 群集，可以按照[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用](hdinsight-hbase-tutorial-get-started.md)中的步骤操作。
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 07/18/2017
 
    使用这些值可将虚拟机放置在与 HDInsight 群集相同的虚拟网络和子网中。 此配置让它们能够直接相互通信。 有一种方法可使用空的边缘节点创建 HDInsight 群集。 该边缘节点可用于管理群集。  有关详细信息，请参阅[在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)。
 
-2. 使用 Java 应用程序远程连接到 HBase 时，必须使用完全限定域名 (FQDN)。 若要确定这一点，你必须获取 HBase 群集的连接特定的 DNS 后缀。 为此，可以使用以下方法之一：
+2. 使用 Java 应用程序远程连接到 HBase 时，必须使用完全限定域名 (FQDN)。 要确定这一点，必须获取 HBase 群集的连接特定的 DNS 后缀。 为此，可以使用以下方法之一：
 
    * 使用 Web 浏览器发出 Ambari 调用：
 
@@ -206,7 +205,7 @@ ms.lasthandoff: 07/18/2017
         }
     ```
 
-     运行 Azure PowerShell 脚本后，使用以下命令通过 **Get-ClusterDetail** 函数来返回 DNS 后缀。 使用此命令时，指定你的 HDInsight HBase 群集名称、管理员名称和管理员密码。
+     运行 Azure PowerShell 脚本后，使用以下命令通过 **Get-ClusterDetail** 函数来返回 DNS 后缀。 使用此命令时，指定 HDInsight HBase 群集名称、管理员名称和管理员密码。
 
     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
@@ -232,7 +231,7 @@ ms.lasthandoff: 07/18/2017
 
 若要验证虚拟机是否可与 HBase 群集进行通信，请从虚拟机使用 `ping headnode0.<dns suffix>` 命令。 例如，ping headnode0.mycluster.b1.cloudapp.net。
 
-若要在 Java 应用程序中使用此信息，可以按照[使用 Maven 构建将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序](hdinsight-hbase-build-java-maven.md)中的步骤来创建应用程序。 若要让应用程序连接到远程 HBase 服务器，请修改本示例中的 **hbase-site.xml** 文件，以对 Zookeeper 使用 FQDN。 例如：
+要在 Java 应用程序中使用此信息，可以按照[使用 Maven 构建将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序](hdinsight-hbase-build-java-maven.md)中的步骤来创建应用程序。 若要让应用程序连接到远程 HBase 服务器，请修改本示例中的 **hbase-site.xml** 文件，以对 Zookeeper 使用 FQDN。 例如：
 
     <property>
         <name>hbase.zookeeper.quorum</name>
@@ -252,7 +251,6 @@ ms.lasthandoff: 07/18/2017
 * [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-replication.md)
 * [在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [开始在 HDInsight 中将 HBase 与 Hadoop 配合使用](hdinsight-hbase-tutorial-get-started.md)
-* [在 HDInsight 中使用 HBase 分析 Twitter 观点](hdinsight-hbase-analyze-twitter-sentiment.md)
 * [虚拟网络概述][vnet-overview]
 
 [1]: http://azure.microsoft.com/services/virtual-network/
@@ -260,7 +258,6 @@ ms.lasthandoff: 07/18/2017
 [3]: http://technet.microsoft.com/library/hh847889.aspx
 
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [vnet-overview]: ../virtual-network/virtual-networks-overview.md
 [vm-create]: ../virtual-machines/virtual-machines-windows-hero-tutorial.md
 
@@ -297,7 +294,6 @@ ms.lasthandoff: 07/18/2017
 [img-dns-surffix]: ./media/hdinsight-hbase-provision-vnet/DNSSuffix.png
 [img-primary-dns-suffix]: ./media/hdinsight-hbase-provision-vnet/PrimaryDNSSuffix.png
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "预配新 HBase 群集的详细信息"
-[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "使用脚本操作来自定义 HBase 群集"
+[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "使用脚本操作自定义 HBase 群集"
 
 [azure-preview-portal]: https://portal.azure.com
-

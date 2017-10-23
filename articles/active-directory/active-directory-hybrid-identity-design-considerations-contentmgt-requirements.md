@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 混合标识设计注意事项 - 确定内容管理要求 | Microsoft 文档"
-description: "深入了解如何确定你的业务的内容管理要求。 通常，当用户拥有自己的设备时，用户还可能具有多个凭据，会根据用户使用的应用程序交替使用这些凭据。 请务必区分使用个人凭据创建的内容与使用公司凭据创建的内容。 标识解决方案应能与云服务进行交互，从而向最终用户提供无缝体验的同时，确保用户的隐私以及增强针对数据泄漏的防护。"
+description: "让你深入了解如何确定业务的内容管理要求。 通常，当用户拥有自己的设备时，用户还可能具有多个凭据，会根据用户使用的应用程序交替使用这些凭据。 请务必区分使用个人凭据创建的内容与使用公司凭据创建的内容。 标识解决方案应能与云服务进行交互，从而向最终用户提供无缝体验的同时，确保用户的隐私以及增强针对数据泄漏的防护。"
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -15,13 +15,13 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 840de1e1fcba74285788d51d8f544375f0affa77
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的内容管理要求
-了解对你的业务的内容管理要求可能直接影响你决定要使用的混合标识解决方案。 随着设备数量的激增以及用户会自带设备 ([BYOD](http://aka.ms/byodcg))，公司必须确保自身数据的安全，同时也要使用户的隐私完好无损。 通常，当用户拥有自己的设备时，用户还可能具有多个凭据，会根据用户使用的应用程序交替使用这些凭据。 请务必区分使用个人凭据创建的内容与使用公司凭据创建的内容。 标识解决方案应能与云服务进行交互，从而向最终用户提供无缝体验的同时，确保用户的隐私以及增强针对数据泄漏的防护。 
+了解业务的内容管理要求可能会直接影响你决定使用哪一个混合标识解决方案。 随着设备数量的激增以及用户会自带设备 ([BYOD](http://aka.ms/byodcg))，公司必须确保自身数据的安全，同时也要使用户的隐私完好无损。 通常，当用户拥有自己的设备时，用户还可能具有多个凭据，会根据用户使用的应用程序交替使用这些凭据。 请务必区分使用个人凭据创建的内容与使用公司凭据创建的内容。 标识解决方案应能与云服务进行交互，从而向最终用户提供无缝体验的同时，确保用户的隐私以及增强针对数据泄漏的防护。 
 
 不同的技术控制会利用标识解决方案提供内容管理，如下图中所示：
 

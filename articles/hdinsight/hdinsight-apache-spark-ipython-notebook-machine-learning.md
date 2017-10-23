@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: abb5bcf91a0155f1311bc28657b6208c00e945d1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: 928c452869d27c7f40982d8b5d400c3a611008a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/07/2017
 在此应用程序中，我们使用 Spark ML 管道来执行文档分类。 在管道中，我们将文档分割成单字、将单字转换成数字特征向量，最后使用特征向量和标签创建预测模型。 执行下列步骤创建应用程序。
 
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
-2. 在 Spark 群集边栏选项卡中单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+2. 在 Spark 群集边栏选项卡中单击“群集仪表板”，并单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
    
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -56,13 +55,13 @@ ms.lasthandoff: 06/07/2017
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
    > 
-3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
+3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
    
     ![创建用于 Spark 机器学习示例的 Jupyter 笔记本](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-create-notebook.png "创建用于 Spark 机器学习示例的 Jupyter 笔记本")
-4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
+4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
    
     ![提供用于 Spark 机器学习示例的笔记本名称](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-notebook-name.png "提供用于 Spark 机器学习示例的笔记本名称")
-5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。 
+5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。 
    
         from pyspark.ml import Pipeline
         from pyspark.ml.classification import LogisticRegression
@@ -182,7 +181,7 @@ ms.lasthandoff: 06/07/2017
         selected = prediction.select("SystemInfo", "prediction", "probability")
         for row in selected.collect():
             print row
-3. 你应该会看到与下面类似的输出：
+3. 应该会看到与下面类似的输出：
    
        Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
        Row(SystemInfo=u'4 15', prediction=0.0, probability=DenseVector([0.5016, 0.4984]))
@@ -192,7 +191,7 @@ ms.lasthandoff: 06/07/2017
        Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
    
    从预测中的第一行可以看出，对于 ID 为 20 且系统年数为 25 的 HVAC 系统，建筑物处于高温状态 (**prediction=1.0**)。 DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。 在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
-4. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
+4. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
 
 ## <a name="anaconda"></a>将 Anaconda scikit-learn 库用于 Spark 机器学习
 HDInsight 上的 Apache Spark 群集包含 Anaconda 库， 其中包括适用于机器学习的 **scikit-learn** 库。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)。
@@ -233,4 +232,3 @@ HDInsight 上的 Apache Spark 群集包含 Anaconda 库， 其中包括适用于
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
-

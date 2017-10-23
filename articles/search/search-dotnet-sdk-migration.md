@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
 ms.openlocfilehash: 9782454e3bfc697b63cde8aa28a14be0c393c36b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
 如果使用的是版本 2.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 3。
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>升级步骤
-首先，请更新你 NuGet 参考`Microsoft.Azure.Search`使用 NuGet 包管理器控制台或通过右键单击项目引用，并在 Visual Studio 中选择"管理 NuGet 包..."。
+首先，按以下方法操作更新 `Microsoft.Azure.Search` 的 NuGet 引用：使用 NuGet 包管理器控制台，或者在 Visual Studio 中右键单击项目引用，然后选择“管理 NuGet 程序包...”。
 
 在 NuGet 已下载新的程序包及其依赖项后，请重新生成项目。 项目重新生成可能会成功，具体取决于代码的结构。 如果成功，一切准备就绪！
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 
 下一步是修复生成错误。 有关出错原因和修复方法的详细信息，请参阅[版本 3 中的重大更改](#ListOfChanges)。
 
-你可能会看到与已过时的方法或属性相关的其他生成警告。 这些警告将包含有关使用哪些功能来替换已弃用功能的说明。 例如，如果应用程序使用了 `IndexingParameters.Base64EncodeKeys` 属性，应该会收到显示 `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."` 的警告
+可能会看到与已过时方法或属性有关的其他生成警告。 这些警告将包含有关使用哪些功能来替换已弃用功能的说明。 例如，如果应用程序使用了 `IndexingParameters.Base64EncodeKeys` 属性，应该会收到显示 `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."` 的警告
 
 在修复了任何生成错误后，可以对应用程序进行更改，以利用新功能（如果愿意）。 有关 SDK 中的新功能的详细信息，请参阅[版本 3 中的新增功能](#WhatsNew)。
 
@@ -124,7 +124,7 @@ index.Analyzers = new Analyzer[]
 
 ### <a name="removed-obsolete-members"></a>删除了过时成员
 
-你可能会看到与相关的生成错误方法或 2.0 预览并随后删除版本 3 中被标记为过时版本中的属性。 如果遇到此类错误，可按下面所述解决它们：
+可能会看到与版本 2.0-preview 中标记为已过时的方法或属性相关的生成错误，这些方法或属性随后已在版本 3 中删除。 如果遇到此类错误，可按下面所述解决它们：
 
 - 如果使用此构造函数：`ScoringParameter(string name, string value)`，请改为使用这个：`ScoringParameter(string name, IEnumerable<string> values)`
 - 如果使用 `ScoringParameter.Value` 属性，请改为使用 `ScoringParameter.Values` 属性或 `ToString` 方法。
@@ -143,7 +143,7 @@ index.Analyzers = new Analyzer[]
 ## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅我们最近更新的[操作指南](search-howto-dotnet-sdk.md)。
 
-我们欢迎你的反馈在 SDK 上。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“Search SDK:”。
+我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“Search SDK:”。
 
 感谢使用 Azure 搜索！
 
@@ -155,7 +155,7 @@ index.Analyzers = new Analyzer[]
 > 
 > 
 
-首先，请更新你 NuGet 参考`Microsoft.Azure.Search`使用 NuGet 包管理器控制台或通过右键单击项目引用，并在 Visual Studio 中选择"管理 NuGet 包..."。
+首先，按以下方法操作更新 `Microsoft.Azure.Search` 的 NuGet 引用：使用 NuGet 包管理器控制台，或者在 Visual Studio 中右键单击项目引用，然后选择“管理 NuGet 程序包...”。
 
 在 NuGet 已下载新的程序包及其依赖项后，请重新生成项目。
 
@@ -277,8 +277,8 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 从版本 1.1 开始，Azure 搜索 .NET SDK 以不同方式组织操作方法：
 
 * 可选参数现已建模为默认参数，而不是附加的方法重载。 这有时可显著减少方法重载的数目。
-* 扩展方法现在对调用方隐藏了许多与 HTTP 无关的细节。 例如，较早版本的 SDK 返回响应对象时带有 HTTP 状态代码，通常不需要检查这些状态代码，因为操作方法会为指示错误的任何状态代码引发 `CloudException`。 新的扩展方法仅返回模型对象，从而使您无需解除它们包装在代码中的问题。
-* 核心接口现在反而公开了允许在 HTTP 级别进行更多控制的方法（如果需要）。 您现在可以在要包括在请求和新的自定义 HTTP 头中传递`AzureOperationResponse<T>`返回类型可直接访问`HttpRequestMessage`和`HttpResponseMessage`操作。 `AzureOperationResponse` 在 `Microsoft.Rest.Azure` 命名空间中定义，替换 `Hyak.Common.OperationResponse`。
+* 扩展方法现在对调用方隐藏了许多与 HTTP 无关的细节。 例如，较早版本的 SDK 返回响应对象时带有 HTTP 状态代码，通常不需要检查这些状态代码，因为操作方法会为指示错误的任何状态代码引发 `CloudException`。 新的扩展方法只返回模型对象，使你无需在代码中对其进行解包。
+* 核心接口现在反而公开了允许在 HTTP 级别进行更多控制的方法（如果需要）。 现在可以传入要包括在请求中的自定义 HTTP 标头，并且新的 `AzureOperationResponse<T>` 返回类型使你可以直接访问操作的 `HttpRequestMessage` 和 `HttpResponseMessage`。 `AzureOperationResponse` 在 `Microsoft.Rest.Azure` 命名空间中定义，替换 `Hyak.Common.OperationResponse`。
 
 #### <a name="scoringparameters-changes"></a>ScoringParameters 更改
 名为 `ScoringParameter` 的新类已添加到最新的 SDK 中，使向搜索查询中的计分配置文件提供参数更为容易。 之前，`SearchParameters` 类的 `ScoringProfiles` 属性以 `IList<string>` 形式键入；现在它以 `IList<ScoringParameter>` 形式键入。

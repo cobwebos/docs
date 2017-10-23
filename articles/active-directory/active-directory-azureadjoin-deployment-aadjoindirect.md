@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: fd0aab1a14bbd324e734e5efe8fe101e8a8dfefa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Azure AD Join 的使用方案和部署注意事项
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Azure AD Join 的使用方案
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="deployment-considerations-for-azure-ad-join"></a>Azure AD Join 的部署注意事项
 ### <a name="enable-your-users-to-join-a-company-owned-device-directly-to-azure-ad"></a>允许用户将公司拥有的设备直接加入 Azure AD
-企业可以为合作伙伴公司和组织提供仅限云的帐户。 然后可以轻松地访问这些合作伙伴，公司应用和资源的单一登录。 此方案适用于主要在云中访问依赖于 Azure AD 进行身份验证的资源（例如 Office 365 或 SaaS 应用）的用户。
+企业可以为合作伙伴公司和组织提供仅限云的帐户。 然后这些合作伙伴可以使用单一登录轻松访问公司应用和资源。 此方案适用于主要在云中访问依赖于 Azure AD 进行身份验证的资源（例如 Office 365 或 SaaS 应用）的用户。
 
 ### <a name="prerequisites"></a>先决条件
 **在企业级别（管理员）**

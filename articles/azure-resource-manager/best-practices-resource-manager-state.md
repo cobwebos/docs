@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: e163f3c2e9a78b057dc2a7a42924c59d0aac3fab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="share-state-to-and-from-azure-resource-manager-templates"></a>将状态共享到 Azure Resource Manager 模板或从 Azure 资源管理器模板共享状态
-本主题介绍在模板中管理和共享状态的最佳做法。 本主题中显示的参数和变量是用户可以定义的对象类型的示例，可以用于方便地组织部署要求。 通过这些示例，你可以使用适合环境的属性值实现自己的对象。
+本主题介绍在模板中管理和共享状态的最佳做法。 本主题中显示的参数和变量是用户可以定义的对象类型的示例，可以用于方便地组织部署要求。 通过这些示例，可以使用适合环境的属性值实现自己的对象。
 
 本主题是包含更多内容的白皮书的一部分。 若要阅读完整的白皮书，请下载[一流的 Resource Manager 模板注意事项和成熟的做法](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf)。
 
 ## <a name="provide-standard-configuration-settings"></a>提供标准配置设置
 常见模式并非提供具有完全灵活性和无数变化形式的模板，而是提供对已知配置的选择。 实际上，用户可以选择标准 T 恤大小，如沙盒、小、中和大号。 T 恤尺寸的其他示例包括产品，例如社区版本或企业版本。 在其他情况下，这可能是某种技术的工作负荷特定配置，例如，映射化简或 No SQL。
 
-如果使用复杂对象，你可以创建包含数据集合的变量（有时称为“属性包”），并使用使用数据驱动模板中的资源声明。 这种方法可对于预先为客户配置好的各种大小提供正常且已知的配置。 如果没有已知配置，模板用户就必须自行确定群集大小、整合平台资源约束，以及执行数学运算来识别存储帐户的生成分区和其他资源（因群集大小和资源约束而导致）。 除了为客户提供更好的体验，少量已知配置可让你更轻松地提供支持，并帮助你提供较高的密度级别。
+如果使用复杂对象，可以创建包含数据集合的变量（有时称为“属性包”），并使用使用数据驱动模板中的资源声明。 这种方法可对于预先为客户配置好的各种大小提供正常且已知的配置。 如果没有已知配置，模板用户就必须自行确定群集大小、整合平台资源约束，以及执行数学运算来识别存储帐户的生成分区和其他资源（因群集大小和资源约束而导致）。 除了为客户提供更好的体验，少量已知配置可让你更轻松地提供支持，并可帮助你提供较高的密度级别。
 
 以下示例显示了如何定义包含复杂对象（代表数据聚合）的变量。 这些集合定义的值可用于虚拟机大小、网络设置、操作系统设置和可用性设置。
 
@@ -112,9 +111,9 @@ ms.lasthandoff: 01/24/2017
 }
 ```
 
-请注意，**tshirtSize** 变量连接通过参数（**Small**、**Medium**、**Large**）提供给文本 **tshirtSize** 的 T 恤大小。 你将使用此变量来检索该 T 恤大小关联的复杂对象变量。
+请注意，**tshirtSize** 变量连接通过参数（**Small**、**Medium**、**Large**）提供给文本 **tshirtSize** 的 T 恤大小。 将使用此变量来检索该 T 恤大小关联的复杂对象变量。
 
-然后，你可以在将来引用模板中的这些变量。 能够引用指定变量及其属性可以简化模板语法，从而轻松地理解上下文。 下面的示例定义的资源在部署时可以使用上述对象来设置值。 例如，VM 大小是通过检索 `variables('tshirtSize').vmSize` 的值来设置的，而磁盘大小的值是从 `variables('tshirtSize').diskSize` 检索的。 此外，已链接模板的 URI 是通过 `variables('tshirtSize').vmTemplate` 的值来设置的。
+然后，可以在将来引用模板中的这些变量。 能够引用指定变量及其属性可以简化模板语法，从而轻松地理解上下文。 下面的示例定义的资源在部署时可以使用上述对象来设置值。 例如，VM 大小是通过检索 `variables('tshirtSize').vmSize` 的值来设置的，而磁盘大小的值是从 `variables('tshirtSize').diskSize` 检索的。 此外，已链接模板的 URI 是通过 `variables('tshirtSize').vmTemplate` 的值来设置的。
 
 ```json
 "name": "master-node",
@@ -241,7 +240,7 @@ ms.lasthandoff: 01/24/2017
 除了静态变量之外，许多变量是动态生成的。 本部分介绍所生成变量的部分常见类型。
 
 #### <a name="tshirtsize"></a>tshirtSize
-你已熟悉基于上述示例生成的这个变量。
+已熟悉基于上述示例生成的这个变量。
 
 #### <a name="networksettings"></a>networkSettings
 在容量、功能或端到端范围解决方案模板中，链接的模板通常创建存在于网络上的资源。 一个简单的方法是使用复杂的对象来存储网络设置并将其传递给链接的模板。
@@ -278,7 +277,7 @@ ms.lasthandoff: 01/24/2017
 }
 ```
 
-如果你需要多个可用性集（例如，一个用于主节点，另一个用于数据节点），你可以使用某个名称作为前缀，并指定多个可用性集，或者遵循此前显示的用于创建变量（针对特定 T 恤大小）的模型。
+如果需要多个可用性集（例如，一个用于主节点，另一个用于数据节点），可以使用某个名称作为前缀，并指定多个可用性集，或者遵循此前显示的用于创建变量（针对特定 T 恤大小）的模型。
 
 #### <a name="storagesettings"></a>storageSettings
 通常会与链接的模板共享存储详细信息。 在以下示例中，*storageSettings* 对象提供了有关存储帐户和容器名称的详细信息。
@@ -324,7 +323,7 @@ ms.lasthandoff: 01/24/2017
 },
 ```
 
-请注意，*osImageReference* 会检索主模板中定义的 *osSettings* 变量的值。 这意味着你可以轻松更改 VM 的操作系统 — 完全进行更改或基于模板使用者的首选项进行更改。
+请注意，*osImageReference* 会检索主模板中定义的 *osSettings* 变量的值。 这意味着可以轻松更改 VM 的操作系统 — 完全进行更改或基于模板使用者的首选项进行更改。
 
 #### <a name="vmscripts"></a>vmScripts
 *vmScripts* 对象包含可以下载并可在 VM 实例上执行的脚本的详细信息，包括外部和内部引用。 外部引用包含基础结构。
@@ -440,4 +439,3 @@ ms.lasthandoff: 01/24/2017
 ## <a name="next-steps"></a>后续步骤
 * 若要了解模板的节，请参阅 [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）
 * 若要查看模板中可用的函数，请参阅 [Azure Resource Manager Template Functions](resource-group-template-functions.md)（Azure Resource Manager 模板函数）
-

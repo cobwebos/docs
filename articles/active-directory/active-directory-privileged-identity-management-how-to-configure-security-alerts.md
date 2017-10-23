@@ -16,10 +16,10 @@ ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
 ms.openlocfilehash: e057120e31eeebc3da274536c09d6d9972854338
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中配置安全警报
 ## <a name="security-alerts"></a>安全警报
@@ -47,14 +47,13 @@ ms.lasthandoff: 07/11/2017
 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。
 
 * **激活续订时间范围**：以天、小时、分钟和秒为单位指定要用于跟踪可疑续订的时间段。
-* **激活续订数**： 指定的激活，从 2 到 100，考虑是否值得警报，在你选择时间范围内的次数。 可通过移动滑块或在文本框中键入数字更改此设置。
+* **激活续订次数**：在所选时间范围内指定你认为值得发送警报的激活次数（范围从 2 到 100）。 可通过移动滑块或在文本框中键入数字更改此设置。
 
 ### <a name="there-are-too-many-global-administrators-alert"></a>“全局管理员过多”警报
 如果满足两个不同的条件并且可以同时配置这两个条件，PIM 将触发此警报。 首先，需要达到全局管理员的某个特定阈值。 其次，总角色分配的特定百分比必须是全局管理员。 如果只满足其中一个度量，不会显示该警报。  
 
-* **全局管理员的最小数**： 指定的全局管理员，从 2 到 100，请考虑不安全的量数。
-* 
-            **全局管理员百分比**：指定在环境中不安全的管理员（属于全局管理员）百分比（范围介于 0% 到 100%）。
+* **最少全局管理员数**：指定你认为不安全的全局管理员数（范围从 2 到 100）。
+* **全局管理员百分比**：指定在环境中不安全的管理员（属于全局管理员）百分比（范围介于 0% 到 100%）。
 
 ### <a name="administrators-arent-using-their-privileged-roles-alert"></a>“管理员不使用其特权角色”警报
 如果用户在一定时间过后没有激活角色，将触发此警报。

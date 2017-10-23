@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="registration-management"></a>注册管理
 ## <a name="overview"></a>概述
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 向通知中心注册设备是通过使用“**注册**”或“**安装**”来完成的。
 
 #### <a name="registrations"></a>注册
-注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可能是 ChannelURI、设备令牌或 GCM 注册 ID。 标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
+注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可能是 ChannelURI、设备令牌或 GCM 注册 ID。标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
 
 #### <a name="installations"></a>安装
 安装是增强型的注册，包含推送相关的属性包。 它是最新且最佳的设备注册方式。 但是，客户端 .NET SDK（[用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)）目前不支持安装。  这意味着，如果要从客户端设备本身注册，则必须使用[通知中心 REST API](https://msdn.microsoft.com/library/mt621153.aspx) 方法来支持安装。 如果使用后端服务，则应能够使用[用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 以下是使用安装的一些主要优点：
 
 * 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
-* 安装模型可让你轻松地执行每次推送（以特定设备为目标）。 每次执行基于安装的注册时，都会自动添加一个系统标记 **"$InstallationId:[installationId]"**。 因此，无需编写任何额外的代码，就能对此标记调用 send 以针对特定的设备。
+* 使用安装模型可轻松完成单个推送 - 针对特定设备。 每次执行基于安装的注册时，都会自动添加一个系统标记 **"$InstallationId:[installationId]"**。 因此，无需编写任何额外的代码，就能对此标记调用 send 以针对特定的设备。
 * 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法特别有用。 不需要删除整个注册，然后重新发送前面的所有标记。
 
 安装可以包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)或[安装属性](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)。
@@ -97,7 +97,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-设备首先从 PNS 检索 PNS 句柄，然后直接向通知中心进行注册。 注册成功之后，应用后端即可发送以该注册为目标的通知。 有关如何发送通知的详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
+设备先从 PNS 中检索 PNS 句柄，然后直接注册到通知中心。 注册成功之后，应用后端即可发送以该注册为目标的通知。 有关如何发送通知的详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 请注意，在此情况下，将只使用“侦听”权限从设备访问通知中心。 有关详细信息，请参阅[安全性](notification-hubs-push-notification-security.md)。
 
 从设备注册是最简单的方法，但存在一些缺点。

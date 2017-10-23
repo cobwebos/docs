@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 0738f33df94d14fbb393bfaaf09e94c6560213cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-reach-sdk-integration"></a>Windows Phone Silverlight Reach SDK 集成
 在按照本指南操作之前，必须完成 [Windows Phone Silverlight Engagement SDK 集成](mobile-engagement-windows-phone-integrate-engagement.md)中所述的集成过程。
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-phone-silverlight-project"></a>将 Engagement Reach SDK 嵌入到 Windows Phone Silverlight 项目
-无需添加任何内容。 
-            `EngagementReach` 参考和资源已在项目中。
+无需添加任何内容。 `EngagementReach` 参考和资源已在项目中。
 
 > [!TIP]
 > 可以自定义项目文件夹 `Resources` 中的图像，尤其是品牌图标（默认为 Engagement 图标）。
@@ -102,7 +101,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
       }
 
 > [!IMPORTANT]
-> `EngagementReach.Instance.Init` 会在专用的线程中运行。 无需自行执行此操作。
+> `EngagementReach.Instance.Init` 会在专用的线程中运行。 不需要你亲自执行。
 > 
 > 
 
@@ -160,7 +159,7 @@ EngagementReach 对象提供两种方法来管理选择加入/选择退出、`En
 
 ## <a name="customize-ui-optional"></a>自定义 UI（可选）
 ### <a name="first-step"></a>第一步
-我们将允许你自定义使其 UI。
+我们允许你自定义 Reach UI。
 
 若要执行此操作，必须创建 `EngagementReachHandler` 类的一个子类。
 
@@ -176,7 +175,7 @@ EngagementReach 对象提供两种方法来管理选择加入/选择退出、`En
        }
     }
 
-然后，设置的内容`EngagementReach.Instance.Handler`字段与在你自定义对象你`App.xaml.cs`类内`Application_Launching`方法。
+然后，使用 `Application_Launching` 方法中 `App.xaml.cs` 类的自定义对象，设置 `EngagementReach.Instance.Handler` 字段的内容。
 
 **示例代码：**
 

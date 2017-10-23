@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
+ms.openlocfilehash: 88529344eee45150503b0d0e57c92f0cb4f07598
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 0b2d6580f30044b703acb3e3f53066a45f4f7b18
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -129,7 +128,7 @@ FROM HiveSampleIn Group by ProfileID
 1. 创建链接服务以注册[自己的 HDInsight 计算群集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或配置[按需 HDInsight 计算群集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 让我们称此链接服务为“HDInsightLinkedService”。
 2. 创建[链接服务](data-factory-azure-blob-connector.md)以配置托管数据的 Azure Blob 存储的连接。 让我们称此链接服务为“StorageLinkedService”
 3. 创建指向输入和输出数据的[数据集](data-factory-create-datasets.md)。 让我们称输入数据集为“HiveSampleIn”，称输出数据集为“HiveSampleOut”
-4. 将 Hive 查询作为文件复制到步骤 2 中配置的 Azure Blob 存储。 如果承载数据的存储不同于承载此查询文件的存储，则创建单独的 Azure 存储链接服务，并在活动中引用它。 使用 scriptPath 指定 hive 查询文件的路径，使用 scriptLinkedService 指定包含脚本文件的 Azure 存储。 
+4. 将 Hive 查询作为文件复制到步骤 2 中配置的 Azure Blob 存储。 如果承载数据的存储不同于承载此查询文件的存储，则创建单独的 Azure 存储链接服务，并在活动中引用它。 使用 **scriptPath** 指定 hive 查询文件的路径，使用 **scriptLinkedService** 指定包含脚本文件的 Azure 存储。 
    
    > [!NOTE]
    > 还可以通过使用**脚本**属性在活动定义中提供 Hive 脚本内联。 不建议使用此方法，因为需要转义 JSON 文档内的脚本中的所有特殊字符，并且可能会导致调试问题。 最佳做法是遵循步骤 #4。
@@ -247,5 +246,4 @@ FROM HiveSampleIn Group by ProfileID
 * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)
 * [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-
 

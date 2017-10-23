@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
 ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-logic-apps-features"></a>使用逻辑应用功能
 
@@ -120,7 +120,7 @@ forEach 循环可指定一个重复执行操作数组。 如果不是数组，�
 2. 转到 `When_a_feed-item_is_published` 操作，找到 `queries` 部分，然后将该查询值替换为：`"feedUrl": "#@{parameters('currentFeedUrl')}"` 
 
     若要联接两个或更多符串，还可以使用 `concat` 函数。 
-    例如，`"@concat('#',parameters('currentFeedUrl'))"`的工作方式与上面相同。
+    例如，`"@concat('#',parameters('currentFeedUrl'))"` 的工作方式与上面相同。
 
 3.  完成后，选择“保存”。 
 

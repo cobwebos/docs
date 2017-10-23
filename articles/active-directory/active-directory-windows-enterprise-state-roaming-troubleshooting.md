@@ -4,8 +4,8 @@ description: "就 IT 管理员可能会遇到的一些设置和应用数据同�
 services: active-directory
 keywords: "企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答"
 documentationcenter: 
-author: tanning
-manager: swadhwa
+author: MarkusVi
+manager: femila
 editor: 
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
@@ -13,16 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 10/03/2017
 ms.author: markvi
+ms.reviewer: tanning
+ms.custom: it-pro
+ms.openlocfilehash: ed25e6b922321fd4d8852860ad8817dc318d89ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 5d6b0869d2cf0e90b7b81b2304d95e01d1937925
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-#<a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
+# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
 本主题介绍了如何排查和诊断企业状态漫游问题，并提供已知问题的列表。
 
@@ -30,20 +31,21 @@ ms.lasthandoff: 03/18/2017
 在开始故障排除之前，请确认已正确配置用户和设备，并且设备和用户满足企业状态漫游的所有要求。 
 
 1. 已在设备上安装包含最新更新的 Windows 10，最低版本需为 1511（OS 内部版本 10586 或更高）。 
-2. 设备已加入 Azure AD，或已加入域并注册到 Azure AD。
-3. 已在 Azure Active Directory 门户中的“配置” > “设备” > “用户可以同步设置和企业应用数据”下面，为目录启用“企业状态漫游”。 已选择所有用户，或者通过选定的选项为用户启用了同步并将其包含在安全组中。
-4. 已将 Azure Active Directory Premium 订阅分配给用户。  
-5. 已重新启动设备，在启用企业状态漫游后用户已登录。
+2. 设备是已加入 Azure AD 的或已加入混合 Azure AD 的。 有关详细信息，请参阅[如何使设备受 Azure AD 控制](device-management-introduction.md)。
+3. 确保如[启用企业状态漫游](active-directory-windows-enterprise-state-roaming-enable.md)中所述在 Azure AD 中为租户启用了**企业状态漫游**。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
+4. 必须已经为用户分配了 Azure Active Directory Premium 许可证。  
+25. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
 ## <a name="information-to-include-when-you-need-help"></a>需要帮助时应包含的信息
-如果根据以下指导仍然无法解决问题，请联系我们的支持工程师。 与他们联系时，建议包含以下信息：
+如果根据以下指导仍然无法解决问题，请联系我们的支持工程师。 在联系支持工程师时，请提供以下信息：
 
-- **错误的一般说明** – 用户是否可看到错误消息？ 如果没有任何错误消息，请详细描述所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
-- **受影响的用户** – 同步的成功/失败是针对一个用户还是多个用户？ 每个用户涉及到多少台设备？ 这些设备是否全都不能同步，或者只是同步其中的一部分？
-- **用户相关信息** - 用户登录到设备时使用的是哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
-- **有关设备的信息** – 此设备是否已加入 Azure AD 或已加入域？ 设备位于哪个内部版本中？ 有哪些最新的更新？
+* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
+* **受影响的用户** – 同步的成功/失败是针对一个用户还是多个用户？ 每个用户涉及到多少台设备？ 这些设备是否全都不能同步，或者只是同步其中的一部分？
+* **关于用户的信息** - 用户登录到设备时使用的是哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
+* **关于设备的信息** – 此设备是否已加入 Azure AD 或已加入域？ 设备位于哪个内部版本中？ 有哪些最新的更新？
 - **日期/时间/时区** – 看到错误时的准确日期和时间（包括时区）是什么？
-- 包含这些信息有助于我们尽快解决问题。
+
+包含这些信息有助于我们尽快解决问题。
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>排查和诊断问题
 本部分提供有关如何排查和诊断企业状态漫游相关问题的建议。
@@ -52,11 +54,10 @@ ms.lasthandoff: 03/18/2017
 
 1. 将 Windows 10 电脑加入到配置为允许企业状态漫游的域之后，请使用工作帐户登录。 转到“设置” > “帐户” > “同步设置”，确认同步和各项设置已打开，并且设置页的顶部指示将与工作帐户同步。 在“设置” > “帐户” > “信息”中确认同一个帐户也用作登录帐户。 
 2. 在原始计算机上进行一些更改（例如，将任务栏移到屏幕右侧或顶部），验证同步是否能够跨多台计算机正常工作。 观察更改能否在 5 分钟内传播到第二台计算机。 
- - 可以借助锁定和解锁屏幕 (Win + L) 来触发同步。
- - 必须在这两台 PC 上使用相同的登录帐户，同步才能运行 - 因为企业状态漫游绑定到用户帐户，而不是计算机帐户。
+  * 可以借助锁定和解锁屏幕 (Win + L) 来触发同步。
+  * 必须在这两台 PC 上使用同一帐户登录，同步才能工作 - 因为企业状态漫游绑定到用户帐户，而不是计算机帐户。
 
-
-            **潜在问题**：设置页中的切换开关灰显，用户看到的不是帐户，而是文本“仅使用的是 Microsoft 帐户或工作帐户时，某些 Windows 功能才可用”。 在设置为要加入域并注册到 Azure AD，但尚未在 Azure AD 中成功身份验证的设备上可能会出现此问题。 一个可能的原因是必须应用设备策略，但这种策略应用是异步发生的，可能会延迟几个小时。 若要确认此问题，请遵循“验证设备注册状态”中的步骤，检查原因是否如此。
+**潜在问题**：如果“设置”页中的控件不可用，并且看到了消息“仅当你使用的是 Microsoft 帐户或工作帐户时，某些 Windows 功能才可用。” 对于设置为要加入域并注册到 Azure AD 但尚未在 Azure AD 中成功进行身份验证的设备，可能会出现此问题。 一个可能的原因是必须应用设备策略，但这种策略应用是异步发生的，可能会延迟几个小时。 
 
 ### <a name="verify-the-device-registration-status"></a>验证设备注册状态
 企业状态漫游要求将设备注册到 Azure AD。 以下说明尽管不专门针对企业状态漫游，但可帮助确认 Windows 10 客户端是否已注册，并确认指纹、Azure AD 设置 URL、NGC 状态和其他信息。
@@ -186,4 +187,3 @@ ms.lasthandoff: 03/18/2017
 * [设置和数据漫游的常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-

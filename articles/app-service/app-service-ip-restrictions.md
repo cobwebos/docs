@@ -14,18 +14,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: byvinyal
+ms.openlocfilehash: 54c0c5050c812c2a59631541d94c553974acd2f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 83cdc42d412f646ddf1ecd1b65bf9aa46983b26b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Azure App Service 静态 IP 限制 #
 
-通过 IP 限制，可定义要阻止访问应用的 IP 地址的列表。 阻止列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。
+通过 IP 限制，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。
 
-从客户端生成应用请求时，将对照阻止列表评估 IP 地址。 如果有匹配，应用将回复 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码。
+从客户端生成应用请求时，将根据允许列表评估 IP 地址。 如果 ip 地址不在该列表中，则应用以 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
 
 IP 限制是在分配给应用的同一应用服务计划实例上进行评估的。
 
@@ -40,4 +39,3 @@ IP 限制是在分配给应用的同一应用服务计划实例上进行评估�
 可单击“[+] 添加”以添加新的 IP 限制规则。
 
 ![添加 IP 限制](media/app-service-ip-restrictions/add-ip-restrictions.png)
-

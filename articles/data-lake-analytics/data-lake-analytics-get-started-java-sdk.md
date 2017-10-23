@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>通过 Java SDK 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -95,7 +95,7 @@ ms.lasthandoff: 07/11/2017
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
-4. 依次转到“文件”、“设置”、“生成”、“执行”和“部署”。 依次选择“生成工具”、“Maven”和“导入”。 然后检查**导入 Maven 项目自动**。
+4. 依次转到“文件”、“设置”、“生成”、“执行”和“部署”。 依次选择“生成工具”、“Maven”和“导入”。 然后选中“自动导入 Maven 项目”。
 5. 打开 **Main.java**，将现有代码替换为以下代码。 此外，为代码片段中调用的参数提供值，例如 **localFolderPath****_adlaAccountName****_adlsAccountName** 和 **_resourceGroupName**，并为 **CLIENT-ID** **CLIENT-SECRET****TENANT-ID** 和 **SUBSCRIPTION-ID** 替换占位符。
 
     此代码贯穿 Data Lake Store 和 Data Lake Analytics 帐户的整个创建过程，在存储中创建文件、运行作业、获取作业状态、下载作业输出，并在最后删除帐户。

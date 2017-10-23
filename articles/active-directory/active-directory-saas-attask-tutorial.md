@@ -1,5 +1,5 @@
 ---
-title: "教程： Azure Active Directory 集成与@Task|Microsoft 文档"
+title: "教程：Azure Active Directory 与 @Task 集成 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 与 @Task 之间配置单一登录。"
 services: active-directory
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
 ms.openlocfilehash: ebb19ca6cbaf04106fbce937d95651e709854cfd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-task"></a>教程：Azure Active Directory 与 @Task 集成
 本教程旨在展示如何将 @Task 与 Azure Active Directory (Azure AD) 集成。  
@@ -30,8 +30,8 @@ ms.lasthandoff: 07/11/2017
 
 如果想要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>必备组件
-若要配置与 Azure AD 集成@Task，你需要以下各项：
+## <a name="prerequisites"></a>先决条件
+若要配置 Azure AD 与 @Task 的集成，需要以下项：
 
 * Azure AD 订阅
 * 启用的订阅上的 @Task 单一登录
@@ -84,18 +84,18 @@ ms.lasthandoff: 07/11/2017
 对于单一登录到工作帐户，Azure AD 需要知道 Azure AD 用户在 @Task 中的对应用户是谁。 换句话说，需要建立 Azure AD 用户与 @Task 中相关用户之间的链接关系。   
 可以通过将 Azure AD 中“用户名”的值分配为 @Task 中“用户名”的值来建立此链接关系。
 
-若要配置和测试 Azure AD 单一登录与@Task，你需要完成以下构建基块：
+若要配置和测试 @Task 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建@Tasktest用户](#creating-a-halogen-software-test-user)** -若要具有 Britta 人 Simon 中的副本@Taskthat链接到的 Azure AD 表示形式她。
+3. **[创建 @Tasktest 用户](#creating-a-halogen-software-test-user)** - 在 @Taskthat 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 本部分要在 Azure 经典门户中启用 Azure AD 单一登录，并且在 @Task 应用程序中配置单一登录。
 
-**若要配置 Azure AD 单一登录与@Task，执行以下步骤：**
+**若要配置 @Task 的 Azure AD 单一登录，请执行以下步骤：**
 
 1. 在 Azure 经典门户中的 **@Task** 应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
@@ -191,7 +191,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="creating-an-task-test-user"></a>创建 @Task 测试用户
 本部分的目的是在 @Task 中创建名为“Britta Simon”的用户。
 
-**若要创建一个名为 Britta 人 Simon 用户@Task，执行以下步骤：**
+**若要在 @Task 中创建名为“Britta Simon”的用户，请执行以下步骤：**
 
 1. 以管理员身份登录 @Task 公司站点。
 2. 在顶部菜单中，单击“人脉”。
@@ -213,7 +213,7 @@ ms.lasthandoff: 07/11/2017
 
 ![分配用户][200] 
 
-**若要将分配到 Britta 人 Simon @Task，执行以下步骤：**
+**若要将 Britta Simon 分配到 @Task，请执行以下步骤：**
 
 1. 在 Azure 经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    

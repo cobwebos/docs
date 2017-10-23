@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 09/27/2017
 ms.author: juliako;
+ms.openlocfilehash: b3584c5aa5405e7f5acdd9bc0a6573b4acbab855
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 0d071129944fb9298e8f0a7b8f3bb1dd2fcc4bd4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
 ## <a name="overview"></a>概述
@@ -134,7 +133,7 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="blur-types"></a>模糊类型
 
-在“组合”或“修订”模式中，可通过 JSON 输入配置在 5 种不同的模糊类型中选择：“低”、“中”、“高”、“调试”和“黑色”。 默认情况下使用“中”。
+在“组合”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择：“低”、“中”、“高”、“框”和“黑色”。 默认情况下使用“中”。
 
 可以查找以下模糊类型的示例。
 
@@ -154,9 +153,9 @@ ms.lasthandoff: 09/08/2017
 
 ![高](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="debug"></a>调试
+#### <a name="box"></a>Box
 
-![调试](./media/media-services-face-redaction/blur4.png)
+![Box](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>黑色
 
@@ -353,5 +352,4 @@ ms.lasthandoff: 09/08/2017
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
 

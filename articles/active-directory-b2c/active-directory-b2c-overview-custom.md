@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
+ms.openlocfilehash: 25dada7bc04449c6e527b94d97780d9aef1c33a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 33f62a33ea7a3fadb6e7b045de10df25f5edbe83
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C：自定义策略
 
@@ -29,15 +28,13 @@ ms.lasthandoff: 07/28/2017
 
 自定义策略是定义 Azure AD B2C 租户行为的配置文件。 **内置策略**是在 Azure AD B2C 门户中为最常见标识任务预定义的，而标识开发人员可以全面编辑自定义策略，以完成数量几乎不受限制的任务。 请继续阅读，确定自定义策略是否适合你以及标识方案。
 
-**并非所有人都可以编辑自定义策略。** 其学习曲线要求很高，入门时间较长，并且维护将来对自定义策略所做的更改也需要同等的专业知识。 在使用自定义策略之前，应该先根据方案仔细考虑内置策略。
-
 ## <a name="comparing-built-in-policies-and-custom-policies"></a>内置策略和自定义策略的比较
 
 | | 内置策略 | 自定义策略 |
 |-|-------------------|-----------------|
 |目标用户 | 具有或不具有标识专业知识的所有应用开发人员 | 标识专业人员：系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenIDConnect 流，并了解标识提供者和基于声明的身份验证 |
 |配置方法 | 具有用户友好 UI 的 Azure 门户 | 直接编辑 XML 文件，并上传到 Azure 门户 |
-|UI 自定义 | 完全 UI 自定义，包括 HTML、CSS 和 jscript 支持（需要自定义域）<br><br>使用自定义字符串实现多语言支持 | 相同 |
+|UI 自定义 | 完全 UI 自定义，包括 HTML、CSS 和 javascript 支持（需要自定义域）<br><br>使用自定义字符串实现多语言支持 | 相同 |
 | 属性自定义 | 标准和自定义属性 | 相同 |
 |令牌和会话管理 | 自定义令牌和多个会话选项 | 相同 |
 |标识提供者| **目前**：预定义的本地社交提供程序<br><br>**将来**：基于标准的 OIDC、SAML、OAuth | **目前**：基于标准的 OIDC、OAUTH、SAML<br><br>**将来**：WsFed |
@@ -70,11 +67,11 @@ Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户�
 
 ### <a name="identity-experience-framework"></a>标识体验框架
 
-一个完全可配置的、策略驱动的、基于云的 Azure 平台，用于协调采用标准协议格式（例如 OpenIDConnect、OAuth、SAML、WSFed）的实体（主要是声明提供程序）与非标准实体（例如基于 REST API 的系统间声明交换）之间的信任关系。 I2E 创建支持 HTML、CSS 和 jscript 的用户友好的白标体验。  目前，标识体验框架只能在 Azure AD B2C 服务的上下文中使用，更适用于 CIAM 相关任务。
+一个完全可配置的、策略驱动的、基于云的 Azure 平台，用于协调采用标准协议格式（例如 OpenIDConnect、OAuth、SAML、WSFed）的实体（主要是声明提供程序）与一些非标准实体（例如基于 REST API 的系统间声明交换）之间的信任关系。 I2E 创建支持 HTML、CSS 和 javascript 的用户友好的白标体验。  目前，标识体验框架只能在 Azure AD B2C 服务的上下文中使用，更适用于 CIAM 相关任务。
 
 ### <a name="built-in-policies"></a>内置策略
 
-预定义的配置文件，引导 Azure AD B2C 的行为，以执行最常用的标识任务（例如 用户注册、登录、密码重置），以及与在 Azure AD B2C 中也预定义了关系的受信任方（例如 Facebook 标识提供者、LinkedIn、Microsoft 帐户、Google 帐户）交互。  将来，内置策略还可能为企业领域中常见的提供标识提供者（例如 Azure Active Directory Premium、Active Directory/ADFS、Salesforce ID 提供者等）提供自定义。
+预定义的配置文件，用于指导 Azure AD B2C 的行为以执行最常用的标识任务（即用户注册、登录、密码重置）以及与其关系也在 Azure AD B2C 中预定义的受信任方（例如，Facebook 标识提供者、LinkedIn、Microsoft 帐户、Google 帐户）进行交互。  将来，内置策略还可能为企业领域中常见的标识提供者（例如 Azure Active Directory Premium、Active Directory/ADFS、Salesforce ID 提供者等）提供自定义。
 
 
 ### <a name="custom-policies"></a>自定义策略
@@ -85,11 +82,11 @@ Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户�
 
 ### <a name="policy-files"></a>策略文件
 
-自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义：声明架构、声明转换、内容定义、声明提供程序/技术配置文件、Userjourney 业务流程步骤，以及其他元素。  我们建议使用三种类型的策略文件：
+自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义：声明架构、声明转换、内容定义、声明提供程序/技术配置文件、用户旅程业务流程步骤，以及其他元素。  我们建议使用三种类型的策略文件：
 
-- **BASE 文件**：包含大多数定义，Azure 为此提供了完整的示例。  我们建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略
+- **BASE 文件**包含大多数定义，Azure 为此提供了完整的示例。  我们建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略
 - **EXTensions 文件**：保存租户的唯一配置更改
-- **信赖方 (RP) 文件**：注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。  有关详细信息，请阅读有关策略文件定义的文章。  每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
+- **信赖方 (RP) 文件**是注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。  有关详细信息，请阅读有关策略文件定义的文章。  每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
 ![策略文件类型](media/active-directory-b2c-overview-custom/active-directory-b2c-overview-custom-policy-files.png)
 
@@ -105,3 +102,7 @@ Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户�
 
 Azure AD B2C 中的**内置策略**遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户会在后台对 EXTenstions 文件进行更改。  整个 Azure AD B2C 共享受 Azure B2C 团队控制的、经常更新的 BASE 策略文件。
 
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [自定义策略入门](active-directory-b2c-get-started-custom.md)
