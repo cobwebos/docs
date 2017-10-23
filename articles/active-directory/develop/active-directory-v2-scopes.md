@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的范围、权限和同意
 与 Azure Active Directory (Azure AD) 集成的应用遵循一种授权模型，该模型可让用户控制应用访问其数据的方式。 此授权模型的 v2.0 实现已更新，其中更改了应用程序必须与 Azure AD 交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。
@@ -42,7 +42,7 @@ Azure AD 实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OA
 * 写入用户的日历
 * 以用户身份发送邮件
 
-通过定义这些类型的权限，资源可以更细微地掌控其数据以及公开数据的方式。 第三方应用可以向应用用户请求这些权限。 只有在应用用户批准这些权限后，应用才能代表用户执行操作。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 应用用户可以准确了解应用将如何使用其数据，并且会更加相信该应用没有恶意行为。
+通过定义这些类型的权限，资源可以更细微地掌控其数据以及公开数据的方式。 第三方应用可以向应用用户请求这些权限。 应用用户必须先审批权限，应用才能代表用户执行操作。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 应用用户可以准确了解应用将如何使用其数据，并且会更加相信该应用没有恶意行为。
 
 在 Azure AD 和 OAuth 中，将这些类型的权限称为范围。 它们有时也被称为 *oAuth2Permissions*。 在 Azure AD 中范围以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的范围值如下：
 
@@ -56,7 +56,7 @@ Azure AD 实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OA
 OpenID Connect 的 v2.0 实现有一些明确定义但未应用到指定资源的范围 - `openid`、`email`、`profile` 和 `offline_access`。
 
 ### <a name="openid"></a>openid
-如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 ph x="1" /> 范围在工作帐户同意页上显示为“登录”权限，而在个人 Microsoft 帐户同意页上显示为“查看配置文件并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 `openid` 范围可用于在 v2.0 令牌终结点获取 ID 令牌，该令牌可用于保护应用不同组件之间的 HTTP 调用。
+如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 `openid` 范围在工作帐户同意页上显示为“登录”权限，而在个人 Microsoft 帐户同意页上显示为“查看配置文件并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 `openid` 范围可用于在 v2.0 令牌终结点获取 ID 令牌，该令牌可用于保护应用不同组件之间的 HTTP 调用。
 
 ### <a name="email"></a>email
 `email` 范围可与 `openid` 范围和任何其他范围一起使用。 它以 `email` 声明的形式向应用提供对用户主要电子邮件地址的访问权限。 仅当电子邮件地址与用户帐户关联（并非总是如此）时，`email` 声明才会包含在令牌中。 如果使用 `email` 范围，则应用应准备好处理 `email` 声明不存在于令牌中的情况。
@@ -65,7 +65,7 @@ OpenID Connect 的 v2.0 实现有一些明确定义但未应用到指定资源�
 `profile` 范围可与 `openid` 范围和任何其他范围一起使用。 它使应用可以访问大量关于用户的信息。 可访问的信息包括但不限于用户的名字、姓氏、首选用户名、对象 ID。 有关指定用户的 id_token 参数中可用配置文件声明的完整列表，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。
 
 ### <a name="offlineaccess"></a>offline_access
-[`offline_access` 范围](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) 可让应用长时间代表用户访问资源。 在公司帐户同意页上，此范围显示为“随时访问数据”权限。 在个人 Microsoft 帐户同意页上，则显示为“随时访问信息”权限。 用户批准 `offline_access` 范围后，应用可接收来自 v2.0 令牌终结点的刷新令牌。 刷新令牌的生存期较长。 旧的访问令牌过期时，应用可获取新的访问令牌。
+[`offline_access` 范围](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)允许应用在较长时间内代表用户访问资源。 在公司帐户同意页上，此范围显示为“随时访问数据”权限。 在个人 Microsoft 帐户同意页上，则显示为“随时访问信息”权限。 用户批准 `offline_access` 范围后，应用可接收来自 v2.0 令牌终结点的刷新令牌。 刷新令牌的生存期较长。 旧的访问令牌过期时，应用可获取新的访问令牌。
 
 如果应用未请求 `offline_access` 范围，则收不到 refresh_tokens。 这意味着，当在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换 authorization_code 时，只从 `/token` 终结点接收 access_token。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的 authorization_code。 在此重定向期间，根据应用的类型，用户或许无需再次输入其凭据或重新同意权限。
 

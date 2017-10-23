@@ -16,17 +16,17 @@ ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 91e4a7b2ac454465d5cce4948a4d5f0b542d2b55
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>通过 Azure AD 使用 Java 命令行应用访问 API
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 使用 Azure AD，只需编写几行代码，就能简单直接地外包 Web 应用的标识管理，提供单一登录和注销。  在 Java Web 应用中，可以使用社区驱动 ADAL4J 的 Microsoft 实现来达到此目的。
 
-  现在，我们使用 ADAL4J 来执行以下操作：
+  现在，我们将使用 ADAL4J 来执行以下操作：
 
 * 使用 Azure AD 作为标识提供者将用户登录到应用。
 * 显示有关用户的一些信息。
@@ -184,7 +184,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="3-create-the-java-publicclient-file"></a>3.创建 Java PublicClient 文件
 如上所述，我们将使用图形 API 来获取有关已登录的用户的数据。 为顺利进行，应该创建一个表示“目录对象”的文件以及一个表示“用户”的单独文件，这样就可以使用 Java 的 OO 模式。
 
-* 创建一个名为 `DirectoryObject.java` 的文件，我们将用它来存储有关任何 DirectoryObject 的基本数据（你稍后可以随意使用它来执行任何其他图形查询）。 可以从下面剪切/粘贴：
+* 创建一个名为 `DirectoryObject.java` 的文件，我们将用它来存储有关任何 DirectoryObject 的基本数据（稍后可以随意使用它来执行任何其他图形查询）。 可以从下面剪切/粘贴：
 
 ```Java
 import java.io.BufferedReader;
@@ -249,11 +249,11 @@ public class PublicClient {
 
 
 ## <a name="compile-and-run-the-sample"></a>编译并运行示例
-切换回至根目录并运行以下命令以生成该示例只需将放在一起使用`maven`。 这会使用针对依赖项编写的 `pom.xml` 文件。
+切换回到根目录，并运行以下命令来生成刚刚使用 `maven` 组成的示例。 这会使用针对依赖项编写的 `pom.xml` 文件。
 
 `$ mvn package`
 
-ph x="2" /> 目录中现在应包含 `adal4jsample.war` 文件。 可以在 Tomcat 容器中部署该文件并访问 URL 
+`/targets` 目录中现在应包含 `adal4jsample.war` 文件。 可以在 Tomcat 容器中部署该文件并访问 URL 
 
 `http://localhost:8080/adal4jsample/`
 

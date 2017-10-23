@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
 ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -75,7 +75,7 @@ Azure 有许多与网络安全话题相关的网络组件。 我们将介绍这�
 
 ### <a name="basic-network-connectivity"></a>基本网络连接
 
-利用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 你还可以连接 Vnet 彼此和与您使用站点到站点 Vpn 的本地网络和专用[WAN 链接](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)。
+利用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 还可以使用站点到站点 VPN 和专用 [WAN 链路](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)将 VNet 连接到 VNet 和本地网络。
 
 ![基本网络连接](media/azure-network-security/azure-network-security-fig-2.png)
 
