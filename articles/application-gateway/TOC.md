@@ -59,6 +59,7 @@
 ## 故障排除
 ### [排查应用程序网关中的错误](application-gateway-troubleshooting-502.md)
 ### [诊断日志记录和指标](application-gateway-diagnostics.md)
+### [应用程序网关会话相关性问题](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
 # 引用
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/network/application-gateway)

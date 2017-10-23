@@ -97,6 +97,7 @@
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
 #### [通知](active-directory-reporting-notifications.md)
 #### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
+#### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -150,8 +151,7 @@
 ### [概述](active-directory-enable-sso-scenario.md)
 ### [入门](active-directory-integrating-applications-getting-started.md)
 ### [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](cloudappdiscovery-overview.md)
-#### [设置无代理发现](cloudappdiscovery-get-started.md)
+### [Cloud App Discovery](cloudappdiscovery-get-started.md)
 #### [创建快照报表](cloudappdiscovery-set-up-snapshots.md)
 #### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)

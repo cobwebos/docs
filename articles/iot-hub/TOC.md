@@ -109,6 +109,7 @@
 ### 使用设备作业更新设备固件
 #### [Node 后端/Node 设备](iot-hub-node-node-firmware-update.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-firmware-update.md)
+#### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-firmware-update.md)
 ### 计划和广播作业
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-schedule-jobs.md)

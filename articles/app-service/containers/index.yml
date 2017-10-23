@@ -3,7 +3,7 @@ documentType: LandingData
 title: “用于容器的 Web 应用”文档
 metadata:
   document_id: 2239df92-8506-4ee4-b5b0-9ab512c487b2
-  title: “容器的 Azure Web 应用”文档 - 教程和 API 参考
+  title: “用于容器的 Azure Web 应用”文档 - 教程和 API 参考
   meta.description: Learn how to use Web Apps for Containers to build and host websites and web applications leveraging Docker.
   services: app-service
   author: syntaxc4
@@ -21,19 +21,19 @@ sections:
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_net.svg'
+              src: 'https://docs.microsoft.com/en-us/azure/app-service/media/index/logo_net.svg'
             text: .NET Core
             href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-dotnetcore'
           - image:
-              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_nodejs.svg'
+              src: 'https://docs.microsoft.com/en-us/azure/app-service/media/index/logo_nodejs.svg'
             text: Node.js
             href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-nodejs'
           - image:
-              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_php.svg'
+              src: 'https://docs.microsoft.com/en-us/azure/app-service/media/index/logo_php.svg'
             text: PHP
             href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-php'
           - image:
-              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_java.svg'
+              src: 'https://docs.microsoft.com/en-us/azure/app-service/media/index/logo_java.svg'
             text: Java
             href: 'https://docs.microsoft.com/en-us/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=/azure/app-service/containers/toc.json'
       - type: paragraph
@@ -48,14 +48,14 @@ sections:
   - title: 分步教程
     items:
       - type: paragraph
-        text: 了解如何在容器的 Azure Web 应用上部署、管理和监视安全的 Web 应用程序
+        text: 了解如何在用于容器的 Azure Web 应用上部署、管理和监视安全的 Web 应用程序
       - type: list
         style: ordered
         items:
           - html: 将 <a href="en-us/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core 与 Azure SQL DB 配合使用</a>或将 <a href="en-us/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js 与 MongoDB 配合使用</a>来创建应用程序
-          - html: <a href="/en-us/azure/app-service-web/app-service-web-tutorial-custom-domain">将现有自定义域映射到应用程序</a>
-          - html: <a href="/en-us/azure/app-service-web/app-service-web-tutorial-custom-SSL">将现有 SSL 证书绑定到应用程序</a>
-          - html: <a href="/en-us/azure/app-service-web/app-service-web-tutorial-content-delivery-network">将 CDN 添加到应用程序</a>
+          - html: <a href="/en-us/azure/app-service/app-service-web-tutorial-custom-domain">将现有自定义域映射到应用程序</a>
+          - html: <a href="/en-us/azure/app-service/app-service-web-tutorial-custom-SSL">将现有 SSL 证书绑定到应用程序</a>
+          - html: <a href="/en-us/azure/app-service/app-service-web-tutorial-content-delivery-network">将 CDN 添加到应用程序</a>
   - title: 示例
     items:
       - type: paragraph
