@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
+ms.date: 10/21/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
+
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -155,3 +156,4 @@ Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提�
 ## <a name="next-steps"></a>后续步骤
 
 有关报告的概述，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。
+

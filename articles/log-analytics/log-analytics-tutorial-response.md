@@ -2,7 +2,7 @@
 title: "使用 Azure Log Analytics 警报对事件做出响应 | Microsoft Docs"
 description: "本教程介绍 Log Analytics 中的警报来帮助你确定 OMS 存储库中的重要信息，并主动通知你存在问题或调用操作来尝试更正问题。"
 services: log-analytics
-documentationcenter: 
+documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
 editor: 
@@ -14,12 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: magoedte
-ms.openlocfilehash: ccf0bd57b7f54b1d8d57b460df9bb381b29ee381
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ccf0bd57b7f54b1d8d57b460df9bb381b29ee381
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/25/2017
+
 ---
+
 # <a name="respond-to-events-with-log-analytics-alerts"></a>使用 Log Analytics 警报对事件做出响应
 Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  它们由定期自动运行日志搜索的警报规则创建；如果日志搜索的结果符合特定条件，则创建一条警报记录，并可将此记录配置为执行自动响应。  本教程是[创建和共享 Log Analytics 数据的仪表板](log-analytics-tutorial-dashboards.md)教程的延续。   
 
@@ -48,8 +51,8 @@ Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  �
    a. 提供警报的“名称”，如“VM 处理器使用率超出 90 以上”查询  
    b. 对于“时间窗口”，指定查询的时间范围（例如 30）。  查询仅返回在当前时间的这个范围内创建的记录。  
    c. “警报频率”用于指定应运行查询的频率。  本例中，指定为指定时间范围内的 5 分钟。  
-   d. 选择“指标度量”，输入 90 作为“聚合值”，并输入 3 作为“触发警报基数”**   
-   e. 在“操作”下禁用电子邮件通知。
+   d.单击“下一步”。 选择“指标度量”，输入 90 作为“聚合值”，并输入 3 作为“触发警报基数”**   
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“操作”下禁用电子邮件通知。
 6. 单击“**保存**”完成警报规则。 该警报将立即开始运行。<br><br> ![警报规则示例](media/log-analytics-tutorial-response/log-analytics-alert-01.png)
 
 对于 Log Analytics 中警报规则创建的警报记录，其类型为“警报”，SourceSystem 为“OMS”。<br><br> ![生成的警报事件示例](media/log-analytics-tutorial-response/log-analytics-alert-events-01.png)  
