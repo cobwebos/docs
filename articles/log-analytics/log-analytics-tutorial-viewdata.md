@@ -2,7 +2,7 @@
 title: "查看或分析收集的 Azure Log Analytics 数据 | Microsoft Docs"
 description: "本文所含教程介绍如何使用日志搜索门户创建日志搜索并分析存储在 Log Analytics 资源中的数据。  本教程包括运行一些简单的查询，返回不同类型的数据和分析结果。"
 services: log-analytics
-documentationcenter: 
+documentationcenter: log-analytics
 author: mgoedtel
 manager: carmonm
 editor: 
@@ -10,15 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 09/26/2017
 ms.author: magoedte
-ms.openlocfilehash: c9c57beeb9c62e69f3bae5675717fff0ef43f22c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: c9c57beeb9c62e69f3bae5675717fff0ef43f22c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/27/2017
+
 ---
+
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>查看或分析使用 Log Analytics 日志搜索收集的数据
 
 在 Log Analytics 中，可通过构建查询利用日志搜索来分析收集的数据，也可使用预先存在的仪表板，可使用最有价值的搜索图形视图来自定义该仪表板。  定义从 Azure VM 和活动日志中的操作数据收集之后，可通过本教程了解如何：

@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1a6f1c6566468188daa71939db8345280b7a529f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 1a6f1c6566468188daa71939db8345280b7a529f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/01/2017
+
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 当你要求用户在工作区将其个人设备加入到 Azure Active Directory (Azure AD) 设备注册服务时，他们的设备会被标记为组织已知的设备。 以下是在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
@@ -208,7 +209,8 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
     Set-AdfsRelyingPartyWebContent -Name "relying party trust name" -ErrorPageAuthorizationErrorMessage
 在访问此应用程序之前，必须先注册设备。
 
-**如果使用 iOS 设备，请选择此链接加入设备**：
+
+            **如果使用 iOS 设备，请选择此链接加入设备**：
 
     a href='https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/yourdomain.com
 
@@ -223,5 +225,6 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 现在，当用户通过未注册到 Azure Active Directory 设备注册服务的设备访问应用程序时，他们将看到类似于以下屏幕截图的页。
 
 ![用户未将其设备注册到 Azure AD 时看到的错误消息屏幕截图](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
+
 
 
