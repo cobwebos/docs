@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: 0114f27f9b8ae76e1170d04ddf66e2c4bf20686a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>配合使用动态遥测和远程监视预配置解决方案
 
-动态遥测可让你将发送到远程监视预配置解决方案的任何遥测数据可视化。 部署了预配置解决方案的模拟设备会发送温度和湿度遥测，可在仪表板上直观显示这些数据。 如果自定义现有的模拟设备、创建新的模拟设备或者将物理设备连接到预配置解决方案，则可以发送其他遥测值，例如外部温度、RPM 或风速。 然后，可以在仪表板上可视化这些附加的遥测数据。
+动态遥测可让你将发送到远程监视预配置解决方案的任何遥测数据可视化。 部署了预配置解决方案的模拟设备会发送温度和湿度遥测，可在仪表板上直观显示这些数据。 如果自定义现有的模拟设备、创建新的模拟设备或者将物理设备连接到预配置解决方案，则可以发送其他遥测值，例如外部温度、RPM 或风速。 然后，可以在仪表板上直观显示这些附加的遥测数据。
 
 本教程使用一个简单的 Node.js 模拟设备，可以轻松对它进行修改，以体验动态遥测。
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 08/29/2017
 ![将 RPM 添加到仪表板][image3]
 
 > [!NOTE]
-> 可能需要在仪表板中的“设备”页上禁用 Node.js 设备并重新将它启用，才能立即查看更改。
+> 可能需要在仪表板中的“**设备**”页上禁用 Node.js 设备然后重新将它启用，才能立即查看更改。
 
 ## <a name="customize-the-dashboard-display"></a>自定义仪表板显示内容
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 08/29/2017
 ![自定义图表图例][image4]
 
 > [!NOTE]
-> 可能需要在仪表板中的“设备”页上禁用 Node.js 设备并重新将它启用，才能立即查看更改。
+> 可能需要在仪表板中的“**设备**”页上禁用 Node.js 设备然后重新将它启用，才能立即查看更改。
 
 ## <a name="filter-the-telemetry-types"></a>筛选遥测类型
 
@@ -184,11 +184,11 @@ ms.lasthandoff: 08/29/2017
 此更改仅影响图表的显示效果。 仍会存储 **ExternalTemperature** 数据值，并可用于任何后端处理。
 
 > [!NOTE]
-> 可能需要在仪表板中的“设备”页上禁用 Node.js 设备并重新将它启用，才能立即查看更改。
+> 可能需要在仪表板中的“**设备**”页上禁用 Node.js 设备然后重新将它启用，才能立即查看更改。
 
 ## <a name="handle-errors"></a>处理错误
 
-要使某个数据流显示在图表上，其在 **Device-Info** 元数据中的 **Type** 必须与遥测值的数据类型匹配。 例如，如果元数据指定湿度数据的 **Type** 必须为 **int**，而在遥测流中找到 **double**，则湿度遥测不会显示在图表上。 但是，**湿度**值仍会存储，并可供任何后端处理使用。
+要使某个数据流显示在图表上，其在 **Device-Info** 元数据中的 **Type** 必须与遥测值的数据类型匹配。 例如，如果元数据指定湿度数据的 **Type** 必须为 **int**，而在遥测流中找到 **double**，则湿度遥测将不会显示在图表上。 但是，**湿度**值仍会存储，并可供任何后端处理使用。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>如何使用 API 检查器跟踪 Azure API 管理中的调用
 API 管理提供了一个 API 检查器工具，帮助进行调试和故障诊断 API。 API 检查器可以编程方式使用，还可以直接从开发人员门户中使用。 
@@ -35,7 +35,7 @@ API 管理提供了一个 API 检查器工具，帮助进行调试和故障诊�
 ## <a name="trace-call"> </a> 使用 API 检查器跟踪调用
 要使用 API 检查器，请将 **ocp-apim-trace: true** 请求标头添加到操作调用，然后使用 **ocp-apim-trace-location** 响应标头指定的 URL 下载并检查跟踪。 这可以编程方式完成，也可以直接从开发人员门户完成。
 
-本文介绍如何使用 API 检查器借助在[管理第一个 API](api-management-get-started.md)入门教程中配置的 Basic Calculator API 跟踪操作。 如果尚未完成该教程，只需几分钟即可导入 Basic Calculator API，或者可以使用所选的另一个 API，例如 Echo API。 每个预先配置 Echo API 的 API 管理服务实例，都可用于试验和了解 API 管理。 Echo API 返回任何发送给它的输入。 要使用它，可以调用任何 HTTP 谓词，并且返回的值将只是所发送的内容。 
+本文介绍如何使用 API 检查器借助在[管理第一个 API](api-management-get-started.md)入门教程中配置的 Basic Calculator API 跟踪操作。 如果尚未完成该教程，只需几分钟即可导入 Basic Calculator API，或者可以使用所选的另一个 API，例如 Echo API。 每个预先配置 Echo API 的 API 管理服务实例，都可用于试验和了解 API 管理。 Echo API 返回任何发送给它的输入。 要使用它，可以调用任何 HTTP 谓词，并且返回的值将只是你发送的内容。 
 
 若要开始，请在 API 管理服务的 Azure 门户中单击“开发人员门户”。 可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。
 

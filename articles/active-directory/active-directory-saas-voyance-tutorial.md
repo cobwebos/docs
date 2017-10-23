@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
 ms.openlocfilehash: e860b810904fb7972d75d55d913d5622ff9a406a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>教程：Azure Active Directory 与 Voyance 集成
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/03/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建一个 Voyance 测试用户](#create-a-voyance-test-user)** -若要链接到用户的 Azure AD 表示的 Voyance 中具有 Britta 人 Simon 的副本。
+3. **[创建 Voyance 测试用户](#create-a-voyance-test-user)** - 在 Voyance 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 

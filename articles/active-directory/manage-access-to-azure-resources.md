@@ -12,20 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2017
+ms.date: 10/05/2017
 ms.author: skwan
+ms.openlocfilehash: e42bbed0a9e37a6632b2a71d2b3546fcbc38cdc7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 17879d69b95186848a81e4ff4afdf8fc0d1a511e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-access-to-azure-resources-with-azure-active-directory"></a>使用 Azure Active Directory 管理对 Azure 资源的访问权限
 
-对于任何使用云的组织而言，云资源的标识和权限管理都是一项重要功能。  Azure Active Directory (Azure AD) 是 Microsoft Azure 的标识和访问系统。  
+对于任何使用云的组织而言，云资源的标识和权限管理都是一项重要功能。 Azure Active Directory (Azure AD) 是 Microsoft Azure 的标识和访问系统。  
 
+在浏览 Azure AD 的支持功能区域之前，请查看以下视频：“使用 SSO、基于角色的访问控制和条件锁定对 Azure 云的访问”。 在其中，你将学习：
+
+- 使用本地 Active Directory 配置 Azure 门户单一登录的最佳做法。
+- 使用 Azure RBAC 对订阅中的资源进行精细的访问控制。
+- 使用 Azure AD 条件访问强制执行强身份验证规则。
+- 托管服务标识的概念，其中 Azure 资源可以自动向 Azure 服务进行身份验证，并且开发人员无需处理 API 密钥或机密。
+
+> [!VIDEO https://www.youtube.com/embed/FKBoWWKRnvI]
+
+## <a name="feature-areas"></a>功能区域
 Azure AD 就管理 Azure 资源访问权限提供以下功能：
 
 |||

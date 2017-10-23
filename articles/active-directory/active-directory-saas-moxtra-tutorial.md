@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: db2f041a44b6771b0a4f734e58d899298ef0847b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>教程：Azure Active Directory 与 Moxtra 的集成
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 07/11/2017
 
 8. 在另一个浏览器窗口中，以管理员身份登录到 Moxtra 公司站点。
 
-9. 在左侧工具栏中，单击**管理控制台 > SAML 单一登录**，然后单击**新建**。
+9. 在左侧工具栏上，单击“管理控制台”>“SAML 单一登录”，然后单击“新建”。
    
     ![配置单一登录](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_06.png) 
 

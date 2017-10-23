@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 09/22/2016
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: e2b3efe7f247c4ffee11ab437860ecbc95036cd7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 3f28e70bb6ef46f53375d256a520db40fcb71ad0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
 
@@ -50,6 +49,8 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
+
+Azure DNS 现在还支持专用 DNS 区域（当前为预览功能）。  有关如何创建专用 DNS 区域的示例，请参阅 [Azure DNS 专用区域入门（使用 PowerShell）](./private-dns-getstarted-powershell.md)。
 
 ## <a name="get-a-dns-zone"></a>获取 DNS 区域
 
@@ -98,7 +99,7 @@ Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Ta
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>指定使用 $zone 对象的区域
 
-此方法检索现有区域对象、修改标记，然后提交更改。 如此一来，可保留现有标记。
+此方法检索现有区域对象、修改标记，并提交更改。 如此一来，可保留现有标记。
 
 ```powershell
 # Get the zone object
@@ -156,9 +157,9 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 `New-AzureRmDnsZone`、`Set-AzureRmDnsZone` 和 `Remove-AzureRmDnsZone` cmdlet 都支持确认提示。
 
-如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则 `New-AzureRmDnsZone` 和 `Set-AzureRmDnsZone` 都会提示用户进行确认。 由于删除 DNS 区域存在的潜在影响力较大，如果 `$ConfirmPreference` PowerShell 变量拥有除 `None` 之外的其他值，则 `Remove-AzureRmDnsZone` cmdlet 将提示用户进行确认。
+如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则 `New-AzureRmDnsZone` 和 `Set-AzureRmDnsZone` 都会提示用户进行确认。 由于删除 DNS 区域存在的潜在影响力较大，如果 `$ConfirmPreference` PowerShell 变量拥有除 `None` 之外的其他值，则 `Remove-AzureRmDnsZone` cmdlet 会提示用户进行确认。
 
-由于 `$ConfirmPreference` 的默认值为 `High`，则默认情况下仅 `Remove-AzureRmDnsZone` 将提示用户进行确认。
+由于 `$ConfirmPreference` 的默认值为 `High`，则默认情况下仅 `Remove-AzureRmDnsZone` 会提示用户进行确认。
 
 可以使用 `-Confirm` 参数重写当前的 `$ConfirmPreference` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。
 
@@ -171,5 +172,4 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 了解如何[将域委派给 Azure DNS](dns-domain-delegation.md)。
 <br>
 查看 [Azure DNS PowerShell 参考文档](/powershell/module/azurerm.dns)。
-
 

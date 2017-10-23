@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: 80b920dc99619795cbc86e8cb2e3ac2a78a71932
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a>教程：Azure Active Directory 与 PostBeyond 的集成
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 07/11/2017
 
 本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
 
-在访问面板中单击“PostBeyond”磁贴就会转到 PostBeyond 登录页。 单击“通过 Office 365 登录”，输入 Azure AD 凭据。 然后，你应记录到 PostBeyond。
+在访问面板中单击“PostBeyond”磁贴就会转到 PostBeyond 登录页。 单击“通过 Office 365 登录”，输入 Azure AD 凭据。 然后应登录到 PostBeyond。
 
 ## <a name="additional-resources"></a>其他资源
 

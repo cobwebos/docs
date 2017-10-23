@@ -8,19 +8,18 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/15/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 7099e26fd749820ab6869c0262e1f97d993ab7b2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/26/2017
+ms.openlocfilehash: 35b7f026aa05fb16d57f49b93edff831b43268db
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的连接库
-本主题列出了几个库和驱动程序，开发人员可在对应用程序编程以连接和查询 PostgreSQL 的 Azure 数据库时，使用这些库和驱动程序。
+本主题列出了几个库和驱动程序，开发人员在对应用程序编程以连接和查询 Azure Database for PostgreSQL 时，可使用这些库和驱动程序。
 
 ## <a name="client-interfaces"></a>客户端接口
-要连接到 PostgreSQL 服务器的大多数语言客户端库为外部项目，并且独立分发。 Windows、Linux 和 Mac 平台支持这些客户端库。 下面列出了一些常用的客户端驱动程序：
+用于连接到 PostgreSQL 服务器的大多数语言客户端库为外部项目，并且独立分发。 Windows、Linux 和 Mac 平台支持这些客户端库。 下表列出了一些常用的客户端驱动程序：
 
 | 语言 | 客户端接口 | 其他信息 | **下载** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
@@ -36,7 +35,6 @@ ms.lasthandoff: 06/17/2017
 | C++ | [libpqxx](http://pqxx.org/) | 新样式 C++ 接口 | [下载](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>后续步骤
-使用所选语言阅读这些快速入门，了解如何连接并查询用于 PostgreSQL 的 Azure 数据库：
+阅读这些快速入门，了解如何使用所选语言连接和查询 Azure Database for PostgreSQL：
 
 [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)
-

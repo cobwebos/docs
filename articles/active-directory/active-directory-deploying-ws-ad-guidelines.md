@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
 ms.openlocfilehash: 342d9e2787add3d04f1b744152e135db98848179
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导
 本文阐述在本地部署 Windows Server Active Directory 域服务 (AD DS) 和 Active Directory 联合身份验证服务 (AD FS) 与在 Microsoft Azure 虚拟机上部署这些服务的重要区别。

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: cherylmc
+ms.openlocfilehash: 34caed9323ae3067d1dc17ab9c62ebf7a9be855b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 595c30ab5d9adc6061ad753d952adf894ba80b2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -76,7 +75,7 @@ ms.lasthandoff: 07/28/2017
 
 - 大型云中的每个较小云用于表示属于组织中不同部门的订阅。
 - 组织中的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。
-- 单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
+- 单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路和关联到该线路的授权，包括链接到其他 Azure Active Directory 租户和企业协议合约的订阅。 
 
     > [!NOTE]
     > 专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者。 所有虚拟网络共享相同的带宽。
@@ -143,4 +142,3 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="next-steps"></a>后续步骤
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
-

@@ -17,15 +17,15 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: 187c7cb413b3707e58eea387857375053d267189
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面将 Hive 与 HDInsight 上的 Hadoop 配合使用
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-本文介绍如何通过使用远程桌面连接到 HDInsight 群集，然后通过使用 Hive 命令行接口 (CLI) 运行 Hive 查询。
+本文将学习如何通过使用远程桌面连接到 HDInsight 群集，并通过使用 Hive 命令行界面 (CLI) 运行 Hive 查询。
 
 > [!IMPORTANT]
 > 远程桌面只能在使用 Windows 作为操作系统的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/03/2017
 
         %hive_home%\bin\hive
 
-    启动 CLI 后，可看到 Hive CLI 提示符： `hive>`。
+    在启动 CLI 后，会看到 Hive CLI 提示符：`hive>`。
 3. 在 CLI 中输入以下语句，以使用示例数据创建名为 **log4jLogs** 的新表：
 
         set hive.execution.engine=tez;
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/03/2017
    * **CREATE EXTERNAL TABLE**：在 Hive 中创建新的“外部”表。 外部表仅在 Hive 中存储表定义；数据会保留在原始位置。
 
      > [!NOTE]
-     > 预期以外部源更新基础数据（例如自动化数据上传过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询使用最新数据时，必须使用外部表。
+     > 预期以外部源更新基础数据（例如自动化数据上传过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
      >
      > 删除外部表**不会**删除数据，只会删除表定义。
      >
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/03/2017
      >
      >
    * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 这是高度优化且有效的 Hive 数据存储格式。
-   * **INSERT OVERWRITE ...SELECT：从包含 [ERROR] 的 log4jLogs 表中选择行，然后将数据插入 errorLogs 表中**。
+   * **INSERT OVERWRITE ...SELECT**：从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，并将数据插入 **errorLogs** 表中。
 
      要验证是否只将其列 t4 中包含**[ERROR]** 的行存储到了 **errorLogs** 表，请使用以下语句从 **errorLogs** 中返回所有行：
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/03/2017
      应返回三行数据，所有行都包含 t4 列中的 **[ERROR]**：
 
 ## <a id="summary"></a>摘要
-Hive 命令提供了一种简单的方法，可以交互方式在 HDInsight 群集上运行 Hive 查询、监视作业状态，以及检索输出。
+如你所见，Hive 命令提供了简单的方法让你以交互方式在 HDInsight 群集上运行 Hive 查询、监视作业状态，以及检索输出。
 
 ## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Hive 的一般信息：

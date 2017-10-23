@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 07/12/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>适用于大规模并行处理 (MPP) 的分布式数据和分布式表
 了解用户数据在 Azure SQL 数据仓库和并行数据仓库中是如何分布的，这些仓库是 Microsoft 的大规模并行处理 (MPP) 系统。 设计数据仓库时，需考虑到有效使用分布式数据，充分利用 MPP 体系结构的查询处理优势。 某些数据库设计选择可能会对查询性能有着重大影响。  

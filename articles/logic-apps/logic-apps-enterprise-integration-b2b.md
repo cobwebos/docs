@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 中的 B2B 功能在逻辑应用中接收数据
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 07/11/2017
 
 * 使用 AS2 和 X12 解码和编码操作，可以在逻辑应用中通过行业标准协议在贸易合作伙伴之间交换数据。
 * 若要与贸易合作伙伴交换数据，可以使用 AS2 和/或 X12。
-* B2B 操作帮助你集成帐户中轻松地创建合作伙伴和协议，并在逻辑应用中使用它们。
+* B2B 操作可帮助你轻松地在集成帐户中创建合作伙伴和协议并在逻辑应用中使用它们。
 * 使用其他操作扩展逻辑应用时，可以在其他应用和服务（如 SalesForce）之间发送和接收数据。
 
 ## <a name="learn-more"></a>了解详细信息

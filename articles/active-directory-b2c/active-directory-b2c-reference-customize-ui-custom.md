@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 68f40aa638a687398512278a0b77d1ba392859cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -36,7 +36,7 @@ Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示�
 
 出于此目的，Azure AD B2C 会在使用者的浏览器中运行代码，并使用新式标准方法[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 从自定义策略中指定的、指向 HTML5/CSS 模板的特定 URL 加载自定义内容。 CORS 是一种机制，允许从资源来源域外部的另一个域请求网页上的受限资源，如字体。
 
-与旧的传统方法，其中模板页属于的解决方案，其中提供有限的文本和图像，其中提供有限的控制布局和外观从而导致多个问题以实现无缝体验，CORS 方式支持 HTML5 和 CSS 以及使您能够：
+相比之下，在旧式传统方法中，模板页面由解决方案拥有，而解决方案提供的文本和图像以及对布局和外观的控制度都有限，因此，更难以实现无缝体验。CORS 方法支持 HTML5 和 CSS，使你能够：
 
 - 托管内容。解决方案将使用客户端脚本注入其内容。
 - 完全控制布局和外观的每个像素。
@@ -123,7 +123,7 @@ Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示�
 若要验证托管内容的存储是否已启用 CORS，请继续执行以下步骤：
 
 1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如 https://contoso369b2c.blob.core.windows.net/b2c/unified.html。
-2. 导航到 http://test-cors.org。 在此站点中，可以验证所用的页面是否已启用 CORS。  
+2. 导航到 http://test-cors.org。在此站点中，可以验证所用的页面是否已启用 CORS。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

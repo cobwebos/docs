@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: bwren
 ms.openlocfilehash: 1eb2e0c467d4fb4cb263047caf58d36231578d9a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断 
 
@@ -33,14 +33,14 @@ ms.lasthandoff: 08/18/2017
 * 实时监视任何 Windows 性能计数器。
 * 轻松识别有问题的服务器，并筛选出只与该服务器相关的所有 KPI/实时源。
 
-[![实时度量值流视频](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![实时指标流视频](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
 实时指标流当前在本地或云端运行的 ASP.NET 应用中可用。 
 
 ## <a name="get-started"></a>入门
 
 1. 如果尚未在 ASP.NET Web 应用或 [Windows Server 应用](app-insights-windows-services.md)中[安装 Application Insights](app-insights-asp-net.md)，请立即进行安装。 
-2. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中，右键单击你的项目并选择**管理 Nuget 包**。 打开“更新”选项卡，选中“包括预先发行版”，然后选择所有的 Microsoft.ApplicationInsights.* 包。
+2. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。 打开“更新”选项卡，选中“包括预先发行版”，然后选择所有的 Microsoft.ApplicationInsights.* 包。
 
     重新部署应用。
 

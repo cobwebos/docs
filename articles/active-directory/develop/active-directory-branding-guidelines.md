@@ -16,13 +16,13 @@ ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
 ms.openlocfilehash: 4f6806cde52ce965a8f78a5cce8a24c3d1248594
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
-本主题讨论在使用 Azure Active Directory (Azure AD) 开发应用程序时应使用的品牌准则。 在客户需要使用 Azure AD 中托管的工作或学校帐户或个人帐户进行注册和登录到应用程序时，这些准则将帮助指导客户进行相关操作。
+本主题讨论在使用 Azure Active Directory (Azure AD) 开发应用程序时应使用的品牌准则。 在客户需要使用 Azure AD 中托管的工作或学校帐户，或使用其个人帐户进行注册和登录到应用程序时，这些准则将帮助指导客户进行相关操作。
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>个人帐户与 Microsoft 中的工作或学校帐户
 Microsoft 管理两种类型的用户帐户：
@@ -44,11 +44,9 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>使用 Azure AD 注册和登录
 应用程序可以为注册和登录提供不同的路径，以下部分提供了这两种应用场景的可视指南。
 
+**如果应用支持最终用户注册（例如免费试用或免费增值模式）**：可以显示“登录”按钮，让用户使用其工作帐户或个人帐户访问应用。 当用户首次访问应用程序时，Azure AD 会显示许可提示。
 
-            **如果应用支持最终用户注册（例如免费试用或免费增值模式）**：可以显示“登录”****按钮，让用户使用其工作帐户或个人帐户访问应用。 当用户首次访问应用程序时，Azure AD 会显示许可提示。
-
-**如果应用需要只有管理员才能授予的权限，或者需要组织许可**：应该将管理员请求与用户登录区别开来。 
-            **“获取此应用程序”按钮** 会将管理员重定向到登录页，并要求他们代表其组织中的用户授权。 带来的额外好处是，应用程序中不会显示最终用户许可提示。
+**如果应用需要只有管理员才能授予的权限，或者需要组织许可**：应该将管理员请求与用户登录区别开来。 “获取此应用”按钮会将管理员重定向到登录页，然后要求他们代表其组织中的用户授权同意。 带来的额外好处是，应用程序中不会显示最终用户许可提示。
 
 ## <a name="visual-guidance-for-app-acquisition"></a>有关获取应用程序的可视指南
 “获取应用程序”链接必须将用户重定向到 Azure AD 的访问权限授予（授权）页，以方便组织的管理员对应用程序进行授权，使其有权访问 Microsoft 托管的组织数据。 有关如何请求访问权限的详细信息，请参阅[将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications.md)一文。
@@ -59,8 +57,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 但是，我们建议编写说明性的文本而不要依赖于按钮。 例如：
 
-> 
-            *如果已使用了 Office 365 或 Microsoft 的其他业务服务，则只需授予<your_app_name> 对组织数据的访问权限。这样，用户便可以使用其现有工作帐户访问 <应用名称>。*
+> *如果已使用了 Office 365 或 Microsoft 的其他业务服务，则只需授予&lt;your_app_name&gt; 对组织数据的访问权限。这样，用户便可以使用其现有工作帐户访问 <应用名称>。*
 > 
 > 
 
@@ -81,7 +78,7 @@ Microsoft 徽标和“通过 Microsoft 登录”词语的关联可唯一地将 A
 ![应用程序类型和方案](./media/active-directory-branding-guidelines/sign-in-dark.png)
 
 ## <a name="branding-dos-and-donts"></a>品牌注意事项
-**执行**结合"登录 in with Microsoft"按钮使用"工作或学校帐户"以提供附加说明，帮助最终用户确认是否它们可以使用它。 **请勿**使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
+**务必**将“工作或学校帐户”与“通过 Microsoft 登录”按钮结合使用来提供附加说明，以便帮助最终用户识别他们是否可以使用该应用。 **请勿**使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
 
 **请勿**使用“Office 365 ID”或“Azure ID”。 Office 365 也是 Microsoft 的消费型产品名称，它不使用 Azure AD 进行身份验证。
 

@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: ba5bdf7daba6086b70aec54ebe25d4445fa708c3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>将登录凭据添加到 .NET MVC Web 应用
 通过 v2.0 终结点，可以快速地将身份验证添加 Web 应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  在 ASP.NET Web 应用中，可以使用随附在 .NET Framework 4.5 中的 Microsoft OWIN 中间件来完成此操作。
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="register-an-app"></a>注册应用程序
 在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 中创建新应用，或遵循以下[详细步骤](active-directory-v2-app-registration.md)。  请确保：
 
-* 复制分配给应用程序的**应用程序 ID** ，因为稍后会用到。
+* 复制分配给应用的**应用程序 ID**，稍后将要用到。
 * 为应用添加 **Web** 平台。
 * 输入正确的**重定向 URI**。 重定向 URI 向 Azure AD 指示身份验证响应应定向到的位置，本教程的默认值为 `https://localhost:44326/`。
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/11/2017
         PM> Install-Package Microsoft.Owin.Host.SystemWeb
         ```  
 
-3. 将“OWIN Startup Class”添加到名为 `Startup.cs` 的项目  右键单击该项目-->“添加” --> “新建项”-->搜索“OWIN”。  应用程序启动时，OWIN 中间件将调用 `Configuration(...)` 方法。
+3. 将称为 `Startup.cs` 的“OWIN 启动类”添加到项目。右键单击项目，选择“添加” --> “新建项”，并搜索“OWIN”。  当应用程序启动时，该 OWIN 中间件将调用 `Configuration(...)` 方法。
 4. 将类声明更改为 `public partial class Startup` - 我们已在另一个文件中实现了此类的一部分。  在 `Configuration(...)` 方法中，调用 ConfigureAuth(...) 以设置 Web 应用的身份验证。  
 
         ```C#
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
         }
         ```
 
-5. 打开文件 `App_Start\Startup.Auth.cs` 并实现 `ConfigureAuth(...)` 方法。  在 `OpenIdConnectAuthenticationOptions` 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。  你还需要设置 Cookie 身份验证 - OpenID Connect 中间件会在幕后使用 Cookie。
+5. 打开文件 `App_Start\Startup.Auth.cs` 并实现 `ConfigureAuth(...)` 方法。  在 `OpenIdConnectAuthenticationOptions` 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。  还需要设置 Cookie 身份验证 - OpenID Connect 中间件会在幕后使用 Cookie。
 
         ```C#
         public void ConfigureAuth(IAppBuilder app)
@@ -114,7 +114,7 @@ ms.lasthandoff: 07/11/2017
         ```
 
 ## <a name="send-authentication-requests"></a>发送身份验证请求
-现在，应用程序已正确配置为使用 OpenID Connect 身份验证协议来与 v2.0 终结点通信。  OWIN 会代你处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的繁琐细节。  要做的一切就是提供某种方式让用户登录和注销。
+现在，应用程序已正确配置为使用 OpenID Connect 身份验证协议来与 v2.0 终结点通信。  OWIN 会处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的所有繁琐细节。  要做的一切就是提供某种方式让用户登录和注销。
 
 - 可以在控制器中使用授权标记，要求用户在访问特定页面之前登录。  打开 `Controllers\HomeController.cs`，然后将 `[Authorize]` 标记添加到 About 控制器。
         

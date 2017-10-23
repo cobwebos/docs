@@ -16,20 +16,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
+ms.openlocfilehash: 314f528a1fcef2c7afb0eedba012023f3bc9502b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: acb6052343acc34eb2365017ac2a49f9a4af51a2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
-> [!div class="op_single_selector"]
-> * [C# 脚本](functions-reference-csharp.md)
-> * [F# 脚本](functions-reference-fsharp.md)
-> * [Node.js](functions-reference-node.md)
-> 
-> 
+[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Azure Functions F# 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 数据通过函数参数流入 F # 函数。 在 `function.json`指定参数名称，没有访问函数记录器和取消令牌等的预定义的名称。
 
@@ -133,7 +127,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
 * `Microsoft.Azure.WebJobs.Host`。
 
 ## <a name="referencing-external-assemblies"></a>引用外部程序集
-与此类似，使用 `#r "AssemblyName"` 指令添加框架程序集引用。
+与此类似，可以使用 `#r "AssemblyName"` 指令添加框架程序集引用。
 
 ```fsharp
 #r "System.Web.Http"
@@ -212,7 +206,7 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>如何添加 `project.json` 文件到 Azure 函数
 1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 通过此操作，还可以访问显示程序包安装输出位置的流式日志日志。
-2. 若要上传  `project.json`文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
+2. 若要上传 `project.json` 文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
 3. 添加 `project.json` 文件后，将看到类似于函数流式日志中的实例的输出：
 
 ```
@@ -276,10 +270,7 @@ let mylog(log: TraceWriter, text: string) =
 * [F # 指南](/dotnet/articles/fsharp/index)
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 开发人员参考](functions-reference.md)
-* [Azure Functions C# 开发人员参考](functions-reference-csharp.md)
-* [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [ Azure Functions 测试](functions-test-a-function.md)
 * [Azure Functions 缩放](functions-scale.md)
-
 

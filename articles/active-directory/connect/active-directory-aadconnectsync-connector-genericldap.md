@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: adb174526bc377f484be5fb0a71b28e8daaaa6fd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generic-ldap-connector-technical-reference"></a>泛型 LDAP 连接器技术参考
 本指南介绍泛型 LDAP 连接器。 本文适用于以下产品：
@@ -186,7 +186,7 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 * 选择删除树后，将使用一个 LDAP 调用删除层次结构。 如果未选择删除树，连接器会根据需要进行递归删除。
 * 选择分页结果后，连接器将使用运行步骤中指定的大小执行分页导入。
 * VLVControl 和 SortControl 是 pagedResultsControl 的替代项，可从 LDAP 目录读取数据。
-* 如果所有三个选项（pagedResultsControl、VLVControl 和 SortControl）都未选择，连接器将在一个操作中导入所有对象，如果目录很大，此操作可能失败。
+* 如果所有三个选项（pagedResultsControl、VLVControl 和 SortControl）都未选择，连接器会在一个操作中导入所有对象，如果目录很大，此操作可能失败。
 * 只有在增量导入方法是 USNChanged 时，才使用 ShowDeletedControl。
 
 更改日志 DN 是增量更改日志使用的命名上下文，例如 **cn=changelog**。 必须指定此值才能执行增量导入。
@@ -220,7 +220,7 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 通过配置预配层次结构，可以将连接器配置为根据需要自动创建结构。 例如，如果有命名空间 dc=contoso,dc=com 并且预配了一个新对象（cn=Joe、ou=Seattle、c=US、dc=contoso、dc=com），则连接器可以创建国家/地区类型为美国，organizationalUnit 为西雅图的对象（如果目录中尚不存在这些项）。
 
 ### <a name="configure-partitions-and-hierarchies"></a>配置分区和层次结构
-在分区和层次结构页上，选择具有你计划导入和导出的对象的所有命名空间。
+在“分区和层次结构”页上，选择包含你计划导入和导出的对象的所有命名空间。
 
 ![分区](./media/active-directory-aadconnectsync-connector-genericldap/partitions.png)
 

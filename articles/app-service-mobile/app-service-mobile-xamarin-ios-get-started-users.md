@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: glenga
 ms.openlocfilehash: 454b2df5a9bf8cfba93befea54370957ab044d95
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin.iOS 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，将显示用户 ID 值，该用户能够访问受限制的表数据。
+本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin.iOS 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，会显示用户 ID 值，该用户能够访问受限制的表数据。
 
 必须先完成教程[创建 Xamarin.iOS 应用]。 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>将应用添加到允许的外部重定向 URL
 
-安全身份验证要求为应用定义新的 URL 方案。 此方案允许在完成身份验证过程后，身份验证系统重定向到应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
+安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
 1. 在 [Azure 门户]中，选择应用服务。
 
 2. 单击“身份验证/授权”菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，因为需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
 4. 单击 **“确定”**。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 08/03/2017
 接下来，更新客户端应用，以使用经过身份验证的用户从移动应用后端请求资源。
 
 ## <a name="add-authentication-to-the-app"></a>向应用程序添加身份验证
-本部分介绍如何修改应用程序，以便在显示数据之前显示登录屏幕。 应用启动时，它不会连接到应用服务，并且不会显示任何数据。 用户首次执行刷新笔势后，会显示登录屏幕；成功登录后，会显示 Todo 项列表。
+在本部分中，会修改应用程序，以便在显示数据之前显示登录屏幕。 应用启动时，它不会连接到应用服务，并且不会显示任何数据。 用户首次执行刷新笔势后，会显示登录屏幕；成功登录后，会显示 Todo 项列表。
 
 1. 在客户端项目中，打开文件 **QSTodoService.cs**，向 QSTodoService 类添加以下 using 语句和带访问器的 `MobileServiceUser`：
  

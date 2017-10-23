@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
 ms.openlocfilehash: 4b0a57c3bab688487eb9a50461b406e1a6e477c6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/03/2017
 
     ![添加 SQLite UWP 引用][1]
 4. 打开 MainPage.xaml.cs 文件并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
-5. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。 但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
+5. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
 ## <a name="update-sync"></a>更新应用以与后端断开连接
 在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项将添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
@@ -79,9 +79,9 @@ ms.lasthandoff: 08/03/2017
 ## <a name="api-summary"></a>API 摘要
 为了支持移动服务的脱机功能，我们使用了 [IMobileServiceSyncTable] 接口，并使用本地 SQLite 数据库初始化了 [MobileServiceClient.SyncContext][synccontext]。 脱机时，移动应用的普通 CRUD 操作执行起来就像此应用仍处于连接状态一样，但操作针对本地存储进行。 以下方法用于将本地存储与服务器进行同步：
 
-* [PushAsync] 由于此方法是 [IMobileServicesSyncContext] 的成员，因此对所有表进行的更改将推送到后端。 只有具有本地更改的记录将发送到服务器。
-* **[PullAsync]** 从启动拉取[IMobileServiceSyncTable]。 当表中存在被跟踪的更改时，会执行隐式推送操作以确保本地存储中的所有表以及关系都保持一致。 *PushOtherTables* 参数控制在隐式推送操作中是否推送上下文中的其他表。 query 参数使用 [IMobileServiceTableQuery<T>][IMobileServiceTableQuery] 或 OData 查询字符串来筛选返回的数据。 *queryId* 参数用于定义增量同步。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
-* [PurgeAsync] 应用应定期调用此方法，从本地存储中清除过时数据。 需要清除尚未同步的任何更改时，请使用 *force* 参数。
+* **[PushAsync]** 由于此方法是 [IMobileServicesSyncContext] 的成员，因此对所有表进行的更改将推送到后端。 只有具有本地更改的记录将发送到服务器。
+* **[PullAsync]** 从 [IMobileServiceSyncTable] 启动拉取操作。 当表中存在被跟踪的更改时，会执行隐式推送操作以确保本地存储中的所有表以及关系都保持一致。 *PushOtherTables* 参数控制在隐式推送操作中是否推送上下文中的其他表。 query 参数使用 [IMobileServiceTableQuery<T>][IMobileServiceTableQuery] 或 OData 查询字符串来筛选返回的数据。 *queryId* 参数用于定义增量同步。有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
+* **[PurgeAsync]** 应用应定期调用此方法，从本地存储中清除过时数据。 需要清除尚未同步的任何更改时，请使用 *force* 参数。
 
 有关这些概念的详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
 

@@ -15,16 +15,16 @@ ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
 ms.openlocfilehash: b05181d9252c0a804648e01b4058019278ae5abe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>使用 Mobile Engagement REST API 进行身份验证
 ## <a name="overview"></a>概述
 本文档介绍如何获取有效的 AAD Oauth 令牌以使用 Mobile Engagement REST API 进行身份验证。 
 
-它假定你有一个有效的 Azure 订阅，您可以创建使用之一的 Mobile Engagement 应用我们[开发教程](mobile-engagement-windows-store-dotnet-get-started.md)。
+假设你有一个有效的 Azure 订阅，并且已使用我们的一个[开发人员教程](mobile-engagement-windows-store-dotnet-get-started.md)创建了一个 Mobile Engagement 应用。
 
 ## <a name="authentication"></a>身份验证
 使用基于 Microsoft Azure Active Directory 的 OAuth 令牌进行身份验证。 
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
    
         Select-AzureRmSubscription –SubscriptionId <subscriptionId>
 5. 将 [New-AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) 脚本的文本复制到本地计算机，并将其保存为 PowerShell cmdlet（例如 `APIAuth.ps1`），然后执行 `.\APIAuth.ps1`。 
-6. 该脚本将要求为 **principalName** 提供输入。 你想要用于创建 Active Directory 应用程序 (例如 APIAuth) 提供合适的名称。 
+6. 该脚本将要求为 **principalName** 提供输入。 在此处提供你想使用的合适名称，以创建 Active Directory 应用程序（例如 APIAuth）。 
 7. 在脚本完成后，它会显示以下四个值，需要以编程方式使用 AD 进行身份验证，因此，请务必复制它们。 
    
     **TenantId**、**SubscriptionId**、**ApplicationId** 和 **Secret**。
@@ -115,7 +115,7 @@ ms.lasthandoff: 07/11/2017
    
         Authorization: Bearer {ACCESS_TOKEN}
    
-    如果您获得返回 401 状态代码，请检查响应正文中，它可能会告诉您的令牌已过期。 在这种情况下，请获取一个新令牌。
+    如果返回了 401 状态代码，请检查响应正文，其中可能会告诉你令牌已过期。 在这种情况下，请获取一个新令牌。
 
 ## <a name="using-the-apis"></a>使用 API
 至此，拥有了一个有效的令牌，可以开始 API 调用。
@@ -131,8 +131,7 @@ ms.lasthandoff: 07/11/2017
    * **1** `{subscription-id}`
    * **2** `{app-collection}`
    * **3** `{app-resource-name}`
-   * 
-            **4** 除非创建了一个新的资源组，否则资源组名称应该是 **MobileEngagement**。 
+   * **4** 除非创建了一个新的资源组，否则资源组名称应该是 **MobileEngagement**。 
      
      ![Mobile Engagement API URI 参数][2]
 

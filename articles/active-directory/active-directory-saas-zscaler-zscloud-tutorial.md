@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
 ms.openlocfilehash: 2b6eb113e5725260bc04f50e9218939bf28b1ff0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>教程：Azure Active Directory 与 Zscaler ZSCloud 的集成
 
@@ -88,8 +88,8 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. [配置代理设置](#configuring-proxy-settings) - 以在 Internet Explorer 中配置代理设置
-2. **[创建一个 Azure AD 的测试用户](#creating-an-azure-ad-test-user)** -若要测试 Azure AD 单一登录与 Britta 人 Simon。
-3. **[创建 Zscaler ZSCloud 测试用户](#creating-a-zscaler-zscloud-test-user)** -若要链接到用户的 Azure AD 表示的 Zscaler ZSCloud 中具有 Britta 人 Simon 的副本。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Zscaler ZSCloud 测试用户](#creating-a-zscaler-zscloud-test-user)** - 在 Zscaler ZSCloud 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

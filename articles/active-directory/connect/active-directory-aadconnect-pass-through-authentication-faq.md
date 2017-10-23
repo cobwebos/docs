@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 09/29/2017
 ms.author: billmath
+ms.openlocfilehash: e0c93cefb135d3ea1c5f0a3797602124aed85c5c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 79d2f5265c05a1e5f83325295d3d750e1796e1cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
 本文解决了有关 Azure Active Directory (Azure AD) 传递身份验证的常见问题。 请随时返回查看新内容。
@@ -129,10 +127,11 @@ ms.lasthandoff: 09/28/2017
 从服务器上卸载传递身份验证代理会导致其停止接收登录请求。 执行此操作之前请确保正在运行另一个身份验证代理，以避免租户上的用户登录断开。
 
 ## <a name="next-steps"></a>后续步骤
-- [**当前限制**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
-- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 启动并运行 Azure AD 直通身份验证。
+- [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
+- [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 快速了解 Azure AD 直通身份验证。
+- [**智能锁定**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [深入技术探究](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能如何运作。
 - [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [**深入了解安全性**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 有关该功能的其他深入技术信息。
 - [**Azure AD 无缝 SSO**](active-directory-aadconnect-sso.md) - 深入了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
-

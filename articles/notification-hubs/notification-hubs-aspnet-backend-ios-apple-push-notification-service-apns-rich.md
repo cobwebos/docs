@@ -1,6 +1,6 @@
 ---
 title: "Azure 通知中心富推送"
-description: "了解如何从 Azure 将富推送通知发送到 iOS 应用程序。 Objective C 和 C# 中编写的代码示例。"
+description: "了解如何从 Azure 将富推送通知发送到 iOS 应用。 代码示例是使用 .Objective-C 和 C# 编写的。"
 documentationcenter: ios
 services: notification-hubs
 author: ysxu
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心富推送
 ## <a name="overview"></a>概述
-为了吸引用户使用即时丰富内容，应用程序可能想要推送超出纯文本。 这些通知将提升用户交互和存在内容 （如 url、 声音、 图像/优惠券等）。 本教程基于[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)主题，并演示如何发送包含有效负载 （例如，图像） 的推送通知。
+为了吸引用户使用即时丰富内容，除纯文本之外，应用程序可能还需要以其他形式进行推送。 这些通知将提升用户交互并显示 URL、声音、映像/优惠券等内容。 本教程以[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)主题为基础，演示如何发送包含有效负载（例如映像）的推送通知。
 
 本教程适用于 iOS 7 和 8。
 
@@ -30,24 +30,24 @@ ms.lasthandoff: 07/11/2017
 
 在高级别中：
 
-1. 应用程序后端：
-   * 将存储富有效负载 （在这种情况下，图像） 后端数据库/本地存储中
+1. 应用后端：
+   * 在后端数据库/本地存储中存储富有效负载（在本例中为图像）
    * 向设备发送此富通知的 ID
-2. 在设备上的应用程序：
-   * 联系请求它收到的 ID 与富有效负载的后端
-   * 在设备上发送用户通知时数据检索已完成，并且用户点击以了解详细信息时立即显示有效负载
+2. 设备上的应用：
+   * 与使用设备接收到的 ID 请求富有效负载的后端进行联系
+   * 在数据检索完成后，向用户设备发送通知，并在用户点击“了解详细信息”时立即显示有效负载
 
 ## <a name="webapi-project"></a>WebAPI 项目
-1. 在 Visual Studio 中，打开**AppBackend**中创建的项目[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教程。
-2. 获取你想要使用，通知用户并将其置于的图像**img**项目目录中的文件夹。
-3. 单击**显示所有文件**在解决方案资源管理器，右键单击文件夹以**包括在项目**。
-4. 选定的图像，更改到属性窗口在其生成操作**嵌入的资源**。
+1. 在 Visual Studio 中，打开在[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教程中创建的 **AppBackend** 项目。
+2. 获取用于通知用户的映像，并将其置于项目目录的 **img** 文件夹中。
+3. 单击“解决方案资源管理器”中的“显示所有文件”，右键单击该文件夹以“包括在项目中”。
+4. 通过选定的映像，将“属性”窗口中的“生成操作”更改为“嵌入的资源”。
    
     ![][IOS2]
-5. 在**Notifications.cs**，添加以下 using 语句：
+5. 在 **Notifications.cs** 中，添加以下 using 语句：
    
         using System.Reflection;
-6. 更新整个**通知**类替换为以下代码。 请确保将占位符替换为你的通知中心凭据和图像文件名称。
+6. 使用以下代码更新整个 **Notifications** 类。 请确保将占位符替换为通知中心凭据和图像文件名。
    
         public class Notification {
             public int Id { get; set; }
@@ -93,10 +93,10 @@ ms.lasthandoff: 07/11/2017
         }
    
    > [!NOTE]
-   > （可选）请参阅[如何嵌入并通过使用 Visual C# 访问资源](http://support.microsoft.com/kb/319292)有关如何添加和获取项目资源的详细信息。
+   > （可选）请参阅[如何使用 Visual C# 嵌入和访问资源](http://support.microsoft.com/kb/319292)了解有关如何添加和获取项目资源的详细信息。
    > 
    > 
-7. 在**NotificationsController.cs**，重新定义**NotificationsController**使用以下代码段。 这将初始无提示的富通知 id 发送到设备，并允许客户端对图像进行检索：
+7. 在 **NotificationsController.cs** 中，使用以下代码段重新定义 **NotificationsController**。 这会将初始无提示的富通知 ID 发送到设备，并允许客户端对图像进行检索：
    
         // Return http response with image binary
         public HttpResponseMessage Get(int id) {
@@ -125,36 +125,36 @@ ms.lasthandoff: 07/11/2017
    
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-8. 现在，我们将重新部署到 Azure 网站的此应用程序以使其可从所有设备访问。 右键单击**AppBackend**项目，然后选择**发布**。
-9. 选择 Azure 网站作为发布目标。 登录你的 Azure 帐户，选择一个现有的或新的网站，并记下**目标 URL**中的属性**连接**选项卡。 我们将此 url 称为你*后端终结点*本教程后面。 单击**发布**。
+8. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。 右键单击 **AppBackend** 项目，并选择“发布”。
+9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，会将此 URL 称为“后端终结点”。 单击“发布” 。
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
-现在，你已修改将应用后端发送仅*id*一个通知，您将更改你的 iOS 应用来处理该 id，并从后端检索富消息。
+已将应用后端修改为只发送通知的 *ID*，将更改 iOS 应用以处理该 ID，并从后端检索丰富的消息。
 
-1. 打开您的 iOS 项目，并通过转到主应用目标中启用远程通知**目标**部分。
-2. 单击**功能**，开启**后台模式**，并检查**远程通知**复选框。
+1. 打开 iOS 项目，并转到“目标”部分的主应用目标来启用远程通知。
+2. 单击“功能”，开启“背景模式”，并选中“远程通知”复选框。
    
     ![][IOS3]
-3. 转到**Main.storyboard**，并确保从具有视图控制器 （主页视图控制器中称为本教程）[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教程。
-4. 添加**导航控制器**到情节提要，并控件拖动到主页视图控制器以使其**根视图**的导航。 请确保**是初始视图控制器**导航控制器仅在属性中选中检查器。
-5. 添加**视图控制器**到情节提要并添加**图像视图**。 这是他们选择若要了解详细信息，请单击页面后，用户将看到的页。 将情节提要应如下所示：
+3. 转到 **Main.storyboard**，并确保具有[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教程中的视图控制器（本教程中称为“主页视图控制器”）。
+4. 将**导航控制器**添加到情节提要，按住 Ctrl 键并拖动到“主页视图控制器”以便使其作为导航的**根视图**。 请确保只选中“导航控制器”的“属性检查器”中的“是初始视图控制器”。
+5. 将**视图控制器**添加到情节提要并添加**映像视图**。 用户单击此通知选择了解详细信息后，会看到此页面。 Storyboard 应类似于：
    
     ![][IOS4]
-6. 单击**主页视图控制器**情节提要，并确保它同时具有**homeViewController**作为其**自定义类**和**情节提要 ID**标识检查器下方。
-7. 为作为图像视图控制器执行同样**imageViewController**。
-8. 然后，创建标题为一个新视图控制器类**imageViewController**来处理你刚刚创建的 UI。
-9. 在**imageViewController.h**，将以下代码添加到控制器的接口声明。 请务必控件拖动从情节提要图像视图对这些属性以链接两者：
+6. 单击情节提要中的“主页视图控制器”，并确保它将 **homeViewController** 作为其“自定义类”和标识检查器下方的“情节提要 ID”。
+7. 为映像视图控制器执行同样的操作，确保 **imageViewController** 充当相应的内容。
+8. 然后，创建一个名为 **imageViewController** 的新视图控制器类来处理刚创建的 UI。
+9. 在 **imageViewController.h** 中，将以下代码添加到控制器的接口声明中。 请务必按住 Ctrl 键并从情节提要图像视图拖动到这些属性中，以链接两者：
    
         @property (weak, nonatomic) IBOutlet UIImageView *myImage;
         @property (strong) UIImage* imagePayload;
-10. 在**imageViewController.m**，在末尾添加以下**viewDidload**:
+10. 在 **imageViewController.m** 中，在 **viewDidload** 末尾添加以下内容:
     
         // Display the UI Image in UI Image View
         [self.myImage setImage:self.imagePayload];
-11. 在**AppDelegate.m**，导入你创建的图像控制器：
+11. 在 **AppDelegate.m** 中，导入已创建的映像控制器：
     
         #import "imageViewController.h"
-12. 添加接口部分使用以下声明：
+12. 使用以下声明添加接口部分：
     
         @interface AppDelegate ()
     
@@ -169,7 +169,7 @@ ms.lasthandoff: 07/11/2017
         - (void)redirectToImageViewWithImage: (UIImage *)img;
     
         @end
-13. 在**AppDelegate**，请确保你的应用程序中的无提示通知的注册**应用程序： didFinishLaunchingWithOptions**:
+13. 在 **AppDelegate** 中，请确保应用在 **application: didFinishLaunchingWithOptions** 中注册了无提示通知：
     
         // Software version
         self.iOS8 = [[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)] && [[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)];
@@ -211,14 +211,14 @@ ms.lasthandoff: 07/11/2017
 
         return YES;
 
-1. 在以下实现中的替代**应用程序： didRegisterForRemoteNotificationsWithDeviceToken**以考虑情节提要 UI 更改帐户：
+1. 在以下实现中替代 **application:didRegisterForRemoteNotificationsWithDeviceToken** 以考虑情节提要 UI 更改情况：
    
        // Access navigation controller which is at the root of window
        UINavigationController *nc = (UINavigationController *)self.window.rootViewController;
        // Get home view controller from stack on navigation controller
        homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
        hvc.deviceToken = deviceToken;
-2. 然后，添加以下方法**AppDelegate.m**以从你的终结点检索图像，并在检索完成后发送本地通知。 请确保将占位符`{backend endpoint}`与后端终结点：
+2. 然后，将以下方法添加到 **AppDelegate.m**，从终结点检索映像，并在检索完成后发送本地通知。 请确保将占位符 `{backend endpoint}` 替换为后端终结点：
    
        NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
    
@@ -297,7 +297,7 @@ ms.lasthandoff: 07/11/2017
            }
            // Add "else if" here to handle more types of rich content such as url, sound files, etc.
        }
-3. 通过打开图像视图控制器处理上述本地通知**AppDelegate.m**使用以下方法：
+3. 使用以下方法打开 **AppDelegate.m** 中的映像视图控制器，处理上述本地通知：
    
        // Helper: redirect users to image view controller
        - (void)redirectToImageViewWithImage: (UIImage *)img {
@@ -346,10 +346,10 @@ ms.lasthandoff: 07/11/2017
        }
 
 ## <a name="run-the-application"></a>运行应用程序
-1. 在 XCode 中，运行在物理 iOS 设备 （推送通知将无法工作在模拟器中） 上的应用。
-2. 在 iOS 应用 UI 中，输入用户名和密码相同的值进行身份验证和单击**Log In**。
-3. 单击**发送推送**，你应看到应用内警报。 如果你单击**详细**，你将转到您选择要包含在应用后端中的图像。
-4. 您也可以单击**发送推送**并立即按下你的设备的主页按钮。 在几分钟后，您将收到一条推送通知。 如果你在其上点击或单击的详细信息，你将转到你的应用和富图像内容。
+1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知将无法在模拟器中正常工作）。
+2. 在 iOS 应用 UI 中，输入相同值的用户名和密码进行身份验证，并单击“登录”。
+3. 单击“发送推送”，应看到应用内警报。 如果单击“详细信息”，会转到选择要包括在应用后端中的映像。
+4. 也可以单击“发送推送”并立即按下设备的主页按钮。 几分钟后会收到推送通知。 如果点击推送通知或单击“详细信息”，会转到应用和富图像内容。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

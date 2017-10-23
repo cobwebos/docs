@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 1dfa93643f45a96ded3fd022aa8b1c71d487acb4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Storm on HDInsight 和 Azure Data Lake Store 性能优化指南
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 
 - **最大 Spout 挂起时间：topology.max.spout.pending**。 此设置确定任意时间每个 Spout 线程的进行中元组数（尚未在拓扑中的所有节点上确认）。
 
- 一种不错的计算方式是评估每个元组的大小。 然后找出多少内存一个 spout 线程都有。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
+ 一种不错的计算方式是评估每个元组的大小。 然后算出一个 Spout 线程具有的内存量。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
 
 ## <a name="tune-the-bolt"></a>优化 Bolt
 向 Data Lake Store 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小达到此值时，才执行刷新或 hsync()。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Store 驱动程序会自动执行这种缓冲。
@@ -122,7 +122,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="troubleshoot-common-problems"></a>排查常见问题
 下面是一些常见的故障排除方案。
-* **大量元组超时。** 检查拓扑中的每个节点，确定瓶颈所在。 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
+* **大量元组超时。**检查拓扑中的每个节点，确定瓶颈所在。 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
 
 * **进程执行延迟总计较高，但 Bolt 进程延迟较低。** 此情况下，可能不会快速确认元组。 请检查是否有足够数量的确认器。 另一种可能是元组在队列中等待 Bolt 处理的时间太长。 请减小最大 Spout 挂起时间。
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 07/11/2017
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. In **Ambari** > **Storm** > **Config** > **Advanced storm-worker-log4j**, change **&lt;root level="info"&gt;** to **&lt;root level=”debug”&gt;**. 重新启动所有节点/服务使配置生效。
+1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;**。 重新启动所有节点/服务使配置生效。
 2. 监视辅助节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Store 限制异常。
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
 ms.openlocfilehash: 7e1dad18ff0ae9a9102b789b2cb32e7b96ed3d38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 的集成
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ServiceChannel 测试用户](#creating-a-servicechannel-test-user)** -若要测试 Azure AD 单一登录与 Britta 人 Simon。
+3. **[创建 ServiceChannel 测试用户](#creating-a-servicechannel-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 07/11/2017
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 请联系 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)来获取这些值。
 
-4. ServiceChannel 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 **NameIdentifier （用户标识符）**为唯一的必填的声明，默认值为**user.userprincipalname**但 ServiceChannel 需要此项可使用映射**user.mail**。 如果打算启用“即时”用户预配，则应当添加以下声明，如下所示。 **Role** 声明需要映射到包含该用户的角色的 **user.assignedroles**。  
+4. ServiceChannel 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 **NameIdentifier（用户标识符）**是唯一的强制性声明，默认值为 **user.userprincipalname**，但 ServiceChannel 希望将其映射为 **user.mail**。 如果打算启用“即时”用户预配，则应当添加以下声明，如下所示。 **Role** 声明需要映射到包含该用户的角色的 **user.assignedroles**。  
 
     有关声明的详细指导，可以参考[此处的](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) ServiceChannel 指南。
     

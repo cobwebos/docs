@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
+ms.openlocfilehash: 412fc8b76d2b5ac45532d3ccb7a2ab7361d53596
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 7f4981feb0b2f524bab095d76000e01aa88bc81f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Hadoop 组件和版本？
 
@@ -98,7 +97,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 ## <a name="hdinsight-windows-retirement"></a>HDInsight Windows 停用
 Microsoft Azure HDInsight 版本 3.3 是 Windows 上的最新 HDInsight 版本。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 如果在 Windows 上具有 HDInsight 3.3 或更低版本的群集，则必须在 2018 年 7 月 31 日之前迁移到 Linux 上的 HDInsight（HDInsight 版本 3.5 或更高版本）。 迁移到 Linux OS 后，仍然能够创建 HDInsight 群集或调整其大小。 对 Windows 上的 HDInsight 版本 3.3 的支持已于 2016 年 6 月 27 日到期。
 
-从 HDInsight 版本 3.4 开始，Microsoft 仅在 Linux OS 上发行了 HDInsight。 因此，HDInsight 中的某些组件仅可供 Linux 使用。 这包括 Apache Ranger、Kafka、Interactive Hive、Spark、HDInsight 应用程序以及作为主文件系统的 Azure Data Lake Store。 HDInsight 的将来版本仅在 Linux OS 上可用。 Windows 上的 HDInsight 将不会有任何将来版本。 
+从 HDInsight 版本 3.4 开始，Microsoft 仅在 Linux OS 上发行了 HDInsight。 因此，HDInsight 中的某些组件仅可供 Linux 使用。 这包括 Apache Ranger、Kafka、交互式查询、Spark、HDInsight 应用程序以及作为主文件系统的 Azure Data Lake Store。 HDInsight 的将来版本仅在 Linux OS 上可用。 Windows 上的 HDInsight 将不会有任何将来版本。 
 
 ## <a name="faqs"></a>常见问题
 
@@ -135,7 +134,7 @@ HDInsight Windows 群集将按现样运行，但是你将无法创建新的 HDIn
 * 能够利用 Hadoop 和其他大数据技术的开源社区练习主动开发
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>Linux 上的 HDInsight 是否比 Windows 上的 HDInsight 提供了更多的功能？
-从 HDInsight 版本 3.4 开始，Microsoft 仅在 Linux OS 上发行了 HDInsight。 因此，HDInsight 中的某些组件仅可供 Linux 使用。 这包括 Apache Ranger、Kafka、Interactive Hive、Spark、HDInsight 应用程序以及作为主文件系统的 Azure Data Lake Store。 
+从 HDInsight 版本 3.4 开始，Microsoft 仅在 Linux OS 上发行了 HDInsight。 因此，HDInsight 中的某些组件仅可供 Linux 使用。 这包括 Apache Ranger、Kafka、交互式查询、Spark、HDInsight 应用程序以及作为主文件系统的 Azure Data Lake Store。 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight 群集版本的服务级别协议
 服务级别协议 (SLA) 是按“支持窗口”定义的。 支持窗口是 HDInsight 群集版本受 Microsoft 客户服务和支持部门支持的时间段。 如果版本的“支持到期日期”已过，则 HDInsight 处于支持窗口外。 有关支持的版本的详细信息，请参阅[支持的 HDInsight 群集版本](hdinsight-migrate-from-windows-to-linux.md)列表。 指定的 HDInsight 版本 X 的支持到期日期（在提供更新的 X+1 版本后）为按以下公式计算所得时间的较晚者：  
@@ -187,7 +186,7 @@ Azure HDInsight 提供了两个类别的大数据云产品/服务：_标准_和_
 | HBase |是 |否 |
 | Storm |是 |否 |
 | R Server |是 |否 |
-| 交互式 Hive（预览版） |是 |否 |
+| 交互式查询 |是 |否 |
 | Kafka（预览版） |是 |否 | 
 
 ### <a name="support-for-azure-data-lake-store-in-hdinsight-premium"></a>HDInsight Premium 对 Azure Data Lake Store 的支持
@@ -262,4 +261,3 @@ HDInsight Premium 群集不支持将 Azure Data Lake Store 用作主存储。 �
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [zookeeper]: http://zookeeper.apache.org/
-

@@ -16,16 +16,16 @@ ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 57f465df99ac234466459b8031f61805d8334b59
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-into-an-ios-app"></a>将 Azure AD 集成到 iOS 应用中
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 > [!TIP]
-> 试用我们新预览版[开发人员门户](https://identity.microsoft.com/Docs/iOS)来帮助你在几分钟内与 Azure Active Directory 获取启动并运行 ！  开发人员门户可指导完成注册应用并将 Azure AD 集成到代码的整个过程。  完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。 
+> 试用新的[开发人员门户](https://identity.microsoft.com/Docs/iOS)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure Active Directory！  开发人员门户可指导完成注册应用并将 Azure AD 集成到代码的整个过程。  完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。 
 > 
 > 
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/11/2017
 
 
 > [!TIP]
-> 试用我们新预览版[开发人员门户](https://identity.microsoft.com/Docs/iOS)来帮助你使用 Azure AD 在几分钟内获取启动并正在运行。 开发人员门户可指导完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。 
+> 试用新的[开发人员门户](https://identity.microsoft.com/Docs/iOS)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure AD。 开发人员门户可指导完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。 
 > 
 > 
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 07/11/2017
 <app-scheme>://<bundle-id>
 ```
 
-* **aap-scheme** - 已在 XCode 项目中注册。 它是其他应用程序与你联系的方式。 可以在 Info.plist -> URL types -> URL Identifier 下找到此信息。 如果尚未配置一个或多个方案，则你应该创建一个。
+* **aap-scheme** - 已在 XCode 项目中注册。 它是其他应用程序与你联系的方式。 可以在 Info.plist -> URL types -> URL Identifier 下找到此信息。 如果尚未配置一个或多个重定向 URI，则应该创建一个。
 * **bundle-id** - 这是在 XCode 中项目设置的“ID”下找到的捆绑标识符。
 
 此快速入门代码的一个示例：***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
@@ -102,10 +102,10 @@ ms.lasthandoff: 07/11/2017
     $ open QuickStart.xcworkspace
     ```
 
-4. 在快速入门项目中，打开 plist 文件 `settings.plist`。  替换部分以反映你在 Azure 门户中输入的值中的元素的值。 每当使用 ADAL 时，代码都会引用这些值。
+4. 在快速入门项目中，打开 plist 文件 `settings.plist`。  替换节中的元素值，以反映你在 Azure 门户中输入的值。 每当使用 ADAL 时，代码都会引用这些值。
   * `tenant` 是 Azure AD 租户的域，例如 contoso.onmicrosoft.com。
   * `clientId` 是从门户复制的应用程序的客户端 ID。
-  * `redirectUri`是您在门户中注册的重定向 URL。
+  * `redirectUri` 是你在门户中注册的重定向 URL。
 
 ## <a name="4----use-adal-to-get-tokens-from-azure-ad"></a>4.  使用 ADAL 从 Azure AD 获取令牌
 ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 completionBlock `+(void) getToken : `，ADAL 就会负责其余的工作。  
@@ -231,7 +231,7 @@ ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只
 >
 
 ## <a name="5-build-and-run-the-application"></a>5.构建并运行应用程序
-祝贺你！ 现在，已有了一个可正常工作的 iOS 应用程序，它可以对用户进行身份验证，使用 OAuth 2.0 安全地调用 Web API，并获取有关用户的基本信息。  如果尚未这样做，可以在租户中填充一些用户。  启动快速入门应用，并使用这些用户之一进行登录。  根据用户的 UPN 搜索其他用户。  关闭应用程序中，然后再次启动它。  请注意，用户的会话将保持不变。
+祝贺你！ 现在，已有了一个可正常工作的 iOS 应用程序，它可以对用户进行身份验证，使用 OAuth 2.0 安全地调用 Web API，并获取有关用户的基本信息。  如果尚未这样做，可以在租户中填充一些用户。  启动快速入门应用，并使用这些用户之一进行登录。  根据用户的 UPN 搜索其他用户。  关闭应用，然后重新启动它。  请注意，用户的会话将保持不变。
 
 使用 ADAL 可以方便地将所有这些常见标识功能合并到应用程序中。  它会负责所有的繁琐工作，例如缓存管理、OAuth 协议支持、向用户显示用于登录的 UI，以及刷新过期令牌。  只需要真正了解一个 API 调用，即 `getToken`。
 

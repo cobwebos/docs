@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 ms.openlocfilehash: f36f16a7bb00ace9fd5164eb38ba77f015f22f5c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>在托管域上配置 Kerberos 约束委派 (KCD)
 许多应用程序需要在用户的上下文中访问资源。 Active Directory 支持实现此用例的称为“Kerberos 委派”的机制。 而且，可以限制委派，以便只能在用户的上下文中访问特定资源。 Azure AD 域服务托管域不同于传统的 Active Directory 域，因为它们更安全地锁定。
@@ -43,7 +43,7 @@ Kerberos 约束委派 (KCD) 限制指定的服务器可代表用户操作的服�
 可使用 PowerShell 配置基于资源的 KCD。 可以使用 Set-ADComputer 或 Set-ADUser cmdlet，具体取决于所模拟的帐户是计算机帐户还是用户帐户/服务帐户。
 
 ### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>在托管域上为计算机帐户配置基于资源的 KCD
-假定你已在计算机上运行的 web 应用 contoso100-webapp.contoso100.com。 它需要在域用户的上下文中访问资源（在“contoso100-api.contoso100.com”上运行的 Web API）。 下面是为此方案设置基于资源的 KCD 的方法。
+假定有一个在计算机“contoso100-webapp.contoso100.com”上运行的 Web 应用。 它需要在域用户的上下文中访问资源（在“contoso100-api.contoso100.com”上运行的 Web API）。 下面是为此方案设置基于资源的 KCD 的方法。
 
 ```
 $ImpersonatingAccount = Get-ADComputer -Identity contoso100-webapp.contoso100.com
@@ -51,7 +51,7 @@ Set-ADComputer contoso100-api.contoso100.com -PrincipalsAllowedToDelegateToAccou
 ```
 
 ### <a name="configure-resource-based-kcd-for-a-user-account-on-a-managed-domain"></a>在托管域上为用户帐户配置基于资源的 KCD
-假定你已作为服务帐户 appsvc 运行的 web 应用，它需要访问资源 (web API 作为服务帐户的 backendsvc 运行) 的域用户的上下文中。 下面是为此方案设置基于资源的 KCD 的方法。
+假定有一个以服务帐户“appsvc”的形式运行的 Web 应用，它需要在域用户的上下文中访问资源（以服务帐户“backendsvc”的形式运行的 Web API）。 下面是为此方案设置基于资源的 KCD 的方法。
 
 ```
 $ImpersonatingAccount = Get-ADUser -Identity appsvc

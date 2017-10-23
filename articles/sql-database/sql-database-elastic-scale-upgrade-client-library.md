@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: ddove
 ms.openlocfilehash: 7e28d128645e856c0efa6e4f78d8f9f36982a76c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>升级应用以使用最新的弹性数据库客户端库
 可通过 Visual Studio 中 NuGetand 和 NuGetPackage 管理器界面获取[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的新版本。 升级包含客户端库的 bug 修复和新功能支持。
@@ -46,9 +46,9 @@ ms.lasthandoff: 07/11/2017
 
 ***选项 1：使用 PowerShell 升级元数据***
 
-1. 在[此处](http://nuget.org/nuget.exe)下载 NuGet 的最新命令行实用工具并将其保存到一个文件夹。 
+1. 在[此处](http://nuget.org/nuget.exe)下载 Nuget 的最新命令行实用工具并将其保存到一个文件夹。 
 2. 打开命令提示符，导航到同一文件夹，并发出命令：`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. 导航到包含刚下载的新客户端 DLL 版本的子文件夹，例如： `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+3. 导航到包含刚下载的新客户端 DLL 版本的子文件夹，例如：`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. 从[脚本中心](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)下载弹性数据库客户端升级 scriptlet，并将其保存到包含 DLL 的同一文件夹中。
 5. 在命令提示符下从该文件夹运行“PowerShell .\upgrade.ps1”，并按照提示进行操作。
 

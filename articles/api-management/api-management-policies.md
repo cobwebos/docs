@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: 89d76c5d00f8a438cfec7fd1568d4735f0a65327
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
@@ -54,7 +53,7 @@ ms.lasthandoff: 01/12/2017
   
     -   [记录到事件中心](api-management-advanced-policies.md#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的消息目标。  
   
-    -   [重试](api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统将根据指定的时间间隔重复，直到执行指定的重试计数为止。  
+    -   [重试](api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会根据指定的时间间隔重复，直到执行指定的重试计数为止。  
   
     -   [返回响应](api-management-advanced-policies.md#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。  
   
@@ -122,4 +121,3 @@ ms.lasthandoff: 01/12/2017
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-

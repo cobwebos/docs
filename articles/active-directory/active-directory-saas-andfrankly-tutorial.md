@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
 ms.openlocfilehash: ea18a9f9bff258337a3de6d7703b4c548efa37df
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>教程：Azure Active Directory 与 &frankly 集成
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-frankly-from-the-gallery"></a>从库中添加 &frankly
-若要配置的和坦白到 Azure AD 集成，你需要添加和坦白从库添加到你的托管的 SaaS 应用的列表。
+若要配置 &frankly 与 Azure AD 的集成，需要从库中将 &frankly 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 &frankly，请执行以下步骤：**
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建和坦白测试用户](#creating-a-frankly-test-user)** -若要具有 Britta 人 Simon 副本 & 坦白地说，它是链接到用户的 Azure AD 表示形式。
+3. **[创建 &frankly 测试用户](#creating-a-frankly-test-user)** - 在 &frankly 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -168,7 +168,7 @@ ms.lasthandoff: 07/11/2017
  
 ### <a name="creating-a-frankly-test-user"></a>创建 &frankly 测试用户
 
-在本部分中，你将创建一个名为 Britta 人 Simon & 坦白用户。 请与 [andfrankly 支持团队](mailto:help@andfrankly.com)协作，以将用户添加到 &frankly 平台。
+在本部分中，将在 &frankly 中创建一个名为“Britta Simon”的用户。 请与 [andfrankly 支持团队](mailto:help@andfrankly.com)协作，以将用户添加到 &frankly 平台。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -176,7 +176,7 @@ ms.lasthandoff: 07/11/2017
 
 ![分配用户][200] 
 
-**若要为 （&） 坦白地说，将分配 Britta 人 Simon，执行以下步骤：**
+**若要将 Britta Simon 分配到 &frankly，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
 ms.openlocfilehash: 84ed2adcc2d49ddbb6bd2e9cc3b93b967ebed063
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>教程：Azure Active Directory 与 Lynda.com 的集成
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Lynda.com 测试用户](#creating-a-lyndacom-test-user)** -若要链接到用户的 Azure AD 表示的 Lynda.com 中具有 Britta 人 Simon 的副本。
+3. **[创建 Lynda.com 测试用户](#creating-a-lyndacom-test-user)** - 在 Lynda.com 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 07/11/2017
  
 ### <a name="creating-a-lyndacom-test-user"></a>创建 Lynda.com 测试用户
 
-没有为你用于配置用户设置到 Lynda.com 操作项。  
+没有操作项可用于配置预配到 Lynda.com 的用户。  
 当已分配的用户尝试使用访问面板登录到 Lynda.com 时，Lynda.com 会检查该用户是否存在。  
 
 如果尚无用户帐户可用，Lynda.com 会自动创建该帐户。

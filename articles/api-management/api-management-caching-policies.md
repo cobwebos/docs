@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: c7604fdb948a2f4d2adca5d6821d9ea36e96dae6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -124,7 +123,7 @@ ms.lasthandoff: 01/12/2017
 |vary-by-developer-groups|设置为 `true` 即可按用户角色缓存响应。|否|false|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：**入站  
   
@@ -237,7 +236,7 @@ ms.lasthandoff: 01/12/2017
   
 |Name|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|default-value|在缓存密钥查找未命中的情况下，将会分配给变量的值。 如果未指定此属性，则会分 `null`。|否|`null`|  
+|default-value|在缓存密钥查找未命中的情况下，会分配给变量的值。 如果未指定此属性，则会分 `null`。|否|`null`|  
 |key|要在查找中使用的缓存密钥值。|是|不适用|  
 |variable-name|在查找成功的情况下，会向其分配查找值的[上下文变量](api-management-policy-expressions.md#ContextVariables)的名称。 如果查找未命中，则会为此变量分配 `default-value` 属性的值或 `null`（如果省略了 `default-value` 属性）。|是|不适用|  
   
@@ -280,8 +279,8 @@ ms.lasthandoff: 01/12/2017
   
 |Name|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|duration|将会根据提供的期间值（以秒为单位指定）将值缓存一段时间。|是|不适用|  
-|key|缓存密钥，将在其下存储值。|是|不适用|  
+|duration|会根据提供的期间值（以秒为单位指定）将值缓存一段时间。|是|不适用|  
+|key|缓存密钥，会在其下存储值。|是|不适用|  
 |value|要缓存的值。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  

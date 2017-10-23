@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
 ms.openlocfilehash: 18c5cd8eb4ca211f8ae2b8dd994c0e8c48625a2f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>教程：Azure Active Directory 与 Halosys 集成
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 07/11/2017
     ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_011.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，可以配置和测试 Azure AD 单一登录与 Halosys 基于一个名为"Britta 人 Simon"的测试用户。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Halosys 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Halosys 用户。 换句话说，需要在 Azure AD 用户与 Halosys 中相关用户之间建立链接关系。
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Halosys 测试用户](#creating-a-halosys-test-user)** -若要链接到的 Azure AD 表示形式她的 Halosys 中具有 Britta 人 Simon 的副本。
+3. **[创建 Halosys 测试用户](#creating-a-halosys-test-user)** - 在 Halosys 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -168,7 +168,7 @@ ms.lasthandoff: 07/11/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
 
-5. 上**告诉我们有关此用户的信息**对话框页上，执行以下步骤：![创建一个 Azure AD 的测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+5. 在“告诉我们有关此用户的信息”对话框页中，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
 
     a. 对于“用户类型”，选择“组织中的新用户”。
 

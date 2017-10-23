@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: kumud
+ms.openlocfilehash: 0ed8d3432a988c468260589cfe12090529c403d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 2728e8b1e190b4ecd0635925b96e97775564a2ee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure 负载均衡器标准版（预览版）概述
 
 将 Azure 负载均衡器标准 SKU 和公共 IP 标准 SKU 结合使用，可以构建高度可缩放且可靠的体系结构。  使用负载均衡器标准版的应用程序可以利用新的功能，此外，还能降级延迟、提高吞吐量，以及针对所有 TCP 和 UDP 应用程序的数百万个流进行缩放。
 
 >[!NOTE]
-> 负载均衡器标准 SKU 目前以预览版提供。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 请将正式版[负载均衡器基本 SKU](load-balancer-overview.md) 用于生产服务。
+> 负载均衡器标准 SKU 目前以预览版提供。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 请将正式版[负载均衡器基本 SKU](load-balancer-overview.md) 用于生产服务。  与此预览版关联的功能[可用性区域](https://aka.ms/availabilityzones)和 [HA 端口](https://aka.ms/haports)目前需要单独注册。 除了负载均衡器[标准预览版](#preview-sign-up)外，请按照相应说明注册。
 
 ## <a name="why-use-load-balancer-standard"></a>为何使用负载均衡器标准版
 
@@ -151,6 +149,8 @@ ms.lasthandoff: 09/29/2017
 #### <a name="zonal-deployments"></a>区域部署
 
 （可选）还可以通过定义一个区域前端来使前端与特定的区域相符。  区域前端仅由指定的单个可用性区域提供服务，与区域 VM 实例相结合时，可使资源与特定的区域相符。
+
+在特定区域中创建的公共 IP 地址将始终仅存在于该区域中。  不能更改公共 IP 地址的区域。  如果想要具有可附加到多个区域中的资源的公共 IP 地址，则应改为创建区域冗余的公共 IP。
 
 使用以下代码在可用性区域 1 中创建区域公共 IP 地址（请将“zones”和“sku”添加到任何现有的资源管理器模板）：
 
@@ -290,11 +290,11 @@ SKU 仅在 Azure 资源管理器部署模型中可用。  本预览版为负载�
 
 与提供多种分配方法的公共 IP 基本版不同，公共 IP 标准版始终为静态分配。
 
-在也提供可用性区域的区域中使用时，公共 IP 标准版会自动获得区域弹性，除非已声明为区域性。
+在也提供可用性区域的区域中使用时，公共 IP 标准版会自动获得区域弹性，除非已声明为区域性。  区域公共 IP 不能从一个区域更改为另一个区域。
 
 ## <a name="migration-between-skus"></a>SKU 之间的迁移
 
-若要从一个资源 SKU 迁移到另一个资源 SKU，请遵循以下步骤：
+SKU 不可变。  若要从一个资源 SKU 迁移到另一个资源 SKU，请遵循以下步骤：
 
 ### <a name="migrating-from-basic-to-standard-sku"></a>将基本 SKU 迁移到标准 SKU
 
@@ -374,7 +374,7 @@ Azure 的[网络服务限制](https://docs.microsoft.com/en-us/azure/azure-subsc
 >注册负载均衡器标准版功能最长可能需要一小时。
 
 >[!NOTE]
->若要配合负载均衡器和公共 IP 使用可用性区域，则还需要注册可用性区域预览版的订阅。
+>如果要将负载均衡器标准版与[可用性区域](https://aka.ms/availabilityzones)和 [HA 端口](https://aka.ms/haports)配合使用，需要对这些预览功能进行单独注册。  请按照相应的说明操作。
 
 ## <a name="pricing"></a>定价
 
@@ -401,5 +401,4 @@ Azure 的[网络服务限制](https://docs.microsoft.com/en-us/azure/azure-subsc
 - 详细了解[基本负载均衡器](load-balancer-overview.md)
 - 详细了解[可用性区域](../availability-zones/az-overview.md)
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 1f2dcd9a91bb6e883cbef06373c1acd98bf8d45f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 本教程会逐步指导在所有 Azure CDN 边缘节点上预加载缓存的内容。
 
 ## <a name="walkthrough"></a>演练
-1. 在[Azure 门户](https://portal.azure.com)，浏览到包含你想要预先加载的终结点的 CDN 配置文件。  配置文件边栏选项卡随即打开。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到包含要预加载的终结点的 CDN 配置文件。  配置文件边栏选项卡随即打开。
 2. 单击列表中的终结点。  终结点边栏选项卡打开。
 3. 从 CDN 终结点的边栏选项卡，单击“加载”按钮。
    

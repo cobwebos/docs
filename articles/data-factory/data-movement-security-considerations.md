@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
+ms.openlocfilehash: 0514710606b74db7c13f04e961347d215d2d283d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 00673cac31eb25bb8dd8228d6a36617c3812f5db
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 本文介绍了 Azure 数据工厂中数据移动服务用于保护数据的基本安全基础结构。 Azure 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
@@ -97,9 +95,9 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 1. 可以选择**在本地存储凭据**。 如果想要在自承载集成运行时本地加密并存储凭据，请遵循[在自承载集成运行时中加密凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据/凭据信息。 
 
-   使用 **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** cmdlet 可加密链接服务凭据/在链接服务中加密敏感详细信息。 然后，可以通过 **Set-AzureRmDataFactoryV2LinkedSevrice** cmdlet 使用返回的 JSON（结合 **connectionString** 中的 **EncryptedCredential** 元素）创建链接服务。  
+   使用 **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 可加密链接服务凭据/在链接服务中加密敏感详细信息。 然后，可以通过 **Set-AzureRmDataFactoryV2LinkedSevrice** cmdlet 使用返回的 JSON（结合 **connectionString** 中的 **EncryptedCredential** 元素）创建链接服务。  
 
-2. 如果不根据上述步骤中所述使用 **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** cmdlet，而是结合 JSON 中内联的连接字符串/凭据直接使用 **Set-AzureRmDataFactoryV2LinkedSevrice** cmdlet，则链接服务会**在 Azure 数据工厂托管存储中加密并存储**。 敏感信息仍由证书加密，这些证书由 Microsoft 管理。
+2. 如果不根据上述步骤中所述使用 **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** cmdlet，而是结合 JSON 中内联的连接字符串/凭据直接使用 **Set-AzureRmDataFactoryV2LinkedSevrice** cmdlet，则链接服务会**在 Azure 数据工厂托管存储中加密并存储**。 敏感信息仍由证书加密，这些证书由 Microsoft 管理。
 
 
 
@@ -186,4 +184,3 @@ IPSec VPN：
 有关复制活动性能的信息，请参阅[复制活动性能和优化指南](copy-activity-performance.md)。
 
  
-

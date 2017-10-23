@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/05/2017
+ms.openlocfilehash: 4e18a413a0559b1ddebecf1b29722d21ef35c337
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5fa9926e2230b285a2598e5d43048d6591bd1b03
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>如何配置 Azure 机器学习工作台以用于 IDE 
 
 Azure 机器学习工作台可配置为用于常用的 Python IDE（集成开发环境）。 它支持数据科学开发体验在数据准备、代码编写、运行跟踪和操作化之间顺畅移动。 目前，支持的 IDE 是：
@@ -43,8 +41,7 @@ Azure 机器学习工作台可配置为用于常用的 Python IDE（集成开发
 * macOS - 选择 .app 路径（例如“/Applications/PyCharm CE.app”），应用会为你追加路径的其余部分。 默认情况下，可执行文件的完整路径是 `/Applications/PyCharm CE.app/Contents/MacOS/pycharm`。 还可以在 bin 文件夹 `/usr/local/bin/charm` 中查找 PyCharm
 
 ## <a name="open-project-in-ide"></a>在 IDE 中打开项目 
-完成配置后，通过打开“文件”菜单并选择“打开项目 (<IDE_Name>)”，可以在 IDE 中打开 Azure 机器学习项目
-
+完成配置后，通过打开 Azure Machine Learning Workbench 中的“文件”菜单并单击“打开项目(<IDE_Name>)”，可以打开 Azure 机器学习项目。 此操作将在配置的 IDE 中打开当前活动项目。 _注意：如果你不在项目中，“打开项目(<IDE_Name>)”将禁用。_
 
 ## <a name="configuring-the-integrated-terminal-in-visual-studio-code"></a>在 Visual Studio Code 中配置集成终端
 
@@ -56,5 +53,4 @@ _是否允许 shell `C:\windows\System32\cmd.exe`（定义为工作区设置）�
 回答 `yes` 以允许将 shell 配置为与 Azure ML 工作台命令行接口无缝协作。
 
 ### <a name="mac"></a>Mac
-若要在 Mac 上使用 Visual Studio Code 的集成终端运行 `az` 命令，需要手动将 `PATH` 设置为与项目的 `.vscode/settings.json` 文件中的 `PATH` 相同的值。
-
+若要在 Mac 上使用 Visual Studio Code 的集成终端运行 `az` 命令，需要手动将 `PATH` 设置为与项目的 `.vscode/settings.json` 文件中键 `terminal.integrated.env.osx` 下的 `PATH` 相同的值。 可以通过在终端中运行以下命令来执行此操作：`PATH=<PATH in .vscode/settings>`

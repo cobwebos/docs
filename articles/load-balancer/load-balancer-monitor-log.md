@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 638ecd5e02889bd8cb6e7429dfcec335feaac4a3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 36b9379f88ce024c1dcbf9977a873d95076d10df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="log-analytics-for-azure-load-balancer"></a>Azure 负载均衡器的 Log Analytics
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
@@ -39,15 +37,15 @@ ms.lasthandoff: 03/29/2017
 
 每个 Resource Manager 资源都会自动启用审核日志记录。 需启用事件和运行状况探测日志记录才能开始收集通过这些日志提供的数据。 使用以下步骤启用日志记录。
 
-登录到 [Azure 门户](http://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](load-balancer-get-started-internet-arm-ps.md)，然后再继续。
+登录到 [Azure 门户](http://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](load-balancer-get-started-internet-arm-ps.md)，再继续。
 
 1. 在门户中，单击“浏览”。
 2. 选择“负载均衡器”。
 
     ![门户 - 负载均衡器](./media/load-balancer-monitor-log/load-balancer-browse.png)
 
-3. 选择现有的负载均衡器，然后单击“所有设置”。
-4. 在负载均衡器名称下的对话框右侧，滚动到“监视”，然后单击“诊断”。
+3. 选择现有的负载均衡器，并单击“所有设置”。
+4. 在负载均衡器名称下的对话框右侧，滚动到“监视”，并单击“诊断”。
 
     ![门户 - 负载均衡器 - 设置](./media/load-balancer-monitor-log/load-balancer-settings.png)
 
@@ -90,7 +88,7 @@ JSON 输出中显示的 *eventname* 属性将说明负载均衡器创建警报�
 
 ## <a name="health-probe-log"></a>运行状况探测日志
 
-只有你按照上述详细步骤基于每个负载均衡器启用了该日志，才会生成该日志。 数据存储在你启用日志记录时指定的存储帐户中。 创建了名为“insights-logs-loadbalancerprobehealthstatus”的容器并记录了以下数据：
+仅当按如上所述基于每个负载均衡器启用此日志后，才会生成此日志。 数据存储在启用日志记录时指定的存储帐户中。 创建了名为“insights-logs-loadbalancerprobehealthstatus”的容器并记录了以下数据：
 
 ```json
 {
@@ -130,24 +128,23 @@ JSON 输出在属性字段显示了探测运行状况的基本信息。 *dipDown
 
 ## <a name="view-and-analyze-the-audit-log"></a>查看和分析审核日志
 
-你可以使用任何以下方法查看和分析审核日志数据：
+可以使用任何以下方法查看和分析审核日志数据：
 
-* **Azure 工具：**通过 Azure PowerShell、Azure 命令行界面 (CLI)、Azure REST API 或 Azure 预览门户检索审计日志中的信息。 [使用资源管理器审核操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
+* **Azure 工具：**通过 Azure PowerShell、Azure 命令行界面 (CLI)、Azure REST API 或 Azure 预览门户检索审计日志中的信息。 [使用 Resource Manager 审核操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
 * **Power BI：**如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 使用[适用于 Power BI 的 Azure 审核日志内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)，可以借助预配置的仪表板分析数据，也可以自定义视图来满足自己的要求。
 
 ## <a name="view-and-analyze-the-health-probe-and-event-log"></a>查看和分析运行状况探测和事件日志
 
-你需要连接到你的存储帐户并检索事件和运行状况探测日志的 JSON 日志项。 下载 JSON 文件后，你可以将它们转换为 CSV 并在 Excel、PowerBI 或任何其他数据可视化工具中查看。
+需要连接到存储帐户并检索事件和运行状况探测日志的 JSON 日志项。 下载 JSON 文件后，可以将它们转换为 CSV 并在 Excel、PowerBI 或任何其他数据可视化工具中查看。
 
 > [!TIP]
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [使用 Power BI 直观显示你的 Azure 审核日志](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)博客文章。
+* [使用 Power BI 直观显示 Azure 审核日志](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)博客文章。
 * [查看和分析 Power BI 中的 Azure 审核日志及更多内容](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)博客文章。
 
 ## <a name="next-steps"></a>后续步骤
 
 [了解负载均衡器探测](load-balancer-custom-probe-overview.md)
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkd;anilmur
 ms.openlocfilehash: 42b012fb98bd0504c931ce391d63aecca8c3d311
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ ms.lasthandoff: 08/29/2017
 >
 
 ## <a id=configure_tricaster_rtmp></a>配置 NewTek TriCaster 编码器
-本教程中使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
+在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
 **视频**：
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 08/29/2017
 7. 选择该文件，并按“确定”。
 
     上传该配置文件以后，即可继续执行下一步。
-8. 获取频道的输入 URL，以便将其分配给 Tricaster 的“RTMP 终结点”。
+8. 获取频道的输入 URL，以便将其分配给 Tricaster “RTMP 终结点”。
 
     导航回 AMSE 工具，查看频道完成状态。 一旦状态从“正在启动”变为“正在运行”，即可获取输入 URL。
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 08/29/2017
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
 9. 在 Tricaster 项目中，将此信息粘贴到“闪存服务器”下的“位置”字段。 另请在“流 ID”字段中指定一个流名称。
 
-    如果流信息已添加到 FMLE 配置文件，则也可以通过一下方式将其导入此部分：单击“导入设置” ，导航到已保存的 FMLE 配置文件，然后单击“确定” 。 相关的“闪存服务器”字段应使用 FMLE 中的信息进行填充。
+    如果流信息已添加到 FMLE 配置文件中，则也可通过以下方式将其导入此部分：单击“导入设置”，导航到已保存的 FMLE 配置文件，然后单击“确定”。 相关的“闪存服务器”字段应使用 FMLE 中的信息进行填充。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster7.png)
 10. 完成后，单击屏幕底部的“确定”。 当输入到 Tricaster 中的视频和音频已就绪时，则可单击“流”按钮开始将其流式传输到 AMS。
@@ -150,7 +150,7 @@ ms.lasthandoff: 08/29/2017
     >创建节目需要的时间比创建频道需要的时间少。
         
 5. 可以运行节目以后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，并选择“使用 Azure Media Player”。  
-6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（或通过菜单从“节目信息和设置”选项检索此信息）。
+6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（也可通过菜单从“节目信息和设置”选项检索此信息）。
 
 现在可以将流嵌入到播放器中，也可将其分发给受众进行实时观看。  
 

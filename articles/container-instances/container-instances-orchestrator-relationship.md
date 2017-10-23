@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: b960d56188abf102cf4a8894582203205eaa9a03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
-ms.openlocfilehash: 6f0a1e5263a034e825d4c12860fd6f97a4c556c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
 由于规模较小并面向应用程序，容器非常适合敏捷交付环境和基于微服务的体系结构。 自动化和管理大量容器及其交互方式的任务称为*协调*。 常见的容器协调器包括 Kubernetes、DC/OS 和 Docker Swarm，[Azure 容器服务](https://docs.microsoft.com/azure/container-service/)包含所有这些容器。
@@ -66,9 +64,9 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>示例实现：适用于 Kubernetes 的 Azure 容器实例连接器
 
-为了演示容器协调平台如何与 Azure 容器实例集成，我们已开始构建一个[适用于 Kubernetes 的示例连接器][aci-connector-k8s]。 
+为了演示容器协调平台如何与 Azure 容器实例集成，我们已开始构建一个[适用于 Kubernetes 的示例连接器][aci-connector-k8s]。
 
-适用于 Kubernetes 的连接器通过注册为具有无限容器的节点，并在 Azure 容器实例中以容器组的形式调度 [pod][pod-doc] 创建，来模拟 [kubelet][kubelet-doc]。 
+适用于 Kubernetes 的连接器通过注册为具有无限容器的节点，并在 Azure 容器实例中以容器组的形式调度 [pod][pod-doc] 创建，来模拟 [kubelet][kubelet-doc]。
 
 <!-- ![ACI Connector for Kubernetes][aci-connector-k8s-gif] -->
 

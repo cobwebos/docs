@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
 ms.openlocfilehash: 44ff168599e9078506e1afdd0f1dc4657ef0964d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C：使用 OAuth 2.0 隐式流的单页应用登录
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 
 Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，你可以使用 OAuth 2.0 向应用添加用户体验，例如注册、登录和配置文件管理。 在本文中，我们将介绍如何使用隐式流和 Azure AD 在单页应用程序中实现上述每种体验。 为了帮助你开始操作，请查看我们的 [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) 和 [Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) 示例。
 
-在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 fabrikamb2c.onmicrosoft.com。 此外，我们还使用自己的示例应用程序和策略。 你可以使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
+在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 fabrikamb2c.onmicrosoft.com。此外，我们还使用自己的示例应用程序和策略。 你可以使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
 了解如何[获取自己的 Azure AD B2C 目录、应用程序和策略](#use-your-own-b2c-tenant)。
 
 
@@ -147,7 +147,7 @@ error=access_denied
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 收到 ID 令牌并不表示可以对用户进行身份验证。 还必须根据应用的要求，验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。
 
-许多开放源代码库是可用于验证 Jwt，具体取决于你希望使用的语言。 请考虑浏览可用的开放源代码库，而不是实现自己的验证逻辑。 可以使用本文中的信息了解如何正确使用这些库。
+许多开放源代码库都可用于验证 JWT，具体取决于首选使用的语言。 请考虑浏览可用的开放源代码库，而不是实现自己的验证逻辑。 可以使用本文中的信息了解如何正确使用这些库。
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终结点在运行时提取 Azure AD B2C 的相关信息。 此信息包括终结点、令牌内容和令牌签名密钥。 Azure AD B2C 租户中的每个策略都有一个 JSON 元数据文档。 例如，fabrikamb2c.onmicrosoft.com 租户中的 b2c_1_sign_in 策略的元数据文档位于以下位置：
 
@@ -168,7 +168,7 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终�
 * 验证 `aud` 声明以确保已为应用颁发 ID 令牌。 其值应为应用的应用程序 ID。
 * 验证 `iat` 和 `exp` 声明以确保 ID 令牌未过期。
 
-其他一些需要执行的验证在 [OpenID Connect 核心规范](http://openid.net/specs/openid-connect-core-1_0.html)中有详细说明。 根据情况，可能还希望验证其他声明。 一些常见的验证包括：
+其他一些需要执行的验证在 [OpenID Connect 核心规范](http://openid.net/specs/openid-connect-core-1_0.html)中有详细说明。根据情况，可能还希望验证其他声明。 一些常见的验证包括：
 
 * 确保用户或组织已注册应用。
 * 确保用户拥有正确的授权和权限。
@@ -256,7 +256,7 @@ error=user_authentication_required
 ID 令牌和访问令牌在较短时间后都会过期。 应用必须准备好定期刷新这些令牌。  若要刷新任一类型的令牌，请使用 `prompt=none` 参数控制 Azure AD 步骤，执行我们在先前示例中使用的同一隐藏的 iframe 请求。  若要接收新的 `id_token` 值，请务必使用 `response_type=id_token` 和 `scope=openid`，以及 `nonce` 参数。
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
-如果想要从应用中注销用户，请将用户重定向到 Azure AD 进行注销。 否则，用户可能可以在应用中重新进行身份验证，且无需再次输入其凭据。 这是因为他们具有和 Azure AD 的有效单一登录会话。
+如果想要从应用中注销用户，请将用户重定向到 Azure AD 进行注销。否则，用户可能可以在应用中重新进行身份验证，且无需再次输入其凭据。 这是因为他们具有和 Azure AD 的有效单一登录会话。
 
 只需将用户重定向到[验证 ID 令牌](#validate-the-id-token)中所述的相同 OpenID Connect 元数据文档中列出的 `end_session_endpoint`。 例如：
 
@@ -269,7 +269,7 @@ p=b2c_1_sign_in
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | p |必选 |要用于从应用程序中注销用户的策略。 |
-| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。 如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
+| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
 
 > [!NOTE]
 > 将用户定向到 `end_session_endpoint` 会清除用户的某些 Azure AD B2C 单一登录状态。 但是，不会从用户的社交标识提供者会话中注销该用户。 如果用户在后续登录中选择相同的标识提供者，用户将重新进行身份验证，且无需输入其凭据。 例如，如果用户要注销 Azure AD B2C 应用程序，并不表示他们想要完全注销其 Facebook 帐户。 但是，如果是本地帐户，则会以正确的方式结束用户的会话。

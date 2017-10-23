@@ -13,15 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/06/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: a457ba3109625ab43ae3a88b95a3e7e1e9641921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: fed9008d41b43b2c118aba4939260e819c211d67
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -178,7 +177,7 @@ ms.lasthandoff: 08/29/2017
   >
 * **问：电子邮件和短信的一次性密码的有效期有多长？**
 
-  > **答：**进行密码重置的会话生存期为 105 分钟。 从密码重置操作开始算，用户有 105 分钟的时间来重置其密码。 此时间段到期后，电子邮件和短信的一次性密码将无效。
+  > **答：**进行密码重置的会话生存期为 15 分钟。 从密码重置操作开始算，用户有 15 分钟的时间来重置其密码。 此时间段到期后，电子邮件和短信的一次性密码将无效。
   >
   >
 
@@ -280,4 +279,3 @@ ms.lasthandoff: 08/29/2017
 * [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
 * [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
-

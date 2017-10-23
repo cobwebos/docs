@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 9cfbb294010d48deaf4b4c78c6a6bcd59a387d87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>创建模板以用于逻辑应用部署和版本管理
 
@@ -51,7 +51,7 @@ Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板
 
 其他一些工具可在创建逻辑应用部署模板时提供帮助。
 可以手动创建，也就是使用此处讨论的资源根据需要创建参数。
-另一种方法是使用[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell 模块。 此开放源代码模块首先计算逻辑应用和任何连接，它使用，，，然后生成与部署的必需参数的模板资源。
+另一种方法是使用[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell 模块。 此开放源代码模块首先评估逻辑应用及它使用的任何连接，然后使用必要的部署参数生成模板资源。
 例如，如果逻辑应用从 Azure 服务总线队列接收消息，并将数据添加到 Azure SQL 数据库，那么该工具将保存所有业务流程逻辑并参数化 SQL 和服务总线连接字符串，以便可以在部署中设置它们。
 
 > [!NOTE]

@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 13317b016f9ff3955f376b858645c42668b0de42
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Node.js Web 应用登录和注销
 此处，我们使用 Passport 进行以下操作：
@@ -80,7 +80,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 ## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>步骤 3：将应用设置为使用 passport-node-js 策略
 此处，我们将 Express 配置为使用 OpenID Connect 身份验证协议。  Passport 用于执行各种操作，包括发出登录和注销请求、管理用户的会话和获取有关用户的信息。
 
-1. 若要开始，打开`config.js`文件在该项目的根目录，然后输入你的应用中的配置值`exports.creds`部分。
+1. 首先，打开位于项目根目录中的 `config.js` 文件，然后在 `exports.creds` 部分输入应用的配置值。
 
   * `clientID` 是在注册门户中为应用分配的**应用程序 ID**。
 
@@ -88,7 +88,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 
   * `clientSecret` 是在门户中生成的密码。
 
-2. 接下来，打开项目根目录中的 `app.js` 文件。 然后添加以下调用来调用`OIDCStrategy`附带的策略`passport-azure-ad`。
+2. 接下来，打开项目根目录中的 `app.js` 文件。 然后添加以下调用，调用随 `passport-azure-ad` 附带的 `OIDCStrategy` 策略。
 
     ```JavaScript
     var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -100,7 +100,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
     });
     ```
 
-3. 之后，请使用我们刚刚提到以处理我们在登录请求的策略。
+3. 然后，使用我们刚刚提到的策略来处理登录请求。
 
     ```JavaScript
     // Use the OIDCStrategy within Passport. (Section 2)
@@ -140,7 +140,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
     }
     ));
     ```
-Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有策略写入器都依循类似的模式。 查看该策略，会发现，我们已将它作为一个函数来传递，其中包含一个令牌和一个用作参数的 done。 策略完成其工作后将返回。 然后，我们想要存储用户并隐藏令牌，因此我们不需要再次请求它。
+Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有策略写入器都依循类似的模式。 查看该策略，会发现，我们已将它作为一个函数来传递，其中包含一个令牌和一个用作参数的 done。 策略完成其工作后将返回。 然后，我们需要存储用户并隐藏令牌，因此不需要再次请求它。
 
 > [!IMPORTANT]
 上述代码使用了正好地服务器上进行身份验证的任何用户。 这就是所谓的自动注册。 建议要求所有人都必须先经历你所确定的注册过程，然后才能对生产服务器进行身份验证。 这通常是在使用者应用中看到的模式，允许你在 Facebook 上注册，然后要求你提供额外的信息。 如果这不是示例应用程序，我们就只能从返回的令牌对象中提取用户的电子邮件地址，然后要求他们填写其他信息。 由于这是测试服务器，因此，我们将它们添加到内存中的数据库。
@@ -406,7 +406,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
 ##<a name="next-steps"></a>后续步骤
 最后，生成并运行应用。 运行 `node app.js`，并转至 `http://localhost:3000`。
 
-使用个人 Microsoft 帐户或工作或学校帐户，登录，并注意如何 /account 列表中反映用户的标识。 Web 应用现在使用行业标准的协议进行保护，可使用个人和工作/学校帐户来验证用户。
+使用个人 Microsoft 帐户或者工作或学校帐户登录，随后你会看到该用户的标识在 /account 列表中的显示方式。 Web 应用现在使用行业标准的协议进行保护，可使用个人和工作/学校帐户来验证用户。
 
 [以 .zip 文件提供](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip)完整示例（不包括配置值）以供参考。 或者可从 GitHub 克隆它：
 

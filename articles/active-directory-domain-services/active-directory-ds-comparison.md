@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
 ms.openlocfilehash: 09a68c7f4e7169a6ca02e33e89e0f048155fa88c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>如何确定 Azure AD 域服务是否适合具体的用例
 凭借 Azure AD 域服务，可以在 Azure 基础结构服务中部署工作负荷，而无需担心如何维护 Azure 中的标识基础结构。 此托管服务不同于自行部署和管理的典型 Windows Server Active Directory 部署。 此服务易于部署，并提供自动化的运行状况监视和修正。 我们正在持续改进该服务，以求添加对常见部署方案的支持。
@@ -34,21 +34,21 @@ ms.lasthandoff: 07/11/2017
 
 | **功能** | **Azure AD 域服务** | **Azure VM 中的 DIY AD** |
 | --- |:---:|:---:|
-| [**托管的服务**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
+| [**托管服务**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**安全部署**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |管理员需要保护部署。 |
 | [**DNS 服务器**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**（托管服务） |**&#x2713;** |
-| [**域或企业管理员权限**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
+| [**域管理员或企业管理员权限**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**域加入**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
-| [**域身份验证使用 NTLM 和 Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
+| [**使用 NTLM 和 Kerberos 进行域身份验证**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Kerberos 约束委派**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|基于资源|基于资源和基于帐户|
-| [**自定义的 OU 结构**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
+| [**自定义 OU 结构**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
 | [**架构扩展**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD 域/林信任**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
 | [**LDAP 读取**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
 | [**安全 LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
 | [**LDAP 写入**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
 | [**组策略**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
-| [**地理上分散的部署**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
+| [**地理分散的部署**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>托管服务
 Azure AD 域服务域由 Microsoft 管理。 用户无需考虑如何修补、更新、监视、备份域，以及确保域的可用性。 Microsoft Azure 以服务的形式针对托管域提供这些管理任务。

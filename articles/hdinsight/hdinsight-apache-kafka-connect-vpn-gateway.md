@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 08/01/2017
 ms.author: larryfr
 ms.openlocfilehash: 245bee7c1dbb0236afdc2506e7ab84b5573cbc85
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-kafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Kafka on HDInsight（预览版）
 
@@ -62,7 +62,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 有关在 Azure 虚拟网络中使用 HDInsight 的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](./hdinsight-extend-hadoop-virtual-network.md)。
 
-## <a id="on-premises"></a> 连接到本地网络中的 Kafka
+## <a id="on-premises"></a>从本地网络连接到 Kafka
 
 若要创建可与本地网络通信的 Kafka 群集，请遵循[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)文档中所述的步骤。
 
@@ -301,7 +301,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 要从 Windows 客户端连接到 VPN 网关，请按[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#clientcertificate)文档中“连接到 Azure”部分进行操作。
 
-## <a id="python-client"></a> 示例：Python 客户端
+## <a id="python-client"></a>示例：Python 客户端
 
 若要验证与 Kafka 的连接，请使用以下步骤来创建并运行 Python 生成者和使用者：
 

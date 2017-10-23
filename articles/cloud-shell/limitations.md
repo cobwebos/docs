@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
+ms.openlocfilehash: fe325cf5fa5e3d4b0a188599de7308cf2008b458
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: a1a220e27fc4baafa4184405c88f81fd2338b98a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 Azure Cloud Shell 有以下已知限制：
 
@@ -67,8 +65,27 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 ### <a name="no-home-directory-persistence"></a>$Home 目录没有持久性
 由任何应用程序（例如 git、vim，等等）写入 $Home 的数据不会持久保存在不同的 PowerShell 会话中。  有关解决方法，请[参阅此文](troubleshooting.md#powershell-resolutions)。
 
+### <a name="error-if-azurerm-module-is-updated-from-powershellgallery"></a>如果从 PowerShellGallery 更新 AzureRM 模块，则出错
+如果将 AzureRM 模块更新为最新版本 (4.4.0)，在 Cloudshell 启动时可能会看到以下错误。
+``` powershell
+VERBOSE: Authenticating to Azure ...
+Import-Module : Method 'RemoveUser' in type 'Microsoft.Azure.PSCloudConsole.ADAuth.ADAuthFactory' from assembly 'Microsoft.Azure.PSCloudConsole.ADAuth, Version=0.0.0.0,
+Culture=neutral, PublicKeyToken=null' does not have an implementation.
+At C:\Program Files\WindowsPowerShell\Modules\PSCloudShellADAuth\PSCloudShellADAuth.psm1:12 char:1
++ Import-Module -Name $AdAuthModulePath -PassThru -Force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Import-Module], TypeLoadException
+    + FullyQualifiedErrorId : System.TypeLoadException,Microsoft.PowerShell.Commands.ImportModuleCommand
+
+Unable to find type [Microsoft.Azure.PSCloudConsole.ADAuth.ADAuthFactory].
+At C:\Users\ContainerAdministrator\PSCloudShellStartup.ps1:94 char:9
++         [Microsoft.Azure.PSCloudConsole.ADAuth.ADAuthFactory]::Update ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (Microsoft.Azure...h.ADAuthFactory:TypeName) [], RuntimeException
+    + FullyQualifiedErrorId : TypeNotFound
+```
+
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 故障排除](troubleshooting.md) <br>
 [Bash 快速入门](quickstart.md) <br>
 [PowerShell 快速入门](quickstart-powershell.md)
-

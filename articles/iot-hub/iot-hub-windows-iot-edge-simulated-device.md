@@ -12,45 +12,42 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 09/19/2017
 ms.author: andbuc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: e7eb2931993daf3f0aecbd4a43d27ebd5adc10b0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 0aa1836ee1445894022b95fefc2338ef53698240
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-simulated-device-windows"></a>使用 Azure IoT Edge，通过模拟设备发送设备到云的消息 (Windows)
 
 [!INCLUDE [iot-hub-iot-edge-simulated-selector](../../includes/iot-hub-iot-edge-simulated-selector.md)]
 
 [!INCLUDE [iot-hub-iot-edge-install-build-windows](../../includes/iot-hub-iot-edge-install-build-windows.md)]
 
-## <a name="how-to-run-the-sample"></a>如何运行示例
+## <a name="run-the-sample"></a>运行示例
 
 build.cmd 脚本在 iot-edge 存储库的本地副本内的 "build" 文件夹中生成输出。 该输出包括此示例中使用的四个 IoT Edge 模块。
 
-生成脚本位置：
+生成脚本会创建以下文件：
 
 * logger.dll  放在 **build\\modules\\logger\\Debug** 文件夹中。
 * iothub.dll 放在 **build\\modules\\iothub\\Debug** 文件夹中。
 * identity\_map.dll 放在 **build\\modules\\identitymap\\Debug** 文件夹中。
 * simulated\_device.dll 放在 **build\\modules\\simulated\_device\\Debug** 文件夹中。
 
-如以下 JSON 设置文件中所示，将这些路径用于 module path 值：
+将这些路径用于 **module path** 值，如 simulated\_device\_cloud\_upload\_win JSON 设置文件中所示。
 
-模拟的 \_device\_cloud\_upload\_ 示例过程使用 JSON 配置文件的路径作为命令行参数。 以下示例 JSON 文件位于 SDK 存储库的以下路径：samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_sample\_win.json. 除非修改了生成脚本，将 IoT Edge 模块或示例可执行文件放置在非默认位置，否则，此配置文件可按原样工作。
+simulated\_device\_cloud\_upload 示例过程使用 JSON 配置文件的路径作为命令行参数。 以下示例 JSON 文件位于 SDK 存储库的以下路径：**samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_win.json**。 除非修改了生成脚本，将 IoT Edge 模块或示例可执行文件放置在非默认位置，否则，此配置文件可按原样工作。
 
 > [!NOTE]
 > 模块路径相对于 simulated\_device\_cloud\_upload\_sample.exe 所在的目录。 示例 JSON 配置文件默认为在当前工作目录中写入 "deviceCloudUploadGatewaylog.log"。
 
-在文本编辑器中，打开 iot-edge 存储库本地副本中的文件 samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_win.json 此文件配置示例网关中的 IoT Edge 模块：
+在文本编辑器中，打开 **iot-edge** 存储库本地副本中的文件 **samples\\simulated\_device\_cloud\_upload\\src\\simulated\_device\_cloud\_upload\_win.json**。 此文件配置示例网关中的 IoT Edge 模块：
 
 * **IoTHub** 模块连接到 IoT 中心。 将该模块配置为将数据发送到 IoT 中心。 具体而言，将 **IoTHubName** 值设置为 IoT 中心的名称，将 **IoTHubSuffix** 值设置为 **azure-devices.net**。 将“传输”值设置为 "HTTP"、"AMQP" 或 "MQTT" 其中的一个。 目前只有 "HTTP" 会针对所有设备消息共享一个 TCP 连接。 如果将值设置为 "AMQP" 或 "MQTT"，则网关将为每个设备维护与 IoT 中心的单独 TCP 连接。
-* **mapping** 模块将模拟设备的 MAC 地址映射到 IoT 中心设备 ID。 确保 **deviceId** 值与添加到 IoT 中心的两台设备的 ID 一致，确保 **deviceKey** 值包含两台设备的密钥。
+* **mapping** 模块将模拟设备的 MAC 地址映射到 IoT 中心设备 ID。 将 **deviceId** 值设置为添加到 IoT 中心的两个设备的 ID。 将 **deviceKey** 值设置为两个设备的密钥。
 * **BLE1** 和 **BLE2** 模块是模拟设备。 注意模块 MAC 地址如何与“映射”模块中的地址匹配。
 * **Logger** 模块将网关活动记录到一个文件中。
 * 下列示例所示的 module path 值相对于 simulated\_device\_cloud\_upload\_sample.exe 所在的目录。
@@ -104,7 +101,8 @@ build.cmd 脚本在 iot-edge 存储库的本地副本内的 "build" 文件夹中
           }
           },
           "args": {
-            "macAddress": "01:01:01:01:01:01"
+            "macAddress": "01:01:01:01:01:01",
+            "messagePeriod" : 2000
           }
         },
       {
@@ -116,7 +114,8 @@ build.cmd 脚本在 iot-edge 存储库的本地副本内的 "build" 文件夹中
           }
           },
           "args": {
-            "macAddress": "02:02:02:02:02:02"
+            "macAddress": "02:02:02:02:02:02",
+            "messagePeriod" : 2000
           }
         },
       {

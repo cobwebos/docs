@@ -16,20 +16,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
+ms.openlocfilehash: c224955d5d3592fb9afaaf31e6e4e531250b138e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: c9dfd3e3b9c155255959f76fd9b58b6935888db2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>Azure Functions C# 脚本开发人员参考
-> [!div class="op_single_selector"]
-> * [C# 脚本](functions-reference-csharp.md)
-> * [F# 脚本](functions-reference-fsharp.md)
-> * [Node.js](functions-reference-node.md)
->
->
+[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Azure Functions 的 C# 脚本体验基于 Azure WebJobs SDK。 数据通过方法参数流入 C # 函数。 在 `function.json`指定参数名称，没有访问函数记录器和取消令牌等的预定义的名称。
 
@@ -83,7 +77,7 @@ public static string Run(string input, TraceWriter log)
 
 若要向输出绑定写入多个值，请使用 [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 类型。 这些类型是只写集合，当方法完成时写入输出绑定。
 
-此示例使用 `ICollector` 写入多个队列消息：
+此示例使用 `ICollector` 将多个队列消息写入到同一队列：
 
 ```csharp
 public static void Run(ICollector<string> myQueueItem, TraceWriter log)
@@ -397,7 +391,7 @@ public static async Task Run(string input, Binder binder)
 ```
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) 是支持的输出绑定类型。
-以其原本方式，此代码会获取存储帐户连接字符串（即 `AzureWebJobsStorage`）的默认应用设置。 通过添加 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 和将属性数组传递到 `BindAsync<T>()`，可指定要使用的自定义应用设置。 例如，
+在前面的代码示例中，代码获取函数应用的主存储帐户连接字符串的应用设置（即 `AzureWebJobsStorage`）。 通过添加 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 和将属性数组传入 `BindAsync<T>()`，可指定要用于存储帐户的自定义应用设置。 例如，
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -440,7 +434,4 @@ public static async Task Run(string input, Binder binder)
 
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 开发人员参考](functions-reference.md)
-* [Azure Functions F# 开发人员参考](functions-reference-fsharp.md)
-* [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
+ms.openlocfilehash: a8bbe6c4f6919f150012163b0c7559d2986e072f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 70cccd5ac7fbea36f02150e3da319a043c22c677
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -387,7 +386,7 @@ ms.lasthandoff: 08/31/2017
     <!-- if there are multiple possible issuers, then add additional issuer elements -->  
   </issuers>  
   <required-claims>  
-    <claim name="name of the claim as it appears in the token" match="all|any">  
+    <claim name="name of the claim as it appears in the token" match="all|any" separator="separator character in a multi-valued claim">
       <value>claim value as it is expected to appear in the token</value>  
       <!-- if there is more than one allowed values, then add additional value elements -->  
     </claim>  
@@ -516,7 +515,8 @@ ms.lasthandoff: 08/31/2017
 |query-paremeter-name|包含令牌的查询参数的名称。|必须指定 `header-name` 或 `query-paremeter-name`，但不能二者都指定。|不适用|  
 |require-expiration-time|布尔值。 指定令牌中是否需要到期声明。|否|true|
 |require-scheme|令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。|否|不适用|
-|require-signed-tokens|布尔值。 指定令牌是否需要签名。|否|true|  
+|require-signed-tokens|布尔值。 指定令牌是否需要签名。|否|是|  
+|分隔符|字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。|否|不适用| 
 |url|Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
@@ -528,4 +528,3 @@ ms.lasthandoff: 08/31/2017
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-

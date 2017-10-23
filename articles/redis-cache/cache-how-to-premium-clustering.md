@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: sdanie
 ms.openlocfilehash: 86a4a605dbb3b11924c14ff42238009742f72898
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能的选择上具有灵活性，其中包括高级层功能，如群集、暂留和虚拟网络支持。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。

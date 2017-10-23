@@ -16,21 +16,20 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 4d7f05d626e6f718ca3597dff00715af4055f046
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 10963ab0b84b48c35df3022649363bbc8fc112a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
-部署后，许多组织想要知道如何使用或者是否已真正使用 SSPR。 Azure AD 提供报告功能，可帮助你使用集成的报告解答问题；如果你已获得适当的授权，则还可以创建自定义查询。
+部署后，许多组织想要知道如何使用或者是否已真正使用 SSPR。 Azure AD 提供报告功能，可帮助你使用集成的报告解答问题；如果已获得适当的授权，则还可以创建自定义查询。
 
 [Azure 门户] (https://portal.azure.com/) 中提供的报告可解答以下问题。
 
 > [!NOTE]
-> 你必须是[全局管理员](active-directory-assign-admin-roles.md#assign-or-remove-administrator-roles)，并且必须通过访问报告选项卡或审核日志至少一次，选择代表组织收集这些数据。 只有在完成此过程后，才能为组织收集数据。
+> 必须是[全局管理员](active-directory-assign-admin-roles.md#assign-or-remove-administrator-roles)，并且必须通过访问报告选项卡或审核日志至少一次，选择代表组织收集这些数据。 只有在完成此过程后，才能为组织收集数据。
 
 * 有多少人已注册了密码重置？
 * 谁已经注册了密码重置？
@@ -49,7 +48,7 @@ ms.lasthandoff: 05/03/2017
 2. 在主 Azure 门户的左侧导航栏中单击“更多服务”菜单
 3. 在服务列表中搜索 **Azure Active Directory** 并选中它
 4. 在 Azure Active Directory 导航菜单中单击“用户和组”
-5. 在“用户和组”导航菜单中单击“审核日志”导航项。 此时将显示目录中所有用户发生的所有审核事件。 还可以筛选此视图，以查看所有与密码相关的事件。
+5. 在“用户和组”导航菜单中单击“审核日志”导航项。 此时会显示目录中所有用户发生的所有审核事件。 还可以筛选此视图，以查看所有与密码相关的事件。
 6. 若要筛选此视图以便仅显示密码重置相关的事件，请单击边栏选项卡顶部的“筛选”按钮。
 7. 在“筛选”菜单中选择“类别”下拉列表，然后将其更改为“自助密码管理”类别类型。
 8. （可选）通过选择所需的特定“活动”进一步筛选该列表
@@ -60,9 +59,9 @@ Azure AD 报告和事件 API 支持检索密码重置和密码重置注册报告
 
 ### <a name="how-to-get-started-with-the-reporting-api"></a>如何开始使用报告 API
 
-若要访问此数据，你需要编写一个小型应用或脚本，以便从我们的服务器检索这些数据。 [了解如何开始使用 Azure AD 报告 API](active-directory-reporting-api-getting-started.md)。
+要访问此数据，需要编写一个小型应用或脚本，以便从我们的服务器检索这些数据。 [了解如何开始使用 Azure AD 报告 API](active-directory-reporting-api-getting-started.md)。
 
-编写有效的脚本后，接下来请根据你的方案，检查可以检索的密码重置和注册事件。
+编写有效的脚本后，接下来请根据方案，检查可以检索的密码重置和注册事件。
 
 * [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)：列出密码重置事件可用的列
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent)：列出密码重置注册事件可用的列
@@ -98,7 +97,7 @@ Azure AD 报告和事件 API 支持检索密码重置和密码重置注册报告
 
 ## <a name="view-password-reset-activity-in-the-classic-portal"></a>在经典门户中查看密码重置活动
 
-此报告显示你的组织中发生的所有密码重置尝试。
+此报告显示组织中发生的所有密码重置尝试。
 
 * **最大时间范围**：30 天
 * **最大行数**：75,000
@@ -157,11 +156,11 @@ Azure AD 报告和事件 API 支持检索密码重置和密码重置注册报告
 | 用户在尝试办公室语言呼叫验证选项后联系了管理员 |已联系管理员 |
 | 用户在尝试安全问题验证选项后联系了管理员 |已联系管理员 |
 | 未对此用户启用密码重置。 启用配置选项卡下的密码重置以解决此问题 |已失败 |
-| 用户没有许可证。 你可以将许可证添加到用户以解决此问题 |已失败 |
+| 用户没有许可证。 可以将许可证添加到用户以解决此问题 |已失败 |
 | 用户试图从设备重置而不启用 Cookie |已失败 |
 | 用户帐户已定义足够的身份验证方法。 添加身份验证信息以解决此问题 |已失败 |
-| 用户的密码在本地管理。 你可以启用密码写回以解决此问题 |已失败 |
-| 我们无法访问你的本地密码重置服务。 检查同步计算机的事件日志 |已失败 |
+| 用户的密码在本地管理。 可以启用密码写回以解决此问题 |已失败 |
+| 我们无法访问本地密码重置服务。 检查同步计算机的事件日志 |已失败 |
 | 我们在重置用户的本地密码时遇到问题。 检查同步计算机的事件日志 |已失败 |
 | 此用户不是密码重置用户组的成员。 将此用户添加到该组以解决此问题。 |已失败 |
 | 已对此租户完全禁用密码重置。 若要解决此问题，请参阅[此文](http://aka.ms/ssprtroubleshoot)。 |已失败 |
@@ -267,13 +266,12 @@ Azure AD 报告和事件 API 支持检索密码重置和密码重置注册报告
 以下链接提供有关使用 Azure AD 进行密码重置的其他信息
 
 * [用户管理审核日志的快捷方式](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Audit) - 直接转到租户的用户管理审核日志
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助密码管理 
+* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
 * [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
 * [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
 * [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
-* [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 始终要问的问题的答案
+* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
+* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
 * [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-

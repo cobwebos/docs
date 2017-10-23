@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
 ms.openlocfilehash: c3757d56fb1792092710740dc5ffbd64f18730cf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="configure-hub"></a>配置通知中心
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>启用 Firebase 云消息传送
+## <a id="register"></a>启用 Firebase Cloud Messaging
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
 ## <a name="configure-azure-to-send-push-requests"></a>配置 Azure 以发送推送请求
@@ -46,19 +46,19 @@ ms.lasthandoff: 08/03/2017
 ## <a id="update-server"></a>更新服务器项目以发送推送通知
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a id="configure-app"></a>配置客户端项目以发送推送通知
+## <a id="configure-app"></a>针对推送通知配置客户端项目
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
 ## <a id="add-push"></a>向应用添加推送通知代码
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>在应用程序中测试推送通知
+## <a name="test"></a>在应用中测试推送通知
 可以使用模拟器中的虚拟设备测试应用。 在模拟器中运行时，还需要其他配置步骤。
 
 1. 请确保在将 Google API 设置为目标的虚拟设备上部署或调试，如下方的 Android 虚拟设备 (AVD) 管理器所示。
    
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
-2. 单击“应用” > “设置” > “添加帐户”，并按提示操作将 Google 帐户添加到 Android 设备。
+2. 单击“应用” > “设置” > “添加帐户”，然后按提示操作将 Google 帐户添加到 Android 设备。
    
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 3. 像以前一样运行 todolist 应用并插入一个新的 todo 项。 此时通知区域中会显示一个通知图标。 可以打开通知抽屉查看通知的完整文本。

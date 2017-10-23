@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;eslesar
 ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC 入门
 本主题说明如何使用 Azure Automation Desired State Configuration (DSC) 执行最常见的任务，例如创建、导入、编译配置，载入要管理的计算机和查看报表。 若要大致了解什么是 Azure Automation DSC，请参阅 [ DSC 概述](automation-dsc-overview.md)。 有关 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](https://msdn.microsoft.com/PowerShell/dsc/overview)。
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/11/2017
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“中心”菜单中，单击“所有资源”，并单击自动化帐户的名称。
 3. 在“自动化帐户”边栏选项卡中，单击“DSC 配置”
-4. 上**DSC 配置**边栏选项卡，单击**TestConfig** （这是你在前面的过程中导入的配置的名称）。
+4. 在“DSC 配置”边栏选项卡中，单击“TestConfig”（这是在前一过程中导入的配置的名称）。
 5. 在“TestConfig 配置”边栏选项卡中，单击“查看配置源”。
    
     ![“TestConfig 配置”边栏选项卡的屏幕快照](./media/automation-dsc-getting-started/ViewConfigSource.png)

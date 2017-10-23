@@ -16,16 +16,16 @@ ms.date: 07/18/2016
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 228bb9058537af1e4eb38207c376c2eb86aee68c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的签名密钥滚动更新
 本主题介绍需要了解的有关 Azure Active Directory (Azure AD) 中用来为安全令牌签名的公钥的信息。 请务必注意，这些密钥会定期滚动更新，紧急情况下可立即滚动更新。 所有使用 Azure AD 的应用程序应该都能以编程方式处理密钥滚动更新过程，或建立定期手动滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD 中的签名密钥概述
-Azure AD 使用基于行业标准构建的公钥加密，在它自己和使用它的应用程序之间建立信任关系。 具体而言，它的工作方式如下：Azure AD 使用包含公钥和私钥对的签名密钥。 当用户登录到使用 Azure AD 进行身份验证的应用程序时，Azure AD 将创建一个包含用户相关信息的安全令牌。 此令牌由 Azure AD 使用其私钥进行签名，并会发送回应用程序。 若要验证该令牌是否有效且确实来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的 [OpenID Connect 发现文档](http://openid.net/specs/openid-connect-discovery-1_0.html)或 SAML/WS-Fed [联合元数据文档](active-directory-federation-metadata.md)中的公钥来验证令牌的签名。
+Azure AD 使用基于行业标准构建的公钥加密，在它自己和使用它的应用程序之间建立信任关系。 具体而言，它的工作方式如下：Azure AD 使用包含公钥和私钥对的签名密钥。 当用户登录到使用 Azure AD 进行身份验证的应用程序时，Azure AD 将创建一个包含用户相关信息的安全令牌。 此令牌由 Azure AD 使用其私钥进行签名，然后会发送回应用程序。 若要验证该令牌是否有效且确实来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的 [OpenID Connect 发现文档](http://openid.net/specs/openid-connect-discovery-1_0.html)或 SAML/WS-Fed [联合元数据文档](active-directory-federation-metadata.md)中的公钥来验证令牌的签名。
 
 出于安全考虑，Azure AD 的签名密钥会定期更新，且紧急情况下，可立即滚动更新。 任何与 Azure AD 集成的应用程序都应准备好处理密钥滚动更新事件，而不管滚动更新可能发生的频率是多少。 如果未准备就绪，且应用程序尝试使用过期密钥验证令牌上的签名，则登录请求会失败。
 
@@ -125,7 +125,7 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="vs2015"></a>Web 应用程序 / Api 保护资源和使用 Visual Studio 2015 或 Visual Studio 2017 创建
+### <a name="vs2015"></a>保护资源的和使用 Visual Studio 2015 或 Visual Studio 2017 创建的 Web 应用程序/API
 如果应用程序通过 Visual Studio 2015 或 Visual Studio 2017 中的 Web 应用程序模板构建，且从“更改身份验证”菜单中选择了“工作和学校帐户”，则应用程序已包含必要的逻辑来自动处理密钥滚动更新。 此逻辑嵌入在 OWIN OpenID Connect 中间件中，可检索和缓存来自 OpenID Connect 发现文档中的密钥并定期刷新它们。
 
 如果已手动将身份验证添加到解决方案，则应用程序可能不包含必要的密钥滚动更新逻辑。 需要自行编写该逻辑，或遵循[使用任何其他库或手动实现任何受支持协议的 Web 应用程序/API](#other) 中的步骤。
@@ -143,7 +143,7 @@ passport.use(new OIDCStrategy({
 4. 右键单击“Tenants”表，并单击“显示表数据”。
 5. 在“Tenants”表中，至少有一行与唯一的目录租户标识符相对应。 删除该表中的所有行。 如果未同时删除“Tenants”和“IssuingAuthorityKeys”表中的行，则运行时会出现错误。
 6. 构建并运行应用程序。 登录到帐户后，可以停止应用程序。
-7. 返回“服务器资源管理器”，查看“IssuingAuthorityKeys”和“Tenants”表中的值。 可以看到系统已自动使用联合元数据文档中的相应信息对这两个表进行重新填充。
+7. 返回“服务器资源管理器”，查看“IssuingAuthorityKeys”和“Tenants”表中的值。 你会注意到，已自动使用联合元数据文档中的相应信息对这两个表进行重新填充。
 
 ### <a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web API
 如果在 Visual Studio 2013 中使用 Web API 模板创建了 Web API 应用程序，并从“更改身份验证”菜单中选择了“组织帐户”，则应用程序中已包含必需的逻辑。
@@ -283,10 +283,10 @@ namespace JWTValidation
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. 在 <add thumbprint=””> 设置中，将任一字符替换为不同的字符，以更改指纹值。 保存 **Web.config** 文件。
+2. 在 **<add thumbprint=””>** 设置中，通过将任一字符替换为不同的字符来更改指纹值。 保存 **Web.config** 文件。
 3. 生成并运行应用程序。 如果能完成登录过程，则应用程序将通过从目录的联合元数据文档下载所需的信息来成功地更新密钥。 如果在登录时遇到问题，请阅读[使用 Azure AD 将登录名添加到 Web 应用程序](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)主题，或下载并检查代码示例 [Multi-Tenant Cloud Application for Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)（用于 Azure Active Directory 的多租户云应用程序），确保应用程序中的更改是正确的。
 
-### <a name="vs2010"></a>保护资源并且使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 创建的 Web 应用程序
+### <a name="vs2010"></a>保护资源的和使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 创建的 Web 应用程序
 如果在 WIF v1.0 中构建应用程序，则系统未提供相应的机制来自动刷新应用程序的配置以使用新密钥。
 
 * 最简单的方法使用 WIF SDK 中包含的 FedUtil 工具，该工具可以检索最新的元数据文档并更新配置。

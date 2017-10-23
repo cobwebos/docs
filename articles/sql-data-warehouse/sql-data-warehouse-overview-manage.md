@@ -16,10 +16,10 @@ ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: b14d0aad5a1f50c225391dbab27ec6240423a65a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中管理数据库
 SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，要缩放性能，只需调整相应级别的计算资源并为这些资源付费，然后即可让 SQL 数据仓库执行向外扩展和缩减的所有工作。
@@ -37,7 +37,7 @@ SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，
 * 备份和还原
 
 ## <a name="management-tools"></a>管理工具
-可以使用多种工具来管理 SQL 数据仓库中的数据库。 管理数据库时，你为需要执行的每种类型的任务制定工具首选项。
+可以使用多种工具来管理 SQL 数据仓库中的数据库。 管理数据库时，将为需要执行的每种类型的任务制定工具首选项。
 
 ### <a name="azure-portal"></a>Azure 门户
 [Azure 门户][Azure portal]是一个基于 Web 的门户，可用于创建、更新和删除数据库以及监视数据库资源。 如果刚开始使用 Azure、管理少量的数据仓库数据库或需要快速执行某些操作，该工具是理想之选。

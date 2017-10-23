@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Active Directory cmdlet 配置组设置 | Microsoft Docs"
+title: "在 Azure Active Directory 中使用 PowerShell 配置组设置 | Microsoft Docs"
 description: "如何使用 Azure Active Directory cmdlet 管理组的设置"
 services: active-directory
 documentationcenter: 
@@ -12,21 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 10/04/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
+ms.openlocfilehash: 06384d1a1fb7fcc36e9ab97e38c6524a7e260140
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 28054e91e91933b939f4ba700e317d63a614e1d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
 > [!IMPORTANT]
-> 此内容仅适用于 Office 365 组。 有关如何允许用户创建安全组的详细信息， 请按照 [Set-MSOLCompanySettings](https://docs.microsoft.com/en-us/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) 中的描述设置 `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True`。 
+> 此内容仅适用于 Office 365 组。 有关如何允许用户创建安全组的详细信息，请按照 [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) 中的所述设置 `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True`。 
 
 Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 起初，目录中不会显示任何设置对象，因为目录配置为默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的 Office 365 组设置，请使用名为“Group.Unified”的模板。 若要针对单个组配置 Office 365 组设置，请使用名为“Group.Unified.Guest”的模板。 此模板用于管理对 Office 365 组的来宾访问权限。 
 
@@ -95,7 +94,9 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>UsageGuidelinesUrl<li>类型：字符串<li>默认值：“” |组使用准则链接。 |
 |  <ul><li>ClassificationDescriptions<li>类型：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 |
 |  <ul><li>DefaultClassification<li>类型：字符串<li>默认值：“” | 如果未指定，则为要用作组的默认分类的分类。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>类型：字符串<li>默认值：“” |尚未实现
+|  <ul><li>PrefixSuffixNamingRequirement<li>类型：字符串<li>默认值：“” | 请勿使用。 未实现。 |
+| <ul><li>CustomBlockedWordsList<li>类型：字符串<li>默认值：“” | 请勿使用。 未实现。 |
+| <ul><li>EnableMSStandardBlockedWords<li>类型：布尔值<li>默认值：“False” | 请勿使用
 |  <ul><li>AllowGuestsToBeGroupOwner<li>类型：布尔值<li>默认值：False | 一个布尔值，该值指示来宾用户是否可以作为组的所有者。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示来宾用户是否可以访问统一组的内容。 |
 |  <ul><li>GuestUsageGuidelinesUrl<li>类型：字符串<li>默认值：“” | 指向来宾使用指南的链接的 URL。 |
@@ -217,4 +218,3 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

@@ -12,18 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/02/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
+ms.openlocfilehash: 168829494de33a21df68d3fc5e2a174f435c5ad5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: f2541b906a2c3a5bbdd384476ce99cad766a6c09
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="populate-groups-dynamically-based-on-object-attributes"></a>基于对象属性动态填充组
 可以在 Azure 经典门户中启用 Azure Active Directory (Azure AD) 组的更复杂的基于属性的动态成员身份。  
 
@@ -266,30 +264,30 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>使用属性创建设备对象的规则
 还可以创建一个规则来为组中的成员身份选择设备对象。 可以使用以下设备属性：
 
-| 属性              | 允许的值                  | 使用情况                                                       |
-|-------------------------|---------------------------------|-------------------------------------------------------------|
-| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
-| displayName             | 任意字符串值                | (device.displayName -eq "Rob Iphone”)                       |
-| deviceOSType            | 任意字符串值                | (device.deviceOSType -eq "IOS")                             |
-| deviceOSVersion         | 任意字符串值                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | 有效的设备类别名称    | (device.deviceCategory -eq "BYOD")                          |
-| deviceManufacturer      | 任意字符串值                | (device.deviceManufacturer -eq "Microsoft")                 |
-| deviceModel             | 任意字符串值                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | 个人、公司               | (device.deviceOwnership -eq "Company")                      |
-| domainName              | 任意字符串值                | (device.domainName -eq "contoso.com")                       |
-| enrollmentProfileName   | 任意字符串值                | (device.enrollmentProfileName -eq "")                       |
-| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
-| managementType          | 任意字符串值                | (device.managementType -eq "")                              |
-| organizationalUnit      | 任意字符串值                | (device.organizationalUnit -eq "")                          |
-| deviceId                | 有效 deviceId                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
-| objectId                | 有效的 AAD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
+| 属性              | 允许的值                     | 使用情况                                                       |
+|-------------------------|------------------------------------|-------------------------------------------------------------|
+| accountEnabled          | true false                         | (device.accountEnabled -eq true)                            |
+| displayName             | 任意字符串值                   | (device.displayName -eq "Rob Iphone”)                       |
+| deviceOSType            | 任意字符串值                   | (device.deviceOSType -eq "Android")                         |
+| deviceOSVersion         | 任意字符串值                   | (device.OSVersion -eq "9.1")                                |
+| deviceCategory          | 有效的设备类别名称       | (device.deviceCategory -eq "BYOD")                          |
+| deviceManufacturer      | 任意字符串值                   | (device.deviceManufacturer -eq "Samsung")                   |
+| deviceModel             | 任意字符串值                   | (device.deviceModel -eq "iPad Air”)                         |
+| deviceOwnership         | 个人、公司                  | (device.deviceOwnership -eq "Company")                      |
+| domainName              | 任意字符串值                   | (device.domainName -eq "contoso.com")                       |
+| enrollmentProfileName   | Apple 设备注册配置文件名称    | (device.enrollmentProfileName -eq "DEP iPhones")       |
+| isRooted                | true false                         | (device.isRooted -eq true)                              |
+| managementType          | “MDM”表示移动设备，“PC”表示通过 Intune 电脑代理管理的计算机    | (device.managementType -eq "MDM")                  |
+| organizationalUnit      | 由本地 Active Directory 设置的与 OU 名称匹配的任何字符串值 | (device.organizationalUnit -eq "US PCs")      |
+| deviceId                | 有效的 Intune 设备 ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
+| objectId                | 有效的 Azure AD 对象 ID            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
 
 > [!NOTE]
 > 无法在 Azure 经典门户中使用“简单规则”下拉列表创建这些设备规则。
 >
 >
 
-## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>将动态成员身份更改为静态，反之亦然
+## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>将动态成员身份更改为静态，或反之
 可更改在组中管理成员身份的方式。 想要在系统中保留相同的组名称和 ID，使针对组的任何现有引用仍然有效时，这很有用；创建新组需要更新这些引用。
 
 > [!WARNING]
@@ -310,4 +308,3 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

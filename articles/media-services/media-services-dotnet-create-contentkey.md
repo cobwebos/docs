@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
 ms.openlocfilehash: 3280a6fcde59bae360da7cb9fea4bb649f984e43
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-contentkeys-with-net"></a>使用 .NET 创建内容密钥
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/29/2017
 加密的资产必须与 **ContentKey** 关联。 本文介绍如何创建内容密钥。
 
 > [!NOTE]
-> 使用媒体服务 .NET SDK 创建新的“StorageEncrypted”资产时，会自动创建“ContentKey”并将其链接到资产。
+> 使用媒体服务 .NET SDK 创建新的 **StorageEncrypted** 资产时，会自动创建 **ContentKey** 并将其链接到资产。
 > 
 > 
 
@@ -104,7 +104,7 @@ call
 
 
 
-## <a id="common_contentkey"></a>创建公共类型 ContentKey
+## <a id="common_contentkey"></a>创建通用类型 ContentKey
 以下代码段创建公共加密类型的内容密钥。 然后，它将密钥与指定的资产关联。
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)

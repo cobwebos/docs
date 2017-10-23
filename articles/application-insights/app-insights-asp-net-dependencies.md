@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
 ms.openlocfilehash: 6e0b67ba98af27017901608dde4401600eb9957f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -83,7 +83,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="ajax-calls"></a>AJAX 调用
 “浏览器”边栏选项卡显示[网页中的 JavaScript](app-insights-javascript.md) 发出的 AJAX 调用的持续时间和失败率。 这些信息显示为依赖项。
 
-## <a name="diagnosis"></a>诊断速度缓慢的请求
+## <a name="diagnosis"></a>诊断慢速请求
 每个请求事件是应用处理请求时跟踪到的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的性能不佳，可以判断其原因是否为某个依赖项的响应速度缓慢。
 
 让我们演练一个相关的示例。

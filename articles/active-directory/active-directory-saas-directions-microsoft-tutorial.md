@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
 ms.openlocfilehash: f9c068c71eb00a4c779c91c8ee0f0dc9d6ba85ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>教程：Azure Active Directory 与 Directions on Microsoft 的集成
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[在 Microsoft 测试用户上创建 Directions](#creating-a-directions-on-microsoft-test-user)**  -若要在 Directions on Microsoft 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
+3. **[创建 Directions on Microsoft 测试用户](#creating-a-directions-on-microsoft-test-user)** - 在 Directions on Microsoft 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 07/11/2017
  
 ### <a name="creating-a-directions-on-microsoft-test-user"></a>创建 Directions on Microsoft 测试用户
 
-没有为你要配置用户设置 Directions on Microsoft 的操作项。  
+没有操作项可用于配置预配到 Directions on Microsoft 的用户。  
 
 当已分配的用户尝试使用访问面板登录到 Directions on Microsoft 时，Directions on Microsoft 会检查该用户是否存在。 如果尚无用户帐户可用，Directions on Microsoft 会自动创建该帐户。
 

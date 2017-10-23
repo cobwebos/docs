@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: 62adf8a9fd4400a056e2c0f59c79431acbad5865
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>通过 Windows Hello 企业版在没有密码的情况下进行身份验证
 单纯使用密码进行身份验证的传统方法不足以保障用户的安全。 使用这种方法时，用户需重复使用密码，有时还会忘记密码。 密码可能会泄露、被骗取、易于破解且可猜出。 密码也很难记住，并且易于遭受攻击，例如“[传递哈希](https://technet.microsoft.com/dn785092.aspx)”。
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="about-windows-hello-for-business"></a>关于 Windows Hello 企业版
 对于组织和消费者而言，Windows Hello 企业版是基于私钥/公钥或证书的身份验证方法，它比密码身份验证更有优势。 这种形式的身份验证依赖于密钥对凭据，其可取代密码且能抵御漏洞、窃取及钓鱼。
 
- Windows Hello 企业版让用户能够向 Microsoft 帐户、Windows Server Active Directory 帐户、Microsoft Azure Active Directory (Azure AD) 帐户或支持 Fast IDentity Online (FIDO) 身份验证的非 Microsoft 服务进行身份验证。 在 Windows Hello 企业版注册期间完成最初的双重验证之后，会在用户的设备上设置 Windows Hello 企业版，并且该用户需设置一个手势（可以是 Windows Hello 或 PIN）。 用户会提供该手势来验证其身份。 Windows 然后使用 Windows Hello 企业版用户进行身份验证，并帮助他们访问受保护的资源和服务。
+ Windows Hello 企业版让用户能够向 Microsoft 帐户、Windows Server Active Directory 帐户、Microsoft Azure Active Directory (Azure AD) 帐户或支持 Fast IDentity Online (FIDO) 身份验证的非 Microsoft 服务进行身份验证。 在 Windows Hello 企业版注册期间完成最初的双重验证之后，会在用户的设备上设置 Windows Hello 企业版，并且该用户需设置一个手势（可以是 Windows Hello 或 PIN）。 用户会提供该手势来验证其身份。 然后，Windows 使用 Windows Hello 企业版来对用户进行身份验证，并帮助他们访问受保护的资源和服务。
 
 私钥可以通过“用户手势”单独使用，例如，PIN、生物识别技术或远程设备（例如用户用来登录设备的智能卡）。 此信息会链接到证书或非对称密钥对。 如果设备上装配了受信任平台模块 (TPM) 芯片，此私钥会通过硬件认证。 私钥永远不会离开设备。
 

@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.openlocfilehash: 7960d83bce22d4f671d61e9aaf55561bc24308f8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>使用 Ambari REST API 管理 HDInsight 群集
 
@@ -209,7 +209,7 @@ $respObj.Clusters.health_report
 >
 > 有关将 HDInsight 与虚拟网络配合使用的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
 
-要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 在知悉 FQDN 后，可以获取主机的 IP 地址。 下面的示例首先会向 Ambari 查询所有主机节点的 FQDN，再向 Ambari 查询每个主机的 IP 地址。
+要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 在知悉 FQDN 后，可以获取主机的 IP 地址。 以下示例首先从 Ambari 查询所有主机节点的 FQDN，然后从 Ambari 查询每个主机的 IP 地址。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')

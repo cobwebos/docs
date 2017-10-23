@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: kgremban
 ms.openlocfilehash: 281f9c61a30a20027f69808600373aa272255ef6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>将多重身份验证构建到自定义应用程序中 (SDK)
 
 使用 Azure 多重身份验证软件开发工具包 (SDK)，可将双重验证直接内置于 Azure AD 租户的应用程序登录或事务处理流程中。
 
-多重身份验证 SDK 可用于 C#、Visual Basic (.NET)、Java、Perl、PHP 和 Ruby。 该 SDK 围绕双重验证提供了一个精简包装。 它提供你编写代码所需的全部内容，包括带注释的源代码文件、示例文件和详细自述文件。 每个 SDK 还包括证书和私钥，用于加密多重身份验证提供程序独有的事务处理。 只要有提供程序，即可根据需要下载任意多种语言和格式的 SDK。
+多重身份验证 SDK 可用于 C#、Visual Basic (.NET)、Java、Perl、PHP 和 Ruby。 该 SDK 围绕双重验证提供了一个精简包装。 它包含编写代码所需的所有内容，包括带注释的源代码文件、示例文件和详细的自述文件。 每个 SDK 还包括证书和私钥，用于加密多重身份验证提供程序独有的事务处理。 只要有提供程序，即可根据需要下载任意多种语言和格式的 SDK。
 
 多重身份验证 SDK 的 API 结构很简单。 可使用多重身份验证选项参数（如验证模式）和用户数据（如要呼叫的电话号码或要验证的 PIN 号码）对 API 进行单函数调用。 API 将函数调用转换成对基于云的 Azure 多重身份验证服务的 Web 服务请求。 所有调用都必须包括对每个 SDK 中包含的私有证书的引用。
 
@@ -71,7 +71,7 @@ SDK 包括以下项：
 * **示例**。 多重身份验证的基本工作实现的示例代码。
 
 > [!WARNING]
-> 客户端证书是专门生成的唯一私有证书。 请不要共享或丢失此文件。 它是确保你与多重身份验证服务的通信安全性的关键所在。
+> 客户端证书是专门生成的唯一私有证书。 请不要共享或丢失此文件。 它是确保与多重身份验证服务的通信安全的关键。
 
 ## <a name="code-sample"></a>代码示例
 此代码示例演示如何使用 Azure 多重身份验证 SDK 中的 API，为应用程序添加标准模式语音呼叫验证。 标准模式是用户通过按 # 键响应的电话呼叫。

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
 ms.openlocfilehash: 639e40ca7e406a1726033e9f5c5363c289087589
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>教程：Azure Active Directory 与 Salesforce 集成
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 07/11/2017
 <CS>
 7.  在浏览器中打开新选项卡并登录到 Salesforce 管理员帐户。
 
-8.  在“管理员”导航窗格下，单击“安全控件”以展开相关部分。 然后单击**单一登录设置**。
+8.  在“管理员”导航窗格下，单击“安全控件”以展开相关部分。 然后单击“单一登录设置”。
 
     ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso.png)
 
@@ -186,7 +186,7 @@ ms.lasthandoff: 07/11/2017
     ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
-    > 如果选择多个身份验证服务，系统会提示用户选择他们希望要启动单一登录到你的 Salesforce 环境时使用的身份验证服务。 如果不希望发生这种情况，应将其他所有身份验证服务保持未选中状态。
+    > 如果选择了多个身份验证服务，则当用户向 Salesforce 环境发起单一登录时，系统将提示他们选择登录时要使用的身份验证服务。 如果不希望发生这种情况，应将其他所有身份验证服务保持未选中状态。
 <CE>    
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

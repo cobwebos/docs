@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/09/2017
 ms.author: chackdan
 ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -239,7 +239,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplatePa
 
 ```
 
-部署完成后，使用新证书连接到群集，并执行一些查询。 如果能够执行这些查询， 则可以删除旧证书。 
+部署完成后，使用新证书连接到群集，并执行一些查询。 如果能够执行这些查询， 然后便可删除旧证书。 
 
 如果使用自签名证书，请务必将它们导入本地 TrustedPeople 证书存储。
 

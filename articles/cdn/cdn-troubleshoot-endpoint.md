@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f59fbd18413fb44026d8c92b7f6940ed2f8a00a8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-cdn-endpoints-returning-404-statuses"></a>排查 CDN 终结点返回 404 状态的问题
 本文将帮助你排查 [CDN 终结点](cdn-create-new-endpoint.md)返回 404 的问题。
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ### <a name="check-the-origin-file"></a>检查源文件
-首先，应该验证想要缓存的文件已在源上可用，并且可以公开访问。  执行此操作的最快方法是，在一个 In-Private 或 Incognito 会话中打开浏览器，并直接浏览该文件。  只需键入 URL 或将该 URL 粘贴到地址框，然后查看文件中的结果是否与预期一致。  在此示例中，将使用 Azure 存储帐户中的一个文件（可从 `https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt` 访问）。  如你所见，它可以成功通过测试。
+首先，应该验证想要缓存的文件已在源上可用，并且可以公开访问。  执行此操作的最快方法是，在一个 In-Private 或 Incognito 会话中打开浏览器，并直接浏览该文件。  只需键入 URL 或将该 URL 粘贴到地址框，然后查看文件中的结果是否与预期一致。  在此示例中，将使用 Azure 存储帐户中的一个文件（可从 `https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt` 访问）。  如你所见，文件成功通过了测试。
 
 ![成功！](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
 

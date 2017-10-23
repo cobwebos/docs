@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 93b54c3fc4397573f77b2e157c6f1866786690da
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流
 可通过 [OAuth 2.0 客户端凭据授予](http://tools.ietf.org/html/rfc6749#section-4.4)（有时称为双重 OAuth），使用应用程序标识来访问 Web 托管的资源。 这种授予通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 此类应用程序通常称为守护程序或服务帐户。
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 ### 访问控制列表
 资源提供程序可根据它所知并对其授予特定级别访问权限的应用程序 ID 列表，强制实施授权检查。 资源从 v2.0 终结点接收令牌时，可以将此令牌解码，并从 `appid` 和 `iss` 声明中提取客户端的应用程序 ID。 然后将应用程序与它所维护的 ACL 相比较。 ACL 的粒度和方法可能因资源不同而有较大差异。
 
-常见用例是使用 ACL 对 Web 应用程序或 Web API 运行测试。 Web API 可能仅向特定客户端授予部分完全权限。 若要在 API 上运行端到端测试，请创建测试客户端，以便从 v2.0 终结点获取令牌并将令牌发送到 API。 然后，API 会检查测试客户端应用程序 ID 的 ACL，以获取对 API 整个功能的完全访问权限。 如果使用这种 ACL，不仅需验证调用方的 `appid` 值， 还需验证令牌的 `iss` 值是否受信任。
+常见用例是使用 ACL 对 Web 应用程序或 Web API 运行测试。 Web API 可能仅向特定客户端授予部分完全权限。 要在 API 上运行端到端测试，请创建测试客户端，以便从 v2.0 终结点获取令牌并将令牌发送到 API。 然后，API 会检查测试客户端应用程序 ID 的 ACL，以获取对 API 整个功能的完全访问权限。 如果使用这种 ACL，不仅需验证调用方的 `appid` 值， 还需验证令牌的 `iss` 值是否受信任。
 
 对于需要访问使用者用户（拥有个人 Microsoft 帐户）所拥有数据的守护程序和服务帐户而言，这种授权类型很常见。 对于组织拥有的数据，建议通过应用程序权限获取必要的授权。
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
 
 #### 在应用注册门户中请求权限
 1. 在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)中，转到应用，或[创建一个应用](active-directory-v2-app-registration.md)（如尚未创建）。 创建应用时，需使用至少一个应用程序密钥。
-2. 找到“直接应用程序权限”部分，然后添加应用所需的权限。
+2. 找到“直接应用程序权限”部分，并添加应用所需的权限。
 3. **保存**应用注册。
 
 #### 建议：让用户登录到应用
@@ -93,7 +93,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | tenant |必选 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
 | client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
 | redirect_uri |必选 |要向其发送响应以供应用处理的重定向 URI。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
-| state |建议 |同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| state |建议 |同样随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
 
 此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统将要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
 
@@ -107,7 +107,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | 参数 | 说明 |
 | --- | --- | --- |
 | tenant |向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
-| state |同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| state |同样随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
 | admin_consent |设置为 **true**。 |
 
 ##### 错误响应

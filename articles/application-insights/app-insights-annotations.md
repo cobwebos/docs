@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
 ms.openlocfilehash: f7eb2f3cba535eb64db5544c498289c9e895987a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 [指标资源管理器](app-insights-metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Visual Studio Team Services 生成系统](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)可自动创建批注。 也可以[通过 PowerShell 创建批注](#create-annotations-from-powershell)用于标记所要处理的任何事件。
@@ -80,7 +80,7 @@ ms.lasthandoff: 08/18/2017
 ![单击任一版本批注标记。](./media/app-insights-annotations/60.png)
 
 ## <a name="create-custom-annotations-from-powershell"></a>通过 PowerShell 创建自定义批注
-你还可以从任何您喜欢 （不使用 VS Team System） 的过程创建批注。 
+也可以通过所偏好的任何过程（不使用 VS Team System）创建批注。 
 
 
 1. 为 [GitHub 中的 Powershell 脚本](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)创建一个本地副本。

@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 9d6132e1a01be489b8e8e28a0219cf8a0b50b318
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>使用 Mobile Engagement REST API 进行身份验证 - 手动设置
 这是[使用 Mobile Engagement REST API 进行身份验证](mobile-engagement-api-authentication.md)一个附录文档。 请务必先阅读它来获取相关内容。 此处描述一种使用 Azure 门户为 Mobile Engagement REST API 进行一次性身份验证设置的替代方法。 
@@ -100,7 +100,7 @@ ms.lasthandoff: 07/11/2017
 22. 单击“**所有者**”
     
     ![][19]
-23. 在搜索框中搜索应用程序 **AD\_APP\_NAME** 的名称。 默认情况下此处将不看到这项。 找到此名称之后，立即选择它，并单击边栏选项卡底部的“**选择**”。 
+23. 在搜索框中搜索应用程序 **AD\_APP\_NAME** 的名称。 默认情况下此处看不到该项。 找到此名称之后，立即选择它，并单击边栏选项卡底部的“**选择**”。 
     
     ![][20]
 24. 在“**添加访问**”边栏选项卡上，它会显示为“**1 个用户，0 个组**”。 单击此边栏选项卡上的“**确定**”以确认更改。 

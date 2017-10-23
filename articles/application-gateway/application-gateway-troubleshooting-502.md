@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: cbf9c552c4818b3925f449081539f1db6d61918e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 6a24e9598362b7c4ff9e2d3371d619fbbd41907f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
 了解如何对使用应用程序网关时收到网关无效 (502) 错误进行故障排除。
@@ -31,69 +29,54 @@ ms.lasthandoff: 06/08/2017
 
 配置应用程序网关之后，用户可能遇到的一个错误是“服务器错误: 502 - Web 服务器在充当网关或代理服务器时收到无效响应”。 此错误可能是以下主要原因造成的：
 
-* Azure 应用程序网关的[后端池未配置或为空](#empty-backendaddresspool)。
-* [VM 规模集](#unhealthy-instances-in-backendaddresspool)中没有正常运行的 VM 或实例。
-* VM 规模集的后端 VM 或实例[未响应默认的运行状况探测](#problems-with-default-health-probe.md)。
+* NSG、UDR 或自定义 DNS 阻止了对后端池成员的访问。
+* 虚拟机规模集的后端 VM 或实例[未响应默认的运行状况探测](#problems-with-default-health-probe.md)。
 * [自定义运行状况探测的配置](#problems-with-custom-health-probe.md)无效或不正确。
-* 用户请求出现[连接问题或请求超时](#request-time-out)。
+* Azure 应用程序网关的[后端池未配置或为空](#empty-backendaddresspool)。
+* [虚拟机规模集](#unhealthy-instances-in-backendaddresspool)中没有正常运行的 VM 或实例。
+* 用户请求出现[请求超时或连接问题](#request-time-out)。
 
-## <a name="empty-backendaddresspool"></a>BackendAddressPool 为空
+## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>网络安全组、用户定义的路由或自定义 DNS 问题
 
 ### <a name="cause"></a>原因
 
-如果应用程序网关的后端地址池中未配置 VM 或 VM 规模集，则无法路由任何客户请求，并引发网关无效错误。
+如果对后端的访问由于存在 NSG、UDR 或自定义 DNS 而被阻止，则应用程序网关实例将无法联系后端池并将导致探测故障并引发 502 错误。 请注意，NSG/UDR 可能存在于应用程序网关子网中，也可能存在于部署了应用程序 VM 的子网中。 类似地，如果 FQDN 用于后端池成员并且无法由用户为 VNET 配置的 DNS 服务器正确解析，则 VNET 中存在自定义 DNS 也可能会导致问题。
 
 ### <a name="solution"></a>解决方案
 
-确保后端地址池不为空。 这可以通过 PowerShell、CLI 或门户来实现。
+通过执行以下步骤验证 NSG、UDR 和 DNS 配置：
+* 检查与应用程序网关子网关联的 NSG。 确保与后端的通信没有被阻止。
+* 检查与应用程序网关子网关联的 UDR。 确保 UDR 没有将流量引离后端子网 - 例如，检查到网络虚拟设备的路由或通过 ExpressRoute/VPN 播发到应用程序网关子网的默认路由。
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
-上述 cmdlet 的输出应包含非空后端地址池。 以下示例中返回了两个池，其中配置了后端 VM 的 FQDN 或 IP 地址。 BackendAddressPool 的预配状态必须是 'Succeeded'。
+* 检查包含后端 VM 的有效 NSG 和路由
 
-BackendAddressPoolsText：
+```powershell
+Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+```
+
+* 检查 VNet 中是否存在自定义 DNS。 可以通过查看输出中的 VNet 属性的详细信息来检查 DNS。
 
 ```json
-[{
-    "BackendAddresses": [{
-        "ipAddress": "10.0.0.10",
-        "ipAddress": "10.0.0.11"
-    }],
-    "BackendIpConfigurations": [],
-    "ProvisioningState": "Succeeded",
-    "Name": "Pool01",
-    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
-    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool01"
-}, {
-    "BackendAddresses": [{
-        "Fqdn": "xyx.cloudapp.net",
-        "Fqdn": "abc.cloudapp.net"
-    }],
-    "BackendIpConfigurations": [],
-    "ProvisioningState": "Succeeded",
-    "Name": "Pool02",
-    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
-    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool02"
-}]
+Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+DhcpOptions            : {
+                           "DnsServers": [
+                             "x.x.x.x"
+                           ]
+                         }
 ```
-
-## <a name="unhealthy-instances-in-backendaddresspool"></a>BackendAddressPool 中存在运行不正常的实例
-
-### <a name="cause"></a>原因
-
-如果 BackendAddressPool 的所有实例都运行不正常，则应用程序网关不包含任何要将用户请求路由到其中的后端。 当后端实例运行正常但尚未部署所需的应用程序时，也可能会发生此情况。
-
-### <a name="solution"></a>解决方案
-
-确定实例正常运行且已正确配置了应用程序。 检查后端实例是否能够从同一个 VNet 中的另一个 VM 响应 ping。 如果实例中配置了公共终结点，请确保能够为发送到 Web 应用程序的浏览器请求提供服务。
+如果存在，请确保 DNS 服务器能够正确解析后端池成员的 FQDN。
 
 ## <a name="problems-with-default-health-probe"></a>默认运行状况探测出现问题
 
 ### <a name="cause"></a>原因
 
-此外，出现 502 错误经常意味着默认的运行状况探测无法访问后端 VM。 预配某个应用程序网关实例时，该实例会使用 BackendHttpSetting 的属性自动将默认的运行状况探测配置到每个 BackendAddressPool。 无需用户输入即可设置此探测。 具体而言，在配置负载均衡规则时，将在 BackendHttpSetting 与 BackendAddressPool 之间建立关联。 默认探测是针对其中每个关联配置的，而应用程序网关将在 BackendHttpSetting 元素中指定的端口上，与 BackendAddressPool 中每个实例发起周期性运行状况检查连接。 下表列出了与默认运行状况探测关联的值。
+此外，出现 502 错误经常意味着默认的运行状况探测无法访问后端 VM。 预配某个应用程序网关实例时，该实例会使用 BackendHttpSetting 的属性自动将默认的运行状况探测配置到每个 BackendAddressPool。 无需用户输入即可设置此探测。 具体而言，在配置负载均衡规则时，会在 BackendHttpSetting 与 BackendAddressPool 之间建立关联。 默认探测是针对其中每个关联配置的，而应用程序网关会在 BackendHttpSetting 元素中指定的端口上，与 BackendAddressPool 中每个实例发起周期性运行状况检查连接。 下表列出了与默认运行状况探测关联的值。
 
 | 探测属性 | 值 | 说明 |
 | --- | --- | --- |
@@ -152,8 +135,59 @@ BackendAddressPoolsText：
     New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
+## <a name="empty-backendaddresspool"></a>BackendAddressPool 为空
+
+### <a name="cause"></a>原因
+
+如果应用程序网关没有在后端地址池中配置 VM 或虚拟机规模集，则无法路由任何客户请求，并将引发网关无效错误。
+
+### <a name="solution"></a>解决方案
+
+确保后端地址池不为空。 这可以通过 PowerShell、CLI 或门户来实现。
+
+```powershell
+Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+```
+
+上述 cmdlet 的输出应包含非空后端地址池。 以下示例中返回了两个池，其中配置了后端 VM 的 FQDN 或 IP 地址。 BackendAddressPool 的预配状态必须是 'Succeeded'。
+
+BackendAddressPoolsText：
+
+```json
+[{
+    "BackendAddresses": [{
+        "ipAddress": "10.0.0.10",
+        "ipAddress": "10.0.0.11"
+    }],
+    "BackendIpConfigurations": [],
+    "ProvisioningState": "Succeeded",
+    "Name": "Pool01",
+    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool01"
+}, {
+    "BackendAddresses": [{
+        "Fqdn": "xyx.cloudapp.net",
+        "Fqdn": "abc.cloudapp.net"
+    }],
+    "BackendIpConfigurations": [],
+    "ProvisioningState": "Succeeded",
+    "Name": "Pool02",
+    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool02"
+}]
+```
+
+## <a name="unhealthy-instances-in-backendaddresspool"></a>BackendAddressPool 中存在运行不正常的实例
+
+### <a name="cause"></a>原因
+
+如果 BackendAddressPool 的所有实例都运行不正常，则应用程序网关不包含任何要将用户请求路由到其中的后端。 当后端实例运行正常但尚未部署所需的应用程序时，也可能会发生此情况。
+
+### <a name="solution"></a>解决方案
+
+确定实例正常运行且已正确配置了应用程序。 检查后端实例是否能够从同一个 VNet 中的另一个 VM 响应 ping。 如果实例中配置了公共终结点，请确保能够为发送到 Web 应用程序的浏览器请求提供服务。
+
 ## <a name="next-steps"></a>后续步骤
 
 如果上述步骤无法解决问题，请开具[支持票证](https://azure.microsoft.com/support/options/)。
-
 

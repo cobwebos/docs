@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: f2695d4f15fe984cd02cba9ff66033b90d0a4dc3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4ea38d3b47ff4b50446f4ffdc3dc544fdcf938e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
 
-本文档提供 Windows 和 Linux 上 HDInsight 差异的详细信息，以及如何将现有工作负荷迁移到基于 Linux 的群集的指导。
+本文档提供了有关 Windows 上的 HDInsight 与 Linux 上的 HDInsight 之间的差异的详细信息。 它还提供了有关如何将现有工作负荷迁移到基于 Linux 的群集的指导。
 
-尽管通过基于 Windows 的 HDInsight 可以轻松地在云中使用 Hadoop，但是可能还是需要迁移到基于 Linux 的群集。 例如，为了充分利用解决方案所需的基于 Linux 的工具和技术。 Hadoop 生态系统中的许多功能都是基于 Linux 的系统开发的，因此某些功能可能无法用于基于 Windows 的 HDInsight。 除此之外，许多针对 Hadoop 的书籍、视频及其他培训材料都假设使用的是 Linux 系统。
+尽管通过基于 Windows 的 HDInsight 可以轻松地在云中使用 Hadoop，但是可能还是需要迁移到基于 Linux 的群集。 例如，为了充分利用解决方案所需的基于 Linux 的工具和技术。 Hadoop 生态系统中的许多功能都是基于 Linux 的系统开发的，因此某些功能可能无法用于基于 Windows 的 HDInsight。 许多书籍、视频和其他培训材料都假设操作 Hadoop 时使用的是 Linux 系统。
 
 > [!NOTE]
 > HDInsight 群集使用 Ubuntu 长期支持 (LTS) 作为群集中节点的操作系统。 有关可用于 HDInsight 的 Ubuntu 的版本信息，以及其他组件版本控制信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。
@@ -37,7 +36,7 @@ ms.lasthandoff: 09/25/2017
 
 ![迁移工作流示意图](./media/hdinsight-migrate-from-windows-to-linux/workflow.png)
 
-1. 请阅读本文档的每个部分，以了解将现有工作流和作业等迁移到基于 Linux 的群集时，可能需要进行的更改。
+1. 请阅读本文档的每个部分，了解在迁移时可能需要进行的更改。
 
 2. 创建基于 Linux 的群集作为测试/质量保证环境。 有关创建基于 Linux 的群集的详细信息，请参阅 [在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -76,9 +75,9 @@ ms.lasthandoff: 09/25/2017
 
 2. 按照“在 HDInsight 中创建基于 Linux 的群集”文档中的步骤创建测试环境。 在创建群集之前停止，并改为选择“可选配置”。
 
-3. 从“可选配置”边栏选项卡中，选择“链接的存储帐户”。
+3. 从“可选配置”部分中，选择“链接的存储帐户”。
 
-4. 选择“添加存储密钥”，并在出现提示时选择步骤 1 中由 PowerShell 脚本返回的存储帐户。 在每个边栏选项卡上单击“选择”。 最后，创建群集。
+4. 选择“添加存储密钥”，并在出现提示时选择步骤 1 中由 PowerShell 脚本返回的存储帐户。 在每个部分中单击“选择”。 最后，创建群集。
 
 5. 创建群集后，使用 **SSH** 连接到该群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
@@ -114,10 +113,10 @@ ms.lasthandoff: 09/25/2017
 | **PowerShell**（服务器端脚本，包含群集创建期间使用的脚本操作） |重新编写为 Bash 脚本。 有关脚本操作的信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。 |
 | **Azure CLI**（服务器端脚本） |尽管 Azure CLI 可在 Linux 上使用，但它并没有预先安装在 HDInsight 群集头节点上。 有关安装 Azure CLI 的详细信息，请参阅 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。 |
 | **.NET 组件** |.NET 在基于 Linux 的 HDInsight 上通过 [Mono](https://mono-project.com) 受支持。 有关详细信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。 |
-| **Win32 组件或其他仅限 Windows 的技术** |指南因组件或技术而异。 可以找到与 Linux 兼容的版本，或者可能需要查找替代解决方案或重新编写此组件。 |
+| **Win32 组件或其他仅限 Windows 的技术** |指南因组件或技术而异。 你也许能够找到与 Linux 兼容的版本。 如果未找到，则必须找到一个替代解决方案或重写此组件。 |
 
 > [!IMPORTANT]
-> HDInsight 管理 SDK 与 Mono 完全不兼容。 此时它不应用作部署到 HDInsight 群集的解决方案的一部分。
+> HDInsight 管理 SDK 与 Mono 完全不兼容。 不要将它用作部署到 HDInsight 群集的解决方案的一部分。
 
 ## <a name="cluster-creation"></a>群集创建
 
@@ -135,7 +134,7 @@ ms.lasthandoff: 09/25/2017
 
 ### <a name="cluster-customization"></a>群集自定义
 
-与基于 Linux 的群集配合使用的**脚本操作**必须以 Bash 脚本编写。 尽管脚本操作可在群集创建期间使用，它们也可以用于在基于 Linux 的群集已启动并开始运行之后进行自定义。 有关详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight](hdinsight-hadoop-customize-cluster-linux.md) 和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。
+与基于 Linux 的群集配合使用的**脚本操作**必须以 Bash 脚本编写。 基于 Linux 的群集可以在创建群集期间或之后使用脚本操作。 有关详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight](hdinsight-hadoop-customize-cluster-linux.md) 和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。
 
 另一个自定义功能是 **bootstrap**。 对于 Windows 群集，使用此功能可指定其他配合 Hive 使用的库的位置。 在创建群集后，这些库可自动配合 Hive 查询使用，而无需使用 `ADD JAR`。
 
@@ -145,7 +144,7 @@ ms.lasthandoff: 09/25/2017
 
 基于 Windows 的 HDInsight 仅支持经典虚拟网络，而基于 Linux 的 HDInsight 则需要 Resource Manager 虚拟网络。 如果资源位于基于 Linux 的 HDInsight 群集必须连接到的经典虚拟网络中，请参阅[将经典虚拟网络连接到 Resource Manager 虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
 
-有关将 Azure 虚拟网络与 HDInsight 配合使用时所要满足的配置要求的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
+有关配置要求的详细信息，请参阅[使用虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)文档。
 
 ## <a name="management-and-monitoring"></a>监视和管理
 
@@ -164,8 +163,6 @@ Ambari 提供能够通知群集潜在问题的警报系统。 警报以红色或
 > Ambari 警报表示可能有问题，而不表示已发生问题。 例如，可能会收到无法访问 HiveServer2 的警报，但实际上仍可以正常访问它。
 >
 > 许多警报都是针对某项服务实现为基于间隔的查询，并预期在特定的时间范围内收到响应。 因此警报本身并不代表服务已关闭，而只是单纯表示该服务没有在预期时间范围内返回结果。
-
-应该先评估某个警报是否已长时间持续发生，或者反映了已报告的用户问题，然后对它采取措施。
 
 ## <a name="file-system-locations"></a>文件系统位置
 
@@ -230,7 +227,7 @@ Pig 和 MapReduce 工作负荷在基于 Linux 的群集上很相似。 但是，
 
 Oozie 工作流支持 shell 操作。 shell 操作将默认 shell 用于操作系统，以运行命令行命令。 如果现有 Oozie 工作流依赖于 Windows shell，则必须重写工作流以依赖于 Linux shell 环境 (Bash)。 有关将 shell 操作与 Oozie 配合使用的详细信息，请参阅 [Oozie shell 操作扩展](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html)。
 
-如果现有 Oozie 工作流依赖于通过 shell 操作调用的 C# 应用程序，则必须在 Linux 环境中验证这些应用程序。 有关详细信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。
+如果具有使用 C# 应用程序的工作流，请在 Linux 环境中验证这些应用程序。 有关详细信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。
 
 ## <a name="storm"></a>Storm
 
@@ -238,7 +235,7 @@ Oozie 工作流支持 shell 操作。 shell 操作将默认 shell 用于操作�
 | --- | --- |
 | Storm 仪表板 |Storm 仪表板不可用。 请参阅[在基于 Linux 的 HDInsight 上部署和管理 Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)，了解提交拓扑的方法 |
 | Storm UI |可在 https://CLUSTERNAME.azurehdinsight.net/stormui 获得 Storm UI |
-| 使用 Visual Studio 创建、部署和管理 C# 或混合拓扑 |Visual Studio 可以用于创建、部署和管理在 2016 年 10 月 28 日后创建的基于 Linux 的 Storm on HDInsight 群集上的 C# (SCP.NET) 或混合拓扑。 |
+| 使用 Visual Studio 创建、部署和管理 C# 或混合拓扑 |可以使用 Visual Studio 在基于 Linux 的 Storm on HDInsight 上创建、部署和管理 C# (SCP.NET) 或混合拓扑。 它只能与在 2016 年 10 月 28 日之后创建的群集一起使用。 |
 
 ## <a name="hbase"></a>HBase
 
@@ -261,13 +258,13 @@ Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight �
 
 ### <a name="line-endings"></a>行尾
 
-一般情况下，基于 Windows 的系统上的行尾使用 CRLF，而基于 Linux 的系统使用 LF。 如果生成的数据带有 CRLF 行尾或者预期会出现这种行尾，可能需要修改生成器或使用方才能处理 LF 行尾。
+一般情况下，基于 Windows 的系统上的行尾使用 CRLF，而基于 Linux 的系统使用 LF。 可能需要修改现有的数据生成者和使用者才能与 LF 一起使用。
 
 例如，使用 Azure PowerShell 在基于 Windows 的群集上查询 HDInsight，将返回带有 CRLF 的数据。 在基于 Linux 的群集上使用相同的查询将返回 LF。 在迁移到基于 Linux 的群集之前应进行测试，以查看行尾是否会导致解决方案出现问题。
 
-如果有直接在 Linux 群集节点上执行的脚本，应始终使用 LF 作为行结束符。 如果使用 CRLF，可能会在基于 Linux 的群集上运行脚本时遇到错误。
+对于在群集节点上运行的脚本，请始终使用 LF 作为行尾。 如果使用 CRLF，可能会在基于 Linux 的群集上运行脚本时遇到错误。
 
-如果知道脚本中不存在内嵌 CR 字符的字符串，可以使用以下方法之一来批量更改行尾：
+如果脚本中未包含内嵌 CR 字符的字符串，可以使用以下方法之一来批量更改行尾：
 
 * **在上传到群集前**：在将脚本上传到群集前，使用以下 PowerShell 语句将行尾从 CRLF 更改为 LF。
 
@@ -290,4 +287,3 @@ Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight �
 * [了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [使用 SSH 连接到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [使用 Ambari 管理基于 Linux 的群集](hdinsight-hadoop-manage-ambari.md)
-

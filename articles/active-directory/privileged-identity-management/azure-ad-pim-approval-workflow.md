@@ -15,10 +15,10 @@ ms.date: 04/28/2017
 ms.author: barclayn
 ms.custom: pim
 ms.openlocfilehash: cf6a9213fa0a1cba8725aabb42abe51b805ece7a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="approvals-preview"></a>审批（预览版）
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 07/11/2017
 
 ![](media/azure-ad-pim-approval-workflow/image015.png)
 
-当加载时选择的审批者边栏选项卡时，你可以搜索特定用户或组使用的搜索栏顶部，或从预填充列表中，选择，然后单击"选择"完成后：
+加载“选择审批者”边栏选项卡后，可以使用顶部的搜索栏搜索特定用户或组，或从预填充列表中选择，然后在完成后单击“选择”：
 
 ![](media/azure-ad-pim-approval-workflow/image017.png)
 

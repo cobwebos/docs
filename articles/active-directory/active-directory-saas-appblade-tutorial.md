@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
 ms.openlocfilehash: 7820a70b34b6d25ba81b17c472159d08904335d1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appblade"></a>教程：Azure Active Directory 与 AppBlade 集成
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 AppBlade 测试用户](#creating-an-appblade-test-user)** -若要链接到用户的 Azure AD 表示的 AppBlade 中具有 Britta 人 Simon 的副本。
+3. **[创建 AppBlade 测试用户](#creating-an-appblade-test-user)** - 在 AppBlade 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -162,9 +162,9 @@ ms.lasthandoff: 07/11/2017
  
 ### <a name="creating-an-appblade-test-user"></a>创建 AppBlade 测试用户
 
-本部分的目的是在 AppBlade 中创建名为“Britta Simon”的用户。 AppBlade 支持在默认情况下启用的实时预配。 **请确保你的域名与 AppBlade 配置了用户设置。在此之后，只能进行实时用户预配。**
+本部分的目的是在 AppBlade 中创建名为“Britta Simon”的用户。 AppBlade 支持在默认情况下启用的实时预配。 **请确保在 AppBlade 中配置域名，以便进行用户预配。在此之后，只能进行实时用户预配。**
 
-如果用户电子邮件地址结尾的域与通过 AppBlade 为你的帐户配置的域相同，则此用户会自动作为成员加入该帐户，并且具有你所指定的某个权限级别，即“基本”（基本用户只能安装应用程序）、“团队成员”（此用户可以上传新应用版本并管理项目）或“管理员”（拥有帐户的完整管理员权限）。 通常一个将选择 Basic，然后再提升手动通过 （AppBlade 需要事先配置任一基于电子邮件的管理员登录名或在登录后将用户提升代表客户） 管理员登录名的用户。
+如果用户电子邮件地址结尾的域与通过 AppBlade 为你的帐户配置的域相同，则此用户会自动作为成员加入该帐户，并且具有你所指定的某个权限级别，即“基本”（基本用户只能安装应用程序）、“团队成员”（此用户可以上传新应用版本并管理项目）或“管理员”（拥有帐户的完整管理员权限）。 通常会先选择“基本”权限级别，然后以管理员身份登录，手动提升用户的权限（AppBlade 需提前配置基于电子邮件的管理员登录名，或者需在登录后代表客户提升用户的权限）。
 
 此部分不存在任何操作项。 如果用户尚不存在，则在尝试访问 AppBlade 期间会创建一个新用户。 
 

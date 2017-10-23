@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
+ms.openlocfilehash: 13154e41ebd4867de9af74340a69446400814f5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4f1d5f4cc48470f8906edb28628006dd1996bd3a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
@@ -79,55 +78,11 @@ az group deployment create \
 
 前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-cli-sas-token.md)。
 
-## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
+[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-可以使用 [Cloud Shell](../cloud-shell/overview.md) 来运行 Azure CLI 命令，以便部署模板。 但是，必须先将模板加载到 Cloud Shell 的文件共享。 如果尚未使用过 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../cloud-shell/overview.md)，了解如何设置它。
+在 Cloud Shell 中使用以下命令：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。   
-
-2. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
-
-   ![选择资源组](./media/resource-group-template-deploy-cli/select-cs-resource-group.png)
-
-3. 选择适用于 Cloud Shell 的存储帐户。
-
-   ![选择存储帐户](./media/resource-group-template-deploy-cli/select-storage.png)
-
-4. 选择“文件”。
-
-   ![选择文件](./media/resource-group-template-deploy-cli/select-files.png)
-
-5. 选择 Cloud Shell 的文件共享。 名称模式为 `cs-<user>-<domain>-com-<uniqueGuid>`。
-
-   ![选择文件共享](./media/resource-group-template-deploy-cli/select-file-share.png)
-
-6. 选择“添加目录”。
-
-   ![添加目录](./media/resource-group-template-deploy-cli/select-add-directory.png)
-
-7. 将其命名为“模板”，然后选择“确定”。
-
-   ![为目录命名](./media/resource-group-template-deploy-cli/name-templates.png)
-
-8. 选择新目录。
-
-   ![选择目录](./media/resource-group-template-deploy-cli/select-templates.png)
-
-9. 选择“上传”。
-
-   ![选择“上传”](./media/resource-group-template-deploy-cli/select-upload.png)
-
-10. 找到并上传模板。
-
-   ![上传文件](./media/resource-group-template-deploy-cli/upload-files.png)
-
-11. 打开提示符。
-
-   ![打开 Cloud Shell](./media/resource-group-template-deploy-cli/start-cloud-shell.png)
-
-12. 在 Cloud Shell 中输入以下命令：
-
-   ```azurecli
+   ```azurecli-interactive
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
    ```
@@ -282,4 +237,3 @@ az group deployment create \
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](resource-manager-cli-sas-token.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-

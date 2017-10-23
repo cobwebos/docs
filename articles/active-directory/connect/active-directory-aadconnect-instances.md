@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: e8321c3d16253226a5931cacbce6fa5d50b697bd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
 Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例。 但也有其他实例，这些实例对 URL 具有不同的要求并且具有其他的特殊注意事项。
@@ -44,7 +44,7 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 ## <a name="microsoft-azure-government-cloud"></a>Microsoft Azure 政府版云
 [Microsoft Azure 政府版云](https://azure.microsoft.com/features/gov/)是用于美国政府的云。
 
-DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本起，会支持该云的新一代版本。 这一代使用的是基于仅限美国的终结点，并具有不同的 URL 列表，可在代理服务器中打开。
+DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本起，将支持下一代云。 这一代使用的是基于仅限美国的终结点，并具有不同的 URL 列表，可在代理服务器中打开。
 
 | 在代理服务器中打开的 URL |
 | --- |
@@ -56,7 +56,7 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 Azure AD Connect 无法自动检测 Azure AD 租户是否位于政府版云中。 安装 Azure AD Connect 时，需要改为执行以下操作。
 
 1. 开始 Azure AD Connect 安装。
-2. 看到第一页后，应接受其中的 EULA，但请不要继续，而是让安装向导运行。
+2. 出现第一页时（应在其中接受 EULA），请不要继续，而是让安装向导保持运行。
 3. 启动 regedit 并将注册表项 `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` 更改为值 `2`。
 4. 返回 Azure AD Connect 安装向导，接受 EULA，并继续。 在安装期间，请确保使用“自定义配置”安装路径（而不是快速安装）。 然后，像往常一样继续安装。
 

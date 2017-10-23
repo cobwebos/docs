@@ -16,13 +16,13 @@ ms.date: 07/30/2016
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7389f55ee6fef9548abb0ca4ac1bbd0399868d47
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-a-windows-desktop-app"></a>将登录凭据添加到 Windows 桌面应用
-v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  它也可让应用程序安全地与后端 Web API、[Microsoft Graph](https://graph.microsoft.io) 以及多个 [Office 365 Unified API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) 进行通信。
+v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  它也可让应用安全地与后端 Web API，以及 [Microsoft Graph](https://graph.microsoft.io) 和多个 [Office 365 统一 API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) 进行通信。
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory (AD) 方案和功能。  若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
@@ -45,7 +45,7 @@ v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持
 ## <a name="register-an-app"></a>注册应用程序
 在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 中创建新应用，或遵循以下[详细步骤](active-directory-v2-app-registration.md)。  请确保：
 
-* 复制分配给应用程序的**应用程序 ID** ，因为稍后会用到。
+* 复制分配给应用的**应用程序 ID**，稍后将要用到。
 * 为应用添加**移动**平台。
 
 ## <a name="install--configure-msal"></a>安装并配置 MSAL
@@ -62,12 +62,12 @@ PM> Install-Package Microsoft.Identity.Client -ProjectName TodoListClient -Inclu
   * `ida:ClientId` 是从门户复制的应用的**应用程序 ID**。
 * 在 TodoList-Service 项目中，打开项目根目录中的 `web.config`。  
   
-  * 将 `ida:Audience` 值替换为来自门户的相同**应用程序 ID** 。
+  * 将 `ida:Audience` 值替换为来自门户的相同**应用程序 ID**。
 
 ## <a name="use-msal-to-get-tokens"></a>使用 MSAL 获取令牌
 MSAL 遵守的基本原理是，每当应用需要访问令牌时，只需调用 `app.AcquireToken(...)`，MSAL 就会负责其余的工作。  
 
-* 在 `TodoListClient` 项目中，打开 `MainWindow.xaml.cs` 并找到 `OnInitialized(...)` 方法。  第一步是初始化应用的 `PublicClientApplication`（MSAL 表示本机应用程序的主类）。  会在此处向 MSAL 传递其与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
+* 在 `TodoListClient` 项目中，打开 `MainWindow.xaml.cs` 并找到 `OnInitialized(...)` 方法。  第一步是初始化应用的 `PublicClientApplication`（MSAL 表示本机应用程序的主类）。  将在此处向 MSAL 传递其与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
 
 ```C#
 protected override async void OnInitialized(EventArgs e)
@@ -165,7 +165,7 @@ catch (MsalException ex)
 }
 ```
 
-* 如果用户成功登录，MSAL 会为你接收和缓存令牌，让可以放心地继续调用 `GetTodoList()` 方法。  获取用户任务的剩余步骤是实现 `GetTodoList()` 方法。
+* 如果用户成功登录，MSAL 将接收和缓存令牌，让可以放心地继续调用 `GetTodoList()` 方法。  获取用户任务的剩余步骤是实现 `GetTodoList()` 方法。
 
 ```C#
 private async void GetTodoList()

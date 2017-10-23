@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
 ms.openlocfilehash: d75163ea5eb3fa811e07861f06e6c4d5c758b898
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>教程：将 Azure Active Directory 与 Five9 Plus Adapter (CTI, Contact Center Agents) 集成
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/29/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Five9 加上的适配器 （CTI，联系人 Center 代理） 测试用户](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)** -若要在 Five9 加上适配器 （CTI，联系人 Center 代理） 链接到用户的 Azure AD 表示具有 Britta 人 Simon 的副本。
+3. **[创建 Five9 Plus Adapter (CTI, Contact Center Agents) 测试用户](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)** - 在 Five9 Plus Adapter (CTI, Contact Center Agents) 创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

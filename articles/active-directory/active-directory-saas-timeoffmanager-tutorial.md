@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.openlocfilehash: 3f944ffbf704694b293b4b1e5bdb4f2c93ae35a1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>教程：Azure Active Directory 与 TimeOffManager 集成
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 08/18/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建一个 TimeOffManager 测试用户](#create-a-timeoffmanager-test-user)** -若要链接到用户的 Azure AD 表示的 TimeOffManager 中具有 Britta 人 Simon 的副本。
+3. **[创建 TimeOffManager 测试用户](#create-a-timeoffmanager-test-user)** - 在 TimeOffManager 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 

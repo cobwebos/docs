@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
 ms.openlocfilehash: d23721eba308096a05211eb6e26e1338a69cae0c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory 中可配置的令牌生存期（公共预览版）
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
@@ -80,8 +80,8 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 | 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor<sup>3</sup> |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
-* <sup>2</sup>如果未设置 MaxAgeSessionSingleFactor，此值会采用 MaxAgeSingleFactor 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
-* <sup>3</sup>如果未设置 MaxAgeSessionMultiFactor，此值会采用 MaxAgeMultiFactor 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
+* <sup>2</sup>如果未设置 **MaxAgeSessionSingleFactor**，此值会采用 **MaxAgeSingleFactor** 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
+* <sup>3</sup>如果未设置 **MaxAgeSessionMultiFactor**，此值会采用 **MaxAgeMultiFactor** 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
 
 ### <a name="exceptions"></a>异常
 | 属性 | 影响 | 默认 |
@@ -181,7 +181,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 减少最大期限会强制用户更频繁地进行身份验证。 由于单重身份验证的安全性不如多重身份验证，因此我们建议为此属性设置一个大于“单因素会话令牌最大期限”属性的值。
 
 ## <a name="example-token-lifetime-policies"></a>示例令牌生存期策略
-如果能够创建和管理应用、服务主体和整个组织的令牌生存期，就可以在 Azure AD 中实现各种新的方案。 本部分逐步讲解一些常见的策略方案，帮助针对以下属性实施新规则：
+如果能够创建和管理应用、服务主体和整个组织的令牌生存期，就可以在 Azure AD 中实现各种新的方案。 本部分逐步讲解一些常见的策略方案，帮助你针对以下属性实施新规则：
 
 * 令牌生存期
 * 令牌最大非活动时间
@@ -243,7 +243,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 2. 更新策略。
 
-    假设在本示例中创建的第一个策略不像服务要求的那样严格。 若要将单因素刷新令牌设置为在两天后过期，请运行以下命令：
+    假设在本示例中创建的第一个策略不像服务要求的那样严格。 要将单因素刷新令牌设置为在两天后过期，请运行以下命令：
 
     ```PowerShell
     Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
@@ -311,7 +311,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 1. 创建令牌生存期策略。
 
-    1.  若要创建一个将单因素刷新令牌生存期设置为 30 天的组织默认策略，请运行以下命令：
+    1.  要创建一个将单因素刷新令牌生存期设置为 30 天的组织默认策略，请运行以下命令：
 
         ```PowerShell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
@@ -325,7 +325,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 2. 将策略分配到服务主体。
 
-    现已创建一个要应用到整个组织的策略。 可能需要为特定的服务主体保留这个 30 天策略，但需要将组织默认策略更改为上限“直到吊销”。
+    现已创建一个要应用到整个组织的策略。 可能想要为特定的服务主体保留这个 30 天策略，但要将组织默认策略更改为上限“直到吊销”。
 
     1.  若要查看组织的所有服务主体，可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 或者，在 [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) 中使用 Azure AD 帐户登录。
 

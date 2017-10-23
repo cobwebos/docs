@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 93b5e3f4892f974bf9df28955956136528470e03
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement---troubleshooting-guide"></a>Azure Mobile Engagement - 故障排除指南
 ## <a name="introduction"></a>介绍
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/11/2017
 4. 根据[入门教程](mobile-engagement-windows-store-dotnet-get-started.md)中描述的平台，确保通过使用 EngagementActivity 重写页面至少发送一个屏幕/活动。
 
 ### <a name="i-am-seeing-the-monitor-tab-showing-a-session-even-when-i-have-disconnected-or-closed-my-app-emulator"></a>即使我已断开或关闭我的应用/仿真程序，我还是看到“监视器”选项卡显示会话。
-如果你是唯一一个连接到该平台在此时并且使用仿真程序中打开应用这是有可能是因为仿真程序 quirks。 一般情况下，需要确保返回到仿真程序上的主屏幕，以便应用会话成功断开连接。 此外，在 Windows 平台上，在使用 Visual Studio 进行调试时，可能需要确保在 Visual Studio 中，转到“**生命周期事件**”菜单栏，并单击“**挂起**”才能真正关闭会话。 有关详细信息，请参阅 [Windows 教程](mobile-engagement-windows-store-dotnet-get-started.md)。 
+如果此时你是唯一一个连接到该平台的用户并且是使用模拟器打开应用，则很可能是因为模拟器出现异常。 一般情况下，需要确保返回到仿真程序上的主屏幕，以便应用会话成功断开连接。 此外，在 Windows 平台上，在使用 Visual Studio 进行调试时，可能需要确保在 Visual Studio 中，转到“**生命周期事件**”菜单栏，并单击“**挂起**”才能真正关闭会话。 有关详细信息，请参阅 [Windows 教程](mobile-engagement-windows-store-dotnet-get-started.md)。 
 
 ## <a name="analytics-issues"></a>“分析”问题
 ### <a name="i-am-not-seeing-any-data-refreshed-data-on-analytics-tab"></a>我在“分析”选项卡上看不到任何数据/刷新的数据

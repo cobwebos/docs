@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 10/09/2017
 ms.author: owend
+ms.openlocfilehash: 71c4c8929a80a46ba2b9ba204f5666d40607f303
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: d614352a62dc7aca012e9b144473604ae9829af9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要具备本地数据网关。 要了解有关网关的更多信息，请参阅[本地数据网关](analysis-services-gateway.md)。
@@ -44,6 +43,7 @@ ms.lasthandoff: 09/21/2017
 * 一台计算机上只能安装一个网关。
 * 在计算机处于开启但未处于休眠状态下安装网关。
 * 不要在使用无线网络连接的计算机上安装网关。 否则，可能会降低性能。
+* 在 Azure AD 中使用与要在其中注册网关的订阅相同[租户](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)的帐户登录到 Azure。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
 
 
 ## <a name="download"></a>下载
@@ -57,12 +57,12 @@ ms.lasthandoff: 09/21/2017
 
    ![安装位置和许可条款](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
-3. 输入用于登录 Azure 的帐户。 该帐户必须位于你租户的 Azure Active Directory 中。 该帐户用于网关管理员。 
+3. 登录 Azure。 该帐户必须位于你租户的 Azure Active Directory 中。 该帐户用于网关管理员。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
 
-   ![输入用于登录 Azure 的帐户](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![登录 Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
-   > 如果你使用域帐户登录，它将映射到你在 Azure AD 中的组织帐户。 你的组织帐户将用作网关管理员。
+   > 如果使用域帐户登录，它将映射到你在 Azure AD 中的组织帐户。 你的组织帐户将用作网关管理员。
 
 ## <a name="register"></a>注册
 若要在 Azure 中创建网关资源，则必须在网关云服务中注册你安装的本地实例。 
@@ -88,7 +88,6 @@ ms.lasthandoff: 09/21/2017
     * 名称：输入网关资源的名称。 
 
     * 订阅：选择要与网关资源关联的 Azure 订阅。 
-    此订阅应与服务器所在的订阅相同。
    
       默认订阅取决于用来登录的 Azure 帐户。
 
@@ -118,4 +117,3 @@ ms.lasthandoff: 09/21/2017
 ## <a name="next-steps"></a>后续步骤
 * [管理 Analysis Services](analysis-services-manage.md)   
 * [从 Azure Analysis Services 获取数据](analysis-services-connect.md)
-

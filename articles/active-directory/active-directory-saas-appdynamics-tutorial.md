@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
 ms.openlocfilehash: 634e68bdb937eba68b27b824dc62fe2677e24ffe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>教程：Azure Active Directory 与 AppDynamics 集成
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 07/11/2017
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 AppDynamics 应用程序中配置单一登录。
 
-**若要使用 AppDynamics 配置 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 AppDynamics 的 Azure AD 单一登录，请执行以下步骤：**
 
 1. 在 Azure 门户中的 AppDynamics 应用程序集成页上，单击“单一登录”。
 
@@ -218,7 +218,7 @@ ms.lasthandoff: 07/11/2017
 
 ![分配用户][200] 
 
-**若要将 Britta 人 Simon 分配到 AppDynamics，请执行以下步骤：**
+**若要将 Britta Simon 分配到 AppDynamics，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 96bf9d4c26a22f718c29804c11681199e775f589
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>通过强标识解决方案增强数据安全性的计划
 保护数据的第一步是确定谁可以访问该数据，作为此过程的组成部分，需要具有可与系统集成的标识解决方案，以便提供身份验证和授权功能。 身份验证与授权经常给人造成混淆，并且其角色容易令人误解。 事实上它们有很大的差别，如下图中所示：
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/03/2017
 规划混合标识解决方案时，必须了解适用于业务的数据保护要求以及哪些选项可用于最好地满足这些要求。
 
 > [!NOTE]
-> 完数据安全规划，请查看[确定多因素身份验证要求](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)以确保根据多因素身份验证要求你选择了不受本节对此做出的决策。
+> 完成规划数据安全性后，查看[确定多重身份验证要求](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)，确保与多重身份验证要求相关的选择不受你在此部分所做决定的影响。
 > 
 > 
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在经典部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-本文介绍为 Azure ExpressRoute 线路获取地址解析协议 (ARP) 表的步骤。
+本文指导完成为 Azure ExpressRoute 线路获取地址解析协议 (ARP) 表的步骤。
 
 > [!IMPORTANT]
 > 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果使用以下指南无法解决问题，请使用 [Microsoft Azure 帮助+支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)建立支持请求。
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>地址解析协议 (ARP) 和 ARP 表
-ARP 是 [RFC 826](https://tools.ietf.org/html/rfc826) 中定义的第 2 层协议。 ARP 用于将以太网地址（MAC 地址）映射到 IP 地址。
+ARP 是 [RFC 826](https://tools.ietf.org/html/rfc826) 中定义的第 2 层协议。 ARP 用于以太网地址（MAC 地址）映射到 IP 地址。
 
 可以通过 ARP 表来映射 IPv4 地址和 MAC 地址，以便实现特定的对等互连。 用于 ExpressRoute 线路对等互连的 ARP 表为每个接口（主接口和辅助接口）提供以下信息：
 

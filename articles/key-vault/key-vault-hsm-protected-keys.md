@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: ambapat
 ms.openlocfilehash: 5dbee1221f64045c64fecb344de1e03b2183dfb1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 ## <a name="introduction"></a>介绍
@@ -41,13 +41,13 @@ ms.lasthandoff: 07/11/2017
 * 密钥通过密钥交换密钥 (KEK) 进行加密，且在传输到 Azure 密钥保管库 HSM 之前一直处于加密状态。 只有加密版本的密钥会离开原始工作站。
 * 该工具集会在将密钥绑定到 Azure 密钥保管库安全体系的租户密钥上设置属性。 因此，在 Azure 密钥保管库 HSM 收到和解密密钥之后，只有这些 HSM 能够使用它。 无法导出密钥。 此绑定由 Thales HSM 强制实施。
 * 用于加密密钥的密钥交换密钥 (KEK) 是在 Azure 密钥保管库 HSM 内部生成的，且不可导出。 HSM 会强制使 HSM 外部没有清晰版本的 KEK。 此外，该工具集还包括来自 Thales 的证明，即 KEK 不可导出，并在 Thales 制造的正版 HSM 内部生成。
-* 该工具集包括来自 Thales 的证明，即 Azure 密钥保管库安全体系也在 Thales 制造的正版 HSM 内部生成。 此证明可向你证明 Microsoft 使用了真品硬件。
+* 该工具集包括来自 Thales 的证明，即 Azure 密钥保管库安全体系也在 Thales 制造的正版 HSM 内部生成。 此证明可证明 Microsoft 使用的是正版硬件。
 * Microsoft 会在每个地理区域都使用单独的 KEK 和单独的安全体系。 这种分离可确保密钥只能在将其加密的区域的数据中心使用。 例如，来自欧洲客户的密钥不能在北美或亚洲数据中心使用。
 
 ## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Thales HSM 和 Microsoft 服务的详细信息
 Thales E-security 是全球领先的数据加密和网络安全解决方案供应商，主要面向金融服务、高科技、制造、政府和技术行业。 Thales E-security 在保护企业和政府信息方面拥有 40 年的骄人历史记录，目前规模最大的五大能源和航天公司中有四家都在使用 Thales 解决方案。 此外，还有 22 个北约国家/地区也使用了他们的解决方案，全球有超过 80% 支付交易都受其保护。
 
-Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强功能可使你能够获得托管服务的典型优势，而且无需放弃对密钥的控制权。 具体而言，这些增强功能让 Microsoft 管理 Hsm，因此，你还没有到。 作为云服务，Azure 密钥保管库无需通知即可扩大，以满足组织的使用高峰需求。 同时，密钥也会在 Microsoft 的 HSM 内部获得保护：你生成密钥并将其传输到 Microsoft 的 HSM，所以可以保留对密钥生命周期的控制权。
+Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强功能可使你能够获得托管服务的典型优势，而且无需放弃对密钥的控制权。 具体来说，这些增强功能可以让 Microsoft 管理 HSM，这样你就不必费心管理了。 作为云服务，Azure 密钥保管库无需通知即可扩大，以满足组织的使用高峰需求。 同时，密钥也会在 Microsoft 的 HSM 内部获得保护：你生成密钥并将其传输到 Microsoft 的 HSM，所以可以保留对密钥生命周期的控制权。
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>为 Azure 密钥保管库实现“自带密钥 (BYOK)”
 如果将生成自己的受 HSM 保护的密钥，然后将其传输到 Azure 密钥保管库（“自带密钥 (BYOK)”方案），请使用以下信息和过程。
@@ -83,7 +83,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 使用以下命令启动 Azure PowerShell 会话，并登录 Azure 帐户：
 
         Add-AzureAccount
-在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 然后，使用[Get-azuresubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0)命令：
+在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 然后，使用 [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) 命令：
 
         Get-AzureSubscription
 从输出中，找到用于 Azure 密钥保管库的订阅的 ID。 稍后会用到该订阅 ID。
@@ -91,7 +91,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 不要关闭 Azure PowerShell 窗口。
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>步骤 1.3：下载 Azure 密钥保管库的 BYOK 工具集
-转到 Microsoft 下载中心和[下载 Azure 密钥保管库 BYOK 工具集](http://www.microsoft.com/download/details.aspx?id=45345)地理区域或 Azure 实例。 使用以下信息确定要下载的包名称及其对应的 SHA 256 包哈希：
+转到 Microsoft 下载中心，针对所在的地理区域或 Azure 实例[下载 Azure Key Vault BYOK 工具集](http://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA 256 包哈希：
 
 - - -
 **美国：**
@@ -143,7 +143,7 @@ KeyVault-BYOK-Tools-Australia.zip
 4AD893396E86F2D2A71682876A6A8EA59E3C7895BEAD2F7E7C8516682582C34B
 
 - - -
-[**Azure 政府版：**](https://azure.microsoft.com/features/gov/)
+[**Azure 政府：**](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
@@ -231,7 +231,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
     new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 
-此程序会在 %NFAST_KMDATA%\local\world 中创建一个 **Security World** 文件，此文件夹对应于 C:\ProgramData\nCipher\Key Management Data\local 文件夹。 可以使用不同的值进行仲裁，但在本例中，系统会提示为每个值输入三个空白卡和 pin。 然后，任何两个卡将提供给安全体系的完全访问权限。 这些卡成为新安全体系的**管理员卡集**。
+此程序会在 %NFAST_KMDATA%\local\world 中创建一个 **Security World** 文件，此文件夹对应于 C:\ProgramData\nCipher\Key Management Data\local 文件夹。 可以使用不同的值进行仲裁，但在本例中，系统会提示为每个值输入三个空白卡和 pin。 然后，任何两个卡都会提供对安全体系的完全访问权限。 这些卡成为新安全体系的**管理员卡集**。
 
 然后执行以下操作：
 
@@ -255,7 +255,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
 验证下载的程序包：
 
-1. 通过键入以下内容，具体取决于你的地理区域或 Azure 实例之一以运行 verifykeypackage.py 脚本：
+1. 根据所在的地理区域或 Azure 实例，键入以下项之一，以运行 verifykeypackage.py 脚本：
 
    * 北美洲：
 
@@ -297,7 +297,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
      > Thales 软件包含在 %NFAST_HOME%\python\bin 中的 python
      >
      >
-2. 确认你看到以下内容，它表示验证成功：**结果： 成功**
+2. 确认看到以下指示验证成功的消息：**Result: SUCCESS**
 
 此脚本会验证直到 Thales 根密钥的签名程序链。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 还可以通过访问 [Thales 网站](http://www.thalesesec.com/)单独确认此值。
 
@@ -439,7 +439,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 使用 U 盘或其他便携式存储设备，将上一步的输出文件 (KeyTransferPackage-ContosoFirstHSMkey.byok) 复制到连接 Internet 的工作站。
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>步骤 5：将密钥传输到 Azure 密钥保管库
-对于此最后一步，在连接 Internet 的工作站上，使用[Add-azurekeyvaultkey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) cmdlet 上载你从断开连接的工作站复制到 Azure 密钥保管库 HSM 的密钥传送包：
+在此最后一步中，在连接 Internet 的工作站上，使用 [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) cmdlet 上传从断开连接的工作站复制到 Azure Key Vault HSM 的密钥传输包：
 
     Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
 

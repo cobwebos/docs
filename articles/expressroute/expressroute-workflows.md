@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
 ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导完成服务预配和路由配置工作流。
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 1. 使用 PowerShell 配置 ExpressRoute 线路。 有关更多详细信息，请遵循[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)一文中的说明。
 2. 从服务提供商订购连接。 此过程根据情况而有所不同。 有关如何订购连接的详细信息，请联系连接服务提供商。
 3. 通过 PowerShell 验证 ExpressRoute 线路预配状态，以确保线路预配成功。 
-4. 配置路由域 如果连接服务提供商管理第 3 层，他们将为你的线路配置路由。 如果连接服务提供商只提供第 2 层服务，则必须根据[路由要求](expressroute-routing.md)和[路由配置](expressroute-howto-routing-classic.md)页中所述的指导原则来配置路由。
+4. 配置路由域 如果连接服务提供商管理第 3 层，则他们将为线路配置路由。 如果连接服务提供商只提供第 2 层服务，则必须根据[路由要求](expressroute-routing.md)和[路由配置](expressroute-howto-routing-classic.md)页中所述的指导原则来配置路由。
    
    * 启用 Azure 专用对等互连 - 只有启用此对等互连才能连接到部署在虚拟网络中的 VM/云服务。
    * 启用 Azure 公共对等互连 - 如果想要连接到托管在公共 IP 地址上的 Azure 服务，则必须启用 Azure 公共对等互连。 如果已选择为 Azure 专用对等互连启用默认路由并想要访问 Azure 资源，则必须执行上述操作。
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
      > 
      
      ![](./media/expressroute-workflows/routing-workflow.png)
-5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。 请按照说明[将 VNet 链接](expressroute-howto-linkvnet-arm.md)到你的线路。 这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
+5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。 请按照说明[将 VNet 链接](expressroute-howto-linkvnet-arm.md)到用户的线路。 这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
 
 ## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute 线路预配状态
 每条 ExpressRoute 线路有两种状态：
@@ -93,7 +93,7 @@ ms.lasthandoff: 07/11/2017
 如果需要，可以选择重新启用线路，或运行 PowerShell cmdlet 删除线路。  
 
 > [!IMPORTANT]
-> 当 ServiceProviderProvisioningState 为 Provisioning 或 Provisioned 时，如果运行该 PowerShell cmdlet 来删除线路，操作会失败。 请先让连接服务提供商取消 ExpressRoute 线路，然后删除线路。 在运行 PowerShell cmdlet 删除线路之前，Microsoft 会持续收取线路费用。
+> 当 ServiceProviderProvisioningState 为 Provisioning 或 Provisioned 时，如果运行该 PowerShell cmdlet 来删除线路，操作会失败。 请先让连接服务提供商取消设置 ExpressRoute 线路，然后删除该线路。 在运行 PowerShell cmdlet 删除线路之前，Microsoft 会持续收取线路费用。
 > 
 > 
 

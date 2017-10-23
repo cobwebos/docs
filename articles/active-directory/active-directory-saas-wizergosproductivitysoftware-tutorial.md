@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/20/2017
 ms.author: jeedes
 ms.openlocfilehash: 73b3bc05aeb337c12acb7e47c0dbebe6d0196530
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>教程：Azure Active Directory 与 Wizergos Productivity Software 集成
 本教程的目的是演示如何将 Wizergos Productivity Software 与 Azure Active Directory (Azure AD) 集成。
@@ -88,11 +88,11 @@ ms.lasthandoff: 07/11/2017
 
 若要使用 BynWizergos Productivity Softwareder 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[Azure AD 单一登录配置](#configuring-azure-ad-single-single-sign-on)** -若要使用户可以使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Wizergos 工作效率软件测试用户](#creating-a-wizergos-productivity-software-test-user)** -若要链接到的 Azure AD 表示形式她的 Wizergos 工作效率软件中具有 Britta 人 Simon 的副本。
+3. **[创建 Wizergos Productivity Software 测试用户](#creating-a-wizergos-productivity-software-test-user)** - 在 Wizergos Productivity Software 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[单一登录测试](#testing-single-sign-on)** -若要验证是否配置是否正常工作。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-sso"></a>配置 Azure AD SSO
 在本部分中，在经典门户中启用 Azure AD 单一登录，并在 Wizergos Productivity Software 应用程序中配置单一登录。

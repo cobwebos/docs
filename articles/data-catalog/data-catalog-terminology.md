@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
 ms.openlocfilehash: 557b529f45c7fbc286b7e1893d4b4688e088ed91
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 数据目录术语
 ## <a name="catalog"></a>目录
@@ -77,7 +77,7 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 >
 
 ## <a name="registration"></a>注册
-注册是从数据资产提取数据资产元数据并将其复制到 Azure 数据目录服务的操作。 已注册的数据资产然后进行注释和发现。
+注册是从数据资产提取数据资产元数据并将其复制到 Azure 数据目录服务的操作。 然后就可以批注和发现已注册的数据资产。
 
 ## <a name="see-also"></a>另请参阅
 * [什么是 Azure 数据目录？](data-catalog-what-is-data-catalog.md) - 本文概述了 Azure 数据目录服务、它所提供的价值以及所支持的方案。

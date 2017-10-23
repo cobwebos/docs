@@ -13,10 +13,10 @@ ms.devlang: na
 ms.date: 05/02/2017
 ms.author: sama
 ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C：使用自定义策略管理 SSO 和令牌自定义
 与使用内置策略相比，使用自定义策略能够以相同的力度控制令牌、会话和单一登录 (SSO) 配置。  若要了解每项设置的作用，请参阅[此文档](#active-directory-b2c-token-session-sso)。
@@ -58,15 +58,14 @@ ms.lasthandoff: 07/11/2017
 **颁发者 (iss) 声明**：若要更改颁发者 (iss) 声明，请修改包含 Key="IssuanceClaimPattern" 的 `<Item>` 中的值。  适用的值为 `AuthorityAndTenantGuid` 和 `AuthorityWithTfp`。
 
 **设置声明表示策略 ID**：用于设置此值的选项为 TFP（信任框架策略）和 ACR（身份验证上下文引用）。  
-我们建议将其设置为 TFP，若要执行此操作，请确保`<Item>`与键 ="AuthenticationContextReferenceClaimPattern"存在且值为`None`。
+我们建议将其设置为 TFP，为此，请确保存在包含 Key="AuthenticationContextReferenceClaimPattern" 的 `<Item>` 并且其值为 `None`。
 在 `<OutputClaims>` 项中添加以下元素：
 ```XML
 <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
 ```
 对于 ACR，请删除包含 Key="AuthenticationContextReferenceClaimPattern" 的 `<Item>`。
 
-
-            **使用者 (sub) 声明**：此选项默认为 ObjectID，如果要切换为 `Not Supported`，请执行以下操作：
+**使用者 (sub) 声明**：此选项默认为 ObjectID，如果要切换为 `Not Supported`，请执行以下操作：
 
 将以下代码行 
 ```XML

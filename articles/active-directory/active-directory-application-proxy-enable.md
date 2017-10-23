@@ -3,7 +3,7 @@ title: "Azure AD 应用代理 - 开始安装连接器| Microsoft Docs"
 description: "在 Azure 门户中，打开应用程序代理并为反向代理安装连接器。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
@@ -11,18 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
-ms.author: kgremban
+ms.date: 10/02/2017
+ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: 3b0a3e315ecd98565a852b3a8190d78ccdefe42d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 77acb23f33fd656a12c27107cb159613a8b2aec4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>开始使用应用程序代理并安装连接器
 本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
 
@@ -31,7 +29,7 @@ ms.lasthandoff: 08/05/2017
 ## <a name="application-proxy-prerequisites"></a>应用程序代理先决条件
 在启用和使用应用程序代理服务之前，需要：
 
-* [Microsoft Azure AD 基本或高级版订阅](active-directory-editions.md) 以及你本人为全局管理员的 Azure AD 目录。
+* [Microsoft Azure AD 基本或高级版订阅](active-directory-editions.md) 以及本人为全局管理员的 Azure AD 目录。
 * 可以安装应用程序代理连接器、运行 Windows Server 2012 R2 或 2016 的服务器。 该服务器需要能够连接到云中的应用程序代理服务和你要发布的本地应用程序。
   * 若要使用 Kerberos 约束委派单一登录到已发布的应用程序，此计算机应域加入要发布的应用程序所在的同一 AD 域。 有关信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](active-directory-application-proxy-sso-using-kcd.md)。
 
@@ -63,9 +61,9 @@ ms.lasthandoff: 08/05/2017
    * ocsp.msocsp.com:80
    * www.microsoft.com:80
 
-4. 连接器在注册过程中需要访问 login.windows.net 和 login.microsoftonline.net。
+4. 连接器在注册过程中需要访问 login.windows.net 和 login.microsoftonline.com。
 
-5. 使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器是否能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。
+5. 使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。
 
 ## <a name="install-and-register-a-connector"></a>安装并注册连接器
 1. 在 [Azure 门户](https://portal.azure.com/)中，以管理员身份登录。
@@ -108,4 +106,3 @@ ms.lasthandoff: 08/05/2017
 现在，可以随时 [使用应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。
 
 如果应用程序位于单独网络或其他位置，可以使用连接器组将不同连接器组织到逻辑单元中。 了解有关 [使用应用程序代理连接器](active-directory-application-proxy-connectors-azure-portal.md)的详细信息。
-

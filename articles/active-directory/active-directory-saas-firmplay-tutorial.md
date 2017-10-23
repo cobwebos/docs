@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
 ms.openlocfilehash: 3cddd5b9508159089bf344dbb3882d462799747c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>教程：Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 的集成
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，你将配置和测试 Azure AD 单一登录与 FirmPlay-基于一个名为"Britta 人 Simon"的测试用户的招聘的员工支持。
+本部分将基于名为“Britta Simon”的测试用户配置并测试 FirmPlay - Employee Advocacy for Recruiting 的 Azure AD 单一登录。
 
 若要使用单一登录，Azure AD 需要了解与 Azure AD 中的用户相对应的 FirmPlay - Employee Advocacy for Recruiting 中的用户是谁。 换句话说，需要在 Azure AD 用户与 FirmPlay - Employee Advocacy for Recruiting 中相关用户之间建立链接关系。
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建员工倡议招聘测试的用户的 FirmPlay-](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  -若要在 FirmPlay 具有 Britta 人 Simon 的副本： 的它招聘的员工支持链接到的 Azure AD 表示形式她。
+3. **[创建 FirmPlay - Employee Advocacy for Recruiting 测试用户](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** - 在 FirmPlay：Employee Advocacy for Recruiting 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 07/11/2017
 
     ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_03.png)   
 
-5. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击**保存**按钮。
+5. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_general_300.png)
 

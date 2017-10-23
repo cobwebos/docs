@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: larryfr
+ms.openlocfilehash: 7f6985b80a88fd2e5d1fe0dafae47b95358d012d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: b43dd20be9f481270b782de3c889abac762bd9cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上将 Oozie 与 Hadoop 配合使用以定义和运行工作流
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 08/04/2017
 Oozie 也能用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本
 
 > [!NOTE]
-> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 若要了解有关 Azure 数据工厂的详细信息，请参阅[将 Pig 和 Hive 与数据工厂配合使用][azure-data-factory-pig-hive]。
+> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 要了解有关 Azure 数据工厂的详细信息，请参阅[将 Pig 和 Hive 与数据工厂配合使用][azure-data-factory-pig-hive]。
 
 > [!IMPORTANT]
 > 在加入域的 HDInsight 上未启用 Oozie。
@@ -81,7 +80,7 @@ hdfs dfs -mkdir -p /tutorials/useoozie/data
 > [!NOTE]
 > `-p` 参数使系统创建路径中的所有目录。 **Data**目录用于保存 **useooziewf.hql** 脚本使用的数据。
 
-此外，请运行以下命令，以确保在运行 Hive 和 Sqoop 作业时 Oozie 可以模拟用户帐户。 将 **USERNAME** 替换为你的登录名：
+此外，请运行以下命令，以确保在运行 Hive 和 Sqoop 作业时 Oozie 可以模拟用户帐户。 将 **USERNAME** 替换为登录名：
 
 ```
 sudo adduser USERNAME users
@@ -102,7 +101,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
 ## <a name="define-the-hive-query"></a>定义 Hive 查询
 
-使用以下步骤创建 HiveQL 脚本，用于定义将在本文档后部分的 Oozie 工作流中使用的查询。
+使用以下步骤创建 HiveQL 脚本，用于定义会在本文档后部分的 Oozie 工作流中使用的查询。
 
 1. 使用 SSH 连接到群集。 以下命令是 `ssh` 命令使用方法示例。 将 __USERNAME__ 替换为群集的 SSH 用户。 将 __CLUSTERNAME__ 替换为 HDInsight 群集的名称。
 
@@ -133,9 +132,9 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
     * **${hiveDataFolder}**：包含表数据文件的存储位置
 
-    工作流定义文件（本教程中的 workflow.xml）在运行时将这些值传递到此 HiveQL 脚本
+    工作流定义文件（本教程中的 workflow.xml）在运行时会这些值传递到此 HiveQL 脚本
 
-4. 若要退出编辑器，请按 Ctrl-X。 出现提示时，请选择“Y”保存文件，然后按 **Enter** 以使用 **useooziewf.hql** 文件名。
+4. 若要退出编辑器，请按 Ctrl-X。 出现提示时，请选择“Y”保存文件，并按 **Enter** 以使用 **useooziewf.hql** 文件名。
 
 5. 使用以下命令将 useooziewf.hql 复制到 wasb:///tutorials/useoozie/useooziewf.hql：
 
@@ -244,7 +243,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 安装 FreeTDS 后，使用以下命令连接到你先前创建的 SQL 数据库服务器：
+2. 安装 FreeTDS 后，使用以下命令连接到先前创建的 SQL 数据库服务器：
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -P <sqlPassword> -p 1433 -D oozietest
@@ -291,7 +290,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
 
 作业定义说明可在何处找到 workflow.xml。 它还说明可在何处找到工作流（如 useooziewf.hql）使用的其他文件。它还定义工作流中使用的属性值以及关联的文件。
 
-1. 使用以下命令获取默认存储的完整地址。 稍后将在配置文件中使用该地址：
+1. 使用以下命令获取默认存储的完整地址。 稍后会在配置文件中使用该地址：
 
     ```
     sed -n '/<name>fs.default/,/<\/value>/p' /etc/hadoop/conf/core-site.xml
@@ -305,7 +304,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
     ```
 
     > [!NOTE]
-    > 如果 HDInsight 群集使用 Azure 存储作为默认存储，则 `<value>` 元素内容将以 `wasb://` 开头。 如果改用 Azure Data Lake Store 作为默认存储，则以 `adl://` 开头。
+    > 如果 HDInsight 群集使用 Azure 存储作为默认存储，则 `<value>` 元素内容以 `wasb://` 开头。 如果改用 Azure Data Lake Store 作为默认存储，则以 `adl://` 开头。
 
     保存 `<value>` 元素的内容，因为后续步骤中将使用该内容。
 
@@ -442,7 +441,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
     oozie job -config job.xml -submit
     ```
 
-    此命令从 job.xml 加载作业信息，然后将作业信息提交到 Oozie，但不运行该作业。
+    此命令从 job.xml 加载作业信息，并将作业信息提交到 Oozie，但不运行该作业。
 
     命令完成后，应返回作业的 ID。 例如，`0000005-150622124850154-oozie-oozi-W`。 此 ID 用于管理作业。
 
@@ -487,7 +486,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
 
     如果在运行此命令后检查状态，会发现作业处于正在运行状态，并且返回了作业中操作的信息。
 
-6. 任务成功完成后，你可以使用以下命令验证是否已生成数据并且已将导出到 SQL 数据库表：
+6. 任务成功完成后，可以使用以下命令验证是否已生成数据并且已将导出到 SQL 数据库表：
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D oozietest
@@ -545,7 +544,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 2. 创建隧道后，请在 Web 浏览器中打开 Ambari Web UI。 Ambari 的 URI 位于 **https://CLUSTERNAME.azurehdinsight.net** 上。 请将 **CLUSTERNAME**替换为基于 Linux 的 HDInsight 群集的名称。
 
-3. 在页面左侧选择“Oozie”，然后依次选择“快速链接” 和“Oozie Web UI”。
+3. 在页面左侧选择“Oozie”，并依次选择“快速链接” 和“Oozie Web UI”。
 
     ![菜单图像](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
 
@@ -747,7 +746,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已经学习了如何定义 Oozie 工作流，以及如何运行 Oozie 作业。 若要了解有关使用 HDInsight 的详细信息，请参阅以下文章：
+在本教程中，已经学习了如何定义 Oozie 工作流，以及如何运行 Oozie 作业。 若要了解有关使用 HDInsight 的详细信息，请参阅以下文章：
 
 * [将基于时间的 Oozie 协调器与 HDInsight 配合使用][hdinsight-oozie-coordinator-time]
 * [在 HDInsight 中上传 Hadoop 作业的数据][hdinsight-upload-data]
@@ -757,7 +756,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 * [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
-[azure-data-factory-pig-hive]: ../data-factory/data-factory-data-transformation-activities.md
+[azure-data-factory-pig-hive]: ../data-factory/transform-data.md
 [hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-use-blob-storage.md
@@ -794,4 +793,3 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
-

@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
 ms.openlocfilehash: dcd87ae977d5b4b4a2353e446ab89ac81b239195
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-troubleshoot-common-azure-marketplace-publisher-issues"></a>如何解决常见 Azure 应用商店发布者问题
 本文说明如何解决或获取有关某些常见应用商店方案的支持。
 
 ## <a name="credits-and-refunds"></a>贷款和退款
-在某些情况下，可能需要代表客户请求贷款或退款。  Microsoft 支持部门可以帮助确保客户的信用额度和退款请求都被视为并且响应及时提供给您。
+在某些情况下，可能需要代表客户请求贷款或退款。  Microsoft 支持部门可帮助确保客户的贷款和退款请求受到考虑，并在适当时间向你提供响应。
 
 以下内容介绍如何代表客户请求贷款或退款。
 
 > [!NOTE]
-> 如果客户或 Azure 经销商联系 Microsoft 请求退款或贷款，我们将应用我们为 Azure 服务条款所使用的相同策略。 如果我们策略指示退款或信用额度到期，我们将主动发出 （和授权我们代表你颁发） 退款或与客户或 Azure 的经销商，如适用的信用额度。 如果我们策略不会指示已到期的退款或信用额度，我们可能邀请客户或 Azure 分销商直接与你联系。
+> 如果客户或 Azure 经销商联系 Microsoft 请求退款或贷款，我们将应用我们为 Azure 服务条款所使用的相同策略。 如果我们的策略指示应支付退款或贷款，则我们会主动向客户或 Azure 经销商发出（并且你授权我们代表你发出）退款或贷款（适用时）。 如果我们的策略未指示应支付退款或贷款，则我们可能会邀请客户或 Azure 经销商直接联系你。
 >
 >
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 
   ![subscriptionvalidation][3]
 
-* 客户可能与您请求支持联系。
+* 客户可能联系你请求支持。
 * 可能不知道如何为产品/服务验证某个客户是否是真正的客户。
 * 可记录支持请求以请求客户订阅验证。
 * 将需要提供客户订阅 ID 和帐单地址。
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
 
 ![inprivate][4]
 
-**2.贵公司的工作或学校帐户登录**(即， AzureStore@yourcompany.com)。
+**2.使用公司的工作或学校帐户登录**（即 AzureStore@yourcompany.com）。
 
 ![signin][5]
 

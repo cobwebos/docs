@@ -16,10 +16,10 @@ ms.date: 09/16/2016
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: ae73833a68db14804dc40eaf07ff7d3effaa9052
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="important-updates-to-the-v20-authentication-protocols"></a>v2.0 身份验证协议的重要更新
 开发人员请注意！ 在接下来两周，我们会对 v2.0 身份验证协议进行一些更新，这些更新对于在我们的预览期间编写的任何应用都可能是重大更改。  
@@ -64,8 +64,7 @@ v2.0 终结点大量使用 JWT 令牌，其中包含标头参数部分以及令�
 我们在这里进行的更改是要删除“x5t”属性。  可以继续使用相同的机制来验证令牌，但应该只依赖“kid”属性来检索正确的公钥，如 OpenID Connect 协议中所指定。 
 
 > [!IMPORTANT]
-> 
-            **工作：确保应用不依赖于 x5t 值是否存在。**
+> **工作：确保应用不依赖于 x5t 值是否存在。**
 > 
 > 
 
@@ -76,7 +75,7 @@ v2.0 终结点大量使用 JWT 令牌，其中包含标头参数部分以及令�
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-响应看起来类似于下列 JSON 对象：
+响应看起来将类似于下列 JSON 对象：
 
 ```
 { 
@@ -104,13 +103,12 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 }
 ```
 
-可以解码并分析 id_token，以检索你从 profile_info 收到的相同信息。  id_token 是 JSON Web 令牌 (JWT)，其内容由 OpenID Connect 指定。  用于执行此操作的代码应该非常类似 — 只需提取 id_token 的中间段（主体），base64 会将其解码以访问其中的 JSON 对象。
+可以解码并分析 id_token，以检索你从 profile_info 收到的相同信息。  id_token 是 JSON Web 令牌 (JWT)，其内容由 OpenID Connect 指定。  用于执行此操作的代码应该非常类似 — 只需要提取 id_token 的中间段（主体），base64 会将其解码以在 JSON 对象中访问。
 
-接下来两周内应该编写应用程序代码，从 `id_token` 或 `profile_info`（以存在的那个为准）检索用户信息。  这样一来，进行更改时，应用可以无缝地处理从 `profile_info` 到 `id_token` 的转换，而不会中断。
+在接下来两周，应该将应用编码为从 `id_token` 或 `profile_info`（以存在的那个为准）检索用户信息。  这样一来，进行更改时，应用可以无缝地处理从 `profile_info` 到 `id_token` 的转换，而不会中断。
 
 > [!IMPORTANT]
-> 
-            **工作：确保应用不依赖于 `profile_info` 值是否存在。**
+> **工作：确保应用不依赖于 `profile_info` 值是否存在。**
 > 
 > 
 
@@ -137,13 +135,12 @@ https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_exp
 `id_token_expires_in` 值会指出 id_token 保持有效的秒数。  现在，我们完全删除 `id_token_expires_in` 值。  可以改为使用 OpenID Connect 标准 `nbf` 和 `exp` 声明来检查 id_token 的有效性。  有关这些声明的详细信息，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。
 
 > [!IMPORTANT]
-> 
-            **工作：确保应用不依赖于 `id_token_expires_in` 值是否存在。**
+> **工作：确保应用不依赖于 `id_token_expires_in` 值是否存在。**
 > 
 > 
 
 ### <a name="changing-the-claims-returned-by-scopeopenid"></a>更改 scope=openid 返回的声明
-这项更改最为重要 — 事实上，它会影响使用 v2.0 终结点的几乎每个应用。  许多应用程序使用 `openid` 范围将请求发送到 v2.0 终结点，例如：
+这项更改最为重要 — 事实上，它将影响使用 v2.0 终结点的几乎每个应用。  许多应用程序使用 `openid` 范围将请求发送到 v2.0 终结点，例如：
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -156,7 +153,7 @@ client_id=...
 
 现在，用户同意 `openid` 范围时，应用会在生成的 id_token 中收到丰富的用户相关信息。  这些声明可以包含用户的名称、首选用户名、电子邮件地址和对象 ID 等等。
 
-在此更新中，我们会更改 `openid` 范围可让应用访问的信息，使其更符合 OpenID Connect 规范。  `openid` 范围只允许应用让用户登录，并在 id_token 的 `sub` 声明中接收用户的应用特定标识符。  只被授予 `openid` 范围的 id_token 中的声明将缺少所有个人身份信息。  id_token 声明示例为：
+在此更新中，我们会更改 `openid` 范围可让应用访问的信息，使其更符合 OpenID Connect 规范。  `openid` 范围只允许应用让用户登录，并在 id_token 的 `sub` 声明中接收用户的应用特定标识符。  只被授予 `openid` 范围的 id_token 中的声明将缺少所有个人可识别信息。  id_token 声明示例为：
 
 ```
 { 
@@ -191,8 +188,7 @@ client_id=...
 应用可以立即开始发送 `email` 和 `profile` 范围，v2.0 终结点会接受这两个范围，并根据需要开始向用户请求权限。  不过，对 `openid` 范围解释的更改几周后才会生效。
 
 > [!IMPORTANT]
-> 
-            **工作：如果应用需要用户的相关信息，则添加 `profile` 和 `email` 范围。**  请注意，默认情况下，ADAL 将在请求中同时包含这两个权限。 
+> **工作：如果应用需要用户的相关信息，则添加 `profile` 和 `email` 范围。**  请注意，默认情况下，ADAL 会在请求中同时包含这些权限。 
 > 
 > 
 
@@ -212,8 +208,7 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 。
 
 > [!IMPORTANT]
-> 
-            **工作：确保应用在颁发者验证期间接受包含或不含尾部斜杠的颁发者值。**
+> **工作：确保应用在颁发者验证期间接受包含或不含尾部斜杠的颁发者值。**
 > 
 > 
 
@@ -229,12 +224,12 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 4. **如果应用需要基本用户信息，则向应用添加 `profile` 和 `email` 范围。**
 5. **接受令牌中包含或不含尾部斜杠的颁发者值。**
 
-[v2.0 协议文档](active-directory-v2-protocols.md)已经更新，更新后的内容反映了这些更改，因此在更新代码时可以将其作为参考。
+我们的 [v2.0 协议文档](active-directory-v2-protocols.md)已为反映这些更改而更新，因此可以将它作为参考，帮助更新代码。
 
 如果对更改的范围还有其他疑问，欢迎在我们的 Twitter (@AzureAD) 上与我们联系。
 
 ## <a name="how-often-will-protocol-changes-occur"></a>协议多久进行一次更改？
-我们无法预见身份验证协议任何进一步的重大更改。  我们特意将这些更改捆绑到一个版本中，这样你就无需稍后再经历一次这类更新过程。  当然，我们将继续向聚合 v2.0 身份验证服务添加可以充分利用的功能，但这些更改应该只是附加的，不会中断现有代码。
+我们无法预见身份验证协议任何进一步的重大更改。  我们特意将这些更改捆绑到一个版本中，这样，就不需要马上再经历一次这种更新过程。  当然，我们将继续向聚合 v2.0 身份验证服务添加可以充分利用的功能，但这些更改应该只是附加的，不会中断现有代码。
 
 最后，感谢你在预览期间进行试用。  迄今为止，早期采用者的深刻见解和体验为我们提供了非常宝贵的信息，希望你继续与我们分享意见和想法。
 

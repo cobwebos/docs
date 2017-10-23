@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 80f4a965920fec9cb578c1bee235c7857f37431e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>如何确定要使用哪种单一登录方法
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/03/2017
 
 -   **链接登录** - 如果具有已连接到现有单一登录解决方案的应用程序，或只是想在用户的[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)或 [Office 365 应用程序启动器](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)中为其发布简单链接，则选择[链接登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)**单一登录模式**
 
--   **基于密码的登录**– 选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)**单一登录模式**如果你的应用程序呈现的 HTML 用户名和密码字段，并且你想要存储该用户名和密码安全地使用，重播到应用程序更高版本
+-   **基于密码的登录** - 如果应用程序呈现 HTML 用户名和密码字段，且想要安全存储该用户名和密码，以便稍后将其重播到应用程序，则选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)**单一登录模式**
 
 -   **基于 SAML 的登录** - 如果应用程序支持 SAML 或 OpenID Connect 协议，或希望能够根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色，则选择[基于 SAML 的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)单一登录模式（注意：如果为应用程序配置了应用程序代理，则此选项不可用）
 

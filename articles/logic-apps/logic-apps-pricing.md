@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: LADocs; klam
 ms.openlocfilehash: 63784c5e3af360b2f3f8cb330a9df8b27a85d859
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="logic-apps-pricing-model"></a>逻辑应用定价模型
-Azure 逻辑应用，可缩放和在云中执行集成工作流。  下面是有关逻辑应用的计费和定价计划的详细信息。
+使用 Azure 逻辑应用可以在云中缩放和执行集成工作流。  下面是有关逻辑应用的计费和定价计划的详细信息。
 ## <a name="consumption-pricing"></a>消耗量定价
 新创建的逻辑应用使用消耗量计划。 借助逻辑应用消耗量定价模型，只需为使用的部分付费。  使用消耗量计划时，逻辑应用不会受到限制。
 逻辑应用实例运行中执行的所有操作都按流量计费。

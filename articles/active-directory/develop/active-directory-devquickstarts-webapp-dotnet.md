@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 43ba592b6294a9a75a20dacd81953a77c241b89f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
-
-
+ms.openlocfilehash: 3c1e558c9d41e385f80939203a3457b74e30973b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="aspnet-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 ASP.NET Web 应用登录和注销
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -34,7 +32,7 @@ ms.lasthandoff: 03/18/2017
 
 ## <a name="before-you-get-started"></a>准备工作
 * 下载[应用框架](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)或下载[已完成的示例](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)。
-* 你还需要一个用于注册应用的 Azure AD 租户。 如果你还没有 Azure AD 租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
+* 还需要一个用于注册应用的 Azure AD 租户。 如果还没有 Azure AD 租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 准备好后，请按照以下 4 个部分中的步骤操作。
 
@@ -42,9 +40,9 @@ ms.lasthandoff: 03/18/2017
 若要设置应用对用户进行身份验证，请先执行以下操作，在租户中注册用户：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏中，单击你的帐户名。 在“目录”列表下选择要注册应用的 Active Directory 租户。
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
-4. 单击“应用注册”，然后选择“添加”。
+2. 在顶部栏中，单击帐户名。 在“目录”列表下选择要注册应用的 Active Directory 租户。
+3. 在左窗格中，单击“更多服务”，并选择“Azure Active Directory”。
+4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建一个新 **Web 应用程序和/或 WebAPI**。
   * **名称** - 向用户描述应用。
   * **登录 URL** 是应用的基本 URL。 框架的默认 URL 是 https://localhost:44320/。
@@ -54,7 +52,7 @@ ms.lasthandoff: 03/18/2017
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>步骤 2：将应用设置为使用 OWIN 身份验证管道
 在此步骤中，将 OWIN 中间件配置为使用 OpenID Connect 身份验证协议。 使用 OWIN 发出登录和注销请求、管理用户会话以及获取用户信息等。
 
-1. 若要开始，请使用 Package Manager Console 将 OWIN 中间件 NuGet 包添加到项目。
+1. 要开始，请使用 Package Manager Console 将 OWIN 中间件 NuGet 包添加到项目。
 
      ```
      PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -75,7 +73,7 @@ ms.lasthandoff: 03/18/2017
      }
      ```
 
-4. 打开 App_Start\Startup.Auth.cs 文件，然后实现 **ConfigureAuth(...)** 方法。 在 OpenIDConnectAuthenticationOptions 中提供的参数将充当应用与 Azure AD 通信时使用的坐标。 你还需要设置 Cookie 身份验证，因为 OpenID Connect 中间件将在后台使用 Cookie。
+4. 打开 App_Start\Startup.Auth.cs 文件，并实现 **ConfigureAuth(...)** 方法。 在 OpenIDConnectAuthenticationOptions 中提供的参数将充当应用与 Azure AD 通信时使用的坐标。 还需要设置 Cookie 身份验证，因为 OpenID Connect 中间件会在后台使用 Cookie。
 
      ```C#
      public void ConfigureAuth(IAppBuilder app)
@@ -103,15 +101,15 @@ ms.lasthandoff: 03/18/2017
      }
      ```
 
-5. 打开位于项目根目录中的 web.config 文件，然后在 `<appSettings>` 节中输入配置值。
+5. 打开位于项目根目录中的 web.config 文件，并在 `<appSettings>` 节中输入配置值。
   * `ida:ClientId`：在“第 1 步：向 Azure AD 注册新应用”中从 Azure 门户复制的 GUID。
   * `ida:Tenant`：Azure AD 租户的名称，例如 contoso.onmicrosoft.com。
   * `ida:PostLogoutRedirectUri`：在成功完成注销请求后，告知 Azure AD 要将用户重定向到哪个位置的指示器。
 
 ## <a name="step-3-use-owin-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>步骤 3：使用 OWIN 向 Azure AD 发出登录和注销请求
-现在，应用已正确配置为使用 OpenID Connect 身份验证协议来与 Azure AD 进行通信。 OWIN 已处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的细节。 你要做的一切就是提供某种方式让用户登录和注销。
+现在，应用已正确配置为使用 OpenID Connect 身份验证协议来与 Azure AD 进行通信。 OWIN 已处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的细节。 要做的一切就是提供某种方式让用户登录和注销。
 
-1. 可以在控制器中使用授权标记，要求用户在访问特定页面之前登录。 为此，请打开 Controllers\HomeController.cs，然后将 `[Authorize]` 标记添加到 About 控制器。
+1. 可以在控制器中使用授权标记，要求用户在访问特定页面之前登录。 为此，请打开 Controllers\HomeController.cs，然后将 `[Authorize]` 标记添加到 About 操作。
 
      ```C#
      [Authorize]
@@ -183,16 +181,15 @@ ms.lasthandoff: 03/18/2017
 
 2. 构建并运行应用程序。 如果尚未使用 .onmicrosoft.com 域在租户中创建一个新的用户，则现在可以执行此操作。 方法如下：
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 以该用户的身份登录，然后注意该用户的标识在顶部栏中的显示方式。
+  a. 以该用户的身份登录，并注意该用户的标识在顶部栏中的显示方式。
 
-  b.保留“数据库类型”设置，即设置为“共享”。 注销，然后以租户中其他用户的身份重新登录。
+  b. 注销，并以租户中其他用户的身份重新登录。
 
-  c. 如果你有浓厚的兴趣，可以注册并运行此应用的另一个实例（使用其自身的 clientId），然后观察单一登录的运作方式。
+  c. 如果有浓厚的兴趣，可以注册并运行此应用的另一个实例（使用其自身的 clientId），然后观察单一登录的运作方式。
 
 ## <a name="next-steps"></a>后续步骤
 有关参考，请参阅[已完成示例](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)（无需配置值）。
 
-现在，你可以转到更高级的主题。 例如，请尝试[使用 Azure AD 保护 Web API](active-directory-devquickstarts-webapi-dotnet.md)。
+现在，可以转到更高级的主题。 例如，请尝试[使用 Azure AD 保护 Web API](active-directory-devquickstarts-webapi-dotnet.md)。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

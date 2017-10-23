@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: jeedes
 ms.openlocfilehash: 84b707668dc45e92e6151f422f1c919f638533b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>教程：Azure Active Directory 与 SciQuest Spend Director 集成
 本教程的目的是说明如何将 SciQuest Spend Director 与 Azure Active Directory (Azure AD) 集成。  
@@ -92,9 +92,9 @@ ms.lasthandoff: 07/11/2017
 
 若要配置和测试 SciQuest Spend Director 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[Azure AD 单一上单一登录配置](#configuring-azure-ad-single-single-sign-on)** -若要使用户可以使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SciQuest 花费控制器测试用户](#creating-a-halogen-software-test-user)** -若要 SciQuest 花费控制器链接到的 Azure AD 表示形式她中具有 Britta 人 Simon 的副本。
+3. **[创建 SciQuest Spend Director 测试用户](#creating-a-halogen-software-test-user)** - 在 SciQuest Spend Director 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -194,7 +194,7 @@ ms.lasthandoff: 07/11/2017
 需要联系 SciQuest Spend Director 支持团队，向他们提供有关测试帐户的详细信息，以便他们创建测试帐户。
 
 或者，可以利用实时预配（SciQuest Spend Director 提供支持的一项单一登录功能）。  
-如果已启用实时预配，则在单一登录尝试期间 SciQuest Spend Director 会自动创建用户（如果这些用户不存在）。 此功能，不需要手动创建单个登录对应用户。
+如果已启用实时预配，则在单一登录尝试期间 SciQuest Spend Director 会自动创建用户（如果这些用户不存在）。 使用此功能无需手动创建单一登录对应用户。
 
 若要启用实时预配，需要联系 SciQuest Spend Director 支持团队。
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
 ms.openlocfilehash: 744c420aa0298c59c44e645b95a716ad876752de
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>教程：Azure Active Directory 与 Land Gorilla 客户端的集成
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，可以配置和使用基于一个名为"Britta 人 Simon"的测试用户的上关于领土 Gorilla 客户端测试 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Land Gorilla 客户端的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Land Gorilla 客户端用户。 换句话说，需要在 Azure AD 用户与 Land Gorilla 客户端中相关用户之间建立链接关系。
 
@@ -93,8 +93,8 @@ ms.lasthandoff: 07/11/2017
 若要配置和测试 Land Gorilla 客户端的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建一个 Azure AD 的测试用户](#creating-an-azure-ad-test-user)** -若要测试 Azure AD 单一登录与一组有限。
-3. **[创建上关于领土 Gorilla 测试用户](#creating-a-land-gorilla-test-user)** -若要测试 Azure AD 单一登录与 Britta 人 Simon。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用有限组测试 Azure AD 单一登录。
+3. **[创建 Land Gorilla 测试用户](#creating-a-land-gorilla-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 

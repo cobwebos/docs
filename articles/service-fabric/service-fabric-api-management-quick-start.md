@@ -14,15 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 2160e2e65de5c65df8a13248bad4f626def86e49
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
-
+ms.openlocfilehash: 2969834713fc7c2f1a2e281a6c988158d803dc45
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-fabric-with-azure-api-management-quick-start"></a>Service Fabric 与 Azure API 管理快速入门
 
 本指南演示如何设置 Azure API 管理和 Service Fabric，并配置你的第一个 API 操作，从而将流量发送到 Service Fabric 中的后端服务。 若要详细了解使用 Service Fabric 的 Azure API 管理方案，请参阅[概述](service-fabric-api-management-overview.md)一文。 
@@ -51,19 +48,19 @@ ms.lasthandoff: 06/28/2017
 
 ### <a name="sign-in-to-azure-and-select-your-subscription"></a>登录到 Azure，然后选择订阅
 
-本指南使用 [Azure PowerShell][azure-powershell]。 开始新的 PowerShell 会话时，请登录到 Azure 帐户并选择订阅，然后执行 Azure 命令。
+本指南使用 [Azure PowerShell][azure-powershell]。 开始新的 PowerShell 会话时，请登录到 Azure 帐户并选择订阅，并执行 Azure 命令。
  
 请登录到 Azure 帐户：
 
 ```powershell
-PS > Login-AzureRmAccount
+Login-AzureRmAccount
 ```
 
 选择订阅：
 
 ```powershell
-PS > Get-AzureRmSubscription
-PS > Set-AzureRmContext -SubscriptionId <guid>
+Get-AzureRmSubscription
+Set-AzureRmContext -SubscriptionId <guid>
 ```
 
 ### <a name="create-a-resource-group"></a>创建资源组
@@ -71,7 +68,7 @@ PS > Set-AzureRmContext -SubscriptionId <guid>
 为部署创建新的资源组。 为该资源组提供一个名称和位置。
 
 ```powershell
-PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
+New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
 ```
 
 ### <a name="deploy-the-network-topology"></a>部署网络拓扑
@@ -88,7 +85,7 @@ PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
  2. 使用以下 PowerShell 命令为网络设置部署 Resource Manager 模板和参数文件：
 
     ```powershell
-    PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
     ```
 
 ### <a name="deploy-the-service-fabric-cluster"></a>部署 Service Fabric 群集
@@ -112,7 +109,7 @@ PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
  3. 使用以下 PowerShell 命令部署 Resource Manager 模板和参数文件，以创建 Service Fabric 群集：
 
     ```powershell
-    PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
     ```
 
 ### <a name="deploy-api-management"></a>部署 API 管理
@@ -131,7 +128,7 @@ PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
  3. 使用以下 PowerShell 命令为 API 管理部署 Resource Manager 模板和参数文件：
 
     ```powershell
-    PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
     ```
 
 ## <a name="configure-api-management"></a>配置 API 管理
@@ -203,7 +200,7 @@ Content-Type: application/json
 }
 ```
 
-如果后端策略中未指定任何服务名称，那么此处的 url 参数是群集中默认将请求路由到的服务的完全限定的服务名称。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。
+如果后端策略中未指定任何服务名称，那么此处的 url 参数是群集中默认将请求路由到的服务的完全限定的服务名称。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。 请注意，即使是假回退服务，**url** 也必须采用格式“fabric:/app/service”。
 
 有关每个字段的详细信息，请参阅 API 管理[后端 API 参考文档](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend)。
 
@@ -370,4 +367,3 @@ Content-Type: application/json
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-api-management-quickstart/sf-apim-topology-overview.png
-

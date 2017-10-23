@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 938d0b4046afa8c80eabe542f4541d0554948f5d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 访问面板扩展故障排除
 本文将帮助用户解决以下问题：
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/18/2017
 2. 打开文件，并按“全部提取”按钮。
    
     ![按“全部提取”](./media/active-directory-saas-ie-troubleshooting/extract1.png)
-3. 然后按**提取**按钮以继续。
+3. 然后按“提取”按钮以继续。
    
     ![按“提取”](./media/active-directory-saas-ie-troubleshooting/extract2.png)
 4. 要运行该工具，请右键单击名为“AccessPanelExtensionDiagnosticTool”的文件，并选择“打开方式”>“基于 Microsoft Windows 的脚本主机”。
@@ -52,7 +52,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="check-that-the-access-panel-extension-is-enabled"></a>检查访问面板扩展是否已启用
 若要在 Internet Explorer 中验证访问面板扩展是否已启用，请执行以下操作：
 
-1. 在 Internet Explorer 中，单击窗口右上角的“齿轮”图标。 然后选择**Internet 选项**。<br />（在较旧版本的 Internet Explorer 中可以在“工具”>“Internet 选项”下找到此项。）
+1. 在 Internet Explorer 中，单击窗口右上角的“齿轮”图标。 然后选择“Internet 选项”。<br />（在较旧版本的 Internet Explorer 中可以在“工具”>“Internet 选项”下找到此项。）
    
     ![转到“工具”>“Internet 选项”](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
 2. 单击“程序”选项卡，并单击“管理加载项”按钮。
@@ -66,7 +66,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="enable-extensions-for-inprivate-browsing"></a>为 InPrivate 浏览启用扩展
 如果使用 InPrivate 浏览模式，请执行以下操作：
 
-1. 在 Internet Explorer 中，单击窗口右上角的“齿轮”图标。 然后选择**Internet 选项**。<br />（在较旧版本的 Internet Explorer 中可以在“工具”>“Internet 选项”下找到此项。）
+1. 在 Internet Explorer 中，单击窗口右上角的“齿轮”图标。 然后选择“Internet 选项”。<br />（在较旧版本的 Internet Explorer 中可以在“工具”>“Internet 选项”下找到此项。）
    
     ![诊断窗口的一个示例](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
 2. 转到“隐私”选项卡，并**取消选中**标记为“在 InPrivate 浏览启动时禁用工具栏和扩展”的复选框</p>
@@ -80,13 +80,13 @@ ms.lasthandoff: 08/18/2017
 1. 在键盘上按 **Windows 键**，打开“开始”菜单。 打开菜单后，可以键入任何内容以执行搜索。 键入“控制面板”，并在“控制面板”出现在搜索结果中时打开**控制面板**。
    
     ![搜索“控制面板”](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
-2. 在控制面板的右上角，将“查看方式”选项更改为“大图标”。 然后找到并单击**程序和功能**按钮。
+2. 在控制面板的右上角，将“查看方式”选项更改为“大图标”。 然后找到并单击“程序和功能”按钮。
    
     ![将视图更改为显示大图标](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
 3. 从列表中选择“访问面板扩展”，并单击“卸载”按钮。
    
     ![单击“卸载”](./media/active-directory-saas-ie-troubleshooting/uninstall.png)
-4. 然后，可以尝试安装扩展后，再次以查看是否已解决了问题。
+4. 然后，可以尝试重新安装扩展，以了解该问题是否已解决。
 
 如果在卸载扩展时遇到问题，还可以使用 [Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) 工具删除它。
 

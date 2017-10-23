@@ -16,20 +16,20 @@ ms.date: 01/07/2017
 ms.author: dadobali
 ms.custom: aaddev
 ms.openlocfilehash: 746cad19093fd2a1ad23ddd9412394f8d9da331c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>将 Azure AD 集成到 Android 应用中
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 > [!TIP]
-> 试用我们新预览版[开发人员门户](https://identity.microsoft.com/Docs/Android)，该方法将帮助你使用 Azure AD 在几分钟内获取启动并正在运行。 在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。
+> 试用新的[开发人员门户](https://identity.microsoft.com/Docs/Android)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure AD。 在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。
 >
 >
 
-如果你要开发桌面应用程序，Azure Active Directory (Azure AD) 可简单地直接使用其本地 Active Directory 帐户对你的用户进行身份验证。 它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
+如果要开发桌面应用程序，Azure Active Directory (Azure AD) 可让你简单直接地使用用户的本地 Active Directory 帐户对其进行身份验证。 它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 
 对于需要访问受保护资源的 Android 客户端，Azure AD 提供 Active Directory 身份验证库 (ADAL)。 在本质上，ADAL 的唯一用途就是方便应用程序获取访问令牌。 为了演示这种简便性，我们将构建一个 Android 待办事项列表应用程序，它可以：
 
@@ -100,7 +100,7 @@ Active Directory 支持添加两种类型的应用程序：
 除了 AAR 包以外，还将提交 JAR 包。
 
 ## <a name="step-4-download-the-android-adal-and-add-it-to-your-eclipse-workspace"></a>步骤 4：下载 Android ADAL 并将其添加到 Eclipse 工作区
-我们已变得轻松为你要在 Android 项目中使用 ADAL 的多个选项：
+我们提供了多个选项以方便你在 Android 项目中使用 ADAL：
 
 * 可以使用源代码将此库导入到 Eclipse 并链接到应用程序。
 * 如果使用的是 Android Studio，则可以使用 AAR 包格式并引用二进制文件。
@@ -225,7 +225,7 @@ dependencies {
 
 下面是参数说明：
 
-* *资源*是必需的是你正在尝试访问的资源。
+* *resource* 是必需的，它是你尝试访问的资源。
 * *clientid* 是必需的，它来自 Azure AD。
 * *RedirectUri* 不是必需的，对于 acquireToken 调用，不需要提供此参数。 可以将其设置为包名称。
 * *PromptBehavior* 可帮助请求凭据以跳过缓存和 Cookie。
@@ -290,7 +290,7 @@ ADAL 提供了用于指定提示行为的选项。 如果刷新令牌无效并�
 * 日志
 * 网络跟踪
 
-请注意，相关性 ID 是在库中进行诊断的关键所在。 如果想要在代码中将 ADAL 请求关联到其他操作，可以基于每个请求设置相关性 ID。 如果未设置相关性 ID，则 ADAL 将生成一个随机相关性 ID。 所有日志消息和网络调用将然后戳记相关 id。 每发出一个请求，自我生成的 ID 都会更改。
+请注意，相关性 ID 是在库中进行诊断的关键所在。 如果想要在代码中将 ADAL 请求关联到其他操作，可以基于每个请求设置相关性 ID。 如果未设置相关性 ID，则 ADAL 将生成一个随机相关性 ID。 然后，会为所有日志消息和网络调用标上该相关性 ID。 每发出一个请求，自我生成的 ID 都会更改。
 
 #### <a name="exceptions"></a>异常
 异常是首选的诊断信息。 我们将尝试提供有用的错误消息。 如果发现某个错误消息没有作用，请记录相应的问题并告诉我们。 请提供设备信息，例如型号和 SDK 编号。

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 10/09/2017
 ms.author: jgao
+ms.openlocfilehash: fbd6ff573a1d4f7fe2754935dd8c199092076725
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 9d1b629ad05f45efc8d01799616c82b4a11ecaab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 HBase 群集复制
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 09/28/2017
 
 为了帮助设置环境，我们创建了一些 [Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)。 如果想要使用其他方法设置环境，请参阅：
 
-- [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)
+- [在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)
 - [在 Azure 虚拟网络中创建 HBase 群集](hdinsight-hbase-provision-vnet.md)
 
 ### <a name="set-up-one-virtual-network"></a>设置一个虚拟网络
@@ -97,11 +96,54 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>在两个不同的区域中设置两个虚拟网络
 
-若要在两个不同的区域中创建两个虚拟网络，请选择下图。 模板存储在全局 Azure Blob 容器中。
+若要在两个不同区域创建两个虚拟网络和在 VNet 之间创建 VPN 连接，请单击下图。 模板存储在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)中。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-geo%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-在两个虚拟网络之间创建 VPN 网关。 有关说明，请参阅[创建使用站点到站点连接的虚拟网络](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+模板中的某些硬编码值：
+
+**VNet 1**
+
+| 属性 | 值 |
+|----------|-------|
+| 位置 | 美国西部 |
+| VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
+| 地址空间前缀 | 10.1.0.0/16 |
+| 子网名称 | 子网 1 |
+| 子网前缀 | 10.1.0.0/24 |
+| 子网（网关）名称 | GatewaySubnet（不能更改） |
+| 子网（网关）前缀 | 10.1.255.0/27 |
+| 网关名称 | vnet1gw |
+| 网关类型 | Vpn |
+| 网关 VPN 类型 | RouteBased |
+| 网关 SKU | 基本 |
+| 网关 IP | vnet1gwip |
+| 群集名称 | &lt;ClusterNamePrefix>1 |
+| 群集版本 | 3.6 |
+| 群集类型 | hbase |
+| 群集工作节点计数 | #N/A |
+
+
+**VNet 2**
+
+| 属性 | 值 |
+|----------|-------|
+| 位置 | 美国东部 |
+| VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
+| 地址空间前缀 | 10.2.0.0/16 |
+| 子网名称 | 子网 1 |
+| 子网前缀 | 10.2.0.0/24 |
+| 子网（网关）名称 | GatewaySubnet（不能更改） |
+| 子网（网关）前缀 | 10.2.255.0/27 |
+| 网关名称 | vnet2gw |
+| 网关类型 | Vpn |
+| 网关 VPN 类型 | RouteBased |
+| 网关 SKU | 基本 |
+| 网关 IP | vnet1gwip |
+| 群集名称 | &lt;ClusterNamePrefix>2 |
+| 群集版本 | 3.6 |
+| 群集类型 | hbase |
+| 群集工作节点计数 | #N/A |
 
 HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper 节点设置静态 IP 地址。 若要设置静态 IP，请参阅本文的[在同一区域中设置两个虚拟网络](#set-up-two-virtual-networks-in-the-same-region)。
 
@@ -111,11 +153,11 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 复制群集时，必须指定要复制的表。 在本节中，要将一些数据载入源群集。 在下一部分，会在两个群集之间启用复制。
 
-若要创建一个“联系人”表并在其中插入一些数据，请遵照 [HBase 教程：开始在 HDInsight 中将 Apache HBase 与基于 Linux 的 Hadoop 配合使用](hdinsight-hbase-tutorial-get-started-linux.md)中的说明。
+若要创建一个“联系人”表并在其中插入一些数据，请遵照 [HBase 教程：开始在 HDInsight 中使用 Apache HBase](hdinsight-hbase-tutorial-get-started-linux.md) 中的说明。
 
 ## <a name="enable-replication"></a>启用复制
 
-以下步骤说明如何从 Azure 门户调用脚本操作脚本。 有关使用 Azure PowerShell 和 Azure 命令行工具 (Azure CLI) 运行脚本操作的信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+以下步骤说明如何从 Azure 门户调用脚本操作脚本。 有关使用 Azure PowerShell 和 Azure 命令行工具 (Azure CLI) 运行脚本操作的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 **从 Azure 门户启用 HBase 复制**
 
@@ -241,7 +283,6 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 * [开始在 HDInsight 中使用 Apache HBase][hdinsight-hbase-get-started]
 * [HDInsight HBase 概述][hdinsight-hbase-overview]
 * [在 Azure 虚拟网络中创建 HBase 群集][hdinsight-hbase-provision-vnet]
-* [使用 HBase 分析实时 Twitter 观点][hdinsight-hbase-twitter-sentiment]
 * [使用 HDInsight (Hadoop) 中的 Storm 和 HBase 分析传感器数据][hdinsight-sensor-data]
 
 [hdinsight-hbase-geo-replication-vnet]: hdinsight-hbase-geo-replication-configure-vnets.md
@@ -254,8 +295,6 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 [hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [hdinsight-sensor-data]: hdinsight-storm-sensor-data-analysis.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-

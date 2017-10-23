@@ -16,14 +16,14 @@ ms.date: 08/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b6e9c7b71fa6fc78f97c0144c735fc44778181d8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
-每个 IoT 中心都有一个标识注册表，存储允许连接到 IoT 中心的设备的相关信息。 IoT 中心的标识注册表中必须先有设备的条目，该设备才能连接到 IoT 中心。 设备还必须基于标识注册表中存储的凭据向 IoT 中心进行身份验证。
+每个 IoT 中心都有一个标识注册表，存储允许连接到 IoT 中心的设备的相关信息。 IoT 中心的标识注册表中必须先有设备的条目，然后该设备才能连接到 IoT 中心。 设备还必须基于标识注册表中存储的凭据向 IoT 中心进行身份验证。
 
 标识注册表中存储的设备 ID 区分大小写。
 

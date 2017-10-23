@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-resources-through-portal"></a>通过门户管理 Azure 资源
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ ms.lasthandoff: 08/03/2017
 5. 若要自定义显示的资源组信息，请选择“列”。
    
     ![自定义列](./media/resource-group-portal/select-columns.png)
-6. 选择要添加的列，并选择“更新” 。
+6. 选择要添加的列，并选择“更新”。
    
     ![添加列](./media/resource-group-portal/add-columns.png)
 7. 要了解如何将资源部署到新资源组，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](resource-group-template-deploy-portal.md)。
@@ -120,7 +120,7 @@ ms.lasthandoff: 08/03/2017
 ![资源成本](./media/resource-group-portal/cost-by-resource.png)
 
 ## <a name="export-template"></a>导出模板
-设置资源组后，你可能想要查看资源组的 Resource Manager 模板。 导出模板有两个好处：
+设置资源组后，可能想要查看资源组的资源管理器模板。 导出模板有两个好处：
 
 1. 由于模板包含所有完整的基础结构，因此将来可以轻松地自动完成解决方案的部署。
 2. 可以查看代表解决方案的 JavaScript 对象表示法 (JSON)，以此熟悉模板语法。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: bruceper
 ms.openlocfilehash: c2565a742ce4f6ab5f7639a54c4a475f00cbc260
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-key-vault-using-cli"></a>使用 CLI 管理密钥保管库
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 07/11/2017
 
     azure keyvault create --vault-name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
 
-此命令的输出会显示你刚刚创建的密钥保管库的属性。 两个最重要的属性是：
+此命令的输出会显示刚刚创建的密钥保管库的属性。 两个最重要的属性是：
 
 * **名称**：在本示例中为 ContosoKeyVault。 将在其他密钥保管库 cmdlet 中使用此名称。
 * **vaultUri**：在本示例中为 https://contosokeyvault.vault.azure.net。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
@@ -145,7 +145,7 @@ Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 �
 
     azure keyvault key import --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
 
-现在，可以通过使用密钥的 URI，引用已创建或上传到 Azure 密钥保管库的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 可始终获取最新版本，使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 可获取此特定版本。
+现在可以使用密钥的 URI，引用已创建或已上传到 Azure Key Vault 的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 可始终获取最新版本，使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 可获取此特定版本。
 
 要将名为 SQLPassword 且其 Azure 密钥保管库的值为 Pa$$w0rd 的机密添加到保管库，请键入以下内容：
 
@@ -205,7 +205,7 @@ Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 �
     azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-secrets '[\"get\"]'
 
 ## <a name="if-you-want-to-use-a-hardware-security-module-hsm"></a>如果要使用硬件安全模块 (HSM)
-为了提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 这些 HSM 都通过 FIPS 140-2 第 2 级验证。 如果此要求不适用于你，跳过此部分并转到[删除密钥保管库以及关联的密钥和机密](#delete-the-key-vault-and-associated-keys-and-secrets)。
+为了提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 这些 HSM 都通过 FIPS 140-2 第 2 级验证。 如果此要求对你不适用，请跳过本部分并转到[删除密钥保管库以及关联的密钥和机密](#delete-the-key-vault-and-associated-keys-and-secrets)。
 
 若要创建这些受 HSM 保护的密钥，必须具有支持 HSM 保护密钥的保管库订阅。
 

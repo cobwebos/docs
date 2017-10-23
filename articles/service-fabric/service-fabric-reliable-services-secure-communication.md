@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
 ms.openlocfilehash: 53119244f8f09c0c6c43f43761af1cc074f8d0af
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>在 Azure Service Fabric 中帮助保护服务的通信
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在使用服务远程处理和 Windows Communication Foundation (WCF) 通信堆栈时提高安全性。
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 本文介绍如何在使用服务远程处理和 Windows Communication Foundation (WCF) 通信堆栈时提高安全性。
 
 ## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>使用服务远程处理时帮助保护服务
 我们将使用一个现有[示例](service-fabric-reliable-services-communication-remoting.md)来解释如何为 Reliable Services 设置远程处理。 若要在使用服务远程处理时帮助保护服务，请遵循以下步骤：
@@ -188,7 +188,7 @@ ms.lasthandoff: 07/11/2017
 
     ```
 
-    如果客户端不是作为服务一部分运行，可以在 client_name.exe 所在的同一位置中创建 client_name.settings.xml 文件。 然后，在该文件中创建 TransportSettings 节。
+    如果客户端不是作为服务一部分运行，可以在 client_name.exe 所在的同一位置中创建 client_name.settings.xml 文件。 然后在该文件中创建 TransportSettings 节。
 
     类似于服务，如果在客户端 settings.xml/client_name.settings.xml 中添加 `TransportSettings` 节，则 `FabricTransportRemotingSettings` 将默认加载此节中的所有设置。
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
 ms.openlocfilehash: f5a97fc8df978dd55a73ae53516a82f884c14bec
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教程：Azure Active Directory 与 EverBridge 集成
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="adding-everbridge-from-the-gallery"></a>从库中添加 EverBridge
 若要配置 EverBridge 与 Azure AD 的集成，需要从库中将 EverBridge 添加到托管 SaaS 应用列表。
 
-**若要从库添加 EverBridge，执行以下步骤：**
+**若要从库中添加 EverBridge，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 EverBridge 测试用户](#creating-an-everbridge-test-user)** -若要链接到用户的 Azure AD 表示的 EverBridge 中具有 Britta 人 Simon 的副本。
+3. **[创建 EverBridge 测试用户](#creating-an-everbridge-test-user)** - 在 EverBridge 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 07/11/2017
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 EverBridge 应用程序中配置单一登录。
 
-**若要使用 EverBridge 配置 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 EverBridge 的 Azure AD 单一登录，请执行以下步骤：**
 
 1. 在 Azure 门户中的 EverBridge 应用程序集成页上，单击“单一登录”。
 
@@ -196,7 +196,7 @@ ms.lasthandoff: 07/11/2017
 
 ![分配用户][200] 
 
-**若要将 Britta 人 Simon 分配到 EverBridge，执行以下步骤：**
+**若要将 Britta Simon 分配到 EverBridge，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

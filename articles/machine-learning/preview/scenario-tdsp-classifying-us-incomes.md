@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c0fbd9b3e6f9f9f4f7a5d3e6bda18ce1312650e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>使用 Team Data Science Process (TDSP) 项目进行收入分类
 
 ## <a name="introduction"></a>介绍
@@ -96,7 +94,7 @@ ms.lasthandoff: 09/25/2017
 * 标签“<=50 K”的概率：76.07%/75.22%（没有未知项）  
 
 * 目标：收入阶层“>50 K”、“<=50 K”。 这两个阶层在数据准备阶段被分别替换为 1 和 0。
-* 特征：年龄、工作类、教育程度、种族、性别、每周工作时数等。
+* **特征**：年龄、工作类、教育程度、种族、性别、每周工作时数等。
 
 
 ## <a name="project-structure-execution-and-reporting"></a>项目结构、执行和报告

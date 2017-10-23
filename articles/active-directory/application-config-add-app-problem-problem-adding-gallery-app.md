@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: b3ae472d52208d3c76424d29192c1eb982639572
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>添加 Azure AD 库应用程序时的问题
 
-本文将帮助你了解问题的人员面临的常见，添加 Azure AD 库应用程序和可以执行哪些操作来解决这些问题时。
+本文可帮助你了解添加 Azure AD 库应用程序时常见的问题，以及可以执行哪些操作来解决这些问题。
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>单击“添加”按钮后，应用程序要很长时间才显示
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/03/2017
 
 如果需要有关应用程序的帮助，可先行参阅[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)一文。
 
-除此之外， [Azure AD 应用程序文档库](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)帮助你了解有关使用 Azure AD 的单一登录以及它如何工作的详细信息。
+除此之外，[Azure AD 应用程序文档库](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)可帮助你深入了解如何使用 Azure AD 进行单一登录及其工作原理。
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看门户通知的详细信息
 

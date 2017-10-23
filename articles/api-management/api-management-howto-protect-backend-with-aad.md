@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: 0dfb4102904c2e972e6617fd3851fb1c50147357
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>如何使用 Azure Active Directory 和 API 管理保护 Web API 后端
 下面的视频演示了如何生成 Web API 后端，并使用具有 Azure Active Directory 和 API 管理的 OAuth 2.0 协议对其进行保护。  本文提供视频中步骤的概述及其他信息。 此视频演示了以下内容，时长 24 分钟：
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/03/2017
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-此示例中使用默认域 **DemoAPIM.onmicrosoft.com** 创建目录 **APIMDemo**。 整个视频都将使用此目录。
+此示例中使用默认域 **DemoAPIM.onmicrosoft.com** 创建目录 **APIMDemo**。整个视频都将使用此目录。
 
 ![Azure Active Directory][api-management-create-aad]
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 08/03/2017
 
 ![新建项目][api-management-new-project]
 
-单击“组织帐户”，并指定 AAD 租户的“域”。 此示例中的域是 **DemoAPIM.onmicrosoft.com**。 可从目录的“域”选项卡获取域的目录。
+单击“组织帐户”，并指定 AAD 租户的“域”。 此示例中的域是 **DemoAPIM.onmicrosoft.com**。可从目录的“域”选项卡获取域的目录。
 
 ![域][api-management-aad-domains]
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="add-the-code-to-the-web-api-project"></a>将代码添加到 Web API 项目
 视频的下一步是将代码添加到 Web API 项目。 此步骤从 4:35 开始。
 
-此示例中的 Web API 使用模型和控制器实现基本计算器服务。 要为服务添加模型，请右键单击“解决方案资源管理器”中的“模型”，并依次选择“添加”、“类”。 将类命名为 `CalcInput`，并单击“添加”。
+此示例中的 Web API 使用模型和控制器实现基本计算器服务。 要为服务添加模型，请右键单击“解决方案资源管理器”中的“模型”，并依次选择“添加”、“类”。 将类命名为 `CalcInput`，然后单击“添加”。
 
 将下面的 `using` 语句添加到 `CalcInput.cs` 文件顶部。
 
@@ -164,7 +164,7 @@ public class CalcController : ApiController
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 此步骤中将 Visual Studio 项目发布到 Azure。 视频中的此步骤从 5:45 开始。
 
-要将项目发布到 Azure，请右键单击 Visual Studio 中的“APIMAADDemo”项目，并选择“发布”。 保留“发布 Web”对话框中的默认设置，并单击“发布”。
+要将项目发布到 Azure，请右键单击 Visual Studio 中的“APIMAADDemo”项目，然后选择“发布”。 保留“发布 Web”对话框中的默认设置，并单击“发布”。
 
 ![Web 发布][api-management-web-publish]
 
@@ -173,7 +173,7 @@ public class CalcController : ApiController
 
 ![应用程序][api-management-aad-backend-app]
 
-单击要配置的应用程序的名称和所需权限。 导航“配置”选项卡，向下滚动到“对其他应用程序的权限”部分。 单击**应用程序权限**旁边的下拉列表**Windows** **Azure Active Directory**，选中对应的框**读取目录数据**，然后单击**保存**。
+单击要配置的应用程序的名称和所需权限。 导航“配置”选项卡，向下滚动到“对其他应用程序的权限”部分。 单击 **Windows** **Azure Active Directory** 旁边的“应用程序权限”下拉列表，选中“读取目录数据”框，然后单击“保存”。
 
 ![添加权限][api-management-aad-add-permissions]
 
@@ -446,11 +446,11 @@ public class CalcController : ApiController
 > 
 > 
 
-将密钥复制到剪贴板、 切换回发布服务器门户、 将密钥粘贴到**客户端机密**文本框中，单击**保存**。
+将密钥复制到剪贴板，切换回发布者门户，再将密钥粘贴到“客户端机密”文本框，然后单击“保存”。
 
 ![添加授权服务器][api-management-add-authorization-server-3]
 
-客户端凭据后紧跟授权代码授予。 复制此授权代码并切换回 Azure AD 开发人员门户应用程序配置页，将授权代码粘贴到“答复 URL”字段，并再次单击“保存”。
+客户端凭据后紧跟授权代码授予。 复制此授权代码并切换回 Azure AD 开发人员门户应用程序配置页，将授权代码粘贴到“答复 URL”字段，然后再次单击“保存”。
 
 ![回复 URL][api-management-aad-reply-url]
 
@@ -509,7 +509,7 @@ public class CalcController : ApiController
 </validate-jwt>
 ```
 
-有关配置和使用此策略的其他演示，请参阅 [Cloud Cover 第 177 集：更多 API 管理功能](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)并快进到 13:50。 快进到 15:00 若要查看在策略编辑器中配置的策略，然后执行到 18:50 有关从使用或不需要的授权令牌的开发人员门户调用操作的演示。
+有关配置和使用此策略的其他演示，请参阅 [Cloud Cover 第 177 集：更多 API 管理功能](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)并快进到 13:50。 快进到 15:00，观看在策略编辑器中配置的策略，然后快进到 18:50，观看对使用和不使用所需授权令牌从开发人员门户调用操作的演示。
 
 ## <a name="next-steps"></a>后续步骤
 * 观看有关 API 管理的更多[视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management)。

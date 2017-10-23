@@ -15,19 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: b409aa762b60c6bed0ee26f4b9fa7c347d9eb997
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-ad-user-using-the-multi-tenant-application-pattern"></a>如何使用多租户应用程序模式将任何 Azure Active Directory (AD) 用户登录
 如果向许多组织提供软件即服务应用程序，可以将应用程序配置为可接受来自任何 Azure AD 租户的登录。  在 Azure AD 中，此配置称为使应用程序成为多租户应用程序。  任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。  
 
 如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用程序，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按应用程序上的“登录到 Microsoft”按钮。 单击下面的按钮可详细了解如何为应用程序创建品牌。
 
-[![登录按钮][AAD-Sign-In]][AAD-App-Branding]
+[![“登录”按钮][AAD-Sign-In]][AAD-App-Branding]
 
 本文假设已熟悉如何为 Azure AD 构建单租户应用程序。  如果不熟悉，请返回[开发人员指南主页][AAD-Dev-Guide]，然后尝试学习其中一篇快速入门！
 
@@ -62,7 +61,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。  可以将注册转�
 
 如前所述，多租户应用程序也应该为用户提供一致的登录体验，并遵循 Azure AD 应用程序的品牌指导原则。 单击下面的按钮可详细了解如何为应用程序创建品牌。
 
-[![登录按钮][AAD-Sign-In]][AAD-App-Branding]
+[![“登录”按钮][AAD-Sign-In]][AAD-App-Branding]
 
 让我们更详细地了解 /common 终结点的用法和代码实现。
 
@@ -240,7 +239,6 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-
 
 
 

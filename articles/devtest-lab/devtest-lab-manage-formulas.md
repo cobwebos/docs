@@ -16,10 +16,10 @@ ms.date: 03/07/2017
 ms.author: tarcher
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bfdab5def50158f9b764bbb1e50c2624cc6d5fb3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 07/11/2017
         * “虚拟网络” - 指定所需的虚拟网络。
         * “子网” - 指定所需的子网。    
         * “IP 地址配置” - 指定希望使用公共、私有还是共享 IP 地址。 有关共享 IP 地址的详细信息，请参阅[了解 Azure 开发测试实验室中的共享 IP 地址](./devtest-lab-shared-ip.md)。
-        * “使此计算机可索取” - 使计算机可“索取”的意思是在创建时不会为其分配所有权。 改为实验室用户将能够取得所有权 （"声明"） 在本实验的边栏选项卡中的计算机。     
+        * “使此计算机可索取” - 使计算机可“索取”的意思是在创建时不会为其分配所有权。 而是，实验室用户将能够在实验室的边栏选项卡上取得（“索取”）计算机的所有权。     
     * “映像” - 此字段显示在上一个边栏选项卡上选择的基本映像的名称。 
      
        ![创建公式](./media/devtest-lab-create-formulas/create-formula.png)

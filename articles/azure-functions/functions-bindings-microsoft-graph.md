@@ -11,14 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mahender
+ms.openlocfilehash: 8cf2e4e9e9007549dbdc931b4485c4230c536479
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b0eb0ac63c7dbb9d6cbba093937231e93670529e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-functions-microsoft-graph-bindings"></a>Azure Functions Microsoft Graph 绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
@@ -45,7 +43,11 @@ Microsoft Graph 扩展提供了以下绑定：
 
 ### <a name="enabling-functions-20-preview"></a>启用 Functions 2.0 预览版
 
-绑定扩展仅对于 Azure Functions 2.0 预览版可用。 若要启用 Functions 2.0，请将 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置设置为“beta”。  若要了解如何配置应用程序设置，请参阅 [Azure Functions 中的应用程序设置](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings)。
+绑定扩展仅对于 Azure Functions 2.0 预览版可用。 
+
+[!INCLUDE [functions-set-runtime-version](../../includes/functions-set-runtime-version.md)]
+
+若要了解详细信息，请参阅[如何针对 Azure Functions 运行时版本](functions-versions.md)。
 
 ### <a name="installing-the-extension"></a>安装扩展
 
@@ -90,7 +92,7 @@ Microsoft Graph 扩展提供了以下绑定：
 |**name**|必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用身份验证令牌输入绑定](#token-input-code)。|
 |**类型**|必需 - 必须设置为 `token`。|
 |**direction**|必需 - 必须设置为 `in`。|
-|**identity**|必需 - 用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器有效] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**identity**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器有效] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**userId** |仅在将 identity 设置为 `userFromId` 时为必需。 与已登录用户关联的用户主体 ID。|
 |**userToken**|仅在将 identity 设置为 `userFromToken` 时为必需。 函数应用的有效令牌。 |
 |**resource**|必需 - 正在为其请求令牌的 AAD 资源 URL。|
@@ -1060,4 +1062,3 @@ public class UserSubscription {
 
 [HTTP 触发器有效]: functions-bindings-http-webhook.md
 [使用 Microsoft Graph 中的 webhook]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
-

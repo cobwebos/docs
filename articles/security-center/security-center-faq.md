@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/26/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 506c23179d09e2e22065c8ba2bc85a341bb0ea09
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 35aa45ce09b756dd7413a1df3d3c7b0c428b7a97
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -43,20 +41,20 @@ Azure 安全中心通过 Microsoft Azure 订阅启用，可从 [Azure 门户](ht
 
 免费层提供 Azure 资源、基本安全策略、安全建议以及与合作伙伴安全产品和服务的集成的安全状态。
 
-标准层增添了高级威胁检测功能，包括威胁情报、行为分析、异常检测、安全事件和威胁归属报告。 标准层在前 60 天免费。 如果 60 天后选择继续使用该服务，将自动开始计费。  如要升级，请选择[安全策略](security-center-policies.md#set-security-policies)中的“定价层”。 若要了解详细信息，请参阅[安全中心定价](security-center-pricing.md)。
+标准层增添了高级威胁检测功能，包括威胁情报、行为分析、异常检测、安全事件和威胁归属报告。 标准层在前 60 天免费。 如果 60 天后选择继续使用该服务，将自动开始计费。  若要升级，请选择安全策略中的“定价层”[](https://docs.microsoft.com/azure/security-center/security-center-pricing)。
 
 ## <a name="permissions"></a>权限
 Azure 安全中心使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../active-directory/role-based-access-built-in-roles.md)。
 
-安全中心会评估资源的配置以识别安全问题和漏洞。 如果你分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
+安全中心会评估资源的配置以识别安全问题和漏洞。 如果分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
 
 若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](security-center-permissions.md)。
 
 ## <a name="data-collection"></a>数据收集
-安全中心会收集来自虚拟机的数据，进而评估其安全状态、提供安全建议并发出威胁警报。 初次访问安全中心时，将在订阅中的所有虚拟机上启用数据收集。 也可在安全中心策略中启用数据收集。
+安全中心会收集来自虚拟机的数据，进而评估其安全状态、提供安全建议并发出威胁警报。 初次访问安全中心时，会在订阅中的所有虚拟机上启用数据收集。 也可在安全中心策略中启用数据收集。
 
 ### <a name="how-do-i-disable-data-collection"></a>如何禁用数据收集？
-如果使用 Azure 安全中心免费层，可随时通过虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。 可在安全策略中对订阅禁用数据收集。 （[登录到 Azure 门户](https://portal.azure.com)，选择“浏览”，选择“安全中心”，然后选择“策略”。）选中一个订阅后，会打开一个新的边栏选项卡，可在其选项中关闭“数据收集”。
+如果使用 Azure 安全中心免费层，可随时通过虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。 可在安全策略中对订阅禁用数据收集。 （[登录到 Azure 门户](https://portal.azure.com)，选择“浏览”，选择“安全中心”，并选择“策略”。）选中一个订阅后，会打开一个新的边栏选项卡，可在其选项中关闭“数据收集”。
 
 ### <a name="how-do-i-enable-data-collection"></a>如何启用数据收集？
 可在安全中心策略中对 Azure 订阅启用数据收集。 启用数据收集。 [登录 Azure 门户](https://portal.azure.com)，选择“浏览”、“安全中心”，然后选择“策略”。 将“数据收集”设置为“开”。
@@ -115,8 +113,8 @@ Azure 安全中心监视以下 Azure 资源：
 * Azure 虚拟网络
 * Azure SQL 服务
 * Azure 存储帐户
-* [应用服务环境](../app-service/app-service-app-service-environments-readme.md) 中的 Azure Web 应用
-* 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和[应用服务环境](../app-service/app-service-app-service-environments-readme.md)上的 web 应用程序防火墙
+* [应用服务环境](../app-service/environment/intro.md) 中的 Azure Web 应用
+* 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和应用服务环境上的 Web 应用程序防火墙
 
 ## <a name="virtual-machines"></a>虚拟机
 ### <a name="what-types-of-virtual-machines-are-supported"></a>支持哪些类型的虚拟机？
@@ -131,5 +129,4 @@ Azure 安全中心可识别出通过 Azure 扩展安装的反恶意软件。 例
 没有可供 VM 扫描的数据时会出现此消息。 在 Azure 安全中心启用数据收集之后，扫描数据导入可能需要一段时间（低于一小时）。 首次导入扫描数据后可能会收到此消息，因为此时根本没有扫描数据或没有最近扫描数据。 扫描不会导入处于停止状态的 VM。 如果最近（根据 Windows 代理的保留策略，此值默认为 30 天）没有导入扫描数据，也可能会显示此消息。
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>为什么会显示消息称“VM 代理缺失”？
-VM 代理必须安装在 VM 上才能启用数据收集。 对于从 Azure Marketplace 部署的 VM，默认安装 VM 代理。 有关如何在其他 VM 上安装 VM 代理的详细信息，请参阅博客文章 [VM 代理和扩展](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)。
-
+VM 代理必须安装在 VM 上才能启用数据收集。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 有关如何在其他 VM 上安装 VM 代理的详细信息，请参阅博客文章 [VM 代理和扩展](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)。

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
 ms.openlocfilehash: fe32c1d68040ceb9d9de2ad6c4a6dc9ea93f5aef
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
 本教程的目的是说明 Azure 与 Central Desktop 的集成。 在本教程中概述的方案假定已有以下各项：
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
 
 **若要配置单一登录，请执行以下步骤：**
 
-1. 在 Azure 经典门户中，在**Central Desktop**应用程序集成页上，单击**上单一登录配置**以打开 * * 配置单一登录 * * 对话框。
+1. 在 Azure 经典门户中的“Central Desktop”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
    ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC749323.png "配置单一登录")
 2. 在“你希望用户如何登录 Central Desktop”页上，选择“Microsoft Azure AD 单一登录”，并单击“下一步”。

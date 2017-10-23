@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 5335dae62e61659b68e8befb4ed0d404dffb800c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook 连接器入门
 Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使用此连接器创建、编辑和更新联系人和日历项，还可以获取、发送和回复电子邮件。
@@ -60,7 +60,7 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
     如果提示登录，则输入登录详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)列出了相关步骤。 
    
    > [!NOTE]
-   > 在此示例中，逻辑应用在更新日历事件时运行。 要查看此触发器的结果，请添加另一个向你发送短信的操作。 例如，添加 Twilio*发送消息*操作该文本您在 15 分钟内启动日历事件时。 
+   > 在此示例中，逻辑应用在更新日历事件时运行。 要查看此触发器的结果，请添加另一个向你发送短信的操作。 例如，添加 Twilio“发送消息”操作，如果日历事件将在 15 分钟后启动，该操作将向你发送短信。 
    > 
    > 
 3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
@@ -85,7 +85,7 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
     如果提示提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)介绍了这些属性。 
    
    > [!NOTE]
-   > 在此示例中，我们在 Office 365 Outlook 中新建联系人。 可使用来自其他触发器的输出创建联系人。 例如，添加 SalesForce“创建对象时”触发器。 然后添加 Office 365 Outlook*创建联系人*SalesForce 字段用于在 Office 365 中创建新的新联系人的操作。 
+   > 在此示例中，我们在 Office 365 Outlook 中新建联系人。 可使用来自其他触发器的输出创建联系人。 例如，添加 SalesForce“创建对象时”触发器。 然后添加 Office 365 Outlook“创建联系人”操作，可使用 SalesForce 字段在 Office 365 中新建联系人。 
    > 
    > 
 5. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。

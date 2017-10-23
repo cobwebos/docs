@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/11/2016
 ms.author: bwren
 ms.openlocfilehash: 038d6e051be8112b9264e7efa6485965d11e32c8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 也可以自行定义。 如果应用程序在对其具有管理访问权限的本地主机或虚拟机的 IIS 下运行，[Application Insights](app-insights-overview.md) 可以显示这些性能计数器。 图表指示实时应用程序可用的资源，并有助于确定服务器实例之间的不平衡负载。
@@ -70,7 +70,7 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 
 `ReportAs` 对于与 `[a-zA-Z()/-_ \.]+` 不匹配的计数器名称而言是必需项，即，它们包含以下设置中没有的字符：字母、圆括号、正斜杠、连字符、下划线、空格、点。
 
-如果指定一个实例，它将会收集为维度"CounterInstanceName"的报告指标。
+如果指定实例，它以所报告指标的维度“CounterInstanceName”进行收集。
 
 ### <a name="collecting-performance-counters-in-code"></a>收集代码中的性能计数器
 要收集系统性能计数器并将它们发送到 Application Insights，可以改编下面的片段：

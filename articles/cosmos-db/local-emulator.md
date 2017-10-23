@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: arramac
+ms.openlocfilehash: 1e23fa988952f2515d82d4d043c390c263959ccc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: a0f6a845a345ebd4ef0a58abf4934ce400103109
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
 
@@ -85,7 +84,7 @@ Azure Cosmos DB 模拟器具有以下硬件和软件要求：
 
 可以在 Docker for Windows 上运行 Azure Cosmos DB 模拟器。 该模拟器不适合于用于 Oracle Linux 的 Docker。
 
-安装了[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 之后，可以通过从喜爱的 shell（cmd.exe、PowerShell 等）运行以下命令，从 Docker 中心请求模拟器映像。
+安装了[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 并切换到 Windows 容器之后，可以通过从喜爱的 shell（cmd.exe、PowerShell 等）运行以下命令，从 Docker 中心拉取模拟器映像。
 
 ```      
 docker pull microsoft/azure-cosmosdb-emulator 
@@ -94,7 +93,7 @@ docker pull microsoft/azure-cosmosdb-emulator
 
 ``` 
 md %LOCALAPPDATA%\CosmosDBEmulatorCert 2>nul
-docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i microsoft/azure-cosmosdb-emulator 
+docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
 ```
 
 响应类似于以下内容：
@@ -409,4 +408,3 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 
 > [!div class="nextstepaction"]
 > [导出 Azure Cosmos DB 模拟器证书](local-emulator-export-ssl-certificates.md)
-

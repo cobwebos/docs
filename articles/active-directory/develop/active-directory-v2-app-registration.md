@@ -16,10 +16,10 @@ ms.date: 05/01/2017
 ms.author: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: e6202aa8665c906382666fe08a561421e50e0a8d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>如何使用 v2.0 终结点注册应用
 要生成同时接受 MSA 与 Azure AD 登录的应用，必须先向 Microsoft 注册应用。  目前，无法使用任何现有的应用搭配 Azure AD 或 MSA - 需要创建一个全新的应用。
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/11/2017
 可以选择在“配置文件”部分中自定义登录页面的外观。  在继续操作之前，请务必单击“保存”。
 
 > [!NOTE]
-> 使用 [https://apps.dev.microsoft.com/?deeplink=/appList](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 创建应用程序时，系统将会在用于登录门户的帐户的主租户中注册该应用程序。  这表示不能使用 Microsoft 个人帐户在 Azure AD 租户中注册应用程序。  如果明确地想要在特定的租户中注册应用程序，请使用最初在该租户中创建的帐户登录。
+> 使用 [https://apps.dev.microsoft.com/?deeplink=/appList](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 创建应用程序时，系统会在用来登录门户的帐户的主租户中注册该应用程序。  这表示不能使用 Microsoft 个人帐户在 Azure AD 租户中注册应用程序。  如果明确地想要在特定的租户中注册应用程序，请使用最初在该租户中创建的帐户登录。
 > 
 > 
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
 ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
@@ -27,7 +27,7 @@ DNS 区域和记录是关键资源。 删除 DNS 区域或单个 DNS 记录都�
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资源进行细致的访问管理。 使用 RBAC，可仅授予用户执行其作业所需的访问次数。 有关 RBAC 如何帮助你管理的访问的详细信息，请参阅[什么是基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。
+Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资源进行细致的访问管理。 使用 RBAC，可仅授予用户执行其作业所需的访问次数。 如需了解 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。
 
 ### <a name="the-dns-zone-contributor-role"></a>“DNS 区域参与者”角色
 
@@ -35,7 +35,7 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资�
 
 例如，假设资源组“myzones”包含 Contoso Corporation 的五个区域。 授予 DNS 管理员对该资源组的 DNS 区域参与者权限，可以完全控制这些 DNS 区域。 它还避免了授予不必要的权限，例如 DNS 管理员无法创建或停止虚拟机。
 
-分配 RBAC 权限最简单方法是[通过 Azure 门户](../active-directory/role-based-access-control-configure.md)进行分配。  打开资源组的访问控制 (IAM) 边栏选项卡，然后单击添加，然后选择 DNS 区域参与者角色并选择要授予权限的所需的用户或组。
+分配 RBAC 权限最简单方法是[通过 Azure 门户](../active-directory/role-based-access-control-configure.md)进行分配。  打开资源组的“访问控制(IAM)”边栏选项卡，再单击“添加”，然后选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。
 
 ![使用 Azure 门户的资源组级别 RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
 
@@ -59,7 +59,7 @@ Azure RBAC 规则可应用于订阅，资源组或单个资源。 在 Azure DNS 
 
 例如，假设资源组“myzones”包含区域“contoso.com”和子区域“customers.contoso.com”（其中针对每个客户帐户创建 CNAME 记录）。  应为用于管理这些 CNAME 记录的帐户分配权限，以便仅在“customers.contoso.com”区域中创建记录，但该帐户不应具有对其他区域的访问权限。
 
-可以通过 Azure 门户授予区域级别的 RBAC 权限。  打开该区域的访问控制 (IAM) 边栏选项卡，然后单击添加，然后选择 DNS 区域参与者角色并选择要授予权限的所需的用户或组。
+可以通过 Azure 门户授予区域级别的 RBAC 权限。  打开区域的“访问控制(IAM)”边栏选项卡，再单击“添加”，然后选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。
 
 ![使用 Azure 门户的 DNS 区域级别 RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
 

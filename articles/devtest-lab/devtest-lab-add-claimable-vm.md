@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: tarcher
 ms.openlocfilehash: 98950d72e90b0e178bae2fffa7644fd824a25eea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可认领 VM
 使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[应用商店映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程指导使用 Azure 门户向开发测试实验室中的实验室添加可声明的 VM，并展示用户声明 VM 时需遵循的过程。
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 
 1. 如果想要查看或复制 Azure Resource Manager 模板，请参阅[保存 Azure Resource Manager 模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)部分，并在完成后返回此处。
 1. 选择“创建”将指定的 VM 添加到实验室。
-1. 实验室边栏选项卡显示的状态的虚拟机的创建-首先为**创建**，然后随着**运行**VM 已启动。
+1. 实验室边栏选项卡显示 VM 的创建状态 - 先是显示为“正在创建”，然后在 VM 启动后显示为“正在运行”。
 
 
 ## <a name="using-a-claimable-vm"></a>使用可认领 VM
@@ -69,7 +69,7 @@ ms.lasthandoff: 07/11/2017
  ![请求任意可认领 VM。](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
-用户声明 VM 之后，它向上移动到其"我的虚拟机"的列表，并且不再 claimable 被任何其他用户。
+用户认领 VM 后，该 VM 将移动到“我的虚拟机”列表中，且其他任何用户将无法再对其进行认领。
 
 ## <a name="next-steps"></a>后续步骤
 * 创建 VM 后，可通过选择 VM 边栏选项卡上的“连接”来连接 VM。

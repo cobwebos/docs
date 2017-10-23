@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
 ms.openlocfilehash: 17f6918371678ac849198bff4e3b3eea8678c660
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务角色连接到 Azure 中托管的自定义 AD 域控制器
 我们先在 Azure 中设置一个虚拟网络 (VNet)。 然后将 Active Directory 域控制器（托管在 Azure 虚拟机上）添加到该 VNet。 接下来，将现有云服务角色添加预先创建的 VNet，然后将它们连接到域控制器。

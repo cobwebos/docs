@@ -12,18 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 09/29/2017
 ms.author: billmath
+ms.openlocfilehash: 9ded5e0199f5ca48e2a00d2afee0e4c13b3a3460
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 9507a718ba982eb8b3381a6ef70156f075729161
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 直通身份验证：技术深入研究
-下面的文章概述了 Azure AD 直通身份验证的工作原理。  有关深入的技术和安全信息，请参阅[深入了解 Azure AD 直通身份验证安全性](active-directory-aadconnect-pta-security-deep-dive.md)
+下面的文章概述了 Azure AD 直通身份验证的工作原理。  有关深入的技术和安全信息，请参阅[**深入了解安全性**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)一文。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory 直通身份验证的工作原理是什么？
 
@@ -46,11 +44,11 @@ ms.lasthandoff: 09/28/2017
 ![直通身份验证](./media/active-directory-aadconnect-pass-through-authentication/pta2.png)
 
 ## <a name="next-steps"></a>后续步骤
-- [**当前限制**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
-- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 启动并运行 Azure AD 直通身份验证。
+- [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
+- [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 快速了解 Azure AD 直通身份验证。
+- [**智能锁定**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [**常见问题**](active-directory-aadconnect-pass-through-authentication-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [**深入了解安全性**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 有关该功能的其他深入技术信息。
 - [**Azure AD 无缝 SSO**](active-directory-aadconnect-sso.md) - 深入了解此补充功能。
-- [深入了解安全性](active-directory-aadconnect-pta-security-deep-dive.md) - 有关 Azure AD 直通身份验证的其他深入技术信息。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
-

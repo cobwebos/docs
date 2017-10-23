@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>如何管理应用程序的全局设置
 应用程序的“**设置**”菜单选项不尽相同，具体取决于应用程序所在的平台以及授予给应用程序权限。 设置包括以下内容：详细信息、项目、原生推送、推送速度、标记（应用信息） 和商业压力。 “设置”部分的“标记”（应用信息）菜单选项由应用程序通过 SDK 管理，或由后端通过设备 API 管理。 
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="projects"></a>项目
 允许选择希望应用程序显示在其中的所有项目。 
 
-你也可以搜索项目和查看的名称、 描述、 所有者和你的应用程序属于任何项目你角色的权限。
+还可以搜索项目并查看名称、说明、所有者和你在应用程序所属项目中的角色权限。
 
 有关详细信息，请查看：[UI 文档 - 主页][Link 13]
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 07/11/2017
 ![settings5][50]
 
 ### <a name="google-cloud-messaging-for-android-gcm"></a>Google Cloud Messaging for Android (GCM)
-要使用 GCM 来启用原生推送，需要遵循来自 Google 的操作说明。 然后必须粘贴服务器简单 API 密钥，配置为无 IP 限制。 要求与 SDK for Android v1.12.0 + 相集成。
+要使用 GCM 来启用原生推送，需要遵循来自 Google 的操作说明。 然后必须粘贴服务器简单 API 密钥（配置为无 IP 限制）。 要求与 SDK for Android v1.12.0 + 相集成。
 
 有关详细信息，请参阅： 
 

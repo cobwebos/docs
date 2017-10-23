@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: parakhj
 ms.openlocfilehash: cd4b8048245be49ea79bcb1b364f2f99c56f8291
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C：使用 Android 应用程序登录
 
@@ -82,7 +82,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 String mDiscoveryURI = "https://login.microsoftonline.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
-然后，可以获取授权和令牌终结点 Uri，并通过运行以下创建 AuthorizationServiceConfiguration 对象：
+然后，可以获取授权和令牌终结点 URI，并运行以下命令来创建 AuthorizationServiceConfiguration 对象：
 
 ```java
 final Uri issuerUri = Uri.parse(mDiscoveryURI);

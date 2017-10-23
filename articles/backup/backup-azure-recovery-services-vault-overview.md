@@ -14,14 +14,14 @@ ms.workload: storage-backup-recovery
 ms.date: 05/15/2017
 ms.author: markgal;arunak
 ms.openlocfilehash: 19e2aafe3de106be32f3d90c63c0ea03c626f272
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
-本文介绍恢复服务保管库的功能。 恢复服务保管库是 Azure 中用于存储数据的存储实体。 数据通常是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。 恢复服务保管库是 Resource Manager 版本的备份保管库。 Microsoft 建议你使用恢复服务保管库并将任何备份保管库转换为恢复服务保管库。
+本文介绍恢复服务保管库的功能。 恢复服务保管库是 Azure 中用于存储数据的存储实体。 数据通常是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。 恢复服务保管库是 Resource Manager 版本的备份保管库。 Microsoft 建议使用恢复服务保管库并将任何备份保管库转换为恢复服务保管库。
 
 ## <a name="what-is-a-recovery-services-vault"></a>什么是恢复服务保管库？
 

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
 ms.openlocfilehash: 28f0542dbe87bb34c83a7852db7c3a9fef055ce9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>教程：Azure Active Directory 与 TOPdesk - Secure 集成
 本教程的目的是说明 Azure 与 TOPdesk - Secure 的集成。  
@@ -104,7 +104,7 @@ ms.lasthandoff: 07/11/2017
 
 6. 在另一个 Web 浏览器窗口中，以管理员身份登录 **Azure 经典门户**。
 
-7. 上**TOPdesk 安全**应用程序集成页上，单击**上单一登录配置**以打开 * * 配置单一登录 * * 对话框。
+7. 在“TOPdesk - Secure”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "配置单一登录")
 
@@ -157,9 +157,9 @@ ms.lasthandoff: 07/11/2017
     
     a. 若要上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
-    b. 若要上传证书文件，请在**“证书(RSA)”**下，单击**“浏览”**。
+    b. 若要上载证书文件，请在“证书(RSA)”下，单击“浏览”。
 
-    c. 若要上传从 TOPdesk 支持团队获得的徽标文件，请在**“徽标图标”**下，单击**“浏览”**。
+    c. 若要上载从 TOPdesk 支持团队获得的徽标文件，请在“徽标图标”下，单击“浏览”。
 
     d.单击“下一步”。 在“用户名属性”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress”。
 
@@ -205,7 +205,7 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="to-assign-users-to-topdesk---secure-perform-the-following-steps"></a>要将用户分配到 TOPdesk - Secure，请执行以下步骤：
 1. 在 Azure 经典门户中，创建一个测试帐户。
-2. 在 * * TOPdesk 安全 * * 应用程序集成页上，单击**将用户分配**。
+2. 在“TOPdesk - Secure”应用程序集成页上，单击“分配用户”。
    
     ![分配用户](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "分配用户")
 

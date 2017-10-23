@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
 ms.openlocfilehash: 14b7808c9534bce3049422d6bce1e8914b2c2fbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 
 某些用户询问如何在 Microsoft 的 PaaS Hadoop 产品 HDInsight 上使用深度学习。 我们会在以后给大家带来更多内容，但目前只能以技术博客的方式总结一下如何使用 Caffe on HDInsight Spark。
 
-如果以前安装过 Caffe，用户会对安装该框架的困难有所体会。 在本博客中，我们先介绍如何为 HDInsight 群集安装 [Caffe on Spark](https://github.com/yahoo/CaffeOnSpark) ，然后通过内置的 MNIST 演示版演示如何使用分布式深度学习，在多个 CPU 上使用 HDInsight Spark。
+如果以前安装过 Caffe，用户会对安装该框架的困难有所体会。 在本博客中，我们将先介绍如何为 HDInsight 群集安装 [Caffe on Spark](https://github.com/yahoo/CaffeOnSpark)，然后通过内置的 MNIST 演示版演示如何使用分布式深度学习，在多个 CPU 上使用 HDInsight Spark。
 
 需完成四大步骤才能让其在 HDInsight 上运行。
 
@@ -204,7 +204,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
-我们使用 YARN 群集模式，可将 Spark 驱动程序调度到任意容器（以及任意工作节点），因此你会在控制台中看到类似如下的输出：
+我们使用的是 YARN 群集模式，可将 Spark 驱动程序调度到任意容器（以及任意工作节点），因此用户会在控制台中看到类似如下的输出：
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
@@ -258,7 +258,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
     Container exited with a non-zero exit code 134
 
-在这种情况下，需获取发生故障的容器的 ID（在上面的示例中，该 ID 为 container_1485916338528_0008_05_000005）。 然后需要运行 
+在这种情况下，需获取发生故障的容器的 ID（在上面的示例中，该 ID 为 container_1485916338528_0008_05_000005）。 然后需运行 
 
     yarn logs -containerId container_1485916338528_0008_03_000005
 

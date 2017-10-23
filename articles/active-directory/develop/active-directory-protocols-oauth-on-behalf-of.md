@@ -16,10 +16,10 @@ ms.date: 05/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 0bb74816f216f0965c3ec780c4895cf7e488c3cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # 代理流中使用委派用户标识的服务到服务调用
 OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服务/web API，而后者又需要调用另一个服务/web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Azure Active Directory (Azure AD) 提供的访问令牌。
@@ -54,7 +54,7 @@ OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服�
 3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”并选择“新建应用程序注册”。
 5. 输入应用程序的友好名称，并选择应用程序类型。 根据应用程序类型将登录 URL 或重定向 URL 设置为基 URL。 单击“创建”，创建应用程序。
-6. 配置应用程序的权限 - 在“设置”菜单中，选择“所需权限”部分，单击“添加”，单击“选择 API”，并在文本框中键入中间层服务的名称。 然后，单击**选择权限**，然后选择访问*服务名称*。
+6. 配置应用程序的权限 - 在“设置”菜单中，选择“所需权限”部分，单击“添加”，单击“选择 API”，并在文本框中键入中间层服务的名称。 然后单击“选择权限”并选择“访问*服务名称*”。
 
 ### 配置已知的客户端应用程序
 在此方案中，中间层服务无需用户干预，就要获取用户对访问下游 API 的许可。 因此，在身份验证过程的许可步骤中必须提前显示授权访问下游 API 的选项。

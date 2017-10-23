@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: fcc3743028e369fdc42b71887d49fb41fba2c0dc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: f17f3084138d667b2584142ed90ecc8fc1586189
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -60,7 +59,7 @@ IoT 中心 SDK 需要 IoT 中心终结点名称，即“终结点”边栏选项
 
 可与 IoT 中心公开的事件中心兼容的终结点配合使用的 SDK 和集成包含以下列表中的项目：
 
-* [Java 事件中心客户端](https://github.com/hdinsight/eventhubs-client)。
+* [Java 事件中心客户端](https://github.com/Azure/azure-event-hubs-java)。
 * [Apache Storm Spout](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md)。 可以在 GitHub 上查看 [Spout 源代码](https://github.com/apache/storm/tree/master/external/storm-eventhubs)。
 * [Apache Spark 集成](../hdinsight/hdinsight-apache-spark-eventhub-streaming.md)。
 
@@ -85,4 +84,3 @@ IoT 中心 SDK 需要 IoT 中心终结点名称，即“终结点”边栏选项
 [lnk-servicebus-sdk]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
 [lnk-eventprocessorhost]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx
 [lnk-amqp]: https://www.amqp.org/
-

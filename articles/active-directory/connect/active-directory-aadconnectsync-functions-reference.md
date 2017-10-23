@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: dbd3727d3a31132c2dc1ae1bf5fade7ed969e2c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 0f556c786fdfdf775e00e68740351e7630e0e002
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数参考
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -382,7 +381,7 @@ Contains 函数查找多值属性内的字符串
 返回找到字符串的多值属性中的索引。 如果未找到字符串，则返回 0。
 
 **备注：**  
-对于多值字符串属性，搜索将在值中查找子字符串。  
+对于多值字符串属性，搜索会在值中查找子字符串。  
 对于引用属性，搜索的字符串必须与视为匹配的值完全匹配。
 
 **示例：**  
@@ -504,7 +503,7 @@ CStr 函数转换为字符串数据类型。
 **语法：**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* interval：字符串表达式，即你想要添加的时间间隔。 字符串必须具有下列值之一：
+* 间隔：表示要添加的时间间隔的字符串表达式。 字符串必须具有下列值之一：
   * yyyy Year
   * q Quarter
   * m Month
@@ -515,7 +514,7 @@ CStr 函数转换为字符串数据类型。
   * h Hour
   * n Minute
   * s Second
-* 值：你想要添加的单元数。 它可以是正值（以获取将来的日期）或负值（以获取过去的日期）。
+* 值：要添加的单位数。 它可以是正值（以获取将来的日期）或负值（以获取过去的日期）。
 * 日期：表示间隔添加到其中的日期的 DateTime。
 
 **示例：**  
@@ -1240,7 +1239,7 @@ Switch 函数参数列表包含表达式和值对。 表达式从左到右计算
 * 没有任何表达式求值为 True。
 * 第一个 True 表达式的相应值为 Null。
 
-Switch 对所有表达式求值，即使它只返回其中一个结果。 为此，你应监视非预期的负面影响。 例如，如果任何表达式的计算结果导致除数为零的错误，则会出现错误。
+Switch 对所有表达式求值，即使它只返回其中一个结果。 为此，应监视非预期的负面影响。 例如，如果任何表达式的计算结果导致除数为零的错误，则会出现错误。
 
 值还可以是将返回自定义字符串的错误函数。
 
@@ -1342,4 +1341,3 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 * [了解声明性预配表达式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 * [Azure AD Connect Sync：自定义同步选项](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

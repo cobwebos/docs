@@ -3,8 +3,8 @@ title: "配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器
 description: "本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器"
 documentationcenter: na
 services: expressroute
-author: cherylmc
-manager: timlt
+author: ganesr
+manager: rossort
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,20 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2017
-ms.author: ganesr;cherylmc
+ms.date: 09/26/2017
+ms.author: ganesr
+ms.openlocfilehash: 76077be4f443f8e0dd6341d1a87539277f23e1c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: de3550c20439fa809869d98b8a57ea3be9c03e7c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-route-filters-for-microsoft-peering"></a>配置用于 Microsoft 对等互连的路由筛选器
+# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
+> [!div class="op_single_selector"]
+> * [在 Azure 应用服务中创建 Java Web 应用](how-to-routefilter-portal.md)
+> * [Azure PowerShell](how-to-routefilter-powershell.md)
+> * [Azure CLI](how-to-routefilter-cli.md)
+> 
 
 路由筛选器是通过 Microsoft 对等互连使用部分受支持服务的一种方法。 本文中的步骤可帮助配置和管理 ExpressRoute 线路的路由筛选器。
 
-Dynamics 365 服务和 Office 365 服务（例如 Exchange Online、SharePoint Online 和 Skype for Business）均可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
+Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint Online 和 Skype for Business）及 Azure 服务（例如存储和 SQL DB）均可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
 如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 可以：
 
@@ -100,7 +104,7 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>步骤 1. 获取前缀和 BGP 团体值的列表
+## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 社区值的列表
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.获取 BGP 团体值列表
 
@@ -113,7 +117,7 @@ Get-AzureRmBgpServiceCommunity
 
 列出要在路由筛选器中使用的 BGP 团体值列表。 例如，用于 Dynamics 365 服务的 BGP 团体值为 12076:5040。
 
-## <a name="filter"></a>步骤 2. 创建路由筛选器和筛选器规则
+## <a name="filter"></a>步骤 2：创建路由筛选器和筛选规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
@@ -143,7 +147,7 @@ $routefilter.Rules.Add($rule)
 Set-AzureRmRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>步骤 3. 将路由筛选器附加到 ExpressRoute 线路
+## <a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
 
 运行以下命令将路由筛选器附加到 ExpressRoute 线路，假设你只有 Microsoft 对等互连：
 
@@ -152,7 +156,9 @@ $ckt.Peerings[0].RouteFilter = $routefilter
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="getproperties"></a>获取路由筛选器的属性
+## <a name="tasks"></a>常见任务
+
+### <a name="getproperties"></a>获取路由筛选器的属性
 
 若要获取路由筛选器的属性，请使用以下步骤：
 
@@ -168,9 +174,9 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   $rule = $routefilter.Rules[0]
   ```
 
-## <a name="updateproperties"></a>更新路由筛选器的属性
+### <a name="updateproperties"></a>更新路由筛选器的属性
 
-如果路由筛选器已附加到线路，则 BGP 团体列表的更新会通过建立的 BGP 会话自动传播相应的前缀播发更改。 可使用以下命令更新路由筛选器的 BGP 团体列表：
+如果路由筛选器已附加到线路，则 BGP 社区列表的更新会通过建立的 BGP 会话自动传播相应的前缀播发更改。 可使用以下命令更新路由筛选器的 BGP 团体列表：
 
 ```powershell
 $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
@@ -178,7 +184,7 @@ $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
 Set-AzureRmRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
+### <a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
 
 从 ExpressRoute 线路分离路由筛选器后，BGP 会话不会播发任何前缀。 可使用以下命令从 ExpressRoute 线路分离路由筛选器：
   
@@ -187,7 +193,7 @@ $ckt.Peerings[0].RouteFilter = $null
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="delete"></a>删除路由筛选器
+### <a name="delete"></a>删除路由筛选器
 
 只有在路由筛选器未附加到任何线路时，才能将其删除。 尝试删除路由筛选器之前，请确保其未附加到任何线路。 可使用以下命令删除路由筛选器：
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
 ms.openlocfilehash: 62d31ed486458245156f7fc832294d662c62991e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可以将 System Center Configuration Manager 连接到 Log Analytics 以同步设备集合数据。 这就使得来自配置管理器层次结构的数据可在 OMS 中使用。
@@ -79,7 +79,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的服务连接点[](https://technet.microsoft.com/library/mt627781.aspx)。
 
 1. 在配置管理器的“管理”工作区中，选择“OMS 连接器”。 这会打开**添加 OMS 连接向导**。 选择“下一步”。
-2. 上**常规**屏幕上，确认已完成以下操作，并且你具有每个项的详细信息，然后选择**下一步**。
+2. 在“常规”屏幕上，确认已完成以下操作，并且具有每个项的详细信息，然后选择“下一步”。
 
    1. 在 Azure 管理门户中，已经将 Configuration Manager 注册为 Web 应用和/或 Web API 应用，并且有[在注册时收到的客户端 ID](../active-directory/active-directory-integrating-applications.md)。
    2. 在 Azure 管理门户中，已经为 Azure Active Directory 中注册的应用创建了应用密钥。  

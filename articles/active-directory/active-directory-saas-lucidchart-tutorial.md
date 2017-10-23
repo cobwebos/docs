@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2dea669f03c893632c08d30feeb3173efc2d8243
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>教程：Azure Active Directory 与 Lucidchart 的集成
 
@@ -184,7 +184,7 @@ ms.lasthandoff: 07/11/2017
  
 ### <a name="creating-a-lucidchart-test-user"></a>创建 Lucidchart 测试用户
 
-没有为你用于配置用户设置到 Lucidchart 操作项。  当已分配的用户尝试使用访问面板登录到 Lucidchart 时，Lucidchart 会检查该用户是否存在。  
+没有操作项可用于配置预配到 Lucidchart 的用户。  当已分配的用户尝试使用访问面板登录到 Lucidchart 时，Lucidchart 会检查该用户是否存在。  
 
 如果尚无用户帐户可用，Lucidchart 会自动创建该帐户。
 

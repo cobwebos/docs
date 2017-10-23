@@ -15,14 +15,14 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 9847bcfcc139a769847678c1cca6a8b9c3a30e93
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>了解 Azure AD B2C 自定义策略初学者包的自定义策略
 
-本部分列出的附带 B2C_1A_base 策略的所有核心元素**初学者包**和中，利用创作你自己的策略通过的继承*B2C_1A_base_extensions 策略*。
+本部分列出**初学者包**随附的，让你通过继承 *B2C_1A_base_extensions 策略*创建自己策略的 B2C_1A_base 策略的所有核心元素。
 
 因此，本部分专门侧重于已定义的声明类型、声明转换、内容定义、声明提供程序及其技术配置文件和核心用户旅程。
 

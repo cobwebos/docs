@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 73bf4451ba1b71807e22440beecc73a7e8045c5e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-publish-a-product-in-azure-api-management"></a>如何在 Azure API 管理中创建和发布产品
-在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员可以订阅该产品，并开始使用产品的 API。 本主题为开发人员提供创建产品、添加 API 以及将其发布的指南。
+在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员可以订阅该产品，并开始使用产品的 API。 本主题为开发人员提供创建产品、添加一个 API 以及将其发布的指南。
 
 ## <a name="create-product"> </a>创建产品
-可以在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。
+在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。
 
 ![发布者门户][api-management-management-console]
 
@@ -67,7 +67,7 @@ API 管理中的产品可处于“打开”或“受保护”状态。 必须先
 
 ![摘要][api-management-new-product-summary]
 
-在发布产品前，需要添加一个或多个 API。 为此，请单击“将 API 添加到产品”。
+在发布产品前，需要添加一个或多个 API。 要执行此操作，请单击“将 API 添加到产品”。
 
 ![添加 API][api-management-add-apis-to-product]
 
@@ -87,7 +87,7 @@ API 管理中的产品可处于“打开”或“受保护”状态。 必须先
 选择填写“使用条款”字段描述必须接受哪些订户才能使用该产品的使用条款。
 
 ## <a name="publish-product"> </a>发布产品
-在产品中的 API 可调用前，必须先发布该产品。 在产品的“摘要”选项卡上，单击“发布”，并单击“是，发布以确认”。 要使以前发布的产品私有，请单击“取消发布”。
+在产品中的 API 可调用前，必须先发布该产品。 在产品的“摘要”选项卡上，单击“发布”，并单击“是，发布以确认”。 要以前发布的产品专用，请单击“取消发布”。
 
 ![发布产品][api-management-publish-product]
 

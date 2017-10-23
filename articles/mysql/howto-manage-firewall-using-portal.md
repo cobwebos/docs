@@ -8,15 +8,14 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 33198e5a6e11df2db3a17fc96a0b3cd4b1a284e8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: 0604b29fcd9849545886a783ae5bbb2cbb72f2ce
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
 使用服务器级防火墙规则，管理员可以从指定的 IP 地址或某个范围的 IP 地址访问 Azure Database for MySQL 服务器。 
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
@@ -29,13 +28,13 @@ ms.lasthandoff: 06/17/2017
 
    ![Azure 门户 - 单击“添加我的 IP”](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
-3. 验证 IP 地址，然后保存配置。 在某些情况下，Azure 门户识别出的 IP 地址与访问 Internet 和 Azure 服务器时所使用的 IP 地址不同。 因此，可能需要更改起始 IP 和结束 IP，以使规则正常工作。
+3. 验证 IP 地址，并保存配置。 在某些情况下，Azure 门户识别出的 IP 地址与访问 Internet 和 Azure 服务器时所使用的 IP 地址不同。 因此，可能需要更改起始 IP 和结束 IP，以使规则正常工作。
 
    使用搜索引擎或其他联机工具查看自己的 IP 地址（例如，搜索“我的 IP 地址是多少”）。
 
    ![用必应搜索“我的 IP 是多少”](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. 添加其他地址范围。 在 Azure Database for MySQL 防火墙规则中，可以指定单个 IP 地址，也可以指定某个范围的地址。 如果希望将规则限制为单个 IP 地址，请在起始 IP 和结束 IP 字段中输入相同的地址。 打开防火墙后，管理员和用户可以访问 MySQL 服务器上他们拥有有效凭据的任何数据库。
+4. 添加其他地址范围。 在 Azure Database for MySQL 防火墙规则中，可以指定单个 IP 地址，也可以指定某个范围的地址。 如果希望将规则限制为单个 IP 地址，请在“起始 IP”和“结束 IP”字段中输入相同的地址。 打开防火墙后，管理员和用户可以访问 MySQL 服务器上他们拥有有效凭据的任何数据库。
 
    ![Azure 门户 - 防火墙规则 ](./media/howto-manage-firewall-using-portal/5-specify-addresses.png)
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 06/17/2017
 
    ![Azure 门户 - 单击“保存”](./media/howto-manage-firewall-using-portal/4-save-firewall-rule.png)
 
-## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>通过 Azure 门户管理现有的服务器级别防火墙规则
+## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户管理现有的服务器级别防火墙规则
 重复这些步骤来管理防火墙规则。
 * 若要添加当前计算机，请单击“+ 添加我的 IP”。
 * 若要添加其他 IP 地址，请键入“规则名称”、“起始 IP”和“结束 IP”。
@@ -54,4 +53,3 @@ ms.lasthandoff: 06/17/2017
 
 ## <a name="next-steps"></a>后续步骤
 - 有关连接到 Azure Database for MySQL 服务器的帮助，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)
-

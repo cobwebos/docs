@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 6/21/2017
 ms.author: johnkem
 ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 本文说明如何使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/03/2017
 1. 创建一个描述如何创建警报的 JSON 文件作为模板。
 2. [使用任意部署方法部署模板](../azure-resource-manager/resource-group-template-deploy.md)。
 
-下面我们先单独针对警报，然后针对创建其他资源期间的警报，描述如何创建 Resource Manager 模板。
+下面我们先单独针对警报，然后针对创建其他资源期间的警报，说明如何创建资源管理器模板。
 
 ## <a name="resource-manager-template-for-a-metric-alert"></a>指标警报的 Resource Manager 模板
 若要使用 Resource Manager 模板创建警报，需要创建 `Microsoft.Insights/alertRules` 类型的资源，并填充所有相关属性。 下面是用于创建警报规则的模板。
@@ -181,7 +181,7 @@ ms.lasthandoff: 08/03/2017
 [此处提供](https://msdn.microsoft.com/library/azure/dn933805.aspx)了警报规则的架构和属性说明。
 
 ## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>具有警报的资源的 Resource Manager 模板
-在创建的资源过程中创建警报时，Resource Manager 模板上的警报通常很有用。 例如，你可能想要确保"CPU %> 80"设置规则每次部署虚拟机。 为此，请在 VM 模板的资源数组中将警报规则添加为资源，使用 `dependsOn` 属性将依赖项添加到 VM 资源 ID。 下面是创建 Windows VM 并在 CPU 利用率高于 80% 时添加警报以通知订阅管理员的完整示例。
+在创建的资源过程中创建警报时，Resource Manager 模板上的警报通常很有用。 例如，可能想要确保每次部署虚拟机时均设置了“CPU % > 80”规则。 为此，请在 VM 模板的资源数组中将警报规则添加为资源，使用 `dependsOn` 属性将依赖项添加到 VM 资源 ID。 下面是创建 Windows VM 并在 CPU 利用率高于 80% 时添加警报以通知订阅管理员的完整示例。
 
 ```json
 {

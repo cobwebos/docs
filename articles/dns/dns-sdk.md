@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: jonatul
 ms.openlocfilehash: c0fb0be8da1c0ca48a4d43ea027d30a0bc17fe30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
 
    * 请插入在步骤 1 中使用的 tenantId、clientId（也称为帐户 ID）、密钥（服务主体帐户的密码）和 subscriptionId 的正确值。
    * 输入在步骤 2 中选择的资源组名称。
-   * 输入你选择的 DNS 区域名称。
+   * 输入所选的 DNS 区域名称。
 
 ## <a name="nuget-packages-and-namespace-declarations"></a>NuGet 包和命名空间声明
 
@@ -97,7 +97,7 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 DNS 记录是作为记录集管理的。 记录集是区域内一组名称和记录类型都相同的记录。  记录集的名称相对于区域名称，而不是完全限定的 DNS 名称。
 
-若要创建或更新记录集，"记录集"参数对象是创建并传递给*DnsManagementClient.RecordSets.CreateOrUpdateAsync*。 和 DNS 区域一样，也有三种操作模式：同步 ('CreateOrUpdate')、异步 ('CreateOrUpdateAsync') 或异步但可以访问 HTTP 响应 ('CreateOrUpdateWithHttpMessagesAsync')。
+若要创建或更新记录集，请创建 RecordSet 参数对象并将其传递到 *DnsManagementClient.RecordSets.CreateOrUpdateAsync*。 和 DNS 区域一样，也有三种操作模式：同步 ('CreateOrUpdate')、异步 ('CreateOrUpdateAsync') 或异步但可以访问 HTTP 响应 ('CreateOrUpdateWithHttpMessagesAsync')。
 
 和 DNS 区域一样，记录集的操作包括对乐观并发的支持。  在此示例中，由于既未指定 If-match 也未指定 If-None-Match，始终都会创建记录集。  此调用将覆盖 DNS 区域中任何现有的名称和记录类型都相同的记录。
 

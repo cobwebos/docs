@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
 ms.openlocfilehash: 70a4762383d64dc8d568c628cf260ebd8f2d179d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
 ## <a name="summary"></a>摘要
@@ -49,8 +49,8 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 ## <a name="basics"></a>基础知识
 支持请求过程的第一步是收集关于问题和支持计划的基本信息。
 
-让我们举个例子： 你要面向技术问题与你的虚拟机并怀疑存在网络连接问题。
-在向导的第一步中选择服务 （"运行 Windows 虚拟机"） 和资源 （你的虚拟机的名称） 启动的过程以解决此问题获取帮助。
+举个例子：你正面对关于虚拟机的技术难题，并怀疑存在网络连接问题。
+在向导的第一步中选择服务（“运行 Windows 的虚拟机”）和资源（虚拟机的名称）将启动获取关于此问题的帮助的过程。
 
 ![“基本信息”边栏选项卡](./media/how-to-create-azure-support-request/Basics.png)
 

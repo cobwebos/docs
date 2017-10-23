@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 10/09/2017
 ms.author: tomfitz
+ms.openlocfilehash: fdee4280b6642fa7c3e26e792b8b940772572ae7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: adcf9ddc0044da9bce1ab584d54cec66055ee0ad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的资源函数
 
@@ -234,7 +233,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 <a id="reference" />
 
 ## <a name="reference"></a>reference
-`reference(resourceName or resourceIdentifier, [apiVersion])`
+`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 返回表示资源的运行时状态的对象。
 
@@ -244,10 +243,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 |
 | apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 |
+| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
-每种资源类型返回 reference 函数的不同属性。 该函数不返回单个预定义的格式。 若要查看资源类型的属性，请返回 outputs 节中的对象，如示例所示。
+每种资源类型返回 reference 函数的不同属性。 该函数不返回单个预定义的格式。 同样，返回的值因是否指定了完整对象而有所不同。 若要查看资源类型的属性，请返回 outputs 节中的对象，如示例所示。
 
 ### <a name="remarks"></a>备注
 
@@ -271,6 +271,32 @@ reference 函数从运行时状态派生其值，因此不能在 variables 节�
     }
 }
 ```
+
+需要不属于属性架构的资源值时，请使用 `'Full'`。 例如，若要设置密钥保管库访问策略，请获取虚拟机的标识属性。
+
+```json
+{
+  "type": "Microsoft.KeyVault/vaults",
+  "properties": {
+    "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+    "accessPolicies": [
+      {
+        "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+        "objectId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.principalId]",
+        "permissions": {
+          "keys": [
+            "all"
+          ],
+          "secrets": [
+            "all"
+          ]
+        }
+      }
+    ],
+    ...
+```
+
+有关前面模板的完整示例，请参阅[从 Windows 到 Key Vault](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json)。 一个类似示例可用于 [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json)。
 
 ### <a name="example"></a>示例
 
@@ -304,16 +330,20 @@ reference 函数从运行时状态派生其值，因此不能在 variables 节�
       "referenceOutput": {
           "type": "object",
           "value": "[reference(parameters('storageAccountName'))]"
+      },
+      "fullReferenceOutput": {
+        "type": "object",
+        "value": "[reference(parameters('storageAccountName'), '2016-12-01', 'Full')]"
       }
     }
 }
 ``` 
 
-上面的示例返回以下格式的对象：
+上面的示例返回两个对象。 属性对象采用以下格式：
 
 ```json
 {
-   "creationTime": "2017-06-13T21:24:46.618364Z",
+   "creationTime": "2017-10-09T18:55:40.5863736Z",
    "primaryEndpoints": {
      "blob": "https://examplestorage.blob.core.windows.net/",
      "file": "https://examplestorage.file.core.windows.net/",
@@ -324,6 +354,43 @@ reference 函数从运行时状态派生其值，因此不能在 variables 节�
    "provisioningState": "Succeeded",
    "statusOfPrimary": "available",
    "supportsHttpsTrafficOnly": false
+}
+```
+
+完整对象采用以下格式：
+
+```json
+{
+  "apiVersion":"2016-12-01",
+  "location":"southcentralus",
+  "sku": {
+    "name":"Standard_LRS",
+    "tier":"Standard"
+  },
+  "tags":{},
+  "kind":"Storage",
+  "properties": {
+    "creationTime":"2017-10-09T18:55:40.5863736Z",
+    "primaryEndpoints": {
+      "blob":"https://examplestorage.blob.core.windows.net/",
+      "file":"https://examplestorage.file.core.windows.net/",
+      "queue":"https://examplestorage.queue.core.windows.net/",
+      "table":"https://examplestorage.table.core.windows.net/"
+    },
+    "primaryLocation":"southcentralus",
+    "provisioningState":"Succeeded",
+    "statusOfPrimary":"available",
+    "supportsHttpsTrafficOnly":false
+  },
+  "subscriptionId":"<subscription-id>",
+  "resourceGroupName":"functionexamplegroup",
+  "resourceId":"Microsoft.Storage/storageAccounts/examplestorage",
+  "referenceApiVersion":"2016-12-01",
+  "condition":true,
+  "isConditionTrue":true,
+  "isTemplateResource":false,
+  "isAction":false,
+  "provisioningOperation":"Read"
 }
 ```
 
@@ -659,5 +726,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）。
-
 

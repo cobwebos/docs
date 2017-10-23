@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
 ms.openlocfilehash: 747c00842f4df9c7fbd816c99771ba8a267106a4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -60,7 +60,7 @@ Application Insights 数据模型定义了以下两个字段来解决此问题�
 | 请求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
-现在时调用`GET /api/stock/value`对外部服务你想要知道该服务器的标识。 因此，可以相应地设置 `dependency.target` 字段。 如果外部服务不支持监视 - `target` 将设置为服务的主机名，例如 `stock-prices-api.com`。 但是，如果该服务通过返回预定义的 HTTP 标头来标识自身 - `target` 将包含服务标识，使 Application Insights 能够通过查询该服务中的遥测数据来生成分布式跟踪。 
+现在，在对外部服务发出 `GET /api/stock/value` 调用时，你希望知道该服务器的标识。 因此，可以相应地设置 `dependency.target` 字段。 如果外部服务不支持监视 - `target` 将设置为服务的主机名，例如 `stock-prices-api.com`。 但是，如果该服务通过返回预定义的 HTTP 标头来标识自身 - `target` 将包含服务标识，使 Application Insights 能够通过查询该服务中的遥测数据来生成分布式跟踪。 
 
 ## <a name="correlation-headers"></a>关联标头
 
@@ -90,7 +90,7 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
-.NET 至今已定义了多种方式用于关联遥测和诊断日志。 它提供了用于跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx) 的 `System.Diagnostics.CorrelationManager`。 `System.Diagnostics.Tracing.EventSource` 和 Windows ETW 定义了方法 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx)。 `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 "当前"上下文传播 WCF 和 Http 连接。
+.NET 至今已定义了多种方式用于关联遥测和诊断日志。 它提供了用于跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx) 的 `System.Diagnostics.CorrelationManager`。 `System.Diagnostics.Tracing.EventSource` 和 Windows ETW 定义了方法 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx)。 `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 WCF 和 Http 将“当前”上下文传播关联到一起。
 
 但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticsSource` 是支持跨计算机自动关联的一种方式。 .NET 库支持诊断源，并允许通过 http 等传输方法自动跨计算机传播关联上下文。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: milanga;juliako;
 ms.openlocfilehash: 115ad9dfd88062f23d5d17eed8897ce5d2ca8484
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
 ## <a name="overview"></a>概述
@@ -82,7 +82,7 @@ ms.lasthandoff: 08/29/2017
 
 一旦固定背景视频（例如监控视频）中出现运动对象，动作检测器 API 将提供指示器。 动作检测器经过训练可减少误报（例如光源和阴影变化）。 当前算法限制包括夜视视频、半透明对象和小对象。
 
-### <a id="output_elements"></a>输出 JSON 文件中的元素
+### <a id="output_elements"></a>输出 JSON 文件的元素
 > [!NOTE]
 > 在最新版本中，输出 JSON 格式已更改，对某些客户来说可以说是重大更改。
 > 
@@ -103,7 +103,7 @@ ms.lasthandoff: 08/29/2017
 | 事件 |每个事件片段包含在该持续时间内检测到的动作。 |
 | 类型 |在当前版本中，对于一般动作，该属性始终为“2”。 此标签可让视频 API 在将来的版本中灵活地为动作分类。 |
 | RegionID |如上所述，在此版本中此属性始终为 0。 此标签可让视频 API 在将来的版本中灵活地查找各区域中的动作。 |
-| 区域 |表示你关注的动作在视频中的区域。 <br/><br/>-“id”表示区域面积 - 且在此版本中只有一个，ID 0。 <br/>-“type”代表你关注其动作的区域的形状。 目前支持“rectangle”和“polygon”。<br/> 如果指定了 "rectangle"，则区域具有以 X、Y、宽度及高度表示的维。 X 和 Y 坐标表示规范化 0.0 到 1.0 比例中的区域的左上角 XY 坐标。 宽度和高度表示规范化 0.0 到 1.0 比例中的区域的大小。 在当前版本中，X、Y、宽度和高度始终固定为 0、0、1、1。 <br/>如果指定了“polygon”，则区域的维度以点来表示。 <br/> |
+| 区域 |表示你关注的动作在视频中的区域。 <br/><br/>-“id”表示区域面积 - 且在此版本中只有一个，ID 0。 <br/>#NAME? 目前支持“rectangle”和“polygon”。<br/> 如果指定了 "rectangle"，则区域具有以 X、Y、宽度及高度表示的维。 X 和 Y 坐标表示规范化 0.0 到 1.0 比例中的区域的左上角 XY 坐标。 宽度和高度表示规范化 0.0 到 1.0 比例中的区域的大小。 在当前版本中，X、Y、宽度和高度始终固定为 0、0、1、1。 <br/>如果指定了“polygon”，则区域的维度以点来表示。 <br/> |
 | Fragments |元数据划分成称为“片段”的不同段。 每个片段包含开始时间、持续时间、间隔数字和事件。 没有事件的片段表示在该开始时间和持续时间内没有检测到任何动作。 |
 | 括号 [] |每个括号表示事件中的单个间隔。 如果该间隔显示空括号，则表示没有检测到动作。 |
 | 位置 |事件下的此新项列出发生动作的位置。 这比检测区域更具体。 |

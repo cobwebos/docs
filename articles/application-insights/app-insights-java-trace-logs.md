@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: bwren
 ms.openlocfilehash: 5baba3deaf58a1a24995c60381592a9c2ffefd81
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
@@ -35,7 +35,7 @@ ms.lasthandoff: 08/18/2017
 #### <a name="if-youre-using-maven"></a>如果使用 Maven...
 如果项目已设置为使用 Maven 进行生成，请将以下代码片段之一合并到 pom.xml 文件。
 
-然后刷新项目依赖关系，以获取二进制文件下载。
+然后刷新项目依赖项以下载二进制文件。
 
 *Logback*
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/18/2017
 #### <a name="if-youre-using-gradle"></a>如果使用 Gradle...
 如果项目已设置为使用 Gradle 进行生成，请将以下代码行之一添加到 build.gradle 文件中的 `dependencies` 组。
 
-然后刷新项目依赖关系，以获取二进制文件下载。
+然后刷新项目依赖项以下载二进制文件。
 
 **Logback**
 

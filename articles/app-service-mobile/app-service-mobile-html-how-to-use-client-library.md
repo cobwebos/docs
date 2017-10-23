@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
 ms.openlocfilehash: 0c4b4de560d70592f5bbdee28b56a7686b5689f4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -63,7 +63,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何： 为外部重定向 Url 配置你的移动应用程序服务。
+### <a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
 有多种类型的 JavaScript 应用程序使用环回功能来处理 OAuth UI 流。  这些功能包括：
 
 * 在本地运行服务
@@ -93,7 +93,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 1. 导航回到 [Azure 门户]。
 2. 导航到移动应用后端。
 3. 在“API”菜单中单击“CORS”。
-4. 在空的“允许的来源”文本框中输入每个 URL。  会创建新的文本框。
+4. 在空的“允许的来源”文本框中输入每个 URL。  将创建新的文本框。
 5. 单击“保存”
 
 后端更新后，可以在应用中使用新的环回 URL。

@@ -16,10 +16,10 @@ ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf1482ae7b1070023703f5dbe861d151f5d64fd8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 多主机全局复制数据库体系结构
 Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允许在工作负荷中的任意位置以低延迟的访问将数据分配到多个区域。 此模型常用于发布者/使用者工作负荷。在这些工作负荷中，单个地理区域具有作者，其他（读取）区域具有分布于全球的读者。 
@@ -40,7 +40,7 @@ Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允
 
 若要了解有关分区和分区键的详细信息，请参阅[在 Azure Cosmos DB 中进行分区和缩放](partition-data.md)。
 
-## <a id="ModelingNotifications"></a>为通知建模
+## <a id="ModelingNotifications"></a>通知建模
 通知是特定于用户的数据馈送。 因此，通知文档的访问模式总是在单个用户的背景中。 例如，可以“向某个用户发布通知”或“为某个给定用户获取所有通知”。 因此，对于此类型，分区键的最佳选择是 `UserId`。
 
     class Notification 
@@ -67,7 +67,7 @@ Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允
         public string ArticleId { get; set; } 
     }
 
-## <a id="ModelingSubscriptions"></a>为订阅建模
+## <a id="ModelingSubscriptions"></a>订阅建模
 订阅可以根据各种标准创建，如感兴趣的特定类别的文章或特定的发布者。 因此，`SubscriptionFilter` 是很好的分区键选择。
 
     class Subscriptions 
@@ -90,7 +90,7 @@ Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允
         } 
     }
 
-## <a id="ModelingArticles"></a>为文章建模
+## <a id="ModelingArticles"></a>文章建模
 通过通知标识一篇文章后，后续查询通常基于 `Article.Id`。 选择 `Article.Id` 作为分区键，从而为在 Azure Cosmos DB 集合内存储文章提供最佳分布。 
 
     class Article 
@@ -121,8 +121,8 @@ Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允
         //... 
     }
 
-## <a id="ModelingReviews"></a>为评论建模
-和文章一样，评论通常在文章背景下写入和读取。 选择 `ArticleId` 作为分区键可为与文章相关的评论提供最佳分布和高效访问。 
+## <a id="ModelingReviews"></a>评论建模
+和文章一样，评论通常在文章背景下写入和读取。 选择 `ArticleId` 作为分区键将为与文章相关的评论提供最佳分布和高效访问。 
 
     class Review 
     { 

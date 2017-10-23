@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: spelluru
+ms.openlocfilehash: 02d9102bfc9b0d8084988609282f2c78b5789e7e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: ddbba4b45c5c7cd8ee69390581cd78b820d19259
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 如果存在以下情况之一，则必须将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络 (VNet)： 
 
@@ -40,8 +38,9 @@ ms.lasthandoff: 09/28/2017
 - 如果已有现有的 Azure 资源管理器 VNet 连接到本地网络，请先创建 Azure-SSIS 集成运行时要加入到的[经典 VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置[经典到 Azure 资源管理器 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) 连接。
 
 ## <a name="domain-name-services-server"></a>域名服务服务器 
-如果需要在 Azure-SSIS 集成运行时加入的 VNet 中使用自己的域名服务 (DNS) 服务器，请遵循以下指导，并确保 VNet 中 Azure-SSIS 集成运行时的节点可以解析 Azure 终结点。
+如果需要在 Azure-SSIS 集成运行时加入的 VNet 中使用自己的域名服务 (DNS) 服务器，请遵循指导以[确保 VNet 中 Azure-SSIS 集成运行时的节点可以解析 Azure 终结点](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)。
 
+## <a name="network-security-group"></a>网络安全组
 如果需要在 Azure-SSIS 集成运行时加入的 VNet 中实现网络安全组 (NSG)，请允许通过以下端口传送入站/出站流量：
 
 | 端口 | 方向 | 传输协议 | 目的 | 入站源/出站目标 |
@@ -101,4 +100,3 @@ ms.lasthandoff: 09/28/2017
 - [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了教程的内容，提供有关使用 Azure SQL 托管实例（人预览版）以及将 IR 加入 VNet 的说明。 
 - [监视 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime)。 此文介绍如何检索有关 Azure-SSIS IR 的信息，以及返回的信息中的状态说明。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
-

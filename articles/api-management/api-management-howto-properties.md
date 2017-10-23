@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 3b0fe2a300038e13cc488bdb4f50f8be270ea8f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用属性
 API 管理策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 可以使用文字文本值、策略表达式和属性构造策略语句。 
@@ -32,7 +32,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 | 密钥 |布尔值 |确定值是否为密钥以及是否应加密。 |
 | 标记 |字符串数组 |可选标记，提供用来筛选属性列表。 |
 
-可在发布者门户的“属性”选项卡上配置属性。 在以下示例中，配置了三个属性。
+可在发布者门户的“属性”选项卡上配置属性。在以下示例中，配置了三个属性。
 
 ![属性][api-management-properties]
 
@@ -45,7 +45,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
 ## <a name="to-use-a-property"></a>使用属性
-要在策略中使用属性，可将属性名称置于一对双的大括号中（例如 `{{ContosoHeader}}`），如以下示例所示。
+要使用策略中的属性，可将属性名称置于一对双的大括号中（例如 `{{ContosoHeader}}`），如以下示例所示。
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -65,7 +65,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 </set-header>
 ```
 
-评估此策略时，会将 `{{ExpressionProperty}}` 替换为其值：`@(DateTime.Now.ToString())`。 由于该值是一个策略表达式，因此会对表达式进行评估并且策略将继续执行。
+评估此策略时，会将 `{{ExpressionProperty}}` 替换为其值：`@(DateTime.Now.ToString())`。 由于值为策略表达式，因此会计算该表达式，然后策略会继续执行相关操作。
 
 若要在开发人员门户中对此进行测试，可调用一个其策略属性处于范围内的操作。 在以下示例中，调用了一个包含两个前述示例性 `set-header` 策略和相关属性的操作。 请注意，响应包含两个自定义标头，这两个标头是使用带属性的策略配置的。
 

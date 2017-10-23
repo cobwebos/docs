@@ -8,16 +8,14 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/09/2017
-ms.author: gauravbh; tomfitz
+ms.date: 09/19/2017
+ms.author: gauravbh
+ms.openlocfilehash: 96b07bb3b923a5120e3d43c3fa60b3b1308010b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 7ace8e1ea8038e0748bfed00c0cc0a4fa340588b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
 使用 Azure 的供应商可向世界各地的客户提供解决方案。 Azure Marketplace 是一个库，其中包含来自第一方和第三方供应商的数百种复杂的多资源模板。 客户可以在几分钟之内部署和启动使用平台即服务 (PaaS) 和服务型软件 (SaaS) 应用程序。 
@@ -56,16 +54,14 @@ Azure 托管应用程序有两种类型：服务目录和 Marketplace。
 ## <a name="key-concepts"></a>关键概念
 
 ### <a name="managed-resource-group"></a>托管资源组
-在其中创建了模板中预配的所有 Azure 资源的托管资源组。 例如，如果使用设备创建一个存储帐户，则此资源组将包含存储帐户资源。 它不包含设备资源。
+在其中创建了模板中预配的所有 Azure 资源的托管资源组。 例如，如果使用应用程序创建一个存储帐户，则此资源组将包含存储帐户资源。 它不包含应用程序资源。
 
-### <a name="appliance-package"></a>设备包
+### <a name="application-package"></a>应用程序包
 发布者创建包含模板文件和 createUIDefinition 文件的包。 具体而言，它包含以下文件：
 
-- applianceMainTemplate.json：此模板文件定义了由设备预配的所有资源。 此文件是一个用于创建资源的常规模板文件。
+- **mainTemplate.json**：此模板文件定义了由应用程序预配的所有资源。 此文件是一个用于创建资源的常规模板文件。
 
-- MainTemplate.json：此模板文件定义了设备资源 (Microsoft.Solutions/appliances)。 此资源中定义的一个关键属性是 ManagedResourceGroupId。 此属性指示哪个资源组用于承载 applianceMainTemplate.json 中定义的实际资源。
-
-- applianceCreateUIDefinition.json：此文件描述了如何呈现模板中定义的参数所需的 UI。
+- **createUIDefinition.json**：此文件介绍了如何呈现模板中定义的参数所需的 UI。
 
 ### <a name="authorization"></a>授权
 发布者必须指定供应商代表客户来管理资源时所需的权限。 此权限应用于托管资源组。 设置以下值：
@@ -81,4 +77,3 @@ Azure 托管应用程序有两种类型：服务目录和 Marketplace。
 * 有关发布服务目录托管应用程序的信息，请参阅[创建和发布服务目录托管应用程序](managed-application-publishing.md)。
 * 有关使用服务目录托管应用程序的信息，请参阅[使用服务目录托管应用程序](managed-application-consumption.md)。
 * 若要创建 UI 定义文件，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
-

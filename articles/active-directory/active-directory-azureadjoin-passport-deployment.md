@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.openlocfilehash: 58943e1e29755c983e55c675dd4fe7b75ac47b34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>在组织中启用 Microsoft Windows Hello for Business
 在[将已加入域的 Windows 10 设备与 Azure Active Directory 相连](active-directory-azureadjoin-devices-group-policy.md)后，执行以下操作在组织中启用 Microsoft Windows Hello for Business：
@@ -98,7 +98,7 @@ ms.lasthandoff: 07/11/2017
     ![配置 Windows Hello for Business](./media/active-directory-azureadjoin-passport-deployment/06.png)
 
 ## <a name="configure-the-certificate-profile"></a>配置证书配置文件
-如果针对本地身份验证使用的是基于证书的身份验证，需要配置并部署证书配置文件。 此任务要求你设置的 NDES 服务器和证书注册点站点角色在 System Center Configuration Manager 中。 有关详细信息，请参阅 [Configuration Manager 中证书配置文件的先决条件](https://technet.microsoft.com/library/dn261205.aspx)。
+如果针对本地身份验证使用的是基于证书的身份验证，需要配置并部署证书配置文件。 此任务要求你在 System Center Configuration Manager 中设置 NDES 服务器和“证书注册点”站点角色。 有关详细信息，请参阅 [Configuration Manager 中证书配置文件的先决条件](https://technet.microsoft.com/library/dn261205.aspx)。
 
 1. 打开“System Center Configuration Manager”，并导航到“资源和合规性”>“合规性设置”>“公司资源访问”>“证书配置文件”。
 2. 选择具有智能卡登录扩展密钥用法 (EKU) 的模板。

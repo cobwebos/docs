@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: amsriva
 ms.openlocfilehash: d42efa7d359f5c87c14afbfd138328b37c8ae6c2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-for-hosting-multiple-web-applications"></a>创建托管多个 Web 应用程序的应用程序网关
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/11/2017
 > * [Azure 门户](application-gateway-create-multisite-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 
-托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关将根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载均衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
+托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关会根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载均衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
 
 ## <a name="scenario"></a>方案
 
@@ -220,7 +220,7 @@ $listener02 = New-AzureRmApplicationGatewayHttpListener -Name "listener02" -Prot
 
 ### <a name="step-8"></a>步骤 8
 
-为此示例中的两个 Web 应用程序创建两个规则设置。 可以通过规则将侦听器、后端池和 http 设置绑定到一起。 此步骤将应用程序网关配置为使用基本的路由规则，每个网站都有一个规则。 流向每个网站的流量由所配置的侦听器接收，再定向到所配置的后端池，所使用的属性在 BackendHttpSettings 中指定。
+为此示例中的两个 Web 应用程序创建两个规则设置。 可以通过规则将侦听器、后端池和 http 设置绑定到一起。 此步骤将应用程序网关配置为使用基本的路由规则，每个网站都有一个规则。 流向每个网站的流量由所配置的侦听器接收，然后又定向到所配置的后端池，所使用的属性在 BackendHttpSettings 中指定。
 
 ```powershell
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule01" -RuleType Basic -HttpListener $listener01 -BackendHttpSettings $poolSetting01 -BackendAddressPool $pool1

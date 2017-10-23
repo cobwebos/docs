@@ -8,33 +8,32 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 07/06/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a2556206ac53829fcd6ab92ffe292859349790d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.date: 10/03/2017
+ms.openlocfilehash: 17f045f516792e50f7349805ec9f7a01e3f9d5b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器概念
 本主题提供使用 Azure Database for MySQL 服务器的注意事项和指南。
 
 ## <a name="what-is-an-azure-database-for-mysql-server"></a>什么是 Azure Database for MySQL 服务器？
 
-Azure Database for MySQL 服务器是多个数据库的中心管理点。 它的 MySQL 服务器构造与本地环境中用户可能比较熟悉的构造相同。 具体而言，Azure Database for MySQL 服务是托管的服务，它提供性能保证、公开服务器级访问权限和功能。
+Azure Database for MySQL 服务器是多个数据库的中心管理点。 它的 MySQL 服务器构造与本地环境中用户可能比较熟悉的构造相同。 具体而言，Azure Database for MySQL 服务是托管的服务，它提供性能保证，并公开服务器级访问权限和功能。
 
 Azure Database for MySQL 服务器：
 
 - 在 Azure 订阅中创建。
 - 是数据库的父资源。
 - 为数据库提供了一个命名空间。
-- 是具有强生存期语义的容器 - 删除服务器时将删除所包含的数据库。
+- 是具有强生存期语义的容器 - 删除服务器时会删除所包含的数据库。
 - 并置区域中的资源。
 - 为服务器和数据库访问提供连接终结点。
 - 提供应用于其数据库的管理策略的作用域：登录名、防火墙、用户、角色、配置等。
 - 在多个版本内可用。 有关详细信息，请参阅[支持的 Azure Database for MySQL 数据库版本](./concepts-supported-versions.md)。
 
-在 Azure Database for MySQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，还可以创建多个数据库来共享资源。 按服务器根据定价层、计算单位、存储 (GB) 的配置采用结构化定价。 有关详细信息，请参阅[定价层](./concepts-service-tiers.md)。
+在 Azure Database for MySQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，也可以选择创建多个数据库来共享资源。 按服务器根据定价层、计算单位和存储 (GB) 的配置采用结构化定价。 有关详细信息，请参阅[定价层](./concepts-service-tiers.md)。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>如何连接到 Azure Database for MySQL 服务器并进行身份验证？
 
@@ -56,4 +55,3 @@ Azure Database for MySQL 服务器：
 - 有关该服务的概述，请参阅 [Azure Database for MySQL 概述](./overview.md)
 - 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](./concepts-service-tiers.md)
 - 有关连接到服务的信息，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)。
-

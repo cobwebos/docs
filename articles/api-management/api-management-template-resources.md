@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3c633d54e6b81576a2fbd1adfc69775ca1bdd09d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.openlocfilehash: 212e7ea7bb2ffea63c7ba210195df0da38aa8f0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API 管理模板资源
 Azure API 管理提供以下类型的资源，适用于开发人员门户模板。  
@@ -128,7 +127,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |----------|----------|  
 |NoItemsToDisplay|找不到结果。|  
 |GeneralExceptionMessage|出现问题。 可能存在临时故障或 Bug。 请重试。|  
-|GeneralJsonExceptionMessage|出现问题。 可能存在临时故障或 Bug。 请重新加载页面，然后重试。|  
+|GeneralJsonExceptionMessage|出现问题。 可能存在临时故障或 Bug。 请重新加载页面，并重试。|  
 |ConfirmationMessageUnsavedChanges|某些更改未保存。 是否确实要取消并放弃更改?|  
 |AzureActiveDirectory|Azure Active Directory|  
 |HttpLargeRequestMessage|Http 请求正文过大。|  
@@ -186,7 +185,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|<p\> 客户端可以将资源所有者的用户代理定向到授权终结点，从而启动流。  客户端包括客户端标识符、请求的范围、本地状态和重定向 URI。在授予(或拒绝)访问权限以后，即可通过授权服务器将用户代理发送回该 URI。     </p\> <p\> 授权服务器会对资源所有者进行身份验证(通过用户代理)，并确定资源所有者是允许还是拒绝了客户端的访问请求。     </p\> <p\> 假定资源所有者授予了访问权限，授权服务器会使用先前在请求中或客户端注册过程中提供的重定向 URI，将用户代理重定向回客户端。  重定向 URI 包括授权代码以及客户端先前提供的任何本地状态。     </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|<p\> 如果用户拒绝了访问请求或者请求无效，则会使用下述添加到重定向的参数通知客户端: </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|授权请求|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<p\> 若要启动 OAuth 过程，客户端应用必须将用户发送到授权终结点。          在授权终结点，用户会进行身份验证，然后授予或拒绝对应用的访问权限。     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<p\>         若要启动 OAuth 过程，客户端应用必须将用户发送到授权终结点。          在授权终结点，用户会进行身份验证，并授予或拒绝对应用的访问权限。     </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|</p\> 假定资源所有者授予了访问权限，授权服务器会使用先前在请求中或客户端注册过程中提供的重定向 URI，将用户代理重定向回客户端。  重定向 URI 包括授权代码以及客户端先前提供的任何本地状态。 </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|<p\> 客户端会包括上一步收到的授权代码，从授权服务器的令牌终结点请求访问令牌。  在发出请求时，客户端会通过授权服务器进行身份验证。  客户端会包括重定向 URI，用于获取进行验证的授权代码。 </p\> <p\> 授权服务器会对客户端进行身份验证，对授权代码进行验证，确保收到的重定向 URI 匹配用于在步骤(C)中重定向客户端的 URI。  如果验证有效，授权服务器会使用访问令牌进行响应，以及选择性地使用刷新令牌进行响应。 </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|<p\> 如果请求客户端身份验证失败或无效，授权服务器会使用“HTTP 400 (请求错误)”状态代码进行响应(除非另有指定)，并在响应中包括以下参数。 </p\>|  
@@ -198,15 +197,15 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|<p\> 如果访问令牌请求有效且获得授权，则授权服务器会颁发访问令牌和可选的刷新令牌，并构造响应，方法是: 将以下参数添加到 HTTP 响应的实体正文，使用的状态代码为“200 (正常)”。 </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|<p\> 客户端可以将资源所有者的用户代理定向到授权终结点，从而启动流。  客户端包括客户端标识符、请求的范围、本地状态和重定向 URI。在授予(或拒绝)访问权限以后，即可通过授权服务器将用户代理发送回该 URI。 </p\> <p\> 授权服务器会对资源所有者进行身份验证(通过用户代理)，并确定资源所有者是允许还是拒绝了客户端的访问请求。 </p\> <p\> 假定资源所有者授予了访问权限，授权服务器会使用先前提供的重定向 URI，将用户代理重定向回客户端。  重定向 URI 在 URI 片段中包括访问令牌。 </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|<p\> 如果资源所有者拒绝了访问请求，或者请求失败，而原因并非重定向 URI 缺失或无效，则授权服务器会通知客户端，方法是: 使用 "application/x-www-form-urlencoded" 格式将以下参数添加到重定向 URI 的片段组件。 </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|<p\> 若要启动 OAuth 过程，客户端应用必须将用户发送到授权终结点。      在授权终结点，用户会进行身份验证，然后授予或拒绝对应用的访问权限。 </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|<p\>     若要启动 OAuth 过程，客户端应用必须将用户发送到授权终结点。      在授权终结点，用户会进行身份验证，并授予或拒绝对应用的访问权限。 </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|<p\> 如果资源所有者允许了访问请求，则授权服务器会颁发访问令牌并将其提供给客户端，方法是: 使用 "application/x-www-form-urlencoded" 格式将以下参数添加到重定向 URI 的片段组件。 </p\>|  
 |OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|对于能够保持其凭据机密性的客户端(例如，使用 PHP、Java、Python、Ruby、ASP.NET 等实现的 Web 服务器应用程序)，将对授权代码流进行优化。|  
 |OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|授权代码授予|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|客户端凭据流适用于客户端(你的应用程序)请求访问其所控制的受保护资源的情况。 可以将客户端视为资源所有者，因此不需要最终用户交互。|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|客户端凭据流适用于客户端(应用程序)请求访问其所控制的受保护资源的情况。 可以将客户端视为资源所有者，因此不需要最终用户交互。|  
 |OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|客户端凭据授予|  
 |OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|对于无法保持其凭据(已知会操作特定的重定向 URI)机密性的客户端，将对隐式流进行优化。 通常会在浏览器中使用脚本语言(例如 JavaScript)实现这些客户端。|  
 |OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|隐式授权|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|资源所有者密码凭据流适用于资源所有者与客户端(你的应用程序)存在信任关系的情况，例如，设备操作系统或具有很高特权的应用程序均可充当客户端。 此流适用于能够获取资源所有者凭据(用户名和密码，通常使用交互形式)的客户端。|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|资源所有者密码凭据流适用于资源所有者与客户端(应用程序)存在信任关系的情况，例如，设备操作系统或具有很高特权的应用程序均可充当客户端。 此流适用于能够获取资源所有者凭据(用户名和密码，通常使用交互形式)的客户端。|  
 |OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|资源所有者密码凭据授予|  
 |OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|<p\> 资源所有者为客户端提供用户名和密码。 </p\> <p\> 客户端会包括从资源所有者处收到的凭据，从授权服务器的令牌终结点请求访问令牌。  在发出请求时，客户端会通过授权服务器进行身份验证。 </p\> <p\> 授权服务器对客户端进行身份验证，同时验证资源所有者的凭据，并在验证有效的情况下颁发访问令牌。 </p\>|  
 |OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|<p\> 如果请求的客户端身份验证失败或无效，授权服务器会使用“HTTP 400 (请求错误)”状态代码进行响应(除非另有指定)，并会在响应中包括以下参数。 </p\>|  
@@ -290,8 +289,8 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |TextblockSubscriptionKeyHeaderDescription|订阅密钥，用于访问此 API。 在<a href='/developer'\>配置文件</a\>中查找。|  
 |TextblockOAuthHeaderDescription|从 <i\>{0}</i\> 获取的 OAuth 2.0 访问令牌。 支持的授权类型: <i\>{1}</i\>。|  
 |TextblockContentTypeHeaderDescription|发送到 API 的正文的媒体类型。|  
-|ErrorMessageApiNotAccessible|此时无法访问你正尝试调用的 API。 请在<a href="/issues"\>此处</a\>联系 API 发布者。|  
-|ErrorMessageApiTimedout|你正在尝试调用的 API 获得响应所花的时间超出正常。 请在<a href="/issues"\>此处</a\>联系 API 发布者。|  
+|ErrorMessageApiNotAccessible|此时无法访问正在尝试调用的 API。 请在<a href="/issues"\>此处</a\>联系 API 发布者。|  
+|ErrorMessageApiTimedout|正在尝试调用的 API 获得响应所花的时间超出正常。 请在<a href="/issues"\>此处</a\>联系 API 发布者。|  
 |BadRequestParameterExpected|“应使用“{0}”参数”|  
 |TooltipTextDoubleClickToSelectAll|双击全选。|  
 |TooltipTextHideRevealSecret|显示/隐藏|  
@@ -314,11 +313,11 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |LinkLabelSendUsEmail|给我们发送一封电子邮件|  
 |PageTitleError|抱歉，提供请求的页面时出现问题|  
 |TextblockPotentialCauseIntermittentIssue|这可能是已经消失的间歇性数据访问问题。|  
-|TextblockPotentialCauseOldLink|你单击的链接可能为旧链接，不再指向正确的位置。|  
+|TextblockPotentialCauseOldLink|单击的链接可能为旧链接，不再指向正确的位置。|  
 |TextblockPotentialCauseTechnicalProblem|我们这边可能存在技术问题。|  
 |TextblockPotentialSolutionRefresh|请尝试刷新页面。|  
 |TextblockPotentialSolutionStartOver|从我们的 {0} 重新开始。|  
-|TextblockPotentialSolutionTryAgain|转到 {0}，然后重试执行的操作。|  
+|TextblockPotentialSolutionTryAgain|转到 {0}，并重试执行的操作。|  
 |TextReportProblem|{0}，描述已发生的错误，我们会尽快进行查看。|  
 |TitlePotentialCause|可能原因|  
 |TitlePotentialSolution|这可能只是暂时性问题，可以进行多项尝试|  
@@ -328,8 +327,8 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |Name|文本|  
 |----------|----------|  
 |WebIssuesIndexTitle|问题|  
-|WebIssuesNoActiveSubscriptions|没有活动的订阅。 你需要先订阅产品，然后才能报告问题。|  
-|WebIssuesNotSignin|你没有登录。 请{0}，以便报告问题或发表评论。|  
+|WebIssuesNoActiveSubscriptions|没有活动的订阅。 需要先订阅产品，才能报告问题。|  
+|WebIssuesNotSignin|没有登录。 请{0}，以便报告问题或发表评论。|  
 |WebIssuesReportIssueButton|报告问题|  
 |WebIssuesSignIn|登录|  
 |WebIssuesStatusReportedBy|状态: {0} &#124; 由 {1} 报告|  
@@ -340,9 +339,9 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |----------|----------|  
 |LinkLabelHomePage|主页|  
 |LinkLabelSendUsEmail|给我们发送一封电子邮件|  
-|PageTitleNotFound|对不起，找不到你要查找的页面|  
-|TextblockPotentialCauseMisspelledUrl|你可能拼错了 URL (如果 URL 是键入的)。|  
-|TextblockPotentialCauseOldLink|你单击的链接可能为旧链接，不再指向正确的位置。|  
+|PageTitleNotFound|对不起，找不到要查找的页面|  
+|TextblockPotentialCauseMisspelledUrl|可能拼错了 URL (如果 URL 是键入的)。|  
+|TextblockPotentialCauseOldLink|单击的链接可能为旧链接，不再指向正确的位置。|  
 |TextblockPotentialSolutionRetype|尝试重新键入 URL。|  
 |TextblockPotentialSolutionStartOver|从我们的 {0} 重新开始。|  
 |TextReportProblem|{0}，描述已发生的错误，我们会尽快进行查看。|  
@@ -357,14 +356,14 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebProductsLegalTermsLink|使用条款|  
 |WebProductsSubscribeButton|订阅|  
 |WebProductsUsageLimitsHeader|使用限制|  
-|WebProductsYouAreNotSubscribed|你已订阅此产品。|  
-|WebProductsYouRequestedSubscription|你已请求订阅此产品。|  
-|ErrorYouNeedtoAgreeWithLegalTerms|你必须同意使用条款，然后才能继续。|  
+|WebProductsYouAreNotSubscribed|已订阅此产品。|  
+|WebProductsYouRequestedSubscription|已请求订阅此产品。|  
+|ErrorYouNeedtoAgreeWithLegalTerms|必须同意使用条款，才能继续。|  
 |ButtonLabelAddSubscription|添加订阅|  
 |LinkLabelChangeSubscriptionName|更改|  
 |ButtonLabelConfirm|确认|  
-|TextblockMultipleSubscriptionsCount|你有以下产品的 {0} 个订阅:|  
-|TextblockSingleSubscriptionsCount|你有以下产品的 {0} 个订阅:|  
+|TextblockMultipleSubscriptionsCount|有以下产品的 {0} 个订阅:|  
+|TextblockSingleSubscriptionsCount|有以下产品的 {0} 个订阅:|  
 |TextblockSingleApisCount|以下产品包含 {0} 个API:|  
 |TextblockMultipleApisCount|以下产品包含 {0} 个API:|  
 |TextblockHeaderSubscribe|订阅产品|  
@@ -395,15 +394,15 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |ErrorSsoTokenInvalid|SSO 令牌无效|  
 |ValidationErrorSpecificEmailAlreadyExists|电子邮件“{0}”已注册|  
 |ValidationErrorSpecificEmailInvalid|电子邮件“{0}”无效|  
-|ValidationErrorPasswordInvalid|密码无效。 请更正错误，然后重试。|  
+|ValidationErrorPasswordInvalid|密码无效。 请更正错误，并重试。|  
 |PropertyTooShort|{0} 过短|  
 |WebAuthenticationAddresserEmailInvalidErrorMessage|电子邮件地址无效。|  
 |ValidationMessageNewPasswordConfirmationRequired|确认新密码|  
 |ValidationErrorPasswordConfirmationRequired|确认密码为空|  
 |WebAuthenticationEmailChangeNotice|更改确认电子邮件正在发送至 {0}。 请按照其中的说明确认新的电子邮件地址。 如果该电子邮件没有在随后的几分钟内到达收件箱，请查看垃圾邮件文件夹。|  
-|WebAuthenticationEmailChangeNoticeHeader|已成功处理你的电子邮件更改请求|  
+|WebAuthenticationEmailChangeNoticeHeader|已成功处理电子邮件更改请求|  
 |WebAuthenticationEmailChangeNoticeTitle|已请求更改电子邮件|  
-|WebAuthenticationEmailHasBeenRevertedNotice|你的电子邮件已存在。 已还原请求|  
+|WebAuthenticationEmailHasBeenRevertedNotice|电子邮件已存在。 已还原请求|  
 |ValidationErrorEmailAlreadyExists|电子邮件已存在|  
 |ValidationErrorEmailInvalid|电子邮件地址无效|  
 |TextboxLabelEmail|电子邮件|  
@@ -413,13 +412,13 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |TextboxLabelEmailFirstName|名字|  
 |ValidationErrorFirstNameRequired|名字是必需的。|  
 |ValidationErrorFirstNameInvalid|名字无效|  
-|NoticeInvalidInvitationToken|请注意，确认链接的有效时间仅为 48 小时。 如果你仍在此时间范围内，请确保链接正确。 如果链接已过期，则请重复你正在尝试确认的操作。|  
+|NoticeInvalidInvitationToken|请注意，确认链接的有效时间仅为 48 小时。 如果仍在此时间范围内，请确保链接正确。 如果链接已过期，则请重复正在尝试确认的操作。|  
 |NoticeHeaderInvalidInvitationToken|邀请令牌无效|  
 |NoticeTitleInvalidInvitationToken|确认错误|  
 |WebAuthenticationLastNameInvalidErrorMessage|姓氏无效|  
 |TextboxLabelEmailLastName|姓氏|  
 |ValidationErrorLastNameRequired|姓氏是必需的。|  
-|WebAuthenticationLinkExpiredNotice|发送给你的确认链接已过期。 `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
+|WebAuthenticationLinkExpiredNotice|发送给确认链接已过期。 `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
 |NoticePasswordResetLinkInvalidOrExpired|密码重置链接无效或已过期。|  
 |WebAuthenticationLinkExpiredNoticeTitle|链接已发送|  
 |WebAuthenticationNewPasswordLabel|新密码|  
@@ -427,7 +426,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |TextboxLabelNotificationsSenderEmail|通知发件人电子邮件|  
 |TextboxLabelOrganizationName|组织名称|  
 |WebAuthenticationOrganizationRequiredErrorMessage|组织名称为空|  
-|WebAuthenticationPasswordChangedNotice|已成功更新你的密码|  
+|WebAuthenticationPasswordChangedNotice|已成功更新密码|  
 |WebAuthenticationPasswordChangedNoticeTitle|密码已更新|  
 |WebAuthenticationPasswordCompareErrorMessage|密码不匹配|  
 |WebAuthenticationPasswordConfirmLabel|确认密码|  
@@ -435,7 +434,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebAuthenticationPasswordLabel|密码|  
 |ValidationErrorPasswordRequired|密码是必需的。|  
 |WebAuthenticationPasswordResetSendNotice|更改密码确认电子邮件正在发送至 {0}。 请按电子邮件中的说明继续密码更改过程。|  
-|WebAuthenticationPasswordResetSendNoticeHeader|已成功处理你的密码重置请求|  
+|WebAuthenticationPasswordResetSendNoticeHeader|已成功处理密码重置请求|  
 |WebAuthenticationPasswordResetSendNoticeTitle|已请求密码重置|  
 |WebAuthenticationRequestNotFoundNotice|找不到请求|  
 |WebAuthenticationSenderEmailRequiredErrorMessage|通知发件人电子邮件为空|  
@@ -445,19 +444,19 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebAuthenticationSignupConfirmNoticeRepeatHeader|注册确认电子邮件已再次发送|  
 |WebAuthenticationSignupConfirmNoticeTitle|创建的帐户|  
 |WebAuthenticationTokenRequiredErrorMessage|令牌为空|  
-|WebAuthenticationUserAlreadyRegisteredNotice|似乎某个用户已使用此电子邮件在系统中注册。 如果你忘记了密码，请尝试还原该密码，或者与我们的支持团队联系。|  
+|WebAuthenticationUserAlreadyRegisteredNotice|似乎某个用户已使用此电子邮件在系统中注册。 如果忘记了密码，请尝试还原该密码，或者与我们的支持团队联系。|  
 |WebAuthenticationUserAlreadyRegisteredNoticeHeader|用户已注册|  
 |WebAuthenticationUserAlreadyRegisteredNoticeTitle|已注册|  
 |ButtonLabelChangePassword|更改密码|  
 |ButtonLabelChangeAccountInfo|更改帐户信息|  
 |ButtonLabelCloseAccount|关闭帐户|  
 |WebAuthenticationInvalidCaptchaErrorMessage|输入的文本与图片上的文本不匹配。 请重试。|  
-|ValidationErrorCredentialsInvalid|电子邮件或密码无效。 请更正错误，然后重试。|  
+|ValidationErrorCredentialsInvalid|电子邮件或密码无效。 请更正错误，并重试。|  
 |WebAuthenticationRequestIsNotValid|请求无效|  
 |WebAuthenticationUserIsNotConfirm|请在尝试登录之前确认注册。|  
 |WebAuthenticationInvalidEmailFormated|电子邮件无效: {0}|  
 |WebAuthenticationUserNotFound|找不到用户|  
-|WebAuthenticationTenantNotRegistered|你的帐户所属的 Azure Active Directory 租户无权访问此门户。|  
+|WebAuthenticationTenantNotRegistered|帐户所属的 Azure Active Directory 租户无权访问此门户。|  
 |WebAuthenticationAuthenticationFailed|身份验证失败。|  
 |WebAuthenticationGooglePlusNotEnabled|身份验证失败。 如果已向应用程序授权，则请联系管理员，确保已正确配置 Google 身份验证。|  
 |ValidationErrorAllowedTenantIsRequired|租户必须获得允许|  
@@ -470,8 +469,8 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebAuthenticationUserRegistrationDisabledNotice|管理员已禁用用户注册。 请使用外部标识提供者登录。|  
 |WebAuthenticationUserRegistrationDisabledNoticeHeader|已禁用用户注册|  
 |WebAuthenticationUserRegistrationDisabledNoticeTitle|已禁用用户注册|  
-|WebAuthenticationSignupPendingConfirmationNotice|在创建你的帐户之前，我们需验证你的电子邮件地址。 我们已将电子邮件发送至 {0}。 请按电子邮件中的说明激活帐户。 如果该电子邮件没有在随后的几分钟内到达，请查看垃圾邮件文件夹。|  
-|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|我们发现电子邮件地址为 {0} 的帐户未确认。 为了创建你的帐户，我们需验证你的电子邮件地址。 我们已将电子邮件发送至 {0}。 请按电子邮件中的说明激活帐户。 如果该电子邮件没有在随后的几分钟内到达，请查看垃圾邮件文件夹|  
+|WebAuthenticationSignupPendingConfirmationNotice|在创建帐户之前，我们需验证电子邮件地址。 我们已将电子邮件发送至 {0}。 请按电子邮件中的说明激活帐户。 如果该电子邮件没有在随后的几分钟内到达，请查看垃圾邮件文件夹。|  
+|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|我们发现电子邮件地址为 {0} 的帐户未确认。 为了创建帐户，我们需验证电子邮件地址。 我们已将电子邮件发送至 {0}。 请按电子邮件中的说明激活帐户。 如果该电子邮件没有在随后的几分钟内到达，请查看垃圾邮件文件夹|  
 |WebAuthenticationSignupConfirmationAlmostDone|即将完成|  
 |WebAuthenticationSignupConfirmationEmailSent|我们已将电子邮件发送至 {0}。 请按电子邮件中的说明激活帐户。 如果该电子邮件没有在随后的几分钟内到达，请查看垃圾邮件文件夹。|  
 |WebAuthenticationEmailSentNotificationMessage|电子邮件已成功发送至 {0}|  
@@ -479,14 +478,14 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |CheckboxLabelUserRegistrationTermsConsentRequired|我同意`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`。|  
 |TextblockUserRegistrationTermsProvided|请查看`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
 |DialogHeadingTermsOfUse|使用条款|  
-|ValidationMessageConsentNotAccepted|你必须同意使用条款，然后才能继续。|  
+|ValidationMessageConsentNotAccepted|必须同意使用条款，才能继续。|  
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
 |Name|文本|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|忘记密码了?|  
-|WebAuthenticationIfAdministrator|如果你是管理员，则必须在`<a href="{0}"\>here</a\>`登录。|  
+|WebAuthenticationIfAdministrator|如果是管理员，则必须在`<a href="{0}"\>here</a\>`登录。|  
 |WebAuthenticationNotAMember|还不是成员? `<a href="/signup"\>Sign up now</a\>`|  
 |WebAuthenticationRemember|在此计算机上记住我|  
 |WebAuthenticationSigininWithPassword|使用用户名和密码登录|  
@@ -520,7 +519,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebDevelopersSubscriptionTableNameHeader|Name|  
 |WebDevelopersSubscriptionTableStateHeader|状态|  
 |WebDevelopersUsageStatisticsLink|分析报告|  
-|WebDevelopersYourSubscriptions|你的订阅|  
+|WebDevelopersYourSubscriptions|订阅|  
 |SubscriptionPropertyLabelRequestedDate|请求日期:|  
 |SubscriptionPropertyLabelStartedDate|开始日期:|  
 |PageTitleRenameSubscription|重命名订阅|  
@@ -530,7 +529,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
   
 |Name|文本|  
 |----------|----------|  
-|SectionHeadingCloseAccount|想要关闭你的帐户?|  
+|SectionHeadingCloseAccount|想要关闭帐户?|  
 |PageTitleDeveloperProfile|配置文件|  
 |ButtonLabelHideKey|隐藏|  
 |ButtonLabelRegenerateKey|重新生成|  
@@ -579,4 +578,3 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-

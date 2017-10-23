@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
 ms.openlocfilehash: 912367636f1b26b3b07fbd5fe3fe8ed053218fd5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -47,9 +47,9 @@ ms.lasthandoff: 08/03/2017
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 ### <a name="add-push-notifications-to-the-android-project"></a>向 Android 项目添加推送通知
-使用 FCM 配置后端以后，即可将组件和代码添加到客户端，以便通过 FCM 注册。 还可通过移动应用后端向 Azure 通知中心注册推送通知，并接收通知。
+使用 FCM 配置后端以后，即可将组件和代码添加到客户端，以便通过 FCM 注册。 也可通过移动应用后端向 Azure 通知中心注册推送通知，然后即可接收通知。
 
-1. 在 **Droid** 项目中，右键单击 **Components** 文件夹，并单击“获取更多组件...”。 然后搜索 **Google Cloud Messaging 客户端**组件并将其添加到项目。 此组件支持 Xamarin Android 项目的推送通知。
+1. 在 **Droid** 项目中，右键单击 **Components** 文件夹，并单击“获取更多组件...”。然后搜索 **Google Cloud Messaging 客户端**组件并将其添加到项目。 此组件支持 Xamarin Android 项目的推送通知。
 2. 打开 MainActivity.cs 项目文件，在文件顶部添加以下语句：
 
         using Gcm.Client;
@@ -348,7 +348,7 @@ ms.lasthandoff: 08/03/2017
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
 1. 右键单击 iOS 项目，并单击“设为启动项目” 。
-2. 在 Visual Studio 中按“运行”按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击**确定**接受推送通知。
+2. 在 Visual Studio 中按“运行”按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击“确定”接受推送通知。
 
    > [!NOTE]
    > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
@@ -401,7 +401,7 @@ ms.lasthandoff: 08/03/2017
         }
 
     此方法获取推送通知通道，并注册模板以从通知中心接收模板通知。 支持 *messageParam* 的模板通知将传送到此客户端。
-3. 在 App.xaml.cs 中，通过添加 `async` 修饰符更新 **OnLaunched** 事件处理程序方法定义。 然后在此方法的末尾添加以下代码行：
+3. 在 App.xaml.cs 中，通过添加 `async` 修饰符更新 **OnLaunched** 事件处理程序方法定义。 然后，在方法的末尾添加以下代码行：
 
         await InitNotificationsAsync();
 

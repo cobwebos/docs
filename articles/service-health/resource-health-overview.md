@@ -15,16 +15,16 @@ ms.workload: Supportability
 ms.date: 07/01/2017
 ms.author: BernardoAMunoz
 ms.openlocfilehash: 040d58a81a9b41fe660e4276d698bf884f90bb6c
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-health-overview"></a>Azure 资源运行状况概述
  
 资源运行状况在 Azure 问题影响资源时帮助你进行诊断并获得支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
 
-[Azure 状态](https://status.azure.com)告知影响大量 Azure 客户的服务问题，而资源运行状况可提供资源运行状况的个性化仪表板。 资源运行状况显示过去由于 Azure 服务问题导致的资源不可用的所有时间。 这可使你了解是否违反 SLA 更加简单。 
+[Azure 状态](https://status.azure.com)告知影响大量 Azure 客户的服务问题，而资源运行状况可提供资源运行状况的个性化仪表板。 资源运行状况显示过去由于 Azure 服务问题导致的资源不可用的所有时间。 这使你了解是否违反 SLA 变得简单。 
 
 ## <a name="what-is-considered-a-resource-and-how-does-resource-health-decides-if-a-resource-is-healthy-or-not"></a>什么是资源？资源运行状况如何决定资源是否正常运行？
 资源是由 Azure 服务通过 Azure Resource Manager 提供的资源类型的实例，例如虚拟机、Web 应用或 SQL 数据库。

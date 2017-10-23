@@ -16,10 +16,10 @@ ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.openlocfilehash: d7bc694b05ed1eb3915ba913afdb3cc39e048ca7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 开发人员词汇表
 本文包含一些核心 Azure Active Directory (AD) 开发人员概念的定义，帮助你了解 Azure AD 的应用程序开发。
@@ -29,8 +29,8 @@ ms.lasthandoff: 08/03/2017
 
 根据提供的凭据，访问令牌有时称为“用户+应用”或“仅限应用”。 例如，如果客户端应用程序：
 
-* 使用[“授权代码”授权](#authorization-grant)，则最终用户先以资源所有者的身份进行身份验证，将授权委托给客户端来访问资源。 然后，客户端在获取访问令牌时进行身份验证。 令牌有时可以更具体地称为“用户+应用”令牌，因为它同时代表授权客户端应用程序的用户，以及应用程序。
-* 使用[“客户端凭据”授权](#authorization-grant)，则客户端提供唯一的身份验证，在没有资源所有者身份验证/授权的情况下运行，因此该令牌有时可以称为“仅限应用”令牌。
+* 使用[“授权代码”授权](#authorization-grant)，则最终用户先以资源所有者的身份进行身份验证，将授权委托给客户端以访问资源。 然后，客户端在获取访问令牌时进行身份验证。 令牌有时可以更具体地称为“用户+应用”令牌，因为它同时代表授权客户端应用程序的用户，以及应用程序。
+* 使用[“客户端凭据”授权](#authorization-grant)，客户端将提供唯一身份验证，在没有资源所有者的身份验证/授权情况下正常运行，因此该令牌有时可称为“仅限应用”令牌。
 
 如需更多详细信息，请参阅 [Azure AD 令牌参考][AAD-Tokens-Claims]。
 
@@ -162,7 +162,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 所提供的功能包括：
 在预配订阅的过程中，还会将租户与 Azure AD 或 Office 365 订阅相关联，为订阅提供标识和访问管理功能。 有关访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要了解订阅和 Azure AD 租户之间的详细关系，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式][AAD-How-Subscriptions-Assoc]。
 
 ## <a name="token-endpoint"></a>令牌终结点
-[授权服务器](#authorization-server)为了支持 OAuth2 [权限授予](#authorization-grant)而实现的终结点之一。 根据具体的授权，可将其用于获取[客户端](#client-application)的[访问令牌](#access-token)（和相关的“刷新”令牌）或 [ID 令牌](#ID-token)（使用 [OpenID Connect][OpenIDConnect] 协议时）。
+[授权服务器](#authorization-server)为了支持 OAuth2 [权限授予](#authorization-grant)而实现的终结点之一。 根据具体的授权，可将其用于获取[客户端](#client-application)的[访问令牌](#access-token)（和相关的“刷新”令牌）或 [ID 令牌](#ID-token)（与 [OpenID Connect][OpenIDConnect] 协议一起使用时）。
 
 ## <a name="user-agent-based-client"></a>基于用户代理的客户端
 一种[客户端应用程序](#client-application)，例如单页应用程序 (SPA)，可从 Web 服务器下载代码并在用户代理（例如 Web 浏览器）中执行。 由于所有代码都在设备上执行，因此设备因为无法隐私/秘密地存储凭据而被视为“公共”客户端。 如需更多详细信息，请参阅 [OAuth2 客户端类型和配置文件][OAuth2-Client-Types]。
@@ -171,7 +171,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 所提供的功能包括：
 与服务主体对象用于表示应用程序实例的方式一样，用户主体对象是另一种类型的安全主体，它代表用户。 Azure AD Graph [用户实体][AAD-Graph-User-Entity]定义用户对象的架构，包括用户相关属性，例如姓名、用户主体名称、目录角色成员身份等。这样即可提供 Azure AD 的用户标识配置，用于在运行时建立用户主体。 用户主体用于代表经身份验证的用户执行单一登录、记录[同意](#consent)委托、做出访问控制决策等操作。
 
 ## <a name="web-client"></a>Web 客户端
-一类[客户端应用程序](#client-application) ，可在 Web 服务器上执行所有代码，并可将凭据安全地存储在服务器上，充当“机密”客户端。 如需更多详细信息，请参阅 [OAuth2 客户端类型和配置文件][OAuth2-Client-Types]。
+一类[客户端应用程序](#client-application)，可在 Web 服务器上执行所有代码，并可将凭据安全地存储在服务器上，充当“机密”客户端。 如需更多详细信息，请参阅 [OAuth2 客户端类型和配置文件][OAuth2-Client-Types]。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure AD 开发人员指南][AAD-Dev-Guide]是用于所有 Azure AD 开发相关主题的门户，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Azure AD 身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基本知识。

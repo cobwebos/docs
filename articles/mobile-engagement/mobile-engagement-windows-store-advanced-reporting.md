@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
 ms.openlocfilehash: feac309db1ffce0945012e293bfc1df417aed876
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-reporting-with-the-windows-universal-apps-engagement-sdk"></a>使用 Windows 通用应用 Engagement SDK 的高级报告
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-本主题介绍 Windows 通用应用程序中的其他报告方案。 这些方案包括你可以选择要应用于应用程序中创建的选项[入门](mobile-engagement-windows-store-dotnet-get-started.md)教程。
+本主题介绍 Windows 通用应用程序中的其他报告方案。 这些方案包括可以选择要应用于[入门](mobile-engagement-windows-store-dotnet-get-started.md)教程中创建的应用的选项。
 
 ## <a name="prerequisites"></a>先决条件
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
@@ -116,7 +116,7 @@ Engagement 配置集中在项目的 `Resources\EngagementConfiguration.xml` 文�
         </engagement:EngagementPage >
 
 ### <a name="override-the-default-behaviour"></a>重写默认行为
-默认情况下，页面的类名被报告为活动名，无其他附加内容。 如果类使用的"页"后缀，Engagement 中删除它。
+默认情况下，页面的类名被报告为活动名，无其他附加内容。 如果类使用“Page”后缀，则 Engagement 会将其删除。
 
 要重写名称的默认行为的，请添加以下代码：
 

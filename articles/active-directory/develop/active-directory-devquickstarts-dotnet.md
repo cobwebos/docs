@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7a252e0e5243c7b7489373845531cb913ca1f6aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-into-a-windows-desktop-wpf-app"></a>将 Azure AD 集成到 Windows 桌面 WPF 应用程序中
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 07/11/2017
 2. 安装并配置 ADAL。
 3. 使用 ADAL 从 Azure AD 获取令牌。
 
-若要开始，请[下载应用框架](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)。  还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。  如果没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
+若要开始，请[下载应用框架](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)。  还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。  如果还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 ## <a name="1-register-the-directorysearcher-application"></a>1.注册 DirectorySearcher 应用程序
 若要让应用程序获取令牌，首先需要在 Azure AD 租户中注册该应用程序，并授予它访问 Azure AD Graph API 的权限：
@@ -50,7 +50,7 @@ ms.lasthandoff: 07/11/2017
 3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”并选择“添加”。
 5. 根据提示创建一个新的“本机客户端应用程序”。
-  * 应用程序的“名称”向最终用户描述应用程序 
+  * 应用程序的“名称”向最终用户描述应用程序
   * “重定向 URI”是 Azure AD 要用来返回令牌响应的方案与字符串组合。  输入特定于应用程序的值，例如 `http://DirectorySearcher`。
 6. 完成注册后，AAD 将为应用分配唯一的应用程序 ID。  在后面的部分中会用到此值，因此，请从应用程序页复制此值。
 7. 在“设置”页上，依次选择“所需的权限”和“添加”。 选择“Microsoft Graph”作为 API，并在“委派的权限”下添加“读取目录数据”权限。  这样，应用程序便可以在 Graph API 中查询用户。
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/11/2017
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 
-* 在 DirectorySearcher 项目中，打开 `app.config`。  中的元素的值替换`<appSettings>`以反映你在 Azure 门户中输入的值。  只要使用 ADAL，代码就会引用这些值。
+* 在 DirectorySearcher 项目中，打开 `app.config`。  替换 `<appSettings>` 节中的元素值，以反映你在 Azure 门户中输入的值。  只要使用 ADAL，代码就会引用这些值。
   * `ida:Tenant` 是 Azure AD 租户的域，例如 contoso.onmicrosoft.com
   * `ida:ClientId` 是从门户复制的应用程序 clientId。
   * `ida:RedirectUri` 是在门户中注册的 URL。
@@ -72,7 +72,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ## <a name="3----use-adal-to-get-tokens-from-aad"></a>3.  使用 ADAL 从 AAD 获取令牌
 ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 `authContext.AcquireTokenAsync(...)`，ADAL 就会负责其余的工作。  
 
-* 在 `DirectorySearcher` 项目中，打开 `MainWindow.xaml.cs` 并找到 `MainWindow()` 方法。  第一步是初始化应用程序的 `AuthenticationContext`（ADAL 的主类）。  你会在此处传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
+* 在 `DirectorySearcher` 项目中，打开 `MainWindow.xaml.cs` 并找到 `MainWindow()` 方法。  第一步是初始化应用程序的 `AuthenticationContext`（ADAL 的主类）。  将在此处传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
 
 ```C#
 public MainWindow()
@@ -117,7 +117,7 @@ private async void Search(object sender, RoutedEventArgs e)
     ...
 }
 ```
-* 当应用程序通过调用 `AcquireTokenAsync(...)` 请求令牌时，ADAL 将尝试返回一个令牌，而不要求用户输入凭据。  如果 ADAL 确定用户需要登录以获取令牌，就会显示登录对话框，收集用户的凭据，并在身份验证成功后返回令牌。  如果 ADAL 出于任何原因无法返回令牌，则会引发 `AdalException`。
+* 当应用程序通过调用 `AcquireTokenAsync(...)` 请求令牌时，ADAL 将尝试返回一个令牌，而不要求用户输入凭据。  如果 ADAL 确定用户需要登录以获取令牌，会显示登录对话框，收集用户的凭据，并在身份验证成功后返回令牌。  如果 ADAL 出于任何原因无法返回令牌，则会引发 `AdalException`。
 * 请注意，`AuthenticationResult` 对象包含 `UserInfo` 对象，后者可用于收集应用程序可能需要的信息。  在 DirectorySearcher 中，`UserInfo` 用于使用用户 ID 自定义应用程序的 UI。
 * 当用户单击“注销”按钮时，我们希望确保 `AcquireTokenAsync(...)` 的后续调用要求用户登录。  使用 ADAL 时，只需清除令牌缓存即可：
 

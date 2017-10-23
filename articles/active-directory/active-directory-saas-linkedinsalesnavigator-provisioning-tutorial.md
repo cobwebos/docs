@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
 ms.openlocfilehash: 86357949c8e6927f78ca5bb8b7e20a6b88c37ef3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configuring-linkedin-sales-navigator-for-automatic-user-provisioning"></a>教程：为 LinkedIn Sales Navigator 配置自动用户预配
 
@@ -101,7 +101,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * 在“租户 URL”字段中，输入 https://api.linkedin.com。
 
-* 在**机密令牌**字段中输入你在步骤 1 中生成的访问令牌，然后单击**测试连接**。
+* 在“密钥标记”字段中，输入在第 1 步中生成的访问令牌并单击“测试连接”。
 
 * 应当会在门户的右上端看到一条成功通知。
 

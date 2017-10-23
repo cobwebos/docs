@@ -16,10 +16,10 @@ ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
 ms.openlocfilehash: b778774fa23be8219db3f716d79bac324a7de9d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中要求 MFA
 我们建议为所有管理员请求多重身份验证 (MFA)。 这可降低因密码泄露而受到攻击的风险。
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-此外，可以通过在 PIM 仪表板的“角色”部分中单击某个特定角色，更改该角色的 MFA 要求。 然后，单击**设置**中角色边栏选项卡，然后选择**启用**下多因素身份验证。
+此外，可以通过在 PIM 仪表板的“角色”部分中单击某个特定角色，更改该角色的 MFA 要求。 然后，单击角色边栏选项卡中的“设置”，并在多重身份验证下选择“启用”。
 
 ## <a name="how-azure-ad-pim-validates-mfa"></a>Azure AD PIM 如何验证 MFA
 当用户激活角色时，有两个选项可用于验证 MFA。
