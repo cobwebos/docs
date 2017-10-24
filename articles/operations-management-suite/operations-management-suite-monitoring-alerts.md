@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
 ms.openlocfilehash: 7df2fd7ef838465a60e3b0ce2f889127b7487684
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>使用 Microsoft 监视管理警报
 警报指示需要管理员关注的某些问题。  就警报创建方式、管理和分析方式以及通知已检测到重要问题的方式而言，Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics 差异明显。
@@ -43,18 +43,18 @@ Log Analytics 警报作为事件写入 OMS 存储库，并且可通过日志查�
 
 ![SCOM 警报](media/operations-management-suite-monitoring-alerts/scom-alert.png)
 
-[警报管理解决方案](http://technet.microsoft.com/library/mt484092.aspx)汇总了活动警报和若干常见查询以检索不同的警报集。  这使您更有效地分析你的警报比 SCOM 中的报表。  可深入研究此汇总信息，得到详细数据，并创建即席查询以检索不同的警报集。
+[警报管理解决方案](http://technet.microsoft.com/library/mt484092.aspx)汇总了活动警报和若干常见查询以检索不同的警报集。  与 SCOM 报表相比，这样可以更有效地分析警报。  可深入研究此汇总信息，得到详细数据，并创建即席查询以检索不同的警报集。
 
 ![警报管理解决方案](media/operations-management-suite-monitoring-alerts/alert-management.png)
 
 ## <a name="notifications"></a>通知
-SCOM 中的通知向你发送邮件或文本以响应与特定条件匹配的警报。  可创建不同的通知订阅，根据以下条件通知不同用户：监视的对象、警报的严重性、检测到的问题类型或时间。
+SCOM 通知会在找到与特定条件匹配的警报后，发送电子邮件或短信。  可创建不同的通知订阅，根据以下条件通知不同用户：监视的对象、警报的严重性、检测到的问题类型或时间。
 
 使用很少的订阅即可实现适用于大量管理包的完整通知策略。
 
 ![SCOM 警报](media/operations-management-suite-monitoring-alerts/alerts-overview-scom.png)
 
-日志分析可以通知你通过邮件是否已通过对每个设置电子邮件通知操作创建警报[警报规则](http://technet.microsoft.com/library/mt614775.aspx)。  它无法像 SCOM 那样通过一条规则订阅多个警报。  还需要创建自己的警报规则，因为 OMS 不提供任何预配置的规则。
+Log Analytics 可以对每个[警报规则](http://technet.microsoft.com/library/mt614775.aspx)设置电子邮件通知操作，通过电子邮件通知用户警报已创建。  它无法像 SCOM 那样通过一条规则订阅多个警报。  还需要创建自己的警报规则，因为 OMS 不提供任何预配置的规则。
 
 ![Log Analytics 警报](media/operations-management-suite-monitoring-alerts/alerts-overview-oms.png)
 
@@ -69,7 +69,7 @@ Log Analytics 支持启动 [Azure 自动化 Runbook](https://azure.microsoft.com
 
 SCOM 中的恢复和 OMS 中的 Runbook 均包含 PowerShell 脚本，但恢复更难以创建和管理，因为它们必须包含在管理包中。  Runbook 存储在 Azure 自动化中，它可以编写、测试和管理 Runbook。
 
-如果将 SCOM 用作 Log Analytics 的数据源，则可通过日志查询创建 Log Analytics 警报，以检索存储在 OMS 存储库中的 SCOM 警报。  这将允许你以响应 SCOM 警报运行 Azure 自动化 runbook。  当然，由于 Runbook 在 Azure 中运行，所以这对恢复本地问题不是可行策略。
+如果将 SCOM 用作 Log Analytics 的数据源，则可通过日志查询创建 Log Analytics 警报，以检索存储在 OMS 存储库中的 SCOM 警报。  这样，就可以运行 Azure 自动化 runbook 来处理 SCOM 警报。  当然，由于 Runbook 在 Azure 中运行，所以这对恢复本地问题不是可行策略。
 
 ## <a name="next-steps"></a>后续步骤
 * 在 [System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh212913.aspx) 中了解警报的详细信息。

@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 06/18/2017
 ms.author: heidist
 ms.openlocfilehash: c293de5b43103c8cbec01f61a26b8b28ac7e9116
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]
@@ -169,7 +169,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过 [RBAC
 ### <a name="remove-partitions"></a>删除分区
 与无需执行额外工作即可删除副本相比，如果使用的存储大于可减少的存储，可能需要完成一些工作。 例如，如果解决方案使用三个分区，则在新存储空间小于所需空间时，缩减为一或两个分区将生成错误。 正如预期的那样，可以选择删除索引或相关索引内的文档来释放空间，或者保持目前配置。
 
-没有检测方法，告诉你哪些索引分片存储在特定分区上。 每个分区提供大约 25 GB 的存储，因此需要将存储减少到可让所拥有分区数能容纳的大小。 如果要还原为一个分区，则所有 12 个分片都需要适合。
+无法通过任何检测方法确定哪些索引分片存储在特定分区上。 每个分区提供大约 25 GB 的存储，因此需要将存储减少到可让所拥有分区数能容纳的大小。 如果要还原为一个分区，则所有 12 个分片都需要适合。
 
 为了帮助实现未来规划，可能需要检查存储（使用[获取索引统计信息](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)），了解实际使用了多少空间。 
 

@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
 ms.openlocfilehash: 81136e53756adfdba2f07c103b042499fe2967db
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳实践
 在云中保护数据的关键问题之一是考虑数据可能将发生的状态，以及哪些控件适用于该状态。 根据 Azure 数据安全和加密最佳实践的目的，相关建议将围绕以下数据状态：
 
 * 静态：包括物理媒体（磁盘或光盘）上以静态方式存在的所有信息存储对象、容器和类型。
-* 传输中：数据在组件、位置或程序之间传输时，例如通过网络、跨服务总线（从本地到云，反之亦然，包括 ExpressRoute 等混合连接），或在输入/输出过程中，将被视为动态数据。
+* 传输中：数据在组件、位置或程序之间发送时，例如通过网络、通过服务总线（从本地到云，反之亦然，包括诸如 ExpressRoute 的混合连接），或在输入/输出过程中，会被视为动态数据。
 
 本文介绍一系列 Azure 数据安全与加密最佳实践。 这些最佳实践衍生自我们的 Azure 数据安全与加密经验和客户经验。
 
-对于每项最佳实践，我们会说明：
+对于每项最佳实践，我们将说明：
 
 * 最佳实践是什么
 * 为何要启用该最佳实践
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/11/2017
 
 如果针对用户启用 Azure MFA，则可为用户登录和事务增加第二层安全性。 在此情况下，事务可能将访问位于文件服务器或 SharePoint Online 中的文档。 Azure MFA 还可帮助 IT 部门减少使用透露的凭据访问企业数据的可能性。
 
-例如：如果对用户实施 Azure MFA 并将它配置为使用电话呼叫或短信作为身份验证，那么，当用户的凭据透露时，攻击者无法访问任何资源，因为攻击者无权访问用户的电话。 未添加这种额外标识保护层的组织更容易受到凭据窃取攻击，从而导致数据泄漏。
+例如：如果对用户实施 Azure MFA 并将它配置为使用电话呼叫或短信作为身份验证，那么，当用户的凭据透露时，攻击者无法访问任何资源，因为攻击者无权访问用户的电话。 未添加这种额外标识保护层的组织将更容易受到凭据窃取攻击，从而导致数据泄漏。
 
 想要保留本地身份验证控制的组织有一个替代方法，就是使用 [Azure 多重身份验证服务器](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)（也称为本地 MFA）。 使用此方法仍可实施多重身份身份验证，同时保留本地 MFA 服务器。
 
@@ -87,9 +87,9 @@ ms.lasthandoff: 07/11/2017
 有关 Azure 磁盘加密的详细信息，请参阅[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](azure-security-disk-encryption.md)一文。
 
 ## <a name="use-hardware-security-modules"></a>使用硬件安全模块
-行业加密解决方案使用机密密钥来加密数据。 因此，必须安全存储这些密钥。 密钥管理已变成数据保护不可或缺的部分，因为它会用于存储加密数据所用的机密密钥。
+行业加密解决方案使用机密密钥来加密数据。 因此，必须安全存储这些密钥。 密钥管理已变成数据保护不可或缺的部分，因为它用于存储加密数据所用的机密密钥。
 
-Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/) 来帮助控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。 应使用 Azure 密钥保管库来审核密钥和策略用法。
+Azure 磁盘加密使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)，帮助用户控制和管理 Key Vault 订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据都可以在 Azure 存储中静态加密。 应使用 Azure 密钥保管库来审核密钥和策略用法。
 
 若未采用适当的安全控件来保护用于加密数据的机密密钥，将有许多相关的固有风险。 如果攻击者可以访问机密密钥，就可以将数据解密，并可能访问机密信息。
 
@@ -98,7 +98,7 @@ Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/ser
 有关 Azure 密钥保管库的详细信息，请参阅 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)。
 
 ## <a name="manage-with-secure-workstations"></a>使用安全工作站进行管理
-因为绝大多数的攻击以用户为目标，所以终结点成为主要攻击点之一。 如果攻击者入侵终结点，则可以利用用户的凭据来访问组织的数据。 大多数终结点攻击能够使用用户就是其本地工作站的管理员的这一事实。
+因为绝大多数的攻击以用户为目标，所以终结点将成为主要攻击点之一。 如果攻击者入侵终结点，则可以利用用户的凭据来访问组织的数据。 大多数终结点攻击能够使用用户就是其本地工作站的管理员的这一事实。
 
 可以使用安全的管理工作站来降低这些风险。 建议使用[特权访问工作站 (PAW)](https://technet.microsoft.com/library/mt634654.aspx) 来减小工作站的受攻击面。 这些安全的管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。 请务必使用 PAW 来强化并锁定工作站。 这是重要的步骤，可为敏感帐户、任务和数据保护提供高安全保证。
 
@@ -146,7 +146,7 @@ Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/ser
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) 使用加密、标识和授权策略帮助保护文件与电子邮件。 Azure RMS 可跨多个设备工作 — 手机、平板电脑和台式电脑保护组织内部和外部的数据。 因为 Azure RMS 添加了数据所属的保护级别，所以即使数据离开组织边界，此功能仍然可行。
 
-使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况出现在通过电子邮件共享的文件，文件将以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
+使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况将出现在通过电子邮件共享的文件，文件以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
 
 规划 Azure RMS 采用时，建议执行以下操作：
 

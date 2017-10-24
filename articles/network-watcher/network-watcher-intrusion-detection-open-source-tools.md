@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
-ms.openlocfilehash: 82d5e525859ebe03b152c63e4debbae469049c12
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
 数据包捕获是一个重要组件，可以实施网络入侵检测系统 (IDS) 并执行网络安全监视 (NSM)。 可以借助多种开源 IDS 工具来处理数据包捕获，并检查潜在网络入侵和恶意活动的签名。 使用网络观察程序提供的数据包捕获，可以分析网络中是否存在任何有害入侵或漏洞。
@@ -82,7 +80,7 @@ tail -f /var/log/suricata/fast.log
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 和更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果未安装 Java，请参阅 [Oracle 网站](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)上的文档
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果未安装 Java，请参阅 [Oracle 网站](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)上的文档
 1. 下载适用于系统的正确二进制程序包：
 
     ```
@@ -116,7 +114,7 @@ tail -f /var/log/suricata/fast.log
     }
     ```
 
-有关安装 Elastic Search 的其他说明，请参阅 [Installation](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)（安装）页
+有关安装 Elasticsearch 的其他说明，请参阅 [Installation](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)（安装）页
 
 ### <a name="install-logstash"></a>安装 Logstash
 
@@ -220,7 +218,7 @@ tail -f /var/log/suricata/fast.log
 
 ### <a name="install-kibana"></a>安装 Kibana
 
-1. 运行以下命令安装 Kibana：
+1. 运行以下命令以安装 Kibana：
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
@@ -245,7 +243,7 @@ tail -f /var/log/suricata/fast.log
 
 1. 在[此处](https://aka.ms/networkwatchersuricatadashboard)下载仪表板文件，在[此处](https://aka.ms/networkwatchersuricatavisualization)下载可视化效果文件，在[此处](https://aka.ms/networkwatchersuricatasavedsearch)下载已保存的搜索文件。
 
-1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“Dashboard”（仪表板）选项卡打开并加载示例仪表板。
+1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 
@@ -297,4 +295,3 @@ tail -f /var/log/suricata/fast.log
 [5]: ./media/network-watcher-intrusion-detection-open-source-tools/figure5.png
 [6]: ./media/network-watcher-intrusion-detection-open-source-tools/figure6.png
 [7]: ./media/network-watcher-intrusion-detection-open-source-tools/figure7.png
-

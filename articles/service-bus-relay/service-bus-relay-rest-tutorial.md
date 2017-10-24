@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/17/2017
 ms.author: sethm
 ms.openlocfilehash: 0db9dbd2d2743907e3f0b259228201d4f5d0c3c2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
 
@@ -38,7 +38,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
 
 ### <a name="to-create-a-contract-with-an-interface"></a>使用接口创建协定
 
-1. 以管理员身份打开 Visual Studio：在“开始”菜单中右键单击该程序，然后选择“以管理员身份运行”。
+1. 以管理员身份打开 Visual Studio：在“开始”菜单中右键单击该程序，并选择“以管理员身份运行”。
 2. 创建新的控制台应用程序项目。 单击“文件”菜单并选择“新建”，并单击“项目”。 在“新建项目”对话框中，单击“Visual C#”，选择“控制台应用程序”模板，并将其命名为“ImageListener”。 使用默认“位置”。 单击“确定”以创建该项目  。
 3. 对于 C# 项目，Visual Studio 会创建 `Program.cs` 文件。 此类包含一个空的 `Main()` 方法，需要此方法才能正确生成控制台应用程序项目。
 4. 通过安装服务总线 NuGet 包，向项目添加对服务总线和 **System.ServiceModel.dll** 的引用。 该包自动添加对服务总线库和 WCF **System.ServiceModel**的引用。 在“解决方案资源管理器”中，右键单击“ImageListener”项目，并单击“管理 NuGet 包”。 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
@@ -56,7 +56,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
     using System.IO;
     ```
    
-    [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx)是启用以编程方式访问 WCF 基本功能的命名空间。 WCF 中继使用 WCF 的许多对象和属性来定义服务约定。 将在大多数中继应用程序中使用此命名空间。 同样[System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) 可帮助定义通道，通道是用来与 Azure 中继和客户端 Web 浏览器通信的对象。 最后， [System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) 包含的类型可用于创建基于 Web 的应用程序。
+    使用 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) 命名空间，可以编程方式访问 WCF 的基本功能。 WCF 中继使用 WCF 的许多对象和属性来定义服务约定。 将在大多数中继应用程序中使用此命名空间。 同样[System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) 可帮助定义通道，通道是用来与 Azure 中继和客户端 Web 浏览器通信的对象。 最后， [System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) 包含的类型可用于创建基于 Web 的应用程序。
 7. 将 `ImageListener` 命名空间重命名为 **Microsoft.ServiceBus.Samples**。
    
     ```csharp
@@ -72,7 +72,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
     {
     }
     ```
-9. 在 `IImageContract` 接口中，为 `IImageContract` 协定在接口中公开的单个操作声明一个方法，然后将 `OperationContractAttribute` 属性应用到你希望将其作为公共服务总线协定的一部分进行公开的方法中。
+9. 在 `IImageContract` 接口中，为 `IImageContract` 约定在接口中公开的单个操作声明一个方法，然后将 `OperationContractAttribute` 属性应用到希望将其作为公共服务总线约定的一部分进行公开的方法中。
    
     ```csharp
     public interface IImageContract
@@ -161,7 +161,7 @@ namespace Microsoft.ServiceBus.Samples
     如前所述，此命名空间不是传统的命名空间， 而是用于标识约定的 WCF 体系结构的一部分。 有关详细信息，请参阅 WCF 文档中的[数据约定名称](https://msdn.microsoft.com/library/ms731045.aspx)主题。
 3. 将一幅 .jpg 图像添加到项目中。  
    
-    这是服务在接收浏览器中显示的图片。 右键单击项目，并单击“添加”。 然后单击“现有项”。 使用“添加现有项”对话框浏览到相应的 .jpg，并单击“添加”。
+    这是服务在接收浏览器中显示的图片。 右键单击项目，并单击“添加”。 然后，单击“现有项”。 使用“添加现有项”对话框浏览到相应的 .jpg，并单击“添加”。
    
     添加文件时，请确保在“文件名:”字段旁的下拉列表中选择“所有文件”。 本教程的余下部分假定图像的名称为“image.jpg”。 如果 .jpg 文件名不是这样，则必须重命名图像，或更改代码进行弥补。
 4. 为确保正在运行的服务可以找到该图像文件，请在“解决方案资源管理器”中右键单击该图像文件，并单击“属性”。 在“属性”窗格中，将“复制到输出目录”设置为“如果较新则复制”。

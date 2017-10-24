@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/05/2017
 ms.author: terrylan
+ms.openlocfilehash: 367067874b167268bd690a9e0b55412e92e08122
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 01ac75244839c0e3c1ac350d4271677feb21a9d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>在 Azure 安全中心监视和处理安全事件
 事件仪表板提供随着时间推移收集到的安全事件数的概述，以及可能需要注意的重要事件列表。  
@@ -48,13 +47,16 @@ ms.lasthandoff: 09/13/2017
  - “重要事件”包括安全中心提供的事件查询以及你创建和添加的事件查询。 还可通过此仪表板快速查看每个重要事件的计数。
  - “所有事件(按类型分类)”显示收到的事件类型和每个类型的计数。 以下是事件类型示例：SecurityEvent、CommonSecurityLog、WindowsFirewall 和 W3CIISLog。
 
+> [!NOTE]
+> 显著事件包括 [Web 基线评估](https://docs.microsoft.com/azure/operations-management-suite/oms-security-web-baseline-assessment)。 Web 基线评估的目的是找出可能有漏洞的 Web 服务器设置。
+
 ## <a name="view-processed-event-details"></a>查看已处理事件的详细信息
-1. 在“安全中心”主菜单下，选择“已处理事件”。
-2. “已处理事件”工作区选择器可能会打开。 如果只有一个工作区，将不会出现此工作区选择器。 如果有多个工作区，则需要选择一个工作区，以查看它的已处理事件详细信息。 如果有多个工作区，则从列表中选择一个工作区。
+1. 在“安全中心”主菜单下，选择“事件”。
+2. 此时，“事件仪表板”工作区选择器可能会打开。 如果只有一个工作区，将不会出现此工作区选择器。 如果有多个工作区，则需要选择一个工作区，以查看它的已处理事件详细信息。 如果有多个工作区，则从列表中选择一个工作区。
 
   ![工作区列表][3]
 
-3. “已处理事件”仪表板将打开，并显示所选工作区的事件详细信息。 可以查看重要事件和所有事件（按类型分类）。  在此示例中，我们选择了“重要事件”。
+3. 此时，“事件仪表板”打开，显示选定工作区的事件详细信息。 可以查看重要事件和所有事件（按类型分类）。  在此示例中，我们选择了“重要事件”。
 
   ![重要事件][4]
 
@@ -67,7 +69,7 @@ ms.lasthandoff: 09/13/2017
   ![日志搜索][6]
 
 ## <a name="add-a-notable-event"></a>添加重要事件
-安全中心将提供现成的重要事件。 可以使用 [Log Analytics 查询语言](../log-analytics/log-analytics-search-reference.md)并根据自己的查询添加重要事件。 我们将返回到“已处理事件”仪表板，以添加重要事件。
+安全中心将提供现成的重要事件。 可以使用 [Log Analytics 查询语言](../log-analytics/log-analytics-search-reference.md)并根据自己的查询添加重要事件。 将返回到“事件仪表板”，以添加显著事件。
 
 1. 选择“添加重要事件”。
 
@@ -80,7 +82,7 @@ ms.lasthandoff: 09/13/2017
 4. 选择“确定”。
 
 ## <a name="update-your-workspace-for-events-processing"></a>更新工作区以处理事件
-工作区必须运行 Log Analytics 版本 2，并且必须位于安全中心的标准层上才能使用安全中心中的事件处理功能。 “事件”工作区选择器标识了不符合这些要求的工作区。
+工作区必须运行 Log Analytics 版本 2，并且必须位于安全中心的标准层上才能使用安全中心中的事件处理功能。 “事件仪表板”工作区选择器确定了不符合这些要求的工作区。
 
 ![工作区不符合要求][9]
 
@@ -91,7 +93,7 @@ ms.lasthandoff: 09/13/2017
 - 为空 - 你的工作区符合要求，选择一个工作区后即会转向仪表板
 
 > [!NOTE]
-> 在“事件”下，“事件”列指示每个工作区中的事件数量。  一些工作区的此列为空，因为应用到该工作区的是安全中心的免费层。 在免费层下，安全中心会收集事件，但不会将事件保存到 Log Analytics 中，因此这些事件在仪表板中不可用。
+> 在“事件仪表板”下，“事件数”列指明每个工作区中的事件数量。  一些工作区的此列为空，因为应用到该工作区的是安全中心的免费层。 在免费层下，安全中心会收集事件，但不会将事件保存到 Log Analytics 中，因此这些事件在仪表板中不可用。
 >
 >
 
@@ -103,7 +105,7 @@ ms.lasthandoff: 09/13/2017
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>升级到安全中心的标准层
 1. 选择包含“升级计划”的工作区。
-2. “事件仪表板”将打开。 选择“试用已处理事件仪表板”。
+2. “事件仪表板”将打开。 选择“试用事件仪表板”。
 
   ![试用仪表板][11]
 
@@ -114,7 +116,7 @@ ms.lasthandoff: 09/13/2017
   ![升级到标准层][12]
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已了解如何使用安全中心的已处理事件仪表板。 若要详细了解此仪表板的工作原理及如何编写自己的事件查询，请参阅：
+本文介绍了如何使用安全中心的“事件仪表板”。 若要详细了解此仪表板的工作原理及如何编写自己的事件查询，请参阅：
 
 - [什么是 Log Analytics？](../log-analytics/log-analytics-overview.md) – Log Analytics 概述
 - [了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-search-new.md) - 介绍日志搜索在 Log Analytics 中的用法以及创建日志搜索之前应了解的概念
@@ -137,4 +139,3 @@ ms.lasthandoff: 09/13/2017
 [10]: ./media/security-center-events-dashboard/search-upgrade.png
 [11]: ./media/security-center-events-dashboard/try-dashboard.png
 [12]: ./media/security-center-events-dashboard/onboard-workspace.png
-

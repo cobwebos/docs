@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
 ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>使用 Operations Management Suite (OMS) 中的解决方案目标来将管理解决方案的应用范围限制为特定的代理（预览）
 向 OMS 中添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 的所有 Windows 和 Linux 代理。  你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用**解决方案目标**，这是一项 OMS 功能，允许向解决方案应用一个范围。
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
  3. 单击“添加”以创建新的范围配置。
  4. 为范围配置键入**名称**。
  5. 单击“选择计算机组”。
- 6. 选择你创建的计算机组和 （可选） 的任何其他组，将添加到配置。  单击“选择”。  
+ 6. 选择创建的计算机组，并视需要选择要添加到配置的其他任何组。  单击“选择”。  
  6. 单击“确定”以创建范围配置。 
 
 

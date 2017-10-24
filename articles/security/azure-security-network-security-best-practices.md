@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: TomSh
 ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-security-best-practices"></a>Azure 网络安全最佳实践
 Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从而将它们连接到其他网络设备。 Azure 虚拟网络是一种虚拟网络构造，可让你将虚拟网络接口卡连接到虚拟网络，允许有网络功能的设备之间进行基于 TCP/IP 的通信。 连接到 Azure 虚拟网络的 Azure 虚拟机能够连接到相同 Azure 虚拟网络、不同 Azure 虚拟网络、Internet 甚至自己的本地网络上的设备。
@@ -58,7 +58,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 
 可用于实现此任务的设置之一是[网络安全组](../virtual-network/virtual-networks-nsg.md) (NSG)。 NSG 是简单的有状态数据包检查设备，使用 5 个元组（源 IP、源端口、目标 IP、目标端口和第 4 层协议）的方法来创建网络流量的允许/拒绝规则。 可以允许或拒绝单个 IP 地址、多个 IP 地址甚至整个子网的流量。
 
-将 NSG 用于子网之间的网络访问控制，可将属于同一安全区域或角色的资源置于其本身的子网中。 例如，简单的 3 层式应用程序具有 Web 层、应用程序逻辑层和数据库层。 可将属于上述各层的虚拟机置于其自身的子网中。 然后使用 NSG 来控制子网之间的流量：
+将 NSG 用于子网之间的网络访问控制，可将属于同一安全区域或角色的资源置于其本身的子网中。 例如，简单的 3 层式应用程序具有 Web 层、应用程序逻辑层和数据库层。 可将属于上述各层的虚拟机置于其自身的子网中。 然后，使用 NSG 控制子网之间的流量：
 
 * Web 层虚拟机只能发起到应用程序逻辑计算机的连接，并且只可接受来自 Internet 的连接
 * 应用程序逻辑虚拟机只能发起与数据库层的连接，并且只可接受来自 Web 层的连接
@@ -69,7 +69,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 ## <a name="control-routing-behavior"></a>控制路由行为
 将虚拟机置于 Azure 虚拟网络时，会注意到虚拟机可以连接到同一 Azure 虚拟网络上的任何其他虚拟机，即使其他虚拟机位于不同的子网。 这种情况的可能原因是默认将启用一些允许这种通信类型的系统路由。 这些默认路由可让相同 Azure 虚拟网络上的虚拟机彼此发起连接，以及与 Internet 连接（仅适用于 Internet 的出站通信）。
 
-当默认系统路由适用于许多部署方案时，有时你想要为部署自定义路由配置。 这些自定义项可让你配置下一跃点地址以访问特定目标。
+尽管默认系统路由适用于许多部署方案，但有时也需要针对部署方案自定义路由配置。 借助这些自定义，可以配置下一个跃点地址，用于访问特定目标。
 
 建议在部署虚拟网络安全设备时配置“用户定义的路由”，我们会在后面的最佳实践中进行介绍。
 
@@ -89,12 +89,12 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 现在让我们回到 Azure 虚拟网络上的虚拟机。 Azure 虚拟网络的默认路由可让虚拟机发起向 Internet 的流量。 这也可能造成安全风险，因为这些出站连接可能增加虚拟机的受攻击面并遭到攻击者使用。
 出于此原因，当 Azure 虚拟网络与本地网络之间有跨界连接时，建议在虚拟机上启用强制隧道。 我们稍后会在这份 Azure 网络最佳实践文档中介绍跨界连接。
 
-如果没有跨界连接，请务必使用网络安全组（前面已讨论过）或 Azure 虚拟网络安全设备（将在接下来讨论）来防止从 Azure 虚拟机到 Internet 的出站连接。
+如果没有跨界连接，请务必使用网络安全组（前面已介绍）或 Azure 虚拟网络安全设备（接下来介绍）来防止从 Azure 虚拟机对 Internet 的出站连接。
 
 若要详细了解强制隧道及其启用方式，请阅读[使用 PowerShell 和 Azure Resource Manager 配置强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)一文。
 
 ## <a name="use-virtual-network-appliances"></a>使用虚拟网络设备
-尽管网络安全组和用户定义路由可以在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络和传输层提供特定网络安全度量，但在某些情况下，用户想要或需要启用高堆栈级别的安全性。 在此类情况下，建议部署 Azure 合作伙伴所提供的虚拟网络安全设备。
+尽管网络安全组和用户定义路由可以在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络和传输层中实现一定的网络安全，但在某些情况下，将希望或需要在高级别堆栈中实现安全保障。 在此类情况下，建议部署 Azure 合作伙伴所提供的虚拟网络安全设备。
 
 Azure 网络安全设备可通过网络级别控件提供的功能来提供大幅增强的安全级别。 虚拟网络安全设备提供的网络安全功能包括：
 
@@ -114,7 +114,7 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供大�
 ## <a name="deploy-dmzs-for-security-zoning"></a>部署外围网络进行安全分区
 外围网络或“周边网络”是物理或逻辑网络区段，用于在资产与 Internet 之间提供额外的安全级别。 外围网络的目的是要将专用网络访问控制设备放在外围网络网络的边缘，只允许所需的流量通过网络安全设备进入 Azure 虚拟网络。
 
-外围网络非常有用，因为可以将网络访问控制管理、监视、日志记录和报告的重点放在位于 Azure 虚拟网络边缘的设备上。 在此通常将启用 DDoS 防护、入侵检测/入侵防护系统 (IDS/IPS)、防火墙规则和策略、Web 筛选、网络反恶意软件等。 网络安全设备位于 Internet 与 Azure 虚拟网络之间，具有两个网络均适用的接口。
+外围网络非常有用，因为可以将网络访问控制管理、监视、日志记录和报告的重点放在位于 Azure 虚拟网络边缘的设备上。 在此通常将启用 DDoS 预防、入侵检测/入侵防护系统 (IDS/IPS)、防火墙规则和策略、Web 筛选、网络反恶意软件等。 网络安全设备位于 Internet 与 Azure 虚拟网络之间，具有两个网络均适用的接口。
 
 尽管这是外围网络的基本设计，但有许多不同的外围网络设计，例如背靠背式、三闸式、多闸式等等。
 
@@ -210,7 +210,7 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供大�
 
 点到站点 VPN 比直接 RDP 或 SSH 连接更安全，因为用户必须事先通过两次身份验证才将连接到虚拟机。 第一次，用户需要通过身份验证（并获得授权）才能创建点到站点 VPN 连接；第二次，用户需要通过身份验证（并获得授权）才能建立 RDP 或 SSH 会话。
 
-[站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 通过 Internet 将整个网络连接到另一个网络。 可以使用站点到站点 VPN 将本地网络连接到 Azure 虚拟网络。 如果部署站点到站点 VPN，本地网络上的用户能够通过站点到站点 VPN 连接、使用 RDP 或 SSH 协议来连接到 Azure 虚拟网络上的虚拟机，而不需要你允许通过 Internet 的直接 RDP 或 SSH 访问。
+[站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 通过 Internet 将整个网络连接到另一个网络。 可以使用站点到站点 VPN 将本地网络连接到 Azure 虚拟网络。 如果部署站点间 VPN，本地网络上的用户就能够通过站点间 VPN 连接使用 RDP 或 SSH 协议，连接到 Azure 虚拟网络上的虚拟机，而无需允许通过 Internet 直接进行 RDP 或 SSH 访问。
 
 也可以使用专用的 WAN 链接提供类似于站点到站点 VPN 的功能。 他们的主要区别是： 1. 专用的 WAN 链接不会遍历 Internet； 2. 专用的 WAN 链接通常更稳定，具有更高性能。 Azure 提供 [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) 形式的专用 WAN 链接解决方案。
 
@@ -232,6 +232,6 @@ Azure 安全中心通过以下方式来帮助优化和监视网络安全：
 
 但是，必须先解决许多规划和设计问题。 这一点在网络安全方面格外重要。 查看示例是了解如何着手处理这种设计的最佳方式之一。
 
-Microsoft 创建了 [数据中心扩展参考体系结构关系图](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content) 和相关支持材料，以帮助用户了解此类数据中心扩展的形式。 其中提供了示例参考实现，可用于规划和设计如何安全地将企业数据中心扩展到云。 我们建议参阅此文档，以大致了解安全解决方案的重要组件。
+Microsoft 制作了[数据中心扩展参考体系结构关系图](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content)和相关支持附件，有助于读者了解此类数据中心扩展是什么。 其中提供了示例参考实现，可用于规划和设计如何安全地将企业数据中心扩展到云。 我们建议参阅此文档，以大致了解安全解决方案的重要组件。
 
-要详细了解如何安全地将数据中心扩展到 Azure，请观看视频 [Extending Your Datacenter to Microsoft Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA)（将数据中心扩展到 Microsoft Azure）。
+要详细了解如何安全地将数据中心扩展到 Azure，请观看视频[将数据中心扩展到 Microsoft Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA)。

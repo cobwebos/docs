@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: sdanie
 ms.openlocfilehash: c7a70e74f8b275ed9e10118b0ae9e81309f97ba3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Azure Redis 缓存高级层简介
-Azure Redis 缓存是一种分布式托管缓存，可通过提供对数据的超高速访问权限来帮助你构建高度可缩放且响应灵敏的应用程序。 
+Azure Redis 缓存是一种分布式托管缓存，可提供对数据的超快访问，有助于生成高度可缩放且响应速度快的应用程序。 
 
 新的高级层可供企业立即使用，除了标准层的所有功能以外，它还包括其他优势，例如更好的性能、更大的工作负荷、灾难恢复、导入/导出和增强的安全性。 请继续阅读，以深入了解高级缓存层的其他功能。
 

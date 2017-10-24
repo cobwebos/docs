@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
 ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scheduler-limits-and-defaults"></a>计划程序限制和默认值
 ## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>计划程序配额、限制、默认值和中止值
 [!INCLUDE [scheduler-limits-table](../../includes/scheduler-limits-table.md)]
 
 ## <a name="the-x-ms-request-id-header"></a>x-ms-request-id 标头
-对计划程序服务的每个请求都会返回一个名为 **x-ms-request-id** 的响应标头。 此响应标头包含一个唯一标识此请求的不透明值。
+对计划程序服务的每个请求都会返回一个名为 **x-ms-request-id** 的响应标头。此响应标头包含一个唯一标识此请求的不透明值。
 
-如果请求总是失败，并且你验证了请求格式正确，可以使用此值向 Microsoft 报告错误。 在报表中包含 x-ms-request-id 值，发出请求的大概时间，订阅、作业集合和/或作业的标识符，以及请求尝试进行的操作类型。
+如果请求总是失败，且已验证请求格式正确，可以使用此值向 Microsoft 报告错误。 在报表中包含 x-ms-request-id 值，发出请求的大概时间，订阅、作业集合和/或作业的标识符，以及请求尝试进行的操作类型。
 
 ## <a name="see-also"></a>另请参阅
  [计划程序是什么？](scheduler-intro.md)

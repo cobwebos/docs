@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar;chackdan
 ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 ## <a name="adding-or-removing-services-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务
@@ -41,8 +41,7 @@ Azure Service Fabric 提供了多个升级模式，可支持开发和生产群�
 最后，自动应用程序滚动升级对开发或测试环境很有用，可在服务开发期间提供快速迭代周期。
 
 ## <a name="change-to-manual-upgrade-mode"></a>切换到手动升级模式
-**手动**- 在当前 UD 停止应用程序升级，并将升级模式更改为不受监视的手动模式。 管理员需要手动调用 **MoveNextApplicationUpgradeDomainAsync**，以继续进行升级或通过启动新升级触发回滚。 升级进入到“手动”模式后，就会保持为“手动”模式，直到启动新的升级。 
-            **GetApplicationUpgradeProgressAsync** 命令返回 FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING。
+**手动** - 在当前 UD 停止应用程序升级，并将升级模式更改为不受监视的手动模式。 管理员需要手动调用 **MoveNextApplicationUpgradeDomainAsync**，以继续进行升级或通过启动新升级触发回滚。 升级进入到“手动”模式后，就会保持为“手动”模式，直到启动新的升级。 **GetApplicationUpgradeProgressAsync** 命令将返回 FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING。
 
 ## <a name="upgrade-with-a-diff-package"></a>使用差异包升级
 Service Fabric 应用程序可以通过预配一个完整且独立的应用程序包进行升级。 此外，还可以通过使用一个仅包含已更新应用程序文件、已更新应用程序清单和服务清单文件的差异包对应用程序进行升级。
@@ -51,12 +50,12 @@ Service Fabric 应用程序可以通过预配一个完整且独立的应用程�
 
 向群集首次安装应用程序时，需要完整的应用程序包。 后续更新可以是完整的应用程序包或差异包。
 
-在以下情况下，使用差异包是一个不错的选择：
+在以下情况下，使用差异包将是一个不错的选择：
 
 * 拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时，首选差异包。
-* 当部署系统直接从应用程序生成过程产生生成布局时，首选差异包。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 使用完整的应用程序包要求更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
+* 当部署系统直接从应用程序生成过程产生生成布局时，首选差异包。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 若要使用完整的应用程序包，需要更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
 
-如果应用程序是使用 Visual Studio 升级的，自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
+如果应用程序是使用 Visual Studio 升级的，会自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
 
 例如，让我们从以下应用程序开始（为便于理解，这里提供了版本号）：
 
@@ -70,7 +69,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-现在，假定想要通过 PowerShell 使用差异包来仅更新 service1 的代码包。 现在，更新的应用程序使用以下文件夹结构：
+现在，假设只想使用 PowerShell 和差异包来更新 service1 的代码包。 现在，更新的应用程序使用以下文件夹结构：
 
 ```text
 app1           2.0.0      <-- new version

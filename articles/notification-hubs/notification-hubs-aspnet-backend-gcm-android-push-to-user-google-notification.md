@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
 ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-for-android-with-net-backend"></a>Azure 通知中心 - 使用 .NET 后端通知 Android 用户
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>概述
-利用 Azure 中的推送通知支持，可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。 本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 本教程中创建的通知中心为基础[开始使用通知中心 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)教程。
+利用 Azure 中的推送通知支持，可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。 本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 本教程以[通知中心入门 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) 教程中创建的通知中心为基础。
 
 > [!NOTE]
 > 本教程假设已按照[通知中心入门 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) 中所述创建并配置了通知中心。
@@ -248,7 +248,7 @@ ms.lasthandoff: 07/11/2017
         private static final String BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
 
 
-1. 在 `MainActivity` 类的 `onCreate` 方法中，删除或注释掉 `hub` 字段的初始化以及对 `registerWithNotificationHubs` 方法的调用。 然后添加代码以初始化的实例`RegisterClient`类。 该方法应包含以下行：
+1. 在 `MainActivity` 类的 `onCreate` 方法中，删除或注释掉 `hub` 字段的初始化以及对 `registerWithNotificationHubs` 方法的调用。 然后，添加代码来初始化 `RegisterClient` 类的实例。 该方法应包含以下行：
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -276,7 +276,7 @@ ms.lasthandoff: 07/11/2017
         import org.apache.http.client.ClientProtocolException;
         import java.io.IOException;
         import org.apache.http.HttpStatus;
-4. 然后，添加以下方法来处理**登录**按钮单击事件以及发送推送通知。
+4. 然后，添加以下方法，处理“登录”按钮的单击事件，并发送推送通知。
    
         @Override
         protected void onStart() {
@@ -407,7 +407,7 @@ ms.lasthandoff: 07/11/2017
    
     ![][A2]
 4. 单击切换按钮，以启用已在其中运行该应用并已注册用户的所有平台。
-5. 输入接收通知消息的用户的名称。 必须已在目标设备上为通知注册该用户。
+5. 输入将接收通知消息的用户的名称。 必须已在目标设备上为通知注册该用户。
 6. 为用户输入要接收为推送通知的消息。
 7. 单击“发送通知”。  已使用匹配的用户名标记注册的每个设备都将收到该推送通知。
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/21/2017
 ms.author: terrylan
 ms.openlocfilehash: f218fe7e59e46683b544fd83bfea505b7cbe2d59
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/11/2017
 组织可以使用提供商的基于云的安全功能和云智能来改善其威胁检测和响应时间。  通过将责任转移到云提供商，组织可以扩大安全覆盖范围，为其他优先业务重新调配安全资源与预算。
 
 ## <a name="division-of-responsibility"></a>责任划分
-请务必了解你与 Microsoft 之间的职责的除法。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。 以下的责任矩阵显示堆栈的区域中，你将负责的 SaaS、 PaaS 和 IaaS 部署和 Microsoft 负责。
+请务必了解你与 Microsoft 之间的责任分工。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。 下面的责任矩阵展示了在 SaaS、PaaS 和 IaaS 部署中，分别由你和 Microsoft 负责的堆栈区域。
 
 ![责任区域][2]
 
@@ -85,8 +85,7 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 
 下面汇总了标识边界管理方法的一般最佳实践。
 
-- 
-              **不会丢失密钥或凭据**保护密钥和凭据对于保护 PaaS 部署至关重要。 丢失密钥和凭据是一个常见问题。 一个不错的解决方法是使用集中式解决方案，将密钥和机密存储在硬件安全模块 (HSM) 中。 Azure 在云中提供一个包含 [Azure Key Vault](../key-vault/key-vault-whatis.md) 的 HSM。
+- **不会丢失密钥或凭据**保护密钥和凭据对于保护 PaaS 部署至关重要。 丢失密钥和凭据是一个常见问题。 一个不错的解决方法是使用集中式解决方案，将密钥和机密存储在硬件安全模块 (HSM) 中。 Azure 在云中提供一个包含 [Azure Key Vault](../key-vault/key-vault-whatis.md) 的 HSM。
 - **不要将凭据和其他机密放入源代码或 GitHub**比丢失密钥和凭据更遭糕的唯一问题就是让未经授权的人员获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共源代码存储库。
 - **保护混合 PaaS 和 IaaS 服务中的 VM 管理接口**IaaS 和 PaaS 服务在虚拟机 (VM) 上运行。 根据服务的类型，可以使用多个管理接口来直接远程管理这些 VM。 可以使用远程管理协议，例如[安全外壳协议 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)、[远程桌面协议 (RDP)](https://support.microsoft.com/kb/186607)和[远程 PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。 在可能的情况下，应使用替代方法，例如，使用虚拟专用网络接入 Azure 虚拟网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并在可能的情况下使用双重身份验证（例如 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)）。
 - **使用强身份验证和授权平台**
