@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Azure 中的监视 | Microsoft Docs"
-description: "用于监视 Microsoft Azure 中任何组件的选项。 Azure Monitor, Application Insights Log Analytics"
+description: "用于监视 Microsoft Azure 中任何组件的选项。 Azure Monitor、Application Insights 和 Log Analytics"
 author: rboucher
 manager: carmonm
 editor: 
@@ -12,46 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 10/04/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: d4a94a92585420cf92018084437422fd0c66fa2d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: e164cbd910ccc38610c7aef37d25ff1b4413038d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-monitoring-in-microsoft-azure"></a>Microsoft Azure 中的监视概述
-本文概述可用于监视 Microsoft Azure 的工具。 本文的内容适用于 
-- Microsoft Azure 中运行的监视应用程序 
-- 在 Azure 中外部运行的，可监视 Azure 中的对象的工具/服务。 
+本文提供对 Microsoft Azure 进行整体监视时所涉及到的工具和服务的概述。 本文适用于：
+- 使用 Azure 服务监视 Azure 基础结构和应用程序
+- 使用 Azure 服务监视混合与非 Azure 形式的基础结构和应用程序
+- 使用非 Azure 服务监视 Azure 基础结构和应用程序
 
-本文讨论了各种可用的服务和产品以及它们如何配合工作。 本文可帮助你确定在哪些情况情况最适合使用哪些工具。  
+本文讨论了各种可用的服务和产品以及它们如何配合工作。 本文可帮助确定在哪些情况情况最适合使用哪些工具。  
 
-## <a name="why-use-monitoring-and-diagnostics"></a>为何要使用监视和诊断？
+## <a name="why-use-azures-monitoring-services"></a>为何使用 Azure 的监视服务？
 
-云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，你的用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 你应该立即知道这些问题，并使用工具来诊断和解决问题。 Microsoft Azure 提供一系列的工具用于识别这些问题。
+云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即知道这些问题，并使用工具来诊断和解决问题。 此外，应用程序中的问题通常是运行这些应用程序的底层基础结构造成的，因此，获得应用程序和基础结构的整体视图是监视 Azure 环境的关键所在。 Microsoft Azure 提供一系列的工具用于识别和解决此类问题。
 
-## <a name="how-do-i-monitor-my-azure-cloud-apps"></a>如何监视 Azure 云应用？
+## <a name="how-do-i-monitor-my-azure-environment"></a>如何监视 Azure 环境？
 
-可以使用一系列工具来监视 Azure 应用程序和服务。 这些工具的某些功能是相互重叠的。 之所以存在这种重叠，一部分原因是历史遗留问题，还有一部分原因是应用程序的开发与操作之间界限不明。 
+可通过多种工具来监视 Azure 环境，包括 Azure 上运行的应用程序代码，以及运行该代码的服务和基础结构，等等。 这些工具配合工作，提供全面的云监视，包括：
 
-下面是主要工具：
+-   **Azure Monitor** - 以整合式管道形式运行的 Azure 服务，可处理 Azure 服务中的所有监视数据。 在此工具中可以访问性能指标，以及用于描述 Azure 基础结构和所用的任何 Azure 服务的运行情况的事件。 Azure Monitor 是 Azure 环境的监视数据管道，可将该数据直接提供到 Log Analytics 以及第三方工具，可在这些工具中洞察该数据，并将其与本地或其他云资源中的数据合并。
 
--   **Azure Monitor** 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果你在 Azure 中管理所有应用，并想要确定是否需要扩展或缩减资源，则 Azure Monitor 可以提供初始信息。
+-   **Application Insights** - 提供应用程序性能监视和用户分析的 Azure 服务。 它可以监视编写的代码，以及在 Azure 或本地/其他云中部署的应用程序。 使用 Application Insights SDK 检测应用程序，可以访问一系列数据，包括依赖项响应时间、异常跟踪、调试快照和执行配置文件。 在开发和操作应用程序时，它还提供强大的工具用于分析此应用程序遥测数据。 它与 Visual Studio 深度集成，使你能够立即找到有问题的代码行并解决问题；它还提供使用情况分析，使产品经理能够分析客户对产品的用法。
 
--   **Application Insights** 可用于开发，并且可充当生产监视解决方案。 它的工作方式是在应用中安装一个包，提供更内在的动态视图。 其数据包括依赖项的响应时间、异常跟踪、调试快照和执行配置文件。 它提供强大的智能工具用于分析所有这些遥测数据，既能帮助你调试应用，也能帮助你了解用户将它用于哪种目的。 你可以判断响应时间出现尖峰的原因是应用中出现某种问题，还是存在某种外部资源调配问题。 如果你使用 Visual Studio，而应用出现错误，你可以直接找到有问题的代码行，然后修复错误。  
-
--   **Log Analytics** 面向需要优化性能，并针对生产环境中运行的应用程序规划维护的用户。 此服务驻留在 Azure 中。 它可以从许多源收集和聚合数据，不过会出现 10 到 15 分钟的延迟。 它为 Azure、本地基础结构和第三方基于云的基础结构（例如 Amazon Web Services）提供整体 IT 管理解决方案。 它提供更丰富的工具来跨更多的源分析数据，允许针对所有日志运行复杂的查询，并可以根据指定的条件主动发出警报。  你甚至可以将自定义数据收集到它的中心存储库，以便查询和可视化这些数据。 
-
--   **System Center Operations Manager (SCOM)** 用于管理和监视大型云安装。 作为本地 Windows Sever 和基于云的 Hyper-V 计算机的管理工具，你可能已经对它有所了解，但它还能集成和管理 Azure 应用。 除此之外，它还能在现有的实时应用中安装 Application Insights。  如果某个应用出现故障，它会即时发出通知。 请注意，Log Analytics 不能取代 SCOM， 但两者可以完美配合工作。  
-
+-   **Log Analytics** - 以前称为 OMS Log Analytics，它是一个 Azure 服务，可从 Azure 服务（通过 Azure Monitor）、Azure VM 和本地或其他云基础结构引入日志与指标数据，并在此数据的基础上提供灵活的日志搜索和现成的分析。 它提供丰富的工具来跨更多的源分析数据，以便针对所有日志运行复杂的查询，并可以根据指定的条件主动发出警报。  甚至可以将自定义数据收集到它的中心存储库，以便查询和可视化这些数据。 还可以利用 Log Analytics 的内置解决方案，立即获取基础结构安全性与功能的见解。
 
 ## <a name="accessing-monitoring-in-the-azure-portal"></a>在 Azure 门户中访问监视功能
 所有 Azure 监视服务目前在单个 UI 窗格中提供。 有关如何访问此区域的详细信息，请参阅 [Azure Monitor 入门](monitoring-get-started.md)。 
 
-还可以访问特定资源的监视功能，只需突出显示这些资源，然后向下钻取到其监视选项即可。 
+还可以访问特定资源的监视功能，只需突出显示这些资源，并向下钻取到其监视选项即可。 
 
 ## <a name="examples-of-when-to-use-which-tool"></a>有关何时使用哪种工具的示例 
 
@@ -61,7 +55,7 @@ ms.lasthandoff: 05/10/2017
 
 **最好是结合使用 Application Insights、Azure Monitor 和 Visual Studio**
 
-Azure 现在可以在云中提供 Visual Studio 调试器的完整功能。 将 Azure Monitor 配置为向 Application Insights 发送遥测数据 让 Visual Studio 在应用程序中包含 Application Insights SDK。 进入 Application Insights 后，可以使用应用程序映射来直观了解正在运行的应用程序的哪些部件是否正常。 对于不正常的部件，将会提供错误和异常用于调查。 可以使用 Application Insights 中的各种分析功能进行更深入的分析。 如果不确定错误的原因所在，可以使用 Visual Studio 调试器来跟踪代码，进一步查明问题。 
+Azure 现在可以在云中提供 Visual Studio 调试器的完整功能。 将 Azure Monitor 配置为向 Application Insights 发送遥测数据 让 Visual Studio 在应用程序中包含 Application Insights SDK。 进入 Application Insights 后，可以使用应用程序映射来直观了解正在运行的应用程序的哪些部件是否正常。 对于不正常的部件，会提供错误和异常用于调查。 可以使用 Application Insights 中的各种分析功能进行更深入的分析。 如果不确定错误的原因所在，可以使用 Visual Studio 调试器来跟踪代码，进一步查明问题。 
 
 有关详细信息，请参阅[监视 Web 应用](../application-insights/app-insights-azure-web-apps.md)，并参考左侧的目录，获取有关各种类型的应用和语言的说明。  
 
@@ -88,7 +82,7 @@ Azure 现在可以在云中提供 Visual Studio 调试器的完整功能。 将 
 > [!NOTE]
 > 探查虚拟机、虚拟机规模集 (VMSS)、云服务和 Service Fabric 的功能以预览版提供。   
 
-此外，在出现特定类型的错误（例如页面加载速度缓慢）时，智能检测工具会通过电子邮件主动发出通知。  不需要在此工具中进行任何配置。 有关详细信息，请参阅[智能检测 - 性能异常](../application-insights/app-insights-proactive-performance-diagnostics.md)和[智能检测 - 性能异常](https://azure.microsoft.com/blog/Enhancments-ApplicationInsights-SmartDetection/preview)。
+此外，在出现特定类型的错误（例如页面加载速度缓慢）时，智能检测工具会通过电子邮件主动发出通知。  不需要在此工具中进行任何配置。 有关详细信息，请参阅[智能检测 - 性能异常](../application-insights/app-insights-proactive-performance-diagnostics.md)。
 
 
 

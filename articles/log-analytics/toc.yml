@@ -11,6 +11,8 @@
       href: log-analytics-quick-collect-azurevm.md
     - name: 收集 - Linux 计算机
       href: log-analytics-quick-collect-linux-computer.md
+    - name: 收集 - Windows 计算机
+      href: log-analytics-quick-collect-windows-computer.md
 - name: 教程
   items:
     - name: 1 - 分析数据
@@ -25,6 +27,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 工作区升级
+      href: log-analytics-log-search-upgrade.md
     - name: Log Analytics 常见问题解答
       href: log-analytics-faq.md
     - name: 数据使用
@@ -35,10 +39,10 @@
       href: log-analytics-service-providers.md
     - name: 日志搜索
       items:
-        - name: 日志搜索常见问题解答
-          href: log-analytics-log-search-faq.md
         - name: 日志搜索概述
           href: log-analytics-log-search-new.md
+        - name: 日志搜索常见问题解答
+          href: log-analytics-log-search-faq.md
         - name: 日志搜索门户
           href: log-analytics-log-search-portals.md
 - name: 如何
@@ -89,6 +93,20 @@
               href: log-analytics-custom-fields.md
     - name: 查询数据
       items:
+        - name: 语言文档
+          href: 'https://docs.loganalytics.io'
+        - name: 从旧式语言转换
+          href: log-analytics-log-search-transition.md
+        - name: 跨工作区搜索
+          href: log-analytics-cross-workspace-search.md
+        - name: 从搜索结果执行操作
+          href: log-analytics-log-search-takeaction.md
+        - name: 使用计算机组
+          href: log-analytics-computer-groups.md
+        - name: Flow 连接器
+          href: log-analytics-flow-tutorial.md
+    - name: 旧式日志搜索
+      items:
         - name: 日志搜索概述
           href: log-analytics-log-searches.md
         - name: 搜索参考
@@ -96,26 +114,18 @@
           items:
             - name: 正则表达式
               href: log-analytics-log-searches-regex.md
-            - name: 跨工作区搜索
-              href: log-analytics-cross-workspace-search.md
-        - name: 从搜索结果执行操作
-          href: log-analytics-log-search-takeaction.md
-        - name: 计算机组
-          href: log-analytics-computer-groups.md
-    - name: 新建日志搜索
-      items:
-        - name: 升级工作区
-          href: log-analytics-log-search-upgrade.md
-        - name: 从旧式语言转换
-          href: log-analytics-log-search-transition.md
-        - name: Flow 连接器
-          href: log-analytics-flow-tutorial.md
     - name: 分析数据
       items:
         - name: 仪表板
           href: log-analytics-dashboards.md
         - name: 视图设计器
-          href: log-analytics-view-designer.md
+          items:
+            - name: 概述
+              href: log-analytics-view-designer.md
+            - name: 磁贴参考
+              href: log-analytics-view-designer-tiles.md
+            - name: 可视化部分参考
+              href: log-analytics-view-designer-parts.md
         - name: Power BI
           href: log-analytics-powerbi.md
     - name: 创建警报
@@ -231,14 +241,12 @@
           href: log-analytics-api-alerts.md
 - name: 引用
   items:
+    - name: 语言参考
+      href: 'https://docs.loganalytics.io/docs/Language-Reference'
     - name: Azure PowerShell
       href: /powershell/module/azurerm.operationalinsights
     - name: REST
       href: /rest/api/loganalytics
-    - name: 视图设计器磁贴参考
-      href: log-analytics-view-designer-tiles.md
-    - name: 视图设计器可视化部分参考
-      href: log-analytics-view-designer-parts.md
 - name: 资源
   items:
     - name: Azure 路线图

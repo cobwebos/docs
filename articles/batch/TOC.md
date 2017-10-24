@@ -20,6 +20,7 @@
 ### [并发节点任务](batch-parallel-node-tasks.md)
 ### [按状态对任务计数](batch-get-task-counts.md)
 ### [使用自定义映像创建池](batch-custom-images.md)
+### [在虚拟网络中创建池](batch-virtual-network.md)
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
 ### [Linux 计算节点](batch-linux-nodes.md)
@@ -62,6 +63,7 @@
 ## [Azure Batch 计算节点环境变量](batch-compute-node-environment-variables.md)
 
 # 相关内容
+## [Batch AI](../batch-ai/overview.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
 ## [使用批处理和数据工厂进行数据处理](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
