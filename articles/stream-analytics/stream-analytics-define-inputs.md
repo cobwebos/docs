@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
+ms.openlocfilehash: f5a605e0b0809c27feedc98390175fd383a371eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 8ea05e1c3419f3e9c6b5806c1a2d4035239809d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>数据连接：了解从事件到流分析的数据流输入
 与流分析作业的数据连接是数据源提供的事件流，这称为“输入”。 流分析与包括 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)、[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)和 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)在内的 Azure 数据流源具有一流的集成。 这些输入源可以来自与分析作业相同的 Azure 订阅，也可以来自其他订阅。
@@ -35,6 +34,12 @@ ms.lasthandoff: 08/29/2017
 流分析还支持称为“引用数据”的输入。 此类数据为辅助数据，处于静态或者缓慢变化状态。 通常用于执行关联性操作和查找操作。 例如，可以将数据流输入中的数据联接到引用数据中的数据，就像执行 SQL 联接以查找静态值一样。 目前只支持使用 Azure Blob 存储作为引用数据的输入源。 引用数据源 Blob 的大小限制为 100 MB。
 
 若要了解如何创建引用数据输入，请参阅[使用引用数据](stream-analytics-use-reference-data.md)。  
+
+## <a name="compression"></a>压缩
+
+不久后将跨所有数据流输入源（事件中心、IoT 中心和 Blob 存储）为 Azure 流分析部署压缩功能。 此功能将新的下拉选项添加到 Azure 门户中的“新建输入”边栏选项卡，用户可以根据需要选择压缩数据流。 当前支持的类型为 None、GZip、和 Deflate 压缩。 
+
+不支持压缩和 Avro 序列化，并且不适用于引用数据。 
 
 ## <a name="create-data-stream-input-from-event-hubs"></a>从事件中心创建数据流输入
 
@@ -57,6 +62,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 | **事件中心使用者组**（可选） |用于从事件中心引入数据的使用者组。 如果未指定任何使用者组，流分析作业将使用默认使用者组。 建议对每个流分析作业使用不同的使用者组。 |
 | **事件序列化格式** |传入数据流的序列化格式（JSON、CSV 或 Avro）。 |
 | **编码** | 目前只支持 UTF-8 这种编码格式。 |
+| **压缩**（可选） | 传入数据流的压缩类型（None、GZip 或 Deflate）。 |
 
 如果数据来自事件中心，则可以在流分析查询中访问以下元数据字段：
 
@@ -102,6 +108,7 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 | **使用者组**（可选） |用于从 IoT 中心引入数据的使用者组。 如果未指定任何使用者组，流分析作业将使用默认使用者组。 建议对每个流分析作业使用不同的使用者组。 |
 | **事件序列化格式** |传入数据流的序列化格式（JSON、CSV 或 Avro）。 |
 | **编码** |目前只支持 UTF-8 这种编码格式。 |
+| **压缩**（可选） | 传入数据流的压缩类型（None、GZip 或 Deflate）。 |
 
 如果数据来自 IoT 中心，则可以在流分析查询中访问以下元数据字段：
 
@@ -144,6 +151,7 @@ CSV 格式的输入需要标头行，以便为数据集定义字段。 此外，
 | **时间格式**（可选） |  如果在路径中使用时间变量，则为组织文件的时间格式。 目前唯一支持的值是 `HH`。 |
 | **事件序列化格式** | 传入数据流的序列化格式（JSON、CSV 或 Avro）。 |
 | **编码** | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
+| **压缩**（可选） | 传入数据流的压缩类型（None、GZip 或 Deflate）。 |
 
 如果数据来自 Blob 存储源，则可以在流分析查询中访问以下元数据字段：
 
@@ -182,4 +190,3 @@ FROM Input
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-

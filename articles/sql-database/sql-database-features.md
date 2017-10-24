@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/22/2017
 ms.author: carlrab
+ms.openlocfilehash: 5824347cbfd80ce2d21e256f4ce6e6fe2201792f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 59bb9778c89142212708b660fb200de3f0f1f9d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
 
 Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级别支持大多数相同功能。 Azure SQL 数据库和 SQL Server 之间的主要功能差异存在于实例级别。 
@@ -130,4 +128,3 @@ Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级�
 
 - 有关 Azure SQL 数据库服务的信息，请参阅[什么是 SQL 数据库？](sql-database-technical-overview.md)
 - 有关 Transact-SQL 支持和差异的信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
-

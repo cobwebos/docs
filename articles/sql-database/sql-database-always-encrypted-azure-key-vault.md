@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
 ms.openlocfilehash: 61bfd420425b4740f6d4ebc01a403a88ff351382
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/29/2017
 13. 在保存完成后，将密钥值复制到“密钥”部分。 （稍后在代码中将需要此值。）
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>创建密钥保管库以存储密钥
-现在客户端应用已配置并且你获得了客户端 ID，便可以创建密钥保管库并配置其访问策略以允许你和应用程序访问保管库的密码（始终加密密钥）。 *create*、*get*、*list*、*sign*、*verify*、*wrapKey* 和 *unwrapKey* 权限是用于创建新的列主密钥以及通过 SQL Server Management Studio 设置加密所必需的。
+至此，已配置客户端应用并且已拥有客户端 ID，接下来，可以创建密钥保管库并配置其访问策略，以便你和你的应用程序可以访问保管库的机密（Always Encrypted 密钥）。 *create*、*get*、*list*、*sign*、*verify*、*wrapKey* 和 *unwrapKey* 权限是用于创建新的列主密钥以及通过 SQL Server Management Studio 设置加密所必需的。
 
 通过运行以下脚本，可以快速创建密钥保管库。 有关这些 cmdlet 的详细说明以及有关创建和配置密钥保管库的详细信息，请参阅 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)。
 
@@ -151,7 +151,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 加密每位患者的“SSN”和“出生日期”信息。 SSN 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 BirthDate 列将使用随机加密，该加密不支持操作。
 
-将 SSN 列的“加密类型”设置为“确定”，并将 BirthDate 列设置为“随机”。 单击“下一步” 。
+将 SSN 列的“加密类型”设置为“确定”，并将 BirthDate 列设置为“随机”。 单击“下一步”。
 
 ![加密列](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
@@ -162,7 +162,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 1. 选择“Azure 密钥保管库”。
 2. 从下拉列表中选择所需密钥保管库。
-3. 单击“下一步” 。
+3. 单击“下一步”。
 
 ![主密钥配置](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 

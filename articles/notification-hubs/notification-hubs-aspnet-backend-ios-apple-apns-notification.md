@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
 ms.openlocfilehash: 0fa7a886e1ecb0a90b6aebc1dbf9ef0c6ce1acf1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-for-ios-with-net-backend"></a>Azure 通知中心 - 使用 .NET 后端通知 iOS 用户
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>修改 iOS 应用
-1. 打开在[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中创建的“单页视图”应用。
+1. 打开在[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中创建的单页视图应用。
    
    > [!NOTE]
    > 在本节中我们假定项目已配置了空的组织名称。 如果未配置，需要在所有类名前面追加组织名称。
@@ -265,7 +265,7 @@ ms.lasthandoff: 07/11/2017
 
     请注意，该类需要设置其属性 **authorizationHeader**，才能正常工作。 登录后，由 **ViewController** 类设置此属性。
 
-1. 在 ViewController.h 中，为 RegisterClient.h 添加 `#import` 语句。 然后，在 `@interface` 中添加设备令牌的声明和对 `RegisterClient` 实例的引用：
+1. 在 ViewController.h 中，为 RegisterClient.h 添加 `#import` 语句。 然后在 `@interface` 部分中添加设备令牌的声明以及对 `RegisterClient` 实例的引用：
    
         #import "RegisterClient.h"
    
@@ -282,11 +282,11 @@ ms.lasthandoff: 07/11/2017
         @end
 
 > [!NOTE]
-> 下面的代码段不是安全的身份验证方案，你应将 **createAndSetAuthenticationHeaderWithUsername:AndPassword:** 的实现替换为你的特定身份验证机制，该机制会生成要供注册客户端类（例如，OAuth、Active Directory）使用的身份验证令牌。
+> 下面的代码段不是安全的身份验证方案，应将 **createAndSetAuthenticationHeaderWithUsername:AndPassword:** 的实现替换为特定身份验证机制，该机制将生成要供注册客户端类（例如，OAuth、Active Directory）使用的身份验证令牌。
 > 
 > 
 
-1. 然后在`@implementation`ViewController.m 部分添加以下代码添加用于设置设备令牌和身份验证标头的实现。
+1. 然后在 ViewController.m 的 `@implementation` 部分中添加以下代码，这段代码会添加用于设置设备令牌和身份验证标头的实现。
    
         -(void) setDeviceToken: (NSData*) deviceToken
         {
@@ -311,26 +311,26 @@ ms.lasthandoff: 07/11/2017
             return YES;
         }
    
-    请注意设置设备令牌时如何启用登录按钮。 这是因为在登录操作过程中，视图控制器使用应用后端注册推送通知。 因此，我们不希望在正确设置设备令牌前可以访问登录操作。 可以只要登录在推送注册之前发生，就会前者与后者解耦。
+    请注意设置设备令牌时如何启用登录按钮。 这是因为在登录操作过程中，视图控制器将使用应用后端注册推送通知。 因此，我们不希望在正确设置设备令牌前可以访问登录操作。 可以只要登录在推送注册之前发生，就将前者与后者解耦。
 2. 在 ViewController.m 中，使用以下代码段实现“**登录**”按钮的操作方法以及使用 ASP.NET 后端发送通知消息的方法。
    
-       - (IBAction)LogInAction: (id) 发件人 {/ / 创建身份验证标头并将其设置中注册客户端 NSString * 用户名 = 自助。UsernameField.text;  NSString * 密码 = 自助。PasswordField.text;
+       - (IBAction)LogInAction:(id)sender {   // create authentication header and set it in register client   NSString* username = self.UsernameField.text;   NSString* password = self.PasswordField.text;
    
            [self createAndSetAuthenticationHeaderWithUsername:username AndPassword:password];
    
-           __weak ViewController * selfie = 自助;  [self.registerClient registerWithDeviceToken:self.deviceToken 标记： nil andCompletion:^(NSError* error){如果 (！ 错误) {dispatch_async(dispatch_get_main_queue()，^ {selfie。SendNotificationButton.enabled = 否。              [自助 MessageBox:@"Success"message:@"Registered 成功 ！"];});}}];}
+           __weak ViewController* selfie = self;   [self.registerClient registerWithDeviceToken:self.deviceToken tags:nil       andCompletion:^(NSError* error) {       if (!error) {           dispatch_async(dispatch_get_main_queue(),           ^{               selfie.SendNotificationButton.enabled = YES;               [self MessageBox:@"Success" message:@"Registered successfully!"];           });       }   }]; }
 
         - (void)SendNotificationASPNETBackend:(NSString*)pns UsernameTag:(NSString*)usernameTag            Message:(NSString*)message {    NSURLSession* session = [NSURLSession        sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil        delegateQueue:nil];
 
-            将 pns 和用户名标记作为 REST URL 的参数传递给 ASP.NET 后端 NSURL * requestURL = [NSURL URLWithString: [NSString stringWithFormat:@"%@/api/notifications？ pns = %@& to_tag = %@"，BACKEND_ENDPOINT，pns、 usernameTag]];
+            // Pass the pns and username tag as parameters with the REST URL to the ASP.NET backend    NSURL* requestURL = [NSURL URLWithString:[NSString        stringWithFormat:@"%@/api/notifications?pns=%@&to_tag=%@", BACKEND_ENDPOINT, pns,        usernameTag]];
 
-            NSMutableURLRequest * 请求 = [NSMutableURLRequest requestWithURL:requestURL];   [请求 setHTTPMethod:@"POST"];
+            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];    [request setHTTPMethod:@"POST"];
 
-            注册客户端从 NSString * authorizationHeaderValue 获取 mock authenticationheader = [NSString stringWithFormat:@"Basic %@"，self.registerClient.authenticationHeader];   [请求 setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+            // Get the mock authenticationheader from the register client    NSString* authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",        self.registerClient.authenticationHeader];    [request setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
 
-            添加通知消息正文 [请求 setValue:@"application/json;charset=utf-8"forHTTPHeaderField:@"Content-Type"];   [请求 setHTTPBody: [消息 dataUsingEncoding:NSUTF8StringEncoding]];
+            //Add the notification message body    [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];    [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
 
-            在 ASP.NET 后端 NSURLSessionDataTask * dataTask 上执行 REST API 发送通知 = [会话 dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) 响应;       如果 (错误 | | httpResponse.statusCode ！ = 200) {NSString*状态 = [%NSString stringWithFormat:@"Error 状态 @: %d\nerror: %@\n"，pns，httpResponse.statusCode、 错误];           dispatch_async(dispatch_get_main_queue()，^ {/ / 将文本追加因为所有 3 PNS 调用还可能具有信息与视图 [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];           });           NSLog(status);       }
+            // Execute the send notification REST API on the ASP.NET Backend    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)    {        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;        if (error || httpResponse.statusCode != 200)        {            NSString* status = [NSString stringWithFormat:@"Error Status for %@: %d\nError: %@\n",                                pns, httpResponse.statusCode, error];            dispatch_async(dispatch_get_main_queue(),            ^{                // Append text because all 3 PNS calls may also have information to view                [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
 
                 if (data != NULL)
                 {
@@ -374,7 +374,7 @@ ms.lasthandoff: 07/11/2017
        self.PasswordField.delegate = self;
        self.RecipientField.delegate = self;
        self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
-2. 现在，在 AppDelegate.m 中，删除方法 application:didRegisterForPushNotificationWithDeviceToken: 的所有内容并将其替换为以下内容，确保视图控制器包含从 APN 中检索到的最新设备令牌：
+2. 现在，在 **AppDelegate.m** 中，删除方法 **application:didRegisterForPushNotificationWithDeviceToken:** 的所有内容并将其替换为以下内容，以确保视图控制器包含从 APN 中检索到的最新设备令牌：
    
        // Add import to the top of the file
        #import "ViewController.h"
@@ -394,7 +394,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="test-the-application"></a>测试应用程序
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知将无法在模拟器中正常工作）。
-2. 在 iOS 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的字符串值。 然后单击**Log In**。
+2. 在 iOS 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的字符串值。 然后单击“登录”。
    
     ![][2]
 3. 应看到弹出窗口通知你注册成功。 单击 **“确定”**。

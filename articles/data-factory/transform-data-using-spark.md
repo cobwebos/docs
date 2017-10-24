@@ -11,25 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/29/2017
 ms.author: shengc
+ms.openlocfilehash: f1548c6ad397a7154482fa73e992aef9201c5752
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ecef890d26aa097d9a5db63555ae59e16e80c9e1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - 正式版](v1/data-factory-spark.md)
 > * [版本 2 - 预览版](transform-data-using-spark.md)
 
-
-Spark 活动是 Azure 数据工厂支持的[数据转换活动](transform-data.md)之一。 此活动在 Azure HDInsight 中 Apache Spark 群集上运行指定的 Spark 程序。    
+数据工厂[管道](concepts-pipelines-activities.md)中的 Spark 活动在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Spark 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 使用按需的 Spark 链接服务时，数据工厂会自动为你实时创建用于处理数据的 Spark 群集，然后在处理完成后删除群集。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 Spark 活动](v1/data-factory-spark.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 Spark 活动](v1/data-factory-spark.md)。
 
 > [!IMPORTANT]
 > Spark 活动不支持那些使用 Azure Data Lake Store 作为主存储的 HDInsight Spark 群集。
@@ -118,7 +116,7 @@ SparkJob2
     logs
 ```
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章了解如何以其他方式转换数据： 
+参阅以下文章了解如何以其他方式转换数据： 
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
@@ -127,6 +125,5 @@ SparkJob2
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)
-

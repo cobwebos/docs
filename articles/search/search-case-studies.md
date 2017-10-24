@@ -1,5 +1,5 @@
 ---
-title: "谁在使用 Azure Search： 案例研究和客户情景 |Microsoft 文档"
+title: "谁在使用 Azure 搜索：案例研究和客户案例 | Microsoft Docs"
 description: "有关 Azure 搜索的案例研究和客户案例，它是 Microsoft Azure 上托管的一项云搜索服务。"
 services: search
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>谁在使用 Azure 搜索：案例研究和客户案例
 了解以下组织如何通过将丰富的 Azure 搜索体验集成到其联机应用程序来开展其业务。

@@ -16,15 +16,15 @@ ms.date: 05/12/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5ce72ffef4394bf3bbe39fa420c4fcaa965ae35c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则
 Log Analytics 警报 REST API 允许在 Operations Management Suite (OMS) 中创建和管理警报。  本文详细介绍了该 API 并提供了几个执行不同操作的示例。
 
-Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager REST API 访问。 在本文档，你将找到示例其中从 PowerShell 命令行使用访问 API [ARMClient](https://github.com/projectkudu/ARMClient)，简化了 Azure 资源管理器 API 调用的开放源代码命令行工具。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 使用这些工具可以利用 RESTful Azure Resource Manager API 对 OMS 工作区进行调用并执行它们所包含的搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
+Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager REST API 访问。 本文档中可查看使用 [ARMClient](https://github.com/projectkudu/ARMClient) 通过 PowerShell 命令行访问 API 的示例。ARMClient 是可简化 Azure 资源管理器 API 调用的开源命令行工具。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 使用这些工具可以利用 RESTful Azure Resource Manager API 对 OMS 工作区进行调用并执行它们所包含的搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
 ## <a name="prerequisites"></a>先决条件
 目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](log-analytics-log-search-api.md)。

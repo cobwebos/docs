@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.openlocfilehash: 03c88397e36c0fc7f19410e49f6b6f1a607659f8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>上传 JAR 并运行作业 (SSH)
 
-以下步骤使用 `scp` 将 JAR 复制到 HBase on HDInsight 群集的主要头节点。 然后，使用 `ssh` 命令连接到群集并直接在头节点上运行此示例。
+以下步骤使用 `scp` 将 JAR 复制到 HBase on HDInsight 群集的主要头节点。 然后使用 `ssh` 命令连接到群集并直接在头节点上运行示例。
 
 1. 要将该 jar 上传到群集，请使用以下命令：
 
@@ -418,7 +418,7 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>上传 JAR 并运行作业 (PowerShell)
 
-以下步骤使用 Azure PowerShell 将 JAR 上传到 HBase 群集的默认存储。 然后使用 HDInsight cmdlet 远程运行这些示例。
+以下步骤使用 Azure PowerShell 将 JAR 上传到 HBase 群集的默认存储。 然后使用 HDInsight cmdlet 远程运行示例。
 
 1. 安装并配置 Azure PowerShell 后，创建一个名为 `hbase-runner.psm1` 的文件。 将以下文本用作此文件的内容：
 

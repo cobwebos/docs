@@ -16,13 +16,13 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>SQL 数据仓库中的事务
-如你所料，SQL 数据仓库支持支持事务作为数据仓库工作负荷的一部分。 但是，为了确保 SQL 数据仓库的性能维持在一定的程度，相比于 SQL Server，其某些功能会受到限制。 本文将突出两者的差异，并列出其他信息。 
+与预期一样，SQL 数据仓库支持将事务纳入数据仓库工作负载。 但是，为了确保 SQL 数据仓库的性能维持在一定的程度，相比于 SQL Server，其某些功能会受到限制。 本文将突出两者的差异，并列出其他信息。 
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
 SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离仅限于 `READ UNCOMMITTED`，这无法更改。 可以实现许多编码方法，以避免脏读数据（如果对此有所考虑的话）。 大多数流行方法利用 CTAS 和表分区切换（通常称为滑动窗口模式），以防止用户查询仍正准备的数据。 预先筛选数据的视图也是常用的方法。  
@@ -35,7 +35,7 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离仅限于 `R
 * 出现平均数据分布 
 * 平均行长度为 250 个字节
 
-| [DWU][DWU] | 每个分布的上限（GiB） | 分布的数量 | 最大事务大小（GiB） | 每个分布的行数 | 每个事务的最大行数 |
+| [DWU][DWU] | 每个分布的上限（GiB） | 分布的数量 | 最大事务大小（GiB） | 每分发的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |

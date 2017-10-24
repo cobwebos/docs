@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
 ms.openlocfilehash: aedb44610fe57055851538b9dbdb810e66e58d73
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-data-manager-overview-private-preview"></a>StorSimple Data Manager 概述（个人预览版）
 
@@ -39,7 +39,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
 ### <a name="prerequisites"></a>先决条件
 
-此练习假定你具有
+此练习假设你拥有
 * 一个有效的 Azure 订阅。
 * 可以访问已注册的 StorSimple 8000 系列设备
 * 与 StorSimple 8000 系列设备关联的所有密钥。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
 ms.openlocfilehash: 01a6f35fe61290f8c7275c34273d66956a53d3f9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>在经典 Azure 门户中将本地 VMware 虚拟机或物理服务器复制到辅助站点
 
@@ -35,7 +35,7 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实�
 4. 在“**资源组**”中，创建新资源组或选择现有的资源组。 指定 Azure 区域，以完成必填字段。
 5. 在“**位置**”中，选择保管库的地理区域。 若要查看支持的区域，请参阅 [Azure Site Recovery 定价](https://azure.microsoft.com/pricing/details/site-recovery/)。
 6. 要从仪表板快速访问保管库，请单击“固定到仪表板”，并单击“创建”。
-7. 新保管库会显示在“仪表板”>“所有资源”中，以及“恢复服务保管库”主边栏选项卡上。
+7. 新保管库将显示在“仪表板”>“所有资源”中，以及“恢复服务保管库”主边栏选项卡上。
 
 ## <a name="step-2-configure-the-vault-and-download-inmage-scout-components"></a>步骤 2：配置保管库并下载 InMage Scout 组件
 1. 在“恢复服务保管库”边栏选项卡中选择保管库，并单击“设置”。
@@ -208,7 +208,7 @@ Update 1 包含以下 bug 修复和新功能：
 
 * 每个服务器实例享有 31 天的免费保护。 这样，便可以测试功能或建立概念认证。
   * 从使用 Site Recovery Scout 首次保护服务器的时间开始计算的前 31 天，服务器上的所有操作（包括故障转移和故障回复）都是免费的。
-  * 从第 32 天起根据标准实例费率，针对每个受保护的服务器，向客户拥有的站点收取 Azure Site Recovery 保护费用。
+  * 从第 32 天起，会根据标准实例费率，针对每个受保护的服务器，向客户拥有的站点收取 Azure Site Recovery 保护费用。
   * 在 Azure Site Recovery 保管库的“仪表板”页上随时会显示当前计费的受保护服务器数目。
 * 添加了对 vSphere命令行接口 (vCLI) 5.5 Update 2 的支持。
 * 已添加对源服务器上 Linux 操作系统的支持：

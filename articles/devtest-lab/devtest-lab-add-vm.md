@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: tarcher
 ms.openlocfilehash: 449bffb040dafc8edd0b8b0afd80dbea35cd28ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 如果已[创建第一个 VM](devtest-lab-create-first-vm.md)，则很可能从预加载的[应用商店映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/11/2017
    若要设置过期选项，请选择“日历”图标，指定一个自动删除 VM 的日期。  默认情况下，VM 永不过期。 
 1. 如果想要查看或复制 Azure Resource Manager 模板，请参阅[保存 Azure Resource Manager 模板](#save-azure-resource-manager-template)部分，并在完成后返回此处。
 1. 选择“创建”将指定的 VM 添加到实验室。
-1. 实验室边栏选项卡显示的状态的虚拟机的创建-首先为**创建**，然后随着**运行**VM 已启动。
+1. 实验室边栏选项卡显示 VM 的创建状态 - 先是显示为“正在创建”，然后当启动 VM 后显示为“正在运行”。
 
 > [!NOTE]
 > [添加可认领 的 VM](devtest-lab-add-claimable-vm.md) 演示了如何使 VM 可认领以使其供实验室中的任意用户使用。
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="add-an-existing-artifact-to-a-vm"></a>将现有项目添加到 VM
 创建 VM 时，可添加现有项目。 每个实验室包括公共开发测试实验室项目存储库中的项目和已经创建并添加到自己的项目存储库的项目。
 
-* Azure DevTest 实验室*项目*，你可以指定*操作*执行设置 VM，如运行 Windows PowerShell 脚本、 运行 Bash 命令和安装软件。
+* Azure 开发测试实验室项目可让你指定预配 VM 时执行的操作，如运行 Windows PowerShell 脚本、运行 Bash 命令和安装软件。
 * 使用项目*参数*可为特定方案自定义项目
 
 若要了解如何创建项目，请参阅文章[了解如何创建自己的项目以用于开发测试实验室](devtest-lab-artifact-author.md)。

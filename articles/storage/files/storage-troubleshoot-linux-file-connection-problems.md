@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
+ms.openlocfilehash: 660fe4fb9f962c835de9a2f900ceaabb4371b0db
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: bef3e7bf8b1fd9199d0c8a083d94660b8eed3365
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -83,7 +82,7 @@ ms.lasthandoff: 09/28/2017
 
 ### <a name="cause"></a>原因
 
-某些 Linux 发行版尚不支持 SMB 3.0 中的加密功能，如果用户尝试使用 SMB 3.0 装载 Azure 文件，可能会由于缺少功能而收到“115”错误消息。
+某些 Linux 发行版尚不支持 SMB 3.0 中的加密功能，如果用户尝试使用 SMB 3.0 装载 Azure 文件，可能会由于缺少功能而收到“115”错误消息。 目前，只有在使用 Ubuntu 16.04 或更高版本时，才支持具有完全加密的 SMB 3.0。
 
 ### <a name="solution"></a>解决方案
 
@@ -104,11 +103,11 @@ ms.lasthandoff: 09/28/2017
 
 在某些情况下，**serverino** 装载选项可能会导致 **ls** 命令针对每个目录条目运行 stat。 列出大型目录时，此行为会导致性能下降。 可在 **/etc/fstab** 条目中检查装载选项：
 
-`//azureuser.file.core.windows.net/cifs /cifs cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 还可以通过运行 **sudo mount | grep cifs** 命令并检查其输出，来检查所用的选项是否正确，如以下示例输出所示：
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
 如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](../storage-how-to-use-files-linux.md)中的装载命令卸载并再次装载 Azure 文件。 然后重新检查 **/etc/fstab** 条目是否具有正确选项。
 
@@ -159,4 +158,3 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。
-

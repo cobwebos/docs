@@ -3,7 +3,7 @@ title: "如何通过 Python 使用队列存储 | Microsoft Docs"
 description: "了解如何通过 Python 使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。"
 services: storage
 documentationcenter: python
-author: tamram
+author: robinsh
 manager: timlt
 editor: tysonn
 ms.assetid: cc0d2da2-379a-4b58-a234-8852b4e3d99d
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: tamram
+ms.author: robinsh
+ms.openlocfilehash: 8311d8e29845f2801c4b33f994512113044fcbf7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 963c11acb7939993568a774cd281145a8059b5a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>如何通过 Python 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -32,6 +31,26 @@ ms.lasthandoff: 08/22/2017
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
+
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>下载和安装适用于 Python 的 Azure 存储 SDK
+
+适用于 Python 的 Azure 存储 SDK 需要 Python 2.7、3.3、3.4、3.5 或 3.6，并且包含 4 个不同包：`azure-storage-blob`、`azure-storage-file`、`azure-storage-table` 和 `azure-storage-queue`。 在本教程中，我们要用到 `azure-storage-queue` 包。
+ 
+### <a name="install-via-pypi"></a>通过 PyPi 安装
+
+要通过 Python 包索引 (PyPI) 安装，请键入：
+
+```bash
+pip install azure-storage-queue
+```
+
+
+> [!NOTE]
+> 如果要从适用于 Python 版本 0.36 或更早版本的 Azure 存储 SDK 中升级，首先需要使用 `pip uninstall azure-storage` 卸载，因为我们不再在单个包中发布适用于 Python 的存储 SDK。
+> 
+> 
+
+有关其他安装方式，请访问 [Github 上的适用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python/)。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
 可以通过 **QueueService** 对象来处理队列。 以下代码创建 **QueueService** 对象。 在希望在其中以编程方式访问 Azure 存储的任何 Python 文件中，将以下代码添加到文件的顶部附近：

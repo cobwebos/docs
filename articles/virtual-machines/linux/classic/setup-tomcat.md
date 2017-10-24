@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
 ms.openlocfilehash: fa30c78a5a5d458ba8845c3c10b87538427786c9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>使用 Azure 在 Linux 虚拟机上设置 Tomcat7
 Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache Software Foundation (ASF) 开发的一个开源 Web 服务器和 servlet 容器。 Tomcat 实现了 Sun Microsystems 提出的 Java Servlet 和 JavaServer Pages (JSP) 规范。 Tomcat 提供用于运行 Java 代码的纯 Java HTTP Web 服务器环境。 在最简单的配置中，Tomcat 在单个操作系统进程中运行。 此进程运行 Java 虚拟机 (JVM)。 浏览器向 Tomcat 发出的每个 HTTP 请求都作为 Tomcat 进程中的单独线程进行处理。  
@@ -79,11 +79,11 @@ SSH 是面向系统管理员的重要工具。 但是，我们并不建议基于
 ### <a name="step-1-open-the-http-port-to-allow-web-access"></a>步骤 1：打开 HTTP 端口，以允许 Web 访问
 Azure 中的终结点由 TCP 或 UDP 协议以及公用和专用端口组成。 专用端口是服务侦听虚拟机的端口。 公用端口是 Azure 云服务从外部侦听基于 Internet 的传入流量的端口。  
 
-TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 终结点打开此端口，则你与其他 Internet 客户端可以访问 Tomcat 页。  
+TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 终结点打开此端口，则你和其他 Internet 客户端可以访问 Tomcat 页。  
 
 1. 在门户中，单击“浏览” > “虚拟机”，并单击创建的虚拟机。  
    ![虚拟机目录的屏幕截图][5]
-2. 要将终结点添加到虚拟机，单击“终结点”  框。
+2. 要将终结点添加到虚拟机，请单击“终结点”框。
    ![显示“终结点”框的屏幕截图][6]
 3. 单击 **“添加”**。  
 
@@ -115,7 +115,7 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
 5. 在左窗格中，单击“连接” > “SSH” > “身份验证”，并单击“浏览”指定 privateKey.ppk 文件的位置。 privateKey.ppk 文件包含 PuTTYgen 在本文“第 1 阶段：创建映像”部分中生成的私钥。  
 ![显示“连接”目录层次结构和“浏览”按钮的屏幕截图][10]
 
-6. 单击“打开”。 可能会出现一个消息提示框。 如果已正确配置 DNS 名称和端口号，请单击“是”。
+6. 单击“打开”。 此时可能会通过一个消息框提醒你。 如果已正确配置 DNS 名称和端口号，请单击“是”。
 ![显示通知的屏幕截图][11]
 
 7. 系统会提示输入用户名。  

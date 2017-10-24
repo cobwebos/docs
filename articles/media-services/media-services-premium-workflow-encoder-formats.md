@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
 ms.openlocfilehash: e18de2adc9aac585d6890dd7b43a54f1a0ca177e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 > [!NOTE]
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/18/2017
 
 **媒体编码器高级工作流**支持[此](#closed_captioning)部分中所述的隐藏字幕。 
 
-## <a id="input_formats"></a>媒体编码器高级工作流输入格式和编解码器
+## <a id="input_formats"></a>Media Encoder Premium Workflow 输入格式和编解码器
 以下部分列出了此媒体处理器支持的作为输入的编解码器和文件格式。
 
 ### <a name="input-containerfile-formats"></a>输入容器/文件格式
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/18/2017
 * Windows Media 音频
 * WAV/PCM
 
-## <a id="output_format"></a>媒体编码器高级工作流输出格式和编解码器
+## <a id="output_format"></a>Media Encoder Premium Workflow 输出格式和编解码器
 以下部分列出了支持作为此媒体处理器输入的编解码器和文件格式。
 
 ### <a name="output-containerfile-formats"></a>输出容器/文件格式

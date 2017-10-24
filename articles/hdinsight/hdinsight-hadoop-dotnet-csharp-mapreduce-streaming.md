@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: 96f0be021a2b362c702f91ec4b532df8a334529f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: adb454e56378a800c671614735aec78b6851aeb2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -227,7 +226,7 @@ namespace reducer
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-此脚本会提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 完成作业后，输出将下载到从中运行脚本的目录的 `output.txt` 文件。 以下文本是 `output.txt` 文件中数据的示例：
+此脚本会提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 作业完成后，输出会下载到名为 `output.txt` 的文件中。 以下文本是 `output.txt` 文件中数据的示例：
 
     you     1128
     young   38

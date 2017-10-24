@@ -1,6 +1,6 @@
 ---
 title: "保护 Azure 安全中心的网络 | Microsoft Docs"
-description: "本文档说明在 Azure 安全中心中的建议，帮助你保护你的 Azure 网络，并保持符合安全策略。"
+description: "本文档介绍 Azure 安全中心中的建议，以帮助你保护 Azure 网络并保持符合安全策略。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: terrylan
 ms.openlocfilehash: 00b715507a7c3a4d784b800e7bf0c700f6ea6ff1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>保护 Azure 安全中心中的网络
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL，以及应用程序。

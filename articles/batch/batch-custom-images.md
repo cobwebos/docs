@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.openlocfilehash: 3d655766b4f2a5efb0c8c29ffa81a89f84b3e17c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 0816c464b6b52747148cc42a55445048901e7595
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池
 
@@ -27,9 +27,9 @@ ms.lasthandoff: 08/29/2017
 - **复制大量数据。** 如果将数据复制到自定义映像，仅需复制一次，而不用复制到每个计算节点，节省了时间和带宽。
 - **在安装过程中重启 VM。** 重启 VM 可能是一个耗时的过程，尤其是有大量计算节点时。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- **使用“用户订阅”池分配模式创建的 Batch 帐户。** 若要使用自定义映像预配虚拟机池，请使用“用户订阅”[池分配模式](batch-api-basics.md#pool-allocation-mode)创建 Batch 帐户。 使用此模式，Batch 池将分配到帐户所在的订阅中。 有关在创建 Batch 帐户时如何设置池分配模式的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)中的[帐户](batch-api-basics.md#account)部分。
+- **使用“用户订阅”池分配模式创建的 Batch 帐户。** 使用此模式，Batch 池将分配到帐户所在的订阅中。 有关详细信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)中的[帐户](batch-api-basics.md#account)部分。
 
 - 一个 Azure 存储帐户。 要使用自定义映像创建虚拟机池，需要在同一订阅和区域中拥有标准的通用 Azure 存储帐户。 如果从 Azure VM 中创建自定义映像，则会将映像复制到 VM 的操作系统磁盘所在的存储帐户，无需创建单独的存储帐户。 
     

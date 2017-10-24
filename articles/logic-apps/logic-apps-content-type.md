@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
 ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="handle-content-types-in-logic-apps"></a>在逻辑应用中处理内容类型
 
@@ -47,13 +47,13 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="schema-and-schema-generator"></a>架构和架构生成器
 
-可以使用请求触发器为预计要接收的有效负载输入 JSON 架构。 此架构允许设计器生成令牌，因此你可以使用请求的内容。 如果尚未准备好架构，请选择“使用示例有效负载生成架构”，以便从示例有效负载生成 JSON 架构。
+可以使用请求触发器为预计要接收的有效负载输入 JSON 架构。 此架构可让设计器生成令牌，以便使用请求的内容。 如果尚未准备好架构，请选择“使用示例有效负载生成架构”，以便从示例有效负载生成 JSON 架构。
 
 ![架构](./media/logic-apps-http-endpoint/manualtrigger.png)
 
 ### <a name="parse-json-action"></a>“Parse JSON”操作
 
-可以使用 `Parse JSON` 操作将 JSON 内容分析成适合在逻辑应用中使用的令牌。 类似于请求触发器，此操作允许您输入或生成用于你想要分析的内容的 JSON 架构。 此工具为使用服务总线、Azure Cosmos DB 等的数据提供了很大的方便。
+可以使用 `Parse JSON` 操作将 JSON 内容分析成适合在逻辑应用中使用的令牌。 此操作与请求触发器类似，用户能为要分析的内容输入或生成 JSON 架构。 此工具为使用服务总线、Azure Cosmos DB 等的数据提供了很大的方便。
 
 ![分析 JSON](./media/logic-apps-content-type/ParseJSON.png)
 

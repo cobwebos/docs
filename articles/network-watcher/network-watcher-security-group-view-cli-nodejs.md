@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 2c4c494dcc4fe1a85c5feb29506c35fb03066479
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: f27157129bea4e47a2e0e6cc1169b9e4887bdd78
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-10"></a>使用 Azure CLI 1.0 通过安全组视图分析虚拟机安全性
 
 > [!div class="op_single_selector"]
@@ -36,7 +34,7 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 ## <a name="scenario"></a>方案
 
@@ -58,7 +56,7 @@ azure vm show -g resourceGroupName -n virtualMachineName
 
 ## <a name="retrieve-security-group-view"></a>检索安全组视图
 
-下一步是检索安全组视图结果。 添加“--json”标志将设置 json 中结果的格式。
+下一步是检索安全组视图结果。 添加“--json”标志将结果设置为 json 格式。
 
 ```azurecli
 azure network watcher security-group-view -g resourceGroupName -n networkWatcherName -t targetResourceId --json
@@ -120,4 +118,3 @@ azure network watcher security-group-view -g resourceGroupName -n networkWatcher
 请访问[使用网络观察程序审核网络安全组 (NSG)](network-watcher-nsg-auditing-powershell.md)，了解如何自动执行网络安全组的验证。
 
 请访问[安全组视图概述](network-watcher-security-group-view-overview.md)，了解有关应用于网络资源的安全规则的详细信息
-

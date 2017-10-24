@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
+ms.openlocfilehash: 336e74d8f69cb04e6bd0e85fc68ba38b218fabae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 7118ec3f5aeae40fa7ecc592309a28b585c651a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 启动、停止和报告混沌测试服务。
@@ -43,11 +42,9 @@ ms.lasthandoff: 09/26/2017
 |参数|说明|
 | --- | --- |
 | --continuation-token| 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。|
-| --end-time-utc   | 表示时间范围结束时间的计时周期的计数
-                          Chaos report is to be generated. Please consult [DateTime.Ticks
-                          Property](https://msdn.microsoft.com/en-
-                          us/library/system.datetime.ticks%28v=vs.110%29) for details about tick.|
-| --start-time-utc | 表示要生成混沌测试报告的时间范围开始时间的计时周期的计数。 请参阅 [DateTime.Ticks 属性](https://msdn.microsoft.com/en- us/library/system.datetime.ticks%28v=vs.110%29) 详细了解计时周期。| | --timeout -t     | 服务器超时时间，以秒为单位。  默认值：60。|
+| --end-time-utc   | 时钟计时周期计数，表示要生成 Chaos 报告的时间范围的结束时间。 有关时钟计时周期的详细信息，请参阅 [DateTime.Ticks 属性](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)。|
+| --start-time-utc | 时钟计时周期计数，表示要生成 Chaos 报告的时间范围的开始时间。 有关时钟计时周期的详细信息，请参阅 [DateTime.Ticks 属性](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)。|
+| --timeout -t     | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -107,7 +104,7 @@ ms.lasthandoff: 09/26/2017
 | --help -h| 显示此帮助消息并退出。|
 | --output -o | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query  | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose| 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose| 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

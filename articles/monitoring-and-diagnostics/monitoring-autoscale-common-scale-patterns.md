@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: ancav
 ms.openlocfilehash: fce51546e041c8989d813c3935e058c52b38ba77
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
 本文介绍一些常见模式，这些模式可在 Azure 中缩放资源。
@@ -27,14 +27,14 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 # <a name="lets-get-started"></a>让我们开始
 
-本文假定你熟悉自动缩放。 可以[开始在此处缩放资源][1]。 下面是一些常见缩放模式。
+本文假定使用者熟悉自动缩放。 可以[开始在此处缩放资源][1]。 下面是一些常见缩放模式。
 
 ## <a name="scale-based-on-cpu"></a>基于 CPU 进行缩放
 
 拥有 Web 应用（/VMSS/云服务角色）并且 
 
 - 要基于 CPU 进行扩大/缩小。
-- 此外，你想要确保最小实例数。 
+- 此外，你希望确保实例数最小。 
 - 同时，希望确保为可以扩展到的实例数设置最大限制。
 
 ![基于 CPU 进行缩放][2]
@@ -53,7 +53,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 拥有 Web 应用（/VMSS/云服务角色）并且 
 
 - 希望在默认情况下基于 CPU 使用率向上扩展/向下扩展
-- 但是，在节假日 （或对于你的业务非常重要的特定天） 期间你想要重写默认值并可以在更多容量。
+- 但是，在节假日（或对于业务来说非常重要的特定日子）期间你想要覆盖默认值，并希望有更多容量可供支配。
 
 ![在节假日以不同方式缩放][4]
 

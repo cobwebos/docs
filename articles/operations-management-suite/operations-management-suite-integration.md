@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
 ms.openlocfilehash: 7a24df6f2c3b2c091d1b66b8b9c0a61035ffde11
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>与 Operations Management Suite (OMS) 集成
 Operations Management Suite 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。  除了使用 OMS 的标准功能外，还可以将其与其他管理应用程序和服务集成，以提供混合管理环境、提供特定于环境的自定义管理方案或向客户提供自定义管理体验。  本文概述了用于与 OMS 服务集成的不同选项以及指向提供详细技术信息的文章链接。 
@@ -26,7 +26,7 @@ Operations Management Suite 是 Microsoft 的基于云的 IT 管理解决方案�
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics 收集的管理数据存储在 Azure 中托管的存储库中。  存储在存储库中的所有数据均可在日志搜索中使用，这样可以快速分析极大量的数据。  集成要求可能是将新数据填充在存储库中以供分析，或提取存储库中的数据以提供新可视化或与其他管理工具集成。
 
-存储库中的每段数据作为记录存储。  填充存储库时，应向用户提供解决方案使用的记录类型及其属性说明。  当检索数据时，你会需要此信息关于您正在使用的数据。
+存储库中的每段数据作为记录存储。  填充存储库时，应向用户提供解决方案使用的记录类型及其属性说明。  检索数据时，需要有关所处理的数据的信息。
 
 ![填充 OMS 存储库](media/operations-management-suite-integration/repository.png)
 

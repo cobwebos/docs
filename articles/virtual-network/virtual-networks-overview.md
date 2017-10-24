@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
 ms.openlocfilehash: 6d6afd2b9b956138ed400fbd6cabd3b480fde0f0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-network"></a>Azure 虚拟网络
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 08/03/2017
 若要了解有关以下 Azure 虚拟网络功能的详细信息，请单击功能：
 - **[隔离：](#isolation)**VNet 之间彼此隔离。 可以为使用相同 CIDR 地址块的开发、测试和生产创建单独的 VNet。 相反地，也可以创建使用不同 CIDR 地址的多个 VNet 并将网络连接在一起。 可将一个 VNet 分为多个子网。 Azure 为连接到 VNet 的 VM 和云服务角色实例提供内部名称解析。 可选择配置 VNet 来使用自己的 DNS 服务器，而不使用 Azure 内部名称解析。
 - **[Internet 连接：](#internet)**默认情况下，所有 Azure 虚拟机 (VM) 和连接到 VNet 的云服务角色实例都具有 Internet 访问权限。 根据需要，还可对特定资源启用入站访问。
-- **[Azure 资源连接：](#within-vnet)**云服务和 VM 等 Azure 资源可连接到同一 VNet。 即使资源在不同的子网中，也可使用专用 IP 地址连接彼此。 Azure 提供子网、VNet 和本地网络之间的默认路由，因此无需配置和管理路由。
-- **[VNet 连接性：](#connect-vnets)**VNet 可相互之间进行连接，从而使连接到任何 VNet 的资源与任何其他 VNet 上的所有资源进行通信。
+- **[Azure 资源连接：](#within-vnet)**云服务和 VM 等 Azure 资源均可连接到同一 VNet。 即使资源在不同的子网中，也可使用专用 IP 地址连接彼此。 Azure 提供子网、VNet 和本地网络之间的默认路由，因此无需配置和管理路由。
+- **[VNet 连接性：](#connect-vnets)**VNet 之间可相互进行连接，从而使连接到任何 VNet 的资源与任何其他 VNet 上的所有资源进行通信。
 - **[本地连接性：](#connect-on-premises)**可通过网络和 Azure 间的专用网络连接或基于 Internet 的站点到站点 VPN 连接将 VNet 连接到本地网络。
 - **[流量筛选：](#filtering)**按源 IP 地址和端口、目标 IP 地址和端口以及协议对 VM 和云服务角色实例网络流量进行入站和出站筛选。
 - **[路由：](#routing)**可选择通过配置自己的路由或通过网关使用 BGP 路由来替代 Azure 默认路由。
@@ -43,7 +43,7 @@ ms.lasthandoff: 08/03/2017
 - 将 VNet 细分为一个或多个子网，并向每个子网分配一部分 VNet 地址空间。
 - 使用 Azure 提供的名称解析或指定自己的 DNS 服务器以供连接到 VNet 的资源使用。 若要了解 VNet 中名称解析的详细信息，请阅读 [VM 和云服务的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)一文。
 
-## <a name = "internet"></a>连接到 Internet
+## <a name = "internet"></a>连接 Internet
 默认情况下，连接到 VNet 的所有资源都具有 Internet 出站连接。 资源的专用 IP 地址是由 Azure 基础结构转换到公共 IP 地址中的源网络地址 (SNAT)。 若要了解出站网络连接的详细信息，请阅读[了解 Azure 中的出站连接](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address)一文。 可通过实现自定义路由和流量筛选更改默认连接。
 
 若要从 Internet 入站通信到 Azure 资源或出站通信到不具 SNAT 的 Internet，则必须向资源分配一个公共 IP 地址。 若要详细了解公共 IP 地址，请阅读 [公共 IP 地址](virtual-network-public-ip-address.md)一文。

@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>如何在 Azure 搜索中对搜索结果分页
 本文提供有关如何使用 Azure 搜索服务 REST API 实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>布局
-在搜索结果页中，你可能想要显示缩略图、 字段的子集和完整的产品页面的链接。
+在搜索结果页中，你可能想要显示缩略图、字段子集和完整产品页面的链接。
 
  ![][2]
 

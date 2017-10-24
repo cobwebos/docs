@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
 ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) 群集：Azure 教程
 > [!IMPORTANT]
@@ -62,7 +62,7 @@ ms.lasthandoff: 07/11/2017
 4. 查找 CentOS 7 虚拟机映像的名称。
 
         azure vm image list | findstr CentOS
-   输出类似于 `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926`。
+   输出将类似于 `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926`。
 
    在下一步中使用该名称。
 5. 创建 VM 模板，并将 /path/to/key.pem 替换为生成的 .pem SSH 密钥的存储路径。
@@ -237,7 +237,7 @@ ms.lasthandoff: 07/11/2017
  - 传递 SSH 证书 .pem 文件，将 /path/to/key.pem 替换为已生成的 .pem SSH 密钥的存储路径。
 
    > [!NOTE]
-   > 为清楚起见，以下命令拆开显示在多行内，但每个都应作为一整行进行输入。
+   > 为清楚起见，以下命令已拆分为多行，但你应将每条命令作为一行输入。
    >
    >
         azure vm create
@@ -274,7 +274,7 @@ ms.lasthandoff: 07/11/2017
         --ssh 24
         --vm-name mariadb3
         --connect mariadbha mariadb-galera-image azureuser
-3. 需要获取三个 VM 各自的内部 IP 地址，才能执行下一步：
+3. 下一步将需要获取这三个 VM 的内部 IP 地址：
 
     ![获取 IP 地址](./media/mariadb-mysql-cluster/IP.png)
 4. 使用 SSH 登录到这三个 VM，并编辑每个 VM 的配置文件。
@@ -347,7 +347,7 @@ CLI 将负载均衡器探测间隔设置为 15 秒，这可能有点太长。 �
 ## <a name="next-steps"></a>后续步骤
 在本文中，在运行 CentOS 7 的 Azure 虚拟机上创建了包含三个节点的 MariaDB + Galera 高度可用群集。 这些 VM 通过 Azure 负载均衡器实现了负载均衡。
 
-你可能希望了解[在 Linux 上对 MySQL 进行群集的其他方式](mysql-cluster.md)并探究如何[优化和测试 Azure Linux VM 上的 MySQL 性能](optimize-mysql.md)。
+你可能需要了解[在 Linux 上对 MySQL 进行群集的其他方式](mysql-cluster.md)，并探究如何[优化和测试 Azure Linux VM 上的 MySQL 性能](optimize-mysql.md)。
 
 <!--Anchors-->
 [Architecture overview]:#architecture-overview

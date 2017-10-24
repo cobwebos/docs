@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: edmacauley
 ms.openlocfilehash: ee7398304b7ba864eff17eb6e7d7c3777f4a9fe6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>使用 C 和 C++ 连接到 SQL 数据库
 本帖子适用于尝试接到 Azure SQL DB 的 C 和 C++ 开发人员。 它分为多个部分，可以跳转到最感兴趣的部分。 
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/18/2017
 * [Visual Studio](https://www.visualstudio.com/downloads/)。 必须安装 C++ 语言组件才能构建并运行此示例。
 * [Visual Studio Linux 开发](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e)。 如果在 Linux 上进行开发，则还必须安装 Visual Studio Linux 扩展。 
 
-## <a id="AzureSQL"></a>Azure SQL 数据库和虚拟机上的 SQL Server
+## <a id="AzureSQL"></a>虚拟机上的 Azure SQL 数据库和 SQL Server
 Azure SQL 构建在 Microsoft SQL Server 上，旨在提供高可用性、高性能和可缩放的服务。 在本地运行的专有数据库上使用 SQL Azure 有很多优势。 有了 SQL Azure，除数据库的内容和结构外，无需对数据库进行安装、设置、维护或管理。 数据库中内置了容错和冗余等，这些都是我们担心的典型问题。 
 
 Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据库（作为服务）和虚拟机 (VM) 上的 SQL Server。 我们不会详细介绍两者的差异，但对于基于云的新应用程序而言，Azure SQL 数据库会是最佳匹配，藉此可利用云服务提供的成本节约和性能优化。 如果正在考虑将本地应用程序迁移或扩展到云，Azure 虚拟机上的 SQL Server 可能更适合你。 为了本文的简单起见，让我们创建一个 Azure SQL 数据库。 
@@ -51,9 +51,9 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 
 ![ODBCConnectionStringProps](./media/sql-database-develop-cplusplus-simple/dbconnection.png)
 
-复制 **ODBC (包括 Node.js) [SQL 身份验证]** 字符串的内容。 稍后，我们使用此字符串从 C++ ODBC 命令行解释程序进行连接。 此字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 
+复制 **ODBC (包括 Node.js) [SQL 身份验证]** 字符串的内容。 稍后，我们将使用此字符串从 C++ ODBC 命令行解释程序进行连接。 此字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 
 
-## <a id="Firewall"></a>步骤 3：将 IP 添加到防火墙
+## <a id="Firewall"></a>步骤 3：添加 IP 到防火墙
 转到数据库服务器的防火墙部分，并[使用以下步骤将客户端 IP 添加到防火墙](sql-database-configure-firewall-settings.md)，以确保我们可以建立成功的连接： 
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
@@ -78,9 +78,9 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 祝贺你！ 现在已成功使用 Windows 上的 C++ 和 ODBC 连接到 Azure SQL。 也可以继续阅读以对 Linux 平台进行相同的操作。 
 
 ## <a id="Linux"></a>步骤 5：从 Linux C/C++ 应用程序连接
-或许尚未听说，但 Visual Studio 现在已允许开发 C++ Linux 应用程序。 可以在 [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)（用于 Linux 开发的 Visual C++）博客中阅读此新方案。 若要为 Linux 生成，需要运行 Linux 分发的远程计算机。 如果没有可用的远程计算机，可以使用 [Linux Azure 虚拟机](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速设置。 
+如果你尚未收到消息，Visual Studio 现在同样允许你开发 C++ Linux 应用程序。 可以在 [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)（用于 Linux 开发的 Visual C++）博客中阅读此新方案。 要针对 Linux 构建，将需要一台运行 Linux 发行版的远程计算机。 如果没有可用的远程计算机，可以使用 [Linux Azure 虚拟机](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速设置。 
 
-对于本教程，我们假设已设置好 Ubuntu 16.04 Linux 分发。 此处的步骤也适用于 Ubuntu 15.10、 Red Hat 6 和 Red Hat 7。 
+针对此教程。让我们假设你已设置 Ubuntu 16.04 Linux 分布。 此处的步骤也适用于 Ubuntu 15.10、 Red Hat 6 和 Red Hat 7。 
 
 按照以下步骤安装发行版 SQL 和 ODBC 所需的库：
 
@@ -99,7 +99,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 
 ![新建项目模板](./media/sql-database-develop-cplusplus-simple/template.png)
 
-然后，可以添加 [ 新的 C 源文件，并将其替换为此内容](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c)。 使用 ODBC APIs SQLAllocHandle、SQLSetConnectAttr 和 SQLDriverConnect，应可以初始化并建立到数据库的连接。 和 Windows ODBC 示例一样，需要使用数据库连接字符串参数的详细信息（之前从 Azure 门户复制）替换 SQLDriverConnect 调用。 
+然后，可以添加[新 C 源文件，并将其替换为此内容](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c)。 使用 ODBC APIs SQLAllocHandle、SQLSetConnectAttr 和 SQLDriverConnect，应可以初始化并建立到数据库的连接。 与使用 Windows ODBC 示例类似，需要将 SQLDriverConnect 调用替换为先前从 Azure 门户复制的数据库连接字符串参数的详细信息。 
 
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
@@ -121,7 +121,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 
 祝贺你！ 已成功完成本教程，现在可以从 Windows 和 Linux 平台上的 C++ 连接到 Azure SQL DB。
 
-## <a id="GetSolution"></a>获取完整的 C/C++ 教程解决方案
+## <a id="GetSolution"></a>获取完整版 C/C++ 教程解决方案
 可以在 github 中查找包括本文所有示例的 GetStarted 解决方案：
 
 * [ODBC C++ Windows 示例](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29)，下载 Windows C++ ODBC 示例以连接到 Azure SQL

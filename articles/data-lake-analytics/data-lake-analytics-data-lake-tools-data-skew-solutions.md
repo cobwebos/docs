@@ -15,16 +15,16 @@ ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
 ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
 
 ## <a name="what-is-data-skew"></a>什么是数据倾斜？
 
-简而言之，数据倾斜就是某个值的数据分布不均衡。 假设你已分配 50 的税务检查者审核纳税申报单，为每个美国状态的一个检查器。 怀俄明州的检查员几乎没什么事，因为该州的人口很少。 而加利福尼亚州的检查员则忙碌异常，因为该州的人口很多。
+简而言之，数据倾斜就是某个值的数据分布不均衡。 假设你指定了 50 名税务检查员来审核退税，每个州（美国）一位检查员。 怀俄明州的检查员几乎没什么事，因为该州的人口很少。 而加利福尼亚州的检查员则忙碌异常，因为该州的人口很多。
     ![数据倾斜问题示例](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
 在上面的情形中，数据在所有税务检查员之间的分配并不均衡，也就是说，某些检查员的工作量超出其他检查员。 在自己的作业中，会经常遇到类似此处例举的税务检查员的情形。 用更技术化的术语来说，数据倾斜是指一个顶点获得的数据量远远超出其对等项，导致该顶点的工作量超出其他顶点，最终延缓了整个作业的完成速度。 更糟的是，作业可能会失败，因为顶点可能存在限制，例如 5 小时的运行时限制和 6 GB 的内存限制。

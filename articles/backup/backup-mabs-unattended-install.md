@@ -13,10 +13,10 @@ ms.workload: storage-backup-recovery
 ms.date: 05/30/2017
 ms.author: markgal;masaran
 ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>运行 Azure 备份服务器 v2 的无人参与安装
 
@@ -58,10 +58,10 @@ ms.lasthandoff: 07/11/2017
   ```
 
 可以将以下这些标志用于安装：</br>
-**/f**：.ini 文件路径</br>
-**/l**：日志路径</br>
-**/i**：安装路径</br>
-**/x**：卸载路径</br>
+/f：.ini 文件路径</br>
+/l：日志路径</br>
+/i：安装路径</br>
+/x：卸载路径</br>
 
 ## <a name="next-steps"></a>后续步骤
 安装备份服务器之后，了解如何准备服务器或开始保护工作负载。

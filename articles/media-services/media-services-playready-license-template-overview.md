@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
 ms.openlocfilehash: be19f616e36916655390cd05e738e93c08dcdf68
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述
-Azure 媒体服务现在提供有用于传送 Microsoft PlayReady 许可证的服务。 当最终用户播放器（例如 Silverlight）尝试播放受 PlayReady 保护的内容时，将向许可证传送服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
+Azure 媒体服务现在提供有用于传送 Microsoft PlayReady 许可证的服务。 当最终用户播放器（例如 Silverlight）尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
 
-媒体服务还提供允许配置 PlayReady 许可证的 API。 许可证包含在用户尝试播放受保护的内容时要由 PlayReady DRM 运行时强制实施的权限和限制。
+媒体服务还提供用于配置 PlayReady 许可证的 API。 许可证包含在用户尝试播放受保护的内容时要由 PlayReady DRM 运行时强制实施的权限和限制。
 以下是可以指定的 PlayReady 许可证限制的一些示例：
 
 * 该许可证开始生效的日期/时间。

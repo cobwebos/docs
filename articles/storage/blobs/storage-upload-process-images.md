@@ -14,14 +14,12 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
+ms.openlocfilehash: a204498016ff837c5247009eaaffbd4f79285d0b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 2d2e49f92fdc64f3ebb2326d08f7d4304d8ffa43
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>使用 Azure 存储在云中上传图像数据
 
 本教程是一个系列中的第一部分。 本教程演示如何部署一个 Web 应用，它使用 Azure 存储客户端库将图像上传到存储帐户。 完成后，你将具有一个通过 Azure 存储来存储和显示图像的 Web 应用。
@@ -57,7 +55,7 @@ az group create --name myResourceGroup --location westcentralus
 此示例将图像上传到 Azure 存储帐户中的 blob 容器。 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数据对象。 使用 [az storage account create](/cli/azure/storage/account#create) 命令在创建的资源组中创建存储帐户。 
 
 > [!IMPORTANT] 
-> 在本教程的第 2 部分中，你会对 blob 存储使用事件订阅。 当前仅对美国中西部和美国西部的 Blob 存储帐户支持事件订阅。 由于存在此限制，因此必须创建由示例应用用于存储图像和缩略图的 Blob 存储帐户。   
+> 在本教程的第 2 部分中，你会对 blob 存储使用事件订阅。 当前仅对美国中西部和美国西部 2 的 Blob 存储帐户支持事件订阅。 由于存在此限制，因此必须创建由示例应用用于存储图像和缩略图的 Blob 存储帐户。   
 
 在以下命令中，请将 `<blob_storage_account>` 占位符替换成自己的 Blob 存储帐户的全局唯一名称。  
 
@@ -226,4 +224,3 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 > [!div class="nextstepaction"]
 > [使用事件网格触发 Azure 函数以调整上传的图像大小](../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-

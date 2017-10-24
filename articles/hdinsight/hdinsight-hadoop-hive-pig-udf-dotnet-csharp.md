@@ -14,18 +14,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: b192b19c27045ab6a98baf382e467a0a74d30861
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 7643050c4ba8929abcf77476970a2f99e992579d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>在 HDInsight 中的 Hadoop 上将 C# 用户定义函数与 Hive 和 Pig 流式处理配合使用
 
-了解如何在 HDInsight 上将 C# 用户定义函数 (UDF) 与 Apache Hive 和 Pig 配合使用。
+了解如何在 HDInsight 中将 C# 用户定义函数 (UDF) 与 Apache Hive 和 Pig 配合使用。
 
 > [!IMPORTANT]
 > 本文档中的各个步骤适用于基于 Linux 和基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md)。
@@ -38,7 +37,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     * 使用任何需要的 IDE。 我们建议使用 [Visual Studio](https://www.visualstudio.com/vs) 2015、2017 或 [Visual Studio Code](https://code.visualstudio.com/)。 本文档中的各个步骤都使用 Visual Studio 2017。
 
-* 将 .exe 文件上传到群集以及运行 Pig 和 Hive 作业的方法。 我们建议使用针对 Visual Studio 的 Data Lake 工具、Azure PowerShell 和 Azure CLI。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具上传文件和运行 Hive 查询示例。
+* 将 .exe 文件上传到群集以及运行 Pig 和 Hive 作业的方法。 建议使用针对 Visual Studio 的 Data Lake 工具、Azure PowerShell 和 Azure CLI。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具上传文件和运行 Hive 查询示例。
 
     有关运行 Hive 查询和 Pig 作业的其他方法的信息，请参阅以下文档：
 
@@ -69,7 +68,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     > [!IMPORTANT]
     > 如果使用的是基于 Linux 的 HDInsight 群集，请选择“.NET Framework 4.5”。 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)。
 
-2. 将 **Program.cs** 的内容替换为以下内容：
+2. 将 Program.cs 的内容替换为以下代码：
 
     ```csharp
     using System;
@@ -157,7 +156,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     }
     ```
 
-    此应用程序将分析发送自 Pig 的行，并对以 `java.lang.Exception` 开头的行重新设置格式。
+    此代码分析发送自 Pig 的行，并对以 `java.lang.Exception` 开头的行重新设置格式。
 
 3. 保存 **Program.cs**，并生成项目。
 
@@ -270,4 +269,3 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 * [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-

@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: sangarg
 ms.openlocfilehash: 122cb48149477f295a65b8ee623c647b6db10a86
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
 可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](https://msdn.microsoft.com/library/azure/dn971527.aspx)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/11/2017
 * 队列不保证严格的 FIFO 排序。
 * 队列不读取自己的写入。 项在事务中排队时，该项对于同一事务中的取消排队者来说为不可见。
 * 取消排队不是相互隔离的。 如果项 A 在事务 txnA 中取消排队，则即使 txnA 尚未提交，项 A 也不会对并发事务 txnB 可见。  如果 txnA 中止，A 会立刻变得对 txnB 可见。
-* 可以先使用 TryDequeueAsync，然后中止事务，从而实施 TryPeekAsync 行为。 “编程模式”部分提供了一个这样的示例。
+* 可以先使用 TryDequeueAsync，再中止事务，从而实现 TryPeekAsync 行为。 “编程模式”部分提供了一个这样的示例。
 * 计数是非事务性的。 可以通过计数来了解队列中的元素数目，但计数只代表一个时间点的情况，可靠性不强。
 * 不应在事务处于活动状态时对取消排队项执行开销昂贵的处理，以免事务长时间运行，对系统造成性能影响。
 
@@ -145,7 +145,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 同一项不会出现在两个列表中。 因此，如果 dequeue1 包含 10、30，则 dequeue2 就会包含 20、40。
 
-- 案例 3：以中止事务方式取消排队时的排序
+- 案例 3：通过中止事务排定取消排队任务顺序
 
 中止正在取消排队的事务，项就会重新回到队列头。 项回到队列头的顺序是不确定的。 请看以下代码：
 
@@ -269,7 +269,7 @@ while(!cancellationToken.IsCancellationRequested)
 ### <a name="best-effort-drain"></a>尽力清空
 考虑到数据结构的并发特性，不保证队列会被清空。  即使队列没有正在进行的用户操作，也可能会出现对 TryDequeueAsync 进行具体调用时不返回项（此前已排队并提交）的情况。  排队的项最终必定会变得对取消排队操作可见，但在没有带外通信机制的情况下，独立的使用者无法知道队列是否已达到稳定状态，即使系统已停止所有生成者且不允许新的排队操作。 因此，清空操作只能尽力而为，其执行情况如下所示。
 
-用户应停止所有后续的生成者和使用者任务，等待正在进行的事务提交或中止，然后尝试清空队列。  如果用户知道队列中预计会有多少项，则可设置一个通知，在所有项都已取消排队后发出指示。
+用户应停止所有后续的生成者和使用者任务，等待正在进行的事务提交或中止，并尝试清空队列。  如果用户知道队列中预计会有多少项，则可设置一个通知，在所有项都已取消排队后发出指示。
 
 ```
 int numItemsDequeued;
@@ -306,7 +306,7 @@ do
 ```
 
 ### <a name="peek"></a>速览
-可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 *TryDequeueAsync*，然后中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
+可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 TryDequeueAsync，再中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
 
 ```
 using (var txn = this.StateManager.CreateTransaction())

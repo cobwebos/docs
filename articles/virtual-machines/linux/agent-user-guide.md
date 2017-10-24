@@ -17,10 +17,10 @@ ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -129,7 +129,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 
 * deprovision+user：执行 -deprovision（上述）下面的所有操作，还将删除最后预配的用户帐户（从 /var/lib/waagent 中获得）和关联数据。 此参数是取消对以前在 Azure 中设置的映像的设置以便捕获并重新使用该映像时的参数。
 * version：显示 waagent 的版本
-* serialconsole：配置 GRUB 以将 ttyS0（第一个串行端口）标记为启动控制台。 这可确保将内核启动日志发送到串行端口并可用于调试。
+* serialconsole：配置 GRUB 以将 ttyS0（第一个串行端口）标记为启动控制台。 这可确保将内核启动日志发送到串行端口并适用于调试。
 * daemon：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
 * 开始：将 waagent 作为后台进程运行
 
@@ -183,7 +183,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 
 如果设置此参数，则会在设置过程中从 /etc/ssh/ 中删除所有 SSH 主机密钥对（ecdsa、dsa 和 rsa）。 并且会生成一个全新的密钥对。
 
-此全新密钥对的加密类型可由 Provisioning.SshHostKeyPairType 项进行配置。 请注意，在重新启动 SSH 监控程序时（例如，在重新引导时），某些分发将为任何缺少的加密类型重新创建 SSH 密钥对。
+此全新密钥对的加密类型可由 Provisioning.SshHostKeyPairType 项进行配置。 请注意，在重新启动 SSH 监控程序时（例如，重新启动时），某些分发将为任何缺失的加密类型重新创建 SSH 密钥对。
 
 **Provisioning.SshHostKeyPairType：**  
 类型：字符串  
@@ -229,7 +229,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：布尔值  
 默认值：y
 
-如果设置此参数，则当“ResourceDisk.Filesystem”中用户请求的 filesystem 类型是“ntfs”之外的任何值时，平台提供的资源磁盘通过 waagent 进行格式化和装载。 磁盘上将提供类型为 Linux (83) 的单个分区。 请注意，如果可以成功装载此分区，则不会对其进行格式化。
+如果设置此参数，则当“ResourceDisk.Filesystem”中用户请求的 filesystem 类型是“ntfs”之外的任何值时，平台提供的资源磁盘将通过 waagent 进行格式化和安装。 将在磁盘上提供类型 Linux (83) 的单个分区。 请注意，如果可以成功安装此分区，则将不会对其进行格式化。
 
 **ResourceDisk.Filesystem：**  
 类型：字符串  
@@ -253,7 +253,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：布尔值  
 默认值：n
 
-如果设置此参数，则将在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
+如果设置此参数，则会在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
 
 **ResourceDisk.SwapSizeMB：**  
 类型：整数  
@@ -265,7 +265,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：布尔值  
 默认值：n
 
-如果设置此参数，日志的详细程度则会有所提升。 Waagent 将日志记录到 /var/log/waagent.log 并使用系统 logrotate 功能来循环日志。
+如果设置此参数，则将增大日志的详细程度。 Waagent 将日志记录到 /var/log/waagent.log 并使用系统 logrotate 功能来循环日志。
 
 **OS.EnableRDMA**  
 类型：布尔值  

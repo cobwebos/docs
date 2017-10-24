@@ -17,15 +17,15 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9ccac43ae365d79bfd6ac1edf4d9a799c11356a1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>使用查询控制台运行 Hive 查询
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-本文介绍如何在浏览器中使用 HDInsight 查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
+在本文中，将了解如何在浏览器中使用 HDInsight 查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
 
 > [!IMPORTANT]
 > HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -38,9 +38,9 @@ ms.lasthandoff: 08/03/2017
 * 基于 Windows 的 HDInsight Hadoop 群集
 * 现代 Web 浏览器
 
-## <a id="run"></a> 使用查询控制台运行 Hive 查询
+## <a id="run"></a>使用查询控制台运行 Hive 查询
 1. 打开 Web 浏览器并导航到 **https://CLUSTERNAME.azurehdinsight.net**，其中 **CLUSTERNAME**是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
-2. 在页面顶部的链接中，选择“Hive 编辑器”。 此时将显示一个窗体，可在其中输入要在 HDInsight 群集上运行的 HiveQL 语句。
+2. 在页面顶部的链接中，选择“Hive 编辑器”。 此时会显示一个窗体，可以在其中输入要在 HDInsight 群集上运行的 HiveQL 语句。
 
     ![hive 编辑器](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 08/03/2017
    * **CREATE EXTERNAL TABLE**：在 Hive 中创建新的“外部”表。 外部表仅在 Hive 中存储表定义；数据会保留在原始位置。
 
      > [!NOTE]
-     > 预期以外部源更新基础数据（例如自动化数据上传过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询使用最新数据时，必须使用外部表。
+     > 预期以外部源更新基础数据（例如自动化数据上传过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
      >
      > 删除外部表**不会**删除数据，只会删除表定义。
      >
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/03/2017
 4. 当“状态”字段更改为“已完成”时，请选择与作业对应的“查看详细信息”。 在详细信息页上，“作业输出”包含 `[ERROR]    3`。 可以使用此字段下面的“下载”按钮下载包含作业的输出的文件。
 
 ## <a id="summary"></a>摘要
-查询控制台提供了一种简单的方法，可在 HDInsight 群集上运行 Hive 查询，监视作业状态，以及检索输出。
+如你所见，查询控制台提供了简单的方法让你在 HDInsight 群集上运行 Hive 查询，监视作业状态，以及检索输出。
 
 要了解有关使用 Hive 查询控制台运行 Hive 作业的详细信息，请选择查询控制台顶部的“入门”，并使用提供的示例。 每个示例演练使用 Hive 分析数据的过程，包括有关本示例中使用的 HiveQL 语句的说明。
 

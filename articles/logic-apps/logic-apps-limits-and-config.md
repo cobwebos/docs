@@ -1,6 +1,6 @@
 ---
-title: "逻辑应用限制和配置 | Microsoft Docs"
-description: "适用于逻辑应用的服务限制和配置值的概述。"
+title: "限制和配置 - Azure 逻辑应用 | Microsoft Docs"
+description: "Azure 逻辑应用的服务限制和配置值"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -12,153 +12,173 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/25/2017
 ms.author: LADocs; jehollan
+ms.openlocfilehash: 4babb3033e75edc5c85ce89dac569b9f2beae9f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 5d905d410e70c5b635a3f6221e7e0c0bda7ad140
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="logic-app-limits-and-configuration"></a>逻辑应用限制和配置
+# <a name="logic-apps-limits-and-configuration"></a>逻辑应用限制和配置
 
-以下是有关适用于 Azure 逻辑应用的当前限制和配置详细信息的信息。
+本主题介绍 Azure 逻辑应用的当前限制和配置的详细信息。
 
 ## <a name="limits"></a>限制
 
 ### <a name="http-request-limits"></a>HTTP 请求限制
 
-以下是针对单个 HTTP 请求和/或连接器调用的限制。
+这些限制适用于单个 HTTP 请求或连接器调用。
 
 #### <a name="timeout"></a>超时
 
-|Name|限制|说明|
-|----|----|----|
-|请求超时|120 秒|[异步模式](../logic-apps/logic-apps-create-api-app.md)或 [Until 循环](logic-apps-loops-and-scopes.md)可以根据需要进行补偿|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 请求超时 | 120 秒 | [异步模式](../logic-apps/logic-apps-create-api-app.md)或 [Until 循环](logic-apps-loops-and-scopes.md)可以根据需要进行补偿 |
+|||| 
 
 #### <a name="message-size"></a>消息大小
 
-|Name|限制|说明|
-|----|----|----|
-|消息大小|100 MB|某些连接器和 API 可能不支持 100 MB |
-|表达式计算限制|131,072 个字符|`@concat()`、`@base64()`、`string` 不能超过此限制|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 消息大小 | 100 MB | 某些连接器和 API 可能不支持 100 MB。 | 
+| 表达式计算限制 | 131,072 个字符 | `@concat()`、`@base64()`、`string` 的长度不能超过此限制。 | 
+|||| 
 
 #### <a name="retry-policy"></a>重试策略
 
-|Name|限制|说明|
-|----|----|----|
-|重试次数|10| 默认值为 4。 可以使用[重试策略参数](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)进行配置|
-|重试最大延迟|1 小时	|可以使用[重试策略参数](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)进行配置|
-|重试最小延迟|5 秒|可以使用[重试策略参数](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)进行配置|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 重试次数 | 90 | 默认值为 4。 可以使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)进行配置。 | 
+| 重试最大延迟 | 1 天 | 可以使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)进行配置。 | 
+| 重试最小延迟 | 5 秒 | 可以使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)进行配置。 |
+|||| 
 
 ### <a name="run-duration-and-retention"></a>运行持续时间和保留期
 
-以下是针对单个逻辑应用运行的限制。
+这些限制适用于单个逻辑应用运行。
 
-|名称|限制|说明|
-|----|----|----|
-|运行持续时间|90 天||
-|存储保留期|90 天|从运行开始时间开始计算|
-|最小重复间隔|1 秒|| 对于带有应用服务计划的逻辑应用为 15 秒
-|最大重复间隔|500 天||
+| Name | 限制 | 
+| ---- | ----- | 
+| 运行持续时间 | 90 天 | 
+| 存储保留期 | 90 天（从运行开始时间计算） | 
+| 最小重复间隔 | 1 秒 </br>对于带有应用服务计划的逻辑应用：15 秒 | 
+| 最大重复间隔 | 500 天 | 
+||| 
 
-如果在正常处理流中需要超过运行持续时间或存储保留期限制，请[与我们联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
-
+若要在正常处理流中超出运行持续时间或存储保留期限制，请[与我们联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 ### <a name="looping-and-debatching-limits"></a>循环和解除批处理限制
 
-以下是针对单个逻辑应用运行的限制。
+这些限制适用于单个逻辑应用运行。
 
-|名称|限制|说明|
-|----|----|----|
-|ForEach 项|100,000|可以使用[查询操作](../connectors/connectors-native-query.md)根据需要筛选更大数组|
-|Until 迭代|5,000||
-|SplitOn 项|100,000||
-|ForEach 并行度|50| 默认值为 20。 可以通过将 `"operationOptions": "Sequential"` 添加到 `foreach` 操作设置为顺序 foreach，或设置为使用 `runtimeConfiguration` 的特定级别的并行度|
-
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| ForEach 项 | 100,000 | 可以使用[查询操作](../connectors/connectors-native-query.md)根据需要筛选更大数组。 | 
+| Until 迭代 | 5,000 | | 
+| SplitOn 项 | 100,000 | | 
+| ForEach 并行度 | 50 | 默认值为 20。 <p>要在 ForEach 循环中设置特定并行级别，请在 `foreach` 操作中设置 `runtimeConfiguration` 属性。 <p>要按顺序运行 ForEach 循环，请在 `foreach` 操作中将 `operationOptions` 属性设置为“顺序”。 | 
+|||| 
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-以下是针对单个逻辑应用实例的限制。 
+这些限制适用于单个逻辑应用实例。
 
-|名称|限制|说明|
-|----|----|----|
-|每 5 分钟执行的操作数 |100,000|可以根据需要在多个应用之间分配工作负荷|
-|操作并发传出调用数 |~2,500|减少并发请求数，或根据需要减少持续时间|
-|运行时终结点并发传入调用数 |~1,000|减少并发请求数，或根据需要减少持续时间|
-|运行时终结点读取每 5 分钟调用一次 |60,000|可以根据需要在多个应用之间分配工作负荷|
-|运行时终结点调用每 5 分钟调用一次 |45,000|可以根据需要在多个应用之间分配工作负荷|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 每 5 分钟执行的操作数 | 100,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
+| 操作并发传出调用数 | ~2,500 | 减少并发请求数，或根据需要减少持续时间。 | 
+| 运行时终结点：并发传入调用数 | ~1,000 | 减少并发请求数，或根据需要减少持续时间。 | 
+| 运行时终结点：每 5 分钟读取的调用数 | 60,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
+| 运行时终结点：每 5 分钟调用的调用数 | 45,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
+|||| 
 
-如果在正常处理中需要超过此限制，或想要运行在一段时间内可能超过此限制的负载测试，请[与我们联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
+若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与我们联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
-### <a name="definition-limits"></a>定义限制
+### <a name="logic-app-definition-limits"></a>逻辑应用定义限制
 
-以下是针对单个逻辑应用定义的限制。
+这些限制适用于单个逻辑应用定义。
 
-|名称|限制|说明|
-|----|----|----|
-|每个工作流的操作数|500|可以添加嵌套工作流以根据需要对此限制进行扩展|
-|允许操作嵌套深度|8|可以添加嵌套工作流以根据需要对此限制进行扩展|
-|每个订阅每个区域的工作流数|1000||
-|每个工作流的触发数|10||
-|Switch 作用域事例限制|25||
-|每个工作流的变量数|250||
-|每个表达式的最大字符数|8,192||
-|最大 `trackedProperties` 大小（以字符为单位）|16,000|
-|`action`/`trigger` 名称限制|80||
-|`description` 长度限制|256||
-|`parameters` 限制|50||
-|`outputs` 限制|10||
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
+| 允许操作嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 | 
+| 每个订阅每个区域的工作流数 | 1000 | | 
+| 每个工作流的触发数 | 10 | | 
+| Switch 作用域事例限制 | 25 | | 
+| 每个工作流的变量数 | 250 | | 
+| 每个表达式的最大字符数 | 8,192 | | 
+| 最大 `trackedProperties` 大小（以字符为单位） | 16,000 | 
+| `action`/`trigger` 名称限制 | 80 | | 
+| `description` 长度限制 | 256 | | 
+| `parameters` 限制 | 50 | | 
+| `outputs` 限制 | 10 | | 
+|||| 
+
+<a name="custom-connector-limits"></a>
+
+### <a name="custom-connector-limits"></a>自定义连接器限制
+
+这些限制适用于可从 Web API 创建的自定义连接器。
+
+| Name | 限制 | 
+| ---- | ----- | 
+| 可创建的自定义连接器数量 | 每个 Azure 订阅 1,000 | 
+| 每分钟的请求数量（对于自定义连接器创建的每个连接） | 500 个请求/连接器创建的每个连接 |
+||| 
 
 ### <a name="integration-account-limits"></a>集成帐户限制
 
-下面介绍了可添加到集成帐户的项目所要遵循的限制。
+这些限制适用于可添加到集成帐户的项目。
 
-|名称|限制|说明|
-|----|----|----|
-|架构|8 MB|可以使用 [blob URI](logic-apps-enterprise-integration-schemas.md) 上传大于 2 MB 的文件 |
-|映射（XSLT 文件）|2 MB| |
-|运行时终结点读取每 5 分钟调用一次 |60,000|可以根据需要在多个帐户之间分配工作负荷|
-|运行时终结点调用每 5 分钟调用一次 |45,000|可以根据需要在多个帐户之间分配工作负荷|
-|运行时终结点每 5 分钟的跟踪调用数 |45,000|可以根据需要在多个帐户之间分配工作负荷|
-|阻止并发调用的运行时终结点 |~1,000|减少并发请求数，或根据需要减少持续时间|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 架构 | 8 MB | 可以使用 [blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) 上传大于 2 MB 的文件。 | 
+| 映射（XSLT 文件） | 2 MB | | 
+| 运行时终结点：每 5 分钟读取的调用数 | 60,000 | 可以根据需要在多个帐户之间分配工作负荷。 | 
+| 运行时终结点：每 5 分钟调用的调用数 | 45,000 | 可以根据需要在多个帐户之间分配工作负荷。 | 
+| 运行时终结点：每 5 分钟跟踪的调用数 | 45,000 | 可以根据需要在多个帐户之间分配工作负荷。 | 
+| 运行时终结点：阻止并发调用数 | ~1,000 | 减少并发请求数，或根据需要减少持续时间。 | 
+|||| 
 
-下面介绍了可添加到集成帐户的项目的数量限制。
+这些限制适用于可添加到集成帐户的项目数量。
 
-免费定价层
+#### <a name="free-pricing-tier"></a>免费定价层
 
-|名称|限制|说明|
-|----|----|----|
-|协议|10||
-|其他项目类型|25|类型包括合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 协议 | 10 | | 
+| 其他项目类型 | 25 |项目类型包括合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。 | 
+|||| 
 
-标准定价层
+#### <a name="standard-pricing-tier"></a>标准定价层
 
-|名称|限制|说明|
-|----|----|----|
-|任何类型的项目|500|类型包括协议、合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| 任何类型的项目 | 500 | 项目类型包括协议、合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。 | 
+|||| 
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B 协议（AS2、X12、EDIFACT）消息大小
 
-以下是对 B2B 协议的限制
+这些限制适用于 B2B 协议。
 
-|名称|限制|说明|
-|----|----|----|
-|AS2|50 MB|适用于解码和编码|
-|X12|50 MB|适用于解码和编码|
-|EDIFACT|50 MB|适用于解码和编码|
+| Name | 限制 | 说明 | 
+| ---- | ----- | ----- | 
+| AS2 | 50 MB | 适用于解码和编码 | 
+| X12 | 50 MB | 适用于解码和编码 | 
+| EDIFACT | 50 MB | 适用于解码和编码 | 
+|||| 
 
-## <a name="configuration"></a>配置
+<a name="configuration"></a>
 
-### <a name="ip-address"></a>IP 地址
+## <a name="configuration-ip-addresses"></a>配置：IP 地址
 
-#### <a name="logic-app-service"></a>逻辑应用服务
+### <a name="logic-apps-service"></a>逻辑应用服务
 
-直接从逻辑应用（即通过 [HTTP](../connectors/connectors-native-http.md) 或 [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)）或从其他 HTTP 请求进行的调用来自以下列表中指定的 IP 地址：
+直接由逻辑应用进行的调用（即通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 或其他 HTTP 请求）来自此列表中的 IP 地址。
 
 |逻辑应用区域|出站 IP|
-|-----|----|
+|-----------------|-----------|
 |澳大利亚东部|13.75.149.4, 104.210.91.55, 104.210.90.241|
 |澳大利亚东南部|13.73.114.207, 13.77.3.139, 13.70.159.205|
 |巴西南部|191.235.82.221, 191.235.91.7, 191.234.182.26|
@@ -183,13 +203,14 @@ ms.lasthandoff: 09/14/2017
 |美国西部 2|13.66.210.167, 52.183.30.169, 52.183.29.132|
 |英国南部|51.140.74.14、51.140.73.85、51.140.78.44|
 |英国西部|51.141.54.185、51.141.45.238、51.141.47.136|
+| | |
 
-#### <a name="connectors"></a>连接器
+### <a name="connectors"></a>连接器
 
-从[连接器](../connectors/apis-list.md)进行的调用来自以下列表中指定的 IP 地址：
+[连接器](../connectors/apis-list.md)进行的调用来自此列表中的 IP 地址。
 
 |逻辑应用区域|出站 IP|
-|-----|----|
+|-----------------|-----------|
 |澳大利亚东部|40.126.251.213|
 |澳大利亚东南部|40.127.80.34|
 |巴西南部|191.232.38.129|
@@ -212,12 +233,11 @@ ms.lasthandoff: 09/14/2017
 |美国西部|104.40.51.248|
 |英国南部|51.140.80.51|
 |英国西部|51.141.47.105|
-
+| | | 
 
 ## <a name="next-steps"></a>后续步骤  
 
-- 要开始使用逻辑应用，请按照[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)教程进行操作。  
-- [查看常见示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
-- [使用逻辑应用可以自动执行业务流程](http://channel9.msdn.com/Events/Build/2016/T694) 
-- [了解如何将系统与逻辑应用集成](http://channel9.msdn.com/Events/Build/2016/P462)
-
+* [创建第一个逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)  
+* [常见示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [视频：使用逻辑应用自动执行业务流程](http://channel9.msdn.com/Events/Build/2016/T694) 
+* [视频：将系统与逻辑应用集成](http://channel9.msdn.com/Events/Build/2016/P462)

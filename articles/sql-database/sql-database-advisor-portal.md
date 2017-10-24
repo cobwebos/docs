@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
 ms.openlocfilehash: 018afaa8b08bd001e55693390e80c8e2c4f33a30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -65,7 +65,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 * 启用自动优化以自动应用建议。
 * 若要手动实施建议，请针对数据库运行建议的 T-SQL 脚本。
 
-选择要查看其详细信息的建议，然后单击“查看脚本”查看具体详细信息，了解如何创建建议。
+选择要查看其详细信息的建议，并单击“查看脚本”查看具体详细信息，了解如何创建建议。
 
 在应用建议时数据库将保持联机状态，使用性能建议或者自动优化不会使数据库脱机。
 
@@ -80,7 +80,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 所选的建议将在数据库上应用。
 
 ### <a name="removing-recommendations-from-the-list"></a>从列表中删除建议
-如果建议的列表中包含你想要删除的项则可放弃建议：
+如果你的建议列表包含你想要从列表中删除的项，则可以放弃该建议：
 
 1. 选择“建议”列表中的某个建议以打开详细信息。
 2. 单击“详细信息”边栏选项卡上的“放弃”。

@@ -16,10 +16,10 @@ ms.workload: required
 ms.date: 05/01/2017
 ms.author: betorres
 ms.openlocfilehash: 16cb5a1e16a59200f0e731622398efcf24c3f777
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-an-azure-search-service"></a>监视 Azure 搜索服务
 
@@ -51,7 +51,7 @@ Azure 搜索针对三种不同指标收集数据：
 1. 登录[门户](https://portal.azure.com)。
 2. 打开 Azure 搜索服务的服务仪表板。 可以在主页上找到服务磁贴，或者可以从跳转栏上的“浏览”来浏览到服务。
 
-使用部分包括仪表盘，告诉你哪些部分可用资源的当前正在使用。 有关索引、文档和存储的每个服务限制的信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
+“使用情况”部分包含的指标告知你当前正在使用可用资源的哪些部分。 有关索引、文档和存储的每个服务限制的信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
   ![“使用情况”磁贴][2]
 

@@ -11,16 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/09/2017
 ms.author: bwren
+ms.openlocfilehash: 356a73b406544b91191d5e9a03b2fa52ec501327
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 0ced7a128003402f74b847cc71e1c3ed21982651
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics 新日志搜索常见问题解答和已知问题
 
 本文提供包括有关[将 Log Analytics 升级到新的查询语言](log-analytics-log-search-upgrade.md)的常见问题解答和已知问题。  决定升级工作区前，请通读全文。
@@ -30,6 +28,10 @@ ms.lasthandoff: 09/26/2017
 
 ### <a name="question-i-have-a-lot-of-alert-rules-do-i-need-to-create-them-again-in-the-new-language-after-i-upgrade"></a>问：我有大量警报规则。 升级后，是否需要采用新的语言再次创建这些规则？  
 不需要，在升级过程中，警报规则会自动转换为新的搜索语言。  
+
+### <a name="question-i-have-alert-rules-with-webhook-and-runbook-actions-will-these-continue-to-work-when-i-upgrade"></a>问：我有关于 webhook 和 runbook 操作的预警规则。 升级后这些规则还会继续工作吗？
+
+不会，webhook 和 runbook 操作中发生了一些更改，这可能要求对有效负载的处理方式进行一些更改。 我们所做的这些更改旨在标准化各种输出格式和减小有效负载的大小。 有关这些格式的详细信息，请参阅[将操作添加到 Log Analytics 中的警报规则](log-analytics-alerts-actions.md)。
 
 
 ## <a name="computer-groups"></a>计算机组
@@ -48,7 +50,7 @@ ms.lasthandoff: 09/26/2017
 ## <a name="dashboards"></a>仪表板
 
 ### <a name="question-can-i-still-use-dashboards-in-an-upgraded-workspace"></a>问：是否可以在升级后的工作区中使用仪表板？
-可以继续使用工作区升级前添加到“我的仪表板”的任何磁贴，但无法编辑这些磁贴或创建新磁贴。  可以继续使用[视图设计器](log-analytics-view-designer.md)创建和编辑视图，也可以在 Azure 门户中创建仪表板。
+升级后，我们会开始弃用“我的仪表板”。  可以继续使用工作区升级前添加到仪表板的任何磁贴，但无法编辑这些磁贴或创建新磁贴。  可以继续使用[视图设计器](log-analytics-view-designer.md)（具有更丰富的功能集）创建和编辑视图，也可在 Azure 门户中创建仪表板。
 
 
 ## <a name="log-searches"></a>日志搜索
@@ -58,6 +60,9 @@ ms.lasthandoff: 09/26/2017
 
 ### <a name="question-why-are-my-query-results-not-sorted"></a>问：为什么我的查询结果未排序？
 默认情况下，新的查询语言中不对结果进行排序。  使用 [sort 运算符](https://go.microsoft.com/fwlink/?linkid=856079)以便按一个或多个属性对结果进行排序。
+
+### <a name="question-where-did-the-metrics-view-go-after-i-upgraded"></a>问：升级后“指标”视图位于何处？
+“指标”视图以图形形式表示日志搜索中的性能数据。  升级后此视图将不再可用。  可使用 [render 运算符](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator)设置时间图表中查询的输出格式。
 
 ### <a name="question-where-did-minify-go-after-i-upgraded"></a>问题：升级后“缩小”选项位于何处？
 “缩小”是一个功能，提供搜索结果的汇总视图。  升级后，“缩小”选项不再显示在“日志搜索”门户中。  可使用新搜索语言中的 [reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) 或 [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster) 获得与之类似的功能。 
@@ -146,10 +151,10 @@ ms.lasthandoff: 09/26/2017
 ## <a name="upgrade-process"></a>升级过程
 
 ### <a name="question-i-have-several-workspaces-can-i-upgrade-all-workspaces-at-the-same-time"></a>问：我有多个工作区。 是否可以同时升级所有工作区？  
-不会。  升级适用于单次单个工作区。 当前没有方法可以一次性升级多个工作区。 请注意，所升级的工作区的其他用户也会受影响。  
+不能。  升级适用于单次单个工作区。 当前没有方法可以一次性升级多个工作区。 请注意，所升级的工作区的其他用户也会受影响。  
 
 ### <a name="question-will-existing-log-data-collected-in-my-workspace-be-modified-if-i-upgrade"></a>问：如果升级，是否将修改工作区中收集的现有日志数据？  
-不会。 可用于工作区搜索的日志数据不受升级影响。 已保存的搜索、警报和视图将自动转换为新的搜索语言。  
+不能。 可用于工作区搜索的日志数据不受升级影响。 已保存的搜索、警报和视图将自动转换为新的搜索语言。  
 
 ### <a name="question-what-happens-if-i-dont-upgrade-my-workspace"></a>问：如果不升级工作区，会发生什么情况？  
 旧的日志搜索将在几个月后弃用。 系统会自动升级此时间前仍未升级的工作区。
@@ -173,4 +178,3 @@ ms.lasthandoff: 09/26/2017
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[将工作区升级到新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)。
-

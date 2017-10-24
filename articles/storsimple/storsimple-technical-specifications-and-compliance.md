@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 ms.openlocfilehash: ac1f6fbd40770374f68d0d280fc1cc040e41b1ef
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 ## <a name="overview"></a>概述
@@ -74,7 +74,7 @@ StorSimple 设备 8100 和 8600 都是硬盘驱动器和固态硬盘的混合。
 | 总可用容量* |~ 15 TB |~ 38 TB |
 | 最大解决方案容量（包括云） |200 TB |500 TB |
 
-<sup>* </sup>- *总的可用容量包括数据、 元数据，和缓冲区的可用容量。*
+<sup>* </sup>- 总可用容量包括数据、元数据和缓冲区的可用容量。
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>机箱尺寸和重量规格
 下表列出了尺寸和重量的各种机箱规格。  

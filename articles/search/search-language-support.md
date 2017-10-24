@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: jlembicz
 ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>在 Azure 搜索中为多语言文档创建索引
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/11/2017
 5. 在移动到下一个字段前，打开“分析器”选项卡。
 
 ![][1]
-*若要选择分析器，请单击字段边栏选项卡上的分析器选项卡*
+*若要选择分析器，请单击“字段”边栏选项卡上的“分析器”选项卡*
 
 ## <a name="choose-an-analyzer"></a>选择分析器
 1. 滚动以找到定义的字段。
@@ -55,7 +55,7 @@ ms.lasthandoff: 07/11/2017
 4. 选择要使用的分析器。
 
 ![][2]
-*选择一个支持的每个字段的分析器*
+*为每个字段选择一个支持的分析器*
 
 默认情况下，所有可搜索字段会使用[标准 Lucene 分析器](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)（不限语言）。 若要查看支持的分析器的完整列表，请参阅 [Azure 搜索中的语言支持](https://msdn.microsoft.com/library/azure/dn879793.aspx)。
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/11/2017
 许多 Web 和移动应用程序使用不同的语言来为世界各地的用户提供服务。 可通过为每种支持的语言创建字段来为此类方案定义索引。
 
 ![][3]
-*使用支持每种语言的说明字段的索引定义*
+*每种支持的语言都有描述字段的索引定义*
 
 如果已知发出查询的代理的语言，可使用 **searchFields** 查询参数，将搜索请求的范围限制为特定字段。 以下查询将仅针对波兰文描述发出：
 

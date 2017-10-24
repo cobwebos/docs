@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: 1ea7956e92dbc85f62383e4b041c4c830599f765
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: cf3f3cf63cafc3b883d26144a53066ee421eb2a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
-可使用 Azure 文件同步（预览版）将共享复制到本地或 Azure 中的 Windows Server。 用户即可通过诸如 SMB 或 NFS 共享之类的 Windows Server 访问文件共享。 这尤其适用于要在远离 Azure 数据中心的位置访问和修改数据的方案，例如分支机构方案。 可在多个 Windows Server 终结点（例如多个分支机构）之间复制数据。
+借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
 
 本文旨在帮助排查和解决在 Azure 文件同步部署中遇到的问题。 否则，本指南说明如何从系统收集重要日志，以帮助进行更深入的问题调查。 提供了以下选项来获取 Azure 文件同步支持：
 
@@ -37,7 +35,22 @@ ms.lasthandoff: 09/25/2017
 StorageSyncAgent.msi /l*v Installer.log
 ```
 
-一旦安装失败，检查 installer.log 以确定原因。
+一旦安装失败，检查 installer.log 以确定原因。 
+
+> [!Note]  
+> 如果选择使用 Microsoft 更新，代理安装将失败，并且 Windows 更新服务不会运行。
+
+## <a name="cloud-endpoint-creation-fails-with-the-following-error-the-specified-azure-fileshare-is-already-in-use-by-a-different-cloudendpoint"></a>云终结点创建失败，并显示以下错误：“指定的 Azure 文件共享已被其他 CloudEndpoint 使用”
+如果 Azure 文件共享已被其他云终结点使用，则会发生此错误。 
+
+如果收到此错误，但 Azure 文件共享当前未被云终结点使用，请执行以下步骤以清除 Azure 文件共享上的 Azure 文件同步元数据：
+
+> [!Warning]  
+> 删除云终结点当前正在使用的 Azure 文件共享上的元数据将导致 Azure 文件同步操作失败。 
+
+1. 在 Azure 门户中导航到“Azure 文件共享”。  
+2. 右键单击 Azure 文件共享，然后选择“编辑元数据”
+3. 右键单击 SyncService，并选择“删除”。
 
 ## <a name="server-is-not-listed-under-registered-servers-in-the-azure-portal"></a>服务器未在 Azure 门户中的“已注册的服务器”下列出
 如果对于存储同步服务，服务器未在“已注册的服务器”下列出，请执行以下步骤：
@@ -49,6 +62,16 @@ StorageSyncAgent.msi /l*v Installer.log
 ![包含“服务器已注册”错误消息的服务器注册对话框屏幕截图](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
 如果以前向存储同步服务注册了服务器，则会显示此消息。 若要向当前存储同步服务注销服务器并向新存储同步服务进行注册，请执行步骤[向 Azure 文件同步注销服务器](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)。
+
+如果存储同步服务中的已注册服务器下未列出该服务器，则在你想要取消注册的服务器上运行下列 PowerShell 命令：
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Reset-StorageSyncServer
+```
+
+> [!Note]  
+> 如果该服务器是群集的一部分，则存在还将删除群集注册的可选 `Reset-StorageSyncServer -CleanClusterRegistration` 参数。 取消注册群集中的最后一个节点时，应使用此开关。
 
 ## <a name="how-to-troubleshoot-sync-not-working-on-a-server"></a>如何对同步未在服务器上正常运行进行故障排除
 如果同步在服务器上失败，则执行以下操作：

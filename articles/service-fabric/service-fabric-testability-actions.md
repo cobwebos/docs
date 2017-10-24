@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv;heeldin
 ms.openlocfilehash: c8ddc7732999ae555323bebaef60aa34c8f2ec17
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="testability-actions"></a>可测试性操作
-为了模拟一个不可靠的基础结构，Azure Service Fabric 向开发人员提供了众多方式来模拟各种现实世界故障和状态转换。 这些方式被称为可测试操作。 这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。 结合使用这些操作，可为服务编写全面的测试方案。
+为了模拟不可靠的基础结构，Azure Service Fabric 向开发者提供了众多选项，用于模拟各种现实世界故障和状态转换。 这些方式被称为可测试操作。 这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。 结合使用这些操作，可以为服务编写全面的测试方案。
 
-Service Fabric 提供某些由这些操作组成的常见测试方案。 强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。 但是，希望添加尚未包含在内置方案中的方案时，或者需要为应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
+Service Fabric 提供某些由这些操作组成的常见测试方案。 强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。 但是，当希望添加尚未包含在内置方案中的方案时，或者需要为应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
 
 System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.ServiceFabric.Powershell.dll 程序集包含了 System Fabric PowerShell 模块。 作为运行时安装的一部分，安装了 ServiceFabric PowerShell 模块以便易于使用。
 
@@ -47,14 +47,14 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 | RestartDeployedCodePackage |通过重新启动部署在群集中某个节点上的一个代码包来模拟代码包进程故障。 这会中止代码包进程，并会重新启动驻留在该进程中的所有用户服务副本。 |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |非常规 |
 | RestartNode |通过重新启动一个节点来模拟 Service Fabric 群集节点故障。 |RestartNodeAsync |Restart-ServiceFabricNode |非常规 |
 | RestartPartition |通过重新启动一个分区的某些或全部副本来模拟数据中心中断或群集中断方案。 |RestartPartitionAsync |Restart-ServiceFabricPartition |常规 |
-| RestartReplica |通过重新启动群集中的某个持久化副本、关闭副本并重新打开该副本来模拟副本故障。 |RestartReplicaAsync |Restart-ServiceFabricReplica |常规 |
+| RestartReplica |副本故障的模拟方法为，在群集中重启持久化副本，关闭此副本，再重新打开它。 |RestartReplicaAsync |Restart-ServiceFabricReplica |常规 |
 | StartNode |启动群集中一个已经停止的节点。 |StartNodeAsync |Start-ServiceFabricNode |不适用 |
 | StopNode |通过停止群集中的一个节点来模拟节点故障。 该节点将一直处于关闭状态，直到调用了 StartNode 为止。 |StopNodeAsync |Stop-ServiceFabricNode |非常规 |
 | ValidateApplication |验证一个应用程序内所有 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 |ValidateApplicationAsync |Test-ServiceFabricApplication |不适用 |
 | ValidateService |验证一个 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 |ValidateServiceAsync |Test-ServiceFabricService |不适用 |
 
 ## <a name="running-a-testability-action-using-powershell"></a>使用 PowerShell 运行可测试性操作
-本教程说明如何使用 PowerShell 运行可测试性操作。 将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。 安装 Microsoft Service Fabric MSI 时，会自动安装 Microsoft.Fabric.Powershell.dll（Service Fabric PowerShell 模块）。 该模块在打开 PowerShell 提示符时自动加载。
+本教程说明如何使用 PowerShell 运行可测试性操作。 将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。 Microsoft.Fabric.Powershell.dll（Service Fabric PowerShell 模块）在安装 Microsoft Service Fabric MSI 时自动安装。 该模块在打开一个 PowerShell 提示符时自动加载。
 
 教程章节：
 
@@ -95,7 +95,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 针对 Azure 群集运行一个可测试性操作（使用 PowerShell）与针对本地群集运行一个操作类似。 唯一的区别在于：在能够运行操作之前，不是连接到本地群集，而是需要首先连接到 Azure 群集。
 
 ## <a name="running-a-testability-action-using-c35"></a>使用 C&#35; 运行可测试性操作
-要使用 C# 运行可测试性操作，首先需要使用 FabricClient 连接到群集。 然后获取运行该操作所需的参数。 可用不同的参数来运行相同的操作。
+要使用 C# 运行可测试性操作，首先需要使用 FabricClient 连接到群集。 然后，获取运行操作所需的参数。 可用不同的参数来运行相同的操作。
 请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
 
 ```csharp

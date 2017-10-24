@@ -14,14 +14,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/28/2017
 ms.author: sstein
+ms.openlocfilehash: 9f9dfd039b76e4bedfb7f59d042123fa54d6b615
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: bcf5f4027764b6be3880d597cdf85e83eb967169
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
 
@@ -180,7 +179,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | 40607 |16 |此版本的 SQL Server 不支持 Windows 登录。 |
 | 40611 |16 |服务器上最多可以定义 128 个防火墙规则。 |
 | 40614 |16 |防火墙规则的开始 IP 地址不能超过结束 IP 地址。 |
-| 40615 |16 |无法打开该登录请求的服务器“{0}”。 不允许具有 IP 地址“{1}”的客户端访问服务器。  若要允许访问，请使用 SQL 数据库门户，或者对 master 数据库运行 sp_set_firewall_rule，以便为此 IP 地址或地址范围创建防火墙规则。  为使此更改生效，最多可能需要 5 分钟。 |
+| 40615 |16 |无法打开该登录请求的服务器“{0}”。 不允许具有 IP 地址“{1}”的客户端访问服务器。<br /><br />要启用访问，请使用 SQL 数据库门户或在主数据库上运行 sp\_set\_firewall\_rule，以针对此 IP 地址或地址范围创建防火墙规则。 为使此更改生效，最多可能需要 5 分钟。 |
 | 40617 |16 |以（规则名称）开头的防火墙规则名称过长。 最大长度为 128。 |
 | 40618 |16 |防火墙规则名称不能为空。 |
 | 40620 |16 |用户“%.&#x2a;ls”的登录失败。 密码更改失败。 此版本的 SQL Server 不支持在登录过程中更改密码。 |
@@ -205,12 +204,12 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | 40651 |16 |无法创建服务器，因为订阅 (subscription-id) 已禁用。 |
 | 40652 |16 |无法移动或创建服务器。 订阅 (subscription-id) 将超过服务器配额。 |
 | 40671 |17 |网关与管理服务之间的通信失败。 请稍后重试。 |
-| 40852 |16 |无法在服务器“%.*ls”中打开登录请求的数据库“%.*ls”。 仅允许使用已启用安全性的连接字符串访问数据库。 若要访问此数据库，请将连接字符串修改为在服务器 FQDN 中包含“secure”。也就是说，'server name'.database.windows.net 应修改为 'server name'.database.`secure`.windows.net。 |
+| 40852 |16 |无法在服务器“%.\*ls”中打开登录请求的数据库“%.\*ls”。 仅允许使用已启用安全性的连接字符串访问数据库。 要访问此数据库，请将连接字符串修改为在服务器 FQDN 中包含“secure”。也就是说，'server name'.database.windows.net 应修改为 'server name'.database`secure`.windows.net。 |
+| 40914 | 16 | 无法打开登录时请求的服务器‘[服务器-名称]’。 不允许客户端访问服务器。<br /><br />若要修复，请考虑添加[虚拟网络规则](sql-database-vnet-service-endpoint-rule-overview.md)。 |
 | 45168 |16 |SQL Azure 系统负载过小，正在设置单个服务器的并发数据库 CRUD 操作（例如创建数据库）数的上限。 在错误消息中指定的服务器已超过最大并发连接数。 请稍后重试。 |
 | 45169 |16 |SQL Azure 系统负载过小，正在设置单个订阅的并发服务器 CRUD 操作（例如创建服务器）数的上限。 在错误消息中指定的订阅已超过最大并发连接数，已拒绝请求。 请稍后重试。 |
 
 ## <a name="next-steps"></a>后续步骤
 * 阅读以了解 [Azure SQL 数据库功能](sql-database-features.md)。
 * 阅读以了解[服务层](sql-database-service-tiers.md)。
-
 

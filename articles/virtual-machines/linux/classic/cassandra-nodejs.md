@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tarcher
 ms.openlocfilehash: 1ff3d77ced6c9d90029b251490c05e52d9b43515
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>在 Azure 上将 Cassandra 与 Linux 一起运行以及通过 Node.js 对其进行访问
 > [!IMPORTANT] 
@@ -98,7 +98,7 @@ Cassandra 的上述数据中心感知型复制和一致性模型可以很方便�
 
 ### <a name="data-consistency-for-multi-data-center-deployment"></a>进行多数据中心部署时需要考虑的数据一致性
 进行分布式部署时，需要了解群集拓扑对吞吐量和高可用性的影响。 在选择 RF 和一致性级别时，需要确保仲裁不依赖于所有数据中心的可用性。
-对于需要高一致性的系统来说，如果一致性级别（针对读取和写入）为 LOCAL_QUORUM，则可以确保本地读取和写入能够从本地节点得到满足，而数据则会通过异步方式复制到远程数据中心。  表 2 汇总了后面介绍的多区域群集的配置详细信息。
+对于需要高一致性的系统来说，如果一致性级别（针对读取和写入）为 LOCAL_QUORUM，则可以确保本地读取和写入能够从本地节点得到满足，而数据则会通过异步方式复制到远程数据中心。  表 2 汇总了会在后面讲述的多区域群集的配置详细信息。
 
 **双区域 Cassandra 群集配置**
 
@@ -130,7 +130,7 @@ Cassandra 的上述数据中心感知型复制和一致性模型可以很方便�
 在过程的这个步骤中，我们将使用必备软件创建 Ubuntu 映像，以便重复使用该映像进行多个 Cassandra 节点的预配。  
 
 #### <a name="step-1-generate-ssh-key-pair"></a>步骤 1：生成 SSH 密钥对
-Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如何在 Azure 上通过 Linux 使用 SSH（可能为英文页面）上的说明进行操作来生成公/私钥对。 如果你打算在 Windows 或 Linux 上将 putty.exe 用作 SSH 客户端，则必须使用 puttygen.exe 将 PEM 编码的 RSA 私钥转换为 PPK 格式。可在以上网页中找到有关此操作的说明。
+Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如何在 Azure 上通过 Linux 使用 SSH（可能为英文页面）上的说明进行操作来生成公/私钥对。 如果打算在 Windows 或 Linux 上将 putty.exe 用作 SSH 客户端，则必须使用 puttygen.exe 将 PEM 编码的 RSA 私钥转换为 PPK 格式。可在以上网页中找到有关此操作的说明。
 
 #### <a name="step-2-create-ubuntu-template-vm"></a>步骤 2：创建 Ubuntu 模板 VM
 要创建模板 VM，请登录到 Azure 经典门户并按以下顺序操作：依次单击“新建”、“计算”、“虚拟机”、“从库中”、“Ubuntu”、“Ubuntu Server 14.04 LTS”，并单击右键头。 有关介绍如何创建 Linux VM 的教程，请参阅创建运行 Linux 的虚拟机（可能为英文页面）。
@@ -452,7 +452,7 @@ Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如
 <table>
   <tr><th> customer_id </th><th> 名 </th><th> 姓 </th></tr>
   <tr><td> 1 </td><td> John </td><td> Doe </td></tr>
-  <tr><td> 2 </td><td> Jane </td><td> Doe </td></tr>
+  <tr><td> #N/A </td><td> Jane </td><td> Doe </td></tr>
 </table>
 
 请注意，在步骤 4 中创建的密钥空间使用 SimpleStrategy 并已将 a replication_factor 设置为 3。 建议使用 SimpleStrategy 进行单数据中心部署，使用 NetworkTopologyStrategy 进行多数据中心部署。 将 replication_factor 设置为 3 即可承受节点故障。
@@ -544,7 +544,7 @@ Azure 虚拟网络中的本地网络是一个代理地址空间，该空间映�
 2. 编辑 cassandra.yaml 以配置种子节点：种子：“10.1.2.4,10.1.2.6,10.1.2.8,10.1.2.10,10.2.2.4,10.2.2.6,10.2.2.8,10.2.2.10”
 
 ### <a name="step-10-start-cassandra"></a>步骤 10：启动 Cassandra
-登录到每个 VM，然后通过运行以下命令在后台启动 Cassandra：$CASS_HOME/bin/cassandra
+登录到每个 VM，并通过运行以下命令在后台启动 Cassandra：$CASS_HOME/bin/cassandra
 
 ## <a name="test-the-multi-region-cluster"></a>测试多区域群集
 到目前为止，Cassandra 已部署到 16 个节点，每个 Azure 区域 8 个节点。 这些节点具有通用的群集名称和种子节点配置，因此属于同一群集。 使用以下过程测试群集：
@@ -566,7 +566,7 @@ Azure 虚拟网络中的本地网络是一个代理地址空间，该空间映�
 | customer_id | 名 | 姓 |
 | --- | --- | --- |
 | 1 |John |Doe |
-| 2 |Jane |Doe |
+| #N/A |Jane |Doe |
 
 ### <a name="step-3-execute-the-following-in-the-east-region-after-logging-into-hk-w1-east-us"></a>步骤 3：登录到 hk-w1-east-us 以后，在东部地区执行以下命令：
 1. 执行 $CASS_HOME/bin/cqlsh 10.2.2.101 9160
@@ -579,7 +579,7 @@ Azure 虚拟网络中的本地网络是一个代理地址空间，该空间映�
 | customer_id | 名 | 姓 |
 | --- | --- | --- |
 | 1 |John |Doe |
-| 2 |Jane |Doe |
+| #N/A |Jane |Doe |
 
 再执行一些插入操作，会看到这些插入内容复制到群集的 west-us 部分。
 

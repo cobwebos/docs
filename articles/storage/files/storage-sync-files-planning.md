@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: d8ac076334a7ed9476b4830596d6ea54c29c0e3c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3c003d498600a2cfd12ef2adfb7c16f9dfaddb37
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
-可使用 Azure 文件同步（预览版）将共享复制到本地或 Azure 中的 Windows Server。 然后，你和你用户即可通过 SMB 或 NFS 共享等 Windows Server 访问文件共享。 这尤其适用于要在远离 Azure 数据中心的位置访问和修改数据的方案，例如分支机构方案。 可在多个 Windows Server 终结点（例如多个分支机构）之间复制数据。 
+借助 Azure 文件同步（预览版），无需放弃本地文件服务器的灵活性、性能和兼容性即可将组织的文件共享集中在 Azure 文件中。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来完成此操作。 可以使用 Windows Server 上任何可用协议在本地访问你的数据（包括 SMB、NFS 和 FTPS），并且可以根据需要在世界各地拥有尽可能多的缓存。
 
 本指南介绍部署 Azure 文件同步时需考虑的问题。建议阅读[规划 Azure 文件部署](storage-files-planning.md)指南测试。 
 
@@ -70,7 +68,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 Windows Server 的未来版本将在发布时添加，Windows 的旧版本可根据用户的反馈进行添加。
 
 > [!Important]  
-> 建议将搭配使用 Azure 文件同步的所有 Windows Server 保持为实时跟进 Windows 更新的最新更新。 
+> 建议将用于 Azure 文件同步的所有 Windows Server 保持为实时跟进 Windows 更新的最新更新。 
 
 ### <a name="file-system-features"></a>文件系统功能
 | 功能 | 支持状态 | 说明 |
@@ -139,14 +137,9 @@ Azure 文件同步仅在以下区域提供预览版：
 在预览版中，仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
-将定期发布 Azure 文件同步代理更新，用来添加新功能和解决任何已知问题。 建议在我们发布 Azure 文件同步代理更新时启用 Microsoft 更新来获得所有更新。 也就是说，我们明白某些组织希望严格控制更新。 对于使用旧版 Azure 文件同步代理进行的部署：
-
-- 存储同步服务将在新的主版本发布后的 3 个月内沿用以前的主版本。 例如，在发布版本 2.\* 后 3 个月内，存储同步服务仍支持版本 1.\*。
-- 3 个月后，存储同步服务将开始阻止使用过期版本的已注册服务器与同步组进行同步。
-- 对于以前的主版本，在此 3 个月内，所有 bug 修复程序都仅针对当前的主版本。
+[!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件部署](storage-files-planning.md)
 * [部署 Azure 文件](storage-files-deployment-guide.md)
 * [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
-

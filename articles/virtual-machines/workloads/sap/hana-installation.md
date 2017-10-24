@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 280001f9057825b9dcd98c5180340a54e2e239cf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 08/03/2017
 参数。 如果该文件不存在，必须先通过添加以下条目创建该文件： 
 - options sunrpc tcp_max_slot_table_entries=128
 
-**第四个步骤**是检查 HANA 大型实例单元的系统时间。 部署实例时使用的是系统时区，表示 HANA 大型实例标记所在 Azure 区域的位置。 可以任意更改自己拥有的实例的系统时间或时区。 执行该步骤并在租户中排列更多实例可以防止今后需要调整新交付的实例的时区。 Microsoft 的操作设置系统时区不了解你的实例后设置切换。 因此，新部署的实例可能不会在与切换到的实例相同的时区中设置。 因此，客户需要负责检查接管后的实例的时区，并根据需要调整。 
+**第四个步骤**是检查 HANA 大型实例单元的系统时间。 部署实例时使用的是系统时区，表示 HANA 大型实例标记所在 Azure 区域的位置。 可以任意更改自己拥有的实例的系统时间或时区。 执行该步骤并在租户中排列更多实例可以防止今后需要调整新交付的实例的时区。 在接管后，Microsoft 运营部门并不了解你在实例上设置的系统时区。 因此，新部署的实例可能不会在与切换到的实例相同的时区中设置。 因此，客户需要负责检查接管后的实例的时区，并根据需要调整。 
 
 **第五个步骤**是检查 etc/hosts。 接管刀片服务器后，它们会根据不同的用途而分配有不同的 IP 地址（参阅下一部分）。 检查 etc/hosts 文件。 如果将单元添加到了现有的租户，请不要料想会使用以前交付的系统的 IP 地址正确维护新部署的系统的 etc/hosts。 因此，客户需负责检查设置是否正确，使新部署的实例能够与租户中以前部署的单元交互并解析其名称。 
 

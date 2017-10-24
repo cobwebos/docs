@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
 ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
 Azure 搜索会定期发布功能更新。 有时，但并非总是，这些更新需要发布 API 的新版本，以保持向后兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。
 
-一般来说，我们尝试发布新版本仅在必要时，因为它会导致某些努力代码以使用新的 API 版本升级。 仅当我们需要更改 API 的某些方面时才会发布新版本，某种程度上这会破坏向后兼容性。 这可能会因以下情况而发生：现有功能修复，或更改现有 API 外围功能的新功能。
+通常，我们仅在必要时发布新版本，因为它可能会促使你必须升级代码才能使用新版本 API。 仅当我们需要更改 API 的某些方面时才会发布新版本，某种程度上这会破坏向后兼容性。 这可能会因以下情况而发生：现有功能修复，或更改现有 API 外围功能的新功能。
 
 我们遵循适用于 SDK 更新的相同规则。 Azure 搜索 SDK 遵循[语义版本控制](http://semver.org/)规则，这意味着其版本分为三个部分：主要版本号、次要版本号和内部版本号（例如，1.1.0）。 我们仅在更改破坏了向后兼容性时，才会发布 SDK 新的主要版本。 对于非破坏功能更新，我们会增大次要版本号；对于 Bug 修复，我们仅增大内部版本号。
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
 ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>从逻辑应用工作流连接到 Dynamics 365
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/11/2017
   * **实体名称**。 选择要侦听的实体。 此事件充当触发器，用于启动逻辑应用。 
   本演练中选择“潜在客户”。
 
-  * **要检查的项目频率如何？** 这些值设置逻辑应用检查触发器相关更新的频率。 默认设置为每 3 分钟检查一次更新。
+  * **你想多久检查一次项？** 这些值设置逻辑应用检查触发器相关更新的频率。 默认设置为每 3 分钟检查一次更新。
 
     * **频率**。 选择秒、分钟、小时或天。
 

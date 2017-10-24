@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 03/21/2017
 ms.author: kraigb
 ms.openlocfilehash: 17da71ac0c5ab9330b9244c0354e4d161d98229e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>使用 Visual Studio 配置 Azure 云服务角色
 一个 Azure 云服务可以有一个辅助角色或 Web 角色。 对于每个角色，需要定义该角色的设置方式，并配置该角色的运行方式。 若要详细了解云服务中的角色，请观看视频 [Introduction to Azure Cloud Services](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services)（Azure 云服务简介）。 
@@ -81,7 +81,7 @@ ms.lasthandoff: 08/29/2017
 1. 从 Visual Studio 工具栏中，选择“保存”。
 
 ## <a name="manage-connection-strings-for-storage-accounts"></a>管理存储帐户的连接字符串
-可添加、删除或修改服务配置的连接字符串。 例如，你可能想本地连接字符串，值为本地服务配置`UseDevelopmentStorage=true`。 可能还希望将云服务配置为使用 Azure 中的存储帐户。
+可添加、删除或修改服务配置的连接字符串。 例如，你可能需要具有 `UseDevelopmentStorage=true` 值的本地服务配置的本地连接字符串。 可能还希望将云服务配置为使用 Azure 中的存储帐户。
 
 > [!WARNING]
 > 当输入存储帐户连接字符串的 Azure 存储帐户关键信息时，此信息存储在本地服务配置文件中。 但是，此信息当前未存储为加密文本。

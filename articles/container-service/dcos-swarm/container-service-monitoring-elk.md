@@ -18,10 +18,10 @@ ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: fcfa277cdd0f3cebc0fbbb23e771fb23ffbe2ca6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-elk"></a>使用 ELK 监视 Azure 容器服务群集
 在本文中，我们将演示如何在 Azure 容器服务中的 DC/OS 群集上部署 ELK（Elasticsearch、Logstash、Kibana）堆栈。 
@@ -60,7 +60,7 @@ ELK 堆栈是 Elasticsearch、Logstash 和 Kibana 的组合，提供可用于监
 ![ELK6](./media/container-service-monitoring-elk/elk6.PNG)
 
 
-若要访问 Kibana 仪表板（在端口 5601 上部署），需要打开端口 5601。 请按照[此处](container-service-enable-public-access.md)的说明进行操作。 然后打开在 Kibana 仪表板： `http://localhost:5601`。
+若要访问 Kibana 仪表板（在端口 5601 上部署），需要打开端口 5601。 请按照[此处](container-service-enable-public-access.md)的说明进行操作。 然后在 `http://localhost:5601` 打开 Kibana 仪表板。
 
 ## <a name="next-steps"></a>后续步骤
 

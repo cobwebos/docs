@@ -14,26 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
+ms.openlocfilehash: 3010c298cf227c761288365e3663ffe3fb67d863
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 64852471a848cb42fd8a2e67622d309d5e050cfd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-compose"></a>sfctl compose
-创建、删除和管理 Docker Compose 应用程序。
+创建、删除和管理 Docker Compose 部署。
 
 ## <a name="commands"></a>命令
 
 |命令|说明|
 | --- | --- |
-|    create| 从 Compose 文件创建 Service Fabric 应用程序。|
-|    list  | 获取在 Service Fabric 群集中创建的 compose 应用程序列表。|
-|   remove| 从群集中删除现有的 Service Fabric compose 应用程序。|
-|   status| 获取有关 Service Fabric compose 应用程序的信息。|
+|    create| 通过 Compose 文件部署 Service Fabric 应用程序。|
+|    list  | 获取在 Service Fabric 群集中创建的 compose 部署列表。|
+|   remove| 从群集中删除现有的 Service Fabric compose 部署。|
+|   status| 获取有关 Service Fabric compose 部署的信息。|
 |升级       | 开始升级 Service Fabric 群集中的 compose 部署。|
-|    upgrade-status| 获取在此 Service Fabric compose 部署中执行的最新升级的详细信息。|
+|    upgrade-status| 获取在此 Service Fabric Compose 部署中执行的最新升级的详细信息。|
 
 
 ## <a name="sfctl-compose-create"></a>sfctl compose create
@@ -44,11 +43,11 @@ ms.lasthandoff: 09/27/2017
 |参数|说明|
 | --- | --- |
 | --file-path [必需]| 目标 Docker Compose 文件的路径。|
- |   --name      [必需]| 部署的标识。|
-|    --encrypted-pass      | 不提示输入容器注册表密码，而是使用已加密的通行短语。|
-|    --has-pass            | 提示输入容器注册表的密码。|
-|    --timeout -t          | 服务器超时时间，以秒为单位。  默认值：60。|
- |   --user                | 用于连接容器注册表的用户名。|
+ |   --deployment-name [必需]| 部署的名称。|
+|    --encrypted-pass             | 不提示输入容器注册表密码，而是使用已加密的通行短语。|
+|    --has-pass                   | 提示输入容器注册表的密码。|
+|    --timeout -t                 | 服务器超时时间，以秒为单位。  默认值：60。|
+ |   --user                       | 用于连接容器注册表的用户名。|
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -136,7 +135,7 @@ ms.lasthandoff: 09/27/2017
 |参数|说明|
 | --- | --- |
 |    --file-path        [必需]| 目标 Docker Compose 文件的路径。|
-|    --name             [必需]| 部署的标识。|
+|    --deployment-name [必需]| 部署的名称。|
 |    --default-svc-type-health-map| 描述用于评估服务运行状况的运行状况策略的 JSON 编码字典。|
 |    --encrypted-pass             | 不提示输入容器注册表密码，而是使用已加密的通行短语。|
  |   --failure-action             | 可能的值包括：“Invalid”、“Rollback”和“Manual”。|
@@ -164,7 +163,7 @@ ms.lasthandoff: 09/27/2017
  |   --output -o                  | 输出格式。  允许的值：json、jsonc、table、tsv。
                                    默认值：json。|
  |   --query                      | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
- |   --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+ |   --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

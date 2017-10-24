@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: d58c27234ea05a82aaa3e8d72f70c1449980df09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a>在远程监视预配置解决方案中创建自定义规则
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/29/2017
 
 有关规则的信息将保留在两个位置：
 
-* **DeviceRulesNormalizedTable** 表 - 此表存储对由解决方案门户定义的规则的规范化引用。 解决方案门户显示设备规则时，它查询此表以查找规则定义。
+* **DeviceRulesNormalizedTable** 表 - 此表存储对由解决方案门户定义的规则的规范化引用。 解决方案门户显示设备规则时，它将查询此表以查找规则定义。
 * **DeviceRules** blob - 此 blob 存储为所有已注册设备定义的全部规则，并定义为 Azure 流分析作业的引用输入。
  
 在解决方案门户更新现有规则或定义新规则时，表和 blob 都会更新以反映所做的更改。 门户中显示的规则定义来自表存储，而流分析作业引用的规则定义来自 blob。 
@@ -206,13 +206,13 @@ ms.lasthandoff: 08/29/2017
 
 4. 在“数据字段”中选择 **ExternalTemperature**。
 
-5. 将“阈值”设置为 56。 然后单击“保存并查看规则”。 
+5. 将“阈值”设置为 56。 然后单击“保存并查看规则”。
 
 6. 返回仪表板查看警报历史记录。
 
 7. 在打开的控制台窗口中，启动 Node.js 控制台应用，开始发送 **ExternalTemperature** 遥测数据。
 
-8. 请注意，触发新规则时，“警报历史记录”  表显示新警报。
+8. 请注意，触发新规则时，“警报历史记录”表会显示新警报。
  
 ## <a name="additional-information"></a>其他信息
 

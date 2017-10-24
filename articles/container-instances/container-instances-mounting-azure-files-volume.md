@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: 41c3a449b39d6ef77e1dd0cf10699f8debcad475
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: c68f0239bcb95aa5e9d8194f7b358f30588ea600
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
-
 # <a name="mounting-an-azure-file-share-with-azure-container-instances"></a>装载与 Azure 容器实例的 Azure 文件共享
 
 默认情况下，Azure 容器实例是无状态的。 如果容器崩溃或停止，其所有状态都会丢失。 若要将状态保持至超过容器寿命，必须从外部存储装载卷。 本文介绍如何装载 Azure 文件共享，以用于 Azure 容器实例。
@@ -57,14 +55,14 @@ az storage share create -n $ACI_PERS_SHARE_NAME
 如果使用上述脚本，则创建的存储帐户名末尾会带有一个随机值。 若要查询最终字符串（包括随机部分），请使用以下命令：
 
 ```azurecli-interactive
-STORAGE_ACCOUNT=$(az storage account list --resource-group myResourceGroup --query "[?contains(name,'mystorageaccount')].[name]" -o tsv)
+STORAGE_ACCOUNT=$(az storage account list --resource-group $ACI_PERS_RESOURCE_GROUP --query "[?contains(name,'$ACI_PERS_STORAGE_ACCOUNT_NAME')].[name]" -o tsv)
 echo $STORAGE_ACCOUNT
 ```
 
 共享名已知（即上述脚本中的 acishare），因此剩下的就是找到存储帐户密钥，可使用以下命令：
 
 ```azurecli-interactive
-STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
 echo $STORAGE_KEY
 ```
 
@@ -76,7 +74,7 @@ echo $STORAGE_KEY
 
 ```azurecli-interactive
 KEYVAULT_NAME=aci-keyvault
-az keyvault create -n $KEYVAULT_NAME --enabled-for-template-deployment -g myResourceGroup
+az keyvault create -n $KEYVAULT_NAME --enabled-for-template-deployment -g $ACI_PERS_RESOURCE_GROUP
 ```
 
 `enabled-for-template-deployment` 交换机允许 Azure 资源管理器在部署时从密钥保管库拉取机密。
@@ -203,6 +201,5 @@ az container show --resource-group myResourceGroup --name hellofiles -o table
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 Azure 容器实例部署第一个容器[快速入门](container-instances-quickstart.md)
+- 使用 Azure 容器实例 [quickstart](container-instances-quickstart.md) 部署第一个容器
 - 了解 [Azure 容器实例和容器协调器之间的关系](container-instances-orchestrator-relationship.md)
-

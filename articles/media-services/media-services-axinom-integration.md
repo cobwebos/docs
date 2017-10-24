@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
 ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ AMP 代码的其余部分为标准 AMP API，如[此处](http://amp.azure.net/li
 
 遗憾的是，Azure AD 只能颁发基元类型的 JWT 令牌。 同样，.NET Framework API（System.IdentityModel.Tokens.SecurityTokenHandler 和 JwtPayload）只允许输入复杂对象类型作为声明。 但是，这些声明仍会序列化为字符串。 因此，这两种类型都不能用于生成 Widevine 许可证请求所需的 JWT 令牌。
 
-John Sheehan 的 [JWT Nuget 包](https://www.nuget.org/packages/JWT) 符合要求，因此我们使用该 Nuget 包。
+John Sheehan 的 [JWT Nuget 包](https://www.nuget.org/packages/JWT)符合要求，因此将使用该 Nuget 包。
 
 下面是通过所需声明生成 JWT 令牌的代码，这些声明是 Axinom Widevine 许可证进行测试所需的：
 
@@ -182,7 +182,7 @@ Axinom Widevine 许可证服务器
 * Windows 8.1 和 Windows 10 中的 IE 11
 * 同时还支持 Firefox（桌面版）和 Mac（非 iOS）上的 Safari，二者均可通过 Silverlight 使用，同一 URL 也适用于 Azure Media Player
 
-在利用 Axinom Widevine 许可证服务器的迷你解决方案中，需要以下参数。 Axinom 还根据其 Widevine 服务器安装情况提供其他参数，密钥 ID 除外。
+利用 Axinom Widevine 许可证服务器的小型解决方案中需要以下参数。 Axinom 还根据其 Widevine 服务器安装情况提供其他参数，密钥 ID 除外。
 
 | 参数 | 使用方式 |
 | --- | --- |

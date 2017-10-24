@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
+ms.openlocfilehash: 371295efea1eab66361b9aba21a55bbd2826c69b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: fa7d9d3bef4cb326844ede76171e8c566e87116b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 
 本文介绍在预配规模集时如何通过不同方式安装软件。
@@ -49,7 +47,7 @@ ms.lasthandoff: 08/22/2017
 
 有关磁盘的详细信息，请参阅[托管磁盘概述](../virtual-machines/windows/managed-disks-overview.md)和[使用附加数据磁盘](virtual-machine-scale-sets-attached-disks.md)。
 
-## <a name="install-when-the-scale-set-is-provisioned"></a>预配规模集时进行安装
+## <a name="already-provisioned"></a>预配规模集时进行安装
 
 可将虚拟机扩展应用于虚拟机规模集。 借助虚拟机扩展，可将规模集中的虚拟机作为一个组进行自定义。 有关扩展的详细信息，请参阅[虚拟机扩展](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
@@ -228,5 +226,4 @@ az vmss create \
 [linux-vm-capture]: ../virtual-machines/linux/capture-image.md
 [windows-vm-capture]: ../virtual-machines/windows/capture-image.md 
 [vmss-create]: virtual-machine-scale-sets-create.md
-
 

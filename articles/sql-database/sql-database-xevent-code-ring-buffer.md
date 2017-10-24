@@ -1,6 +1,6 @@
 ---
 title: "SQL 数据库的 XEvent 环形缓冲区代码 | Microsoft 文档"
-description: "提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓存区目标。"
+description: "提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓冲区目标。"
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
 ms.openlocfilehash: 6fbefe151901ac3b15d93712422878fc4d6206f1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
 
@@ -224,7 +224,7 @@ GO
 
 为了查看结果，我们单击了 **target_data_XML** 列标题下的单元格。
 
-然后，在结果窗格中，我们单击了 **target_data_XML** 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
+然后，在结果窗格中，我们单击了 target_data_XML 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
 
 输出显示在以下块中。 结果看起来很长，但其实只是两个 **<event>** 元素。
 

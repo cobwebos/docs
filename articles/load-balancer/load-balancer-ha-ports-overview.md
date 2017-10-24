@@ -15,20 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
+ms.openlocfilehash: 3e54cb45cf002a183a5b0bd9b3082a235cd825f8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 2219aeb725b207fd92ff3e7603d7ee9c78f2844c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="high-availability-ports-overview-preview"></a>高可用性端口概述（预览）
 
 Azure 负载均衡器的标准 SKU 引入了高可用性 (HA) 端口功能 - 能够为所有支持的协议分配来自所有端口的流量。 配置内部负载均衡器时，用户可以配置 HA 端口规则（可将前端和后端端口设置为 **0**，将协议设置为 **all**），从而允许所有流量流经内部负载均衡器。
 
 >[!NOTE]
-> 高可用性端口功能当前处于预览状态。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 负载均衡器标准版中提供高可用性端口功能，当前处于预览状态。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 请务必注册负载均衡器标准版（预览版），以便在负载均衡器标准版资源中使用 HA 端口。 请按照说明注册负载均衡器[标准版（预览版）](https://aka.ms/lbpreview#preview-sign-up)。
 
 负载均衡算法仍保持不变，并基于五元组 <源 IP 地址、源端口、目标 IP 地址、目标端口、协议> 选择目标。 但此配置允许单个 LB 规则处理所有可用流量，并减少配置复杂性以及由可以添加的最大负载均衡规则数施加的任何限制。
 
@@ -71,12 +69,17 @@ HA 端口当前在以下区域提供：
 
     ```cli
     az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network 
-    ```
-## <a name="caveats"></a>注意事项
+    ```  
+
+
+>[!NOTE]
+>要使用此功能，除了注册 HA 端口外，还需注册负载均衡器[标准版（预览版）](https://aka.ms/lbpreview#preview-sign-up)。 注册 HA 端口或负载均衡器标准版（预览版）最长可能需要一小时。
+
+## <a name="limitations"></a>限制
 
 以下是 HA 端口支持的配置或异常：
 
-- 单个前端 ip 配置可以有包含 HA 端口（所有端口）的单条 DSR 负载均衡器规则，也可以有包含高 HA 端口（所有端口）的单条非 DSR 负载均衡器规则。 它不能同时具有这两者。
+- 单个前端 IP 配置可以有包含 HA 端口（所有端口）的单条 DSR 负载均衡器规则，也可以有包含 HA 端口（所有端口）的单条非 DSR 负载均衡器规则。 它不能同时具有这两者。
 - 单个网络接口 IP 配置只能有包含 HA 端口的一条非 DSR 负载均衡器规则。 不能为此 ipconfig 配置任何其他规则。
 - 单个网络接口 IP 配置可以有一条或多条包含 HA 端口的 DSR 负载均衡器规则，前提是其所有相应的前端 ip 配置都是唯一的。
 - 如果所有负载均衡规则都包含 HA 端口（仅 DSR），或所有规则都包含非 HA 端口（DSR 和非 DSR），则两条（或更多）指向同一后端池的负载均衡器规则可以共存。 如果存在 HA 端口和非 HA 端口规则的组合，这两种 LB 规则不能共存。
@@ -86,5 +89,4 @@ HA 端口当前在以下区域提供：
 ## <a name="next-steps"></a>后续步骤
 
 [配置内部负载均衡器上的 HA 端口](load-balancer-configure-ha-ports.md)
-
 

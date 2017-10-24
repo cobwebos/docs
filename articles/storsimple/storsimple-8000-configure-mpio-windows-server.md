@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9fe3fa3a2df63d111de742ecb48b1469aad543cd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>为 StorSimple 设备配置多路径 I/O
 
@@ -83,7 +83,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 3. 选择“添加对 iSCSI 设备的支持”，并单击“添加”。  
    ![MPIO 属性 - 发现多路径](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. 出现提示时，重新启动服务器。
-5. 在“MPIO 属性”对话框中，单击“MPIO 设备”选项卡。 单击 **“添加”**。
+5. 在“MPIO 属性”对话框中，单击“MPIO 设备”选项卡。单击“添加”。
     </br>![MPIO 属性 - MPIO 设备](./media/storsimple-configure-mpio-windows-server/IC741004.png)
 6. 在“添加 MPIO 支持”对话框中的“设备硬件 ID”下面，输入设备的序列号。 若要获取设备序列号，请访问 StorSimple 设备管理器服务。 导航到“设备”>“仪表板”。 设备序列号显示在设备仪表板的右侧“速览”窗格中。
     </br>
@@ -185,7 +185,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    4. 单击“确定”返回到“iSCSI 发起程序属性”对话框。 现已向目标添加第二个会话。
 10. 重复步骤 8-10，向目标添加其他会话（路径）。 主机上有两个接口，设备上也有两个接口，总共可以添加四个会话。
 11. 在添加所需的会话（路径）后，在“iSCSI 发起程序属性”对话框中，选择目标并单击“属性”。 在“属性”对话框的“会话”选项卡上，记下与可能的路径排列对应的四个会话标识符。 要取消会话，请选中会话标识符旁边的复选框，并单击“断开连接”。
-12. 若要查看会话内存在的设备，请选择“设备”选项卡。 若要为所选设备配置 MPIO 策略，请单击“MPIO”。 “设备详细信息”对话框随即出现。 在“MPIO”选项卡上，可以选择适当的“负载均衡策略”设置。 还可以查看“活动”或“备用”路径类型。
+12. 若要查看会话内存在的设备，请选择“设备”选项卡。若要为所选设备配置 MPIO 策略，请单击“MPIO”。 “设备详细信息”对话框随即出现。 在“MPIO”选项卡上，可以选择适当的“负载均衡策略”设置。 还可以查看“活动”或“备用”路径类型。
 
 ## <a name="next-steps"></a>后续步骤
 

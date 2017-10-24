@@ -1,6 +1,6 @@
 ---
 title: "Azure VM 的特定 RDP 错误消息 | Microsoft Docs"
-description: "了解在你尝试使用远程桌面与 Azure 中 Windows 虚拟机的连接时收到的特定错误消息"
+description: "了解在尝试使用远程桌面与 Azure 中 Windows 虚拟机的连接时收到的特定错误消息"
 keywords: "远程桌面错误,远程桌面连接错误,无法连接到 VM,远程桌面故障排除"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,19 +13,17 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 05/26/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4f2b70b79e52df902e0f659fc97158d446efdf50
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 803ca6cb9e7c5633920ab44e45cf211eca1517a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
-在使用远程桌面与 Azure 中 Windows 虚拟机 (VM) 的连接时，你可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果你在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+在使用远程桌面与 Azure 中 Windows 虚拟机 (VM) 的连接时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 有关特定错误消息的信息，请参阅以下内容：
 
@@ -40,7 +38,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>由于没有可用于提供许可证的远程桌面许可证服务器，远程会话已断开连接。
 原因：用于远程桌面服务器角色的 120 天许可宽限期已过期，需要安装许可证。
 
-解决方法是，从门户保存 RDP 文件的本地副本，然后在 PowerShell 命令提示符下运行此命令以进行连接。 此步骤仅禁用该连接的许可：
+解决方法是，从门户保存 RDP 文件的本地副本，并在 PowerShell 命令提示符下运行此命令以进行连接。 此步骤仅禁用该连接的许可：
 
         mstsc <File name>.RDP /admin
 
@@ -81,7 +79,7 @@ ms.lasthandoff: 04/03/2017
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：你的凭据无效。
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：凭据无效。
 原因：目标 VM 无法验证帐户名和密码。
 
 基于 Windows 的计算机可以验证本地帐户或域帐户的凭据。
@@ -111,5 +109,4 @@ ms.lasthandoff: 04/03/2017
 
 * 有关用于访问 VM 上运行的应用程序的故障排除步骤，请参阅[对在 Azure VM 上运行的应用程序的访问进行故障排除](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 如果在 Azure 中使用 Secure Shell (SSH) 连接到 Linux VM 时遇到问题，请参阅[对 Azure 中到 Linux VM 的 SSH 连接进行故障排除](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
 

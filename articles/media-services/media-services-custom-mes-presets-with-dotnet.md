@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.openlocfilehash: b4d25f07349043da8cb745930fde3371c98f9960
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/29/2017
 
 本主题介绍如何使用 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 预设并减少层数，从而自定义预设。 [自定义 Media Encoder Standard 预设](media-services-advanced-encoding-with-mes.md)主题演示了可用于执行高级编码任务的自定义预设。
 
-## <a id="customizing_presets"></a> 自定义 MES 预设
+## <a id="customizing_presets"></a>自定义 MES 预设
 
 ### <a name="original-preset"></a>原始预设
 

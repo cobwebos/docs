@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.openlocfilehash: 8af9d70965c1c9ad8c49b7d2bb04244fc207058d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.openlocfilehash: 5cf01580b53b551064a46282b9005ade6afe9604
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>使用 .NET Standard 将消息发送到 Azure 事件中心入门
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/11/2017
     using System.Threading.Tasks;
     ```
 
-2. 向 `Program` 类添加常量作为事件中心连接字符串和实体路径（单个事件中心名称）。 将括号中的占位符替换为在创建事件中心时获得的相应值。
+2. 向 `Program` 类添加常量作为事件中心连接字符串和实体路径（单个事件中心名称）。 将括号中的占位符替换为在创建事件中心时获得的相应值。 请确保 `{Event Hubs connection string}` 是命名空间级别的连接字符串，而不是事件中心字符串。 
 
     ```csharp
     private static EventHubClient eventHubClient;

@@ -16,10 +16,10 @@ ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2443dd73fdf441721bd6f6f340da515d9f5a22a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-management-solutions-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中使用管理解决方案（预览版）
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 2. 在左窗格中，选择“**更多服务**”。
 3. 向下滚动到“**解决方案**”，或者在“**筛选器**”对话框中键入 *solutions*。
 4. 单击“**+ 添加**”按钮。
-5. 搜索你感兴趣浏览时，通过单击的解决方案**筛选器**按钮，或键入**搜索所有内容**框。
+5. 若要搜索感兴趣的解决方案，请浏览，单击“筛选器”按钮，或在“搜索所有内容”框中输入。
 6. 单击要查看其详细信息的应用商店项。
 7. 单击“**创建**”，以打开“**添加解决方案**”窗格。
 8. 除了解决方案中任何参数的值，系统还会提示提供所需的信息，例如 [OMS 工作区和自动化帐户](#oms-workspace-and-automation-account)。
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 
 1. 请遵循 [OMS 工作区和自动化帐户](#oms-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
 2. 转到 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)。  
-3. 搜索你感兴趣的解决方案。
+3. 搜索感兴趣的解决方案。
 4. 从结果中选择解决方案以查看其详细信息。
 5. 单击“**部署到 Azure**”按钮。
 6. 除了解决方案中任何参数的值，系统还会提示提供资源组和位置等信息。
@@ -104,7 +104,7 @@ ms.lasthandoff: 07/11/2017
 删除管理解决方案时，也会删除该解决方案中的所有资源。  
 
 1. 使用[列出解决方案](#listing-solutions)中的过程在 Azure 门户中查找解决方案。
-2. 选择你想要删除的解决方案。
+2. 选择要删除的解决方案。
 3. 单击“删除” 按钮。
 
 ## <a name="creating-a-management-solution"></a>创建管理解决方案

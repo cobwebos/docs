@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.openlocfilehash: e3787b48037360bf6066ddce2bacba6842213b2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/11/2017
 解码 EDIFACT 连接器执行以下任务： 
 
 * 针对贸易合作伙伴协议验证信封。
-* 通过匹配发件人限定符 （标识符和接收方限定符） 标识符解析协议。
+* 通过将发送方限定符和标识符与接收方限定符和标识符进行匹配来解析协议。
 * 当交换有多个基于协议的接收设置配置的事务时，将交换拆分为多个事务。
 * 分解交换。
 * 验证 EDI 和特定于合作伙伴的属性包括：

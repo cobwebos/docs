@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>如何在 Hudson 连续集成中使用 Azure 从属插件
-适用于 Hudson 的 Azure Slave 插件让你能够在运行分布式构建系统时，预配 Azure 上的从属节点。
+适用于 Hudson 的 Azure 从属插件使你能够在运行分布式构建系统时，预配 Azure 上的从属节点。
 
 ## <a name="install-the-azure-slave-plug-in"></a>安装 Azure 从属插件
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
@@ -72,17 +72,17 @@ ms.lasthandoff: 07/11/2017
    
     ![添加新的云][add new cloud]
    
-    此时显示需要在其中输入订阅详细信息的字段。
+    此时会显示用于输入订阅详细信息的字段。
    
     ![配置配置文件][configure profile]
-5. 从用户的订阅配置文件复制订阅 ID 和管理证书，并将其粘贴到相应的字段中。
+5. 从订阅配置文件中复制订阅 ID 和管理证书，然后将其粘贴到相应的字段中。
    
-    在复制订阅 ID 和管理证书时， **不要**包含将值括起来的引号。
+    复制订阅 ID 和管理证书时，请**不要**包含将值括起来的引号。
 6. 单击“验证配置”。
 7. 配置成功通过验证后，单击“保存”。
 
 ## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>为 Azure 从属插件设置虚拟机模板
-虚拟机模板定义插件在 Azure 上创建从属节点时使用的参数。 在以下步骤中，我们为一个 Ubuntu VM 创建模板。
+虚拟机模板定义插件在 Azure 上创建从属节点时使用的参数。 在以下步骤中，我们将为一个 Ubuntu VM 创建模板。
 
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
 2. 单击“配置系统”。
@@ -90,7 +90,7 @@ ms.lasthandoff: 07/11/2017
 4. 在“云”部分中，找到“添加 Azure 虚拟机模板”，并单击“添加”按钮。
    
     ![添加 VM 模板][add vm template]
-5. 在“名称”字段中指定一个云服务名称。 如果你指定的名称引用一个现有的云服务，则在该服务中设置 VM。 否则，Azure 会创建一个新服务。
+5. 在“名称”字段中指定一个云服务名称。 如果指定的名称引用一个现有的云服务，则会在该服务中设置 VM。 否则，Azure 将创建一个新服务。
 6. 在“说明”字段中，输入描述所创建模板的文本。 此信息仅用于记录目的，并不在设置 VM 时使用。
 7. 在“标签”字段中，输入 **linux**。 此标签用于标识所创建的模板，随后在创建 Hudson 作业时用于引用该模板。
 8. 选择要创建 VM 的所在区域。
@@ -104,7 +104,7 @@ ms.lasthandoff: 07/11/2017
      ![模板配置][template config]
 13. 在“映像系列或 ID”中，必须指定要在 VM 中安装的系统映像。 可以从映像系列的列表中选择，也可以指定一个自定义映像。
     
-     如果要从映像系列的列表中选择，请输入映像系列名称的首字符（区分大小写）。 例如，键入 **U** 会显示一个 Ubuntu Server 系列列表。 从列表中选择后，Jenkins 会在设置你的 VM 时使用该系列的最新版系统映像。
+     如果要从映像系列的列表中选择，请输入映像系列名称的首字符（区分大小写）。 例如，键入 **U** 会显示一个 Ubuntu Server 系列列表。 从列表中选择后，Jenkins 会在设置 VM 时使用该系列的最新版系统映像。
     
      ![OS 系列列表][OS family list]
     
@@ -136,13 +136,13 @@ ms.lasthandoff: 07/11/2017
     
          sudo apt-get install -y ant
     
-     会在创建 VM 后执行“初始化脚本”  。 在此示例中，脚本安装 Java、git 和 ant。
+     将在创建 VM 后执行“初始化脚本”。 在此示例中，脚本安装 Java、git 和 ant。
 16. 在“用户名”和“密码”字段中，为要在 VM 中创建的管理员帐户创建首选值。
 17. 单击“验证模板”检查指定的参数是否有效。
 18. 单击“保存” 。
 
 ## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>创建在 Azure 上的从属节点上运行的 Hudson 作业
-在此部分，你创建一个在 Azure 上的从属节点上运行的 Hudson 任务。
+在此部分，将创建一个在 Azure 上的从属节点上运行的 Hudson 任务。
 
 1. 在 Hudson 仪表板中，单击“新建作业”。
 2. 为正在创建的作业输入一个名称。

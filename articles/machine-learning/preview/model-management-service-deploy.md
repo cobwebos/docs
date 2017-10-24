@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
+ms.openlocfilehash: 0ebf8964bc565e5d4f95fb1ad3edbc16f841851c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: d95f8d32d9aeca5202623909fcf78014fa2e4458
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>将机器学习模型部署为 Web 服务
 
@@ -165,7 +164,7 @@ az ml service create realtime --image-id <image id> -n <service name>
 ```
 
 >[!NOTE] 
->还可以使用单个命令同时执行两个操作。 若需更多详细信息，请将 -h 与 service create 命令一起使用。
+>还可以使用单个命令执行上述 4 个步骤。 若需更多详细信息，请将 -h 与 service create 命令一起使用。
 
 ### <a name="8-test-the-service"></a>8.测试服务
 使用以下命令获取有关如何调用服务的信息：
@@ -188,4 +187,3 @@ az ml service run realtime -i <service id> -d "{\"input_df\": [{\"sepal length\"
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已测试了要在本地运行的 Web 服务，可以将其部署到群集以供大规模使用了。 有关为 Web 服务部署设置群集的详细信息，请参阅[模型管理配置](model-management-configuration.md)。 
-

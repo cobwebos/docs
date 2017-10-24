@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: tarcher
 ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中某个实验室的基本策略
 
-借助 Azure 开发测试实验室，可通过管理每个实验室的策略（设置）来控制成本并尽量减少实验中的浪费。 在本文中，你开始使用策略通过学习如何设置两个最严重策略-限制可以创建或单个用户，占用的虚拟机 (VM) 的数量和配置自动关闭。 若要了解如何设置每个实验室策略，请参阅 [在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)一文。  
+借助 Azure 开发测试实验室，可通过管理每个实验室的策略（设置）来控制成本并尽量减少实验中的浪费。 本文介绍如何设置两个最关键的策略 - 限制单个用户可以创建或声明的虚拟机 (VM) 数目，以及配置自动关闭 - 帮助你开始使用策略。 若要了解如何设置每个实验室策略，请参阅 [在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)一文。  
 
 ## <a name="accessing-a-labs-policies-in-azure-devtest-labs"></a>访问 Azure 开发测试实验室中的实验室策略
 以下步骤指导完成 Azure 开发测试实验室中的实验室策略设置：

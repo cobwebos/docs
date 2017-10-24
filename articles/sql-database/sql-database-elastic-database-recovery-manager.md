@@ -1,5 +1,5 @@
 ---
-title: "使用恢复管理器解决分片映射问题 | Microsoft Docs"
+title: "使用恢复管理器解决分片映射问题 | Microsoft 文档"
 description: "使用 RecoveryManager 类解决分片映射问题"
 services: sql-database
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: ddove
 ms.openlocfilehash: e60e2295484873ea15d52108b7d619319a57827f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>使用 RecoveryManager 类解决分片映射问题
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) 类使 ADO.Net 应用程序能够轻松检测并更正分片数据库环境中全局分片映射 (GSM) 与本地分片映射 (LSM) 中的任何不一致性。 
 
-GSM 和 LSM 跟踪分片环境中每个数据库的映射。 有时，GSM 和 LSM 之间会发生中断。 在这种情况下，请使用 RecoveryManager 类来检测和修复中断。
+GSM 和 LSM 跟踪分片环境中每个数据库的映射。 有时，GSM 和 LSM 之间将发生中断。 在这种情况下，请使用 RecoveryManager 类来检测和修复中断。
 
 RecoveryManager 类是[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的一部分。 
 
@@ -32,7 +32,7 @@ RecoveryManager 类是[弹性数据库客户端库](sql-database-elastic-databas
 有关术语定义，请参阅[弹性数据库工具词汇表](sql-database-elastic-scale-glossary.md)。 若要了解如何使用 **ShardMapManager** 来管理分片解决方案中的数据，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。
 
 ## <a name="why-use-the-recovery-manager"></a>为何使用恢复管理器？
-在分片数据库环境中，每个数据库有一个租户，而每个服务器有多个数据库。 环境中也可能有多个服务器。 每个数据库映射在分片映射中，以便将调用路由到正确的服务器和数据库。 根据分片键跟踪数据库，将为每个分片分配一系列键值。 例如，分片键可能代表从“D”到“F”的客户名称。 所有分片（也称为数据库）及其映射范围的映射都包含在**全局分片映射 (GSM)** 中。 每个数据库还包含分片上所包含范围的映射，称为**本地分片映射 (LSM)**。 当应用连接到分片时，会在应用中缓存映射以供快速检索。 LSM 用于验证缓存的数据。 
+在分片数据库环境中，每个数据库有一个租户，而每个服务器有多个数据库。 环境中也可能有多个服务器。 每个数据库映射在分片映射中，以便将调用路由到正确的服务器和数据库。 根据**分片键**跟踪数据库，将为每个分片分配**一系列键值**。 例如，分片键可能代表从“D”到“F”的客户名称。 所有分片（也称为数据库）及其映射范围的映射都包含在**全局分片映射 (GSM)** 中。 每个数据库还包含分片上所包含范围的映射，称为**本地分片映射 (LSM)**。 当应用连接到分片时，会在应用中缓存映射以供快速检索。 LSM 用于验证缓存的数据。 
 
 GSM 和 LSM 可能因以下原因变得不同步：
 
@@ -99,7 +99,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
 
 * RecoveryToken 参数枚举特定分片的 GSM 与 LSM 之间映射的差异。 
 * [MappingDifferenceResolution 枚举](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx)指示用于解决分片映射之间差异的方法。 
-* LSM 包含正确映射时，建议使用 **MappingDifferenceResolution.KeepShardMapping**，因此应该使用分片中的映射。 这通常是因为发生故障转移：分片现在驻留在新的服务器上。 由于必须先从 GSM 中删除分片（使用 RecoveryManager.DetachShard 方法），因此 GSM 上将不再存在映射。 因此，必须使用 LSM 重新建立分片映射。
+* LSM 包含正确映射时，建议使用 **MappingDifferenceResolution.KeepShardMapping**，因此应该使用分片中的映射。 这通常是因为发生故障转移：分片现在驻留在新的服务器上。 由于必须先从 GSM 中删除分片（使用 RecoveryManager.DetachShard 方法），所以 GSM 上不再存在映射。 因此，必须使用 LSM 重新建立分片映射。
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>还原分片之后将分片附加到 ShardMap
 [AttachShard 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx)可将给定的分片附加到分片映射。 然后，它将检测任何分片映射不一致性，并更新映射以匹配分片时间点还原的分片。 假设对数据库也进行了重命名以反映原始数据库名称（在还原分片之前），因为时间点还原默认为追加时间戳的新数据库。 
@@ -137,7 +137,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
 此示例将执行以下步骤：
 
 1. 从反映故障转移事件之前分片位置的分片映射中删除分片。
-2. 将分片附加到反映新分片位置的分片映射（参数“Configuration.SecondaryServer”是新的服务器名称，但是相同的数据库名称）。
+2. 将分片附加到反映新分片位置的分片映射（参数“Configuration.SecondaryServer”是新的服务器名称，但是数据库名称相同）。
 3. 通过检测每个分片的 GSM 与 LSM 之间的映射差异来检索恢复令牌。 
 4. 通过信任来自每个分片 LSM 的映射解决不一致情况。 
    

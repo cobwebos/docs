@@ -1,5 +1,5 @@
 ---
-title: "设计你的第一个 Azure Database for MySQL 数据库 - Azure 门户 | Microsoft Docs"
+title: "设计第一个 Azure Database for MySQL 数据库 - Azure 门户 | Microsoft Docs"
 description: "本教程介绍如何使用 Azure 门户创建和管理 Azure Database for MySQL 服务器。"
 services: mysql
 author: v-chenyh
@@ -10,15 +10,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 06/06/2017
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: c7b76cacbdc4e483353f64cc4e50c974867bb5b7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 92ae809646cb956b0b7cb71cf2a21610bb2d610f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="design-your-first-azure-database-for-mysql-database"></a>设计你的第一个 Azure Database for MySQL 数据库
+# <a name="design-your-first-azure-database-for-mysql-database"></a>设计第一个 Azure Database for MySQL 数据库
 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MySQL 数据库。 使用 Azure 门户可以轻松管理服务器和设计数据库。
 
 本教程介绍如何使用 Azure 门户完成以下操作：
@@ -62,7 +60,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 ## <a name="configure-firewall"></a>配置防火墙
 Azure Databases for MySQL 受防火墙保护。 默认情况下，将拒绝与服务器和服务器内数据库的所有连接。 首次连接到 Azure Database for MySQL 之前，请配置防火墙以添加客户端计算机的公共网络 IP 地址（或 IP 地址范围）。
 
-1. 单击新创建的服务器，然后单击“连接安全性”。
+1. 单击新创建的服务器，并单击“连接安全性”。
    ![3-1 连接安全性](./media/tutorial-design-database-using-portal/3_1-Connection-security.png)
 2. 可以“添加我的 IP”或在此处配置防火墙规则。 创建规则后请记得单击“保存”。
 现在可以使用 mysql 命令行工具或 MySQL Workbench GUI 工具连接服务器。
@@ -168,4 +166,3 @@ SELECT * FROM inventory;
 
 > [!div class="nextstepaction"]
 > [如何将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)
-

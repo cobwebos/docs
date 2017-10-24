@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 10/03/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 7fc832ff23f5ad652df3cb9c689180c92952ba8e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/26/2017
-
+ms.openlocfilehash: acfd26674aafab4ed1925d6b33967f917058b1be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-application-upgrades"></a>应用程序升级故障排除
 本文介绍一些围绕升级 Azure Service Fabric 应用程序的常见问题以及这些问题的解决方法。
@@ -79,13 +78,15 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ```
 
-在本示例中，升级域 *MYUD1* 的升级失败，两个分区（*744c8d9f-1d26-417e-a60e-cd48f5c098f0* 和 *4b43f4d8-b26b-424e-9307-7a7a62e79750*）已停滞。 分区由于运行时无法将主副本 (*WaitForPrimaryPlacement*) 放在在目标节点 *Node1* 和 *Node4* 上而停滞。
+在本示例中，升级域 *MYUD1* 的升级失败，两个分区（*744c8d9f-1d26-417e-a60e-cd48f5c098f0* 和 *4b43f4d8-b26b-424e-9307-7a7a62e79750*）已停滞。 分区由于运行时无法将主副本 (*WaitForPrimaryPlacement*) 放在目标节点 *Node1* 和 *Node4* 上而停滞。
 
 可使用 **Get-ServiceFabricNode** 命令验证这两个节点是否位于升级域 *MYUD1* 中。 *UpgradePhase* 为 *PostUpgradeSafetyCheck*，这意味着这些安全检查在升级域中所有节点完成升级后发生。 所有这些信息表明应用程序代码的新版本可能存在问题。 最常见的问题是打开或升级到主代码路径时的服务错误。
 
 *UpgradePhase* 为 *PreUpgradeSafetyCheck* 意味着在执行升级前，准备升级域时出现了问题。 这种情况下最常见的问题是关闭主代码路径或从该路径降级时的服务错误。
 
-当前 **UpgradeState** 为 *RollingBackCompleted*，因此必须已使用回滚 **FailureAction**（将在失败时自动回滚升级）执行原始升级。 如果已使用手动 **FailureAction** 执行了原始升级，则升级将改为处于挂起状态，以允许对应用程序进行实时调试。
+当前 **UpgradeState** 为 *RollingBackCompleted*，因此必须已使用回滚 **FailureAction**（会在失败时自动回滚升级）执行原始升级。 如果已使用手动 **FailureAction** 执行了原始升级，则升级将改为处于挂起状态，以允许对应用程序进行实时调试。
+
+在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级。
 
 ### <a name="investigate-health-check-failures"></a>调查运行状况检查失败
 运行状况检查失败可能由各种其他问题触发，这些问题可能发生在升级域中所有节点完成升级、通过所有安全检查之后。 此段落后面的输出是升级因运行状况检查失败而失败时的典型输出。 **UnhealthyEvaluations** 字段根据指定的[运行状况策略](service-fabric-health-introduction.md)，捕获升级失败时失败的运行状况检查的快照。
@@ -222,4 +223,3 @@ Service Fabric 将所有百分比转换为实际实体（如副本、分区和�
 了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
-

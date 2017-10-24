@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>如何管理不同类型的推送通知活动的独特内容
 可以使用新的市场宣传活动的内容部分修改公告、投票、数据推送和磁贴（仅 Windows Phone）的内容。 推送活动的内容设置是与活动类型相关的。 
@@ -115,7 +115,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="content-of-polls"></a>投票内容
 ![市场宣传内容 2][31] 
 
-填写公告的标题、说明和按钮文本。 然后，添加问题和问题的答案的选项。
+填写公告的标题、说明和按钮文本。 然后，添加问题和问题的答案选项。
 可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动确定访问群体。 也可以基于投票结果反馈（其中问题和答案选项用作条件）确定访问群体。
 
 ### <a name="see-also"></a>另请参阅
@@ -130,7 +130,7 @@ ms.lasthandoff: 07/11/2017
 * Base64 数据
 
 ### <a name="define-the-content-of-your-data"></a>定义数据的内容
-* 如果你选择将文本数据推送，复制并粘贴到"内容"框的文本。
+* 如果选择推送文本数据，请将该文本复制并粘贴到“内容”框中。
 * 如果选择推送二进制数据或 base64 数据，则使用“上传文件”按钮上传文件。
 * 可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动确定访问群体。
 

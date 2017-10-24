@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 05/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 8ac4d409f7363e8b4ae98be659a627ac8db8d787
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -136,7 +136,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>终结点配置
 
-使用 Windows HTTP Server API 的 Web 服务器（包括 WebListener）需要使用 `Endpoint` 配置。 使用 Windows HTTP Server API 的 Web 服务器首先必须保留带有 *http.sys* 的 URL（通常可使用 [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) 工具实现）。 此操作需要提升的权限，默认情况下服务不具备此权限。 "Http"或"https"选项`Protocol`属性`Endpoint`中的配置*ServiceManifest.xml*专门用于指示 Service Fabric 运行时注册一个 URL 与*http.sys*你代表使用[*强通配符*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL 前缀。
+使用 Windows HTTP Server API 的 Web 服务器（包括 WebListener）需要使用 `Endpoint` 配置。 使用 Windows HTTP Server API 的 Web 服务器首先必须保留带有 *http.sys* 的 URL（通常可使用 [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) 工具实现）。 此操作需要提升的权限，默认情况下服务不具备此权限。 用于 ServiceManifest.xml 中 `Endpoint` 配置的 `Protocol` 属性的“Http”或“https”选项，可专门用于指示 Service Fabric 运行时使用[强通配符](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL 前缀代表你注册带有 http.sys 的 URL。
 
 例如，若要保留服务的 `http://+:80`，则应在 ServiceManifest.xml 中使用以下配置：
 

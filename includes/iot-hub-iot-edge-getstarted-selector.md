@@ -31,7 +31,7 @@ Logger 模块只使用来自中转站的消息，而不会将新消息发布到�
 
 ![中转站如何在 Azure IoT Edge 中的模块之间路由消息][5]
 
-上图显示了 Hello World 示例的体系结构，同时显示了在[存储库][lnk-iot-edge]中对示例不同部分进行实现的源文件的相对路径。 请自行浏览代码，或使用下面的代码段作为指导。
+上图显示了 Hello World 示例的体系结构，同时显示了在[存储库][lnk-iot-edge]中对示例不同部分进行实现的源文件的相对路径。 请自行浏览代码，或作为指导可使用本文中的代码段。
 
 <!-- Images -->
 [4]: media/iot-hub-iot-edge-getstarted-selector/high_level_architecture.png

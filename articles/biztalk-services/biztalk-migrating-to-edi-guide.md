@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
 ms.openlocfilehash: 1b70fc3d199d7f1521acb534dafec8fb3e69500e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
 
@@ -62,8 +62,8 @@ BizTalk 服务提供了一种易于使用的配置体验，可在不配置任何
 
 1. 从贸易合作伙伴 Fabrikam 接收到 EDI 消息。  为了从贸易合作伙伴接收 EDI 消息，BizTalk 服务支持传输协议，如 FTP、SFTP、AS2 和 HTTP/S。
 2. 贸易合作伙伴协议接收端处理将 EDI 消息拆分成 XML 格式。  可将已拆分的 EDI 消息（XML 格式）路由到服务总线终结点，例如服务总线中继终结点、服务总线主题、服务总线队列或 BizTalk 服务网桥。
-3. 然后可以从以进行进一步自定义处理终结点接收分解的 XML 消息。  这些终结点可由本地组件或 Microsoft Azure 计算实例处理，以便在 Windows Workflow (WF) 或 Windows Communication Foundation (WCF) 服务等中进一步处理消息。
-4. "发送方处理"的贸易合作伙伴协议然后组合成 EDI 格式的 XML 消息并将其发送给贸易合作伙伴，Contoso。  为了向贸易合作伙伴发送 EDI 消息，BizTalk 服务支持接收 EDI 消息时所用的相同协议。
+3. 然后，可从终结点接收已拆分的 XML 消息，进行进一步的自定义处理。  这些终结点可由本地组件或 Microsoft Azure 计算实例处理，以便在 Windows Workflow (WF) 或 Windows Communication Foundation (WCF) 服务等中进一步处理消息。
+4. 然后，贸易合作伙伴协议的“发送端处理”将 XML 消息组合成 EDI 格式，并将其发送给贸易合作伙伴 Contoso。  为了向贸易合作伙伴发送 EDI 消息，BizTalk 服务支持接收 EDI 消息时所用的相同协议。
 
 本文档进一步提供了概念性指导，介绍了如何将一些不同的 BizTalk Server EDI 项目迁移到 BizTalk 服务。
 

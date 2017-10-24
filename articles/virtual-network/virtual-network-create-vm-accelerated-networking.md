@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449425189a3b42dcb2c31316c1c8e38fac69d761
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: 2e887230a102f5c6289ca2eec0e4700a0e1fdfde
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的虚拟机
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 08/03/2017
 * **VM 大小：**具有八个或多个核心的通用和计算优化实例大小。 有关详细信息，请参阅有关 [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 支持的 VM 实例大小组合今后会不断增加。
 * **仅通过 Azure 资源管理器 (ARM) 进行部署：**无法使用加速网络通过 ASM/RDFE 进行部署。
 
-当这些限制有变化时，我们会通过 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/accelerated-networking-in-preview)页发出通告。
+当这些限制有变化时，我们会通过 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview/)页发出通告。
 
 ## <a name="create-a-windows-vm"></a>创建 Windows VM
 可以使用 Azure 门户或 Azure [PowerShell](#windows-powershell) 创建 VM。
@@ -61,7 +61,7 @@ ms.lasthandoff: 08/03/2017
 
 1. 在 Internet 浏览器中打开 Azure [门户](https://portal.azure.com)并使用 Azure [帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果还没有帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
 2. 在门户中单击“+ 新建” > “计算” > “Windows Server 2016 Datacenter”。 
-3. 在显示的“Windows Server 2016 Datacenter”边栏选项卡中，保留“选择部署模型”框中选中的“资源管理器”，并单击“创建”。
+3. 在显示的“Windows Server 2016 Datacenter”边栏选项卡中，保留“选择部署模型”框中选中的“Resource Manager”，并单击“创建”。
 4. 在显示的“基本信息”边栏选项卡中输入以下值，保留剩余的默认选项，或者选择或输入自己的值，并单击“确定”按钮：
 
     |设置|值|
@@ -78,8 +78,8 @@ ms.lasthandoff: 08/03/2017
 9. 若要安装适用于 Windows 的加速网络驱动程序，请完成本文[配置 Windows](#configure-windows) 部分中所述的步骤。
 
 ### <a name="windows-powershell"></a>PowerShell
-1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
-2. 单击 Windows“开始”按钮，键入 PowerShell，然后在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
+1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不太熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+2. 单击 Windows“开始”按钮，键入 **powershell**，并在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
 3. 在 PowerShell 窗口中输入 `login-azurermaccount` 命令，使用 Azure [帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果还没有帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
 4. 在浏览器中复制以下脚本：
     ```powershell
@@ -179,8 +179,8 @@ ms.lasthandoff: 08/03/2017
 >如果在订阅中创建具有加速网络的 Linux VM，并尝试在同一订阅中创建具有加速网络的 Windows VM，创建 Windows VM 可能会失败。 在此预览版推出期间，我们建议在不同的订阅中测试具有加速网络的 Linux 和 Windows VM。
 >
 
-1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
-2. 单击 Windows“开始”按钮，键入 PowerShell，然后在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
+1. 安装最新版本的 Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不太熟悉 Azure PowerShell，请阅读 [Azure PowerShell 概述](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+2. 单击 Windows“开始”按钮，键入 **powershell**，并在搜索结果中单击“PowerShell”，启动 PowerShell 会话。
 3. 在 PowerShell 窗口中输入 `login-azurermaccount` 命令，使用 Azure [帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果还没有帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
 4. 完成以下步骤，注册适用于 Azure 预览版的加速网络：
     - 将包含 Azure 订阅 ID 和目标用途的电子邮件发送到 [axnpreview@microsoft.com](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)。 请等待来自 Microsoft 的有关启用订阅的邮件确认。

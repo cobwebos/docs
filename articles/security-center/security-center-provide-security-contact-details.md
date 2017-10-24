@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
+ms.date: 09/15/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f532f1aea9b8c4be6707862be4001099aa3c1d32
-ms.openlocfilehash: 1a6e5e915745dd3588fbc54b353daa947b1c4289
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 726b59c45e2eb18eebe28a180db23336ae141408
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 安全中心提供安全联系人详细信息
 Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（如果尚未提供）。 如果 Microsoft 安全响应中心 (MSRC) 发现用户的客户数据被某方非法访问或未经授权访问，Microsoft 会使用该信息联系用户。 MSRC 会执行 Azure 网络和基础结构的选择安全监视，并接收来自第三方的威胁情报和恶意投诉。
@@ -33,17 +31,18 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡上，选择“提供安全联系人详细信息”。
+1. 在“建议”下，选择“提供安全联系人详细信息”。
    ![提供安全联系人][1]
-2. 这会打开“提供安全联系人详细信息”边栏选项卡。 选择要对其提供联系人信息的 Azure 订阅。
+2. 选择要对其提供联系人信息的 Azure 订阅。
+3. 这会打开“安全策略 - 电子邮件通知”。
+
    ![提供安全联系人详细信息][2]
-3. 会再打开一个“提供安全联系人详细信息”边栏选项卡。
 
    * 输入安全联系人的电子邮件地址或地址，用逗号隔开。 输入的电子邮件地址数量无限制。
    * 输入一个安全联系人的国际电话号码。
    * 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”。
    * 以后，可选择向订阅所有者发送电子邮件通知。 当前此选项处于灰色状态。
-   * 选择“确定”将安全联系人信息应用到订阅。
+   * 选择“保存”将安全联系人信息应用到订阅。
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：
@@ -59,4 +58,3 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png
 [2]:./media/security-center-provide-security-contacts/provide-contact-details.png
-

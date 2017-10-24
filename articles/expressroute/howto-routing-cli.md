@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: anzaman,cherylmc
+ms.date: 09/25/2017
+ms.author: cherylmc
+ms.openlocfilehash: c8ae5ce7094fac334f0daa0d14030015067b97a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: fbf0bd9a139c22bbd63755f6df445f6596aaccc5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>使用 CLI 为 ExpressRoute 线路创建和修改路由
 
@@ -381,8 +380,8 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 4. 配置线路的 Microsoft 对等互连。 在继续下一步之前，请确保已准备好以下信息。
 
-  * 主链路的 /30 子网。 这必须是你拥有且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
-  * 辅助链路的 /30 子网。 这必须是你拥有且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
+  * 主链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
+  * 辅助链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
   * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。
   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
   * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
@@ -444,6 +443,12 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 ```azurecli
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroup --peering-type MicrosoftPeering --advertised-public-prefixes 124.1.0.0/24
+```
+
+### <a name="to-add-ipv6-microsoft-peering-settings-to-an-existing-ipv4-configuration"></a>将 IPv6 Microsoft 对等互连设置添加到现有的 IPv4 配置
+
+```azurecli
+az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
 ### <a name="to-delete-microsoft-peering"></a>删除 Microsoft 对等互连

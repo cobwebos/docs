@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/17/2017
 ms.author: dekapur
 ms.openlocfilehash: 88f4a23f89a1c8fd88db1df3a7ff03ae5df64c0f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>对 Azure Service Fabric 进行监视和诊断
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="azure-monitor"></a>Azure 监视器
 
-可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。 系统会自动收集[虚拟机规模集](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)和每个[虚拟机](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)的一组指标并将其显示在 Azure 门户中。 若要在 Azure 门户中查看收集的信息，请选择包含 Service Fabric 群集的资源组。 然后，选择你想要查看虚拟机规模集。 在“监视”部分中，选择“指标”可查看值的图表。
+可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。 系统会自动收集[虚拟机规模集](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)和每个[虚拟机](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)的一组指标并将其显示在 Azure 门户中。 若要在 Azure 门户中查看收集的信息，请选择包含 Service Fabric 群集的资源组。 然后，选择要查看的虚拟机规模集。 在“监视”部分中，选择“指标”可查看值的图表。
 
 ![Azure 门户视图：收集的指标信息](media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
 

@@ -8,11 +8,11 @@
 
     ![导航到 IoT 中心][img-find-iothub]
 
-1. IoT 中心资源打开以后，单击“Device Explorer”工具，然后单击顶部的“添加”。 提供新设备的名称（例如 **myDeviceId**），然后单击“保存”。
+1. IoT 中心资源打开以后，单击“Device Explorer”工具，并单击顶部的“添加”。 提供新设备的名称（例如 **myDeviceId**），然后单击“保存”。
 
     ![在门户中创建设备标识][img-create-device]
 
-   这将为 IoT 中心创建新设备标识。
+   这会为 IoT 中心创建新设备标识。
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
@@ -21,7 +21,7 @@
     ![设备连接字符串][img-connection-string]
 
 > [!NOTE]
-> IoT 中心标识注册表只存储设备标识，以启用对 IoT 中心的安全访问。 它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志让你禁用对单个设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
+> IoT 中心标识注册表只存储设备标识，以启用对 IoT 中心的安全访问。 它存储设备 ID 和密钥用作安全凭据，以及可用于禁用单个设备访问的启用/禁用标志。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
 
 <!-- Images. -->
 [img-find-iothub]: ./media/iot-hub-get-started-create-device-identity-portal/find-iothub.png

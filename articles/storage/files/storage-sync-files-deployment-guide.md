@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: 9f9ff0674fd4e3f9b0598a982d81681eaa6d1997
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: d9cf205cd3e7a8017efbe9078ff495c04f065374
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-deploy-azure-file-sync-preview"></a>如何部署 Azure 文件同步（预览版）
-通过 Azure 文件同步（预览版），可在本地或 Azure 中复制共享，并通过 Windows Server 上的 SMB 或 NFS 共享进行访问。 Azure 文件同步对需要远离 Azure 数据中心访问和修改数据的方案尤其有用，如分支机构方案。 可在多个 Windows Server 终结点（例如多个分支机构）之间复制数据。
+借助 Azure 文件同步（预览版），无需放弃本地文件服务器的灵活性、性能和兼容性即可将组织的文件共享集中在 Azure 文件中。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来完成此操作。 可以使用 Windows Server 上任何可用协议在本地访问你的数据（包括 SMB、NFS 和 FTPS），并且可以根据需要在世界各地拥有尽可能多的缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本指南中的步骤进行操作。
 

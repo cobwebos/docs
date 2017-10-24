@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
 ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>使用 Java SDK 管理 Azure Data Lake Analytics
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 08/03/2017
 </dependencies>
 ```
 
-转到“文件”>“设置”>“生成”>“执行”>“部署”。 选择“生成工具”>“Maven”>“导入”。 然后检查**导入 Maven 项目自动**。
+转到“文件”>“设置”>“生成”>“执行”>“部署”。 选择“生成工具”>“Maven”>“导入”。 然后选择“自动导入 Maven 项目”。
 
 打开 `Main.java`，将现有代码块替换为以下代码片段：
 

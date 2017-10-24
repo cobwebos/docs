@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
 ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-localized-breaking-news-to-ios-devices"></a>使用通知中心将本地化的突发新闻发送到 iOS 设备
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="overview"></a>概述
-本主题介绍如何使用 Azure 通知中心的[模板](notification-hubs-templates-cross-platform-push-messages.md)功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，从在 [使用通知中心发送突发新闻]中创建的 iOS 应用开始操作。 完成时，可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
+本主题介绍如何使用 Azure 通知中心的[模板](notification-hubs-templates-cross-platform-push-messages.md)功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，将从在[使用通知中心发送突发新闻]中创建的 iOS 应用开始操作。 完成时，将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
 
 此方案包含两个部分：
 
@@ -43,11 +43,11 @@ ms.lasthandoff: 07/11/2017
 ## <a name="template-concepts"></a>模板概念
 在[使用通知中心发送突发新闻]中，构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
 但是，很多应用程序针对多个市场，需要本地化。 这意味着通知内容本身必须本地化且传递到正确的设备组。
-在本主题中，我们演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
+在本主题中，我们介绍如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
 
 注意：发送本地化的通知的一种方式是创建每个标签的多个版本。 例如，要支持英语、法语和汉语，我们需要三种不同的标签用于世界新闻：“world_en”、“world_fr”和“world_ch”。 我们然后必须将世界新闻的本地化版本分别发送到这些标签。 在本主题中，我们使用模板来避免增生标签和发送多个消息的要求。
 
-在较高级别上，模板是指定特定设备应如何接收通知的一种方法。 模板通过引用作为应用程序后端所发消息的一部分的属性，指定确切的负载格式。 在我们的示例中，我们发送包含所有支持的语言的区域设置未知的消息：
+在较高级别上，模板是指定特定设备应如何接收通知的一种方法。 模板通过引用作为应用程序后端所发消息的一部分的属性，指定确切的负载格式。 在我们的示例中，我们将发送包含所有支持的语言的区域设置未知的消息：
 
     {
         "News_English": "...",
@@ -98,7 +98,7 @@ ms.lasthandoff: 07/11/2017
             [self subscribeWithLocale: locale categories:categories completion:completion];
         }
    
-    然后修改*订阅*方法以包括区域设置：
+    然后修改 subscribe 方法以包括该区域设置：
    
         - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -136,7 +136,7 @@ ms.lasthandoff: 07/11/2017
    
         self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
    
-    然后，在 subscribe 方法中，将对 storeCategoriesAndSubscribe 的调用更改为：
+    然后，在 *subscribe* 方法中，将对 *storeCategoriesAndSubscribe* 的调用更改为：
    
         [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
             if (!error) {

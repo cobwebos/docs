@@ -16,10 +16,10 @@ ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Azure Cosmos DB 中可实现业务连续性的自动区域故障转移
 Azure Cosmos DB 可通过提供完全托管的[多区域数据库帐户](distribute-data-globally.md)简化数据的全球分布。这些帐户在一致性、可用性和性能方面进行了很好的平衡，各方面的效果都有相应的保证。 Cosmos DB 帐户具有以下特点：高可用性、10 毫秒以下的延迟、[妥善定义的一致性级别](consistency-levels.md)、使用多宿主 API 实现透明的区域故障转移，以及在全球范围内弹性缩放吞吐量和存储。 
@@ -64,7 +64,7 @@ DocumentClient usClient = new DocumentClient(
     usConnectionPolicy);
 ```
 
-该应用程序也部署在北欧区域，只是首选区域的顺序相反。 即，先指定北欧区域，确保读取时的低延迟性。 然后指定美国西部作为第二个首选区域，确保区域故障时的高可用性。
+该应用程序也部署在北欧区域，只是首选区域的顺序相反。 即，先指定北欧区域，确保读取时的低延迟性。 然后指定美国西部作为第二个首选区域，确保区域性故障时的高可用性。
 
 以下体系结构示意图显示多区域应用程序部署，其中 Cosmos DB 和该应用程序配置为可在四个 Azure 地理区域使用。  
 
@@ -81,7 +81,7 @@ DocumentClient usClient = new DocumentClient(
 
 ![Azure Cosmos DB 中的读取区域故障](./media/regional-failover/read-region-failures.png)
 
-受影响区域从中断恢复以后，该区域所有受影响的 Cosmos DB 帐户会自动由服务恢复。 然后，有读取区域位于受影响区域的 Cosmos DB 帐户会自动与当前的写入区域同步并转为联机状态。 Cosmos DB SDK 发现有新区域可用以后，就会根据应用程序配置的首选区域列表评估该区域是否可选作当前的读取区域。 后续的读取会重定向到恢复的区域，不需更改应用程序代码。
+受影响区域从中断恢复以后，该区域所有受影响的 Cosmos DB 帐户会自动由服务恢复。 然后，读取区域位于受影响区域的 Cosmos DB 帐户会自动与当前的写入区域同步并转为联机状态。 Cosmos DB SDK 发现有新区域可用以后，就会根据应用程序配置的首选区域列表评估该区域是否可选作当前的读取区域。 后续的读取会重定向到恢复的区域，不需更改应用程序代码。
 
 **某个写入区域中断时会发生什么情况？**
 

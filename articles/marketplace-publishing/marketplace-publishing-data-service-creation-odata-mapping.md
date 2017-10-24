@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mapping-an-existing-web-service-to-odata-through-csdl"></a>通过 CSDL 将现有 Web 服务映射到 OData
 > [!IMPORTANT]
@@ -39,8 +39,7 @@ CSDL（概念架构定义语言）是一种规范，定义如何使用通用 XML
 
   `Client <- Azure Marketplace <- Content Provider’s WebService`
 
-
-            **图 1**说明客户端如何通过访问 Azure 应用商店获取内容提供商（服务）的数据。  映射/转换组件使用 CSDL 处理请求以及内容提供商服务和请求客户端之间的数据传递。
+**图 1**说明客户端如何通过访问 Azure 应用商店获取内容提供商（服务）的数据。  映射/转换组件使用 CSDL 处理请求以及内容提供商服务和请求客户端之间的数据传递。
 
 *图 1：通过 Azure 应用商店从请求客户端到内容提供商的详细流程*
 
@@ -141,7 +140,7 @@ CSDL 是用于描述 Web 服务的 XML 语法。 规范本身划分为 4 个主�
 * PPUI 中的 MyCompany 与 [Microsoft 开发人员中心](http://dev.windows.com/registration?accountprogram=azure) UI 中的**发布者显示名称**关联
 * API 与 Web 或数据服务（PPUI 中的计划）关联
 
-**层次结构：** （内容提供程序） 的公司拥有 Offer(s) 其具有个计划，即服务 API 向上哪些行。
+**层次结构**：公司（内容提供商）拥有具有计划的优惠，即与 API 相符的服务。
 
 ### <a name="webservice-csdl-example"></a>WebService CSDL 示例
 连接到将公开 Web 应用程序终结点（类似 C# 应用程序）的服务

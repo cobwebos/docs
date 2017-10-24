@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 102e54627a8fee721d3ed85e86a8009e706bb5b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 63119978c59186a71e7e30438e8e37c0b2e1b454
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="work-with-azure-functions-proxies-preview"></a>使用 Azure Functions 代理（预览版）
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 05/10/2017
 
 默认情况下未启用这些代理。 在该功能处于禁用状态时可以创建代理，但它们不会执行。 若要启用代理，请执行以下操作：
 
-1. 打开 [Azure 门户]，然后转到你的 Function App。
+1. 打开 [Azure 门户]，并转到 Function App。
 2. 选择“Function App 设置”。
 3. 将“启用 Azure Functions 代理(预览版)”切换为“打开”。
 
@@ -46,14 +45,14 @@ ms.lasthandoff: 05/10/2017
 
 本部分介绍如何在 Functions 门户中创建代理。
 
-1. 打开 [Azure 门户]，然后转到你的 Function App。
+1. 打开 [Azure 门户]，并转到 Function App。
 2. 在左窗格中，选择“新建代理”。
-3. 为你的代理提供一个名称。
+3. 为代理提供一个名称。
 4. 通过指定**路由模板**和 **HTTP 方法**配置在此 Function App 上公开的终结点。 这些参数的行为取决于 [HTTP 触发器]的规则。
 5. 将“后端 URL”设置为另一个终结点。 此终结点可以是其他 Function App 中的函数，也可以是任何其他 API。 该值不需要是静态值，并且可以引用[应用程序设置]和[原始客户端请求中的参数]。
 6. 单击“创建” 。
 
-代理现在已作为新终结点存在于 Function App 上。 从客户端角度来看，它等同于 Azure Functions 中的 HttpTrigger。 可以通过复制代理 URL 并使用你最喜欢的 HTTP 客户端对其进行测试来试验新代理。
+代理现在已作为新终结点存在于 Function App 上。 从客户端角度来看，它等同于 Azure Functions 中的 HttpTrigger。 可以通过复制代理 URL 并使用最喜欢的 HTTP 客户端对其进行测试来试验新代理。
 
 ## <a name="modify-requests-responses"></a>修改请求和响应
 
@@ -101,7 +100,7 @@ ms.lasthandoff: 05/10/2017
 
 ### <a name="use-appsettings"></a>引用应用程序设置
 
-还可以通过将设置名称括在在百分号 (%) 之间来引用[针对 Function App 定义的应用程序设置](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop)。
+还可以通过将设置名称括在百分号 (%) 之间来引用[针对 Function App 定义的应用程序设置](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop)。
 
 例如，后端 URL *https://%ORDER_PROCESSING_HOST%/api/orders* 会将“%ORDER_PROCESSING_HOST%”替换为 ORDER_PROCESSING_HOST 设置的值。
 
@@ -110,10 +109,10 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="advanced-configuration"></a>高级配置
 
-配置的代理存储在一个 proxies.json 文件中，此文件位于 Function App 目录的根目录中。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为你的应用的一部分。 必须[启用](#enable)此功能才能处理此文件。 
+配置的代理存储在一个 proxies.json 文件中，此文件位于 Function App 目录的根目录中。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为应用的一部分。 必须[启用](#enable)此功能才能处理此文件。 
 
 > [!TIP] 
-> 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件。 转到到你的 Function App，选择“平台功能”，然后选择“应用服务编辑器”。 这样，便可以看到 Function App 的整个文件结构并进行更改。
+> 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件。 转到到 Function App，选择“平台功能”，并选择“应用服务编辑器”。 这样，便可以看到 Function App 的整个文件结构并进行更改。
 
 Proxies.json 是由一个代理对象定义的，包括已命名的代理及其定义。 （可选）可以引用用于代码完成的 [JSON 架构](http://json.schemastore.org/proxies)（如果编辑器支持这样做）。 示例文件可能如下例所示：
 
@@ -137,7 +136,7 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 * **matchCondition**：必需 - 一个对象，用于定义触发此代理执行的请求。 它包含两个与 [HTTP 触发器]共享的属性：
     * _methods_：代理响应的 HTTP 方法的数组。 如果未指定此属性，代理将响应路由上的所有 HTTP 方法。
     * _route_：必需 - 定义路由模板，控制代理将响应哪些请求 URL。 与在 HTTP 触发器中不同，此处没有默认值。
-* **backendUri**：应当通过代理将请求发送到的后端资源的 URL。 此值可以引用应用程序设置和原始客户端请求中的参数。 如果未包括此属性，则 Azure Functions 将以 HTTP 200 OK 进行响应。
+* **backendUri**：应当通过代理将请求发送到的后端资源的 URL。 此值可以引用应用程序设置和原始客户端请求中的参数。 如果未包括此属性，则 Azure Functions 以 HTTP 200 OK 进行响应。
 * **requestOverrides**：定义对后端请求执行的转换的对象。 请参阅[定义 requestOverrides 对象]。
 * **responseOverrides**：定义对客户端响应执行的转换的对象。 请参阅[定义 responseOverrides 对象]。
 
@@ -218,4 +217,3 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 [使用变量]: #using-variables
 [原始客户端请求中的参数]: #request-parameters
 [后端响应中的参数]: #response-parameters
-

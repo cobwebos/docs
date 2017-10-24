@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: mlandzic
 ms.openlocfilehash: 8eb56d44c3a261f6325d4fc91f169d09bf108160
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 可以使用[弹性查询](sql-database-elastic-query-overview.md)从单个连接点中的多个 Azure SQL 数据库中创建报告。 数据库必须进行横向分区（也称为“分片”）。
@@ -31,9 +31,9 @@ ms.lasthandoff: 08/18/2017
 下载并运行[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>使用示例应用程序创建分片映射管理器
-在此处，用户将创建分片映射管理器以及多个分片，并将数据插入分片。 如果分片中正好设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
+在此处，将创建分片映射管理器以及多个分片，然后将数据插入分片。 如果分片中正好设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
 
-1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，可以看到以下命令提示符：
+1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，会看到以下命令提示符：
 
     ![命令提示符][1]
 2. 在命令窗口中键入“1”，并按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”；重复该操作四次。 这会在分片中插入示例数据行。
@@ -43,7 +43,7 @@ ms.lasthandoff: 08/18/2017
 
    目前，通过弹性数据库客户端库支持跨数据库查询。 例如，在命令窗口中使用第 4 个选项。 来自多分片查询的结果始终是所有分片结果的 **UNION ALL**。
 
-   在下一部分，我们创建支持更丰富的跨分片数据查询的示例数据库终结点。
+   在下一部分，我们将创建支持更丰富的跨分片数据查询的示例数据库终结点。
 
 ## <a name="create-an-elastic-query-database"></a>创建弹性查询数据库
 1. 打开 [Azure 门户](https://portal.azure.com)并登录。
@@ -52,7 +52,7 @@ ms.lasthandoff: 08/18/2017
     ![Azure 门户和定价层][3]
 
     > [!NOTE]
-    > 可以使用现有的数据库。 如果这样做，该数据库不能是你想要对其运行查询的某一个分片。 此数据库用于为弹性数据库查询创建元数据对象。
+    > 可以使用现有的数据库。 如果你可以完成此操作，它必定不是你想要在其中执行查询的分片之一。 此数据库用于为弹性数据库查询创建元数据对象。
     >
 
 ## <a name="create-database-objects"></a>创建数据库对象
@@ -116,7 +116,7 @@ ms.lasthandoff: 08/18/2017
    ![从其他源导入 Excel][5]
 4. 在**数据连接向导**中，键入服务器名称和登录凭据。 然后单击“下一步”。
 5. 在对话框**选择包含所需数据的数据库**中，选择 **ElasticDBQuery** 数据库。
-6. 在列表视图中选择“客户”表并单击“下一步”。 然后单击**完成**。
+6. 在列表视图中选择“客户”表并单击“下一步”。 然后单击“完成”。
 7. 在“导入数据”窗体中的“请选择该数据在工作簿中的显示方式”下，选择“表”，并单击“确定”。
 
 存储在不同分片中、来自“客户”表的所有行将填入 Excel 工作表。

@@ -16,18 +16,16 @@ ms.topic: tutorial
 ms.date: 08/25/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
+ms.openlocfilehash: a196df5b4ab47b234b48594da45cd4d72f604086
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 5aed57e69924f03221fc0d9909889358d80df9a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-openapi-definition-for-a-function"></a>为函数创建 OpenAPI 定义
-通常使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 REST API。 此定义包含关于 API 中哪些操作可用和应如何安排 API 的请求和响应数据的信息。
+通常使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 REST API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。
 
-本教程将创建确定风力涡轮机上的紧急修复是否经济高效的函数。 然后为 Function App 创建一个 OpenAPI 定义，使该函数可使用其他应用和服务进行调用。
+本教程将创建确定风力涡轮机上的紧急修复是否经济高效的函数。 然后为该函数应用创建一个 OpenAPI 定义，使该函数可使用其他应用和服务进行调用。
 
 本教程介绍如何执行下列操作：
 
@@ -37,9 +35,9 @@ ms.lasthandoff: 09/20/2017
 > * 修改定义以提供额外的元数据
 > * 通过调用函数测试定义
 
-## <a name="create-a-function-app"></a>创建 Function App
+## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用 Function App 托管函数的执行。 Function App 可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 
+必须使用函数应用托管函数的执行。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -50,7 +48,7 @@ ms.lasthandoff: 09/20/2017
 
 本教程使用的 HTTP 触发函数采用两个参数：修复涡轮机的估计时间（小时）、涡轮机的容量（千瓦特）。 然后函数计算修复的费用和涡轮机 24 小时可以产生的收入。
 
-1. 展开 Function App，单击“函数”旁边的 **+** 按钮，并单击“HTTPTrigger”模板。 为函数“名称”输入 `TurbineRepair`，并单击“创建”。
+1. 展开函数应用，单击“函数”旁边的 **+** 按钮，并单击“HTTPTrigger”模板。 为函数“名称”输入 `TurbineRepair`，并单击“创建”。
 
     ![Function Apps 边栏选项卡，Functions +](media/functions-openapi-definition/add-function.png)
 
@@ -109,7 +107,7 @@ ms.lasthandoff: 09/20/2017
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
     ```
 
-现在已有了确定紧急修复经济高效性的函数。 接下来，请为 Function App 生成并修改 OpenAPI 定义。
+现在已经有了确定紧急修复是否经济高效的函数。 接下来，请为该函数应用生成并修改 OpenAPI 定义。
 
 ## <a name="generate-the-openapi-definition"></a>生成 OpenAPI 定义
 
@@ -123,7 +121,7 @@ ms.lasthandoff: 09/20/2017
 
         ![选定的 HTTP 方法](media/functions-openapi-definition/selected-http-methods.png)
         
-1. 单击 Function App 名称（如“function-demo-energy”）>“平台功能” > API 定义”。
+1. 单击函数应用名称（如“function-demo-energy”）>“平台功能” > API 定义”。
 
     ![API 定义](media/functions-openapi-definition/api-definition.png)
 
@@ -172,10 +170,10 @@ ms.lasthandoff: 09/20/2017
         in: query
     ```
 
-    此定义描述为“模板”，因为它需要更多元数据才能组成完整的 OpenAPI 定义。 将在下一步修改定义。
+    此定义描述为“模板”，因为它需要更多元数据才能组成完整的 OpenAPI 定义。 下一步会修改定义。
 
 ## <a name="modify-the-openapi-definition"></a>修改 OpenAPI 定义
-具有模板定义后，接下来可以修改模板，以提供其他关于 API 操作和数据结构的元数据。 在“API 定义”中，删除从 `post` 到定义的底部生成的定义，粘贴以下内容，然后单击“保存”。
+生成模板定义后，接下来可以修改模板，以提供其他关于 API 操作和数据结构的元数据。 在“API 定义”中，删除从 `post` 到定义的底部生成的定义，粘贴以下内容，然后单击“保存”。
 
 ```yaml
     post:
@@ -250,9 +248,9 @@ securityDefinitions:
 + 添加在 Microsoft Flow 和逻辑应用的 UI 中使用的 x-ms-summary 和 x-ms-visibility。 有关详细信息，请参阅 [Microsoft Flow 中适用于自定义 API 的 OpenAPI 扩展](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/)。
 
 > [!NOTE]
-> 我们已将安全性定义保留为 API 密钥的默认身份验证方法。 如果使用不同的身份验证类型，可以更改此定义部分。
+> 我们将安全性定义保留为默认身份验证方法，即 API 密钥。 如果使用不同的身份验证类型，可以更改此定义部分。
 
-有关定义 API 操作的详细信息，请参阅 [Open API specification](https://swagger.io/specification/#operationObject)（Open API 指定）。
+有关定义 API 操作的详细信息，请参阅 [Open API specification](https://swagger.io/specification/#operationObject)（Open API 规范）。
 
 ## <a name="test-the-openapi-definition"></a>测试 OpenAPI 定义
 使用 API 定义前，最好先在 Azure Functions UI 中对其进行测试。
@@ -278,7 +276,7 @@ securityDefinitions:
 
     ![输入参数](media/functions-openapi-definition/parameters.png)
 
-    请注意 UI 使用 API 定义描述的方法。
+    请注意，UI 使用了 API 定义中的描述。
 
 1. 单击“发送请求”，然后单击“优质”选项卡查看输出。
 
@@ -286,7 +284,7 @@ securityDefinitions:
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建一个函数
@@ -297,4 +295,3 @@ securityDefinitions:
 转到下一主题，了解如何使用创建的 OpenAPI 定义创建 PowerApps 应用。
 > [!div class="nextstepaction"]
 > [从 PowerApps 调用函数](functions-powerapps-scenario.md)
-

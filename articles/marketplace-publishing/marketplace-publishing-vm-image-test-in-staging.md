@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
 ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>在过渡环境中测试 Azure 应用商店的 VM 产品/服务
 过渡表示将 SKU 部署到专用“沙盒”，可在其中测试和验证它的功能，然后再部署到应用商店。 SKU 出现在过渡环境中，就像客户已对它进行部署一样。 VM 映像必须经过认证才能推送到过渡环境。
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 1. 在“发布”选项卡上，单击“推送到过渡环境”。
    
     ![绘制](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
-2. 如果发布门户会通知你任何错误，更正它们。
+2. 如果发布门户通知任何错误，请更正它们。
 3. 在“谁可以访问过渡的产品/服务？”对话框中，输入用于在 [Azure 预览门户](https://portal.azure.com)中预览产品/服务的 Azure 订阅列表。
    
    > [!NOTE]
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="next-steps"></a>后续步骤
-现在，你的优惠"暂存"和你已经过测试其功能，营销内容，你可以继续执行的最后的发布阶段，**第 4 步**:[将您的服务部署到应用商店](marketplace-publishing-push-to-production.md)。
+现在产品/服务“已暂存”并且已测试其功能和市场营销内容，可以继续到最后发布阶段步骤 4：[将产品/服务部署到 Marketplace](marketplace-publishing-push-to-production.md)。
 
 ## <a name="see-also"></a>另请参阅
 * [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)

@@ -16,10 +16,10 @@ ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 ms.openlocfilehash: 6ea45c40bc428282faf24b4a08f8b0d345adb3fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>保护 SQL 数据仓库中的数据库
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-本文逐步讲述有关保护 Azure SQL 数据仓库数据库的基本知识。 具体而言，本文帮助你了解如何使用相应的资源，在数据库中限制访问、保护数据和监视活动。
+本文逐步讲述有关保护 Azure SQL 数据仓库数据库的基本知识。 具体而言，本文将帮助你了解如何使用相应的资源，在数据库中限制访问、保护数据和监视活动。
 
 ## <a name="connection-security"></a>连接安全性
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
 服务器和数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。 作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。  要从本地计算机访问 Azure SQL 数据仓库，请确保网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。  有关详细信息，请参阅 [Azure SQL 数据库防火墙][Azure SQL Database firewall]、[sp_set_firewall_rule][sp_set_firewall_rule] 和 [sp_set_database_firewall_rule][sp_set_database_firewall_rule]。
 
-默认加密到 SQL 数据仓库的连接。  通过修改连接设置来禁用加密的操作会被忽略。
+默认加密到 SQL 数据仓库的连接。  将忽略通过修改连接设置禁用加密的操作。
 
 ## <a name="authentication"></a>身份验证
 身份验证是指连接到数据库时如何证明身份。 SQL 数据仓库当前支持通过用户名和密码进行 SQL Server 身份验证，并支持 Azure Active Directory。 

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: nisoneji
 ms.openlocfilehash: 134e17ebda3105be2b53d072fdef7aeda4a98bde
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-capacity-for-protecting-virtual-machines-and-physical-servers-in-azure-site-recovery"></a>在 Azure Site Recovery 中规划用于保护虚拟机和物理服务器的容量
 
@@ -58,7 +58,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 4. 输入源环境的值以后，显示的输出将包括：
 
    * **增量复制所需的带宽** (MB/sec)。 根据每日数据更改率的平均值计算增量复制的网络带宽。
-   * **初始复制所需的带宽** (MB/sec)。 根据输入的初始复制值计算初始复制的网络带宽。
+   * **初始复制所需的带宽** (MB/sec)。 根据你输入的初始复制值计算初始复制的网络带宽。
    * **所需存储空间(GB)** 即所需的总 Azure 存储空间。
    * **标准存储帐户的总 IOPS** 是根据所有标准存储帐户的 8K IOPS 单元大小计算的。  对于快速规划器，该数字根据所有源 VM 磁盘数以及每日数据更改率来计算。 对于详细规划器，该数字根据映射到标准 Azure VM 的 VM 总数以及这些 VM 的数据更改率来计算。
    * **标准存储帐户数**提供对 VM 进行保护所需的标准存储帐户的总数。 标准存储帐户最高可以在标准存储的所有 VM 中保持 20000 IOPS，每个磁盘支持的最大 IOPS 为 500。
@@ -86,7 +86,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
    * 在“附加磁盘数”中指定源服务器的磁盘总数。
    * 在“磁盘容量使用率”中指定平均使用率。
    * 在“每日更改率(%)”中指定源服务器的每日数据更改率。
-   * 在“映射 Azure 大小”中输入要映射的 Azure VM 大小。 如果不想手动执行此操作，请单击“计算 IaaS VM”。如果输入了手动设置，然后单击“计算 IaaS VM”，系统可能会覆盖手动设置，因为计算流程会自动确定 Azure VM 大小的最佳匹配项。
+   * 在“映射 Azure 大小”中输入要映射的 Azure VM 大小。 如果不想手动执行此操作，请单击“计算 IaaS VM”。如果输入了手动设置，并单击“计算 IaaS VM”，系统可能会覆盖手动设置，因为计算流程会自动确定 Azure VM 大小的最佳匹配项。
 
    ![工作负荷限定](./media/site-recovery-capacity-planner/workload-qualification.png)
 4. 如果单击“**计算 IaaS VM**”，则会执行以下操作：
@@ -122,7 +122,7 @@ AA 到 AE 列为输出，提供的是每个 VM 的信息。
 输入所有详细信息以后，单击“将数据提交到规划器工具”以打开“Capacity Planner”。工作负荷会突出显示，以表明其是否符合受保护资格。
 
 ### <a name="submit-data-in-the-capacity-planner"></a>在容量规划器中提交数据
-1. 打开“Capacity Planner”  工作表时，该表会根据所指定的设置进行填充。 “工作负荷”一词会出现在“基础输入源”单元格中，用来表示输入是“工作负荷限定”工作表。
+1. 打开“**容量规划器**”工作表时，该表会根据你所指定的设置进行填充。 “工作负荷”一词会出现在“基础输入源”单元格中，用来表示输入是“工作负荷限定”工作表。
 2. 如果想要进行更改，则需修改“工作负荷限定”工作表，然后再次单击“将数据提交到规划器工具”。  
 
    ![容量规划器](./media/site-recovery-capacity-planner/capacity-planner.png)

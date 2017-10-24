@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: b97753e6f1b67e3c8d247281c5e5208033a56eca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 管理备份目录
 
@@ -112,7 +112,7 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
 如果文件被意外从卷中删除，可以通过以下方法恢复文件：检索删除日期之前的快照，使用该快照创建克隆卷，并将该文件从克隆卷复制到原来的卷。
 
 #### <a name="prerequisites"></a>先决条件
-在开始之前，请确保具有卷组的最新备份。 然后，删除存储在一个该卷组中的卷上的文件。 最后，使用以下步骤从备份中还原已删除的文件。 
+在开始之前，请确保具有卷组的最新备份。 然后，删除存储在该卷组中一个卷上的某个文件。 最后，使用以下步骤从备份中还原已删除的文件。 
 
 #### <a name="to-recover-a-deleted-file"></a>恢复已删除的文件
 1. 单击桌面上的 StorSimple Snapshot Manager 图标。 StorSimple Snapshot Manager 控制台窗口随即出现。 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
 ms.openlocfilehash: 29f64aeefc2a7deb1f84d759c2323347536b9c27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 07/11/2017
     $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
     ```
 
-5. 创建网络安全组 (NSG) 和规则。 NSG 使用入站和出站规则保护 VM。 在本例中，会为端口 3389 创建一个入站规则，该规则允许传入的远程桌面连接。
+5. 创建网络安全组 (NSG) 和规则。 NSG 使用入站和出站规则保护 VM。 在本例中，将为端口 3389 创建一个入站规则，该规则允许传入的远程桌面连接。
 
     ```powershell
     
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/11/2017
     -SecurityRules $NSGRule
     ```
 
-6. 定义 NIC 的主 IP 配置。 如果没有使用以前定义的值，请将 10.0.0.4 更改成创建的子网中的有效地址。 分配静态 IP 地址前，建议先确认它未被占用。 输入命令 `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果该地址可用，则输出返回 *True*。 如果该地址不可用，输出返回 *False* 以及可用的地址列表。 
+6. 定义 NIC 的主 IP 配置。 如果没有使用以前定义的值，请将 10.0.0.4 更改成创建的子网中的有效地址。 分配静态 IP 地址前，建议先确认它未被占用。 输入命令 `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果该地址可用，输出将返回 *True*。 如果该地址不可用，输出将返回 *False* 以及可用的地址列表。 
 
     在以下命令中，**使用要用的唯一 DNS 名称替换 <replace-with-your-unique-name>。** 该名称在 Azure 区域内的所有公共 IP 地址中必须唯一。 这是一个可选参数。 如果只想使用公共 IP 地址连接到 VM，则可删除该名称。
 
@@ -236,7 +236,7 @@ ms.lasthandoff: 07/11/2017
 
     **添加专用 IP 地址**
 
-    要将专用 IP 地址添加到 NIC，必须创建 IP 配置。 以下命令创建具有静态 IP 地址 10.0.0.7 的配置。 指定静态 IP 地址时，该地址必须是未使用的子网地址。 建议先通过输入 `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令来测试该地址，确保它可用。 如果 IP 地址可用，输出会返回 *True*。 如果该地址不可用，则输出返回 *False* 以及可用的地址列表。
+    要将专用 IP 地址添加到 NIC，必须创建 IP 配置。 以下命令创建具有静态 IP 地址 10.0.0.7 的配置。 指定静态 IP 地址时，该地址必须是未使用的子网地址。 建议先通过输入 `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令来测试该地址，确保它可用。 如果该 IP 地址可用，输出将返回 *True*。 如果该地址不可用，输出将返回 *False* 以及可用的地址列表。
 
     ```powershell
     Add-AzureRmNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -285,7 +285,7 @@ ms.lasthandoff: 07/11/2017
         $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
         ```
 
-        会显示类似于下面的输出：
+        将显示类似于下面的输出：
 
         ```     
         Name       PrivateIpAddress PublicIpAddress                                           Primary

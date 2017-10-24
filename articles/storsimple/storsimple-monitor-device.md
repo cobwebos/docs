@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/16/2016
 ms.author: alkohli
 ms.openlocfilehash: d45bb37c8417785db0ea38be4375a998b6d9f109
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple Manager 服务监视 StorSimple 设备
 ## <a name="overview"></a>概述
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 若要查看特定设备的监视信息，请在 Azure 经典门户中选择 StorSimple Manager 服务。 单击“监视”选项卡，并从设备列表中进行选择。 “监视”页包含以下信息。
 
 ## <a name="io-performance"></a>I/O 性能
-**输入/输出性能**跟踪相关的读取数指标对和写入操作之间是 iSCSI 发起程序接口的主机服务器和设备或设备和云。 可以针对特定的卷、特定的卷容器或者所有卷容器测量此性能。
+“I/O 性能”跟踪主机服务器的 iSCSI 发起程序接口与设备（或设备与云之间）与读取和写入操作数相关的指标。 可以针对特定的卷、特定的卷容器或者所有卷容器测量此性能。
 
 下面的图表针对某个生产设备的所有卷显示了从发起程序到设备的 I/O。 绘制的指标包括每秒读取和写入字节数、每秒读取和写入 IO 操作数，以及读取和写入延迟。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 ![在创建云快照后从设备到云的 IO 性能](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_DeviceTOCloud_For_AllVolumeContainers2M.png)
 
 ## <a name="capacity-utilization"></a>容量使用量
-**容量使用率**跟踪的卷、 卷容器或设备使用的数据存储空间量的相关的度量值。 可以基于主存储、云存储或设备存储的容量使用量创建报表。 可以针对特定的卷、特定的卷容器或者所有卷容器测量容量使用量。
+“容量利用率”跟踪与数据存储空间量相关的指标，以供卷、卷容器或设备使用。 可以基于主存储、云存储或设备存储的容量使用量创建报表。 可以针对特定的卷、特定的卷容器或者所有卷容器测量容量使用量。
 
 主存储、云存储和设备存储容量可以描述如下：
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 07/11/2017
 * **针对所有卷包括了具有活动的关联备份的已删除卷**：如果删除了包含快照数据的卷但是关联的快照仍然存在，则可能会存在不匹配。
 * **针对所有卷包括了已删除的卷**：在某些情况下，即使删除了旧卷，它们也可能仍然存在。 删除没有起作用并且设备可能显示较低的可用容量。 需要联系 Microsoft 支持部门来删除这些卷。
 
-下面的图表显示了在创建云快照之前和之后，某个 StorSimple 设备的主存储容量使用量。 因为这只是卷数据，所以云快照不应当改变主存储。 如你所见，该图表显示导致获取云快照的主容量使用率任何区别。 云快照大约在下午 2:00 在该设备上开始。
+下面的图表显示了在创建云快照之前和之后，某个 StorSimple 设备的主存储容量使用量。 因为这只是卷数据，所以云快照不应当改变主存储。 可以看到，生成云快照后，在主容量利用率方面，图表没有任何差异。 云快照大约在下午 2:00 在该设备上开始。
 
 ![创建云快照前的主容量使用量](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes2M.png)
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 07/11/2017
 ![Data4 的网络吞吐量](./media/storsimple-monitor-device/StorSimple_NetworkThroughput_Data4M.png)
 
 ## <a name="device-performance"></a>设备性能
-**设备性能**跟踪与你的设备的性能相关的度量值。 下面的图表显示了用于生产的某个设备的 CPU 使用率统计信息。
+“设备性能”跟踪与设备性能相关的指标。 下面的图表显示了用于生产的某个设备的 CPU 使用率统计信息。
 
 ![设备的 CPU 使用率](./media/storsimple-monitor-device/StorSimple_DeviceMonitor_DevicePerformance1M.png)
 

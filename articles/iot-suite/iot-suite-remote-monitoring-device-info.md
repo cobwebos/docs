@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: f8fd452806a0a0b98cf8e434c9bd55700083a6c5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>远程监视预配置解决方案中的设备信息元数据
 
-Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据的方法。 本文概述此解决方案为了帮助你理解内容而采用的方法：
+Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据的方法。 本文将概述此解决方案为了帮助你理解内容而采用的方法：
 
 * 解决方案存储哪些设备元数据。
 * 解决方案如何管理设备元数据。
@@ -56,7 +56,7 @@ IoT 中心为连接到远程监视解决方案的每个模拟设备和物理设�
 来自模拟设备的报告属性示例包括制造商、型号、纬度和经度。 模拟设备也以报告属性的形式返回受支持方法的列表。
 
 > [!NOTE]
-> 模拟设备代码仅使用所需的属性 **Desired.Config.TemperatureMeanValue** 和**Desired.Config.TelemetryInterval** 来更新发回给 IoT 中心的报告的属性。 忽略所有其他的所需属性更改请求。
+> 模拟设备代码仅使用所需的属性 **Desired.Config.TemperatureMeanValue** 和**Desired.Config.TelemetryInterval** 来更新发回给 IoT 中心的报告的属性。 将忽略所有其他的所需属性更改请求。
 
 存储在设备注册表 Cosmos DB 数据库中的设备信息元数据 JSON 文档具有以下结构：
 
@@ -98,13 +98,13 @@ IoT 中心为连接到远程监视解决方案的每个模拟设备和物理设�
 
 ![设备详细信息窗格][img-device-edit]
 
-可以使用解决方案门户从解决方案中删除设备。 删除某个设备时，解决方案将从标识注册表中删除该设备项，并删除设备孪生。 解决方案还会从 Cosmos DB 数据库中删除与该设备相关的信息。 必须禁用设备才可删除它。
+可以使用解决方案门户从解决方案中删除设备。 删除某个设备时，解决方案将从标识注册表中删除该设备项，然后删除设备孪生。 解决方案还会从 Cosmos DB 数据库中删除与该设备相关的信息。 必须禁用设备才可删除它。
 
 ![删除设备][img-device-remove]
 
 ## <a name="device-information-message-processing"></a>设备信息消息处理
 
-设备发出的设备信息消息不同于遥测消息。 设备信息消息包括设备可响应的命令和任何命令历史记录。 IoT 中心本身不知道设备信息消息中包含的元数据，它以处理任何设备到云消息的相同方式处理消息。 在远程监视解决方案中，[Azure 流分析][lnk-stream-analytics] (ASA) 作业读取来自 IoT 中心的消息。 **DeviceInfo** 流分析作业筛选包含 **"ObjectType": "DeviceInfo"** 的消息，并将这些消息转发到 Web 作业中运行的 **EventProcessorHost** 主机实例。 EventProcessorHost 实例中的逻辑使用设备 ID 来查找特定设备的 Cosmos DB 记录并更新记录。
+设备发出的设备信息消息不同于遥测消息。 设备信息消息包括设备可响应的命令和任何命令历史记录。 IoT 中心本身不知道设备信息消息中包含的元数据，它以处理任何设备到云消息的相同方式处理消息。 在远程监视解决方案中，[Azure 流分析][lnk-stream-analytics] (ASA) 作业读取来自 IoT 中心的消息。 DeviceInfo 流分析作业筛选包含 "ObjectType": "DeviceInfo" 的消息，并将这些消息转发到 Web 作业中运行的 EventProcessorHost 主机实例。 EventProcessorHost 实例中的逻辑使用设备 ID 来查找特定设备的 Cosmos DB 记录并更新记录。
 
 > [!NOTE]
 > 设备信息消息是标准的设备到云消息。 解决方案使用 ASA 查询来区分设备信息消息与遥测消息。

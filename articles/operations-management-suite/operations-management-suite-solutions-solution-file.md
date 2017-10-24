@@ -16,10 +16,10 @@ ms.date: 04/30/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ee3462c13101d18921dc488b08c79e1e4e02ff3a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -51,7 +51,7 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
     }
 
 ## <a name="parameters"></a>parameters
-[参数](../azure-resource-manager/resource-group-authoring-templates.md#parameters)是在安装管理解决方案时，你需要从用户的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
+[parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
 用户通过 [Azure 应用商店](operations-management-suite-solutions.md#finding-and-installing-management-solutions)或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 安装管理解决方案时，系统会提示他们选择 [OMS 工作区和自动管理帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
 
@@ -213,7 +213,7 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 
 | 属性 | 说明 |
 |:--- |:--- |
-| workspaceResourceId |窗体中的日志分析工作区 ID  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<工作区名称\>*。 |
+| workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 窗体中 Log Analytics 工作区的 ID。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
 ms.openlocfilehash: 4695a9c934f97f2b2d448c4990e7ad5533e38e9f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>将 Linux VM 移到其他订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Linux VM。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 > [!IMPORTANT]
 >不可在此时移动托管磁盘。 
 >
->在移动过程中会创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
+>在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
 > 
 > 
 
@@ -48,11 +48,11 @@ ms.lasthandoff: 07/11/2017
 
     azure resource move --ids $vm,$nic,$nsg,$pip,$vnet,$storage,$diag -d "<destinationResourceGroup>"
 
-如果你想要将 VM 和其资源移到其他订阅，将添加**-目标 subscriptionId &#60; destinationSubscriptionID &#62;**参数来指定目标订阅。
+如果要将 VM 及其资源移到其他订阅，请添加 --destination-subscriptionId &#60;destinationSubscriptionID&#62; 参数来指定目标订阅。
 
 如果从 Windows 计算机上的命令提示符操作，需要在声明变量名称时在其前面添加 **$**。 在 Linux 中不需要这样做。
 
-系统会要求确认是否想要移动指定的资源。 键入 **Y** 确认删除资源。
+系统将要求确认是否想要移动指定的资源。 键入 **Y** 确认删除资源。
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 

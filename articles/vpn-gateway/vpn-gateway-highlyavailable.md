@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨界连接与 VNet 到 VNet 连接
 本文概述使用 Azure VPN 网关的跨界连接和 VNet 到 VNet 连接的高可用性配置选项。
 
 ## <a name = "activestandby"></a>关于 Azure VPN 网关冗余
-每个 Azure VPN 网关由两个采用主动-待机配置的实例组成。 当主动实例发生任何计划内维护或计划外中断时，待机实例将自动接管负载（故障转移），恢复 S2S VPN 连接或 VNet 到 VNet 连接。 这种交接会造成短暂的中断。 发生计划内维护时，10 到 15 秒内应可恢复连接。 发生计划外的问题时，恢复连接所需的时间更长，在最糟的情况下大约需要 1 到 1.5 分钟。 为使 P2S VPN 客户端与网关建立连接，需要先断开 P2S 连接，然后，用户必须从客户端计算机重新连接。
+每个 Azure VPN 网关由两个采用主动-待机配置的实例组成。 当主动实例发生任何计划内维护或计划外中断时，待机实例会自动接管负载（故障转移），恢复 S2S VPN 连接或 VNet 到 VNet 连接。 这种交接会造成短暂的中断。 发生计划内维护时，10 到 15 秒内应可恢复连接。 发生计划外的问题时，恢复连接所需的时间更长，在最糟的情况下大约需要 1 到 1.5 分钟。 对于 P2S VPN 客户端到网关的连接，会断开 P2S 连接，并且用户需要从客户端计算机重新连接。
 
 ![主动-待机](./media/vpn-gateway-highlyavailable/active-standby.png)
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 在此配置中，Azure VPN 网关仍处于主动-待机模式，因此，仍会发生[上述](#activestandby)故障转移行为和短暂中断。 但是，这种设置可针对本地网络和 VPN 设备故障或中断提供保护。
 
 ### <a name="active-active-azure-vpn-gateway"></a>主动-主动 Azure VPN 网关
-现在，可以在主动-主动配置中创建一个 Azure VPN 网关，其中的两个网关 VM 实例与本地 VPN 设备建立 S2S VPN 隧道，如下图所示：
+现在，可以在主动-主动配置中创建一个 Azure VPN 网关，其中的两个网关 VM 实例将与本地 VPN 设备建立 S2S VPN 隧道，如下图所示：
 
 ![主动-主动](./media/vpn-gateway-highlyavailable/active-active.png)
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/11/2017
 
 由于 Azure 网关实例采用主动-主动配置，因此，从 Azure 虚拟网络到本地网络的流量同时通过这两条隧道路由，即使本地 VPN 设备优先选择其中一个隧道，也是如此。 请注意，除非其中一个实例发生维护事件，否则相同的 TCP 或 UDP 流量始终会遍历相同的隧道或路径。
 
-当一个网关实例发生计划内维护或计划外事件时，从该实例到本地 VPN 设备的 IPsec 隧道会断开。 VPN 设备上的对应路由应会自动删除或撤消，以便将流量切换到其他活动 IPsec 隧道。 在 Azure 端，自动从受影响的实例切换到活动实例。
+当一个网关实例发生计划内维护或计划外事件时，从该实例到本地 VPN 设备的 IPsec 隧道会断开。 VPN 设备上的对应路由应会自动删除或撤消，以便将流量切换到其他活动 IPsec 隧道。 在 Azure 端，会自动从受影响的实例切换到活动实例。
 
 ### <a name="dual-redundancy-active-active-vpn-gateways-for-both-azure-and-on-premises-networks"></a>双重冗余：Azure 和本地网络的主动-主动 VPN 网关
 最可靠的选项是结合网络和 Azure 上的主动-主动网关，如下图所示。
@@ -70,7 +70,7 @@ ms.lasthandoff: 07/11/2017
 
 此处创建并设置了采用主动-主动配置的 Azure VPN 网关，并针对上述两个本地 VPN 设备创建了两个本地网络网关和两个连接。 结果是在 Azure 虚拟网络与本地网络之间建立了包含 4 个 IPsec 隧道的全面网格连接。
 
-所有网关和隧道从 Azure 端激活，因此流量同时分散在 4 个隧道之间，每个 TCP 或 UDP 流量再次沿着源自 Azure 端的相同隧道或路径传送。 尽管分散了流量，但你可能会发现，IPsec 隧道上的吞吐量稍有提高，而此配置的主要目标就是实现高可用性。 由于分散的统计特征，难以通过某种测量方式来确定不同的应用程序流量状况对聚合吞吐量造成的影响。
+所有网关和隧道从 Azure 端激活，因此流量同时分散在 4 个隧道之间，每个 TCP 或 UDP 流量再次沿着源自 Azure 端的相同隧道或路径传送。 即使通过分发流量，你仍可能通过 IPsec 隧道看到略微更高的吞吐量，此配置的主要目标是实现高可用性。 由于分散的统计特征，难以通过某种测量方式来确定不同的应用程序流量状况对聚合吞吐量造成的影响。
 
 此拓扑需要使用两个本地网络网关和两个连接来支持本地 VPN 设备对，需要使用 BGP 来与同一个本地网络建立两个连接。 [上述](#activeactiveonprem)配置同样需要满足这些要求。 
 

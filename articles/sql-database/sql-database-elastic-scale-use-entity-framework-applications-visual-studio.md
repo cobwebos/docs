@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: torsteng
 ms.openlocfilehash: 2f0bff394c1e11a270cb324be5a1a45e9e531d7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>将弹性数据库客户端库与实体框架配合使用
 此文档介绍与[弹性数据库工具](sql-database-elastic-scale-introduction.md)集成所需的实体框架应用程序中的更改。 重点是使用 Entity Framework **Code First** 方法撰写[分片映射管理](sql-database-elastic-scale-shard-map-management.md)和[数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)。 EF 的[代码优先 – 新数据库](http://msdn.microsoft.com/data/jj193542.aspx)教程在本文档中充当运行示例。 本文档附带的示例代码是 Visual Studio 代码示例中弹性数据库工具示例的一部分。
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="entity-framework-workflows"></a>实体框架工作流
 实体框架开发人员依靠以下四个工作流之一构建应用程序并确保应用程序对象的持久性： 
 
-* **代码优先 （新数据库）**: EF 开发人员在应用程序代码中创建模型，然后 EF 从其生成数据库。 
+* **Code First（新数据库）**：EF 开发人员在应用程序代码中创建模型，然后 EF 从其生成数据库。 
 * **Code First（现有数据库）**：开发人员让 EF 从现有数据库生成模型的应用程序代码。
 * **Model First**：开发人员在 EF 设计器中创建模型，EF 从该模型创建数据库。
 * **Database First**：开发人员使用 EF 工具从现有数据库推断模型。 

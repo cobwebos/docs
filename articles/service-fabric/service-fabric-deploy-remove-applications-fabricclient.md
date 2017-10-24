@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/07/2017
+ms.date: 10/05/2017
 ms.author: ryanwi
+ms.openlocfilehash: 480f574640d4a9ccd4da97a98adc8b284d373855
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ebe8b9f0cace419125bde84a9ff2a912af061156
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>使用 FabricClient 部署和删除应用程序
 > [!div class="op_single_selector"]
@@ -35,15 +34,15 @@ ms.lasthandoff: 07/08/2017
 
 1. 将应用程序包上传到映像存储
 2. 注册应用程序类型
-3. 创建应用程序实例
+3. 从映像存储中删除应用程序包
+4. 创建应用程序实例
 
 在部署应用程序并且实例在群集中运行后，可以删除应用程序实例及其应用程序类型。 从群集中完全删除某个应用程序涉及以下步骤：
 
 1. 删除正在运行的应用程序实例
 2. 如果不再需要该应用程序类型，则将其取消注册
-3. 从映像存储中删除应用程序包
 
-如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md) 本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
+如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。[](service-fabric-publish-app-remote-cluster.md)  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
 在运行本文中的任何代码示例之前，通过创建 [FabricClient](/dotnet/api/system.fabric.fabricclient) 实例连接到群集。 有关连接到本地开发群集、远程群集，或使用 Azure Active Directory、X509 证书或 Windows Active Directory 保护的群集的示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)。 若要连接到本地部署群集，请运行以下命令：
@@ -71,6 +70,9 @@ FabricClient fabricClient = new FabricClient();
 
 [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) API 提供有关所有已成功注册的应用程序类型的信息。 可以使用此 API 来确定注册的完成时间。
 
+## <a name="remove-an-application-package-from-the-image-store"></a>从映像存储中删除应用程序包
+建议在成功注册应用程序后删除应用程序包。  从映像存储区中删除应用程序包可以释放系统资源。  保留未使用的应用程序包会占用磁盘存储空间，导致应用程序出现性能问题。 使用 [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API，从映像存储区删除应用程序包。
+
 ## <a name="create-an-application-instance"></a>创建应用程序实例
 可以使用 [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API 通过已成功注册的任何应用程序类型来实例化应用程序。 每个应用程序的名称必须以“fabric:”方案开头，并且必须对每个应用程序实例是唯一的（在群集中）。 还会创建目标应用程序类型的应用程序清单中定义的任何默认服务。
 
@@ -95,9 +97,6 @@ FabricClient fabricClient = new FabricClient();
 
 ## <a name="unregister-an-application-type"></a>取消注册应用程序类型
 当不再需要应用程序类型的某个特定版本时，应使用 [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API 取消注册该应用程序类型的该特定版本。 取消注册未使用的应用程序类型版本将释放映像存储使用的存储空间。 只要不存在已根据应用程序类型的某个版本进行实例化的应用程序，并且没有挂起的应用程序升级在引用应用程序类型的该版本，就可以取消注册应用程序类型的该版本。
-
-## <a name="remove-an-application-package-from-the-image-store"></a>从映像存储中删除应用程序包
-当不再需要某个应用程序包时，可以使用 [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API 将其从映像存储中删除，释放系统资源。
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage 请求 ImageStoreConnectionString
@@ -218,6 +217,21 @@ static void Main(string[] args)
         }
     }
 
+    // Delete the application package from a location in the image store.
+    try
+    {
+        fabricClient.ApplicationManager.RemoveApplicationPackage(imageStoreConnectionString, packagePathInImageStore);
+        Console.WriteLine("Application package removed from {0}", packagePathInImageStore);
+    }
+    catch (AggregateException ae)
+    {
+        Console.WriteLine("Application package removal from Image Store failed: ");
+        foreach (Exception ex in ae.InnerExceptions)
+        {
+            Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
+        }
+    }
+
     //  Create the application instance.
     try
     {
@@ -307,21 +321,6 @@ static void Main(string[] args)
         }
     }
 
-    // Delete the application package from a location in the image store.
-    try
-    {
-        fabricClient.ApplicationManager.RemoveApplicationPackage(imageStoreConnectionString, packagePathInImageStore);
-        Console.WriteLine("Application package removed from {0}", packagePathInImageStore);
-    }
-    catch (AggregateException ae)
-    {
-        Console.WriteLine("Application package removal from Image Store failed: ");
-        foreach (Exception ex in ae.InnerExceptions)
-        {
-            Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
-        }
-    }
-
     Console.WriteLine("Hit enter...");
     Console.Read();
 }        
@@ -342,4 +341,3 @@ static void Main(string[] args)
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
-

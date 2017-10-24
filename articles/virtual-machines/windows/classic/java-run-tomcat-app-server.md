@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
 ms.openlocfilehash: 6e02f42613808bcb13c0057e9f8fcc1c02273e77
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>如何在使用经典部署模型创建的虚拟机上运行 Java 应用程序服务器
 > [!IMPORTANT]
@@ -120,7 +120,7 @@ Tomcat 运行后，可通过在虚拟机浏览器中输入 URL <http://localhost
 10. 在“名称”屏幕上，指定规则的名称，如“HttpIn”（但是，规则名称无需与终结点名称匹配），并单击“完成”。  
     ![新建入站规则名称][NewRuleName]
 
-此时，应可从外部浏览器查看 Tomcat 网站。 在浏览器的地址窗口中，键入格式的 URL  **http://*你\_DNS\_名称*。 cloudapp.net**，其中***你\_DNS\_名称***是当你在创建虚拟机指定的 DNS 名称。
+此时，应可从外部浏览器查看 Tomcat 网站。 在浏览器地址窗口中，以 **http://*your\_DNS\_name*.cloudapp.net** 格式键入 URL，其中 ***your\_DNS\_name*** 是创建虚拟机时指定的 DNS 名称。
 
 ## <a name="application-lifecycle-considerations"></a>应用程序生命周期注意事项
 * 可以创建自己的 Web 应用程序存档 (WAR) 并将其添加到 **webapps** 文件夹。 例如，创建基本的 Java 服务页 (JSP) 动态 Web 项目并将其作为 WAR 文件导出。 然后，将 WAR 复制到虚拟机上的 Apache Tomcat **webapps** 文件夹中，然后在浏览器中运行它。

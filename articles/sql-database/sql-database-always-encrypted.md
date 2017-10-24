@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
 ms.openlocfilehash: d1fdfc4f739e65ff532b159eefaffe1622ad0963
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Windows 证书存储中
 
@@ -107,7 +107,7 @@ SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松�
 
 加密每位患者的“SSN”和“出生日期”信息。 **SSN** 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 **BirthDate** 列将使用随机加密，该加密不支持操作。
 
-将 **SSN** 列的“加密类型”设置为“确定”，并将 **BirthDate** 列设置为“随机”。 单击“下一步” 。
+将 **SSN** 列的“加密类型”设置为“确定”，并将 **BirthDate** 列设置为“随机”。 单击“下一步”。
 
 ![加密列](./media/sql-database-always-encrypted/column-selection.png)
 
@@ -509,7 +509,7 @@ SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松�
 * 从另一台计算机运行此示例。 此示例无法访问加密密钥，因此无法访问明文数据，导致无法成功运行。
 * [轮换使用和清除密钥](https://msdn.microsoft.com/library/mt607048.aspx)。
 * [迁移已使用始终加密加密的数据](https://msdn.microsoft.com/library/mt621539.aspx)。
-* [将始终加密证书部署到其他客户端计算机](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1)（请参阅"进行证书供应用程序和用户"部分）。
+* [将 Always Encrypted 证书部署到其他客户端计算机](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1)（请参阅“向应用程序和用户提供证书”部分）。
 
 ## <a name="related-information"></a>相关信息
 * [始终加密（客户端开发）](https://msdn.microsoft.com/library/mt147923.aspx)

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
+ms.openlocfilehash: efd2f1e471f67396d35f11f2eb1044a8afa469af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ad43b5bb4f6f51f25acb9b2160661addab481762
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -243,7 +242,8 @@ SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会�
 **IBinder** 接口也可用于 **Table** 和 **Blob** 属性。
 
 ## <a name="how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a>如何在处理队列消息时读取和写入 Blob 和表
-可以使用 **Blob** 和 **Table** 属性读取与写入 blob 和表。 本部分中的示例适用于 Blob。 有关展示如何在创建或更新 blob 时触发进程的代码示例，请参阅[如何结合使用 Azure blob 存储和 WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)；有关用于读取和写入表的代码示例，请参阅[如何结合使用 Azure 表存储和 WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md)。
+可以使用 **Blob** 和 **Table** 属性读取与写入 blob 和表。 本部分中的示例适用于 Blob。 有关演示如何在创建或更新 Blob 时触发进程的代码示例，请参阅[如何通过 WebJobs SDK 使用 Azure Blob 存储](https://github.com/Azure/azure-webjobs-sdk/wiki)。
+<!-- , and for code samples that read and write tables, see [How to use Azure table storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md). -->
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>触发 Blob 操作的字符串队列消息
 对于包含字符串的队列消息，**queueTrigger** 是占位符，可以用于包含消息内容的 **Blob** 属性的 **blobPath** 参数。
@@ -258,7 +258,7 @@ SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会�
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-**Blob** 属性构造函数采用指定容器和 blob 名称的 **blobPath** 参数。 有关此占位符的详细信息，请参阅[如何结合使用 Azure blob 存储和 WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)。
+**Blob** 属性构造函数采用指定容器和 blob 名称的 **blobPath** 参数。 有关此占位符的详细信息，请参阅[如何结合使用 Azure blob 存储和 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。
 
 当属性修饰 **Stream** 对象时，另一个构造函数参数会将 **FileAccess** 模式指定为读取、写入或读取/写入。
 
@@ -469,7 +469,7 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
 
 无法将控制台输出链接到特定的方法调用，因为控制台是单线程的，而许多作业函数可能同时运行。 因此，SDK 为每个函数调用提供了自身唯一的日志写入器对象。
 
-若要写入[应用程序跟踪日志](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview)，请使用 **Console.Out**（创建标记为 INFO 的日志）和 **Console.Error**（创建标记为 ERROR 的日志）。 还可以使用 [Trace 或 TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)，它除了提供“信息”和“错误”外，还提供“详细”、“警告”和“严重级别”。 应用程序跟踪日志在 Web 应用日志文件、Azure 表或 Azure blob 中显示，具体取决于配置 Azure Web 应用的方式。 与所有控制台输出一样，最近的 100 条应用程序日志也会显示在 Web 作业的仪表板页中，而不是显示在函数调用的页中。
+若要写入[应用程序跟踪日志](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview)，请使用 **Console.Out**（创建标记为 INFO 的日志）和 **Console.Error**（创建标记为 ERROR 的日志）。 还可以使用 [Trace 或 TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)，它除了提供“信息”和“错误”外，还提供“详细”、“警告”和“严重级别”。 应用程序跟踪日志在 Web 应用日志文件、Azure 表或 Azure blob 中显示，具体取决于配置 Azure Web 应用的方式。 与所有控制台输出一样，最近的 100 条应用程序日志也会显示在 Web 作业的仪表板页中，而不是显示在函数调用的页中。
 
 仅当程序在 Azure Web 作业中运行（而不是在本地运行或者在其他某个环境中运行）时，控制台输出才显示在仪表板中。
 
@@ -513,5 +513,4 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
 
 ## <a name="next-steps"></a>后续步骤
 本文章提供了代码示例，演示如何处理用于操作 Azure 队列的常见方案。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](http://go.microsoft.com/fwlink/?linkid=390226)。
-
 

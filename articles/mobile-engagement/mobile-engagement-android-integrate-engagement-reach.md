@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2016
 ms.author: piyushjo
 ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-integrate-engagement-reach-on-android"></a>如何在 Android 上集成 Engagement Reach
 > [!IMPORTANT]
@@ -114,8 +114,7 @@ ms.lasthandoff: 07/11/2017
 
 在这种情况下应使用多个 APK。
 
-
-            **现在应用程序已准备好接收和显示市场宣传活动！**
+**现在应用程序已准备好接收和显示市场宣传活动！**
 
 ## <a name="how-to-handle-data-push"></a>如何处理数据推送
 ### <a name="integration"></a>集成
@@ -234,7 +233,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="categories"></a>类别
+#### <a name="categories"></a> 类别
 当修改提供的布局时，会修改所有通知的外观。 类别允许定义通知的各种目标外观（可能是行为）。 创建市场宣传活动时可以指定类别。 请记住，使用类别还可以自定义公告和投票，本文档稍后会介绍这部分内容。
 
 若要注册通知的类别处理程序，需要在初始化应用程序时添加调用。
@@ -312,7 +311,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
               }
             }
 
-**示例`my_notification_overlay.xml`:**
+**`my_notification_overlay.xml` 的示例：**
 
             <?xml version="1.0" encoding="utf-8"?>
             <RelativeLayout
@@ -327,7 +326,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 
 如你所看到的，覆盖视图标识符不同于标准的标识符。 重要的是，每个布局将对各个覆盖层使用唯一的标识符。
 
-**示例`my_notification_area.xml`:**
+**`my_notification_area.xml` 的示例：**
 
             <?xml version="1.0" encoding="utf-8"?>
             <merge

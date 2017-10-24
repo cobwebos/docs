@@ -4,28 +4,28 @@
 
 ```json
 [{
-    "time": "Mon Apr 11 13:48:07 2016",
+    "time": "Mon Apr 11 13:42:50 2016",
     "content": "Log started"
 }, {
-    "time": "Mon Apr 11 13:48:48 2016",
+    "time": "Mon Apr 11 13:42:50 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:48:55 2016",
+    "time": "Mon Apr 11 13:42:55 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:49:01 2016",
+    "time": "Mon Apr 11 13:43:00 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:49:04 2016",
+    "time": "Mon Apr 11 13:45:00 2016",
     "content": "Log stopped"
 }]
 ```
@@ -36,11 +36,11 @@
 
 ### <a name="iot-edge-gateway-creation"></a>创建 IoT Edge 网关
 
-必须实现一个网关进程。 此程序创建内部基础结构（中转站）、加载 IoT Edge 模块，以及配置网关进程。 IoT Edge 提供 **Gateway\_Create\_From\_JSON** 函数，用于从 JSON 文件启动网关。 若要使用 Gateway\_Create\_From\_JSON 函数，请将 JSON 文件的路径传递给它，以便指定要加载的 IoT Edge 模块。
+若要创建网关，请实现一个网关进程。 此程序创建内部基础结构（中转站）、加载 IoT Edge 模块，以及配置网关进程。 IoT Edge 提供 **Gateway\_Create\_From\_JSON** 函数，用于从 JSON 文件启动网关。 若要使用 Gateway\_Create\_From\_JSON 函数，请将 JSON 文件的路径传递给它，以便指定要加载的 IoT Edge 模块。
 
 可以在 Hello World 示例的 [main.c][lnk-main-c] 文件中找到网关进程的代码。 为了增强可读性，以下代码片段显示的是简化版网关进程代码。 此示例程序创建一个网关，在解除该网关之前，会等待用户按 **ENTER** 键。
 
-```c
+```C
 int main(int argc, char** argv)
 {
     GATEWAY_HANDLE gateway;
@@ -103,7 +103,7 @@ JSON 文件还包含要传递到中转站的模块之间的链接。 链接具�
 
 每个链接都会定义消息路由和方向。 来自 source 模块的消息将传递到 sink 模块。 可将 source 模块设置为 `\*`，用于指示 sink 模块接收来自任何模块的消息。
 
-以下代码显示了 Linux 上用来配置 hello\_world 示例中所用模块之间的链接的 JSON。 模块 `hello_world` 生成的每条消息将由模块 `logger` 使用。
+以下代码显示了 Linux 上用来配置 hello\_world 示例中所用模块之间的链接的 JSON。 模块 `hello_world` 生成的每条消息由模块 `logger` 使用。
 
 ```json
 "links":
@@ -119,7 +119,7 @@ JSON 文件还包含要传递到中转站的模块之间的链接。 链接具�
 
 可在[“hello_world.c”][lnk-helloworld-c]文件中找到 hello\_world 模块发布消息时使用的代码。 以下代码片段显示修改的代码版本，其中添加了注释，并删除了部分处理错误的代码以提高可读性：
 
-```c
+```C
 int helloWorldThread(void *param)
 {
     // create data structures used in function.
@@ -165,24 +165,22 @@ int helloWorldThread(void *param)
 }
 ```
 
-### <a name="helloworld-module-message-processing"></a>Hello\_world 模块消息处理
-
 hello\_world 模块永远不会处理其他 IoT Edge 模块发布到中转站的消息。 因此，hello\_world 模块中的消息回调的实现是一个 no-op 函数。
 
-```c
+```C
 static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
 {
     /* No action, HelloWorld is not interested in any messages. */
 }
 ```
 
-### <a name="logger-module-message-publishing-and-processing"></a>记录器模块消息发布和处理
+### <a name="logger-module-message-processing"></a>Logger 模块消息处理
 
 logger 模块接收来自中转站的消息，并将其写入文件中。 它不发布任何消息。 因此，Logger 模块的代码不会调用 **Broker_Publish** 函数。
 
 [logger.c][lnk-logger-c] 文件中的 Logger_Receive 函数是中转站发起的回叫，用于将消息传递给 Logger 模块。 以下代码片段显示修改的版本，其中添加了注释，并删除了部分处理错误的代码以提高可读性：
 
-```c
+```C
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
 {
 
@@ -223,7 +221,10 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
 ## <a name="next-steps"></a>后续步骤
 
-本文中运行了将消息写入日志文件的简单 IoT Edge 网关。 若要运行将消息发送到 IoT 中心 的示例，请参阅 [IoT Edge - 通过模拟设备使用 Linux 发送设备到云的消息][lnk-gateway-simulated-linux]或 [IoT Edge - 通过模拟设备使用 Windows 发送设备到云的消息][lnk-gateway-simulated-windows]。
+本文中运行了将消息写入日志文件的简单 IoT Edge 网关。 要运行将消息发送到 IoT 中心的示例，请参阅：
+
+- [IoT Edge - 使用 Linux 通过模拟设备发送设备到云消息][lnk-gateway-simulated-linux] 
+- [IoT Edge - 使用 Windows 通过模拟设备发送设备到云消息][lnk-gateway-simulated-windows]。
 
 
 <!-- Links -->

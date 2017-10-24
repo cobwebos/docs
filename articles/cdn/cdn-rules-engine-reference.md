@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
 ms.openlocfilehash: c10145661a8c575381493c9aaa901c3ef92c2e81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cdn-rules-engine"></a>Azure CDN 规则引擎
 本主题列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件和功能的详细说明。
@@ -41,9 +41,9 @@ ms.lasthandoff: 07/11/2017
 
 特殊字符的处理方式取决于匹配条件或功能处理文本值的方式。 匹配条件或功能可能会以下述某种方式解释文本：
 
-1. [**文本值**](#literal-values) 
-2. [**通配符值**](#wildcard-values)
-3. [**正则表达式**](#regular-expressions)
+1. [文本值](#literal-values) 
+2. [通配符值](#wildcard-values)
+3. [正则表达式](#regular-expressions)
 
 ### <a name="literal-values"></a>文本值
 可解释为文本值的文本会将所有特殊字符（% 字符除外）视为必须匹配的值的一部分。 换言之，满足设置为 `\'*'\` 的文本匹配条件的前提是找到精确值（即 `\'*'\`）。
@@ -59,7 +59,7 @@ Character | 说明
 % | 百分比符号用于指示 URL 编码（例如 `%20`）。
 * | 星号是通配符，代表一个或多个字符。
 空格 | 空格字符表示某个匹配条件可以由指定的值或模式满足。
-'值' | 一个单引号没有特殊含义， 但是，可以使用一组单引号来指示应将其中的值视为文本值。 可以通过以下方式使用单引号：<br><br/>- 使用单引号时，只要指定的值与比较值的任何部分匹配，即表示满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />-它允许特殊字符指定为原义字符。 例如，可以通过将空格字符括在一组单引号中（例如 `' '` 或 `'sample value'`）来指定文本空格字符。<br/>- 使用单引号时，可以指定空值。 通过指定一组单引号（例如 ''）来指定空值。<br /><br/>**重要提示：**<br/>#NAME? 这意味着不需要指定一组单引号。<br/>- 如果反斜杠不对此表中的其他字符进行转义操作，则会忽略在一组单引号中指定的反斜杠。<br/>- 要将特殊字符指定为文本字符，另一种方式是使用反斜杠（即 `\`）对其进行转义操作。
+'值' | 一个单引号没有特殊含义， 但是，可以使用一组单引号来指示应将其中的值视为文本值。 可以通过以下方式使用单引号：<br><br/>- 使用单引号时，只要指定的值与比较值的任何部分匹配，即表示满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />- 使用单引号时，可以将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号中（例如 `' '` 或 `'sample value'`）来指定文本空格字符。<br/>- 使用单引号时，可以指定空值。 通过指定一组单引号（例如 ''）来指定空值。<br /><br/>**重要提示：**<br/>#NAME? 这意味着不需要指定一组单引号。<br/>- 如果反斜杠不对此表中的其他字符进行转义操作，则会忽略在一组单引号中指定的反斜杠。<br/>- 要将特殊字符指定为文本字符，另一种方式是使用反斜杠（即 `\`）对其进行转义操作。
 
 ### <a name="regular-expressions"></a>正则表达式
 

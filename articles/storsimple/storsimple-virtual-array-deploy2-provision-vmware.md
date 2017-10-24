@@ -16,10 +16,10 @@ ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -178,7 +178,7 @@ ms.lasthandoff: 07/11/2017
 34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成” 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。 查看虚拟机的设置。
+35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。查看虚拟机的设置。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -191,7 +191,7 @@ ms.lasthandoff: 07/11/2017
 1. 启动虚拟设备。 在 vSphere 配置管理器的左窗格中选择设备，并右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。 此时会启动虚拟机。 可以在 vSphere 客户端底部的“最新任务”窗格中查看状态。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 完成设置任务需要几分钟时间。 设备运行以后，导航到“控制台”选项卡。 发送 Ctrl+Alt+Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
+2. 完成设置任务需要几分钟时间。 设备运行以后，导航到“控制台”选项卡。发送 Ctrl+Alt+Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
@@ -231,7 +231,7 @@ ms.lasthandoff: 07/11/2017
        >
        >
 
-如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后，你可以重新启动，并连接到设备。 请参阅[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

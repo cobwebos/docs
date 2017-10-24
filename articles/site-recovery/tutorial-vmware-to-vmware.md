@@ -4,7 +4,7 @@ description: "了解如何使用 Azure Site Recovery 将 VMware VM 或 Windows �
 services: site-recovery
 documentationcenter: 
 author: nsoneji
-manager: jwhit
+manager: gauarvd
 editor: 
 ms.assetid: 68616d15-398c-4f40-8323-17b6ae1e65c0
 ms.service: site-recovery
@@ -12,14 +12,13 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 10/11/2017
 ms.author: raynew
+ms.openlocfilehash: b182c00ac9a6956d07dece621d03c84788442085
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: da1df5546b7f99549a693c4e2df4eefb7a423c7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -59,22 +58,27 @@ ms.lasthandoff: 09/25/2017
 
 按以下步骤安装更新：
 
-1. 下载[更新](https://aka.ms/asr-scout-update5)后的 .zip 文件。 该文件包含以下内容：
+> [!NOTE]
+>所有 Scout 组件的文件更新版本可能与更新 .zip 文件中的版本不同。 较旧的版本表示此更新自上一次更新以来组件中没有任何更改。
 
-   * RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
-   * CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe
-   * UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
-   * UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-   * vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe
-   * 对于 RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-2. 解压缩 .zip 文件。
-    - RX 服务器：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-    - 配置服务器和进程服务器：将 CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
-    - Windows 主目标服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该服务器。 双击以运行该文件。 统一代理也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
-    - vContinuum 服务器：将 vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
-    - Linux 主目标服务器：要更新统一代理，请将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-    - Windows 源服务器：如果源服务器已在运行 Update 4，则无需在该服务器上安装 Update 5 代理。 要更新统一代理，请将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到源服务器。 双击以运行该文件。
-    - Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到该服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+下载[更新](https://aka.ms/asr-scout-update6)后的 .zip 文件。 文件包含以下组件： 
+  - RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
+  - CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
+  - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
+  - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+  - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
+  - 对于 RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+1. 解压缩 .zip 文件。
+2. RX 服务器：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+3. 配置服务器和进程服务器：将 CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
+4. Windows 主目标服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
+  更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
+5. vContinuum 服务器：将 vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
+    更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
+6. Linux 主目标服务器：要更新统一代理，请将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+7. Windows 源服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该源服务器。 双击以运行该文件。 
+    如果源服务器已更新到 Update 4 或源代理已安装有最新的基本安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe，则不需要在源服务器上安装 Update 5 代理。
+8. Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到该服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
 
 ## <a name="enable-replication"></a>启用复制
 
@@ -89,10 +93,34 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="updates"></a>更新
 
+### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 Update 6 
+更新时间：2017 年 10 月 6 日
+
+Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所有修补程序，以及下面所述的新修补程序和增强功能。 
+
+#### <a name="new-platform-support"></a>新的平台支持
+* 已添加对 Source Windows Server 2016 的支持
+* 已添加对以下 Linux 操作系统的支持：
+    - Red Hat Enterprise Linux (RHEL) 6.9
+    - CentOS 6.9
+    - Oracle Linux 5.11
+    - Oracle Linux 6.8
+* 已添加对 VMware Center 6.5 的支持
+
+> [!NOTE]
+> * 已刷新面向 Windows 的基本统一代理 (UA) 安装程序，以支持 Windows Server 2016。 新的安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip)。 相同的安装程序将用于所有受支持的 Windows 版本。 
+> * 已刷新基本 Windows vContinuum 和主目标安装程序来支持 Windows Server 2016。 新的安装程序 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip)。 相同的安装程序将用于部署 Windows 2016 主目标和 Windows 2012R2 主目标。
+> * 从门户中下载 GA 包，如[创建保管库](#create-a-vault)中所述。
+>
+
+#### <a name="bug-fixes-and-enhancements"></a>Bug 修复和增强功能
+- Linux VM 的故障回复保护失败，而且在配置结束时，要复制的磁盘列表为空。
+
+
 ### <a name="site-recovery-scout-801-update-5"></a>Site Recovery Scout 8.0.1 Update 5
 Scout Update 5 是累积更新。 其中包含从 Update 1 到 Update 4 的所有修补程序，以及下面所述的新修补程序。
 - Site Recovery Scout Update 4 至 Update 5 中的修补程序专门用于主目标组件和 vContinuum 组件。
-- 如果源服务器、主目标、配置、进程和 RX 服务器已在运行 Update 5，则仅将其应用在主目标服务器上。 
+- 如果源服务器、主目标、配置、进程和 RX 服务器已在运行 Update 4，则仅将其应用在主目标服务器上。 
 
 #### <a name="new-platform-support"></a>新的平台支持
 * SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
@@ -223,5 +251,4 @@ Update 1 包含以下 bug 修复和新功能：
   * 在 vContinuum 向导中保护 MSCS VM 期间，单击磁盘视图中的“详细信息”会自动取消选择磁盘。
   * 在物理到虚拟 (P2V) 方案中，所需的 HP 服务（例如 CIMnotify、CqMgHost）不会在 VM 恢复中变为“手动”。 此问题会导致启动时间延长。
   * 当主目标服务器上的磁盘数超过 26 个时，Linux VM 保护会失败。
-
 

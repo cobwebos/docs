@@ -11,10 +11,10 @@ ms.custom:
 ms.topic: article
 ms.date: 05/15/2017
 ms.openlocfilehash: 685aa4c2f75b7c3260ca737f7c786157480b2d90
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>配置 Azure Database for PostgreSQL 中的 SSL 连接
 Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户端应用程序连接到 PostgreSQL 服务。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -112,7 +112,7 @@ OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -text -out root.crt
 现已成功解码证书，可通过 SSL 安全连接到数据库服务器。 要允许服务器证书验证，必须将证书放在用户主目录中的 ~/.postgresql/root.crt 文件中。 （在 Microsoft Windows 上，该文件的名称是 %APPDATA%\postgresql\root.crt.）。 下面说明如何连接到 Azure Database for PostgreSQL。
 
 > [!NOTE]
-> 目前，没有已知的问题如果你使用"sslmode = 验证完整"在你连接到服务中，则连接将失败并出现以下错误：_服务器证书"&lt;区域&gt;。 control.database.windows.net"（和 7 其他名称） 与主机名不匹配"&lt;servername&gt;。 postgres.database.azure.com"。_
+> 目前，如果在连接到服务时使用“sslmode=verify-full”，会出现已知问题，连接将失败并显示以下错误：“&lt;区域&gt;.control.database.windows.net”的服务器证书（和 7 个其他名称）与主机名“&lt;servername&gt;.postgres.database.azure.com”不匹配。
 > 如果需要“sslmode=verify-full”，请使用服务器命名约定 **&lt;servername&gt;.database.windows.net** 作为连接字符串主机名。 我们计划在将来删除此限制。 使用其他 [SSL 模式](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS)的连接应继续使用首选主机命名约定 **&lt;servername&gt;.postgres.database.azure.com**。
 
 #### <a name="using-psql-command-line-utility"></a>使用 psql 命令行实用工具

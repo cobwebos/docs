@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
 ms.openlocfilehash: d4a7e6658ec65a70bd7e07859e2a69acee58b7b5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL 数据库 - 针对表审核的下层客户端支持和 IP 终结点更改
 
@@ -47,10 +47,10 @@ ms.lasthandoff: 07/11/2017
 
 **注释：**上面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。
 
-## <a id="subheading-2"></a>IP 终结点在启用审核时更改
+## <a id="subheading-2"></a>启用审核时的 IP 终结点变化
 请注意，启用表审核时，数据库的 IP 终结点将发生更改。 如果有严格的防火墙设置，请相应地更新这些防火墙设置。
 
-新的数据库 IP 终结点取决于数据库区域：
+新的数据库 IP 终结点将取决于数据库区域：
 
 | 数据库区域 | 可能的 IP 终结点 |
 | --- | --- |

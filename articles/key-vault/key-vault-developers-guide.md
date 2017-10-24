@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: bruceper
 ms.openlocfilehash: fec4769c0bd571edea84dd2f766bb907d8819be5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 08/18/2017
 有关将密钥保管库用于应用程序的完整示例，请参阅：
 
 - [Azure Key Vault 代码示例](http://www.microsoft.com/download/details.aspx?id=45343) - .NET 示例应用程序 *HelloKeyVault* 和 Azure Web 服务示例。 
-- [从 Web 应用程序使用 Azure Key Vault](key-vault-use-from-web-application.md) - 此教程介绍如何从 Azure 中的 Web 应用程序使用 Azure Key Vault。 
+- [从 Web 应用程序使用 Azure Key Vault](key-vault-use-from-web-application.md) - 此教程有助于你了解如何从 Azure 中的 Web 应用程序使用 Azure Key Vault。 
 
 ## <a name="how-tos"></a>操作方法
 

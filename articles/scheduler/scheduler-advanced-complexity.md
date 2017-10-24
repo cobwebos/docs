@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
 ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>如何使用 Azure 计划程序生成复杂的计划和高级循环
 ## <a name="overview"></a>概述
@@ -40,7 +40,7 @@ Azure 计划程序允许为作业指定不同的一次性计划和重复性计�
 
 * 在特定的日期和时间运行一次
 * 运行并重复明确的次数
-* 立即运行，并重复
+* 立即运行，然后重复
 * 运行并每隔 n 分钟、小时、天、周、月在特定的时间开始重复
 * 运行并根据每周或每月的频率重复，不过，只会在特定的日期、特定的星期或特定的月份日次重复
 * 运行并在某个时间段中的多个时间重复 - 例如，每月的最后一个星期五和星期一，或者每天的 5:15AM 和 5:15PM
@@ -108,16 +108,16 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 
 让我们查看 *startTime* 在过去，并且指定了 *recurrence* 但未指定 *schedule* 的情况下会发生的情况示例。  假设当前时间为 2015-04-08 13:00，*startTime* 为 2015-04-07 14:00，*recurrence* 为每隔 2 天（定义方式为 *frequency*: day，*interval*: 2）。请注意，*startTime* 在过去，即发生在当前时间以前
 
-在这些条件下，*第一次执行*将发生在 2015-04-09 14:00\. 计划程序引擎从开始时间计算执行循环。  过去的所有实例会被丢弃。 引擎将使用将来发生的下一个实例。  在本例中，*startTime* 为 2015-04-07 2:00pm，因此，下一个实例为从该时间算起的 2 天，即 2015-04-09 2:00pm。
+在上述情况下，首次执行时间为 2015-04-09 14:00\. 计划程序引擎从开始时间计算执行循环。  过去的所有实例会被丢弃。 引擎将使用将来发生的下一个实例。  在本例中，*startTime* 为 2015-04-07 2:00pm，因此，下一个实例为从该时间算起的 2 天，即 2015-04-09 2:00pm。
 
-请注意，不管 startTime 是 2015-04-05 14:00 还是 2015-04-01 14:00，第一次执行时间都是相同的。 在第一次执行后，使用计划循环计算后续执行 - 依次为 2015-04-11 2:00pm、2015-04-13 2:00pm 和 2015-04-15 2:00pm，等等。
+请注意，首次执行时间是相同的，即使 startTime 为 2015-04-05 14:00 或 2015-04-01 14:00\。 在首次执行后，将使用计划循环计算后续执行 – 依次为 2015-04-11 2:00pm、2015-04-13 2:00pm、2015-04-15 2:00pm 等。
 
 最后，如果为作业指定了计划，但未在计划中设置小时和/或分钟，则小时和分钟分别默认为第一次执行的小时和/或分钟。
 
 ## <a name="deep-dive-schedule"></a>深入探讨：*schedule*
 一方面，*schedule* 可以*限制*作业执行的次数。  例如，如果频率为“month”的作业具有仅在 31 号运行的 *schedule*，该作业仅在包含 31<sup></sup> 号的月份运行。
 
-另一方面，*schedule* 还可以*增加*作业执行的次数。 例如，如果频率为“month”的作业具有在1 号和 2 号运行的 *schedule*，则该作业会在每月的 1<sup></sup> 号和 2<sup></sup> 号运行，而不只是在每月运行一次。
+另一方面，*schedule* 还可以*增加*作业执行的次数。 例如，如果频率为“month”的作业具有在1 号和 2 号运行的 schedule，则该作业将在每月的 1<sup></sup> 号和 2<sup></sup> 号运行，而不只是在每月运行一次。
 
 如果指定了多个计划元素，则求值顺序为大到小 – 周次、月份日次、星期、小时和分钟。
 
@@ -128,13 +128,13 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | **分钟数** |运行作业的小时中的分钟 |<ul><li>整数，或</li><li>整数数组</li></ul> |
 | **小时数** |运行作业的日期中的小时 |<ul><li>整数，或</li><li>整数数组</li></ul> |
 | **工作日** |运行作业的星期日期。 只能配合每周频率指定。 |<ul><li>"Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday" 或 "Sunday"</li><li>上述任意值的数组（最大数组大小为 7）</li></ul>*不*区分大小写 |
-| **monthlyOccurrences** |确定运行作业的月份日期。 只能配合每月频率指定。 |<ul><li>monthlyOccurrence 对象的数组：</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *day* 是运行作业的星期日期，例如，{Sunday} 表示月份中的每个星期日。 必需。</p><p>*Occurrence* 是月份中重复的日期，例如 {Sunday, -1} 表示月份中的最后一个星期日。 可选。</p> |
+| **monthlyOccurrences** |确定运行作业的月份日期。 只能配合每月频率指定。 |<ul><li>MonthlyOccurrence 对象的数组：</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *day* 是运行作业的星期日期，例如，{Sunday} 表示月份中的每个星期日。 必需。</p><p>*Occurrence* 是月份中重复的日期，例如 {Sunday, -1} 表示月份中的最后一个星期日。 可选。</p> |
 | **monthDays** |运行作业的月份日期。 只能配合每月频率指定。 |<ul><li><= -1 且 >= -31 的任何值。</li><li>>= 1 且 <= 31 的任何值。</li><li>上述值的数组</li></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划
 以下是循环计划的不同示例 – 着重于计划对象及其子元素。
 
-以下计划全都假设 *interval* 设置为 1\. 此外，用户必须假设正确的频率符合中的功能*计划*– 例如，一个不能使用频率"day"，并且包含"monthdays 在计划中。 上面介绍了此类限制。
+下面的所有计划都假设 interval 设置为 1\. 此外，必须假设正确的频率符合 schedule，例如，不能使用频率“day”，并且计划中不能包含“monthDays”修改。 上面介绍了此类限制。
 
 | **示例** | **说明** |
 |:--- |:--- |

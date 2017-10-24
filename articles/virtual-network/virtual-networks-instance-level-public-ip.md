@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>实例层级公共 IP（经典）概述
 实例层级公共 IP (ILPIP) 是可直接分配至 VM 或云服务角色实例（而非 VM 或角色实例所在的云服务）的公共 IP 地址。 ILPIP 不会取代分配给云服务的虚拟 IP (VIP)。 而是可以用来直接连接到 VM 或角色实例的其他 IP 地址。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议通过 Resource Manager 创建 VM。 请确保你了解如何[IP 地址](virtual-network-ip-addresses-overview-classic.md)在 Azure 中工作。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议通过 Resource Manager 创建 VM。 请确保你了解 [IP 地址](virtual-network-ip-addresses-overview-classic.md)在 Azure 中的工作原理。
 
 ![ILPIP 和 VIP 之间的差异](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/11/2017
 在以下任务中，可通过 VM 创建、分配和删除 ILPIP：
 
 ### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>在 VM 创建期间如何使用 PowerShell 请求 ILPIP
-下面的 PowerShell 脚本将创建名为 *FTPService* 的云服务，从 Azure 中检索映像，并使用检索到的映像创建名为 *FTPInstance* 的 VM，接着将 VM 设置为使用 ILPIP，最后再将 VM 添加到新服务：
+下面的 PowerShell 脚本将创建名为 *FTPService* 的云服务，然后从 Azure 中检索映像，并使用检索到的映像创建名为 *FTPInstance* 的 VM，接着将 VM 设置为使用 ILPIP，最后再将 VM 添加到新服务：
 
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"

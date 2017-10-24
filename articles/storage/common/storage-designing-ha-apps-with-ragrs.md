@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 9/06/2017
 ms.author: tamram
+ms.openlocfilehash: 4100e8b90e37d6f4ab5123dfd682452c21c77998
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 57f458770ea5d57b4c155adf4fa793867f392c3b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
@@ -38,7 +37,7 @@ Azure 存储为存储帐户中的数据冗余提供四个选项：
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS 的主要功能
 
-针对 RA-GRS 设计应用程序时，请记住以下要点：
+针对 RA-GRS 设计应用程序时，请注意下面这些要点：
 
 * Azure 存储在次要区域中保留主要区域中存储的数据的只读副本。 如上所述，存储服务确定次要区域的位置。
 
@@ -244,4 +243,3 @@ static function OnBeforeResponse(oSession: Session) {
 * 有关读取访问异地冗余的详细信息及如何设置 LastSyncTime 的另一示例，请参阅 [Windows Azure Storage Redundancy Options and Read Access Geo-Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)（Windows Azure 存储冗余选项和读取访问异地冗余存储）。
 
 * 有关如何在主终结点和辅助终结点之间来回切换的完整示例，请参阅 [Azure 示例 - 搭配使用断路器模式和 RA-GRS 存储](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)。
-

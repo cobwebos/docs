@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
+ms.openlocfilehash: 33d0b9aa37cc92dda27f1cf21f1d393b42b8c09b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 52d131384c61b57d31873530304c644d6e9c11f1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>流分析输出：存储、分析选项
 创作流分析作业时，需考虑如何使用生成的数据。 如何查看流分析作业的结果？流分析作业的结果存储在何处？
@@ -31,7 +30,7 @@ ms.lasthandoff: 09/07/2017
 流分析支持 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 此存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。 此外，流分析需要经过授权，才能访问 Data Lake Store。 [Data Lake 输出一文](stream-analytics-data-lake-output.md)讨论了有关授权以及如何注册 Data Lake Store（如果需要）的详细信息。
 
 ### <a name="authorize-an-azure-data-lake-store"></a>授权 Azure Data Lake Store
-当选择 Data Lake Storage 作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
+当选择 Data Lake 存储作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
 
 ![Azure Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 09/07/2017
 </tr>
 <tr>
 <td>路径前缀模式</td>
-<td>用于对指定 Data Lake Store 帐户中的文件进行编写的文件路径。 <BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
+<td>文件命名将遵循以下约定： <BR>{路径前缀模式}/schemaHashcode_Guid_Number.extension <BR> <BR>示例输出文件：<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>另外还存在已创建新文件的情况：<BR>1. 在输出架构中进行更改 <BR>2. 在外部或内部重启作业<BR><BR>此外，如果文件路径模式不包含结尾的“/”，文件路径中的最后一个模式将被视为文件名前缀。<BR><BR>示例：<BR>对于路径模式 folder1/logs/HH，生成的文件可能如下所示：folder1/logs/02_134343_gguid_1.csv</td>
 </tr>
 <tr>
 <td>日期格式 [<I>可选</I>]</td>
@@ -81,7 +80,7 @@ ms.lasthandoff: 09/07/2017
 </tr>
 <tr>
 <td>格式</td>
-<td>仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。</td>
+<td>仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。</td>
 </tr>
 </tbody>
 </table>
@@ -137,7 +136,7 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 </tr>
 <tr>
 <td>路径前缀模式 [可选]</td>
-<td>用于对指定容器中的 blob 进行编写的文件路径。<BR>在路径中，可以选择使用以下 2 个变量的一个或多个实例指定 blob 写入的频率：<BR>{date}、{time}<BR>示例 1：cluster1/logs/{date}/{time}<BR>示例 2：cluster1/logs/{date}</td>
+<td>用于编写指定容器中的 blob 的文件路径模式。 <BR> 在路径模式中，可以选择使用以下 2 个变量的一个或多个实例指定 blob 写入的频率： <BR> {date}、{time} <BR> 示例 1：cluster1/logs/{date}/{time} <BR> 示例 2：cluster1/logs/{date} <BR> <BR> 文件命名将遵循以下约定： <BR> {路径前缀模式}/schemaHashcode_Guid_Number.extension <BR> <BR> 示例输出文件： <BR> Myoutput/20170901/00/45434_gguid_1.csv <BR> Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR> 另外还存在已创建新文件的情况： <BR> 1. 当前文件超出了允许的最大块数（目前为 50,000） <BR> 2. 在输出架构中进行更改 <BR> 3. 在外部或内部重启作业  </td>
 </tr>
 <tr>
 <td>日期格式 [可选]</td>
@@ -182,7 +181,7 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 |仅适用于 JSON 类型。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 |
+| 格式 |仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) 可以用作流分析作业的输出，以便提供丰富的分析结果可视化体验。 此功能可用于操作仪表板、生成报告以及进行指标驱动型报告。
@@ -245,7 +244,7 @@ Datetime | String | String |  Datetime | String
 
 
 ### <a name="renew-power-bi-authorization"></a>续订 Power BI 授权
-如果自作业创建后或上次身份验证后更改了密码，需要重新对 Power BI 帐户进行身份验证。 如果在 Azure Active Directory (AAD) 租户上配置了 Multi-Factor Authentication (MFA)，还需要每 2 周续订一次 Power BI 授权。 此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
+如果自作业创建后或上次身份验证后更改了密码，需要重新对 Power BI 帐户进行身份验证。 如果在 Azure Active Directory (AAD) 租户上配置了多重身份验证 (MFA)，还需要每 2 周续订一次 Power BI 授权。 此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
 
   ![Power BI 刷新令牌错误](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
@@ -267,7 +266,7 @@ Datetime | String | String |  Datetime | String
 | 分区键 |包含分区键的输出列的名称。 分区键是给某个定表中分区的唯一标识，分区键构成了实体主键的第一部分。 分区键是一个最大为 1 KB 的字符串值。 |
 | 行键 |包含行键的输出列的名称。 行键是某个给定分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是一个最大为 1 KB 的字符串值。 |
 | 批大小 |批处理操作的记录数。 通常情况下，默认值对于大多数作业来说已经足够；若要修改此设置，请参阅[表批处理操作规范](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)以获取详细信息。 |
-
+ 
 ## <a name="service-bus-queues"></a>服务总线队列
 [服务总线队列](https://msdn.microsoft.com/library/azure/hh367516.aspx)为一个或多个竞争使用方提供先入先出 (FIFO) 消息传递方式。 通常情况下，接收方会按照消息添加到队列中的临时顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
 
@@ -298,7 +297,7 @@ Datetime | String | String |  Datetime | String
 | 主题策略名称 |创建主题时，还可以在“主题配置”选项卡上创建共享的访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
 | 主题策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
-| 编码 |如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式 |
+ | 编码 |如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -315,6 +314,23 @@ Datetime | String | String |  Datetime | String
   2\) MyCollection{partition} – 此类集合必须存在 –“MyCollection0”、“MyCollection1”、“MyCollection2”等。  
 * **分区键** - 可选。 仅当用户在集合名称模式中使用 {parition} 令牌时，才需要此项。 输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。 对于单个集合输出，可使用任何任意输出列（例如 PartitionId）。  
 * **文档 ID** - 可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。  
+
+## <a name="azure-functions-in-preview"></a>Azure Functions（处于预览状态）
+Azure Functions 是一个无服务器计算服务，使用它可以按需运行代码，而无需显式预配或管理基础结构。 它允许实现由 Azure 或第三方服务中出现的事件所触发的代码。  Azure Functions 响应触发的这一功能使其成为 Azure 流分析的自然输出。 此输出适配器允许用户将流分析连接到 Azure Functions，并运行脚本或一段代码来响应各种事件。
+
+Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下可配置属性的新 Azure Functions 输出适配器：
+
+| 属性名称 | 说明 |
+| --- | --- |
+| Function App |Azure Functions App 的名称 |
+| 函数 |Azure Functions App 中的函数的名称 |
+| 最大批大小 |此属性可用于设置将发送到 Azure Function 的每个输出批的最大大小。 默认情况下，此值为 256 KB |
+| 最大批数  |顾名思义，此属性允许指定发送到 Azure Functions 的每个批中的最大事件数。 默认最大批数值为 100 |
+| 密钥 |如果想要使用其他订阅中的 Azure Function，则提供访问 Function 的密钥 |
+
+请注意，当 Azure 流分析从 Azure Function 收到 413（http 请求实体过大）异常时，它将减小发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 此外，请确保函数中使用的最大批数值和最大批大小值与在流分析门户中输入的值一致。 
+
+另外，如果时间窗口中没有任何事件登录，则不生成任何输出。 因此，不会调用 computeResult 函数。 此行为与内置窗口化聚合函数一致。
 
 
 ## <a name="get-help"></a>获取帮助
@@ -335,4 +351,3 @@ Datetime | String | String |  Datetime | String
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-

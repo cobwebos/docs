@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 04/02/2017
 ms.author: bwren
 ms.openlocfilehash: 88dbb9515300f847789bc889911cdeff5f5bdb53
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
-本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](app-insights-overview.md) 资源。 例如，可能会执行方式生成过程的一部分。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](app-insights-monitor-web-app-availability.md)、设置[警报](app-insights-alerts.md)、设置[定价方案](app-insights-pricing.md)和创建其他 Azure 资源。
+本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](app-insights-monitor-web-app-availability.md)、设置[警报](app-insights-alerts.md)、设置[定价方案](app-insights-pricing.md)和创建其他 Azure 资源。
 
 创建这些资源的关键是用于 [Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md) 的 JSON 模板。 简而言之，过程如下：下载现有资源的 JSON 定义，参数化某些值（如名称），并在需要创建新资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 08/18/2017
 |价格代码|计划|
 |---|---|
 |1|基本|
-|2|Enterprise|
+|#N/A|Enterprise|
 
 * 如果仅想使用默认的基本价格计划，可在模板中省略 CurrentBillingFeatures 资源。
 * 若要在创建组件资源后更改价格计划，可使用一个忽略“microsoft.insights/components”资源的模板。 此外，请忽略计费资源中的 `dependsOn` 节点。 

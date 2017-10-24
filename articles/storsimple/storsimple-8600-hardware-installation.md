@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 10/24/2016
 ms.author: alkohli
 ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
 ## <a name="overview"></a>概述
@@ -38,7 +38,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 接着，按以下步骤打开设备包装。
 
 #### <a name="to-unpack-your-device"></a>打开设备包装
-1. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开箱子。 请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)来帮助你评估是否在设备处于正常工作。
+1. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开箱子。 请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)，帮助你评估设备是否处于良好的工作状态。
 2. 打开外箱，并取出装有主机箱和 EBOD 机箱的两个箱子。 现可打开主机箱和 EBOD 机箱的包装。 下图显示了一个机箱解包后的视图。
    
     ![打开存储设备的包装](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
@@ -48,7 +48,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    | 标签 | 说明 |
    | --- | --- |
    |   1 |包装箱 |
-   |   2 |SAS 电缆（位于配件和电缆槽中） |
+   |   #N/A |SAS 电缆（位于配件和电缆槽中） |
    |   3 |底部泡沫 |
    |   4 |设备 |
    |   5 |顶部泡沫 |
@@ -112,7 +112,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    | 标签 | 说明 |
    | --- | --- |
    |  1 |M 3x4 圆头螺丝 |
-   |  2 |底架滑轨 |
+   |  #N/A |底架滑轨 |
 2. 将左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和**此面朝上**，可帮助正确定向。
 3. 找到导轨组件前部和后部的导轨销。 延长导轨，使其适合机架立柱间距，并将销插入前后机架立柱的垂直部件孔中。 确保导轨组件保持水平。
 4. 使用提供的 2 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用 1 颗螺丝。
@@ -125,7 +125,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    | 标签 | 说明 |
    | --- | --- |
    |   1 |旋紧螺丝 |
-   |   2 |方孔前机架立柱螺丝 |
+   |   #N/A |方孔前机架立柱螺丝 |
    |   3 |左前侧导轨固定销 |
    |   4 |旋紧螺丝 |
    |   5 |左侧导轨固定销 |

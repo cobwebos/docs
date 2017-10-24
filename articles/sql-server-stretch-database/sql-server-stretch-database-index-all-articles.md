@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: DouglasL
 ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题
 本主题列出的每个主题都可以直接应用于 Azure **SQL Server Stretch Database** 服务。 可使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 | &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
 | 1 |[通过运行延伸数据库顾问来识别符合 Stretch Database 条件的数据库和表](sql-server-stretch-database-identify-databases.md) |了解如何识别符合 Stretch Database 条件的数据库和表。 |
-| 2 |[Stretch Database 的限制](sql-server-stretch-database-limitations.md) |了解 Stretch Database 的限制。 |
+| #N/A |[Stretch Database 的限制](sql-server-stretch-database-limitations.md) |了解 Stretch Database 的限制。 |
 | 3 |[Stretch Database 概述](sql-server-stretch-database-overview.md) |了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。 |
 | 4 |[通过运行“为数据库启用延伸向导”开始操作](sql-server-stretch-database-wizard.md) |了解如何通过运行“为数据库启用延伸向导”，来为 Stretch Database 配置数据库。 |
 
@@ -55,6 +55,6 @@ ms.lasthandoff: 07/11/2017
 ## <a name="backup-and-recovery"></a>备份和恢复
 | &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
-| 14 |[备份启用了延伸的数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了 Stretch 的数据库。 |
-| 15 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了 Stretch 的数据库。 |
+| 14 |[备份启用了延伸的数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了延伸的数据库。 |
+| 15 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了延伸的数据库。 |
 

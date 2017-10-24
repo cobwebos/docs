@@ -12,25 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: it-pro;
+ms.openlocfilehash: 3cce18d7a5cb67a53a90bd7e13c9f4c7b8c2da89
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: bea45d6ad01c92cf05821da9da8069dd1f667d31
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
-> [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-assign-admin-roles-azure-portal.md)
-> * [Azure 经典门户](active-directory-assign-admin-roles.md)
->
->
 
-使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 这些管理员可以按角色访问 Azure 门户或 Azure 经典门户中的各种功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在组织所订阅的所有云服务中拥有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Windows PowerShell 的 Azure AD 模块分配的。
+使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 管理员可以按角色访问 Azure 门户或 Azure 经典门户中的各种功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在组织所订阅的所有云服务中拥有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Windows PowerShell 的 Azure AD 模块分配的。
 
 提供以下管理员角色：
 
@@ -184,4 +178,3 @@ ms.lasthandoff: 09/09/2017
 * [管理用户](active-directory-create-users.md)
 * [管理密码](active-directory-manage-passwords.md)
 * [管理组](active-directory-manage-groups.md)
-

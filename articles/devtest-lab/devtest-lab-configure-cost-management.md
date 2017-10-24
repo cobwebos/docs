@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>查看 Azure 开发测试实验室的每月估计实验室成本趋势
 开发测试实验室的成本管理功能有助于追踪实验室成本。 本文将演示如何使用**月评估成本趋势**图表，查看当前日历月中截止目前的成本以及当前日历月截止月底的预估成本。 通过本文可以了解如何在 Azure 门户中查看月评估成本趋势图表。
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
 此外，以下未计入成本计算：
 
 * 当前 不支持 CSP 和 Dreamspark 订阅，因为 Azure 开发测试实验室使用不支持 CSP 和 Dreamspark 订阅的 [Azure 计费 API](../billing/billing-usage-rate-card-overview.md)。
-* 优惠费率。 目前，我们不能使用 （你的订阅下显示），你具有协商与 Microsoft 或 Microsoft 合作伙伴提供的费率。 我们会使用即付即用费率。
+* 优惠费率。 目前，我们无法使用你与 Microsoft 或 Microsoft 合作伙伴协商的优惠费率（显示于订阅下方）。 我们会使用即付即用费率。
 * 税额
 * 折扣
 * 计费货币。 目前，实验室成本仅以美元显示。

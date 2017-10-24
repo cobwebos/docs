@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: elioda
+ms.openlocfilehash: df49f054b5eb26c3d68f088bc05f5209cf2ebccf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: d7c257553d25694005bced745f793951cc9f8951
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-device-twins-node"></a>设备孪生入门 (Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -27,7 +26,7 @@ ms.lasthandoff: 09/08/2017
 在本教程结束时，会创建两个 Node.js 控制台应用：
 
 * **AddTagsAndQuery.js**（Node.js 后端应用），用于添加标记和查询设备孪生。
-* **TwinSimulatedDevice.js**，它是 Node.js 应用程序，用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
+* TwinSimulatedDevice.js（Node.js 应用），用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
 
 > [!NOTE]
 > [Azure IoT SDK][lnk-hub-sdks] 文章介绍了可用于构建设备和后端应用的 Azure IoT SDK。
@@ -36,7 +35,7 @@ ms.lasthandoff: 09/08/2017
 
 若要完成本教程，需要满足以下条件：
 
-* Node.js 版本 0.10.x 或更高版本。
+* Node.js 版本 4.0.x 或更高版本。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -90,7 +89,7 @@ ms.lasthandoff: 09/08/2017
    
     **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 前面的代码首先初始化 **Registry** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
    
-    更新标记后，它将调用 **queryTwins** 函数。
+    更新标记后，它将调用 queryTwins 函数。
 5. 在 **AddTagsAndQuery.js** 末尾添加以下代码以实现 **queryTwins** 函数：
    
         var queryTwins = function() {
@@ -115,8 +114,7 @@ ms.lasthandoff: 09/08/2017
    
     上面的代码执行两个查询：第一个仅选择位于 **Redmond43** 工厂的设备孪生，第二个将查询细化为仅选择还要通过蜂窝网络连接的设备。
    
-    请注意上面的代码，当它创建 **query** 对象时，会指定返回的最大文档数。 
-            **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为 **next** 的方法可用于非设备孪生的结果（例如聚合查询的结果）。
+    上面的代码创建 query 对象时，会指定返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为 next 的方法可用于非设备孪生的结果（例如聚合查询的结果）。
 6. 使用以下方法运行应用程序：
    
         node AddTagsAndQuery.js
@@ -227,4 +225,3 @@ ms.lasthandoff: 09/08/2017
 
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-

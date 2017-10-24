@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: e6eafb1a0030b022da2b5d0b787e092f3067c99f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.openlocfilehash: 793a2cdd55c4e9213e5097f4e318c0790960a64d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/18/2017
 
 在执行以下操作时，属性名称和值只能包含 ASCII 字母数字字符加上 ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}``：
 
-* 使用 HTTP 协议发送设备到云的消息。
+* 使用 HTTPS 协议发送设备到云的消息。
 * 发送云到设备的消息。
 
 有关如何使用不同协议对已发送消息进行编码和解码的详细信息，请参阅 [Azure IoT SDK][lnk-sdks]。

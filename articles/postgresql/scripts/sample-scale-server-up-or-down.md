@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 05/31/2017
 ms.openlocfilehash: b847abb336cce5dd5516469dca58002d3ba265f0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>使用 Azure CLI 监视和缩放单个 PostgreSQL 服务器
 此示例 CLI 脚本在查询指标后用于 PostgreSQL 服务器的单个 Azure 数据库缩放为不同的性能级别。 
@@ -25,11 +25,11 @@ ms.lasthandoff: 08/29/2017
 如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
-在此示例脚本中，更改突出显示的行，以自定义管理员用户名和密码。 将 Azure Monitor 中使用的订阅 ID 替换为自己的订阅 ID。[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/scale-postgresql-server.sh?highlight=15-16 "创建并缩放 Azure Database for PostgreSQL。")]
+在此示例脚本中，更改突出显示的行，以自定义管理员用户名和密码。 将 Azure Monitor 命令中使用的订阅 ID 替换为自己的订阅 ID。[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/scale-postgresql-server.sh?highlight=15-16 "Create and scale Azure Database for PostgreSQL.")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
-[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/delete-postgresql.sh "删除资源组。")]
+[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/delete-postgresql.sh "Delete the resource group.")]
 
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: bwren
+ms.openlocfilehash: e03911d589aaab0d0e80da5d58f14d6df417f4be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 951e76d3fb18d9e433b148e82d4d6cee9417ce6d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>了解 Log Analytics 中的警报
 
@@ -48,7 +47,7 @@ Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  �
 Log Analytics 中的预警规则均为以下两种类型之一。  这些类型中的每一种都在随后的相应部分进行了详细介绍。
 
 - **[结果数](#number-of-results-alert-rules)**。 当日志搜索返回的记录数超出指定数目时，将创建单个警报。
-- **[指标度量](#metric-measurement-alert-rules)**。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。
+- **[指标度量值](#metric-measurement-alert-rules)**。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。
 
 警报规则类型之间的差异如下所示。
 
@@ -144,6 +143,5 @@ Log Analytics 中警报规则创建的警报记录的“**类型**”为“**警
 ## <a name="next-steps"></a>后续步骤
 * 安装[警报管理解决方案](log-analytics-solution-alert-management.md)，用于分析 Log Analytics 中创建的警报以及从 System Center Operations Manager 收集的警报。
 * 深入了解有关可生成警报的[日志搜索](log-analytics-log-searches.md)。
-* 完成[配置 Webook](log-analytics-alerts-webhooks.md) 和警报规则的演练步骤。  
+* 完成[配置 Webhook](log-analytics-alerts-webhooks.md) 和警报规则的演练步骤。  
 * 了解如何[在 Azure 自动化中编写 Runbook](https://azure.microsoft.com/documentation/services/automation)，以修正警报标识的问题。
-

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.openlocfilehash: eafcc2f9d53bcdae63036df070e5adec24cbc252
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>测试云服务的性能
 ## <a name="overview"></a>概述
@@ -89,7 +89,7 @@ ms.lasthandoff: 08/29/2017
 1. 在“解决方案资源管理器”中，打开“Azure 项目”的快捷菜单，并选择“发布”。 有关如何发布云服务的详细步骤，请参阅[使用 Azure Tools 发布云服务](http://go.microsoft.com/fwlink/p?LinkId=623012)。
 2. 在“发布 Azure 应用程序”对话框中，选择“高级设置”选项卡。
 3. 若要启用分析，请选中“启用分析”复选框。
-4. 若要配置分析设置，请选择“设置”超链接。 此时显示“分析设置”对话框。
+4. 若要配置分析设置，请选择“设置”超链接。 此时会显示“分析设置”对话框。
 5. 在“要使用什么分析方法”选项按钮中，选择所需的分析类型。
 6. 若要收集层交互分析数据，请选中“启用层交互分析”复选框。
 7. 若要保存设置，请选择“确定”按钮。
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/29/2017
     当发布此应用程序时，这些设置用于为每个角色创建分析会话。
 
 ## <a name="viewing-profiling-reports"></a>查看分析报告
-为云服务中的角色的每个实例创建分析会话。 要从 Visual Studio 查看每个会话的分析报告，可以查看“服务器资源管理器”窗口，并选择“Azure 计算”节点以选择角色的实例。 然后可以查看分析报告，如下图所示。
+为云服务中的角色的每个实例创建分析会话。 要从 Visual Studio 查看每个会话的分析报告，可以查看“服务器资源管理器”窗口，并选择“Azure 计算”节点以选择角色的实例。 然后，可以查看分析报告，如以下插图所示。
 
 ![从 Azure 查看分析报告](./media/vs-azure-tools-performance-profiling-cloud-services/IC748914.png)
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 08/29/2017
 2. 选择“Azure 计算”节点，并针对从 Visual Studio 发布时所选的要进行分析的云服务，选择相应 Azure 部署节点。
 3. 要查看实例的分析报告，请选择服务中的角色，打开特定实例的快捷菜单，并选择“查看分析报告”。
    
-    报告是一个 .vsp 文件，它现在已从 Azure 下载，且下载状态显示在 Azure 活动日志中。 下载完成后，分析报告将显示在名为 <Role name>*<Instance Number>*<identifier>.vsp 的 Visual Studio 编辑器选项卡中。 随即会显示报告的汇总数据。
+    报告是一个 .vsp 文件，它现在已从 Azure 下载，且下载状态显示在 Azure 活动日志中。 下载完成后，分析报告会显示在名为 <Role name>*<Instance Number>*<identifier>.vsp 的 Visual Studio 编辑器选项卡中。 随即会显示报告的汇总数据。
 4. 若要显示报告的其他视图，请在“当前视图”列表中，选择所需视图类型。 有关详细信息，请参阅[分析工具报告视图](https://msdn.microsoft.com/library/azure/bb385755.aspx)。
 
 ## <a name="next-steps"></a>后续步骤

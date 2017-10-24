@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 28/9/2017
 ms.author: seguler
+ms.openlocfilehash: d77ac39b7fcf6a23ebc58a2bbf9dc7de664edbb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 0b6417b616a9e4e74b5fb8a67e1414ad74e8f258
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
 AzCopy on Linux 是一个命令行实用工具，专用于使用具有优化性能的简单命令将数据复制到 Microsoft Azure Blob 和文件存储以及从这些位置复制数据。 可在存储帐户中将数据从一个对象复制到另一个对象，或者在存储帐户之间复制。
@@ -497,7 +496,7 @@ azcopy \
     --sync-copy
 ```
 
-当从文件存储复制到 Blob 存储时，默认的 blob 类型是块 blob，用户可以指定选项 `/BlobType:page` 以更改目标 blob 类型。
+当从文件存储复制到 Blob 存储时，默认的 blob 类型是块 blob，用户可以指定选项 `--blob-type page` 以更改目标 blob 类型。 可用类型为 `page | block | append`。
 
 请注意，`--sync-copy` 可能会产生额外的数据传出费用，而异步复制则不会。 在与源存储帐户所在的同一区域的 Azure VM 中，建议使用此选项，避免产生数据传出费用。
 
@@ -691,5 +690,4 @@ AzCopy 旨在最大程度上利用计算机资源来加快数据传输，如果�
 * [AzCopy: Transfer data with restartable mode and SAS token](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)（AzCopy：使用可重启的模式和 SAS 令牌传输数据）
 * [AzCopy: Using cross-account Copy Blob](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)（AzCopy：使用跨帐户复制 Blob）
 * [AzCopy: Uploading/downloading files for Azure Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)（AzCopy：为 Azure Blob 上传/下载文件）
-
 

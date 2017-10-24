@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: gwallace
 ms.openlocfilehash: 3705457e4c90f8869496f7f5177531bd128d1057
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-dns-overview"></a>Azure DNS 概述
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/03/2017
 
 * 安全性 - Azure DNS 服务基于 Azure Resource Manager。 因此，它可以利用 Resource Manager 功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
 
-Azure DNS 当前不支持购买域名。 如果想要购买域，则需要使用第三方域名注册机构。 注册机构通常收取小额年费。 域然后可以在 Azure DNS 中的 DNS 记录管理的托管。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
+Azure DNS 当前不支持购买域名。 如果想要购买域，则需要使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
 
 ## <a name="pricing"></a>定价
 

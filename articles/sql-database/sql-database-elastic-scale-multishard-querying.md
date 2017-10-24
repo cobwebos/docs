@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/12/2016
 ms.author: torsteng
 ms.openlocfilehash: 67bcb3c7fe33341103f28bc70e8cc2acbb924cae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-shard-querying"></a>多分片查询
 ## <a name="overview"></a>概述
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
     } 
 
 
-主要区别在于多分片连接的构建。 其中 SqlConnection 在单一数据库上进行操作，而 MultiShardConnection  将分片集合用作其输入。 填充分片映射中的分片集合。 然后使用的分片集合上执行查询**UNION ALL**语义组成一个总体结果。 或者，也可以在命令上使用 **ExecutionOptions** 属性，以将行所源自的分片的名称添加到输出。 
+主要区别在于多分片连接的构建。 其中 **SqlConnection** 在单一数据库上进行操作，而 **MultiShardConnection** 将***分片集***合用作其输入。 填充分片映射中的分片集合。 然后，使用 **UNION ALL** 语义组成一个总体结果在分片集合上执行查询。 或者，也可以在命令上使用 **ExecutionOptions** 属性，以将行所源自的分片的名称添加到输出。 
 
 请注意对 **myShardMap.GetShards()** 的调用。 通过此方法可从分片映射中检索所有分片，还可轻松在该分片映射中的所有分片之间运行查询。 对通过调用 **myShardMap.GetShards()** 返回的集合执行 LINQ 查询，以进一步优化用于多分片查询的分片集合。 多分片查询中的当前功能已随部分结果策略一起被设计为供数十至数百种分片使用。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
 ## <a name="see-also"></a>另请参阅
-[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient.aspx) 类和方法。
+**[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient.aspx)** 类和方法。
 
 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)管理分片。 包括名为 [Microsoft.Azure.SqlDatabase.ElasticScale.Query](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.aspx) 的命名空间，可以通过该空间使用单个查询和结果来查询多个分片。 它提供对分片集合进行查询抽象的功能。 它还提供了备用执行策略，尤其是部分结果，以处理在对多个分片进行查询时所出现的故障。  
 

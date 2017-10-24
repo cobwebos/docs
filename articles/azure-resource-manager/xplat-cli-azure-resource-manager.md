@@ -11,18 +11,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2017
+ms.date: 10/06/2017
 ms.author: tomfitz
+ms.openlocfilehash: c68f2a8b6e18dc2d51d8bbb5cd05bc037dc2fadb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 2e3fdf06316bbf68abefe06024f63668bdf07b05
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>使用 Azure CLI 管理 Azure 资源和资源组
 
-本文介绍如何使用 Azure CLI 和 Azure 资源管理器管理解决方案。 如果不熟悉 Resource Manager，请参阅 [Resource Manager 概述](resource-group-overview.md)。 本主题重点介绍管理任务。 将能够：
+本文介绍如何使用 Azure CLI 和 Azure 资源管理器管理解决方案。 如果不熟悉 Resource Manager，请参阅 [Resource Manager 概述](resource-group-overview.md)。 本文重点介绍管理任务。 将能够：
 
 1. 创建资源组
 2. 将资源添加到资源组
@@ -79,6 +78,7 @@ az account show
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
+
 必须先创建将包含资源的资源组，才能向订阅部署任何资源。
 
 若要创建资源组，请使用 **az group create** 命令。 该命令使用 **name** 参数指定资源组的名称，并使用 **location** 参数指定其位置。
@@ -115,6 +115,7 @@ az group list
 ```
 
 ## <a name="add-resources-to-a-resource-group"></a>将资源添加到资源组
+
 要将资源添加到资源组中，可使用 **az resource create** 命令或特定于要创建的资源类型的命令（例如 **az storage account create**）。 使用特定于资源类型的命令可能更轻松，因为它包含新资源所需属性的参数。 要使用 **az resource create**，必须了解不会提示而要设置的所有属性。
 
 但是，通过脚本添加资源可能导致将来出现混乱，因为新的资源不存在于资源管理器模板中。 通过模板，可以可靠地重复部署解决方案。
@@ -133,7 +134,7 @@ az storage account show --name myuniquestorage --resource-group TestRG1
 
 ## <a name="add-a-tag"></a>添加标记
 
-标记可用于根据属性组织资源。 例如，可能有不同资源组中的多项资源属于同一部门。 可对这些资源应用部门标签和值，将其标记为属于同一类别。 也可标记资源是用于生产环境还是测试环境。 在本主题中，只对一项资源应用标记，但在环境最好向所有资源应用标记。
+标记可用于根据属性组织资源。 例如，可能有不同资源组中的多项资源属于同一部门。 可对这些资源应用部门标签和值，将其标记为属于同一类别。 也可标记资源是用于生产环境还是测试环境。 在本文中，只对一项资源应用标记，但在环境中最好向所有资源应用标记。
 
 以下命令将向存储帐户应用两个标记：
 
@@ -176,6 +177,14 @@ az resource tag --tags $rt Project=Redesign -g TestRG1 -n myuniquestorage --reso
   ```azurecli-interactive
   az resource list --resource-type "Microsoft.Storage/storageAccounts"
   ```
+
+## <a name="get-resource-id"></a>获取资源 ID
+
+很多命令采用资源 ID 作为参数。 若要获取资源 ID 并将其存储在变量中，请使用：
+
+```azurecli-interactive
+webappID=$(az resource show -g exampleGroup -n exampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
+```
 
 ## <a name="lock-a-resource"></a>锁定资源
 

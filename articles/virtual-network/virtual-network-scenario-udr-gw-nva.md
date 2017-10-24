@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
 ms.openlocfilehash: 8e464348660114f5e99b4739bb7761b7e53ebf99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
-在较大的 Azure 客户中，一种常见情况是需要向 Internet 公开某个双层应用程序，同时允许从本地数据中心访问后端层。 本文档将指导你实施一种使用用户定义的路由 (UDR)、VPN 网关和网络虚拟设备部署双层环境的方案，该方案可满足以下要求：
+在较大的 Azure 客户中，一种常见情况是需要向 Internet 公开某个双层应用程序，同时允许从本地数据中心访问后端层。 本文档指导实施一种使用用户定义的路由 (UDR)、VPN 网关和网络虚拟设备部署双层环境的方案，该方案可满足以下要求：
 
 * 只能从公共 Internet 访问 Web 应用程序。
 * 托管应用程序的 Web 服务器必须能够访问后端应用程序服务器。
@@ -84,7 +84,7 @@ Azure 中的每个子网可以链接到用于定义该子网中发起的流量�
 ### <a name="azsn2udr"></a>azsn2udr
 | 目标 | 下一跃点 | 说明 |
 | --- | --- | --- |
-| 10.0.3.0/24 |10.0.2.11 |允许通过 **AZF2** |
+| 10.0.3.0/24 |10.0.2.11 |允许通过 **AZF2** 将流量传送到托管应用程序服务器的后端子网 |
 | 0.0.0.0/0 |10.0.2.10 |允许通过 **AZF1** 路由所有其他流量 |
 
 ### <a name="azsn3udr"></a>azsn3udr
@@ -102,7 +102,7 @@ Azure 中的每个子网可以链接到用于定义该子网中发起的流量�
 ### <a name="onpremsn2udr"></a>onpremsn2udr
 | 目标 | 下一跃点 | 说明 |
 | --- | --- | --- |
-| 10.0.3.0/24 |192.168.2.4 |允许通过 **onpremsn2** |
+| 10.0.3.0/24 |192.168.2.4 |允许通过 **OPFW** 将流量传送到 Azure 中的后端子网 |
 | 192.168.1.0/24 |192.168.2.4 |允许通过 **OPFW** 将流量传送到 **onpremsn1** |
 
 ## <a name="ip-forwarding"></a>IP 转发
@@ -112,7 +112,7 @@ Azure 中的每个子网可以链接到用于定义该子网中发起的流量�
 
 有关 IP 转发的详细信息，请访问[什么是用户定义的路由和 IP 转发](virtual-networks-udr-overview.md#ip-forwarding)。
 
-例如，假设你在 Azure VNet 中使用了以下设置：
+例如，假设在 Azure vnet 中具有以下设置：
 
 * 子网 **onpremsn1** 包含名为 **onpremvm1** 的 VM。
 * 子网 **onpremsn2** 包含名为 **onpremvm2** 的 VM。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
 ms.openlocfilehash: 75dd9107dca215a0b31db3d44bada69210fe9ac6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -30,7 +30,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 如果希望媒体服务加密资产，需要将加密密钥（**CommonEncryption** 或 **EnvelopeEncryption**）与资产相关联（如[此处](media-services-dotnet-create-contentkey.md)所述），并配置密钥授权策略（如本文所述）。
 
-当播放器请求流时，媒体服务将使用指定的密钥通过 AES 或 DRM 加密来动态加密内容。 为了解密流，播放器会从密钥传送服务请求密钥。 为了确定用户是否有权获取密钥，服务会评估为密钥指定的授权策略。
+当播放器请求流时，媒体服务将使用指定的密钥通过 AES 或 DRM 加密来动态加密内容。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 内容密钥授权策略可能受到一种或多种授权限制：**开放**或**令牌**限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用**简单 Web 令牌** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 **JSON Web 令牌** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) 格式的令牌。
 
@@ -45,7 +45,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 [使用 Azure ACS 颁发令牌](http://mingfeiy.com/acs-with-key-services)。
 
 ### <a name="some-considerations-apply"></a>请注意以下事项：
-* 创建 AMS 帐户后，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
+* 创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
 * 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 使用 **AssetCreationOptions.StorageEncrypted** 选项上传资产并对其进行编码。
 * 如果打算创建需要相同策略配置的多个内容密钥，我们强烈建议创建单个授权策略，并将其重复用于多个内容密钥。
@@ -149,7 +149,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 **受众**（有时称为**范围**）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥传送服务验证令牌中的这些值是否与模板中的值匹配。 
+配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 **受众**（有时称为**范围**）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。 
 
 使用**适用于 .NET 的媒体服务 SDK** 时，可以使用 **TokenRestrictionTemplate** 类来生成限制令牌。
 以下示例创建包含令牌限制的授权策略。 在此示例中，客户端必须出示令牌，其中包含：签名密钥 (VerificationKey)、令牌颁发者和必需的声明。

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: e4980cdb77650f011d143ed9e86fbe0af6b29d5d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -26,17 +26,14 @@ ms.lasthandoff: 07/11/2017
 
 安全性是任何采用新技术（尤其是在该技术用于处理机密或专有数据时）的人关心的主要问题。 评估不同技术时，必须考虑在数据保护方面增加的风险和成本。 Microsoft Azure StorSimple 为数据保护提供安全和隐私解决方案，可确保以下方面：
 
-* 
-            **保密性** – 只有经过授权的实体可以查看数据。
-* 
-            **完整性** - 只有经过授权的实体可以修改或删除数据。
+* **保密性** – 只有经过授权的实体可以查看数据。
+* **完整性** - 只有经过授权的实体可以修改或删除数据。
 
 Microsoft Azure StorSimple 解决方案由四个彼此交互的主要组件组成：
 
 * **Microsoft Azure 中托管的 StorSimple 设备管理器服务** – 用于配置和预配 StorSimple 设备的管理服务。
 * **StorSimple 设备** – 数据中心内安装的物理设备。 所有生成数据的主机和客户端都连接到 StorSimple 设备，而该设备管理这些数据，并根据需要将数据移到 Azure 云。
-* 
-            **连接到设备的客户端/主机** – 基础结构中连接到 StorSimple 设备并生成需要保护的数据的客户端。
+* **连接到设备的客户端/主机** – 基础结构中连接到 StorSimple 设备并生成需要保护的数据的客户端。
 * **云存储** – Azure 云中存储数据的位置。
 
 以下各节介绍可帮助保护上述每个组件和每个组件上存储的数据的 StorSimple 安全功能。 它还包括一组你可能对 Microsoft Azure StorSimple 安全性持有的问题和相应的解答。
@@ -213,7 +210,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **问：**我的服务受到安全威胁。 下一步我应该怎么做？
 
-**答：**你应该立即更改服务数据加密密钥以及正用于数据分层的存储帐户的存储帐户密钥。 有关说明，请转到：
+**答：**你应该立即更改服务数据加密密钥以及用于数据分层的存储帐户的存储帐户密钥。 有关说明，请转到：
 
 * [更改服务数据加密密钥](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
 * [存储帐户的密钥轮换](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
@@ -244,13 +241,11 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 * [使用 StorSimple 设备管理器服务更改 StorSimple 密码](storsimple-8000-change-passwords.md)
 * [更改服务数据加密密钥](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
-* 
-            [为 StorSimple 设备配置 CHAP](storsimple-8000-configure-chap.md)
+* [为 StorSimple 设备配置 CHAP](storsimple-8000-configure-chap.md)
 
 **问：**我想要将 StorSimple Snapshot Manager 密码提供给连接到 StorSimple 设备的主机，但却想不起该密码。 我该怎么办？
 
-
-            **答：**如果忘记了密码，应该创建一个新密码。 然后务必通知所有现有用户密码已更改，要求他们更新客户端以使用新密码。 有关说明，请转到：
+**答：**如果忘记了密码，应该创建一个新密码。 然后务必通知所有现有用户密码已更改，要求他们更新客户端以使用新密码。 有关说明，请转到：
 
 * [更改 StorSimple Snapshot Manager 密码](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
 * [对设备进行身份验证](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
@@ -263,8 +258,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **问：**如果 StorSimple 设备管理器服务受到安全威胁，我的数据是否得到保护？
 
-
-            **答：**在 Web 浏览器中查看服务配置数据时，始终使用公钥加密该数据。 因为服务不具备访问公钥的权限，服务将无法看到任何数据。 如果 StorSimple 设备管理器服务受到安全威胁，则无任何影响，因为 StorSimple 设备管理器服务中未存储任何密钥。
+**答：**在 Web 浏览器中查看服务配置数据时，始终使用公钥加密该数据。 因为服务不具备访问公钥的权限，服务将无法看到任何数据。 如果 StorSimple 设备管理器服务受到安全威胁，则无任何影响，因为 StorSimple 设备管理器服务中未存储任何密钥。
 
 **问：**如果有人获取了对数据加密证书的访问权限，我的数据是否会受到安全威胁？
 

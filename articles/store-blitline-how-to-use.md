@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/09/2014
 ms.author: support@blitline.com
 ms.openlocfilehash: 1d90599e028b3407a513b04b878e3aefc39928a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-blitline-with-azure-and-azure-storage"></a>如何将 Blitline 与 Azure 和 Azure 存储一起使用
 本指南将说明如何访问 Blitline 服务以及如何将作业提交到 Blitline。
@@ -58,9 +58,9 @@ Blitline 使用 JSON 定义要对图像执行的操作。 此 JSON 由几个简�
 
 此处的 JSON 将采用“src”图像“...boys.jpeg”，并将图像的大小调整为 240x140。
 
-可以在 Azure 上的“连接信息”或“管理”选项卡中找到应用程序 ID。 它是允许你在 Blitline 上运行作业的机密标识符。
+可以在 Azure 上的“连接信息”或“管理”选项卡中找到应用程序 ID。 此 ID 是可供你用来在 Blitline 上运行作业的机密标识符。
 
-"Save"参数标识有关你想要将图像放置到一旦我们已处理的信息。 在此常见示例中，我们没有定义该位置。 如果未定义位置，Blitline 会将图像本地（临时）存储在一个唯一的云位置。 将能够在创建 Blitline 时从 Blitline 返回的 JSON 中获取该位置。 "映像"标识符是必需的并以标识此特定保存映像时返回给您。
+“save”参数标识有关你在我们处理图像后要将图像放置到的位置的信息。 在此常见示例中，我们没有定义该位置。 如果未定义位置，Blitline 会将图像本地（临时）存储在一个唯一的云位置。 将能够在创建 Blitline 时从 Blitline 返回的 JSON 中获取该位置。 “image”标识符是必需的，在标识此特定的已保存图像时将返回此标识符。
 
 可以在以下位置查找有关我们支持的函数的详细信息：<http://www.blitline.com/docs/functions>
 
@@ -85,7 +85,7 @@ Blitline 使用 JSON 定义要对图像执行的操作。 此 JSON 由几个简�
 这说明 Blitline 已收到请求并已将其置于处理队列中，完成时，将可从以下位置获得图像：**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
 ## <a name="how-to-save-an-image-to-your-azure-storage-account"></a>如何将图像保存到 Azure 存储帐户
-如果拥有 Azure 存储帐户，则可以让 Blitline 轻松地将处理过的图像推送到 Azure 容器中。 通过添加"azure_destination"可以定义的位置和 Blitline 将推送到的权限。
+如果拥有 Azure 存储帐户，则可以让 Blitline 轻松地将处理过的图像推送到 Azure 容器中。 通过添加“azure_destination”，可定义 Blitline 将推送到的位置和相关权限。
 
 下面是一个示例：
 

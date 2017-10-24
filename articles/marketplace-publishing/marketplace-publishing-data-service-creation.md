@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.openlocfilehash: c0c9362f1c2e15c947aaaf7187f3383ad243140f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-service-publishing-guide-for-the-azure-marketplace"></a>Azure 应用商店的数据服务发布指南
 > [!IMPORTANT]
@@ -31,8 +31,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="1----login-to-the-publishing-portal"></a>1.  登录发布门户。
 前往 [https://publish.windowsazure.com](https://publish.windowsazure.com.)
 
-
-            **第一次登录发布门户时，使用的帐户应与公司在开发人员中心中注册卖方配置文件时所使用的帐户相同。**  （稍后可以添加公司的任何员工作为发布门户中的共同管理员）。
+**第一次登录发布门户时，使用的帐户应与公司在开发人员中心中注册卖方配置文件时所使用的帐户相同。**  （稍后可以添加公司的任何员工作为发布门户中的共同管理员）。
 
 如果这是首次登录到发布门户，单击“**发布数据服务**”磁贴。
 
@@ -108,7 +107,7 @@ Azure Marketplace 服务层将负责监视每个查询消耗的事务数。
 
 | 问题 | 含义 |
 | --- | --- |
-| **此计划需要促销代码才能购买吗？** |发布者可以通过提供一个名为 "Promocode" 的特殊代码给特定的客户，以限制对服务计划的访问。 仅具有此 Promocode 的最终用户才能够订阅计划。 如果你选择"否"，则您同意每位用户提供可用的区域 (请参阅[市场营销内容指南](marketplace-publishing-push-to-staging.md)有关详细信息) 将能订阅此计划。 将不会提出进一步的问题。 |
+| **此计划需要促销代码才能购买吗？** |发布者可以通过提供一个名为 "Promocode" 的特殊代码给特定的客户，以限制对服务计划的访问。 仅具有此 Promocode 的最终用户才能够订阅计划。 选择“否”即表示同意在该供应项可用的区域中，每位用户均可订阅此计划（请参阅 [Marketplace 市场营销内容指南](marketplace-publishing-push-to-staging.md)了解详细信息）。 将不会提出进一步的问题。 |
 | **另外对于没有有效促销代码的人，是否要隐藏此计划？** |如果前一个问题的答案是“是”，发布者可以选择将此计划从应用商店用户界面完全删除。 这意味着，客户不会在供应项详细信息页面看到此计划。 接收到 promocode 来购买计划的最终用户可以使用该代码订阅计划。 |
 
 ## <a name="6----create-your-marketplace-marketing-content"></a>6.  创建应用商店市场营销内容
@@ -135,7 +134,7 @@ Azure Marketplace 服务层将负责监视每个查询消耗的事务数。
 
   ![绘制](media/marketplace-publishing-data-service-creation/step-7.4.png)
 
-然后为每个表
+然后针对每个表
 
   ![绘制](media/marketplace-publishing-data-service-creation/step-7.5.png)
 

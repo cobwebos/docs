@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
 ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>在本地 Docker 容器中调试应用
 ## <a name="overview"></a>概述
@@ -52,18 +52,18 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 ## <a name="3-edit-your-code-and-refresh"></a>3.编辑代码并刷新
 要快速重复更改，可以在容器中启动应用程序，并继续进行更改，然后就像使用 IIS Express 一样查看这些更改。
 
-1. 将解决方案配置设置为 `Debug`，并按 **&lt;CTRL + F5>** 以生成 docker 映像并在本地运行它。
+1. 将解决方案配置设置为 `Debug`，并按“&lt;CTRL + F5>”，以生成 docker 映像并在本地运行它。
 
     容器映像已生成并在 Docker 容器中运行后，Visual Studio 会在默认浏览器中启动 Web 应用。
     如果使用的是 Microsoft Edge 浏览器或以其他方式出现错误，请参阅[故障排除](vs-azure-tools-docker-troubleshooting-docker-errors.md)部分。
-2. 请转到“关于”页，我们会在此页中进行更改。
+2. 请转到“关于”页，会在此页中进行更改。
 3. 返回到 Visual Studio 并打开 `Views\Home\About.cshtml`。
 4. 将以下 HTML 内容添加到文件末尾，并保存更改。
 
     ```
     <h1>Hello from a Docker Container!</h1>
     ```
-5. 查看输出窗口，当 .NET 生成完成并且你看到这些行时，切换回浏览器并刷新“关于”页。
+5. 查看输出窗口，在 .NET 版本完成后你会看到这些行，切回浏览器并刷新“关于”页。
 
    ```
    Now listening on: http://*:80
@@ -97,8 +97,7 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 ## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>提供有关在 Visual Studio、Windows 和 Azure 中使用 Docker 的更多信息
 * [Docker Tools for Visual Studio](http://aka.ms/dockertoolsforvs) - 在容器中开发 .NET Core 代码
 * [Docker Tools for Visual Studio Team Services](http://aka.ms/dockertoolsforvsts) - 生成和部署 docker 容器
-* 
-            [Docker Tools for Visual Studio Code](http://aka.ms/dockertoolsforvscode) - 用于编辑 docker 文件的语言服务，随后会推出更多 e2e 方案
+* [Docker Tools for Visual Studio Code](http://aka.ms/dockertoolsforvscode) - 用于编辑 docker 文件的语言服务，随后将推出更多 e2e 方案
 * [Windows 容器信息](http://aka.ms/containers) - Windows Server 和 Nano Server 信息
 * [Azure 容器服务](https://azure.microsoft.com/services/container-service/) - [Azure 容器服务内容](http://aka.ms/AzureContainerService)
 * 有关使用 Docker 的更多示例，请参阅 [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [演示](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)中的 [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker)（使用 Docker）。 有关 HealthClinic.biz 演示的多个快速入门，请参阅 [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)（Azure 开发人员工具快速入门）。
@@ -111,7 +110,7 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 
 ## <a name="presentations"></a>演示文稿
 * [Steve Lasker：VS Live Las Vegas 2016 - Docker e2e](https://github.com/SteveLasker/Presentations/blob/master/VSLive2016/Vegas/)
-* [ASP.NET 核心简介 @ 生成 2016-其中你在演示](https://channel9.msdn.com/Events/Build/2016/B810)
+* [ASP.NET Core @ 版本 2016 简介 - 你在哪里演示](https://channel9.msdn.com/Events/Build/2016/B810)
 * [在容器中开发 .NET 应用，第 9 频道](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)
 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png

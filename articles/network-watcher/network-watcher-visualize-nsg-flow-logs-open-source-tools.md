@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 20f60ccd9108a7473705c2368f28d3152d0dd614
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.openlocfilehash: 8b313b68be07da1a943748d21da68c169980cfc2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
 可以通过网络安全组流日志提供的信息了解网络安全组的入口和出口 IP 流量。 这些流日志根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
@@ -107,8 +105,8 @@ input {
          codec => "json"
          # Refer https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-read-nsg-flow-logs
          # Typical numbers could be 21/9 or 12/2 depends on the nsg log file types
-         file_head_bytes => 21
-         file_tail_bytes => 9
+         file_head_bytes => 12
+         file_tail_bytes => 2
          # Enable / tweak these settings when event is too big for codec to handle.
          # break_json_down_policy => "with_head_tail"
          # break_json_batch_count => 2
@@ -205,7 +203,7 @@ sudo /etc/init.d/logstash start
 
 1. 在[此处](https://aka.ms/networkwatchernsgflowlogdashboard)下载仪表板文件，在[此处](https://aka.ms/networkwatchernsgflowlogvisualizations)下载可视化效果文件，在[此处](https://aka.ms/networkwatchernsgflowlogsearch)下载已保存的搜索文件。
 
-1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“Dashboard”（仪表板）选项卡打开并加载示例仪表板。
+1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 
@@ -258,4 +256,3 @@ sudo /etc/init.d/logstash start
 [5]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure5.png
 [6]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure6.png
 [7]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure7.png
-

@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 03/17/2017
 ms.author: rickbyh
 ms.openlocfilehash: c4efec378a31852feacfce4ed4f040f80284e230
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异   
 从 SQL Server [将数据库迁移](sql-database-cloud-migrate.md)到 Azure SQL Server 时，可能会发现需要对数据库进行一些重新设计才能迁移 SQL Server。 本主题提供相关指南来帮助你执行此重新设计和了解重新设计是必需的基本原因。 若要检测不兼容性，请使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
@@ -77,8 +77,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 - 跟踪标志：某些跟踪标志项已移至兼容模式。
 - Transact-SQL 调试
 - 触发器：服务器作用域或登录触发器
-- 
-            `USE` 语句：要将数据库上下文更改为不同的数据库，必须与新数据库建立新连接。
+- `USE` 语句：要将数据库上下文更改为不同的数据库，必须与新数据库建立新连接。
 
 ## <a name="full-transact-sql-reference"></a>完整的 Transact-SQL 引用
 有关 Transact-SQL 语法、用法和示例的详细信息，请参阅 SQL Server 联机丛书中的 [Transact-SQL 参考（数据库引擎）](https://msdn.microsoft.com/library/bb510741.aspx)。 

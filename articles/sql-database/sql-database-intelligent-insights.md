@@ -1,6 +1,6 @@
 ---
-title: "Intelligent Insights 监视数据库使用情况 - Azure SQL 数据库 | Microsoft Docs"
-description: "使用 Intelligent Insights 可以知道数据库发生了什么情况"
+title: "使用 Azure SQL 数据库 Intelligent Insights 监视数据库使用情况 | Microsoft Docs"
+description: "Azure SQL 数据库 Intelligent Insights 使用内置智能，以通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。"
 services: sql-database
 documentationcenter: 
 author: danimir
@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: v-daljep
+ms.openlocfilehash: 8e55fa02d5edda21fbf547397d63f9d1cf987a60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c3b11dd50fa8c94d3bf80e02a8a319030c375133
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
 ***“使用 Intelligent Insights 可以知道数据库发生了什么情况。”***
 
-Azure SQL 数据库内置智能将通过人工智能持续监视数据库使用情况，并检测导致性能不佳的中断事件。 检测后，将执行详细分析，并生成包含对问题的智能评估的诊断日志。 此评估包含对数据库性能问题的根本原因分析，以及为性能改进而提供的可行性建议，即***“智能见解”***。 
+Azure SQL 数据库 Intelligent Insights 使用内置智能，以通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。 检测后，将执行详细分析，并生成包含对问题的智能评估的诊断日志。 此评估包含对数据库性能问题的根本原因分析，以及为性能改进而提供的可行性建议，即***“智能见解”***。 
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Intelligent Insights 能为你做什么？
 
@@ -161,6 +160,5 @@ Intelligent Insights 日志将输出出错请求计数，性能下降是否与�
 * 使用 [Intelligent Insights Azure SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)
 * 了解[使用 Azure SQL Analytics 监视 Azure SQL 数据库](../log-analytics/log-analytics-azure-sql.md)
 * 了解[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-
 
 

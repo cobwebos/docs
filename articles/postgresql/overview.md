@@ -11,10 +11,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 08/01/2017
 ms.openlocfilehash: 0dba4db0ae62a4f7e8440e80e830e5f64f5b49e0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/29/2017
 Azure 行业领先的 99.99% 可用性（在预览版中不可用）服务级别协议 (SLA)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。 对于每个用于 PostgreSQL 服务器的 Azure 数据库，可以利用内置的安全性、容错和数据保护功能。使用其他产品时可能需要另外购买或设计、构建并管理这些功能。 对于用于 PostgreSQL 的 Azure 数据库，每个服务层都提供了一组全面的业务连续性功能和选项，可以使用这些功能和选项快速进入工作状态并保持运行。 可以使用[时间点还原](howto-restore-server-portal.md)将数据库还原到以前的状态，最长可还原到 35 天前。 此外，如果托管数据库的数据中心发生服务中断，可以通过最新备份的异地冗余副本还原数据库。
 
 ## <a name="secure-your-data"></a>保护数据
-Azure 数据库服务具有传统 PostgreSQL 的 Azure 数据库保持具有限制的访问、 保护静态的数据和、 移动和帮助你监视活动的功能的数据安全。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
+Azure 数据库沿袭了 Azure Database for PostgreSQL 的若干数据安全性功能，包括限制访问、保护静止和移动数据以及帮助监视活动等。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
 
 用于 PostgreSQL 的 Azure 数据库服务对静态数据使用存储加密。 会在磁盘上加密包括备份在内的数据（运行查询时引擎所创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
 

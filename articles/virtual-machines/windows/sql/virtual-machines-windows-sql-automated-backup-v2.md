@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 04/05/2017
 ms.author: jroth
 ms.openlocfilehash: e7e14b0243f82c672392d5ab4bb6aca01156465b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automated-backup-v2-for-sql-server-2016-azure-virtual-machines-resource-manager"></a>适用于 SQL Server 2016 Azure 虚拟机 (Resource Manager) 的自动备份 v2
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/11/2017
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2016 Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
 | **存储帐户** | Azure 存储帐户 | 用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和数据库 GUID。 |
-| **加密** |启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 **automaticbackup** 容器中的指定存储帐户内。 如果密码发生更改，则使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
+| **加密** |启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 **automaticbackup** 容器中的指定存储帐户内。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** |密码文本 | 加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |
 
 ### <a name="advanced-settings"></a>高级设置
@@ -86,7 +86,7 @@ ms.lasthandoff: 07/11/2017
 | **日志备份频率** | 5 – 60 分钟（60 分钟） | 日志备份的频率。 |
 
 ## <a name="understanding-full-backup-frequency"></a>了解完整备份频率
-必须了解每日与每周完整备份之间的差别。 为此，我们逐步讲解两个示例方案。
+必须了解每日与每周完整备份之间的差别。 为此，我们将逐步讲解两个示例方案。
 
 ### <a name="scenario-1-weekly-backups"></a>方案 1：每周备份
 某个 SQL Server VM 包含一些很大的数据库。
@@ -118,7 +118,7 @@ ms.lasthandoff: 07/11/2017
 
 这意味着，下一个可用备份时段为星期一晚上 10 点，持续时间为 6 小时。 到时，自动备份将开始逐个备份数据库。
 
-然后，在星期二的晚上 10 点，所有数据库的完整备份会再次开始，持续时间为 6 小时。
+然后，在星期二的晚上 10 点，所有数据库的完整备份将再次开始，持续时间为 6 小时。
 
 > [!IMPORTANT]
 > 计划每日备份时，建议安排一个较宽的时段，确保在此时间范围内可以备份所有数据库。 有大量的数据要备份时，这种设置尤其重要。
@@ -182,7 +182,7 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -Version "1.2" -Location $region 
 ```
 
-### <a id="verifysettings"></a>验证当前设置
+### <a id="verifysettings"></a> 验证当前设置
 如果在预配期间启用了自动备份，可以使用 PowerShell 检查当前配置。 运行 **Get-AzureRmVMSqlServerExtension** 命令并检查 **AutoBackupSettings** 属性：
 
 ```powershell
@@ -230,7 +230,7 @@ If (-Not $storage)
 > [!NOTE]
 > 自动备份不支持在高级存储中存储备份，但可以从使用高级存储的 VM 磁盘创建备份。
 
-然后使用**新建 AzureRmVMSqlServerAutoBackupConfig**命令来启用和配置 Azure 存储帐户中存储备份的自动备份 v2 设置。 在本示例中，备份设置为保留 10 天。 系统数据库备份已启用。 完整备份计划为每周运行，时段从 20:00 开始，持续两小时。 日志备份计划为每隔 30 分钟运行。 第二个命令 **Set-AzureRmVMSqlServerExtension** 使用这些设置更新指定的 Azure VM。
+然后，使用 New-AzureRmVMSqlServerAutoBackupConfig 命令启用并配置自动备份 v2 设置，以便在 Azure 存储帐户中存储备份。 在本示例中，备份设置为保留 10 天。 系统数据库备份已启用。 完整备份计划为每周运行，时段从 20:00 开始，持续两小时。 日志备份计划为每隔 30 分钟运行。 第二个命令 **Set-AzureRmVMSqlServerExtension** 使用这些设置更新指定的 Azure VM。
 
 ```powershell
 $autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `

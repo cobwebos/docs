@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
 ms.openlocfilehash: ccebc722386a19014674d7a59757a3685bd50793
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/03/2017
  
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 
-记下 VM 上的核心数。 我们将其称为“\#num\_cores”
+记下 VM 上的核心数。 暂且将其称为“\#num\_cores”
  
 在发送方 VM 和接收方 VM 上运行 NTTTCP 测试 300 秒（5 分钟）。
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/03/2017
 发送方参数：ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
 
 > [!NOTE]
-> 以上示例应仅用于确认配置。 本文档稍后会介绍测试的有效示例。
+> 以上示例应仅用于确认配置。 本文档中稍后介绍测试的有效示例。
 
 ## <a name="testing-vms-running-windows"></a>测试运行 WINDOWS 的 VM：
 

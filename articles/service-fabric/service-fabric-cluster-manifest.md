@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: dekapur
+ms.openlocfilehash: 660e7b59ae0e92692121620341562e412a6e8eae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 30fadddabf89d379beffdf214cfe8a8145d7a29b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuration-settings-for-standalone-windows-cluster"></a>Windows 独立群集的配置设置
 本文介绍如何使用 ***ClusterConfig.JSON*** 文件来配置独立的 Service Fabric 群集。 可以使用此文件指定 Service Fabric 群集的信息，例如 Service Fabric 节点及其 IP 地址、群集上不同类型的节点、安全配置，以及使用独立群集的容错域/升级域定义的网络拓扑。
 
-[下载独立的 Service Fabric 包](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)时，一些 ClusterConfig.JSON 文件示例将下载到工作计算机。 名称中包含 DevCluster 的示例可帮助创建所有三个节点都在同一台计算机上（例如逻辑节点）的群集。 在这些节点中，必须将一个节点标记为主节点。 此群集可用于开发或测试环境，不支持用作生产群集。 名称中包含 MultiMachine 的示例可帮助创建生产质量群集，其中的每个节点位于不同的计算机上。
+[下载独立的 Service Fabric 包](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)时，一些 ClusterConfig.JSON 文件示例将下载到工作计算机。 名称中包含 DevCluster 的示例可帮助创建所有三个节点都在同一台计算机上（例如逻辑节点）的群集。 在这些节点中，必须将一个节点标记为主节点。 此群集可用于开发或测试环境，不支持用作生产群集。 名称中包含 MultiMachine 的示例可帮助创建生产质量群集，其中的每个节点位于不同的计算机上。 这些群集的主节点数将基于[可靠性级别](#reliability)。 在版本 5.7 API 版本 05-2017 中，我们删除了可靠性级别属性。 取而代之的是，我们的代码将计算群集的最优可靠性级别。 请不要在 5.7 及更高代码版本中使用此属性。
+
 
 1. *ClusterConfig.Unsecure.DevCluster.JSON* 和 *ClusterConfig.Unsecure.MultiMachine.JSON* 分别说明如何创建不安全的测试群集和生产群集。 
 2. *ClusterConfig.Windows.DevCluster.JSON* 和 *ClusterConfig.Windows.MultiMachine.JSON* 说明如何创建使用 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)保护的测试群集和生产群集。
@@ -197,5 +197,4 @@ reliabilityLevel 的概念定义可在群集的主节点上运行的 Service Fab
 
 ## <a name="next-steps"></a>后续步骤
 根据独立群集设置配置一个完整的 ClusterConfig.JSON 文件后，可以遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)一文中所述步骤部署群集，并继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
-
 

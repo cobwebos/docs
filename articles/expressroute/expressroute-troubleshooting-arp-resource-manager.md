@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.openlocfilehash: a65b1ba2998eae33b3e73bd2492fbbf025eb5946
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
@@ -137,7 +137,7 @@ ARP 表示例：
 ### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>当线路处于运行状态（预期状态）时的 ARP 表
 * ARP 表会有一个针对本地端且带有有效 IP 地址和 MAC 地址的条目，以及一个类似的针对 Microsoft 端的条目。 
 * 本地 IP 地址的最后一个八位字节将始终是奇数。
-* Microsoft IP 地址的最后一个八位字节始终会是偶数。
+* Microsoft IP 地址的最后一个八位字节将始终是偶数。
 * 所有 3 种对等互连（主/辅助）在 Microsoft 端都会显示相同的 MAC 地址。 
 
         Age InterfaceProperty IpAddress  MacAddress    

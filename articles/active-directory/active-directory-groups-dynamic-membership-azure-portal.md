@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
+ms.openlocfilehash: 3ff347ab23c9150246940f563e562c8de92be45d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 44748f3152718f3cec348d7e2bdccdbe0f79091e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
@@ -40,17 +39,19 @@ ms.lasthandoff: 09/28/2017
 ## <a name="to-create-an-advanced-rule"></a>创建高级规则
 1. 使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 2. 选择“用户和组”。
-3. 选择“所有组”。
+3. 选择“所有组”，然后选择“新组”。
 
-   ![打开“组”边栏选项卡](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
-4. 在“所有组”中，选择“新组”。
+   ![添加新组](./media/active-directory-groups-dynamic-membership-azure-portal/new-group-creation.png)
 
-   ![添加新组](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
-5. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，并选择“添加动态查询”。 有关用于设备规则的属性，请参阅[使用属性创建设备对象的规则](#using-attributes-to-create-rules-for-device-objects)。
+4. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，并选择“添加动态查询”。 可以使用规则生成器生成一个简单的规则，或自己编写一个高级规则。 本文包含有关可用的用户和设备属性，以及高级规则示例的详细信息。
 
    ![添加动态成员身份规则](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
-6. 在“动态成员身份规则”边栏选项卡上的“添加动态成员身份高级规则”框中输入规则，并在边栏选项卡底部选择“创建”。
-7. 在“组”边栏选项卡中，选择“创建”以创建该组。
+
+5. 创建规则之后，选择边栏选项卡底部的“添加查询”。
+6. 在“组”边栏选项卡中，选择“创建”以创建该组。
+
+> [!TIP]
+> 如果你输入的高级规则不正确，组创建则可能会失败。 通知将显示在门户的右上角；它包含系统无法接受规则的原因说明。 请仔细阅读，了解如何调整规则以使其生效。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>构造高级规则的正文
 可以为动态组成员身份创建的高级规则，本质上是一种由三部分组成并生成 true 或 false 结果的二进制表达式。 这三部分如下：
@@ -276,7 +277,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | 任意字符串值 |(device.displayName -eq "Rob Iphone”)
- deviceOSType | 任意字符串值 | (device.deviceOSType -eq "IOS")
+ deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -或 (device.deviceOSType -eq "iPhone")
  deviceOSVersion | 任意字符串值 | (device.OSVersion -eq "9.1")
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
@@ -298,16 +299,14 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 我们正在更新 Azure 门户以支持此功能。 在此期间，可按如下所示使用 [Azure 经典门户](https://manage.windowsazure.com)（遵照[此处](active-directory-accessmanagement-groups-with-advanced-rules.md#changing-dynamic-membership-to-static-and-vice-versa)的说明）或使用 PowerShell cmdlet。
 
 > [!WARNING]
-> 将现有的静态组更改为动态组时，将从组中删除所有现有的成员，然后会处理成员身份规则以添加新成员。 如果使用组来控制对应用或资源的访问，则完全处理成员身份规则前原始成员可能无法进行访问。
+> 将现有的静态组更改为动态组时，将从组中删除所有现有的成员，然后会处理成员身份规则以添加新成员。 如果使用组来控制对应用或资源的访问，则在完全处理成员身份规则前，原始成员可能无法进行访问。
 >
 > 建议事先测试新的成员身份规则，确保组中的新成员身份符合预期。
 
 **使用 PowerShell 更改组中的成员身份管理**
 
 > [!NOTE]
-> 若要更改动态组属性，需要通过 [Azure AD PowerShell 版本 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 使用 cmdlet。
->
-> 目前，只有最新的预览版库包含所需的 cmdlet。 可从[此处](https://www.powershellgallery.com/packages/AzureADPreview)进行安装。
+> 若要更改动态组属性，需要通过 [Azure AD PowerShell 版本 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 使用 cmdlet。 可从[此处](https://www.powershellgallery.com/packages/AzureADPreview)进行安装。
 
 下面是在现有组中切换成员身份管理的函数示例。 请注意，必须小心正确地操作 GroupTypes 属性，并保留其中可能包含的与动态成员身份无关的任何值。
 
@@ -369,4 +368,3 @@ ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.display
 * [管理组的设置](active-directory-groups-settings-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-

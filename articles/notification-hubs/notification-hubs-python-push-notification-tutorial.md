@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 9ceedb9940759427fc8cec74a1307e42472563a6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-本主题中，我们向你介绍如何：
+本主题中，我们将向你介绍如何：
 
 * 以 Python 构建 REST 客户端以获取通知中心功能。
 * 使用 Python 接口发送通知到通知中心 REST API。 
@@ -63,14 +63,14 @@ ms.lasthandoff: 07/11/2017
 ## <a name="implementation"></a>实现
 如果尚未实现，请按照我们的[入门教程]学至最后一节，其中你必须实现后端。
 
-有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](http://msdn.microsoft.com/library/dn530746.aspx)。 在本部分中，我们向你介绍访问通知中心 REST 终结点所需的主要步骤的 Python 实现：
+有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](http://msdn.microsoft.com/library/dn530746.aspx)。 在本部分中，我们将向你介绍访问通知中心 REST 终结点所需的主要步骤的 Python 实现：
 
 1. 解析连接字符串
 2. 生成授权令牌
 3. 使用 HTTP REST API 发送通知
 
 ### <a name="parse-the-connection-string"></a>解析连接字符串
-下面是实现客户端的主类，其构造函数解析连接字符串：
+下面是实现客户端的主类，其构造函数将解析连接字符串：
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
@@ -260,7 +260,7 @@ ms.lasthandoff: 07/11/2017
 以上方法将 HTTP POST 请求发送到通知中心的 /messages 终结点，该请求具有发送通知的正确正文和标头。
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>使用调试属性启用详细的日志记录
-在初始化通知中心时启用调试属性会写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。 我们最近添加了这个称为[通知中心 TestSend 属性](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，它会返回有关通知发送结果的详细信息。 若要使用它 - 请使用以下方法进行初始化：
+在初始化通知中心时启用调试属性将写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。 我们最近添加了这个称为[通知中心 TestSend 属性](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，它将返回有关通知发送结果的详细信息。 若要使用它 - 请使用以下方法进行初始化：
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
@@ -322,9 +322,9 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="examples"></a>示例:
 ### <a name="enabling-debug-property"></a>启用调试属性
-如果在初始化 NotificationHub 时启用调试标志，你会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应： ![][1]
+如果在初始化 NotificationHub 时启用调试标志，会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：![][1]
 
-你会看到如详细的通知中心结果，例如 
+会看到如详细的通知中心结果，例如 
 
 * 当消息成功发送到推送通知服务时。 
   
@@ -334,14 +334,14 @@ ms.lasthandoff: 07/11/2017
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
 ### <a name="broadcast-toast-notification-to-windows"></a>将 toast 通知广播到 Windows
-请注意你在向 Windows 客户端发送广播 toast 通知时发送出去的标头。 
+向 Windows 客户端发送 toast 广播通知时请注意发送出去的标头。 
 
     hub.send_windows_notification(wns_payload)
 
 ![][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>发送通知指定标记（或标记表达式）
-请注意添加到 HTTP 请求的 Tags HTTP 标头（在以下示例中，我们只将通知发送给了具有“sports”有效负载的注册）
+请注意添加到 HTTP 请求的 Tags HTTP 标头（在以下示例中，我们只将通知发送给了具有 'sports'负载的注册）
 
     hub.send_windows_notification(wns_payload, "sports")
 

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 ms.openlocfilehash: 67cff664f3723b2194ecd1519729cca17069d07f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>在 Azure 安全中心中应用磁盘加密
 Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows 或 Linux VM 磁盘，则应用磁盘加密。 通过磁盘加密，可以对 Windows 和 Linux IaaS VM 磁盘进行加密。  对于 VM 上的 OS 和数据卷，建议使用加密。
 
-磁盘加密使用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能。 这些功能提供 OS 和数据加密来帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 与集成磁盘加密[Azure 密钥保管库](https://azure.microsoft.com/documentation/services/key-vault/)帮助你控制和管理磁盘加密密钥和密钥保管库订阅中的机密，同时确保的 VM 磁盘中的所有数据进行都加密存放在你[Azure 存储空间](https://azure.microsoft.com/documentation/services/storage/)。
+磁盘加密使用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能。 这些功能提供 OS 和数据加密来帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保 VM 磁盘中的所有数据可在 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/)中静态加密。
 
 > [!NOTE]
 > 以下 Windows 服务器操作系统支持 Azure 磁盘加密 - Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。 以下 Linux 服务器操作系统支持磁盘加密 - Ubuntu、CentOS、SUSE 和 SUSE Linux Enterprise Server (SLES)。

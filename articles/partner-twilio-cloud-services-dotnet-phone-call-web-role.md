@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 0899a49cbfda775017dab7fc6d8963bbeb86d74c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>如何在 Azure 的 Web 角色中使用 Twilio 发起电话呼叫
 本指南演示如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序提示用户使用给定的号码和消息进行呼叫，如下面的屏幕截图中所示。
@@ -33,8 +33,8 @@ ms.lasthandoff: 07/11/2017
 
 应熟悉如何[在 Azure 中创建基本 Web 角色][azure_webroles_get_started]。
 
-## <a name="howtocreateform"></a>如何： 创建用于发起呼叫的 web 窗体
-<a id="use_nuget"></a>若要向你的 web 角色项目添加 Twilio 库：
+## <a name="howtocreateform"></a>如何：创建用于发起呼叫的 Web 窗体
+<a id="use_nuget"></a>向你的 Web 角色项目中添加 Twilio 库：
 
 1. 在 Visual Studio 中打开解决方案。
 2. 右键单击“引用”。
@@ -69,7 +69,7 @@ ms.lasthandoff: 07/11/2017
 </asp:Content>
 ```
 
-## <a id="howtocreatecode"></a>如何： 创建用于发起呼叫的代码
+## <a id="howtocreatecode"></a>如何：创建用于发起呼叫的代码
 在用户完成窗体后将调用以下代码，以创建呼叫消息并生成呼叫。 在此示例中，该代码在窗体上按钮的 Onclick 事件处理程序中运行。 （使用 Twilio 帐户和身份验证令牌，而不是分配给以下代码中的 `accountSID` 和 `authToken` 的占位符值。）
 
 ```csharp

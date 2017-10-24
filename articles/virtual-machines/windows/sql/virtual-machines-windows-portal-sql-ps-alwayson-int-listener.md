@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
 ms.openlocfilehash: 74fa1e4c9cfa608a9a385f3dd82a0599fbcc421c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 本主题说明如何：
@@ -48,7 +48,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-以下 PowerShell 脚本创建内部负载均衡器、配置负载均衡规则，以及设置负载均衡器的 IP 地址。 如果要运行该脚本，请打开 Windows PowerShell ISE，并将脚本粘贴到“脚本”窗格中。 使用 `Login-AzureRMAccount` 登录到 PowerShell。 如果有多个 Azure 订阅，请使用 `Select-AzureRmSubscription ` 设置订阅。 
+以下 PowerShell 脚本创建内部负载均衡器、配置负载均衡规则，以及设置负载均衡器的 IP 地址。 要运行该脚本，请打开 Windows PowerShell ISE，然后将脚本粘贴到“脚本”窗格中。 使用 `Login-AzureRMAccount` 登录到 PowerShell。 如果有多个 Azure 订阅，请使用 `Select-AzureRmSubscription ` 设置订阅。 
 
 ```powershell
 # Login-AzureRmAccount

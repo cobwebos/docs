@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
 ms.openlocfilehash: 8a67d9a9d345682e9e6c8f5c7779204a038f5f6a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-features-for-service-providers"></a>适用于服务提供商的 Log Analytics 功能
 Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。 
@@ -71,7 +71,7 @@ Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软
 
 将 Resource Manager 模板用于工作区配置允许拥有可用于创建和配置工作区的主配置。 可以确信，为客户创建的工作区是根据要求自动配置的。 更新要求时，将更新模板，然后重新应用现有工作区。 此过程可确保现有工作区也能满足新标准。    
 
-在管理多个 Log Analytics 工作区时，我们建议使用[警报](log-analytics-alerts.md)功能将每个工作区与现有票证系统/操作控制台相集成。 通过与现有系统集成，支持人员可以继续遵循其熟悉的过程。 日志分析定期检查针对您指定的警报条件的每个工作区，无需任何操作时生成警报。
+在管理多个 Log Analytics 工作区时，我们建议使用[警报](log-analytics-alerts.md)功能将每个工作区与现有票证系统/操作控制台相集成。 通过与现有系统集成，支持人员可以继续遵循其熟悉的过程。 Log Analytics 根据你指定的警报标准定期检查每个工作区，并在需要执行操作时生成警报。
 
 若要获得个性化的数据视图，请使用 Azure 门户中的[仪表板](../azure-portal/azure-portal-dashboards.md)功能。  
 

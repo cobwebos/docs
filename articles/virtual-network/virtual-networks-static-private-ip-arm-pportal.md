@@ -17,10 +17,10 @@ ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 672462fad715758e50680fa5bade4b1f9d50e6e5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户为虚拟机配置专用 IP 地址
 
@@ -55,15 +55,15 @@ ms.lasthandoff: 07/11/2017
 3. 在“**基本信息**”边栏选项卡中，输入要创建的 VM 名称（在我们的方案中为 *DNS01*）、本地管理员帐户和密码，如下图所示。
    
     ![“基本信息”边栏选项卡](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
-4. 请确保**位置**所选*美国中南部*，然后单击**选择现有**下**资源组**，然后单击**资源组**试，然后单击*TestRG*，然后单击**确定**。
+4. 请确保所选“位置”为“美国中部”，然后在“资源组”下单击“选择现有项”，接着依次单击“资源组”、“TestRG””和“确定”。
    
     ![“基本信息”边栏选项卡](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
 5. 在“**选择大小**”边栏选项卡中，选择“**A1 标准**”，并单击“**选择**”。
    
     ![选择“大小”边栏选项卡](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
-6. 在“**设置**”边栏选项卡中，确保将下列属性设置为以下值，并单击“**确定**”。
+6. 在“**设置**”边栏选项卡中，确保将下列属性设置为以下值，然后单击“**确定**”。
    
-    -**存储帐户**：*vnetstorage*
+    -“存储帐户”：*vnetstorage*
    
    * **网络**：*TestVNet*
    * **子网**：*FrontEnd*

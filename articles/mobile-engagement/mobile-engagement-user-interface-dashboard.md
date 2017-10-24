@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>如何查看并管理应用程序的数据图表
 用户界面的“仪表板”部分通过向客户准确提供其所需信息（替代在分析部分中搜索信息），从而允许客户创建自定义图表以最大化利用自己的时间。 仪表板显示了应用程序的趋势和在给定时间内（小时/天/周/月/自定义）应用程序不同版本的活动用户的计数。 显示的趋势是基于过去 7 天的活动。
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 * 可通过从用户界面的“分析”部分中的任何图表的齿轮菜单中，选择“发送到仪表板”操作向空仪表板添加想要在仪表板上看到的图表。
 
 ## <a name="-add-a-dashboard"></a>+（添加仪表板）
-* "+"功能区菜单项可用于创建新的仪表板将显示在功能区菜单。
+* 可使用“+”功能区菜单项创建新仪表板（会显示在功能区菜单上）。
 
 ## <a name="gear-menu"></a>齿轮菜单
 * 可使用仪表板的齿轮菜单，对仪表板进行删除、重命名、共享或计划（电子邮件接收）。 可使用“计划”选项定义想要使用哪个计划通过电子邮件接收自定义仪表板。 可将计划设置为每日、每周或每月接收自定义仪表板。 可选择想要每日接收电子邮件的具体时间和每周或每月想要接收电子邮件的具体日期。 电子邮件地址和时区基于在用户界面的“我的帐户”部分中配置的设置。

@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/19/2017
+ms.date: 09/28/2017
 ms.author: alkohli
+ms.openlocfilehash: 13ff24c24a881297775fa5f65821e53ceb83c351
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 01e1e7447d6951d1b2c89f3b0ef726af9c03fd66
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 设备管理器服务修改 StorSimple 设备配置
 
@@ -59,7 +58,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 ## <a name="modify-time-settings"></a>修改时间设置
 
-你的设备必须对时间进行同步，才能使用云存储服务提供程序进行身份验证。 使用设备上的“常规设置”边栏选项卡修改设备时间设置。
+设备必须对时间进行同步，才能使用云存储服务提供程序进行身份验证。 使用设备上的“常规设置”边栏选项卡修改设备时间设置。
 
 ![“常规设置”中的设备说明](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
@@ -73,13 +72,13 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 若要查看公共 NTP 服务器的列表，请转到 [NTP 服务器 Web](http://support.ntp.org/bin/view/Servers/WebHome)。
 
-### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>如果将设备部署在其他时区中，将会发生什么？
+### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>如果将设备部署在其他时区中，会发生什么？
 
-如果将设备部署在其他时区中，则设备时区将更改。 假定所有备份策略都使用设备时区，则备份策略将根据新时区自动调整。 无需用户干预。
+如果将设备部署在其他时区中，则设备时区将更改。 假定所有备份策略都使用设备时区，则备份策略会根据新时区自动调整。 无需用户干预。
 
 ## <a name="modify-dns-settings"></a>修改 DNS 设置
 
-当设备尝试与云存储服务提供程序进行通信时将使用 DNS 服务器。 使用设备上的“网络设置”边栏选项卡查看和修改已配置的 DNS 设置。 
+当设备尝试与云存储服务提供程序进行通信时会使用 DNS 服务器。 使用设备上的“网络设置”边栏选项卡查看和修改已配置的 DNS 设置。 
 
 ![“网络设置”中的 DNS 设置](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
@@ -105,15 +104,15 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 ## <a name="modify-network-interfaces"></a>修改网络接口
 
-你的设备具有六个设备网络接口，其中四个为 1 GbE 网络接口，另外两个为 10 GbE 网络接口。 这些接口标记为 DATA 0 – DATA 5。 DATA 0、DATA 1、DATA 4 和 DATA 5 是 1 GbE 网络接口，而 DATA 2 和 DATA 3 是 10 GbE 网络接口。
+设备具有六个设备网络接口，其中四个为 1 GbE 网络接口，另外两个为 10 GbE 网络接口。 这些接口标记为 DATA 0 – DATA 5。 DATA 0、DATA 1、DATA 4 和 DATA 5 是 1 GbE 网络接口，而 DATA 2 和 DATA 3 是 10 GbE 网络接口。
 
 使用“网络设置”边栏选项卡配置每个要使用的接口。
 
 ![通过“网络设置”配置网络接口](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
-为确保高可用性，建议你的设备上至少存在两个 iSCSI 接口和两个已启用云的接口。 建议你禁用未使用的接口，但这不是必需的。
+为确保高可用性，建议设备上至少存在两个 iSCSI 接口和两个已启用云的接口。 建议禁用未使用的接口，但这不是必需的。
 
-对于每个网络接口，将显示以下参数：
+对于每个网络接口，会显示以下参数：
 
 * **速度** – 不是用户可配置参数。 DATA 0、DATA 1、DATA 4 和 DATA 5 始终是 1 GbE 接口，而 DATA 2 和 DATA 3 是 10 GbE 接口。
   
@@ -126,26 +125,26 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
   * **已启用云** – 当启用后，设备将使用此接口来与云进行通信。
   * **已启用 iSCSI** – 当启用后，设备将使用此接口来与 iSCSI 主机进行通信。
     
-    建议你将 iSCSI 流量与云存储流量相隔离。 另请注意，如果主机与设备在同一子网内，则不需要分配网关；但是，如果主机与设备在不同的子网中，则需要分配网关。
-* **IP 地址** - 配置任何网络接口时，必须配置虚拟 IP (VIP)。 这可以是 IPv4 和/或 IPv6 地址。 设备网络接口同时支持 IPv4 和 IPv6 地址系列。 当使用 IPv4 时，请采用点分十进制表示法指定 32 位 IP 地址 (*xxx.xxx.xxx.xxx*)。 当使用 IPv6 时，只需要提供一个 4 位的前缀，将会基于该前缀自动为设备网络接口生成一个 128 位的地址。
+    建议将 iSCSI 流量与云存储流量相隔离。 另请注意，如果主机与设备在同一子网内，则不需要分配网关；但是，如果主机与设备在不同的子网中，则需要分配网关。
+* **IP 地址** - 配置任何网络接口时，必须配置虚拟 IP (VIP)。 这可以是 IPv4 和/或 IPv6 地址。 设备网络接口同时支持 IPv4 和 IPv6 地址系列。 当使用 IPv4 时，请采用点分十进制表示法指定 32 位 IP 地址 (*xxx.xxx.xxx.xxx*)。 当使用 IPv6 时，只需要提供一个 4 位的前缀，会基于该前缀自动为设备网络接口生成一个 128 位的地址。
 * **子网** – 这指的是子网掩码，并且是通过 Windows PowerShell 接口配置的。
 * **网关** – 这是当此接口尝试与不在同一 IP 地址空间（子网）内的节点进行通信时应该使用的默认网关。 默认网关必须与接口 IP 地址在同一地址空间（子网）内，如子网掩码所确定。
 * **固定 IP 地址** – 只有配置 DATA 0 接口时，此字段才可用。 要执行更新或设备故障排除之类的操作，可能需要直接连接到设备控制器。 固定 IP 地址可以用来访问设备上的主动和被动控制器。
 
 > [!NOTE]
 > * 为确保正确操作，请在每个设备接口连接到的交换机上验证接口速度和双工模式。 应当与千兆位以太网 (1000 Mbps) 协商或者为其配置交换机接口，并且这些接口应当是全双工的。 接口以较低的速度或者以半双工模式运行将导致性能问题。
-> * 为了尽量减少中断和停机时间，建议你在设备的 iSCSI 网络接口将连接到的每个交换机端口上启用 portfast。 这将确保在发生故障转移时可以快速建立网络连接。
+> * 为了尽量减少中断和停机时间，建议在设备的 iSCSI 网络接口将连接到的每个交换机端口上启用 portfast。 这会确保在发生故障转移时可以快速建立网络连接。
 
 ### <a name="configure-data-0"></a>配置 DATA 0
 
-默认情况下，DATA 0 已启用云。 配置 DATA 0 时，还必须配置两个固定 IP 地址，每台控制器一个。 这些固定 IP 地址可以用来直接访问设备控制器，并且当在设备上安装更新或者当访问控制器进行故障排除时非常有用。
+默认情况下，DATA 0 已启用云。 配置 DATA 0 时，还必须配置两个固定 IP 地址，每台控制器一个。 这些固定 IP 地址可用于直接访问设备控制器，并且在设备上安装更新时、为正常运行进行垃圾回收，或访问控制器以进行故障排除时，都十分有用。
 
 可以通过 DATA 0 设置边栏选项卡重新配置固定 IP 控制器。
 
 ![配置网络接口 - DATA 0](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
 
 > [!NOTE]
-> 控制器的固定 IP 地址用于为设备提供更新。 因此，这些固定 IP 必须可路由并能够连接到 Internet。
+> 控制器的固定 IP 地址可用于维护设备的更新和空间回收算法（垃圾回收），以实现正常运行。 因此，这些固定 IP 必须可路由并能够连接到 Internet。
 
 ### <a name="configure-data-1---data-5"></a>配置 DATA 1 - DATA 5
 
@@ -169,5 +168,4 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 * 了解如何[为 StorSimple 设备配置 MPIO](storsimple-8000-configure-mpio-windows-server.md)。
 * 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2017
 ms.author: kumud
 ms.openlocfilehash: 50d7f14d0d4234ee98d8a46e903b5f916cb02fab
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-traffic-manager"></a>流量管理器概述
 
@@ -96,7 +96,7 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 是 htt
 5. 选择的终结点以另一个 DNS CNAME 记录的形式返回。 在本例中，假设返回的是 contoso-us.cloudapp.net。
 6. 接下来，递归 DNS 服务将查找“cloudapp.net”域的名称服务器。 它会联系这些名称服务器以请求“contoso-us.cloudapp.net”DNS 记录。 返回的 DNS“A”记录包含位于美国的服务终结点的 IP 地址。
 7. 递归 DNS 服务将结果合并，向客户端返回单个 DNS 响应。
-8. 客户端接收 DNS 结果，并连接到给定的 IP 地址。 客户端直接连接到应用程序服务终结点，而不是通过流量管理器连接。 由于这是一个 HTTPS 终结点，客户端将执行必要的 SSL/TLS 握手，并针对“/login.aspx”页面发出 HTTP GET 请求。
+8. 客户端接收 DNS 结果，并连接到给定的 IP 地址。 客户端直接连接到应用程序服务终结点，而不是通过流量管理器连接。 由于这是一个 HTTPS 终结点，客户端将执行必要的 SSL/TLS 握手，然后针对“/login.aspx”页面发出 HTTP GET 请求。
 
 递归 DNS 服务缓存它所收到的 DNS 响应。 客户端设备上的 DNS 解析程序也会缓存结果。 通过缓存可以加快后续 DNS 查询的响应速度，因为使用的是缓存中的数据，不需要查询其他名称服务器。 缓存的持续时间取决于每个 DNS 记录的“生存时间”(TTL) 属性。 该属性值越小，缓存过期时间就越短，因此访问流量管理器名称服务器所需的往返次数就越多。 如果指定较大的值，则意味着从故障终结点定向流量需要更长的时间。 使用流量管理器，可以将流量管理器 DNS 响应中使用的 TTL 配置为最短 0 秒，最长 2,147,483,647 秒（符合[ RFC-1035 ](https://www.ietf.org/rfc/rfc1035.txt)的最大范围），从而可选择使应用程序的需求实现最佳平衡的值。
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.openlocfilehash: c3476908447380ccd7e8b9c0f1c2a55ae763cc1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>在典型部署模型中使用 PowerShell 管理终结点访问控制列表
 可以使用 Azure PowerShell 或在管理门户中为终结点创建和管理网络访问控制列表 (ACL)。 在本主题中，将了解可使用 PowerShell 完成的 ACL 常见任务的过程。 有关 Azure PowerShell cmdlet 的列表，请参阅 [Azure 管理 Cmdlet](http://go.microsoft.com/fwlink/?LinkId=317721)。 有关 ACL 的详细信息，请参阅[什么是网络访问控制列表 (ACL)？](virtual-networks-acl.md)。 如果要使用管理门户管理 ACL，请参阅[如何设置虚拟机的终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
@@ -32,12 +32,12 @@ ms.lasthandoff: 07/11/2017
     Get-Command -Noun AzureACLConfig
 
 ### <a name="create-a-network-acl-with-rules-that-permit-access-from-a-remote-subnet"></a>创建包含允许从远程子网进行访问的规则的网络 ACL
-以下示例演示了创建包含规则的新 ACL 的方法。 此 ACL 随后会应用于虚拟机终结点。 以下示例中的 ACL 规则允许从远程子网进行访问。 若要为远程子网创建一个包含允许规则的新网络 ACL，请打开 Azure PowerShell ISE。 复制并粘贴下面的脚本，使用自己的值配置该脚本，然后运行该脚本。
+以下示例演示了创建包含规则的新 ACL 的方法。 此 ACL 随后会应用于虚拟机终结点。 以下示例中的 ACL 规则将允许从远程子网进行访问。 若要为远程子网创建一个包含允许规则的新网络 ACL，请打开 Azure PowerShell ISE。 复制并粘贴下面的脚本，使用自己的值配置该脚本，然后运行该脚本。
 
 1. 创建新的网络 ACL 对象。
    
         $acl1 = New-AzureAclConfig
-2. 设置允许从远程子网进行访问的规则。 在以下示例中，将设置规则 *100*（比规则 200 及以上更高的优先级）以允许远程子网 *10.0.0.0/8* 访问虚拟机终结点。 将值替换成自己的配置要求。 名称“SharePoint ACL config”应替换为要用来调用此规则的友好名称。
+2. 设置允许从远程子网进行访问的规则。 在以下示例中，将设置规则 *100*（规则 200 和更高的优先级）以允许远程子网 *10.0.0.0/8* 访问虚拟机终结点。 将值替换成自己的配置要求。 名称“SharePoint ACL config”应替换为要用来调用此规则的友好名称。
    
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
             –Action permit –RemoteSubnet "157.0.0.0/8" `
             –Description "web frontend ACL config"
-4. 接下来，可以创建新终结点（添加）或为现有终结点设置 ACL（设置）。 在本例中，我们添加名为“web”的新的虚拟机终结点并更新具有 ACL 设置的虚拟机终结点。
+4. 接下来，可以创建新终结点（添加）或为现有终结点设置 ACL（设置）。 在本例中，我们将添加称为“Web”的新虚拟机终结点并更新具有 ACL 设置的虚拟机终结点。
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="remove-a-network-acl-rule-that-permits-access-from-a-remote-subnet"></a>删除允许从远程子网进行访问的网络 ACL 规则
 以下示例演示删除网络 ACL 规则的方法。  若要为远程子网删除包含允许规则的网络 ACL 规则，请打开 Azure PowerShell ISE。 复制并粘贴下面的脚本，使用自己的值配置该脚本，然后运行该脚本。
 
-1. 第一步是获取虚拟机终结点的网络 ACL 对象。 然后，删除 ACL 规则。 在此示例中，我们将按规则 ID 删除它。 这只会从 ACL 中删除规则 ID 0， 而不会从虚拟机终结点中删除 ACL 对象。
+1. 第一步是获取虚拟机终结点的网络 ACL 对象。 然后，将删除 ACL 规则。 在这种情况下，我们将按规则 ID 删除它。 这只会从 ACL 中删除规则 ID 0， 而不会从虚拟机终结点中删除 ACL 对象。
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Get-AzureAclConfig –EndpointName "web" `

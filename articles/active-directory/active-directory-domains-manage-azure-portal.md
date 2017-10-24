@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: curtand;jeffsta
+ms.date: 10/10/2017
+ms.author: curtand
+ms.reviewer: elkuzmen
+ms.openlocfilehash: 1e58af1f8d26b03c07b27d69f13868bccaaa33aa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 2f5a41907e9fa304444b369311e182d3f00ef619
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 域名是许多目录资源标识符的重要部分：它可能是用户的用户名或电子邮件地址的一部分、组地址的一部分，也可能是应用程序的应用 ID URI 的一部分。 Azure Active Directory (Azure AD) 中的资源可包含已验证为目录（包含该资源）所拥有的域名。 只有全局管理员才能在 Azure AD 中执行域管理任务。
@@ -28,12 +28,12 @@ ms.lasthandoff: 09/26/2017
 创建目录后，初始域名（例如“contoso.onmicrosoft.com”）也是主域名。 创建新用户时，主域名是新用户的默认域名。 设置主域名简化了管理员在门户中创建新用户的过程。 若要更改主域名，请执行以下操作：
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
+2. 选择“Azure Active Directory”。
    
    ![打开“用户管理”](./media/active-directory-domains-add-azure-portal/user-management.png)
-3. 在“directory-name”边栏选项卡中，选择“域名”。
-4. 在“directory-name - 域名”边栏选项卡中，选择将成为主域名的域名。
-5. 在“domainname”边栏选项卡（即，打开的且其名称中有新域名的边栏选项卡）中，选择“Make primary”命令。 出现提示时确认所做的选择。
+3. 选择“域名”。
+4. 选择你希望设为主域的域名。
+5. 选择“设置主域”命令。 出现提示时确认所做的选择。
    
    ![将域名设为主域名](./media/active-directory-domains-manage-azure-portal/make-primary.png)
 
@@ -67,5 +67,4 @@ ms.lasthandoff: 09/26/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [添加自定义域名](add-custom-domain.md)
-
 

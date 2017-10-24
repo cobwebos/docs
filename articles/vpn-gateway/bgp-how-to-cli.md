@@ -1,6 +1,6 @@
 ---
-title: "在 Azure VPN 网关上配置 BGP：资源管理器：CLI | Microsoft Docs"
-description: "本文指导完成使用 Azure 资源管理器和 CLI 通过 Azure VPN 网关配置 BGP。"
+title: "在 Azure VPN 网关上配置 BGP：资源管理器 和 CLI | Microsoft 文档"
+description: "本文将介绍如何使用 Azure 资源管理器和 CLI 通过 Azure VPN 网关配置 BGP。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,20 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cherylmc
+ms.openlocfilehash: 98cd606ce930624ec5c591ffd8f13e0feae1a6c4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 16fd25b0271b8fefe71d069215c9ebe0bc73a80d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-cli"></a>如何使用 CLI 在 Azure VPN 网关上配置 BGP
+# <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>如何使用 CLI 在 Azure VPN 网关上配置 BGP
 
-本文帮助用户使用资源管理器部署模型和 CLI 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接上启用 BGP。
+本文将帮助用户使用 Azure 资源管理器部署模型和 Azure CLI 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接（即虚拟网络之间的连接）上启用 BGP。
 
 ## <a name="about-bgp"></a>关于 BGP
 
-BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交换路由和可访问性信息的标准路由协议。 BGP 使 VPN 网关和本地 VPN 设备（称为 BGP 对等节点或邻域）能够交换“路由”。 路由会向这两个网关提供有关前缀可用性和可访问性的信息，以便通过所涉及的网关或路由器。 BGP 还可以通过将 BGP 网关从一个 BGP 对等节点获知的路由传播到所有其他 BGP 对等节点来允许在多个网络之间传输路由。
+BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交换路由和可访问性信息的标准路由协议。 BGP 使 VPN 网关和本地 VPN 设备（称为 BGP 对等节点或邻域）能够交换路由。 路由会向这两个网关提供有关前缀可用性和可访问性的信息，以便通过所涉及的网关或路由器。 此外，BGP 还可以通过将 BGP 网关从一个 BGP 对等节点获知的路由传播到所有其他 BGP 对等节点，以实现在多个网络之间传输路由。
 
 有关 BGP 优点的详细信息，以及使用 BGP 的技术要求和注意事项，请参阅 [Azure VPN 网关的 BGP 概述](vpn-gateway-bgp-overview.md)。
 
@@ -36,7 +35,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 * [为 VPN 网关启用 BGP](#enablebgp)（必需）
 
-  然后可配置以下任一部分或者同时配置两者：
+  然后可完成以下任一部分或者同时完成两者：
 
 * [使用 BGP 建立跨界连接](#crossprembgp)
 * [使用 BGP 建立 VNet 到 VNet 连接](#v2vbgp)
@@ -57,7 +56,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 和 [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。
 
-### <a name="step-1---create-and-configure-testvnet1"></a>步骤 1 - 创建并配置 TestVNet1
+### <a name="step-1-create-and-configure-testvnet1"></a>步骤 1：创建并配置 TestVNet1
 
 #### <a name="Login"></a>1.连接到订阅
 
@@ -65,7 +64,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 #### <a name="2-create-a-resource-group"></a>2.创建资源组
 
-以下示例在“eastus”位置创建名为“TestRG1”的资源组。 如果在需创建 VNet 的区域中已经有了一个资源组，则可改用该资源组。
+以下示例在“eastus”位置创建名为 TestRG1 的资源组。 如果在想要创建虚拟网络的区域中已经有了一个资源组，则可改用该资源组。
 
 ```azurecli
 az group create --name TestBGPRG1 --location eastus
@@ -73,7 +72,7 @@ az group create --name TestBGPRG1 --location eastus
 
 #### <a name="3-create-testvnet1"></a>3.创建 TestVNet1
 
-以下示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。
+以下示例创建一个名为 TestVNet1 的虚拟网络和三个子网：GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。
 
 第一个命令创建前端地址空间和 FrontEnd 子网。 第二个命令为后端子网创建额外的地址空间。 第三个和第四个命令创建 BackEnd 子网和 GatewaySubnet。
 
@@ -87,11 +86,11 @@ az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --a
 az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>步骤 2 - 使用 BGP 参数为 TestVNet1 创建 VPN 网关
+### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>步骤 2：使用 BGP 参数为 TestVNet1 创建 VPN 网关
 
 #### <a name="1-create-the-public-ip-address"></a>1.创建公共 IP 地址
 
-请求公共 IP 地址。 将向为 VNet 创建的 VPN 网关分配公共 IP 地址。
+请求公共 IP 地址。 将向为虚拟网络创建的 VPN 网关分配公共 IP 地址。
 
 ```azurecli
 az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
@@ -99,9 +98,9 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2.使用 AS 编号创建 VPN 网关
 
-为 TestVNet1 创建虚拟网络网关。 BGP 需要基于路由的 VPN 网关。 还需要额外的参数“-Asn”，为 TestVNet1 设置 ASN（AS 编号）。 创建网关可能需要一些时间（45 分钟或更久）。 
+为 TestVNet1 创建虚拟网络网关。 BGP 需要基于路由的 VPN 网关。 此外，还需要额外的参数 `-Asn`，为 TestVNet1 设置自治系统编号 (ASN)。 创建网关可能需要一点时间（45 分钟或更久）才能完成。 
 
-如果使用“--no-wait”参数运行该命令，则不会显示任何反馈或输出。 “--no-wait”参数允许在后台创建网关， 但并不意味着 VPN 网关会立即创建完毕。
+如果使用 `--no-wait` 参数运行该命令，则不会显示任何反馈或输出。 `--no-wait` 参数允许在后台创建网关。 但并不意味着 VPN 网关会立即创建。
 
 ```azurecli
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
@@ -111,7 +110,7 @@ az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP 
 
 创建网关后，需要在 Azure VPN 网关上获取 BGP 对等节点 IP 地址。 需要此地址才能将 VPN 网关配置为本地 VPN 设备的 BGP 对等节点。
 
-运行以下命令，并检查输出顶部的 bgpSettings 部分
+运行以下命令，并检查输出顶部的 `bgpSettings` 部分：
 
 ```azurecli
 az network vnet-gateway list -g TestBGPRG1 
@@ -128,20 +127,20 @@ az network vnet-gateway list -g TestBGPRG1
 
 ## <a name ="crossprembgp"></a>使用 BGP 建立跨界连接
 
-要建立跨界连接，需要创建本地网关来表示本地 VPN 设备，并创建连接将 Azure VPN 网关与本地网关连接在一起。 虽然这些步骤与创建其他连接的步骤类似，但它们包括指定 BGP 配置参数所需的其他属性。
+要建立跨界连接，需要创建本地网关来表示本地 VPN 设备。 然后将 Azure VPN 网关与本地网关连接在一起。 虽然这些步骤与创建其他连接的步骤类似，但它们包括指定 BGP 配置参数所需的其他属性。
 
 ![跨界的 BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
 
-### <a name="step-1---create-and-configure-the-local-network-gateway"></a>步骤 1 - 创建和配置本地网关
+### <a name="step-1-create-and-configure-the-local-network-gateway"></a>步骤 1：创建和配置本地网关
 
 此练习将继续生成图中所示的配置。 请务必将值替换为用于配置的值。 使用本地网络网关时，请记住以下事项：
 
-* 本地网关可以与 VPN 网关在相同或不同的位置和资源组中。 此示例演示它们在不同位置的不同资源组中。
-* 需要为本地网关声明的最小前缀是 VPN 设备上的 BGP 对等节点 IP 地址中的主机地址。 在此示例中，它是“10.52.255.254/32”中的 /32 前缀。
-* 提醒一下，在本地网络与 Azure VNet 之间必须使用不同的 BGP ASN。 如果它们是相同的，则需要更改 VNet ASN（如果本地 VPN 设备已使用该 ASN 与其他 BGP 邻域对等）。
+* 本地网关可以与 VPN 网关在相同的位置和资源组中，也可以在不同的位置和资源组中。 此示例演示网关在不同位置的不同资源组中。
+* 需要为本地网关声明的最小前缀是 VPN 设备上的 BGP 对等节点 IP 地址中的主机地址。 在此示例中，它是 10.52.255.254/32 中的 /32 前缀。
+* 提醒一下，在本地网络与 Azure 虚拟网络之间必须使用不同的 BGP ASN。 如果它们是相同的，则需要更改 VNet ASN（如果本地 VPN 设备已使用该 ASN 与其他 BGP 邻域对等）。
 
-请确保已完成此练习的[为 VPN 网关启用 BGP](#enablebgp)部分，并且仍与订阅 1 连接，然后再继续。 请注意，在此示例中会创建新的资源组。 另请注意本地网关的两个附加参数：Asn 和 BgpPeerAddress。
+请确保已完成此练习的[为 VPN 网关启用 BGP](#enablebgp) 部分，并且仍与订阅 1 连接，然后再继续操作。 请注意，在此示例中会创建新的资源组。 另请注意，本地网关的两个附加参数：`Asn` 和 `BgpPeerAddress`。
 
 ```azurecli
 az group create -n TestBGPRG5 -l eastus2 
@@ -149,11 +148,11 @@ az group create -n TestBGPRG5 -l eastus2
 az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g TestBGPRG5 --local-address-prefixes 10.51.255.254/32 --asn 65050 --bgp-peering-address 10.51.255.254
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>步骤 2 - 连接 VNet 网关和本地网关
+### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>步骤 2：连接 VNet 网关和本地网关
 
-在此步骤中，创建从 TestVNet1 到 Site5 的连接。 必须指定“--enable-bgp”参数，以便为此连接启用 BGP。 
+在此步骤中，创建从 TestVNet1 到 Site5 的连接。 必须指定 `--enable-bgp` 参数，以便为此连接启用 BGP。 
 
-在此示例中，虚拟网关和本地网关位于不同的资源组中。 网关位于不同的资源组中时，必须指定两个网关的整个资源 ID，以便建立 VNet 之间的连接。
+在此示例中，虚拟网关和本地网关位于不同的资源组中。 网关位于不同的资源组中时，必须指定两个网关的整个资源 ID，以便在虚拟网络之间建立连接。
 
 #### <a name="1-get-the-resource-id-of-vnet1gw"></a>1.获取 VNet1GW 的资源 ID
 
@@ -163,7 +162,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g T
 az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 ```
 
-在输出中，找到“id:”行。 引号中的值是在下一部分创建连接所必需的。 将这些值复制到文本编辑器（例如记事本），这样就可以在创建连接时轻松地粘贴它们。
+在输出中，找到 `"id":` 行。 引号中的值是在下一部分创建连接所必需的。
 
 示例输出：
 
@@ -182,7 +181,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
   "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
 ```
 
-复制引号中 "id": 后面的值。 
+将 `"id":` 后的值复制到文本编辑器（例如记事本），这样就可以在创建连接时轻松粘贴它们。 
 
 ```
 "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
@@ -198,7 +197,7 @@ az network local-gateway show -n Site5 -g TestBGPRG5
 
 #### <a name="3-create-the-testvnet1-to-site5-connection"></a>3.创建 TestVNet1 到 Site5 的连接
 
-在此步骤中，创建从 TestVNet1 到 Site5 的连接。 如前所述，同一 Azure VPN 网关可以同时具有 BGP 连接和非 BGP 连接。 除非在连接属性中启用了 BGP，否则 Azure 不会为此连接启用 BGP，即使已在这两个网关上配置了 BGP 参数，也是如此。 确保将该订阅 ID 替换为自己的订阅 ID。
+在此步骤中，创建从 TestVNet1 到 Site5 的连接。 如前所述，同一 Azure VPN 网关可以同时具有 BGP 连接和非 BGP 连接。 除非在连接属性中启用了 BGP，否则 Azure 不会为此连接启用 BGP，即使已在这两个网关上配置了 BGP 参数，也是如此。 将该订阅 ID 替换为自己的订阅 ID。
 
 ```azurecli
 az network vpn-connection create -n VNet1ToSite5 -g TestBGPRG1 --vnet-gateway1 /subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW --enable-bgp -l eastus --shared-key "abc123" --local-gateway2 /subscriptions/<subscription ID>/resourceGroups/TestBGPRG5/providers/Microsoft.Network/localNetworkGateways/Site5 --no-wait
@@ -224,13 +223,13 @@ eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your 
 
 ![VNet 到 VNet 的 BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
-以下说明延续前面各部分中的步骤。 必须完成[为 VPN 网关启用 BGP](#enablebgp)部分，才能使用 BGP 创建和配置 TestVNet1 和 VPN 网关。
+以下说明延续前面各部分中的步骤。 必须完成[为 VPN 网关启用 BGP](#enablebgp) 部分，才能使用 BGP 创建和配置 TestVNet1 和 VPN 网关。
 
-### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>步骤 1 - 创建 TestVNet2 和 VPN 网关
+### <a name="step-1-create-testvnet2-and-the-vpn-gateway"></a>步骤 1：创建 TestVNet2 和 VPN 网关
 
 必须确保新虚拟网络的 IP 地址空间 TestVNet2 不与任何 VNet 范围重叠。
 
-在本示例中，虚拟网络属于同一订阅。 可以在不同订阅之间设置 VNet 到 VNet 连接，有关更多详细信息，请参阅[配置 VNet 到 VNet 连接](vpn-gateway-howto-vnet-vnet-cli.md)。 请确保在创建连接时添加“-EnableBgp $True”，以启用 BGP。
+在本示例中，虚拟网络属于同一订阅。 可在不同订阅之间设置 VNet 到 VNet 连接。 若要了解详细信息，请参阅[配置 VNet 到 VNet 的连接](vpn-gateway-howto-vnet-vnet-cli.md)。 请确保在创建连接时添加 `-EnableBgp $True`，以启用 BGP。
 
 #### <a name="1-create-a-new-resource-group"></a>1.创建新的资源组
 
@@ -254,7 +253,7 @@ az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPR
 
 #### <a name="3-create-the-public-ip-address"></a>3.创建公共 IP 地址
 
-请求公共 IP 地址。 将向为 VNet 创建的 VPN 网关分配公共 IP 地址。
+请求公共 IP 地址。 将向为虚拟网络创建的 VPN 网关分配公共 IP 地址。
 
 ```azurecli
 az network public-ip create -n GWPubIP2 -g TestBGPRG2 --allocation-method Dynamic
@@ -262,17 +261,17 @@ az network public-ip create -n GWPubIP2 -g TestBGPRG2 --allocation-method Dynami
 
 #### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4.使用 AS 编号创建 VPN 网关
 
-为 TestVNet2 创建虚拟网络网关。 必须覆盖 Azure VPN 网关上的默认 ASN。 连接的 VNet 的 ASN 必须不同，才能启用 BGP 和传输路由。
+为 TestVNet2 创建虚拟网络网关。 必须覆盖 Azure VPN 网关上的默认 ASN。 连接的虚拟网络的 ASN 必须不同，才能启用 BGP 和传输路由。
  
 ```azurecli
 az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2 -g TestBGPRG2 --vnet TestVNet2 --gateway-type Vpn --sku Standard --vpn-type RouteBased --asn 65020 --no-wait
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>步骤 2 - 连接 TestVNet1 和 TestVNet2 网关
+### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>步骤 2：连接 TestVNet1 和 TestVNet2 网关
 
-在此步骤中，创建从 TestVNet1 到 Site5 的连接。 要为此连接启用 BGP，必须指定“--enable-bgp”参数。
+在此步骤中，创建从 TestVNet1 到 Site5 的连接。 必须指定 `--enable-bgp` 参数，以便为此连接启用 BGP。
 
-在以下示例中，虚拟网关和本地网关位于不同的资源组中。 网关位于不同的资源组中时，必须指定两个网关的整个资源 ID，以便建立 VNet 之间的连接。 
+在以下示例中，虚拟网关和本地网关位于不同的资源组中。 网关位于不同的资源组中时，必须指定两个网关的整个资源 ID，以便在虚拟网络之间建立连接。 
 
 #### <a name="1-get-the-resource-id-of-vnet1gw"></a>1.获取 VNet1GW 的资源 ID 
 
@@ -292,7 +291,7 @@ az network vnet-gateway show -n VNet2GW -g TestBGPRG2
 
 #### <a name="3-create-the-connections"></a>3.创建连接
 
-创建从 TestVNet1 到 TestVNet2 的连接，以及从 TestVNet2 到 TestVNet1 的连接。 确保将该订阅 ID 替换为自己的订阅 ID。
+创建从 TestVNet1 到 TestVNet2 的连接，以及从 TestVNet2 到 TestVNet1 的连接。 将该订阅 ID 替换为自己的订阅 ID。
 
 ```azurecli
 az network vpn-connection create -n VNet1ToVNet2 -g TestBGPRG1 --vnet-gateway1 /subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW --enable-bgp -l eastus --shared-key "efg456" --vnet-gateway2 /subscriptions/<subscription ID>/resourceGroups/TestBGPRG2/providers/Microsoft.Network/virtualNetworkGateways/VNet2GW
@@ -303,16 +302,12 @@ az network vpn-connection create -n VNet2ToVNet1 -g TestBGPRG2 --vnet-gateway1 /
 ```
 
 > [!IMPORTANT]
-> 请确保为这两个连接启用 BGP。
+> 为这两个连接启用 BGP。
 > 
 > 
 
-完成这些步骤后，可在几分钟内建立连接。 完成 VNet 到 VNet 连接后，BGP 对等互连会话即可运行。
-
-如果完成此练习的所有三个部分，可建立网络拓扑，如下图所示：
-
-![VNet 到 VNet 的 BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
+完成这些步骤后，可在几分钟内建立连接。 完成 VNet 到 VNet 的连接后，BGP 对等会话即可运行。
 
 ## <a name="next-steps"></a>后续步骤
 
-连接完成后，即可将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以获取相关步骤。
+连接完成后，即可将虚拟机添加到虚拟网络。 相关步骤，请参阅[创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

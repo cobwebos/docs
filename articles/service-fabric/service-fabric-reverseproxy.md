@@ -14,30 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: bharatn
+ms.openlocfilehash: 3168a8129e2e73d7ab1de547679aabd10d8f7112
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 7897458e9e4a0bbe185bd3f7b4c133c1b26769f9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
-Azure Service Fabric 中内置的反向代理可以访问 Service Fabric 群集中用于公开 HTTP 终结点的微服务。
+借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
 
 ## <a name="microservices-communication-model"></a>微服务通信模型
-Service Fabric 中的微服务通常在群集的一部分虚拟机中运行，并且可出于各种原因从一个虚拟机移到另一个虚拟机。 因此，微服务的终结点可能会动态变化。 与微服务通信的经典模式是下面的解析循环。
+Service Fabric 中的微服务在群集中的部分节点上运行，可以出于各种原因在这些节点之间迁移。 因此，微服务的终结点可能会动态变化。 若要发现群集中的其他服务并与之通信，微服务必须完成以下步骤：
 
-1. 一开始通过命名服务解析服务位置。
+1. 通过命名服务解析服务位置。
 2. 连接到服务。
-3. 确定连接失败的原因，必要时再次解析服务位置。
+3. 在实现服务解析以及在发生连接故障时应用的重试策略的循环中，包装上述步骤
 
-此过程通常涉及将客户端通信库包装到重试循环中，以便执行服务解析和重试策略。
 有关详细信息，请参阅[与服务连接和通信](service-fabric-connect-and-communicate-with-services.md)。
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>使用反向代理通信
-Service Fabric 中的反向代理在群集的所有节点上运行。 它会代表客户端执行整个服务解析流程，再转发客户端请求。 因此，在群集上运行的客户端可以通过同一节点本地运行的反向代理，使用任何客户端 HTTP 通信库来与目标服务通信。
+反向代理是在每个节点上运行的服务，用于代表客户端服务处理终结点解析、自动重试及其他连接故障。 可以将反向代理配置为，一边处理客户端服务的请求，一边应用各种策略。 借助反向代理，客户端服务可以使用任意客户端 HTTP 通信库，无需服务中有特殊的解析和重试逻辑。 
+
+反向代理在本地节点上公开一个或多个终结点，以供客户端服务用来向其他服务发送请求。
 
 ![内部通信][1]
+
+> **支持的平台**
+>
+> Service Fabric 中的反向代理目前支持以下平台
+> * Windows 群集：Windows 8 及更高版本，或 Windows Server 2012 及更高版本
+> * Linux 群集：反向代理暂不适用于 Linux 群集
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>从群集外部访问微服务
 微服务的默认外部通信模型为“选择加入”模型，在该模型中，无法直接从外部客户端访问每个服务。 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)充当微服务和外部客户端之间的网络边界，可以进行网络地址转换并将外部请求转发到内部的 IP:端口终结点。 要允许外部客户端直接访问微服务的终结点，必须先将负载均衡器配置为将流量转发到群集中服务使用的每个端口。 另外，大多数微服务（尤其是有状态微服务）并不驻留在群集的所有节点上。 这些微服务在故障转移时可在节点之间移动。 在这种情况下，负载均衡器无法有效确定要将流量转发到的副本的目标节点位置。
@@ -315,4 +321,3 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
-

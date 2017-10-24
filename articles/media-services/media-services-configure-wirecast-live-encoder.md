@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: c4df14f24650ce431dfb31cc774cab6d3cf3aef0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/29/2017
 >
 
 ## <a id=configure_wirecast_rtmp></a>配置 Telestream Wirecast 编码器
-本教程中使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
+在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
 **视频**：
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 08/29/2017
    >创建节目需要的时间比创建频道需要的时间少。
        
 5. 可以运行节目以后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，并选择“使用 Azure Media Player”。  
-6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（或通过菜单从“节目信息和设置”选项检索此信息）。
+6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（也可通过菜单从“节目信息和设置”选项检索此信息）。
 
 现在可以将流嵌入到播放器中，也可将其分发给受众进行实时观看。  
 

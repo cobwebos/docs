@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
+ms.openlocfilehash: 7d040fe55cb46665c97668a76ccbc66adc002f89
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 96840d72b86d0b9487d9a3a6039c7582a2718e7a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的数组和对象函数 
 
@@ -1312,11 +1311,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
     "parameters": {
         "firstObject": {
             "type": "object",
-            "defaultValue": {"one": "a", "two": "b", "three": "c"}
+            "defaultValue": {"one": "a", "two": "b", "three": "c1"}
         },
         "secondObject": {
             "type": "object",
-            "defaultValue": {"three": "c", "four": "d", "five": "e"}
+            "defaultValue": {"three": "c2", "four": "d", "five": "e"}
         },
         "firstArray": {
             "type": "array",
@@ -1346,7 +1345,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | 对象 | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
+| objectOutput | 对象 | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
@@ -1366,5 +1365,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）。
-
 

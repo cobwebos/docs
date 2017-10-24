@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
 ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Azure Mobile Engagement Web SDK 升级过程
 如果已将早期版本的 Azure Mobile Engagement Web SDK 集成到 Web 应用程序中，那么在升级 SDK 时需要考虑以下几点。
 
-如果跳过 Mobile Engagement Web SDK 的多个版本，则可能需要在升级过程中完成若干个步骤。 例如，如果从 1.4.0 迁移到 1.6.0 时，首先要按步骤从 1.4.0 升级到 1.5.0。 然后，按照从 1.5.0 升级到 1.6.0 的过程。
+如果跳过 Mobile Engagement Web SDK 的多个版本，则可能需要在升级过程中完成若干个步骤。 例如，如果从 1.4.0 迁移到 1.6.0 时，首先要按步骤从 1.4.0 升级到 1.5.0。 然后，按步骤从 1.5.0 升级到 1.6.0。
 
 无论从哪个版本升级，都请将任何早期版本的文件 azure engagement.js 替换为该文件的最新版本。
 

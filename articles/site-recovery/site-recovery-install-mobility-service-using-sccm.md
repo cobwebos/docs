@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.openlocfilehash: 49b72cd306aa91f114af7688f02d95db6f6eca05
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automate-mobility-service-installation-by-using-software-deployment-tools"></a>使用软件部署工具自动执行移动服务安装
 
 >[!IMPORTANT]
-本文档假定使用的是版本 **9.9.4510.1** 或更高版本。
+为了更好地理解本文档，请使用版本 9.9.4510.1 或更高版本。
 
 本文提供如何使用 System Center Configuration Manager 在数据中心内部署 Azure Site Recovery 移动服务的示例。 使用 Configuration Manager 等软件部署工具具有以下优势：
 * 计划全新安装和升级的部署，在计划维护时段内进行软件更新
@@ -163,18 +163,18 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 1. 登录 Configuration Manager 控制台。
 2. 浏览到“软件库” > “应用程序管理” > “包”。
-3. 右键单击“包”，然后选择“创建包”。
+3. 右键单击“包”，并选择“创建包”。
 4. 提供“名称”、“说明”、“制造商”、“语言”和“版本”的值。
 5. 选中“此包包含源文件”复选框。
-6. 单击“浏览”，然后选择存储安装程序的网络共享 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows)。
+6. 单击“浏览”，并选择存储安装程序的网络共享 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows)。
 
   ![创建包和程序向导的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/create_sccm_package.png)
 
-7. 在“选择要创建的程序类型”页上，选择“标准程序”，然后单击“下一步”。
+7. 在“选择要创建的程序类型”页上，选择“标准程序”，并单击“下一步”。
 
   ![创建包和程序向导的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm-standard-program.png)
 
-8. 在“指定此标准程序的相关信息”页上，提供以下输入，然后单击“下一步”。 （其他输入可以使用其默认值。）
+8. 在“指定此标准程序的相关信息”页上，提供以下输入，并单击“下一步”。 （其他输入可以使用其默认值。）
 
   | **参数名称** | **值** |
   |--|--|
@@ -195,11 +195,11 @@ IF NOT %ERRORLEVEL% EQU 0 (
 > 脚本支持移动服务代理的全新安装和已安装代理的更新。
 
 ### <a name="step-3-deploy-the-package"></a>步骤 3：部署包
-1. 在 Configuration Manager 控制台中，右键单击包，然后选择“分发内容”。
+1. 在 Configuration Manager 控制台中，右键单击包，并选择“分发内容”。
   ![Configuration Manager 控制台的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm_distribute.png)
 2. 选择包应复制到的**[分发点](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**。
 3. 完成该向导。 包随后开始复制到指定的分发点。
-4. 完成包分发后，右键单击包，然后选择“部署”。
+4. 完成包分发后，右键单击包，并选择“部署”。
   ![Configuration Manager 控制台的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm_deploy.png)
 5. 选择在先决条件部分中创建的 Windows Server 设备集合作为部署的目标集合。
 
@@ -211,7 +211,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
   ![部署软件向导的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm-deploy-select-purpose.png)
 
 8. 在“为此部署指定计划”页中，指定计划。 有关详细信息，请参阅[计划包](https://technet.microsoft.com/library/gg682178.aspx)。
-9. 在“分发点”页上，根据数据中心的需求配置属性。 然后完成向导。
+9. 在“分发点”页上，根据数据中心的需求配置属性。 然后，完成向导。
 
 > [!TIP]
 > 为了避免不必要的重新启动，请在每月的维护时段或软件更新时段计划包安装。
@@ -388,18 +388,18 @@ cd /tmp
 
 1. 登录 Configuration Manager 控制台。
 2. 浏览到“软件库” > “应用程序管理” > “包”。
-3. 右键单击“包”，然后选择“创建包”。
+3. 右键单击“包”，并选择“创建包”。
 4. 提供“名称”、“说明”、“制造商”、“语言”和“版本”的值。
 5. 选中“此包包含源文件”复选框。
-6. 单击“浏览”，然后选择存储安装程序的网络共享(\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux)。
+6. 单击“浏览”，并选择存储安装程序的网络共享 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux)。
 
   ![创建包和程序向导的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/create_sccm_package-linux.png)
 
-7. 在“选择要创建的程序类型”页上，选择“标准程序”，然后单击“下一步”。
+7. 在“选择要创建的程序类型”页上，选择“标准程序”，并单击“下一步”。
 
   ![创建包和程序向导的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm-standard-program.png)
 
-8. 在“指定此标准程序的相关信息”页上，提供以下输入，然后单击“下一步”。 （其他输入可以使用其默认值。）
+8. 在“指定此标准程序的相关信息”页上，提供以下输入，并单击“下一步”。 （其他输入可以使用其默认值。）
 
     | **参数名称** | **值** |
   |--|--|
@@ -418,11 +418,11 @@ cd /tmp
 > 脚本支持移动服务代理的全新安装和已安装代理的更新。
 
 ### <a name="step-3-deploy-the-package"></a>步骤 3：部署包
-1. 在 Configuration Manager 控制台中，右键单击包，然后选择“分发内容”。
+1. 在 Configuration Manager 控制台中，右键单击包，并选择“分发内容”。
   ![Configuration Manager 控制台的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm_distribute.png)
 2. 选择包应复制到的**[分发点](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**。
 3. 完成该向导。 包随后开始复制到指定的分发点。
-4. 完成包分发后，右键单击包，然后选择“部署”。
+4. 完成包分发后，右键单击包，并选择“部署”。
   ![Configuration Manager 控制台的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm_deploy.png)
 5. 选择在先决条件部分中创建的 Linux 服务器设备集合作为部署的目标集合。
 
@@ -434,9 +434,9 @@ cd /tmp
   ![部署软件向导的屏幕截图](./media/site-recovery-install-mobility-service-using-sccm/sccm-deploy-select-purpose.png)
 
 8. 在“为此部署指定计划”页中，指定计划。 有关详细信息，请参阅[计划包](https://technet.microsoft.com/library/gg682178.aspx)。
-9. 在“分发点”页上，根据数据中心的需求配置属性。 然后完成向导。
+9. 在“分发点”页上，根据数据中心的需求配置属性。 然后，完成向导。
 
-移动服务将根据配置的计划安装在 Linux 服务器设备集合上。
+移动服务会根据配置的计划安装在 Linux 服务器设备集合上。
 
 ## <a name="other-methods-to-install-mobility-service"></a>安装移动服务的其他方法
 以下是用于安装移动服务的一些其他选项：

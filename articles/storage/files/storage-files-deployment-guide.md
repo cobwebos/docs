@@ -12,16 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: a594f31c002556f9a5fddaa17fb19273065eed47
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 499d10943f606a67ca04bfdf5f7cad44f9e20d07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 文件
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文介绍如何在组织内实际部署 Azure 文件。
 
@@ -37,7 +35,9 @@ ms.lasthandoff: 09/25/2017
 可能需要将现有文件共享（例如本地存储的文件共享）迁移到新的 Azure 文件共享。 本部分介绍如何通过[规划指南](storage-files-planning.md#data-transfer-method)中详述的几种常用方法将数据移动到 Azure 文件共享
 
 ### <a name="azure-file-sync-preview"></a>Azure 文件同步（预览版）
-Azure 文件同步（预览版）也可用于将数据迁移到 Azure 文件共享，即使长期使用不需要此同步机制。 若要深入了解如何使用 Azure 文件同步将数据传入 Azure 文件共享，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
+借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
+
+Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长期使用不需要此同步机制。 若要深入了解如何使用 Azure 文件同步将数据传输到 Azure 文件共享，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
 ### <a name="azure-importexport"></a>Azure 导入/导出
 使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 有关此服务的更详细概述，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。

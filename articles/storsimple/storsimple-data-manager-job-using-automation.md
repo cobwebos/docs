@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
 ms.openlocfilehash: 9691408bcd80afb6eba534f26749b76dd3bfe315
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-automation-to-trigger-a-job-private-preview"></a>使用 Azure 自动化触发作业（个人预览版）
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 07/11/2017
         .\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
          ```
 
-        ActiveDirectoryKey 是稍后要使用的密码。 输入你选择的密码。 AppName 可以是任意字符串。
+        ActiveDirectoryKey 是稍后要使用的密码。 输入选择的密码。 AppName 可以是任意字符串。
 
 2. 此脚本输出以下值，触发自动化 runbook 时应使用这些值。 记下这些值。
 

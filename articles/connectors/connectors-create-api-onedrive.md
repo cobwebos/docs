@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 63bd33bf4e09b98aa53dcfec9fcc4a0109204952
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive 连接器入门
 连接到 OneDrive 以管理文件（包括上传、获取、删除文件等）。 
@@ -55,7 +55,7 @@ ms.lasthandoff: 07/11/2017
     如果提示登录，则输入登录详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)列出了相关步骤。 
    
    > [!NOTE]
-   > 在此示例中，逻辑应用在更新所选文件夹中的文件时运行。 要查看此触发器的结果，请添加另一个向你发送电子邮件的操作。 例如，添加 Office 365 Outlook*发送一封电子邮件*你发送电子邮件，更新文件时的操作。 
+   > 在此示例中，逻辑应用在更新所选文件夹中的文件时运行。 要查看此触发器的结果，请添加另一个向你发送电子邮件的操作。 例如，添加在更新文件时向你发送电子邮件的 Office 365 Outlook“发送电子邮件”操作。 
 
 3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
    
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
     如果提示提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)介绍了这些属性。 
    
    > [!NOTE]
-   > 在此示例中，我们在 OneDrive 文件夹中新建文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”触发器。 然后添加 OneDrive*创建文件*操作使用的附件和内容类型 ForEach 在 OneDrive 中创建新的文件中的字段。 
+   > 在此示例中，我们在 OneDrive 文件夹中新建文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”触发器。 然后添加可在 ForEach 内使用“附件”和“内容类型”字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件。 
    > 
    > ![](./media/connectors-create-api-onedrive/foreach-action.png)
 

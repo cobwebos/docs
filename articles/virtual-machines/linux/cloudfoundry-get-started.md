@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure 上的 Cloud Foundry 入门 | Microsoft Docs"
+title: "Microsoft Azure 上的 Cloud Foundry 入门 | Microsoft 文档"
 description: "在 Microsoft Azure 上运行 OSS 或 Pivotal Cloud Foundry"
 services: virtual-machines-linux
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
 ms.openlocfilehash: 94fbde7707ea9a91076780fdefc3f5a827e0e7b2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
@@ -32,7 +32,7 @@ Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和�
 
 ### <a name="open-source-cloud-foundry"></a>开源 Cloud Foundry
 
-你可以通过首先将部署 BOSH 控制器，然后将其部署云 Foundry 部署在 Azure 上的 OSS 云 Foundry 使用[GitHub 上提供的说明操作](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)。 若要了解有关使用 OSS CF 的详细信息，请参阅由 Cloud Foundry Foundation 提供的[文档](https://docs.cloudfoundry.org/)。
+你可在 Azure 上部署 OSS Cloud Foundry：首先部署 BOSH 控制器，然后使用 [GitHub 上提供的说明](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)部署 Cloud Foundry。 若要了解有关使用 OSS CF 的详细信息，请参阅由 Cloud Foundry Foundation 提供的[文档](https://docs.cloudfoundry.org/)。
 
 Microsoft 通过以下社区渠道为 OSS CF 提供最大支持：
 

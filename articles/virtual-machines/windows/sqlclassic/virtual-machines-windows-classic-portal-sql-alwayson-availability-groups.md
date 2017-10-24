@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机中配置 AlwaysOn 可用性组（经典）
 > [!div class="op_single_selector"]
@@ -192,7 +192,7 @@ ms.lasthandoff: 07/11/2017
    
     ![更改虚拟机的首选 DNS 服务器](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784629.png)
 6. 在命令栏中，单击“更改此连接的设置”。 （根据窗口大小，可能需要单击双右箭头才能看到此命令）。
-7. 选择**Internet 协议版本 4 (TCP/IPv4)**，然后单击**属性**。
+7. 选择“Internet 协议版本 4 (TCP/IPv4)”，然后单击“属性”。
 8. 选择“使用以下 DNS 服务器地址”，并在“首选 DNS 服务器”中指定 **10.10.2.4**。
 9. 地址 **10.10.2.4** 是分配给 Azure 虚拟网络中 10.10.2.0/24 子网内的虚拟机的地址。 该虚拟机就是 **ContosoDC**。 若要验证 **ContosoDC** 的 IP 地址，请在命令提示窗口中使用 **nslookup contosodc**，如以下屏幕截图所示。
    

@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
 ms.openlocfilehash: d5953f1e1dd2deb4d871bd67352a6a5b2ae13dbf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>将 HPC 作业从本地计算机提交到部署在 Azure 中的 HPC Pack 群集
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -34,12 +34,12 @@ ms.lasthandoff: 07/11/2017
 * **HPC Pack 安装媒体** - 若要安装 HPC Pack 客户端实用工具，可从 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=328024)下载最新版 HPC Pack (HPC Pack 2012 R2) 的免费安装包。 确保下载与头节点 VM 上安装的版本相同的 HPC Pack 版本。
 
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>步骤 1：在头节点上安装并配置 Web 组件
-要启用通过 HTTPS 以 REST 接口将作业提交到群集的功能，请确保在 HPC Pack 头节点上配置 HPC Pack Web 组件。 如果尚未安装这些组件，请先运行 HpcWebComponents.msi 安装文件安装 Web 组件。 然后，通过运行 HPC PowerShell 脚本配置组件**Set-hpcwebcomponents.ps1**。
+要启用通过 HTTPS 以 REST 接口将作业提交到群集的功能，请确保在 HPC Pack 头节点上配置 HPC Pack Web 组件。 如果尚未安装这些组件，请先运行 HpcWebComponents.msi 安装文件安装 Web 组件。 然后，通过运行 HPC PowerShell 脚本“Set-HPCWebComponents.ps1”配置组件。
 
 有关详细过程，请参阅[安装 Microsoft HPC Pack Web 组件](http://technet.microsoft.com/library/hh314627.aspx)。
 
 > [!TIP]
-> HPC Pack 的某些 Azure 快速启动模板自动安装并配置 Web 组件。 如果使用 [HPC Pack IaaS 部署脚本](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)创建群集，可以在部署期间选择安装并配置 Web 组件。
+> HPC Pack 的某些 Azure 快速启动模板会自动安装并配置 Web 组件。 如果使用 [HPC Pack IaaS 部署脚本](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)创建群集，可以在部署期间选择安装并配置 Web 组件。
 > 
 > 
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="step-2-install-the-hpc-pack-client-utilities-on-an-on-premises-computer"></a>步骤 2：在本地计算机上安装 HPC Pack 客户端实用工具
 若要在计算机上安装 HPC Pack 客户端实用工具，请从 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=328024)下载 HPC Pack 安装程序文件（完整安装）。 开始安装时，请选择针对 **HPC Pack 客户端实用工具**的安装选项。
 
-要使用 HPC Pack 客户端工具向头节点 VM 提交作业，还必须导出头节点中的证书并将其安装在客户端计算机上。 证书必须采用 .CER 格式。
+要使用 HPC Pack 客户端工具向头节点 VM 提交作业，必须从头节点中导出证书并将其安装在客户端计算机上。 证书必须采用 .CER 格式。
 
 **从头节点中导出证书**
 
@@ -125,12 +125,12 @@ ms.lasthandoff: 07/11/2017
     ```
    
    > [!TIP]
-   > 请在计划程序 URL 中使用头节点的完整 DNS 名称，而不是 IP 地址。 如果指定 IP 地址，将会显示类似于下面的错误：“服务器证书必须具有有效的信任链，或放置在受信任的根存储区中”。
+   > 请在计划程序 URL 中使用头节点的完整 DNS 名称，而不是 IP 地址。 如果指定 IP 地址，会显示类似于下面的错误：“服务器证书必须具有有效的信任链，或放置在受信任的根存储区中”。
    > 
    > 
 3. 出现提示时，请键入 HPC 群集管理员或配置的另一群集用户的用户名（格式为 &lt;DomainName&gt;\\&lt;UserName&gt;）和密码。 可以选择在本地存储凭据以执行更多作业操作。
    
-    显示作业列表。
+    将显示作业列表。
 
 **在客户端计算机上使用 HPC 作业管理器**
 

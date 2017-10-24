@@ -16,10 +16,10 @@ ms.custom: reference
 ms.date: 03/30/2017
 ms.author: barbkess
 ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="all-topics-for-azure-sql-data-warehouse-service"></a>有关 Azure SQL 数据仓库服务的所有主题
 本主题列出的每个主题都可以直接应用于 Azure **SQL 数据仓库**服务。 可使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。
@@ -34,14 +34,14 @@ ms.lasthandoff: 07/11/2017
 
 | &nbsp; | 文章 | 更新的文本、代码片段 | 更新时间 |
 | ---:|:--- |:--- |:--- |
-| 2 |[将数据从 Azure Blob 存储载入 SQL 数据仓库 (PolyBase)](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) |/- 若要跟踪字节和文件 SELECT  r.command,  s.request_id,  r.status,  count(distinct input_name) as nbr_files,  sum(s.bytes_processed)/1024/1024 as gb_processed FROM  sys.dm_pdw_exec_requests r  inner join sys.dm_pdw_dms_external_work s  on r.request_id = s.request_id WHERE  r. label  = 'CTAS : Load  cso . DimProduct  '  OR r. label  = 'CTAS : Load  cso . FactOnlineSales  ' GROUP BY  r.command,  s.request_id,  r.status ORDER BY  nbr_files desc,  gb_processed desc; |2016-09-07 |
+| #N/A |[将数据从 Azure Blob 存储载入 SQL 数据仓库 (PolyBase)](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) |/- 若要跟踪字节和文件 SELECT  r.command,  s.request_id,  r.status,  count(distinct input_name) as nbr_files,  sum(s.bytes_processed)/1024/1024 as gb_processed FROM  sys.dm_pdw_exec_requests r  inner join sys.dm_pdw_dms_external_work s  on r.request_id = s.request_id WHERE  r. label  = 'CTAS : Load  cso . DimProduct  '  OR r. label  = 'CTAS : Load  cso . FactOnlineSales  ' GROUP BY  r.command,  s.request_id,  r.status ORDER BY  nbr_files desc,  gb_processed desc; |2016-09-07 |
 | 3 |[SQL 数据仓库还原](sql-data-warehouse-restore-database-overview.md) |** 可否还原已暂停的数据仓库？** 要还原已暂停的数据仓库，首先需要将其重新联机。 数据仓库重新联机后，有 7 天的恢复点可供选择。 ** 还原到异地冗余区域** 如果使用异地冗余存储，则可将数据仓库还原到另一地理区域的配对数据中心。 从上次的每日备份还原数据仓库。 ** 还原时间线** 可以将数据库还原到过去 7 天的任何还原点。 快照 4 到 8 小时启动一次，可供使用 7 天。 快照超过 7 天将过期，其还原点不再可用。 ** 还原成本** 已还原的数据仓库的存储费用按 Azure 高级存储费率计算。 如果暂停还原的数据仓库，则存储费用按 Azure 高级存储费率计算。 暂停的优点是不收费 |2016-09-29 |
 
 ## <a name="get-started"></a>入门
 | &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
 | 4 |[对 Azure SQL 数据仓库进行身份验证](sql-data-warehouse-authentication.md) |对 Azure SQL 数据仓库进行的 Azure Active Directory (AAD) 和 SQL Server 身份验证。 |
-| 5 |[Azure SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md) |开发 Azure SQL 数据仓库解决方案时应了解的建议和最佳实践。 这些内容可帮助你取得成功。 |
+| 5 |[Azure SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md) |开发 Azure SQL 数据仓库解决方案时应了解的建议和最佳实践。 这些内容有助于用户取得成功。 |
 | 6 |[Azure SQL 数据仓库的驱动程序](sql-data-warehouse-connection-strings.md) |SQL 数据仓库的连接字符串和驱动程序 |
 | 7 |[连接到 Azure SQL 数据仓库](sql-data-warehouse-connect-overview.md) |如何查找连接到 Azure SQL 数据仓库所需的服务器名称和连接字符串 |
 | 8 |[使用 Azure 机器学习分析数据](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md) |使用 Azure 机器学习，基于存储在 Azure SQL 数据仓库中的数据生成预测机器学习模型。 |
@@ -114,7 +114,7 @@ ms.lasthandoff: 07/11/2017
 | 55 |[将数据从 Azure Blob 存储载入 Azure SQL 数据仓库（Azure 数据工厂）](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md) |了解如何使用 Azure 数据工厂加载数据 |
 | 56 |[将数据从 Azure Blob 存储载入 SQL 数据仓库 (PolyBase)](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) |了解如何使用 PolyBase 将数据从 Azure Blob 存储载入 SQL 数据仓库。 将公共数据中的一些表载入 Contoso 零售数据仓库架构。 |
 | 57 |[将数据从 SQL Server 载入 Azure SQL 数据仓库 (AZCopy)](sql-data-warehouse-load-from-sql-server-with-azcopy.md) |使用 bcp 将数据从 SQL Server 导出到平面文件，使用 AZCopy 将数据导入 Azure Blob 存储，使用 PolyBase 将数据引入 Azure SQL 数据仓库。 |
-| 58 |[将数据从 SQL Server 载入 Azure SQL 数据仓库（平面文件）](sql-data-warehouse-load-from-sql-server-with-bcp.md) |对于少量的数据，可以使用 bcp 将数据从 SQL Server 导出到平面文件，并将数据直接导入 Azure SQL 数据仓库。 |
+| 58 |[将数据从 SQL Server 载入 Azure SQL 数据仓库（平面文件）](sql-data-warehouse-load-from-sql-server-with-bcp.md) |对于少量的数据，可以使用 bcp 将数据从 SQL Server 导出到平面文件，然后将数据直接导入 Azure SQL 数据仓库。 |
 | 59 |[将数据从 SQL Server 载入 Azure SQL 数据仓库 (SSIS)](sql-data-warehouse-load-from-sql-server-with-integration-services.md) |演示如何创建 SQL Server Integration Services (SSIS) 包，以便将数据从各种数据源移动到 SQL 数据仓库。 |
 | 60 |[在 SQL 数据仓库中使用 PolyBase 加载数据](sql-data-warehouse-load-from-sql-server-with-polybase.md) |使用 bcp 将数据从 SQL Server 导出到平面文件，使用 AZCopy 将数据导入 Azure Blob 存储，使用 PolyBase 将数据引入 Azure SQL 数据仓库。 |
 | 61 |[在 SQL 数据仓库中使用 PolyBase 的指南](sql-data-warehouse-load-polybase-guide.md) |有关在 SQL 数据仓库方案中使用 PolyBase 的指导原则和建议。 |

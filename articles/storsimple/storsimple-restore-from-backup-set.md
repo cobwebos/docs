@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 ms.openlocfilehash: 12484338f5b4d489604d70a657ef0992b6267297
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-在对卷启动还原之前，请确保卷处于脱机状态。 你将需要使主机上的卷脱机第一个，然后设备。 请按照[使卷脱机](storsimple-manage-volumes.md#take-a-volume-offline)中的步骤操作。 执行以下步骤从备份集中还原卷。
+在对卷启动还原之前，请确保卷处于脱机状态。 需要先后在主机和设备上使卷脱机。 请按照[使卷脱机](storsimple-manage-volumes.md#take-a-volume-offline)中的步骤操作。 执行以下步骤从备份集中还原卷。
 
 ### <a name="to-restore-from-a-backup-set"></a>从备份集中还原
 1. 在“StorSimple Manager 服务”页上，单击“备份目录”选项卡。

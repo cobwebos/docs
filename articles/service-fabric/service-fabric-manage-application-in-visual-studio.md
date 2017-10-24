@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: mikkelhegn
 ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
 可以通过 Visual Studio 管理 Azure Service Fabric 应用程序和服务。 [设置开发环境](service-fabric-get-started.md)之后，可以使用 Visual Studio 创建 Service Fabric 应用程序、添加服务，或在本地开发群集中打包、注册和部署应用程序。
@@ -47,7 +47,7 @@ Visual Studio 提供一个名为“应用程序调试模式”的属性，它控
 
 1. 刷新应用程序此模式能快速更改和调试代码并支持调试时编辑静态 Web 文件。 此模式只能在本地开发群集处于 [1 节点模式](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode)下时有效。
 2. **删除应用程序**：在调试会话结束后，删除应用程序。
-3. 自动升级调试会话结束时，应用程序继续运行。 下一个调试会话将部署视为升级。 此升级过程会保留你在上一个调试会话中输入的任何数据。
+3. 自动升级调试会话结束时，应用程序继续运行。 下一个调试会话将部署视为升级。 此升级过程会暂留用户在上一个调试会话中输入的所有数据。
 4. 保留应用程序调试会话结束时，应用程序在群集中继续运行。 在下一个调试会话开始时将删除应用程序。
 
 对于自动升级，数据是通过应用 Service Fabric 的应用程序升级功能予以保留。 若要详细了解如何升级应用程序，以及如何在真实环境中执行升级，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
@@ -57,7 +57,7 @@ Visual Studio 提供一个名为“应用程序调试模式”的属性，它控
 
 ![添加新的 Service Fabric 服务][newservice]
 
-选择要添加到应用程序的 Service Fabric 项目类型，并指定服务的名称。  请参阅[为服务选择框架](service-fabric-choose-framework.md)，这篇文章有助于你确定要使用的服务类型。
+选择要添加到应用程序的 Service Fabric 项目类型，并指定服务的名称。  请参阅[为服务选择框架](service-fabric-choose-framework.md)，这篇文章有助于确定要使用的服务类型。
 
 ![选择要添加到应用程序的 Service Fabric 服务项目类型][addserviceproject]
 

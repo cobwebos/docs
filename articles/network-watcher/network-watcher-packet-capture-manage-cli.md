@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: c94eb46f31f2f19b843ccd7bf77b8a39943a07d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 66f53f97220f8fd23fa38bece0025f8b48289e23
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-20"></a>通过 Azure CLI 2.0 使用 Azure 网络观察程序管理数据包捕获
 
 > [!div class="op_single_selector"]
@@ -37,7 +35,7 @@ ms.lasthandoff: 05/26/2017
 
 若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
-本文将引导你完成当前可用于数据包捕获的不同管理任务。
+本文将引导完成当前可用于数据包捕获的不同管理任务。
 
 - [**启动数据包捕获**](#start-a-packet-capture)
 - [**停止数据包捕获**](#stop-a-packet-capture)
@@ -74,10 +72,10 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 
 ### <a name="step-2"></a>步骤 2
 
-若要确保已安装代理，请运行 `vm extension get` cmdlet 并向其传递资源组和虚拟机的名称。 检查结果列表，以确保已安装代理。
+若要确保已安装代理，请运行 `vm extension show` cmdlet 并向其传递资源组和虚拟机的名称。 检查结果列表，以确保已安装代理。
 
 ```azurecli
-az vm extension show -resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
 以下示例是运行 `az vm extension show` 后的响应的实例
@@ -111,7 +109,7 @@ az vm extension show -resource-group resourceGroupName --vm-name virtualMachineN
 下一步是检索网络观察程序实例。 在步骤 4 中，会将网络观察程序的名称传递给 `az network watcher show` cmdlet。
 
 ```azurecli
-az network watcher show -resource-group resourceGroup -name networkWatcherName
+az network watcher show --resource-group resourceGroup --name networkWatcherName
 ```
 
 ### <a name="step-2"></a>步骤 2
@@ -280,4 +278,3 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 访问[查看“IP 流验证”](network-watcher-check-ip-flow-verify-portal.md)，了解是否允许某些流量传入和传出 VM
 
 <!-- Image references -->
-

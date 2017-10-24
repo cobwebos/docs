@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
 ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 EDIFACT 消息以实现企业集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 * 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 
 > [!NOTE]
-> 在创建协议时，接收或发送到和从合作伙伴的消息中的内容必须与匹配的协议类型。
+> 创建协议时，与合作伙伴之间相互接收或发送的消息中的内容必须与协议类型匹配。
 
 [创建集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)并[添加合作伙伴](logic-apps-enterprise-integration-partners.md)之后，可以遵循以下步骤来创建 EDIFACT 协议。
 

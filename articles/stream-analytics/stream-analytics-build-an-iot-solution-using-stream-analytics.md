@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
 ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 ## <a name="introduction"></a>介绍
@@ -59,9 +59,9 @@ ms.lasthandoff: 08/18/2017
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
 | 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
-| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
+| #N/A |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
 | 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
-| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
+| #N/A |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
 
 下面是每个列的简短说明：
 
@@ -86,9 +86,9 @@ ms.lasthandoff: 08/18/2017
 | 1 |2014-09-10T12:03:00.0000000Z |JNB 7001 |
 | 1 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
 | 3 |2014-09-10T12:04:00.0000000Z |ABC 1004 |
-| 2 |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
+| #N/A |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
 | 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
-| 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
+| #N/A |2014-09-10T12:07:00.0000000Z |CDE 1007 |
 
 下面是每个列的简短说明：
 
@@ -291,7 +291,7 @@ PowerShell 脚本使用 TollApp 示例应用程序自动发送事件。 不需�
 4. 在“用户名”字段中输入“tolladmin”、在“密码”字段中输入“123toll!” ，并在“表”字段中输入“TollDataRefJoin”。
    
     ![SQL 数据库设置](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.png)
-5. 单击“创建” 。
+5. 单击“创建”。
 
 ## <a name="azure-stream-analytics-query"></a>Azure 流分析查询
 “查询”选项卡包含转换传入数据的 SQL 查询。
@@ -328,7 +328,7 @@ PowerShell 脚本使用 TollApp 示例应用程序自动发送事件。 不需�
 * Registration.json
 
 ## <a name="question-1-number-of-vehicles-entering-a-toll-booth"></a>问题 1：进入某个收费亭的汽车数量
-1. 打开 Azure 门户，转到创建的 Azure 流分析作业。 单击“查询”选项卡，并粘贴前一部分中的查询。
+1. 打开 Azure 门户，并转到创建的 Azure 流分析作业。 单击“查询”选项卡，并粘贴前一部分中的查询。
 
 2. 要根据示例数据验证此查询，请单击 ... 符号，再选择“上传文件中的示例数据”，将数据上传到 EntryStream 输入。
 
@@ -343,7 +343,7 @@ PowerShell 脚本使用 TollApp 示例应用程序自动发送事件。 不需�
 ## <a name="question-2-report-total-time-for-each-car-to-pass-through-the-toll-booth"></a>问题 2：报告每辆车通过收费亭的总时间
 了解汽车通过收费站所需的平均时间有助于评估进度效率和客户体验。
 
-若要查找总时间，需要联接 EntryTime 流和 ExitTime 流。 需要联接 TollId 和 LicencePlate 列中的流。 **JOIN** 运算符要求指定一个临时余量，以描述联接事件之间可接受的时间差。 使用 **DATEDIFF** 函数来指定事件之间的时间差不能超过 15 分钟。 我们还将 **DATEDIFF** 函数应用到出口及入口时间，以计算汽车经过收费站的实际时间。 请注意相比 **JOIN** 条件，在 **SELECT** 语句中使用 **DATEDIFF** 的差异。
+要得出总时间，需要将 EntryTime 流与 ExitTime 流加在一起。 将联接 TollId 和 LicencePlate 列中的流。 **JOIN** 运算符要求指定一个临时余量，以描述联接事件之间可接受的时间差。 将使用 **DATEDIFF** 函数指定事件之间的时间差不能超过 15 分钟。 我们还将 **DATEDIFF** 函数应用到出口及入口时间，以计算汽车经过收费站的实际时间。 请注意相比 **JOIN** 条件，在 **SELECT** 语句中使用 **DATEDIFF** 的差异。
 
     SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
     FROM EntryStream TIMESTAMP BY EntryTime
@@ -362,7 +362,7 @@ PowerShell 脚本使用 TollApp 示例应用程序自动发送事件。 不需�
 ## <a name="question-3-report-all-commercial-vehicles-with-expired-registration"></a>问题 3：报告注册已过期的所有商用车
 Azure 流分析可以使用静态数据快照来与临时数据流联接。 为了演示此功能，请使用以下示例问题。
 
-如果某辆商用车已向收费公司注册，则可以直接通过收费亭，而不用停车接受检查。 使用商用车登记查找表来识别登记已过期的所有商用车。
+如果某辆商用车已向收费公司注册，则可以直接通过收费亭，而不用停车接受检查。 将使用商用车注册查找表来识别注册已过期的所有商用车。
 
 ```
 SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
+ms.openlocfilehash: c58cf6485a8a7248e5b8ffce0d279485a80f36ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 480ffce5dbe7c25181bb0ba5639de884e98ff4e6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>在逻辑应用中对消息进行进行发送、接收和批处理
 
 若要将消息以组的形式一起进行处理，可以将数据项或消息发送到批，然后以批的形式处理这些项。 如果要确保数据项以特定方式进行分组，并且一起进行处理，则此方法非常有用。 
@@ -62,11 +60,20 @@ ms.lasthandoff: 08/10/2017
 3. 为批提供名称，然后为发布批指定条件，例如：
 
    * **批名称**：用于标识批的名称，在此示例中是“TestBatch”。
+   * **发布条件**：批发布条件，可以基于消息计数或/和计划。
+   
+     ![提供批触发器详细信息](./media/logic-apps-batch-process-send-receive-messages/receive-batch-release-criteria.png)
+
    * **消息计数**：在发布进行处理之前以批形式保留的消息数，在此示例中是“5”。
 
-   ![提供批触发器详细信息](./media/logic-apps-batch-process-send-receive-messages/receive-batch-trigger-details.png)
+     ![提供批触发器详细信息](./media/logic-apps-batch-process-send-receive-messages/receive-batch-count-based.png)
 
-4. 添加另一个在批触发器激发时发送电子邮件的操作。 每当批包含五个项时，逻辑应用便会发送电子邮件。
+   * **计划**：用于处理的批发布计划，本示例中为“每 5 分钟”。
+
+     ![提供批触发器详细信息](./media/logic-apps-batch-process-send-receive-messages/receive-batch-schedule-based.png)
+
+
+4. 添加另一个在批触发器激发时发送电子邮件的操作。 每当批包含 5 个项或经过 5 分钟后，逻辑应用便会发送电子邮件。
 
    1. 在批触发器下，选择“+ 新步骤” > “添加操作”。
 
@@ -194,4 +201,3 @@ BatchSender 逻辑应用每分钟运行一次，生成介于一与五之间的�
 * [使用 JSON 构建逻辑应用定义](../logic-apps/logic-apps-author-definitions.md)
 * [使用 Azure 逻辑应用和 Azure Functions 在 Visual Studio 中构建无服务器应用](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [逻辑应用的异常处理和错误日志记录](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-

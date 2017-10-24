@@ -15,24 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft 云服务和网络安全性
 Microsoft 云服务提供超大规模的服务和基础结构、企业级的功能，以及许多混合连接选项。 客户可以选择通过 Internet 或 Azure ExpressRoute（提供专用网络连接）访问这些服务。 Microsoft Azure 平台可让客户无缝地将基础结构扩展到云中并构建多层体系结构。 此外，第三方可以提供安全服务和虚拟设备，以启用增强的功能。 本白皮书概述了当客户使用通过 ExpressRoute 访问的 Microsoft 云服务创建安全服务时应该考虑的安全和体系结构问题。 此外，还介绍了如何在 Azure 虚拟网络中创建其他安全服务。
 
 ## <a name="fast-start"></a>快速开始
-以下逻辑图表以具体示例说明了 Azure 平台提供的许多安全技术。 有关快速参考，请找到最适合你案例的示例。 有关更详尽的说明，请继续阅读本文。
+以下逻辑图表以具体示例说明了 Azure 平台提供的许多安全技术。 有关快速参考，请找到最适合你的情况的示例。 有关更详尽的说明，请继续阅读本文。
 [![0]][0]
 
 [示例 1：构建外围网络（也称为 DMZ、外围安全区域或屏蔽子网），以使用网络安全组 (NSG) 帮助保护应用程序。](#example-1-build-a-perimeter-network-to-help-protect-applications-with-nsgs)</br>
-[示例 2： 构建外围网络有助于通过防火墙和 Nsg 保护应用程序。](#example-2-build-a-perimeter-network-to-help-protect-applications-with-a-firewall-and-nsgs)</br>
-[示例 3： 构建外围网络，以帮助保护网络与防火墙、 用户定义的路由 (UDR) 和 NSG。](#example-3-build-a-perimeter-network-to-help-protect-networks-with-a-firewall-and-udr-and-nsg)</br>
-[示例 4： 添加混合连接与站点到站点、 虚拟设备虚拟专用网络 (VPN)。](#example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn)</br>
-[示例 5： 添加与站点到站点 Azure VPN 网关的混合连接。](#example-5-add-a-hybrid-connection-with-a-site-to-site-azure-vpn-gateway)</br>
-[示例 6： 添加混合连接与 ExpressRoute。](#example-6-add-a-hybrid-connection-with-expressroute)</br>
+[示例 2：构建外围网络以使用防火墙和 NSG 帮助保护应用程序。](#example-2-build-a-perimeter-network-to-help-protect-applications-with-a-firewall-and-nsgs)</br>
+[示例 3：构建外围网络，以使用防火墙、用户定义的路由 (UDR) 和 NSG 帮助保护网络。](#example-3-build-a-perimeter-network-to-help-protect-networks-with-a-firewall-and-udr-and-nsg)</br>
+[示例 4：使用站点到站点虚拟设备虚拟专用网络 (VPN) 添加混合连接。](#example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn)</br>
+[示例 5：使用站点到站点 Azure VPN 网关添加混合连接。](#example-5-add-a-hybrid-connection-with-a-site-to-site-azure-vpn-gateway)</br>
+[示例 6：使用 ExpressRoute 添加混合连接。](#example-6-add-a-hybrid-connection-with-expressroute)</br>
 未来几个月内，本文档中会加入有关在虚拟网络之间添加连接、高可用性和服务链接的示例。
 
 ## <a name="microsoft-compliance-and-infrastructure-protection"></a>Microsoft 合规性与基础结构保护
@@ -108,7 +108,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
   * 外围网络子网本身面向 Internet，直接与 Internet 通信。
   * 公共 IP 地址、VIP 和/或服务终结点将 Internet 流量传递给前端网络和设备。
   * 来自 Internet 的入站流量先通过安全设备，再通过前端网络上其他资源。
-  * 如果已启用出站安全性，则流量先通过安全设备（最后一个步骤），再传递到 Internet。
+  * 如果已启用出站安全性，则流量先通过安全设备（最后一个步骤），然后才传递到 Internet。
 * 受保护的网络：
   * Internet 与核心基础结构之间没有直接的路径。
   * 连往核心基础结构的通道必须遍历 NSG、防火墙或 VPN 设备等安全设备。
@@ -124,7 +124,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * **子网体系结构：**指定虚拟网络，使整个子网专门作为外围网络，与相同虚拟网络中的其他子网分开。 这样分隔可确保外围网络与其他内部或专用子网层之间的流量流经防火墙或 IDS/IPS 虚拟设备。  要将此流量转发到虚拟设备，需在边界子网上使用用户定义的路由。
 * **NSG：**外围网络子网本身应该打开以允许与 Internet 通信，但这不表示客户应该绕过 NSG。 请遵循常用的安全实践，将曝露于 Internet 的网络接触面减到最小。 管制允许访问部署的远程地址范围，或特定的应用程序协议和打开的端口。 但在某些情况下，不可能实现完全锁定。 例如，如果客户在 Azure 中有外部网站，则外围网络应该允许从任何公共 IP 地址传入的 Web 请求，但只应该打开以下 Web 应用程序端口：TCP:80 和/或 TCP:443。
 * **路由表：**外围网络子网本身必须能够直接与 Internet 通信，但不应该允许未通过防火墙或安全设备，就直接与后端或本地网络之间相互通信。
-* **安全设备配置：**为了路由和检查外围网络与受保护网络其余部分之间的数据包，安全设备（例如防火墙、IDS 和 IPS 设备）可以有多重主目录。 外围网络和后端子网可能有独立的 NIC。 外围网络中的 NIC 使用相应的 NSG 和路由表直接与 Internet 相互通信。 对于相应的后端子网，连接到后端子网的 NIC 有更受限制的 NSG 和路由表。
+* **安全设备配置：**为了路由和检查外围网络与受保护网络其余部分之间的数据包，安全设备（例如防火墙、IDS 和 IPS 设备）可以有多重主目录。 外围网络和后端子网可能有独立的 NIC。 外围网络中的 NIC 将使用相应的 NSG 和路由表直接与 Internet 相互通信。 对于相应的后端子网，连接到后端子网的 NIC 有更受限制的 NSG 和路由表。
 * **安全设备功能：**部署在外围网络中的安全设备通常执行以下功能：
   * 防火墙：对传入请求实施防火墙规则或访问控制策略。
   * 威胁检测和预防：检测并缓解来自 Internet 的恶意攻击。
@@ -186,7 +186,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 
 另一个重要的实施决策点就是如何连接本地网络与 Azure。 是否应使用 Azure 虚拟网关或网络虚拟设备？ 以下部分（示例 4、5 和 6）详细描述了这些选项。
 
-此外，Azure 中可能需要虚拟网络之间的流量。 今后会添加这些方案。
+此外，Azure 中可能需要虚拟网络之间的流量。 将来会添加这些方案。
 
 知道上述问题的答案后，可以参考[快速开始](#fast-start)部分确定最适合特定方案的示例。
 
@@ -210,10 +210,10 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 有关脚本和 Azure Resource Manager 模板，请参阅[详细构建说明][Example1]。
 
 #### <a name="nsg-description"></a>NSG 描述
-此示例将构建一个 NSG 组，并加载六个规则。
+此示例将构建一个 NSG 组，然后加载六个规则。
 
 > [!TIP]
-> 一般而言，应该先创建特定的“允许”规则，并创建常规“拒绝”规则。 给定的优先级确定了要先评估哪些规则。 发现要向流量应用哪个特定规则后，不需要评估后续规则。 可以朝入站或出站方向（从子网的角度看）应用 NSG 规则。
+> 一般而言，应该先创建特定的“允许”规则，然后创建常规“拒绝”规则。 给定的优先级确定了要先评估哪些规则。 发现要向流量应用哪个特定规则后，不需要评估后续规则。 可以朝入站或出站方向（从子网的角度看）应用 NSG 规则。
 >
 >
 
@@ -258,10 +258,10 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 有关脚本和 Azure Resource Manager 模板，请参阅[详细构建说明][Example2]。
 
 #### <a name="nsg-description"></a>NSG 描述
-此示例将构建一个 NSG 组，并加载六个规则。
+此示例将构建一个 NSG 组，然后加载六个规则。
 
 > [!TIP]
-> 一般而言，应该先创建特定的“允许”规则，并创建常规“拒绝”规则。 给定的优先级确定了要先评估哪些规则。 发现要向流量应用哪个特定规则后，不需要评估后续规则。 可以朝入站或出站方向（从子网的角度看）应用 NSG 规则。
+> 一般而言，应该先创建特定的“允许”规则，然后创建常规“拒绝”规则。 给定的优先级确定了要先评估哪些规则。 发现要向流量应用哪个特定规则后，不需要评估后续规则。 可以朝入站或出站方向（从子网的角度看）应用 NSG 规则。
 >
 >
 
@@ -326,7 +326,7 @@ VNETLocal 始终是一个或多个已定义地址前缀，组成该特定网络�
 此示例中创建了两个路由表，分别用于前端和后端子网。 已在每个表中加载了适用于给定子网的静态路由。 在此示例中，每个表包含三个路由，它们负责通过防火墙定向所有流量 (0.0.0.0/0)（下一跃点 = 虚拟设备 IP 地址）：
 
 1. 定义了不带下一跃点的本地子网流量以允许本地子网流量绕过防火墙。
-2. 下一跃点定义为防火墙的虚拟网络流量。 这个下一跃点将覆盖允许本地虚拟网络流量直接路由的默认规则。
+2. 将下一跃点定义为防火墙的虚拟网络流量。 这个下一跃点将覆盖允许本地虚拟网络流量直接路由的默认规则。
 3. 将带有下一跃点的所有剩余流量 (0/0) 定义为防火墙。
 
 > [!TIP]
@@ -390,7 +390,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
   1. 防火墙管理规则：此应用重定向规则允许流量传递到网络虚拟设备的管理端口。
   2. RDP 规则（针对每个 Windows 服务器）：这四个规则（每台服务器一个）允许通过 RDP 管理单个服务器。 根据所用的网络虚拟设备功能，也可将四项 RDP 规则合并为一项规则。
   3. 应用程序流量规则：有两个这样的规则，第一个针对前端 Web 流量，第二个针对后端流量（例如 Web 服务器流往数据层）。 这些规则的配置取决于网络体系结构（服务器的放置位置）和流量流动行为（流量的流动方向，以及使用的端口）。
-     * 第一个规则允许实际的应用程序流量抵达应用程序服务器。 其他规则所考虑的是安全、管理等方面的事项，应用程序流量规则用于允许外部用户或服务访问应用程序。 就本示例而言，端口 80 上有单个 Web 服务器。 因此单个防火墙应用程序规则将流往外部 IP 的入站流量重定向到 Web 服务器的内部 IP 地址。 重定向的流量会话经过 NAT 转换后流往内部服务器。
+     * 第一个规则允许实际的应用程序流量抵达应用程序服务器。 其他规则所考虑的是安全、管理等方面的事项，应用程序流量规则用于允许外部用户或服务访问应用程序。 就本示例而言，端口 80 上有单个 Web 服务器。 因此单个防火墙应用程序规则将流往外部 IP 的入站流量，并重定向到 Web 服务器的内部 IP 地址。 重定向的流量会话经过 NAT 转换后流往内部服务器。
      * 第二个规则是后端规则，用于允许 Web 服务器通过任何端口与 AppVM01 服务器（而非 AppVM02）对话。
 * 内部规则（针对虚拟网络内部流量）
   1. 出站到 Internet 规则：此规则允许来自任何网络的流量传递到选定的网络。 此规则通常是防火墙上已有的但处于禁用状态的默认规则。 对于本示例，应启用此规则。
@@ -522,7 +522,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 * ExpressRoute 文档（请务必阅读“入门”和“操作指南”部分）：[https://docs.microsoft.com/azure/expressroute/](https://docs.microsoft.com/azure/expressroute/)
 
 <!--Image References-->
-[0]: ./media/best-practices-network-security/flowchart.png "Security Options Flowchart"
+[0]: ./media/best-practices-network-security/flowchart.png "安全选项流程图"
 [2]: ./media/best-practices-network-security/azuresecurityfeatures.png "Azure 安全功能"
 [3]: ./media/best-practices-network-security/dmzcorporate.png "企业网络中的外围网络"
 [4]: ./media/best-practices-network-security/azuresecurityarchitecture.png "Azure 安全体系结构"

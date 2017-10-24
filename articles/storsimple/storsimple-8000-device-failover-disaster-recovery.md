@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5dc4a98bf889d38c62c76364289c2d58c14d771e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 
 故障转移的目标设备可以是物理设备，甚至可以是云设备。 目标设备可以位于与源设备相同或不同的地理位置。
 
-在故障转移期间，可以选择要迁移的卷容器。 然后，StorSimple 会将这些卷容器的所有权从源设备更改为目标设备。 在卷容器更改所有权后，StorSimple 会将这些容器从源设备中删除。 在删除完成后，你可以对目标设备进行故障回复。 _故障回复_将所有权转移回原始的源设备。
+在故障转移期间，可以选择要迁移的卷容器。 然后，StorSimple 会将这些卷容器的所有权从源设备更改为目标设备。 在卷容器更改所有权后，StorSimple 会将这些容器从源设备中删除。 在删除完成后，你可以对目标设备进行故障回复。 故障回复将所有权转移回原始源设备。
 
 ### <a name="cloud-snapshot-used-during-device-failover"></a>设备故障转移期间使用的云快照
 

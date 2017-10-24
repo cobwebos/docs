@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
 ms.openlocfilehash: 32d20e7a8adcfc646c592213fe7395b87a93c985
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-a-storsimple-support-package"></a>创建和管理 StorSimple 支持包
 ## <a name="overview"></a>概述
@@ -34,7 +34,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 > 
 > 
 
-创建经过加密和压缩的支持包（.cab 文件）并将其上传到支持站点。 然后，支持工程师可以从用于解决问题的支持站点检索此包。
+创建经过加密和压缩的支持包（.cab 文件）并将其上传到支持站点。 然后，支持工程师可以从支持站点检索此包，以便解决此问题。
 
 请在经典门户中执行以下步骤，创建支持包。
 

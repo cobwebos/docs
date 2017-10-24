@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: ddove
 ms.openlocfilehash: 637463399593f4bc9ff5bfcbf67bf93b816efc7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
-本文档通过帮助你运行示例应用介绍了开发人员体验。 此示例将创建一个简单的分片应用程序，并探讨弹性数据库工具的主要功能。 此示例演示[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的功能。
+本文档通过帮助运行示例应用向你介绍开发人员体验。 此示例将创建一个简单的分片应用程序，并探讨弹性数据库工具的主要功能。 此示例演示[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的功能。
 
 若要安装该库，请转到 [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。 该库和以下部分中描述的示例应用一起安装。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 
 3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
 
-4. 构建并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 这将会从 NuGet 下载最新版本的弹性数据库客户端库。
+4. 构建并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 这会从 NuGet 下载最新版本的弹性数据库客户端库。
 
 5. 尝试使用不同的选项，深入了解客户端库功能。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
    

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
 ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 构建 IT 资产或将其迁移到云提供商处时，需要依赖该组织来保护应用程序和数据，并且需要依赖该组织提供的服务和控制机制来管理基于云的资产的安全性。
@@ -50,7 +50,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 * [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 提供高度可用的全局性标识管理服务，该服务适用于面向用户且可通过缩放来处理数以亿计的标识的应用程序。 它可以跨移动平台和 Web 平台进行集成。 使用者只需使用现有社交帐户或创建新凭据，即可通过可自定义的体验登录到所有应用程序。
 
 ## <a name="data-access-control-and-encryption"></a>数据访问控制和加密
-Microsoft 所采用的“职责分离”和[最小特权](https://en.wikipedia.org/wiki/Principle_of_least_privilege)原则贯穿整个 Azure 操作。 Azure 支持人员访问相关数据需要你根据“实时”原则进行明确许可，并且会进行记录和审核，在完成相关任务后就会取消访问权限。
+Microsoft 所采用的“职责分离”和[最小特权](https://en.wikipedia.org/wiki/Principle_of_least_privilege)原则贯穿整个 Azure 操作。 用户必须“实时”明确授予经过记录和审核的许可，并在参与完成后撤销许可，这样 Azure 支持人员才能访问相关数据。
 
 Azure 还提供多种功能来保护正在传输的数据和静态数据。 这包括数据、文件、应用程序、服务、通信和驱动器的加密。 在将信息放入 Azure 之前，可以将其加密；还可以将密钥存储在本地数据中心。
 
@@ -126,10 +126,10 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 
 可以使用以下 Azure 虚拟网络技术来帮助实现虚拟网络上的安全通信：
 
-* [**网络安全组 (Nsg)**](../virtual-network/virtual-networks-nsg.md)。 可以在虚拟网络中使用 NSG 控制流向一个或多个虚拟机实例的流量。 NSG 包含根据流量方向、协议、源地址和端口以及目标地址和端口允许或拒绝流量的访问控制规则。
+* [**网络安全组 (NSG)**](../virtual-network/virtual-networks-nsg.md)。 可以在虚拟网络中使用 NSG 控制流向一个或多个虚拟机实例的流量。 NSG 包含根据流量方向、协议、源地址和端口以及目标地址和端口允许或拒绝流量的访问控制规则。
 * [**用户定义的路由**](../virtual-network/virtual-networks-udr-overview.md)。 可以创建用户定义的路由来指定下一跃点，方便数据包流向特定的子网并转到虚拟网络安全设备，从而控制数据包通过虚拟设备进行的路由。
 * [**IP 转发**](../virtual-network/virtual-networks-udr-overview.md)。 虚拟网络安全设备必须能够接收不发送给自身的传入流量。 若要允许虚拟机接收发送到其他目标的流量，可为该虚拟机启用 IP 转发。
-* [**强制隧道**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 强制隧道允许你重定向或"强制"所生成的虚拟网络中的虚拟机的所有 Internet 绑定流量通过站点到站点 VPN 隧道以进行检查和审核回到本地位置
+* [**强制隧道**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 借助强制隧道，可以通过站点间 VPN 隧道，将虚拟网络中虚拟机生成的所有 Internet 绑定流量重定向或“强制”返回到本地位置，以便于检查和审核
 * [**终结点 ACL**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 可以通过定义终结点 ACL 来控制哪些计算机允许从 Internet 到虚拟网络上的虚拟机的入站连接。
 * [**合作伙伴网络安全解决方案**](https://azure.microsoft.com/marketplace/)。 可以通过 Azure 应用商店访问大量的合作伙伴网络安全解决方案。
 
@@ -147,7 +147,7 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 ## <a name="secure-remote-access"></a>安全远程访问
 存储在云中的数据必须具有足够的安全措施来防止遭到攻击，并且需要在传输过程中保持机密性和完整性。 这其中包括网络控制，同时结合使用组织的基于策略的、可审核的身份和访问管理机制。
 
-内置加密技术使你能够在部署内部和部署之间、Azure 区域之间以及从 Azure 到本地数据中心之间对通信进行加密。 管理员通过[远程桌面会话](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)、[远程 Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 门户对虚拟机进行的访问始终加密。
+借助内置加密技术，可以对部署内部和之间、Azure 区域之间以及从 Azure 到本地数据中心的通信进行加密。 管理员通过[远程桌面会话](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)、[远程 Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 门户对虚拟机进行的访问始终加密。
 
 为了安全地将本地数据中心扩展到云，Azure 提供了[站点到站点 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) 和[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 以及通过 [ExpressRoute](../expressroute/expressroute-introduction.md) 进行的专用链接（通过 VPN 到 Azure 虚拟网络的连接会进行加密）。
 
@@ -164,14 +164,13 @@ Azure 对生成审计线索的安全相关事件进行经过身份验证的日�
 审核日志（记录特权用户访问和活动）、授权的和未经授权的访问尝试、系统异常以及信息安全事件会保留固定的时间。 日志的保留由你全权决定，因为可以根据自己的需求来配置日志的收集和保留。
 
 ### <a name="how-azure-implements-logging-and-monitoring"></a>Azure 如何实施日志记录和监视
-Azure 将管理代理 (MA) 和 Azure 安全监视器 (ASM) 代理部署到管理中的每个计算节点、存储节点或结构节点，不管是本机的还是虚拟的节点。 每个管理代理都经过配置，可以使用从 Azure 证书存储获得的证书通过服务团队存储帐户进行身份验证，并将预先配置的诊断和事件数据转发到存储帐户。 这些代理不会部署到客户的虚拟机中。
+Azure 将管理代理 (MA) 和 Azure 安全监视器 (ASM) 代理部署到每个受管的计算节点、存储节点或结构节点，不管它们是本机的还是虚拟的。 每个管理代理都经过配置，可以使用从 Azure 证书存储获得的证书通过服务团队存储帐户进行身份验证，并将预先配置的诊断和事件数据转发到存储帐户。 这些代理不会部署到客户的虚拟机中。
 
 Azure 管理员通过 Web 门户访问日志，对日志进行的访问必须经过身份验证，并且是可控的。 管理员可以对日志进行解析、筛选、关联和分析。 与日志对应的 Azure 服务团队存储帐户不允许管理员直接访问，这样是为了防止日志篡改。
 
 Microsoft 使用 Syslog 协议从网络设备收集日志，使用 Microsoft 审核收集服务 (ACS) 从主机服务器收集日志。 这些日志放置在日志数据库中，发生可疑事件时，会生成警报。 管理员可以访问并分析这些日志。
 
-
-            [Azure 诊断](https://msdn.microsoft.com/library/azure/gg433048.aspx)是 Azure 的一项功能，可以通过它从运行在 Azure 中的应用程序收集诊断数据。 可以将这些诊断数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。 收集诊断数据后，可以将其传输到 Azure 存储帐户进行永久保存。 可以按计划传输，也可以按需传输。
+[Azure 诊断](https://msdn.microsoft.com/library/azure/gg433048.aspx)是 Azure 的一项功能，可以通过它从运行在 Azure 中的应用程序收集诊断数据。 可以将这些诊断数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。 收集诊断数据后，可以将其传输到 Azure 存储帐户进行永久保存。 可以按计划传输，也可以按需传输。
 
 ## <a name="threat-mitigation"></a>威胁缓解措施
 除了隔离、加密和筛选，Azure 还采用了大量的威胁缓解机制和流程来保护基础结构和服务。 其中包括内部控制和技术，用于检测和化解各种高级威胁，例如 DDoS、特权提升以及 [10 大 OWASP](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)。

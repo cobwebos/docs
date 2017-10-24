@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 260a23003d705e6598da8c51bb5a96f2539a0014
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>通过 StorSimple Device Manager 更改 StorSimple 虚拟阵列设备管理员密码
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 07/11/2017
    
     ![密码错误](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    成功更新密码后，将收到通知。 然后可以使用这个已修改的密码来访问本地设备。
+    成功更新密码后，将收到通知。 然后可以使用此修改后的密码在本地访问设备。
 
 
 ## <a name="next-steps"></a>后续步骤

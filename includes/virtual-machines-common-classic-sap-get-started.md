@@ -2,7 +2,7 @@
 ## <a name="planning-and-implementation"></a>规划和实现
 标题：Azure 虚拟机上的 SAP NetWeaver - 规划和实现指南
 
-摘要：如果你正在考虑在 Azure 虚拟机中运行 SAP NetWeaver，可从本文开始着手。 此规划和实现指南可帮助你评估现有或计划的基于 SAP NetWeaver 的系统是否可以部署到 Azure 虚拟机环境。 它介绍了多个 SAP NetWeaver 部署方案，并包括特定于 Azure 的 SAP 配置。 该文列出并说明了在 SAP/Azure 端运行混合 SAP 布局产品时所需的所有必要配置信息。 此外，还介绍了为确保 IaaS 上基于 SAP NetWeaver 的系统实现高可用性可以采取的措施。
+摘要：如果正在考虑在 Azure 虚拟机中运行 SAP NetWeaver，可从本文开始着手。 此规划和实现指南可帮助你评估现有或计划的基于 SAP NetWeaver 的系统是否可以部署到 Azure 虚拟机环境。 它介绍了多个 SAP NetWeaver 部署方案，并包括特定于 Azure 的 SAP 配置。 该文列出并说明了在 SAP/Azure 端运行混合 SAP 布局产品时所需的所有必要配置信息。 此外，还介绍了为确保 IaaS 上基于 SAP NetWeaver 的系统实现高可用性可以采取的措施。
 
 更新时间：2015 年 8 月
 
@@ -11,7 +11,7 @@
 ## <a name="deployment"></a>部署
 标题：Azure 虚拟机上的 SAP NetWeaver - 部署指南
 
-摘要：本文档提供将 SAP NetWeaver 软件部署到 Azure 中虚拟机的过程指导。 此文重点介绍三种特定部署方案，主要侧重于启用 SAP 的 Azure 监视扩展，包括针对 SAP 的 Azure 监视扩展的故障排除建议。 此文假定你已阅读规划和实现指南。
+摘要：本文档提供将 SAP NetWeaver 软件部署到 Azure 中虚拟机的过程指导。 此文重点介绍三种特定部署方案，主要侧重于启用 SAP 的 Azure 监视扩展，包括针对 SAP 的 Azure 监视扩展的故障排除建议。 此文假定已阅读规划和实现指南。
 
 更新时间：2015 年 9 月
 

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: b99cf767fb931d3f7fe14fcbe7990126244613ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>使用 PowerShell 在 Azure VM 中配置 Always On 可用性组
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         Set-AzureVNetConfig `
             -ConfigurationPath $networkConfigPath
 
-    配置文件包含以下 XML 文档。 简而言之，它指定了名为 **ContosoAG** 的地缘组中的一个名为 **ContosoNET** 的虚拟网络。 它具有地址空间 **10.10.0.0/16** 和两个子网 **10.10.1.0/24** 和 **10.10.2.0/24**，分别是前端子网和后端子网。 前端子网是可以在其中放置客户端应用程序（例如 Microsoft SharePoint）的位置。 后端子网是将在其中放置 SQL Server VM 的位置。 如果之前更改过 **$affinityGroupName** 和 **$virtualNetworkName** 变量，则还必须更改以下相应名称。
+    配置文件包含以下 XML 文档。 简而言之，它指定了名为 **ContosoAG** 的地缘组中的一个名为 **ContosoNET** 的虚拟网络。 它具有地址空间 **10.10.0.0/16** 和两个子网 **10.10.1.0/24** 和 **10.10.2.0/24**，分别是前端子网和后端子网。 前端子网是可以在其中放置客户端应用程序（例如 Microsoft SharePoint）的位置。 后端子网是可在其中放置 SQL Server VM 的位置。 如果之前更改过 **$affinityGroupName** 和 **$virtualNetworkName** 变量，则还必须更改以下相应名称。
 
         <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -174,7 +174,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
             -Name $dcServerName `
             -LocalPath "$workingDir$dcServerName.rdp"
 
-现在已成功预配了域控制器服务器。 接下来，在域控制器服务器上配置 Active Directory 域。 在本地计算机上使 PowerShell 窗口保持打开。 稍后将再次使用它来创建两个 SQL Server VM。
+现在已成功预配了域控制器服务器。 接下来，会在域控制器服务器上配置 Active Directory 域。 在本地计算机上使 PowerShell 窗口保持打开。 稍后将再次使用它来创建两个 SQL Server VM。
 
 ## <a name="configure-the-domain-controller"></a>配置域控制器
 1. 通过启动远程桌面文件连接到域控制器服务器。 使用创建新 VM 时指定的计算机管理员用户名 AzureAdmin 和密码 **Contoso!000**。

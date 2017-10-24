@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma;bradsev
+ms.openlocfilehash: 8398af10d4826373e16420be3309c6ae8246ca4b
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b061e797f5515ab02265547d751d1a918413879a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
 数据科学虚拟机 (DSVM) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 中和基于 OpenLogic 7.2 CentOS 的 Linux 发行版上提供了 Linux 版本的 DSVM。 
@@ -64,7 +62,7 @@ ms.lasthandoff: 09/25/2017
 | [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) 专业且具有共享激活功能 - Excel、Word 和 PowerPoint   |Y                      |N              |
 | 预安装了常用包的 [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | 预安装了具有 Julia 语言的常用包的 [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
-| 关系型数据库服务                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) |
+| 关系型数据库服务                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/)（仅限 CentOS） |
 | 数据库工具                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC 驱动程序| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)（查询工具）、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC 驱动程序|
 | 在带有 SQL Server R 服务的数据库内分析中可扩展 | Y     |N              |
 | **带有以下内核的 [Jupyter Notebook Server](http://jupyter.org/)：**                                  | Y     | Y |
@@ -155,5 +153,4 @@ ms.lasthandoff: 09/25/2017
 ### <a name="for-the-linux-data-science-vm"></a>对于 Linux 数据科学 VM
 * 有关如何运行 Linux 版本提供的特定工具的详细信息，请参阅[预配 Linux 数据科学虚拟机](linux-dsvm-intro.md)。
 * 有关介绍如何通过 Linux VM 执行多个常见数据科学任务的演示，请参阅 [Linux 数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)。
-
 

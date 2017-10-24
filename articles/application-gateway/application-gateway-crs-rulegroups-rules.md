@@ -15,14 +15,12 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 9f4445b7ceb5b39c7907b1ca4c7bf0ad52ba8212
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/30/2017
-
+ms.openlocfilehash: 9265be4ac4258115c9302189d84b20e4894d42bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供的 Web 应用程序防火墙 CRS 规则组和规则列表
 
 出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 2.2.9 或 3.0 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
@@ -135,8 +133,8 @@ ms.lasthandoff: 03/30/2017
 |920360|参数名称太长|
 |920370|参数值太长|
 |920390|超出了总参数大小|
-|920400|上载的文件太大|
-|920410|上载的文件总大小太大|
+|920400|上传的文件太大|
+|920410|上传的文件总大小太大|
 |920420|请求内容类型不受策略允许|
 |920430|HTTP 协议版本不受策略允许|
 |920440|策略限制了 URL 文件扩展名|
@@ -242,7 +240,7 @@ ms.lasthandoff: 03/30/2017
 |933011|规则 933011|
 |933012|规则 933012|
 |933100|PHP 注入攻击 = 找到开始/结束标记|
-|933110|PHP 注入攻击 = 找到 PHP 脚本文件上载|
+|933110|PHP 注入攻击 = 找到 PHP 脚本文件上传|
 |933120|PHP 注入攻击 = 找到配置指令|
 |933130|PHP 注入攻击 = 找到变量|
 |933150|PHP 注入攻击 = 找到高风险的 PHP 函数名称|
@@ -255,7 +253,7 @@ ms.lasthandoff: 03/30/2017
 |933016|规则 933016|
 |933131|PHP 注入攻击 = 找到变量|
 |933161|PHP 注入攻击 = 找到低值 PHP 函数调用|
-|933111|PHP 注入攻击 = 找到 PHP 脚本文件上载|
+|933111|PHP 注入攻击 = 找到 PHP 脚本文件上传|
 |933017|规则 933017|
 |933018|规则 933018|
 
@@ -385,8 +383,8 @@ ms.lasthandoff: 03/30/2017
 |960208|参数值太长|
 |960335|请求中的参数太多|
 |960341|超出了总参数大小|
-|960342|上载的文件太大|
-|960343|上载的文件总大小太大|
+|960342|上传的文件太大|
+|960343|上传的文件总大小太大|
 
 ### <a name="crs30"></a> crs_30_http_policy
 

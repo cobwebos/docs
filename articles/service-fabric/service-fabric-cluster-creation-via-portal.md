@@ -1,4 +1,3 @@
-
 ---
 title: "在 Azure 门户中创建 Service Fabric 群集 | Microsoft Docs"
 description: "本文介绍如何使用 Azure 门户和 Azure 密钥保管库中在 Azure 中设置安全 Service Fabric 群集。"
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
+ms.openlocfilehash: 3dd4f3494bb9ed70549f41e22c58666cada8da07
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3b471fb21cf046417c094552c23c548c9da14fe8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -274,7 +272,6 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 * 选中“**配置高级设置**”复选框，输入**管理客户端**和**只读客户端**的客户端证书。 在这些字段中，输入管理客户端证书的指纹和只读用户客户端证书的指纹（如果适用）。 当管理员尝试连接群集时，仅当他们的证书指纹与此处输入的指纹值匹配时，才被授予访问权限。  
 
 #### <a name="4-summary"></a>4.摘要
-![显示“正在部署 Service Fabric 群集”的开始面板屏幕截图。 ][Notifications]
 
 要完成群集创建过程，请单击“**摘要**”查看提供的配置，或下载用于部署群集的 Azure Resource Manager 模板。 在提供所有必需的设置后，“**确定**”按钮会启用，只需单击它即可启动群集创建过程。
 
@@ -326,4 +323,3 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
-

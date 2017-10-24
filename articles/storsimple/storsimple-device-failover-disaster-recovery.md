@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2016
 ms.author: alkohli
 ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>StorSimple 设备的故障转移和灾难恢复
 ## <a name="overview"></a>概述
@@ -77,7 +77,7 @@ ms.lasthandoff: 07/11/2017
 | Update 1 以前的版本（版本 0.1、0.2、0.3）到 Update 1 或更高版本 |是，请参阅以下最佳实践提示。 |是，请参阅以下最佳实践提示。 |
 
 > [!TIP]
-> Update 1 和更高版本中的云元数据与数据格式会发生变化。 因此，不建议从 Update 1 以前的版本部分故障转移到 Update 1 或更高版本。 如果你需要执行部分故障转移，我们建议您首先应用更新 1 或更高版本上的两台设备 （源和目标），然后继续执行故障转移。 
+> Update 1 和更高版本中的云元数据与数据格式会发生变化。 因此，不建议从 Update 1 以前的版本部分故障转移到 Update 1 或更高版本。 如果需要执行部分故障转移，建议首先在这两台设备（源设备和目标设备）上应用 Update 1 或更高版本，然后再继续执行故障转移。 
 > 
 > 
 

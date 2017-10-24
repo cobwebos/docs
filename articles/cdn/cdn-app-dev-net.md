@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -128,7 +128,7 @@ ms.lasthandoff: 07/11/2017
        Console.ReadLine();
    }
    ```
-5. 一些其他方法，我们将提示用户"是/否"的问题。  添加以下方法，使其更容易：
+5. 我们的一些其他方法会用“是/否”问题提示用户。  添加以下方法，使其更容易：
    
     ```csharp
     private static bool PromptUser(string Question)
@@ -330,7 +330,7 @@ private static void PromptDeleteCdnProfile(CdnManagementClient cdn)
 
 ![成功！](./media/cdn-app-dev-net/cdn-success.png)
 
-然后，我们可以确认提示操作以运行程序的其余部分。
+然后，我们可以确认提示，运行程序的其余步骤。
 
 ![程序完成](./media/cdn-app-dev-net/cdn-program-running-2.png)
 

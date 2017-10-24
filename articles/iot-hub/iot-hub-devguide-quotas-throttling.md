@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/18/2017
 ms.author: dobett
+ms.openlocfilehash: 8ffe25f1950f8535983c2c344b5c4331b7157869
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 3f4f19eba5ed1a7b3176be4d3505998f97667200
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -41,7 +40,7 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 | 设备连接 | 高于 100/秒或 12/秒/单位 <br/> 例如，两个 S1 单位是 2\*12 = 24/秒，但是在所有单位中至少有 100/秒。 如果有 9 个 S1 单位，则所有单位就有 108/秒 (9\*12)。 | 120/秒/单位 | 6000/秒/单位 |
 | 设备到云的发送 | 高于 100/秒或 12/秒/单位 <br/> 例如，两个 S1 单位是 2\*12 = 24/秒，但是在所有单位中至少有 100/秒。 如果有 9 个 S1 单位，则所有单位就有 108/秒 (9\*12)。 | 120/秒/单位 | 6000/秒/单位 |
 | 云到设备的发送 | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5000/分钟/单位） |
-| 云到设备的接收 <br/> （仅当设备使用 HTTP 时）| 16.67/秒/单位（1000/分钟/单位） | 16.67/秒/单位（1000/分钟/单位） | 833.33/秒/单位（50000/分钟/单位） |
+| 云到设备的接收 <br/> （仅当设备使用 HTTPS 时）| 16.67/秒/单位（1000/分钟/单位） | 16.67/秒/单位（1000/分钟/单位） | 833.33/秒/单位（50000/分钟/单位） |
 | 文件上传 | 1.67 文件上传通知/秒/单位（100/分钟/单位） | 1.67 文件上传通知/秒/单位（100/分钟/单位） | 83.33 文件上传通知/秒/单位（5000/分钟/单位） |
 | 直接方法 | 20/秒/单位 | 60/秒/单位 | 3000/秒/单位 | 
 | 设备孪生读取 | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
@@ -104,4 +103,3 @@ IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-

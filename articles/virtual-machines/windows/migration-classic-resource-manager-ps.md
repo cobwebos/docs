@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 489e6cc6bd3c5b36635f5f7e398d08fed681d2e7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/03/2017
     Get-AzureRMSubscription | Sort Name | Select Name
 ```
 
-设置当前会话的 Azure 订阅。 此示例将默认订阅名称设置为“我的 Azure 订阅”。 使用自己的订阅名称替换示例名称。
+设置当前会话的 Azure 订阅。 此示例将默认订阅名称设置为“我的 Azure 订阅”。 将示例订阅名称替换成自己的名称。
 
 ```powershell
     Select-AzureRmSubscription –SubscriptionName "My Azure Subscription"
@@ -137,7 +137,7 @@ Get-AzureRmVMUsage -Location "West US"
 
 ## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>步骤 6：运行迁移 IaaS 资源的命令
 > [!NOTE]
-> 此处描述的所有操作都是幂等的。 如果遇到功能不受支持或配置错误以外的问题，建议重试准备、中止或提交操作。 然后，平台会尝试再次操作。
+> 此处描述的所有操作都是幂等的。 如果遇到功能不受支持或配置错误以外的问题，建议重试准备、中止或提交操作。 然后，平台会尝试再次该操作。
 >
 >
 
@@ -148,7 +148,7 @@ Get-AzureRmVMUsage -Location "West US"
     Get-AzureService | ft Servicename
 ```
 
-获取云服务的部署名称。 在此示例中，服务名称是“我的服务”。 使用自己的服务名称替换示例名称。
+获取云服务的部署名称。 在此示例中，服务名称是“我的服务”。 将示例服务名称替换成自己的服务名称。
 
 ```powershell
     $serviceName = "My Service"
@@ -202,7 +202,7 @@ Get-AzureRmVMUsage -Location "West US"
 
 使用前述任一选项成功完成准备操作以后，即可查询 VM 的迁移状态。 确保 VM 处于“`Prepared`”状态。
 
-此示例将 VM 名称设置为 **myVM**。 使用自己的 VM 名称替换示例名称。
+此示例将 VM 名称设置为 **myVM**。 将示例名称替换成自己的 VM 名称。
 
 ```powershell
     $vmName = "myVM"
@@ -232,7 +232,7 @@ Get-AzureRmVMUsage -Location "West US"
 > [!NOTE]
 > 虚拟网络名称可能和新门户中显示的名称不同。 新的 Azure 门户显示名称为 `[vnet-name]`，但实际的虚拟网络名称的类型是 `Group [resource-group-name] [vnet-name]`。 迁移之前，使用命令 `Get-AzureVnetSite | Select -Property Name` 查找实际的虚拟网络名称，或者在旧版 Azure 门户中查看它。 
 
-此示例将虚拟网络名称设置为 **myVnet**。 使用自己的虚拟网络名称替换示例名称。
+此示例将虚拟网络名称设置为 **myVnet**。 将示例虚拟网络名称替换成自己的名称。
 
 ```powershell
     $vnetName = "myVnet"
@@ -314,7 +314,7 @@ Get-AzureRmVMUsage -Location "West US"
     Remove-AzureVMImage -ImageName 'yourImageName'
     ```
 
-使用以下命令验证要迁移的每个存储帐户。 在此示例中，存储帐户名称是 **myStorageAccount**。 使用自己的存储帐户名称替换示例名称。
+使用以下命令验证要迁移的每个存储帐户。 在此示例中，存储帐户名称是 **myStorageAccount**。 将该示例名称替换成自己的存储帐户名称。
 
 ```powershell
     $storageAccountName = "myStorageAccount"

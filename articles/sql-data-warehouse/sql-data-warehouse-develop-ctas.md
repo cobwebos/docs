@@ -16,10 +16,10 @@ ms.custom: queries
 ms.date: 01/30/2017
 ms.author: shigu;barbkess
 ms.openlocfilehash: cb08313726e8135feaa9b413937c2197ea397f4b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>SQL 数据仓库中的 Create Table As Select (CTAS)
 Create Table As Select (`CTAS`) 是所提供的最重要的 T-SQL 功能之一。 它是根据 SELECT 语句的输出创建新表的完全并行化操作。 `CTAS` 是创建表副本的最简单快速方法。 本文档提供 `CTAS` 的示例和最佳实践。
@@ -62,7 +62,7 @@ FROM    [dbo].[FactInternetSales]
 > 
 
 ## <a name="using-ctas-to-copy-a-table"></a>使用 CTAS 复制表
-ph x="1" /> 最常见的用途之一就是创建表副本，使你可以更改 DDL。 例如，如果最初将表创建为 `ROUND_ROBIN`，现在想要改为在列上分布的表，则可以使用 `CTAS` 来更改分布列。 `CTAS` 还可用于更改数据分区、索引或列类型。
+`CTAS` 最常见的用途之一就是创建表副本，使你可以更改 DDL。 例如，最初将表创建为 `ROUND_ROBIN`，现在想要改为在列上分布的表，则可以使用 `CTAS` 来更改分布列。 `CTAS` 还可用于更改数据分区、索引或列类型。
 
 假设在 `CREATE TABLE` 中没有指定分布列，因而使用 `ROUND_ROBIN` 分布的默认分布类型创建此表。
 
@@ -95,7 +95,7 @@ CREATE TABLE FactInternetSales
 );
 ```
 
-现在想要创建此表的新副本并包含群集列存储索引，以便可以使用群集列存储表的性能。 还想要在 ProductKey 上分布此表（你预期此列会发生联接）并在联接 ProductKey 期间避免数据移动。 最后，还想要在 OrderDateKey 上添加分区，以便通过删除旧分区来快速删除旧数据。 以下是用于将旧表复制到新表的 CTAS 语句。
+现在，你想要创建此表的新副本并包含群集列存储索引，以便可以利用群集列存储表的性能。 还想要在 ProductKey 上分布此表（你预期此列会发生联接）并在联接 ProductKey 期间避免数据移动。 最后，还想要在 OrderDateKey 上添加分区，以便通过删除旧分区来快速删除旧数据。 以下是用于将旧表复制到新表的 CTAS 语句。
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -185,7 +185,7 @@ AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
 ;
 ```
 
-由于 SQL 数据仓库不支持在 `UPDATE` 语句的 `FROM` 子句中使用 ANSI Join，因此必须稍微更改一下此代码才能将它复制过去。
+由于 SQL 数据仓库不支持在 `UPDATE` 语句的 `FROM` 子句中使用 ANSI Join，因此无法在不稍微更改此代码的情况下将它复制过去。
 
 可以使用 `CTAS` 和隐式联接的组合来替换此代码：
 
@@ -297,7 +297,7 @@ SELECT @d*@f
 ;
 ```
 
-你可能自然而然地认为应该将此代码迁移到 CTAS。这是对的。 但是，这里有一个隐含的问题。
+可能自然而然地认为应该将此代码迁移到 CTAS。这是对的。 但是，这里有一个隐含的问题。
 
 以下代码不会生成相同的结果：
 
@@ -361,7 +361,7 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 > 
 > 
 
-此技巧不仅可用于确保计算的完整性， 它对表分区切换也很重要。 假设你根据事实定义了此表：
+此技巧不仅可用于确保计算的完整性， 它对表分区切换也很重要。 假设根据事实定义了此表：
 
 ```sql
 CREATE TABLE [dbo].[Sales]

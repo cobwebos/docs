@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
 ms.openlocfilehash: 3edfd34d368228be32afef48688739639a3b03ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>对 SQL 数据仓库中的表进行分区
 > [!div class="op_single_selector"]
@@ -125,7 +125,7 @@ GROUP BY    s.[name]
 ## <a name="workload-management"></a>工作负荷管理
 需要纳入表分区决策的最后一项考虑事项是[工作负荷管理][workload management]。  在 SQL 数据仓库中，工作负荷管理主要是管理内存和并发。  在 SQL 数据仓库中，资源类控制在查询运行期间分配给每个分布的最大内存。  理想情况下，调整分区大小需考虑其他因素，例如在构建聚集列存储索引时的内存需求。  为聚集列存储索引分配更多内存对其有很大好处。  因此，需要确保重建分区索引不会耗尽内存。 从默认角色 (smallrc) 切换到其他某个角色（例如 largerc），即可增加查询能够使用的内存量。
 
-查询资源调控器动态管理视图即可获取每个分布的内存分配信息。 事实上，内存授予小于以下数据。 但是，这可以提供指导，以便你在针对数据管理操作调整分区大小时使用。  尽量避免将分区大小调整超过超大型资源类所提供的内存授予。 如果分区成长超过此数据，就冒着内存压力的风险，进而导致比较不理想的压缩。
+查询资源调控器动态管理视图即可获取每个分布的内存分配信息。 事实上，内存授予小于以下数据。 不过，这在一定程度上提供了指导，可用于设置数据管理操作分区大小。  尽量避免将分区大小调整超过超大型资源类所提供的内存授予。 如果分区成长超过此数据，就冒着内存压力的风险，进而导致比较不理想的压缩。
 
 ```sql
 SELECT  rp.[name]                                AS [pool_name]
@@ -189,7 +189,7 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 > 
 > 
 
-然后，我们可以查询行计数使用`sys.partitions`目录视图：
+然后，可以使用 `sys.partitions` 目录视图来查询行计数：
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name

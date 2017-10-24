@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 09/27/2017
+ms.date: 10/09/2017
 ms.author: genemi
+ms.openlocfilehash: f62184d97b18d72b91d63db0e449bbab6c20a179
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: e4ee69abe0b3b5d594ee191cc8210d25c325efaa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 09/28/2017
 
 虚拟网络：可以让虚拟网络与 Azure 订阅相关联。
 
-****子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 虚拟网络服务终结点：[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
@@ -118,9 +117,16 @@ RBAC 备用：
 
 可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
-#### <a name="limitations"></a>限制
+
+
+
+
+
+## <a name="limitations"></a>限制
 
 对于 Azure SQL 数据库，虚拟网络规则功能具有以下限制：
+
+- 在 SQL 数据库的防火墙中，每个虚拟网络规则都引用一个子网。 引用的所有这些子网都必须托管在同一个托管 SQL 数据库的地理区域内。
 
 - 对于任何给定的虚拟网络，每个 Azure SQL 数据库服务器最多可拥有 128 个 ACL 条目。
 
@@ -146,9 +152,36 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 
 
+## <a name="errors-40914-and-40615"></a>错误 40914 和 40615
+
+连接错误 40914 与虚拟网络规则（如 Azure 门户中的“防火墙”窗格所指定）相关。 错误 40615 基本相似，不同之处在于与“防火墙”上的“IP 地址规则”相关。
+
+#### <a name="error-40914"></a>错误 40914
+
+消息正文：无法打开登录时请求的服务器 [server-name]。 不允许客户端访问服务器。
+
+错误描述：客户端位于包含虚拟网络服务器终结点的子网中。 不过，Azure SQL 数据库服务器没有虚拟网络规则授权子网与 SQL 数据库进行通信。
+
+错误解决方法：在 Azure 门户的“防火墙”窗格中，使用虚拟网络规则控件为子网[添加虚拟网络规则](#anchor-how-to-by-using-firewall-portal-59j)。
+
+#### <a name="error-40615"></a>错误 40615
+
+消息正文：无法打开登录时请求的服务器“{0}”。 不允许具有 IP 地址“{1}”的客户端访问服务器。
+
+错误描述：客户端尝试从未经授权连接到 Azure SQL 数据库服务器的 IP 地址进行连接。 服务器防火墙没有 IP 地址规则允许客户端从给定 IP 地址与 SQL 数据库进行通信。
+
+错误解决方法：输入客户端 IP 地址作为 IP 规则。 为此，可以使用 Azure 门户中的“防火墙”窗格。
+
+
+[此处][sql-database-develop-error-messages-419g]收录了多个 SQL 数据库错误消息的列表。
+
+
+
+
+
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
-## <a name="how-to-create-a-virtual-network-rule-by-using-the-portal"></a>如何使用门户创建虚拟网络规则
+## <a name="portal-can-create-a-virtual-network-rule"></a>门户可以创建虚拟网络规则
 
 本部分介绍如何使用 [Azure 门户][http-azure-portal-link-ref-477t]在 Azure SQL 数据库中创建虚拟网络规则。 此规则要求 SQL 数据库接受来自特定子网的通信，该子网已被标记为“虚拟网络服务终结点”。
 
@@ -232,6 +265,8 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 
+[sql-database-develop-error-messages-419g]: sql-database-develop-error-messages.md
+
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]: sql-database-vnet-service-endpoint-rule-powershell.md
 
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]: sql-database-vnet-service-endpoint-rule-powershell.md#a-verify-subnet-is-endpoint-ps-100
@@ -262,5 +297,4 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 
 - ARM templates
 -->
-
 

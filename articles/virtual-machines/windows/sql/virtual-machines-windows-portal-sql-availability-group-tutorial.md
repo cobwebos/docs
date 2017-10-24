@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
 ms.openlocfilehash: 228ca9ca5fddc493d27bfd6a40df5ee7306d6aa9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
@@ -54,7 +54,8 @@ ms.lasthandoff: 07/11/2017
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
-<a name="CreateCluster"></a>
+<a name="CreateCluster">
+</a>
 ##创建群集
 
 完成先决条件后，首先要创建包含两个 SQL Sever 和一个见证服务器的 Windows Server 故障转移群集。  
@@ -86,9 +87,9 @@ ms.lasthandoff: 07/11/2017
    ![群集属性](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
 3. 选择“静态 IP 地址”，并在“地址”文本框中指定 SQL Server 所在子网中可用的地址。 然后单击“确定”。
-4. 在“群集核心资源”部分中，右键单击群集名称，并单击“联机”。 然后等待两个资源都已联机。 当该群集名称资源联机时，它会用新的 AD 计算机帐户更新 DC 服务器。 稍后需使用此 AD 帐户运行可用性组群集服务。
+4. 在“群集核心资源”部分中，右键单击群集名称，并单击“联机”。 然后等待这两个资源都处于联机状态。 当该群集名称资源联机时，它会用新的 AD 计算机帐户更新 DC 服务器。 稍后需使用此 AD 帐户运行可用性组群集服务。
 
-### <a name="addNode"></a>将另一个 SQL Server 添加到群集
+### <a name="addNode"></a>将其他 SQL Server 添加到群集
 
 将另一个 SQL Server 添加到群集。
 
@@ -341,7 +342,7 @@ Repeat these steps on the second SQL Server.
 
 SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均衡器存储可用性组侦听器的 IP 地址。 本部分概述如何在 Azure 门户中创建负载均衡器。
 
-1. 在 Azure 门户中，转到 SQL Server 所在的资源组，然后单击“+ 添加”。
+1. 在 Azure 门户中，转到 SQL Server 所在的资源组，并单击“+ 添加”。
 2. 搜索“负载均衡器”。 选择 Microsoft 发布的负载均衡器。
 
    ![故障转移群集管理器中的可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
@@ -405,7 +406,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    | **协议** | 选择 TCP | TCP |
    | **端口** | 任何未使用的端口 | 59999 |
    | **间隔**  | 探测尝试之间的时间长短（秒） |5 |
-   | **不正常阈值** | 虚拟机不可避免且被视为不正常的连续探测失败次数  | 2 |
+   | **不正常阈值** | 虚拟机不可避免且被视为不正常的连续探测失败次数  | #N/A |
 
 1. 单击“确定”以设置运行状况探测。
 

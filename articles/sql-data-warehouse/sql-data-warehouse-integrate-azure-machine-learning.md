@@ -16,13 +16,13 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>将 Azure 机器学习与 SQL 数据仓库配合使用
-Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 数据仓库中针对数据创建预测模型，然后将这些模型发布为随时可供使用的 Web 服务。 可以阅读 [Azure 上的机器学习简介][Introduction to Machine Learning on Azure]，了解有关预测分析和机器学习的基本知识。  然后，你可以学习如何创建、 训练、 评分和测试机器学习模型使用[创建试验教程][Create experiment tutorial]。
+Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 数据仓库中针对数据创建预测模型，然后将这些模型发布为随时可供使用的 Web 服务。 可以阅读 [Azure 上的机器学习简介][Introduction to Machine Learning on Azure]，了解有关预测分析和机器学习的基本知识。  然后，可以通过[创建试验教程][Create experiment tutorial]了解如何创建、定型、评分和测试机器学习模型。
 
 本文介绍如何使用 [Azure 机器学习工作室][Azure Machine Learning Studio]来执行以下操作：
 
@@ -30,10 +30,10 @@ Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 
 * 将数据写入数据库
 
 ## <a name="read-data-from-sql-data-warehouse"></a>从 SQL 数据仓库读取数据
-我们从 AdventureWorksDW 数据库中的 Product 表读取数据。
+我们将从 AdventureWorksDW 数据库中的 Product 表读取数据。
 
 ### <a name="step-1"></a>步骤 1
-单击 Machine Learning Studio 窗口底部的“+新建”，选择“试验”，并选择“空白试验”开始新的试验。 选择画布顶部的默认试验名称，并将它重命名为有意义的名称，例如“自行车价格预测”。
+单击 Machine Learning Studio 窗口底部的“+新建”，选择“试验”，并选择“空白试验”开始新的试验。 选择画布顶部的默认试验名称，然后将它重命名为有意义的名称，例如“自行车价格预测”。
 
 ### <a name="step-2"></a>步骤 2
 在试验画布左侧的数据集和模块控制板中查找“读取器”模块。 将此模块拖放到试验画布。
@@ -51,7 +51,7 @@ Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 
 2. 服务器用户帐户名：键入具有数据库访问权限的帐户的用户名。
 3. 服务器用户帐户名：提供指定的用户帐户的密码。
 4. 接受任何服务器证书：如果要在读取数据之前跳过审查站点证书，请使用此选项（较不安全）。
-5. 数据库查询：输入 SQL 语句用于描述要读取的数据。 在本例中，我们使用以下查询从 Product 表读取数据。
+5. 数据库查询：输入 SQL 语句用于描述要读取的数据。 在本例中，我们将使用以下查询从 Product 表读取数据。
 
 ```SQL
 SELECT ProductKey, EnglishProductName, StandardCost,
@@ -64,7 +64,7 @@ FROM dbo.DimProduct;
 
 ### <a name="step-4"></a>步骤 4
 1. 单击试验画布下面的“运行”以运行试验。
-2. 试验完成时，“读取器”模块出现绿色复选标记，表示它已成功完成。 另请留意右上角的“已完成运行”状态。
+2. 试验完成时，“读取器”模块将出现绿色复选标记，表示它已成功完成。 另请留意右上角的“已完成运行”状态。
 
 ![][run]
 
@@ -100,7 +100,7 @@ FROM dbo.DimProduct;
 6. 接受任何服务器证书(不安全)：如果不想要查看证书，请选择此选项。
 7. 要保存的列的逗号分隔列表：提供要输出的数据集或结果列的列表。
 8. 数据表名称：指定数据表的名称。
-9. 数据表列的逗号分隔列表：指定要在新表中使用的列名称。 列名可以不同于源数据集中的名称，但在此处列出的列数必须与你为输出表定义的列数相同。
+9. 数据表列的逗号分隔列表：指定要在新表中使用的列名称。 虽然列名称可以与源数据集中的名称不同，但在此处列出的列数必须与为输出表定义的列数相同。
 10. 每个 SQL Azure 操作写入的行数：可以配置在一个操作中写入到 SQL 数据库的行数。
 
 ![][writer_properties]

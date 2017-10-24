@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
 ms.openlocfilehash: 5a47001705531d971d3181df9c0aa8f957168845
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB 帐户。 然后，可使用 Azure Cosmos DB 数据库作为 MongoDB 应用的数据存储。 
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
 
     ![“快速启动”边栏选项卡](./media/connect-mongodb-account/QuickStartBlade.png)
 
-## <a id="GetCustomConnection"></a> 获取要自定义的 MongoDB 连接字符串
+## <a id="GetCustomConnection"></a>获取 MongoDB 连接字符串进行自定义
 1. 在 Internet 浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure Cosmos DB”边栏选项卡中，选择适用于 MongoDB 帐户的 API。 
 3. 在“帐户”边栏选项卡的左侧窗格中，单击“连接字符串”。 

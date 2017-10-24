@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: f13fd0540b783120014b3a8d4e41f78808c7fade
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-service-issues"></a>服务问题故障排除指南
 以下是在 Azure Mobile Engagement 运行时可能会遇到的问题。
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
 6) 要测试是否是 OS 升级到最终用户设备的问题，这需要 SDK 升级来解决：
 
 * 在具有不同 OS 版本的不同设备上测试应用程序。
-* 确认你使用最新版本的 sdk。
+* 确认使用的是最新版本的 SDK。
 
 ## <a name="connectivity-and-incorrect-information-issues"></a>连接和不正确信息的问题
 ### <a name="issue"></a>问题

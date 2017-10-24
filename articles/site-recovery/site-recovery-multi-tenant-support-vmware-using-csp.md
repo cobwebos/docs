@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: manayar
 ms.openlocfilehash: 97edbe67c25036dc1156f0f0ca5431a617d7a004
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>Azure Site Recovery 中通过 CSP 将 VMware 虚拟机复制到 Azure 的多租户支持
 
@@ -29,7 +29,7 @@ Azure Site Recovery 支持适用于租户订阅的多租户环境。 它还支�
 ## <a name="multi-tenant-environments"></a>多租户环境
 有三种主要的多租户模型：
 
-* **共享托管服务提供程序 (HSP)**: 伙伴拥有的物理基础结构和使用共享的资源 （vCenter、 数据中心、 物理存储等） 来承载同一基础结构上的多个租户的 Vm。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
+* **共享托管服务提供程序 (HSP)**：合作伙伴拥有物理基础结构，并使用共享资源（vCenter、数据中心、物理存储等）在同一基础结构上托管多个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
 
 * 专用托管服务提供程序：合作伙伴拥有物理基础结构，但使用专用资源（多个 vCenter、物理数据存储等）在单独的基础结构上托管每个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有它作为自助解决方案。
 
@@ -43,7 +43,7 @@ Azure Site Recovery 支持适用于租户订阅的多租户环境。 它还支�
 下图对此体系结构做了演示：
 
 ![使用一个 vCenter 的共享 HSP](./media/site-recovery-multi-tenant-support-vmware-using-csp/shared-hosting-scenario.png)  
-**包含一个 vCenter 的共享托管方案**
+**使用一个 vCenter 的共享托管方案**
 
 如上图所示，每个客户都有一个单独的管理服务器。 此配置限制租户访问特定于租户的 VM，实现了租户隔离。 VMware 虚拟机复制方案使用配置服务器来管理帐户，以便发现 VM 和安装代理。 我们遵循多租户环境的相同原则，只是增加了通过 vCenter 访问控制限制 VM 发现这一规定。
 
@@ -56,9 +56,9 @@ Azure Site Recovery 支持适用于租户订阅的多租户环境。 它还支�
 
 ### <a name="every-cs-in-the-multi-tenant-scenario-uses-two-accounts"></a>在多租户方案中，每个 CS 使用两个帐户
 
-- **vCenter 访问帐户**：使用此帐户可发现租户 VM。 它有分配给自己的 vCenter 访问权限（在下一部分介绍）。 为了避免意外访问泄漏，建议合作伙伴在配置工具中自行输入这些凭据。
+- **vCenter 访问帐户**：使用此帐户来发现租户 VM。 它有分配给自己的 vCenter 访问权限（在下一部分介绍）。 为了避免意外访问泄漏，建议合作伙伴在配置工具中自行输入这些凭据。
 
-- **虚拟机访问帐户**：使用此帐户可通过自动推送在租户 VM 上安装移动代理。 它通常为域帐户，可以由租户提供给合作伙伴，也可以由合作伙伴直接管理。 如果不希望将详细信息直接共享给合作伙伴，租户可以在进行有时间限制的 CS 访问时输入凭据，也可以在合作伙伴的协助下，手动安装移动代理。
+- **虚拟机访问帐户**：此帐户用于通过自动推送在租户 VM 上安装移动代理。 它通常为域帐户，可以由租户提供给合作伙伴，也可以由合作伙伴直接管理。 如果不希望将详细信息直接共享给合作伙伴，租户可以在进行有时间限制的 CS 访问时输入凭据，也可以在合作伙伴的协助下，手动安装移动代理。
 
 ### <a name="requirements-for-a-vcenter-access-account"></a>vCenter 访问帐户的要求
 
@@ -74,11 +74,11 @@ vCenter 帐户访问过程如下所示：
 
 2. 将以下权限分配给该角色：
 
-    * **数据存储**：分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件
+    * **数据存储**：分配空间、浏览数据存储、降低文件操作级别、删除文件、更新虚拟机文件
 
     * **网络**：网络分配
 
-    * **资源**：将 VM 分配到资源池、迁移已关机的 VM、迁移已开机的 VM
+    * **资源**：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
 
     * **任务**：创建任务、更新任务
 
@@ -116,14 +116,14 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 如下图所示，专用托管解决方案中的体系结构差异在于，每个租户的基础结构是专为该租户设置的。 由于租户是通过单独的 vCenter 隔离的，因此托管提供者仍需遵循为共享托管提供的 CSP 步骤，但不需担心租户隔离。 CSP 安装程序保持不变。
 
 ![architecture-shared-hsp](./media/site-recovery-multi-tenant-support-vmware-using-csp/dedicated-hosting-scenario.png)  
-**包含多个 vCenter 的专用托管方案**
+**多个 vCenter 的专用托管方案**
 
 ### <a name="managed-service-solution"></a>托管服务解决方案
 
 如下图所示，托管服务解决方案中的体系结构差异在于，每个租户的基础结构在物理上也是与其他租户的基础结构分隔开的。 当租户拥有基础结构但需解决方案提供商管理灾难恢复时，通常使用此方案。 由于租户是通过不同的基础结构进行物理隔离的，因此合作伙伴仍需遵循为共享托管提供的 CSP 步骤，但不需担心租户隔离。 CSP 预配保持不变。
 
 ![architecture-shared-hsp](./media/site-recovery-multi-tenant-support-vmware-using-csp/managed-service-scenario.png)  
-**包含多个 vCenter 的托管服务方案**
+**多个 vCenter 的托管服务方案**
 
 ## <a name="csp-program-overview"></a>CSP 计划概述
 [CSP 计划](https://partner.microsoft.com/en-US/cloud-solution-provider)倡导合作共赢，为合作伙伴提供所有的 Microsoft 云服务，包括 Office 365、企业移动性套件、Microsoft Azure。 有了 CSP，合作伙伴就可以与客户建立端到端关系，并在建立关系的过程中充当主要联络点。 合作伙伴可以为客户部署 Azure 订阅，并将这些订阅与自己的增值型自定义产品/服务相结合。

@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: larryfr
 ms.openlocfilehash: 474f901ffdaf1ed372ace19076ef723b8b10cb9a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>将 Pig 与 Hadoop on HDInsight 配合使用
 
@@ -28,8 +28,7 @@ ms.lasthandoff: 08/18/2017
 
 Pig 是一个平台，可以使用名为 *Pig Latin* 的过程语言为 Hadoop 创建程序。 Pig 可以替代 Java 来创建 *MapReduce* 解决方案，它已包括在 Azure HDInsight 中。 使用下表可以找出将 Pig 与 HDInsight 配合使用的各种方法：
 
-| 
-            **使用此方法**，如果想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
+| **使用此方法**，如果想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](hdinsight-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
 | [REST API](hdinsight-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |
@@ -40,7 +39,7 @@ Pig 是一个平台，可以使用名为 *Pig Latin* 的过程语言为 Hadoop �
 > [!IMPORTANT]
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-## <a id="why"></a>为何使用 Pig
+## <a id="why"></a>使用 Pig 的原因
 
 在 Hadoop 中使用 MapReduce 来处理数据时，其中一项难题是仅使用映射和化简函数来实现处理逻辑。 进行复杂的处理时，通常必须将处理分解成多个 MapReduce 操作，这些操作合在一起即可获得所需的结果。
 
@@ -99,8 +98,7 @@ HDInsight 提供各种示例数据集，它们存储在 `/example/data` 和 `/Hd
 
 HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来确定哪种方法最适合，并按链接进行演练。
 
-| 
-            **使用此方法**，如果想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...通过此**客户端** |
+| **使用此方法**，如果想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...通过此**客户端** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](hdinsight-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
 | [Curl](hdinsight-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |

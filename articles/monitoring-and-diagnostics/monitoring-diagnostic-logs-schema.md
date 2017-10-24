@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/10/2017
 ms.author: johnkem
+ms.openlocfilehash: 2e99b7afa4e458e9ef62314e65d9e386657a747b
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 23da12e518d88109fd7271fd363b6c1f099c5ab6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -30,22 +29,22 @@ ms.lasthandoff: 09/25/2017
 
 | 服务 | 架构和文档 |
 | --- | --- |
-| API 管理 | 架构不可用。 |
+| API 管理 | [API 管理诊断日志](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
 | Customer Insights | 架构不可用。 |
 | 内容传送网络 | 架构不可用。 |
-| CosmosDB | 架构不可用。 |
+| CosmosDB | [Azure Cosmos DB 日志记录](../cosmos-db/logging.md) |
 | 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
-| IoT 中心预配服务 | 架构不可用。 |
+| IoT 中心 | [IoT 中心操作](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure 密钥保管库日志记录](../key-vault/key-vault-logging.md) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md) |
-| 公共 IP 地址 DDOS 保护 | 架构不可用。 |
+| DDOS 保护 | 架构不可用。 |
 | 恢复服务 | 架构不可用。|
 | 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
 | 服务器管理 | 架构不可用。 |
@@ -99,8 +98,8 @@ ms.lasthandoff: 09/25/2017
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|数据库等待统计信息|
-|Microsoft.Sql/servers/databases|Timeouts|超时|
-|Microsoft.Sql/servers/databases|Blocks|块|
+|Microsoft.Sql/servers/databases|超时|超时|
+|Microsoft.Sql/servers/databases|块|块|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.StreamAnalytics/streamingjobs|执行|执行|
 |Microsoft.StreamAnalytics/streamingjobs|创作|创作|
@@ -111,4 +110,3 @@ ms.lasthandoff: 09/25/2017
 * [将资源诊断日志流式传输到事件中心](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [使用 Azure Monitor REST API 更改资源诊断设置](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [使用 Log Analytics 分析 Azure 存储中的日志](../log-analytics/log-analytics-azure-storage.md)
-

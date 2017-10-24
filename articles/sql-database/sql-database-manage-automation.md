@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: jhubbard
 ms.openlocfilehash: 7f45b8b654691063823c13bee61e9bb874a6a13a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>使用 Azure 自动化管理 Azure SQL 数据库
 本指南介绍 Azure 自动化服务，以及如何使用它来简化 Azure SQL 数据库的管理。
@@ -36,7 +36,7 @@ Azure 自动化能够提供高度可靠且长期可用的工作流执行引擎�
 
 Azure 自动化还可以通过使用 PowerShell 发出 SQL 命令，与 SQL Server 直接通信。
 
-[Azure Automation runbook 库](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/)包含各种产品团队和社区 runbook，以帮助你开始自动管理 Azure SQL 数据库、 其他 Azure 服务和第三方系统。 库中 Runbook 的功能包括：
+[Azure 自动化 Runbook 库](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/)包含产品团队和社区提供的各种 Runbook，有助于开始自动管理 Azure SQL 数据库、其他 Azure 服务和第三方系统。 库中 Runbook 的功能包括：
 
 * [对 SQL Server 数据库运行 SQL 查询](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
 * [按计划纵向缩放（向上或向下）Azure SQL 数据库](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
@@ -49,5 +49,5 @@ Azure 自动化还可以通过使用 PowerShell 发出 SQL 命令，与 SQL Serv
 * [Azure 自动化概述](../automation/automation-intro.md)
 * [第一个 Runbook](../automation/automation-first-runbook-graphical.md)
 * [Azure 自动化学习路线图](https://azure.microsoft.com/documentation/learning-paths/automation/)
-* [Azure 自动化： 云中你 SQL 代理](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
+* [Azure 自动化：云中的 SQL 代理](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
 

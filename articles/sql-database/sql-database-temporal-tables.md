@@ -16,13 +16,13 @@ ms.workload: sql-database
 ms.date: 01/10/2017
 ms.author: bonova
 ms.openlocfilehash: d84db682089c65c2716d2d9bd92f7bc0ac47af27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL 数据库中的临时表入门
-临时表是 Azure SQL 数据库中新的可编程功能，可用于跟踪和分析数据更改的完整历史记录，而无需编写自定义代码。 临时表保存与时间上下文密切相关的数据，因此，只有特定时段内的存储事实才会解译为有效。 临时表的这种属性可让用户执行基于时间的有效分析，并从数据演变中获得见解。
+时态表是 Azure SQL 数据库中新的可编程功能，可让你跟踪和分析数据更改的完整历史记录，而无需编写自定义代码。 临时表保存与时间上下文密切相关的数据，因此，只有特定时段内的存储事实才会解译为有效。 临时表的这种属性可让用户执行基于时间的有效分析，并从数据演变中获得见解。
 
 ## <a name="temporal-scenario"></a>临时表方案
 本文演示了在应用程序方案中使用临时表的步骤。 假设你想要从头开始跟踪开发中的新网站上的用户活动，或跟踪要使用用户活动分析扩展的现有网站上的用户活动。 在这个简化的示例中，我们假设一段时间内浏览过的网页数是需要在托管于 Azure SQL 数据库上的网站数据库中捕获和监视的指标。 用户活动历史分析的目标是获取有关重新设计网站的意见，并为访客提供更好的体验。
@@ -50,7 +50,7 @@ ms.lasthandoff: 07/11/2017
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-也可以通过直接指定 Transact-SQL 语句来创建临时表，如以下示例中所示。 请注意，每个临时表的必需元素为 PERIOD 定义以及引用将存储历史行版本的另一个用户表的 SYSTEM_VERSIONING 子句：
+也可以通过直接指定 Transact-SQL 语句来创建临时表，如以下示例中所示。 请注意，每个临时表的必需元素为 PERIOD 定义以及可引用将存储历史行版本的另一个用户表的 SYSTEM_VERSIONING 子句：
 
 ````
 CREATE TABLE WebsiteUserInfo 
@@ -121,7 +121,7 @@ WHERE [UserID] = 1;
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
 ## <a name="step-3-perform-historical-data-analysis"></a>步骤 3：执行历史数据分析
-现在，当启用版本由系统控制的临时表时，只需一个查询就能执行历史数据分析。 本文将提供一些解决常见分析方案的示例 - 若要了解所有详细信息，请浏览随 [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) 子句一起引入的各种选项。
+现在，当启用版本由系统控制的临时表时，只需一个查询就能执行历史数据分析。 本文将提供一些解决常见分析方案的示例 - 要了解所有详细信息，请浏览随 [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) 子句一起引入的各种选项。
 
 若要查看按访问网页次数排序的前 10 个用户，请运行以下查询：
 

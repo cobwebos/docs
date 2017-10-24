@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>开发 U-SQL 用户定义的运算符 (UDO)
 了解如何开发用户定义的运算符以处理 U-SQL 作业中的数据。
@@ -120,7 +120,7 @@ ms.lasthandoff: 07/11/2017
 7. 指定 Data Lake Analytics 帐户、数据库和架构。
 8. 在“解决方案资源管理器”中，右键单击“Script.usql”，并单击“生成脚本”。
 9. 在“解决方案资源管理器”中，右键单击“Script.usql”，并单击“提交脚本”。
-10. 如果你尚未连接到你的 Azure 订阅，系统将提示输入 Azure 帐户凭据。
+10. 如果尚未连接到 Azure 订阅，系统将提示输入 Azure 帐户凭据。
 11. 单击“提交”。 完成提交后，“结果”窗口中会出现提交结果和作业链接。
 12. 单击“刷新”按钮以查看最新的作业状态和刷新屏幕。
 

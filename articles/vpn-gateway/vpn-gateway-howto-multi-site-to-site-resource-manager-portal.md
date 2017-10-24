@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: cherylmc
 ms.openlocfilehash: 7ec57789ee76f4ec54e4f7b68ea75c19522f3d7c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet
 
@@ -55,24 +55,24 @@ ms.lasthandoff: 07/11/2017
 2. 单击“**所有资源**”，从资源列表中找到“**虚拟网络网关**”并单击它。
 3. 在“**虚拟网络网关**”边栏选项卡中，单击“**连接**”。
    
-    ![“连接”边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Connections blade")<br>
+    ![连接边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "连接边栏选项卡")<br>
 4. 在“**连接**”边栏选项卡中，单击“**+添加**”。
    
-    ![“添加连接”按钮](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Add connection button")<br>
+    ![添加连接按钮](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "添加连接按钮")<br>
 5. 在“**添加连接**”边栏选项卡中填写以下字段：
    
    * **名称：**想与其建立连接的站点的名称。
    * **连接类型：**选择“**站点到站点(IPsec)**”。
      
-     ![“添加连接”边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection blade")<br>
+     ![添加连接边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "添加连接边栏选项卡")<br>
 
 ## <a name="part2"></a>第 2 部分 - 添加本地网络网关
-1. 单击“**本地网络网关**”“***选择本地网络网关***”。 此时会打开“选择本地网络网关”边栏选项卡。
+1. 单击“**本地网络网关**”“***选择本地网络网关***”。 此时会打开“**选择本地网络网关**”边栏选项卡。
    
-    ![选择本地网络网关](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Choose local network gateway")<br>
+    ![选择本地网络网关](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "选择本地网络网关")<br>
 2. 单击“**新建**”打开“**创建本地网络网关**”边栏选项卡。
    
-    ![“创建本地网络网关”边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Create local network gateway")<br>
+    ![创建本地网络网关边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "创建本地网络网关")<br>
 3. 在“**创建本地网络网关**”边栏选项卡中填写以下字段：
    
    * **名称：**要分配给本地网络网关资源的名称。
@@ -81,9 +81,9 @@ ms.lasthandoff: 07/11/2017
 4. 在“**创建本地网络网关**”边栏选项卡中，单击“**确定**”保存更改。
 
 ## <a name="part3"></a>第 3 部分 - 添加共享密钥并创建连接
-1. 在“**添加连接**”边栏选项卡中，添加用于创建连接的共享密钥。 可以从 VPN 设备获取共享密钥，或者在此边栏选项卡中创建一个共享密钥，并将 VPN 设备配置为使用这个共享密钥。 重要的一点是，这两个密钥必须完全相同。
+1. 在“**添加连接**”边栏选项卡中，添加用于创建连接的共享密钥。 可以从 VPN 设备获取共享密钥，或者在此边栏选项卡中创建一个共享密钥，然后将 VPN 设备配置为使用这个共享密钥。 重要的一点是，这两个密钥必须完全相同。
    
-    ![共享密钥](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Shared key")<br>
+    ![共享密钥](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "共享密钥")<br>
 2. 单击边栏选项卡底部的“**确定**”创建连接。
 
 ## <a name="part4"></a>第 4 部分 - 验证 VPN 连接

@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: mingzhan
 ms.openlocfilehash: 0bccdc1cfdbda06b57da8cd662373ef137768672
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
 
-在本文中，你将了解如何在运行 Linux 的 Azure 虚拟机上安装和配置 PostgreSQL。
+在本文中，将了解如何在运行 Linux 的 Azure 虚拟机上安装和配置 PostgreSQL。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -79,7 +79,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 2. 为数据库创建一个目录：
    
         # mkdir -p /opt/pgsql_data
-3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（本例中称为 *postgres*）：
+3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（在我们的示例中称为“postgres”）：
    
         # useradd postgres
    
@@ -112,7 +112,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
    
         $ which psql
    
-    如果安装成功，你将看到以下响应：
+    如果安装成功，会看到以下响应：
    
         /opt/pgsql/bin/psql
 7. 还可以检查 PostgreSQL 版本：
@@ -225,12 +225,12 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     delete from potluck where name=’John’;
 
-这将删除“John”行中的所有信息。 输出为：
+这会删除“John”行中的所有信息。 输出为：
 
 ![图像](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新表中的数据
-使用以下命令来更新表中的数据。 在此示例中，Sandy 已经确认将出席活动，因此我们将她的回复从“N”更改为“Y”：
+使用以下命令来更新表中的数据。 在此示例中，Sandy 已确认将出席活动，因此我们将她的 RSVP 从“N”更改为“Y”：
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

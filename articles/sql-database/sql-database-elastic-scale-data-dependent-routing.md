@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 03/27/2017
 ms.author: ddove
 ms.openlocfilehash: 6b68bbb0133afd1493acdb58f79f3eeaf6a8d7cd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-dependent-routing"></a>数据依赖型路由
 **数据依赖型路由**是使用查询中的数据将请求路由到相应数据库的功能。 在使用分片数据库时，它是一种基础模式。 请求上下文也可用于路由请求，尤其是当分片键不是查询的一部分时。 将应用程序中使用数据依赖路由的每个特定查询和事务限制为针对每个请求访问单一数据库。 对于 Azure SQL 数据库弹性工具，这种路由是通过 ADO.NET 应用程序中的 **[ShardMapManager 类](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**实现的。
 
-应用程序无需在分片环境中跟踪与不同的数据片相关联的各种连接字符串或数据库位置。 但是，[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)在需要时基于分片映射中的数据以及作为应用程序请求目标的分片键值，建立与正确数据库的连接。 （该键通常为 *customer_id*、*tenant_id*、*date_key* 或一些作为数据库请求的基础参数的其他特定标识符）。 
+应用程序无需在分片环境中跟踪与不同的数据片相关联的各种连接字符串或数据库位置。 但是，[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)在需要时基于分片映射中的数据以及作为应用程序请求目标的分片键值，将开放连接分发给正确的数据库。 （该键通常为 *customer_id*、*tenant_id*、*date_key* 或一些作为数据库请求的基础参数的其他特定标识符）。 
 
 有关详细信息，请参阅[使用数据依赖型路由缩放 SQL Server](https://technet.microsoft.com/library/cc966448.aspx)。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 如果应用程序本身无法处理分片映射，在工厂方法中使用的凭据应该对**全局分片映射**数据库仅有只读权限。 这些凭据通常与用于到分片映射管理器的开放连接的凭据不同。 另请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。 
 
 ## <a name="call-the-openconnectionforkey-method"></a>调用 OpenConnectionForKey 方法
-**[ShardMap.OpenConnectionForKey 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)**将返回 ADO.Net 连接，该连接可随时基于 **key** 参数的值将命令分发到相应的数据库中。 **ShardMapManager** 将分片信息缓存在应用程序中，因此这些请求通常不会针对**全局分片映射**数据库调用数据库查找。 
+**[ShardMap.OpenConnectionForKey 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)**将返回 ADO.Net 连接，该连接可随时基于 key 参数的值将命令分发到相应的数据库中。 **ShardMapManager** 将分片信息缓存在应用程序中，因此这些请求通常不会针对**全局分片映射**数据库调用数据库查找。 
 
     // Syntax: 
     public SqlConnection OpenConnectionForKey<TKey>(
@@ -53,10 +53,10 @@ ms.lasthandoff: 07/11/2017
 
 
 * **key** 参数在分片映射中用作查找键，以确定该请求的相应数据库。 
-* **connectionString** 用于仅传递所需连接的用户凭据。 此 *connectionString* 中不包含数据库名称或服务器名称，因为该方法使用 **ShardMap**确定数据库和服务器。 
+* **connectionString** 用于仅传递所需连接的用户凭据。 此 *connectionString* 中不包含数据库名称或服务器名称，因为该方法将使用 **ShardMap** 确定数据库和服务器。 
 * 在分片映射可能会发生更改并且行可能会由于拆分或合并操作而移到其他数据库的环境中，**[connectionOptions](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions.aspx)** 应设置为 **ConnectionOptions.Validate**。 在将连接传送到应用程序之前，这涉及在目标数据库上简要查询局部分片映射（而不是全局分片映射）。 
 
-如果针对局部分片映射进行的验证失败（指示缓存不正确），分片映射管理器通过查询全局分片映射来获取新的正确值以供查找、更新缓存，以及获取和返回相应的数据库连接。 
+如果针对局部分片映射进行的验证失败（指示缓存不正确），分片映射管理器将查询全局分片映射来获取新的正确值以供查找、更新缓存，以及获取和返回相应的数据库连接。 
 
 仅在应用程序处于联机状态时没有按预期进行分片映射更改的情况下，才使用 **ConnectionOptions.None**。 在该情况下，可以假设缓存的值始终正确，并且可以安全地跳过对目标数据库的额外双向验证调用。 这可以减少数据库流量。 还可以通过配置文件中的某个值设置 **connectionOptions**，以指示在此期间是否按预期进行了分片更改。  
 
@@ -117,11 +117,10 @@ int newPersonId = 4321;
 </code></pre>
 
 
-当你生成弹性数据库示例应用程序时，自动下载需要实现暂时性故障处理的程序包。 
-            [Enterprise Library - 暂时性故障处理应用程序块](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)也会单独提供程序包。 使用版本 6.0 或更高版本。 
+生成弹性数据库示例应用程序时，会自动下载需要实现暂时性故障处理的程序包。 [Enterprise Library - 暂时性故障处理应用程序块](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)也将单独提供程序包。 使用版本 6.0 或更高版本。 
 
 ## <a name="transactional-consistency"></a>事务一致性
-确保分片的所有局部操作的事务属性。 例如，通过依赖于数据的路由提交的事务会在目标分片范围内执行以供连接。 此时，没有提供用于将多个连接包含在一个事务中的功能，因此对于在分片上执行的操作，没有事务保证。
+确保分片的所有局部操作的事务属性。 例如，通过数据依赖路由提交的事务会在目标分片范围内执行以供连接。 此时，没有提供用于将多个连接包含在一个事务中的功能，因此对于在分片上执行的操作，没有事务保证。
 
 ## <a name="next-steps"></a>后续步骤
 若要分离分片或重新附加分片，请参阅[使用 RecoveryManager 类解决分片映射问题](sql-database-elastic-database-recovery-manager.md)

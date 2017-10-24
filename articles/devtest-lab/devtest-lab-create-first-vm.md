@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/24/2017
 ms.author: tarcher
 ms.openlocfilehash: aa6b60b799e1e98815cf288d5612f98cd77cc00e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中创建第一个 VM
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
     **注意：**如果对开发测试实验室或配置项目不熟悉，请参阅[向 VM 中添加现有项目](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm)部分，并在完成后返回此处。
 1. 选择“创建”将指定的 VM 添加到实验室。
 
-   实验室边栏选项卡显示的状态的虚拟机的创建-首先为**创建**，然后随着**运行**VM 已启动。
+   实验室边栏选项卡显示 VM 的创建状态 - 先是显示为“正在创建”，然后当启动 VM 后显示为“正在运行”。
 
 ## <a name="next-steps"></a>后续步骤
 * 创建 VM 后，可通过选择 VM 边栏选项卡上的“连接”来连接 VM。

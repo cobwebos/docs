@@ -16,21 +16,22 @@ ms.workload: service-fabric
 ms.date: 08/16/2017
 ms.author: ryanwi
 ms.custom: mvc
+ms.openlocfilehash: d4bc835399aef667cfb893e6473d84f57fc84a05
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: b109d1f3082fa3017f34bed685fd008ff3630394
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell 示例
 
 下表包含用于创建和管理 Service Fabric 群集、应用程序和服务的 PowerShell 脚本示例的链接。
 
+[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+
 | | |
 |-|-|
 | **创建群集** ||
-| [创建安全群集](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 创建 Azure Service Fabric 群集。 |
+| [创建群集 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 创建 Azure Service Fabric 群集。 |
 | **管理群集** ||
 | [添加应用程序证书](./scripts/service-fabric-powershell-add-application-certificate.md)| 将应用程序 X.509 证书添加到群集中的所有节点。 |
 | **管理应用程序** ||
@@ -38,4 +39,3 @@ ms.lasthandoff: 09/20/2017
 | [升级应用程序](./scripts/service-fabric-powershell-upgrade-application.md)| 升级应用程序 |
 | [删除应用程序](./scripts/service-fabric-powershell-remove-application.md)| 从群集中删除应用程序。|
 | [打开负载均衡器的端口](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | 打开 Azure 负载均衡器中的应用程序端口。 |
-

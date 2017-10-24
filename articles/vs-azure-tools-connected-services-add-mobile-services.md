@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 12/16/2015
 ms.author: mlearned
 ms.openlocfilehash: d185fdafebad56f8970e390b2a0672c3fb84df8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务添加移动服务
 借助 Visual Studio 2015，可以使用“添加连接服务”对话框连接到 Azure 移动服务。 可以从任何 C# 客户端应用、任何 JavaScript 应用或跨平台 Cordova 应用进行连接。 连接后，可以创建并访问数据、创建自定义 API 和计划作业，或添加对推送通知的支持。  连接服务操作将添加所有适当的引用和连接代码。 还可以利用内置支持，以便使用各种常用身份标识方案（例如，Azure AD、Facebook、Twitter 和 Microsoft 帐户）进行身份验证。
@@ -50,7 +50,7 @@ ms.lasthandoff: 07/11/2017
    
     创建新的移动服务帐户：
    
-   1. 选择 * * 创建服务 * * 在对话框底部的链接。
+   1. 选择对话框底部的**创建服务**链接。
        ![添加新的移动连接服务](./media/vs-azure-tools-connected-services-add-mobile-services/IC797637.png)
    2. 在“创建移动服务”对话框中，可以选择 JavaScript 后端移动服务或从“运行时”下拉列表中选择 .NET 后端移动服务。 
       

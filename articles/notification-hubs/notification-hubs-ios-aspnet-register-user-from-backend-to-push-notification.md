@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
 > [!div class="op_single_selector"]
@@ -111,7 +111,7 @@ ms.lasthandoff: 07/11/2017
    > 
 8. 在 PushToUserAppDelegate.m 文件中，添加以下处理程序方法：
    
-   * (void) 应用程序:(UIApplication *) 应用程序 didReceiveRemoteNotification:(NSDictionary *) userInfo {NSLog (@"%@"，userInfo);  UIAlertView * 警报 = [[UIAlertView alloc] initWithTitle:@"Notification"消息: [userInfo objectForKey:@"inAppMessage"] 委托： nil cancelButtonTitle: @"确定"otherButtonTitles:nil、 nil];  [警报显示];}
+   * (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:                         [userInfo objectForKey:@"inAppMessage"] delegate:nil cancelButtonTitle:                         @"OK" otherButtonTitles:nil, nil];   [alert show]; }
    
    当应用程序接收到它正在运行的通知时，此方法会在 UI 中显示一个警报。
 9. 打开 PushToUserViewController.m 文件，并在以下实现中返回键盘：
@@ -208,7 +208,7 @@ ms.lasthandoff: 07/11/2017
     
     此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。 此 Web API 已在[使用通知中心通知用户]中定义。
 
-现在客户端应用程序已更新，请返回到 [使用通知中心通知用户] 并更新移动服务以使用通知中心发送通知。
+现在客户端应用程序已更新，请返回到[使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
 <!-- Anchors. -->
 

@@ -1,6 +1,6 @@
 ---
-title: "使用图形 API 生成 Azure Cosmos DB .NET 应用程序 | Microsoft Docs"
-description: "演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 .NET 代码示例"
+title: "使用图形 API 生成 Azure Cosmos DB .NET Framework 或 Core 应用程序 | Microsoft Docs"
+description: "演示了一个可以用来连接和查询 Azure Cosmos DB 的 .NET Framework/Core 代码示例"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -13,24 +13,25 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/28/2017
+ms.date: 10/06/2017
 ms.author: denlee
+ms.openlocfilehash: 4c90ead99c513a56f8891b889e2c873952a33ec8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 12c9bf626de8738fac95bd41965b0a2bf8758ed2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 .NET 应用程序
+# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 .NET Framework 或 Core 应用程序
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
 本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、数据库和图形（容器）。 然后将生成并运行基于[图形 API](graph-sdk-dotnet.md)（预览版）构建的控制台应用。  
 
 ## <a name="prerequisites"></a>先决条件
 
 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+
+如果已安装 Visual Studio 2017，请确保安装 [Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes) 及更高版本。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,6 +46,10 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
 现在让我们从 github 克隆图形 API 应用、设置连接字符串，并运行。 会看到以编程方式处理数据是多么容易。 
+
+此示例项目使用 .NET Core 项目格式，并已配置为面向以下框架：
+ - netcoreapp2.0
+ - net461
 
 1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
 
@@ -103,35 +108,37 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 Visual Studio 2017 中打开 App.config 文件。 
+1. 在 Visual Studio 2017 中，打开 appsettings.json 文件。 
 
 2. 在 Azure 门户上的 Azure Cosmos DB 帐户中，单击左侧导航栏中的“密钥”。 
 
     ![在 Azure 门户中的“密钥”页上查看和复制主密钥](./media/create-graph-dotnet/keys.png)
 
-3. 从门户中复制“URI”值，并在 App.config 中将其设置为终结点密钥的值。可以使用前一屏幕截图中显示的复制按钮来复制值。
+3. 从门户中复制“URI”值，并在 appsettings.json 中将其设置为终结点密钥的值。 可以使用前一屏幕截图中显示的复制按钮来复制值。
 
-    `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
+    `"endpoint": "https://FILLME.documents.azure.com:443/",`
 
 4. 从门户复制“主密钥”的值，并在 App.config 中将其设为 AuthKey 密钥的值，然后保存所做的更改。 
 
-    `<add key="AuthKey" value="FILLME" />`
+    `"authkey": "FILLME"`
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
+运行应用程序之前，建议将 Microsoft.Azure.Graphs 包更新到最新版本。
+
 1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的 **GraphGetStarted** 项目，并单击“管理 NuGet 包”。 
 
-2. 在 NuGet“浏览”框中，键入 *Microsoft.Azure.Graphs*，并选中“包括预发行版”框。 
+2. 在 NuGet 包管理器“更新”选项卡中，键入 Microsoft.Azure.Graphs，并选中“包括预发行版”框。 
 
-3. 从结果中安装“Microsoft.Azure.Graphs”库。 这会安装 Azure Cosmos DB 图形扩展库包和所有依赖项。
+3. 从结果中将 Microsoft.Azure.Graphs 库更新到最新版本的包。 这会安装 Azure Cosmos DB 图形扩展库包和所有依赖项。
 
     如果获得有关查看解决方案更改的消息，请单击“确定”。 如果获得有关接受许可证的消息，请单击“我接受”。
 
 4. 单击 Ctrl+F5 运行应用程序。
 
-   控制台窗口会显示所添加到图形的顶点及边缘。 完成脚本后，按两次 ENTER 以关闭控制台窗口。 
+   控制台窗口会显示所添加到图形的顶点及边缘。 完成脚本后，按两次 ENTER 以关闭控制台窗口。
 
 ## <a name="browse-using-the-data-explorer"></a>使用数据资源管理器浏览
 
@@ -162,5 +169,4 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
-
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>通过 Azure 通知中心发送安全推送通知
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Microsoft Azure 中的推送通知支持，可访问易于使用、 多平台、 向外扩展的推送消息基础结构，极大地简化了适用于移动平台的使用者和企业应用程序的推送通知的实现。
+利用 Microsoft Azure 中的推送通知支持，可访问易于使用且横向扩展的多平台推送消息基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。
 
 由于法规或安全约束，有时应用程序可能想要在通知中包含某些无法通过标准推送通知基础结构传输的内容。 本教程介绍如何通过客户端 Android 设备和应用程序后端之间的安全且经过身份验证的连接发送敏感信息来获得相同的体验。
 
@@ -48,7 +48,7 @@ Microsoft Azure 中的推送通知支持，可访问易于使用、 多平台、
    * 此 Android 设备将联系请求安全有效负载的后端。
    * 此应用可以将有效负载显示为设备上的通知。
 
-请务必注意，在之前的流程（以及本教程中）中，我们假设此设备会在用户登录后在本地存储中存储身份验证令牌。 这可以保证完全无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。 如果应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，那么此设备应用程序在收到推送通知时应显示提示用户启动此应用程序的一般性通知。 然后，应用对用户进行身份验证并显示通知有效负载。
+请务必注意，在之前的流程（以及本教程中）中，我们假设此设备会在用户登录后在本地存储中存储身份验证令牌。 这可以保证完全无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。 如果应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，那么此设备应用程序在收到推送通知时应显示提示用户启动此应用程序的一般性通知。 然后应用会对用户进行身份验证，并显示通知有效负载。
 
 本教程介绍如何发送安全推送通知。 本教程以[通知用户](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)教程为基础，因此，应该先完成“通知用户”教程中的步骤（若未完成）。
 
@@ -134,5 +134,5 @@ Microsoft Azure 中的推送通知支持，可访问易于使用、 多平台、
 1. 确保 **AppBackend** 已部署在 Azure 中。 如果使用 Visual Studio，则运行 **AppBackend** Web API 应用程序。 将显示 ASP.NET 网页。
 2. 在 Eclipse 中，运行物理 Android 设备或模拟器上的应用。
 3. 在 Android 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的值。
-4. 在 Android 应用 UI 中，单击“**登录**”。 然后单击**发送推送**。
+4. 在 Android 应用 UI 中，单击“**登录**”。 然后单击“发送推送”。
 
