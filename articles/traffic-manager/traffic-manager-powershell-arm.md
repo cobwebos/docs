@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
 ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
@@ -37,7 +37,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 * [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
 
-本文中的示例假设已有一个资源组。 可以使用以下命令创建资源组：
+本文中的示例假设你具备现有的资源组。 可以使用以下命令创建资源组：
 
 ```powershell
 New-AzureRmResourceGroup -Name MyRG -Location "West US"
@@ -62,7 +62,7 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 | ResourceGroupName |包含配置资源的资源组的名称。 |
 | TrafficRoutingMethod |指定用于确定在响应 DNS 查询时返回的终结点的流量路由方法。 可能的值为“Performance”、“Weighted”或“Priority”。 |
 | RelativeDnsName |指定此流量管理器配置文件提供的 DNS 名称中的主机名部分。 将此值与 Azure 流量管理器使用的 DNS 域名相结合，可以构成配置文件的完全限定域名 (FQDN)。 例如，设置“contoso”值将成为“contoso.trafficmanager.net”。 |
-| TTL |指定 DNS 生存时间 (TTL)，以秒为单位。 此 TTL 通知本地 DNS 解析器和 DNS 客户端缓存此流量管理器配置文件的 DNS 响应的时长。 |
+| TTL |指定 DNS 生存时间 (TTL)，以秒为单位。 此 TTL 用于通知本地 DNS 解析器和 DNS 客户端，要将此流量管理器配置文件的 DNS 响应缓存多久。 |
 | MonitorProtocol |指定用于监视终结点运行状况的协议。 可能的值为“HTTP”和“HTTPS”。 |
 | MonitorPort |指定用于监视终结点运行状况的 TCP 端口。 |
 | MonitorPath |指定用于探测终结点运行状况的终结点域名的相对路径。 |

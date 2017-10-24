@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务排查 StorSimple 虚拟阵列问题
 ## <a name="overview"></a>概述
@@ -35,7 +35,7 @@ StorSimple Device Manager 在服务摘要边栏选项卡中提供了“诊断并
 
 1. 在 StorSimple Device Manager 服务摘要边栏选项卡的左窗格中单击“诊断并解决问题”设置，可查看常见问题列表。
 
-2. **展开**上查看时遇到问题的症状**建议步骤**可帮助你解决问题。 如果需要，还可以查看提供的详细文档链接供将来参考。
+2. 展开你遇到的问题的症状，以查看推荐步骤，帮助你解决问题。 如果需要，还可以查看提供的详细文档链接供将来参考。
    
     ![解决问题](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 

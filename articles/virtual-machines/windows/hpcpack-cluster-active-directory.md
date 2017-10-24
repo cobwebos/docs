@@ -14,10 +14,10 @@ ms.workload: big-compute
 ms.date: 11/14/2016
 ms.author: danlep
 ms.openlocfilehash: c5a06a9c810349b1bcce01c7f73563941a5af0ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>使用 Azure Active Directory 在 Azure 中管理 HPC Pack 群集
 对于在 Azure 中部署 HPC Pack 群集的管理员，[Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) 支持与 [Azure Active Directory](../../active-directory/index.md) (Azure AD) 的集成。
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 * 将 HPC Pack 群集与 Azure AD 租户手动集成
 * 在 Azure 中管理和计划 HPC Pack 群集中的作业 
 
-将 HPC Pack 群集解决方案与 Azure AD 集成按照标准步骤集成其他应用程序和服务。 本文假定你熟悉 Azure AD 中的基本用户管理。 有关详细信息和背景，请参阅 [Azure Active Directory 文档](../../active-directory/index.md)和以下部分。
+将 HPC Pack 群集解决方案与 Azure AD 集成按照标准步骤集成其他应用程序和服务。 本文假设你熟悉 Azure AD 中的基本用户管理。 有关详细信息和背景，请参阅 [Azure Active Directory 文档](../../active-directory/index.md)和以下部分。
 
 ## <a name="benefits-of-integration"></a>集成的好处
 
@@ -55,7 +55,7 @@ HPC Pack 群集与 Azure AD 的集成可帮助实现以下目标：
 
 * **客户端计算机** - 需要 Windows 或 Windows Server 客户端计算机才能运行 HPC Pack 客户端实用工具。 如果只想要使用 HPC Pack Web 门户或 REST API 来提交作业，则可以使用自选的任意客户端计算机。
 
-* **HPC Pack 客户端实用工具** - 使用 Microsoft 下载中心提供的免费安装包在客户端计算机上安装 HPC Pack 客户端实用工具。
+* **HPC Pack 客户端实用工具** - 使用 Microsoft 下载中心提供的免费安装包将 HPC Pack 客户端实用工具安装在客户端计算机上。
 
 
 ## <a name="step-1-register-the-hpc-cluster-server-with-your-azure-ad-tenant"></a>步骤 1：将 HPC 群集服务器注册到 Azure AD 租户
@@ -66,7 +66,7 @@ HPC Pack 群集与 Azure AD 的集成可帮助实现以下目标：
     * **名称** - HPCPackClusterServer
     * **类型**：选择“Web 应用程序和/或 Web API”
     * **登录 URL** - 示例的基 URL，默认情况下为 `https://hpcserver`
-    * **应用 ID URI** - `https://<Directory_name>/<application_name>`。 例如，将 `<Directory_name`> 替换为 Azure AD 租户的全名 `hpclocal.onmicrosoft.com`，并将 `<application_name>` 替换为之前选择的名称。
+    * **应用 ID URI** - `https://<Directory_name>/<application_name>`。 例如，将 `<Directory_name`> 替换为 Azure AD 租户的全名（如 `hpclocal.onmicrosoft.com`），并将 `<application_name>` 替换为之前选择的名称。
 
 5. 添加应用后，单击“配置”。 配置以下属性：
     * 为“应用程序是多租户的”选择“是”
@@ -99,7 +99,7 @@ HPC Pack 群集与 Azure AD 的集成可帮助实现以下目标：
         }
     ],
     ```
-7. 保存文件。 然后在门户中，依次单击“管理清单” > “上传清单”。 然后，可以上传编辑的清单。
+7. 保存文件。 然后在门户中，依次单击“管理清单” > “上传清单”。 然后可以上传已编辑的清单。
 8. 单击“用户”、选择用户，并单击“分配”。 将可用角色之一（HpcUsers 或 HpcAdminMirror）分配给该用户。 为目录中的其他用户重复此步骤。 有关群集用户的背景信息，请参阅[管理群集用户](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx)。
 
    > [!NOTE] 
@@ -202,7 +202,7 @@ Set-HpcTokenCache -UserName <AADUsername> -Password $SecurePassword -scheduler h
     Set-HpcJobCredential -Credential $mycreds -Scheduler https://<Azure load balancer DNS name>
     ```
 
-2. 然后提交作业，如下所示。 作业/任务在计算节点上的 $localUser 下运行。
+2. 然后按如下所示提交作业。 作业/任务在计算节点上的 $localUser 下运行。
 
     ```powershell
     $emptycreds = New-Object System.Management.Automation.PSCredential ($localUser, (new-object System.Security.SecureString))

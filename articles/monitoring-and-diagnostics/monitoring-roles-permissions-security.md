@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 10/09/2017
 ms.author: johnkem
+ms.openlocfilehash: 31c4fc5b606bf96cec8c508f4a0ff7ecbaeae38a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: a28f971ae898ffdd1168550a909f2a48e1b3b652
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
@@ -75,15 +74,23 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 
 | 操作 | 说明 |
 | --- | --- |
-| Microsoft.Insights/AlertRules/[Read, Write, Delete] |读取/写入/删除警报规则。 |
+| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |读取/写入/删除操作组。 |
+| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |读取/写入/删除活动日志警报。 |
+| Microsoft.Insights/AlertRules/[Read, Write, Delete] |读取/写入/删除警报规则（指标警报）。 |
 | Microsoft.Insights/AlertRules/Incidents/Read |列出警报规则的事件（触发警报规则的历史记录）。 仅适用于门户。 |
 | Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |读取/写入/删除自动调整规模设置。 |
 | Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |读取/写入/删除诊断设置。 |
+| Microsoft.Insights/EventCategories/Read |枚举活动日志中所有可能的类别。 由 Azure 门户使用。 |
 | Microsoft.Insights/eventtypes/digestevents/Read |此权限对于需要通过门户访问活动日志的用户是必需的。 |
 | Microsoft.Insights/eventtypes/values/Read |列出订阅中的活动日志事件（管理事件）。 此权限适用于对活动日志的编程和门户访问。 |
+| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | 读取/写入/删除网络流日志的诊断设置。 |
 | Microsoft.Insights/LogDefinitions/Read |此权限对于需要通过门户访问活动日志的用户是必需的。 |
+| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |读取/写入/删除日志配置文件（将活动日志流式传输到事件中心或存储帐户）。 |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |读取/写入/删除准实时指标警报（公开预览版）。 |
 | Microsoft.Insights/MetricDefinitions/Read |读取指标定义（资源的可用指标类型的列表）。 |
 | Microsoft.Insights/Metrics/Read |读取资源的指标。 |
+| Microsoft.Insights/Register/Action |注册 Azure Monitor 资源提供程序。 |
+
 
 > [!NOTE]
 > 对资源的警报、诊断设置和指标的访问需要用户具有资源类型和该资源的作用域的读取访问权限。 创建（“写入”）存档到存储帐户或传输到事件中心的诊断设置或日志配置文件需要用户还具有目标资源的 ListKeys 权限。
@@ -170,5 +177,4 @@ New-AzureRmRoleDefinition -Role $role
 ## <a name="next-steps"></a>后续步骤
 * [阅读有关 Resource Manager 中的 RBAC 和权限的信息](../active-directory/role-based-access-control-what-is.md)
 * [阅读 Azure 中的监视概述](monitoring-overview.md)
-
 

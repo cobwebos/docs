@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: f5e3186a4271e0be781f367fa75ada195c58c960
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备
 ## <a name="overview"></a>概述
@@ -161,7 +161,7 @@ ms.lasthandoff: 07/11/2017
     ![删除设备配置](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_DeleteDevice.png)
 
 ## <a name="change-an-expired-device-password"></a>更改过期的设备密码
-必须输入密码才能使用 StorSimple Snapshot Manager 对 StorSimple 设备进行身份验证。 使用 Windows PowerShell 界面设置设备时，可以配置此密码。 但是，该密码会过期。 如果发生这种情况，可以使用 Azure 经典门户更改密码。 然后，由于之前的密码过期，则该设备已配置 StorSimple 快照管理器中，你必须重新进行身份验证设备 StorSimple 快照管理器中。
+必须输入密码才能使用 StorSimple Snapshot Manager 对 StorSimple 设备进行身份验证。 使用 Windows PowerShell 界面设置设备时，可以配置此密码。 但是，该密码会过期。 如果发生这种情况，可以使用 Azure 经典门户更改密码。 然后，因为设备在密码过期之前已在 StorSimple Snapshot Manager 中完成配置，所以必须在 StorSimple Snapshot Manager 中对设备重新进行身份验证。
 
 #### <a name="to-change-the-expired-password"></a>更改过期的密码
 1. 在 Azure 经典门户中，启动 StorSimple Manager 服务。

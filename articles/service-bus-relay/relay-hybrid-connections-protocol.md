@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 6b76403ba5fc4d00a625057549c85db59a473898
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 9d015678dbd99b8d978c2c8200b36bf51cac8893
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # Azure 中继混合连接协议
 Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 中继的新“混合连接”功能是基于 HTTP 和 WebSocket 的安全、开放协议演化版。 它取代了之前基于专用协议构建的名为“BizTalk 服务”的功能。 将混合连接集成到 Azure 应用服务并不影响原有的运行方式。
@@ -29,7 +28,7 @@ Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 中继
 ## 交互模型
 混合连接中继将通过提供双方都可在自身网络发现并连接到的 Azure 云中的集合点来连接两方。 该集合点就是在本文和其他文档、API 及 Azure 门户中提及的“混合连接”。 混合连接服务终结点在本文其余部分被称为“服务”。 该交互模型倾向于使用由许多其他网络服务 API 创建的术语：
 
-首先一个是侦听器，指示处理传入连接的准备情况，然后在这些连接到达时进行接受。 在另一端，是一个连接客户端，连接至侦听器，希望该连接被接受以建立双向通信路径。
+有一个侦听器可以先指明是否准备好处理传入连接，再在这些连接到达时接受它们。 在另一端，是一个连接客户端，连接至侦听器，希望该连接被接受以建立双向通信路径。
 “连接”、“侦听”和“接受”与大多数套接字 API 中找到的术语相同。
 
 任何中继通信模型都会使任何一方生成针对服务终结点的出站连接，这使得“侦听器”也常被说成“客户端”，可能还会导致其他术语重载。 因此，用于混合连接的准确术语如下：
@@ -186,7 +185,7 @@ URL 必须原样使用，用于创建接受套接字，但是要包含以下参�
 | statusCode |是 |数值型 HTTP 状态代码。 |
 | statusDescription |是 |可人工读取的拒绝原因。 |
 
-然后使用生成的 URI 建立 WebSocket 连接。
+然后，使用生成的 URI 建立 WebSocket 连接。
 
 正确完成后，该握手会有意失败，并出现 HTTP 错误代码 410，因为尚未创建任何 WebSocket。 如果出现问题，会使用以下代码描述问题：
 
@@ -268,5 +267,4 @@ wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id
 * [创建命名空间](relay-create-namespace-portal.md)
 * [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
-
 

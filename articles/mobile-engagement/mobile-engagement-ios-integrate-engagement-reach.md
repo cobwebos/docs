@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
 ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>如何在 iOS 上集成 Engagement Reach
 在遵循本指南操作之前，必须先按照[如何在 iOS 上集成 Engagement 文档](mobile-engagement-ios-integrate-engagement.md)中所述的集成步骤操作。
@@ -82,8 +82,7 @@ ms.lasthandoff: 08/03/2017
 ### <a name="category"></a>类别
 创建数据推送活动时，类别参数是可选的，并允许筛选数据推送。 如果想推送不同种类的 `Base64` 数据，并希望在解析这些数据之前确定其类型，那么这种做法很有用。
 
-
-            **现在应用程序已准备好接收和显示市场宣传内容！**
+**现在应用程序已准备好接收和显示市场宣传内容！**
 
 ## <a name="how-to-receive-announcements-and-polls-at-any-time"></a>如何随时接收公告和投票
 通过使用 Apple Push Notification 服务，Engagement 可随时会市场宣传通知发送给最终用户。
@@ -94,8 +93,7 @@ ms.lasthandoff: 08/03/2017
 请按照指南操作：[如何准备应用程序以使用 Apple 推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
 
 ### <a name="add-the-necessary-client-code"></a>添加必要的客户端代码
-
-            *目前，应用程序应该在 Engagement 前端有一个已注册的 Apple 推送证书。*
+*目前，应用程序应该在 Engagement 前端有一个已注册的 Apple 推送证书。*
 
 如果尚未完成，需要注册应用程序以接收推送通知。
 
@@ -253,7 +251,7 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
 系统通知由 iOS 处理，且无法进行自定义。
 
-应用内通知，是由以动态添加到当前应用程序窗口的视图组成。 这称为通知覆盖。 通知叠加是非常适合于快速集成，因为它们不要求你修改应用程序中的任何视图。
+应用内通知，是由以动态添加到当前应用程序窗口的视图组成。 这称为通知覆盖。 通知覆盖非常适用于快速集成，因为它们不需要你修改应用程序中的任何视图。
 
 #### <a name="layout"></a>布局
 要修改应用内通知的外观，可以按自己需求直接修改 `AENotificationView.xib` 文件，只要保留标记值和现有的子视图类型即可。
@@ -289,7 +287,7 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
     @end
 
-类别的这个简单的示例假定您有一个名为文件`MyNotificationView.xib`主应用程序捆绑中。 如果该方法无法找到相应的 `.xib`，则通知将无法显示，Engagement 会在控制台中输出一条消息。
+此简单的类别示例假定你在主应用程序捆绑包中有一个名为 `MyNotificationView.xib` 的文件。 如果该方法无法找到相应的 `.xib`，则通知将无法显示，Engagement 会在控制台中输出一条消息。
 
 提供的 nib 文件应遵循以下规则：
 

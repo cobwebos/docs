@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure 应用商店。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -177,7 +177,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
   以下 MSDN 文章的步骤提供了有关如何对操作系统执行 sysprep 操作的指南：[创建 Windows Server VHD 并上传到 Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4.从 VHD 部署 VM
-将 VHD（一般化操作系统 VHD 以及零个或更多数据磁盘 VHD）上传到 Azure 存储器帐户之后，可将它们注册为用户 VM 映像。 随后可以测试该映像。 请注意，因为操作系统 VHD 已经一般化，所以无法通过提供 VHD URL 来直接部署 VM。
+将 VHD（一般化操作系统 VHD 以及零个或更多数据磁盘 VHD）上传到 Azure 存储器帐户之后，可将它们注册为用户 VM 映像。 然后可以测试该映像。 请注意，因为操作系统 VHD 已经一般化，所以无法通过提供 VHD URL 来直接部署 VM。
 
 若要了解关于 VM 映像的详细信息，请查看以下博客文章：
 
@@ -356,7 +356,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
        - 请确保映像文件名称和“.vhd”均在 URI 中。
        - 在签名末尾，确保显示“=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-       - 在签名中间，确保显示“sr=c”。 此示例演示你具有容器级别访问权限
+       - 在签名中间，确保显示“sr=c”。 这表示你拥有容器级别访问权限
 
 11. 若要确保生成的共享访问签名 URI 可运行，请单击“在浏览器中测试”。 这应开始下载过程。
 
@@ -414,7 +414,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
     - 在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-    - 在签名中间，确保显示“sr=c”。 此示例演示你具有容器级别访问权限
+    - 在签名中间，确保显示“sr=c”。 这表示你拥有容器级别访问权限
 
 9.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 
@@ -438,13 +438,13 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
     更新上述代码中的以下参数
 
-    a. **`<StorageAccountName>`**： 为你的存储帐户名称
+    a. `<StorageAccountName>`：指定存储帐户名称
 
-    b. **`<Storage Account Key>`**： 为你的存储帐户密钥
+    b. `<Storage Account Key>`：指定存储帐户密钥
 
-    c. **`<Permission Start Date>`**： 若要保护的 UTC 时间，选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016
+    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016
 
-    d.单击“下一步”。 **`<Permission End Date>`**： 选择的日期，则至少 3 周时间后**开始日期**。 则值应为“11/02/2016”。
+    d.单击“下一步”。 `<Permission End Date>`：选择至少为“开始日期”后 3 周的日期。 则值应为“11/02/2016”。
 
     以下是更新适当参数后的代码示例
 
@@ -476,7 +476,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
     -   在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-    -   在签名中间，确保显示“sr=c”。 此示例演示你具有容器级别访问权限
+    -   在签名中间，确保显示“sr=c”。 这表示你拥有容器级别访问权限
 
 8.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 

@@ -1,5 +1,5 @@
 ---
-title: "了解虚拟机规模集模板 | Microsoft Docs"
+title: "了解虚拟机规模集模板 | Microsoft 文档"
 description: "了解如何创建虚拟机规模集的最小可行规模集模板"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
 ms.openlocfilehash: 65f02c4675eb752dcc82e9a1d1c7f6c2c193fc32
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
 [Azure Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建最小的可行规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。 
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
   "contentVersion": "1.0.0.0",
 ```
 ## <a name="define-parameters"></a>定义参数
-接下来，定义两个参数，`adminUsername` 和 `adminPassword`。 参数是部署时指定的值。 ph x="1" /> 参数只是一个 `string` 类型，但由于 `adminPassword` 是机密，因此我们将其类型指定为 `securestring`。 稍后，这些参数会被传递到规模集配置。
+接下来，定义两个参数，`adminUsername` 和 `adminPassword`。 参数是部署时指定的值。 `adminUsername` 参数只是一个 `string` 类型，但是由于 `adminPassword` 是一个密码，因此将其类型指定为 `securestring`。 稍后，这些参数会被传递到规模集配置。
 
 ```json
   "parameters": {
@@ -79,7 +79,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ```
 
 ## <a name="specify-location"></a>指定位置
-可使用 [Resource Manager 模板函数](../azure-resource-manager/resource-group-template-functions.md)指定虚拟网络的位置。 此函数必须括在引号和方括号内，如：`"[<template-function>]"`。 本例中，我们使用 `resourceGroup` 函数。 该函数不使用任何参数，并返回 JSON 对象和有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 我们然后到与此 JSON 对象的索引`.location`以 JSON 对象中获取位置。
+可使用 [Resource Manager 模板函数](../azure-resource-manager/resource-group-template-functions.md)指定虚拟网络的位置。 此函数必须括在引号和方括号内，如：`"[<template-function>]"`。 本例中，我们使用 `resourceGroup` 函数。 该函数不使用任何参数，并返回 JSON 对象和有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 然后使用 `.location` 为此 JSON 对象建立索引，以便从此 JSON 对象中获取位置。
 
 ```json
        "location": "[resourceGroup().location]",
@@ -173,7 +173,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ```
 
 ### <a name="specify-vm-network-configuration"></a>指定 VM 网络配置
-最后，需要指定规模集中 VM 的网络配置。 本例中，我们仅需指定之前创建的子网的 ID。 这样，规模集便知道要在此子网中放置网络接口。
+最后，需要指定规模集中 VM 的网络配置。 本例中，我们仅需指定之前创建的子网的 ID。 此会告知规模集将网络接口置于此子网中。
 
 可使用 `resourceId` 模板函数获取包含子网的虚拟网络的 ID。 此函数采用资源的类型和名称，并返回该资源的完全限定的标识符。 此 ID 格式为：`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 

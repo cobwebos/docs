@@ -17,10 +17,10 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a4c32694949880037f01bb2b6b9779d2cbb9809c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建具有静态公共 IP 地址的 VM
 
@@ -137,7 +137,7 @@ az vm create \
 
 1. 输入命令 `az resource list --resouce-group IaaSStory --output table`，查看由脚本创建的资源的列表。 返回的输出中应该有五个资源：网络接口、磁盘、公共 IP 地址、虚拟网络和虚拟机。
 2. 输入命令 `az network public-ip show --name PIPWEB1 --resource-group IaaSStory --output table`。 在返回的输出中，记下 **IpAddress** 的值，并且 **PublicIpAllocationMethod** 的值是 *Static*。
-3. 在执行以下命令前, 删除 <>，替换*用户名*与你使用的名称**用户名**变量中的脚本和替换*ipAddress*与**ipAddress**从前面的步骤。 输入以下命令以连接到 VM：`ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`。 
+3. 在执行以下命令前，请删除 <>，将 Username 替换为用于脚本中 Username 变量的名称，并将 ipAddress 替换为上一步中的 ipAddress。 输入以下命令以连接到 VM：`ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`。 
 
 ## <a name= "clean-up"></a>删除 VM 和关联的资源
 
@@ -145,7 +145,7 @@ az vm create \
 
 1. 若要查看资源组中的资源，请运行 `az resource list --resource-group IaaSStory` 命令。
 2. 请确认在资源组中除了本文中脚本创建的资源外没有其他资源。 
-3. 若要删除本练习中创建的所有资源，请运行 `az group delete -n IaaSStory` 命令。 该命令会删除资源组及其包含的所有资源。
+3. 若要删除本练习中创建的所有资源，请运行 `az group delete -n IaaSStory` 命令。 该命令将删除资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

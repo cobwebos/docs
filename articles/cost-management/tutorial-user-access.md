@@ -10,15 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
+ms.openlocfilehash: aca9f0b3320f298987cf39172fd4b043326a2f4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 32e5c2c7c058267c7a2c43d5264922c8a4cab83a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
 对成本管理数据的访问权限通过用户或实体管理提供。 Cloudyn 用户帐户确定对实体和管理功能的访问权限。 有两种类型的访问权限：管理员和用户。 除非按用户进行修改，否则管理员访问权限允许用户在 Cloudyn 门户中不受限制地使用所有功能，包括：用户管理、收件人列表管理以及对所有实体数据的根实体访问权限。 用户访问权限旨在供最终用户使用他们对实体数据拥有的访问权限来查看报表和创建报表。
@@ -73,15 +70,14 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 创建拥有管理员访问权限的用户
 > * 创建拥有用户访问权限的用户
 > * 创建实体
 
-前进到 Cloudyn 文档以详细了解 Cloudyn 入门和功能使用。
+进入下一个教程，了解如何使用历史数据预测支出。
 
 > [!div class="nextstepaction"]
-> [Cloudyn 文档](https://support.cloudyn.com/hc/)
-
+> [预测将来的支出](tutorial-forecast-spending.md)

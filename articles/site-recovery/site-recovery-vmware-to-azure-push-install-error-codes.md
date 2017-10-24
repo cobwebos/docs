@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/28/2017
 ms.author: asgang
+ms.openlocfilehash: b7b03442ba815c86e5defa1018b66f56c0b379df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 468b99002b867768d1ef03ca3ef67946caa4919d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -81,7 +80,7 @@ ms.lasthandoff: 09/28/2017
 
 **错误代码** | **可能的原因** | **错误特定建议**
 --- | --- | ---
-95265 </br>**消息：**向源计算机推送安装移动服务成功，但需要重启源计算机才能使某些系统更改生效。 <br>| 服务器上已安装移动服务的旧版本。| 虚拟机复制会无缝继续。<br> 在下一个维护时段请重新启动服务器，以利用移动服务中的新增强功能。|
+95265 </br>**消息：**向源计算机推送安装移动服务成功，但需要重启源计算机才能使某些系统更改生效。 <br>| 服务器上已安装移动服务的旧版本。| 虚拟机复制能够顺畅继续执行。<br> 在下一个维护时段请重新启动服务器，以利用移动服务中的新增强功能。|
 
 
 ## <a name="error-95224---protection-could-not-be-enabled-ep0883"></a>错误 95224 - 无法启用保护 (EP0883)
@@ -103,4 +102,3 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="next-steps"></a>后续步骤
 - [启用 VMware 虚拟机的复制](vmware-walkthrough-enable-replication.md)
-

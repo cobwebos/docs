@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 12/15/2016
 ms.author: danlep
 ms.openlocfilehash: 88d1f4e29f38ba1a6bef57c2da43bee205575eee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>在 Azure 中部署 HPC Pack 2016 群集
 
@@ -131,13 +131,13 @@ $hpcSecret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Se
 
 ### <a name="step-1-select-the-subscription-location-and-resource-group"></a>步骤 1：选择订阅、位置和资源组
 
-**订阅**和**位置**必须相同，指定 PFX 证书的上载时 （请参阅先决条件）。 我们建议为部署创建“资源组”。
+上传 PFX 证书后，“订阅”和“位置”必须与指定的相同（请参阅“先决条件”）。 我们建议为部署创建“资源组”。
 
 ### <a name="step-2-specify-the-parameter-settings"></a>步骤 2：指定参数设置
 
 输入或修改模板参数的值。 单击每个参数旁边的图标可获得帮助信息。 另请参阅 [VM 可用大小](sizes.md)准则。
 
-指定以下参数的先决条件中记录的值：**保管库名称**，**保管库资源组**，**证书 URL**，和**证书指纹**。
+为下列参数指定在先决条件中记录的值：“Vault 名称”、“Vault 资源组”、“证书 URL”和“证书指纹”。
 
 ### <a name="step-3-review-legal-terms-and-create"></a>步骤 3. 查看法律条款和创建
 单击“查看法律条款”，查看条款。 如果同意，单击“购买”，并单击“创建”以开始部署。

@@ -16,10 +16,10 @@ ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -204,7 +204,7 @@ ms.lasthandoff: 07/11/2017
        >
        >
 
-如果设备不符合最低配置要求，则会在横幅文本中显示以下错误（如下所示）。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后，你可以重新启动，并连接到设备。 请参阅[步骤 1：确保主机系统满足最低虚拟阵列要求](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示以下错误（如下所示）。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[步骤 1：确保主机系统满足最低虚拟阵列要求](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 

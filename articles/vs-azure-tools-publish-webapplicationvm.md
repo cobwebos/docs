@@ -1,6 +1,6 @@
 ---
 title: Publish-WebApplicationVM | Microsoft Docs
-description: "了解如何将 Web 应用程序部署到虚拟机。 此脚本将在 Azure 订阅中创建所需的资源（如果这些资源不存在）。"
+description: "了解如何将 Web 应用程序部署到虚拟机。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -15,13 +15,13 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationVM（Windows PowerShell 脚本）
-将 Web 应用程序部署到虚拟机。 如果资源不存在，脚本会在 Azure 订阅中创建所需的资源。
+将 Web 应用程序部署到虚拟机。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。
 
 ```
 Publish-WebApplicationVM

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 ms.openlocfilehash: 8e84562115a866c0df5e0dee6c7f66c036a74737
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
 若要管理扩大的分区数据库，可使用**弹性数据库作业**功能（预览版）在一组数据库中可靠地执行 Transact-SQL (T-SQL) 脚本，这些数据库包括：
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
 * [使用 Powershell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。
 * [创建和管理扩大的 Azure SQL 数据库](sql-database-elastic-jobs-getting-started.md)
 
-**弹性数据库作业**是当前的客户托管 Azure 云服务，使执行即席任务和计划的管理任务，称为**作业**。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。 
+**弹性数据库作业**目前是一个由客户托管的 Azure 云服务，可让你执行临时和计划的管理任务，称为“作业”。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。 
 
 ![弹性数据库作业服务][1]
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 07/11/2017
 另一方面，自定义组的定义方式很严格。 必须在自定义组中显式添加或删除数据库。 如果组中的数据库已被删除，作业将尝试对最终导致失败的数据库运行脚本。 使用 Azure 门户创建的组当前是自定义组。 
 
 ## <a name="components-and-pricing"></a>组件和定价
-以下组件配合工作可以创建支持即席执行管理作业的 Azure 云服务。 安装过程中，这些组件已在订阅中完成了安装和配置。 可以识别这些服务，因为它们具有相同的自动生成名称。 名称是唯一的，包括前缀“edj”后接 21 个随机生成的字符。
+以下组件配合工作可以创建支持即席执行管理作业的 Azure 云服务。 在安装期间，订阅会自动安装和配置这些组件。 可以识别这些服务，因为它们具有相同的自动生成名称。 名称是唯一的，包括前缀“edj”后接 21 个随机生成的字符。
 
 * **Azure 云服务**：弹性数据库作业（预览版）以客户托管的 Azure 云服务交付，可执行请求的任务。 从门户开始，服务部署并托管在 Microsoft Azure 订阅中。 默认部署的服务将结合最少两个辅助角色运行，以实现高可用性。 每个默认大小的辅助角色 (ElasticDatabaseJobWorker) 在 A0 实例上运行。 有关价格，请参阅[云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)。 
 * **Azure SQL 数据库**：服务使用名为**控制数据库的 Azure SQL 数据库**来存储所有的作业元数据。 默认的服务层是 S0。 有关价格，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。

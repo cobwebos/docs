@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
+ms.openlocfilehash: f05e769a8c5d26c0149dcba05c0973de4bd30313
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 115aa01ee6e3bd539086d80df1dcd94b3b7e2723
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -48,7 +47,7 @@ Wingtip SaaS 应用使用单租户数据模型，在该模型中，每个地点�
 
 数据库性能管理包括：编译和分析性能数据，并对该数据作出反应，即通过调整参数，使应用程序的响应时间维持在可接受的范围。 托管多个租户时，如果工作负荷不可预测，则可以使用弹性数据库池这种经济有效的方式，为一组数据库提供资源并进行相应的管理。 就某些工作负荷模式来说，只要有两个 S3 数据库就可以在池中进行管理。
 
-![介质](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
+![应用程序关系图](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
 
 应监视池和池中的数据库，确保二者的性能处于可接受的范围内。 请根据所有数据库的聚合工作负荷的需要来调整池配置，确保池 eDTU 适合总体工作负荷。 请调整单个数据库的最小和最大 eDTU 值，使之符合特定的应用程序要求。
 
@@ -87,7 +86,7 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../a
 
 | 演示 | 方案 |
 |:--|:--|
-| 2 | 生成正常强度负载（约 40 DTU） |
+| #N/A | 生成正常强度负载（约 40 DTU） |
 | 3 | 生成单个数据库的突发时间更长且频率更高的负载|
 | 4 | 生成单个数据库的 DTU 突发更高的负载（约 80 DTU）|
 | 5 | 在正常负载的基础上生成单个租户的高负载（约 95 DTU）|
@@ -115,11 +114,11 @@ Wingtip 是一个 SaaS 应用，而 SaaS 应用上的实际负载通常是偶发
 
 池资源利用率聚合了池中所有数据库的数据库利用率。 数据库图表显示了五个最繁忙的数据库：
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
+![数据库图表](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
 
 由于池中除排名前五的数据库外还有其他数据库，因此池利用率可以显示没有反映在前五数据库图表中的活动。 有关其他详细信息，请单击“数据库资源利用率”：
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
+![数据库资源利用率](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
 
 
 ## <a name="set-performance-alerts-on-the-pool"></a>对池设置性能警报
@@ -249,4 +248,3 @@ Wingtip 是一个 SaaS 应用，而 SaaS 应用上的实际负载通常是偶发
 * [SQL 弹性池](sql-database-elastic-pool.md)
 * [Azure 自动化](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md) -“设置和使用 Log Analytics”教程
-

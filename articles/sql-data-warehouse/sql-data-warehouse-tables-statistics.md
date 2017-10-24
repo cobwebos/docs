@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
 ms.openlocfilehash: 1d5ded69e394643ddfc3de0c6d30dbd30c8e848f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>管理 SQL 数据仓库中表的统计信息
 > [!div class="op_single_selector"]
@@ -465,7 +465,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 7. 不支持自定义错误 2767
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 MSDN 上的 [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS]。  若要了解详细信息，请参阅有关[表概述][Overview]、[表数据类型][Data Types]、[分布表][Distribute]、[为表编制索引][Index]、[对表进行分区][Partition]和[临时表][Temporary]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。  
+有关详细信息，请参阅 MSDN 上的 [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS]。  要了解详细信息，请参阅有关[表概述][Overview]、[表数据类型][Data Types]、[分布表][Distribute]、[为表编制索引][Index]、[将表分区][Partition]和[临时表][Temporary]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。  
 
 <!--Image references-->
 

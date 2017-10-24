@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
 ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>将 ASP.NET 容器部署到远程 Docker 主机
 ## <a name="overview"></a>概述
@@ -34,7 +34,7 @@ Docker 是轻型容器引擎，在某些方面类似于虚拟机，可以将其�
 * 安装[适用于 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)
 
 ## <a name="1-create-an-aspnet-core-web-app"></a>1.创建一个 ASP.NET Core Web 应用
-以下步骤将指导你完成创建将在本教程中使用的基本 ASP.NET Core 应用。
+以下步骤将指导你完成创建基本 ASP.NET Core 应用（将在本教程中使用）的过程。
 
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 

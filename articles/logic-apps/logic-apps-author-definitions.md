@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>使用 JSON 为逻辑应用创建工作流定义
 
@@ -275,7 +275,7 @@ ms.lasthandoff: 07/11/2017
 
 请注意： 
 
-*   [ `intersection()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection)函数检查类别是否与已知定义类别之一匹配。
+*   [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 函数检查类别是否与某个已知的已定义类别匹配。
 
 *   在获取类别后，可以使用方括号提取映射的项：`parameters[...]`
 
@@ -328,9 +328,9 @@ ms.lasthandoff: 07/11/2017
 
 4. 将此子字符串转换为 [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 字符串。
 
-5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)所有`+`字符`-`字符。
+5. 将所有 `+` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `-` 字符。
 
-6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)所有`/`字符`_`字符。
+6. 将所有 `/` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `_` 字符。
 
 ## <a name="work-with-date-times"></a>使用日期时间
 
@@ -386,7 +386,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-在本例中，我们提取前一步的 `startTime`。 然后，我们将获取当前时间，并减去 1 秒：
+在本例中，我们提取前一步的 `startTime`。 然后，我们获取当前时间，并从中减去 1 秒：
 
 [`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
 

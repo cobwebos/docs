@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
+ms.openlocfilehash: d5977a79cfe4016d6bd943cecb22edadc0eaec6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 6cfdeacb788db2e2f940ef1100eb03dc7e496ea6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述
 > [!div class="op_single_selector"]
 > * [Windows 上的 C#](service-fabric-reliable-services-lifecycle.md)
@@ -77,7 +75,7 @@ ms.lasthandoff: 09/25/2017
     - 调用 `StatefulServiceBase.CreateServiceReplicaListeners()` 
       - 如果服务是主副本，则打开所有返回的侦听器。 对每个侦听器调用 `ICommunicationListener.OpenAsync()`。
       - 如果服务为次要副本，将仅打开已标记为 `ListenOnSecondary = true` 的侦听器。 在次要副本上打开的侦听器更不常见。
-    - 如果该服务目前为主副本，则调用该服务的 `StatefulServiceBase.RunAsync()` 方法
+    - 如果服务目前为主要副本，则调用服务的 `StatefulServiceBase.RunAsync()` 方法
 4. 所有副本侦听器的 `OpenAsync()` 调用完成并已调用 `RunAsync()` 后，将调用 `StatefulServiceBase.OnChangeRoleAsync()`。 这是服务中不常见的重写。
 
 类似于无状态服务，创建和打开侦听器的顺序以及调用 RunAsync 的时间不会经过协调。 如果需要协调，解决方法大致相同。 另举一例：假设抵达通信侦听器的调用需要在某个 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 中保存信息。 由于通信侦听器可能在 Reliable Collections 可读或可写之前打开，因此，在 RunAsync 可以启动之前，必须经过一定的附加协调。 最简单且最常见的解决方法是让通信侦听器返回某个错误代码，告知客户端重试请求。

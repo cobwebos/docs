@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure PowerShell 管理虚拟机 | Microsoft Docs"
+title: "使用 Azure PowerShell 管理虚拟机 | Microsoft 文档"
 description: "了解可用于在虚拟机管理过程中自动执行任务的命令。"
 services: virtual-machines-windows
 documentationcenter: windows
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
 ms.openlocfilehash: fd2df7e1029ced11974d0b832258bed2cf3bbb27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>使用 Azure PowerShell 管理虚拟机
 > [!IMPORTANT] 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 需要将命令中的一些文本替换为适合环境的文本。 < 和 > 符号指示需要替换的文本。 替换文本时，请删除符号，但将引号保留在原处。
 
 ## <a name="get-a-vm"></a>获取 VM
-这是经常会使用的基本任务。 使用它可获取有关 VM 的信息、对 VM 执行任务或获取输出以存储在变量中。
+这是经常使用的基本任务。 使用它可获取有关 VM 的信息、对 VM 执行任务或获取输出以存储在变量中。
 
 若要获取有关 VM 的信息，请运行此命令，并替换引号内的所有内容（包括 < 和 > 字符）：
 
@@ -72,9 +72,9 @@ ms.lasthandoff: 07/11/2017
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## <a name="attach-a-data-disk"></a>附加数据磁盘
-此任务需要几个步骤。 首先，使用 ****Add-AzureDataDisk**** cmdlet 将磁盘添加到 $vm 对象。 然后，使用**Update-azurevm** cmdlet 可更新 VM 的配置。
+此任务需要几个步骤。 首先，使用 ****Add-AzureDataDisk**** cmdlet 将磁盘添加到 $vm 对象。 然后，使用“Update-AzureVM”cmdlet 更新 VM 的配置。
 
-还需要确定是要附加新的磁盘还是附加包含数据的磁盘。 对于新磁盘，此命令创建并附加 .vhd 文件。
+还需要确定是要附加新的磁盘还是附加包含数据的磁盘。 对于新磁盘，此命令将创建并附加 .vhd 文件。
 
 若要附加新磁盘，请运行以下命令：
 

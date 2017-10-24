@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
 ms.openlocfilehash: 4eaf86c9ac3e4dc2b51b88383626eda774cab0e9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>使用负载均衡的集来群集化 Linux 上的 MySQL
 > [!IMPORTANT]
@@ -154,7 +154,7 @@ MySQL 的其他可能体系结构包括 NBD 群集、Percona 和 Galera 以及�
 如果要从 VM 外部进行查询，则还需要为 MySQL 启用网络（这是本指南的目的）。 在两个 VM 上打开 `/etc/mysql/my.cnf` 并转到 `bind-address`。 将地址从 127.0.0.1 更改为 0.0.0.0。 保存该文件之后，在当前主节点上发出 `sudo service mysql restart`。
 
 ### <a name="create-the-mysql-load-balanced-set"></a>创建 MySQL 负载均衡集
-返回门户，转到 `hadb01`，并选择“终结点”。 要创建终结点，请从下拉列表中选择“MySQL (TCP 3306)”，并选择“新建负载均衡集”。 将负载均衡的终结点命名为 `lb-mysql`。 将“时间”设置为 5 秒（最小值）。
+返回门户，转到 `hadb01`，并选择“终结点”。 要创建终结点，请从下拉列表中选择“MySQL (TCP 3306)”，并选择“新建负载均衡集”。 将负载均衡的终结点命名为 `lb-mysql`。 将“时间”设置为最小 5 秒。
 
 创建终结点后，转到 `hadb02`，选择“终结点”，并创建一个终结点。 选择 `lb-mysql`，并从下拉列表中选择“MySQL”。 还可以将 Azure CLI 用于此步骤。
 
@@ -247,7 +247,7 @@ Azure 上 Corosync 的主要约束是 Corosync 首选多播，其次广播，再
 ## <a name="set-up-pacemaker"></a>设置 Pacemaker
 Pacemaker 使用群集监视资源、定义主节点何时停机，并将这些资源切换到辅助节点。 可以通过一组可用脚本或 LSB（类似 init）脚本以及其他选项定义资源。
 
-我们希望 Pacemaker“拥有”DRBD 资源、装入点和 MySQL 服务。 如果在主节点出现问题时 Pacemaker 可以启用和关闭 DRBD，请按正确的顺序装载和卸载它，并启动并停止 MySQL，这样就完成了设置。
+我们希望 Pacemaker“拥有”DRBD 资源、装入点和 MySQL 服务。 如果在主节点出现问题时 Pacemaker 可以启用和关闭 DRBD，请按正确的顺序装载和卸载它，然后启动并停止 MySQL，这样就完成了设置。
 
 首次安装 Pacemaker 时，配置应足够简单，如下所示：
 
@@ -337,4 +337,4 @@ Pacemaker 使用群集监视资源、定义主节点何时停机，并将这些�
   * 编辑 linbit DRBD 脚本以确保未在 `/usr/lib/ocf/resource.d/linbit/drbd` 中调用 `down`。
 * 负载均衡器至少需要 5 秒钟才能做出响应，因此应用程序应是群集感知的并更容忍超时。 其他体系结构（如应用中队列和查询中间件）也会有帮助。
 * 有必要进行 MySQL 优化，确保以受控的速度完成写入，并且尽可能频繁地将缓存刷新到磁盘
-* 写入性能依赖于虚拟交换机中的 VM 互连，因为这是 DRBD 用于复制设备的机制。
+* 写入性能将依赖于虚拟交换机中的 VM 互连，因为这是 DRBD 用于复制设备的机制。

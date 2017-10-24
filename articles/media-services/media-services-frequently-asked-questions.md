@@ -12,20 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/29/2017
 ms.author: juliako
+ms.openlocfilehash: e2a580b835496c677f048599ae83287dbb61621d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 1f0c5cf93b44433aab2163548de916626a7fa480
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
 本文介绍由 Azure 媒体服务 (AMS) 用户社区提出的常见问题。
 
 ## <a name="general-ams-faqs"></a>一般性的 AMS 常见问题
+
+问：如何流式传输到 Apple iOS 设备
+
+答：向 URL 的“/Manifest”部分添加“(format=m3u8-aapl)”路径，告知流式处理源服务器返回供 Apple iOS 本机设备使用的 HLS 内容（有关详细信息，请参阅 (传送内容)[media-services-deliver-content-overview.md]）。
+
 问：如何缩放索引？
 
 答：编码任务和索引任务的保留单位相同。 请遵循[如何缩放编码保留单位](media-services-scale-media-processing-overview.md)中的说明。 **请注意**，保留单位类型不影响索引器性能。
@@ -81,4 +85,3 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

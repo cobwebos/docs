@@ -1,6 +1,6 @@
 ---
 title: "Azure 流量管理器终结点监视 | Microsoft Docs"
-description: "本文有助于你了解，流量管理器如何通过终结点监视和终结点自动故障转移来帮助 Azure 客户部署高可用性应用程序。"
+description: "本文介绍流量管理器如何利用终结点监视和终结点自动故障转移，帮助 Azure 客户部署高可用性应用程序"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
 ms.openlocfilehash: 5ce000814f2f5899a7338fdefb39c4873c006b1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
-Azure 流量管理器包括内置的终结点监视和终结点自动故障转移功能。 此功能可以让你更好地交付高可用性应用程序，以便应对终结点故障（包括 Azure 区域故障）。
+Azure 流量管理器包括内置的终结点监视和终结点自动故障转移功能。 此功能便于用户交付高可用性应用程序，用户应对终结点故障（包括 Azure 区域故障）。
 
 ## <a name="configure-endpoint-monitoring"></a>配置终结点监视
 

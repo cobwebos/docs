@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
 ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure 搜索性能和优化注意事项
 强大的搜索体验是许多移动和 Web 应用程序成功的关键。 无论是房地产，还是旧车市场，或者是联机目录，快速搜索及其相关结果都将影响客户体验。 本文档旨在帮助你发现如何充分利用 Azure 搜索的最佳实践，尤其是对伸缩性、多语言支持或自定义排名有复杂要求的高级方案。  此外，本文档概述了内部运作，并涵盖了在实际客户应用中可有效工作的方法。
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 
 1. 选取完成典型搜索请求应该花费的目标延迟（或最大时间量）。
 2. 针对搜索服务，使用现实数据集来创建和测试工作负载，以测量这些延迟速率。
-3. 从较小的每秒查询数量 (QPS) 开始，并不断增加在测试中执行的数量，直到查询延迟降到定义的目标延迟之下为止。  这是重要的基准，以帮助你计划扩展随着你的应用程序中使用情况的增长。
+3. 从较小的每秒查询数量 (QPS) 开始，并不断增加在测试中执行的数量，直到查询延迟降到定义的目标延迟之下为止。  这是一个重要的基准，可帮助你计划应用程序在使用量增长方面的规模。
 4. 只要有可能，请重用 HTTP 连接。  如果使用 Azure 搜索 .NET SDK，这意味着你应该重用某个实例或 [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) 实例，并且如果使用 REST API，就应该重用单个 HttpClient。
 
 在创建这些测试工作负荷时，需要记住 Azure 搜索的下面这些特征︰
@@ -39,23 +39,20 @@ ms.lasthandoff: 07/11/2017
 4. 搜索请求的变体很重要，因为如果不断执行相同的搜索请求，那么比起包含一个更加迥然不同的查询集，数据的缓存将开始使性能看起变得更好。
 
 > [!NOTE]
-> 
-            [Visual Studio Load Testing](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) 是真正适合执行基准测试的好方法，因为在需要针对 Azure 搜索执行查询并启用请求的并行化时，它允许执行 HTTP 请求。
+> [Visual Studio Load Testing](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) 是真正适合执行基准测试的好方法，因为在需要针对 Azure 搜索执行查询并启用请求的并行化时，它允许执行 HTTP 请求。
 > 
 > 
 
 ## <a name="scaling-azure-search-for-high-query-rates-and-throttled-requests"></a>调整 Azure 搜索的规模以获得较高的查询速率和受限制的请求
 收到太多受限的请求或从某个增加的查询负荷已超过目标延迟速率时，可以尝试使用以下两种方法之一来降低延迟速率︰
 
-1. 
-            **增加副本数︰**副本就像数据副本，它允许 Azure 搜索对面向多个副本的请求进行负载均衡。  在副本之间的所有负载均衡和数据的复制都是由 Azure 搜索管理的，可以随时更改为服务分配的副本数量。  最大可在一个标准搜索服务中分配 12 个副本，并在一个基本搜索服务中分配 3 个副本。 可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整副本。
-2. **增加搜索层︰**Azure 搜索来自[许多层](https://azure.microsoft.com/pricing/details/search/)，其中每个层都提供不同级别的性能。  在某些情况下，可能有太多查询，即使在副本数超出限制时，所在的层仍无法提供足够的低延迟速率。  在这种情况下，可能需要考虑利用其中一个较高的搜索层，比如 Azure 搜索 S3 层，该层非常适合包含大量文档和极高查询工作负荷的方案。
+1. **增加副本数︰**副本就像数据副本，它允许 Azure 搜索对面向多个副本的请求进行负载均衡。  在副本之间的所有负载均衡和数据的复制都是由 Azure 搜索管理的，可以随时更改为服务分配的副本数量。  最大可在一个标准搜索服务中分配 12 个副本，并在一个基本搜索服务中分配 3 个副本。 可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整副本。
+2. **增加搜索层︰**Azure 搜索来自[许多层](https://azure.microsoft.com/pricing/details/search/)，其中每个层都提供不同级别的性能。  在某些情况下，可能有太多查询，即使在副本数超出限制时，所在的层仍无法提供足够的低延迟速率。在这种情况下，可能需要考虑利用其中一个较高的搜索层，比如 Azure 搜索 S3 层，该层非常适合包含大量文档和极高查询工作负荷的方案。
 
 ## <a name="scaling-azure-search-for-slow-individual-queries"></a>针对速度慢的各个查询调整 Azure 搜索的规模
 延迟速率很慢的另一个原因是，单个查询花费太长时间才完成。  在这种情况下，增加副本数量将不会提高延迟速率。  这种情况下，可以使用以下两个选项︰
 
-1. 
-            **增加分区数**：分区是一种机制，可在额外资源之间拆分数据。  由于此原因，添加第二个分区时，数据会拆分为两份。  第三个分区会将索引拆分为三个，以此类推。这也会产生这样的效果，即在某些情形下，由于计算的并行化，速度慢的查询执行起来速度更快。  我们还见过一些例子，这种并行化特别适合具有低选择性查询的那些查询。  这包括匹配许多文档的查询，或者当分类需要提供对大量文档的计数时。  由于对文档的相关性进行评分或计算文档的数量需要大量的计算，因此，添加额外的分区可以帮助提供更多的计算能力。  
+1. **增加分区数**：分区是一种机制，可在额外资源之间拆分数据。  由于此原因，添加第二个分区时，数据会拆分为两份。  第三个分区会将索引拆分为三个，以此类推。这也会产生这样的效果，即在某些情形下，由于计算的并行化，速度慢的查询执行起来速度更快。  我们还见过一些例子，这种并行化特别适合具有低选择性查询的那些查询。  这包括匹配许多文档的查询，或者当分类需要提供对大量文档的计数时。  由于对文档的相关性进行评分或计算文档的数量需要大量的计算，因此，添加额外的分区可以帮助提供更多的计算能力。  
    
    在标准搜索服务中最多可以有 12 个分区，在基本搜索服务中最多可以有 1 个分区。  可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整分区。
 2. **限制高基数字段︰**高基数字段包含具有大量唯一值的可查找或可筛选的字段，因此，会获取要在其上计算结果的大量资源。   例如，将“产品 ID”或“描述”字段设置为可查找的/可筛选的会导致高基数，因为各个文档中的大多数值都是唯一的。 只要有可能，请限制高基数字段的数量。

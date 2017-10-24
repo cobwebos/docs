@@ -12,6 +12,6 @@
     图形 ID|sample-graph|新图形的 ID。 图形名称与数据库 ID 的字符要求相同。
     存储容量| 10 GB|保留默认值。 这是数据库的存储容量。
     吞吐量|400 RU|保留默认值。 如果想要减少延迟，以后可以增加吞吐量。
-    分区键|/userid|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能图形而言很重要。 有关详细信息，请参阅[设计分区](../articles/cosmos-db/partition-data.md#designing-for-partitioning)。
+    分区键|/firstName|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能图形而言很重要。 有关详细信息，请参阅[设计分区](../articles/cosmos-db/partition-data.md#designing-for-partitioning)。
 
 3. 填写表单后，请选择“确定”。

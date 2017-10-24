@@ -14,12 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: tamram
+ms.openlocfilehash: 69c1d41a4c2dbddd20c0e603ef335f3030a484d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b1f192a935dbf234936690b0d36b6ce708d38b14
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>将 Azure CLI 2.0 用于 Azure 存储
 
@@ -373,10 +372,146 @@ az storage file copy start \
 --destination-share share2 --destination-path dir2/file.txt     
 ```
 
+## <a name="create-share-snapshot"></a>创建共享快照
+可以使用 `az storage share snapshot` 命令创建共享快照：
+
+```cli
+az storage share snapshot -n <share name>
+```
+
+示例输出
+```json
+{
+  "metadata": {},
+  "name": "<share name>",
+  "properties": {
+    "etag": "\"0x8D50B7F9A8D7F30\"",
+    "lastModified": "2017-10-04T23:28:22+00:00",
+    "quota": null
+  },
+  "snapshot": "2017-10-04T23:28:35.0000000Z"
+}
+```
+
+### <a name="list-share-napshots"></a>列出共享快照
+
+可使用 `az storage share list --include-snapshots` 列出特定共享的共享快照
+
+```cli
+az storage share list --include-snapshots
+```
+
+**示例输出**
+```json
+[
+  {
+    "metadata": null,
+    "name": "sharesnapshotdefs",
+    "properties": {
+      "etag": "\"0x8D50B5F4005C975\"",
+      "lastModified": "2017-10-04T19:36:46+00:00",
+      "quota": 5120
+    },
+    "snapshot": "2017-10-04T19:44:13.0000000Z"
+  },
+  {
+    "metadata": null,
+    "name": "sharesnapshotdefs",
+    "properties": {
+      "etag": "\"0x8D50B5F4005C975\"",
+      "lastModified": "2017-10-04T19:36:46+00:00",
+      "quota": 5120
+    },
+    "snapshot": "2017-10-04T19:45:18.0000000Z"
+  },
+  {
+    "metadata": null,
+    "name": "sharesnapshotdefs",
+    "properties": {
+      "etag": "\"0x8D50B5F4005C975\"",
+      "lastModified": "2017-10-04T19:36:46+00:00",
+      "quota": 5120
+    },
+    "snapshot": null
+  }
+]
+```
+
+### <a name="browse-share-snapshots"></a>浏览共享快照
+此外，还可以使用 `az storage file list` 浏览到特定共享快照以查看其内容。 用户必须指定共享名 `--share-name <snare name>` 和时间戳 `--snapshot '2017-10-04T19:45:18.0000000Z'`
+
+```azurecli-interactive
+az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable
+```
+
+**示例输出**
+```
+Name            Content Length    Type    Last Modified
+--------------  ----------------  ------  ---------------
+HelloWorldDir/                    dir
+IMG_0966.JPG    533568            file
+IMG_1105.JPG    717711            file
+IMG_1341.JPG    608459            file
+IMG_1405.JPG    652156            file
+IMG_1611.JPG    442671            file
+IMG_1634.JPG    1495999           file
+IMG_1635.JPG    974058            file
+
+```
+### <a name="restore-from-share-snapshots"></a>从共享快照还原
+
+可以通过使用 `az storage file download` 命令从共享快照复制或下载文件来还原文件
+
+```azurecli-interactive
+az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z'
+```
+**示例输出**
+```
+{
+  "content": null,
+  "metadata": {},
+  "name": "IMG_0966.JPG",
+  "properties": {
+    "contentLength": 533568,
+    "contentRange": "bytes 0-533567/533568",
+    "contentSettings": {
+      "cacheControl": null,
+      "contentDisposition": null,
+      "contentEncoding": null,
+      "contentLanguage": null,
+      "contentType": "application/octet-stream"
+    },
+    "copy": {
+      "completionTime": null,
+      "id": null,
+      "progress": null,
+      "source": null,
+      "status": null,
+      "statusDescription": null
+    },
+    "etag": "\"0x8D50B5F49F7ACDF\"",
+    "lastModified": "2017-10-04T19:37:03+00:00",
+    "serverEncrypted": true
+  }
+}
+```
+## <a name="delete-share-snapshot"></a>删除共享快照
+可以通过提供 `--snapshot` 参数和共享快照时间戳使用 `az storage share delete` 命令来删除共享快照：
+
+```cli
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+```
+
+示例输出
+```json
+{
+  "deleted": true
+}
+```
+
 ## <a name="next-steps"></a>后续步骤
 以下是一些用于详细了解如何使用 Azure CLI 2.0 的其他资源。
 
 * [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI 2.0 命令参考](/cli/azure)
 * [GitHub 上的 Azure CLI 2.0](https://github.com/Azure/azure-cli)
-

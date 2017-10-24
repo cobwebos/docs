@@ -13,15 +13,14 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/07/2017
+ms.date: 10/11/2017
 ms.author: glenga
 ms.custom: mvc
+ms.openlocfilehash: bc801ed3dac213dacac5ee14e1b4e73b87ecc7bd
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: cec9660ee068b33a114748813f0c7ffa3821d973
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
 本文对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题并自动化业务流程：
@@ -80,17 +79,19 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 | --- | --- | --- |
 | 扩展 |无配置缩放 |应用服务计划的缩放 |
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
-| 运行类型 |触发、计划（通过计时器触发器） |触发的、连续的、计划的 |
+| 运行类型 |触发、计划（通过计时器触发器） |触发、连续、计划 |
 | 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage-blob.md) |[Azure 存储](functions-bindings-storage-blob.md)、[Azure 服务总线](functions-bindings-service-bus.md) |
-| 浏览器开发 |受支持 | 不支持 |
-| Windows 脚本（.cmd、.bat） |实验 |受支持 |
-| PowerShell |实验 |受支持 |
-| C# |受支持 |受支持 |
-| F# |受支持 |不支持 |
-| Bash |实验 |受支持 |
-| PHP |实验 |受支持 |
-| Python |实验 |受支持 |
-| JavaScript |受支持 |受支持 |
+| 浏览器开发 |支持 |不支持 |
+| C# |支持 |支持 |
+| F# |支持 |不支持 |
+| JavaScript |支持 |支持 |
+| Java |支持 | 不支持 |
+| Bash |试验 |支持 |
+| Windows 脚本（.cmd、.bat） |试验 |支持 |
+| PowerShell |试验 |支持 |
+| PHP |试验 |支持 |
+| Python |试验 |支持 |
+| TypeScript |试验 |不支持 |
 
 要使用函数，还是要使用 WebJobs，这最终取决于已对应用服务执行何操作。 如果已有想为其运行代码片段的应用服务应用，且想要在同一 DevOps 环境中同时管理它们，请使用 WebJobs。 在以下情况下，请使用 Functions。
 
@@ -123,5 +124,4 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 * [集成简化，来自 Charles Lamanna](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [逻辑应用实时网络广播](http://aka.ms/logicappslive)
 * [Microsoft Flow 的常见问题](https://flow.microsoft.com/documentation/frequently-asked-questions/)
-
 

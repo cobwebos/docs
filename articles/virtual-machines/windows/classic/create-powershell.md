@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 75c6cf17ee269ae169d9f2f748d0985ca07e454e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>使用 Powershell 和经典部署模型创建 Windows 虚拟机
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/11/2017
 4. 单击“登录”。
 
 ## <a name="step-2-set-your-subscription-and-storage-account"></a>步骤 2：设置订阅和存储帐户
-通过在 Windows PowerShell 命令提示符处运行以下命令，设置 Azure 订阅和存储帐户。 将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
+通过在 Windows PowerShell 命令提示符处运行以下命令，设置 Azure 订阅和存储帐户。 将引号内的所有内容（包括 < 和 > 字符）替换为相应的名称。
 
     $subscr="<subscription name>"
     $staccount="<storage account name>"
@@ -82,7 +82,7 @@ ms.lasthandoff: 07/11/2017
     $image = Get-AzureVMImage | where { $_.Label -eq $label } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
 ## <a name="step-4-build-your-command-set"></a>步骤 4：构建命令集
-将下面相应的一组程序块复制到新文本文件或 ISE 中，然后填写变量值并删除 < and > 字符来构建命令集的其余部分。 请参阅本文末尾的两个[示例](#examples)，了解最终结果。
+通过将下面相应的一组程序块复制到新文本文件或 ISE 中，并填写变量值并删除 < 和 > 字符来构建命令集的其余部分。 请参阅本文末尾的两个[示例](#examples)，了解最终结果。
 
 通过选择这两个命令块之一启动命令集（必需）。
 

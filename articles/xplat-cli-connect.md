@@ -17,10 +17,10 @@ ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
 ms.openlocfilehash: 31efab60690b54faf7992251fcd01e307c4464f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-in-to-azure-from-the-azure-cli"></a>通过 Azure CLI 登录到 Azure
 Azure CLI 是一组开源且跨平台的命令，用于处理 Azure 资源。 本文介绍了提供 Azure 帐户凭据以将 Azure CLI 连接到 Azure 订阅的各种方式。
@@ -33,7 +33,7 @@ Azure CLI 是一组开源且跨平台的命令，用于处理 Azure 资源。 �
 有关不同的帐户标识和 Azure 订阅的背景信息，请参阅 [Azure 订阅如何与 Azure Active Directory 相关联](active-directory/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="scenario-1-azure-login-with-interactive-login"></a>方案 1：使用交互式登录的 azure 登录
-使用某些帐户时，CLI 会要求运行 `azure login`，然后使用 Web 浏览器通过某个 Web 门户继续执行登录过程，此过程称为*交互式登录*。 一个常见原因是你具有设置为要求进行多重身份验证的工作或学校帐户（也称为*组织帐户*）。 希望使用 Resource Manager 模式的命令时，也请使用 Microsoft 帐户进行交互式登录。
+使用某些帐户时，CLI 会要求运行 `azure login`，然后使用 Web 浏览器通过某个 Web 门户继续执行登录过程，此过程称为*交互式登录*。 一个常见原因是你拥有一个被设置为要求多重身份验证的工作或学校帐户（也称为“组织帐户”）。 希望使用 Resource Manager 模式的命令时，也请使用 Microsoft 帐户进行交互式登录。
 
 交互式登录很简单：键入 `azure login` -- 不带任何选项 -- 如下例中所示：
 
@@ -47,7 +47,7 @@ azure login
 info:    Executing command login
 info:    To sign in, use a web browser to open the page http://aka.ms/devicelogin. Enter the code XXXXXXXXX to authenticate.
 ```
-复制在命令输出中提供的代码，并将浏览器打开到 http://aka.ms/devicelogin 或其他页面（如果已指定）。 （可以在同一计算机上打开浏览器，也可以在其他计算机或设备上打开浏览器。）输入代码，然后系统会提示为要使用的标识输入用户名和密码。 该过程完成后，命令外壳会完成登录过程。 它的外观可能如下：
+复制在命令输出中提供的代码，并将浏览器打开到 http://aka.ms/devicelogin 或其他页面（如果已指定）。 （可以在同一计算机上打开浏览器，也可以在其他计算机或设备上打开浏览器。）输入代码，然后系统会提示为要使用的标识输入用户名和密码。 该过程完成后，命令 shell 将完成登录。 它的外观可能如下：
 
     info:    Added subscription Visual Studio Ultimate with MSDN
     info:    Added subscription Azure Free Trial
@@ -70,7 +70,7 @@ info:    To sign in, use a web browser to open the page http://aka.ms/devicelogi
     info:    Executing command login
     Password: *********
 
-随后完成登录过程。
+然后完成登录过程。
 
     info:    Added subscription Visual Studio Ultimate with MSDN
     +
@@ -86,21 +86,20 @@ info:    To sign in, use a web browser to open the page http://aka.ms/devicelogi
 然后，会提示提供密码。 对于自动化方案，还可以通过 CLI 脚本或应用程序代码提供凭据，或者使用证书以非交互方式对服务主体进行身份验证。 有关详细信息与示例，请参阅[使用 Azure Resource Manager 对服务主体进行身份验证](resource-group-authenticate-service-principal-cli.md)。
 
 ## <a name="scenario-4-use-a-publish-settings-file"></a>方案 4：使用发布设置文件
-如果只需要使用 Azure 服务管理模式 CLI 命令（例如，在经典部署模型中部署 Azure VM），则可以使用发布设置文件进行连接。 此方法会在本地计算机上安装证书，只要订阅和证书有效，就可以执行管理任务。
+如果只需要使用 Azure 服务管理模式 CLI 命令（例如，在经典部署模型中部署 Azure VM），则可以使用发布设置文件进行连接。 此方法会在本地计算机上安装证书，只要订阅和证书有效，便可以执行管理任务。
 
-* 
-            **要为帐户下载发布设置文件**，请通过键入 `azure config mode asm` 确保 CLI 处于服务管理模式。 然后运行以下命令：
+* **要为帐户下载发布设置文件**，请通过键入 `azure config mode asm` 确保 CLI 处于服务管理模式。 然后运行以下命令：
 
         azure account download
 
-这会打开默认浏览器，并提示你登录到 [Azure 经典门户](https://manage.windowsazure.com)。 登录后，会下载 `.publishsettings` 文件。 记下此文件的保存位置。
+这会打开默认浏览器，并提示登录到 [Azure 经典门户](https://manage.windowsazure.com)。 登录后，将下载 `.publishsettings` 文件。 记下此文件的保存位置。
 
 > [!NOTE]
-> 如果你的帐户与多个 Azure Active Directory 租户关联，系统会提示你选择要为哪个 Active Directory 下载发布设置文件。
+> 如果帐户与多个 Azure Active Directory 租户关联，系统会提示选择要为哪个 Active Directory 下载发布设置文件。
 >
 >
 
-使用下载页面进行选择或通过访问 Azure 经典门户进行选择之后，所选的 Active Directory 成为经典门户和下载页面使用的默认值。 设定默认值之后，可以在下载页面的顶部看到文本“若要返回选择页面，请单击此处”。 使用提供的链接返回选择页面。
+使用下载页面进行选择或通过访问 Azure 经典门户进行选择之后，所选的 Active Directory 将成为经典门户和下载页面使用的默认值。 设定默认值之后，可以在下载页面的顶部看到文本“若要返回选择页面，请单击此处”。 使用提供的链接返回选择页面。
 
 * **若要导入发布设置文件**，请运行以下命令：
 
@@ -112,7 +111,7 @@ info:    To sign in, use a web browser to open the page http://aka.ms/devicelogi
 >
 
 ## <a name="cli-command-modes"></a>CLI 命令模式
-Azure CLI 提供两种命令模式让你使用不同的命令集来处理 Azure 资源：
+Azure CLI 提供了两种命令模式，用于通过不同命令集处理 Azure 资源：
 
 * **Resource Manager 模式** - 用于在 Resource Manager 部署模型中处理 Azure 资源。 若要设置此模式，请运行 `azure config mode arm`。
 * **服务管理模式** - 用于在经典部署模型中处理 Azure 资源。 若要设置此模式，请运行 `azure config mode asm`。
@@ -125,7 +124,7 @@ Azure CLI 提供两种命令模式让你使用不同的命令集来处理 Azure 
 >
 
 ## <a name="multiple-subscriptions"></a>多个订阅
-如果有多个 Azure 订阅，则连接到 Azure 即有权访问与凭据关联的所有订阅。 将选择一个订阅作为默认订阅，由 Azure CLI 在执行操作时使用。 可以使用 `azure account list` 命令查看订阅，包括当前的默认订阅。 此命令返回如下信息：
+如果有多个 Azure 订阅，则连接到 Azure 即有权访问与凭据关联的所有订阅。 将选择一个订阅作为默认订阅，由 Azure CLI 在执行操作时使用。 可以使用 `azure account list` 命令查看订阅，包括当前的默认订阅。 此命令将返回如下信息：
 
     info:    Executing command account list
     data:    Name              Id                                    Current
@@ -160,7 +159,7 @@ Azure CLI 提供两种命令模式让你使用不同的命令集来处理 Azure 
 
     azure logout -u <username>
 
-如果与帐户关联的订阅只使用 Active Directory 进行身份验证，则注销操作会从本地配置文件中删除订阅信息。 但是，如果还为订阅导入了发布设置文件，则注销操作仅从本地配置文件中删除与 Active Directory 相关的信息。
+如果与帐户关联的订阅只使用 Active Directory 进行身份验证，则注销将从本地配置文件中删除订阅信息。 但是，如果还为订阅导入了发布设置文件，则注销将仅从本地配置文件中删除与 Active Directory 相关的信息。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要使用 Azure CLI 命令，请参阅[Resource Manager 模式中的 Azure CLI 命令](virtual-machines/azure-cli-arm-commands.md)和[服务管理模式中的 Azure CLI 命令](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。

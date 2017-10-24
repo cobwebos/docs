@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
+ms.openlocfilehash: be9ffaac1f25068f1ad575c14ffb6666752159d0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: b9ab20b6edbc0ab913690a5fcac181cd2d66e3b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂中配置 Azure-SSIS 集成运行时所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 将 SQL Server Integration Services (SSIS) 包部署到 Azure 上的此运行时。
 
@@ -34,11 +32,11 @@ ms.lasthandoff: 09/28/2017
 ## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**。 如果没有订阅，可以创建一个[免费试用](http://azure.microsoft.com/pricing/free-trial/)帐户。
-- **Azure SQL 数据库服务器**或 **SQL Server 托管实例（专用预览）（扩展专用预览）**。 如果还没有数据库服务器，请在启动之前在 Azure 门户中创建一个。 此服务器承载 SSIS 目录数据库 (SSISDB)。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。 
-- **经典虚拟网络 (VNet)（可选）**。 如果至少满足以下条件之一，则必须具有 Azure 虚拟网络 (VNet)：
-    - 作为 VNet 一部分的 SQL Server 托管实例（专用预览）上承载着 SSIS 目录数据库。
-    - 希望从在 Azure-SSIS 集成运行时上运行的 SSIS 包连接到本地数据存储。
-- **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。 使用 PowerShell 运行脚本来预配在云中运行 SSIS 包的 Azure-SSIS 集成运行时。 
+- **Azure SQL 数据库服务器**或 **SQL Server 托管实例（专用预览）（扩展专用预览）**。 如果还没有数据库服务器，请在启动之前在 Azure 门户中创建一个。 此服务器承载着 SSIS 目录数据库 (SSISDB)。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。 记下 Azure SQL Server 的定价层。 有关受支持的 Azure SQL 数据库定价层列表，请参阅 [SQL 数据库资源限制](../sql-database/sql-database-resource-limits.md)。
+- **经典虚拟网络 (VNet)（可选）**。 如果下列条件中至少有一个属实，则必须具有 Azure 虚拟网络 (VNet)：
+    - 作为 VNet 一部分的 SQL Server 托管实例（个人预览版）上承载着 SSIS 目录数据库。
+    - 想要从 Azure-SSIS 集成运行时中运行的 SSIS 包连接到本地数据存储。
+- **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。 将使用 PowerShell 运行一个脚本来在云中预配运行 SSIS 包的 Azure-SSIS 集成运行时。 
 
 ## <a name="create-variables"></a>创建变量
 定义在本教程的脚本中使用的变量：
@@ -64,8 +62,8 @@ $SSISDBServerAdminUserName = "[your server admin username]"
 $SSISDBServerAdminPassword = "[your server admin password]"
 
 # Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
-# This parameter applies only to Azure SQL Database. 
-$SSISDBPricingTier = "[your Azure SQL Database pricing tier, e.g. S3. Remove the variable for Azure SQL Managed Instance (private preview)]"
+# This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
+$SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0, S1, S2, S3, etc.]"
 
 ## Remove these two variables if you are using Azure SQL Database. 
 ## These two parameters apply if you are using VNet and Azure SQL Managed Instance (private preview). 
@@ -139,9 +137,10 @@ Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 
 ## <a name="create-an-integration-runtime"></a>创建集成运行时
-运行以下命令以创建在 Azure 中运行 SSIS 包的 Azure SSIS 集成运行时： 
+运行以下命令来在 Azure 中创建运行 SSIS 包的 Azure SSIS 集成运行时： 
 
 如果使用 **Azure SQL 数据库**承载 SSISDB 数据库（SSIS 目录）： 
+
 
 ```powershell
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -160,7 +159,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode
 ```
 
-不需要传递 VNetId 和 Subnet 的值，除非需要访问本地数据（即，SSIS 包中包含本地数据源/目标）。 必须传递 CatalogPricingTier 参数的值。 
+不需要传递 VNetId 和 Subnet 的值，除非需要访问本地数据（即，SSIS 包中包含本地数据源/目标）。 必须传递 CatalogPricingTier 参数的值。 有关受支持的 Azure SQL 数据库定价层列表，请参阅 [SQL 数据库资源限制](../sql-database/sql-database-resource-limits.md)。
 
 如果使用 **Azure SQL 托管实例（个人预览版）**承载 SSISDB 数据库：
 
@@ -200,7 +199,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 此命令将花费 **20 到 30 分钟**才能完成。 
 
 ## <a name="deploy-ssis-packages"></a>部署 SSIS 包
-现在，使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 来将 SSIS 包部署到 Azure。 连接到承载 SSIS 目录 (SSISDB) 的 Azure SQL 服务器。 Azure SQL 服务器的名称采用以下格式：&lt;servername&gt;.database.windows.net（适用于 Azure SQL 数据库）。 有关说明，请参阅文章[部署包](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)。 
+现在，使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 来将 SSIS 包部署到 Azure。 连接到承载着 SSIS 目录 (SSISDB) 的 Azure SQL 服务器。 Azure SQL 服务器的名称采用以下格式：&lt;servername&gt;.database.windows.net（适用于 Azure SQL 数据库）。 有关说明，请参阅[部署包](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)一文。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅本文档中的其他 Azure-SSIS IR 主题：

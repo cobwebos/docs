@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
 ms.openlocfilehash: fe9d4f6b232e9abcf1fe9fc5657044b6c72fedb8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Virtual Array 更新 0.3 发行说明
 ## <a name="overview"></a>概述
@@ -41,8 +41,8 @@ ms.lasthandoff: 07/11/2017
 
 | 否。 | 功能 | 问题 |
 | --- | --- | --- |
-| 1 |备份 |早期版本中出现了无法完成备份以进行文件共享的问题。 如果发生此问题，备份作业会失败，并且会在 StorSimple Manager 服务中引发严重性警报以通知用户。 此问题不会对共享上的数据或对数据的访问产生影响。 在此版本中识别并修复了其根本原因。 <br></br> 修补程序不会以追溯的方式应用于已出现此问题的共享。 首先，看到此问题的客户应应用更新 0.3，然后联系 Microsoft 支持部门执行完整系统备份，以便解决此问题。 除了与 Microsoft 支持联系，客户还可以将受影响的共享从运行状况良好的备份还原为新的共享。 |
-| 2 |iSCSI |早期版本中出现了将数据复制到 StorSimple Virtual Array 上的卷时，卷会消失的问题。 在此版本中已修复了此问题。 <br></br> 修补程序仅对新创建的卷有效。 修补程序不会以追溯的方式应用于已出现此问题的卷。 建议客户通过 Azure 经典门户使受影响的卷联机，为这些卷执行备份，然后将这些卷还原为新卷。 |
+| 1 |备份 |早期版本中出现了无法完成备份以进行文件共享的问题。 如果发生此问题，备份作业会失败，并且会在 StorSimple Manager 服务中引发严重性警报以通知用户。 此问题不会对共享上的数据或对数据的访问产生影响。 在此版本中识别并修复了其根本原因。 <br></br> 修补程序不会以追溯的方式应用于已出现此问题的共享。 如果客户遇到这个问题，应先应用 Update 0.3，再联系 Microsoft 支持部门执行完整系统备份，从而解决此问题。 除了与 Microsoft 支持联系，客户还可以将受影响的共享从运行状况良好的备份还原为新的共享。 |
+| #N/A |iSCSI |早期版本中出现了将数据复制到 StorSimple Virtual Array 上的卷时，卷会消失的问题。 在此版本中已修复了此问题。 <br></br> 修补程序仅对新创建的卷有效。 修补程序不会以追溯的方式应用于已出现此问题的卷。 建议客户通过 Azure 经典门户使受影响的卷联机，为这些卷执行备份，然后将这些卷还原为新卷。 |
 
 ## <a name="known-issues-in-the-update-03"></a>更新 0.3 中的已知问题
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 

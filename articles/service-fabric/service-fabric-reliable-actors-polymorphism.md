@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: 36a59a41b2261369a2062c76ef90aebf7e24a221
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors 框架中的多态性技术
 Reliable Actors 框架允许使用许多在面向对象的设计中使用的相同技术来生成执行组件。 其中一种技术是多态性技术，它允许类型和接口从多个通用父类中继承。 Reliable Actors 框架中的继承通常遵循 .NET 模型，并会受到一些附加限制。 在 Java/Linux 中，它遵循 Java 模型。
@@ -91,7 +91,7 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-请注意执行组件类型上的 `ActorService` 属性。 此属性告知 Reliable Actor 框架，它应自动创建用于托管此类型的执行组件的服务。 在某些情况下，你可能想要创建仅用于与子类型共享功能，并且始终不会用于实例化具体的执行组件的基类型。 在这些情况下，应使用 `abstract` 关键字表示始终不会基于此类型创建执行组件。
+请注意执行组件类型上的 `ActorService` 属性。 此属性告知 Reliable Actor 框架，它应自动创建用于托管此类型的执行组件的服务。 在某些情况下，建议创建仅用于与子类型共享功能，并且始终不会用于实例化具体的执行组件的基类型。 在这些情况下，应使用 `abstract` 关键字表示始终不会基于此类型创建执行组件。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Reliable Actors 框架如何使用 Service Fabric 平台](service-fabric-reliable-actors-platform.md)，以实现可靠性、可伸缩性和一致状态。

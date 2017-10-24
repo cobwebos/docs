@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
 ms.openlocfilehash: 7e80951de55ade6b5140608dcff8ebb064f942ca
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -77,7 +77,7 @@ gulp run --debug
 ### <a name="configure-visual-studio-code-to-connect-to-the-remote-device"></a>配置 Visual Studio Code 以连接到远程设备
 
 1. 打开左侧的“调试”面板。
-2. 单击绿色的“启动调试”(F5) 按钮。 `launch.json` 文件。
+2. 单击绿色的“启动调试”(F5) 按钮。 Visual Studio Code 将打开 `launch.json` 文件。
 3. 使用以下内容更新 `launch.json` 文件。 将 `[device hostname or IP address]` 替换为实际的设备 IP 地址或主机名。
 
    ``` json
@@ -128,7 +128,7 @@ python -m pip install --upgrade pip
 
 ### <a name="legacy-installation-issues-macos"></a>旧安装的问题 (macOS)
 
-安装 pip 时，如果使用 **su** 权限安装的包较旧，则会引发权限错误。 之所以发生此情况是因为未完全卸载以前使用 brew (macOS) 安装的 Python。 以前的安装中的某些 pip 程序包是由 root 创建的，这导致了权限错误。 解决方案是删除由 root 安装的那些程序包。 使用以下步骤完成此任务：
+安装 pip 时，当使用 **su** 权限安装较旧的程序包时会引发权限错误。 之所以发生此情况是因为未完全卸载以前使用 brew (macOS) 安装的 Python。 以前的安装中的某些 pip 程序包是由 root 创建的，这导致了权限错误。 解决方案是删除由 root 安装的那些程序包。 使用以下步骤完成此任务：
 
 1. 转到 `/usr/local/lib/python2.7/site-packages`
 2. 列出由 root 创建的程序包：`ls -l | grep root`
@@ -145,7 +145,7 @@ python -m pip install --upgrade pip
 
 - 设备标识管理 - 以便预配和管理在 IoT 中心内注册的设备。
 - 接收“设备到云”消息 - 以便可以监视从设备发送到 IoT 中心的消息。
-- 发送云到设备消息，以便将消息从 IoT 中心发送到设备。
+- 发送“云到设备”消息 - 以便可以将消息从 IoT 中心发送到设备。
 
 在此工具内配置 IoT 中心连接字符串以使用其所有功能。
 
@@ -167,7 +167,7 @@ iothub-explorer help
 
 ### <a name="the-azure-portal"></a>Azure 门户
 
-完整的 CLI 体验有助于用户创建和管理其所有 Azure 资源。 还可能希望使用 [Azure 门户](https://azure.microsoft.com/en-us/documentation/articles/azure-portal-overview/)来帮助预配、管理和调试 Azure 资源。
+完整的 CLI 体验可帮助你创建和管理所有 Azure 资源。 还可能希望使用 [Azure 门户](https://azure.microsoft.com/en-us/documentation/articles/azure-portal-overview/)来帮助预配、管理和调试 Azure 资源。
 
 ## <a name="azure-storage-issues"></a>Azure 存储问题
 

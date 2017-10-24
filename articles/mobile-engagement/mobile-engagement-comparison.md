@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>比较 Azure Mobile Engagement 和其他相似的 Azure 服务
 Microsoft Azure 提供的服务列表在不断扩展，有时你可能会疑惑 Azure Mobile Engagement 与你刚刚看到或听说过的其他服务有何不同。 本文试图消除这种疑惑，并指导用户在最佳使用时机选择 Azure Mobile Engagement。 
@@ -40,7 +40,7 @@ Azure Mobile Engagement 是专门面向数字营销人员/CMO 的服务，但是
    收集应用用户的行为分析数据后，可基于各种参数和收集的数据来细分受众，以运行有针对性的推送活动。 
 4. **软件即服务 (SaaS)：**
    
-   我们拥有一个独立于 Azure 管理门户的门户，对其进行了优化以交互和查看有关应用用户的大量行为分析并运行营销推送市场活动。 产品旨在帮助你在没有时间 ！   
+   我们拥有一个独立于 Azure 管理门户的门户，对其进行了优化以交互和查看有关应用用户的大量行为分析并运行营销推送市场活动。 该产品旨在帮助你立即行动起来！   
 
 产品具备了这一系列的特色，下面则与其他看似相似的 Azure 服务进行比较（注意，本文不进行功能级别的比较，而采用更加侧重基于方案的方法来定义哪种产品效果最好）：
 

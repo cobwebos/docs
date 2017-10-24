@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
 ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 本文介绍成为 Azure 应用商店的批准 Microsoft 开发人员的必要帐户创建和注册过程。
@@ -126,7 +126,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 9. 输入付款信息，以为帐户付款。 如果有抵扣注册费用的促销代码，可以在此处输入该代码。 否则，请提供信用卡信息（或所在市场支持的 PayPal）。 完成后，单击“下一步”以转到“查看屏幕”。
 
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. 查看帐户信息，并确认所有内容都正确无误。 然后，阅读并接受条款和条件[Microsoft Azure Marketplace 发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)。 选中该框，即表明已阅读并接受这些条款。
+10. 查看帐户信息，并确认所有内容都正确无误。 然后，阅读并接受 [Microsoft Azure Marketplace 发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明已阅读并接受这些条款。
 11. 单击“完成”，确认注册。 我们会向电子邮件地址发送一封确认邮件。
 12. 如果打算仅发布免费的产品/服务，请单击“转到 Azure 应用商店发布门户”，然后可以跳到本文档的第 3 部分（[在发布门户中注册帐户](#3-register-your-account-in-the-publishing-portal)）。
 
@@ -156,7 +156,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 3. 输入付款信息，确认无误后单击“保存”。
 
    > [!IMPORTANT]
-   > 如果需要更新或更改付款帐户，请按照上述相同步骤操作，以将当前信息替换为新信息。 更改付款帐户可能会推迟付款（最多一个付款周期）。 因为我们需要验证帐户更改，正如我们在第一次设置付出比率帐户时，将出现此延迟。 帐户通过验证后，仍会收到全额款项；当前付款周期应得的任何付款将添加到下一个付款周期。
+   > 如果需要更新或更改付款帐户，请按照上述相同步骤操作，以将当前信息替换为新信息。 更改付款帐户可能会推迟付款（最多一个付款周期）。 出现此推迟的原因是我们需要验证帐户更改，正如首次设置付款帐户时我们会进行验证。 帐户通过验证后，仍会收到全额款项；当前付款周期应得的任何付款将添加到下一个付款周期。
    >
    >
 4. 单击“下一步”。
@@ -188,8 +188,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgAddTax_05.png)
 
 ## <a name="3-register-your-account-in-the-publishing-portal"></a>3.在发布门户中注册帐户
-
-            [发布门户](http://publish.windowsazure.com)用于发布和管理产品/服务。
+[发布门户](http://publish.windowsazure.com)用于发布和管理产品/服务。
 
 1. 打开新的 Chrome Incognito 或 Internet Explorer InPrivate 浏览会话，以确保未登录到个人帐户。
 2. 转到 [http://publish.windowsazure.com](http://publish.windowsazure.com)。
@@ -203,7 +202,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 >
 
 ## <a name="4-steps-to-add-a-co-admin-in-the-publishing-portal"></a>4.在发布门户中添加共同管理员的步骤
-**假设你是管理员，**下面给出是的步骤添加共同管理员。
+假设你是管理员，下面提供了添加共同管理员的步骤。
 
 > [!NOTE]
 > **对于新用户，**在发布门户中添加共同管理员之前，请确保已在发布门户中创建至少一个应用程序。 这是必需的，因为“发布者”选项卡仅在发布门户中创建至少一个应用程序后显示。
@@ -219,7 +218,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
    ![绘制](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
 
 ## <a name="5-steps-to-delete-a-co-admin-in-the-publishing-portal"></a>5.在发布门户中删除共同管理员的步骤
-**假设你是管理员，**下面给出是的步骤删除共同管理员。
+假设你是管理员，下面提供了删除共同管理员的步骤。
 
 1. 使用管理员电子邮件 ID 登录到发布门户。
 2. 导航到“发布者”->依次选择帐户->“管理员” -> “共同管理员”。

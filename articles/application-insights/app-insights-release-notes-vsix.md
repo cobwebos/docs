@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: bwren
 ms.openlocfilehash: 2e6987d30b56407559f54c02817ee94eff8df46b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>开发人员分析工具发行说明
 
@@ -230,7 +230,7 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 ![跟踪](./media/app-insights-release-notes-vsix/Traces.png)
 
 ### <a name="jump-to-or-find-the-code-where-the-telemetry-event-property-is-emitted"></a>跳转到或找到其中发出遥测事件属性的代码
-借助新版本，用户可以单击事件详细信息中的任何值，将搜索当前打开的解决方案中的匹配字符串。 结果将显示在 Visual Studio"查找结果"列表如下所示：
+借助新版本，用户可以单击事件详细信息中的任何值，将搜索当前打开的解决方案中的匹配字符串。 结果将显示在 Visual Studio“查找结果”列表中，如下所示：
 
 ![查找匹配项](./media/app-insights-release-notes-vsix/FindMatch.png)
 

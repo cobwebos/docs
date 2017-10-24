@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 4dc5ae7d3feae769a8366f68f412f3b79fa8eb00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题解答
 
 
 ## <a name="overview"></a>概述
-以下是问题和答案时部署或管理 StorSimple Virtual Array，在 Azure 门户中可能遇到作为 StorSimple 合作伙伴。
+下面介绍了作为 StorSimple 合作伙伴在 Azure 门户中部署或管理 StorSimple Virtual Array 时可能会遇到的问题及其解答。
 
 问题和解答分为以下几个类别：
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务查看 StorSimple 虚拟阵列的作业
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 可以通过筛选下述字段，快速查找感兴趣的作业：
 
 * **时间范围** - 可以根据日期和时间范围筛选作业。
-* **设备** - 可以在连接到服务的特定设备上启动作业。 筛选的作业是然后以表格方式列出基于以下属性：
+* **设备** - 可以在连接到服务的特定设备上启动作业。 然后，根据以下属性将筛选出的作业制成表格：
   
   * **名称** - 作业名称可以是“全部”、“备份”、“克隆”、“故障转移”、“下载更新”或“安装更新”。
   * **状态** - 作业可以是“全部”、“正在进行”、“成功”或“失败”或“已取消”。

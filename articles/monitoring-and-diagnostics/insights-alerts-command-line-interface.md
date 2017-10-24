@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
 ms.openlocfilehash: 92246a8da73a244a1c9a924bed55711d71a20fd8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>在 Azure Monitor 中为 Azure 服务创建指标警报 - 跨平台 CLI
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 
 可以根据监控指标或事件接收 Azure 服务的警报。
 
-* **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当条件先是满足以及之后不再满足该条件时，警报都会触发。    
+* **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当首次满足条件时，以及之后不再满足条件时，都会触发此警报。    
 * **活动日志事件** - 发生每个事件，或仅当出现特定事件时触发警报。 若要深入了解活动日志警报，请[单击此处](monitoring-activity-log-alerts.md)
 
 可配置指标警报，使警报触发时执行以下操作：
@@ -101,13 +101,13 @@ ms.lasthandoff: 07/11/2017
 
     **azure insights alerts rule metric set** *[options] &lt;ruleName&gt; &lt;location&gt; &lt;resourceGroup&gt; &lt;windowSize&gt; &lt;operator&gt; &lt;threshold&gt; &lt;targetResourceId&gt; &lt;metricName&gt; &lt;timeAggregationOperator&gt;*
 
-    以下示例设置了一个关于网站资源的警报。 当在 5 分钟内持续收到任何流量以及再次在 5 分钟内未收到任何流量时，警报触发。
+    以下示例设置了一个关于网站资源的警报。 如果其持续 5 分钟收到任何流量以及 5 分钟没收到任何流量，将触发该警报。
 
     ```console
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. 若要在指标警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后紧随其后创建规则。 如果已使用 CLI 创建规则，将无法关联 webhook 或电子邮件。
+5. 若要在指标警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后立即创建规则。 如果已使用 CLI 创建规则，将无法关联 webhook 或电子邮件。
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com
@@ -126,7 +126,7 @@ ms.lasthandoff: 07/11/2017
 
     **insights alerts rule delete** [options] &lt;resourceGroup&gt; &lt;ruleName&gt;
 
-    这些命令删除本文中前面创建的规则。
+    这些命令将删除在本文前面创建的规则。
 
     ```console
     azure insights alerts rule delete myresourcegroup myrule

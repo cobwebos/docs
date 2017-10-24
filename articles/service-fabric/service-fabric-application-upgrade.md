@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
+ms.openlocfilehash: 43e1a66c3aca882f8f572d2bf71976d6b65a9c68
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 23ee3572752030332c5bfdd84edc97df5fb8e58f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 应用程序升级
 Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，Service Fabric 将新的[应用程序清单](service-fabric-application-model.md#describe-an-application)与以前的版本进行比较，并确定应用程序中的哪些服务需要升级。 Service Fabric 会将服务清单中的版本号与前一版中的版本号进行比较。 如果服务未更改，则不升级服务。
@@ -32,6 +31,8 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 在配置群集时在群集清单中指定更新域。 更新域不按特定的顺序接收更新。 更新域是应用程序部署的逻辑单元。 更新域可让服务在升级过程中保持高可用性。
 
 如果对群集中的所有节点应用升级，即应用程序只有一个更新域，将不可能进行任何滚动升级。 由于服务会关闭，并且在升级时不可用，因此不建议此方法。 此外，当仅为群集设置了一个更新域时，Azure 不提供任何保证。
+
+升级完成后，所有的服务和副本（实例）将会保持相同版本，也就是说，如果升级成功，它们会更新到新版本；如果升级失败并回滚，它们会降回到旧版本。
 
 ## <a name="health-checks-during-upgrades"></a>升级过程中的运行状况检查
 必须对升级设置运行状况策略（或者可使用默认值）。 当所有更新域均在指定的超时内进行了升级，并且所有更新域均被认为运行正常时，即可称升级为成功升级。  运行正常的更新域是指该更新域通过了运行状况策略中指定的所有运行状况检查。 例如，运行状况策略可能要求应用程序实例中的所有服务都必须*运行正常*，因为运行状况是由 Service Fabric 定义的。
@@ -76,4 +77,3 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
-

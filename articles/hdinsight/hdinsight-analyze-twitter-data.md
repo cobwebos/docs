@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
+ms.openlocfilehash: e678d5d332b7fbbfeeebbea86efd7931bda15bb1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 711d364c36c3aba699326f4a76d42891ba3219fb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析 Twitter 数据
 社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。
 本教程将通过使用 Twitter 流式传输 API 获取推文，并使用 Apache Hive 在 Azure HDInsight 上获取发送最多包含某个特定词的推文的 Twitter 用户列表。
@@ -95,7 +93,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 8. 在页面右上角单击“测试 OAuth”。
 9. 记下“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”。 本教程后面的步骤中会用到这些值。
 
-在本教程中，将使用 Windows PowerShell 调用 Web 服务。 有关 .NET C# 示例，请参阅[在 HDInsight 中使用 HBase 分析实时 Twitter 观点][hdinsight-hbase-twitter-sentiment]。 其他常用于调用 Web 服务的工具是 [*Curl*][curl]。 Curl 可从[此处][curl-download]下载。
+本教程将使用 Windows PowerShell 调用 Web 服务。 其他常用于调用 Web 服务的工具是 [*Curl*][curl]。 Curl 可从[此处][curl-download]下载。
 
 > [!NOTE]
 > 在 Windows 中使用 curl 命令时，请使用双引号（而不是单引号）括起选项值。
@@ -545,7 +543,6 @@ Write-Host "==================================" -ForegroundColor Green
 在本教程中，我们已了解如何将非结构化 JSON 数据集转换为结构化 Hive 表，以便在 Azure 上使用 HDInsight 查询、探究和分析来自 Twitter 的数据。 若要了解更多信息，请参阅以下文章：
 
 * [HDInsight 入门][hdinsight-get-started]
-* [在 HDInsight 中使用 HBase 分析实时 Twitter 观点][hdinsight-hbase-twitter-sentiment]
 * [使用 HDInsight 分析航班延误数据][hdinsight-analyze-flight-delay-data]
 * [利用 Power Query 将 Excel 连接到 HDInsight][hdinsight-power-query]
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][hdinsight-hive-odbc]
@@ -571,5 +568,3 @@ Write-Host "==================================" -ForegroundColor Green
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-odbc-driver.md
-[hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
-

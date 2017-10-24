@@ -14,37 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 8c5ce9570541def245ca33f5841a8392e73569b4
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 19dbb1625f46f8864413dc538a96b2413bc6eea0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置虚拟网络
-如文章[将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)中所述，在实验室中创建 VM 时，可指定已配置虚拟网络。 执行此操作的一种情形是你需要使用 ExpressRoute 或站点到站点的 VPN 配置的虚拟网络从 VM 访问你的 corpnet 资源。 以下部分说明了如何将现有虚拟网络添加到实验室的虚拟网络设置中，以便在创建 VM 时可进行选择。
+如文章[将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)中所述，在实验室中创建 VM 时，可指定已配置虚拟网络。 执行此操作的一种情形是需要使用 ExpressRoute 或站点到站点的 VPN 配置的虚拟网络从 VM 访问 corpnet 资源。 以下部分说明了如何将现有虚拟网络添加到实验室的虚拟网络设置中，以便在创建 VM 时可进行选择。
 
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>使用 Azure 门户为实验室配置虚拟网络
-以下步骤将介绍如何将现有虚拟网络（以及子网）添加到实验室，以便在同一实验室创建 VM 时使用它。 
+以下步骤介绍如何将现有虚拟网络（以及子网）添加到实验室，以便在同一实验室创建 VM 时使用它。 
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表中，选择所需的实验室。 
-4. 在实验室的边栏选项卡上，选择“配置”。
-5. 在实验室的“配置”边栏选项卡上，选择“虚拟网络”。
-6. 在“虚拟网络”边栏选项卡上，你将看到为当前实验室配置的虚拟网络列表和为你的实验室创建的默认虚拟网络。 
+4. 在实验室的边栏选项卡中，选择“配置和策略”。
+5. 在实验室的“配置和策略”边栏选项卡中，选择“虚拟网络”。
+6. 在“虚拟网络”边栏选项卡上，会看到为当前实验室配置的虚拟网络列表和为实验室创建的默认虚拟网络。 
 7. 选择“+ 添加”。
    
     ![将现有虚拟网络添加到实验室](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
 8. 在“虚拟网络”边栏选项卡上，选择“[选择虚拟网络]”。
    
     ![选择现有虚拟网络](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
-9. 在“选择虚拟网络”边栏选项卡上，选择所需虚拟网络。 边栏选项卡将显示订阅中所有与实验室在同一区域的虚拟网络。  
+9. 在“选择虚拟网络”边栏选项卡上，选择所需虚拟网络。 边栏选项卡会显示订阅中所有与实验室在同一区域的虚拟网络。  
 10. 选择虚拟网络之后，可返回到“虚拟网络”，单击边栏选项卡底部列表中的子网。
 
     ![子网列表](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
-    此时将显示“实验室子网”边栏选项卡。
+    此时会显示“实验室子网”边栏选项卡。
 
     ![“实验室子网”边栏选项卡](./media/devtest-lab-configure-vnet/lab-subnet.png)
 
@@ -56,11 +55,10 @@ ms.lasthandoff: 03/10/2017
 16. 选择“确定”关闭“实验室子网”边栏选项卡。
 17. 选择“保存”关闭“虚拟网络”边栏选项卡。
 18. 既然已配置虚拟网络，则可在创建 VM 时选择它。 
-    若要了解如何创建 VM 和指定虚拟网络，请参阅文章[将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。 
+    要了解如何创建 VM 和指定虚拟网络，请参阅文章[将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>后续步骤
 将所需虚拟网络添加到实验室后，下一步为[将 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
-
 

@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ee5be707b443cbe42bf4a492d79390e534d4b91f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>如何对 Azure 上的 SAP HANA（大型实例）进行故障排除和监视
 
@@ -38,8 +38,7 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 
 **内存消耗：**必须从 HANA 内部监视，以及从单元上的 HANA 外部监视。 在 HANA 内部，应该监视数据对 HANA 分配的内存的消耗情况，使之不会超出 SAP 规定的消耗量指导原则。 此外，还需要在大型实例级别监视内存消耗，确保其他已安装的非 HANA 软件不会消耗过多的内存，从而与 HANA 争用内存。
 
-
-            **网络带宽：**将数据移入 Azure VNet 时，Azure VNet 网关会限制带宽，因此，监视 VNet 中的所有 Azure VM 接收的数据有助于确定与所选 Azure 网关 SKU 的限制还有多大的差距。 在 HANA 大型实例单元上，监视传入和传出的网络流量以及跟踪不同时间处理的数据量确实很有作用。
+**网络带宽：**将数据移入 Azure VNet 时，Azure VNet 网关会限制带宽，因此，监视 VNet 中的所有 Azure VM 接收的数据有助于确定与所选 Azure 网关 SKU 的限制还有多大的差距。 在 HANA 大型实例单元上，监视传入和传出的网络流量以及跟踪不同时间处理的数据量确实很有作用。
 
 **磁盘空间：**磁盘空间消耗量通常会随着时间的推移而增大。 原因有多种，但最主要的原因包括：数据量增加、执行事务日志备份、存储跟踪文件，以及执行存储快照。 因此，必须监视磁盘空间用量，管理与 HANA 大型实例单元相关的磁盘空间。
 
@@ -150,7 +149,7 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 
 ![在 SAP HANA Studio 中的“System Information”（系统信息）选项卡上，右键单击“Name”（名称）并选择“Import SQL Statements”（导入 SQL 语句）](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-选择存储在本地的 SQL Statements.zip 文件，随后会导入包含相应 SQL 语句的文件夹。 此时，可以使用这些 SQL 语句运行多种不同的诊断检查。
+选择存储在本地的 SQL Statements.zip 文件，随后将导入包含相应 SQL 语句的文件夹。 此时，可以使用这些 SQL 语句运行多种不同的诊断检查。
 
 例如，要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，并选择“Open”（打开）。
 

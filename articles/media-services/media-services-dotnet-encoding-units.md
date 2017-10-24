@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;milangada;
 ms.openlocfilehash: 72a8729d22a9e76c8076d7a3347619a2163e4f09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>如何使用 .NET SDK 缩放编码
 > [!div class="op_single_selector"]
@@ -54,12 +54,12 @@ ms.lasthandoff: 08/29/2017
 ### <a name="open-a-support-ticket"></a>开具支持票证
 若要开具支持票证，请执行以下操作：
 
-1. 单击[获取支持](https://manage.windowsazure.com/?getsupport=true)。 如果你尚未登录，系统会提示你输入凭据。
+1. 单击[获取支持](https://manage.windowsazure.com/?getsupport=true)。 如果尚未登录，系统会提示输入凭据。
 2. 选择订阅。
 3. 在支持类型下，选择“技术”。
 4. 单击“创建票证”。
 5. 在下一页显示的产品列表中选择“Azure 媒体服务”。
-6. 选择适合问题的“问题类型”。
+6. 选择适合你问题的“问题类型”。
 7. 单击“继续”(Continue)。
 8. 根据下一页上的说明进行操作，并输入问题的详细信息。
 9. 单击“提交”以创建该票证。

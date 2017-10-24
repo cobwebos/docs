@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
 ms.openlocfilehash: 0518519da6c5e62a863a47d6743ab7b7c5923acf
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure 虚拟机上的 Ruby on Rails Web 应用程序
 本教程介绍如何在 Azure 中使用 Linux 虚拟机托管 Ruby on Rails 网站。  
@@ -86,9 +86,9 @@ ms.lasthandoff: 08/29/2017
     cd myapp
     rails server -b 0.0.0.0 -p 3000
 
-[new](http://guides.rubyonrails.org/command_line.html#rails-new) 命令创建新的 Rails 应用。 [server](http://guides.rubyonrails.org/command_line.html#rails-server) 命令启动 Rails 附带的 WEBrick Web 服务器。 （在生产环境中使用时，可能想要使用其他服务器，例如 Unicorn 或 Passenger。）
+[new](http://guides.rubyonrails.org/command_line.html#rails-new) 命令创建新的 Rails 应用。 [server](http://guides.rubyonrails.org/command_line.html#rails-server) 命令启动 Rails 附带的 WEBrick Web 服务器。 （在生产环境中使用时，你可能需要使用其他服务器，例如 Unicorn 或 Passenger。）
 
-输出应显示如下。
+应该会看到与下面类似的输出。
 
     => Booting WEBrick
     => Rails 4.2.1 application starting in development on http://0.0.0.0:3000
@@ -128,7 +128,7 @@ ms.lasthandoff: 08/29/2017
     ![默认 rails 页面][default-rails-cloud]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，手动执行大多数步骤。 在生产环境中，可在开发计算机上编写应用，并将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/。
+在本教程中，手动执行大多数步骤。 在生产环境中，会在开发计算机上编写应用，然后将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/。
 
 若要详细了解 Ruby on Rails，请参阅 [Ruby on Rails 指南][rails-guides]。
 

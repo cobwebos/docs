@@ -17,10 +17,10 @@ ms.date: 03/29/2016
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ea5169c1a95f00e78ae3f5f177812466eb7a0deb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>使用 Azure 自动化垂直缩放 Windows VM
 
@@ -85,8 +85,8 @@ ms.lasthandoff: 07/11/2017
 4. 选择用于触发警报的指标
 5. 选择一个条件，满足此条件时会触发该警报
 6. 为步骤 5 中要满足的条件 选择一个阈值
-7. 在步骤 5 和 6 中选择的条件和阈值监视服务将检查对其的段
-8. 在上一部分中复制的 webhook 中粘贴。
+7. 选择一个时间段，超过该时间段时，监视服务将检查步骤 5 和 6 中的条件与阈值
+8. 粘贴你在上一部分复制的 webhook。
 
 ![将警报添加到虚拟机 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 

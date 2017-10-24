@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
 ms.openlocfilehash: 53a8599df2c647613122cd791b680e2e658586b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-using-the-storsimple-data-manager-service-ui-private-preview"></a>使用 StorSimple Data Manager 服务 UI（个人预览版）进行管理
 
-本文介绍如何使用 StorSimple Data Manager UI 对驻留在 StorSimple 8000 系列设备上的数据执行数据转换。 转换后的数据然后可供其他 Azure 服务，如 Azure 媒体服务、 Azure HDInsight、 Azure 机器学习中，和 Azure 搜索。 
+本文介绍如何使用 StorSimple Data Manager UI 对驻留在 StorSimple 8000 系列设备上的数据执行数据转换。 然后，Azure 媒体服务、Azure HDInsight、Azure 机器学习和 Azure 搜索等其他 Azure 服务可以使用转换的数据。 
 
 
 ## <a name="use-storsimple-data-transformation"></a>使用 StorSimple 数据转换
@@ -45,7 +45,7 @@ StorSimple Data Manager 是可在其中实例化数据转换的资源。 使用�
 
 ### <a name="create-a-data-transformation-job-definition"></a>创建数据转换作业定义
 
-在 StorSimple Data Manager 服务中，需要创建数据转换作业定义。 作业定义指定的数据的你感兴趣移动到的本机格式的存储帐户的详细信息。 
+在 StorSimple Data Manager 服务中，需要创建数据转换作业定义。 作业定义指定你希望以本机格式移至存储帐户的数据详细信息。 
 
 执行以下步骤可创建新的数据转换作业定义。
 
@@ -65,9 +65,9 @@ StorSimple Data Manager 是可在其中实例化数据转换的资源。 使用�
 
 5.  完成后单击“确定”。 这会保存数据存储库，并且此 StorSimple Manager 可以在其他作业定义中重复使用，而无需重新输入这些参数。 单击“确定”后，需要几秒钟时间此 StorSimple Manager 才会显示在下拉列表中。
 
-6.  在**配置数据源**边栏选项卡，输入设备名称和具有你感兴趣的数据的卷名称。
+6.  在“配置数据源”边栏选项卡中，输入设备名称和具有所需数据的卷名称。
 
-7.  在**筛选器**子节中，输入包含你感兴趣的数据的根目录 (此字段应以开头`\`)。 还可以在此处添加任何文件筛选器。
+7.  在“筛选器”小节，输入包含所需数据的根目录（该字段应以 `\` 开头）。 还可以在此处添加任何文件筛选器。
 
 8.  数据转换服务处理通过快照推送到 Azure 的数据。 运行此作业时，可以选择每次运行此作业时执行备份（以处理最新的数据） 或者使用云中的上次现有备份（如果要处理某些已存档的数据）。
 

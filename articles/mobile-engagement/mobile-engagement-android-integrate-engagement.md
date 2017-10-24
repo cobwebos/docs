@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 35bd92e52b7a02f58620a03156902f9f91be57ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-integrate-engagement-on-android"></a>如何在 Android 上集成 Engagement
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ ms.lasthandoff: 07/11/2017
 * 将 `<Your application name>` 更改为应用程序名称。
 
 > [!TIP]
-> `android:label`特性，您可以选择参与服务的名称，将向最终用户在他们的电话的"Running 服务"屏幕中显示。 建议将此属性设置为 `"<Your application name>Service"`（例如 `"AcmeFunGameService"`）。
+> `android:label` 属性允许选择 Engagement 服务名称，它将显示在最终用户手机的“正在运行的服务”屏幕中。 建议将此属性设置为 `"<Your application name>Service"`（例如 `"AcmeFunGameService"`）。
 > 
 > 
 
@@ -358,7 +358,7 @@ Engagement API 允许使用 Engagement 的所有高级功能，详细信息请�
 可在 `AndroidManifest.xml` 文件中使用 `application meta-data`，配置 Engagement，以使用首选项文件：
 
 * `engagement:agent:settings:name` 关键字用于定义共享的首选项文件的名称。
-* ph x="1" /> 关键字可用于定义共享的首选项文件的模式，应使用在 `PreferenceActivity` 中使用的同一模式。 该模式必须以数字传递：如果在代码中使用常量标志的组合，请检查总值。
+* `engagement:agent:settings:mode` 关键字可用于定义共享的首选项文件的模式，应使用在 `PreferenceActivity` 中使用的同一模式。 该模式必须以数字传递：如果在代码中使用常量标志的组合，请检查总值。
 
 Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字，以用于管理该设置。
 
@@ -373,7 +373,7 @@ Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字
                   android:name="engagement:agent:settings:mode"
                   android:value="0" />
 
-然后，可以添加`CheckBoxPreference`在你首选项布局中以下所示：
+然后，可在首选项布局中添加 `CheckBoxPreference`，如下所示：
 
             <CheckBoxPreference
               android:key="engagement:enabled"

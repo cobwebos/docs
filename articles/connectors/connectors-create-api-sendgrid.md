@@ -1,6 +1,6 @@
 ---
 title: SendGrid | Microsoft Docs
-description: "使用 Azure 应用服务创建逻辑应用。 SendGrid 连接提供程序，可以发送电子邮件和管理收件人列表。"
+description: "使用 Azure 应用服务创建逻辑应用。 SendGrid Connection 提供程序可使你发送电子邮件和管理收件人列表。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -16,13 +16,13 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 9ff0591741899d65b8274fb14ab3f3c8db9abe36
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-sendgrid-connector"></a>SendGrid 连接器入门
-SendGrid 连接提供程序，可以发送电子邮件和管理收件人列表。
+SendGrid Connection 提供程序可使你发送电子邮件和管理收件人列表。
 
 若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 

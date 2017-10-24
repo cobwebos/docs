@@ -6,14 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 09/14/2017
+ms.date: 10/06/2017
 ms.author: tomfitz
+ms.openlocfilehash: f7d2b1970cb7b1330b3d9bdff7987a90fa381392
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 5f35a3bdd97b72acfe06b6bec54d41814e560b1c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>将大数据流式传输到数据仓库
 
@@ -75,7 +74,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 
 ## <a name="deploy-the-infrastructure"></a>部署基础结构
 
-为了缩短本文的篇幅，请使用资源管理器模板部署所需的基础结构。 若要查看已部署的资源，请查看[模板](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)。
+为了缩短本文的篇幅，请使用资源管理器模板部署所需的基础结构。 若要查看已部署的资源，请查看[模板](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)。 预览版的事件网格支持“westus2”和“westcentralus”区域。 对资源组位置使用其中一个区域。
 
 对于 Azure CLI，请使用：
 
@@ -93,7 +92,7 @@ az group deployment create \
 ```powershell
 New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName tf08202storage -functionAppName <app-name>
+New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
 当看到提示时，输入密码值。

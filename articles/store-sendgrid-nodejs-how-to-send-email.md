@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>如何使用 SendGrid 从 Node.js 发送电子邮件
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 相关示例是使用 Node.js API 编写的。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
@@ -66,7 +66,7 @@ SendGrid 模块可导出 **SendGrid** 和 **Email** 函数。
 
 同时设置文本和 html 属性可以为无法支持 HTML 邮件的客户端提供文本内容的正常反馈。
 
-有关 Email 函数支持的所有属性的详细信息，请参阅[sendgrid nodejs][sendgrid-nodejs]。
+有关 Email 函数支持的所有属性的详细信息，请参阅 [sendgrid-nodejs][sendgrid-nodejs]。
 
 ## <a name="how-to-send-an-email"></a>如何：发送电子邮件
 使用 Email 函数创建电子邮件后，可使用 SendGrid 提供的 Web API 发送该邮件。 
@@ -161,7 +161,7 @@ SendGrid 可通过使用筛选器来提供其他电子邮件功能。 可将这�
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
-可以使用覆盖一些电子邮件属性**设置*属性** * 或追加使用**添加*属性** *。 例如，可使用以下命令添加更多收件人：
+可使用 **set** 属性**替代一些电子邮件属性，或使用 **add** 属性**追加一些电子邮件属性。 例如，可使用以下命令添加更多收件人：
 
     email.addTo('jeff@contoso.com');
 
@@ -170,7 +170,7 @@ SendGrid 可通过使用筛选器来提供其他电子邮件功能。 可将这�
     email.addFilter('footer', 'enable', 1);
     email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
-有关详细信息，请参阅[sendgrid nodejs][sendgrid-nodejs]。
+有关详细信息，请参阅 [sendgrid-nodejs][sendgrid-nodejs]。
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>如何：使用其他 SendGrid 服务
 SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程序中使用其他 SendGrid 功能。 有关完整详细信息，请参阅 [SendGrid API 文档][SendGrid API documentation]。
@@ -178,7 +178,7 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程�
 ## <a name="next-steps"></a>后续步骤
 此时，已了解 SendGrid 电子邮件服务的基础知识，请访问以下链接以了解更多信息。
 
-* SendGrid Node.js 模块存储库： [sendgrid nodejs][sendgrid-nodejs]
+* SendGrid Node.js 模块存储库：[sendgrid-nodejs][sendgrid-nodejs]
 * SendGrid API 文档：<https://sendgrid.com/docs>
 * 面向 Azure 客户的 SendGrid 特惠产品/服务：[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 

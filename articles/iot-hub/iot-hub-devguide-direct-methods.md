@@ -15,16 +15,15 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 1fd0353bf805340a9c4d3151a9b85c329f7d2e96
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: fda1111877e5eb35fe246891fa7ff71ce6b5c20d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 ## <a name="overview"></a>概述
-借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 这适用于即时操作过程取决于设备能否响应的情况，例如，如果设备脱机，则向设备发送短信以唤醒设备（短信的开销比方法调用更大）。
+借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法适用于即时操作过程取决于设备能否响应的情况，例如，如果设备脱机，则向设备发送短信以唤醒设备（短信的开销比方法调用更大）。
 
 每个设备方法针对一个设备。 [作业][lnk-devguide-jobs]提供了一种方法，用于对多个设备调用直接方法，并为已断开连接的设备计划方法调用。
 
@@ -45,20 +44,20 @@ ms.lasthandoff: 09/08/2017
 
 直接方法是同步的，在超时期限（默认：30 秒，最长可设置为 3600 秒）过后，其结果不是成功就是失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应，例如打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
-直接方法从云端只能通过 HTTP 调用，从设备端可以通过 MQTT 或 AMQP 调用。
+直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT 或 AMQP 调用。
 
-方法请求和响应的有效负载为最大 8KB 的 JSON 文档。
+方法请求和响应的有效负载为最大 8 KB 的 JSON 文档。
 
 ## <a name="reference-topics"></a>参考主题：
 以下参考主题详细介绍了如何使用直接方法。
 
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>从后端应用调用直接方法
 ### <a name="method-invocation"></a>方法调用
-在设备上直接调用方法属于 HTTP 调用，其中包括：
+在设备上直接调用方法属于 HTTPS 调用，其中包括：
 
 * URI，特定于设备 (`{iot hub}/twins/{device id}/methods/`)
 * POST 方法
-* 标头，其中包含身份验证、请求 ID、内容类型和内容编码
+* 标头，包含身份验证、请求 ID、内容类型和内容编码
 * 采用以下格式的透明 JSON 正文：
 
 ```
@@ -78,7 +77,7 @@ ms.lasthandoff: 09/08/2017
 由后端应用接收响应，其中包括：
 
 * HTTP 状态代码，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）
-* *标头*，其中包含 ETag、请求 ID、内容类型和内容编码
+* 标头，包含 ETag、请求 ID、内容类型和内容编码
 * 采用以下格式的 JSON 正文：
 
 ```
@@ -123,7 +122,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何使用直接方法后，可根据兴趣参阅以下 IoT 中心开发人员指南主题：
+了解如何使用直接方法后，可根据兴趣参阅以下 IoT 中心开发人员指南文章：
 
 * [在多台设备上安排作业][lnk-devguide-jobs]
 
@@ -143,4 +142,3 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-messages]: iot-hub-devguide-messaging.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-

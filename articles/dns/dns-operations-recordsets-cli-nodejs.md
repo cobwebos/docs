@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/20/2016
 ms.author: jonatul
 ms.openlocfilehash: 307b327e4c04a0461e39930114eb193791cbda9a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-dns-records-in-azure-dns-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 管理 Azure DNS 中的 DNS 记录
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI。
 * [Azure CLI 2.0](dns-operations-recordsets-cli.md) - 适用于资源管理部署模型的下一代 CLI。
 
-这篇文章中的示例假定你已[安装 Azure CLI 1.0，登录，并创建 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
+本文中的示例假设你[已安装 Azure CLI 1.0、已登录且已创建一个 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
 
 ## <a name="introduction"></a>介绍
 

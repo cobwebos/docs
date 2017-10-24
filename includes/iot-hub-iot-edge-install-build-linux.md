@@ -2,11 +2,11 @@
 
 本教程中的这些步骤假设运行的是 Ubuntu Linux。
 
-打开 shell，运行以下命令，安装必备组件包：
+要安装必备组件包，请打开 shell 并运行以下命令：
 
 ```bash
 sudo apt-get update
-sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
+sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake pkg-config libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
 ```
 
 在 shell 中，运行以下命令，将 Azure IoT Edge GitHub 存储库克隆到本地计算机上：

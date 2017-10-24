@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: 8c51c0bb37e25ad61fe58a85dd641dabe0a1958c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>如何在虚拟机上通过 Java 运行计算密集型任务
 > [!IMPORTANT] 
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 
 借助 Azure，可以使用虚拟机来处理计算密集型任务。 例如，虚拟机可以处理任务并将结果传送给客户端计算机或移动应用程序。 阅读完本文后，将了解如何创建运行可由其他 Java 应用程序监视的、计算密集型 Java 应用程序的虚拟机。
 
-本教程假定你知道如何创建 Java 控制台应用程序，而且可以将库导入 Java 应用程序并生成 Java 存档 (JAR)。 假定不了解 Microsoft Azure。
+本教程假定你知道如何创建 Java 控制台应用程序，而且可以将库导入 Java 应用程序并生成 Java 存档 (JAR)。 本教程并不假定你了解 Microsoft Azure。
 
 将学习以下内容：
 
@@ -54,13 +54,13 @@ ms.lasthandoff: 07/11/2017
 2. 依次单击“新建”、“计算”、“虚拟机”和“从库中”。
 3. 在“虚拟机映像选择”对话框中，选择“JDK 7 Windows Server 2012”。
    请注意，万一安装的是尚不能在 JDK 7 中运行的旧版应用程序，则可选择“JDK 6 Windows Server 2012”。
-4. 单击“下一步” 。
+4. 单击“下一步”。
 5. 在“虚拟机配置”对话框中：
    1. 指定虚拟机的名称。
    2. 指定要用于虚拟机的大小。
    3. 在“用户名”字段中输入管理员的名称。 请记住接下来要输的名称和密码，此名称和密码用于远程登录虚拟机。
    4. 在“新密码”字段中输入密码，并在“确认”字段中再次输入密码。 这是“管理员”帐户密码。
-   5. 单击“下一步” 。
+   5. 单击“下一步”。
 6. 在下一个“虚拟机配置”对话框中：
    1. 对于“云服务”，使用默认的“创建新的云服务”。
    2. “云服务 DNS 名称”的值在 cloudapp.net 中必须唯一。 如有必要，请修改此值，使 Azure 能够将其指示为唯一值。
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
 4. 单击“连接”。
 5. 根据需要响应提示以连接到虚拟机。 提示需要管理员名称和密码时，请使用创建虚拟机时提供的值。
 
-请注意，Azure 服务总线功能需要将 Baltimore CyberTrust 根证书作为 JRE 的 **cacerts** 存储的一部分进行安装。 此证书将自动包含在本教程使用的 Java 运行时环境 (JRE) 中。 如果 JRE **cacerts** 存储中没有此证书，请参阅[将证书添加到 Java CA 证书存储][add_ca_cert]，以获取有关添加该证书的信息（以及有关在 cacerts 存储中查看证书的信息）。
+请注意，Azure 服务总线功能需要将 Baltimore CyberTrust 根证书作为 JRE 的 **cacerts** 存储的一部分进行安装。 此证书会自动包含在本教程使用的 Java 运行时环境 (JRE) 中。 如果 JRE **cacerts** 存储中没有此证书，请参阅[将证书添加到 Java CA 证书存储][add_ca_cert]，以获取有关添加该证书的信息（以及有关在 cacerts 存储中查看证书的信息）。
 
 ## <a name="how-to-create-a-service-bus-namespace"></a>如何创建服务总线命名空间
 若要开始在 Azure 中使用服务总线队列，必须先创建一个服务命名空间。 服务命名空间提供了用于对应用程序中的服务总线资源进行寻址的范围容器。
@@ -301,7 +301,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="how-to-create-a-java-application-that-monitors-the-progress-of-the-compute-intensive-task"></a>如何创建监视计算密集型任务的进度的 Java 应用程序
 1. 在开发计算机上，使用本节末尾的示例代码创建 Java 控制台应用程序。 在本教程中，将使用 **TSPClient.java** 作为 Java 文件名。 如前所述，将 **your\_service\_bus\_namespace**、**your\_service\_bus\_owner** 和 **your\_service\_bus\_key** 占位符修改为分别使用服务总线的**命名空间**、**默认颁发者**和**默认密钥**值。
-2. 将应用程序导出到可运行的 JAR，并将所需的库打包到生成的 JAR 中。 本教程会使用 **TSPClient.jar** 作为生成的 JAR 名称。
+2. 将应用程序导出到可运行的 JAR，并将所需的库打包到生成的 JAR 中。 在本教程中，将使用 **TSPClient.jar** 作为生成的 JAR 名称。
 
 <p/>
 
@@ -493,7 +493,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="how-to-run-the-monitoring-client-application"></a>如何运行监视客户端应用程序
 1. 登录到要在其中运行客户端应用程序的计算机。 虽然这不需要是运行 **TSPSolver** 应用程序的同一计算机，但也可以是同一计算机。
 2. 创建一个要在其中运行应用程序的文件夹。 例如，**c:\TSP**。
-3. 将 **TSPClient.jar** 复制到 **c:\TSP**，
+3. 将 **TSPClient.jar** 复制到 **c:\TSP**。
 4. 确保 JRE 的 bin 文件夹位于 PATH 环境变量中。
 5. 在命令提示符中，将目录更改为 c:\TSP。
 6. 运行以下命令。

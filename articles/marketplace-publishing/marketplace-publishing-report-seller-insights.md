@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
 ms.openlocfilehash: e098e27e32f7b7ae2009580a430f262aa7225206
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-your-seller-insights-report"></a>了解卖方 Insights 报表
 **什么是卖方 Insights？**
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/11/2017
 * **每月销售报表：**如果有使用量，将收到第二封电子邮件，其中包含报表以及有关如何访问密码的说明：
 
   * 如果所拥有的 VM 或基于使用量的计费开发人员服务 SKU 产生使用量，每月报表会显示有关产品/服务的订单、使用量、市场和客户细节的详细信息。
-  * 报表将使用只有您和 Microsoft 知道为了保护你的客户数据的密码被锁定。
+  * 为了保护客户数据，报表使用密码进行锁定，该密码只有你和 Microsoft 知道。
   * 如果产品/服务当月未产生使用量，Microsoft 将不会发送报表。
 
 ## <a name="understand-your-seller-insights-report"></a>了解卖方 Insights 报表
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 
 ![readingreportbyorders][2]
 
-* 切片器帮助您的报表筛选每个元素。
+* 切片器可用于按元素对报表进行筛选。
 * 图表显示了按 Azure 许可证类型分类的每月订单。 每一栏显示按 Azure 许可证类型分类的该月订单总计。
 * 图表显示按 SKU 分类的每月订单。 每一栏显示按 SKU 分类的所有 SKU 的每月订单总计。
 * 图表显示按 Azure 许可证类型和 Azure 应用商店许可证类型分类的每月订单趋势。
@@ -50,7 +50,7 @@ ms.lasthandoff: 07/11/2017
 
 ![readingreportbyusage][3]
 
-* 切片器帮助您的报表筛选每个元素。
+* 切片器可用于按元素对报表进行筛选。
 * 应选择规范化的 VM 使用量或原始使用量。
 * 图表显示了按 Azure 许可证类型分类的每月使用量。 每一栏显示按 Azure 许可证类型分类的该月使用量总计。
 * 图表显示按 SKU 分类的每月使用量。 每一栏显示按 SKU 分类的所有 SKU 的每月使用量总计。
@@ -84,8 +84,7 @@ ms.lasthandoff: 07/11/2017
 导航到 https://publish.windowsazure.com/ 并使用 Microsoft 帐户凭据登录。
 ![passwordreminder][7]
 
-选择“发布者”选项卡。
-![selectpublisherstab][8]
+选择“发布者”选项卡。![selectpublisherstab][8]
 
 在 URL 中找到发布者 ID：
 

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 5e5c11251cd316e8161dbe362b300be76927ac01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/11/2017
   
   * 要验证订阅的内核限制，请在 Azure 经典门户中，单击左侧窗格中的“设置”，并单击顶部菜单中的“使用情况”。
   * 若要增加内核配额，请联系 [Azure 支持](https://azure.microsoft.com/support/options/)。 有关 VM 大小信息，请参阅 [Azure 的虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* **Windows PowerShell 脚本**： 本主题假定你有 Windows PowerShell 基础知识。 有关使用 Windows PowerShell 的详细信息，请参阅以下部分：
+* **Windows PowerShell 脚本**：本主题假定你具有有关 Windows PowerShell 的基础知识。 有关使用 Windows PowerShell 的详细信息，请参阅以下部分：
   
   * [在 Windows Server 上启动 Windows PowerShell](https://technet.microsoft.com/library/hh847814.aspx)
   * [Windows PowerShell 入门](https://technet.microsoft.com/library/hh857337.aspx)
@@ -66,7 +66,7 @@ ms.lasthandoff: 07/11/2017
    * **大小：A3** 是 SQL Server 工作负荷的建议 VM 大小。 如果 VM 仅用作报表服务器，A2 的 VM 大小就足够了，除非报表服务器遇到大量工作负荷。 有关 VM 定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)。
    * **新用户名**：将所提供的名称创建为 VM 上的管理员。
    * **新密码**和**确认**。 此密码用于新的管理员帐户并建议使用强密码。
-   * 单击“下一步” 。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * 单击“下一步”。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. 在下一页上，编辑以下字段：
    
    * **云服务**：选择“创建新的云服务”。
@@ -74,15 +74,14 @@ ms.lasthandoff: 07/11/2017
    * **区域/地缘组/虚拟网络**：选择离最终用户最近的区域。
    * **存储帐户**：使用自动生成的存储帐户。
    * **可用性集**：无。
-   * 
-            **终结点**：保留**远程桌面**和 **PowerShell** 终结点，然后添加一个 HTTP 或 HTTPS 终结点，具体取决于环境。
+   * **终结点**：保留**远程桌面**和 **PowerShell** 终结点，然后添加一个 HTTP 或 HTTPS 终结点，具体取决于环境。
      
      * **HTTP**：默认公共和专用端口均为 **80**。 请注意，如果使用 80 之外的专用端口，请修改 http 脚本中的 **$HTTPport = 80**。
      * **HTTPS**：默认公共和专用端口均为 **443**。 最佳安全方案是更改私有端口并配置防火墙和报表服务器以使用私有端口。 有关终结点的详细信息，请参阅[如何设置与虚拟机的通信](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，如果使用 443 之外的端口，请更改 HTTPS 脚本中的参数 **$HTTPsport = 443**。
    * 单击“下一步”。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. 在向导的最后一页上，保持选中默认的“安装 VM 代理”。 本主题中的步骤不使用 VM 代理，但如果计划保留此 VM，VM 代理和扩展将允许增强 CM。  有关 VM 代理的详细信息，请参阅 [VM 代理和扩展 – 第 1 部分](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/)。 安装并运行的一个默认扩展是“BGINFO”扩展，它在 VM 桌面上显示系统信息，如内部 IP 和驱动器可用空间。
 9. 单击“完成”。 ![确定](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
-10. 在预配过程中，VM 的“状态”显示为“正在启动(正在预配)”，然后在 VM 预配完成并可供使用时显示为“正在运行”。
+10. VM 的“状态”在预配过程中显示为“启动(预配)”，在预配完成并可供使用时显示为“运行”。
 
 ## <a name="step-2-create-a-server-certificate"></a>步骤 2：创建服务器证书
 > [!NOTE]
@@ -116,7 +115,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="to-use-the-virtual-machines-self-signed-certificate"></a>使用虚拟机自签名证书
 当设置 VM 时已在 VM 上创建了自签名证书。 证书具有与 VM DNS 名称相同的名称。 为避免出现证书错误，它必须在 VM 本身上受信任，并且受该站点的所有用户信任。
 
-1. 要信任本地 VM 上的证书的根 CA，请将该证书添加到 **受信任的根证书颁发机构**。 以下是所需步骤的摘要。 有关如何信任 CA 的详细步骤，请参阅[安装服务器证书](https://technet.microsoft.com/library/cc740068)。
+1. 要信任本地 VM 上的证书的根 CA，请将该证书添加到**受信任的根证书颁发机构**。 以下是所需步骤的摘要。 有关如何信任 CA 的详细步骤，请参阅[安装服务器证书](https://technet.microsoft.com/library/cc740068)。
    
    1. 从 Azure 经典门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
       
@@ -300,7 +299,7 @@ ms.lasthandoff: 07/11/2017
    
         Set-ExecutionPolicy RemoteSigned
    
-    然后，可以执行以下操作以验证策略：
+    然后，可以运行以下内容验证策略：
    
         Get-ExecutionPolicy
 4. 在 **Windows PowerShell ISE** 中，单击“视图”菜单，并单击“显示脚本窗格”。
@@ -479,7 +478,7 @@ ms.lasthandoff: 07/11/2017
    
    * 该脚本为通配符证书 $DNSName ="+" 而配置。 如果不想要为通配符证书绑定进行配置，请注释掉 $DNSName ="+" 并启用以下行，即完整 $DNSNAme 引用：##$DNSName="$server.cloudapp.net"。
      
-       如果不希望使用用于 Reporting Services 的虚拟机 DNS 名称，请更改 $DNSName 值。 如果使用该参数，该证书必须也使用此名称，并且你须在 DNS 服务器上全局注册该名称。
+       如果不希望使用用于 Reporting Services 的虚拟机 DNS 名称，请更改 $DNSName 值。 如果使用参数，则证书也必须使用此名称，并且你在 DNS 服务器上全局注册此名称。
 9. 该脚本当前针对 Reporting Services 进行配置。 如果要为 Reporting Services 运行该脚本，则在 Get-WmiObject 语句上将命名空间路径的版本部分修改为“v11”。
 10. 运行该脚本。
 
@@ -517,7 +516,7 @@ ms.lasthandoff: 07/11/2017
    5. 将默认的“身份验证类型”保留为“服务凭据”，然后单击“下一步”。
    6. 在“摘要”页上单击“下一步”。
    7. 配置完成后，单击“完成”。
-8. 在左窗格中，单击“报表管理器 URL”。 将默认的“虚拟目录”保留为“Reports”，然后单击“应用”。
+8. 在左窗格中，单击“报表管理器 URL”。 将默认的“虚拟目录”保留为“报告”，然后单击“应用”。
 9. 单击“退出”关闭 Reporting Services 配置管理器。
 
 ## <a name="step-4-open-windows-firewall-port"></a>步骤 4：打开 Windows 防火墙端口
@@ -541,7 +540,7 @@ ms.lasthandoff: 07/11/2017
 2. 如果在 VM 上配置 HTTPS 终结点时使用了非 443 的端口，则更新下面命令中的端口，然后运行命令：
    
         New-NetFirewallRule -DisplayName “Report Server (TCP on port 443)” -Direction Inbound –Protocol TCP –LocalPort 443
-3. 命令完成后，命令提示符中会显示 **Ok** 。
+3. 命令完成后，命令提示符中会显示“Ok”。
 
 若要验证端口已打开，请打开 Windows PowerShell 窗口并运行以下命令：
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
 ms.openlocfilehash: 730917b6859f8dbd800ef2cb141062f45d7779ac
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现
  
@@ -190,7 +190,7 @@ DRM 子系统可能包含以下组件：
 4. 使用 AMS API 针对测试资产配置资产传送策略。 可以在以下 Julia Kornich 的文档中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态常用加密](media-services-protect-with-drm.md)。
 5. 在 Azure 中创建和配置 Azure Active Directory 租户；
 6. 在 Azure Active Directory 租户中创建一些用户帐户和组：应该至少创建“EntitledUser”组，并将用户添加到此组。 此组中的用户将可通过许可证获取的权利检查，而不在此组中的用户将无法通过身份验证检查，且无法获取任何许可证。 成为此“EntitledUser”组的成员，是由 Azure AD 发出的 JWT 令牌中所需的“组”声明。 此声明要求应该在配置多重 DRM 许可证传送服务步骤中指定。
-7. 创建 ASP.NET MVC 应用，用于托管视频播放器。 此 ASP.NET 应用根据 Azure Active Directory 租户受到用户身份验证的保护。 对用户进行身份验证后，适当的声明将包含在获取的访问令牌中。 建议在此步骤中使用 OpenID Connect API。 需要安装以下 NuGet 包：
+7. 创建 ASP.NET MVC 应用，用于托管视频播放器。 此 ASP.NET 应用会根据 Azure Active Directory 租户受到用户身份验证的保护。 对用户进行身份验证后，适当的声明将包含在获取的访问令牌中。 建议在此步骤中使用 OpenID Connect API。 需要安装以下 NuGet 包：
    * Install-Package Microsoft.Azure.ActiveDirectory.GraphClient
    * Install-Package Microsoft.Owin.Security.OpenIdConnect
    * Install-Package Microsoft.Owin.Security.Cookies
@@ -269,7 +269,7 @@ George 还撰写了一篇有关 [Azure 媒体服务和动态加密中的 JWT 令
 ### <a name="azure-active-directory-signing-key-rollover"></a>Azure Active Directory 签名密钥滚动更新
 这是需要在实现中考虑的要点。 如果未在实现中考虑，整个系统最终会在最多 6 周之后完全停止运行。
 
-Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对令牌进行签名，并将令牌发回给应用程序。 若要验证该令牌是否有效且确实来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的联合元数据文档中的公钥来验证令牌的签名。 此公钥 – 以及衍生它的签名密钥 – 是由 Azure AD 中所有租户使用的同一个密钥。
+Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对令牌进行签名，然后将令牌发回给应用程序。 若要验证该令牌是否有效且确实来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的联合元数据文档中的公钥来验证令牌的签名。 此公钥 – 以及衍生它的签名密钥 – 是由 Azure AD 中所有租户使用的同一个密钥。
 
 以下文档提供了有关 Azure AD 密钥滚动更新的详细信息：[有关 Azure AD 中签名密钥滚动更新的重要信息](../active-directory/active-directory-signing-key-rollover.md)。
 
@@ -332,7 +332,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 好消息是，可以使用完全相同的设计和实现来保护 Azure 媒体服务中的实时流，方法是将与节目关联的资产视为“VOD 资产”。
 
-具体而言，众所周知，如果要在 Azure 媒体服务中执行实时流，需要创建通道，并在通道下面创建节目。 若要创建节目，需要创建资产，其中包含节目的实时存档。 要使用带有多重 DRM 的 CENC 来保护实时内容，你只需要在启动节目之前将相同设置/处理应用到资产，就如同它是“VOD 资产”一样。
+具体而言，众所周知，要在 Azure 媒体服务中执行实时流，需要创建通道，并在通道下面创建节目。 若要创建节目，需要创建资产，其中包含节目的实时存档。 要使用带有多重 DRM 的 CENC 来保护实时内容，只需要在启动节目之前将相同设置/处理应用到资产，就如同它是“VOD 资产”一样。
 
 ### <a name="what-about-license-servers-outside-of-azure-media-services"></a>如何使用 Azure 媒体服务外部的许可证服务器？
 通常，客户可能已在他们自己的数据中心或由 DRM 服务提供商托管的位置投资了许可证服务器场。 幸运的是，Azure 媒体服务内容保护可让在混合模式下运行：内容在 Azure 媒体服务中托管并以动态方式保护，而 DRM 许可证由 Azure 媒体服务外部的服务器传送。 在此情况下，存在以下变更注意事项：

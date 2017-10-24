@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/16/2016
 ms.author: v-sharos
 ms.openlocfilehash: 8d1b4905d0a24c8df9eb2c986459286909fd20dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>对正常运行的 StorSimple 设备进行故障排除
 ## <a name="overview"></a>概述
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 在这篇文章的结尾，可以找到在 Microsoft Azure StorSimple 运行过程中可能遇到的错误代码列表，以及可用于解决这些错误的步骤。 
 
 ## <a name="setup-wizard-process-for-operational-devices"></a>操作设备的安装向导过程
-使用安装向导 ([Invoke-hcssetupwizard][1]) 若要检查的设备配置并采取纠正措施，如有必要。
+使用安装向导 ([Invoke-HcsSetupWizard][1]) 检查设备配置，并在必要时采取纠正措施。
 
 在以前配置并可正常运行的设备上运行安装向导时，处理流程是不同的。 只能更改以下条目：
 
@@ -44,8 +44,8 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 错误消息或条件 | 可能的原因 | 建议的操作 |
 |:--- |:--- |:--- |:--- |
 | 1 |错误 350032：此设备已被停用。 |如果在停用的设备上运行安装向导，会看到此错误。 |[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)以了解后续步骤。 停用的设备无法提供服务。 可能需要先恢复出厂设置，才可以重新激活设备。 |
-| 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(Exception from HRESULT: 0x80070001) |DNS 服务器更新失败。 DNS 设置是全局设置，并应用于所有启用的网络接口。 |启用界面并再次应用 DNS 设置。 由于这些设置是全局的，可能会中断其他已启用接口的网络。 |
-| 3 |设备在 StorSimple Manager 服务门户中似乎处于联机状态，但尝试完成最低安装并保存配置时，操作会失败。 |在初始安装过程中，即使已存在实际的代理服务器，也不会配置 Web 代理。 |使用[Test-hcsmconnection cmdlet] [ 2]以找到该错误。 如果不能更正此问题，请 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 |
+| #N/A |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(Exception from HRESULT: 0x80070001) |DNS 服务器更新失败。 DNS 设置是全局设置，并应用于所有启用的网络接口。 |启用界面并再次应用 DNS 设置。 由于这些设置是全局的，可能会中断其他已启用接口的网络。 |
+| 3 |设备在 StorSimple Manager 服务门户中似乎处于联机状态，但尝试完成最低安装并保存配置时，操作会失败。 |在初始安装过程中，即使已存在实际的代理服务器，也不会配置 Web 代理。 |使用 [Test-HcsmConnection cmdlet][2] 查找错误。 如果不能更正此问题，请 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 |
 | 4 |Invoke-HcsSetupWizard：值不在预期范围内。 |错误的子网掩码导致此错误。 可能的原因有： <ul><li> 子网掩码缺失或为空。</li><li>Ipv6 前缀格式不正确。</li><li>该接口已启用云，但网关缺失或不正确。</li></ul>请注意，如果通过安装向导配置，则 DATA 0 自动启用云。 |要确定该问题，请使用子网 0.0.0.0 或 256.256.256.256，再看输出。 请根据需要输入正确的子网掩码、网关和 Ipv6 前缀值。 |
 
 ## <a name="error-codes"></a>错误代码

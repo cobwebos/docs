@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
 ms.openlocfilehash: 716e7b5bab8725dea0fd2b760d0e46e8e892c5b4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-an-integration-account"></a>什么是集成帐户？
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 
     ![选择“添加”](./media/logic-apps-enterprise-integration-accounts/account-3.png)
 
-4. 为集成帐户命名，并选择要使用的 Azure 订阅。 可以创建新的**资源组**，或选择现有的资源组。 然后选择**位置**用于托管你集成的帐户和一个**定价层**。 
+4. 为集成帐户命名，并选择要使用的 Azure 订阅。 可以创建新的**资源组**，或选择现有的资源组。 然后选择一个用于托管集成帐户的位置和一个定价层。 
 
     准备就绪后，选择“创建”。
 

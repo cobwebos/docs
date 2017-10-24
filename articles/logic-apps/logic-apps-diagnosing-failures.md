@@ -15,13 +15,13 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 814e6f93088cdd96b0a663d2a7494b5a11470d99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-logic-app-failures"></a>诊断逻辑应用故障
-如果使用你的 logic apps 时遇到问题或故障，有几种方法可帮助你更好地了解故障来源于何处。  
+如果逻辑应用出现问题或故障，有几种方法可帮助更好地了解故障原因。  
 
 ## <a name="azure-portal-tools"></a>Azure 门户工具
 Azure 门户提供了许多工具来诊断每个步骤中的每个逻辑应用。

@@ -3,8 +3,8 @@ title: "存储资源管理器（预览版）入门 | Microsoft Docs"
 description: "使用存储空间资源管理器（预览版）管理 Azure 存储资源"
 services: storage
 documentationcenter: na
-author: kraigb
-manager: ghogen
+author: cawa
+manager: paulyuk
 editor: 
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
-ms.author: kraigb
+ms.author: cawa
+ms.openlocfilehash: 58ab8a9c5864ce0cb505b78fd087df2973a7e0d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bd8957f1257a5fdd867658be9c708bbdc8717f36
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>存储资源管理器（预览版）入门
 ## <a name="overview"></a>概述
@@ -43,6 +42,7 @@ Azure 存储资源管理器（预览版）是一款独立应用，可用于在 W
 * [连接外部存储](#attach-or-detach-an-external-storage-account)：使用存储帐户的名称、密钥和终结点管理属于另一 Azure 订阅或区域 Azure 云的存储资源。
 * [使用 SAS 附加存储帐户](#attach-storage-account-using-sas)：通过共享访问签名 (SAS) 管理属于另一 Azure 订阅的存储资源。
 * [使用 SAS 附加服务](#attach-service-using-sas)：通过 SAS 管理属于另一 Azure 订阅的特定存储服务（Blob 容器、队列或表）。
+* [使用连接字符串连接到 Azure Cosmos DB 帐户](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)：使用连接字符串管理 Cosmos DB 帐户。
 
 ## <a name="connect-to-an-azure-subscription"></a>连接到 Azure 订阅
 > [!NOTE]
@@ -223,6 +223,17 @@ Azure 订阅的管理员可以通过 [SAS](storage/common/storage-dotnet-shared-
 
     ![使用 SAS 附加到共享服务的结果][20]
 
+## <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>使用连接字符串连接到 Azure Cosmos DB 帐户
+除了通过 Azure 订阅管理 Azure Cosmos DB 帐户外，连接到 Azure Cosmos DB 的另一种方法是使用连接字符串。 按照以下步骤可使用连接字符串进行连接。
+
+1. 在左侧树中找到“本地和附加”，右键单击“Azure Cosmos DB 帐户”，然后选择“连接到 Azure Cosmos DB...”
+
+    ![通过连接字符串连接到 Azure Cosmos DB][33]
+
+2. 选择 Azure Cosmos DB API，粘贴“连接字符串”，然后单击“确定”连接 Azure Cosmos DB 帐户。 有关检索连接字符串的信息，请参阅[获取连接字符串](https://docs.microsoft.com/en-us/azure/cosmos-db/manage-account#get-the--connection-string)。
+
+    ![connection-string][32]
+
 ## <a name="search-for-storage-accounts"></a>搜索存储帐户
 如果存储帐户列表很长，则可使用左窗格顶部的搜索框来快速查找特定的存储帐户。
 
@@ -232,6 +243,7 @@ Azure 订阅的管理员可以通过 [SAS](storage/common/storage-dotnet-shared-
 
 ## <a name="next-steps"></a>后续步骤
 * [使用存储资源管理器（预览版）管理 Azure Blob 存储资源](vs-azure-tools-storage-explorer-blobs.md)
+* [在 Azure 存储资源管理器（预览版）中管理 Azure Cosmos DB](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-account-link.png
@@ -260,4 +272,5 @@ Azure 订阅的管理员可以通过 [SAS](storage/common/storage-dotnet-shared-
 [29]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-azure-stack-account.png
 [30]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-accounts-azure-stack.png
 [31]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/azure-stack-storage-account-list.png
-
+[32]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connection-string.PNG
+[33]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-db-by-connection-string.PNG

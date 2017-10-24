@@ -16,10 +16,10 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 ms.openlocfilehash: 8975d7a7d39114b2758d64a4df9f992cba6bf561
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留策略管理临时表中的历史数据
 与普通的表相比，临时表数据库大小的增长幅度可能更大，尤其是长时间保留历史数据时。 因此，针对历史数据创建保留策略是规划和管理每个临时表的生命周期的一个重要方面。 Azure SQL 数据库中的临时表附带了易用的保留机制，可帮助完成此任务。
@@ -78,7 +78,7 @@ CREATE TABLE dbo.WebsiteUserInfo
 
 Azure SQL 数据库允许使用不同的时间单位指定保留策略：DAYS、WEEKS、MONTHS 和 YEARS。 如果省略 HISTORY_RETENTION_PERIOD，则假设保留期限为 INFINITE（无限期）。 也可以显式使用 INFINITE 关键字。
 
-在某些情况下，你可能想要在创建表后配置保留策略或更改以前配置的值。 在这种情况下，请使用 ALTER TABLE 语句：
+在某些情况下，建议在创建表后配置保留策略或更改以前配置的值。 在这种情况下，请使用 ALTER TABLE 语句：
 
 ````
 ALTER TABLE dbo.WebsiteUserInfo
@@ -86,7 +86,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ````
 
 > [!IMPORTANT]
-> 将 SYSTEM_VERSIONING 设置为 OFF 不会保存保留期值。 在未显式指定 HISTORY_RETENTION_PERIOD 的情况下将 SYSTEM_VERSIONING 设置为 ON 会导致保留期为 INFINITE。
+> 将 SYSTEM_VERSIONING 设置为 OFF *不会保存*保留期值。 在未显式指定 HISTORY_RETENTION_PERIOD 的情况下将 SYSTEM_VERSIONING 设置为 ON 会导致保留期为 INFINITE。
 > 
 > 
 
@@ -169,7 +169,7 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 不要依赖于业务逻辑来读取超过保留期的历史记录表，否则可能会收到不一致或意外的结果。 建议配合 FOR SYSTEM_TIME 子句使用临时查询来分析临时表中的数据。
 
 ## <a name="point-in-time-restore-considerations"></a>时间点还原注意事项
-通过[将现有数据库还原到特定时间点](sql-database-recovery-using-backups.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
+通过[将现有数据库还原到特定时间点](sql-database-recovery-using-backups.md)创建新数据库时，会在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
 
 假设为某个临时表指定了一个月的保留期。 如果数据库是在高级服务层中创建的，则可以使用保持过去最多 35 天前状态的数据库创建数据库副本。 这样，便可以通过直接查询历史记录表，有效分析保留时间最长为 65 天前的历史行。
 

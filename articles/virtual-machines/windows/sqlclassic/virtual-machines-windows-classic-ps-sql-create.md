@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: jroth
 ms.openlocfilehash: c3bd4329e8a22ce8503d6593560d29c2a3135e83
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>使用 Azure PowerShell 预配 SQL Server 虚拟机（经典）
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 08/18/2017
    Select-AzureSubscription -SubscriptionName $subscr –Current
    ```
 
-3. 然后检查现有存储帐户。 以下脚本显示所选区域中存在的所有存储帐户：
+3. 然后，检查现有存储帐户。 以下脚本显示所选区域中存在的所有存储帐户：
 
    ```powershell
    (Get-AzureStorageAccount | where { $_.GeoPrimaryLocation -eq $dcLocation }).StorageAccountName

@@ -12,16 +12,15 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 09/28/2017
 ms.author: andbuc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 02962a91c739a53dfcf947bcc736e5c293b9384f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.openlocfilehash: b24828ee1a09ba8e5f657954e11936f124270173
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-azure-iot-edge-on-a-raspberry-pi-to-forward-device-to-cloud-messages-to-iot-hub"></a>在 Raspberry Pi 上使用 Azure IoT Edge 将设备到云消息转发到 IoT 中心
+# <a name="forward-device-to-cloud-messages-to-iot-hub-using-azure-iot-edge-on-a-raspberry-pi"></a>在 Raspberry Pi 上使用 Azure IoT Edge 将设备到云消息转发到 IoT 中心
 
 此[蓝牙低功耗示例][lnk-ble-samplecode]的演练演示如何使用 [Azure IoT Edge][lnk-sdk] 执行以下操作：
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 06/26/2017
 运行 IoT Edge 网关时，它：
 
 * 使用蓝牙低功耗 (BLE) 协议连接到 SensorTag 设备。
-* 使用 HTTP 协议连接到 IoT 中心。
+* 使用 HTTPS 协议连接到 IoT 中心。
 * 从 SensorTag 设备将遥测转发到 IoT 中心。
 * 从 IoT 中心将命令路由到 SensorTag 设备。
 
@@ -64,7 +63,11 @@ ms.lasthandoff: 06/26/2017
 1. BLE 设备生成温度样本并将其通过蓝牙发送到网关的 BLE 模块。
 1. BLE 模块接收该样本，并将其与设备的 MAC 地址一起发布到中转站。
 1. 标识映射模块提取此消息，并使用内部表将设备的 MAC 地址转换为 IoT 中心设备标识。 IoT 中心设备标识包含设备 ID 和设备密钥。
-1. 标识映射模块会发布一条新消息，其中包含温度样本数据、设备的 MAC 地址、设备 ID 和设备密钥。
+1. 标识映射模块发布了包含以下信息的新消息：
+   - 温度示例数据
+   - 设备的 MAC 地址
+   - 设备 ID
+   - 设备密钥  
 1. IoT 中心模块接收此新消息（由标识映射模块生成），并将其发布到 IoT 中心。
 1. 记录器模块将中转站中的所有消息记录到本地文件中。
 
@@ -86,7 +89,7 @@ ms.lasthandoff: 06/26/2017
 > [!NOTE]
 > 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。
 
-需要在台式机上安装 SSH 客户端，然后才能远程访问 Raspberry Pi 上的命令行。
+需要在台式机上安装 SSH 客户端，才能远程访问 Raspberry Pi 上的命令行。
 
 - Windows 不包括 SSH 客户端。 建议使用 [PuTTY](http://www.putty.org/)。
 - 大多数 Linux 分发版和 Mac OS 包括命令行 SSH 实用工具。 有关详细信息，请参阅 [SSH Using Linux or Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)（使用 Linux 或 Mac OS 的 SSH）。
@@ -134,7 +137,7 @@ BLE 模块通过 BlueZ 堆栈与蓝牙硬件进行通信。 需要 BlueZ 5.37 �
 
     ```sh
     sudo apt-get update
-    sudo apt-get install bluetooth bluez-tools build-essential autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
+    sudo apt-get install bluetooth bluez-tools build-essential autoconf libtool glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
     ```
 
 1. 从 bluez.org 下载 BlueZ 源代码：
@@ -196,20 +199,20 @@ BLE 模块通过 BlueZ 堆栈与蓝牙硬件进行通信。 需要 BlueZ 5.37 �
     bluetoothctl --version
     ```
 
-1. 若要进入交互式蓝牙 shell，请启动蓝牙服务并执行 **bluetoothctl** 命令：
+1. 若要进入交互式蓝牙 shell，请启动蓝牙服务并执行“bluetoothctl”命令：
 
     ```sh
     sudo systemctl start bluetooth
     bluetoothctl
     ```
 
-1. 输入 **power on** 命令，打开蓝牙控制器。 该命令将返回类似于以下内容的输出：
+1. 输入 **power on** 命令，打开蓝牙控制器。 该命令将返回类似于以下示例的输出：
 
     ```sh
     [NEW] Controller 98:4F:EE:04:1F:DF C3 raspberrypi [default]
     ```
 
-1. 在交互式蓝牙 shell 中，输入 **scan on** 命令以扫描蓝牙设备。 该命令将返回类似于以下内容的输出：
+1. 在交互式蓝牙 shell 中，输入 **scan on** 命令以扫描蓝牙设备。 该命令将返回类似于以下示例的输出：
 
     ```sh
     Discovery started
@@ -254,7 +257,7 @@ BLE 模块通过 BlueZ 堆栈与蓝牙硬件进行通信。 需要 BlueZ 5.37 �
 
     > 可使用 **list-attributes** 命令重新列出设备的 GATT 特征。
 
-1. 现可使用 **disconnect** 命令断开与设备的连接，然后使用 **quit** 命令退出蓝牙程序：
+1. 现可使用 **disconnect** 命令断开与设备的连接，并使用 **quit** 命令退出蓝牙程序：
 
     ```sh
     Attempting to disconnect from A0:E6:F8:B5:F6:00
@@ -277,14 +280,14 @@ BLE 模块通过 BlueZ 堆栈与蓝牙硬件进行通信。 需要 BlueZ 5.37 �
 ### <a name="configure-two-sample-devices-in-your-iot-hub"></a>在 IoT 中心中配置两个示例设备
 
 * 若要在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，需要使用中心的名称来完成本演练。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
-* 将名为 **SensorTag_01** 的设备添加到 IoT 中心，记下其 ID 和设备密钥。 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具将此设备添加至上一步中创建的 IoT 中心，然后检索其密钥。 配置网关时，可将此设备映射到 SensorTag 设备。
+* 将名为“SensorTag_01”的设备添加到 IoT 中心，记下其 ID 和设备密钥。 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具将此设备添加至上一步中创建的 IoT 中心，然后检索其密钥。 配置网关时，可将此设备映射到 SensorTag 设备。
 
 ### <a name="build-azure-iot-edge-on-your-raspberry-pi-3"></a>在 Raspberry Pi 3 上生成 Azure IoT Edge
 
 安装 Azure IoT Edge 的依赖项：
 
 ```sh
-sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev
+sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev libtool
 ```
 
 使用以下命令将 IoT Edge 及其所有子模块克隆到主目录：
@@ -303,9 +306,9 @@ cd ~/iot-edge
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>在 Raspberry Pi 3 上配置并运行 BLE 示例
 
-若要启动和运行示例，必须配置参与网关的每个 IoT Edge 模块。 在 JSON 文件中提供了此配置，必须配置所有五个参与 IoT Edge 模块。 存储库中有一个名为 **gateway\_sample.json** 的示例 JSON 文件，可将它用作自行生成配置文件的起点。 此文件位于 IoT Edge 存储库本地副本的 **samples/ble_gateway/src** 文件夹中。
+若要启动和运行示例，请配置参与网关的每个 IoT Edge 模块。 在 JSON 文件中提供了此配置，必须配置所有五个参与 IoT Edge 模块。 存储库中有一个名为 **gateway\_sample.json** 的示例 JSON 文件，可将它用作自行生成配置文件的起点。 此文件位于 IoT Edge 存储库本地副本的 **samples/ble_gateway/src** 文件夹中。
 
-以下各部分介绍了如何编辑 BLE 示例的此配置文件，并假设 IoT Edge 存储库位于 Raspberry Pi 3 的 **/home/pi/iot-edge/** 文件夹中。 如果存储库在其他位置，需相应地调整路径。
+以下部分描述如何编辑 BLE 示例的此配置文件。 假定 IoT Edge 存储库位于 Raspberry Pi 3 上的“/home/pi/iot-edge/”文件夹中。 如果存储库在其他位置，需相应地调整路径。
 
 #### <a name="logger-configuration"></a>记录器配置
 
@@ -487,7 +490,7 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。 任�
  ]
 ```
 
-若要运行示例，请将 JSON 配置文件的路径作为参数传递到 **ble\_gateway** 二进制文件。 以下命令假设你正在使用 **gateway_sample.json** 配置文件。 在 Raspberry Pi 上从 **iot-edge** 文件夹执行此命令：
+要运行示例，请将 JSON 配置文件的路径作为参数传递到 **ble\_gateway** 二进制文件。 以下命令假设你正在使用“gateway_sample.json”配置文件。 在 Raspberry Pi 上从 **iot-edge** 文件夹执行此命令：
 
 ```sh
 ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
@@ -581,4 +584,3 @@ BLE 模块还支持从 IoT 中心向设备发送命令。 可使用[设备资源
 [lnk-pi-ssh]: https://www.raspberrypi.org/documentation/remote-access/ssh/README.md
 [lnk-ssh-windows]: https://www.raspberrypi.org/documentation/remote-access/ssh/windows.md
 [lnk-ssh-linux]: https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md
-

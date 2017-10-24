@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
 ms.openlocfilehash: 74765877e7836d6878284b350a25d8355dc83d7d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>如何使用 VMAccess 扩展重置 Linux VM 密码或 SSH 密钥、修复 SSH 配置，以及检查磁盘一致性
 如果因为忘记密码、安全外壳 (SSH) 密钥不正确或 SSH 配置出现问题而不能连接到 Azure 上的 Linux 虚拟机，请使用 VMAccessForLinux 扩展通过 Azure CLI 重置密码或 SSH 密钥、修复 SSH 配置以及检查磁盘一致性。 
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 * 设置一个新密码或一组新 SSH 密钥（如果想要重置任一项）。 如果想要重置 SSH 配置，则不需要这些。
 
 ## <a name="pwresetcli"></a>重置密码
-1. 使用以下代码行在本地计算机上创建名为 PrivateConf.json 的文件。 将 **myUserName** 和 **myP@ssW0rd** 替换为自己的用户名和密码，并设置自己的到期日期。
+1. 使用以下代码行在本地计算机上创建名为 PrivateConf.json 的文件。 将 **myUserName** 和 **myP@ssW0rd** 替换为自己的用户名和密码，并设置自己的过期日期。
 
     ```   
         {
@@ -154,7 +154,7 @@ ms.lasthandoff: 07/11/2017
         azure vm extension get
 ```
 
-## <a name='checkdisk'></a>检查添加磁盘的一致性
+## <a name='checkdisk'></a>检查已添加磁盘的一致性
 若要在 Linux 虚拟机的所有磁盘上运行 fsck，需执行以下操作：
 
 1. 使用以下内容创建名为 PublicConf.json 的文件。 Check Disk 采用的布尔值表示是否检查附加到虚拟机的磁盘。 
@@ -191,6 +191,6 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 若要使用 Azure PowerShell cmdlet 或 Azure Resource Manager 模板来重置密码或 SSH 密钥、修复 SSH 配置和检查磁盘一致性，请参阅 [GitHub 上的 VMAccess 扩展文档](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)。 
-* 也可以使用 [Azure 门户](https://portal.azure.com)来重置部署在经典部署模型中的 Linux VM 的密码或 SSH 密钥。 目前你无法使用门户来针对通过 Resource Manager 部署模型部署的 Linux VM 执行上述操作。
+* 也可以使用 [Azure 门户](https://portal.azure.com)来重置部署在经典部署模型中的 Linux VM 的密码或 SSH 密钥。 目前无法使用门户针对部署在 Resource Manager 部署模型中的 Linux VM 执行上述操作。
 * 有关使用适用于 Azure 虚拟机的 VM 扩展的详细信息，请参阅[关于虚拟机扩展和功能](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 

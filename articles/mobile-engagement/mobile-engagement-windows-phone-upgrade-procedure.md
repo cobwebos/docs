@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: f87f65788075c7f4067e77946e1bcbc8f3709317
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-upgrade-procedures"></a>Windows Phone Silverlight SDK 升级过程
 如果已将我们较旧版本的 SDK 集成到应用程序中，则在升级 SDK 时必须考虑以下几点。
 
-如果错过了几个版本的 SDK，则可能需要执行多个过程。 例如，如果你将从迁移 0.10.1 到你必须首先按照"发件人 0.10.1 到 0.9.0"步骤的 0.11.0 然后"发件人到 0.11.0 0.10.1"过程。
+如果错过了几个版本的 SDK，则可能需要执行多个过程。 例如，如果从 0.10.1 迁移至 0.11.0，则必须首先按照“从 0.9.0 至 0.10.1”的过程操作，然后按照“从 0.10.1 至 0.11.0”的过程操作。
 
 ## <a name="from-200-to-330"></a>从 2.0.0 至 3.3.0
 ### <a name="test-logs"></a>测试日志

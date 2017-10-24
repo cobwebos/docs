@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/09/2016
 ms.author: alkohli
 ms.openlocfilehash: 100eed4694d2017333ef25eca86034d17cce78d1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
 ## <a name="overview"></a>概述
@@ -95,7 +95,7 @@ StorSimple 虚拟阵列尤其适合以下工作流：
 
 * **卷或共享存储** - 使用还原作为恢复卷或共享的新工作流。 使用此方法恢复整个卷或共享。
 * **项目级恢复** - 共享允许对最近备份的简化访问。 可从云中提供的特殊 *.backup* 文件夹轻松恢复单个文件。 此还原功能是用户驱动的，不需要任何管理干预。
-* **灾难恢复** - 使用故障转移功能可将所有卷或共享恢复到新的虚拟阵列。 创建新的虚拟阵列并将其注册到 StorSimple 设备管理器服务，然后故障转移原始虚拟数组。 然后，新的虚拟阵列会采用预配的资源。 
+* **灾难恢复** - 使用故障转移功能可将所有卷或共享恢复到新的虚拟阵列。 创建新的虚拟阵列并向 StorSimple Device Manager 服务注册它，然后故障转移原始虚拟阵列。 然后，新的虚拟阵列会采用预配的资源。 
 
 ## <a name="storsimple-virtual-array-components"></a>StorSimple 虚拟阵列组件
 虚拟阵列包括以下组件：

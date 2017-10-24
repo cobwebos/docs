@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
 ms.openlocfilehash: 63701e1ce0c1c6dcf2ce02ebce272b8280395e7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
 
@@ -230,7 +230,7 @@ FQDN 以正向顺序指定，且必须以点号结尾（例如“app1.contoso.co
 
 ### <a name="what-happens-if-the-validation-check-for-the-reverse-dns-ive-specified-fails"></a>如果指定的反向 DNS 验证检查失败，会发生什么情况？
 
-如果反向 DNS 验证检查失败，则配置反向 DNS 记录的操作也会失败。 更正反向 DNS 值根据需要，然后重试。
+如果反向 DNS 验证检查失败，则配置反向 DNS 记录的操作也会失败。 请根据需要更正反向 DNS 值，然后重试。
 
 ### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>是否可以为 Azure 应用服务配置反向 DNS？
 

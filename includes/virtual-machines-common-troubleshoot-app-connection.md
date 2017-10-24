@@ -8,7 +8,7 @@
 > [!NOTE]
 > Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../articles/resource-manager-deployment-model.md)。 这篇文章介绍如何使用这两种模型，但 Microsoft 建议大多数最新部署使用 Resource Manager 模型。
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
 ## <a name="quick-start-troubleshooting-steps"></a>快速入门故障排除步骤
 如果在连接到应用程序时发生问题，请尝试以下一般故障排除步骤。 执行每个步骤之后，尝试重新连接到应用程序：
@@ -77,7 +77,7 @@
 * 云服务终结点或网络安全组允许流量：
   * [经典模型 - 管理云服务终结点](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
   * [Resource Manager 模型 - 管理网络安全组](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
-* VM 中在测试 VM 和你的 VM 之间的路径运行的单独组件（例如负载均衡器或防火墙）允许流量。
+* VM 中在测试 VM 和 VM 之间的路径运行的单独组件（例如负载均衡器或防火墙）允许流量。
 
 在基于 Windows 的虚拟机上，使用具有高级安全性的 Windows 防火墙确定防火墙规则是否排除应用程序的入站和出站流量。
 

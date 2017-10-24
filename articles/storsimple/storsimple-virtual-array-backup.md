@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c926f0c80ce56cac3106ad97ec3ec2e18a8e2cc6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>备份 StorSimple 虚拟阵列上的共享或卷
 
@@ -77,7 +77,7 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
     ![备份正在启动](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
-    已成功完成作业后，会通知您再次。 然后，启动备份过程。
+    作业成功完成后，会再次通知你。 然后，备份过程开始。
    
     ![备份作业已创建](./media/storsimple-virtual-array-backup/takebackup4m.png)
 

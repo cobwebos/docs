@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
 ms.openlocfilehash: ed9f74a59f0ca512e2758c6db4c5c9075030f859
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>从 Azure SQL 数据库长期备份保留进行配置和恢复
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 07/11/2017
 
    ![定义保留策略](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
 
-14. 单击**保存**以便使用此新策略，以配置你的 Azure 恢复服务保管库的长期备份保留。
+14. 单击“保存”以使用此新策略对你配置的 Azure 恢复服务保管库启用长期备份保留。
 
    ![定义保留策略](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
 

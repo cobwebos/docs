@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 0d44f94719bff0cb58b3727050598e55f4774e66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
 ## <a name="overview"></a>概述
@@ -126,7 +126,7 @@ EBOD 机箱有一个 580W PCM，没有额外的电池。 EBOD 机箱的 PCM 面�
 StorSimple 设备包含了用于主控制器和 EBOD 控制器模块的 LED   
 
 ### <a name="monitoring-leds-for-the-primary-controller"></a>主控制器的监视 LED
-下图可帮助你识别主控制器上的 Led。 （所有组件列出以帮助你识别方向。）  
+下图可帮助你识别主控制器上的 LED。 （所有组件已列出，有助于你定位。）  
 
    ![监视 LED - 主控制器][4]
 

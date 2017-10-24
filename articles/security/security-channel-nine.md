@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 ms.openlocfilehash: 35e3f4ee07414927cd93e3fbe54d7c96f4681ba4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-videos-on-channel-9"></a>第 9 频道上的 Azure 安全视频
 [第 9 频道](https://channel9.msdn.com/)是一个社区，这个社区将我们产品的支持人员推向前台，让客户可以与他们直接进行交流。
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/11/2017
 
 [实时演示︰对威胁的防护、检测和响应](https://channel9.msdn.com/events/Virtual-Security-Summit/Virtual-Security-Summit-2016/Live-Demo-Protecting-against-Detecting-and-Responding-to-Threats)
 
-加入此会话，了解 Microsoft 安全平台的行动。 云和企业，Julia 空白的常规管理器演示 Windows 10、 Azure 和 Office 365，可帮助你保护你的组织的安全的功能。
+加入此会话，了解 Microsoft 安全平台的行动。 Cloud & Enterprise 的总经理 Julia White 演示了 Windows 10、Azure 和 Office 365 的安全功能，这些功能可帮助你保护组织的安全。
 
 [在 Azure 的 SQL Server 虚拟机中进行加密以获得更好的安全性](https://channel9.msdn.com/Shows/Azure-Friday/Encryption-in-SQL-Azure-for-better-security)
 
@@ -59,10 +59,9 @@ Jack Richins 向 [Scott](https://channel9.msdn.com/Niners/Glucose) 讲述了如�
 
 [管理 Azure 应用的机密](https://channel9.msdn.com/events/Build/2016/P456)
 
-在 Azure 上部署的每个重要应用都有重要的机密 – 连接字符串、证书和密钥。 在管理这些机密时所犯下的愚蠢错误会导致严重的后果 – 泄露、中断、违反合规性。 最近的多项调查表明，愚蠢的错误导致的数据泄露要比对手多出四倍多。 在本会话中，我们介绍一些管理重要应用机密的最佳实践。 这些最佳实践可能看起来很平常，甚至为许多开发人员所忽视。 我们还介绍如何使用 Azure 密钥保管库来实施这些最佳实践。 作为一项额外权益，以下这些做法可帮助你演示符合标准如 SOC. 会话的前 10 分钟的级别是 100，它们适用于在任何平台上开发的任何云应用。 其余部分是级别 200-300，并重点介绍在 Azure 平台构建的应用。
+在 Azure 上部署的每个重要应用都有重要的机密 – 连接字符串、证书和密钥。 在管理这些机密时所犯下的愚蠢错误会导致严重的后果 – 泄露、中断、违反合规性。 最近的多项调查表明，愚蠢的错误导致的数据泄露要比对手多出四倍多。 在本会话中，我们介绍一些管理重要应用机密的最佳实践。 这些最佳实践可能看起来很平常，甚至为许多开发人员所忽视。 我们还介绍如何使用 Azure 密钥保管库来实施这些最佳实践。 另一个好处是，遵循以下这些实践可帮助你证明其遵从了诸如 SOC 等标准。 会话的前 10 分钟的级别是 100，它们适用于在任何平台上开发的任何云应用。 会话的其余部分的级别是 200～300，重点介绍你在 Azure 平台上构建的应用。
 
-
-            [与 Narayan Annamalai 一起使用网络安全组保护 Azure 虚拟网络的安全](https://channel9.msdn.com/Shows/Azure-Friday/Sucruing-your-Azure-Virtual-Network-using-Network-ACLs-with-Narayan-Annamalai)
+[与 Narayan Annamalai 一起使用网络安全组保护 Azure 虚拟网络的安全](https://channel9.msdn.com/Shows/Azure-Friday/Sucruing-your-Azure-Virtual-Network-using-Network-ACLs-with-Narayan-Annamalai)
 
 高级项目经理 Narayan Annamalai 向 Scott 讲述了如何在 Azure 虚拟网络内使用网络安全组。 可以通过子网和网络创建对 Azure 内的对象的控制访问！ 学习如何使用 PowerShell 在 Azure 内控制访问和创建组。
 

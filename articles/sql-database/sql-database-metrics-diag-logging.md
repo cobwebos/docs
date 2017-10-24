@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
+ms.openlocfilehash: a56d48eaf335d9e78eeba99162cea7c61d96b7cb
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ef73f9036a91d5bac50597d1d96fe134225eef51
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地监视。 可配置 Azure SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
@@ -106,6 +105,17 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地监视。 
    ```
 
 可以组合这些参数以启用多个输出选项。
+
+### <a name="to-configure-multiple-azure-subscriptions"></a>配置多个 Azure 订阅
+
+若要支持多个订阅，请使用 [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)（通过 PowerShell 启用 Azure 资源指标日志记录）中的 PowerShell 脚本。 在执行脚本时提供工作区资源 ID 作为参数，以便将诊断数据从一个 Azure 订阅中的资源发送到另一 Azure 订阅中的工作区。
+
+- 若要配置多个 Azure 订阅，请使用以下命令：
+
+    ```powershell
+    PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
+    PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
+    ```
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -448,4 +458,3 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
    - [什么是 Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)？
    - [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 - 请参阅[从 Azure 存储下载指标和诊断日志](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
-

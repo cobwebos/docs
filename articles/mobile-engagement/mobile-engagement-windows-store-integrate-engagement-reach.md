@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Windows Universal Apps Reach SDK 集成
 在按本指南操作之前，必须完成 [Windows Universal Engagement SDK 集成](mobile-engagement-windows-store-integrate-engagement.md)中所述的集成程序。
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-universal-project"></a>在 Windows Universal 项目中嵌入 Engagement Reach SDK
-无需添加任何内容。 
-            `EngagementReach` 参考和资源已在项目中。
+无需添加任何内容。 `EngagementReach` 参考和资源已在项目中。
 
 > [!TIP]
 > 可以自定义项目文件夹 `Resources` 中的图像，尤其是品牌图标（默认为 Engagement 图标）。 在 Universal 应用中，还可以移动共享项目中的 `Resources` 文件夹以便在应用之间共享其内容，但由于文件依赖于平台，因此必须将 `Resources\EngagementConfiguration.xml` 文件保存在其默认位置。
@@ -50,7 +49,7 @@ ms.lasthandoff: 07/11/2017
         EngagementReach.Instance.Init(e);
       }
   
-  `EngagementReach.Instance.Init` 会在专用的线程中运行。 无需自行执行此操作。
+  `EngagementReach.Instance.Init` 会在专用的线程中运行。 无需亲自执行此操作。
 
 > [!NOTE]
 > 如果要在应用程序中的其他地方使用推送通知，则必须与 Engagement Reach [共享推送通道](#push-channel-sharing)。
@@ -172,7 +171,7 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
 
 ## <a name="customize-ui-optional"></a>自定义 UI（可选）
 ### <a name="first-step"></a>第一步
-我们将允许你自定义使其 UI。
+我们允许用户自定义 Reach UI。
 
 若要执行此操作，必须创建 `EngagementReachHandler` 类的一个子类。
 
@@ -188,7 +187,7 @@ Reach 会搜索页面，查找负责显示横幅和插播式视图的两个 `Web
               }
             }
 
-然后，设置的内容`EngagementReach.Instance.Handler`字段与在你自定义对象你`App.xaml.cs`类内`App()`方法。
+然后，使用 `App()` 方法中 `App.xaml.cs` 类的自定义对象，设置 `EngagementReach.Instance.Handler` 字段的内容。
 
 **示例代码：**
 

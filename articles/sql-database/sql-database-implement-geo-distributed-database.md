@@ -16,17 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 9f53f318e20dac9248906bdbe898ba4dacb286ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 6fdbf12830a402eeb004587202eee604037430c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="implement-a-geo-distributed-database"></a>实现地理分散的数据库
 
-在本教程中，将配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中，然后测试故障转移计划。 你将学习如何： 
+在本教程中，将配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中，然后测试故障转移计划。 学习如何： 
 
 > [!div class="checklist"]
 > * 创建数据库用户并授予权限
@@ -148,7 +146,7 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="install-java-software"></a>安装 Java 软件
 
-本部分中的步骤假定你熟悉使用 Java 开发，但不熟悉如何使用 Azure SQL 数据库。 
+为了能够执行此部分中的步骤，需要熟悉如何使用 Java 开发，但不需要熟悉如何使用 Azure SQL 数据库。 
 
 ### <a name="mac-os"></a>**Mac OS**
 打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **brew** 和 **Maven**： 
@@ -390,4 +388,3 @@ sudo apt-get install maven
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅[活动异地复制和故障转移组](sql-database-geo-replication-overview.md)。
-

@@ -4,7 +4,7 @@ description: "了解如何通过配置输入分区、细化查询定义和设置
 keywords: "数据流式处理, 流数据处理, 优化分析"
 services: stream-analytics
 documentationcenter: 
-author: samacha
+author: JSeb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
@@ -14,83 +14,43 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
-ms.author: samacha
+ms.author: jeanb
+ms.openlocfilehash: a38394d825c9a9b3007b30f598b37caa08f7325f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: f1e5e11e82d344508aa4375c42d509f96aaa1d00
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase-stream-data-processing-throughput"></a>扩展 Azure 流分析作业，以增加流数据处理吞吐量
-本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 了解如何通过配置输入分区、优化分析查询定义，以及计算和设置作业流式处理单位 (SU) 来缩放流分析作业。 
-
-## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>流分析作业的组成部分有哪些？
-流分析作业定义包括输入、查询和输出。 输入是作业读取数据流的地方。 查询是用于转换数据输入流的一种方式，而输出则是作业将作业结果发送到的地方。  
-
-若要对数据进行流式处理，作业需要至少一个输入源。 可将数据流输入源存储在 Azure 事件中心或 Azure Blob 存储中。 有关详细信息，请参阅 [Azure 流分析简介](stream-analytics-introduction.md)和[开始使用 Azure 流分析](stream-analytics-real-time-fraud-detection.md)。
-
-## <a name="partitions-in-event-hubs-and-azure-storage"></a>事件中心和 Azure 存储中的分区
-通过缩放流分析作业，可利用输入或输出中的分区。 利用分区，可根据分区键将数据分为多个子集。 使用数据（例如流分析作业）的进程可以并行利用和写入不同的分区，从而增加吞吐量。 处理流分析时，可利用事件中心和 Blob 存储中的分区。 
-
-若要深入了解分区，请参阅以下文章：
-
-* [事件中心功能概述](../event-hubs/event-hubs-features.md#partitions)
-* [Data partitioning](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)（数据分区）
+# <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>扩展 Azure 流分析作业以增加吞吐量
+本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
+作为先决条件，你可能需要阅读以下文章：
+-   [了解和调整流式处理单元](stream-analytics-streaming-unit-consumption.md)
+-   [创建可并行的作业](stream-analytics-parallelization.md)
 
 
-## <a name="streaming-units-sus"></a>流式处理单位 (SU)
-流式处理单位 (SU) 代表执行 Azure 流分析作业所需的资源和计算能力。 在已经对 CPU、内存以及读取和写入速率进行测量的情况下，可以使用 SU 来描述相对的事件处理能力。 每个 SU 大致相当于 1MB/秒的吞吐量。 
+## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>案例 1 – 在各个输入分区中，查询本质上是完全可并行的
+如果在各个输入分区中，查询本质上是完全可并行的，则可以按照以下步骤操作：
+1.  通过使用 PARTITION BY 关键字来创作查询使之易并行。 请参阅[此页](stream-analytics-parallelization.md)易并行作业部分中的更多详细信息。
+2.  根据查询中使用的输出类型，某些输出可能是不可并行的，或者需要进一步配置来实现易并行。 例如，SQL、SQL DW 和 PowerBI 输出都是不可并行的。 请始终先合并输出，然后再将其发送到输出接收器。 Blob、表、ADLS、服务总线和 Azure Function 会自动并行化。 CosmosDB 和事件中心都需要设置 PartitionKey 配置来匹配 PARTITION BY 字段（通常是 PartitionId）。 对于事件中心，还要格外注意匹配所有输入和所有输出的分区数量，以避免分区之间的交叉。 
+3.  使用 6 SU（即单个计算节点的全部容量）来运行查询，以度量最大可实现的吞吐量，如果你使用的是 GROUP BY，则度量作业能处理的组数（基数）。 达到系统资源限制的作业，一般症状将如下所示。
+    - SU 利用率指标超过 80%。 该指示内存使用率较高。 [此处](stream-analytics-streaming-unit-consumption.md)描述了导致此指标增加的因素。 
+    -   输出时间戳滞后于时钟时间。 根据查询逻辑，输出时间戳可能与时钟时间之间存在一个逻辑偏差。 但是，它们应该以大致相同的速度增进。 如果输出时间戳进一步滞后，则指示系统工作时间过长。 它可能是由于下游输出接收器限制，或高 CPU 利用率所致。 我们目前没有提供 CPU 利用率指标，因此很难区分两者。
+        - 如果该问题是由接收器限制导致，则可能需要增加输出分区数（以及输入分区，以此使作业保持完全可并行化），或增加接收器的资源量（例如，CosmosDB 的请求单位数）。
+    - 在作业关系图中，每个输出都有一个分区积压工作 (backlog) 事件指标。 如果积压工作事件指标持续增加，则同样表示系统资源受到约束（由于输出接收器限制或高 CPU）。
+4.  在确定 6 SU 作业可以达到的上限之后，可以在添加更多的 SU 时线性推断出作业的处理容量，前提是你没有任何使某些分区“紧迫”的数据倾斜。
+>[!Note]
+> 选择适当数量的流式处理单元：由于流分析为每个添加的 6 SU 创建一个处理节点，因此，最好将节点数作为输入分区数的除数，以便分区可以均匀分布在各节点上。
+> 例如，你已经度量出 6 SU 作业可以实现 4 MB/秒的处理速率，且输入分区计数为 4。 可以选择使用 12 SU 来运行作业，以达到大约 8 MB/秒的处理速率，或使用 24 SU 来实现 16 MB/秒的处理速率。 然后，你可以决定何时增加作业的 SU 数量以及增加至多少，以作为输入速率的一个函数。
 
-选择特定作业所需的 SU 数目时，需根据输入的分区配置以及为作业定义的查询来决定。 可为作业选择的最大数目为 SU 配额。 默认情况下，每个 Azure 订阅的配额为最多 50 个 SU，这适用于特定区域的所有分析作业。 若要增加订阅的 SU 数，使其超过此配额，请联系 [Microsoft 支持部门](http://support.microsoft.com)。 每个作业的 SU 有效值以 1、3、6 开始，往上再按 6 递增。
 
-## <a name="embarrassingly-parallel-jobs"></a>易并行作业
-易并行作业是 Azure 流分析中最具可缩放性的方案。 它将查询的一个实例的输入的一个分区连接到输出的一个分区。 实现此并行需满足以下要求：
 
-1. 如果查询逻辑取决于同一个查询实例正在处理的相同键，则必须确保事件转到输入的同一个分区。 对于事件中心，这意味着事件数据必须具有 PartitionKey 值集。 或者，可以使用已分区的发件人。 对于 Blob 存储，这意味着事件将发送到相同的分区文件夹。 如果查询逻辑不需要由同一个查询实例处理相同的键，则可忽略此要求。 举例来说，简单的选择项目筛选器查询就体现了此逻辑。  
-
-2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 Partition By。 允许采用多个步骤，但必须使用相同的键对其进行分区。 目前，必须将分区键设置为“PartitionId”才能实现完全并行作业。  
-
-3. 当前仅事件中心和 Blob 存储支持已分区的输出。 对于事件中心输出，必须将分区键配置为“PartitionId”。 对于 Blob 存储输出，不必执行任何操作。  
-
-4. 输入分区数必须等于输出分区数。 Blob 存储输出当前不支持分区。 不过没关系，因为它会继承上游查询的分区方案。 下面是允许完全并行作业的分区值示例：  
-
-   * 8 个事件中心输入分区和 8 个事件中心输出分区
-   * 8 个事件中心输入分区和 Blob 存储输出  
-   * 8 个 Blob 存储输入分区和 Blob 存储输出  
-   * 8 个 Blob 存储输入分区和 8 个事件中心输出分区  
-
-以下各节将介绍一些易并行的示例方案。
-
-### <a name="simple-query"></a>简单查询
-
-* 输入：具有 8 个分区的事件中心
-* 输出：具有 8 个分区的事件中心
-
-查询：
-
-    SELECT TollBoothId
-    FROM Input1 Partition By PartitionId
-    WHERE TollBoothId > 100
-
-此查询是一个简单的筛选器。 因此，无需担心对发送到事件中心的输入进行分区。 请注意，该查询包含“按 PartitionId 分区”，因此其满足上述要求 #2。 对于输出，需要在作业中配置事件中心输出，将分区键设置为“PartitionId”。 最后一项检查是确保输入分区数等于输出分区数。
-
-### <a name="query-with-a-grouping-key"></a>带分组键的查询
-
-* 输入：具有 8 个分区的事件中心
-* 输出：Blob 存储
-
-查询：
-
-    SELECT COUNT(*) AS Count, TollBoothId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-
-此查询具有分组键。 因此，相同的键需要由同一个查询实例进行处理，这意味着必须以分区的方式将事件发送到事件中心。 但是，应使用哪个键？ PartitionId 是作业逻辑概念。 我们真正关心的键是 TollBoothId，因此事件数据的 PartitionKey 值应为 TollBoothId。 为此，请在查询中将“Partition By”设置为“PartitionId”。 由于输出是 Blob 存储，因此如要求 #4 所述，无需担心如何配置分区键值。
-
-### <a name="multi-step-query-with-a-grouping-key"></a>带分组键的多步骤查询
-* 输入：具有 8 个分区的事件中心
-* 输出：具有 8 个分区的事件中心实例
+## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>案例 2 - 如果查询不是易并行。
+如果查询不是易并行，则可以执行以下步骤。
+1.  首先使用不带 PARTITION BY 的查询来避免分区复杂性，然后使用 6 SU 运行查询，以度量最大负载，如[案例 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) 中所示。
+2.  如果能在吞吐量方面达到预期负载，则操作完成。 或者，你可以选择度量在 3 SU 和 1 SU 上运行的相同作业，以找到适用于你方案的 SU 的最小数目。
+3.  如果不能实现所需的吞吐量，请尝试尽可能地将查询分解为多个步骤，如果没有多个步骤，则在查询中为每个步骤分配最多6 个 SU。 例如，如果你有 3 个步骤，则在“规模”选项中分配 18 个 SU。
+4.  在运行此类作业时，流分析会将各步骤分配到自己包含专用 6 SU 资源的节点上。 
+5.  如果仍未实现负载目标，可以尝试使用 PARTITION BY，从更接近输入的步骤开始。 对于不可自然分区的 GROUP BY 运算符，可以使用本地/全局聚合模式来执行分区的 GROUP BY，然后执行非分区 GROUP BY。 例如，如果想要计算每 3 分钟有多少车辆通过每个收费站，以及超出 6 SU 能够处理范围的数据量。
 
 查询：
 
@@ -99,176 +59,31 @@ ms.lasthandoff: 08/29/2017
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
     )
-
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-
-此查询具有分组键，因此相同的键需要由同一个查询实例进行处理。 可以使用与上一示例相同的策略。 在此情况下，查询包含多个步骤。 是否每个步骤都包含“按 PartitionId 分区”？ 是，因此该查询满足要求 #3。 对于输出，需要如上文所述，将分区键设置为“PartitionId”。 还可以看到，其分区数与输入的分区数相同。
-
-## <a name="example-scenarios-that-are-not-embarrassingly-parallel"></a>不易并行的示例方案
-
-上一节介绍了一些易并行方案。 本节将介绍不满足实现易并行所需全部要求的方案。 
-
-### <a name="mismatched-partition-count"></a>分区计数不匹配
-* 输入：具有 8 个分区的事件中心
-* 输出：具有 32 个分区的事件中心
-
-在此情况下，查询是什么并不重要。 如果输入分区数不等于输出分区数，则拓扑不易并行。
-
-### <a name="not-using-event-hubs-or-blob-storage-as-output"></a>未将事件中心或 Blob 存储用作输出
-* 输入：具有 8 个分区的事件中心
-* 输出：PowerBI
-
-PowerBI 输出当前不支持分区。 因此，此方案不易并行。
-
-### <a name="multi-step-query-with-different-partition-by-values"></a>使用不同 Partition By 值的多步骤查询
-* 输入：具有 8 个分区的事件中心
-* 输出：具有 8 个分区的事件中心
-
-查询：
-
-    WITH Step1 AS (
-    SELECT COUNT(*) AS Count, TollBoothId, PartitionId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1 Partition By TollBoothId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId
-
-正如所见，第二步使用 **TollBoothId** 作为分区键。 此步骤与第一步不同，因此需要执行随机选择。 
-
-前述示例介绍了一些符合（或不符合）易并行拓扑的流分析作业。 如果符合易并行拓扑，则有可能达到最大规模。 对于不适合其中一个配置文件的作业，未来更新中将提供缩放指南。 现在，请使用以下各节中的常规指南。
-
-## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>计算作业的最大流式处理单位数
-流分析作业所能使用的流式处理单位总数取决于为作业定义的查询中的步骤数，以及每一步的分区数。
-
-### <a name="steps-in-a-query"></a>查询中的步骤
-查询可以有一个或多个步骤。 每一步都是由 WITH 关键字定义的子查询。 位于 WITH 关键字外的查询（仅 1 个查询）也计为一步，例如以下查询中的 SELECT 语句：
-
-    WITH Step1 AS (
-        SELECT COUNT(*) AS Count, TollBoothId
-        FROM Input1 Partition By PartitionId
-        GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1
-    GROUP BY TumblingWindow(minute,3), TollBoothId
-
-此查询有两步。
-
-> [!NOTE]
-> 本文后面部分将详细介绍此查询。
->  
-
-### <a name="partition-a-step"></a>对步骤进行分区
-对步骤进行分区需要下列条件：
-
-* 输入源必须进行分区。 
-* 查询的 **SELECT** 语句必须从分区的输入源读取。
-* 步骤中的查询必须有 Partition By 关键字。
-
-对查询进行分区后，需在独立的分区组中处理和聚合输入事件，并为每个组生成输出事件。 如果需要对聚合进行组合，则必须创建另一个不分区的步骤来进行聚合。
-
-### <a name="calculate-the-max-streaming-units-for-a-job"></a>计算作业的最大流式处理单位数
-所有未分区的步骤总共可将每个流分析作业增加到最多 6 个流式处理单元 (SU)。 若要添加 SU，必须对步骤进行分区。 每个分区可以有 6 个 SU。
-
-<table border="1">
-<tr><th>查询</th><th>作业的最大 SU 数</th></td>
-
-<tr><td>
-<ul>
-<li>该查询包含一个步骤。</li>
-<li>该步骤未分区。</li>
-</ul>
-</td>
-<td>6</td></tr>
-
-<tr><td>
-<ul>
-<li>输入数据流被分为 3 个分区。</li>
-<li>该查询包含一个步骤。</li>
-<li>该步骤已分区。</li>
-</ul>
-</td>
-<td>18</td></tr>
-
-<tr><td>
-<ul>
-<li>该查询包含两个步骤。</li>
-<li>这两个步骤都未分区。</li>
-</ul>
-</td>
-<td>6</td></tr>
-
-<tr><td>
-<ul>
-<li>输入数据流被分为 3 个分区。</li>
-<li>该查询包含两个步骤。 输入步骤进行了分区，第二个步骤未分区。</li>
-<li>SELECT 语句从已分区输入中读取数据<strong></strong>。</li>
-</ul>
-</td>
-<td>24（18 个用于已分区步骤 + 6 个用于未分区步骤）</td></tr>
-</table>
-
-### <a name="examples-of-scaling"></a>缩放示例
-
-以下查询计算 3 分钟时段内通过收费站（共 3 个收费亭）的车辆数。 此查询可增加到 6 个 SU。
-
-    SELECT COUNT(*) AS Count, TollBoothId
-    FROM Input1
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-
-若要对查询使用更多 SU，必须对输入数据流和查询进行分区。 由于数据流分区设置为 3，因此可将以下经修改的查询增加到 18 个 SU：
-
-    SELECT COUNT(*) AS Count, TollBoothId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-
-对查询进行分区后，会在独立的分区组中处理和聚合输入事件。 此外，还会为每个组生成输出事件。 在输入数据流中，当“分组方式”字段不是分区键时，执行分区可能会导致某些意外的结果。 例如，在前面的查询中，TollBoothId 字段不是 Input1 的分区键。 因此，可以将 TollBooth #1 中的数据分布到多个分区。
-
-流分析会分开处理每个 Input1 分区。 因此，将在相同的翻转窗口为同一收费亭创建多个关于车辆数的记录。 如果不能更改输入分区键，则可通过添加不分区步骤来解决此问题，如下例所示：
-
-    WITH Step1 AS (
-        SELECT COUNT(*) AS Count, TollBoothId
-        FROM Input1 Partition By PartitionId
-        GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 
-此查询可增加到 24 个 SU。
+在上述查询中，计算每个分区每个收费站的车辆数，然后将所有分区中的计数相加。
 
-> [!NOTE]
-> 若要联接两个流，请务必按创建联接所用列的分区键对流进行分区。 还需确保两个流中的分区数相同。
-> 
-> 
+分区后，对于该步骤的每个分区，最多分配 6 个 SU，每个分区最多有 6 个 SU，因此，每个分区都可以置于其自己的处理节点上。
 
-## <a name="configure-stream-analytics-streaming-units"></a>配置流分析流式处理单元
+> [!Note]
+> 如果无法对查询进行分区，则在多步骤查询中添加额外的 SU 可能无法始终有效地提高吞吐量。 获得性能的一种方法是，使用本地/全局聚合模式来减少初始步骤的数量，如前面的步骤 5 中所述。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在资源列表中，找到要缩放的流分析作业，然后将其打开。
-3. 在作业边栏选项卡的“配置”下，单击“缩放”。
+## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>案例 3 - 在作业中运行大量的独立查询。
+对于某些 ISV 用例，如果在单个作业中处理来自多个租户的数据更具经济效益，则可为每个租户使用单独的输入和输出，你可能最终会在单个作业中运行相当多的（例如 20 个）独立查询。 假设条件是每个此类子查询的负载都相对较小。 在这种情况下，可以按照以下步骤操作。
+1.  在这种情况下，请勿在查询中使用 PARTITION BY
+2.  如果使用事件中心，则将输入分区计数减少到可能的最低值 2。
+3.  使用 6 SU 运行查询。 通过每个子查询的预期负载，尽可能多地添加此类子查询，直到作业达到系统资源上限。 有关发生这种情况时的症状，请参阅[案例 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions)。
+4.  一旦达到以上度量的子查询上限，可开始向新作业添加子查询。 作为独立查询数量的函数运行的作业数应是标准线性的，前提是你没有任何负载偏移。 然后，可以预测你需要多少个 6 SU 作业，作为你想要提供的租户数的函数运行。
+5.  将引用数据联接与此类查询结合使用时，应在使用相同引用数据进行联接之前将输入合并在一起，然后再根据需要拆分事件。 否则，每个引用数据联接会在内存中保留一份引用数据，可能导致不必要的内存使用。
 
-    ![Azure 门户流分析作业配置][img.stream.analytics.preview.portal.settings.scale]
-
-4. 使用滑块设置作业的 SU。 请注意，只能设置特定的 SU。
-
-
-## <a name="monitor-job-performance"></a>监视作业性能
-使用 Azure 门户时，可以跟踪作业的吞吐量：
-
-![Azure 流分析监视作业][img.stream.analytics.monitor.job]
-
-计算工作负荷的预期吞吐量。 如果吞吐量低于预期，则可调整输入分区和查询，并为作业添加 SU。
+> [!Note] 
+> 每个作业中要放置多少租户？
+> 此查询模式通常具有大量子查询，并导致非常大且复杂的拓扑。 作业控制器可能无法处理此类大型拓扑。 根据经验，1 SU 作业应保持在 40 个租户以下，3 SU 和 6 SU 作业则为 60 个租户。 如果即将超出控制器的容量，则不会成功启动作业。
 
 
-## <a name="visualize-stream-analytics-throughput-at-scale-the-raspberry-pi-scenario"></a>大规模可视化流分析吞吐量：Raspberry Pi 方案
+## <a name="an-example-of-stream-analytics-throughput-at-scale"></a>下面举例说明了基于规模的流分析吞吐量
 为了帮助你了解如何缩放流分析作业，我们基于 Raspberry Pi 设备中的输入进行了一项试验。 通过此试验，可以发现输入对多个流式处理单元和分区的吞吐量的影响。
 
 在此方案中，设备将传感器数据（客户端）发送到事件中心。 流分析处理数据，并将警报或统计信息作为输出发送到另一个事件中心。 
@@ -279,12 +94,10 @@ PowerBI 输出当前不支持分区。 因此，此方案不易并行。
 
 以下查询用于在关灯时发送警报：
 
-    SELECT AVG(lght),
-     "LightOff" as AlertText
-    FROM input TIMESTAMP
-    BY devicetime
-     WHERE
-        lght< 0.05 GROUP BY TumblingWindow(second, 1)
+    SELECT AVG(lght), "LightOff" as AlertText
+    FROM input TIMESTAMP BY devicetime 
+    PARTITION BY PartitionID
+    WHERE lght< 0.05 GROUP BY TumblingWindow(second, 1)
 
 ### <a name="measure-throughput"></a>衡量吞吐量
 
@@ -364,5 +177,4 @@ PowerBI 输出当前不支持分区。 因此，此方案不易并行。
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-
 

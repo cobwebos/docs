@@ -16,13 +16,13 @@ ms.workload: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.openlocfilehash: 883e661107dd838f5c381cdef2c7f891b9a9389c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL 数据库中的 JSON 功能入门
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，并将关系数据导出为 JSON 文本。
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
 
 JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)）中。 许多 REST Web 服务返回采用 JSON 文本格式的结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（例如 [Azure 搜索](https://azure.microsoft.com/services/search/)、[Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)）都具有返回或使用 JSON 的 REST 终结点。
 
@@ -33,10 +33,10 @@ Azure SQL 数据库提供以下函数用于处理 JSON 数据：
 
 ![JSON 函数](./media/sql-database-json-features/image_1.png)
 
-对于 JSON 文本，可以使用内置函数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx) 和 [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)，从 JSON 中提取数据，或者验证 JSON 的格式是否正确。 使用 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 函数可以更新 JSON 文本中的值。 对于更高级的查询和分析，使用 [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 函数可将 JSON 对象数组转换成行集。 可对返回的结果集执行任何 SQL 查询。 最后，使用 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 子句可将存储在关系表中的数据设置为 JSON 文本格式。
+对于 JSON 文本，可以使用内置函数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx) 和 [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)，从 JSON 中提取数据，或者验证 JSON 的格式是否正确。 使用 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 函数可以更新 JSON 文本中的值。 对于更高级的查询和分析，[OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 函数可将 JSON 对象数组转换成行集。 可对返回的结果集执行任何 SQL 查询。 最后，使用 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 可将存储在关系表中的数据格式化为 JSON 文本。
 
 ## <a name="formatting-relational-data-in-json-format"></a>将关系数据设置为 JSON 格式
-如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，并将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，并直接在应用程序中使用这种格式。
+如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，然后将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，然后直接在应用程序中使用这种格式。
 
 以下示例使用 FOR JSON 子句，将 Sales.Customer 表中的行格式化为 JSON：
 
@@ -94,7 +94,7 @@ FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 ```
 
-无需单独发送查询来获取 Customer 数据，再提取相关 Orders 列表，而可以通过一个查询来获取全部所需的数据，如以下示例输出中所示：
+只需一个查询，即可获取所有必需数据，无需单独发送查询来获取 Customer 数据，然后再提取相关 Orders 列表，如以下示例输出所示：
 
 ```
 {
@@ -165,16 +165,16 @@ ALTER TABLE Products
         CHECK (ISJSON(Data) > 0)
 ```
 
-如果输入的文本是格式正确的 JSON，ISJSON 函数返回值 1。 在每次插入或更新 JSON 列时，此约束都会验证新文本值是否为格式正确的 JSON。
+如果输入的文本是格式正确的 JSON，ISJSON 函数将返回值 1。 在每次插入或更新 JSON 列时，此约束都会验证新文本值是否为格式正确的 JSON。
 
 ## <a name="transforming-json-into-tabular-format"></a>将 JSON 转换为表格格式
-Azure SQL 数据库还允许将 JSON 集合转换为表格格式，并加载或查询 JSON 数据。
+Azure SQL 数据库还允许将 JSON 集合转换为表格格式，然后加载或查询 JSON 数据。
 
 OPENJSON 是一个表值函数，可分析 JSON 文本、查找 JSON 对象数组、迭代数组的元素，并在输出结果中针对每个数组元素返回一行。
 
 ![JSON 表格](./media/sql-database-json-features/image_2.png)
 
-在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找将作为单元格返回的 JSON 值。
+在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找以单元格形式返回的 JSON 值。
 
 可以将 @orders 变量中的 JSON 数组转换为行集、分析此结果集，或将行插入标准表中：
 
@@ -203,5 +203,5 @@ END
 * [MSDN 文档](https://msdn.microsoft.com/library/dn921897.aspx)
 * [第 9 频道视频](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-若要了解将 JSON 集成到应用程序的各种方案，请参阅[第 9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与用例相符的方案。
+要了解将 JSON 集成到应用程序中的各种方案，请参阅这部第 [9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与应用场合相符的方案。
 

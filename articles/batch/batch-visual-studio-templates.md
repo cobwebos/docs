@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -166,7 +166,7 @@ Split() 实现具有以下项的访问权限：
 * 代表作业的 CloudJob 对象，通过 `_job` 字段。
 * 代表作业管理器任务的 CloudTask 对象，通过 `_jobManagerTask` 字段。
 
-ph x="1" /> 实现不需要直接将任务添加到作业中。 相反地，代码应返回一连串的 CloudTask 对象，并由调用作业拆分器的框架类自动添加到作业中。 通常使用 C# 的迭代器 (`yield return`) 功能实现作业拆分器，因为这可让任务尽快开始运行，而不是等待所有要计算的任务。
+`Split()` 实现不需要直接将任务添加到作业中。 相反地，代码应返回一连串的 CloudTask 对象，并由调用作业拆分器的框架类自动添加到作业中。 通常使用 C# 的迭代器 (`yield return`) 功能实现作业拆分器，因为这可让任务尽快开始运行，而不是等待所有要计算的任务。
 
 **作业拆分器失败**
 
@@ -194,7 +194,7 @@ ph x="1" /> 实现不需要直接将任务添加到作业中。 相反地，代�
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
 | 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
-| 2 |作业管理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但作业管理器无法添加任何额外的诊断或补救信息。 |
+| #N/A |作业管理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但作业管理器无法添加任何额外的诊断或补救信息。 |
 
 在作业管理器任务失败的情况下，某些任务可能仍在错误发生之前就已添加到服务中。 这些任务将正常运行。 请参阅上面的“作业拆分器失败”，获取有关此代码路径的介绍。
 
@@ -372,7 +372,7 @@ Run() 实现具有以下项的访问权限：
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
 | 1 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
-| 2 |任务处理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但任务处理器无法添加任何额外的诊断或补救信息。 |
+| #N/A |任务处理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但任务处理器无法添加任何额外的诊断或补救信息。 |
 
 > [!NOTE]
 > 如果调用的程序使用退出代码 1 和 2 来指出特定失败模式，则使用退出代码 1 和 2 来代表任务处理器错误将造成模棱两可的状况。 可以编辑 Program.cs 文件中的异常案例，将这些任务处理器错误代码更改为可区分的退出代码。
@@ -393,7 +393,7 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-然后通过 TaskProcessor 类中提供的存储帐户，是`_configuration.StorageAccount`属性。
+然后，可以通过 `_configuration.StorageAccount` 属性在 TaskProcessor 类中使用存储帐户。
 
 如果想要使用具有 SAS 的容器 URL，也可以通过作业的通用环境设置传递此 URL，但任务处理器模板目前未内置支持此 URL。
 
@@ -414,7 +414,7 @@ Batch 服务提供一个简单的机制，用于在 [Microsoft.Azure.Batch.JobMa
 例如，若要获取 Batch 帐户的 `BatchClient` 实例，可以环境变量的形式从客户端代码传递 Batch 帐户的 URL 和共享密钥凭据。 同样，若要访问链接到 Batch 帐户的存储帐户，可使用环境变量的形式传递存储帐户名和存储帐户密钥。
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>将参数传递到作业管理器模板
-在许多情况下，最好将每个操作的参数传递到作业管理器任务，以便控制作业拆分进程或配置作业的任务。 为此，可将名为 parameters.json 的 JSON 文件上传为作业管理器任务的资源文件。 参数随后将成为位于`JobSplitter._parameters`作业管理器模板中的字段。
+在许多情况下，最好将每个操作的参数传递到作业管理器任务，以便控制作业拆分进程或配置作业的任务。 为此，可将名为 parameters.json 的 JSON 文件上传为作业管理器任务的资源文件。 然后，参数就可以在作业管理器模板的 `JobSplitter._parameters` 字段中可用。
 
 > [!NOTE]
 > 内置的参数处理程序只支持字符串到字符串的字典。 如果想要以参数值的形式传递复杂 JSON 值，需要以字符串形式传递并在作业拆分器中进行分析，或者修改框架的 `Configuration.GetJobParameters` 方法。

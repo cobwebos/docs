@@ -16,13 +16,13 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>管理 Azure 的 HPC Pack 群集中计算节点的数量和可用性
-如果在 Azure VM 中创建了一个 HPC Pack 2012 R2 群集，可能希望有轻松添加、删除、启动（预配）或停止（取消预配）群集中一些计算节点 VM 的方法。 若要执行这些任务，请运行头节点 VM 中安装的 Azure PowerShell 脚本。 这些脚本可帮助你控制 HPC Pack 群集资源的数量和可用性，以便可以控制成本。
+如果在 Azure VM 中创建了一个 HPC Pack 2012 R2 群集，你可能希望有轻松添加、删除、启动（设置）或停止（取消设置）群集中一些计算节点 VM 的方法。 若要执行这些任务，请运行头节点 VM 中安装的 Azure PowerShell 脚本。 这些脚本可帮助你控制 HPC Pack 群集资源的数量和可用性，以便可以控制成本。
 
 > [!IMPORTANT] 
 > 本文仅适用于 Azure 中使用经典部署模型创建的 HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/11/2017
     
     Import-AzurePublishSettingsFile –PublishSettingsFile <publish settings file>
     ```
-  * **在头节点上配置 Azure 管理证书**。 如果有 .cer 文件，将其导入 CurrentUser\My certificate store，然后为 Azure 环境（AzureCloud 或 AzureChinaCloud）运行以下 Azure PowerShell cmdlet：
+  * **在头节点上配置 Azure 管理证书**。 如果有 .cer 文件，将其导入至 CurrentUser\My certificate store，然后为 Azure 环境（AzureCloud 或 AzureChinaCloud）运行以下 Azure PowerShell cmdlet：
     
     ```PowerShell
     Set-AzureSubscription -SubscriptionName <Sub Name> -SubscriptionId <Sub ID> -Certificate (Get-Item Cert:\CurrentUser\My\<Cert Thrumbprint>) -Environment <AzureCloud | AzureChinaCloud>

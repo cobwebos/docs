@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/18/2016
 ms.author: alkohli
 ms.openlocfilehash: 230a652ceca8b4643d1984d81383c6628b8e1f5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
 ## <a name="overview"></a>概述
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
      > 密码在注册之前收集，但仅在成功注册设备后应用。 如果无法应用密码，系统会提示再次提供密码，直到收集所需的密码（满足复杂性要求）。
      > 
      > 
-4. 注册设备：最后一步是使用在 Microsoft Azure 中运行的 StorSimple Manager 服务注册设备。 注册需要你[获取服务注册密钥](storsimple-manage-service.md#get-the-service-registration-key)从 Azure 经典门户中，并在安装向导中提供它。 成功注册设备后，将向你提供一个服务数据加密密钥。 请确保将此加密密钥保存在安全位置，因为在服务中注册所有后续设备时都将用到它。
+4. 注册设备：最后一步是使用在 Microsoft Azure 中运行的 StorSimple Manager 服务注册设备。 注册需要你从 Azure 经典门户[获取服务注册密钥](storsimple-manage-service.md#get-the-service-registration-key)，并在设置向导中提供此密钥。 成功注册设备后，将向你提供一个服务数据加密密钥。 请确保将此加密密钥保存在安全位置，因为在服务中注册所有后续设备时都将用到它。
 
 ## <a name="common-errors-during-device-deployment"></a>部署设备期间的常见错误
 下表列出了执行以下操作时可能遇到的常见错误：
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：此命令只能在主动控制器上运行。 |在被动控制器上执行配置。 |从主动控制器运行此命令。 有关详细信息，请参阅[标识设备上的主动控制器](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
-| 2 |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
+| #N/A |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
 | 3 |Invoke-HcsSetupWizard：有一个 IP 地址与网络上的另一个系统冲突（异常来自 HRESULT：0x80070263）。 |为 DATA 0 提供的 IP 已被另一个系统使用。 |提供一个未使用的新 IP。 |
 | 4 |Invoke-HcsSetupWizard：群集资源失败。 （异常来自 HRESULT：0x800713AE）。 |VIP 重复。 提供的 IP 已在使用中。 |提供一个未使用的新 IP。 |
 | 5 |Invoke-HcsSetupWizard：IPv4 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅 [Ipv4 寻址][1]。 |
@@ -85,7 +85,7 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式：http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
-| 2 |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，需要[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。</li></ol> |
+| #N/A |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，需要[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。</li></ol> |
 | 3 |Invoke-HcsSetupWizard：RPC 调用失败（异常来自 HRESULT：0x800706be） |群集已关闭。 |[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)以确保群集已启动。 |
 | 4 |Invoke-HcsSetupWizard：找不到群集资源（异常来自 HRESULT：0x8007138f） |找不到群集资源。 安装不正确时可能出现这个错误。 |可能需要将设备重置为出厂默认设置。 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md) 以创建群集资源。 |
 | 5 |Invoke-HcsSetupWizard：群集资源无法联机（异常来自 HRESULT：0x8007138c） |群集资源未联机。 |[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)以了解后续步骤。 |
@@ -109,7 +109,7 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 错误消息 | 建议的操作 |
 | --- | --- | --- |
 | 1 |密码超过最大长度。 |使用满足以下要求的密码：<ul><li>设备管理员密码必须介于 8 到 15 个字符之间。</li><li>StorSimple Snapshot Manager 密码长度必须为 14 或 15 个字符。</li></ul> |
-| 2 |密码不符合所需的长度。 |使用满足以下要求的密码：<ul><li>设备管理员密码必须介于 8 到 15 个字符之间。</li><li>StorSimple Snapshot Manager 密码长度必须为 14 或 15 个字符。</lu></ul> |
+| #N/A |密码不符合所需的长度。 |使用满足以下要求的密码：<ul><li>设备管理员密码必须介于 8 到 15 个字符之间。</li><li>StorSimple Snapshot Manager 密码长度必须为 14 或 15 个字符。</lu></ul> |
 | 3 |密码必须包含小写字符。 |密码必须包含以下 4 种字符类型中的 3 种：小写字符、大写字符、数字字符和特殊字符。 请确保密码满足这些要求。 |
 | 4 |密码必须包含数字字符。 |密码必须包含以下 4 种字符类型中的 3 种：小写字符、大写字符、数字字符和特殊字符。 请确保密码满足这些要求。 |
 | 5 |密码必须包含特殊字符。 |密码必须包含以下 4 种字符类型中的 3 种：小写字符、大写字符、数字字符和特殊字符。 请确保密码满足这些要求。 |
@@ -136,7 +136,7 @@ ms.lasthandoff: 07/11/2017
 | 否。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |错误 350027：无法使用 StorSimple Manager 注册设备。 | |等候几分钟时间，并重试操作。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 |
-| 2 |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-manage-service.md#get-the-service-registration-key)。 |
+| #N/A |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-manage-service.md#get-the-service-registration-key)。 |
 | 3 |错误 350063：已通过对 StorSimple Manager 服务的身份认证，但注册失败。 请稍后重试操作。 |此错误表示已通过使用 ACS 的身份验证，但对服务的注册调用失败。 这可能是偶发性网络故障的结果。 |如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 |
 | 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，然后重试该操作。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 |
 | 5 |错误 350031：设备已注册。 | |无需执行任何操作。 |
@@ -184,8 +184,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 如果在 StorSimple 设备上运行 Update 1，则还可以使用以下诊断 cmdlet。
 
 * `Sync-HcsTime`：使用此 cmdlet 显示设备时间并强制与 NTP 服务器进行时间同步。
-* 
-            `Enable-HcsPing` 和 `Disable-HcsPing`：使用这些 cmdlet 允许主机 ping  StorSimple 设备上的网络接口。 默认情况下，StorSimple 网络接口不响应 ping 请求。
+* `Enable-HcsPing` 和 `Disable-HcsPing`：使用这些 cmdlet 允许主机 ping  StorSimple 设备上的网络接口。 默认情况下，StorSimple 网络接口不响应 ping 请求。
 * `Trace-HcsRoute`：将此 cmdlet 用作路由跟踪工具。 它在一段时间内在到达最终目的地的路上向每个路由器发送数据包，并基于从每个跃点返回的数据包来计算结果。 由于 `Trace-HcsRoute` 显示了任何给定路由器或链接的数据包丢失程度，因此可以准确指出哪些路由器或链接可能导致网络问题。 
 * `Get-HcsRoutingTable`：使用此 cmdlet 显示本地 IP 路由表。
 
@@ -281,7 +280,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
      HCSNODE0      outlook.com     132.245.92.194
 
 ## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>使用 Test-HcsmConnection cmdlet 进行故障排除
-对已连接到 StorSimple Manager 服务并且已注册该服务的设备使用 `Test-HcsmConnection` cmdlet。 此 cmdlet 可帮助你验证已注册的设备与相应的 StorSimple Manager 服务之间的连接。 可以在 Windows PowerShell for StorSimple 上运行此命令。 
+对已连接到 StorSimple Manager 服务并且已注册该服务的设备使用 `Test-HcsmConnection` cmdlet。 此 cmdlet 可帮助你验证注册设备与相应 StorSimple Manager 服务之间的连接。 可以在 Windows PowerShell for StorSimple 上运行此命令。 
 
 ### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>若要运行 Test-HcsmConnection cmdlet
 1. 请确保设备已注册。
@@ -380,7 +379,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 该设备无法使用当前的 Web 代理配置进行连接。 这可能是 Web 代理配置或网络连接的问题。 在这种情况下，应确保 Web 代理设置正确，并且 Web 代理服务器处于联机状态且可访问。 
 
 ## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>使用 Sync-HcsTime cmdlet 进行故障排除
-使用此 cmdlet 显示设备时间。 如果设备时间与 NTP 服务器有时差，则可以使用此 cmdlet 来强制与 NTP 服务器同步时间。 如果设备和 NTP 服务器之间的时差大于 5 分钟，会看到一条警告。 如果时差超过 15 分钟，则设备将脱机。 仍然可以使用此 cmdlet 强制执行时间同步。 但是，如果时差超过 15 小时，则无法强制同步时间，并且会显示错误消息。
+使用此 cmdlet 显示设备时间。 如果设备时间与 NTP 服务器有时差，则可以使用此 cmdlet 来强制与 NTP 服务器同步时间。 如果设备和 NTP 服务器之间的时差大于 5 分钟，会看到一条警告。 如果时差超过 15 分钟，则设备将脱机。 仍然可以使用此 cmdlet 强制执行时间同步。但是，如果时差超过 15 小时，则无法强制同步时间，并且会显示错误消息。
 
 **示例输出 – 使用 Sync-HcsTime 的强制时间同步**
 

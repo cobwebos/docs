@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 02/07/2017
 ms.author: sashan;carlrab
 ms.openlocfilehash: 6ed02ead07c50b9a49e8868756b6f957d7b49b99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
 
@@ -39,7 +39,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 请参阅[如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)。
 
 ## <a name="how-does-the-usage-of-sql-database-show-up-on-my-bill"></a>SQL 数据库的使用情况如何体现在我的帐单上？
-SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单一数据库的性能级别或每一弹性池的 eDTU。 实际使用量是每小时按比例计算的，因此帐单可能会显示一小时的分数。 例如，如果某个数据库在一个月内存在了 12 小时，则帐单会显示 0.5 天的使用量。 服务层 + 性能级别和每个池的 eDTU 数在帐单中进行了划分，以便查看单个月份中使用数据库的天数。
+SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单一数据库的性能级别或每一弹性池的 eDTU。 实际使用量是每小时按比例计算的，因此帐单可能会显示一小时的分数。 例如，如果某个数据库在一个月内存在了 12 小时，则帐单会显示 0.5 天的使用量。 此外，在帐单中还会列出每个池的服务层 + 性能级别和 eDTU 数，以便更容易查看一个月内每个用户所用的数据库天数。
 
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>如果单一数据库活动的时间少于一小时，或使用更高服务层的时间少于一小时，会发生什么情况？
 需要支付使用最高服务层数据库存在的时数 + 在该小时适用的性能级别，无论使用方式或数据库的活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。 
@@ -75,14 +75,14 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>如何在我的帐单上体现弹性池中活动异地复制的使用？
 与单一数据库不同的是，对弹性数据库使用[活动异地复制](sql-database-geo-replication-overview.md)对计费没有直接的影响。  只需支付对每个池（主池和辅助池）预配的 eDTU 费用
 
-## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>使用审核功能会对帐单产生什么影响？
+## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>使用审核功能将对我的帐单产生什么影响？
 审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准、高级和高级 RS 数据库均提供此功能。 但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储中的表和队列费率根据审核日志的大小来应用。
 
 ## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>如何找到单一数据库和弹性池的正确服务层和性能级别？
 有几个工具可供使用。 
 
 * 对于本地数据库，请使用 [DTU 选型顾问](http://dtucalculator.azurewebsites.net/)，它会建议所需的数据库和 DTU，并为弹性池评估多个数据库。
-* 如果单一数据库可因池受益，并且 Azure 的智能引擎发现担保数据库的历史使用模式时，建议使用弹性池。 请参阅[使用 Azure 门户监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。 有关如何自行进行数学计算的详细信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)
+* 如果单一数据库可因池受益，当 Azure 的智能引擎发现了担保的历史使用模式时，将建议使用弹性池。 请参阅[使用 Azure 门户监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。 有关如何自行进行数学计算的详细信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)
 * 若要确定是否需要向上或向下调整单一数据库，请参阅[单一数据库的性能指南](sql-database-performance-guidance.md)。
 
 ## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database"></a>可以按何种频率更改单一数据库的服务层或性能级别？
@@ -95,7 +95,7 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 更改数据库的服务层和移入和移出池需要在平台上以后台操作的形式复制数据库。 更改服务层可能需要几分钟至几小时的时间，具体取决于数据库的大小。 在这两种情况下，数据库在移动期间保持联机和可用。 有关更改单一数据库的详细信息，请参阅[更改数据库的服务层](sql-database-service-tiers.md)。 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>何时应该使用单一数据库或弹性数据库？
-一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。 购买单独的数据库并超量设置以满足每个数据库的可变和峰值需求通常不够经济高效。 使用池可以管理池的整体性能，数据库会自动扩展和收缩。 如果 Azure 的智能引擎发现了担保数据库的使用模式，则建议使用池。 有关详细信息，请参阅[弹性池指南](sql-database-elastic-pool.md)。
+一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。 购买单独的数据库并超量设置以满足每个数据库的可变和峰值需求通常不够经济高效。 使用池可以管理池的整体性能，数据库会自动扩展和收缩。 如果 Azure 的智能引擎发现了担保的使用模式，将为数据库建议池。 有关详细信息，请参阅[弹性池指南](sql-database-elastic-pool.md)。
 
 ## <a name="what-does-it-mean-to-have-up-to-200-of-your-maximum-provisioned-database-storage-for-backup-storage"></a>具有高达备份存储的最大已设置数据库存储两倍的容量是什么意思？
 备份存储是与用于[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)和[异地还原](sql-database-recovery-using-backups.md#geo-restore)的自动数据库备份关联的存储。 Microsoft Azure SQL 数据库提供了高达备份存储的最大已设置数据库存储两倍的容量，不需要支付额外的成本。 例如，如果有一个标准数据库实例并且设置的数据库大小为 250 GB，则会向你提供 500 GB 的备份存储并且不额外收费。 如果数据库超过提供的备份存储，则可以选择与 Azure 支持联系来缩短保留期，或针对按标准读取访问地域冗余存储 (RA-GRS) 费率计费的额外备份存储支付费用。 有关 RA-GRS 计费的更多信息，请参阅“存储定价详细信息”。

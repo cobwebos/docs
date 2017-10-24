@@ -1,6 +1,6 @@
 ---
 title: "使用本地编码器实时传送视频流以创建多比特率流 - Azure | Microsoft 文档"
-description: "本主题介绍如何设置接收来自本地编码器的多比特率实时流的频道。 然后，该流可使用以下自适应流式传输协议之一，通过一个或多个流式传输终结点传送给客户端播放应用程序：HLS、平滑流、DASH。"
+description: "本主题介绍如何设置接收来自本地编码器的多比特率实时流的频道。 然后，该流可使用以下自适应流式传输协议之一，通过一个或多个流式传输终结点传送给客户端播放应用程序：HLS、平滑流式处理、DASH。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
 ms.openlocfilehash: 3f6569d32708c42247e0ffec70389f2e0f07389e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>使用本地编码器实时传送视频流以创建多比特率流
 ## <a name="overview"></a>概述
 在 Azure 媒体服务中，*频道*表示用于处理实时传送视频流内容的管道。 频道通过以下两种方式之一接收实时输入流：
 
-* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）流发送到无法通过媒体服务进行实时编码的频道。 引入流将通过频道，而不会进行任何进一步处理。 这种方法称为*直通*。 可以使用以下输出多比特率平滑流式处理的实时编码器：Media Excel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器将 RTMP 作为输出：Adobe Flash Media Live Encoder、Telestream Wirecast、Haivision、Teradek 和 TriCaster。 实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 媒体服务会将流传送给请求它的客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）流发送到无法通过媒体服务进行实时编码的频道。 引入流将通过频道，而不会进行任何进一步处理。 这种方法称为*直通*。 可以使用以下将多比特率平滑流式处理作为输出的实时编码器：Media Excel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器将 RTMP 作为输出：Adobe Flash Media Live Encoder、Telestream Wirecast、Haivision、Teradek 和 TriCaster。 实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 媒体服务会将流传送给请求它的客户。
 
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/29/2017
 
 ![实时工作流][live-overview]
 
-## <a id="scenario"></a>常见的实时流处理方案
+## <a id="scenario"></a>常见实时传送视频流方案
 以下步骤介绍创建常见的实时传送视频流应用程序时涉及的任务。
 
 1. 将视频摄像机连接到计算机。 启动并配置输出多比特率 RTMP 或分段 MP4（平滑流式处理）流的本地实时编码器。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/29/2017
 10. 删除节目（并选择性地删除资产）。     
 
 ## <a id="channel"></a>频道及其相关组件的说明
-### <a id="channel_input"></a>频道输入（引入）配置
+### <a id="channel_input"></a>通道输入（引入）配置
 #### <a id="ingest_protocols"></a>引入流式传输协议
 媒体服务通过使用多比特率分片 MP4 和多比特率 RTMP 作为流式处理协议支持引入实时源。 选择了 RTMP 引入流式传输协议时，会为频道创建两个引入（输入）终结点：
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="channel-preview"></a>频道预览
 #### <a name="preview-urls"></a>预览 URL
-通道还提供了一个预览终结点（预览 URL），可使用它在进一步处理和传递流之前预览流并对其进行验证。
+频道还提供了一个预览终结点（预览 URL），可以使用它在进一步处理和传递流之前预览流并对其进行验证。
 
 可以在创建频道时获取预览 URL。 若要获取该 URL，频道不一定要处于“正在运行”状态。 在频道开始引入数据后，可以预览流。
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 08/29/2017
 * 每次重新配置实时编码器时，可调用频道上的**重置**方法。 在重置频道之前，必须停止节目。 在重置频道后，重新启动节目。
 * 只有当频道处于“正在运行”状态且频道中的所有节目都已停止时，才能停止频道。
 * 默认情况下，只能向媒体服务帐户添加 5 个频道。 有关详细信息，请参阅[配额和限制](media-services-quotas-and-limitations.md)。
-* 仅在您的通道正在时，会向你计费**运行**状态。 有关详细信息，请参阅[频道状态和计费](media-services-live-streaming-with-onprem-encoders.md#states)部分。
+* 仅当频道处于“正在运行”状态时才会向你收费。 有关详细信息，请参阅[频道状态和计费](media-services-live-streaming-with-onprem-encoders.md#states)部分。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

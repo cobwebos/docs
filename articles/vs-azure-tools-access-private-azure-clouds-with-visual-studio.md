@@ -15,13 +15,13 @@ ms.workload: multiple
 ms.date: 03/19/2017
 ms.author: kraigb
 ms.openlocfilehash: b2578c837732ab05d538e9b896ed3a3035075a70
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>使用 Visual Studio 访问私有 Azure 云
-默认情况下，Visual Studio 支持公有 Azure 云 REST 终结点。 在本主题中，可以学习如何使用私有云证书访问 Visual Studio 中的私有云并与之交互。
+默认情况下，Visual Studio 支持公有 Azure 云 REST 终结点。 在本主题中，介绍如何使用私有云证书访问 Visual Studio 中的私有云并与之交互。
 
 ## <a name="to-access-a-private-azure-cloud-in-visual-studio"></a>在 Visual Studio 中访问私有 Azure 云
 1. 在私有云的 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)中下载发布设置文件，或联系管理员获取发布设置文件。 在 Azure 的公共版中，用于下载的链接是 [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/)。 （下载的文件应使用 `.publishsettings` 扩展名）
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/29/2017
 
     ![“导入 Microsoft Azure 订阅”对话框中的“浏览”按钮](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/browse-button.png)
 
-1. 在**打开**对话框中，浏览到保存发布设置文件的目录选择文件，然后选择**打开**。
+1. 在“打开”对话框中，浏览到保存发布设置文件的目录，选择文件，然后选择“打开”。
 
     ![选择发布设置文件](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/select-publish-settings-file.png)
 

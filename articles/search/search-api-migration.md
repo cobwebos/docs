@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: brjohnst
 ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>升级到 Azure 搜索服务 REST API 版本 2016-09-01
 如果使用的是 [Azure 搜索服务 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 的版本 2015-02-28 或 2015-02-28-Preview，本文有助于升级应用程序，以便使用接下来正式发布的 API 版本：2016-09-01。
@@ -36,7 +36,7 @@ REST API 的版本 2016-09-01 包含某些针对早期版本进行的更改。 �
 * [自定义分析器](https://aka.ms/customanalyzers)，使你能够控制将文本转换为可索引且可搜索标记的过程。
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)索引器，使你能够轻松地根据计划或需求将数据从 Azure 存储导入 Azure 搜索。
 * [字段映射](search-indexer-field-mappings.md)，使你能够自定义索引器将数据导入 Azure 搜索的方式。
-* Etag，允许您以并发安全的方式更新的索引、 索引器和数据源的定义。 
+* ETag，使你能够以并发安全的方式更新索引、索引器和数据源的定义。 
 
 <a name="UpgradeSteps"></a>
 
@@ -64,7 +64,7 @@ REST API 的版本 2016-09-01 包含某些针对早期版本进行的更改。 �
 ## <a name="conclusion"></a>结束语
 如果需要有关使用 Azure 搜索服务 REST API 的更多详细信息，请参阅 MSDN 上最近更新的 [API 参考](https://msdn.microsoft.com/library/azure/dn798935.aspx)。
 
-有关 Azure 搜索，我们欢迎你的反馈。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)或 [StackOverflow](http://stackoverflow.com/) 向我们寻求帮助。 如果要在 StackOverflow 上询问有关 Azure 搜索的问题，请确保使用 `azure-search` 标记问题。
+我们欢迎你对 Azure 搜索提出反馈。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)或 [StackOverflow](http://stackoverflow.com/) 向我们寻求帮助。 如果要在 StackOverflow 上询问有关 Azure 搜索的问题，请确保使用 `azure-search` 标记问题。
 
 感谢使用 Azure 搜索！
 

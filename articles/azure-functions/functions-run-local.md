@@ -1,5 +1,5 @@
 ---
-title: "在本地开发并运行 Azure Functions | Microsoft Docs"
+title: "在本地开发并运行 Azure Functions | Microsoft 文档"
 description: "了解如何在本地计算机上对 Azure 函数进行编码和测试，然后在 Azure Functions 中运行。"
 services: functions
 documentationcenter: na
@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: glenga
+ms.openlocfilehash: b6ab081311822abd9c0a24b4cc241291bf56af68
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 38f6f5ebe0c53bc4314fa11f0f8d4f00af6086dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -49,7 +48,7 @@ npm install -g azure-functions-core-tools
 >[!IMPORTANT]   
 > 在安装 Azure Functions Core Tools 之前，请[安装 .NET Core 2.0](https://www.microsoft.com/net/core)。  
 >
-> Azure Functions 运行时 2.0 以预览版提供，目前不一定支持所有的 Azure Functions 功能。 有关详细信息，请参阅 [Azure Functions 运行时 2.0 已知问题](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)。 
+> Azure Functions 运行时 2.0 处于预览版阶段，目前 Azure Functions 的全部功能并非都可受到支持。 有关详细信息，请参阅 [Azure Functions 运行时 2.0 已知问题](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)。 
 
  使用以下命令安装 2.0 版工具：
 
@@ -161,6 +160,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
     ```
     这两个命令都要求首先登录到 Azure。
 
+<a name="create-func"></a>
 ## <a name="create-a-function"></a>创建函数
 
 若要创建函数，请运行以下命令：
@@ -187,7 +187,7 @@ func new --language JavaScript --template HttpTrigger --name MyHttpTrigger
 ```
 func new --language JavaScript --template QueueTrigger --name QueueTriggerJS
 ```
-
+<a name="start"></a>
 ## <a name="run-functions-locally"></a>在本地运行函数
 
 若要运行 Functions 项目，请运行 Functions 主机。 主机为项目中的所有函数启用触发器：
@@ -237,7 +237,60 @@ func host start --debug vscode
 
 ### <a name="passing-test-data-to-a-function"></a>将测试数据传递给函数
 
-也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”选项卡运行函数。 此命令启动整个 Functions 主机。
+若要在本地测试函数，请[启动 Functions 主机](#start)，并在本地服务器上使用 HTTP 请求调用终结点。 你调用的终结点要取决于函数的类型。 
+
+>[!NOTE]  
+> 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下，在基于 Linux 的系统上提供 cURL 工具。 在 Windows 上，必须先下载并安装 [cURL 工具](https://curl.haxx.se/)。
+
+有关测试函数的更多常规信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。
+
+#### <a name="http-and-webhook-triggered-functions"></a>HTTP 和 webhook 触发的函数
+
+调用以下终结点，以在本地运行 HTTP 和 webhook 触发的函数：
+
+    http://localhost:{port}/api/{function_name}
+
+请确保使用相同的服务器名称和 Functions 主机正在侦听的端口。 在启动 Function 主机时所生成的输出中可以看到该信息。 可以使用触发器所支持的任何 HTTP 方法来调用此 URL。 
+
+以下 cURL 命令使用查询字符串中传递的 name 参数从 GET 请求触发 `MyHttpTrigger` quickstart 函数。 
+
+```
+curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
+```
+下面的示例是在请求主体中传递 name 的 POST 请求中调用的相同函数：
+
+```
+curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
+```
+
+请注意，可以从在查询字符串中传递数据的浏览器发出 GET 请求。 对于所有其他 HTTP 方法，必须使用 cURL、Fiddler、Postman 或类似的 HTTP 测试工具。  
+
+#### <a name="non-http-triggered-functions"></a>非 HTTP 触发的函数
+对于 HTTP 触发器和 webhook 以外的所有类型函数，你可以通过调用管理终结点在本地测试函数。 在本地服务器上调用此终结点会触发该函数。 可以选择将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。  
+
+调用以下管理员终结点，以使用 HTTP POST 请求来触发非 HTTP 函数：
+
+    http://localhost:{port}/admin/functions/{function_name}
+
+尽管可以将测试数据传递给函数的管理员终结点，但必须在 POST 请求消息的正文中提供数据。 消息正文需要具有以下 JSON 格式：
+
+```JSON
+{
+    "input": "<trigger_input>"
+}
+```` 
+`<trigger_input>` 值包含函数所需格式的数据。 下面的 cURL 示例是指向 `QueueTriggerJS` 函数的 POST。 在这种情况下，输入是一个字符串，等同于期望在队列中找到的消息。      
+
+```
+curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
+```
+
+#### <a name="using-the-func-run-command-in-version-1x"></a>在版本 1.x 中使用 `func run` 命令
+
+>[!IMPORTANT]  
+> 该工具的 2.x 版本不支持 `func run` 命令。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](functions-versions.md)。
+
+也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”选项卡运行函数。 
 
 `func run` 支持以下选项：
 
@@ -292,4 +345,3 @@ Azure Functions Core Tools 是[开源工具且托管在 GitHub 上](https://gith
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure 门户]: https://portal.azure.com 
-

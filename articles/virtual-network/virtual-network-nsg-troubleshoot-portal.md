@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户排查网络安全组问题
 > [!div class="op_single_selector"]
@@ -121,8 +121,7 @@ ms.lasthandoff: 07/11/2017
     请注意上图中的以下部分：
    
    * **范围：**设置为选定的 NSG。
-   * 
-            **虚拟机：** 向某个子网应用某个 NSG 时，会向附加到与该子网连接的所有 VM 的所有网络接口应用该 NSG。 此列表显示此 NSG 应用到的所有 VM。 可以从列表中选择任一 VM。
+   * **虚拟机：**向某个子网应用某个 NSG 时，会向附加到与该子网连接的所有 VM 的所有网络接口应用该 NSG。 此列表显示此 NSG 应用到的所有 VM。 可以从列表中选择任一 VM。
      
      > [!NOTE]
      > 如果只向空子网应用了 NSG，则不会列出 VM。 如果将 NSG 应用到不与 VM 相关联的 NIC，也不会列出这些 NIC。 

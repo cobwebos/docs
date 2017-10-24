@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
 本页提供适用于 Cisco IOS XE 和 Juniper MX 系列路由器的接口与路由配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。 
 
 > [!IMPORTANT]
-> 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便指定符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 不提供支持。 有关支持问题，必须与设备供应商联系。
+> 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便指定符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 将不提供支持。 有关支持问题，必须与设备供应商联系。
 > 
 > 
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 07/11/2017
      ip address <IPv4_Address><Subnet_Mask>
 
 ### <a name="2-setting-up-ebgp-sessions"></a>2.设置 eBGP 会话
-必须针对每个对等互连设置与 Microsoft 的 BGP 会话。 以下示例可让你设置与 Microsoft 的 BGP 会话。 如果对子接口使用的 IPv4 地址是 a.b.c.d，则 BGP 邻居 (Microsoft) 的 IP 地址将是 a.b.c.d+1。 BGP 邻居的 IPv4 地址的最后一个八位字节将始终是偶数。
+必须针对每个对等互连设置与 Microsoft 的 BGP 会话。 借助以下示例，可设置与 Microsoft 的 BGP 会话。 如果对子接口使用的 IPv4 地址是 a.b.c.d，则 BGP 邻居 (Microsoft) 的 IP 地址将是 a.b.c.d+1。 BGP 邻居的 IPv4 地址的最后一个八位字节将始终是偶数。
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -139,7 +139,7 @@ ms.lasthandoff: 07/11/2017
     }                           
 
 ### <a name="2-setting-up-ebgp-sessions"></a>2.设置 eBGP 会话
-必须针对每个对等互连设置与 Microsoft 的 BGP 会话。 以下示例可让你设置与 Microsoft 的 BGP 会话。 如果对子接口使用的 IPv4 地址是 a.b.c.d，则 BGP 邻居 (Microsoft) 的 IP 地址将是 a.b.c.d+1。 BGP 邻居的 IPv4 地址的最后一个八位字节将始终是偶数。
+必须针对每个对等互连设置与 Microsoft 的 BGP 会话。 借助以下示例，可设置与 Microsoft 的 BGP 会话。 如果对子接口使用的 IPv4 地址是 a.b.c.d，则 BGP 邻居 (Microsoft) 的 IP 地址将是 a.b.c.d+1。 BGP 邻居的 IPv4 地址的最后一个八位字节将始终是偶数。
 
     routing-options {
         autonomous-system <Customer_ASN>;

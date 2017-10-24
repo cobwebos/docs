@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例使用 Java 编写。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
@@ -158,7 +158,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
-可以使用覆盖一些电子邮件属性**设置*属性** * 或追加使用**添加*属性** *。
+可使用 set 属性替代一些电子邮件属性**，或使用 add 属性追加一些电子邮件属性**。
 
 例如，若要指定 **ReplyTo** 地址，请使用以下代码：
 

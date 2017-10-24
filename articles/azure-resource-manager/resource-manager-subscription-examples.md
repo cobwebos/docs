@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c75d95ed554a78a02e5469915c21491e65edd8c2
-ms.openlocfilehash: 14ec59087b0aede76a18034f5aa93cb6ecd67a7e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/25/2017
-
+ms.openlocfilehash: 6e8335b9c2f3609bf0c48c563205ffaee8575b20
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>实施 Azure 企业基架的示例
 本主题通过示例介绍企业如何实施 [Azure 企业基架](resource-manager-subscription-governance.md)的建议事项。 其中使用一家虚构公司 Contoso 来演示常见方案的最佳实践。
@@ -39,7 +38,7 @@ Contoso 是一家跨国公司，为各行业的客户提供供应链解决方案
 Contoso 需要构建业务线应用和面向客户的应用。 该公司决定在 Azure 上运行这些应用。 Dave 阅读了[出于合规目的监管订阅](resource-manager-subscription-governance.md)主题，现已准备好实施其中的建议。
 
 ## <a name="scenario-1-line-of-business-application"></a>方案 1：业务线应用程序
-Contoso 正在构建将由世界各地的开发人员使用的源代码管理系统 (BitBucket)。  该应用程序使用基础结构即服务 (IaaS) 来托管软件，由 Web 服务器和一个数据库服务器组成。 开发人员需要访问其开发环境中的服务器，但不需要访问 Azure 中的服务器。 Contoso ETS 希望应用程序所有者和团队能够管理该应用程序。 该应用程序只能在 Contoso 的企业网络中使用。 Dave 需要为此应用程序设置订阅。 该订阅将来还要托管其他与开发人员相关的软件。  
+Contoso 正在构建由世界各地的开发人员使用的源代码管理系统 (BitBucket)。  该应用程序使用基础结构即服务 (IaaS) 来托管软件，由 Web 服务器和一个数据库服务器组成。 开发人员需要访问其开发环境中的服务器，但不需要访问 Azure 中的服务器。 Contoso ETS 希望应用程序所有者和团队能够管理该应用程序。 该应用程序只能在 Contoso 的企业网络中使用。 Dave 需要为此应用程序设置订阅。 该订阅将来还要托管其他与开发人员相关的软件。  
 
 ### <a name="naming-standards--resource-groups"></a>命名标准和资源组
 Dave 需要创建一个订阅，用于支持所有业务单位常用的开发人员工具。 他需要为订阅和资源组（用于应用程序和网络）创建有意义的名称。 他创建了以下订阅和资源组：
@@ -47,8 +46,8 @@ Dave 需要创建一个订阅，用于支持所有业务单位常用的开发人
 | 项目 | 名称 | 说明 |
 | --- | --- | --- |
 | 订阅 |Contoso ETS DeveloperTools Production |支持常用的开发人员工具 |
-| 资源组 |rgBitBucket |包含应用程序 Web 服务器和数据库服务器 |
-| 资源组 |rgCoreNetworks |包含虚拟网络和站点到站点网关连接 |
+| 资源组 |bitbucket-prod-rg |包含应用程序 Web 服务器和数据库服务器 |
+| 资源组 |corenetworks-prod-rg |包含虚拟网络和站点到站点网关连接 |
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 创建订阅后，Dave 想要确保相应的团队和应用程序所有者可以访问其资源。 Dave 认识到每个团队都有不同的要求。 他利用从 Contoso 本地 Active Directory (AD) 同步到 Azure Active Directory 的组，为团队提供适当的访问级别。
@@ -57,9 +56,9 @@ Dave 为订阅分配了以下角色：
 
 | 角色 | 已分配到 | 说明 |
 | --- | --- | --- |
-| [所有者](../active-directory/role-based-access-built-in-roles.md#owner) |Contoso AD 中的托管 ID |此 ID 是通过 Contoso 的标识管理工具，配合适时使用 (JIT) 访问权限控制的，可确保订阅所有者的访问完全受到审核。 |
-| [安全经理](../active-directory/role-based-access-built-in-roles.md#security-manager) |安全与风险管理部门 |此角色允许用户查看 Azure 安全中心及资源状态。 |
-| [网络参与者](../active-directory/role-based-access-built-in-roles.md#network-contributor) |网络团队 |此角色允许 Contoso 的网络团队管理站点到站点 VPN 和虚拟网络。 |
+| [所有者](../active-directory/role-based-access-built-in-roles.md#owner) |Contoso AD 中的托管 ID |此 ID 是通过 Contoso 的标识管理工具，配合适时使用 (JIT) 访问权限控制的，可确保订阅所有者的访问完全受到审核 |
+| [安全经理](../active-directory/role-based-access-built-in-roles.md#security-manager) |安全与风险管理部门 |此角色允许用户查看 Azure 安全中心及资源状态 |
+| [网络参与者](../active-directory/role-based-access-built-in-roles.md#network-contributor) |网络团队 |此角色允许 Contoso 的网络团队管理站点到站点 VPN 和虚拟网络 |
 | *自定义角色* |应用程序所有者 |Dave 创建了一个可授权修改资源组中资源的角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md)（Azure RBAC 中的自定义角色） |
 
 ### <a name="policies"></a>策略
@@ -86,8 +85,8 @@ Dave 知道，若要识别 BitBucket 实现的成本中心，就需要获得有�
 
 | 标记名称 | 标记值 |
 | --- | --- |
-| ApplicationOwner |此应用程序的管理人员姓名。 |
-| CostCenter |支付 Azure 使用费的组所在的成本中心。 |
+| ApplicationOwner |此应用程序的管理人员姓名 |
+| CostCenter |支付 Azure 使用费的组所在的成本中心 |
 | BusinessUnit |**ETS**（与订阅关联的业务单位） |
 
 ### <a name="core-network"></a>核心网络
@@ -97,9 +96,9 @@ Contoso ETS 信息安全与风险管理团队评审了 Dave 规划的将应用�
 
 | 资源类型 | Name | 说明 |
 | --- | --- | --- |
-| 虚拟网络 |vnInternal |用于 BitBucket 应用程序，通过 ExpressRoute 连接到 Contoso 的企业网络。  一个子网 (sbBitBucket) 提供具有特定 IP 地址空间的应用程序。 |
-| 虚拟网络 |vnExternal |用于将来部署的、需要面向公众的终结点的应用程序。 |
-| 网络安全组 |nsgBitBucket |只允许通过应用程序所在子网 (sbBitBucket) 端口 443 建立连接，确保最大程度地减少此工作负荷的受攻击面。 |
+| 虚拟网络 |internal-vnet |用于 BitBucket 应用程序，通过 ExpressRoute 连接到 Contoso 的企业网络。  子网 (`bitbucket`) 提供具有特定 IP 地址空间的应用程序 |
+| 虚拟网络 |external-vnet |用于将来部署的、需要面向公众的终结点的应用程序 |
+| 网络安全组 |bitbucket-nsg |只允许通过应用程序所在子网 (`bitbucket`) 端口 443 建立连接，确保最大程度地减少此工作负荷的受攻击面 |
 
 ### <a name="resource-locks"></a>资源锁
 Dave 认识到，从 Contoso 的企业网络与内部虚拟网络建立的连接必须避免出现任何意料不到的脚本或意外的删除行为。
@@ -108,7 +107,7 @@ Dave 认识到，从 Contoso 的企业网络与内部虚拟网络建立的连接
 
 | 锁类型 | 资源 | 说明 |
 | --- | --- | --- |
-| **CanNotDelete** |vnInternal |阻止用户删除虚拟网络或子网，但不阻止添加新子网。 |
+| **CanNotDelete** |internal-vnet |阻止用户删除虚拟网络或子网，但不阻止添加新子网 |
 
 ### <a name="azure-automation"></a>Azure 自动化
 Dave 没有为此应用程序设置自动化。 虽然他创建了 Azure 自动化帐户，但从来没有用过。
@@ -126,8 +125,8 @@ Dave 登录到 Azure 企业门户，发现供应链部门已经存在。  不过
 
 | 订阅用途 | Name |
 | --- | --- |
-| 开发 |SupplyChain ResearchDevelopment LoyaltyCard Development |
-| 生产 |SupplyChain Operations LoyaltyCard Production |
+| 开发 |Contoso SupplyChain ResearchDevelopment LoyaltyCard Development |
+| 生产 |Contoso SupplyChain Operations LoyaltyCard Production |
 
 ### <a name="policies"></a>策略
 Dave 和 Alice 就此应用程序展开了讨论，发现此应用程序只能为北美区域的客户提供服务。  Alice 及其团队打算使用 Azure 的应用程序服务环境和 Azure SQL 来创建该应用程序。 在开发过程中，他们可能需要创建虚拟机。  Alice 想要确保其开发人员在探讨和检查问题时可以获得所需的资源，而无需求助于 ETS。
@@ -136,7 +135,7 @@ Dave 和 Alice 就此应用程序展开了讨论，发现此应用程序只能�
 
 | 字段 | 效果 | 说明 |
 | --- | --- | --- |
-| location |audit |审核任何区域的资源创建活动。 |
+| location |audit |审核任何区域的资源创建活动 |
 
 该策略不会限制用户可在开发环境中创建的 SKU 类型，并且不要求对任何资源组或资源使用标记。
 
@@ -144,10 +143,10 @@ Dave 和 Alice 就此应用程序展开了讨论，发现此应用程序只能�
 
 | 字段 | 效果 | 说明 |
 | --- | --- | --- |
-| location |deny |拒绝在美国数据中心以外创建任何资源。 |
+| location |deny |拒绝在美国数据中心以外创建任何资源 |
 | 标记 |deny |要求使用应用程序所有者标记 |
-| 标记 |deny |要求使用部门标记。 |
-| 标记 |append |将指明生产环境的标记追加到每个资源组。 |
+| 标记 |deny |要求使用部门标记 |
+| 标记 |append |将指明生产环境的标记追加到每个资源组 |
 
 该策略不会限制用户可在生产环境中创建的 SKU 类型。
 
@@ -156,9 +155,9 @@ Dave 知道，他需要获得具体的信息才能识别正确的业务组来完
 
 | 标记名称 | 标记值 |
 | --- | --- |
-| ApplicationOwner |此应用程序的管理人员姓名。 |
-| 系 |支付 Azure 使用费的组所在的成本中心。 |
-| EnvironmentType |**Production**（尽管订阅的名称中已经包含 **Production**，但如果添加此标记，在门户或帐单中查找资源时可以方便识别。） |
+| ApplicationOwner |此应用程序的管理人员姓名 |
+| 系 |支付 Azure 使用费的组所在的成本中心 |
+| EnvironmentType |Production（尽管订阅的名称中已经包含 Production，但如果添加此标记，在门户或帐单中查找资源时可以方便识别） |
 
 ### <a name="core-networks"></a>核心网络
 Contoso ETS 信息安全与风险管理团队评审了 Dave 规划的将应用程序转移到 Azure 的提案。 他们想要确保会员卡应用程序在外围网络中受到适当隔离和保护。  为了满足此要求，Dave 和 Alice 创建了外部虚拟网络和网络安全组，用于从 Contoso 企业网络中隔离会员卡应用程序。  
@@ -167,14 +166,14 @@ Contoso ETS 信息安全与风险管理团队评审了 Dave 规划的将应用�
 
 | 资源类型 | Name | 说明 |
 | --- | --- | --- |
-| 虚拟网络 |vnInternal |为 Contoso 会员卡开发环境提供服务，通过 ExpressRoute 连接到 Contoso 的企业网络。 |
+| 虚拟网络 |internal-vnet |为 Contoso 会员卡开发环境提供服务，通过 ExpressRoute 连接到 Contoso 的企业网络 |
 
 针对**生产订阅**，他们创建了：
 
 | 资源类型 | Name | 说明 |
 | --- | --- | --- |
-| 虚拟网络 |vnExternal |托管会员卡应用程序，不直接连接到 Contoso 的 ExpressRoute。 代码通过源代码管理系统直接推送到 PaaS 服务。 |
-| 网络安全组 |nsgBitBucket |只允许通过 TCP 443 接收入站通信，确保最大程度地减少此工作负荷的受攻击面。  另外，Contoso 正在调研是否要 Web 应用程序防火墙来增强保护。 |
+| 虚拟网络 |external-vnet |托管会员卡应用程序，不直接连接到 Contoso 的 ExpressRoute。 代码通过源代码管理系统直接推送到 PaaS 服务 |
+| 网络安全组 |loyaltycard-nsg |只允许通过 TCP 443 接收入站通信，确保最大程度地减少此工作负荷的受攻击面。  另外，Contoso 正在调研是否要 Web 应用程序防火墙来增强保护 |
 
 ### <a name="resource-locks"></a>资源锁
 Dave 和 Alice 经过商讨，决定对环境中的某些资源添加资源锁，防止在推送不当代码的过程中出现意外删除。
@@ -183,7 +182,7 @@ Dave 和 Alice 经过商讨，决定对环境中的某些资源添加资源锁�
 
 | 锁类型 | 资源 | 说明 |
 | --- | --- | --- |
-| **CanNotDelete** |vnExternal |阻止用户删除虚拟网络或子网。 该锁不会阻止添加新子网。 |
+| **CanNotDelete** |external-vnet |阻止用户删除虚拟网络或子网。 该锁不会阻止添加新子网 |
 
 ### <a name="azure-automation"></a>Azure 自动化
 Alice 及其开发团队创建了大量的 Runbook 来管理此应用程序的环境。 使用 Runbook 可以添加/删除应用程序节点及其他 DevOps 任务。
@@ -197,5 +196,3 @@ Contoso IT 服务管理部门需要快速识别和处理威胁。 他们还希�
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何创建 Resource Manager 模板，请参阅 [Best practices for creating Azure Resource Manager templates](resource-manager-template-best-practices.md)（创建 Azure Resource Manager 模板的最佳实践）。
-
-

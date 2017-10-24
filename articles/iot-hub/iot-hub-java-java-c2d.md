@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: f5e3ac46f4d144b12e2ab7fcfb456665ff6cc68f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.openlocfilehash: 6a5f14f411c2ec82478fef6d20d22f8b8dc8d7bf
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>使用 IoT 中心发送云到设备的消息 (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -33,14 +33,13 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 可以在 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]中找到有关云到设备消息的详细信息。
 
-在本教程的最后，会运行两个 Java 控制台应用：
+在本教程的最后，将运行两个 Java 控制台应用：
 
 * **simulated-device**，这是在 [IoT 中心入门]中创建的应用的修改版本，可连接到 IoT 中心并接收云到设备的消息。
-* 
-            **send-c2d-messages**，它将“云到设备”消息通过 IoT 中心发送到模拟设备应用，并接收 IoT 中心的送达确认。
+* **send-c2d-messages**，它将“云到设备”消息通过 IoT 中心发送到模拟设备应用，然后接收 IoT 中心的送达确认。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程的代码以及通常如何连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
+> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心]。
 
 要完成本教程，需要以下各项：
 
@@ -51,7 +50,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
 
-本部分介绍如何修改在 [IoT 中心入门]中创建的模拟设备应用，以接收来自 IoT 中心的“云到设备”消息。
+在本部分中，会修改在 [IoT 中心入门]中创建的模拟设备应用，以接收来自 IoT 中心的“云到设备”消息。
 
 1. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。
 
@@ -78,7 +77,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
 
     > [!NOTE]
-    > 如果使用 HTTP（而不使用 MQTT 或 AMQP）作为传输，则 **DeviceClient** 实例不太频繁地（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTP 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]。
+    > 如果使用 HTTPS（而不使用 MQTT 或 AMQP）作为传输，则 DeviceClient 实例将不会频繁（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTPS 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]。
 
 4. 若要使用 Maven 生成 **simulated-device** 应用，请在 simulated-device 文件夹中的命令提示符下执行以下命令：
 
@@ -131,7 +130,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
     ```
 
-8. 将 **main**方法替换为以下代码。 此代码用于连接到 IoT 中心，将消息发送到设备，并等待设备已接收并处理消息的通知：
+8. 将 **main**方法替换为以下代码。 此代码用于连接到 IoT 中心，将消息发送到设备，然后等待设备已接收并处理消息的通知：
    
     ```java
     public static void main(String[] args) throws IOException,

@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/10/2017
+ms.date: 09/28/2017
 ms.author: alkohli
+ms.openlocfilehash: 485320e500d71bd85b69cfcd9628e133ad1c417c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 4c339c531dae5724a174c2b22cb379bdb3214a4f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 07/21/2017
 
 | 支持的操作系统 | 所需版本 | 其他要求/说明 |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1、2012、2012 R2、2016 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>仅支持操作系统中原本就存在的软件 iSCSI 发起程序。 不支持硬件 iSCSI 发起程序。<br></br>如果使用 StorSimple iSCSI 卷，则支持 Windows Server 2012 和 2016 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，然后新建一个卷而不是重新格式化。 但是，如果你仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 |
+| Windows Server |2008 R2 SP1、2012、2012 R2、2016 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>仅支持操作系统中原本就存在的软件 iSCSI 发起程序。 不支持硬件 iSCSI 发起程序。<br></br>如果使用 StorSimple iSCSI 卷，则支持 Windows Server 2012 和 2016 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，并新建一个卷而不是重新格式化。 但是，如果仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 |
 | VMware ESX |5.5 和 6.0 |支持与作为 iSCSI 客户端的 VMware vSphere 配合使用。 StorSimple 设备上的 VMware vSphere 支持 VAAI 块功能。 |
 | Linux RHEL/CentOS |5、6 和 7 |支持配有开放 iSCSI 发起程序版本 5、6 和 7 的 Linux iSCSI 客户端。 |
 | Linux |SUSE Linux 11 | |
@@ -59,7 +58,7 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>StorSimple 设备的网络要求
 
-你的 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
+StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
 | 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -76,7 +75,7 @@ ms.lasthandoff: 07/21/2017
 
 <sup>2</sup> 如果多个端口采用一个网关配置，将基于如下[端口路由](#routing-metric)中所述的端口路由顺序来确定出站路由流量顺序。
 
-<sup>3</sup> StorSimple 设备上控制器的固定 IP 必须可路由，并能直接连接到 Internet 或通过配置 Web 代理连接到 Internet。 固定 IP 地址用于为设备提供更新。 如果设备控制器无法通过固定 IP 连接到 Internet，用户将不能更新 StorSimple 设备。
+<sup>3</sup> StorSimple 设备上控制器的固定 IP 必须可路由，并能直接连接到 Internet 或通过配置 Web 代理连接到 Internet。 固定 IP 地址用于为设备提供更新以及垃圾回收。 如果设备控制器无法通过固定 IP 连接到 Internet，用户将不能更新 StorSimple 设备，且垃圾回收将无法正常工作。
 
 > [!IMPORTANT]
 > 确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 SSL 通信。
@@ -84,7 +83,7 @@ ms.lasthandoff: 07/21/2017
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
 
-通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 StorSimple 设备和 StorSimple 设备管理器服务依赖其他 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这将要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。
+通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 StorSimple 设备和 StorSimple 设备管理器服务依赖其他 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这会要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。
 
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
@@ -130,7 +129,7 @@ ms.lasthandoff: 07/21/2017
     | 网络接口 | 启用云 | 禁用云但配有网关 |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
-    | Data 1  | 2            | 20                       |
+    | Data 1  | #N/A            | 20                       |
     | Data 2  | 3            | 30                       |
     | Data 3  | 4            | 40                       |
     | Data 4  | 5            | 50                       |
@@ -193,11 +192,11 @@ StorSimple 设备包括冗余的热插拔控制器模块。 控制器模块以�
 
 * 请确保始终都安装有两个控制器模块。
 * 如果控制器模块发生故障，立即请求更换。
-* 仅在有更换品并准备好安装时，才能移除发生故障的控制器模块。 持续时间过长的模块移除过程将会影响气流，进而影响系统冷却。
+* 仅在有更换品并准备好安装时，才能移除发生故障的控制器模块。 持续时间过长的模块移除过程会影响气流，进而影响系统冷却。
 * 请确保到两个控制器模块的网络连接相同并且连接的网络接口具有相同的网络配置。
 * 如果控制器模块发生故障或需要更换，在更换发生故障的控制器模块之前，请确保另一个控制器模块处于主动状态。 若要验证控制器是否处于主动状态，请转到 [Identify the active controller on your device](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)（识别设备上的主动控制器）。
 * 不要同时移除两个控制器模块。 如果正在进行控制器故障转移，请不要关闭备用控制器模块或从机箱中移除它。
-* 控制器故障转移完成后，请等待至少五分钟，然后再移除其中任意一个控制器模块。
+* 控制器故障转移完成后，请等待至少五分钟，再移除其中任意一个控制器模块。
 
 #### <a name="network-interfaces"></a>网络接口
 
@@ -205,7 +204,7 @@ StorSimple 设备包括冗余的热插拔控制器模块。 控制器模块以�
 
 * 请确保到两个控制器模块的网络连接相同，并且控制器模块接口连接的网络接口具有相同的网络配置。
 * 如果可能，请在不同的交换机中部署网络连接，确保在发生网络设备故障时的服务可用性。
-* 拔出唯一或剩余的最后一个启用 iSCSI 的接口（已分配 IP）时，先禁用此接口，然后再拔出电缆。 如果先拔出此接口，将导致主动控制器故障转移到被动控制器。 如果与被动控制器对应的接口也被拔出，则两个控制器将在选定一个控制器之前多次重新启动。
+* 拔出唯一或剩余的最后一个启用 iSCSI 的接口（已分配 IP）时，先禁用此接口，再拔出电缆。 如果先拔出此接口，将导致主动控制器故障转移到被动控制器。 如果与被动控制器对应的接口也被拔出，则两个控制器会在选定一个控制器之前多次重新启动。
 * 从每个控制器模块将至少两个 DATA 接口连接到网络。
 * 如果已启用两个 10 GbE 接口，请将它们部署在不同的交换机上。
 * 如果可能，请在服务器上使用 MPIO，确保服务器可以容许链接、网络或接口故障。
@@ -249,4 +248,3 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
-

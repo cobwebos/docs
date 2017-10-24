@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>从 Azure 命令行界面 (Azure CLI) 使用 Docker VM 扩展
 > [!IMPORTANT] 
@@ -55,7 +55,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="install-docker-and-use-the-docker-vm-extension-for-azure"></a>安装 Docker 并对 Azure 使用 Docker VM 扩展
 遵循 [Docker 安装说明](https://docs.docker.com/installation/#installation)在计算机本地安装 Docker。
 
-若要将 Docker 与 Azure 虚拟机配合使用，VM 使用的 Linux 映像上必须已安装 [Azure Linux VM 代理](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 目前，只有两种类型的映像提供此代理：
+要将 Docker 与 Azure 虚拟机配合使用，VM 使用的 Linux 映像上必须已安装 [Azure Linux VM 代理](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 目前，只有两种类型的映像提供此代理：
 
 * Azure 映像库中的 Ubuntu 映像，或
 * 使用已安装并配置的 Azure Linux VM 代理创建的自定义 Linux 映像。 有关如何使用 Azure VM 代理构建自定义 Linux VM 的详细信息，请参阅 [Azure Linux VM 代理](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -73,9 +73,9 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 其中：
 
-* *&lt;vm-cloudservice name&gt;* 是将成为 Azure 中 Docker 容器主计算机的 VM 名称
-* *&lt;username&gt;* 是 VM 默认 root 用户的用户名
-* *&lt;password&gt;* 是 *username* 帐户的密码，需符合 Azure 的复杂性标准
+* &lt;vm-cloudservice 名称&gt;是将成为 Azure 中 Docker 容器主计算机的 VM 的名称
+* &lt;用户名&gt;是 VM 的默认根用户的用户名
+* &lt;密码&gt;是符合 Azure 的复杂性标准的用户名帐户的密码
 
 > [!NOTE]
 > 目前，密码必须至少有 8 个字符，包含一个小写字母和一个大写字母、一个数字以及下列特殊字符之一：`!@#$%^&+=`。 不，上一个句子末尾的句号并不是特殊字符。

@@ -8,14 +8,12 @@ ms.author: cbrooks
 ms.date: 08/25/2017
 ms.topic: article
 ms.service: storage
+ms.openlocfilehash: c760cf5a9bdd4b64a60470fa48cb9b57ec4ab5fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b9b117bdeb62f5ebb2e4e3fbfe71572068927082
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="reacting-to-blob-storage-events-preview"></a>响应 Blob 存储事件（预览版）
 
 Azure Blob 存储事件允许应用程序响应使用新式无服务器体系结构创建和删除 blob，无需采用复杂代码或昂贵低效的轮询服务。  相反，可以通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向订阅者（如 [Azure Functions](https://azure.microsoft.com/services/functions/) 或 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)，甚至是你的自定义 HTTP 侦听器）推送事件，且仅需为已使用的内容付费。
@@ -36,7 +34,7 @@ az feature register --name storageEventSubscriptions --namespace Microsoft.Event
 ```azurecli-interactive
 az feature show --name storageEventSubscriptions --namespace Microsoft.EventGrid
 ```
-一旦注册状态更改为“已注册”，即表示你已获准加入预览计划，可以为美国中西部的帐户订阅 Blob 存储事件。  相关简单示例，请参阅[将 Blob 存储事件路由到自定义 Web 终结点](storage-blob-event-quickstart.md)。
+一旦注册状态更改为“已注册”，即表示你已获准加入预览计划，可以为“美国中西部”或“美国西部 2” 这两个位置的帐户订阅 Blob 存储事件。  相关简单示例，请参阅[将 Blob 存储事件路由到自定义 Web 终结点](storage-blob-event-quickstart.md)。
 
 ## <a name="blob-storage-accounts"></a>Blob 存储帐户
 [Blob 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)支持 Blob 存储事件（但常规用途存储帐户不支持）。  Blob 存储帐户是将非结构化数据作为 Blob（对象）存储在 Azure 存储的专用存储帐户。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 对于仅需要块 blob 或追加 blob 存储的应用程序，我们建议使用 Blob 存储帐户。

@@ -16,14 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c92692db23ac59f67890e26cce6b2d3272e8901d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: dab336da4e010d0a78de9a2bdd62536d8fdd9bf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流
 
 可以在逻辑应用中以触发器的形式本机公开同步的 HTTP 终结点，以便通过 URL 触发或调用逻辑应用。 还可以通过可调用的终结点模式在逻辑应用中嵌套工作流。
@@ -37,13 +35,13 @@ ms.lasthandoff: 06/01/2017
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > 尽管本文中的示例使用“请求”触发器，但你也可以使用任何所列的 HTTP 触发器，所有原理同样适用于其他触发器类型。
+   > 尽管本文中的示例使用“请求”触发器，但也可使用任何所列的 HTTP 触发器，所有原理同样适用于其他触发器类型。
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>设置逻辑应用的 HTTP 终结点
 
 若要创建 HTTP 终结点，请添加一个可以接收传入请求的触发器。
 
-1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 转到你的逻辑应用，然后打开逻辑应用设计器。
+1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 转到逻辑应用，并打开逻辑应用设计器。
 
 2. 添加可让逻辑应用接收传入请求的触发器。 例如，将“请求”触发器添加到逻辑应用。
 
@@ -73,7 +71,7 @@ ms.lasthandoff: 06/01/2017
     > [!TIP]
     > 
     > 可以通过 [jsonschema.net](http://jsonschema.net/) 等工具为示例 JSON 有效负载生成架构，也可以选择“使用示例有效负载生成架构”，在“请求”触发器中生成该架构。 
-    > 输入示例有效负载，然后选择“完成”。
+    > 输入示例有效负载，并选择“完成”。
 
     例如，此示例有效负载：
 
@@ -86,7 +84,7 @@ ms.lasthandoff: 06/01/2017
     生成此架构：
 
     ```json
-    }
+    {
        "type": "object",
        "properties": {
           "address": {
@@ -101,7 +99,7 @@ ms.lasthandoff: 06/01/2017
     ![为终结点生成的回调 URL](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
     此 URL 在查询参数中包含用于身份验证的共享访问签名 (SAS) 密钥。 
-    也可以通过 Azure 门户中的逻辑应用概述获取 HTTP 终结点 URL。 在“触发器历史记录”下面选择你的触发器：
+    也可以通过 Azure 门户中的逻辑应用概述获取 HTTP 终结点 URL。 在“触发器历史记录”下面选择触发器：
 
     ![从 Azure 门户获取 HTTP 终结点 URL][2]
 
@@ -113,7 +111,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="change-the-http-method-for-your-trigger"></a>更改触发器的 HTTP 方法
 
-默认情况下，“请求”触发器需要 HTTP POST 请求，但你可以使用不同的 HTTP 方法。 
+默认情况下，“请求”触发器需要 HTTP POST 请求，但可以使用不同的 HTTP 方法。 
 
 > [!NOTE]
 > 只能指定一个方法类型。
@@ -129,7 +127,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="accept-parameters-through-your-http-endpoint-url"></a>通过 HTTP 终结点 URL 接受参数
 
-如果你希望 HTTP 终结点 URL 接受参数，请自定义触发器的相对路径。
+如果希望 HTTP 终结点 URL 接受参数，请自定义触发器的相对路径。
 
 1. 在“请求”触发器上，选择“显示高级选项”。 
 
@@ -142,13 +140,12 @@ ms.lasthandoff: 06/01/2017
 
     ![指定 HTTP 方法以及参数的相对路径](./media/logic-apps-http-endpoint/relativeurl.png)
 
-4. 若要使用参数，请将“响应”操作添加到逻辑应用。 （在触发器下面，选择“新建步骤” > “添加操作” > “响应”） 
+4. 要使用参数，请将“响应”操作添加到逻辑应用。 （在触发器下面，选择“新建步骤” > “添加操作” > “响应”） 
 
 5. 在响应的“正文”下面，包含触发器相对路径中指定的参数的令牌。
 
     例如，若要返回 `Hello {customerID}`，请使用 `Hello {customerID token}` 更新响应的**正文**。 
-    此时应会显示动态内容列表，其中显示了 `customerID` 
-    令牌供你选择。
+    此时应会显示动态内容列表，其中显示了 `customerID` 令牌供你选择。
 
     ![将参数添加到响应正文](./media/logic-apps-http-endpoint/relativeurlresponse.png)
 
@@ -162,7 +159,7 @@ ms.lasthandoff: 06/01/2017
 
     https&#58;//prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
 
-7. 若要测试 HTTP 终结点，请将更新的 URL 复制并粘贴到另一个浏览器窗口（但要将 `{customerID}` 替换为 `123456`），然后按 Enter。
+7. 要测试 HTTP 终结点，请将更新的 URL 复制并粘贴到另一个浏览器窗口（但要将 `{customerID}` 替换为 `123456`），然后按 Enter。
 
     浏览器应显示以下文本： 
 
@@ -171,7 +168,7 @@ ms.lasthandoff: 06/01/2017
 <a name="generated-tokens"></a>
 ### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>从 JSON 架构为逻辑应用生成的令牌
 
-在“请求”触发器中提供 JSON 架构时，逻辑应用设计器将在该架构中生成属性的令牌。 然后，你可以使用这些令牌通过逻辑应用工作流传递数据。
+在“请求”触发器中提供 JSON 架构时，逻辑应用设计器会在该架构中生成属性的令牌。 然后，可以使用这些令牌通过逻辑应用工作流传递数据。
 
 例如，如果将 `title` 和 `name` 属性添加到 JSON 架构，这些属性的令牌现可用于后续工作流步骤。 
 
@@ -201,7 +198,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="create-nested-workflows-for-logic-apps"></a>为逻辑应用创建嵌套工作流
 
-通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 若要包含这些逻辑应用，请将“Azure 逻辑应用 - 选择逻辑应用工作流”操作添加到触发器。 然后，可以从符合条件的逻辑应用中选择。
+通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 要包含这些逻辑应用，请将“Azure 逻辑应用 - 选择逻辑应用工作流”操作添加到触发器。 然后，可以从符合条件的逻辑应用中选择。
 
 ![添加另一个逻辑应用](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -211,7 +208,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="reference-content-from-an-incoming-request"></a>引用传入请求中的内容
 
-如果内容的类型为 `application/json`，你可以引用传入请求中的属性。 否则，内容被视为可以传递给其他 API 的单个二进制单元。 若要引用工作流中的此内容，则必须转换此内容。 例如，如果传递 `application/xml` 内容，可以使用 `@xpath()` 执行 XPath 提取，或使用 `@json()` 将 XML 转换为 JSON。 了解[处理内容类型](../logic-apps/logic-apps-content-type.md)。
+如果内容的类型为 `application/json`，可以引用传入请求中的属性。 否则，内容被视为可以传递给其他 API 的单个二进制单元。 若要引用工作流中的此内容，则必须转换此内容。 例如，如果传递 `application/xml` 内容，可以使用 `@xpath()` 执行 XPath 提取，或使用 `@json()` 将 XML 转换为 JSON。 了解[处理内容类型](../logic-apps/logic-apps-content-type.md)。
 
 若要从传入请求中获取输出，可以使用 `@triggerOutputs()` 函数。 输出可能如以下示例所示：
 
@@ -230,10 +227,10 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="respond-to-requests"></a>对请求的响应
 
-你可能想要通过向调用方返回内容，对启动逻辑应用的某些请求做出响应。 若要构造响应的状态代码、标头和正文，可以使用“响应”操作。 此操作可以出现在逻辑应用中的任何位置，而不仅仅是工作流的末尾。
+可能想要通过向调用方返回内容，对启动逻辑应用的某些请求做出响应。 若要构造响应的状态代码、标头和正文，可以使用“响应”操作。 此操作可以出现在逻辑应用中的任何位置，而不仅仅是工作流的末尾。
 
 > [!NOTE] 
-> 如果逻辑应用不包含“响应”，HTTP 终结点会*立即*响应“202 已接受”状态。 另外，要使原始请求能够获取响应，除非调用用作嵌套逻辑应用的工作流，否则响应所需的所有步骤必须在[请求超时限制](./logic-apps-limits-and-config.md)内完成。 如果在此限制时间内未发生任何响应，传入请求将会超时，并收到 HTTP 响应“408 客户端超时”。 对于嵌套逻辑应用，父逻辑应用会继续等待响应，直到完成为止（不考虑所需的时间）。
+> 如果逻辑应用不包含“响应”，HTTP 终结点会*立即*响应“202 已接受”状态。 另外，要使原始请求能够获取响应，除非调用用作嵌套逻辑应用的工作流，否则响应所需的所有步骤必须在[请求超时限制](./logic-apps-limits-and-config.md)内完成。 如果在此限制时间内未发生任何响应，传入请求会超时，并收到 HTTP 响应“408 客户端超时”。 对于嵌套逻辑应用，父逻辑应用会继续等待响应，直到完成为止（不考虑所需的时间）。
 
 ### <a name="construct-the-response"></a>构造响应
 
@@ -285,7 +282,7 @@ ms.lasthandoff: 06/01/2017
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>问：是否可以进一步配置 HTTP 终结点？
 
-答：可以，HTTP 终结点支持通过 [**API 管理**](../api-management/api-management-key-concepts.md)进行更高级的配置。 此服务还提供相应的功能让你以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名、使用其他身份验证方法，等等，例如：
+答：可以，HTTP 终结点支持通过 [**API 管理**](../api-management/api-management-key-concepts.md)进行更高级的配置。 此服务还提供相应的功能，使你能够以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名和使用其他身份验证方法等等，例如：
 
 * [更改请求方法](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
 * [更改请求的 URL 段](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
@@ -320,4 +317,3 @@ ms.lasthandoff: 06/01/2017
 [1]: ./media/logic-apps-http-endpoint/manualtrigger.png
 [2]: ./media/logic-apps-http-endpoint/manualtriggerurl.png
 [3]: ./media/logic-apps-http-endpoint/response.png
-

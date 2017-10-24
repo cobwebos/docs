@@ -14,17 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/27/2017
+ms.date: 10/10/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 895e29d6b83d07cafaa2dbbc7a13218460e03815
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 7af2657b01b954c3f43a687dedebad7e4a814e6a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>使用 Azure 承载和运行 SAP 工作负荷方案
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -313,7 +311,7 @@ Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优
 
 摘要：此体系结构和技术部署指南提供的信息可帮助用户在 Azure 中的新型“Azure 上的 SAP HANA（大型实例）”上部署 SAP。 它并不打算成为涵盖 SAP 解决方案的具体设置的综合指南，而是旨在为初始部署和正在进行的操作提供有用信息。 它不应取代有关安装 SAP HANA 的 SAP 文档（或者包括该主题的多种 SAP 支持说明）。 它提供概述以及安装 Azure 上的 SAP HANA（大型实例）的其他详细信息。
 
-更新时间：2017 年 7 月
+更新时间：2017 年 10 月
 
 [可在此处找到此指南](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -340,7 +338,7 @@ Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优
 
 摘要：高可用性 (HA) 和灾难恢复 (DR) 是运行任务关键型 Azure 上的 SAP HANA（大型实例）服务器的非常重要方面。 必须咨询 SAP、系统集成商和/或 Microsoft，以便正确构建和实施适当的 HA/DR 策略。 必须考虑到与环境相关的一些重要因素，例如，恢复点目标 (RPO) 和恢复时间目标 (RTO)。  本文档介绍用于启用首选级别的 HA 和 DR 的选项。
 
-更新时间：2017 年 9 月
+更新时间：2017 年 10 月
 
 [本文档可在此处找到](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -485,5 +483,4 @@ Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优
 更新时间：2017 年 8 月
 
 [可在此处找到此指南](http://aka.ms/asr-sap)
-
 

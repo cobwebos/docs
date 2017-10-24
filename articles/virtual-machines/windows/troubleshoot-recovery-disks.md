@@ -14,13 +14,13 @@ ms.workload: infrastructure
 ms.date: 05/26/2017
 ms.author: genli
 ms.openlocfilehash: 8b7821b4285e73d461af426bfdfb3fdcc4454517
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
-如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure PowerShell 将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，并重新创建原始 VM。
+如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍了如何使用 Azure PowerShell 将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，然后重新创建原始 VM。
 
 
 ## <a name="recovery-process-overview"></a>恢复过程概述
@@ -188,7 +188,7 @@ New-AzureRmResourceGroupDeployment -Name myDeployment -ResourceGroupName myResou
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd-existing-vnet/azuredeploy.json
 ```
 
-对关于模板的提示进行回答，例如 VM 名称、OS 类型和 VM 大小。 ph x="1" /> 与前面将现有虚拟硬盘附加到故障排除 VM 时使用的相同。
+对关于模板的提示进行回答，例如 VM 名称、OS 类型和 VM 大小。 `osDiskVhdUri` 与前面将现有虚拟硬盘附加到故障排除 VM 时使用的相同。
 
 
 ## <a name="re-enable-boot-diagnostics"></a>重新启用启动诊断

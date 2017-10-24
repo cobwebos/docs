@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2017
 ms.author: yushwang
+ms.openlocfilehash: db4d8837fb5c5d15364422e957e4914966215674
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 17211379ec61891982a02efca6730ca0da87c1ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 07/28/2017
 
 |                          | 基于策略的 VPN 网关 | 基于路由的 VPN 网关               |
 | ---                      | ---                         | ---                                      |
-| Azure 网关 SKU    | 基本                       | 基本，标准，高性能         |
+| Azure 网关 SKU    | 基本                       | 基本、标准、高性能、VpnGw1、VpnGw2、VpnGw3 |
 | IKE 版本          | IKEv1                       | IKEv2                                    |
 | **最大S2S 连接** | **1**                       | 基本/标准：10<br> 高性能：30 |
 |                          |                             |                                          |
@@ -109,9 +108,9 @@ $LNGPrefix61   = "10.61.0.0/16"
 $LNGPrefix62   = "10.62.0.0/16"
 $LNGIP6        = "131.107.72.22"
 ```
-若要使用资源管理器 cmdlet，请确保切换到 PowerShell 模式。 有关详细信息，请参阅 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+若要使用资源管理器 cmdlet，请确保切换到 PowerShell 模式。 有关详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
-打开 PowerShell 控制台并连接到你的帐户。 使用下面的示例来帮助你连接：
+打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
 
 ```powershell
 Login-AzureRmAccount
@@ -216,4 +215,3 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 连接完成后，即可将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以获取相关步骤。
 
 有关自定义 IPsec/IKE 策略的详细信息，请参阅[为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)。
-

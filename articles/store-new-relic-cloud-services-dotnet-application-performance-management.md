@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/23/2016
 ms.author: nickfloyd@newrelic.com
 ms.openlocfilehash: f4f13c909a6ff640d403f5264004176c087925dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="new-relic-application-performance-management-on-azure"></a>Azure 中的 New Relic 应用程序性能管理
 可以在 Azure 托管的应用程序中添加 New Relic 提供的高级性能监视功能。 除了获得全面的 Azure 应用监视、故障排除和优化功能外，还能通过 Azure 享受 New Relic 产品的折扣价格。
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 New Relic 可从服务器和用户的浏览器跟踪 Web 事务的加载时间和吞吐量。 它可显示在数据库方面花费的时间，分析缓慢查询和 Web 请求，提供运行时间监视和通知，跟踪应用程序异常，还有其他更多功能。 
 
 ## <a name="special-pricing"></a>特价
-New Relic Standard 可供 Azure 用户免费使用。 New Relic Pro 根据 Azure 云服务的实例大小供应。 有关定价信息，请参阅[New Relic 页](https://azure.microsoft.com/marketplace/partners/newrelic/newrelic/)中的 Azure 应用商店或联系人 New Relic (sales@newrelic.com) 为企业级定价。
+New Relic Standard 可供 Azure 用户免费使用。 New Relic Pro 根据 Azure 云服务的实例大小供应。 有关定价信息，请参阅 Azure Marketplace 中的 [New Relic 页](https://azure.microsoft.com/marketplace/partners/newrelic/newrelic/)，或联系 New Relic (sales@newrelic.com) 获取企业级定价。
 
 Azure 客户在部署 New Relic 代理时可获得为期两周的 New Relic Pro 试用订阅。
 

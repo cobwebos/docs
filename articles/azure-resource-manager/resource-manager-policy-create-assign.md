@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 09/19/2017
 ms.author: tomfitz
+ms.openlocfilehash: 64bdd6ed41e98079c8d4112e895aaeddcd629282
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f461efbc2a23f85e8b6d3fdec156a0df1636708a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-and-manage-resource-policies"></a>分配和管理资源策略
 
@@ -31,6 +30,23 @@ ms.lasthandoff: 07/28/2017
 4. 无论属于上述哪种情况，都将策略分配到作用域（如订阅或资源组）。 现可强制执行策略规则。
 
 本文着重介绍通过 REST API、PowerShell 或 Azure CLI 创建策略定义以及将该定义分配到作用域的步骤。 如果想要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)。 本文不关注用于创建策略定义的语法。 有关策略语法的信息，请参阅[资源策略概述](resource-manager-policy.md)。
+
+## <a name="exclusion-scopes"></a>排除范围
+
+分配策略时，可以排除某范围。 此功能可以简化策略分配，因为你可以在订阅级别分配策略，但指定策略不适用的情况。 例如，在订阅中，你具有面向网络基础结构的资源组。 应用程序团队将其资源部署到其他资源组。 你不希望这些团队创建可能引发安全问题的网络资源。 但在网络资源组中，需要允许网络资源。 可在订阅级别分配策略，但排除网络资源组。 可以指定多个子范围。
+
+```json
+{
+    "properties":{
+        "policyDefinitionId":"<ID for policy definition>",
+        "notScopes":[
+            "/subscriptions/<subid>/resourceGroups/networkresourceGroup1"
+        ]
+    }
+}
+```
+
+如果在分配中指定排除范围，则使用 2017-06-01-preview API 版本。
 
 ## <a name="rest-api"></a>REST API
 
@@ -168,8 +184,28 @@ PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962
 ### <a name="create-policy-definition"></a>创建策略定义
 可使用 `New-AzureRmPolicyDefinition` cmdlet 创建策略定义。
 
+要在文件中创建策略定义，请将路径传递给该文件。 对于外部文件，请使用：
+
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -DisplayName "Deny cool access tiering for storage" `
+    -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
+```
+
+对于本地文件，请使用：
+
+```powershell
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -Description "Deny cool access tiering for storage" `
+    -Policy "c:\policies\coolAccessTier.json"
+```
+
+要使用内联规则创建策略定义，请使用：
+
+```powershell
+$definition = New-AzureRmPolicyDefinition -Name denyCoolTiering -Description "Deny cool access tiering for storage" -Policy '{
   "if": {
     "allOf": [
       {
@@ -195,12 +231,6 @@ $definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Pol
 ```            
 
 输出存储在 `$definition` 对象中，这会在策略分配过程中使用。 
-
-可提供包含策略规则的 .json 文件路径，而不是指定 JSON 作为参数。
-
-```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
-```
 
 以下示例创建包含参数的策略定义：
 
@@ -319,8 +349,10 @@ az policy definition list
 
 可以将 Azure CLI 与策略定义命令结合使用来创建策略定义。
 
+要使用内联规则创建策略定义，请使用：
+
 ```azurecli
-az policy definition create --name coolAccessTier --description "Policy to specify access tier." --rules '{
+az policy definition create --name denyCoolTiering --description "Deny cool access tiering for storage" --rules '{
   "if": {
     "allOf": [
       {
@@ -371,5 +403,4 @@ az policy assignment delete --name coolAccessTier --scope /subscriptions/{subscr
 
 ## <a name="next-steps"></a>后续步骤
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
 

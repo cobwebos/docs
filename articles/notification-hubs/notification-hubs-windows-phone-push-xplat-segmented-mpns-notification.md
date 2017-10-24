@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
 ## <a name="prerequisites"></a>先决条件
-本主题中创建的应用程序生成[通知中心入门]。 在开始本教程之前，必须先完成[通知中心入门]教程的学习。
+本主题以在[通知中心入门]中创建的应用为基础。 在开始本教程之前，必须先完成[通知中心入门]教程的学习。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 第一步是向现有主页添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在通知中心创建设备注册。
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
             <CheckBox Name="SportsCheckBox" Grid.Row="2" Grid.Column="1">Sports</CheckBox>
             <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
         </Grid>
-2. 在该项目中，创建名为 Notifications 的新类，向类定义添加 public 修饰符，然后将以下 using 语句添加到新的代码文件：
+2. 在该项目中，创建名为 **Notifications** 的新类，向类定义添加 **public** 修饰符，然后将以下 **using** 语句添加到新的代码文件：
    
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
@@ -186,7 +186,7 @@ ms.lasthandoff: 07/11/2017
     此类使用隔离存储区存储此设备要接收的新闻类别。 它还包含用于通过[模板](notification-hubs-templates-cross-platform-push-messages.md)通知注册来注册这些类别的方法。
 
 
-1. 在 App.xaml.cs 项目文件中，将以下属性添加到 App 类。 将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 DefaultListenSharedAccessSignature 的连接字符串。
+1. 在 App.xaml.cs 项目文件中，将以下属性添加到 **App** 类： 将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
    
         public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
    
@@ -227,7 +227,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-1. 打开 App.xaml.cs 文件，将 async 修饰符添加到 Application_Launching 方法，并将你在[通知中心入门]中添加的通知中心注册代码替换为以下代码：
+1. 打开 App.xaml.cs 文件，将 **async** 修饰符添加到 **Application_Launching** 方法，并会在[通知中心入门]中添加的通知中心注册代码替换为以下代码：
    
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
@@ -257,7 +257,7 @@ ms.lasthandoff: 07/11/2017
    
     这基于以前保存的类别状态更新主页。
 
-应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时会使用这些类别注册到通知中心。 接下来，我们会定义一个后端，它可将类别通知发送到此应用程序。
+应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时会使用这些类别注册到通知中心。 接下来，我们将定义一个后端，它可将类别通知发送到此应用程序。
 
 ## <a name="sending-tagged-notifications"></a>发送带标记的通知
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
@@ -273,7 +273,7 @@ ms.lasthandoff: 07/11/2017
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
    
     ![][2]
-3. 在接收类别已完成订阅的确认后，运行控制台应用以发送每个类别的通知。 确认你只会收到订阅的类别的通知。
+3. 在接收类别已完成订阅的确认后，运行控制台应用以发送每个类别的通知。 验证是否仅接收已订阅类别的通知。
    
     ![][3]
 

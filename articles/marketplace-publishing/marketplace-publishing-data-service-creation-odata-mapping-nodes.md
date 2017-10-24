@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.openlocfilehash: 8ff76ea21ba684ae2a2afcb74d66b4912d7be053
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>了解通过 CSDL 将现有 Web 服务映射到 OData 的节点架构
 > [!IMPORTANT]
@@ -70,7 +70,7 @@ FunctionImport 节点表示一个将服务公开给最终用户的 URL（入口�
 **d:Paging** - 指定 REST 资源如何处理分页。 参数值在大括号内使用，例如 page={$page}&itemsperpage={$size} 可用的选项为：
 
 * **None：**无分页可用
-* **Skip：**分页通过逻辑“skip”和“take”（顶部）表示。 跳过跳转在 M 元素，并采取，然后返回下一步的 N 元素。 参数值：$skip
+* **Skip：**分页通过逻辑“skip”和“take”（顶部）表示。 “skip”跳过 M 元素，“take”随之返回后续的 N 元素。 参数值：$skip
 * **Take：**Take 返回后续的 N 元素。 参数值：$take
 * **PageSize：**分页通过逻辑页和大小（每页的项目）表示。 Page 表示返回的当前页。 参数值：$page
 * **Size：** Size 表示为每页返回的项目数。 参数值：$size

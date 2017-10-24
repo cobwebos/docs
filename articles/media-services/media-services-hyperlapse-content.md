@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
 ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapse 媒体文件与 Azure Media Hyperlapse
 Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创建流畅缩时视频的媒体处理器 (MP)。  Azure 媒体服务的基于云的 Microsoft Hyperlapse 与 [Microsoft Research 的桌面 Hyperlapse Pro 和手机版 Hyperlapse Mobile](http://aka.ms/hyperlapse) 相似，它运用大规模的 Azure 媒体服务媒体处理平台来实现水平缩放，以及并行化批量 Hyperlapse 处理。
@@ -36,7 +36,7 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
 首先，请将所需的输入文件上传到 Azure 媒体服务。  若要深入了解有关上传和管理内容的概念，请阅读[内容管理文章](media-services-portal-vod-get-started.md)。
 
 ### <a id="configuration"></a>Hyperlapse 的配置预设
-内容上传到媒体服务帐户后，需要构造配置预设。  下表说明了用户指定的字段：
+将内容上传到媒体服务帐户后，需要构造配置预设。  下表说明了用户指定的字段：
 
 | 字段 | 说明 |
 | --- | --- |
@@ -74,8 +74,8 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
         }
     }
 
-### <a id="sample_code"></a> 包含 AMS .NET SDK 的 Microsoft Hyperlapse
-以下方法将媒体文件上传为资产，并使用 Azure Media Hyperlapse 媒体处理器来创建作业。
+### <a id="sample_code"></a>包含 AMS .NET SDK 的 Microsoft Hyperlapse
+以下方法将媒体文件上传为资产，然后使用 Azure Media Hyperlapse 媒体处理器来创建作业。
 
 > [!NOTE]
 > 为了使代码正常工作，应该事先在名为“context”的作用域中创建 CloudMediaContext。  若要了解详细信息，请阅读[内容管理文章](media-services-dotnet-get-started.md)。

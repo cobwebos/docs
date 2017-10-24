@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 768c9a1c906999f4690c9c8f7d075743ab1678ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>从 StorSimple 虚拟阵列的备份克隆
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 07/11/2017
 
 2. 识别包含最新版本的已删除文件的备份。 尽管文件夹名称包含上述每种情况中的 UTC 时间戳，但该文件夹的创建时间是备份开始时的实际设备时间。 使用文件夹时间戳查找和标识备份。
 
-3. 在上一步中标识的备份中查找想要还原的文件夹或文件。 请注意，用户只能查看对其具有权限的文件或文件夹。 如果无法访问某些文件或文件夹，请联系共享管理员。 管理员可以使用文件资源管理器来编辑共享权限，并授予你访问的特定文件或文件夹。 建议的最佳做法是将共享管理员设置为用户组而非单个用户。
+3. 在上一步中标识的备份中查找想要还原的文件夹或文件。 请注意，用户只能查看对其具有权限的文件或文件夹。 如果无法访问某些文件或文件夹，请联系共享管理员。 管理员可使用文件资源管理器编辑共享权限并允许访问特定文件或文件夹。 建议的最佳做法是将共享管理员设置为用户组而非单个用户。
 
 4. 将文件或文件夹复制到 StorSimple 文件服务器上的相应共享。
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>通过 CSDL 将现有 Web 服务映射到 OData 示例
 > [!IMPORTANT]
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-post"></a>示例：使用“POST”返回的“原始”数据的 FunctionImport
-使用 POST 原始数据，创建新从属并返回其服务器定义的 URL(location)，或者通过服务器定义的 URL 更新从属的一部分。  其中从属是流，即 非结构化，例如 文本文件。  请注意 POST 为非幂等，并且不带位置。
+使用 POST 原始数据，创建新从属并返回其服务器定义的 URL(location)，或者通过服务器定义的 URL 更新从属的一部分。  其中从属是一个流（即非结构化），例如 文本文件。  请注意 POST 为非幂等，并且不带位置。
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -106,7 +106,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-put"></a>示例：使用“PUT”返回的“原始”数据的 FunctionImport
-使用 PUT 原始数据创建新从属，或通过服务器定义的 URL 更新整个从属。  其中从属是流，即 非结构化，例如 文本文件。  PUT 是幂等的，因此多个匹配项将生成相同的状态，即 x=5。  Put 应与指定资源的完整内容一起使用。
+使用 PUT 原始数据创建新从属，或通过服务器定义的 URL 更新整个从属。  其中从属是一个流（即非结构化），例如 文本文件。  PUT 是幂等的，因此多个匹配项将生成相同的状态，即 x=5。  Put 应与指定资源的完整内容一起使用。
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-change-your-storsimple-passwords"></a>使用 StorSimple Manager 服务更改 StorSimple 密码
 ## <a name="overview"></a>概述
@@ -27,7 +27,7 @@ Azure 经典门户“配置”页包含用户可以在由 StorSimple Manager 服
 ## <a name="change-the-device-administrator-password"></a>更改设备管理员密码
 使用 Windows PowerShell 接口访问 StorSimple 设备时，需要输入设备管理员密码。 向服务注册第一个 StorSimple 设备时，此接口的默认密码为 *Password1*。 为了确保数据的安全，必须在注册过程结束时更改此密码。 如果不更改此密码，则无法退出注册过程。 有关详细信息，请参阅[步骤 3︰通过 Windows PowerShell for StorSimple 配置和注册设备](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)。
 
-然后可以通过 Azure 经典门户中更改在注册过程的第一次通过 Windows PowerShell 界面设置的密码。 执行以下步骤，更改设备管理员密码。
+然后，用户可以通过 Azure 经典门户更改首次在注册过程中通过 Windows PowerShell 界面设置的密码。 执行以下步骤，更改设备管理员密码。
 
 #### <a name="to-change-the-device-administrator-password"></a>更改设备管理员密码
 1. 在经典门户中，针对设备单击“设备” > “配置”。
@@ -42,7 +42,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 在 StorSimple Snapshot Manager 中配置设备时，系统会提示用户提供设备 IP 地址和密码对存储设备进行身份验证。 此密码是通过 Windows PowerShell 界面首次配置的。 有关详细信息，请参阅[步骤 3︰通过 Windows PowerShell for StorSimple 配置和注册设备](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)。
 
-然后可以通过经典门户中更改在注册过程的第一次通过 Windows PowerShell 界面设置的密码。 执行以下步骤，更改 StorSimple Snapshot Manager 密码。
+然后，用户可以通过经典门户更改在注册过程中通过 Windows PowerShell 界面首次设置的密码。 执行以下步骤，更改 StorSimple Snapshot Manager 密码。
 
 #### <a name="to-change-the-storsimple-snapshot-manager-password"></a>更改 StorSimple Snapshot Manager 密码
 1. 在经典门户中，针对设备单击“设备” > “配置”。

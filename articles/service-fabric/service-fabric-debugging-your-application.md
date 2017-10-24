@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: vturecek;mikhegn
 ms.openlocfilehash: 2459025899a7f5ffebf44fa104ed112c0eb99dfa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
    
     ![打开“诊断事件”窗口][viewdiagnosticevents]
    
-    如果想要将跟踪筛选为特定服务或应用程序，只需对该特定服务或应用程序启用流式处理跟踪。
+    如果想要将跟踪筛选为特定的服务或应用程序，只需对该特定服务或应用程序启用流跟踪。
 6. 可以在自动生成的 **ServiceEventSource.cs** 文件中看到诊断事件，并且可从应用程序节点中进行调用。
    
     ```csharp
@@ -80,8 +80,8 @@ ms.lasthandoff: 07/11/2017
    
     ![启用远程调试][enableremotedebugging]
    
-    这会开始在群集节点上启用远程调试扩展的过程，以及所需的网络配置。
-2. 在“**Cloud Explorer**”中右键单击群集节点，并选择“**附加调试器**”。
+    这将开始在群集节点上启用远程调试扩展，以及所需的网络配置。
+2. 右键单击“**Cloud Explorer**”中的群集节点，并选择“**附加调试器**”。
    
     ![附加调试程序][attachdebugger]
 3. 在“**附加到进程**”对话框中，选择想要调试的进程，并单击“**附加**”。
@@ -90,7 +90,7 @@ ms.lasthandoff: 07/11/2017
    
     想要附加到的进程名称等于服务项目组件名称。
    
-    调试器将附加到运行该进程的所有节点。
+    调试器将复制到运行进程的所有节点。
    
    * 在调试无状态服务的情况下，所有节点上此服务的所有实例都是调试会话的一部分。
    * 如果正在调试有状态服务，任何分区都只有主副本处于活动状态，因而遭到调试器捕获。 如果在调试会话期间移动主副本，仍在调试会话中处理该副本。
@@ -107,7 +107,7 @@ ms.lasthandoff: 07/11/2017
     ![禁用远程调试][disableremotedebugging]
 
 ## <a name="streaming-traces-from-a-remote-cluster-node"></a>从远程群集节点流式传输跟踪
-也可直接从远程群集节点将跟踪流式传输到 Visual studio。 借助此功能，可以流式传输在 Service Fabric 群集节点上生成的 ETW 跟踪事件。
+也可以直接从远程群集节点将跟踪流式传输到 Visual studio。 借助此功能，可以流式传输在 Service Fabric 群集节点上生成的 ETW 跟踪事件。
 
 > [!NOTE]
 > 此功能需要 [Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) 和 [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/)。
@@ -126,12 +126,12 @@ ms.lasthandoff: 07/11/2017
    
     ![启用远程流跟踪][enablestreamingtraces]
    
-    这会开始在群集节点上启用流式处理跟踪扩展的过程，以及所需的网络配置。
+    这将开始在群集节点上启用流式处理跟踪扩展，以及所需的网络配置。
 2. 在“**Cloud Explorer**”中展开“**节点**”元素，右键单击想要进行流式跟踪的节点，并选择“**查看流式跟踪**”
    
     ![查看远程流跟踪][viewremotestreamingtraces]
    
-    针对想要查看其跟踪的任意数目的节点重复步骤 2。 每个节点流显示在专用窗口中。
+    针对想要查看其跟踪的任意数目的节点重复步骤 2。 每个节点流会显示在专用窗口中。
    
     现在，可以查看 Service Fabric 以及服务发出的跟踪。 如果想要筛选事件以便只显示特定的应用程序，只需在筛选器中键入应用程序的名称即可。
    

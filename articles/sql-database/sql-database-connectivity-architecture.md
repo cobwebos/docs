@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 524804c972ee3a5e97ebc756628dbf7ef5ab720d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 308bf9dcde3a6c586e316c02cd261da8ed5b4bcb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构 
 
@@ -101,7 +100,7 @@ ms.lasthandoff: 06/28/2017
 - 如果将连接策略设置为“代理”，则所有网络数据包均通过 Azure SQL 数据库网关进行传输。 对于此设置，需要允许仅出站到 Azure SQL 数据库网关 IP。 使用“代理”设置比使用“重定向”设置的延迟时间更长。 
 - 如果连接策略设置为“重定向”，则所有网络数据包直接向中间件代理传输。 对于此设置，需要允许出站到多个 IP。 
 
-## <a name="script-to-change-connection-settings"></a>编写脚本以更改连接设置
+## <a name="script-to-change-connection-settings-via-powershell"></a>通过 PowerShell 编写脚本以更改连接设置 
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
@@ -161,9 +160,34 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
+## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>通过 Azure CLI 2.0 编写脚本以更改连接设置 
+
+> [!IMPORTANT]
+> 此脚本需要 [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
+>
+
+以下 CLI 脚本演示如何更改连接策略。
+
+<pre>
+ # Get SQL Server ID
+ sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+
+# Set URI
+uri="https://management.azure.com/$sqlserverid/connectionPolicies/Default?api-version=2014-04-01-preview"
+
+# Get Access Token 
+accessToken=$(az account get-access-token --query 'accessToken' -o tsv)
+
+# Get current connection policy 
+curl -H "authorization: Bearer $accessToken" -X GET $uri
+
+#Update connection policy 
+curl -H "authorization: Bearer $accessToken" -H "Content-Type: application/json" -d '{"properties":{"connectionType":"Proxy"}}' -X PUT $uri
+
+</pre>
+
 ## <a name="next-steps"></a>后续步骤
 
 - 有关如何更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略的信息，请参阅[使用 REST API 创建或更新服务器连接策略](https://msdn.microsoft.com/library/azure/mt604439.aspx)。
 - 有关使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为的信息，请参阅[用于 ADO.NET 4.5 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 - 有关常规应用程序开发的概述信息，请参阅[SQL 数据库应用程序开发概述](sql-database-develop-overview.md)。
-

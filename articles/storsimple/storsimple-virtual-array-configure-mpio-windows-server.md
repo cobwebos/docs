@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/01/2017
 ms.author: alkohli
 ms.openlocfilehash: c75c6ed40754aee964e2b68f4f569dc1422507f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>在 Windows Server 主机上为 StorSimple Virtual Array 配置多路径 I/O
 ## <a name="overview"></a>概述
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/11/2017
 
 Windows Server 中的 MPIO 功能可以帮助构建具有高可用性的可容错存储配置。 MPIO 使用冗余的物理路径组件（适配器、电缆和交换机）在服务器与存储设备之间创建逻辑路径。 如果发生组件故障，导致某条逻辑路径失败，则多路径逻辑将使用备用路径执行 I/O，以便应用程序仍然可以访问其数据。 另外，根据配置，MPIO 还可以通过在这些路径之间重新进行负载均衡来提高性能。 有关详细信息，请参阅 [MPIO 概述](https://technet.microsoft.com/library/cc725907.aspx "MPIO overview and features")。
 
-要实现 StorSimple 解决方案的高可用性，请在连接到 StorSimple 虚拟阵列（型号 1200）的 Windows Server 主机上配置 MPIO。 主机服务器然后能够承受链路、 网络或接口故障。 
+要实现 StorSimple 解决方案的高可用性，请在连接到 StorSimple 虚拟阵列（型号 1200）的 Windows Server 主机上配置 MPIO。 然后，主机服务器可以包容链路、网络或接口故障。 
 
 需要执行以下步骤来配置 MPIO： 
 
@@ -127,7 +127,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
     
     5. 在添加所需的会话（路径）后，在“iSCSI 发起程序属性”对话框中，选择目标并单击“属性”。 在“属性”对话框的“会话”选项卡上，记下与可能的路径排列对应的四个会话标识符。 要取消会话，请选中会话标识符旁边的复选框，并单击“断开连接”。
 
-    6. 若要查看会话内存在的设备，请选择“设备”选项卡。 若要为所选设备配置 MPIO 策略，请单击“MPIO”。
+    6. 若要查看会话内存在的设备，请选择“设备”选项卡。若要为所选设备配置 MPIO 策略，请单击“MPIO”。
 
     7. “详细信息”对话框随即将出现。 在“MPIO”选项卡上，可以选择适当的“负载均衡策略”设置。 还可以查看“活动”或“备用”路径类型。
 12. 重复步骤 8-11 来向目标添加其他会话（路径）。 当主机上有两个接口且虚拟阵列上有两个接口时，可以为每个目标添加总共四个会话。 

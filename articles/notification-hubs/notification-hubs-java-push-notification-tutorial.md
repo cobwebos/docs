@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 41f978750ddef9f7e878c65b0017e909720154aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -136,7 +136,7 @@ SDK 当前支持：
 所有集合查询都支持 $top 和继续标记。
 
 ### <a name="installation-api-usage"></a>安装 API 用法
-安装 API 是一种注册管理的替代机制。 其现在可以使用“单个”安装对象，而不是维护着多个注册，后者不但工作量较大，而且容易出错且效率低下。 安装包含你所需的一切：推送通道（设备标记）、标记、模板、辅助磁贴（用于 WNS 和 APNS）。 不必再调用该服务以获取 ID - 只需生成 GUID 或任何其他标识符，将其保存在设备上并与推送通道（设备标记）一起发送到你的后端即可。 在后端，应当只做一个调用：CreateOrUpdateInstallation，其完全是幂等的，因此，如果需要，可随时重试。
+安装 API 是一种注册管理的替代机制。 其现在可以使用“单个”安装对象，而不是维护着多个注册，后者不但工作量较大，而且容易出错且效率低下。 安装包含所需一切内容：推送通道（设备标记）、标记、模板、辅助磁贴（用于 WNS 和 APNS）。 不必再调用该服务以获取 ID - 只需生成 GUID 或任何其他标识符，将其保存在设备上并与推送通道（设备标记）一起发送到后端即可。 在后端，应当只做一个调用：CreateOrUpdateInstallation，其完全是幂等的，因此，如果需要，可随时重试。
 
 针对 Amazon Kindle Fire，示例如下：
 
@@ -150,7 +150,7 @@ SDK 当前支持：
     installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
     hub.createOrUpdateInstallation(installation);
 
-对于高级方案，我们提供有部分更新功能，以允许仅修改安装对象的特定属性。 基本上，部分更新是你针对安装对象运行 JSON Patch 操作的子集。
+对于高级方案，我们提供有部分更新功能，以允许仅修改安装对象的特定属性。 部分更新本质上是可针对安装对象运行的 JSON Patch 操作的子集。
 
     PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
     PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
@@ -163,7 +163,7 @@ SDK 当前支持：
 
 CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在调用期间进入系统队列并在后台执行。 请注意，Get 并不适用于主运行时方案，只适用于调试和故障排除，其会受到服务的严密限制。
 
-安装的发送流与注册的一样。 我们只是引入了一个选项以将通知锁定至特定安装 - 仅使用了标记 "InstallationId:{desired-id}"。 对于上述情况，其如下所示：
+安装的发送流与注册的一样。 我们只是引入了一个选项以将通知定向至特定安装 - 仅使用了标记“InstallationId:{desired-id}”。 对于上述情况，其如下所示：
 
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.sendNotification(n, "InstallationId:{installation-id}");
@@ -220,7 +220,7 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在�
 **使用 SAS 签名的 URI：**这是某些 BLOB 文件或 BLOB 容器的 URL，加上一组参数（例如权限和到期日期），再加上使用帐户的 SAS 密钥生成的所有这些内容的签名。 Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。 作为简单的替代，可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有非常基本、精简的签名算法。
 
 ### <a name="send-notifications"></a>发送通知
-通知对象只有带有标头的正文，一些实用工具方法可帮助你构建本机和模板通知对象。
+通知对象只是一个带标头的正文，而一些实用工具方法有助于构建本机和模板通知对象。
 
 * **Windows 应用商店和 Windows Phone 8.1（非 Silverlight）**
   

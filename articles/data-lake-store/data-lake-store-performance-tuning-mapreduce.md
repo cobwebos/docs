@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 9528148792f083cb0e48d356e61cf61762ee954f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>MapReduce on HDInsight 和 Azure Data Lake Store 性能优化指南
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 07/11/2017
 * **Mapreduce.reduce.memory.mb** - 要分配给每个化简器的内存量
 * **Mapreduce.job.reduces** - 每个作业的化简任务数
 
-**Mapreduce.map.memory/Mapreduce.reduce.memory** 应根据映射和/或化简任务所需的内存量调整此数字。  可以在 Ambari 中通过 Yarn 配置查看 mapreduce.map.memory 和 mapreduce.reduce.memory 的默认值。  在 Ambari 中，导航到 YARN 并查看“配置”选项卡。  随即显示 YARN 内存。  
+**Mapreduce.map.memory/Mapreduce.reduce.memory** 应根据映射和/或化简任务所需的内存量调整此数字。  可以在 Ambari 中通过 Yarn 配置查看 mapreduce.map.memory 和 mapreduce.reduce.memory 的默认值。  在 Ambari 中，导航到 YARN 并查看“配置”选项卡。随即显示 YARN 内存。  
 
 **Mapreduce.job.maps/Mapreduce.job.reduces** 此项确定要创建的映射器或化简器的最大数量。  拆分数将确定要为 MapReduce 作业创建多少个映射器。  因此，如果拆分数少于所请求的映射器数，则得到的映射器数可能会少于所请求的数量。       
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 07/11/2017
 
 **步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory** - 用于映射和化简任务的内存大小将取决于特定作业。  如果要提高并发性，可以减少内存大小。  并发运行的任务数取决于容器数。  减少每个映射器或化简器的内存量，可以创建多个容器，从而使更多映射器或化简器可以并发运行。  减少过多的内存量可能会导致某些进程内存不足。  如果在运行作业时收到堆错误，应增加每个映射器或化简器的内存。  应考虑到添加更多容器会添加每个附加容器的额外开销，这可能会降低性能。  另一种替代方法是通过使用具有更高内存量的群集或增加群集中的节点数来获得更多内存。  有更多内存将可以使用更多容器，这意味着可实现更高并发性。  
 
-**步骤 3：确定总 YARN 内存量** - 若要优化 mapreduce.job.maps/mapreduce.job.reduces，应考虑可供使用的总 YARN 内存量。  该信息在 Ambari 中提供。  导航到 YARN 并查看“配置”选项卡。  YARN 内存量会显示在此窗口中。  应将 YARN 内存量与群集中的节点数相乘，获得总 YARN 内存量。
+**步骤 3：确定总 YARN 内存量** - 若要优化 mapreduce.job.maps/mapreduce.job.reduces，应考虑可供使用的总 YARN 内存量。  该信息在 Ambari 中提供。  导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。  应将 YARN 内存量与群集中的节点数相乘，获得总 YARN 内存量。
 
     Total YARN memory = nodes * YARN memory per node
 如果使用的是空群集，则内存量可能会是群集的总 YARN 内存量。  如果其他应用程序正在使用内存，则可以通过将映射器或化简器的数目减少到要使用的容器数来选择仅使用群集的一部分内存。  
@@ -65,7 +65,7 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 ## <a name="example-calculation"></a>示例计算
 
-让我们假设你当前有 8 个 D14 节点所组成的群集，并且你想要运行的 I/O 密集型作业。  以下是你应执行的计算：
+让我们假设你当前有一个由 8 个 D14 节点组成的群集，并且你想要运行一个 I/O 密集型作业。  下面是你应执行的计算：
 
 **步骤 1：确定正在运行的作业数** - 对于本示例，假定我们的作业是唯一正在运行的作业。  
 
@@ -91,7 +91,7 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 若要查看是否受到限制，需要在客户端上启用调试日志记录。 下面介绍执行该操作的方法：
 
-1. 将以下属性放在 Ambari 的 log4j 属性中 > YARN > 配置 > 高级 yarn log4j: log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+1. 将 log4j 属性中的以下属性放到 Ambari > YARN >“配置”>“高级 yarn-log4j”中：log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
 2. 重新启动所有节点/服务使配置生效。
 

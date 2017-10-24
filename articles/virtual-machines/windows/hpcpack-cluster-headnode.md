@@ -1,5 +1,5 @@
 ---
-title: "在 Azure VM 中创建 HPC Pack 头节点 | Microsoft Docs"
+title: "在 Azure VM 中创建 HPC Pack 头节点 | Microsoft 文档"
 description: "了解如何使用 Azure 门户和 Resource Manager 部署模型在 Azure VM 中创建 Microsoft HPC Pack 2012 R2 头节点。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 ms.openlocfilehash: b2bb9caf82a580dc5f67ea0b0b1c2e9a46363e9c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>在 Azure VM 中使用应用商店映像创建 HPC Pack 群集的头节点
 使用 Azure 应用商店和 Azure 门户中的 [Microsoft HPC Pack 2012 R2 虚拟机映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)创建 HPC 群集的头节点。 此 HPC Pack VM 映像基于预安装了 HPC Pack 2012 R2 Update 3 的 Windows Server 2012 R2 Datacenter。 使用此头节点在 Azure 中进行 HPC Pack 的概念证明部署。 然后，可以向该群集添加计算节点，以运行 HPC 工作负荷。
@@ -34,9 +34,9 @@ ms.lasthandoff: 07/11/2017
 
 ![HPC Pack 头节点][headnode]
 
-* **Active Directory 域**：必须先将 HPC Pack 2012 R2 头节点加入到 Azure 中的 Active Directory 域，再在 VM 上启动 HPC 服务。 如本文所示，如果要进行概念证明部署，可以先将为头节点创建的 VM 提升为域控制器，再启动 HPC 服务。 另一种方法是在 Azure 中部署单独的域控制器和林，并将头节点 VM 加入到该域林。
+* **Active Directory 域**：必须先将 HPC Pack 2012 R2 头节点加入到 Azure 中的 Active Directory 域，再在 VM 上启动 HPC 服务。 如本文所示，要进行概念证明部署，可以先将为头节点创建的 VM 提升为域控制器，然后再启动 HPC 服务。 另一种方法是在 Azure 中部署单独的域控制器和林，并将头节点 VM 加入到该域林。
 
-* **部署模型**：对于大多数新部署，Microsoft 建议使用 Resource Manager 部署模型。 本文假定你使用这种部署模型。
+* **部署模型**：对于大多数新部署，Microsoft 建议使用 Resource Manager 部署模型。 本文假定用户使用这种部署模型。
 
 * **Azure 虚拟网络**：通过 Resource Manager 部署模型部署头节点时，可指定或创建 Azure 虚拟网络。 如需将头节点加入现有的 Active Directory 域，可使用虚拟网络。 在以后还需使用它将计算节点 VM 添加到群集。
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 5. 创建 VM 并运行 VM 之后，通过远程桌面[连接到 VM](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 6. 选择以下任一选项，将 VM 加入到 Active Directory 域林：
    
-   * 如果使用现有的域林在 Azure 虚拟网络中创建了 VM，请使用标准的 Server Manager 或 Windows PowerShell 工具将 VM 加入到该林。 然后重新启动。
+   * 如果使用现有的域林在 Azure 虚拟网络中创建了 VM，请使用标准的 Server Manager 或 Windows PowerShell 工具将 VM 加入到该林。 然后重启。
    * 如果在新的虚拟网络中创建 VM（未使用现有域林），则将该 VM 提升为域控制器。 使用标准步骤安装和配置头节点上的 Active Directory 域服务角色。 有关详细步骤，请参阅[安装新的 Windows Server 2012 Active Directory 林](https://technet.microsoft.com/library/jj574166.aspx)。
 7. 在 VM 运行并加入到 Active Directory 林后启动 HPC Pack 服务，如下所示：
    

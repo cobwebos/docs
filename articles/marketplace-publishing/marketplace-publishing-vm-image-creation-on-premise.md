@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
 ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  
@@ -116,7 +116,7 @@ ms.lasthandoff: 07/11/2017
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-然后你可以通过使用创建该存储帐户中的容器[NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) cmdlet。
+然后，可以使用 [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) cmdlet 在存储帐户中创建容器。
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 

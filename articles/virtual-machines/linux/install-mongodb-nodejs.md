@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
 ms.openlocfilehash: c97ade0a3d95824f723aad55776de861fe49441f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>如何使用 Azure CLI 1.0 在 Linux VM 上安装和配置 MongoDB
 [MongoDB](http://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文说明如何使用 Resource Manager 部署模型在 Azure 中的 Linux VM 上安装和配置 MongoDB。 文中提供了一些示例，详细说明如何执行以下操作：
@@ -73,7 +73,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 sudo yum install -y mongodb-org
 ```
 
-默认情况下，CentOS 映像中强制实施 SELinux，会阻止你访问 MongoDB。 安装策略管理工具并配置 SELinux 可让 MongoDB 在其默认 TCP 端口 27017 上运行，如下所示。 
+默认情况下，CentOS 映像中强制实施 SELinux，阻止访问 MongoDB。 安装策略管理工具并配置 SELinux 可让 MongoDB 在其默认 TCP 端口 27017 上运行，如下所示。 
 
 ```bash
 sudo yum install -y policycoreutils-python

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
 ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>管理 Azure 虚拟机备份
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 
     ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png) <br/>
 
-    此时显示恢复服务保管库列表。
+    此时会显示恢复服务保管库列表。
 
     ![恢复服务保管库列表 ](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
 
@@ -170,7 +170,7 @@ ms.lasthandoff: 07/11/2017
 
     如果不能确定项名称，将鼠标悬停在感叹号上面即可查看该名称。 另外，项的名称位于边栏选项卡顶部的“**停止备份**”下。
 4. （可选）提供**原因**或**注释**。
-5. 若要停止当前项的备份作业，请单击“停止备份”按钮![](./media/backup-azure-manage-vms/stop-backup-button-blue.png)
+5. 要停止当前项的备份作业，请单击![“停止备份”按钮](./media/backup-azure-manage-vms/stop-backup-button-blue.png)
 
     可以通过通知消息了解到备份作业已停止。
 
@@ -219,9 +219,9 @@ ms.lasthandoff: 07/11/2017
 
     如果不能确定项名称，将鼠标悬停在感叹号上面即可查看该名称。 另外，项的名称位于边栏选项卡顶部的“**删除备份数据**”下。
 3. （可选）提供**原因**或**注释**。
-4. 若要删除当前项的备份数据，请单击“停止备份”按钮![](./media/backup-azure-manage-vms/delete-button.png)
+4. 要删除当前项的备份数据，请单击![“停止备份”按钮](./media/backup-azure-manage-vms/delete-button.png)
 
     可以通过通知消息了解到备份数据已删除。
 
 ## <a name="next-steps"></a>后续步骤
-有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-restore-vms.md)（还原 Azure VM）。 如果需要有关如何保护虚拟机的信息，请参阅[初步了解：将 VM 备份到恢复服务保管库](backup-azure-vms-first-look-arm.md)。 有关监视事件的信息，请参阅[监视 Azure 虚拟机备份的警报](backup-azure-monitor-vms.md)。
+有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-restore-vms.md)（还原 Azure VM）。 如果需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 有关监视事件的信息，请参阅[监视 Azure 虚拟机备份的警报](backup-azure-monitor-vms.md)。

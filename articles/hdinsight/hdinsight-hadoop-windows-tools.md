@@ -11,10 +11,10 @@ ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: e4f231c1f9b903d6cc7f2b062b30d2a072be8493
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Hadoop 生态系统中工作
 
@@ -35,8 +35,8 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>可在浏览器中运行的实用工具
 以下实用工具提供可在浏览器中运行的 Web UI：
-* **[Azure Cloud Shell（预览）](https://docs.microsoft.com/azure/cloud-shell/quickstart)**是可在浏览器和 Azure 门户中运行的交互式命令行 shell。
-* **[Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** 是 Azure 门户中提供的管理和监视实用工具，可用于管理不同类型的作业，例如：
+* [Azure Cloud Shell（预览）](https://docs.microsoft.com/azure/cloud-shell/quickstart)是可在浏览器和 Azure 门户中运行的交互式命令行 shell。
+* [Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 是 Azure 门户中提供的管理和监视实用工具，可用于管理不同类型的作业，例如：
     * [将 Ambari 与 REST API 配合使用](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Ambari 中的 Hive 视图](hdinsight-hadoop-use-hive-ambari-view.md)
     * [Ambari 中的 Tez 视图](hdinsight-debug-ambari-tez-view.md)

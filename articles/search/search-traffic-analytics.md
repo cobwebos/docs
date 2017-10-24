@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/05/2017
 ms.author: betorres
 ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-search-traffic-analytics"></a>搜索流量分析是什么
 搜索流量分析是用于为搜索服务实现反馈循环的模式。 此模式描述必需的数据以及如何使用 Application Insights（用于监视多个平台中的服务的行业领导者）收集这些数据。
@@ -167,7 +167,7 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 ### <a name="3-analyze-with-power-bi-desktop"></a>3.使用 Power BI Desktop 进行分析
 
 检测到应用并确认应用程序已正确连接到 Application Insights 后，可以对 Power BI Desktop 使用由 Azure 搜索创建的预定义模板。
-此模板包含图表和表可帮助你做出更明智的决策，以提高搜索性能和相关性。
+此模板包含图表和表格，可帮助你做出更明智的决策来提高搜索性能和相关性。
 
 若要实例化 Power BI Desktop 模板，需要三部分有关 Application Insights 的信息。 此数据可以在“搜索流量分析”页中找到（选择要使用的资源时）
 

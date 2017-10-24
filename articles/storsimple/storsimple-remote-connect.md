@@ -1,5 +1,5 @@
 ---
-title: "远程连接到 StorSimple 设备 | Microsoft Docs"
+title: "远程连接到 StorSimple 设备 | Microsoft 文档"
 description: "介绍如何配置设备进行远程管理，以及如何通过 HTTP 或 HTTPS 连接到 Windows PowerShell for StorSimple。"
 services: storsimple
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
 * 与在网络上通过串行控制台进行连接相比，通过 HTTP 会话进行连接可能具有更高的安全性。 虽然这不是最安全的方法，但在受信任的网络上是比较可行的方法。 
 * 通过使用自签名证书的 HTTPS 会话进行连接是最安全的选项（建议使用）。
 
-可以远程连接到 Windows PowerShell 接口。 但在默认情况下，通过 Windows PowerShell 接口远程访问 StorSimple 设备处于未启用状态。 你需要首先，启用设备上的远程管理，然后在客户端用于访问你的设备。
+可以远程连接到 Windows PowerShell 接口。 但在默认情况下，通过 Windows PowerShell 接口远程访问 StorSimple 设备处于未启用状态。 首先需要在设备上启用远程管理，然后在用于访问设备的客户端上启用远程管理。
 
 本文中所述的步骤是在运行 Windows Server 2012 R2 的主机系统上执行的。
 

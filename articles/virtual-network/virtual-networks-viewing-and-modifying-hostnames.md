@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 ms.openlocfilehash: 9a3a1e1b58dcb828e2d2d09c18f1aab6d46051aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="viewing-and-modifying-hostnames"></a>查看和修改主机名
 若要允许通过主机名引用角色实例，必须在服务配置文件中为每个角色设置主机名的值。 可以通过将所需主机名添加到 **Role** 元素的 **vmName** 属性来执行该操作。 **vmName** 属性的值将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。 无需在配置文件中为虚拟机指定主机名，因为虚拟机的主机名会基于虚拟机名称填充。 有关配置 Microsoft Azure 服务的详细信息，请参阅 [Azure Service 配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -29,10 +29,10 @@ ms.lasthandoff: 07/11/2017
 ### <a name="azure-portal"></a>Azure 门户
 可以在 [Azure 门户](http://portal.azure.com)上虚拟机的概览边栏选项卡中查看虚拟机的主机名。 请记住，该边栏选项卡显示的是“**名称**”和“**主机名**”的值。 尽管它们最初是相同的，但更改主机名不会更改虚拟机或角色实例的名称。
 
-也可以在 Azure 门户中查看角色实例，但列出云服务中的实例时，不会显示主机名。 你会看到每个实例的名称，但该名称不表示主机名。
+也可以在 Azure 门户中查看角色实例，但列出云服务中的实例时，不会显示主机名。 会看到每个实例的名称，但该名称不表示主机名。
 
 ### <a name="service-configuration-file"></a>服务配置文件
-可以从 Azure 门户中服务的“**配置**”边栏选项卡下载已部署服务的服务配置文件。 然后，可以查找**角色名称**元素的 **vmName** 属性以查看主机名。 请记住，此主机名将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
+可以从 Azure 门户中服务的“**配置**”边栏选项卡下载已部署服务的服务配置文件。 然后，可以查找 Role name 元素的 vmName 属性，以查看主机名。 请记住，此主机名将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
 
 ### <a name="remote-desktop"></a>远程桌面
 启用与虚拟机或角色实例的远程桌面 (Windows) 连接、Windows PowerShell 远程处理 (Windows) 连接或 SSH（Linux 和 Windows）连接后，可以通过多种方式从活动的远程桌面连接查看主机名：

@@ -12,17 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 10/06/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: f7f5e2939ed09c0fbb4eb81f066075553376ff57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 6f272136d535dddd9c8213293841ace203c042a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中分区和缩放
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 是一种全局分布的多模型数据库服务，旨在帮助用户实现快速且可预测的性能。 随着应用程序的发展，它也不断无缝扩展。 本文概述了分区如何应用于 Azure Cosmos DB 中的所有数据模型。 文中还介绍了如何配置 Azure Cosmos DB 容器以有效扩展应用程序。
@@ -63,6 +61,12 @@ Azure Cosmos DB 使用基于哈希的分区。 写入某个项时，Azure Cosmos
 >
 
 可以“固定”或“无限制”模式创建 Azure Cosmos DB 容器。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 某些 API 允许对固定大小的容器省略分区键。 若要以无限制模式创建容器，必须指定最低 2,500 RU/秒的吞吐量。
+
+查看数据在分区中的分布方式是个好主意。 要在门户中进行查看，请转到 Azure Cosmos DB 帐户，在“监视”部分单击“指标”，然后在右窗格中单击“存储”选项卡，查看数据在不同物理分区中的分区方式。
+
+![资源分区](./media/partition-data/partitionkey-example.png)
+
+左图显示不良分区键的结果，右图显示良好分区键的结果。 从左图可看出，数据在分区间的分布不均匀。 应尽可能分布数据以使图的外观类似右图。
 
 ## <a name="partitioning-and-provisioned-throughput"></a>分区和设置的吞吐量
 Azure Cosmos DB 旨在提供可预测的性能。 创建容器时，可以根据*每秒[请求单位](request-units.md) (RU) 数*保留吞吐量。 每个请求将分配有一个 RU 计费，RU 计费与系统资源（如操作使用的 CPU、内存和 IO）的数量成比例。 读取 1kb 会话一致性文档会使用 1 RU。 读取为 1 RU 时不考虑存储的项数量或同时运行的并发请求数。 较大的项要求较高的 RU，具体取决于大小。 如果知道实体大小及为应用程序提供支持需要的读取次数，则可以设置应用程序读取所需的那个吞吐量。 
@@ -208,7 +212,6 @@ Azure Cosmos DB 最常见的用例之一是日志记录和遥测。 选取恰当
 
 * 了解 [Azure Cosmos DB 中的预配吞吐量](request-units.md)。
 * 了解 [Azure Cosmos DB 中的全局分布](distribute-data-globally.md)。
-
 
 
 

@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.date: 10/24/2016
 ms.author: heidist
 ms.openlocfilehash: f9f3a7b2369818791ffac1c8eeccef45216c2ff0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>选择 Azure 搜索的 SKU 或定价层
 在 Azure 搜索中，[服务已在特定的定价层或 SKU 上进行预配](search-create-service-portal.md)。 选项包括“免费”、“基本”或“标准”，其中“标准”在多个配置和容量中均可用。
 
-本文旨在帮助你选择某一层。 如果层容量经证实过低，将需要在更高的层上预配新服务，然后重新加载索引。 相同的服务无法从一个 SKU 就地升级到另一个。
+本文旨在帮助你选择层。 如果层容量经证实过低，将需要在更高的层上预配新服务，然后重新加载索引。 相同的服务无法从一个 SKU 就地升级到另一个。
 
 > [!NOTE]
 > 选择层并[预配搜索服务](search-create-service-portal.md)后，可在该服务内增加副本和分区计数。 有关指南，请参阅[缩放资源级别以便查询工作负荷并编制索引](search-capacity-planning.md)。

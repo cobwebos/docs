@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/17/2017
+ms.date: 09/27/2017
 ms.author: rickbyh
+ms.openlocfilehash: f244fc5dada77d6601710b374aa6edeb607b11d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: fd78b34e8bbefdaa79a73d69ff2a0e3c1c342e98
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>为 SQL Server Management Studio 和 Azure AD 配置多重身份验证
 
@@ -58,16 +57,17 @@ ms.lasthandoff: 08/08/2017
    ![3mfa-setup][3]  
 7. 通过第二个可能出现的一次性对话框，可以选择身份验证方法的详细信息。 可能的选项由管理员配置。  
    ![4mfa-verify-1][4]  
-8. Azure Active Directory 向你发送确认信息。 收到验证码后，将其输入到“**输入验证码**”框中，并单击“**登录**”。  
+8. Azure Active Directory 将向你发送确认信息。 收到验证码后，将其输入到“**输入验证码**”框中，并单击“**登录**”。  
    ![5mfa-verify-2][5]  
 
 验证完成后，SSMS 便会正常连接（假设凭据和防火墙访问有效）。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure SQL 数据库多重身份验证的概述，请参阅 [SQL 数据库和 SQL 数据仓库的通用身份验证（对 MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)。
-* 向其他人员授予数据库访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
-确保其他人员可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)
+- 有关 Azure SQL 数据库多重身份验证的概述，请参阅 [SQL 数据库和 SQL 数据仓库的通用身份验证（对 MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)。  
+- 向其他人员授予数据库访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
+- 确保其他人员可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
+- 使用 **Active Directory - 通用且具有 MFA** 进行身份验证时，可以使用以 [SSMS 17.3](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) 开头的 ADAL 跟踪。 在默认关闭的情况下，可在“ADAL 输出窗口跟踪级别”**中，**使用“Azure 云”的“Azure 服务”下方“选项”菜单中的“工具”，打开 ADAL 跟踪，然后在“视图”菜单中启用“输出”。 选择“Azure Active Directory 选项”时，可在输出窗口中使用跟踪。   
 
 
 [1]: ./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png
@@ -75,5 +75,4 @@ ms.lasthandoff: 08/08/2017
 [3]: ./media/sql-database-ssms-mfa-auth/3mfa-setup.png
 [4]: ./media/sql-database-ssms-mfa-auth/4mfa-verify-1.png
 [5]: ./media/sql-database-ssms-mfa-auth/5mfa-verify-2.png
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.openlocfilehash: b8d577326d23ec45cb4a9ec0e450ebf7afd945f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用编码 EDIFACT 消息
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
 
 编码 EDIFACT 连接器执行以下任务： 
 
-* 通过匹配的发件人限定符 （&） 标识符和接收方限定符及标识符解析协议
+* 通过将发送方限定符和标识符与接收方限定符和标识符进行匹配来解析协议
 * 序列化 EDI 交换，将 XML 编码的消息转换成交换中的 EDI 事务集。
 * 应用事务集标头和尾部段
 * 为每个传出交换生成交换控制编号、组控制编号和事务集控制编号

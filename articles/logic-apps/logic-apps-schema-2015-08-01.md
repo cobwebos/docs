@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
 ms.author: LADocs; stepsic
 ms.openlocfilehash: 35d7a56d5607dcc18a4407c65b92962d3d0dcd1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure 逻辑应用的架构更新 - 2015 年 8 月 1 日预览版
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="managed-apis"></a>托管 API
 
-Microsoft 会管理你的代表，如 Office 365、 Salesforce、 Twitter 和 FTP 的一些 Api。 某些托管 API 可以按原样使用（例如必应翻译），另一些 API 需要进行配置。 此配置称为“连接”。
+Microsoft 代表你管理某些 API，例如 Office 365、Salesforce、Twitter 和 FTP。 某些托管 API 可以按原样使用（例如必应翻译），另一些 API 需要进行配置。 此配置称为“连接”。
 
 例如，在使用 Office 365 时，必须创建包含 Office 365 登录令牌的连接。 此令牌以安全方式存储和刷新，以便逻辑应用可以始终调用 Office 365 API。 或者，如果要连接到 SQL 或 FTP 服务器，则必须创建具有连接字符串的连接。 
 

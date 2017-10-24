@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
 ms.openlocfilehash: 73f1210b8d1f5ceca8fac9534d498bdc23d96d48
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
-[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级安全性 (RLS)](https://msdn.microsoft.com/library/dn765131) 提供了一组强大功能，可以灵活高效地缩放装有 Azure SQL 数据库的多租户应用程序的数据层。 有关更多信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 
+[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级别安全性 (RLS)](https://msdn.microsoft.com/library/dn765131) 提供了一组强大功能，可方便用户灵活高效地通过 Azure SQL 数据库缩放多租户应用程序的数据层。 有关更多信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 
 
-本文将演示如何使用 ADO.NET SqlClient 和/或实体框架，同时运用这些技术来构建具有高度可伸缩性数据层、支持多租户分片的应用程序。  
+本文将演示如何使用 **ADO.NET SqlClient** 和/或**实体框架**，同时运用这些技术来构建具有高度伸缩性数据层、支持多租户分片的应用程序。  
 
 * **弹性数据库工具**可让开发人员使用一组 .NET 库和 Azure 服务模板通过行业标准分片实践扩大应用程序的数据层。 使用弹性数据库客户端库管理分片有助于自动化和简化通常与分片关联的许多基础结构任务。 
 * **行级安全性**可让开发人员使用安全策略来筛选掉不属于执行查询的租户的行，从而将多个租户的数据存储在同一个数据库中。 集中化数据库而不是应用程序中的 RLS 访问逻辑可以简化维护，降低由于应用程序代码库不断增长而带来的出错风险。 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/11/2017
 * 下载示例项目：[Azure SQL 的弹性数据库工具 - 多租户分片](http://go.microsoft.com/?linkid=9888163)
   * 在 **Program.cs** 的开头填入数据库的信息 
 
-此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)中所述的项目。 它会生成一个用于创建博客和文章的简单控制台应用程序，其中包含四个租户和两个多租户分片数据库，如上图中所示。 
+此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)中所述的项目。 它将构建一个用于创建博客和文章的简单控制台应用程序，其中包含四个租户和两个多租户分片数据库，如上图中所示。 
 
 构建并运行应用程序。 这会引导弹性数据库工具的分片映射管理器，并运行以下测试： 
 
@@ -52,11 +52,11 @@ ms.lasthandoff: 07/11/2017
 
 请注意，由于 RLS 尚未在分片数据库中启用，其中的每个测试都会揭露一个问题：租户能够看到不属于他们的博客，并且系统不会阻止应用程序插入错误租户的博客。 本文的余下部分介绍如何通过使用 RLS 强制隔离租户来解决这些问题。 执行以下两个步骤： 
 
-1. 应用层：打开连接后，将应用程序代码修改为始终设置 SESSION_CONTEXT 中的当前 TenantId。 示例项目已执行此操作。 
+1. **应用程序层**：打开连接后，将应用程序代码修改为始终设置 SESSION_CONTEXT 中的当前 TenantId。 示例项目已执行此操作。 
 2. **数据层**：在每个分片数据库中创建一个 RLS 安全策略，以根据 SESSION_CONTEXT 中存储的 TenantId 筛选行。 需要针对每个分片数据库执行此操作，否则不会筛选多租户分片中的行。 
 
 ## <a name="step-1-application-tier-set-tenantid-in-the-sessioncontext"></a>步骤 1) 应用程序层：在 SESSION_CONTEXT 中设置 TenantId
-使用弹性数据库客户端库的数据相关路由 API 连接到分片数据库后，应用程序仍然需要让数据库知道哪个 TenantId 正在使用该连接，以便 RLS 安全策略可以筛选出属于其他租户的行。 若要传递此信息，建议的方法是将该连接的当前 TenantId 存储在 [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx) 中。 （注意：也可以使用 [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx)，但SESSION_CONTEXT 是一个更好的选择，因为它更易使用、默认返回 NULL，并支持键值对。）
+使用弹性数据库客户端库的数据相关路由 API 连接到分片数据库后，应用程序仍然需要让数据库知道哪个 TenantId 正在使用该连接，以便 RLS 安全策略可以筛选出属于其他租户的行。 要传递此信息，建议的方法是将该连接的当前 TenantId 存储在 [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx) 中。 （注意：也可以使用 [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx)，但SESSION_CONTEXT 是一个更好的选择，因为它更易使用、默认返回 NULL，并支持键值对。）
 
 ### <a name="entity-framework"></a>实体框架
 对于使用实体框架的应用程序，最简单的方法是根据[使用 EF DbContext 进行数据相关的路由](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)中所述，在 ElasticScaleContext 重写中设置 SESSION_CONTEXT。 在返回通过数据相关路由中转的连接之前，只需创建并执行一个 SqlCommand，以便将 SESSION_CONTEXT 中的“TenantId”设置为针对该连接指定的 shardingKey。 这样，只需编写代码一次就能设置 SESSION_CONTEXT。 
@@ -266,7 +266,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 > 
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>（可选）启用“超级用户”来访问所有行
-有些应用程序可能需要创建一个能够访问所有行“超级用户”，例如，为了跨所有分片上的所有租户来生成报告，或在涉及到数据库之间移动租户行的分片上执行拆分/合并操作。 为此，应该在每个分片数据库中创建新的 SQL 用户（在本例中为 “superuser”）。 然后使用新的谓词函数更改安全策略，以允许此用户访问所有行：
+有些应用程序可能需要创建一个能够访问所有行“超级用户”，例如，为了跨所有分片上的所有租户来生成报告，或在涉及到数据库之间移动租户行的分片上执行拆分/合并操作。 为此，应该在每个分片数据库中创建新的 SQL 用户（在本例中为 “superuser”）。 然后，使用允许此用户访问所有行的新谓词函数更改安全策略：
 
 ```
 -- New predicate function that adds superuser logic
@@ -297,8 +297,7 @@ GO
 
 
 ### <a name="maintenance"></a>维护
-* 
-            **添加新分片**：必须在所有新分片上执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
+* **添加新分片**：必须对所有新分片执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
 * **添加新表**：每当创建新表时，必须将筛选和阻塞谓词添加到所有分片上的安全策略，否则不会筛选对新表的查询。 根据[自动向新建的表应用行级安全性（博客）](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)中所述，此操作可以使用 DDL 触发器来自动完成。
 
 ## <a name="summary"></a>摘要

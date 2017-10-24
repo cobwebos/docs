@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
+ms.openlocfilehash: c89596a6d721c4cba899b8a6e2859ee36cba7b80
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 06fbf6019aa4a2ceab99a83efe072fc0b71bfbf4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="model-management-setup"></a>模型管理安装
 
@@ -122,7 +121,7 @@ az ml env set -n [environment name] -g [resource group]
 若要将 Web 服务部署到生产环境，请首先使用以下命令设置环境：
 
 ```azurecli
-az ml env setup -c --cluster-name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
+az ml env setup -c --name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
 ```
 
 群集环境设置命令在订阅中创建以下资源：
@@ -143,6 +142,9 @@ az ml env set -n [environment name] -g [resource group]
 >[!NOTE] 
 > 创建环境后，对于后续部署，只需要使用上面的设置命令重复使用它即可。
 >
+
+>[!NOTE] 
+>要创建 HTTPS 终结点，请在创建群集时指定 SSL 证书，方法是在 az ml env 设置中使用 --cert-name 和 --cert-pem 选项。 这将设置群集以供 https 上的请求使用，并使用提供的证书进行安全保护。 完成设置后，请创建指向群集 FQDN 的 CNAME DNS 记录。
 
 ### <a name="create-an-account"></a>创建帐户
 若要部署模型，需要具有帐户。 需要为每个帐户执行一次此操作，并可以在多个部署中重复使用同一帐户。
@@ -167,4 +169,3 @@ az ml service create realtime --model-file [model file/folder path] -f [scoring 
 
 ### <a name="next-steps"></a>后续步骤
 尝试库中的诸多示例之一。
-

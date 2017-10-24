@@ -16,17 +16,17 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 50326a093adaf3558c56dfd0b38544f0e60be460
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>将本地 AlwaysOn 可用性组扩展到 Azure
 AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性。 在发生故障时，可以使用这些副本来故障转移数据库。 此外，它们还可用于卸载读取工作负荷或备份任务。
 
 可以通过预配包含 SQL Server 的一个或多个 Azure VM 并将其作为副本添加到本地可用性组，将本地可用性组扩展到 Microsoft Azure。
 
-本教程假设你具有以下各项：
+本教程假设你拥有：
 
 * 一个有效的 Azure 订阅。 可以[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个现有的本地 AlwaysOn 可用性组。 有关可用性组的详细信息，请参阅 [AlwaysOn 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)。

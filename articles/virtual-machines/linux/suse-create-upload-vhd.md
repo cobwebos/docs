@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: szark
 ms.openlocfilehash: c829f5d9a90b4260c6f41b2d9e511a0c6cb48f18
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -79,7 +79,7 @@ ms.lasthandoff: 07/11/2017
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. 它是建议编辑文件"/ 等/sysconfig/网络/dhcp"，更改`DHCLIENT_SET_HOSTNAME`以下参数：
+11. 建议编辑文件“/etc/sysconfig/network/dhcp”，并将 `DHCLIENT_SET_HOSTNAME` 参数更改为以下值：
     
      DHCLIENT_SET_HOSTNAME="no"
 12. 在“/etc/sudoers”中，注释掉或删除以下行（如果存在）：
@@ -116,7 +116,7 @@ ms.lasthandoff: 07/11/2017
         # sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    然后，你可以验证已通过运行命令添加存储库`zypper lr`试。 如果未启用某个相关的更新存储库，请使用以下命令启用该存储库：
+    然后，可以通过再次运行命令“`zypper lr`”验证已添加存储库。 如果未启用某个相关的更新存储库，请使用以下命令启用该存储库：
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
 4. 将内核更新为可用的最新版本：
@@ -136,7 +136,7 @@ ms.lasthandoff: 07/11/2017
    这会确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此外，从内核引导行删除以下参数（如果它们存在）：
    
      libata.atapi_enabled=0 reserve=0x1f0,0x8
-7. 它是建议编辑文件"/ 等/sysconfig/网络/dhcp"，更改`DHCLIENT_SET_HOSTNAME`以下参数：
+7. 建议编辑文件“/etc/sysconfig/network/dhcp”，并将 `DHCLIENT_SET_HOSTNAME` 参数更改为以下值：
    
      DHCLIENT_SET_HOSTNAME="no"
 8. **重要提示：**在“/etc/sudoers”中，注释掉或删除以下行（如果存在）：

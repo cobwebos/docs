@@ -16,10 +16,10 @@ ms.date: 05/17/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>通过 StorSimple Manager 服务停用和删除 StorSimple 8000 系列设备
 ## <a name="overview"></a>概述
@@ -81,7 +81,7 @@ ms.lasthandoff: 07/11/2017
       可能需要花费几分钟时间才能删除设备。
 
 ## <a name="deactivate-and-delete-a-virtual-device"></a>停用和删除虚拟设备
-对于 StorSimple 虚拟设备，停用会释放虚拟机。 然后，可以删除虚拟机，并设置它时创建的资源。 停用虚拟设备之后，无法将它还原到以前的状态。 
+对于 StorSimple 虚拟设备，停用会释放虚拟机。 然后，可以删除虚拟机及预配它时创建的资源。 停用虚拟设备之后，无法将它还原到以前的状态。 
 
 停用导致以下操作：
 

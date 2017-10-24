@@ -10,17 +10,15 @@ ms.service: MySQL
 ms.custom: mvc
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 07/10/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: f87c3c302ec25f33af4334c3753dfae0084e4393
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: f1488f6b4a240165c71c95f759af73d6b9fd7bfe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>适用于 MySQL 的 Azure 数据库：使用 .NET (C#) 进行连接并查询数据
-本快速入门演示如何使用 C# 应用程序连接到适用于 MySQL 的 Azure 数据库。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假设你熟悉如何使用 C# 进行开发，但不太熟悉适用于 MySQL 的 Azure 数据库的用法。
+本快速入门演示如何使用 C# 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 C# 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
 ## <a name="prerequisites"></a>先决条件
 此快速入门使用以下任意指南中创建的资源作为起点：
@@ -36,14 +34,14 @@ ms.lasthandoff: 08/09/2017
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户中的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器，例如 **myserver4demo**。
+2. 在 Azure 门户中的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 myserver4demo）。
 3. 单击服务器名称。
-4. 选择服务器的“属性”页。 记下“服务器名称”和“服务器管理员登录名”。
+4. 选择服务器的“属性”页，然后记下“服务器名称”和“服务器管理员登录名”。
  ![Azure Database for MySQL 服务器名称](./media/connect-csharp/1_server-properties-name-login.png)
-5. 如果忘了服务器的登录信息，请导航到“概览”页，以查看服务器管理员登录名并重置密码（如果需要）。
+5. 如果忘了服务器的登录信息，请导航到“概览”页，查看服务器管理员登录名并重置密码（如果需要）。
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
-通过以下代码进行连接，然后使用 **CREATE TABLE** 和 **INSERT INTO** SQL 语句加载数据。 代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法，设置 CommandText 属性，再调用 [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) 方法来运行数据库命令。 
+通过以下代码进行连接，然后使用 CREATE TABLE 和 INSERT INTO SQL 语句加载数据。 代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法，设置 CommandText 属性，再调用 [ExecuteNonQuery()](https://msdn.microsoft.com/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) 方法来运行数据库命令。 
 
 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
 
@@ -104,7 +102,7 @@ namespace driver
 
 ## <a name="read-data"></a>读取数据
 
-使用以下代码进行连接，并使用 **SELECT** SQL 语句来读取数据。 代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法和 [ExecuteReader()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executereader(v=vs.110).aspx) 方法运行数据库命令。 接下来，代码使用 [Read()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcdatareader.read(v=vs.110).aspx) 转到结果中的记录。 然后，代码使用 GetInt32 和 GetString 分析记录中的值。
+使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法和 [ExecuteReader()](https://msdn.microsoft.com/library/system.data.odbc.odbccommand.executereader(v=vs.110).aspx) 方法运行数据库命令。 接下来，代码使用 [Read()](https://msdn.microsoft.com/library/system.data.odbc.odbcdatareader.read(v=vs.110).aspx) 转到结果中的记录。 然后，代码使用 GetInt32 和 GetString 分析记录中的值。
 
 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
 
@@ -160,7 +158,7 @@ namespace driver
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码进行连接，并使用 **UPDATE** SQL 语句读取数据。 代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法，设置 CommandText 属性，再调用 [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) 方法来运行数据库命令。
+使用以下代码进行连接，并使用 UPDATE SQL 语句读取数据。 代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法，设置 CommandText 属性，再调用 [ExecuteNonQuery()](https://msdn.microsoft.com/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) 方法来运行数据库命令。
 
 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
 
@@ -209,9 +207,9 @@ namespace driver
 
 
 ## <a name="delete-data"></a>删除数据
-使用以下代码进行连接，并使用 **DELETE** SQL 语句删除数据。 
+使用以下代码进行连接，并使用 DELETE SQL 语句删除数据。 
 
-代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法，设置 CommandText 属性，再调用 [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) 方法来运行数据库命令。
+代码使用 ODBC 类，通过 [Open()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) 方法来与 MySQL 建立连接。 然后，代码使用 [CreateCommand()](https://msdn.microsoft.com/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) 方法，设置 CommandText 属性，再调用 [ExecuteNonQuery()](https://msdn.microsoft.com/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) 方法来运行数据库命令。
 
 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
 
@@ -256,4 +254,3 @@ namespace driver
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL](concepts-migrate-dump-restore.md)
-

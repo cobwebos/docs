@@ -1,5 +1,5 @@
 ---
-title: "在 Batch 中使用计算密集型 Azure VM |Microsoft Docs"
+title: "在 Batch 中使用计算密集型 Azure VM |Microsoft 文档"
 description: "如何在 Azure Batch 池中利用支持 RDMA 或启用 GPU 的 VM 大小"
 services: batch
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 09/25/2017
 ms.author: danlep
-ms.openlocfilehash: c52a054e4fc8f61f871acd9f35b9a3e6247e48ef
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.openlocfilehash: 8a1097353d24ad4c807803511e93c90394816138
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>在 Batch 池中使用支持 RDMA 或启用 GPU 的实例
 
@@ -33,13 +33,9 @@ ms.lasthandoff: 07/29/2017
 
 ## <a name="subscription-and-account-limits"></a>订阅和帐户限制
 
-* 配额 - 一个或多个 Azure 配额可能会限制添加到 Batch 池中的节点数量或类型。 当选择支持 RDMA 的、启用 GPU 的或其他多核 VM 大小时，更有可能会受到限制。 根据所创建的 Batch 帐户类型，配额可应用到本帐户或你的订阅中。
+* **配额** - [每个 Batch 帐户的专用内核配额](batch-quota-limit.md#resource-quotas)可能会限制添加到 Batch 池的节点数量或类型。 当选择支持 RDMA、启用 GPU 或其他多核 VM 大小时，更有可能会达到配额。 默认情况下，该配额为 20 个内核。 如果使用它们，单独的配额也将适用于[低优先级 VM](batch-low-pri-vms.md)。 
 
-    * 如果在“Batch 服务”配置中创建 Batch 帐户，则将受限于[每个 Batch 帐户的专用内核配额](batch-quota-limit.md#resource-quotas)。 默认情况下，该配额为 20 个内核。 如果使用它们，单独的配额也将适用于[低优先级 VM](batch-low-pri-vms.md)。 
-
-    * 如果在“用户订阅”配置中创建帐户，你的订阅将会限制每个区域的 VM 内核数量。 请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。 该订阅还会将区域配额应用于某些 VM 大小（包括 HPC 和 GPU 实例）。 在用户订阅配置中，其他配额不会应用于 Batch 帐户。 
-
-  在 Batch 中使用专用 VM 大小时，需要增加一个或多个配额。 若要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
+如果需要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
 
 * 区域可用性 - 计算密集型 VM 在创建 Batch 帐户的区域可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
@@ -97,13 +93,7 @@ ms.lasthandoff: 07/29/2017
 
 * [应用程序包](batch-application-packages.md) - 将压缩的安装程序包添加到 Batch 帐户，然后在池中配置程序包引用。 此设置可将程序包上传到池的所有节点并解压。 如果程序包是安装程序，请创建一个启动任务命令行，以在所有池节点上静默安装该应用。 也可以在节点运行计划的任务时安装程序包。
 
-* [自定义池映像](batch-api-basics.md#pool) - 创建包含 VM 大小所需的驱动程序、软件或其他设置的自定义 Windows 或 Linux VM 映像。 如果已在用户订阅配置中创建了 Batch 帐户，请为 Batch 池指定自定义映像。 （Batch 服务配置中的帐户不支持自定义映像。）自定义映像只能用于虚拟机配置中的池。
-
-  > [!IMPORTANT]
-  > 在 Batch 池中，目前不支持使用由托管磁盘或高级存储创建的自定义映像。
-  >
-
-
+* [自定义池映像](batch-custom-images.md) - 创建包含 VM 大小所需的驱动程序、软件或其他设置的自定义 Windows 或 Linux VM 映像。 
 
 * [Batch Shipyard](https://github.com/Azure/batch-shipyard) 将自动配置 GPU 和 RDMA，以便透明地用于 Azure Batch 上的容器化工作负荷。 Batch Shipyard 完全由配置文件驱动。 提供众多的示例配方配置来启用 GPU 和 RDMA 工作负荷，例如 [CNTK GPU 配方](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI)，它可在 N 系列 VM 上预先配置 GPU 驱动程序，并以 Docker 映像形式加载 Microsoft Cognitive Toolkit 软件。
 
@@ -133,17 +123,14 @@ ms.lasthandoff: 07/29/2017
 
 1. 部署运行 Ubuntu 16.04 LTS 的 Azure NC6 VM。 例如：在美国中南部区域创建 VM。 请确保使用标准存储而非托管磁盘创建 VM。
 2. 请照以下步骤连接 VM 并[安装 CUDA 驱动程序](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms)。
-3. 撤销 Linux 代理，然后使用 Azure CLI 1.0 命令捕获 Linux VM 映像。 有关详细步骤，请参阅[捕获在 Azure 上运行的 Linux 虚拟机](../virtual-machines/linux/capture-image-nodejs.md)。 记下映像 URI。
-  > [!IMPORTANT]
-  > 请勿使用 Azure CLI 2.0 命令捕获 Azure Batch 的映像。 目前，CLI 2.0 命令仅捕获使用托管磁盘创建的 VM。
-  >
-4. 在支持 NC VM 的区域中创建具有用户订阅配置的 Batch 帐户。
-5. 通过 Batch API 或 Azure 门户，使用自定义映像创建具有所需节点数和规模的池。 下表列出了映像的示例池设置：
+3. 取消 Linux 代理，然后[捕获 Linux VM 映像](../virtual-machines/linux/capture-image.md)。
+4. 在支持 NC VM 的区域中创建 Batch 帐户。
+5. 通过 Batch API 或 Azure 门户，[使用自定义映像](batch-custom-images.md)创建具有所需节点数和规模的池。 下表列出了映像的示例池设置：
 
 | 设置 | 值 |
 | ---- | ---- |
 | **映像类型** | 自定义映像 |
-| **自定义映像** | 窗体的图像 URI`https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` |
+| **自定义映像** | 映像名称 |
 | **节点代理 SKU** | batch.node.ubuntu 16.04 |
 | **节点大小** | NC6 标准 |
 

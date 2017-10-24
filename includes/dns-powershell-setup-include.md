@@ -1,21 +1,21 @@
-## <a name="set-up-azure-powershell-for-azure-dns"></a>为 Azure DNS 设置 Azure PowerShell
+## <a name="set-up-azure-powershell-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure PowerShell
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
-验证你具有以下各项，在开始配置之前。
+在开始配置之前，请确认你具有以下各项。
 
-* Azure 订阅。 如果你还没有 Azure 订阅，则可以激活你[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 你需要安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* 需安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
-### <a name="sign-in-to-your-azure-account"></a>登录到你的 Azure 帐户
+### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-打开 PowerShell 控制台并连接到你的帐户。 有关详细信息，请参阅[使用 PowerShell 与资源管理器](../articles/azure-resource-manager/powershell-azure-resource-manager.md)。
+打开 PowerShell 控制台并连接到帐户。 有关详细信息，请参阅[将 PowerShell 与 Resource Manager 配合使用](../articles/azure-resource-manager/powershell-azure-resource-manager.md)。
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-### <a name="select-the-subscription"></a>选择的订阅
+### <a name="select-the-subscription"></a>选择订阅
  
 检查该帐户的订阅。
 
@@ -23,7 +23,7 @@ Login-AzureRmAccount
 Get-AzureRmSubscription
 ```
 
-选择你要使用的 Azure 订阅。
+选择要使用的 Azure 订阅。
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
@@ -31,9 +31,9 @@ Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源管理器要求所有资源组都指定的位置。 此位置用作该资源组中的资源的默认位置。 但是，因为所有的 DNS 资源都是全局性而不是区域性，资源组位置的选择对 Azure DNS 没有任何影响。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
 
-如果你正在使用现有的资源组，则可以跳过此步骤。
+如果使用现有资源组，可跳过此步骤。
 
 ```powershell
 New-AzureRmResourceGroup -Name MyAzureResourceGroup -location "West US"
@@ -41,7 +41,7 @@ New-AzureRmResourceGroup -Name MyAzureResourceGroup -location "West US"
 
 ### <a name="register-resource-provider"></a>注册资源提供程序
 
-Azure DNS 服务由 Microsoft.Network 资源提供程序管理。 必须注册你的 Azure 订阅，可使用此资源提供程序，然后你可以使用 Azure DNS。 这是一次性操作为每个订阅。
+Azure DNS 服务由 Microsoft.Network 资源提供程序管理。 使用 Azure DNS 前，必须将 Azure 订阅注册为使用此资源提供程序。 对每个订阅而言，这都是一次性操作。
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network

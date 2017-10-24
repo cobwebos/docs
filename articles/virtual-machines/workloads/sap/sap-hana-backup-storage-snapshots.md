@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: f332b8ac091b75a23489ac27f15ad1fd10d24ec6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>基于存储快照的 SAP HANA 备份
 
@@ -66,13 +66,13 @@ Azure 备份服务提供一个选项用于备份和还原 VM。 有关此服务�
 
 _&quot;Linux 虚拟机只能使用文件一致性备份，因为 Linux 没有与 VSS 相当的平台。&quot;_
 
-_&quot;应用程序需要实现自己&quot;修补&quot;上还原的数据的机制。&quot;_
+_&quot;应用程序需要对还原的数据实施自身的&quot;修复&quot;机制。&quot;_
 
 因此，在启动备份时，必须确保 SAP HANA 在磁盘上处于一致状态。 请参阅本文档前面所述的 _SAP HANA 快照_。 但是，SAP HANA 处于此快照准备模式时有一个潜在的问题。 有关详细信息，请参阅[创建存储快照 (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)。
 
 该文章指出：
 
-_&quot;强烈建议确认或已被创建后尽快放弃存储快照。准备或创建存储快照时，快照相关的数据会被冻结。当快照相关的数据保持冻结状态时，仍可在数据库中进行更改。此类更改不会导致冻结的快照相关数据发生更改。这些更改将写入到数据区域中独立于存储快照的位置。另外，这些更改还会写入到日志中。但是，快照相关数据保持冻结的时间越长，增长的数据量可能越大。&quot;_
+_&quot;强烈建议在创建存储快照后，尽快确认或丢弃该快照。准备或创建存储快照时，快照相关的数据会被冻结。当快照相关的数据保持冻结状态时，仍可在数据库中进行更改。此类更改不会导致冻结的快照相关数据发生更改。这些更改将写入到数据区域中独立于存储快照的位置。另外，这些更改还会写入到日志中。但是，快照相关数据保持冻结的时间越长，增长的数据量可能越大。&quot;_
 
 Azure 备份通过 Azure VM 扩展来处理文件系统一致性。 这些扩展不可单独使用，只能与 Azure 备份服务结合使用。 但无论如何，都必须管理 SAP HANA 快照，以保证应用一致性。
 

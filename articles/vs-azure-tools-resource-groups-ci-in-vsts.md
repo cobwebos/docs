@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Visual Studio Team Services 中连续集成
 若要部署 Azure 模板，需要在各个阶段执行任务：生成、测试、复制到 Azure（也称为“暂存”）和部署模板。 在 Visual Studio Team Services (VS Team Services) 中可通过两种不同的方法部署模板。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/11/2017
 * 应用程序二进制文件
 
 ### <a name="nested-templates-and-configuration-scripts"></a>嵌套模板和配置脚本
-当你使用 Visual Studio 提供的模板（或以 Visual Studio 代码段生成的模板）时，PowerShell 脚本不但会暂存项目，而且会参数化用于不同部署的资源的 URI。 脚本会将项目复制到 Azure 中的安全容器，为该容器创建 SaS 令牌，然后将该信息传递到模板部署。 若要了解有关嵌套模板的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/library/azure/dn790564.aspx)。  在 VS Team Services 中使用任务时，必须为模板部署选择相应任务，并在必要时将暂存步骤中的参数值传递到模板部署。
+使用 Visual Studio 提供的模板（或以 Visual Studio 代码段生成的模板）时，PowerShell 脚本不但会暂存项目，而且会参数化用于不同部署的资源的 URI。 脚本会将项目复制到 Azure 中的安全容器，为该容器创建 SaS 令牌，然后将该信息传递到模板部署。 若要了解有关嵌套模板的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/library/azure/dn790564.aspx)。  在 VS Team Services 中使用任务时，必须为模板部署选择相应任务，并在必要时将暂存步骤中的参数值传递到模板部署。
 
 ## <a name="set-up-continuous-deployment-in-vs-team-services"></a>在 VS Team Services 中设置连续部署
 若要在 VS Team Services 中调用 PowerShell 脚本，请更新生成定义。 简而言之，请执行以下步骤： 
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
    ![添加任务][2]
 4. 选择“Azure PowerShell”生成步骤，并填充其值。
    
-   1. 如果你已经有了 Azure 服务终结点添加到 VS Team Services，选择中的订阅**Azure 订阅**下拉列表框，然后跳到下一节。 
+   1. 如果已将 Azure 服务终结点添加到 VS Team Services，请在“Azure 订阅”下拉列表框中选择订阅，然后跳到下一部分。 
       
       如果 VS Team Services 中没有 Azure 服务终结点，则需要添加一个。 本小节将引导完成整个过程。 如果 Azure 帐户使用 Microsoft 帐户（例如 Hotmail），则必须执行以下步骤以获取服务主体身份验证。
    2. 选择“Azure 订阅”下拉列表框旁边的“管理”链接。

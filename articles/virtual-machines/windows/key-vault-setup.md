@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
 ms.openlocfilehash: a5083a5216efbfd76fd912ec48c2f0ec3b30c4a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure Resource Manager 中为虚拟机设置密钥保管库
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
     azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
 
 ## <a name="use-templates-to-set-up-key-vault"></a>使用模板设置密钥保管库
-使用模板时，必须将 Key Vault 资源的 `enabledForDeployment` 属性设置为 `true`。
+使用模板时，必须将密钥保管库资源的 `enabledForDeployment` 属性设置为 `true`。
 
     {
       "type": "Microsoft.KeyVault/vaults",

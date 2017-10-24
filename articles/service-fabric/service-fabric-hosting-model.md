@@ -13,10 +13,10 @@ ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: ca7092a06a9ffce8383ca8bc9f70ce312cdf9de4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-hosting-model"></a>Service Fabric 托管模型
 本文概述 Service Fabric 提供的应用程序托管模型，并介绍共享进程模型和独占进程模型之间的差异。 本文说明已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。
@@ -44,7 +44,7 @@ Service Fabric 已激活启动了“MyServicePackage”的“MyCodePackage”，
 ![已部署应用程序的节点视图][node-view-two]
 </center>
 
-如下所示，Service Fabric 将服务 fabric:/App1/ServiceB 的 P3 分区的新副本放置在“MyServicePackage”的现有激活中。 现在创建另一个“MyAppType”类型的应用程序 fabric:/App2，然后在 fabric:/App2 内部创建服务 fabric:/App2/ServiceA，该服务有 2 个分区（假设为 P4 和 P5），每个分区有 3 个副本 & 。 下图显示了新的节点视图：
+如下所示，Service Fabric 将服务 fabric:/App1/ServiceB 的 P3 分区的新副本放置在“MyServicePackage”的现有激活中。 现在创建另一个“MyAppType”类型的应用程序 fabric:/App2，然后在 fabric:/App2 内部创建服务 fabric:/App2/ServiceA，该服务有 2 个分区（假设为 P4  &  P5），每个分区有 3 个副本。 下图显示了新的节点视图：
 
 <center>
 ![已部署应用程序的节点视图][node-view-three]
@@ -119,7 +119,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 >
 > - 在独占进程托管模型下，对于指定应用程序，指定节点上可能有一个或多个活动的 ServicePackage 副本。 每个活动副本具有非空的 ServicePackageActivationId，需要在执行已部署服务包相关操作时指定。 
 >
-> - 如果省略了 ServicePackageActivationId，则它默认为空字符串。 如果存在“共享进程”模型下激活的已部署服务包，则操作将在此包上执行，否则操作将失败。
+> - 如果省略了 ServicePackageActivationId，则它默认为空字符串。 如果存在共享进程模型下激活的已部署服务包，则需在此包上执行操作，否则操作会失败。
 >
 > - 不建议对 ServicePackageActivationId 执行一次查询或缓存，因为它是动态生成的，会因为各种原因发生更改。 执行需要 ServicePackageActivationId 的操作前，应先在节点上查询[已部署服务包][p3]的列表，然后使用查询结果中的 ServicePackageActivationId* 执行原始操作。
 >
@@ -134,7 +134,7 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 目前不支持通过升级或更新机制（或在应用程序清单中的默认服务规范中）将现有服务的托管模型在共享进程和独占进程之间进行更改。 以后的版本将提供对此功能的支持。
 
 ## <a name="choosing-between-shared-process-and-exclusive-process-model"></a>在共享进程和独占进程模型之间进行选择
-这两种托管模型都各有优点和缺点，用户需要评估哪一种最适合自身需求。 使用共享进程模型能更充分地利用 OS 资源，因为产生的进程较少，同一进程上的多个副本可以共享端口等。但是，如果一个副本遇到了需要关闭服务主机的错误时，将会影响同一进程中的所有其他副本。
+这两种托管模型都各有优点和缺点，用户需要评估哪一种最适合自身需求。 使用共享进程模型能更充分地利用 OS 资源，因为产生的进程较少，同一进程上的多个副本可以共享端口等。但是，如果一个副本遇到了需要关闭服务主机的错误时，会影响同一进程中的所有其他副本。
 
  独占进程模型将每个副本合理地分离在其自己的进程中，某个副本出错不会影响到其他副本。 对于通信协议不支持端口共享的情况，使用独占进程很方便。 它支持在副本级别应用资源管理。 但是，独占进程消耗的 OS 资源较多，因为它为节点上的每个副本生成一个进程。
 
@@ -173,7 +173,7 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 ![已部署应用程序的节点视图][node-view-six]
 </center>
 
-在上面的示例中，你可能会认为，如果“MyCodePackageA”注册“MyServiceTypeA”和“MyServiceTypeB”，并且“MyCodePackageB”不存在，那么将不会运行冗余的 CodePackage。 这是对的，但正如前文所述，此应用程序模型不适用于独占进程托管模型。 如果目的是将每个副本放入其自己的专用进程，则不需要从同一个 CodePackage 注册两个 ServiceType，而应将每个 ServiceType 放入其自己的 ServicePacakge。
+在上面的示例中，你可能会想，如果“MyCodePackageA”同时注册“MyServiceTypeA”和“MyServiceTypeB”并且没有“MyCodePackageB”，那么将不会运行冗余的 CodePackage。 这是对的，但正如前文所述，此应用程序模型不适用于独占进程托管模型。 如果目的是将每个副本放入其自己的专用进程，则不需要从同一个 CodePackage 注册两个 ServiceType，而应将每个 ServiceType 放入其自己的 ServicePacakge。
 
 ## <a name="next-steps"></a>后续步骤
 [打包应用程序][a4]并准备好进行部署。

@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
 ms.openlocfilehash: 1925d4ff8f5b16a0df56de987f8653cfd8441c52
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL 数据库查询性能见解
 管理和优化关系数据库性能是一项颇具挑战性的操作，需要投入大量的专业知识和时间。 查询性能见解通过提供以下内容减少数据库性能故障排除消耗的时间：
@@ -207,7 +207,7 @@ Query Store 处于关闭状态或参数未设置为最优时会发生第二种�
 
 
 ## <a name="summary"></a>摘要
-Query Performance Insight 可帮助了解查询工作负荷的影响，以及它与数据库资源消耗的关系。 使用此功能可以了解排名靠前的消耗查询，并在发生问题之前轻松找出问题。
+Query Performance Insight 可帮助你了解查询负载的影响以及它与数据库资源消耗的关系。 使用此功能可以了解排名靠前的消耗查询，并在发生问题之前轻松找出问题。
 
 ## <a name="next-steps"></a>后续步骤
 有关改善 SQL 数据库性能的其他建议，请单击“**查询性能见解**”边栏选项卡上的“[建议](sql-database-advisor.md)”。

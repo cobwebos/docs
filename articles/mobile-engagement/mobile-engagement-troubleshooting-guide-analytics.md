@@ -15,13 +15,13 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: e30c9ac0a8421ffcf4fc3e2548cfd7ac49701900
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-analytics-monitoring-segmentation-and-dashboard-issues"></a>分析、监视、分段和仪表板问题故障排除指南
-以下是可能存在的问题可能会遇到与 Azure Mobile Engagement 如何收集有关你的应用程序、 设备和用户的信息。
+下面是关于 Azure Mobile Engagement 如何收集有关应用程序、设备和用户的信息方面可能会遇到的问题。
 
 ## <a name="missingdelayed-information"></a>缺少信息/信息延迟
 ### <a name="issue"></a>问题
@@ -58,5 +58,5 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="causes"></a>原因
 * 要解决在分析、监视或仪表板中看到的应用程序崩溃问题，请务必查看先前版本的 SDK 的已知问题发行说明。
-* 为了进一步解决应用程序崩溃问题，请从安装了应用程序的测试设备执行一个事件，并在 Azure Mobile Engagement UI 的“监视 – 事件”部分中查找设备 ID。 然后，执行导致你的应用程序崩溃，查找 Azure Mobile Engagement UI 的"监视器 – 故障"部分中的其他信息的事件。 
+* 为了进一步解决应用程序崩溃问题，请从安装了应用程序的测试设备执行一个事件，并在 Azure Mobile Engagement UI 的“监视 – 事件”部分中查找设备 ID。 然后，执行导致应用程序崩溃的事件，并在 Azure Mobile Engagement UI 的“监视 – 崩溃”部分中查找其他信息。 
 

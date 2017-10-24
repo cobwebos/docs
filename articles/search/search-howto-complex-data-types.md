@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
 ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>如何在 Azure 搜索中为复杂数据类型建模
 用于填充 Azure 搜索索引的外部数据集有时包括分层或嵌套子结构，此种结构无法整齐地分解为表格行集。 此类结构可能包括单个客户的多个位置和电话号码、单个 SKU 的多个颜色和大小、一本书籍的多位作者等等。 在建模术语中，可能会看到称为*复杂数据类型*、*复合数据类型*、*复合数据类型*或*聚合数据类型*，仅举几例。
@@ -71,7 +71,7 @@ Azure 搜索本身并不支持复杂数据类型，但经验证的解决方法�
 > 
 
 ## <a name="part-1-flatten-the-array-into-individual-fields"></a>第 1 部分：将数组平展为个别字段
-若要创建适合此数据集的 Azure 搜索，请为嵌套子结构创建个别字段：`locationsID` 和 `locationsDescription`（数据类型为[集合](https://msdn.microsoft.com/library/azure/dn798938.aspx)或字符串数组）。 在这些字段中，你将索引的值 '1' 和 '2' 到`locationsID`为 John Smith 和值"3"和"4"字段到`locationsID`Jen Campbell 字段。  
+若要创建适合此数据集的 Azure 搜索，请为嵌套子结构创建个别字段：`locationsID` 和 `locationsDescription`（数据类型为[集合](https://msdn.microsoft.com/library/azure/dn798938.aspx)或字符串数组）。 在这些字段中，将值“1”和“2”索引到 John Smith 的 `locationsID` 字段，将值“3”和“4”索引到 Jen Campbell 的 `locationsID` 字段。  
 
 Azure 搜索中的数据将如下所示： 
 

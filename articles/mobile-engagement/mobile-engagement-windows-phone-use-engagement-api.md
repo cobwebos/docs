@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>如何在 Windows Phone Silverlight 上使用 Engagement API
 本文档是文档 [如何在 Windows Phone Silverlight 应用中集成 Mobile Engagement](mobile-engagement-windows-phone-integrate-engagement.md) 的补充内容。 它提供了有关如何使用 Engagement API 来报告应用程序统计信息的全部详细信息。
@@ -215,7 +215,7 @@ Engagement 还提供了一种发送未经处理的异常的方法。 在 silverl
 ### <a name="reference"></a>引用
             void OnActivated(ActivatedEventArgs e)
 
-当用户向前导航以离开应用程序时，在引发 Deactivated 事件之后，操作系统将尝试使应用程序处于休眠状态。 然后，应用程序是逻辑删除。 在该过程中将终止应用程序，但是保留关于应用程序状态和应用程序内的各个页面的部分数据。
+当用户向前导航以离开应用程序时，在引发 Deactivated 事件之后，操作系统将尝试使应用程序处于休眠状态。 随后应用程序会进行逻辑删除。 在该过程中将终止应用程序，但是保留关于应用程序状态和应用程序内的各个页面的部分数据。
 
 当应用程序被逻辑删除时，必须在 App.xaml.cs 文件的 `Application_Activated` 方法中插入 `EngagementAgent.Instance.OnActivated(e)`，以重置 Engagement 代理。
 

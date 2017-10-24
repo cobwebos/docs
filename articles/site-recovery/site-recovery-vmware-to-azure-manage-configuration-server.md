@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 10/06/2017
 ms.author: anoopkv
+ms.openlocfilehash: e4740c96383468713976e5a98881bec13b0c1921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: ba236ad1327a7f3419d7c8cf7effc889a90dde61
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-a-configuration-server"></a>管理配置服务器
 
 配置服务器充当 Site Recovery 服务与本地基础结构之间的协调器。 本文介绍如何设置、配置和管理配置服务器。
@@ -113,7 +111,7 @@ ProxyPassword="Password"
 
 ## <a name="modify-user-accounts-and-passwords"></a>修改用户帐户和密码
 
-使用 CSPSConfigTool.exe 可以管理用于**自动发现 VMware 虚拟机**的用户帐户，以及执行**受保护计算机上的移动服务推送安装**。 
+使用 CSPSConfigTool.exe 可以管理用于“自动发现 VMware 虚拟机”的用户帐户，以及执行受保护计算机上的移动服务推送安装。 
 
 1. 登录到配置服务器。
 2. 单击桌面上的快捷方式启动 CSPSConfigtool.exe。
@@ -145,7 +143,7 @@ ProxyPassword="Password"
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>将配置服务器注册到不同的恢复服务保管库。
 
 > [!WARNING]
-> 下面一组步骤会在当前保管库中取消关联配置，并停止配置服务器下所有受保护虚拟机的复制。
+> 以下步骤在当前保管库中取消关联配置，并停止配置服务器下所有受保护虚拟机的复制。
 
 1. 登录到配置服务器。
 2. 在管理员命令提示符中，运行命令
@@ -169,7 +167,7 @@ ProxyPassword="Password"
     net start obengine
     ```
 
-## <a name="updating-a-configuration-server"></a>更新配置服务器
+## <a name="upgrading-a-configuration-server"></a>升级配置服务器
 
 > [!WARNING]
 > 最多仅支持更新到之后的第 4 个版本。 例如，如果市场中的最新版本为 9.11，则可以从版本 9.10、9.9、9.8 或 9.7 直接更新到 9.11。 但是，如果所用版本小于或等于 9.6，则需要至少先更新为 9.7，然后才能将最新更新应用到配置服务器。 以前版本的下载链接可在 [Azure Site Recovery 服务更新](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)下找到
@@ -180,11 +178,14 @@ ProxyPassword="Password"
 4. 单击“确定”按钮以提供确认并继续进行升级。
 
 
-## <a name="decommissioning-a-configuration-server"></a>解除配置服务器
-在开始解除配置服务器之前，请务必执行以下操作。
-1. 禁用针对此配置服务器下的所有虚拟机的保护。
-2. 从配置服务器中取消关联所有复制策略。
-3. 删除所有与配置服务器关联的 vCenters 服务器/vSphere 主机。
+## <a name="delete-or-unregister-a-configuration-server"></a>删除或取消注册配置服务器
+
+> [!WARNING]
+> 在开始解除配置服务器之前，请务必执行以下操作。
+> 1. 针对此配置服务器下的所有虚拟机[禁用保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
+> 2. 从配置服务器中[取消关联](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy)和[删除](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy)所有复制策略。
+> 3. [删除](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery)所有与配置服务器关联的 vCenters 服务器/vSphere 主机。
+
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>从 Azure 门户中删除配置服务器
 1. 在 Azure 门户中，从“保管库”菜单浏览到“Site Recovery 基础结构” > “配置服务器”。
@@ -193,9 +194,6 @@ ProxyPassword="Password"
 
   ![delete-configuration-server](./media/site-recovery-vmware-to-azure-manage-configuration-server/delete-configuration-server.PNG)
 4. 单击“是”确认删除该服务器。
-
-  >[!WARNING]
-  如果有任何虚拟机、复制策略或 vCenter 服务器/vSphere 主机与此配置服务器关联，则无法删除此服务器。 请先删除这些实体，再尝试删除保管库。
 
 ### <a name="uninstall-the-configuration-server-software-and-its-dependencies"></a>卸载配置服务器软件及其依赖项
   > [!TIP]
@@ -214,6 +212,31 @@ ProxyPassword="Password"
   ```
   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
   ```
+
+## <a name="delete-or-unregister-a-configuration-server-powershell"></a>删除或取消注册配置服务器 (PowerShell)
+
+1. [安装](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块
+2. 使用命令登录到 Azure 帐户
+    
+    `Login-AzureRmAccount`
+3. 选择其下存在保管库的订阅
+
+     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+3.  现在设置保管库上下文
+    
+    ```
+    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
+    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    ```
+4. 选择配置服务器
+
+    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+6. 删除配置服务器
+
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
+
+> [!NOTE]
+> Remove-AzureRmSiteRecoveryFabric 中的 -Force 选项可用于强制执行删除配置服务器。
 
 ## <a name="renew-configuration-server-secure-socket-layerssl-certificates"></a>续订配置服务器安全套接字层 (SSL) 证书
 配置服务器具有一个内置的 Web 服务器，该服务器协调连接到配置服务器的移动服务、进程服务器和主目标服务器的活动。 配置服务器的 Web 服务器使用 SSL 证书对其客户端进行身份验证。 此证书在三年后过期，随时可使用以下方法续订：
@@ -241,7 +264,7 @@ ProxyPassword="Password"
   ![certificate-details](./media/site-recovery-vmware-to-azure-manage-configuration-server/ssl-cert-expiry-details.png)
 
   >[!TIP]
-  如果未出现“立即续订”按钮，则会出现“立即升级”按钮。 这表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。
+  如果未出现“立即续订”按钮，则会出现“立即升级”按钮。 “立即升级”按钮表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。
 
 ## <a name="revive-a-configuration-server-if-the-secure-socket-layer-ssl-certificate-expired"></a>如果安全套接字层 (SSL) 证书已过期，请续订配置服务器
 
@@ -268,4 +291,3 @@ ProxyPassword="Password"
 
 ## <a name="common-issues"></a>常见问题
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-

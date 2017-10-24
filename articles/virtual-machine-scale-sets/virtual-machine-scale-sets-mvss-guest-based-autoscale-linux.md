@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
+ms.openlocfilehash: 98635ea6695fdb1e55456b5b6a293a3b4ad9d839
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ac0bbb4dbfccca3f3fc31526aeff11afe55d44be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>使用 Linux 规模集模板中的来宾指标执行自动缩放
 
-在 Azure 中，会从 VM 和规模集收集两种类型的指标：有些指标来自主机 VM，还有一些指标来自来宾 VM。 主机指标不需要额外的设置，因为它们由主机 VM 收集；而来宾指标需要我们在来宾 VM 中安装 [Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或 [Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../monitoring-and-diagnostics/monitoring-supported-metrics.md)列出了支持的主机指标，[此处](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[最小可行规模集模板](./virtual-machine-scale-sets-mvss-start.md)，以根据 Linux 规模集的来宾指标使用自动缩放规则。
+在 Azure 中，会从 VM 和规模集收集两种类型的指标：有些指标来自主机 VM，还有一些指标来自来宾 VM。 粗略地讲，如果使用的是标准 CPU、磁盘和网络指标，主机指标可能就非常适合。 不过，如果需要更多指标，来宾指标可能更为适合。 这两者的区别如下：
+
+主机指标更简单、更可靠。 它们不需要进行额外设置，因为它们是由主机 VM 收集；而来宾指标则需要在来宾 VM 中安装 [Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或 [Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../monitoring-and-diagnostics/monitoring-supported-metrics.md)列出了支持的主机指标，[此处](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[最小可行规模集模板](./virtual-machine-scale-sets-mvss-start.md)，以根据 Linux 规模集的来宾指标使用自动缩放规则。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 
@@ -189,4 +189,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-

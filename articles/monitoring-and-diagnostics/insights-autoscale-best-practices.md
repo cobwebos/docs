@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
+ms.openlocfilehash: df5059b5509ca4989369cf3bcba8cb89f1c25db4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 54dad831287376db7fb2dc46e4591be1499dc072
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 本文讲解 Azure 中自动缩放的最佳实践。 Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)和[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)。 其他 Azure 服务使用不同的缩放方法。
@@ -31,7 +30,7 @@ ms.lasthandoff: 07/18/2017
   自动缩放设置具有最大、最小和默认实例值。
 * 自动缩放作业始终读取要作为缩放依据的关联指标，检查它是否超过针对扩大或缩小配置的阈值。 可以在 [Azure 监视器自动缩放常用指标](insights-autoscale-common-metrics.md)查看可以作为自动缩放依据的指标列表。
 * 所有阈值都在实例级别进行计算。 例如，“如果实例计数为 2，则在平均 CPU > 80% 时按 1 个实例进行扩大”表示在所有实例间的平均 CPU 大于 80% 时进行扩大。
-* 你会始终通过电子邮件收到故障通知。 具体而言，目标资源的所有者、参与者和访问者会收到电子邮件。 当自动缩放从故障中恢复并开始正常工作时，也始终会收到恢复电子邮件。
+* 会始终通过电子邮件收到故障通知。 具体而言，目标资源的所有者、参与者和访问者会收到电子邮件。 当自动缩放从故障中恢复并开始正常工作时，也始终会收到恢复电子邮件。
 * 可以选择加入以通过电子邮件和 webhook 接收成功缩放操作通知。
 
 ## <a name="autoscale-best-practices"></a>自动缩放最佳做法
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/18/2017
 如果只使用该组合的一部分，则自动缩放只会进行单向扩大或缩小，直到达到最大值或最小值。
 
 ### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>管理自动缩放时，请勿在 Azure 门户与 Azure 经典门户之间切换
-对于云服务和应用程序服务（Web 应用），请使用 Azure 门户 (portal.azure.com) 创建和管理自动缩放设置。 对于虚拟机规模集，请使用 PowerShell、CLI 或 REST API 创建和管理自动缩放设置。 管理自动调整规模配置时，请勿在 Azure 经典门户 (manage.windowsazure.com) 与 Azure 门户 (portal.azure.com) 之间切换。 Azure 经典门户及其基础后端具有限制。 请使用图形用户界面移动到 Azure 门户来管理自动缩放。 这些选项是使用自动缩放 PowerShell、CLI 或 REST API（通过 Azure 资源浏览器）。
+对于云服务和应用服务（Web 应用），请使用 Azure 门户 (portal.azure.com) 创建和管理自动缩放设置。 对于虚拟机规模集，请使用 PowerShell、CLI 或 REST API 创建和管理自动缩放设置。 管理自动调整规模配置时，请勿在 Azure 经典门户 (manage.windowsazure.com) 与 Azure 门户 (portal.azure.com) 之间切换。 Azure 经典门户及其基础后端具有限制。 请使用图形用户界面移动到 Azure 门户来管理自动缩放。 这些选项是使用自动缩放 PowerShell、CLI 或 REST API（通过 Azure 资源浏览器）。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
 对于诊断指标，可以选择“平均值”、“最小值”、“最大值”和“总计”作为用作缩放依据的指标。 最常见的统计信息是“平均值”。
@@ -84,9 +83,9 @@ ms.lasthandoff: 07/18/2017
 5. 下次进行自动缩放检查时，CPU 会继续减少到 50。 随后再次估计 - 50 x 3 个实例 = 150/2 个实例 = 75，这低于扩大阈值 80，因此可以成功缩小为 2 个实例。
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>有关特殊指标的缩放阈值的注意事项
- 对于特殊指标（如存储或服务总线队列长度指标），阈值是按照当前实例数可用的消息平均数。 请认真为此指标选择阈值。
+ 对于特殊指标（如存储或服务总线队列长度指标），阈值是按照当前实例数可用的消息平均数。 请慎重选择此指标的阈值。
 
-我们来通过一个示例演示它，以确保你更好地了解行为。
+我们来通过一个示例演示它，以确保更好地了解行为。
 
 * 当存储队列消息计数 >= 50 时，按 1 计数增加实例
 * 当存储队列消息计数 <= 10 时，按 1 计数减少实例
@@ -94,7 +93,7 @@ ms.lasthandoff: 07/18/2017
 考虑以下序列：
 
 1. 有 2 个存储队列实例。
-2. 消息不断传入，而当你检查存储队列时，总计数达到 50。 你可能认为自动缩放应启动扩大操作。 但请注意，它仍是 50/2 = 25 个消息/实例。 因此，不会进行扩大。 要进行第一次扩大，存储队列中的总消息计数应是 100。
+2. 消息不断传入，而检查存储队列时，总计数达到 50。 可能认为自动缩放应启动扩大操作。 但请注意，它仍是 50/2 = 25 个消息/实例。 因此，不会进行扩大。 要进行第一次扩大，存储队列中的总消息计数应是 100。
 3. 接下来，假定总消息计数达到 100。
 4. 会由于扩大操作而添加第 3 个存储队列实例。  在队列中的总消息计数达到 150 之前，不会进行下一次扩大操作，因为 150/3 = 50。
 5. 现在队列中的消息数量变小。 在有 3 个实例的情况下，当所有队列中的总消息数加起来达到 30 时，会进行第一缩小操作，因为 30/3 = 10 个消息/实例（这是缩小阈值）。
@@ -114,7 +113,7 @@ ms.lasthandoff: 07/18/2017
 
 下图显示一个自动缩放设置，其默认配置文件的最小实例数 = 2，最大实例数 = 10。 在此示例中，规则配置为在队列中的消息计数大于 10 时进行扩大，在队列中的消息计数小于 3 时进行缩小。 因此，现在资源可以在 2 到 10 个实例之间进行缩放。
 
-此外，为星期一设置了定期配置文件。 它设置为最小实例数 = 2，并且最大实例数 = 12。 这意味着在星期一，自动缩放首次检查此条件时，如果实例计数是 2，则它缩放为新的最小值 3。 只要自动缩放继续发现匹配此配置文件条件（星期一），它便只处理为此配置文件配置的基于 CPU 的扩大/缩小规则。 此时，它不会检查队列长度。 但是，如果你还要检查队列长度条件，则应在星期一配置文件中也包括默认配置文件中的那些规则。
+此外，为星期一设置了定期配置文件。 它设置为最小实例数 = 2，并且最大实例数 = 12。 这意味着在星期一，自动缩放首次检查此条件时，如果实例计数是 2，则它缩放为新的最小值 3。 只要自动缩放继续发现匹配此配置文件条件（星期一），它便只处理为此配置文件配置的基于 CPU 的扩大/缩小规则。 此时，它不会检查队列长度。 但是，如果还要检查队列长度条件，则应在星期一配置文件中也包括默认配置文件中的那些规则。
 
 同样，当自动缩放切换回默认配置文件时，它会首先检查是否符合最小值和最大值条件。 如果当时的实例数是 12，则它会缩小为 10（默认配置文件允许的最大值）。
 
@@ -156,4 +155,3 @@ ms.lasthandoff: 07/18/2017
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
+ms.openlocfilehash: bd252d7df2fc15aaa24d1a1ed7aaf6e00d301410
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 03d43476c1946221538acccd1251c64ed3f02e13
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-run-a-streaming-job-in-azure-stream-analytics"></a>如何在 Azure 流分析中运行流式处理作业
 当作业的输入、查询和输出均已指定时，可以启动流分析作业。
@@ -35,6 +34,7 @@ ms.lasthandoff: 08/29/2017
    
    ![Azure 门户“启动作业”按钮](./media/stream-analytics-run-a-job/4-stream-analytics-run-a-job.png)  
 2. 指定一个“开始输出”值，确定此作业何时开始生成输出。 之前尚未启动作业的默认设置为“作业开始时间”，表示作业将立即开始处理数据。 也可以指定一个过去（用于使用历史数据）或将来（延迟处理直到将来某个时间）的“自定义”时间。 当作业以前已启动和停止时，可以使用“上次停止时间”选项，从上次输出时间恢复作业并避免数据丢失。  
+注意：如果使用分区，那么所有分区的上次停止时间表示上次输出时间的最小值。
    
    ![启动流式处理作业的时间](./media/stream-analytics-run-a-job/2-stream-analytics-run-a-job.png)  
    
@@ -54,5 +54,4 @@ ms.lasthandoff: 08/29/2017
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

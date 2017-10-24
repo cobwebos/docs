@@ -1,5 +1,5 @@
 ---
-title: "如何在 Microsoft Azure 中使用 PerfInsights | Microsoft Docs"
+title: "如何在 Microsoft Azure 中使用 PerfInsights | Microsoft 文档"
 description: "了解如何使用 PerfInsights 来排查 Windows VM 性能问题。"
 services: virtual-machines-windows'
 documentationcenter: 
@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/18/2017
 ms.author: genli
+ms.openlocfilehash: 8d66bbdf6f7153cf59af60051e54377f6eccdc3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 45953b4512cb2f602edbd837e62b9344c4211d03
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights 
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) 是自动执行的脚本，可收集有用的诊断信息、运行 I/O 压力负载以及提供分析报告，以便排查 Microsoft Azure 中的 Windows VM 性能问题。 
+[PerfInsights](http://aka.ms/perfinsightsdownload) 是自动执行的脚本，可收集有用的诊断信息、运行 I/O 压力负载以及提供分析报告，以便排查 Microsoft Azure 中的 Windows VM 性能问题。 通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)，它可以作为独立脚本在虚拟机上运行，或直接从门户运行。
 
 对于 VM 性能问题，建议你在通过 Microsoft 开具支持票证之前先运行此脚本。
 
@@ -189,7 +188,16 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 ### <a name="how-do-i-run-perfinsights"></a>如何运行 PerfInsights？ 
 
-若要运行该脚本，请执行以下步骤：
+你可以通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)在虚拟机上运行 PerfInsights，或将其作为独立脚本运行。 
+
+**安装和运行来自 Azure 门户的 PerfInsights**
+
+现在可以使用名为 Azure 性能诊断扩展的 VM 扩展来运行 PerfInsights。 有关详细信息，请参阅[安装 Azure 性能诊断扩展](performance-diagnostics-vm-extension.md#install-the-extension)。  
+
+**在独立模式下运行 PerfInsights 脚本**
+
+若要运行 PerfInsights 脚本，请按照以下步骤操作：
+
 
 1. 下载 [PerfInsights.zip](http://aka.ms/perfinsightsdownload)。
 
@@ -350,4 +358,3 @@ Xperf 是一个命令行工具，用于捕获 Windows 性能工具包中的跟�
 为了增强安全性，需在第一次使用密码时更改密码。
 
 登录到 DTM 以后，将会出现一个对话框，用于上传 PerfInsights 所收集的 CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip 文件。
-

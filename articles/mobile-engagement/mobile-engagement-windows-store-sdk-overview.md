@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
 ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a>适用于 Azure Mobile Engagement 的 Windows Universal SDK 集成
 本文档介绍适用于 Azure Mobile Engagement Windows Universal SDK 的所有集成和配置选项。
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="upgrade-procedures"></a>升级过程
 如果已将较旧版本的 Engagement 集成到应用程序中，则在升级 SDK 时必须考虑以下几点。
 
-如果错过了几个版本的 SDK，则可能需要执行几个过程。 请参阅完整的[升级过程](mobile-engagement-windows-store-upgrade-procedure.md)。 例如，如果你将从迁移 0.10.1 到你必须首先按照"发件人 0.10.1 到 0.9.0"步骤的 0.11.0 然后"发件人到 0.11.0 0.10.1"过程。
+如果错过了几个版本的 SDK，则可能需要执行几个过程。 请参阅完整的[升级过程](mobile-engagement-windows-store-upgrade-procedure.md)。 例如，如果从 0.10.1 迁移至 0.11.0，则必须首先按照“从 0.9.0 至 0.10.1”的过程操作，然后按照“从 0.10.1 至 0.11.0”的过程操作。
 
 ### <a name="from-330-to-340"></a>从 3.3.0 至 3.4.0
 #### <a name="test-logs"></a>测试日志

@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.openlocfilehash: e9b8504d4a59cf0fae69a4e975d6f834028066d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 作为管理员，可以管理以下用户和设备设置：
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
 8. 单击“关闭”。
 
 ## <a name="delete-users-existing-app-passwords"></a>删除用户现有的应用密码
-此设置会删除用户创建的所有应用密码。 与这些应用密码关联的非浏览器应用程序停止工作之前创建一个新的应用密码。
+此设置会删除用户创建的所有应用密码。 与这些应用密码关联的非浏览器应用将会停止工作，直到创建新应用密码为止。
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>如何删除用户现有的应用密码
 1. 登录到 [Azure 门户](https://portal.azure.com)。

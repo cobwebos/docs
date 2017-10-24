@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 35413d597c3b6b1c7600241a78572b63f982d175
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>使用已连接到 StorSimple 虚拟阵列的 StorSimple Device Manager 的“设备摘要”边栏选项卡
 
@@ -48,7 +48,7 @@ StorSimple Device Manager 设备边栏选项卡提供已注册到给定 StorSimp
 
 * 在“使用情况”图表中，可以查看在虚拟阵列上已使用的主存储，以及在过去 7 天（默认时间段）内已使用的云存储。 使用图表右上角的“编辑”选项可选择其他时间范围。
 
-* “共享”或“卷”磁贴提供设备中共享或卷的数量的摘要，并按状态分组。 单击该磁贴以打开**共享**或**卷**列表边栏选项卡，，然后单击上的单个共享或卷以查看或修改其属性。 有关详细信息，请参阅如何[管理共享](storsimple-virtual-array-manage-shares.md)或[管理卷](storsimple-virtual-array-manage-volumes.md)。
+* “共享”或“卷”磁贴提供设备中共享或卷的数量的摘要，并按状态分组。 单击该磁贴可打开“共享”或“卷”列表边栏选项卡，然后单击单个共享或卷可查看或修改其属性。 有关详细信息，请参阅如何[管理共享](storsimple-virtual-array-manage-shares.md)或[管理卷](storsimple-virtual-array-manage-volumes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何：
