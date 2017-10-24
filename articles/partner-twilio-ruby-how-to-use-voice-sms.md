@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 69e50e7fe0e1f302e96c309878b8dea6869dff4a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何通过 Ruby 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
 
 ## <a id="WhatIs"></a>什么是 Twilio？
-Twilio 是一种电话 web 服务 API，允许你使用你的现有 web 语言和技术来生成语音和 SMS 应用程序。 Twilio 属于第三方服务（而非 Azure 功能和 Microsoft 产品）。
+Twilio 是一种电话 Web 服务 API，可方便用户利用现有 Web 语言和技能生成语音和短信应用程序。 Twilio 属于第三方服务（而非 Azure 功能和 Microsoft 产品）。
 
 利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 应用程序可以使用 **Twilio SMS** 发出和接收 SMS 消息。 应用程序可以通过 **Twilio 客户端**使用现有 Internet 连接（包括移动连接）启用语音通信。
 
@@ -51,16 +51,16 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 
 下面是 Twilio 谓词的列表。
 
-* **&lt;拨&gt;**： 将调用方连接到另一个电话。
-* **&lt;收集&gt;**： 收集电话键盘上输入数字。
-* **&lt;G u p&gt;**： 结束呼叫。
-* **&lt;播放&gt;**： 播放音频文件。
-* **&lt;暂停&gt;**： 安静地等待指定的秒数。
-* **&lt;记录&gt;**： 录制呼叫方的声音并返回包含该录音的文件的 URL。
-* **&lt;重定向&gt;**： 将对呼叫或 SMS 的控制转移到其他 URL 上的 TwiML。
-* **&lt;拒绝&gt;**： 拒绝对 Twilio 号码的传入呼叫而不向你收费
-* **&lt;说&gt;**： 将文本转换语音呼叫中生成。
-* **&lt;Sms&gt;**： 发送 SMS 消息。
+* **&lt;Dial&gt;**：将呼叫方连接到其他电话。
+* **&lt;Gather&gt;**：收集通过电话拨号键盘输入的数字。
+* **&lt;Hangup&gt;**：结束呼叫。
+* **&lt;Play&gt;**：播放音频文件。
+* **&lt;Pause&gt;**：安静地等待指定的秒数。
+* **&lt;Record&gt;**：录制呼叫方的声音，并返回录音文件的 URL。
+* **&lt;Redirect&gt;**：将对呼叫或短信 的控制权转让给其他 URL 上的 TwiML。
+* **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫，且无需付费
+* **&lt;Say&gt;**：将短信转换为通话语音。
+* **&lt;Sms&gt;**：发送短信。
 
 有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][twiml]。 有关 Twilio API 的其他信息，请参阅 [Twilio API][twilio_api]。
 
@@ -70,7 +70,7 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 注册 Twilio 帐户时，将收到适用于应用程序的一个免费电话号码。 还会收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 你的帐户 SID 和身份验证令牌分别显示在 [Twilio 帐户页][twilio_account]（可能为英文页面）上标记为“ACCOUNT SID”（帐户 SID）和“AUTH TOKEN”（身份验证令牌）的字段中。
 
 ### <a id="VerifyPhoneNumbers"></a>验证电话号码
-除了 Twilio 提供的号码外，还可验证你控制为在应用程序中使用的号码（例如，手机号码或家庭电话号码）。 
+除了 Twilio 提供的号码外，还可以验证自己控制用于应用程序的号码（即手机号码或住宅电话号码）。 
 
 有关如何验证电话号码的信息，请参阅[管理号码][verify_phone]（可能为英文页面）。
 
@@ -97,7 +97,7 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 
 此时，应该能够运行命令 `ruby web.rb -p 5000`。 这会在端口 5000 上启动一个小型 web 服务器。 通过访问为 Azure VM 设置的 URL，可以在浏览器中浏览到此应用程序。 在浏览器中打开 Web 应用程序后，即可开始生成 Twilio 应用程序。
 
-## <a id="configure_app"></a>应用程序配置为使用 Twilio
+## <a id="configure_app"></a>将应用程序配置为使用 Twilio
 可以通过将 `Gemfile` 更新为包含以下行，将 Web 应用程序配置为使用 Twilio 库：
 
     gem 'twilio-ruby'
@@ -108,7 +108,7 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 
 现在已经可以在 Web 应用程序中使用用于 Ruby 的 Twilio 帮助程序库。
 
-## <a id="howto_make_call"></a>如何： 发起传出呼叫
+## <a id="howto_make_call"></a>如何：拨打传出呼叫
 下面演示如何发起传出呼叫。 主要概念包括使用用于 Ruby 的 Twilio 帮助程序调用 REST API 以及呈现 TwiML。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
 
 将此函数添加到 `web.md`：
@@ -145,7 +145,7 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 
 第三个参数 (`url`) 是 Twilio 请求的 URL，以获取有关在连接呼叫后要执行的操作的指令。 在本例中，我们设置的 URL (`http://yourdomain.cloudapp.net`) 会返回一个简单 TwiML 文档，并使用 `<Say>` 谓词进行一些文本到语音转换，以便向接收呼叫的人员说出“Hello Monkey”。
 
-## <a id="howto_recieve_sms"></a>如何： 接收 SMS 消息
+## <a id="howto_recieve_sms"></a>如何：接收短信
 在前面的示例中，我们发起了一个**传出**电话呼叫。 这一次，我们使用在注册过程中 Twilio 提供的电话号码来处理**传入**的 SMS 消息。
 
 首先，登录到 [Twilio 仪表板][twilio_account]（可能为英文页面）。 单击顶部导航栏中的“Numbers”（号码），然后单击提供给 Twilio 号码。 会看到两个可以配置的 URL。 一个语音请求 URL 和一个短信请求 URL。 每当有人拨打号码或向号码发送短信时，Twilio 就会调用这些 URL。 这些 URL 也称为“Web 挂钩”。
@@ -160,7 +160,7 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 
 进行更改后，确保重新启动 Web 应用程序。 现在，拿出手机，向 Twilio 号码发送一条短信。 应该会立即收到短信响应，内容为“Hey, thanks for the ping! Twilio and Azure rock!”。
 
-## <a id="additional_services"></a>如何： 使用其他 Twilio 服务
+## <a id="additional_services"></a>如何：使用其他 Twilio 服务
 除了此处所示的示例之外，Twilio 还提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程序中使用其他 Twilio 功能。 有关完整详细信息，请参阅 [Twilio API 文档][twilio_api_documentation]。
 
 ### <a id="NextSteps"></a>后续步骤

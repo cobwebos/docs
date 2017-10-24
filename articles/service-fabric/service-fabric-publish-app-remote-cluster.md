@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
 ms.openlocfilehash: c440c520d84fc503ff9e705555449e92555d4721
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-remove-applications-using-visual-studio"></a>使用 Visual Studio 部署和删除应用程序
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Service Fabric 应用项目中名为 **PublishProfiles** 的文件夹包含 XML 
 Service Fabric 应用程序项目中名为 **ApplicationParameters** 的文件夹包含用户指定的应用程序清单参数值的 XML 文件。 应用程序清单文件可以参数化，以便可以针对部署设置使用不同的值。 若要了解有关参数化应用程序的详细信息，请参阅[在 Service Fabric 中管理多个环境](service-fabric-manage-multiple-environment-app-configuration.md)。
 
 > [!NOTE]
-> 对于执行组件服务，应该先构建项目，并尝试使用编辑器或通过“发布”对话框编辑文件。 这是因为在构建期间将生成一部分清单文件。
+> 对于执行组件服务，应先生成项目，然后再尝试在编辑器中或通过“发布”对话框编辑文件。 这是因为在构建期间将生成一部分清单文件。
 
 ## <a name="to-publish-an-application-using-the-publish-service-fabric-application-dialog-box"></a>使用“发布 Service Fabric 应用程序”对话框发布应用程序
 以下步骤演示如何使用 Visual Studio Service Fabric 工具提供的“发布 Service Fabric 应用程序”对话框发布应用程序。
@@ -59,7 +59,7 @@ Service Fabric 应用程序项目中名为 **ApplicationParameters** 的文件�
     ![**发布 Service Fabric 应用程序**对话框][0]
    
     “**目标配置文件**”下拉列表中选择的文件是保存除“**清单版本**”以外的所有设置的位置。 可以重复使用现有配置文件，或通过选择“**目标配置文件**”下拉列表框中的“**<管理配置文件...>**”来创建一个新的配置文件。 选择发布配置文件时，其内容将出现在对话框的相应字段中。 若要随时保存更改，请选择“**保存配置文件**”链接。    
-2. 在“**连接终结点**”部分中，指定本地或远程 Service Fabric 群集的发布终结点。 若要添加或更改连接终结点，请单击“**连接终结点**”下拉列表。 该列表根据 Azure 订阅显示可对其发布的可用 Service Fabric 群集连接终结点。 请注意，如果你尚未登录到 Visual Studio，系统会提示你登录。
+2. 在“**连接终结点**”部分中，指定本地或远程 Service Fabric 群集的发布终结点。 若要添加或更改连接终结点，请单击“**连接终结点**”下拉列表。 该列表根据 Azure 订阅显示可对其发布的可用 Service Fabric 群集连接终结点。 请注意，如果尚未登录到 Visual Studio，系统会提示登录。
    
     使用群集选择对话框从一组可用订阅和群集中进行选择。
    
@@ -70,7 +70,7 @@ Service Fabric 应用程序项目中名为 **ApplicationParameters** 的文件�
    > 
    > 
    
-    选择终结点后，Visual Studio 将验证与所选 Service Fabric 群集的连接。 如果群集未受到保护，Visual Studio 可以立即与其连接。 但是，如果群集受保护，则需要在本地计算机上安装证书才能继续。 有关详细信息，请参阅[如何配置安全连接](service-fabric-visualstudio-configure-secure-connections.md)。 完成后，选择“**确定**”按钮。 选定的群集将出现在“发布 Service Fabric 应用程序”对话框中。
+    在选择终结点后，Visual Studio 会验证与所选 Service Fabric 群集的连接。 如果群集未受到保护，Visual Studio 可以立即与其连接。 但是，如果群集受保护，则需要在本地计算机上安装证书才能继续。 有关详细信息，请参阅[如何配置安全连接](service-fabric-visualstudio-configure-secure-connections.md)。 完成后，选择“**确定**”按钮。 选定的群集将出现在“**发布 Service Fabric 应用程序**”对话框中。
 3. 在“**应用程序参数文件**”下拉列表框中，导航到应用程序参数文件。 应用程序参数文件保留应用程序清单文件中参数的用户指定值。 若要添加或更改参数，请选择“**编辑**”按钮。 在“**参数**”网格中输入或更改参数值。 完成后，请选择“**保存**”按钮。
    
     ![**编辑参数**对话框][2]
@@ -79,13 +79,13 @@ Service Fabric 应用程序项目中名为 **ApplicationParameters** 的文件�
    
     ![**编辑版本**对话框][3]
    
-    如果应用程序和服务版本使用 1.0.0 等语义版本设置，或格式为 1.0.0.0 的数字值，请选择“**自动更新应用程序和服务版本**”选项。 如果选择此选项，则每当代码、配置或数据包版本更新时，服务和应用程序版本号将自动更新。 如果想要以手动方式编辑版本，请清除该复选框以禁用此功能。
+    如果应用程序和服务版本使用 1.0.0 等语义版本设置，或格式为 1.0.0.0 的数字值，请选择“**自动更新应用程序和服务版本**”选项。 如果选择此选项，则每当代码、配置或数据包版本更新时，服务和应用程序版本号会自动更新。 如果想要以手动方式编辑版本，请清除该复选框以禁用此功能。
    
    > [!NOTE]
    > 对于执行组件项目的所有包条目，请先构建项目以便在服务清单文件中生成这些条目。
    > 
    > 
-6. 指定完所有必要的设置后，选择“发布”按钮，将应用程序发布到选定的 Service Fabric 群集。 指定的设置将应用到发布过程。
+6. 指定完所有必要的设置后，选择“**发布**”按钮以将应用程序发布到选定的 Service Fabric 群集。 指定的设置将应用到发布过程。
 
 ## <a name="publish-to-an-arbitrary-cluster-endpoint-including-party-clusters"></a>发布到任意群集终结点（包括合作群集）
 Visual Studio 发布体验已针对发布到远程群集（与某个 Azure 订阅关联）进行优化。 但是，也可以通过直接编辑发布配置文件 XML 发布到任意终结点（例如 Service Fabric 合作群集）。 如上所述，默认情况下提供了三个发布配置文件 - **Local.1Node.xml**、**Local.5Node.xml** 和 **Cloud.xml** - 但可以针对不同的环境创建更多的配置文件。 例如，可以创建一个配置文件（例如命名为 **Party.xml**）用于发布到合作群集。
@@ -102,7 +102,7 @@ Visual Studio 发布体验已针对发布到远程群集（与某个 Azure 订�
 
   ![发布对话框中的新发布配置文件][4]
 
-  请注意，在此情况下，新发布配置文件指向某个默认的应用程序参数文件。 如果想要将相同的应用程序配置发布到多个环境，这是合理的结果。 相反，如果要发布的每个环境有不同的配置，则合理的做法是创建相应的应用程序参数文件。
+  请注意，在此情况下，新发布配置文件将指向某个默认的应用程序参数文件。 如果想要将相同的应用程序配置发布到多个环境，这是合理的结果。 相反，如果要发布的每个环境有不同的配置，则合理的做法是创建相应的应用程序参数文件。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解如何在持续集成环境中自动化发布过程，请参阅[设置 Service Fabric 持续集成](service-fabric-set-up-continuous-integration.md)。

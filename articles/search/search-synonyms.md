@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
 ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Azure 搜索中的同义词功能（预览版）
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 
 在 Azure 搜索中，同义词支持基于定义和上传到服务的同义词映射。 这些映射构成独立的资源（如索引或数据源），在搜索服务中可用于任何索引的任何可搜索字段。
 
-同义词映射和索引独立维护。 定义同义词映射并将其上传到服务后，可通过在字段定义中添加名为 **synonymMaps** 的新属性在字段上启用同义词功能。 创建、 更新和删除同义词映射始终是整个文档操作，这意味着你无法创建、 更新或删除同义词映射的部分以增量方式。 甚至更新单个条目也需要重新加载。
+同义词映射和索引独立维护。 定义同义词映射并将其上传到服务后，可通过在字段定义中添加名为 **synonymMaps** 的新属性在字段上启用同义词功能。 创建、更新和删除同义词映射始终是一项全文档操作。也就是说，无法逐个创建、更新或删除同义词映射的各个部分。 甚至更新单个条目也需要重新加载。
 
 将同义词并入搜索应用程序需要两步：
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
 
 使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 在免费服务中可为每个同义词映射定义最多 5,000 条规则，在所有其他 SKU 中可定义最多 10,000 条规则。 每条规则可包含最多 20 个扩展。
 
-在此预览版中，同义词映射的格式必须为 Apache Solr，以下对此进行了解释。 如果你有一个现有的同义词字典以不同的格式，并想要直接使用，请让我们知道上[UserVoice](https://feedback.azure.com/forums/263029-azure-search)。
+在此预览版中，同义词映射的格式必须为 Apache Solr，以下对此进行了解释。 如果现有的同义词字典具有不同格式，并且希望直接使用它，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上向我们反馈。
 
 如以下示例所示，可使用 HTTP POST 创建新的同义词映射：
 
@@ -81,9 +81,9 @@ Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Sol
               USA, United States, United States of America
 ```
 
-使用上面的搜索查询的规则"USA"将扩展到"USA"或者"美国"或者"美国"。
+使用以上规则，搜索查询“USA”会扩展为“USA”、“United States”或“United States of America”。
 
-箭头“=>”表示显式映射。 如果指定，搜索查询相匹配的左侧的术语序列"= >"将替换为右侧替代项。 给定以下规则，搜索查询“Washington”、“Wash”。 或者"WA"将所有重写到"WA"。 显式映射仅适用于指定的方向并不重写查询"WA"到"华盛顿"在此情况下。
+箭头“=>”表示显式映射。 如果指定，与“=>”左侧内容匹配的一系列搜索查询词会被替换为“=>”右侧的替代项。 给定以下规则，搜索查询“Washington”、“Wash”。 或“WA”全都会重写为“WA”。 显式映射只会按指定方向应用，在此示例中，不会将查询“WA”重写为“Washington”。
 ```
               Washington, Wash., WA => WA
 ```

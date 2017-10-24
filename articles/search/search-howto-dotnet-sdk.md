@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.date: 05/22/2017
 ms.author: brjohnst
 ms.openlocfilehash: 552a7ab193e12d2e72da494166d774e974c85d47
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>如何使用 .NET 应用程序中的 Azure 搜索
 文本介绍了如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在应用程序中使用 Azure 搜索实现丰富的搜索体验。
 
 ## <a name="whats-in-the-azure-search-sdk"></a>什么是 Azure 搜索 SDK
-该 SDK 包含一个客户端库 `Microsoft.Azure.Search`。 这样可管理索引、 数据源和索引器，以及上载和管理文档，并执行查询，所有而无需处理 HTTP 和 JSON 的详细信息。
+该 SDK 包含一个客户端库 `Microsoft.Azure.Search`。 借助它，不仅可以管理索引、数据源和索引器，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。
 
 客户端库会定义 `Index`、`Field` 和 `Document` 之类的类，还会定义 `SearchServiceClient` 和 `SearchIndexClient` 类中的 `Indexes.Create` 和 `Documents.Search` 之类的操作。 这些类已组织成以下命名空间：
 
@@ -93,7 +93,7 @@ static void Main(string[] args)
 > 
 >
 
-我们将逐步进行介绍。 首先，我们需要创建一个新的 `SearchServiceClient`。 此对象允许你对索引进行管理。 要构建一个，需要提供 Azure 搜索服务名称以及管理 API 密钥。 可以在[示例应用程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 文件中输入此信息。
+我们将逐步进行介绍。 首先，我们需要创建一个新的 `SearchServiceClient`。 使用此对象，可以管理索引。 要构建一个，需要提供 Azure 搜索服务名称以及管理 API 密钥。 可以在[示例应用程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 文件中输入此信息。
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)

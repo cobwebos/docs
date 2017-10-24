@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: fc98bdd8b3597810b0c07563af507e93c611f769
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric 应用程序的容量规划
 本文档介绍如何评估运行 Azure Service Fabric 应用程序所需的资源量（CPU、RAM 和磁盘存储空间）。 资源要求经常会随着时间而变化。 开发/测试服务时需要的资源通常很少，之后进入生产环境且应用程序受欢迎度提高时需要的资源会更多。 设计应用程序时，应仔细规划长期要求并做出选择，以便到时服务可以缩放以应对较高的客户需求。
@@ -43,16 +43,16 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 
 ## <a name="account-for-growth"></a>考虑增长
-除了最初使用的 DB_Size，可能需要根据预期服务增长的 DB_Size 来计算节点。 然后，随着服务的发展而增加节点数目，以便不会过度预配节点数目。 但是，分区数目应该基于以最大增长率运行服务时所需的节点数。
+除了最初使用的 DB_Size，可能需要根据预期服务增长的 DB_Size 来计算节点。 然后，随服务发展增加节点数量，这样就不会过度预配节点数量。 但是，分区数目应该基于以最大增长率运行服务时所需的节点数。
 
 最好随时准备几台额外的计算机，以便可以处理任何意外的高峰或故障（例如，一些 VM 停机）。  尽管额外的容量要使用预期高峰来确定，但一开始可以多预留几个 VM（额外准备 5-10%）。
 
 上面假设只有一个有状态服务。 如果有多个有状态服务，则必须将与其他服务关联的 DB_Size 添加到公式中。 或者，可以单独为每个有状态服务计算节点数。  服务可能包含不平衡的副本或分区。 请记住，有些分区的数据可能比其他分区要多。 有关分区的详细信息，请参阅[分区最佳实践文章](service-fabric-concepts-partitioning.md)。 但是，上述公式不受分区或副本影响，因为 Service Fabric 可确保副本以优化方式分散在节点之间。
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>使用电子表格进行成本计算
-现在，让我们在公式中放入一些实际数字。 [示例电子表格](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx)显示如何规划包含三种数据对象类型的应用程序的容量。 针对每个对象，我们估算其大小以及预期需要的对象数。 我们还会选择对每个对象类型需要的副本数。 电子表格将计算要在群集中存储的总内存量。
+现在，让我们在公式中放入一些实际数字。 [示例电子表格](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx)显示如何规划包含三种数据对象类型的应用程序的容量。 针对每个对象，我们将估算其大小以及预期需要的对象数。 我们还将选择对每个对象类型需要的副本数。 电子表格将计算要在群集中存储的内存量总计。
 
-然后，输入 VM 大小和每月成本。 根据 VM 大小，电子表格将告知必须至少要使用多少个分区来拆分数据，才能使其能够实际包含在节点中。 可能需要大量的分区才能应对应用程序的特定计算和网络流量需求。 电子表格显示目前管理用户配置文件对象的分区数已从 1 个增加到 6 个。
+然后，输入 VM 大小和每月成本。 根据 VM 大小，电子表格将告诉你必须至少要提供多少个分区才能拆分数据，使其能够实际包含在节点中。 可能需要大量的分区才能应对应用程序的特定计算和网络流量需求。 电子表格显示目前管理用户配置文件对象的分区数已从 1 个增加到 6 个。
 
 现在，根据所有这些信息，电子表格会显示你实际可以获取包含 26 个节点的群集上所需分区和副本的所有数据。 但是，此群集将密集压缩，因此，可能想要添加一些节点来应对节点故障和升级。 电子表格还显示，节点数超过 57 个不会带来任何附加价值，因为这会出现空节点。 不过，可能仍然想要配置超过 57 个节点，以应对节点故障和升级。 可以根据应用程序的特定需求调整电子表格。   
 

@@ -16,17 +16,17 @@ ms.date: 07/26/2017
 ms.author: TomSh
 ms.custom: azlog
 ms.openlocfilehash: 9d39ecd513386b75b4b640721f80991caaf9ade8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>将 Azure 日志集成与 Azure 诊断日志记录和 Windows 事件转发相结合
 Azure 日志集成 (AzLog) 使你能够将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成可以让本地或云中的所有资产使用统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
 >[!NOTE]
 有关 Azure 日志集成的详细信息，请查阅 [Azure 日志集成概述](https://docs.microsoft.com/azure/security/security-azure-log-integration-overview)。
 
-本文将重点介绍如何安装 Azlog 服务和如何将服务与 Azure 诊断集成，从而帮助你开始使用 Azure 日志集成。 然后，Azure 日志集成服务将能够从从部署在 Azure IaaS 中的虚拟机的 Windows 安全事件通道收集 Windows 事件日志信息。 可能已经在本地使用了“事件转发”，这二者非常类似。
+本文将重点介绍如何安装 Azlog 服务和如何将服务与 Azure 诊断集成，从而帮助你开始使用 Azure 日志集成。 然后，Azure 日志集成服务就可以从 Azure IaaS 中部署的虚拟机，通过 Windows 安全事件通道收集 Windows 事件日志信息。 可能已经在本地使用了“事件转发”，这二者非常类似。
 
 >[!NOTE]
 >SIEM 自身能够将 Azure 日志集成的输出集成到 SIEM。 有关详细信息，请参阅文章[将 Azure 日志集成与本地 SIEM 集成](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)。
@@ -97,7 +97,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 1. 打开提升权限的 PowerShell 窗口并导航到 **c:\Program Files\Microsoft Azure Log Integration**
 2. 首先需要导入 AzLog Cmdlet。 可以通过运行 **LoadAzlogModule.ps1** 脚本来实现此目的（请注意以下命令中的“\”）。 输入 **.\LoadAzlogModule.ps1** 并按 **Enter** 。  
 应该会看到如下图所示的内容。 </br></br>
-![选中的遥测框的安装屏幕](./media/security-azure-log-integration-get-started/loaded-modules.png) </br></br>
+![选中了遥测数据框的安装屏幕](./media/security-azure-log-integration-get-started/loaded-modules.png) </br></br>
 3. 现在需要将 AzLog 配置为使用特定的 Azure 环境。 “Azure 环境”即想使用的 Azure 云数据中心的“类型”。 虽然此时有多个 Azure 环境，但是当前最相关的选项是 **AzureCloud** 或者 **AzureUSGovernment**。   在提升权限的 PowerShell 环境中，确保位于 **c:\program files\Microsoft Azure Log Integration\** </br></br>
     位于此处后，运行以下命令： </br>
     ``Set-AzlogAzureEnvironment -Name AzureCloud``（适用于 Azure 商业版）

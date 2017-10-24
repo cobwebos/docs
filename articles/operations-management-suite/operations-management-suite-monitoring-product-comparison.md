@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 监视产品比较
-本文在以下方面比较了 Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics：体系结构、如何监视资源的逻辑以及如何对所收集数据执行分析。  这是为你提供基本的了解其差异和相对优势。  
+本文在以下方面比较了 Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics：体系结构、如何监视资源的逻辑以及如何对所收集数据执行分析。  这是为了让用户对它们的区别和相对优势有基本了解。  
 
 ## <a name="basic-architecture"></a>基本体系结构
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
@@ -99,7 +99,7 @@ Log Analytics 使用 Windows 事件日志、IIS 日志和 Syslog 等源从代理
 
 ## <a name="health-monitoring"></a>运行状况监视
 ### <a name="operations-manager"></a>Operations Manager
-SCOM 可对应用程序的不同组件进行建模，并提供每个组件的实时运行状况。  这样，你不仅查看检测到的错误和性能随着时间的推移而且还可以在任何给定时间验证的应用程序或系统的实际运行状况和其每个组件。  因为它了解应用程序可用的时间段，因此 SCOM 中的运行状况引擎还支持可随时间推移分析和报告应用程序可用性的服务级别协议 (SLA)。
+SCOM 可对应用程序的不同组件进行建模，并提供每个组件的实时运行状况。  这样，不仅可以查看随着时间推移而检测到的错误和性能，还能验证应用程序或系统及其每个组件在任何给定时间的实际运行状况。  因为它了解应用程序可用的时间段，因此 SCOM 中的运行状况引擎还支持可随时间推移分析和报告应用程序可用性的服务级别协议 (SLA)。
 
 例如，下面的视图显示了由 SCOM 监视的 SQL 数据库引擎的实时运行状况。  数据库引擎之一的每个数据库的运行状况显示在视图的下半部分。
 

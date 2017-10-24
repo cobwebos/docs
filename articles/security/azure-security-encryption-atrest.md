@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: yurid
+ms.openlocfilehash: 53b6f03d43b5525e5c5dea42e6a9a36042b65d52
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 6af94c795ec5153013f4a9c5c937beed08f44e7a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 Microsoft Azure 中有多种工具，可以根据贵公司的安全性和符合性需求来保护数据。 本文重点讲述如何跨 Microsoft Azure 对数据进行静态保护，介绍了参与实施数据保护的不同组件，并探讨了各种密钥管理保护方法的优缺点。 
@@ -273,12 +272,11 @@ SQL Azure 目前支持将静态加密用于 Microsoft 托管的服务器端和�
 | Power BI                         |                | 是                 | -                            | -                            | -      |
 | IoT 服务                     |                |                     |                              |                              |        |
 | IoT 中心                          |                | -                   | -                            | -                            | 是    |
-| 服务总线                      |                | -              | -                            | -                            | 是    |
-| 事件中心                       |                | -             | -                            | -                            | -      |
+| 服务总线                      |                | 是（高级层）              | -                            | -                            | 是    |
+| 事件中心                       |                | 是             | -                            | -                            | -      |
 
 
 ## <a name="conclusion"></a>结束语
 
 保护存储在 Azure 服务中的客户数据对于 Microsoft 来说至关重要。 所有 Azure 托管服务都会始终提供静态加密选项。 基础服务（例如 Azure 存储、SQL Azure 以及密钥分析和智能服务）已经提供静态加密选项。 其中的某些服务既支持客户控制的密钥和客户端加密，又支持服务托管的密钥和加密。 Microsoft Azure 服务正在大范围地增强静态加密的可用性，计划在未来数月中推出新功能的预览版和公开发行版。
-
 

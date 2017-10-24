@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/02/2017
 ms.author: vturecek
 ms.openlocfilehash: ca36f42897cd44d6da1a3cb6db53f656cf6256ee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
 Service Fabric 提供了多种方法来编写和管理服务。 服务可以选择使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意已编译可执行程序，也可以是在 Service Fabric 群集上直接托管的容器中运行的代码。
@@ -40,14 +40,14 @@ Reliable Services 可以无状态，类似于大多数服务平台，如 Web 服
 
 Reliable Services 也可以是有状态的，专门用于 Service Fabric，其状态使用 Reliable Collections 直接保存在服务中。 通过复制使状态具有高可用性，以及通过分区来分布状态，所有状态由 Service Fabric 自动管理。
 
-[了解有关 Reliable Services 的详细信息](service-fabric-reliable-services-introduction.md)或通过[编写第一个 Reliable Service](service-fabric-reliable-services-quick-start.md) 帮助你入门。
+[详细了解 Reliable Services](service-fabric-reliable-services-introduction.md)，或开始[编写首个 Reliable Services 服务](service-fabric-reliable-services-quick-start.md)。
 
 ## <a name="reliable-actors"></a>Reliable Actors
 Reliable Actor 框架在 Reliable Services 的基础上构建，是根据执行组件设计模式实现虚拟执行组件模式的应用程序框架。 Reliable Actor 框架使用称为执行组件的单线程执行的独立的计算单元和状态。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
 
 由于 Reliable Actors 自身是在 Reliable Services 基础上构建的应用程序框架，所以它完全与 Service Fabric 平台集成，并且获益于平台所提供的完整功能集。
 
-[了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)或通过[编写第一个 Reliable Actor 服务](service-fabric-reliable-actors-get-started.md)帮助你入门
+[详细了解 Reliable Actors](service-fabric-reliable-actors-introduction.md)，或开始[编写首个 Reliable Actors 服务](service-fabric-reliable-actors-get-started.md)
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 集成，用于构建可包括在应用程序中的 Web 服务和 API 服务。 

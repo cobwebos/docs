@@ -15,10 +15,10 @@ ms.workload: search
 ms.date: 05/01/2017
 ms.author: brjohnst
 ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-service-rest-api-version-2015-02-28-preview"></a>Azure 搜索服务 REST API：版本 2015-02-28-预览版
 本文是 `api-version=2015-02-28-Preview` 的参考文档。 此预览版通过提供以下实验功能扩展了当前公开发布的版本 [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx)：
@@ -284,7 +284,7 @@ Azure 搜索服务 API 支持 API 操作的两个 URL 语法：简单和 OData�
 
 `suggesters` - 设置搜索模式和作为建议内容源的字段。 有关详细信息，请参阅[建议器](#Suggesters)。
 
-`scoringProfiles`-定义自定义评分行为可让你影响哪些项显示在搜索结果中更高版本。 计分配置文件由字段权重和函数组成。 有关计分配置文件中使用的属性，请参阅[添加计分配置文件](https://msdn.microsoft.com/library/azure/dn798928.aspx)。
+`scoringProfiles` - 定义自定义计分行为，可方便用户影响搜索结果中排名更高的项。 计分配置文件由字段权重和函数组成。 有关计分配置文件中使用的属性，请参阅[添加计分配置文件](https://msdn.microsoft.com/library/azure/dn798928.aspx)。
 
 <!-- This is a standalone topic in MSDN -->
 <a name="LanguageSupport"></a>
@@ -625,7 +625,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 **为配置文件评分**
 
-A`scoringProfile`定义自定义评分行为可让你影响哪些项显示在搜索结果中更高版本。 计分配置文件由字段权重和函数组成。 若要使用它们，请在查询字符串上按名称指定配置文件。
+`scoringProfile` 定义自定义计分行为，可方便用户影响搜索结果中排名更高的项。 计分配置文件由字段权重和函数组成。 若要使用它们，请在查询字符串上按名称指定配置文件。
 
 在幕后运行的默认计分概要文件，用于为结果集中的每个项目计算搜索分数。 可使用内部、未命名的计分概要文件。 或者，将 `defaultScoringProfile` 设置为使用自定义配置文件作为默认配置文件，每当未在查询字符串上指定自定义配置文件时，则调用该配置文件。
 

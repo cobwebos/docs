@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: 26c0256f6fa299551d92e9bcd058ca359d8c85b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>迁移应用程序之前了解云服务与 Service Fabric 之间的差异。
 Microsoft Azure Service Fabric 是面向高度可缩放、高度可靠分布式应用程序的下一代云应用程序平台。 其中引入了许多用于打包、部署、更新和管理分布式云应用程序的新功能。 
@@ -32,7 +32,7 @@ Microsoft Azure Service Fabric 是面向高度可缩放、高度可靠分布式�
 
 ![云服务应用程序和拓扑][1]
 
-* **Service Fabric 涉及到将应用程序部署至现有的 VM 或运行 Service Fabric 的 Windows 或 Linux 计算机。** 编写的服务完全与底层的基础结构分离（由 Service Fabric 应用程序平台抽象化），因此可将应用程序部署到多个环境。 Service Fabric 中的工作负荷称为“服务”，一个或多个服务会在 Service Fabric 应用程序平台上运行的且正式定义的应用程序中分组。 可将多个应用程序部署到单个 Service Fabric 群集。
+* **Service Fabric 涉及到将应用程序部署至现有的 VM 或运行 Service Fabric 的 Windows 或 Linux 计算机。** 编写的服务完全与底层的基础结构分离（由 Service Fabric 应用程序平台抽象化），因此可将应用程序部署在多个环境。 Service Fabric 中的工作负载称为“服务”，一个或多个服务在 Service Fabric 应用程序平台上运行的且正式定义的应用程序中进行分组。 可将多个应用程序部署到单个 Service Fabric 群集。
 
 ![Service Fabric 应用程序和拓扑][2]
 
@@ -49,7 +49,7 @@ Service Fabric 应用程序模型有许多优点：
 
 ![云服务体系结构][9]
 
-Service Fabric 应用程序还可以选择在整个应用程序中使用相同的外部服务。 在此示例云服务体系结构中，从云服务迁移到 Service Fabric 的最简单路径是只将云服务部署替换为 Service Fabric 应用程序，并将整个体系结构保持相同。 只需进行少量的代码更改，即可将 Web 角色和辅助角色移植到 Service Fabric 无状态服务。
+Service Fabric 应用程序还可以选择在整个应用程序中使用相同的外部服务。 在这个云服务基础结构示例中，从云服务迁移到 Service Fabric 的最简单路径是只将云服务部署替换为 Service Fabric 应用程序，并将整个基础结构保持相同。 只需进行少量的代码更改，即可将 Web 角色和辅助角色移植到 Service Fabric 无状态服务。
 
 ![简单迁移后的 Service Fabric 体系结构][10]
 
@@ -80,7 +80,7 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 ![Service Fabric 直接通信][6]
 
 ### <a name="queues"></a>队列
-无状态环境（如云服务）中层之间的常见通信机制是使用外部存储队列将一个层的工作任务持久存储到另一个层。 一种常见方案是将作业发送到 Azure 队列或服务总线的 Web 层，辅助角色实例可在其中取消排队和处理作业。
+无状态环境（如云服务）中层之间的常见通信机制是使用外部存储队列将一个层的工作任务持久性存储到另一个层。 一种常见方案是 Web 层将作业发送到 Azure 队列或服务总线，辅助角色实例可在其中取消排队和处理作业。
 
 ![云服务队列通信][7]
 
@@ -89,9 +89,9 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 ![Service Fabric 直接通信][8]
 
 ## <a name="next-steps"></a>后续步骤
-从云服务迁移到 Service Fabric 的最简单路径是只将云服务部署替换为 Service Fabric 应用程序，并将应用程序的整个体系结构保持大致相同。 以下文章提供了帮助将 Web 角色或辅助角色转换为 Service Fabric 无状态服务的指南。
+从云服务迁移到 Service Fabric 的最简单路径是只将云服务部署替换为 Service Fabric 应用程序，并将应用程序的整个基础结构保持大致相同。 以下文章提供了帮助将 Web 角色和辅助角色迁移到 Service Fabric 无状态服务的指导。
 
-* [Simple migration: convert a Web or Worker Role to a Service Fabric stateless service](service-fabric-cloud-services-migration-worker-role-stateless-service.md)（简单迁移：将 Web 角色或辅助角色转换为 Service Fabric 无状态服务）
+* [简单迁移：将 Web 角色或辅助角色转换为 Service Fabric 无状态服务](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-cloud-services-migration-differences/topology-cloud-services.png
