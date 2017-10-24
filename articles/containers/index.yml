@@ -47,10 +47,10 @@ sections:
         className: cardsM
         columns: 2
         items:
-          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
-            title: 使用 Azure 容器实例创建容器化的应用
+          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
+            title: 在 Service Fabric 上部署 Windows 容器应用程序
             image:
-              src: /azure/media/index/ContainerService.svg
+              src: /azure/media/index/Fabric.svg
           - href: 'https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough'
             title: 为 Linux 容器创建 Kubernetes 群集
             image:
@@ -59,12 +59,16 @@ sections:
             title: 部署 Docker Swarm 群集
             image:
               src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
-            title: 部署 DC/OS 群集
+          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+            title: 在 Azure 容器注册表中创建专用 Docker 注册表
             image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+              src: /azure/media/index/container-registry.svg
           - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
             title: 使用容器的 Azure Web 应用创建容器化的应用
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
+            title: 部署 DC/OS 群集
             image:
               src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
   - title: 针对 Azure 和容器的免费 Pluralsight 视频培训
