@@ -1,3 +1,5 @@
+- name: Azure 存储文档
+  href: /azure/storage/
 - name: 概述
   items:
     - name: 介绍
@@ -16,6 +18,8 @@
       href: storage-quickstart-blobs-cli.md
     - name: 使用 Blob - .NET
       href: storage-quickstart-blobs-dotnet.md
+    - name: 使用 Blob - Python
+      href: storage-quickstart-blobs-python.md
 - name: 教程
   items:
     - name: 上传和处理图像
@@ -28,6 +32,12 @@
           href: storage-secure-access-application.md
         - name: 4 - 监视存储和排查存储问题
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: 云存储中针对高可用性的设计
+      items:
+        - name: 使你的应用程序具有高可用性
+          href: storage-create-geo-redundant-storage.md
+        - name: 模拟 RA-GRS 存储故障
+          href: storage-simulate-failure-ragrs-account-app.md
     - name: 在云存储中搜索非结构化数据
       href: storage-unstructured-search.md
 - name: 示例

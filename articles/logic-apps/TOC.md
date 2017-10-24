@@ -5,8 +5,8 @@
 
 # 入门
 ## [创建第一个逻辑应用](logic-apps-create-a-logic-app.md)
-## [逻辑应用的模板](logic-apps-use-logic-app-templates.md)
-## [从模板创建逻辑应用](logic-apps-arm-provision.md)
+## [从模板创建逻辑应用](logic-apps-create-logic-apps-from-templates.md)
+## [从资源管理器模板创建逻辑应用](logic-apps-create-deploy-azure-resource-manager-templates.md)
 ## [将 MABS 应用移到逻辑应用](logic-apps-move-from-mabs.md)
 
 # 如何

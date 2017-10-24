@@ -37,7 +37,7 @@
 ## [远程监视解决方案中的设备信息](iot-suite-remote-monitoring-device-info.md)
 ## [为已连接的工厂部署网关](iot-suite-connected-factory-gateway-deployment.md)
 ## [自定义连接的工厂](iot-suite-connected-factory-customize.md)
-
+## [将 OPC 发布服务器用于连接的工厂](iot-suite-connected-factory-publisher.md)
 # 引用
 ## [安全体系结构](iot-security-architecture.md)
 ## [安全最佳实践](iot-security-best-practices.md)

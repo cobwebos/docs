@@ -73,28 +73,21 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: 常见问题
       href: site-recovery-faq.md
-    - name: 为将 VMware 复制到 Azure 规划容量
-      href: site-recovery-plan-capacity-vmware.md
-      items:
-        - name: 用于将 VMware 复制到 Azure 的 Deployment Planner
-          href: site-recovery-deployment-planner.md
-    - name: 用于复制 Hyper-V 的 Capacity Planner
-      href: site-recovery-capacity-planner.md
 - name: 操作指南
   items:
     - name: 灾难恢复
       items:
-        - name: 到 Azure，适用于支持多租户的 VMware VM
+        - name: VMware VM 到 Azure（提供多租户支持）
           href: site-recovery-multi-tenant-support-vmware-using-csp.md
-        - name: 到 Azure，适用于 Hyper-V VM
+        - name: Hyper-V VM 到 Azure
           href: tutorial-hyper-v-to-azure.md
-        - name: 到 Azure，适用于物理服务器
+        - name: 物理服务器到 Azure
           href: tutorial-physical-to-azure.md
-        - name: 到辅助站点，适用于 Hyper-V VM
+        - name: Hyper-V VM 到辅助站点
           href: tutorial-vmm-to-vmm.md
-        - name: 到辅助站点，适用于 VMware VM 和物理服务器
+        - name: VMware VM 和物理服务器到辅助站点
           href: tutorial-vmware-to-vmware.md
-        - name: 运行灾难恢复到 Azure 的演练
+        - name: 运行 Azure 灾难恢复演练
           href: tutorial-dr-drill-azure.md
         - name: 运行灾难恢复到辅助站点的演练
           href: tutorial-dr-drill-secondary.md
@@ -104,6 +97,20 @@
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: 在本地站点之间运行故障转移和故障回复
           href: tutorial-vmm-to-vmm-failover-failback.md
+    - name: 容量和缩放
+      items:
+        - name: 为将 VMware 虚拟机复制到 Azure 规划容量
+          href: site-recovery-plan-capacity-vmware.md
+        - name: 用于将 VMware 虚拟机复制到 Azure 的部署规划器工具
+          href: site-recovery-deployment-planner.md
+        - name: 为将 Hyper-V 虚拟机复制到 Azure 计划容量
+          href: site-recovery-capacity-planning-for-hyper-v-replication.md
+        - name: 用于将 Hyper-V 虚拟机复制到 Azure 的容量计划工具
+          href: site-recovery-capacity-planner.md
+        - name: 用于复制 VMware 虚拟机的横向扩展进程服务器
+          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
+        - name: 为本地站点之间的 HYPER-V 虚拟机复制进行性能缩放测试
+          href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md
     - name: 配置
       items:
         - name: 设置源环境
@@ -120,6 +127,8 @@
               href: site-recovery-prepare-target-physical-to-azure.md
         - name: 配置复制设置
           href: site-recovery-setup-replication-settings-vmware.md
+        - name: 从复制中排除磁盘
+          href: site-recovery-exclude-disk.md
         - name: 部署移动服务用于 VMware 复制
           href: site-recovery-vmware-to-azure-install-mob-svc.md
           items:
@@ -157,9 +166,11 @@
         - name: 从 Azure 进行故障回复
           items:
             - name: 从 Azure 故障回复到 VMware
-              href: site-recovery-failback-azure-to-vmware.md
+              href: site-recovery-how-to-failback-azure-to-vmware.md
             - name: 从 Azure 故障回复到 Hyper-V
               href: site-recovery-failback-from-azure-to-hyper-v.md
+        - name: 安装用于故障回复的 Linux 主目标服务器
+          href: site-recovery-how-to-install-linux-master-target.md
     - name: 自动化
       items:
         - name: 使用 PowerShell 设置目标为 Azure 的 Hyper-V 复制（不带 VMM）
@@ -202,8 +213,6 @@
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: 管理配置服务器
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
-        - name: 管理横向扩展进程服务器
-          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
         - name: 管理 vCenter 服务器
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: 删除服务器并禁用保护
