@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1923a145d258e558811b610be9a6bb8ea0e4c933
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1923a145d258e558811b610be9a6bb8ea0e4c933
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/20/2017
+
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>将现有的自定义 SSL 证书绑定到 Azure Web 应用
 
@@ -279,7 +280,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 以下命令上传已导出的 PFX 文件并获取指纹。
 
 ```bash
-thumbprint=$(az appservice web config ssl upload \
+thumbprint=$(az webapp config ssl upload \
     --name <app_name> \
     --resource-group <resource_group_name> \
     --certificate-file <path_to_PFX_file> \
@@ -291,7 +292,7 @@ thumbprint=$(az appservice web config ssl upload \
 以下命令使用前一命令获取的指纹添加基于 SNI 的 SSL 绑定。
 
 ```bash
-az appservice web config ssl bind \
+az webapp config ssl bind \
     --name <app_name> \
     --resource-group <resource_group_name>
     --certificate-thumbprint $thumbprint \
@@ -326,3 +327,4 @@ New-AzureRmWebAppSSLBinding `
 
 > [!div class="nextstepaction"]
 > [向 Azure 应用服务添加内容交付网络 (CDN)](app-service-web-tutorial-content-delivery-network.md)
+

@@ -12,12 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/14/2017
+
 ---
+
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
 本文面向需要更深入了解 Azure 搜索中 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 搜索都会顺利地提供预期结果，但偶尔也会收到看上去“不靠谱”的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
@@ -183,11 +185,14 @@ Spacious,||air-condition*+"Ocean view"
 }
 ~~~~
 
+<a name="exceptions"></a>
+
 ### <a name="exceptions-to-lexical-analysis"></a>词法分析的例外情况 
 
 词法分析仅适用于需要完整字词的查询类型 – 字词查询或短语查询， 而不适用于使用不完整字词的查询类型 – 前缀查询、通配符查询、正则表达式查询，或者模糊查询。 这些查询类型（包括前缀查询，在本示例中包含字词 *air-condition\**）将直接添加到查询树，会绕过分析阶段。 针对这些类型的查询字词执行的唯一转换操作是转换为小写。
 
 <a name="stage3"></a>
+
 ## <a name="stage-3-document-retrieval"></a>阶段 3：文档检索 
 
 文档检索是否在索引中查找包含匹配词的文档。 最好是通过一个示例来理解此阶段。 我们从一个采用以下简单架构的酒店索引着手： 
@@ -254,7 +259,7 @@ Spacious,||air-condition*+"Ocean view"
 | 术语 | 文档列表 |
 |------|---------------|
 | atman | 1 |
-| beach | #N/A |
+| beach | 2 |
 | hotel | 1, 3 |
 | ocean | 4  |
 | playa | 3 |
@@ -273,17 +278,17 @@ Spacious,||air-condition*+"Ocean view"
 | conditioned | 3
 | comfortable | 3
 | distance | 1
-| island | #N/A
-| kauaʻi | #N/A
-| located | #N/A
-| north | #N/A
+| island | 2
+| kauaʻi | 2
+| located | 2
+| north | 2
 | ocean | 1, 2, 3
-| of | #N/A
-| on |#N/A
+| of | 2
+| on |2
 | quiet | 4
 | rooms  | 1, 3
 | secluded | 4
-| shore | #N/A
+| shore | 2
 | spacious | 1
 | the | 1, 2
 | to | 1
@@ -408,3 +413,4 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 [2]: ./media/search-lucene-query-architecture/azSearch-queryparsing-should2.png
 [3]: ./media/search-lucene-query-architecture/azSearch-queryparsing-must2.png
 [4]: ./media/search-lucene-query-architecture/azSearch-queryparsing-spacious2.png
+
