@@ -26,6 +26,8 @@ ms.lasthandoff: 09/25/2017
 
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+
 [Draft](https://aka.ms/draft) 是一种新的开放源工具，使用它可轻松地开发基于容器的应用程序并将其部署到 Kubernetes 群集，而无需了解大量有关 Docker 和 Kubernetes 的信息，甚至无需安装它们。 使用 Draft 之类的工具，你和你的团队可专注于使用 Kubernetes 生成应用程序，而不用太过关注基础结构。
 
 可将 Draft 与任何 Docker 映像注册表以及任何 Kubernetes 群集一起使用（在本地也可）。 本教程演示如何搭配 ACS 使用 Kubernetes 和 ACR，在 Kubernetes 中通过 Draft 创建实时但安全的开发人员管道，以及如何使用 Azure DNS 公开该开发人员管道，让其他人可以在域中看到。

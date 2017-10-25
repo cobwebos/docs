@@ -15,13 +15,17 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
-ms.openlocfilehash: 5f0b470bd46cfeaf00b3092dbe9db507ed50f622
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 5f0b470bd46cfeaf00b3092dbe9db507ed50f622
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/12/2017
+
 ---
+
 # <a name="deploy-a-spring-boot-application-on-linux-in-the-azure-container-service"></a>在 Azure 容器服务中将 Spring Boot 应用程序部署于 Linux 上
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 [Spring Framework] 是一种开放源代码解决方案，可帮助 Java 开发人员创建企业级应用程序。 基于该平台构建的其中一个更常用的项目是 [Spring Boot]，该项目提供了一种用于创建独立 Java 应用程序的简化方法。
 
@@ -192,7 +196,7 @@ ms.lasthandoff: 10/11/2017
 > `docker push wingtiptoysregistry.azurecr.io/gs-spring-boot-docker`
 >
 
-## <a name="create-a-web-app-on-linux-on-azure-app-service-using-your-container-image"></a>在 Azure 应用服务中使用容器映像创建 Linux 上的 Web 应用
+## <a name="create-a-web-app-on-linux-on-azure-app-service-using-your-container-image"></a>在 Azure App Service 中使用容器映像创建 Linux 上的 Web 应用
 
 1. 浏览到 [Azure 门户]并登录。
 
@@ -230,7 +234,7 @@ ms.lasthandoff: 10/11/2017
 >
 > 1. 浏览到 [Azure 门户]并登录。
 > 
-> 2. 单击“应用服务”图标。 （请参阅下图中的第 1 项。）
+> 2. 单击“应用程序服务”图标。 （请参阅下图中的第 1 项。）
 >
 > 3. 从列表中选择你的 Web 应用。 （请参阅下图中的第 2 项。）
 >
@@ -268,7 +272,7 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 
 有关使用 Azure 上的 Spring Boot 应用程序的详细信息，请参阅以下文章：
 
-* [将 Spring Boot 应用程序部署到 Azure 应用服务](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [将 Spring Boot 应用程序部署到 Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 * [在 Azure 容器服务中将 Spring Boot 应用程序部署于 Kubernetes 群集上](container-service-deploy-spring-boot-app-on-kubernetes.md)
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]和[用于 Visual Studio Team Services 的 Java 工具]。
@@ -313,3 +317,4 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 [LX01]: ./media/container-service-deploy-spring-boot-app-on-linux/LX01.png
 [LX02]: ./media/container-service-deploy-spring-boot-app-on-linux/LX02.png
 [LX03]: ./media/container-service-deploy-spring-boot-app-on-linux/LX03.png
+
