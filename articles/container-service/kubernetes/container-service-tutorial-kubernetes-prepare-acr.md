@@ -17,13 +17,17 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 951e4fe32e8074817ad20972925f2f0e9f91b4c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 951e4fe32e8074817ad20972925f2f0e9f91b4c8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/15/2017
+
 ---
+
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专用注册表。 本教程的第 2 部分（共 7 部分）演示了如何部署 Azure 容器注册表实例并向其推送容器映像。 已完成的步骤包括：
 
