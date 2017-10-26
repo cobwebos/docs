@@ -3,7 +3,7 @@ title: "使用 Azure Functions 中的触发器和绑定 | Microsoft 文档"
 description: "了解如何使用 Azure Functions 中的触发器和绑定将代码执行连接到联机事件和基于云的服务。"
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: donnam
-ms.openlocfilehash: ab438f804c28d5528901c405311424e0344e00fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: glenga
+ms.openlocfilehash: 74933d9c3535ab71f47c792e20bfbc35e589ec08
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 借助 Azure Functions，可以编写通过“触发器”和“绑定”响应 Azure 中的事件和其他服务的代码。 本文是所有支持编程语言的触发器和绑定的概念性概述。 此处介绍所有绑定通用的功能。

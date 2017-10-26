@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2017
+ms.date: 09/28/2017
 ms.author: magoedte
-ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0345155b2c13bd0b4341ce53272e7d84cd233fb
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Log Analytics 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -207,23 +207,6 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 下表提供了检索性能记录的不同日志搜索的示例。
 
 | 查询 | 说明 |
-|:--- |:--- |
-| Type=Perf |所有性能数据 |
-| Type=Perf Computer="MyComputer" |特定计算机中的所有性能数据 |
-| Type=Perf CounterName="Current Disk Queue Length" |特定计数器的所有性能数据 |
-| Type=Perf (ObjectName=Processor) CounterName="% Processor Time" InstanceName=_Total &#124; measure Avg(Average) as AVGCPU  by Computer |所有计算机的平均 CPU 使用率 |
-| Type=Perf (CounterName="% Processor Time") &#124;  measure max(Max) by Computer |所有计算机的最大 CPU 使用率 |
-| Type=Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Computer="MyComputerName" &#124; measure Avg(Average) by InstanceName |指定计算机的所有实例上的当前磁盘队列平均长度 |
-| Type=Perf CounterName="DiskTransfers/sec" &#124; measure percentile95(Average) by Computer |每秒所有计算机上磁盘传输的第 95 百分位数 |
-| Type=Perf CounterName="% Processor Time" InstanceName="_Total"  &#124; measure avg(CounterValue) by Computer Interval 1HOUR |每小时所有计算机 CPU 使用率的平均值 |
-| Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |每小时特定计算机的每个 % 百分比计数器的第 70 百分位数 |
-| Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |每小时特定计算机的 CPU 使用率的平均值、最小值、最大值和第 75 百分位数 |
-| Type=Perf ObjectName="MSSQL$INST2:Databases" InstanceName=master | 所有性能数据来自命名 SQL Server 实例 INST2 的 master 数据库的数据库性能对象。  
-
->[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
-
-> | 查询 | 说明 |
 |:--- |:--- |
 | 性能 |所有性能数据 |
 | Perf &#124; where Computer == "MyComputer" |特定计算机中的所有性能数据 |

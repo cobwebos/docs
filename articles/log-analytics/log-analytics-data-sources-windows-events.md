@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2017
+ms.date: 09/28/2017
 ms.author: bwren
-ms.openlocfilehash: 1be8500ec2cb78ef0edf57f4d8561336cf00ebcb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ddead0903c7c5f29bc996e305699ced596d0a4f5
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](log-analytics-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -65,17 +65,6 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 下表提供了检索 Windows 事件记录的不同日志搜索的示例。
 
 | 查询 | 说明 |
-|:--- |:--- |
-| Type=Event |所有 Windows 事件。 |
-| Type=Event EventLevelName=error |所有 Windows 事件与错误的严重性。 |
-| Type=Event &#124; Measure count() by Source |按源计数 Windows 事件。 |
-| Type=Event EventLevelName=error &#124; Measure count() by Source |按源计数 Windows 错误事件。 |
-
-
->[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
->
->| 查询 | 说明 |
 |:---|:---|
 | 事件 |所有 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" |所有 Windows 事件与错误的严重性。 |
