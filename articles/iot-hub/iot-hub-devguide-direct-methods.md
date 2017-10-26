@@ -12,24 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2017
+ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fd0353bf805340a9c4d3151a9b85c329f7d2e96
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: d23bf20e4483b102fe5d946cb017dce1769b39a1
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
-## <a name="overview"></a>概述
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法适用于即时操作过程取决于设备能否响应的情况，例如，如果设备脱机，则向设备发送短信以唤醒设备（短信的开销比方法调用更大）。
 
 每个设备方法针对一个设备。 [作业][lnk-devguide-jobs]提供了一种方法，用于对多个设备调用直接方法，并为已断开连接的设备计划方法调用。
 
 只要拥有 IoT 中心的“服务连接”权限，任何人都可以调用设备上的方法。
 
-### <a name="when-to-use"></a>使用时机
 直接方法遵循请求-响应模式，适用于需要立即确认其结果的通信，通常是对设备的交互式控制，例如，要打开风扇。
 
 如果在使用所需属性、直接方法或云到设备消息方面有任何疑问，请参阅[云到设备通信指南][lnk-c2d-guidance]。
@@ -48,9 +46,6 @@ ms.lasthandoff: 10/11/2017
 
 方法请求和响应的有效负载为最大 8 KB 的 JSON 文档。
 
-## <a name="reference-topics"></a>参考主题：
-以下参考主题详细介绍了如何使用直接方法。
-
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>从后端应用调用直接方法
 ### <a name="method-invocation"></a>方法调用
 在设备上直接调用方法属于 HTTPS 调用，其中包括：
@@ -60,16 +55,16 @@ ms.lasthandoff: 10/11/2017
 * 标头，包含身份验证、请求 ID、内容类型和内容编码
 * 采用以下格式的透明 JSON 正文：
 
-```
-{
-    "methodName": "reboot",
-    "responseTimeoutInSeconds": 200,
-    "payload": {
-        "input1": "someInput",
-        "input2": "anotherInput"
-    }
-}
-```
+   ```
+   {
+       "methodName": "reboot",
+       "responseTimeoutInSeconds": 200,
+       "payload": {
+           "input1": "someInput",
+           "input2": "anotherInput"
+       }
+   }
+   ```
 
 超时以秒为单位。 如果未设置超时，则默认为 30 秒。
 
@@ -80,12 +75,12 @@ ms.lasthandoff: 10/11/2017
 * 标头，包含 ETag、请求 ID、内容类型和内容编码
 * 采用以下格式的 JSON 正文：
 
-```
-{
-    "status" : 201,
-    "payload" : {...}
-}
-```
+   ```
+   {
+       "status" : 201,
+       "payload" : {...}
+   }
+   ```
 
    `status` 和 `body` 均由设备提供，用于响应，其中包含设备自身的状态代码和/或描述。
 

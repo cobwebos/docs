@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ed42af90a9c467042ff2537a38646f59147fb5ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 321c87f242f2c24eb2b28be2dc69cde278117b97
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件性访问开发人员指南
 
@@ -48,7 +48,7 @@ Azure Active Directory (AD) 提供了多种保护应用和服务安全的方法�
 * 使用 ADAL.js 的单页应用
 * 调用资源的 Web 应用
 
-条件性访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件性访问策略，请参阅 [Azure Active Directory 条件性访问入门](../active-directory-conditional-access-azuread-connected-apps.md#configure-per-application-access-rules)。
+条件性访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件性访问策略，请参阅 [Azure Active Directory 条件性访问入门](../active-directory-conditional-access-azuread-connected-apps.md)。
 
 根据具体的情况，企业客户随时可以应用和删除条件性访问策略。  应用新策略后，若要使应用继续正常工作，需执行“质询”处理。 以下示例演示了质询处理的过程。 
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: d45a43d1d4304fd0028d15b4797228a22cc6e76f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c0039987ec28601c9338d2b94633c38c31e01f8
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -281,7 +281,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 - [大小](sizes.md)
 - [名称](/architecture/best-practices/naming-conventions)和凭据
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
-- [网络接口](../../virtual-network/virtual-networks-multiple-nics.md) 
+- [网络接口](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - 启动诊断
 
 ## <a name="disks-and-images"></a>磁盘和映像

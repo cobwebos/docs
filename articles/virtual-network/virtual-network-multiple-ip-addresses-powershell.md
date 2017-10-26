@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: 29f64aeefc2a7deb1f84d759c2323347536b9c27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3690ec991add437afdaba3ef22022d49c962b34
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 10/11/2017
     ```
 
     >[!NOTE]
-    >尽管本文中的所有配置均分配给了一个 NIC，但可将多个 IP 配置分配给附加到 VM 的每个 NIC。 若要了解如何创建具有多个 NIC 的 VM，请阅读[创建具有多个 NIC 的 VM](virtual-network-deploy-multinic-arm-ps.md)一文。
+    >尽管本文中的所有配置均分配给了一个 NIC，但可将多个 IP 配置分配给附加到 VM 的每个 NIC。 若要了解如何创建具有多个 NIC 的 VM，请阅读[创建具有多个 NIC 的 VM](../virtual-machines/windows/multiple-nics.md)一文。
 
 9. 通过输入以下命令创建 VM：
 

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: ed4afa2b946fe11d5802a95f8a490f3419dc0f39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12beb090a95a31c7e83ae03a920016bdfbf474e3
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions 计时器触发器
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 >[!NOTE]   
 >许多在线的 cron 表达式会忽略 `{second}` 字段。 如果从其中一个进行复制，需要调整额外的 `{second}` 字段。 有关具体示例，请参阅下面的[计划示例](#examples)。
 
-CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON 表达式基于其他时区，请为名为 `WEBSITE_TIME_ZONE` 的 Function App 创建新的应用设置。 将值设置为所需时区的名称，如 [Microsoft 时区索引](https://msdn.microsoft.com/library/ms912391.aspx)中所示。 
+CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON 表达式基于其他时区，请为名为 `WEBSITE_TIME_ZONE` 的 Function App 创建新的应用设置。 将值设置为所需时区的名称，如 [Microsoft 时区索引](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx)中所示。 
 
 例如，东部标准时间是 UTC-05:00。 若要让计时器触发器每天在美国东部时间上午 10:00 触发，可使用表示 UTC 时区的以下 CRON 表达式：
 

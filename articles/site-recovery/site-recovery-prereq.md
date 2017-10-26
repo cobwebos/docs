@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/23/2017
+ms.date: 10/19/2017
 ms.author: raynew
+ms.openlocfilehash: d070fffd398a9a0ed6549b134ecbd1415baf2273
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
-ms.openlocfilehash: 490833c14b6856cdaf6f6bfd2f67ce54fb0414a2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-
 #  <a name="prerequisites-for-replication-from-on-premises-to-azure-by-using-site-recovery"></a>使用 Site Recovery 从本地复制到 Azure 的先决条件
 
 > [!div class="op_single_selector"]
@@ -112,7 +110,7 @@ Azure Site Recovery 可以安排从 Azure 虚拟机 (VM) 到其他 Azure 区域�
 
 | **组件** | **详细信息** |
 | --- | --- |
-| **Virtual Machine Manager** |  建议在主站点和辅助站点中各部署一台 VMM 服务器。<br/><br/> 可以[在单个 VMM 服务器上的云之间复制](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)。 若要通过单台 VMM 服务器在云之间进行复制，需要在该 VMM 服务器上配置至少两个云。<br/><br/> VMM 服务器必须至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每台 VMM 服务器必须有一个或多个云。 所有云都必须设置 Hyper-V 容量配置文件。 <br/><br/>云必须具有一个或多个 VMM 主机组。 有关设置 VMM 云的详细信息，请参阅[准备 Azure Site Recovery 部署](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)。 |
+| **Virtual Machine Manager** |  建议在主站点和辅助站点中各部署一台 VMM 服务器。<br/><br/> 若要通过单台 VMM 服务器在云之间进行复制，需要在该 VMM 服务器上配置至少两个云。<br/><br/> VMM 服务器必须至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每台 VMM 服务器必须有一个或多个云。 所有云都必须设置 Hyper-V 容量配置文件。 <br/><br/>云必须具有一个或多个 VMM 主机组。 有关设置 VMM 云的详细信息，请参阅[准备 Azure Site Recovery 部署](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)。 |
 | **Hyper-V** | Hyper-V 服务器必须至少运行启用了 Hyper-V 角色且安装了最新更新的 Windows Server 2012。<br/><br/> Hyper-V 服务器必须有一个或多个 VM。<br/><br/>  Hyper-V 主机服务器必须位于主要和辅助 VMM 云中的主机组内。<br/><br/> 如果在 Windows Server 2012 R2 上的群集中运行 Hyper-V，建议安装知识库文章 [2961977](https://support.microsoft.com/kb/2961977) 中所述的更新。<br/><br/> 如果在 Windows Server 2012 上的群集中运行 Hyper-V，并且具有基于静态 IP 地址的群集，则不会自动创建群集代理。 必须手动配置群集代理。 有关群集代理的详细信息，请参阅 [Configure the replica broker role for cluster-to-cluster replication](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)（为群集到群集复制配置副本代理角色）。 |
 | **提供程序** | 在部署 Site Recovery 期间，需要在 VMM 服务器上安装 Azure Site Recovery 提供程序。 该提供程序通过 HTTPS（端口 443）与 Site Recovery 进行通信来安排复制。 数据复制是通过 LAN 或通过 VPN 连接在主要和辅助 Hyper-V 服务器之间进行的。<br/><br/> 在 VMM 服务器上运行的提供程序需要访问以下 URL：<br/><br/>[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)] <br/><br/>Site Recovery 提供程序必须允许从 VMM 服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)的防火墙通信，并允许 HTTPS (端口 443) 协议。 |
 
@@ -130,4 +128,3 @@ Azure Site Recovery 可以安排从 Azure 虚拟机 (VM) 到其他 Azure 区域�
 |``https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi`` | 不是必需 | 不是必需 | 不是必需 | 允许 SQL 下载 |
 |``time.windows.com`` | ALLOW | 允许 | 允许 | 允许|
 |``time.nist.gov`` | 允许 | 允许 | 允许 | ALLOW |
-

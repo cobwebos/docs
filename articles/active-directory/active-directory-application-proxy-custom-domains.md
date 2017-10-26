@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
-ms.author: kgremban
+ms.date: 10/11/2017
+ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1dde300780c8d1f7ea9eee4c92de06bcf70a1f12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c15808a97d4efa5f9453f33d9ac70ebde5288201
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
@@ -69,8 +69,6 @@ ms.lasthandoff: 10/11/2017
 证书签名方法没有限制。 椭圆曲线加密 (ECC)、使用者可选名称 (SAN) 和其他常见证书类型全部都受到支持。 
 
 只要通配符与所需的外部 URL 匹配，就可使用通配符证书。 
-
-也可使用自签名证书。 如果使用的是私有证书颁发机构，那么证书的 CDP（证书吊销点分发点）应该是公共的。
 
 ### <a name="changing-the-domain"></a>更改域
 所有已验证的域显示在应用程序的“外部 URL”下拉列表中。 若要更改域，只需更新应用程序的该字段。 如果所需的域不在列表中，请[将它添加为已验证的域](active-directory-domains-add-azure-portal.md)。 如果选择一个尚无关联证书的域，请遵循步骤 5 - 7 添加证书。 然后，请务必更新从新的外部 URL 重定向的 DNS 记录。 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: 1af7e1d40a0eb129875dd6a30ac899f2025bee13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8f858bf249c4b56ad4fe60654ab489676eceb1f
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -115,7 +115,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 #### <a name="2-choose-a-vm"></a>2.选择虚拟机
 
-从 AWR 报表收集信息后，应根据该信息选择一个虚拟机，其大小应大致可满足需求。 可在[内存优化](https://docs.microsoft.com/azure/virtual-machinFine tune es/virtual-machines-windows-sizes-memory)一文中查看可用的虚拟机列表。
+从 AWR 报表收集信息后，应根据该信息选择一个虚拟机，其大小应大致可满足需求。 可在[内存优化](../../linux/sizes-memory.md)一文中查看可用的虚拟机列表。
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3.根据 ACU 微调相似虚拟机系列的虚拟机大小
 

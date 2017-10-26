@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: c969696b7489a9a8c45e10428cdeaa833f63d6d2
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 2189dc7900f03a45c360fceffbcd7c1ff36f7e48
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 - 支持跨任意数量的区域实现[存储和吞吐量的独立缩放](partition-data.md)
 - 支持[按表的专用吞吐量](request-units.md)，可以从每秒数百个请求扩展到每秒数百万个请求
 - 支持[五个可调整一致性级别](consistency-levels.md)，可基于应用程序需要权衡可用性、延迟和一致性
-- 单个区域内可用性达 99.99%，可添加更多区域以提高可用性，以及获得可通用的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
+- 单个区域内可用性达 99.99%，可添加更多区域以提高可用性，以及获得可通用的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - 使用现有的 Azure 存储 .NET SDK，而不会更改应用程序的任何代码
 
 预览期间，Azure Cosmos DB 使用 .NET SDK 支持表 API。 可从 NuGet 下载 [Azure 存储预览版 SDK](https://aka.ms/premiumtablenuget)，其具有与 [Azure 存储 SDK](https://www.nuget.org/packages/WindowsAzure.Storage) 相同的类和方法签名，但也可以使用表 API 连接到 Azure Cosmos DB 帐户。

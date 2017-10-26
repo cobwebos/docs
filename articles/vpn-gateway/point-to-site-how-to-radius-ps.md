@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2017
 ms.author: cherylmc
+ms.openlocfilehash: 2afaf869af36c98f86feba238c6e1a30d3939ef8
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 9ca423e8d752271fadbb5b51f38e691a0316576c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell-preview"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell（预览版）
 
@@ -254,4 +253,3 @@ VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。 若�
 ## <a name="next-steps"></a>后续步骤
 
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
-

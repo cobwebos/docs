@@ -15,14 +15,12 @@ ms.topic: tutorial
 ms.date: 09/20/2017
 ms.author: magoedte
 ms.custom: mvc
+ms.openlocfilehash: 3ab8d32eb4b3f2748249f40139de76c8e7f4d971
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ccf0bd57b7f54b1d8d57b460df9bb381b29ee381
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="respond-to-events-with-log-analytics-alerts"></a>使用 Log Analytics 警报对事件做出响应
 Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  它们由定期自动运行日志搜索的警报规则创建；如果日志搜索的结果符合特定条件，则创建一条警报记录，并可将此记录配置为执行自动响应。  本教程是[创建和共享 Log Analytics 数据的仪表板](log-analytics-tutorial-dashboards.md)教程的延续。   
 

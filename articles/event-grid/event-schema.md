@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/20/2017
 ms.author: babanisa
-ms.openlocfilehash: a61357b6ba75566e0ad4d3300cc602333ece0563
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e251cbfe7c4d8dfbd492817a8fa7af48e6b379df
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -162,10 +162,6 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
 
 
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
-
->[!IMPORTANT]
->若要使用 Blob 存储事件，必须注册 Blob 存储事件预览版。 有关预览计划的详细信息，请参阅 [Azure Blob 存储事件](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#join-the-preview)。  
-
 
 ### <a name="available-event-types"></a>可用事件类型
 

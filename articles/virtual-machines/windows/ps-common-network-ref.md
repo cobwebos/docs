@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 41a26e8b13fdb2531924ba441017c4c01e664995
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26378ff9f16af9724db08cc4013654557f1c838b
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>适用于 Azure 虚拟网络的常见 PowerShell 命令
 
@@ -74,5 +74,5 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 使用[创建 VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时创建的网络接口。
-* 了解如何[创建具有多个网络接口的 VM](../../virtual-network/virtual-networks-multiple-nics.md)。
+* 了解如何[创建具有多个网络接口的 VM](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md)。
 

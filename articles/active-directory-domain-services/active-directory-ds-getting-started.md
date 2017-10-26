@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: d86b9e99619dea408e784f32d76ba6296948bdc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f00cbfb5348919c38dc2dd905f1c141a39736f4
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户启用 Azure Active Directory 域服务 (Azure AD DS)。
@@ -62,19 +62,13 @@ ms.lasthandoff: 10/11/2017
 
    * 虚拟网络上存在具有该名称的云服务。
 
-3. 选择“虚拟网络类型”。 默认情况下选择“资源管理器”虚拟网络类型。 我们建议对所有新创建的托管域使用此类型的虚拟网络。
+3. 选择要在其中创建托管域的 Azure“订阅”。
 
-    > [!TIP]
-    > **计划要将经典虚拟网络支持弃用。** 请为所有新部署选择“资源管理器”虚拟网络类型。 新部署不久将不再支持经典虚拟网络。 将继续支持经典虚拟网络中部署的现有托管域。
-    >
+4. 选择托管域应属于的“资源组”。 可以选择“新建”或“使用现有”选项以选择资源组。
 
-4. 选择要在其中创建托管域的 Azure“订阅”。
+5. 选择应在其中创建托管域的 Azure“位置”。 在向导的“网络”页上，只会看到属于所选位置的虚拟网络。
 
-5. 选择托管域应属于的“资源组”。 可以选择“新建”或“使用现有”选项以选择资源组。
-
-6. 选择应在其中创建托管域的 Azure“位置”。 在向导的“网络”页上，只会看到属于所选位置的虚拟网络。
-
-7. 完成后，单击“确定”以前进到向导的“网络”页。
+6. 完成后，单击“确定”以前进到向导的“网络”页。
 
 
 ## <a name="next-step"></a>后续步骤

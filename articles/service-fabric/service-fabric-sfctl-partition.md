@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: a5d0ff59803212403281063f47e706433cee64b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99756378f2106707b4f6d634a1183d5c32243ee2
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 查询和管理任何服务的分区。
@@ -118,7 +118,7 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 ## <a name="sfctl-partition-load"></a>sfctl partition load
 获取指定的 Service Fabric 分区的负载。
 
-返回有关指定的分区的信息。 响应包括负载信息列表。 每项信息包括负载指标名称、值以及上次报告时间 (UTC)。 。
+返回有关指定的分区的信息。 响应包括负载信息列表。 每项信息包括负载指标名称、值以及上次报告时间 (UTC)。
 
 ### <a name="arguments"></a>参数
 

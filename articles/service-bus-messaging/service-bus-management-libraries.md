@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/18/2017
 ms.author: sethm
-ms.openlocfilehash: 1db00dc1f91e8976b622030450445babbe547ad8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b7096a073b509217a6ed29b53f88f912e6613f6
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -51,8 +51,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 
    var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
    ```
-
-1. 创建 `ServiceBusManagementClient` 对象。
+2. 创建 `ServiceBusManagementClient` 对象。
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,8 +60,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-
-1. 将 `CreateOrUpdate` 参数设置为指定值。
+3. 将 `CreateOrUpdate` 参数设置为指定值。
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()
@@ -71,8 +69,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
        EnablePartitioning = true
    };
    ```
-
-1. 执行调用。
+4. 执行调用。
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: d1aca8f39e305105d4ec9f63fbe7bee95487e294
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0fb3e9012ae88112515ebb552e49fa463a087f54
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-java"></a>处理 IoT 中心设备到云的消息 (Java)
 
@@ -42,7 +42,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 * [IoT 中心入门]教程的完整工作版本。
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
-* 有效的 Azure 帐户。 （如果你没有帐户，只需花费几分钟就能创建一个 [免费帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 应具备 [Azure 存储]和 [Azure 服务总线]的一些基础知识。
 
@@ -210,3 +210,4 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 [lnk-c2d]: iot-hub-java-java-c2d.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[lnk-free-trial]: https://azure.microsoft.com/free/

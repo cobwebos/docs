@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
-ms.openlocfilehash: 58943e1e29755c983e55c675dd4fe7b75ac47b34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8fd9f3a51651fc163abd79aaf21ec3dd92502bb5
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>在组织中启用 Microsoft Windows Hello for Business
 在[将已加入域的 Windows 10 设备与 Azure Active Directory 相连](active-directory-azureadjoin-devices-group-policy.md)后，执行以下操作在组织中启用 Microsoft Windows Hello for Business：
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 * [面向企业的 Windows 10：在工作中使用设备的方式](active-directory-azureadjoin-windows10-devices-overview.md)
 * [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
-* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](active-directory-azureadjoin-passport.md)
+* [无密码身份验证](active-directory-azureadjoin-passport.md)
 * [了解 Azure AD Join 的使用方案](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时会已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
 * [设置 Azure AD Join](active-directory-azureadjoin-setup.md)

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
+ms.openlocfilehash: dfb75c91d66d61a63e3f6c3e431a9a45465cbf5c
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 364873ff54099a6123e40b12e819d1745751f285
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
 漏洞是环境中可能由攻击者利用的弱点。 我们建议解决这些漏洞，以提高组织的安全状态并防止攻击者利用它们。
@@ -61,5 +60,4 @@ Azure 多重身份验证提供用户身份验证的第二层安全。 它可帮�
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
 

@@ -1,4 +1,3 @@
-# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>在容器服务群集中缩放代理节点
 [部署 Azure 容器服务群集](../articles/container-service/dcos-swarm/container-service-deployment.md)后，可能需要更改代理节点数。 例如，可能需要更多代理，以便运行更多容器应用程序或实例。 
 
 可以使用 Azure 门户或 Azure CLI 2.0（预览版）更改 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点数。 

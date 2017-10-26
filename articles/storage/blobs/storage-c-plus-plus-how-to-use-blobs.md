@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
+ms.openlocfilehash: 9fe2112370f7d29eb0fde856995768660f9871e6
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: daf480b7be78dc001712010eac6386d4744c3c1d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -275,5 +274,4 @@ blockBlob.delete_blob();
 * [适用于 C++ 的存储客户端库参考](http://azure.github.io/azure-storage-cpp)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)
 * [使用 AzCopy 命令行实用程序传输数据](../storage-use-azcopy.md)
-
 

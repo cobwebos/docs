@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: c6cfca299dabba253757d959411c0cac8f90fa2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbb30809ab68079666ecfa81a896c1d5101fb6fb
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/11/2017
 1. 选择“添加 Azure 虚拟机模板”旁的“添加”。
 2. 对于“名称”，请输入 `defaulttemplate`
 3. 对于“标签”，请输入 `ubuntu`
-4. 从组合框中选择所需 [Azure 区域](https://azure.microsoft.com/regions/)。
+4. 从组合框中选择所需 [Azure 区域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 5. 从“虚拟机大小”下的下拉列表中选择 [VM 大小](/azure/virtual-machines/linux/sizes)。 通用 `Standard_DS1_v2` 大小对本教程来说就可以了。   
 6. 将“保留时间” 设为 `60`。 此设置定义 Jenkins 在解除分配闲置代理前可等待的分钟数。 如果不希望自动删除闲置代理，请指定为 0。
 
