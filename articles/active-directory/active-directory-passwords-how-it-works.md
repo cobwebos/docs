@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: cbb33988f5db47e35db406c037caa9133616d191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b363616792b35420644154cc0f8b878f2c83f1c7
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -77,7 +77,7 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 仅当用户在管理员已启用并要求使用的身份验证方法中输入了数据时，他们才能重置其密码。
 
-如果用户不希望在目录中公开其移动电话号码，但仍想使用该号码来重置密码，则管理员不应在目录中填充该号码，而用户必须通过[密码重置注册门户](http://aka.ms/ssprsetup)填充其“身份验证电话”属性。 管理员可在用户的配置文件中看到此信息，但此信息不会发布到其他位置。 如果 Azure 管理员帐户注册了用户的身份验证电话号码，该号码将填充到移动电话字段并且会公开。
+如果用户不希望在目录中公开其移动电话号码，但仍想使用该号码来重置密码，则管理员不应在目录中填充该号码，而用户必须通过[密码重置注册门户](http://aka.ms/ssprsetup)填充其“身份验证电话”属性。 管理员可在用户的配置文件中看到此信息，但此信息不会发布到其他位置。
 
 ### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
 

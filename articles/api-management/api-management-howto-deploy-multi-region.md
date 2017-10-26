@@ -3,7 +3,7 @@ title: "将 Azure API 管理服务部署到多个 Azure 区域 | Microsoft 文�
 description: "了解如何将 Azure API 管理服务实例部署到多个 Azure 区域。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 47389ad6-f865-4706-833f-846115e22e4d
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 1c39fee739c2f5fd4b928e1e76e1ea57f072b5f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75a0fd7f02bcc7ed5278582f36d0ed6d54aa7bc4
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 API 管理多区域部署，该部署可使 API 发布者在任意数量的所需 Azure 区域中分配单个 API 管理服务。 这有助于减少地理上分散的 API 使用者所感知的请求延迟，并且还改善其中一个区域处于离线状态时的服务可用性。 

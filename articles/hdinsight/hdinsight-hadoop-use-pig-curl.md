@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/23/2017
 ms.author: larryfr
+ms.openlocfilehash: f07b6fd4f40616c0a4c2f2086647445d725a34e5
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: a86864a779b0de1c6d5669cfbba0f3e1a27f1ff1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Hadoop 运行 Pig 作业
 
@@ -111,7 +110,7 @@ HDInsight 可以使用 Azure 存储或 Azure Data Lake Store 作为默认数据�
 
 ## <a id="summary"></a>摘要
 
-如本文档中所示，你可以使用原始 HTTP 请求来运行、监视和查看 HDInsight 群集上的 Pig 作业的结果。
+如本文档中所示，可以使用原始 HTTP 请求来运行、监视和查看 HDInsight 群集上的 Pig 作业的结果。
 
 有关本文中使用的 REST 接口的详细信息，请参阅 [WebHCat 参考](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)。
 
@@ -125,4 +124,3 @@ HDInsight 可以使用 Azure 存储或 Azure Data Lake Store 作为默认数据�
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-

@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 06/13/2017
 ms.author: rachelap
 ms.custom: mvc, devcenter
+ms.openlocfilehash: 30c3df4ebc4417993170b994fc01bc82636dec3f
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 760434983978ff2233742ee4cef2de9762717620
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>构建 Node.js RESTful API 并将它部署到 Azure 中的 API 应用
 
@@ -295,5 +294,4 @@ az group delete --name myResourceGroup
 ## <a name="next-step"></a>后续步骤 
 > [!div class="nextstepaction"]
 > [将现有的自定义 DNS 名称映射到 Azure Web 应用](app-service-web-tutorial-custom-domain.md)
-
 

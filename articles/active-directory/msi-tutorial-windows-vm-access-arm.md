@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2017
 ms.author: elkuzmen
+ms.openlocfilehash: 17c2e72603715b5704fa56e18f68d531a1e44a53
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 064843d3118c36c63c3024f5cd5d08ba4d65eb7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>使用 Windows VM 托管服务标识 (MSI) 访问资源管理器
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -124,5 +122,4 @@ ms.lasthandoff: 09/20/2017
 - 有关 MSI 的概述，请参阅[托管服务标识概述](../active-directory/msi-overview.md)。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
-
 

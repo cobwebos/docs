@@ -3,7 +3,7 @@ title: "使用客户端证书身份验证保护后端服务 - Azure API 管理 |
 description: "了解如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 43453331-39b2-4672-80b8-0a87e4fde3c6
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 464e5e2b2d9678bef002497588eac60db074f9bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 196a91c21afb8c1596c9766f6a2a5d373b828f60
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 API 管理提供的功能可确保使用客户端证书安全地访问 API 的后端服务。 本指南介绍如何在 API 发布者门户中管理证书，以及如何将 API 配置为使用证书访问其后端服务。
