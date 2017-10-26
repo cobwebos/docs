@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/29/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 27fe69753acc6fa047b5791a583d70e80318288a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48990c57fb10127733623000a105507b5a48d900
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-python"></a>使用 Python 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用 Python 3.6.2。
+* **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -63,7 +63,7 @@ pip install azure-datalake-store
 
 1. 在所选的 IDE 中创建新的 Python 应用程序，例如 **mysample.py**。
 
-2. 添加以下代码片段导入所需的模块
+2. 添加以下代码片段以导入所需的模块
 
     ```
     ## Use this for Azure AD authentication
@@ -104,13 +104,13 @@ pip install azure-datalake-store
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
     mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
-    credentials = AADTokenCredentials(mgmt_token, client_id)
+    armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
 
 ### <a name="for-filesystem-operations"></a>适用于文件系统操作
 
 使用此方法可对 Data Lake Store 帐户的文件系统操作进行 Azure AD 身份验证。 可以使用以下代码片段通过多重身份验证在应用程序中进行身份验证。 为现有 Azure AD **本机**应用程序提供以下值。
 
-    token = lib.auth(tenant_id='FILL-IN-HERE')
+    adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>无需多重身份验证的最终用户身份验证
 
@@ -119,6 +119,6 @@ pip install azure-datalake-store
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何通过 Python 使用最终用户身份验证进行 Azure Data Lake Store 身份验证。 现可查看以下介绍如何使用 Python 在 Azure Data Lake Store 中执行操作的文章。
 
-* [使用 Python 在 Data Lake Store 上进行的帐户管理操作](data-lake-store-get-started-python.md)
+* [Data Lake Store 上的帐户管理操作（使用 Python）](data-lake-store-get-started-python.md)
 * [使用 Python 在 Data Lake Store 上进行的数据操作](data-lake-store-data-operations-python.md)
 
