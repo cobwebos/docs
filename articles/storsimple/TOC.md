@@ -119,7 +119,7 @@
 ##### [配置 Web 代理](storsimple-8000-configure-web-proxy.md)
 ##### [修改 DATA 0 设置](storsimple-8000-modify-data-0.md)
 
-#### [使用 Azure PowerShell 示例脚本](storsimple-8000-automation-azurerm-scripts.md)
+
 
 #### [使用 StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md)
 ##### [什么是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)
@@ -131,6 +131,11 @@
 ##### [通过 StorSimple Snapshot Manager 管理备份作业](storsimple-snapshot-manager-manage-backup-jobs.md)
 ##### [通过 StorSimple Snapshot Manager 管理卷](storsimple-snapshot-manager-manage-volumes.md)
 ##### [使用 StorSimple Snapshot Manager 中的 MMC 操作](storsimple-snapshot-manager-mmc-menu.md)
+
+### 自动化
+
+#### [使用 Azure PowerShell 示例脚本](storsimple-8000-automation-azurerm-scripts.md)
+#### [使用 Azure 自动化 Runbook](storsimple-8000-automation-azurerm-runbook.md)
 
 ### 构建解决方案
 #### [采用 Veeam 的 StorSimple](storsimple-configure-backup-target-veeam.md)

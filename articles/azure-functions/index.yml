@@ -15,7 +15,7 @@ metadata:
   ms.date: 01-23-2017
   ms.author: carolz
 abstract:
-  description: Azure Functions 是一个无服务器计算服务，使用它可以按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。 参考我们的快速入门、教程和示例了解如何使用 Azure Functions。
+  description: 'Azure Functions 是一个<a href="https://azure.microsoft.com/overview/serverless-computing/">无服务器</a>计算服务，使用它可以按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。 参考我们的快速入门、教程和示例了解如何使用 Azure Functions。'
   aside:
     image:
       alt: null

@@ -1,0 +1,66 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: “Azure 上的 Terraform”文档
+metadata:
+  title: “Azure 上的 Terraform”文档 - 教程和参考
+  meta.description: Learn how to use Terraform to reliably provision virtual machines and other infrastructure on Azure.
+  services: terraform
+  author: rloutlaw
+  manager: justhe
+  ms.service: terraform
+  ms.tgt_pltfrm: na
+  ms.devlang: devops
+  ms.topic: landing-page
+  ms.date: 09/21/2017
+  ms.author: routlaw
+abstract:
+  description: 使用 Terraform 在 Azure 上可靠地版本化和创建基础结构。 使用我们的快速入门和教程了解如何创建资源、使用 Azure Terraform 模块和维护包含代码的基础结构。
+  aside:
+    image:
+      alt: Terraform logo.
+      height: 110
+      src: media/Terraform_VerticalLogo_FullColor.svg
+      width: 250
+sections:
+  - title: 快速入门
+    items:
+      - type: paragraph
+        text: 配置 Terraform 并使用它在 Azure 中创建 Linux VM。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/media/index/azure_dev-9.svg'
+            text: 安装和配置 Terraform
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/media/index/VirtualMachine.svg'
+            text: 创建 Linux VM
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm'
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何通过 Terraform 从代码创建 Azure 计算和网络基础结构。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">使用 Azure Terraform 模块创建负载均衡的 VM 群集</a>。
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">在 Azure Cloud Shell 中创建负载均衡的 VM 群集</a>。
+          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">配置带有网络和存储的 VM 规模集。</a>
+  - title: 示例
+    items:
+      - type: paragraph
+        text: 常见部署任务的示例配置模板。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>'
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Azure Terraform 模块
+            html: '<p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">用于数据库的 Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">用于负载均衡器的 Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Azure RM 计算组</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Azure RM 网络</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Azure RM 计算</a></p>'
