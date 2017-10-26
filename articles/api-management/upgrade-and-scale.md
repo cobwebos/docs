@@ -11,11 +11,11 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: apimpm
-ms.openlocfilehash: cf5cd03bd9147ac81b07dc453a919a3c74de44fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22cc917eb6f296724bf535e48b0dd6ba8927e5d3
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="upgrade-and-scale-an-api-management-instance"></a>升级和缩放 Azure API 管理实例 
 
@@ -23,10 +23,10 @@ ms.lasthandoff: 10/11/2017
 
 每个单位的容量和价格取决于该单位所在的**层**。 可在三个层之间选择：“开发人员”、“标准”和“高级”。 如果需要提高层中服务的容量，应添加单位。 如果当前在 APIM 实例中选择的层不允许添加更多单位，则需要升级到更高级别的层。 
 
-每个单位的价格、能否添加/删除单位以及能否获得特定的功能（例如多区域部署）取决于为 APIM 实例选择的层。 [定价详细信息](https://azure.microsoft.com/pricing/details/api-management/)一文介绍了每个单位的价格，以及每个层提供的功能。 
+每个单位的价格、能否添加/删除单位以及能否获得特定的功能（例如多区域部署）取决于为 APIM 实例选择的层。 [定价详细信息](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)一文介绍了每个单位的价格，以及每个层提供的功能。 
 
 >[!NOTE]
->[定价详细信息](https://azure.microsoft.com/pricing/details/api-management/)一文说明了每个层中单位容量的大致数字。 若要获取更准确的数字，需要分析所用 API 的实际方案。 请参阅后面的“如何规划容量”部分。
+>[定价详细信息](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)一文说明了每个层中单位容量的大致数字。 若要获取更准确的数字，需要分析所用 API 的实际方案。 请参阅后面的“如何规划容量”部分。
 
 ## <a name="prerequisites"></a>先决条件
 

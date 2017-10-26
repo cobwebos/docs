@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 814825cce61909167a1247a96c17a3ee9c5f2af4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93a32ae7ec0cf73825791e8c8bc3d388cf999ece
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建具有多个 NIC 的 Linux 虚拟机
-可以在 Azure 中创建附有多个虚拟网络接口 (NIC) 的虚拟机 (VM)。 一种常见方案是为前端和后端连接使用不同子网，或为监视或备份解决方案使用一个专用网络。 本文提供用于创建附有多个 NIC 的 VM 的快速命令。 有关详细信息（包括如何在自己的 Bash 脚本中创建多个 NIC），请阅读 [deploying multi-NIC VMs](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md)（部署具有多个 NIC 的 VM）。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
+可以在 Azure 中创建附有多个虚拟网络接口 (NIC) 的虚拟机 (VM)。 一种常见方案是为前端和后端连接使用不同子网，或为监视或备份解决方案使用一个专用网络。 本文提供用于创建附有多个 NIC 的 VM 的快速命令。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
 
 > [!WARNING]
 > 必须在创建 VM 时附加多个 NIC - 不能使用 Azure CLI 1.0 将 NIC 添加到现有 VM。 可[使用 Azure CLI 2.0 将 NIC 添加到现有 VM](multiple-nics.md)。 还可[基于原始虚拟磁盘创建 VM](copy-vm.md)，并在部署 VM 时创建多个 NIC。
@@ -85,7 +85,7 @@ azure network vnet subnet create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>创建和配置多个 NIC
-详细了解如何[使用 Azure CLI 部署多个 NIC](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md)，包括如何编写循环创建所有 NIC 的过程脚本。
+详细了解如何[使用 Azure CLI 部署多个 NIC](../../virtual-machines/linux/multiple-nics.md)，包括如何编写循环创建所有 NIC 的过程脚本。
 
 以下示例创建两个 NIC（名为 myNic1 和 myNic2），其中一个 NIC 将连接到每个子网：
 

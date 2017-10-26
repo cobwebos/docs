@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: df21b7213a647a66a16a84889bf7a24fde03c493
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 834a81c36557feffaa01c256dad0338617486773
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="before-you-begin"> </a> 准备工作
 
-1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
+1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)的“Windows PowerShell”部分下载并安装最新版本。
 2. 创建一个虚拟网络，并为 API 管理和应用程序网关创建单独的子网。 
 3. 如果想要为虚拟网络创建自定义 DNS 服务器，请在开始部署之前创建。 确保在虚拟网络中的新子网内创建的虚拟机可以解析和访问所有 Azure 服务终结点，使该服务器可正常工作。
 

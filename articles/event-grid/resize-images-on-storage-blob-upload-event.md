@@ -9,14 +9,14 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 358015d6cfd9961508b209f628b2d648a75e3c2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 709d23ab590c06d5da9b03e2767bc0be5905355b
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>使用事件网格自动调整上传图像的大小
 
@@ -25,8 +25,6 @@ ms.lasthandoff: 10/11/2017
 本教程是存储教程系列中的第二部分。 它对[前面存储教程][previous-tutorial]的内容进行了扩充，以学习如何使用 Azure 事件网格和 Azure Functions 添加无服务器自动缩略图生成。 事件网格可使 [Azure Functions](..\azure-functions\functions-overview.md) 响应 [Azure Blob 存储](..\storage\blobs\storage-blobs-introduction.md)事件，并生成上传图像的缩略图。 针对 Blob 存储创建事件会创建一个事件订阅。 当将 blob 添加到特定 Blob 存储容器时，将调用一个函数终结点。 从事件网格传递到函数绑定的数据用于访问 blob 并生成缩略图。 
 
 可以使用 Azure CLI 和 Azure 门户将调整大小功能添加到现有图像上传应用。
-
-[!INCLUDE [storage-events-note.md](../../includes/storage-events-note.md)]
 
 ![在 Edge 浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
@@ -42,7 +40,6 @@ ms.lasthandoff: 10/11/2017
 完成本教程：
 
 + 必须完成以前的 Blob 存储教程：[使用 Azure 存储上传云中的图像数据][previous-tutorial]。 
-+ 必须申请并被授予 Blob 存储事件功能的访问权限。 [请求访问 Blob 存储事件](#request-storage-access)，然后再继续执行本主题中的其他步骤。  
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,32 +48,6 @@ ms.lasthandoff: 10/11/2017
 如果选择在本地安装并使用 CLI，本主题需要运行 Azure CLI 2.0.14 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 如果不使用云 Shell，则必须先使用 `az login` 登录。
-
-## <a name="enable-blob-storage-events"></a>启用 Blob 存储事件
-
-此时，你必须请求访问 Blob 存储事件功能。  
-
-### <a name="request-storage-access"></a>请求访问 Blob 存储事件
-
-使用 `az feature register` 命令请求访问。
-
-> [!IMPORTANT]  
-> 我们将按照 Blob 存储事件预览参与者要求加入的顺序接受他们。 可能会有 1-2 个工作日的延迟才能授予访问此功能的权限。 
-
-```azurecli-interactive
-az feature register --name storageEventSubscriptions --namespace Microsoft.EventGrid
-```
-
-### <a name="check-access-status"></a>检查批准状态
-
-你将收到来自 Microsoft 的一封电子邮件，通知你已获准访问 Blob 存储事件。 你可以随时通过 `az feature show` 命令验证访问请求的状态。
-
-```azurecli-interactive
-az feature show --name storageEventSubscriptions --namespace Microsoft.EventGrid --query properties.state
-```
-获得 Blob 存储事件功能的访问权限后，此命令将返回 `"Registered"` 值。 
- 
-注册后，你可以继续学习本教程。
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 

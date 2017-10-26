@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 849637fb391576954307bc84bb02e1d8579bf1cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 278aa67013eb2cabcf5efa7e0de21e9cff0519ba
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>保护 Azure AD 中的特权访问
 保护特权访问是帮助保护现代组织中的业务资产的首要步骤。 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
@@ -62,8 +62,6 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 ## <a name="conditional-access"></a>条件性访问
 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选择的特定条件，才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 
-![设置使用 MFA 的条件性访问规则][4]
-
 ## <a name="related-articles"></a>相关文章
 * 启用 [Azure 多重身份验证](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
 * 启用 [Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md)
@@ -76,4 +74,3 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png
 [2]: ../media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ../media/active-directory-identityprotection/29.png
-[4]: ../media/active-directory-conditional-access/conditionalaccess-saas-apps.png

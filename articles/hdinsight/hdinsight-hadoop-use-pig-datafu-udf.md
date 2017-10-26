@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/23/2017
 ms.author: larryfr
+ms.openlocfilehash: 511d47a8a73c42e5983150ba23ee4fcc7a9e3151
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4de55f5f6c5605e9c6c8dd7ccac902b811d1b062
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="use-datafu-with-pig-on-hdinsight"></a>在 HDInsight 上通过 pig 使用 DataFu
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 08/01/2017
 >
 > 如果使用的是基于 Windows 的群集，或基于 Linux 的群集（3.3 以上版本），请跳过本部分。
 
-可从 Maven 存储库下载和安装 DataFu。 使用以下步骤将 DataFu 添加到你的 HDInsight 群集：
+可从 Maven 存储库下载和安装 DataFu。 使用以下步骤将 DataFu 添加到 HDInsight 群集：
 
 1. 使用 SSH 连接到基于 Linux 的 HDInsight 群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
@@ -123,4 +122,3 @@ DUMP mask;
 
 * [Apache DataFu Pig 指南](http://datafu.incubator.apache.org/docs/datafu/guide.html)。
 * [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
-

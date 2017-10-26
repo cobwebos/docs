@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d12e3be2d6658d2a6cc18ed6ad9a149235b8b581
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac8ef479be5a93b2c4baa76279c8d3e53389409a
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>在 Azure 中创建第一个 Java Web 应用
 
@@ -105,7 +105,7 @@ Azure [Web 应用](app-service-web-overview.md)提供高度可缩放、自修补
 
   * **新建**：保留默认值，该值是应用服务计划的名称。
   * **位置**：选择“西欧”或你附近的位置。
-  * **定价层**：选择免费选项。 有关功能，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
+  * **定价层**：选择免费选项。 有关功能，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
    ![“创建应用服务”对话框](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 

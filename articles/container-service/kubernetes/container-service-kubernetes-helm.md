@@ -16,13 +16,15 @@ ms.workload: na
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 3cfcc5abbee03ca8fbbec4e4eae711e7c2d9deae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9dd137de99864fbac2c73400a88956f6afa324db
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>使用 Helm 在 Kubernetes 群集上部署容器 
+# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>使用 Helm 在 Kubernetes 群集上部署容器
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 [Helm](https://github.com/kubernetes/helm/) 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 pt-get 和 Yum 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。 本文演示了如何在 Azure 容器服务中部署的 Kubernetes 群集上使用 Helm。
 

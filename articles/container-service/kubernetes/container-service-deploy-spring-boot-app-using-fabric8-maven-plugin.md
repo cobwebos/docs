@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: yuwzho;robmcm
 ms.custom: 
+ms.openlocfilehash: 6ec48caef0eebeacf260b0dbc91b175368faea69
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: d368e71866406f6011c5cfa75eba13461e8e4ca4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="deploy-a-spring-boot-app-using-the-fabric8-maven-plugin"></a>使用 Fabric8 Maven 插件部署 Spring Boot 应用
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
@@ -549,4 +547,3 @@ ms.lasthandoff: 09/25/2017
 
 [SB01]: ./media/container-service-deploy-spring-boot-app-using-fabric8-maven-plugin/SB01.png
 [SB02]: ./media/container-service-deploy-spring-boot-app-using-fabric8-maven-plugin/SB02.png
-

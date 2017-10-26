@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dkshir
+ms.openlocfilehash: 0bb18f1b289dd01866842a5193437dabdb5fd20b
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 679cda28bf3ce9fb207fe3693a3453b355f1de15
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="use-desired-properties-to-configure-devices"></a>使用所需属性配置设备
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
@@ -157,7 +156,7 @@ ms.lasthandoff: 07/12/2017
 
     此方法使用配置更新请求更新本地设备孪生对象的报告属性，将状态设置为 **Pending**，然后更新服务的设备孪生。 成功更新设备孪生后，它会通过调用下一要点中所述的方法 `CompleteConfigChange` 来完成配置更改。
 
-1. 将以下方法添加到 **Program** 类。 此方法模拟设备重置，更新将状态设置为 **Success** 的本地报告属性，并删除 **pendingConfig** 元素。 然后，它会更新服务上的设备孪生。 
+1. 将以下方法添加到 **Program** 类。 此方法模拟设备重置，更新将状态设置为 **Success** 的本地报告属性，并删除 **pendingConfig** 元素。 然后，它会在服务上更新设备孪生。 
 
         public static async void CompleteConfigChange()
         {
@@ -218,19 +217,19 @@ ms.lasthandoff: 07/12/2017
         }
 
    > [!NOTE]
-   > 本教程不模拟并发配置更新的任何行为。 某些配置更新进程在更新运行过程中可能能够适应目标配置的更改，某些配置更新进程则可能必须将它们排队，某些配置更新进程会拒绝它们并显示错误情况。 请确保考虑你的特定配置过程所需的行为，并在开始配置更改之前添加相应的逻辑。
+   > 本教程不模拟并发配置更新的任何行为。 某些配置更新进程在更新运行过程中可能能够适应目标配置的更改，某些配置更新进程则可能必须将它们排队，某些配置更新进程会拒绝它们并显示错误情况。 请确保考虑特定配置过程所需的行为，并在开始配置更改之前添加相应的逻辑。
    > 
    > 
 1. 生成解决方案，单击 **F5** 从 Visual Studio 运行设备应用。 在输出控制台中，应会看到消息指示模拟设备正在检索设备孪生、设置遥测，并等待所需属性发生更改。 保持运行该应用。
 
 ## <a name="create-the-service-app"></a>创建服务应用
-在本部分中，将创建一个 .NET 控制台应用，该应用通过新的遥测配置对象更新与 **myDeviceId** 关联的设备孪生的所需属性。 然后，它查询存储在 IoT 中心的设备孪生，并显示该设备的所需配置和报告配置之间的差异。
+在本部分中，将创建一个 .NET 控制台应用，该应用通过新的遥测配置对象更新与 **myDeviceId** 关联的设备孪生的所需属性。 然后，它会查询在 IoT 中心内存储的设备孪生，并显示所需的设备配置与报告的设备配置之间的差异。
 
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **SetDesiredConfigurationAndQuery**。
    
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
-1. 在“解决方案资源管理器”中，右键单击“SetDesiredConfigurationAndQuery”项目，然后单击“管理 NuGet 包...”。
-1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+1. 在“解决方案资源管理器”中，右键单击“SetDesiredConfigurationAndQuery”项目，并单击“管理 NuGet 包...”。
+1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
    
     ![“NuGet 包管理器”窗口][img-servicenuget]
 1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -276,7 +275,7 @@ ms.lasthandoff: 07/12/2017
             }
         }
    
-    **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 此代码将初始化 **Registry** 对象，然后检索 **myDeviceId** 的设备孪生，并使用新的遥测配置对象更新其所需属性。
+    **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 此代码将初始化 **Registry** 对象，检索 **myDeviceId** 的设备孪生，并使用新的遥测配置对象更新其所需属性。
     然后，该代码会每隔 10 秒钟查询一次存储在 IoT 中心的设备孪生，并打印所需遥测配置和报告遥测配置。 请参阅 [IoT 中心查询语言][lnk-query]以了解如何跨所有设备生成丰富的报告。
    
    > [!IMPORTANT]
@@ -330,4 +329,3 @@ ms.lasthandoff: 07/12/2017
 [lnk-iothub-getstarted]: iot-hub-csharp-csharp-getstarted.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-how-to-configure-createapp]: iot-hub-csharp-csharp-twin-how-to-configure.md#create-the-simulated-device-app
-

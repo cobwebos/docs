@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e0683e837086ca08f4b4b3f49695bdd2b4063ea4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff75a7e50142888e4cff4acd40bbdbee31c0e29d
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>启用 Azure Active Directory Identity Protection
 Azure Active Directory Identity Protection 是一项新功能，提供的统一视图包含了可疑登录活动和潜在漏洞以及通知、修补建议和基于风险的策略，帮助保护业务。 

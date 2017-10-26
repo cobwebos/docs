@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: cf25772bd9d92b59401aa5da76e6bbd5fa5ee3e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d315cf63bcbf37b6b03b5a965ac615282526682
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>列出 Azure Active Directory 应用程序库中的应用程序
 若要列出 [Azure AD 库](https://azure.microsoft.com/marketplace/active-directory/all/)中支持使用 Azure Active Directory 进行单一登录的应用程序，该应用程序首先需要实现下列集成模式之一：
@@ -64,10 +64,10 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="saml-integration"></a>SAML 集成
-如果[使用这些说明添加自定义应用程序](../active-directory-saas-custom-apps.md)，支持 SAML 2.0 的任何应用程序都可直接与 Azure AD 租户集成。 应用程序经测试可与 Azure AD 集成后，请将以下信息发送到 <mailto:waadpartners@microsoft.com>。
+如果[使用这些说明添加自定义应用程序](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)，支持 SAML 2.0 的任何应用程序都可直接与 Azure AD 租户集成。 应用程序经测试可与 Azure AD 集成后，请将以下信息发送到 <mailto:waadpartners@microsoft.com>。
 
 * 提供应用程序测试租户或帐户的凭据，使 Azure AD 团队可以测试集成。  
-* 按[此处](../active-directory-saas-custom-apps.md)所述提供应用程序的 SAML 登录 URL、颁发者 URL（实体 ID）和回复 URL（断言使用者服务）的值。 如果一般情况下在 SAML 元数据文件中提供了这些值，请随附该文件。
+* 按[此处](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)所述提供应用程序的 SAML 登录 URL、颁发者 URL（实体 ID）和回复 URL（断言使用者服务）的值。 如果一般情况下在 SAML 元数据文件中提供了这些值，请随附该文件。
 * 提供有关如何在使用 SAML 2.0 的应用程序中配置 Azure AD 作为标识提供者的简短描述。 如果应用程序支持通过自助服务管理门户将 Azure AD 配置为标识提供者，请确保上面提供的凭据可用于进行此项设置。
 * 提供以下信息：
 

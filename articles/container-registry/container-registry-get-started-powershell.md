@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2017
+ms.date: 10/08/2017
 ms.author: nepeters
-ms.openlocfilehash: 15046d1d2aabafd72df590233f416dd266c661de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b58b10e644e934cc38a6e0512ba7642ab8bf27c4
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>使用 PowerShell 创建 Azure 容器注册表
 
@@ -47,10 +47,10 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 使用 [New-AzureRMContainerRegistry](/powershell/module/containerregistry/New-AzureRMContainerRegistry) 命令创建 ACR 实例。
 
-注册表的名称必须唯一。 下面的示例中使用了 *myContainerRegistry007*。 请将其更新为一个唯一值。
+注册表的名称必须唯一。 以下示例使用 myContainerRegistry007。 请将其更新为一个唯一值。
 
-```PowerShell
-$Registry = New-AzureRMContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
+```powershell
+$registry = New-AzureRMContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
 ## <a name="log-in-to-acr"></a>登录到 ACR
@@ -58,20 +58,20 @@ $Registry = New-AzureRMContainerRegistry -ResourceGroupName "myResourceGroup" -N
 在推送和拉取容器映像之前，必须登录到 ACR 实例。 首先，使用 [Get-AzureRmContainerRegistryCredential](/powershell/module/containerregistry/get-azurermcontainerregistrycredential) 命令来获取 ACR 实例的管理员凭据。
 
 ```powershell
-$creds = Get-AzureRmContainerRegistryCredential -Registry $Registry
+$creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 ```
 
 接下来，运行 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令以登录到 ACR 实例。
 
 ```bash
-docker login $Registry.LoginServer -u $creds.Username -p $creds.Password
+docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
 完成后，该命令会返回“登录成功”消息。
 
 ## <a name="push-image-to-acr"></a>将映像推送到 ACR
 
-若要将映像推送到 Azure 容器注册表中，首先必须具有一个映像。 如有必要，请运行以下命令，从 Docker 中心拉取预先创建的映像。
+要将映像推送到 Azure 容器注册表，首先必须具有一个映像。 如有必要，请运行以下命令，从 Docker 中心拉取预先创建的映像。
 
 ```bash
 docker pull microsoft/aci-helloworld
@@ -79,10 +79,11 @@ docker pull microsoft/aci-helloworld
 
 必须使用 ACR 登录服务器名称标记此映像。 运行 [Get-AzureRmContainerRegistry](/powershell/module/containerregistry/Get-AzureRmContainerRegistry) 命令来返回 ACR 实例的登录服务器名称。
 
-```powershell` Get-AzureRmContainerRegistry | Select Loginserver
+```powershell
+Get-AzureRmContainerRegistry | Select Loginserver
 ```
 
-Tag the image using the [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) command. Replace *acrLoginServer* with the login server name of your ACR instance.
+使用 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) 命令标记映像。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
 
 ```bash
 docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
@@ -104,7 +105,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用 Azure CLI 创建了一个 Azure 容器注册表。 如果要将 Azure 容器注册表用于 Azure 容器实例，请继续学习 Azure 容器实例教程。
+在本快速入门教程中，你已使用 Azure CLI 创建 Azure 容器注册表。 如果要对 Azure 容器实例使用 Azure 容器注册表，请继续学习 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](../container-instances/container-instances-tutorial-prepare-app.md)

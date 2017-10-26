@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: f5d3f7fce863f6b868a03eff481ae0dda5a7a812
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 89bffc9726a2c54e59281045d16472335b2a7fed
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory 的应用程序访问与单一登录是什么？
 单一登录是指只需使用单个用户帐户登录一次，就能访问展开业务所需的全部应用程序和资源。 登录之后，可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
@@ -75,12 +75,10 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 基于密码的 SSO 可通过浏览器扩展安全地从 Azure AD 检索应用程序和用户特定的信息并将这些信息应用于服务。 Azure AD 支持的大多数第三方 SaaS 应用程序支持此功能。
 
 对于基于密码的 SSO，最终用户的浏览器可以是：
-
-* Windows 7 或更高版本上的 Internet Explorer 8、9、10 和 11（另请参阅 [IE 扩展部署指南](active-directory-saas-ie-group-policy.md)）
+* Internet Explorer 8、9、10、11 - 在 Windows 7 或更高版本上
+* Windows 10 周年纪念版或更高版本上的 Edge 
 * Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
 * Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
-
-**注意：**如果浏览器扩展支持 Microsoft Edge，则基于密码的 SSO 扩展将可供 Windows 10 中的 Microsoft Edge 使用。
 
 ### <a name="existing-single-sign-on"></a>现有的单一登录
 配置应用程序的单一登录时，Azure 管理门户提供了第三个选项，即“现有的单一登录”。 管理员使用此选项即可创建指向应用程序的链接，并将其放置在所选用户的访问面板上。

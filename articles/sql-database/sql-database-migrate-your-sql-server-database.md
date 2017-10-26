@@ -9,18 +9,18 @@ editor:
 tags: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: mvc,load & move data
+ms.custom: mvc,migrate
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 09/01/2017
 ms.author: carlrab
-ms.openlocfilehash: 8206cba416df4d43594678428632ff161a9564d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b62003fb2758393d5ed8fddad8bd4d028424a2bb
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>将 SQL Server 数据库迁移至 Azure SQL 数据库
 

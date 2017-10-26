@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: cherylmc
+ms.openlocfilehash: d7d2dbff4bcd0d76b56c6f142afae4ce8359bb37
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: c56a9b06a11d25cf046a0faeb29af1d78d9a4a89
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication-preview"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件（预览版）
 
@@ -204,4 +203,3 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ## <a name="next-steps"></a>后续步骤
 
 返回到相关文章，[完成 P2S 配置](point-to-site-how-to-radius-ps.md)。
-

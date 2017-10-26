@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="move-from-biztalk-services-to-logic-apps"></a>从 BizTalk 服务移动到逻辑应用
 
@@ -127,5 +127,5 @@ BizTalk 服务包括 EDI 和 B2B 处理，支持 AS2（适用性语句 2）、X1
 
 ## <a name="next"></a>下一步
 * [什么是逻辑应用](logic-apps-what-are-logic-apps.md)
-* [创建你的第一个逻辑应用](logic-apps-create-a-logic-app.md)，或者通过[预置模板](logic-apps-use-logic-app-templates.md)快速入门  
+* [创建你的第一个逻辑应用](logic-apps-create-a-logic-app.md)，或者通过[预置模板](logic-apps-create-logic-apps-from-templates.md)快速入门  
 * [查看所有可用的连接器](../connectors/apis-list.md)（可在逻辑应用中使用）

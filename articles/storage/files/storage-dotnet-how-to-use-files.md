@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 98e5964f4a2dffd728dae1c452facfa6ea488167
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 51180530790fc0077cea4d8aea7088f1f871681b
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发 
 > [!NOTE]
@@ -29,7 +29,6 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-## <a name="about-this-tutorial"></a>关于本教程
 本教程将演示使用 .NET 开发应用程序或服务的基础知识，这些应用程序或服务可以使用 Azure 文件来存储文件数据。 在本教程中，我们创建一个简单的控制台应用程序，并演示如何通过 .NET 和 Azure 文件执行基本的操作：
 
 * 获取文件内容
