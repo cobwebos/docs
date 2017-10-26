@@ -20,6 +20,7 @@
 ### [示例输入数据](stream-analytics-sample-data-input.md)
 ### [通用查询模式](stream-analytics-stream-analytics-query-patterns.md)
 ### [开窗函数](stream-analytics-window-functions.md)
+
 ### [使用引用数据](stream-analytics-use-reference-data.md)
 ### [测试查询](stream-analytics-test-query.md)
 ### [集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md)
@@ -53,6 +54,7 @@
 ### [作业关系图和指标](stream-analytics-job-diagram-with-metrics.md)
 ### [SELECT INTO 调试](stream-analytics-select-into.md)
 ### [事件顺序处理](stream-analytics-out-of-order-and-late-events.md)
+### [事件排序注意事项](stream-analytics-out-of-order-and-late-events.md)
 ### [事件中心读取器限制](stream-analytics-event-hub-consumer-groups.md)
 ### [诊断日志](stream-analytics-job-diagnostic-logs.md)
 

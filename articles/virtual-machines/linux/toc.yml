@@ -222,11 +222,25 @@
             - name: 部署第一个应用
               href: cloudfoundry-deploy-your-first-app.md
         - name: OpenShift
-          href: openshift-get-started.md
+          items:
+            - name: OpenShift 概述
+              href: openshift-get-started.md
+            - name: OpenShift 先决条件
+              href: openshift-prerequisites.md
+            - name: OpenShift Origin
+              href: openshift-origin.md
+            - name: OpenShift 容器平台
+              href: openshift-container-platform.md
+            - name: OpenShift 部署后任务
+              href: openshift-post-deployment.md
+            - name: 对部署进行故障排除
+              href: openshift-troubleshooting.md
         - name: Azure 上的 SAP
           href: ../workloads/sap/get-started.md
         - name: Oracle
           href: ../workloads/oracle/oracle-database-quick-create.md
+        - name: Elasticsearch
+          href: tutorial-elasticsearch.md
         - name: FreeBSD 数据包筛选器
           href: freebsd-pf-nat.md
         - name: 数据库
@@ -247,7 +261,6 @@
             - name: 安装 NVIDIA GPU 驱动程序
               href: n-series-driver-setup.md
     - name: 管理存储
-      href: about-disks-and-vhds.md
       items:
         - name: 了解托管磁盘
           href: managed-disks-overview.md

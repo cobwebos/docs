@@ -38,13 +38,15 @@ sections:
   - title: 分步教程
     items:
       - type: paragraph
-        text: 了解如何使用 Azure 容器实例和 Azure 容器服务的 Azure 容器注册表。
+        text: 参考这些教程来了解如何使用 Azure 容器注册表。
       - type: list
         style: unordered
         className: spaced noBullet
         items:
+          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">容器注册表异地复制</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Azure 容器实例的容器注册表</a>
           - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">Azure 容器服务的容器注册表</a>
+          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">将容器注册表与 Service Fabric 配合使用</a>
   - title: 引用
     items:
       - type: list

@@ -2,8 +2,6 @@
 
 ## [什么是 SQL 数据仓库？](sql-data-warehouse-overview-what-is.md)
 ## [数据仓库工作负荷](sql-data-warehouse-overview-workload.md)
-## [分布式数据](sql-data-warehouse-distributed-data.md)
-## [常见问题](sql-data-warehouse-overview-faq.md)
 
 # 入门
 
@@ -12,9 +10,13 @@
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 
-
-
 # 如何
+
+## 服务功能
+### [MPP 体系结构](massively-parallel-processing-mpp-architecture.md)
+### [性能层](performance-tiers.md)
+### [数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [常见问题](sql-data-warehouse-overview-faq.md)
 
 ## 备份和还原
 
@@ -118,15 +120,17 @@
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
+### 资源类
+#### [指南](resource-classes-for-workload-management.md)
+#### [分析工作负荷](analyze-your-workload.md)
 
 ## 性能
 
 ### [概述](sql-data-warehouse-overview-manage-user-queries.md)
 ### [列存储压缩](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [监视](sql-data-warehouse-manage-monitor.md)
-### [工作负载](sql-data-warehouse-develop-concurrency.md)
 
-## “安全”
+## 安全
 
 ### [概述](sql-data-warehouse-overview-manage-security.md)
 ### [审核](sql-data-warehouse-auditing-overview.md)

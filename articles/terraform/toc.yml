@@ -1,0 +1,35 @@
+- name: 概述
+  items:
+    - name: 关于 Azure 上的 Terraform
+      href: terraform-overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 安装和配置 Terraform
+      href: /azure/virtual-machines/linux/terraform-install-configure
+      maintainContext: true
+    - name: 创建 Linux VM
+      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      maintainContext: true
+- name: 教程
+  items:
+    - name: 使用 Terraform 模块创建 VM 群集
+      href: terraform-create-vm-cluster-module.md
+    - name: 使用 Cloud Shell 创建 VM 群集
+      href: terraform-create-vm-cluster-with-infrastructure.md
+    - name: 为 VM 规模集预配基础结构
+      href: terraform-create-vm-scaleset-network-disks-hcl.md
+- name: 概念
+  items:
+    - name: Cloud Shell 集成
+      href: terraform-cloud-shell.md
+- name: 示例
+  items:
+    - name: 配置模板
+      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
+- name: 引用
+  items:
+    - name: Azure 模块注册表
+      href: 'https://registry.terraform.io/modules/Azure'
+    - name: Terraform 参考
+      href: 'http://aka.ms/terraform'

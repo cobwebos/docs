@@ -1,24 +1,14 @@
 - name: 适用于容器的 Azure
   href: index.yml
   items:
-    - name: 容器服务 (ACS)
-      href: 'https://docs.microsoft.com/en-us/azure/container-service/'
+    - name: 容器服务 (AKS)
+      href: 'https://docs.microsoft.com/en-us/azure/aks/'
       expanded: true
       items:
-        - name: Kubernetes
-          href: 'https://docs.microsoft.com/azure/container-service/kubernetes/'
-          items:
-            - name: 概述 - 用于 Kubernetes 的 Azure 容器服务简介
-              href: 'https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-intro-kubernetes'
-            - name: 快速入门 - 为 Linux 容器部署 Kubernetes 群集
-              href: 'https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-kubernetes-walkthrough'
-        - name: Docker Swarm 与 DC/OS
-          href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/'
-          items:
-            - name: 快速入门 - 部署 Docker Swarm 群集
-              href: 'https://docs.microsoft.com/en-us/azure/container-service/dcos-swarm/container-service-swarm-walkthrough'
-            - name: 快速入门 - 部署 DC/OS 群集
-              href: 'https://docs.microsoft.com/en-us/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
+        - name: AKS 简介
+          href: ../aks/intro-kubernetes.md
+        - name: 部署 AKS 群集
+          href: ../aks/kubernetes-walkthrough.md
     - name: 容器实例 (ACI)
       href: 'https://docs.microsoft.com/en-us/azure/container-instances/'
       items:
@@ -49,7 +39,7 @@
               href: 'https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication'
             - name: 使用 ACR webhook
               href: 'https://docs.microsoft.com/en-us/azure/container-registry/container-registry-webhook'
-    - name: 用于容器的 Web 应用
+    - name: 容器的 Web 应用
       href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro'
       items:
         - name: 为容器的 Azure Web 应用使用自定义 Docker 映像
@@ -67,26 +57,11 @@
               href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-machine'
             - name: 使用 Docker Compose
               href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart'
-    - name: 虚拟机 (Linux)
-      href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/overview'
-      items:
-        - name: 在 Azure 中开发和运行容器工作负荷
-          href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/containers'
-        - name: 如何
-          items:
-            - name: 创建 Docker 主机
-              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/dockerextension'
-            - name: 使用 Docker 计算机
-              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-machine'
-            - name: 使用 Docker Compose
-              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart'
-    - name: 虚拟机 (Windows)
+    - name: Windows 容器
       href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/overview'
       items:
         - name: 快速入门 - Windows Server 上的 Windows 容器
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
-        - name: Azure 中的虚拟机和容器
-          href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/containers'
         - name: 关于 Windows 容器
           href: 'https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/index'
     - name: 引用
@@ -97,7 +72,7 @@
           href: 'https://docs.microsoft.com/en-us/cli/azure/acs'
         - name: Azure 容器注册表 (az acr)
           href: 'https://docs.microsoft.com/en-us/cli/azure/acr'
-        - name: 容器的 Azure Web 应用 (az appservice)
+        - name: 容器的 Web 应用 (az appservice)
           href: 'https://docs.microsoft.com/en-us/cli/azure/appservice'
         - name: Azure 应用服务 Web 应用 (az webapp)
           href: 'https://docs.microsoft.com/en-us/cli/azure/webapp'

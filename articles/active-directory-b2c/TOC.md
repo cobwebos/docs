@@ -80,16 +80,15 @@
 #### [动态自定义 UI](active-directory-b2c-ui-customization-custom-dynamic.md)
 #### [自定义令牌](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 #### [密码复杂性](active-directory-b2c-reference-password-complexity-custom.md)
-
 #### [密码更改](active-directory-b2c-reference-password-change-custom.md)
-
 #### [启用“使我保持登录状态”](active-directory-b2c-reference-kmsi-custom.md)
-
 ### 故障排除
 #### [使用 Application Insights 收集日志](active-directory-b2c-troubleshoot-custom.md)
 ## 引用
 ### [发行说明](active-directory-b2c-developer-notes-custom.md)
+### [SSO 会话提供程序](active-directory-b2c-reference-sso-custom.md)
 ### [信任框架定义](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
+
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 术语表

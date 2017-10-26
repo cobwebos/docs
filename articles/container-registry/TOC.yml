@@ -15,6 +15,14 @@
       href: container-registry-get-started-powershell.md
 - name: 教程
   items:
+    - name: 异地复制
+      items:
+        - name: 1 - 准备容器注册表
+          href: container-registry-tutorial-prepare-registry.md
+        - name: 2 - 部署 Web 应用程序
+          href: container-registry-tutorial-deploy-app.md
+        - name: 3 - 更新 Web 应用程序
+          href: container-registry-tutorial-deploy-update.md
     - name: Azure 容器实例
       href: ../container-instances/container-instances-tutorial-prepare-app.md
     - name: Azure 容器服务

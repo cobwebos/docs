@@ -14,7 +14,7 @@
 # 操作指南
 ## 在实验室中使用 VM
 ### [创建 VM](devtest-lab-add-vm.md)
-### [创建可认领 VM](devtest-lab-add-claimable-vm.md)
+### [创建和管理可认领 VM](devtest-lab-add-claimable-vm.md)
 ### [使用 Azure CLI 创建和管理 VM](devtest-lab-vmcli.md)
 ### [重新启动 VM](devtest-lab-restart-vm.md)
 

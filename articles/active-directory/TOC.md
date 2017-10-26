@@ -5,6 +5,8 @@
 ## [部署混合标识解决方案](choose-hybrid-identity-solution.md)
 ## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
 ## [常见问题](active-directory-faq.md)
+## [新增功能](whats-new.md)
+
 
 # 入门
 ## [Azure AD 入门](get-started-azure-ad.md)
@@ -302,6 +304,7 @@
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
 #### 任务
+##### [迁移经典策略](active-directory-conditional-access-migration.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
 ##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
 ##### [为用户和应用提供使用条款](active-directory-tou.md)
