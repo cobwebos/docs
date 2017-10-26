@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
+ms.openlocfilehash: d05c0342e771e229a7175570ad227c4359980990
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ad058929eb888920823fddf549ada4ce2c6d9eee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-cosmos-db-bindings-for-functions"></a>适用于函数的 Azure Cosmos DB 绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -403,4 +402,3 @@ module.exports = function (context) {
   context.done();
 };
 ```
-

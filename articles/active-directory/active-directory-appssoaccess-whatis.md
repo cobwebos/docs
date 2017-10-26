@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 97df68d446755414cbd427d59f399d6430580f42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5d3f7fce863f6b868a03eff481ae0dda5a7a812
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory 的应用程序访问与单一登录是什么？
 单一登录是指只需使用单个用户帐户登录一次，就能访问展开业务所需的全部应用程序和资源。 登录之后，可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
@@ -112,7 +112,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 ### <a name="application-not-in-the-gallery"></a>应用程序不在库中怎么办？
 如果在 Azure AD 应用程序库中找不到应用程序，可以选择：
 
-* **添加所使用的未列出应用** - 使用 Azure 管理门户内应用库中的自定义类别连接组织所使用的未列出应用程序。 可以添加支持 SAML 2.0 的任何应用程序作为联合应用，或者添加具有 HTML 登录页的任何应用程序作为密码 SSO 应用。 有关详细信息，请参阅[添加自己的应用程序](active-directory-saas-custom-apps.md)一文。
+* **添加所使用的未列出应用** - 使用 Azure 管理门户内应用库中的自定义类别连接组织所使用的未列出应用程序。 可以添加支持 SAML 2.0 的任何应用程序作为联合应用，或者添加具有 HTML 登录页的任何应用程序作为密码 SSO 应用。 有关详细信息，请参阅[添加自己的应用程序](application-config-sso-how-to-configure-federated-sso-non-gallery.md)一文。
 * **添加正在开发的自有应用** - 如果自己开发了应用程序，请遵照 Azure AD 开发人员文档中的指导原则使用 Azure AD 图形 API 来实施联合单一登录或预配。 有关详细信息，请参阅以下资源：
   
   * [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)

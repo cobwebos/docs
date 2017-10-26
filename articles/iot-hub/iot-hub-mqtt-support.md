@@ -3,7 +3,7 @@ title: "了解 Azure IoT 中心 MQTT 支持 | Microsoft Docs"
 description: "开发人员指南 - 支持设备使用 MQTT 协议连接到面向设备的 IoT 中心终结点。 介绍了 Azure IoT 设备 SDK 中的内置 MQTT 支持。"
 services: iot-hub
 documentationcenter: .net
-author: kdotchkoff
+author: fsautomata
 manager: timlt
 editor: 
 ms.assetid: 1d71c27c-b466-4a40-b95b-d6550cf85144
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2017
-ms.author: kdotchko
+ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2dc0dcfd004a453df2c0ce64d0d92c6f533a54f6
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 11c35e895d061e6876ac18814025c814449351af
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 

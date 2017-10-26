@@ -3,7 +3,7 @@ title: "如何在 Azure API 管理中创建和发布产品"
 description: "了解如何在 Azure API 管理中创建和发布产品。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 31de55cb-9384-490b-a2f2-6dfcf83da764
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 73bf4451ba1b71807e22440beecc73a7e8045c5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2cf905967f26de97613ff7d5fc495c9223e11390
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-create-and-publish-a-product-in-azure-api-management"></a>如何在 Azure API 管理中创建和发布产品
 在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员可以订阅该产品，并开始使用产品的 API。 本主题为开发人员提供创建产品、添加一个 API 以及将其发布的指南。

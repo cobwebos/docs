@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 10/18/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: e81e2ca473477204c0b9e8d8803bcc356746e232
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory 报告
 
@@ -100,7 +99,7 @@ Azure Active Directory 中有两种类型的活动报表：
 
 ## <a name="programmatic-access"></a>以编程方式访问
 
-除了用户界面，Azure Active Directory 报告还允许[以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)报告数据。 对于你的应用程序（如 SIEM 系统、审核）和商业智能工具，这些报告的数据可能非常有用。 Azure AD 报告 API 通过一组基于 REST 的 API，可提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。 
+除了用户界面，Azure Active Directory 报告还允许[以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)报告数据。 对于应用程序（如 SIEM 系统、审核）和商业智能工具，这些报告的数据可能非常有用。 Azure AD 报告 API 通过一组基于 REST 的 API，可提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。 
 
 
 ## <a name="next-steps"></a>后续步骤

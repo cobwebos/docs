@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 74e2a57aa933c7025db952fa09de236f5dabb8c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9aac9c9bcc609a91415438279419d4cc8e237fcb
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="copy-data-between-on-premises-and-cloud"></a>在本地与云之间复制数据
-Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。 
+Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
 
-本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 本教程将创建并使用 Azure 数据工厂的自我托管集成运行时 (IR)，以便将本地数据存储与云数据存储相集成。  若要了解如何使用其他工具/SDK 创建数据工厂，请参阅[快速入门](quickstart-create-data-factory-dot-net.md)。 
+本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 本教程将创建并使用 Azure 数据工厂的自我托管集成运行时 (IR)，以便将本地数据存储与云数据存储相集成。  若要了解如何使用其他工具/SDK 创建数据工厂，请参阅[快速入门](quickstart-create-data-factory-dot-net.md)。
 
 在本教程中执行以下步骤：
 
@@ -40,7 +40,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="prerequisites"></a>先决条件
 
-* **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。 
+* **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。
 * **Azure 存储帐户**。 本教程使用 Azure Blob 存储作为**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
 * **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。
 
@@ -115,13 +115,13 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
    ```json
    Nodes                     : {}
    CreateTime                : 9/14/2017 10:01:21 AM
-   InternalChannelEncryption : 
-   Version                   : 
+   InternalChannelEncryption :
+   Version                   :
    Capabilities              : {}
-   ScheduledUpdateDate       : 
-   UpdateDelayOffset         : 
-   LocalTimeZoneOffset       : 
-   AutoUpdate                : 
+   ScheduledUpdateDate       :
+   UpdateDelayOffset         :
+   LocalTimeZoneOffset       :
+   AutoUpdate                :
    ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
    ResourceGroupName         : <ResourceGroup name>
    DataFactoryName           : <DataFactory name>
@@ -135,7 +135,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
    ```
 
-   下面是示例输出： 
+   下面是示例输出：
 
    ```json
    {
@@ -144,19 +144,19 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
    }
    ```
 
-4. 在本地 Windows 计算机上[下载](https://www.microsoft.com/download/details.aspx?id=39717)自我托管的集成运行时，并使用在上一步骤中获取的身份验证密钥手动注册该自我托管的集成运行时。 
+4. 在本地 Windows 计算机上[下载](https://www.microsoft.com/download/details.aspx?id=39717)自我托管的集成运行时，并使用在上一步骤中获取的身份验证密钥手动注册该自我托管的集成运行时。
 
    ![注册集成运行时](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-   成功注册自我托管的集成运行时后，会看到以下消息： 
+   成功注册自我托管的集成运行时后，会看到以下消息：
 
    ![已成功注册](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
 
-   将节点连接到云服务后，会看到以下页： 
-    
+   将节点连接到云服务后，会看到以下页：
+
    ![节点已连接](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
 
-## <a name="create-linked-services"></a>创建链接服务 
+## <a name="create-linked-services"></a>创建链接服务
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>创建 Azure 存储链接服务（目标/接收器）
 
@@ -167,7 +167,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": { 
+                "connectionString": {
                     "type": "SecureString",
                     "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
                 }
@@ -196,7 +196,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>创建并加密 SQL Server 链接服务（源）
 
-1. 在 **C:\ADFv2Tutorial** 文件夹中，创建包含以下内容的名为 **SqlServerLinkedService.json** 的 JSON 文件：将 **&lt;servername>**、**&lt;databasename>**、**&lt;username>**、**&lt;servername>** 和 **&lt;password>** 替换为 SQL Server 的值，然后保存文件。 将 **&lt;integration** **runtime** **name>** 替换为集成运行时的名称。 
+1. 在 **C:\ADFv2Tutorial** 文件夹中，创建包含以下内容的名为 **SqlServerLinkedService.json** 的 JSON 文件：将 **&lt;servername>**、**&lt;databasename>**、**&lt;username>**、**&lt;servername>** 和 **&lt;password>** 替换为 SQL Server 的值，然后保存文件。 将 **&lt;integration** **runtime** **name>** 替换为集成运行时的名称。
 
     ```json
     {
@@ -216,7 +216,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
         "name": "SqlServerLinkedService"
     }
    ```
-2. 若要在本地自我托管的集成运行时中加密 JSON 有效负载中的敏感数据，可以运行 **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** 并传递上述 JSON 有效负载。 这种加密可确保使用数据保护应用程序编程接口 (DPAPI) 加密凭据，并将其存储在自我托管的集成运行时节点本地。 可将输出的有效负载重定向到包含已加密凭据的另一个 JSON 文件（在本例中为“encryptedLinkedService.json”）。 
+2. 若要在本地自我托管的集成运行时中加密 JSON 有效负载中的敏感数据，可以运行 **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** 并传递上述 JSON 有效负载。 这种加密可确保使用数据保护应用程序编程接口 (DPAPI) 加密凭据，并将其存储在自我托管的集成运行时节点本地。 可将输出的有效负载重定向到包含已加密凭据的另一个 JSON 文件（在本例中为“encryptedLinkedService.json”）。
 
     在运行该命令之前，请将 **&lt;integration runtime name&gt;** 替换为集成运行时的名称。
 
@@ -227,7 +227,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 3. 使用前一步骤中的 JSON 运行以下命令，创建 **SqlServerLinkedService**：
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json" 
+   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
    ```
 
 
@@ -315,7 +315,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ### <a name="create-a-dataset-for-sink-azure-blob-storage"></a>为接收器 Azure Blob 存储创建数据集
 
-1. 在 **C:\ADFv2Tutorial** 文件夹中，创建包含以下内容的名为 **AzureBlobDataset.json** 的 JSON 文件： 
+1. 在 **C:\ADFv2Tutorial** 文件夹中，创建包含以下内容的名为 **AzureBlobDataset.json** 的 JSON 文件：
 
     > [!IMPORTANT]
     > 此示例代码假设 Azure Blob 存储中有一个名为 **adftutorial** 的容器。
@@ -436,7 +436,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
             $result
             break
         }
-    } 
+    }
     ```
 
     下面是示例运行的输出：
@@ -449,7 +449,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     PipelineName      : SQLServerToBlobPipeline
     Input             :  
     Output            :  
-    LinkedServiceName : 
+    LinkedServiceName :
     ActivityRunStart  : 9/13/2017 1:35:22 PM
     ActivityRunEnd    : 9/13/2017 1:35:42 PM
     DurationInMs      : 20824
@@ -479,7 +479,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 4. 连接到接收器 Azure Blob 存储，并确认是否已正确地从 Azure SQL 数据库复制数据。
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何： 
+此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

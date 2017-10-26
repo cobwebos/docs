@@ -3,7 +3,7 @@ title: "使用 Azure Active Directory 授权开发人员帐户 - Azure API 管�
 description: "了解如何在 API 管理中使用 Azure Active Directory 授权用户。"
 services: api-management
 documentationcenter: API Management
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 2fa5c021d9f493004a5beab02529c70b600b9a0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e8bc33ddf38657fe2d0d84a7bf64d4177d51572
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 > [!WARNING]
 > 仅在[开发人员和高级](https://azure.microsoft.com/en-us/pricing/details/api-management/)层提供 Azure Active Directory 集成。
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 
 对于“登录 URL”，输入开发人员门户的登录 URL。 在此示例中，“登录 URL”为 `https://aad03.portal.current.int-azure-api.net/signin`。 
 
-对于“应用 ID URL”，输入 Azure Active Directory 的默认域或自定义域，并向其追加一个唯一字符串。 在此示例中， **https://contoso5api.onmicrosoft.com** 的默认域与指定的 **/api** 的后缀一起使用。
+对于“应用 ID URL”，输入 Azure Active Directory 的默认域或自定义域，并向其追加一个唯一字符串。 在此示例中，**https://contoso5api.onmicrosoft.com** 的默认域与指定的 **/api** 的后缀一起使用。
 
 ![新的 Azure Active Directory 应用程序属性][api-management-new-aad-application-2]
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 10/11/2017
 
 保存更改后，指定的 Azure Active Directory 中的用户可按照[使用 Azure Active Directory 帐户登录开发人员门户][Log in to the Developer portal using an Azure Active Directory account]中的步骤登录到开发人员门户中。
 
-可在“允许的租户”部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 要授予权限，全局管理员应转到 `https://<URL of your developer portal>/aadadminconsent`（例如， https://contoso.portal.azure-api.net/aadadminconsent ），键入他们要授予访问权限的 Active Directory 租户的域名，并单击“提交”。 在以下示例中，`miaoaad.onmicrosoft.com` 中的全局管理员想要授予对此特定开发人员门户的权限。 
+可在“允许的租户”部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 要授予权限，全局管理员应转到 `https://<URL of your developer portal>/aadadminconsent`（例如，https://contoso.portal.azure-api.net/aadadminconsent），键入他们要授予访问权限的 Active Directory 租户的域名，并单击“提交”。 在以下示例中，`miaoaad.onmicrosoft.com` 中的全局管理员想要授予对此特定开发人员门户的权限。 
 
 ![权限][api-management-aad-consent]
 

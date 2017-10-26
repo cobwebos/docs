@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: a89d1f715464f79068a0c04ef908e86d0dc8ff46
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 047f18acf192c75ac5904d7cfe10f19ad18e2888
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
 
@@ -70,4 +69,3 @@ ms.lasthandoff: 09/09/2017
 | 有风险的登录 | 7 天        | 30 天             | 90 天             |
 
 ---
-

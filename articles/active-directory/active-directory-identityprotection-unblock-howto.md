@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ce6b2805e7281dff7752a73ada86be11d7e01fc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0bef2fa17474298f36f360efa49922f5f85b21a1
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection - 如何取消阻止用户
 通过 Azure Active Directory Identity Protection，可将策略配置为在满足配置条件的情况下阻止用户。 通常情况下，受阻止的用户可联系支持人员以取消阻止。 本主题介绍了取消阻止受阻止用户的可执行步骤。

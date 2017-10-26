@@ -15,12 +15,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/16/2017
 ms.author: mimig
+ms.openlocfilehash: 8a5c9b7861e63ef76ec338072eafcd7905c258f2
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: a2059aeb0ac147c896a7306f9530a410974a8e9a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB：使用 Python 和 Azure 门户生成 DocumentDB API 应用
 
@@ -164,6 +163,5 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 > [!div class="nextstepaction"]
 > [将 DocumentDB API 的数据导入 Azure Cosmos DB](import-data.md)
-
 
 

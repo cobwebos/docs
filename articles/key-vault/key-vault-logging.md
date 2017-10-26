@@ -3,7 +3,7 @@ title: "Azure 密钥保管库日志记录 | Microsoft Docs"
 description: "借助本教程开始使用 Azure 密钥保管库日志记录。"
 services: key-vault
 documentationcenter: 
-author: cabailey
+author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 43f96a2b-3af8-4adc-9344-bc6041fface8
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/19/2017
-ms.author: cabailey
-ms.openlocfilehash: e9a4f16f048833dab49f7db79892fe47a5aeff37
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/16/2017
+ms.author: barclayn
+ms.openlocfilehash: 2faf45c7329f1c98a26bcf7ec5d569dfa16cbbda
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。

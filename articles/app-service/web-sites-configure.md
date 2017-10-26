@@ -3,7 +3,7 @@ title: "在 Azure 应用服务中配置 Web 应用"
 description: "如何在 Azure 应用服务中配置 Web 应用"
 services: app-service\web
 documentationcenter: 
-author: rmcmurray
+author: cephalin
 manager: erikre
 editor: 
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: robmcm
-ms.openlocfilehash: bb1144519db84e5685fbae1a2f55854e1102120a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cephalin
+ms.openlocfilehash: fd1a8cf442ea0688e027f8f8028ee8b4e149d8d2
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
 本主题介绍如何使用 [Azure 门户]配置 Web 应用。
@@ -27,8 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="application-settings"></a>应用程序设置
 1. 在 [Azure 门户]中，打开 Web 应用的边栏选项卡。
-2. 单击“所有设置”。
-3. 单击“应用程序设置”。
+3. 单击“应用程序设置” 。
 
 ![应用程序设置][configure01]
 
