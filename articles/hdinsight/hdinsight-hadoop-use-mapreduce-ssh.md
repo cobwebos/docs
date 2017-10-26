@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/23/2017
 ms.author: larryfr
+ms.openlocfilehash: a8e11ed42cc45389372f0f022e2551d92ffbab4d
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: eaf6278f97cd5ddd7e049ff4745181f39d7949a0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Hadoop 配合使用
 
@@ -108,7 +107,7 @@ ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 
 ## <a id="summary"></a>摘要
 
-如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，然后查看作业输出。
+如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，并查看作业输出。
 
 ## <a id="nextsteps"></a>后续步骤
 
@@ -120,4 +119,3 @@ ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-

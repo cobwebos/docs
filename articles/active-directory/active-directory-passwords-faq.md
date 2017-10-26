@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: a457ba3109625ab43ae3a88b95a3e7e1e9641921
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fda60c9dfde64c526ad4cbf7fc4ccc5b56becafb
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -56,10 +56,6 @@ ms.lasthandoff: 10/11/2017
 * **问：用户在注册数据时能否选择不让其他用户看到？**
 
   > **答：**可以。当用户使用密码重置注册门户注册数据时，数据会保存到私有身份验证字段中，只有全局管理员和用户才能看到这些字段。
-    >
-    > [!NOTE]
-    > 如果 **Azure 管理员帐户**注册了用户的身份验证电话号码，该号码也将填充到移动电话字段并且会公开。
-    >
   >
   >
 * **问：是否用户只有在注册之后才能使用密码重置功能？**

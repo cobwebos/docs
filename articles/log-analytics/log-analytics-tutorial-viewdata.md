@@ -14,14 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2017
 ms.author: magoedte
 ms.custom: mvc
+ms.openlocfilehash: dfcbb925a16ca1e53d10b7bf70d03e62bc9dae69
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: c9c57beeb9c62e69f3bae5675717fff0ef43f22c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>查看或分析使用 Log Analytics 日志搜索收集的数据
 
 在 Log Analytics 中，可通过构建查询利用日志搜索来分析收集的数据，也可使用预先存在的仪表板，可使用最有价值的搜索图形视图来自定义该仪表板。  定义从 Azure VM 和活动日志中的操作数据收集之后，可通过本教程了解如何：

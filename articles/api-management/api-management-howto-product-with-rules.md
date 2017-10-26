@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
+ms.openlocfilehash: c13d08c2f5ea6cfb5bed19b94c09f3d7dd37c21f
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>使用 Azure API 管理借助速率限制保护 API
 本指南演示如何通过使用 Azure API 管理配置速率限制和配额策略轻松地为后端 API 添加保护。
@@ -326,4 +325,3 @@ ms.lasthandoff: 09/14/2017
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
-

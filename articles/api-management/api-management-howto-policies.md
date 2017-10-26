@@ -3,7 +3,7 @@ title: "Azure API 管理中的策略 | Microsoft Docs"
 description: "了解如何在 API 管理创建、编辑和配置策略。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 537e5caf-708b-430e-a83f-72b70af28aa9
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ef4cb447430a613dd519d96dd7732a9349ebba39
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 在 Azure API 管理中，策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包括从 XML 到 JSON 的格式转换，并调用速率限制来限制从一名开发人员的传入调用。 许多策略开箱即用。
