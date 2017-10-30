@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 486e2b2da7a78cdc39743e60f4140fc58275a8fc
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Azure 自动化入门
 
@@ -59,6 +59,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 * Windows Server 2012 或更高版本
 * Windows PowerShell 4.0 或更高版本。  建议在计算机上安装 Windows PowerShell 5.0 以提高可靠性。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=50395)下载新版本
+* .NET Framework 4.6.2 或更高版本
 * 至少双核
 * 至少 4 GB RAM
 

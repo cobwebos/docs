@@ -14,39 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 082cd8a6cf50f76c89fe5995047396c734f83034
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f055f1e87e73733b3f2ecfa87e4d372ade8a7868
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
-[Azure 虚拟网络 (VNet)](virtual-networks-overview.md) 是 Azure 中你自己的专用网络空间，使用它可以安全地将 Azure 资源相互连接。
-
-使用虚拟网络对等互连可以无缝连接虚拟网络。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等互连的虚拟网络中的虚拟机可以相互直接通信。
-对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。
-
->[!IMPORTANT]
-> 可在不同 Azure 区域中的虚拟网络之间建立对等互连。 此功能目前处于预览状态。 可以[注册订阅以获取预览版](virtual-network-create-peering.md)。 在同一区域中的虚拟网络之间建立对等互连的功能已推出正式版。
->
+使用虚拟网络对等互连可以无缝连接两个 Azure [虚拟网络](virtual-networks-overview.md)。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 
 
 使用虚拟网络对等互连的优点包括：
 
-* 通过虚拟网络对等互连传递的流量完全是私密的。 流量会流经 Microsoft 主干网络，而不涉及到 Internet 或网关。
+* 对等虚拟网络之间的网络流量是专用的。 虚拟网络之间的流量仅限于 Microsoft 主干网络。 在虚拟网络之间通信不需公共 Internet、网关或加密。
 * 不同虚拟网络中资源之间的连接延迟低且带宽高。
-* 建立对等互连后，可以通过一个虚拟网络使用另一个虚拟网络中的资源。
-* 虚拟网络对等互连可帮助跨 Azure 订阅、部署模型和 Azure 区域传输数据（预览版）。
-* 可将通过 Azure 资源管理器创建的虚拟网络对等互连，或者将一个通过资源管理器创建的虚拟网络对等互连到通过经典部署模型创建的虚拟网络。 请阅读[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文，详细了解这两个 Azure 部署模型之间的差异。
+* 在虚拟网络对等互连之后，一个虚拟网络中的资源与另一虚拟网络中的资源通信的功能。
+* 跨 Azure 订阅、部署模型和 Azure 区域传输数据的功能（预览版）。
+* 可将通过 Azure 资源管理器创建的虚拟网络对等互连，或者将一个通过资源管理器创建的虚拟网络对等互连到通过经典部署模型创建的虚拟网络。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+* 在创建对等互连之时或之后，虚拟网络中的资源不会出现停机的现象。
 
 ## <a name="requirements-constraints"></a>要求和约束
 
-* 在同一区域中的虚拟网络之间建立对等互连的功能已推出正式版。 在不同区域中的虚拟网络之间建立对等互连的功能目前已在美国中西部、加拿大中部和美国西部 2 区推出预览版。 可以[注册订阅以获取预览版](virtual-network-create-peering.md)。
+* 在同一区域中的虚拟网络之间建立对等互连的功能已推出正式版。 在不同区域中的虚拟网络之间建立对等互连的功能目前已在美国中西部、加拿大中部和美国西部 2 区推出预览版。 可以[注册订阅](virtual-network-create-peering.md)以获取预览版。
     > [!WARNING]
-    > 采用此方案创建的虚拟网络对等互连与在正式版中的方案相比，可用性和可靠性级别可能不同。 虚拟网络对等互连的功能可能存在约束，不一定可在所有 Azure 区域中使用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)（Azure 虚拟网络更新）页。
+    > 跨区域创建的虚拟网络对等互连与正式版中的对等互连相比，可用性和可靠性级别可能不同。 虚拟网络对等互连的功能可能存在约束，不一定可在所有 Azure 区域中使用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)（Azure 虚拟网络更新）页。
 
 * 对等虚拟网络 的 IP 地址空间不得重叠。
-* 虚拟网络与另一虚拟网络对等后，则不能向其中添加或从其中删除地址空间。
+* 虚拟网络与另一虚拟网络对等后，不能在虚拟网络的地址空间中添加或删除地址范围。 若需向对等互连的虚拟网络的地址空间添加地址范围，必须先删除对等互连，然后添加地址空间，最后再添加对等互连。
 * 虚拟网络对等互连在两个虚拟网络之间进行。 对等互连之间没有任何派生的可传递关系。 例如，如果 virtualNetworkA 与 virtualNetworkB 对等互连，而 virtualNetworkB 与 virtualNetworkC 对等互连，则 virtualNetworkA 不会对等互连到 virtualNetworkC。
 * 可将两个不同订阅中的虚拟网络对等互连，只要两个订阅的特权用户（请参阅[特定权限](create-peering-different-deployment-models-subscriptions.md#permissions)）授权对等互连，并且订阅与同一个 Azure Active Directory 租户关联即可。 可以使用 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V)来连接关联到不同 Active Directory 租户的订阅中的虚拟网络。
 * 如果两个虚拟网络都是通过 Resource Manager 部署模型创建的，或者其中一个虚拟网络是通过 Resource Manager 部署模型创建的，而另一个是通过经典部署模型创建的，则可以将这两个虚拟网络对等互连。 但是，都是通过经典部署模型创建的虚拟网络不能彼此对等互连。 可以使用 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V)来连接通过经典部署模型创建的虚拟网络。
@@ -58,20 +52,20 @@ ms.lasthandoff: 10/11/2017
 
 将虚拟网络对等互连后，其中一个虚拟网络中的虚拟机资源可直接连接到对等互连虚拟网络中的资源。
 
-同一区域中对等互连虚拟网络上的虚拟机之间的网络延迟与单个虚拟网络中的网络延迟相同。 网络吞吐量取决于可供虚拟机使用的与其大小成比例的带宽。 对等互连的带宽没有任何其他限制。
+同一区域中对等互连虚拟网络上的虚拟机之间的网络延迟与单个虚拟网络中的延迟相同。 网络吞吐量取决于可供虚拟机使用的与其大小成比例的带宽。 对等互连的带宽没有任何其他限制。
 
-对等互连虚拟网络中虚拟机之间的流量直接通过 Microsoft 主干基础结构路由，而不通过网关或公共 Internet。
+对等互连虚拟网络中虚拟机之间的流量直接通过 Microsoft 主干基础结构路由，而不通过网关或公共 Internet 路由。
 
-虚拟网络中的虚拟机可以访问同一区域中对等互连虚拟网络上的内部负载均衡。 在预览版中，对内部负载均衡器的支持并未扩展到全局对等互连的虚拟网络。 全局虚拟网络对等互连正式版会支持内部负载均衡器。
+虚拟网络中的虚拟机可以访问同一区域中对等互连虚拟网络上的内部负载均衡。 对内部负载均衡器的支持并未扩展到全局对等互连的虚拟网络（预览版）。 全局虚拟网络对等互连正式版会支持内部负载均衡器。
 
 可根据需要将网络安全组应用于虚拟网络（阻止访问其他虚拟网络）或子网。
-配置虚拟网络对等互连时，可打开或关闭虚拟网络之间的网络安全组规则。 如果打开对等虚拟网络之间的完全连接（这是默认选项），则可将网络安全组应用到特定子网或虚拟机，以便阻止或拒绝特定访问。 若要深入了解网络安全组，请参阅[网络安全组概述](virtual-networks-nsg.md)一文。
+配置虚拟网络对等互连时，可打开或关闭虚拟网络之间的网络安全组规则。 如果打开对等虚拟网络之间的完全连接（这是默认选项），则可将网络安全组应用到特定子网或虚拟机，以便阻止或拒绝特定访问。 若要深入了解网络安全组，请参阅[网络安全组概述](virtual-networks-nsg.md)。
 
 ## <a name="service-chaining"></a>服务链
 
 可以将指向对等虚拟网络中虚拟机的用户定义的路由表配置为“下一个跃点”IP 地址，以便启用服务链。 使用服务链，可以通过用户定义的路由将流量从一个虚拟网络定向到对等虚拟网络中的虚拟设备。
 
-用户也可以有效构建中心辐射型环境，允许中心在其中托管基础结构组件，如网络虚拟设备。 然后，可以将所有分散虚拟网络与中心虚拟网络对等。 流量可以流经在中心虚拟网络中运行的网络虚拟设备。 简言之，通过虚拟网络对等互连，用户定义的路由中的下一个跃点 IP 地址可以成为对等虚拟网络中虚拟机的 IP 地址。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md)一文。 了解如何创建[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)
+用户也可以有效构建中心辐射型环境，允许中心在其中托管基础结构组件，如网络虚拟设备。 然后，可以将所有分散虚拟网络与中心虚拟网络对等。 流量可以流经在中心虚拟网络中运行的网络虚拟设备。 简言之，通过虚拟网络对等互连，用户定义的路由中的下一个跃点 IP 地址可以成为对等虚拟网络中虚拟机的 IP 地址。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md)。 若要了解如何创建中心和分支网络拓扑，请参阅[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)
 
 ## <a name="gateways-and-on-premises-connectivity"></a>网关和本地连接
 
@@ -97,15 +91,15 @@ ms.lasthandoff: 10/11/2017
 
 |虚拟网络|部署模型|角色|权限|
 |---|---|---|---|
-|myvirtual networkA|资源管理器|[网络参与者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+|myVirtualNetworkA|资源管理器|[网络参与者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |经典|[经典网络参与者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|不适用|
-|myvirtual networkB|资源管理器|[网络参与者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+|myVirtualNetworkB|资源管理器|[网络参与者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||经典|[经典网络参与者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 ## <a name="monitor"></a>监视
 
 对等互连两个通过资源管理器创建的虚拟网络时，必须为对等互连中的每个虚拟网络都配置对等互连。
-可以监视对等互连的状态。 对等互连可处于以下状态之一：
+可以监视对等互连的状态。 对等互连处于以下状态之一：
 
 * **已启动**：从第一个虚拟网络创建与第二个虚拟网络的对等互连时，对等互连状态为“已启动”。
 
@@ -121,7 +115,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="limits"></a>限制
 
-允许单个虚拟网络建立的对等互连数存在限制。 对等互连的默认数量为 50。 可以增加对等互连的数量。 有关详细信息，请参阅 [Azure 网络限制](../azure-subscription-service-limits.md#networking-limits)。
+允许单个虚拟网络建立的对等互连数存在限制。 有关详细信息，请参阅 [Azure 网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="pricing"></a>定价
 

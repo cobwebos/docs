@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fa08049fd0b13945de307e9d28224ea0d5a1307
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303ead6e1d98d464aeba2687c2a72a38bc1ce209
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>什么是 Azure 中的虚拟机规模集？
 虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 * [Guy Bowerman 介绍虚拟机规模集](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>创建和管理规模集
-可以在 [Azure 门户](https://portal.azure.com)中创建规模集，方法是：选择“新建”，并在搜索栏中键入“规模”。 结果中会列出“虚拟机规模集”。 从这里，可以填写必填字段，自定义和部署规模集。 还可以使用相应的选项根据 CPU 使用率设置基本的自动缩放规则。 
+可以在 [Azure 门户](https://portal.azure.com)中创建规模集，方法是：选择“新建”，并在搜索栏中键入“规模”。 结果中会列出“虚拟机规模集”。 从这里，可以填写必填字段，自定义和部署规模集。 还可以使用相应的选项根据 CPU 使用率设置基本的自动缩放规则。 若要管理规模集，可以使用 Azure 门户、[Azure PowerShell cmdlet](virtual-machine-scale-sets-windows-manage.md) 或 Azure CLI 2.0。
 
 规模集可以部署到[可用性区域](../availability-zones/az-overview.md)。
 
@@ -46,8 +46,23 @@ ms.lasthandoff: 10/11/2017
 
 以“快速启动”模板为例，每个模板的自述文件中的“部署到 Azure”按钮都会链接到门户部署功能。 要部署规模集，请单击该按钮，并填写门户中所需的任何参数。 
 
-## <a name="scaling-a-scale-set-out-and-in"></a>扩大和缩小规模集
-若要在 Azure 门户中更改规模集的容量，可单击“设置”下的“缩放”部分。 
+
+## <a name="autoscale"></a>自动缩放
+为了保持应用程序性能一致，可以自动增加或减少规模集中的 VM 实例数。 此自动缩放功能可以减少在客户需求随时间变化时对规模集进行监视和优化所需的管理开销。 可以根据性能指标、应用程序响应或固定的计划来定义规则，而规模集会根据需要自动缩放。
+
+对于基本的自动缩放规则，可以使用基于主机的性能指标，例如 CPU 使用情况或磁盘 I/O。 这些基于主机的指标是现成的，不需安装和配置其他代理或扩展。 可通过以下工具之一创建使用基于主机的指标的自动缩放规则：
+
+- [Azure 门户](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
+
+若要使用更细化的性能指标，可以在规模集中的 VM 实例上安装和配置 Azure 诊断扩展。 可以使用 Azure 诊断扩展，从每个 VM 实例内部收集其他性能指标，例如内存使用情况。 这些性能指标流式传输到 Azure 存储帐户，你可以创建自动缩放规则来使用此数据。 有关详细信息，请参阅有关如何在 [Linux VM](../virtual-machines/linux/diagnostic-extension.md) 或 [Windows VM](../virtual-machines/windows/ps-extensions-diagnostics.md) 上启用 Azure 诊断扩展的文章。
+
+若要监视应用程序性能本身，可以将小检测包安装和配置到适用于 App Insights 的应用程序中。 然后即可从应用流式传输回有关应用程序响应时间或会话数的详细性能指标。 然后即可创建自动缩放规则，对应用程序级性能本身的阈值进行定义。 有关 App Insights 的详细信息，请参阅[什么是 Application Insights](../application-insights/app-insights-overview.md)。
+
+
+## <a name="manually-scaling-a-scale-set-out-and-in"></a>手动扩大和缩小规模集
+若要在 Azure 门户中手动更改规模集的容量，可单击“设置”下的“缩放”部分。 
 
 若要在命令行中更改规模集容量，请在 [Azure CLI](https://github.com/Azure/azure-cli) 中使用 **scale** 命令。 例如，使用以下命令可将规模集设置为 10 个 VM 的容量：
 
@@ -67,26 +82,6 @@ Update-AzureRmVmss -ResourceGroupName resourcegroupname -Name scalesetname -Virt
 
 若要重新部署 Azure Resource Manager 模板以更改容量，可以定义一个小得多的模板，只包括 **SKU** 属性数据包和更新的容量。 [下面是一个示例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)。
 
-## <a name="autoscale"></a>自动缩放
-
-在 Azure 门户中创建规模集时，可以选择性地为规模集配置自动缩放设置。 然后，可以根据平均 CPU 使用率增减 VM 数。 
-
-[Azure Quickstart templates](https://github.com/Azure/azure-quickstart-templates)（Azure 快速启动模板）中的许多规模集模板定义了自动缩放设置。 也可向现有的规模集添加自动缩放设置。 例如，此 Azure PowerShell 脚本向规模集添加基于 CPU 的自动缩放：
-
-```PowerShell
-
-$subid = "yoursubscriptionid"
-$rgname = "yourresourcegroup"
-$vmssname = "yourscalesetname"
-$location = "yourlocation" # e.g. southcentralus
-
-$rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:05:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionValue 1
-$rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -Operator LessThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:05:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Decrease -ScaleActionValue 1
-$profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "autoprofile1"
-Add-AzureRmAutoscaleSetting -Location $location -Name "autosetting1" -ResourceGroup $rgname -TargetResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -AutoscaleProfiles $profile1
-```
-
-如需适用于缩放的有效指标的列表，可参阅 [Azure Monitor 支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)中标题“Microsoft.Compute/virtualMachineScaleSets”下的内容。 此外还提供更多高级的自动缩放选项，包括按计划自动缩放，以及使用 Webhook 来集成警报系统。
 
 ## <a name="monitoring-your-scale-set"></a>监视规模集
 [Azure 门户](https://portal.azure.com)列出规模集并显示其属性。 门户还支持管理操作。 可以针对规模集和规模集中的单个 VM 执行这些操作。 该门户还提供了一个可自定义的资源使用情况图。 

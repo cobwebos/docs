@@ -1,12 +1,12 @@
 ---
-title: "在 Azure 安全中心设置安全策略 | Microsoft Docs"
-description: "本文档介绍了如何在 Azure 安全中心配置安全策略。"
+title: "Azure 安全中心安全策略与 Azure 策略的集成 | Microsoft Docs"
+description: "本文档介绍了如何配置 Azure 安全中心安全策略与 Azure 策略的集成。"
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
 editor: 
-ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
+ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security-center
 ms.devlang: na
 ms.topic: hero-article
@@ -14,36 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 1cebb6edecd13c6ab32c6854bfd6fe908c1f71f4
+ms.openlocfilehash: 5e07cd6891a5ab04012f819b5f6b9379312e530d
 ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/13/2017
 ---
-# <a name="set-security-policies-in-security-center"></a>在安全中心设置安全策略
-本文档介绍如何在安全中心配置安全策略，指导用户完成执行此任务所必需的步骤。 
+# <a name="set-security-policies-in-security-center-powered-by-azure-policy"></a>在 Azure 策略支持的安全中心设置安全策略
+本文档介绍如何在 Azure 策略支持的安全中心配置安全策略，指导用户完成执行此任务所必需的步骤。 
 
 
 ## <a name="how-security-policies-work"></a>安全策略工作原理
-安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略，并监视策略遵循情况。 
+安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略，也可以使用 [Azure 策略](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)创建新的策略定义、跨管理组（可以代表整个组织、组织中的某个业务部门，等等）分配策略，以及监视策略遵循情况。
 
 > [!NOTE]
-> 现在可以使用 Azure 策略（功能受限的预览版）来扩展安全中心策略。 单击[此处](http://aka.ms/getpolicy)加入预览版，或者查看[此处](security-center-azure-policy.md)的文档。
-
-例如，开发或测试用资源的安全要求可能不同于生产应用型资源。 同样，使用管控数据（例如个人身份信息）的应用程序可能需要更高级别的安全性。 在 Azure 安全中心启用的安全策略可以通过安全建议和监视帮助用户确定可能的漏洞并缓解威胁造成的危害。 阅读 [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) （Azure 安全中心规划和操作指南），详细了解如何确定适当的选项。
+> Azure 策略为有限预览版。 单击[此处](https://aka.ms/getpolicy)即可加入。 有关 Azure 策略的详细信息，请阅读 [Create and manage policies to enforce compliance](http://docs.microsoft.com/en-us/azure/azure-policy/create-manage-policy)（创建和管理策略以强制要求符合性）。
 
 ## <a name="edit-security-policies"></a>编辑安全策略
-可以在安全中心为每个 Azure 订阅编辑默认的安全策略。 若要修改安全策略，你必须是该订阅的所有者、参与者或安全管理员。 登录到 Azure 门户，按照后续步骤在安全中心配置安全策略： 
+可以在安全中心为每个 Azure 订阅编辑默认的安全策略。 若要修改安全策略，你必须是该订阅或包含型管理组的所有者或安全管理员。 登录到 Azure 门户，按照后续步骤在安全中心查看安全策略：
 
-1.  在“安全中心”仪表板的“通用”下单击“安全策略”。
-2.  选择要在其上启用安全策略的订阅。
-3.  在“策略组件”部分单击“安全策略”。
-4.  这是安全中心分配的默认策略。 可以打开/关闭可用的安全建议。
-5.  编辑完后，单击“保存”。
+1. 在“安全中心”仪表板的“通用”下单击“安全策略”。
+2. 选择要在其上启用安全策略的订阅。
 
-## <a name="available-security-policy-options"></a>可用的安全策略选项
+    ![策略管理](./media/security-center-policies/security-center-policies-fig10.png)
 
-若要了解每个选项，可使用下表作为参考：
+3. 在“策略组件”部分单击“安全策略”。
+
+    ![策略组件](./media/security-center-policies/security-center-policies-fig12.png)
+
+4. 这是通过 Azure 策略分配给安全中心的默认策略。 可以删除“策略和参数”下的项，也可以在“可用选项”下添加其他策略定义。 为此，可直接单击定义名称旁的加号。
+
+    ![策略定义](./media/security-center-policies/security-center-policies-fig11.png)
+
+5. 如果需要有关策略的更详细说明，请单击该策略，此时会打开另一页面，其中包含详细信息以及具有[策略定义](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy/#policy-definition-structure)结构的 JSON 代码：
+
+    ![Json](./media/security-center-policies/security-center-policies-fig14.png)
+
+6. 编辑完后，单击“保存”。
+
+
+## <a name="available-security-policy-definitions"></a>可用的安全策略定义
+
+请使用下表作为参考，了解默认安全策略中提供的策略定义： 
 
 | 策略 | 当状态为“启用”时 |
 | --- | --- |

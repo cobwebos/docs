@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf8fdca51a6a4ad1b7cd4fe6980543199f6b36e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf2b506c6d12e6337161aba889b23ad5eca83d96
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>通过适用于 .NET 的 Batch 客户端库开始构建解决方案
 
@@ -55,8 +55,8 @@ ms.lasthandoff: 10/11/2017
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
-### <a name="azure-batch-explorer-optional"></a>Azure Batch 资源管理器（可选）
-[Azure Batch 资源管理器][github_batchexplorer]是 GitHub 上的 [azure-batch-samples][github_samples] 存储库随附的免费实用工具。 尽管完成本教程不要求使用 Azure Batch 资源管理器，但可将其用于开发和调试 Batch 解决方案。
+### <a name="batchlabs-optional"></a>BatchLabs（可选）
+[BatchLabs][github_batchlabs] 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 尽管完成本教程不要求使用 Azure Batch 资源管理器，但可将其用于开发和调试 Batch 解决方案。
 
 ## <a name="dotnettutorial-sample-project-overview"></a>DotNetTutorial 示例项目概述
 *DotNetTutorial* 代码示例是由以下两个项目组成的 Visual Studio 解决方案：**DotNetTutorial** 和 **TaskApplication**。
@@ -750,7 +750,7 @@ Sample complete, hit ENTER to exit...
 [azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[github_batchlabs]: https://azure.github.io/BatchLabs/
 [github_dotnettutorial]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/DotNetTutorial
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_common]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/Common

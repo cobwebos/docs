@@ -1,11 +1,11 @@
-## <a name="scenario"></a>方案
+## <a name="configuration-scenario"></a>配置方案
 
-正根据以下方案创建内部负载均衡器
+在此方案中，我们将在虚拟网络中创建一个内部负载均衡器，如下图所示：
 
-![图像说明](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
+![内部负载均衡器方案](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
-在虚拟网络中配置内部负载均衡器
+方案的配置如下所示：
 
-* 2 台分别名为 DB1 和 DB2 的虚拟机
-* 终结点
+* 两台分别名为 DB1 和 DB2 的虚拟机
+* 内部负载均衡器的终结点
 * 内部负载均衡器

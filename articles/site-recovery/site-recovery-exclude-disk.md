@@ -12,16 +12,21 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 06/05/2017
+ms.date: 10/24/2017
 ms.author: nisoneji
-ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e636065131d0719601a3e834cfc571e94e1abfb7
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 本文介绍如何从复制中排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。 VMware 到 Azure 方案和 Hyper-V 到 Azure 方案支持该功能。
+
+## <a name="supported-scenarios"></a>支持的方案
+**功能** | **VMware 到 Azure** | **Hyper-V 到 Azure** | **Azure 到 Azure**| **Hyper-V 到 Hyper-V** 
+--|--|--|--|--
+排除磁盘 | 是 | 是 | 否 | 否
 
 ## <a name="prerequisites"></a>先决条件
 

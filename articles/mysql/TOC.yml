@@ -105,6 +105,8 @@
       items:
         - name: Azure 门户
           href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
     - name: 连接应用程序
       items:
         - name: 连接字符串

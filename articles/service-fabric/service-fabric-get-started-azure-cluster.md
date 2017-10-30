@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/24/2017
+ms.date: 10/13/2017
 ms.author: ryanwi
-ms.openlocfilehash: de7fa7e6445e6eaf08bdcc8ae812611f20a98c34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: facb9643e0bb848f0ea9aadf447f05af218fdd0f
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="create-your-first-service-fabric-cluster-on-azure"></a>在 Azure 上创建第一个 Service Fabric 群集
 [Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 本快速入门可帮助你在数分钟内通过 [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) 或 [Azure 门户](http://portal.azure.com)创建一个运行在 Windows 或 Linux 上的五节点型群集。  
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="create-the-cluster"></a>创建群集
 
 1. 单击 Azure 门户左上角的“新建”按钮。
-2. 从“新建”边栏选项卡选择“计算”，并从“计算”边栏选项卡选择“Service Fabric 群集”。
+2. 搜索“Service Fabric”，然后从返回的结果中选择“Service Fabric 群集”。  单击“创建” 。
 3. 填充 Service Fabric 的“基本信息”表单。 对于“操作系统”，请选择想要群集节点运行的 Windows 或 Linux 版本。 在此处输入的用户名和密码用于登录到虚拟机。 对于“资源组”，请创建一个新的资源组。 资源组是在其中创建并集中管理 Azure 资源的逻辑容器。 完成后，单击“确定”。
 
     ![群集设置输出][cluster-setup-basics]
@@ -98,83 +98,83 @@ Service Fabric 群集由群集资源本身以及其他 Azure 资源组成。 因
     ![删除资源组][cluster-delete]
 
 
-## <a name="use-azure-powershell-to-deploy-a-secure-windows-cluster"></a>使用 Azure Powershell 部署安全 Windows 群集
+## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 1. 将 [Azure Powershell 模块 4.0 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)下载到计算机上。
 
-2. 打开 Windows PowerShell 窗口，运行以下命令。 
-    
-    ```powershell
-
-    Get-Command -Module AzureRM.ServiceFabric 
-    ```
-
-    此时会看到类似下面的输出。
-
-    ![ps-list][ps-list]
-
-3. 登录到 Azure，选择要创建群集的订阅
+2. 运行 [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/new-azurermservicefabriccluster) cmdlet，创建一个受 X.509 证书保护的五节点型 Service Fabric 群集。 该命令将创建一个自签名证书，并将其上传到新的 Key Vault。 该证书也会复制到本地目录。 设置 *-OS* 参数可选择群集节点上运行的 Windows 或 Linux 的版本。 根据需要自定义参数。 
 
     ```powershell
+    #Provide the subscription Id
+    $subscriptionId = 'yourSubscriptionId'
 
-    Login-AzureRmAccount
-
-    Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
-    ```
-
-4. 运行以下命令，创建安全子网。 不要忘记对参数进行自定义。 
-
-    ```powershell
+    # Certificate variables.
     $certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
-    $RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
-    $RDPuser="vmadmin"
-    $RGname="mycluster" # this is also the name of your cluster
-    $clusterloc="SouthCentralUS"
-    $subname="$RGname.$clusterloc.cloudapp.azure.com"
     $certfolder="c:\mycertificates\"
-    $clustersize=1 # can take values 1, 3-99
 
-    New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+    # Variables for VM admin.
+    $adminuser="vmadmin"
+    $adminpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
+
+    # Variables for common values
+    $clusterloc="SouthCentralUS"
+    $clustername = "mysfcluster"
+    $groupname="mysfclustergroup"       
+    $vmsku = "Standard_D2_v2"
+    $vaultname = "mykeyvault"
+    $subname="$clustername.$clusterloc.cloudapp.azure.com"
+
+    # Set the number of cluster nodes. Possible values: 1, 3-99
+    $clustersize=5 
+
+    # Set the context to the subscription ID where the cluster will be created
+    Login-AzureRmAccount
+    Get-AzureRmSubscription
+    Select-AzureRmSubscription -SubscriptionId $subscriptionId
+
+    # Create the Service Fabric cluster.
+    New-AzureRmServiceFabricCluster -Name $clustername -ResourceGroupName $groupname -Location $clusterloc `
+    -ClusterSize $clustersize -VmUserName $adminuser -VmPassword $adminpwd -CertificateSubjectName $subname `
+    -CertificatePassword $certpwd -CertificateOutputFolder $certfolder `
+    -OS WindowsServer2016DatacenterwithContainers -VmSku $vmsku -KeyVaultName $vaultname
     ```
 
-    此命令可能需要 10 到 30 分钟才能完成，在完成后，会获得类似于以下内容的输出。 可以通过输出了解证书、其所上传到的 KeyVault，以及其所复制到的本地文件夹。 
+    此命令可能需要 10 到 30 分钟才能完成，在完成后，会获得类似于以下内容的输出。 可以通过输出了解证书、其所上传到的 KeyVault，以及其所复制到的本地文件夹。     
 
-    ![ps-out][ps-out]
+3. 复制整个输出，将其保存到一个文本文件，因为需要参阅该文件。 从输出中记下以下信息。 
 
-5. 复制整个输出，将其保存到一个文本文件，因为需要参阅该文件。 从输出中记下以下信息。 
-
-    - **CertificateSavedLocalPath** : c:\mycertificates\mycluster20170504141137.pfx
-    - **CertificateThumbprint** : C4C1E541AD512B8065280292A8BA6079C3F26F10
-    - **ManagementEndpoint** : https://mycluster.southcentralus.cloudapp.azure.com:19080
-    - **ClientConnectionEndpointPort** : 19000
+    - CertificateSavedLocalPath
+    - CertificateThumbprint
+    - ManagementEndpoint
+    - ClientConnectionEndpointPort
 
 ### <a name="install-the-certificate-on-your-local-machine"></a>在本地计算机上安装证书
   
 要连接到群集，需将证书安装到当前用户的“个人(我的)”存储。 
 
-运行以下 PowerShell
+运行以下内容：
 
 ```powershell
+$certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-        -FilePath C:\mycertificates\the name of the cert.pfx `
-        -Password (ConvertTo-SecureString -String certpwd -AsPlainText -Force)
+        -FilePath C:\mycertificates\<certificatename>.pfx `
+        -Password $certpwd
 ```
 
 现在可以连接到安全群集了。
 
 ### <a name="connect-to-a-secure-cluster"></a>连接到安全群集 
 
-运行以下 PowerShell 命令，以便连接到安全群集。 证书详细信息必须与设置群集时使用过的证书匹配。 
+运行 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) cmdlet，以便连接到安全群集。 证书详细信息必须与设置群集时使用过的证书匹配。 
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+Connect-ServiceFabricCluster -ConnectionEndpoint <ManagementEndpoint>:19000 `
           -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
+          -X509Credential -ServerCertThumbprint <CertificateThumbprint> `
+          -FindType FindByThumbprint -FindValue <CertificateThumbprint> `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-
-以下示例显示了完整的参数： 
+以下示例演示了示例参数： 
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mycluster.southcentralus.cloudapp.azure.com:19000 `
@@ -195,11 +195,10 @@ Get-ServiceFabricClusterHealth
 群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。 
 
 ```powershell
-
-Remove-AzureRmResourceGroup -Name $RGname -Force
-
+$groupname="mysfclustergroup"
+Remove-AzureRmResourceGroup -Name $groupname -Force
 ```
-## <a name="use-azure-cli-to-deploy-a-secure-linux-cluster"></a>使用 Azure CLI 部署安全 Linux 群集
+## <a name="use-azure-cli"></a>使用 Azure CLI
 
 1. 在计算机上安装 [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 2. 登录到 Azure，选择要在其中创建群集的订阅。
@@ -207,7 +206,7 @@ Remove-AzureRmResourceGroup -Name $RGname -Force
    az login
    az account set --subscription <GUID>
    ```
-3. 运行 [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) 命令创建安全群集。
+3. 运行 [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) 命令，创建一个受 X.509 证书保护的五节点型 Service Fabric 群集。 该命令将创建一个自签名证书，并将其上传到新的 Key Vault。 该证书也会复制到本地目录。 设置 -os 参数，选择群集节点上运行的 Windows 或 Linux 的版本。 根据需要自定义参数。
 
     ```azurecli
     #!/bin/bash
@@ -260,6 +259,14 @@ ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3392
 ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3393
 ```
 
+### <a name="remove-the-cluster"></a>删除群集
+群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。 
+
+```azurecli
+ResourceGroupName = "aztestclustergroup"
+az group delete --name $ResourceGroupName
+```
+
 ## <a name="next-steps"></a>后续步骤
 设置开发群集以后，可尝试以下操作：
 * [使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)
@@ -273,5 +280,3 @@ ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3393
 [cluster-status]: ./media/service-fabric-get-started-azure-cluster/clusterstatus.png
 [service-fabric-explorer]: ./media/service-fabric-get-started-azure-cluster/sfx.png
 [cluster-delete]: ./media/service-fabric-get-started-azure-cluster/delete.png
-[ps-list]: ./media/service-fabric-get-started-azure-cluster/pslist.PNG
-[ps-out]: ./media/service-fabric-get-started-azure-cluster/psout.PNG

@@ -1,20 +1,20 @@
 ---
-title: "Azure 事件网格的自定义事件 | Microsoft Docs"
-description: "使用 Azure 事件网格发布一个主题，然后订阅该事件。"
+title: "使用 CLI 自定义 Azure 事件网格的事件 | Microsoft Docs"
+description: "使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。"
 services: event-grid
 keywords: 
 author: djrosanova
 ms.author: darosa
-ms.date: 08/15/2017
+ms.date: 10/11/2017
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: cd285471196f75f6a8c8ead0e2895fd71414f223
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d969b44bdfa610b18f3f934b48d987cb1735155f
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
-# <a name="create-and-route-custom-events-with-azure-event-grid"></a>使用 Azure 事件网格创建和路由自定义事件
+# <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>使用 Azure CLI 和事件网格创建和路由自定义事件
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 但在本文中，为简便起见，请将事件发送到仅收集消息的 URL。 请使用名为 [RequestBin](https://requestb.in/) 的第三方开源工具创建该 URL。
 
@@ -117,6 +117,6 @@ az group delete --name gridResourceGroup
 了解如何创建主题和事件订阅以后，即可进一步学习事件网格的功能：
 
 - [关于事件网格](overview.md)
-- [将 Blob 存储事件路由到自定义 Web 终结点（预览）](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+- [将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [通过 Azure 事件网格和逻辑应用监视虚拟机的更改](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)

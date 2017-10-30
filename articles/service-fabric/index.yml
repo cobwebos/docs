@@ -42,7 +42,7 @@ sections:
       - type: paragraph
         text: 了解如何在 Azure 上部署、管理和监视安全的 Web 应用程序
       - type: list
-        style: ordered
+        style: unordered
         items:
           - html: <a href="service-fabric-tutorial-create-dotnet-app">部署 .NET 应用程序</a>
           - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">将现有 .NET 应用程序容器化</a>
@@ -96,7 +96,7 @@ sections:
         className: cardsD
         items:
           - title: 命令行
-            html: <p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="/powershell/module/azurerm.servicefabric">Azure PowerShell</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>
+            html: '<p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl">Service Fabric CLI</a></p><p><a href="/powershell/module/azurerm.servicefabric">Azure PowerShell</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>'
           - title: 语言
             html: <p><a href="/java/api/overview/azure/servicefabric">Java API</a></p><p><a href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p>
           - title: REST

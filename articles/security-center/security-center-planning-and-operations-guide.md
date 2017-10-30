@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2017
+ms.date: 10/18/2017
 ms.author: yurid
-ms.openlocfilehash: 52e421a62fa24a56a077bc030e03c0fed34305fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e243189bc26566f9ca0850e95f98731ba4d97b6
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -121,7 +121,7 @@ Jeff（工作负荷所有者）
 > 
 
 ## <a name="security-policies-and-recommendations"></a>安全策略和建议
-安全策略定义工作负荷的所需配置，用于确保公司或法规方面的安全要求得到遵循。 可以在安全中心定义 Azure 订阅的策略，按照工作负荷的类型或数据的敏感程度对其进行调整。
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 可以在安全中心定义 Azure 订阅的策略，按照工作负荷的类型或数据的敏感程度对其进行调整。
 
 安全中心策略包含以下组件：
 - [数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理预配和数据收集设置。
