@@ -11,16 +11,16 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 06/13/2017
-ms.openlocfilehash: cf536fce8925f9173b541b845af25a8d8c38eabd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d753772adeb9064f391f1e3846de654bdb60facf
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>使用 Azure CLI 设计第一个 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
 > [!div class="checklist"]
-> * 创建 Azure Database for PostgreSQL
+> * 创建 Azure Database for PostgreSQL 服务器
 > * 配置服务器防火墙
 > * 使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
 > * 加载示例数据
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 > * 更新数据
 > * 还原数据
 
-可在浏览器中使用 Azure Cloud Shell，或在自己的计算机上[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)，运行本教程中的代码块。
+可在浏览器中使用 Azure Cloud Shell，或在自己的计算机上[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)，运行本教程中的命令。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -48,7 +48,7 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 使用 [az postgres server create](/cli/azure/postgres/server#create) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 服务器包含作为组进行管理的一组数据库。 
 
-下面的示例使用服务器管理员登录名 `mylogin` 在资源组 `myresourcegroup` 中创建名为 `mypgserver-20170401` 的服务器。 服务器的名称会映射到 DNS 名称，因此该名称在 Azure 中需具有全局级别的唯一性。 用自己的值替换 `<server_admin_password>`。
+下面的示例使用服务器管理员登录名 `mylogin` 在资源组 `myresourcegroup` 中创建名为 `mypgserver-20170401` 的服务器。 服务器的名称映射到 DNS 名称，因此需要在 Azure 中全局唯一。 用自己的值替换 `<server_admin_password>`。
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mypgserver-20170401 --location westus --admin-user mylogin --admin-password <server_admin_password> --performance-tier Basic --compute-units 50 --version 9.6
 ```
@@ -63,7 +63,10 @@ az postgres server create --resource-group myresourcegroup --name mypgserver-201
 
 使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
 
-可以设置覆盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) 为某个 IP 地址范围创建防火墙规则 `AllowAllIps`。 若要开放所有 IP 地址，请使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束地址。
+可以设置涵盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) 创建允许从任何 IP 地址进行连接的防火墙规则 `AllowAllIps`。 若要开放所有 IP 地址，请使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束地址。
+
+若要仅允许从你的网络访问 Azure PostgreSQL 服务器，可以将防火墙规则设置为仅涵盖你公司网络 IP 地址范围。
+
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mypgserver-20170401 --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
@@ -107,7 +110,7 @@ az postgres server show --resource-group myresourcegroup --name mypgserver-20170
 ## <a name="connect-to-azure-database-for-postgresql-database-using-psql"></a>使用 psql 连接到 Azure Database for PostgreSQL 数据库
 如果客户端计算机已安装 PostgreSQL，则可使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 的本地实例，或 Azure 云控制台连接到 Azure PostgreSQL 服务器。 现在，使用 psql 命令行实用工具连接到“用于 PostgreSQL 的 Azure 数据库”服务器。
 
-1. 运行以下 psql 命令连接到 Azure Database for PostgreSQL 服务器
+1. 运行以下 psql 命令连接到 Azure Database for PostgreSQL 数据库：
 ```azurecli-interactive
 psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
 ```
@@ -118,12 +121,12 @@ psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<db
 psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 ---dbname=postgres
 ```
 
-2.  连接到服务器后，在出现提示时创建空数据库。
+2.  连接到服务器后，在出现提示时创建空数据库：
 ```sql
 CREATE DATABASE mypgsqldb;
 ```
 
-3.  出现提示时，请执行以下命令，切换为连接到新建的数据库 mypgsqldb：
+3.  出现提示时，请执行以下命令，将连接切换到新建的数据库 mypgsqldb：
 ```sql
 \c mypgsqldb
 ```
@@ -131,7 +134,7 @@ CREATE DATABASE mypgsqldb;
 ## <a name="create-tables-in-the-database"></a>在数据库中创建表
 现已介绍了如何连接 Azure Database for PostgreSQL，接下来将演示如何完成一些基本任务。
 
-首先，创建表并加载一些数据。 创建一个跟踪清单信息的表。
+首先，创建表并加载一些数据。 创建一个跟踪库存信息的表：
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -145,34 +148,35 @@ CREATE TABLE inventory (
 \dt
 ```
 
-## <a name="load-data-into-the-tables"></a>将数据加载到表
-创建表后，可以向其中插入一些数据。 在打开的命令提示窗口中，运行以下查询来插入几行数据
+## <a name="load-data-into-the-table"></a>将数据加载到表中
+创建表后，可以向其中插入一些数据。 在打开的命令提示符窗口中，运行以下查询插入几行数据：
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
-现已将两行示例数据加载到了之前创建的表中。
+现已将两行示例数据添加到了之前创建的表中。
 
 ## <a name="query-and-update-the-data-in-the-tables"></a>查询和更新表中的数据
-执行以下查询，从数据库表中检索信息。 
+执行以下查询，从库存表中检索信息： 
 ```sql
 SELECT * FROM inventory;
 ```
 
-还可以更新表中的数据
+还可以更新库存表中的数据：
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
-检索数据时行也会相应进行更新。
+检索数据时，可以看到更新后的值：
 ```sql
 SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点
-假设你意外删除了某个表。 这是你不能轻易还原的内容。 借助 Azure Database for PostgreSQL，可返回到任意时间点（基本版为最近 7 天内，标准版为最近 35 天内）并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
+假设你意外删除了某个表。 这是你不能轻易还原的内容。 借助 Azure Database for PostgreSQL，可返回到任意时间点（基本版为 7 天内，标准版为 35 天内）并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 
 
+以下命令将示例服务器还原到添加此表之前的时间点：
 ```azurecli-interactive
 az postgres server restore --resource-group myResourceGroup --name mypgserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mypgserver-20170401
 ```
@@ -193,7 +197,7 @@ az postgres server restore --resource-group myResourceGroup --name mypgserver-re
 ## <a name="next-steps"></a>后续步骤
 本教程介绍如何使用 Azure CLI（命令行接口）以及其他实用工具完成以下任务：
 > [!div class="checklist"]
-> * 创建 Azure Database for PostgreSQL
+> * 创建 Azure Database for PostgreSQL 服务器
 > * 配置服务器防火墙
 > * 使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
 > * 加载示例数据
