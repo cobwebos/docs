@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf078a0cebf3c36d5916035fb5fd7e47d231abe
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言架构
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 10/11/2017
 |表达式|计算|  
 |----------------|----------------|  
 |"@function('Hello')"|调用第一个参数为文本字符串 Hello 的定义的函数成员。|  
-|"@function('It's Cool!')"|调用第一个参数为文本字符串“It's Cool!”的定义的 函数成员|  
+|"@function('It''s Cool!')"|调用第一个参数为文本字符串“It's Cool!”的定义的 函数成员|  
 |"@function().prop1"|返回定义的 `myfunction` 成员的 prop1 属性值。|  
 |"@function('Hello').prop1"|调用第一个参数为文本字符串“Hello”的定义的函数成员，并返回对象的 prop1 属性。|  
 |"@function(parameters('Hello'))"|计算 Hello 参数并将值传递给函数|  

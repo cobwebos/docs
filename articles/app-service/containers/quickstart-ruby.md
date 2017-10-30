@@ -1,6 +1,6 @@
 ---
-title: "使用 Linux 上的 Azure Web 应用创建 Ruby 应用 | Microsoft 文档"
-description: "了解如何使用 Linux 上的 Web 应用创建 Ruby 应用。"
+title: "创建 Ruby 应用并将其部署到 Linux 应用服务 | Microsoft Docs"
+description: "了解如何使用 Linux 应用服务创建 Ruby 应用。"
 keywords: azure app service, linux, oss, ruby
 services: app-service
 documentationcenter: 
@@ -13,18 +13,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/29/2017
+ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 7080a655040918c6cc059023ad3d62389dd6ab71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55ff4dc168ca6f8b2bdbb7c5743515691e8ac92d
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
-# <a name="create-a-ruby-app-with-web-apps-on-linux"></a>使用 Linux 上的 Web 应用创建 Ruby 应用
+# <a name="create-a-ruby-app-in-app-service-on-linux"></a>使用 Linux 应用服务创建 Ruby 应用
 
-[Azure Web 应用](../app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门将介绍如何创建一个基本的 Ruby on Rails 应用程序并将其部署到 Azure 上，以作为 Linux 上的一个 Web 应用程序。
+[Linux 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门将介绍如何创建一个基本的 Ruby on Rails 应用程序并将其部署到 Azure 上，以作为 Linux 上的一个 Web 应用程序。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 * [Ruby 2.4.1 或更高版本](https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller)。
 * [Git](https://git-scm.com/downloads)。
-* 一个[有效的 Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个[有效的 Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -60,7 +60,7 @@ rails server
 ## <a name="modify-app-to-display-welcome-message"></a>修改应用程序以显示欢迎消息
 
 修改应用程序以使其显示欢迎消息。 首先，必须通过修改~/workspace/ruby-docs-hello-world/config/routes.rb 文件使其包含一个名为 `hello` 的路由，来设置路由。
-    
+
   ```ruby
   Rails.application.routes.draw do
       #For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -170,4 +170,4 @@ http://<app name>.azurewebsites.net
 
 ## <a name="next-steps"></a>后续步骤
 
-[Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
+[Linux 上的 Azure 应用服务常见问题解答](https://docs.microsoft.com/azure/app-service-web/app-service-linux-faq.md)

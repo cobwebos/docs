@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/31/2017
-ms.openlocfilehash: 59ac187e50527517c402a5cc2aa871717dde5650
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ebdced6ac748245faed90949fd0e76c0eacb2d3
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL 选项和性能：了解每个定价层提供的功能
 创建 Azure Database for PostgreSQL 服务器时，需确定三个主要选项以配置为该服务器分配的资源。 这些选项会影响服务器的性能和缩放。
@@ -27,9 +27,9 @@ ms.lasthandoff: 10/11/2017
 > [!IMPORTANT]
 > 在服务处于公共预览版状态期间，没有受保证的服务级别协议 (SLA)。
 
-在 Azure Database for PostgreSQL 数据库中可具有一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，还可以创建多个数据库来共享资源。 
+在 Azure Database for PostgreSQL 数据库中可具有一个或多个数据库。 可以选择为每个服务器创建单一数据库来让数据库使用所有服务器资源，也可以创建多个数据库来共享服务器资源。 
 
-## <a name="choose-a-pricing-tier"></a>选择定价层
+## <a name="choose-a-pricing-tier"></a>选择一个定价层
 在预览中，Azure Database for PostgreSQL 提供两个定价层：基本和标准。 高级层尚不可用，但是即将推出。 
 
 下表提供了最适用于不同应用程序工作负荷的定价层的示例。
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="choose-a-performance-level-compute-units"></a>选择性能级别（计算单元）
 为 Azure Database for PostgreSQL 服务器确定了定价层之后，便准备好通过选择所需计算单元数来确定性能级别。 对于对其 Web 和分析型工作负荷需要更高用户并发，并且根据需要进行递增调整的应用程序，良好的起点是 200 或 400 个计算单元。 
 
-计算单元是保证单个 Azure Database for PostgreSQL 服务器可用的 CPU 处理吞吐量的一种度量值。 计算单元是 CPU 和内存资源的混合度量值。  有关详细信息，请参阅[说明计算单元](concepts-compute-unit-and-storage.md)
+计算单元是保证单个 Azure Database for PostgreSQL 服务器可用的 CPU 处理吞吐量的一种度量值。 计算单元是 CPU 和内存资源的混合度量值。  有关详细信息，请参阅[说明计算单元](concepts-compute-unit-and-storage.md)。
 
 ### <a name="basic-pricing-tier-performance-levels"></a>基本定价层性能级别：
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 10/11/2017
 
 每个性能级别中的 IOPS 配置都与所选的定价层和存储大小相关。 基本层不提供 IOPS 保证。 在标准定价层中，IOPS 以固定的 3:1 比率，按比例扩展到最大存储。 所含的 125 GB 存储保证预配 IOPS 为 375，其中每个 IO 的大小最多可达 256 KB。 可以选择最大为 1 TB 的额外存储，以保证 3,000 预配 IOPS。
 
-在 Azure 门户中监视指标图或编写 Azure CLI 命令以度量存储和 IOPS 的消耗。 要监视的相关指标是存储上限、存储百分比、已用存储和 IO 百分比。
+在 Azure 门户中监视指标图或编写 Azure CLI 命令以度量存储和 IOPS 的消耗。 要监视的相关指标是存储空间上限、存储百分比、已用存储空间和 IO 百分比。
 
 >[!IMPORTANT]
 > 在预览中，创建服务器时可选择存储量。 尚不支持更改现有服务器上的存储大小。 
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/11/2017
 
 计算单元的缩放可独立于所选的最大存储大小来进行。
 
-在后台更改数据库的性能级别将在新的性能级别创建原始数据库的副本，然后将连接切换到副本。 在此进程中不会丢失数据。 在我们切换到副本时的短暂瞬间，将禁用与数据库的连接，因此可能回滚某些处于进行状态的事务。 此窗口会有所不同，但平均起伏少于 4 秒，而在超过 99%的情况下为不足 30 秒。 如果有很大数量的事务在连接禁用的瞬间正在进行中，则此窗口停留时间可能会更长。
+在后台更改数据库的性能级别将在新的性能级别创建原始数据库的副本，然后将连接切换到副本。 在此进程中不会丢失数据。 在我们切换到副本时的短暂瞬间，将禁用与数据库的连接，因此可能回滚某些处于进行状态的事务。 此窗口会有所不同，但平均起伏少于 4 秒，而在超过 99% 的情况下为不足 30 秒。 如果有很大数量的事务在连接禁用的瞬间正在进行中，则此窗口停留时间可能会更长。
 
 整个缩放进程的持续时间同时取决于更改前后服务器的大小和定价层。 例如，在标准定价层内更改计算单元的服务器应在几分钟内完成。 更改完成之前不会应用服务器的新属性。
 
