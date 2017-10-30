@@ -16,8 +16,7 @@
 ## 创建应用程序网关
 ### [Azure 门户](application-gateway-create-gateway-portal.md)
 ### [Azure PowerShell](application-gateway-create-gateway-arm.md)
-### [资源管理器模板
-](application-gateway-create-gateway-arm-template.md)
+### [资源管理器模板](application-gateway-create-gateway-arm-template.md)
 ### [Azure CLI](application-gateway-create-gateway-cli.md)
 # 如何
 ## 配置 Web 应用程序防火墙
