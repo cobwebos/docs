@@ -6,13 +6,13 @@ author: samedder
 manager: timlt
 ms.service: service-fabric
 ms.topic: get-started-article
-ms.date: 08/22/2017
+ms.date: 10/20/2017
 ms.author: edwardsa
-ms.openlocfilehash: a938e300b1510a4f5f4eac3bd3d9a8bb728241ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d24c7618c5d53cfe2871d596bfc0fe2cadd5940a
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -32,7 +32,7 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 | CLI 版本   | 支持的运行时版本 |
 |---------------|---------------------------|
-| 最新 (~=2)  | 最新 (~=6.0)            |
+| 最新 (~=3)  | 最新 (~=6.0)            |
 | 1.1.0         | 5.6, 5.7                  |
 
 为 `pip install` 命令添加 `==<version>` 后缀即可选择性地指定要安装的 CLI 的目标版本。 例如，版本 1.1.0 的语法为：
@@ -42,6 +42,8 @@ pip install -I sfctl==1.1.0
 ```
 
 视需要将以下 `pip install` 命令替换为此前提到过的命令。
+
+有关 Service Fabric CLI 版本的详细信息，请参阅 [GitHub 文档](https://github.com/Azure/service-fabric-cli/releases)。
 
 ## <a name="install-pip-python-and-the-service-fabric-cli"></a>安装 pip、Python 和 Service Fabric CLI
 

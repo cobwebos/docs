@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
-ms.openlocfilehash: 5258bf5de6f7aa1ea246f1235e7d362b1b7d0181
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a0f04d79ac5487a347e28445c1a6677d5b8b16a
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>使用 Azure 门户授予对时序见解环境的数据访问权限
 
@@ -42,12 +42,13 @@ Time Series Insights 环境有两个独立的访问策略类型：
 以下步骤演示如何为用户主体授予数据访问权限：
 
 1.  登录到 [Azure 门户](https://portal.azure.com)。
-2.  在 Azure 门户左侧的菜单中，单击“所有资源”。
-3.  选择时序见解环境。
+2.  在搜索窗口中键入“时序”。
+3.  单击时序环境
+4.  从列表中选择时序见解环境。
 
   ![管理时序见解源 - 环境](media/data-access/getstarted-grant-data-access1.png)
 
-4.  选择“数据平面访问”，单击“添加”
+4.  选择“数据访问策略”，然后单击“添加”
 
   ![管理时序见解源 - 添加](media/data-access/getstarted-grant-data-access2.png)
 

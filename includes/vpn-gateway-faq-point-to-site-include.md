@@ -1,3 +1,5 @@
+此常见问题解答适用于使用经典部署模型进行的 P2S 连接。
+
 ### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a>点到站点连接允许使用哪些客户端操作系统？
 
 支持以下客户端操作系统：

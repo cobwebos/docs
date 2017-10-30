@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 601d756e0d6554d8a4db9cc83f6919fc36d1e844
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e84687815ca6f4b031e5f7143ba0079fb053db
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Azure Data Lake Store 上的帐户管理操作（使用 Python）
 > [!div class="op_single_selector"]
@@ -32,9 +32,11 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用 Python 3.6.2。
+* **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+
+* **一个 Azure 资源组**。 有关说明，请参阅[创建 Azure 资源组](../azure-resource-manager/resource-group-portal.md)。
 
 ## <a name="install-the-modules"></a>安装模块
 
@@ -56,7 +58,7 @@ pip install azure-datalake-store
 
 1. 在所选的 IDE 中创建新的 Python 应用程序，例如，**mysample.py**。
 
-2. 添加以下代码片段导入所需的模块
+2. 添加以下代码片段以导入所需的模块
 
     ```
     ## Use this only for Azure AD service-to-service authentication
@@ -92,29 +94,6 @@ pip install azure-datalake-store
 * 有关应用程序的最终用户身份验证，请参阅[使用 Python 通过 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-python.md)。
 * 有关应用程序的服务到服务身份验证，请参阅[使用 Python 通过 Data Lake Store 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-python.md)。
 
-## <a name="create-an-azure-resource-group"></a>创建 Azure 资源组
-
-使用以下代码片段创建 Azure 资源组：
-
-    ## Declare variables
-    subscriptionId= 'FILL-IN-HERE'
-    resourceGroup = 'FILL-IN-HERE'
-    location = 'eastus2'
-    
-    ## Create resource management client object
-    resourceClient = ResourceManagementClient(
-        credentials,
-        subscriptionId
-    )
-    
-    ## Create an Azure Resource Group
-    resourceClient.resource_groups.create_or_update(
-        resourceGroup,
-        ResourceGroup(
-            location=location
-        )
-    )
-
 ## <a name="create-client-and-data-lake-store-account"></a>创建客户端和 Data Lake Store 帐户
 
 下面的代码段首先创建 Data Lake Store 帐户客户端。 它使用客户端对象来创建一个 Data Lake Store 帐户。 最后，此代码段创建一个文件系统客户端对象。
@@ -122,9 +101,11 @@ pip install azure-datalake-store
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
     adlsAccountName = 'FILL-IN-HERE'
+    resourceGroup = 'FILL-IN-HERE'
+    location = 'eastus2'
 
     ## Create data lake store account management client object
-    adlsAcctClient = DataLakeStoreAccountManagementClient(credentials, subscriptionId)
+    adlsAcctClient = DataLakeStoreAccountManagementClient(armCreds, subscriptionId)
 
     ## Create a Data Lake Store account
     adlsAcctResult = adlsAcctClient.account.create(

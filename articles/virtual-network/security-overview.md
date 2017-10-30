@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 98559cbb0acab91c4b2c30c6d0129e955eef85f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c5b5d79a18d8c4d370b1deb506285519fdbfbcf8
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="network-security"></a>网络安全
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 |属性  |说明  |
 |---------|---------|
-|Name|网络安全组中的唯一名称。|
+|名称|网络安全组中的唯一名称。|
 |Priority | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
 |源或目标| 值为“任何”，或者单个 IP 地址、CIDR 块（例如 10.0.0.0/24）、服务标记或应用程序安全组。 详细了解[服务标记](#service-tags)和[应用程序安全组](#application-security-groups)。 指定范围、服务标记或应用程序安全组可以减少创建的安全规则数。 在一个规则中指定多个单独的 IP 地址和范围（不能指定多个服务标记或应用程序组）的功能以预览版提供，称为扩充式安全规则。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能指定多个 IP 地址和 IP 地址范围。|
 |协议     | TCP、UDP 或“任何”，包括 TCP、UDP 和 ICMP。 不能仅指定 ICMP，因此，如果需要 ICMP，则必须使用“任何”。 |
@@ -151,7 +151,10 @@ ms.lasthandoff: 10/11/2017
  
 若要了解创建应用程序安全组以及在安全规则中指定应用程序安全组时的相关限制，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-应用程序安全组以预览版提供。 在使用应用程序安全组之前，必须完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md#powershell)中的步骤 1-5 来注册使用这些功能，并阅读[预览功能](#preview-features)，了解重要信息。 在预览期间，应用程序安全组仅限于虚拟网络范围。 不会应用通过交叉引用对等互连到网络安全组中的应用程序安全组的虚拟网络。 
+应用程序安全组以预览版提供。 在使用应用程序安全组之前，必须完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md#powershell)中的步骤 1-5 来注册使用这些功能，并阅读[预览功能](#preview-features)，了解重要信息。 应用程序安全组具有以下约束：
+
+-   一个应用程序安全组中的所有网络接口必须存在于同一虚拟网络中。 不能向同一应用程序安全组添加来自不同虚拟网络的网络接口。 第一个分配给应用程序安全组的网络接口所在的虚拟网络定义所有后续分配的网络接口必须存在于其中的虚拟网络。
+- 如果在安全规则中将应用程序安全组指定为源和目标，则两个应用程序安全组中的网络接口必须存在于同一虚拟网络中。 例如，如果 ASG1 包含来自 VNet1 的网络接口，ASG2 包含来自 VNet2 的网络接口，则不能在一项规则中将 ASG1 分配为源，将 ASG2 分配为目标，所有网络接口需存在于 VNet1 中。 
 
 预览版功能的可用性和可靠性级别与正式版不同。 在使用应用程序安全组之前，必须先注册使用这些功能。 这些功能仅在以下区域提供：美国中西部。
 

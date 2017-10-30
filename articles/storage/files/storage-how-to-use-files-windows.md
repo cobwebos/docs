@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>在 Windows 中装载 Azure 文件共享并对其进行访问
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows 和 Windows Server 中装载 Azure 文件共享。 本文介绍了三种在 Windows 中装载 Azure 文件共享的不同方式：使用文件资源管理器 UI、通过 PowerShell，以及通过命令提示符。 
@@ -29,7 +29,8 @@ ms.lasthandoff: 10/11/2017
 
 | Windows 版本        | SMB 版本 | 可以在 Azure VM 中装载 | 可以在本地装载 |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows 10<sup>1</sup>  | SMB 3.0 | 是 | 是 |
+| Windows Server 半年通道<sup>1</sup> | SMB 3.0 | 是 | 是 |
+| Windows 10<sup>2</sup>  | SMB 3.0 | 是 | 是 |
 | Windows Server 2016    | SMB 3.0     | 是                   | 是                  |
 | Windows 8.1            | SMB 3.0     | 是                   | 是                  |
 | Windows Server 2012 R2 | SMB 3.0     | 是                   | 是                  |
@@ -37,7 +38,8 @@ ms.lasthandoff: 10/11/2017
 | Windows 7              | SMB 2.1     | 是                   | 否                   |
 | Windows Server 2008 R2 | SMB 2.1     | 是                   | 否                   |
 
-<sup>1</sup>Windows 10 版本 1507、1511、1607、1703 和 1709。
+<sup>1</sup>Windows Server 版本 1709。  
+<sup>2</sup>Windows 10 版本 1507、1607、1703、1709。
 
 > [!Note]  
 > 我们始终建议你使用相对于 Windows 版本来说最新的 KB。

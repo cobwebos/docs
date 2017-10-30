@@ -139,6 +139,7 @@
     - name: 开发
       items:
         - name: DocumentDB API
+          href: documentdb-index.md
           items:
             - name: 资源
               href: documentdb-resources.md
@@ -213,6 +214,7 @@
                 - name: 停用 S1、S2、S3
                   href: performance-levels.md
         - name: MongoDB API
+          href: mongodb-index.md
           items:
             - name: 连接到 MongoDB 帐户
               href: connect-mongodb-account.md

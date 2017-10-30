@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24552ef153f5aa601b2998129a7bbacc8f9da6bf
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>在云中监视本地标识基础结构和同步服务
 Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。 它针对重要的标识组件 - 例如 Active Directory 联合身份验证服务 (AD FS) 服务器、Azure AD Connect 服务器（也称为同步引擎）、Active Directory 域控制器等 - 提供监视功能，以便与 Office 365 和 Microsoft Online Services 建立可靠的连接。它还可以让用户轻松访问有关这些组件的关键数据点，获取使用情况信息和其他重要见解来做出明智的决策。
@@ -27,8 +27,8 @@ Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了�
 
 ![什么是 Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
-随着 Azure AD Connect Health 中的功能日益增多，门户通过标识可重用功能区提供单个仪表板。 可以创建一个更稳健、更健全的集成环境，让用户提高其工作效率。
 
+随着 Azure AD Connect Health 中的功能日益增多，门户通过标识可重用功能区提供单个仪表板。 可以创建一个更稳健、更健全的集成环境，让用户提高其工作效率。
 ## <a name="why-use-azure-ad-connect-health"></a>为何使用 Azure AD Connect Health？
 将本地目录与 Azure AD 集成可以提高用户的工作效率，因为他们可以使用一个通用标识来访问云和本地资源。 但是，这种集成带来的挑战是，必须确保此环境正常运行，才能让用户从任何设备可靠地访问本地和云中的资源。 Azure AD Connect Health 可帮助你监视和深入分析用于访问 Office 365 或其他 Azure AD 应用程序的本地标识基础结构。 这种方法就像在每个本地标识服务器上安装代理那样简单。
 
@@ -40,11 +40,14 @@ Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了�
 * 查看性能数据的趋势，这在规划 AD FS 的容量时非常有用
 * 使用透视图（应用、用户、网络位置等）了解有关 AD FS 登录的使用情况分析数据，这对于了解 AD FS 的使用情况非常有用
 * 针对 AD FS 的报告，例如，使用不当的用户名/密码尝试登录的前 50 个用户和使用的最后一个 IP 地址
+  
+在此处详细了解如何[在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
 
 以下视频概述了适用于 AD FS 的 Azure AD Connect Health。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health--Monitor-you-identity-bridge/player]
 >
+
 >
 
 ## <a name="azure-ad-connect-health-for-syncactive-directory-aadconnect-health-syncmd"></a>[用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
@@ -55,6 +58,8 @@ Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了�
 * 包括延迟图表以不同操作和趋势保持同步的同步操作见解操作如窗体添加的更新、删除
 * 速览有关同步属性以及上次成功导出到 Azure AD 的信息
 * 有关对象级同步错误的报告\(不需要 Azure AD Premium\)
+
+在此处详细了解如何[使用 Azure AD Connect Health 进行同步](active-directory-aadconnect-health-sync.md)
 
 以下视频概述了用于同步的 Azure AD Connect Health。
 
@@ -69,6 +74,8 @@ Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了�
 * 域控制器仪表板，提供对域控制器运行状况和运行状态的快速视图
 * 复制状态仪表板，显示最新复制信息以及指向故障排除指南的链接（检测到错误时）
 * 需要从任何位置快速访问常用性能计数器的性能数据关系图，才能实现故障排除和监视目的
+
+在此处详细了解如何[在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
 
 以下视频概述了用于 AD DS 的 Azure AD Connect Health。
 

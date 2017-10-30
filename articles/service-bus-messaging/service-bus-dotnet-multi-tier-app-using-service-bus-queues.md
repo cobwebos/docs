@@ -12,16 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 754548a0beb4251d0fa4eef1fba73aabf02151ec
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
-## <a name="introduction"></a>介绍
+
 使用 Visual Studio 和免费的 Azure SDK for .NET，可以轻松针对 Microsoft Azure 进行开发。 本教程指导完成创建使用在本地环境中运行的多个 Azure 资源的应用程序的步骤。
 
 学习以下技能：
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/11/2017
 5. 安装完成后，就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
 
 ## <a name="create-a-namespace"></a>创建命名空间
-下一步是创建服务命名空间并获取共享访问签名 (SAS) 密钥。 命名空间为每个通过服务总线公开的应用程序提供应用程序边界。 创建命名空间后，系统将生成一个 SAS 密钥。 命名空间与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
+下一步是创建命名空间并获取该命名空间的[共享访问签名 (SAS) 密钥](service-bus-sas.md)。 命名空间为每个通过服务总线公开的应用程序提供应用程序边界。 创建命名空间后，系统将生成一个 SAS 密钥。 命名空间名称与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 然后单击“确定”。
    
    ![][9]
-3. 在“.NET Framework 4.5”角色中，双击“ASP.NET Web 角色”。
+3. 在“角色”窗格中，双击“ASP.NET Web 角色”。
    
    ![][10]
 4. 将鼠标指针停留在“Azure 云服务解决方案”下的“WebRole1”上，单击铅笔图标，并将 Web 角色重命名为“FrontendWebRole”。 然后单击“确定”。 （请确保输入“Frontend”而不是“FrontEnd”，此处为小写“e”。）
@@ -92,12 +92,12 @@ ms.lasthandoff: 10/11/2017
 5. 从“新建 ASP.NET 项目”对话框的“选择模板”列表中，单击“MVC”。
    
    ![][12]
-6. 仍然在“新建 ASP.NET 项目”对话框中，单击“更改身份验证”按钮。 在“更改身份验证”对话框中，单击“无身份验证”，并单击“确定”。 在本教程中，将部署无需用户登录名的应用。
+6. 仍然在“新建 ASP.NET 项目”对话框中，单击“更改身份验证”按钮。 在“更改身份验证”对话框中，确保已选择“无身份验证”，然后单击“确定”。 在本教程中，将部署无需用户登录名的应用。
    
     ![][16]
 7. 返回到“新建 ASP.NET 项目”对话框，单击“确定”以创建项目。
 8. 在“解决方案资源管理器”的“FrontendWebRole”项目中，右键单击“引用”，并单击“管理 NuGet 包”。
-9. 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。
+9. 单击“浏览”选项卡，然后搜索“WindowsAzure.ServiceBus”。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。
    
    ![][13]
    
@@ -182,12 +182,12 @@ ms.lasthandoff: 10/11/2017
 5. 现在，为前面创建的 `Submit()` 方法创建视图。 在 `Submit()` 方法（不带任何参数的 `Submit()` 的重载函数）中右键单击，并选择“添加视图”。
    
    ![][14]
-6. 此时会显示一个用于创建视图的对话框。 在“模板”列表中，选择“创建”。 在“模型类”列表中，单击“OnlineOrder”类。
+6. 此时会显示一个用于创建视图的对话框。 在“模板”列表中，选择“创建”。 在“模型类”列表中，选择“OnlineOrder”类。
    
    ![][15]
-7. 单击 **“添加”**。
+7. 单击“添加”。
 8. 现在，请更改应用程序的显示名称。 在“解决方案资源管理器”中，双击“views/shared\\_Layout.cshtml”文件以在 Visual Studio 编辑器中将其打开。
-9. 将每一处 **My ASP.NET Application** 替换为 **LITWARE'S Products**。
+9. 将每一处 **My ASP.NET Application** 替换为 **Northwind Traders Products**。
 10. 删除“Home”、“About”和“Contact”链接。 删除突出显示的代码：
     
     ![][28]
@@ -361,9 +361,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Service Bus 的详细信息，请参阅以下资源：  
 
-* [Azure 服务总线文档][sbdocs]  
+* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
+* [服务总线队列入门][sbacomqhowto]
 * [服务总线服务页][sbacom]  
-* [如何使用服务总线队列][sbacomqhowto]  
 
 若要了解有关多层方案的详细信息，请参阅：  
 
@@ -390,7 +390,6 @@ ms.lasthandoff: 10/11/2017
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbdocs]: /azure/service-bus-messaging/  
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: sethm
-ms.openlocfilehash: 3646d14be662af0fdf80790cb53ddc581b33a146
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43064ddbdfec3e2ddae8de8c69f6c03dc7f8f45e
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="2-create-a-topic-using-the-azure-portal"></a>2.使用 Azure 门户创建主题
 
 1. 登录到 [Azure 门户][azure-portal]。
-2. 在门户的左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“更多服务”）。
+2. 在门户左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“更多服务”或“所有资源”）。
 3. 单击要在其中创建主题的命名空间。 此时会显示命名空间概览边栏选项卡：
    
     ![创建主题][createtopic1]

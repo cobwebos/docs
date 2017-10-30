@@ -13,11 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: ashmaka
-ms.openlocfilehash: a22b82829df4659681940267e64c98d345453958
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01be1b14e838c4f1b6f2498111fb8369c2bbb92a
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="query-your-azure-search-index"></a>查询 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -66,4 +66,4 @@ Azure 搜索可轻松对搜索结果进行分页。 使用 `top` 和 `skip` 参�
 
 + 在 Azure 门户中使用[搜索资源管理器](search-explorer.md)。 通过部署[示例索引](search-get-started-portal.md)，使用门户中的工具可在几分钟内查询索引。
 
-+ 使用 [Fiddler](search-fiddler.md) 或 Chrome Postman 将查询提交到已上传到搜索服务的索引。 这两种工具都支持对 HTTP 终结点的 REST 调用。 
++ 使用 Telerik Fiddler 或 Chrome Postman 将查询提交到已上传到搜索服务的索引。 这两种工具都支持对 HTTP 终结点的 REST 调用。 

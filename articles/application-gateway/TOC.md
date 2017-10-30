@@ -14,16 +14,11 @@
 ## [服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # 入门
 ## 创建应用程序网关
-### 面向公众
-#### [Azure 门户](application-gateway-create-gateway-portal.md)
-#### [Azure PowerShell](application-gateway-create-gateway-arm.md)
-#### [资源管理器模板](application-gateway-create-gateway-arm-template.md)
-#### [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md)
-#### [Azure CLI](application-gateway-create-gateway-cli.md)
-#### [Azure PowerShell（经典）](application-gateway-create-gateway.md)
-### 面向内部
-#### [Azure PowerShell](application-gateway-ilb-arm.md)
-#### [Azure PowerShell（经典）](application-gateway-ilb.md)
+### [Azure 门户](application-gateway-create-gateway-portal.md)
+### [Azure PowerShell](application-gateway-create-gateway-arm.md)
+### [资源管理器模板
+](application-gateway-create-gateway-arm-template.md)
+### [Azure CLI](application-gateway-create-gateway-cli.md)
 # 如何
 ## 配置 Web 应用程序防火墙
 ### [Azure 门户](application-gateway-web-application-firewall-portal.md)
@@ -35,9 +30,7 @@
 ## 配置 SSL
 ### [Azure 门户](application-gateway-ssl-portal.md)
 ### [Azure PowerShell](application-gateway-ssl-arm.md)
-### [Azure PowerShell（经典）](application-gateway-ssl.md)
-### [Azure CLI](application-gateway-ssl.md)
-### [端到端](application-gateway-end-to-end-ssl-powershell.md)
+### [Azure CLI](application-gateway-ssl-cli.md)
 ### [SSL 策略](application-gateway-configure-ssl-policy-powershell.md)
 ## 创建基于 URL 路径的路由
 ### [Azure 门户](application-gateway-create-url-route-portal.md)
@@ -53,7 +46,6 @@
 ## 配置运行状况探测
 ### [Azure 门户](application-gateway-create-probe-portal.md)
 ### [Azure PowerShell](application-gateway-create-probe-ps.md)
-### [Azure PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
 ## [Azure 安全中心集成](application-gateway-integration-security-center.md)
 ## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## 故障排除
@@ -69,7 +61,6 @@
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
 ## [REST](https://docs.microsoft.com/rest/api/applicationgateway)
-## [REST（经典）](https://msdn.microsoft.com/library/azure/mt299393)
 # 相关内容
 ## [ExpressRoute](/azure/expressroute/)
 ## [虚拟网络](/azure/virtual-network/)
