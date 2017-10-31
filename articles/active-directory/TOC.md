@@ -208,7 +208,7 @@
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 #### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
-####[在 Azure Active Directory 中隐藏用户体验](active-directory-coreapps-hide-third-party-app.md)
+#### [从用户的体验中隐藏第三方应用](active-directory-coreapps-hide-third-party-app.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
