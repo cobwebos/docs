@@ -240,7 +240,8 @@
 
 ### 部署或删除应用程序
 #### [在本地群集上部署应用程序](service-fabric-get-started-with-a-local-cluster.md)
-#### [Azure Resource Manager](service-fabric-application-arm-resource.md)
+#### 
+            [Azure 资源管理器](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -270,7 +271,8 @@
 #### 创建
 ##### [在 Azure 上创建第一个群集](service-fabric-get-started-azure-cluster.md)
 ##### [Azure 门户](service-fabric-cluster-creation-via-portal.md)
-##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+##### 
+            [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
 #### 缩放
 ##### [手动](service-fabric-cluster-scale-up-down.md)
 ##### [以编程方式](service-fabric-cluster-programmatic-scaling.md)
@@ -358,6 +360,7 @@
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
+## [服务模型 XML 架构](service-fabric-service-model-schema.md)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
