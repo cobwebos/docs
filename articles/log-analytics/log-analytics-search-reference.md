@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 10/11/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc9c9b0a6292dab256997a86a6db16367fc48cd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 264ea071dc0b15964af07c68cbf0dee896b07a3e
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="log-analytics-search-reference"></a>Log Analytics 搜索参考
 
 >[!NOTE]
-> 本文介绍 Log Analytics 中使用当前查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新语言的语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。
+> 本文介绍 Log Analytics 中使用旧查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新语言的语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。
 
 以下有关搜索语言的参考部分介绍常规查询语法选项，可用于搜索数据和筛选表达式，以帮助缩小搜索范围。 另外还介绍了可用于对检索到的数据执行操作的命令。
 

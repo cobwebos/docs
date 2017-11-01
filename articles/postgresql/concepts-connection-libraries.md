@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 35b7f026aa05fb16d57f49b93edff831b43268db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7d6f13336b3913299433e25c69a41f8c94f598b2
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的连接库
 本主题列出了几个库和驱动程序，开发人员在对应用程序编程以连接和查询 Azure Database for PostgreSQL 时，可使用这些库和驱动程序。
@@ -37,4 +37,4 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 阅读这些快速入门，了解如何使用所选语言连接和查询 Azure Database for PostgreSQL：
 
-[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)
+[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)

@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d0c6523b4d90c29781d256b2882b0935b50e2af9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5eea1baed550d5231c54f2ebc7b48169f58e64c5
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
 Microsoft Azure 正在不断集结各种集成的公有云服务，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。  Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  Azure 允许根据客户端所需的任何规模，随时扩展和缩减解决方案。
@@ -41,7 +41,7 @@ Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“�
 用户还可以按 Azure 区域在一个存储帐户中管理自定义映像，并使用这些映像在同一订阅中创建数百台 VM。 有关托管磁盘的详细信息，请参阅[托管磁盘概述](../windows/managed-disks-overview.md)。
 
 ## <a name="azure-virtual-machines--instances"></a>Azure 虚拟机和实例
-Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。  可以在 Azure 应用商店中找到 Red Hat Enterprise、CentOS、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 我们积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)列表添加更多成员。
+Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。  可以在 Azure Marketplace 中找到 Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 我们积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)列表添加更多成员。
 
 如果首选的 Linux 分发版目前不在库中，可以通过[在 Azure 中创建和上传 Linux VHD](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 来“自带 Linux”VM。
 

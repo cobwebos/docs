@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3325aa48db36426a8cf1c9859390c357267ee5fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c43d6bcd62690fe41599888b06ee9828c8e40fc0
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -294,8 +294,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 在上述声明中，
 
-- `$<domain>` 是 AD FS 服务 URL
-- `<verified-domain-name>` 是一个占位符，需要将其替换为 Azure AD 中已验证域名之一
+- `<verified-domain-name>` 是一个占位符，需要将其替换为 Azure AD 中已验证域名之一。 例如，值 =“http://contoso.com/adfs/services/trust/”
 
 
 

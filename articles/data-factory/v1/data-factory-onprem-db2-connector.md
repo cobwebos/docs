@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/17/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eacecb9f084ead76633cf802751d3a603cb2f0d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 727041edf457ef55a39eb91ba2369c163f5b4712
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/11/2017
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| **类型** |必须将此属性设置为 **OnPremisesDB2**。 |是 |
+| **类型** |必须将此属性设置为 **OnPremisesDb2**。 |是 |
 | **server** |DB2 服务器的名称。 |是 |
 | **database** |DB2 数据库的名称。 |是 |
 | **schema** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
@@ -110,11 +110,7 @@ ms.lasthandoff: 10/11/2017
 | **query** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
 
 > [!NOTE]
-> 架构和表名称区分大小写。 在查询语句中，应使用 ""（双引号）括住属性名称。 例如：
->
-> ```sql
-> "query": "select * from "DB2ADMIN"."Customers""
-> ```
+> 架构和表名称区分大小写。 在查询语句中，应使用 ""（双引号）括住属性名称。
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON 示例：将数据从 DB2 复制到 Azure Blob 存储
 本示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 本示例演示了如何将数据从 DB2 数据库复制到 Azure Blob 存储。 但是，可以使用 Azure 数据工厂复制活动将数据复制到[任何受支持的数据存储接收器类型](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。

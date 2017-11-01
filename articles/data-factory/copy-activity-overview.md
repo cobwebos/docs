@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 784b9489911be0d9a559b6fe7795a6c2cbdb09fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 037cd8ac0065adc7572f7a60bac019c05a6e308a
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="syntax"></a>语法
 
-以下复制活动模板列出了详细的受支持属性。 指定适合你的方案的属性。
+以下复制活动模板包含受支持属性的详尽列表。 指定适合你的方案的属性。
 
 ```json
 "activities":[
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/11/2017
             "translator":
             {
                 "type": "TabularTranslator",
-                "ColumnMappings": "<column mapping>"
+                "columnMappings": "<column mapping>"
             },
             "cloudDataMovementUnits": <number>,
             "parallelCopies": <number>,

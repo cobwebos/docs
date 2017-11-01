@@ -1,11 +1,11 @@
 ---
-title: "用于容器的 Azure Web 应用的持续部署 | Microsoft Docs"
-description: "如何在用于容器的 Azure Web 应用中设置连续部署。"
-keywords: azure app service, linux, oss, acr
+title: "使用用于容器的 Web 应用从 Docker 容器注册表进行持续部署 - Azure | Microsoft Docs"
+description: "如何在用于容器的 Web 应用中设置从 Docker 容器注册表进行的持续部署。"
+keywords: "azure 应用服务, linux, docker, acr,oss"
 services: app-service
 documentationcenter: 
 author: ahmedelnably
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.service: app-service
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: 27a2c95c09197b3439d3fac7c74d253df2b32b1c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cccbd4952c66d3d8140e2a03e3b76afaa5ba3fbf
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="continuous-deployment-with-azure-web-app-for-containers"></a>使用用于容器的 Azure Web 应用进行持续部署
+# <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
 
-在本教程中，通过托管 [Azure 容器注册表](https://azure.microsoft.com/en-us/services/container-registry/)存储库或 [Docker 中心](https://hub.docker.com)为自定义容器映像配置持续部署。
+在本教程中，通过托管 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)存储库或 [Docker 中心](https://hub.docker.com)为自定义容器映像配置持续部署。
 
-## <a name="step-1---sign-in-to-azure"></a>步骤 1 - 登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 http://portal.azure.com 登录到 Azure 门户
+登录到 [Azure 门户](https://portal.azure.com)
 
-## <a name="step-2---enable-container-continuous-deployment-feature"></a>步骤 2 - 启用容器连续部署功能
+## <a name="enable-container-continuous-deployment-feature"></a>启用容器持续部署功能
 
-你可以使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) 并执行以下命令来启用连续部署功能
+你可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并执行以下命令来启用连续部署功能
 
 ```azurecli-interactive
 az webapp deployment container config -n sname -g rgname -e true
-``` 
+```
 
 在 [Azure 门户](https://portal.azure.com/)中，单击页面左侧的“应用服务”选项。
 
@@ -45,13 +45,13 @@ az webapp deployment container config -n sname -g rgname -e true
 
 ![插入应用设置的图像](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
-## <a name="step-3---prepare-webhook-url"></a>步骤 3 - 准备 Webhook URL
+## <a name="prepare-webhook-url"></a>准备 Webhook URL
 
-你可以使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) 并执行以下命令来获取 Webhook URL
+你可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并执行以下命令来获取 Webhook URL
 
 ```azurecli-interactive
 az webapp deployment container show-cd-url -n sname1 -g rgname
-``` 
+```
 
 对于 Webhook URL，需要使用以下终结点：`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`。
 
@@ -59,7 +59,7 @@ az webapp deployment container show-cd-url -n sname1 -g rgname
 
 ![插入“添加 webhook 2”的图像](./media/app-service-webapp-service-linux-ci-cd/step3-3.png)
 
-## <a name="step-4---add-a-web-hook"></a>步骤 4 - 添加 Webhook
+## <a name="add-a-web-hook"></a>添加 Webhook
 
 ### <a name="azure-container-registry"></a>Azure 容器注册表
 
@@ -85,10 +85,10 @@ az webapp deployment container show-cd-url -n sname1 -g rgname
 
 ## <a name="next-steps"></a>后续步骤
 
-* [什么是用于容器的 Azure Web 应用？](./app-service-linux-intro.md)
-* [Azure 容器注册表](https://azure.microsoft.com/en-us/services/container-registry/)
-* [在用于容器的 Azure Web 应用中使用 .NET Core](quickstart-dotnetcore.md)
-* [在用于容器的 Azure Web 应用中使用 Ruby](quickstart-ruby.md)
-* [如何对用于容器的 Azure Web 应用使用自定义 Docker 映像](quickstart-custom-docker-image.md)
-* [用于容器的 Azure 应用服务 Web 应用常见问题解答](./app-service-linux-faq.md) 
+* [什么是 Linux 上的 Azure 应用服务？](./app-service-linux-intro.md)
+* [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)
+* [在 Linux 上的 Azure 应用服务中使用 .NET Core](quickstart-dotnetcore.md)
+* [在 Linux 上的 Azure 应用服务中使用 Ruby](quickstart-ruby.md)
+* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-custom-docker-image.md)
+* [用于容器的 Azure 应用服务 Web 应用常见问题解答](./app-service-linux-faq.md)
 * [使用 Azure CLI 2.0 管理用于容器的 Web 应用](./app-service-linux-cli.md)

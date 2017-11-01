@@ -14,16 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 37436f7be4f09c14febef6174faf956fa07255ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf7b0dd3a81c35be4907dbba85b72ce4f87e3a9f
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
-# <a name="specifying-volume-plugins-and-logging-drivers-for-your-container"></a>为容器指定卷插件和日志记录驱动程序
+# <a name="using-volume-plugins-and-logging-drivers-in-your-container"></a>在容器中使用卷插件和日志记录驱动程序
 
-Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)和 [Docker 日志记录驱动程序](https://docs.docker.com/engine/admin/logging/overview/)。 如以下清单所示，应用程序清单中指定了这些插件：
+Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)和 [Docker 日志记录驱动程序](https://docs.docker.com/engine/admin/logging/overview/)。 
 
+## <a name="install-volumelogging-driver"></a>安装卷/日志记录驱动程序
+
+如果计算机上未安装 Docker 卷/日志记录驱动程序，请通过 RDP/SSH 连接到计算机手动安装它或通过 VMSS 启动脚本安装。 例如，若要安装 Docker 卷驱动程序，请通过 SSH 连接到该计算机并执行：
+
+```bash
+docker plugin install --alias azure --grant-all-permissions docker4x/17.09.0-ce-azure1  \
+    CLOUD_PLATFORM=AZURE \
+    AZURE_STORAGE_ACCOUNT="[MY-STORAGE-ACCOUNT-NAME]" \
+    AZURE_STORAGE_ACCOUNT_KEY="[MY-STORAGE-ACCOUNT-KEY]" \
+    DEBUG=1
+```
+
+## <a name="specify-the-plugin-or-driver-in-the-manifest"></a>在清单中指定插件或驱动程序
+如以下清单所示，应用程序清单中指定了这些插件：
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -44,7 +58,7 @@ Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs.docke
         </LogConfig>
         <Volume Source="c:\workspace" Destination="c:\testmountlocation1" IsReadOnly="false"></Volume>
         <Volume Source="d:\myfolder" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
-        <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azurefile" IsReadOnly="true">
+        <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azure" IsReadOnly="true">
            <DriverOption Name="share" Value="models"/>
         </Volume>
        </ContainerHostPolicies>

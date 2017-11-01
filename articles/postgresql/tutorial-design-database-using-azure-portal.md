@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.openlocfilehash: 2aa9d10749b54537495ad3e09566c43718f67a9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f1c8241d0d7e68abd175c7c1c3b023d18b24a68
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>使用 Azure 门户设计第一个 Azure Database for PostgreSQL
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
 
 本教程介绍如何使用 Azure 门户完成以下操作：
 > [!div class="checklist"]
-> * 创建 Azure Database for PostgreSQL
+> * 创建 Azure Database for PostgreSQL 服务器
 > * 配置服务器防火墙
 > * 使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
 > * 加载示例数据
@@ -54,7 +54,7 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
     - PostgreSQL 版本
 
   > [!IMPORTANT]
-  > 在此处指定的服务器管理员登录名和密码是你以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。
+  > 此处指定的服务器管理员登录名和密码是以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。
 
 4.  单击“定价层”为新数据库指定服务层和性能级别。 对于此快速入门，选择“基本”层、“50 个计算单元”，以及“50 GB”存储空间。
  ![用于 PostgreSQL 的 Azure 数据库 - 选择服务层](./media/tutorial-design-database-using-azure-portal/2-service-tier.png)
@@ -71,18 +71,18 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
 
-“用于 PostgreSQL 的 Azure 数据库”服务会在服务器级别创建防火墙。 除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。 
+“用于 PostgreSQL 的 Azure 数据库”服务会在服务器级别创建防火墙。 默认情况下，除非创建了防火墙规则来为特定 IP 地址范围打开防火墙，否则此防火墙会阻止所有外部应用程序和工具连接到服务器和服务器上的任何数据库。 
 
 1.  部署完成后，请单击左侧菜单中的“所有资源”，并键入名称 **mypgserver-20170401** 来搜索新创建的服务器。 单击搜索结果中列出的服务器名称。 服务器的“概述”页面随即打开，其中提供了用于进一步配置的选项。
  
  ![用于 PostgreSQL 的 Azure 数据库 - 搜索服务器 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2.  在服务器边栏选项卡中，选择“连接安全性”。 
-3.  单击“规则名称”下的文本框，添加新的防火墙规则，将连接的 IP 范围加入允许列表。 本教程中允许所有 IP，方法是键入“规则名称 = AllowAllIps”，“起始 IP = 0.0.0.0”，“结束 IP = 255.255.255.255”，并单击“保存”。 可以设置覆盖某个 IP 范围的防火墙规则，以便能通过网络连接。
+3.  单击“规则名称”下的文本框，添加新的防火墙规则，将连接的 IP 范围加入允许列表。 本教程中允许所有 IP，方法是键入“规则名称 = AllowAllIps”，“起始 IP = 0.0.0.0”，“结束 IP = 255.255.255.255”，并单击“保存”。 可以设置涵盖较小 IP 范围的特定防火墙规则，以便通过网络进行连接。
  
  ![用于 PostgreSQL 的 Azure 数据库 - 创建防火墙规则](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
-4.  单击“保存”，并单击“X”以关闭“连接安全性”页面。
+4.  单击“保存”，并单击“X”以关闭“连接安全性”页。
 
   > [!NOTE]
   > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 5432。
@@ -105,7 +105,7 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
 
 ## <a name="connect-to-postgresql-database-using-psql-in-cloud-shell"></a>在 Cloud Shell 中使用 psql 连接到 PostgreSQL 数据库
 
-现在，使用 psql 命令行实用工具连接到“用于 PostgreSQL 的 Azure 数据库”服务器。 
+现在，使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 命令行实用工具连接到 Azure Database for PostgreSQL 服务器。 
 1. 通过顶部导航窗格中的终端图标启动 Azure Cloud Shell。
 
    ![用于 PostgreSQL 的 Azure 数据库 - Azure Cloud Shell 终端图标](./media/tutorial-design-database-using-azure-portal/7-cloud-shell.png)
@@ -153,34 +153,34 @@ CREATE TABLE inventory (
 ```
 
 ## <a name="load-data-into-the-tables"></a>将数据加载到表
-创建表后，可以向其中插入一些数据。 在打开的命令提示窗口中，运行以下查询来插入几行数据
+创建表后，可以向其中插入一些数据。 在打开的命令提示窗口中，运行以下查询来插入几行数据。
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
-现已将两行示例数据加载到了之前创建的表中。
+现已将两行示例数据添加到了之前创建的库存表中。
 
 ## <a name="query-and-update-the-data-in-the-tables"></a>查询和更新表中的数据
-执行以下查询，从数据库表中检索信息。 
+执行以下查询，从库存数据库表中检索信息。 
 ```sql
 SELECT * FROM inventory;
 ```
 
-还可以更新表中的数据
+还可以更新表中的数据。
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
-检索数据时行也会相应进行更新。
+检索数据时，可以看到更新后的值。
 ```sql
 SELECT * FROM inventory;
 ```
 
 ## <a name="restore-data-to-a-previous-point-in-time"></a>将数据还原到之前的时间点
-假设意外删除了此表。 这种情况无法轻易还原。 借助 Azure Database for PostgreSQL，可返回到任意时间点（基本版为最近 7 天内，标准版为最近 35 天内）并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
+假设意外删除了此表。 这种情况无法轻易还原。 借助 Azure Database for PostgreSQL，可返回到任意时间点（基本版为最近 7 天内，标准版为最近 35 天内）并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将 **mypgserver-20170401** 服务器还原到添加库存表之前的时间点。
 
-1.  在服务器的 Azure Database for PostgreSQL 页中，单击工具栏上的“还原”。 将打开“还原”页面。
+1.  在服务器的 Azure Database for PostgreSQL“概述”页中，单击工具栏上的“还原”。 将打开“还原”页面。
   ![Azure 门户 - 还原窗体选项](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
 2.  使用必需信息填充“还原”窗体：
 
@@ -189,12 +189,12 @@ SELECT * FROM inventory;
   - 目标服务器：提供一个要还原到的新服务器名称
   - 位置：不能选择区域，此区域默认与源服务器相同
   - 定价层：还原服务器时不能更改此值。 此值与源服务器相同。 
-3.  单击“确定”，将服务器[还原到删除这些表之前的时间点](./howto-restore-server-portal.md)。 将服务器还原到不同的时间点，在指定时间点（前提是在[服务层](./concepts-service-tiers.md)保留时间段内）创建原始服务器的一个备份新服务器。
+3.  单击“确定”，将服务器[还原到删除该表之前的时间点](./howto-restore-server-portal.md)。 将服务器还原到不同的时间点，在指定时间点（前提是在[服务层](./concepts-service-tiers.md)保留时间段内）创建原始服务器的一个备份新服务器。
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍如何使用 Azure 门户和其他实用工具完成以下操作：
 > [!div class="checklist"]
-> * 创建 Azure Database for PostgreSQL
+> * 创建 Azure Database for PostgreSQL 服务器
 > * 配置服务器防火墙
 > * 使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
 > * 加载示例数据
@@ -202,4 +202,4 @@ SELECT * FROM inventory;
 > * 更新数据
 > * 还原数据
 
-接下来了解如何使用 Azure CLI 执行类似的任务，请查看本教程：[使用 Azure CLI 设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-cli.md)
+接下来了解如何使用 Azure CLI 执行类似的任务，请查看此教程：[使用 Azure CLI 设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-cli.md)

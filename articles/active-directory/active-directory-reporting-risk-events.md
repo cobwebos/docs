@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a454199137f8ccc99ddbef66758fd1cabd8fd486
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -29,10 +29,9 @@ ms.lasthandoff: 10/11/2017
 - [具有已泄漏凭据的用户](#leaked-credentials) 
 - [从匿名 IP 地址登录](#sign-ins-from-anonymous-ip-addresses) 
 - [不可能前往异常位置](#impossible-travel-to-atypical-locations) 
-- [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations)
 - [从受感染的设备登录](#sign-ins-from-infected-devices) 
 - [从具有可疑活动的 IP 地址登录](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-
+- [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations)（**Azure Active Directory Premium P2** 版本独有）
 
 ![风险事件](./media/active-directory-reporting-risk-events/91.png)
 

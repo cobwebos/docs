@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 7e05c469260a445578c80cdf77fab2d5ffb48022
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 771741fd7da8c9b6932851851aaca148f9596643
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory 传递身份验证：智能锁定
 
@@ -42,6 +42,9 @@ Azure AD 可防止密码搜索攻击，并防止在 Office 365 和 SaaS 应用�
 
 1.  Azure AD 的锁定阈值“小于”AD 的帐户锁定阈值。 建议设置值，使 AD 的帐户锁定阈值至少是 Azure AD 的锁定阈值的二或三倍。
 2.  Azure AD 的锁定持续时间（以秒表示）“长于”AD 的在此后重置帐户锁定计数器的时间（以分钟表示）。
+
+>[!IMPORTANT]
+>目前，如果用户的云帐户已被智能锁定功能锁定，管理员无法为其解锁。 他们必须等到锁定持续时间到期。
 
 ## <a name="verify-your-ad-account-lockout-policies"></a>验证 AD 帐户锁定策略
 

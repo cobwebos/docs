@@ -1,6 +1,6 @@
 ---
 title: "跨扩展云数据库（横向分区）进行报告 | Microsoft 文档"
-description: "如何使用跨数据库数据库查询"
+description: "使用跨数据库数据库查询跨多个数据库进行报告。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: mlandzic
-ms.openlocfilehash: 8eb56d44c3a261f6325d4fc91f169d09bf108160
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb5c39a600fb55dffc342535386f8049c9f4ca5a
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 可以使用[弹性查询](sql-database-elastic-query-overview.md)从单个连接点中的多个 Azure SQL 数据库中创建报告。 数据库必须进行横向分区（也称为“分片”）。

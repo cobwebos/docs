@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 668fc5ae4f964bd776904c3a9dbc2b203689d50c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a3d9c2c08a3b23530ab772e5f0532ac2f9dcc9a3
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>教程：Azure Active Directory 与 Skillport 集成
 
@@ -110,20 +110,23 @@ ms.lasthandoff: 10/11/2017
 
     ![配置单一登录](./media/active-directory-saas-skillport-tutorial/tutorial_skillport_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    a. 在“登录 URL”文本框中，键入 URL：
       
-      欧盟数据中心：`https://<subdomain>.skillport.eu`
+      欧盟数据中心：`https://adfs.skillport.eu`
    
-      美国数据中心：`https://<subdomain>.skillport.com`
-   
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：
-    
-      欧盟数据中心：`https://<subdomain>.skillport.eu/adfs/ls/`
-    
-      美国数据中心：`https://<subdomain>.skillport.com/sp/ACS.saml2`
+      美国数据中心：`https://sso.skillport.com`
 
-    > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Skillport 客户端支持团队](https://www.skillsoft.com/contact.asp)获取这些值。
+    b. 在“标识符”文本框中，键入 URL：
+      
+      欧盟数据中心：`http://adfs.skillport.eu/adfs/services/trust`
+   
+      美国数据中心：`https://sso.skillport.com`
+   
+    c. 在“回复 URL”文本框中，键入 URL：
+    
+      欧盟数据中心：` https://adfs.skillport.eu/adfs/ls/`
+    
+      美国数据中心：`https://sso.skillport.com/sp/ACS.saml2`
  
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 

@@ -15,15 +15,15 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 855b8c643bf2a742e763bda2e2c21c6a86331aac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c54dcd1869af0c5f3aac69bbd20d23b79ca669cf
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>从本地 Git 存储库创建 Web 应用并部署代码
 
-此示例脚本使用其相关资源，在应用服务中创建 Web 应用，并在本地 Git 存储库中部署 Web 应用代码。
+此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后从本地 Git 存储库部署 Web 应用代码。
 
 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzureRmAccount` 创建与 Azure 的连接。 此外，需将应用程序代码提交到本地 Git 存储库。
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 1372a9e05cb47f6c68240bffccd46b0fbebb5464
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0117398a1ad2a8519f50732d173bec9fbb7411b5
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>有关 Azure VM 备份服务的问题
 本文提供常见问题的解答，有助于快速了解 Azure VM 备份组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -28,17 +28,17 @@ ms.lasthandoff: 10/11/2017
 ### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>恢复服务保管库是支持基于经典 VM 还是支持基于 Resource Manager 的 VM？ <br/>
 恢复服务保管库同时支持这两种模式。  可以将经典 VM（在经典门户中创建的）或 Resource Manager VM（在 Azure 门户中创建的）备份到恢复服务保管库。
 
-### <a name="what-configurations-are-not-supported-by-azure-vm-backup-"></a>Azure VM 备份不支持哪些配置？
+### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Azure VM 备份不支持哪些配置？
 请参阅[支持的操作系统](backup-azure-arm-vms-prepare.md#supported-operating-system-for-backup)和 [VM 备份限制](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>为什么在配置备份向导中看不到我的 VM？
 在配置备份向导中，Azure 备份只列出符合以下条件的 VM：
-* 尚未进行保护 - 可以验证 VM 的备份状态，方法是：转到 VM 边栏选项卡，在其中的“设置”菜单中查看备份状态。 详细了解如何[查看 VM 的备份状态](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)
-* 与 VM 属于同一区域
+  * 尚未进行保护 - 可以验证 VM 的备份状态，方法是：转到 VM 边栏选项卡，从“设置”菜单查看备份状态。 详细了解如何[查看 VM 的备份状态](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)
+  * 与 VM 属于同一区域
 
 ## <a name="backup"></a>备份
 ### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>按需备份作业是否与计划内备份遵循相同的保留计划？
-否。 需为按需备份作业指定保留期。 默认情况下，在从门户触发时，该作业会保留 30 天。 
+不能。 应为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。 
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
 需提供 Azure 备份服务访问 Key Vault 所需的权限。 可以在 PowerShell 中使用 [PowerShell](backup-azure-vms-automation.md) 文档的“启用备份”部分所述步骤提供这些权限。
@@ -46,17 +46,20 @@ ms.lasthandoff: 10/11/2017
 ### <a name="i-migrated-disks-of-a-vm-to-managed-disks-will-my-backups-continue-to-work"></a>我将 VM 的磁盘迁移到了托管磁盘。 我的备份是否继续有效？
 是的，备份可以无缝工作，无需重新配置备份。 
 
+### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>我的 VM 已关闭。 按需备份或计划备份会运行吗？
+是的。 即使计算机已关闭，备份也会运行，恢复点将标记为崩溃一致。 有关更多详细信息，请参阅[此文](backup-azure-vms-introduction.md#how-does-azure-back-up-virtual-machines)中的数据一致性部分
+
 ## <a name="restore"></a>还原
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>如何决定是进行磁盘还原，还是进行完整的 VM 还原？
-可以将 Azure 的完整 VM 还原视为已还原 VM 的一种快速创建选项。 “还原 VM”选项会更改磁盘名称、磁盘所用容器、公共 IP 地址、网络接口名称，确保在 VM 创建过程中创建的资源的唯一性。另外，它不会将 VM 添加到可用性集。 
+可以将 Azure 的完整 VM 还原视为一种快速创建选项。 “还原 VM”选项会更改磁盘名称、这些磁盘使用的容器、公共 IP 地址和网络接口名称。 需要更改，才能保持 VM 创建期间创建的资源的唯一性。 但它不会将 VM 添加到可用性集。 
 
 “还原磁盘”可以用于：
-* 自定义根据时间点配置创建的 VM，例如更改备份配置中的大小
-* 添加在备份时不存在的配置 
-* 控制所要创建资源的命名约定
-* 将 VM 添加到可用性集
-* 提供只能通过 PowerShell/声明性模板定义实现的任何配置
+  * 自定义根据时间点配置创建的 VM，例如更改大小
+  * 添加在备份时不存在的配置 
+  * 控制所要创建资源的命名约定
+  * 将 VM 添加到可用性集
+  * 适用于只能通过 PowerShell/声明性模板定义实现的任何其他配置
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>在 VM 上更改备份策略时，会发生什么情况？
-在 VM 上应用新策略时，将遵循新策略的计划和保留期。 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。 如果缩短保留期，则会将其标记为在下一清理作业中删除，然后就会将其删除。 
+在 VM 上应用新策略时，将遵循新策略的计划和保留期。 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。 如果缩短保留期，则会将其标记为在下一清理作业中删除，随后会将其删除。 

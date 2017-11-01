@@ -12,19 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 10/23/2017
 ms.author: byvinyal
-ms.openlocfilehash: 54c0c5050c812c2a59631541d94c553974acd2f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fbd308e9f037038ad867f3d242da6573bc67081
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Azure App Service 静态 IP 限制 #
 
 通过 IP 限制，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。
 
 从客户端生成应用请求时，将根据允许列表评估 IP 地址。 如果 ip 地址不在该列表中，则应用以 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
+
+在应用在运行时使用的 web.config 中定义 IP 限制。 在某些情况下，可能会在 HTTP 管道中的 IP 限制逻辑之前执行一些模块。 在此情况下，请求会失败并显示不同的 HTTP 错误代码。
 
 IP 限制是在分配给应用的同一应用服务计划实例上进行评估的。
 

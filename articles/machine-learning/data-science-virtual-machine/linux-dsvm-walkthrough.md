@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev;paulsh
-ms.openlocfilehash: 0decb8918a544114316569720aa5deede692d5f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 650b11d66f3ca32266b9842af77c909e125b4e4d
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松向上扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -32,7 +32,8 @@ ms.lasthandoff: 10/11/2017
 
 * **Azure 订阅帐户**。 如果没有，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 * [**Linux 数据科学 VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关预配此 VM 的信息，请参阅[预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)。
-* 计算机上安装了 [X2Go](http://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 若要深入了解安装和配置 **X2Go 客户端**的方法，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#installing-and-configuring-x2go-client)。 
+* 计算机上安装了 [X2Go](http://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 若要深入了解安装和配置 **X2Go 客户端**的方法，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#installing-and-configuring-x2go-client)。
+* 为了获得更平滑的滚动体验，请在 VM FireFox 浏览器中切换 about:config 中的 gfx.xrender.enabled 标志。 [在此处了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 另请考虑将 *mousewheel.enable_pixel_scrolling* 切换为 False。 请参阅[此处的说明](https://support.mozilla.org/en-US/questions/981140)。
 * **AzureML 帐户**。 如果还没有帐户，请在 [AzureML 主页](https://studio.azureml.net/)中注册一个新帐户。 里面有免费的使用等级可帮助用户开始使用。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集

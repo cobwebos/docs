@@ -1,6 +1,6 @@
 ---
 title: "创建并管理 Azure SQL 服务器和数据库 | Microsoft Docs"
-description: "了解 Azure SQL 数据库服务器和数据库概念，以及如何使用 Azure 门户、PowerShell、Azure CLI、Transact-SQL 和 REST API 创建并管理服务器和数据库。"
+description: "了解 Azure SQL 数据库服务器和数据库的概念，以及如何创建和管理服务器和数据库。"
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: dbc01dac6cf31916bef1cba9432e5653751dc625
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 345a3bf0ff417b35c2abaa26352cff3359997544
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 

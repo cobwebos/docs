@@ -3,7 +3,7 @@ title: "在 Azure Functions 中使用代理 | Microsoft Docs"
 description: "有关如何使用 Azure Functions 代理的概述"
 services: functions
 documentationcenter: 
-author: mattchenderson
+author: alexkarcher-msft
 manager: cfowler
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
-ms.author: mahender
-ms.openlocfilehash: 63119978c59186a71e7e30438e8e37c0b2e1b454
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: alkarche
+ms.openlocfilehash: d201c8395adf47fa3d9f790b77b1d29dda5a0aeb
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="work-with-azure-functions-proxies-preview"></a>使用 Azure Functions 代理（预览版）
 
@@ -28,18 +28,6 @@ ms.lasthandoff: 10/11/2017
 本文介绍了如何配置和使用 Azure Functions 代理。 使用此功能可在 Function App 上指定由其他资源实现的终结点。 可以使用这些代理将大型 API 拆分到多个 Function App 中（与在微服务体系结构中一样），同时对客户端仍然呈现为单个 API 接口。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
-
-
-## <a name="enable"></a>启用 Azure Functions 代理
-
-默认情况下未启用这些代理。 在该功能处于禁用状态时可以创建代理，但它们不会执行。 若要启用代理，请执行以下操作：
-
-1. 打开 [Azure 门户]，并转到 Function App。
-2. 选择“Function App 设置”。
-3. 将“启用 Azure Functions 代理(预览版)”切换为“打开”。
-
-当新功能可用时还可以返回到此处来更新代理运行时。
-
 
 ## <a name="create"></a>创建代理
 
@@ -206,6 +194,16 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 ```
 > [!NOTE] 
 > 在此示例中，将直接设置正文，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
+
+## <a name="enable"></a>启用 Azure Functions 代理
+
+现在这些代理默认情况下已启用！ 如果使用的是较旧版本的代理预览版并禁用了代理，则需要手动启用一次代理才能执行代理。
+
+1. 打开 [Azure 门户]，并转到 Function App。
+2. 选择“Function App 设置”。
+3. 将“启用 Azure Functions 代理(预览版)”切换为“打开”。
+
+当新功能可用时还可以返回到此处来更新代理运行时。
 
 [Azure 门户]: https://portal.azure.com
 [HTTP 触发器]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger

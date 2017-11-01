@@ -12,23 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: ce50c678247226b629490a2bd8ba2935ed229f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f661dba2e647ac905e7d84927fdbf6dbc76094f
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>将 Windows Server 虚拟机加入托管域
-> [!div class="op_single_selector"]
-> * [Azure 门户 - Windows](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-> * [PowerShell - Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
->
->
-
-<br>
-
 本文展示了如何使用 Azure 门户部署 Windows Server 虚拟机。 它还展示了如何将虚拟机加入 Azure AD 域服务托管域。
 
 ## <a name="step-1-create-the-windows-server-virtual-machine"></a>步骤 1：创建 Windows Server 虚拟机
@@ -57,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 
     > [!TIP]
     > **选取正确的虚拟网络和子网。**
-    > 选择在其中部署你的托管域的虚拟网络或通过虚拟网络对等互连连接到它的虚拟网络。 如果选择了其他虚拟网络，则无法将该虚拟网络加入到托管域。
+    > 选择在其中部署你的托管域的虚拟网络或通过虚拟网络对等互连连接到它的虚拟网络。 如果选择未连接的虚拟网络，则无法将虚拟机加入到托管域。
     > 建议将托管域部署到一个专用子网中。 因此，不要选取已在其中启用了托管域的子网。
 
 7. 在“购买”页面上，复查设置并单击“确定”以部署虚拟网络。
@@ -128,7 +120,7 @@ ms.lasthandoff: 10/11/2017
 如果凭据有问题，因而无法加入域，请参考以下步骤。
 
 * 尝试使用 UPN 格式指定凭据。 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName。 因此，帐户的 SAMAccountName 格式可能不同于所需的格式或者在本地域中使用的格式。
-* 请尝试使用属于“AAD DC 管理员”组的用户帐户的凭据将计算机加入托管域。
+* 请尝试使用属于“AAD DC 管理员”组的用户帐户的凭据。
 * 确保根据《入门指南》中所述的步骤[启用密码同步](active-directory-ds-getting-started-password-sync.md)。
 * 确保使用 Azure AD 中配置的用户的 UPN（例如，“bob@domainservicespreview.onmicrosoft.com”）登录。
 * 确保根据《入门指南》中所述，等待足够长的时间来完成密码同步。

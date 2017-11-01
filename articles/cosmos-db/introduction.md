@@ -15,39 +15,36 @@ ms.topic: overview
 ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: fe4c79f4e71d885e22bbcf31869b809f5d7fe1a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5ae2a68f749310d4d6a2514055fb258978eec9c
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 只需单击一个按钮，即可通过 Azure Cosmos DB 跨任意数量的 Azure 地理区域弹性且独立地缩放吞吐量和存储。 它通过综合[服务级别协议](https://aka.ms/acdbsla) (SLA) 提供吞吐量、延迟、可用性和一致性保证，这是其他数据库服务无法提供的。
+Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 只需单击一个按钮，即可通过 Azure Cosmos DB 跨任意数量的 Azure 地理区域弹性且独立地缩放吞吐量和存储。 它通过综合[服务级别协议](https://aka.ms/acdbsla) (SLA) 提供吞吐量、延迟、可用性和一致性保证，这是其他数据库服务无法提供的。 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
 
-![Azure Cosmos DB 是 Microsoft 的全球分布式数据库服务，可以弹性扩展，已保证低延迟，有五个一致性模型，并且已保证满足综合 SLA](./media/introduction/azure-cosmos-db.png)
+![Azure Cosmos DB 是 Microsoft 的全球分布式数据库服务，可以弹性扩展，已保证低延迟，有五个一致性模型，并提供全面 SLA 的保证](./media/introduction/azure-cosmos-db.png)
 
-无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
-
-## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>受益于 Azure Cosmos DB 的解决方案
-
-任何 [Web、移动、游戏和 IoT 应用程序](use-cases.md)，只要其需要处理大量的[全局](distribute-data-globally.md)规模的读写操作，需要缩短各种数据的响应时间，就可以充分利用 Azure Cosmos DB 所[保证的](https://azure.microsoft.com/support/legal/sla/cosmos-db/)可用性、高吞吐量、低延迟以及可调的一致性。
+> [!div class="nextstepaction"]
+> [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="key-capabilities"></a>关键功能
 作为一种全球分布式数据库服务，Azure Cosmos DB 提供以下功能，帮助构建可缩放且响应迅速的应用程序：
 
 * **统包式全局分配**
     * [单击按钮](tutorial-global-distribution-documentdb.md)即可将[数据分配](distribute-data-globally.md)到任意数目的 [Azure 区域](https://azure.microsoft.com/regions/)。 这样就可以将数据置于用户所在的位置，确保将客户可能会遇到到的延迟降至最低。 
-    * 使用 Azure Cosmos DB 的多宿主 API，应用始终能够知道最近的区域在哪里，于是就会将请求发送到最近的数据中心。 所有这些功能不需更改配置即可实现，只需设置写入区域并根据需要设置尽可能多的读取区域即可。
+    * 使用 Azure Cosmos DB 的多宿主 API，应用始终能够知道最近的区域在哪里，于是就会将请求发送到最近的数据中心。 所有这些功能不需更改配置即可实现， 只需设置写入区域并根据需要设置尽可能多的读取区域即可。
 
 * 多个数据模型和用于访问及查询数据的常用 API
     * Azure Cosmos DB 本身所基于的数据模型以 Atom 记录序列 (ARS) 为基础，该模型支持多个数据模型，包括但不限于文档、图形、键-值、表以及分栏式数据模型。
     * 多种语言的 SDK 均支持以下数据模型的 API：
-        * [DocumentDB API](documentdb-introduction.md)
-        * [MongoDB API](mongodb-introduction.md)
-        * [表 API](table-introduction.md)
-        * [图形 (Gremlin) API](graph-introduction.md)
-        * 即将推出其他数据模型 
+        * [Cosmos DB API](documentdb-introduction.md)：使用 SQL 查询功能的无架构 JSON 数据库引擎。
+        * [MongoDB API](mongodb-introduction.md)：构建于 Cosmos DB 之上的 MongoDB 数据库服务。 与现有 MongoDB 库、驱动程序、工具和应用程序兼容。
+        * [表 API](table-introduction.md)：一种键/值存储数据库服务，构建它的目的是为 Azure 表存储应用程序提供高级功能。
+        * [图形 (Gremlin) API](graph-introduction.md)：按照 [Apache TinkerPop 规范](http://tinkerpop.apache.org/)生成的图形数据库服务。
+        * 即将推出其他数据模型！
 
 * 在全球范围内按需求灵活缩放吞吐量和存储
     * 以[秒](request-units.md)为时间粒度轻松缩放数据库吞吐量，并随时对其进行更改。 
@@ -90,6 +87,9 @@ Azure Cosmos DB 提供关系数据库和非关系数据库的最佳功能。
 | 数据模型 + API | 关系 + SQL | 多模型 + OSS API | 多模型 + SQL + OSS API（即将推出更多） |
 | SLA | 是 | 否 | 是的，综合性 SLA 的内容涵盖延迟、吞吐量、一致性和可用性 |
 
+## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>受益于 Azure Cosmos DB 的解决方案
+
+任何 [Web、移动、游戏和 IoT 应用程序](use-cases.md)，只要其需要处理大量的[全局](distribute-data-globally.md)规模的读写操作，需要缩短各种数据的响应时间，就可以充分利用 Azure Cosmos DB 所[保证的](https://azure.microsoft.com/support/legal/sla/cosmos-db/)可用性、高吞吐量、低延迟以及可调的一致性。 了解如何将 CosmosDB 应用于 [IoT 和 远程信息处理](use-cases.md#iot-and-telematics)、[零售和营销](use-cases.md#retail-and-marketing)、[游戏](use-cases.md#gaming)以及 [Web 和移动应用程序](use-cases.md#web-and-mobile-applications)。
 
 ## <a name="next-steps"></a>后续步骤
 请通过阅读以下快速入门文章之一，来开始使用 Azure Cosmos DB：
@@ -98,3 +98,6 @@ Azure Cosmos DB 提供关系数据库和非关系数据库的最佳功能。
 * [开始使用 Azure Cosmos DB 的 MongoDB API](create-mongodb-nodejs.md)
 * [开始使用 Azure Cosmos DB 的图形 API](create-graph-dotnet.md)
 * [开始使用 Azure Cosmos DB 的表 API](create-table-dotnet.md)
+
+> [!div class="nextstepaction"]
+> [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)

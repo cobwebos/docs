@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2017
+ms.date: 10/11/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 4440ca81545978ab7438f1684ce71ded24c326e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36ebffb41211e443cc1619df46f50247945cc57c
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="review-usage-and-costs"></a>查看使用情况和成本
 
@@ -43,11 +43,13 @@ ms.lasthandoff: 10/11/2017
 
 ![筛选出的服务](./media/tutorial-review-usage/actual-cost02.png)
 
-在上面的示例中，从 2017 年 8 月 31 日开始，支出较比之前的要少。 该成本趋势针对各种服务持续了大约九天。 然后，其他支出像以前那样继续。 但是，列数过多可能会使趋势不明显。 可以将报表视图更改为折线图或面积图，以查看在其他视图中显示的数据。 下图更清楚地显示了这一趋势。
+在前面的示例中，从 2017 年 8 月 31 日开始，支出较比之前的要少。 该成本趋势针对各种服务持续了大约九天。 然后，其他支出像以前那样继续。 但是，列数过多可能会使趋势不明显。 可以将报表视图更改为折线图或面积图，以查看在其他视图中显示的数据。 下图更清楚地显示了这一趋势。
 
 ![报表中的趋势](./media/tutorial-review-usage/actual-cost03.png)
 
 在该示例中，可以清楚地看到 Azure 存储成本从 2017 年 8 月 31 日起开始下降，而其他 Azure 服务的支出持平。 那么，是什么导致了支出缩减呢？ 在此示例中，某些员工正在休假，因而没有使用存储服务。
+
+若要观看有关跟踪使用情况和成本趋势的教程视频，请参阅[使用 Cloudyn 提供的 Azure 成本管理分析云计费数据与时间](https://youtu.be/7LsVPHglM0g)。
 
 ## <a name="detect-usage-inefficiencies"></a>检测低效使用情况
 
@@ -55,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 
 当组织最初将资源移动到云中时，影响组织的常见问题是其虚拟化策略。 他们通常使用类似于用于本地虚拟化环境创建虚拟机的方法。 而且，他们认为通过将本地 VM 移动到云就可降低成本。 但是，这种方法不可能降低成本。
 
-问题在于他们已为现有的基础结构支付了费用。 如果用户愿意，他们可以创建非常大的 VM，并保持它们空运行或不运行而得不到有效利用。 将非常大的或空闲的 VM 移到云中可能会增加成本。 与云服务提供商达成协议时，各资源的成本分配非常重要。 无论你充分使用资源还是不使用，都必须为你获得的资源支付费用。
+问题在于他们已为现有的基础结构支付了费用。 如果用户愿意，他们可以创建很大的 VM，并保持它们空运行或不运行而得不到有效利用。 将很大的或空闲的 VM 移到云中可能会增加成本。 与云服务提供商达成协议时，各资源的成本分配很重要。 无论你充分使用资源还是不使用，都必须为你获得的资源支付费用。
 
 “经济高效的大小调整建议”报表通过将 VM 实例类型容量与其 CPU 和内存使用情况的历史数据相比较，确定出每年可能节省的费用。  
 
@@ -67,9 +69,11 @@ ms.lasthandoff: 10/11/2017
 
 ![建议详细信息](./media/tutorial-review-usage/sizing02.png)
 
-单击“候选项列表”旁的加号以查看 VM 实例 ID。
+单击“候选项列表”旁的加号可查看 VM 实例 ID。
 
 ![候选项列表](./media/tutorial-review-usage/sizing03.png)
+
+若要观看有关检测使用效率较低的教程视频，请参阅[在 Cloudyn 提供的 Azure 成本管理中优化 VM 大小](https://youtu.be/1xaZBNmV704)。
 
 ## <a name="create-alerts-for-unusual-spending"></a>针对异常支出创建警报
 

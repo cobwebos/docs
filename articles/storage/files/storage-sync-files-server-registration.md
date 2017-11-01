@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 831623b0fa0d8c03713f608116709e6a590d93c6
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 13a75d5cafd94435346660614721399f2d77919b
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="registerunregister-a-server-with-azure-file-sync-preview"></a>向 Azure 文件同步（预览版）注册/注销服务器
-借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
+借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 可以使用 Windows Server 上任何可用协议在本地访问你的数据（包括 SMB、NFS 和 FTPS），并且可以根据需要在世界各地拥有尽可能多的缓存。
 
 下面的文章说明如何向存储同步服务注册和注销服务器。 如果不再使用某台服务器，或如果在同步组中需要新服务器终结点，则可能需要执行此过程。 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md)。
 
@@ -58,7 +58,11 @@ Windows Server 必须先向存储同步服务注册，然后才能在 Azure 文�
 > 如果服务器是故障转移群集的成员，则需要在群集中的每个节点上安装 Azure 文件同步代理。
 
 ### <a name="register-the-server-using-the-server-registration-ui"></a>使用服务器注册 UI 注册服务器
-1. 如果服务器注册 UI 未在完成 Azure 文件同步代理安装之后立即启动，则可以通过执行 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` 来手动启动它。
+
+> [!Important]  
+> 云解决方案提供商订阅不能使用服务器注册 UI， 请改用 PowerShell（在本部分下面介绍）。
+
+1. 如果服务器注册 UI 在完成 Azure 文件同步代理安装之后未立即启动，则可以通过执行 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` 来手动启动它。
 2. 单击“登录”以访问 Azure 订阅。 
 
     ![服务器注册 UI 的打开对话框](media/storage-sync-files-server-registration/server-registration-ui-1.png)
@@ -73,6 +77,15 @@ Windows Server 必须先向存储同步服务注册，然后才能在 Azure 文�
 
 > [!Important]  
 > 如果服务器是故障转移群集的成员，则每台服务器都需要运行服务器注册。 在 Azure 门户中查看已注册的服务器时，Azure 文件同步会自动将每个节点识别为相同故障转移群集的成员，并相应地将它们分组在一起。
+
+### <a name="register-the-server-with-powershell"></a>使用 PowerShell 注册服务器
+也可以通过 PowerShell 执行服务器注册。 这是云解决方案提供商订阅唯一支持的服务器注册方法：
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
+```
 
 ## <a name="unregister-the-server-with-storage-sync-service"></a>向存储同步服务注销服务器
 向存储同步服务注销服务器需要几个步骤。 让我们看看如何正确注销服务器。

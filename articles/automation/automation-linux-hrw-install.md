@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 88c052c3a22611b796559d4dd62c763445aa6210
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e6687e4e868ae998c77bba231437d52fdbe719c
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>如何部署 Linux 混合 Runbook 辅助角色
-Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。  利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。  
+
+Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。 利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。
 
 下图说明了此功能：<br>  
 
@@ -48,13 +49,21 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
          $null = Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-2.  在 Linux 计算机上运行以下命令来更改 -w 和 -k 参数的值。
+2.  运行以下命令，更改 *-w*、*-k*、*-g* 和 *-e* 参数的值。 对于 *-g* 参数，请将值替换为新的 Linux 混合 Runbook 辅助角色应加入的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，则将使用该名称生成一个新的混合 Runbook 辅助角色组。
     
     ```
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <OMSworkspaceId> -k <AutomationSharedKey> --groupname <hybridgroupname> -e <automationendpoint>
+    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <OMSworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
     ```
 3. 此命令完成后，Azure 门户中的“混合辅助角色组”边栏选项卡会显示新组和成员数，或者会将成员数进行递增（如果组已存在）。  可以从“混合辅助角色组”边栏选项卡上的列表中选择组，并选择“混合辅助角色”磁贴。  在“混合辅助角色”边栏选项卡上，会列出组的每个成员。  
 
+
+## <a name="turning-off-signature-validation"></a>关闭签名验证 
+默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到包含“签名验证失败”字样的错误。 若要关闭签名验证，请运行以下命令，并将第二个参数替换为 OMS 工作区 ID：
+
+    ```
+    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <OMSworkspaceId>
+    ```
+   
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。

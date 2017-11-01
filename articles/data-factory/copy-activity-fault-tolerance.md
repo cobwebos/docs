@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jingwang
-ms.openlocfilehash: d96c89ed3650c09ac6465e30754ef1155b06d601
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b2658cecba80ef871cc38b930b0e52bc3952530
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -86,13 +86,13 @@ path | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼�
 ```
 如果配置为记录不兼容的行，可以通过此路径找到日志文件：`https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`。 
 
-在日志文件中，可以看到跳过的行以及不兼容的根本原因。
+日志文件只能是 csv 文件。 所跳过的原始数据必要时将以逗号作为列分隔符进行记录。 除了日志文件中的原始源数据外，我们还另外添加两列“ErrorCode”和“ErrorMessage”，可从中查看不兼容的根本原因。 ErrorCode 和 ErrorMessage 将用双引号引起来。 
 
-文件中记录了原始数据和对应的错误。 下面的示例展示了日志文件内容：
+下面的示例展示了日志文件内容：
 
 ```
-data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'.,
-data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).
+data1, data2, data3, "UserErrorInvalidDataValue", "Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'."
+data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4)."
 ```
 
 ## <a name="next-steps"></a>后续步骤

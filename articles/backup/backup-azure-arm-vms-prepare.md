@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 3fa6f4f850fc67d41f619d46bd61a19fe890b0fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ee2e42e05fb4866d32c24b0d4c788b0197970ad
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
 > [!div class="op_single_selector"]
@@ -204,7 +204,13 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 
 | HTTP 代理 |允许在代理中对存储 URL 进行精细控制。<br>对 VM 进行单点 Internet 访问。<br>不受 Azure IP 地址变化的影响。 |通过代理软件运行 VM 带来的额外成本。 |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>将 Azure 数据中心 IP 范围加入允许列表
-要将 Azure 数据中心 IP 范围加入允许列表，请参阅 [Azure 网站](http://www.microsoft.com/en-us/download/details.aspx?id=41653)，获取有关 IP 范围的详细信息和说明。
+* 要将 Azure 数据中心 IP 范围加入允许列表，请参阅 [Azure 网站](http://www.microsoft.com/en-us/download/details.aspx?id=41653)，获取有关 IP 范围的详细信息和说明。
+* 可以使用[服务标记](../virtual-network/security-overview.md#service-tags)允许与特定区域存储的连接。 请确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则的优先级。 
+
+  ![具有区域存储标记的 NSG](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+> [!WARNING]
+> 存储标记仅在特定区域中可用，并且处于预览状态。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)
 
 ### <a name="using-an-http-proxy-for-vm-backups"></a>使用 HTTP 代理进行 VM 备份
 备份 VM 时，VM 上的备份扩展会使用 HTTPS API 将快照管理命令发送到 Azure 存储。 将通过 HTTP 代理路由备份扩展流量，因为它是为了访问公共 Internet 而配置的唯一组件。

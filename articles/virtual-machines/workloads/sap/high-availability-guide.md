@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65236f527b62b4990b062fb6a54ce13b3c182e93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e6a68ad090789c95dda6d18f649ae3bcfa671c5
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -418,13 +418,13 @@ ms.lasthandoff: 10/11/2017
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
-[virtual-network-deploy-multinic-arm-cli]:../../../virtual-network/virtual-network-deploy-multinic-arm-cli.md
-[virtual-network-deploy-multinic-arm-ps]:../../../virtual-network/virtual-network-deploy-multinic-arm-ps.md
+[virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
+[virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-[virtual-networks-multiple-nics]:../../../virtual-network/virtual-networks-multiple-nics.md
+[virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
 [virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
 [virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
@@ -522,7 +522,6 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 * **节点和磁盘多数**。 每个节点和群集存储中的指定磁盘（磁盘见证）在处于可用和通信中状态时均可投票。 只有获取多数票（即超过半数投票）时，群集才能正常运行。 此模式适用于节点数目为偶数的群集环境。 如果半数节点和磁盘处于联机状态，则群集保持正常运行状态。
 * **节点和文件共享多数**。 每个节点加上管理员创建的指定文件共享（文件共享见证）均可投票，无论节点和文件共享是否可用且处于通信中状态，都是如此。 只有获取多数票（即超过半数投票）时，群集才能正常运行。 此模式适用于节点数目为偶数的群集环境。 它类似于节点和磁盘多数模式，但它使用见证文件共享，而不是见证磁盘。 此模式很容易实现，但如果文件共享本身不具有高可用性，则它可能变成单一故障点。
 * **无多数：仅磁盘**。 当有一个节点可用并且正与群集存储中的特定磁盘进行通信时，群集具有仲裁。 只有也在与该磁盘进行通信的节点能够加入群集。 建议不要使用此模式。
- 
 
 ## <a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>本地 Windows Server 故障转移群集
 图 1 显示了包含两个节点的群集。 如果节点之间的网络连接发生故障，并且两个节点均保持启动并运行，则由仲裁磁盘或文件共享确定哪个节点继续提供群集的应用程序和服务。 有权访问仲裁磁盘或文件共享的节点是确保服务继续的节点。

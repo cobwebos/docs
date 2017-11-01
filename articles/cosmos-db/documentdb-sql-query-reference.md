@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/13/2017
+ms.date: 10/18/2017
 ms.author: mimig
-ms.openlocfilehash: 0a05f4ee86d2dcca40dc0b5ec2c503ba0b8bfe8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4907df15fddfb7d8d6128dc994b0920ca601f2c7
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-syntax-reference"></a>Azure Cosmos DB DocumentDB API：SQL 语法引用
 
@@ -2446,12 +2446,12 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
- 返回一个布尔，它指示数组是否包含指定的值。  
-  
+返回一个布尔，它指示数组是否包含指定的值。 可以指定是要执行完全还是部分匹配。 
+
  **语法**  
   
 ```  
-ARRAY_CONTAINS (<arr_expr>, <expr>)  
+ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
 ```  
   
  **参数**  
@@ -2463,6 +2463,10 @@ ARRAY_CONTAINS (<arr_expr>, <expr>)
 -   `expr`  
   
      为任何有效的表达式。  
+
+-   `bool_expr`  
+  
+     为任何布尔表达式。       
   
  返回类型  
   
@@ -2482,6 +2486,25 @@ SELECT
   
 ```  
 [{"$1": true, "$2": false}]  
+```  
+
+ 以下示例介绍了如何使用 ARRAY_CONTAINS 检查数组内是否存在 JSON 字符串的部分匹配字符串。  
+  
+```  
+SELECT  
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}, true), 
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}),
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) 
+```  
+  
+ 结果集如下。  
+  
+```  
+[{
+  "$1": true,
+  "$2": false,
+  "$3": false
+}] 
 ```  
   
 ####  <a name="bk_array_length"></a> ARRAY_LENGTH  

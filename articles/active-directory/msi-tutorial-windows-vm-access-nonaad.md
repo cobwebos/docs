@@ -3,7 +3,7 @@ title: "使用 Windows VM MSI 访问 Azure Key Vault"
 description: "本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault。"
 services: active-directory
 documentationcenter: 
-author: elkuzmen
+author: bryanla
 manager: mbaldwin
 editor: bryanla
 ms.service: active-directory
@@ -11,19 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 10/24/2017
 ms.author: elkuzmen
-ms.openlocfilehash: 783579eda204b44564abdcb3fee30c09b0e5c1a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3f9fa3e543851e79d9aed9c80ae4a8d2dd3420d
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="use-managed-service-identity-msi-with-a-windows-vm-to-access-azure-key-vault"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault 
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault 
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍了如何为 Windows 虚拟机启用托管服务标识 (MSI)，再使用此标识访问 Azure Key Vault。 托管服务标识由 Azure 自动管理，可用于通过支持 Azure AD 身份验证的服务的身份验证，这样就无需在代码中插入凭据了。 将了解如何执行以下操作：
+本教程介绍如何为 Windows 虚拟机启用托管服务标识 (MSI)，然后使用该标识访问 Azure Key Vault。 作为引导，Key Vault 随后可让客户端应用程序使用机密访问未受 Azure Active Directory (AD) 保护的资源。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 
+
+学习如何：
 
 
 > [!div class="checklist"]
@@ -68,7 +70,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>授予 VM 对 Key Vault 中存储的密钥的访问权限 
  
-使用 MSI，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  但是，并非所有 Azure 服务都支持 Azure AD 身份验证。 若要将 MSI 用于不支持 Azure AD 身份验证的服务，可以在 Azure Key Vault 中存储这些服务所需的凭据，并使用 MSI 对 Key Vault 进行身份验证以检索凭据。 
+使用 MSI，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  但是，并非所有 Azure 服务都支持 Azure AD 身份验证。 若要将 MSI 用于这些服务，请将服务凭据存储在 Azure Key Vault 中，然后使用 MSI 访问 Key Vault 以检索凭据。 
 
 首先，需要创建 Key Vault 并授予 VM 的标识对 Key Vault 的访问权限。   
 
@@ -86,18 +88,18 @@ ms.lasthandoff: 10/11/2017
 
 接下来，将密钥添加到 Key Vault，以便稍后可以使用在 VM 中运行的代码检索此密钥： 
 
-1. 选择“所有资源”，找到并选择刚刚创建的 Key Vault。 
+1. 选择“所有资源”，找到并选择已创建的 Key Vault。 
 2. 选择“密钥”，然后单击“添加”。 
 3. 从“上传选项”中选择“手动”。 
 4. 输入密钥的名称和值。  该值可以是任何需要的内容。 
 5. 明确指定激活日期和到期日期，并将“已启用”设置为“是”。 
 6. 单击“创建”以创建密钥。 
  
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-retrieve-the-secret-from-the-key-vault"></a>使用 VM 标识获取访问令牌，并使用它来检索 Key Vault 中的密钥  
+## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>使用 VM 标识获取访问令牌，并使用它来检索 Key Vault 中的密钥  
 
-现在，你已创建密钥，将其存储在 Key Vault 中，并已授予 VM MSI 访问 Key Vault 的权限，可以开始编写代码并用于在运行时检索密钥。  为了简化此示例，我们将借助 PowerShell 使用简单的 REST 调用。  如果尚未安装 PowerShell，请在[此处](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1)下载。
+如果未安装 PowerShell 4.3.1 或更高版本，则需要[下载并安装最新版本](https://docs.microsoft.com/powershell/azure/overview)。
 
-首先，我们使用 VM 的 MSI 获取访问令牌，对 Key Vault 进行身份验证：
+首先，我们使用 VM 的 MSI 获取访问令牌，向 Key Vault 进行身份验证：
  
 1. 在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。
 2. 输入创建 Windows VM 时添加的用户名和密码。  

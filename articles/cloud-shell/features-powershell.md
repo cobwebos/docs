@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: 9eacb57b5a00ff11739695ed3311be0c638ba25f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22e4d491bfb9e61294ccdaaa36abbf38b9b662ac
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中 PowerShell 的功能和工具
 
@@ -91,7 +91,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 |**类别**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure 工具     |[Azure PowerShell (4.3.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1) |
+|Azure 工具     |[Azure PowerShell (4.4.0)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.0)<br> [Azure CLI (2.0.18)](https://docs.microsoft.com/en-us/cli/azure/overview)|
 |文本编辑器    |vim<br> nano                             |
 |包管理器 |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |源代码管理  |git                                      |
@@ -109,5 +109,6 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 ## <a name="next-steps"></a>后续步骤
 
-[Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md) <br>
+[Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md)
+
 [了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/)

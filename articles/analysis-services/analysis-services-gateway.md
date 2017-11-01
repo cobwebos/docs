@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 10/11/2017
 ms.author: owend
-ms.openlocfilehash: 31e4913aceb1c4b51ddc7cde6381bc21b50187c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47f05a22811307617f475e79145f70a0233f5895
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>使用 Azure 本地数据网关连接到本地数据源
 本地数据网关的作用好似一架桥，提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 你可以将同一区域中的多个服务与单个网关进行关联。 
@@ -139,6 +139,9 @@ ms.lasthandoff: 10/11/2017
 **答**：使用恢复密钥可在发生灾难后迁移或恢复网关设置。
 
 ## <a name="troubleshooting"></a>故障排除
+
+**问**：尝试在 Azure 中创建网关资源时，为什么在网关实例列表中没看到我的网关？ <br/>
+**A**：有两个可能的原因。 第一种可能性是已在当前订阅或某个其他订阅中为该网关创建了资源。 若要消除该可能性，请从门户枚举“本地数据网关”类型的资源。 枚举所有资源时，请确保选择所有订阅。 请注意，创建资源后，该网关将不会出现在“创建网关资源”门户体验的网关实例列表中。 第二种可能性是安装该网关的用户的 Azure AD 标识与登录到 Azure 门户的用户不同。 若要解决此问题，请使用安装该网关的用户帐户登录到门户。
 
 **问**：如何查看正在发送到本地数据源的查询？ <br/>
 **答**：可以启用查询跟踪，包括要发送的查询。 请记得在完成故障排除后将查询跟踪改回原始值。 一直保持启用查询跟踪会创建大量的日志。

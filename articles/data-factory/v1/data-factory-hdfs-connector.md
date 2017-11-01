@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 10/16/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc92f046267f2c4abc2ce46960a54487aa205ea8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e9670b39cf99cfa893270a0786a093914beee91
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 | type |类型属性必须设置为：**Hdfs** |是 |
 | URL |HDFS 的 URL |是 |
 | authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 **Kerberos 身份验证**，请参阅[此部分](#use-kerberos-authentication-for-hdfs-connector)相应地设置本地环境。 |是 |
-| userName |Windows 身份验证的用户名。 |是（对于 Windows 身份验证） |
+| userName |Windows 身份验证的用户名。 对于 Kerberos 身份验证，指定 `<username>@<domain>.com`。 |是（对于 Windows 身份验证） |
 | password |Windows 身份验证的密码。 |是（对于 Windows 身份验证） |
 | gatewayName |数据工厂服务用于连接到 HDFS 的网关的名称。 |是 |
 | encryptedCredential |访问凭据的 [New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) 输出。 |否 |
@@ -104,7 +104,7 @@ ms.lasthandoff: 10/11/2017
         "typeProperties":
         {
             "authenticationType": "Windows",
-            "userName": "Administrator",
+            "userName": "<username>@<domain>.com (for Kerberos auth)",
             "password": "password",
             "url" : "http://<machine>:50070/webhdfs/v1/",
             "gatewayName": "mygateway"

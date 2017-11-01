@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 27013ca9724cf2f57fc85f5f4ccb71921ca57a3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9cd70b048d454009d8741f394fed0b6b93fcab7
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>教程：Azure Active Directory 与 Promapp 的集成
 
@@ -106,40 +106,57 @@ ms.lasthandoff: 10/11/2017
  
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_samlbase.png)
 
-3. 在“Promapp 域和 URL”部分中，执行以下步骤：
+3. 在“Promapp 域和 URL”部分中，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
+    | |
+    |--|
+    | `https://demo.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME`|
+    | `https://demoau.promapp.com/TENANTNAME`|
+    | `https://au.promapp.com/TENANTNAME`|
+    | `https://demous.promapp.com/TENANTNAME`|
+    | `https://us.promapp.com/TENANTNAME`|
+    | `https://dev.promapp.com/TENANTNAME`|
+    | `https://test.promapp.com/TENANTNAME`|
+    | `https://staging.promapp.com/TENANTNAME`|
+    
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/TENANTNAME`
+4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
+
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Promapp 客户端支持团队](https://www.promapp.com/about-us/contact-us/)获取这些值。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Promapp 客户端支持团队](https://www.promapp.com/about-us/contact-us/)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_certificate.png) 
 
-5. 单击“保存”按钮。
+6. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
 
-6. 在“Promapp 配置”部分，单击“配置 Promapp”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+7. 在“Promapp 配置”部分，单击“配置 Promapp”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
 
-7. 以管理员身份登录 Promapp 公司站点。 
+8. 以管理员身份登录 Promapp 公司站点。 
 
-8. 在顶部菜单中，单击“管理员”。 
+9. 在顶部菜单中，单击“管理员”。 
    
     ![Azure AD 单一登录][12]
 
-9. 单击 **“配置”**。 
+10. 单击 **“配置”**。 
    
     ![Azure AD 单一登录][13]
 
-10. 在“安全”对话框中，执行以下步骤：
+11. 在“安全”对话框中，执行以下步骤：
    
     ![Azure AD 单一登录][14]
     
@@ -147,7 +164,10 @@ ms.lasthandoff: 10/11/2017
     
     b. 选择“可选”作为“SSO - 单一登录模式”，并单击“保存”。
 
-    c. 在记事本中打开下载的证书，复制除第一行 (-----BEGIN CERTIFICATE-----) 和最后一行 (-----END CERTIFICATE-----) 之外的证书内容，将其粘贴到“SSO-x.509 证书”文本框中，然后单击“保存”。
+    > [!NOTE]
+    > “可选”模式仅用于测试。 对配置感到满意后，请选择“必需”模式强制所有用户使用 Azure AD 进行身份验证。
+
+    c. 在记事本中打开下载的证书，复制除第一行 (**-----BEGIN CERTIFICATE-----**) 和最后一行 (**-----END CERTIFICATE-----**) 之外的证书内容，将其粘贴到“SSO-x.509 证书”文本框中，然后单击“保存”。
         
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -222,7 +242,9 @@ Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问�
 
 本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
 
-单击访问面板中的“Promapp”磁贴时，用户就会自动登录到 Promapp 应用程序。
+若要在 **IDP** 发起的模式下测试应用程序，单击访问面板中的“Promapp”磁贴时，用户应自动登录到 Promapp 应用程序。
+
+若要在 **SP** 发起的模式下测试应用程序，需要从 Promapp 站点启动身份验证。 为此，需要在登录时将密码字段留空，同时启用“可选”模式。
 
 ## <a name="additional-resources"></a>其他资源
 

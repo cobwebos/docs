@@ -3,8 +3,8 @@ title: "如何使用用于移动应用的 Node.js 后端服务器 SDK | Microsof
 description: "了解如何使用适用于 Azure 应用服务移动应用的 Node.js 后端服务器 SDK。"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: elamalani
+manager: elamalani
 editor: 
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 8265aaa275b3f6e528ec729ff1325200e9ead524
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab1a9dfa71c4b633392ef839bb848347fdd26431
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="how-to-use-the-azure-mobile-apps-nodejs-sdk"></a>如何使用 Azure 移动应用 Node.js SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -793,9 +793,13 @@ Azure 应用服务提供多种适用于 Node.js 应用程序的调试和故障�
 Node.js 应用程序可访问各种诊断日志工具。  在内部，Azure 移动应用 Node.js SDK 使用 [Winston] 进行诊断日志记录。  启用调试模式，或者在 [Azure 门户]中将 **MS_DebugMode** 应用设置设为 true，即可自动启用日志记录。 生成的日志显示在 [Azure 门户]上的“诊断日志”中。
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>如何在 Azure 门户中使用简易表
-使用门户中的简易表可以直接在门户中创建和使用表。 甚至可以使用应用服务编辑器来编辑表操作。
+使用门户中的简易表可以直接在门户中创建和使用表。 可以采用 CSV 格式将数据集上传到简易表。 请注意，不能使用与 Azure 移动应用后端的系统属性名称冲突的属性名称（在 CSV 数据集中）。 系统属性名称包括：
+* createdAt
+* updatedAt
+* deleted
+* 版本
 
-在后端站点设置中单击“简易表”时，可以添加、修改或删除表。 还可以查看表中的数据。
+甚至可以使用应用服务编辑器来编辑表操作。 在后端站点设置中单击“简易表”时，可以添加、修改或删除表。 还可以查看表中的数据。
 
 ![使用简易表](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
 

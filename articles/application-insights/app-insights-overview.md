@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/14/2017
 ms.author: bwren
-ms.openlocfilehash: d822f25d9061809a27976314bfbd55dd46b1ee67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3cb85316fac2ee637eb5defcc9b0840bada267b3
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
-Application Insights 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它与 DevOps 流程集成，具有与各种开发工具的连接点。
+Application Insights 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 它可以通过与 Visual Studio Mobile Center 和 HockeyApp 集成来监视和分析移动应用的遥测数据。
 
 ![将用户活动统计信息绘制成图表，或钻取到特定事件。](./media/app-insights-overview/00-sample.png)
 
@@ -116,6 +116,7 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
   * [Node.js](app-insights-nodejs.md)
   * [其他平台](app-insights-platforms.md)
 * 针对页面视图、AJAX 和其他客户端遥测**[检测网页](app-insights-javascript.md)**。
+* 通过与 Visual Studio Mobile Center 集成**[分析移动应用使用情况](app-insights-mobile-center-quickstart.md)**。
 * **[可用性测试](app-insights-monitor-web-app-availability.md)** - 从我们的服务器定期对网站执行 ping 操作。
 
 

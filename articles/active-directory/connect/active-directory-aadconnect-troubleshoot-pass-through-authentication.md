@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 7bb8868ab813d0de992e92a921b2d204b0ac60c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d57235671389e02c7d397b1244cdddb7a20067cc
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -127,6 +127,10 @@ ms.lasthandoff: 10/11/2017
 
 根据遇到的问题类型，需要在不同的位置查看直通身份验证代理日志。
 
+### <a name="azure-ad-connect-logs"></a>Azure AD Connect 日志
+
+有关与安装相关的错误，请查看 **%ProgramData%\AADConnect\trace-\*.log** 中的 Azure AD Connect 日志。
+
 ### <a name="authentication-agent-event-logs"></a>身份验证代理事件日志
 
 对于与身份验证代理相关的错误，请在服务器上打开“事件查看器”应用程序，然后在 Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin 下查看。
@@ -135,7 +139,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="detailed-trace-logs"></a>详细跟踪日志
 
-若要排查用户登录失败原因，请查看 **%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** 中的跟踪日志。 这些日志包含特定用户使用直通身份验证功能登录失败的原因。 这些错误也会映射到前面的[表格](#sign-in-failure-reasons-on-the-Azure-portal)中所示的登录失败原因。 下面是一个日志项目示例：
+若要排查用户登录失败原因，请查看 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** 中的跟踪日志。 这些日志包含特定用户使用直通身份验证功能登录失败的原因。 这些错误也会映射到前面的[表格](#sign-in-failure-reasons-on-the-Azure-portal)中所示的登录失败原因。 下面是一个日志项目示例：
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

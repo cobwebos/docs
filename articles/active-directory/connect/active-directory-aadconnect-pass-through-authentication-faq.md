@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: e0c93cefb135d3ea1c5f0a3797602124aed85c5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1bd58797124210f7c31e90fb20d728289a04ba2
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>传递身份验证是免费功能吗？
 
-传递身份验证是免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。 功能正式发布时仍然可以免费使用。
+传递身份验证是免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 
 ## <a name="is-pass-through-authentication-available-in-microsoft-cloud-germanyhttpwwwmicrosoftdecloud-deutschland-and-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>能否在 [Microsoft 云德国](http://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用传递身份验证？
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当传递身份验证的回滚？
 
-不可以。密码哈希同步并非传递身份验证的通用回滚。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。
+否，传递身份验证_不_自动故障转移到密码哈希同步。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../active-directory-application-proxy-get-started.md)连接器？
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>需要安装多少个直通身份验证代理？
 
-安装多个直通身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。 但不提供负载均衡。 一个或两个身份验证代理会处理这批登录请求。
+安装多个直通身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。 但是它不提供身份验证代理之间的确定性负载均衡。
 
 请考虑希望在租户上看到的登录请求的峰值和平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300,000 到 400,000 个身份验证。 对于大多数客户而言，总共两个或三个身份验证代理足以满足高可用性和大容量需求。
 

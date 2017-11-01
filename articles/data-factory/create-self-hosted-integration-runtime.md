@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
+ms.openlocfilehash: 63e4bb600d053a43c500b601a3942eb96ac16b07
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 18f5aea960bca34699d2d265d4801797291a3e3a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -69,9 +68,9 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-- 支持的**操作系统**版本有 Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。 **不支持在域控制器**上安装自承载集成运行时。
+- 支持的**操作系统**版本有 Windows 7 Service Pack 1、Windows 8.1、Windows 10、Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016。 **不支持在域控制器**上安装自承载集成运行时。
 - 需要 **.NET Framework 4.6.1 或更高版本**。 如果在 Windows 7 计算机上安装自承载集成运行时，请安装 .NET Framework 4.6.1 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](/dotnet/framework/get-started/system-requirements)。
-- 推荐的自承载集成运行时计算机**配置**至少为 2 GHz，4 核，8 GB RAM 和 80 GB 磁盘。
+- 推荐的自托管集成运行时计算机**配置**至少为 2 GHz，4 核，8 GB RAM 和 80 GB 磁盘。
 - 如果主机计算机进入休眠状态，则自承载集成运行时不响应数据请求。 因此，安装自承载集成运行时之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则自承载集成运行时安装会提示消息。
 - 只有计算机管理员才能成功安装和配置自承载集成运行时。
 - 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
@@ -240,4 +239,3 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下教程以获取分步说明：[教程：将本地数据复制到云](tutorial-hybrid-copy-powershell.md)。
-

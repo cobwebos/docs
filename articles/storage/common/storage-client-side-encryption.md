@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 10/20/2017
 ms.author: tamram
-ms.openlocfilehash: 0c36679fd9128613cb4a7e54786ab09eb3a1fc3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe8023729bd1294dedd2a4e4723a8be0976731d6
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 存储的客户端加密和 Azure 密钥保管库
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -146,10 +146,11 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
   * 如果指定为获取密钥，则将调用密钥解析程序。 如果指定了解析程序，但该解析程序不具有密钥标识符的映射，则将引发错误。
   * 如果未指定解析程序，但指定了密钥，则在该密钥的标识符与所需密钥标识符匹配时使用该密钥。 如果标识符不匹配，则将引发错误。
 
-[加密示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)演示了针对 blob、队列和表的更详细端到端方案，以及密钥保管库集成。
+本文中的代码示例演示如何设置加密策略和使用加密数据，但不演示如何使用 Azure Key Vault。 GitHub 上的[加密示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)演示了针对 Blob、队列和表的更详细端到端方案，以及 Key Vault 集成。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
 用户可以选择启用一个操作模式，让所有上传和下载都必须加密。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，将导致在客户端上失败。 请求选项对象的 **RequireEncryption** 属性控制此行为。 如果应用程序要加密存储于 Azure 存储中的所有对象，则可以在服务客户端对象的默认请求选项上设置 **RequireEncryption**属性。 例如，将 **CloudBlobClient.DefaultRequestOptions.RequireEncryption** 设置为 **true**，要求对通过该客户端对象执行的所有 blob 操作进行加密。
+
 
 ### <a name="blob-service-encryption"></a>Blob 服务加密
 创建 **BlobEncryptionPolicy** 对象并在请求选项中对其进行设置（使用 **DefaultRequestOptions** 基于每个 API 或在客户端级别设置）。 其他所有事项均由客户端库在内部处理。

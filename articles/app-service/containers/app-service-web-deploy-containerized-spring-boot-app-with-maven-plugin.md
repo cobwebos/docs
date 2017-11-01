@@ -1,6 +1,6 @@
 ---
-title: "如何使用适用于 Azure Web 应用的 Maven 插件将容器化 Spring Boot 应用部署到 Azure"
-description: "了解如何使用适用于 Azure Web 应用的 Maven 插件将 Spring Boot 应用部署到 Azure。"
+title: "如何使用用于容器的 Web 应用的 Maven 插件将容器化 Spring Boot 应用部署到 Azure"
+description: "了解如何使用用于容器的 Web 应用的 Maven 插件将 Spring Boot 应用部署到 Azure。"
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,21 +14,21 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
-ms.openlocfilehash: b2de785746c8598d9d6954487b06018af3cfcc52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0329aa9b88c7542ab3235a104a0652cd217ff872
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="how-to-use-the-maven-plugin-for-azure-web-apps-to-deploy-a-containerized-spring-boot-app-to-azure"></a>如何使用适用于 Azure Web 应用的 Maven 插件将容器化 Spring Boot 应用部署到 Azure
+# <a name="how-to-use-the-maven-plugin-for-web-app-for-containers-to-deploy-a-containerized-spring-boot-app-to-azure"></a>如何使用用于容器的 Web 应用的 Maven 插件将容器化 Spring Boot 应用部署到 Azure
 
-用于 [Apache Maven](http://maven.apache.org/) 的[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin)提供了 Azure 应用服务到 Maven 项目的无缝集成，并简化了开发人员将 Web 应用部署到 Azure 应用服务的过程。
+用于 [Apache Maven](http://maven.apache.org/) 的[用于容器的 Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin)提供了 Azure 应用服务到 Maven 项目的无缝集成，并简化了开发人员将 Web 应用部署到 Azure 应用服务的过程。
 
-本文演示如何使用适用于 Azure Web 应用的 Maven 插件将 Docker 容器中的示例 Spring Boot 应用程序部署到 Azure App Service。
+本文演示如何使用用于容器的 Web 应用的 Maven 插件将 Docker 容器中的示例 Spring Boot 应用程序部署到用于容器的 Web 应用。
 
 > [!NOTE]
 >
-> 适用于 Azure Web 应用的 Maven 插件当前提供预览版。 目前，仅支持 FTP 发布，但计划在未来支持其他功能。
+> 用于容器的 Web 应用的 Maven 插件当前提供预览版。 目前，仅支持 FTP 发布，但计划在未来支持其他功能。
 >
 
 ## <a name="prerequisites"></a>先决条件
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 > 由于本教程中的虚拟化要求，无法在虚拟机上执行本文中的步骤；必须使用启用了虚拟化功能的物理计算机。
 >
 
-## <a name="clone-the-sample-spring-boot-on-docker-web-app"></a>克隆 Docker Web 应用上的示例 Spring Boot
+## <a name="clone-the-sample-spring-boot-application"></a>克隆示例 Spring Boot 应用程序
 
 本部分将克隆容器化 Spring Boot 应用程序并进行本地测试。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 10/11/2017
    cd /users/robert/SpringBoot
    ```
 
-1. 将 [Docker 上的 Spring Boot 入门]示例项目克隆到创建的目录中；例如：
+1. 将 [Spring Boot with Docker] 示例项目克隆到已创建的目录；例如：
    ```shell
    git clone https://github.com/microsoft/gs-spring-boot-docker
    ```
@@ -155,7 +155,7 @@ ms.lasthandoff: 10/11/2017
    `<client>` | 包含服务主体的 `appId` 值。
    `<tenant>` | 包含服务主体的 `tenant` 值。
    `<key>` | 包含服务主体的 `password` 值。
-   `<environment>` | 定义目标 Azure 云环境，此示例中为 `AZURE`。 （[适用于 Azure Web 应用的 Maven 插件]文档中提供了完整的环境列表）
+   `<environment>` | 定义目标 Azure 云环境，此示例中为 `AZURE`。 （[用于容器的 Web 应用的 Maven 插件]文档中提供了完整的环境列表）
 
 1. 保存并关闭 settings.xml 文件。
 
@@ -181,7 +181,7 @@ ms.lasthandoff: 10/11/2017
       mvn clean package docker:build
       docker push
       ```
-   
+
    * 如果安装了[适用于 Maven 的 Docker 插件]，则可以使用 `-DpushImage` 参数自动将容器映像构建到 Docker 中心：
       ```shell
       mvn clean package docker:build -DpushImage
@@ -216,15 +216,15 @@ ms.lasthandoff: 10/11/2017
    </plugin>
    ```
 
-可以为 Maven 插件修改几个值，[适用于 Azure Web 应用的 Maven 插件]文档中提供了这些元素各自的详细描述。 尽管如此，在本文中有仍几个值得注意的值：
+可以为 Maven 插件修改几个值，[用于容器的 Web 应用的 Maven 插件]文档中提供了这些元素各自的详细描述。 尽管如此，在本文中有仍几个值得注意的值：
 
 元素 | 说明
 ---|---|---
-`<version>` | 指定[适用于 Azure Web 应用的 Maven 插件]的版本。 应检查 [Maven 中央存储库](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22)中列出的版本，确保使用最新版本。
+`<version>` | 指定[用于容器的 Web 应用的 Maven 插件]的版本。 应检查 [Maven 中央存储库](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22)中列出的版本，确保使用最新版本。
 `<authentication>` | 指定 Azure 的身份验证信息，该信息在本示例中含有包含 `azure-auth` 的 `<serverId>` 元素；Maven 使用该值查找在本文前面部分定义的 Maven settings.xml 文件中的 Azure 服务主体值。
 `<resourceGroup>` | 指定目标资源组，在此示例中为 `maven-plugin`。 如果资源组不存在，则会在部署过程中进行创建。
 `<appName>` | 指定 Web 应用的目标名称。 在此示例中，目标名称为 `maven-linux-app-${maven.build.timestamp}`，此示例附加​​了 `${maven.build.timestamp}` 后缀以避免冲突。 （时间戳是可选项；可为应用名称指定任何唯一的字符串。）
-`<region>` | 指定目标区域，在此示例中为 `westus`。 （[适用于 Azure Web 应用的 Maven 插件]文档中提供了完整列表。）
+`<region>` | 指定目标区域，在此示例中为 `westus`。 （[用于容器的 Web 应用的 Maven 插件]文档中提供了完整列表。）
 `<appSettings>` | 指定 Maven 在将 Web 应用部署到 Azure 时使用的任何唯一设置。 在此示例中，`<property>` 元素包含指定应用端口的子元素的名称/值对。
 
 > [!NOTE]
@@ -252,7 +252,7 @@ Maven 会将 Web 应用部署到 Azure；如果 Web 应用不存在，则将创�
 >
 > 如果 pom.xml 文件的 `<region>` 元素中指定的区域在启动部署时没有足够的可用服务器，则可能会看到类似于以下示例的错误：
 >
-> ```
+> ```bash
 > [INFO] Start deploying to Web App maven-linux-app-20170804...
 > [INFO] ------------------------------------------------------------------------
 > [INFO] BUILD FAILURE
@@ -303,11 +303,11 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 
 有关本文中讨论的各项技术的详细信息，请参阅以下文章：
 
-* [适用于 Azure Web 应用的 Maven 插件]
+* [用于容器的 Web 应用的 Maven 插件]
 
 * [通过 Azure CLI 登录到 Azure](/azure/xplat-cli-connect)
 
-* [如何使用适用于 Azure Web 应用的 Maven 插件将 Spring Boot 应用部署到 Azure 应用服务](../app-service-web-deploy-spring-boot-app-with-maven-plugin.md)
+* [了解如何使用用于容器的 Web 应用的 Maven 插件将 Spring Boot 应用部署到 Linux 上的 Azure 应用服务](../app-service-web-deploy-spring-boot-app-with-maven-plugin.md)
 
 * [使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)
 
@@ -329,9 +329,9 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 [Maven]: http://maven.apache.org/
 [MSDN 订阅者权益]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Docker 上的 Spring Boot 入门]: https://github.com/spring-guides/gs-spring-boot-docker
+[Spring Boot on Docker Getting Started]: https://github.com/spring-guides/gs-spring-boot-docker
 [Spring Framework]: https://spring.io/
-[适用于 Azure Web 应用的 Maven 插件]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
+[用于容器的 Web 应用的 Maven 插件]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
 
 <!-- IMG List -->
 

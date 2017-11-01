@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: ad25663f97b83f11f14eeb8bb07dac46f6c080d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2705e97bd5b259ef68090e5688df57e0d3478f30
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 目前不支持通过 PowerShell/自动化部署 Azure AD 域服务。
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>是否可以在新 Azure 门户中使用 Azure AD 域服务？
-是的。 可以使用 [Azure 门户](https://portal.azure.com)配置 Azure AD 域服务。 我们预计将来会停止支持[经典 Azure 门户](https://manage.windowsazure.com)。
+是的。 可以使用 [Azure 门户](https://portal.azure.com)配置 Azure AD 域服务。 [Azure 经典门户](https://manage.windowsazure.com)不再受支持。
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>是否可以使用资源管理器模板来启用 Azure AD 域服务？
 不能。 在启用 Azure AD 域服务的过程中需要执行某些任务。 这些任务不可能通过资源管理器模板执行。 使用新 Azure 门户为目录启用 Azure AD 域服务。

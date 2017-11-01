@@ -3,7 +3,7 @@ title: "Azure Functions 托管计划比较 | Microsoft Docs"
 description: "了解如何在 Azure Functions 消耗量计划和应用服务计划之间进行选择。"
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -17,17 +17,17 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1aa05bffb711351e0ddc544a476751690265de9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb6ade65879b245bf44800da3352354ba274ee5a
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions 托管计划比较
 
 ## <a name="introduction"></a>介绍
 
-可在两种不同模式下运行 Azure Functions：消耗量计划和 Azure 应用服务计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 因此，无需为空闲的 VM 付费，且无需提前保留容量。 本文重点介绍消耗计划。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
+可在两种不同模式下运行 Azure Functions：消耗量计划和 Azure 应用服务计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 因此，无需为空闲的 VM 付费，且无需提前保留容量。 本文重点介绍消耗计划（一种[无服务器](https://azure.microsoft.com/overview/serverless-computing/)应用模型）。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 
 如果不熟悉 Azure Functions，请参阅 [Azure Functions 概述](functions-overview.md)。
 

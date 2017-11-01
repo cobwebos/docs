@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: aa7c0738120ecda8d43669725748585e1ad5a581
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ef6e649d2f5563ea066b70d5ef3f80c5af36ce23
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
@@ -26,8 +26,8 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* 遵照[安装 Durable Functions](durable-functions-install.md) 中的说明来设置示例。
-* 本文假设已完成 [Hello Sequence](durable-functions-sequence.md) 示例演练。
+* 按照[安装 Durable Functions](durable-functions-install.md) 中的说明设置示例。
+* 本文假定用户已完成 [Hello Sequence](durable-functions-sequence.md) 示例演练。
 
 ## <a name="scenario-overview"></a>方案概述
 
@@ -97,12 +97,12 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 > [!NOTE]
 > 这是一个演示如何将 I/O 操作移入 `activityTrigger` 函数的极佳示例。 这样，不仅可以在许多不同的 VM 上分配工作，而且还能获得设置进度检查点的优势。 如果主机进程出于任何原因终止，你就知道哪些上传操作已完成。
 
-## <a name="running-the-sample"></a>运行示例
+## <a name="run-the-sample"></a>运行示例
 
-使用示例中包含的 HTTP 触发函数，可以使用以下 HTTP POST 请求启动业务流程。
+可以通过发送以下 HTTP POST 请求来启动业务流程。
 
 ```
-POST http://{host}/orchestrators/E2_BackupSiteContent HTTP/1.1
+POST http://{host}/orchestrators/E2_BackupSiteContent
 Content-Type: application/json
 Content-Length: 20
 
@@ -112,7 +112,7 @@ Content-Length: 20
 > [!NOTE]
 > 调用的 `HttpStart` 函数只会处理 JSON 格式的内容。 为此，`Content-Type: application/json` 标头是必需的，目录路径已编码为 JSON 字符串。
 
-这会触发 `E2_BackupSiteContent` 业务流程协调程序，并将字符串 `D:\home\LogFiles` 作为参数传递。 响应提供了一个用于获取此备份操作的状态的链接：
+此 HTTP 请求会触发 `E2_BackupSiteContent` 业务流程协调程序，并将字符串 `D:\home\LogFiles` 作为参数传递。 响应提供了一个链接，可使用该链接获取备份操作的状态：
 
 ```
 HTTP/1.1 202 Accepted
@@ -158,9 +158,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，应该对 Durable Functions 的核心业务流程功能有了一个很好的理解。 后续示例将会探讨更高级的功能和方案。
+此示例说明了如何实现扇出/扇入模式。 下一个示例演示如何在[永久业务流程](durable-functions-eternal-orchestrations.md)中实现[有状态单一实例](durable-functions-singletons.md)模式。
 
 > [!div class="nextstepaction"]
 > [运行有状态单一实例示例](durable-functions-counter.md)
-
-

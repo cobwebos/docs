@@ -1,6 +1,6 @@
 ---
 title: "管理扩展云仪表板 | Microsoft 文档"
-description: "安装弹性数据库作业服务"
+description: "使用弹性数据库作业服务跨一组数据库执行脚本。"
 metakeywords: azure sql database elastic databases
 services: sql-database
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 8e84562115a866c0df5e0dee6c7f66c036a74737
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74618179fe169b968e822cd9c563410560244848
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
 若要管理扩大的分区数据库，可使用**弹性数据库作业**功能（预览版）在一组数据库中可靠地执行 Transact-SQL (T-SQL) 脚本，这些数据库包括：

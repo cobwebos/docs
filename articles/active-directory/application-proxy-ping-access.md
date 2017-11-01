@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 10/11/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6e6bb39164f9b3dea206ebcf850ee98e2506dcf
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -108,6 +108,9 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
   ![选择权限](./media/application-proxy-ping-access/select-permissions.png)
 
+17. 关闭权限屏幕之前，请授予权限。 
+![授予权限](media/application-proxy-ping-access/grantperms.png)
+
 ### <a name="collect-information-for-the-pingaccess-steps"></a>收集 PingAccess 步骤的信息
 
 1. 在应用设置边栏选项卡中，选择“属性”。 
@@ -132,7 +135,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>可选 - 更新 GraphAPI 以发送自定义字段
 
-有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](./develop/active-directory-token-and-claims.md)。 如果需要发送其他令牌的自定义声明，请使用 GraphAPI 将应用字段 acceptMappedClaims 设置为“True”。 可以使用 Azure AD Graph 浏览器或 MS Graph 来进行此配置。 
+有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](./develop/active-directory-token-and-claims.md)。 如果需要发送其他令牌的自定义声明，请使用 GraphAPI 将应用字段 acceptMappedClaims 设置为“True”。 只能使用 Azure AD Graph Explorer 来进行此配置。 
 
 本示例中使用的是 Graph 浏览器：
 
@@ -143,6 +146,14 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
+
+>[!NOTE]
+>若要使用自定义声明，还必须定义自定义策略并将其分配给应用程序。  此策略应包括所有必需的自定义属性。
+>
+>可以通过 PowerShell、Azure AD Graph Explorer 或 MS Graph 来完成策略定义和分配。  如果在 PowerShell 中执行此操作，可能需要先使用 `New-AzureADPolicy ` 新建策略，然后使用 `Set-AzureADServicePrincipalPolicy` 将其分配给应用程序。  有关详细信息，请参阅 [Azure AD 策略文档](active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
+
+### <a name="optional---use-a-custom-claim"></a>可选 - 使用自定义声明
+若要生成应用程序，请使用自定义声明并包括其他字段，请确保还[创建了自定义声明映射策略并将其分配给应用程序](active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>下载 PingAccess 并配置应用
 

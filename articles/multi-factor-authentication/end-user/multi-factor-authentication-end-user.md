@@ -15,11 +15,11 @@ ms.date: 06/15/2017
 ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
-ms.openlocfilehash: 5b6694afc0bafaf2be5f98c625dd6724b91234fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb6e652794de6cda8b5fc7c7e466f880833a1a14
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure 多重身份验证对我而言有什么用途？
 假设 IT 部门的某位同事或者你的老板向你发送了一封电子邮件，指出他们已对你的帐户添加了附加的安全验证。  那么，这是什么意思呢？
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 * **使用移动应用中的通知还是验证码** - 如果使用移动应用，请选择是接收需要回应的通知还是验证码。
 
 > [!NOTE]
-> 你的 IT 部门可能会禁用上述一个或多个选项。  如果是这样，这些选项在注册过程中将不可用。  
+> 公司支持人员可能会禁用上述一个或多个选项。  如果是这样，这些选项在注册过程中将不可用。  
 
 在确定验证方法后，你可以开始注册。 使用[设置体验](multi-factor-authentication-end-user-first-time.md)链接开始逐步完成注册过程。
 
@@ -46,4 +46,4 @@ ms.lasthandoff: 10/11/2017
 | [登录体验](multi-factor-authentication-end-user-signin.md) |说明使用各种方法（例如电话或应用）登录时预期会发生的情况。 |
 | [更改设置](multi-factor-authentication-end-user-manage-settings.md) |说明如何更改设置，例如电话号码或首选的注册方法。 |
 | [有关应用密码的帮助](multi-factor-authentication-end-user-app-passwords.md) |查找有关创建和使用应用密码的信息。 |
-| [使用移动应用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
+| [使用移动应用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |

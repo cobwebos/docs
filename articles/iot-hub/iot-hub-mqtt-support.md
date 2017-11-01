@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11c35e895d061e6876ac18814025c814449351af
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: f1a3ce746601dc42f04f021f3ba142688abdb7e7
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -77,6 +77,42 @@ IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] �
      此令牌中要用作“**密码**”字段以便使用 MQTT 进行连接的部分是：`SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`。
 
 对于 MQTT 连接和断开连接数据包，IoT 中心会在**操作监视**频道发布事件，并提供可帮助对连接问题进行故障排除的其他信息。
+
+### <a name="tlsssl-configuration"></a>TLS/SSL 配置
+
+若要直接使用 MQTT 协议，客户端*必须*通过 TLS/SSL 连接。 尝试跳过此配置会失败并显示连接错误。
+
+若要建立 TLS 连接，可能需要下载并引用 DigiCert Baltimore 根证书。 Azure 使用此证书来保护连接，可以在 [Azure-iot-sdk-c 存储库][lnk-sdk-c-certs]中找到此证书。 可以在 [Digicert 网站][lnk-digicert-root-certs]上找到有关这些证书的详细信息。
+
+一个说明如何使用 Eclipse Foundation 提供的 Python 版本 [Paho MQTT 库][lnk-paho]实现此功能的示例可能如下所示。
+
+首先，从命令行环境安装 Paho 库：
+
+```
+>pip install paho-mqtt
+```
+
+然后，在 Python 脚本中实现客户端：
+
+```
+from paho.mqtt import client as mqtt
+import ssl
+  
+path_to_root_cer = "...local\\path\\to\\digicert.cer"
+device_id = "<device id from device registry>"
+sas_token = "<generated SAS token>"
+subdomain = "<iothub subdomain>"
+
+client = mqtt.Client(client_id=device_id, protocol=mqtt.MQTTv311)
+
+client.username_pw_set(username=subdomain+".azure-devices.net/" + device_id, password=sas_token)
+
+client.tls_set(ca_certs=path_to_root_cert, certfile=None, keyfile=None, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+client.tls_insecure_set(False)
+
+client.connect(subdomain+".azure-devices.net", port=8883)
+```
+
 
 ### <a name="sending-device-to-cloud-messages"></a>发送“设备到云”消息
 
@@ -241,3 +277,6 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-twin-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 [lnk-devguide-twin]: iot-hub-devguide-device-twins.md
+[lnk-sdk-c-certs]: https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c
+[lnk-digicert-root-certs]: https://www.digicert.com/digicert-root-certificates.htm
+[lnk-paho]: https://pypi.python.org/pypi/paho-mqtt

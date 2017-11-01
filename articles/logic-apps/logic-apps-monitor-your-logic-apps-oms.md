@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8da2bc9645e432ddf0e9f627c7b5e30c44fd74b6
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>使用 Operations Management Suite (OMS) 和 Log Analytics 监视和获取有关逻辑应用运行的见解
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/11/2017
 
 2. 要查看有关逻辑应用运行更多详细信息的摘要，请选择“逻辑应用管理”磁贴。
 
-   此时，逻辑应用运行将按名称或执行状态进行分组。
+   此时，逻辑应用运行将按名称或执行状态进行分组。 还可以查看有关逻辑应用运行的操作或触发器中的失败的详细信息。
 
    ![逻辑应用运行的状态摘要](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-runs-summary.png)
    
@@ -107,8 +107,16 @@ ms.lasthandoff: 10/11/2017
 
    ![查看逻辑应用或状态的运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   > [!NOTE]
-   > 对于因重新提交运行而导致的运行，“重新提交”列会显示“是”。
+   在此页上有两个高级选项：
+   * **跟踪属性：**此列显示逻辑应用的跟踪属性（按操作分组）。 若要查看跟踪属性，请选择“查看”。 可以使用列筛选器搜索跟踪属性。
+   
+     ![查看逻辑应用的跟踪属性](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+
+     任何新添加的跟踪属性可能需要 10-15 分钟时间，才会首次显示。 了解[如何将跟踪属性添加到逻辑应用](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)。
+
+   * **重新提交：**可以重新提交一个或多个已失败、已成功或仍在运行的逻辑应用运行。 选择要重新提交的运行所对应的复选框，然后选择“重新提交”。 
+
+     ![重新提交逻辑应用运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 4. 要筛选这些结果，可以执行客户端和服务器端筛选。
 
@@ -122,14 +130,23 @@ ms.lasthandoff: 10/11/2017
    
      ![更改时间窗口](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
  
-5. 要查看特定运行的所有操作及其详细信息，请选择“行”，这将打开“日志搜索”页。 
+5. 若要查看特定运行的所有操作及其详细信息，请选择逻辑应用运行所在的行。
 
-   * 要在表中查看此信息，请选择“表”。
+   下面是一个显示特定逻辑应用运行的所有操作的示例：
+
+   ![查看逻辑应用运行的操作](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
+   
+6. 在任何结果页上，若要查看结果背后的查询或查看所有结果，请选择“查看全部”，这将打开“日志搜索”页。
+   
+   ![结果页上的“查看全部”](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   
+   在“日志搜索”页上，
+   * 若要查看表中的查询结果，请选择“表”。
    * 要更改查询，可在搜索栏中编辑查询字符串。 
    要获取更好的体验，请选择“高级分析”。
 
      ![查看逻辑应用运行的操作和详细信息](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
+     
      在 Azure Log Analytics 页上，可以更新查询并查看表中的结果。 
      此查询使用 [Kusto 查询语言](https://docs.loganalytics.io/docs/Language-Reference)，如果希望查看不同的结果，可对其进行编辑。 
 
@@ -138,3 +155,4 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [监视 B2B 消息](../logic-apps/logic-apps-monitor-b2b-message.md)
+

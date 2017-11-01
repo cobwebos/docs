@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 的 Linux 容器中创建 PHP Web 应用 | Microsoft Docs"
-description: "数分钟内在 Azure 应用服务 Web 应用中部署首个 PHP Hello World。"
+title: "创建 PHP Web 应用并将其部署到 Linux 应用服务 | Microsoft Docs"
+description: "数分钟内在 Linux 应用服务中部署第一个 PHP Hello World。"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -15,19 +15,19 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2d5c8901e3deb126e216b58264c820b374b5670b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ff1b0bdd2397387910c31e25ddbc50ffc0bd1c4
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="create-a-php-web-app-in-a-linux-container-in-azure"></a>在 Azure 的 Linux 容器中创建 PHP Web 应用
+# <a name="create-a-php-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 PHP Web 应用
 
-[用于容器的 Web 应用](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程演示了如何将 PHP 应用部署到用于容器的 Azure Web 应用。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 PHP 代码部署到 Web 应用。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程演示如何将 PHP 应用部署到 Linux 上的 Azure 应用服务。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建包含内置映像的 Web 应用，并使用 Git 将 PHP 代码部署到 Web 应用。
 
 ![在 Azure 中运行的应用示例]](media/quickstart-php/hello-world-in-browser.png)
 
-可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。 
+可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -71,11 +71,11 @@ php -S localhost:8080
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>创建 Web 应用
+## <a name="create-a-web-app-with-built-in-image"></a>使用内置映像创建 Web 应用
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-php-no-h.md)] 
 
-浏览到该站点查看新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
+浏览到该站点查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -83,9 +83,9 @@ http://<app name>.azurewebsites.net
 
 ![空 Web 应用页面](media/quickstart-php/app-service-web-service-created.png)
 
-已在 Linux 容器中创建了空的新 Web 应用并启用了 Git 部署。
+已使用内置映像创建了空的新 Web 应用并启用了 Git 部署。
 
-[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)]
 
 ```bash
 Counting objects: 2, done.
@@ -120,11 +120,11 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-PHP 示例代码在 Azure 应用服务 Web 应用中运行。
+PHP 示例代码在包含内置映像的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 PHP 应用部署到应用服务。
+**祝贺你！** 现已将第一个 PHP 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 

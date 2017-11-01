@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 902e5bdfbbf04ab70989be8c41e16eb69e475908
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c32ac27187a88dd13bb747f541968d2e81c5064
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -57,6 +57,10 @@ ms.lasthandoff: 10/11/2017
 | 3 | 51 | 1 个 Active Directory 联合身份验证服务 (AD FS) 服务器、1 个 AD FS 代理和 1 个域控制器 |
 | 4 | 76 | 1 个 AD FS 服务器、1 个 AD FS 代理和 2 个域控制器 |
 | 5 | 101 | 1 个 Azure AD Connect 服务器、1 个 AD FS 服务器、1 个 AD FS 代理和 2 个域控制器 |
+
+**问：Azure AD Connect Health 是否支持 Azure 德国云？**
+
+Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconnect-health-agent-install.md)。 德语云客户的所有数据都保留在 Azure 德国云内。
 
 
 ## <a name="installation-questions"></a>安装问题

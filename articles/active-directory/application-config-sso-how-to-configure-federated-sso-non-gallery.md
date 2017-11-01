@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: da7bc05c6452cde4d0236806f249559f178dd4e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 781d06d2a8234d4cedf546ef059d49b7ece8783d
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的联合单一登录
 
-若要配置非库应用程序，需要拥有 Azure AD Premium 和支持 SAML 2.0 的应用程序。 有关 Azure AD 版本的详细信息，请访问 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+若要为非库应用程序配置单一登录*而无需编写代码*，需要拥有订阅或 Azure AD Premium，并且该应用程序必须支持 SAML 2.0。 有关 Azure AD 版本的详细信息，请访问 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="overview-of-steps-required"></a>所需步骤概述
-下面的内容从较高的级别概述了配置非库（例如：自定义）应用程序联合单一登录所需的步骤。
+下面从较高的级别概述了使用 SAML 2.0 配置非库（例如：自定义）应用程序联合单一登录所需的步骤。
 
--   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、回复 URL）](#_Configuring_single_sign-on)
+-   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）](#_Configuring_single_sign-on)
 
 -   [选择用户标识符，并添加要发送给应用程序的用户属性](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 

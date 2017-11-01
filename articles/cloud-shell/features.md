@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: 158b0b65ba53630050275c910f2a7acfc39b8759
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 23faadc38fde75d4c83361465fdacc76d42d7523
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 的功能和工具
 
@@ -52,8 +52,8 @@ Cloud Shell 中的 Bash 安全并自动地验证帐户对 Azure CLI 2.0 的访�
 
 |类别   |名称   |
 |---|---|
-|Linux shell 解释程序|Bash<br> sh               |
-|Azure 工具            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) 和 [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [批处理 Shipyard](https://github.com/Azure/batch-shipyard) <br>    |
+|Linux 工具            |bash<br> sh<br> tmux<br> dig<br>               |
+|Azure 工具            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) 和 [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [批处理 Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br>    |
 |文本编辑器           |vim<br> nano<br> emacs       |
 |源代码管理         |git                    |
 |生成工具            |make<br> maven<br> npm<br> pip         |
@@ -65,11 +65,11 @@ Cloud Shell 中的 Bash 安全并自动地验证帐户对 Azure CLI 2.0 的访�
 
 |语言   |版本   |
 |---|---|
-|.NET       |1.01       |
+|.NET       |2.0.0       |
 |Go         |1.7        |
 |Java       |1.8        |
 |Node.js    |6.9.4      |
-|PowerShell  |[6.0 (beta)](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.0 (beta)](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5（默认）|
 
 ## <a name="next-steps"></a>后续步骤

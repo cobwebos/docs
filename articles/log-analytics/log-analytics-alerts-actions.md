@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2017
+ms.date: 10/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6d65480c53f905b393409dfdd9952618ab6cb64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d936cf467ee7043b171cfc845f247f891f52f599
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>将操作添加到 Log Analytics 中的警报规则
 [在 Log Analytics 中创建警报](log-analytics-alerts.md)时，可以选择[配置警报规则](log-analytics-alerts.md)以执行一个或多个操作。  本文介绍可用的不同操作，并详述如何配置每种类型的操作。
@@ -112,10 +112,10 @@ Runbook 操作需要下表中的属性。
 
 Runbook 操作使用 [Webhook](../automation/automation-webhooks.md) 来启动 Runbook。  在创建警报规则时，系统会自动为 Runbook 创建新的 Webhook，其名称为 **OMS Alert Remediation** 且后跟一个 GUID。  
 
-无法直接填充 Runbook 的任何参数，但 [$WebhookData 参数](../automation/automation-webhooks.md)将包含警报的详细信息，包括创建该警报的日志搜索结果。  Runbook 需要将 **$WebhookData** 定义为参数，以使其访问警报属性。  在 **$WebhookData** 的 **RequestBody** 属性中，警报数据会在称为 **SearchResults** 的单一属性中以 json 格式提供。  这些数据具有下表所列的属性。
+无法直接填充 Runbook 的任何参数，但 [$WebhookData 参数](../automation/automation-webhooks.md)将包含警报的详细信息，包括创建该警报的日志搜索结果。  Runbook 需要将 **$WebhookData** 定义为参数，以使其访问警报属性。  可在 **$WebhookData** 的 **RequestBody** 属性的名为 **SearchResult**（适用于带有标准有效负载的 runbook 操作和 webhook 操作）或 **SearchResults**（带有自定义有效负载的 webhook 操作，包括 **IncludeSearchResults":true**）的单一属性中获得 json 格式的警报数据。  这些数据具有下表所列的属性。
 
 >[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则 runbook 有效负载已更改。  [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) 中提供了格式的详细信息。  在下面的[示例](#sample-payload)中可以看到示例。
+> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则 runbook 有效负载已更改。  [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) 中提供了格式的详细信息。  在下面的[示例](#sample-payload)中可以看到示例。  
 
 | 节点 | 说明 |
 |:--- |:--- |
@@ -125,12 +125,17 @@ Runbook 操作使用 [Webhook](../automation/automation-webhooks.md) 来启动 R
 
 例如，下面的 Runbook 会提取日志搜索返回的记录，并基于每个记录的类型分配不同属性。  请注意，该 Runbook 以从 json 转换 **RequestBody** 开始，因此，它可以作为 PowerShell 中的对象。
 
+>[!NOTE]
+> 这两个 runbook 都使用 **SearchResult**（此属性包含带有标准有效负载的 runbook 操作和 webhook 操作的结果）。  如果从使用自定义有效负载的 webhook 响应调用 runbook，则需要将此属性更改为 **SearchResults**。
+
+以下 runbook 将处理来自[旧版 Log Analytics 工作区](log-analytics-log-search-upgrade.md)的有效负载。
+
     param ( 
         [object]$WebhookData
     )
 
     $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
-    $Records     = $RequestBody.SearchResults.value
+    $Records     = $RequestBody.SearchResult.value
 
     foreach ($Record in $Records)
     {
@@ -152,11 +157,61 @@ Runbook 操作使用 [Webhook](../automation/automation-webhooks.md) 来启动 R
         }
     }
 
+以下 runbook 将处理来自[已升级 Log Analytics 工作区](log-analytics-log-search-upgrade.md)的有效负载。
+
+    param ( 
+        [object]$WebhookData
+    )
+
+    $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
+
+    # Get all metadata properties    
+    $AlertRuleName = $RequestBody.AlertRuleName
+    $AlertThresholdOperator = $RequestBody.AlertThresholdOperator
+    $AlertThresholdValue = $RequestBody.AlertThresholdValue
+    $AlertDescription = $RequestBody.Description
+    $LinktoSearchResults =$RequestBody.LinkToSearchResults
+    $ResultCount =$RequestBody.ResultCount
+    $Severity = $RequestBody.Severity
+    $SearchQuery = $RequestBody.SearchQuery
+    $WorkspaceID = $RequestBody.WorkspaceId
+    $SearchWindowStartTime = $RequestBody.SearchIntervalStartTimeUtc
+    $SearchWindowEndTime = $RequestBody.SearchIntervalEndtimeUtc
+    $SearchWindowInterval = $RequestBody.SearchIntervalInSeconds
+
+    # Get detailed search results
+    if($RequestBody.SearchResult -ne $null)
+    {
+        $SearchResultRows    = $RequestBody.SearchResult.tables[0].rows 
+        $SearchResultColumns = $RequestBody.SearchResult.tables[0].columns;
+
+        foreach ($SearchResultRow in $SearchResultRows)
+        {   
+            $Column = 0
+            $Record = New-Object –TypeName PSObject 
+        
+            foreach ($SearchResultColumn in $SearchResultColumns)
+            {
+                $Name = $SearchResultColumn.name
+                $ColumnValue = $SearchResultRow[$Column]
+                $Record | Add-Member –MemberType NoteProperty –Name $name –Value $ColumnValue -Force
+                        
+                $Column++
+            }
+
+            # Include code to work with the record. 
+            # For example $Record.Computer to get the computer property from the record.
+            
+        }
+    }
+
+
 
 ## <a name="sample-payload"></a>示例有效负载
 此部分显示旧的和[已升级 Log Analytics 工作区](log-analytics-log-search-upgrade.md)中 webhook 和 runbook 操作的示例有效负载。
 
 ### <a name="webhook-actions"></a>Webhook 操作
+这两个示例都使用 **SearchResult**（此属性包含带有标准有效负载的 webhook 操作的结果）。  如果 webhook 使用了包含搜索结果的自定义有效负载，则此属性将为 **SearchResults**。
 
 #### <a name="legacy-workspace"></a>旧工作区。
 下面是旧工作区中 webhook 操作的示例有效负载。
@@ -376,7 +431,7 @@ Runbook 操作使用 [Webhook](../automation/automation-webhooks.md) 来启动 R
 下面是旧工作区中 runbook 操作的示例有效负载。
 
     {
-        "SearchResults": {
+        "SearchResult": {
             "id": "subscriptions/subscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspace-workspaceID/search/searchGUID|10.1.0.7|TimeStamp",
             "__metadata": {
                 "resultType": "raw",

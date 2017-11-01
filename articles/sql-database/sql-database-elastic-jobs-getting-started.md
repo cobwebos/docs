@@ -1,6 +1,6 @@
 ---
 title: "弹性数据库作业入门 | Microsoft Docs"
-description: "如何使用弹性数据库作业"
+description: "使用弹性数据库作业执行跨多个数据库的 T-SQL 脚本。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.openlocfilehash: 05c20e880d4eb1eacdecc0c4c7e7491dfe1e6a89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1b5a77782b64873a753f19863459f9cdfcd70cc
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
-使用 Azure SQL 数据库的弹性数据库作业（预览版），可以跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[功能概述页](sql-database-elastic-jobs-overview.md)。
+使用 Azure SQL 数据库的弹性数据库作业（预览版），可以跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[弹性作业](sql-database-elastic-jobs-overview.md)。
 
-本主题对[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例做了延伸。 完成本主题后，将学会如何创建和管理用于管理一组相关数据库的作业。 无需使用弹性缩放工具即可利用弹性作业的优势。
+本文对[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例进行了扩展。 完成本主题后，将学会如何创建和管理用于管理一组相关数据库的作业。 无需使用弹性缩放工具即可利用弹性作业的优势。
 
 ## <a name="prerequisites"></a>先决条件
 下载并运行[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
    ![命令提示符](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
 2. 在命令窗口中键入“1”，并按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入"3"并按 Enter；重复该操作四次。 这会在分片中插入示例数据行。
-3. [Azure 门户](https://portal.azure.com)应显示 3 个新数据库：
+3. [Azure 门户](https://portal.azure.com)应显示三个新数据库：
 
    ![Visual Studio 确认](./media/sql-database-elastic-query-getting-started/portal.png)
 
@@ -226,7 +226,7 @@ ms.lasthandoff: 10/11/2017
    ```
 
 ## <a name="retrieve-failures-within-job-task-executions"></a>检索作业任务执行内的失败
-JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。 如果作业任务执行失败，生命周期属性将设为 Failed，且消息属性将设为生成的异常消息及其堆栈。 如果作业不成功，必须查看给定操作不成功的作业任务的详细信息。
+JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。 如果作业任务执行失败，则生命周期属性将设为*失败*，且消息属性将设为生成的异常消息及其堆栈。 如果作业不成功，必须查看给定操作不成功的作业任务的详细信息。
 
    ```
     $jobExecutionId = "{Job Execution Id}"
@@ -254,7 +254,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 执行策略当前允许定义：
 
 * 名称：执行策略的标识符。
-* 作业超时：弹性数据库作业取消作业之前的总时间。
+* 作业超时：作业被弹性数据库作业取消之前经过的总时间。
 * 初始重试间隔：第一次重试之前等待的间隔。
 * 最大重试间隔：要使用的重试间隔上限。
 * 重试间隔回退系数：用于计算每两次重试的下一个间隔系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数),(重试次数) - 2)。

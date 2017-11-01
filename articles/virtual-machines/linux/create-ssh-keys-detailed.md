@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.openlocfilehash: d4548c6f21d04effd57ea36e4fc0d15f77568903
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1308812287fa4484e244c47497a7aef7aa994b14
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>详细演练了如何为 Azure 中的 Linux VM 创建 SSH 密钥对和其他证书
 使用 SSH 密钥对，可以在 Azure 上创建默认为使用 SSH 密钥进行身份验证的虚拟机，从而无需密码即可登录。 密码有可能被猜到，并允许 VM 不间断地尝试密码破解来猜测密码。 使用 Azure CLI 或 Resource Manager 模板创建的 VM 可以在部署过程中提供 SSH 公钥，从而删除对 SSH 禁用密码中的发布部署配置步骤。 本文提供的详细步骤和其他示例介绍了如何生成具有特定用途（例如适用于 Linux 虚拟机）的证书。 如需快速创建和使用 SSH 密钥对，请参阅[如何创建适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](mac-create-ssh-keys.md)。
@@ -55,7 +55,7 @@ ssh-keygen \
 
 `ssh-keygen` = 用于创建密钥的程序
 
-`-t rsa` = 要创建的 RSA 格式密钥类型 [wikipedia][parens 结尾](`https://en.wikipedia.org/wiki/RSA_(cryptosystem) `)
+`-t rsa` = 要创建的 [RSA 格式](https://en.wikipedia.org/wiki/RSA_(cryptosystem))密钥类型
 `-b 2048` = 密钥的位数
 
 `-C "azureuser@myserver"` = 追加到公钥文件末尾以便于识别的注释。  通常以电子邮件作为注释，但也可以使用任何最适合基础结构的事物。

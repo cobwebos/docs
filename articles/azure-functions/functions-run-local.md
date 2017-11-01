@@ -1,9 +1,9 @@
 ---
-title: "在本地开发并运行 Azure Functions | Microsoft 文档"
+title: "在本地开发并运行 Azure Functions | Microsoft Docs"
 description: "了解如何在本地计算机上对 Azure 函数进行编码和测试，然后在 Azure Functions 中运行。"
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6ab081311822abd9c0a24b4cc241291bf56af68
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 35fd47025ca0dba1edbe1d7dd3ee0172fc45d6f5
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -142,7 +142,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 
 如果没有为 **AzureWebJobsStorage** 设置有效的存储连接字符串，则会显示以下错误消息：  
 
->local.settings.json 中的 AzureWebJobsStorage 缺少值。 该值对除 HTTP 以外的所有触发器都是必需的。 可运行“func azure functionary fetch-app-settings <functionAppName>”或在 local.settings.json 中指定连接字符串。
+>local.settings.json 中的 AzureWebJobsStorage 缺少值。 该值对除 HTTP 以外的所有触发器都是必需的。 可运行“func azure functionapp fetch-app-settings <functionAppName>”或在 local.settings.json 中指定连接字符串。
   
 [!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
 
@@ -266,13 +266,13 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 请注意，可以从在查询字符串中传递数据的浏览器发出 GET 请求。 对于所有其他 HTTP 方法，必须使用 cURL、Fiddler、Postman 或类似的 HTTP 测试工具。  
 
 #### <a name="non-http-triggered-functions"></a>非 HTTP 触发的函数
-对于 HTTP 触发器和 webhook 以外的所有类型函数，你可以通过调用管理终结点在本地测试函数。 在本地服务器上调用此终结点会触发该函数。 可以选择将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。  
+对于 HTTP 触发器和 webhook 以外的所有类型函数，你可以通过调用管理终结点在本地测试函数。 在本地服务器上通过 HTTP POST 请求调用此终结点会触发该函数。 可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。  
 
-调用以下管理员终结点，以使用 HTTP POST 请求来触发非 HTTP 函数：
+可以调用以下管理员终结点以触发非 HTTP 函数：
 
     http://localhost:{port}/admin/functions/{function_name}
 
-尽管可以将测试数据传递给函数的管理员终结点，但必须在 POST 请求消息的正文中提供数据。 消息正文需要具有以下 JSON 格式：
+若要将测试数据传递给函数的管理员终结点，必须在 POST 请求消息的正文中提供数据。 消息正文需要具有以下 JSON 格式：
 
 ```JSON
 {

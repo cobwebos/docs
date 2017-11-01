@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: c58cf6485a8a7248e5b8ffce0d279485a80f36ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b7292f25a145c699dbafaf4e31e3f9d072b957
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>在逻辑应用中对消息进行进行发送、接收和批处理
 
@@ -115,6 +115,10 @@ ms.lasthandoff: 10/11/2017
 7.  现在已创建了批接收方逻辑应用，请保存逻辑应用。
 
     ![保存逻辑应用](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
+
+    > [!IMPORTANT]
+    > 分区的限制为 5,000 条消息或 80 MB。 如果满足上述任一条件，可能会释放批，即使不满足用户定义的条件也是如此。
+
 
 <a name="batch-sender"></a>
 

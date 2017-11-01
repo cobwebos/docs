@@ -16,11 +16,11 @@ ms.date: 07/06/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: end-user
-ms.openlocfilehash: 9dbe88a59b68bfb424c43dd89acf55d8c73fdf39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59a24c8dbcf740f9154f1c9e18f318265f58481c
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
 本文解答有关双重验证的最常见问题。 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 双重验证是组织选择用来保护帐户的一项安全功能。 它比单纯使用密码更安全，因为它依赖于两种形式的身份验证：你知道的事情和拥有的物品。 你知道的事情就是你的密码。 你拥有的物品就是你经常携带的手机或设备。 如果使用双重验证保护帐户，则恶意黑客无法以你的身份登录，即使获取了你的密码也是如此。 他们无法登录是因为他们无法访问你的手机。 
 
-Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如果 IT 部门要求使用该功能，则你就不能放弃使用，就好像不能放弃使用密码来保护帐户一样。 
+Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如果公司支持人员要求使用该功能，则你就不能放弃使用，就好像不能放弃使用密码来保护帐户一样。 
 
 如果为个人 Microsoft 帐户启用了双重验证，但想要更改设置，请参阅[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)。 
 
@@ -43,15 +43,15 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
    ![其他验证方法](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
 
 3. 选择要使用的验证选项。 
-  - 如果无法访问任何一种替代验证方法，请联系 IT 部门，请求帮忙登录到帐户。
+  - 如果无法访问任何一种替代验证方法，请联系公司支持人员，请求帮助登录到帐户。
   - 如果可以访问替代方法，请继续执行双重验证。
 
-如果看不到“使用其他验证选项”链接，则意味着首次注册双重验证时未设置替代方法。 请联系 IT 部门，请求帮忙登录到帐户。 登录后，请确保[管理设置](multi-factor-authentication-end-user-manage-settings.md)以添加其他验证方法供下一次使用。 
+如果看不到“使用其他验证选项”链接，则意味着首次注册双重验证时未设置替代方法。 请联系公司支持人员，请求帮助登录到帐户。 登录后，请确保[管理设置](multi-factor-authentication-end-user-manage-settings.md)以添加其他验证方法供下一次使用。 
 
 ## <a name="i-lost-my-phone-or-got-a-new-number"></a>手机遗失或换了号码
-有两种方法可以恢复帐户。 第一种方法是使用备用身份验证电话号码登录（前提是已设置此号码）。 第二种方法是请求 IT 部门清除设置。
+有两种方法可以恢复帐户。 第一种方法是使用备用身份验证电话号码登录（前提是已设置此号码）。 第二种方法是请求公司支持人员清除设置。
 
-如果手机已丢失或被盗，我们还建议你告知 IT 部门。 他们将需要重置你的应用密码，并清除任何已记住这些密码的设备。 
+如果手机已丢失或被盗，我们还建议你告知公司支持人员。 他们将需要重置你的应用密码，并清除任何已记住这些密码的设备。 
 
 ### <a name="use-an-alternate-phone-number"></a>使用备用手机号码
 如果已在其他设备上设置多个验证选项（如辅助电话号码或验证器应用），可以使用其中一个验证选项登录。
@@ -67,7 +67,7 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 4. 恢复帐户后，通过[管理设置](multi-factor-authentication-end-user-manage-settings.md)更改身份验证电话号码。
 
 ### <a name="clear-your-settings"></a>清除设置
-如果未配置辅助身份验证电话号码，则需要联系 IT 部门获取帮助。 请他们清除设置，以便在下次登录时重新收到[注册双重验证](multi-factor-authentication-end-user-first-time.md)的提示。
+如果未配置辅助身份验证电话号码，则需要联系公司支持人员获取帮助。 请他们清除设置，以便在下次登录时重新收到[注册双重验证](multi-factor-authentication-end-user-first-time.md)的提示。
 
 ## <a name="i-am-not-receiving-a-text-or-call-on-my-phone"></a>我的手机上未收到短信或来电
 尝试登录时未收到短信或来电的原因有多种。 如果过去在手机上成功收到短信或来电，则此问题可能是手机提供商的问题，而不是帐户出现问题。 请确保手机信号良好。 如果尝试接收短信，请确保能够收到短信。 请求好友给你拨打电话或发送短信，以测试接收状况。 
@@ -81,15 +81,15 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
    
     如果收到多个验证码，请使用最新的一个。
 
-如果未配置其他方法，请联系 IT 部门清除设置。 下次登录时，系统将重新提示[设置多重身份验证](multi-factor-authentication-end-user-first-time.md)。
+如果未配置其他方法，请联系公司支持人员让其清除设置。 下次登录时，系统将重新提示[设置多重身份验证](multi-factor-authentication-end-user-first-time.md)。
 
 如果经常由于手机信号不佳导致延迟，建议在智能手机上使用 [Microsoft Authenticator 应用](microsoft-authenticator-app-how-to.md)。 应用可以生成用于登录的随机安全代码，这些代码可在没有任何手机信号或 Internet 连接的情况下生成。
 
 ## <a name="app-passwords-are-not-working"></a>应用密码不起作用
-首先，请确保正确输入应用密码。 生成的应用密码会替换普通的密码，但这只适用于不支持双重验证的旧式桌面应用程序。 如果仍然不起作用，请尝试登录并[创建新的应用密码](multi-factor-authentication-end-user-app-passwords.md)。  如果还是不起作用，请联系 IT 部门[删除现有应用密码](../multi-factor-authentication-manage-users-and-devices.md)，然后便可以新建密码。
+首先，请确保正确输入应用密码。 生成的应用密码会替换普通的密码，但这只适用于不支持双重验证的旧式桌面应用程序。 如果仍然不起作用，请尝试登录并[创建新的应用密码](multi-factor-authentication-end-user-app-passwords.md)。  如果还是不起作用，请联系公司支持人员，让其[删除现有应用密码](../multi-factor-authentication-manage-users-and-devices.md)，然后便可以新建密码。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>我找不到问题的解答。
-如果已尝试这些故障排除步骤但仍遇到问题，请联系 IT 部门。 他们应该能够提供帮助。
+如果已尝试这些故障排除步骤但仍遇到问题，请联系公司支持人员。 他们应该能够提供帮助。
 
 ## <a name="related-topics"></a>相关主题
 * [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)  

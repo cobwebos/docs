@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2017
-ms.author: clemensv;sethm
-ms.openlocfilehash: c16bcf30ab96f79e59404a41852e4cd227e28b08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/12/2017
+ms.author: sethm
+ms.openlocfilehash: e5070e225387f5d4ae9d49234b4e260a57436291
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 10/11/2017
 
 从 API 和协议的角度看，DLQ 非常类似于任何其他队列，不同的是，消息只能通过父实体的死信笔势提交。 此外，无法查看生存时间，而且不能将 DLQ 中的消息设为死信。 死信队列完全支持扫视锁定传递和事务性操作。
 
-请注意，DLQ 不自动执行清理。 消息将保留在 DLQ 中，直到显式从 DLQ 中检索它们以及对死信消息调用 [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CompleteAsync) 为止。
+请注意，DLQ 不自动执行清理。 消息将保留在 DLQ 中，直到显式从 DLQ 中检索它们以及对死信消息调用 [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 为止。
 
 ## <a name="moving-messages-to-the-dlq"></a>将消息移到 DLQ
 
 服务总线中有几个活动会导致从消息引擎本身将消息推送到 DLQ。 应用程序也可以显式将消息移到 DLQ。 
 
-如果消息是由代理移动的，在代理对消息调用其内部版本的 [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_) 方法时，会将两个属性添加到消息：`DeadLetterReason` 和 `DeadLetterErrorDescription`。
+如果消息是由代理移动的，在代理对消息调用其内部版本的 [DeadLetter](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) 方法时，会将两个属性添加到消息：`DeadLetterReason` 和 `DeadLetterErrorDescription`。
 
 应用程序可以为 `DeadLetterReason` 属性定义自己的代码，但系统设置以下值。
 
@@ -52,9 +52,9 @@ ms.lasthandoff: 10/11/2017
 | 应用程序显式设为死信 |由应用程序指定 |由应用程序指定 |
 
 ## <a name="exceeding-maxdeliverycount"></a>超过 MaxDeliveryCount
-每个队列和订阅都具有 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) 和 [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_MaxDeliveryCount) 属性；默认值为 10。 只要消息在 ([ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)) 锁下传递，但已显式放弃或锁已过期，则该消息的 [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) 就会递增。 [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) 超过 [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) 时，该消息将移到 DLQ，并指定 `MaxDeliveryCountExceeded` 原因代码。
+每个队列和订阅都具有 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 和 [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) 属性；默认值为 10。 只要消息在 ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) 锁下传递，但已显式放弃或锁已过期，则该消息的 [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 就会递增。 [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 超过 [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 时，该消息将移到 DLQ，并指定 `MaxDeliveryCountExceeded` 原因代码。
 
-无法禁止此行为，但可将 [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) 设置为非常大的数。
+无法禁止此行为，但可将 [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 设置为非常大的数。
 
 ## <a name="exceeding-timetolive"></a>超过 TimeToLive
 [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) 或 [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) 属性设置为 **true**（默认值是 **false**）时，所有到期的消息将移到 DLQ，并指定 `TTLExpiredException` 原因代码。
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 - 目标队列或主题被禁用或删除。
 - 目标队列或主题超出最大实体大小。
 
-若要检索这些死信消息，可以使用 [FormatTransferDeadletterPath](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_FormatTransferDeadLetterPath_System_String_) 实用方法创建接收器。
+若要检索这些死信消息，可以使用 [FormatTransferDeadletterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formattransferdeadletterpath) 实用方法创建接收器。
 
 ## <a name="example"></a>示例
 下面的代码片段将创建一个消息接收器。 在主队列的接收循环中，此代码使用 [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_) 检索消息，该方法请求代理立即返回随时可用的任何消息或返回空结果。 如果此代码接收到一条消息，则会立即将其放弃，从而使 `DeliveryCount` 递增。 系统将此消息移动到 DLQ 后，[ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) 返回 **null**，主队列为空，且循环退出。

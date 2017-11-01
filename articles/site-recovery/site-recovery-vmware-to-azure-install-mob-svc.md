@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: eb2fbd16980eadfce15227b6ba07f00c47b672ee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3b26c7f34a8fd3d027464cb7a3704c7960b67c6
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>安装移动服务（VMware/物理到 Azure）
 Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其转发到进程服务器。 将移动服务部署到要复制到 Azure 的每台计算机（VMware VM 或物理服务器）上。 可使用以下方法将移动服务部署到需要保护的服务器上：
@@ -92,9 +92,13 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 > 开始在受保护的服务器上更新移动服务之前，请确保部署中的配置服务器、扩展进程服务器及所有主目标服务器均已更新。 有关详细信息，请参阅[如何更新配置服务器](site-recovery-vmware-to-azure-manage-configuration-server.md#upgrading-a-configuration-server)及[如何更新扩展进程服务器](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#upgrading-a-scale-out-process-server)
 
 1. 在 Azure 门户中，浏览到“<Your Vault>”->“复制项”视图。
-2. 如果配置服务器已更新到最新版本，则应看到一条通知，显示“新的 Site Recovery 复制代理更新已可用。单击以安装”*
+2. 如果配置服务器已更新到最新版本，则应看到一条通知，显示“新的 Site Recovery 复制代理更新已可用。单击以安装”
+   
+     ![ReplicatedItems](.\media\site-recovery-vmware-to-azure-install-mob-svc\replicated-item-notif.png)
 3. 单击通知打开虚拟机选择页面。
 4. 选择要升级移动服务的虚拟机，然后单击“确定”按钮。
+
+     ![ReplicatedItemsVMList](.\media\site-recovery-vmware-to-azure-install-mob-svc\update-okpng.png)
 5. 这将为每个所选的虚拟机启动“更新移动服务”作业。
 
 > [!NOTE]

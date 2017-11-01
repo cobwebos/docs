@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: raynew
-ms.openlocfilehash: b182c00ac9a6956d07dece621d03c84788442085
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 17bd7f424117842fd0687ba8a5fcf4d83c96a0bb
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/12/2017
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/12/2017
 ## <a name="updates"></a>更新
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 Update 6 
-更新时间：2017 年 10 月 6 日
+更新时间：2017 年 10 月 12 日
 
 Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所有修补程序，以及下面所述的新修补程序和增强功能。 
 
@@ -115,7 +115,6 @@ Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所�
 
 #### <a name="bug-fixes-and-enhancements"></a>Bug 修复和增强功能
 - Linux VM 的故障回复保护失败，而且在配置结束时，要复制的磁盘列表为空。
-
 
 ### <a name="site-recovery-scout-801-update-5"></a>Site Recovery Scout 8.0.1 Update 5
 Scout Update 5 是累积更新。 其中包含从 Update 1 到 Update 4 的所有修补程序，以及下面所述的新修补程序。
@@ -139,10 +138,10 @@ Scout Update 5 是累积更新。 其中包含从 Update 1 到 Update 4 的所�
     
 * 已修复：在故障回复保护期间，如果所选主目标服务器与受保护源计算机（在正向保护期间）不在同一 ESXi 服务器上，则 vContinuum 在故障回复恢复期间会选取错误的主目标服务器，并且恢复操作会失败。
 
-#### <a name="issues"></a>问题
-* P2V 群集修补程序仅适用于使用 Site Recovery Scout Update 5 全新保护的物理 MSCS 群集。 若要在使用较旧更新程序保护的 P2V MSCS 群集上安装群集修补程序，请按照 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中所述的升级步骤进行操作。
-* 如果在重新保护时，同一组磁盘在最初受保护的每个群集节点上都处于活动状态，则物理 MSCS 群集的重新保护只能重新使用现有的目标磁盘。 如果不是，则需执行 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中提到的手动步骤，将目标端磁盘移动到正确的数据存储路径，以便在重新保护期间重新使用它们。 如果在不执行以下升级步骤的情况下重新保护处于 P2V 模式的 MSCS 群集，则它会在目标 ESXi 服务器上创建新磁盘。 你将需要手动从数据存储中删除旧磁盘。
-* 当源 SLES11 或 SLES11（具有任何 Service Pack）服务器正常重新启动时，手动标记根磁盘复制对，以便重新同步。 CX 界面中不显示任何通知。 如果不标记用于重新同步的根磁盘，则可能会发现数据完整性问题。
+> [!NOTE]
+> * P2V 群集修补程序仅适用于使用 Site Recovery Scout Update 5 全新保护的物理 MSCS 群集。 若要在使用较旧更新程序保护的 P2V MSCS 群集上安装群集修补程序，请按照 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中所述的升级步骤进行操作。
+> * 如果在重新保护时，同一组磁盘在最初受保护的每个群集节点上都处于活动状态，则物理 MSCS 群集的重新保护只能重新使用现有的目标磁盘。 如果不是，则需执行 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中提到的手动步骤，将目标端磁盘移动到正确的数据存储路径，以便在重新保护期间重新使用它们。 如果在不执行以下升级步骤的情况下重新保护处于 P2V 模式的 MSCS 群集，则它会在目标 ESXi 服务器上创建新磁盘。 你将需要手动从数据存储中删除旧磁盘。
+> * 当源 SLES11 或 SLES11（具有任何 Service Pack）服务器正常重新启动时，手动标记根磁盘复制对，以便重新同步。 CX 界面中不显示任何通知。 如果不标记用于重新同步的根磁盘，则可能会发现数据完整性问题。
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
@@ -180,14 +179,13 @@ Scout Update 4 是累积更新。 其中包含从 Update 1 到 Update 3 的所�
   * 显示有关所有受保护设备的容量及可用空间的详细信息。
   * 提供源服务器上的 Scout 驱动程序状态。
 
-#### <a name="issues"></a>问题
-
-* InMage_Scout_Standard_8.0.1_GA.zip 基础包中含有：
+> [!NOTE]
+> * InMage_Scout_Standard_8.0.1_GA.zip 基础包中含有：
     * 更新的配置服务器基本安装程序 (InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe)
     * Windows 主目标基本安装程序 (InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe)。
     * 对于所有新安装，请使用新的配置服务器和 Windows 主目标 GA 位。
-* Update 4 可以直接应用于 8.0.1 GA。
-* 应用配置服务器和 RX 更新后，不能进行回滚。
+> * Update 4 可以直接应用于 8.0.1 GA。
+> * 应用配置服务器和 RX 更新后，不能进行回滚。
 
 
 ### <a name="azure-site-recovery-scout-801-update-3"></a>Azure Site Recovery Scout 8.0.1 Update 3

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/02/2017
+ms.date: 10/10/2017
 ms.author: alkohli
-ms.openlocfilehash: 916884e3ee95284497cded73b28b22e83751f624
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8dc7aebbeea7ad428be4af66e4e991f60c8301
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5
 
@@ -49,7 +49,7 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 * 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。
 
-* 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB4011837，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。
+* 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB4037263，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。
 
 ## <a name="install-update-5-as-a-hotfix"></a>将 Update 5 作为修补程序安装
 

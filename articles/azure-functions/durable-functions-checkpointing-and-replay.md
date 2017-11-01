@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 28c589b6821526fa6b91dc558a08ef2fb68f97df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8a5f3c915b1e3b6e11cec9c5540fa192f5f85dd
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions 中的检查点和重播 (Azure Functions)
 
@@ -63,7 +63,7 @@ public static async Task<List<string>> Run(
 
 完成后，前面所示的函数历史记录在 Azure 表存储中如下所示（为方便演示，此处采用了缩写）：
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | Name             | 结果                                                    | 状态 | 
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | 名称             | 结果                                                    | 状态 | 
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     | 
@@ -115,7 +115,7 @@ public static async Task<List<string>> Run(
 
   不确定性的操作必须在活动函数中执行。 这包括与其他输入或输出绑定之间的任何交互。 这可以确保在完成首次执行之后立即生成所有不确定性值并将其保存到执行历史记录。 然后，后续执行会自动使用保存的值。
 
-* 业务流程协调程序代码应是**非阻塞性的**。 例如，不能使用 `Thread.Sleep` 或等效的 API。
+* 业务流程协调程序代码应是**非阻塞性的**。 例如，这意味着没有 I/O 并且未调用 `Thread.Sleep` 或等效 API。
 
   如果业务流程协调程序需要延迟，可以使用 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) API。
 

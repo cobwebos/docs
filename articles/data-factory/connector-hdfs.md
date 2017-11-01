@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 8db368017ef25603598ec92e8bbbb1fc69230145
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d28b82f892ac88c32ab3e04df19143d69a5a05b
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 HDFS 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ HDFS 链接的服务支持以下属性：
 | type | type 属性必须设置为：**Hdfs**。 | 是 |
 | url |HDFS 的 URL |是 |
 | authenticationType | 允许的值为：Anonymous或 Windows。 <br><br> 若要对 HDFS 连接器使用 **Kerberos 身份验证**，请参阅[此部分](#use-kerberos-authentication-for-hdfs-connector)相应地设置本地环境。 |是 |
-| userName |Windows 身份验证的用户名。 |是（对于 Windows 身份验证） |
+| userName |Windows 身份验证的用户名。 对于 Kerberos 身份验证，指定 `<username>@<domain>.com`。 |是（对于 Windows 身份验证） |
 | password |Windows 身份验证的密码。 将此字段标记为 SecureString。 |是（对于 Windows 身份验证） |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 

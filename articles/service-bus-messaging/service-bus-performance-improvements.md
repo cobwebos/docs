@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/10/2017
+ms.date: 10/12/2017
 ms.author: sethm
-ms.openlocfilehash: e6a0e480f7748f12f5e566cf4059b5b2c4242c09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f57fbb8e2a86b744808ee844e5f853bdb587a5d
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
-本文介绍如何使用 [Azure 服务总线消息传递](https://azure.microsoft.com/services/service-bus/)在交换中转消息时优化性能。 该主题的第一部分介绍有助于提高性能的各种不同方法。 第二部分则指导用户如何针对给定方案以能够提供最佳性能的方式使用服务总线。
+本文介绍如何使用 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)在交换中转消息时优化性能。 本文的第一部分介绍有助于提高性能的各种不同机制。 第二部分则指导用户如何针对给定方案以能够提供最佳性能的方式使用服务总线。
 
-在本主题中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发件人”用于将消息发送到服务总线队列或主题的服务总线队列或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列或订阅客户端。
+在本主题中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发件人”用于将消息发送到服务总线队列或主题订阅的服务总线队列或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列或订阅客户端。
 
 以下几部分介绍服务总线用以帮助提高性能的几个概念。
 
@@ -117,7 +117,7 @@ Queue q = namespaceManager.CreateQueue(qd);
 批量存储访问不会影响计费的消息传递操作数，它是队列、主题或订阅的属性。 它不依赖于接收模式以及客户端和服务总线服务之间所使用的协议。
 
 ## <a name="prefetching"></a>预提取
-预提取允许队列或订阅客户端在执行接收操作时从服务加载其他消息。 客户端将这些消息存储在本地缓存中。 缓存大小由 [QueueClient.PrefetchCount][QueueClient.PrefetchCount] 属性或 [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] 属性决定。 启用预提取的每个客户端维护其自己的缓存。 客户端之间不共享缓存。 如果客户端启动接收操作，而其缓存是空的，则服务会传输一批消息。 批的大小等于缓存的大小或 256 KB，以二者中较小者为准。 如果客户端启动接收操作，而其缓存中包含一个消息，则将从缓存中取出消息。
+[预提取](service-bus-prefetch.md)允许队列或订阅客户端在执行接收操作时从服务加载其他消息。 客户端将这些消息存储在本地缓存中。 缓存大小由 [QueueClient.PrefetchCount][QueueClient.PrefetchCount] 属性或 [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] 属性决定。 启用预提取的每个客户端维护其自己的缓存。 客户端之间不共享缓存。 如果客户端启动接收操作，而其缓存是空的，则服务会传输一批消息。 批的大小等于缓存的大小或 256 KB，以二者中较小者为准。 如果客户端启动接收操作，而其缓存中包含一个消息，则将从缓存中取出消息。
 
 预提取一条消息后，服务将锁定此预提取的消息。 通过执行此操作，其他接收方则无法接收到此预提取的消息。 如果接收方在锁定过期之前无法完成此消息，则该消息便对其他接收方可用。 预提取的消息的副本则保留在缓存中。 使用过期的缓存副本的接收方会在尝试完成该消息时接收到一个异常。 默认情况下，消息锁定在 60 秒后过期。 这一值可延长到 5 分钟。 若要阻止过期消息的使用，缓存大小应始终小于客户端可在锁定超时间隔内使用的消息数。
 
@@ -145,7 +145,7 @@ namespaceManager.CreateTopic(td);
 > Express 实体不支持事务。
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>使用分区的队列或主题
-在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，分区的队列或主题则被分布在多个节点和消息存储。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 要创建分区的实体，则将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**，如以下示例所示。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
+在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，[分区的队列或主题](service-bus-partitioning.md)则分布在多个节点和消息存储上。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 要创建分区的实体，则将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**，如以下示例所示。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
 ```csharp
 // Create partitioned queue.
@@ -248,16 +248,16 @@ namespaceManager.CreateQueue(qd);
 ## <a name="next-steps"></a>后续步骤
 若要了解有关优化服务总线性能的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
-[QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
-[MessageSender]: /dotnet/api/microsoft.servicebus.messaging.messagesender
+[QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
+[MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[PeekLock]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[ReceiveAndDelete]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.netmessagingtransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_NetMessagingTransportSettings_BatchFlushInterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations#Microsoft_ServiceBus_Messaging_QueueDescription_EnableBatchedOperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount#Microsoft_ServiceBus_Messaging_QueueClient_PrefetchCount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount#Microsoft_ServiceBus_Messaging_SubscriptionClient_PrefetchCount
-[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence#Microsoft_ServiceBus_Messaging_BrokeredMessage_ForcePersistence
-[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
+[PeekLock]: /dotnet/api/microsoft.azure.servicebus.receivemode
+[ReceiveAndDelete]: /dotnet/api/microsoft.azure.servicebus.receivemode
+[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
+[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations
+[QueueClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount
+[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount
+[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
+[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing#Microsoft_ServiceBus_Messaging_TopicDescription_EnableFilteringMessagesBeforePublishing
+[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing

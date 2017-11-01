@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: badfee15fba5822b383b09a6cc29d9944e64e007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a496059d1959a6c9e762e70dfbeff9bf961c4d4
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 + **一个 Azure API 管理实例**。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 ## <a name="enable-vpn"> </a>在内部虚拟网络中创建 API 管理
-内部虚拟网络中的 API 管理服务托管在内部负载均衡器 (ILB) 后面。 ILB 的 IP 地址在 [RFC1918](http://www.faqs.org/rfcs/rfc1918.html) 范围内。  
+内部虚拟网络中的 API 管理服务托管在内部负载均衡器 (ILB) 后面。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>使用 Azure 门户启用虚拟网络连接
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 * 在虚拟网络中部署现有的 API 管理服务：使用 cmdlet [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) 将现有 API 管理服务移到虚拟网络内，并将其配置为使用内部虚拟网络类型。
 
 ## <a name="apim-dns-configuration"></a>DNS 配置
-如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须自行管理 DNS。
+如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须管理自己的路由。
 
 > [!NOTE]
 > API 管理服务不会侦听来自 IP 地址的请求， 它只响应到发往其服务终结点上配置的主机名的请求。 这些终结点包括网关、开发人员门户、发布者门户、直接管理终结点和 Git。
@@ -105,6 +105,11 @@ ms.lasthandoff: 10/11/2017
 
    2. 然后即可在用于访问终结点的 DNS 服务器中创建记录，这些终结点只能从虚拟网络内部访问。
 
+## <a name="routing"></a>路由
++ 子网范围中的负载均衡专用虚拟 IP 地址将保留，并用于从 vnet 中访问 API 管理服务终结点。
++ 负载均衡公共 IP 地址 (VIP) 也将保留，用于仅通过端口 3443 访问管理服务终结点。
++ 子网 IP 范围中的 IP 地址 (DIP) 将用于访问 vnet 中的资源，公共 IP 地址 (VIP) 将用于访问 vnet 外部的资源。
++ 负载均衡公共和专用 IP 地址可以在 Azure 门户的“概述/概要”边栏选项卡上找到。
 
 ## <a name="related-content"></a>相关内容
 若要了解更多信息，请参阅下列文章：

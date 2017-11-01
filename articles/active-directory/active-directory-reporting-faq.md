@@ -11,35 +11,47 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2017
+ms.date: 10/12/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: faee3bc9b0b1a10a48a514d830af5045cb047e02
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory 报告常见问题
 
-本文包括对 Azure Active Directory 报告常见问题 (FAQ) 的解答。  
-有关详细信息，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。 
+本文包括了对 Azure Active Directory (Azure AD) 报告常见问题的解答。 有关详细信息，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。 
+
+**问：我在使用 https://graph.windows.net/&lt;tenant-name&gt;/reports/ 终结点 API 以编程方式将 Azure AD 审核和集成的应用程序使用情况报告拉取到我们的报告系统中。我应当切换到什么？**
+
+**答：**请查看我们的 [API 参考文档](https://developer.microsoft.com/graph/)来了解如何使用新的 API 访问[活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)。 此终结点有两个报告（审核和登录），它们提供了你在旧的 API 终结点中获取的所有数据。 此新的终结点还有一个登录报告，其中包含可用来获取应用使用情况、设备使用情况和用户登录信息的 Azure AD Premium 许可证。
+
+
+--- 
+
+**问：我在使用 https://graph.windows.net/&lt;tenant-name&gt;/reports/ 终结点 API 以编程方式将 Azure AD 安全报告（特定类型的检测，例如泄漏的凭据或来自匿名 IP 地址的登录）拉取到我们的报告系统中。我应当切换到什么？**
+
+**答：**可以使用 [Identity Protection 风险事件 API](active-directory-identityprotection-graph-getting-started.md) 通过 Microsoft Graph 访问安全检测。 此新格式在如何查询数据方面提供了更大的灵活性，可以使用高级筛选、字段选择和其他手段；并且此新格式将风险事件标准化为一种类型，以便更轻松地集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
+
+--- 
 
 **问：Azure 门户中活动日志（审核和登录）的数据保留是什么？** 
 
-**答：**我们免费为客户提供 7 天的数据，通过切换到 Azure AD Premium 1 或 2 许可证，便可以访问长达 30 天的数据。 有关保留的详细信息，请参阅 [Azure Active Directory 报告保留策略](active-directory-reporting-retention.md)。
+**答：**对于免费客户，我们提供 7 天的数据，通过购买 Azure AD Premium 1 或 Premium 2 许可证，可以访问长达 30 天的数据。 有关报告保留详细信息，请参阅 [Azure Active Directory 报告保留策略](active-directory-reporting-retention.md)。
 
 --- 
 
 **问：完成任务后多久才能看到“活动”数据？**
 
-**答：**审核活动日志的延迟范围为 15 分钟到 1 小时。 大多数记录的登录活动日志至少延迟 15 分钟，而少数记录的延迟可长达 2 小时。
+**答：**审核活动日志的延迟为 15 分钟到 1 小时。 对于某些记录，登录活动日志可能需要花费 15 分钟到多达 2 小时。
 
 ---
 
-**问：查看 Azure 门户中的活动日志或通过 API 获取数据是否需要是全局管理员？**
+**问：若要查看到 Azure 门户的活动登录或通过 API 获取数据，是否需要是全局管理员？**
 
-**答：**否。 **安全读者**、**安全管理员**或**全局管理员**都可以查看 Azure 门户中的报告数据或通过 API 访问此数据。
+**答：**否。 必须是**安全读者**、**安全管理员**或**全局管理员**才能在 Azure 门户中或通过 API 获取报告数据。
 
 ---
 
@@ -104,7 +116,7 @@ ms.lasthandoff: 10/11/2017
 
 ---
 
-问：如何在登录和有风险的登录报表中计算 IP 地址？
+**问：在登录和有风险的登录报告中，IP 地址是如何计算的？**
 
 答：IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 出于某些因素这一点非常复杂，例如，从中央池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远。 鉴于上述原因，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。 
 

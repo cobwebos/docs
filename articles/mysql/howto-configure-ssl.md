@@ -9,11 +9,11 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 38e68712699b3e89a10c3d44d8ec313f531fcbdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 079bb22aa76b8354f79400ced4e04dc971ea249a
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database for MySQL 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -24,11 +24,11 @@ Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database
 
 ## <a name="step-2-bind-ssl"></a>步骤 2：绑定 SSL
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
-配置 MySQL Workbench，以便安全地通过 SSL 连接。 在“设置新连接”对话框上，导航到 MySQL Workbench 上的 SSL 选项卡。在“SSL CA 文件:”字段中输入 BaltimoreCyberTrustRoot.crt.pem 的文件位置。
-![保存自定义磁贴](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+配置 MySQL Workbench，以便安全地通过 SSL 连接。 从“设置新连接”对话框，导航到“SSL”选项卡。在“SSL CA 文件:”字段中输入 BaltimoreCyberTrustRoot.crt.pem 的文件位置。 
+![保存自定义磁贴](./media/howto-configure-ssl/mysql-workbench-ssl.png) 对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
-使用 MySQL 命令行接口，执行以下命令：
+绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令：
 ```dos
 mysql.exe -h mysqlserver4demo.mysql.database.azure.com -u Username@mysqlserver4demo -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
@@ -52,6 +52,7 @@ mysql> status
 通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
 
 ## <a name="sample-code"></a>代码示例
+若要从应用程序通过 SSL 与 Azure Database for MySQL 建立安全连接，请参阅以下代码示例。
 ### <a name="php"></a>PHP
 ```
 $conn = mysqli_init();

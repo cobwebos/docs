@@ -1,11 +1,11 @@
 ---
-title: "用于容器的 Azure 应用服务 Web 应用常见问题解答 | Microsoft Docs"
-description: "用于容器的 Azure 应用服务 Web 应用常见问题解答。"
+title: "Linux 上的 Azure 应用服务常见问题解答 | Microsoft Docs"
+description: "Linux 上的 Azure 应用服务常见问题解答。"
 keywords: "Azure 应用服务, Web 应用, 常见问题解答, Linux, oss"
 services: app-service
 documentationCenter: 
 author: ahmedelnably
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: app-service
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b783f7e8cfef991e7028ba4b4c7b1d0935397580
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 38e771b8d7211e8f4f408a43b1ab2e293370ab9c
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="azure-app-service-web-app-for-containers-faq"></a>用于容器的 Azure 应用服务 Web 应用常见问题解答
+# <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
-随着用于容器的 Web 应用的发布，我们正在努力添加功能和改进我们的平台。 本文提供客户最近提出的问题的解答。
+随着 Linux 应用服务的发布，我们正在努力添加功能和改进我们的平台。 本文提供客户最近提出的问题的解答。
 
 如果有疑问，请对本文发表评论，我们会尽快解答。
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 **更新 Docker Hub 上的映像后，我的 Web 应用仍使用旧的 Docker 容器映像。是否支持自定义容器的持续集成和部署？**
 
-**答：**若要设置 Azure 容器注册表或 DockerHub 映像的持续集成/部署，请查阅以下文章：[使用用于容器的 Azure Web 应用进行持续部署](./app-service-linux-ci-cd.md)。 对于专用注册表，可以通过先停止然后启动 Web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。
+若要设置 Azure 容器注册表或 DockerHub 映像的持续集成/部署，请查阅以下文章：[使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)。 对于专用注册表，可以通过先停止然后启动 Web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。
 
 **是否支持过渡环境？**
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/11/2017
 
 **专用注册表选项中的映像名称的格式是什么？**
 
-添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要设置 `docker-custom-image-name`，请使用 [`az` 命令行工具](https://docs.microsoft.com/en-us/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set)。
+添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要设置 `docker-custom-image-name`，请使用 [`az` 命令行工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set)。
 
 **是否可以在自定义容器映像上公开多个端口？**
 
@@ -134,6 +134,6 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 
 ## <a name="next-steps"></a>后续步骤
 
-* [什么是用于容器的 Azure Web 应用？](app-service-linux-intro.md)
+* [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
 * [设置 Azure 应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [使用用于容器的 Azure Web 应用进行持续部署](./app-service-linux-ci-cd.md)
+* [使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)

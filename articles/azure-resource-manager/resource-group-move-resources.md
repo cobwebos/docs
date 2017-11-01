@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 326039c58466e65183a594e222db24e998f151b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a28914d967e77d6c8881cd6e56b798269d3df3e
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="services-that-do-not-enable-move"></a>不支持移动的服务
 
-当前不支持对资源进行移动的服务包括：
+目前不可移动资源的服务包括：
 
 * AD 域服务
 * AD 混合运行状况服务
@@ -320,6 +320,11 @@ ms.lasthandoff: 10/11/2017
 可以将 HDInsight 群集移到新的订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、网卡或负载均衡器）。 此外，无法将连接到群集的虚拟机的网卡移到新的资源组。
 
 将 HDInsight 群集移到新的订阅时，首先移动其他资源（如存储帐户）。 然后移动 HDInsight 群集本身。
+
+## <a name="search-limitations"></a>搜索限制
+
+不能同时移动置于不同区域中的多个搜索资源。
+在这种情况下，需要分别移动它们。
 
 ## <a name="use-portal"></a>使用门户
 

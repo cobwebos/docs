@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
-ms.openlocfilehash: 5d9a5b0dbd0b2a95bbb3cae37aea27908addc3c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eca593890b6b030caa0acb9ede90ca24fe136ca0
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 10/11/2017
 
 使用“配置”边栏选项卡中的“启用探查器”或“禁用探查器”按钮控制所链接的所有 Web 应用上的探查器。
 
-
-
 ![配置边栏选项卡][linked app services]
+
+与通过应用服务计划托管的 Web 应用不同，在 *Azure 计算*资源（例如：虚拟机、虚拟机规模集、Service Fabric、云服务）中托管的应用程序不由 Azure 直接管理。 在这种情况下没有 Web 应用链接到此处，只需在屏幕中单击即可启用探查器。
 
 ## <a name="disable-the-profiler"></a>禁用探查器
 若要为单个应用服务实例停止或重新启动探查器，可在“Web 作业”中的“应用服务资源”中找到相应的实例。 若要删除探查器，请查看“扩展”下面的选项。

@@ -3,7 +3,7 @@ title: "Azure IoT 协议网关 | Microsoft Docs"
 description: "如何使用 Azure IoT 协议网关扩展 IoT 中心功能及协议支持，使设备利用不由 IoT 中心本机支持的协议即可连接到该中心。"
 services: iot-hub
 documentationcenter: 
-author: kdotchkoff
+author: fsautomata
 manager: timlt
 editor: 
 ms.assetid: 555e59ae-3136-4533-8ba8-f3a3b6acf648
@@ -13,18 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2017
-ms.author: kdotchko
-ms.openlocfilehash: ad2d33b0e8f02facd6f0d20bf7f5b7838747cdaf
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: elioda
+ms.openlocfilehash: 1ed8ec28b95bbc91b731fd7bb7b3f1f6654e7fcf
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # 支持 IoT 中心的其他协议
-Azure IoT 中心通过 MQTT、AMQP 和 HTTPS 协议以本机方式支持通信。 在某些情况下，设备或现场网关可能无法使用这些标准协议的其中一个，且需要协议自适应。 在这种情况下，可以使用自定义网关。 自定义网关可以桥接进出 IoT 中心的流量，从而为 IoT 中心终结点启用协议自适应。 可以使用 [Azure IoT 协议网关](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)作为自定义网关，来为 IoT 中心启用协议自适应。
+Azure IoT 中心通过 MQTT、AMQP 和 HTTPS 协议以本机方式支持通信。 在某些情况下，设备或现场网关可能无法使用其中一个标准协议，并需要协议适配。 在这种情况下，可以使用自定义网关。 自定义网关通过桥接进出 IoT 中心的流量，为 IoT 中心终结点启用协议适配。 可以使用 [Azure IoT 协议网关](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)作为自定义网关，来为 IoT 中心启用协议自适应。
 
 ## Azure IoT 协议网关
-Azure IoT 协议网关是协议自适应的框架，旨在用来与 IoT 中心进行高缩放性双向设备通信。 协议网关是一种传递组件，通过特定的协议接受设备连接。 它通过 AMQP 1.0 桥接发往 IoT 中心的流量。 Azure IoT 协议网关以开源软件项目的形式提供，它具有一定的灵活性，可用于添加对各种协议和协议版本的支持。
+Azure IoT 协议网关是协议自适应的框架，旨在用来与 IoT 中心进行高缩放性双向设备通信。 协议网关是一种传递组件，通过特定的协议接受设备连接。 它通过 AMQP 1.0 桥接发往 IoT 中心的流量。 
 
 可以使用 Azure Service Fabric、Azure 云服务辅助角色或 Windows 虚拟机，以高度缩放的方式在 Azure 中部署协议网关。 此外，可将协议网关部署在本地环境中，例如现场网关。
 
@@ -32,7 +32,7 @@ Azure IoT 协议网关包含可让你根据需要自定义 MQTT 协议行为的 
 
 MQTT 适配器还会演示用来为其他协议构建协议适配器的编程模型。 此外，借助 Azure IoT 协议网关编程模型，可对专门化处理插入自定义组件，例如自定义身份验证、消息转换、压缩/解压缩，或加密/解密设备与 IoT 中心之间的流量。
 
-为了提供弹性，协议网关和 MQTT 实现在开源软件项目中提供。 这样，可就可以根据自定义该实现。
+为了提供弹性，在开源软件项目中提供了 Azure IoT 协议网关和 MQTT 实现。 可以使用开放源代码项目添加对各种协议和协议版本的支持，或者为方案自定义实现。 
 
 ## 后续步骤
 要了解有关 Azure IoT 协议网关的详细信息以及如何使用并将其部署为 IoT 解决方案的一部分，请参阅：

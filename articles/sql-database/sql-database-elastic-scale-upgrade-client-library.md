@@ -1,6 +1,6 @@
 ---
 title: "升级到最新的弹性数据库客户端库 | Microsoft 文档"
-description: "使用 Nuget 升级应用程序和库"
+description: "使用 Nuget 升级弹性数据库客户端库。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: ddove
-ms.openlocfilehash: 7e28d128645e856c0efa6e4f78d8f9f36982a76c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0334f701548d938c98aaa2a946b1e5e892c0700
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>升级应用以使用最新的弹性数据库客户端库
-可通过 Visual Studio 中 NuGetand 和 NuGetPackage 管理器界面获取[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的新版本。 升级包含客户端库的 bug 修复和新功能支持。
+可通过 Visual Studio 中的 NuGet 和 NuGetPackage 管理器界面获取[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的新版本。 升级包含客户端库的 bug 修复和新功能支持。
 
 **要获取最新版本**：请转到 [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
 
