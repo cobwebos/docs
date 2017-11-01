@@ -17,17 +17,17 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91f0aa093e0a1f7ed4d54a0cdf5ef53bc41cb6be
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 6b3fb9a3ea090f0083e8f113ddf13312fe42b59a
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>使用 Azure CLI 创建容器注册表
 
 Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建 Azure 容器注册表实例。
 
-本快速入门需要运行 Azure CLI 2.0.12 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
+本快速入门需要运行 Azure CLI 2.0.20 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
 还必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
 
@@ -45,10 +45,7 @@ az group create --name myResourceGroup --location eastus
 
 在本快速入门中，我们将创建*基本*注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的扩展详细信息，请参阅[容器注册表 SKU](container-registry-skus.md)。
 
-Azure 容器注册表可用于以下几个 SKU 中：`Basic`、`Managed_Basic`、`Managed_Standard` 和 `Managed_Premium`。 虽然 `Managed_*` SKU 提供托管存储和 Webhook 等高级功能，但在使用 Azure CLI 时，它们当前在某些 Azure 区域中不可用。 在本快速入门中，我们选择 `Basic` SKU，因为它在所有区域均可用。
-
->[!NOTE]
-> 托管注册表当前在所有区域中都可用。 但是，当前版本的 Azure CLI 尚不支持在所有区域中创建托管注册表。 将在下一版本的 Azure CLI 中提供支持。 在其发布前，请使用 [Azure 门户](container-registry-get-started-portal.md)创建托管注册表。
+[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
 使用 [az acr create](/cli/azure/acr#create) 命令创建 ACR 实例。
 

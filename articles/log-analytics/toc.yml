@@ -128,6 +128,8 @@
               href: log-analytics-view-designer-tiles.md
             - name: 可视化部分参考
               href: log-analytics-view-designer-parts.md
+            - name: 筛选器
+              href: log-analytics-view-designer-filters.md
         - name: Power BI
           href: log-analytics-powerbi.md
     - name: 创建警报

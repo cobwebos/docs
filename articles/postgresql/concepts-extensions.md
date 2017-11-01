@@ -9,34 +9,34 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: faa6d72645fafeb2551795effd87232f0e3e0fe0
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: a80b27dc8f1a15bf2e62c9992be8bfa02cacb2f6
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展可以如同内置功能一样运行。 有关 PostgreSQL 扩展的详细信息，请参阅 [Packaging Related Objects into an Extension](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)（将相关对象打包到扩展中）。
 
 ## <a name="how-to-use-postgresql-extensions"></a>如何使用 PostgreSQL 扩展
-必须先为数据库安装 PostgreSQL 扩展，然后才能使用它们。 若要安装特定扩展，请通过 psql 工具运行 [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) 命令，将打包的对象加载到数据库中。
+必须先在数据库中安装 PostgreSQL 扩展，然后才能使用它们。 若要安装特定扩展，请通过 psql 工具运行 [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) 命令，将打包的对象加载到数据库中。
 
-用于 PostgreSQL 的 Azure 数据库支持本文列出的一部分键扩展。 未列出的扩展不受支持；无法使用 Azure Database for PostgreSQL 服务创建自己的扩展。
+Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列出）。 未列出的扩展不受支持；无法使用 Azure Database for PostgreSQL 服务创建自己的扩展。
 
 ## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 支持的扩展
-下表列出了用于 PostgreSQL 的 Azure 数据库目前支持的标准 PostgreSQL 扩展。 还可以通过查询 pg\_available\_extensions 获取此信息。
+下表列出了用于 PostgreSQL 的 Azure 数据库目前支持的标准 PostgreSQL 扩展。 还可以通过查询 `pg\_available\_extensions` 获取此信息。
 
 ### <a name="data-types-extensions"></a>数据类型扩展
 
 > [!div class="mx-tableFixed"]
 | **扩展** | **说明** |
 |---|---|
-| [chkpass](https://www.postgresql.org/docs/9.6/static/chkpass.html) | 提供用于自动加密密码的数据类型 |
-| [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | 提供不区分大小写的字符串类型 |
-| [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | 提供用于多维数据集的数据类型 |
-| [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | 提供用于存储键/值对集的数据类型 |
-| [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | 提供用于国际产品编号标准的数据类型 |
-| [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | 提供用于分层树形结构的数据类型 |
+| [chkpass](https://www.postgresql.org/docs/9.6/static/chkpass.html) | 提供用于自动加密密码的数据类型。 |
+| [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | 提供不区分大小写的字符串类型。 |
+| [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | 提供用于多维数据集的数据类型。 |
+| [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | 提供用于存储键/值对集的数据类型。 |
+| [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | 提供用于国际产品编号标准的数据类型。 |
+| [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | 提供用于分层树形结构的数据类型。 |
 
 ### <a name="functions-extensions"></a>函数扩展
 
@@ -73,7 +73,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个�
 > [!div class="mx-tableFixed"]
 | **扩展** | **说明** |
 |---|---|
-| [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 可加载过程语言 |
+| [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 可加载过程语言。 |
 
 ### <a name="miscellaneous-extensions"></a>其他扩展
 
@@ -87,7 +87,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个�
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | 提供一种显示元组级别统计信息的方法。 |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部数据包装器，用于访问外部 PostgreSQL 服务器中存储的数据。 |
 
-### <a name="postgis"></a>PostGIS
+### <a name="postgis-extensions"></a>PostGIS 扩展
 
 > [!div class="mx-tableFixed"]
 | **扩展** | **说明** |

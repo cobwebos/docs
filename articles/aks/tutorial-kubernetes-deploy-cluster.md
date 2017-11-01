@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9e48d490b998fb57c604f2f5b2717e65d28dce1a
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7f9991d2254011080185a555f5351dce85f73704
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -38,6 +38,15 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 通过 AKS，�
 
 在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像](./tutorial-kubernetes-prepare-app.md)。
 
+## <a name="enabling-aks-preview-for-your-azure-subscription"></a>为 Azure 订阅启用 AKS 预览版
+AKS 为预览版时，创建新群集需要订阅上的功能标记。 可以为任意数量的订阅请求此功能，只要你想使用。 使用 `az provider register` 命令注册 AKS 提供程序：
+
+```azurecli-interactive
+az provider register -n Microsoft.ContainerService
+```
+
+注册之后，即可通过 AKS 创建 Kubernetes 群集。
+
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
 下面的示例在 `myResourceGroup` 资源组中创建 `myK8sCluster` 群集。 此资源组是在[上一教程](./tutorial-kubernetes-prepare-acr.md)中进行创建。
@@ -50,12 +59,12 @@ az aks create --resource-group myResourceGroup --name myK8sCluster --agent-count
 
 ## <a name="install-the-kubectl-cli"></a>安装 kubectl CLI
 
-若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)（Kubernetes 命令行客户端）。 
+若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)（Kubernetes 命令行客户端）。
 
 如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果要在本地安装它，请运行以下命令：
 
 ```azurecli
-az aks install-cli 
+az aks install-cli
 ```
 
 ## <a name="connect-with-kubectl"></a>连接 kubectl
