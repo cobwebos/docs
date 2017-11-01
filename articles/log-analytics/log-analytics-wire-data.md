@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: banders
-ms.openlocfilehash: ce8065d777bb315d4f9589d1b24a5152296facfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/19/2017
+ms.author: magoedte;banders
+ms.openlocfilehash: 3bb4c82268fe7805227c213000dc803307876fe7
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics 中的 Wire Data 2.0（预览版）解决方案
 
 ![Wire Data 符号](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-线路数据是通过 OMS 代理（包括 Operations Manager 和 Windows 连接的代理以及 Linux 代理）从计算机收集的网络和性能整合数据。 网络数据与其他日志数据结合在一起，可帮助你将数据进行关联。
+线路数据是通过 OMS 代理（包括由环境中的 Operations Manager 监视的代理）从与 Windows 和 Linux 相连的计算机中收集的网络与性能整合数据。 网络数据与其他日志数据结合在一起，可帮助你将数据进行关联。
 
-除了 OMS 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Log Analytics。
+除 OMS 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Log Analytics。  
 
 > [!NOTE]
 > 不能将以前版本的 Wire Data 解决方案添加到新工作区。 如果已启用了原始的 Wire Data 解决方案，则可以继续使用该解决方案。 不过，若要使用 Wire Data 2.0，必须首先删除原始版本。
 
-默认情况下，Log Analytics 从 Windows 中内置的计数器收集针对 CPU、内存和磁盘记录的数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。 可以在“日志”选项卡的“设置”页面添加其他性能计数器。
+默认情况下，Log Analytics 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
 
 如果使用过 [sFlow](http://www.sflow.org/) 或其他包含 [Cisco 的 NetFlow 协议](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)的软件，则不会对来自线路数据的统计信息和数据感到陌生。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 
 在使用线路数据搜索时，可以筛选数据并将其分组，以查看有关最突出的代理和协议的信息。 还可以查看某些计算机（IP 地址/MAC 地址）彼此之间何时进行了通信、通信持续了多长时间，以及发送了多少数据。基本上，可以基于搜索查看有关网络流量的元数据。
 
-不过，因为查看的是元数据，因此这不一定适用于深入的故障排除。 Log Analytics 中的线路数据并非完整捕获的网络数据。 因此，它不能用于深入的数据包级故障排除。 与其他收集方法相比，使用代理的优点是不需要安装设备、重新配置网络交换机或执行复杂的配置。 线路数据完全基于代理，将代理安装在一台计算机上，它就会监视自己的网络流量。 另一个优点体现在想要监视在云提供商、主机托管服务提供商或 Microsoft Azure 中运行的工作负荷时。在这种情况下，用户本身不必拥有结构层。
+不过，因为查看的是元数据，因此这不一定适用于深入的故障排除。 Log Analytics 中的线路数据并非完整捕获的网络数据。  因此，它不能用来进行数据包级别的深度故障排除。 与其他收集方法相比，使用代理的优点是不需要安装设备、重新配置网络交换机或执行复杂的配置。 线路数据完全基于代理，将代理安装在一台计算机上，它就会监视自己的网络流量。 另一个优点体现在想要监视在云提供商、主机托管服务提供商或 Microsoft Azure 中运行的工作负荷时。在这种情况下，用户本身不必拥有结构层。
 
 ## <a name="connected-sources"></a>连接的源
 
@@ -59,7 +59,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除 [OMS 代理](log-analytics-windows-agents.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)。 |
-| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除 [OMS 代理](log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)。 |
+| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除 [OMS 代理](log-analytics-quick-collect-linux-computer.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 数据从管理组转发到 Log Analytics。 |
 | Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 
@@ -208,10 +208,10 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 使用以下步骤在运行 Windows 的每台计算机上安装依赖关系代理：
 
-1. 请按照[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](log-analytics-windows-agents.md)中的说明安装 OMS 代理。
-2. 使用上一部分中的链接下载 Windows 代理，然后使用以下命令运行该代理：InstallDependencyAgent-Windows.exe
+1. 遵循[从托管在环境中的 Windows 计算机收集数据](log-analytics-windows-agents.md)所述步骤安装 OMS 代理。
+2. 使用上一部分中的链接下载 Windows 依赖项代理，然后使用以下命令运行该代理：`InstallDependencyAgent-Windows.exe`
 3. 按照向导安装代理。
-4. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
+4. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
 
 #### <a name="windows-command-line"></a>Windows 命令行
 
@@ -234,7 +234,7 @@ InstallDependencyAgent-Windows.exe /?
 
 使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
 
-1. 按照[从 Linux 计算机收集和管理数据](log-analytics-agent-linux.md)中的说明安装 OMS 代理。
+1. 遵循[从托管在环境中的 Linux 计算机收集数据](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 OMS 代理。
 2. 使用上一部分中的链接下载 Linux 依赖关系代理，然后以 root 身份使用以下命令安装该代理：sh InstallDependencyAgent-Linux64.bin
 3. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是：/var/opt/microsoft/dependency-agent/log。
 

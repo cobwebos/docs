@@ -1,6 +1,6 @@
 ---
-title: "使用 Application Insights 的 Web 应用程序使用情况分析 | Microsoft docs"
-description: "了解用户，以及他们将 Web 应用用于哪些目的。"
+title: "使用 Azure Application Insights 进行使用情况分析 | Microsoft docs"
+description: "了解用户，以及他们将应用用于哪些目的。"
 services: application-insights
 documentationcenter: 
 author: botatoes
@@ -10,17 +10,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 10/10/2017
 ms.author: bwren
-ms.openlocfilehash: edf15e72c822ea5e045895c6f03477c613c0a6c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6985467658ae8a52d3c963dd1965c0711cac4ca7
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
-# <a name="usage-analysis-for-web-applications-with-application-insights"></a>使用 Application Insights 的 Web 应用程序使用情况分析
+# <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
-Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](app-insights-overview.md) 可帮助你有效地深入分析人们如何使用 Web 应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
+Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](app-insights-overview.md) 可帮助你有效地深入分析人们如何使用应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
 
 ## <a name="send-telemetry-from-your-app"></a>从应用发送遥测数据
 
@@ -34,8 +34,9 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
 
     ![将脚本复制到主网页的开头。](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
+3. **移动应用代码：**通过[按照此指南操作](app-insights-mobile-center-quickstart.md)，使用 Mobile Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights ，以进行分析。
 
-3. **获取遥测：**在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
+4. **获取遥测：**在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
 
     发布应用以监视应用性能，并查看用户使用该应用在执行哪些操作。
 
@@ -53,7 +54,7 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
 
 右侧的见解指出了数据集中的相关模式。  
 
-* “用户”报告统计所选时间段内访问页面的唯一用户数目。 （使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。）
+* “用户”报告统计所选时间段内访问页面的唯一用户数目。 对于 Web 应用，将使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。
 * “会话”报告统计访问站点的用户会话数。 会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
 
 [有关用户、会话和事件工具的详细信息](app-insights-usage-segmentation.md)  
@@ -94,20 +95,20 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
 
 ## <a name="custom-business-events"></a>自定义业务事件
 
-要明确了解用户将 Web 应用用于什么目的，可以插入代码行来记录自定义事件。 这些事件可以跟踪任何活动，包括详细的用户操作（例如单击特定的按钮），以及更重要的业务活动（例如购买活动或游戏获胜）。 
+要明确了解用户将应用用于什么目的，可以插入代码行来记录自定义事件。 这些事件可以跟踪任何活动，包括详细的用户操作（例如单击特定的按钮），以及更重要的业务活动（例如购买活动或游戏获胜）。 
 
 尽管在某些情况下页面视图可呈现有用的事件，但一般情况下这些事件并不真实。 用户无需购买产品即可打开产品页面。 
 
 使用特定的业务事件可以绘制用户在站点中的进度图表。 可以了解用户对不同选项的偏好，以及他们在哪个位置放弃了应用或者遇到了问题。 了解这些信息后，可以针对开发积压工作的优先级做出明智的决策。
 
-可以在网页中记录事件：
+可以在应用的客户端记录事件：
 
 ```JavaScript
 
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
-或者在 Web 应用的服务器端记录事件：
+也可以在服务器端进行记录：
 
 ```C#
     var tc = new Microsoft.ApplicationInsights.TelemetryClient();

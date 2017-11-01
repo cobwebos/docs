@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/23/2017
 ms.author: terrylan
-ms.openlocfilehash: b3b4a6df431ccdb882dd354aac9cb86a96a81b11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abbcb0a8e0206d78ca94520dfa81ab92506c47af
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
 Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。
@@ -33,6 +33,11 @@ Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protecti
    - 无实时保护 - 已在 VM 和计算机上安装反恶意软件解决方案，但未配置实时保护。   可能是因为服务被禁用，也可能是因为安全中心由于解决方案不受支持而无法获取状态。 有关受支持的解决方案列表，请参阅[合作伙伴集成](security-center-partner-integration.md)。
    - 未报告 - 已安装反恶意软件解决方案，但其不报告数据。
    - 未知 - 已安装反恶意软件解决方案，但其状态未知或报告未知错误。
+
+   > [!NOTE]
+   > 请参阅[集成安全解决方案](security-center-partner-integration.md#integrated-azure-security-solutions)以获取与安全中心集成的终结点保护安全解决方案列表。
+   >
+   >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 Endpoint Protection 问题在安全中心内显示为建议。  如果环境容易受到反恶意软件威胁的攻击，“建议”和“计算”下显示此建议。 若要查看“Endpoint Protection 问题”仪表板，需要遵循“计算”工作流。

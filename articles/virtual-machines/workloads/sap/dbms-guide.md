@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1046d32a0b4b6ede027ef1931314a188c64c94bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba5606a8dbe311dae587ac3664cb77e0835e7f45
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -288,13 +288,13 @@ ms.lasthandoff: 10/11/2017
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
-[virtual-network-deploy-multinic-arm-cli]:../../../virtual-network/virtual-network-deploy-multinic-arm-cli.md
-[virtual-network-deploy-multinic-arm-ps]:../../../virtual-network/virtual-network-deploy-multinic-arm-ps.md
+[virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
+[virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-[virtual-networks-multiple-nics]:../../../virtual-network/virtual-networks-multiple-nics.md
+[virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
 [virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
 [virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
@@ -654,7 +654,7 @@ Microsoft Azure 可用性集是 VM 或服务的逻辑分组，可确保 VM 和�
 
 数据库压缩也可以在 Azure 虚拟机中运行，如同在本地运行一样。 有关如何压缩现有 SAP SQL Server 数据库的更多详细信息，请查看以下网页：<https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>
 
-### <a name="sql-server-2014--storing-database-files-directly-on-azure-blob-storage"></a>SQL Server 2014 - 将数据库文件直接存储在 Azure Blob 存储上
+### <a name="sql-server-2014---storing-database-files-directly-on-azure-blob-storage"></a>SQL Server 2014 - 将数据库文件直接存储在 Azure Blob 存储上
 SQL Server 2014 开启了一种可能性：将数据库文件直接存储在 Azure Blob 存储上，而不需要用 VHD 来“包装”。 特别是在使用标准 Azure 存储或较小的 VM 类型时，这样可以克服 IOPS 的限制，这些限制是通过可以装载到某些较小 VM 类型的有限磁盘数目来强制实施的。 这适用于 SQL Server 的用户数据库，但不适用于系统数据库。 这也适用于 SQL Server 的数据和日志文件。 如果想使用此方式部署 SAP SQL Server 数据库，而不是将它“包装”到 VHD，请记住以下几点：
 
 * 所用存储帐户所在的 Azure 区域必须与部署运行 SQL Server 的 VM 时所用的存储帐户相同。
@@ -673,9 +673,9 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 ### <a name="backuprecovery-considerations-for-sql-server"></a>SQL Server 的备份/恢复注意事项
 将 SQL Server 部署到 Azure 时，必须检查备份方法。 即使系统不是生产系统，也必须定期备份 SQL Server 托管的 SAP 数据库。 由于 Azure 存储会保留三个映像，因此，在补救存储崩溃方面，备份现在已变得不太重要。 维护适当备份和恢复计划的首要原因是，可以通过提供时间点恢复功能来补救逻辑/人为错误。 因此，其目标是使用备份将数据库还原回到某个时间点，或者通过复制现有数据库，在 Azure 中使用备份来植入另一个系统。 例如，可以通过还原备份，从 2 层 SAP 配置转移到同一个系统的 3 层系统设置。
 
-可通过三种不同的方式将 SQL Server 备份到 Azure 存储：
+有三种不同的方法可以将 SQL Server 备份到 Azure 存储：
 
-1. SQL Server 2012 CU4 和更高版本可以本机方式将数据库备份到 URL。 博客 [New functionality in SQL Server 2014 – Part 5 – Backup/Restore Enhancements](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx)（SQL Server 2014 的新功能 – 第 5 部分 – 备份/还原增强功能）中有详细说明。 请参阅 [SQL Server 2012 SP1 CU4 和更高版本][dbms-guide-5.5.1]一章。
+1. SQL Server 2012 CU4 和更高版本可以通过本机方式将数据库备份到 URL。 博客 [SQL Server 2014 的新功能 - 第 5 部分 - 备份/还原增强功能](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx)中有详细说明。 请参阅 [SQL Server 2012 SP1 CU4 和更高版本][dbms-guide-5.5.1]一章。
 2. SQL 2012 CU4 之前的 SQL Server 版本可以使用重定向功能备份到 VHD，而且写入流基本上会流向已配置的 Azure 存储位置。 请参阅 [SQL Server 2012 SP1 CU3 和更低版本][dbms-guide-5.5.2]一章。
 3. 最后一种方法是在磁盘设备上执行传统的“从 SQL Server 备份到磁盘”命令。 这与本地部署模式完全相同，本文档不详加讨论。
 
@@ -684,7 +684,7 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 
  ![使用 SQL Server 2012 备份到 Microsoft Azure 存储 BLOB][dbms-guide-figure-400]
 
-此方案的优点是无需耗用磁盘来存储 SQL Server 备份。 因此，所分配的磁盘较少，而且可以将磁盘 IOPS 的全部带宽都用于数据和日志文件。 注意，备份的大小上限是 1 TB，如以下文章的“Limitations”（限制）部分中所述：<https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#limitations>。 在备份大小方面，尽管使用 SQL Server 备份压缩的大小会超过 1 TB，但仍需使用本文档的 [SQL Server 2012 SP1 CU3 和更低版本][dbms-guide-5.5.2]一章中所述的功能。
+此方案的优点是无需耗用磁盘来存储 SQL Server 备份。 因此，所分配的磁盘较少，而且可以将磁盘 IOPS 的全部带宽都用于数据和日志文件。 注意，备份的大小上限是 1 TB，如以下文章的“限制”部分中所述：<https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#limitations>。 在备份大小方面，尽管使用 SQL Server 备份压缩的大小会超过 1 TB，但仍需使用本文档的 [SQL Server 2012 SP1 CU3 和更低版本][dbms-guide-5.5.2]一章中所述的功能。
 
 描述根据 Azure Blob 存储从备份还原数据库的[相关文档](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure)建议：如果备份超过 25GB，就不要直接从 Azure BLOB 存储还原。 本文中的建议只以性能注意事项为依据，并未考虑功能限制。 因此，随着方案的不同，可能会发生不同的状况。
 
@@ -696,7 +696,7 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 
 为了避免混用这三种不同的备份类型，建议在用于备份的存储帐户下面创建不同的容器。 容器可以仅按 VM 创建，也可以按 VM 和备份类型创建。 其架构可能如下：
 
- ![使用 SQL Server 2012 备份到 Microsoft Azure 存储 BLOB – 不同存储帐户下的不同容器][dbms-guide-figure-500]
+ ![使用 SQL Server 2012 备份到 Microsoft Azure 存储 BLOB - 不同存储帐户下的不同容器][dbms-guide-figure-500]
 
 在上述示例中，不会对部署 VM 的相同存储帐户执行备份。 将提供一个专用于备份的新存储帐户。 在存储帐户内，会有使用备份类型和 VM 名称的组合创建的不同容器。 这种细分方式可让你更加轻松地管理不同 VM 的备份。
 
@@ -717,7 +717,7 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 
 不应将此方法用于支持以本机方式备份 Azure 存储的较新版 SQL Server。 Azure 本机备份限制阻止对 Azure 执行本机备份的情况例外。
 
-#### <a name="other-possibilities-to-backup-sql-server-databases"></a>其他 SQL Server 数据库备份可行方法
+#### <a name="other-possibilities-to-back-up-sql-server-databases"></a>其他 SQL Server 数据库备份可行方法
 其他数据库备份可行方法之一是将额外的数据磁盘附加到用于存储备份的 VM。 在这种情况下，必须确保磁盘未完全运行。 如果是这样，则必须卸载磁盘，也就是所谓的将其“存档”，并用新的空磁盘替代。 如果执行此操作，就需要将这些 VHD 保存在独立的 Azure 存储帐户中（不同于包含数据库文件的 VHD 所在的帐户）。
 
 第二种可行方法是使用可以附加许多磁盘的大型 VM，例如使用 32VHD 的 D14。 使用存储空间来构建灵活的环境，可以在其中构建共享，之后将共享作为不同 DBMS 服务器的备份目标。
@@ -757,7 +757,7 @@ Microsoft 在 Azure Marketplace 中提供已经包含 SQL Server 版本的 VM。
 #### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>更改 Microsoft Windows/SQL Server VM 的 SQL Server 排序规则
 因为 Azure Marketplace 中的 SQL Server 映像未设置为使用 SAP NetWeaver 应用程序所需的排序规则，所以需要在部署之后立即更改。 对于 SQL Server 2012，一旦部署了 VM 且管理员能够登录已部署的 VM，就可以使用下列步骤来完成此操作：
 
-* 以“管理员身份”打开 Windows 命令窗口。
+* 以管理员身份打开 Windows 命令窗口。
 * 将目录更改为 C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012。
 * 执行命令：Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> 是第一次通过库部署 VM 时定义为管理员帐户的帐户。
@@ -799,7 +799,7 @@ SAP 支持的数据库镜像（请参阅 SAP 说明 [965908]）依赖于在 SAP 
 以下是使用可用性组侦听器的一些注意事项：
 
 * 只有将 Windows Server 2012 或更高版本作为 VM 的来宾 OS 时，才支持使用可用性组侦听器。 对于 Windows Server 2012，必须确保应用此补丁：<https://support.microsoft.com/kb/2854082> 
-* 对于 Windows Server 2008 R2，此补丁并不存在，而 AlwaysOn 需要通过与数据库镜像相同的方式来使用，即，在连接字符串中指定故障转移伙伴（通过 SAP default.pfl 参数 dbs/mss/server 完成 – 请参阅 SAP 说明 [965908]）。
+* 对于 Windows Server 2008 R2，此补丁并不存在，而 AlwaysOn 需要通过与数据库镜像相同的方式来使用，即，在连接字符串中指定故障转移伙伴（通过 SAP default.pfl 参数 dbs/mss/server 完成 - 请参阅 SAP 说明 [965908]）。
 * 使用可用性组侦听器时，数据库 VM 需要连接到专用的负载均衡器。 仅限云部署中的名称解析可能会要求 SAP 系统的所有 VM（应用程序服务器、DBMS 服务器及 (A)SCS 服务器）位于同一个虚拟网络中，或者要求从 SAP 应用程序层维护 etc\host 文件，以解析 SQL Server VM 的 VM 名称。 为了避免 Azure 在这两个 VM 都意外关闭的情况下分配新的 IP 地址，应该在 AlwaysOn 配置中为这些 VM 的网络接口分配静态 IP 地址（有关如何定义静态 IP 地址的信息，请参阅[此文][virtual-networks-reserved-private-ip]）
 
 [comment]: <> (旧博客)
@@ -1319,9 +1319,9 @@ SAP liveCache 是一种执行大量计算的应用程序，因此，RAM 与 CPU 
 
 对于 SAP 支持的 Azure VM 类型（SAP 说明 [1928533]），分配给 VM 的所有虚拟 CPU 资源均由虚拟机监控程序的专用物理 CPU 资源提供支持。 不会发生过度预配（因此也不会发生 CPU 资源竞争）。
 
-同样地，对于 SAP 支持的所有 Azure VM 实例类型，VM 内存会全部映射到物理内存 – 例如，不会使用过度预配（过载）。
+同样地，对于 SAP 支持的所有 Azure VM 实例类型，VM 内存会全部映射到物理内存 - 例如，不会使用过度预配（过载）。
 
-从这个角度看，强烈建议使用新的 D 系列或 DS 系列（搭配 Azure 高级存储）Azure VM 类型，因为它们的处理器速度比 A 系列快 60%。 若要获得最高的 RAM 和 CPU 负载，可以使用 G 系列和 GS 系列（搭配 Azure 高级存储）VM，这两个系列配备最新的 Intel® Xeon® 处理器 E5 v3 系列，其内存是 D/DS 系列的两倍，固态硬盘存储 (SSD) 是 D/DS 系列的四倍。
+从这个角度看，强烈建议使用新的 D 系列或 DS 系列（搭配 Azure 高级存储）Azure VM 类型，因为它们的处理器速度比 A 系列快 60%。 若要获得最高的 RAM 和 CPU 负载，可以使用 G 系列和 GS 系列（搭配 Azure 高级存储）VM，这两个系列配备最新的 Intel?? Xeon?? 处理器 E5 v3 系列，其内存是 D/DS 系列的两倍，固态硬盘存储 (SSD) 是 D/DS 系列的四倍。
 
 #### <a name="storage-configuration"></a>存储配置
 SAP liveCache 以 SAP MaxDB 技术为基础，因此，[存储配置][dbms-guide-8.4.1]一章中针对 SAP MaxDB 提出的所有 Azure 存储最佳做法建议也适用于 SAP liveCache。 
@@ -1418,10 +1418,10 @@ SAP 缓存服务器是一个基于服务器的附加组件，可在本地提供�
 
 只要每个磁盘当前的 IOPS 配额够用，就可以将所有数据库文件存储在装载的单个磁盘上。 
 
-有关性能注意事项，另请参阅 SAP 安装指南中的“数据库目录的数据安全和性能注意事项”一章。
+有关性能注意事项的信息，另请参阅 SAP 安装指南中的“数据库目录的数据安全和性能注意事项”一章。
 
 此外，也可以按本文档的[软件 RAID][dbms-guide-2.2] 一章中所述，使用 Windows 存储池（仅适用于 Windows Server 2012 和更高版本）或适用于 Windows 2008 R2 的 Windows 带区，基于多个磁盘来创建一个大型逻辑设备。
-如果磁盘包含 sapdata 和 saptmp 目录的 DB2 存储路径，则必须将物理磁盘扇区的大小指定为 512 KB。 使用 Windows 存储池时，必须通过命令行界面使用参数“-LogicalSectorSizeDefault”，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
+如果磁盘包含 sapdata 和 saptmp 目录的 DB2 存储路径，则必须将物理磁盘扇区的大小指定为 512 KB。 使用 Windows 存储池时，必须通过命令行界面使用参数 `-LogicalSectorSizeDefault`，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
 
 #### <a name="backuprestore"></a>备份/还原
 支持通过 IBM DB2 for LUW 提供备份/还原功能，其方式与在标准 Windows Server 操作系统和 Hyper-V 上一样。

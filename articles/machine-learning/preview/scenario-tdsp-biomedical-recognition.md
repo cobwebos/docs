@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: a13bbd5d32eaab96dfb97e60652dbe9bcbdfb1b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21f8f66d8b78c2b536792bc96e9233d5739fde81
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>使用 Team Data Science Process (TDSP) 模板的生物医学实体识别
 
-这个真实场景旨在重点介绍如何使用 Azure 机器学习工作台来解决复杂的自然语言处理 (NLP) 任务，如非结构化文本的实体提取：
+实体提取是信息提取的一项子任务（又称为 [Named-entity recognition (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition)（命名实体标识 (NER)），即实体分块和实体标识）。 这个真实场景旨在重点介绍如何使用 Azure 机器学习工作台来解决复杂的自然语言处理 (NLP) 任务，如非结构化文本的实体提取：
 
 1. 如何使用 [Spark Word2Vec 实现](https://spark.apache.org/docs/latest/mllib-feature-extraction.html#word2vec)在大约有 1,800 万条 PubMed 摘要的文本语料库中培训一个神经词嵌入模型。
 2. 如何在 Azure 中支持 GPU 的 Azure 数据科学虚拟机 (GPU DS VM) 上构建用于实体提取的深度长短期记忆 (LSTM) 循环神经网络模型。
@@ -32,15 +32,16 @@ ms.lasthandoff: 10/11/2017
 4. 在 Azure Machine Learning Workbench 中演示以下功能：
 
     * 实例化 [Team Data Science Process (TDSP) 结构和模板](how-to-use-tdsp-in-azure-ml.md)。
-    * 在 Jupyter 笔记本中执行代码以及 Python 脚本。
-    * 对 Python 文件运行历史记录跟踪。
+    * 对项目依赖项的自动管理，包括下载和安装
+    * 在不同计算环境中执行 Python 脚本。
+    * 对 Python 脚本运行历史记录跟踪。
     * 使用 HDInsight Spark 2.1 群集在远程 Spark 计算上下文中执行作业。
     * 在 Azure 的远程 GPU VM 中执行作业。
-    * 在 Azure 容器服务中轻松将深度学习模型实施为 Web 服务。
+    * 在 Azure 容器服务中轻松将深度学习模型实施为 Web 服务 (ACS)。
 
 ## <a name="use-case-overview"></a>用例概述
 生物医学命名实体识别是复杂生物医学 NLP 任务的关键步骤，如： 
-* 从电子医疗或健康记录中提取疾病、症状。
+* 从电子医疗或健康记录中提取命名实体的有关记录，例如疾病、药物、化学品和症状等。
 * 药品开发
 * 了解不同实体类型之间的相互作用，如药物间相互作用、药物与疾病的关系，以及基因与蛋白质的关系。
 
@@ -130,14 +131,14 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="1-data-acquisition-and-understanding"></a>1.数据获取和理解
 
-请参阅[数据采集和理解](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/Code/01_Data_Acquisition_and_Understanding/ReadMe.md)。
+请参阅[数据采集和理解](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)。
 
 原始的 MEDLINE 语料库共有 2,700 万条摘要，其中大约 1,000 万篇文章包含空的摘要字段。 Azure HDInsight Spark 用于处理大数据，大数据无法作为 [Pandas DataFrame ](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) 加载到单个计算机的内存中。 首先，将数据下载到 Spark 群集。 然后在 [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html) 上执行以下步骤： 
 * 使用 Medline XML 分析程序分析 XML 文件
 * 预处理摘要文本，包括断句、词汇切分和大小写规范化。
 * 排除摘要字段为空或具有短文本的文章 
 * 基于训练摘要创建词汇表
-* 训练词嵌入神经模型。 有关更多详细信息，请参阅 [GitHub 代码连接](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/Code/01_DataPreparation/ReadMe.md)以开始使用。
+* 训练词嵌入神经模型。 有关更多详细信息，请参阅 [GitHub 代码连接](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)以开始使用。
 
 
 分析 XML 文件之后，数据采用以下格式： 
@@ -151,7 +152,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="2-modeling"></a>2.建模
 
-请参阅[建模](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling)。
+请参阅[建模](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling)。
 
 建模是我们展示如何使用上一节中下载的数据来培训自己的词嵌入模型并将其用于其他下游任务的阶段。 虽然我们正在使用 PubMed 数据，但生成嵌入内容的管道是通用的，可以重用于任何其他域的词嵌入。 为了使嵌入内容成为准确的数据表示，必须对 word2vec 进行大量数据的训练。
 我们准备好词嵌入后，就可以训练一个使用学习嵌入的深度神经网络模型来初始化嵌入层。 我们将嵌入层标记为不可训练、但不是必需的层。 词嵌入模型的训练无需监督，因此我们可以利用未标记的文本。 但是，实体识别模型的训练是受监督的学习任务，其准确性取决于手动注释数据的数量和质量。 
@@ -159,9 +160,9 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="21-feature-generation"></a>2.1. 特征生成
 
-请参阅[特征生成](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/01_FeatureEngineering)。
+请参阅[特征生成](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/01_feature_engineering)。
 
-Word2Vec 是在未标记的训练语料库中训练神经网络模型的词嵌入学习算法。 它为语料库中的每个单词生成一个代表其语义信息的连续矢量。 这些模型是具有一个隐藏层的简单神经网络。 通过反向传播算法和随机梯度下降来学习词汇矢量/嵌入词。 有两种类型的 word2vec 模型，即 Skip-Gram 和连续的词袋模型（有关更多详细信息，请查看[此处](https://arxiv.org/pdf/1301.3781.pdf)）。 由于我们正在使用 MLLIB 的支持 Skip-gram 模型的 word2vec 的实现，因此我们在此做一个简要描述（从[链接](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/)获得的图像）： 
+Word2Vec 是未标记的训练语料库中训练神经网络模型的词嵌入非监督式学习算法。 它为语料库中的每个单词生成一个代表其语义信息的连续矢量。 这些模型是具有一个隐藏层的简单神经网络。 通过反向传播算法和随机梯度下降来学习词汇矢量/嵌入词。 有两种类型的 word2vec 模型，即 Skip-Gram 和连续的词袋模型（有关更多详细信息，请查看[此处](https://arxiv.org/pdf/1301.3781.pdf)）。 由于我们正在使用 MLLIB 的支持 Skip-gram 模型的 word2vec 的实现，因此我们在此做一个简要描述（从[链接](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/)获得的图像）： 
 
 ![Skip Gram 模型](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
@@ -170,11 +171,11 @@ Word2Vec 是在未标记的训练语料库中训练神经网络模型的词嵌�
 
 ##### <a name="visualization"></a>可视化
 
-有了嵌入内容后，我们就可以可视化它们并看到语义上相似的词之间的关系。 
+有了词嵌入后，我们就可以可视化它们并看到语义上相似的词之间的关系。 
 
 ![W2V 相似性](./media/scenario-tdsp-biomedical-recognition/w2v-sim.png)
 
-我们已经演示了两种不同的可视化嵌入内容的方式。 第一种使用 PCA 将高维向量投影到二维向量空间。 这导致显著的信息损失，并且可视化不是同样准确。 第二种使用 PCA 与 [t-SNE](https://distill.pub/2016/misread-tsne/)。 t-SNE 是一种非线性降维技术，非常适合于将高维数据嵌入到二维或三维空间中，然后可以在散点图中进行可视化。  它按照二维或三维点来对每个高维对象进行建模，使得相似的对象由附近的点建模，并且由不同的点对不同的对象进行建模。 它分两部分工作。 首先，它创建高维空间中的对值概率分布，其方式是类似对象具有很高的抽取概率，而不同点的抽取概率较低。 其次，它定义了低维图中点的相似概率分布，并且相对于点在图上的位置使两个分布之间的 KL 散度最小化。 通过使用梯度下降使 KL 散度最小化来获得点在低维图中的位置。 但 t-SNE 有时并不可靠。 可以在[此处](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/01_FeatureEngineering)找到实施详细信息。 
+我们已经演示了两种不同的可视化嵌入内容的方式。 第一种使用 PCA 将高维向量投影到二维向量空间。 这导致显著的信息损失，并且可视化不是同样准确。 第二种使用 PCA 与 [t-SNE](https://distill.pub/2016/misread-tsne/)。 t-SNE 是一种非线性降维技术，非常适合于将高维数据嵌入到二维或三维空间中，然后可以在散点图中进行可视化。  它按照二维或三维点来对每个高维对象进行建模，使得相似的对象由附近的点建模，并且由不同的点对不同的对象进行建模。 它分两部分工作。 首先，它创建高维空间中的对值概率分布，其方式是类似对象具有很高的抽取概率，而不同点的抽取概率较低。 其次，它定义了低维图中点的相似概率分布，并且相对于点在图上的位置使两个分布之间的 KL 散度最小化。 通过使用梯度下降使 KL 散度最小化来获得点在低维图中的位置。 但 t-SNE 有时并不可靠。 可以在[此处](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/01_feature_engineering)找到实施详细信息。 
 
 
 如下图所示，t-SNE 可视化为词矢量和潜在群集模式提供了更多的分离。 
@@ -194,7 +195,7 @@ Word2Vec 是在未标记的训练语料库中训练神经网络模型的词嵌�
 
 #### <a name="22-train-the-neural-entity-extractor"></a>2.2. 训练神经实体提取器
 
-请参阅[训练神经实体提取器](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/02_ModelCreation/ReadMe.md)。
+请参阅[训练神经实体提取器](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation/ReadMe.md)。
 
 前馈神经网络体系结构存在的问题是，它们认为每个输入和输出都独立于其他输入和输出。 该体系结构不能对诸如机器翻译和实体提取之类的序列到序列标签任务进行建模。 循环神经网络模型克服了这个困难，因为它们可以将到目前为止计算的信息传递到下一个节点。 该属性在网络中被认为是有记忆的，因为它能够使用以前计算的信息，如下图所示：
 
@@ -204,13 +205,15 @@ Vanilla RNN 实际上会受到[梯度消失问题](https://en.wikipedia.org/wiki
 
 ![LSTM 单元](./media/scenario-tdsp-biomedical-recognition/lstm-cell.png)
 
-我们尝试将自己基于 LSTM 的循环神经网络组合在一起，并尝试从 PubMed 数据中提取药物、疾病和症状等实体类型。 第一步是获得大量的标签数据，就像你猜到的那样，这并不容易！ 大多数的医疗数据都包含许多关于患者的敏感信息，因此不是公开的。 我们依靠公开的两个不同数据集的组合。 第一个数据集来自 Semeval 2013 - 任务 9.1（药物识别），另一个来自 BioCreative V CDR 任务。 我们正在组合和自动标注这两个数据集，以便我们可以从医学文本中检测出药物和疾病，并评估我们的词嵌入。 有关实施详细信息，请参阅 [GitHub 代码链接](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/02_ModelCreation)
+我们尝试将自己基于 LSTM 的循环神经网络组合在一起，并尝试从 PubMed 数据中提取药物、疾病和症状等实体类型。 第一步是获得大量的标签数据，就像你猜到的那样，这并不容易！ 大多数的医疗数据都包含许多关于患者的敏感信息，因此不是公开的。 我们依靠公开的两个不同数据集的组合。 第一个数据集来自 Semeval 2013 - 任务 9.1（药物识别），另一个来自 BioCreative V CDR 任务。 我们正在组合和自动标注这两个数据集，以便我们可以从医学文本中检测出药物和疾病，并评估我们的词嵌入。 有关实施详细信息，请参阅 [GitHub 代码链接](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation)
 
 我们在所有代码和比较中使用的模型体系结构如下所示。 对于不同数据集，发生变化的参数是最大序列长度（这里为 613）。
 
 ![LSTM 模型](./media/scenario-tdsp-biomedical-recognition/d-a-d-model.png)
 
 #### <a name="23-model-evaluation"></a>2.3. 模型评估
+请参阅[模型评估](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/03_model_evaluation/ReadMe.md)。
+
 我们使用共享任务 [Bio NLP/NLPBA 2004 中的生物实体识别任务](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)来评估模型的精度、记忆力和 F1 分数。 
 
 #### <a name="in-domain-versus-generic-word-embedding-models"></a>域内与通用词嵌入模型
@@ -249,7 +252,7 @@ Vanilla RNN 实际上会受到[梯度消失问题](https://en.wikipedia.org/wiki
 
 ### <a name="3-deployment"></a>3.部署
 
-请参阅[部署](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/03_Deployment)。
+请参阅[部署](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/03_deployment)。
 
 我们在 [Azure 容器服务 (ACS)](https://azure.microsoft.com/services/container-service/) 的群集上部署了 Web 服务。 实施环境在群集中提供了 Docker 和 Kubernetes 来管理 Web 服务部署。 可以在[此处](model-management-service-deploy.md )找到有关实施过程的更多信息。
 

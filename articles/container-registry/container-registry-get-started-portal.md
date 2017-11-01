@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 10/16/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 033ef0cdd607ced5de6c975e071e0ce37e677201
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e38a92fc48636476f00fe18c735901d906799fde
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建容器注册表
 
@@ -31,7 +31,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 (https://portal.azure.com)。
+登录 Azure 门户 ( https://portal.azure.com )。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -39,11 +39,13 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ![在 Azure 门户中创建容器注册表][qs-portal-01]
 
-在“注册表名称”和“资源组”中输入值。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 创建名为 `myResourceGroup` 的新资源组，对于 SKU 选择“Classic”。 选择“创建”，部署 ACR 实例。
+在“注册表名称”和“资源组”中输入值。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 创建名为 `myResourceGroup` 的新资源组，对于 SKU 选择“Basic”。 选择“创建”，部署 ACR 实例。
 
 ![在 Azure 门户中创建容器注册表][qs-portal-03]
 
-Azure 容器注册表可用于以下几个 SKU 中：`Classic`、`Basic`、`Standard` 和 `Premium`。 虽然 `Basic`、`Standard` 和 `Premium` 提供托管的存储和 Webhook 等高级功能，但它们当前仍处于预览版，并在某些 Azure 区域中不可用。 在本快速入门中，我们选择 `Classic` SKU，因为它在所有区域均可用。
+在本快速入门中，我们将创建基本注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的扩展详细信息，请参阅[容器注册表 SKU](container-registry-skus.md)。
+
+[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
 显示“部署成功”消息时，请在门户中选择容器注册表，然后选择“访问密钥”。
 

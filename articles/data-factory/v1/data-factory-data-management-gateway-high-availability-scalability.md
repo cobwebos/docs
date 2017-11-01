@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1aac856d154724e3dcd282e2d34c27571cd1cb02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e8c2248c064a7ec934dd8ef3e926f3325a05395
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
-本文有助于对数据管理网关配置高可用性和可伸缩性解决方案。    
+本文有助于读者使用数据管理网关/Integration 来配置高可用性和可伸缩性解决方案。    
 
 > [!NOTE]
-> 本文假定你已熟悉数据管理网关的基础知识。 如不熟悉，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
+> 若要更好地理解本文，需要事先熟悉 Integration Runtime（旧版数据管理网关）的基础知识。 如不熟悉，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
 
 >**数据管理网关版本 2.12.xxxx.x 及更高版本正式支持此预览功能**。 请确保你使用的是版本 2.12.xxxx.x 或更高版本。 在[此处](https://www.microsoft.com/download/details.aspx?id=39717)下载最新版本的数据管理网关。
 
@@ -155,14 +155,21 @@ ms.lasthandoff: 10/11/2017
 - 添加至少两个节点来确保高可用性。  
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 证书要求
-下面是用于保护网关节点间通信的 TLS/SSL 证书要求：
+下面是用于保护集成运行时节点间通信的 TLS/SSL 证书的相关要求：
 
-- 证书必须是公共可信的 X509 v3 证书。
-- 所有网关节点必须都信任此证书。 
-- 建议使用公共（即第三方）证书颁发机构 (CA) 颁发的证书。
+- 证书必须是公共可信的 X509 v3 证书。 建议使用公共（即第三方）证书颁发机构 (CA) 颁发的证书。
+- 每个集成运行时节点都必须信任此证书，以及运行凭据管理器应用程序的客户端计算机。 
+> [!NOTE]
+> 通过复制向导/Azure 门户安全设置凭据时，使用凭据管理器应用程序。 这可能是从与本地/专用数据存储位于同一网络的任何一台计算机触发。
+- 支持通配符证书。 如果 FQDN 名称为 node1.domain.contoso.com，可以使用 *.domain.contoso.com 作为证书的使用者名称。
+- 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
-- 不支持使用 CNG 密钥的证书。
-- 支持通配符证书。 
+- 不支持使用 CNG 密钥的证书。 不支持使用 CNG 密钥的证书。
+
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ：何时禁用此加密？
+启用加密会增加一定的基础结构成本（拥有公用证书）。因此，在下列情况下，可以跳过启用加密：
+- 当集成运行时在受信任的网络上运行，或在采用透明加密（如 IP/SEC）的网络上运行时。 由于这种通道通信仅在受信任的网络中受限，因此可能无需其他加密。
+- 当集成运行时不是在生产环境中运行时。 这样有助于降低 TLS/SSL 证书成本。
 
 
 ## <a name="monitor-a-multi-node-gateway"></a>监视多节点网关

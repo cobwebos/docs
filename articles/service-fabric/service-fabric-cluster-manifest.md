@@ -1,6 +1,6 @@
 ---
 title: "配置 Azure Service Fabric 独立群集 | Microsoft Docs"
-description: "了解如何配置独立的或专用的 Service Fabric 群集。"
+description: "了解如何配置独立的或本地 Azure Service Fabric 群集。"
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/02/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 660e7b59ae0e92692121620341562e412a6e8eae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aeb4be94ea12c01f4ecd5652fa3b3243351e4853
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="configuration-settings-for-standalone-windows-cluster"></a>Windows 独立群集的配置设置
 本文介绍如何使用 ***ClusterConfig.JSON*** 文件来配置独立的 Service Fabric 群集。 可以使用此文件指定 Service Fabric 群集的信息，例如 Service Fabric 节点及其 IP 地址、群集上不同类型的节点、安全配置，以及使用独立群集的容错域/升级域定义的网络拓扑。
@@ -26,9 +26,9 @@ ms.lasthandoff: 10/11/2017
 [下载独立的 Service Fabric 包](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)时，一些 ClusterConfig.JSON 文件示例将下载到工作计算机。 名称中包含 DevCluster 的示例可帮助创建所有三个节点都在同一台计算机上（例如逻辑节点）的群集。 在这些节点中，必须将一个节点标记为主节点。 此群集可用于开发或测试环境，不支持用作生产群集。 名称中包含 MultiMachine 的示例可帮助创建生产质量群集，其中的每个节点位于不同的计算机上。 这些群集的主节点数将基于[可靠性级别](#reliability)。 在版本 5.7 API 版本 05-2017 中，我们删除了可靠性级别属性。 取而代之的是，我们的代码将计算群集的最优可靠性级别。 请不要在 5.7 及更高代码版本中使用此属性。
 
 
-1. *ClusterConfig.Unsecure.DevCluster.JSON* 和 *ClusterConfig.Unsecure.MultiMachine.JSON* 分别说明如何创建不安全的测试群集和生产群集。 
+1. *ClusterConfig.Unsecure.DevCluster.JSON* 和 *ClusterConfig.Unsecure.MultiMachine.JSON* 分别说明如何创建不安全的测试群集和生产群集。
 2. *ClusterConfig.Windows.DevCluster.JSON* 和 *ClusterConfig.Windows.MultiMachine.JSON* 说明如何创建使用 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)保护的测试群集和生产群集。
-3. *ClusterConfig.X509.DevCluster.JSON* 和 *ClusterConfig.X509.MultiMachine.JSON* 说明如何创建使用[基于 X509 证书的安全性](service-fabric-windows-cluster-x509-security.md)保护的测试群集和生产群集。 
+3. *ClusterConfig.X509.DevCluster.JSON* 和 *ClusterConfig.X509.MultiMachine.JSON* 说明如何创建使用[基于 X509 证书的安全性](service-fabric-windows-cluster-x509-security.md)保护的测试群集和生产群集。
 
 现在，我们查看 ***ClusterConfig.JSON*** 文件的以下各个节。
 

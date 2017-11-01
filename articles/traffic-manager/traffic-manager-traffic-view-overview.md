@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: f1ab98ab173edc794bfabdf55d950ac689a37c0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a07ff578c6afeedc6f3806d52bfe5aef6945c04
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
 
@@ -31,8 +31,8 @@ ms.lasthandoff: 10/11/2017
 
 使用流量视图，可以：
 - 了解用户群所在的位置（最多可达本地 DNS 解析程序级别粒度）。
-- 了解来自这些区域的流量。
-- 了解什么是这些用户所体验的代表性延迟。
+- 查看源自这些区域的流量（以 Azure 流量管理器处理的 DNS 查询形式监测）。
+-  深入了解什么是这些用户体验到的典型延迟。
 - 深入研究特定流量模式，从其中每个用户群到你拥有终结点的 Azure 区域。 
 
 例如，可以使用流量视图来了解哪些区域具有大量流量，但遭受较长的延迟。 接下来，可以使用此信息来计划将占用空间扩展到新的 Azure 区域，使这些用户可以体验到较短的延迟。

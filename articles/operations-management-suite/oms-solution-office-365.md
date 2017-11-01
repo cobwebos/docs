@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
-ms.openlocfilehash: dcc44986acbb76eafc3cfacb79acf237802de021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 711071eaff7ab5e5199793663aa3cbb36a1e8d8a
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="office-365-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中的 Office 365 解决方案
 
@@ -280,11 +280,11 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 | 查询 | 说明 |
 | --- | --- |
-|Office 365 订阅上所有操作的计数 |`Type = OfficeActivity | measure count() by Operation` |
-|SharePoint 网站的使用情况|`Type=OfficeActivity OfficeWorkload=sharepoint | measure count() as Count by SiteUrl | sort Count asc`|
-|文件访问操作数（按用户类型）|`Type=OfficeActivity OfficeWorkload=sharepoint Operation=FileAccessed | measure count() by UserType`|
-|使用特定关键字搜索|`Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"`|
-|监视 Exchange 上的外部操作|`Type=OfficeActivity OfficeWorkload=exchange ExternalAccess = true`|
+|Office 365 订阅上所有操作的计数 |Type = OfficeActivity &#124; measure count() by Operation |
+|SharePoint 网站的使用情况|Type=OfficeActivity OfficeWorkload=sharepoint &#124; measure count() as Count by SiteUrl &#124; sort Count asc|
+|文件访问操作数（按用户类型）|Type=OfficeActivity OfficeWorkload=sharepoint Operation=FileAccessed &#124; measure count() by UserType|
+|使用特定关键字搜索|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
+|监视 Exchange 上的外部操作|Type=OfficeActivity OfficeWorkload=exchange ExternalAccess = true|
 
 
 

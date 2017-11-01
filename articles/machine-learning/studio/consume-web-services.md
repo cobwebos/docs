@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: fc1152f1431474b6625f389a1290a121e86fbdac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13de6daabf2b6d83cc703ae6b3f0a30a1dfa34d6
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>如何使用 Azure 机器学习 Web 服务
 
@@ -90,12 +90,12 @@ Azure 机器学习有两种类型的服务：
 
 **查看新 Web 服务的机器学习 API 帮助**
 
-在 Azure 机器学习 Web 服务门户：
+在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)：
 
 1. 在顶部菜单单击“WEB 服务”。
 2. 单击想要为其检索密钥的 Web 服务。
 
-单击“使用”获取请求响应和批处理执行以及 C#、R 和 Python 示例代码的 URI。
+单击“使用 Web 服务”获取请求响应和批处理执行以及 C#、R 和 Python 示例代码的 URI。
 
 单击“Swagger API”从提供的 URI 为调用的 API 获取基于 Swagger 的文档。
 
@@ -116,8 +116,95 @@ Azure 机器学习有两种类型的服务：
 2. 使用 Web 服务密钥分配 API 密钥。 请参阅上方的**获取 Azure 机器学习授权密钥**。
 3. 使用请求 URI 分配服务 URI。
 
+以下是完整请求的示例。
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CallRequestResponseService
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            InvokeRequestResponseService().Wait();
+        }
+
+        static async Task InvokeRequestResponseService()
+        {
+            using (var client = new HttpClient())
+            {
+                var scoreRequest = new
+                {
+                    Inputs = new Dictionary<string, List<Dictionary<string, string>>> () {
+                        {
+                            "input1",
+                            // Replace columns labels with those used in your dataset
+                            new List<Dictionary<string, string>>(){new Dictionary<string, string>(){
+                                    {
+                                        "column1", "value1"
+                                    },
+                                    {
+                                        "column2", "value2"
+                                    },
+                                    {
+                                        "column3", "value3"
+                                    }
+                                }
+                            }
+                        },
+                    },
+                    GlobalParameters = new Dictionary<string, string>() {}
+                };
+
+                // Replace these values with your API key and URI found on https://services.azureml.net/
+                const string apiKey = "<your-api-key>"; 
+                const string apiUri = "<your-api-uri>";
+                
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue( "Bearer", apiKey);
+                client.BaseAddress = new Uri(apiUri);
+
+                // WARNING: The 'await' statement below can result in a deadlock
+                // if you are calling this code from the UI thread of an ASP.Net application.
+                // One way to address this would be to call ConfigureAwait(false)
+                // so that the execution does not attempt to resume on the original context.
+                // For instance, replace code such as:
+                //      result = await DoSomeTask()
+                // with the following:
+                //      result = await DoSomeTask().ConfigureAwait(false)
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("Result: {0}", result);
+                }
+                else
+                {
+                    Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
+
+                    // Print the headers - they include the requert ID and the timestamp,
+                    // which are useful for debugging the failure
+                    Console.WriteLine(response.Headers.ToString());
+
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(responseContent);
+                }
+            }
+        }
+    }
+}
+```
+
 ### <a name="python-sample"></a>Python 示例
-若要连接到机器学习 Web 服务，请使用 **urllib2** 库传递 ScoreData。 ScoreData 包含 FeatureVector以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
+若要连接到机器学习 Web 服务，请使用 Python 2.X 的 urllib2 库和 Python 3.X 的 urllib.request 库。 将传递 ScoreData，其中包含 FeatureVector 以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
 
 **运行代码示例**
 
@@ -125,3 +212,146 @@ Azure 机器学习有两种类型的服务：
 2. 使用 Web 服务密钥分配 API 密钥。 请参阅本文开始处附近的**获取 Azure 机器学习授权密钥**部分。
 3. 使用请求 URI 分配服务 URI。
 
+以下是完整请求的示例。
+```python
+import urllib2 # urllib.request for Python 3.X
+import json
+
+data = {
+    "Inputs": {
+        "input1":
+        [
+            {
+                'column1': "value1",   
+                'column2': "value2",   
+                'column3': "value3"
+            }
+        ],
+    },
+    "GlobalParameters":  {}
+}
+
+body = str.encode(json.dumps(data))
+
+# Replace this with the URI and API Key for your web service
+url = '<your-api-uri>'
+api_key = '<your-api-key>'
+headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+# "urllib.request.Request(uri, body, headers)" for Python 3.X
+req = urllib2.Request(url, body, headers)
+
+try:
+    # "urllib.request.urlopen(req)" for Python 3.X
+    response = urllib2.urlopen(req)
+
+    result = response.read()
+    print(result)
+# "urllib.error.HTTPError as error" for Python 3.X
+except urllib2.HTTPError, error: 
+    print("The request failed with status code: " + str(error.code))
+
+    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    print(error.info())
+    print(json.loads(error.read())) 
+```
+
+### <a name="r-sample"></a>R 示例
+
+若要连接到机器学习 Web 服务，请使用 RCurl 和 rjson 库发出请求，并处理返回的 JSON 响应。 将传递 ScoreData，其中包含 FeatureVector 以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
+
+以下是完整请求的示例。
+```r
+library("RCurl")
+library("rjson")
+
+# Accept SSL certificates issued by public Certificate Authorities
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+
+h = basicTextGatherer()
+hdr = basicHeaderGatherer()
+
+req = list(
+    Inputs = list(
+            "input1" = list(
+                list(
+                        'column1' = "value1",
+                        'column2' = "value2",
+                        'column3' = "value3"
+                    )
+            )
+        ),
+        GlobalParameters = setNames(fromJSON('{}'), character(0))
+)
+
+body = enc2utf8(toJSON(req))
+api_key = "<your-api-key>" # Replace this with the API key for the web service
+authz_hdr = paste('Bearer', api_key, sep=' ')
+
+h$reset()
+curlPerform(url = "<your-api-uri>",
+httpheader=c('Content-Type' = "application/json", 'Authorization' = authz_hdr),
+postfields=body,
+writefunction = h$update,
+headerfunction = hdr$update,
+verbose = TRUE
+)
+
+headers = hdr$value()
+httpStatus = headers["status"]
+if (httpStatus >= 400)
+{
+print(paste("The request failed with status code:", httpStatus, sep=" "))
+
+# Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+print(headers)
+}
+
+print("Result:")
+result = h$value()
+print(fromJSON(result))
+```
+
+### <a name="javascript-sample"></a>JavaScript 示例
+
+若要连接到机器学习 Web 服务，请在项目中使用 request npm 库。 还将使用 `JSON` 对象设置输入的格式并分析结果。 使用 `npm install request --save` 进行安装，或将 `"request": "*"` 添加到 `dependencies` 下的 package.json，并运行 `npm install`。
+
+以下是完整请求的示例。
+```js
+let req = require("request");
+
+const uri = "<your-api-uri>";
+const apiKey = "<your-api-key>";
+
+let data = {
+    "Inputs": {
+        "input1":
+        [
+            {
+                'column1': "value1",
+                'column2': "value2",
+                'column3': "value3"
+            }
+        ],
+    },
+    "GlobalParameters": {}
+}
+
+const options = {
+    uri: uri,
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + apiKey,
+    },
+    body: JSON.stringify(data)
+}
+
+req(options, (err, res, body) => {
+    if (!err && res.statusCode == 200) {
+        console.log(body);
+    } else {
+        console.log("The request failed with status code: " + res.statusCode);
+    }
+});
+```

@@ -1,6 +1,6 @@
 ---
 title: "PowerShell 示例 - 活动异地复制 - 共用 Azure SQL 数据库 | Microsoft Docs"
-description: "为共用 Azure SQL 数据库设置活动异地复制的 Azure PowerShell 示例脚本"
+description: "为共用 Azure SQL 数据库设置活动异地复制并进行故障转移的 Azure PowerShell 示例脚本。"
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/25/2017
 ms.author: carlrab
-ms.openlocfilehash: bdd03372b01f734cb7b560855351f222936e45a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18c1960df07905dc60542d95a5ff9e85e58aa2f4
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>使用 PowerShell 为共用 Azure SQL 数据库配置活动异地复制
 

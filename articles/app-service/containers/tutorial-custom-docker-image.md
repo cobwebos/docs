@@ -1,6 +1,6 @@
 ---
-title: "为用于容器的 Azure Web 应用使用自定义 Docker 映像 | Microsoft Docs"
-description: "如何对用于容器的 Azure Web 应用使用自定义 Docker 映像。"
+title: "为用于容器的 Web 应用使用自定义 Docker 映像 - Azure | Microsoft Docs"
+description: "如何对用于容器的 Web 应用使用自定义 Docker 映像。"
 keywords: "azure 应用服务、web 应用、linux、docker、容器"
 services: app-service
 documentationcenter: 
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 09/03/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 760772d1d1c79dd4a1114c36971de0b3693ab74f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc268bce48a42607d4404758e744a006dfbd6c19
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="use-a-custom-docker-image-for-azure-web-app-for-containers"></a>为用于容器的 Azure Web 应用使用自定义 Docker 映像
+# <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
 在 Linux 上，[用于容器的 Web 应用](app-service-linux-intro.md)提供内置 Docker 映像，并支持特定版本，例如 PHP 7.0 和 Node.js 4.5。 用于容器的 Web 应用利用 Docker 容器技术，以“平台即服务”的方式同时托管内置映像和自定义映像。 本教程介绍如何生成在用于容器的 Web 应用上使用的自定义 Docker 映像，这在后列情况下是一种常见模式：缺少适用于所用语言的内置映像时，或当应用程序需要某种内置映像不提供的特定配置时。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="download-the-sample"></a>下载示例
 
-在终端窗口中，运行以下命令，将示例应用存储库克隆到本地计算机，然后更改保函示例代码的目录。
+在终端窗口中，运行以下命令，将示例应用存储库克隆到本地计算机，然后切换至包含示例代码的目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/use-custom-docker-image.git
@@ -210,17 +210,17 @@ v1: digest: sha256:a910d5b77e6960c01745a87c35f3d1a13ba73231ac9a4664c5011b1422d59
 
 ## <a name="create-web-app-for-containers"></a>为容器创建 Web 应用
 
-可使用 Azure Web 应用在云中托管本机 Linux 应用程序。 要创建用于容器的 Web 应用，必须依次运行相应的 Azure CLI 命令来创建组、服务计划和 Web 应用本身。 首先运行 [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) 命令，并传入位置和唯一的名称。
+可使用 Linux 上的 Azure 应用服务在云中托管本机 Linux 应用程序。 要创建用于容器的 Web 应用，必须依次运行用来创建组的 Azure CLI 命令、服务计划和 Web 应用本身。 首先运行 [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) 命令，并传入位置和唯一的名称。
 
 ```azurecli-interactive
 az group create --location "West Europe" --name myResourceGroup
 ```
 
-将显示类似于下面示例的输出：
+可以看到类似于下面示例的输出：
 
 ```json
 {
-  "id": "/subscriptions/432849d3e4-4f90-a782-87c11e-5e59d6dd/resourceGroups/myResourceGroup",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup",
   "location": "westeurope",
   "managedBy": null,
   "name": "myResourceGroup",
@@ -231,13 +231,13 @@ az group create --location "West Europe" --name myResourceGroup
 }
 ```
 
-使用 [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) 命令，凭借组的名称来帮助创建应用服务计划。 还需要为其赋予一个唯一名称，并设置 `--is-linux` 标记。
+通过 [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) 命令，使用组的名称来帮助创建应用服务计划。 还需要为其赋予一个唯一名称，并设置 `--is-linux` 标记。
 
 ```azurecli-interactive
 az appservice plan create --name myServicePlan --resource-group myResourceGroup --is-linux
 ```
 
-创建服务计划所生成的结果与下列示例相似：
+创建服务计划的操作所生成的结果与下列示例相似：
 
 ```json
   {- Starting...
@@ -245,8 +245,7 @@ az appservice plan create --name myServicePlan --resource-group myResourceGroup 
   "appServicePlanName": "myServicePlan",
   "geoRegion": "West Europe",
   "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/resourceGroups/myResourceGroup/provide
-rs/Microsoft.Web/serverfarms/myServicePlan",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myServicePlan",
   "kind": "linux",
   "location": "West Europe", 
   "resourceGroup": "myResourceGroup",
@@ -269,7 +268,7 @@ rs/Microsoft.Web/serverfarms/myServicePlan",
 az webapp create -g myResourceGroup -p myServicePlan -n <web-app-name> --runtime "python|3.4" 
 ```
 
-用于创建 Web 应用的命令其生成的输出如下所示：
+用于创建 Web 应用的命令生成如下所示的输出：
 
 ```json
 {- Starting ..
@@ -292,7 +291,7 @@ az webapp create -g myResourceGroup -p myServicePlan -n <web-app-name> --runtime
   ],
   "hostNamesDisabled": false,
   "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/5e59d6dd-d3e4-4f90-a782-43284987c11e/resourceGroups/myResourceGroup/providers/Microsoft.
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.
 Web/sites/<web-app-name>",
   "lastModifiedTimeUtc": "2017-08-08T21:09:33.693333",
   "location": "West Europe",
@@ -317,14 +316,14 @@ az webapp config appsettings set --resource-group myResourceGroup --name <web-ap
 
 ![测试 Web 应用端口配置](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
-## <a name="configure-web-app-to-use-docker-container-from-docker-hub"></a>配置 Web 应用以从 Docker 中心使用 Docker 容器
+## <a name="configure-web-app-to-use-docker-container-from-docker-hub"></a>配置 Web 应用使用 Docker 中心的 Docker 容器
 
 [az webapp config](https://docs.microsoft.com/cli/azure/webapp/config) 命令允许使用自定义 Docker 映像。
 
 <!-- Depending on your requirements, you may have your docker images in a Public Docker Registry, such as Docker Hub, or a Private Docker Registry, such as Azure Container Registry. Select the appropriate tab for your scenario below: -->
 
 > [!NOTE]
-> 从专用 Docker 注册表部署？ 请参阅有关如何[将 Web 应用配置为从专用注册表使用 Docker 容器](#configure-web-app-to-use-docker-container-from-a-private-registry-optional)的可选说明。
+> 从专用 Docker 注册表部署？ 请参阅有关如何[将 Web 应用配置为使用专用注册表中的 Docker 容器](#configure-web-app-to-use-docker-container-from-a-private-registry-optional)的可选说明。
 
 <!-- # [Docker Hub](#tab/docker-hub)-->
 
@@ -372,7 +371,7 @@ az webapp config container set --name <web-app-name> --resource-group myResource
 az webapp restart --name <web-app-name> --resource-group myResourceGroup
 ```
 
-重新启动命令将在不进行任何提示的情况下重新启动 Web 应用，因此终端上将不显示任何反馈。 Web 应用运行后，请立即在 `http://<username>.azurewebsites.net` 处浏览 Web 应用的 URL 来测试应用。 验证应用是否显示新的欢迎消息。
+重新启动命令将在不进行任何提示的情况下重新启动 Web 应用，因此终端上将不显示任何反馈。 Web 应用运行后，请立即浏览 Web 应用的 URL `http://<username>.azurewebsites.net` 来测试应用。 验证应用是否显示新的欢迎消息。
 
 ![在 Azure 中测试 Web 应用](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -388,7 +387,7 @@ return "Hello World of Web Apps running in Docker Containers!"
 
 ## <a name="connect-to-web-app-for-containers-using-ssh"></a>使用 SSH 连接到用于容器的 Web 应用
 
-SSH 实现容器和客户端之间的安全通信。 要让自定义 Docker 映像支持 SHH，必须将其构建到 Dockerfile 中。 在 Docker 文件中启用 SSH。 已在示例 Dockerfile 中添加 SSH 指令，因此可使用这些指令来操作自己的自定义映像：
+SSH 实现容器和客户端之间的安全通信。 要让自定义 Docker 映像支持 SHH，必须将其构建到 Dockerfile 中。 在 Docker 文件中启用 SSH。 SSH 指令已添加到示例 Dockerfile 中，因此可使用这些指令来操作自己的自定义映像：
 
 * [RUN](https://docs.docker.com/engine/reference/builder/#run) 指令调用 `apt-get`，然后将根帐户的密码设置为 `"Docker!"`。
 
@@ -462,7 +461,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-祝贺你！ 你已为用于容器的 Azure Web 应用配置自定义 Docker 映像。
+祝贺你！ 你已为用于容器的 Web 应用配置自定义 Docker 映像。
 
 ## <a name="push-a-docker-image-to-private-registry-optional"></a>将 Docker 映像推送到专用注册表（可选）
 
@@ -474,7 +473,7 @@ Azure 容器注册表是 Azure 的一项托管 Docker 服务，用于托管专�
 az acr create --name <azure-container-registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
 ```
 
-创建一个容器将产生下列输出：
+创建容器的操作将产生下列输出：
 
 ```bash
  - Finished ..
@@ -486,7 +485,7 @@ Use an existing service principal and assign access:
 {
   "adminUserEnabled": false,
   "creationDate": "2017-08-09T04:21:09.654153+00:00",
-  "id": "/subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/{azure-container-registry-name>",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<azure-container-registry-name>",
   "location": "westeurope",
   "loginServer": "<azure-container-registry-name>.azurecr.io",
   "name": "<azure-container-registry-name>",
@@ -554,7 +553,7 @@ az acr repository list -n <azure-container-registry-name>
 ]
 ```
 
-## <a name="configure-web-app-to-use-docker-container-from-a-private-registry-optional"></a>配置 Web 应用以从专用注册表中使用 Docker 容器（可选）
+## <a name="configure-web-app-to-use-docker-container-from-a-private-registry-optional"></a>将 Web 应用配置为使用专用注册表中的 Docker 容器（可选）
 
 可在 Linux 上配置 Web 应用，以便其运行存储在 Azure 容器注册表中的容器。 使用 Azure 容器注册表和使用其他任何专用注册表一样，因此，如果需要使用自己的专用注册表，那么完成此任务的步骤是相似的。
 
@@ -621,4 +620,4 @@ az webapp config container set --name <web-app-name> --resource-group myResource
 
 ## <a name="next-steps"></a>后续步骤
 
-[用于容器的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
+[Linux 上的 Azure 应用服务常见问题解答](app-service-linux-faq.md)

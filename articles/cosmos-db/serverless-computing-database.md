@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/24/2017
 ms.author: mimig
-ms.openlocfilehash: 192bdde86e12472a6fd87ba50fd597ea8b01247d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9bcecff4031bcf51e3885ad98da69d9be41b397
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -101,7 +101,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 **实现：**侦听一个集合的多个 Azure Cosmos DB 触发器
 
-1. 通过将 Azure Cosmos DB 触发器添加到每个 Azure Functions 可以创建多个 Azure Functions，它们全部都侦听购物车数据的同一更改源。 
+1. 通过将 Azure Cosmos DB 触发器添加到每个 Azure Functions 可以创建多个 Azure Functions，它们全部都侦听购物车数据的同一更改源。 请注意，当多个函数侦听同一更改源时，需要为每个函数提供新的租用集合。
 2. 每当新商品添加到用户的购物车时，更改源都将从购物车容器中独立调用每个函数。
     * 一个函数可能使用当前购物篮的内容更改用户可能有兴趣的其他商品的显示内容。
     * 另一个函数可能更新库存总数。

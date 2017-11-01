@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 50406e50363054fb92a1783751ba62ca7b3455e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b677990efe49b666396728767ee59587a280efe
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 现代数据集成的一大挑战是将数据在本地和云之间进行移动。 数据工厂借助数据管理网关实现此集成，后者是一个可安装在本地以实现混合数据移动的代理。
@@ -29,16 +29,19 @@ ms.lasthandoff: 10/11/2017
 *  [使用 Azure 数据工厂在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)
 
 
-## <a name="current-version-21063477"></a>当前版本 (2.10.6347.7)
+## <a name="current-version"></a>当前版本 
+我们不再维护此处的发行说明。 请在[此处](https://go.microsoft.com/fwlink/?linkid=853077)获取最新的发行说明
 
+
+
+
+## <a name="earlier-versions"></a>早期版本
+## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
 - 可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
 - HDFS 连接器现在允许跳过 SSL 验证，支持自签名的公用证书。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 
-
-
-## <a name="earlier-versions"></a>早期版本
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>增强功能

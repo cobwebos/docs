@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 10/11/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15e3f7ef3bfd6b1f61fe6081a378bdb29e0a1aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7de7c5e366d1f7da73eabfa889a3b43fb0403438
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-cosmos-db-documentdb-java-sdk-release-notes-and-resources"></a>Azure Cosmos DB：DocumentDB Java SDK 发行说明和资源
 > [!div class="op_single_selector"]
@@ -47,10 +47,15 @@ ms.lasthandoff: 10/11/2017
 
 <tr><td>**Web 应用教程**</td><td>[使用 Azure Cosmos DB 进行 Web 应用程序开发](documentdb-java-application.md)</td></tr>
 
-<tr><td>**当前受支持的运行时**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
+<tr><td>受支持的最小运行时</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11301130"></a><a name="1.13.0"/>1.13.0
+* 修复了读取单个分区键范围的问题。
+* 修复了 ResourceID 分析中影响使用短名称的数据库的问题。
+* 修复了分区键编码导致的问题。
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
 * 关键 bug 修复，用于在分区拆分期间请求处理。
@@ -169,6 +174,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.13.0](#1.13.0) |2017 年 8 月25 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 7 月 11 日 |--- |
 | [1.11.0](#1.11.0) |2017 年 5 月 10 日 |--- |
 | [1.10.0](#1.10.0) |2017 年 3 月 11 日 |--- |

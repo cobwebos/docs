@@ -1,10 +1,10 @@
 ---
-title: "在虚拟机规模集上部署应用"
-description: "使用扩展在 Azure 虚拟机规模集上部署应用。"
+title: "将应用程序部署到 Azure 虚拟机规模集 | Microsoft Docs"
+description: "了解如何将应用程序部署到规模集中的 Linux 和 Windows 虚拟机实例"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: thraka
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
@@ -13,217 +13,214 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
-ms.author: adegeo
-ms.openlocfilehash: 371295efea1eab66361b9aba21a55bbd2826c69b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/13/2017
+ms.author: iainfou
+ms.openlocfilehash: 0ff8a178d883e3b51294485e556e65da52dbf327
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
+若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 本文介绍如何为规模集中的实例生成自定义 VM 映像，或在现有 VM 实例上自动运行安装脚本。 本文还将介绍如何跨规模集管理应用程序或 OS 更新。
 
-本文介绍在预配规模集时如何通过不同方式安装软件。
 
-可能需查看[规模集设计概述](virtual-machine-scale-sets-design-overview.md)一文，其中描述了针对虚拟机规模集的一些限制。
+## <a name="build-a-custom-vm-image"></a>生成自定义 VM 映像
+使用 Azure 平台映像之一在规模集中创建实例时，不会安装或配置其他软件。 可以自动安装这些组件，但这会增加将 VM 实例预配到规模集所需的时间。 如果将多个配置更改应用到 VM 实例，那么这些配置脚本和任务会产生管理开销。
 
-## <a name="capture-and-reuse-an-image"></a>捕获并重复使用映像
+若要减少配置管理和预配 VM 的时间，可以创建自定义 VM 映像，使其在规模集中预配实例后立即准备好运行应用程序。 为规模集实例创建自定义 VM 映像的整个过程如下：
 
-可使用 Azure 中的虚拟机为规模集准备基础映像。 此过程会在存储帐户中创建一个托管磁盘，可将其引用为规模集的基本映像。 
+1. 若要为规模集实例创建自定义 VM 映像，请创建并登录 VM ，然后安装和配置应用程序。 可使用 Packer 定义和生成 [Linux](../virtual-machines/linux/build-image-with-packer.md) 或 [Windows](../virtual-machines/windows/build-image-with-packer.md) VM 映像。 或者，可手动创建和配置 VM：
 
-请执行以下步骤：
+    - 使用 [Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)、[Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md) 或[门户](../virtual-machines/linux/quick-create-portal.md)创建 Linux VM。
+    - 使用 [Azure PowerShell](../virtual-machines/windows/quick-create-powershell.md)、[Azure CLI 2.0](../virtual-machines/windows/quick-create-cli.md) 或[门户](../virtual-machines/windows/quick-create-portal.md)创建 Windows VM。
+    - 登录到 [Linux](../virtual-machines/linux/mac-create-ssh-keys.md#use-the-ssh-key-pair) 或 [Windows](../virtual-machines/windows/connect-logon.md) VM。
+    - 安装和配置所需应用程序和工具。 如果需要特定版本的库或运行时，则自定义 VM 映像使你可以定义一个版本和 
 
-1. 创建一个 Azure 虚拟机
-   * [Linux][linux-vm-create]
-   * [Windows][windows-vm-create]
+2. 使用 [Azure CLI 2.0](../virtual-machines/linux/capture-image.md) 或 [Azure PowerShell](../virtual-machines/windows/capture-image.md) 捕获 VM。 此步骤会创建自定义 VM 映像，用于稍后在规模集中部署实例。
 
-2. 远程进入虚拟机，根据你的偏好自定义系统。
+3. [创建规模集](virtual-machine-scale-sets-create.md)并指定在前面的步骤中创建的自定义 VM 映像。
 
-   现在可按需安装应用程序。 但是如果现在安装应用程序，升级应用程序时可能会更复杂，因为可能需要先删除该应用程序。 可改用此步骤来安装应用程序可能需要的所有先决条件，如特定运行时或操作系统功能。
 
-3. 按照 [Linux][linux-vm-capture] 或 [Windows][windows-vm-capture] 的“捕获计算机”教程执行操作。
+## <a name="already-provisioned"></a>使用自定义脚本扩展安装应用
+自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。
 
-4. 使用在上一步中捕获的映像 URI 创建[虚拟机规模集][vmss-create]。
+自定义脚本扩展与 Azure Resource Manager 模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。 
 
-有关磁盘的详细信息，请参阅[托管磁盘概述](../virtual-machines/windows/managed-disks-overview.md)和[使用附加数据磁盘](virtual-machine-scale-sets-attached-disks.md)。
+有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
 
-## <a name="already-provisioned"></a>预配规模集时进行安装
 
-可将虚拟机扩展应用于虚拟机规模集。 借助虚拟机扩展，可将规模集中的虚拟机作为一个组进行自定义。 有关扩展的详细信息，请参阅[虚拟机扩展](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+### <a name="use-azure-powershell"></a>使用 Azure PowerShell
+PowerShell 使用哈希表存储要下载的文件和要执行的命令。 以下示例：
 
-有三个可用的主要扩展，具体哪个可用取决于操作系统是基于 Linux 还是基于 Windows。
+- 指示 VM 实例从 GitHub 下载脚本 - https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate-iis.ps1
+- 设置用于运行安装脚本的扩展 - `powershell -ExecutionPolicy Unrestricted -File automate-iis.ps1`
+- 使用 [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) 获取有关规模集的信息
+- 使用 [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) 将扩展应用到 VM 实例
 
-### <a name="windows"></a>Windows
-
-对于基于 Windows 的操作系统，请使用自定义脚本 v1.8 扩展或 PowerShell DSC 扩展。
-
-#### <a name="custom-script"></a>自定义脚本
-
-自定义脚本扩展在规模集中的每个虚拟机实例上运行脚本。 配置文件或变量指明将哪些文件下载到虚拟机，然后运行什么命令。 可用它来运行安装程序、脚本、批处理文件、任何可执行文件等。
-
-PowerShell 使用哈希表进行设置。 此示例配置自定义脚本扩展，运行安装 IIS 的 PowerShell 脚本。
+自定义脚本扩展会应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例。 按如下所示输入自己的名称：
 
 ```powershell
-# Setup extension configuration hashtable variable
+# Define the script for your Custom Script Extension to run
 $customConfig = @{
-  "fileUris" = @("https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/temp/install-iis.ps1");
-  "commandToExecute" = "PowerShell -ExecutionPolicy Unrestricted .\install-iis.ps1 >> `"%TEMP%\StartupLog.txt`" 2>&1";
-};
+    "fileUris" = (,"https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate-iis.ps1");
+    "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File automate-iis.ps1"
+}
 
-# Add the extension to the config
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmssConfig -Publisher Microsoft.Compute -Type CustomScriptExtension -TypeHandlerVersion 1.8 -Name "customscript1" -Setting $customConfig
+# Get information about the scale set
+$vmss = Get-AzureRmVmss `
+                -ResourceGroupName "myResourceGroup" `
+                -VMScaleSetName "myScaleSet"
 
-# Send the new config to Azure
-Update-AzureRmVmss -ResourceGroupName $rg -Name "MyVmssTest143"  -VirtualMachineScaleSet $vmssConfig
+# Add the Custom Script Extension to install IIS and configure basic website
+$vmss = Add-AzureRmVmssExtension `
+    -VirtualMachineScaleSet $vmss `
+    -Name "customScript" `
+    -Publisher "Microsoft.Compute" `
+    -Type "CustomScriptExtension" `
+    -TypeHandlerVersion 1.8 `
+    -Setting $customConfig
+
+# Update the scale set and apply the Custom Script Extension to the VM instances
+Update-AzureRmVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
 ```
 
->[!IMPORTANT]
->对于可能包含敏感信息的任何设置，请使用 `-ProtectedSetting` 切换。
-
----------
+如果规模集上的升级策略是手动的，则使用 [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) 更新 VM 实例。 此 cmdlet 会将更新的规模集配置应用于 VM 实例，并安装应用程序。
 
 
-Azure CLI 使用 json 文件进行设置。 此示例配置自定义脚本扩展，运行安装 IIS 的 PowerShell 脚本。 将以下 json 文件另存为 settings.json。
+### <a name="use-azure-cli-20"></a>使用 Azure CLI 2.0
+若要通过 Azure CLI 使用自定义脚本扩展，请创建 JSON 文件，用于定义要包含的文件和要执行的命令。 这些 JSON 定义可以在规模集部署之间重复使用，以应用一致的应用程序安装。
+
+在当前 shell 中，创建名为“customConfig.json”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloudConfig.json` 以创建文件并查看可用编辑器的列表。
 
 ```json
 {
-  "fileUris": [
-    "https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/temp/install-iis.ps1"
-  ],
-  "commandToExecute": "PowerShell -ExecutionPolicy Unrestricted .\install-iis.ps1 >> \"%TEMP%\StartupLog.txt\" 2>&1"
+  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx.sh"],
+  "commandToExecute": "./automate_nginx.sh"
 }
 ```
 
-然后，运行此 Azure CLI 命令。
+使用 [az vmss extension set](/cli/azure/vmss/extension#set) 将自定义脚本扩展配置应用到规模集中的 VM 实例。 以下示例将 customConfig.json 配置应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例。 按如下所示输入自己的名称：
 
 ```azurecli
-az vmss extension set --publisher Microsoft.Compute --version 1.8 --name CustomScriptExtension --resource-group myResourceGroup --vmss-name myScaleSet --settings @settings.json
+az vmss extension set \
+    --publisher Microsoft.Azure.Extensions \
+    --version 2.0 \
+    --name CustomScript \
+    --resource-group myResourceGroup \
+    --vmss-name myScaleSet \
+    --settings @customConfig.json
 ```
 
->[!IMPORTANT]
->对于可能包含敏感信息的任何设置，请使用 `--protected-settings` 切换。
+如果规模集上的升级策略是手动的，则使用 [az vmss update-instances](/cli/azure/vmss#update-instances) 更新 VM 实例。 此 cmdlet 会将更新的规模集配置应用于 VM 实例，并安装应用程序。
 
-### <a name="powershell-dsc"></a>PowerShell DSC
 
-可使用 PowerShell DSC 自定义规模集 VM 实例。 Microsoft.Powershell 发布的 DSC 扩展在每个虚拟机实例上部署并运行提供的 DSC 配置。 配置文件或变量告知扩展 .zip 包的位置，及要运行的脚本函数组合。
+## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>使用 PowerShell DSC 将应用安装到 Windows VM
+[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) 是一个管理平台，用于定义目标计算机的配置。 DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 本地配置管理器 (LCM) 引擎在每个目标节点上运行，此类节点根据推送的配置处理请求的操作。
 
-PowerShell 使用哈希表进行设置。 此示例部署安装 IIS 的 DSC 包。
+通过 PowerShell DSC 扩展，可使用 PowerShell 在规模集中自定义 VM 实例。 以下示例：
+
+- 指示 VM 实例从 GitHub 下载 DSC 包 - https://github.com/iainfoulds/azure-samples/raw/master/dsc.zip
+- 设置用于运行安装脚本的扩展 - `configure-http.ps1`
+- 使用 [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) 获取有关规模集的信息
+- 使用 [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) 将扩展应用到 VM 实例
+
+DSC 扩展会应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例。 按如下所示输入自己的名称：
 
 ```powershell
-# Setup extension configuration hashtable variable
+# Define the script for your Desired Configuration to download and run
 $dscConfig = @{
   "wmfVersion" = "latest";
   "configuration" = @{
-    "url" = "https://github.com/MicrosoftDocs/azure-cloud-services-files/raw/temp/dsc.zip";
+    "url" = "https://github.com/iainfoulds/azure-samples/raw/master/dsc.zip";
     "script" = "configure-http.ps1";
     "function" = "WebsiteTest";
   };
 }
 
-# Add the extension to the config
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmssConfig -Publisher Microsoft.Powershell -Type DSC -TypeHandlerVersion 2.24 -Name "dsc1" -Setting $dscConfig
+# Get information about the scale set
+$vmss = Get-AzureRmVmss `
+                -ResourceGroupName "myResourceGroup" `
+                -VMScaleSetName "myScaleSet"
 
-# Send the new config to Azure
-Update-AzureRmVmss -ResourceGroupName $rg -Name "myscaleset1"  -VirtualMachineScaleSet $vmssConfig
+# Add the Desired State Configuration extension to install IIS and configure basic website
+$vmss = Add-AzureRmVmssExtension `
+    -VirtualMachineScaleSet $vmss `
+    -Publisher Microsoft.Powershell `
+    -Type DSC `
+    -TypeHandlerVersion 2.24 `
+    -Name "DSC" `
+    -Setting $dscConfig
+
+# Update the scale set and apply the Desired State Configuration extension to the VM instances
+Update-AzureRmVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myScaleSet"  `
+    -VirtualMachineScaleSet $vmss
 ```
 
->[!IMPORTANT]
->对于可能包含敏感信息的任何设置，请使用 `-ProtectedSetting` 切换。
+如果规模集上的升级策略是手动的，则使用 [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) 更新 VM 实例。 此 cmdlet 会将更新的规模集配置应用于 VM 实例，并安装应用程序。
 
------------
 
-Azure CLI 使用 json 进行设置。 此示例部署安装 IIS 的 DSC 包。 将以下 json 文件另存为 settings.json。
+## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>使用 cloud-init 将应用安装到 Linux VM
+[Cloud-init](https://cloudinit.readthedocs.io/latest/) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
-```json
-{
-  "wmfVersion": "latest",
-  "configuration": {
-    "url": "https://github.com/MicrosoftDocs/azure-cloud-services-files/raw/temp/dsc.zip",
-    "script": "configure-http.ps1",
-    "function": "WebsiteTest"
-  }
-}
-```
+Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
-然后，运行此 Azure CLI 命令。
+有关详细信息，包括示例 cloud-init.txt 文件，请参阅[使用 cloud-init 自定义 Azure VM](../virtual-machines/linux/using-cloud-init.md)。
 
-```azurecli
-az vmss extension set --publisher Microsoft.Powershell --version 2.24 --name DSC --resource-group myResourceGroup --vmss-name myScaleSet --settings @settings.json
-```
-
->[!IMPORTANT]
->对于可能包含敏感信息的任何设置，请使用 `--protected-settings` 切换。
-
-### <a name="linux"></a>Linux
-
-创建期间，Linux 可使用自定义脚本 v2.0 扩展或使用 cloud-init。
-
-自定义脚本是简单的扩展，可将文件下载到虚拟机实例，并运行命令。
-
-#### <a name="custom-script"></a>自定义脚本
-
-将以下 json 文件另存为 settings.json。
-
-```json
-{
-  "fileUris": [
-    "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/installserver.sh",
-    "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/workserver.py"
-  ],
-  "commandToExecute": "bash installserver.sh"
-}
-```
-
-使用 Azure CLI 将此扩展添加到现有虚拟机规模集。 规模集中的每个虚拟机都会自动运行扩展。
-
-```azurecli
-az vmss extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --resource-group myResourceGroup --vmss-name myScaleSet --settings @settings.json
-```
-
->[!IMPORTANT]
->对于可能包含敏感信息的任何设置，请使用 `--protected-settings` 切换。
-
-#### <a name="cloud-init"></a>Cloud-Init
-
-创建规模集时会使用 Cloud-init。 首先，创建一个名为 cloud-init.txt 的本地文件，并向该文件添加配置。 有关示例，请参阅[此主题](https://gist.github.com/Thraka/27bd66b1fb79e11904fb62b7de08a8a6#file-cloud-init-txt)
-
-使用 Azure CLI 创建规模集。 `--custom-data` 字段接受 cloud-init 脚本的文件名。
+若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/azure/vmss#create) 命令并指定 cloud-int 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例。 按如下所示输入自己的名称：
 
 ```azurecli
 az vmss create \
-  --resource-group myResourceGroupScaleSet \
+  --resource-group myResourceGroup \
   --name myScaleSet \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+  --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --custom-data cloud-init.txt \
   --admin-username azureuser \
-  --generate-ssh-keys      
+  --generate-ssh-keys
 ```
 
-## <a name="how-do-i-manage-application-updates"></a>如何管理应用程序更新？
 
-如果是通过扩展部署应用程序，请以某种方式更改扩展定义。 此更改会使扩展重新部署到所有虚拟机实例。 必须更改扩展的某些内容，例如重命名引用的文件，否则 Azure 不知道该扩展已更改。
+## <a name="install-applications-as-a-set-scales-out"></a>规模集横向扩展时安装应用程序
+借助规模集，可增加用于运行应用程序的 VM 实例数。 此横向扩展过程可手动启动，也可基于 CPU 或内存使用情况等指标自动启动。
 
-如果将应用程序引入自己的操作系统映像，请使用自动化部署管道进行应用程序更新。 设计体系结构，帮助分阶段的规模集快速切换到生产环境。 [Azure Spinnaker 驱动程序的工作原理](https://github.com/spinnaker/deck/tree/master/app/scripts/modules/azure)很好地示范了这种方法 - [http://www.spinnaker.io/](http://www.spinnaker.io/)。
+如果已将自定义脚本扩展应用到规模集，则应用程序会安装到每个新的 VM 实例中。 如果规模集基于预安装了应用程序的自定义映像，则每个新的 VM 实例都是以可用状态进行部署的。 
 
-[Packer](https://www.packer.io/) 和 [Terraform](https://www.terraform.io/) 支持 Azure Resource Manager，因此也可以“代码方式”定义映像并在 Azure 中将进行生成，然后在规模集中使用 VHD。 但是，这种做法会给应用商店映像造成问题，在这种情况下，扩展/自定义脚本变得更加重要，因为无法直接在应用商店中处理代码。
-
-## <a name="what-happens-when-a-scale-set-scales-out"></a>扩展规模集会发生什么情况？
-将一个或多个虚拟机添加到规模集时，会自动安装应用程序。 例如，如果规模集包含定义的扩展，则每次创建新虚拟机时，这些扩展都会在新虚拟机上运行。 如果规模集基于自定义映像，所有新虚拟机都是自定义源映像的副本。 如果规模集虚拟机是容器主机，则可使用启动代码加载自定义脚本扩展中的容器。 或者，扩展可能会安装注册群集协调器的代理，例如 Azure 容器服务。
+如果规模集 VM 实例是容器主机，则可使用自定义脚本扩展拉取和运行所需容器映像。 自定义脚本扩展还可向 Azure 容器服务等业务流程协调程序注册新的 VM 实例。
 
 
-## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>如何跨更新域推出 OS 更新？
-假设要在更新 OS 映像的同时让虚拟机规模集持续运行。 PowerShell 和 Azure CLI 可更新虚拟机映像，一次一个虚拟机。 [升级虚拟机规模集](./virtual-machine-scale-sets-upgrade-scale-set.md)一文还进一步介绍了可用于跨虚拟机规模集执行操作系统升级的选项。
+## <a name="deploy-application-updates"></a>部署应用程序更新
+如果更新应用程序代码、库或包，则可将最新的应用程序状态推送到规模集中的 VM 实例。 如果使用自定义脚本扩展，则不会自动部署应用程序更新。 更改自定义脚本配置，例如指向具有更新的版本名称的安装脚本。 在上一示例中，自定义脚本扩展使用名为 automate_nginx.sh 的脚本，如下所示：
+
+```json
+{
+  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx.sh"],
+  "commandToExecute": "./automate_nginx.sh"
+}
+```
+
+对应用程序所做的任何更改均不会向自定义脚本扩展公开，除非安装脚本发生更改。 一种方法是包括随应用程序发布递增的版本号。 自定义脚本扩展现可引用 automate_nginx_v2.sh，如下所示：
+
+```json
+{
+  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx_v2.sh"],
+  "commandToExecute": "./automate_nginx_v2.sh"
+}
+```
+
+自定义脚本扩展现可针对 VM 实例运行，从而应用最新的应用程序更新。
+
+
+### <a name="install-applications-with-os-updates"></a>使用 OS 更新安装应用程序
+新的 OS 版本可用时，可使用或生成新的自定义映像并[将 OS 升级部署](virtual-machine-scale-sets-upgrade-scale-set.md)到规模集中。 每个 VM 实例均会升级到指定的最新映像。 可使用预安装了应用程序的自定义映像、自定义脚本扩展或 PowerShell DSC 使应用程序在你执行升级时自动可用。 执行此过程时，可能需要为应用程序维护制定计划，确保不存在版本兼容问题。
+
+如果使用预安装了应用程序的自定义 VM 映像，则可将应用程序更新与部署管道集成，以便生成新的映像并在规模集中部署 OS 升级。 此方法可使管道选取最新的应用程序版本，创建和验证 VM 映像，然后升级规模集中的 VM 实例。 若要运行跨自定义 VM 映像生成并部署应用程序更新的部署管道，可使用 [Visual Studio Team Services](https://www.visualstudio.com/team-services/)、[Spinnaker](https://www.spinnaker.io/) 或 [Jenkins](https://jenkins.io/)。
+
 
 ## <a name="next-steps"></a>后续步骤
-
-* [使用 PowerShell 管理规模集。](virtual-machine-scale-sets-windows-manage.md)
-* [创建规模集模板。](virtual-machine-scale-sets-mvss-start.md)
-
-
-[linux-vm-create]: ../virtual-machines/linux/tutorial-manage-vm.md
-[windows-vm-create]: ../virtual-machines/windows/tutorial-manage-vm.md
-[linux-vm-capture]: ../virtual-machines/linux/capture-image.md
-[windows-vm-capture]: ../virtual-machines/windows/capture-image.md 
-[vmss-create]: virtual-machine-scale-sets-create.md
-
+生成应用程序并将其部署到规模集时，可参阅[规模集设计概述](virtual-machine-scale-sets-design-overview.md)。 若要深入了解如何管理规模集，请参阅[使用 PowerShell 管理规模集](virtual-machine-scale-sets-windows-manage.md)。

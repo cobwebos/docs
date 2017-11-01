@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: c2a3b9702afd99c29b64133a05515a1b5f395130
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/15/2017
+ms.openlocfilehash: 453c774c97b77dd7829a50fa5e5668d06f817a1d
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>教程：使用命令行接口将鸢尾花分类
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -73,86 +73,91 @@ PATH=$HOME/Library/Caches/AmlWorkbench/Python/bin:$PATH
 
 然后，需要在 CLI 中设置正确的上下文来访问和管理 Azure 资源。
  
-```bash
-az login
-az account set -s d128f140-94e6-1206-80a7-954b9d27d007
+```azure-cli
+# log in
+$ az login
+
+# list all subscriptions
+$ az account list -o table
+
+# set the current subscription
+$ az account set -s <subscription id or name>
 ```
 
-> [!TIP]
-> 若要获取所有订阅的列表，请运行： 
->```
->az account list -o table
->```
-
 ## <a name="step-2-create-a-new-azure-machine-learning-experimentation-account-and-workspace"></a>步骤 2. 创建新的 Azure 机器学习试验帐户和工作区
-首先，创建新的试验帐户和新的工作区。 有关试验帐户和工作区的更多详细信息，请参阅 [Azure 机器学习的概念](overview-general-concepts.md)。 
+首先，创建新的试验帐户和新的工作区。 有关试验帐户和工作区的更多详细信息，请参阅 [Azure 机器学习的概念](overview-general-concepts.md)。
 
 > [!NOTE]
-> 试验帐户需要一个用于存储试验运行输出的存储帐户。 该存储帐户的名称必须在 Azure 中全局唯一，因为它有一个关联的 URL。 系统会使用试验帐户名称代你创建新的存储帐户。 请确保使用唯一名称，否则会收到类似于“名为 amlsampleexp 的存储帐户已被占用”的错误。 或者，可以使用 `--storage` 参数来使用现有存储帐户。
+> 试验帐户需要一个用于存储试验运行输出的存储帐户。 该存储帐户的名称必须在 Azure 中全局唯一，因为它有一个关联的 URL。 如果未指定现有的存储帐户，系统会使用试验帐户名称创建新的存储帐户。 请确保使用唯一名称，否则会收到类似于“名为 \<storage_account_name> 的存储帐户已被占用”的错误。 或者，可以使用 `--storage` 参数来提供现有存储帐户。
 
-```bash
-az group create --name amlsample --location eastus2
-az ml account experimentation create --name amlsampleexp --resource-group amlsample
-az ml account experimentation create --name amlsampleexp --resource-group amlsample --storage /subscriptions/6d48cffb-b787-47bd-8d20-1696afa33b67/resourceGroups/existing/providers/Microsoft.Storage/storageAccounts/mystorageacct
-az ml workspace create --name amlsamplew --account amlsampleexp --resource-group amlsample
+```azure-cli
+# create a resource group 
+$ az group create --name <resource group name> --location <supported Azure region>
+
+# create a new experimentation account with a new storage account
+$ az ml account experimentation create --name <experimentation account name> --resource-group <resource group name>
+
+# create a new experimentation account with an existing storage account
+$ az ml account experimentation create --name <experimentation account name>  --resource-group <resource group name> --storage <storage account Azure Resource ID>
+
+# create a workspace in the experimentation account
+az ml workspace create --name <workspace name> --account <experimentation account name> --resource-group <resource group name>
 ```
 
 ## <a name="step-2a-optional-share-a-workspace-with-co-worker"></a>步骤 2.a（可选）：与同事共享工作区
 现在，我们探讨如何与同事共享对工作区的访问权限。 共享试验帐户的访问权限与共享项目的访问权限的步骤相同。 只需更新获取 Azure 资源 ID 的方式。
 
-```bash
-az ml workspace show --name amlsamplew --account amlsampleexp --resource-group amlsample 
-az role assignment create --assignee ahgyger@microsoft.com --role owner --scope "/subscriptions/d128f140-94e6-4175-87a7-954b9d27db16/resourceGroups/amlsample/providers/Microsoft.MachineLearningExperimentation/accounts/amlsampleexp/workspaces/amlsamplew"
+```azure-cli
+# find the workspace Azure Resource ID
+$az ml workspace show --name <workspace name> --account <experimentation account name> --resource-group <resource group name>
+
+# add Bob to this workspace as a new owner
+$az role assignment create --assignee bob@contoso.com --role owner --scope <workspace Azure Resource ID>
 ```
 
 > [!TIP]
-> 需要使用同事的实际电子邮件地址，而不能使用别名。 
+> 上述命令中的 `bob@contoso.com` 必须是当前订阅所属的目录中的有效 Azure AD 标识。
 
 ## <a name="step-3-create-a-new-project"></a>步骤 3. 创建新项目
 下一步是创建新项目。 可通过多种方法开始使用新项目。
 
 ### <a name="create-a-new-blank-project"></a>创建新的空白项目
 
-```bash
-az ml project create --name 9_25_1 --workspace amlsamplew --account amlsampleexp --resource-group amlsample --path c:\Users\ahgyger\Documents\AMLworkbench_Demo\9_25\
+```azure-cli
+# create a new project
+$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path>
 ```
 
-### <a name="create-a-new-project-with-template-files"></a>使用模板文件创建新项目
-模板文件不是示例，但提供新项目的框架。 项目中预先填充了两个文件：`train.py` 和 `score.py`。
+### <a name="create-a-new-project-with-a-default-project-template"></a>使用默认项目模板创建新项目
+可以使用默认模板创建新项目。
 
-```bash
-az ml project create --name 9_25_1 --workspace amlsamplew --account amlsampleexp --resource-group amlsample --path c:\Users\ahgyger\Documents\AMLworkbench_Demo\ --template
+```azure-cli
+$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --template
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>创建与云 Git 存储库关联的新项目
-可以创建与云 Git 存储库关联的新项目。 每次提交试验后，项目内容将是充当运行历史记录分支中的 Git 提交内容的快照。 有关更多详细信息，请参阅[将 Git 存储库与 Azure Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
+可以创建与 VSTS (Visual Studio Team Service) Git 存储库关联的新项目。 每次提交试验时，都会将整个项目文件夹的快照提交到远程 Git 存储库。 有关更多详细信息，请参阅[将 Git 存储库与 Azure Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
 
 > [!NOTE]
-> Azure 机器学习仅支持将 Git 用作版本控制机制的空团队项目 (VSTS)。
+> Azure 机器学习仅支持在 VSTS 中创建的空 Git 存储库。
 
+```azure-cli
+$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
+```
 > [!TIP]
-> 如果收到错误“存储库 URL 可能无效，或者用户可能没有访问权限”，可以在 VSTS 中创建安全令牌（在“安全性”中添加个人访问令牌），并在创建项目时使用 __vststoken__ 参数。 
+> 如果收到错误“存储库 URL 可能无效，或者用户可能没有访问权限”，可以在 VSTS 中创建安全令牌（“安全性”下的“添加个人访问令牌”菜单），并在创建项目时使用 `--vststoken` 参数。 
 
-```bash
-az ml project create --name 9_25_2 --workspace amlsamplew --account amlsampleexp --resource-group amlsample --path c:\Users\ahgyger\Documents\AMLworkbench_Demo\ --repo https://ahgyger.visualstudio.com/AMLWorkbench/_git/9_25 --vststoken m2fholwwrcn7u4nrdqfxx007u5rztjfhgofnemvuvtue6pbwo3sa
+### <a name="sample_create"></a>从示例创建新项目
+此示例将示例项目用作模板来创建新项目。
+
+```azure-cli
+# List the project samples, find the Classifying Iris sample
+$ az ml project sample list
+
+# Create a new project from the sample
+az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --template-url https://github.com/MicrosoftDocs/MachineLearningSamples-Iris
 ```
-
-### <a name="sample_create"></a>从在线示例创建新项目
-本示例使用 git 中心项目中的模板，并在创建新项目时使用该模板。 
-
-```bash
-# List the project samples
-az ml project sample list
-
-# Create a new project from a sample
-az ml project create --name 9_25_3 --workspace amlsamplew --account amlsampleexp --resource-group amlsample --path c:\Users\ahgyger\Documents\AMLworkbench_Demo\ --repo https://ahgyger.visualstudio.com/AMLWorkbench/_git/9_25 --template-url https://github.com/MicrosoftDocs/MachineLearningSamples-Iris
-```
-
-创建项目后，请先将目录更改为该项目，然后转到下一步。
-
-```bash
-cd c:\Users\ahgyger\Documents\AMLworkbench_Demo\9_25\9_25_1
-```
+创建项目后，使用 `cd` 命令进入项目目录。
 
 ## <a name="step-4-run-the-training-experiment"></a>步骤 4：运行训练试验 
 以下步骤假设已创建一个包含鸢尾花样本的项目（请参阅[从在线示例创建新项目](#sample_create)）。
@@ -160,95 +165,95 @@ cd c:\Users\ahgyger\Documents\AMLworkbench_Demo\9_25\9_25_1
 ### <a name="prepare-your-environment"></a>准备环境 
 对于鸢尾花示例，需要安装 matplotlib。
 
-```bash
-pip install matplotlib
+```azure-cli
+$ pip install matplotlib
 ```
 
 ###  <a name="submit-the-experiment"></a>提交试验
 
-```bash
+```azure-cli
 # Execute the file
-az ml experiment submit --run-configuration local iris_sklearn.py
+$ az ml experiment submit --run-configuration local iris_sklearn.py
 ```
 
 ### <a name="iterate-on-your-experiment-with-descending-regularization-rates"></a>使用递减的正则化率迭代试验
 结合一定的创造力，只需将用于提交试验的 Python 脚本与不同的正则化率结合在一起。 （可能需要编辑文件，以便指向正确的项目路径。）
 
-```bash
-python run.py
+```azure-cli
+$ python run.py
 ```
 
 ## <a name="step-5-view-run-history"></a>步骤 5. 查看运行历史记录
 以下命令列出以前执行的所有运行。 
 
-```bash
-az ml history list -o table
+```azure-cli
+$ az ml history list -o table
 ```
 运行以上命令会显示属于此项目的所有运行的列表。 还可以看到列出了准确性和正则化率指标。 这样就可以轻松地从列表中识别最佳运行。
 
 ## <a name="step-5a-view-attachment-created-by-a-given-run"></a>步骤 5.a：查看给定运行创建的附件 
-若要查看与给定运行关联的附件，可以使用运行历史记录的 info 命令。
+若要查看与给定运行关联的附件，可以使用运行历史记录的 info 命令。 从上述列表中找到特定运行的运行 ID。
 
-```bash
-az ml history info --run 9_16_4_1505589545267 --artifact driver_log
+```azure-cli
+$ az ml history info --run <run id> --artifact driver_log
 ```
 
 若要从运行下载项目，可使用以下命令：
 
-```bash
+```azure-cli
 # Stream a given attachment 
-az ml history info --run <run id> --artifact <artifact location>
+$ az ml history info --run <run id> --artifact <artifact location>
 ```
 
 ## <a name="step-6-promote-artifacts-of-a-run"></a>步骤 6. 提升运行的项目 
 执行的某个运行具有更好的 AUC，因此，我们希望使用它来创建评分 Web 服务，以部署到生产环境。 为此，首先需要将项目提升到资产。
 
-```bash
-az ml history promote --run 9_25_1505346632975 --artifact-path outputs/model.pkl --name model.pkl
+```azure-cli
+$ az ml history promote --run <run id> --artifact-path outputs/model.pkl --name model.pkl
 ```
 
-这会在项目目录中创建一个包含 pickle.link 的 __assets__ 文件夹。 此链接文件用于跟踪所提升文件的版本。
+这会在项目目录中创建一个包含 `model.pkl.link` 文件的 `assets` 文件夹。 此链接文件用于引用提升的资产。
 
 ## <a name="step-7-download-the-files-to-be-operationalized"></a>步骤 7. 下载要操作化的文件
-现在需要下载提升的文件，以便可以使用这些文件创建预测 Web 服务。 
+现在需要下载提升的模型，以便可以使用这些文件创建预测 Web 服务。 
 
-```bash
-az ml asset download --link-file assets\pickle.link -d asset_download
+```azure-cli
+$ az ml asset download --link-file assets\pickle.link -d asset_download
 ```
 
 ## <a name="step-8-setup-your-model-management-environment"></a>步骤 8。 设置模型管理环境 
 创建环境用于部署 Web 服务。 可以使用 Docker 在本地计算机上运行该 Web 服务。 或者将其部署到 ACS 群集进行大规模操作。 
 
-```bash
-# Create new environment
-az ml env setup -l eastus2 -n amlsamplesenv
+```azure-cli
+# Create new local operationalization environment
+$ az ml env setup -l <supported Azure region> -n <env name>
 # Once setup is complete, set your environment for current context
-az ml env set -g amlsamplesenvrg -n amlsamplesenv
+$ az ml env set -g <resource group name> -n <env name>
 ```
 
 ## <a name="step-9-create-a-model-management-account"></a>步骤 9. 创建模型管理帐户 
 需要使用模型管理帐户在生产环境中部署和跟踪模型。 
 
-```bash
-az ml account modelmanagement create -n amlsamplesacct -g amlsamplesenvrg -l eastus2
+```azure-cli
+$ az ml account modelmanagement create -n <model management account name> -g <resource group name> -l <supported Azure region>
 ```
 
 ## <a name="step-10-create-a-web-service"></a>步骤 10. 创建 Web 服务
 然后，使用部署的模型创建一个可返回预测数据的 Web 服务。 
 
-```bash
-az ml service create realtime -m modelfilename -f score.py -r python –n amlsamplews
+```azure-cli
+$ az ml service create realtime -m asset_download/model.pkl -f score.py -r python –n <web service name>
 ```
 
 ## <a name="step-10-run-the-web-service"></a>步骤 10. 运行 Web 服务
 使用前一步骤的输出中的 Web 服务 ID，可以调用该 Web 服务并对其进行测试。 
 
-```
+```azure-cli
 # Get web service usage infomration
-az ml service usage realtime -i <web service id>
+$ az ml service usage realtime -i <web service id>
 
 # Call the web service with the run command:
-az ml service run realtime -i <web service id> -d <input data>
+$ az ml service run realtime -i <web service id> -d <input data>
 ```
 
 ## <a name="deleting-all-the-resources"></a>删除所有资源 
@@ -256,9 +261,8 @@ az ml service run realtime -i <web service id> -d <input data>
 
 为此，只需删除包含所有资源的资源组即可。 
 
-```bash
-az group delete --name amlsample
-az group delete --name amlsamplesenvrg
+```azure-cli
+az group delete --name <resource group name>
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -271,4 +275,3 @@ az group delete --name amlsamplesenvrg
 > * 创建模型管理帐户用于模型管理
 > * 创建环境用于部署 Web 服务
 > * 部署 Web 服务并使用新数据评分
-

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: sethm
-ms.openlocfilehash: a4d14aef8d24f1754db6370505e3f5f8e54d0278
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edb6e207852fa59d5828906c891693f367739c9c
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 10/11/2017
 
 当客户端发送消息时，它通常希望了解消息是否正确传输到代理并由代理接受，或是否发生某种形式的错误。 这种肯定或否定确认会使客户端和代理了解消息传输状态，因而称为。
 
-同样，当代理向客户端传输消息时，代理和客户端希望了解消息是否已成功处理，因而可以删除，或者消息传递或处理是否失败，因而消息可能必须再次传递。
+同样，当中转站向客户端传输消息时，中转站和客户端都希望了解消息是已成功处理（因而可以删除消息），还是消息传递或处理失败（因而可能需要再次传递消息）。
 
 ## <a name="settling-send-operations"></a>处置发送操作
 

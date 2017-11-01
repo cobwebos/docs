@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 010/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: f19b58ad8f12169acefd74bfe86a28ad950dad34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e31d58de113f737a48b6d3091650226f04ec69a
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
-点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接到 Azure VNet 的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接到 VNet，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。
+点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接到 Azure VNet 的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接到 VNet，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。 本文适用于 Resource Manager 部署模型。
 
 ## <a name="protocol"></a>P2S 使用哪种协议？
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 如果在混合客户端环境中包括 Windows 和 Mac 设备，请同时配置 SSTP 和 IKEv2。
 
 >[!NOTE]
->IKEv2 for P2S 目前以预览版提供。
+>P2S 的 IKEv2 目前处于预览状态，可用于资源管理器部署模型。
 >
 
 ## <a name="authentication"></a>如何对 P2S VPN 客户端进行身份验证？

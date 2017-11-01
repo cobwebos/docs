@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/20/2017
-ms.openlocfilehash: 3fbdb7741481bd3620466c3489d3609f9ea6961f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f1ffa20b58c52558e880ed6a0ef4ca674173973
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for PostgreSQL 中备份和还原服务器
 
@@ -31,20 +31,20 @@ ms.lasthandoff: 10/11/2017
 
 以下步骤演示将示例服务器还原到某个时间点：
 1. 登录到 [Azure 门户](https://portal.azure.com/)
-2. 找到 Azure Database for PostgreSQL 服务器。 在 Azure 门户的左侧菜单中单击“所有资源”，并键入名称，例如“mypgserver-20170401”，以搜索现有的服务器。 单击搜索结果中列出的服务器名称。 服务器的“概述”页面随即打开，其中提供了用于进一步配置的选项。
+2. 找到 Azure Database for PostgreSQL 服务器。 在 Azure 门户的左侧菜单中单击“所有资源”，并键入服务器名称，例如“mypgserver-20170401”，以搜索现有的服务器。 单击搜索结果中列出的服务器名称。 服务器的“概述”页面随即打开，其中提供了用于进一步配置的选项。
 
    ![Azure 门户 - 进行搜索，找到服务器](media/postgresql-howto-restore-server-portal/1-locate.png)
 
-3. 在服务器概述边栏选项卡的顶部，单击工具栏上的“还原”。 此时会打开“还原”边栏选项卡。
+3. 在服务器概述边栏选项卡的工具栏中，单击“还原”。 此时会打开“还原”边栏选项卡。
 
    ![Azure Database for PostgreSQL - 概述 - 还原按钮](./media/postgresql-howto-restore-server-portal/2_server.png)
 
 4. 使用必需信息填写“还原”窗体：
 
    ![Azure Database for PostgreSQL - 还原信息 ](./media/postgresql-howto-restore-server-portal/3_restore.png)
-  - 还原点：选择更改服务器前的时间点
-  - 目标服务器：提供一个要还原到的新服务器名称
-  - 位置：不能选择区域，此区域默认与源服务器相同
+  - 还原点：选择更改服务器前的时间点。
+  - 目标服务器：提供一个要还原到的新服务器名称。
+  - 位置：不可选择区域。 默认情况下，此值与源服务器相同。
   - 定价层：还原服务器时不能更改此值。 此值与源服务器相同。 
 
 5. 单击“确定”，将服务器还原到某个时间点。 

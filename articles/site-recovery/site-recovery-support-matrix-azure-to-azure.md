@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: f52520f88d36914d4cad7c8aea4fb21e44b3cc9d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 34255e8ada8dfb00b3c02ca2ab22f94bd3e0954d
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
 
@@ -145,8 +145,8 @@ Azure 库映像 — 由第三方发布 | 支持 | 只要 VM 在 Site Recovery �
 
 **配置** | **支持/不支持** | **备注**
 --- | --- | ---
-最大 OS 磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
-最大数据磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
+最大 OS 磁盘大小 | 2048 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
+最大数据磁盘大小 | 4095 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
 数据磁盘数 | 特定 Azure VM 大小最多支持 64 个 | 请参阅 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)
 临时磁盘 | 始终从复制中排除 | 临时磁盘始终从复制中排除。 按照 Azure 指南，不能将任何永久数据放在临时磁盘上。 有关更多详细信息，请参阅 [Azure VM 上的临时磁盘](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)。
 磁盘上的数据更改率 | 每个磁盘最大 6 MBps | 如果磁盘上的平均数据更改率连续超过 6 MBps，复制将不同步。 但是，如果只是偶尔出现数据迸发，数据更改率间或高于 6 MBps，但随后又降下来，则复制可同步。 在此情况下，可能会看到恢复点稍有延迟。
