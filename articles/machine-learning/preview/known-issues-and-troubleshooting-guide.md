@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: f79910ba4fea81e88fce90dd67ba7cb4db2e8220
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f39faea6b7e0886d63085b752f9532a7010ea941
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
@@ -82,7 +82,10 @@ $ az ml experiment diagnostics -r <run_id> -t <target_name>
 
 - Mac 上不支持文本群集转换。
 
-- 只有 Windows 或 Linux 上（Docker 容器中）不支持 RevoScalePy 库。 macOS 不支持此库。
+- 只有 Windows 和 Linux 上（Docker 容器中）支持 RevoScalePy 库。 macOS 不支持此库。
+
+## <a name="file-name-too-long-on-windows"></a>Windows 上的文件名太长
+如果在 Windows 上使用 Workbench，则可能会遇到最大 260 个字符的默认文件名长度限制，这可能会呈现为具有一定误导性的“系统找不到指定的路径”错误。 可以修改注册表项设置以允许较长的文件路径名。 查看[本文](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)深入了解如何设置 MAX_PATH 注册表项。
 
 ## <a name="docker-error-read-connection-refused"></a>Docker 错误“读取: 连接被拒绝”
 针对本地 Docker 容器执行时，有时可能会出现以下错误： 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: routlaw
-ms.openlocfilehash: f8812c2e8ac3398dabd17feaf97897efca5566f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc9a1b6061c41cd623e1ddb3bb9dbb87530a13d5
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 > [!div class="op_single_selector"]
@@ -218,16 +218,17 @@ public class MyClass {
 
 返回值是输出的最简单形式，只需返回任何类型的值，Azure Functions 运行时即可尝试将其封送回实际类型（如 HTTP 响应）。 在 `functions.json` 中，使用 `$return` 作为输出绑定的名称。
 
-若要生成多个输出值，请使用 `azure-functions-java-core` 包中定义的 `OutputParameter<T>` 类型。 如果需要进行 HTTP 响应并将消息推送到队列，则可编写以下代码：
+若要生成多个输出值，请使用 `azure-functions-java-core` 包中定义的 `OutputBinding<T>` 类型。 如果需要进行 HTTP 响应并将消息推送到队列，则可编写以下代码：
 
 ```java
 package com.example;
 
-import com.microsoft.azure.serverless.functions.OutputParameter;
+import com.microsoft.azure.serverless.functions.OutputBinding;
 import com.microsoft.azure.serverless.functions.annotation.BindingName;
 
 public class MyClass {
-    public static String echo(String body, @BindingName("message") OutputParameter<String> queue) {
+    public static String echo(String body, 
+    @QueueOutput(queueName = "messages", connection = "AzureWebJobsStorage", name = "queue") OutputBinding<String> queue) {
         String result = "Hello, " + body + ".";
         queue.setValue(result);
         return result;
@@ -235,7 +236,7 @@ public class MyClass {
 }
 ```
 
-并在 `function.json` 中定义输出绑定：
+此代码应在 `function.json` 中定义输出绑定：
 
 ```json
 {
@@ -251,10 +252,10 @@ public class MyClass {
     },
     {
       "type": "queue",
-      "name": "message",
+      "name": "queue",
       "direction": "out",
-      "queueName": "myqueue",
-      "connection": "ExampleStorageAccount"
+      "queueName": "messages",
+      "connection": "AzureWebJobsStorage"
     },
     {
       "type": "http",

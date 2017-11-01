@@ -5,22 +5,24 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/25/2017
+ms.date: 10/11/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: a7bd4aed7dbcde803c2106b8c053e8a2412eea99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcb072a2f2ab8c0e5097fca2c95309464483cb53
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 
 作为 CSP 合作伙伴，可以注册由 Cloudyn 提供的 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 它还演示如何立即开始查看成本数据。
 
-若要完成注册，必须是有权访问合作伙伴中心 API 的合作伙伴计划管理员。 需要配置合作伙伴中心 API 才能进行身份验证和数据访问。 有关详细信息，请参阅“连接到合作伙伴中心 API”。
+
+>[!NOTE]
+>若要完成注册，必须是有权访问合作伙伴中心 API 的合作伙伴计划管理员。 需要配置合作伙伴中心 API 才能进行身份验证和数据访问。 有关详细信息，请参阅[连接到合作伙伴中心 API](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx)。 此外，只有当直接 CSP 经销商注册了 Cloudyn 来为客户和订阅提供访问权限时，间接 CSP 用户才能使用 Cloudyn。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -46,6 +48,19 @@ ms.lasthandoff: 10/11/2017
 7. 在“邀请其他利益干系人”下，可以通过键入其电子邮件地址来添加用户。 完成后，单击“下一步”。 将所有计费数据添加到 Cloudyn 大约需要两个小时。
 8. 单击“转到 Cloudyn”打开 Cloudyn 门户，然后在“云帐户管理”页上，应看到已注册的 CSP 帐户信息。
 
+## <a name="configure-indirect-csp-access-in-cloudyn"></a>在 Cloudyn 中配置间接 CSP 访问权限
+
+默认情况下，仅直接 CSP 可以访问合作伙伴中心 API。 但是，直接 CSP 提供商可以使用 Cloudyn 中的实体组为他们的间接 CSP 客户或合作伙伴配置访问权限。
+
+若要为间接 CSP 客户或合作伙伴启用访问权限，请按照[创建试用注册](#create-a-trial-registration)中的步骤设置试用注册。 接下来，请完成以下步骤，以使用 Cloudyn 实体组将间接 CSP 数据分段。 然后，向实体组分配适当的用户权限。
+
+1. 使用[创建实体](tutorial-user-access.md#create-entities)上的信息创建实体组。
+2. 按照[将订阅分配到费用实体](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)上的步骤操作。 将间接 CSP 客户的帐户及其 Azure 订阅与之前创建的实体关联。
+3. 按照[创建具有管理员权限的用户](tutorial-user-access.md#create-a-user-with-admin-access)上的步骤创建具有管理员权限的用户帐户。 然后，确保该用户帐户拥有之前为间接帐户创建的特定实体的管理员权限。
+
+间接 CSP 合作伙伴使用为他们创建的帐户登录到 Cloudyn 门户。
+
+
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>后续步骤
@@ -53,4 +68,4 @@ ms.lasthandoff: 10/11/2017
 在本快速入门中，使用 CSP 信息注册了成本管理。 还登录到了 Cloudyn 门户并开始查看成本数据。 若要了解有关 Cloudyn 提供的 Azure 成本管理的详细信息，请继续学习成本管理教程。
 
 > [!div class="nextstepaction"]
-> [查看成本数据](./tutorial-review-usage.md)
+> [查看使用情况和成本](./tutorial-review-usage.md)

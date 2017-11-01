@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 57f95b765b1b116814683a6643db16091c3041f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7df1dfbea8c985907d5330819dc1e7bf1578aafa
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="add-network-interfaces-to-or-remove-from-virtual-machines"></a>添加或删除虚拟机的网络接口
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 - 所有 VM 大小都支持至少两个网络接口，但某些 VM 大小支持两个以上网络接口。 在过去，某些 VM 大小仅支持一个网络接口。 若要了解每种 VM 大小支持的网络接口数量，请阅读有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 
 - 过去，只能向支持多个网络接口且至少使用两个网络接口创建的 VM 中添加网络接口。 不能向使用一个网络接口创建的 VM 添加网络接口，即使 VM 大小支持多个网络接口也不可以。 相反，只能从至少有三个网络接口的 VM 中删除网络接口，因为使用至少两个网络接口创建的 VM 必须始终有至少两个网络接口。 这些约束全都不再适用。 现在，可以使用任意数量的网络接口（最大数目为 VM 大小所支持的数目）来创建 VM，也可以（为处于“已停止”（“已解除分配”）状态的 VM）添加或删除任意数量的 网络接口，只要 VM 始终有至少一个网络接口。
 - 默认情况下，VM 中的第一个网络接口定义为*主*网络接口。 VM 中的所有其他网络接口为“辅助”网络接口。
-- Azure DHCP 服务器会为主网络接口分配一个默认网关，但不为辅助网络接口分配。 由于辅助网络接口未分配有默认网关，因此默认情况下无法与子网外部的资源进行通信。 若要让 Windows VM 中的辅助网络接口与其子网外部的资源进行通信，请在 Windows 命令行中使用 `route add` 命令向操作系统添加路由。 对于 Linux VM，由于默认行为使用弱主机路由，因此建议将辅助网络接口的流量限制到单个子网。 如果需要辅助网络接口的子网外部的连接，请启用基于策略的路由，以确保入口和出口流量使用同一网络接口。
+- Azure DHCP 服务器会为主网络接口分配一个默认网关，但不为辅助网络接口分配。 由于辅助网络接口未分配有默认网关，因此默认情况下无法与子网外部的资源进行通信。 要使辅助网络接口与子网外部的资源进行通信，请参阅[在具有多个网络接口的虚拟机操作系统中进行路由](#routing-within-a-virtual-machine-operating-system-with-multiple-network-interfaces)。
 - 默认情况下，来自 VM 的所有出站流量都是通过分配给主网络接口的主 IP 配置的 IP 地址发出的。 可以在 VM 的操作系统中控制要将哪个 IP 地址用于出站流量，但默认情况下，流量通过主网络接口。
 - 过去，同一个可用性集中的所有 VM 都需要有一个或多个网络接口。 现在，同一个可用性集中可以存在具有任意数目的网络接口的 VM，只要 VM 大小支持该数目。 不过，只能在创建 VM 时将 VM 添加到可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 VM 的可用性](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)一文。
 - 尽管同一 VM 中的网络接口可以连接到 VNet 中的不同子网，但这些网络接口必须全部连接到同一个 VNet。
@@ -60,6 +60,68 @@ ms.lasthandoff: 10/11/2017
 ## <a name="vm-create"></a>将现有网络接口添加到新 VM
 
 通过门户创建 VM 时，门户会使用默认设置创建一个网络接口，并将其附加到 VM。 无法使用 Azure 门户将现有网络接口添加到新的 VM，或创建具有多个网络接口的 VM。 可以使用 CLI 或 PowerShell 执行这两项操作。 可以向 VM 添加任意数目的网络接口，只要所创建的 VM 大小支持。 若要详细了解每种 VM 大小支持的网络接口数量，请阅读有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 目前，添加到一个 VM 的网络接口不能附加到另一个 VM。 若要了解有关创建网络接口的详细信息，请阅读[管理网络接口](virtual-network-network-interface.md#create-a-network-interface)一文。
+
+### <a name="routing-within-a-virtual-machine-operating-system-with-multiple-network-interfaces"></a>在具有多个网络接口的虚拟机操作系统中进行路由
+
+Azure 会将默认网关分配给附加到虚拟机的第一个（主）网络接口。 Azure 不会将默认网关分配给附加到虚拟机的其他（辅助）网络接口。 因此，默认情况下无法与辅助网络接口所在子网的外部资源进行通信。 但是，辅助网络接口可以与子网外部的资源进行通信，尽管对不同操作系统而言，启用通信的步骤有所不同。
+
+### <a name="windows"></a>Windows
+
+从 Windows 命令提示符处完成以下步骤：
+
+1. 运行 `route print` 命令，这将返回一个类似以下虚拟机输出的输出，该虚拟机包含两个附加的网络接口：
+
+    ```
+    ===========================================================================
+    Interface List
+    3...00 0d 3a 10 92 ce ......Microsoft Hyper-V Network Adapter #3
+    7...00 0d 3a 10 9b 2a ......Microsoft Hyper-V Network Adapter #4
+    ===========================================================================
+    ```
+ 
+    在本例中，Microsoft Hyper-V 网络适配器 #4（接口 7）是辅助网络接口，系统不会向其分配默认网关。
+
+2. 从命令提示符处，运行 `ipconfig` 命令查看分配给辅助网络接口的 IP 地址。 在本例中，192.168.2.4 被分配到接口 7。 辅助网络接口没有返回任何默认网关地址。
+
+3. 若要将发往辅助网络接口子网外部地址的所有流量路由到子网网关，请运行以下命令：
+
+    ```
+    route add -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5015 IF 7
+    ```
+
+    子网的网关地址是为该子网定义的地址范围中的第一个 IP 地址（以 .1 结尾）。 如果不想路由子网外部的所有流量，可改为向特定目标添加单独的路由。 例如，如果只想将流量从辅助网络接口路由到 192.168.3.0 网络，请输入以下命令：
+
+      ```
+      route add -p 192.168.3.0 MASK 255.255.255.0 192.168.2.1 METRIC 5015 IF 7
+      ```
+  
+4. 例如，若要确认与 192.168.3.0 网络中资源的通信是否成功，请输入以下命令使用接口 7 (192.168.2.4) 对 192.168.3.4 执行 ping 操作：
+
+    ```
+    ping 192.168.3.4 -S 192.168.2.4
+    ```
+
+    可能需要使用以下命令通过正在 ping 的设备的 Windows 防火墙打开 ICMP：
+  
+      ```
+      netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
+      ```
+  
+5. 若要确认已添加的路由是否在路由表中，请输入 `route print` 命令，它将返回一个类似于以下文本的输出：
+
+    ```
+    ===========================================================================
+    Active Routes:
+    Network Destination        Netmask          Gateway       Interface  Metric
+              0.0.0.0          0.0.0.0      192.168.1.1      192.168.1.4     15
+              0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
+    ```
+
+    “网关”下列出的路由 192.168.1.1 是主网络接口的默认路由。 “网关”下列出的路由 192.168.2.1 是你所添加的路由。
+
+### <a name="linux"></a>Linux
+
+由于默认行为使用弱主机路由，因此建议将资源间的辅助网络接口流量限制到同一个子网。 如果需要在辅助网络接口的子网外部进行通信，则必须创建允许虚拟机通过特定网络接口发送和接收流量的路由规则。 否则，定义的默认路由无法正确处理属于 eth1 等的流量。 若要了解如何配置路由规则，请参阅[为多个 NIC 配置 Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics)。
 
 > [!WARNING]
 > 如果网络接口分配有专用 IPv6 地址，则在创建虚拟机时，仅可将该网络接口添加到虚拟机。 只要 IPv6 地址分配到附加到虚拟机的网络接口，则在创建虚拟机时或创建虚拟机后，都无法向虚拟机附加多个网络接口。 若要深入了解如何将 IP 地址分配给网络接口，请参阅[网络接口 IP 地址](virtual-network-network-interface-addresses.md)。
@@ -74,6 +136,8 @@ ms.lasthandoff: 10/11/2017
 ## <a name="vm-add-nic"></a>将现有网络接口添加到现有 VM
 
 可以向 VM 添加任意数目的网络接口，只要你向其中添加网络接口的 VM 大小支持即可。 若要了解每种 VM 大小支持的网络接口数量，请阅读有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 要将网络接口添加到的 VM 必须支持需添加的网络接口数并处于“已停止”（“已解除分配”）状态。 目前，要添加的网络接口不能附加到另一个 VM。 无法使用 Azure 门户向现有 VM 添加网络接口。 若要将网络接口添加到现有 VM，必须使用 CLI 或 PowerShell。 
+
+Azure 会将默认网关分配给附加到虚拟机的第一个（主）网络接口。 Azure 不会将默认网关分配给附加到虚拟机的其他（辅助）网络接口。 因此，默认情况下无法与辅助网络接口所在子网的外部资源进行通信。 但是，辅助网络接口可以与子网之外的资源进行通信。 如果需要辅助网络接口与子网外部的资源进行通信，请参阅[在具有多个网络接口的虚拟机操作系统中进行路由](#routing-within-a virtual-machine-operating-system-with-multiple-network-interfaces)。
 
 > [!WARNING]
 > 如果网络接口分配有专用 IPv6 地址，则无法将它添加到现有虚拟机。 创建虚拟机时，只可将分配有专用 IPv6 地址的网络接口添加到虚拟机。 若要深入了解如何将 IP 地址分配给网络接口，请参阅[网络接口 IP 地址](virtual-network-network-interface-addresses.md)。
@@ -90,7 +154,7 @@ ms.lasthandoff: 10/11/2017
 1. 使用分配有订阅“所有者”、“参与者”或“网络参与者”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。 若要详细了解如何向帐户分配角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)。
 2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“虚拟机”。 当“虚拟机”出现在搜索结果中时，请单击它。
 3. 在出现的“虚拟机”边栏选项卡中，单击要查看其网络接口的 VM 的名称。
-4. 在针对所选 VM 显示的“虚拟机”边栏选项卡的“设置”部分，单击“网络接口”。 若要了解网络接口设置以及如何更改它们，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 若要了解如何添加、更改或删除分配给网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)。
+4. 在针对所选 VM 显示的“虚拟机”边栏选项卡的“设置”部分，单击“网络”。 若要了解网络接口设置以及如何更改它们，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 若要了解如何添加、更改或删除分配给网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)。
 
 **命令**
 
@@ -106,9 +170,9 @@ ms.lasthandoff: 10/11/2017
 1. 使用分配有订阅“所有者”、“参与者”或“网络参与者”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。 若要详细了解如何向帐户分配角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)。
 2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“虚拟机”。 当“虚拟机”出现在搜索结果中时，请单击它。
 3. 在出现的“虚拟机”边栏选项卡中，单击要删除其网络接口的 VM 的名称。
-4. 在针对所选 VM 显示的“虚拟机”边栏选项卡的“设置”部分，单击“网络接口”。 若要了解网络接口设置以及如何更改它们，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 若要了解如何添加、更改或删除分配给网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)。
-5. 在显示的“网络接口”边栏选项卡中，单击想要拆离的网络接口右侧的“...”。
-6. 单击“拆离”。 如果只有一个网络接口连接到虚拟机，则“拆离”选项不可用。 在出现的确认框中单击“是”。
+4. 在针对所选 VM 显示的“虚拟机”边栏选项卡的“设置”部分，单击“网络”。 若要了解网络接口设置以及如何更改它们，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 若要了解如何添加、更改或删除分配给网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)。
+5. 单击“X 拆离网络接口”。
+6. 选择要从下拉列表中拆离的网络接口，然后单击“确定”。
 
 **命令**
 

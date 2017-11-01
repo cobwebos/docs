@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/09/2017
+ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: b4d575587eec1bcf43c33c7faeb8360ec67b5214
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e60cc83f49f9e0d0f878d7f49333f1be34ce54a6
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 ## <a name="overview"></a>概述
@@ -38,7 +38,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
 * 已在 Hyper-V 或 VMware 或物理计算机上托管本地 Windows Server 2012 R2 文件服务器 VM
 * 已在 Azure StorSimple Manager 中注册本地 StorSimple 存储设备
-* 已在 Azure StorSimple Manager（可以保持关闭状态）中创建 StorSimple Cloud Appliance
+* 已在 Azure StorSimple Manager 中创建 StorSimple 云设备。 设备可以一直处于关闭状态。
 * 已在 StorSimple 存储设备上配置的卷中托管文件共享
 * 已在 Microsoft Azure 订阅中创建 [Azure Site Recovery 服务保管库](../site-recovery/site-recovery-vmm-to-vmm.md)
 
@@ -55,7 +55,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 * 配置网络
 
 ### <a name="set-up-active-directory-and-dns-replication-optional"></a>设置 Active Directory 和 DNS 复制（可选）
-如果想要保护运行 Active Directory 和 DNS 的计算机，使它们能够在 DR 站点中可供使用，需要明确地对它们进行保护（以便在故障转移之后可以使用身份验证来访问文件服务器）。 根据客户本地环境的复杂性，可以使用两个建议的选项。
+若要保护运行 Active Directory 和 DNS 的计算机，确保它们在 DR 网站上的可用性，必须明确保护它们（以便可以在故障转移后通过身份验证访问文件服务器）。 根据客户本地环境的复杂性，可以使用两个建议的选项。
 
 #### <a name="option-1"></a>选项 1
 如果客户的整个本地网站中只有少量的应用程序和一个域控制器，并且需要故障转移整个站点，我们建议使用 Azure Site Recovery 复制将域控制器计算机复制到辅助站点（适用于站点到站点以及站点到 Azure 方案）。
@@ -63,20 +63,20 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 #### <a name="option-2"></a>方法 2
 如果客户有大量应用程序，正在运行 Active Directory 林，并且每次只故障转移少量的应用程序，我们建议在 DR 站点（辅助站点或 Azure 中）另外设置一个域控制器。
 
-请参阅 [Automated DR solution for Active Directory and DNS using Azure Site Recovery](../site-recovery/site-recovery-active-directory.md)（使用 Azure Site Recovery 为 Active Directory 和 DNS 创建自动 DR 解决方案），获取在 DR 站点上提供域控制器的说明。 本文档余下内容假设 DR 站点上提供了域控制器。
+请参阅[使用 Azure Site Recovery 为 Active Directory 和 DNS 创建自动 DR 解决方案](../site-recovery/site-recovery-active-directory.md)，了解如何确保域控制器在 DR 网站上可用。 在本文档的剩余内容中，假定域控制器在 DR 网站上可用。
 
 ### <a name="use-azure-site-recovery-to-enable-protection-of-the-file-server-vm"></a>使用 Azure Site Recovery 保护文件服务器 VM
 此步骤需要准备本地服务器环境、创建并准备 Azure Site Recovery 保管库，以及为 VM 启用文件保护。
 
 #### <a name="to-prepare-the-on-premises-file-server-environment"></a>准备本地文件服务器环境
-1. 将“用户帐户控制”设置为“永不通知”。 只有这样设置，才可以在通过 Azure Site Recovery 故障转移后使用 Azure 自动化脚本连接 iSCSI 目标。
+1. 将“用户帐户控制”设置为“永不通知”。 此为必需操作，这样就可以在通过 Azure Site Recovery 进行故障转移后使用 Azure 自动化脚本连接 iSCSI 目标。
 
    1. 按 Windows 键 + Q 并搜索 **UAC**。
    2. 选择“更改用户帐户控制设置”。
    3. 将底部横条朝“永不通知”方向拖动。
    4. 单击“确定”，并在出现提示时选择“是”。
 
-      ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image1.png)
+      ![用户帐户控制设置](./media/storsimple-disaster-recovery-using-azure-site-recovery/image1.png)
 2. 在每个文件服务器 VM 上安装 VM 代理。 必须这样做才能在已故障转移的 VM 上运行 Azure 自动化脚本。
 
    1. [将代理下载](http://aka.ms/vmagentwin)到 `C:\\Users\\<username>\\Downloads`。
@@ -101,7 +101,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    6. 创建卷容器，并创建卷。 （这些卷供文件服务器 VM 上的文件共享使用）。 创建卷时，请复制发起程序名称并为“访问控制记录”提供适当的名称。
    7. 选择“配置”选项卡并记下设备的 IP 地址。
    8. 在本地 VM 上，再次转到“iSCSI 发起程序”，并在“快速连接”部分中输入 IP。 单击“快速连接”（设备现在应已连接）。
-   9. 打开 Azure 门户，并选择“卷和设备”选项卡。单击“自动配置”。 应会出现刚刚创建的卷。
+   9. 打开 Azure 门户，并选择“卷和设备”选项卡。单击“自动配置”。 此时，应该会看到自己创建的卷。
    10. 在门户中选择“设备”选项卡，并选择“创建新虚拟设备”。 （此虚拟设备会在发生故障转移时使用）。 可将此新虚拟设备保持脱机状态，以免产生额外的费用。 要使虚拟机脱机，请转到门户的“虚拟机”部分，并关闭该虚拟机。
    11. 返回本地 VM 并打开磁盘管理（按 Windows 键 + X 并选择“磁盘管理”）。
    12. 可以看到一些附加的磁盘（数量取决于创建的卷数）。 右键单击第一个磁盘，选择“初始化磁盘”，并选择“确定”。 右键单击“未分配”部分，选择“新建简单卷”，为卷分配一个盘符，并完成向导操作。
@@ -134,7 +134,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
 可以在“复制的项”选项卡中选择要配置网络设置的 VM，如下图中所示。
 
-![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image2.png)
+![计算和网络](./media/storsimple-disaster-recovery-using-azure-site-recovery/image2.png)
 
 ## <a name="create-a-recovery-plan"></a>创建恢复计划
 可以在 ASR 中创建恢复计划，将文件共享的故障转移过程自动化。 发生中断时，只需按一下鼠标就能在几分钟内让文件共享重新联机。 若要启用此自动化功能，需要一个 Azure 自动化帐户。
@@ -143,7 +143,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 1. 转到 Azure 门户 &gt;“自动化”部分。
 2. 单击“+ 添加”按钮，打开下面的边栏选项卡。
 
-   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
+   ![添加自动化帐户](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
 
    * 名称 - 输入新的自动化帐户
    * 订阅 - 选择订阅
@@ -160,37 +160,86 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    * 在 Azure VM 中卸载自定义脚本扩展
    * 启动 StorSimple 虚拟设备
 
-     ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
+     ![浏览库](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
 
 5. 通过以下方式发布所有脚本：在自动化帐户中选择 runbook，依次单击“编辑”&gt;“发布”，然后在显示验证消息时单击“是”。 完成此步骤后，“Runbook”选项卡将如下所示：
 
-    ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
+    ![Runbook](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
 
-6. 在自动化帐户中，选择“资产”选项卡 &gt; 依次单击“变量”&gt;“添加变量”，并添加以下变量。 可以选择将这些资产加密。 这些变量特定于恢复计划。 如果恢复计划（会在下一步骤中创建）名为 TestPlan，则变量应该是 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName，等等。
+6. 在自动化帐户中，依次单击“变量”&gt;“添加变量”，再添加以下变量。 可以选择将这些资产加密。 这些变量为恢复计划专属。 如果恢复计划（将在下一步中创建）名为 TestPlan，变量应为 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName 等。
 
-   * *RecoveryPlanName***-StorSimRegKey**：StorSimple Manager 服务的注册密钥。
-   * *RecoveryPlanName***-AzureSubscriptionName**：Azure 订阅的名称。
-   * *RecoveryPlanName***-ResourceName**：包含 StorSimple 设备的 StorSimple 资源的名称。
-   * *RecoveryPlanName***-DeviceName**：必须故障转移的设备。
-   * *RecoveryPlanName***-VolumeContainers**：需故障转移的设备上显示的卷容器逗号分隔字符串，例如 volcon1、volcon2、volcon3。
+   * **BaseUrl**：Azure 云的资源管理器 URL。 使用 Get-AzureRmEnvironment | Select-Object Name, ResourceManagerUrl cmdlet 获取。
+   * RecoveryPlanName-ResourceGroupName：包含 StorSimple 资源的资源管理器组。
+   * RecoveryPlanName-ManagerName：包含 StorSimple 设备的 StorSimple 资源。
+   * RecoveryPlanName-DeviceName：必须进行故障转移的 StorSimple 设备。
+   * RecoveryPlanName-DeviceIpAddress：设备的 IP 地址（可以“StorSimple 设备管理器”部分&gt;“设置”&gt;“网络”&gt;“DNS 设置”组下的“设备”选项卡中找到）。
+   * RecoveryPlanName-VolumeContainers：需要进行故障转移的设备上卷容器的逗号分隔字符串。例如，volcon1、volcon2、volcon3。
    * *RecoveryPlanName***-TargetDeviceName**：容器故障转移之后所在的 StorSimple Cloud Appliance。
-   * *RecoveryPlanName***-TargetDeviceDnsName**：目标设备的服务名称（可以在“虚拟机”部分中找到：服务名称与 DNS 名称相同）。
+   * RecoveryPlanName-TargetDeviceIpAddress：目标设备的 IP 地址（可以在“虚拟机”部分&gt;“设置”组&gt;“网络”选项卡中找到）。
    * *RecoveryPlanName***-StorageAccountName**：存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名。 可以是具有一些空间暂时存储脚本的任何存储帐户。
    * *RecoveryPlanName***-StorageAccountKey**：上述存储帐户的访问密钥。
-   * *RecoveryPlanName***-ScriptContainer**：存储脚本的云容器的名称。 如果该容器不存在，系统会创建该容器。
    * *RecoveryPlanName***-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每个 VM分配唯一 ID，该 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”选项卡，然后依次单击“受保护的项”&gt;“保护组”&gt;“计算机”&gt;“属性”。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
-   * *RecoveryPlanName***-AutomationAccountName** – 已在其中添加 Runbook 和资产的自动化帐户的名称。
 
-  例如，如果恢复计划名称为 fileServerpredayRP，在添加了所有资产后，“凭据” & “变量”选项卡应如下所示。
+    例如，如果恢复计划名为 fileServerpredayRP，“变量”、“连接”和“证书”选项卡在添加完所有资产后应如下所示。
 
-   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
+    ![资产](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
-7. 转到“恢复服务”部分，并选择前面创建的 Azure Site Recovery 保管库。
-8. 从“管理”组中选择“恢复计划 (Site Recovery)”选项，并创建新的恢复计划，如下所示：
+7. 上传自动化帐户中的 StorSimple 8000 系列 Runbook 模块。 请按照以下步骤操作，添加一个模块：
+
+   a. 打开 PowerShell，新建文件夹，并将目录更改为此文件夹。
+    
+    ```
+         mkdir C:\scripts\StorSimpleSDKTools
+         cd C:\scripts\StorSimpleSDKTools
+    ```
+   b. 将 nuget CLI 下载到第 1 步中的相同文件夹。
+      [nuget 下载](https://www.nuget.org/downloads)页上提供了各种版本的 nuget.exe。 每个下载链接都直接指向 .exe 文件。因此，请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
+
+    ```
+         wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
+    ```
+
+   c. 下载依赖 SDK
+
+    ```
+         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Azure.Management.Storsimple8000series
+         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.3
+         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.2.9-preview
+    ```
+
+   d.单击“下一步”。 创建用于管理 StorSimple 8000 系列设备的 Azure 自动化 Runbook 模块。 运行以下命令，创建自动化模块 zip 文件。
+
+    ```
+         # set path variables
+         $downloadDir = "C:\scripts\StorSimpleSDKTools"
+         $moduleDir = "$downloadDir\AutomationModule\Microsoft.Azure.Management.StorSimple8000Series"
+
+         #don't change the folder name "Microsoft.Azure.Management.StorSimple8000Series"
+         mkdir "$moduleDir"
+
+         copy "$downloadDir\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory*.dll" $moduleDir
+         copy "$downloadDir\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\Microsoft.Rest.ClientRuntime.Azure*.dll" $moduleDir
+         copy "$downloadDir\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime*.dll" $moduleDir
+         copy "$downloadDir\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json*.dll" $moduleDir
+         copy "$downloadDir\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication*.dll" $moduleDir
+         copy "$downloadDir\Microsoft.Azure.Management.Storsimple8000series.1.0.0\lib\net452\Microsoft.Azure.Management.Storsimple8000series*.dll" $moduleDir
+
+         #Don't change the name of the Archive
+         compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
+    ```
+
+     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 导入上一步中创建的 Azure 自动化模块 zip 文件 (Microsoft.Azure.Management.StorSimple8000Series.zip)。 为此，可以选择自动化帐户，单击“共享资源”下的“模块”，再单击“添加模块”。
+
+    导入 StorSimple 8000 系列模块后，“模块”选项卡应如下所示：
+
+    ![模块](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
+
+8. 转到“恢复服务”部分，并选择前面创建的 Azure Site Recovery 保管库。
+9. 从“管理”组中选择“恢复计划 (Site Recovery)”选项，并创建新的恢复计划，如下所示：
 
    a.  单击“+ 恢复计划”按钮，将打开以下边栏选项卡。
 
-      ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image6.png)
+      ![创建恢复计划](./media/storsimple-disaster-recovery-using-azure-site-recovery/image6.png)
 
    b.  输入恢复计划名称，选择源、目标和部署模型的值。
 
@@ -219,7 +268,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
     > 运行测试故障转移时，应在手动操作步骤中验证所有配置，因为在目标设备上克隆的 StorSimple 卷会在手动操作完成后执行清理的过程中被删除。
     >
 
-    ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
+    ![恢复计划](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
 
 ## <a name="perform-a-test-failover"></a>执行测试故障转移
 请参阅 [Active Directory DR 解决方案](../site-recovery/site-recovery-active-directory.md)随附的指南，了解在测试故障转移期间有关 Active Directory 的具体注意事项。 执行测试故障转移时，本地设置不受干扰。 已附加到本地 VM 的 StorSimple 卷将克隆到 Azure 上的 StorSimple Cloud Appliance。 Azure 中用于测试的 VM 会启动，云卷将附加到 VM。
@@ -230,10 +279,10 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 3. 单击“测试故障转移”。
 4. 选择 Azure VM 在发生故障转移后要连接到的 Azure 虚拟网络。
 
-   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
+   ![启动故障转移](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
 5. 单击“确定”开始故障转移。 若要跟踪进度，可以单击 VM 以打开其属性，或者在保管库名称 &gt;“作业”&gt;“Site Recovery 作业”中单击“测试故障转移”作业。
 6. 故障转移完成后，还应该能够看到副本 Azure 计算机显示在 Azure 门户 &gt;“虚拟机”中。 可以执行验证。
-7. 完成验证后，单击“验证完成”。 这会清除 StorSimple 卷并关闭 StorSimple 云设备。
+7. 完成验证后，单击“验证完成”。 这会删除 StorSimple 卷，并关闭 StorSimple 云设备。
 8. 完成后，在恢复计划上单击“清理测试故障转移”。 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。 此时会删除在测试故障转移期间创建的虚拟机。
 
 ## <a name="perform-a-planned-failover"></a>执行计划内故障转移
@@ -243,7 +292,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 1. 在 Azure 门户中，依次选择“恢复服务”保管库 &gt;“恢复计划 (Site Recovery)”&gt;“recoveryplan_name”（为文件服务器 VM 创建的恢复计划名称）。
 2. 在“恢复计划”边栏选项卡上，依次单击“更多”&gt;“计划的故障转移”。
 
-   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![恢复计划](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 3. 在“确认计划的故障转移”边栏选项卡上，选择源和目标位置并选择目标网络，并单击勾选图标 ✓ 开始故障转移过程。
 4. 副本虚拟机在创建后处于待提交状态。 单击“提交”提交故障转移。
 5. 复制完成后，虚拟机会在辅助位置启动。
@@ -268,7 +317,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 3. 选择源和目标位置，选择合适的数据同步和 VM 创建选项。
 4. 单击“确定”按钮开始故障回复过程。
 
-   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image10.png)
+   ![启动故障回复](./media/storsimple-disaster-recovery-using-azure-site-recovery/image10.png)
 
 ## <a name="best-practices"></a>最佳实践
 ### <a name="capacity-planning-and-readiness-assessment"></a>容量规划和准备情况评估
@@ -292,7 +341,6 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 * 如果计划内/计划外故障转移失败并且 Azure 中已创建 VM，请不要清理 VM， 而应该执行故障回复。 如果删除了 VM，则无法再次打开本地 VM。
 * 故障转移后如果看不到卷，请转到 VM，打开“磁盘管理”，重新扫描磁盘，然后将卷联机。
 * 在某些情况下，DR 站点中的盘符可能与本地盘符不同。 如果发生此情况，需要在故障转移完成后手动更正问题。
-* 应该针对在自动化帐户中作为资产输入的 Azure 凭据禁用多重身份验证。 如果不禁用这种身份验证，脚本将无法自动运行，恢复计划会失败。
 * 故障转移作业超时：如果故障转移卷容器花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
 * 备份作业超时：如果备份卷花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
 

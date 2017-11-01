@@ -11,11 +11,11 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/15/2017
-ms.openlocfilehash: 342e7dfd35ce890cda4a1d98613592353a63d7e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e1a334f4dd4d142c923fababc336897d9020fad
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Python 进行连接并查询数据
 本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure Database for PostgreSQL， 同时还演示了如何通过 macOS、Ubuntu Linux 和 Windows 平台，使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Python 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
@@ -61,8 +61,8 @@ ms.lasthandoff: 10/11/2017
 
 - 使用喜欢的文本编辑器创建新文件。
 - 将以下节中的代码示例之一复制并粘贴到文本文件中。 将 host、dbname、user 和 password 参数替换为创建服务器和数据库时指定的值。
-- 使用 .py 扩展名（例如 postgres.py）将文件保存到项目文件夹中。 如果运行的是 Windows OS，请在保存文件时确保选择 UTF-8 编码。 
-- 启动命令提示符或 Bash shell，然后将目录更改为项目文件夹，例如 `cd postgres`。
+- 使用 .py 扩展名（例如 postgres.py）将文件保存到项目文件夹中。 如果在 Windows 上运行，请在保存文件时确保选择 UTF-8 编码。 
+- 启动命令提示符、终端或 Bash shell，然后将目录更改为项目文件夹，例如 `cd postgres`。
 -  若要运行代码，请键入后跟文件名的 Python 命令，例如 `Python postgres.py`。
 
 > [!NOTE]

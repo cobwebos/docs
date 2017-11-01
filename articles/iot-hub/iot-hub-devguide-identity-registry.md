@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 10/19/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6e9c7b71fa6fc78f97c0144c735fc44778181d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32e63b250467f5733b2e691614fe52f96f2f9d91
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 10/11/2017
 标识注册表中存储的设备 ID 区分大小写。
 
 概括地说，标识注册表是支持 REST 的设备标识资源集合。 在此标识注册表中添加条目时，IoT 中心会创建一组每设备资源，如包含未送达云到设备消息的队列。
-
-### <a name="when-to-use"></a>使用时机
 
 在需要时执行以下操作时可使用标识注册表：
 
@@ -80,8 +78,7 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 可以使用 [IoT 中心资源提供程序终结点][lnk-endpoints]上的异步操作，将设备标识批量导入 IoT 中心的标识注册表。 导入是长时间运行的作业，它使用客户提供的 Blob 容器中的数据，将设备标识数据写入标识注册表。
 
-* 有关导入和导出 API 的详细信息，请参阅 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis]。
-* 若要了解有关如何运行导入和导出作业的详细信息，请参阅[批量管理 IoT 中心的设备标识][lnk-bulk-identity]。
+有关导入和导出 API 的详细信息，请参阅 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis]。 若要了解有关如何运行导入和导出作业的详细信息，请参阅[批量管理 IoT 中心的设备标识][lnk-bulk-identity]。
 
 ## <a name="device-provisioning"></a>设备预配
 
@@ -143,17 +140,13 @@ iothub-message-schema | deviceLifecycleNotification |
 }
 ```
 
-## <a name="reference-topics"></a>参考主题：
-
-以下参考主题提供有关标识注册表的详细信息。
-
 ## <a name="device-identity-properties"></a>设备标识属性
 
 设备识别表示为包含以下属性的 JSON 文档：
 
 | 属性 | 选项 | 说明 |
 | --- | --- | --- |
-| deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。 |
+| deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- : . + % _ # * ? ! ( ) , = @ ; $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
 | etag |必需，只读 |一个字符串，根据 [RFC7232][lnk-rfc7232] 表示设备标识的弱 ETag。 |
 | auth |可选 |包含身份验证信息和安全材料的复合对象。 |

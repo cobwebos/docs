@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="performance-metrics"></a>性能指标
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 | PhysicalDisk(per Disk) | 磁盘写入字节数/秒 |
 | 内存 | 可用兆字节数 |
 | PagingFile | 使用百分比 |
-| Process(Total) | 处理器时间百分比 |
+| Processor(Total) | 处理器时间百分比 |
 | Process (per service) | 处理器时间百分比 |
 | Process (per service) | ID 进程 |
 | Process (per service) | 专用字节 |
@@ -48,6 +48,11 @@ ms.lasthandoff: 10/11/2017
 | Process (per service) | 虚拟字节 |
 | Process (per service) | 工作集 |
 | Process (per service) | 工作集 - 专用 |
+| Network Interface(all-instances) | 输出队列长度 |
+| Network Interface(all-instances) | 放弃的出站数据包 |
+| Network Interface(all-instances) | 放弃的已接收数据包 |
+| Network Interface(all-instances) | 出站数据包错误 |
+| Network Interface(all-instances) | 已接收的数据包错误 |
 
 ## <a name="net-applications-and-services"></a>.NET 应用程序和服务
 

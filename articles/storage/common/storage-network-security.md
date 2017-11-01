@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: de52e9cb32e28d2f40a56743ed759b5d5d0a63f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8117a5ef9bc4f785256a7a7d70f459529c771a56
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -44,7 +44,7 @@ Azure 存储提供一种分层安全模型，用于保护存储帐户，使其�
 
 一旦应用网络规则，就会对所有请求强制实施这些规则。  用于向特定 IP 地址服务授予访问权限的 SAS 令牌可**限制**令牌持有者的访问权限，但不越过已配置的网络规则授予新的访问权限。 
 
-虚拟机磁盘流量（包括装载和卸载操作以及磁盘 IO）**不**受网络规则影响。  在预览期间，不支持为受保护的存储帐户备份非托管磁盘。  对页 blob（用于虚拟机磁盘）的 REST 访问受网络规则保护。
+虚拟机磁盘流量（包括装载和卸载操作以及磁盘 IO）**不**受网络规则影响。  对页 blob 的 REST 访问受网络规则保护。
 
 经典存储帐户**不**支持防火墙和虚拟网络。
 
@@ -305,6 +305,7 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure HDInsight|Microsoft.HDInsight|群集预配和安装。  [了解详细信息](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。|
 |Azure 网络|Microsoft.Networking|存储和分析网络流量日志。  [了解详细信息](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-packet-capture-overview)。|
 |Azure SQL 数据仓库|Microsoft.Sql|数据导入和导出。  [了解详细信息](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-load#load-from-azure-blob-storage)。|
+|Azure 备份|Microsoft.RecoveryServices|备份和还原非托管磁盘。  [了解详细信息](https://docs.microsoft.com/en-us/azure/backup/backup-introduction-to-azure-backup)。|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问

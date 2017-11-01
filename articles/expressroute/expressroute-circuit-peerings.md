@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 10/23/2017
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: ddcf33a919d6f619394d405d061296469b568770
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66f4279b7adf9953474739a2e45f16ba848b08e9
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 线路和路由域
- 必须订购一条 ExpressRoute 线路，以通过连接提供商将本地基础结构连接到 Microsoft。 下图提供了 WAN 与 Microsoft 之间的连接的逻辑表示形式。
+ 必须订购一条 ExpressRoute 线路，以通过连接提供商将本地基础结构连接到 Microsoft。 下图展示了 WAN 与 Microsoft 之间连接的逻辑表示。
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
@@ -56,7 +56,7 @@ ExpressRoute 线路最多可以有三个独立的对等互连：Azure 公共、A
 
 Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的。 可以通过公共对等路由域私下连接到公共 IP 地址（包括云服务的 VIP）上托管的服务。 可以将公共对等域连接到外围网络，并从 WAN 连接到公共 IP 地址上的所有 Azure 服务，而无需通过 Internet 连接。 
 
-始终会从 WAN 发起到 Microsoft Azure 服务的连接。 Microsoft Azure 服务无法通过此路由域发起到网络的连接。 启用公共对等互连后，能够连接到所有 Azure 服务。 我们不允许选择要将路由播发到的服务。
+始终会从 WAN 发起到 Microsoft Azure 服务的连接。 Microsoft Azure 服务无法通过此路由域发起到网络的连接。 启用公共对等互连后，可以连接到所有 Azure 服务。 我们不允许选择要将路由播发到的服务。
 
 可以在网络中定义自定义路由筛选器，以只使用所需的路由。 有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。 
 
@@ -65,14 +65,14 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-与其他所有 Microsoft Online Services（Office 365、Dynamics 365 和 Azure PaaS 服务）的连接将通过 Microsoft 对等互连建立。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
+与其他所有 Microsoft 联机服务（Office 365、Dynamics 365 和 Azure PaaS 服务）的连接通过 Microsoft 对等互连建立。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
 
 有关支持的服务、费用和配置的详细信息，请参阅[常见问题解答页](expressroute-faqs.md)。 有关提供 Microsoft 对等互连支持的连接提供商列表的信息，请参阅 [ExpressRoute 位置](expressroute-locations.md)页。
 
 ## <a name="routing-domain-comparison"></a>路由域比较
-下表比较了三种路由域。
+下表比较了三种路由域：
 
-|  | **专用对等互连** | **公共对等互连** | **Microsoft 对等互连** |
+|  | **专用对等互连** | **公共对等互连** | **Microsoft 对等互连*** |
 | --- | --- | --- | --- |
 | **每个对等互连支持的最大前缀数** |默认情况下为 4000，而 ExpressRoute 高级版支持 10,000 |200 |200 |
 | **支持的 IP 地址范围** |WAN 中任何有效的 IP 地址。 |由你或连接提供商拥有的公共 IP 地址。 |由你或连接提供商拥有的公共 IP 地址。 |
@@ -81,9 +81,11 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 | **路由接口 IP 地址** |RFC1918 和公共 IP 地址 |在路由注册表中注册的公共 IP 地址。 |在路由注册表中注册的公共 IP 地址。 |
 | **MD5 哈希支持** |是 |是 |是 |
 
+(*) 需要 Premium 加载项 SKU 层
+
 可以选择启用一个或多个路由域作为 ExpressRoute 线路的一部分。 要将这些路由域合并成单个路由域，可以选择将所有路由域放置在同一个 VPN 中。 此外，还可以如图所示，将它们放置在不同的路由域中。 建议的配置是将专用对等链路直接连接到核心网络，并将公共和 Microsoft 对等链路连接到外围网络。
 
-如果选择使用所有三个对等会话，必须使用三对 BGP 会话（每一对用于一个对等类型）。 BGP 会话对提供高度可用的链接。 如果要通过第 2 层连接提供商进行连接，则需要负责配置和管理路由。 可以通过查看设置 ExpressRoute 的[工作流](expressroute-workflows.md)了解详细信息。
+如果选择使用所有三个对等会话，必须使用三对 BGP 会话（每一对用于一个对等类型）。 BGP 会话对提供高度可用的链接。 若要通过第 2 层连接性提供程序进行连接，需要负责配置和管理路由。 可以通过查看设置 ExpressRoute 的[工作流](expressroute-workflows.md)了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 * 查找服务提供商。 请参阅 [ExpressRoute 服务提供商和位置](expressroute-locations.md)。

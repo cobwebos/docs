@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: 21f04c1b01033adcef7b7d73c710dd2b4590f76f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b02b1260cedcade9bf69a99453ab0f5aa2c3c7b1
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
@@ -101,6 +101,13 @@ HealthEvents          :
 * **SourceId**：System.PLB
 * **属性**：以 Capacity 开头。
 * **后续步骤**：检查已提供的指标，并查看节点上的当前容量。
+
+### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>资源调控指标的节点容量不匹配
+如果在群集清单中定义的节点容量大于资源调控指标（内存和 CPU 内核）的实际节点容量，System.Hosting 将报告一个警告。 首个使用[资源调控](service-fabric-resource-governance.md)的服务包在指定节点上注册时，将显示运行状况报告。
+
+* **SourceId**：System.Hosting
+* 属性：ResourceGovernance
+* 后续步骤：这可能是一个问题，因为服务包不会按预期进行强制调控并且[资源调控](service-fabric-resource-governance.md)工作不正常。 使用这些指标的正确节点容量更新群集清单，或根本不指定，让 Service Fabric 自动检测可用资源。
 
 ## <a name="application-system-health-reports"></a>应用程序系统运行状况报告
 **System.CM** 表示群集管理器服务，是管理应用程序信息的主管服务。
@@ -815,6 +822,13 @@ HealthEvents               :
 * **SourceId**：System.Hosting
 * **属性**：使用前缀 FabricUpgradeValidation，并包含升级版本。
 * **说明**：指向遇到的错误。
+
+### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>资源调控指标的节点容量未定义
+如果未在群集清单中定义节点容量，且自动检测被配置为关闭，则 System.Hosting 将报告一个警告。 只要使用[资源调控](service-fabric-resource-governance.md)的服务包在指定节点上注册，Service Fabric 就会引发一个运行状况警报。
+
+* **SourceId**：System.Hosting
+* 属性：ResourceGovernance
+* 后续步骤：要解决此问题，首选方法是更改群集清单以启用可用资源的自动检测功能。 另一种方法是使用为这些指标正确指定的节点容量来更新群集清单。
 
 ## <a name="next-steps"></a>后续步骤
 [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)

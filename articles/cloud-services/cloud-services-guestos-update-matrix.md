@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/6/2017
+ms.date: 10/22/2017
 ms.author: raiye
-ms.openlocfilehash: 7d3541e6c437212139553d975fa756084da4f757
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a42f4b981883881681a7e7ecdb102ee28772c49
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用自动进行来宾 OS 更新，则不一定要阅读本页面。
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="family-4-releases"></a>系列 4 发行版本
 **Windows Server 2012 R2**
 
-支持 .NET 4.0、4.5、4.5.1、4.5.2
+已安装的 .NET Framework：4.0、4.5、4.5.1、4.5.2
 
 > [!NOTE]
 > 标有 * 的日期可随时更改
@@ -133,7 +133,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="family-3-releases"></a>系列 3 发行版本
 **Windows Server 2012**
 
-支持 .NET 4.0、4.5、4.5.1、4.5.2
+已安装的 .NET Framework：4.0、4.5、4.5.1、4.5.2
 
 > [!NOTE]
 > 标有 * 的日期可随时更改
@@ -160,7 +160,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="family-2-releases"></a>系列 2 发行版本
 **Windows Server 2008 R2 SP1**
 
-支持 .NET 3.5、4.0、4.5、4.5.1、4.5.2
+已安装的 .NET Framework：3.5、4.0、4.5、4.5.1、4.5.2
 
 > [!NOTE]
 > 标有 * 的日期可随时更改

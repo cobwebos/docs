@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2017
+ms.date: 10/11/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 64699db16eaa55d6206f7631ced3072e21cd2074
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fed181a004ba6a5ea35dcbe1366e7d48342c96d
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>注册一个单独的 Azure 订阅并查看成本数据
 
@@ -36,9 +36,11 @@ ms.lasthandoff: 10/11/2017
 6. 同意“使用条款”，并验证相关信息，然后单击“下一步”。
 7. 在“获取其他数据”页，单击“下一步”，以授权 Cloudyn 收集 Azure 资源数据。 收集的数据包括订阅的使用情况、性能、计费和标记数据。  
     ![收集更多数据](./media/quick-register-azure-sub/gather-additional.png)
-9. 你的浏览器会将你转到 Cloudyn 的登录页。 使用 Azure 订阅凭据登录。
+8. 你的浏览器会将你转到 Cloudyn 的登录页。 使用 Azure 订阅凭据登录。
 9. 单击“转到 Cloudyn”，以打开 Cloudyn 门户，然后在“帐户管理”页，应该可以看到你的 Azure 订阅帐户信息。  
     ![帐户管理](./media/quick-register-azure-sub/accounts-mgt.png)
+
+若要观看有关注册 Azure 订阅的视频教程，请参阅[在 Cloudyn 提供的 Azure 成本管理中查找要使用的目录 GUID 和费率 ID](https://youtu.be/PaRjnyaNGMI)。
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
@@ -47,4 +49,4 @@ ms.lasthandoff: 10/11/2017
 在快速入门中，使用你的 Azure 订阅信息注册成本管理。 此外，还会登录到 Cloudyn 门户并开始查看成本数据。 若要了解有关 Cloudyn 提供的 Azure 成本管理的详细信息，请继续学习成本管理教程。
 
 > [!div class="nextstepaction"]
-> [查看成本数据](./tutorial-review-usage.md)
+> [查看使用情况和成本](./tutorial-review-usage.md)

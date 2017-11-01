@@ -13,21 +13,26 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 08/02/2017
+ms.date: 10/16/2017
 ms.author: mimig
-ms.openlocfilehash: f4bf1992b1f13c61f44695f641b3cb3248b5672b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f59394fdb51c59be65e51fa1a4594b947635ace
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建文档数据库
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 使用 Azure Cosmos DB，可以快速创建和查询托管的文档、表和图形数据库。
 
-本快速入门通过适用于 Azure Cosmos DB 的 Azure 门户工具创建文档数据库。 本快速入门还介绍了如何使用 [DocumentDB Java API](documentdb-sdk-java.md) 快速创建 Java 控制台应用。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 完成本快速入门以后，即可熟悉如何通过 UI 或编程方式创建和修改文档数据库资源，具体取决于你首选哪种方式。
+本快速入门通过适用于 Azure Cosmos DB 的 Azure 门户工具创建文档数据库。 本快速入门还介绍了如何使用 [DocumentDB Java API](documentdb-sdk-java.md) 快速创建 Java 控制台应用。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 通过完成本快速入门，可以熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改文档数据库资源。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+此外： 
 
 * [Java 开发工具包 (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
     * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
@@ -36,9 +41,6 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 * [Git](https://www.git-scm.com/)
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -55,11 +57,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在可以使用数据资源管理器将数据添加到新集合。
 
-1. 在数据资源管理器中，新数据库会显示在“集合”窗格中。 展开 **Tasks** 数据库，展开 **Items** 集合，单击“文档”，然后单击“新建文档”。 
+1. 展开“项”集合，依次单击“文档” > “新建文档”。
 
-   ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-new-document.png)
+   ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-documentdb-java/azure-cosmosdb-data-explorer-new-document.png)
   
-2. 现在，将文档添加到具有以下结构的集合。
+2. 现在，采用以下结构将文档添加到集合中，再单击“保存”。
 
      ```json
      {
@@ -71,23 +73,37 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
      }
      ```
 
-3. 将 json 添加到“文档”选项卡以后，即可单击“保存”。
+    ![通过复制添加 json 数据，然后在 Azure 门户的数据资源管理器中单击“保存”](./media/create-documentdb-java/azure-cosmosdb-data-explorer-save-document.png)
 
-    ![通过复制添加 json 数据，然后在 Azure 门户的数据资源管理器中单击“保存”](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-save-document.png)
+3.  再创建并保存一个文档，将 `id` 更改为 2，并将其他属性更改为自己认为适当的值。 新文档可以具有所需的任何结构，因为 Azure Cosmos DB 不对数据施加任何架构。
 
-4.  再创建并保存一个文档，在其中插入 `id` 属性的唯一值，并将其他属性更改为适当值。 新文档可以具有所需的任何结构，因为 Azure Cosmos DB 不对数据施加任何架构。
+## <a name="query-your-data"></a>查询数据
 
-     现在可以在数据资源管理器中使用查询来检索数据，只需单击“编辑筛选器”和“应用筛选器”按钮即可。 默认情况下，数据资源管理器使用 `SELECT * FROM c` 来检索集合中的所有文档，但可以将其更改为其他 [SQL 查询](documentdb-sql-query.md)（例如 `SELECT * FROM c ORDER BY c._ts DESC`），根据时间戳按升序返回所有文档。 
- 
-     还可以使用数据资源管理器创建存储过程、UDF 和触发器以执行服务器端业务逻辑和缩放吞吐量。 数据资源管理器公开 API 中提供的所有内置编程数据访问，但可以使用它轻松访问 Azure 门户中的数据。
+现在可以在数据资源管理器中使用查询来检索和筛选数据。
+
+1. 请注意，查询默认设置为 `SELECT * FROM c`。 此默认查询检索并显示集合中的所有文档。 
+
+    ![数据资源管理器中的默认查询是“SELECT * FROM c”](./media/create-documentdb-java/azure-cosmosdb-data-explorer-query.png)
+
+2. 单击“编辑筛选器”按钮，将 `ORDER BY c._ts DESC` 添加到查询谓词框中，再单击“应用筛选器”，从而更改查询。
+
+    ![添加“ORDER BY c._ts DESC”并单击“应用筛选器”，更改默认查询](./media/create-documentdb-java/azure-cosmosdb-data-explorer-edit-query.png)
+
+此修改后的查询根据文档的时间戳按降序列出文档，所以现在最先列出的是第二个文档。 如果熟悉 SQL 语法，可以在此框中输入任何受支持的 [SQL 查询](documentdb-sql-query.md)。 
+
+数据资源管理器中的工作到此结束。 继续处理代码前，请注意，还可以使用数据资源管理器创建存储过程、UDF 和触发器，实现服务器端业务逻辑和缩放吞吐量。 数据资源管理器公开 API 中提供的所有内置编程数据访问，但可以使用它轻松访问 Azure 门户中的数据。
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
 现在，让我们转到如何使用代码上来。 从 GitHub 克隆 DocumentDB API 应用，设置连接字符串，并运行该应用。 会看到以编程方式处理数据是多么容易。 
 
-1. 打开 git 终端窗口（例如 git bash）并使用 `CD` 切换到工作目录。  
+1. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为相应的示例应用程序安装文件夹。 
 
-2. 运行下列命令以克隆示例存储库。 
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+2. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -95,9 +111,9 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-快速查看应用中发生的情况。 从 \src\GetStarted 文件夹打开 `Program.java` 文件，查找创建 Azure Cosmos DB 资源的代码行。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 这些代码段全部取自 C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted 文件夹中安装的 `Program.java` 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
-* 将对 `DocumentClient` 进行初始化。
+* `DocumentClient` 初始化。 [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) 为 Azure Cosmos DB 数据库服务提供客户端逻辑表示。 此客户端用于对服务配置和执行请求。
 
     ```java
     this.client = new DocumentClient("https://FILLME.documents.azure.com",
@@ -106,7 +122,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
             ConsistencyLevel.Session);
     ```
 
-* 将创建一个新数据库。
+* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._database) 创建。
 
     ```java
     Database database = new Database();
@@ -115,7 +131,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     this.client.createDatabase(database, null);
     ```
 
-* 将创建一个新集合。
+* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_collection) 创建。
 
     ```java
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -126,7 +142,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     this.client.createCollection(databaseLink, collectionInfo, requestOptions);
     ```
 
-* 将创建一些文档。
+* 使用 [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.createdocument) 方法创建文档。
 
     ```java
     // Any Java object within your code can be serialized into JSON and written to Azure Cosmos DB
@@ -139,7 +155,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     this.client.createDocument(collectionLink, family, new RequestOptions(), true);
     ```
 
-* 将对 JSON 执行 SQL 查询。
+* 使用 [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) 方法，对 JSON 执行 SQL 查询。
 
     ```java
     FeedOptions queryOptions = new FeedOptions();
@@ -159,29 +175,49 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
-现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样即可让应用与托管的数据库通信。
+现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，并单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和 PRIMARY KEY 复制到下一步的 `Program.java` 文件中。
+1. 在 [Azure 门户](http://portal.azure.com/)中，单击“密钥”。 
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-documentdb-dotnet/keys.png)
+    使用屏幕右侧的“复制”按钮，复制最上面的 URI 值。
 
-2. 在打开的 `Program.java` 文件中，通过门户复制 URI 值（使用复制按钮），在 `Program.java` 中将其设为 DocumentClient 构造函数的终结点的值。 
+    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-documentdb-java/keys.png)
 
-    `"https://FILLME.documents.azure.com"`
+2. 打开 C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted 文件夹中的 `Program.java` 文件。 
 
-4. 然后从门户复制 PRIMARY KEY 值，以粘贴方式替换“FILLME”，使之成为 DocumentClient 构造函数中的第二个参数。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+3. 将门户中的 URI 值粘贴到第 45 行上的 `https://FILLME.documents.azure.com`。
+
+4. 返回到门户，并复制主密钥值，如屏幕截图所示。 将门户中的主密钥值粘贴到第 46 行上的 `FILLME`。
+
+    现在，getStartedDemo 方法应如下所示： 
     
+    ```java
+    private void getStartedDemo() throws DocumentClientException, IOException {
+        this.client = new DocumentClient("https://youraccountname.documents.azure.com:443/",
+                "your-primary-key...RJhQrqQ5QQ==", 
+                new ConnectionPolicy(),
+                ConsistencyLevel.Session);
+    ```
+
 ## <a name="run-the-app"></a>运行应用程序
 
 1. 在 git 终端窗口中，通过 `cd` 命令转到 azure-cosmos-db-documentdb-java-getting-started 文件夹。
 
+    ```git
+    cd "C:\git-samples\azure-cosmos-db-documentdb-java-getting-started"
+    ```
+
 2. 在 git 终端窗口键入 `mvn package`，安装所需的 Java 包。
 
-3. 在 git 终端窗口运行 `mvn exec:java -D exec.mainClass=GetStarted.Program`，启动 Java 应用程序。
+3. 在 git 终端窗口中，运行 `mvn exec:java -D exec.mainClass=GetStarted.Program`，启动 Java 应用程序。
 
-    在终端窗口中会出现通知，指出 FamilyDB 数据库已创建，按一个键即可继续。 按一个键创建数据库，然后切换到数据资源管理器，此时会看到其中包含 FamilyDB 数据库。 继续按键创建集合和文档，然后执行查询。 项目完成后，资源会从帐户中删除。 
+    此时，终端窗口显示通知，提示 FamilyDB 数据库已创建。 按键创建集合，再切换到数据资源管理器，此时会看到其中包含 FamilyDB 数据库。
+    
+    继续按键创建文档，再执行查询。
+    
+    在程序结束时，此应用程序的所有资源都会从帐户中删除，这样便不会产生任何费用。 
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-documentdb-java/console-output.png)
+    ![控制台输出](./media/create-documentdb-java/console-output.png)
 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
@@ -190,14 +226,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用数据资源管理器创建 Azure Cosmos DB 帐户、文档数据库和集合，以及如何通过运行应用以编程方式执行同一操作。 现在可以将其他数据导入 Cosmos DB 帐户。 
+本快速入门介绍了如何使用数据资源管理器创建 Azure Cosmos DB 帐户、文档数据库和集合，以及如何通过运行应用以编程方式执行同一操作。 现在可以将其他数据导入 Azure Cosmos DB 集合。 
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)

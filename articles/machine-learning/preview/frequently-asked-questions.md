@@ -9,11 +9,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 4b3720019ba396d90be5586fa8fff4fa7e7d6e46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75dff9bc10294621218a89b809552c8abcd57017
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
@@ -108,7 +108,7 @@ Azure 机器学习模型管理是一种托管型 Azure 服务，可供数据科�
 
 **是否支持本地和云部署方案？**
 
-是的。 我们通过 Docker 容器支持本地部署方案。 本地执行目标包括：单节点 Docker 部署、[带有 ML 服务的 Microsoft SQL Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)、Hadoop 或 Spark。 我们还通过 Docker 支持云部署，包括：通过 Azure 容器服务及 Kubernetes、HDInsight 或 Spark 群集实现群集部署。 通过 Docker 容器和 Azure IOT Edge 支持边缘方案。 
+是的。 我们通过 Docker 容器支持本地和云部署方案。 本地执行目标包括：单节点 Docker 部署、[带有 ML 服务的 Microsoft SQL Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)、Hadoop 或 Spark。 我们还通过 Docker 支持云部署，包括：通过 Azure 容器服务及 Kubernetes、HDInsight 或 Spark 群集实现群集部署。 通过 Docker 容器和 Azure IOT Edge 支持边缘方案。 
 
 **是否可以在另一台主机上运行使用 Azure 机器学习 CLI 创建的 Docker 映像？**
 

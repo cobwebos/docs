@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 19b1d772236c14c8403d1056e5c9dcda7b741501
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9ad68abef47cde7472e413ee82510f7df9121cd
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure 自动化中的常见问题解答 
 本文介绍如何排除会在 Azure 自动化中遇到的常见错误，并提供可能的解决方案建议。
@@ -101,8 +101,8 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到 Azure 订阅  
 2. 选择要升级的自动化帐户  
-3. 单击“设置” > “定价层和使用情况” > “定价层”  
-4. 在“选择定价层”页选择“基本”    
+3. 单击“设置” > “定价”。
+4. 单击页面底部的“启用”，以将帐户升级到“基本”层。
 
 ### <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a>场景：在执行 Runbook 时无法识别 Cmdlet
 **错误：**Runbook 作业失败，出现“``<cmdlet name>``: 无法将 ``<cmdlet name>`` 一词识别为 cmdlet、函数、脚本文件或可运行程序的名称”错误。

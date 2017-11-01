@@ -12,22 +12,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/11/2017
 ms.author: heidist
-ms.openlocfilehash: f9e456a57bae4aab25ef85c93132308f2c442c0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1b9dea2978c11955da3ea4df8b90dc10a866d3f1
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="analyzers-in-azure-search"></a>Azure 搜索中的分析器
 
-“分析器”是[全文搜索](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 在索引期间，分析器会将文本转换为“令牌”，并将其作为“令牌化词语”写入到索引中。 在搜索过程中，分析器对“查询词语”执行相同的转换，为与索引中的词语进行匹配提供基础。
-
-以下是分析过程中的典型转换：
+“分析器”是[全文搜索](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 以下是分析过程中的典型转换：
 
 + 删除非必需字（非索引字）和标点。
 + 将短语和用连字符连接的词语分解为组成部分。
 + 将大写单词转换为小写单词。
 + 将单词分解为词根形式，以便查找匹配项，而不考虑时态。
+
+语言分析器将文本输入转换为原始形式或词根形式，以快速实现信息存储和信息检索。 在生成索引以编制索引时会发生此转换，在读取索引以执行搜索时会再次进行转换。 如果将同一个文本分析器用于这两种操作，则更有可能获得所需的搜索结果。
 
 Azure 搜索使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)作为默认值。 你可以逐字段替代默认值。 本文介绍了选项范围并提供了用于自定义分析的最佳做法。 它还提供了用于主要方案的配置示例。
 
@@ -53,12 +53,12 @@ Azure 搜索使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0
 
 3. 向字段定义中添加分析器会在索引上引发写入操作。 如果向现有索引中添加**分析器**，请注意以下步骤：
  
- | 方案 | 步骤 |
- |----------|-------|
- | 添加新字段 | 如果字段尚不存在于架构中，则不需要进行任何字段修订。 每次添加或更新为新字段提供内容的文档时都会进行文本分析。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 处理此任务。|
- | 向现有索引字段添加分析器。 | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的文档内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于正在生产中的索引，应创建一个新字段来提供修改后的定义并开始使用该字段。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 以包含新字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
+ | 方案 | 影响 | 步骤 |
+ |----------|--------|-------|
+ | 添加新字段 | 轻微 | 如果字段尚不存在于架构中，则不需要进行任何字段修订，因为索引中尚不存在字段的物理形式。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 处理此任务。|
+ | 向现有索引字段添加分析器。 | 重新生成 | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于正在生产中的索引，应创建一个新字段来提供修改后的定义并开始使用该字段。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 以包含新字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
 
-## <a name="best-practices"></a>最佳实践
+## <a name="tips-and-best-practices"></a>提示和最佳做法
 
 本部分提供分析器使用方法的相关建议。
 
@@ -72,12 +72,13 @@ Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参
 
 替换标准分析器需要重新生成索引。 如果可能，请先决定在活动开发中使用的分析器，然后再将索引应用到生产中。
 
-### <a name="compare-analyzers-side-by-side"></a>并排比较分析器
+### <a name="inspect-tokenized-terms"></a>检查已标记的词语
 
-建议使用[分析 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)。 响应包含令牌，由特定分析器针对提供的文本生成。 
+如果搜索未能返回所需的结果，最有可能的情况是查询上的词语输入和索引中已标记的词语之间存在标记差异。 如果标记不同，匹配则无法具体化。 若要检查 tokenizer 输出，建议将 [Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 用作调查工具。 响应包含令牌，由特定分析器生成。
 
-> [!Tip]
-> [搜索分析器演示](http://alice.unearth.ai/)演示了对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器的并排比较。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中。
+### <a name="compare-english-analyzers"></a>比较英语分析器
+
+[搜索分析器演示](http://alice.unearth.ai/)是第三方演示应用，它演示了对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器的并排比较。 索引是固定的；它包含常见情景中的文本。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中，使你了解每个分析器是如何处理同一个字符串的。 
 
 ## <a name="examples"></a>示例
 

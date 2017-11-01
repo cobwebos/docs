@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -38,6 +38,9 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 ### <a name="configuring-ai-with-wad"></a>使用 WAD 配置 AI
 
+>[!NOTE]
+>目前仅适用于 Windows 群集。
+
 可通过两种方式将数据从 WAD 发送到 Azure AI，这一过程是通过向 WAD 配置添加 AI 接收器实现，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所述。
 
 #### <a name="add-an-ai-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 门户中创建群集时添加 AI 检测密钥
@@ -50,7 +53,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 在 Resource Manager 模板的“WadCfg”中，通过应用以下两项更改添加“接收器”：
 
-1. 添加接收器配置：
+1. 在声明完 `DiagnosticMonitorConfiguration` 后，直接添加接收器配置：
 
     ```json
     "SinksConfig": {
@@ -64,7 +67,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
     ```
 
-2. 通过在“WadCfg”的“DiagnosticMonitorConfiguration”中添加以下行，将该接收器包含到 DiagnosticMonitorConfiguration 中：
+2. 在 `DiagnosticMonitorConfiguration` 中添加接收器，具体方法是在 `WadCfg` 的 `DiagnosticMonitorConfiguration` 中添加以下代码行（紧靠声明的 `EtwProviders` 前面）：
 
     ```json
     "sinks": "applicationInsights"

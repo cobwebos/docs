@@ -1,5 +1,5 @@
 ---
-title: "设计用于灾难恢复的网络基础结构 | Microsoft 文档"
+title: "使用 Azure Site Recovery 设计用于灾难恢复的网络基础结构 | Microsoft Docs"
 description: "本文讨论 Azure Site Recovery 的网络设计注意事项"
 services: site-recovery
 documentationcenter: 
@@ -12,30 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/20/2017
+ms.date: 10/19/2017
 ms.author: pratshar
-ms.openlocfilehash: 90ffd3dd1cf5068359afa1b60892cdee43ec0658
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b6fb7bac852b29663866e99758241bd5a7ab59e
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="designing-your-network-for-disaster-recovery"></a>设计用于灾难恢复的网络
 
-本文面向 IT 专业人员，他们负责构建、实施和支持业务连续性和灾难恢复 (BCDR) 基础结构，而且想要利用 Microsoft Azure Site Recovery (ASR) 来支持并增强其 BCDR 服务。 本文介绍在灾难恢复站点（不管是 Azure 还是其他本地站点）上构建网络时的实用注意事项。 
+本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 从本地灾难恢复到 Azure，或恢复到辅助本地站点时的网络注意事项。 重点介绍故障转移到辅助位置后对 IP 地址范围和子网的定义。
 
 ## <a name="overview"></a>概述
-[Azure Site Recovery (ASR)](https://azure.microsoft.com/services/site-recovery/) 是一项 Microsoft Azure 服务，可协调虚拟化应用程序的保护和恢复，以达到业务连续性和灾难恢复 (BCDR) 的目的。 本文档旨在引导读者完成网络设计的过程，着重于使用 Site Recovery 复制虚拟机 (VM) 时如何构建灾难恢复站点上的 IP 范围和子网。
 
-此外，本文还将演示 Site Recovery 如何构建及实施多站点的虚拟数据中心，以在测试或发生灾难时支持 BCDR 服务。
+Site Recovery 是一项 Microsoft Azure 服务，可协调虚拟化应用程序的保护和恢复，以达到业务连续性和灾难恢复 (BCDR) 的目的。
 
-在每个人都期待 24/7 全天候连接不中断的世界，保持基础结构和应用程序启动并运行的重要性更甚于以往。 业务连续性和灾难恢复 (BCDR) 的目的是要还原失败的组件，让组织可以快速恢复正常运营。 制定灾难恢复策略来应对不太可能发生的严重破坏事件非常具有挑战性。 这是因为对未来进行预测本来就有难度，尤其是它与不太可能发生的事件有关，并且提供适当措施来防止未知灾难的成本也很高。
+在全天候连接的世界中，重要的是启动并持续运行业务基础结构和应用程序。 BCDR 的目的是要还原失败的组件，让组织可以快速恢复正常运营。 制定灾难恢复策略来应对不太可能发生的事件非常具有挑战性。 这是因为预测未来，特别是预测不太可能的事件本来就非常困难。 此外，还因为针对巨大灾难保持提供充足的保护措施的成本非常高。
 
-BCDR 规划的关键在于必须为灾难恢复计划定义恢复时间目标 (RTO) 和恢复点目标 (RPO)。 当使用 Azure Site Recovery 的客户数据中心发生灾害时，客户可以在数据丢失最少（低 RPO）的情况下，迅速（低 RTO）让其位于辅助数据中心或 Microsoft Azure 的复制虚拟机联机。
+BCDR 规划的关键在于，必须在 BCDR 计划中定义恢复时间目标 (RTO) 和恢复点目标 (RPO)。 当数据中心发生灾害时，可以在数据丢失最少（低 RPO）的情况下，迅速（低 RTO）让其位于辅助数据中心或 Microsoft Azure 的复制虚拟机联机。
 
-ASR 让故障转移变为可能，第一步是将指定的虚拟机从主要数据中心复制到辅助数据中心或 Azure（视方案而定），并定期刷新副本。 规划基础结构时，应将网络设计视为可能会让你无法达成公司 RTO 和 RPO 目标的潜在瓶颈。  
+Site Recovery 让故障转移变为可能，第一步是将指定的虚拟机从主要数据中心复制到辅助数据中心或 Azure（视方案而定），并定期刷新副本。 规划基础结构时，应将网络设计视为可能会让你无法达成公司 RTO 和 RPO 目标的潜在瓶颈。  
 
-当管理员计划部署灾难恢复解决方案时，脑海中浮现的一个重要问题是，如何在故障转移完成后使虚拟机可供访问。 ASR 允许管理员选择在故障转移之后虚拟机连接的网络。 如果主站点是 Azure 或者是由 VMM 服务器管理的本地站点，则可以使用网络映射来实现此目的。 详细了解 [Azure 到 Azure 灾难恢复中的网络映射](site-recovery-network-mapping-azure-to-azure.md)和[从 VMM 的网络映射](site-recovery-network-mapping.md)。
+当管理员计划部署灾难恢复解决方案时，脑海中浮现的一个重要问题是，如何在故障转移完成后使虚拟机可供访问。 Site Recovery 允许管理员选择虚拟机在故障转移之后连接的网络。 如果主站点是 Azure 或者是由 VMM 服务器管理的本地站点，则可以使用网络映射来实现此目的。 详细了解 [Azure 到 Azure 灾难恢复中的网络映射](site-recovery-network-mapping-azure-to-azure.md)和[从 VMM 的网络映射](site-recovery-network-mapping.md)。
 
 
 设计恢复站点的网络时，管理员有两种选择：
@@ -53,18 +52,18 @@ ASR 让故障转移变为可能，第一步是将指定的虚拟机从主要数�
 ### <a name="stretched-subnet"></a>外延式子网
 若采取此做法，可在主要位置和 DR 位置同时使用子网。 简单而言，这意味着可以将一个服务器及其 IP（第 3 层）配置移动到辅助站点，并且网络会自动将流量路由到新的位置。 从服务器的角度来看，这处理十分常见，但是也有若干挑战：
 
-* 从第 2 层（数据链路层）的角度来看，它需要能够管理外延式 VLAN 的网络设备，不过这不成问题，因为现在可以方便地获得这种设备。 第二个且更加困难的问题在于通过延伸 VLAN，潜在容错域也同时延伸到两个站点，本质上变为一个单点故障。 虽然不太可能，但过去曾经发生过无法隔离的广播风暴。 关于这个问题我们得到过各种意见，看过许多成功的实施，也遇到过“我们永远不会实施这种技术”的人。
+* 从第 2 层（数据链路层）的角度来看，它需要能够管理外延式 VLAN 的网络设备，不过这不成问题，因为现在可以方便地获得这种设备。 第二个且更加困难的问题在于通过延伸 VLAN，潜在容错域也同时延伸到两个站点，本质上变为一个单点故障。 虽然不太可能，但过去曾经发生过无法隔离的广播风暴。 关于这个问题我们得到过各种意见，看过许多成功的实施，也遇到过“我们不会实施这种技术”的人。
 * 如果使用 Microsoft Azure 作为 DR 站点，就不可能实施外延式子网。
 
 ### <a name="subnet-failover"></a>子网故障转移
-可以实施子网故障转移，以获得上述外延式子网解决方案的优点，而无需真的跨多个站点延伸子网。 若采取此做法，任何给定的子网会出现在站点 1 或站点 2 中，但永远不会同时出现在这两个站点中。 为了在故障转移时保留 IP 地址空间，可以通过编程方式安排路由器基础结构将子网从一个站点移到另一个站点。 在故障转移方案中，子网随关联的受保护 VM 一起移动。 此方法的主要缺点在于，当出现故障时，必须移动整个子网，这可能没问题，但是会影响故障转移粒度注意事项。
+可以实施子网故障转移，以获得上述外延式子网解决方案的优点，而无需真的跨多个站点延伸子网。 若采取此做法，任何给定的子网会出现在站点 1 或站点 2 中，但永远不会同时出现在这两个站点中。 为了在故障转移时保留 IP 地址空间，可以通过编程方式安排路由器基础结构将子网从一个站点移到另一个站点。 在故障转移方案中，子网随关联的受保护 VM 一起移动。 本方法的主要缺点是，在出现故障时，必须移动整个子网。 这可能没问题，但也可能影响故障转移粒度。
 
-让我们看看虚构企业 Contoso 如何能够在将其 VM 复制到某个恢复位置的同时，对整个子网进行故障转移。 首先，我们看看 Contoso 如何能够在管理其子网的同时，在两个本地位置之间复制 VM，接着，我们将讨论在[将 Azure 用作灾难恢复站点](#failover-to-azure)时，子网故障转移是如何工作的。
+让我们看看虚构企业 Contoso 如何能够在将其 VM 复制到某个恢复位置的同时，对整个子网进行故障转移。 首先，我们看看 Contoso 如何能够在管理其子网的同时，在两个本地位置之间复制 VM，接着，我们将讨论在[将 Azure 用作灾难恢复站点](#failover-to-azure)时，子网故障转移的的工作原理。
 
-#### <a name="failover-from-on-premises-to-azure"></a>从本地故障转移到 Azure 
-Azure Site Recovery (ASR) 允许将 Azure 用作虚拟机的灾难恢复站点。  
+#### <a name="fail-over-from-on-premises-to-azure"></a>从本地故障转移到 Azure 
+Azure Site Recovery 允许将 Azure 用作虚拟机的灾难恢复站点。  
 
-让我们看看这个案例，虚构公司 Woodgrove Bank 的本地基础结构承载了业务线应用程序，其移动应用程序则承载于 Azure 上。 Azure 中的 Woodgrove Bank VM 以及本地服务器之间的连接由站点到站点 (S2S) 虚拟专用网 (VPN) 或 ExpressRoute 提供。 S2S VPN 使得 Woodgrove Bank 在 Azure 中的虚拟网络可被视为 Woodgrove Bank 本地网络的扩展。 此通信由 Woodgrove Bank 边缘和 Azure 虚拟网络之间的 S2S VPN 实现。 现在，Woodgrove 想要使用 ASR 将主要 Azure 区域中运行的工作负荷复制到另一个 Azure 区域。 此做法符合 Woodgrove 的需求，既拥有经济实惠的 DR 选项，又能够将数据存储在公有云环境中。 Woodgrove 必须处理依赖于硬编码 IP 地址的应用程序和配置，因此他们需要在向 Azure 中的另一区域故障转移后为应用程序保留 IP 地址。
+让我们看看这个案例，虚构公司 Woodgrove Bank 的本地基础结构承载了业务线应用程序，其移动应用程序则承载于 Azure 上。 Azure 中的 Woodgrove Bank VM 以及本地服务器之间的连接由站点到站点 (S2S) 虚拟专用网 (VPN) 或 ExpressRoute 提供。 站点到站点 VPN 使得 Woodgrove Bank 在 Azure 中的虚拟网络可被视为 Woodgrove Bank 本地网络的扩展。 此通信由 Woodgrove Bank 边缘和 Azure 虚拟网络之间的站点到站点 VPN 实现。 现在，Woodgrove 想要使用 Site Recovery 将主要 Azure 区域中运行的工作负荷复制到另一个 Azure 区域。 此做法符合 Woodgrove 的需求，既拥有经济实惠的 DR 选项，又能够将数据存储在公有云环境中。 Woodgrove 必须处理依赖于硬编码 IP 地址的应用程序和配置，因此他们需要在向 Azure 中的另一区域故障转移后为应用程序保留 IP 地址。
 
 Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 IP 地址分配给在 Azure 中运行的资源。
 
@@ -90,7 +89,7 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
 如果没有如上图所示的“Azure 网络”。 可以在故障转移之后，在“主站点”与“恢复网络”之间创建站点到站点 VPN 连接。  
 
 
-#### <a name="failover-to-a-secondary-on-premises-site"></a>故障转移到辅助本地站点
+#### <a name="fail-over-to-a-secondary-on-premises-site"></a>故障转移到辅助本地站点
 让我们看看这种情况：我们想保留每个 VM 的 IP，并一起故障转移整个子网。 主站点具有在子网 192.168.1.0/24 中运行的应用程序。 发生故障转移时，属于此子网的所有虚拟机将向恢复站点进行故障转移，并且保留它们的 IP 地址。 必须适当地修改路由，以反映所有属于子网 192.168.1.0/24 的虚拟机现在都已移至恢复站点的事实。
 
 下图中，主站点与恢复站点、第三个站点与主站点以及第三个站点与恢复站点之间的路由都必须适当地修改。
@@ -107,13 +106,13 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
 
 在故障转移之后
 
-如果辅助站点是本地站点，并且你使用 VMM 服务器管理它，那么，当对特定虚拟机启用保护时，ASR 会根据以下工作流分配网络资源：
+如果辅助站点是本地站点，并且你使用 VMM 服务器管理它，那么，当对特定虚拟机启用保护时，Site Recovery 会根据以下工作流分配网络资源：
 
-* ASR 从每个 System Center VMM 实例的相应网络所定义的静态 IP 地址池中为虚拟机上的每个网络接口分配一个 IP 地址。
-* 如果管理员为恢复站点上的网络定义的 IP 地址池，与主站点上网络的 IP 地址池相同，则 ASR 在分配副本虚拟机的 IP 地址时，会分配与主要虚拟机相同的 IP 地址。  IP 保留在 VMM 中，但不会设置为 Hyper-v 主机上的故障转移 IP。 Hyper-v 主机上的故障转移 IP 会在故障转移之前设置。
+* Site Recovery 从每个 System Center VMM 实例的相应网络所定义的静态 IP 地址池中为虚拟机上的每个网络接口分配一个 IP 地址。
+* 如果管理员为恢复站点上的网络定义的 IP 地址池，与主站点上网络的 IP 地址池相同，则 Site Recovery 在分配副本虚拟机的 IP 地址时，会分配与主要虚拟机相同的 IP 地址。  IP 地址保留在 VMM 中，但未设置为 Hyper-V 主机上的故障转移 IP 地址。 Hyper-V 主机上的故障转移 IP 地址会在故障转移之前设置。
 
 
-如果找不到相同的 IP，ASR 会分配已定义的 IP 地址池中一些其他可用的 IP 地址。
+如果找不到相同的 IP 地址，Site Recovery 会分配已定义的 IP 地址池中一些其他可用的 IP 地址。
 
 在为 VM 启用保护之后，可以使用以下脚本示例验证已经分配给虚拟机的 IP。 ASR 会将相同的 IP 设置为故障转移 IP，并在故障转移时分配到 VM：
 
@@ -123,14 +122,14 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
         $ip.address  
 
 > [!NOTE]
-> 在虚拟机使用 DHCP 的方案中，IP 地址的管理完全在 ASR 控制范围之外。 管理员必须确保提供恢复站点上 IP 地址的 DHCP 服务器可以从与主站点相同的范围中提供地址。
+> 在虚拟机使用 DHCP 的方案中，IP 地址的管理完全在 Site Recovery 控制范围之外。 管理员必须确保提供恢复站点上 IP 地址的 DHCP 服务器可以从与主站点相同的范围中提供地址。
 >
 >
 
 
 
 ## <a name="option-2-changing-ip-addresses"></a>选项 2：更改 IP 地址
-据我们所见，这种方法似乎最普遍。 其采取的做法是更改故障转移中每个 VM 的 IP 地址。 此方法的缺点是传入网络需要“学习”原本在 IPx 的应用程序现在在 IPy。 即使 IPx 和 IPy 是逻辑名称，通常也需要在整个网络中更改或刷新 DNS 条目，而且必须更新或刷新网络表中的缓存条目，因此，停机时间取决于 DNS 基础结构如何设置。 对于 Intranet 应用程序，可以使用低 TTL 值；对于基于 Internet 的应用程序，可以使用[带有 ASR 的 Azure 流量管理器](http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/)来缓解这些问题
+据我们所见，这种方法似乎最普遍。 其采取的做法是更改故障转移中每个 VM 的 IP 地址。 此方法的缺点是传入网络需要“学习”原本在 IPx 的应用程序现在在 IPy。 即使 IPx 和 IPy 是逻辑名称，通常也需要在整个网络中更改或刷新 DNS 条目，而且必须更新或刷新网络表中的缓存条目，因此，停机时间取决于 DNS 基础结构如何设置。 对于 Intranet 应用程序，可以使用低 TTL 值；对于基于 Internet 的应用程序，可以使用[带有 Site Recovery 的 Azure 流量管理器](http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/)来缓解这些问题
 
 ### <a name="changing-the-ip-addresses---illustration"></a>更改 IP 地址 — 插图
 让我们看一下在主站点和恢复站点使用不同 IP 的方案。 在以下示例中，我们有第三个站点，可以从该站点访问主站点或恢复站点上承载的应用程序。
@@ -148,7 +147,7 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
 在故障转移之后，副本虚拟机的 IP 地址可能与主虚拟机的 IP 地址不同。 虚拟机在启动后将更新它们使用的 DNS 服务器。 DNS 条目通常必须改变或在整个网络中刷新，并且网络表中的缓存条目必须更新或刷新，因此在这些状态改变发生时面临停机并不是少见的事情。 可以通过以下方式来缓解该问题：
 
 * 对于 Intranet 应用程序，使用低 TTL 值。
-* 对于基于 Internet 的应用程序，使用带有 ASR 的 Azure 流量管理器。
+* 对于基于 Internet 的应用程序，使用带有 Site Recovery 的 Azure 流量管理器。
 * 在恢复计划中使用以下脚本来更新 DNS 服务器，以确保及时更新（如果配置了动态 DNS 注册，则不需要此脚本）
 
         param(
@@ -161,8 +160,8 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
         $newrecord.RecordData[0].IPv4Address  =  $IP
         Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
-### <a name="changing-the-ip-addresses--dr-to-azure"></a>更改 IP 地址 — 灾难恢复到 Azure
-[为作为灾难恢复站点的 Azure 设置网络基础结构](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)这篇博客文章解释了在不需要保留 IP 地址时如何设置所需的 Microsoft Azure 网络基础结构。 文章一开始描述应用程序，接着探讨如何在本地及 Azure 设置网络，最后说明如何执行测试故障转移和计划的故障转移。
+### <a name="changing-the-ip-addresses--disaster-recovery-to-azure"></a>更改 IP 地址 – 灾难恢复到 Azure
+[为作为灾难恢复站点的 Azure 设置网络基础结构](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)这篇博客文章解释了在不需要保留 IP 地址时如何设置所需的 Microsoft Azure 网络基础结构。 文章一开始介绍应用程序，接着探讨如何在本地及 Azure 设置网络，最后说明如何执行测试故障转移和计划内故障转移。
 
 ## <a name="next-steps"></a>后续步骤
-[了解](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping)当 VMM 服务器用于管理主站点时，Site Recovery 如何映射源和目标网络。
+了解[网络映射](site-recovery-network-mapping.md)。

@@ -11,17 +11,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: f17f3084138d667b2584142ed90ecc8fc1586189
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f864ca586e8e607168ae7b46a1eaa297eca1cfb8
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
-默认情况下，消息会路由到与[事件中心][lnk-event-hubs]兼容的面向服务的内置终结点 (**messages/events**) 中。 此终结点目前仅通过端口 5671 上的 [AMQP][lnk-amqp] 协议公开。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
+默认情况下，消息将路由到与[事件中心][lnk-event-hubs]兼容的内置面向服务的终结点 (messages/events) 中。 此终结点目前仅通过端口 5671 上的 [AMQP][lnk-amqp] 协议公开。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
 
 | 属性            | 说明 |
 | ------------------- | ----------- |
@@ -40,16 +40,18 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 使用[适用于 .NET 的 Azure 服务总线 SDK][lnk-servicebus-sdk] 或[事件中心 - 事件处理器主机][lnk-eventprocessorhost]时，可以将任何 IoT 中心连接字符串与正确的权限配合使用。 然后使用**消息/事件**作为事件中心名称。
 
-使用无法识别 IoT 中心的 SDK（或产品集成）时，必须从 [Azure 门户][lnk-management-portal]中的 IoT 中心设置检索与事件中心兼容的终结点和与事件中心兼容的名称：
+使用无法识别 IoT 中心的 SDK（或产品集成）时，必须从 IoT 中心设置检索与事件中心兼容的终结点和与事件中心兼容的名称：
 
-1. 单击“IoT 中心边栏选项卡”中的“终结点”。
-1. 在“内置终结点”部分，单击“事件”。 边栏选项卡包含以下值：“事件中心兼容的终结点”、“事件中心兼容的名称”、“分区”、“保留时间”和“使用者组”。
+1. 登录 [Azure 门户][lnk-management-portal]，并导航到 IoT 中心。
+1. 单击“终结点” 。
+1. 在“内置终结点”部分，单击“事件”。 
+1. 属性页将打开，包含以下值：“与事件中心兼容的终结点”、“与事件中心兼容的名称”、“分区”、“保留时间”和“使用者组”。
 
     ![设备到云的设置][img-eventhubcompatible]
 
-IoT 中心 SDK 需要 IoT 中心终结点名称，即“终结点”边栏选项卡中所示的 **messages/events**。
+IoT 中心 SDK 需要 IoT 中心终结点名称，即“终结点”下所示的 messages/events。
 
-如果当前使用的 SDK 需要“主机名”或“命名空间”值，请从“事件中心兼容的终结点”中删除方案。 例如，如果事件中心兼容的终结点为 **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**，则**主机名**为 **iothub-ns-myiothub-1234.servicebus.windows.net**，**命名空间**为 **iothub-ns-myiothub-1234**。
+如果当前使用的 SDK 需要“主机名”或“命名空间”值，请从“事件中心兼容的终结点”中删除方案。 例如，如果与事件中心兼容的终结点为 sb://iothub-ns-myiothub-1234.servicebus.windows.net/，则主机名为 iothub-ns-myiothub-1234.servicebus.windows.net。 命名空间为 iothub-ns-myiothub-1234。
 
 然后，可以使用具有 **ServiceConnect** 权限的任何共享访问策略连接到指定的事件中心。
 

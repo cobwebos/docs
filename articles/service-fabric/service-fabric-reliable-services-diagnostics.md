@@ -1,6 +1,6 @@
 ---
-title: "有状态 Reliable Services 诊断 | Microsoft Docs"
-description: "有状态 Reliable Services 的诊断功能"
+title: "Azure Service Fabric 有状态 Reliable Services 的诊断功能 | Microsoft Docs"
+description: "Azure Service Fabric 中的有状态 Reliable Services 的诊断功能"
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 63a7707f16bbf037c0c91da1d02093e2314dc06e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7dfb16407aa6e89a6bbf4db303bd5332cf31432
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。

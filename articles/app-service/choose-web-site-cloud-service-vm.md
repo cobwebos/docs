@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3fca6023fedcfc64ecfe66c0f4ed60a495953cfb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edd5099d2804fdb5867b4be5b11a361004db1665
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure 应用服务、虚拟机、Service Fabric 和云服务的比较
 ## <a name="overview"></a>概述
@@ -40,7 +40,7 @@ Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都�
 | 向上扩展到更大的计算机且无需重新部署 |X | | |X | |
 | Web 服务器实例共享内容和配置，这意味着进行扩展时无需重新部署或重新配置。 |X | | |X | |
 | 多个部署环境（生产和过渡） |X |X | |X |Service Fabric 允许为应用创建多个环境，或者同时为应用部署不同的版本。 |
-| 自动操作系统更新管理 |X |X | | |将来的 Service Fabric 发行版将推出自动 OS 更新。 |
+| 自动操作系统更新管理 |X |X | | |可通过修补业务流程应用程序 (POA) 实现部分管理功能，将来可实现完整的管理功能。 |
 | 无缝平台切换（轻松地在 32 位和 64 位之间转移） |X |X | | | |
 | 使用 GIT、FTP 部署代码 |X | |X | | |
 | 使用 Web 部署来部署代码 |X | |X | |云服务支持使用 Web 部署将更新部署到单个角色实例。 但是，不能将其用于初始部署角色，并且如果将 Web 部署用于更新，则必须单独部署到角色的每个实例。 需要提供多个实例，才能针对生产环境获得云服务 SLA 资格。 |

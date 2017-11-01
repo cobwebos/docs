@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 9f9ff0674fd4e3f9b0598a982d81681eaa6d1997
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: b31b6ae413f72c626e2601ba860aad44ddaa29cd
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="how-to-deploy-azure-file-sync-preview"></a>如何部署 Azure 文件同步（预览版）
-借助 Azure 文件同步（预览版），无需放弃本地文件服务器的灵活性、性能和兼容性即可将组织的文件共享集中在 Azure 文件中。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来完成此操作。 可以使用 Windows Server 上任何可用协议在本地访问你的数据（包括 SMB、NFS 和 FTPS），并且可以根据需要在世界各地拥有尽可能多的缓存。
+借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 可以使用 Windows Server 上任何可用协议在本地访问你的数据（包括 SMB、NFS 和 FTPS），并且可以根据需要在世界各地拥有尽可能多的缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本指南中的步骤进行操作。
 
@@ -117,6 +117,9 @@ Azure 文件同步代理安装结束时，服务器注册 UI 自动启动。 请
 - **卷可用空间**：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 请注意，无论是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
 
 单击“创建”添加服务器终结点。 文件现在跨 Azure 文件共享和 Windows Server 同步进行保存。 
+
+> [!Important]  
+> 可对同步组中的任何云或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件共享）进行更改，请注意，首先需要通过 Azure 文件同步更改检测作业来发现更改，该作业每 24 小时启动一次，仅针对云终结点。 有关详细信息，请参阅 [Azure 文件 FAQ](storage-files-faq.md#afs-change-detection)。
 
 ## <a name="next-steps"></a>后续步骤
 - [添加/删除 Azure 文件同步服务器终结点](storage-sync-files-server-endpoint.md)

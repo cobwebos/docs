@@ -4,7 +4,7 @@ description: "介绍了如何使用 StorSimple 设备管理器服务监视使用
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,15 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2017
+ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 679c1fc8775ad4481bc99c9aea79fe16e9bcac8f
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 设备管理器服务监视 StorSimple 设备
+
 ## <a name="overview"></a>概述
 可以使用 StorSimple 设备管理器服务监视 StorSimple 解决方案中的特定设备。 可以基于 I/O 性能、容量使用情况、网络吞吐量和设备性能指标创建自定义图表并将它们固定到仪表板。 有关详细信息，请转到[自定义门户仪表板](../azure-portal/azure-portal-dashboards.md)。
 
@@ -44,6 +45,19 @@ ms.lasthandoff: 10/11/2017
 * 过去 90 天
 * 过去一年
 
+报告使用情况图表的两个关键指标、增长和范围。 范围是指在所选持续时间内（例如过去 7 天）报告的用量最大值和最小值。
+
+增长是指从所选持续时间第一天到最后一天的用量增加。 
+
+增长和范围还可通过以下公式表示：
+
+```
+Range = {Usage(minimum), Usage(maximum)}
+
+Growth = Usage(Last day) - Usage(first day)
+
+Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
+```
 
 使用的主存储、云存储和本地存储可以描述如下：
 

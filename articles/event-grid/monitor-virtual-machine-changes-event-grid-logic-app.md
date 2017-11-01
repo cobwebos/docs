@@ -11,11 +11,11 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b9c7c9502be1a9d8681a304a6663c23c02c0298
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -225,29 +225,26 @@ ms.lasthandoff: 10/11/2017
 
 祝贺你，你已经创建并运行逻辑应用，它将通过事件网格监视资源事件，并在这些事件发生时向你发送电子邮件。 此外，还学习了如何轻松创建工作流，以便将流程自动化，并将系统和云服务相集成。
 
-## <a name="clean-up-resources"></a>清理资源
-
-本教程使用的资源和执行的操作将会在你的 Azure 订阅上产生费用。 因此，完成本教程和测试后，请确保禁用或删除你不希望产生费用的任何资源。
-
-你可以停止逻辑应用的运行和发送电子邮件，而不删除此应用。 在逻辑应用菜单上，选择“概述”。 在工具栏上，选择“禁用”。
-
-![关闭逻辑应用](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
-
-## <a name="faq"></a>常见问题
-
-问：我还可以使用事件网格和逻辑应用执行哪些其他虚拟机监控任务？ </br>
-答：你可以监视其他配置更改，例如：
+可使用事件网格和逻辑应用监视其他配置更改，例如：
 
 * 虚拟机获取基于角色的访问控制 (RBAC) 权限。
 * 对网络接口 (NIC) 上的网络安全组 (NSG) 进行的更改。
 * 添加或删除虚拟机磁盘。
 * 公共 IP 地址被分配给虚拟机 NIC。
 
+## <a name="clean-up-resources"></a>清理资源
+
+本教程使用的资源和执行的操作将会在你的 Azure 订阅上产生费用。 因此，完成本教程和测试后，请确保禁用或删除你不希望产生费用的任何资源。
+
+* 若要在不删除所做工作的情况下停止运行逻辑应用，请禁用应用。 在逻辑应用菜单上，选择“概述”。 在工具栏上，选择“禁用”。
+
+  ![关闭逻辑应用](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
+
+  > [!TIP]
+  > 如果看不到逻辑应用菜单，请尝试返回到 Azure 仪表板，然后重新打开逻辑应用。
+
+* 若要永久删除逻辑应用，请在逻辑应用菜单上选择“概览”。 在工具栏上选择“删除”。 确认要删除逻辑应用，然后选择“删除”。
+
 ## <a name="next-steps"></a>后续步骤
 
-* [事件网格概述](../event-grid/overview.md)
-* [事件网格概念](../event-grid/concepts.md)
-* [快速入门：使用事件网格创建和路由自定义事件](../event-grid/custom-event-quickstart.md)
-* [事件网格事件架构](../event-grid/event-schema.md)
-* [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)
-* [使用预定义模板创建逻辑应用工作流](../logic-apps/logic-apps-use-logic-app-templates.md)
+* [使用事件网格创建和路由自定义事件](../event-grid/custom-event-quickstart.md)
