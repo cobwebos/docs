@@ -53,7 +53,7 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 * 完成了[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)。 
 
 ## <a name="accessing-the-api"></a>访问 API
-可以通过“Graph 浏览器”[](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
+可以通过 [“Graph 浏览器”](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
 
 本主题着重介绍了 Graph 浏览器。 有关 PowerShell 示例，请参阅此 [PowerShell 脚本](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script)。
 
