@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/16/2017
 ms.author: dobett
-ms.openlocfilehash: 86ffacae9265b68e8adfeb8f7d8c72626f872dba
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: fd823194f6e51600b9d4ca1daa053db837871fef
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="opc-publisher-for-azure-iot-edge"></a>Azure IoT Edge 的 OPC 发布服务器
 
@@ -382,7 +382,14 @@ docker run -h publisher microsoft/iot-edge-opc-publisher <applicationname> [<IoT
 
 #### <a name="using-bind-mounts-shared-filesystem"></a>使用绑定挂载（共享文件系统）
 
-在某些情况下，想要从主机上的位置读取配置信息或将日志文件写入这些位置，而不使用容器文件系统。 若要配置此行为，请在绑定挂载模式下使用 `docker run` 的 `-v` 选项。
+在某些情况下，想要从主机上的位置读取配置信息或将日志文件写入这些位置，而不使用容器文件系统。 若要配置此行为，请在绑定挂载模式下使用 `docker run` 的 `-v` 选项。 例如：
+
+```cmd/sh
+-v //D/docker:/build/out/Logs
+-v //D/docker:/build/out/CertificateStores
+-v //D/docker:/shared
+-v //D/docker:/root/.dotnet/corefx/cryptography/x509stores
+```
 
 #### <a name="store-for-x509-certificates"></a>X509 证书存储
 
