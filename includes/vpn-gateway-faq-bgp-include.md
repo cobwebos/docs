@@ -1,5 +1,5 @@
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
-否，BGP 在 Azure **标准** VPN 网关和**高性能** VPN 网关上受支持 。 **基本** SKU。
+否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准 VPN 网关和高性能 VPN 网关上受支持。 **基本** SKU。
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>能否将 BGP 用于 Azure 基于策略的 VPN 网关？
 否，只有基于路由的 VPN 网关支持 BGP。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
-ms.openlocfilehash: b0e6ae705911d7c18643c77b7fe08fdffffa5eb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 341b3860e103f54d97d325e18fc17f4895f804f0
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>在 Windows 或 Linux 上为已连接的工厂预配置解决方案部署网关
 
@@ -153,6 +153,8 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 若要深入了解已连接工厂预配置解决方案的体系结构，请参阅[已连接的工厂预配置解决方案演练][lnk-walkthrough]。
+
+了解 [OPC 发布服务器引用实现](iot-suite-connected-factory-publisher.md)。
 
 [img-install-docker]: ./media/iot-suite-connected-factory-gateway-deployment/image1.png
 [img-hub-connection]: ./media/iot-suite-connected-factory-gateway-deployment/image2.png

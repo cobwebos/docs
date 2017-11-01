@@ -12,20 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2017
+ms.date: 10/24/2017
 ms.author: juanpere
-ms.openlocfilehash: ed93463153e3fba154aae733da27dea3e8d47689
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f90ecb70ad12ed05d5d40f8b26a0a4e461c9f835
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
-## <a name="overview"></a>概述
-如先前的文章所述，Azure IoT 中心可启用多个构建基块（[设备孪生属性和标记][lnk-twin-devguide]和[直接方法][lnk-dev-methods]）。  通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。  作业在计划的时间针对一组设备封装设备孪生更新和直接方法的执行。  例如，操作员可使用用于启动和跟踪作业的后端应用程序在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
 
-### <a name="when-to-use"></a>使用时机
-在以下情况下请考虑使用作业：解决方案后端需要计划并跟踪一组设备中的以下任何活动的进度：
+Azure IoT 中心可启用多个构建基块（如 [设备孪生属性和标记][lnk-twin-devguide]和[直接方法][lnk-dev-methods]）。  通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。  作业在计划的时间针对一组设备执行设备孪生更新和直接方法。  例如，操作员可使用用于启动和跟踪作业的后端应用在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
+
+在以下情况下请考虑使用作业：需要计划并跟踪一组设备上的以下任何活动的进度：
 
 * 更新所需属性
 * 更新标记
@@ -35,17 +34,11 @@ ms.lasthandoff: 10/11/2017
 作业由解决方案后端启动，并由 IoT 中心维护。  可以通过面向服务的 URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) 启动作业，并通过面向服务的 URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) 查询正在执行的作业的进度。 若要在启动作业后刷新正在运行的作业的状态，请运行作业查询。
 
 > [!NOTE]
-> 启动作业时，属性名称和值只能包含 US ASCII 可打印字母数字，但下列组中的任一项除外：``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``。
-> 
-> 
-
-## <a name="reference-topics"></a>参考主题：
-以下参考主题提供有关使用作业的详细信息。
+> 启动作业时，属性名称和值只能包含 US ASCII 可打印字母数字，但下列组中的任一项除外：`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`。
 
 ## <a name="jobs-to-execute-direct-methods"></a>用于执行直接方法的作业
 以下代码片段显示了使用作业在一组设备上执行[直接方法][lnk-dev-methods]的 HTTPS 1.1 请求详细信息：
 
-    ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
 
     Authorization: <config.sharedAccessSignature>
@@ -65,10 +58,9 @@ ms.lasthandoff: 10/11/2017
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
-    ```
+
 查询条件也可以位于单个设备 ID 上或位于设备 ID 列表中，如以下示例所示：
 
-**示例**
 ```
 queryCondition = "deviceId = 'MyDevice1'"
 queryCondition = "deviceId IN ['MyDevice1','MyDevice2']"
@@ -79,7 +71,6 @@ queryCondition = "deviceId IN ['MyDevice1']
 ## <a name="jobs-to-update-device-twin-properties"></a>用于更新设备孪生属性的作业
 以下代码片段显示了使用作业更新设备克隆属性的 HTTPS 1.1 请求详细信息：
 
-    ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -94,19 +85,16 @@ queryCondition = "deviceId IN ['MyDevice1']
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        // format TBD
     }
-    ```
 
 ## <a name="querying-for-progress-on-jobs"></a>查询作业的进度
 以下代码片段显示了用于[查询作业][lnk-query]的 HTTPS 1.1 请求详细信息：
 
-    ```
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
     Request-Id: <guid>
     User-Agent: <sdk-name>/<sdk-version>
-    ```
 
 从响应提供 continuationToken。  
 
@@ -129,16 +117,12 @@ queryCondition = "deviceId IN ['MyDevice1']
 | | **失败**：作业失败。 |
 | | **完成**：作业已完成。 |
 | **deviceJobStatistics** |有关作业执行的统计信息。 |
-
-**deviceJobStatistics** 属性。
-
-| 属性 | 说明 |
-| --- | --- |
-| **deviceJobStatistics.deviceCount** |作业中的设备数。 |
-| **deviceJobStatistics.failedCount** |作业失败的设备数。 |
-| **deviceJobStatistics.succeededCount** |作业成功的设备数。 |
-| **deviceJobStatistics.runningCount** |当前正在运行作业的设备数。 |
-| **deviceJobStatistics.pendingCount** |等待运行作业的设备数。 |
+| | **deviceJobStatistics** 属性： |
+| | **deviceJobStatistics.deviceCount**：作业中的设备数。 |
+| | **deviceJobStatistics.failedCount**：作业失败的设备数。 |
+| | **deviceJobStatistics.succeededCount**：作业成功的设备数。 |
+| | **deviceJobStatistics.runningCount**：当前正在运行作业的设备数。 |
+| | **deviceJobStatistics.pendingCount**：等待运行作业的设备数。 |
 
 ### <a name="additional-reference-material"></a>其他参考资料
 IoT 中心开发人员指南中的其他参考主题包括：

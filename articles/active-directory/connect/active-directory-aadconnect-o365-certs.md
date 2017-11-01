@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/20/2017
 ms.author: billmath
-ms.openlocfilehash: 7f1a3303eff9c413602e745b702baa659343eba6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 675f5b31eb60a75e060a397f01777e427c068c64
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -158,9 +158,18 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 > [!NOTE]
 > 如果需要支持多个顶级域（例如 contoso.com 和 fabrikam.com），则必须将 **SupportMultipleDomain** 开关用于任何 cmdlet。 有关详细信息，请参阅[支持多个顶级域](active-directory-aadconnect-multiple-domains.md)。
 >
->
+
 
 ## 使用 Azure AD Connect 修复 Azure AD 信任 <a name="connectrenew"></a>
 如果已使用 Azure AD Connect 配置了 AD FS 场和 Azure AD 信任，则可以使用 Azure AD Connect 来检测是否需要对令牌签名证书采取任何操作。 如果需要续订证书，可以使用 Azure AD Connect 来执行此操作。
 
 有关详细信息，请阅读[修复信任](active-directory-aadconnect-federation-management.md)。
+
+## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>AD FS 和 Azure AD 证书更新步骤
+令牌签名证书是标准 X509 证书，用于安全地对联合服务器颁发的所有令牌进行签名。 令牌解密证书是标准 X509 证书，用于对任何传入令牌进行解密。 
+
+默认情况下，AD FS 配置为在初始配置时以及在证书接近到期日期时自动生成令牌签名证书和令牌解密证书。
+
+在当前证书到期 30 天前，Azure AD 会尝试从联合身份验证服务元数据中检索新证书。 如果新证书在该时间不可用，Azure AD 会继续每日定期监视元数据。 在元数据中获得新证书后，将立即使用新的证书信息更新域的联合身份验证设置。 如果在 NextSigningCertificate/SigningCertificate 中看到新证书，可以使用 `Get-MsolDomainFederationSettings` 进行验证。
+
+有关 AD FS 中令牌签名证书的详细信息，请参阅[获取和配置 AD FS 令牌签名证书和令牌解密证书](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

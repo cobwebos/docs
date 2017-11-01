@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-ms.openlocfilehash: 3d76aebd2a1fd729c8e0639e6afcbde4c3fb752b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0d92cdd32cb3eeedcb1c4e1bb2a975764a860b5
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
 SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](http://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](http://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
@@ -35,9 +35,9 @@ SCP 中的数据以连续的元组流形式建模。 一般情况下，元组首
 
 在 Storm 中，应用程序拓扑定义计算图。 拓扑中的每个节点都包含处理逻辑，节点之间的链接指明数据流。 用于将输入数据注入到拓扑中的节点称为 Spout,这些节点还可用于对数据进行排列。 输入数据可驻留在文件日志、事务性数据库、系统性能计数器中或其他位置。具有输入和输出数据流的节点称为 Bolt，这些节点执行实际数据过滤、选择和汇总。
 
-SCP 支持“尽力”、“至少一次”数据处理和“恰一次”数据处理。 在分布式流处理应用程序中，数据处理过程中可能会出现各种错误，例如，网络中断、机器故障、用户代码错误等等。“至少一次”处理会在出现错误时自动重新处理原来的数据，从而确保所有数据均至少被处理一次。 “至少一次”处理简单且可靠，适用于许多应用程序。 但是，例如当应用程序需要确切计算时，进行“至少一次”处理是不够的，因为相同的数据有可能用于应用程序拓扑中。 在此情况下，“恰一次”处理可确保即使数据被多次重复使用和处理，结果也是正确。
+SCP 支持“尽力”、“至少一次”数据处理和“恰一次”数据处理。 在分布式流处理应用程序中，数据处理过程中可能会出现各种错误，例如，网络中断、机器故障、用户代码错误等等。“至少一次”处理会在出现错误时自动重新处理原来的数据，从而确保所有数据均至少被处理一次。 “至少一次”处理简单且可靠，适用于许多应用程序。 但是，当应用程序需要确切计数时，进行“至少一次”处理是不够的，因为相同的数据有可能用于应用程序拓扑中。 在此情况下，“恰一次”处理可确保即使数据被多次重复使用和处理，结果也是正确。
 
-通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时利用基于 Java 虚拟机 (JVM) 的 Storm。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上，每个 Spout/Bolt 都是一个 .Net/Java 进程对，在这些进程对中，用户逻辑作为插件在 .Net 进程中运行。
+通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时在后台通过 Storm 利用 Java 虚拟机 (JVM)。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上，每个 Spout/Bolt 都是一个 .Net/Java 进程对，在这些进程对中，用户逻辑作为插件在 .Net 进程中运行。
 
 若要在 SCP 上开发数据处理应用程序，需要执行以下几个步骤：
 
@@ -355,7 +355,7 @@ SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓�
 
 拓扑规范可通过 ***runspec*** 命令直接提交到 Storm 群集进行执行。
 
-SCP.NET 添加了以下新函数来定义事务性拓扑：
+SCP.NET 添加了以下函数来定义事务性拓扑：
 
 | **新函数** | **参数** | **说明** |
 | --- | --- | --- |
@@ -367,9 +367,9 @@ SCP.NET 添加了以下新函数来定义事务性拓扑：
 | **scp-spout** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Spout。 使用 ***args*** 运行带有 ***exec-name*** 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段<br /><br />***parameters*** 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
 | **scp-bolt** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Bolt。 使用 ***args*** 运行带有 ***exec-name*** 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段<br /><br />***parameters*** 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
 
-SCP.NET 需要定义以下关键词：
+SCP.NET 定义了以下关键字：
 
-| **关键词** | **说明** |
+| **关键字** | **说明** |
 | --- | --- |
 | **:name** |定义拓扑名称 |
 | **:topology** |使用上述函数和内置函数定义拓扑。 |
@@ -398,7 +398,7 @@ runspec 命令会与位元一起部署，其用法如下：
 
 ## <a name="miscellaneous-features"></a>其他功能
 ### <a name="input-and-output-schema-declaration"></a>输入和输出架构声明
-用户可以在 C\# 进程中发出元组；平台需要需要将元组序列化为字节，将元组传输到 Java 端；而 Storm 会将此元组传输到目标。 与此同时，在下游组件中，C\# 进程会接收从 Java 端返回的元组，并将接收到的元组转换为平台使用的原始类型 -- 所有这些操作都在平台的后台进行。
+用户可以在 C\# 进程中发送元组；平台需要将元组序列化为 byte[]，传输到 Java 端；而 Storm 会将此元组传输到目标。 与此同时，在下游组件中，C\# 进程会接收从 Java 端返回的元组，并将其转换为平台使用的原始类型 - 所有这些操作都在平台的后台进行。
 
 为了支持序列化和反序列化，用户代码需要声明输入和输出的架构。
 
@@ -420,7 +420,7 @@ runspec 命令会与位元一起部署，其用法如下：
 
     public void DeclareComponentSchema(ComponentStreamSchema schema)
 
-用户代码必须确保发送的元组符合为数据流定义的架构，否则，系统可能会引发运行时异常。
+开发者必须确保发送的元组符合为该流定义的架构，否则，系统会引发运行时异常。
 
 ### <a name="multi-stream-support"></a>多流支持
 SCP 支持用户代码同时向多个不同数据流发送元组或同时接收来自多个不同数据流的元组。 这种支持在上下文对象中体现为，Emit 方法采用可选的 stream ID 参数。
@@ -452,10 +452,10 @@ SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的�
 
 1. "scp-field-group" 表示“SCP 实现的自定义字段分组”。
 2. “:tx”或“:non-tx”表示是否是事务性拓扑。 我们需要此信息，因为事务性拓扑和非事务性拓扑的起始索引不一样。
-3. [0,1] 表示从 0 开始的哈希集或字段 ID。
+3. [0,1] 表示从 0 开始的字段 ID 的哈希集。
 
 ### <a name="hybrid-topology"></a>混合拓扑
-本机 Storm 是用 Java 编写的。 SCP.Net 经过增强，使我们的客户能够编写 C\# 代码来处理其业务逻辑。 但我们也支持混合拓扑，这种拓扑不仅包含 C\# Spout/Bolt，还包含 Java Spout/Bolt。
+本机 Storm 是用 Java 编写的。 SCP.Net 已对其进行增强，使 C\# 开发者能够编写 C\# 代码来处理其业务逻辑。 但它也支持混合拓扑，这种拓扑不仅包含 C\# Spout/Bolt，还包含 Java Spout/Bolt。
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>在规范文件中指定 Java Spout/Bolt
 在规范文件中，“scp-spout”和“scp-bolt”也可用于指定 Java Spout 和 Bolt；下面是一个示例：
@@ -473,7 +473,7 @@ SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的�
 
 其中，**examples\\HybridTopology\\java\\target\\** 是包含 Java Spout/Bolt Jar 文件的文件夹。
 
-### <a name="serialization-and-deserialization-between-java-and-c"></a>Java 和 C\ 之间的序列化和反序列化
+### <a name="serialization-and-deserialization-between-java-and-c"></a>Java 和 C\# 之间的序列化和反序列化
 SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互，必须在 Java 端与 C\# 端之间执行序列化/反序列化，如下图中所示。
 
 ![Java 组件示意图，发送到 SCP 组件，发送到 Java 组件](media/hdinsight-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
@@ -497,7 +497,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
        this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
        this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());            
    
-   如果数据类型不是太复杂，这种默认实现方法应该能够应对大多数情况。 对于某些情况，由于用户数据类型太复杂，或者由于我们的默认实现方法不符合用户要求，用户可能会进行自定义实施。
+   如果数据类型不是太复杂，这种默认实现方法应该能够应对大多数情况。 对于某些情况，由于用户数据类型太复杂，或者由于我们的默认实现性能不符合用户要求，用户可能会进行自定义实施。
    
    Java 端的序列化接口如下定义：
    
@@ -632,7 +632,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
 
         if (!replay)
         {
-            /* If it is not replayed, update the toalCount and lastCommittedTxId vaule */
+            /* If it is not replayed, update the totalCount and lastCommittedTxId value */
             totalCount = totalCount + this.count;
             lastCommittedTxId = this.txAttempt.TxId;
         }

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/04/2017
+ms.date: 10/17/2017
 ms.author: bryanla
-ms.openlocfilehash: 2f6cf4709c77ca1bb051b7d5c9e7d1d5d125c343
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 905e7b0d8a0c45c98a86882a8c8f387be0950f9f
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in-and-token-acquisition"></a>如何使用 Azure VM 托管服务标识 (MSI) 进行登录和获取令牌 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]在 Azure VM 上启用 MSI 后，可以使用 MSI 进行登录以及请求访问令牌。 本文介绍使用 MSI [服务主体](develop/active-directory-dev-glossary.md#service-principal-object)进行登录，以及获取[仅限应用的访问令牌](develop/active-directory-dev-glossary.md#access-token)来访问其他资源的各种方法，包括：
@@ -183,14 +183,14 @@ Content-Type: application/json
 | `resource` | 请求访问令牌时所针对的资源，与请求的 `resource` 查询字符串参数匹配。 |
 | `token_type` | 令牌的类型，这是一个“持有者”访问令牌，意味着资源可向此令牌的持有者授予访问权限。 |
 
-## <a name="how-to-sign-in-with-azure-sdk-libraries-using-msi"></a>如何使用 MSI 通过 Azure SDK 库登录
+## <a name="how-to-use-msi-with-azure-sdk-libraries"></a>如何将 MSI 与 Azure SDK 库配合使用
 
 Azure 通过一系列 [Azure SDK](https://azure.microsoft.com/downloads) 支持多个编程平台。 其中几个平台已更新为支持使用 MSI 登录，并提供相应的示例来演示用法。 由于添加了其他支持，此列表已更新：
 
 | SDK 中 IsInRole 中的声明 | 示例 |
 | --- | ------ | 
-| .NET   | [从已启用 MSI 的 VM 管理资源](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [从已启用 MSI 的 VM 管理存储](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| .NET | [使用托管服务标识从 Windows VM 部署 ARM 模板](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
+| .NET Core | [使用托管服务标识从 Linux VM 调用 Azure 服务](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
 | Node.js| [使用托管服务标识管理资源](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
 | Python | [使用 MSI 从 VM 内部轻松进行身份验证](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
 | Ruby   | [从已启用 MSI 的 VM 管理资源](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) | 

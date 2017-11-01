@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: f23443d438c95a784f655fb9a5f20dfcf37be189
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4041cacd72b1db74012497287030faf5d05ee6bf
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本主题旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本主题是特定领域的深入探讨，其他主题中也简要描述了这些概念。
@@ -150,9 +150,15 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 
    ![为现有部署启用 ConsistencyGuid - 步骤 6](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
 
-分析期间（步骤 4），如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果确定该属性未由现有应用程序使用，则需联系支持部门，了解如何取消显示该错误。
+分析期间（步骤 4），如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果先前已在 Azure AD Connect 主服务器上启用了 ConsistencyGuid 功能，并且要尝试在暂存服务器上执行相同的操作，也会发生此错误。
 
 ![为现有部署启用 ConsistencyGuid - 错误](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeploymenterror.png)
+
+ 如果确定其他现有应用程序不使用该属性，则可以通过在指定“/SkipLdapSearchcontact”的情况下重启 Azure AD Connect 向导来取消显示该错误。 为此，请在命令提示符下运行以下命令：
+
+```
+"c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
+```
 
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>对 AD FS 或第三方联合身份验证配置的影响
 如果使用 Azure AD Connect 管理本地 AD FS 部署，Azure AD Connect 会自动更新声明规则，使用同一 AD 属性作为 sourceAnchor。 这样可确保由 ADFS 生成的 ImmutableID 声明与导出到 Azure AD 的 sourceAnchor 值一致。

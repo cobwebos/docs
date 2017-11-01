@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2017
+ms.date: 10/11/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 5b2fa44eaf801715d50282b4c1460c58d3631637
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41a9df712b07253d9f5f9db8542fb9917592320f
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>注册 Azure 企业协议并查看成本数据
 
@@ -41,6 +41,8 @@ ms.lasthandoff: 10/11/2017
 7. 在“邀请其他利益干系人”下，可以通过键入其电子邮件地址来添加用户。 完成后，单击“下一步”。 将所有计费数据添加到 Cloudyn 大约需要两个小时。
 8. 单击“转到 Cloudyn”打开 Cloudyn 门户，然后在“云帐户管理”页上，应看到已注册的 EA 帐户信息。
 
+若要观看有关注册企业协议的教程视频，请参阅[如何在 Cloudyn 提供的 Azure 成本管理中查找要使用的 EA 注册 ID 和 API 密钥](https://youtu.be/u_phLs_udig)。
+
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>后续步骤
@@ -48,4 +50,4 @@ ms.lasthandoff: 10/11/2017
 在本快速入门中，使用 Azure 企业协议信息注册了成本管理。 还登录到了 Cloudyn 门户并开始查看成本数据。 若要了解有关 Cloudyn 提供的 Azure 成本管理的详细信息，请继续学习成本管理教程。
 
 > [!div class="nextstepaction"]
-> [查看成本数据](./tutorial-review-usage.md)
+> [查看使用情况和成本](./tutorial-review-usage.md)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 4abfdcc0a50c229555088dff0ac2c00c15f49218
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8129678b5ee2b0b1f2a59049fc6632b6cbf3383
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -77,14 +77,14 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 2. 双击所需的包进行安装。 如果显示 SmartScreen 弹出窗口，请单击“更多信息”，并单击“仍要运行”。
 3. 在客户端计算机上，导航到“网络设置”，并单击“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。 
 
-## <a name="installmac"></a>安装 Mac (OSX) VPN 客户端配置
+## <a name="installmac"></a>Mac 上的 VPN 客户端配置 (OSX)
 
-必须为每个连接到 Azure VNet 的 Mac 设备创建单独的 VPN 客户端配置。 不能对多个 Mac 设备重复使用相同的配置文件。 这是因为，对于这些设备，必须在 VPN 客户端配置文件中指定用户证书。 **Generic** 文件夹包含创建 VPN 客户端配置所需的全部信息。 如果在下载中没有看到 Generic 文件夹，则可能 IKEv2 未选作隧道类型。 选择 IKEv2 后，再次生成 zip 文件，检索 Generic 文件夹。 Generic 文件夹包含以下文件：
+Azure 不提供用于本机 Azure 证书身份验证的 mobileconfig 文件。 必须在将连接到 Azure 的每个 Mac 上手动配置本机 IKEv2 VPN 客户端。 Generic 文件夹包含配置该客户端所需的全部信息。 如果在下载中没有看到 Generic 文件夹，则可能 IKEv2 未选作隧道类型。 选择 IKEv2 后，再次生成 zip 文件，检索 Generic 文件夹。 Generic 文件夹包含以下文件：
 
 * **VpnSettings.xml**：包含服务器地址和隧道类型等重要设置。 
 * **VpnServerRoot.cer**：包含在 P2S 连接设置过程中验证 Azure VPN 网关所需的根证书。
 
-请使用以下步骤在 Mac 中配置用于证书身份验证的本机 VPN 客户端：
+使用以下步骤在 Mac 中配置用于证书身份验证的本机 VPN 客户端。 必须在将连接到 Azure 的每个 Mac 上完成以下步骤：
 
 1. 将 **VpnServerRoot** 根证书导入 Mac。 为此，可将该文件复制到 Mac，并双击它。  
 单击“添加”进行导入。
@@ -101,7 +101,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 4. 单击“身份验证设置”，选择“证书”。 
 
   ![身份验证设置](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
-5. 单击“选择…” 选择要用于身份验证的证书。
+5. 单击“选择…” 选择要用于身份验证的客户端证书。 客户端证书应已安装在计算机上（请参阅上面 **P2S 工作流**部分中的步骤 #2）。
 
   ![证书](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 6. “选择标识”会显示可供选择的证书列表。 选择适当的证书，单击“继续”。

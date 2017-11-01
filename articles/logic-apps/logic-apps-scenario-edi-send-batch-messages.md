@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: LADocs; estfan; divswa
-ms.openlocfilehash: 8c794b8c919fe286c3917927a44d64aa84771f28
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 837cb0d9595da5b5bd4f01fb4576f75e98ab8912
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="send-x12-messages-in-batch-to-trading-partners"></a>将 X12 消息以批的形式发送到参与方
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/11/2017
 
    * **批名称**：用于标识批的名称，在此示例中是“TestBatch”。
 
-   * **发布条件**：批发布条件，可以基于消息计数和/或计划。
+   * **发布条件**：批发布条件，可以基于消息计数或/和计划。
    
      ![提供批触发器详细信息](./media/logic-apps-batch-process-send-receive-messages/receive-batch-release-criteria.png)
 
@@ -113,6 +113,9 @@ ms.lasthandoff: 10/11/2017
 7.  现已创建接收方逻辑应用，请保存该逻辑应用。
 
     ![保存逻辑应用](./media/logic-apps-scenario-EDI-send-batch-messages/save-batch-receiver-logic-app.png)
+
+    > [!IMPORTANT]
+    > 分区的限制为 5,000 条消息或 80 MB。 如果满足上述任一条件，可能会释放批，即使不满足用户定义的条件也是如此。
 
 <a name="sender"></a>
 

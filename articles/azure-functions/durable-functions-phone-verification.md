@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1dacbc59704d16451a5268c0aa4df2ab4e5b3112
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cfb6758703ebf3ce0458a4e1ad74324a4ccc2ece
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -85,7 +85,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 > [!WARNING]
 > 如果不再需要计时器到期，务必使用 [CancellationTokenSource 取消计时器](durable-functions-timers.md)，正如在上面的示例中收到质询响应后一样。
 
-## <a name="sending-the-sms-message"></a>发送短信
+## <a name="send-the-sms-message"></a>发送短信
 
 E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位数代码的短信。 function.json 定义如下：
 
@@ -97,7 +97,7 @@ E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位�
 
 E4_SendSmsChallenge 函数仅被调用一次，即使进程崩溃或进行重播也是如此。 因为不希望最终用户收到多条短信，所以这种设定非常合适。 `challengeCode` 返回值可自动保留，以便业务流程协调程序函数始终了解正确的代码。
 
-## <a name="running-the-sample"></a>运行示例
+## <a name="run-the-sample"></a>运行示例
 
 通过使用示例中包含的 HTTP 触发型函数，可以通过发送以下 HTTP POST 请求来启动业务流程。
 
@@ -152,18 +152,15 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="wrapping-up"></a>总结
+## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
 
-此时，你已更好地了解了 Durable Functions 的部分高级功能，其中值得注意的是 `WaitForExternalEvent` 和 `CreateTimer`。 你已了解如何将这些功能与 `Task.WaitAny` 结合，实现可靠的超时系统，这通常对与真人进行交互非常有用。
-
-## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
-
-下面的业务流程作为 Visual Studio 项目中的单个 C# 文件：
+下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [深入了解 Durable Functions 绑定](durable-functions-bindings.md)
+本示例演示了 Durable Functions（特别是 `WaitForExternalEvent` 和 `CreateTimer`）的一些高级功能。 你已了解如何将这些功能与 `Task.WaitAny` 结合，实现可靠的超时系统，这通常对与真人进行交互非常有用。 可以通过阅读一系列深入讨论了特定主题的文章来了解有关如何使用 Durable Functions 的详细信息。
 
+> [!div class="nextstepaction"]
+> [转到此系列中的第一篇文章](durable-functions-bindings.md)

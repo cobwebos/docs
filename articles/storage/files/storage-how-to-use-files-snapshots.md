@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: renash
-ms.openlocfilehash: 6643dad5ea3ba703e26f5708cdd2e925f702847f
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 33b64e1ad3fd5a2a6954a02da0fb303acca54c40
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="work-with-azure-file-share-snapshots-preview"></a>使用 Azure 文件共享快照（预览版）
 Azure 文件共享快照（预览版）是某个时间点拍摄的 Azure 文件共享的只读版本。 在创建共享快照后，可以读取、复制或删除该快照，但无法对其进行修改。 利用共享快照，可以在某个时间点备份共享。 在本文中，我们将学习如何创建、管理和删除 Azure 文件共享快照。 若要了解有关共享快照的详细信息，请参阅[共享快照概述](storage-snapshots-files.md)或[快照常见问题](storage-files-faq.md)
@@ -72,9 +72,10 @@ $share.IsSnapshot
 $snapshot=$share.Snapshot()
 
 ```
-## <a name="list-share-snapshots-browse-share-snapshot-contents-and-restore-from-snapshots"></a>列出共享快照、浏览共享快照内容以及从快照还原
 
-可以通过 REST、客户端库、PowerShell 和门户使用 Windows 中的“以前的版本”集成来枚举与文件共享相关联的共享快照。 装载 Azure 文件共享后，可以使用 SMB“以前的版本”集成查看所有以前版本的文件。 装载 Azure 文件共享后，可以使用 SMB“以前的版本”集成查看所有以前版本的目录。 在以下几个部分中，你将了解如何使用 Azure 门户、Windows 和 Azure CLI 2.0 来列出、浏览和还原共享快照。
+## <a name="common-share-snapshot-operations"></a>常用的共享快照操作
+
+可以通过 REST、客户端库、PowerShell 和门户使用 Windows 中的“以前版本”选项卡来枚举与文件共享关联的共享快照。 装载 Azure 文件共享后，可以使用 Windows 中的“以前版本”选项卡查看所有以前版本的文件。 在以下部分中，将介绍如何使用 Azure 门户、Windows 和 Azure CLI 2.0 来列出、浏览和还原共享快照。
 
 ### <a name="share-snapshot-operations-in-portal"></a>在门户中共享快照操作
 

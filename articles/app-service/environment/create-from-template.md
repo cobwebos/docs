@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 9e75f83755424b1b89e7649af98c0347fc5e1c59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdaf09d5558e0453b826b9a3e52500379ced5422
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 2. ILB ASE 创建完毕后，将上传一个匹配 ILB ASE 域的 SSL 证书。
 
-3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 https://someapp.mycustomrootcomain.com）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
+3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 https://someapp.mycustomrootcomain.com ）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
 
 
 ## <a name="create-the-ase"></a>创建 ASE
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 要创建 ILB ASE，请使用这些资源管理器模板[示例][quickstartilbasecreate]。 它们适用于该用例。 azuredeploy.parameters.json 文件中的大部分参数常用于创建 ILB ASE 和外部 ASE。 创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
-* interalLoadBalancingMode：此属性多数情况下设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据信道端口将绑定到 ILB 分配的虚拟网络内部地址。 如果此属性设置为 2，则仅将与 FTP 服务相关的端口（包括控制和数据信道）绑定至 ILB 地址。 HTTP/HTTPS 流量保留在公共 VIP 中。
+* *internalLoadBalancingMode*：此属性多数情况下设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。 如果此属性设置为 2，则仅将与 FTP 服务相关的端口（包括控制和数据信道）绑定至 ILB 地址。 HTTP/HTTPS 流量保留在公共 VIP 中。
 * dnsSuffix：此参数定义要分配给 ASE 的默认根域。 在 Azure 应用服务的公共变体中，所有 Web 应用的默认根域均为 *azurewebsites.net*。 由于 ILB ASE 位于客户虚拟网络的内部，因此不适合使用公共服务的默认根域。 而应当具有适合在公司的内部虚拟网络中使用的默认根域。 例如，Contoso Corporation 可能会将 internal-contoso.com 的默认根域用于只能在 Contoso 虚拟网络内解析和访问的应用。 
 * ipSslAddressCount：在 azuredeploy.json 文件中，此参数的值自动默认为 0，因为 ILB ASE 只有一个 ILB 地址。 ILB ASE 没有显式 IP-SSL 地址。 因此，ILB ASE 的 IP-SSL 地址池应设置为零。 否则将出现预配错误。 
 

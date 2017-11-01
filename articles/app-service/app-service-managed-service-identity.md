@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: fd63d53697ccd529c144482202e2fd8c6b184991
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28965ec8290c8ab22255f9001cc6c3905dda4b8b
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
 
@@ -149,6 +149,9 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 
 
 此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#service-to-service-access-token-response)相同。
+
+> [!NOTE] 
+> 进程第一次启动时会设置环境变量，因此为应用程序启用托管服务标识后，可能需要重启应用程序或重新部署其代码，然后才能在代码中使用 `MSI_ENDPOINT` 和 `MSI_SECRET`。
 
 ### <a name="rest-protocol-examples"></a>REST 协议示例
 示例请求可能如下例所示：

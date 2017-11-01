@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1ba4d68ba93073ebe3516c4fe886c7845080c534
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04d660d5fdd878788c09e46b078b2e2b043b7dbb
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="durable-functions-overview-azure-functions"></a>Durable Functions 概述 (Azure Functions)
 
@@ -130,7 +130,7 @@ Content-Type: application/json
 
 因为状态由 Durable Functions 运行时托管，因此无需实施自己的状态跟踪机制。
 
-即使 Durable Functions 扩展拥有内置的 webhook 可用于管理长时间运行的业务流程，仍可使用自己的函数触发器（如 HTTP、队列或事件中心）和 `orchestrationClient` 绑定来自行实现此模式。
+即使 Durable Functions 扩展拥有内置的 webhook 可用于管理长时间运行的业务流程，仍可使用自己的函数触发器（如 HTTP、队列或事件中心）和 `orchestrationClient` 绑定来自行实现此模式。 例如，可以使用队列消息触发终止。  或者，可以使用受 Azure Active Directory 身份验证策略保护的 HTTP 触发器，而不是使用利用生成的密钥进行身份验证的内置 webhook。 
 
 ```cs
 // HTTP-triggered function to start a new orchestrator function instance.
@@ -161,7 +161,7 @@ public static async Task<HttpResponseMessage> Run(
 
 ![有状态单一实例图](media/durable-functions-overview/stateful-singleton.png)
 
-尽管 Durable Functions 不是参与者模式的实现，但业务流程协调程序函数确实具有一些相同的运行时特征。 例如，它们均具有以下特征：长时间运行（可能无休止地运行）、有状态、可靠、单线程、位置透明以及可全局寻址。 这使业务流程协调程序函数对类似“参与者”的方案非常有用，无需单独的框架。
+尽管 Durable Functions 不是参与者模式的实现，但业务流程协调程序函数确实具有一些相同的运行时特征。 例如，它们均具有以下特征：长时间运行（可能无休止地运行）、有状态、可靠、单线程、位置透明以及可全局寻址。 这使业务流程协调程序函数对类似“参与者”的方案非常有用。
 
 普通函数是无状态的，因此不适合实现有状态单一实例模式。 但是，Durable Functions 扩展使实现有状态单一实例模式变得相对简单。 以下代码是实现计数器的简单业务流程协调程序函数。
 

@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/09/2017
+ms.date: 10/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 3c66f9ea025a2d245cdf907be9f3c586f1ed45ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f08835d73cba6b8047381846c341e4517414d4a0
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>使用 Apache Storm、事件中心和 HDInsight 中的 HBase (Hadoop) 分析传感器数据
 
@@ -31,24 +31,6 @@ ms.lasthandoff: 10/11/2017
 > 本文档中的信息和示例演示需要安装 HDInsight 3.6。
 >
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
-## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅。
-* [Node.js](http://nodejs.org/)：用于从本地预览开发环境上的 Web 仪表板。
-* [Java 和 JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)：用于开发 Storm 拓扑。
-* [Maven](http://maven.apache.org/what-is-maven.html)：用于生成和编译项目。
-* [Git](http://git-scm.com/)：用于从 GitHub 中下载项目。
-* **SSH** 客户端：用于连接到基于 Linux 的 HDInsight 群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
-
-
-> [!IMPORTANT]
-> 无需现有的 HDInsight 群集。 本文档中的步骤创建以下资源：
-> 
-> * Azure 虚拟网络
-> * 一个 Storm on HDInsight 群集（基于 Linux，2 个工作节点）
-> * 一个 HBase on HDInsight 群集（基于 Linux，2 个工作节点）
-> * 承载 Web 仪表板的 Azure Web 应用
 
 ## <a name="architecture"></a>体系结构
 
@@ -77,7 +59,7 @@ ms.lasthandoff: 10/11/2017
 > [!IMPORTANT]
 > 需要两个群集，因为没有方法支持为 Storm 和 HBase 创建同一个 HDInsight 群集。
 
-拓扑使用 [org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) 类从事件中心读取数据，并使用 [org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/releases/1.0.1/javadocs/org/apache/storm/hbase/bolt/HBaseBolt.html) 类将数据写入到 HBase。 与网站的通信可通过使用 [socket.io-client.java](https://github.com/nkzawa/socket.io-client.java) 来实现。
+拓扑使用 `org.apache.storm.eventhubs.spout.EventHubSpout` 类从事件中心读取数据，然后使用 `org.apache.storm.hbase.bolt.HBaseBolt` 类将数据写入到 HBase。 与网站的通信可通过使用 [socket.io-client.java](https://github.com/nkzawa/socket.io-client.java) 来实现。
 
 下图说明拓扑的布局：
 
@@ -104,32 +86,27 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prepare-your-environment"></a>准备环境
 
-在使用本示例之前，必须创建 Storm 拓扑从中读取的 Azure 事件中心。
+使用此示例之前，必须准备好开发环境。 还必须创建此示例使用的 Azure 事件中心。
 
-### <a name="configure-event-hub"></a>配置事件中心
+需要在开发环境中安装以下项：
 
-事件中心是此示例的数据源。 按照下列步骤创建一个事件中心。
+* [Node.js](http://nodejs.org/)：用于从本地预览开发环境上的 Web 仪表板。
+* [Java 和 JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)：用于开发 Storm 拓扑。
+* [Maven](http://maven.apache.org/what-is-maven.html)：用于生成和编译项目。
+* [Git](http://git-scm.com/)：用于从 GitHub 中下载项目。
+* **SSH** 客户端：用于连接到基于 Linux 的 HDInsight 群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-1. 从 [Azure 门户](https://portal.azure.com)选择“+ 新建” -> “物联网” -> “事件中心”。
-2. 在“创建命名空间”部分中，执行以下任务：
-   
-   1. 输入命名空间的**名称**。
-   2. 选择定价层。 “基本”对于本示例来说已足够。
-   3. 选择要使用的 Azure **订阅**。
-   4. 选择现有的 Azure 资源组或创建新的资源组。
-   5. 选择事件中心的“位置”。
-   6. 选择“固定到仪表板”，并单击“创建”。
+若要创建事件中心，请使用[创建事件中心](../event-hubs/event-hubs-create.md)文档中的步骤。
 
-3. 完成创建后，会显示命名空间的事件中心信息。 从此处选择“+ 添加事件中心”。 在“创建事件中心”部分中输入 sensordata 的名称，并选择“创建”。 将其他字段保留默认值。
-4. 从命名空间的“事件中心”视图，选择“事件中心”。 选择“sensordata”条目。
-5. 从 sensordata 事件中心，选择“共享访问策略”。 使用“+ 添加”链接添加以下策略：
+> [!IMPORTANT]
+> 保存事件中心名称、命名空间和 RootManageSharedAccessKey 的密钥。 此信息用于配置 Storm 拓扑。
 
-    | 策略名称 | 声明 |
-    | ----- | ----- |
-    | devices | 发送 |
-    | storm | 侦听 |
-
-1. 选择这两种策略，并记下“主密钥”值。 在以后的步骤中需要用到这两种策略的值。
+不需要 HDInsight 群集。 本文档中的步骤提供了创建此示例所需的资源的 Azure 资源管理器模板。 此模板可创建以下资源：
+ 
+* Azure 虚拟网络
+* 一个 Storm on HDInsight 群集（基于 Linux，2 个工作节点）
+* 一个 HBase on HDInsight 群集（基于 Linux，2 个工作节点）
+* 承载 Web 仪表板的 Azure Web 应用
 
 ## <a name="download-and-configure-the-project"></a>下载并配置项目
 
@@ -157,8 +134,7 @@ ms.lasthandoff: 10/11/2017
 要将项目配置为从事件中心读取，请打开 `hdinsight-eventhub-example/TemperatureMonitor/dev.properties` 文件，并将事件中心信息添加到以下行：
 
 ```bash
-eventhub.read.policy.name: your_read_policy_name
-eventhub.read.policy.key: your_key_here
+eventhub.policy.key: the_key_for_RootManageSharedAccessKey
 eventhub.namespace: your_namespace_here
 eventhub.name: your_event_hub_name
 eventhub.partitions: 2
@@ -168,9 +144,6 @@ eventhub.partitions: 2
 
 > [!IMPORTANT]
 > 在本地使用拓扑需要工作的 Storm 开发环境。 有关详细信息，请参阅 Apache.org 上的 [Setting up a Storm development environment](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html)（设置 Storm 开发环境）。
-
-> [!WARNING]
-> 如果使用 Windows 开发环境，则在本地运行拓扑时可能会收到 `java.io.IOException`。 如果是这样，请改为在 HDInsight 上运行拓扑。
 
 测试之前，必须启动仪表板以查看拓扑的输出，并生成要在事件中心中存储的数据。
 
@@ -216,16 +189,16 @@ eventhub.partitions: 2
    
     ```javascript
     // ServiceBus Namespace
-    var namespace = 'YourNamespace';
+    var namespace = 'Your-eventhub-namespace';
     // Event Hub Name
-    var hubname ='sensordata';
+    var hubname ='Your-eventhub-name';
     // Shared access Policy name and key (from Event Hub configuration)
-    var my_key_name = 'devices';
-    var my_key = 'YourKey';
+    var my_key_name = 'RootManageSharedAccessKey';
+    var my_key = 'Your-Key';
     ```
    
    > [!NOTE]
-   > 此示例假定已使用 `sensordata` 作为事件中心的名称。 且使用 `devices` 作为具有 `Send` 声明的策略的名称。
+   > 此示例假定你正在使用 `RootManageSharedAccessKey` 访问事件中心。
 
 3. 使用以下命令在事件中心插入新条目：
    

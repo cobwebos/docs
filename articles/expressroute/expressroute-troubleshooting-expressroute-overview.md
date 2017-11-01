@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2bcd95da36cd577ece8ad87d00c3e276f28ad340
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 960ea1540d644b6f41b95ab7df61cf91adcbb4ad
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络扩展到 Microsoft 云中，涉及以下三个不同的网络区域：
@@ -281,7 +281,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 
 ## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>验证 Microsoft 和服务提供商之间的 ARP
-本部分使用 PowerShell（经典）命令。 如果一直使用 PowerShell Azure 资源管理器命令，请确保你具有管理员/共同管理员权限，能够通过 [Azure 经典门户][OldPortal]访问订阅。 有关使用 Azure 资源管理器命令进行故障排除的信息，请参阅文档[在资源管理器部署模型中获取 ARP 表][ARP]。
+本部分使用 PowerShell（经典）命令。 如果一直使用 PowerShell Azure 资源管理器命令，请确保对订阅具有管理员/共同管理员权限。 有关使用 Azure 资源管理器命令进行故障排除的信息，请参阅文档[在资源管理器部署模型中获取 ARP 表][ARP]。
 
 >[!NOTE]
 >获取 ARP 时，Azure 门户和 Azure 资源管理器 PowerShell 命令均可使用。 如果使用 Azure 资源管理器 PowerShell 命令时出错，则应使用经典 PowerShell 命令，因为经典 PowerShell 命令也适用于 Azure 资源管理器 ExpressRoute 线路。
@@ -314,7 +314,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>验证 BGP 以及 MSEE 上的路由
-本部分使用 PowerShell（经典）命令。 如果一直使用 PowerShell Azure 资源管理器命令，请确保具有管理员/共同管理员权限，能够通过 [Azure 经典门户][OldPortal]访问订阅
+本部分使用 PowerShell（经典）命令。 如果一直使用 PowerShell Azure 资源管理器命令，请确保对订阅具有管理员/共同管理员权限。
 
 >[!NOTE]
 >获取 BGP 信息时，Azure 门户和 Azure 资源管理器 PowerShell 命令均可使用。 如果使用 Azure 资源管理器 PowerShell 命令时出错，则应使用经典 PowerShell 命令，因为经典 PowerShell 命令也适用于 Azure 资源管理器 ExpressRoute 线路。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0eb031893d53f09097b696e18f6c129be061136a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 913805901bf8131e4908be03e9213539a26205ed
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -71,13 +71,16 @@ ms.lasthandoff: 10/11/2017
 
 此函数具有 [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) 参数，该参数可用于获取由 orchestrator 函数对 [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_)> 的调用传递给它的输入。
 
-## <a name="running-the-orchestration"></a>运行业务流程
+## <a name="run-the-sample"></a>运行示例
 
-若要执行 `E1_HelloSequence` 业务流程，请执行以下 HTTP 调用。
+若要执行 `E1_HelloSequence` 业务流程，请发送以下 HTTP POST 请求。
 
 ```
-POST http://{app-name}.azurewebsites.net/orchestrators/E1_HelloSequence
+POST http://{host}/orchestrators/E1_HelloSequence
 ```
+
+例如，如果在名为“myfunctionapp”的函数应用中运行示例，请将 "{host}" 替换为“myfunctionapp.azurewebsites.net”。
+
 结果为 HTTP 202 响应，如下所示（已简化）：
 
 ```
@@ -114,13 +117,13 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
 
-下面的业务流程作为 Visual Studio 项目中的单个 C# 文件：
+下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
 ## <a name="next-steps"></a>后续步骤
 
-此时，你已对 Durable Functions 的核心机制有了基本的了解。 此示例非常简单，仅展示了几项可用功能。 后续示例会更加“贴近实际”，并展示更加丰富的功能。
+此示例演示了简单的函数链业务流程。 下一示例演示如何实现扇出/扇入模式。 
 
 > [!div class="nextstepaction"]
 > [运行扇出/扇入示例](durable-functions-cloud-backup.md)

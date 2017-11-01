@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/21/2017
+ms.date: 10/12/2017
 ms.author: larryfr
-ms.openlocfilehash: e8895ef3c11aea48513e4060a20f5f49b11fc961
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b41afdbb019f8533a49db3ebd37ff144186f956
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>将 Apache Kafka（预览版）与 Storm on HDInsight 配合使用
 
@@ -68,7 +68,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure 资源管理器模板位于 https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json 。 它创建以下资源：
+    Azure 资源管理器模板位于https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json。 它创建以下资源：
     
     * Azure 资源组
     * Azure 虚拟网络
@@ -79,7 +79,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
   > [!WARNING]
   > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
 
-2. 使用以下指南来填充“自定义部署”边栏选项卡上的条目：
+2. 使用以下指南填充“自定义部署”部分中的条目：
    
     ![HDInsight 自定义部署](./media/hdinsight-apache-storm-with-kafka/parameters.png)
 
@@ -101,9 +101,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
 
-创建资源后，会显示“资源组”边栏选项卡。
+创建资源后，会显示“资源组”部分。
 
-![虚拟网络和群集的“资源组”边栏选项卡](./media/hdinsight-apache-storm-with-kafka/groupblade.png)
+![VNet 和群集的资源组部分](./media/hdinsight-apache-storm-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > 请注意，HDInsight 群集的名称为 **storm-BASENAME** 和 **kafka-BASENAME**，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
@@ -294,7 +294,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
   storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
   ```
 
-2. 启动拓扑后，打开 Storm UI。 此 Web UI 位于 https://storm-BASENAME.azurehdinsight.net/stormui。 使用创建群集时使用的基名称替换 __BASENAME__。 
+2. 启动拓扑后，打开 Storm UI。 此 Web UI 位于 `https://storm-BASENAME.azurehdinsight.net/stormui`。 使用创建群集时使用的基名称替换 __BASENAME__。 
 
     出现提示时，使用创建群集时使用的管理员登录名（默认情况下为 `admin`）和密码。 此时会显示与下图类似的网页：
 

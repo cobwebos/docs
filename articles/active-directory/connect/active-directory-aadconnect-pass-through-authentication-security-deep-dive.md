@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 7a886cdb0c36008bdb66592a8d3428889739627e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5feadd851b166d0a9a77bd1d124cdd599d5d701
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 传递身份验证安全性深入研究
 
@@ -91,6 +91,8 @@ ms.lasthandoff: 10/11/2017
 4. Azure AD 验证注册请求中的访问令牌，确认该请求来自全局管理员。
 5. 然后，Azure AD 对数字标识证书签名，并将其发布回身份验证代理。
     - 证书使用 Azure AD 的根证书颁发机构 (CA) 签名。 请注意，此 CA 不在 Windows 的受信任根证书颁发机构存储中。
+    - 此 CA 仅由传递身份验证功能使用。 它只用于在身份验证代理注册过程中对 CSR 进行签名。
+    - Azure AD 中的任何其他服务不使用此 CA。
     - 证书主题（可分辨名称或 DN）将设置为租户 ID。 这是唯一标识你的租户的 GUID。 它将此证书限制为仅用于你的租户。
 6. Azure AD 将身份验证代理的公钥存储于仅 Azure AD 可访问的 Azure SQL 数据库中。
 7. （步骤 5 中发布的）证书存储于本地服务器上 Windows 证书存储空间内（具体而言位于 [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) 位置），由身份验证代理应用程序和更新程序应用程序使用。
@@ -133,6 +135,7 @@ ms.lasthandoff: 10/11/2017
 9. 此身份验证代理将（使用标识符）查找特定于其公钥的加密密码值，并使用其私钥进行解密。
 10. 此身份验证代理将使用 **[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)**（将 dwLogonType 参数设置为 LOGON32_LOGON_NETWORK），尝试针对本地 Active Directory 验证用户名和密码。 
     - 在联合登录方案中，Active Directory 联合身份验证服务 (AD FS) 即使用此 API 登录用户。
+    - 此 API 依赖 Windows Server 中的标准解析进程来查找域控制器。
 11. 身份验证代理从 Active Directory 检索结果（成功状态、用户名或密码不正确、密码过期、用户锁定等）。
 12. 身份验证代理通过端口 443，由经相互身份验证的出站 HTTPS 通道将此结果转发回 Azure AD STS。 相互身份验证使用先前在注册期间发布给此身份验证代理的证书。
 13. Azure AD STS 验证此结果与租户上的特定登录请求相关联。

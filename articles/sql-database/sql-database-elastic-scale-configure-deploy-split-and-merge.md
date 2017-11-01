@@ -1,6 +1,6 @@
 ---
 title: "部署拆分 / 合并服务 | Microsoft 文档"
-description: "使用弹性数据库工具进行拆分与合并"
+description: "可使用拆分/合并工具在分片数据库之间移动数据。"
 services: sql-database
 documentationcenter: 
 author: ddove
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 6e2fea882c248fa095a9d450ed54a7b4e64b45e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db26b7a99a7fd8bb7cb5c3d4937c44686fc68222
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="deploy-a-split-merge-service"></a>部署拆分/合并服务
 可使用拆分/合并工具在分片数据库之间移动数据。 请参阅[在扩展云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-文件放置在名为 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目录中，其中 *x.x.xxx.x* 表示版本号。 拆分 / 合并服务文件可在 **content\splitmerge\service** 子目录中找到；拆分 / 合并 PowerShell 脚本（和所需的客户端 .dll）可在 **content\splitmerge\powershell** 子目录中找到。
+文件放置在名为 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目录中，其中 *x.x.xxx.x* 表示版本号。 拆分/合并服务文件可在 **content\splitmerge\service** 子目录中找到；拆分/合并 PowerShell 脚本（和所需的客户端 dll）可在 **content\splitmerge\powershell** 子目录中找到。
 
 ## <a name="prerequisites"></a>先决条件
 1. 创建将用作拆分/合并状态数据库的 Azure SQL DB。 转到 [Azure 门户](https://portal.azure.com)。 创建新的 **SQL** 数据库。 为数据库指定一个名称，并创建一个新的管理员和密码。 确保记录该名称和密码以供日后使用。
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="configure-your-split-merge-service"></a>配置拆分/合并服务
 ### <a name="split-merge-service-configuration"></a>拆分/合并服务配置
-1. 在下载拆分 / 合并程序集的文件夹中，创建 **SplitMergeService.cspkg** 随附的 **ServiceConfiguration.Template.cscfg** 文件的副本，并将其重命名为 **ServiceConfiguration.cscfg**。
+1. 在下载了拆分/合并程序集的文件夹中，创建 **SplitMergeService.cspkg** 随附的 **ServiceConfiguration.Template.cscfg** 文件的副本，并将其重命名为 **ServiceConfiguration.cscfg**。
 2. 在文本编辑器（如 Visual Studio）中打开 **ServiceConfiguration.cscfg**，它会验证输入内容（例如，证书指纹的格式）。
 3. 创建新的数据库或选择现有的数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。 
    
@@ -129,7 +129,7 @@ ms.lasthandoff: 10/11/2017
 4. 选择过渡环境，并单击“上载新的过渡部署”。
    
    ![过渡][3]
-5. 在对话框中，输入一个部署标签。 对于“程序包”和“配置”，单击“从本地”，并选择 **SplitMergeService.cspkg** 文件和你之前配置的 .cscfg 文件。
+5. 在对话框中，输入一个部署标签。 对于“程序包”和“配置”，单击“从本地”，并选择 **SplitMergeService.cspkg** 文件和之前配置的 cscfg 文件。
 6. 确保选中标记为“即使一个或多个角色包含单个实例也部署”的复选框。
 7. 点击右下角的勾选按钮以开始部署。 它预计需要几分钟的时间才能完成。
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 10/11/2017
 
 如果辅助角色无法联机，但是 Web 角色已成功，很可能是在连接到之前创建的状态数据库时出现了问题。
 
-* 确保 .cscfg 中的连接字符串正确。
+* 确保 cscfg 中的连接字符串正确。
 * 检查服务器和数据库是否存在，以及用户 ID 和密码是否正确。
 * 对于 Azure SQL DB，连接字符串应采用以下形式：
 
@@ -179,7 +179,7 @@ ms.lasthandoff: 10/11/2017
        <td>2.    创建 2 个分片数据库。
      </tr>
      <tr>
-       <td>3.    为这些数据库创建一个分片映射（删除这些数据库上的任何现有的分片映射）。 </td>
+       <td>3.    为这些数据库创建一个分片映射（删除这些数据库上的任何现有分片映射）。 </td>
      </tr>
      <tr>
        <td>4.    在这两个分片中创建一个小的示例表，并使用一个分片填充该表。</td>

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 7eea3621a52bf13dc44e89c342c503905ff24a0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b383a21500c753d8d2fe6747756541a3ff94ef02
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -28,8 +28,9 @@ ms.lasthandoff: 10/11/2017
 
 - 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
 - 不支持 Edge 浏览器。
-- 在 Office 客户端上（尤其是在共享计算机应用场景中）执行许可证激活，用户可能会收到额外的登录提示。
-- 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。 And 
+- 启动 Office 客户端（尤其是在共享计算机方案中），用户可能会收到额外的登录提示。 用户将必须经常输入其用户名，而不是密码。
+- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”。 由于此行为，SharePoint 和 OneDrive 映射方案将无法正常工作。
+- 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
 - 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
 - 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
 - 如果你要同步 30 个或更多的 AD 林，则不能使用 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-azure-ad-seamless-sso)该功能。

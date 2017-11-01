@@ -1,6 +1,6 @@
 ---
 title: "具有弹性数据库工具和行级安全性的多租户应用程序"
-description: "了解如何将弹性数据库工具和行级安全性一起使用，在 Azure SQL 数据库上构建具有高度伸缩性数据层、支持多租户分片的应用程序。"
+description: "使用弹性数据库工具以及行级安全性构建具有高可伸缩性数据层的应用程序。"
 metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
-ms.openlocfilehash: 73f1210b8d1f5ceca8fac9534d498bdc23d96d48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 621cae68927bffcfe7f3f49d11826ca3bb2f2c4c
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
-[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级别安全性 (RLS)](https://msdn.microsoft.com/library/dn765131) 提供了一组强大功能，可方便用户灵活高效地通过 Azure SQL 数据库缩放多租户应用程序的数据层。 有关更多信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 
+[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级别安全性 (RLS)](https://msdn.microsoft.com/library/dn765131) 提供了一组强大功能，可方便用户灵活高效地通过 Azure SQL 数据库缩放多租户应用程序的数据层。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 
 
 本文将演示如何使用 **ADO.NET SqlClient** 和/或**实体框架**，同时运用这些技术来构建具有高度伸缩性数据层、支持多租户分片的应用程序。  
 
@@ -59,13 +59,13 @@ ms.lasthandoff: 10/11/2017
 使用弹性数据库客户端库的数据相关路由 API 连接到分片数据库后，应用程序仍然需要让数据库知道哪个 TenantId 正在使用该连接，以便 RLS 安全策略可以筛选出属于其他租户的行。 要传递此信息，建议的方法是将该连接的当前 TenantId 存储在 [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx) 中。 （注意：也可以使用 [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx)，但SESSION_CONTEXT 是一个更好的选择，因为它更易使用、默认返回 NULL，并支持键值对。）
 
 ### <a name="entity-framework"></a>实体框架
-对于使用实体框架的应用程序，最简单的方法是根据[使用 EF DbContext 进行数据相关的路由](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)中所述，在 ElasticScaleContext 重写中设置 SESSION_CONTEXT。 在返回通过数据相关路由中转的连接之前，只需创建并执行一个 SqlCommand，以便将 SESSION_CONTEXT 中的“TenantId”设置为针对该连接指定的 shardingKey。 这样，只需编写代码一次就能设置 SESSION_CONTEXT。 
+对于使用实体框架的应用程序，最简单的方法是根据[使用 EF DbContext 进行数据相关的路由](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)中所述，在 ElasticScaleContext 重写中设置 SESSION_CONTEXT。 在返回通过数据相关路由中转的连接之前，创建并执行一个 SqlCommand，以便将 SESSION_CONTEXT 中的“TenantId”设置为针对该连接指定的 shardingKey。 这样，只需编写代码一次就能设置 SESSION_CONTEXT。 
 
 ```
 // ElasticScaleContext.cs 
 // ... 
-// C'tor for data dependent routing. This call will open a validated connection routed to the proper 
-// shard by the shard map manager. Note that the base class c'tor call will fail for an open connection 
+// C'tor for data-dependent routing. This call opens a validated connection routed to the proper 
+// shard by the shard map manager. Note that the base class c'tor call fails for an open connection 
 // if migrations need to be done and SQL credentials are used. This is the reason for the  
 // separation of c'tors into the DDR case (this c'tor) and the internal c'tor for new shards. 
 public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
@@ -166,7 +166,7 @@ public static SqlConnection OpenConnectionForTenant(ShardMap shardMap, int tenan
 // ...
 
 // Example query via ADO.NET SqlClient
-// If row-level security is enabled, only Tenant 4's blogs will be listed
+// If row-level security is enabled, only Tenant 4's blogs are listed
 SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 {
     using (SqlConnection conn = OpenConnectionForTenant(sharding.ShardMap, tenantId4, connStrBldr.ConnectionString))
@@ -189,7 +189,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>创建安全策略，以便筛选每个租户可以访问的行
 由于应用程序在查询之前会将 SESSION_CONTEXT 设置为当前 TenantId，因此 RLS 安全策略可以筛选查询并排除使用其他 TenantId 的行。  
 
-RLS 在 T-SQL 中实现：用户定义的函数用于定义访问逻辑，安全策略可将此函数绑定到任意数量的表。 对于此项目，该函数只会验证应用程序（而不是其他某个 SQL 用户）是否已连接到数据库，以及存储在 SESSION_CONTEXT 中的“TenantId”是否与给定行的 TenantId 相匹配。 筛选谓词将允许满足这些条件的行通过 SELECT、UPDATE 和 DELETE 查询的筛选；阻塞谓词将阻止系统对违反这些条件的行执行 INSERT 或 UPDATE 操作。 SESSION_CONTEXT 在未设置的情况下会返回 NULL，将无法查看或插入任何行。 
+RLS 在 T-SQL 中实现：用户定义的函数用于定义访问逻辑，安全策略可将此函数绑定到任意数量的表。 对于此项目，该函数将验证应用程序（而不是其他某个 SQL 用户）是否已连接到数据库，以及存储在 SESSION_CONTEXT 中的“TenantId”是否与给定行的 TenantId 相匹配。 筛选谓词将允许满足这些条件的行通过 SELECT、UPDATE 和 DELETE 查询的筛选；阻塞谓词将阻止系统对违反这些条件的行执行 INSERT 或 UPDATE 操作。 如果未设置 SESSION_CONTEXT，它将返回 NULL，将无法查看或插入任何行。 
 
 要启用 RLS，请使用 Visual Studio (SSDT)、SSMS 或项目中包含的 PowerShell 脚本对所有分片执行以下 T-SQL（或者，如果正在使用[弹性数据库作业](sql-database-elastic-jobs-overview.md)，可以使用它来对所有分片自动执行此 T-SQL）： 
 
@@ -215,13 +215,13 @@ GO
 ```
 
 > [!TIP]
-> 对于需要在数百个表中添加谓词的更复杂项目，可以使用一个帮助器存储过程，通过在架构中的所有表内添加谓词，来自动生成安全策略。 请参阅 [Apply Row-Level Security to all tables - helper script ](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)（向所有表应用行级安全性 – 帮助器脚本）（博客）。  
+> 对于需要在数百个表中添加谓词的更复杂项目，可以使用一个帮助器存储过程，通过在架构中的所有表内添加谓词，来自动生成安全策略。 有关详细信息，请参阅 [Apply Row-Level Security to all tables - helper script ](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)（向所有表应用行级安全性 – 帮助器脚本）（博客）。  
 > 
 > 
 
-现在如果再次运行示例应用程序，租户将只能看到属于他们的行。 此外，应用程序只能插入当前已连接到分片数据库的租户的行，而不能插入属于其他租户的行，并且不能将可见行更新为使用其他 TenantId。 如果应用程序尝试执行上述任一操作，会引发 DbUpdateException。
+现在，如果再次运行示例应用程序，租户只能看到属于他们的行。 此外，应用程序只能插入当前已连接到分片数据库的租户的行，而不能插入属于其他租户的行，并且不能将可见行更新为使用其他 TenantId。 如果应用程序尝试执行上述任一操作，则会引发 DbUpdateException。
 
-如果以后添加了新表，只需更改安全策略，并在新表中添加筛选和阻塞谓词： 
+如果以后添加了新表，请更改安全策略，并在新表上添加筛选和阻塞谓词： 
 
 ```
 ALTER SECURITY POLICY rls.tenantAccessPolicy     
@@ -261,7 +261,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> 如果对实体框架项目使用默认约束，则不建议在 EF 数据模型中包括 TenantId 列。 这是因为实体框架查询会自动提供默认值，而这些值会重写 T-SQL 中创建的、使用 SESSION_CONTEXT 的默认约束。 举例来说，要在示例项目中使用默认约束，应该从 DataClasses.cs 中删除 TenantId（并在 Package Manager Console 中运行 Add-Migration），然后使用 T-SQL 来确保该字段仅存在于数据库表中。 这样，在插入数据时，EF 不会自动提供错误的默认值。 
+> 如果对实体框架项目使用默认约束，则不建议在 EF 数据模型中包括 TenantId 列。 这是因为实体框架查询会自动提供默认值，而这些值会重写在 T-SQL 中创建的、使用 SESSION_CONTEXT 的默认约束。 举例来说，要在示例项目中使用默认约束，应该从 DataClasses.cs 中删除 TenantId（并在 Package Manager Console 中运行 Add-Migration），然后使用 T-SQL 来确保该字段仅存在于数据库表中。 这样，在插入数据时，EF 会自动提供不正确的默认值。 
 > 
 > 
 
@@ -297,8 +297,8 @@ GO
 
 
 ### <a name="maintenance"></a>维护
-* **添加新分片**：必须对所有新分片执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
-* **添加新表**：每当创建新表时，必须将筛选和阻塞谓词添加到所有分片上的安全策略，否则不会筛选对新表的查询。 根据[自动向新建的表应用行级安全性（博客）](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)中所述，此操作可以使用 DDL 触发器来自动完成。
+* **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
+* **添加新表**：每当创建新表时，将筛选和阻塞谓词添加到所有分片上的安全策略，否则不会筛选对新表的查询。 根据[自动向新建的表应用行级安全性（博客）](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)中所述，此操作可以使用 DDL 触发器来自动完成。
 
 ## <a name="summary"></a>摘要
 可将弹性数据库工具和行级安全性一起使用，以扩大支持多租户和单租户分片的应用程序的数据层。 使用多租户分片可以更有效地存储数据（尤其是对于大量租户只有几行数据的情况），而使用单租户分片可以支持性能和隔离要求更严格的高级租户。  有关详细信息，请参阅[行级安全性参考](https://msdn.microsoft.com/library/dn765131)。 

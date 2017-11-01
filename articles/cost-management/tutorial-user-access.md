@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2017
+ms.date: 10/11/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: aca9f0b3320f298987cf39172fd4b043326a2f4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a42f3b51bf6d888d0d5602887ed317c6164391ef
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
@@ -49,6 +49,8 @@ ms.lasthandoff: 10/11/2017
 
 ![添加拥有用户访问权限的新用户](.\media\tutorial-user-access\new-user-access.png)
 
+若要观看有关添加用户的教程视频，请参阅[将用户添加到 Cloudyn 提供的 Azure 成本管理](https://youtu.be/Nzn7GLahx30)。
+
 ## <a name="create-entities"></a>创建实体
 
 定义成本实体层次结构时，最佳做法是标识组织的结构。
@@ -67,6 +69,10 @@ ms.lasthandoff: 10/11/2017
 
 完成后，“保存”实体。
 
+
+若要观看有关创建成本实体层次结构的教程视频，请参阅[在 Cloudyn 提供的 Azure 成本管理中创建成本实体层次结构](https://youtu.be/dAd9G7u0FmU)。
+
+如果是 Azure 企业协议用户，请在[使用 Cloudyn 提供的 Azure 成本管理连接到 Azure 资源管理器](https://youtu.be/oCIwvfBB6kk)中观看有关将帐户和订阅关联到实体的教程视频。
 
 ## <a name="next-steps"></a>后续步骤
 

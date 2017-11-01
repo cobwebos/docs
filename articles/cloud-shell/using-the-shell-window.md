@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: fb242abfbea79bc8c242a7a89b3d775cf74a0617
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59cd03f6e04e9b096fe740e8a7140e602c0baa58
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
 
@@ -56,10 +56,10 @@ Cloud Shell 允许每个会话作为单独的 Bash 进程，因此可在多个�
 
 ## <a name="changing-the-text-size"></a>更改文本大小
 ![](media/using-the-shell-window/text-size.png)
-* 单击窗口左上角的设置图标，将鼠标悬停在“文本大小”选项上，选择所需的文本大小。
+* 单击窗口左上角的设置图标，将鼠标悬停在“文本大小”选项上，选择所需的文本大小。 将在会话之间保留你的选择。
 
 ## <a name="exit-command"></a>退出命令
-运行 `exit` 终止活动会话。 超过 10 分钟无交互操将默认触发此行为。
+运行 `exit` 终止活动会话。 超过 20 分钟无交互操作将默认触发此行为。
 
 ## <a name="next-steps"></a>后续步骤
 

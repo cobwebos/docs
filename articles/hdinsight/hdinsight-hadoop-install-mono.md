@@ -12,14 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/31/2017
+ms.date: 10/23/2017
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.openlocfilehash: fd284542e1de65f323f1e3a092689f847e025be6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6e5712026dc2da3627c07e9b411c81fb9a7e1fb
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>在 HDInsight 上安装或更新 Mono
 
@@ -55,9 +55,10 @@ __要求__：
 
     https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash
 
+若要指定要安装的 Mono 版本，请在 __Parameters__ 字段中使用版本号。 例如，输入 `5.4` 以安装 Mono 5.4。
+
 > [!NOTE]
 > 使用此脚本配置 HDInsight 时，请将此脚本标记为 __Persisted__。 此设置允许 HDInsight 将脚本应用于通过缩放操作添加的工作节点。
-
 
 ## <a name="next-steps"></a>后续步骤
 

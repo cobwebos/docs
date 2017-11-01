@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: fc4d793bcf402a3e742fae2b2c0052f2d60d1b47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b2f806b81bbc6d9328ab179644b79b97d68e7b9
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="consuming-web-services"></a>使用 Web 服务
 将模型部署为实时 Web 服务后，可以从各种平台和应用程序向其发送数据并获取预测数据。 实时 Web 服务公开了一个用于获取预测数据的 REST API。 可以采用单行或多行格式向 Web 服务发送数据，从而一次获取一行或多行预测数据。
@@ -102,6 +102,7 @@ namespace MyFirstService
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(SERVICE_URL);
+            //For local web service, comment out this line.
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", API_KEY);
 
             var inputJson = new List<RequestPayload>();
@@ -147,7 +148,7 @@ namespace MyFirstService
 使用 Python 向你的实时 Web 服务发送请求。 
 
 1. 将以下代码示例复制到一个新的 Python 文件。
-2. 更新 data、url 和 api_key 参数
+2. 更新 data、url 和 api_key 参数。 对于本地 Web 服务，删除“Authorization”标头。
 3. 运行代码。 
 
 ```python

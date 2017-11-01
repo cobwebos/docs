@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 10/17/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
-ms.openlocfilehash: e1e979319e53d222be33032acd0a79697dd09ab6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cae11f53df768daf5846ac719a45715709326d76
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 Microsoft Authenticator 应用在工作或学校帐户（例如，bsimon@contoso.com）或 Microsoft 帐户（例如，bsimon@outlook.com）中提供了附加安全级别。
@@ -91,10 +91,10 @@ Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/
 
     ![帐户屏幕](./media/authenticator-app-how-to/accounts.png)
 
-### <a name="add-an-account-to-the-app-using-touch-id"></a>使用 Touch ID 将帐户添加到应用
-iOS 上的 Microsoft Authenticator 应用支持 Touch ID。  Azure 多重身份验证允许组织对设备要求提供 PIN。 使用 Touch ID，iOS 用户无需输入 PIN。 而是扫描指纹，并选择“批准”。
+### <a name="add-an-account-to-the-app-using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>使用设备的指纹或面部识别功能将帐户添加到应用
+组织可能要求使用 PIN 完成验证质询。 Microsoft Authenticator 应用可以使用设备的指纹或面部识别功能，而不能使用 PIN。 若要在应用中首次验证时对此进行设置，则会看到一个用于使用 Touch ID（适用于 iOS）或指纹识别的选项。 
 
-使用 Microsoft Authenticator 设置 Touch ID 的过程很简单。 已完成使用 PIN 的普通验证问题。 如果设备支持 Touch ID，则 Microsoft Authenticator 会自动为该帐户设置它。
+若要为 Microsoft Authenticator 设置 Touch ID，需要使用 PIN 完成标准验证质询。 Microsoft Authenticator 将自动为支持 Touch ID 的设备设置该项。 
 
 ![验证 Touch ID 设置](./media/authenticator-app-how-to/touchid1.png)
 

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 10/12/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f35030b90cbd854512fb6b9a8ef564584fc101b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46a72a15ba35119ecb5640cb0b22cd2a0fc56a27
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
-为使数据管理网关连接到 PostgreSQL 数据库，请在数据管理网关所在的同一系统上安装 2.0.12 版本或更高版本的[用于 PostgreSQL 的 Ngpsql 数据提供程序](http://go.microsoft.com/fwlink/?linkid=282716)。 支持 7.4 版本和更高版本的 PostgreSQL。
+为使数据管理网关连接到 PostgreSQL 数据库，请在数据管理网关所在的同一系统上安装 2.0.12 版到 3.1.9 版之间的[用于 PostgreSQL 的 Ngpsql 数据提供程序](http://go.microsoft.com/fwlink/?linkid=282716)。 支持 7.4 版本和更高版本的 PostgreSQL。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 PostgreSQL 数据存储移动数据。 
@@ -102,7 +102,7 @@ ms.lasthandoff: 10/11/2017
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：“query”：“从 \"MySchema\".\"MyTable\" 选择 *”。 |否（如果指定了**数据集**的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集**的 **tableName**） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询中将名称括在 `""`（双引号）中。  
@@ -310,13 +310,13 @@ ms.lasthandoff: 10/11/2017
 | abstime | |Datetime | &nbsp;
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [ (n) ] | |Byte[], String | &nbsp;
+| bit [(n)] | |Byte[], String | &nbsp;
 | bit varying [ (n) ] |varbit |Byte[], String |
 | 布尔值 |bool |布尔 |
 | box | |Byte[], String |&nbsp;
 | bytea | |Byte[], String |&nbsp;
-| character [ (n) ] |char [ (n) ] |String |
-| character varying [ (n) ] |varchar [ (n) ] |String |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
 | cid | |String |&nbsp;
 | cidr | |String |&nbsp;
 | circle | |Byte[], String |&nbsp;
@@ -328,14 +328,14 @@ ms.lasthandoff: 10/11/2017
 | int4range | |String |&nbsp;
 | int8range | |String |&nbsp;
 | integer |int, int4 |Int32 |
-| interval [ fields ] [ (p) ] | |Timespan |&nbsp;
+| interval [fields] [(p)] | |Timespan |&nbsp;
 | json | |String |&nbsp;
 | jsonb | |Byte[] |&nbsp;
 | 折线图 | |Byte[], String |&nbsp;
 | lseg | |Byte[], String |&nbsp;
 | macaddr | |Byte[], String |&nbsp;
 | money | |小数 |&nbsp;
-| numeric [ (p, s) ] |decimal [ (p, s) ] |小数 |
+| numeric [(p, s)] |decimal [(p, s)] |小数 |
 | numrange | |String |&nbsp;
 | oid | |Int32 |&nbsp;
 | 路径 | |Byte[], String |&nbsp;

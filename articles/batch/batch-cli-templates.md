@@ -9,19 +9,19 @@ ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 07/20/2017
+ms.date: 10/17/2017
 ms.author: markscu
-ms.openlocfilehash: 6b91466da46d1f4ca9f25bf1718be783603efc58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87ec0e1b6d01fc5d13e9b9f46987e416d8e1958f
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>使用 Azure Batch CLI 模板和文件传输（预览版）
 
 使用 Azure CLI 可在不编写代码的情况下运行 Batch 作业。
 
-可通过 Azure CLI 创建和使用模板文件，通过该模板文件可创建 Batch 池、作业和任务。 可轻松将作业输入文件上传到与下载的批处理帐户和作业输出文件相关联的存储帐户。
+创建并使用 Azure CLI 的模板文件，创建 Batch 池、作业和任务。 可轻松将作业输入文件上传到与下载的批处理帐户和作业输出文件相关联的存储帐户。
 
 ## <a name="overview"></a>概述
 
@@ -38,11 +38,11 @@ Batch 模板基于 [Azure CLI 中现有的 Batch 支持](https://docs.microsoft.
 
 例如，[ffmpeg](http://ffmpeg.org/) 是处理音频和视频文件的常用应用程序。 Azure Batch CLI 可用于调用 ffmpeg，以便将源视频文件转码为不同解决方法。
 
--   已创建池模板。 创建模板的用户了解如何调用 ffmpeg 应用程序及其需求；他们可指定适当的操作系统、VM 大小、安装 ffmpeg 的方法（例如，从应用程序包或使用包管理器进行安装），以及其他池属性值。 已创建参数，因此当使用模板时，仅需指定池 id 和 VM 数。
+-   已创建池模板。 创建模板的用户了解如何调用 ffmpeg 应用程序及其需求；他们可指定适当的操作系统、VM 大小、安装 ffmpeg 的方法（例如，从应用程序包或使用包管理器进行安装），以及其他池属性值。 已创建参数，因此当使用模板时，仅需指定池 ID 和 VM 数。
 
 -   已创建作业模板。 创建模板的用户了解如何调用 ffmpeg，以便将源视频转码为不同的分辨率，并指定任务命令行；他们还了解存在包含源视频文件（每个输入文件均包含所需任务）的文件夹。
 
--   具有一组用于转码的视频文件的最终用户首先需要使用池模板创建一个池，然后仅指定池 ID 和所需的 VM 数量。 然后，他们可以上传源文件以进行转码。 可使用作业模板提交作业，仅指定池 id 和上传的源文件的位置。 创建 Batch 作业时，每个输入文件生成一项任务。 最后，将下载已转码的输出文件。
+-   具有一组要转码的视频文件的最终用户首先需要使用池模板创建一个池，然后仅指定池 ID 和所需的 VM 数量。 然后，他们可以上传源文件以进行转码。 可使用作业模板提交作业，仅指定池 ID 和上传的源文件的位置。 创建 Batch 作业时，每个输入文件生成一项任务。 最后，将下载已转码的输出文件。
 
 ## <a name="installation"></a>安装
 
@@ -50,10 +50,10 @@ Batch 模板基于 [Azure CLI 中现有的 Batch 支持](https://docs.microsoft.
 
 有关如何安装 Azure CLI 的说明，请参阅[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-安装 Azure CLI 后，即可使用以下 CLI 命令安装 Batch 扩展：
+安装 Azure CLI 后，即可使用以下 CLI 命令安装最新版本的 Batch 扩展：
 
 ```azurecli
-az component update --add batch-extensions --allow-third-party
+az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.0/azure_batch_cli_extensions-2.0.0-py2.py3-none-any.whl
 ```
 
 有关 Batch 扩展的详细信息，请参阅 [Microsoft Azure Batch CLI Extensions for Windows, Mac and Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux)（Windows、Mac 和 Linux 的 Microsoft Azure Batch CLI 扩展）。
@@ -70,7 +70,7 @@ Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模�
 
 -   **参数**
 
-    -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅定义池 id 的一个参数；因此仅需提供一个池 id 字符串来创建池。
+    -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅定义池 id 的一个参数；因此仅需提供一个池 ID 字符串来创建池。
         
     -   模板正文可由了解 Batch 和 Batch 运行的应用程序的人进行创建；使用模板时，必须提供仅作者定义的参数值。 因此，没有深入了解 Batch 和/或应用程序的用户可以使用模板。
 
@@ -90,9 +90,9 @@ Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模�
 
 -   **包引用**
 
-    -   允许通过使用包管理器将软件复制到池节点（可选）。 已指定包管理器和包 id。 能够声明一个或多个包，便无需创建获取所需包的脚本、安装脚本，以及在每个池节点上运行脚本。
+    -   允许通过使用包管理器将软件复制到池节点（可选）。 已指定包管理器和包 ID。 能够声明一个或多个包，便无需创建获取所需包的脚本、安装脚本，以及在每个池节点上运行脚本。
 
-下面是一个模板示例，该示例创建已安装 ffmpeg 的 Linux VM 的池，且仅需提供要使用的池 id 字符串和 VM 数：
+下面是一个模板示例，该示例创建已安装 ffmpeg 的 Linux VM 的池，且仅需提供要使用的池 ID 字符串和 VM 数：
 
 ```json
 {
@@ -106,7 +106,7 @@ Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模�
         "poolId": {
             "type": "string",
             "metadata": {
-                "description": "The pool id "
+                "description": "The pool ID "
             }
         }
     },

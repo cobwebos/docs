@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
-ms.openlocfilehash: 71da98bf6d53ab50df4f6e40cf0b548752d10f93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ef808e933d1c3ff88e18766cd3a29138959297a
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -65,13 +65,14 @@ ms.lasthandoff: 10/11/2017
 ## <a name="backup"></a>备份
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 备份 | 副本不一致 | [此处](https://technet.microsoft.com/library/cc161593.aspx)提供有关副本不一致原因的更多详细信息以及相关建议 <br> <ol><li> 进行系统状态/BMR 备份时，请检查是否已在受保护服务器上安装 Windows Server 备份 </li><li> 检查 DPM/MABS 服务器上的 DPM 存储池是否存在空间相关问题，并根据需要分配存储 </li><li> 检查受保护服务器上卷影复制服务的状态。 如果该服务处于禁用状态，则将其设置为手动启动，并在服务器上启动该服务。 然后返回到 DPM/MABS 控制台，开始通过一致性检查作业进行同步。</li></ol>|
+| 备份 | 副本不一致 | 请确保已在保护组向导中打开自动一致性检查选项。 [此处](https://technet.microsoft.com/library/cc161593.aspx)提供有关副本不一致原因的更多详细信息以及相关建议 <br> <ol><li> 进行系统状态/BMR 备份时，请检查是否已在受保护服务器上安装 Windows Server 备份 </li><li> 检查 DPM/MABS 服务器上的 DPM 存储池是否存在空间相关问题，并根据需要分配存储 </li><li> 检查受保护服务器上卷影复制服务的状态。 如果该服务处于禁用状态，则将其设置为手动启动，并在服务器上启动该服务。 然后返回到 DPM/MABS 控制台，开始通过一致性检查作业进行同步。</li></ol>|
 | 备份 | 运行作业时发生意外错误，设备未就绪 | **如果产品中显示的建议操作不起作用**： <br> <ol><li>将卷影副本存储空间设置为不对保护组中的项进行限制，并运行一致性检查 <br></li> （或者） <li>尝试删除现有的保护组，并创建多个新组 - 每个新组中都有一个项</li></ol> |
 | 备份 | 如果只备份系统状态，请验证受保护计算机上是否有足够的可用空间来存储系统状态备份 | <ol><li>验证是否已在受保护计算机上安装 WSB</li><li>验证受保护计算机上是否存在用于系统状态的足够空间：若要执行此操作，最简单的方式是转到受保护的计算机，打开 WSB 并单击相关选项，选中 BMR。 然后，UI 就会告知需要多少空间。 打开 WSB ->“本地备份”->“备份计划”->“选择备份配置”->“完整服务器”（大小已显示）。 使用该大小进行验证。</li></ol>
 | 备份 | 在线恢复点创建失败 | 如果错误消息指出“Windows Azure 备份代理无法创建所选卷的快照”，请尝试增加副本和恢复点卷中的空间。
 | 备份 | 在线恢复点创建失败 | 如果错误消息显示“Windows Azure 备份代理无法连接到 OBEngine 服务”，请验证计算机上运行服务的列表中是否存在 OBEngine。 如果未运行 OBEngine 服务，请使用 "net start OBEngine" 命令启动 OBEngine 服务。
 | 备份 | 在线恢复点创建失败 | 如果错误消息指出“未设置此服务器的加密通行短语， 请配置加密通行短语”，则请尝试配置加密通行短语。 如果该操作失败， <br> <ol><li>请检查是否存在暂存位置。 应存在注册表项 HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config 中提到的名为“ScratchLocation”的位置。</li><li> 如果暂存位置存在，请尝试使用旧的通行短语重新注册。 **配置加密通行短语时，请将其保存在安全的位置**</li><ol>
 | 备份 | BMR 备份失败 | 如果 BMR 非常大，则可将某些应用程序文件移到 OS 驱动器，并重试 |
+| 备份 | 在新的 MABS 服务器上重新保护 VMWare VM 并不显示为可供添加。 | VMWare 属性将指向已停用的旧 MABS 服务器。 若要解决此问题，请在 VCenter（SC-VMM 等效项）中，转到“摘要”选项卡，然后单击“自定义属性”。  从“DPMServer”值中删除旧的 MABS 服务器名称。  返回到新的 MABS 服务器并修改 PG。  使用“刷新”按钮后，将为 VM 显示一个可用于添加到保护的复选框。 |
 | 备份 | 访问文件/共享文件夹时出错 | 尝试根据[此处](https://technet.microsoft.com/library/hh757911.aspx)提供的建议修改防病毒设置|
 | 备份 | VMware VM 的联机恢复点创建作业失败。 DPM 在尝试获取 ChangeTracking 信息时遇到了 VMware 错误。 ErrorCode - FileFaultFault (ID 33621 ) |  1.在 VMWare 上为受影响的 VM 重置 CTK <br/> 检查 VMWare 上是否存在独立磁盘 <br/> 停止对受影响的 VM 的保护，然后使用“刷新”按钮重新保护 <br/> 为受影响的 VM 运行抄送|
 

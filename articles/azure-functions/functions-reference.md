@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 10/12/2017
 ms.author: chrande
-ms.openlocfilehash: 1cb2ec7aa927eceafdf91c35c1184fceecddc49a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf965170e0c645e77a9b8829a10a18b29889a061
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -95,7 +95,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 3. 导航到 `D:\home\site\wwwroot\` 更新 host.json 或导航到 `D:\home\site\wwwroot\<function_name>` 更新函数文件。
 4. 将想要上传的文件拖放到文件网格中相应的文件夹。 文件网格中有两个区域可放置文件。 对于 .zip 文件，会出现一个带标签的框，其中显示“将文件拖到此处进行上传并解压缩”。 对于其他文件类型，将文件拖放到“解压缩”框以外的文件网格中。
 
-<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --DonnaM -->
+<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
 #### <a name="to-use-continuous-deployment"></a>使用连续部署
 按照本主题中的说明 [Azure Functions 连续部署](functions-continuous-deployment.md) 进行操作。
@@ -105,7 +105,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 
-可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 可在 Azure 门户的“设置”选项卡中查看 Function App 的确切版本。
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](functions-versions.md)。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：

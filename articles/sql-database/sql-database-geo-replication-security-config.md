@@ -1,6 +1,6 @@
 ---
 title: "配置灾难恢复的 Azure SQL 数据库安全性 | Microsoft Docs"
-description: "本主题介绍在发生数据中心中断或其他灾难时数据库还原或故障转移到辅助服务器后配置和管理安全性的注意事项"
+description: "了解在数据库还原或故障转移到辅助服务器后配置和管理安全性的安全注意事项。"
 services: sql-database
 documentationcenter: na
 author: anosov1960
@@ -15,20 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: sashan
-ms.openlocfilehash: 48b35f761273c68b03af1fc5e977bb99455a01e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5522bb8770212cc226cb794dacaccee07cb4e91b
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性 
+
+本主题介绍了配置和控制[活动异地复制](sql-database-geo-replication-overview.md)所需的身份验证要求，以及设置辅助数据库的用户访问权限所需的步骤。 它还介绍了如何在使用[异地还原](sql-database-recovery-using-backups.md#geo-restore)后启用对已恢复数据库的访问权限。 相关详细信息，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 
 > [!NOTE]
 > [活动异地复制](sql-database-geo-replication-overview.md)现在可供所有服务层中的所有数据库使用。
 >  
-
-## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>灾难恢复身份验证要求概述
-本主题介绍了配置和控制[活动异地复制](sql-database-geo-replication-overview.md)所需的身份验证要求，以及设置辅助数据库的用户访问权限所需的步骤。 它还介绍了如何在使用[异地还原](sql-database-recovery-using-backups.md#geo-restore)后启用对已恢复数据库的访问权限。 相关详细信息，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 
 ## <a name="disaster-recovery-with-contained-users"></a>使用包含的用户进行灾难恢复
 不同于必须映射到 master 数据库中登录名的传统用户，包含的用户完全由数据库自身管理。 这带来了两个好处。 在灾难恢复方案中，用户可以继续连接到新的主数据库或使用异地还原恢复的数据库，不需进行任何额外的配置，因为数据库会管理用户。 从登录的立场来看，此配置还有潜在的缩放性和性能优势。 有关详细信息，请参阅[包含数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。 

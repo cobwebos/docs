@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: f85f7077e5227818d062d114370e7344601a998e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 95ef2099cb16bcfd550ce2799428f1a16031f535
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="security-policies-overview"></a>安全策略概述
 本文档概述了安全中心安全策略。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 安全中心策略由以下部分组成：
 
 - 数据收集：代理预配和[数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)设置。
-- 安全策略：用于确定安全中心监视和建议的控件的 [Azure 策略](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)（可以在安全中心内编辑，也可以使用 Azure 策略新建定义、定义其他策略和跨管理组分配策略）。
+- 安全策略：确定安全中心监视和建议哪些控件（可以在安全中心内编辑[安全策略](https://docs.microsoft.com/en-us/azure/security-center/security-center-policies)，也可以使用 [Azure 策略](security-center-azure-policy.md)在受限制的预览版中新建定义、定义其他策略和跨管理组分配策略）。
 - 电子邮件通知：安全联系人和[电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)设置。
 - 定价层：免费或标准[定价选择](https://docs.microsoft.com/azure/security-center/security-center-pricing)，决定了范围内的资源可以使用哪些安全中心功能（可以针对订阅、资源组和工作区进行指定）。 
 

@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 10/11/2017
 ms.author: bwren
-ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d679ca7a01a96bd398b26e6a545e33674ae33390
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>在 Log Analytics 中使用日志搜索查找数据
 
 >[!NOTE]
-> 本文介绍 Log Analytics 中使用当前查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[了解 Log Analytics 中的日志搜索（新）](log-analytics-log-search-new.md)。
+> 本文介绍 Log Analytics 中使用旧查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[了解 Log Analytics 中的日志搜索（新）](log-analytics-log-search-new.md)。
 
 
 Log Analytics 的核心是日志搜索功能，该功能允许将环境内来自多个源的任意计算机数据进行组合和关联。 日志搜索还提供解决方案，以提供围绕某个特定问题区域的度量值。

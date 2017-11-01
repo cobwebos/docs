@@ -9,19 +9,19 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/13/2017
 ms.author: ryanwi
-ms.openlocfilehash: 705212675fc0a869a4374f621d5f2d7e035294dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d98d2823c19f24a2d9040f7959bd5189bd6bcc16
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>部署 API 管理与 Service Fabric
-本教程是一个系列中的第二部分。 本教程演示如何设置 [Azure API 管理](../api-management/api-management-key-concepts.md)与 Service Fabric，以在 Service Fabric 中将流量路由至后端服务。  完成后，即已将 API 管理部署到 VNET，并已将 API 操作配置为将流量发送到后端无状态服务。 若要详细了解使用 Service Fabric 的 Azure API 管理方案，请参阅[概述](service-fabric-api-management-overview.md)一文。
+本教程是一个系列中的第二部分。 本教程演示如何设置 [Azure API 管理](../api-management/api-management-key-concepts.md)与 Service Fabric，以在 Service Fabric 中将流量路由至后端服务。  完成后，便已将 API 管理部署到 VNET，并已将 API 操作配置为将流量发送到后端无状态服务。 若要详细了解使用 Service Fabric 的 Azure API 管理方案，请参阅[概述](service-fabric-api-management-overview.md)一文。
 
 本教程介绍如何执行下列操作：
 
@@ -42,11 +42,11 @@ ms.lasthandoff: 10/11/2017
 - 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 安装 [Azure PowerShell 模块 4.1 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)或 [Azure CLI 2.0](/cli/azure/install-azure-cli)。
 - 在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+- 如果部署 Windows 群集，请设置 Windows 开发环境。 安装 [Visual Studio 2017](http://www.visualstudio.com) 和 **Azure 开发**、**ASP.NET 和 Web 开发**以及 **.NET Core 跨平台开发**工作负荷。  然后设置 [.NET 开发环境](service-fabric-get-started.md)。
+- 如果部署 Linux 群集，请在 [Linux](service-fabric-get-started-linux.md) 或 [MacOS](service-fabric-get-started-mac.md) 上设置一个 Java 开发环境。  安装 [Service Fabric CLI](service-fabric-cli.md)。 
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>登录到 Azure，然后选择订阅
-本教程使用 [Azure PowerShell][azure-powershell]。 开始新的 PowerShell 会话时，请登录到 Azure 帐户并选择订阅，并执行 Azure 命令。
- 
-登录到 Azure 帐户，并选择订阅：
+执行 Azure 命令之前，登录到你的 Azure 帐户并选择你的订阅。
 
 ```powershell
 Login-AzureRmAccount
@@ -99,7 +99,7 @@ API 管理 REST API 是目前配置后端服务的唯一方法。 第一步是�
  2. 勾选“启用 API 管理 REST API”复选框。
  3. 请注意，**管理 API URL** 稍后将用于设置 Service Fabric 后端。
  4. 通过选择到期日期和密钥生成“访问令牌”，然后单击页面底部的“生成”按钮。
- 5. 复制“访问令牌”并保存。  我们将在以下步骤中使用该访问令牌。 请注意，它与主密钥和辅助密钥不同。
+ 5. 复制“访问令牌”并保存。  在下面的步骤中我们将使用此访问令牌。 请注意，它与主密钥和辅助密钥不同。
 
 #### <a name="upload-a-service-fabric-client-certificate"></a>上传 Service Fabric 客户端证书
 
@@ -152,7 +152,7 @@ Content-Type: application/json
 }
 ```
 
-如果后端策略中未指定任何服务名称，那么此处的 url 参数是群集中默认将请求路由到的服务的完全限定的服务名称。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。
+如果后端策略中未指定任何服务名称，那么此处的 **url** 参数是群集中默认将请求路由到的服务的完全限定的服务名称。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。
 
 有关每个字段的详细信息，请参阅 API 管理[后端 API 参考文档](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend)。
 
@@ -193,19 +193,17 @@ print(response.text)
 
 ## <a name="deploy-a-service-fabric-back-end-service"></a>部署 Service Fabric 后端服务
 
-你已将 Service Fabric 作为后端配置到 API 管理，现在可以为向 Service Fabric 服务发送流量的 API 编写后端策略。 但首先需要在 Service Fabric 中运行的一项服务来接受请求。
+你已将 Service Fabric 作为后端配置到 API 管理，现在可以为向 Service Fabric 服务发送流量的 API 编写后端策略。 但首先需要在 Service Fabric 中运行的一项服务来接受请求。  如果前面创建了 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)，请部署 .NET Service Fabric 服务。  如果前面创建了 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)，请部署 Java Service Fabric 服务。
 
-### <a name="create-a-service-fabric-service-with-an-http-endpoint"></a>使用 HTTP 终结点创建 Service Fabric 服务
+### <a name="deploy-a-net-service-fabric-service"></a>部署 .NET Service Fabric 服务
 
-在本教程中，我们将使用默认的 Web API 项目模板创建一个基本的无状态 ASP.NET Core 可靠服务。 这将为服务创建一个 HTTP 终结点，你将通过 Azure API 管理公开此终结点：
+在本教程中，我们将使用默认的 Web API 项目模板创建一个基本的无状态 ASP.NET Core 可靠服务。 这将为服务创建一个 HTTP 终结点，将通过 Azure API 管理公开此终结点：
 
 ```
 /api/values
 ```
 
-从[为 ASP.NET Core 开发设置开发环境](service-fabric-add-a-web-frontend.md#set-up-your-environment-for-aspnet-core)开始。
-
-开发环境设置完成后，以管理员身份启动 Visual Studio 并创建 ASP.NET Core 服务：
+以管理员身份启动 Visual Studio 并创建 ASP.NET Core 服务：
 
  1. 在 Visual Studio 中，选择“文件”->“新建项目”。
  2. 选择“云”下的 Service Fabric 应用程序模板并将其命名为“ApiApplication”。
@@ -231,11 +229,47 @@ print(response.text)
     ["value1", "value2"]`
     ```
 
-    这是你将通过 Azure 中的 API 管理公开的终结点。
+    这是你通过 Azure 中的 API 管理公开的终结点。
 
- 7. 最后，将应用程序部署到 Azure 中的群集。 [使用 Visual Studio](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box)，右键单击“应用程序”项目，然后选择“发布”。 提供群集终结点（例如，`mycluster.westus.cloudapp.azure.com:19000`），将应用程序部署到 Azure 中的 Service Fabric 群集。
+ 7. 最后，将应用程序部署到 Azure 中的群集。 [使用 Visual Studio](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box)，右键单击“应用程序”项目，然后选择“发布”。 提供群集终结点（例如，`mycluster.southcentralus.cloudapp.azure.com:19000`），将应用程序部署到 Azure 中的 Service Fabric 群集。
 
 名为 `fabric:/ApiApplication/WebApiService` 的 ASP.NET Core 无状态服务现在应在 Azure 的 Service Fabric 群集中运行。
+
+### <a name="create-a-java-service-fabric-service"></a>创建 Java Service Fabric 服务
+对于本教程，我们将部署一个将消息回显给用户的基本 web 服务器。 此回显服务器示例应用程序包含用于你的服务的一个 HTTP 终结点，此终结点是通过 Azure API 管理公开的。
+
+1. 克隆 Java 入门示例。
+
+   ```bash
+   git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
+   cd service-fabric-java-getting-started
+   ```
+
+2. 编辑 *Services/EchoServer/EchoServer1.0/EchoServerApplication/EchoServerPkg/ServiceManifest.xml*。 更新终结点，使服务在端口 8081 上进行侦听。
+
+   ```xml
+   <Endpoint Name="WebEndpoint" Protocol="http" Port="8081" />
+   ```
+
+3. 保存 *ServiceManifest.xml*，然后构建 EchoServer1.0 应用程序。
+
+   ```bash
+   cd Services/EchoServer/EchoServer1.0/
+   gradle
+   ```
+
+4. 将应用程序部署到群集。
+
+   ```bash
+   cd Scripts
+   sfctl cluster select --endpoint http://mycluster.southcentralus.cloudapp.azure.com:19080
+   ./install.sh
+   ```
+
+   一个名为 `fabric:/EchoServerApplication/EchoServerService` 的 Java 无状态服务现在应在 Azure 中的 Service Fabric 群集中运行。
+
+5. 打开浏览器并键入 http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage，应该会看到“[version 1.0]Hello World !!!” 显示。
+
 
 ## <a name="create-an-api-operation"></a>创建 API 操作
 
@@ -306,7 +340,7 @@ print(response.text)
 
  1. 在 API 管理服务中，选择“API”。
  2. 在于之前的步骤中创建的“Service Fabric App”API 中，选择“测试”选项卡，然后选择“Values”操作。
- 3. 单击“发送”按钮，将测试请求发送到后端服务。  应该可以看到如下所示的 HTTP 响应：
+ 3. 单击“发送”按钮，将测试请求发送到后端服务。  应该会看到类似于以下内容的 HTTP 响应：
 
     ```http
     HTTP/1.1 200 OK

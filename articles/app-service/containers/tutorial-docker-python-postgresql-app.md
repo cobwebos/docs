@@ -15,17 +15,17 @@ ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 36cf3c0bb4a28a4ccfd5fc94b72fba023516a9ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa3aa3a73338970fde2d0b0230e7b2e6ca687dc9
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用
 
-Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何在 Azure 中创建一个基本的 Docker Python Web 应用。 将此应用连接到 PostgreSQL 数据库。 完成此步骤后，[将在 Azure 应用服务 Web 应用](../app-service-web-overview.md)上的 Docker 容器中运行 Python Flask 应用程序。
+用于容器的 Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何在 Azure 中创建一个基本的 Docker Python Web 应用。 将此应用连接到 PostgreSQL 数据库。 完成此步骤后，将拥有一个在 [Linux 应用服务](app-service-linux-intro.md)的 Docker 容器中运行的 Python Flask 应用程序。
 
-![Azure 应用服务中的 Docker Python Flask 应用](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
+![Linux 应用服务中的 Docker Python Flask 应用](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
 可在 macOS 上执行以下步骤。 Linux 和 Windows 指令在大多数情况下相同，本教程中并未详述差异。
  
@@ -71,7 +71,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 
 ### <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-打开终端窗口并 `CD` 到工作目录。  
+打开终端窗口并 `CD` 到工作目录。
 
 运行下列命令以克隆示例存储库并转到 0.1-initialapp 版本。
 
@@ -124,15 +124,15 @@ Flask 示例应用程序在数据库中存储用户数据。 如果成功注册�
 
 ### <a name="log-in-to-azure"></a>登录 Azure
 
-现在将使用 Azure CLI 2.0 创建在 Azure 应用服务中托管 Python 应用程序所需的资源。  使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。 
+现在将使用 Azure CLI 2.0 创建在用于容器的 Web 应用中托管 Python 应用程序所需的资源。  使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```azurecli
-az login 
-``` 
-   
+az login
+```
+
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#create) 创建[资源组](../../azure-resource-manager/resource-group-overview.md)。 
+使用 [az group create](/cli/azure/group#create) 创建[资源组](../../azure-resource-manager/resource-group-overview.md)。
 
 [!INCLUDE [Resource group intro](../../../includes/resource-group.md)]
 
@@ -225,7 +225,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 
 退出 PostgreSQL 客户端时，请键入 \q。
 
-### <a name="test-the-application-locally-against-the-azure-postgresql-database"></a>在本地针对 Azure PostgreSQL 数据库测试应用程序 
+### <a name="test-the-application-locally-against-the-azure-postgresql-database"></a>在本地针对 Azure PostgreSQL 数据库测试应用程序
 
 返回到克隆 Github 存储库的应用文件夹，可通过更新数据库环境变量来运行 Python Flask 应用程序。
 
@@ -304,6 +304,7 @@ az acr create --name <registry_name> --resource-group myResourceGroup --location
 ```
 
 输出
+
 ```json
 {
   "adminUserEnabled": false,
@@ -366,9 +367,9 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。 
+使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。
 
-[!INCLUDE [app-service-plan](../../../includes/app-service-plan.md)]
+[!INCLUDE [app-service-plan](../../../includes/app-service-plan-linux.md)]
 
 在以下示例中，使用 S1 定价层创建名为 myAppServicePlan 的基于 Linux 的应用服务计划：
 
@@ -378,7 +379,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
 
-```json 
+```json
 {
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -412,23 +413,23 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 }
-``` 
+```
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-使用 [az webapp create](/cli/azure/webapp#create) 命令在 myAppServicePlan 应用服务计划中创建 web 应用。 
+使用 [az webapp create](/cli/azure/webapp#create) 命令在 myAppServicePlan 应用服务计划中创建 web 应用。
 
-该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 用于创建 Web 应用。 
+该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 用于创建 Web 应用。
 
-在下面的命令中，将 \<app_name> 占位符替换为唯一应用名称。 该名称是 Web 应用的默认 URL 的一部分，因此需要在 Azure 应用服务中的所有应用之间保持唯一性。 
+在下面的命令中，将 \<app_name> 占位符替换为唯一应用名称。 该名称是 Web 应用的默认 URL 的一部分，因此需要在 Azure 应用服务中的所有应用之间保持唯一性。
 
 ```azurecli
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-创建 Web 应用后，Azure CLI 会显示类似于以下示例的信息： 
+创建 Web 应用后，Azure CLI 会显示类似于以下示例的信息：
 
-```json 
+```json
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -447,7 +448,7 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 
 在本教程的前面部分，你已定义用于连接到 PostgreSQL 数据库的环境变量。
 
-在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config#set) 命令将环境变量设置为应用设置。 
+在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config#set) 命令将环境变量设置为应用设置。
 
 以下示例将数据库连接详细信息指定为应用设置。 它还使用 PORT 变量，映射 Docker 容器中的 PORT 5000，以接收 PORT 80 上的 HTTP 流量。
 
@@ -455,7 +456,7 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" PORT=5000
 ```
 
-### <a name="configure-docker-container-deployment"></a>配置 Docker 容器部署 
+### <a name="configure-docker-container-deployment"></a>配置 Docker 容器部署
 
 AppService 可以自动下载并运行 Docker 容器。
 
@@ -552,5 +553,5 @@ http://<app_name>.azurewebsites.net
 
 转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)

@@ -1,6 +1,6 @@
 ---
 title: "设计你的第一个 Azure SQL 数据库 | Microsoft Docs"
-description: "了解如何设计第一个 Azure SQL 数据库。"
+description: "了解如何使用 Azure 门户和 SQL Server Management Studio 设计第一个 Azure SQL 数据库。"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: 3a58c50d1187b9cca9490ad725b14617b4a98efe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb8bf2569f17bf6eef9f45255bbdda440e6afef5
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
-# <a name="design-your-first-azure-sql-database"></a>设计你的第一个 Azure SQL 数据库
+# <a name="design-your-first-azure-sql-database"></a>设计第一个 Azure SQL 数据库
 
 Azure SQL 数据库与 Microsoft 云（“Azure”）中的数据库即服务 (DBaaS) 相关。 在本教程中，了解如何使用 Azure 门户 SQL 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 执行以下操作： 
 

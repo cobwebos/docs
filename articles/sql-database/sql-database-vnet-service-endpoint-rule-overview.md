@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 10/09/2017
+ms.date: 10/13/2017
 ms.author: genemi
-ms.openlocfilehash: f62184d97b18d72b91d63db0e449bbab6c20a179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b15727ae6c7b4d0f1595d506cb8d0f66ec3abfe4
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -125,6 +125,9 @@ RBAC 备用：
 ## <a name="limitations"></a>限制
 
 对于 Azure SQL 数据库，虚拟网络规则功能具有以下限制：
+
+- 目前，已打开“服务终结点”的子网中的 Azure Web 应用尚未按预期方式运行。 我们正在努力实现此功能。
+    - 在完全实现此功能之前，我们建议将 Web 应用移到其他没有为 SQL 打开服务终结点的子网。
 
 - 在 SQL 数据库的防火墙中，每个虚拟网络规则都引用一个子网。 引用的所有这些子网都必须托管在同一个托管 SQL 数据库的地理区域内。
 
@@ -288,9 +291,6 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 
 <!-- ??2
 #### Syntax related articles
-
-- PowerShell cmdlets
-
 - REST API Reference, including JSON
 
 - Azure CLI

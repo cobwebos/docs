@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b64413e9cc916837dc779b92117f90293c4f1d87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1cffe40c14b931485cc5cec48a95e02ae770764e
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # v2.0 协议 — OAuth 2.0 授权代码流
 OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。  使用应用模型 v2.0 的 OAuth 2.0 实现，可以将登录名及 API 访问添加到移动应用和桌面应用。  本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -167,9 +167,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer |
 | expires_in |访问令牌的有效期（以秒为单位）。 |
 | 作用域 |access_token 有效的范围。 |
-| refresh_token |OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。  Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。  有关更多详细信息，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。 |
-| id_token |无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。  有关 id_token 的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 |
-
+| refresh_token |OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。  Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。  有关更多详细信息，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。 <br> **注意：**仅当已请求 `offline_access` 作用域时提供。 |
+| id_token |无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。  有关 id_token 的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 <br> **注意：**仅当已请求 `openid` 作用域时提供。 |
 #### 错误响应
 错误响应如下所示：
 
@@ -273,8 +272,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer |
 | expires_in |访问令牌的有效期（以秒为单位）。 |
 | 作用域 |access_token 有效的范围。 |
-| refresh_token |新的 OAuth 2.0 刷新令牌。 应该将旧刷新令牌替换为新获取的这个刷新令牌，以确保刷新令牌的有效期尽可能地长。 |
-| id_token |无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。  有关 id_token 的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 |
+| refresh_token |新的 OAuth 2.0 刷新令牌。 应该将旧刷新令牌替换为新获取的这个刷新令牌，以确保刷新令牌的有效期尽可能地长。 <br> **注意：**仅当已请求 `offline_access` 作用域时提供。 |
+| id_token |无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。  有关 id_token 的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 <br> **注意：**仅当已请求 `openid` 作用域时提供。 |
 
 #### 错误响应
 ```

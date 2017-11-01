@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 86c6459ae26a45cb3118cf53ce17ac3234551f4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42a6d7156a28aaeadea96f9134b0becc004816ba
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 完全支持以下方案：
 
 - 用户登录到所有基于 Web 浏览器的应用程序。
-- 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 365 客户端应用程序。
+- 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 365 客户端应用程序 - _带有_新式身份验证的 Office 2016 和 Office 2013。
 - 适用于 Windows 10 设备的 Azure AD Join。
 - Exchange ActiveSync 支持。
 
@@ -38,14 +38,15 @@ ms.lasthandoff: 10/11/2017
 
 _不_支持以下方案：
 
-- 用户登录到旧版 Office 客户端应用程序（Office 2013 或更早版本）。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许传递身份验证支持，而且还有助于使用[条件访问](../active-directory-conditional-access.md)功能（例如多重身份验证 (MFA)）保护用户帐户。
+- 用户登录到旧版 Office 客户端应用程序 - _不带_新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许传递身份验证支持，而且还有助于使用[条件访问](../active-directory-conditional-access.md)功能（例如多重身份验证 (MFA)）保护用户帐户。
 - 用户登录到 Skype for Business 客户端应用程序，包括 Skype for Business 2016。
 - 用户登录到 PowerShell v1.0。 建议改用 PowerShell v2.0。
+- Azure AD 域服务。
 - MFA 的应用密码。
 - 检测[凭据泄露](../active-directory-reporting-risk-events.md#leaked-credentials)的用户。
 
 >[!IMPORTANT]
->作为不支持方案的变通方法，可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页面上启用“密码哈希同步”。 密码哈希同步只能作为前述方案的后备方法（而不能作为直通身份验证的通用后备方法）。 启用密码哈希同步还可提供在本地基础结构被破坏的情况下故障转移身份验证（通过 Microsoft 支持部门）的选项。
+>_仅_作为不支持方案的变通方法，可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页上启用“密码哈希同步”。 启用“密码哈希同步”还可以选择在本地基础结构完全被破坏的情况下故障转移身份验证。 这种从传递身份验证到密码哈希同步的故障转移不是自动进行的，而是需要在 Microsoft 支持部门的帮助下完成。
 
 ## <a name="next-steps"></a>后续步骤
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 快速了解 Azure AD 直通身份验证。

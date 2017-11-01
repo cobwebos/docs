@@ -31,3 +31,5 @@
 右键单击某个资源类型并选择“成本实体”，查看消耗了资源的成本实体和服务。 在本示例中，DevOps 中的 VM 和辅助角色服务消耗了 $486.60 和 $435.71。 两者的消耗成本总计为 $922。
 
 ![成本实体和服务](./media/cost-management-create-account-view-data/actual-cost-05.png)
+
+若要观看有关查看云计费数据的教程视频，请参阅[使用 Cloudyn 提供的 Azure 成本管理分析云计费数据](https://youtu.be/G0pvI3iLH-Y)。

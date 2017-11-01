@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 5213bec66095d50ef29cc3bec0a7b6307614dc92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28dfa62c3408c43d3919a9657339bb8d25f6dcdf
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>使用 Azure CLI 管理用于容器的 Web 应用
 
@@ -103,8 +103,8 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 
 ## <a name="next-steps"></a>后续步骤
 
-* [什么是用于容器的 Azure Web 应用？](app-service-linux-intro.md)
+* [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
 * [安装 Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [Azure Cloud Shell（预览版）](../../cloud-shell/overview.md)
 * [设置 Azure 应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [使用用于容器的 Azure Web 应用进行持续部署](app-service-linux-ci-cd.md)
+* [使用用于容器的 Web 应用进行持续部署](app-service-linux-ci-cd.md)

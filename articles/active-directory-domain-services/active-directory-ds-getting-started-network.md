@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: 26fa86d166c54f48621ccbab13d1d17f465b7568
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a476e5228fc7fb83c1fe0b7ae0989a7752be09e1
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 
@@ -31,7 +31,11 @@ ms.lasthandoff: 10/11/2017
 下一个配置任务是创建 Azure 虚拟网络和其中的专用子网。 在虚拟网络的此子网中启用 Azure Active Directory 域服务。 还可以选取现有虚拟网络并在其中创建专用子网。
 
 1. 单击“虚拟网络”以选择一个虚拟网络。
-2. 在“选择虚拟网络”边栏选项卡上，会看到所有现有虚拟网络。 只会看到属于在“基本信息”向导页上选择的资源组和 Azure 位置的虚拟网络。
+    > [!NOTE]
+    > **新部署不支持经典虚拟网络。** 新部署不支持经典虚拟网络。 将继续支持经典虚拟网络中部署的现有托管域。 在不久的将来我们将提供相应功能，将现有托管域从经典虚拟网络迁移到资源管理器虚拟网络。
+    >
+
+2. 在“选择虚拟网络”页上，会看到所有现有虚拟网络。 只会看到属于在“基本信息”向导页上选择的资源组和 Azure 位置的虚拟网络。
 3. 选择应在其中启用 Azure AD 域服务的虚拟网络。 可以选取现有虚拟网络，也可以创建新的虚拟网络。
 
   > [!TIP]

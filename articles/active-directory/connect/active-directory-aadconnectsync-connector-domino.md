@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: billmath
-ms.openlocfilehash: 328e2039bbaa8988dc35b46712fd0de6f8bcbee8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/119/2017
+ms.author: barclayn
+ms.openlocfilehash: 15155fd9e1ab2dd6d58bcaf85a465c0585d3bc41
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino 连接器技术参考
 本指南介绍 Lotus Domino 连接器。 本文适用于以下产品：
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 | 连接的数据源 |服务器: <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>Client：<li>Lotus Domino 8.5.x</li><li>Lotus Notes 9.x</li> |
 | 方案 |<li>对象生命周期管理</li><li>组管理</li><li>密码管理</li> |
 | 操作 |<li>完整和增量导入</li><li>导出</li><li>在“HTTP 密码”上设置和更改密码</li> |
-| 架构 |<li>人员（漫游用户、联系人（无证书人员））</li><li>组</li><li>资源（资源、房间、联机会议）</li><li>邮件数据库</li><li>动态发现受支持对象的属性</li> |
+| 架构 |<li>人员（漫游用户、联系人（无证书人员））</li><li>组</li><li>资源（资源、房间、联机会议）</li><li>邮件数据库</li><li>动态发现受支持对象的属性</li><li>最多支持 250 个具有组织和组织单位 (OU) 的自定义认证者</li> |
 
 Lotus Domino 连接器使用 Lotus Notes 客户端来与 Lotus Domino 服务器通信。 由于这种依赖关系，同步服务器上必须安装支持的 Lotus Notes 客户端。 客户端与服务器之间的通信是通过 Lotus Notes .NET Interop (Interop.domino.dll) 接口实现的。 此接口可帮助在 Microsoft.NET 平台和 Lotus Notes 客户端之间进行通信，并支持 Lotus Domino 文档和视图的访问。 在执行增量导入时，也可以使用 C++ 本机接口（取决于所选的增量导入方法）。
 

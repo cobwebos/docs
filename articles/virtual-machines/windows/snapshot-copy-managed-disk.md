@@ -1,8 +1,8 @@
 ---
-title: "创建 Azure 托管磁盘的副本用于备份 | Microsoft Docs"
-description: "了解如何创建 Azure 托管磁盘的副本以用于备份或解决磁盘问题。"
+title: "在 Azure 中创建 VHD 快照 | Microsoft Docs"
+description: "了解如何创建 Azure VM 的副本用作备份或用于解决问题。"
 documentationcenter: 
-author: cwatson-cat
+author: cynthn
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -12,31 +12,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 2/9/2017
-ms.author: cwatson
-ms.openlocfilehash: c19b5156bc23b06de48bc7a6dc786f576f78127d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/09/2017
+ms.author: cynthn
+ms.openlocfilehash: dba70db512d88dfc57107bade0df50d1834eb883
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
-# <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>使用托管快照创建一个存储为 Azure 托管磁盘的 VHD 的副本
-获取托管磁盘的快照以用于备份，或从快照创建托管磁盘，并将其附加到测试虚拟机进行故障排除。 托管快照是 VM 托管磁盘的完整时间点副本。 它创建 VHD 的只读副本，并且默认将其存储为标准托管磁盘。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+# <a name="create-a-snapshot"></a>创建快照
 
-有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 
+创建 OS 或数据磁盘 VHD 的快照作为备份，或用于解决 VM 问题。 快照是 VHD 的完整只读副本。 
 
-## <a name="before-you-begin"></a>开始之前
-如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
-
-```
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
-
-## <a name="copy-the-vhd-with-a-snapshot"></a>使用快照复制 VHD
-使用 Azure 门户或 PowerShell 获取托管磁盘的快照。
-
-### <a name="use-azure-portal-to-take-a-snapshot"></a>使用 Azure 门户拍摄快照 
+## <a name="use-azure-portal-to-take-a-snapshot"></a>使用 Azure 门户拍摄快照 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 首先在左上角单击“新建”并搜索“快照”。
@@ -48,22 +36,25 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 8. 选择用于存储快照的“帐户类型”。 建议使用 **Standard_LRS**，除非需要将其存储在高性能磁盘上。
 9. 单击“创建” 。
 
-### <a name="use-powershell-to-take-a-snapshot"></a>使用 PowerShell 拍摄快照
-以下步骤演示如何使用 AzureRmSnapshot cmdlet<!--Add link to cmdlet when available--> 获取要复制的 VHD 磁盘、创建快照配置以及拍摄磁盘的快照。 
+## <a name="use-powershell-to-take-a-snapshot"></a>使用 PowerShell 拍摄快照
+以下步骤演示如何使用 [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) cmdlet 获取要复制的 VHD 磁盘、创建快照配置以及创建磁盘的快照。 
+
+请确保已安装最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
+
+```
+Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+```
+有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
+
 
 1. 设置一些参数。 
 
  ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
-$location = 'southeastasia' 
-$dataDiskName = 'ContosoMD_datadisk1' 
-$snapshotName = 'ContosoMD_datadisk1_snapshot1'  
+$location = 'eastus' 
+$dataDiskName = 'myDisk' 
+$snapshotName = 'mySnapshot'  
 ```
-  替换参数值：
-  -  “myResourceGroup”替换为 VM 的资源组。
-  -  “southeastasia”替换为要存储托管快照的地理位置。 <!---How do you look these up? -->
-  -  “ContosoMD_datadisk1”替换为想要复制的 VHD 磁盘的名称。
-  -  “ContosoMD_datadisk1_snapshot1”替换为用于新快照的名称。
 
 2. 获取要复制的 VHD 磁盘。
 
@@ -82,4 +73,6 @@ New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGro
 ```
 如果计划使用快照创建托管磁盘并将其附加到需要高性能的 VM，请使用 New-AzureRmSnapshot 命令中的参数 `-AccountType Premium_LRS`。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘比标准托管磁盘费用高。 因此使用该参数前，请确保确实需要使用高级托管磁盘。
 
+## <a name="next-steps"></a>后续步骤
 
+通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘来从快照创建虚拟机。 有关详细信息，请参阅[从快照创建 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) 示例。
