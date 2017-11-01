@@ -19,6 +19,7 @@
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
+      href: powershell-samples.md
     - name: 托管应用程序解决方案
       href: sample-projects.md
 - name: 操作指南
@@ -52,7 +53,7 @@
               href: microsoft-common-optionsgroup.md
             - name: PasswordBox
               href: microsoft-common-passwordbox.md
-            - name: Section
+            - name: 部分
               href: microsoft-common-section.md
             - name: TextBox
               href: microsoft-common-textbox.md

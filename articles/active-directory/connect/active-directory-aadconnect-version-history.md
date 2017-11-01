@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2017
 ms.author: billmath
-ms.openlocfilehash: 6e526e10ac5e3307aeefcdd22840a3e6a6ec843d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 370f8973b9b8a0cd0c5220a35218efe81bfd07e0
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
 
 本文旨在帮助你跟踪已发布的版本，并了解你是否需要更新为最新版本。
-
->[!IMPORTANT]
->从版本 1.1.484 开始，Azure AD Connect 引入了一个回归 bug，导致需要 sysadmin 权限才能升级 SQL 数据库。  此 bug 在最新版本 1.1.614 中仍然存在。  若要升级到此版本，需要 sysadmin 权限。  Dbo 权限是不够的。  如果尝试在没有 sysadmin 权限的情况下升级 Azure AD Connect，升级将失败，之后 Azure AD Connect 将不再正常工作。  Microsoft 已意识到此问题，并在努力更正此问题。
 
 下面是相关主题的列表：
 
@@ -37,12 +34,77 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
+
+## <a name="116470"></a>1.1.647.0
+状态：2017 年 10 月 19 日
+
+> [!IMPORTANT]
+> Azure AD Connect 版本 1.1.647.0 与 Azure AD Connect Health 代理（用于同步）版本 3.0.127.0 之间存在已知的兼容性问题。 此问题会阻止 Health 代理向 Azure AD Health 服务发送有关 Azure AD Connect 同步服务的运行状况数据（包括对象同步错误和运行历史记录数据）。 将 Azure AD Connect 部署手动升级到版本 1.1.647.0 之前，请验证 Azure AD Connect 服务器上是否安装了最新版本的 Azure AD Connect Health 代理。 为此，可以转到“控制面板”→“添加/删除程序”，并找到应用程序“用于同步的 Microsoft Azure AD Connect Health 代理”。如果其版本为 3.0.127.0，我们建议等到推出了下一个 Azure AD Connect 版本再升级。 如果 Health 代理版本不是 3.0.127.0，则可以继续进行手动就地升级。 请注意，此问题不会影响交叉升级，也不影响执行 Azure AD Connect 全新安装的客户。
+>
+>
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+#### <a name="fixed-issues"></a>修复的问题
+* 修复了 Azure AD Connect 向导中的“更改用户登录”任务：
+
+  * 如果存在一个**已启用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改之前，向导会错误地显示“禁用密码同步”提示。 但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再会显示该提示。
+
+  * 根据设计，在使用“更改用户登录”任务更新用户登录方法时，向导不会禁用密码同步。 这是为了避免干扰想要保留密码同步的客户，即使他们启用直通身份验证或联合身份验证作为其主要用户登录方法。
+  
+  * 如果想要在更新用户登录方法后禁用密码同步，必须执行向导中的“自定义同步配置”任务。 导航到“可选功能”页后，取消选中“密码同步”选项。
+  
+  * 请注意，如果尝试启用/禁用无缝单一登录，也会发生同样的问题。 具体而言，此时某个现有的 Azure AD Connect 部署启用了密码同步，同时用户登录方法已配置为“直通身份验证”。 使用“更改用户登录”任务尝试选中/取消选中“启用无缝单一登录”选项，同时将用户登录方法保持配置为“直通身份验证”。 在应用更改之前，向导会错误地显示“禁用密码同步”提示。 但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再显示该提示。
+
+* 修复了 Azure AD Connect 向导中的“更改用户登录”任务：
+
+   * 如果存在一个**已禁用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改后，向导会同时启用直通身份验证和密码同步。 通过这项修复，向导不再启用密码同步。
+
+  * 过去，密码同步是启用直通身份验证的先决条件。 将用户登录方法设置为“直通身份验证”时，向导会同时启用直通身份验证和密码同步。 最近，已去除“密码同步”这项先决条件。 Azure AD Connect 版本 1.1.557.0 中对 Azure AD Connect 做了更改，在将用户登录方法设置为“直通身份验证”时，不会启用密码同步。 但是，该项更改只会应用到 Azure AD Connect 安装。 通过这项修复，相同的更改也会应用到“更改用户登录”任务。
+  
+  * 请注意，如果尝试启用/禁用无缝单一登录，也会发生同样的问题。 具体而言，此时某个现有的 Azure AD Connect 部署禁用了密码同步，同时用户登录方法已配置为“直通身份验证”。 使用“更改用户登录”任务尝试选中/取消选中“启用无缝单一登录”选项，同时将用户登录方法保持配置为“直通身份验证”。 应用这项更改后，向导会启用密码同步。 通过这项修复，向导不再启用密码同步。 
+
+* 修复了一个导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。 此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。 当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 通过这项修复，Azure AD Connect 只要求管理员在升级期间对 ADSync 数据库拥有 db_owner 特权。
+
+* 修复了一个会对已启用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)的客户造成影响的 Azure AD Connect 升级问题。 升级 Azure AD Connect 之后，Azure AD Connect 向导中会错误地将无缝单一登录显示为已禁用，即使该功能保持已启用状态且完全正常。 通过这项修复，该功能现在会正确地在向导中显示为已启用。
+
+* 修复了一个导致 Azure AD Connect 向导始终在“已准备好配置”页上显示“配置源定位点”提示（即使未做出与源定位点相关的任何更改）的问题。
+
+* 在执行 Azure AD Connect 的手动就地升级时，客户必须提供相应 Azure AD 租户的全局管理员凭据。 过去，即使提供的全局管理员凭据属于不同的 Azure AD 租户，也能继续升级。 尽管升级看上去已成功完成，但某些配置不会在升级时正确保留。 通过这项更改，如果提供的凭据与 Azure AD 租户不匹配，则向导不允许继续升级。
+
+* 删除了在开始手动升级时不必要地重启 Azure AD Connect Health 服务的多余逻辑。
+
+
+#### <a name="new-features-and-improvements"></a>新增功能和改进
+* 添加了逻辑来简化在 Microsoft 德国云中设置 Azure AD Connect 所要执行的步骤。 过去，我们必须按此文中所述更新 Azure AD Connect 服务器上的特定注册表项，才能让 Azure AD Connect 在 Microsoft 德国云中正常工作。 现在，Azure AD Connect 可以根据安装期间提供的全局管理员凭据，自动检测租户是否在 Microsoft 德国云中。
+
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
+>[!NOTE]
+> 注意：同步服务提供一个 WMI 接口让客户开发自己的自定义计划程序。 此接口现已弃用，并会从 2018 年 6 月 30 日之后交付的后续 Azure AD Connect 版本中删除。 想要自定义同步计划的客户应使用 [内置计划程序 (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)。
+
+#### <a name="fixed-issues"></a>修复的问题
+* 当 Azure AD Connect 向导创建从本地 Active Directory 同步更改所需的 AD 连接器帐户时，不会正确地向该帐户分配读取 PublicFolder 对象所需的权限。 此问题会影响“快速”安装和“自定义”安装。 此项更改修复了该问题。
+
+* 修复了一个导致通过 Windows Server 2016 运行 Azure AD Connect 向导的管理员无法正常查看其故障排除页的问题。
+
+#### <a name="new-features-and-improvements"></a>新增功能和改进
+* 使用 Azure AD Connect 向导故障排除页排查密码同步问题时，故障排除页现在会返回特定于域的状态。
+
+* 过去，如果尝试启用密码哈希同步，Azure AD Connect 不会验证 AD 连接器帐户是否拥有从本地 AD 同步密码哈希所需的权限。 现在，Azure AD Connect 向导会验证权限，并在 AD 连接器帐户没有足够的权限时发出警告。
+
+### <a name="ad-fs-management"></a>AD FS 管理
+#### <a name="fixed-issue"></a>修复的问题
+* 修复了与 [msDS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor)功能的用法相关的问题。 此问题会影响已将“使用 AD FS 进行联合身份验证”配置为用户登录方法的客户。 执行向导中的“配置源定位点”任务时，Azure AD Connect 会改用 *ms-DS-ConsistencyGuid 作为 immutableId 的源属性。 在应用此项更改的过程中，Azure AD Connect 会尝试更新 AD FS 中 ImmutableId 的声明规则。 但是，由于 Azure AD Connect 无法提供配置 AD FS 所需的管理员凭据，此步骤失败。 通过这项修复，在执行“配置源定位点”任务时，Azure AD Connect 现在会提示输入 AD FS 的管理员凭据。
+
+
+
 ## <a name="116140"></a>1.1.614.0
 状态：2017 年 9 月 5 日
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>已知问题
+* 有个已知问题会导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。 此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。 当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 Dbo 权限是不够的。
+
 * Azure AD Connect 升级存在已知问题，会对已启用[无缝单一登录](active-directory-aadconnect-sso.md)的客户造成影响。 升级 Azure AD Connect 后，功能会在向导中显示为已禁用，即使功能为启用状态也是如此。 未来的发布中将提供对此问题的修复。 担心此显示问题的客户可以手动修复此问题，方法是在向导中启用无缝单一登录。
 
 #### <a name="fixed-issues"></a>修复的问题

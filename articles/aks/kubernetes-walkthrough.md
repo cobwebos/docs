@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 6f754cd8874cc8cfc7ab004bf93b7ae018b1d66c
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: ac6afa9d2e5a838623754fbcb7d5cf68f7a9ad95
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -34,6 +34,15 @@ ms.lasthandoff: 10/24/2017
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+
+## <a name="enabling-aks-preview-for-your-azure-subscription"></a>为 Azure 订阅启用 AKS 预览版
+AKS 为预览版时，创建新群集需要订阅上的功能标记。 可以为任意数量的订阅请求此功能，只要你想使用。 使用 `az provider register` 命令注册 AKS 提供程序：
+
+```azurecli-interactive
+az provider register -n Microsoft.ContainerService
+```
+
+注册之后，即可通过 AKS 创建 Kubernetes 群集。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -50,7 +59,7 @@ az group create --name myResourceGroup --location westus2
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "westeurope",
+  "location": "westus2",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -62,7 +71,7 @@ az group create --name myResourceGroup --location westus2
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-以下示例将创建一个具有三个节点的名为 *myK8sCluster* 的群集。
+以下示例创建一个具有一个节点的名为 myK8sCluster 的群集。
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myK8sCluster --agent-count 1 --generate-ssh-keys

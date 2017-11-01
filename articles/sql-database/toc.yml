@@ -17,6 +17,8 @@
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md
+        - name: Azure 门户
+          href: sql-database-connect-query-portal.md
         - name: VS Code
           href: sql-database-connect-query-vscode.md
         - name: 将 .NET 与 Visual Studio 配合使用

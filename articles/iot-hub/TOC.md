@@ -86,6 +86,7 @@
 ### 从设备上传文件
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
+#### [Node.js](iot-hub-node-node-file-upload.md)
 ### 设备孪生入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-getstarted.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-getstarted.md)
