@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f2af15189a7c8643d51e8567b4366726b4b8051c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e4b73f432f2695fa8b66b4d2bca23d32bfa9f3a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -334,7 +334,7 @@ minimumRows：
 - Azure 门户
 - Visual Studio
 - PowerShell
-- Azure Resource Manager 模板
+- Azure 资源管理器模板
 - REST API
 - .NET API
 

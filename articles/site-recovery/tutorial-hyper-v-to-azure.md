@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.openlocfilehash: 96e5027adfb443aba18895213e8d83894e3f060a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4d43fb03ce1c54a47315b8c3a5c83ec2082bcab9
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/11/2017
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，将从存储中创建 Azure VM。
 - 存储帐户必须位于与恢复服务保管库相同的区域。
-- 存储帐户可以是标准帐户，也可以是[高级](../storage/common/storage-premium-storage.md)帐户。
+- 存储帐户可以是标准帐户，也可以是[高级](../virtual-machines/windows/premium-storage.md)帐户。
 - 如果创建的是高级帐户，则还需要一个标准帐户来记录数据。
 
 ### <a name="prepare-hyper-v-hosts"></a>准备 Hyper-V 主机
@@ -251,7 +251,7 @@ Hyper-V 主机上的恢复服务代理需有权通过 Internet 访问 Azure 才�
 3. 在“复制频率” 中，指定要在初始复制后复制增量数据的频率（每隔 30 秒、5 或 15 分钟）。
 
     > [!NOTE]
-    >  复制到高级存储时，不支持 30 秒的频率。 该限制取决于高级存储支持的每 blob 快照数 (100)。 [了解详细信息](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)。
+    >  复制到高级存储时，不支持 30 秒的频率。 该限制取决于高级存储支持的每 blob 快照数 (100)。 [了解详细信息](../virtual-machines/windows/premium-storage.md#snapshots-and-copy-blob)。
 
 4. 在“恢复点保留期”中，针对每个恢复点指定保留期的时长（以小时为单位）。 受保护的计算机可以恢复到某个时段内的任意时间点。
 5. 在“应用一致性快照频率” 中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。 Hyper-V 使用两种类型的快照：

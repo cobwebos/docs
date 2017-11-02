@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
-ms.openlocfilehash: 5e8a62bb180de7288531139594cb61440cab04c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 934580f6fcfdbff6e61626ed685459478559717d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure 和 Linux VM 存储
 Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求的现代应用程序的云存储解决方案。  除了使开发人员可以构建大型应用程序来支持新方案之外，Azure 存储还为 Azure 虚拟机提供了存储基础。
@@ -91,7 +91,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 * 高级存储磁盘：Azure 高级存储支持可连接到 DS、DSv2 或 GS 系列 Azure VM 的 VM 磁盘。
 * 高级页 Blob：高级存储支持 Azure 页 Blob（用于保存 Azure 虚拟机 (VM) 的永久性磁盘）。
 * 高级本地冗余存储：高级存储帐户仅支持使用本地冗余存储 (LRS) 作为复制选项，并在单个区域中保留三个数据副本。
-* [高级存储](../../storage/common/storage-premium-storage.md)
+* [高级存储](../windows/premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>支持高级存储的 VM
 高级存储支持 DS 系列、DSv2 系列、GS 系列和 Fs 系列 Azure 虚拟机 (VM)。 可以在支持高级存储的 VM 上同时使用标准和高级存储磁盘。 但不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
@@ -185,7 +185,7 @@ Microsoft 云德国区在欧洲 Microsoft 云服务的基础上提供了一个�
 Azure 存储提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 存储帐户本身可以通过基于角色的访问控制和 Azure Active Directory 来保护。 在应用程序和 Azure 之间传输数据时，可以使用客户端加密、HTTPS 或 SMB 3.0 来保护数据。 使用存储服务加密 (SSE) 写入 Azure 存储时，可将数据设置为自动加密。 可以使用 Azure 磁盘加密将虚拟机所用的 OS 和数据磁盘设置为进行加密。 可以使用共享访问签名来授予对 Azure 存储中数据对象的委派访问权限。
 
 ### <a name="management-plane-security"></a>管理平面安全性
-管理平面包含用于管理存储帐户的资源。 此部分讨论 Azure Resource Manager 部署模型，以及如何使用基于角色的访问控制 (RBAC) 来控制访问存储帐户。 此外，还将讨论如何管理存储帐户密钥以及重新生成此类密钥。
+管理平面包含用于管理存储帐户的资源。 此部分讨论 Azure 资源管理器部署模型，以及如何使用基于角色的访问控制 (RBAC) 来控制访问存储帐户。 此外，还将讨论如何管理存储帐户密钥以及重新生成此类密钥。
 
 ### <a name="data-plane-security"></a>数据平面安全性
 此部分探讨如何在存储帐户（例如 Blob、文件、队列和表）中，允许使用共享访问签名和存储访问策略来访问实际的数据对象。 我们介绍服务级别 SAS 和帐户级别 SAS。 此外，还将了解如何限制访问特定的 IP 地址（或 IP 地址范围）、如何限制用于 HTTPS 的协议，以及如何吊销共享访问签名而无需等到它过期。

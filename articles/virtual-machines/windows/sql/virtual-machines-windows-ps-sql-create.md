@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/29/2017
 ms.author: jroth
-ms.openlocfilehash: 4b8cc80f2d1ed6f09ec917118dc9495d20394b94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33c306258b6be40f2c5cbc016e3c84e36bf61e0d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-resource-manager"></a>使用 Azure PowerShell 预配 SQL Server 虚拟机 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 >
 
 ## <a name="overview"></a>概述
-本教程演示如何使用 Azure PowerShell cmdlet 创建采用 **Azure Resource Manager** 部署模型的单个 Azure 虚拟机。 在本教程中，我们将从 SQL 库中的映像创建使用单个磁盘驱动器的单个虚拟机。 我们将为虚拟机要使用的存储、网络和计算资源创建新的提供程序。 如果上述任何资源存在现有的提供程序，可以改用这些提供程序。
+本教程演示如何使用 Azure PowerShell cmdlet 创建采用 **Azure 资源管理器**部署模型的单个 Azure 虚拟机。 在本教程中，我们将从 SQL 库中的映像创建使用单个磁盘驱动器的单个虚拟机。 我们将为虚拟机要使用的存储、网络和计算资源创建新的提供程序。 如果上述任何资源存在现有的提供程序，可以改用这些提供程序。
 
 如果需要阅读本主题的经典版本，请参阅 [Provision a SQL Server virtual machine using Azure PowerShell Classic](../classic/ps-sql-create.md)（使用 Azure PowerShell Classic 预配 SQL Server 虚拟机）。
 
@@ -74,7 +74,7 @@ $ResourceGroupName = "sqlvm1"
 ### <a name="storage-properties"></a>存储属性
 使用以下变量来定义存储帐户和虚拟机所要使用的存储类型。
 
-根据需要修改并执行以下 cmdlet 来初始化这些变量。 请注意，在本示例中，我们将使用建议用于生产工作负荷的[高级存储](../../../storage/common/storage-premium-storage.md)。 有关指导和其他建议的详细信息，请参阅 [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md)（Azure 虚拟机中 SQL Server 的性能最佳实践）。
+根据需要修改并执行以下 cmdlet 来初始化这些变量。 请注意，在本示例中，我们将使用建议用于生产工作负荷的[高级存储](../premium-storage.md)。 有关指导和其他建议的详细信息，请参阅 [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md)（Azure 虚拟机中 SQL Server 的性能最佳实践）。
 
 ```PowerShell
 $StorageName = $ResourceGroupName + "storage"

@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2499e55e267a1b1d4845c89beae49816f4b68fa7
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 1b28870938667076280d6e4b08ee84870296d133
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置
 
@@ -378,7 +378,7 @@ ms.lasthandoff: 10/13/2017
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -451,7 +451,7 @@ ms.lasthandoff: 10/13/2017
 本文重点介绍如何通过在现有 Windows Server 故障转移群集 (WSFC) 中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置一个 SAP 多 SID 群集。
 
 > [!NOTE]
-> 此功能仅在 Azure Resource Manager 部署模型中可用。
+> 此功能仅在 Azure 资源管理器部署模型中可用。
 
 ## <a name="prerequisites"></a>先决条件
 已根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中的介绍和下图所示，配置了用于一个 SAP ASCS/SCS 实例的 WSFC 群集。
@@ -470,7 +470,7 @@ ms.lasthandoff: 10/13/2017
 >一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数等于每个 Azure 内部负载均衡器的最大专用前端 IP 数。
 >
 
-有关负载均衡器限制的详细信息，请参阅 [Networking Limits: Azure Resource Manager][networking-limits-azure-resource-manager]（网络限制：Azure Resource Manager）中的“Private front end IP per load balancer”（每个负载均衡器的专用前端 IP）。
+有关负载均衡器限制的详细信息，请参阅 [网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”。
 
 包含两个高可用性 SAP 系统的完整布局如下所示：
 
@@ -667,6 +667,7 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 
 ## <a name="next-steps"></a>后续步骤
 
-- [网络限制：Azure Resource Manager][networking-limits-azure-resource-manager]
+- 
+            [网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]
 - [Azure 负载均衡器的多个 VIP][load-balancer-multivip-overview]
 - [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]

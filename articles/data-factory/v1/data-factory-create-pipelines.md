@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2017
+ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 94c820b23a91f3493a0fbc8e1fd38c86d371e985
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bfdd9d69b6172ff4fae82be6db4a459dd516716
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -295,7 +295,7 @@ ms.lasthandoff: 10/11/2017
 - Azure 门户
 - Visual Studio
 - Azure PowerShell
-- Azure Resource Manager 模板
+- Azure 资源管理器模板
 - REST API
 - .NET API
 
