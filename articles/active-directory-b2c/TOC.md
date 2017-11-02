@@ -1,6 +1,9 @@
 # [概述](active-directory-b2c-overview.md)
 
 # 入门
+## [体验 Azure AD B2C Web 应用](active-directory-b2c-quickstarts-web-app.md)
+## [体验 Azure AD B2C 桌面应用](active-directory-b2c-quickstarts-desktop-app.md)
+## [体验 Azure AD B2C 单页应用](active-directory-b2c-quickstarts-spa.md)
 ## [创建 Azure AD B2C 目录](active-directory-b2c-get-started.md)
 ## [注册应用程序](active-directory-b2c-app-registration.md)
 ## [内置策略](active-directory-b2c-reference-policies.md)

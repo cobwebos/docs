@@ -108,5 +108,6 @@
 #### [证书凭据](active-directory-certificate-credentials.md)
 ### [范围](active-directory-v2-scopes.md)
 # 资源
+## [获取帮助](active-directory-develop-help-support.md)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

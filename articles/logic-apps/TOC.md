@@ -25,7 +25,8 @@
 #### [使用 Azure AD 保护连接器](custom-connector-azure-active-directory-authentication.md)
 #### [使用 Postman 描述 API](custom-connector-api-postman-collection.md)
 #### [为自定义连接器扩展 OpenAPI](custom-connector-openapi-extensions.md)
-#### [注册自定义连接器](logic-apps-custom-connector-register.md)
+#### [创建并注册 OpenAPI 连接器](logic-apps-custom-connector-register.md)
+#### [创建并注册 SOAP 连接器](logic-apps-soap-connector-create-register.md)
 #### [认证连接器](custom-connector-submit-certification.md)
 #### [自定义连接器常见问题解答](custom-connector-faq.md)
 ### 开发自定义 API

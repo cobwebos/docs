@@ -63,6 +63,27 @@
       href: regions-and-availability.md
     - name: VM 类型和大小
       href: sizes.md
+      items:
+        - name: 常规用途
+          href: sizes-general.md
+          items:
+            - name: B 系列可突增
+              href: b-series-burstable.md
+        - name: 计算优化
+          href: sizes-compute.md
+        - name: 内存优化
+          href: sizes-memory.md
+        - name: 存储优化
+          href: sizes-storage.md
+        - name: GPU 优化
+          href: sizes-gpu.md
+          items:
+            - name: 安装 GPU 驱动程序
+              href: n-series-driver-setup.md
+        - name: 高性能计算
+          href: sizes-hpc.md
+        - name: Azure 计算单元 (ACU)
+          href: sizes-general.md
     - name: 认可的发行版
       href: endorsed-distros.md
     - name: 维护和更新

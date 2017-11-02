@@ -59,6 +59,8 @@
       href: site-recovery-support-matrix-to-sec-site.md
     - name: 工作负荷的灾难恢复
       href: site-recovery-workload.md
+    - name: 使用 Azure Site Recovery 进行迁移
+      href: site-recovery-migrate-to-azure.md
     - name: Azure 到 Azure 网络（预览）
       href: site-recovery-azure-to-azure-networking-guidance.md
     - name: 故障转移到 Azure 后的 VM 连接
@@ -99,14 +101,14 @@
           href: tutorial-vmm-to-vmm-failover-failback.md
     - name: 容量和缩放
       items:
-        - name: 为将 VMware 虚拟机复制到 Azure 规划容量
+        - name: 为将 VMware 复制到 Azure 规划容量
           href: site-recovery-plan-capacity-vmware.md
         - name: 用于将 VMware 虚拟机复制到 Azure 的部署规划器工具
           href: site-recovery-deployment-planner.md
         - name: 为将 Hyper-V 虚拟机复制到 Azure 计划容量
-          href: site-recovery-capacity-planning-for-hyper-v-replication.md
-        - name: 用于将 Hyper-V 虚拟机复制到 Azure 的容量计划工具
           href: site-recovery-capacity-planner.md
+        - name: 用于将 Hyper-V 虚拟机复制到 Azure 的容量计划工具
+          href: site-recovery-capacity-planning-for-hyper-v-replication.md
         - name: 用于复制 VMware 虚拟机的横向扩展进程服务器
           href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
         - name: 为本地站点之间的 HYPER-V 虚拟机复制进行性能缩放测试
@@ -181,7 +183,9 @@
           href: site-recovery-vmm-to-vmm-powershell-resource-manager.md
     - name: 迁移
       items:
-        - name: 将已迁移的计算机复制到另一个 Azure 区域
+        - name: 将 Azure VM 迁移到另一个 Azure 区域
+          href: site-recovery-migrate-azure-to-azure.md
+        - name: 在迁移后将计算机复制到另一个 Azure 区域
           href: site-recovery-azure-to-azure-after-migration.md
     - name: 工作负荷
       items:

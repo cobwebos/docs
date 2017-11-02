@@ -24,6 +24,7 @@
 ### [使用引用数据](stream-analytics-use-reference-data.md)
 ### [测试查询](stream-analytics-test-query.md)
 ### [集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md)
+### [集成 JavaScript UDA](stream-analytics-javascript-user-defined-aggregates.md)
 ### [集成 REST API 和机器学习](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [创建输出](stream-analytics-define-outputs.md)
 ### [输出到 Data Lake Store](stream-analytics-data-lake-output.md)

@@ -39,7 +39,9 @@
       href: tutorial-azure-security.md
     - name: 12 - 团队服务 CI/CD
       href: tutorial-vsts-iis-cicd.md
-    - name: 13 - 使用 SSL 保护 Web 服务器
+    - name: 13 - 安装 SQL\IIS\.NET 堆栈
+      href: tutorial-iis-sql.md
+    - name: 14 - 使用 SSL 保护 Web 服务器
       href: tutorial-secure-web-server.md
 - name: 示例
   items:
@@ -55,6 +57,27 @@
       href: regions-and-availability.md
     - name: VM 类型和大小
       href: sizes.md
+      items:
+        - name: 常规用途
+          href: sizes-general.md
+          items:
+            - name: B 系列可突增
+              href: b-series-burstable.md
+        - name: 计算优化
+          href: sizes-compute.md
+        - name: 内存优化
+          href: sizes-memory.md
+        - name: 存储优化
+          href: sizes-storage.md
+        - name: GPU 优化
+          href: sizes-gpu.md
+          items:
+            - name: 安装 GPU 驱动程序
+              href: n-series-driver-setup.md
+        - name: 高性能计算
+          href: sizes-hpc.md
+        - name: Azure 计算单元 (ACU)
+          href: sizes-general.md
     - name: 维护和更新
       href: maintenance-and-updates.md
     - name: 存储
@@ -286,7 +309,7 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 从经典部署迁移到 Azure Resource Manager 部署
+        - name: 从经典部署迁移到 Azure 资源管理器部署
           href: migration-classic-resource-manager-overview.md
           items:
             - name: 深入了解迁移

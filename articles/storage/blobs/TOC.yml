@@ -18,6 +18,8 @@
       href: storage-quickstart-blobs-cli.md
     - name: 使用 Blob - .NET
       href: storage-quickstart-blobs-dotnet.md
+    - name: 使用 Blob - Java
+      href: storage-quickstart-blobs-java.md
     - name: 使用 Blob - Python
       href: storage-quickstart-blobs-python.md
 - name: 教程
