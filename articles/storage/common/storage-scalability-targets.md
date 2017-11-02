@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 07/12/2017
 ms.author: tamram
-ms.openlocfilehash: abaad01bbf7a11ad078c79d7c192ef3f84812178
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 805b0eee46846345ee1f33faf0c28393c3e8ebb1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Azure 存储可伸缩性和性能目标
 ## <a name="overview"></a>概述
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/19/2017
 ## <a name="see-also"></a>另请参阅
 * [存储定价详细信息](https://azure.microsoft.com/pricing/details/storage/)
 * [Azure 订阅和服务限制、配额和约束](../../azure-subscription-service-limits.md)
-* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../storage-premium-storage.md)
+* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../virtual-machines/windows/premium-storage.md)
 * [Azure 存储复制](../storage-redundancy.md)
 * [Microsoft Azure 存储性能和可伸缩性清单](../storage-performance-checklist.md)
 * [Microsoft Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e6a68ad090789c95dda6d18f649ae3bcfa671c5
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: ae90fe1d6d9e91bffa3fd4c6a7d79d069ab604a2
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -380,7 +380,7 @@ ms.lasthandoff: 10/13/2017
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -440,14 +440,14 @@ ms.lasthandoff: 10/13/2017
 
 Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源的组织的解决方案，没有冗长的采购周期。 Azure 虚拟机可用于部署经典应用程序，如基于 SAP NetWeaver 的 ABAP、Java 和 ABAP+Java 堆栈。 无需额外本地资源即可扩展可靠性和可用性。 Azure 虚拟机支持跨界连接，因此，可将 Azure 虚拟机集成到组织的本地域、私有云和 SAP 系统布局中。
 
-本文介绍使用 Azure Resource Manager 部署模型在 Azure 中部署高可用性 SAP 系统可采用的步骤。 我们演练以下主要任务：
+本文介绍使用 Azure 资源管理器部署模型在 Azure 中部署高可用性 SAP 系统可采用的步骤。 我们演练以下主要任务：
 
 * 查找[资源][sap-ha-guide-2]部分中列出的适当 SAP 说明和安装指南。 本文对 SAP 安装文档和 SAP 说明（帮助在特定平台上安装和部署 SAP 软件的主要资源）作了补充。
-* 了解 Azure Resource Manager 部署模型与 Azure 经典部署模型之间的区别。
+* 了解 Azure 资源管理器部署模型与 Azure 经典部署模型之间的区别。
 * 了解 Windows Server 故障转移群集仲裁模式，以便为 Azure 部署选择正确的模型。
 * 了解 Azure 服务中的 Windows Server 故障转移群集共享存储。
 * 了解如何在 Azure 中帮助保护单一故障点组件（如高级业务应用程序编程 (ABAP) SAP 中心服务 (ASCS)/SAP 中心服务 (SCS) 和数据库管理系统 (DBMS)）和冗余组件（如 SAP 应用程序服务器）。
-* 遵循一个循序渐进的示例，使用 Azure Resource Manager 在 Windows Server 故障转移群集中安装和配置高可用性 SAP 系统。
+* 遵循一个循序渐进的示例，使用 Azure 资源管理器在 Windows Server 故障转移群集中安装和配置高可用性 SAP 系统。
 * 了解在 Azure 中使用 Windows Server 故障转移群集所必需但在本地部署中不需要的其他步骤。
 
 为了简化部署和配置，本文将使用新的 SAP 三层高可用性 Resource Manager 模板。 这些模板自动执行高可用性 SAP 系统所需的整个基础结构的部署。 该基础结构还支持 SAP 系统的 SAP 应用程序性能标准 (SAPS) 大小调整。
@@ -455,7 +455,7 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 ## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>先决条件
 在开始之前，请确保满足以下部分中所述的先决条件。 此外，务必要检查[资源][sap-ha-guide-2]部分中列出的所有资源。
 
-在本文中，我们为[三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) 使用 Azure Resource Manager 模板。 有关模板的有用概述，请参阅 [SAP Azure Resource Manager模板](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
+在本文中，我们为[三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) 使用 Azure 资源管理器模板。 有关模板的有用概述，请参阅 [SAP Azure 资源管理器模板](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
 
 ## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>资源
 这些文章介绍了 Azure 中的 SAP 部署：
@@ -484,29 +484,29 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 了解有关 [Azure 订阅的限制][azure-subscription-service-limits-subscription]的详细信息，包括常规默认限制和最大限制。
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>使用 Azure 资源管理器与 Azure 经典部署模型的高可用性 SAP
-Azure Resource Manager 和 Azure 经典部署模型在以下方面有所不同：
+Azure 资源管理器和 Azure 经典部署模型在以下方面有所不同：
 
 - 资源组
 - Azure 内部负载均衡器与 Azure 资源组的依赖关系
 - 对 SAP 多 SID 方案的支持
 
 ### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>资源组
-在 Azure Resource Manager 中，可使用资源组管理 Azure 订阅中的所有应用程序资源。 使用集成方法时，资源组中的所有资源具有相同的生命周期。 例如，所有资源同时创建并同时删除。 了解有关 [资源组](../../../azure-resource-manager/resource-group-overview.md#resource-groups)的详细信息。
+在 Azure 资源管理器中，可使用资源组管理 Azure 订阅中的所有应用程序资源。 使用集成方法时，资源组中的所有资源具有相同的生命周期。 例如，所有资源同时创建并同时删除。 了解有关 [资源组](../../../azure-resource-manager/resource-group-overview.md#resource-groups)的详细信息。
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure 内部负载均衡器与 Azure 资源组的依赖关系
 
 在 Azure 经典部署模型中，Azure 内部负载均衡器（Azure Load Balancer 服务）与云服务组之间存在依赖关系。 每个内部负载均衡器都需要一个云服务组。
 
-在 Azure Resource Manager 模型中，无需 Azure 资源组即可使用 Azure 负载均衡器。 环境更加简单灵活。
+在 Azure 资源管理器模型中，无需 Azure 资源组即可使用 Azure 负载均衡器。 环境更加简单灵活。
 
 ### <a name="support-for-sap-multi-sid-scenarios"></a>对 SAP 多 SID 方案的支持
 
-在 Azure Resource Manager 中，可在一个群集中安装多个 SAP 系统标识符 (SID) ASCS/SCS 实例。 之所以能够使用多 SID 实例，是因为支持对每个 Azure 负载均衡器使用多个 IP 地址。
+在 Azure 资源管理器中，可在一个群集中安装多个 SAP 系统标识符 (SID) ASCS/SCS 实例。 之所以能够使用多 SID 实例，是因为支持对每个 Azure 负载均衡器使用多个 IP 地址。
 
 若要使用 Azure 经典部署模型，请遵循 [Azure 中的 SAP NetWeaver：配合 SIOS DataKeeper 使用 Azure 中的 Windows Server 故障转移群集来组建 SAP ASCS/SCS 实例的群集](http://go.microsoft.com/fwlink/?LinkId=613056)中所述的过程。
 
 > [!IMPORTANT]
-> 强烈建议为 SAP 安装使用 Azure Resource Manager 部署模型。 它提供经典部署模型不具备的许多好处。 详细了解 Azure [部署模型][virtual-machines-azure-resource-manager-architecture-benefits-arm]。   
+> 强烈建议为 SAP 安装使用 Azure 资源管理器部署模型。 它提供经典部署模型不具备的许多好处。 详细了解 Azure [部署模型][virtual-machines-azure-resource-manager-architecture-benefits-arm]。   
 >
 >
 
@@ -628,7 +628,7 @@ DBMS 也是 SAP 系统中的单一接触点。 需要使用高可用性解决方
 
 图 7：使用 SQL Server AlwaysOn 的高可用性 SAP DBMS 示例__
 
-有关使用 Azure Resource Manager 部署模型在 Azure 中群集化 SQL Server 的详细信息，请参阅以下文章：
+有关使用 Azure 资源管理器部署模型在 Azure 中群集化 SQL Server 的详细信息，请参阅以下文章：
 
 * [使用 Resource Manager 在 Azure 虚拟机中手动配置 Always On 可用性组][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
 * [在 Azure 中为 Always On 可用性组配置 Azure 内部负载均衡器][virtual-machines-windows-portal-sql-alwayson-int-listener]
@@ -674,11 +674,11 @@ DBMS 也是 SAP 系统中的单一接触点。 需要使用高可用性解决方
 ## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a>准备基础结构
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>准备体系结构模板 1 的基础结构
-适用于 SAP 的 Azure Resource Manager 模板有助于简化所需资源的部署。
+适用于 SAP 的 Azure 资源管理器模板有助于简化所需资源的部署。
 
-Azure Resource Manager 中的三层模板还支持高可用性方案，例如体系结构模板 1 包含两个群集。 每个群集都是 SAP ASCS/SCS 和 DBMS 的 SAP 单一故障点。
+Azure 资源管理器中的三层模板还支持高可用性方案，例如体系结构模板 1 包含两个群集。 每个群集都是 SAP ASCS/SCS 和 DBMS 的 SAP 单一故障点。
 
-可在以下位置获取本文中所述的示例方案的 Azure Resource Manager 模板：
+可在以下位置获取本文中所述的示例方案的 Azure 资源管理器模板：
 
 * [Azure 应用商店映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
@@ -687,7 +687,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 - 在 Azure 门户中的“参数”边栏选项卡上，从“SYSTEMAVAILABILITY”框中选择“HA”。
 
-  ![图 11：设置 SAP 高可用性 Azure Resource Manager 参数][sap-ha-guide-figure-3000]
+  ![图 11：设置 SAP 高可用性 Azure 资源管理器参数][sap-ha-guide-figure-3000]
 
 图 11：设置 SAP 高可用性 Azure 资源管理器参数__
 
@@ -757,7 +757,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 - 在 Azure 门户中的“参数”边栏选项卡上，从“NEWOREXISTINGSUBNET”框中选择“新建”。 将“SUBNETID”字段保留空白。
 
-  SAP Azure Resource Manager 模板自动创建 Azure 虚拟网络和子网。
+  SAP Azure 资源管理器模板自动创建 Azure 虚拟网络和子网。
 
 > [!NOTE]
 > 还需要在同一个 Azure 虚拟网络实例中为 Active Directory 和 DNS 创建至少一个专用虚拟机。 该模板不创建这些虚拟机。
@@ -767,9 +767,9 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>准备体系结构模板 2 的基础结构
 
-可以借助这个适用于 SAP 的 Azure Resource Manager 模板来简化 SAP 体系结构模板 2 所需基础结构资源的部署。
+可以借助这个适用于 SAP 的 Azure 资源管理器模板来简化 SAP 体系结构模板 2 所需基础结构资源的部署。
 
-可从以下位置获取适用于此部署方案的 Azure Resource Manager 模板：
+可从以下位置获取适用于此部署方案的 Azure 资源管理器模板：
 
 * [Azure 应用商店映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
@@ -777,7 +777,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>准备体系结构模板 3 的基础结构
 
-可以准备基础结构并在 SAP 中配置**多 SID**。 例如，将附加的 SAP ASCS/SCS 实例添加到*现有*群集配置。 有关详细信息，请参阅[使用 Azure Resource Manager 在现有群集配置中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置][sap-ha-multi-sid-guide]。
+可以准备基础结构并在 SAP 中配置**多 SID**。 例如，将附加的 SAP ASCS/SCS 实例添加到*现有*群集配置。 有关详细信息，请参阅[使用 Azure 资源管理器在现有群集配置中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置][sap-ha-multi-sid-guide]。
 
 若要新建多 SID 群集，可以使用 [GitHub 上的多 SID 快速入门模板](https://github.com/Azure/azure-quickstart-templates)。
 若要新建多 SID 群集，需要部署以下三个模板：
@@ -936,7 +936,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 ### <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>为 Azure 内部负载均衡器设置静态 IP 地址
 
-SAP Azure Resource Manager 模板创建用于 SAP ASCS/SCS 实例群集和 DBMS 群集的 Azure 内部负载均衡器。
+SAP Azure 资源管理器模板创建用于 SAP ASCS/SCS 实例群集和 DBMS 群集的 Azure 内部负载均衡器。
 
 > [!IMPORTANT]
 > SAP ASCS/SCS 的虚拟主机名的 IP 地址与 SAP ASCS/SCS 内部负载均衡器 **pr1-lb-ascs** 的 IP 地址相同。
@@ -964,7 +964,7 @@ SAP Azure Resource Manager 模板创建用于 SAP ASCS/SCS 实例群集和 DBMS 
 
 ### <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则
 
-SAP Azure Resource Manager 模板创建所需的端口：
+SAP Azure 资源管理器模板创建所需的端口：
 * 一个 ABAP ASCS 实例，默认实例编号为 **00**
 * 一个 Java SCS 实例，默认实例编号为 **01**
 
@@ -1489,7 +1489,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
   图 58：默认的群集配置探测端口为 0__
 
-  端口号在 SAP Azure Resource Manager 模板中定义。 可在 PowerShell 中分配端口号。
+  端口号在 SAP Azure 资源管理器模板中定义。 可在 PowerShell 中分配端口号。
 
   若要为 **SAP <*SID*> IP** 群集资源设置新的 ProbePort 值，请运行以下 PowerShell 脚本。 更新环境的 PowerShell 变量。 运行该脚本后，系统会提示重新启动 SAP 群集组以激活更改。
 

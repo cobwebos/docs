@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fe6b9da2da2b0cf92bc479cdbe0e86475226751
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 39b5c70c8740bc06beded42e9066e3be196741a1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -247,7 +247,7 @@ ms.lasthandoff: 10/18/2017
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -518,12 +518,13 @@ Microsoft 允许将虚拟机部署到所谓的“Azure 区域”。 Azure 区域
 ### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Microsoft Azure 虚拟机的概念
 Microsoft Azure 提供基础结构即服务 (IaaS) 解决方案用于托管与本地虚拟化解决方案具有类似功能的虚拟机。 可以在 Azure 门户、PowerShell 或 CLI 中创建虚拟机，这些工具还提供部署和管理功能。
 
-Azure Resource Manager 可让你使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 可在应用程序生命周期的每个阶段中使用相同模板重复部署应用程序。
+Azure 资源管理器可让你使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 可在应用程序生命周期的每个阶段中使用相同模板重复部署应用程序。
 
 有关使用资源管理器模板的详细信息，请参阅以下文档：
 
 * [使用 Azure 资源管理器模板与 Azure CLI 部署和管理虚拟机][../../linux/create-ssh-secured-vm-from-template.md]
-* [使用 Azure Resource Manager 与 PowerShell 管理虚拟机][virtual-machines-deploy-rmtemplates-powershell]
+* 
+            [使用 Azure 资源管理器与 PowerShell 管理虚拟机][virtual-machines-deploy-rmtemplates-powershell]
 * <https://azure.microsoft.com/documentation/templates/>
 
 另一个引人注目的功能就是能够从虚拟机创建映像，这样，便可以准备某些存储库，并从中快速部署符合要求的虚拟机实例。
@@ -840,7 +841,8 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 * [安装 Azure CLI][xplat-cli]
 * [使用 Azure 资源管理器模板与 Azure CLI 部署和管理虚拟机][../../linux/create-ssh-secured-vm-from-template.md]
-* [将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用][xplat-cli-azure-resource-manager]
+* 
+            [将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理器配合使用][xplat-cli-azure-resource-manager]
 
 有关如何使用 Azure CLI 部署适用于 SAP 的 Azure 监视扩展，另请参阅[部署指南][planning-guide]中的[适用于 Linux VM 的 Azure CLI][deployment-guide-4.5.2] 一章。
 
@@ -1323,7 +1325,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 本文稍后介绍其他主要方案，这些方案将连接到在本地系统与 Azure 系统之间建立了站点到站点连接（VPN 隧道）或 Azure ExpressRoute 连接的跨界部署中的 SAP 系统。
 
 ### <a name="remote-access-to-sap-systems"></a>远程访问 SAP 系统
-使用 Azure Resource Manager 时，不再有类似于以前经典模型中的默认终结点。 只要符合以下情况，就可以打开 Azure ARM VM 的所有端口：
+使用 Azure 资源管理器时，不再有类似于以前经典模型中的默认终结点。 只要符合以下情况，就可以打开 Azure ARM VM 的所有端口：
 
 1. 未针对子网或网络接口定义网络安全组。 可通过所谓的“网络安全组”来保护发往 Azure VM 的网络流量。 有关详细信息，请参阅[什么是网络安全组 (NSG)？][virtual-networks-nsg]
 2. 未针对网络接口定义 Azure 负载均衡器   

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: db878f257f64ccc573a220c675cd373539dd5b17
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: c9630e575de15b404bd91cbeefc60d698c5da667
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="about-azure-storage-accounts"></a>关于 Azure 存储帐户
 
@@ -79,12 +79,12 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 
 5. 选择存储帐户的类型：“常规用途”或“Blob 存储”。 “常规用途”是默认值。
    
-    如果已选择“常规用途”，则指定性能层：“标准”或“高级”。 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](storage-introduction.md)和[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)。
+    如果已选择“常规用途”，则指定性能层：“标准”或“高级”。 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](storage-introduction.md)和[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../virtual-machines/windows/premium-storage.md)。
    
     如果已选择“Blob 存储”，则指定访问层：“经常访问”或“不常访问”。 默认设置为“热”。 有关如何使用存储帐户名称在 Azure 存储中定位对象的详细信息，请参阅 [Azure Blob 存储：不常访问和经常访问的层](../blobs/storage-blob-storage-tiers.md) 以了解更多详细信息。
 6. 选择存储帐户的复制选项：“LRS”、“GRS”、“RA-GRS”或“ZRS”。 默认值为“RA-GRS”。 有关 Azure 存储复制选项的更多详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 7. 选择想在其中创建新存储帐户的订阅。
-8. 指定新资源组或选择现有资源组。 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。
+8. 指定新资源组或选择现有资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 9. 选择存储帐户的地理区域。 有关哪些服务在哪个区域中可用的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services) 。
 10. 单击“创建”以创建存储帐户。
 

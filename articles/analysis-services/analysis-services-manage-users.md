@@ -4,7 +4,7 @@ description: "了解 Azure Analysis Services 中的身份验证和用户权限�
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: owend
-ms.openlocfilehash: e9667afff1bdc351e0ed5cd94bb5fcf946b46f3b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: e7fdb55ba29fbdc2f3d89fbb19c8b77bf2c05795
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/active-directory-administer.md)中的有效用户标识。
@@ -65,11 +65,11 @@ Excel 用户可使用 Windows 帐户、组织 ID（电子邮件地址）或外�
 
 数据库用户通过使用 Excel 或 Power BI 等客户端应用程序，连接模型数据库。 必须将用户添加到数据库角色。 数据库角色为数据库确定管理员、进程或读取权限。 具有管理员权限的数据库用户与服务器管理员不同，请务必了解这一点。 但默认情况下，服务器管理员也是数据库管理员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
 
-Azure 资源所有者。 资源所有者管理 Azure 订阅的资源。 资源所有者可通过以下方式在订阅中向“所有者角色”或“参与者角色”添加 Azure AD 用户标识：在 Azure 门户中使用访问控制或使用 Azure Resource Manager 模板。 
+Azure 资源所有者。 资源所有者管理 Azure 订阅的资源。 资源所有者可通过以下方式在订阅中向“所有者角色”或“参与者角色”添加 Azure AD 用户标识：在 Azure 门户中使用访问控制或使用 Azure 资源管理器模板。 
 
 ![Azure 门户中的访问控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure Resource Manager 模板完成的任务。 若要了解详细信息，请参阅[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。 
+此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure 资源管理器模板完成的任务。 若要了解详细信息，请参阅[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。 
 
 
 ## <a name="database-roles"></a>数据库角色
