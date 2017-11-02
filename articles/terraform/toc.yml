@@ -19,6 +19,8 @@
       href: terraform-create-vm-cluster-with-infrastructure.md
     - name: 为 VM 规模集预配基础结构
       href: terraform-create-vm-scaleset-network-disks-hcl.md
+    - name: 从 Packer 自定义映像预配 VM 规模集
+      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
 - name: 概念
   items:
     - name: Cloud Shell 集成

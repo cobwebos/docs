@@ -50,7 +50,7 @@
           href: msi-qs-configure-powershell-windows-vm.md
         - name: 使用 Azure CLI
           href: msi-qs-configure-cli-windows-vm.md
-        - name: 使用 Azure Resource Manager 模板
+        - name: 使用 Azure 资源管理器模板
           href: msi-qs-configure-template-windows-vm.md
         - name: 使用 Azure SDK
           href: msi-qs-configure-sdk-windows-vm.md
@@ -62,6 +62,12 @@
           href: msi-howto-assign-access-powershell.md
         - name: 使用 Azure CLI
           href: msi-howto-assign-access-cli.md
+    - name: 使用 VM MSI 访问 Azure Data Lake Store
+      items:
+        - name: 从 Windows VM 访问
+          href: msi-tutorial-windows-vm-access-datalake.md
+        - name: 从 Linux VM 访问
+          href: msi-tutorial-linux-vm-access-datalake.md
     - name: 使用 VM MSI 访问 Azure 资源管理器
       items:
         - name: 从 Windows VM 访问

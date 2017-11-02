@@ -73,6 +73,7 @@ sections:
           - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">监视 VM</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">管理 VM 上的安全性</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">使用 Visual Studio 创建持续集成管道</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-iis-sql">安装 SQL\IIS\.NET 堆栈</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">使用 SSL 保护 Web 服务器</a>
   - title: 免费 Pluralsight 视频培训
     items:

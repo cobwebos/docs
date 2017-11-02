@@ -1,6 +1,8 @@
 # 概述
 ## [什么是 Azure AD 域服务？](active-directory-ds-overview.md)
-## [它是否适合你？](active-directory-ds-comparison.md)
+## 它是否适合你？
+### [与 Windows Server AD 进行比较](active-directory-ds-comparison.md)
+### [与 Azure AD 加入进行比较](active-directory-ds-compare-with-azure-ad-join.md)
 ## [功能](active-directory-ds-features.md)
 ## [方案](active-directory-ds-scenarios.md)
 ## [同步的工作原理](active-directory-ds-synchronization.md)
@@ -36,6 +38,7 @@
 ### [为 SharePoint Server 配置对配置文件同步的支持](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [配置 Kerberos 约束委派](active-directory-ds-enable-kcd.md)
 ### [部署 Azure AD 应用程序代理](active-directory-ds-deploy-azure-app-proxy.md)
+## [删除托管域](active-directory-ds-disable-aadds.md)
 ## 故障排除
 ### [常见问题](active-directory-ds-faqs.md)
 ### [故障排除指南](active-directory-ds-troubleshooting.md)

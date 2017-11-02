@@ -31,7 +31,7 @@
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
 - name: 项目执行
   href: project-execution.md
-- name: 教程
+- name: 示例
   href: walkthroughs.md
   items:
     - name: Azure 机器学习
@@ -60,6 +60,12 @@
       href: walkthroughs-sql-server.md
     - name: 将 T-SQL 和 Python 与 SQL DW 配合使用
       href: walkthroughs-sql-data-warehouse.md
+- name: 培训
+  items:
+    - name: 适用于数据科学家的 TDSP
+      href: team-data-science-process-for-data-scientists.md
+    - name: 适用于 DevOps 的 TDSP
+      href: team-data-science-process-for-devops.md
 - name: 如何
   items:
     - name: 在 Azure 机器学习中使用 TDSP

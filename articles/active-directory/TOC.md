@@ -112,24 +112,23 @@
 #### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [使用证书](active-directory-reporting-api-with-certificates.md)
 
-## [管理密码](active-directory-passwords-overview.md)
+## 管理密码
+### [密码概述](active-directory-passwords-overview.md)
 ### 用户文档
 #### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
 #### [密码最佳做法](active-directory-secure-passwords.md)
 #### [注册自助密码重置](active-directory-passwords-reset-register.md)
-### [许可 SSPR](active-directory-passwords-licensing.md)
-### [部署 SSPR](active-directory-passwords-best-practices.md)
+### [SSPR 工作原理](active-directory-passwords-how-it-works.md)
+### [SSPR 部署指南](active-directory-passwords-best-practices.md)
+### [SSPR 策略](active-directory-passwords-policy.md)
+### [SSPR 自定义](active-directory-passwords-customize.md)
+### [SSPR 数据要求](active-directory-passwords-data.md)
+### [SSPR 报告](active-directory-passwords-reporting.md)
 ### IT 管理员：重置密码
 #### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
 #### [Azure 经典门户](active-directory-create-users-reset-password.md)
-### [了解 SSPR 策略](active-directory-passwords-policy.md)
-### [了解密码重置](active-directory-passwords-how-it-works.md)
-### [自定义 SSPR](active-directory-passwords-customize.md)
-### [SSPR 使用的数据](active-directory-passwords-data.md)
-### [针对 SSPR 进行报告](active-directory-passwords-reporting.md)
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [许可 SSPR](active-directory-passwords-licensing.md)
 ### [密码写回](active-directory-passwords-writeback.md)
-### [密码哈希同步](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
 ### [故障排除](active-directory-passwords-troubleshoot.md)
 ### [常见问题](active-directory-passwords-faq.md)
 
@@ -313,8 +312,6 @@
 ##### [补救方法](active-directory-conditional-access-device-remediation.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [常见问题](active-directory-conditional-faqs.md)
-#### [经典门户](active-directory-conditional-access.md)
-##### [入门](active-directory-conditional-access-azuread-connected-apps.md)
 
 ### Windows Hello
 #### [无密码身份验证](active-directory-azureadjoin-passport.md)

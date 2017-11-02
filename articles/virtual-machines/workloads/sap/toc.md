@@ -9,6 +9,7 @@
 ## [故障排除和监视](troubleshooting-monitoring.md)
 ## 如何
 ### [设置使用 STONITH 的 HA](ha-setup-with-stonith.md)
+### [类型 II SKU 的 OS 备份](os-backup-type-ii-skus.md)
 # Azure 虚拟机上的 SAP HANA
 ## [单实例 SAP HANA](hana-get-started.md)
 ## [S/4 HANA 或 BW/4 HANA SAP CAL 部署指南](cal-s4h.md)
