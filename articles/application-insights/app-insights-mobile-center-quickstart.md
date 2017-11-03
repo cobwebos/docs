@@ -7,13 +7,14 @@ author: numberbycolors
 ms.author: daviste
 ms.date: 10/05/2017
 ms.service: application-insights
+ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c10af49ddc1642967d76314b6b7ac36fe806e603
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: a8af65a9a9f31200f833a47f811ae50a0a9d2f9b
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="start-analyzing-your-mobile-app-with-mobile-center-and-application-insights"></a>开始使用 Mobile Center 和 Application Insights 分析移动应用
 

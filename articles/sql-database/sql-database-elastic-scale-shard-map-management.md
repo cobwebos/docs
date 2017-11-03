@@ -9,17 +9,17 @@ editor:
 ms.assetid: 0e9d647a-9ba9-4875-aa22-662d01283439
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f626cf417d8b3f1761f3c900d49039b3ff83b093
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 604690325fd755dcf5c997cc281fe9e5825c51a4
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 若要轻松地扩大 SQL Azure 上的数据库，请使用分片映射管理器。 分片映射管理器是一个特殊的数据库，它维护一个分片集中有关所有分片 （数据库）的全局映射信息。 元数据允许应用程序基于**分片键**值连接到正确的数据库。 此外，在集中的每个分片都包含跟踪本地分片数据的映射 （称为 **shardlet**）。 

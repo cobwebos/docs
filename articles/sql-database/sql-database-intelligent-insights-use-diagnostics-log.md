@@ -12,14 +12,14 @@ ms.custom: monitor & tune
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: b075253c12918df63a464de79e2ab2ff43103da1
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 358986f58c431aebfe7b41daa8c40ba641dc408a
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
@@ -76,7 +76,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 
 ### <a name="detection-category"></a>检测类别
 
-类别 (category) 属性介绍了可检测性能模式的类别。 请查看下表，了解可检测性能模式的所有可能类别。 有关详细信息，请参阅[使用 Intelligent Insights 解决数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+类别 (category) 属性介绍了可检测性能模式的类别。 请查看下表，了解可检测性能模式的所有可能类别。 有关详细信息，请参阅[使用 Intelligent Insights 排查数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 
 相应地，诊断日志文件中输出的详细信息可能因检测到的性能问题而异。
 

@@ -8,17 +8,17 @@ author: MladjoA
 ms.assetid: a8bf0e2c-bc74-44d0-9b1e-bcc9a6aa2e33
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 7e245cf1fb28eef26739b55967de3f05128f38c6
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 6389702b1be5e52c7191e6e57d17b48289e800b2
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 使用弹性查询功能（处于预览状态）可以跨 Azure SQL 数据库中的多个数据库运行 Transact-SQL 查询。 它允许执行跨数据库查询以访问远程表，以及连接 Microsoft 和第三方工具（Excel、PowerBI、Tableau 等）以跨多个数据库的数据层进行查询。 使用此功能，可以将查询扩大到 SQL 数据库中的较大数据层，并直观显示商业智能 (BI) 报表中的结果。

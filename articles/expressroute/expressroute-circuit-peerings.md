@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2017
+ms.date: 10/30/2017
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 66f4279b7adf9953474739a2e45f16ba848b08e9
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: c8f3c0e87a052b327e9949acd3e7db1d28c1eb46
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 线路和路由域
  必须订购一条 ExpressRoute 线路，以通过连接提供商将本地基础结构连接到 Microsoft。 下图展示了 WAN 与 Microsoft 之间连接的逻辑表示。

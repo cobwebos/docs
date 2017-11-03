@@ -2,21 +2,21 @@
 title: "使用 Azure Site Recovery（预览版）为 Azure VM 设置到辅助 Azure 区域的灾难恢复"
 description: "了解如何使用 Azure Site Recovery 服务为 Azure VM 设置到其他 Azure 区域的灾难恢复。"
 services: site-recovery
-author: rajani-janaki-ram
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/19/2017
-ms.author: rajanaki
+ms.date: 11/01/2017
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c9cb2bfe459421ee6e28b9d83dffc569b7592c1f
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 2608e0e0c87df1e7c6d034cf0977ed0e16b128cf
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>为 Azure VM 设置到辅助 Azure 区域的灾难恢复（预览版）
 

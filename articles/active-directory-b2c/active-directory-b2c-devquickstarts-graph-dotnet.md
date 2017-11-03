@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: 5502378f31c7ba457a824473d2fc13e5a90b4760
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: ccd8bf902f707390f80e3c377e60dd35d535b4b5
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
 
-[!NOTE]
-目前，必须使用 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) 管理 Azure AD B2C 目录中的用户。
+>[!NOTE]
+>目前，必须使用 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) 管理 Azure AD B2C 目录中的用户。
 
 Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着许多常见的租户管理任务需要以编程方式执行。 用户管理是一个主要示例。 可能需要将现有用户存储迁移到 B2C 租户。 可能想要在自己的页面上托管用户注册，并在 Azure AD B2C 目录后台创建用户帐户。 这些类型的任务需要能够创建、读取、更新和删除用户帐户。 可以通过使用 Azure AD 图形 API 来执行这些任务。
 

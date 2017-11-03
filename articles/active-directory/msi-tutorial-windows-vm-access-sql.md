@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/12/2017
+ms.date: 10/27/2017
 ms.author: skwan
-ms.openlocfilehash: f2cfef1c2aed90e111d06fc3090973e093fd7a4f
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 1b13255c2bbb0d97c33851b89d071036c47e9cfa
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure SQL
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Windows 虚拟机 (VM) 的托管服务标识 (MSI) 来访问 Azure SQL 服务器。 托管服务标识由 Azure 自动管理，可用于通过支持 Azure AD 身份验证的服务的身份验证，这样就无需在代码中插入凭据。 学习如何：
+本教程介绍如何使用 Windows 虚拟机 (VM) 的托管服务标识 (MSI) 来访问 Azure SQL 服务器。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
 
 > [!div class="checklist"]
 > * 在 Windows VM 上启用 MSI 
@@ -133,7 +133,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 
 ### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>为 SQL 服务器启用 Azure AD 身份验证
 
-创建组并将 VM MSI 添加到成员身份后，可使用以下步骤[配置 SQL 服务器的 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)：
+创建组并将 VM MSI 添加到成员身份后，可使用以下步骤[配置 SQL 服务器的 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)：
 
 1.  在 Azure 门户的左侧导航栏中选择“SQL 服务器”。
 2.  单击要启用 Azure AD 身份验证的 SQL 服务器。

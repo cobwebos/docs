@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
-ms.author: bwren
-ms.openlocfilehash: 75028b4fbda43d90f56690a33c7eb624fce049c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: e11d431c03be0d2aff05b2ceda8d3df41441a7ec
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>在 Application Insights 中使用交互式工作簿调查和共享使用情况数据
 

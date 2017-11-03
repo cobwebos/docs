@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: spelluru
-ms.openlocfilehash: 02d9102bfc9b0d8084988609282f2c78b5789e7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8a58f55bd627594145661e1c8d5c1da360cd1e30
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 如果存在以下情况之一，则必须将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络 (VNet)： 
@@ -26,6 +26,9 @@ ms.lasthandoff: 10/11/2017
 - 想要从 Azure-SSIS 集成运行时中运行的 SSIS 包连接到本地数据存储。
 
  使用 Azure 数据工厂版本 2（预览版）可将 Azure-SSIS 集成运行时加入经典 VNet。 目前尚不支持 Azure 资源管理器 VNet。 但是，可根据以下部分中所示解决此问题。 
+
+ > [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 如果 SSIS 包仅访问公有云数据存储，则不需要将 Azure-SSIS IR 加入 VNet。 如果 SSIS 包访问本地数据存储，则必须将 Azure-SSIS IR 加入已连接到本地网络的 VNet。 如果 SSIS 目录承载于不在 VNet 上的 Azure SQL 数据库中，则需要打开相应的端口。 如果 SSIS 目录承载在经典 VNet 上的 Azure SQL 托管实例中，则可将 Azure-SSIS IR 加入到相同的经典 VNet，或加入到已建立经典到经典 VNet 连接、与 Azure SQL 托管实例所在的 VNet 不同的经典 VNet 中。 以下部分提供了更多详细信息。  
 

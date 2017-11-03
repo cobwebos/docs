@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
-ms.openlocfilehash: 8e464348660114f5e99b4739bb7761b7e53ebf99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 544ba6484b23da425d53594622122b1e18b92359
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
 在较大的 Azure 客户中，一种常见情况是需要向 Internet 公开某个双层应用程序，同时允许从本地数据中心访问后端层。 本文档指导实施一种使用用户定义的路由 (UDR)、VPN 网关和网络虚拟设备部署双层环境的方案，该方案可满足以下要求：
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
   * **AZF3**。 管理员可从本地数据中心访问的管理防火墙，它已连接到用于管理所有防火墙设备的管理子网。 可以在应用商店中查找 2-NIC 虚拟设备模板，或者直接向设备供应商请求提供此类模板。
 
 ## <a name="user-defined-routing-udr"></a>用户定义的路由 (UDR)
-Azure 中的每个子网可以链接到用于定义该子网中发起的流量路由方式的 UDR 表。 如果未定义 UDR，Azure 将使用默认路由来允许流量从一个子网流向另一个子网。 若要更好地理解 UDR，请访问[什么是用户定义的路由和 IP 转发](virtual-networks-udr-overview.md#ip-forwarding)。
+Azure 中的每个子网可以链接到用于定义该子网中发起的流量路由方式的 UDR 表。 如果未定义 UDR，Azure 将使用默认路由来允许流量从一个子网流向另一个子网。 若要更好地理解 UDR，请访问[什么是用户定义的路由和 IP 转发](virtual-networks-udr-overview.md)。
 
 为了确保根据上述最后一项要求通过适当的防火墙设备进行通信，需要在 **azurevnet** 中创建以下包含 UDR 的路由表。
 
@@ -110,7 +110,7 @@ Azure 中的每个子网可以链接到用于定义该子网中发起的流量�
 
 此虚拟设备 VM 必须能够接收不发送给自身的传入流量。 若要允许 VM 接收发送到其他目标的流量，必须为该 VM 启用 IP 转发。 这是 Azure 设置，不是来宾操作系统中的设置。 虚拟设备仍需要运行某种类型的应用程序来处理传入流量并相应地路由这些流量。
 
-有关 IP 转发的详细信息，请访问[什么是用户定义的路由和 IP 转发](virtual-networks-udr-overview.md#ip-forwarding)。
+有关 IP 转发的详细信息，请访问[什么是用户定义的路由和 IP 转发](virtual-networks-udr-overview.md)。
 
 例如，假设在 Azure vnet 中具有以下设置：
 

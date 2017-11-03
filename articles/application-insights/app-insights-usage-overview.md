@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/10/2017
-ms.author: bwren
-ms.openlocfilehash: 6985467658ae8a52d3c963dd1965c0711cac4ca7
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mbullwin
+ms.openlocfilehash: 57d9ebc5a9689a6f1d48464aa20ffdc7fa61b00f
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 

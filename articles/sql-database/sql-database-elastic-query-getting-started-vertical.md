@@ -8,17 +8,17 @@ author: torsteng
 ms.assetid: e5b44b10-c432-4f96-b20e-08615ff4d5dd
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: torsteng
-ms.openlocfilehash: 17158c4960e9ba9251524659c90af9aec1316774
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca715c0ef41ccb4aed2924898d7729bed659b0ca
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
 适用于 Azure SQL 数据库弹性数据库查询（预览版），可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。 本主题适用于[垂直分区数据库](sql-database-elastic-query-vertical-partitioning.md)。  

@@ -13,14 +13,14 @@ ms.custom: migrate
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 10/23/2017
 ms.author: rickbyh
-ms.openlocfilehash: 8701b58a0b1e0c3c153da757752b00bca9a83bb0
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 5d9cfce0453bb32bf3512b5b8e3ed25c9c2fdbdf
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异   
 从 SQL Server [将数据库迁移](sql-database-cloud-migrate.md)到 Azure SQL Server 时，可能会发现需要对数据库进行一些重新设计才能迁移 SQL Server。 本文提供相关指南来帮助你执行此重新设计和了解重新设计是必需的基本原因。 若要检测不兼容性，请使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/24/2017
+ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: a9bec774b5482de87eefcd0c87844a2adbd98bbe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c221fe94c5301b0a36882d5ae1c57e523002ecc4
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>使用 Site Recovery 进行本地到本地 Hyper-V 复制的测试结果
 

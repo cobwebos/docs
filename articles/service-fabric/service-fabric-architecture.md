@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/19/2017
+ms.date: 10/12/2017
 ms.author: rsinha
-ms.openlocfilehash: 3cf019bf9a08574c984e92985452df438f3eeb77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d1f9d6136622e0e9fc1e725d8230dbedd6af24a
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric 体系结构
 Service Fabric 是利用分层子系统而生成的。 使用这些子系统，可以编写下面这样的应用程序：

@@ -3,7 +3,7 @@ title: "使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | 
 description: "为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和使用情况分析。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
-ms.author: bwren
-ms.openlocfilehash: cb247ee68da88265f7c51258644064463d44f8b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: d94abbd24aee5217cc460e0c48df177aaff80920
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 

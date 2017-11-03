@@ -4,7 +4,7 @@ description: "Azure 中的 Analysis Services 简介。"
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 83d7a29c-57ae-4aa0-8327-72dd8f00247d
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: 8b3a538fc0fe34d0b7af8a99510cfb19abd32d55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6be396f22ee364e7746038b2243162e775c8c54
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -57,7 +57,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |----------|--------|--------------|
 |  巴西南部<br> 加拿大中部<br> 美国东部 2<br> 美国中北部<br> 美国中南部<br> 美国中西部<br> 美国西部 | 欧洲北部<br> 英国南部<br> 欧洲西部 |   澳大利亚东南部<br> 日本东部<br> 东南亚<br> 印度西部  |
 
-将会不断添加新区域，因此此列表可能并不完整。 通过 Azure 门户或 Azure Resource Manager 模板创建服务器时，需选择位置。 若要获得最佳性能，请选择最接近最大用户群的位置。 请在多个区域的冗余服务器上部署模型，确保[高可用性](analysis-services-bcdr.md)。
+将会不断添加新区域，因此此列表可能并不完整。 通过 Azure 门户或 Azure 资源管理器模板创建服务器时，需选择位置。 若要获得最佳性能，请选择最接近最大用户群的位置。 请在多个区域的冗余服务器上部署模型，确保[高可用性](analysis-services-bcdr.md)。
 
 ## <a name="migrate-your-existing-tabular-models"></a>迁移现有的表格模型
 如果现在已经有本地 SQL Server Analysis Services 模型解决方案，则不需重大更改即可迁移到 Azure Analysis Services。 若要进行迁移，可以使用 SSDT 将模型部署到服务器。 也可以在 SSMS 中使用备份和还原或 TMSL。
@@ -80,7 +80,7 @@ Azure Analysis Services 支持[连接到数据源](analysis-services-datasource.
 通过使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 管理服务器和模型数据库。 连接到云中的服务器。 直接从 XMLA 查询窗口运行 TMSL 脚本，然后通过 TMSL 脚本自动执行任务。 新特性和功能推出迅速 - SSMS 每月进行更新。
 
 #### <a name="powershell"></a>PowerShell
-服务器资源管理任务，如创建服务器、挂起或恢复服务器操作，或更改服务级别（层），都要使用 Azure Resource Manager (AzureRM) cmdlet。 用于管理数据库的其他任务（例如添加或删除角色成员、处理或运行 TMSL 脚本）使用 SqlServer 模块中的 cmdlet。 AzureRM 和 SQLServer 模块均在 [PowerShell 库](https://www.powershellgallery.com/)中提供。
+服务器资源管理任务，如创建服务器、挂起或恢复服务器操作，或更改服务级别（层），都要使用 Azure 资源管理器 (AzureRM) cmdlet。 用于管理数据库的其他任务（例如添加或删除角色成员、处理或运行 TMSL 脚本）使用 SqlServer 模块中的 cmdlet。 AzureRM 和 SQLServer 模块均在 [PowerShell 库](https://www.powershellgallery.com/)中提供。
 
 
 ## <a name="your-data-is-secure"></a>你的数据是安全的

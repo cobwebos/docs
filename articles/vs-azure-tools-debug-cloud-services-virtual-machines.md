@@ -3,7 +3,7 @@ title: "在 Visual Studio 中调试 Azure 云服务或虚拟机 | Microsoft Docs
 description: "在 Visual Studio 中调试云服务或虚拟机"
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
+author: mikejo
 manager: ghogen
 editor: 
 ms.assetid: 945e06e0-2100-41af-b218-72347367ddab
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 66f0a9b591b812a52dc6037dcfcb64a2c250f05c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mikejo
+ms.openlocfilehash: a303e080bc847daf023eed2e9ba1ffc31e340160
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>在 Visual Studio 中调试云服务或虚拟机
 Visual Studio 提供了不同的选项来调试 Azure 云服务和虚拟机。
@@ -37,7 +37,7 @@ Visual Studio 提供了不同的选项来调试 Azure 云服务和虚拟机。
     UI 的左窗格显示了当前部署到计算模拟器的服务以及每项服务正在运行的角色实例。 可选择服务或角色，以便在右窗格中显示生命周期、日志记录和诊断信息。 如果将焦点置于包括窗口的上边距中，则该窗口将展开以填写右侧窗格。
 3. 通过选择“调试”菜单上的命令并设置代码中的断点来单步执行应用程序。 在调试器中单步执行应用程序时，窗格会随着应用程序的当前状态而更新。 当停止调试时，将删除应用程序部署。 如果应用程序包含 Web 角色，并且已将启动操作属性设置为启动 Web 浏览器，Visual Studio 会在浏览器中启动 Web 应用程序。 如果更改服务配置中某个角色的实例数，则必须停止云服务，然后重新启动调试，以便可以调试该角色的这些新实例。
 
-    注意：停止运行或调试服务时，不会停止本地计算模拟器和存储模拟器。 必须从通知区域显式将其停止。
+    **注意：**停止运行或调试服务时，不会停止本地计算模拟器和存储模拟器。 必须从通知区域显式将其停止。
 
 ## <a name="debug-a-cloud-service-in-azure"></a>在 Azure 中调试云服务
 若要从远程计算机调试云服务，必须在部署云服务时显式启用该功能，以便在运行角色实例的虚拟机上安装所需的服务（例如 msvsmon.exe）。 如果在发布服务时未启用远程调试，则必须在启用远程调试的情况下重新发布该服务。

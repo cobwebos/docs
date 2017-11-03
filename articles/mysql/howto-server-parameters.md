@@ -1,5 +1,5 @@
 ---
-title: "如何在用于 MySQL 的 Azure 数据库中配置服务器参数 | Microsoft 文档"
+title: "如何在用于 MySQL 的 Azure 数据库中配置服务器参数 | Microsoft Docs"
 description: "本文介绍如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置 MySQL 服务器参数。"
 services: mysql
 author: v-chenyh
@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 10/10/2017
-ms.openlocfilehash: a18f163cbea0dac0d8272eaa24d0d2e03542c6ca
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 06c7f9f6bd49ebfaf03b04cb6e30b963593bfb35
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -41,10 +41,10 @@ ms.lasthandoff: 10/12/2017
 | 基本 100  | 2560 | 100 | 
 | 标准 100 | 2560 | 200 | 
 | 标准 200 | 5120 | 400 | 
-| 标准 400 | 10240 | 400 | 
+| 标准 400 | 10240 | 800 | 
 | 标准 800 | 20480 | 1600 |
 
 版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 的其他服务器参数默认值。
 
 ## <a name="next-steps"></a>后续步骤
-- [适用于 MySQL 的 Azure 数据库的连接库](concepts-connection-libraries.md)。
+- [Azure Database for MySQL 的连接库](concepts-connection-libraries.md)。

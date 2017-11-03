@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2015
-ms.author: bwren
-ms.openlocfilehash: 3b6da89cc33cda713b483a2af3cbb493a03d6bec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 46f148cc69a8e36500dc351f74fa87576eb86a6b
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>使用 PowerShell 为 Azure Web 应用设置 Application Insights
 可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](app-insights-overview.md)[发送 Azure 诊断](app-insights-azure-diagnostics.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
 
 ## <a name="azure-template"></a>Azure 模板
-如果 Web 应用在 Azure 中，并且使用 Azure Resource Manager 模板创建资源，可以通过将以下内容添加到资源节点来配置 Application Insights：
+如果 Web 应用在 Azure 中，并且使用 Azure 资源管理器模板创建资源，可以通过将以下内容添加到资源节点来配置 Application Insights：
 
     {
       resources: [

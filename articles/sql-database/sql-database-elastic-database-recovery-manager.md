@@ -1,5 +1,5 @@
 ---
-title: "使用恢复管理器解决分片映射问题 | Microsoft 文档"
+title: "使用恢复管理器解决分片映射问题 | Microsoft Docs"
 description: "使用 RecoveryManager 类解决分片映射问题"
 services: sql-database
 documentationcenter: 
@@ -8,17 +8,17 @@ author: ddove
 ms.assetid: 45520ca3-6903-4b39-88ba-1d41b22da9fe
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: ddove
-ms.openlocfilehash: e60e2295484873ea15d52108b7d619319a57827f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 967a64fa41a9f9ff16ce173b76231052b22cda99
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>使用 RecoveryManager 类解决分片映射问题
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) 类使 ADO.Net 应用程序能够轻松检测并更正分片数据库环境中全局分片映射 (GSM) 与本地分片映射 (LSM) 中的任何不一致性。 

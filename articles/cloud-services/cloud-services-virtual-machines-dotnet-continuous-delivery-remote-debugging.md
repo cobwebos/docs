@@ -3,7 +3,7 @@ title: "使用持续交付启用远程调试 | Microsoft Docs"
 description: "了解在使用持续交付部署到 Azure 时如何启用远程调试"
 services: cloud-services
 documentationcenter: .net
-author: kraigb
+author: mikejo
 manager: ghogen
 editor: 
 ms.assetid: 7d423639-3b2f-4ca5-ac5a-9ac19a217c29
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 7a8a853a93e3e9915f687a20c871444e6a0de50d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mikejo
+ms.openlocfilehash: c2bd67afc0c289de94019497e57b57f97a759f3a
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="enable-remote-debugging-when-using-continuous-delivery-to-publish-to-azure"></a>使用持续交付功能发布到 Azure 时如何启用远程调试
 使用[持续交付](cloud-services-dotnet-continuous-delivery.md)发布到 Azure 时，可通过执行以下步骤，在 Azure 中针对云服务或虚拟机启用远程调试。

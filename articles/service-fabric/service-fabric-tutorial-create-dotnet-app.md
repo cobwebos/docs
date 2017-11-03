@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 51d580e9594bc3fb43a812395d1dda505a83ead1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a095663b7e716fd63322c9f89f67a1f3187638b
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 本教程是一个系列中的第一部分。  其中介绍了如何使用 ASP.NET Core Web API 前端和有状态后端服务创建 Azure Service Fabric 应用程序以存储数据。 完成后，将生成一个投票应用程序，其中包含 ASP.NET Core Web 前端，用于将投票结果保存到群集的有状态后端服务中。 如果不想手动创建投票应用程序，可以[下载已完成应用程序的源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)，跳到[大致了解投票示例应用程序](#walkthrough_anchor)。
@@ -333,7 +333,7 @@ Service Fabric 允许使用 Reliable Collections 直接在服务内以一致、�
 
     Visual Studio 会创建一个服务项目，并在解决方案资源管理器中显示它们。
 
-    ![解决方案资源管理器](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-service.png)
+    ![解决方案资源管理器](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
 
 ### <a name="add-the-votedatacontrollercs-file"></a>添加 VoteDataController.cs 文件
 

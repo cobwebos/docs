@@ -13,14 +13,14 @@ ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: sqldb-design
+ms.workload: Active
 ms.date: 02/01/2017
 ms.author: srinia
-ms.openlocfilehash: 3d8e3a05ae067fc9b2d52e47c4c49759c940477e
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: eef48cfcbc7d6c241b5ece863df0be6ecad78ca7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="design-patterns-for-multi-tenant-saas-applications-and-azure-sql-database"></a>多租户 SaaS 应用程序与 Azure SQL 数据库的设计模式
 可以在本文中了解云环境中运行的多租户软件即服务 (SaaS) 数据库应用程序的要求和通用数据体系结构模式。 其中还说明了需要考虑的因素，以及不同设计模式的利弊取舍。 借助 Azure SQL 数据库中的弹性池和弹性工具，可以在不影响其他目标的情况下达到特定的要求。

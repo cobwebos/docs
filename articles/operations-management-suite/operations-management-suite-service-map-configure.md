@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 4c5c8aacd2d104b8d6074b90eeffc32b29fc50f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: daef11a0cea11b0f6633ab32f7d84fac4591180a
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>在 Operations Management Suite 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -283,6 +283,7 @@ Linux：查找名为“microsoft-dependency-agent”的运行中进程
 - 美国东部
 - 欧洲西部
 - 美国中西部
+- 东南亚
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统

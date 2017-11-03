@@ -12,14 +12,14 @@ ms.custom: reference
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 3861814974b95f0c65879158cb02ec727a25c99f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fa21cf9cbd1680ddd855189f50af50e1068ccd5
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>借助 Azure，SnelStart 以每月 1,000 个新 Azure SQL 数据库的速度快速扩展其业务服务
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
@@ -84,7 +84,7 @@ Azure 平台模型消除了基础结构开销，使 SnelStart 能够使用 C# �
 > 
 > 
 
-此外，SnelStart Web 服务还使得客户和会计师能够轻松访问 Azure SQL 数据库弹性池中的数据。 此 SaaS 模型结合数据库弹性与 Azure Resource Manager，可为 SnelStart 提供伸缩性功能来为每项 Azure 部署提供辅助。 项目实施可以使用 C# 管理库完全自动化。
+此外，SnelStart Web 服务还使得客户和会计师能够轻松访问 Azure SQL 数据库弹性池中的数据。 此 SaaS 模型结合数据库弹性与 Azure 资源管理器，可为 SnelStart 提供伸缩性功能来为每项 Azure 部署提供辅助。 项目实施可以使用 C# 管理库完全自动化。
 
 ![SnelStart 体系结构](./media/sql-database-implementation-snelstart/figure1.png)
 

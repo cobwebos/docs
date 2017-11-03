@@ -9,17 +9,17 @@ author: tmullaney
 ms.assetid: e72d3cfe-e9be-4326-b776-9c6d96c0a18e
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
-ms.openlocfilehash: 621cae68927bffcfe7f3f49d11826ca3bb2f2c4c
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 4b4ec29bb53bdce413dadf7cb0751433b9ca686c
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 [弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级别安全性 (RLS)](https://msdn.microsoft.com/library/dn765131) 提供了一组强大功能，可方便用户灵活高效地通过 Azure SQL 数据库缩放多租户应用程序的数据层。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 

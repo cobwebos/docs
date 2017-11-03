@@ -13,14 +13,14 @@ ms.devlang:
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 009bc990439b95967f0647d1745cbb220b8ca70e
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 88feffc13690a3a33f757a43972c5ef1fe967b7f
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>准备异地复制的 Azure 容器注册表
 
@@ -38,13 +38,17 @@ Azure 容器注册表是部署在 Azure 中的专用 Docker 注册表，能使�
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.19 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+本教程要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 本教程假定基本了解核心 Docker 的概念，如容器、容器映像和基本的 Docker 命令。 如需要，请参阅 [Docker 入门]( https://docs.docker.com/get-started/)，了解容器基本知识。
 
 若要完成本教程，需要 Docker 开发环境。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
 
 Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 因此，我们建议在本地安装 Azure CLI 和 Docker 开发环境。
+
+> [!IMPORTANT]
+> Azure 容器注册表中的异地复制功能当前位于“预览”中。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+>
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 

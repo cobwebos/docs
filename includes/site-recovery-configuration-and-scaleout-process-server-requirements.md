@@ -6,7 +6,7 @@
 | 磁盘可用空间（进程服务器缓存） | 600 GB
 | 磁盘可用空间（保留磁盘） | 600 GB|
 | **软件** | |
-| 操作系统版本 | Windows Server 2012 R2 |
+| 操作系统版本 | Windows Server 2012 R2 <br> Windows Server 2016 |
 | 操作系统区域设置 | 美国英语|
 | VMware vSphere PowerCLI 版本 | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server 角色 | 不要启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V |

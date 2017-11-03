@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: b41754e74708a095d95eee31da5e304771a6ae05
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: affa68b6aeedb031914b12dac711d93c7ed4a47a
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-a-user-defined-route---azure-cli"></a>创建用户定义的路由 - Azure CLI
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/20/2017
 
 ![用户定义路由](./media/create-user-defined-route/user-defined-routes.png)
 
-本文提供通过资源管理器部署模型（创建用户定义的路由时建议使用的部署模型）创建用户定义的路由的步骤。 如需创建用户定义的路由（经典），请参阅[创建用户定义的路由（经典）](virtual-network-create-udr-classic-cli.md)。 如果不熟悉 Azure 的部署模型，请阅读[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md#user-defined-routes)。
+本文提供通过资源管理器部署模型（创建用户定义的路由时建议使用的部署模型）创建用户定义的路由的步骤。 如需创建用户定义的路由（经典），请参阅[创建用户定义的路由（经典）](virtual-network-create-udr-classic-cli.md)。 如果不熟悉 Azure 的部署模型，请阅读[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md#user-defined)。
 
 ## <a name="create-routes-and-network-virtual-appliance"></a>创建路由和网络虚拟设备
 

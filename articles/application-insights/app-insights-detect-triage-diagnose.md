@@ -1,7 +1,7 @@
 ---
 title: "AzureApplication Insights for DevOps 概述 | Microsoft Docs"
 description: "了解如何在 DevOps 环境中使用 Application Insights。"
-author: CFreemanwa
+author: mrbullwinkle
 services: application-insights
 documentationcenter: 
 manager: carmonm
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
+ms.custom: mvc
 ms.topic: overview
 ms.date: 06/26/2017
-ms.author: bwren
-ms.openlocfilehash: 05362ab6567d8dbc44f4015c77203eb1abfc2914
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 

@@ -4,7 +4,7 @@ description: "使用 PowerShell 管理 Azure Analysis Services。"
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 ms.assetid: 
 ms.service: analysis-services
@@ -12,19 +12,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: 385dd7798893447817dfc2c3a3538a13409ab6e3
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 52c74feacb8cf2e7005f6b284d7b55078449dc79
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>使用 PowerShell 管理 Azure Analysis Services
 
 本文介绍用于执行 Azure Analysis Services 服务器和数据管理任务的 PowerShell cmdlet。 
 
-服务器管理任务，如创建或删除服务器、挂起或恢复服务器操作，或更改服务级别（层），都要使用 Azure Resource Manager (AzureRM) cmdlet。 用于管理数据库的其他任务（如添加或删除角色成员、处理或分区）使用与 SQL Server Analysis Services 相同的 SqlServer 模块中包含的 cmdlet。
+服务器管理任务，如创建或删除服务器、挂起或恢复服务器操作，或更改服务级别（层），都要使用 Azure 资源管理器 (AzureRM) cmdlet。 用于管理数据库的其他任务（如添加或删除角色成员、处理或分区）使用与 SQL Server Analysis Services 相同的 SqlServer 模块中包含的 cmdlet。
 
 ## <a name="permissions"></a>权限
 大多数 PowerShell 任务要求用户在所管理的 Analysis Services 服务器上具有管理员权限。 已计划的 PowerShell 任务是无人参与操作。 运行计划程序的帐户必须具有对 Analysis Services 服务器的管理特权。 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/12/2017
 对于使用 AzureRm cmdlet 进行的服务器操作，帐户或运行计划程序的帐户还必须属于 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 中资源的所有者角色。 
 
 ## <a name="server-operations"></a>服务器操作 
-Azure Analysis Services cmdlet 包含在 [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) 组件模块中。 若要安装 AzureRM cmdlet 模块，请参阅 PowerShell 库中的 [Azure Resource Manager cmdlet](/powershell/azure/overview)。
+Azure Analysis Services cmdlet 包含在 [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) 组件模块中。 若要安装 AzureRM cmdlet 模块，请参阅 PowerShell 库中的 [Azure 资源管理器 cmdlet](/powershell/azure/overview)。
 
 |Cmdlet|说明| 
 |------------|-----------------| 

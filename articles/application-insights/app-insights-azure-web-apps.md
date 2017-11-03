@@ -3,7 +3,7 @@ title: "监视 Azure Web 应用的性能 | Microsoft 文档"
 description: "Azure Web 应用的应用程序性能监视。 对负载和响应时间、依赖项信息绘制图表，并对性能设置警报。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: azure-portal
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
-ms.author: bwren
-ms.openlocfilehash: dd6c2a1acdcd3b933bed536fd2bb1d83e1e593c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: e3615280ec902833248d9acc1c9348d68e5c5e82
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-azure-web-app-performance"></a>监视 Azure Web 应用性能
 在 [Azure 门户](https://portal.azure.com)中，可为 [Azure Web 应用](../app-service/app-service-web-overview.md)设置应用程序性能监视。 [Azure Application Insights](app-insights-overview.md) 将检测应用，将其活动的相关遥测数据发送到 Application Insights 服务，以便在其中存储和分析。 此处的指标图表和搜索工具可用于帮助诊断问题、改善性能以及评估使用情况。

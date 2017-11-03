@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 3ff1b0bdd2397387910c31e25ddbc50ffc0bd1c4
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 47b3f3b0a0faab6daa4ff64230128fc0ad3510e9
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 PHP Web 应用
 
@@ -73,7 +73,7 @@ php -S localhost:8080
 
 ## <a name="create-a-web-app-with-built-in-image"></a>使用内置映像创建 Web 应用
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-php-no-h.md)] 
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
 浏览到该站点查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
 
@@ -83,9 +83,7 @@ http://<app name>.azurewebsites.net
 
 ![空 Web 应用页面](media/quickstart-php/app-service-web-service-created.png)
 
-已使用内置映像创建了空的新 Web 应用并启用了 Git 部署。
-
-[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)]
+[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 2, done.

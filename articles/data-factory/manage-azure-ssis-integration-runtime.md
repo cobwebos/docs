@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: spelluru
-ms.openlocfilehash: 780e5673b5ed159a7f170373d54fea7c1713a910
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc0ed958a9e1018ed9f06fdcc94873ae5420ba95
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="manage-an-azure-ssis-integration-runtime"></a>管理 Azure-SSIS 集成运行时
 [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)一文介绍了如何使用 Azure 数据工厂创建 Azure-SSIS 集成运行时。 本文对上述文章做了补充，提供有关如何停止、启动、重新配置或删除 Azure-SSIS 集成运行时的信息。  
 
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="stop"></a>停止 
 停止 Azure-SSIS 集成运行时。 此命令释放该运行时的所有节点并停止计费。

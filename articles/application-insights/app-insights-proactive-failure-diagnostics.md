@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
-ms.author: bwren
-ms.openlocfilehash: e82d35459110e122ec8438b406a52df61922b0fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: ca484f4d11cf8ab18db2d0c6152f369a90311f10
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](app-insights-overview.md) 会几乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知中会提供失败及相关遥测的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -120,7 +120,7 @@ ms.lasthandoff: 10/11/2017
 
 * 我们尝试针对应用中断或降级发出警报，但只有可以完全了解语义以及对应用或用户的影响。
 
-*所以你们会查看我的数据？*
+所以你们会查看我的数据？
 
 * 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
 

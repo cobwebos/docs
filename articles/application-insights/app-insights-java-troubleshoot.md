@@ -3,7 +3,7 @@ title: "在 Java Web 项目中排查 Application Insights 问题"
 description: "故障排除指南 - 使用 Application Insights 监视实时 Java 应用。"
 services: application-insights
 documentationcenter: java
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
-ms.author: bwren
-ms.openlocfilehash: ce46a4f561a273dc340b090a5bf0c8932a308722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 5a729139e122693b4199607919c876bda45fd4b5
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。

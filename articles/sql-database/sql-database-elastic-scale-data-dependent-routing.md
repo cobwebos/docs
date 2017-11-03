@@ -9,17 +9,17 @@ editor:
 ms.assetid: cad09e15-5561-4448-aa18-b38f54cda004
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: ddove
-ms.openlocfilehash: 6b68bbb0133afd1493acdb58f79f3eeaf6a8d7cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2246dd12b922fcbc2e2b58890b3d56253810849c
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="data-dependent-routing"></a>数据依赖型路由
 **数据依赖型路由**是使用查询中的数据将请求路由到相应数据库的功能。 在使用分片数据库时，它是一种基础模式。 请求上下文也可用于路由请求，尤其是当分片键不是查询的一部分时。 将应用程序中使用数据依赖路由的每个特定查询和事务限制为针对每个请求访问单一数据库。 对于 Azure SQL 数据库弹性工具，这种路由是通过 ADO.NET 应用程序中的 **[ShardMapManager 类](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**实现的。

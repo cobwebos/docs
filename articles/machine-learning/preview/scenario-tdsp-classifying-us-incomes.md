@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.openlocfilehash: c0fbd9b3e6f9f9f4f7a5d3e6bda18ce1312650e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e92687657b4e80e75fd869da454970622f7178c
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>使用 Team Data Science Process (TDSP) 项目进行收入分类
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 * [常见问题解答 - 如何入门](frequently-asked-questions.md)
 * [概述](overview-what-is-azure-ml.md)
 * [安装](quickstart-installation.md)
-* [执行](experiment-execution-configuration.md)
+* [执行](experimentation-service-configuration.md)
 * [使用 TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
 * [读取和写入文件](how-to-read-write-files.md)
 * [将 Git 与 Azure 机器学习配合使用](using-git-ml-project.md)
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/11/2017
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
 ### <a name="execution"></a>执行
-在本示例中，我们在**本地计算环境**中执行代码。 有关[执行选项](experiment-execution-configuration.md)的更多详细信息，请参阅 Azure 机器学习文档。
+在本示例中，我们在**本地计算环境**中执行代码。 有关[执行选项](experimentation-service-configuration.md)的更多详细信息，请参阅 Azure 机器学习文档。
 
 在本地 Python 运行时中执行 Python 脚本很容易：
 

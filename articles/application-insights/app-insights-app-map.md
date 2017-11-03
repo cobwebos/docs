@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
-ms.openlocfilehash: 207526b7a675f92134d045ebefb9a372749bce92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: e1eb2177d6032142781e6e31af6c7f6313d38f4d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-map-in-application-insights"></a>Application Insights 中的应用程序映射
 在 [Azure Application Insights](app-insights-overview.md) 中，应用程序映射是应用程序组件的依赖项关系的可视化布局。 每个组件显示负载、性能、故障和警报等 KPI，有助于发现导致性能问题或故障的任何组件。 可从任何组件单击以获得更详细的诊断，如 Application Insights 事件。 如果应用使用了 Azure 服务，还可以单击获得 Azure 诊断，如 SQL 数据库顾问建议。

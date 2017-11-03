@@ -9,17 +9,17 @@ editor: monicar
 ms.assetid: 77c262a1-9b93-456d-b3c7-b2f23bdfcd61
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: jhubbard
-ms.openlocfilehash: 7f45b8b654691063823c13bee61e9bb874a6a13a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c5f7e6da09c6ca8ddc6cc3ddcbcf7c5b53116e26
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>使用 Azure 自动化管理 Azure SQL 数据库
 本指南介绍 Azure 自动化服务，以及如何使用它来简化 Azure SQL 数据库的管理。

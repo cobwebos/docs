@@ -1,9 +1,9 @@
 ---
 title: "使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板在 PowerShell 中自动创建资源、警报和可用性测试。"
+description: "使用 Azure 资源管理器模板在 PowerShell 中自动创建资源、警报和可用性测试。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
 ms.service: application-insights
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
-ms.author: bwren
-ms.openlocfilehash: 88dbb9515300f847789bc889911cdeff5f5bdb53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
 本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](app-insights-monitor-web-app-availability.md)、设置[警报](app-insights-alerts.md)、设置[定价方案](app-insights-pricing.md)和创建其他 Azure 资源。
 
-创建这些资源的关键是用于 [Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md) 的 JSON 模板。 简而言之，过程如下：下载现有资源的 JSON 定义，参数化某些值（如名称），并在需要创建新资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
+创建这些资源的关键是用于 [Azure 资源管理器](../azure-resource-manager/powershell-azure-resource-manager.md) 的 JSON 模板。 简而言之，过程如下：下载现有资源的 JSON 定义，参数化某些值（如名称），并在需要创建新资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
 
 ## <a name="one-time-setup"></a>一次性设置
 如果之前尚未将 PowerShell 与 Azure 订阅结合使用：
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 1. 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](http://www.microsoft.com/web/downloads/platform.aspx)。
 2. 使用它来安装 Microsoft Azure Powershell。
 
-## <a name="create-an-azure-resource-manager-template"></a>创建 Azure Resource Manager 模板
+## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 创建新的 .json 文件，在此示例中将它命名为 `template1.json`。 将此内容复制到其中：
 
 ```JSON
@@ -278,7 +278,7 @@ ms.lasthandoff: 10/11/2017
 
 当然可以参数化其他字段。 
 
-要查找其他警报规则的类型名称和配置详细信息，请手动创建规则，并在 [Azure Resource Manager](https://resources.azure.com/) 中对其进行检查。 
+要查找其他警报规则的类型名称和配置详细信息，请手动创建规则，并在 [Azure 资源管理器](https://resources.azure.com/)中对其进行检查。 
 
 
 ## <a name="add-an-availability-test"></a>添加可用性测试
@@ -384,13 +384,13 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-要发现其他测试位置的代码，或自动创建更复杂的 Web 测试，请手动创建示例，并在 [Azure Resource Manager](https://resources.azure.com/) 中参数化代码。
+要发现其他测试位置的代码，或自动创建更复杂的 Web 测试，请手动创建示例，并在 [Azure 资源管理器](https://resources.azure.com/)中参数化代码。
 
 ## <a name="add-more-resources"></a>添加更多资源
 
-要自动创建任何其他种类的资源，请手动创建示例，并从 [Azure Resource Manager](https://resources.azure.com/) 中复制其代码并参数化。 
+要自动创建任何其他种类的资源，请手动创建示例，并从 [Azure 资源管理器](https://resources.azure.com/)中复制其代码并参数化。 
 
-1. 打开 [Azure Resource Manager](https://resources.azure.com/)。 通过 `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` 向下导航到应用程序资源。 
+1. 打开 [Azure 资源管理器](https://resources.azure.com/)。 通过 `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` 向下导航到应用程序资源。 
    
     ![在 Azure 资源浏览器中导航](./media/app-insights-powershell/01.png)
    

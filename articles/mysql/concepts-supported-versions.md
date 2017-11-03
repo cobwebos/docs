@@ -1,5 +1,19 @@
-7 - title: Azure Database for MySQL 中支持的版本 | Microsoft Docs description: 说明 Azure Database for MySQL 中支持的版本。
-services: mysql author: v-chenyh ms.author: v-chenyh manager: jhubbard editor: jasonwhowell ms.service: mysql-database ms.topic: article ms.date: 05/10/2017
+---
+title: "Azure Database for MySQL 中支持的版本 | Microsoft Docs"
+description: "说明 Azure Database for MySQL 中支持的版本。"
+services: mysql
+author: v-chenyh
+ms.author: v-chenyh
+manager: jhubbard
+editor: jasonwhowell
+ms.service: mysql-database
+ms.topic: article
+ms.date: 05/10/2017
+ms.openlocfilehash: da7a5b48a68626f06aef23729f55ba52029779d7
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
 开发人员是使用 InnoDB 引擎通过 MySQL Community Edition [MySQL Community Edition](https://www.mysql.com/products/community/) 开发 Azure Database for MySQL。  Azure Database for MySQL 目前支持以下版本。

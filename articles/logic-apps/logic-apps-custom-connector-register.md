@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 2c384e27798bc4920ef73af1084600fdc4047f86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9e3d88abe751b37700590cc68c458f208d5868d2
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="register-custom-connectors-in-azure-logic-apps"></a>在 Azure 逻辑应用中注册自定义连接器
 
@@ -57,9 +57,9 @@ ms.lasthandoff: 10/11/2017
    | 属性 | 建议的值 | 说明 | 
    | -------- | --------------- | ----------- | 
    | **Name** | custom-connector-name | 提供连接器的名称。 | 
-   | **订阅** | Azure-subscription-name | 选择 Azure 订阅。 | 
-   | **资源组** | Azure-resource-group-name | 创建或选择用于整理 Azure 资源的 Azure 组。 | 
-   | **位置** | deployment-region | 选择连接器的部署区域。 | 
+   | **订阅** | *Azure-subscription-name* | 选择 Azure 订阅。 | 
+   | **资源组** | *Azure-resource-group-name* | 创建或选择用于整理 Azure 资源的 Azure 组。 | 
+   | **位置** | *deployment-region* | 选择连接器的部署区域。 | 
    |||| 
 
    Azure 部署连接器后，自定义连接器菜单将自动打开。 
@@ -151,6 +151,8 @@ ms.lasthandoff: 10/11/2017
    ![连接器定义](./media/logic-apps-custom-connector-register/definition.png)
 
 2. （可选）如果想编辑现有操作和触发器或者添加新的，请继续执行这些步骤。
+
+<a name="add-action-or-trigger"></a> 
 
 #### <a name="edit-or-add-actions-for-your-connector"></a>编辑或添加连接器的操作
 
