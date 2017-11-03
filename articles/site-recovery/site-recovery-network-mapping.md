@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/23/2017
+ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: b1b8b1ebc013a5dfb69528f9353369e18f84e61f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91d6d0466789daa662162c60bc3c97ba6115e7eb
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="plan-network-mapping-for-hyper-v-vm-replication-with-site-recovery"></a>使用 Site Recovery 规划 Hyper-V VM 复制的网络映射
 

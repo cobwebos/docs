@@ -1,10 +1,10 @@
-# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移
-本文介绍如何才能将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Resource Manager 部署模型。 用户可以阅读有关 [Azure Resource Manager 功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 本文详述了如何使用虚拟网络的站点到站点网关连接订阅中并存的两个部署模型中的资源。
+# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移
+本文介绍如何才能将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Resource Manager 部署模型。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 本文详述了如何使用虚拟网络的站点到站点网关连接订阅中并存的两个部署模型中的资源。
 
 ## <a name="goal-for-migration"></a>迁移目标
-资源管理器除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入访问管理和标记。 Azure Resource Manager 将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，将重点介绍为了默认启用安全性而要在虚拟网络中实施虚拟机的做法。
+资源管理器除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入访问管理和标记。 Azure 资源管理器将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，将重点介绍为了默认启用安全性而要在虚拟网络中实施虚拟机的做法。
 
-在 Azure Resource Manager 之下，针对来自经典部署模型的几乎所有功能，均提供计算、网络和存储支持。 要充分利用 Azure Resource Manager 中的新功能，可将现有部署从经典部署模型中迁移出来。
+在 Azure 资源管理器之下，针对来自经典部署模型的几乎所有功能，均提供计算、网络和存储支持。 要充分利用 Azure 资源管理器中的新功能，可将现有部署从经典部署模型中迁移出来。
 
 ## <a name="supported-resources-for-migration"></a>迁移支持的资源
 迁移过程中支持以下经典 IaaS 资源
@@ -76,7 +76,6 @@
 | 计算 | 不关联的虚拟机磁盘。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 计算 | 虚拟机映像。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 网络 | 终结点 ACL。 | 删除终结点 ACL 并重试迁移。 |
-| 网络 | 使用 ExpressRoute 网关和 VPN 网关的虚拟网络  | 开始迁移之前请删除 VPN 网关，并在迁移完成后重新创建 VPN 网关。 详细了解 [ExpressRoute 迁移](../articles/expressroute/expressroute-migration-classic-resource-manager.md)。|
 | 网络 | 应用程序网关 | 开始迁移之前请删除应用程序网关，并在迁移完成后重新创建应用程序网关。 |
 | 网络 | 使用 VNet 对等互连的虚拟网络。 | 将虚拟网络迁移到 Resource Manager，然后对等互连。 详细了解 [VNet 对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。 | 
 

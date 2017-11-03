@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: spelluru
-ms.openlocfilehash: f2e1957a02d72d79a245ec3be705ba46dcc41e2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1bfb7199ddf9f02297db9de529729ba3833cf8c
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -25,6 +25,9 @@ ms.lasthandoff: 10/11/2017
 - Azure 集成运行时
 - 自承载集成运行时
 - Azure-SSIS 集成运行时
+
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 若要获取集成运行时 (IR) 实例的状态，请运行以下 PowerShell 命令： 
 
@@ -42,7 +45,7 @@ Azure 集成运行时的计算资源完全在 Azure 中受到弹性管理。 下
 
 | 属性 | 说明 |
 -------- | ------------- | 
-| Name | Azure 集成运行时的名称。 |  
+| 名称 | Azure 集成运行时的名称。 |  
 | 状态 | Azure 集成运行时的状态。 | 
 | 位置 | Azure 集成运行时的位置。 有关 Azure 集成运行时位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 集成运行时所属的数据工厂的名称。 | 
@@ -69,7 +72,7 @@ Azure 集成运行时的计算资源完全在 Azure 中受到弹性管理。 下
 
 | 属性 | 说明 | 
 | -------- | ----------- | 
-| Name | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
+| 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
 | 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅以下部分。 | 
 | 版本 | 自承载集成运行时和每个节点的版本。 自承载集成运行时的版本根据组中多数节点的版本确定。 如果自承载集成运行时设置中包含不同版本的节点，则只有与逻辑自承载集成运行时的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 | 
 | 可用内存 | 自承载集成运行时节点上的可用内存。 此值为近实时快照。 | 
@@ -169,7 +172,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | 类型 | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
-| Name | Azure-SSIS 集成运行时的名称。 |
+| 名称 | Azure-SSIS 集成运行时的名称。 |
 | 说明 | Azure-SSIS 集成运行时的说明。 |
 
   

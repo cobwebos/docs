@@ -4,7 +4,7 @@ description: "用于在 Azure SQL 数据库和 SQL Server 本地数据库之间�
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
-manager: jhubbard
+manager: craigg
 editor: 
 tags: 
 ms.assetid: 
@@ -15,12 +15,13 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/31/2017
-ms.author: douglasl
-ms.openlocfilehash: 78fbb18cb8d8d93e2b02c658c31c884d423dcd1c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jognanay
+ms.reviewer: douglasl
+ms.openlocfilehash: 8d5888904aa7c690e2ee3a2f54e96e663fd96840
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-powershell-to-sync-between-an-azure-sql-database-and-a-sql-server-on-premises-database"></a>使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步
 

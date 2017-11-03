@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 2f3ca2e694fd9952319a70477e9887c332b08044
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: f5c75b95d9019c15bb402313ce7407fa9abb81d4
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>持久保存更改和处理大型文件
-使用 Azure 机器学习试验服务可以配置各种执行目标。 有些目标是本地目标，例如本地计算机，或本地计算机上的 Docker 容器。 有些则是远程目标，例如远程计算机或 HDInsight 群集上的 Docker 容器。 有关详细信息，请参阅 [Azure 机器学习试验执行服务概述](experiment-execution-configuration.md)。 
+使用 Azure 机器学习试验服务可以配置各种执行目标。 有些目标是本地目标，例如本地计算机，或本地计算机上的 Docker 容器。 有些则是远程目标，例如远程计算机或 HDInsight 群集上的 Docker 容器。 有关详细信息，请参阅 [Azure 机器学习试验执行服务概述](experimentation-service-configuration.md)。 
 
 在目标上执行之前，必须先将项目文件夹复制到计算目标。 即使为此使用本地临时文件夹进行本地执行，也必须这样做。 
 
@@ -143,7 +143,7 @@ C:\users\<username>\.azureml\share\<exp_acct_name>\<workspace_name>\<proj_name>\
 
 可以直接将输入数据放在这些文件夹中，计算机上的本地运行或 Docker 运行会选取它们。 也可以从本地运行或 Docker 运行将文件写入此文件夹，文件将会持久保存在该文件夹中，一直到执行生命周期结束。
 
-有关详细信息，请参阅 [Azure Machine Learning Workbench 执行配置文件](experiment-execution-configuration-reference.md)。
+有关详细信息，请参阅 [Azure Machine Learning Workbench 执行配置文件](experimentation-service-configuration-reference.md)。
 
 >[!NOTE]
 >HDInsight 计算上下文不支持 `AZUREML_NATIVE_SHARE_DIRECTORY` 环境变量。 但是，通过显式使用 Azure Blob 存储绝对路径在附加的 Blob 存储中进行读取和写入，可轻松实现相同的目的。
@@ -195,5 +195,5 @@ attach_storage_container(spark, "<storage account name>", "<storage key>”)
 由于 Azure 机器学习通过将整个项目文件夹复制到目标计算上下文来执行脚本，因此对于大型输入、输出和中间文件请格外小心。 对于大型文件事务，可以使用特殊的 outputs 文件夹、可通过 `AZUREML_NATIVE_SHARE_DIRECTORY` 环境变量访问的共享文件夹，或外部持久存储。 
 
 ## <a name="next-steps"></a>后续步骤
-- 查看 [Azure Machine Learning Workbench 执行配置文件](experiment-execution-configuration-reference.md)一文。
+- 查看 [Azure Machine Learning Workbench 执行配置文件](experimentation-service-configuration-reference.md)一文。
 - 了解[鸢尾花分类](tutorial-classifying-iris-part-1.md)教程中的项目如何使用 outputs 文件夹持久保存已训练的模型。

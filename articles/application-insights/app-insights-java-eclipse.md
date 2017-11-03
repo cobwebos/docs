@@ -3,7 +3,7 @@ title: "通过 Eclipse 中的 Java 开始使用 Azure Application Insights | Mic
 description: "在 Application Insights 中使用 Eclipse 插件为 Java 网站添加性能和使用情况监视功能"
 services: application-insights
 documentationcenter: java
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: e88c9f53-cd90-4abc-b097-1f170937908e
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
-ms.author: bwren
-ms.openlocfilehash: f2f696a3bbe7893c1f521a3e5588f4f93805d6a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>通过 Eclipse 中的 Java 开始使用 Application Insights
 Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用户能够分析使用情况和性能。 适用于 Application Insights 的 Eclipse 插件自动在项目中安装 SDK，使用户能够获取现成的遥测功能，另外，还可以使用一个 API 来编写自定义遥测。   

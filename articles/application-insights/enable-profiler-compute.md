@@ -1,9 +1,9 @@
 ---
 title: "为 Azure 计算应用程序启用 Application Insights Profiler | Microsoft Docs"
-description: "了解如何对在 Azure 计算中运行的应用程序设置 Profiler。"
+description: "了解如何对在 Azure 计算中运行的应用程序设置 Application Insights Profiler。"
 services: application-insights
 documentationcenter: 
-author: ramach
+author: ramach-msft
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -12,158 +12,156 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: b39b3b234112647ebeb531262d3b3876aee0b63b
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 66ea24cfe9dd03ed62c06daa76ee043886ad7bcc
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/26/2017
 ---
-# <a name="enable-application-insights-profiler-on-azure-virtual-machines-service-fabric-and-cloud-services"></a>在 Azure 虚拟机、Service Fabric 和云服务上启用 Application Insights Profiler
+# <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>为 Azure VM、Service Fabric 和云服务启用 Application Insights Profiler
 
-本演练将演示如何在 Azure 计算资源托管的 ASP.NET 应用程序上启用 Azure Application Insights Profiler。  
-示例包括对 Azure 虚拟机、Azure 虚拟机规模集、Azure Service Fabric 和 Azure 云服务的支持。  
-所有示例依赖于支持 [Azure 资源管理器](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)部署模型的模板。  
+本文演示如何在 Azure 计算资源托管的 ASP.NET 应用程序上启用 Azure Application Insights Profiler。 
+
+本文中的示例包括对 Azure 虚拟机、虚拟机规模集、Azure Service Fabric 和 Azure 云服务的支持。 所有示例依赖于支持 [Azure 资源管理器](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)部署模型的模板。  
 
 
 ## <a name="overview"></a>概述
 
-下图将演示如何针对 Azure 资源运行 Profiler。 其中使用 Azure 虚拟机作为示例。
+下图显示 Application Insights Profiler 如何使用 Azure 资源。 此图使用 Azure 虚拟机作为示例。
 
-![概述](./media/enable-profiler-compute/overview.png)
+  ![概述](./media/enable-profiler-compute/overview.png)
 
+若要完全启用 Profiler，必须更改三个位置中的配置：
 
-为了完全启用 Profiler，需要在以下三个位置完成配置：
-
-1. Application Insights 实例门户边栏选项卡。
-2. 应用程序源代码（例如：ASP.NET Web 应用程序）。
-3. 环境部署定义源代码（例如：虚拟机部署模板 json 文件）。
-
-
-## <a name="configure-the-application-insights-instance"></a>配置 Application Insights 实例
-
-创建或访问要使用的 Application Insights 实例的 Azure 门户边栏选项卡，并记下其检测密钥。 该密钥将可用于其他配置步骤：
-
-  ![密钥位置](./media/enable-profiler-compute/CopyAIKey.png)
-
-此实例应为每次请求时配置为将遥测数据发送到的应用程序。
-此外，Profiler 结果将在此实例中提供。  
-
-仍然是在 Azure 门户中，按照[启用 Profiler](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler) 的步骤来完成 Profiler AI 实例的配置。 出于本演练的目的，无需链接 Web 应用，只需确保在门户中启用了 Profiler。
+* Azure 门户中的 Application Insights 实例窗格。
+* 应用程序源代码（例如，ASP.NET Web 应用程序）。
+* 环境部署定义源代码（例如，VM 部署模板 .json 文件）。
 
 
-## <a name="configure-the-application-source-code"></a>配置应用程序源代码
+## <a name="set-up-the-application-insights-instance"></a>设置 Application Insights 实例
 
-应用程序应配置为在每次执行 `Request` 操作时将遥测数据发送到 Application Insights 实例。  
+在 Azure 门户中，创建或转到要使用的 Application Insights 实例。 记下实例检测密钥。 在其他配置步骤中使用检测密钥。
 
-1. 将 [Application Insights SDK](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview#get-started) 添加到应用程序项目。 请确保 nuget 包版本如下所示：  
-  - 对于 ASP.NET 应用程序：[Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 版本 2.3.0 或更高版本。
-  - 对于 ASP.NET Core 应用程序：[Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0  或更高版本。
-  - 对于其他 .NET 和 .NET Core 应用程序（例如，Service Fabric 无状态服务、云服务辅助角色）：[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 或更高版本。  
+  ![密钥检测的位置](./media/enable-profiler-compute/CopyAIKey.png)
 
-2. 如果应用程序不是 ASP.NET 或 ASP.NET Core 应用程序（例如：云服务辅助角色、Service Fabric 无状态 API），则需要进行额外的检测设置：  
+此实例应与应用程序相同。 它已配置为向每个请求发送遥测数据。
+Profiler 结果也在此实例中提供。  
 
-  2.1. 将以下代码添加到应用程序生命周期中早期的某个时间点。  
+在 Azure 门户中完成[启用 Profiler](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler) 中所述步骤，为 Profiler 设置 Application Insights 实例。 不需为本文中的示例链接 Web 应用， 只需确保在门户中启用 Profiler 即可。
 
-  ```csharp
-  using Microsoft.ApplicationInsights.Extensibility;
-  ...
-  // Replace with your own Application Insights instrumentation key.
-  TelemetryConfiguration.Active.InstrumentationKey = "00000000-0000-0000-0000-000000000000";
-  ```
-  有关此全局检测密钥配置的详细信息，请参阅[结合使用 Service Fabric 和 Application Insights ](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md)。  
 
-  2.2. 对于想要检测的任何代码片段，请在其两侧添加 `StartOperation<RequestTelemetry>` `using` 语句，如以下示例所示：
+## <a name="set-up-the-application-source-code"></a>设置应用程序源代码
 
-  ```csharp
-  using Microsoft.ApplicationInsights;
-  using Microsoft.ApplicationInsights.DataContracts;
-  ...
-  var client = new TelemetryClient();
-  ...
-  using (var operation = client.StartOperation<RequestTelemetry>("Insert_Your_Custom_Event_Unique_Name"))
-  {
-    // ... Code I want to profile.
-  }
-  ```
+将应用程序设置为在每次执行 `Request` 操作时将遥测数据发送到 Application Insights 实例：  
 
-> [!NOTE]  
-> 不支持在其他 `StartOperation<RequestTelemetry>` 作用域中调用 `StartOperation<RequestTelemetry>`。 可以改为在嵌套作用域中使用 `StartOperation<DependencyTelemetry>`。 示例：  
+1. 将 [Application Insights SDK](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview#get-started) 添加到应用程序项目。 请确保 NuGet 包版本如下所示：  
+  - 对于 ASP.NET 应用程序：[Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 或更高版本。
+  - 对于 ASP.NET Core 应用程序：[Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 或更高版本。
+  - 对于其他 .NET 和 .NET Core 应用程序（例如，Service Fabric 无状态服务或云服务辅助角色）：[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 或更高版本。  
 
-```csharp
-using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))
-{
-  try
-  {
-    ProductDetail details = new ProductDetail() { Id = productId };
-    getDetailsOperation.Telemetry.Properties["ProductId"] = productId.ToString();
+2. 如果应用程序不是 ASP.NET 或 ASP.NET Core 应用程序（例如，如果应用程序是云服务辅助角色或 Service Fabric 无状态 API），则需进行下述额外的检测设置：  
 
-    // By using DependencyTelemetry, 'GetProductPrice' is correctly linked as part of the 'GetProductDetails' request.
-    using (var getPriceOperation = client.StartOperation<DependencyTelemetry>("GetProductPrice"))
+  1. 在应用程序生命周期的早期添加以下代码：  
+
+    ```csharp
+    using Microsoft.ApplicationInsights.Extensibility;
+    ...
+    // Replace with your own Application Insights instrumentation key.
+    TelemetryConfiguration.Active.InstrumentationKey = "00000000-0000-0000-0000-000000000000";
+    ```
+  有关此全局检测密钥配置的详细信息，请参阅 [Use Service Fabric with Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md)（结合使用 Service Fabric 和 Application Insights）。  
+
+  2. 对于想要检测的任何代码片段，请在其两侧添加 `StartOperation<RequestTelemetry>` USING 语句，如以下示例所示：
+
+    ```csharp
+    using Microsoft.ApplicationInsights;
+    using Microsoft.ApplicationInsights.DataContracts;
+    ...
+    var client = new TelemetryClient();
+    ...
+    using (var operation = client.StartOperation<RequestTelemetry>("Insert_Your_Custom_Event_Unique_Name"))
     {
-        double price = await _priceDataBase.GetAsync(productId);
-        if (IsTooCheap(price))
+      // ... Code I want to profile.
+    }
+    ```
+
+  不支持在其他 `StartOperation<RequestTelemetry>` 作用域中调用 `StartOperation<RequestTelemetry>`。 可以改为在嵌套作用域中使用 `StartOperation<DependencyTelemetry>`。 例如：  
+
+    ```csharp
+    using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))
+    {
+      try
+      {
+        ProductDetail details = new ProductDetail() { Id = productId };
+        getDetailsOperation.Telemetry.Properties["ProductId"] = productId.ToString();
+
+        // By using DependencyTelemetry, 'GetProductPrice' is correctly linked as part of the 'GetProductDetails' request.
+        using (var getPriceOperation = client.StartOperation<DependencyTelemetry>("GetProductPrice"))
         {
-            throw new PriceTooLowException(productId);
+            double price = await _priceDataBase.GetAsync(productId);
+            if (IsTooCheap(price))
+            {
+                throw new PriceTooLowException(productId);
+            }
+            details.Price = price;
         }
-        details.Price = price;
+
+        // Similarly, note how 'GetProductReviews' doesn't establish another RequestTelemetry.
+        using (var getReviewsOperation = client.StartOperation<DependencyTelemetry>("GetProductReviews"))
+        {
+            details.Reviews = await _reviewDataBase.GetAsync(productId);
+        }
+
+        getDetailsOperation.Telemetry.Success = true;
+        return details;
+      }
+      catch(Exception ex)
+      {
+        getDetailsOperation.Telemetry.Success = false;
+
+        // This exception gets linked to the 'GetProductDetails' request telemetry.
+        client.TrackException(ex);
+        throw;
+      }
     }
-
-    // Similarly, note how 'GetProductReviews' doesn't establish another RequestTelemetry.
-    using (var getReviewsOperation = client.StartOperation<DependencyTelemetry>("GetProductReviews"))
-    {
-        details.Reviews = await _reviewDataBase.GetAsync(productId);
-    }
-
-    getDetailsOperation.Telemetry.Success = true;
-    return details;
-  }
-  catch(Exception ex)
-  {
-    getDetailsOperation.Telemetry.Success = false;
-
-    // This exception gets linked to the 'GetProductDetails' request telemetry.
-    client.TrackException(ex);
-    throw;
-  }
-}
-```
+    ```
 
 
-## <a name="configure-the-environment-deployment-definition"></a>配置环境部署定义
+## <a name="set-up-the-environment-deployment-definition"></a>设置环境部署定义
 
-执行 Profiler 和应用程序的环境可以是虚拟机、虚拟机规模集、Service Fabric 群集或云服务。  
+执行 Profiler 和应用程序的环境可以是虚拟机、虚拟机规模集、Service Fabric 群集或云服务实例。  
 
-### <a name="virtual-machine-virtual-machine-scale-sets-or-service-fabric"></a>虚拟机、虚拟机规模集或 Service Fabric
+### <a name="virtual-machines-virtual-machine-scale-sets-or-service-fabric"></a>虚拟机、虚拟机规模集或 Service Fabric
 
-完整的示例：  
+完整示例：  
   * [虚拟机](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
   * [虚拟机规模集](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
   * [Service Fabric 群集](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
-1. 为了确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。
+1. 若要确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。
 
-2. 在部署模板文件中找到 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)扩展，添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素，并使用你自己的 AI 检测密钥来替换 `ApplicationInsightsProfiler` 属性值：  
-```json
-"SinksConfig": {
-  "Sink": [
-    {
-      "name": "MyApplicationInsightsProfilerSink",
-      "ApplicationInsightsProfiler": "00000000-0000-0000-0000-000000000000"
-    }
-  ]
-}
-```
+2. 在部署模板文件中找到 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)扩展，然后添加下面的 `SinksConfig` 节作为 `WadCfg` 的子元素。 使用自己的 Application Insights 检测密钥替换 `ApplicationInsightsProfiler` 属性值：  
+  ```json
+  "SinksConfig": {
+    "Sink": [
+      {
+        "name": "MyApplicationInsightsProfilerSink",
+        "ApplicationInsightsProfiler": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+  ```
 
-请参阅这些示例和[本指南](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，来了解如何将诊断扩展添加到部署模板。
+  若要了解如何将诊断扩展添加到部署模板，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 
 ### <a name="cloud-services"></a>云服务
 
-1. 为了确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认 `ServiceConfiguration.*.cscfg` 文件包含 `osFamily` 作为 `"5"` 或更高版本。
+1. 若要确保使用 [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认 ServiceConfiguration.\*.cscfg 文件的 `osFamily` 值至少为“5”。
 
-2. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) `diagnostics.wadcfgx` 文件：  
-![诊断配置文件的位置](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
-如果找不到该文件，请参阅[本指南](https://docs.microsoft.com/en-us/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)，了解如何在 Azure 云服务项目中启用诊断扩展。
+2. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件：  
+  ![诊断配置文件的位置](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
+  如果找不到该文件，则若要了解如何在云服务项目中启用诊断扩展，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/en-us/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)。
 
 3. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素：  
   ```xml
@@ -179,55 +177,53 @@ using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetPro
   ```
 
 > [!NOTE]  
-> 如果 `diagnostics.wadcfgx` 文件还包含 `ApplicationInsights` 类型的其他接收器，则这三个检测密钥必须都与以下检测密钥匹配：  
->  * 应用程序使用的检测密钥  
->  * `ApplicationInsights` 接收器使用的检测密钥  
->  * `ApplicationInsightsProfiler` 接收器使用的检测密钥  
+> 如果 `diagnostics.wadcfgx` 文件还包含 `ApplicationInsights` 类型的其他接收器，则这三个检测密钥都必须与以下检测密钥匹配：  
+>  * 应用程序使用的检测密钥。  
+>  * `ApplicationInsights` 接收器使用的检测密钥。  
+>  * `ApplicationInsightsProfiler` 接收器使用的检测密钥。  
 >
->可在 `ServiceConfiguration.*.cscfg` 文件中找到 `ApplicationInsights` 接收器使用的实际检测密钥值。  
->在 Visual Studio 15.5 Azure SDK 版本之后，只有应用程序和 `ApplicationInsightsProfiler` 接收器使用的检测密钥需要相互匹配。
+> 可以在 ServiceConfiguration.\*.cscfg 文件中找到 `ApplicationInsights` 接收器使用的实际检测密钥值。  
+> 在 Visual Studio 15.5 Azure SDK 版本之后，只有应用程序和 `ApplicationInsightsProfiler` 接收器使用的检测密钥需要相互匹配。
 
 
 ## <a name="environment-deployment-and-runtime-configurations"></a>环境部署和运行时配置
 
 1. 部署修改后的环境部署定义。  
-通常情况下，为了应用修改，会涉及完整的模板部署或者通过 PowerShell cmdlet 或 Visual Studio 发布的云服务。  
-下面将介绍用于现有 `Virtual Machines` 的一种替代方法，该方法仅涉及其诊断扩展：  
-```powershell
-$ConfigFilePath = [IO.Path]::GetTempFileName()
-# After exporting the currently deployed Diagnostics config to a file, edit it to include the ApplicationInsightsProfiler sink.
-(Get-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM").PublicSettings | Out-File -Verbose $ConfigFilePath
-# Set-AzureRmVMDiagnosticsExtension might require the -StorageAccountName argument
-# if your original diagnostics configuration had the storageAccountName property in the protectedSettings section
-# (which is not downloadable). Make sure to pass the same original value you had in this cmdlet call.
-Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
-```
 
-2. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/platform/server.aspx) 运行，则需要启用 `IIS Http Tracing` Windows 功能：  
-  建立到环境的远程访问，然后使用“添加 Windows 功能”[]( https://docs.microsoft.com/en-us/iis/configuration/system.webserver/tracing/)窗口或以管理员身份在 PowerShell 中运行以下命令：  
+  通常情况下，为了应用修改，会涉及完整的模板部署或者通过 PowerShell cmdlet 或 Visual Studio 进行的云服务发布。  
+
+  下面将介绍用于现有虚拟机的一种替代方法，该方法仅涉及其 Azure 诊断扩展：  
   ```powershell
-  Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
-  ```  
-  如果无法建立远程访问，则可以使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) 运行以下命令：  
-  ```powershell
-  az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
+  $ConfigFilePath = [IO.Path]::GetTempFileName()
+  # After you export the currently deployed Diagnostics config to a file, edit it to include the ApplicationInsightsProfiler sink.
+  (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM").PublicSettings | Out-File -Verbose $ConfigFilePath
+  # Set-AzureRmVMDiagnosticsExtension might require the -StorageAccountName argument
+  # if your original diagnostics configuration had the storageAccountName property in the protectedSettings section
+  # (which is not downloadable). Make sure to pass the same original value you had in this cmdlet call.
+  Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
   ```
 
+2. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/platform/server.aspx) 运行，请启用 `IIS Http Tracing` Windows 功能：  
+  
+  1. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/en-us/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
+    ```powershell
+    Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
+    ```  
+  2. 如果无法建立远程访问，则可使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) 运行以下命令：  
+    ```powershell
+    az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
+    ```
 
-## <a name="how-to-enable-profiler-on-on-premises-servers"></a>如何在本地服务器上启用 Profiler
 
-也称为在独立模式下运行 AI Profiler（与诊断扩展修改没有关系）。  
-我们没有计划为本地服务器提供正式的 Profiler 支持。
-如果你有兴趣试验这种情况，可以从[此处](https://github.com/ramach-msft/AIProfiler-Standalone)下载支持代码。  
-我们不负责维护该代码或响应与之相关的问题和功能请求。
+## <a name="enable-the-profiler-on-on-premises-servers"></a>在本地服务器上启用 Profiler
 
+在本地服务器上启用 Profiler 也称为以独立模式运行 Application Insights Profiler（不依赖于 Azure 诊断扩展修改）。 
+
+我们没有计划为本地服务器提供正式的 Profiler 支持。 如果有兴趣试验这种情况，可[下载支持代码](https://github.com/ramach-msft/AIProfiler-Standalone)。 我们不负责维护该代码或响应与之相关的问题和功能请求。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 生成到应用程序的流量（例如：启动[可用性测试](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-monitor-web-app-availability)，并在此后为即将要发送到 Application Insights 实例的跟踪预留 10-15 分钟的时间。
-
+- 生成到应用程序的流量（例如，启动[可用性测试](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-monitor-web-app-availability)）。 然后等待 10 到 15 分钟，这样跟踪就会开始发送到 Application Insights 实例。
 - 请参阅 Azure 门户中的 [Profiler 跟踪](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler)。
-
 - 在 [Profiler 故障排除](app-insights-profiler.md#troubleshooting)中获得有关排查 Profiler 问题的帮助。
-
-- 在 [Application Insights Profiler](app-insights-profiler.md) 中详细了解 Profiler。
+- 在 [Application Insights Profiler](app-insights-profiler.md) 中详细了解探查器。

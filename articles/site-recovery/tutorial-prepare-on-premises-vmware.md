@@ -12,13 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: 2e59a78f2c348b581155484d77e272a050da1f1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: 33ec5775a371a04074f07d589d35d1c05bd64d30
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
@@ -45,7 +46,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 
 1. 若要使用专用帐户，请 vCenter 级别创建一个角色。 为该角色指定一个名称，例如 Azure_Site_Recovery。
 2. 为该角色分配下表中汇总的权限。
-3. 在 vCenter 服务器或 vSphere 主机上创建一个用户 。 向该用户分配角色。
+3. 在 vCenter 服务器或 vSphere 主机上创建一个用户。 向该用户分配角色。
 
 ### <a name="vmware-account-permissions"></a>VMware 帐户权限
 

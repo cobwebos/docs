@@ -3,8 +3,8 @@ title: "使用 Azure 备份还原 VM 磁盘 | Microsoft 文档"
 description: "了解如何在 Azure 中使用备份和恢复服务还原磁盘并创建恢复的 VM。"
 services: backup, virtual-machines
 documentationcenter: virtual-machines
-author: iainfoulds
-manager: jeconnoc
+author: markgalioto
+manager: carmonm
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/28/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 01c266fcede8e4783cdea529bd1e7e9301bb23e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9bc6da13786eb9eb6186ceadf0432b3a3ec2c941
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>在 Azure 中还原磁盘并创建恢复的 VM
 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以还原单个文件。 本文将介绍如何还原完整的 VM。 本教程介绍如何执行下列操作：

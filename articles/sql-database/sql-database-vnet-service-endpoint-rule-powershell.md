@@ -13,14 +13,14 @@ ms.custom: VNet Service endpoints
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: Inactive
 ms.date: 09/15/2017
 ms.author: genemi
-ms.openlocfilehash: 0b8e6464ba5a895d1e961709139993f6adc30d7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f58ea34dad5d4436c13b64653040bd2a57c299e
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>使用 PowerShell 创建 Azure SQL 数据库的虚拟服务终结点和规则
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 本文将着重介绍名为 New-AzureRmSqlServerVirtualNetworkRule 的 cmdlet，它用于将子网终结点添加到 Azure SQL 数据库服务器的访问控制列表 (ACL)，从而创建规则。
 
-下面的列表显示准备对 New-AzureRmSqlServerVirtualNetworkRule 进行调用时必须运行的其他主要 cmdlet 的序列。 在本文中，这些调用出现在[脚本 3 虚拟网络规则](#a-script-30) 中：
+下面的列表显示准备对 New-AzureRmSqlServerVirtualNetworkRule 进行调用时必须运行的其他主要 cmdlet 的序列。 在本文中，这些调用出现在脚本 3 [虚拟网络规则](#a-script-30) 中：
 
 1. [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig)：创建子网对象。
 

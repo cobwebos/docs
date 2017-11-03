@@ -9,17 +9,17 @@ editor: MightyPen
 ms.assetid: c2bf14a0-905b-47b4-afb6-efe9a61147d5
 ms.service: sql-database
 ms.custom: develop databases
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
-ms.openlocfilehash: 50eed9aed417778bd497f55e20c8e732fdae9cf9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71dd7d36eee210b80ed6a791b52f977a416b6bb7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 [内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级](sql-database-service-tiers.md) Azure SQL 数据库中的事务处理、数据引入的性能以及暂时性数据状况，且不需要提高定价层。 

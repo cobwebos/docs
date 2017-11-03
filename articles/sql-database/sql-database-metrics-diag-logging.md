@@ -9,17 +9,17 @@ editor:
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: cfdf50bdf1eece98a02cdbe56e52e1b2dda2b200
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 6d5fc10b5186f2830f724325846a485e4064d12b
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
@@ -38,7 +38,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 - PowerShell
 - Azure CLI
 - Azure Monitor REST API 
-- Azure Resource Manager 模板
+- Azure 资源管理器模板
 
 启用指标和诊断日志记录时，需要指定收集所选数据的 Azure 资源。 可用选项包括：
 
@@ -284,7 +284,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES|
 |SubscriptionId|数据库所属的订阅 GUID。|
 |resourceGroup|数据库所属的资源组的名称。|
-|LogicalServerName_s|数据库所属的服务器名称。|
+|LogicalServerName_s|数据库所属的服务器的名称。|
 |ElasticPoolName_s|数据库所属的弹性池的名称（如果存在）。|
 |DatabaseName_s|数据库的名称。|
 |ResourceId|资源 URI。|
@@ -315,8 +315,8 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |max_num_physical_io_reads_d|每次执行最大物理读取次数。|
 |log_bytes_used_d|使用的日志字节总量。|
 |max_log_bytes_used_d|每次执行使用的日志字节最大数量。|
-|query_id_d|查询存储中的查询 ID。|
-|plan_id_d|查询存储中的计划 ID。|
+|query_id_d|查询存储中查询的 ID。|
+|plan_id_d|查询存储中计划的 ID。|
 
 详细了解[查询存储运行时统计信息数据](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)。
 
@@ -335,7 +335,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES|
 |SubscriptionId|数据库所属的订阅 GUID。|
 |resourceGroup|数据库所属的资源组的名称。|
-|LogicalServerName_s|数据库所属的服务器名称。|
+|LogicalServerName_s|数据库所属的服务器的名称。|
 |ElasticPoolName_s|数据库所属的弹性池的名称（如果存在）。|
 |DatabaseName_s|数据库的名称。|
 |ResourceId|资源 URI。|
@@ -373,7 +373,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES|
 |SubscriptionId|数据库所属的订阅 GUID。|
 |resourceGroup|数据库所属的资源组的名称。|
-|LogicalServerName_s|数据库所属的服务器名称。|
+|LogicalServerName_s|数据库所属的服务器的名称。|
 |ElasticPoolName_s|数据库所属的弹性池的名称（如果存在）。|
 |DatabaseName_s|数据库的名称。|
 |ResourceId|资源 URI。|
@@ -402,7 +402,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES|
 |SubscriptionId|数据库所属的订阅 GUID。|
 |resourceGroup|数据库所属的资源组的名称。|
-|LogicalServerName_s|数据库所属的服务器名称。|
+|LogicalServerName_s|数据库所属的服务器的名称。|
 |ElasticPoolName_s|数据库所属的弹性池的名称（如果存在）。|
 |DatabaseName_s|数据库的名称。|
 |ResourceId|资源 URI。|

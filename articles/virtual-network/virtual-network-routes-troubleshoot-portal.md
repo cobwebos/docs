@@ -1,6 +1,6 @@
 ---
 title: "排查路由问题 - 门户 | Microsoft 文档"
-description: "了解如何使用 Azure 门户在 Azure Resource Manager 部署模型中排查路由问题。"
+description: "了解如何使用 Azure 门户在 Azure 资源管理器部署模型中排查路由问题。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: dad415936280b4af916b8c46df46f6c51ac0bca4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f76693dfcaf5076372e4c4d5f28678c05eff85ed
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>使用 Azure 门户排查路由问题
 > [!div class="op_single_selector"]
@@ -34,9 +34,9 @@ ms.lasthandoff: 10/11/2017
 
 * **系统路由：**默认情况下，在 Azure 虚拟网络 (VNet) 中创建的每个子网都具有系统路由表，允许传送本地 VNet 流量、通过 VPN 网关的本地流量以及 Internet 流量。 对等互连的 VNet 也有系统路由。
 * **BGP 路由：**通过 ExpressRoute 或站点到站点 VPN 连接传播到网络接口。 阅读[使用 VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md) 和 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)一文，了解有关 BGP 路由的详细信息。
-* **用户定义的路由 (UDR)：**如果使用网络虚拟设备或强制隧道通过站点到站点 VPN 将流量传送到本地网络，可将用户定义的路由 (UDR) 与子网路由表相关联。 如果不熟悉 UDR，请阅读[用户定义的路由](virtual-networks-udr-overview.md#user-defined-routes)一文。
+* **用户定义的路由 (UDR)：**如果使用网络虚拟设备或强制隧道通过站点到站点 VPN 将流量传送到本地网络，可将用户定义的路由 (UDR) 与子网路由表相关联。 如果不熟悉 UDR，请阅读[用户定义的路由](virtual-networks-udr-overview.md#user-defined)一文。
 
-由于可将各种路由应用到网络接口，因此有时难以确定哪些聚合路由是有效的。 为了帮助排查 VM 网络连接问题，可以查看 Azure Resource Manager 部署模型中某个网络接口的所有有效路由。
+由于可将各种路由应用到网络接口，因此有时难以确定哪些聚合路由是有效的。 为了帮助排查 VM 网络连接问题，可以查看 Azure 资源管理器部署模型中某个网络接口的所有有效路由。
 
 ## <a name="using-effective-routes-to-troubleshoot-vm-traffic-flow"></a>使用有效路由排查 VM 流量流问题
 本文使用以下情景作为示例，演示如何排查网络接口的有效路由问题：

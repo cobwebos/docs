@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: raynew
-ms.openlocfilehash: 9764e48e04eb0c83afea09934ce64d2485ab15d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1647e9d69da3e991bec4e00b3a1083a254fa9550
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>对 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 - 查看[方案体系结构和组件](concepts-hyper-v-to-secondary-architecture.md)。
 - 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
-- 确保 VMM 服务器和 Hyper-V 主机符合[支持要求](site-recovery-support-matrix-to-sec-site.md#on-premises-servers)。
+- 确保 VMM 服务器和 Hyper-V 主机符合[支持要求](site-recovery-support-matrix-to-sec-site.md)。
 - 确保要复制的 VM 符合[复制计算机支持](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions)。
 - 准备 VMM 服务器进行网络映射。
 

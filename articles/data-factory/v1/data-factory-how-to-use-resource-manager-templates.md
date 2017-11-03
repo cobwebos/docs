@@ -1,6 +1,6 @@
 ---
 title: "在数据工厂中使用 Resource Manager 模板 | Microsoft Docs"
-description: "了解如何创建和使用 Azure Resource Manager 模板来创建数据工厂实体。"
+description: "了解如何创建和使用 Azure 资源管理器模板来创建数据工厂实体。"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d0c047c17608635b0d5fb0fb1353c6f8515d7a71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c80281a520159965066c6cd166f47ecac66e552b
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 
+
 ## <a name="overview"></a>概述
 使用 Azure 数据工厂实现数据集成需求时，可能发现自己在不同环境中重复使用同一模式，或在同一解决方案内重复执行相同任务。 使用模板可轻松实现和管理这些方案。 Azure 数据工厂中的模板非常适合于涉及可重用性和重复的情况。
 
@@ -31,14 +34,17 @@ ms.lasthandoff: 10/11/2017
 
 此外，鉴于该组织希望在不同环境内多次部署这 10 个数据工厂，因此模板可通过利用开发、测试和生产环境的单独参数文件来使用此**可重用性**。
 
-## <a name="templating-with-azure-resource-manager"></a>通过 Azure Resource Manager 实现模板化
-[Azure Resource Manager 模板](../../azure-resource-manager/resource-group-overview.md#template-deployment)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure Resource Manager 模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的 Resource Manager 模板，请参阅[创作 Azure Resource Manager 模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
+## <a name="templating-with-azure-resource-manager"></a>通过 Azure 资源管理器实现模板化
+
+            [Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md#template-deployment)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ## <a name="tutorials"></a>教程
 请参阅以下教程，获取使用 Resource Manager 模板创建数据工厂实体的分步说明：
 
-* [教程：使用 Azure Resource Manager 模板创建复制数据的管道](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [教程：使用 Azure Resource Manager 模板创建处理数据的管道](data-factory-build-your-first-pipeline.md)
+* 
+            [教程：使用 Azure 资源管理器模板创建复制数据的管道](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* 
+            [教程：使用 Azure 资源管理器模板创建处理数据的管道](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub 上的数据工厂模板
 请查看 GitHub 上的以下 Azure 快速入门模板：
@@ -228,7 +234,7 @@ dataFactoryName 在“变量”中定义为：
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>参数化数据工厂模板
-有关参数化的最佳做法，请参阅[创建 Azure Resource Manager 模板的最佳做法](../../azure-resource-manager/resource-manager-template-best-practices.md#parameters)一文。 通常，应将参数使用率降到最低，可改用变量时尤其如此。 仅在以下情况提供参数：
+有关参数化的最佳做法，请参阅[创建 Azure 资源管理器模板的最佳做法](../../azure-resource-manager/resource-manager-template-best-practices.md#parameters)一文。 通常，应将参数使用率降到最低，可改用变量时尤其如此。 仅在以下情况提供参数：
 
 * 设置因环境（如：开发、测试和生产）而异
 * 机密（如密码）

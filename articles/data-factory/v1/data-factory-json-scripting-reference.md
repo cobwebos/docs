@@ -11,16 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: f07c4ddd59942889e9fe9c65343da2df59b64a1b
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a437c369ac48fd4ac71dee2a85547d787d9dd210
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。
+
+
 本文提供用于定义 Azure 数据工厂实体（管道、活动、数据集和链接服务）的 JSON 架构和示例。  
 
 ## <a name="pipeline"></a>管道 
