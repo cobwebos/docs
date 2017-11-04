@@ -1,6 +1,6 @@
 ---
-title: Configure the Azure Stack operator's PowerShell environment | Microsoft Docs
-description: Learn how to Configure the Azure Stack operator's PowerShell environment.
+title: "配置 Azure 堆栈运算符 PowerShell 环境 |Microsoft 文档"
+description: "了解如何配置 Azure 堆栈运算符 PowerShell 环境。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,32 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 7e912dcbfd1c745df2a0fc8717a075c0476e8d60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 51861184b92e482484ce61c5006f403d439bfec7
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
+# <a name="configure-the-azure-stack-operators-powershell-environment"></a>配置 Azure 堆栈运算符 PowerShell 环境
 
-# <a name="configure-the-azure-stack-operators-powershell-environment"></a>Configure the Azure Stack operator's PowerShell environment
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+作为 Azure 堆栈操作员，你可以配置你 Azure 堆栈开发工具包 PowerShell 环境。 在配置之后，你可以使用 PowerShell 来管理 Azure 堆栈的资源，如创建产品/服务、 计划、 配额管理警报，等等。本主题范围用于环境只，如果你想要设置用户环境中，PowerShell 是指，云操作员[配置 Azure 堆栈用户 PowerShell 环境](user/azure-stack-powershell-configure-user.md)主题。 
 
-As an Azure Stack operator, you can configure your Azure Stack Development Kit's PowerShell environment. After you configure, you can use PowerShell to manage Azure Stack resources such as creating offers, plans, quotas, managing alerts, etc. This topic is scoped to use with the cloud operator environments only, if you want to set up PowerShell for the user environment, refer to [Configure the Azure Stack user's PowerShell environment](user/azure-stack-powershell-configure-user.md) topic. 
+## <a name="prerequisites"></a>必备组件
 
-## <a name="prerequisites"></a>Prerequisites
+从运行以下先决条件[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或从基于 Windows 的外部客户端如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn): 
 
-Run the following prerequisites either from the [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn): 
+* 安装[Azure 堆栈兼容 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
+* 下载[工具需要使用处理 Azure 堆栈](azure-stack-powershell-download.md)。  
 
-* Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
+## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>配置运算符环境并登录到 Azure 堆栈
 
-## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Configure the operator environment and sign in to Azure Stack
+根据部署 (Azure AD 或 AD FS)，运行以下脚本来配置 Azure 堆栈运算符环境使用 PowerShell （请确保将 AAD tenantName、 GraphAudience 终结点和根据你的环境的 ArmEndpoint 值之一的类型配置）：
 
-Based on the type of deployment (Azure AD or AD FS), run one of the following script to configure the Azure Stack operator environment with PowerShell (Make sure to replace the AAD tenantName, GraphAudience endpoint and ArmEndpoint values as per your environment configuration):
-
-### <a name="azure-active-directory-aad-based-deployments"></a>Azure Active Directory (AAD) based deployments
+### <a name="azure-active-directory-aad-based-deployments"></a>部署基于 azure Active Directory (AAD)
        
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
@@ -70,7 +68,7 @@ $KeyvaultDnsSuffix = “<Keyvault DNS suffix for your environment>”
     -TenantId $TenantID 
   ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Active Directory Federation Services (AD FS) based deployments
+### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>部署基于 active Directory 联合身份验证服务 (AD FS)
          
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
@@ -101,14 +99,14 @@ $KeyvaultDnsSuffix = “<Keyvault DNS suffix for your environment>”
     -TenantId $TenantID 
   ```
 
-## <a name="test-the-connectivity"></a>Test the connectivity
+## <a name="test-the-connectivity"></a>测试连接
 
-Now that we've got everything set up, let's use PowerShell to create resources within Azure Stack. For example, you can create a resource group for an application and add a virtual machine. Use the following command to create a resource group named "MyResourceGroup":
+现在，我们具有设置的所有内容，让我们使用 PowerShell 创建 Azure 堆栈中的资源。 例如，你可以创建应用程序的资源组并添加虚拟机。 使用以下命令创建名为"MyResourceGroup"的资源组：
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
-## <a name="next-steps"></a>Next steps
-* [Develop templates for Azure Stack](user/azure-stack-develop-templates.md)
-* [Deploy templates with PowerShell](user/azure-stack-deploy-template-powershell.md)
+## <a name="next-steps"></a>后续步骤
+* [为 Azure Stack 开发模板](user/azure-stack-develop-templates.md)
+* [通过 PowerShell 部署模板](user/azure-stack-deploy-template-powershell.md)

@@ -1,6 +1,6 @@
 ---
-title: Use the Azure Stack Policy Module| Microsoft Docs
-description: Learn how to constrain an Azure subscription to behave like an Azure Stack subscription
+title: "使用 Azure 堆栈策略模块 |Microsoft 文档"
+description: "了解如何约束表现得像 Azure 堆栈订阅的 Azure 订阅"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -14,32 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e505c52a5e1897d5626ee2cacce9fa3eff12fbbd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Manage Azure policy using the Azure Stack Policy Module
+# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>管理 Azure 策略使用 Azure 堆栈策略模块
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-The Azure Stack Policy module allows you to configure an Azure subscription with the same versioning and service availability as Azure Stack.  The module uses the **New-AzureRMPolicyAssignment** cmdlet to create an Azure policy, which limits the resource types and services available in a subscription.  Once complete, you can use your Azure subscription to develop apps targeted for Azure Stack.  
+Azure 堆栈策略模块，可使用相同的版本控制和 Azure 堆栈的服务可用性配置一个 Azure 订阅。  模块使用**新建 AzureRMPolicyAssignment** cmdlet 可创建 Azure 的策略，这可以限制的资源类型和订阅中可用的服务。  完成后，你可以使用你的 Azure 订阅若要开发针对 Azure 堆栈的应用。  
 
-## <a name="install-the-module"></a>Install the module
-1. Install the required version of the AzureRM PowerShell module, as described in Step1 of [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).   
-2. [Download the Azure Stack tools from GitHub](azure-stack-powershell-download.md)  
-3. [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure-user.md)
+## <a name="install-the-module"></a>安装模块
+1. 安装 AzureRM PowerShell 模块中，所需的版本的步骤 1 中所述[安装适用于 Azure 堆栈的 PowerShell](azure-stack-powershell-install.md)。   
+2. [从 GitHub 下载 Azure 堆栈工具](azure-stack-powershell-download.md)  
+3. [配置适用于 Azure Stack 的 PowerShell](azure-stack-powershell-configure-user.md)
 
-4. Import the AzureStack.Policy.psm1 module:
+4. 导入 AzureStack.Policy.psm1 模块：
 
    ```PowerShell
    Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
-## <a name="apply-policy-to-subscription"></a>Apply policy to subscription
-The following command can be used to apply a default Azure Stack policy against your Azure subscription. Before running, replace *Azure Subscription Name* with your Azure subscription.
+## <a name="apply-policy-to-subscription"></a>将策略应用到订阅
+可以使用以下命令，将针对你的 Azure 订阅的默认 Azure 堆栈策略。 在运行前，替换*Azure 订阅名称*与 Azure 订阅。
 
 ```PowerShell
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
@@ -50,8 +49,8 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ```
 
-## <a name="apply-policy-to-a-resource-group"></a>Apply policy to a resource group
-You may want to apply policies in a more granular method.  As an example, you may have other resources running in the same subscription.  You can scope the policy application to a specific resource group, which lets you test your apps for Azure Stack using Azure resources. Before running, replace *Azure Subscription Name* with your Azure subscription name.
+## <a name="apply-policy-to-a-resource-group"></a>将策略应用到资源组
+你可能想要应用的更精细的方法中的策略。  例如，您可能必须运行相同的订阅中的其他资源。  您可以限定范围策略应用到特定资源组，这样就可以使用 Azure 资源的 Azure 堆栈测试你的应用。 在运行前，替换*Azure 订阅名称*替换为你的 Azure 订阅名称。
 
 ```PowerShell
 $resourceGroupName = ‘myRG01’
@@ -61,15 +60,14 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ```
 
-## <a name="policy-in-action"></a>Policy in action
-Once you've deployed the Azure policy, you receive an error when you try to deploy a resource that prohibited by policy.  
+## <a name="policy-in-action"></a>在操作中的策略
+后你部署 Azure 策略，你收到错误，当你尝试部署的资源的情况下禁止的策略。  
 
-![Result of resource deployment failure because of policy constraint](./media/azure-stack-policy-module/image1.png)
+![由于策略约束的资源部署失败的结果](./media/azure-stack-policy-module/image1.png)
 
-## <a name="next-steps"></a>Next steps
-[Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
+## <a name="next-steps"></a>后续步骤
+[通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)
 
-[Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
+[使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
 
-[Deploy Templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
-
+[部署使用 Visual Studio 模板](azure-stack-deploy-template-visual-studio.md)

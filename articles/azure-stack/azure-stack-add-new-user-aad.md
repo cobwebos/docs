@@ -1,6 +1,6 @@
 ---
-title: Add a new Azure Stack tenant account in Azure Active Directory | Microsoft Docs
-description: "After deploying Microsoft Azure Stack Development Kit, you’ll need to create at least one tenant user account so you can explore the tenant portal."
+title: "在 Azure Active Directory 中添加新的 Azure 堆栈租户帐户 |Microsoft 文档"
+description: "部署 Microsoft Azure 堆栈开发工具包之后, 你将需要创建至少一个租户用户帐户，以便您可以查看租户门户。"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -14,50 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+*适用范围： Azure 堆栈开发工具包*
 
-*Applies to: Azure Stack Development Kit*
+# <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>在 Azure Active Directory 中添加新的 Azure 堆栈租户帐户
+后[部署 Azure 堆栈开发工具包](azure-stack-run-powershell-script.md)，你将需要租户用户帐户，因此你可以浏览租户门户和测试你的产品/服务和计划。 你可以创建的租户帐户通过[使用 Azure 门户](#create-an-azure-stack-tenant-account-using-the-azure-portal)或[使用 PowerShell](#create-an-azure-stack-tenant-account-using-powershell)。
 
-# <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Add a new Azure Stack tenant account in Azure Active Directory
-After [deploying the Azure Stack Development Kit](azure-stack-run-powershell-script.md), you'll need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account by [using the Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) or by [using PowerShell](#create-an-azure-stack-tenant-account-using-powershell).
+## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>创建 Azure 堆栈租户帐户使用 Azure 门户
+你必须具有一个 Azure 订阅来使用 Azure 门户。
 
-## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Create an Azure Stack tenant account using the Azure portal
-You must have an Azure subscription to use the Azure portal.
+1. 登录到[Azure](http://manage.windowsazure.com)。
+2. 在 Microsoft Azure 左侧的导航栏中，单击**Active Directory**。
+3. 在目录列表中，单击你想要用于 Azure 堆栈的目录或创建一个新。
+4. 在此目录页上，单击**用户**。
+5. 单击“添加用户”。
+6. 在**添加用户**向导，在**用户类型**列表中，选择**你的组织中的新用户**。
+7. 在**用户名**框中，键入用户的名称。
+8. 在 **@** 框中，选择适当的条目。
+9. 单击“下一步”箭头。
+10. 在**用户配置文件**页的向导中，键入一个**名字**，**姓氏**，和**显示名称**。
+11. 在**角色**列表中，选择**用户**。
+12. 单击“下一步”箭头。
+13. 上**获取临时密码**页上，单击**创建**。
+14. 复制**新密码**。
+15. 使用新的帐户登录到 Microsoft Azure。 更改出现提示时的密码。
+16. 登录到`https://portal.local.azurestack.external`与新的帐户，以查看租户门户。
 
-1. Log in to [Azure](http://manage.windowsazure.com).
-2. In Microsoft Azure left navigation bar, click **Active Directory**.
-3. In the directory list, click the directory that you want to use for Azure Stack, or create a new one.
-4. On this directory page, click **Users**.
-5. Click **Add user**.
-6. In the **Add user** wizard, in the **Type of user** list, choose **New user in your organization**.
-7. In the **User name** box, type a name for the user.
-8. In the **@** box, choose the appropriate entry.
-9. Click the next arrow.
-10. In the **User profile** page of the wizard, type a **First name**, **Last name**, and **Display name**.
-11. In the **Role** list, choose **User**.
-12. Click the next arrow.
-13. On the **Get temporary password** page, click **Create**.
-14. Copy the **New password**.
-15. Log in to Microsoft Azure with the new account. Change the password when prompted.
-16. Log in to `https://portal.local.azurestack.external` with the new account to see the tenant portal.
-
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Create an Azure Stack tenant account using PowerShell
-If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Azure Active Directory Module for Windows PowerShell instead.
+## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>创建使用 PowerShell 对 Azure 堆栈租户帐户
+如果你没有 Azure 订阅，你无法使用 Azure 门户添加租户用户帐户。 在这种情况下，你可以改为使用 Azure PowerShell 的 Active Directory 模块的 Windows。
 
 > [!NOTE]
-> If you are using Microsoft Account (Live ID) to deploy Azure Stack Development Kit, you can't use AAD PowerShell to create tenant account. 
+> 如果使用 Microsoft 帐户 (Live ID) 来部署 Azure 堆栈开发工具包，你无法使用 AAD PowerShell 创建的租户帐户。 
 > 
 > 
 
-1. Install the [Microsoft Online Services Sign-In Assistant for IT Professionals RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
-2. Install the [Azure Active Directory Module for Windows PowerShell (64-bit version)](http://go.microsoft.com/fwlink/p/?linkid=236297) and open it.
-3. Run the following cmdlets:
+1. 安装[Microsoft Online Services 登录助手面向 IT 专业人员 RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950)。
+2. 安装[Azure Active Directory 的 Windows PowerShell 模块 （64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)并将其打开。
+3. 运行以下 cmdlet:
 
     ```powershell
     # Provide the AAD credential you use to deploy Azure Stack Development Kit
@@ -72,7 +70,6 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
 
     ```
 
-1. Sign in to Microsoft Azure with the new account. Change the password when prompted.
-2. Sign in to `https://portal.local.azurestack.external` with the new account to see the tenant portal.
-
+1. 使用新的帐户登录到 Microsoft Azure。 更改出现提示时的密码。
+2. 登录到`https://portal.local.azurestack.external`与新的帐户，以查看租户门户。
 

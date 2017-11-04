@@ -4,7 +4,7 @@ title: Azure Stack 操作员文档
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Azure Stack 操作员文档 - 教程和 API 参考
-  description: 了解如何使用 Azure Stack 预览版从数据中心交付 Azure 服务。 通过一个概念认证环境了解和演示功能。
+  description: 了解如何使用 Azure 堆栈以提供从你的数据中心的 Azure 服务。 了解和演示从开发工具包或集成的系统环境的功能。
   services: azure-stack
   author: czeumault
   manager: carolz
@@ -12,32 +12,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/23/2017
+  ms.date: 10/02/2017
   ms.author: carolz
 abstract:
-  description: Microsoft Azure Stack 是一种混合云平台，通过它可从数据中心提供 Azure 服务。 使用快速入门和教程，了解如何部署 Azure Stack 并提供服务。
+  description: Microsoft Azure Stack 是一种混合云平台，通过它可从数据中心提供 Azure 服务。 了解如何部署 Azure 堆栈开发工具包、 如何管理基础结构的集成的系统和开发工具包中，以及如何提供使用我们的快速入门和教程的服务。<br/><br/>如果你的 Azure 堆栈用户使用服务或 Azure 堆栈生成应用，请参阅我们<a href="/azure/azure-stack/user">用户文档</a>。
 sections:
-  - title: 5 分钟快速入门
+  - title: 快速入门
     items:
       - type: paragraph
-        text: 设置硬件并部署 Azure Stack：
+        text: 设置你的硬件和部署 Azure 堆栈开发工具包。
       - type: list
         style: icon48
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            text: 部署 Azure Stack
+            text: 部署 Azure 堆栈开发工具包
             href: azure-stack-deploy-overview.md
   - title: 分步教程
     items:
       - type: paragraph
-        text: 了解如何将服务添加到 Azure Stack 部署：
+        text: 了解如何将服务添加到你的 Azure 堆栈部署。
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">在 Azure Stack 上启用虚拟机</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">在 Azure Stack 上启用 SQL 数据库</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">在 Azure Stack 上启用 Web 应用</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">提供 Azure 堆栈上的虚拟机</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">提供 Azure 堆栈上的 SQL 数据库</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">提供 Azure 堆栈上的 Web 应用</a>
   - title: 免费 Pluralsight 视频培训
     items:
       - type: list
@@ -56,4 +56,4 @@ sections:
         className: cardsD
         items:
           - title: 命令行
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>

@@ -1,6 +1,6 @@
 ---
-title: Create a Windows virtual machine by using PowerShell in Azure Stack | Microsoft Docs
-description: Create a Windows virtual machine with PowerShell in Azure Stack.
+title: "在 Azure 堆栈使用 PowerShell 创建 Windows 虚拟机 |Microsoft 文档"
+description: "使用 Azure 堆栈中的 PowerShell 创建 Windows 虚拟机。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -15,28 +15,27 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 97ada8795ff0200c487062c6ec3347c7421ba91d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 42e126ffefd75669d90ea3ff1d3939028f71159c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>在 Azure 堆栈使用 PowerShell 创建 Windows 虚拟机
 
-# <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Create a Windows virtual machine by using PowerShell in Azure Stack
+*适用范围： Azure 堆栈集成系统*
 
-*Applies to: Azure Stack integrated systems*
+此指南详细介绍如何使用 PowerShell 在 Azure 堆栈中创建 Windows Server 2016 的虚拟机。 你可以运行如果你通过 VPN 连接从 Azure 堆栈开发工具包中，或从基于 Windows 的外部客户端此文章中所述的步骤。 
 
-This guide details using PowerShell to create a Windows Server 2016 virtual machine in Azure Stack. You can run the steps described in this article either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN. 
+## <a name="prerequisites"></a>必备组件 
 
-Before you begin, make sure that your Azure Stack operator has added the “Windows Server 2016” image to the Azure Stack marketplace.  
+* 请确保 Azure 堆栈运算符已添加到 Azure 堆栈应用商店的"Windows Server 2016"映像。  
 
-Azure Stack requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack, follow the steps to [install and configure PowerShell](azure-stack-powershell-install.md).    
+* Azure 堆栈需要特定版本的 Azure PowerShell 创建和管理的资源。 如果你没有配置为 Azure 堆栈的 PowerShell，请按照步骤[安装](azure-stack-powershell-install.md)和[配置](azure-stack-powershell-configure-user.md)PowerShell。    
 
+## <a name="create-a-resource-group"></a>创建资源组
 
-## <a name="create-a-resource-group"></a>Create a resource group
-
-A resource group is a logical container into which Azure Stack resources are deployed and managed. Use the following code block to create a resource group. We have assigned values for all variables in this document, you can use them as is or assign a different value.  
+资源组是到哪些 Azure 堆栈部署和管理资源的逻辑容器。 从开发工具包或集成的 Azure 堆栈系统中，运行下面的代码块，来创建资源组。 我们已分配了本文档中的所有变量的值，你可以使用它们也将分配一个不同的值。  
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -48,9 +47,9 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Create storage resources 
+## <a name="create-storage-resources"></a>创建存储资源 
 
-Create a storage account, and a storage container to store the Windows Server 2016 image.
+创建存储帐户和一个存储容器来存储 Windows Server 2016 的映像。
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -75,9 +74,9 @@ $container = New-AzureStorageContainer `
   -Permission Blob
 ```
 
-## <a name="create-networking-resources"></a>Create networking resources
+## <a name="create-networking-resources"></a>创建网络资源
 
-Create a virtual network, subnet, and a public IP address. These resources are used to provide network connectivity to the virtual machine.  
+创建虚拟网络、子网和公共 IP 地址。 这些资源用于提供网络连接到虚拟机。  
 
 ```powershell
 # Create a subnet configuration
@@ -102,9 +101,9 @@ $pip = New-AzureRmPublicIpAddress `
   -Name "mypublicdns$(Get-Random)"
 ```
 
-### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Create a network security group and a network security group rule
+### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>创建网络安全组和网络安全组规则
 
-The network security group secures the virtual machine by using inbound and outbound rules. Lets create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
+网络安全组使用入站和出站规则保护虚拟机。 我们来创建针对端口 3389，以允许传入远程桌面连接的入站的规则，并为端口 80 以允许传入的 web 流量的入站的规则。
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -139,9 +138,9 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgRuleRDP,$nsgRuleWeb 
 ```
  
-### <a name="create-a-network-card-for-the-virtual-machine"></a>Create a network card for the virtual machine
+### <a name="create-a-network-card-for-the-virtual-machine"></a>为虚拟机创建网卡
 
-The network card connects the virtual machine to a subnet, network security group, and public IP address.
+网卡将虚拟机连接到子网、网络安全组和公共 IP 地址。
 
 ```powershell
 # Create a virtual network card and associate it with public IP address and NSG
@@ -154,9 +153,9 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id 
 ```
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
+## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-Create a virtual machine configuration. The configuration includes the settings that are used when deploying the virtual machine such as a virtual machine image, size, credentials.
+创建虚拟机配置。 配置包括部署虚拟机的虚拟机映像、 大小、 凭据如时使用的设置。
 
 ```powershell
 # Define a credential object to store the username and password for the virtual machine
@@ -205,47 +204,46 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
-## <a name="connect-to-the-virtual-machine"></a>Connect to the virtual machine
+## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 
-To remote into the virtual machine that you created in the previous step, you need its public IP address. Run the following command to get the public IP address of the virtual machine: 
+到远程连接到你在上一步中创建虚拟机，你需要其公有 IP 地址。 运行以下命令以获取虚拟机的公共 IP 地址： 
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
  
-Use the following command to create a Remote Desktop session with the virtual machine. Replace the IP address with the publicIPAddress of your virtual machine. When prompted, enter the username and password that you used when creating the virtual machine.
+使用以下命令以创建与虚拟机的远程桌面会话。 将替换为你的虚拟机的 publicIPAddress 的 IP 地址。 出现提示时，输入的用户名和密码创建虚拟机时使用。
 
 ```powershell
 mstsc /v <publicIpAddress>
 ```
 
-## <a name="install-iis-via-powershell"></a>Install IIS via PowerShell
+## <a name="install-iis-via-powershell"></a>通过 PowerShell 安装 IIS
 
-Now that you have logged in to the Azure VM, you can use a single line of PowerShell to install IIS and enable the local firewall rule to allow web traffic. Open a PowerShell prompt and run the following command:
+现在，已登录到 Azure VM，可以使用单行 PowerShell 安装 IIS，并启用本地防火墙规则以允许 Web 流量。 打开 PowerShell 提示符并运行以下命令：
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-## <a name="view-the-iis-welcome-page"></a>View the IIS welcome page
+## <a name="view-the-iis-welcome-page"></a>查看 IIS 欢迎页
 
-With IIS installed and port 80 now open on your VM from the Internet, you can use a web browser of your choice to view the default IIS welcome page. Be sure to use the *publicIpAddress* you documented above to visit the default page. 
+IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 请务必使用前面记录的 *publicIpAddress* 访问默认页面。 
 
-![IIS default site](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png) 
+![IIS 默认站点](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png) 
 
 
-## <a name="delete-the-virtual-machine"></a>Delete the virtual machine
+## <a name="delete-the-virtual-machine"></a>删除虚拟机
 
-When no longer needed, use the following command to remove the resource group that contains the virtual machine and its related resources:
+当不再需要使用以下命令删除包含虚拟机和其相关的资源的资源组：
 
 ```powershell
 Remove-AzureRmResourceGroup `
   -Name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-To learn about Storage in Azure Stack, refer to the [storage overview](azure-stack-storage-overview.md) topic.
-
+在此快速入门中，你已部署简单的 Windows 虚拟机。 若要了解有关 Azure 堆栈的虚拟机的详细信息，继续到[Azure 堆栈中的虚拟机的注意事项](azure-stack-vm-considerations.md)。
 

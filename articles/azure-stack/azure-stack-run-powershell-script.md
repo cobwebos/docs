@@ -1,6 +1,6 @@
 ---
-title: Deploy the Azure Stack Development Kit | Microsoft Docs
-description: Learn how to prepare the Azure Stack Development Kit and run the PowerShell script to deploy it.
+title: "部署 Azure 堆栈开发工具包 |Microsoft 文档"
+description: "了解如何准备 Azure 堆栈开发工具包和运行 PowerShell 脚本来部署它。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,56 +14,55 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 530a9558df2323e1aa49d9f4b974c142ee5ecf37
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: b67cabf0ecdb48f137bfcfbce95eee568a1c298d
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="deploy-the-azure-stack-development-kit"></a>Deploy the Azure Stack Development Kit
+# <a name="deploy-the-azure-stack-development-kit"></a>部署 Azure 堆栈开发工具包
 
-*Applies to: Azure Stack Development Kit*
+*适用范围： Azure 堆栈开发工具包*
 
-To deploy the [Azure Stack Development Kit](azure-stack-poc.md), you must complete the following steps:
+若要部署[Azure 堆栈开发工具包](azure-stack-poc.md)，必须完成以下步骤：
 
-1. [Download the deployment package](https://azure.microsoft.com/overview/azure-stack/try/?v=try) to get the Cloudbuilder.vhdx.
-2. [Prepare the cloudbuilder.vhdx](#prepare-the-development-kit-host) by running the asdk-installer.ps1 script to configure the computer (the development kit host) on which you want to install development kit. After this step, the development kit host will boot to the Cloudbuilder.vhdx.
-3. [Deploy the development kit](#deploy-the-development-kit) on the development kit host.
-
-> [!NOTE]
-> For best results, even if you want to use a disconnected Azure Stack environment, it is best to deploy while connected to the internet. That way, the Windows Server 2016 evaluation version can be activated at deployment time. If the Windows Server 2016 evaluation version is not activated within 10 days, it shuts down.
-> 
-> 
-
-## <a name="download-and-extract-the-development-kit"></a>Download and extract the development kit
-1. Before you start the download, make sure that your computer meets the following prerequisites:
-
-   * The computer must have at least 60 GB of free disk space.
-   * [.NET Framework 4.6 (or a later version)](https://aka.ms/r6mkiy) must be installed.
-
-2. [Go to the Get Started page](https://azure.microsoft.com/overview/azure-stack/try/?v=try), provide your details, and click **Submit**.
-3. Under **Download the software**, click **Azure Stack Development Kit**.
-4. Run the downloaded AzureStackDownloader.exe file.
-5. In the **Azure Stack Development Kit Downloader** window, follow steps 1 through 5.
-6. After the download completes, click **Run** to launch the MicrosoftAzureStackPOC.exe.
-7. Review the License Agreement screen and information of the Self-Extractor Wizard and then click **Next**.
-8. Review the Privacy Statement screen and information of the Self-Extractor Wizard and then click **Next**.
-9. Select the Destination for the files to be extracted, click **Next**.
-   * The default is: <drive letter>:\<current folder>\Microsoft Azure Stack
-10. Review the Destination location screen and information of the Self-Extractor Wizard, and then click **Extract** to extract the CloudBuilder.vhdx (~25 GB) and ThirdPartyLicenses.rtf files. This process will take some time to complete.
+1. [下载部署包](https://azure.microsoft.com/overview/azure-stack/try/?v=try)获取 Cloudbuilder.vhdx。
+2. [准备 cloudbuilder.vhdx](#prepare-the-development-kit-host)通过运行 asdk installer.ps1 脚本来配置要在其安装开发工具包的计算机 （开发工具包主机）。 此步骤后，开发工具包主机将启动到 Cloudbuilder.vhdx。
+3. [部署开发工具包](#deploy-the-development-kit)开发工具包主机上。
 
 > [!NOTE]
-> After you extract the files, you can delete the exe and bin files to recover space on the machine. Or, you can move these files to another location so that if you need to redeploy you don’t need to download the files again.
+> 为获得最佳结果，即使你想要使用断开连接的 Azure 堆栈环境，则最好部署时连接到 internet。 这样一来，可以在部署时激活的 Windows Server 2016 评估版。
 > 
 > 
 
-## <a name="prepare-the-development-kit-host"></a>Prepare the development kit host
-1. Make sure that you can physically connect to the development kit host, or have physical console access (such as KVM). You must have such access after you reboot the development kit host in step 13 below.
-2. Make sure the development kit host meets the [minimum requirements](azure-stack-deploy.md). You can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm your requirements.
-3. Sign in as the Local Administrator to your development kit host.
-4. Copy or move the CloudBuilder.vhdx file to the root of the C:\ drive (C:\CloudBuilder.vhdx).
-5. Run the following script to download the development kit installer file (asdk-installer.ps1) to the c:\AzureStack_Installer folder on your development kit host.
+## <a name="download-and-extract-the-development-kit"></a>下载并提取开发工具包
+1. 开始下载之前，请确保你的计算机满足以下先决条件：
+
+   * 计算机必须具有至少为 60 GB 的可用磁盘空间。
+   * [.NET framework 4.6 （或更高版本）](https://aka.ms/r6mkiy)必须安装。
+
+2. [转到开始页上](https://azure.microsoft.com/overview/azure-stack/try/?v=try)，提供你的详细信息，然后单击**提交**。
+3. 下**下载软件**，单击**Azure 堆栈开发工具包**。
+4. 运行下载的 AzureStackDownloader.exe 文件。
+5. 在**Azure 堆栈开发工具包程序下载程序**窗口中，按照步骤 1 至 5。
+6. 下载完成后，单击**运行**以启动 MicrosoftAzureStackPOC.exe。
+7. 查看许可协议屏幕和自解压缩程序向导的信息，然后单击**下一步**。
+8. 查看隐私声明屏幕和自解压缩程序向导的信息，然后单击**下一步**。
+9. 选择目标文件中提取，请单击**下一步**。
+   * 默认值是： <drive letter>:\<当前文件夹 > \Microsoft Azure 堆栈
+10. 查看目标位置屏幕和自解压缩程序向导的信息，然后单击**提取**提取 CloudBuilder.vhdx (~ 25 GB) 和 ThirdPartyLicenses.rtf 文件。 此过程将需要一些时间才能完成。
+
+> [!NOTE]
+> 提取文件后，你可以删除的 exe 和 bin 文件来恢复计算机上的空间。 或者，你可以将移动这些文件复制到另一个位置，因此，如果你需要重新部署你无需再次下载这些文件。
+> 
+> 
+
+## <a name="prepare-the-development-kit-host"></a>准备开发工具包主机
+1. 请确保你可以以物理方式连接到开发工具包主机，或具有物理控制台访问权限 （如 KVM)。 重新启动在下面的步骤 13 中的开发工具包主机后，你必须具有此类访问权限。
+2. 请确保开发工具包主机满足[最低要求](azure-stack-deploy.md)。 你可以使用[部署适用于 Azure 堆栈检查器](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b)以确认你的要求。
+3. 登录以本地管理员身份向开发工具包主机。
+4. 复制或移动到 C:\ 驱动器 (C:\CloudBuilder.vhdx) 的根目录的 CloudBuilder.vhdx 文件。
+5. 在你开发工具包主机上，c:\AzureStack_Installer 文件夹中运行以下脚本来下载开发工具包安装程序文件 (asdk installer.ps1)。
     ```powershell
     # Variables
     $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
@@ -75,82 +74,88 @@ To deploy the [Azure Stack Development Kit](azure-stack-poc.md), you must comple
     # Download file
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
-6. Open an elevated PowerShell console > run the C:\AzureStack_Installer\asdk-installer.ps1 script > click **Prepare vhdx**.
-7. On the **Select Cloudbuilder vhdx** page of the installer, browse to and select the cloudbuilder.vhdx file that you downloaded in the previous steps.
-8. Optional: Check the **Add drivers** box to specify a folder containing additional drivers that you want on the host.
-9. On the **Optional settings** page, provide the local administrator account for the development kit host. If you don't provide these credentials, you'll need KVM access to the host during the install process below.
-10. Also on the **Optional settings** page, you have the option to set the following:
-    - **Computername**: This option sets the name for the development kit host. The name must comply with FQDN requirements and must be 15 characters or less in length. The default is a random computer name generated by Windows.
-    - **Time zone**: Sets the time zone for the development kit host. The default is (UTC-8:00) Pacific Time (US & Canada).
-    - **Static IP configuration**: Sets your deployment to use a static IP address. Otherwise, when the installer reboots into the cloudbuilder.vhx, the network interfaces are configured with DHCP.
-11. Click **Next**.
-12. If you chose a static IP configuration in the previous step, you must now:
-    - Select a network adapter. Make sure you can connect to the adapter before you click **Next**.
-    - Make sure that the **IP address**, **Gateway**, and **DNS** values are correct and then click **Next**.
-13. Click **Next** to start the preparation process.
-14. When the preparation indicates **Completed**, click **Next**.
-15. Click **Reboot now** to boot into the cloudbuilder.vhdx and continue the deployment process.
+6. 打开已提升权限的 PowerShell 控制台 > 运行 C:\AzureStack_Installer\asdk-installer.ps1 脚本 > 单击**准备环境**。
+7. 上**选择 Cloudbuilder vhdx**的安装程序，浏览到并选择你在前面的步骤中下载的 cloudbuilder.vhdx 文件的页。
+8. 可选： 检查**将驱动程序添加**框以指定包含所需主机的其他驱动程序的文件夹。
+9. 上**可选设置**页上，为开发工具包主机提供的本地管理员帐户。 如果未提供这些凭据，将在下面的安装过程期间需要 KVM 访问的主机。
+10. 同样，在**可选设置**页上，你可以选择以下设置：
+    - **Computername**： 此选项设置开发工具包主机的名称。 名称必须符合 FQDN 要求，并且必须是长度不超过 15 个字符。 默认值是由 Windows 生成的随机计算机名称。
+    - **时区**： 开发工具包主机设置的时间区域。 默认值为 (UTC-8:00) 太平洋时间 （美国和加拿大）。
+    - **静态 IP 配置**： 设置您的部署，使用静态 IP 地址。 否则，当安装程序重新启动到 cloudbuilder.vhx，与 DHCP 配置的网络接口。
+11. 单击“下一步”。
+12. 如果上一步中选择一个静态 IP 配置，你现在必须：
+    - 选择一个网络适配器。 请确保你可以连接到该适配器，再单击**下一步**。
+    - 请确保**IP 地址**，**网关**，和**DNS**值正确无误，然后单击**下一步**。
+13. 单击**下一步**开始准备过程。
+14. 准备工作的指示时**已完成**，单击**下一步**。
+15. 单击**立即重新启动**启动进入 cloudbuilder.vhdx 并继续部署过程。
 
-## <a name="deploy-the-development-kit"></a>Deploy the development kit
-1. Sign in as the Local Administrator to the development kit host. Use the credentials specified in the previous steps.
+## <a name="deploy-the-development-kit"></a>部署开发工具包
+1. 登录以本地管理员身份到开发工具包主机。 使用前面的步骤中指定的凭据。
 
     > [!IMPORTANT]
-    > For Azure Active Directory deployments, Azure Stack requires access to the Internet, either directly or through a transparent proxy. The deployment supports exactly one NIC for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script in the next section.
+    > 对于 Azure Active Directory 部署，Azure 堆栈需要访问 Internet，直接或通过透明的代理。 部署支持恰好一个 NIC 的网络。 如果你有多个 Nic，请确保只有一个处于启用状态 （，已禁用所有其他协议） 之前运行下一节中的部署脚本。
     
-2. Open an elevated PowerShell console > run the \AzureStack_Installer\asdk-installer.ps1 script (which may be on a different drive in the Cloudbuilder.vhdx) > click **Install**.
-3. In the **Type** box, select **Azure Cloud** or **ADFS**.
-    - **Azure Cloud**: Azure Active Directory is the identity provider. Use this parameter to specify a specific directory where the AAD account has global admin permissions. Full name of an AAD Directory tenant in the format of .onmicrosoft.com. 
-    - **ADFS**: The default stamp Directory Service is the identity provider, the default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of the setup.
-4. Under **Local administrator password**, in the **Password** box, type the local administrator password (which must match the current configured local administrator password), and then click **Next**.
-5. Select a network adapter to use for the development kit and then click **Next**.
-6. Select DHCP or static network configuration for the BGPNAT01 virtual machine.
-    - **DHCP** (default): The virtual machine gets the IP network configuration from the DHCP server.
-    - **Static**: Only use this option if DHCP can’t assign a valid IP address for Azure Stack to access the Internet. A static IP address must be specified with the subnetmask length (for example, 10.0.0.5/24).
-7. Optionally, set the following values:
-    - **VLAN ID**: Sets the VLAN ID. Only use this option if the host and AzS-BGPNAT01 must configure VLAN ID to access the physical network (and Internet). 
-    - **DNS forwarder**: A DNS server is created as part of the Azure Stack deployment. To allow computers inside the solution to resolve names outside of the stamp, provide your existing infrastructure DNS server. The in-stamp DNS server forwards unknown name resolution requests to this server.
-    - **Time server**: Sets a specific time server. 
-8. Click **Next**. 
-9. On the **Verifying network interface card properties** page, you'll see a progress bar. 
-    - If it says **An update cannot be downloaded**, follow the instructions on the page.
-    - When it says **Completed**, click **Next**.
-10. On **Summary** page, click **Deploy**.
-11. If you're using an Azure Active Directory deployment, you'll be asked to enter your Azure Active Directory global administrator account credentials.
-12. The deployment process can take a few hours, during which the system automatically reboots once.
+2. 打开已提升权限的 PowerShell 控制台 > 运行 \AzureStack_Installer\asdk-installer.ps1 脚本 （它可能是 Cloudbuilder.vhdx 中的不同驱动器上） > 单击**安装**。
+3. 在**类型**框中，选择**Azure 云**或**ADFS**。
+    - **Azure 云**: Azure Active Directory 是标识提供程序。 使用此参数来指定特定目录的 AAD 帐户具有全局管理员权限的位置。 一个 AAD 目录租户的完整名称。 例如，。.c o m。 
+    - **ADFS**： 目录服务中的默认戳是标识提供程序，用于登录的默认帐户是azurestackadmin@azurestack.local，且要使用的密码正是作为安装的一部分提供。
+4. 下**本地管理员密码**中**密码**框中，键入本地管理员密码 （这必须匹配当前配置的本地管理员密码），，然后单击**下一步**。
+5. 选择用于开发工具包，然后单击一个网络适配器**下一步**。
+6. 选择 DHCP 或 BGPNAT01 虚拟机的静态网络配置。
+    - **DHCP** （默认值）： 虚拟机从 DHCP 服务器获取 IP 网络配置。
+    - **静态**： 当 DHCP 无法分配 Azure 堆栈访问 Internet 的有效 IP 地址才会使用此选项。 必须与子网掩码长度 (例如，10.0.0.5/24) 指定静态 IP 地址。
+7. （可选） 设置以下值：
+    - **VLAN ID**： 设置 VLAN id。 如果主机和 AzS BGPNAT01 必须配置要访问的物理网络 （和 Internet） 的 VLAN ID，只能使用此选项。 
+    - **DNS 转发器**： 作为 Azure 堆栈部署的一部分创建的 DNS 服务器。 若要允许解析外部戳的名称的解决方案内的计算机，提供你现有的基础结构 DNS 服务器。 在戳 DNS 服务器将转发到此服务器的未知的名称解析请求。
+    - **时间服务器**： 这所必需的字段设置的时间服务器，并且必须是 IP 地址。 若要查找的时间服务器 IP 地址，请访问[pool.ntp.org](http:\\pool.ntp.org)或 ping time.windows.com。 
+8. 单击“下一步”。 
+9. 上**验证网络接口卡属性**页上，你将看到一个进度栏。 
+    - 如果它规定**无法下载更新**，按照页上的说明。
+    - 当属实**已完成**，单击**下一步**。
+10. 上**摘要**页上，单击**部署**。
+11. 如果你使用 Azure Active Directory 部署，你将需要输入你的 Azure Active Directory 全局管理员帐户凭据。
+12. 部署过程可能需要几个小时，在此期间系统会自动重新启动一次。
    
    > [!IMPORTANT]
-   > If you want to monitor the deployment progress, sign in as azurestack\AzureStackAdmin. If you sign in as a local admin after the machine is joined to the domain, you won't see the deployment progress. Do not rerun deployment, instead sign in as azurestack\AzureStackAdmin to validate that it's running.
+   > 如果你想要监视部署进度，请以 azurestack\AzureStackAdmin 身份登录。 如果您在登录以本地管理员在计算机加入到域后，你无法查看部署进度。 不要重新运行部署，而是以登录 azurestack\AzureStackAdmin 以验证它正在运行。
    > 
    > 
    
-    When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment’**.
+    如果部署成功，PowerShell 控制台显示：**完成： 操作部署**。
    
-If the deployment fails, you can use the following PowerShell rerun script from the same elevated PowerShell window:
+如果部署失败，你可以从同一个提升的 PowerShell 窗口使用以下 PowerShell 重新运行脚本：
 
 ```powershell
 cd c:\CloudDeployment\Setup
 .\InstallAzureStackPOC.ps1 -Rerun
 ```
 
-This script will restart the deployment from the last step that succeeded.
+此脚本将重新启动成功的最后一步中的部署。
 
-Or, you can [redeploy](azure-stack-redeploy.md) from scratch.
-
-
-## <a name="reset-the-password-expiration-to-180-days"></a>Reset the password expiration to 180 days
-
-To make sure that the password for the development kit host doesn't expire too soon, follow these steps after you deploy:
-
-1. On the development kit host, open **Group Policy Management** and navigate to **Group Policy Management** – **Forest: azurestack.local** – **Domains** – **azurestack.local**.
-2. Right click on **MemberServer** and click **Edit**.
-3. In the Group Policy Management Editor, navigate to **Computer Configuration** – **Policies** – **Windows Settings** – **Security Settings** – **Account Policies** – **Password Policy**.
-4. In the right pane, double-click on **Maximum password age**.
-5. In the **Maximum password age Properties** dialog box, change the **Password will expire in** value to 180, then Click **OK**.
+或者，你可以[重新部署](azure-stack-redeploy.md)从零开始。
 
 
-## <a name="next-steps"></a>Next steps
-[Register Azure Stack with your Azure subscription](azure-stack-register.md)
+## <a name="reset-the-password-expiration-to-180-days"></a>重置为 180 天的密码过期
 
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
+若要确保开发工具包宿主的密码不过期时间太短，请在部署后执行以下步骤：
 
+若要从 Powershell 中更改的密码过期策略：
+1. 在 Powershell 窗口中，运行命令，集 ADDefaultDomainPasswordPolicy-MaxPasswordAge 180.00:00:00-标识 azurestack.local
+
+若要手动更改的密码过期策略：
+1. 开发工具包在主机上，打开**组策略管理**并导航到**组策略管理**–**林： azurestack.local** –**域** – **azurestack.local**。
+2. 右键单击**默认域策略**单击**编辑**。
+3. 在组策略管理编辑器中，导航到**计算机配置**–**策略**– **Windows 设置**–**安全设置**–**帐户策略**–**密码策略**。
+4. 在右窗格中，双击**密码最长期限**。
+5. 在**密码最长期限属性**对话框中，更改**密码会过期中**值到 180，然后单击**确定**。
+
+
+## <a name="next-steps"></a>后续步骤
+
+[安装 PowerShell](azure-stack-powershell-configure-quickstart.md)
+
+[Azure 堆栈注册你的 Azure 订阅](azure-stack-register.md)
+
+[连接到 Azure Stack](azure-stack-connect-azure-stack.md)
 

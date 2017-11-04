@@ -1,6 +1,6 @@
 ---
-title: Deploy templates with PowerShell in Azure Stack | Microsoft Docs
-description: Learn how to deploy a virtual machine using a Resource Manager template and PowerShell.
+title: "部署模板使用 Azure 堆栈中的 PowerShell |Microsoft 文档"
+description: "了解如何部署使用资源管理器模板和 PowerShell 的虚拟机。"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -14,26 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e4837be016b569dbd0b4bf8e071e6381b8daa85f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-templates-in-azure-stack-using-powershell"></a>Deploy templates in Azure Stack using PowerShell
+# <a name="deploy-templates-in-azure-stack-using-powershell"></a>将使用 PowerShell 的 Azure 堆栈中的模板部署
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-Use PowerShell to deploy Azure Resource Manager templates to the Azure Stack Development Kit.  Resource Manager templates deploy and provision all resources for your application in a single, coordinated operation.
+使用 PowerShell 将 Azure 资源管理器模板部署到 Azure 堆栈开发工具包。  资源管理器模板部署和设置在单个协调的操作的应用程序的所有资源。
 
-## <a name="run-azurerm-powershell-cmdlets"></a>Run AzureRM PowerShell cmdlets
-In this example, you run a script to deploy a virtual machine to Azure Stack Development Kit using a Resource Manager template.  Before proceeding, ensure you have [configured PowerShell](azure-stack-powershell-configure-user.md)  
+## <a name="run-azurerm-powershell-cmdlets"></a>运行 AzureRM PowerShell cmdlet
+在此示例中，你运行脚本以将虚拟机部署到 Azure 堆栈开发工具包使用资源管理器模板。  在继续之前，确保你具有[配置 PowerShell](azure-stack-powershell-configure-user.md)  
 
-The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
+在此示例模板中使用的 VHD 是 windows Server 2012 R2 Datacenter。
 
-1. Go to <http://aka.ms/AzureStackGitHub>, search for the **101-simple-windows-vm** template, and save it to the following location: c:\\templates\\azuredeploy-101-simple-windows-vm.json.
-2. In PowerShell, run the following deployment script. Replace *username* and *password* with your username and password. On subsequent uses, increment the value for the *$myNum* parameter to prevent overwriting your deployment.
+1. 转到<http://aka.ms/AzureStackGitHub>，搜索**101 简单 windows vm**模板，并将其保存到以下位置： c:\\模板\\azuredeploy-101-简单-windows-vm.json。
+2. 在 PowerShell 中，运行以下的部署脚本。 替换*用户名*和*密码*使用用户名和密码。 在以后使用，递增的值*$myNum*参数，以避免覆盖您的部署。
    
    ```PowerShell
        # Set Deployment Variables
@@ -56,10 +55,9 @@ The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
            -VmName myVM$myNum `
            -WindowsOSVersion 2012-R2-Datacenter
    ```
-3. Open the Azure Stack portal, click **Browse**, click **Virtual machines**, and look for your new virtual machine (*myDeployment001*).
+3. 打开 Azure 堆栈门户中，单击**浏览**，单击**虚拟机**，并查找新的虚拟机 (*myDeployment001*)。
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
-
+## <a name="next-steps"></a>后续步骤
+[通过 Visual Studio 部署模板](azure-stack-deploy-template-visual-studio.md)
 

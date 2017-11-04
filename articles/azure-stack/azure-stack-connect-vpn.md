@@ -1,6 +1,6 @@
 ---
-title: Connect Azure Stack to Azure using VPN
-description: How to connect virtual networks in Azure Stack to virtual networks in Azure using VPN.
+title: "连接到 Azure 中使用 VPN 的 Azure 堆栈"
+description: "如何将 Azure 堆栈中的虚拟网络连接到使用 VPN 的 Azure 中的虚拟网络。"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,220 +14,219 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c06eb0bb44bdfeab956e9b5051786b5bc631acf5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-azure-stack-to-azure-using-vpn"></a>Connect Azure Stack to Azure using VPN
+# <a name="connect-azure-stack-to-azure-using-vpn"></a>连接到 Azure 中使用 VPN 的 Azure 堆栈
 
-*Applies to: Azure Stack integrated systems*
+*适用范围： Azure 堆栈集成系统*
 
-This article shows you how to create a site-to-site VPN to connect a virtual network in Azure Stack to a virtual network in Azure.
+这篇文章演示了如何创建站点到站点 VPN 连接到 Azure 中的虚拟网络的 Azure 堆栈中的虚拟网络。
 
-### <a name="connection-diagram"></a>Connection diagram
-The following diagram shows what the connection configuration should look like when you’re done:
+### <a name="connection-diagram"></a>连接关系图
+下图显示什么连接配置应如下所示完成后：
 
-![Site-to-site VPN connection configuration](media/azure-stack-connect-vpn/image2.png)
+![站点到站点 VPN 连接配置](media/azure-stack-connect-vpn/image2.png)
 
-### <a name="before-you-begin"></a>Before you begin
-To complete the connection configuration, make sure you have the following items before you begin:
+### <a name="before-you-begin"></a>开始之前
+若要完成的连接配置，确保在开始之前，有以下各项：
 
-* An Azure Stack integrated systems (multi-node) deployment that is directly connected to the Internet. This means that your External Public IP Address range must be directly reachable from the public Internet.
-* A valid Azure subscription.  If you don’t have an Azure subscription, you can create a [free Azure account here](https://azure.microsoft.com/free/?b=17.06).
+* Azure 堆栈集成直接连接到 Internet 的系统 （多节点） 部署。 这意味着，外部的公共 IP 地址范围必须是可以从公共 Internet 直接访问。
+* 有效的 Azure 订阅。  如果你没有 Azure 订阅，则可以创建[释放此处的 Azure 帐户](https://azure.microsoft.com/free/?b=17.06)。
 
-## <a name="network-example-values-table"></a>Network example values table
-The network example values table shows the sample values that are used in this article. You can use these values or you can refer to them to better understand the examples in this article.
+## <a name="network-example-values-table"></a>网络示例值表
+网络示例值表显示了这篇文章中的使用的示例值。 你可以使用这些值也可以引用它们以更好地了解这篇文章中的示例。
 
-**Network example values table**
+**网络示例值表**
 |   |Azure Stack|Azure|
 |---------|---------|---------|
-|Virtual network name     |Azs-VNet|AzureVNet |
-|Virtual network address space |10.1.0.0/16|10.100.0.0/16|
-|Subnet name     |FrontEnd|FrontEnd|
-|Subnet address range|10.1.0.0/24 |10.100.0.0/24 |
-|Gateway subnet     |10.1.1.0/24|10.100.1.0/24|
+|虚拟网络名称     |Azs VNet|AzureVNet |
+|虚拟网络地址空间 |10.1.0.0/16|10.100.0.0/16|
+|子网名称     |FrontEnd|FrontEnd|
+|子网地址范围|10.1.0.0/24 |10.100.0.0/24 |
+|网关子网     |10.1.1.0/24|10.100.1.0/24|
 
-## <a name="create-the-network-resources-in-azure"></a>Create the network resources in Azure
+## <a name="create-the-network-resources-in-azure"></a>在 Azure 中创建的网络资源
 
-First you create the network resources for Azure. The following instructions show how to create the resources by using the [Azure portal](http://portal.azure.com/).
+首先，你为 Azure 创建网络资源。 下面的说明演示如何通过使用创建资源[Azure 门户](http://portal.azure.com/)。
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
+### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
 
-1. Sign in to the [Azure portal](http://portal.azure.com/) using your Azure account.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. Use the information from the network configuration table to identify the values for Azure **Name**, **Address space**, **Subnet name**, and **Subnet address range**.
-6. For **Resource Group**, create a new resource group or, if you already have one, select **Use existing**.
-7. Select the **Location** of your VNet.  If you're using the example values, select **East US** or use another location if you prefer.
-8. Select **Pin to dashboard**.
-9. Select **Create**.
+1. 登录到[Azure 门户](http://portal.azure.com/)使用你的 Azure 帐户。
+2. 在用户门户中，选择**新建**。
+3. 转到**Marketplace**，然后选择**网络**。
+4. 选择**虚拟网络**。
+5. 使用网络配置表中的信息以确定的值为 Azure**名称**，**地址空间**，**子网名称**，和**子网地址范围**。
+6. 有关**资源组**，创建新的资源组或如果你已经有一个，则选择**使用现有**。
+7. 选择**位置**的你的 VNet。  如果你使用的示例值，选择**美国东部**或如果你愿意使用另一个位置。
+8. 选择“固定到仪表板”。
+9. 选择“创建” 。
 
-### <a name="create-the-gateway-subnet"></a>Create the Gateway Subnet
-1. Open the Virtual network resource you created (**AzureVNet**) from the dashboard.
-2. On the **Settings** section, select **Subnets**.
-3. Select  **Gateway subnet** to add a gateway subnet to the virtual network.
-4. The name of the subnet is set to **GatewaySubnet** by default.
-   Gateway subnets are special and must have this specific name to function properly.
-5. In the **Address range** field, verify the address is **10.100.0.0/24**.
-6. Select **OK** to create the gateway subnet.
+### <a name="create-the-gateway-subnet"></a>创建网关子网
+1. 打开刚才创建的虚拟网络资源 (**AzureVNet**) 从仪表板。
+2. 上**设置**部分中，选择**子网**。
+3. 选择**网关子网**将网关子网添加到虚拟网络。
+4. 默认情况下，子网的名称设置为 **GatewaySubnet**。
+   网关子网很特殊，必须使用该特定名称才能正常运行。
+5. 在**地址范围**字段中，验证地址是否**10.100.0.0/24**。
+6. 选择**确定**创建网关子网。
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure portal, select **New**.  
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, type **Azure-GW**.
-5. To choose a virtual network, select **Virtual network**. Then select **AzureVnet** from the list.
-6. Select **Public IP address**. When the **Choose public IP address** section opens, select **Create new**.
-7. In **Name**, type **Azure-GW-PiP**, and then select **OK**.
-8. By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
+1. 在 Azure 门户中，选择**新建**。  
+2. 转到**Marketplace**，然后选择**网络**。
+3. 从网络资源的列表中选择**虚拟网络网关**。
+4. 在**名称**，类型**Azure GW**。
+5. 若要选择一个虚拟网络，选择**虚拟网络**。 然后选择**AzureVnet**从列表中。
+6. 选择**公共 IP 地址**。 当**选择公共 IP 地址**部分将打开，选择**新建**。
+7. 在**名称**，类型**Azure GW PiP**，然后选择**确定**。
+8. 默认情况下，为**VPN 类型**，**基于路由的**选择。
+    保留**基于路由的**VPN 类型。
+9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建” 。
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
+### <a name="create-the-local-network-gateway-resource"></a>创建本地网络网关资源
 
-1. In the Azure portal, select **New**. 
-4. Go to **Marketplace**, and then select **Networking**.
-5. From the list of resources, select **Local network gateway**.
-6. In **Name**, type **Azs-GW**.
-7. In **IP address**, type the public IP address for your Azure Stack Virtual Network Gateway that is listed earlier in the network configuration table.
-8. In **Address Space**, from Azure Stack, type the **10.0.10.0/23** address space for **AzureVNet**.
-9. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
+1. 在 Azure 门户中，选择**新建**。 
+4. 转到**Marketplace**，然后选择**网络**。
+5. 从资源的列表中选择**本地网络网关**。
+6. 在**名称**，类型**Azs GW**。
+7. 在**IP 地址**，输入你 Azure 堆栈虚拟网络网关之前在网络配置表中列出的公共 IP 地址。
+8. 在**地址空间**，从 Azure 堆栈键入**10.0.10.0/23**地址空间为**AzureVNet**。
+9. 验证你**订阅**，**资源组**，和**位置**正确无误，，然后选择**创建**。
 
-## <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basic** settings section, for the **Connection type**, choose **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** section, select **Virtual network gateway**, and then select **Azure-GW**.
-7. Select **Local network gateway**, and then select **Azs-GW**.
-8. In **Connection name**, type **Azure-Azs**.
-9. In **Shared key (PSK)**, type **12345**. If you choose a different value, remember that it *must* match the value for the shared key that you create on the other end of the connection. Select **OK**.
-10. Review the **Summary** section, and then select **OK**.
+## <a name="create-the-connection"></a>创建连接
+1. 在用户门户中，选择**新建**。 
+2. 转到**Marketplace**，然后选择**网络**。
+3. 从资源的列表中选择**连接**。
+4. 上**基本**设置部分中，为**连接类型**，选择**站点到站点 (IPSec)**。
+5. 选择**订阅**，**资源组**，和**位置**，然后选择**确定**。
+6. 上**设置**部分中，选择**虚拟网络网关**，然后选择**Azure GW**。
+7. 选择**本地网络网关**，然后选择**Azs GW**。
+8. 在**连接名称**，类型**Azure Azs**。
+9. 在**共享密钥 (PSK)**，类型**12345**。 如果你选择不同的值，请记住它*必须*匹配你在连接的另一端创建的共享密钥的值。 选择“确定”。
+10. 查看**摘要**部分，，然后选择**确定**。
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
-Create a virtual machine in Azure now, and put it on your VM subnet in your virtual network.
+## <a name="create-a-virtual-machine"></a>创建虚拟机
+现在，在 Azure 中创建虚拟机并将其放在虚拟网络中你的 VM 子网。
 
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** section, for **Name**, type **AzureVM**.
-5. Type a valid username and password. You use this account to sign in to the virtual machine after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** section, select a virtual machine size for this instance, and then select **Select**.
-8. On the **Settings** section, you can accept the defaults. Make sure that the **AzureVnet** virtual network is selected, and verify that the subnet is set to **10.0.20.0/24**. Select **OK**.
-9. Review the settings on the **Summary** section, and then select **OK**.
+1. 在 Azure 门户中，选择**新建**。
+2. 转到**Marketplace**，然后选择**计算**。
+3. 在虚拟机映像的列表中，选择**Windows Server 2016 数据中心 Eval**映像。
+4. 上**基础知识**部分中，为**名称**，类型**AzureVM**。
+5. 键入有效的用户名和密码。 此帐户用于登录到虚拟机将在创建后。
+6. 提供**订阅**，**资源组**，和**位置**，然后选择**确定**。
+7. 上**大小**部分，选择此情况下，虚拟机大小，然后选择**选择**。
+8. 上**设置**部分中，你可以接受默认值。 请确保**AzureVnet**虚拟网络已选中，然后验证子网是否设置为**10.0.20.0/24**。 选择“确定”。
+9. 上查看设置**摘要**部分，，然后选择**确定**。
 
-## <a name="create-the-network-resources-in-azure-stack"></a>Create the network resources in Azure Stack
-Next you create the network resources in Azure Stack.
+## <a name="create-the-network-resources-in-azure-stack"></a>在 Azure 堆栈中创建的网络资源
+接下来，你在 Azure 堆栈中创建的网络资源。
 
-### <a name="sign-in-as-a-user"></a>Sign in as a user
-A service administrator can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don’t already have one, [create a user account](azure-stack-add-new-user-aad.md) before you sign in.
+### <a name="sign-in-as-a-user"></a>以用户身份登录
+服务管理员可以登录的用户以测试计划、 服务和其用户可能使用的订阅。 如果你还没有一个，[创建用户帐户](azure-stack-add-new-user-aad.md)在登录之前。
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
-1. Use a user account to sign in to the user portal.
-2. In the user portal, select **New**.
+### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
+1. 使用用户帐户登录到用户门户。
+2. 在用户门户中，选择**新建**。
 
-    ![Create new virtual network](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
+    ![创建新的虚拟网络](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
 
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. For **Name**, **Address space**, **Subnet name**, and **Subnet address range**, use the values from the network configuration table.
-6. In **Subscription**, the subscription that you created earlier appears.
-7. For **Resource Group**, you can either create a resource group or if you already have one, select **Use existing**.
-8. Verify the default location.
-9. Select **Pin to dashboard**.
-10. Select **Create**.
+3. 转到**Marketplace**，然后选择**网络**。
+4. 选择**虚拟网络**。
+5. 有关**名称**，**地址空间**，**子网名称**，和**子网地址范围**，使用网络配置表中的值。
+6. 在**订阅**，先前创建的订阅显示。
+7. 有关**资源组**，你可以创建资源组，也可以已经拥有一个帐户，如果选择**使用现有**。
+8. 验证默认位置。
+9. 选择“固定到仪表板”。
+10. 选择“创建” 。
 
-### <a name="create-the-gateway-subnet"></a>Create the gateway subnet
-1. On the dashboard, open the Azs-VNet virtual network resource you created.
-2. On the **Settings** section, select **Subnets**.
-3. To add a gateway subnet to the virtual network, select **Gateway Subnet**.
+### <a name="create-the-gateway-subnet"></a>创建网关子网
+1. 在仪表板中，打开您创建的 Azs VNet 虚拟网络资源。
+2. 上**设置**部分中，选择**子网**。
+3. 若要将网关子网添加到虚拟网络中，选择**网关子网**。
    
-    ![Add gateway subnet](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
+    ![添加网关子网](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
 
-4. By default, the subnet name is set to **GatewaySubnet**.
-   Gateway subnets are special. To function properly, they must use the *GatewaySubnet* name.
-5. In **Address range**, verify that the address is **10.1.1.0/24**.
-6. Select **OK** to create the gateway subnet.
+4. 默认情况下，子网名称设置为**GatewaySubnet**。
+   网关的子网是特殊的。 若要正常运行，它们必须使用*GatewaySubnet*名称。
+5. 在**地址范围**，验证地址是否**10.1.1.0/24**。
+6. 选择**确定**创建网关子网。
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure Stack portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, type **Azs-GW**.
-5. Select the **Virtual network** item to choose a virtual network.
-   Select **Azs-VNet** from the list.
-6. Select the **Public IP address** menu item. When the **Choose public IP address** section opens, select **Create new**.
-7. In **Name**, type **Azs-GW-PiP**, and then select **OK**.
-8.  By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
+1. 在 Azure 堆栈门户中，选择**新建**。 
+2. 转到**Marketplace**，然后选择**网络**。
+3. 从网络资源的列表中选择**虚拟网络网关**。
+4. 在**名称**，类型**Azs GW**。
+5. 选择**虚拟网络**项选择虚拟网络。
+   选择**Azs VNet**从列表中。
+6. 选择**公共 IP 地址**菜单项。 当**选择公共 IP 地址**部分将打开，选择**新建**。
+7. 在**名称**，类型**Azs GW PiP**，然后选择**确定**。
+8.  默认情况下，为**VPN 类型**，**基于路由的**选择。
+    保留**基于路由的**VPN 类型。
+9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建” 。
 
-### <a name="create-the-local-network-gateway"></a>Create the local network gateway
-The notion of a *local network gateway* in Azure Stack is a bit different than in an Azure deployment.
+### <a name="create-the-local-network-gateway"></a>创建本地网关
+这一概念*本地网络网关*Azure 堆栈中是稍有不同于 Azure 部署中。
 
-In an Azure deployment, a local network gateway represents an on-premises (at the user location) physical device, that you use to connect to a virtual network gateway in Azure. In Azure Stack, both ends of the connection are virtual network gateways!
+在 Azure 部署中，本地网络网关表示的本地 （在用户位置中） 物理设备，用于连接到 Azure 虚拟网络网关。 Azure 堆栈中连接两个 ends 是虚拟网络网关 ！
 
-A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. 
+更广义考虑这一方法是，本地网络网关资源始终指示远程网关连接另一端。 
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
-1. Sign in to the Azure Stack portal.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. From the list of resources, select **local network gateway**.
-5. In **Name**, type **Azure-GW**.
-6. In **IP address**, type the Public IP Address for the virtual network gateway in Azure **Azure-GW-PiP**. This address appears earlier in the network configuration table.
-7. In **Address Space**, for the address space of the Azure VNET that you created, type **10.0.20.0/23**.
-8. Verify that your **Subscription**, **Resource Group**, and **location** are correct, and then select **Create**.
+### <a name="create-the-local-network-gateway-resource"></a>创建本地网络网关资源
+1. 登录到 Azure 堆栈门户。
+2. 在用户门户中，选择**新建**。
+3. 转到**Marketplace**，然后选择**网络**。
+4. 从资源的列表中选择**本地网络网关**。
+5. 在**名称**，类型**Azure GW**。
+6. 在**IP 地址**，键入在 Azure 中的虚拟网络网关的公共 IP 地址**Azure GW PiP**。 此地址将显示在网络配置表的前面部分中。
+7. 在**地址空间**，为你创建的 Azure VNET 的地址空间中，键入**10.0.20.0/23**。
+8. 验证你**订阅**，**资源组**，和**位置**正确无误，，然后选择**创建**。
 
-### <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**.
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basics** settings section, for the **Connection type**, select **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** section,  select **Virtual network gateway**, and then select **Azs-GW**.
-7. Select **Local network gateway**, and then select **Azure-GW**.
-8. In **Connection Name**, type **Azs-Azure**.
-9. In **Shared key (PSK)**, type **12345**, and then select **OK**.
-10. On the **Summary** section, select **OK**.
+### <a name="create-the-connection"></a>创建连接
+1. 在用户门户中，选择**新建**。
+2. 转到**Marketplace**，然后选择**网络**。
+3. 从资源的列表中选择**连接**。
+4. 上**基础知识**设置部分中，为**连接类型**，选择**站点到站点 (IPSec)**。
+5. 选择**订阅**，**资源组**，和**位置**，然后选择**确定**。
+6. 上**设置**部分中，选择**虚拟网络网关**，然后选择**Azs GW**。
+7. 选择**本地网络网关**，然后选择**Azure GW**。
+8. 在**连接名称**，类型**Azs Azure**。
+9. 在**共享密钥 (PSK)**，类型**12345**，然后选择**确定**。
+10. 上**摘要**部分中，选择**确定**。
 
-### <a name="create-a-vm"></a>Create a VM
-To validate the data that travels through the VPN connection, you need to create virtual machines on each end to send and receive data through the VPN tunnel. 
+### <a name="create-a-vm"></a>创建 VM
+若要验证的数据，通过 VPN 连接，你需要在每个端来发送和接收数据通过 VPN 隧道上创建虚拟机。 
 
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** section, in **Name**, type **Azs-VM**.
-5. Type a valid username and password. You use this account to sign in to the VM after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** section, for this instance, select a virtual machine size, and then select **Select**.
-8. On the **Settings** section, accept the defaults. Make sure that the **Azs-VNet** virtual network is selected. Verify that the subnet is set to **10.1.0.0/24**. Then select **OK**.
-9. On the **Summary** section, review the settings, and then select **OK**.
+1. 在 Azure 门户中，选择**新建**。
+2. 转到**Marketplace**，然后选择**计算**。
+3. 在虚拟机映像的列表中，选择**Windows Server 2016 数据中心 Eval**映像。
+4. 上**基础知识**部分中，在**名称**，类型**Azs VM**。
+5. 键入有效的用户名和密码。 此帐户用于登录到 VM，将在创建后。
+6. 提供**订阅**，**资源组**，和**位置**，然后选择**确定**。
+7. 上**大小**部分，此实例中，选择虚拟机大小，然后选择**选择**。
+8. 上**设置**部分中，接受默认设置。 请确保**Azs VNet**选择虚拟网络。 验证子网是否设置为**10.1.0.0/24**。 然后选择“确定”。
+9. 上**摘要**部分，查看设置，，然后选择**确定**。
 
 
-## <a name="test-the-connection"></a>Test the connection
-Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in Azure Stack. Then, ping the virtual machine that you created in Azure. 
+## <a name="test-the-connection"></a>测试连接
+现在，建立站点到站点连接时，你应验证就可以流量流向通过它。 若要验证，登录到你在 Azure 堆栈中创建的虚拟机之一。 然后，执行 ping 操作在 Azure 中创建的虚拟机。 
 
-To make sure that you send the traffic through the site-to-site connection, ping the Direct IP (DIP) address of the virtual machine on the remote subnet, not the VIP. To do this, find the DIP address on the other end of the connection. Save the address for later use.
+若要确保发送的流量通过站点到站点连接，ping 远程子网，不 VIP 上的虚拟机的直接 IP (DIP) 地址。 若要执行此操作，找到连接的另一端上的 DIP 地址。 保存以供将来使用的地址。
 
-### <a name="sign-in-to-the-user-vm-in-azure-stack"></a>Sign in to the user VM in Azure Stack
-1. Sign in to the Azure Stack portal.
-2. In the left navigation bar, select **Virtual Machines**.
-3. In the list of VMs, find **Azs-VM** that you created previously, and then select it.
-4. On the section for the virtual machine, click **Connect**, and then open the Azs-VM.rdp file.
+### <a name="sign-in-to-the-user-vm-in-azure-stack"></a>登录到用户 Azure 堆栈中的 VM
+1. 登录到 Azure 堆栈门户。
+2. 在左侧的导航栏中，选择**虚拟机**。
+3. 在虚拟机列表中，查找**Azs VM** ，以前，创建，然后选择它。
+4. 在为虚拟机部分中，单击**连接**，然后打开 Azs VM.rdp 文件。
    
-     ![Connect button](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Type **ipconfig /all**.
-8. In the output, find the **IPv4 Address**, and then save the address for later use. This is the address that you will ping from Azure. In the example environment, the address is **10.0.10.4**, but in your environment it might be different. It should fall within the **10.0.10.0/24** subnet that you created previously.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+     ![连接按钮](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
+5. 使用在创建虚拟机时配置的帐户登录。
+6. 打开提升**Windows PowerShell**窗口。
+7. 键入 **ipconfig /all**。
+8. 在输出中，查找**IPv4 地址**，然后将保存以供将来使用的地址。 这是你将执行 ping 操作从 Azure 的地址。 在示例环境中，该地址为 **10.0.10.4**，但用户环境中的该地址可能有所不同。 它不应超过**10.0.10.0/24**你之前创建的子网。
+9. 若要创建允许要在响应 ping 的虚拟机的防火墙规则，运行以下 PowerShell 命令：
 
    ```powershell
    New-NetFirewallRule `
@@ -235,16 +234,16 @@ To make sure that you send the traffic through the site-to-site connection, ping
     –Protocol ICMPv4
    ```
 
-### <a name="sign-in-to-the-tenant-vm-in-azure"></a>Sign in to the tenant VM in Azure
-1. Sign in to the Azure portal.
-2. In the left navigation bar, click **Virtual Machines**.
-3. From the list of virtual machines, find **Azure-VM** that you created previously, and then select it.
-4. On the section for the virtual machine, click **Connect**.
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Type **ipconfig /all**.
-8. You should see an IPv4 address that falls within **10.0.20.0/24**. In the example environment, the address is **10.0.20.4**, but your address might be different.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+### <a name="sign-in-to-the-tenant-vm-in-azure"></a>登录到租户在 Azure 中 VM
+1. 登录到 Azure 门户。
+2. 在左侧的导航栏中，单击**虚拟机**。
+3. 从虚拟机列表中，找到**Azure VM** ，以前，创建，然后选择它。
+4. 在为虚拟机部分中，单击**连接**。
+5. 使用在创建虚拟机时配置的帐户登录。
+6. 打开提升**Windows PowerShell**窗口。
+7. 键入 **ipconfig /all**。
+8. 你应看到范围内的 IPv4 地址**10.0.20.0/24**。 在示例环境中，该地址是**10.0.20.4**，但你的地址可能会不同。
+9. 若要创建允许要在响应 ping 的虚拟机的防火墙规则，运行以下 PowerShell 命令：
 
    ```powershell
    New-NetFirewallRule `
@@ -252,21 +251,21 @@ To make sure that you send the traffic through the site-to-site connection, ping
     –Protocol ICMPv4
    ```
 
-10. From the virtual machine in Azure, ping the virtual machine in Azure Stack, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM.
-   In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screenshot:
+10. 从 Azure 中的虚拟机，进行 ping 操作中 Azure 堆栈通过隧道的虚拟机。 若要执行此操作，你 ping 记录从 Azs VM 的 DIP。
+   在示例环境中，这是**10.0.10.4**，但请确保你的实验室中记下的地址执行 ping 操作。 你应看到类似于以下屏幕截图的结果：
    
-    ![Successful ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-11. A reply from the remote virtual machine indicates a successful test! You can close the virtual machine window. To test your connection, you can try other kinds of data transfers like a file copy.
+    ![成功 ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
+11. 从远程虚拟机的回复表明成功的测试 ！ 你可以关闭虚拟机窗口。 若要测试你的连接，你可以尝试其他类型的类似文件复制的数据传输。
 
-### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Viewing data transfer statistics through the gateway connection
-If you want to know how much data passes through your site-to-site connection, this information is available on the **Connection** section. This test is also another way to verify that the ping you just sent actually went through the VPN connection.
+### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>通过网关连接查看数据传输统计信息
+如果你想要知道多少数据通过站点到站点连接，此信息位于**连接**部分。 此测试也是另一种方法验证刚刚发送 ping 实际经历 VPN 连接。
 
-1. While you're signed in to the user virtual machine in Azure Stack, use your user account to sign in to the user portal.
-2. Go to **All resources**, and then select the **Azs-Azure** connection. **Connections** appears.
-4. On the **Connection** section, the statistics for **Data in** and **Data out** appear. In the following screenshot, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
+1. 而你要登录到 Azure 堆栈中的用户虚拟机，使用你的用户帐户登录到用户门户。
+2. 转到**的所有资源**，然后选择**Azs Azure**连接。 **连接**显示。
+4. 上**连接**部分的统计信息**中的数据**和**输出数据量**显示。 在以下屏幕截图中，较大的数字归因于另外的文件传输。 你应看到那里一些非零值。
    
-    ![Data in and out](media/azure-stack-connect-vpn/Connection.png)
+    ![数据输入和输出](media/azure-stack-connect-vpn/Connection.png)
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-[Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
+[将应用部署到 Azure 和 Azure 堆栈](azure-stack-solution-pipeline.md)

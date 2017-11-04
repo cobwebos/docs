@@ -1,6 +1,6 @@
 ---
-title: Allow applications to retrieve Azure Stack Key Vault secrets | Microsoft Docs
-description: Use a sample app to work with Azure Stack Key Vault
+title: "允许检索 Azure 堆栈密钥保管库机密信息的应用程序 |Microsoft 文档"
+description: "使用示例应用程序来使用 Azure 堆栈密钥保管库"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,28 +14,26 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: 9b39c949e33dfbcc75ba8c09d6b38e4bdb243766
 ms.openlocfilehash: 7cfb78cc5219d4adab5ceddc9d7eb8d1fc71b678
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>使用密钥和机密密钥保管库中存储的示例应用程序
 
-# <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Sample application that uses keys and secrets stored in a key vault
+在本文中，我们说明你如何运行示例应用程序 (HelloKeyVault)，从 Azure 堆栈中的密钥保管库中检索密钥和机密。
 
-In this article, we show you how to run a sample application (HelloKeyVault) that retrieves keys and secrets from a key vault in Azure Stack.
+## <a name="prerequisites"></a>必备组件 
 
-## <a name="prerequisites"></a>Prerequisites 
+从运行以下先决条件[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或从基于 Windows 的外部客户端如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
-Run the following prerequisites either from the [Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+* 安装[Azure 堆栈兼容 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
+* 下载[工具需要使用处理 Azure 堆栈](azure-stack-powershell-download.md)。 
 
-* Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md). 
+## <a name="create-and-get-the-key-vault-and-application-settings"></a>创建和获取密钥保管库和应用程序设置
 
-## <a name="create-and-get-the-key-vault-and-application-settings"></a>Create and get the key vault and application settings
-
-First, you should create a key vault in Azure Stack, and register an application in Azure Active Directory (Azure AD). You can create and register the key vaults by using the Azure portal or PowerShell. This article shows you the PowerShell way to do the tasks. By default, this PowerShell script creates a new application in Active Directory. However, you can also use one of your existing applications. Make sure to provide a value for the `aadTenantName` and `applicationPassword` variables. If you don't specify a value for the `applicationPassword` variable, this script generates a random password. 
+首先，应在 Azure 堆栈中创建密钥保管库，并在 Azure Active Directory (Azure AD) 中注册应用程序。 你可以创建和使用 Azure 门户或 PowerShell 注册密钥保管库。 这篇文章演示了执行任务的 PowerShell 方法。 默认情况下，此 PowerShell 脚本在 Active Directory 中创建新的应用程序。 但是，你可以还使用现有的应用程序之一。 请确保提供的值`aadTenantName`和`applicationPassword`变量。 如果没有指定的值`applicationPassword`变量，此脚本生成的随机密码。 
 
 ```powershell
 $vaultName           = 'myVault'
@@ -126,28 +124,27 @@ Write-Host
 
 ``` 
 
-The following screenshot shows the output of the previous script:
+以下屏幕截图显示以前的脚本的输出：
 
-![App config](media/azure-stack-kv-sample-app/settingsoutput.png)
+![应用配置](media/azure-stack-kv-sample-app/settingsoutput.png)
 
-Make a note of the **VaultUrl**, **AuthClientId**, and **AuthClientSecret** values returned by the previous script. You use these values to run the HelloKeyVault application.
+记下**VaultUrl**， **AuthClientId**，和**AuthClientSecret**由上一个脚本返回的值。 这些值用于运行 HelloKeyVault 应用程序。
 
-## <a name="download-and-run-the-sample-application"></a>Download and run the sample application
+## <a name="download-and-run-the-sample-application"></a>下载并运行示例应用程序
 
-Download the key vault sample from the Azure [Key Vault client samples](https://www.microsoft.com/en-us/download/details.aspx?id=45343) page. Extract the contents of the .zip file onto your development workstation. There are two samples within the samples folder. We use the HellpKeyVault sample in this topic. Browse to the **Microsoft.Azure.KeyVault.Samples** > **samples** > **HelloKeyVault** folder and open the HelloKeyVault application in Visual Studio. 
+从 Azure 下载密钥保管库示例[密钥保管库客户端示例](https://www.microsoft.com/en-us/download/details.aspx?id=45343)页。 提取到开发工作站上的.zip 文件的内容。 有两个样本示例文件夹中。 本主题中，我们使用 HellpKeyVault 示例。 浏览到**Microsoft.Azure.KeyVault.Samples** > **示例** > **HelloKeyVault**文件夹并打开 HelloKeyVault 应用程序在 Visual Studio。 
 
-Open the HelloKeyVault\App.config file and replace the values of the <appSettings> element with the **VaultUrl**, **AuthClientId**, and **AuthClientSecret** values returned by the previous script. Note that by default the App.config contains a placeholder for *AuthCertThumbprint*, but use *AuthClientSecret* instead. After you replace the settings, rebuild the solution and start the application.
+打开 HelloKeyVault\App.config 文件并将的值<appSettings>具有元素**VaultUrl**， **AuthClientId**，和**AuthClientSecret**值返回上一个脚本。 请注意，默认情况下 App.config 包含的占位符*AuthCertThumbprint*，但使用*AuthClientSecret*相反。 替换的设置后，重新生成解决方案并启动应用程序。
 
-![App settings](media/azure-stack-kv-sample-app/appconfig.png)
+![应用设置](media/azure-stack-kv-sample-app/appconfig.png)
  
-The application signs in to Azure AD, and then uses that token to authenticate to the key vault in Azure Stack. The application performs operations like create, encrypt, wrap, and delete on the keys and secrets of the key vault. You can also pass specific parameters such as *encrypt* and *decrypt* to the application, which makes sure that the application executes only those operations against the vault. 
+登录到 Azure AD 应用程序，然后使用该令牌向 Azure 堆栈中的密钥保管库进行身份验证。 在应用程序执行操作，如创建、 加密、 包装，和上的密钥和机密密钥保管库删除。 你还可以如传递特定参数*加密*和*解密*应用程序，从而确保应用程序执行的操作是操作到保管库。 
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy a VM with a Key Vault password](azure-stack-kv-deploy-vm-with-secret.md)
+## <a name="next-steps"></a>后续步骤
+[使用密钥保管库密码部署 VM](azure-stack-kv-deploy-vm-with-secret.md)
 
-[Deploy a VM with a Key Vault certificate](azure-stack-kv-push-secret-into-vm.md)
-
+[将使用密钥保管库证书 VM 部署](azure-stack-kv-push-secret-into-vm.md)
 
 
 

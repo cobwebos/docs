@@ -1,6 +1,6 @@
 ---
-title: Report Azure Stack usage data to Azure | Microsoft Docs
-description: Learn how to set up usage data reporting in Azure Stack.
+title: "向 Azure 报告 Azure 堆栈使用情况数据 |Microsoft 文档"
+description: "了解如何设置 Azure 堆栈中的报表的使用情况数据。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,84 +14,97 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: sngun;AlfredoPizzirani
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 695b93a818d3c0e615bb79e0a2861e134b2f5c89
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 5abc325a6e7c019dc3cb84f7f6ff63c3eb2ff76c
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
+# <a name="report-azure-stack-usage-data-to-azure"></a>向 Azure 报告 Azure 堆栈使用情况数据 
 
-# <a name="report-azure-stack-usage-data-to-azure"></a>Report Azure Stack usage data to Azure 
+使用情况数据，也称为消耗数据，表示使用的资源量。 
 
-Usage data, also called consumption data, represents the amount of resources used. The Azure Stack integrated systems that use consumption-based billing model should report usage data to Azure. This usage data is used for billing purpose. It's the Azure Stack operator's responsibility to configure their Azure Stack environment with usage data reporting.
-
+使用基于的消费的计费模式的 azure 堆栈多节点系统应报告使用情况数据到 Azure 计费目的。  Azure 堆栈运算符应配置到 Azure 的报告使用情况数据其 Azure 堆栈实例。
 
 > [!NOTE]
-> Usage data reporting is required for the Azure Stack integrated system users who license under the pay-as-you-use model. Whereas, it's optional for customers who license under the capacity model. For the Azure Stack Development Kit, cloud operators can report usage data and test the feature, however, users are not charged for any usage they incur. See the [How to buy Azure Stack](https://azure.microsoft.com/overview/azure-stack/how-to-buy/) page to learn more about pricing in Azure Stack.
+> 使用情况数据报告是必需的 Azure 堆栈多节点许可证的用户作为你的使用付费模式下。 它是可选的容量模式下许可证的用户 (请参阅[如何购买页面](https://azure.microsoft.com/overview/azure-stack/how-to-buy/ to learn more about pricing in Azure Stack))。 对于 Azure 堆栈开发工具包用户，Azure 堆栈运算符可以报告使用情况数据，并测试功能。 但是，用户不会收取它们会产生任何使用。 
 
-## <a name="usage-data-reporting-flow"></a>Usage data reporting flow
 
-Usage data is sent from Azure Stack to Azure through the Azure Bridge. In Azure, the commerce system processes the usage data and generates the bill. After the bill is generated, the Azure subscription owner can view and download it from the [Azure Account Center](https://account.windowsazure.com/Subscriptions). To learn about how Azure Stack is licensed, refer to the [Azure Stack packaging and pricing document](https://go.microsoft.com/fwlink/?LinkId=842847&clcid=0x409). 
+![计费流](media/azure-stack-usage-reporting/billing-flow.png)
 
-The following image is a graphical representation of usage data flow in Azure Stack:
+使用情况数据从 Azure 堆栈发送到 Azure 通过 Azure 桥。 在 Azure 中，商务系统处理的使用情况数据，并生成帐单。 生成清单后，Azure 订阅所有者可以查看和下载从[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。 若要了解有关如何获取 Azure 堆栈的许可证，请参阅[Azure 堆栈打包和定价文档](https://go.microsoft.com/fwlink/?LinkId=842847&clcid=0x409)。
 
-![billing flow](media/azure-stack-usage-reporting/billing-flow.png)
+## <a name="set-up-usage-data-reporting"></a>设置使用情况数据报告
 
-## <a name="set-up-usage-data-reporting"></a>Set up usage data reporting
+若要设置了使用情况数据报告，你必须[向 Azure 注册你的 Azure 堆栈实例](azure-stack-register.md)。 作为注册过程的一部分，Azure 堆栈，以连接到 Azure 的 Azure 堆栈并将发送使用情况数据，将该 Azure 桥组件配置。 以下使用情况数据从 Azure 堆栈发送到 Azure:
 
-To set up usage data reporting in Azure Stack, you must [register your Azure Stack instance with Azure](azure-stack-register.md). As a part of the registration process, the Azure Bridge component of Azure Stack is configured to connect Azure Stack to Azure. After the Azure Bridge is configured, it sends the following usage data to Azure: 
+- **计数 ID** – 已耗用的资源的唯一 ID。
+- **数量**– 指定的资源使用量。
+- **位置**– 其中部署当前 Azure 堆栈资源的位置。
+- **资源 URI** – 完全限定的用法报告的资源 URI。
+- **订阅 ID** – Azure 堆栈用户的订阅 ID。 这是本地的 （Azure 堆栈） 订阅。
+- **时间**– 的使用情况数据的开始和结束时间。 之间不存在一定的延迟时间和使用情况数据报告给商务时 Azure 堆栈中会占用这些资源。 每 24 小时的 azure 堆栈聚合使用情况数据和报表使用情况数据到 Azure 中的商务管道所需的其他几个小时。 因此，发生前不久午夜的使用情况可能会显示在 Azure 中下一天。
 
-* **Meter ID** – Unique ID for the resource that was consumed.
-* **Quantity** – Amount of resource usage data.
-* **Location** – Location where the current Azure Stack resource is deployed.
-* **Resource URI** – fully qualified URI of the resource for which usage is being reported. 
-* **Subscription ID** – The Azure Stack user's subscription ID.
-* **Time** – Start and end time of the usage data. There is some delay between when these resources are consumed in Azure Stack Vs when the usage data is reported to commerce. Azure Stack aggregates usage data for every 24 hours and reporting usage data to commerce pipeline in Azure takes another few hours. So, usage that occurs shortly before midnight may show up in Azure the following day.
+## <a name="generate-usage-data-reporting"></a>生成使用情况数据报告
 
-## <a name="test-usage-data-reporting"></a>Test usage data reporting 
+1. 若要测试报告的使用情况数据，请在 Azure 堆栈中创建几个资源。 例如，你可以创建[存储帐户](azure-stack-provision-storage-account.md)， [Windows Server VM](azure-stack-provision-vm.md)和 Linux VM 使用基本和标准 Sku，若要查看如何报告内核使用情况。 不同类型的资源的使用情况数据报告在不同米下。
 
-1. To test usage data reporting, create a few resources in Azure Stack. For example, you can create a [storage account](azure-stack-provision-storage-account.md), [Windows Server VM](azure-stack-provision-vm.md) and a Linux VM with Basic and Standard SKUs to see how core usage is reported. The usage data for different types of resources are reported under different meters.  
+2. 将保留你运行几个小时内的资源。 大约一次每小时收集使用情况的信息。 收集后，此数据传输到 Azure 并在 Azure 商务系统处理。 此过程可能需要到几个小时。
 
-2. Leave your resources running for few hours. Usage information is collected approximately once every hour. After collecting, this data is transmitted to Azure and processed into the Azure commerce system. This process can take up to a few hours.  
+## <a name="view-usage---csp-subscriptions"></a>查看使用情况-CSP 订阅
 
-3. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the Azure account administrator and select the Azure subscription that you used to register the Azure Stack. You can view the Azure Stack usage data, the amount charged for each of the used resources as shown in the following image:  
+如果你注册使用 CSP 订阅你 Azure 堆栈，请可以与在其中查看 Azure 消耗相同的方式来查看使用情况和费用。 Azure 堆栈使用将在你的发票和对帐文件，可通过包含[合作伙伴中心](https://partnercenter.microsoft.com/en-us/partner/home)。 每月更新对帐文件。 如果你需要访问新 Azure 堆栈使用情况信息，你可以使用合作伙伴中心 Api。
 
-   ![billing flow](media/azure-stack-usage-reporting/pricing-details.png)
+   ![合作伙伴中心](media/azure-stack-usage-reporting/partner-center.png)
 
-For the Azure Stack Development Kit, resources are not charged so, the price is shown as $0.00. For the Azure Stack integrated systems, the actual cost of each of these resources is displayed.
 
-## <a name="are-users-charged-for-the-infrastructure-virtual-machines"></a>Are users charged for the infrastructure virtual machines?
-No, usage data for some Azure Stack resource provider virtual machines and infrastructure virtual machines that are created during deployment is reported to Azure, but there are no charges for them. 
+## <a name="view-usage--enterprise-agreement-subscriptions"></a>查看使用情况 – 企业协议订阅
 
-Users are only charged for virtual machines that are created under user subscriptions. So, all workloads must be deployed under user subscriptions to comply with the Azure Stack licensing terms.
+如果你注册使用的企业协议订阅你 Azure 堆栈，则可以查看使用情况和费用中的[EA 门户](https://ea.azure.com/)。 Azure 堆栈使用将包括在高级下载以及 EA 门户中的报表部分下的 Azure 使用情况。 
 
-## <a name="how-do-i-use-my-existing-windows-server-licenses-in-azure-stack"></a>How do I use my existing Windows Server licenses in Azure Stack? 
-Existing Windows Server licenses can be used in Azure Stack, this model is referred to as BYOL(Bring Your Own License). Using the licenses that you already own avoids generating additional usage meters. To use your existing licenses, you need to deploy the Windows Server virtual machines as described in the [Hybrid benefit for Windows Server license](../virtual-machines/windows/hybrid-use-benefit-licensing.md) topic. 
+## <a name="view-usage--other-subscriptions"></a>查看使用情况 – 其他订阅
 
-## <a name="what-azure-meters-are-used-when-reporting-usage-data-in-integrated-systems"></a>What Azure meters are used when reporting usage data in integrated systems?
-* **Full price meters** – used for resources associated with user workloads.  
-* **Admin meters** – used for infrastructure resources. These meters have a price of zero dollars.
+如果你注册你的 Azure 栈使用任何其他订阅类型，例如，即付订阅，你可以在 Azure 帐户中心查看使用情况和费用。 登录到[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)作为 Azure 的帐户管理员联系并选择用于注册 Azure 堆栈的 Azure 订阅。 你可以查看 Azure 堆栈使用情况数据，如以下图像中所示为每个使用的资源向收取的金额：
 
-## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Which subscription is charged for the resources consumed?
-The subscription that is provided when [registering Azure Stack with Azure](azure-stack-register.md) is charged.
+   ![计费流](media/azure-stack-usage-reporting/pricing-details.png)
 
-## <a name="what-types-of-subscriptions-are-supported-for-usage-data-reporting"></a>What types of subscriptions are supported for usage data reporting?
-For Azure Stack integrated systems, Enterprise Agreement (EA) and CSP subscriptions are supported. 
+为 Azure 堆栈开发工具包，Azure 堆栈的资源不会收费以便价格显示为 0.00 美元。 当 Azure 堆栈的多节点变为正式发布时，你可以为每个这些资源中看到的实际费用。
 
-For the Azure Stack Development Kit, Enterprise Agreement (EA), Pay-as-you-go, CSP, and MSDN subscriptions support usage data reporting.
+## <a name="which-azure-stack-deployments-are-charged"></a>哪些 Azure 堆栈部署进行收费？
 
-## <a name="which-sovereign-clouds-support-usage-data-reporting"></a>Which sovereign clouds support usage data reporting?
-Usage data reporting in Azure Stack Development Kit, requires the subscriptions to be created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China clouds) cannot be registered with Azure, so they don’t support usage data reporting. 
+资源使用是免费的 Azure 堆栈开发工具包。 而对于 Azure 堆栈多节点系统中，工作负荷 Vm、 存储服务和应用程序服务会收费。
 
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>How can users identify Azure Stack usage data in the Azure billing portal?
-Users can see the Azure Stack usage data in the usage details file. To know about how to get the usage details file, refer to the [download usage file from the Azure Account Center](../billing/billing-download-azure-invoice-daily-usage-date.md#download-usage-from-the-account-center-csv) article. The usage details file contains the Azure Stack meters that identify Azure Stack storage and VMs. All resources used in Azure Stack are reported under the region named “Azure Stack.”
+## <a name="are-users-charged-for-the-infrastructure-vms"></a>用户会对基础结构 Vm 进行收费？
 
-## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Why doesn’t the usage reported in Azure Stack match the report generated from Azure Account Center?
-There is a delay between the usage data reported by the Azure Stack usage APIs and the usage data reported by the Azure Account Center. This delay is the time required to upload usage data from Azure Stack to Azure commerce. Due to this delay, usage that occurs shortly before midnight may show up in Azure the following day. You can see a difference if you use the [Azure Stack Usage APIs](azure-stack-provider-resource-api.md), and compare the results to the usage reported in the Azure billing portal.
+不能。 某些 Azure 堆栈资源提供程序的虚拟机的使用情况数据报告给 Azure，但这些 Vm，或在部署期间创建的 Vm，若要启用 Azure 堆栈基础结构没有费用是多少。  
 
-## <a name="next-steps"></a>Next steps
+用户仅收取在租户订阅下运行的 Vm。 所有工作负荷必须部署在租户订阅，以符合 Azure 堆栈的许可条款。
 
-* [Provider usage API](azure-stack-provider-resource-api.md)  
-* [Tenant usage API](azure-stack-tenant-resource-usage-api.md)
-* [Usage FAQ](azure-stack-usage-related-faq.md)
+## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>我有我想要使用 Azure 堆栈上的 Windows Server 许可证，如何执行此操作？
+
+使用现有的许可证，则可避免生成用量计量表。 现有 Windows Server 许可证可在 Azure 堆栈中的"与 Azure 堆栈中使用现有的软件"部分所述[Azure 堆栈许可指南](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)。 客户需要将其 Windows Server 虚拟机部署中所述[的 Windows Server 许可证的混合权益](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing)才能使用其现有的许可证的主题。
+
+## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>哪种订阅占用的资源收费？
+时提供的订阅[向 Azure 注册 Azure 堆栈](azure-stack-register.md)需要支付费用。
+
+## <a name="what-types-of-subscriptions-are-supported-for-usage-data-reporting"></a>使用情况数据报告支持哪些类型的订阅？
+
+对于 Azure 堆栈多节点，企业协议 (EA) 和 CSP 订阅支持。 对于 Azure 堆栈开发工具包，企业协议 (EA)、 即用即付、 CSP 和 MSDN 订阅支持使用情况数据报告。
+
+## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>报告中最高的云的工作的使用情况数据？
+
+在 Azure 堆栈开发工具包中，使用情况数据报告要求在全球 Azure 系统中创建的订阅。 无法使用 Azure，注册一个最高的云 （Azure 政府版、 Azure 德国和 Azure 中国云） 中创建的订阅，因此它们不支持使用情况数据报告。
+
+## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>用户如何标识 Azure 计费门户中的 Azure 堆栈使用情况数据？
+
+用户可以看到的使用情况详细信息文件中的 Azure 堆栈使用情况数据。 若要了解有关如何获取的使用情况详细信息文件，请参阅[Azure 帐户中心文章中的说明下载使用量文件](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)。 使用情况详细信息文件包含标识 Azure 堆栈存储和虚拟机的 Azure 堆栈计量。 使用 Azure 堆栈中的所有资源都报告下名为"Azure 堆栈。"的区域
+
+## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>为什么 Azure 堆栈中报告的用法不匹配从 Azure 帐户中心生成报表？
+
+始终是通过 Azure 堆栈使用情况 Api 和报告的 Azure 帐户中心使用情况数据报告使用情况数据 delaybetween... 此延迟是上载到 Azure 商务的使用情况数据从 Azure 堆栈所需的时间。 由于这种延迟，很快在午夜之前发生的使用情况可能会显示在 Azure 中下一天。 如果你使用[Azure 堆栈使用情况 Api](azure-stack-provider-resource-api.md)，并比较 Azure 计费门户中报告的使用情况的结果，您可以看到不同。
+
+## <a name="next-steps"></a>后续步骤
+
+* [提供者使用情况 API](azure-stack-provider-resource-api.md)  
+* [租户使用情况 API](azure-stack-tenant-resource-usage-api.md)
+* [使用情况常见问题](azure-stack-usage-related-faq.md)

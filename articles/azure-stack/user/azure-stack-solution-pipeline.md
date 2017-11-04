@@ -1,6 +1,6 @@
 ---
-title: Deploy your app to Azure and Azure Stack | Microsoft Docs
-description: Learn how to deploy apps to Azure and Azure Stack with a hybrid CI/CD pipeline.
+title: "将你的应用程序部署到 Azure 和 Azure 堆栈 |Microsoft 文档"
+description: "了解如何使用混合 CI/CD 管道将应用部署到 Azure 和 Azure 堆栈。"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -14,204 +14,201 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: helaw
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 83bb401d5d65cd2c34015a1a14673363aeee81d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="deploy-apps-to-azure-and-azure-stack"></a>将应用部署到 Azure 和 Azure 堆栈
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-# <a name="deploy-apps-to-azure-and-azure-stack"></a>Deploy apps to Azure and Azure Stack
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-A hybrid [continuous integration](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[continuous delivery](https://www.visualstudio.com/learn/what-is-continuous-delivery/)(CI/CD) pipeline enables you to build, test, and deploy your app to multiple clouds.  In this tutorial, you build a sample environment to learn how a hybrid CI/CD pipeline can help you:
+混合[持续集成](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[持续交付](https://www.visualstudio.com/learn/what-is-continuous-delivery/)(CI/CD) 管道使您能够生成、 测试和应用部署到多个云。  在本教程中，你可以生成示例环境，若要了解如何混合 CI/CD 管道可以帮助你：
  
 > [!div class="checklist"]
-> * Initiate a new build based on code commits to your Visual Studio Team Services (VSTS) repository.
-> * Automatically deploy your newly built code to Azure for user acceptance testing.
-> * Once your code has passed testing, automatically deploy to Azure Stack. 
+> * 启动新的生成基于代码提交到 Visual Studio Team Services (VSTS) 存储库。
+> * 自动在新生成的代码向 Azure 部署为用户验收测试。
+> * 一旦你的代码经过测试之后，自动将部署到 Azure 堆栈。 
 
 
-## <a name="prerequisites"></a>Prerequisites
-A few components are required to build a hybrid CI/CD pipeline, and may take some time to prepare.  If you already have some of these components, make sure they meet the requirements before beginning.
+## <a name="prerequisites"></a>必备组件
+了几个组件需要生成混合 CI/CD 管道，并且可能需要一些时间来准备。  如果你已有的某些这些组件，请确保它们符合在开始之前的要求。
 
-This topic also assumes that you have some knowledge of Azure and Azure Stack. If you want to learn more before proceeding, be sure to start with these topics:
+本主题还假定你具有 Azure 和 Azure 堆栈的一些知识。 如果你想要了解详细信息在继续之前，请务必阅读以下主题：
 
-- [Introduction to Azure](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
-- [Azure Stack Key Concepts](../azure-stack-key-features.md)
+- [Azure 简介](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
+- [Azure 堆栈的关键概念](../azure-stack-key-features.md)
 
 ### <a name="azure"></a>Azure
- - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
- - Create a [Web App](../../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md), and configure it for [FTP publishing](../../app-service/app-service-deploy-ftp.md).  Make note of the new Web App URL, as it is used later.
+ - 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+ - 创建[Web 应用](../../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md)，并将其用于配置[FTP 发布](../../app-service/app-service-deploy-ftp.md)。  记下新的 Web 应用 URL，因为它用更高版本。
 
 
 ### <a name="azure-stack"></a>Azure Stack
- - [Deploy Azure Stack](../azure-stack-run-powershell-script.md).  The installation usually takes a few hours to complete, so plan accordingly.
- - Deploy [App Service](../azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
- - Create a Web App and configure it for [FTP publishing](../azure-stack-app-service-enable-ftp.md).  Make note of the new Web App URL, as it is used later.  
+ - [部署 Azure 堆栈](../azure-stack-run-powershell-script.md)。  安装通常需要几个小时才能完成，因此请相应地计划。
+ - 部署[App Service](../azure-stack-app-service-deploy.md) PaaS 服务添加到 Azure 堆栈。
+ - 创建 Web 应用并为其配置[FTP 发布](../azure-stack-app-service-enable-ftp.md)。  记下新的 Web 应用 URL，因为它用更高版本。  
 
-### <a name="developer-tools"></a>Developer tools
- - Create a [VSTS workspace](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).  The sign-up process creates a project named "MyFirstProject."  
- - [Install Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) and [sign-in to VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services#connect-and-share-code-from-visual-studio)
- - Connect to the project and [clone locally](https://www.visualstudio.com/docs/git/gitquickstart).
- - Create an [agent pool](https://www.visualstudio.com/docs/build/concepts/agents/pools-queues#creating-agent-pools-and-queues) in VSTS.
- - Install Visual Studio and deploy a [VSTS build agent](https://www.visualstudio.com/docs/build/actions/agents/v2-windows) to a virtual machine on Azure Stack. 
+### <a name="developer-tools"></a>开发人员工具
+ - 创建[VSTS 工作区](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)。  注册过程将创建名为"MyFirstProject。"的项目  
+ - [安装 Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio)和[登录到 VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services#connect-and-share-code-from-visual-studio)
+ - 连接到项目和[本地克隆](https://www.visualstudio.com/docs/git/gitquickstart)。
+ - 创建[代理池](https://www.visualstudio.com/docs/build/concepts/agents/pools-queues#creating-agent-pools-and-queues)VSTS 中。
+ - 安装 Visual Studio 和部署[VSTS 生成代理](https://www.visualstudio.com/docs/build/actions/agents/v2-windows)到 Azure 堆栈上的虚拟机。 
  
 
-## <a name="create-app--push-to-vsts"></a>Create app & push to VSTS
+## <a name="create-app--push-to-vsts"></a>创建应用程序 （&) 将推送到 VSTS
 
-### <a name="create-application"></a>Create application
-In this section, you create a simple ASP.NET application and push it to VSTS.  These steps represent the normal developer workflow, and could be adapted for developer tools and languages. 
+### <a name="create-application"></a>创建应用程序
+在本部分中，你创建一个简单的 ASP.NET 应用程序并将其推送到 VSTS。  这些步骤表示正常的开发人员工作流，并可能适用于开发人员工具和语言。 
 
-1.  Open Visual Studio.
-2.  From the Team Explorer space and **Solutions...** area, click **New**.
-3.  Select **Visual C#** > **Web** > **ASP.NET Web Application (.NET Framework)**.
-4.  Provide a name for the application and click **OK**.
-5.  On the next screen, keep the defaults (Web forms) and click **OK**.
+1.  打开 Visual Studio。
+2.  从团队资源管理器空间和**解决方案...**区域中，单击**新建**。
+3.  选择**Visual C#** > **Web** > **ASP.NET Web 应用程序 (.NET Framework)**。
+4.  提供的名称的应用程序和单击**确定**。
+5.  在下一个屏幕上，保留默认值 （Web 窗体），然后单击**确定**。
 
-### <a name="commit-and-push-changes-to-vsts"></a>Commit and push changes to VSTS
-1.  Using Team Explorer in Visual Studio, select the dropdown and click **Changes**.
-2.  Provide a commit message and select **Commit all**. You may be prompted to save the solution file, click yes to save all.
-3.  Once committed, Visual Studio offers to sync changes to your project. Select **Sync**.
+### <a name="commit-and-push-changes-to-vsts"></a>提交并将更改推送到 VSTS
+1.  使用 Visual Studio 中的团队资源管理器，选择下拉菜单，然后单击**更改**。
+2.  提供提交消息，并选择**提交所有**。 可能会提示你保存解决方案文件，请单击是以保存所有。
+3.  一旦提交，Visual Studio 主动同步到你的项目的更改。 选择**同步**。
 
-    ![image showing the commit screen once commit is completed](./media/azure-stack-solution-pipeline/image1.png)
+    ![显示提交屏幕完成提交后的图像](./media/azure-stack-solution-pipeline/image1.png)
 
-4.  In the synchronization tab, under *Outgoing*, you see your new commit.  Select **Push** to synchronize the change to VSTS.
+4.  在同步选项卡下*传出*，查看新提交。  选择**推送**同步对 VSTS 的更改。
 
-    ![image showing sync steps](./media/azure-stack-solution-pipeline/image2.png)
+    ![图像显示同步步骤](./media/azure-stack-solution-pipeline/image2.png)
 
-### <a name="review-code-in-vsts"></a>Review code in VSTS
-Once you've committed a change and pushed to VSTS, check your code from the VSTS portal.  Select **Code**, and then **Files** from the dropdown menu.  You can see the solution you created.
+### <a name="review-code-in-vsts"></a>查看 VSTS 中的代码
+一旦已提交更改并推送到 VSTS，检查 VSTS 门户中的代码。  选择**代码**，，然后**文件**从下拉菜单。  你可以看到创建的解决方案。
 
-## <a name="create-build-definition"></a>Create build definition
-The build process defines how your application is built and packaged for deployment on each commit of code changes. In our example, we use the included template to configure the build process for an ASP.NET app, though this configuration could be adapted depending on your application.
+## <a name="create-build-definition"></a>创建生成定义
+生成过程定义你的应用程序生成和打包以便在每次提交的代码更改的部署方式。 在本示例中，我们使用包含的模板配置生成过程的 ASP.NET 应用程序，但此配置无法进行适配化具体取决于你的应用程序。
 
-1.  Sign in to your VSTS workspace from a web browser.
-2.  From the banner, select **Build & Release**  and then **Builds**.
-3.  Click **+ New definition**.
-4.  From the list of templates, select **ASP.NET (Preview)** and select **Apply**.
-5.  Modify the *MSBuild Arguments* field in *Build Solution* step to:
+1.  从 web 浏览器登录到你的 VSTS 工作区。
+2.  从标记中，选择**生成和发行**然后**生成**。
+3.  单击**+ 新定义**。
+4.  从模板列表中，选择**ASP.NET （预览版）**和选择**应用**。
+5.  修改*MSBuild 参数*字段*生成解决方案*单步执行到：
 
     `/p:DeployOnBuild=True /p:WebPublishMethod=FileSystem /p:DeployDefaultTarget=WebPublish /p:publishUrl="$(build.artifactstagingdirectory)\\"`
 
-6.  Select the **Options** tab, and select the agent queue for the build agent you deployed to a virtual machine on Azure Stack. 
-7.  Select the **Triggers** tab, and enable **Continuous Integration**.
-7.  Click **Save & queue** and then select **Save** from the dropdown. 
+6.  选择**选项**选项卡，并选择您已部署到 Azure 堆栈上的虚拟机的生成代理的代理队列。 
+7.  选择**触发器**选项卡，并启用**持续集成**。
+7.  单击**保存并队列**，然后选择**保存**从下拉列表。 
 
-## <a name="create-release-definition"></a>Create release definition
-The release process defines how builds from the previous step are deployed to an environment.  In this tutorial, we publish our ASP.NET app with FTP to an Azure Web App. To configure a release to Azure, use the following steps:
+## <a name="create-release-definition"></a>创建发布定义
+发布过程定义从前面的步骤的生成部署到环境的方式。  在本教程中，我们将使用 FTP 我们 ASP.NET 的应用程序发布到 Azure Web 应用。 若要配置到 Azure 的版本，请使用以下步骤：
 
-1.  From the VSTS banner, select **Build & Release**  and then **Releases**.
-2.  Click the green **+ New definition**.
-3.  Select **Empty** and click **Next**.
-4.  Check the box for *Continuous deployment*, and then click **Create**.
+1.  从 VSTS 标题中，选择**生成和发行**然后**版本**。
+2.  单击绿色**+ 新定义**。
+3.  选择**空**单击**下一步**。
+4.  选中对应的框*连续部署*，然后单击**创建**。
 
-Now that you've created an empty release definition and tied it to the build, we add steps for the Azure environment:
+现在，创建一个空的版本定义并绑定到生成后，我们添加 Azure 环境的步骤：
 
-1.  Click the green **+** to add tasks.
-2.  Select **All**, and then from the list, add **FTP Upload** and select **Close**.
-3.  Select the **FTP Upload** task you just added, and configure the following parameters:
+1.  单击绿色 **+** 添加任务。
+2.  选择**所有**，然后从列表中，添加**FTP 上载**和选择**关闭**。
+3.  选择**FTP 上载**任务您刚刚添加，并配置以下参数：
     
-    | Parameter | Value |
+    | 参数 | 值 |
     | ----- | ----- |
-    |Authentication Method| Enter Credentials|
-    |Server URL | Web App FTP URL retrieved from Azure portal |
-    |Username | Username you configured when creating FTP Credentials for Web App |
-    |Password | Password you created when establishing FTP credentials for Web App|
-    |Source Directory | $(System.DefaultWorkingDirectory)\**\ |
-    |Remote Directory | /site/wwwroot/ |
-    |Preserve file paths | Enabled (checked)|
+    |身份验证方法| 输入凭据|
+    |服务器 URL | 从 Azure 门户检索到的 web 应用的 FTP URL |
+    |用户名 | 为 Web 应用创建 FTP 凭据时配置的用户名 |
+    |密码 | 创建时建立的 Web 应用的 FTP 凭据的密码|
+    |源目录 | $(System.DefaultWorkingDirectory)\**\ |
+    |远程目录 | /site/wwwroot / |
+    |保留文件路径 | 启用 （已选中）|
 
-4.  Click **Save**
+4.  单击“保存”
 
-Finally, you configure the release definition to use the agent pool containing the agent deployed using the following steps:
-1.  Select the release definition and click **Edit**.
-2.  Select **Run on agent** from the middle column.  In the right column, select the agent queue containing the build agent running on Azure Stack.  
-    ![image showing configuration of release definition to use specific queue](./media/azure-stack-solution-pipeline/image3.png)
-
-
-## <a name="deploy-your-app-to-azure"></a>Deploy your app to Azure
-This step uses your newly built CI/CD pipeline to deploy the ASP.NET app to a Web App on Azure. 
-
-1.  From the banner in VSTS, select **Build & Release**, and then select **Builds**.
-2.  Click **...** on the build definition previously created, and select **Queue new build**.
-3.  Accept the defaults and click **Ok**.  The build begins and displays progress.
-4.  Once the build is complete, you can track the status by selecting **Build & Release** and selecting **Releases**.
-5.  After the build is complete, visit the website using the URL noted when creating the Web App.    
+最后，你配置要使用包含使用以下步骤部署代理的代理池的版本定义：
+1.  选择版本定义，然后单击**编辑**。
+2.  选择**在代理上运行**从中间列。  在右列中，选择包含在 Azure 堆栈上运行的生成代理的代理队列。  
+    ![若要使用特定的队列的版本定义的映像显示配置](./media/azure-stack-solution-pipeline/image3.png)
 
 
-## <a name="add-azure-stack-to-pipeline"></a>Add Azure Stack to pipeline
-Now that you've tested your CI/CD pipeline by deploying to Azure, it's time to add Azure Stack to the pipeline.  In the following steps, you create a new environment and add an FTP Upload task to deploy your app to Azure Stack.  You also add a release approver, which serves as a way to simulate "signing off" on a code release to Azure Stack.  
+## <a name="deploy-your-app-to-azure"></a>将你的应用程序部署到 Azure
+此步骤使用新生成的 CI/CD 管道将 ASP.NET 应用部署到 Web 应用在 Azure 上。 
 
-1.  In the Release definition, select **+ Add Environment** and **Create new environment**.
-2.  Select **Empty**, click **Next**.
-3.  Select **Specific users** and specify your account.  Select **Create**.
-4.  Rename the environment by selecting the existing name and typing *Azure Stack*.
-5.  Now, selection the Azure Stack environment, then select **Add tasks**.
-6.  Select the **FTP Upload** task and select **Add**, then select **Close**.
+1.  从 VSTS 中标题中，选择**生成和发行**，然后选择**生成**。
+2.  单击**...**以前创建的并选择在生成定义**新生成进行排队**。
+3.  接受默认值，然后单击**确定**。  生成开始，并显示进度。
+4.  完成生成后，你可以通过选择跟踪状态**生成和发行**并选择**版本**。
+5.  完成生成后，访问网站，使用在创建 Web 应用程序时记下的 URL。    
 
 
-### <a name="configure-ftp-task"></a>Configure FTP task
-Now that you've created a release, you'll configure the steps required for publishing to the Web App on Azure Stack.  Just like you configured the FTP Upload task for Azure, you configure the task for Azure Stack:
+## <a name="add-azure-stack-to-pipeline"></a>添加 Azure 堆栈管线传输
+现在，你已通过向 Azure 部署测试 CI/CD 管道，它是时候将 Azure 堆栈添加到管道。  在以下步骤中，你创建新环境，并添加一个 FTP 上载任务，以将你的应用程序部署到 Azure 堆栈。  你还可以添加版本审批者，它可作为一种方法，以模拟""在登录到 Azure 堆栈的代码版本。  
 
-1.  Select the **FTP Upload** task you just added, and configure the following parameters:
+1.  在版本定义中，选择**+ 添加环境**和**创建新环境**。
+2.  选择**空**，单击**下一步**。
+3.  选择**特定用户**并指定你的帐户。  选择“创建” 。
+4.  对环境重命名通过选择现有的名称，并键入*Azure 堆栈*。
+5.  现在，选择 Azure 堆栈环境中，然后选择**添加任务**。
+6.  选择**FTP 上载**任务并选择**添加**，然后选择**关闭**。
+
+
+### <a name="configure-ftp-task"></a>配置 FTP 任务
+现在，你已创建发布，你将配置用于发布到 Azure 堆栈上的 Web 应用所需的步骤。  就像你为 Azure 配置 FTP 上载任务，你为 Azure 堆栈配置任务：
+
+1.  选择**FTP 上载**任务您刚刚添加，并配置以下参数：
     
-    | Parameter | Value |
+    | 参数 | 值 |
     | -----     | ----- |
-    |Authentication Method| Enter Credentials|
-    |Server URL | Web App FTP URL retrieved from Azure Stack portal |
-    |Username | Username you configured when creating FTP Credentials for Web App |
-    |Password | Password you created when establishing FTP credentials for Web App|
-    |Source Directory | $(System.DefaultWorkingDirectory)\**\ |
-    |Remote Directory | /site/wwwroot/|
-    |Preserve file paths | Enabled (checked)|
+    |身份验证方法| 输入凭据|
+    |服务器 URL | 从 Azure 堆栈门户检索到的 web 应用的 FTP URL |
+    |用户名 | 为 Web 应用创建 FTP 凭据时配置的用户名 |
+    |密码 | 创建时建立的 Web 应用的 FTP 凭据的密码|
+    |源目录 | $(System.DefaultWorkingDirectory)\**\ |
+    |远程目录 | /site/wwwroot /|
+    |保留文件路径 | 启用 （已选中）|
 
-2.  Click **Save**
+2.  单击“保存”
 
-Finally, configure the release definition to use the agent pool containing the agent deployed using the following steps:
-1.  Select the release definition and click **Edit**
-2.  Select **Run on agent** from the middle column. In the right column, select the agent queue containing the build agent running on Azure Stack.  
-    ![image showing configuration of release definition to use specific queue](./media/azure-stack-solution-pipeline/image3.png)
+最后，将版本定义要使用包含使用以下步骤部署代理的代理池配置：
+1.  选择版本定义，然后单击**编辑**
+2.  选择**在代理上运行**从中间列。 在右列中，选择包含在 Azure 堆栈上运行的生成代理的代理队列。  
+    ![若要使用特定的队列的版本定义的映像显示配置](./media/azure-stack-solution-pipeline/image3.png)
 
-## <a name="deploy-new-code"></a>Deploy new code
-You can now test the hybrid CI/CD pipeline, with the final step publishing to Azure Stack.  In this section, you modify the site's footer and start deployment through the pipeline.  Once complete, you will see your changes deployed to Azure for review, then once you approve the release, they are published to Azure Stack.
+## <a name="deploy-new-code"></a>部署新代码
+现在，你可以测试混合 CI/CD 管道，与发布到 Azure 堆栈的最后一步。  在本部分中，你修改站点的页脚，并启动通过管道的部署。  完成后，你将看到所做的更改部署到 Azure，供查看，然后后批准发布，在发布到 Azure 堆栈。
 
-1. In Visual Studio, open the *site.master* file and change this line:
+1. 在 Visual Studio 中，打开*site.master*文件并将更改以下行：
     
     `
         <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
     `
 
-    to this:
+    更改为：
 
     `
         <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application delivered by VSTS, Azure, and Azure Stack</p>
     `
-3.  Commit the changes and sync to VSTS.  
-4.  From the VSTS workspace, check the build status by selecting **Build & Release** > **Build**
-5.  You will see a build in progress.  Double-click the status, and you can watch the build progress.  Once you see "Finished build" in the console, move on to check the release from **Build & Release** > **Release**.  Double-click the release.
-6.  You will receive notification that a release requires review. Check the Web App URL and verify the new changes are present.  Approve the release in VSTS.
-    ![image showing configuration of release definition to use specific queue](./media/azure-stack-solution-pipeline/image4.png)
+3.  提交所做的更改并同步到 VSTS。  
+4.  从 VSTS 工作区中，检查生成状态通过选择**生成和发行** > **生成**
+5.  你将看到正在进行的生成。  双击状态，并可以监视生成进度。  一旦您在控制台中看到"已完成的生成"，将移动检查中的版本**生成和发行** > **释放**。  双击版本。
+6.  你将收到通知发布需要查看。 检查 Web 应用 URL，并验证新的更改会呈现。  批准 VSTS 中的版本。
+    ![若要使用特定的队列的版本定义的映像显示配置](./media/azure-stack-solution-pipeline/image4.png)
     
-7.  Verify publishing to Azure Stack is complete by visiting the website using the URL noted when creating the Web App.
-    ![image showing ASP.NEt app with footer changed](./media/azure-stack-solution-pipeline/image5.png)
+7.  验证通过访问网站使用创建 Web 应用程序时记下的 URL 发布到 Azure 堆栈已完成。
+    ![显示 ASP 的图像。NEt 应用程序与更改的页脚](./media/azure-stack-solution-pipeline/image5.png)
 
 
-You can now use your new hybrid CI/CD pipeline as a building block for other hybrid cloud patterns.
+有关其他混合云模式，现在可以使用新的混合 CI/CD 管道为构建基块。
 
-## <a name="next-steps"></a>Next steps
-In this tutorial, you learned how to build a hybrid CI/CD pipeline that:
+## <a name="next-steps"></a>后续步骤
+在本教程中，您学习了如何构建混合 CI/CD 管道：
 
 > [!div class="checklist"]
-> * Initiates a new build based on code commits to your Visual Studio Team Services (VSTS) repository.
-> * Automatically deploys your newly built code to Azure for user acceptance testing.
-> * Once your code has passed testing, automatically deploys to Azure Stack. 
+> * 启动新的生成基于代码提交到你的 Visual Studio Team Services (VSTS) 存储库中。
+> * 自动将新生成的代码到 Azure 部署为用户验收测试。
+> * 一旦你的代码经过测试之后，自动将部署到 Azure 堆栈。 
 
-Now that you have a hybrid CI/CD pipeline, continue by learning how to develop apps for Azure Stack.
+现在，你有混合 CI/CD 管道，继续通过了解如何开发 Azure 堆栈的应用。
 
 > [!div class="nextstepaction"]
-> [Develop for Azure Stack](azure-stack-developer.md)
-
+> [Azure Stack 开发](azure-stack-developer.md)
 
 

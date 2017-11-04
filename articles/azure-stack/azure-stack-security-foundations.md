@@ -1,6 +1,6 @@
 ---
-title: Understand Azure Stack security controls | Microsoft Docs
-description: As a service administrator learn about the security controls applied to Azure Stack
+title: "了解 Azure 堆栈的安全控制 |Microsoft 文档"
+description: "作为服务管理员，了解有关应用于 Azure 堆栈的安全控件"
 services: azure-stack
 documentationcenter: 
 author: Heathl17
@@ -14,70 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 106fcf7b0edc095a52e82d58ad48a73084b65d1e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack infrastructure security posture
+# <a name="azure-stack-infrastructure-security-posture"></a>Azure 堆栈基础结构安全状况
 
-*Applies to: Azure Stack integrated systems*
+*适用范围： Azure 堆栈集成系统*
 
-Security considerations and compliance regulations are among the main drivers for using hybrid clouds. Azure Stack was designed for these scenarios, and it is important to understand the controls already in place when adopting Azure Stack.
+安全注意事项和法规遵从性要求包括使用混合云的主要驱动程序。 Azure 堆栈旨在用于这些情况下，而且，务必时采用 Azure 堆栈了解已经存在的控件。
 
-In Azure Stack, there are two security posture layers that coexist. The first layer comprises the Azure Stack infrastructure, which goes from the hardware components all the way up to the Azure Resource Manager, and includes the Administrator and the Tenant portals. The second layer consists of the workloads that tenants create, deploy, and manage and includes things like virtual machines or App Services web sites.  
+在 Azure 堆栈，有两个安全态势层共存。 第一层包含 Azure 堆栈基础结构，这是由从硬件组件一直到 Azure 资源管理器，并包含管理员和租户门户。 第二个层包含的工作负荷的租户创建、 部署和管理，包括的任务等虚拟机或应用程序服务的网站。  
 
-## <a name="security-approach"></a>Security approach
-Azure Stack was designed with a security posture to defend against modern threats, and was built to meet the requirements from the major compliance standards. As a result, the security posture of the Azure Stack infrastructure is built on two pillars:
+## <a name="security-approach"></a>安全方法
+Azure 堆栈旨在提供安全状况来抵御现代威胁，并生成以满足从主要法规遵从性标准的要求。 因此，Azure 堆栈基础结构的安全状况基于两个重要元素：
 
- - **Assume Breach.** Starting from the assumption that the system has already been breached, we focus on *detecting and limiting the impact of breaches* versus only trying to prevent attacks. 
- - **Hardened by Default.**  Since the infrastructure runs on well-defined hardware and software, we *enable, configure, and validate security features* that are usually left to customers to implement.
+ - **假定漏洞。** 系统已受到侵犯假设从开始，我们重点*检测和限制的违反情况的影响*而不是只想要防止攻击。 
+ - **默认情况下强制写入。**  由于基础结构上定义完善的硬件和软件，将运行我们*启用、 配置和验证安全功能*通常留给客户能够实现。
 
-Because Azure Stack is delivered as an integrated system, the security posture of the Azure Stack infrastructure is defined by Microsoft.  Just like in Azure, tenants are responsible for defining the security posture of their tenant workloads. This document provides foundational knowledge on the security posture of the Azure Stack infrastructure.
+由于已将 Azure 堆栈发送作为一个集成系统，由 Microsoft 定义 Azure 堆栈基础结构的安全状况。  就像在 Azure 中，租户负责定义其租户工作负载的安全状况。 本文档提供有关 Azure 堆栈基础结构的安全状况的基础知识。
 
-## <a name="data-at-rest-encryption"></a>Data at rest encryption
-All Azure Stack infrastructure and tenant data is encrypted at rest using Bitlocker. This encryption protects against physical loss or theft of Azure Stack storage components. 
+## <a name="data-at-rest-encryption"></a>在 rest 加密的数据
+使用 Bitlocker 的其余部分进行加密所有 Azure 堆栈的基础结构和租户数据。 这种加密可防止物理丢失或被盗 Azure 堆栈存储组件。 
 
-## <a name="data-in-transit-encryption"></a>Data in transit encryption
-The Azure Stack infrastructure components communicate using channels encrypted with TLS 1.2. Encryption certificates are self-managed by the infrastructure. 
+## <a name="data-in-transit-encryption"></a>在传输过程加密的数据
+Azure 堆栈的基础结构组件进行通信使用 TLS 1.2 使用加密的通道。 自助基础结构管理加密证书。 
 
-All external infrastructure endpoints, such as the REST endpoints or the Azure Stack portal, support TLS 1.2 for secure communications. Encryption certificates, either from a third party or your enterprise Certificate Authority, must be provided for those endpoints. 
+所有外部的基础结构终结点，如 REST 终结点或 Azure 堆栈门户中，支持 TLS 1.2 进行安全通信。 加密证书，从第三方或企业证书颁发机构，必须提供这些终结点。 
 
-While self-signed certificates can be used for these external endpoints, Microsoft strongly advises against using them. 
+虽然自签名的证书可以用于这些外部终结点，Microsoft 强烈建议不要使用它们。 
 
-## <a name="secret-management"></a>Secret management
-Azure Stack infrastructure uses a multitude of secrets, like passwords, to function. Most of them are automatically rotated frequently, because they are Group Managed Service accounts, which rotate every 24 hours.
+## <a name="secret-management"></a>密钥管理
+Azure 堆栈的基础结构使用多种机密，如的密码，来正常。 因为它们被旋转每 24 小时的组托管服务帐户，其中的大多数自动通常情况下，旋转。
 
-The remaining secrets that are not Group Managed Service accounts can be rotated manually with a script in the Privileged Endpoint.
+不包含特权终结点中的脚本可以手动旋转组托管服务帐户的剩余机密信息。
 
-## <a name="code-integrity"></a>Code integrity
-Azure Stack makes use of the latest Windows Server 2016 security features. One of them is Windows Defender Device Guard, which provides application whitelisting, and ensures that only authorized code runs within the Azure Stack infrastructure. 
+## <a name="code-integrity"></a>代码完整性
+Azure 堆栈将使用最新的 Windows Server 2016 的安全功能。 其中一个是 Windows Defender Device Guard，也不能提供应用程序白名单，可确保只有经过授权的 Azure 堆栈基础结构内的代码运行。 
 
-Authorized code is signed by either Microsoft or the OEM partner, and it is included in the list of allowed software that is specified in a policy defined by Microsoft. In other words, only software that has been approved to run in the Azure Stack infrastructure can be executed. Any attempt to execute unauthorized code are blocked and an audit is generated.
+已授权的代码签名由 Microsoft 或 OEM 合作伙伴，并且它包含在由 Microsoft 定义策略中指定的允许软件的列表。 换而言之，可以执行已经过审核可以运行 Azure 堆栈基础结构中的软件。 阻止任何尝试执行未授权的代码和生成审核。
 
-The Device Guard policy also prevents third-party agents or software from running in the Azure Stack infrastructure.
+Device Guard 策略还可以防止运行在 Azure 堆栈基础结构中的第三方代理或软件。
 
-## <a name="credential-guard"></a>Credential Guard
-Another Windows Server 2016 security feature in Azure Stack is Windows Defender Credential Guard, which is used to protect Azure Stack infrastructure credentials from Pass-the-Hash and Pass-the-Ticket attacks.
+## <a name="credential-guard"></a>凭据保护
+Azure 堆栈中的另一个 Windows Server 2016 安全功能是 Windows Defender 凭据保护，用于防止传递哈希和传递票证攻击中的 Azure 堆栈基础结构凭据。
 
-## <a name="antimalware"></a>Antimalware
-Every component in Azure Stack (both Hyper-V hosts and Virtual Machines) is protected with Windows Defender Antivirus.
+## <a name="antimalware"></a>反恶意软件
+Azure 堆栈 （HYPER-V 主机和虚拟机） 中的每个组件进行保护，Windows Defender 防病毒软件。
 
-## <a name="constrained-administration-model"></a>Constrained administration model
-Administration in Azure Stack is controlled through the use of three entry points, each with a specific purpose: 
-1. The [Administrator Portal](azure-stack-manage-portals.md) provides a point-and-click experience for daily management operations.
-2. Azure Resource Manager exposes all the management operations of the Administrator Portal via a REST API, used by PowerShell and Azure CLI. 
-3. For specific low-level operations, for example data center integration or support scenarios, Azure Stack exposes a PowerShell endpoint called [Privileged Endpoint](azure-stack-privileged-endpoint.md). This endpoint exposes only a whitelisted set of cmdlets and it is heavily audited.
+## <a name="constrained-administration-model"></a>约束的管理模型
+Azure 堆栈中的管理控制通过使用三个入口点，每个都有特定用途： 
+1. [管理员门户](azure-stack-manage-portals.md)提供针对每日的管理操作的点，请单击体验。
+2. Azure 资源管理器公开管理员门户通过 REST API，通过 PowerShell 和 Azure CLI 使用的所有管理的操作。 
+3. 对于特定的低级别操作，例如数据中心集成或支持方案，Azure 堆栈公开 PowerShell 终结点调用[特权终结点](azure-stack-privileged-endpoint.md)。 此终结点公开只有列入允许一组 cmdlet，并很大程度审核。
 
-## <a name="network-controls"></a>Network controls
-Azure Stack infrastructure comes with multiple layers of network Access Control List(ACL).  The ACLs     prevent unauthorized access to the infrastructure components and limit infrastructure communications to only the paths that are required for its functioning. 
+## <a name="network-controls"></a>网络控件
+Azure 堆栈的基础结构附带的网络访问控制 List(ACL) 的多个层。  防止未经授权的访问的基础结构组件和限制与仅的路径以其能够正常运行所需的基础结构通信的 Acl。 
 
-Network ACLs are enforced in three layers:
-1.  Top of Rack switches
-2.  Software Defined Network
-3.  Host and VM operating system firewalls 
-
+在三个层中实施网络 Acl:
+1.  机架顶部的切换
+2.  软件定义网络
+3.  主机和 VM 操作系统防火墙 
 
 

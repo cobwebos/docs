@@ -1,6 +1,6 @@
 ---
-title: Using the Azure Stack portal | Microsoft Docs
-description: Learn how to access and use the user portal in Azure Stack.
+title: "使用 Azure 堆栈门户 |Microsoft 文档"
+description: "了解如何访问和使用 Azure 堆栈中的用户门户。"
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -14,64 +14,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 63c270affca31d3db7e03116f5e287d8569b0dae
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-the-azure-stack-portal"></a>Using the Azure Stack portal
+# <a name="using-the-azure-stack-portal"></a>使用 Azure 堆栈门户
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-As a consumer of Azure Stack services, you can use the Azure Stack portal to subscribe to public offers, and use the services that are made available through those offers. If you’ve used the Azure portal before, you’re already familiar with the user interface.
+作为 Azure 堆栈服务的使用者，你可以使用 Azure 堆栈门户订阅公共产品，并使用可用于通过这些产品/服务的服务。 如果你已使用 Azure 门户之前，你已熟悉的用户界面。
 
-## <a name="access-the-portal"></a>Access the portal
+## <a name="access-the-portal"></a>访问门户
 
-Your Azure Stack operator (either a service provider or an administrator in your organization), will let you know the correct URL to access the portal. 
+你的 Azure 堆栈运算符 （服务提供商或你组织中的管理员），将让你知道正确的 URL 以访问门户。 
 
-- For an integrated system, the URL varies based on your operator’s region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-- If you’re using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
+- 对于集成系统，URL 将取决于运算符的区域和外部的域名，并将采用格式 https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
+- 如果你使用 Azure 堆栈开发工具包，该门户的地址是 https://portal.local.azurestack.external。
 
-![Screenshot of the Azure Stack user portal](media/azure-stack-use-portal/UserPortal.png)
+![Azure 堆栈用户门户的屏幕截图](media/azure-stack-use-portal/UserPortal.png)
 
-## <a name="customize-the-dashboard"></a>Customize the dashboard
+## <a name="customize-the-dashboard"></a>自定义仪表板
 
-The dashboard contains a set of default tiles. You can click **Edit dashboard** to modify the default dashboard, or click **New dashboard** to add custom dashboards. You can easily add tiles to the dashboard. For example, you can click **New**, right-click **Compute**, and then click **Pin to dashboard**.
+仪表板包含一组默认磁贴。 你可以单击**编辑仪表板**修改默认的仪表板，或单击**新仪表板**添加自定义仪表板。 你可以轻松添加到仪表板的磁贴。 例如，你可以单击**新建**，右键单击**计算**，然后单击**固定到仪表板**。
 
-## <a name="create-subscription-and-browse-available-resources"></a>Create subscription and browse available resources
+## <a name="create-subscription-and-browse-available-resources"></a>创建订阅并浏览可用资源
  
-If you don’t already have a subscription, the first thing you need to do is subscribe to an offer. After that, you can browse which resources are available to you. To browse and create resources, do any of the following:
+如果你还没有订阅，你需要执行操作的第一个操作是订阅产品。 之后，您可以浏览哪些资源将提供给你。 若要浏览并创建资源，请执行以下某项操作：
 
-- Click the **Marketplace** tile on the dashboard. 
-- On the **All resources** tile, click **Create resources**.
-- On the left navigation pane, click **New**.
+- 单击**Marketplace**仪表板磁贴。 
+- 上**的所有资源**磁贴中，单击**创建资源**。
+- 在左侧的导航窗格中，单击**新建**。
 
-## <a name="learn-how-to-use-available-services"></a>Learn how to use available services
+## <a name="learn-how-to-use-available-services"></a>了解如何使用可用的服务
 
-If you need guidance for how to use available services, there may be different options available to you.
+如果你需要有关如何使用可用服务的指南，可能有不同的选项供你。
 
-- Your organization or service provider may provide their own documentation. This is especially true if they offer customized services or apps.
-- Third-party apps have their own documentation.
-- For Azure-consistent services, we strongly recommend that you first review the Azure Stack documentation. To access the Azure Stack user documentation, click the Help icon, and then click **Help + support**.
+- 你的组织或服务提供商可能会提供其自己的文档。 这是如果它们提供自定义的服务或应用尤其如此。
+- 第三方应用具有其自己的文档。
+- 对于 Azure 一致的服务，我们强烈建议您首先阅读 Azure 堆栈文档。 若要访问 Azure 堆栈用户文档，请单击帮助图标，然后单击**帮助 + 支持**。
  
-    ![Screenshot of the Help and support option in the UI](media/azure-stack-use-portal/HelpAndSupport.png)
+    ![UI 中的帮助和支持选项的屏幕截图](media/azure-stack-use-portal/HelpAndSupport.png)
 
-    In particular, we suggest that you review the following articles to get started:
+    具体而言，我们建议你查看以下文章，若要开始：
 
-    - [Key considerations: Using services or building apps for Azure Stack](azure-stack-considerations.md)
-    - In the “Use services” section of the documentation, you’ll see each Azure-consistent service listed. There is a “considerations” topic for each service, which describes the deltas between the service offered in Azure, and the same service offered in Azure Stack. For an example, see [VM considerations](azure-stack-vm-considerations.md). There may be other information in the “Use services” section that’s unique to Azure Stack. 
+    - [关键注意事项： 使用服务或 Azure 堆栈为构建应用](azure-stack-considerations.md)
+    - 在"使用服务"部分中的文档，你将看到列出每个 Azure 一致的服务。 没有为每个服务，它描述了在 Azure 中，提供的服务和 Azure 堆栈中提供的相同服务之间的增量可以保持"注意事项"主题。 有关示例，请参阅[VM 注意事项](azure-stack-vm-considerations.md)。 可能是唯一的 Azure 堆栈的"使用服务"部分中的其他信息。 
      
-      You can use the Azure documentation as general reference for a service, but you must be aware of these differences. Understand that the documentation links on the **Quickstart tutorials** tile point to Azure documentation.
+      你可以使用 Azure 的文档与常规参考对于服务，但你必须注意这些区别。 了解文档链接上**快速入门教程**磁贴指向 Azure 文档。
 
-## <a name="get-support"></a>Get support
+## <a name="get-support"></a>获取支持
 
-If you need additional support, please contact your organization or service provider for assistance. 
+如果你需要其他支持，请联系你的组织或服务提供商，以获取帮助。 
 
-If you’re using the Azure Stack Development Kit, the [Azure Stack forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is the only method of support.
+如果你使用 Azure 堆栈开发工具包， [Azure 堆栈论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)是支持的唯一方法。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-[Key considerations: Using services or building apps for Azure Stack](azure-stack-considerations.md)
-
+[关键注意事项： 使用服务或 Azure 堆栈为构建应用](azure-stack-considerations.md)

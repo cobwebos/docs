@@ -1,6 +1,6 @@
 ---
-title: 'App Service overview: Azure Stack | Microsoft Docs'
-description: Overview of App Service on Azure Stack
+title: "应用程序服务概述： Azure 堆栈 |Microsoft 文档"
+description: "Azure 堆栈上的应用程序服务概述"
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -12,62 +12,57 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/3/2017
+ms.date: 10/10/2017
 ms.author: anwestg
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 13928744e7d2fc145662c2a0d5c26d512cf02150
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.openlocfilehash: 19b712d622276b6521317d79c68fc093dba547db
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
+# <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上的应用服务概述
 
-# <a name="app-service-on-azure-stack-overview"></a>App Service on Azure Stack overview
+Azure 堆栈上的 azure App Service 是一种可供 Azure 堆栈的 Microsoft Azure 的平台作为-服务 (PaaS) 产品。 此服务，你的客户的内部或外部-创建 web、 API 和 Azure 函数为任何平台或设备的应用程序。 它们可以与本地应用程序集成你的应用程序并自动执行其业务流程。 Azure 堆栈云操作员可以在完全托管的虚拟机 (Vm) 上运行具有共享的 VM 资源或专用的 Vm 的自选客户应用。
 
-Azure App Service on Azure Stack is the Azure offering brought to Azure Stack. The App Service on Azure Stack installer creates the following set of role instances:
+Azure 应用程序服务包括用于自动执行业务流程和托管云 Api 的功能。 作为单个集成服务，Azure App Service 允许您编写各种组件 （网站、 RESTful Api 和业务流程） 构成单个解决方案。
 
-*  Controller
-*  Management (two instances are created)
-*  FrontEnd
-*  Publisher
-*  Worker (in Shared mode)
+## <a name="why-offer-azure-app-service-on-azure-stack"></a>为什么提供 Azure 堆栈上的 Azure App Service？
 
-In addition, the App Service on Azure Stack installer creates a file server.
-    
-## <a name="whats-new-in-the-first-release-candidate-of-app-service-on-azure-stack"></a>What's new in the first release candidate of App Service on Azure Stack?
-![App Service in the Azure Stack portal][1]
+下面是应用服务的某些主要特性和功能：
+- **多个语言和框架**： 应用程序服务具有对 ASP.NET、 Node.js、 Java、 PHP 和 Python 的一流支持。 你还可以在应用程序服务虚拟机上运行 Windows PowerShell 和其他脚本或可执行文件。
+- **DevOps 优化**： 设置持续集成和与 GitHub、 本地 Git 或 BitBucket 部署。 将提升通过测试和过渡环境的更新。 通过使用 Azure PowerShell 或跨平台命令行界面 (CLI) 来管理你在 App Service 中的应用。
+- **Visual Studio 集成**: Visual Studio 中的专用的工具简化创建和部署应用程序的工作。
 
-The first release candidate of App Service on Azure Stack builds on top of the third preview and brings new capabilities and improvements:
+## <a name="app-types-in-app-service"></a>应用服务中的应用类型
 
-* Azure Functions in Azure Stack environments based on Active Directory Federation Services 
-* Single sign-on support for the Functions portal and the advanced developer tools (Kudu)
-* Java support for web, mobile, and API applications
-* Management of worker tiers by virtual machine scale sets to improve scale-out capabilities for service administrators
-* Localization of the admin experience
-* Increased stability of the service
-* Tenant portal experience updates and installation process updates
+应用程序服务提供几种应用程序类型，其中每个旨在承载特定工作负荷：
 
-## <a name="limitations-of-the-technical-preview"></a>Limitations of the technical preview
+- [Web 应用](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview)用于托管网站和 web 应用程序。
+- [API Apps](https://docs.microsoft.com/en-us/azure/app-service-api/app-service-api-apps-why-best-platform)托管 RESTful Api。
+- 用于托管事件驱动的无服务器工作负荷的 azure 函数。
 
-There is no support for the App Service on Azure Stack preview releases, although we do monitor the Azure Stack MSDN Forum. Do not put production workloads on this preview release. There is also no upgrade between App Service on Azure Stack preview releases. The primary purposes of these preview releases are to show what we're providing and to obtain feedback. 
+Word 应用此处是指专用于运行工作负荷的托管资源。 以“Web 应用”为例，用户可能习惯于将 Web 应用视为计算资源和应用程序代码，二者共同向浏览器提供功能。 但在 App Service web 应用程序是 Azure 堆栈提供用于承载应用程序代码的计算资源。
 
-## <a name="what-is-an-app-service-plan"></a>What is an App Service plan?
+你的应用程序可能包括不同类型的多个 App Service 应用。 例如，如果你的应用程序组成一个 web 前端和 RESTful API 后端，你可以：
+- 将该前端和 API 部署到单个 Web 应用
+- 将前端代码部署到 Web 应用，将后端代码部署到 API 应用。
 
-The App Service resource provider uses the same code that Azure App Service uses. As a result, some common concepts are worth describing. In App Service, the pricing container for applications is called the App Service plan. It represents the set of dedicated virtual machines used to hold your apps. Within a given subscription, you can have multiple App Service plans. 
+   ![](media/azure-stack-app-service-overview/image01.png)
 
-In Azure, there are shared and dedicated workers. A shared worker supports high-density multitenant app hosting, and there is only one set of shared workers. Dedicated servers are used by only one tenant and come in three sizes: small, medium, and large. The needs of on-premises customers can't always be described by using those terms. In App Service on Azure Stack, resource provider administrators can define the worker tiers they want to make available. Administrators can define multiple sets of shared workers or different sets of dedicated workers based on their unique hosting needs. By using those worker-tier definitions, they can then define their own pricing SKUs.
+## <a name="what-is-an-app-service-plan"></a>什么是 App Service 计划?
 
-## <a name="portal-features"></a>Portal features
+App Service 资源提供程序使用 Azure App Service 使用相同的代码。 因此，某些基本的概念是值得描述。 在 App Service 应用程序的定价容器称为 App Service 计划。 它表示的一套用来保存你的应用程序的专用虚拟机。 在给定的订阅，你可具有多个 App Service 计划。
 
-App Service on Azure Stack uses the same UI that Azure App Service uses, as is true with the back end. Some features are disabled and aren't functional in Azure Stack. The Azure-specific expectations or services that those features require aren't yet available in Azure Stack. 
+在 Azure 中，有共享和专用辅助角色。 共享工作线程支持高密度的多租户应用程序托管，并且没有只有一组共享辅助角色。 专用的服务器都使用只有一个租户，有三种大小： 小型、 中型和大型。 在本地客户需求始终不能使用这些条款的描述。 在 Azure 堆栈上的 App Service，资源提供程序管理员可以定义他们想要提供辅助角色层。 根据托管自己独特需求，可以定义的共享辅助角色的多个集或不同的专用辅助角色集。 通过使用这些辅助角色层定义，它们随后可以定义自己的定价 Sku。
 
-## <a name="next-steps"></a>Next steps
+## <a name="portal-features"></a>门户功能
 
-- [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md)
-- [Install the App Service resource provider](azure-stack-app-service-deploy.md)
+Azure 堆栈上的应用程序服务使用同一 UI Azure App Service 使用，如适用于后端。 某些功能将被禁用，不 Azure 堆栈中的功能。 尚未可用 Azure 堆栈中的特定于 Azure 的预期或这些功能都需要的服务。
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-tools-paas-services.md), like the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md).
+## <a name="next-steps"></a>后续步骤
 
-<!--Image references-->
-[1]: ./media/azure-stack-app-service-overview/AppService_Portal.png
 
+- [之前开始使用 Azure 堆栈上的 App Service](azure-stack-app-service-before-you-get-started.md)
+- [安装 App Service 资源提供程序](azure-stack-app-service-deploy.md)
+
+你还可以试用其他[平台即服务 (PaaS) 服务](azure-stack-tools-paas-services.md)、 like [SQL Server 资源提供程序](azure-stack-sql-resource-provider-deploy.md)和[MySQL 资源提供程序](azure-stack-mysql-resource-provider-deploy.md)。

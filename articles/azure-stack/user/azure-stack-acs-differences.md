@@ -1,6 +1,6 @@
 ---
-title: 'Azure Stack Storage: Differences and considerations'
-description: Understand the differences between Azure Stack Storage and Azure Storage, along with Azure Stack deployment considerations.
+title: "Azure 堆栈存储： 差异和注意事项"
+description: "了解 Azure 堆栈部署注意事项以及 Azure 堆栈存储和 Azure 存储空间之间的差异。"
 services: azure-stack
 documentationcenter: 
 author: xiaofmao
@@ -14,52 +14,51 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 381950321ac3a5ea8a43b76f3fba868da4be4682
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 4d6fb44fd6fd2261059ca45093d8b49345adfa74
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Storage: Differences and considerations
+# <a name="azure-stack-storage-differences-and-considerations"></a>Azure 堆栈存储： 差异和注意事项
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-Azure Stack Storage is the set of storage cloud services in Microsoft Azure Stack. Azure Stack Storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
+Azure 堆栈存储是存储在 Microsoft Azure 堆栈中的云服务的集合。 Azure 堆栈存储提供了 blob、 表、 队列和帐户管理功能，带有 Azure 一致的语义。
 
-This article summarizes the known Azure Stack Storage differences from Azure Storage. It also summarizes other considerations to keep in mind when you deploy Azure Stack. To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) topic.
+本文总结了从 Azure 存储的已知的 Azure 堆栈存储差异。 它还概述了部署 Azure 堆栈时，需要注意的事项。 若要了解有关高级 Azure 堆栈和 Azure 之间的差异信息，请参阅[密钥注意事项](azure-stack-considerations.md)主题。
 
-## <a name="cheat-sheet-storage-differences"></a>Cheat sheet: Storage differences
+## <a name="cheat-sheet-storage-differences"></a>速查表： 存储差异
 
-| Feature | Azure (global) | Azure Stack |
+| 功能 | Azure （全局） | Azure Stack |
 | --- | --- | --- |
-|File storage|Cloud-based SMB file shares supported|Not yet supported
-|Data at rest encryption|256-bit AES encryption|Not yet supported
-|Storage account type|General-purpose and Azure Blob storage accounts|General-purpose only
-|Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage|Locally redundant storage
-|Premium storage|Fully supported|Can be provisioned, but no performance limit or guarantee
-|Managed disks|Premium and standard supported|Not yet supported
-|Blob name|1,024 characters (2,048 bytes)|880 characters (1,760 bytes)
-|Block blob max size|4.75 TB (100 MB X 50,000 blocks)|50,000 X 4 MB (approx. 195 GB)
-|Page blob incremental snapshot copy|Premium and standard Azure page blobs supported|Not yet supported
-|Page blob max size|8 TB|1 TB
-|Page blob page size|512 bytes|4 KB
-|Table partition key and row key size|1,024 characters (2,048 bytes)|400 characters (800 bytes)
+|文件存储|基于云的支持 SMB 文件共享|尚不支持
+|在 rest 加密的数据|256 位 AES 加密|尚不支持
+|存储帐户类型|通用和 Azure Blob 存储帐户|通用仅
+|复制选项|本地冗余存储、 地域冗余存储、 读取访问地域冗余存储和区域冗余存储|本地冗余存储
+|高级存储|完全支持|可以设置，但没有性能限制或保证
+|托管磁盘|高级和标准支持|尚不支持
+|Blob 名称|1024 个字符 （为 2048 个字节）|880 字符 （1,760 字节）
+|块 blob 最大大小|4.75 TB （100 MB X 50000 块）|50,000 X 4 MB（约 195 GB）
+|页 blob 快照复制|备份 Azure 非托管的 VM 磁盘附加到正在运行支持的 VM|尚不支持
+|页 blob 增量快照复制|高级和标准 Azure 页 blob 支持|尚不支持
+|页 blob 最大大小|8 TB|1 TB
+|页 blob 页大小|512 字节|4 KB
+|表分区键和行键大小|1024 个字符 （为 2048 个字节）|400 个字符 （800 字节为单位）
 
-### <a name="metrics"></a>Metrics
-There are also some differences with storage metrics:
-* The transaction data in storage metrics does not differentiate internal or external network bandwidth.
-* The transaction data in storage metrics does not include virtual machine access to the mounted disks.
+### <a name="metrics"></a>度量值
+还有一些与存储度量值的差异：
+* 存储度量值中的事务数据不区分内部或外部的网络带宽。
+* 存储度量值中的事务数据不包括与装入的磁盘的虚拟机访问。
 
-## <a name="api-version"></a>API version
-The following versions are supported with Azure Stack Storage:
+## <a name="api-version"></a>API 版本
+对 Azure 堆栈存储空间支持以下版本：
 
-* Azure Storage data services: [2015-04-05 REST API version](https://docs.microsoft.com/rest/api/storageservices/Version-2015-04-05?redirectedfrom=MSDN)
-* Azure Storage management services: [2015-05-01-preview, 2015-06-15, and 2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN) 
+* Azure 存储数据服务： [2015年-04-05 REST API 版本](https://docs.microsoft.com/rest/api/storageservices/Version-2015-04-05?redirectedfrom=MSDN)
+* Azure 存储管理服务： [2015年-05-01-preview、 2015年-06-15 和 2016年-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN) 
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-* [Get started with Azure Stack Storage development tools](azure-stack-storage-dev.md)
-* [Introduction to Azure Stack Storage](azure-stack-storage-overview.md)
-
+* [开始使用 Azure 堆栈存储开发工具](azure-stack-storage-dev.md)
+* [Azure 堆栈存储空间简介](azure-stack-storage-overview.md)
 

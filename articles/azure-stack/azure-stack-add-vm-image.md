@@ -1,6 +1,6 @@
 ---
-title: Adding a VM image to Azure Stack | Microsoft Docs
-description: Add your organization's custom Windows or Linux VM image for tenants to use
+title: "将 VM 映像添加到 Azure 堆栈 |Microsoft 文档"
+description: "添加供租户用你的组织的自定义 Windows 或 Linux VM 映像。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,127 +14,126 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: de8540397b63093457382cf427a65ea0e48b93e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 520e4dfaadf1d476447a600ef2b3d092b6955a89
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-# <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Make a custom virtual machine image available in Azure Stack
+# <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>在 Azure 堆栈中提供的自定义虚拟机映像
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-Azure Stack enables operators to make custom virtual machine images available to their users. These images can be referenced by Azure Resource Manager templates or added to the Azure Marketplace UI with the creation of a Marketplace item. 
+Azure 堆栈中运算符可以提供自定义虚拟机映像为其用户。 可以通过 Azure 资源管理器模板引用这些映像，或可以将它们添加到 Azure Marketplace UI 为应用商店项。 
 
-## <a name="add-a-vm-image-to-marketplace-with-powershell"></a>Add a VM image to marketplace with PowerShell
+## <a name="add-a-vm-image-to-marketplace-by-using-powershell"></a>通过使用 PowerShell 将 VM 映像添加到应用商店
 
-Run the following prerequisites either from the [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)
+运行以下先决条件，从[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)或从基于 Windows 的外部客户端，如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
-* [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).  
+1. [安装适用于 Azure 堆栈 PowerShell](azure-stack-powershell-install.md)。  
 
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
+2. 下载[工具需要使用处理 Azure 堆栈](azure-stack-powershell-download.md)。  
 
-* Prepare a Windows or Linux operating system virtual hard disk image in VHD format (not VHDX).
+3. 准备 VHD 格式中的 Windows 或 Linux 的操作系统虚拟硬盘映像 （请勿使用 VHDX 格式）。
    
-   * For Windows images, the article [Upload a Windows VM image to Azure for Resource Manager deployments](../virtual-machines/windows/upload-generalized-managed.md) contains image preparation instructions in the **Prepare the VHD for upload** section.
-   * For Linux images, follow the steps to prepare the image or use an existing Azure Stack Linux image as described in the article [Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md).  
+   * 有关 Windows 映像，有关准备的映像的说明，请参阅[将 Windows VM 映像上载到 Azure 资源管理器部署](../virtual-machines/windows/upload-generalized-managed.md)。
+   * 对于 Linux 映像，请参阅[Azure 堆栈上部署 Linux 虚拟机](azure-stack-linux.md)。 完成准备的映像，或使用现有 Azure 堆栈 Linux 映像，如文章中所述的步骤。  
 
-Now run the following steps to add the image to the Azure Stack marketplace:
+若要将映像添加到 Azure 堆栈应用商店，请完成以下步骤：
 
-1. Import the Connect and ComputeAdmin modules:
+1. 导入连接和 ComputeAdmin 模块：
    
    ```powershell
    Set-ExecutionPolicy RemoteSigned
 
-   # import the Connect and ComputeAdmin modules
+   # Import the Connect and ComputeAdmin modules.
    Import-Module .\Connect\AzureStack.Connect.psm1
    Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
    ``` 
 
-2. Sign in to your Azure Stack environment. Run the following script depending on if your Azure Stack environment is deployed by using AAD or AD FS (Make sure to replace the AAD tenantName, GraphAudience endpoint and ArmEndpoint values as per your environment configuration): 
+2. 登录到你的 Azure 堆栈环境。 运行以下脚本，具体取决于你是否通过使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 部署你的 Azure 堆栈环境之一。 (替换 Azure AD `tenantName`，`GraphAudience`终结点，和`ArmEndpoint`值以反映你环境的配置。)
 
-   a. **Azure Active Directory**, use the following cmdlet:
+    * **Azure Active Directory**。 使用以下 cmdlet:
 
-   ```PowerShell
-   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+      ```PowerShell
+      # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+      $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-   # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
-   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+      # For Azure Stack Development Kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+      $GraphAudience = "<GraphAuidence endpoint for your environment>"
+      
+      # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+      Add-AzureRMEnvironment `
+        -Name "AzureStackAdmin" `
+        -ArmEndpoint $ArmEndpoint
 
-   #Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
-   Add-AzureRMEnvironment `
-     -Name "AzureStackAdmin" `
-     -ArmEndpoint $ArmEndpoint 
+      Set-AzureRmEnvironment `
+        -Name "AzureStackAdmin" `
+        -GraphAudience $GraphAudience
 
-   Set-AzureRmEnvironment `
-    -Name "AzureStackAdmin" `
-    -GraphAudience $GraphAudience
+      $TenantID = Get-AzsDirectoryTenantId `
+        -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
+        -EnvironmentName AzureStackAdmin
 
-   $TenantID = Get-AzsDirectoryTenantId `
-     -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-     -EnvironmentName AzureStackAdmin
+      Login-AzureRmAccount `
+        -EnvironmentName "AzureStackAdmin" `
+        -TenantId $TenantID 
+      ```
 
-   Login-AzureRmAccount `
-     -EnvironmentName "AzureStackAdmin" `
-     -TenantId $TenantID 
-   ```
-
-   b. **Active Directory Federation Services**, use the following cmdlet:
+   * **Active Directory 联合身份验证服务**。 使用以下 cmdlet:
     
-   ```PowerShell
-   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+        ```PowerShell
+        # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+        $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-   # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
-   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+        # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+        $GraphAudience = "<GraphAuidence endpoint for your environment>"
 
-   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
-   Add-AzureRMEnvironment `
-     -Name "AzureStackAdmin" `
-     -ArmEndpoint $ArmEndpoint
+        # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+        Add-AzureRMEnvironment `
+          -Name "AzureStackAdmin" `
+          -ArmEndpoint $ArmEndpoint
 
-   Set-AzureRmEnvironment `
-     -Name "AzureStackAdmin" `
-     -GraphAudience $GraphAudience `
-     -EnableAdfsAuthentication:$true
+        Set-AzureRmEnvironment `
+          -Name "AzureStackAdmin" `
+          -GraphAudience $GraphAudience `
+          -EnableAdfsAuthentication:$true
 
-   $TenantID = Get-AzsDirectoryTenantId `
-     -ADFS 
-     -EnvironmentName AzureStackAdmin 
+        $TenantID = Get-AzsDirectoryTenantId `
+          -ADFS 
+          -EnvironmentName AzureStackAdmin 
 
-   Login-AzureRmAccount `
-     -EnvironmentName "AzureStackAdmin" `
-     -TenantId $TenantID 
-   ```
+        Login-AzureRmAccount `
+          -EnvironmentName "AzureStackAdmin" `
+          -TenantId $TenantID 
+        ```
     
-3. Add the VM image by invoking the `Add-AzsVMImage` cmdlet. In the Add-AzsVMImage cmdlet, specify the osType as Windows or Linux. Include the publisher, offer, SKU, and version for the VM image. See the [Parameters](#parameters) section for information about the allowed parameters. These parameters are used by Azure Resource Manager templates to reference the VM image. Following is an example invocation of the script:
+3. 添加 VM 映像，通过调用`Add-AzsVMImage`cmdlet。 在`Add-AzsVMImage`cmdlet，指定`osType`作为 Windows 或 Linux。 包括发布者、 产品/服务、 SKU、 和的 VM 映像的版本。 允许参数信息，请参阅[参数](#parameters)。 通过 Azure 资源管理器模板使用的参数用于引用的 VM 映像。 下面的示例调用该脚本：
      
-     ```powershell
-     Add-AzsVMImage `
-       -publisher "Canonical" `
-       -offer "UbuntuServer" `
-       -sku "14.04.3-LTS" `
-       -version "1.0.0" `
-       -osType Linux `
-       -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
-     ```
+  ```powershell
+  Add-AzsVMImage `
+    -publisher "Canonical" `
+    -offer "UbuntuServer" `
+    -sku "14.04.3-LTS" `
+    -version "1.0.0" `
+    -osType Linux `
+    -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
+  ```
 
-The command does the following:
+该命令执行以下任务：
 
-* Authenticates to the Azure Stack environment
-* Uploads the local VHD to a newly created temporary storage account
-* Adds the VM image to the VM image repository and
-* Creates a Marketplace item
+* 向 Azure 堆栈环境进行身份验证。
+* 将本地 VHD 上载到新创建的临时存储帐户。
+* 将 VM 映像添加到 VM 映像存储库。
+* 创建应用商店项。
 
-To verify that the command ran successfully, go to Marketplace in the portal, and then verify that the VM image is available in the **Virtual Machines** category.
+若要验证成功，该命令运行在门户中，请转到应用商店。 验证 VM 映像可用于**虚拟机**类别。
 
-![VM image added successfully](./media/azure-stack-add-vm-image/image5.PNG) 
+![已成功添加的 VM 映像](./media/azure-stack-add-vm-image/image5.PNG) 
 
-## <a name="remove-a-vm-image-with-powershell"></a>Remove a VM image with PowerShell
+## <a name="remove-a-vm-image-by-using-powershell"></a>使用 PowerShell 删除 VM 映像
 
-When you no longer need the virtual machine image that you have uploaded earlier, you can delete it from the marketplace by using the following cmdlet:
+当您不再需要你上载的虚拟机映像时，可以从应用商店使用以下 cmdlet 来删除它：
 
 ```powershell
 Remove-AzsVMImage `
@@ -144,55 +143,55 @@ Remove-AzsVMImage `
   -version "1.0.0" `
 ```
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>parameters
 
-| Parameter | Description |
+| 参数 | 说明 |
 | --- | --- |
-| **publisher** |The publisher name segment of the VM image that users use when deploying the image. An example is ‘Microsoft’. Do not include a space or other special characters in this field. |
-| **offer** |The offer name segment of the VM Image that users use when deploying the VM image. An example is ‘WindowsServer’. Do not include a space or other special characters in this field. |
-| **sku** |The SKU name segment of the VM Image that users use when deploying the VM image. An example is ‘Datacenter2016’. Do not include a space or other special characters in this field. |
-| **version** |The version of the VM Image that users use when deploying the VM image. This version is in the format *\#.\#.\#*. An example is ‘1.0.0’. Do not include a space or other special characters in this field. |
-| **osType** |The osType of the image must be either ‘Windows’ or ‘Linux’. |
-| **osDiskLocalPath** |The local path to the OS disk VHD that you are uploading as a VM image to Azure Stack. |
-| **dataDiskLocalPaths** |An optional array of the local paths for data disks that can be uploaded as part of the VM image. |
-| **CreateGalleryItem** |A Boolean flag that determines whether to create an item in Marketplace. By default, it is set to true. |
-| **title** |The display name of Marketplace item. By default, it is set to the Publisher-Offer-Sku of the VM image. |
-| **description** |The description of the Marketplace item. |
-| **location** |The location to which the VM image should be published. By default, this value is set to local.|
-| **osDiskBlobURI** |Optionally, this script also accepts a Blob storage URI for osDisk. |
-| **dataDiskBlobURIs** |Optionally, this script also accepts an array of Blob storage URIs for adding data disks to the image. |
+| **发布服务器** |用户使用时它们将映像部署的 VM 映像发布者名称段。 一个示例是**Microsoft**。 不包括空格或其他特殊字符在此字段中。 |
+| **产品/服务** |用户使用用户部署的 VM 映像时的 VM 映像提供名称段。 一个示例是**WindowsServer**。 不包括空格或其他特殊字符在此字段中。 |
+| **sku** |用户使用用户部署的 VM 映像时的 VM 映像的 SKU 名称段。 一个示例是**Datacenter2016**。 不包括空格或其他特殊字符在此字段中。 |
+| **version** |用户使用用户部署的 VM 映像时的 VM 映像版本。 此版本采用以下格式 *\#。\#。\#*. 一个示例是**1.0.0**。 不包括空格或其他特殊字符在此字段中。 |
+| **osType** |图像的 osType 必须是**Windows**或**Linux**。 |
+| **osDiskLocalPath** |OS 磁盘 VHD 上载到 Azure 堆栈的 VM 映像为本地路径。 |
+| **dataDiskLocalPaths** |本地路径可以作为 VM 映像的一部分上载的数据磁盘的可选数组。 |
+| **CreateGalleryItem** |一个布尔型标志，用于确定是否在应用商店中创建项目。 默认情况下，它设置为**true**。 |
+| **标题** |应用商店项的显示名称。 默认情况下，它设置为`Publisher-Offer-Sku`的 VM 映像的值。 |
+| **说明** |应用商店项目的描述。 |
+| **位置** |应该发布的 VM 映像的位置。 默认情况下，此值设置为**本地**。|
+| **osDiskBlobURI** |（可选）此脚本还接受 Blob 存储 URI 为`osDisk`。 |
+| **dataDiskBlobURIs** |（可选）此脚本还接受用于将数据磁盘添加到映像的 Blob 存储 Uri 的数组。 |
 
-## <a name="add-a-vm-image-through-the-portal"></a>Add a VM image through the portal
+## <a name="add-a-vm-image-through-the-portal"></a>添加通过门户的 VM 映像
 
 > [!NOTE]
-> This method requires creating the Marketplace item separately.
+> 使用此方法，你必须单独创建的应用商店项。
 
-One requirement of images is that they can be referenced by a Blob storage URI. Prepare a Windows or Linux operating system image in VHD format (not VHDX), and then upload the image to a storage account in Azure or Azure Stack. If your image is already uploaded to the Blob storage in Azure or Azure Stack, you can skip step1.
+映像必须能够将引用的 Blob 存储 URI。 准备 VHD 格式 (不 VHDX) 中的 Windows 或 Linux 操作系统映像，然后将映像上载到 Azure 或 Azure 堆栈中的存储帐户。 如果你的映像已上载到 Blob 存储在 Azure 中或 Azure 堆栈，则可以跳过步骤 1。
 
-1. [Upload a Windows VM image to Azure for Resource Manager deployments](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/) or for a Linux image, follow the instructions described in the [Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md) article. You should understand the following considerations before you upload the image:
+1. [将 Windows VM 映像上载到 Azure 资源管理器部署](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)或 Linux 映像，请按照中所述的说明进行操作[Azure 堆栈上部署 Linux 虚拟机](azure-stack-linux.md)。 在上载映像之前，务必要考虑以下因素：
 
-   * It's more efficient to upload an image to Azure Stack Blob storage than to Azure Blob storage because it takes less time to push the image to the Azure Stack image repository. 
+   * 它会更加高效，若要将图像上载到 Azure 堆栈 Blob 存储与到 Azure Blob 存储，因为它采用更快速地将图像推送到 Azure 堆栈映像存储库。 
    
-   * When uploading the [Windows VM image](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), make sure to substitute the **Login to Azure** step with the [Configure the Azure Stack operator's PowerShell environment](azure-stack-powershell-configure-admin.md)  step.  
+   * 当你上载[Windows VM 映像](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)，请确保**登录到 Azure**与单步[配置 Azure 堆栈运算符 PowerShell 环境](azure-stack-powershell-configure-admin.md)步骤。  
 
-   * Make a note of the Blob storage URI where you upload the image, which is in the following format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd
+   * 记下你将上载映像的位置的 URI 的 Blob 存储。 Blob 存储 URI 具有以下格式：  *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* .vhd。
 
-   * To make the blob anonymously accessible, go to the storage account blob container where the VM image VHD was uploaded to **Blob,** and then select **Access Policy**. If you want, you can instead generate a shared access signature for the container and include it as part of the blob URI.
+   * 若要使 blob 进行匿名访问，请转到存储帐户 blob 容器 VM 映像 VHD 已在其中上载。 选择**Blob**，然后选择**访问策略**。 （可选） 你可以改为生成共享的访问签名的容器，并将其作为 blob URI 的一部分包含。
 
-   ![Navigate to storage account blobs](./media/azure-stack-add-vm-image/image1.png)
+   ![转到存储帐户 blob](./media/azure-stack-add-vm-image/image1.png)
 
-   ![Set blob access to public](./media/azure-stack-add-vm-image/image2.png)
+   ![设置到公共 blob 访问](./media/azure-stack-add-vm-image/image2.png)
 
-2. Sign in to Azure Stack as operator > From the menu, click **More services** > **Resource Providers** > select  **Compute** > **VM images** > **Add**
+2. 运算符以登录到 Azure 堆栈。 在菜单中，选择**更多的服务** > **资源提供程序**。 然后，选择**计算** > **VM 映像** > **添加**。
 
-3. On the **Add a VM Image** blade, enter the publisher, offer, SKU, and version of the virtual machine image. These name segments refer to the VM image in Resource Manager templates. Make sure to select the **osType** correctly. For **OD Disk Blob URI**, enter the Blob URI where the image was uploaded and click **Create** to begin creating the VM Image.
+3. 下**添加 VM 映像**，输入发布者、 产品/服务、 SKU、 和版本的虚拟机映像。 这些名称段指资源管理器模板中的 VM 映像。 请务必选择**osType**正确值。 有关**OD 磁盘 Blob URI**，输入已上载的图像的 Blob URI。 然后，选择**创建**若要开始创建 VM 映像。
    
-   ![Begin to create the image](./media/azure-stack-add-vm-image/image4.png)
+   ![开始创建映像](./media/azure-stack-add-vm-image/image4.png)
 
-   When the image is successfully created, the VM image status changes to ‘Succeeded’.
+   已成功创建映像时，VM 映像状态将更改为**Succeeded**。
 
-4. To make the virtual machine image more readily available for user consumption in the UI, it is best to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
+4. 为了让虚拟机映像在 UI 中供用户使用更易于使用，它是一个好主意[创建应用商店项](azure-stack-create-and-publish-marketplace-item.md)。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-[Provision a virtual machine](azure-stack-provision-vm.md)
+[预配虚拟机](azure-stack-provision-vm.md)

@@ -1,6 +1,6 @@
 ---
-title: Quota types in Azure Stack | Microsoft Docs
-description: Review the different quota types available for services and resources in Azure Stack.
+title: "Azure 堆栈中的配额类型 |Microsoft 文档"
+description: "查看可供服务和 Azure 堆栈中的资源的不同配额类型。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,53 +14,54 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 9c65abd596b1a67175a4f91558c318f16ddbb11f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="quota-types-in-azure-stack"></a>Quota types in Azure Stack
-[Quotas](azure-stack-plan-offer-quota-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five VMs. Each resource can have its own types of quotas.
+# <a name="quota-types-in-azure-stack"></a>Azure 堆栈中的配额类型
 
-## <a name="compute-quota-types"></a>Compute quota types
-| **Type** | **Default value** | **Description** |
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+
+[配额](azure-stack-plan-offer-quota-overview.md#plans)定义用户订阅可以设置或使用的资源的限制。 例如，配额可能允许用户创建最多五个 Vm。 每个资源可以有其自身类型的配额。
+
+## <a name="compute-quota-types"></a>计算配额类型
+| **类型** | **默认值** | **说明** |
 | --- | --- | --- |
-| Max number of virtual machines |50 | The maximum number of virtual machines that a subscription can create in this location. |
-| Max number of virtual machine cores |100 | The maximum number of cores that a subscription can create in this location (for example, an A3 VM has four cores). |
-| Max number of availability sets |10 | The maximum number of availability sets that can be created in this location. |
-| Max number of virtual machine scale sets |100 | The maximum number of virtual machine scale sets that can be created in this location. |
+| 虚拟机的最大数量 | 20 | 最大订阅可以在此位置创建的虚拟机数。 |
+| 虚拟机内核的最大数量 | 50 | 最大可以在此位置创建订阅的内核数 （例如，A3 VM 有四个核心）。 |
+| 最大数量的可用性集 | 10 | 可以在此位置中创建的可用性集最大数目。 |
+| 虚拟机规模的最大数量设置 | 20 | 可以在此位置中创建的虚拟机规模集的最大数量。 |
 
 > [!NOTE]
-> Compute quotas are not enforced in this technical preview.
+> 计算此技术预览版中不强制配额。
 > 
 > 
 
-## <a name="storage-quota-types"></a>Storage quota types
-| **Item** | **Default value** | **Description** |
+## <a name="storage-quota-types"></a>存储配额类型
+| **Item** | **默认值** | **说明** |
 | --- | --- | --- |
-| Maximum capacity (GB) |500 |Total storage capacity that can be consumed by a subscription in this location. |
-| Total number of storage accounts |20 |The maximum number of storage accounts that a subscription can create in this location. |
+| 最大容量 (GB) |500 |可供此位置中订阅的总存储容量。 |
+| 存储帐户的总次数 |20 |最大订阅可以在此位置创建的存储帐户数。 |
 
-## <a name="network-quota-types"></a>Network quota types
-| **Item** | **Default value** | **Description** |
+## <a name="network-quota-types"></a>网络配额类型
+| **Item** | **默认值** | **说明** |
 | --- | --- | --- |
-| Max public IPs |50 |The maximum number of public IPs that a subscription can create in this location. |
-| Max virtual networks |50 |The maximum number of virtual networks that a subscription can create in this location. |
-| Max virtual network gateways |1 |The maximum number of virtual network gateways (VPN Gateways) that a subscription can create in this location. |
-| Max network connections |2 |The maximum number of network connections (point-to-point or site-to-site) that a subscription can create across all virtual network gateways in this location. |
-| Max load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
-| Max NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
-| Max network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
+| 最大公共 Ip |50 |最大订阅可以在此位置创建的公共 Ip 数。 |
+| 最大虚拟网络 |50 |订阅可以在此位置创建的虚拟网络的最大数量。 |
+| 最大虚拟网络网关 |1 |虚拟网络网关 （VPN 网关） 订阅可以在此位置中创建最大数量。 |
+| 达到最大网络连接 |2 |最大订阅可以创建在此位置中的所有虚拟网络网关之间的网络连接 （点到点或站点到站点） 数。 |
+| 最大负载平衡器 |50 |在此位置可以创建订阅的负载平衡器最大数量。 |
+| 最大 NIC 数 |100 |订阅可以在此位置创建的网络接口的最大数量。 |
+| 最大网络安全组 |50 |在此位置可以创建订阅的网络安全组中最大的数。 |
 
-## <a name="view-an-existing-quota"></a>View an existing quota
-1. Click **More services** > **Resource Providers**.
-2. Select the service with the quota that you want to view.
-3. Click **Quotas**, and select the quota you want to view.
+## <a name="view-an-existing-quota"></a>查看现有的配额
+1. 单击**更多的服务** > **资源提供程序**。
+2. 选择与你想要查看的配额的服务。
+3. 单击**配额**，然后选择你想要查看的配额。
 
-## <a name="next-steps"></a>Next steps
-[Learn more about plans, offers, and quotas.](azure-stack-plan-offer-quota-overview.md)
+## <a name="next-steps"></a>后续步骤
+[了解更多有关计划、 服务和配额。](azure-stack-plan-offer-quota-overview.md)
 
-[Create quotas while creating a plan.](azure-stack-create-plan.md)
-
+[创建计划时创建配额。](azure-stack-create-plan.md)
