@@ -1,6 +1,6 @@
 ---
-title: Download Azure Stack tools from GitHub | Microsoft Docs
-description: Learn how to download tools required to work with Azure Stack.
+title: "从 GitHub 下载 Azure 堆栈工具 |Microsoft 文档"
+description: "了解如何下载所需的使用 Azure 堆栈的工具。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,72 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 20cac6eace89d86f8fa6d7640357e19c8d7359b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: c0a4f337c055f4b62d986e2a3c3ce7b962aceae9
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/21/2017
 ---
+# <a name="download-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure 堆栈工具
 
-# <a name="download-azure-stack-tools-from-github"></a>Download Azure Stack tools from GitHub
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+**AzureStack 工具**是承载 PowerShell 模块，用于管理和将资源部署到 Azure 堆栈的 GitHub 存储库。 如果你打算建立 VPN 连接，你可以下载这些 PowerShell 模块，到 Azure 堆栈开发工具包中，或基于 Windows 的外部客户端。 若要获取这些工具，克隆的 GitHub 存储库或下载**AzureStack 工具**文件夹。 
 
-AzureStack-Tools is a GitHub repository that hosts PowerShell modules that you can use to manage and deploy resources to Azure Stack. You can download and use these PowerShell modules to the Azure Stack Development Kit, or to a windows-based external client if you are planning to establish VPN connectivity. To obtain these tools, clone the GitHub repository or download the AzureStack-Tools folder. 
-
-To clone the repository, download [Git](https://git-scm.com/download/win) for Windows, open a Command Prompt window and run the following script:
+若要克隆存储库，下载[Git for Windows](https://git-scm.com/download/win)，打开命令提示符，并运行以下脚本：
 
 ```PowerShell
-# Change directory to the root directory 
+# Change directory to the root directory. 
 cd \
 
-# clone the repository
+# Clone the repository.
 git clone https://github.com/Azure/AzureStack-Tools.git --recursive
 
-# Change to the tools directory
+# Change to the tools directory.
 cd AzureStack-Tools
 ```
 
-To download the tools folder, run the following script:
+若要下载工具文件夹，请运行以下脚本：
 
 ```PowerShell
-# Change directory to the root directory 
+# Change directory to the root directory. 
 cd \
 
-# Download the tools archive
+# Download the tools archive.
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
 
-# Expand the downloaded files
+# Expand the downloaded files.
 expand-archive master.zip `
   -DestinationPath . `
   -Force
 
-# Change to the tools directory
+# Change to the tools directory.
 cd AzureStack-Tools-master
 
 ```
 
-## <a name="functionalities-provided-by-the-modules"></a>Functionalities provided by the modules
+## <a name="functionality-provided-by-the-modules"></a>模块提供的功能
 
-The AzureStack-Tools repository contains PowerShell modules that support the following functionalities for Azure Stack:  
+**AzureStack 工具**存储库包含 PowerShell 模块，为 Azure 堆栈支持以下功能：  
 
-| Functionality | Description | who can use this module? |
+| 功能 | 说明 | 哪些用户可以使用此模块？ |
 | --- | --- | --- |
-| [Cloud capabilities](user/azure-stack-validate-templates.md) | Use this module to get the cloud capabilities of a cloud. For example, you can get the cloud capabilities such as API version, Azure Resource Manager resources, VM extensions etc. for Azure Stack and Azure clouds using this module. | Cloud operators and users. |
-| [Azure Stack compute administration](azure-stack-add-vm-image.md) | Use this module to add or remove a VM image from the Azure Stack marketplace. | Cloud operators. |
-| [Azure Stack Infrastructure administration](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | Use this module to manage Azure Stack infrastructure VMs, alerts, updates etc. |  Cloud operators.|
-| [Resource Manager policy for Azure Stack](user/azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack. | Cloud operators and users |
-| [Register with Azure](azure-stack-register.md) | Use this module to register your development kit instance with Azure. After registering, you can download the marketplace items from Azure and use them in Azure Stack. | Cloud operators |
-| [Azure Stack deployment](azure-stack-run-powershell-script.md) | Use this module to prepare the Azure Stack host computer to deploy and redeploy by using the Azure Stack Virtual Hard Disk(VHD) image. | Cloud operators. |
-| [Connecting to Azure Stack](azure-stack-connect-powershell.md) | Use this module to connect to an Azure Stack instance through PowerShell and to configure VPN connectivity to Azure Stack. | Cloud operators and users |
-| [Azure Stack service administration](azure-stack-create-offer.md) | Azure Stack administrators can use this module to create a default tenant offer with unlimited quota across Compute, Storage, Network, and Key Vault services.   | Cloud operators.|
-| [Template validator](user/azure-stack-validate-templates.md) | Use this module to verify if an existing or a new template can be deployed to Azure Stack. | Cloud operators and users |
+| [云功能](user/azure-stack-validate-templates.md) | 使用此模块用于获得云的云功能。 例如，通过使用此模块，你可以获取云功能，例如 API 版本和 Azure 资源管理器资源。 通过使用此模块，还可以获取的 VM 扩展 Azure 堆栈和 Azure 云。 | 云操作员和用户 |
+| [Azure 堆栈计算管理](azure-stack-add-vm-image.md) | 此模块用于添加或删除从 Azure 堆栈应用商店 VM 映像。 | 云操作员 |
+| [Azure 堆栈的基础结构管理](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | 使用此模块来管理 Azure 堆栈基础结构 Vm、 警报、 更新和等等。 |  云操作员|
+| [Azure 堆栈的资源管理器策略](user/azure-stack-policy-module.md) | 使用此模块将使用作为 Azure 堆栈的相同的版本控制和服务可用性的 Azure 订阅或 Azure 资源组。 | 云操作员和用户 |
+| [注册 Azure](azure-stack-register.md) | 此模块用于向 Azure 注册你开发工具包实例。 注册之后，你可以从 Azure 下载应用商店项，并在 Azure 堆栈中使用它们。 | 云操作员 |
+| [Azure 堆栈部署](azure-stack-run-powershell-script.md) | 使用此模块准备 Azure 堆栈主计算机来部署和使用 Azure 堆栈虚拟硬盘 (VHD) 映像来重新部署。 | 云操作员|
+| [连接到 Azure 的堆栈](azure-stack-connect-powershell.md) | 若要连接到 Azure 堆栈实例通过 PowerShell 和配置 VPN 连接到 Azure 堆栈，请使用此模块。 | 云操作员和用户 |
+| [Azure 堆栈服务管理](azure-stack-create-offer.md) | 此模块用于跨计算、 Azure 存储空间、 网络和密钥保管库服务使用不受限制的配额创建默认租户服务。   | 云操作员|
+| [模板验证程序](user/azure-stack-validate-templates.md) | 使用此模块可以验证是否的现有或新的模板可部署到 Azure 堆栈。 | 云操作员和用户|
 
 
-## <a name="next-steps"></a>Next steps
-* [Configure the Azure Stack user's PowerShell environment](user/azure-stack-powershell-configure-user.md)   
-* [Connect to Azure Stack Development Kit over a VPN](azure-stack-connect-azure-stack.md)  
-
+## <a name="next-steps"></a>后续步骤
+* [配置 Azure 堆栈用户 PowerShell 环境](user/azure-stack-powershell-configure-user.md)   
+* [通过 VPN 连接到 Azure 的堆栈开发工具包](azure-stack-connect-azure-stack.md)  

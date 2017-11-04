@@ -1,6 +1,6 @@
 ---
-title: Make virtual machines available to your Azure Stack users| Microsoft Docs
-description: Tutorial to make virtual machines available on Azure Stack
+title: "让 Azure 堆栈用户能够使用虚拟机 |Microsoft 文档"
+description: "若要使虚拟机在 Azure 堆栈上可用的教程"
 services: azure-stack
 documentationcenter: 
 author: vhorne
@@ -12,151 +12,152 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 9/25/2017
+ms.date: 10/23/2017
 ms.author: victorh
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: afeec92c40262903e6cfd3c6d75a595fead616e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: f6fce4a3230c98295afb19e633bf2801c115831f
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-# <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Make virtual machines available to your Azure Stack users
+# <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>让 Azure 堆栈用户能够使用虚拟机
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-As an Azure Stack cloud administrator, you can create offers that your users (sometimes referred to as tenants) can subscribe to. Using their subscription, users can then consume Azure Stack services.
+作为 Azure 堆栈云管理员，你可以创建你的用户 （有时称为租户） 可以订阅的产品/服务。 使用其订阅，用户便可以使用 Azure 堆栈服务。
 
-This article shows you how to create an offer, and then test it. For the test, you will log in to the portal as a user, subscribe to the offer, and then create a virtual machine using the subscription.
+这篇文章演示了如何创建优惠后，，然后测试它。 为了使测试，你将在登录到门户的用户，订阅产品，，然后创建使用订阅的虚拟机。
 
-What you will learn:
+你将学习：
 
 > [!div class="checklist"]
-> * Create an offer
-> * Add an image
-> * Test the offer
+> * 创建产品
+> * 添加图像
+> * 测试产品/服务
 
 
-In Azure Stack, services are delivered to users using subscriptions, offers, and plans. Users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services.
+Azure 堆栈中传递给使用订阅、 服务和计划的用户的服务。 用户可以订阅多个产品/服务。 产品可以包含一个或多个计划，计划可以包含一个或多个服务。
 
-![Subscriptions, offers, and plans](media/azure-stack-key-features/image4.png)
+![订阅、 服务和计划](media/azure-stack-key-features/image4.png)
 
-To learn more, see [Key features and concepts in Azure Stack](azure-stack-key-features.md).
+若要了解详细信息，请参阅[主要功能和 Azure 堆栈中的概念](azure-stack-key-features.md)。
 
-## <a name="create-an-offer"></a>Create an offer
+## <a name="create-an-offer"></a>创建产品
 
-Now you can get things ready for your users. When you start the process, you are first prompted to create the offer, then a plan, and finally quotas.
+现在，你可以收到操作准备好你的用户。 当你启动该过程时，你首先系统提示创建产品/服务，则某一计划、 和最后的配额。
 
-3. **Create an offer**
+3. **创建产品/服务**
 
-   Offers are groups of one or more plans that providers present to users to purchase or subscribe to.
+   提供是组的一个或多个提供程序显示给用户购买或订阅的计划。
 
-   a. [Sign in](azure-stack-connect-azure-stack.md) to the portal as a cloud administrator and then click **New** > **Tenant Offers + Plans** > **Offer**.
-   ![New offer](media/azure-stack-tutorial-tenant-vm/image01.png)
+   a. [登录](azure-stack-connect-azure-stack.md)到与云管理员联系，然后单击门户**新建** > **提供 + 计划** > **提供**。
+   ![新提议](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-   b. In the **New Offer** section, fill in **Display Name** and **Resource Name**, and then select a new or existing **Resource Group**. The Display Name is the offer's friendly name. Only the cloud operator can see the Resource Name. It's the name that admins use to work with the offer as an Azure Resource Manager resource.
+   b. 在**新提供**部分中，填写**显示名称**和**资源名称**，然后选择一个新的或现有**资源组**。 显示名称是产品/服务的友好名称。 仅云操作员可以查看资源名称。 它是管理员使用，以便为 Azure 资源管理器资源提供的名称。
 
-   ![Display name](media/azure-stack-tutorial-tenant-vm/image02.png)
+   ![显示名称](media/azure-stack-tutorial-tenant-vm/image02.png)
 
-   c. Click **Base plans**, and in the **Plan** section, click **Add** to add a new plan to the offer.
+   c. 单击**基本计划**，然后在**计划**部分中，单击**添加**到产品/服务中添加新的计划。
 
-   ![Add a plan](media/azure-stack-tutorial-tenant-vm/image03.png)
+   ![添加计划](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-   d. In the **New Plan** section, fill in **Display Name** and **Resource Name**. The Display Name is the plan's friendly name that users see. Only the cloud operator can see the Resource Name. It's the name that cloud operators use to work with the plan as an Azure Resource Manager resource.
+   d.单击“下一步”。 在**新的计划**部分中，填写**显示名称**和**资源名称**。 显示名称是用户看到的计划的友好名称。 仅云操作员可以查看资源名称。 它是云操作员用于在使用 Azure 资源管理器资源作为计划的名称。
 
-   ![Plan display name](media/azure-stack-tutorial-tenant-vm/image04.png)
+   ![计划的显示名称](media/azure-stack-tutorial-tenant-vm/image04.png)
 
-   e. Click **Services**, select **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**, and then click **Select**.
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击**服务**，选择**Microsoft.Compute**， **Microsoft.Network**，和**Microsoft.Storage**，然后单击**选择**。
 
-   ![Plan services](media/azure-stack-tutorial-tenant-vm/image05.png)
+   ![计划服务](media/azure-stack-tutorial-tenant-vm/image05.png)
 
-   f. Click **Quotas**, and then select the first service for which you want to create a quota. For an IaaS quota, follow these steps for the Compute, Network, and Storage services.
+   f. 单击**配额**，然后选择你想要创建的配额的第一个服务。 对于 IaaS 配额，请按照这些步骤的计算、 网络和存储服务。
 
-   In this example, we first create a quota for the Compute service. In the namespace list, select the **Microsoft.Compute** namespace and then click **Create new quota**.
+   在此示例中，我们首先要创建计算服务的配额。 在命名空间列表中，选择**Microsoft.Compute**命名空间，然后单击**创建新配额**。
    
-   ![Create new quota](media/azure-stack-tutorial-tenant-vm/image06.png)
+   ![创建新的配额](media/azure-stack-tutorial-tenant-vm/image06.png)
 
-   g. On the **Create quota** section, type a name for the quota and set the desired parameters for the quota and click **OK**.
+   g. 上**创建配额**节中，键入配额的名称和设置配额然后单击所需的参数**确定**。
 
-   ![Quota name](media/azure-stack-tutorial-tenant-vm/image07.png)
+   ![配额名称](media/azure-stack-tutorial-tenant-vm/image07.png)
 
-   h. Now, for **Microsoft.Compute**, select the quota that you created.
+   h. 现在，要使**Microsoft.Compute**，选择你创建的配额。
 
-   ![Select quota](media/azure-stack-tutorial-tenant-vm/image08.png)
+   ![选择配额](media/azure-stack-tutorial-tenant-vm/image08.png)
 
-   Repeat these steps for the Network and Storage services, and then click **OK** on the **Quotas** section.
+   对于网络和存储服务，请重复上述步骤，然后单击**确定**上**配额**部分。
 
-   i. Click **OK** on the **New plan** section.
+   i. 单击**确定**上**新计划**部分。
 
-   j. On the **Plan** section, select the new plan and click **Select**.
+   j. 上**计划**部分，选择新的计划并单击**选择**。
 
-   k. On the **New offer** section, click **Create**. You see a notification when the offer has been created.
+   k. 上**新提议**部分中，单击**创建**。 创建提议后，你会看到一个通知。
 
-   l. On the dashboard menu, click **Offers** and then click the offer you created.
+   l. 在仪表板菜单上，单击**提供**，然后单击你创建的提议。
 
-   m. Click **Change State**, and then click **Public**.
+   m. 单击**更改状态**，然后单击**公共**。
 
-   ![Public state](media/azure-stack-tutorial-tenant-vm/image09.png)
+   ![公共状态](media/azure-stack-tutorial-tenant-vm/image09.png)
 
-## <a name="add-an-image"></a>Add an image
+## <a name="add-an-image"></a>添加图像
 
-Before you can provision virtual machines, you must add an image to the Azure Stack marketplace. You can add the image of your choice, including Linux images, from the Azure Marketplace.
+你可以设置虚拟机之前，你必须将映像添加到 Azure 堆栈应用商店。 您可以添加您的选择，包括 Linux 映像，从 Azure 应用商店的映像。
 
-If you are operating in a connected scenario and if you have registered your Azure Stack instance with Azure, then you can download the Windows Server 2016 VM image from the Azure Marketplace by using the steps described in the [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) topic.
+如果你正在连接方案中工作，并且如果你向 Azure 注册你的 Azure 堆栈实例，然后你可以下载 Windows Server 2016 VM 映像从 Azure 应用商店使用中所述的步骤[下载应用商店从 Azure 到 Azure 堆栈的项](azure-stack-download-azure-marketplace-item.md)主题。
 
-For information about adding different items to the marketplace, see [The Azure Stack Marketplace](azure-stack-marketplace.md).
+有关将不同的项添加到应用商店的信息，请参阅[Azure 堆栈应用商店](azure-stack-marketplace.md)。
 
-## <a name="test-the-offer"></a>Test the offer
+## <a name="test-the-offer"></a>测试产品/服务
 
-Now that you’ve created an offer, you can test it. Log in as a user and subscribe to the offer and then add a virtual machine.
+现在，你已创建某项服务，你可以对其进行测试。 以用户身份登录并订阅产品并将虚拟机。
 
-1. **Subscribe to an offer**
+1. **订阅产品/服务**
 
-   Now you can log in to the portal as a user to subscribe to an offer.
+   现在你可以登录到门户以用户订阅产品。
 
-   a. Log in to the user portal as a user and click **Get a Subscription**.
-   - For an integrated system, the URL varies based on your operator’s region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-   - If you’re using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
+   a. 某个用户，然后单击以登录到用户门户**获取订阅**。
+   - 对于集成系统，URL 将取决于运算符的区域和外部的域名，并将采用格式 https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
+   - 如果你使用 Azure 堆栈开发工具包，该门户的地址是 https://portal.local.azurestack.external。
 
-   ![Get a subscription](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![获取订阅](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
-   b. In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** section, and then click **Create**.
+   b. 在**显示名称**字段中，键入你的订阅的名称，单击**提供**，单击一个产品/服务**选择提议**部分，并依次**创建**。
 
-   ![Create an offer](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![创建产品](media/azure-stack-subscribe-plan-provision-vm/image02.png)
 
-   c. To view the subscription you created, click **More services**, click **Subscriptions**, then click your new subscription.  
+   c. 若要查看你创建的订阅，请单击**更多的服务**，单击**订阅**，然后单击你的新订阅。  
 
-   After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
+   在订阅产品/服务后，刷新门户后，若要确定哪些服务正在新订阅的一部分。
 
-2. **Provision a virtual machine**
+2. **预配虚拟机**
 
-   Now you can log in to the portal as a user to provision a virtual machine using the subscription. 
+   现在你可以登录到门户设置虚拟机使用订阅的用户。 
 
-   a. Log in to the user portal as a user, and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval**.
-      - For an integrated system, the URL varies based on your operator’s region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-   - If you’re using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
+   a. 以用户身份登录到用户门户。
+      - 对于集成系统，URL 将取决于运算符的区域和外部的域名，并将采用格式 https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
+   - 如果你使用 Azure 堆栈开发工具包，该门户的地址是 https://portal.local.azurestack.external。
 
-   b. In the **Basics** section, type a **Name**, **User name**, and **Password**. For **VM disk type**, choose **HDD**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, and then click **OK**.  
+   b.  在仪表板中，单击**新建** > **计算** > **Windows Server 2016 数据中心 Eval**，然后单击**创建**.
 
-   c. In the **Choose a size** section, click **A1 Basic**, and then click **Select**.  
+   c. 在**基础知识**部分中，键入**名称**，**用户名**，和**密码**，选择**订阅**，创建**资源组**（或选择一个现有），然后单击**确定**。
 
-   d. In the **Settings** section, click **Virtual network**. In the **Choose virtual network** section, click **Create new**. In the **Create virtual network** section, accept all the defaults, and click **OK**. In the **Settings** section, click **OK**.
+   d.单击“下一步”。 在**选择大小**部分中，单击**A1 标准**，然后单击**选择**。  
 
-   ![Create virtual network](media/azure-stack-provision-vm/image04.png)
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在**设置**部分中，单击**虚拟网络**。 在**选择虚拟网络**部分中，单击**新建**。 在**创建虚拟网络**部分，接受所有默认值，然后单击**确定**。 在**设置**部分中，单击**确定**。
 
-   e. In the **Summary** section, click **OK** to create the virtual machine.  
+   ![创建虚拟网络](media/azure-stack-provision-vm/image04.png)
 
-   f. To see your new virtual machine, click **All resources**, then search for the virtual machine and click its name.
+   f. 在**摘要**部分中，单击**确定**创建虚拟机。  
 
-    ![All resources](media/azure-stack-provision-vm/image06.png)
+   g. 若要查看新的虚拟机，单击**的所有资源**，然后搜索虚拟机并单击其名称。
 
-What you learned in this tutorial:
+    ![所有资源](media/azure-stack-provision-vm/image06.png)
+
+什么您学习了在本教程中：
 
 > [!div class="checklist"]
-> * Create an offer
-> * Add an image
-> * Test the offer
+> * 创建产品
+> * 添加图像
+> * 测试产品/服务
 
 > [!div class="nextstepaction"]
-> [Make web, mobile, and API apps available to your Azure Stack users](azure-stack-tutorial-app-service.md)
+> [向 Azure 堆栈用户提供 web、 移动和 API 应用](azure-stack-tutorial-app-service.md)

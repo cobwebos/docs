@@ -1,6 +1,6 @@
 ---
-title: Understanding DNS in Azure Stack | Microsoft Docs
-description: Understanding DNS features and capabilities in Azure Stack
+title: "了解 Azure 堆栈中的 DNS |Microsoft 文档"
+description: "了解 DNS 功能和 Azure 堆栈中的功能"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,45 +14,43 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8c023eda179ace41a082bf4a4fadc281c14db7ba
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introducing-idns-for-azure-stack"></a>Introducing iDNS for Azure Stack
+# <a name="introducing-idns-for-azure-stack"></a>为 Azure 堆栈引入 Idn
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-iDNS is a feature in Azure Stack that allows you to resolve external DNS names (such as http://www.bing.com).
-It also allows you to register internal virtual network names. By doing so, you can resolve VMs on the same virtual network by name rather than IP address, without having to provide custom DNS server entries.
+Idn 是一项功能，可用于解析外部 DNS 名称 （如 http://www.bing.com) Azure 堆栈中。
+它还允许你注册内部虚拟网络名称。 通过这样做，即可解决 Vm 在同一虚拟网络上的名称，而不是 IP 地址，而无需提供自定义 DNS 服务器条目。
 
-It’s something that’s always been there in Azure, but it's available in Windows Server 2016 and Azure Stack too.
+它是指一直都有在 Azure 中，但是位于 Windows Server 2016 和 Azure 堆栈过。
 
-## <a name="what-does-idns-do"></a>What does iDNS do?
-With iDNS in Azure Stack, you get the following capabilities, without having to specify custom DNS server entries.
+## <a name="what-does-idns-do"></a>Idn 的作用是什么？
+使用 Idn Azure 堆栈中，而无需指定自定义 DNS 服务器条目获取的以下功能。
 
-* Shared DNS name resolution services for tenant workloads.
-* Authoritative DNS service for name resolution and DNS registration within the tenant virtual network.
-* Recursive DNS service for resolution of Internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve Internet names (for example, www.bing.com).
+* 共享租户工作负载的 DNS 名称解析服务。
+* 名称解析和 DNS 注册租户虚拟网络内的权威 DNS 服务。
+* 从租户 Vm Internet 名称解析的递归 DNS 服务。 租户不再需要指定自定义 DNS 条目以解决 Internet 名称 (例如，www.bing.com)。
 
-You can still bring your own DNS and use custom DNS servers if you want. But now, if you just want to be able to resolve Internet DNS names and be able to connect to other virtual machines in the same virtual network, you don’t need to specify anything and it will just work.
+你仍可以将你自己的 DNS 和如果你想使用自定义 DNS 服务器。 但现在，如果您只想要能够解析 Internet DNS 名称，并且能够连接到同一虚拟网络中的其他虚拟机，无需指定任何其他选项，它还会正常工作。
 
-## <a name="what-does-idns-not-do"></a>What does iDNS not do?
-What iDNS does not allow you to do is create a DNS record for a name that can be resolved from outside the virtual network.
+## <a name="what-does-idns-not-do"></a>Idn 不做什么？
+哪些 Idn 不允许你执行是创建名称，它们可以是从虚拟网络外部解析的 DNS 记录。
 
-In Azure, you have the option of specifying a DNS name label that can be associated with a public IP address. You can choose the label (prefix), but Azure chooses the suffix, which is based on the region in which you create the public IP address.
+在 Azure 中，你可以指定可以与公共 IP 地址相关联的 DNS 名称标签的选择。 你可以选择的标签 （前缀），但 Azure 选择的后缀，基于在其中创建公共 IP 地址的区域。
 
-![Screenshot of DNS name label](media/azure-stack-understanding-dns-in-tp2/image3.png)
+![屏幕快照的 DNS 名称标签](media/azure-stack-understanding-dns-in-tp2/image3.png)
 
-In the image above, Azure will create an “A” record in DNS for the DNS name label specified under the zone **westus.cloudapp.azure.com**. The prefix and the suffix together compose a Fully Qualified Domain Name (FQDN) that can be resolved from anywhere on the public Internet.
+在上图中，Azure 将创建的"A"记录在 DNS 中在该区域下指定的 DNS 名称标签**westus.cloudapp.azure.com**。前缀和后缀一起构成完全限定域名名称 (FQDN)，可以从任意位置在上解析公共 Internet。
 
-Azure Stack only supports iDNS for internal name registration, so it cannot do the following.
+Azure 堆栈仅支持 Idn 的内部名称注册，因此它不能。
 
-* Create a DNS record under an existing hosted DNS zone (for example, local.azurestack.external).
-* Create a DNS zone (such as Contoso.com).
-* Create a record under your own custom DNS zone.
-* Support the purchase of domain names.
-
+* 创建现有托管 DNS 区域 (例如，local.azurestack.external) 下的 DNS 记录。
+* 创建 DNS 区域 （例如 Contoso.com)。
+* 创建你自己的自定义 DNS 区域下一个记录。
+* 支持域名的购买。
 

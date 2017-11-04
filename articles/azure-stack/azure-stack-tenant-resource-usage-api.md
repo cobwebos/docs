@@ -1,6 +1,6 @@
 ---
-title: Tenant Resource Usage API | Microsoft Docs
-description: Reference for resource usage API, which retrieve Azure Stack usage information.
+title: "租户资源使用情况 API |Microsoft 文档"
+description: "针对资源使用情况 API 的引用，即在检索 Azure 堆栈使用情况信息。"
 services: azure-stack
 documentationcenter: 
 author: AlfredoPizzirani
@@ -14,39 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2016
 ms.author: alfredop
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f2eaf1c766d6c86741cf0fd561c131eacb34d782
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="tenant-resource-usage-api"></a>Tenant Resource Usage API
-A tenant can use the Tenant API to view the tenant’s own resource usage data. This API is consistent with the Azure Usage API (currently in private preview).
+# <a name="tenant-resource-usage-api"></a>租户资源使用情况 API
+租户可用于租户 API 查看租户的资源使用情况数据。 此 API 已与 Azure 使用情况 API 保持一致 （目前处于特邀预览阶段）。
 
-You can use the Windows PowerShell cmdlet **Get-UsageAggregates** to get usage data like in Azure.
+可以使用 Windows PowerShell cmdlet **Get UsageAggregates**若要在 Azure 中获取类似的使用情况数据。
 
-## <a name="api-call"></a>API call
-### <a name="request"></a>Request
-The request gets consumption details for the requested subscriptions and for the requested time frame. There is no request body.
+## <a name="api-call"></a>API 调用
+### <a name="request"></a>请求
+请求获取消耗详细信息的请求订阅和请求的时间范围。 没有任何请求正文。
 
-| **Method** | **Request URI** |
+| **方法** | **请求 URI** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/usageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&api-version=2015-06-01-preview&continuationToken={token-value} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/usageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&api-version=2015-06-01-预览版 （& a) continuationToken = {令牌 value} |
 
-### <a name="arguments"></a>Arguments
-| **Argument** | **Description** |
+### <a name="arguments"></a>参数
+| **自变量** | **说明** |
 | --- | --- |
-| *Armendpoint* |Azure Resource Manager endpoint of your Azure Stack environment. The Azure Stack convention is that the name of Azure Resource Manager endpoint is in the format `https://management.{domain-name}`. For example, for the development kit, the domain name is local.azurestack.external, then the Resource Manager  endpoint is `https://management.local.azurestack.external`. |
-| *subId* |Subscription ID of the user who is making the call. You can use this API only to query for a single subscription’s usage. Providers can use the Provider Resource Usage API to query usage for all tenants. |
-| *reportedStartTime* |Start time of the query. The value for *DateTime* should be in UTC and at the beginning of the hour, for example, 13:00. For daily aggregation, set this value to UTC midnight. The format is *escaped* ISO 8601, for example, 2015-06-16T18%3a53%3a11%2b00%3a00Z, where colon is escaped to %3a and plus is escaped to %2b so that it is URI friendly. |
-| *reportedEndTime* |End time of the query. The constraints that apply to *reportedStartTime* also apply to this argument. The value for *reportedEndTime* cannot be in the future. |
-| *aggregationGranularity* |Optional parameter that has two discrete potential values: daily and hourly. As the values suggest, one returns the data in daily granularity, and the other is an hourly resolution. The daily option is the default. |
-| *api-version* |Version of the protocol that is used to make this request. You must use 2015-06-01-preview. |
-| *continuationToken* |Token retrieved from the last call to the Usage API provider. This token is needed when a response is greater than 1,000 lines and it acts as a bookmark for progress. If not present, the data is retrieved from the beginning of the day or hour, based on the granularity passed in. |
+| *Armendpoint* |Azure 堆栈环境的 azure 资源管理器终结点。 Azure 堆栈约定是 Azure 资源管理器终结点的名称采用以下格式`https://management.{domain-name}`。 例如，对于开发工具包中，域名称是 local.azurestack.external，则资源管理器终结点是`https://management.local.azurestack.external`。 |
+| *subId* |进行调用的用户的订阅 ID。 仅对查询此 API 可用于单个订阅的使用情况。 提供程序可用于所有租户提供程序资源使用情况 API 对查询使用情况。 |
+| *reportedStartTime* |查询的开始时间。 值*DateTime*应在 UTC 并且小时，例如，13:00 的开头。 为每日聚合，将此值设置为 UTC 午夜。 格式是*转义*ISO 8601，例如，2015年-06-16t18%3a53%3a11%2b00 %3a00z，其中将冒号转义为 %3a 和加上转义为 %2b，以便它适合 URI。 |
+| *reportedEndTime* |查询的结束时间。 将应用于的约束*reportedStartTime*也适用于此自变量。 值*reportedEndTime*不能为将来。 |
+| *aggregationGranularity* |有两个离散潜在值的可选参数： 每天和每小时。 建议值，一个在日粒度返回的数据，另一个是每小时解析度。 默认值为每天选项。 |
+| *api 版本* |用于发出此请求的协议的版本。 你必须使用 2015年-06-01-预览版。 |
+| *continuationToken* |从使用情况 API 提供程序的最后一个调用中检索令牌。 当响应是大于 1,000 行，它充当进度的书签，才需要此令牌。 如果不存在，请从在一天开始检索的数据或小时，基于粒度传入。 |
 
-### <a name="response"></a>Response
-GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&api-version=1.0
+### <a name="response"></a>响应
+获取 /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 和 reportedEndTime = 2015年-06-01t00%3a00%3a00%2b00 %3a00 aggregationGranularity = 每日（& a) 的 api-version = 1.0
 
 ```json
 {
@@ -72,22 +71,21 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 …
 ```
 
-### <a name="response-details"></a>Response details
-| **Argument** | **Description** |
+### <a name="response-details"></a>响应详细信息
+| **自变量** | **说明** |
 | --- | --- |
-| *id* |Unique ID of the usage aggregate |
-| *name* |Name of the usage aggregate |
-| *type* |Resource definition |
-| *subscriptionId* |Subscription identifier of the Azure user |
-| *usageStartTime* |UTC start time of the usage bucket to which this usage aggregate belongs |
-| *usageEndTime* |UTC end time of the usage bucket to which this usage aggregate belongs |
-| *instanceData* |Key-value pairs of instance details (in a new format):<br>  *resourceUri*: Fully qualified resource ID, including resource groups and instance name <br>  *location*: Region in which this service was run <br>  *tags*: Resource tags that the user specifies <br>  *additionalInfo*: More details about the resource that was consumed, for example, OS version or image type |
-| *quantity* |Amount of resource consumption that occurred in this time frame |
-| *meterId* |Unique ID for the resource that was consumed (also called *ResourceID*) |
+| *id* |使用聚合的唯一 ID |
+| *name* |使用聚合的名称 |
+| *类型* |资源定义 |
+| *subscriptionId* |Azure 用户的订阅标识符 |
+| *usageStartTime* |Utc 格式的开始时间为此使用聚合所属的使用情况存储桶 |
+| *usageEndTime* |为此使用聚合所属的使用情况存储桶的 UTC 结束时间 |
+| *instanceData* |实例 （采用新格式） 的详细信息的键 / 值对：<br>  *resourceUri*： 完全限定的资源 ID，包括资源组和实例名称 <br>  *位置*： 在其中运行此服务的区域 <br>  *标记*： 用户指定的资源标记 <br>  *additionalInfo*： 更详细说明了有关已使用，例如，资源 OS 版本或图像类型 |
+| *数量* |这段时间内发生的资源消耗的量 |
+| *meterId* |已耗用的资源的唯一 ID (也称为*ResourceID*) |
 
-## <a name="next-steps"></a>Next steps
-[Provider resource usage API](azure-stack-provider-resource-api.md)
+## <a name="next-steps"></a>后续步骤
+[提供程序资源使用情况 API](azure-stack-provider-resource-api.md)
 
-[Usage-related FAQ](azure-stack-usage-related-faq.md)
-
+[使用情况相关的常见问题](azure-stack-usage-related-faq.md)
 

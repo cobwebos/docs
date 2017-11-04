@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Quick Start - Create a Windows virtual machine
-description: Azure Stack Quick Start - Create a Windows VM using the portal
+title: "Azure 堆栈快速启动-创建 Windows 虚拟机"
+description: "Azure 堆栈快速启动-创建 Windows VM 使用门户"
 services: azure-stack
 author: ErikjeMS
 manager: byronr
@@ -9,45 +9,42 @@ ms.topic: azure-stack
 ms.date: 09/15/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 2c9aba69d8f1999f7086bd2bcd44d1c1472abec7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: abca538f28bbc0a8f3f00311ca1a69d196f10272
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="create-a-windows-virtual-machine-with-the-azure-stack-portal"></a>使用 Azure 堆栈门户创建 Windows 虚拟机
 
-# <a name="create-a-windows-virtual-machine-with-the-azure-stack-portal"></a>Create a Windows virtual machine with the Azure Stack portal
+你可以通过 Azure 堆栈门户来创建 Windows 虚拟机。 该门户是一个基于浏览器的用户界面可以在其中创建、 配置和管理资源。
 
-You can create a Windows virtual machine by using the Azure Stack portal. The portal is a browser-based user interface where you can create, configure, and manage resources.
+## <a name="sign-in-to-the-azure-stack-portal"></a>登录到 Azure 堆栈门户
 
-## <a name="sign-in-to-the-azure-stack-portal"></a>Sign in to the Azure Stack portal
+登录到 Azure 堆栈门户。 Azure 堆栈门户的地址取决于您连接到哪种 Azure 堆栈产品：
 
-Sign in to the Azure Stack portal. The address of the Azure Stack portal depends on which Azure Stack product you are connecting to:
+* 有关 Azure 堆栈开发工具包 (ASDK) 转到： https://portal.local.azurestack.external。
+* 对于 Azure 堆栈集成系统，转至 Azure 堆栈运算符提供的 URL。
 
-* For the Azure Stack Development Kit (ASDK) go to: https://portal.local.azurestack.external.
-* For an Azure Stack integrated system, go to the URL that your Azure Stack operator provided.
+## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
-
-1. Click **New** > **Compute** > **Windows Server 2016 Datacenter Eval** > **Create**. If you don't see **Windows Server 2016 Datacenter Eval** entry, contact your Azure Stack operator. Ask that they add it to the marketplace as explained in the [Add the Windows Server 2016 VM image to the Azure Stack marketplace](../azure-stack-add-default-image.md) article. 
+1. 单击**新** > **计算** > **评估版的 Windows Server 2016 数据中心** > **创建**。 如果看不到**Windows Server 2016 数据中心 Eval**条目，请与你的 Azure 堆栈运算符。 要求，它们将其添加到应用商店中所述[将 Windows Server 2016 VM 映像添加到 Azure 堆栈 marketplace](../azure-stack-add-default-image.md)文章。 
     ![](media/azure-stack-quick-windows-portal/image01.png)
-2. Under **Basics**, type a **Name**, **User name**, and **Password**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, select a **Location**, and then click **OK**.
+2. 下**基础知识**，键入一个**名称**，**用户名**，和**密码**。 选择**订阅**。 创建**资源组**，或选择现有的一个，选择**位置**，然后单击**确定**。
 
     ![](media/azure-stack-quick-windows-portal/image02.png)
-3. Under **Choose a size**, click **A1 Standard** > **Select**.
+3. 下**选择大小**，单击**D1 标准** > **选择**。
     ![](media/azure-stack-quick-windows-portal/image03.png)
-4. Under **Settings**, accept the defaults and click **OK**.
+4. 下**设置**，接受默认设置，然后单击**确定**。
     ![](media/azure-stack-quick-windows-portal/image04.png)
-5. Under **Summary**, click **OK** to create the virtual machine. 
+5. 下**摘要**，单击**确定**创建虚拟机。 
     ![](media/azure-stack-quick-windows-portal/image05.png)
-6. To see your new virtual machine, click **All resources**, then search for the virtual machine and click its name.
+6. 若要查看新的虚拟机，单击**的所有资源**，然后搜索虚拟机并单击其名称。
     ![](media/azure-stack-quick-windows-portal/image06.png)
 
-## <a name="clean-up-resources"></a>Clean up resources
+## <a name="clean-up-resources"></a>清理资源
 
-When you no longer need the virtual machine, delete the resource group, virtual machine, and all related resources. To do so, select the resource group from the virtual machine page and click **Delete**.
+当您不再需要虚拟机时，删除资源组、 虚拟机和所有相关的资源。 为此，请从虚拟机页上选择资源组，然后单击**删除**。
 
-## <a name="next-steps"></a>Next steps
-In this quick start, you’ve deployed a simple Windows virtual machine. To learn more about Azure Stack virtual machines, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
-
+## <a name="next-steps"></a>后续步骤
+在此快速入门中，你已部署简单的 Windows 虚拟机。 若要了解有关 Azure 堆栈的虚拟机的详细信息，继续到[Azure 堆栈中的虚拟机的注意事项](azure-stack-vm-considerations.md)。

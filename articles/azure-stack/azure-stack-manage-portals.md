@@ -1,6 +1,6 @@
 ---
-title: Using the administrator portal in Azure Stack | Microsoft Docs
-description: As an Azure Stack operator, learn how to use the administrator portal.
+title: "使用 Azure 堆栈中的管理员门户 |Microsoft 文档"
+description: "作为 Azure 堆栈操作员，了解如何使用管理员门户。"
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -14,73 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3a1be7a08fab8ad0253f26e6a0683617bff4b7c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-the-administrator-portal-in-azure-stack"></a>Using the administrator portal in Azure Stack
+# <a name="using-the-administrator-portal-in-azure-stack"></a>在 Azure 堆栈中使用管理员门户
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-There are two portals in Azure Stack; the administrator portal and the user portal (sometimes referred to as the *tenant* portal). As an Azure Stack operator, you can use the administrator portal for day-to-day management and operations of Azure Stack. 
+Azure 堆栈; 中有两个门户管理员门户和用户门户 (有时称为*租户*门户)。 作为 Azure 堆栈操作员，可以使用管理员门户，用于日常管理和 Azure 堆栈的操作。 
 
-## <a name="access-the-administrator-portal"></a>Access the administrator portal
+## <a name="access-the-administrator-portal"></a>访问管理员门户
 
-For a development kit environment, you need to first make sure that you can [connect to the development kit host](azure-stack-connect-azure-stack.md) through Remote Desktop Connection or through a virtual private network (VPN).
+对于开发工具包环境中，你需要首先确保你可以[连接到开发工具包主机](azure-stack-connect-azure-stack.md)通过远程桌面连接或通过虚拟专用网络 (VPN)。
 
-To access the administrator portal, browse to the portal URL and sign in by using the credentials of an Azure Stack operator. For an integrated system, the portal URL varies based on the region name and external fully qualified domain name (FQDN) of your Azure Stack deployment.
+若要访问管理员门户中，浏览到门户的 URL 并通过使用 Azure 堆栈运算符的凭据登录。 对于集成系统，URL 而异的门户基于区域名称和外部完全限定的域名 (FQDN) 的 Azure 堆栈部署。
 
-| Environment | Administrator Portal URL |   
+| 环境 | 管理员门户 URL |   
 | -- | -- | 
-| Development kit| https://adminportal.local.azurestack.external  |
-| Integrated systems | https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt; | 
+| 开发工具包| https://adminportal.local.azurestack.external  |
+| 集成系统 | https://adminportal。&lt;*区域*&gt;。&lt;*FQDN*&gt; | 
 | | |
 
- ![The administrator portal](media/azure-stack-manage-portals/image1.png)
+ ![管理员门户](media/azure-stack-manage-portals/image1.png)
 
-In the administrator portal, you can do things such as:
+在管理员门户中，你可以执行以下事项：
 
-* manage the infrastructure (including system health, updates, capacity, etc.)
-* populate the marketplace
-* create plans and offers
-* create subscriptions for users
+* 管理基础结构 （包括系统运行状况、 更新、 容量、 等）。
+* 填充应用商店
+* 创建计划和提供
+* 为用户创建订阅
 
-In the **Quickstart tutorial** tile, there are links to online documentation for the most common tasks.
+在**快速入门教程**磁贴中，有链接指向联机文档的最常见的任务。
  
-Although there is the ability for an operator to create resources such as virtual machines, virtual networks, and storage accounts in the administrator portal, you should [sign in to the user portal](user/azure-stack-use-portal.md) to create and test resources. (The **Create a virtual machine** link in the quickstart tutorial tile has you create a virtual machine in the administrator portal, but this procedure is only to validate Azure Stack after initial deployment.)
+尽管没有一个运算符，以在管理员门户中创建虚拟机、 虚拟网络和存储帐户等资源的能力，但你应[登录到用户门户](user/azure-stack-use-portal.md)来创建和测试资源。 (**创建虚拟机**快速入门教程磁贴中的链接具有你在管理员门户中，创建虚拟机，但此过程是仅在初始部署之后验证 Azure 堆栈。)
 
-## <a name="subscription-behavior"></a>Subscription behavior
+## <a name="subscription-behavior"></a>订阅行为
  
-There is only one subscription that is available in the administrator portal. This subscription is the *Default Provider Subscription*. You can't add any other subscriptions for use in the administrator portal.
+没有管理员门户中提供的只有一个订阅。 此订阅是*默认提供程序订阅*。 无法在管理员门户来添加任何其他订阅使用。
 
-As an Azure Stack operator, you can add subscriptions for your users (including yourself) from the administrator portal. Users (including yourself) can access and use these subscriptions from the user portal. The user portal does not provide access to any of the administrative or operational capabilities of the administrator portal.
+作为 Azure 堆栈操作员，你可以将订阅添加用户 （包括您自己） 在管理员门户中。 （包括您自己） 的用户可以访问，并使用这些订阅从用户门户。 用户门户不提供对任何管理员门户的管理或操作功能的访问。
 
-The administrator and user portals are backed by separate instances of Azure Resource Manager. Because of the Resource Manager separation, subscriptions do not cross portals. For example, if you as an Azure Stack operator signs in to the user portal, you can't access the Default Provider Subscription. Therefore, you don't have access to any administrative functions. You can create subscriptions for yourself from public offers, but you are considered a tenant user.
+由单独的实例的 Azure 资源管理器中支持的管理员和用户门户。 由于资源管理器分离，订阅不能跨越门户。 例如，如果你为 Azure 堆栈运算符登录到用户门户时，你无法访问默认提供程序订阅。 因此，你无权访问任何管理功能。 你可以从公共优惠，创建自己的订阅，但被视为租户用户。
 
   >[!NOTE]
-  In the development kit environment, if a user belongs to the same tenant directory as the Azure Stack operator, they are not blocked from signing in to the administrator portal. However, they can't access any of the administrative functions. Also, from the administrator portal, they can't add subscriptions or access offers that are made available to them in the user portal.
+  在开发工具包环境中，如果用户属于相同的租户目录与 Azure 堆栈运算符，它们将不阻止在登录到管理员门户。 但是，他们无法访问任何管理功能。 此外，在管理员门户中，它们不能添加订阅或访问提供程序都提供给它们在用户门户中。
 
-## <a name="administrator-portal-tips"></a>Administrator portal tips
+## <a name="administrator-portal-tips"></a>管理员门户提示
 
-### <a name="customize-the-dashboard"></a>Customize the dashboard
+### <a name="customize-the-dashboard"></a>自定义仪表板
 
-The dashboard contains a set of default tiles. You can click **Edit dashboard** to modify the default dashboard, or click **New dashboard** to add custom dashboards. You can easily add tiles to the dashboard. For example, you can click **New**, right-click **Offers + Plans**, and then click **Pin to dashboard**.
+仪表板包含一组默认磁贴。 你可以单击**编辑仪表板**修改默认的仪表板，或单击**新仪表板**添加自定义仪表板。 你可以轻松添加到仪表板的磁贴。 例如，你可以单击**新建**，右键单击**提供 + 计划**，然后单击**固定到仪表板**。
 
-### <a name="quick-access-to-online-documentation"></a>Quick access to online documentation
+### <a name="quick-access-to-online-documentation"></a>快速访问联机文档
 
-To access the Azure Stack operator documentation, click the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then click **Help + support**.
+若要访问 Azure 堆栈运算符文档，在管理员门户中，右上角中单击 （问号） 中的帮助和支持图标，然后单击**帮助 + 支持**。
 
-### <a name="quick-access-to-help-and-support"></a>Quick access to help and support
+### <a name="quick-access-to-help-and-support"></a>快速访问帮助和支持
 
-If you click the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, this does either of the following:
+如果你的管理员门户中，右上角单击 （问号） 中的帮助和支持图标，然后单击**新建支持请求**，这将执行下列操作之一：
 
-- If you're using an integrated system, this action opens a site where you can directly open a support ticket with Microsoft Customer Support Services (CSS). Refer to the "Where to get support" section of [Azure Stack administration basics](azure-stack-manage-basics.md) to understand when you should go through Microsoft support or through your original equipment manufacturer (OEM) hardware vendor support.
-- If you’re using the development kit, this action opens the Azure Stack forums site directly. These forums are regularly monitored. Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
+- 如果你使用的集成的系统，此操作将打开在其中你可以直接打开支持票证与 Microsoft 客户支持服务 (CSS) 的站点。 请参阅"从何处获得支持"部分的[Azure 堆栈管理基础知识](azure-stack-manage-basics.md)了解何时应转通过 Microsoft 支持或通过你的原始设备制造商 (OEM) 硬件供应商支持。
+- 如果你使用的开发工具包，此操作将直接打开 Azure 堆栈论坛站点。 定期监视这些论坛。 由于开发工具包是评估环境，没有通过 Microsoft CSS 提供正式支持。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-- [Region management in Azure Stack](azure-stack-region-management.md)
-
+- [Azure 堆栈中的区域管理](azure-stack-region-management.md)

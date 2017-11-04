@@ -1,6 +1,6 @@
 ---
-title: Enable Azure CLI for Azure Stack users | Microsoft Docs
-description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack
+title: "为 Azure 堆栈用户启用 Azure CLI |Microsoft 文档"
+description: "了解如何使用跨平台命令行界面 (CLI) 来管理和部署 Azure 堆栈上的资源"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,28 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: d184bb9edbe2542d7321d8b9ccc5d23f2401f8d5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: d854c106fbce7e3f01c2878bb9828bdffa4d42a5
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
-# <a name="enable-azure-cli-for-azure-stack-users"></a>Enable Azure CLI for Azure Stack users
+# <a name="enable-azure-cli-for-azure-stack-users"></a>为 Azure 堆栈用户启用 Azure CLI
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-There aren't any Azure Stack operator specific tasks that you can perform by using CLI. But before users can manage resources through CLI, Azure Stack operators must provide them with the following:
+你可以通过使用 Azure CLI 执行任何 Azure 堆栈特定运算符的任务不存在。 然而，用户可以管理通过 CLI 资源之前，Azure 堆栈运算符必须提供它们替换为以下内容：
 
-* **The Azure Stack CA root certificate** is required if your users are using CLI from a workstation outside the Azure Stack development kit.  
+* **Azure 堆栈 CA 根证书**是必需的如果用户在从外部 Azure 堆栈开发工具包工作站使用 CLI。  
 
-* **The virtual machine aliases endpoint** provides an alias, like "UbuntuLTS" or "Win2012Datacenter", that references an image publisher, offer, SKU, and version as a single parameter when deploying VMs.  
+* **虚拟机别名终结点**提供别名，如"UbuntuLTS"或"Win2012Datacenter"部署 Vm 时为单个参数引用映像发布者、 产品/服务、 SKU、 和版本。  
 
-The following sections describe how to get these values.
+以下各节描述了如何获取这些值。
 
-## <a name="export-the-azure-stack-ca-root-certificate"></a>Export the Azure Stack CA root certificate
+## <a name="export-the-azure-stack-ca-root-certificate"></a>Azure 堆栈 CA 根证书导出
 
-The Azure Stack CA root certificate is available on the development kit and on a tenant virtual machine that is running within the development kit environment. Sign in to your development kit or the tenant virtual machine and run the following script to export the Azure Stack root certificate in PEM format:
+Azure 堆栈 CA 根证书是在开发工具包，在开发工具包环境内运行的租户虚拟机上可用。 若要导出 PEM 格式中的 Azure 堆栈根证书，在登录到你的开发工具包或租户虚拟机并运行以下脚本：
 
 ```powershell
 $label = "AzureStackSelfSignedRootCert"
@@ -43,7 +42,7 @@ Write-Host "Getting certificate from the current user trusted store with subject
 $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
 if (-not $root)
 {
-    Log-Error "Cerficate with subject CN=$label not found"
+    Log-Error "Certificate with subject CN=$label not found"
     return
 }
 
@@ -54,25 +53,24 @@ Write-Host "Converting certificate to PEM format"
 certutil -encode root.cer root.pem
 ```
 
-## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Set up the virtual machine aliases endpoint
+## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>设置虚拟机别名终结点
 
-Azure Stack operators should set up a publicly accessible endpoint that hosts a virtual machine aliases file.  The virtual machine alias file is a JSON file that provides a common name for an image, which is subsequently specified when deploying a VM as an Azure CLI parameter.  
+Azure 堆栈运算符应设置可公开访问的终结点承载虚拟机别名文件。 虚拟机别名文件是一个 JSON 文件，提供的映像的公用名。 虚拟机部署为 Azure CLI 参数时，随后指定该名称。  
 
-Before you add an entry to an alias file, make sure that you [download images from the marketplace]((azure-stack-download-azure-marketplace-item.md), or have [published your own custom image](azure-stack-add-vm-image.md).  If you publish a custom image, make note of the publisher, offer, SKU, and version information you specified during publishing.  If it is an image from the marketplace, you can view the information using the ```Get-AzureVMImage``` cmdlet.  
+将条目添加到别名文件之前，请确保你[从 Azure 应用商店下载映像](azure-stack-download-azure-marketplace-item.md)，或具有[发布你自己的自定义映像](azure-stack-add-vm-image.md)。 如果发布的自定义映像，请记下发布过程中指定的发布者、 产品/服务、 SKU、 和版本信息。 如果它是从应用商店的映像，你可以通过查看信息```Get-AzureVMImage```cmdlet。  
    
-A [sample alias file](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) with many common image aliases is available, which you can use as a starting point.  You should host this file in a space that your CLI clients can reach it.  One way to do this, is to host in a blob storage account, and share the URL with your users:
+A[示例别名文件](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json)别名可与许多常见的映像。 你可以将其用作起始点。 将此文件放在你的 CLI 客户端可以访问的空间中。 一种方法是托管 blob 存储帐户中的文件并与用户共享 URL:
 
-1.  Download the [sample file](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) from GitHub.
-2.  Create a new storage account in Azure Stack.  Once complete, create a new blob container.  Set the access policy to "public".  
-3.  Upload the JSON file to the new container.  Once complete, you can view the URL of the blob by clicking the fblob name, and then selecting the URL from the blob properties.
+1. 下载[示例文件](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json)从 GitHub。
+2. 在 Azure 堆栈中创建新的存储帐户。 完成该操作时，创建新的 blob 容器。 设置访问策略为"public"。  
+3. 将 JSON 文件上载到新的容器。 当完成该操作时，你可以通过单击 blob 名称，然后选择从 blob 属性的 URL 查看 blob 的 URL。
 
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-[Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
+[使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
 
-[Connect with PowerShell](azure-stack-connect-powershell.md)
+[使用 PowerShell 连接](azure-stack-connect-powershell.md)
 
-[Manage user permissions](azure-stack-manage-permissions.md)
-
+[管理用户权限](azure-stack-manage-permissions.md)
 

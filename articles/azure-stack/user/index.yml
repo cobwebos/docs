@@ -4,7 +4,7 @@ title: Azure Stack 用户文档
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Azure Stack 文档 - 教程和 API 参考
-  description: 了解如何使用 Azure Stack 预览版从数据中心交付 Azure 服务。 通过一个概念认证环境了解和演示功能。
+  description: 了解如何使用 Azure 堆栈服务以及如何生成适用于 Azure 堆栈应用。
   services: azure-stack
   author: carolz
   manager: carolz
@@ -12,12 +12,12 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/23/2017
+  ms.date: 10/02/2017
   ms.author: carolz
 abstract:
-  description: Azure Stack 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack 上生成应用。 然后，可将这些应用部署到 Azure Stack 或 Azure，或者，可以生成利用 Azure Stack 云与 Azure 之间的连接的真正混合式应用。  使用快速入门和教程了解如何创建资源和部署应用。
+  description: Azure Stack 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack 上生成应用。 然后，可将这些应用部署到 Azure Stack 或 Azure，或者，可以生成利用 Azure Stack 云与 Azure 之间的连接的真正混合式应用。 使用快速入门和教程了解如何创建资源和部署应用。<br/><br/>如果你管理基础结构和提供服务 Azure 堆栈操作员，请参阅我们<a href="/azure/azure-stack/">运算符文档</a>。
 sections:
-  - title: 快速入门
+  - title: 5 分钟快速入门
     items:
       - type: paragraph
         text: 了解如何在 Azure Stack 上部署 Windows 虚拟机：
@@ -56,7 +56,7 @@ sections:
   - title: 分步教程
     items:
       - type: paragraph
-        text: 在 Azure 和 Azure Stack 上部署应用程序：
+        text: 在 Azure 和 Azure 堆栈中部署应用程序。
       - type: list
         style: ordered
         items:
@@ -68,4 +68,4 @@ sections:
         className: cardsD
         items:
           - title: 命令行
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Azure 堆栈 CLI</a></p>

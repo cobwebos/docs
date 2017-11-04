@@ -1,143 +1,143 @@
 ---
-title: Azure Stack datacenter integration - DNS
-description: Learn how to integrate Azure Stack DNS with your datacenter DNS
+title: "Azure 堆栈数据中心集成的 DNS"
+description: "了解如何将与你的数据中心 DNS 集成 Azure 堆栈 DNS"
 services: azure-stack
 author: troettinger
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 10/10/2017
 ms.author: victorh
 keywords: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bf41e2458ade0bc770eb0f9cd327f752e08358a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 40d6d4858ef2e3df61d04dc68c00e09c04f000e2
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
+# <a name="azure-stack-datacenter-integration---dns"></a>Azure 堆栈数据中心集成的 DNS
 
-# <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack datacenter integration - DNS
+*适用范围： Azure 堆栈集成系统*
 
-*Applies to: Azure Stack integrated systems*
+若要能够访问 Azure 堆栈终结点 (`portal`， `adminportal`， `management`，`adminmanagement`等。) 从外部 Azure 堆栈，你需要与托管你想要使用 Azure 堆栈中的 DNS 区域的 DNS 服务器集成的 Azure 堆栈 DNS 服务。
 
-To be able to access Azure Stack endpoints (`portal`, `adminportal`, `management`, `adminmanagement`, etc.)  from outside Azure Stack, you need to integrate the Azure Stack DNS services with the DNS servers that host the DNS zones you want to use in Azure Stack.
-
-## <a name="azure-stack-dns-namespace"></a>Azure Stack DNS namespace
-You are required to provide some important information related to DNS when you deploy Azure Stack.
+## <a name="azure-stack-dns-namespace"></a>Azure 堆栈 DNS 命名空间
+将要求你将提供在部署 Azure 堆栈时，与 DNS 相关的一些重要信息。
 
 
-|Field  |Description  |Example|
+|字段  |说明  |示例|
 |---------|---------|---------|
-|Region|The geographic location of your Azure Stack deployment.|`east`|
-|External Domain Name|The name of the zone you want to use for your Azure Stack deployment.|`cloud.fabrikam.com`|
-|Internal Domain Name|The name of the internal zone that is used for infrastructure services in Azure Stack.  It is Directory Service-integrated and private (not reachable from outside the Azure Stack deployment).|`azurestack.local`|
-|DNS Forwarder|DNS servers that are used to forward DNS queries, DNS zones and records that are hosted outside Azure Stack, either on the corporate intranet or public internet.|`10.57.175.34`<br>`8.8.8.8`|
-|Naming Prefix (Optional)|The naming prefix you want your Azure Stack infrastructure role instance machine names to have.  If not provided, the default is `azs`.|`azs`|
+|区域|你的 Azure 堆栈部署地理位置。|`east`|
+|外部域名|你想要用于 Azure 堆栈部署区域的名称。|`cloud.fabrikam.com`|
+|内部域名|用于 Azure 堆栈中的基础结构服务的内部区域的名称。  它是目录服务集成和专用 （不可从外部 Azure 堆栈部署）。|`azurestack.local`|
+|DNS 转发器|用于将转发 DNS 查询、 DNS 区域和外 Azure 堆栈，在公司 intranet 或公共 internet 上托管的记录的 DNS 服务器。|`10.57.175.34`<br>`8.8.8.8`|
+|（可选） 命名前缀|你想你 Azure 堆栈基础结构角色实例计算机名称具有命名前缀。  如果不提供，默认值是`azs`。|`azs`|
 
-The fully qualified domain name (FQDN) of your Azure Stack deployment and endpoints is the combination of the Region parameter and the External Domain Name parameter. Using the values from the examples in the previous table, the FQDN for this Azure Stack deployment would be the following name:
+Azure 堆栈部署和终结点的完全限定的域名 (FQDN) 是区域参数和外部域 Name 参数的组合。 使用上表中的示例中的值，此 Azure 堆栈部署的 FQDN 将以下名称：
 
 `east.cloud.fabrikam.com`
 
-As such, examples of some of the endpoints for this deployment would look like the following URLs:
+在这种情况下，一些为此部署的终结点的示例将如下所示的以下 Url:
 
 `https://portal.east.cloud.fabrikam.com`
 
 `https://adminportal.east.cloud.fabrikam.com`
 
-To use this example DNS namespace for an Azure Stack deployment, the following conditions are required:
+若要为 Azure 堆栈部署使用此示例 DNS 命名空间，都需要以下条件：
 
-- The zone `fabrikam.com` is registered either with a domain registrar, an internal corporate DNS server, or both, depending on your name resolution requirements.
-- The child domain `cloud.fabrikam.com` exists under the zone `fabrikam.com`.
-- The DNS servers that host the zones `fabrikam.com` and `cloud.fabrikam.com` can be reached from the Azure Stack deployment.
+- 区域`fabrikam.com`通过域注册机构，内部公司 DNS 服务器，或两者，具体取决于你的名称解析要求注册。
+- 子域`cloud.fabrikam.com`在该区域下存在`fabrikam.com`。
+- 承载区域的 DNS 服务器`fabrikam.com`和`cloud.fabrikam.com`可以从 Azure 堆栈部署访问。
 
-To be able to resolve DNS names for Azure Stack endpoints and instances from outside Azure Stack, you need to integrate the DNS servers that host the external DNS zone for Azure Stack with the DNS servers that host the parent zone you want to use.
+若要能够解析 Azure 堆栈终结点和从外部 Azure 堆栈的实例的 DNS 名称，你需要集成为 Azure 堆栈的外部的 DNS 区域托管 DNS 服务器托管你想要使用该父区域的 DNS 服务器。
 
 
-## <a name="resolution-and-delegation"></a>Resolution and delegation
+## <a name="resolution-and-delegation"></a>解析和委托
 
-There are two types of DNS servers:
+有两种类型的 DNS 服务器：
 
-- An authoritative DNS server hosts DNS zones. It answers DNS queries for records in those zones only.
-- A recursive DNS server does not host DNS zones. It answers all DNS queries by calling authoritative DNS servers to gather the data it needs.
+- 权威 DNS 服务器托管 DNS 区域。 它只应答这些区域中的 DNS 记录查询。
+- 递归 DNS 服务器未承载 DNS 区域。 它调用权威 DNS 服务器来收集所需的数据，以应答所有 DNS 查询。
 
-Azure Stack includes both authoritative and recursive DNS servers. The recursive servers are used to resolve names of everything except for the internal private zone and the external public DNS zone for that Azure Stack deployment. 
+Azure 堆栈权威同时包含和递归 DNS 服务器。 递归服务器用于解析所有内容的内部专用区域和外部的公共 DNS 区域除外的该 Azure 堆栈部署的名称，以及。 
 
-![Azure Stack DNS architecture](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
+![Azure 堆栈 DNS 体系结构](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
 
-## <a name="resolving-external-dns-names-from-azure-stack"></a>Resolving external DNS names from Azure Stack
+## <a name="resolving-external-dns-names-from-azure-stack"></a>从 Azure 堆栈的外部 DNS 名称解析
 
-To resolve DNS names for endpoints outside Azure Stack (for example: www.bing.com), you need to provide DNS servers that Azure Stack can use to forward DNS requests for which Azure Stack is not authoritative. For deployment, DNS servers that Azure Stack forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack deployment fails.
+若要解决 Azure 堆栈外部终结点的 DNS 名称 (例如： www.bing.com)，你需要提供 Azure 堆栈可用于为其 Azure 堆栈不是权威的 DNS 请求转发的 DNS 服务器。 对于部署，Azure 堆栈将请求转发到的 DNS 服务器 （中的 DNS 转发器字段中） 的部署工作表中需要。 提供此字段中的至少两个服务器以容错能力。 无需这些值，Azure 堆栈部署将失败。
 
-### <a name="adding-dns-forwarding-servers-after-deployment"></a>Adding DNS forwarding servers after deployment
+### <a name="configure-conditional-dns-forwarding"></a>配置条件 DNS 转发
 
-If you or your ISP updates your DNS infrastructure, you might want to register additional DNS servers. To add DNS servers to forward recursive requests, you must use the privileged endpoint.
+> [!IMPORTANT]
+> 这仅适用于 AD FS 部署。
 
-For this procedure, use a computer in your datacenter network that can communicate with the privileged endpoint in Azure Stack.
+若要启用与现有 DNS 基础结构的名称解析，配置条件转发。
 
-1. Open an elevated Windows PowerShell session (run as administrator), and connect to the IP address of the privileged endpoint. Use the credentials for CloudAdmin authentication.
+若要添加一个条件转发器，必须使用特权终结点。
+
+对于此过程，在数据中心网络，可与 Azure 堆栈中的特权终结点进行通信中使用的计算机。
+
+1. 打开提升的 Windows PowerShell 会话 （以管理员身份运行），并连接到特权终结点的 IP 地址。 使用凭据进行 CloudAdmin 身份验证。
 
    ```
    $cred=Get-Credential 
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $cred
    ```
 
-2. After you connect to the privileged endpoint, run the following PowerShell command. Substitute the sample values provided with your domain name and IP addresses of the DNS servers you want to use.
+2. 连接到特权终结点后，运行以下 PowerShell 命令。 替换提供具有域用户名和你想要使用的 DNS 服务器的 IP 地址的示例值。
 
    ```
-   Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses “192.168.1.1”,”192.168.1.2”
+   Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2"
    ```
 
-After you run this command, Azure Stack services and user virtual machines that use Azure Stack DNS will be able to resolve the names of Azure Stack endpoints such as the portal and API endpoints, and any public IP addresses that have a DNS name label.
+## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>从外部 Azure 堆栈的 Azure 堆栈 DNS 名称解析
+权威服务器是那些保存外部的 DNS 区域信息，以及任何用户创建的区域。 将与这些服务器以启用区域委派或条件转发来解析 Azure 堆栈 DNS 名称，从外部 Azure 堆栈启用集成。
 
-## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Resolving Azure Stack DNS names from outside Azure Stack
-The authoritative servers are the ones that hold the external DNS zone information, and any user-created zones. Integrate with these servers to enable zone delegation or conditional forwarding to resolve Azure Stack DNS names from outside Azure Stack.
+## <a name="get-dns-server-external-endpoint-information"></a>获取 DNS 服务器的外部终结点信息
 
-## <a name="get-dns-server-external-endpoint-information"></a>Get DNS Server external endpoint information
+要与你的 DNS 基础结构集成 Azure 堆栈部署，你需要以下信息：
 
-To integrate your Azure Stack deployment with your DNS infrastructure, you need the following information:
+- DNS 服务器 Fqdn
+- DNS 服务器 IP 地址
 
-- DNS server FQDNs
-- DNS server IP addresses
-
-The FQDNs for the Azure Stack DNS servers have the following format:
+Azure 堆栈 DNS 服务器的 Fqdn 具有以下格式：
 
 `<NAMINGPREFIX>-ns01.<REGION>.<EXTERNALDOMAINNAME>`
 
 `<NAMINGPREFIX>-ns02.<REGION>.<EXTERNALDOMAINNAME>`
 
-Using the sample values, the FQDNs for the DNS servers are:
+是使用的采样值的 Fqdn，使 DNS 服务器：
 
 `azs-ns01.east.cloud.fabrikam.com`
 
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-This information is also created at the end of all Azure Stack deployments in a file named `AzureStackStampDeploymentInfo.json`. This file is located in the `C:\CloudDeployment\logs` folder of the Deployment virtual machine. If you’re not sure what values were used for your Azure Stack deployment, you can get the values from here.
+此信息还创建名为的文件中的所有 Azure 堆栈部署末尾`AzureStackStampDeploymentInfo.json`。 此文件位于`C:\CloudDeployment\logs`部署虚拟机的文件夹。 如果你不确定哪些值已用于 Azure 堆栈部署，你可以从此处获取的值。
 
-If the Deployment virtual machine is no longer available or is inaccessible, you can obtain the values by connecting to the privileged endpoint and running the `Get-AzureStackInfo` PowerShell cmdlet. For more information about the privileged endpoint, see (insert link to article here).
+如果部署虚拟机不再可用或不可访问，你可以通过连接到特权终结点并运行中获取值`Get-AzureStackInfo`PowerShell cmdlet。 有关特权的终结点的详细信息，请参阅 （插入到此处文章的链接）。
 
-## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Setting up conditional forwarding to Azure Stack
+## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>设置条件转发到 Azure 堆栈
 
-The simplest and most secure way to integrate Azure Stack with your DNS infrastructure is to do conditional forwarding of the zone from the server that hosts the parent zone. This approach is recommended if you have direct control over the DNS servers that host the parent zone for your Azure Stack external DNS namespace.
+与你的 DNS 基础结构集成 Azure 堆栈的最简单且最安全方法是从承载父区域的服务器执行操作的区域的条件转发。 如果你的 Azure 堆栈外部 DNS 命名空间可以直接控制的 DNS 服务器承载父区域，建议使用此方法。
 
-If you’re not familiar with how to do conditional forwarding with DNS, see the following TechNet article: [Assign a Conditional Forwarder for a Domain Name](https://technet.microsoft.com/library/cc794735), or the documentation specific to your DNS solution.
+如果你不熟悉如何执行 dns 条件转发，请参阅以下 TechNet 文章：[域名的分配一个条件转发器](https://technet.microsoft.com/library/cc794735)，或特定于你的 DNS 解决方案的文档。
 
-In scenarios where you specified your external Azure Stack DNS Zone to look like a child domain of your corporate domain name, conditional forwarding cannot be used. DNS delegation must be configured.
+在其中指定你外部 Azure 堆栈 DNS 区域为类似于你公司的域的名称的子域的情况下，不能用于条件转发。 必须配置 DNS 委派。
 
-Example:
+示例：
 
-- Corporate DNS Domain Name: `contoso.com`
-- Azure Stack External DNS Domain Name: `azurestack.contoso.com`
+- 企业 DNS 域名：`contoso.com`
+- Azure 堆栈外部的 DNS 域名：`azurestack.contoso.com`
 
-## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>Delegating the external DNS zone to Azure Stack
+## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>委托到 Azure 堆栈的外部 DNS 区域
 
-For DNS names to be resolvable from outside an Azure Stack deployment, you need to set up DNS delegation.
+对于要从 Azure 堆栈部署外部解析的 DNS 名称，你需要设置 DNS 委派。
 
-Each registrar has their own DNS management tools to change the name server records for a domain. In the registrar's DNS management page, edit the NS records and replace the NS records for the zone with the ones in Azure Stack.
+每个注册机构都有自身的 DNS 管理工具，可以更改域的名称服务器记录。 在注册机构的 DNS 管理页中，编辑 NS 记录并将替换为 Azure 堆栈中的区域的 NS 记录。
 
-Most DNS registrars require you to provide a minimum of two DNS servers to complete the delegation.
+大部分 DNS 注册机构要求你提供最少两个 DNS 服务器以完成委派。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-[Azure Stack datacenter integration - publish endpoints](azure-stack-integrate-endpoints.md)
-
+[Azure 堆栈数据中心集成的标识](azure-stack-integrate-identity.md)

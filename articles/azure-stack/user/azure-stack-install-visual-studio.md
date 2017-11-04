@@ -1,6 +1,6 @@
 ---
-title: Install Visual Studio and connect to Azure Stack | Microsoft Docs
-description: Learn the steps required to install Visual Studio and connect to Azure Stack
+title: "安装 Visual Studio 并连接到 Azure 堆栈 |Microsoft 文档"
+description: "了解安装 Visual Studio 并连接到 Azure 堆栈所需的步骤"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -14,46 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f85584b02f6b2f7436f711e794bb8fcad00ced4a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="install-visual-studio-and-connect-to-azure-stack"></a>安装 Visual Studio 并连接到 Azure 堆栈
 
-# <a name="install-visual-studio-and-connect-to-azure-stack"></a>Install Visual Studio and connect to Azure Stack
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+使用 Visual Studio 来创作和部署 Azure 资源管理器[模板](azure-stack-arm-templates.md)Azure 堆栈中。 你可以使用本文中所述的步骤安装 Visual Studio 从[Azure 堆栈开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或从基于 Windows 的外部客户端如果通过连接[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)。 这些步骤执行 Visual Studio 2015 Community Edition 的全新安装。 阅读更多有关[共存](https://msdn.microsoft.com/library/ms246609.aspx)其他 Visual Studio 版本之间。
 
-Use Visual Studio to author and deploy Azure Resource Manager [templates](azure-stack-arm-templates.md) in Azure Stack. You can use the steps described in this article to install Visual Studio either from [Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are connected through [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). These steps perform a new installation of Visual Studio 2015 Community Edition. Read more about [coexistence](https://msdn.microsoft.com/library/ms246609.aspx) between other Visual Studio versions.
+## <a name="install-visual-studio"></a>安装 Visual Studio
+1. 下载并运行[Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)。             
+2. 搜索**与 Microsoft Azure SDK-2.9.6 的 Visual Studio Community 2015**，单击**添加**，和**安装**。
 
-## <a name="install-visual-studio"></a>Install Visual Studio
-1. Download and run the [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).             
-2. Search for **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6**, click **Add**, and **Install**.
+    ![屏幕快照的 WebPI 安装步骤](./media/azure-stack-install-visual-studio/image1.png) 
 
-    ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png) 
+3. 卸载**Microsoft Azure PowerShell**作为 Azure SDK 的一部分安装。
 
-3. Uninstall the **Microsoft Azure PowerShell** that is installed as part of the Azure SDK.
+    ![有关 Azure PowerShell 的添加/删除程序接口的屏幕截图](./media/azure-stack-install-visual-studio/image2.png) 
 
-    ![Screenshot of add/remove programs interface for Azure PowerShell](./media/azure-stack-install-visual-studio/image2.png) 
+4. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)
 
-4. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
+5. 在安装完成后，重新启动操作系统。
 
-5. Restart the operating system after the installation completes.
+## <a name="connect-to-azure-stack"></a>连接到 Azure Stack
 
-## <a name="connect-to-azure-stack"></a>Connect to Azure Stack
+1. 启动 Visual Studio。
 
-1. Launch Visual Studio.
+2. 在“视图”菜单中，选择“云资源管理器”。
 
-2. From the **View** menu, select **Cloud Explorer**.
+3. 在新窗格中，选择**添加帐户**并使用 Azure Active Directory 凭据登录。  
+    ![登录并连接到 Azure 堆栈后的屏幕截图的云资源管理器](./media/azure-stack-install-visual-studio/image6.png)
 
-3. In the new pane, select **Add Account** and sign in with your Azure Active Directory credentials.  
-    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack](./media/azure-stack-install-visual-studio/image6.png)
+登录后，你可以[将模板部署](azure-stack-deploy-template-visual-studio.md)或浏览可用的资源类型和资源组以创建你自己的模板。  
 
-Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-studio.md) or browse available resource types and resource groups to create your own templates.  
+## <a name="next-steps"></a>后续步骤
 
-## <a name="next-steps"></a>Next Steps
-
- - [Develop templates for Azure Stack](azure-stack-develop-templates.md)
-
+ - [为 Azure Stack 开发模板](azure-stack-develop-templates.md)

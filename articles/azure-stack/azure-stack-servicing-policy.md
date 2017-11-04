@@ -1,6 +1,6 @@
 ---
-title: Azure Stack servicing policy | Microsoft Docs
-description: Learn about the Azure Stack servicing policy, and how to keep an integrated system in a supported state.
+title: "维护服务策略的 azure 堆栈 |Microsoft 文档"
+description: "了解有关 Azure 堆栈维护策略，以及如何在受支持的状态中保留一个集成的系统信息。"
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -14,49 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f2c99f19b30d2cdfdf65dea6dd3909b88ffc15dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-stack-servicing-policy"></a>Azure Stack servicing policy
+# <a name="azure-stack-servicing-policy"></a>Azure 堆栈维护策略
 
-*Applies to: Azure Stack integrated systems*
+*适用范围： Azure 堆栈集成系统*
 
-This article describes the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state. 
+本指南介绍了集成的 Azure 堆栈系统和必须执行哪些操作来使您的系统中受支持的状态的维护策略。 
 
-## <a name="update-package-types"></a>Update package types
+## <a name="update-package-types"></a>更新包类型
 
-There are two types of update packages for integrated systems; Microsoft software updates, and updates that are specific to your original equipment manufacturer (OEM) hardware vendor, such as drivers and firmware. These updates are delivered as separate Azure Stack update packages, and are independently managed.
+有两种类型的集成系统; 的更新包Microsoft 软件更新和特定于你的原始设备制造商 (OEM) 硬件供应商联系，驱动程序和固件等的更新。 这些更新作为单独的 Azure 堆栈更新包，一起传递，并且独立进行管理。
 
-- **Microsoft software updates**. Microsoft is responsible for the end-to-end servicing lifecycle for the Microsoft software update packages. These packages can include the latest Windows Server security updates, non-security updates, and Azure Stack feature updates. You can download theses update packages directly from Microsoft.
-- **OEM hardware vendor-provided updates**. Azure Stack hardware partners are responsible for the end-to-end servicing lifecycle (including guidance) for the hardware-related firmware and driver update packages. In addition, Azure Stack hardware partners own and maintain guidance for all software and hardware on the hardware lifecycle host. The OEM hardware vendor hosts these update packages on their own download site.
+- **Microsoft 软件更新**。 Microsoft 负责的 Microsoft 软件更新包的端到端维护服务生命周期。 这些包可以包括最新的 Windows Server 安全更新、 非安全更新和 Azure 堆栈功能更新。 你可以直接从 Microsoft 下载这些更新包。
+- **OEM 硬件供应商提供更新**。 Azure 堆栈硬件合作伙伴负责的端到端维护服务生命周期 （包括指南） 与硬件相关的固件和驱动程序更新包。 此外，Azure 堆栈硬件合作伙伴始终拥有和维护的所有软件和硬件生命周期主机上的硬件的指南。 OEM 硬件供应商联系承载这些更新自己下载站点上的包。
 
-## <a name="update-package-release-cadence"></a>Update package release cadence
+## <a name="update-package-release-cadence"></a>更新包发布节奏
 
-Microsoft expects to release software update packages on a monthly cadence. However, it’s possible to have multiple, or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
+Microsoft 希望发布软件更新包以每月的频率。 但是，很可能有多个，或不在一个月的更新版本。 OEM 硬件供应商发布基于根据需要其更新。
 
-A Microsoft update package has the following naming convention to help you easily identify the release date:
+Microsoft 更新包具有以下命名约定，以帮助你轻松地识别发布日期：
 
 *MajorProductVersion.MinorProductVersion.YYMMDD.BuildNumber*
 
-For example, a Microsoft software update released on June 15, 2017 would have the version "1.0.170615.1".
+例如，在 2017 年 6 月 15 日发布的 Microsoft 软件更新将具有"1.0.170615.1"的版本。
 
-## <a name="keep-your-system-under-support"></a>Keep your system under support
+## <a name="keep-your-system-under-support"></a>使您的系统受支持
 
-To receive support for your system, you must keep your Azure Stack updated within a specific time interval. Our policy for deferral of Microsoft software updates is three months. If your system is more than three months out of date, you’re considered out of compliance. You must update the system to at least the minimum supported version to receive support. 
+若要接收你的系统的支持，则必须保持在特定时间间隔内更新你 Azure 堆栈。 我们对于延迟的 Microsoft 软件更新的策略是三个月。 如果你的系统已超过三个月内过期，你要视为不符合。 你必须更新系统到至少是支持的最低版本，以获得支持。 
 
-Microsoft software update packages are non-cumulative, and require the previous update package as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get to the latest version.
+Microsoft 软件更新包非累积的并且需要作为必备组件以前的更新包。 如果你决定将一个或多个更新延迟，请考虑整体运行时，如果你想要获取的最新版本。
 
-The following table shows example update package releases, their prerequisite, and the minimum supported version that your system must be at to maintain support. The table is based on the initial release of Azure Stack integrated systems (build 1708), with the first update package release (1709) in September 2017. 
+下表显示示例更新包版本、 其先决条件和你的系统必须是在维护支持的最低支持的版本。 表基于在 2017 年 9 月的第一个更新包版本 (1709) 集成的 Azure 堆栈 （生成 1708年） 系统，初始版本。 
 
-| Latest Update Package (*example*) | Prerequisite | Minimum Supported Version |
+| 最新的更新包 (*示例*) | 先决条件 | 支持的最低版本 |
 | -- | -- | -- |
-| 1709 | Build 1708 | N/A |
-| 1710 | 1709 | N/A |
-| 1711 | 1710 | N/A |
+| 1709 | 生成 1708 | 不适用 |
+| 1710 | 1709 | 不适用 |
+| 1711 | 1710 | 不适用 |
 | 1712 | 1711 | 1709 |
 | 1801 | 1712 | 1710 |
 | 1802 | 1801 | 1711 |
@@ -64,9 +63,8 @@ The following table shows example update package releases, their prerequisite, a
 | 1804 | 1803 | 1801 |
 | | | 
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-- [Manage updates in Azure Stack](azure-stack-updates.md)
-
+- [管理 Azure 堆栈中的更新](azure-stack-updates.md)
 
 

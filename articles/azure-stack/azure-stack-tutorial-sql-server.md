@@ -1,6 +1,6 @@
 ---
-title: Make SQL databases available to your Azure Stack users | Microsoft Docs
-description: Tutorial to install the SQL Server resource provider and create offers that let Azure Stack users create SQL databases.
+title: "让 Azure 堆栈用户能够使用 SQL 数据库 |Microsoft 文档"
+description: "安装 SQL Server 资源提供程序和创建教程提供了让 Azure 堆栈用户创建 SQL 数据库。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,77 +15,75 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f774888ba3921d0688feddac669ed1dca4667441
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Make SQL databases available to your Azure Stack users
+# <a name="make-sql-databases-available-to-your-azure-stack-users"></a>让 Azure 堆栈用户能够使用 SQL 数据库
 
-As an Azure Stack cloud administrator, you can create offers that let your users (tenants) create SQL databases that they can use with their cloud-native apps, websites, and workloads. By providing these custom, on-demand, cloud-based databases to your users, you can save them time and resources. To set this up, you will:
+作为 Azure 堆栈云管理员，你可以创建提供使你的用户 （租户） 创建它们可以使用其云本机应用程序、 网站和工作负荷的 SQL 数据库。 通过向你的用户提供这些自定义、 按需、 基于云的数据库，你可以将它们保存时间和资源。 若要对此进行设置，你将：
 
 > [!div class="checklist"]
-> * Deploy the SQL Server resource provider
-> * Create an offer
-> * Test the offer
+> * 部署 SQL Server 资源提供程序
+> * 创建产品
+> * 测试产品/服务
 
-## <a name="deploy-the-sql-server-resource-provider"></a>Deploy the SQL Server resource provider
+## <a name="deploy-the-sql-server-resource-provider"></a>部署 SQL Server 资源提供程序
 
-The deployment process is described in detail in the [Use SQL databases on Azure Stack article](azure-stack-sql-resource-provider-deploy.md), and is comprised of the following primary steps:
+在部署过程中将详细介绍[Azure 堆栈文章上的使用 SQL 数据库](azure-stack-sql-resource-provider-deploy.md)，并且包含以下主要步骤：
 
-1. [Deploy the SQL resource provider]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
-2. [Verify the deployment]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
-3. Provide capacity by connecting to a hosting SQL server.
+1. [部署 SQL 资源提供程序]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider)。
+2. [验证部署]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)。
+3. 通过连接到托管的 SQL server 提供的容量。
 
-## <a name="create-an-offer"></a>Create an offer
+## <a name="create-an-offer"></a>创建产品
 
-1.  [Set a quota](azure-stack-setting-quotas.md) and name it *SQLServerQuota*. Select **Microsoft.SQLAdapter** for the **Namespace** field.
-2.  [Create a plan](azure-stack-create-plan.md). Name it *TestSQLServerPlan*, select the **Microsoft.SQLAdapter** service, and **SQLServerQuota** quota.
+1.  [设置配额](azure-stack-setting-quotas.md)并将其命名*SQLServerQuota*。 选择**Microsoft.SQLAdapter**为**Namespace**字段。
+2.  [创建计划](azure-stack-create-plan.md)。 将其命名为*TestSQLServerPlan*，选择**Microsoft.SQLAdapter**服务，和**SQLServerQuota**配额。
 
     > [!NOTE]
-    > To let users create other apps, other services might be required in the plan. For example, Azure Functions requires that the plan include the **Microsoft.Storage** service, while Wordpress requires **Microsoft.MySQLAdapter**.
+    > 以允许用户创建其他应用，其他服务可能要求在计划中。 例如，Azure 函数需要计划包含**Microsoft.Storage**服务，而 Wordpress 需要**Microsoft.MySQLAdapter**。
     > 
     >
 
-3.  [Create an offer](azure-stack-create-offer.md), name it **TestSQLServerOffer** and select the **TestSQLServerPlan** plan.
+3.  [创建提议](azure-stack-create-offer.md)，将其命名为**TestSQLServerOffer**和选择**TestSQLServerPlan**计划。
 
-## <a name="test-the-offer"></a>Test the offer
+## <a name="test-the-offer"></a>测试产品/服务
 
-Now that you've deployed the SQL Server resource provider and created an offer, you can sign in as a user, subscribe to the offer, and create a database.
+既然您已经部署了 SQL Server 资源提供程序和创建提议，你可以以用户身份登录，订阅产品，并创建一个数据库。
 
-### <a name="subscribe-to-the-offer"></a>Subscribe to the offer
-1. Sign in to the Azure Stack portal (https://portal.local.azurestack.external) as a tenant.
-2. Click **Get a subscription** and then type **TestSQLServerSubscription** under **Display Name**.
-3. Click **Select an offer** > **TestSQLServerOffer** > **Create**.
-4. Click **More services** > **Subscriptions** > **TestSQLServerSubscription** > **Resource providers**.
-5. Click **Register** next to the **Microsoft.SQLAdapter** provider.
+### <a name="subscribe-to-the-offer"></a>订阅产品
+1. 以租户身份登录到 Azure 堆栈门户 (https://portal.local.azurestack.external)。
+2. 单击**获取订阅**然后键入**TestSQLServerSubscription**下**显示名称**。
+3. 单击**选择产品** > **TestSQLServerOffer** > **创建**。
+4. 单击**更多的服务** > **订阅** > **TestSQLServerSubscription** > **资源提供程序**。
+5. 单击**注册**旁边**Microsoft.SQLAdapter**提供程序。
 
-### <a name="create-a-sql-database"></a>Create a SQL database
+### <a name="create-a-sql-database"></a>创建 SQL 数据库
 
-1. Click **+** > **Data + Storage** > **SQL Database**.
-2. Leave the defaults for the fields, or you can use these examples:
-    - **Database Name**: SQLdb
-    - **Max Size in MB**: 100
-    - **Subscription**: TestSQLOffer
-    - **Resource Group**: SQL-RG
-3. Click **Login Settings**, enter credentials for the database, and then click **OK**.
-4. Click **SKU** > select the SQL SKU that you created for the SQL Hosting Server > **OK**.
-5. Click **Create**.
+1. 单击 **+**   > **数据 + 存储** > **SQL 数据库**。
+2. 将字段的默认值，或者可以使用这些示例：
+    - **数据库名称**: SQLdb
+    - **以 mb 为单位的最大大小**: 100
+    - **订阅**: TestSQLOffer
+    - **资源组**: SQL RG
+3. 单击**登录设置**，对于数据库中，输入凭据，然后单击**确定**。
+4. 单击**SKU** > 选择你创建了 SQL 宿主服务器的 SQL SKU >**确定**。
+5. 单击“创建” 。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-In this tutorial, you learned how to:
+本教程介绍了如何：
 
 > [!div class="checklist"]
-> * Deploy the SQL Server resource provider
-> * Create an offer
-> * Test the offer
+> * 部署 SQL Server 资源提供程序
+> * 创建产品
+> * 测试产品/服务
 
-Advance to the next tutorial to learn how to:
+前进到下一步的教程，若要了解如何：
 
 > [!div class="nextstepaction"]
-> [Make web, mobile, and API apps available to your users]( azure-stack-tutorial-app-service.md)
-
+> [向你的用户提供 web、 移动和 API 应用]( azure-stack-tutorial-app-service.md)
 
