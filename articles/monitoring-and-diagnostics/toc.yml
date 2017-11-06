@@ -134,6 +134,8 @@
       items:
         - name: 存档
           href: monitoring-archive-diagnostic-logs.md
+        - name: 发送到 Log Analytics
+          href: monitor-stream-diagnostic-logs-log-analytics.md
         - name: 流式传输到事件中心
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: 使用资源管理器模板启用诊断设置

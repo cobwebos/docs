@@ -71,15 +71,10 @@
 
 ## 设置资源策略
 ### [什么是资源策略？](resource-manager-policy.md)
-### [使用 Azure 门户分配策略](resource-manager-policy-portal.md)
 ### [使用脚本分配策略](resource-manager-policy-create-assign.md)
 ### 示例
 #### [标记](resource-manager-policy-tags.md)
 #### [命名约定](resource-manager-policy-naming-convention.md)
-#### [网络](resource-manager-policy-network.md)
-#### [存储](resource-manager-policy-storage.md)
-#### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## 审核
 ### [查看活动日志](resource-group-audit.md)

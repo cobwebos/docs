@@ -50,6 +50,7 @@
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
 ### [使用 Azure Monitor 进行监视](api-management-howto-use-azure-monitor.md)
 ### [使用基于角色的访问控制](api-management-role-based-access-control.md)
+### [使用托管服务标识](api-management-howto-use-managed-service-identity.md)
 ### 与 Service Fabric 集成
 #### [概述](../service-fabric/service-fabric-api-management-overview.md)
 #### [快速入门](../service-fabric/service-fabric-api-management-quick-start.md)

@@ -76,11 +76,11 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
 ![指标资源管理器](media/functions-monitoring/metrics-explorer.png)
 
-在“失败”[](../application-insights/app-insights-asp-net-exceptions.md)选项卡上，可以基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了[自定义遥测](#custom-telemetry-in-c-functions)。
+在[失败](../application-insights/app-insights-asp-net-exceptions.md)选项卡上，可以基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了[自定义遥测](#custom-telemetry-in-c-functions)。
 
 ![失败数](media/functions-monitoring/failures.png)
 
-在“性能”[](../application-insights/app-insights-performance-counters.md)选项卡上，可以分析性能问题。
+在[性能](../application-insights/app-insights-performance-counters.md)选项卡上，可以分析性能问题。
 
 ![性能](media/functions-monitoring/performance.png)
 
@@ -88,7 +88,7 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
 ![服务器](media/functions-monitoring/servers.png)
 
-“实时指标流”[](../application-insights/app-insights-live-stream.md)选项卡显示指标数据，因为该数据是实时创建的。
+[实时指标流](../application-insights/app-insights-live-stream.md)选项卡显示指标数据，因为该数据是实时创建的。
 
 ![实时流](media/functions-monitoring/live-stream.png)
 
