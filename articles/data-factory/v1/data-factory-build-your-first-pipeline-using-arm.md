@@ -1,6 +1,6 @@
 ---
 title: "构建第一个数据工厂（Resource Manager 模板）| Microsoft Docs"
-description: "本教程使用 Azure Resource Manager 模板创建一个示例 Azure 数据工厂管道。"
+description: "本教程使用 Azure 资源管理器模板创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 1778a4af004afd45464e37e198d78b4f0977c1c4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d4681e2f2552589e310f80cbf763bd453c0eba84
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure Resource Manager 模板构建第一个 Azure 数据工厂
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
@@ -30,9 +30,11 @@ ms.lasthandoff: 10/11/2017
 > * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 > 
-> 
+ 
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[快速入门：使用 Azure 数据工厂版本 2 创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
-本教程介绍如何使用 Azure Resource Manager 模板创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
+本教程介绍如何使用 Azure 资源管理器模板创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
 
 本教程中的管道有一个活动：**HDInsight Hive 活动**。 该活动在 Azure HDInsight 群集上运行 Hive 脚本，通过转换输入数据来生成输出数据。 管道在指定的开始时间和结束时间范围内每月按计划运行一次。 
 
@@ -44,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
-* 若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../../azure-resource-manager/resource-group-authoring-templates.md) （创作 Azure Resource Manager 模板）。 
+* 若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。 
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 | 实体 | 说明 |
@@ -259,12 +261,12 @@ ms.lasthandoff: 10/11/2017
 ```
 
 > [!NOTE]
-> 可以在 [Tutorial: Create a pipeline with Copy Activity using an Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)（教程：使用 Azure Resource Manager 模板创建包含复制活动的管道）中找到用于创建 Azure 数据工厂的另一个 Resource Manager 模板示例。  
+> 可以在[教程：使用 Azure 资源管理器模板创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)中找到用于创建 Azure 数据工厂的另一个资源管理器模板示例。  
 > 
 > 
 
 ## <a name="parameters-json"></a>参数 JSON
-创建名为 **ADFTutorialARM-Parameters.json**、包含 Azure Resource Manager 模板参数的 JSON 文件。  
+创建名为 **ADFTutorialARM-Parameters.json**、包含 Azure 资源管理器模板参数的 JSON 文件。  
 
 > [!IMPORTANT]
 > 为此参数文件中的 **storageAccountName** 和 **storageAccountKey** 参数指定 Azure 存储帐户的名称和密钥。 

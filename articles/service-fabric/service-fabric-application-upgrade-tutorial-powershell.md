@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 9dfeff7aea50db2cbaacacdbac724d6f9dfd7019
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 845e459a0c829ed8e737d687108e3bda48dab9ad
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 最后一个步骤是使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 启动应用程序的实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。
+在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 以下步骤是使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 启动应用程序的实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。  完成预配后，应从映像存储区中清除复制的应用程序包以减少占用的资源。  如果不再需要某一应用程序类型，它应出于同样的原因将其注销。 有关详细信息，请按照[使用 PowerShell 部署和删除应用程序](service-fabric-application-upgrade-tutorial-powershell.md)。
 
 现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 导航到该 Web 服务。  应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) 检查应用程序状态。
 
@@ -110,7 +110,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObject
 
 如果上面的命令未成功，可能需要重新生成所有服务。 如步骤 2 中所述，可能还需要更新 WebService 版本。
 
-建议你在应用程序成功注册之后删除应用程序包。  从映像存储区中删除应用程序包将释放系统资源。  保留未使用的应用程序包会占用磁盘存储空间，并且导致应用程序性能问题。
+建议在成功注册应用程序后删除应用程序包。  从映像存储区中删除应用程序包可以释放系统资源。  保留未使用的应用程序包会占用磁盘存储空间，导致应用程序出现性能问题。
 
 ```powershell
 Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "VisualObjects\_V2" -ImageStoreConnectionString fabric:ImageStore

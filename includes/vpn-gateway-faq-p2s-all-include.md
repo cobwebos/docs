@@ -8,6 +8,7 @@
 * Windows 8.1（32 位和 64 位）
 * Windows Server 2012（仅 64 位）
 * Windows Server 2012 R2（仅 64 位）
+* Windows Server 2016（仅 64 位）
 * Windows 10
 * 适用于 Mac 的 OSX 版本 10.11 (El Capitan)
 * 适用于 Mac 的 macOS 版本 10.12 (Sierra)

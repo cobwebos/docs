@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: shlo
-ms.openlocfilehash: b394b78b1d1a45a725c438d2cb978bb367c24894
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 2cc128e8f7792a6a363aacf50f8724d689892c83
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文适用于 Azure 数据工厂服务版本 2。 其中提供了有关数据工厂的常见问题的解答。  
+
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 的常见问题解答](v1/data-factory-faq.md)。
 
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
 数据工厂是一项完全托管的基于云的数据集成服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
@@ -72,9 +75,9 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 对于正在寻求编程接口的高级用户，版本 2 提供了一组丰富的 SDK，让他们使用偏好的 IDE 创作、管理和监视管道。
 
 - **.NET SDK**：.NET SDK 在版本 2 中有所更新。 
-- **PowerShell**：PowerShell cmdlet 在版本 2 中有所更新。 在版本 2 中，cmdlet 的名称中包含 *DataFactoryV2*。 例如：*Get-AzureRmDataFactoryV2*。 
+- PowerShell：PowerShell cmdlet 在版本 2 中进行了更新。 在版本 2 中，cmdlet 的名称中包含 *DataFactoryV2*。 例如：*Get-AzureRmDataFactoryV2*。 
 - **Python SDK**：此 SDK 是版本 2 中新增的。
-- **REST API**：REST API 在版本 2 中有所更新。  
+- REST API：REST API 在版本 2 中进行了更新。  
 
 在版本 2 中进行了更新的 SDK 不能向后兼容版本 1 客户端。 
 

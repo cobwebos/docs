@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 10/27/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8398af10d4826373e16420be3309c6ae8246ca4b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a8b9efffd6373ee33026e915b0a14e15d41295b3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
@@ -46,30 +46,30 @@ ms.lasthandoff: 10/11/2017
 数据科学编程马拉松/竞赛或大型数据建模和浏览需要扩展的硬件容量，通常持续时间比较短。 数据科学 VM 可有助于在支持需要运行高性能计算资源的扩展服务器上按照需要快速复制数据科学环境。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期实验和评估
-数据科学 VM 可用于评估或学习工具，例如 Microsoft R Server、SQL Server、Visual Studio 工具、Jupyter、深度学习 / ML 工具包以及社区热门且需要最少设置量的新工具。 因为数据科学 VM 可快速设置，所以可应用于其他短期使用方案，例如复制发布的实验、执行演示、遵循在线会话或会议教程中的演练。
+数据科学 VM 可用于评估或学习工具，例如 Microsoft ML Server、SQL Server、Visual Studio 工具、Jupyter、深度学习/ML 工具包以及社区热门且需要最少设置工作量的新工具。 因为数据科学 VM 可快速设置，所以可应用于其他短期使用方案，例如复制发布的实验、执行演示、遵循在线会话或会议教程中的演练。
 
 ### <a name="deep-learning"></a>深度学习
 数据科学 VM 可用于在基于 GPU（图形处理单元）的硬件上使用深度学习算法的训练模型。 利用 Azure 云的 VM 缩放功能，DSVM 可帮助根据需要在云上使用基于 GPU 的硬件。 如果训练大型模型或在保留相同 OS 磁盘的同时需要高速计算，可以切换到基于 GPU 的 VM。  Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习算法。 在 Linux 上，仅在 [Linux (Ubuntu) 版本的数据科学虚拟机](http://aka.ms/dsvm/ubuntu)上支持 GPU 的深度学习。 在所有深度学习框架都将回退到 CPU 模式的情况下，可以将 Ubuntu/Windows-2016 版本的数据科学 VM 部署到非基于 GPU 的 Azure 虚拟机。 从前，我们针对 Windows Server 2012 发布了[深度学习工具包](http://aka.ms/dsvm/deeplearning)，但现在我们建议使用 Windows Server 2016 处理基于 Windows 的深度学习工作负荷。 基于 CentOS 的 DSVM Linux 版只包含一些深度学习工具（Microsoft 认知工具包、TensorFlow、MXNet）的 CPU 生成，但未预安装 GPU 驱动程序和框架。 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>数据科学 VM 中包含什么内容？
-数据科学虚拟机已安装并配置了许多热门数据科学工具和深度学习工具。 它还包括简化使用各种 Azure 数据和分析产品的工具。 可使用 Microsoft R Server 或 SQL Server 2016 在大型数据集上浏览和生成预测模型。 还包括开源社区和 Microsoft 的其他工具主机，示例代码和笔记本也包括在内。 下表详细列举并比较了包括在数据科学虚拟机 Windows 和 Linux 版中的主要组件。
+数据科学虚拟机已安装并配置了许多热门数据科学工具和深度学习工具。 它还包括简化使用各种 Azure 数据和分析产品的工具。 可使用 Microsoft ML Server（R、Python）或 SQL Server 2017 在大型数据集上浏览和生成预测模型。 还包括开源社区和 Microsoft 的其他工具主机，示例代码和笔记本也包括在内。 下表详细列举并比较了包括在数据科学虚拟机 Windows 和 Linux 版中的主要组件。
 
 
 | **工具**                                                           | **Windows 版** | **Linux 版** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | 预安装了常用包的 [Microsoft R Open](https://mran.microsoft.com/open/)   |Y                      | Y             |
-| [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/) Developer Edition 包括： <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-getting-started) 并行和分布式高性能 R 框架<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml-introduction) - Microsoft 提供的最先进的全新 ML 算法 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R 操作化](https://msdn.microsoft.com/microsoft-r/operationalize/about)                                            |Y                      | Y <br/> （MicrosoftML 尚不可用）|
+| [Microsoft ML Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) 开发者版包括： <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) 并行分布式高性能框架（R 和 Python）<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) - Microsoft 提供的最先进的全新 ML 算法 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R 和 Python 操作化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |Y                      | Y |
 | [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) 专业且具有共享激活功能 - Excel、Word 和 PowerPoint   |Y                      |N              |
 | 预安装了常用包的 [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | 预安装了具有 Julia 语言的常用包的 [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
-| 关系型数据库服务                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/)（仅限 CentOS） |
+| 关系数据库                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/)（仅限 CentOS） |
 | 数据库工具                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC 驱动程序| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)（查询工具）、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC 驱动程序|
-| 在带有 SQL Server R 服务的数据库内分析中可扩展 | Y     |N              |
+| 在带有 SQL Server ML 服务（R、Python）的数据库内分析中可扩展 | Y     |N              |
 | **带有以下内核的 [Jupyter Notebook Server](http://jupyter.org/)：**                                  | Y     | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python 2.7 和 3.5 | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Y | Y |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | N | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | 是（仅适用于 Ubuntu） |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | Y |
 | JupyterHub（多用户笔记本服务器）| N | Y |

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/29/2017
+ms.date: 11/01/2017
 ms.author: arramac
-ms.openlocfilehash: c184b02f46ac2ad66c6ce607967a687c82d31477
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a399a3a7979f6165d26eb48505242976d51e64f
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
 
@@ -38,10 +38,10 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="premium-and-standard-table-apis"></a>高级表 API 和标准表 API
-如果当前使用表存储，可以通过迁移到 Azure Cosmos DB 的“高级表”预览获得以下好处：
+## <a name="table-offerings"></a>表产品/服务
+如果当前使用 Azure 表存储，可以通过移到 Azure Cosmos DB 表 API（预览版）获得以下好处：
 
-| | Azure 表存储 | Azure Cosmos DB：表存储（预览版） |
+| | Azure 表存储 | Azure Cosmos DB 表 API（预览版） |
 | --- | --- | --- |
 | 延迟 | 快速，但对延迟没有上限。 | 读取操作和写入操作的低至个位数的毫秒级延迟（通过以下统计数据提供支持：在全球任何位置，对于任何规模，99% 的情况下读取操作的延迟 < 10 毫秒、写入操作的延迟 < 15 毫秒）。 |
 | 吞吐量 | 可变吞吐量模型。 表的可伸缩性限制为 20,000 个操作/秒。 | 使用 SLA 支持的[每个表专用保留吞吐量](request-units.md)实现高度可缩放。 帐户没有吞吐量上限，每个表支持 >1000 万个操作/秒。 |

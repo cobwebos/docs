@@ -1,6 +1,6 @@
 ---
-title: "Azure 操作方法 - 如何将不同的硬件安全模型与 Azure 中的设备预配服务客户端配合使用 | Microsoft Docs"
-description: "Azure 操作方法 - 如何将不同的硬件安全模型与 Azure 中的设备预配服务客户端配合使用"
+title: "Azure 操作方法 - 如何将不同的硬件安全模块与 Azure 中的设备预配服务客户端配合使用 | Microsoft Docs"
+description: "Azure 操作方法 - 如何将不同的硬件安全模块与 Azure 中的设备预配服务客户端配合使用"
 services: iot-dps
 keywords: 
 author: yzhong94
@@ -12,11 +12,11 @@ documentationcenter:
 manager: 
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 620d86b62cf43c3e1a5f7f5c724fcf00174f30e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 184bbdc0a6bef74d0e5ac79afe3858354c6b1695
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="how-to-use-different-hardware-security-modules-with-device-provisioning-service-client-sdk"></a>如何将不同硬件安全模块与设备预配服务客户端 SDK 配合使用
 这些步骤演示如何使用物理设备和模拟器在 C 中将不同[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 与设备预配服务客户端 SDK 配合使用。  预配服务支持两种身份验证模式：X**.**509 和受信任的平台模块 (TPM)。

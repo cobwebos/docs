@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: 34255e8ada8dfb00b3c02ca2ab22f94bd3e0954d
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: b157e2f90fa2daf00cf71472eb799ee98797b4dc
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/25/2017
 
 #### <a name="windows"></a>Windows
 
-- Windows Server 2016（服务器核心和带桌面体验的服务器）*
+- Windows Server 2016（服务器核心、带桌面体验的服务器）*
 - Windows Server 2012 R2
 - Windows Server 2012
 - 带 SP1（或更高版本）的 Windows Server 2008 R2

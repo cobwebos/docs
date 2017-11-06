@@ -1,5 +1,5 @@
 ---
-title: "在 Linux 上使用 C 连接设备 | Microsoft Docs"
+title: "使用 C 将 Linux 设备预配到远程监视 - Azure | Microsoft Docs"
 description: "介绍如何使用在 Linux 上运行的以 C 编写的应用程序将设备连接到 Azure IoT 套件预配置远程监视解决方案。"
 services: 
 suite: iot-suite
@@ -13,59 +13,67 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 09/16/2017
 ms.author: dobett
-ms.openlocfilehash: 9adbc9cc13f0b4cafa3a3a7703c46f8085b15232
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 542d1e0c4c4d6cfa5d2fe9df90a7a34c72f19fc0
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>将设备连接到远程监视预配置解决方案 (Linux)
+
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## <a name="build-and-run-a-sample-c-client-linux"></a>生成并运行示例 C 客户端 Linux
-以下步骤演示如何创建一个客户端应用程序，用来与远程监视预配置解决方案通信。 此应用程序以 C 编写，在 Ubuntu Linux 上生成和运行。
+本教程介绍如何将物理设备连接到远程监视预配置解决方案。
 
-要完成这些步骤，需要一个运行 Ubuntu 版本 15.04 或 15.10 的设备。 继续操作之前，请使用以下命令在 Ubuntu 设备上安装必备组件包：
+## <a name="create-a-c-client-project-on-linux"></a>在 Linux 上创建 C 客户端项目
 
-```
+与受约束设备上运行的大多数嵌入式应用程序一样，设备应用程序的客户端代码是用 C 语言编写的。在本教程中，将在运行 Ubuntu (Linux) 的计算机上生成应用程序。
+
+若要完成这些步骤，需要一个运行 Ubuntu 版本 15.04 或更高版本的设备。 继续操作之前，请使用以下命令在 Ubuntu 设备上安装必备组件包：
+
+```sh
 sudo apt-get install cmake gcc g++
 ```
 
-## <a name="install-the-client-libraries-on-your-device"></a>在设备上安装客户端库
+### <a name="install-the-client-libraries-on-your-device"></a>在设备上安装客户端库
+
 Azure IoT 中心客户端库以包的形式提供，可以使用 **apt-get** 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和标头文件的包：
 
 1. 在外壳程序中，向计算机添加 AzureIoT 库：
-   
-    ```
+
+    ```sh
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
     sudo apt-get update
     ```
-2. 安装 azure-iot-sdk-c-dev 包
-   
-    ```
+
+1. 安装 azure-iot-sdk-c-dev 包
+
+    ```sh
     sudo apt-get install -y azure-iot-sdk-c-dev
     ```
 
-## <a name="install-the-parson-json-parser"></a>安装 Parson JSON 分析器
+### <a name="install-the-parson-json-parser"></a>安装 Parson JSON 分析器
+
 IoT 中心客户端库使用 Parson JSON 分析器分析消息有效负载。 在计算机的适当文件夹中，使用以下命令克隆 Parson GitHub 存储库：
 
-```
+```sh
 git clone https://github.com/kgabis/parson.git
 ```
 
-## <a name="prepare-your-project"></a>准备项目
-在 Ubuntu 计算机上，创建名为 **remote\_monitoring** 的文件夹。 在 **remote\_monitoring** 文件夹中执行以下操作：
+### <a name="prepare-your-project"></a>准备项目
 
-- 创建四个文件：**main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、**CMakeLists.txt**。
-- 创建名为 **parson** 的文件夹。
+在 Ubuntu 计算机上，创建名为 `remote_monitoring` 的文件夹。 在 `remote_monitoring` 文件夹中：
 
-将 **parson.c** 和 **parson.h** 文件从 Parson 存储库的本地副本复制到 **remote\_monitoring/parson** 文件夹。
+- 创建四个文件：`main.c`、`remote_monitoring.c`、`remote_monitoring.h` 和 `CMakeLists.txt`。
+- 创建名为 `parson` 的文件夹。
 
-在文本编辑器中，打开 **remote\_monitoring.c** 文件。 添加以下 `#include` 语句：
-   
-```
+将文件 `parson.c` 和 `parson.h` 从 Parson 存储库的本地副本复制到 `remote_monitoring/parson` 文件夹。
+
+在文本编辑器中打开 `remote_monitoring.c` 文件。 添加以下 `#include` 语句：
+
+```c
 #include "iothubtransportmqtt.h"
 #include "schemalib.h"
 #include "iothub_client.h"
@@ -78,34 +86,36 @@ git clone https://github.com/kgabis/parson.git
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="call-the-remotemonitoringrun-function"></a>调用 remote\_monitoring\_run 函数
-在文本编辑器中，打开 **remote_monitoring.h** 文件。 添加以下代码：
+## <a name="add-code-to-run-the-app"></a>添加代码以运行应用
 
-```
+在文本编辑器中打开 `remote_monitoring.h` 文件。 添加以下代码：
+
+```c
 void remote_monitoring_run(void);
 ```
 
-在文本编辑器中，打开 **main.c** 文件。 添加以下代码：
+在文本编辑器中打开 `main.c` 文件。 添加以下代码：
 
-```
+```c
 #include "remote_monitoring.h"
 
 int main(void)
 {
-    remote_monitoring_run();
+  remote_monitoring_run();
 
-    return 0;
+  return 0;
 }
 ```
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
+
 以下步骤描述如何使用 *CMake* 生成客户端应用程序。
 
-1. 在文本编辑器中，打开 **remote_monitoring** 文件夹中的 **CMakeLists.txt** 文件。
+1. 在文本编辑器中，打开 `remote_monitoring` 文件夹中的 **CMakeLists.txt** 文件。
 
 1. 添加以下指令，以定义如何生成客户端应用程序：
-   
-    ```
+
+    ```cmake
     macro(compileAsC99)
       if (CMAKE_VERSION VERSION_LESS "3.1")
         if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
@@ -151,9 +161,10 @@ int main(void)
         m
     )
     ```
-1. 在 **remote_monitoring** 文件夹中，创建一个文件夹用于存储 CMake 生成的 *make* 文件，并运行 **cmake** 和 **make** 命令，如下所示：
-   
-    ```
+
+1. 在 `remote_monitoring` 文件夹中，创建一个文件夹以存储 CMake 生成的 *make* 文件。 然后运行 **cmake** 和 **make** 命令，如下所示：
+
+    ```sh
     mkdir cmake
     cd cmake
     cmake ../
@@ -161,10 +172,9 @@ int main(void)
     ```
 
 1. 运行客户端应用程序，并将遥测数据发送到 IoT 中心：
-   
-    ```
+
+    ```sh
     ./sample_app
     ```
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
-

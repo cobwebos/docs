@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 472c3f35e2ae32550be62826407689f93101041f
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 94d725cfb072091e57c96d3b2aca7b2e73657eef
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -212,7 +212,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 故障转移群集是由 1+n 个独立服务器（节点）构成的组，这些服务器配合工作以提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集将计算发生的故障次数并维护状况良好的群集，提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
 ## <a name="prerequisite"></a>先决条件
-在开始学习本文档之前，请确保查看以下文档：
+开始阅读本文档前，请务必先查看以下文档：
 
 * [SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
 
@@ -223,13 +223,13 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Azure 中的 Windows Server 故障转移群集
 
-相比于裸机或私有云部署，Azure 虚拟机要求执行额外的步骤来配置 Windows Server 故障转移群集。 构建群集时，需要为 SAP ASCS/SCS 实例设置多个 IP 地址和虚拟主机名。
+相比于裸机或私有云部署，Azure 虚拟机要求执行额外的步骤来配置 Windows Server 故障转移群集。 生成群集时，需要为 SAP ASCS/SCS 实例设置多个 IP 地址和虚拟主机名。
 
 ### <a name="name-resolution-in-azure-and-cluster-virtual-host-name"></a>Azure 中的名称解析和群集虚拟主机名
 
-Azure 云平台不提供配置虚拟 IP 地址（如浮动 IP 地址）的选项。 需要一个替代解决方案来设置虚拟 IP，以便连接到云中的群集资源。 Azure 在 Azure 负载均衡器服务中具有**内部负载均衡器**。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。 需要在包含群集节点的资源组中部署内部负载均衡器。 然后，使用内部负载均衡器的探测端口配置所有必要的端口转发规则。 客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址，内部负载均衡器处理向活动群集节点的端口转发。
+Azure 云平台不提供配置虚拟 IP 地址（如浮动 IP 地址）的选项。 需要一个替代解决方案来设置虚拟 IP，以便连接到云中的群集资源。 Azure 使用 Azure 负载均衡器服务提供的内部负载均衡器。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。 需要在包含群集节点的资源组中部署内部负载均衡器。 然后，使用内部负载均衡器的探测端口配置所有必要的端口转发规则。 客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址，内部负载均衡器处理向活动群集节点的端口转发。
 
-![图 1：Azure 中没有共享磁盘的 Windows Server 故障转移群集配置][sap-ha-guide-figure-1001]
+![图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置][sap-ha-guide-figure-1001]
 
 _**图 1：**Azure 中没有共享磁盘的 Windows Server 故障转移群集配置_
 
@@ -250,7 +250,7 @@ SAP 开发了可以取代群集共享磁盘的新方法和新方案，用于将 
 * SAP (A)SCS 实例已群集化，可使用虚拟主机名 **<(A)SCSVirtualHostName>** 进行访问
 * SAP GLOBAL 文件放置在 SMB 文件共享中，可使用 <SAPGLOBALHost> 主机名 \\\\&lt;SAPGLOBALHost&gt;\sapmnt\\&lt;SID&gt;\SYS\. 进行访问。
 * SAP (A)SCS 实例安装在本地磁盘和两个群集节点上
-* **<(A)SCSVirtualHostName>** 网络名称不同于 **<SAPGLOBALHost>**
+* **<(A)SCSVirtualHostName>** 网络名称不同于 **&lt;SAPGLOBALHost&gt;**
 
 ![图 2：采用 SMB 文件共享的新 SAP (A)SCS HA 体系结构][sap-ha-guide-figure-8004]
 

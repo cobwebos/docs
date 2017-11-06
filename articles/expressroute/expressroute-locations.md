@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2017
+ms.date: 10/25/2017
 ms.author: kaanan
-ms.openlocfilehash: b734181eafeec0ed38c0770baa996a398091f341
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ef91f6f952b901bcda981e5375be0b84e1ca0a3
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -84,6 +84,7 @@ ms.lasthandoff: 10/11/2017
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[Console](https://www.consoleconnect.com/partners/cloudsaas/)**| 支持 | 支持 |硅谷、多伦多 |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支持 |支持 |芝加哥、丹佛、洛杉矶、纽约、硅谷、华盛顿特区 |
+| **Epsilon Global Communications** |支持 |支持 |新加坡 |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、香港特别行政区、伦敦、洛杉矶、墨尔本、纽约、大阪、巴黎、圣保罗、西雅图、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
 | **euNetworks** |支持 |支持 |阿姆斯特丹 |
 | **GÉANT** |支持 |支持 |阿姆斯特丹 |

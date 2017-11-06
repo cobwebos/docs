@@ -4,7 +4,7 @@ description: "在数分钟内将第一个 .NET Core Hello World 应用部署到 
 keywords: "azure 应用服务、web 应用、dotnet、core、linux、oss"
 services: app-service
 documentationCenter: 
-authors: cephalin
+author: cephalin
 manager: syntaxc4
 editor: 
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 3565f6e7cc4dcc2d075cdf594ce03d1b0a26d56b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 2a8000cadd6f6d7204e1790df62443a7ac7598c9
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 .NET Core Web 应用
 
@@ -87,19 +87,15 @@ git commit -m "first commit"
 
 ## <a name="create-a-web-app-with-built-in-image"></a>使用内置映像创建 Web 应用
 
-使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../app-service-web-overview.md)。 不要忘记将 `<app name>` 替换为唯一的应用名称。
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-no-h.md)]
 
-以下命令中的运行时设置为 `DOTNETCORE|1.1`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes](/cli/azure/webapp#list-runtimes)。
+浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
 
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --runtime "DOTNETCORE|1.1" --deployment-local-git
+```bash
+http://<app name>.azurewebsites.net
 ```
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-result.md)]
-
 ![空 Web 应用页面](media/quickstart-dotnetcore/dotnet-browse-created.png)
-
-已使用内置映像创建了空的新 Web 应用并启用了 Git 部署。
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 

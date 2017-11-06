@@ -12,14 +12,14 @@ ms.custom: security
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-services
+ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat; ronitr
-ms.openlocfilehash: bd3de9ed0131edc683763b0fe7f4a2ae74533944
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 647bd11fe305e255ab492939586241e28557ead8
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sql-database-threat-detection"></a>SQL 数据库威胁检测
 
@@ -31,18 +31,18 @@ SQL 威胁检测提供新的安全层，在发生异常活动时会提供安全�
 
 例如，SQL 注入是 Internet 上常见的 Web 应用程序安全问题之一，用于攻击数据驱动的应用程序。 攻击者利用应用程序漏洞将恶意 SQL 语句注入应用程序入口字段，以破坏或修改数据库中的数据。
 
-SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.com/en-us/services/security-center/)集成，且每个受保护的 SQL 数据库服务器将按与 Azure 安全中心标准层相同的价格（即 $15/节点/月）进行计费，其中每个受保护的 SQL 数据库服务器均计为 1 个节点。 我们诚邀各位免费试用该功能 60 天。 
+SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.com/en-us/services/security-center/)集成，且每个受保护的 SQL 数据库服务器都将按与 Azure 安全中心标准层相同的价格（即 $15/节点/月）进行计费，其中每个受保护的 SQL 数据库服务器均计为 1 个节点。  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>在 Azure 门户中为数据库设置威胁检测
 1. 在 [https://portal.azure.com](https://portal.azure.com) 上启动 Azure 门户。
-2. 导航到要监视的 SQL 数据库的配置边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”。 
+2. 导航到要监视的 SQL 数据库的“配置”页。 在“设置”页中，选择“审核和威胁检测”。 
     ![导航窗格][1]
-3. 在“审核和威胁检测”配置边栏选项卡中，将审核设置为“打开”，随后会显示威胁检测设置。
+3. 在“审核和威胁检测”配置页中，将审核设置为“打开”，随后会显示威胁检测设置。
   
     ![导航窗格][2]
 4. 将威胁检测设置为“打开”。
 5. 配置在检测到异常数据库活动时需要接收安全警报的电子邮件列表。
-6. 在“审核和威胁检测”边栏选项卡中单击“保存”，以保存新的或更新的审核和威胁检测设置。
+6. 在“审核和威胁检测”页中单击“保存”，以保存新的或更新的审核和威胁检测设置。
        
     ![导航窗格][3]
 
@@ -61,11 +61,11 @@ SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>在 Azure 门户中为数据库检测威胁检测警报
 
-SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azure.microsoft.com/en-us/services/security-center/)集成。 Azure 门户中“数据库”边栏选项卡内的实时 SQL 安全磁贴会跟踪活动威胁的状态。 
+SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azure.microsoft.com/en-us/services/security-center/)集成。 Azure 门户中“数据库”页内的实时 SQL 安全磁贴会跟踪活动威胁的状态。 
 
    ![导航窗格][6]
    
-1. 单击 SQL 安全磁贴将启动“Azure 安全中心警报”边栏选项卡，并提供在数据库中检测到的活动 SQL 威胁的概述。 
+1. 单击 SQL 安全磁贴将启动“Azure 安全中心警报”页，并提供在数据库中检测到的活动 SQL 威胁的概述。 
 
   ![导航窗格][7]
 
@@ -79,7 +79,7 @@ SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azur
 * 有关威胁检测的详细信息，请访问 [Azure 博客](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
 * 了解有关 [Azure SQL 数据库审核](sql-database-auditing.md)的详细信息
 * 了解有关 [Azure 安全中心](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)的详细信息
-* 有关定价的更多详细信息，请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/en-us/pricing/details/sql-database/)  
+* 有关定价的更多详细信息，请参阅 [SQL 数据库定价页](https://azure.microsoft.com/en-us/pricing/details/sql-database/)  
 * 有关 PowerShell 脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)
 
 

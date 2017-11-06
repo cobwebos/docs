@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/25/2017
 ms.author: damaerte
-ms.openlocfilehash: 22e4d491bfb9e61294ccdaaa36abbf38b9b662ac
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: ffe5298678de6cc16af0ea29c7d887330f77589d
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中 PowerShell 的功能和工具
 
@@ -91,7 +91,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 |**类别**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure 工具     |[Azure PowerShell (4.4.0)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.0)<br> [Azure CLI (2.0.18)](https://docs.microsoft.com/en-us/cli/azure/overview)|
+|Azure 工具     |[Azure PowerShell (4.4.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.1)<br> [Azure CLI (2.0.20)](https://docs.microsoft.com/en-us/cli/azure/overview)|
 |文本编辑器    |vim<br> nano                             |
 |包管理器 |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |源代码管理  |git                                      |

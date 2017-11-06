@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2017
+ms.date: 10/30/2017
 ms.author: elkuzmen
-ms.openlocfilehash: 95885a3f956f96f0cd8dc6d3c63d99b7256e7976
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: d0b7b34c64692110c1c0d54d4a4d8b9d4186449b
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Linux VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 10/25/2017
 Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 从资源管理器检索存储帐户访问密钥，并使用这些密钥访问存储。  在此步骤中，将授予 VM 对存储帐户密钥的 MSI 访问权限。   
 
 1. 导航回新创建的存储帐户。
-2. 单击左侧面板中的“访问控制 (IAM)”。  
+2. 单击左侧面板中的“访问控制(IAM)”链接。  
 3. 单击页面顶部的“+ 添加”，为 VM 添加新的角色分配
 4. 在页面右侧，将“角色”设置为“存储帐户密钥操作员服务角色”。 
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
@@ -106,9 +106,9 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器
 
-在本教程的剩余部分中，我们将从前面创建的 VM 开始工作。
+在本教程的剩余部分中，我们从先前创建的 VM 入手。
 
-若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 客户端。
+若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 门户中，导航到“虚拟机”，转到 Linux 虚拟机，然后在“概述”页中单击顶部的“连接”。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  

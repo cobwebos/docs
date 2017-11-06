@@ -1,6 +1,6 @@
 ---
 title: "可用于 Azure 机器学习数据准备的其他源数据连接示例 | Microsoft Docs"
-description: "本文档提供一组可用于 Azure ML 数据准备的源数据连接示例"
+description: "本文档提供一组可用于 Azure 机器学习数据准备的源数据连接示例"
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -12,25 +12,25 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 550cca100314009f63eec2136e8c65426d8bf07f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9aaf4329b25cb189146949afed89cf15619ba592
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sample-of-custom-source-connections-python"></a>自定义源连接示例 (Python) 
-阅读本附录前，先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)
+阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。
 
-## <a name="loading-data-from-dataworld"></a>从 data.world 加载数据
+## <a name="load-data-from-dataworld"></a>从 data.world 加载数据
 
 ### <a name="prerequisites"></a>先决条件
 
 #### <a name="register-yourself-at-dataworld"></a>在 data.world 自行注册
-需要从 data.world 网站获取的 API 令牌。
+需要来自 data.world 网站的 API 令牌。
 
 #### <a name="install-dataworld-library"></a>安装 data.world 库
 
-通过“文件”->“打开命令行接口”，打开 Azure Machine Learning Workbench 命令行接口
+通过选择“文件” > “打开命令行接口”，打开 Azure Machine Learning Workbench 命令行接口。
 
 ```console
 pip install git+git://github.com/datadotworld/data.world-py.git
@@ -45,24 +45,24 @@ API token (obtained at: https://data.world/settings/advanced): <enter API token 
 
 #### <a name="load-data-into-data-preparation"></a>在数据准备中加载数据
 
-创建新的基于脚本的数据流，然后使用以下脚本从 data.world 加载数据
+创建一个新的基于脚本的数据流。 然后使用以下脚本从 data.world 加载数据。
 
 ```python
 #paths = df['Path'].tolist()
 
 import datadotworld as dw
 
-#load the dataset
+#Load the dataset.
 lds = dw.load_dataset('data-society/the-simpsons-by-the-data')
 
-#Load specific data frame from the dataset
+#Load specific data frame from the dataset.
 df = lds.dataframes['simpsons_episodes']
 
 ```
 
-## <a name="load-cosmosdb-data-into-data-preparation"></a>在数据准备中加载 CosmosDB 数据
+## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>将 Azure Cosmos DB 数据加载到数据准备中
 
-创建新的基于脚本的数据流，然后使用以下脚本从 CosmosDB 加载数据（需要先安装库，请参阅上文链接的参考文档）
+创建新的基于脚本的数据流，然后使用以下脚本从 Azure Cosmos DB 加载数据。 （需要先安装库。 有关详细信息，请参阅我们链接到的上一个参考文档。）
 
 ```python
 import pydocumentdb
@@ -77,7 +77,7 @@ config = {
     'DOCUMENTDB_COLLECTION': '<collectionname>'
 };
 
-# Initialize the Python DocumentDB client
+# Initialize the Python DocumentDB client.
 client = document_client.DocumentClient(config['ENDPOINT'], {'masterKey': config['MASTERKEY']})
 
 # Read databases and take first since id should not be duplicated.

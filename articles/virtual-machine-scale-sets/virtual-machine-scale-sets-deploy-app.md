@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 0ff8a178d883e3b51294485e556e65da52dbf327
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 7e03d5e2bbdb1b3b206fa7fa455f7dce7951f02b
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 本文介绍如何为规模集中的实例生成自定义 VM 映像，或在现有 VM 实例上自动运行安装脚本。 本文还将介绍如何跨规模集管理应用程序或 OS 更新。
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/20/2017
 ## <a name="already-provisioned"></a>使用自定义脚本扩展安装应用
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。
 
-自定义脚本扩展与 Azure Resource Manager 模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。 
+自定义脚本扩展与 Azure 资源管理器模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。 
 
 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
 
@@ -172,7 +172,7 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 y
 
 有关详细信息，包括示例 cloud-init.txt 文件，请参阅[使用 cloud-init 自定义 Azure VM](../virtual-machines/linux/using-cloud-init.md)。
 
-若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/azure/vmss#create) 命令并指定 cloud-int 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例。 按如下所示输入自己的名称：
+若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/azure/vmss#create) 命令并指定 cloud-init 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例。 按如下所示输入自己的名称：
 
 ```azurecli
 az vmss create \

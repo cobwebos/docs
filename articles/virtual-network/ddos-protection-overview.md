@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
-ms.openlocfilehash: 0130823b6a6f5a4883ad640c9bcefc89b82b2cd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76da0d4e805c732d40a7bd02e5c70973c792e26c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -35,12 +35,12 @@ Azure DDoS 保护与应用程序设计最佳做法相结合，可提供对这些
 
 ![Azure DDoS 保护标准](./media/ddos-protection-overview/ddos-protection-overview-fig2.png)
 
-在开发和测试方案中，欢迎尝试 DDoS 保护标准并使用以下资源来提供关于体验的反馈：
+我们建议你在开发、测试或生产环境中试用 DDoS 保护标准。 使用以下资源提供有关体验的反馈：
 - [Microsoft Azure 论坛上的 Azure DDoS 保护](https://feedback.azure.com/forums/905032-azure-ddos-protection)。 
 - [MSDN 论坛上的 Azure DDoS 保护](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azureddosprotection)
 - [Stack Overflow 上的 Azure DDoS 保护](https://stackoverflow.com/tags/azure-ddos/info)
 
-有关支持问题，可[打开 Azure 支持票证](../azure-supportability/how-to-create-azure-support-request.md)。
+有关支持问题，可[打开 Azure 支持票证](../azure-supportability/how-to-create-azure-support-request.md)。 虽然 DDoS 保护标准处于预览状态，但会尽力提供支持。
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS 保护标准可缓解的 DDoS 攻击类型
 

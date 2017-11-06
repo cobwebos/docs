@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.openlocfilehash: b224f5b32c9a46f797e78644c731a9cd9341da2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 832c4f232a3821225c8086b636de713da2b967a0
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 > [!div class="op_single_selector"]
@@ -35,6 +35,9 @@ ms.lasthandoff: 10/11/2017
 本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为预测和见解。 转换活动在计算环境（例如 Azure HDInsight 群集或 Azure Batch）中执行。 其提供了相关文章链接，内附各转换活动的详细信息。
 
 数据工厂支持以下数据转换活动，这些活动可单独添加到[管道](concepts-pipelines-activities.md)，还可与其他活动关联在一起。
+
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 中的转换活动](v1/data-factory-data-transformation-activities.md)。
  
 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive 活动

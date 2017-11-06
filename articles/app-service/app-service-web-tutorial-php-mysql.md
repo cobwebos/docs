@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 07/21/2017
+ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 64baee04c43442a73dbb9ef657c091f307204ce4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08e9f58cc81122ae36db67d916cf2550490ec4ef
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>在 Azure 中构建 PHP 和 MySQL Web 应用
 
@@ -324,23 +324,18 @@ git commit -m "database.php updates"
 
 此步骤将已连接 MySQL 的 PHP 应用程序部署到 Azure 应用服务。
 
+### <a name="configure-a-deployment-user"></a>配置部署用户
+
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user-no-h.md)]
+
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
 [!INCLUDE [Create app service plan no h](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
+<a name="create"></a>
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-no-h.md)]
-
-### <a name="set-the-php-version"></a>设置 PHP 版本
-
-在 Cloud Shell 中，使用 [az webapp config set](/cli/azure/webapp/config#set) 命令设置应用程序所需的 PHP 版本。
-
-以下命令将 PHP 版本设置为 _7.0_。
-
-```azurecli-interactive
-az webapp config set --name <app_name> --resource-group myResourceGroup --php-version 7.0
-```
+[!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
@@ -397,17 +392,9 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 默认情况下，Azure 应用服务将根虚拟应用程序路径 (/) 指向已部署的应用程序的文件的根目录 (sites\wwwroot)。
 
-### <a name="configure-a-deployment-user"></a>配置部署用户
-
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user-no-h.md)]
-
-### <a name="configure-local-git-deployment"></a>配置本地 Git 部署
-
-[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git-no-h.md)]
-
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
-在本地终端窗口中，将 Azure 远程功能添加到本地 Git 存储库。
+在本地终端窗口中，将 Azure 远程功能添加到本地 Git 存储库。 将 _&lt;paste\_copied\_url\_here>_ 替换为从[创建 Web 应用](#create)保存的 Git 远程 URL。
 
 ```bash
 git remote add azure <paste_copied_url_here>

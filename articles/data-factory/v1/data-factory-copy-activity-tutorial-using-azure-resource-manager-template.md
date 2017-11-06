@@ -1,6 +1,6 @@
 ---
 title: "教程：使用 Resource Manager 模板创建管道 | Microsoft 文档"
-description: "本教程使用 Azure Resource Manager 模板创建 Azure 数据工厂管道。 该管道将 Azure Blob 存储中的数据复制到 Azure SQL 数据库。"
+description: "本教程使用 Azure 资源管理器模板创建 Azure 数据工厂管道。 该管道将 Azure Blob 存储中的数据复制到 Azure SQL 数据库。"
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -12,29 +12,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 85855a3696529eae4f977e9e75800d6fa32b7cc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f3523f17b5b39da94177038584d983aa3592199f
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
-# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure Resource Manager 模板创建复制数据的数据工厂管道 
+# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 资源管理器模板创建复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
 > * [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * 
+            [Azure 资源管理器模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
-> 
 
-本教程介绍如何使用 Azure Resource Manager 模板来创建 Azure 数据工厂。 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅[版本 2 中的复制活动教程文档](../quickstart-create-data-factory-dot-net.md)。 
+
+本教程介绍如何使用 Azure 资源管理器模板来创建 Azure 数据工厂。 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 本教程会创建包含一个活动（复制活动）的管道。 复制活动可以将数据从支持的数据存储复制到支持的接收器数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。
 
@@ -46,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 * 通读[教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成**先决条件**步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。 本教程使用 PowerShell 部署数据工厂实体。 
-* （可选）若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../../azure-resource-manager/resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
+* （可选）若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 本教程创建包含以下数据工厂实体的数据工厂：
@@ -280,7 +283,7 @@ ms.lasthandoff: 10/11/2017
 ```
 
 ## <a name="parameters-json"></a>参数 JSON
-创建名为 **ADFCopyTutorialARM-Parameters.json**、包含 Azure Resource Manager 模板参数的 JSON 文件。 
+创建名为 **ADFCopyTutorialARM-Parameters.json**、包含 Azure 资源管理器模板参数的 JSON 文件。 
 
 > [!IMPORTANT]
 > 为 storageAccountName 和 storageAccountKey 参数指定 Azure 存储帐户的名称和密钥。  

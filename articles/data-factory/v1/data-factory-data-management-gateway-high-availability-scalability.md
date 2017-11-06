@@ -14,13 +14,17 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1e8c2248c064a7ec934dd8ef3e926f3325a05395
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: eb026d44eedf3b393408c8453a8ed1cfed3ce415
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[版本 2 中的自托管集成运行时](../create-self-hosted-integration-runtime.md)。 
+
+
 本文有助于读者使用数据管理网关/Integration 来配置高可用性和可伸缩性解决方案。    
 
 > [!NOTE]

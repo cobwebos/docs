@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/26/2017
+ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: fdf1911f4f5b515592b6197ea738d808104cb43e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36ce117076ed5c15ddff850485d8f8912ec53caf
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="use-azure-hdinsight-tool-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -49,21 +49,9 @@ ms.lasthandoff: 10/11/2017
 
    ![用于 Visual Studio Code 的 HDInsight - Python 安装](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-对于 Spark 用户，建议使用 Python 扩展以获得更好的语言服务体验。 对于 Hive 用户，Python 扩展不是必需的。 
-
-**安装 Python**
-
-1. 打开 **Visual Studio Code**。
-2. 单击左侧窗格中的“扩展”。 在搜索框中，输入“python”。 然后，可以看到 python 扩展列表。 其中一个是 **Python**。
-3. 单击“Python”旁边的“安装”。 数秒后，“安装”按钮将变为“重载”。
-4. 单击“重载”以激活 **Python** 扩展。
-5. 单击“重载窗口”以进行确认。 可以在“扩展”窗格中看到“Python”。
-
-     ![用于 Visual Studio Code 的 HDInsight - Python 安装](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
-
 ## <a name="open-hdinsight-workspace"></a>打开 HDInsight 工作区
 
-必须在 VSCode 中创建工作区，然后才能连接到 Azure。
+需要在 VSCode 中创建工作区，然后才能连接到 Azure。
 
 **打开工作区**
 
@@ -90,21 +78,19 @@ ms.lasthandoff: 10/11/2017
 
     连接后，VSCode 窗口左下角的状态栏上会显示 Azure 帐户名称。 
 
-    > [!NOTE] 
-    > 如果 Azure 帐户已启用双重身份验证，建议使用手机身份验证，而不使用 Pin 身份验证。
-    > 这是使用 Google Chrome 进行 Azure 登录时的一个已知问题。
+    > [!NOTE]
+    > 由于已知的 Azure 身份验证问题，请以专用模式或匿名模式打开浏览器。 如果 Azure 帐户已启用双重身份验证，建议使用手机身份验证，而不使用 Pin 身份验证。
+  
 
-4. 右键单击脚本编辑器以打开上下文菜单：
-
-    ![用于 Visual Studio Code 的 HDInsight 工具脚本编辑器上下文菜单](./media/hdinsight-for-vscode/hdinsight-for-vscode-context-menu.png)
-
-    从上下文菜单中，可以执行以下任务：
+4. 右键单击脚本编辑器以打开上下文菜单。 从上下文菜单中，可以执行以下任务：
 
     - logout
     - 列出群集
     - 设置默认群集
     - 提交交互式 Hive 查询
     - 提交 Hive 批处理脚本
+    - 提交交互式 PySpark 查询
+    - 提交 PySpark 批处理脚本
     - 设置配置
 
 ## <a name="list-hdinsight-clusters"></a>列出 HDInsight 群集
@@ -144,7 +130,7 @@ ms.lasthandoff: 10/11/2017
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-3. 右键单击脚本编辑器，然后单击“HDInsight: Interactive Hive”以提交查询。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 很快，查询结果将显示在一个新选项卡中：
+3. 右键单击脚本编辑器，然后单击“HDInsight: Hive Interactive”以提交查询。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 很快，查询结果将显示在一个新选项卡中：
 
    ![交互式 Hive 结果](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -162,7 +148,7 @@ ms.lasthandoff: 10/11/2017
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-3. 右键单击脚本编辑器，然后单击“HDInsight: Submit Hive Batch Script”以提交 Hive 作业。 
+3. 右键单击脚本编辑器，然后单击“HDInsight: Hive Batch”以提交 Hive 作业。 
 4. 选择要提交到的群集。  
 
     提交 Hive 作业后，“输出”面板中将显示提交成功信息和作业 ID。 并且，它将打开“WEB 浏览器”，作业实时日志和状态显示在其中。
@@ -171,11 +157,44 @@ ms.lasthandoff: 10/11/2017
 
 与[提交交互式 Hive 查询](#submit-interactive-hive-queries)相比，批处理作业需要花费更长的时间。
 
+## <a name="submit-interactive-pyspark-queries"></a>提交交互式 PySpark 查询
+使用 VSCode 的 HDInsight 工具还可以将交互式 PySpark 查询提交到 Spark 群集。
+1. 创建一个新的工作文件夹和一个扩展名为 .py 的新脚本文件（如果尚没有）。
+2. 连接到 Azure 帐户（如果尚未这样做）。
+3. 将以下代码复制并粘贴到脚本文件中：
+   ```python
+   from operator import add
+   lines = spark.read.text("/HdiSamples/HdiSamples/FoodInspectionData/README").rdd.map(lambda r: r[0])
+   counters = lines.flatMap(lambda x: x.split(' ')) \
+                .map(lambda x: (x, 1)) \
+                .reduceByKey(add)
 
-## <a name="submit-pyspark-job"></a>提交 PySpark 作业
+   coll = counters.collect()
+   sortedCollection = sorted(coll, key = lambda r: r[1], reverse = True)
+
+   for i in range(0, 5):
+        print(sortedCollection[i])
+   ```
+4. 突出显示这些脚本并右键单击脚本编辑器，然后单击“HDInsight: PySpark Interactive”。
+5. 如果尚未在 VSCode 中安装 **Python** 扩展，请单击下面的“安装”按钮。
+    ![用于 Visual Studio Code 的 HDInsight - Python 安装](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
+
+6. 在系统中设置 Python 环境（如果不安装它）。 
+   - 对于 windows，下载并安装 [Python](https://www.python.org/downloads/)。 然后确保 `Python` 和 `pip` 在系统 PATH 中。
+   - 有关 MacOS 和 Linux 的说明，请参阅[为 Visual Studio Code 设置 PySpark 交互式环境](set-up-pyspark-interactive-environment.md)。
+7. 选择用于提交 PySpark 作业的群集。 很快，查询结果将显示在右侧的新选项卡中：
+
+   ![提交 python 作业结果](./media/hdinsight-for-vscode/pyspark-interactive-result.png) 
+8. 我们的工具还支持查询 **SQL 子句**。
+
+   ![提交 python 作业结果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) 运行查询时，提交状态将显示在底部状态栏的左侧。 当状态为“PySpark 内核(忙)”时不能提交其他查询，否则运行将挂起。
+9. 我们的群集可以保持会话。 例如，**a=100** 表示已在群集中保留此会话，现在只需运行**输出**到群集。
+ 
+
+## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批处理作业
 
 1. 创建一个新的工作文件夹和一个扩展名为 .py 的新脚本文件（如果尚没有）。
-2. 连接到 Azure 帐户，然后配置默认群集（如果尚未执行此操作）。
+2. 连接到 Azure 帐户（如果尚未这样做）。
 3. 将以下代码复制并粘贴到脚本文件中：
 
     ```python
@@ -198,7 +217,7 @@ ms.lasthandoff: 10/11/2017
             print("%s: %i" % (word, count))
         spark.stop()
     ```
-4. 右键单击脚本编辑器，然后单击“HDInsight: Submit PySpark Job”。 
+4. 右键单击脚本编辑器，然后单击“HDInsight: PySpark Batch”。 
 5. 选择一个群集以提交 PySpark 作业。 
 
    ![提交 python 作业结果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
@@ -224,10 +243,12 @@ ms.lasthandoff: 10/11/2017
 * 用于 VScode 的 HDInsight：[视频](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>工具和扩展
-* [使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [为 Visual Studio Code 设置 PySpark 交互式环境](set-up-pyspark-interactive-environment.md)
+* [使用用于 IntelliJ 的 Azure 工具包创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [使用 Azure Toolkit for IntelliJ 通过 SSH 远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
+* [使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)

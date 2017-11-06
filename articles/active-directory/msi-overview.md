@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/17/2017
+ms.date: 10/31/2017
 ms.author: skwan
-ms.openlocfilehash: 803d0ad64d331dd331e5bab718484cb2fc8247d5
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 473a9e3aa3b6ad79a5f50a37c8aadc1bba79f5ae
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/01/2017
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure 资源的托管服务标识 (MSI)
 
@@ -50,12 +50,14 @@ ms.lasthandoff: 10/17/2017
 <br><br>
 | 从已启用 MSI 的资源 | 了解如何操作 |
 | ------- | -------- |
-| A1 VM (Windows) | [使用 Windows VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-windows-vm-access-arm.md) |
+| A1 VM (Windows) | [使用 Windows VM 托管服务标识访问 Azure Data Lake Store](msi-tutorial-windows-vm-access-datalake.md) |
+|                    | [使用 Windows VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-windows-vm-access-arm.md) |
+|                    | [使用 Windows VM 托管服务标识访问 Azure SQL](msi-tutorial-windows-vm-access-sql.md) |
 |                    | [使用 Windows VM 托管服务标识通过访问密钥访问 Azure 存储](msi-tutorial-windows-vm-access-storage.md) |
 |                    | [使用 Windows VM 托管服务标识通过 SAS 访问 Azure 存储](msi-tutorial-windows-vm-access-storage-sas.md) |
-|                    | [使用 Windows VM 托管服务标识访问 Azure SQL](msi-tutorial-windows-vm-access-sql.md) |
 |                    | [使用 Windows VM 托管服务标识访问非 Azure AD 资源和 Azure Key Vault](msi-tutorial-windows-vm-access-nonaad.md) |
-| Azure VM (Linux)   | [使用 Linux VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-linux-vm-access-arm.md) |
+| Azure VM (Linux)   | [使用 Linux VM 托管服务标识访问 Azure Data Lake Store](msi-tutorial-linux-vm-access-datalake.md) |
+|                    | [使用 Linux VM 托管服务标识访问 Azure 资源管理器](msi-tutorial-linux-vm-access-arm.md) |
 |                    | [使用 Linux VM 托管服务标识通过访问密钥访问 Azure 存储](msi-tutorial-linux-vm-access-storage.md) |
 |                    | [使用 Linux VM 托管服务标识通过 SAS 访问 Azure 存储](msi-tutorial-linux-vm-access-storage-sas.md) |
 |                    | [使用 Linux VM 托管服务标识和 Azure Key Vault 访问非 Azure AD 资源](msi-tutorial-linux-vm-access-nonaad.md) |
@@ -72,9 +74,12 @@ ms.lasthandoff: 10/17/2017
 
 | 服务 | 状态 | 日期 | 配置 | 获取令牌 |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure 虚拟机 | 预览 | 2017 年 9 月 | [Azure 门户](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Azure Resource Manager 模板](msi-qs-configure-template-windows-vm.md) | [.NET](msi-how-to-get-access-token-using-msi.md#net)<br>[PowerShell](msi-how-to-get-access-token-using-msi.md#azure-powershell-token)<br>[Bash/Curl](msi-how-to-get-access-token-using-msi.md#bashcurl)<br>[REST](msi-how-to-get-access-token-using-msi.md#rest) |
-| Azure 应用服务 | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Functions | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure 虚拟机 | 预览 | 2017 年 9 月 | [Azure 门户](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>
+            [Azure 资源管理器模板](msi-qs-configure-template-windows-vm.md) | [.NET](msi-how-to-get-access-token-using-msi.md#net)<br>[PowerShell](msi-how-to-get-access-token-using-msi.md#azure-powershell-token)<br>[Bash/Curl](msi-how-to-get-access-token-using-msi.md#bashcurl)<br>[REST](msi-how-to-get-access-token-using-msi.md#rest) |
+| Azure 应用服务 | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>
+            [Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Functions | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>
+            [Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>支持 Azure AD 身份验证的 Azure 服务
 

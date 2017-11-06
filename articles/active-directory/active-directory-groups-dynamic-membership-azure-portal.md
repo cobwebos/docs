@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 3ff347ab23c9150246940f563e562c8de92be45d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 958ee2f12ebbd46472972a3012ec59aecbc23126
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 > [!NOTE]
 > - 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 >
-> - 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。
+> - 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。 并不一定要实际将许可证分配给用户使其成为动态组的成员，但确实需要在租户中具有涵盖所有此类用户所需的最小许可证数。 例如：如果你在租户的所有动态组中总共拥有 1,000 个唯一用户，则需要至少具有 Azure AD Premium P1 或更高版本的 1,000 个许可证，才能满足许可证要求。
 >
 > - 可以创建设备或用户的动态组，但不能创建同时包含用户和设备对象的规则。
 
@@ -306,7 +306,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 **使用 PowerShell 更改组中的成员身份管理**
 
 > [!NOTE]
-> 若要更改动态组属性，需要通过 [Azure AD PowerShell 版本 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 使用 cmdlet。 可从[此处](https://www.powershellgallery.com/packages/AzureADPreview)进行安装。
+> 若要更改动态组属性，需要通过 [Azure AD PowerShell 版本 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)（即**预览版**）使用 cmdlet。 可从[此处](https://www.powershellgallery.com/packages/AzureADPreview)安装该预览版。
 
 下面是在现有组中切换成员身份管理的函数示例。 请注意，必须小心正确地操作 GroupTypes 属性，并保留其中可能包含的与动态成员身份无关的任何值。
 

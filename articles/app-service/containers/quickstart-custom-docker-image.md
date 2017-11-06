@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 09/05/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: eadc0f7eb20b9e8d1cacc79b2907559e2b2535a2
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: c85f79cc14cdcecd2a05fc0ff91c4864b9fba277
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="run-a-custom-docker-hub-image-in-web-app-for-containers"></a>在用于容器的 Web 应用中运行自定义 Docker 中心映像
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/25/2017
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name elnably/dockerimagetest
 ```
 
-在上述命令中，`--deployment-container-image-name` 指向公共 Docker 中心映像 [https://hub.docker.com/r/elnably/dockerimagetest/](https://hub.docker.com/r/elnably/dockerimagetest/)。 可在 [https://github.com/rachelappel/docker-image](https://github.com/rachelappel/docker-image) 处检查其内容。
+在上述命令中，`--deployment-container-image-name` 指向公共 Docker 中心映像 [https://hub.docker.com/r/elnably/dockerimagetest/](https://hub.docker.com/r/elnably/dockerimagetest/)。 可在 [https://github.com/ahmedelnably/dockerimagetest](https://github.com/ahmedelnably/dockerimagetest) 中检查其内容。
 
 创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
 

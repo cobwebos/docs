@@ -3,8 +3,8 @@ title: "在 Azure 应用中创建 Node.js Web 应用 | Microsoft Docs"
 description: "数分钟内在 Azure 应用服务 Web 应用中部署第一个 Node.js Hello World。"
 services: app-service\web
 documentationcenter: 
-author: syntaxc4
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/05/2017
-ms.author: cfowler
+ms.date: 10/26/2017
+ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 09d925ab33800ac71e5fb6def916a6748d1d02a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5193460bf46c2b826cad371e4549a9690180f17
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -48,8 +48,6 @@ ms.lasthandoff: 10/11/2017
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
-
-使用此终端窗口运行本快速入门中的所有命令。
 
 切换到包含示例代码的目录。
 
@@ -84,10 +82,6 @@ npm start
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
 
 ![空 Web 应用页面](media/app-service-web-get-started-php/app-service-web-service-created.png)
-
-已在 Azure 中新建了一个空的 Web 应用。
-
-[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -147,7 +141,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 response.end("Hello Azure!");
 ```
 
-提交在 Git 中所做的更改，然后将代码更改推送到 Azure。
+在本地终端窗口中，提交在 Git 中所做的更改，然后将代码更改推送到 Azure。
 
 ```bash
 git commit -am "updated output"

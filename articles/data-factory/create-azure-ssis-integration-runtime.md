@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: be9ffaac1f25068f1ad575c14ffb6666752159d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33562f5ac7acdf8f724ac2de68b9e66735af47b3
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂中配置 Azure-SSIS 集成运行时所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 将 SQL Server Integration Services (SSIS) 包部署到 Azure 上的此运行时。
+
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 教程[教程：将 SQL Server Integration Services 包 (SSIS) 部署到 Azure](tutorial-deploy-ssis-packages-azure.md) 介绍了如何使用 Azure SQL 数据库作为 SSIS 目录的存储来创建 Azure-SSIS 集成运行时 (IR)。 本文对该教程的内容做了延伸，介绍了如何执行以下操作： 
 

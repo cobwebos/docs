@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: mazha
-ms.openlocfilehash: 8c5dd3ddd03b3531e4ffb7b622110a2ea997f9ae
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 98d4900e28f1850050dc4fbe1f97435e52afaf08
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>将自定义域添加到 CDN 终结点
-创建配置文件后，通常还会创建一个或多个 CDN 终结点（azureedge.net 的子域），以通过 HTTP 和 HTTPS 传送内容。 默认情况下，此终结点会包含在所有 URL 中，例如 `http(s)://contoso.azureedge.net/photo.png`。 为方便起见，Azure CDN 提供了用于将自定义域（例如 `www.contoso.com`）与终结点相关联的选项。 借助此选项，可以使用自定义域而不是终结点来传送内容。 例如，如果出于品牌宣传目的，你希望客户能够看到你自己的域名，则选项就很有用。
+创建配置文件后，通常还会创建一个或多个 CDN [终结点](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)（`azureedge.net` 的子域），以通过 HTTP 和 HTTPS 传送内容。 默认情况下，此终结点会包含在所有 URL 中，例如 `https://contoso.azureedge.net/photo.png`。 为方便起见，Azure CDN 允许将自定义域（例如 `www.contoso.com`）与终结点相关联。 借助此选项，可以使用自定义域而不是终结点来传送内容。 例如，如果出于品牌宣传目的，你希望客户能够看到你自己的域名，则选项就很有用。
 
 如果没有自定义域，则必须先在域提供商那里购买一个。 获取自定义域后，请执行以下步骤：
 1. [访问域提供商的 DNS 记录](#step-1-access-dns-records-by-using-your-domain-provider)

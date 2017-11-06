@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/26/2017
 ms.author: billmath
-ms.openlocfilehash: e8321c3d16253226a5931cacbce6fa5d50b697bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abf234caa4c26cf3554911aabb839c696b1ba8cb
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
 Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例。 但也有其他实例，这些实例对 URL 具有不同的要求并且具有其他的特殊注意事项。
@@ -50,15 +50,12 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |
+| \*.windows.net（自动 Azure AD 政府租户检测所必需） |
 | \*.gov.us.microsoftonline.com |
 | + 证书吊销列表 |
 
-Azure AD Connect 无法自动检测 Azure AD 租户是否位于政府版云中。 安装 Azure AD Connect 时，需要改为执行以下操作。
-
-1. 开始 Azure AD Connect 安装。
-2. 出现第一页时（应在其中接受 EULA），请不要继续，而是让安装向导保持运行。
-3. 启动 regedit 并将注册表项 `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` 更改为值 `2`。
-4. 返回 Azure AD Connect 安装向导，接受 EULA，并继续。 在安装期间，请确保使用“自定义配置”安装路径（而不是快速安装）。 然后，像往常一样继续安装。
+> [!NOTE]
+> 从 AAD Connect 版本 1.1.647.0 开始，如果已在代理服务器上打开 *.windows.net，将不再需要在注册表中设置 AzureInstance 值。
 
 Microsoft Azure 政府版云中当前不存在的功能：
 

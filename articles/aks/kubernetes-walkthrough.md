@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: ac6afa9d2e5a838623754fbcb7d5cf68f7a9ad95
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a25f91d092c2f72ea1cbc174d1bf8bf48885788a
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -83,10 +83,10 @@ az aks create --resource-group myResourceGroup --name myK8sCluster --agent-count
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)。
 
-如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果要在本地安装它，请运行以下命令。
+如果使用的是 Azure Cloud Shell，则 kubectl 已安装。 如果要在本地安装它，请运行以下命令。
 
 
-```azurecli-interactive
+```azurecli
 az aks install-cli
 ```
 

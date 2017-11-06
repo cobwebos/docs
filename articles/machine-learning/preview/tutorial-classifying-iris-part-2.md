@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/25/2017
-ms.openlocfilehash: 5d86f3bdf19603d2f92fc1a704376beefd7323c0
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 976407daee45e2f3a8360c1316227cc3399ad43e
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="classifying-iris-part-2-build-a-model"></a>“鸢尾花”分类第 2 部分：生成模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -198,11 +198,11 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 5. 现在，让我们试试 Spark。 Docker 基础映像包含预先安装且配置的 Spark 实例。 因此，可在该实例中执行 PySpark 脚本。 这是开发和测试 Spark 程序的一种简便方法，无需花费时间自行安装和配置 Spark。 
 
-   打开 `iris_pyspark.py` 文件。 此脚本加载 `iris.csv` 数据文件，并使用 Spark 机器学习库中的逻辑回归算法将“鸢尾花”数据集分类。 现在，将运行环境更改为 **docker-spark**，并将脚本更改为 **iris_pyspark.py**，然后再次运行。 由于必须在 Docker 容器中创建并启动 Spark 会话，因此，此过程所需的时间稍长一些。 还可以看到，stdout 不同于 `iris_pyspark.py` 的 stdout。
+   打开 `iris_spark.py` 文件。 此脚本加载 `iris.csv` 数据文件，并使用 Spark 机器学习库中的逻辑回归算法将“鸢尾花”数据集分类。 现在，将运行环境更改为 **docker-spark**，并将脚本更改为 **iris_spark.py**，然后再次运行。 由于必须在 Docker 容器中创建并启动 Spark 会话，因此，此过程所需的时间稍长一些。 还可以看到，stdout 不同于 `iris_spark.py` 的 stdout。
 
 6. 多运行几次，并使用不同的参数进行演练。 
 
-7. 打开 `iris_pyspark.py` 文件，查看使用 Spark 机器学习库生成的简单逻辑回归模型。 
+7. 打开 `iris_spark.py` 文件，查看使用 Spark 机器学习库生成的简单逻辑回归模型。 
 
 8. 与不同执行环境中的运行的“作业”面板、运行历史记录列表视图和运行详细信息视图交互。
 
@@ -249,8 +249,8 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    REM Execute iris_sklearn.py in local Docker container Python environment.
    az ml experiment submit -c docker-python .\iris_sklearn.py 0.01
    
-   REM Execute iris_pyspark.py in local Docker container Spark environment.
-   az ml experiment submit -c docker-spark .\iris_pyspark.py 0.1
+   REM Execute iris_spark.py in local Docker container Spark environment.
+   az ml experiment submit -c docker-spark .\iris_spark.py 0.1
    ```
 6. 在 Azure Machine Learning Workbench 中，单击左侧工具栏上的“文件夹”图标列出项目文件，并打开名为 **run.py** 的 Python 脚本。 
 
@@ -320,8 +320,8 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 5. 键入以下命令，在远程 Docker 容器中的 Spark 实例上运行此文件：
    ```azureli
-   REM execute iris_pyspark.py in Spark instance on remote Docker container
-   az ml experiment submit -c myvm-spark .\iris_pyspark.py
+   REM execute iris_spark.py in Spark instance on remote Docker container
+   az ml experiment submit -c myvm-spark .\iris_spark.py
    ```
 
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>在 HDInsight 群集中执行脚本
@@ -345,8 +345,8 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 2. 运行以下命令，脚本将在 HDInsight 群集中运行：
 
    ```azurecli
-   REM execute iris_pyspark on the HDI cluster
-   az ml experiment submit -c myhdi .\iris_pyspark.py
+   REM execute iris_spark on the HDI cluster
+   az ml experiment submit -c myhdi .\iris_spark.py
    ```
 
    >[!NOTE]

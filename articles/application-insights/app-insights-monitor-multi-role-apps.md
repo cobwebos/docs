@@ -3,7 +3,7 @@ title: "Azure Application Insights 对多个组件、微服务和容器的支持
 description: "监视由多个组件或角色组成的应用的性能和使用情况。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
-ms.author: bwren
-ms.openlocfilehash: ca1bb8ee886c4b4e69be9dd653d6a52b874e1f5a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>使用 Application Insights（预览版）监视多组件应用程序
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="1-install-the-latest-pre-release-package"></a>1.安装最新的预发行包
 
-在项目中为每个服务器组件更新或安装 Appication Insights 包。 如果使用 Visual Studio：
+在项目中为每个服务器组件更新或安装 Application Insights 包。 如果使用 Visual Studio：
 
 1. 右键单击某个项目，并选择“管理 NuGet 包”。 
 2. 选择“包括预发行版”。

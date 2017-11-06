@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 75213a4d0297c96ec32200158d8b60db4b8b2da4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2987b37d0146a68635c9190cf42ac7aeac48ed5
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>使用数据工厂和批处理来处理大规模数据集
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
+
 本文介绍示例解决方案的体系结构，该解决方案通过计划的自动方式移动并处理大规模数据集。 它还提供使用 Azure 数据工厂和 Azure Batch 来实现此解决方案的端到端演练。
 
 本文比一般文章更长，因为其中包含了整个示例解决方案的演练。 如果不熟悉 Batch 和数据工厂，可以了解这些服务以及如何将其结合使用。 如果对这些服务有所了解，并打算设计/构建解决方案，可只关注本文的[体系结构部分](#architecture-of-sample-solution)；如果打算开发原型或解决方案，那么可能也需要尝试[演练](#implementation-of-sample-solution)中的分步说明。 欢迎你对此内容进行评论以及说明使用情况。
@@ -85,7 +88,7 @@ Azure Batch 可帮助用户在云中有效运行大规模并行的高性能计�
 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)。 示例解决方案使用 Blob 存储。
 
 #### <a name="azure-batch-account"></a>Azure Batch 帐户
-使用 [Azure 门户](http://manage.windowsazure.com/)创建 Azure Batch 帐户。 请参阅[创建和管理 Azure Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Azure Batch 帐户名称和帐户密钥。 还可使用 [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) cmdlet 创建 Azure Batch 帐户。 请参阅 [Azure Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)，详细了解如何使用此 cmdlet。
+使用 [Azure 门户](http://portal.azure.com/)创建 Azure Batch 帐户。 请参阅[创建和管理 Azure Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Azure Batch 帐户名称和帐户密钥。 还可使用 [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) cmdlet 创建 Azure Batch 帐户。 请参阅 [Azure Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)，详细了解如何使用此 cmdlet。
 
 该示例解决方案使用 Azure Batch（通过 Azure 数据工厂管道间接使用）以并行方式在计算节点（托管的虚拟机集合）上处理数据。
 

@@ -1,5 +1,5 @@
 ---
-title: "部署 Azure IoT 套件连接的工厂网关 | Microsoft Docs"
+title: "部署连接的工厂网关 - Azure | Microsoft Docs"
 description: "如何在 Windows 或 Linux 中部署网关，以便连接到已连接的工厂预配置解决方案。"
 services: 
 suite: iot-suite
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
-ms.openlocfilehash: 341b3860e103f54d97d325e18fc17f4895f804f0
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 9f11d93be49f7d88012b1274ad61495e38a2e9a9
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>在 Windows 或 Linux 上为已连接的工厂预配置解决方案部署网关
 

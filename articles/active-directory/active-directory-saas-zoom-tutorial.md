@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: aab491f162fd4d24c6ff4d8858f2edd96dda30d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8d902b9170fee47afb038df739bbca6d2d025e0
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>教程：Azure Active Directory 与 Zoom 的集成
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 10/11/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.zoom.us`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.zoom.us`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`<companyname>.zoom.us`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc)来获取这些值。 
@@ -145,9 +145,9 @@ ms.lasthandoff: 10/11/2017
      
     c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，再粘贴到“标识提供者证书”文本框中。
 
-    d. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。 
+    d.单击“下一步”。 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。 
 
-    e. 单击“保存” 。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存” 。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -252,8 +252,6 @@ ms.lasthandoff: 10/11/2017
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

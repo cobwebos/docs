@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/16/2017
+ms.date: 10/30/2017
 ms.author: mimig
-ms.openlocfilehash: 7f59394fdb51c59be65e51fa1a4594b947635ace
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 5a793abdc24387ae2b758d29b9dfb25f134097d3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建文档数据库
 
@@ -198,6 +198,8 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
                 new ConnectionPolicy(),
                 ConsistencyLevel.Session);
     ```
+
+5. 保存 Program.java 文件。
 
 ## <a name="run-the-app"></a>运行应用程序
 

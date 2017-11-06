@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/13/2017
+ms.date: 10/17/2017
 ms.author: samacha
-ms.openlocfilehash: 57437875da80bb5eece650063b7c5c2b0ffd65f7
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 889aaa697a04a81075b85c834d534bfeb4faf79b
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="what-is-stream-analytics"></a>什么是流分析？
 
@@ -63,7 +63,7 @@ Azure 流分析是托管的事件处理引擎，用于设置针对流式处理�
 
 在多个方向路由流分析作业输出。 写入到存储，例如 Azure Blob、Azure SQL 数据库、Azure Data Lake Store 或 Azure Cosmos DB。 可以在这里通过 Azure HDInsight 运行批处理分析。 也可以将输出发送到供其他进程使用的其他服务（例如事件中心、Azure 服务总线、队列），或者发送到 Power BI 进行可视化。
 
-### <a name="easy-to-use"></a>易于使用
+### <a name="simple-to-use"></a>易于使用
 
 若要定义转换，可使用简单的声明性[流分析查询语言](https://msdn.microsoft.com/library/azure/dn834998.aspx)，不需编程即可进行复杂的分析。 查询语言采用流式处理数据作为其输入。 然后，你可以对数据进行筛选和排序、对值进行聚合、执行计算、对数据进行联接（在流内进行，或者以引用数据作为联接目标），以及使用地理空间函数。 可以在门户中使用 IntelliSense 和语法检查来编辑查询，还可以使用可从实时流中提取的示例数据来测试查询。
 
@@ -71,22 +71,21 @@ Azure 流分析是托管的事件处理引擎，用于设置针对流式处理�
 
 可以通过定义和调用其他函数来扩展查询语言的功能。 可以在 Azure 机器学习服务中定义函数调用，以便利用 Azure 机器学习解决方案。 也可集成 JavaScript 用户定义函数 (UDF)，以便在流分析查询过程中执行复杂的计算。
 
-### <a name="scalability"></a>可伸缩性
+### <a name="scalable"></a>可缩放
 
 流分析每秒可处理多达 1 GB 的传入数据。 与 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)和 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)集成后，即可通过作业每秒引入数百万个来自已连接设备、点击流、日志文件等的事件。 使用事件中心的分区功能，可以将计算分成多个逻辑步骤，每个步骤还可以进一步细分，以提高可伸缩性。
 
 ### <a name="low-cost"></a>低成本
 
-流分析已作为云服务优化，让你始终享受低成本的便利。 你可以根据流单元使用量和系统处理的数据量即用即付。 使用情况取决于已处理事件的数量，以及在群集中预配的处理流分析作业所需的计算能力。
+流分析已作为云服务进行成本优化。 根据流单元使用量和处理的数据量付款。 使用情况取决于已处理事件的数量，以及在作业群集中预配的计算能力。
 
-### <a name="reliability-quick-recovery-and-repeatability"></a>可靠性、快速恢复和可重复性
+### <a name="reliable"></a>可靠
 
-作为云中的托管服务，流分析有助于防止数据丢失，确保业务连续性。 如果发生故障，该服务会提供内置的恢复功能。 由于能够在内部维持相关状态，因此服务提供的可重复结果确保可以对事件进行存档并在未来重新处理，始终获得相同的结果。 因此，你可以在进行根本原因分析、假设情况分析等操作时，及时回过头去调查计算结果。
+作为托管服务，流分析有助于防止数据丢失，确保业务连续性。 如果发生故障，该服务会提供内置的恢复功能。 由于能够在内部维持相关状态，因此服务提供的可重复结果确保可以对事件进行存档并在未来重新处理，始终获得相同的结果。 因此，你可以在进行根本原因分析、假设情况分析等操作时，及时回过头去调查计算结果。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 入门方式：[在 IoT 设备中试验输入和查询](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)。
 * 构建[端到端流分析解决方案](stream-analytics-real-time-fraud-detection.md)，通过检查电话元数据来找出欺诈性电话。
-* 了解适用于流分析且类似 SQL 的查询语言，以及独特的概念（例如[开窗函数](stream-analytics-window-functions.md)）。
 * 在 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)中查找流分析问题的答案。
 

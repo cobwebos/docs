@@ -13,20 +13,27 @@ ms.custom: VNet Service endpoints
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 10/13/2017
+ms.workload: On Demand
+ms.date: 10/30/2017
 ms.author: genemi
-ms.openlocfilehash: b15727ae6c7b4d0f1595d506cb8d0f66ec3abfe4
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 69059b6169e1fac4d0abea2770b0de502f816113
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
 虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure SQL 数据库服务器接受从虚拟网络中的特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则功能来安全地启用到 Azure SQL 数据库的通信。
 
 若要创建虚拟网络规则，首先必须具有可供规则引用的[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。
+
+
+> [!NOTE]
+> 对于 Azure SQL 数据库，此功能以预览版形式针对以下 Azure 区域提供：
+>
+> - WestCentralUS、WestUS2 和 EastUS。
+
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>如何创建虚拟网络规则
 

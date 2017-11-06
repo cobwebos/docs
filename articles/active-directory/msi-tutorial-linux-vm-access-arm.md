@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2017
+ms.date: 10/30/2017
 ms.author: elkuzmen
-ms.openlocfilehash: c919947e15306ff17de90cbaedd19c7545cf02dc
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: a2ccae76ff548847b331c7993013f22a098525ce
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="use-managed-service-identity-with-a-linux-vm-to-access-azure-resource-manager"></a>使用 Linux VM 托管服务标识访问 Azure 资源管理器
+# <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
@@ -80,9 +80,9 @@ ms.lasthandoff: 10/25/2017
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-resource-manager"></a>使用 VM 标识获取访问令牌，并用它来调用资源管理器 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用资源管理器 
 
-若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 
+若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
 2. 使用所选的 SSH 客户端连接到 VM。 

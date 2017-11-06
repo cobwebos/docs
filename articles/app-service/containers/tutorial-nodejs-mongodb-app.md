@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a92b2875df3ceaeb4de21f24aa484196a82d825d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a9b321fcf8a8d1234989a9433da227142d954cb4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 Node.js 和 MongoDB Web 应用
 
@@ -207,7 +207,7 @@ module.exports = {
 gulp prod
 ```
 
-在本地终端窗口中运行下列命令，以使用在 _config/env/production.js_ 中配置的连接字符串。 忽略证书错误和 config.domain 警告。
+在本地终端窗口中运行下列命令，以使用在 _config/env/local-production.js_ 中配置的连接字符串。 忽略证书错误和 config.domain 警告。
 
 ```bash
 NODE_ENV=production node server.js
@@ -246,11 +246,11 @@ MEAN.JS version: 0.5.0
 
 ### <a name="create-a-linux-based-web-app"></a>创建基于 linux 的 Web 应用
 
-[!INCLUDE [Create a linux based web app](../../../includes/app-service-web-create-web-app-linux-nodejs-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)] 
 
 ### <a name="configure-an-environment-variable"></a>配置环境变量
 
-由于 _config/env/local-production.js_ 不在 Git 存储库中。 因此对于 Azure Web 应用，请使用应用设置来定义 MongoDB 连接字符串。
+默认情况下，MEAN.js 项目会在 Git 存储库外部保留 _config/env/local-production.js_。 因此对于 Azure Web 应用，请使用应用设置来定义 MongoDB 连接字符串。
 
 要设置应用设置，请使用 Cloud Shell 中的 [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update) 命令。
 
@@ -262,7 +262,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 在 Node.js 代码中，使用 `process.env.MONGODB_URI` 访问此应用设置，如同访问任何环境变量那样。 
 
-在本地 MEAN.js 存储库中，再次打开具有特定于生产环境的配置的 _config/env/production.js_。 请注意，默认 MEAN.js 应用已配置为使用创建的 `MONGODB_URI` 环境变量。
+在本地 MEAN.js 存储库中，打开具有特定于生产环境的配置的 _config/env/production.js_（而不是 _config/env/local-production.js_）。 请注意，默认 MEAN.js 应用已配置为使用创建的 `MONGODB_URI` 环境变量。
 
 ```javascript
 db: {

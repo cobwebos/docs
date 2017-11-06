@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: 62d78e067e50183f25af84e547db2e11c0014f5d
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: e72fc0d4323f7a2d203fee66311c3fea10ad7a09
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="high-availability-ports-overview-preview"></a>高可用性端口概述（预览）
 
@@ -36,7 +36,7 @@ HA 端口可以针对虚拟网络中的网络虚拟设备 (NVA) 实现高可用�
 
 ## <a name="why-use-ha-ports"></a>为何使用 HA 端口
 
-### <a name="network-virtual-appliances"></a>网络虚拟设备
+### <a name="nva"></a>网络虚拟设备
 
 可以使用网络虚拟设备 (NVA) 来防范 Azure 工作负荷遭受多种类型的安全威胁。 如果在这些方案中使用 NVA，这些设备必须可靠、高度可用且可根据需要扩展。
 
@@ -139,6 +139,8 @@ HA 端口为 NVA HA 方案提供几项优势：
 - 单个网络接口 IP 配置可以有一条或多条包含 HA 端口的 DSR 负载均衡器规则，前提是其所有相应的前端 IP 配置都是唯一的。
 - 如果所有负载均衡规则都包含 HA 端口（仅 DSR），或所有规则都包含非 HA 端口（DSR 和非 DSR），则两条（或更多）指向同一后端池的负载均衡器规则可以共存。 如果存在 HA 端口和非 HA 端口规则的组合，这两种负载均衡规则不能共存。
 - HA 端口不适用于 IPv6。
+- 仅单个 NIC 支持 NVA 方案的流对称性。 请参阅[网络虚拟设备](#nva)的说明和示意图。 
+
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9fcfea96516e0cde6329ef9dd4b9024a1b448c5b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 6205f64f11d9029adf1f7f96baf780b82738a44a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/21/2017
 > * [版本 2 - 预览版](../introduction.md)
 
 > [!NOTE]
-> 本文适用于公开发布 (GA) 的 Azure 数据工厂版本 1。 如果使用数据工厂服务版本 2（预览版），请参阅[数据工厂 V2 简介](../introduction.md)。
+> 本文适用于 Azure 数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅[数据工厂 V2 简介](../introduction.md)。
 
 
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
@@ -139,7 +139,7 @@ Azure 数据工厂本身不存储任何数据。 它可以用于创建数据驱�
 - PowerShell
 - .NET API
 - REST API
-- Azure Resource Manager 模板
+- Azure 资源管理器模板
 
 若要了解如何构建包含数据管道的数据工厂，请遵循以下教程中的分步说明：
 

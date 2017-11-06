@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6d7e9be25badbd83ee613518ba768d98334a5f4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c506ee95281e1250a721a9c150bd839b4c1fcdb
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的系统变量](../control-flow-system-variables.md)。
+
 本文提供 Azure 数据工厂支持的函数和变量的相关信息。
 
 ## <a name="data-factory-system-variables"></a>数据工厂系统变量

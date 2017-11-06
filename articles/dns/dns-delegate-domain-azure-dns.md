@@ -3,8 +3,8 @@ title: "将域委托给 Azure DNS | Microsoft 文档"
 description: "了解如何更改域委托并使用 Azure DNS 名称服务器提供域托管。"
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
-ms.author: gwallace
-ms.openlocfilehash: 7aa26fd54bab476e798e2327d1c46afb04aa3838
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.author: kumud
+ms.openlocfilehash: d73a42fd0f41c20b516c0348c86b40202fd06f53
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>将域委托给 Azure DNS
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 10/18/2017
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
 1. 登录到 Azure 门户
-1. 在“中心”菜单上，单击“新建”>“网络”，并单击“DNS 区域”以打开“创建 DNS 区域”边栏选项卡。
+1. 在“中心”菜单上，单击“新建”>“网络”，然后单击“DNS 区域”以打开“创建 DNS 区域”页。
 
     ![DNS 区域](./media/dns-domain-delegation/dns.png)
 
-1. 在“创建 DNS 区域”边栏选项卡上，输入以下值，并单击“创建”：
+1. 在“创建 DNS 区域”页上，输入以下值，并单击“创建”：
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
@@ -50,9 +50,9 @@ ms.lasthandoff: 10/18/2017
 
 在将 DNS 区域委托给 Azure DNS 之前，首先需要知道区域的名称服务器名称。 每次创建区域时，Azure DNS 都会分配某个池中的名称服务器。
 
-1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“contoso.net”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contoso.net”， 轻松访问应用程序网关。 
+1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”页中单击“contoso.net”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contoso.net”， 轻松访问应用程序网关。 
 
-1. 从“DNS 区域”边栏选项卡中检索名称服务器。 在本示例中，为区域“contoso.net”分配了名称服务器“ns1-01.azure-dns.com”、“ns2-01.azure-dns.net”、“ns3-01.azure-dns.org”和“ns4-01.azure-dns.info”：
+1. 从“DNS 区域”页中检索名称服务器。 在本示例中，为区域“contoso.net”分配了名称服务器“ns1-01.azure-dns.com”、“ns2-01.azure-dns.net”、“ns3-01.azure-dns.org”和“ns4-01.azure-dns.info”：
 
  ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
@@ -161,11 +161,11 @@ default TTL = 300 (5 mins)
 ### <a name="create-a-dns-zone"></a>创建 DNS 区域
 
 1. 登录到 Azure 门户
-1. 在“中心”菜单上，单击“新建”>“网络”，并单击“DNS 区域”以打开“创建 DNS 区域”边栏选项卡。
+1. 在“中心”菜单上，单击“新建”>“网络”，然后单击“DNS 区域”以打开“创建 DNS 区域”页。
 
     ![DNS 区域](./media/dns-domain-delegation/dns.png)
 
-1. 在“创建 DNS 区域”边栏选项卡上，输入以下值，并单击“创建”：
+1. 在“创建 DNS 区域”页上，输入以下值，并单击“创建”：
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
@@ -179,9 +179,9 @@ default TTL = 300 (5 mins)
 
 ### <a name="retrieve-name-servers"></a>检索名称服务器
 
-1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“partners.contoso.net”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“partners.contoso.net”， 轻松访问 DNS 区域。
+1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”页中单击“partners.contoso.net”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“partners.contoso.net”， 轻松访问 DNS 区域。
 
-1. 从“DNS 区域”边栏选项卡中检索名称服务器。 在本示例中，为区域“contoso.net”分配了名称服务器“ns1-01.azure-dns.com”、“ns2-01.azure-dns.net”、“ns3-01.azure-dns.org”和“ns4-01.azure-dns.info”：
+1. 从“DNS 区域”页中检索名称服务器。 在本示例中，为区域“contoso.net”分配了名称服务器“ns1-01.azure-dns.com”、“ns2-01.azure-dns.net”、“ns3-01.azure-dns.org”和“ns4-01.azure-dns.info”：
 
  ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
@@ -191,7 +191,7 @@ Azure DNS 自动在包含所分配名称服务器的区域中创建权威 NS 记
 
 1. 导航到 Azure 门户中的 **contoso.net** DNS 区域。
 1. 单击“+ 记录集”
-1. 在“添加记录集”边栏选项卡中，输入以下值，并单击“确定”：
+1. 在“添加记录集”页中，输入以下值，并单击“确定”：
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
@@ -297,8 +297,8 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 若要删除在本文中创建的所有资源，请完成以下步骤：
 
-1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“contosorg”资源组。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contosorg”， 轻松访问资源组。
-1. 在“contosorg”边栏选项卡中，单击“删除”按钮。
+1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”页中单击“contosorg”资源组。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contosorg”， 轻松访问资源组。
+1. 在“contosorg”页中，单击“删除”按钮。
 1. 门户会要求用户键入资源组的名称，以便确认用户需要删除它。 键入“contosorg”作为资源组名称，然后单击“删除”。 删除资源组会删除资源组中的所有资源，因此在删除资源组之前，请确保始终确认其内容。 门户会先删除包含在资源组中的所有资源，然后删除资源组本身。 此过程需要几分钟。
 
 ## <a name="next-steps"></a>后续步骤
