@@ -185,7 +185,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
 ## <a name="create-image-from-a-vhd-in-a-storage-account"></a>从存储帐户中的 VHD 创建映像
 
-从存储帐户中的通用 OS VHD 创建托管映像。 需要存储帐户中 VHD 的 URI，其格式为 https://mystorageaccount.blob.core.windows.net/container/vhd_filename.vhd。 在本示例中，使用的 VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 osdisk.vhd。
+从存储帐户中的通用 OS VHD 创建托管映像。 需要存储帐户中 VHD 的 URI，其格式为 https://*mystorageaccount*.blob.core.windows.net/*container*/*vhd_filename.vhd*。 在本示例中，使用的 VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 osdisk.vhd。
 
 
 1.  首先，设置公共参数：

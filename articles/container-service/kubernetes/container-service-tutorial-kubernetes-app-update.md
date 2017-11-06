@@ -79,7 +79,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>在本地测试应用程序
 
-转到 http://localhost:8080，查看更新后的应用程序。
+转到 http://localhost:8080 ，查看更新后的应用程序。
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
