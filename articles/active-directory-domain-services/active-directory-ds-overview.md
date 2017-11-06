@@ -4,7 +4,7 @@ description: "Azure Active Directory 域服务的概述"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory-ds
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: c4a22b230cd630c413118ab798ff241527465554
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be18ee0266a97057499baccc5bb39a35224336d7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="azure-ad-domain-services"></a>Azure AD 域服务
+# <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) 域服务
 ## <a name="overview"></a>概述
 使用 Azure 基础结构服务可以灵活部署各种计算解决方案。 借助 Azure 虚拟机，几乎即时就能完成部署，并且只需按分钟付费。 使用 Windows、Linux、SQL Server、Oracle、IBM、SAP 和 BizTalk 的支持，可以在几乎任何操作系统上部署任何语言的任何工作负荷。 凭借这些优势，可以将本地的旧版应用程序迁移到 Azure，从而节省运营开支。
 
@@ -35,6 +35,10 @@ ms.lasthandoff: 10/11/2017
 所有这些方法都会增加成本和管理开销。 管理员需要在 Azure 中使用虚拟机部署域控制器。 此外，他们需要管理、保护、修补、监视、备份这些虚拟机并对其进行故障排除。 过份依赖使用 VPN 连接访问本地目录，使得 Azure 中部署的工作负荷容易发生暂时性网络问题或中断。 而这些网络中断又会导致运行时间减少，降低这些应用程序的可靠性。
 
 Azure AD 域服务经过精心设计，可以提供一种更简便的替代方法。
+
+### <a name="watch-an-introductory-video"></a>观看介绍视频
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
+
 
 ## <a name="introducing-azure-ad-domain-services"></a>Azure AD 域服务简介
 Azure AD 域服务提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器即可使用这些域服务。 Azure AD 域服务与现有的 Azure AD 租户集成，因此可让用户使用其企业凭据登录。 此外，可以使用现有的组和用户帐户安全访问资源，确保更顺畅地将本地资源“即时转移”到 Azure 基础结构服务。

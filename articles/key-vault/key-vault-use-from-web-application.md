@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 * Web 应用程序。 我们将演示针对 Azure 中作为 Web 应用程序部署的 ASP.NET MVC 应用程序的步骤。
 
 >[!IMPORTANT]
->* 此示例依赖手动预配 AAD 标识的旧方法。 目前，预览版中有一项称为“托管服务标识 (MSI)”的新功能，它可以自动预配 AAD 标识。[](https://docs.microsoft.com/azure/active-directory/msi-overview) 如需了解更多详情，请参考 [github](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 上的以下示例。
+>* 此示例依赖手动预配 AAD 标识的旧方法。 目前，预览版中有一项称为[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview)的新功能，它可以自动预配 AAD 标识。 如需了解更多详情，请参考 [github](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 上的以下示例。
 
 > [!NOTE]
 >* 必须已完成 [Azure 密钥保管库入门](key-vault-get-started.md)中列出的适用于本教程的步骤，以便获取 Web 应用程序的密钥、客户端 ID 和客户端密钥的 URI。
