@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bc0a7127457b2203e3a351d7825d203bba69f4ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74ee639af5e941c098cbdd1fafd96a0e1ce1b036
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
-为使数据管理网关连接到 MySQL 数据库，需要在数据管理网关所在的系统上安装[用于 Microsoft Windows 的 MySQL 连接器/Net ](https://dev.mysql.com/downloads/connector/net/)（版本 6.6.5 或更高版本）。 支持 5.1 和更高版本的 MySQL。
+为使数据管理网关连接到 MySQL 数据库，需要在数据管理网关所在的系统上安装[用于 Microsoft Windows 的 MySQL 连接器/Net ](https://dev.mysql.com/downloads/connector/net/)（版本 6.6.5 或更高版本）。 此 32 位驱动程序与 64 位数据管理网关兼容。 支持 5.1 和更高版本的 MySQL。
 
 > [!TIP]
 > 如果遇到“身份验证失败，因为远程方已关闭传输流”错误，请考虑将 MySQL 连接器/Net 升级到更高版本。
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 

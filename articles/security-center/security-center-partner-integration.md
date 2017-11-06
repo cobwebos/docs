@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/23/2017
+ms.date: 10/26/2017
 ms.author: yurid
-ms.openlocfilehash: 847a872661bea31b774814188c7707260a16e620
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: 0c0029d2dea293e71c6e3daf74b85f0234bfdffd
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -32,10 +32,24 @@ ms.lasthandoff: 10/24/2017
 
 目前，集成式安全解决方案包括：
 
-- 终结点保护（[Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec、[适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)、Windows Defender、System Center Endpoint Protection (SCEP)）
+- 终结点保护（[Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec、Windows Defender、System Center Endpoint Protection (SCEP)）
 - Web 应用程序防火墙（[Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets)、[Azure 应用程序网关](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/)）
 - 下一代防火墙（[Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)）
 - 漏洞评估 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
+
+终结点保护集成体验可能因解决方案而异。 下表包含每个解决方案的体验的更多详细信息：
+
+| 终结点保护               | 平台                             | 安全中心安装 | 安全中心发现 |
+|-----------------------------------|---------------------------------------|------------------------------|---------------------------|
+| Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | 否，内置到 OS           | 是                       |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 通过扩展                | 是                       |
+| Trend Micro – 所有版本         | Windows Server 系列                 | 通过扩展                | 是                       |
+| Symantec v12+                     | Windows Server 系列                 | 否                           | 是                        |
+| MacAfee                           | Windows Server 系列                 | 否                           | 否                        |
+| Kaspersky                         | Windows Server 系列                 | 否                           | 否                        |
+| Sophos                            | Windows Server 系列                 | 否                           | 否                        |
+
+
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
 从安全中心部署的 Azure 安全解决方案是自动连接的。 还可以连接其他安全数据源，包括：

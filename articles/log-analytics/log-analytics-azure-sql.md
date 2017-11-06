@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
-ms.author: banders
-ms.openlocfilehash: 0b0d91b130172eb3506fdebb9547ab6ba5cc3780
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/26/2017
+ms.author: magoedte;banders
+ms.openlocfilehash: 1b0d0fa1afc94d5261443f6b08cb6f0c3518f3eb
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -47,8 +47,8 @@ Azure SQL Analytics 解决方案不使用代理连接 Log Analytics 服务。
 ## <a name="prerequisites"></a>先决条件
 
 - 一个 Azure 订阅。 如果没有该订阅，可以[免费](https://azure.microsoft.com/free/)创建一个。
-- Log Analytics 工作区。 在开始使用此解决方案之前，用户可以使用现有的工作区，也可以[创建一个新的](log-analytics-get-started.md)。
-- 为 Azure SQL 数据库和弹性池启用 Azure 诊断，并[将其配置为发送数据到 Log Analytics](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)。
+- Log Analytics 工作区。 在开始使用此解决方案之前，用户可以使用现有的工作区，也可以[创建一个新的](log-analytics-quick-create-workspace.md)。
+- 为 Azure SQL 数据库和弹性池启用 Azure 诊断，并[将其配置为发送数据到 Log Analytics](../sql-database/sql-database-metrics-diag-logging.md)。
 
 ## <a name="configuration"></a>配置
 
@@ -60,9 +60,9 @@ Azure SQL Analytics 解决方案不使用代理连接 Log Analytics 服务。
 3. 在“监视 + 管理”列表中，单击“全部查看”。
 4. 在“推荐”列表中，单击“更多”，并在新列表中找到并选中“Azure SQL Analytics (预览版)”。  
     ![Azure SQL Analytics 解决方案](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. 在“Azure SQL Analytics (预览版)”窗格中，单击“创建”。  
+5. 在“Azure SQL Analytics (预览版)”边栏选项卡中，单击“创建”。  
     ![创建](./media/log-analytics-azure-sql/portal-create.png)
-6. 在“创建新的解决方案”窗格中，选择要向其添加解决方案的工作区，并单击“创建”。  
+6. 在“创建新的解决方案”边栏选项卡中，选择要向其添加解决方案的工作区，并单击“创建”。  
     ![添加到工作区](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
@@ -83,7 +83,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 ## <a name="using-the-solution"></a>使用解决方案
 
 >[!NOTE]
-> 升级 Log Analytics 工作区以获取 Azure SQL Analytics 最新版本。
+> 请升级 Log Analytics 以获取 Azure SQL Analytics 最新版本。
 >
 
 将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 该磁贴显示解决方案连接到的 Azure SQL 数据库和 Azure SQL 弹性池的数目。
@@ -96,26 +96,17 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ![Azure SQL Analytics 概述](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
-选择任意磁贴，打开特定透视的向下钻取报告。
+选择任意磁贴，打开特定透视的向下钻取报告。 选择透视后，将打开向下钻取报告。
 
 ![Azure SQL Analytics 超时](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
 
 每个透视提供有关订阅、服务器、弹性池和数据库级别的概述。 此外，每个透视在右侧显示特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
 
-| 透视 | 说明 |
-| --- | --- |
-| 资源（按类型） | 对监视的所有资源进行计数的透视。 向下钻取会提供 DTU 和 GB 指标的摘要。 |
-| 洞察力 | 提供对智能见解的分层向下钻取。 详细了解智能见解。 |
-| Errors | 提供对数据库上发生的 SQL 错误的分层向下钻取。 |
-| 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 |
-| 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 |
-| 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |
-| 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 |
-| 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 |
+| 透视 | 说明 | | 按类型列出的资源 | 对监视的所有资源进行计数的透视。 向下钻取会提供 DTU 和 GB 指标的摘要。 | | 见解 | 提供对智能见解的分层向下钻取。 详细了解智能见解。 | | 错误 | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | | 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | | 阻塞 | 提供对数据库上发生的 SQL 阻塞的分层向下钻取。 | | 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 | | 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | | 查询等待 | 按等待类别提供对查询等待统计信息的分层向下钻取。 |
 
 ### <a name="intelligent-insights-report"></a>智能见解报告
 
-可通过见解透视，对收集的所有智能见解进行可视化和访问。 [单击此处详细了解智能见解](../sql-database/sql-database-intelligent-insights.md)
+可通过见解透视，对收集的所有智能见解进行可视化和访问。 
 
 ![Azure SQL Analytics 见解](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
@@ -136,6 +127,9 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 ### <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
 
 可以使用来自 Azure SQL 数据库资源的数据轻松创建警报。 以下是几个有用的可用于警报的[日志搜索](log-analytics-log-searches.md)查询：
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 
 *Azure SQL 数据库上的高 DTU*
 
@@ -162,7 +156,7 @@ AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "
 6. 在“添加警报规则”页上，根据需要配置适当的属性和特定的阈值，并单击“保存”。  
 ![添加警报规则](./media/log-analytics-azure-sql/create-alert02.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 - 使用 Log Analytics 中的[日志搜索](log-analytics-log-searches.md)查看 Azure SQL 的详细数据。
 - [创建自己的仪表板](log-analytics-dashboards.md)，显示 Azure SQL 数据。

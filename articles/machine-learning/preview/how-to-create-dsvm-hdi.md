@@ -10,15 +10,15 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 7325d15cc4bec5f0df50be222e1f0988775ded2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ce1d32a2785bec1164d2a89dea9946fe113cb33
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>创建 DSVM 和 HDI Spark 群集作为计算目标
 
-可以通过添加基于 Ubuntu 的 DSVM（数据科学虚拟机）和适用于 Azure HDInsight 群集的 Apache Spark 等附加计算目标，轻松纵向扩展或横向扩展机器学习试验。 本文逐步讲解在 Azure 中创建这些计算目标的步骤。 有关在 Azure 机器学习计算目标的详细信息，请参阅 [Azure 机器学习试验执行服务概览](experiment-execution-configuration.md)。
+可以通过添加基于 Ubuntu 的 DSVM（数据科学虚拟机）和适用于 Azure HDInsight 群集的 Apache Spark 等附加计算目标，轻松纵向扩展或横向扩展机器学习试验。 本文逐步讲解在 Azure 中创建这些计算目标的步骤。 有关 Azure ML 计算目标的详细信息，请参阅 [Azure 机器学习试验服务概述](experimentation-service-configuration.md)。
 
 >[!NOTE]
 >在继续操作之前，需确保拥有在 Azure 中创建 VM 和 HDI 群集等资源的适当权限。 此外，这两种资源可能会根据配置消耗许多计算核心。 请确保订阅能够为虚拟 CPU 核心提供足够的容量。 始终可以联系 Azure 支持部门，以增加订阅中允许的最大核心数。
@@ -181,7 +181,7 @@ $ az ml experiment prepare -c <compute target name>
 ## <a name="next-steps"></a>后续步骤
 
 了解有关以下方面的详细信息：
-- [Azure 机器学习试验执行服务概览](experiment-execution-configuration.md)
-- [Azure Machine Learning Workbench 执行配置文件](experiment-execution-configuration-reference.md)
+- [Azure 机器学习试验服务概述](experimentation-service-configuration.md)
+- [Azure Machine Learning Workbench 试验服务配置文件](experimentation-service-configuration-reference.md)
 - [适用于 Azure HDInsight 群集的 Apache Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/)
 - [数据科学虚拟机](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

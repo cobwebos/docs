@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 811a2538f0a138074feea1bd4608a7ba00660fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f74a953d04e8633e802b33903de603b39ac08e9b
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,7 +55,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 通过创建管道来复制数据的最简单方法是使用**复制向导**。 有关使用复制向导创建管道的教程，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -84,9 +84,11 @@ Data Lake Store 连接器支持以下身份验证类型：
 * 应用程序密钥 
 * 租户 ID
 
-> [!IMPORTANT]
-> 如果使用复制向导创作数据管道，请确保在访问控制（标识和访问管理）中向服务主体至少授予对 Data Lake Store 帐户的“读取者”角色。 此外，向服务主体至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”权限。 否则，可能会显示“提供的凭据无效”消息。<br/><br/>
-在 Azure AD 中创建或更新服务主体后，所做更改可能需要几分钟才能生效。 检查服务主体和 Data Lake Store 访问控制列表 (ACL) 配置。 如果仍显示“提供的凭据无效”消息，请稍等一会，并重试。
+> [!TIP]
+> 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
+>- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”权限。 否则，可能会显示“提供的凭据无效”消息。
+>- 若要将 Data Lake Store 用作源，请至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹的内容，或者授予“读取”权限以复制单个文件。 对帐户级别访问控制没有要求。
+>- 若要将 Data Lake Store 用作接收器，请至少授予“写入 + 执行”数据访问权限才能在文件夹中创建子项目。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果想要避免使用此 IAM 角色，请使用 Data Lake Store 在复制活动中的位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
 
 通过指定以下属性使用服务主体身份验证：
 

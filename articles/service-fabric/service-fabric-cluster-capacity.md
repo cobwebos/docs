@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: chackdan
-ms.openlocfilehash: 04964175f06675a486fcf252f194f0d790acea4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7c4a00d2c9be2d6b4d3d0b4dfb152deb2d0e217
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -92,6 +92,11 @@ ms.lasthandoff: 10/11/2017
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>有关何时使用“白银”或“黄金”耐久性级别的建议
 
 对于托管要频繁缩小规模（减小 VM 实例计数）的有状态服务并且你愿意延迟部署操作以利于简化这些“缩小规模”操作的所有节点类型，请使用“白银”或“黄金”耐久性。 “扩大规模”的情况（添加 VM 实例）不会受所选耐久性层的影响，只有“缩小规模”的情况才受其影响。
+
+### <a name="changing-durability-levels"></a>更改耐久性级别
+- 耐久性级别为“白银”或“黄金”的节点类型不能降级为“青铜”。
+- 从“青铜”升级到“白银”或“黄金”可能需要几个小时。
+- 更改耐久性级别时，请务必在 VMSS 资源中的 Service Fabric 扩展配置以及 Service Fabric 群集资源中的节点类型定义中同时进行更新。 这些值必须匹配。
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>适用于已设置为“白银”或“黄金”耐久性级别的节点类型的操作建议。
 

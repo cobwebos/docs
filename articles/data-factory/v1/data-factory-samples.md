@@ -15,13 +15,17 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2e1024924b96cf2c86c9dec8d199a0b7ea2422c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 046358644abb5a83d7b8f586006e8db7ee95a453
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的 PowerShell 示例](../samples-powershell.md)和 [Azure 代码示例库中的代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)。
+
+
 ## <a name="samples-on-github"></a>GitHub 上的示例
 [GitHub Azure-DataFactory 存储库](https://github.com/azure/azure-datafactory)中的几个示例可帮助快速熟悉 Azure 数据工厂服务或修改脚本并将其用于自己的应用程序。 Samples\JSON 文件夹包含用于常见方案的 JSON 片段。
 
@@ -42,8 +46,8 @@ ms.lasthandoff: 10/11/2017
 | [U-SQL 示例输入文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |此文件是 U-SQL 活动使用的示例文件。 |
 | [删除 blob 文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | 此示例展示可用作 ADF 自定义 .net 活动的一部分的 C# 文件，该文件用于在复制文件后从源 Azure Blob 位置中删除文件。|
 
-## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
-可在 GitHub 上找到数据工厂的以下 Azure Resource Manager 模板。
+## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+可在 GitHub 上找到数据工厂的以下 Azure 资源管理器模板。
 
 | 模板 | 说明 |
 | --- | --- |

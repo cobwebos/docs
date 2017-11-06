@@ -1,5 +1,5 @@
 ---
-title: "Azure 应用服务计划深入概述 | Microsoft Docs"
+title: "Azure 应用服务 Web 应用中的应用服务计划 | Microsoft Docs"
 description: "了解针对 Azure 应用服务的应用服务计划的工作原理，以及如何利用它们进行管理。"
 keywords: "应用服务, azure 应用服务, 缩放, 可缩放, 应用服务计划, 应用服务成本"
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
-ms.openlocfilehash: 688f57de662fec6a04227c35d6578097c795c6da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb5b782f09bdd8c8a862eddfbd65b0f86ef8d08c
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
-# <a name="azure-app-service-plans-in-depth-overview"></a>Azure 应用服务计划深入概述
+# <a name="app-service-plans-in-azure-app-service-web-apps"></a>Azure 应用服务 Web 应用中的应用服务计划
 
 应用服务计划代表用于托管应用的物理资源的集合。
 

@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d64425d067df92998538c78d1ca3a1650502b77a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47ebebbd838d245c2559bff8d8750e80dbcc3fd8
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[常见问题解答 - 数据工厂版本 2](../frequently-asked-questions.md)。
+
 ## <a name="general-questions"></a>一般问题
 ### <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 数据工厂是一项基于云的数据集成服务，可以**自动移动和转换数据**。 如同工厂运转设备将原材料转换为成品一样，数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。

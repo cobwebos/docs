@@ -1,5 +1,5 @@
 ---
-title: "什么是 Azure Site Recovery？ | Microsoft 文档"
+title: "关于 Azure Site Recovery？ | Microsoft Docs"
 description: "简要介绍 Azure Site Recovery 服务并概述讲解部署方案。"
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/25/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: 90f9fe5775f493298dad3b12f2be9d6da6cb480e
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="what-is-site-recovery"></a>什么是 Site Recovery？
+# <a name="about-site-recovery"></a>关于 Site Recovery
 
 欢迎使用 Azure Site Recovery 服务！ 本文快速简要地介绍了该服务。
 
@@ -62,19 +63,15 @@ Site Recovery 可以为以下计算机管理复制：
 
 **支持** | **详细信息**
 --- | ---
-**可复制哪些内容？** | 在 Azure 区域之间复制 Azure VM（预览版）<br/><br/>  从本地 VMware VM、Hyper-V VM、物理服务器（Windows 和 Linux）复制到 Azure<br/<br/> 从本地 VMware VM、Hyper-V VM、物理服务器复制到辅助站点。 就 Hyper-V VM 来说，仅当 Hyper-V 主机由 System Center VMM 托管时，才能复制到辅助站点。
+**可复制哪些内容？** | 在 Azure 区域之间的 Azure VM。<br/><br/>  从本地 VMware VM、Hyper-V VM、物理服务器（Windows 和 Linux）复制到 Azure。<br/><br/> 从本地 VMware VM、Hyper-V VM、物理服务器复制到 Virtual Machine Manager (VMM)。
 **Site Recovery 支持哪些区域？** | [支持的区域](https://azure.microsoft.com/regions/services/) |
-**复制计算机需要哪些操作系统？** | [Azure VM 要求](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)<br></br>[VMware VM 要求](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> 对于 Hyper-V VM，支持 Azure 和 Hyper-V 所支持的任何[来宾 OS](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。<br/><br/> [物理服务器要求](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
-**需要哪些 VMware 服务器/主机？** | VMware VM 可以位于[支持的 vSphere 主机/vCenter 服务器](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上
+**复制计算机需要哪些操作系统？** | [Azure VM 要求](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)</br></br>[VMware VM 要求](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> 对于 Hyper-V VM，支持 Azure 和 Hyper-V 所支持的任何[来宾 OS](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。<br/><br/> [物理服务器要求](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
+**需要哪些 VMware 服务器/主机？** | VMware VM 可以位于[支持的 vSphere 主机/vCenter 服务器](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上。
+
 **可复制哪些工作负荷？** | 可复制支持的复制计算机上运行的任何工作负荷。 另外，Site Recovery 团队已针对[多个应用](site-recovery-workload.md#workload-summary)执行特定于应用的测试。
 
 
-## <a name="azure-portal-considerations"></a>Azure 门户注意事项
-
-* 可在 [Azure 门户](https://portal.azure.com)中部署 Site Recovery。
-* 在 Azure 经典门户中，可使用经典服务管理模型管理 Site Recovery。
-- 经典门户应仅用于维护现有 Site Recovery 部署。 无法在经典门户中创建新的保管库。
 
 ## <a name="next-steps"></a>后续步骤
-* 阅读有关[工作负荷支持](site-recovery-workload.md)的更多内容
-* 开始[在区域之间进行 Azure VM 复制](site-recovery-azure-to-azure.md)、[从 VMware 复制到 Azure](vmware-walkthrough-overview.md) 或[从 Hyper-V 复制到 Azure](hyper-v-site-walkthrough-overview.md)。
+* 阅读有关[工作负荷支持](site-recovery-workload.md)的更多内容。
+* [区域之间的 Azure VM 复制](azure-to-azure-quickstart.md)入门。 

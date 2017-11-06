@@ -1,4 +1,4 @@
-在本地终端窗口中，将 Azure 远程功能添加到本地 Git 存储库。
+在本地终端窗口中，将 Azure 远程功能添加到本地 Git 存储库。 此 Azure 远程功能是在[创建 Web 应用](#create-a-web-app)中创建。
 
 ```bash
 git remote add azure <URI from previous step>

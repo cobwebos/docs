@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/11/2017
+ms.date: 10/30/2017
 ms.author: bryanla
-ms.openlocfilehash: 5a10b2314e7086800d87362156ed3efb1a21efa7
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 6e52896f0d03661eab033c5b58b86360ce346b55
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>使用 Linux VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
@@ -103,7 +103,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
 4. 在页面左侧，将“角色”设置为“存储帐户参与者”。 
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
-7. 最后，在“选择”下，从下拉列表中选择 Linux 虚拟机，然后单击“保存”。  
+7. 最后，在“选择”下，从下拉列表中选择你的 Linux 虚拟机，然后单击“保存”。  
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
@@ -111,7 +111,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
 
 在本教程的剩余部分中，我们从先前创建的 VM 入手。
 
-若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 客户端。
+若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 门户中，导航到“虚拟机”，转到 Linux 虚拟机，然后在“概述”页中单击顶部的“连接”。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  
@@ -125,8 +125,8 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
     ```
     
     > [!NOTE]
-    > 在上面的请求中，“resource”参数的值必须与 Azure AD 预期值完全一致。 如果使用 Azure 资源管理器资源 ID，必须在 URI 的结尾添加斜线。
-    > 在下面的响应中，为简洁起见，已缩短 access_token 元素。
+    > 在上面的请求中，“resource”参数的值必须与 Azure AD 预期的值完全一致。 如果使用 Azure 资源管理器资源 ID，必须在 URI 的结尾添加斜线。
+    > 在下面的响应中，为简洁起见，已缩短了 access_token 元素。
     
     ```bash
     {"access_token":"eyJ0eXAiOiJ...",

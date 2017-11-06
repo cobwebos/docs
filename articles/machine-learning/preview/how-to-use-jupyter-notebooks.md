@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 07759a590e3a4e061a1c5727428d2c7c2a655f51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93850a7c9e3d9d69b0da22ebd0656ae40cee2e63
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>如何在 Azure 机器学习工作台中使用 Jupyter Notebook
 
@@ -39,7 +39,7 @@ Azure 机器学习工作台通过 Jupyter Notebook 的集成支持交互式数�
 只需配置运行配置并计算项目中 `aml_config`文件夹中的目标就可以访问 Azure ML 工作台中的很多不同内核。 通过发出 `az ml computetarget attach` 命令添加新计算目标相当于添加新内核。
 
 >[!NOTE]
->查看[配置执行](experiment-execution-configuration.md)以了解更多有关运行配置和计算目标的详细信息。
+>查看[配置执行](experimentation-service-configuration.md)以了解更多有关运行配置和计算目标的详细信息。
 
 ### <a name="kernel-naming-convention"></a>内核命名约定
 通常以“\<项目名称> \<运行配置名称>”的格式命名内核。 例如，如果在名为 _myIris_ 的项目中有一个名为 _docker python_ 的运行配置，那么当打开 Jupyter Notebook 时可以在内核列表中找到名为“myIris docker-python”的内核。
@@ -107,5 +107,5 @@ $ az ml notebook start
 
 ## <a name="next-steps"></a>后续步骤
 - 若要了解如何使用 Jupyter Notebook，请访问 [Jupyter 官方文档](http://jupyter-notebook.readthedocs.io/en/latest/)。    
-- 若要更深入地了解 Azure ML 实验执行环境，请查看 [Azure 机器学习试验执行服务概述](experiment-execution-configuration.md)
+- 若要更深入地了解 Azure ML 试验执行环境，请查看 [Azure 机器学习试验服务概述](experimentation-service-configuration.md)
 

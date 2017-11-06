@@ -15,11 +15,11 @@
 | 每个应用程序的并发[调试器连接数](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) |1 |1 |1 |5 |5 |
 | [带 FTP/S 和 SSL 的 azurewebsites.net 子域](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |X |X |X |X |X |
 | [自定义域](../articles/app-service/app-service-web-tutorial-custom-domain.md)支持 | |X |X |X |X |
-| 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |不受限制 |无限制，包含 5 个 SNI SSL 和 1 个 IP SSL 连接 |无限制，包含 5 个 SNI SSL 和 1 个 IP SSL 连接 |
+| 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |无限制的 SNI SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |
 | 集成负载均衡器 | |X |X |X |X |
 | [始终打开](../articles/app-service/web-sites-configure.md) | | |X |X |X |
 | [计划备份](../articles/app-service/web-sites-backup.md) | | | |每天一次 |每 5 分钟一次<sup>8</sup> |
-| [自动缩放](../articles/app-service/web-sites-scale.md) | | |X |X |X |
+| [自动缩放](../articles/app-service/web-sites-scale.md) | | | |X |X |
 | [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
 | [Azure 计划程序](https://azure.microsoft.com/services/scheduler/)支持 | |X |X |X |X |
 | [终结点监视](../articles/app-service/web-sites-monitor.md) | | |X |X |X |

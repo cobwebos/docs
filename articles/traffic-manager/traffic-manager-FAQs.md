@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: 5751cd111d2b1c8a4db2fc3b39f2108e73e9508f
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: eac9c3c2b7fde4ac225e17cc3b98ca5ee926c3b3
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -216,7 +216,7 @@ Azure 监视器可用于以聚合级别理解你的配置文件及其终结点�
 
 ### <a name="how-does-traffic-view-handle-external-endpoints"></a>流量视图如何处理外部终结点？
 
-在流量管理器配置文件中使用托管在 Azure 区域外的外部终结点时，可以选择将其映射到 Azure 区域，该区域是其延迟特征的代理（如果使用性能路由方法，确实则需要使用此功能）。 如果其具有该 Azure 区域映射，则将在创建流量视图输出时使用该 Azure 区域的延迟指标。 如果未指定 Azure 区域，则延迟信息在这些外部终结点的数据中为空。
+在流量管理器配置文件中使用托管在 Azure 区域外的外部终结点时，可以选择将其映射到 Azure 区域，该区域是其延迟特征的代理（如果使用性能路由方法，确实则需要使用此功能）。 如果它具有此 Azure 区域映射，则将在创建流量视图输出时使用该 Azure 区域的延迟指标。 如果未指定 Azure 区域，则延迟信息在这些外部终结点的数据中为空。
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>是否需要对我的订阅中的每个配置文件启用流量视图？
 在预览期间，在订阅级别启用流量视图，并可用于该订阅下的所有流量管理器配置文件。
@@ -235,7 +235,7 @@ Azure 监视器可用于以聚合级别理解你的配置文件及其终结点�
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure Resource Manager 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 授予这些权限。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 资源管理器基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 授予这些权限。
 
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
@@ -271,7 +271,7 @@ Azure 监视器可用于以聚合级别理解你的配置文件及其终结点�
 
 流量管理器属于单一的全局性服务， 而不是区域性服务。 选择资源组位置对部署在该资源组中的流量管理器配置文件没有影响。
 
-Azure Resource Manager 要求所有资源组指定一个位置，这决定了部署在该资源组中的资源的默认位置。 创建流量管理器配置文件时，会在资源组中创建该配置文件。 所有流量管理器配置文件使用“**全局**”作为位置，覆盖资源组的默认值。
+Azure 资源管理器要求所有资源组指定一个位置，这决定了部署在该资源组中的资源的默认位置。 创建流量管理器配置文件时，会在资源组中创建该配置文件。 所有流量管理器配置文件使用“**全局**”作为位置，覆盖资源组的默认值。
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>如何确定每个终结点的当前运行状况？
 
@@ -364,7 +364,7 @@ Azure 不提供有关过去终结点运行状况的历史信息，也不提供�
 
 ### <a name="how-do-i-configure-nested-profiles"></a>如何配置嵌套式配置文件？
 
-可以使用 Azure Resource Manager、经典 Azure REST API、Azure PowerShell cmdlet 和跨平台 Azure CLI 命令配置嵌套式流量管理器配置文件。 也支持通过新 Azure 门户配置这些配置文件。 不支持使用经典门户。
+可以使用 Azure 资源管理器、经典 Azure REST API、Azure PowerShell cmdlet 和跨平台 Azure CLI 命令配置嵌套式流量管理器配置文件。 也支持通过新 Azure 门户配置这些配置文件。 不支持使用经典门户。
 
 ### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>流量管理器支持多少层嵌套？
 

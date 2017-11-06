@@ -1,5 +1,5 @@
 ---
-title: "部署 StorSimple 设备管理器服务 | Microsoft 文档"
+title: "部署 StorSimple 设备管理器服务 | Microsoft Docs"
 description: "说明如何在 Azure 门户中创建和删除 StorSimple 设备管理器服务，并介绍了如何管理服务注册密钥。"
 services: storsimple
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 51db9539451afafe7eddaaeef0e02328431611de
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 2d6c1737edbc4e69dd7de4c8ce3d7b0899bfae51
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -74,7 +74,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 #### <a name="before-you-transition"></a>在转换之前
 
-* 设备运行的是 Update 3.0 或更高版本。 如果设备运行的是较旧版本，请安装最新更新。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 如果在使用 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建使用 Update 5.0 的云设备，然后故障转移到新建的云设备。
+* 设备运行的是 Update 3.0 或更高版本。 如果设备运行的是较旧版本，强烈建议使用修补程序方法安装 Update 5。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 如果在使用 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建使用 Update 5.0 的云设备，然后故障转移到新建的云设备。
 
 * 一旦转换到新 Azure 门户，将无法使用 Azure 经典门户来管理 StorSimple 设备。
 
@@ -92,7 +92,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 * 无法再从经典门户管理设备。
 
-* 现有 Azure 服务管理 (ASM) PowerShell cmdlet 将不受支持。 请更新脚本以通过 Azure Resource Manager 管理设备。 有关使用资源管理器 SDK 的示例脚本，请参阅 [storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools)。
+* 现有 Azure 服务管理 (ASM) PowerShell cmdlet 将不受支持。 请更新脚本以通过 Azure 资源管理器管理设备。 有关使用资源管理器 SDK 的示例脚本，请参阅 [storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools)。
 
 * 服务和设备配置将保留。 所有卷和备份也将转换到 Azure 门户。
 
@@ -200,14 +200,14 @@ Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备�
 
 更改服务数据加密密钥过程有 3 个步骤：
 
-1. 使用适用于 Azure Resource Manager 的 Windows PowerShell 脚本，授权某个设备来更改服务数据加密密钥。
+1. 使用适用于 Azure 资源管理器的 Windows PowerShell 脚本，授权某个设备来更改服务数据加密密钥。
 2. 使用 StorSimple 的 Windows PowerShell，启动服务数据加密密钥更改。
 3. 如果有多个 StorSimple 设备，请更新其他设备上的服务数据加密密钥。
 
 ### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>步骤 1：使用 Windows PowerShell 脚本授权某个设备来更改服务数据加密密钥
 通常情况下，设备管理员会请求服务管理员授权某个设备来更改服务数据加密密钥。 然后，服务管理员会授权该设备来更改密钥。
 
-此步骤是使用基于 Azure Resource Manager 的脚本执行的。 服务管理员可以选择有资格接受授权的一个设备。 然后，授权该设备来启动服务数据加密密钥更改过程。 
+此步骤是使用基于 Azure 资源管理器的脚本执行的。 服务管理员可以选择有资格接受授权的一个设备。 然后，授权该设备来启动服务数据加密密钥更改过程。 
 
 有关使用脚本的详细信息，请转到 [Authorize-ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
 

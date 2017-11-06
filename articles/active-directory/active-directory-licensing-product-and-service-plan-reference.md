@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 中的产品和服务计划参考 | Microsoft Docs"
-description: "产品和服务计划参考"
+title: "Azure Active Directory 中用于许可的产品名称和服务计划标识符 | Microsoft Docs"
+description: "用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure AD 许可的标识符映射"
 services: active-directory
 keywords: "Azure Active Directory 许可服务计划"
 documentationcenter: 
@@ -13,33 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/11/2017
+ms.date: 10/26/2017
 ms.author: piotrci
-ms.openlocfilehash: e796c03f4477b431907d8b5fbd6065239bb1d40e
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: b2c540c69a95f0912a71c25ddc70061fa8043aa4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="reference-for-products-and-service-plans-in-azure-active-directory"></a>Azure Active Directory 中的产品和服务计划参考
+# <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 
-本文提供参考信息，在使用 Microsoft 联机服务的许可证管理功能时，这些信息可能会有所帮助。
+在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)或 Office 365 门户中管理许可证时，可看到类似于“Office 365 企业版 E3”的产品名称。 使用 PowerShell v1.0 cmdlet 时，会发现同一个产品是使用特定但不太友好的名称：*ENTERPRISEPACK* 标识的。 使用 PowerShell v2.0 cmdlet 或 Microsoft Graph 时，会发现同一个产品是使用 GUID 值：*6fd2c87f-b296-42f0-b197-1e91e994b900* 标识的。 下表列出了最常用的 Microsoft 联机服务产品，并提供了它们的不同 ID 值：
 
-## <a name="product-names-and-identifiers-used-in-azure-ad"></a>Azure AD 中使用的产品名称和标识符
-
-在 [Azure](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) 或 Office 门户中管理许可证时，会看到用户友好的产品名称，例如“Office 365 企业版 E3”。 但是，在使用 PowerShell v1.0 cmdlet 时，会发现同一个产品是使用不太友好的名称标识的：*ENTERPRISEPACK*。 在使用 PowerShell v2.0 或 Microsoft Graph 时，会发现同一个产品是使用 GUID 值标识的：*6fd2c87f-b296-42f0-b197-1e91e994b900*。 产品中包含的服务计划也是如此。
-
-下表列出了最常用的 Microsoft 联机服务产品，并提供了它们的不同 ID 值。
-
-- **产品名称**：可在管理门户中看到这些值
-- **字符串 ID**：PowerShell v1.0 cmdlet 在对许可证执行操作时会使用这些值。
-- **GUID ID**：Azure AD Graph 和 Microsoft Graph 使用这些值。
-- **包含的服务计划**：产品中的服务计划列表。 表中已列出字符串 ID 和 GUID ID。
+- **产品名称**：在管理门户中使用
+- **字符串 ID**：由 PowerShell v1.0 cmdlet 在对许可证执行操作时使用
+- **Guid ID**：Azure AD Graph 和 Microsoft Graph 使用的 GUID
+- **包含的服务计划**：产品中与字符串 ID 和 GUID 对应的服务计划列表
 
 >[!NOTE]
->这些信息在截止 2017 年 10 月 11 日是准确的。 表包含一部分最常用产品。
+>这些信息在截止 2017 年 10 月 11 日是准确的。
 
-| 产品名称 | 字符串 ID | GUID ID| 包含的服务计划 |
+| 产品名称 | 字符串 ID | GUID | 包含的服务计划 |
 | --- | --- | --- |--- |
 | AZURE ACTIVE DIRECTORY BASIC  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe)
 | AZURE ACTIVE DIRECTORY PREMIUM P1 | AAD_PREMIUM   | 078d2b04-f1bd-4111-bbd4-b4b1b354cef4  | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0)
@@ -103,7 +97,7 @@ ms.lasthandoff: 10/19/2017
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>无法同时分配的服务计划
 
-某些产品包含互斥的服务计划 - 无法同时将这些计划分配到同一个用户。 例如，如果在租户中安装了“Office 365 企业版 E1”和“Office 365 企业版 E3”，并尝试将这两个许可证分配给同一个用户，该操作将会失败。 这是因为，E3 产品包含以下服务计划，而这些服务计划与其 E1 对等计划冲突：
+某些产品包含无法同时分配给同一个用户的服务计划。 例如，如果在租户中安装了“Office 365 企业版 E1”和“Office 365 企业版 E3”，并尝试将这两个许可证分配给同一个用户，该操作将会失败。 这是因为，E3 产品包含以下服务计划，而这些服务计划与其 E1 对等计划冲突：
 
 -   SharePoint Online（计划 2）与 SharePoint Online（计划 1）冲突。
 -   Exchange Online（计划 2）与 Exchange Online（计划 1）冲突。
@@ -121,7 +115,7 @@ ms.lasthandoff: 10/19/2017
 
 无法一起分配以下服务计划：
 
-| 服务计划名称 | GUID ID |
+| 服务计划名称 | GUID |
 | --- | --- |
 | CRMIUR    | c42a56bd-9e70-4ace-be17-dc8eeae369d7 |
 | CRMPLAN1  | 119cf168-b6cf-41fb-b82e-7fee7bae5814 |
@@ -137,7 +131,7 @@ ms.lasthandoff: 10/19/2017
 
 无法一起分配以下服务计划：
 
-| 服务计划名称 | GUID ID |
+| 服务计划名称 | GUID |
 | --- | --- |
 | EXCHANGE_B_STANDARD   | 90927877-dcff-4af6-b346-2332c0b15bb7 |
 | EXCHANGE_L_STANDARD   | d42bdbd6-c335-4231-ab3d-c8f348d5aff5 |
@@ -152,7 +146,7 @@ ms.lasthandoff: 10/19/2017
 
 无法一起分配以下服务计划：
 
-| 服务计划名称 | GUID ID |
+| 服务计划名称 | GUID |
 | --- | --- |
 | INTUNE_A  | c1ec4a95-1f05-45b3-a911-aa3fa01094f5 |
 | INTUNE_A_VL   | 3e170737-c728-4eae-bbb9-3f3360f7184c |
@@ -162,7 +156,7 @@ ms.lasthandoff: 10/19/2017
 
 无法一起分配以下服务计划：
 
-| 服务计划名称 | GUID ID |
+| 服务计划名称 | GUID |
 | --- | --- |
 | ONEDRIVEENTERPRISE    | afcafa6a-d966-4462-918c-ec0b4e0fe642 |
 | SHAREPOINT_S_DEVELOPER    | a361d6e2-509e-4e25-a8ad-950060064ef4 |
@@ -178,7 +172,7 @@ ms.lasthandoff: 10/19/2017
 
 无法一起分配以下服务计划：
 
-| 服务计划名称 | GUID ID |
+| 服务计划名称 | GUID |
 | --- | --- |
 | MCOIMP    | afc06cb0-b4f4-4473-8286-d644f70d8faf |
 | MCOSTANDARD_MIDMARKET | b2669e95-76ef-4e7e-a367-002f60a39f3e |
@@ -187,7 +181,7 @@ ms.lasthandoff: 10/19/2017
 
 无法一起分配以下服务计划：
 
-| 服务计划名称 | GUID ID |
+| 服务计划名称 | GUID |
 | --- | --- |
 | MCOPSTN1  | 4ed3ff63-69d7-4fb7-b984-5aec7f605ca8 |
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
@@ -196,7 +190,7 @@ ms.lasthandoff: 10/19/2017
 
 无法一起分配以下服务计划：
 
-| 服务计划名称 | GUID ID |
+| 服务计划名称 | GUID |
 | --- | --- |
 | YAMMER_ENTERPRISE | 7547a3fe-08ee-4ccb-b430-5077c5041653 |
 | YAMMER_EDU    | 2078e8df-cff6-4290-98cb-5408261a760a |

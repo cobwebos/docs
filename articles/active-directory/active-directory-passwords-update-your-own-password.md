@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/27/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 1a5e97e2a6aca440c9643569014ffce41a614324
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f175f5711b9798153d209f6645aa8bae9f2a00b
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="help-i-forgot-my-azure-ad-password"></a>请为我提供帮助，我忘记了 Azure AD 密码
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
    > 如果需要解锁帐户，此时应选择“我知道密码，但是仍然无法登录”选项。
    >
 
-3. 根据 IT 人员配置 SSPR 的方式，会出现以下一个或多个选项。 使用[注册自助密码重置](active-directory-passwords-reset-register.md)一文之前，你或者 IT 人员已填充了其中一些信息。
+3. 根据 IT 人员配置 SSPR 的方式，会出现以下一个或多个身份验证方法。 使用[注册自助密码重置](active-directory-passwords-reset-register.md)一文之前，你或者 IT 人员已填充了其中一些信息。
 
    * **向我的备用电子邮件发送电子邮件**
    * **向我的手机发送短信**

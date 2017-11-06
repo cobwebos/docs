@@ -1,5 +1,5 @@
 ---
-title: "Azure Database for MySQL 中的限制 | Microsoft 文档"
+title: "Azure Database for MySQL 中的限制 | Microsoft Docs"
 description: "说明 Azure Database for MySQL 中的预览限制。"
 services: mysql
 author: jasonh
@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/8/2017
-ms.openlocfilehash: dc5ad012398b7d07886cd22c20975e61f820d7e0
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.date: 10/26/2017
+ms.openlocfilehash: b3fba38cacf5b5abcdea7f0def8c1d39e653f0a8
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="limitations-in-azure-database-for-mysql-preview"></a>Azure Database for MySQL（预览版）中的限制
 Azure Database for MySQL 服务目前为公共预览版。 下列各部分介绍数据库服务中的容量和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -30,7 +30,7 @@ Azure Database for MySQL 服务目前为公共预览版。 下列各部分介绍
 | 基本 100 个计算单元    | 100 个连接   |
 | 标准 100 个计算单元 | 200 个连接   |
 | 标准 200 个计算单元 | 400 个连接   |
-| 标准 400 个计算单元 | 400 个连接   |
+| 标准 400 个计算单元 | 800 个连接   |
 | 标准 800 个计算单元 | 1600 个连接  |
 | 最大计算单元数      |                   |
 | 基本服务层         | 100 个计算单元 |

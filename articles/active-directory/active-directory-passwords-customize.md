@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 1b6e368df4914e58eb3f8d6481132f25d27312b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 030fb1d87547a4fc78d54a855bca961202f28837
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="customize-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -28,7 +28,11 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="customize-the-contact-your-administrator-link"></a>自定义“联系管理员”链接
 
-即使未启用 SSPR，用户也仍会在密码重置门户中看到“联系管理员”链接。  单击此链接会向管理员发送一封电子邮件，请求他们帮忙更改用户的密码。 此电子邮件按以下顺序发送到以下收件人：
+即使未启用 SSPR，用户也仍会在密码重置门户中看到“联系管理员”链接。  单击此链接会向管理员发送一封电子邮件，请求他们帮忙更改用户的密码，或将用户发送到你指定的 URL。 我们建议将此项设置为用户习惯于用来寻求支持的电子邮件地址或网站等内容。
+
+![联系人][Contact]
+
+此电子邮件按以下顺序发送到以下收件人：
 
 1. 如果已分配**密码管理员**角色，则会通知充当此角色的管理员
 2. 如果未分配密码管理员，则会通知充当**用户管理员**角色的管理员
@@ -96,16 +100,17 @@ SharePoint Online 和 Office 2010 的某些功能取决于用户能否勾选此�
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
+* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
+* [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
+* [是否有许可问题？](active-directory-passwords-licensing.md)
+* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
+* [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
+* [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
-* [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
-* [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
-* [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
-* [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-* [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
-* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
-
+[Contact]: ./media/active-directory-passwords-customize/sspr-contact-admin.png "联系管理员请求帮忙重置密码的电子邮件示例"

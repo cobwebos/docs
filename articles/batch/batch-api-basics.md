@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 10/12/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f277f59982251eb66ca02e72b4ced7f765935b9d
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 8e9f098bedf2c4dfb27a27d028b7bd87782516c7
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -409,7 +409,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 * **资源度量值** 基于 CPU 使用率、带宽使用率、内存使用率和节点的数目。
 * **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。
 
-如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为了满足这一点，Batch 提供可包含在公式中的 *节点解除分配选项* 。 例如，可以指定运行中的任务立即停止，立即停止然后重新排入队列以便在另一个节点上运行，或允许先完成再从池中删除节点。
+如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为了满足这一点，Batch 提供可包含在公式中的 *节点解除分配选项* 。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。
 
 有关自动缩放应用程序的详细信息，请参阅 [自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
 

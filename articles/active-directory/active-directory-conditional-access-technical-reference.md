@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2017
+ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 7f9574bc3d811d413b68d97ebe710858af8eb919
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 4bcca3ee5862a0455b6064d0f9c0a91388db9516
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件访问技术参考
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/24/2017
 
 可以从 Microsoft 为以下云应用分配条件性访问策略：
 
-- [Azure 信息保护](https://docs.microsoft.com/information-protection/get-started/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- Azure 信息保护 - [了解详细信息](https://docs.microsoft.com/information-protection/get-started/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - Azure RemoteApp
 
 - Microsoft Dynamics 365
@@ -147,23 +147,24 @@ Azure AD 条件性访问支持以下设备平台：
 以下移动应用和桌面客户端支持对 Office 365 及其他连接了 Azure AD 的服务应用程序的条件性访问：
 
 
-| 客户端应用程序| 目标服务| 平台 |
+| 客户端应用| 目标服务| 平台 |
 | --- | --- | --- |
-| 用于应用的 Azure 多重身份验证和位置策略（不支持基于设备的策略）| 任何“我的应用”应用服务| Android、iOS|
-| Azure RemoteApp| Azure RemoteApp 服务| Windows 10、Windows 8.1、Windows 7、iOS、Android、macOS|
-| Dynamics 365 应用| Dynamics 365| Windows 10、Windows 8.1、Windows 7、iOS、Android|
-| Microsoft Office 365 Teams（控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、Windows Phone 和 Web 客户端）的所有服务）| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android|
-| 邮件/日历/人脉应用、Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）| Office 365 Exchange Online| Windows 10|
+| Azure 远程应用| Azure 远程应用服务| Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X|
+| Dynamics CRM 应用| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
+| “邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）| Office 365 Exchange Online| Windows 10|
+| 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务| Android 和 iOS|
+| Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
+| Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）| Office 365 SharePoint Online| Windows 8.1、Windows 7|
+| Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持| Office 365 SharePoint Online| Windows 10|
+| Office 2016 for macOS（只有 Word、Excel、PowerPoint、OneNote）。 将来计划提供 OneDrive for Business 支持| Office 365 SharePoint Online| Mac OS X|
+| Office 移动应用| Office 365 SharePoint Online| iOS、Android|
+| Office Yammer 应用| Office 365 Yammer| Windows 10、iOS、Android|
+| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| Mac OS X|
 | Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）| Office 365 Exchange Online| Windows 8.1、Windows 7|
 | Outlook 移动应用| Office 365 Exchange Online| iOS|
-| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| macOS|
-| Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、[OneDrive](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e) 同步客户端、计划将来提供的 Office 组支持和 SharePoint 应用支持| Office 365 SharePoint Online| Windows 10|
-| Office 2016 应用、Office 2013（采用新式身份验证）、[OneDrive](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e) 同步客户端| Office 365 SharePoint Online| Windows 8.1、Windows 7|
-| Office 移动应用| Office 365 SharePoint Online| iOS、Android|
-| Office 2016 for macOS（仅支持 Word、Excel、PowerPoint、OneNote）、计划将来提供的 OneDrive for Business 支持| Office 365 SharePoint Online| macOS|
-| Office Yammer 应用| Office 365 Yammer| Windows 10、iOS、Android|
-| PowerBI 应用（当前在 Android 上不受支持）| PowerBI 服务| Windows 10、Windows 8.1、Windows 7 和 iOS|
-| Visual Studio Team Services 应用| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS、Android|
+| PowerBI 应用。 适用于 Android 的 Power BI 应用当前不支持基于设备的条件访问。| PowerBI 服务| Windows 10、Windows 8.1、Windows 7 和 iOS|
+| Skype for Business| Office 365 Exchange Online| Android、IOS|
+| Visual Studio Team Services 应用| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
 
 
 

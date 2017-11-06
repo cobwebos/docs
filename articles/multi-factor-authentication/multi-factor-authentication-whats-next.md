@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 65a149b0d291bc650e0937c7ef3f90600f54c669
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 8ff991ffb05bb92f047cc8dfc40e80b704379898
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>配置 Azure 多重身份验证设置 - 公共预览版
 
@@ -160,7 +160,10 @@ ms.lasthandoff: 10/17/2017
 5. 在“多重身份验证”下，选择“管理服务设置”。
 6. 在“服务设置”页上，在“受信任的 IP”下有两个选项：
    
-   * **对于联合用户从我的 Intranet 发起的请求** – 选中此框。 所有从公司网络登录的联合用户都将使用 AD FS 发布的声明免除双重验证。
+   * **对于联合用户从我的 Intranet 发起的请求** – 选中此框。 所有从公司网络登录的联合用户都将使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果该规则尚不存在，应在 AD FS 中创建以下规则：“c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);”
+
+
+
    * **对于来自特定公共 IP 范围的请求** – 使用 CIDR 表示法在提供的文本框中输入 IP 地址。 例如：xxx.xxx.xxx.0/24 表示 xxx.xxx.xxx.1 – xxx.xxx.xxx.254 范围内的 IP 地址；xxx.xxx.xxx.xxx/32 表示单个 IP 地址。 最多可以输入 50 个 IP 地址范围。 从这些 IP 地址登录的用户将免除双重验证。
 7. 单击“保存” 。
 8. 应用更新后，单击“关闭”。

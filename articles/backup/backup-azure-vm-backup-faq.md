@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 0117398a1ad2a8519f50732d173bec9fbb7411b5
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d3178413e894c095235dde067b369e3554375aa6
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>有关 Azure VM 备份服务的问题
 本文提供常见问题的解答，有助于快速了解 Azure VM 备份组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -59,6 +59,9 @@ ms.lasthandoff: 10/18/2017
   * 控制所要创建资源的命名约定
   * 将 VM 添加到可用性集
   * 适用于只能通过 PowerShell/声明性模板定义实现的任何其他配置
+  
+### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>将磁盘升级到托管磁盘后，是否可以使用非托管磁盘 VM 的备份进行还原？
+是，可以使用将磁盘从非托管迁移到托管之前创建的备份。 默认情况下，还原 VM 作业会使用非托管磁盘创建 VM。 可以使用还原磁盘功能还原磁盘，并使用它们在托管磁盘上创建 VM。 
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>在 VM 上更改备份策略时，会发生什么情况？

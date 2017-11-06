@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.openlocfilehash: 2cd3656156b77c71be85a1a18567232f4466fc68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e695cdd7c51e18a386764ab8444d3336366ae265
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>在 Azure 存储资源管理器（预览版）中管理 Azure Cosmos DB
 
@@ -32,8 +32,11 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-- 用于 SQL (DocumentDB) 或 MongoDB 数据库的 Azure Cosmos DB 帐户。 如果你没有帐户，则可以按照 [Azure Cosmos DB：使用 .NET 和 Azure 门户生成 DocumentDB API Web 应用](create-documentdb-dotnet.md)中所述，在 Azure 门户中创建一个。
-- 安装最新 Azure 存储资源管理器 BITS。 你可以使用以下链接安装它们：[Linux](https://go.microsoft.com/fwlink/?linkid=858559)、[Mac](https://go.microsoft.com/fwlink/?linkid=858561)、[Windows](https://go.microsoft.com/fwlink/?linkid=858562)。
+用于 SQL (DocumentDB) 或 MongoDB 数据库的 Azure Cosmos DB 帐户。 如果你没有帐户，则可以按照 [Azure Cosmos DB：使用 .NET 和 Azure 门户生成 DocumentDB API Web 应用](create-documentdb-dotnet.md)中所述，在 Azure 门户中创建一个。
+
+## <a name="installation"></a>安装
+
+在此处安装最新的 Azure 存储资源管理器版本：[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，现在我们支持 Windows、Linux 和 MAC 版本。
 
 ## <a name="connect-to-an-azure-subscription"></a>连接到 Azure 订阅
 
@@ -146,10 +149,8 @@ ms.lasthandoff: 10/11/2017
 
 * 用于**触发器**和 **UDF** 的操作与用于**存储过程**的操作类似。
 
-## <a name="demo"></a>演示
-* 观看以下视频，了解如何在 Azure 存储资源管理器中使用 Azure Cosmos DB：[在 Azure 存储资源管理器中使用 Azure Cosmos DB](https://go.microsoft.com/fwlink/?linkid=858710)。
-
 ## <a name="next-steps"></a>后续步骤
 
-现在你已将 Azure 存储资源管理器连接到你的 Azure Cosmos DB 帐户，可在[存储资源管理器（预览版）入门](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)中详细了解存储资源管理器并连接更多服务。
+* 观看以下视频，了解如何在 Azure 存储资源管理器中使用 Azure Cosmos DB：[在 Azure 存储资源管理器中使用 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
+* 在[存储资源管理器（预览版）入门](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)中了解有关存储资源管理器和连接更多服务的详细信息。
 

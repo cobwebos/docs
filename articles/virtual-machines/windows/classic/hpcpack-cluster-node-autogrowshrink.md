@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0dc0d15c64d8951c3c457df73588c37418a3c8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>在 Azure 中根据群集工作负荷自动扩展和收缩 HPC Pack 群集资源
 如果在 HPC Pack 群集中部署 Azure“突发”节点，或者在 Azure VM 中创建 HPC Pack 群集，可能希望有一种方法能够根据群集上的工作负荷自动扩展或收缩群集资源（例如节点或核心）。 以这种方式缩放群集资源，可更有效地使用 Azure 资源并控制其成本。
@@ -39,7 +39,8 @@ ms.lasthandoff: 10/11/2017
 
 * **HPC Pack 2012 R2 Update 2 或更高版群集** - 群集头节点既可以部署在本地，也可以部署在 Azure VM 中。 请参阅[使用 HPC Pack 设置一个混合群集](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)，开始使用本地头节点和 Azure“突发”节点。 若要在 Azure VM 中快速部署 HPC Pack 群集，请参阅 [HPC Pack IaaS deployment script](hpcpack-cluster-powershell-script.md)（HPC Pack IaaS 部署脚本）。
 
-* **对于 Azure 中包含头节点的群集（Resource Manager 部署模型）** - 从 HPC Pack 2016 开始，Azure Active Directory 应用程序中的证书身份验证用于自动扩展和收缩使用 Azure Resource Manager 部署的群集 VM。 配置证书，如下所示：
+* 
+            **对于 Azure 中包含头节点的群集（资源管理器部署模型）** - 从 HPC Pack 2016 开始，Azure Active Directory 应用程序中的证书身份验证用于自动扩展和收缩使用 Azure 资源管理器部署的群集 VM。 配置证书，如下所示：
 
   1. 部署群集后，远程桌面将连接到一个头节点。
 
@@ -178,7 +179,7 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
     Set-HpcClusterProperty -ExtraNodesGrowRatio 10
 
 ### <a name="soa-example"></a>SOA 示例
-默认情况下，**SoaJobGrowThreshold** 设置为 50000，**SoaRequestsPerCore** 设置为 200000。 如果提交一个包含 70000 个请求的 SOA 作业，则会有一个排队任务，并且传入请求数为 70000。 在此情况下，HPC Pack 会针对排队任务扩展 1 个核心，并针对传入请求扩展 (70000 - 50000)/20000 = 1 个核心，因此总共为此 SOA 作业扩展了 2 个核心。
+默认情况下，**SoaJobGrowThreshold** 设置为 50000，**SoaRequestsPerCore** 设置为 20000。 如果提交一个包含 70000 个请求的 SOA 作业，则会有一个排队任务，并且传入请求数为 70000。 在此情况下，HPC Pack 会针对排队任务扩展 1 个核心，并针对传入请求扩展 (70000 - 50000)/20000 = 1 个核心，因此总共为此 SOA 作业扩展了 2 个核心。
 
 ## <a name="run-the-azureautogrowshrinkps1-script"></a>运行 AzureAutoGrowShrink.ps1 脚本
 ### <a name="prerequisites"></a>先决条件

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 10/26/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 317792e04244a96cf8e47bc7e4a7f633f7a6d8c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fcd3b9647833d15d0fd7913f3be55f18f665d094
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -51,6 +51,10 @@ ms.lasthandoff: 10/11/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11801180"></a><a name="1.18.0"/>1.18.0 
+
+* 添加了多项可靠性修复和改进。
 
 ### <a name="a-name11701170"></a><a name="1.17.0"/>1.17.0 
 
@@ -257,6 +261,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.18.0](#1.18.0) |2017 年 10 月 17 日 |--- |
 | [1.17.0](#1.17.0) |2017 年 8 月 10 日 |--- |
 | [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |
 | [1.16.0](#1.16.0) |2017 年 8 月 2 日 |--- |

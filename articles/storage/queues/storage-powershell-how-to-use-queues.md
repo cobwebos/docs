@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 85678452e84a65bd81472396f8ebbb91091a2095
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 36eb6db83bb902b35efb8c9666ab06e0c618d602
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -171,7 +171,7 @@ Remove-AzureStorageQueue –Name $queueName –Context $ctx
 
 ## <a name="clean-up-resources"></a>清理资源
 
-要删除本练习中创建的所有资产，请删除资源组，这也会删除组中包含的所有资源。 在这种情况下，它会删除创建的存储帐户以及资源组本身。
+若要删除已在此练习中创建的所有资产，请删除该资源组。 这会一并删除组中包含的所有资源。 在这种情况下，它会删除创建的存储帐户以及资源组本身。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup

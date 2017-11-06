@@ -9,11 +9,11 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 669fc7a9ec5dfb446ef2755919c498fe6f60c9df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ef1589e28c01d750641873d3c8482f61d90a887
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="document-collection-analysis"></a>文档集分析
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 10/11/2017
 
 | 文件名 | 类型 | 说明 |
 |-----------|------|-------------|
-| `aml_config` | 文件夹 | Azure Machine Learning Workbench 配置文件夹，请参阅[此文档](./experiment-execution-configuration-reference.md)了解详细的试验执行配置 |
+| `aml_config` | 文件夹 | Azure Machine Learning Workbench 配置文件夹，请参阅[此文档](./experimentation-service-configuration-reference.md)了解详细的试验执行配置 |
 | `Code` | 文件夹 | 用来保存 Python 脚本和 Python 包的代码文件夹 |
 | `Data` | 文件夹 | 用来保存中间文件的数据文件夹 |
 | `notebooks` | 文件夹 | Jupyter 笔记本文件夹 |
@@ -120,6 +120,7 @@ ms.lasthandoff: 10/11/2017
 | `notebooks/3_Topic_Model_Training.ipynb` | iPython Notebook | 定型 LDA 主题模型 |
 | `notebooks/4_Topic_Model_Summarization.ipynb` | iPython Notebook | 基于定型的 LDA 主题模型总结文档集的内容 |
 | `notebooks/5_Topic_Model_Analysis.ipynb` | iPython Notebook | 分析文本文档集的主题内容，并针对与文档集相关联的其他元数据关联主题信息 |
+| `notebooks/6_Interactive_Visualization.ipynb` | iPython Notebook | 学习的主题模型的交互式可视化效果 |
 | `notebooks/winprocess.py` | Python 文件 | 笔记本进行多处理所用的 python 脚本 |
 | `README.md` | Markdown 文件 | 自述 Markdown 文件 |
 
@@ -224,6 +225,8 @@ perplex = topicmodeler.EvaluatePerplexity(lda)
 在 `4_Topic_Model_Summarization.ipynb` 中，它演示了如何根据定型的 LDA 主题模型来汇总文档的内容。 摘要应用于在步骤 3 中学习的 LDA 主题模型。 它演示了如何使用主题来衡量主题的重要性或质量，以便记录纯度测量。 此纯度测量假设与在许多文档中分布稀少的潜在主题相比，主导其所在文档的潜在主题从语义上更重要。 此概念是在“[针对音频语料库摘要的潜在主题建模](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf)”一文中引入的。
 
 Notebook `5_Topic_Model_Analysis.ipynb` 演示如何分析文档集的主题内容，并针对与文档集相关联的其他元数据关联主题信息。 该笔记本中介绍了几个绘图，以帮助用户更好地了解学习主题和文档集。
+
+Notebook `6_Interactive_Visualization.ipynb` 演示如何以交互方式直观显示学习的主题模型。 它包括四个交互式可视化任务。
 
 ## <a name="conclusion"></a>结束语
 

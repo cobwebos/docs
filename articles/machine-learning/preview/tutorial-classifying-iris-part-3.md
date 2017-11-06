@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/27/2017
-ms.openlocfilehash: 56a79906a0f43f06d35db703d641f547e7bdf868
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 048d734277f855086a48ad00a52b873adbf419b4
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="classifying-iris-part-3-deploy-a-model"></a>“鸢尾花”分类第 3 部分：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -85,15 +85,15 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![评分文件](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. 若要获取架构文件，请运行该脚本。 在命令栏中选择 **local** 环境和 **iris_score.py** 脚本，单击“运行”按钮。 
+4. 若要获取架构文件，请运行该脚本。 在命令栏中选择 **local** 环境和 **iris-score.py** 脚本，然后单击“运行”按钮。 
 
 5. 该脚本在 **outputs** 文件夹中创建一个 JSON 文件，用于捕获模型所需的输入数据架构。
 
-6. 请注意 Machine Learning Workbench 窗口右侧的“作业”窗格。 等待最新的 **iris\_score.py** 作业显示绿色的“已完成”状态。 然后单击最新作业运行对应的超链接 **iris\_score.py [1]**，查看 **iris_score.py** 运行的运行详细信息。 
+6. 请注意 Machine Learning Workbench 窗口右侧的“作业”窗格。 等待最新的 **iris-score.py** 作业显示绿色的“已完成”状态。 然后单击最新作业运行对应的超链接 **iris-score.py [1]**，查看 **iris-score.py** 运行的运行详细信息。 
 
 7. 在“运行属性”页上的“输出”部分中，选择新建的 **service_schema.json** 文件。 **检查**文件，并单击“下载”。 将该文件保存到项目根文件夹。
 
-8. 返回到在其中打开了脚本 **iris_score.py** 的前一选项卡。 
+8. 返回到在其中打开了脚本 **iris-score.py** 的前一选项卡。 
 
    请注意，其中使用了数据收集功能从 Web 服务捕获模型输入和预测。 以下要点专门与数据收集相关：
 
@@ -120,6 +120,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    ```
 
 现在，可以准备环境来操作化模型。
+
+>[!NOTE]
+>部署模型时，需要具有 Azure 订阅的所有者访问权限。
 
 ## <a name="prepare-to-operationalize-locally"></a>在本地准备操作化
 使用“本地模式”部署在本地计算机上的 Docker 容器中运行。
@@ -201,7 +204,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 1. 使用以下命令创建实时 Web 服务：
 
    ```azurecli
-   az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f iris-score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
    ```
    这会生成稍后可用的 Web 服务 ID。
 
@@ -241,7 +244,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    若要创建清单，请使用以下命令并提供前一步骤生成的模型 ID 输出：
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f iris_score.py -r python -i <model ID> -s service_schema.json
+   az ml manifest create --manifest-name <new manifest name> -f iris-score.py -r python -i <model ID> -s service_schema.json
    ```
    此命令生成清单 ID。
 

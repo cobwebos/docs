@@ -11,25 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 09/25/2017
+ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 8117a5ef9bc4f785256a7a7d70f459529c771a56
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: b178be71824e427d88a811d87f1aeb6e5f80dbcc
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
 
 ## <a name="preview-availability-and-support"></a>预览版的可用性与支持
-存储防火墙和虚拟网络为预览版。  此功能当前可用于以下区域的新存储帐户或现有存储帐户：
-- 美国东部
-- 美国西部
-- 美国西部 2
-- 美国中西部
-- 澳大利亚东部
-- 澳大利亚东南部
+存储防火墙和虚拟网络为预览版。  此功能当前可用于所有 Azure 公有云区域中的新存储帐户或现有存储帐户。
 
 > [!NOTE]
 > 预览期间不支持生产工作负荷。

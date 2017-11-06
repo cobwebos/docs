@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 10/30/2017
 ms.author: anoopkv
-ms.openlocfilehash: e3b26c7f34a8fd3d027464cb7a3704c7960b67c6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: aa7bb25387efbc603dac9aaa0a56b3e30d0bfb4d
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>安装移动服务（VMware/物理到 Azure）
 Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其转发到进程服务器。 将移动服务部署到要复制到 Azure 的每台计算机（VMware VM 或物理服务器）上。 可使用以下方法将移动服务部署到需要保护的服务器上：
@@ -50,13 +50,16 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 
 | 安装程序文件模板名称| 操作系统 |
 |---|--|
-|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1（64 位） </br> Windows Server 2012（64 位） </br> Windows Server 2012 R2（64 位） |
-|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4、6.5、6.6、6.7、6.8（仅限 64 位） </br> CentOS 6.4、6.5、6.6、6.7、6.8（仅限 64 位） |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1、7.2（仅限 64 位） </br> CentOS 7.0、7.1、7.2（仅限 64 位）</br> CentOs 7.3（仅适用于迁移） |
+|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1（64 位） </br> Windows Server 2012（64 位） </br> Windows Server 2012 R2（64 位） </br> Windows Server 2016（64 位） |
+|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4、6.5、6.6、6.7、6.8、6.9（仅限 64 位） </br> CentOS 6.4、6.5、6.6、6.7、6.8、6.9（仅限 64 位） |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1、7.2、7.3（仅限 64 位） </br> CentOS 7.0、7.1、7.2、7.3（仅限 64 位） |
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3（仅限 64 位）|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4（仅限 64 位）|
 |Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4、6.5（仅限 64 位）|
 |Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04（仅限 64 位）|
+|Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS 服务器（仅限 64 位）|
+|Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7（仅限 64 位）|
+|Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8（仅限 64 位）|
 
 
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>使用 GUI 手动安装移动服务
@@ -93,7 +96,7 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 
 1. 在 Azure 门户中，浏览到“<Your Vault>”->“复制项”视图。
 2. 如果配置服务器已更新到最新版本，则应看到一条通知，显示“新的 Site Recovery 复制代理更新已可用。单击以安装”
-   
+
      ![ReplicatedItems](.\media\site-recovery-vmware-to-azure-install-mob-svc\replicated-item-notif.png)
 3. 单击通知打开虚拟机选择页面。
 4. 选择要升级移动服务的虚拟机，然后单击“确定”按钮。
@@ -102,7 +105,7 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 5. 这将为每个所选的虚拟机启动“更新移动服务”作业。
 
 > [!NOTE]
-> [阅读详细内容](site-recovery-vmware-to-azure-manage-configuration-server.md)，了解如何为用于安装移动服务的帐户更新密码 
+> [阅读详细内容](site-recovery-vmware-to-azure-manage-configuration-server.md)，了解如何为用于安装移动服务的帐户更新密码
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>卸载 Windows Server 计算机上的移动服务
 使用以下方法之一卸载 Windows Server 计算机上的移动服务。

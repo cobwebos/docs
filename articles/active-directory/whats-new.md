@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 中的新增功能 | Microsoft Docs"
-description: "使用这些发行说明来随时了解 Azure Active Directory 中的**最新版本**、**已知问题**、**bug 修复**、**已弃用功能**和**更改计划**。"
+title: "新增功能 Azure Active Directory 发行说明 | Microsoft Docs"
+description: "使用这些发行说明来随时了解 Azure Active Directory (Azure AD) 中的最新版本、已知问题、bug 修复、已弃用功能和更改计划。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 10/27/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0361d5b48af876af2ccc522351484d369554bfca
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 1d98233e1bfc2c9a926d7c61737286ec6e4fc422
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -76,6 +76,8 @@ Azure 门户提供：
 
 随着此公共预览版的发布，MFA 管理和报告已是 Azure AD 核心配置体验的集成部分，可让我们在 Azure AD 体验中管理 MFA 管理门户的功能。
 
+有关详细信息，请参阅 [Azure 门户中报告的多重身份验证参考信息](active-directory-reporting-activity-sign-ins-mfa.md) 
+
 
 ---
 **类型：**新功能  
@@ -112,8 +114,6 @@ Azure 门户提供：
 **服务类别：**访问评审  
 **产品功能：**调控  
 
-
-Azure AD 中的新增功能
 
 访问评审（预览版）可使组织有效地管理组成员身份以及对企业应用程序的访问权限： 
 
