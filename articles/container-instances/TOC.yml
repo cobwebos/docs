@@ -48,7 +48,7 @@
     - name: REST
       href: /rest/api/container-instances
     - name: PowerShell
-      href: '/powershell/module/azurerm.containerinstance#container_instances'
+      href: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
 - name: 资源
   items:
     - name: Azure 路线图

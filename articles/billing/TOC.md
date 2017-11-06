@@ -35,9 +35,9 @@
 ### [链接 Office 365 租户](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [按发票为订阅付款](billing-how-to-pay-by-invoice.md)
 ## 故障排除
-### [注册问题](billing-troubleshoot-azure-sign-up-issues.md)
-### [银行卡被拒绝](billing-credit-card-fails-during-azure-sign-up.md)
-### [登录问题](billing-cannot-login-subscription.md)
+### [注册问题](https://support.microsoft.com/en-us/help/4042959)
+### [银行卡被拒绝](https://support.microsoft.com/en-us/help/4042960)
+### [登录问题](https://support.microsoft.com/en-us/help/4042961)
 ### [找不到任何订阅](billing-no-subscriptions-found.md)
 ### [企业成本视图已禁用](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 

@@ -79,8 +79,6 @@
   items:
     - name: 灾难恢复
       items:
-        - name: VMware VM 到 Azure（提供多租户支持）
-          href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: Hyper-V VM 到 Azure
           href: tutorial-hyper-v-to-azure.md
         - name: 物理服务器到 Azure
@@ -99,6 +97,8 @@
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: 在本地站点之间运行故障转移和故障回复
           href: tutorial-vmm-to-vmm-failover-failback.md
+        - name: VMware VM 到 Azure（提供多租户支持）
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
     - name: 容量和缩放
       items:
         - name: 为将 VMware 复制到 Azure 规划容量
@@ -203,6 +203,8 @@
           href: 'site-recovery-workload.md#protect-exchange'
         - name: SAP
           href: site-recovery-sap.md
+        - name: 文件服务器
+          href: file-server-disaster-recovery.md
         - name: 基于 IIS 的 Web 应用程序
           href: site-recovery-iis.md
         - name: Citrix XenApp 和 XenDesktop

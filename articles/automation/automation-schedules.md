@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 > [!NOTE]
 > 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。  为了避免影响 runbook 及其自动化进程，你应该首先测试已将计划与专用于测试的自动化帐户进行链接的 runbook。  这将验证计划的 runbook 是否继续正常运行，如果没有，则可以进一步排除故障并在将更新的 runbook 版本迁移到生产之前应用所需的任何更改。  
->  自动化帐户不会自动获取模块的任何新版本，除非你通过从“模块”中选择“更新 Azure 模块”[](automation-update-azure-modules.md)选项来手动更新它们。 
+>  自动化帐户不会自动获取模块的任何新版本，除非你通过从“模块”中选择[更新 Azure 模块](automation-update-azure-modules.md)选项来手动更新它们。 
 >  
 
 ### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>在 Azure 门户中创建新计划
