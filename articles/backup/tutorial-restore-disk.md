@@ -89,7 +89,7 @@ az backup recoverypoint list \
 
 
 ## <a name="monitor-the-restore-job"></a>监视还原作业
-若要监视还原作业的状态，请使用 az backup job list[](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list)：
+若要监视还原作业的状态，请使用 [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list)：
 
 ```azurecli-interactive 
 az backup job list \

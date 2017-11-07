@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="get-a-report-id"></a>获取报表 ID
 
-每个访问令牌基于某个报表。 需要获取想要嵌入的报表的给定报表 ID。 可以通过调用“获取报表”REST API 来实现此目的。[](https://msdn.microsoft.com/library/azure/mt711510.aspx) 此操作将返回报表 ID 和嵌入 URL。 可以使用 Power BI .NET SDK 或通过直接调用 REST API 来实现此目的。
+每个访问令牌基于某个报表。 需要获取想要嵌入的报表的给定报表 ID。 可以通过调用[获取报表](https://msdn.microsoft.com/library/azure/mt711510.aspx)REST API 来实现此目的。 此操作将返回报表 ID 和嵌入 URL。 可以使用 Power BI .NET SDK 或通过直接调用 REST API 来实现此目的。
 
 ### <a name="using-the-power-bi-net-sdk"></a>使用 Power BI .NET SDK
 
