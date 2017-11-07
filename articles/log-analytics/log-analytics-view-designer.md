@@ -96,5 +96,5 @@ ms.lasthandoff: 10/11/2017
 视图只有一行可视化部件。  通过以下方式重新排列视图中的现有部件：单击这些部件并将其拖动到新位置。
 
 ## <a name="next-steps"></a>后续步骤
-* 将“磁贴”[](log-analytics-view-designer-tiles.md)添加到自定义视图。
+* 将[磁贴](log-analytics-view-designer-tiles.md)添加到自定义视图。
 * 将 [可视化部件](log-analytics-view-designer-parts.md) 添加到自定义视图。
