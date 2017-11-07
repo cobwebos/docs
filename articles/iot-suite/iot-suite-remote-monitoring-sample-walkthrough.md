@@ -1,6 +1,6 @@
 ---
-title: "远程监视预配置解决方案演练 | Microsoft Docs"
-description: "介绍 Azure IoT 预配置解决方案远程监视及其体系结构。"
+title: "远程监视解决方案的体系结构 - Azure | Microsoft Docs"
+description: "有关远程监视预配置解决方案的体系结构的演练。"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -10,275 +10,136 @@ editor:
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: b28105f300723b542fa6d1aebc569439d5c73dc4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a4b28e8a1269374a24e169f9363401109bacc471
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>远程监视预配置解决方案演练
+# <a name="remote-monitoring-preconfigured-solution-architecture"></a>远程监视预配置解决方案体系结构
 
-IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适用于在远程位置运行的多个计算机的端到端监视解决方案实现。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可以将其用作自己实现的起点，并可以根据特定的业务要求[自定义][lnk-customize]该解决方案。
+IoT 套件远程监视[预配置解决方案](iot-suite-what-are-preconfigured-solutions.md)针对远程位置中的多个计算机实现端到端监视解决方案。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可将其用作自己实现的起点，并可以根据特定的业务要求[自定义](iot-suite-remote-monitoring-customize.md)该解决方案。
 
 本文将逐步讲解远程监视解决方案的一些关键要素，以帮助你了解其工作原理。 这一知识有助于：
 
 * 排查解决方案中的问题。
-* 规划如何根据具体要求自定义该解决方案。 
+* 规划如何根据具体要求自定义该解决方案。
 * 设计自己的 IoT 解决方案，以使用 Azure 服务。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图概述该预配置解决方案的逻辑组件：
+下图描绘了叠加在 [IoT 体系结构](iot-suite-what-is-azure-iot.md)之上的远程监视预配置解决方案的逻辑组件：
 
 ![逻辑体系结构](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
-## <a name="simulated-devices"></a>模拟设备
+## <a name="why-microservices"></a>为何使用微服务？
 
-在该预配置解决方案中，模拟设备表示冷却设备（例如建筑物空调或设施空气处理单位）。 部署预配置解决方案时，还会自动预配 4 个在 [Azure Web 作业][lnk-webjobs]中运行的模拟设备。 模拟设备可让你轻松观测解决方案的行为，而不需要部署任何物理设备。 要部署实际的物理设备，请参阅 [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm]（将设备连接到远程监视预配置解决方案）教程。
+自 Microsoft 发布第一款预配置解决方案以来，云体系结构已有所演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的预配置解决方案将这些知识付诸实践，使我们也能从中受益。
 
-### <a name="device-to-cloud-messages"></a>设备到云的消息
+> [!TIP]
+> 若要详细了解微服务体系结构，请参阅 [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)（.NET 应用程序体系结构）和 [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)（微服务：由云推动的应用程序革命）。
 
-每个模拟设备可将以下消息类型发送到 IoT 中心：
+## <a name="device-connectivity"></a>设备连接
 
-| 消息 | 说明 |
-| --- | --- |
-| 启动 |当设备启动时，它会发送包含自身相关信息的 **设备信息** 消息到后端。 此数据包括设备 ID，以及设备支持的命令和方法列表。 |
-| 状态 |设备定期发送 **状态** 消息，以报告该设备是否可以感应到传感器的状态。 |
-| 遥测 |设备定期发送 **遥测** 消息，以报告从设备模拟传感器收集到的温度和湿度模拟值。 |
+该解决方案在逻辑体系结构的设备连接部分中包含以下组件：
 
-> [!NOTE]
-> 解决方案将设备支持的命令列表存储在 Cosmos DB 数据库中，而不是存储在设备孪生中。
+### <a name="simulated-devices"></a>模拟设备
 
-### <a name="properties-and-device-twins"></a>属性和设备孪生
+该解决方案包含一个微服务，使用该微服务可以管理用于在解决方案中测试端到端流的模拟设备池。 模拟设备：
 
-模拟设备将以下设备属性以*报告的属性*形式发送到 IoT 中心的[孪生][lnk-device-twins]中。 设备在启动时以及在响应“更改设备状态”命令或方法时发送报告的属性。
+* 生成设备到云的遥测数据。
+* 响应来自 IoT 中心的云到设备方法调用。
 
-| 属性 | 目的 |
-| --- | --- |
-| Config.TelemetryInterval | 设备发送遥测数据的频率（秒） |
-| Config.TemperatureMeanValue | 指定模拟温度遥测数据的平均值 |
-| Device.DeviceID |在解决方案中创建设备时所提供或分配的 ID |
-| Device.DeviceState | 设备报告的状态 |
-| Device.CreatedTime |在解决方案中创建设备的时间 |
-| Device.StartupTime |设备的启动时间 |
-| Device.LastDesiredPropertyChange |最后一项所需属性更改的版本号 |
-| Device.Location.Latitude |设备的纬度位置 |
-| Device.Location.Longitude |设备的经度位置 |
-| System.Manufacturer |设备制造商 |
-| System.ModelNumber |设备的型号 |
-| System.SerialNumber |设备的序列号 |
-| System.FirmwareVersion |设备上的当前固件版本 |
-| System.Platform |设备的平台体系结构 |
-| System.Processor |运行设备的处理器 |
-| System.InstalledRAM |在设备上安装的 RAM 量 |
+该微服务提供一个 RESTful 终结点用于创建、启动和停止模拟。 每个模拟由一组不同类型的的虚拟设备构成，这些设备可发送遥测数据和响应方法调用。
 
-模拟器会以示例值在模拟设备中植入这些属性。 模拟器每次初始化模拟设备时，设备以报告的属性的形式向 IoT 中心报告预定义的元数据。 报告的属性只能由设备更新。 若要更改报告的属性，请在解决方案门户中设置所需的属性。 设备负责：
+可以通过解决方案门户中的仪表板预配模拟设备。
 
-1. 定期从 IoT 中心检索所需的属性。
-2. 使用所需的属性值更新其配置。
-3. 将新值以报告的属性的形式发回到中心。
+### <a name="physical-devices"></a>物理设备
 
-在解决方案仪表板中，可以使用*所需的属性*通过[设备孪生][lnk-device-twins]在设备上设置属性。 通常，设备从中心读取所需的属性值来更新其内部状态，并以报告的属性的形式来报告更改。
+可将物理设备连接到解决方案。 可以使用 Azure IoT 设备 SDK 实现模拟设备的行为。
 
-> [!NOTE]
-> 模拟设备代码仅使用所需的属性 **Desired.Config.TemperatureMeanValue** 和**Desired.Config.TelemetryInterval** 来更新发回给 IoT 中心的报告的属性。 模拟设备中将忽略其他所有所需的属性更改。
+可以通过解决方案门户中的仪表板预配物理设备。
 
-### <a name="methods"></a>方法
+### <a name="iot-hub-and-the-iot-manager-microservice"></a>IoT 中心和 IoT 管理器微服务
 
-模拟设备可以处理通过 IoT 中心从解决方案门户调用的以下方法（[直接方法][lnk-direct-methods]）：
-
-| 方法 | 说明 |
-| --- | --- |
-| InitiateFirmwareUpdate |指示设备执行固件更新 |
-| 重新启动 |指示设备重新启动 |
-| FactoryReset |指示设备执行出厂重置 |
-
-某些方法使用报告的属性来报告进度。 例如，**InitiateFirmwareUpdate** 方法模拟在设备上异步运行更新。 该方法在设备上立即返回，异步任务继续使用报告的属性将状态更新发回到解决方案仪表板。
-
-### <a name="commands"></a>命令
-
-模拟设备可以处理通过 IoT 中心从解决方案门户发送的以下命令（云到设备的消息）：
-
-| 命令 | 说明 |
-| --- | --- |
-| PingDevice |向设备发送 *ping* 以检查其是否处于活动状态 |
-| StartTelemetry |使设备开始发送遥测 |
-| StopTelemetry |使设备停止发送遥测 |
-| ChangeSetPointTemp |更改设置点值（将围绕其生成随机数据） |
-| DiagnosticTelemetry |触发设备模拟器以发送其他遥测值 (externalTemp) |
-| ChangeDeviceState |更改设备的扩展状态属性，并从设备发送设备信息消息 |
-
-> [!NOTE]
-> 有关这些命令（设备到云的消息）和方法（直接方法）的比较，请参阅[云到设备的通信指南][lnk-c2d-guidance]。
-
-## <a name="iot-hub"></a>IoT 中心
-
-[IoT 中心][lnk-iothub]引入从设备发送到云中的数据，并将其提供给 Azure 流分析 (ASA) 作业。 每个流 ASA 作业使用不同的 IoT 中心使用者组从设备读取消息流。
+[IoT 中心](../iot-hub/index.md)引入从设备发送到云中的数据，并将其提供给 `telemetry-agent` 微服务使用。
 
 此外，解决方案中的 IoT 中心还可以：
 
-- 维护一个标识注册表，用于存储允许连接到门户的所有设备的 ID 和身份验证密钥。 可以通过标识注册表启用和禁用设备。
-- 代表解决方案门户向设备发送命令。
-- 代表解决方案门户在设备上调用方法。
-- 维护所有已注册设备的设备孪生。 设备孪生存储设备报告的属性值。 设备孪生还存储解决方案门户中设置的所需属性，供设备在后续连接时检索。
-- 计划作业，为多个设备设置属性或者在多个设备上调用方法。
+* 维护一个标识注册表，用于存储允许连接到门户的所有设备的 ID 和身份验证密钥。 可以通过标识注册表启用和禁用设备。
+* 代表解决方案门户在设备上调用方法。
+* 维护所有已注册设备的设备孪生。 设备孪生存储设备报告的属性值。 设备孪生还存储解决方案门户中设置的所需属性，供设备在后续连接时检索。
+* 计划作业，为多个设备设置属性或者在多个设备上调用方法。
 
-## <a name="azure-stream-analytics"></a>Azure 流分析
+该解决方案包含用于处理与 IoT 中心之间的交互的 `iot-manager` 微服务，这些交互包括：
 
-在远程监视解决方案中，[Azure 流分析][lnk-asa] (ASA) 将 IoT 中心发出的设备消息分发到其他后端组件进行处理或存储。 不同的 ASA 作业根据消息内容执行特定的功能。
+* 创建和管理 IoT 设备。
+* 管理设备孪生。
+* 在设备上调用方法。
+* 管理 IoT 凭据。
 
-**作业 1：设备信息** 会筛选来自传入消息流的设备信息消息，并将它们发送到事件中心终结点。 设备会在启动时发送设备信息消息，并且响应 **SendDeviceInfo** 命令。 此作业使用以下查询定义来识别 **设备信息** 消息：
+此服务还运行 IoT 中心查询，以检索属于用户定义组的设备。
 
-```
-SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'DeviceInfo'
-```
+该微服务提供一个 RESTful 终结点用于管理设备和设备孪生、调用方法和运行 IoT 中心查询。
 
-此作业将其输出发送到事件中心做进一步处理。
+## <a name="data-processing-and-analytics"></a>数据处理和分析
 
-**作业 2：规则** 会针对每个设备的阈值评估传入温度和湿度遥测值。 阈值在解决方案门户上的规则编辑器中设置。 每个设备/值对按照时间戳存储在 Blob 中，流分析将读入该对作为 **参考数据**。 该作业会针对设备的设置阈值比较任何非空值。 如果超过“>”条件，该作业将输出**警报**事件，表示已超过阈值，并且提供设备、值和时间戳值。 此作业使用以下查询定义来识别应触发警报的遥测消息：
+该解决方案在逻辑体系结构的数据处理和分析部分中包含以下组件：
 
-```
-WITH AlarmsData AS 
-(
-SELECT
-     Stream.IoTHub.ConnectionDeviceId AS DeviceId,
-     'Temperature' as ReadingType,
-     Stream.Temperature as Reading,
-     Ref.Temperature as Threshold,
-     Ref.TemperatureRuleOutput as RuleOutput,
-     Stream.EventEnqueuedUtcTime AS [Time]
-FROM IoTTelemetryStream Stream
-JOIN DeviceRulesBlob Ref ON Stream.IoTHub.ConnectionDeviceId = Ref.DeviceID
-WHERE
-     Ref.Temperature IS NOT null AND Stream.Temperature > Ref.Temperature
+### <a name="device-telemetry"></a>设备遥测
 
-UNION ALL
+该解决方案包含两个微服务用于处理设备遥测。
 
-SELECT
-     Stream.IoTHub.ConnectionDeviceId AS DeviceId,
-     'Humidity' as ReadingType,
-     Stream.Humidity as Reading,
-     Ref.Humidity as Threshold,
-     Ref.HumidityRuleOutput as RuleOutput,
-     Stream.EventEnqueuedUtcTime AS [Time]
-FROM IoTTelemetryStream Stream
-JOIN DeviceRulesBlob Ref ON Stream.IoTHub.ConnectionDeviceId = Ref.DeviceID
-WHERE
-     Ref.Humidity IS NOT null AND Stream.Humidity > Ref.Humidity
-)
+[telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) 微服务：
 
-SELECT *
-INTO DeviceRulesMonitoring
-FROM AlarmsData
+* 在 Cosmos DB 中存储遥测数据。
+* 分析来自设备的遥测数据流。
+* 根据定义的规则生成警报。
 
-SELECT *
-INTO DeviceRulesHub
-FROM AlarmsData
-```
+警报存储在 Cosmos DB 中。
 
-该作业将其输出发送到事件中心做进一步处理，并将每个警报的详细信息保存到 Blob 存储，解决方案门户可从该位置读取警报信息。
+`telemetry-agent` 微服务使解决方案门户能够读取设备发送的遥测数据。 解决方案门户还使用此服务：
 
-**作业 3：遥测** 会通过两种方法来操作传入设备遥测流。 第一种方法会将设备的所有遥测消息发送到永久性 Blob 存储以进行长期存储。 第二种方法会通过五分钟滑动窗口计算平均值、最小值和最大湿度值，并将此数据发送到 Blob 存储。 解决方案门户从 Blob 存储读取遥测数据来填充图表。 此作业使用下列查询定义：
+* 定义监视规则，例如触发警报的阈值
+* 检索以往警报的列表。
 
-```
-WITH 
-    [StreamData]
-AS (
-    SELECT
-        *
-    FROM [IoTHubStream]
-    WHERE
-        [ObjectType] IS NULL -- Filter out device info and command responses
-) 
+使用此微服务提供的 RESTful 终结点来管理遥测、规则和警报。
 
-SELECT
-    IoTHub.ConnectionDeviceId AS DeviceId,
-    Temperature,
-    Humidity,
-    ExternalTemperature,
-    EventProcessedUtcTime,
-    PartitionId,
-    EventEnqueuedUtcTime,
-    * 
-INTO
-    [Telemetry]
-FROM
-    [StreamData]
+### <a name="storage"></a>存储
 
-SELECT
-    IoTHub.ConnectionDeviceId AS DeviceId,
-    AVG (Humidity) AS [AverageHumidity],
-    MIN(Humidity) AS [MinimumHumidity],
-    MAX(Humidity) AS [MaxHumidity],
-    5.0 AS TimeframeMinutes 
-INTO
-    [TelemetrySummary]
-FROM [StreamData]
-WHERE
-    [Humidity] IS NOT NULL
-GROUP BY
-    IoTHub.ConnectionDeviceId,
-    SlidingWindow (mi, 5)
-```
+[storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) 微服务是预配置解决方案使用的主存储服务前面的适配器。 它提供简单的集合和键值存储。
 
-## <a name="event-hubs"></a>事件中心
+预配置解决方案的标准部署将 Cosmos DB 用作主存储服务。
 
-**设备信息**和**规则** ASA 作业将数据输出到事件中心，以便可靠地转发给 Web 作业中运行的**事件处理器**。
+Cosmos DB 数据库在预配置解决方案中存储数据。 **storage-adapter** 微服务充当解决方案中其他微服务的适配器，用于访问存储服务。
 
-## <a name="azure-storage"></a>Azure 存储
+## <a name="presentation"></a>呈现
 
-解决方案使用 Azure Blob 存储来保存解决方案设备中的所有原始数据和汇总的遥测数据。 门户从 Blob 存储读取遥测数据来填充图表。 为了显示警报，解决方案门户将从 Blob 存储读取当遥测值超过设置的阈值时所记录的数据。 解决方案还使用 Blob 存储来记录在解决方案门户中设置的阈值。
+该解决方案在逻辑体系结构的呈现部分中包含以下组件：
 
-## <a name="webjobs"></a>Web 作业
+[Web 用户界面是一个 React Javascript 应用程序](https://github.com/Azure/pcs-remote-monitoring-webui)。 该应用程序：
 
-除了托管设备模拟器以外，解决方案中的 Web 作业还托管 Azure Web 作业中运行的、用于处理命令响应的**事件处理器**。 它使用命令响应消息来更新设备命令历史记录（存储在 Cosmos DB 数据库中）。
+* 仅使用 Javascript React，完全在浏览器中运行。
+* 采用 CSS 样式。
+* 通过 AJAX 调用与面向公众的微服务交互。
 
-## <a name="cosmos-db"></a>Cosmos DB
+用户界面呈现预配置解决方案的所有功能，并与如下所述的其他服务交互：
 
-该解决方案使用 Cosmos DB 数据库来存储有关连接到该解决方案的设备信息。 此信息包括从解决方案门户发送到设备的命令以及从解决方案门户调用的方法的历史记录。
+* 用于保护用户数据的 [authentication](https://github.com/Azure/pcs-auth-dotnet) 微服务。
+* 用于列出和管理 IoT 设备的 [Iothub manager](https://github.com/Azure/iothub-manager-dotnet) 微服务。
 
-## <a name="solution-portal"></a>解决方案门户
-
-解决方案门户是部署为预配置解决方案一部分的 Web 应用。 解决方案门户中的关键页面包括仪表板和设备列表。
-
-### <a name="dashboard"></a>仪表板
-
-Web 应用中的此页面使用 PowerBI javascript 控件（请参阅 [PowerBI-visuals repo](https://www.github.com/Microsoft/PowerBI-visuals)（PowerBI 可视化效果存储库））来可视化设备发送的遥测数据。 解决方案使用 ASA 遥测作业将遥测数据写入 Blob 存储。
-
-### <a name="device-list"></a>列出设备
-
-在解决方案门户的此页面中，可以：
-
-* 预配新设备。 此操作将设置唯一的设备 ID，并生成身份验证密钥。 将有关设备的信息同时写入 IoT 中心标识注册表以及特定于解决方案的 Cosmos DB 数据库。
-* 管理设备属性。 此操作包括查看现有属性和使用新属性进行更新。
-* 将命令发送到设备。
-* 查看设备的命令历史记录。
-* 启用和禁用设备。
+使用户界面能够存储和检索配置设置的 [ui-config](https://github.com/Azure/pcs-config-dotnet) 微服务。
 
 ## <a name="next-steps"></a>后续步骤
 
-以下 TechNet 博客文章提供了有关远程监视预配置解决方案的更多详细信息：
+如果想要浏览源代码和开发人员文档，请从以下两个主要 GitHub 存储库中的一个入手：
 
-* [IoT Suite - Under The Hood - Remote Monitoring（IoT 套件 - 幕后 - 远程监视）](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
-* [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices（IoT 套件 - 远程监视 - 添加实时与模拟设备）](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
+* [使用 Azure IoT 的远程监视预配置解决方案 (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
+* [使用 Azure IoT 的远程监视预配置解决方案 (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
 
-可以通过阅读以下文章继续开始使用 IoT 套件：
-
-* [将设备连接到远程监视预配置解决方案][lnk-connect-rm]
-* [azureiotsuite.com 站点权限][lnk-permissions]
-
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-iothub]: https://azure.microsoft.com/documentation/services/iot-hub/
-[lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
-[lnk-webjobs]: https://azure.microsoft.com/documentation/articles/websites-webjobs-resources/
-[lnk-connect-rm]: iot-suite-connecting-devices.md
-[lnk-permissions]: iot-suite-permissions.md
-[lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
-[lnk-device-twins]:  ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
+有关远程监视预配置解决方案的其他概念性信息，请参阅[自定义预配置解决方案](iot-suite-remote-monitoring-customize.md)。
