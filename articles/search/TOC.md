@@ -78,6 +78,7 @@
 ### [建议](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [多面导航](search-faceted-navigation.md)
 ### [同义词（预览版）](search-synonyms.md)
+### [moreLikeThis 预览版](search-more-like-this.md)
 
 # 引用
 
@@ -86,7 +87,7 @@
 ## [Python（管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST](/rest/api/searchservice)
 ## [.NET（管理）](/rest/api/searchmanagement)
-## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
+## [服务 REST（预览版）](search-api-2016-09-01-preview.md)
 
 # 资源
 

@@ -48,7 +48,6 @@
 #### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
 #### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
-### [重置密码](active-directory-users-reset-password-azure-portal.md)
 ### [管理用户工作信息](active-directory-users-work-info-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
 
@@ -126,7 +125,6 @@
 ### [SSPR 报告](active-directory-passwords-reporting.md)
 ### IT 管理员：重置密码
 #### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
-#### [Azure 经典门户](active-directory-create-users-reset-password.md)
 ### [许可 SSPR](active-directory-passwords-licensing.md)
 ### [密码写回](active-directory-passwords-writeback.md)
 ### [故障排除](active-directory-passwords-troubleshoot.md)
@@ -242,6 +240,7 @@
 ### [多个目录](active-directory-licensing-directory-independence.md)
 ### [O365 目录](active-directory-manage-o365-subscription.md)
 ### [自助服务注册](active-directory-self-service-signup.md)
+#### [接管非托管目录](domains-admin-takeover.md)
 ### [企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [启用](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [组策略设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)

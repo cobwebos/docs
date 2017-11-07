@@ -84,8 +84,20 @@
         - name: Azure 机器学习工作区
           href: ../studio/create-workspace.md
           maintainContext: true
-        - name: 设置虚拟机
-          href: virtual-machines.md
+        - name: 设置数据科学 VM
+          items:
+            - name: 创建 Windows 数据科学 VM
+              href: ../data-science-virtual-machine/provision-vm.md
+              maintainContext: true
+            - name: 创建 Ubuntu 数据科学 VM
+              href: ../data-science-virtual-machine/dsvm-ubuntu-intro.md
+              maintainContext: true
+            - name: 创建 CentOS 数据科学 VM
+              href: ../data-science-virtual-machine/linux-dsvm-intro.md
+              maintainContext: true
+            - name: 创建深度学习 VM
+              href: ../data-science-virtual-machine/provision-deep-learning-dsvm.md
+              maintainContext: true
     - name: 分析业务需求
       items:
         - name: 确定方案

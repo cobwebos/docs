@@ -91,7 +91,7 @@ Blob 存储帐户公开**访问层**属性，它允许用户将存储层指定�
 
 ## <a name="blob-level-tiering-feature-preview"></a>Blob 级分层功能（预览版）
 
-现在，使用 Blob 级分层功能即可通过名为“设置 Blob 层”的单一操作在对象级别更改数据的层。[](/rest/api/storageservices/set-blob-tier) 可以在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 的访问层，不需在帐户之间移动数据。 所有层更改都是即时发生的，Blob 正从存档中解除冻结的情况除外。 所有三个存储层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置继承相应的层。
+现在，使用 Blob 级分层功能即可通过名为[设置 Blob 层](/rest/api/storageservices/set-blob-tier)的单一操作在对象级别更改数据的层。 可以在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 的访问层，不需在帐户之间移动数据。 所有层更改都是即时发生的，Blob 正从存档中解除冻结的情况除外。 所有三个存储层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置继承相应的层。
 
 若要使用这些预览版功能，请按 [Azure 存档和 Blob 级分层博客公告](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering)中的说明操作。
 

@@ -309,6 +309,10 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure 自动化
           href: sql-database-manage-automation.md
+        - name: SQL 数据同步最佳做法
+          href: sql-database-best-practices-data-sync.md
+        - name: SQL 数据同步故障排除
+          href: sql-database-troubleshoot-data-sync.md
     - name: 向外扩展
       items:
         - name: 创建分片应用

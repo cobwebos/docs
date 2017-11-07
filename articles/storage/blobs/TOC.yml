@@ -22,6 +22,8 @@
       href: storage-quickstart-blobs-java.md
     - name: 使用 Blob - Python
       href: storage-quickstart-blobs-python.md
+    - name: 使用 Blob - Node.js
+      href: storage-quickstart-blobs-nodejs.md
 - name: 教程
   items:
     - name: 上传和处理图像

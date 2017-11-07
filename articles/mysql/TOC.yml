@@ -79,8 +79,8 @@
       href: concepts-monitoring.md
     - name: 开发
       items:
-        - name: 连接库
-          href: concepts-connection-libraries.md
+        - name: 驱动程序和工具兼容性
+          href: concepts-compatibility.md
         - name: 应用程序开发
           href: concepts-database-application-development.md
     - name: 迁移数据库
