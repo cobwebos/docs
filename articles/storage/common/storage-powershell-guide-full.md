@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: robinsh
-ms.openlocfilehash: a116b4c15046e704e374ca67c5695ff3f01ba7fb
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1046e407bb4e9d07e91014384e9eba7b0c7020a8
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
@@ -26,7 +26,7 @@ Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure �
 本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 学习如何： 
 
 > [!div class="checklist"]
-> * 列出存储器帐户
+> * 列出存储帐户
 > * 获取对现有存储帐户的引用
 > * 创建存储帐户 
 > * 设置存储帐户属性
@@ -34,12 +34,11 @@ Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure �
 > * 保护对存储帐户的访问 
 > * 启用存储分析
 
-本文还将提供指向用于存储的几个其他 PowerShell 文章的链接，例如，如何启用和访问存储分析，以及如何使用数据平面 cmdlet。
-<!-- also how to access the china and government clouds  -->
+本文提供有关存储的其他几篇 PowerShell 文章的链接，例如，如何启用和访问存储分析、如何使用数据平面 cmdlet，以及如何访问中国云、德国云和政府云等 Azure 独立云。
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本演练需要 Azure PowerShell 模块 3.6 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
+本演练需要 Azure PowerShell 模块 4.4 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
 
 对于本演练，可以将命令键入到一个常规的 PowerShell 窗口中，也可以使用 [Windows PowerShell 集成脚本环境 (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) 并将命令键入到编辑器中，然后在浏览示例时测试一个或多个命令。 可以突出显示想要执行的行，并单击“运行所选项”来仅运行这些命令。
 
@@ -94,7 +93,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 # Set the name of the storage account and the SKU name. 
 $storageAccountName = "testpshstorage"
-$skuName = "Standard\_LRS"
+$skuName = "Standard_LRS"
     
 # Create the storage account.
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -122,7 +121,7 @@ SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储
 
 现在，你有新的存储帐户以及对它的引用。 
 
-## <a name="managing-the-storage-account"></a>管理存储帐户
+## <a name="manage-the-storage-account"></a>管理存储帐户
 
 现在，已有对新存储帐户或现有存储帐户的引用，以下部分将介绍一些可用于管理存储帐户的命令。
 
@@ -142,7 +141,7 @@ SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储
 
 * 仅允许 HTTPS 流量。 
 
-### <a name="managing-the-access-keys"></a>管理访问密钥
+### <a name="manage-the-access-keys"></a>管理访问密钥
 
 Azure 存储帐户附带了两个帐户密钥。 若要检索密钥，请使用 [Get-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey)。 此示例将检索第一个密钥。 若要检索另一个密钥，请使用 `Value[1]` 而不是 `Value[0]`。
 
@@ -171,17 +170,17 @@ New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
 
 ### <a name="delete-a-storage-account"></a>删除存储帐户 
 
-若要删除存储帐户，请使用 [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount)。 
-
-> [!IMPORTANT]
-> 在删除存储帐户时，还会删除该帐户中存储的所有资产。 如果意外删除某个帐户，请立即致电支持人员，并打开票证以还原该存储帐户。 不保证数据能得以恢复，但有时上述操作能起作用。 在支持票证得到解决之前，请不要使用相同的旧帐户名创建新的存储帐户。 
->
+若要删除存储帐户，请使用 [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount)。
 
 ```powershell
 Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
-### <a name="protecting-your-storage-account-using-vnets-and-firewalls"></a>使用 Vnet 和防火墙来保护存储帐户
+> [!IMPORTANT]
+> 在删除存储帐户时，还会删除该帐户中存储的所有资产。 如果意外删除某个帐户，请立即致电支持人员，并打开票证以还原该存储帐户。 不保证数据能得以恢复，但有时上述操作能起作用。 在支持票证得到解决之前，请不要使用相同的旧帐户名创建新的存储帐户。 
+>
+
+### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>使用 VNet 和防火墙保护存储帐户
 
 默认情况下，所有存储帐户均可通过任何有权访问 Internet 的网络进行访问。 但是，可以配置网络规则，仅允许来自特定虚拟网络的应用程序访问存储帐户。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](storage-network-security.md)。 
 
@@ -190,7 +189,7 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 * [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
 * [Remove-AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.storage/remove-azurermstorage-account-networkrule)
 
-## <a name="using-storage-analytics"></a>使用存储分析  
+## <a name="use-storage-analytics"></a>使用存储分析  
 
 [Azure 存储分析](storage-analytics.md)由[存储分析度量值](/rest/api/storageservices/about-storage-analytics-metrics)和[存储分析日志记录](/rest/api/storageservices/about-storage-analytics-logging)组成。 
 
@@ -210,29 +209,37 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 
 * 有关使用“存储度量值”和“存储日志记录”排查存储问题的详细信息，请参阅[对 Microsoft Azure 存储进行监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting.md)。
 
-## <a name="managing-the-data-in-the-storage-account"></a>管理存储帐户中的数据
+## <a name="manage-the-data-in-the-storage-account"></a>管理存储帐户中的数据
 
-现在，你已了解如何使用 PowerShell 管理存储帐户，下面的文章将介绍如何使用 PowerShell 访问存储帐户中的数据对象。
+了解如何使用 PowerShell 管理存储帐户后，请参阅以下文章了解如何访问存储帐户中的数据对象。
 
 * [如何使用 PowerShell 管理 blob](../blobs/storage-how-to-use-blobs-powershell.md)
 * [如何使用 PowerShell 管理文件](../files/storage-how-to-use-files-powershell.md)
 * [如何使用 PowerShell 管理队列](../queues/storage-powershell-how-to-use-queues.md)
 
-<!--## Government Cloud and China Cloud
+## <a name="azures-independently-deployed-clouds"></a>Azure 的独立部署云
 
-ROBINROBINROBIN 
+大多数人为其全球 Azure 部署使用了 Azure 公有云。 但出于主权等方面的原因，还存在一些独立的 Microsoft Azure 部署。 这些独立部署称为“环境”。 可用环境如下：
 
-To access the Government cloud of the China datacenters, you have to use some special steps. The following article shows how to access these special cloud accounts using PowerShell.
+* [Azure 政府云](https://azure.microsoft.com/features/gov/)
+* [由中国世纪互联运营的 Azure 中国云](http://www.windowsazure.cn/)
+* [Azure 德国云](../../germany/germany-welcome.md)
 
-* [How to manage storage accounts in Government Cloud and China](storage-powershell-govt-china.md)
--->
+有关如何使用 PowerShell 访问这些云及其存储的信息，请参阅[使用 PowerShell 管理 Azure 独立云中的存储](storage-powershell-independent-clouds.md)。
 
+## <a name="clean-up-resources"></a>清理资源
+
+如果在本练习中创建了新的资源组和存储帐户，可以通过删除资源组来删除所创建的所有资产。 这会一并删除组中包含的所有资源。 在这种情况下，它会删除创建的存储帐户以及资源组本身。
+
+```powershell
+Remove-AzureRmResourceGroup -Name $resourceGroup
+```
 ## <a name="next-steps"></a>后续步骤
 
-本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 学习如何： 
+本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 你已了解如何： 
 
 > [!div class="checklist"]
-> * 列出存储器帐户
+> * 列出存储帐户
 > * 获取对现有存储帐户的引用
 > * 创建存储帐户 
 > * 设置存储帐户属性
@@ -240,9 +247,7 @@ To access the Government cloud of the China datacenters, you have to use some sp
 > * 保护对存储帐户的访问 
 > * 启用存储分析
 
-还提供指向多篇其他文章的链接，例如，如何管理数据对象、如何启用存储分析。 下面是一些可供参考的其他相关文章和资源： 
-<!--, and how to access storage with PowerShell using the Government Cloud and the China Cloud.
--->
+本文还提供了其他几篇参考文章的链接，例如，如何管理数据对象、如何启用存储分析，以及如何访问中国云、德国云和政府云等 Azure 独立云。 下面是一些可供参考的其他相关文章和资源：
 
 * [Azure 存储控制平面 PowerShell cmdlet](/powershell/module/AzureRM.Storage/)
 * [Azure 存储数据平面 PowerShell cmdlet](/powershell/module/azure.storage/)

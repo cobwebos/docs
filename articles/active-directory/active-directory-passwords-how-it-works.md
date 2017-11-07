@@ -1,5 +1,5 @@
 ---
-title: "深入探讨：Azure AD SSPR | Microsoft Docs"
+title: "工作原理： Azure AD SSPR | Microsoft Docs"
 description: "Azure AD 自助密码重置深入探讨"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b363616792b35420644154cc0f8b878f2c83f1c7
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 71310534ec62b62bcd408d75060859c79bc470cf
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -39,10 +39,10 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 阅读以下步骤，了解有关密码重置页面背后的逻辑。
 
-1. 用户单击“无法访问帐户”链接或直接转到 [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com)。
+1. 用户单击“无法访问帐户”链接或直接转到 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)。
 2. 根据浏览器的区域设置以相应的语言呈现体验内容。 密码重置体验已本地化为 Office 365 支持的相同语言。
 3. 用户输入用户 ID 并传递验证码。
-4. Azure AD 通过执行以下操作来验证用户是否能够使用此功能：
+4. Azure AD 通过执行以下检查来验证用户是否能够使用此功能：
    * 检查用户是否启用了此功能并分配有 Azure AD 许可证。
      * 如果用户未启用此功能或未分配有许可证，则要求用户联系其管理员重置其密码。
    * 检查用户是否具有针对其帐户定义且符合管理员策略的正确质询数据。
@@ -57,12 +57,14 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 ## <a name="authentication-methods"></a>身份验证方法
 
-如果已启用自助密码重置 (SSPR)，则必须选择以下至少一个选项作为身份验证方法。 我们强烈建议至少选择两个身份验证方法，以便为用户提供更大的灵活性。
+如果已启用自助密码重置 (SSPR)，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为门限。 我们强烈建议至少选择两个身份验证方法，以便为用户提供更大的灵活性。
 
 * 电子邮件
 * 移动电话
 * 办公电话
 * 安全提问
+
+![身份验证][Authentication]
 
 ### <a name="what-fields-are-used-in-the-directory-for-authentication-data"></a>在用于身份验证数据的目录中使用哪些字段
 
@@ -81,7 +83,7 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 ### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
 
-此选项确定用户在执行重置或解锁密码过程时必须完成的可用身份验证方法数下限，可设置为 1 或 2。
+此选项确定用户在执行重置或解锁密码过程时必须完成的可用身份验证方法或门限数下限，可设置为 1 或 2。
 
 用户可以选择提供更多的身份验证方法（如果管理员已启用这些方法）。
 
@@ -188,7 +190,7 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 ## <a name="on-premises-integration"></a>本地集成
 
-如果已安装、配置并启用 Azure AD Connect，则可以使用更多的选项进行本地集成。
+如果已安装、配置并启用 Azure AD Connect，则可以使用以下附加选项进行本地集成。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>将密码写回到本地目录
 
@@ -199,78 +201,35 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>允许用户在不重置密码的情况下解锁帐户
 
-指定是否应为浏览密码重置门户的用户提供选项，让他们在不重置密码的情况下解锁本地 Active Directory 帐户。 默认情况下，Azure AD 在执行密码重置时始终会解锁帐户，使用此设置可区分这两项操作。 
+指定是否应为浏览密码重置门户的用户提供选项，让他们在不重置密码的情况下解锁本地 Active Directory 帐户。 默认情况下，Azure AD 在执行密码重置时会解锁帐户，使用此设置可区分这两项操作。 
 
 * 如果设置为“是”，将提供用户重置其密码以解锁帐户的选项，或者在不重置密码的情况下解锁的选项。
 * 如果设置为“否”，用户只能同时执行密码重置和帐户解锁的操作。
 
-## <a name="network-requirements"></a>网络要求
-
-### <a name="firewall-rules"></a>防火墙规则
-
-[Microsoft Office URL 和 IP 地址列表](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
-
-对于 Azure AD Connect 1.1.443.0 和更高版本，需要对以下站点进行出站 HTTPS 访问
-* passwordreset.microsoftonline.com
-* servicebus.windows.net
-
-若要进行更精细的访问，可在[此处](https://www.microsoft.com/download/details.aspx?id=41653)找到更新的 Microsoft Azure 数据中心 IP 范围列表，该列表在每个星期三更新，在下一个星期一生效。
-
-### <a name="idle-connection-timeouts"></a>空闲连接超时
-
-Azure AD Connect 工具定期将 ping/keepalive 发送到服务总线终结点，确保连接始终处于活动状态。 如果该工具检测到丢失的连接过多，则会自动增加发送到终结点的 ping 的频率。 最低的“ping 间隔”将降至每 60 秒 ping 1 次，但是，我们强烈建议将代理/防火墙设置为允许空闲连接保持至少 2-3 分钟。 *对于较旧的版本，我们建议让空闲连接保持 4 分钟或更长时间。
-
-## <a name="active-directory-permissions"></a>Active Directory 权限
-
-在 Azure AD Connect 实用工具中指定的帐户必须对该林中**或者**要纳入 SSPR 范围的用户 OU 中的**每个域**的根对象拥有“重置密码”、“更改密码”、“对‘lockoutTime’的写权限”和“对‘pwdLastSet’的写权限”扩展权限。
-
-如果不确定上面指的是哪个帐户，请打开 Azure Active Directory Connect 配置 UI，并单击“查看当前配置”选项。 需要将权限添加到的帐户列在“已同步的目录”下面
-
-设置这些权限允许每个林的 MA 服务帐户代表该林中的用户帐户管理密码。 **如果忘记分配这些权限，即使写回看上去配置正确，用户在尝试从云中管理本地密码时也会遇到错误。**
-
-> [!NOTE]
-> 将这些权限复制到目录中的所有对象可能需要一小时或更久。
->
-
-设置适当的权限以便执行密码写回
-
-1. 使用具有适当域管理权限的帐户打开“Active Directory 用户和计算机”
-2. 在“视图”中，确保打开“高级功能”
-3. 在左侧面板中，右键单击表示域根的对象，并选择属性
-    * 单击“安全性”选项卡
-    * 然后单击“高级”。
-4. 在“权限”选项卡中，单击“添加”
-5. 选择要将权限应用到的帐户（通过 Azure AD Connect 安装程序）
-6. 在“应用到”下拉框中，选择“下级用户对象”
-7. 在“权限”下选中对应于以下内容的框
-    * 使密码不过期
-    * 重置密码
-    * 更改密码
-    * 写入 lockoutTime
-    * 写入 pwdLastSet
-8. 单击“应用”/“确定”，直到已应用并退出所有打开的对话框。
-
 ## <a name="how-does-password-reset-work-for-b2b-users"></a>B2B 用户如何使用密码重置？
-所有 B2B 配置完全支持密码重置和更改。  请在下面阅读密码重置支持的三个具体的 B2B 案例。
+所有 B2B 配置完全支持密码重置和更改。 B2B 用户密码重置支持以下三种情况。
 
 1. **已有 Azure AD 租户的合作伙伴组织中的用户** - 如果与你合作的组织已有 Azure AD 租户，我们将**遵守该租户中已启用的任何密码重置策略**。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR（这不会给 O365 客户造成额外的费用）。可以遵照[密码管理入门](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)指南中的步骤启用 SSPR。
 2. **已注册使用[自助注册的用户](active-directory-self-service-signup.md)** - 如果与你合作的组织使用[自助注册](active-directory-self-service-signup.md)功能来访问租户，我们将允许他们使用已注册的电子邮件来重置密码。
 3. **B2B 用户** - 使用新的 [Azure AD B2B 功能](active-directory-b2b-what-is-azure-ad-b2b.md)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
-若要测试此功能，请让上述合作伙伴用户之一转到 http://passwordreset.microsoftonline.com。 只要他们定义了备用电子邮件或身份验证电子邮件，密码重置就能按预期方式工作。
+若要测试此方案，请让上述合作伙伴用户之一转到 http://passwordreset.microsoftonline.com。 只要他们定义了备用电子邮件或身份验证电子邮件，密码重置就能按预期方式工作。
 
 ## <a name="next-steps"></a>后续步骤
 
 以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
-* [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
-* [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
-* [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
-* [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-* [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
-* [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
-* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
+* [如何成功推出 SSPR？](active-directory-passwords-best-practices.md)
+* [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
+* [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
+* [是否有许可问题？](active-directory-passwords-licensing.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
+* [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
+* [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
+[Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "可用的 Azure AD 身份验证方法和所需数量"
