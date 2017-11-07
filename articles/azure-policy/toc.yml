@@ -15,6 +15,14 @@
   items:
     - name: 创建和管理 Azure 策略
       href: create-manage-policy.md
+- name: 示例
+  items:
+    - name: 策略模板
+      href: json-samples.md
+- name: 概念
+  items:
+    - name: Azure 策略定义结构
+      href: policy-definition.md
 - name: 引用
   items:
     - name: Azure CLI

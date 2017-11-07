@@ -41,6 +41,7 @@
 ## 为 ExpressRoute 配置路由器
 ### [配置路由器](expressroute-config-samples-routing.md)
 ### [NAT 的路由器配置示例](expressroute-config-samples-nat.md)
+## [为 ExpressRoute 配置网络性能监视器](how-to-npm.md)
 
 ## 最佳实践
 ### [网络安全和云服务最佳实践](../best-practices-network-security.md)

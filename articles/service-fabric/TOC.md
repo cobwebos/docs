@@ -6,6 +6,7 @@
 ## [创建 .NET 应用程序](service-fabric-quickstart-dotnet.md)
 ## [部署 Linux 容器应用程序](service-fabric-quickstart-containers-linux.md)
 ## [部署 Windows 容器应用程序](service-fabric-quickstart-containers.md)
+## [部署 Java 应用程序](service-fabric-quickstart-java.md)
 
 # 教程
 ## 部署 .NET 应用
@@ -28,7 +29,9 @@
 ### 1- 在 Azure 上创建群集
 #### [1a- 创建 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 #### [1b- 创建 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-### [2- 部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+### [2- 缩放群集](service-fabric-tutorial-scale-cluster.md)
+### [3- 部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+
 
 # 示例
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=service-fabric)

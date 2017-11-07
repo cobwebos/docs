@@ -82,6 +82,13 @@
       href: maintenance-and-updates.md
     - name: 存储
       href: about-disks-and-vhds.md
+      items:
+        - name: 高级存储
+          href: premium-storage.md
+        - name: 高级存储性能
+          href: premium-storage-performance.md
+        - name: 标准存储
+          href: standard-storage.md
     - name: 联网
       href: network-overview.md
     - name: 自动缩放应用程序
@@ -235,12 +242,16 @@
           href: detach-disk.md
         - name: 调整磁盘大小
           href: expand-os-disk.md
+        - name: 磁盘的备份和灾难恢复
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 在“标准”和“高级”之间转换磁盘
           href: convert-disk-storage.md
+        - name: 使用 Azure Site Recovery 迁移到高级存储
+          href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: 使用文件存储
           href: mount-azure-file-storage.md
         - name: 使用模板部署磁盘

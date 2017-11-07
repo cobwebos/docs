@@ -44,8 +44,8 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">容器注册表异地复制（预览版）</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Azure 容器实例的容器注册表</a>
-          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">Azure 容器服务的容器注册表</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">将容器注册表与 Azure 容器实例配合使用</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">将容器注册表与 Azure 容器服务 (AKS) 配合使用</a>
           - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">将容器注册表与 Service Fabric 配合使用</a>
   - title: 引用
     items:
