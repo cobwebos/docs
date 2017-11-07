@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 4. 几秒钟后，将显示你刚刚创建的新应用程序注册。
 5. 添加应用程序后，单击应用程序注册名称，单击顶部的“设置”，然后单击“属性” 
 6. 在“应用 ID URI”框中粘贴应用程序 URL（来自于步骤 1），并在“主页 URL”中粘贴应用程序 URL（来自于步骤 1），然后单击“保存”
-7. 现在，单击“答复 URL”，编辑“答复 URL”，粘贴应用程序 URL（来自于步骤 1），修改协议，确保具有“https://”协议（非 http://），然后在 URL 末尾追加 /.auth/login/aad/callback。 （例如：`https://contoso.azurewebsites.net/.auth/login/aad/callback`。）单击“保存”。   
+7. 现在，单击“答复 URL”，编辑“答复 URL”，粘贴应用程序 URL（来自于步骤 1），修改协议，确保具有 **https://** 协议 （非 http://） ，然后在 URL 末尾追加 /.auth/login/aad/callback。 （例如：`https://contoso.azurewebsites.net/.auth/login/aad/callback`。）单击“保存”。   
 8.  此时，复制应用的“应用程序 ID”。 保留此 ID 供将来使用。 你将需要此 ID 来配置 Web 应用。
 9. 关闭“应用程序注册详细信息”边栏选项卡。 返回到 Azure Active Directory 应用注册摘要，单击顶部的“终结点”按钮，然后复制“联合元数据文档”URL。 
 10. 通过粘贴并浏览到 XML 页，打开一个新的浏览器窗口并导航到 URL。 文档顶部将是一个“EntityDescriptor”元素，应该有一个格式为 `https://sts.windows.net/` 的“entityID”属性，其后接特定于租户的 GUID（称为“租户 ID”）。 复制此值 - 它将作为**颁发者 URL**。 稍后配置应用程序时要用到此信息。
