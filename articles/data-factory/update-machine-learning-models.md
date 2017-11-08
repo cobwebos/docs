@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 062d82d1bb2126a5b135796a2b5fa00ccf02511d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df139383eb2fa20fe75ecc6b3f5e2aa0773f186c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是 Azure 数据工厂和 Azure 机器学习集成主要文章[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/11/2017
 对于第二个 Azure 机器学习链接服务，当 Azure 机器学习 Web 服务是经典 Web 服务与当该服务是新的 Web 服务时，配置是不同的。 下面的各部分分别讨论了不同之处。 
 
 ## <a name="web-service-is-a-classic-web-service"></a>Web 服务是经典 Web 服务时
-如果预测 Web 服务是**经典 Web 服务**，请使用 [Azure 门户](https://manage.windowsazure.com)创建第二个**非默认且可更新的终结点**。 请参阅[创建终结点](../machine-learning/machine-learning-create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
+如果预测 Web 服务是“经典 Web 服务”，请使用 Azure 门户创建第二个“非默认且可更新的终结点”。 请参阅[创建终结点](../machine-learning/machine-learning-create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
 
 * 单击“批处理执行”获取 **mlEndpoint** JSON 属性的 URI 值。
 * 单击“更新资源”链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。
@@ -116,7 +116,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web 服务是新的 Azure 资源管理器 Web 服务时 
 
-如果 Web 服务是公开 Azure Resource Manager 终结点的新类型 Web 服务，则无需添加第二个**非默认**终结点。 链接服务中的 **updateResourceEndpoint** 的格式如下： 
+如果 Web 服务是公开 Azure 资源管理器终结点的新类型 Web 服务，则无需添加第二个**非默认**终结点。 链接服务中的 **updateResourceEndpoint** 的格式如下： 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 

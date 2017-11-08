@@ -1,7 +1,25 @@
-title: 在 Azure 中使用加密保护个人静态数据 | Microsoft Docs description: 本文是介绍如何使用 Azure 保护个人数据的系列教程的其中一篇 services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
-
-ms.assetid: ms.service: security ms.devlang: na ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 08/22/2017 ms.author: barclayn ms.custom: 
-
+---
+title: "Azure 利用加密保护个人静态数据 | Microsoft Docs"
+description: "本文属于旨在帮助用户使用 Azure 保护个人数据的系列文章"
+services: security
+documentationcenter: na
+author: Barclayn
+manager: MBaldwin
+editor: TomSh
+ms.assetid: 
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/31/2017
+ms.author: barclayn
+ms.custom: 
+ms.openlocfilehash: 2bb8370d23d9450fb8154f21c27817666fd7852c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure 加密技术：使用加密保护个人静态数据
 

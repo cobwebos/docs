@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 31c4fc5b606bf96cec8c508f4a0ff7ecbaeae38a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8767073bb7a6723088bb2727346d23ec8872cd1
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
@@ -37,12 +37,12 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 * 查看自动调整规模设置。
 * 查看警报活动和设置。
 * 访问 Application Insights 数据和在 AI Analytics 中查看数据。
-* 搜索 Log Analytics (OMS) 工作区数据（包括工作区的使用情况数据）。
-* 查看 Log Analytics (OMS) 管理组。
-* 检索 Log Analytics (OMS) 搜索架构。
-* 列出 Log Analytics (OMS) 智能包。
-* 检索并执行 Log Analytics (OMS) 已保存的搜索。
-* 检索 Log Analytics (OMS) 存储配置。
+* 搜索 Log Analytics 工作区数据（包括工作区的使用情况数据）。
+* 查看 Log Analytics 管理组。
+* 检索 Log Analytics 搜索架构。
+* 列出 Log Analytics 智能包。
+* 检索并执行 Log Analytics 已保存的搜索。
+* 检索 Log Analytics 存储配置。
 
 > [!NOTE]
 > 此角色不授予已传输到事件中心或存储在存储帐户的日志数据的读取访问权限。 有关配置这些资源的访问权限的信息，请[参阅下面章节](#security-considerations-for-monitoring-data)。
@@ -57,10 +57,10 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 * 设置订阅的[日志配置文件](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。*
 * 设置警报活动和设置。
 * 创建 Application Insights Web 测试和组件。
-* 列出 Log Analytics (OMS) 工作区的共享密钥。
-* 启用或禁用 Log Analytics (OMS) 智能包。
-* 创建、删除和执行 Log Analytics (OMS) 已保存的搜索。
-* 创建和删除 Log Analytics (OMS) 存储配置。
+* 列出 Log Analytics 工作区的共享密钥。
+* 启用或禁用 Log Analytics 智能包。
+* 创建、删除和执行 Log Analytics 已保存的搜索。
+* 创建和删除 Log Analytics 存储配置。
 
 *用户还必须分别被授予目标资源（存储帐户或事件中心命名空间）的 ListKeys 权限，才能设置日志配置文件或诊断设置。
 

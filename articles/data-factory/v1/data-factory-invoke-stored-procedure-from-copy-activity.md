@@ -11,16 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 10/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2ef4385b3307c58d97012c3d0a732da5fbf82ea8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 460785d0d3f8b3d8a0a53d544788cb1a74db8c00
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>从 Azure 数据工厂中的复制活动调用存储过程
+> [!NOTE]
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[在数据工厂版本 2 中使用存储过程活动转换数据](../transform-data-using-stored-procedure.md)。
+
+
 将数据复制到 [SQL Server](data-factory-sqlserver-connector.md) 或 [Azure SQL 数据库](data-factory-azure-sql-connector.md)中时，可以将复制活动中的 **SqlSink** 配置为调用存储过程。 将数据插入到目标表前，可能需要使用存储过程执行任何其他处理（合并列、查找值、插入到多个表，等等）。 此功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。 
 
 以下示例演示如何从数据工厂管道（复制活动）调用 SQL Server 数据库中的存储过程：  

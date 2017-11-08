@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 10/31/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: e38a92fc48636476f00fe18c735901d906799fde
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 514fa3490e480647f0923c99bd9606a3726d4d30
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建容器注册表
 
@@ -65,11 +65,11 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 在推送和拉取容器映像之前，必须登录到 ACR 实例。 请使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令完成此操作。 使用在上一步中记录的值替换用户名、密码和登录服务器。
 
-```
+```bash
 docker login --username <username> --password <password> <login server>
 ```
 
-完成后，该命令会返回“登录成功”。
+该命令在完成后返回 `Login Succeeded`。 可能会看见建议使用 `--password-stdin` 参数的安全警告。 虽然本文中未介绍它的用法，但我们建议按照此最佳做法进行操作。 更多详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
 
 ## <a name="push-image-to-acr"></a>将映像推送到 ACR
 

@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d8ad132ec47a81971a3405970eeddab3b1598ff3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eee8ee3af5918ddbe7393ff2574833f798ffcb19
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
 本文提供有关解决数据管理网关使用问题的信息。
 
 > [!NOTE]
-> 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解通过使用网关将数据从本地 SQL Server 数据库移动到 Microsoft Azure Blob 存储的演练。
->
->
+> 本文适用于 Azure 数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的自托管集成运行时](../create-self-hosted-integration-runtime.md)。
+
+有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解通过使用网关将数据从本地 SQL Server 数据库移动到 Microsoft Azure Blob 存储的演练。
 
 ## <a name="failed-to-install-or-register-gateway"></a>无法安装或注册网关
 ### <a name="1-problem"></a>1.问题

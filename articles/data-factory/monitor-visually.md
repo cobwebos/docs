@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: shlo
-ms.openlocfilehash: f30462c62c0aad73e7a1797a8a6dcd0a2f705666
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: e3ddbb88453b3f5d5f8b4566cf91aadbefd8163f
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="visually-monitor-azure-data-factories"></a>以可视化方式监视 Azure 数据工厂
 Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
 在此快速入门教程中，你将学习如何在不需要编写任何代码的情况下以可视化方式监视数据工厂 v2 管道。
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[监视和管理数据工厂版本 1 中的管道](v1/data-factory-monitor-manage-app.md)。
 
 ## <a name="monitor-data-factory-v2-pipelines"></a>监视数据工厂 v2 管道
 
@@ -41,10 +44,10 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 | 管道名称 | 管道的名称。 |
 | 操作 | 可用于查看活动运行的单个操作。 |
 | 运行开始时间 | 管道运行的开始日期时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
-| 持续时间 | 运行持续时间 (HH:MM:SS) |
+| Duration | 运行持续时间 (HH:MM:SS) |
 | 触发者 | 手动触发、计划触发 |
 | 状态 | 已失败、已成功、正在进行 |
-| 参数 | 管道运行参数（名称-值对） |
+| parameters | 管道运行参数（名称-值对） |
 | 错误 | 管道运行错误（如果有） |
 | 运行 ID | 管道运行的 ID |
 
@@ -58,7 +61,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 | 活动名称 | 管道中的活动的名称。 |
 | 活动类型 | 活动类型，即复制、HDInsightSpark、HDInsightHive，等等。 |
 | 运行开始时间 | 活动运行的开始日期时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
-| 持续时间 | 运行持续时间 (HH:MM:SS) |
+| Duration | 运行持续时间 (HH:MM:SS) |
 | 状态 | 已失败、已成功、正在进行 |
 | 输入 | 描述了活动输入的 JSON 数组 |
 | 输出 | 描述了活动输出的 JSON 数组 |
