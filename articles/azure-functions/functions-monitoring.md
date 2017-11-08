@@ -60,7 +60,7 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
    ![复制 Application Insights 检测密钥](media/functions-monitoring/copy-ai-key.png)
 
-1. 在函数应用的“应用程序设置”页中，添加名为 APPINSIGHTS_INSTRUMENTATIONKEY 的应用设置，[并粘贴检测密钥](functions-how-to-use-azure-function-app-settings.md#settings)。
+1. 在函数应用的“应用程序设置”页中，[添加应用设置](functions-how-to-use-azure-function-app-settings.md#settings)名为 APPINSIGHTS_INSTRUMENTATIONKEY，并粘贴检测密钥。
 
    ![将检测密钥添加到应用设置](media/functions-monitoring/add-ai-key.png)
 
