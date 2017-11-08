@@ -1,6 +1,5 @@
 # 概述
 ## [什么是 Azure 安全中心？](security-center-intro.md)
-## [使用 Power BI 获取见解](security-center-powerbi.md)
 ## [数据安全](security-center-data-security.md)
 ## 方案
 ### [事件响应](security-center-incident-response.md)
