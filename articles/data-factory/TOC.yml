@@ -166,6 +166,8 @@
           href: compute-linked-services.md
     - name: 控制流
       items:
+        - name: If Condition 活动
+          href: control-flow-if-condition-activity.md
         - name: Web 活动
           href: control-flow-web-activity.md
         - name: 查找活动

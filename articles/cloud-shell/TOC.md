@@ -8,7 +8,6 @@
 ## [Bash 中的功能和工具](features.md)
 ## [PowerShell 中的功能和工具](features-powershell.md)
 ## [限制](limitations.md)
-## [故障排除](troubleshooting.md)
 
 # 操作说明
 ## [在 Bash 中保留存储](persisting-shell-storage.md)
@@ -16,6 +15,8 @@
 ## [使用窗口](using-the-shell-window.md)
 
 # [定价](pricing.md)
+
+# [故障排除](troubleshooting.md)
 
 # 引用
 ## [Azure CLI](/cli/azure)
