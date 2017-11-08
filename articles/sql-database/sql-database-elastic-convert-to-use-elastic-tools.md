@@ -1,5 +1,5 @@
 ---
-title: "迁移要扩展的现有数据库 | Microsoft 文档"
+title: "迁移要扩展的现有数据库 | Microsoft Docs"
 description: "通过创建分片映射管理器来转换分片数据库，以使用弹性数据库工具"
 services: sql-database
 documentationcenter: 
@@ -12,17 +12,17 @@ ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-management
+ms.workload: Inactive
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 099f40d00753b7c86ba726a818f17d440a125221
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 356c4223ff3ae844552b7bee40aa3ffc6aad7ea0
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库
-使用 Azure SQL 数据库数据库工具（例如[弹性数据库客户端库](sql-database-elastic-database-client-library.md)）轻松管理现有的扩展共享数据库。 必须先转换现有数据库集，以使用[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)。 
+使用 Azure SQL 数据库数据库工具（例如[弹性数据库客户端库](sql-database-elastic-database-client-library.md)）轻松管理现有的扩展共享数据库。 先转换现有数据库集，再使用[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)。 
 
 ## <a name="overview"></a>概述
 迁移现有分片数据库： 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 有关 ShardMapManager 的详细信息，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。 有关弹性数据库工具的概述，请参[阅弹性数据库功能概述](sql-database-elastic-scale-introduction.md)。
 
 ## <a name="prepare-the-shard-map-manager-database"></a>准备分片映射管理器数据库
-分片映射管理器是一个特殊数据库，其中包含用来管理已扩展数据库的数据。 可使用现有数据库或创建新数据库。 请注意，用作分片映射管理器的数据库不应是与分片相同的数据库。 另请注意：PowerShell 脚本不会创建该数据库。 
+分片映射管理器是一个特殊数据库，其中包含用来管理已扩展数据库的数据。 可使用现有数据库或创建新数据库。 用作分片映射管理器的数据库不应是与分片相同的数据库。 PowerShell 脚本不会创建该数据库。 
 
 ## <a name="step-1-create-a-shard-map-manager"></a>步骤 1：创建分片映射管理器
     # Create a shard map manager. 
@@ -71,7 +71,7 @@ ms.lasthandoff: 10/11/2017
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
+多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库。 
 
 ![范围映射][2]
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>选项 2：为范围映射创建分片映射
-请注意，若要使用此映射模式，租户 ID 值需是连续范围，并且可接受范围中有间距，方法为只在创建数据库时跳过范围。
+若要使用此映射模式，租户 ID 值需是连续范围，并且可接受范围中有间距，方法为创建数据库时跳过范围。
 
     # $ShardMapManager is the shard map manager object 
     # 'RangeShardMap' is the unique identifier for the range shard map.  
@@ -141,7 +141,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>步骤 4，选项 3：映射单一数据库上多个租户的数据
-对于每个租户，运行 Add-ListMapping（上面的选项 1）。 
+对于每个租户，运行 Add-ListMapping（选项 1）。 
 
 ## <a name="checking-the-mappings"></a>检查映射
 可以使用以下命令来查询现有分片及其关联的映射的信息：  
@@ -164,7 +164,7 @@ GitHub 上也提供了这些工具：[Azure/elastic-db-tools](https://github.com
 有关多租户软件即服务 (SaaS) 数据库应用程序的常见数据体系结构模式的信息，请参阅 [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 
 ## <a name="questions-and-feature-requests"></a>问题和功能请求
-如有问题，请在 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)上联系我们；对于功能请求，请将其添加到 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)。
+如有问题，请通过 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)联系我们；对于功能请求，请将其添加到 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

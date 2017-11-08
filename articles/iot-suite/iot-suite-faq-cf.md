@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT 套件连接工厂常见问题解答 | Microsoft Docs"
+title: "连接工厂解决方案常见问题解答 - Azure | Microsoft Docs"
 description: "有关 IoT 套件连接工厂的常见问题"
 services: 
 suite: iot-suite
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: corywink
-ms.openlocfilehash: babd39d5e2f290d9e3f7fc3a232937c6ccfc85c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f0d6fb377c21f5ece77a878fd285b5dda2f4fbc
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>有关 IoT 套件连接工厂预配置解决方案的常见问题
 

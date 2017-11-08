@@ -1,5 +1,5 @@
 ---
-title: "运行 Site Recovery 的 Hyper-V Capacity Planner 工具 | Microsoft 文档"
+title: "Azure Site Recovery 的 Hyper-V Capacity Planner 工具 | Microsoft Docs"
 description: "本文介绍如何运行 Azure Site Recovery 的 Hyper-V Capacity Planner 工具"
 services: site-recovery
 documentationcenter: na
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 10/30/2017
 ms.author: nisoneji
-ms.openlocfilehash: 272b5abb5e6451164ca7900dda399b6aac65f986
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db790f9dc56605b5b752e7ab797903e32b2fc675
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="run-the-hyper-v-capacity-planner-tool-for-site-recovery"></a>运行 Site Recovery 的 Hyper-V Capacity Planner 工具
+# <a name="hyper-v-capacity-planner-tool-for-site-recovery"></a>Site Recovery 的 Hyper-V Capacity Planner 工具
 
 作为 Azure Site Recovery 部署的一部分，需要确定复制和带宽要求。 Site Recovery 的 Hyper-V Capacity Planner 工具可帮助用户针对 Hyper-V 虚拟机复制执行此操作。
 

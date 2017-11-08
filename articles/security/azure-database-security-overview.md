@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 3b8038b716266326967e2cf178efe4d36f4badc5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3c83645f61cd42c8c2b46f787c9e7531726d3fbb
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
@@ -69,7 +69,7 @@ SQL 数据库可以保护数据。对于动态数据，它使用[传输层安全
 
 在身份验证过程中，TLS/SSL 客户端向 TLS/SSL 服务器发送消息，服务器使用服务器需要验证自身身份的信息进行响应。 客户端和服务器执行会话密钥的额外交换，身份验证对话结束。 完成身份验证后，可以在使用在身份验证过程中建立的对称加密密钥的服务器和客户端之间开始 SSL 保护的通信。
 
-在与数据库相互“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (SSL/TLS)。 SQL Azure 使用 TLS/SSL 验证服务器和客户端，然后使用它来加密经过身份验证的双方之间的消息。 必须在应用程序连接字符串中指定用于加密连接的参数，而不要信任服务器证书（服务器证书用于将连接字符串复制到 Azure 经典门户外部），否则，连接将不会验证服务器的身份，并且容易受到“中间人”攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 Encrypt=True 和 TrustServerCertificate=False。
+在与数据库相互“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (SSL/TLS)。 SQL Azure 使用 TLS/SSL 验证服务器和客户端，然后使用它来加密经过身份验证的双方之间的消息。 必须在应用程序连接字符串中指定用于加密连接的参数，而不要信任服务器证书（服务器证书用于将连接字符串复制到 Azure 门户外部），否则，连接将不会验证服务器的身份，并且容易受到“中间人”攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 Encrypt=True 和 TrustServerCertificate=False。
 
 ### <a name="encryption-at-rest"></a>静态加密
 可以采取多种预防措施来帮助保护数据库，例如，设计安全系统、加密机密资产，以及围绕数据库服务器构建防火墙。 但是，如果物理媒体（如驱动器或备份磁带）失窃，恶意方可能会还原或附加数据库并浏览数据。

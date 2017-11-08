@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee5be707b443cbe42bf4a492d79390e534d4b91f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>如何对 Azure 上的 SAP HANA（大型实例）进行故障排除和监视
 
@@ -41,6 +41,16 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 **网络带宽：**将数据移入 Azure VNet 时，Azure VNet 网关会限制带宽，因此，监视 VNet 中的所有 Azure VM 接收的数据有助于确定与所选 Azure 网关 SKU 的限制还有多大的差距。 在 HANA 大型实例单元上，监视传入和传出的网络流量以及跟踪不同时间处理的数据量确实很有作用。
 
 **磁盘空间：**磁盘空间消耗量通常会随着时间的推移而增大。 原因有多种，但最主要的原因包括：数据量增加、执行事务日志备份、存储跟踪文件，以及执行存储快照。 因此，必须监视磁盘空间用量，管理与 HANA 大型实例单元相关的磁盘空间。
+
+对于 HANA 大型实例类型 II SKU，服务器附带预载的系统诊断工具。 可以利用这些诊断工具执行系统健康状况检查。 运行以下命令，在 /var/log/health_check 生成健康状况检查日志文件。
+```
+/opt/sgi/health_check/microsoft_tdi.sh
+```
+同 Microsoft 支持团队一起排除故障时，还可能需要使用这些诊断工具提供日志文件。 可以使用以下命令压缩文件。
+```
+tar  -czvf health_check_logs.tar.gz /var/log/health_check
+```
+
 
 ## <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 端的监视和故障排除
 

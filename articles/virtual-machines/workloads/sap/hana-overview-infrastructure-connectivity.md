@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a44fdbfb973d75c21aa87e9b9d0eea8fb2b3392
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure 上的 SAP HANA（大型实例）的基础结构和连接 
 
@@ -40,8 +40,7 @@ ms.lasthandoff: 10/11/2017
 - 业务联系人信息（包括电子邮件地址和电话号码）
 - 技术联系人信息（包括电子邮件地址和电话号码）
 - 技术网络联系人信息（包括电子邮件地址和电话号码）
-- Azure 部署区域（截至 7 月发布的区域为美国西部、美国东部、澳大利亚东部、澳大利亚东南部、西欧和北欧） 
-- 2017)
+- Azure 部署区域（截至 2017 年 7 月发布的区域为美国西部、美国东部、澳大利亚东部、澳大利亚东南部、西欧和北欧）
 - 确认“Azure 上的 SAP HANA 配置（大型实例）”的 SKU（配置）
 - 如 HANA 大型实例的概述和体系结构文档中详述，对于要部署该解决方案的每个 Azure 区域，需要提供：
     - 用于将 Azure VNet 连接到 HANA 大型实例的 ER-P2P 连接的 /29 IP 地址范围
@@ -74,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="creating-the-azure-vnet-for-hana-large-instances"></a>为 HANA 大型实例创建 Azure VNet
 
 >[!Note]
->必须使用 Azure Resource Manager 部署模型为 HANA 大型实例创建 Azure VNet。 HANA 大型实例解决方案不支持旧 Azure 部署模型（通常称为“经典部署模型”）。
+>必须使用 Azure 资源管理器部署模型为 HANA 大型实例创建 Azure VNet。 HANA 大型实例解决方案不支持旧 Azure 部署模型（通常称为“经典部署模型”）。
 
 可以使用 Azure 门户、PowerShell、Azure 模板或 Azure CLI 创建 VNet（请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。 在以下示例中，我们将探讨通过 Azure 门户创建的 VNet。
 
